@@ -1,0 +1,35 @@
+name: scp files
+on: [push]
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: "18"
+    - run: yarn install
+    - name: Build en-US
+      env:
+        DOC_LANG: en-US
+      run: yarn build
+    - name: Build zh-CN
+      env:
+        DOC_LANG: zh-CN
+      run: yarn build
+    - name: copy files via ssh
+      uses: appleboy/scp-action@v0.1.4
+      with:
+        host: ${{ secrets.CN_HOST }}
+        username: ${{ secrets.CN_USERNAME }}
+        key: ${{ secrets.CN_KEY }}
+        port: ${{ secrets.CN_PORT }}
+        source: "dist/*"
+        target: ${{ secrets.CN_TARGET }}/${{ github.ref_name }}
+    - name: Push gh-pages
+      if: ${{ github.ref_name == 'main' }}
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist/en-US

@@ -27,7 +27,7 @@ export default defineConfig({
   alias: {
   },
   cacheDirectoryPath: `node_modules/.docs-${lang}-cache`,
-  outputPath: `./docs/dist/${lang}`,
+  outputPath: `./dist/${lang}`,
   resolve: {
     docDirs: [`./docs/${lang}`]
   },
