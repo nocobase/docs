@@ -18,5 +18,5 @@ jobs:
         username: ${{ secrets.CN_USERNAME }}
         key: ${{ secrets.CN_KEY }}
         port: ${{ secrets.CN_PORT }}
-        source: "./docs/dist/zh-CN"
+        source: "./docs/dist/zh-CN/*"
         target: ${{ secrets.CN_TARGET }}
