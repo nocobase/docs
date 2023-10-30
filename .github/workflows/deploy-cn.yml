@@ -1,0 +1,22 @@
+name: scp files
+on: [push]
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: "18"
+    - run: npm install
+    - run: npm build
+    - name: copy file via ssh password
+      uses: appleboy/scp-action@v0.1.4
+      with:
+        host: ${{ secrets.CN_HOST }}
+        username: ${{ secrets.CN_USERNAME }}
+        key: ${{ secrets.CN_KEY }}
+        port: ${{ secrets.CN_PORT }}
+        source: "./docs/dist/zh-CN"
+        target: ${{ secrets.CN_TARGET }}
