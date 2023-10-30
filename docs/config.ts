@@ -19,11 +19,11 @@ const nav = [
     'title.zh-CN': 'API 参考',
     link: '/api',
   },
-  {
-    title: 'Schema components',
-    'title.zh-CN': 'Schema 组件库',
-    link: '/components',
-  },
+  // {
+  //   title: 'Schema components',
+  //   'title.zh-CN': 'Schema 组件库',
+  //   link: '/components',
+  // },
 ];
 const sidebar = {
   '/welcome': [
