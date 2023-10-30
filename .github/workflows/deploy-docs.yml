@@ -25,10 +25,11 @@ jobs:
         username: ${{ secrets.CN_USERNAME }}
         key: ${{ secrets.CN_KEY }}
         port: ${{ secrets.CN_PORT }}
-        source: "docs/dist/*"
+        source: "dist/*"
         target: ${{ secrets.CN_TARGET }}/${{ github.ref_name }}
     - name: Push gh-pages
+      if: ${{ github.ref_name == 'main' }}
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./docs/dist/en-US
+        publish_dir: ./dist/en-US
