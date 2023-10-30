@@ -8,7 +8,7 @@
 
 Previously, `SchemaInitializer` supported 2 definition methods, namely objects and components. For example:
 
-```tsx
+```tsx | pure
 const BlockInitializers = {
   title: '{{t("Add block")}}',
   icon: 'PlusOutlined',
@@ -19,7 +19,7 @@ const BlockInitializers = {
 };
 ```
 
-```tsx
+```tsx | pure
 const BlockInitializers = () => {
   return (
     <SchemaInitializer.Button
@@ -38,7 +38,7 @@ const BlockInitializers = () => {
 
 Now only the instance of `new SchemaInitializer()` is supported. For example:
 
-```tsx
+```tsx | pure
 const blockInitializers = new SchemaInitializer({
   name: 'BlockInitializers', // 名称，和原来保持一致
   title: '{{t("Add block")}}',
@@ -108,7 +108,7 @@ Example 1:
 
 Example 2:
 
-```tsx
+```tsx | pure
 export const BulkEditFormItemInitializers = (props: any) => {
   const { t } = useTranslation();
   const { insertPosition, component } = props;
@@ -146,7 +146,7 @@ export const BulkEditFormItemInitializers = (props: any) => {
 
 Now it needs to be changed to the way of `new SchemaInitializer()`:
 
-```tsx
+```tsx | pure
 const bulkEditFormItemInitializers = new SchemaInitializer({
   name: 'BulkEditFormItemInitializers',
   'data-testid': 'configure-fields-button-of-bulk-edit-form-item',
@@ -228,7 +228,7 @@ export const blockInitializers = new SchemaInitializer({
 
 The `title` and `schema` written in the outer layer are called common parameters, while the `size` written in `componentProps` is called component property. They are obtained in different ways, with common parameters obtained through the `useSchemaInitializerItem()` hook and component properties obtained through `props`. For example:
 
-```tsx
+```tsx | pure
 import { FC } from 'react';
 import { useSchemaInitializerItem } from '@nocobase/client';
 
@@ -246,7 +246,7 @@ const FormBlockInitializer: FC<FormBlockInitializerProps> = (props) => {
 
 Previously, it was registered through `SchemaInitializerProvider`. For example:
 
-```tsx
+```tsx | pure
 <SchemaInitializerProvider
   initializers={{ BlockInitializers }}
   components={{ ManualActionDesigner }}
@@ -255,7 +255,7 @@ Previously, it was registered through `SchemaInitializerProvider`. For example:
 
 Now it needs to be changed to the way of `new SchemaInitializer()`:
 
-```tsx
+```tsx | pure
 import { Plugin } from '@nocobase/client';
 
 class MyPlugin extends Plugin {
@@ -270,7 +270,7 @@ class MyPlugin extends Plugin {
 
 以前是通过 `SchemaInitializerContext` 获取到全部的 `Initializers` 然后进行增删改。例如下面代码是为了往 `BlockInitializers` 中的 `media` 下添加 `Hello`：
 
-```tsx
+```tsx | pure
 const items = useContext<any>(SchemaInitializerContext);
 const mediaItems = items.BlockInitializers.items.find(
   (item) => item.key === 'media',
@@ -293,7 +293,7 @@ if (!children.find((item) => item.key === 'hello')) {
 
 Now it is modified in a more concise way through the plugin. For example:
 
-```tsx
+```tsx | pure
 class MyPlugin extends Plugin {
   async load() {
     // get BlockInitializers
@@ -313,7 +313,7 @@ class MyPlugin extends Plugin {
 
 Previously, the `useSchemaInitializer` method was used for rendering. For example:
 
-```tsx
+```tsx | pure
 const { render } = useSchemaInitializer(fieldSchema['x-initializer']);
 
 render();
@@ -322,7 +322,7 @@ render({ style: { marginLeft: 8 } });
 
 Now it needs to be changed to:
 
-```tsx
+```tsx | pure
 const app = useApp();
 
 const { render } = app.schemaInitializerManager.getRender(
@@ -340,7 +340,7 @@ return (
 
 To simplify usage, we also provide a method to directly render as a ReactNode:
 
-```tsx
+```tsx | pure
 const element = app.schemaInitializerManager.render(
   fieldSchema['x-initializer'],
   fieldSchema['x-initializer-props'],

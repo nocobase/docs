@@ -8,7 +8,7 @@
 
 以前 `SchemaInitializer` 支持 2 种定义方式，分别为对象和组件。例如：
 
-```tsx
+```tsx | pure
 const BlockInitializers = {
   title: '{{t("Add block")}}',
   icon: 'PlusOutlined',
@@ -19,7 +19,7 @@ const BlockInitializers = {
 };
 ```
 
-```tsx
+```tsx | pure
 const BlockInitializers = () => {
   return (
     <SchemaInitializer.Button
@@ -38,7 +38,7 @@ const BlockInitializers = () => {
 
 现在仅支持 `new SchemaInitializer()` 的实例。例如：
 
-```tsx
+```tsx | pure
 const blockInitializers = new SchemaInitializer({
   name: 'BlockInitializers', // 名称，和原来保持一致
   title: '{{t("Add block")}}',
@@ -110,7 +110,7 @@ const blockInitializers = new SchemaInitializer({
 
 原来是组件定义的方式：
 
-```tsx
+```tsx | pure
 export const BulkEditFormItemInitializers = (props: any) => {
   const { t } = useTranslation();
   const { insertPosition, component } = props;
@@ -148,7 +148,7 @@ export const BulkEditFormItemInitializers = (props: any) => {
 
 现在需要改为 `new SchemaInitializer()` 的方式：
 
-```tsx
+```tsx | pure
 const bulkEditFormItemInitializers = new SchemaInitializer({
   name: 'BulkEditFormItemInitializers',
   'data-testid': 'configure-fields-button-of-bulk-edit-form-item',
@@ -231,7 +231,7 @@ export const blockInitializers = new SchemaInitializer({
 
 其中写在外层的 `title` 和 `schema` 被称为公共参数，写在 `componentProps` 中的 `size` 被称为组件属性，他们获取方式也不同，公共参数通过 `useSchemaInitializerItem()` hooks 获取，组件属性通过 `props` 获取。例如：
 
-```tsx
+```tsx | pure
 import { FC } from 'react';
 import { useSchemaInitializerItem } from '@nocobase/client';
 
@@ -249,7 +249,7 @@ const FormBlockInitializer: FC<FormBlockInitializerProps> = (props) => {
 
 以前是通过 `SchemaInitializerProvider` 进行注册。例如：
 
-```tsx
+```tsx | pure
 <SchemaInitializerProvider
   initializers={{ BlockInitializers }}
   components={{ ManualActionDesigner }}
@@ -258,7 +258,7 @@ const FormBlockInitializer: FC<FormBlockInitializerProps> = (props) => {
 
 现在需要改为插件的方式。例如：
 
-```tsx
+```tsx | pure
 import { Plugin } from '@nocobase/client';
 
 class MyPlugin extends Plugin {
@@ -273,7 +273,7 @@ class MyPlugin extends Plugin {
 
 以前是通过 `SchemaInitializerContext` 获取到全部的 `Initializers` 然后进行增删改。例如下面代码是为了往 `BlockInitializers` 中的 `media` 下添加 `Hello`：
 
-```tsx
+```tsx | pure
 const items = useContext<any>(SchemaInitializerContext);
 const mediaItems = items.BlockInitializers.items.find(
   (item) => item.key === 'media',
@@ -296,7 +296,7 @@ if (!children.find((item) => item.key === 'hello')) {
 
 新的方式则通过插件的方式更简洁的进行修改。例如：
 
-```tsx
+```tsx | pure
 class MyPlugin extends Plugin {
   async load() {
     // 获取 BlockInitializers
@@ -316,7 +316,7 @@ class MyPlugin extends Plugin {
 
 之前使用 `useSchemaInitializer` 的方式进行渲染。例如：
 
-```tsx
+```tsx | pure
 const { render } = useSchemaInitializer(fieldSchema['x-initializer']);
 
 render();
@@ -325,7 +325,7 @@ render({ style: { marginLeft: 8 } });
 
 新的方式需要改为：
 
-```tsx
+```tsx | pure
 const app = useApp();
 
 const { render } = app.schemaInitializerManager.getRender(
@@ -343,7 +343,7 @@ return (
 
 当然为了简化使用，我们也提供了直接渲染为元素的方法：
 
-```tsx
+```tsx | pure
 const element = app.schemaInitializerManager.render(
   fieldSchema['x-initializer'],
   fieldSchema['x-initializer-props'],
