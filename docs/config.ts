@@ -15,7 +15,7 @@ const nav = [
     link: '/plugins',
   },
   {
-    title: 'Plugin Development',
+    title: 'Plugin development',
     'title.zh-CN': '插件开发',
     link: '/development',
   },
@@ -24,18 +24,17 @@ const nav = [
     'title.zh-CN': 'API 参考',
     link: '/api',
   },
-  {
-    title: 'Schema components',
-    'title.zh-CN': 'Schema 组件库',
-    link: '/components',
-  },
+  // {
+  //   title: 'Schema components',
+  //   'title.zh-CN': 'Schema 组件库',
+  //   link: '/components',
+  // },
 ];
 const sidebar = {
   '/welcome': [
     {
       title: 'Welcome',
       'title.zh-CN': '欢迎',
-      'title.tr-TR': 'Hoşgeldiniz',
       type: 'group',
       children: [
         '/welcome/introduction',
@@ -47,13 +46,11 @@ const sidebar = {
     {
       title: 'Getting started',
       'title.zh-CN': '快速开始',
-      'title.tr-TR': 'Başlangıç',
       type: 'group',
       children: [
         {
           title: 'Installation',
           'title.zh-CN': '安装',
-          'title.TR-TR': 'Kurulum',
           children: [
             '/welcome/getting-started/installation',
             '/welcome/getting-started/installation/docker-compose',
@@ -64,7 +61,6 @@ const sidebar = {
         {
           title: 'Upgrading',
           'title.zh-CN': '升级',
-          'title.TR-TR': 'Güncelleme',
           children: [
             '/welcome/getting-started/upgrading',
             '/welcome/getting-started/upgrading/docker-compose',
@@ -77,7 +73,6 @@ const sidebar = {
     {
       title: 'Releases',
       'title.zh-CN': '产品发布',
-      'title.TR-TR': 'Sürüm',
       type: 'group',
       children: [
         {
@@ -98,7 +93,6 @@ const sidebar = {
     {
       title: 'Community',
       'title.zh-CN': '社区',
-      'title.TR-TR': 'Topluluk',
       type: 'group',
       children: [
         '/welcome/community/contributing',
@@ -113,20 +107,11 @@ const sidebar = {
     {
       title: 'Quick Start',
       'title.zh-CN': '快速上手',
-      'title.TR-TR': 'Hızlı Başlangıç',
       type: 'group',
       children: [
         '/manual/quick-start/the-first-app',
-        {
-          title: '可配置的界面',
-          'title.zh-CN': '可配置的界面',
-          link: '#',
-        },
-        {
-          title: '插件管理器',
-          'title.zh-CN': '插件管理器',
-          link: '#',
-        },
+        '/manual/quick-start/functional-zoning',
+        '/manual/quick-start/ui-editor-mode',
       ],
     },
     {
@@ -818,7 +803,6 @@ const sidebar = {
     {
       title: 'Getting started',
       'title.zh-CN': '快速开始',
-      'title.TR-TR': 'Başlarken',
       type: 'group',
       children: [
         '/development',
@@ -832,14 +816,12 @@ const sidebar = {
     {
       title: 'Server',
       'title.zh-CN': '服务端',
-      'title.TR-TR': 'Sunucu',
       type: 'group',
       children: [
         '/development/server',
         {
           title: 'Collections & Fields',
           'title.zh-CN': '数据表和字段',
-          'title.TR-TR': 'Koleksiyonlar & Alanlar',
           children: [
             '/development/server/collections',
             '/development/server/collections/options',
@@ -862,14 +844,12 @@ const sidebar = {
     {
       title: 'Client',
       'title.zh-CN': '客户端',
-      'title.TR-TR': 'Ziyaretçi(Client)',
       type: 'group',
       children: [
         '/development/client',
         {
           title: 'UI designer',
           'title.zh-CN': 'UI 设计器',
-          'title.TR-TR': 'Kullanıcı Arayüz Tasarımcısı',
           children: [
             // '/development/client/ui-schema-designer',
             '/development/client/ui-schema-designer/what-is-ui-schema',
@@ -1189,8 +1169,6 @@ const sidebar = {
         {
           title: 'SchemaDesigner',
           'title.zh-CN': 'SchemaDesigner',
-          'title.TR-TR': 'Şema Tasarımcısı',
-
           children: [
             '/api/client/schema-designer/schema-component',
             '/api/client/schema-designer/schema-initializer',
@@ -1200,7 +1178,6 @@ const sidebar = {
         {
           title: 'Extensions',
           'title.zh-CN': 'Extensions',
-          'title.TR-TR': 'Eklentiler',
           children: [
             // '/api/client/extensions/schema-component',
             '/api/client/extensions/collection-manager',
