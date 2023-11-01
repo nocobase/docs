@@ -12,6 +12,7 @@ function setTitle(menuChildren: any) {
   menuChildren.forEach((item: any) => {
     if (typeof item === 'object') {
       item.title = item[`title.${lang}`] || item.title;
+      item.link = item[`link.${lang}`] || item.link;
       if (item.children) {
         setTitle(item.children);
       }
