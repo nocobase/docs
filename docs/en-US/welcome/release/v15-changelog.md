@@ -311,42 +311,14 @@ class MyPlugin extends Plugin {
 
 #### Usage
 
-Previously, the `useSchemaInitializer` method was used for rendering. For example:
+Previously, rendering was done using `useSchemaInitializer`, but now it needs to be changed to `useSchemaInitializerRender`, and the `x-initializer-props` parameter needs to be added. For example:
 
-```tsx | pure
-const { render } = useSchemaInitializer(fieldSchema['x-initializer']);
+```diff
+- const { render } = useSchemaInitializer(fieldSchema['x-initializer']);
++ const { render } = useSchemaInitializerRender(fieldSchema['x-initializer'], fieldSchema['x-initializer-props']);
 
 render();
-render({ style: { marginLeft: 8 } });
-```
-
-Now it needs to be changed to:
-
-```tsx | pure
-const app = useApp();
-
-const { render } = app.schemaInitializerManager.getRender(
-  fieldSchema['x-initializer'],
-  fieldSchema['x-initializer-props'],
-);
-
-return (
-  <div>
-    {render()}
-    {render({ style: { marginLeft: 8 } })}
-  </div>
-);
-```
-
-To simplify usage, we also provide a method to directly render as a ReactNode:
-
-```tsx | pure
-const element = app.schemaInitializerManager.render(
-  fieldSchema['x-initializer'],
-  fieldSchema['x-initializer-props'],
-);
-
-return <div>{element}</div>;
+render({ style: { marginLeft: 8 } })
 ```
 
 More details can refer to the [SchemaInitializer documentation](https://client.docs.nocobase.com/client/schema-initializer).
