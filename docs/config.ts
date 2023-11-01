@@ -10,7 +10,7 @@ const nav = [
     link: '/manual/quick-start/the-first-app',
   },
   {
-    title: 'Plugin Development',
+    title: 'Plugin development',
     'title.zh-CN': '插件开发',
     link: '/development',
   },
