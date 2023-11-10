@@ -1,5 +1,19 @@
 name: scp files
-on: [push]
+
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'docs/**'
+      - '.github/workflows/deploy-docs.yml'
+  pull_request:
+    branches:
+      - '**'
+    paths:
+      - 'docs/**'
+      - '.github/workflows/deploy-docs.yml'
+
 jobs:
   build:
     name: Build
@@ -18,7 +32,15 @@ jobs:
       env:
         DOC_LANG: zh-CN
       run: yarn build
-    - name: copy files via ssh
+    - name: Set tags
+      id: set-tags
+      run: |
+        if [[ "${{ github.ref_name }}" == "main" ]]; then
+          echo "::set-output name=tags::${{ github.ref_name }}"
+        else
+          echo "::set-output name=tags::pr-${{ github.event.pull_request.number }}"
+        fi
+    - name: copy files via ssh - ${{ steps.set-tags.outputs.tags }}
       uses: appleboy/scp-action@v0.1.4
       with:
         host: ${{ secrets.CN_HOST }}
@@ -26,7 +48,7 @@ jobs:
         key: ${{ secrets.CN_KEY }}
         port: ${{ secrets.CN_PORT }}
         source: "dist/*"
-        target: ${{ secrets.CN_TARGET }}/${{ github.ref_name }}
+        target: ${{ secrets.CN_TARGET }}/${{ steps.set-tags.outputs.tags }}
     - name: Push gh-pages
       if: ${{ github.ref_name == 'main' }}
       uses: peaceiris/actions-gh-pages@v3
