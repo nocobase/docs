@@ -46,7 +46,7 @@ Whether it is generic functionality or personalization, it is recommended to wri
 Distribution of modules.
 
 - Server
-  - Collections & Fields: mainly used for system table configuration. Business tables are recommended to be configured in "Settings Center - Collection manager".
+  - Collections & Fields: mainly used for system table configuration. Business tables are recommended to be configured in "Plugin Settings Manager - Collection manager".
   - Resources & Actions: Mainly used to extend the Action API
   - Middleware: Middleware
   - Events: Events
@@ -56,5 +56,5 @@ Distribution of modules.
 - Client
   - UI Schema Designer: Page Designer
   - UI Router: When there is a need for custom pages
-  - Settings Center: Provides configuration pages for plugins
+  - Plugin Settings Manager: Provides configuration pages for plugins
   - I18n: Client side internationalization
