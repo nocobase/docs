@@ -163,6 +163,21 @@ DB_LOGGING=on
 
 基于文件的日志存储路径，默认为 `storage/logs`。
 
+### CACHE_DEFAULT_STORE
+
+使用缓存方式的唯一标识，指定服务端默认缓存方式，默认值 `memory`, 内置可选项：
+
+- `memory`
+- `redis`
+
+### CACHE_MEMORY_MAX
+
+内存缓存项目最大个数，默认值 `2000`。
+
+### CACHE_REDIS_URL
+
+Redis连接，可选。示例：`redis://localhost:6379`
+
 ## 临时环境变量
 
 安装 NocoBase 时，可以通过设置临时的环境变量来辅助安装，如：

@@ -248,7 +248,12 @@ const sidebar = {
     {
       title: '@nocobase/resourcer',
       type: 'subMenu',
-      children: ['/api/resourcer', '/api/resourcer/resource', '/api/resourcer/action', '/api/resourcer/middleware'],
+      children: [
+        '/api/resourcer',
+        '/api/resourcer/resource',
+        '/api/resourcer/action',
+        '/api/resourcer/middleware',
+      ],
     },
     {
       title: '@nocobase/acl',
@@ -285,6 +290,11 @@ const sidebar = {
           ],
         },
       ],
+    },
+    {
+      title: '@nocobase/cache',
+      type: 'subMenu',
+      children: ['/api/cache/cache-manager', '/api/cache/cache'],
     },
     {
       title: '@nocobase/cli',
