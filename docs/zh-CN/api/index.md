@@ -7,6 +7,7 @@
 | [Resourcer](/api/resourcer)       | `@nocobase/resourcer` | 资源与路由映射      |
 | [ACL](/api/acl)                   | `@nocobase/acl`       | 访问控制表          |
 | [Client](/api/client/application) | `@nocobase/client`    | 客户端应用          |
+| [Cache](/api/cache/cache-manager) | `@nocobase/cache`     | 服务端缓存          |
 | [CLI](/api/cli)                   | `@nocobase/cli`       | NocoBase 命令行工具 |
 | [SDK](/api/sdk)                   | `@nocobase/sdk`       | NocoBase SDK        |
 | [Actions](/api/actions)           | `@nocobase/actions`   | 内置常用资源操作    |
