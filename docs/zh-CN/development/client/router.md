@@ -1,6 +1,8 @@
 # 页面路由及扩展
 
-NocoBase 客户端通过 `app.router.add` 扩展页面，例如：
+## 简介
+
+NocoBase 客户端通过 [app.router.add()](https://client.docs.nocobase.com/core/application/router-manager) 和 [app.pluginSettingsManager.add()](https://client.docs.nocobase.com/core/application/plugin-settings-manager) 扩展页面，例如：
 
 ```tsx | pure
 import { Application, Plugin } from '@nocobase/client';
@@ -11,6 +13,12 @@ class PluginHello extends Plugin {
     this.router.add('hello', {
       path: '/',
       Component: () => <div>Hello NocoBase</div>,
+    });
+
+    this.app.pluginSettingsManager.add('hello', {
+      title: 'Hello',
+      icon: 'ApiOutlined',
+      Component: () => <div>Hello Setting page</div>,
     });
   }
 }
@@ -38,11 +46,12 @@ class PluginHello extends Plugin {
 | admin          | /admin/\*          | AdminLayout         |
 | admin.page     | /admin/:name       | AdminDynamicPage    |
 | admin.settings | /admin/settings/\* | AdminSettingsLayout |
+| admin.pm.list  | //admin/pm/list/\* | PluginManager       |
 
 ### AdminLayout
 
 ```ts
-router.add('admin.page', {
+router.add('admin', {
   path: '/admin/*',
   Component: AdminLayout,
 });
@@ -79,20 +88,16 @@ router.add('admin.settings', {
 ## 页面扩展
 
 - 动态 Schema 页面，通过 `添加菜单项` -> `页面` 添加
-- 常规页面通过 `app.router.add` 添加
-- 插件设置页通过 `app.pluginSettingsManager.add` 添加
+- 常规页面通过 [app.router.add()](https://client.docs.nocobase.com/core/application/router-manager) 添加
+- 插件设置页通过 [app.pluginSettingsManager.add()](https://client.docs.nocobase.com/core/application/plugin-settings-manager) 添加
 
 ### 动态 Schema 页面
 
 通过 `添加菜单项` -> `页面` 添加
 
-### 插件设置页扩展
-
-插件设置页通过 `app.pluginSettingsManager.add` 添加
-
 ### 常规页面扩展
 
-通过 `app.router.add` 扩展页面路由
+通过 [app.router.add()](https://client.docs.nocobase.com/core/application/router-manager) 扩展页面路由
 
 ```typescript
 import React from 'react';
@@ -141,4 +146,53 @@ const app = new Application({
 
 
 export default app.getRootComponent();
+```
+
+### 插件设置页扩展
+
+插件设置页通过 [app.pluginSettingsManager.add()](https://client.docs.nocobase.com/core/application/plugin-settings-manager) 添加。
+
+```tsx | pure
+import { Plugin } from '@nocobase/client';
+import React from 'react';
+
+const HelloSettingPage = () => <div>Hello Setting page</div>;
+
+export class HelloPlugin extends Plugin {
+  async load() {
+    this.app.pluginSettingsManager.add('hello', {
+      title: 'Hello', // 设置页面的标题和菜单名称
+      icon: 'ApiOutlined', // 设置页面菜单图标
+      Component: HelloSettingPage,
+    });
+  }
+}
+```
+
+多级路由用法
+
+```tsx | pure
+import { Outlet } from 'react-router-dom';
+
+const pluginName = 'hello';
+
+class HelloPlugin extends Plugin {
+  async load() {
+    this.app.pluginSettingsManager.add(pluginName, {
+      title: 'HelloWorld',
+      icon: '',
+      Component: Outlet, // 可以不传，默认为  `Outlet` 组件
+    });
+
+    this.app.pluginSettingsManager.add(`${pluginName}.demo1`, {
+      title: 'Demo1 Page',
+      Component: () => <div>Demo1 Page Content</div>,
+    });
+
+    this.app.pluginSettingsManager.add(`${pluginName}.demo2`, {
+      title: 'Demo2 Page',
+      Component: () => <div>Demo2 Page Content</div>,
+    });
+  }
+}
 ```

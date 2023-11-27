@@ -31,6 +31,8 @@ export default () => {
 };
 ```
 
+具体 API 参见 [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component)。
+
 ## 什么是 scope？
 
 scope 指的是 schema 内可用的变量或函数。例如以下例子的函数 `t()` 需要注册到 scope 里，才能正确渲染 title
@@ -90,7 +92,6 @@ class Application {
 
 ```tsx | pure
 <Router>
-  {' '}
   {/* 路由的 Context Provider */}
   <SchemaComponentProvider components={app.components} scopes={app.scopes}>
     {/* 其他自定义 Provider 组件 - 开始标签 */}

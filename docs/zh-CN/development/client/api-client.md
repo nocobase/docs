@@ -1,6 +1,6 @@
 # API 客户端
 
-用于在应用里发起客户端请求。在[插件生命周期](/development/client#插件的声明周期)内，可以使用 `app.apiClient` 发起客户端请求，在组件内可以使用 `useAPIClient()` 和 `useRequest()`。
+用于在应用里发起客户端请求。在 [插件生命周期](/development/client#插件的声明周期) 内，可以使用 `app.apiClient` 发起客户端请求，在组件内可以使用 `useAPIClient()` 和 `useRequest()`。
 
 ## app.apiClient
 
@@ -11,6 +11,8 @@ class PluginSampleAPIClient extends Plugin {
   }
 }
 ```
+
+---
 
 ### apiClient.request()
 
@@ -31,33 +33,13 @@ class APIClient {
 const response = await apiClient.request({ url });
 ```
 
-### apiClient.resource()
-
-NocoBase 特有的资源操作
-
-```ts
-class APIClient {
-  resource<R = IResource>(name: string, of?: any): R;
-}
-```
-
-示例
-
-```ts
-const response = await apiClient.resource('posts').list();
-const response = await apiClient.resource('posts').get();
-const response = await apiClient.resource('posts').create();
-const response = await apiClient.resource('posts').update();
-const response = await apiClient.resource('posts').destroy();
-```
-
 ### apiClient.axios
 
 `AxiosInstance` 实例
 
 ## useAPIClient()
 
-在组件内部可以使用 `useAPIClient()` 获取当前应用的 APIClient 实例
+在组件内部可以使用 `useAPIClient()` 获取当前应用的 APIClient 实例，其返回结果等于 `app.apiClient`。
 
 ## useRequest()
 

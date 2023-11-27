@@ -7,10 +7,7 @@ Schema 的设计能力主要体现在
   - 现有 schema 节点的拖拽移动
 - schema 参数修改
 
-设计器核心 API 和参数有：
-
-- 设计器 API：`createDesignable()` & `useDesignable()`
-- Schema 参数：`x-designer`，用于适配设计器组件
+设计器核心 API：[createDesignable()、useDesignable()](https://client.docs.nocobase.com/core/ui-schema/designable)
 
 ## 设计器 API
 

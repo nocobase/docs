@@ -4,6 +4,8 @@
 
 我们已经知道了 NocoBase 的主界面是由 Schema 组成的，并且 NocoBase 的理念就是所见即所得，通过界面操作就可以生成页面。这些对 Schema 操作的部分我们称之为 Designer，也就是界面上橘色的部分。
 
+具体的 API 参考：[SchemaToolbar 组件](https://client.docs.nocobase.com/core/ui-schema/schema-toolbar)
+
 ## Designer 的组成
 
 以下是顶部菜单的 Schema：

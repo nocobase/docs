@@ -4,8 +4,7 @@
 
 SchemaInitializer 添加器就是用来往当前 Schema 节点前后插入内容的工具，整体的逻辑就是当点击对应的按钮后，通过上下文提供的 `insert` 方法，将新的 Schema 插入到对应的位置。
 
-- 关联内容：UI Schema
-- API 详细介绍：app.schemaInitializerManager、new SchemaInitializer() 等
+具体的 API 参考：[SchemaSettings](https://client.docs.nocobase.com/core/ui-schema/schema-initializer) 和 [SchemaSettingsManager](https://client.docs.nocobase.com/core/ui-schema/schema-initializer-manager)
 
 ### 定义、注册和渲染
 

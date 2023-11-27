@@ -4,7 +4,7 @@
 
 SchemaSettings 用于设置区块的相关信息，比如上图中的设置标题、设置 Table 的分页数量等。
 
-- API 详细介绍：app.schemaSettingsManager、new SchemaSettings 等
+具体的 API 参考：[SchemaSettings](https://client.docs.nocobase.com/core/ui-schema/schema-settings) 和 [SchemaSettingsManager](https://client.docs.nocobase.com/core/ui-schema/schema-settings-manager)
 
 ## 定义、注册和渲染
 
