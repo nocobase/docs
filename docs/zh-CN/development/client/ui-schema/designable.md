@@ -1,111 +1,146 @@
 # Designable 设计器
 
-Schema 的设计能力主要体现在
-
-- 邻近位置插入，可用于
-  - 插入新的 schema 节点
-  - 现有 schema 节点的拖拽移动
-- schema 参数修改
-
-设计器核心 API：[createDesignable()、useDesignable()](https://client.docs.nocobase.com/core/ui-schema/designable)
-
-## 设计器 API
-
-### createDesignable()
+NocoBase 通过 `createDesignable()` 方法为 Schema 提供设计能力
 
 ```ts
-import { Schema } from '@nocobase/client';
+import React from 'react';
+import { Schema } from '@formily/json-schema';
+import { createDesignable } from '@nocobase/client';
 
+// 创建一个 schema 示例
 const current = new Schema({
+  name: 'root',
   type: 'void',
-  'x-component': 'div',
+  'x-component': 'Page',
 });
 
-const {
-  designable,         // 是否可以配置
-  remove,
-  insertAdjacent,     // 在某位置插入，四个位置：beforeBegin、afterBegin、beforeEnd、afterEnd
-  insertBeforeBegin,  // 在当前节点的前面插入
-  insertAfterBegin,   // 在当前节点的第一个子节点前面插入
-  insertBeforeEnd,    // 在当前节点的最后一个子节点后面
-  insertAfterEnd,     // 在当前节点的后面
-} = createDesignable({
+// 为当前 schema 创建 designable
+const dn = createDesignable({
   current,
 });
 
-const newSchema = {
-  type: 'void',
+// 在 schema 节点内部新增一个 hello 节点
+dn.insertAfterBegin({
   name: 'hello',
+  type: 'void',
   'x-component': 'Hello',
-};
-
-insertAfterBegin(newSchema);
+});
 
 console.log(current.toJSON());
 {
-  type: 'void',
-  'x-component': 'div',
-  properties: {
-    hello: {
-      type: 'void',
-      'x-component': 'Hello',
-    },
-  },
+  "name": "root",
+  "type": "void",
+  "x-component": "Page",
+  "properties": {
+    "hello": {
+      "type": "void",
+      "name": "hello",
+      "x-component": "Hello",
+      "x-index": 0
+    }
+  }
 }
 ```
 
-### useDesignable()
+在 Schema 组件中，可以直接使用 `useDesignable()` 来处理当前 Schema 节点
 
-React Hook 场景也可以用 `useDesignable()` 获取当前 schema 组件设计器的 API
+```tsx
+import React from 'react';
+import { Button } from 'antd';
+import {
+  SchemaComponent,
+  SchemaComponentProvider,
+  useDesignable,
+} from '@nocobase/client';
 
-```ts
-const {
-  designable, // 是否可以配置
-  remove,
-  insertAdjacent, // 在某位置插入，四个位置：beforeBegin、afterBegin、beforeEnd、afterEnd
-  insertBeforeBegin, // 在当前节点的前面插入
-  insertAfterBegin, // 在当前节点的第一个子节点前面插入
-  insertBeforeEnd, // 在当前节点的最后一个子节点后面
-  insertAfterEnd, // 在当前节点的后面
-} = useDesignable();
+const Hello = () => <h1>Hello, world!</h1>;
 
-const schema = {
-  name: uid(),
-  'x-component': 'Hello',
+const Page = (props) => {
+  const dn = useDesignable();
+  return (
+    <div>
+      <Button
+        onClick={() => {
+          dn.insertAfterBegin({
+            type: 'void',
+            'x-component': 'Hello',
+          });
+        }}
+      >
+        点此新增子节点
+      </Button>
+      {props.children}
+    </div>
+  );
 };
 
-// 在当前节点的前面插入
-insertBeforeBegin(schema);
-// 等同于
-insertAdjacent('beforeBegin', schema);
+const schema = {
+  type: 'void',
+  name: 'page',
+  'x-component': 'Page',
+};
 
-// 在当前节点的第一个子节点前面插入
-insertAfterBegin(schema);
-// 等同于
-insertAdjacent('afterBegin', schema);
-
-// 在当前节点的最后一个子节点后面
-insertBeforeEnd(schema);
-// 等同于
-insertAdjacent('beforeEnd', schema);
-
-// 在当前节点的后面
-insertAfterEnd(schema);
-// 等同于
-insertAdjacent('afterEnd', schema);
+export default () => {
+  return (
+    <SchemaComponentProvider components={{ Page, Hello }}>
+      <SchemaComponent schema={schema} />
+    </SchemaComponentProvider>
+  );
+};
 ```
 
-## 邻近位置插入
+## createDesignable vs useDesignable
+
+- createDesignable 需要传 current 参数，useDesignable 直接用于当前节点，不需要传 current
+- createDesignable 可以用在事件中，useDesignable 是 react hook 方法，必须先执行
+- createDesignable 的 current 可以是任意 schema，useDesignable 只能是当前 schema
+
+使用场景
+
+- 如果明确就是当前节点操作，直接用 useDesignable 更加便捷
+- 如果操作的不是当前节点，用 createDesignable 更合适
+- 如果是事件触发，如拖拽移动等，用 createDesignable 更合适
+
+## designable 的设计能力
+
+designable 为 schema 提供的设计能力体现在
+
+- 增：当前节点相邻位置插入
+- 查：查找子节点
+- 改：通过 patch 修改 schema 参数
+- 删：删除当前节点或者某个子节点
+- 移：节点间的移动
+
+### 增：当前节点相邻位置插入
 
 与 DOM 的 [insert adjacent](https://dom.spec.whatwg.org/#insert-adjacent) 概念相似，Schema 也提供了 `insertAdjacent()` 方法用于解决邻近位置的插入问题。
 
 四个邻近位置
 
+```html
+<div>
+  <!-- root -->
+  <!-- beforeBegin 在当前节点的前面插入 -->
+  <p>
+    <!-- afterBegin 在当前节点的第一个子节点前面插入 -->
+    ...
+    <!-- beforeEnd 在当前节点的最后一个子节点后面 -->
+  </p>
+  <!-- afterEnd 在当前节点的后面 -->
+</div>
+```
+
+Schema 的写法如下
+
 ```ts
 {
+  type: 'void',
+  'x-component': 'div',
   properties: {
     // beforeBegin 在当前节点的前面插入
     node1: {
+      type: 'void',
+      'x-component': 'p',
       properties: {
         // afterBegin 在当前节点的第一个子节点前面插入
         // ...
@@ -116,12 +151,6 @@ insertAdjacent('afterEnd', schema);
   },
 }
 ```
-
-和 HTML 标签一样，Schema 组件库的组件也是可以相互组合，通过 insertAdjacent API 按实际需要插入在合理的邻近位置。
-
-### 插入新的 schema 节点
-
-在 Schema 组件里，可以直接通过 `useDesignable()` 在当前 Schema 的相邻位置插入新节点：
 
 示例
 
@@ -136,64 +165,64 @@ import { observer, Schema, useFieldSchema } from '@formily/react';
 import { Button, Space } from 'antd';
 import { uid } from '@formily/shared';
 
-const Hello = observer(
-  (props) => {
-    const { insertAdjacent } = useDesignable();
-    const fieldSchema = useFieldSchema();
-    return (
-      <div>
-        <h1>{fieldSchema.name}</h1>
-        <Space>
-          <Button
-            onClick={() => {
-              insertAdjacent('beforeBegin', {
-                'x-component': 'Hello',
-              });
-            }}
-          >
-            before begin
-          </Button>
-          <Button
-            onClick={() => {
-              insertAdjacent('afterBegin', {
-                'x-component': 'Hello',
-              });
-            }}
-          >
-            after begin
-          </Button>
-          <Button
-            onClick={() => {
-              insertAdjacent('beforeEnd', {
-                'x-component': 'Hello',
-              });
-            }}
-          >
-            before end
-          </Button>
-          <Button
-            onClick={() => {
-              insertAdjacent('afterEnd', {
-                'x-component': 'Hello',
-              });
-            }}
-          >
-            after end
-          </Button>
-        </Space>
-        <div style={{ margin: 50 }}>{props.children}</div>
-      </div>
-    );
-  },
-  { displayName: 'Hello' },
-);
+const Hello = (props) => {
+  const { insertAdjacent } = useDesignable();
+  const fieldSchema = useFieldSchema();
+  return (
+    <div>
+      <h1>
+        {fieldSchema.title} - {fieldSchema.name}
+      </h1>
+      <Space>
+        <Button
+          onClick={() => {
+            insertAdjacent('beforeBegin', {
+              title: 'beforeBegin',
+              'x-component': 'Hello',
+            });
+          }}
+        >
+          before begin
+        </Button>
+        <Button
+          onClick={() => {
+            insertAdjacent('afterBegin', {
+              title: 'afterBegin',
+              'x-component': 'Hello',
+            });
+          }}
+        >
+          after begin
+        </Button>
+        <Button
+          onClick={() => {
+            insertAdjacent('beforeEnd', {
+              title: 'beforeEnd',
+              'x-component': 'Hello',
+            });
+          }}
+        >
+          before end
+        </Button>
+        <Button
+          onClick={() => {
+            insertAdjacent('afterEnd', {
+              title: 'afterEnd',
+              'x-component': 'Hello',
+            });
+          }}
+        >
+          after end
+        </Button>
+      </Space>
+      <div style={{ margin: 50 }}>{props.children}</div>
+    </div>
+  );
+};
 
-const Page = observer(
-  (props) => {
-    return <div>{props.children}</div>;
-  },
-  { displayName: 'Page' },
-);
+const Page = (props) => {
+  return <div>{props.children}</div>;
+};
 
 export default () => {
   return (
@@ -206,6 +235,7 @@ export default () => {
           properties: {
             hello1: {
               type: 'void',
+              title: 'Main',
               'x-component': 'Hello',
             },
           },
@@ -216,7 +246,90 @@ export default () => {
 };
 ```
 
-### 现有 schema 节点的拖拽移动
+### 查：查找子节点
+
+formily 的 json-schema 提供了 reduceProperties 遍历查找节点，但是太难用了，为此 Designable 提供了更易用的 `find` 和 `findOne` 方法来查找子节点
+
+```ts
+const current = new Schema({
+  name: 'root',
+  type: 'void',
+  'x-component': 'Page',
+});
+
+// 为当前 schema 创建 designable
+const dn = createDesignable({
+  current,
+});
+
+db.findOne({
+  filter: {
+    'x-component': 'Hello',
+  },
+});
+
+db.findOne({
+  filter: {
+    'x-component': 'Hello',
+  },
+  recursive: true,
+});
+
+db.findOne({
+  filter: (s) => boolean,
+  skipOn: (s) => boolean,
+  breakOn: (s) => boolean,
+  recursive: true,
+});
+```
+
+### 改：通过 patch 修改 schema 参数
+
+```ts
+const current = new Schema({
+  name: 'root',
+  type: 'void',
+  'x-component': 'Page',
+});
+
+const dn = createDesignable({
+  current,
+});
+
+dn.deepMerge({
+  'x-component-props': {},
+});
+
+dn.shallowMerge({
+  'x-component-props': {},
+});
+```
+
+### 删：删除当前节点或者某个子节点
+
+```ts
+const current = new Schema({
+  name: 'root',
+  type: 'void',
+  'x-component': 'Page',
+});
+
+const dn = createDesignable({
+  current,
+});
+
+dn.remove();
+
+dn.remove({
+  filter: (s) => boolean,
+  skipOn: (s) => boolean,
+  breakOn: (s) => boolean,
+  recursive: true,
+  removeParentsIfNoChildren: true,
+});
+```
+
+### 移：节点间的移动
 
 insertAdjacent 等方法也可用于节点的拖拽移动
 
@@ -346,35 +459,3 @@ export default function App() {
   );
 }
 ```
-
-## `x-designer` 的应用
-
-`x-designer` 通常只在 BlockItem、CardItem、FormItem 等包装器组件中使用。
-
-```ts
-{
-  type: 'object',
-  properties: {
-    title: {
-      type: 'string',
-      title: '标题',
-      'x-decorator': 'FormItem',
-      'x-component': 'Input',
-      'x-designer': 'FormItem.Designer',
-    },
-    status: {
-      type: 'string',
-      title: '状态',
-      'x-decorator': 'FormItem',
-      'x-component': 'Select',
-      'x-designer': 'FormItem.Designer',
-    },
-  },
-}
-```
-
-说明：NocoBase 提供的 Schema 设计器是以工具栏形式直接嵌入于界面，当激活界面配置时（`designable = true`），`x-designer` 组件（设计器工具栏）会显示出来，就可以通过工具栏更新当前 schema 组件了，工具栏提供的设计能力包括：
-
-- 拖拽移动：DndContext + DragHandler
-- 插入新节点：SchemaInitializer
-- 参数配置：SchemaSettings

@@ -1,6 +1,6 @@
-# API 客户端
+# HTTP 请求
 
-用于在应用里发起客户端请求。在 [插件生命周期](/development/client#插件的声明周期) 内，可以使用 `app.apiClient` 发起客户端请求，在组件内可以使用 `useAPIClient()` 和 `useRequest()`。
+NocoBase 提供了 `APIClient` 用于发起 HTTP 请求，在客户端应用的 [插件生命周期](/development/client#插件的声明周期) 内，可以使用 `app.apiClient` 发起客户端请求，在组件内可以使用 `useAPIClient()` 和 `useRequest()`。
 
 ## app.apiClient
 
