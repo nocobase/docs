@@ -16,7 +16,7 @@ class PluginSampleAPIClient extends Plugin {
 
 ### apiClient.request()
 
-常规请求
+常规请求，更多详情用法参考 axios 的 [request config](https://axios-http.com/docs/req_config)
 
 ```ts
 class APIClient {
@@ -36,6 +36,61 @@ const response = await apiClient.request({ url });
 ### apiClient.axios
 
 `AxiosInstance` 实例
+
+可以用来修改 axios 的 [默认配置](https://axios-http.com/docs/config_defaults)
+
+```ts
+axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+axios.defaults.headers.post['Content-Type'] =
+  'application/x-www-form-urlencoded';
+```
+
+也可以用来 [拦截请求或响应](https://axios-http.com/docs/interceptors)
+
+```ts
+// 添加请求拦截器：使用 qs 转换 params 参数
+axios.interceptors.request.use((config) => {
+  config.paramsSerializer = (params) => {
+    return qs.stringify(params, {
+      strictNullHandling: true,
+      arrayFormat: 'brackets',
+    });
+  };
+  return config;
+});
+
+// 添加请求拦截器：自定义请求头
+axios.interceptors.request.use((config) => {
+  config.headers['Authorization'] = `Bearer token123`;
+  config.headers['X-Hostname'] = `localhost`;
+  config.headers['X-Timezone'] = `+08:00`;
+  config.headers['X-Locale'] = 'zh-CN';
+  config.headers['X-Role'] = 'admin';
+  config.headers['X-Authenticator'] = 'basic';
+  config.headers['X-App'] = 'sub1';
+  return config;
+});
+
+// 添加响应拦截器
+axios.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    // 报错的请求给出通知提示
+    notification.error({
+      message: '请求响应错误',
+    });
+  },
+);
+```
+
+### NocoBase Server 自定义请求头
+
+- `X-App` 多应用时，通过 `X-App` 指定当前访问的应用
+- `X-Locale` 当前语言
+- `X-Hostname` 客户端 hostname
+- `X-Timezone` 客户端所在时区
+- `X-Role` 当前角色
+- `X-Authenticator` 当前用户认证方式
 
 ## useAPIClient()
 
