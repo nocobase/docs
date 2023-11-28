@@ -22,18 +22,18 @@ NocoBase 提供了强大的插件管理器用于管理插件，插件管理器�
 
 ```bash
 # 创建插件
-yarn pm create hello
+yarn pm create @my-project/plugin-hello
 # 注册插件
-yarn pm add hello
+yarn pm add @my-project/plugin-hello
 # 激活插件
-yarn pm enable hello
+yarn pm enable @my-project/plugin-hello
 # 禁用插件
-yarn pm disable hello
+yarn pm disable @my-project/plugin-hello
 # 删除插件
-yarn pm remove hello
+yarn pm remove @my-project/plugin-hello
 ```
 
-更多插件示例，查看 [packages/samples](https://github.com/nocobase/nocobase/tree/main/packages/samples)。
+更多插件示例，查看 [packages/plugins](https://github.com/nocobase/nocobase/tree/main/packages/plugins/%40nocobase)。
 
 ## 扩展能力
 
