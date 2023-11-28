@@ -22,18 +22,18 @@ Developers can also manage the complete plugin process by way of the CLI:
 
 ```bash
 # Create the plugin
-yarn pm create hello
+yarn pm create @my-project/plugin-hello
 # Register the plugin
-yarn pm add hello
+yarn pm add @my-project/plugin-hello
 # Activate the plugin
-yarn pm enable hello
+yarn pm enable @my-project/plugin-hello
 # Disable the plugin
-yarn pm disable hello
+yarn pm disable @my-project/plugin-hello
 # Remove the plugin
-yarn pm remove hello
+yarn pm remove @my-project/plugin-hello
 ```
 
-For more plugin examples, see [packages/samples](https://github.com/nocobase/nocobase/tree/main/packages/samples).
+For more plugin examples, see [packages/samples](https://github.com/nocobase/nocobase/tree/main/packages/plugins/%40nocobase).
 
 ## Extensibility
 
