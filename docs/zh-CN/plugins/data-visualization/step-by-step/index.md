@@ -1,4 +1,4 @@
-# 图表扩展教程
+# 扩展教程
 
 > 以添加 ECharts 图表为例，完整代码可参考 `@nocobase/plugin-sample-add-custom-charts` 插件
 
@@ -55,7 +55,7 @@ export const ReactECharts = (props: EChartsReactProps['option']) => {
 
 ## 扩展 `Chart` 类
 
-> 开始这部分之前，请先阅读[开发指南](https://nocobase.feishu.cn/wiki/Jr7kwTWcBiP67zkzrJUckur8nDe) 了解相关的 API
+> 开始这部分之前，请先阅读[开发指南](../dev/index.md) 了解相关的 API
 
 ### 步骤一
 

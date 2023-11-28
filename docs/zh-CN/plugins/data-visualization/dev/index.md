@@ -1,4 +1,4 @@
-# 开发指南
+# API参考
 
 NocoBase 当前使用 [G2Plot](https://g2plot.antv.antgroup.com/) 作为默认的图表库，提供了常用的图表组件。除了默认的图表组件，NocoBase 还支持扩展其他图表组件，也可以接入其他图表库组件，比如: ECharts. 这一部分主要介绍如何扩展接入新的图表组件。
 
@@ -230,7 +230,7 @@ infer: (
 - `seriesFields` - 分类字段，可用作 `colorFields`
 - `yFields` - 多个 y 轴字段，通常用于双轴图
 
-拿到推断结果以后，可以结合定义 `init`[ 方法](https://nocobase.feishu.cn/docx/O3LXdZP1LoJ1bnxvtGpcTbgencg#W6EsdRvKkowA2nx9jkVcVV0fnXf)，给图表配置做默认初始化。
+拿到推断结果以后，可以结合定义 [`init`方法](#init)，给图表配置做默认初始化。
 
 #### getProps
 
@@ -242,8 +242,8 @@ getProps: (props: RenderProps) => any;
 
 ## 示例
 
-`/src/client/chart/g2plot`
+- [src/client/chart/g2plot](https://github.com/nocobase/nocobase/tree/main/packages/plugins/%40nocobase/plugin-data-visualization/src/client/chart/g2plot)
 
-`/src/client/chart/antd`
+- [src/client/chart/antd](https://github.com/nocobase/nocobase/tree/main/packages/plugins/%40nocobase/plugin-data-visualization/src/client/chart/antd)
 
-[Step by step](https://nocobase.feishu.cn/wiki/HtiUwUtCCibQ3BkpJwZcfwmFnOd)
+- [图表扩展教程](../step-by-step/index.md)

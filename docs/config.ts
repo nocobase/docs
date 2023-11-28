@@ -267,16 +267,14 @@ const sidebar = {
                 {
                   title: '字段类型',
                   'title.zh-CN': '字段类型',
-                  children: [
-                  ],
+                  children: [],
                 },
                 {
                   title: '关系字段组件',
                   'title.zh-CN': '关系字段组件',
-                  children: [
-                  ],
+                  children: [],
                 },
-              ]
+              ],
             },
             {
               title: '操作',
@@ -383,7 +381,6 @@ const sidebar = {
                     },
                   ],
                 },
-                
               ],
             },
           ],
@@ -431,7 +428,7 @@ const sidebar = {
                   'title.zh-CN': '连接数据库视图',
                   link: '#',
                 },
-              ]
+              ],
             },
             {
               title: '数据表字段类型',
@@ -458,13 +455,13 @@ const sidebar = {
                   title: '选择类型',
                   'title.zh-CN': '选择类型',
                   children: [
-// 勾选
-// 下拉菜单（单选）
-// 下拉菜单（多选）
-// 单选框
-// 复选框
-// 中国行政区
-                  ]
+                    // 勾选
+                    // 下拉菜单（单选）
+                    // 下拉菜单（多选）
+                    // 单选框
+                    // 复选框
+                    // 中国行政区
+                  ],
                 },
                 {
                   title: '多媒体',
@@ -473,15 +470,15 @@ const sidebar = {
                     // Markdown
                     // 富文本
                     // 附件
-                  ]
+                  ],
                 },
                 {
                   title: '日期 & 时间',
                   'title.zh-CN': '日期 & 时间',
                   children: [
-// 日期
-// 时间
-                  ]
+                    // 日期
+                    // 时间
+                  ],
                 },
                 {
                   title: '关系类型',
@@ -492,7 +489,7 @@ const sidebar = {
                     // 一对多
                     // 多对一
                     // 多对多
-                  ]
+                  ],
                 },
                 {
                   title: '基于地图的几何图形',
@@ -502,7 +499,7 @@ const sidebar = {
                     // 线
                     // 圆
                     // 多边形
-                  ]
+                  ],
                 },
                 {
                   title: '高级类型',
@@ -513,7 +510,7 @@ const sidebar = {
                     // JSON
                     // 数据表
                     // 快照
-                  ]
+                  ],
                 },
                 {
                   title: '系统信息',
@@ -525,9 +522,9 @@ const sidebar = {
                     // 最后修改日期
                     // 创建人
                     // 最后修改人
-                  ]
+                  ],
                 },
-              ]
+              ],
             },
           ],
         },
@@ -977,13 +974,27 @@ const sidebar = {
         },
         {
           title: 'Data visualization',
-          'title.zh-CN': 'Data visualization',
+          'title.zh-CN': '数据可视化',
           subTitle: '@nocobase/plugin-data-visualization',
           children: [
             '/plugins/data-visualization',
-            '/plugins/data-visualization/user',
-            '/plugins/data-visualization/dev',
-            '/plugins/data-visualization/step-by-step',
+            {
+              title: 'User manual',
+              'title.zh-CN': '使用手册',
+              children: [
+                '/plugins/data-visualization/user/chart-block',
+                '/plugins/data-visualization/user/configure',
+                '/plugins/data-visualization/user/filter',
+              ],
+            },
+            {
+              title: 'Development',
+              'title.zh-CN': '开发指南',
+              children: [
+                '/plugins/data-visualization/dev',
+                '/plugins/data-visualization/step-by-step',
+              ],
+            },
           ],
         },
         {
