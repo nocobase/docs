@@ -118,8 +118,8 @@ designable 为 schema 提供的设计能力体现在
 四个邻近位置
 
 ```html
+<!-- root -->
 <div>
-  <!-- root -->
   <!-- beforeBegin 在当前节点的前面插入 -->
   <p>
     <!-- afterBegin 在当前节点的第一个子节点前面插入 -->
@@ -152,7 +152,7 @@ Schema 的写法如下
 }
 ```
 
-示例
+使用 `useDesignable()` 在当前 schema 相邻位置插入
 
 ```tsx
 import React from 'react';
@@ -246,9 +246,90 @@ export default () => {
 };
 ```
 
+使用 `createDesignable()` 在指定 schema 相邻位置插入
+
+```tsx
+import React from 'react';
+import {
+  SchemaComponentProvider,
+  SchemaComponent,
+  createDesignable,
+  useSchemaComponentContext,
+} from '@nocobase/client';
+import { observer, Schema, useFieldSchema } from '@formily/react';
+import { Button } from 'antd';
+import { uid } from '@formily/shared';
+
+const Hello = (props) => {
+  const fieldSchema = useFieldSchema();
+  return (
+    <h1>
+      {fieldSchema.title} - {fieldSchema.name}
+    </h1>
+  );
+};
+
+const Page = (props) => {
+  const fieldSchema = useFieldSchema();
+  const { refresh } = useSchemaComponentContext();
+
+  return (
+    <div>
+      <Button
+        onClick={() => {
+          const dn = createDesignable({
+            refresh,
+            current: fieldSchema.properties.hello2,
+          });
+          dn.on('insertAdjacent', refresh);
+          dn.insertAdjacent('afterEnd', {
+            title: 'afterEnd',
+            'x-component': 'Hello',
+          });
+        }}
+      >
+        在 Title2 后面添加
+      </Button>
+      {props.children}
+    </div>
+  );
+};
+
+export default () => {
+  return (
+    <SchemaComponentProvider components={{ Page, Hello }}>
+      <SchemaComponent
+        schema={{
+          type: 'void',
+          name: 'page',
+          'x-component': 'Page',
+          properties: {
+            hello1: {
+              type: 'void',
+              title: 'Title1',
+              'x-component': 'Hello',
+            },
+            hello2: {
+              type: 'void',
+              title: 'Title2',
+              'x-component': 'Hello',
+            },
+            hello3: {
+              type: 'void',
+              title: 'Title3',
+              'x-component': 'Hello',
+            },
+          },
+        }}
+      />
+    </SchemaComponentProvider>
+  );
+};
+```
+
 ### 查：查找子节点
 
-formily 的 json-schema 提供了 reduceProperties 遍历查找节点，但是太难用了，为此 Designable 提供了更易用的 `find` 和 `findOne` 方法来查找子节点
+formily 的 json-schema 提供了 `reduceProperties` 遍历查找节点，但是太难用了，为此 Designable 提供了更易用的 `find` 和 `findOne` 方法来查找子节点
 
 ```ts
 const current = new Schema({
@@ -347,11 +428,11 @@ import {
   SchemaComponent,
   SchemaComponentProvider,
   createDesignable,
-  useDesignable,
+  useSchemaComponentContext,
 } from '@nocobase/client';
 
 const useDragEnd = () => {
-  const { refresh } = useDesignable();
+  const { refresh } = useSchemaComponentContext();
 
   return ({ active, over }: DragEndEvent) => {
     const activeSchema = active?.data?.current?.schema;
@@ -370,12 +451,9 @@ const useDragEnd = () => {
   };
 };
 
-const Page = observer(
-  (props) => {
-    return <DndContext onDragEnd={useDragEnd()}>{props.children}</DndContext>;
-  },
-  { displayName: 'Page' },
-);
+const Page = (props) => {
+  return <DndContext onDragEnd={useDragEnd()}>{props.children}</DndContext>;
+};
 
 function Draggable(props) {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
@@ -411,28 +489,20 @@ function Droppable(props) {
   );
 }
 
-const Block = observer(
-  (props) => {
-    const field = useField();
-    const fieldSchema = useFieldSchema();
-    return (
-      <Droppable id={field.address.toString()} data={{ schema: fieldSchema }}>
-        <div
-          style={{ marginBottom: 20, padding: '20px', background: '#f1f1f1' }}
-        >
-          Block {fieldSchema.name}{' '}
-          <Draggable
-            id={field.address.toString()}
-            data={{ schema: fieldSchema }}
-          >
-            Drag
-          </Draggable>
-        </div>
-      </Droppable>
-    );
-  },
-  { displayName: 'Block' },
-);
+const Block = (props) => {
+  const field = useField();
+  const fieldSchema = useFieldSchema();
+  return (
+    <Droppable id={field.address.toString()} data={{ schema: fieldSchema }}>
+      <div style={{ marginBottom: 20, padding: '20px', background: '#f1f1f1' }}>
+        Block {fieldSchema.name}{' '}
+        <Draggable id={field.address.toString()} data={{ schema: fieldSchema }}>
+          Drag
+        </Draggable>
+      </div>
+    </Droppable>
+  );
+};
 
 export default function App() {
   return (
