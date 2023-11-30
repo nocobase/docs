@@ -1,22 +1,24 @@
 # SchemaSettings 设置器
 
-激活 UI 配置之后，鼠标放到指定区块、表单、操作上方时，会显示对应的 Schema 工具栏，工具栏的设置图标就是当前 Schema 的设置器。
+激活 UI 配置之后，鼠标移动到指定区块、字段、操作上方时，会显示对应的 Schema 工具栏，工具栏的设置按钮就是当前 Schema 的设置器。
 
-## 常用的设置器
+![Alt text](./image-1.png)
+
+## 内置的设置器
 
 <img src="./SchemaSettings.png" />
 
 ## 向已有的设置器里添加设置项
 
-使用 `schemaSettingsManager.addItem()` 方法添加
+推荐使用 `schemaSettingsManager.addItem()` 方法向已有设计器里添加设置项
 
 ```ts
-class PluginSampleSchemaInitializer extends Plugin {
+class PluginSampleSchemaSettings extends Plugin {
   async load() {
     const customItem = {
       type: 'item',
       useComponentProps() {
-        const { insert } = useSchemaInitializer();
+        const { insert } = useSchemaSettings();
         const handleClick = () => {
           insert({
             type: 'void',
@@ -39,12 +41,14 @@ class PluginSampleSchemaInitializer extends Plugin {
 }
 ```
 
-## 注册一个全新的设置器
+## 添加新的设置器
 
 ### 在插件的 load 方法中添加
 
+推荐在插件 load 方法里使用 `schemaSettingsManager.add()` 方法添加设置器
+
 ```ts
-class PluginSampleSchemaInitializer extends Plugin {
+class PluginSampleSchemaSettings extends Plugin {
   async load() {
     const myInitializer = new SchemaInitializer({
       name: 'myInitializer',
@@ -57,14 +61,18 @@ class PluginSampleSchemaInitializer extends Plugin {
         },
       ],
     });
-    this.schemaInitializerManager.add(myInitializer);
+    this.schemaSettingsManager.add(myInitializer);
   }
 }
 ```
 
-### 在特定 Schema 中使用
+### 如何使用新添加的设置器
 
-SchemaSettings 用于 Schema 的 `x-settings` 参数中，并不是所有的组件都支持 `x-settings`，通常需要和 BlockItem、FormItem、CardItem 这类包装器组件结合使用。例如：
+添加进来的 SchemaSettings，可以用于 Schema 的 `x-settings` 参数中，并不是所有的组件都支持 `x-settings`，通常需要和 BlockItem、FormItem、CardItem 这类包装器组件结合使用。自定义的组件中，也可以使用 `useSchemaSettingsRender()` 自主处理 `x-settings` 的渲染。
+
+#### 现有支持 `x-settings` 的 Schema 组件
+
+大部分场景 `x-settings` 需要和 BlockItem、FormItem、CardItem 这类包装器组件结合使用。例如：
 
 ```ts
 {
@@ -75,9 +83,9 @@ SchemaSettings 用于 Schema 的 `x-settings` 参数中，并不是所有的组�
 }
 ```
 
-### 自主渲染设置器按钮
+#### 自定义组件如何支持 `x-settings` 参数
 
-自定义的组件中，也可以使用 `useSchemaSettingsRender()` 自主处理 `x-settings` 的渲染，详细用法参考 [SchemaSettings 设置器](#) 章节。
+如果 BlockItem、FormItem、CardItem 这类包装器组件并不满足需求时，也可以使用 `useSchemaSettingsRender()` 处理 `x-settings` 的渲染。
 
 ## API 参考
 
