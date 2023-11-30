@@ -120,11 +120,11 @@ curl --location --request GET 'http://localhost:13000/api/hello:list'
 ## Build the plugin
 
 ```bash
-yarn build plugins/@my-project/plugin-hello --tar
+yarn build @my-project/plugin-hello --tar
 
 # step-by-step
-yarn build plugins/@my-project/plugin-hello
-yarn nocobase tar plugins/@my-project/plugin-hello
+yarn build @my-project/plugin-hello
+yarn nocobase tar @my-project/plugin-hello
 ```
 
 The default saved path for the plugin tar is `storage/tar/@my-project/plugin-hello.tar.gz`
