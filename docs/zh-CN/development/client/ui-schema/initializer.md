@@ -110,11 +110,11 @@ SchemaInitializer 用于 Schema 的 `x-initializer` 参数中。
 
 #### 自定义组件如何支持 `x-initializer` 参数
 
-如果 Grid、ActionBar、Tabs 这类组件并不满足需求，自定义的组件中，也可以使用 [useSchemaInitializerRender()](#) 处理 `x-initializer` 的渲染。
+如果 Grid、ActionBar、Tabs 这类组件并不满足需求，自定义的组件中，也可以使用 [useSchemaInitializerRender()](https://pr-2802.client.docs-cn.nocobase.com/core/ui-schema/schema-initializer#useschemainitializerrender) 处理 `x-initializer` 的渲染。
 
 <code src="./demos/use-schema-initializer-render/index.tsx"></code>
 
 ## API 参考
 
-- [SchemaInitializerManager](/)
-- [SchemaInitializer](/)
+- [SchemaInitializerManager](https://pr-2802.client.docs-cn.nocobase.com/core/ui-schema/schema-initializer-manager)
+- [SchemaInitializer](https://pr-2802.client.docs-cn.nocobase.com/core/ui-schema/schema-initializer)
