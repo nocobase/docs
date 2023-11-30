@@ -331,40 +331,108 @@ export default () => {
 
 formily 的 json-schema 提供了 `reduceProperties` 遍历查找节点，但是太难用了，为此 Designable 提供了更易用的 `find` 和 `findOne` 方法来查找子节点
 
+#### `find`
+
+查找满足条件的全部子节点，返回一个数组
+
+```ts
+interface FindOptions {
+  // 过滤条件
+  filter: any;
+  // 跳过查找的元素
+  skipOn?: (s: Schema) => boolean;
+  // 当查到什么元素时退出
+  breakOn?: (s: Schema) => boolean;
+  // 递归查找
+  recursive?: boolean;
+}
+
+class Designable {
+  find(options: FindOptions): Schema[];
+}
+```
+
+示例查找满足条件的所有节点
+
+```ts
+const items = dn.findOne({
+  filter: {
+    'x-component': 'Hello',
+  },
+});
+// [current.properties.hello1, current.properties.hello2]
+console.log(items.map((s) => schema.toJSON()));
+[
+  {
+    name: 'hello1',
+    type: 'void',
+    'x-component': 'Hello',
+  },
+  {
+    name: 'hello2',
+    type: 'void',
+    'x-component': 'Hello',
+  },
+];
+```
+
+#### `findOne`
+
+查找满足条件的第一个子节点
+
+```ts
+interface FindOptions {
+  // 过滤条件
+  filter: any;
+  // 跳过查找的元素
+  skipOn?: (s: Schema) => boolean;
+  // 当查到什么元素时退出
+  breakOn?: (s: Schema) => boolean;
+  // 递归查找
+  recursive?: boolean;
+}
+
+class Designable {
+  findOne(options: FindOptions): Schema | null;
+}
+```
+
+示例
+
 ```ts
 const current = new Schema({
   name: 'root',
   type: 'void',
   'x-component': 'Page',
+  properties: {
+    hello1: {
+      type: 'void',
+      'x-component': 'Hello',
+    },
+    hello2: {
+      type: 'void',
+      'x-component': 'Hello',
+    }
+  }
 });
 
-// 为当前 schema 创建 designable
-const dn = createDesignable({
-  current,
-});
+const dn = createDesignable({ current });
 
-db.findOne({
+const schema = dn.findOne({
   filter: {
     'x-component': 'Hello',
   },
 });
-
-db.findOne({
-  filter: {
-    'x-component': 'Hello',
-  },
-  recursive: true,
-});
-
-db.findOne({
-  filter: (s) => boolean,
-  skipOn: (s) => boolean,
-  breakOn: (s) => boolean,
-  recursive: true,
-});
+// current.properties.hello1
+console.log(schema.toJSON());
+{
+  name: 'hello1',
+  type: 'void',
+  'x-component': 'Hello',
+}
 ```
 
-### 改：通过 patch 修改 schema 参数
+### 改：修改 schema 参数
 
 ```ts
 const current = new Schema({
@@ -442,6 +510,10 @@ const useDragEnd = () => {
       return;
     }
 
+    if (activeSchema === overSchema) {
+      return;
+    }
+
     const dn = createDesignable({
       current: overSchema,
     });
@@ -451,9 +523,9 @@ const useDragEnd = () => {
   };
 };
 
-const Page = (props) => {
+const Page = observer((props) => {
   return <DndContext onDragEnd={useDragEnd()}>{props.children}</DndContext>;
-};
+});
 
 function Draggable(props) {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
@@ -489,7 +561,7 @@ function Droppable(props) {
   );
 }
 
-const Block = (props) => {
+const Block = observer((props) => {
   const field = useField();
   const fieldSchema = useFieldSchema();
   return (
@@ -502,7 +574,7 @@ const Block = (props) => {
       </div>
     </Droppable>
   );
-};
+});
 
 export default function App() {
   return (
