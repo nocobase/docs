@@ -55,3 +55,7 @@ SchemaToolbar 组件用于 `x-toolbar` 中，如：
 用在 Grid 布局内，行列内的 schema 将继承 Grid 的 `x-initializer`
 
 <code src="./demos/schema-toolbar-basic/grid.tsx"></code>
+
+## 为自定义组件支持 `x-toolbar`
+
+<code src="./demos/schema-toolbar-basic/button.tsx"></code>
