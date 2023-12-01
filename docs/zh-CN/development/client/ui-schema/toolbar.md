@@ -39,12 +39,12 @@ SchemaToolbar 组件用于 `x-toolbar` 中，如：
 
 ## 支持 `x-toolbar` 的 Schema 组件有
 
-- BlockItem（包装器组件，一般用在 x-decorator 中）
-- CardItem（包装器组件，一般用在 x-decorator 中）
-- FormItem（包装器组件，一般用在 x-decorator 中）
-- Action（操作按钮组件，用在 x-component 中）
+- `BlockItem`（包装器组件，一般用在 `x-decorator` 中）
+- `CardItem`（包装器组件，一般用在 `x-decorator` 中）
+- `FormItem`（包装器组件，一般用在 `x-decorator` 中）
+- `Action`（操作按钮组件，用在 `x-component` 中）
 
-如果 schema 的 x-component 或 x-decorator 使用了以上组件，又配置了 `x-settings`，`x-toolbar` 可以缺失，默认使用内置的 SchemaToolbar 渲染
+如果 schema 的 `x-component` 或 `x-decorator` 使用了以上组件，又配置了 `x-settings`，`x-toolbar` 可以缺失，默认使用内置的 `SchemaToolbar` 渲染
 
 <code src="./demos/schema-toolbar-basic/index.tsx"></code>
 

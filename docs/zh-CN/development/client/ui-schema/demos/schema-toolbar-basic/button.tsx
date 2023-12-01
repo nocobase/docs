@@ -1,45 +1,23 @@
-import { ISchema, useFieldSchema } from '@formily/react';
+import { useFieldSchema } from '@formily/react';
 import {
   Plugin,
   SchemaComponent,
   SchemaSettings,
   SchemaToolbar,
   Space,
-  useComponent,
-  useDesignable,
+  useSchemaToolbarRender,
 } from '@nocobase/client';
 import { Space as AntdSpace, Button } from 'antd';
-import React, { useMemo } from 'react';
+import React from 'react';
 import { createApp } from './app';
 
 const MyToolbar = (props) => {
-  return <SchemaToolbar title="a" {...props} />;
-};
-
-const useSchemaToolbarRenderer = (fieldSchema: ISchema) => {
-  const { designable } = useDesignable();
-  const toolbar = useMemo(() => {
-    if (fieldSchema['x-toolbar']) {
-      return fieldSchema['x-toolbar'];
-    }
-    if (fieldSchema['x-settings']) {
-      return SchemaToolbar;
-    }
-  }, [fieldSchema['x-toolbar']]);
-  const Toolbar = useComponent(toolbar, SchemaToolbar);
-  return {
-    render(props?: any) {
-      if (!designable) {
-        return null;
-      }
-      return <Toolbar {...fieldSchema['x-toolbar-props']} {...props} />;
-    },
-  };
+  return <SchemaToolbar showBorder={false} showBackground {...props} />;
 };
 
 const SchemaToolbarRenderer = (props) => {
   const fieldSchema = useFieldSchema();
-  const { render } = useSchemaToolbarRenderer(fieldSchema);
+  const { render } = useSchemaToolbarRender(fieldSchema);
   return render({ draggable: false });
 };
 
