@@ -30,6 +30,6 @@
   },
   "dependencies": {
     "@nocobase/client": "^0.16.0-alpha.4",
-    "dumi-theme-nocobase": "^0.2.16"
+    "dumi-theme-nocobase": "^0.2.17"
   }
 }
