@@ -10,58 +10,72 @@
 
 ## 向已有的设置器里添加设置项
 
-推荐使用 `schemaSettingsManager.addItem()` 方法向已有设计器里添加设置项
+推荐使用 `schemaSettingsManager.addItem()` 方法添加设置项，item 的详细配置参考 [SchemaSettings Item API](#)
 
 ```ts
-class PluginSampleSchemaSettings extends Plugin {
+class PluginDemoAddSchemaSettingsItem extends Plugin {
   async load() {
-    const customItem = {
-      type: 'item',
-      useComponentProps() {
-        const { insert } = useSchemaSettings();
-        const handleClick = () => {
-          insert({
-            type: 'void',
-            'x-decorator': 'CardItem',
-            'x-component': 'Hello',
-          });
-        };
-        return {
-          title: '测试项',
-          onClick: handleClick,
-        };
-      },
-    };
     this.schemaSettingsManager.addItem(
-      'BlockInitializers',
-      'otherBlocks.test1',
-      customItem,
+      'mySettings', // 示例，已存在的 schema settings
+      'customItem',
+      {
+        type: 'item',
+        useComponentProps() {},
+      },
     );
   }
 }
 ```
 
+<code src="./demos/schema-settings-manager-add-item/index.tsx"></code>
+
 ## 添加新的设置器
+
+SchemaSettings 的详细参数参考 [SchemaSettingsOptions API](https://pr-2802.client.docs-cn.nocobase.com/core/ui-schema/schema-settings#new-schemasettingsoptions)
+
+```ts
+const mySettings = new SchemaSettings({
+  // 必须是唯一标识
+  name: 'mySettings',
+  // 下拉菜单项
+  items: [
+    {
+      name: 'edit',
+      type: 'item',
+      useComponentProps() {},
+    },
+  ],
+});
+```
 
 ### 在插件的 load 方法中添加
 
-推荐在插件 load 方法里使用 `schemaSettingsManager.add()` 方法添加设置器
+推荐使用 `schemaSettingsManager.add()` 将新增的设置器添加到应用里
 
 ```ts
-class PluginSampleSchemaSettings extends Plugin {
+class PluginDemoAddSchemaSettings extends Plugin {
   async load() {
-    const myInitializer = new SchemaInitializer({
-      name: 'myInitializer',
-      title: 'Add block',
+    // 注册全局组件
+    this.app.addComponents({ CardItem, HomePage });
+    const mySettings = new SchemaSettings({
+      name: 'mySettings',
       items: [
         {
-          name: 'demo',
           type: 'item',
-          title: 'Demo',
+          name: 'edit',
+          useComponentProps() {
+            // TODO: 补充相关设置逻辑
+            return {
+              title: 'Edit',
+              onClick() {
+                // todo
+              },
+            };
+          },
         },
       ],
     });
-    this.schemaSettingsManager.add(myInitializer);
+    this.schemaSettingsManager.add(mySettings);
   }
 }
 ```
@@ -83,11 +97,40 @@ class PluginSampleSchemaSettings extends Plugin {
 }
 ```
 
+<code src="./demos/schema-settings-manager-add/index.tsx"></code>
+
 #### 自定义组件如何支持 `x-settings` 参数
 
 如果 BlockItem、FormItem、CardItem 这类包装器组件并不满足需求时，也可以使用 `useSchemaSettingsRender()` 处理 `x-settings` 的渲染。
 
+<code src="./demos/use-schema-settings-render/index.tsx"></code>
+
+大部分场景 settings 都是放在 SchemaToolbar 上的，所以为自定义组件支持 `x-toolbar`，也可以变相的支持 `x-settings`，更多用法参考 [Schema 工具栏](/development/client/ui-schema/toolbar)
+
+<code src="./demos/schema-toolbar-basic/button.tsx"></code>
+
+## 如何实现 Schema 的设置？
+
+通过 `useSchemaSettings()` 获取当前 Schema 的 `Designable`，通过 `Designable` 来操作 Schema，常用 api 有
+
+- `dn.insertAdjacent()`
+- `dn.getSchemaAttribute()`
+- `dn.shallowMerge()`
+- `dn.deepMerge()`
+- `dn.findOne()`
+- `dn.find()`
+- `dn.remove()`
+- `dn.remove()`
+
+更多细节参考
+
+- [Designable 设计器](/development/client/ui-schema/designable)
+- [Designable API](https://pr-2802.client.docs-cn.nocobase.com/core/ui-schema/designable)
+
+<code src="./demos/schema-settings-basic/index.tsx"></code>
+
 ## API 参考
 
-- [SchemaSettingsManager](/)
-- [SchemaSettings](/)
+- [SchemaSettingsManager](https://pr-2802.client.docs-cn.nocobase.com/core/ui-schema/schema-settings-manager)
+- [SchemaSettings](https://pr-2802.client.docs-cn.nocobase.com/core/ui-schema/schema-settings)
+- [Designable](https://pr-2802.client.docs-cn.nocobase.com/core/ui-schema/designable)
