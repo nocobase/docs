@@ -27,6 +27,12 @@ export default defineConfig({
   hash: true,
   alias: {
   },
+  ssr: {
+
+  },
+  exportStatic: {
+    ignorePreRenderError: true
+  },
   cacheDirectoryPath: `node_modules/.docs-${lang}-cache`,
   outputPath: `./dist/${lang}`,
   resolve: {
