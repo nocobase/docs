@@ -54,18 +54,32 @@ describe('my db suite', () => {
 ```ts
 import { MockServer, mockServer } from '@nocobase/test';
 
+// 每个插件的 app 最小化安装的插件都不一样，需要插件根据自己的情况添加必备插件
+async function createApp(options: any = {}) {
+  const app = mockServer({
+    ...options,
+    plugins: ['acl', 'users', 'collection-manager', 'error-handler', ...options.plugins],
+    // 还会有些其他参数配置
+  });
+  // 这里可以补充一些需要特殊处理的逻辑，比如导入测试需要的数据表
+  return app;
+}
+
+// 大部分的测试都需要启动应用，所以也可以提供一个通用的启动方法
+async function startApp() {
+  const app = createApp();
+  await app.quickstart({
+    // 运行测试前，清空数据库
+    clean: true,
+  });
+  return app;
+}
+
 describe('test example', () => {
   let app: MockServer;
 
   beforeEach(async () => {
-    app = mockServer({
-      plugins: ['acl', 'users', 'collection-manager', 'error-handler'],
-    });
-    // 这里可以按需加一些自定义逻辑
-    await app.quickstart({
-      // 运行测试前，清空数据库
-      clean: true,
-    });
+    app = await startApp();
   });
 
   afterEach(async () => {
@@ -76,15 +90,14 @@ describe('test example', () => {
   });
 
   test('case1', async () => {
-    await app.agent().resource('').get();
-    await app.agent().resource('').list();
-    await app.agent().get('');
-    await app.agent().post('');
+    // coding...
   });
 });
 ```
 
-## 一些可能前置的应用流程
+## 常用的应用流程
+
+如果需要测试不同流程的情况，可以根据以下示例执行相关命令。
 
 ### 先安装再启动
 
