@@ -16,6 +16,6 @@ NocoBase 的用户认证模块主要由两部分组成：
 - [@nocobase/plugin-oidc](../oidc/index.md) - 提供OIDC SSO登录功能
 - [@nocobase/plugin-cas](../cas/index.md) - 提供CAS SSO登录功能
 
-通过以上插件，管理员配置好相应的认证方式以后，用户可以直接使用Google Workspace, Microsoft Azure等平台提供的用户身份登录系统，也可以对接Auth0, Logto, Keycloak等平台工具。除此之外，开发者也可以通过我们提供的基础接口很方便地扩展自己所需要的其他认证方式。
+通过以上插件，管理员配置好相应的认证方式以后，用户可以直接使用 Google Workspace, Microsoft Azure 等平台提供的用户身份登录系统，也可以对 接Auth0, Logto, Keycloak 等平台工具。除此之外，开发者也可以通过我们提供的基础接口很方便地扩展自己所需要的其他认证方式。
 
 ## 安装

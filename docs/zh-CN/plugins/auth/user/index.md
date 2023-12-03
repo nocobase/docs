@@ -20,13 +20,13 @@
 
 NocoBase 目前支持的用户认证类型有：
 
-- Password，用户认证插件内置
-- SMS，sms-auth 插件扩展
-- CAS，cas-auth 插件扩展
-- SAML，saml-auth 插件扩展
-- OIDC，oidc-auth 插件扩展
+- 密码 (Password)，用户认证插件内置
+- 短信 (SMS)，[sms-auth 插件](../../sms-auth/index.md) 扩展
+- CAS，[cas-auth 插件](../../cas/index.md) 扩展
+- SAML，[saml-auth 插件](../../saml/index.md) 扩展
+- OIDC，[oidc-auth 插件](../../oidc/index.md) 扩展
 
-除此之外，也可以自己扩展用户认证，扩展文档点此查看。
+除此之外，也可以自己扩展用户认证，参考[开发指南](../dev/index.md)。
 
 ## 密码认证
 

@@ -1059,15 +1059,23 @@ const sidebar = {
         },
         {
           title: 'OIDC auth',
-          'title.zh-CN': 'OIDC auth',
+          'title.zh-CN': 'OIDC 认证',
           subTitle: '@nocobase/plugin-oidc',
-          children: ['/plugins/oidc'],
+          children: ['/plugins/oidc', {
+            title: 'Example',
+            'title.zh-CN': '示例',
+            children: ['/plugins/oidc/example/google'],
+          }],
         },
         {
           title: 'SAML auth',
-          'title.zh-CN': 'SAML auth',
+          'title.zh-CN': 'SAML 认证',
           subTitle: '@nocobase/plugin-saml',
-          children: ['/plugins/saml'],
+          children: ['/plugins/saml', {
+            title: 'Example',
+            'title.zh-CN': '示例',
+            children: ['/plugins/saml/example/google'],
+          }],
         },
         {
           title: 'Sequence field',
