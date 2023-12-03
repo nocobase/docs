@@ -6,21 +6,21 @@ OIDC 插件遵循 OIDC (Open ConnectID) 协议标准，使用授权码模式 (Au
 
 ## 激活插件
 
-![](./static/2023-12-03-17-02-52.png)
+![](./static/2023-12-03-18-18-22.png)
 
 ## 添加 OIDC 认证
 
 进入用户认证插件管理页面。
 
-![](./static/2023-12-03-17-03-19.png)
+![](./static/2023-12-03-18-19-33.png)
 
 添加 - OIDC
 
-![](./static/2023-12-03-17-03-33.png)
+![](./static/2023-12-03-18-19-48.png)
 
 ## 配置
 
-![](./static/2023-12-03-17-04-01.png)
+![](./static/2023-12-03-18-20-09.png)
 
 - Issuer - issuer 由 IdP 提供，通常以 `/.well-known/openid-configuration` 结尾
 - Client ID - 客户端ID
@@ -42,4 +42,4 @@ OIDC 插件遵循 OIDC (Open ConnectID) 协议标准，使用授权码模式 (Au
 
 访问登录页面，点击登录表单下方按钮发起第三方登录。
 
-![](./static/2023-12-03-17-10-02.png)
+![](./static/2023-12-03-18-20-35.png)

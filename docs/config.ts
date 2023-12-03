@@ -1085,7 +1085,7 @@ const sidebar = {
         },
         {
           title: 'SMS auth',
-          'title.zh-CN': 'SMS auth',
+          'title.zh-CN': '短信认证',
           subTitle: '@nocobase/plugin-sms-auth',
           children: ['/plugins/sms-auth'],
         },
