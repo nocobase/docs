@@ -27,9 +27,7 @@ export default defineConfig({
   hash: true,
   alias: {
   },
-  ssr: {
-
-  },
+  // ssr: {},
   exportStatic: {
     ignorePreRenderError: true
   },

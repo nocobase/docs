@@ -1,10 +1,14 @@
-# Testing
+# 测试
 
-The tests are based on the [Jest](https://jestjs.io/) framework. To facilitate writing tests, `mockDatabase()` and `mockServer()` are provided for database and server-side application testing.
+测试基于 [Jest](https://jestjs.io/) 测试框架。为了方便的编写测试，提供了 `mockDatabase()` 和 `mockServer()` 用于数据库和服务端应用的测试。
+
+:::warning
+测试的环境变量在 `.env.test` 文件里配置，建议使用独立的测试数据库进行测试。
+:::
 
 ## `mockDatabase()`
 
-provides a fully isolated db testing environment by default
+默认提供一种完全隔离的 db 测试环境
 
 ```ts
 import { mockDatabase } from '@nocobase/test';
@@ -45,116 +49,187 @@ describe('my db suite', () => {
 
 ## `mockServer()`
 
-provides a mock server-side application instance, corresponding to app.db as a `mockDatabase()` instance, and also provides a convenient `app.agent()` for testing the HTTP API, and wraps `app.agent().resource()` for the Resource Action of NocoBase for testing the Action.
+提供模拟的服务端应用实例，对应的 app.db 为 `mockDatabase()` 实例，同时还提供了便捷的 `app.agent()` 用于测试 HTTP API，针对 NocoBase 的 Resource Action 还封装了 `app.agent().resource()` 用于测试资源的 Action。
 
 ```ts
-import { mockServer } from '@nocobase/test';
+import { MockServer, mockServer } from '@nocobase/test';
 
-class MyPlugin extends Plugin {}
+// 每个插件的 app 最小化安装的插件都不一样，需要插件根据自己的情况添加必备插件
+async function createApp(options: any = {}) {
+  const app = mockServer({
+    ...options,
+    plugins: ['acl', 'users', 'collection-manager', 'error-handler', ...options.plugins],
+    // 还会有些其他参数配置
+  });
+  // 这里可以补充一些需要特殊处理的逻辑，比如导入测试需要的数据表
+  return app;
+}
 
-describe('my suite', () => {
-  let app;
-  let agent;
+// 大部分的测试都需要启动应用，所以也可以提供一个通用的启动方法
+async function startApp() {
+  const app = createApp();
+  await app.quickstart({
+    // 运行测试前，清空数据库
+    clean: true,
+  });
+  return app;
+}
+
+describe('test example', () => {
+  let app: MockServer;
 
   beforeEach(async () => {
-    app = mockServer();
-    agent = app.agent();
-    // Add the plugins to be registered
-    app.plugin(MyPlugin, { name: 'my-plugin' });
-    // Load the configuration
-    app.load();
-    // Clear the database and install
-    app.install({ clean: true });
+    app = await startApp();
   });
 
   afterEach(async () => {
+    // 运行测试后，清空数据库
     await app.destroy();
+    // 只停止不清空数据库
+    await app.stop();
   });
 
-  test('my case', async () => {
-    await agent.resource('posts').create({
-      values: {
-        title: 'hello',
-      },
-    });
-    await agent.get('/users:check').set({ Authorization: 'Bearer abc' });
+  test('case1', async () => {
+    // coding...
   });
 });
 ```
 
-## Example
+## 常用的应用流程
 
-Let's write a test of the plugin using in previous chapter [Resources and Actions](resources-actions) as an example.
+如果需要测试不同流程的情况，可以根据以下示例执行相关命令。
 
-```ts
-import { mockServer } from '@nocobase/test';
-import Plugin from '... /... /src/server';
+### 先安装再启动
 
-describe('shop actions', () => {
-  let app;
-  let agent;
-  let db;
-
-  beforeEach(async () => {
-    app = mockServer();
-    app.plugin(Plugin);
-    agent = app.agent();
-    db = app.db;
-
-    await app.load();
-    await db.sync();
-  });
-
-  afterEach(async () => {
-    await app.destroy();
-  });
-
-  test('product order case', async () => {
-    const { body: product } = await agent.resource('products').create({
-      values: {
-        title: 'iPhone 14 Pro',
-        price: 7999,
-        enabled: true,
-        inventory: 1,
-      },
-    });
-    expect(product.data.price).toEqual(7999);
-
-    const { body: order } = await agent.resource('orders').create({
-      values: {
-        productId: product.data.id,
-      },
-    });
-    expect(order.data.totalPrice).toEqual(7999);
-    expect(order.data.status).toEqual(0);
-
-    const { body: deliveredOrder } = await agent.resource('orders').deliver({
-      filterByTk: order.data.id,
-      values: {
-        provider: 'SF',
-        trackingNumber: '123456789',
-      },
-    });
-    expect(deliveredOrder.data.status).toBe(2);
-    expect(deliveredOrder.data.delivery.trackingNumber).toBe('123456789');
-  });
-});
-```
-
-Once finished, allow the test command on the command line:
+终端命令行
 
 ```bash
-yarn test packages/samples/shop-actions
+yarn nocobase install
+yarn start
 ```
 
-This test will verify that:
+前置的测试流程
 
-1. products can be created successfully.
-2. orders can be created successfully.
-3. orders can be shipped successfully.
+```ts
+const app = mockServer();
+await app.runCommand('install');
+await app.runCommand('start');
+```
 
-Of course this is just a minimal example, not perfect business-wise, but as an example it can already illustrate the whole testing process.
+### 先启动再安装
 
-## Summary
+终端命令行
 
-The sample code covered in this chapter is integrated in the corresponding package [packages/samples/shop-actions](https://github.com/nocobase/nocobase/tree/main/packages/samples/shop-actions), which can be run directly locally to see the results.
+```bash
+yarn start # 常驻内存
+# 另一个终端里执行
+yarn nocobase install
+```
+
+前置的测试流程
+
+```ts
+const app = mockServer();
+await app.runCommand('start');
+await app.runCommand('install');
+```
+
+### 快速启动（自动安装或升级）
+
+终端命令行
+
+```bash
+yarn start --quickstart
+```
+
+前置的测试流程
+
+```ts
+const app = mockServer();
+await app.runCommand('start', '--quickstart');
+```
+
+### 对已安装启动的应用进行重装
+
+终端命令行
+
+```bash
+yarn start --quickstart
+# 另一个终端里执行
+yarn nocobase install -f
+```
+
+前置的测试流程
+
+```ts
+const app = mockServer();
+await app.runCommand('start', '--quickstart');
+await app.runCommand('install', '-f');
+```
+
+### 升级应用（启动前）
+
+终端命令行
+
+```bash
+yarn nocobase upgrade
+yarn start
+```
+
+前置的测试流程
+
+```ts
+const app = mockServer();
+await app.runCommand('upgrade', '-f');
+await app.runCommand('start', '--quickstart');
+```
+
+### 升级应用（启动后）
+
+```bash
+yarn start # 常驻内存
+# 另一个终端里执行
+yarn nocobase upgrade
+```
+
+前置的测试流程
+
+```ts
+const app = mockServer();
+await app.runCommand('start', '--quickstart');
+await app.runCommand('upgrade', '-f');
+```
+
+### 激活插件
+
+终端命令行
+
+```bash
+yarn start --quickstart
+yarn pm enable @my-project/plugin-hello
+```
+
+前置的测试流程
+
+```ts
+const app = mockServer();
+await app.runCommand('start', '--quickstart');
+await app.runCommand('pm', 'enable', '@my-project/plugin-hello');
+```
+
+### 禁用插件
+
+终端命令行
+
+```bash
+yarn start --quickstart
+yarn pm disable @my-project/plugin-hello
+```
+
+前置的测试流程
+
+```ts
+const app = mockServer();
+await app.runCommand('start', '--quickstart');
+await app.runCommand('pm', 'disable', '@my-project/plugin-hello');
+```

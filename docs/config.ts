@@ -170,17 +170,18 @@ const sidebar = {
             '/development/server/collections/collection-template',
           ],
         },
-        {
-          title: 'Resources & Actions',
-          'title.zh-CN': '资源和操作',
-          children: [
-            '/development/server/resources-actions',
-            '/development/server/resources-actions/configuration',
-            // '/development/server/resources-actions/to-resource',
-            '/development/server/resources-actions/vs-router',
-          ],
-        },
-        '/development/server/routing',
+        // {
+        //   title: 'Resources & Actions',
+        //   'title.zh-CN': '资源和操作',
+        //   children: [
+        //     '/development/server/resources-actions',
+        //     '/development/server/resources-actions/configuration',
+        //     // '/development/server/resources-actions/to-resource',
+        //     '/development/server/resources-actions/vs-router',
+        //   ],
+        // },
+        '/development/server/resources-actions',
+        // '/development/server/routing',
         '/development/server/middleware',
         '/development/server/commands',
         '/development/server/events',
@@ -327,4 +328,5 @@ const sidebar = {
     },
   ],
 };
+
 export { nav, sidebar };
