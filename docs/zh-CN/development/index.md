@@ -23,9 +23,7 @@ yarn pm disable @my-project/plugin-hello
 yarn pm remove @my-project/plugin-hello
 ```
 
-## 插件示例
-
-https://github.com/nocobase/plugin-samples
+更多插件示例，查看 [packages/plugins](https://github.com/nocobase/nocobase/tree/main/packages/plugins/%40nocobase)。
 
 ## 扩展能力
 

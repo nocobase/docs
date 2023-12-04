@@ -120,11 +120,11 @@ curl --location --request GET 'http://localhost:13000/api/hello:list'
 ## 构建并打包插件
 
 ```bash
-yarn build plugins/@my-project/plugin-hello --tar
+yarn build @my-project/plugin-hello --tar
 
 # 分步骤
-yarn build plugins/@my-project/plugin-hello
-yarn nocobase tar plugins/@my-project/plugin-hello
+yarn build @my-project/plugin-hello
+yarn nocobase tar @my-project/plugin-hello
 ```
 
 打包的插件默认保存路径为 `storage/tar/@my-project/plugin-hello.tar.gz`

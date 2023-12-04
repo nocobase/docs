@@ -11,21 +11,19 @@ NocoBase 提供了强大的插件管理器用于管理插件。无代码用户�
 开发者也可以通过 CLI 的方式管理插件
 
 ```bash
-# 创建插件
+# Create the plugin
 yarn pm create @my-project/plugin-hello
-# 注册插件
+# Register the plugin
 yarn pm add @my-project/plugin-hello
-# 激活插件
+# Activate the plugin
 yarn pm enable @my-project/plugin-hello
-# 禁用插件
+# Disable the plugin
 yarn pm disable @my-project/plugin-hello
-# 删除插件
+# Remove the plugin
 yarn pm remove @my-project/plugin-hello
 ```
 
-## 插件示例
-
-https://github.com/nocobase/plugin-samples
+For more plugin examples, see [packages/samples](https://github.com/nocobase/nocobase/tree/main/packages/plugins/%40nocobase).
 
 ## 扩展能力
 
