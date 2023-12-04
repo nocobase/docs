@@ -1,23 +1,23 @@
-# Core concepts
+# 核心概念
 
 ## Collection
 
-Collection is a collection of all kinds of data, such as orders, products, users, comments, etc. Different collections are distinguished by name, e.g.
+Collection 是所有种类数据的集合，中文翻译为「数据表」，如订单、商品、用户、评论等都是 Collection。不同 Collection 通过 name 区分，如：
 
 ```ts
-// Orders
+// 订单
 {
   name: 'orders',
 }
-// Products
+// 商品
 {
   name: 'products',
 }
-// Users
+// 用户
 {
   name: 'users',
 }
-// Comments
+// 评论
 {
   name: 'comments',
 }
@@ -25,40 +25,40 @@ Collection is a collection of all kinds of data, such as orders, products, users
 
 ## Collection Field
 
-Each Collection has a number of Fields.
+每个 Collection 都有若干 Fields。
 
 ```ts
-// Collection configuration
+// Collection 配置
 {
   name: 'users',
   fields: [
     { type: 'string', name: 'name' },
     { type: 'integer', name: 'age' },
-    // Other fields
+    // 其他字段
   ],
 }
-// sample data
+// 示例数据
 [
   {
-    name: 'Jason',
+    name: '张三',
     age: 20,
   },
-  { {
-    name: 'Li Si',
+  {
+    name: '李四',
     age: 18,
   }
 ];
 ```
 
-The composition of a Collection Field in NocoBase consists of
+在 NocoBase 中 Collection Field 的构成包括：
 
 <img src="./collection-field.svg" />
 
 ### Field Type
 
-Different fields are distinguished by name, and type indicates the data type of the field, which is divided into Attribute Type and Association Type, e.g.
+不同字段通过 name 区分，type 表示字段的数据类型，分为 Attribute Type 和 Association Type，如：
 
-**Attribute - Attribute Type**
+**属性 - Attribute Type**
 
 - string
 - text
@@ -72,7 +72,7 @@ Different fields are distinguished by name, and type indicates the data type of 
 - virtual
 - ...
 
-**Relationship - Association Type**
+**关系 - Association Type**
 
 - hasOne
 - hasMany
@@ -82,10 +82,10 @@ Different fields are distinguished by name, and type indicates the data type of 
 
 ### Field Component
 
-The field has a data type, the IO of the field value is fine, but it is not enough, if you need to display the field on the interface, you need another dimension of configuration -- `uiSchema`, e.g.
+字段有了数据类型，字段值的 IO 没问题了，但是还不够，如果需要将字段展示在界面上，还需要另一个维度的配置 —— `uiSchema`，如：
 
 ```tsx | pure
-// Email field, displayed with Input component, using email validation rules
+// 邮箱字段，用 Input 组件展示，使用 email 校验规则
 {
   type: 'string',
   name: 'email',
@@ -93,31 +93,31 @@ The field has a data type, the IO of the field value is fine, but it is not enou
     'x-component': 'Input',
     'x-component-props': { size: 'large' },
     'x-validator': 'email',
-    'x-pattern': 'editable', // editable state, and readonly state, read-pretty state
+    'x-pattern': 'editable', // 可编辑状态，还有 readonly 不可编辑状态、read-pretty 阅读态
   },
 }
 
-// Example data
+// 数据示例
 {
   email: 'admin@nocobase.com',
 }
 
-// Component example
+// 组件示例
 <Input name={'email'} size={'large'} value={'admin@nocobase.com'} />
 ```
 
-The uiSchema is used to configure the components of the field to be displayed on the interface, each field component will correspond to a value and includes several maintained configurations:
+uiSchema 用于配置字段展示在界面上的组件，每个字段组件都会对应一个 value，包括几个维护的配置：
 
-- The component of the field
-- The parameters of the component
-- The field's validation rules
-- The mode of the field (editable, readonly, read-pretty)
-- The default value of the field
-- Other
+- 字段的组件
+- 组件的参数
+- 字段的校验规则
+- 字段的模式（editable、readonly、read-pretty）
+- 字段的默认值
+- 其他
 
-[see the UI Schema chapter for more information](/development/client/ui-schema-designer/what-is-ui-schema).
+[更多信息查看 UI Schema 章节](/development/client/ui-schema-designer/what-is-ui-schema)。
 
-The built-in field components of NocoBase are
+NocoBase 内置的字段组件有：
 
 - Input
 - InputNumber
@@ -128,10 +128,10 @@ The built-in field components of NocoBase are
 
 ### Field Interface
 
-With Field Type and Field Component you can freely combine several fields, we call this combined template Field Interface, e.g.
+有了 Field Type 和 Field Component 就可以自由组合出若干字段，我们将这种组合之后的模板称之为 Field Interface，如：
 
 ```ts
-// email field, string + input, email validation rules
+// 邮箱字段 string + input，email 校验规则
 {
   type: 'string',
   name: 'email',
@@ -142,7 +142,7 @@ With Field Type and Field Component you can freely combine several fields, we ca
   },
 }
 
-// phone field, string + input, phone validation rules
+// 手机字段 string + input，phone 校验规则
 {
   type: 'string',
   name: 'phone',
@@ -154,10 +154,10 @@ With Field Type and Field Component you can freely combine several fields, we ca
 }
 ```
 
-The above email and phone require a full uiSchema to be configured each time which is very tedious. To simplify the configuration, another concept Field interface is introduced, which can template some parameters, e.g.
+上面 email 和 phone 每次都需要配置完整的 uiSchema 非常繁琐，为了简化配置，又引申出另一个概念 Field interface，可以将一些参数模板化，如：
 
 ```ts
-// Template for the email field
+// email 字段的模板
 interface email {
   type: 'string';
   uiSchema: {
@@ -167,7 +167,7 @@ interface email {
   };
 }
 
-// Template for the phone field
+// phone 字段的模板
 interface phone {
   type: 'string';
   uiSchema: {
@@ -177,7 +177,7 @@ interface phone {
   };
 }
 
-// Simplified field configuration
+// 简化之后的字段配置
 // email
 {
   interface: 'email',
@@ -191,4 +191,4 @@ interface phone {
 }
 ```
 
-[More Field Interface here](https://github.com/nocobase/nocobase/tree/main/packages/core/client/src/collection-manager/interfaces)
+[更多 Field Interface 点此查看](https://github.com/nocobase/nocobase/tree/main/packages/core/client/src/collection-manager/interfaces)

@@ -1,45 +1,45 @@
-# Plugin directory structure
+# 插件目录结构
 
-An empty plugin can be created quickly with `yarn pm create my-plugin`, with the following directory structure.
+可以通过 `yarn pm create my-plugin` 快速创建一个空插件，目录结构如下：
 
 ```bash
 |- /my-plugin
   |- /src
-    |- /client # client-side of the plugin
-    |- /server # server-side of the plugin
+    |- /client      # 插件客户端代码
+    |- /server      # 插件服务端代码
   |- client.d.ts
   |- client.js
-  |- package.json # plugin package information
+  |- package.json   # 插件包信息
   |- server.d.ts
   |- server.js
-  |- build.config.ts # or `build.config.js`, modify configuration
+  |- build.config.ts # 或者 `build.config.js` ，用于修改打包配置，实现自定义逻辑
 ```
 
-The tutorial for `/src/server` refers to the [server](./server) section, and the tutorial for `/src/client` refers to the [client](./client) section.
+`/src/server` 的教程参考 [服务端](./server) 章节，`/src/client` 的教程参考 [客户端](./client) 章节。
 
-If you want to customize the packaging configuration, you can create a `config.js` file in the root directory, with the following content:
+如果你想要自定义打包配置，可以在根目录下创建 `config.js` 文件，内容如下：
 
 ```js
 import { defineConfig } from '@nocobase/build';
 
 export default defineConfig({
   modifyViteConfig: (config) => {
-    // vite is used to package the `src/client` side code
+    // vite 是用来打包 `src/client` 端代码的
 
-    // Modify the Vite configuration, for more information, please refer to: https://vitejs.dev/guide/
+    // 修改 Vite 配置，具体可参考：https://vitejs.dev/guide/
     return config
   },
   modifyTsupConfig: (config) => {
-    // tsup is used to package the `src/server` side code
+    // tsup 是用来打包 `src/server` 端代码的
 
-    // Modify the tsup configuration, for more information, please refer to: https://tsup.egoist.dev/#using-custom-configuration
+    // 修改 tsup 配置，具体可参考：https://tsup.egoist.dev/#using-custom-configuration
     return config
   },
   beforeBuild: (log) => {
-    // The callback function before the build starts, you can do some operations before the build starts
+    // 构建开始前的回调函数，可以在构建开始前做一些操作
   },
   afterBuild: (log: PkgLog) => {
-    // The callback function after the build is completed, you can do some operations after the build is completed
+    // 构建完成后的回调函数，可以在构建完成后做一些操作
   };
-})
+});
 ```

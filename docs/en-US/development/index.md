@@ -1,24 +1,14 @@
-# Introduction
+# 介绍
 
-NocoBase adopts microkernel architecture, functions are extended in the form of plugins. Front and back ends are separated. Various plugin interfaces are provided, and plugins are divided by functional modules with pluggable features.
+NocoBase 采用微内核架构，各类功能以插件形式扩展。插件化的设计降低了模块之间的耦合度，提高了复用率。随着插件库的不断扩充，常见的场景只需要组合插件即可完成基础搭建。NocoBase 的无代码平台，就是由各种插件组合起来。
 
-<img src="https://www.nocobase.com/images/NocoBaseMindMapLite.png" style="max-width: 800px;" >
+## 插件管理器
 
-The pluggable design reduces the coupling between modules and increases the reuse rate. As the plugin library continues to expand, common scenarios require only a combination of plugins to complete the base build. NocoBase's no-code platform, for example, is a combination of various plugins.
+NocoBase 提供了强大的插件管理器用于管理插件。无代码用户可以通过界面管理插件的添加、激活、禁用和删除。
 
-<img src="./index/pm-built-in.jpg" style="max-width: 800px;" />
+![插件管理器](./image-1.png)
 
-## Plugin Manager
-
-NocoBase provides a powerful plugin manager for managing plugins. The flow of the plugin manager is as follows
-
-<img src="./index/pm-flow.svg" style="max-width: 580px;" />
-
-No-code Users can manage the activation and deactivation of local plugins through the interface at
-
-<img src="./index/pm-ui.jpg" style="max-width: 800px;" />
-
-Developers can also manage the complete plugin process by way of the CLI:
+开发者也可以通过 CLI 的方式管理插件
 
 ```bash
 # Create the plugin
@@ -35,26 +25,26 @@ yarn pm remove @my-project/plugin-hello
 
 For more plugin examples, see [packages/samples](https://github.com/nocobase/nocobase/tree/main/packages/plugins/%40nocobase).
 
-## Extensibility
+## 扩展能力
 
-Whether it is generic functionality or personalization, it is recommended to write it as a plugin. NocoBase is extensible in all aspects.
+无论是通用性的功能，还是个性化定制，都可以以插件的形式编写，NocoBase 的扩展性体现在方方面面：
 
-- It can be user-intuitive interface-related page modules, block types, action types, field types, etc.
-- Filters, validators, access restrictions, etc. for enhancing or restricting the HTTP API
-- It can also be enhancements to underlying data tables, migrations, events, command lines, etc.
+- 可以是用户直观可见的界面相关的页面模块、区块类型、操作类型、字段类型等
+- 也可以是用于增强或限制 HTTP API 的过滤器、校验器、访问限制等
+- 也可以是更底层的数据表、迁移、事件、命令行等功能的增强
 
-Distribution of modules.
+各模块分布：
 
-- Server
-  - Collections & Fields: mainly used for system table configuration. Business tables are recommended to be configured in "Plugin Settings Manager - Collection manager".
-  - Resources & Actions: Mainly used to extend the Action API
-  - Middleware: Middleware
-  - Events: Events
-  - I18n: server-side internationalization
-  - Commands: Custom command lines
-  - Migrations: Migration scripts
-- Client
-  - UI Schema Designer: Page Designer
-  - UI Router: When there is a need for custom pages
-  - Plugin Settings Manager: Provides configuration pages for plugins
-  - I18n: Client side internationalization
+- 服务端
+  - 数据表和字段
+  - 资源和操作
+  - 中间件
+  - 事件
+  - 自定义命令行
+  - 国际化
+- 客户端
+  - 路由管理和插件配置页
+  - 样式和主题
+  - Provider 和上下文
+  - UI Schema
+  - 国际化
