@@ -1,4 +1,8 @@
-# Schema 组件库
+# Schema components
+
+:::warning
+Sorry, this document is not available in English.
+:::
 
 ## 包装器组件
 

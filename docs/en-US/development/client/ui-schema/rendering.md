@@ -1,4 +1,8 @@
-# Schema 渲染
+# Schema rendering
+
+:::warning
+Sorry, this document is not available in English.
+:::
 
 ## 核心组件
 

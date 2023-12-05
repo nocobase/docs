@@ -1,4 +1,8 @@
-# 快速入门
+# Quick start
+
+:::warning
+Sorry, this document is not available in English.
+:::
 
 ## 1. 编写 Schema 组件
 
