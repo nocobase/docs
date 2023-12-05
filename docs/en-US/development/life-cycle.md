@@ -1,41 +1,35 @@
-# Life cycle
+# Lifecycle
 
-## Lifecycle of applications
+## Lifecycle of the server-side application
 
-<img src="./index/app-flow.svg" style="max-width: 380px;" />
+<img alt="Lifecycle of the server-side application" src="./server/image-1.png" style="width: 700px;" />
 
-## Lifecycle of plugins
-
-<img src="./index/pm-flow.svg" style="max-width: 600px;" />
-
-## Lifecycle methods for plugins
+Triggered by `app.on()`, see [Server-side - Events](/development/server/events) for details.
 
 ```ts
-import { InstallOptions, Plugin } from '@nocobase/server';
-
-export class MyPlugin extends Plugin {
-  afterAdd() {
-    // After the plugin pm.add is registered. Mainly used to place the app.beforeLoad event.
-  beforeLoad() { }
-  beforeLoad() {
-    // Before all plugins are loaded. Generally used for registering classes and event listeners
-  }
-  async load() {
-    // Load configuration
-  }
-  async install(options?: InstallOptions) {
-    // Logic for installing
-  }
-  async afterEnable() {
-    // After activation
-  }
-  async afterDisable() {
-    // After disable
-  }
-  async remove() {
-    // Logic for removing
+class PluginSampleHelloServer extends Plugin {
+  async beforeLoad() {
+    this.app.on('beforeInstall', async () => {
+      // coding...
+    });
   }
 }
-
-export default MyPlugin;
 ```
+
+## Lifecycle of the server-side plugin
+
+<img alt="Lifecycle of the server-side plugin" src="./server/image.png" style="width: 450px;" />
+
+Written in the plugin class, see [Server - Overview](/development/server) for usage details.
+
+```ts
+class PluginSampleHelloServer extends Plugin {
+  async beforeLoad() {}
+}
+```
+
+## Lifecycle of the client-side plugin
+
+<img alt="Lifecycle of the client-side plugin" src="./client/image.png" style="width: 550px;" />
+
+Written in the plugin class, see [Client - Overview](/development/client) for usage details.

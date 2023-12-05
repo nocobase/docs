@@ -1,4 +1,4 @@
-# Database Migration
+# Migrations
 
 There may be some incompatible changes during the plugin update iteration, these incompatible upgrade scripts can be handled by writing migration files.
 

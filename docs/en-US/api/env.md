@@ -163,6 +163,21 @@ Log transport, default is `console,dailyRotateFile`, options include
 
 Base path to save file based logs, default is `storage/logs`
 
+### CACHE_DEFAULT_STORE
+
+Specify the default cache method using the unique name，default is `memory`, options inlcude：
+
+- `memory`
+- `redis`
+
+### CACHE_MEMORY_MAX
+
+Max number of items in memory cache，default is `2000`.
+
+### CACHE_REDIS_URL
+
+Redis URL, optional. Example：`redis://localhost:6379`
+
 ## Temporary Environment Variables
 
 The installation of NocoBase can be assited by setting temporary environment variables, such as:

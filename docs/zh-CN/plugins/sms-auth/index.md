@@ -20,7 +20,7 @@
 
 ![](./static/2023-12-03-19-04-34.png)
 
-短信验证码功能配置见[验证码插件 (@nocobase/plugin-verification) 文档](../verification/)，短信登录认证功能将使用已配置并设置为默认的短信验证码 Provider 来发送短信。
+短信验证码功能配置见[验证码插件 (@nocobase/plugin-verification) 文档](../verification/index.md)，短信登录认证功能将使用已配置并设置为默认的短信验证码 Provider 来发送短信。
 
 用户不存在时自动注册 (Sign up automatically when the user does not exist): 该选项勾选后，当用户使用的手机号不存在时，将使用手机号作为昵称注册新用户。
 

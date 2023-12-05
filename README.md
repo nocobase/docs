@@ -6,13 +6,13 @@ A static site base on [dumi](https://d.umijs.org).
 
 ```bash
 # install dependencies
-$ pnpm install
+$ yarn install
 
 # start dev server
-$ pnpm start
+$ yarn start
 
 # build docs
-$ pnpm run build
+$ yarn run build
 ```
 
 ## LICENSE

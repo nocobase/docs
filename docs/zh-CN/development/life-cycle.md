@@ -1,41 +1,35 @@
 # 生命周期
 
-## 应用的生命周期
+## 后端应用的生命周期
 
-<img src="./index/app-flow.svg" style="max-width: 380px;" />
+<img alt="后端应用的生命周期" src="./server/image-1.png" style="width: 700px;" />
 
-## 插件的生命周期
-
-<img src="./index/pm-flow.svg" style="max-width: 600px;"  />
-
-## 插件的生命周期方法
+通过 `app.on()` 触发，详情用法参考 [服务端 - 事件](/development/server/events) 章节
 
 ```ts
-import { InstallOptions, Plugin } from '@nocobase/server';
-
-export class MyPlugin extends Plugin {
-  afterAdd() {
-    // 插件 pm.add 注册进来之后。主要用于放置 app.beforeLoad 的事件。
-  }
-  beforeLoad() {
-    // 所有插件执行 load 之前。一般用于注册类和事件监听
-  }
-  async load() {
-    // 加载配置
-  }
-  async install(options?: InstallOptions) {
-    // 安装逻辑
-  }
-  async afterEnable() {
-    // 激活之后
-  }
-  async afterDisable() {
-    // 禁用之后
-  }
-  async remove() {
-    // 删除逻辑
+class PluginSampleHelloServer extends Plugin {
+  async beforeLoad() {
+    this.app.on('beforeInstall', async () => {
+      // coding...
+    });
   }
 }
-
-export default MyPlugin;
 ```
+
+## 后端插件的生命周期
+
+<img alt="后端插件的生命周期" src="./server/image.png" style="width: 450px;" />
+
+写在插件类里，详情用法参考 [服务端 - 概述](/development/server) 章节
+
+```ts
+class PluginSampleHelloServer extends Plugin {
+  async beforeLoad() {}
+}
+```
+
+## 前端插件的生命周期
+
+<img alt="前端插件的生命周期" src="./client/image.png" style="width: 550px;" />
+
+写在插件类里，详情用法参考 [客户端 - 概述](/development/client) 章节

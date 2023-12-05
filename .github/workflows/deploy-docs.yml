@@ -7,12 +7,14 @@ on:
     paths:
       - 'docs/**'
       - '.github/workflows/deploy-docs.yml'
+      - 'package.json'
   pull_request:
     branches:
       - '**'
     paths:
       - 'docs/**'
       - '.github/workflows/deploy-docs.yml'
+      - 'package.json'
 
 jobs:
   build:

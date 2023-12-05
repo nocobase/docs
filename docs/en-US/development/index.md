@@ -1,60 +1,37 @@
 # Introduction
 
-NocoBase adopts microkernel architecture, functions are extended in the form of plugins. Front and back ends are separated. Various plugin interfaces are provided, and plugins are divided by functional modules with pluggable features.
-
-<img src="https://www.nocobase.com/images/NocoBaseMindMapLite.png" style="max-width: 800px;" >
-
-The pluggable design reduces the coupling between modules and increases the reuse rate. As the plugin library continues to expand, common scenarios require only a combination of plugins to complete the base build. NocoBase's no-code platform, for example, is a combination of various plugins.
-
-<img src="./index/pm-built-in.jpg" style="max-width: 800px;" />
+NocoBase adopts a microkernel architecture, where various functionalities are extended in the form of plugins. The plugin-based design reduces the coupling between modules, increasing reusability. With the continuous expansion of the plugin library, common scenarios can be easily built by combining plugins. NocoBase's no-code platform is composed of various plugins.
 
 ## Plugin Manager
 
-NocoBase provides a powerful plugin manager for managing plugins. The flow of the plugin manager is as follows
+NocoBase provides a powerful plugin manager to handle plugin management. No-code users can manage the addition, activation, deactivation, and deletion of plugins through the interface.
 
-<img src="./index/pm-flow.svg" style="max-width: 580px;" />
+![Plugin Manager](./image-1.png)
 
-No-code Users can manage the activation and deactivation of local plugins through the interface at
+Developers can also manage plugins through the CLI.
 
-<img src="./index/pm-ui.jpg" style="max-width: 800px;" />
-
-Developers can also manage the complete plugin process by way of the CLI:
-
-```bash
-# Create the plugin
-yarn pm create hello
-# Register the plugin
-yarn pm add hello
-# Activate the plugin
-yarn pm enable hello
-# Disable the plugin
-yarn pm disable hello
-# Remove the plugin
-yarn pm remove hello
-```
-
-For more plugin examples, see [packages/samples](https://github.com/nocobase/nocobase/tree/main/packages/samples).
+For more plugin examples, see [packages/samples](https://github.com/nocobase/nocobase/tree/main/packages/plugins/%40nocobase).
 
 ## Extensibility
 
-Whether it is generic functionality or personalization, it is recommended to write it as a plugin. NocoBase is extensible in all aspects.
+Whether it's generic functionalities or personalized customization, they can be written in the form of plugins. NocoBase's extensibility is reflected in various aspects:
 
-- It can be user-intuitive interface-related page modules, block types, action types, field types, etc.
-- Filters, validators, access restrictions, etc. for enhancing or restricting the HTTP API
-- It can also be enhancements to underlying data tables, migrations, events, command lines, etc.
+- It can be visible user interface-related page modules, block types, operation types, field types, etc.
+- It can also be used for enhancing or restricting HTTP API filters, validators, access restrictions, etc.
+- It can also be more fundamental enhancements of features such as data tables, migrations, events, command-line, etc.
 
-Distribution of modules.
+Modules are distributed as follows:
 
-- Server
-  - Collections & Fields: mainly used for system table configuration. Business tables are recommended to be configured in "Settings Center - Collection manager".
-  - Resources & Actions: Mainly used to extend the Action API
-  - Middleware: Middleware
-  - Events: Events
-  - I18n: server-side internationalization
-  - Commands: Custom command lines
-  - Migrations: Migration scripts
-- Client
-  - UI Schema Designer: Page Designer
-  - UI Router: When there is a need for custom pages
-  - Settings Center: Provides configuration pages for plugins
-  - I18n: Client side internationalization
+- Server-side
+  - Data tables and fields
+  - Resources and operations
+  - Middleware
+  - Events
+  - Custom command-line
+  - Internationalization
+- Client-side
+  - Route management and plugin configuration pages
+  - Styles and themes
+  - Providers and contexts
+  - UI Schema
+  - Internationalization
