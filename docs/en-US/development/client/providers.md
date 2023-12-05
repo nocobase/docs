@@ -1,4 +1,8 @@
-# Provider 组件
+# Provider component
+
+:::warning
+Sorry, this document is not available in English.
+:::
 
 在 NocoBase 客户端应用里，Provider 组件在外层定义，核心结构如下：
 

@@ -1,4 +1,8 @@
-# 测试
+# Testing
+
+:::warning
+Sorry, this document is not available in English.
+:::
 
 测试基于 [Jest](https://jestjs.io/) 测试框架。为了方便的编写测试，提供了 `mockDatabase()` 和 `mockServer()` 用于数据库和服务端应用的测试。
 
@@ -58,7 +62,13 @@ import { MockServer, mockServer } from '@nocobase/test';
 async function createApp(options: any = {}) {
   const app = mockServer({
     ...options,
-    plugins: ['acl', 'users', 'collection-manager', 'error-handler', ...options.plugins],
+    plugins: [
+      'acl',
+      'users',
+      'collection-manager',
+      'error-handler',
+      ...options.plugins,
+    ],
     // 还会有些其他参数配置
   });
   // 这里可以补充一些需要特殊处理的逻辑，比如导入测试需要的数据表

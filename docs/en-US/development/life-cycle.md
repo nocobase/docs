@@ -1,10 +1,10 @@
-# 生命周期
+# Lifecycle
 
-## 后端应用的生命周期
+## Lifecycle of the server-side application
 
-<img alt="后端应用的生命周期" src="./server/image-1.png" style="width: 700px;" />
+<img alt="Lifecycle of the server-side application" src="./server/image-1.png" style="width: 700px;" />
 
-通过 `app.on()` 触发，详情用法参考 [服务端 - 事件](/development/server/events) 章节
+Triggered by `app.on()`, see [Server-side - Events](/development/server/events) for details.
 
 ```ts
 class PluginSampleHelloServer extends Plugin {
@@ -16,11 +16,11 @@ class PluginSampleHelloServer extends Plugin {
 }
 ```
 
-## 后端插件的生命周期
+## Lifecycle of the server-side plugin
 
-<img alt="后端插件的生命周期" src="./server/image.png" style="width: 450px;" />
+<img alt="Lifecycle of the server-side plugin" src="./server/image.png" style="width: 450px;" />
 
-写在插件类里，详情用法参考 [服务端 - 概述](/development/server) 章节
+Written in the plugin class, see [Server - Overview](/development/server) for usage details.
 
 ```ts
 class PluginSampleHelloServer extends Plugin {
@@ -28,8 +28,8 @@ class PluginSampleHelloServer extends Plugin {
 }
 ```
 
-## 前端插件的生命周期
+## Lifecycle of the client-side plugin
 
-<img alt="前端插件的生命周期" src="./client/image.png" style="width: 550px;" />
+<img alt="Lifecycle of the client-side plugin" src="./client/image.png" style="width: 550px;" />
 
-写在插件类里，详情用法参考 [客户端 - 概述](/development/client) 章节
+Written in the plugin class, see [Client - Overview](/development/client) for usage details.

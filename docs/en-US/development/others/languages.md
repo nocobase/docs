@@ -1,4 +1,4 @@
-# 语言列表
+# Languages
 
 ```ts
 {

@@ -1,4 +1,8 @@
-# 概述
+# Overview
+
+:::warning
+Sorry, this document is not available in English.
+:::
 
 初始化的空插件，服务端相关目录结构如下：
 

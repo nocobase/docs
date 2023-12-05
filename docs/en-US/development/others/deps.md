@@ -1,4 +1,8 @@
-# 依赖管理
+# Dependencies
+
+:::warning
+Sorry, this document is not available in English.
+:::
 
 插件的依赖分为自身的依赖和全局依赖，全局依赖由 `@nocobase/server` 和 `@nocobase/client` 提供，不会打包到插件产物中，自身的依赖会被打包到产物中。
 

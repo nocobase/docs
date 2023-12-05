@@ -1,4 +1,8 @@
-# 构建
+# Building
+
+:::warning
+Sorry, this document is not available in English.
+:::
 
 ## 自定义打包配置
 

@@ -1,4 +1,8 @@
-# 页面路由及扩展
+# Page routing and extensions
+
+:::warning
+Sorry, this document is not available in English.
+:::
 
 ## 简介
 
