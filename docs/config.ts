@@ -917,7 +917,7 @@ const sidebar = {
           title: 'Bulk edit action',
           'title.zh-CN': '批量编辑',
           subTitle: '@nocobase/plugin-action-bulk-edit',
-          children: ['/plugins/action-bulk-edit', '/plugins/actionbulk-edit/user'],
+          children: ['/plugins/action-bulk-edit', '/plugins/action-bulk-edit/user'],
         },
         {
           title: 'Bulk update action',
