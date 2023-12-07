@@ -947,13 +947,13 @@ const sidebar = {
           title: 'Bulk edit action',
           'title.zh-CN': '批量编辑',
           subTitle: '@nocobase/plugin-action-bulk-edit',
-          link: '/plugins/bulk-edit',
+          children: ['/plugins/bulk-edit', '/plugins/bulk-edit/user'],
         },
         {
           title: 'Bulk update action',
           'title.zh-CN': '批量更新',
           subTitle: '@nocobase/plugin-action-bulk-update',
-          link: '/plugins/bulk-update',
+          children: ['/plugins/bulk-update', '/plugins/bulk-update/user'],
         },
         {
           title: 'CAS auth',
@@ -1042,6 +1042,7 @@ const sidebar = {
           'title.zh-CN': '复制数据',
           subTitle: '@nocobase/plugin-action-duplicate',
           link: '/plugins/duplicate',
+          children: ['/plugins/duplicate', '/plugins/duplicate/user'],
         },
         {
           title: 'Export',
@@ -1066,6 +1067,7 @@ const sidebar = {
           'title.zh-CN': '甘特图区块',
           subTitle: '@nocobase/plugin-gantt-block',
           link: '/plugins/gantt-block',
+          children: ['/plugins/gantt-block', '/plugins/gantt-block/user'],
         },
         {
           title: 'Graph collection manager',
@@ -1089,7 +1091,7 @@ const sidebar = {
           title: 'Kanban block',
           'title.zh-CN': '看板区块',
           subTitle: '@nocobase/plugin-kanban-block',
-          link: '/plugins/kanban-block',
+          children: ['/plugins/kanban-block', '/plugins/kanban-block/user'],
         },
         {
           title: 'localization-management',
