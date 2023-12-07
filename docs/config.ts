@@ -914,6 +914,31 @@ const sidebar = {
           children: ['/plugins/acl', '/plugins/acl/user'],
         },
         {
+          title: 'Bulk edit action',
+          'title.zh-CN': '批量编辑',
+          subTitle: '@nocobase/plugin-action-bulk-edit',
+          children: ['/plugins/bulk-edit', '/plugins/bulk-edit/user'],
+        },
+        {
+          title: 'Bulk update action',
+          'title.zh-CN': '批量更新',
+          subTitle: '@nocobase/plugin-action-bulk-update',
+          children: ['/plugins/bulk-update', '/plugins/bulk-update/user'],
+        },
+        {
+          title: 'Duplicate action',
+          'title.zh-CN': '复制数据',
+          subTitle: '@nocobase/plugin-action-duplicate',
+          link: '/plugins/duplicate',
+          children: ['/plugins/duplicate', '/plugins/duplicate/user'],
+        },
+        {
+          title: 'print action',
+          'title.zh-CN': '打印',
+          subTitle: '@nocobase/plugin-action-print',
+          link: '/plugins/print',
+        },
+        {
           title: 'API doc',
           'title.zh-CN': 'API 文档',
           subTitle: '@nocobase/plugin-api-doc',
@@ -943,18 +968,7 @@ const sidebar = {
             '/plugins/auth/dev',
           ],
         },
-        {
-          title: 'Bulk edit action',
-          'title.zh-CN': '批量编辑',
-          subTitle: '@nocobase/plugin-action-bulk-edit',
-          children: ['/plugins/bulk-edit', '/plugins/bulk-edit/user'],
-        },
-        {
-          title: 'Bulk update action',
-          'title.zh-CN': '批量更新',
-          subTitle: '@nocobase/plugin-action-bulk-update',
-          children: ['/plugins/bulk-update', '/plugins/bulk-update/user'],
-        },
+
         {
           title: 'CAS auth',
           'title.zh-CN': 'CAS 认证',
@@ -1037,13 +1051,7 @@ const sidebar = {
             },
           ],
         },
-        {
-          title: 'Duplicate action',
-          'title.zh-CN': '复制数据',
-          subTitle: '@nocobase/plugin-action-duplicate',
-          link: '/plugins/duplicate',
-          children: ['/plugins/duplicate', '/plugins/duplicate/user'],
-        },
+
         {
           title: 'Export',
           'title.zh-CN': '导出数据',
@@ -1130,12 +1138,7 @@ const sidebar = {
             },
           ],
         },
-        {
-          title: 'print action',
-          'title.zh-CN': '打印',
-          subTitle: '@nocobase/plugin-action-print',
-          link: '/plugins/print',
-        },
+
         {
           title: 'SAML auth',
           'title.zh-CN': 'SAML 认证',
