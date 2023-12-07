@@ -944,6 +944,18 @@ const sidebar = {
           ],
         },
         {
+          title: 'Bulk edit action',
+          'title.zh-CN': '批量编辑',
+          subTitle: '@nocobase/plugin-action-bulk-edit',
+          link: '/plugins/bulk-edit',
+        },
+        {
+          title: 'Bulk update action',
+          'title.zh-CN': '批量更新',
+          subTitle: '@nocobase/plugin-action-bulk-update',
+          link: '/plugins/bulk-update',
+        },
+        {
           title: 'CAS auth',
           'title.zh-CN': 'CAS 认证',
           subTitle: '@nocobase/plugin-cas',
@@ -1026,6 +1038,12 @@ const sidebar = {
           ],
         },
         {
+          title: 'Duplicate action',
+          'title.zh-CN': '复制数据',
+          subTitle: '@nocobase/plugin-action-duplicate',
+          link: '/plugins/duplicate',
+        },
+        {
           title: 'Export',
           'title.zh-CN': '导出数据',
           subTitle: '@nocobase/plugin-export',
@@ -1044,6 +1062,12 @@ const sidebar = {
           link: '/plugins/formula-field',
         },
         {
+          title: 'Gantt block',
+          'title.zh-CN': '甘特图区块',
+          subTitle: '@nocobase/plugin-gantt-block',
+          link: '/plugins/gantt-block',
+        },
+        {
           title: 'Graph collection manager',
           'title.zh-CN': '可视化数据表管理',
           subTitle: '@nocobase/plugin-graph-collection-manager',
@@ -1060,6 +1084,12 @@ const sidebar = {
           'title.zh-CN': '导入数据',
           subTitle: '@nocobase/plugin-import',
           link: '/plugins/import',
+        },
+        {
+          title: 'Kanban block',
+          'title.zh-CN': '看板区块',
+          subTitle: '@nocobase/plugin-kanban-block',
+          link: '/plugins/kanban-block',
         },
         {
           title: 'localization-management',
@@ -1097,6 +1127,12 @@ const sidebar = {
               children: ['/plugins/oidc/example/google'],
             },
           ],
+        },
+        {
+          title: 'print action',
+          'title.zh-CN': '打印',
+          subTitle: '@nocobase/plugin-action-print',
+          link: '/plugins/print',
         },
         {
           title: 'SAML auth',
@@ -1168,42 +1204,6 @@ const sidebar = {
             '/plugins/workflow/triggers',
             '/plugins/workflow/nodes',
           ],
-        },
-        {
-          title: 'Gantt block',
-          'title.zh-CN': '甘特图区块',
-          subTitle: '@nocobase/plugin-gantt-block',
-          link: '/plugins/gantt-block',
-        },
-        {
-          title: 'Kanban block',
-          'title.zh-CN': '看板区块',
-          subTitle: '@nocobase/plugin-kanban-block',
-          link: '/plugins/kanban-block',
-        },
-        {
-          title: 'Duplicate action',
-          'title.zh-CN': '复制数据',
-          subTitle: '@nocobase/plugin-action-duplicate',
-          link: '/plugins/duplicate',
-        },
-        {
-          title: 'Bulk update action',
-          'title.zh-CN': '批量更新',
-          subTitle: '@nocobase/plugin-action-bulk-update',
-          link: '/plugins/bulk-update',
-        },
-        {
-          title: 'Bulk edit action',
-          'title.zh-CN': '批量编辑',
-          subTitle: '@nocobase/plugin-action-bulk-edit',
-          link: '/plugins/bulk-edit',
-        },
-        {
-          title: 'print action',
-          'title.zh-CN': '打印',
-          subTitle: '@nocobase/plugin-action-print',
-          link: '/plugins/print',
         },
       ],
     },
