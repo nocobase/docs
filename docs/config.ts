@@ -1001,7 +1001,6 @@ const sidebar = {
           'title.zh-CN': '数据可视化',
           subTitle: '@nocobase/plugin-data-visualization',
           children: [
-            
             {
               title: 'Introduction',
               'title.zh-CN': '介绍',
@@ -1169,6 +1168,42 @@ const sidebar = {
             '/plugins/workflow/triggers',
             '/plugins/workflow/nodes',
           ],
+        },
+        {
+          title: 'Gantt block',
+          'title.zh-CN': '甘特图区块',
+          subTitle: '@nocobase/plugin-gantt-block',
+          link: '/plugins/gantt-block',
+        },
+        {
+          title: 'Kanban block',
+          'title.zh-CN': '看板区块',
+          subTitle: '@nocobase/plugin-kanban-block',
+          link: '/plugins/kanban-block',
+        },
+        {
+          title: 'Duplicate action',
+          'title.zh-CN': '复制数据',
+          subTitle: '@nocobase/plugin-action-duplicate',
+          link: '/plugins/duplicate',
+        },
+        {
+          title: 'Bulk update action',
+          'title.zh-CN': '批量更新',
+          subTitle: '@nocobase/plugin-action-bulk-update',
+          link: '/plugins/bulk-update',
+        },
+        {
+          title: 'Bulk edit action',
+          'title.zh-CN': '批量编辑',
+          subTitle: '@nocobase/plugin-action-bulk-edit',
+          link: '/plugins/bulk-edit',
+        },
+        {
+          title: 'print action',
+          'title.zh-CN': '打印',
+          subTitle: '@nocobase/plugin-action-print',
+          link: '/plugins/print',
         },
       ],
     },
