@@ -1075,17 +1075,64 @@ const sidebar = {
                   ],
                 },
                 {
-                  title: 'Collection fields',
-                  'title.zh-CN': '数据表字段类型',
-                  children: [
-                    '/plugins/collection-manager/user/collection-fields',
-                  ],
-                },
-                {
                   title: 'Association fields',
                   'title.zh-CN': '关系字段组件',
                   children: [
-                    '/plugins/collection-manager/user/association-fields',
+                    {
+                      title: 'Cascade select',
+                      'title.zh-CN': '级联选择器',
+                      link: '/plugins/collection-manager/user/association-fields/cascade-select',
+                    },
+                    {
+                      title: 'File manager',
+                      'title.zh-CN': '文件管理器',
+                      link: '/plugins/collection-manager/user/association-fields/file-manager',
+                    },
+                    {
+                      title: 'Record picker',
+                      'title.zh-CN': '数据选择器',
+                      link: '/plugins/collection-manager/user/association-fields/record-picker',
+                    },
+                    {
+                      title: 'Select',
+                      'title.zh-CN': '下拉选择器',
+                      link: '/plugins/collection-manager/user/association-fields/select',
+                    },
+                    {
+                      title: 'Sub detail',
+                      'title.zh-CN': '子详情',
+                      link: '/plugins/collection-manager/user/association-fields/sub-detail',
+                    },
+                    {
+                      title: 'Sub form',
+                      'title.zh-CN': '子表单',
+                      link: '/plugins/collection-manager/user/association-fields/sub-form',
+                    },
+                    {
+                      title: 'Sub-form(popover)',
+                      'title.zh-CN': '子表单（弹窗）',
+                      link: '/plugins/collection-manager/user/association-fields/sub-form(popover)',
+                    },
+                    {
+                      title: 'Sub table',
+                      'title.zh-CN': '子表格',
+                      link: '/plugins/collection-manager/user/association-fields/sub-table',
+                    },
+                    {
+                      title: 'Tag',
+                      'title.zh-CN': '标签',
+                      link: '/plugins/collection-manager/user/association-fields/tag',
+                    },
+                    {
+                      title: 'Title',
+                      'title.zh-CN': '标题',
+                      link: '/plugins/collection-manager/user/association-fields/title',
+                    },
+                    {
+                      title: 'Usage Summary',
+                      'title.zh-CN': '使用总结',
+                      link: '/plugins/collection-manager/user/association-fields/summary',
+                    },
                   ],
                 },
               ],
