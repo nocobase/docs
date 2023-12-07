@@ -917,20 +917,29 @@ const sidebar = {
           title: 'Bulk edit action',
           'title.zh-CN': '批量编辑',
           subTitle: '@nocobase/plugin-action-bulk-edit',
-          children: ['/plugins/action-bulk-edit', '/plugins/action-bulk-edit/user'],
+          children: [
+            '/plugins/action-bulk-edit',
+            '/plugins/action-bulk-edit/user',
+          ],
         },
         {
           title: 'Bulk update action',
           'title.zh-CN': '批量更新',
           subTitle: '@nocobase/plugin-action-bulk-update',
-          children: ['/plugins/action-bulk-update', '/plugins/action-bulk-update/user'],
+          children: [
+            '/plugins/action-bulk-update',
+            '/plugins/action-bulk-update/user',
+          ],
         },
         {
           title: 'Duplicate action',
           'title.zh-CN': '复制数据',
           subTitle: '@nocobase/plugin-action-duplicate',
           link: '/plugins/duplicate',
-          children: ['/plugins/action-duplicate', '/plugins/action-duplicate/user'],
+          children: [
+            '/plugins/action-duplicate',
+            '/plugins/action-duplicate/user',
+          ],
         },
         {
           title: 'print action',
@@ -1014,7 +1023,74 @@ const sidebar = {
           title: 'Collection manager',
           'title.zh-CN': '数据表管理',
           subTitle: '@nocobase/plugin-collection-manager',
-          children: ['/plugins/collection-manager'],
+          children: [
+            {
+              title: 'Introduction',
+              'title.zh-CN': '介绍',
+              link: '/plugins/collection-manager/user',
+            },
+            {
+              title: 'User manual',
+              'title.zh-CN': '使用手册',
+              children: [
+                {
+                  title: 'Collection templates',
+                  'title.zh-CN': '数据表模板',
+                  children: [
+                    {
+                      title: 'General collection',
+                      'title.zh-CN': '普通数据表',
+                      link: '/plugins/collection-manager/user/collection-templates/general',
+                    },
+                    {
+                      title: 'Tree collection',
+                      'title.zh-CN': '树表',
+                      link: '/plugins/collection-manager/user/collection-templates/tree',
+                    },
+                    {
+                      title: 'Calender collection',
+                      'title.zh-CN': '日历表',
+                      link: '/plugins/collection-manager/user/collection-templates/calender',
+                    },
+                    {
+                      title: 'File collection',
+                      'title.zh-CN': '文件表',
+                      link: '/plugins/collection-manager/user/collection-templates/file',
+                    },
+                    {
+                      title: 'Expression collection',
+                      'title.zh-CN': '表达式表',
+                      link: '/plugins/collection-manager/user/collection-templates/expression',
+                    },
+                    {
+                      title: 'Sql collection',
+                      'title.zh-CN': 'Sql表',
+                      link: '/plugins/collection-manager/user/collection-templates/sql',
+                    },
+                    {
+                      title: 'View collection',
+                      'title.zh-CN': '连接数据库视图',
+                      link: '/plugins/collection-manager/user/collection-templates/view',
+                    },
+                  ],
+                },
+                {
+                  title: 'Collection fields',
+                  'title.zh-CN': '数据表字段类型',
+                  children: [
+                    '/plugins/collection-manager/user/collection-fields',
+                  ],
+                },
+                {
+                  title: 'Association fields',
+                  'title.zh-CN': '关系字段组件',
+                  children: [
+                    '/plugins/collection-manager/user/association-fields',
+                  ],
+                },
+              ],
+            },
+          ],
         },
         {
           title: 'Custom request',
