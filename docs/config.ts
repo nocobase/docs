@@ -1196,7 +1196,7 @@ const sidebar = {
         {
           title: 'Gantt block',
           'title.zh-CN': '甘特图区块',
-          subTitle: '@nocobase/plugin-gantt-block',
+          subTitle: '@nocobase/plugin-gantt',
           link: '/plugins/gantt-block',
           children: ['/plugins/gantt-block', '/plugins/gantt-block/user'],
         },
@@ -1221,7 +1221,7 @@ const sidebar = {
         {
           title: 'Kanban block',
           'title.zh-CN': '看板区块',
-          subTitle: '@nocobase/plugin-kanban-block',
+          subTitle: '@nocobase/plugin-kanban',
           children: ['/plugins/kanban-block', '/plugins/kanban-block/user'],
         },
         {
