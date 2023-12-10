@@ -911,35 +911,32 @@ const sidebar = {
           title: 'ACL',
           'title.zh-CN': '权限控制',
           subTitle: '@nocobase/plugin-acl',
-          children: ['/plugins/acl', '/plugins/acl/user'],
+          children: [
+            {
+              title: 'Overview',
+              'title.zh-CN': '概述',
+              link: '/plugins/acl',
+            },
+            '/plugins/acl/user',
+          ],
         },
         {
           title: 'Bulk edit action',
           'title.zh-CN': '批量编辑',
           subTitle: '@nocobase/plugin-action-bulk-edit',
-          children: [
-            '/plugins/action-bulk-edit',
-            '/plugins/action-bulk-edit/user',
-          ],
+          link: '/plugins/action-bulk-edit',
         },
         {
           title: 'Bulk update action',
           'title.zh-CN': '批量更新',
           subTitle: '@nocobase/plugin-action-bulk-update',
-          children: [
-            '/plugins/action-bulk-update',
-            '/plugins/action-bulk-update/user',
-          ],
+          link: '/plugins/action-bulk-update',
         },
         {
           title: 'Duplicate action',
           'title.zh-CN': '复制数据',
           subTitle: '@nocobase/plugin-action-duplicate',
-          link: '/plugins/duplicate',
-          children: [
-            '/plugins/action-duplicate',
-            '/plugins/action-duplicate/user',
-          ],
+          link: '/plugins/action-duplicate',
         },
         {
           title: 'print action',
@@ -972,12 +969,15 @@ const sidebar = {
           'title.zh-CN': '用户认证',
           subTitle: '@nocobase/plugin-auth',
           children: [
-            '/plugins/auth',
+            {
+              title: 'Overview',
+              'title.zh-CN': '概述',
+              link: '/plugins/auth',
+            },
             '/plugins/auth/user',
             '/plugins/auth/dev',
           ],
         },
-
         {
           title: 'CAS auth',
           'title.zh-CN': 'CAS 认证',
@@ -1025,14 +1025,15 @@ const sidebar = {
           subTitle: '@nocobase/plugin-collection-manager',
           children: [
             {
-              title: 'Introduction',
-              'title.zh-CN': '介绍',
-              link: '/plugins/collection-manager/user',
+              title: 'Overview',
+              'title.zh-CN': '概述',
+              link: '#',
             },
             {
               title: 'User manual',
               'title.zh-CN': '使用手册',
               children: [
+                '/plugins/collection-manager/user',
                 {
                   title: 'Collection templates',
                   'title.zh-CN': '数据表模板',
@@ -1151,8 +1152,8 @@ const sidebar = {
           subTitle: '@nocobase/plugin-data-visualization',
           children: [
             {
-              title: 'Introduction',
-              'title.zh-CN': '介绍',
+              title: 'Overview',
+              'title.zh-CN': '概述',
               link: '/plugins/data-visualization',
             },
             {
@@ -1198,7 +1199,7 @@ const sidebar = {
           'title.zh-CN': '甘特图区块',
           subTitle: '@nocobase/plugin-gantt',
           link: '/plugins/gantt-block',
-          children: ['/plugins/gantt-block', '/plugins/gantt-block/user'],
+          // children: ['/plugins/gantt-block', '/plugins/gantt-block/user'],
         },
         {
           title: 'Graph collection manager',
@@ -1222,7 +1223,7 @@ const sidebar = {
           title: 'Kanban block',
           'title.zh-CN': '看板区块',
           subTitle: '@nocobase/plugin-kanban',
-          children: ['/plugins/kanban-block', '/plugins/kanban-block/user'],
+          link: '/plugins/kanban-block',
         },
         {
           title: 'localization-management',
@@ -1253,7 +1254,11 @@ const sidebar = {
           'title.zh-CN': 'OIDC 认证',
           subTitle: '@nocobase/plugin-oidc',
           children: [
-            '/plugins/oidc',
+            {
+              title: 'User manual',
+              'title.zh-CN': '使用手册',
+              link: '/plugins/oidc',
+            },
             {
               title: 'Example',
               'title.zh-CN': '示例',
@@ -1267,7 +1272,11 @@ const sidebar = {
           'title.zh-CN': 'SAML 认证',
           subTitle: '@nocobase/plugin-saml',
           children: [
-            '/plugins/saml',
+            {
+              title: 'User manual',
+              'title.zh-CN': '使用手册',
+              link: '/plugins/saml',
+            },
             {
               title: 'Example',
               'title.zh-CN': '示例',
