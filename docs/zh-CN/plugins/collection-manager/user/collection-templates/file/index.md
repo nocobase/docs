@@ -1,8 +1,8 @@
 # 文件表
 
-![](./static/KpZybNv5EozbAXx3s6Kcr8gIn3P.png)
+![](./static/BOlXbQXsOo5ae8xTC6Gc4lAlnRe.png)
 
-File collection 数据表模板通过 File manager 插件提供
+文件表数据表模板通过 File manager 插件提供
 
 ![](./static/JRRtb9rtfoNfWOxkEVQcWF0Nndd.png)
 

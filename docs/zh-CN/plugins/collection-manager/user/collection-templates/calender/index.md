@@ -1,6 +1,6 @@
 # 日历表
 
-![](./static/QtyFb9oOXojAMvx91HicwsHcnHh.png)
+![](./static/JHaTbG3rCo4L0yxUUYQc1OfTnrd.png)
 
 日历数据表模板是一种用于管理时间相关数据的数据模板，通常用于存储和管理事件、约会、任务等与日期/时间相关的信息。以下是日历数据表模板的预定义字段：
 

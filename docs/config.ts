@@ -1027,7 +1027,7 @@ const sidebar = {
             {
               title: 'Overview',
               'title.zh-CN': '概述',
-              link: '#',
+              link: '/plugins/collection-manager',
             },
             {
               title: 'User manual',
