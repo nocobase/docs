@@ -1,6 +1,6 @@
 # 普通表
 
-![](./static/JM3ab75AroudtGxgvszc7aEznnb.png)
+![](./static/NG7NbgZIpolAp8xXy8JcKJDRnGe.png)
 
 普通数据表模板，支持自定义设置数据表的行为：
 
@@ -11,4 +11,4 @@
 - 记录最后更新时间
 - 可以对行记录进行排序
 
-![](./static/NG7NbgZIpolAp8xXy8JcKJDRnGe.png)
+![](./static/JM3ab75AroudtGxgvszc7aEznnb.png)
