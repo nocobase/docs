@@ -1338,8 +1338,55 @@ const sidebar = {
           subTitle: '@nocobase/plugin-workflow',
           children: [
             '/plugins/workflow',
-            '/plugins/workflow/triggers',
-            '/plugins/workflow/nodes',
+            {
+              title: 'User manual',
+              'title.zh-CN': '使用手册',
+              children: [
+                '/plugins/workflow/manual',
+                '/plugins/workflow/manual/advanced',
+                {
+                  title: 'Triggers',
+                  'title.zh-CN': '触发器',
+                  children: [
+                    '/plugins/workflow/manual/triggers',
+                    '/plugins/workflow/manual/triggers/form',
+                    '/plugins/workflow/manual/triggers/collection',
+                    '/plugins/workflow/manual/triggers/schedule',
+                  ]
+                },
+                {
+                  title: 'Nodes',
+                  'title.zh-CN': '节点',
+                  children: [
+                    '/plugins/workflow/manual/nodes',
+                    '/plugins/workflow/manual/nodes/condition',
+                    '/plugins/workflow/manual/nodes/loop',
+                    '/plugins/workflow/manual/nodes/calculation',
+                    '/plugins/workflow/manual/nodes/parallel',
+                    '/plugins/workflow/manual/nodes/delay',
+                    '/plugins/workflow/manual/nodes/create',
+                    '/plugins/workflow/manual/nodes/update',
+                    '/plugins/workflow/manual/nodes/destroy',
+                    '/plugins/workflow/manual/nodes/query',
+                    '/plugins/workflow/manual/nodes/aggregate',
+                    '/plugins/workflow/manual/nodes/sql',
+                    '/plugins/workflow/manual/nodes/manual',
+                    '/plugins/workflow/manual/nodes/request',
+                    '/plugins/workflow/manual/nodes/dynamic-calculation',
+                  ],
+                },
+              ],
+            },
+            {
+              title: 'Development',
+              'title.zh-CN': '开发指南',
+              children: [
+                '/plugins/workflow/development',
+                '/plugins/workflow/development/trigger',
+                '/plugins/workflow/development/instruction',
+                '/plugins/workflow/development/api',
+              ],
+            },
           ],
         },
       ],
