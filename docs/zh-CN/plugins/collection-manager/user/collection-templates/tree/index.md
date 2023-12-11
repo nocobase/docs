@@ -1,6 +1,39 @@
 # 树表
 
-![](./static/YGxIbNWd2ojCGJxm8IHcvW6inyP.png)
+![](./static/Q1OgbmzcHowD3fxFylUcGMBbndc.png)
+
+和普通表一样支持自定义设置数据表的行为
+
+![](./static/VDg1bTG3noShtXxtU7QcwGMKnch.png)
+
+树表模板的预定义字段
+
+```go
+[
+      {
+        interface: 'integer',
+        name: 'parentId',
+        type: 'bigInt',
+        isForeignKey: true,
+      },
+      {
+        interface: 'm2o',
+        type: 'belongsTo',
+        name: 'parent',
+        foreignKey: 'parentId',
+        treeParent: true,
+        onDelete: 'CASCADE',
+      },
+      {
+        interface: 'o2m',
+        type: 'hasMany',
+        name: 'children',
+        foreignKey: 'parentId',
+        treeChildren: true,
+        onDelete: 'CASCADE',
+      },
+    ]
+```
 
 树表创建后初始化字段
 
