@@ -4,6 +4,21 @@ const nav = [
     'title.zh-CN': '欢迎',
     link: '/welcome/introduction',
   },
+  // {
+  //   title: 'Blog',
+  //   'title.zh-CN': '博客',
+  //   link: '/blog',
+  // },
+  // {
+  //   title: 'Release notes',
+  //   'title.zh-CN': '发布说明',
+  //   link: '/release-notes',
+  // },
+  // {
+  //   title: 'Breaking changes',
+  //   'title.zh-CN': '不兼容变化',
+  //   link: '/breaking-changes',
+  // },
   {
     title: 'User manual',
     'title.zh-CN': '使用手册',
@@ -75,18 +90,28 @@ const sidebar = {
       'title.TR-TR': 'Sürüm',
       type: 'group',
       children: [
+        // {
+        //   type: 'item',
+        //   title: 'Release notes',
+        //   'title.zh-CN': '发布说明',
+        //   link: 'https://blog.nocobase.com/tags/release/',
+        //   'link.zh-CN': 'https://blog-cn.nocobase.com/tags/release/',
+        // },
+        {
+          title: 'Release notes',
+          'title.zh-CN': '发布说明',
+          link: '/release-notes',
+        },
+        {
+          title: 'Breaking changes',
+          'title.zh-CN': '不兼容变化',
+          link: '/breaking-changes',
+        },
         {
           type: 'item',
           title: 'Changelog',
           'title.zh-CN': '更新日志',
           link: 'https://github.com/nocobase/nocobase/blob/main/CHANGELOG.md',
-        },
-        {
-          type: 'item',
-          title: 'Release notes',
-          'title.zh-CN': '发布说明',
-          link: 'https://blog.nocobase.com/tags/release/',
-          'link.zh-CN': 'https://blog-cn.nocobase.com/tags/release/',
         },
         // '/welcome/release/index',
         // '/welcome/release/v08-changelog',
