@@ -6,7 +6,7 @@
 
 ![](./static/VDg1bTG3noShtXxtU7QcwGMKnch.png)
 
-树表模板中的预定义字段
+树表模板的预定义字段
 
 ```go
 [
@@ -35,7 +35,7 @@
     ]
 ```
 
-树表创建时的初始化字段
+树表创建后初始化字段
 
 ![](./static/MmJhbxcoeo66DqxMDhaclBGPndh.png)
 
@@ -43,3 +43,10 @@
 
 - 父节点关联字段（Many to One）：通常称为 "Parent" 字段，它与同一表中的其他记录建立关联，表示每个节点的父节点。
 - 子节点关联字段（One to Many）：通常称为 "Children" 字段，它表示每个节点可以有多个子节点
+
+## 在区块中使用
+
+- 树表格 :默认开启（禁用时，数据将平铺返回）
+- 添加子记录：为当前记录添加子记录
+
+![](./static/MtYebfdtAook0ZxJZkfcrGTAnHh.png)
