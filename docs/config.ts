@@ -104,8 +104,8 @@ const sidebar = {
         },
         {
           title: 'Breaking changes',
-          'title.zh-CN': '不兼容变化',
-          link: '/breaking-changes',
+          'title.zh-CN': '不兼容变更',
+          link: '/breaking-changes/v0-17-0-alpha-5',
         },
         {
           type: 'item',
@@ -352,6 +352,18 @@ const sidebar = {
       link: '/api/sdk',
     },
   ],
+  '/breaking-changes': [
+    {
+      title: 'Breaking changes',
+      'title.zh-CN': '不兼容变更',
+      type: 'group',
+      children: [
+        '/breaking-changes/v0-17-0-alpha-5',
+        '/breaking-changes/v0-17-0-alpha-3',
+        '/breaking-changes/v0-17-0-alpha-1',
+      ]
+    },
+  ]
 };
 
 export { nav, sidebar };
