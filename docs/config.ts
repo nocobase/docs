@@ -939,7 +939,7 @@ const sidebar = {
           link: '/plugins/action-duplicate',
         },
         {
-          title: 'print action',
+          title: 'Print action',
           'title.zh-CN': '打印',
           subTitle: '@nocobase/plugin-action-print',
           link: '/plugins/action-print',
@@ -1186,7 +1186,8 @@ const sidebar = {
           title: 'File manager',
           'title.zh-CN': '文件管理器',
           subTitle: '@nocobase/plugin-file-manager',
-          children: ['/plugins/file-manager', '/plugins/file-manager/user'],
+          link: '/plugins/file-manager',
+          // children: ['/plugins/file-manager', '/plugins/file-manager/user'],
         },
         {
           title: 'Formula field',
@@ -1198,7 +1199,7 @@ const sidebar = {
           title: 'Gantt block',
           'title.zh-CN': '甘特图区块',
           subTitle: '@nocobase/plugin-gantt',
-          link: '/plugins/gantt-block',
+          link: '/plugins/gantt',
           // children: ['/plugins/gantt-block', '/plugins/gantt-block/user'],
         },
         {
@@ -1223,7 +1224,7 @@ const sidebar = {
           title: 'Kanban block',
           'title.zh-CN': '看板区块',
           subTitle: '@nocobase/plugin-kanban',
-          link: '/plugins/kanban-block',
+          link: '/plugins/kanban',
         },
         {
           title: 'localization-management',
@@ -1337,7 +1338,11 @@ const sidebar = {
           'title.zh-CN': '工作流',
           subTitle: '@nocobase/plugin-workflow',
           children: [
-            '/plugins/workflow',
+            {
+              title: 'Overview',
+              'title.zh-CN': '概述',
+              link: '/plugins/workflow',
+            },
             {
               title: 'User manual',
               'title.zh-CN': '使用手册',
