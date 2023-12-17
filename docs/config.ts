@@ -921,26 +921,44 @@ const sidebar = {
           ],
         },
         {
-          title: 'Bulk edit action',
-          'title.zh-CN': '批量编辑',
+          title: 'Action - Bulk edit ',
+          'title.zh-CN': '操作 - 批量编辑',
           subTitle: '@nocobase/plugin-action-bulk-edit',
           link: '/plugins/action-bulk-edit',
         },
         {
-          title: 'Bulk update action',
-          'title.zh-CN': '批量更新',
+          title: 'Action - Bulk update',
+          'title.zh-CN': '操作 - 批量更新',
           subTitle: '@nocobase/plugin-action-bulk-update',
           link: '/plugins/action-bulk-update',
         },
         {
-          title: 'Duplicate action',
-          'title.zh-CN': '复制数据',
+          title: 'Action - Custom request',
+          'title.zh-CN': '操作 - 自定义请求',
+          subTitle: '@nocobase/plugin-custom-request',
+          link: '/plugins/custom-request',
+        },
+        {
+          title: 'Action - Duplicate',
+          'title.zh-CN': '操作 - 复制',
           subTitle: '@nocobase/plugin-action-duplicate',
           link: '/plugins/action-duplicate',
         },
         {
-          title: 'Print action',
-          'title.zh-CN': '打印',
+          title: 'Action - Export',
+          'title.zh-CN': '操作 - 导出',
+          subTitle: '@nocobase/plugin-export',
+          link: '/plugins/export',
+        },
+        {
+          title: 'Action - Import',
+          'title.zh-CN': '操作 - 导入',
+          subTitle: '@nocobase/plugin-import',
+          link: '/plugins/import',
+        },
+        {
+          title: 'Action - Print',
+          'title.zh-CN': '操作 - 打印',
           subTitle: '@nocobase/plugin-action-print',
           link: '/plugins/action-print',
         },
@@ -979,10 +997,56 @@ const sidebar = {
           ],
         },
         {
-          title: 'CAS auth',
-          'title.zh-CN': 'CAS 认证',
+          title: 'Authentication - CAS',
+          'title.zh-CN': '用户认证 - CAS',
           subTitle: '@nocobase/plugin-cas',
           link: '/plugins/cas',
+        },
+        {
+          title: 'Authentication - OIDC',
+          'title.zh-CN': '用户认证 - OIDC',
+          subTitle: '@nocobase/plugin-oidc',
+          children: [
+            {
+              title: 'User manual',
+              'title.zh-CN': '使用手册',
+              link: '/plugins/oidc',
+            },
+            {
+              title: 'Example',
+              'title.zh-CN': '示例',
+              children: ['/plugins/oidc/example/google'],
+            },
+          ],
+        },
+        {
+          title: 'Authentication - SAML',
+          'title.zh-CN': '用户认证 - SAML',
+          subTitle: '@nocobase/plugin-saml',
+          children: [
+            {
+              title: 'User manual',
+              'title.zh-CN': '使用手册',
+              link: '/plugins/saml',
+            },
+            {
+              title: 'Example',
+              'title.zh-CN': '示例',
+              children: ['/plugins/saml/example/google'],
+            },
+          ],
+        },
+        {
+          title: 'Authentication - SMS',
+          'title.zh-CN': '用户认证 - 短信',
+          subTitle: '@nocobase/plugin-sms-auth',
+          link: '/plugins/sms-auth',
+        },
+        {
+          title: 'Backup & Restore',
+          'title.zh-CN': '备份和还原',
+          subTitle: '@nocobase/plugin-backup-restore',
+          link: '/plugins/backup-restore',
         },
         {
           title: 'China region',
@@ -991,8 +1055,8 @@ const sidebar = {
           link: '/plugins/china-region',
         },
         {
-          title: 'Client',
-          'title.zh-CN': '客户端',
+          title: 'Client - WEB',
+          'title.zh-CN': '客户端 - WEB',
           subTitle: '@nocobase/plugin-client',
           children: [
             '/plugins/client',
@@ -1018,6 +1082,12 @@ const sidebar = {
               ],
             },
           ],
+        },
+        {
+          title: 'Client - Mobile',
+          'title.zh-CN': '客户端 - 移动端',
+          subTitle: '@nocobase/plugin-mobile-client',
+          link: '/plugins/mobile-client',
         },
         {
           title: 'Collection manager',
@@ -1141,12 +1211,6 @@ const sidebar = {
           ],
         },
         {
-          title: 'Custom request',
-          'title.zh-CN': '自定义请求',
-          subTitle: '@nocobase/plugin-custom-request',
-          link: '/plugins/custom-request',
-        },
-        {
           title: 'Data visualization',
           'title.zh-CN': '数据可视化',
           subTitle: '@nocobase/plugin-data-visualization',
@@ -1174,13 +1238,6 @@ const sidebar = {
               ],
             },
           ],
-        },
-
-        {
-          title: 'Export',
-          'title.zh-CN': '导出数据',
-          subTitle: '@nocobase/plugin-export',
-          link: '/plugins/export',
         },
         {
           title: 'File manager',
@@ -1215,34 +1272,22 @@ const sidebar = {
           link: '/plugins/iframe-block',
         },
         {
-          title: 'Import',
-          'title.zh-CN': '导入数据',
-          subTitle: '@nocobase/plugin-import',
-          link: '/plugins/import',
-        },
-        {
           title: 'Kanban block',
           'title.zh-CN': '看板区块',
           subTitle: '@nocobase/plugin-kanban',
           link: '/plugins/kanban',
         },
         {
-          title: 'localization-management',
+          title: 'Localization management',
           'title.zh-CN': '本地化管理',
           subTitle: '@nocobase/plugin-localization-management',
           link: '/plugins/localization-management',
         },
         {
-          title: 'map',
+          title: 'Map',
           'title.zh-CN': '地图',
           subTitle: '@nocobase/plugin-map',
           link: '/plugins/map',
-        },
-        {
-          title: 'Mobile client',
-          'title.zh-CN': '移动客户端',
-          subTitle: '@nocobase/plugin-mobile-client',
-          link: '/plugins/mobile-client',
         },
         {
           title: 'Multi-app manager',
@@ -1251,51 +1296,10 @@ const sidebar = {
           link: '/plugins/multi-app-manager',
         },
         {
-          title: 'OIDC auth',
-          'title.zh-CN': 'OIDC 认证',
-          subTitle: '@nocobase/plugin-oidc',
-          children: [
-            {
-              title: 'User manual',
-              'title.zh-CN': '使用手册',
-              link: '/plugins/oidc',
-            },
-            {
-              title: 'Example',
-              'title.zh-CN': '示例',
-              children: ['/plugins/oidc/example/google'],
-            },
-          ],
-        },
-
-        {
-          title: 'SAML auth',
-          'title.zh-CN': 'SAML 认证',
-          subTitle: '@nocobase/plugin-saml',
-          children: [
-            {
-              title: 'User manual',
-              'title.zh-CN': '使用手册',
-              link: '/plugins/saml',
-            },
-            {
-              title: 'Example',
-              'title.zh-CN': '示例',
-              children: ['/plugins/saml/example/google'],
-            },
-          ],
-        },
-        {
           title: 'Sequence field',
           'title.zh-CN': '自动编码',
           subTitle: '@nocobase/plugin-sequence-field',
           link: '/plugins/sequence-field',
-        },
-        {
-          title: 'SMS auth',
-          'title.zh-CN': '短信认证',
-          subTitle: '@nocobase/plugin-sms-auth',
-          link: '/plugins/sms-auth',
         },
         {
           title: 'Snapshot field',
@@ -1393,6 +1397,72 @@ const sidebar = {
               ],
             },
           ],
+        },
+        {
+          title: 'Workflow - Aggregate',
+          'title.zh-CN': 'Workflow - Aggregate',
+          subTitle: '@nocobase/plugin-workflow-aggregate',
+          link: '/plugins/workflow-aggregate',
+        },
+        {
+          title: 'Workflow - Approval',
+          'title.zh-CN': 'Workflow - Approval',
+          subTitle: '@nocobase/plugin-workflow-approval',
+          link: '/plugins/workflow-approval',
+        },
+        {
+          title: 'Workflow - Delay',
+          'title.zh-CN': 'Workflow - Delay',
+          subTitle: '@nocobase/plugin-workflow-delay',
+          link: '/plugins/workflow-delay',
+        },
+        {
+          title: 'Workflow - Dynamic calculation',
+          'title.zh-CN': 'Workflow - Dynamic calculation',
+          subTitle: '@nocobase/plugin-workflow-dynamic-calculation',
+          link: '/plugins/workflow-dynamic-calculation',
+        },
+        {
+          title: 'Workflow - Form trigger',
+          'title.zh-CN': 'Workflow - Form trigger',
+          subTitle: '@nocobase/plugin-workflow-form-trigger',
+          link: '/plugins/workflow-form-trigger',
+        },
+        {
+          title: 'Workflow - JSON query',
+          'title.zh-CN': 'Workflow - JSON query',
+          subTitle: '@nocobase/plugin-workflow-json-query',
+          link: '/plugins/workflow-json-query',
+        },
+        {
+          title: 'Workflow - Loop',
+          'title.zh-CN': 'Workflow - Loop',
+          subTitle: '@nocobase/plugin-workflow-loop',
+          link: '/plugins/workflow-loop',
+        },
+        {
+          title: 'Workflow - Manual',
+          'title.zh-CN': 'Workflow - Manual',
+          subTitle: '@nocobase/plugin-workflow-manual',
+          link: '/plugins/workflow-manual',
+        },
+        {
+          title: 'Workflow - Parallel',
+          'title.zh-CN': 'Workflow - Parallel',
+          subTitle: '@nocobase/plugin-workflow-parallel',
+          link: '/plugins/workflow-parallel',
+        },
+        {
+          title: 'Workflow - Request',
+          'title.zh-CN': 'Workflow - Request',
+          subTitle: '@nocobase/plugin-workflow-request',
+          link: '/plugins/workflow-request',
+        },
+        {
+          title: 'Workflow - SQL',
+          'title.zh-CN': 'Workflow - SQL',
+          subTitle: '@nocobase/plugin-workflow-sql',
+          link: '/plugins/workflow-sql',
         },
       ],
     },
