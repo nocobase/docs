@@ -1055,8 +1055,8 @@ const sidebar = {
           link: '/plugins/china-region',
         },
         {
-          title: 'Client - WEB',
-          'title.zh-CN': '客户端 - WEB',
+          title: 'Client - Web',
+          'title.zh-CN': '客户端 - Web',
           subTitle: '@nocobase/plugin-client',
           children: [
             '/plugins/client',
