@@ -97,11 +97,11 @@ const sidebar = {
         //   link: 'https://blog.nocobase.com/tags/release/',
         //   'link.zh-CN': 'https://blog-cn.nocobase.com/tags/release/',
         // },
-        {
-          title: 'Release notes',
-          'title.zh-CN': '发布说明',
-          link: '/release-notes',
-        },
+        // {
+        //   title: 'Release notes',
+        //   'title.zh-CN': '发布说明',
+        //   link: '/release-notes',
+        // },
         {
           title: 'Breaking changes',
           'title.zh-CN': '不兼容变更',
