@@ -1,6 +1,8 @@
 # 0.17.0-alpha.5
 
-## Background
+## Server `ctx.state.currentUser`
+
+### Background
 
 The new version introduces caching for the user information stored in `ctx.state.currentUser`.
 
@@ -20,7 +22,7 @@ The actual user information is located in `dataValues`. You can access the corre
 
 With the addition of caching, if the user selects a caching method other than in-memory caching, retrieving results from the cache will yield a plain object. Consequently, Model-related methods used in the code will throw exceptions.
 
-## Changes
+### Changes
 
 `ctx.state.currentUser` now directly utilizes a plain object containing user information, specifically the contents of `dataValues` of the original Model.
 
@@ -33,7 +35,7 @@ With the addition of caching, if the user selects a caching method other than in
 
 Model-related methods no longer apply to `ctx.state.currentUser`.
 
-### Accessing User Attributes
+#### Accessing User Attributes
 
 Previously
 
@@ -50,7 +52,7 @@ Now
 ctx.state.currentUser.id;
 ```
 
-### Modifying User Attributes
+#### Modifying User Attributes
 
 Previously
 
@@ -67,7 +69,7 @@ Now
 ctx.state.currentUser.roles = roles;
 ```
 
-### Retrieving User Information Object
+#### Retrieving User Information Object
 
 Previously
 

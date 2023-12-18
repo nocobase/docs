@@ -1,6 +1,8 @@
 # 0.17.0-alpha.5
 
-## 背景
+## 服务端 `ctx.state.currentUser`
+
+### 背景
 
 新版本对 `ctx.state.currentUser` 中保存的用户信息进行了缓存。
 
@@ -20,7 +22,7 @@
 
 增加缓存以后，如果用户使用的缓存方式不是内存缓存，从缓存中取出来的结果会变成一个普通的对象，代码中使用的 Model 的相关方法将会抛出异常。
 
-## 变更
+### 变更
 
 `ctx.state.currentUser` 现在直接使用包含用户信息的普通对象，即原 Model 中 `dataValues` 的内容。
 
@@ -33,7 +35,7 @@
 
 Model 相关方法不再对 `ctx.state.currentUser` 适用。
 
-### 获取用户属性
+#### 获取用户属性
 
 原来
 
@@ -50,7 +52,7 @@ ctx.state.currentUser.id;
 ctx.state.currentUser.id;
 ```
 
-### 修改用户属性
+#### 修改用户属性
 
 原来
 
@@ -67,7 +69,7 @@ ctx.state.currentUser.roles = roles;
 ctx.state.currentUser.roles = roles;
 ```
 
-### 获取用户信息对象
+#### 获取用户信息对象
 
 原来
 
