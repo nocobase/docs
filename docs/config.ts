@@ -131,9 +131,9 @@ const sidebar = {
           'title.zh-CN': '页面',
           children: [
             {
-              title: '概述',
+              title: 'Overview',
               'title.zh-CN': '概述',
-              link: '#',
+              link: '/manual/modules/pages',
             },
             {
               title: '可配置页面',
@@ -182,6 +182,11 @@ const sidebar = {
           'title.zh-CN': 'UI 配置',
           children: [
             {
+              title: 'Overview',
+              'title.zh-CN': '概述',
+              link: '/manual/modules/ui',
+            },
+            {
               title: '菜单',
               'title.zh-CN': '菜单',
               link: '/manual/modules/ui/menus',
@@ -195,6 +200,11 @@ const sidebar = {
               title: '区块',
               'title.zh-CN': '区块',
               children: [
+                {
+                  title: 'Overview',
+                  'title.zh-CN': '概述',
+                  link: '/manual/modules/ui/blocks',
+                },
                 {
                   title: '数据表区块',
                   'title.zh-CN': '数据表区块',
@@ -265,6 +275,11 @@ const sidebar = {
               'title.zh-CN': '字段',
               children: [
                 {
+                  title: 'Overview',
+                  'title.zh-CN': '概述',
+                  link: '/manual/modules/ui/fields',
+                },
+                {
                   title: '字段类型',
                   'title.zh-CN': '字段类型',
                   children: [],
@@ -280,6 +295,11 @@ const sidebar = {
               title: '操作',
               'title.zh-CN': '操作',
               children: [
+                {
+                  title: 'Overview',
+                  'title.zh-CN': '概述',
+                  link: '/manual/modules/ui/actions',
+                },
                 {
                   title: '查看',
                   'title.zh-CN': '查看',
@@ -389,6 +409,11 @@ const sidebar = {
           title: '数据表和字段',
           'title.zh-CN': '数据表和字段',
           children: [
+            {
+              title: 'Overview',
+              'title.zh-CN': '概述',
+              link: '/manual/modules/collections-fields',
+            },
             {
               title: '数据表模板',
               'title.zh-CN': '数据表模板',
