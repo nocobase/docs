@@ -459,11 +459,6 @@ const sidebar = {
                       'title.zh-CN': '标题',
                       link: '/manual/modules/ui/fields/association-components/title',
                     },
-                    {
-                      title: 'Usage Summary',
-                      'title.zh-CN': '使用总结',
-                      link: '/manual/modules/ui/fields/association-components/summary',
-                    },
                   ],
                 },
               ],
