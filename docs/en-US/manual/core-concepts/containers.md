@@ -1,22 +1,22 @@
-# Containers
+# 容器
 
-Pages, popups, and drawers are considered as containers of blocks in NocoBase. The container is like a canvas in which various blocks can be placed.
+在 NocoBase 里，将页面、弹窗、抽屉看作是区块的容器，容器就像一张画布，在里面可以放置各种各样的区块
 
-## Pages
+## 页面
 
 ![container-page.jpg](./containers/container-page.jpg)
 
-## Popups
+## 弹窗
 
 ![container-dialog.jpg](./containers/container-dialog.jpg)
 
-## Drawers
+## 抽屉
 
 ![container-drawer.jpg](./containers/container-drawer.jpg)
 
-## Tabs are supported inside containers
+## 容器内支持标签页
 
-Multiple tabs can be added within popups, drawers, and pages. Add different blocks to each tab to display different content and actions. For example, in a customer information popup, add 3 tabs to display customer's personal information, order history, customer reviews.
+在弹窗、抽屉、页面内，可以添加多个标签页。向每个标签页里添加不同的区块，从而显示不同的内容和操作。比如，在一个顾客信息的弹窗里，添加 3 个标签页，分别用来显示顾客的个人信息、订单记录、顾客评价：
 
 ![7.tabs.gif](./containers/7.tabs.gif)
 

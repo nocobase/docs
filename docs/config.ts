@@ -168,12 +168,12 @@ const sidebar = {
             {
               title: '插件管理器',
               'title.zh-CN': '插件管理器',
-              link: '#',
+              link: '/manual/modules/pages/plugin-manager',
             },
             {
-              title: '管理中心',
-              'title.zh-CN': '管理中心',
-              link: '#',
+              title: '插件设置中心',
+              'title.zh-CN': '插件设置中心',
+              link: '/manual/modules/pages/plugin-settings',
             },
             {
               title: '个人中心',
@@ -307,12 +307,159 @@ const sidebar = {
                 {
                   title: '字段类型',
                   'title.zh-CN': '字段类型',
-                  children: [],
+                  children: [
+                    {
+                      title: '基本类型',
+                      'title.zh-CN': '基本类型',
+                      children: [
+                        // 单行文本
+                        // 多行文本
+                        // 手机号码
+                        // 电子邮箱
+                        // URL
+                        // 整数
+                        // 数字
+                        // 百分比
+                        // 密码
+                        // 颜色
+                        // 图标
+                      ],
+                    },
+                    {
+                      title: '选择类型',
+                      'title.zh-CN': '选择类型',
+                      children: [
+                        // 勾选
+                        // 下拉菜单（单选）
+                        // 下拉菜单（多选）
+                        // 单选框
+                        // 复选框
+                        // 中国行政区
+                      ],
+                    },
+                    {
+                      title: '多媒体',
+                      'title.zh-CN': '多媒体',
+                      children: [
+                        // Markdown
+                        // 富文本
+                        // 附件
+                      ],
+                    },
+                    {
+                      title: '日期 & 时间',
+                      'title.zh-CN': '日期 & 时间',
+                      children: [
+                        // 日期
+                        // 时间
+                      ],
+                    },
+                    {
+                      title: '关系类型',
+                      'title.zh-CN': '关系类型',
+                      children: [
+                        // 一对一（belongs to）
+                        // 一对一（has one）
+                        // 一对多
+                        // 多对一
+                        // 多对多
+                      ],
+                    },
+                    {
+                      title: '基于地图的几何图形',
+                      'title.zh-CN': '基于地图的几何图形',
+                      children: [
+                        // 点
+                        // 线
+                        // 圆
+                        // 多边形
+                      ],
+                    },
+                    {
+                      title: '高级类型',
+                      'title.zh-CN': '高级类型',
+                      children: [
+                        // 公式
+                        // 自动编码
+                        // JSON
+                        // 数据表
+                        // 快照
+                      ],
+                    },
+                    {
+                      title: '系统信息',
+                      'title.zh-CN': '系统信息',
+                      children: [
+                        // ID
+                        // Table OID
+                        // 创建日期
+                        // 最后修改日期
+                        // 创建人
+                        // 最后修改人
+                      ],
+                    },
+                  ],
                 },
                 {
-                  title: '关系字段组件',
+                  title: 'Association field components',
                   'title.zh-CN': '关系字段组件',
-                  children: [],
+                  children: [
+                    {
+                      title: 'Cascade select',
+                      'title.zh-CN': '级联选择器',
+                      link: '/plugins/collection-manager/user/association-fields/cascade-select',
+                    },
+                    {
+                      title: 'File manager',
+                      'title.zh-CN': '文件管理器',
+                      link: '/plugins/collection-manager/user/association-fields/file-manager',
+                    },
+                    {
+                      title: 'Record picker',
+                      'title.zh-CN': '数据选择器',
+                      link: '/plugins/collection-manager/user/association-fields/record-picker',
+                    },
+                    {
+                      title: 'Select',
+                      'title.zh-CN': '下拉选择器',
+                      link: '/plugins/collection-manager/user/association-fields/select',
+                    },
+                    {
+                      title: 'Sub detail',
+                      'title.zh-CN': '子详情',
+                      link: '/plugins/collection-manager/user/association-fields/sub-detail',
+                    },
+                    {
+                      title: 'Sub form',
+                      'title.zh-CN': '子表单',
+                      link: '/plugins/collection-manager/user/association-fields/sub-form',
+                    },
+                    {
+                      title: 'Sub-form(popover)',
+                      'title.zh-CN': '子表单（弹窗）',
+                      link: '/plugins/collection-manager/user/association-fields/sub-form(popover)',
+                    },
+                    {
+                      title: 'Sub table',
+                      'title.zh-CN': '子表格',
+                      link: '/plugins/collection-manager/user/association-fields/sub-table',
+                    },
+                    {
+                      title: 'Tag',
+                      'title.zh-CN': '标签',
+                      link: '/plugins/collection-manager/user/association-fields/tag',
+                    },
+                    {
+                      title: 'Title',
+                      'title.zh-CN': '标题',
+                      link: '/plugins/collection-manager/user/association-fields/title',
+                    },
+                    {
+                      title: 'Usage Summary',
+                      'title.zh-CN': '使用总结',
+                      link: '/plugins/collection-manager/user/association-fields/summary',
+                    },
+                  ],
                 },
               ],
             },
@@ -325,256 +472,70 @@ const sidebar = {
                   'title.zh-CN': '概述',
                   link: '/manual/modules/ui/actions',
                 },
-                {
-                  title: '查看',
-                  'title.zh-CN': '查看',
-                  link: '#',
-                },
-                {
-                  title: '编辑',
-                  'title.zh-CN': '编辑',
-                  link: '#',
-                },
-                {
-                  title: '删除',
-                  'title.zh-CN': '删除',
-                  link: '#',
-                },
-                {
-                  title: '筛选',
-                  'title.zh-CN': '筛选',
-                  link: '#',
-                },
-                {
-                  title: '刷新',
-                  'title.zh-CN': '刷新',
-                  link: '#',
-                },
-                {
-                  title: '提交（表单区块特有）',
-                  'title.zh-CN': '提交（表单区块特有）',
-                  link: '#',
-                },
-                {
-                  title: '刷新',
-                  'title.zh-CN': '刷新',
-                  link: '#',
-                },
-                {
-                  title: '复制',
-                  'title.zh-CN': '复制',
-                  link: '#',
-                },
-                {
-                  title: '刷新',
-                  'title.zh-CN': '刷新',
-                  link: '#',
-                },
-                {
-                  title: '导入',
-                  'title.zh-CN': '导入',
-                  link: '#',
-                },
-                {
-                  title: '导出',
-                  'title.zh-CN': '导出',
-                  link: '#',
-                },
-                {
-                  title: '自定义',
-                  'title.zh-CN': '自定义',
-                  children: [
-                    {
-                      title: '批量更新',
-                      'title.zh-CN': '批量更新',
-                      link: '#',
-                    },
-                    {
-                      title: '批量编辑',
-                      'title.zh-CN': '批量编辑',
-                      link: '#',
-                    },
-                    {
-                      title: '添加数据',
-                      'title.zh-CN': '添加数据',
-                      link: '#',
-                    },
-                    {
-                      title: '打开弹窗',
-                      'title.zh-CN': '打开弹窗',
-                      link: '#',
-                    },
-                    {
-                      title: '更新数据',
-                      'title.zh-CN': '更新数据',
-                      link: '#',
-                    },
-                    {
-                      title: '保存数据（表单区块特有）',
-                      'title.zh-CN': '保存数据（表单区块特有）',
-                      link: '#',
-                    },
-                    {
-                      title: '自定义请求',
-                      'title.zh-CN': '自定义请求',
-                      link: '#',
-                    },
-                    {
-                      title: '提交至工作流',
-                      'title.zh-CN': '提交至工作流',
-                      link: '#',
-                    },
-                  ],
-                },
+                '/manual/modules/ui/actions/add-new',
+                '/manual/modules/ui/actions/view',
+                '/manual/modules/ui/actions/edit',
+                '/manual/modules/ui/actions/delete',
+                '/manual/modules/ui/actions/filter',
+                '/manual/modules/ui/actions/submit',
+                '/manual/modules/ui/actions/add-record',
+                '/manual/modules/ui/actions/update-record',
+                '/manual/modules/ui/actions/save-record',
+                '/manual/modules/ui/actions/open-popup',
+                '/manual/modules/ui/actions/custom-request',
+                '/manual/modules/ui/actions/duplicate',
+                '/manual/modules/ui/actions/import',
+                '/manual/modules/ui/actions/import',
+                '/manual/modules/ui/actions/print',
+                '/manual/modules/ui/actions/refresh',
+                '/manual/modules/ui/actions/submit-to-workflow',
               ],
             },
           ],
         },
         {
-          title: '数据表和字段',
-          'title.zh-CN': '数据表和字段',
+          title: 'Collection templates',
+          'title.zh-CN': '数据表模板',
           children: [
             {
               title: 'Overview',
               'title.zh-CN': '概述',
-              link: '/manual/modules/collections-fields',
+              link: '/manual/modules/collection-templates',
             },
             {
-              title: '数据表模板',
-              'title.zh-CN': '数据表模板',
-              children: [
-                {
-                  title: '普通数据表',
-                  'title.zh-CN': '普通数据表',
-                  link: '#',
-                },
-                {
-                  title: '文件数据表',
-                  'title.zh-CN': '文件数据表',
-                  link: '#',
-                },
-                {
-                  title: '日历数据表',
-                  'title.zh-CN': '日历数据表',
-                  link: '#',
-                },
-                {
-                  title: '树结构表',
-                  'title.zh-CN': '树结构表',
-                  link: '#',
-                },
-                {
-                  title: 'SQL 数据表',
-                  'title.zh-CN': 'SQL 数据表',
-                  link: '#',
-                },
-                {
-                  title: '表达式表',
-                  'title.zh-CN': '表达式表',
-                  link: '#',
-                },
-                {
-                  title: '连接数据库视图',
-                  'title.zh-CN': '连接数据库视图',
-                  link: '#',
-                },
-              ],
+              title: 'General collection',
+              'title.zh-CN': '普通数据表',
+              link: '/manual/modules/collection-templates/general',
             },
             {
-              title: '数据表字段类型',
-              'title.zh-CN': '数据表字段类型',
-              children: [
-                {
-                  title: '基本类型',
-                  'title.zh-CN': '基本类型',
-                  children: [
-                    // 单行文本
-                    // 多行文本
-                    // 手机号码
-                    // 电子邮箱
-                    // URL
-                    // 整数
-                    // 数字
-                    // 百分比
-                    // 密码
-                    // 颜色
-                    // 图标
-                  ],
-                },
-                {
-                  title: '选择类型',
-                  'title.zh-CN': '选择类型',
-                  children: [
-                    // 勾选
-                    // 下拉菜单（单选）
-                    // 下拉菜单（多选）
-                    // 单选框
-                    // 复选框
-                    // 中国行政区
-                  ],
-                },
-                {
-                  title: '多媒体',
-                  'title.zh-CN': '多媒体',
-                  children: [
-                    // Markdown
-                    // 富文本
-                    // 附件
-                  ],
-                },
-                {
-                  title: '日期 & 时间',
-                  'title.zh-CN': '日期 & 时间',
-                  children: [
-                    // 日期
-                    // 时间
-                  ],
-                },
-                {
-                  title: '关系类型',
-                  'title.zh-CN': '关系类型',
-                  children: [
-                    // 一对一（belongs to）
-                    // 一对一（has one）
-                    // 一对多
-                    // 多对一
-                    // 多对多
-                  ],
-                },
-                {
-                  title: '基于地图的几何图形',
-                  'title.zh-CN': '基于地图的几何图形',
-                  children: [
-                    // 点
-                    // 线
-                    // 圆
-                    // 多边形
-                  ],
-                },
-                {
-                  title: '高级类型',
-                  'title.zh-CN': '高级类型',
-                  children: [
-                    // 公式
-                    // 自动编码
-                    // JSON
-                    // 数据表
-                    // 快照
-                  ],
-                },
-                {
-                  title: '系统信息',
-                  'title.zh-CN': '系统信息',
-                  children: [
-                    // ID
-                    // Table OID
-                    // 创建日期
-                    // 最后修改日期
-                    // 创建人
-                    // 最后修改人
-                  ],
-                },
-              ],
+              title: 'Tree collection',
+              'title.zh-CN': '树表',
+              link: '/manual/modules/collection-templates/tree',
+            },
+            {
+              title: 'Calender collection',
+              'title.zh-CN': '日历表',
+              link: '/manual/modules/collection-templates/calender',
+            },
+            {
+              title: 'File collection',
+              'title.zh-CN': '文件表',
+              link: '/manual/modules/collection-templates/file',
+            },
+            {
+              title: 'Expression collection',
+              'title.zh-CN': '表达式表',
+              link: '/manual/modules/collection-templates/expression',
+            },
+            {
+              title: 'Sql collection',
+              'title.zh-CN': 'Sql表',
+              link: '/manual/modules/collection-templates/sql',
+            },
+            {
+              title: 'View collection',
+              'title.zh-CN': '连接数据库视图',
+              link: '/manual/modules/collection-templates/view',
             },
           ],
         },
@@ -1128,9 +1089,49 @@ const sidebar = {
                     '/plugins/client/user/ui-designer',
                     '/plugins/client/user/ui-designer/menus',
                     '/plugins/client/user/ui-designer/pages',
-                    '/plugins/client/user/ui-designer/blocks',
-                    '/plugins/client/user/ui-designer/fields',
-                    '/plugins/client/user/ui-designer/actions',
+                    {
+                      title: 'Blocks',
+                      'title.zh-CN': '区块',
+                      children: [
+                        {
+                          title: 'Overview',
+                          'title.zh-CN': '概述',
+                          link: '/plugins/client/user/ui-designer/blocks',
+                        },
+                      ],
+                    },
+                    {
+                      title: 'Fields',
+                      'title.zh-CN': '字段',
+                      children: [
+                        {
+                          title: 'Overview',
+                          'title.zh-CN': '概述',
+                          link: '/plugins/client/user/ui-designer/fields',
+                        },
+                      ],
+                    },
+                    {
+                      title: 'Actions',
+                      'title.zh-CN': '操作',
+                      children: [
+                        {
+                          title: 'Overview',
+                          'title.zh-CN': '概述',
+                          link: '/plugins/client/user/ui-designer/actions',
+                        },
+                        '/plugins/client/user/ui-designer/actions/add-new',
+                        '/plugins/client/user/ui-designer/actions/view',
+                        '/plugins/client/user/ui-designer/actions/edit',
+                        '/plugins/client/user/ui-designer/actions/delete',
+                        '/plugins/client/user/ui-designer/actions/filter',
+                        '/plugins/client/user/ui-designer/actions/submit',
+                        '/plugins/client/user/ui-designer/actions/add-record',
+                        '/plugins/client/user/ui-designer/actions/update-record',
+                        '/plugins/client/user/ui-designer/actions/save-record',
+                        '/plugins/client/user/ui-designer/actions/open-popup',
+                      ],
+                    },
                   ],
                 },
               ],

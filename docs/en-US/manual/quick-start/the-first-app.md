@@ -1,90 +1,92 @@
-# The First APP
+# 第一个应用
 
-Let's build an order management system using NocoBase.
+让我们用 NocoBase 搭建一个订单管理系统。
 
-## 1. Create data collections and fields
+## 1. 创建数据表和字段
 
-In this order management system, we need to have the information of `Customers`,`Products`,`Orders` which are interrelated with each other. We need to create 4 data tables and their fields as follows:
+在这个订单管理系统中，我们需要掌握`Customers`、`Products`、`Orders`的信息，他们彼此之间互相关联。经过分析，我们需要建立 4 个数据表，它们的字段分别为：
 
 - Customers
-  - Name
-  - Address
-  - Gender
-  - Phone
-  - _Orders_ (All orders purchased, data from `Orders` , each customer data contains multiple order data)
+  - 姓名
+  - 地址
+  - 性别
+  - 电话
+  - _订单（购买过的所有订单，数据来自`Orders`，每条顾客数据包含多条订单数据）_
 - Products
-  - Product name
-  - Description
-  - Images
-  - Price
+  - 商品名称
+  - 描述
+  - 图片
+  - 价格
 - Orders
-  - Serial number
-  - Total
-  - Note
-  - Address
-  - _Customer_ (The customer to which the order belongs to, which is a many-to-one relationship. Each order belongs to one customer, and one customer may have multiple orders)
-  - _Order List_ (The items and quantities in this order are associated with `Order List`, which is a **one to many** relationship. Each order contains multiple order items, and each order items belongs to only one order)
-- Order List
-  - Product (The product contained in this item whith is associated with `Products`, which is a **many-to-one** relationship. Each order item contains one product, and each product may belong to multiple order item)
-  - Quantity
+  - 订单编号
+  - 总价
+  - 备注
+  - 地址
+  - _顾客（该订单所属的顾客，数据来自`Customers`，每条订单数据属于一条顾客数据）_
+  - _订单明细（该订单中的商品，数据来自`Order Details`，每条订单数据包含多条订单明细数据）_
+- Order list
+  - _订单（该明细所属的订单，数据来自`Orders`，每条订单明细数据属于一条订单数据）_
+  - _商品（该明细所包含的商品，数据来自`Products`，每条订单明细数据包含一条商品数据）_
+  - 数量
 
-Where the fields in italics are relational fields, associated to other data tables.
+其中，斜体的字段是关系字段，关联到其他数据表。
 
-Next, click the "Collections & Fields" button to enter the Configuration screen and create the first Collection `Customers`.
+接下来，点击“数据表配置”按钮，进入数据表配置界面，创建第一个 Collection `Customers`。
 
 ![create-collection.gif](./the-first-app/create-collection.gif)
 
-Then click on "Configure fields" to add a name field for `Customers`, which is a Single line text type.
+然后点击“字段配置”，为`Customers` 添加 name 字段，它是单行文本类型。
 
 ![create-field.gif](./the-first-app/create-field.gif)
 
-In the same way, add Address, Gender, and Phone for `Customers`, which are the Text, Radio group type, and Phone type respectively.
+用同样的方法，为`Customers` 添加 Address、Gender、Phone，它们分别是单行文本、单项选择类型、手机号码类型。
 
 ![fields-list.jpg](./the-first-app/fields-list.jpg)
 
-In the same way, create Collections `Products`, `Orders`, `Order List` and their fields.
+用同样的方法，创建 Collection `Products`、`Orders`、`Order list` 以及它们的字段。
 
 ![collection-list.jpg](./the-first-app/collection-list.jpg)
 
-In this case, for relational fields, if you are not familiar with the concepts of one-to-many, many-to-many, etc., you can directly use the Link to type to create associations between collections. If you are familiar with these concepts, please use the correct types of One to many, Many to one, etc. to establish the association between collections. For example, in this example, we associate `Orders` with `Order list`Order list with the relationship One to many.
+其中，对于关系字段，如果你不熟悉一对多、多对多等概念，可以直接使用 Link to 类型来建立数据表之间的关联。如果你熟悉这几个概念，请正确使用 One to many, Many to one 等类型来建立数据表之间的关联。比如在这个例子中，我们将 `Orders` 与 `Order list` 关联，关系为 One to many。
 
 ![collection-list.jpg](./the-first-app/order-list-relation.jpg)
 
-In the graphical interface, you can visualize the relationship between the various collections. (Note: Graph-collection plugin is not yet open source)
+在图形化的数据表里，可以很直观的看出各个表之间的关系。（注：Graph-collection 插件暂未开源）
+
 ![graph-collection.jpg](./the-first-app/graph-collection.jpg)
 
-Once the data collections and fields are created, we start making the interface.
+将数据表和字段创建完成后，我们开始制作界面。
 
-## 2. Configure menus and pages
+## 2. 配置菜单和页面
 
-We need three pages for customers, orders, and products to display and manage our data.
+我们需要顾客、订单、商品三个页面展示和管理我们的数据。
 
-Click the UI Editor button to enter the interface configuration mode. In this mode, we can add menu items, add pages, and arrange blocks within the pages.
+点击界面配置按钮，进入界面配置模式。在界面配置模式下，我们可以添加菜单项，添加页面，在页面内布置区块。
 
 ![1.editor.gif](./the-first-app/1.editor.gif)
 
-Click Add menu item, add menu groups "Customers" and "Orders & Products", then add submenu pages "All Orders" and "Products".
+点击添加菜单项，添加菜单分组 “Customers” 和 “Orders & Products” ，然后添加子菜单页面 “All Orders” 和 “Products”。
 
 ![1.menu.gif](./the-first-app/1.menu.gif)
 
-After adding menus and pages, we can add and configure blocks within the pages.
+添加完菜单和页面之后，我们可以在页面内添加和配置区块了。
 
-## 3. Adding and Configuring Blocks
+## 3. 添加和配置区块
 
-NocoBase currently supports table, kanban, calendar, form, items, and other types of blocks that present data from a data collection and allow manipulation of the data. Obviously, customers, orders, and products are suitable for displaying and manipulating in a table block.
+NocoBase 目前支持表格、看板、日历、表单、详情等类型的区块，它们可以将数据表中的数据展示出来，并可以对数据进行操作。显然，顾客、订单、商品 都适合用表格的方式展示和操作。
 
-We add a table block to the "All Orders" page, select Collection `Orders` as the data source, and configure the columns to be displayed for this table block.
+我们在“所有订单”页面，添加一个表格区块，数据源选择 Collection `Orders` ，并为这个表格区块配置需要显示的列。
 
 ![1.block.gif](./the-first-app/1.block.gif)
 
-Configure actions for this table block, including filter, add, delete, view, and edit.
+给这个表格区块配置操作，包括筛选、添加、删除、查看、编辑。
 
 ![1.action.gif](./the-first-app/1.action.gif)
 
-Configure form and item blocks for add, edit, view actions.
+为新增、编辑、查看等操作配置表单和详情区块。
 
 ![1.action-block.gif](./the-first-app/1.action-block.gif)
 
-Then, lay out the form blocks on the Products and Customers pages with the same method. When you are done, exit the UI Editor mode and enter the usage mode, and a simple order management system is completed.
+然后，用同样的方法，在 Products 和 Customers 页面布置表格区块。完成后，退出界面配置模式，进入使用模式，一个简单的订单管理系统就完成了。
 
 ![demo-finished.jpg](./the-first-app/demo-finished.jpg)

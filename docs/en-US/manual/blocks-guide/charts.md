@@ -1,20 +1,20 @@
-# Charts
+# 图表
 
-Currently, chart blocks in NocoBase need to be implemented via a configuration file or by writing code. The chart library uses [g2plot](https://g2plot.antv.vision/en/examples), which theoretically supports all charts on [https://g2plot.antv.vision/en/examples](https://g2plot.antv.vision/en/examples). The currently configurable charts include
+目前，NocoBase 图表区块需要通过配置文件或编写代码来实现。图表库使用的是 [g2plot](https://g2plot.antv.vision/en/examples)，理论上支持 https://g2plot.antv.vision/en/examples 上的所有图表。目前可以配置的图表包括：
 
-- Column charts
-- Bar charts
-- Line charts
-- Pie charts
-- Area charts
+- 柱状图
+- 条形图
+- 折线图
+- 饼图
+- 面积图
 
-## Add and edit charts
+## 添加和编辑图表
 
 ![chart-edit.gif](./charts/chart-edit.gif)
 
-## Chart Configuration
+## 图表配置
 
-The initial chart configuration is static JSON data
+初始化的图表配置是静态的 JSON 数据
 
 ```json
 {
@@ -78,9 +78,9 @@ The initial chart configuration is static JSON data
 }
 ```
 
-Data supports expression, NocoBase has a built-in `requestChartData(config)` function for custom chart data requests. Parameters are described in: [https://github.com/axios/axios#request-config](https://github.com/axios/axios#request-config)
+data 支持表达式的写法，NocoBase 内置了 `requestChartData(config)` 函数，用于自定义图表数据的请求。Config 参数说明见： [https://github.com/axios/axios#request-config](https://github.com/axios/axios#request-config)
 
-Example.
+示例：
 
 ```json
 {
@@ -111,7 +111,7 @@ Example.
 }
 ```
 
-HTTP API example.
+HTTP API 示例：
 
 ```bash
 GET /api/collectionName:getColumnChartData
@@ -156,9 +156,9 @@ Response Body
 
 ```
 
-## Server-side implementation
+## Server 端实现
 
-Add a custom getColumnChartData method to the data table named collectionName.
+为名为 collectionName 的数据表，添加自定义的 getColumnChartData 方法：
 
 ```js
 app.resourcer.registerActionHandlers({
@@ -171,29 +171,29 @@ app.resourcer.registerActionHandlers({
 
 ```
 
-## Video
+## 视频
 
-### Static data
+### 静态数据
 
 <video width="100%" height="440" controls>
   <source src="https://user-images.githubusercontent.com/1267426/198877269-1c56562b-167a-4808-ada3-578f0872bce1.mp4" type="video/mp4">
 </video>
 
-### Dynamic data
+### 动态数据
 
 <video width="100%" height="440" controls>
   <source src="https://user-images.githubusercontent.com/1267426/198877336-6bd85f0b-17c5-40a5-9442-8045717cc7b0.mp4" type="video/mp4">
 </video>
 
-### More charts
+### 更多图表
 
-Theoretically supports all charts on [https://g2plot.antv.vision/en/examples](https://g2plot.antv.vision/en/examples)
+理论上支持 https://g2plot.antv.vision/en/examples 上的所有图表
 
 <video width="100%" height="440" controls>
   <source src="https://user-images.githubusercontent.com/1267426/198877347-7fc2544c-b938-4e34-8a83-721b3f62525e.mp4" type="video/mp4">
 </video>
 
-## JS Expressions
+## JS 表达式
 
 Syntax
 

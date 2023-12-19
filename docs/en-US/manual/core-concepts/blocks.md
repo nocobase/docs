@@ -1,86 +1,87 @@
-# Blocks
+# 区块
 
-Blocks are views used to display and manipulate data. In NocoBase, pages, popups and drawers are considered as containers of blocks, and the container is like a canvas in which various blocks can be placed.
+区块是用来展示和操作数据的视图。在 NocoBase 里，将页面、弹窗、抽屉看作是区块的容器，容器就像一张画布，在里面可以放置各种各样的区块。
 
-Thanks to NocoBase's design of separating data and view, pages carry data through blocks and organize and manage data in different forms according to different block types.
+得益于 NocoBase 将数据与视图分离的设计，页面通过区块承载数据，并根据不同的区块类型，以不同的形式组织和管理数据。
 
-## Structure of blocks
+## 区块结构
 
-A block consists of three parts.
+一个完整的区块由三部分组成：
 
-1. content area: the body of the block
-2. action area: various action buttons can be placed to manipulate the block data
-3. configuration area: buttons for operating the block configuration
+1. 内容区：区块的主体
+2. 操作区：可以放置各种操作按钮，用于操作区块数据
+3. 配置区：操作区块配置的按钮
 
 ![6.block.jpg](./blocks/6.block.jpg)
 
-## Block types
+## 区块类型
 
 ![add-block.jpg](./blocks/add-block.jpg)
 
-NocoBase currently has 10+ types of blocks built in, more can be supported in the future by way of plugins.
+NocoBase 目前内置 10 几种区块，未来可以通过插件的方式支持更多种。
 
-- **Data blocks:** blocks designed for organizing data.
-  - **Table:** A block that present multiple data in a table, either a single collection or multiple collections that are related to each other.
-  - **Form:** A block for entering or editing data in a form, either for a particular collection or for multiple collections that are related to each other in a unified way.
-  - **Details:** A block to display a specific record, either for a particular collection or for multiple collection that are related to each other.
-  - **Calendar:** A block that displays multiple records in the form of a calendar, suitable for certain data with important characteristics in terms of date.
-  - **Kanban:** A block that displays multiple data in the form of a Kanban board, suitable for managing production processes.
-- **Chart blocks:** Blocks designed for graphical presentation of statistical data. Currently supports: bar graphs, bar charts, line graphs, pie charts, area charts, etc.
-- **Other blocks:** Blocks designed to display special data.
-  - **Markdown:** Text content written in Markdown.
-  - **Audit Log**: Show the change records of all data in a collection, including new, edit and delete.
+- **数据区块**：为组织数据而设计的区块。
+  - **表格**：以表格形式展示多条数据的区块，既可以展示一个数据表，也可以展示相互之间有关联关系的多个数据表。
+  - **表单**：以各种类型的输入框录入或编辑数据的区块，既可以为某一个数据表进行录入，也可以对相互之间有关联关系的多个数据表统一录入。
+  - **详情**：展示一条特定数据的区块，既可以对某一个数据表的某一条数据进行展示，也可以对相互之间有关联关系的多个数据表中的多条数据统一展示。
+  - **日历**：以日历的形式展示多条数据的区块，适合某些在日期上具备重要特征的数据。
+  - **看板**：以看板的形式展示多条数据的区块，适合用来对生产过程进行管理。
+- **图表区块**：为图形化展示统计数据而设计的区块。目前支持：柱状图、条形图、折线图、饼图、面积图等。
+- **其他区块**：为展示特殊数据而设计的区块。
+  - **Markdown**：用 Markdown 书写的文本内容。
+  - **操作记录**：展示一个数据表中的所有数据的变更记录，包括新建、编辑和删除。
 
-## Add block
+## 添加区块
 
-Enter the UI Editor mode and click the Add block button on the page and in the pop-up window to add the block. The options are divided into 4 steps.
+进入界面配置模式，在页面和弹窗内点击 Add block 按钮即可添加区块。选项分为 4 步：
 
-1. Select block type: Currently available block types include Table, Form, Details, Calendar, Kanban, Markdown
-2. Select Collection: All collections will be listed here
-3. Choose the creation method: create a blank block, or duplicate a block template , or reference a block template
-4. Select Template: If you selected Create from Template in step 3, select the template in step 4
+1. 选择区块类型：目前可用的区块类型包括表格、表单、详情、日历、看板、Markdown
+2. 选择 Collection：此处会列出所有的 Collection
+3. 选择创建方式：创建空白区块，或者从复制区块模板，或者引用区块模板
+4. 选择模板：若第 3 步选择了从模板创建，则在第 4 步选择模板
 
 ![6.block-add.jpg](./blocks/6.block-add.jpg)
 
-## Configure Blocks
+## 配置区块
 
-The configuration of blocks consists of three elements.
+配置区块包括三方面的内容：
 
-- Configure block content
-- Configure block actions
-- Configure block properties
+- 配置区块内容
+- 配置区块操作
+- 配置区块属性
 
-### Configure block content
+### 配置区块内容
 
-Take the table block as an example, the content of the block is the columns to be displayed in the table. Click Configure columns to configure the columns to be displayed.
+以表格区块为例，区块内容是指表格中要显示的列。点击 Configure columns 即可配置要显示的列：
 
 ![6.block-content.gif](./blocks/6.block-content.gif)
 
-### Configure block actions
+### 配置区块操作
 
-Take table block as an example, there are filter, add, delete, view, edit, customize and other actions available. Click the Configure actions button to configure the actions. Each of the action buttons can be configured for their own properties.
+以表格区块为例，有筛选、添加、删除、查看、编辑、自定义等操作可选。点击 Configure actions 按钮可以配置操作。其中，每个操作按钮都可以单独配置属性：
 
-![6.block-content.gif](./blocks/6.block-content%201.gif)
+![6.block-content.gif](./blocks/6.block-content1.gif)
 
-### Configure block properties
+### 配置区块属性
 
-Move the cursor to the upper right corner of the block and you will see the block configuration button. Using the table block as an example, the following properties can be configured.
+将光标移到区块右上角，会看到区块配置按钮。以表格区块为例，可以配置的属性有：
 
+- Block title
 - Drag & drop sorting
 - Set the data scope
 - Set default sorting rules
 - Records per page
 
-![6.collection-setting.gif](./blocks/6.collection-setting.gif)
+## 调整布局
 
-## Adjust the layout
-
-It is possible to put either just one block or multiple blocks in combination within the page. You can adjust the position and width of the blocks by dragging and dropping them.
+页面内既可以只放一个区块，也可以放多个区块进行组合。你可以通过拖拽完成区块位置和宽度的调整。
 
 ![block-drag.gif](./blocks/block-drag.gif)
 
-## Block templates
+## 区块模板
 
-You can save a block as a template, which can be copied or referenced later.
+你可以将一个区块保存为模板，以后可以复制或引用这个模板。
 
-For example, if a form is used for both adding and editing data, then you can save this form as a template and reference it in the Add Data and Edit Data blocks.
+比如，一个数据表的表单，既用于新增数据，又用于编辑数据，那就可以将这个表单保存为模板，在新增数据和编辑数据的界面里引用它。
+
+![block-template.jpg](./blocks/block-template.jpg)

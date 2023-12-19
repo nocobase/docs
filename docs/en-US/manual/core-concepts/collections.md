@@ -1,60 +1,59 @@
-# Collections
+# 数据表
 
-Before developing a system, we usually have to abstract the business and build a data model. It's called collections in NocoBase. Collections in NocoBase consists of fields (columns) and records (rows). The concept of a collection is similar to the concept of a data table in a relational database, but the concept of fields is slightly different.
+开发一个系统之前，我们通常要对业务进行抽象，建立数据模型。NocoBase 的数据表由字段（列）和记录（行）组成。数据表的概念与关系型数据库的数据表概念相近，但是字段的概念略有不同。
 
-For example, in a collection describing an order, each column contains information about a specific attribute of the order, such as the delivery address, while each row contains all the information about a specific order, such as order number, customer name, phone number, delivery address, etc.
+例如，在一个描述订单的数据表中，每列包含的是订单某个特定属性的信息，如收件地址；而每行则包含了某个特定订单的所有信息，如订单号、顾客姓名、电话、收件地址等。
 
-## Separate "data structure" and "user interface"
+## 数据与视图分离
 
-NocoBase's `Data` and `View` are separated, managed and presented by `Collections` and `Blocks` respectively.
+NocoBase 的`数据`和`视图`是分离的，分别由数据表和区块来管理和呈现。
 
-This means that,
+这就意味着：
 
-- you can create **one collection** and design **one set of interfaces** for it, to enable the presentation and manipulation of data.
-- You can also create **one collection** and design **many sets of interfaces** for it, for the presentation and manipulation of data in different scenarios or roles.
-- You can also create **multiple collections** and then design **one set of interfaces** for them to display and manipulate multiple data tables at the same time.
-- You can even create **multiple collections** and then design **multiple sets of interfaces** for them, each of which can operate on multiple data tables and perform unique functions.
+- 你可以创建**一个**数据表，并为其设计**一套**界面，实现数据的展示和操作；
+- 你也可以创建**一个**数据表，然后为其设计**多套**界面，用于不同的场景或角色下对数据的展示和操作；
+- 你还可以创建**多个**数据表，然后为其设计**一套**界面，实现多个数据表的同时展示和操作；
+- 你甚至可以创建**多个**数据表，然后为其设计**多套**界面，每套界面都可以操作多个数据表并完成独特的功能；
 
-Simply put, the separation of data and interfaces makes **the organization and management of data more flexible**, and how you present the data depends on how you configure the interfaces.
+简单说，数据与界面的分离使得**数据的组织和管理更加灵活**，如何呈现数据就看你如何配置界面。
 
-## Field Types
+## 字段类型
 
-NocoBase currently supports the following dozens of fields, and more can be supported in the future by way of plug-ins.
+NocoBase 目前支持以下几十种字段，未来可以通过插件的方式支持更多种。
 
-| Name                              | Type               |
-| --------------------------------- | ------------------ |
-| single-line text                  | basic type         |
-| Icon                              | Basic Type         |
-| Multi-line text                   | Basic type         |
-| Password                          | Basic type         |
-| Mobile Number                     | Basic Type         |
-| Number                            | Basic Type         |
-| Integer                           | Basic Type         |
-| Email                             | Basic Type         |
-| Percent                           | Basic Type         |
-| Drop-down menu (single selection) | Select type        |
-| Drop-down menu (multiple choice)  | Select type        |
-| China Administrative Region       | Select Type        |
-| Check                             | Select Type        |
-| Radio                             | Select Type        |
-| Checkbox                          | Select Type        |
-| Link to                           | Relationship Type  |
-| One-to-One (has one)              | Relationship Type  |
-| One-to-One (belongs to)           | Relationship Type  |
-| One-to-many                       | Relationship Type  |
-| Many-to-one                       | relationship type  |
-| Many-to-many                      | relationship type  |
-| Formula                           | advanced type      |
-| AutoCoding                        | Advanced Types     |
-| JSON                              | Advanced Types     |
-| Markdown                          | Multimedia         |
-| Rich Text                         | Multimedia         |
-| Attachments                       | Multimedia         |
-| Date                              | Date & Time        |
-| Time                              | Date & Time        |
-| ID                                | System Information |
-| Created by                        | System Information |
-| Date Created                      | System Information |
-| Last Modified By                  | System Information |
-| Last Modified Date                | System Information |
-| Formula                           | Advanced Type      |
+| 名称                 | 类型      |
+| -------------------- | --------- |
+| 单行文本             | 基本类型  |
+| 图标                 | 基本类型  |
+| 多行文本             | 基本类型  |
+| 密码                 | 基本类型  |
+| 手机号码             | 基本类型  |
+| 数字                 | 基本类型  |
+| 整数                 | 基本类型  |
+| 电子邮箱             | 基本类型  |
+| 百分比               | 基本类型  |
+| 下拉菜单（单选）     | 选择类型  |
+| 下拉菜单（多选）     | 选择类型  |
+| 中国行政区           | 选择类型  |
+| 勾选                 | 选择类型  |
+| 单选框               | 选择类型  |
+| 复选框               | 选择类型  |
+| 关联                 | 关系类型  |
+| 一对一（belongs to） | 关系类型  |
+| 一对一（has one）    | 关系类型  |
+| 一对多               | 关系类型  |
+| 多对一               | 关系类型  |
+| 多对多               | 关系类型  |
+| 公式                 | 高级类型  |
+| 自动编码             | 高级类型  |
+| JSON                 | 高级类型  |
+| Markdown             | 多媒体    |
+| 富文本               | 多媒体    |
+| 附件                 | 多媒体    |
+| 日期                 | 日期&时间 |
+| 时间                 | 日期&时间 |
+| ID                   | 系统信息  |
+| 创建人               | 系统信息  |
+| 创建日期             | 系统信息  |
+| 最后修改人           | 系统信息  |
+| 最后修改日期         | 系统信息  |

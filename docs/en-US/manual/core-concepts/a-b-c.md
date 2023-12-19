@@ -1,21 +1,21 @@
 # A·B·C
 
-At the no-code level, the core concept of NocoBase can be summarized as `A·B·C`.
+在无代码层面，NocoBase 的核心概念可以总结为 `A·B·C`。
 
-`A·B·C` stands for `Action·Block·Collection`. We design data structure by `Collection`, organize and display data by `Block`, and interact with data by `Action`.
+`A·B·C` 是`Action·Block·Collection` 的缩写，即`操作·区块·数据表`。通过 `Collection` 设计数据结构，通过 `Block` 组织与展示数据，通过 `Action` 交互数据。
 
-## **Separate "data structure" and "user interface"**
+## 数据与视图分离
 
-When defining data, focus on defining data; when defining views, focus on defining views.
+定义数据时，专注于定义数据；定义视图时，专注于定义视图。
 
-Abstract the business by defining the data; then define blocks to organize the content to present the data in the way you want.
+通过定义数据，来抽象业务；再通过定义区块去组织内容以你所期望的方式呈现数据。
 
-## **One Data table, Many Presentations**
+## 一种数据，多种呈现
 
-Abstract a unified data model for the business, and then with blocks you can build a variety of presentations for the same data table for different scenarios, different roles, and different combinations.
+为业务抽象出统一的数据模型，然后通过区块可以为同一个数据表建立各种各样的呈现方式，用于不同的场景、不同的角色、不同的组合。
 
-## **Driven by Action**
+## 操作驱动
 
-`Collection`defines the structure of the data, and the `Block`organize the presentation of the data. So, what drives data interactions and changes? The answer is `Action`.
+数据表来定义数据的结构，区块来组织数据的呈现方式。那么，什么驱动数据的交互和变更？答案是操作。
 
-`Block`present the data to the user, and `Action`send the user's instructions to the server to complete the interaction or change of the data.
+区块将数据呈现给用户，操作则是将用户的指令发送给服务器完成数据的交互或变更。

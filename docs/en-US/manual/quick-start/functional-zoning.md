@@ -1,9 +1,9 @@
-# Functional zoning
+# 功能分区
 
-NocoBase has a built-in layout template by default, and the interface of this layout template is divided into three main areas.
+NocoBase 默认内置一个布局模板，这个布局模板的界面主要分为三个区域：
 
-1. Configuration entry area. Users with permissions can see the UI Editor, Collections & Fields, Roles and Permissions, block templates, Workflows, and other extended configuration options here.
-2. Menu area. At the top is the first level menu, and on the left side are the menus for the second level and lower tiers. Each menu item can be configured as a menu group, page, or link.
-3. Block container. This is the block container for the page, in which various blocks can be placed.
+1. 配置入口区。具备系统配置权限的用户，可以在这里看到界面配置、插件管理器、设置中心的入口。
+2. 菜单区。顶部是一级菜单，左侧是二级及以下层级的菜单。每个菜单项都可以配置为菜单分组、页面、外部链接。
+3. 区块容器。这里是页面的区块容器，在里面可以放置各种各样的区块。
 
 ![3.zone.jpg](./functional-zoning/3.zone.jpg)

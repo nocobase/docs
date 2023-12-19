@@ -1,48 +1,37 @@
-# Menus
+# 菜单
 
-The default menu location for NocoBase is at the top and on the left. The top is the first level menu and the left side is the menu for the second level and lower levels.
+目前 NocoBase 支持三种类型的菜单项：
 
-Three types of menu items are supported.
+- 页面：跳转至菜单关联的 NocoBase 的页面；
+- 分组：对菜单进行分组，将同类菜单放到统一的位置；
+- 链接：跳转至指定的 URL；
 
-- Menu groups
-- Pages
-- Links
-
-Once you enter the UI Editor mode, you can add and edit menus, as well as sort menu items.
-
-NocoBase currently supports three types of menu items.
-
-- Page: jumps to the content page the menu item is associated.
-- Group: grouping menu items and placing similar menus in a uniform location.
-- Link: jumps to a specified URL.
-
-Take the warehouse system as an example, if you have storage management in your business, storage management contains in and out logs, inventory queries, jump to the ERP application storage and other functions. Then you can set the menu like this.
+以仓储系统为例，如果你的业务里有储位管理，储位管理里又包含出入库日志、库存查询、跳转 ERP 申请储位等功能。那么可以这样设置菜单：
 
 ```
-- Storage space management (grouping)
-    - Inventory query (page)
-    - Inbound and outbound log (page)
-    - Jump ERP application storage space (link)
-
+- 储位管理（分组）
+    - 库存查询（页面）
+    - 出入库日志（页面）
+    - 跳转ERP申请储位（链接）
 ```
 
-## Default position
+## 默认位置
 
-In NocoBase's built-in page templates, the menu appears at the top and on the left.
+在 NocoBase 内置的页面模板中，菜单会出现在顶部和左侧。
 
 ![menu-position.jpg](./menus/menu-position.jpg)
 
-## Add Menu Item
+## 添加
 
 ![5.menu-add.jpg](./menus/5.menu-add.jpg)
 
-Click Add menu item to select the type to add. Support infinite level submenu.
+点击 Add menu item，选择添加的类型。支持无限级子菜单。
 
-## Configure and Sort
+## 配置和排序
 
-Move the cursor over the menu item and the Sort and Configure buttons will appear in the upper right corner. Press and hold the Sort button to drag and drop the sorting.
+将光标移到菜单项上，右上角会出现排序和配置按钮。按住排序按钮，可以拖拽排序。
 
-Configurations that are operable on menu items:
+对菜单项可操作的配置：
 
 - Edit
 - Move to
