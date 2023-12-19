@@ -58,7 +58,13 @@ import { MockServer, mockServer } from '@nocobase/test';
 async function createApp(options: any = {}) {
   const app = mockServer({
     ...options,
-    plugins: ['acl', 'users', 'collection-manager', 'error-handler', ...options.plugins],
+    plugins: [
+      'acl',
+      'users',
+      'collection-manager',
+      'error-handler',
+      ...options.plugins,
+    ],
     // 还会有些其他参数配置
   });
   // 这里可以补充一些需要特殊处理的逻辑，比如导入测试需要的数据表
