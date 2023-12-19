@@ -1,10 +1,11 @@
 # 0.17.0-alpha.8
 
-## 用户认证客户端 API
+## Authentication Client API
 
-### 背景
+### Background
 
-之前在扩展用户认证方式时，客户端是基于 React `Context`, 使用 `Provider` 的方式扩展自定义的登录、注册、配置界面，如：
+Previously, when developing the client for a custom authentication method, it was based on React `Context`.
+It utilized the `Provider` to extend custom sign-in, sign-up, and admin settings forms. For example:
 
 ```html
 <OptionsComponentProvider authType="Email/Password" component={Options}>
@@ -16,11 +17,11 @@
 </OptionsComponentProvider>
 ```
 
-扩展一个认证方式时需要经过多个 `Provider` 嵌套，代码不够简洁直观。
+It was required nested Providers, leading to less concise and intuitive code.
 
-### 变更
+### Changes
 
-现在扩展用户认证方式的自定义界面，通过 [用户认证插件 `@nocobase/plugin-auth`](../plugins/auth/index.md) 提供的接口 `registerType` 进行注册。
+Now the client for a custom authentication can be registered by utilizing the `registerType` method provided by the [authentication plugin `@nocobase/plugin-auth`](../plugins/auth/index.md).
 
 ```ts
 export type AuthOptions = {
@@ -37,9 +38,9 @@ export class AuthPlugin extends Plugin {
 }
 ```
 
-### 示例
+### Example
 
-#### 扩展登录表单 + 注册表单 + 后台配置表单
+#### Customize sign-in form + sign-up form + admin settings form
 
 ```diff
 - import { OptionsComponentProvider, SigninPageProvider, SignupPageProvider } from '@nocobase/client';
@@ -76,7 +77,7 @@ export class AuthPlugin extends Plugin {
  }
 ```
 
-#### 扩展第三方登录按钮 + 后台配置表单
+#### Customize sign-in (thirt-party) button + admin settings form
 
 ```diff
 - import { OptionsComponentProvider, SigninPageExtensionProvider } from '@nocobase/client';
@@ -108,11 +109,11 @@ export class AuthPlugin extends Plugin {
   }
 ```
 
-完整用法可以参考文档: [用户认证 - 开发指南](../plugins/auth/dev/index.md)
+For more details, refer to the documentation: [Authentication - Development](../plugins/auth/dev/index.md)
 
-### 移除
+### Removed
 
-原来的 `Provider` 已被移除：
+The following `Provider` has been removed：
 
 - `SigninPageProvider`
 - `SignupPageProvider`

@@ -1003,8 +1003,16 @@ const sidebar = {
               'title.zh-CN': '概述',
               link: '/plugins/auth',
             },
-            '/plugins/auth/user',
-            '/plugins/auth/dev',
+            {
+              title: 'User manual',
+              'title.zh-CN': '使用手册',
+              link: '/plugins/auth/user',
+            },
+            {
+              title: 'Development',
+              'title.zh-CN': '开发指南',
+              children: ['/plugins/auth/dev/guide', '/plugins/auth/dev/api'],
+            }
           ],
         },
         {
@@ -1577,6 +1585,11 @@ const sidebar = {
       title: '@nocobase/acl',
       type: 'subMenu',
       children: ['/api/acl/acl', '/api/acl/acl-role', '/api/acl/acl-resource'],
+    },
+    {
+      title: '@nocobase/auth',
+      type: 'subMenu',
+      children: ['/api/auth/auth-manager', '/api/auth/auth', '/api/auth/base-auth'],
     },
     {
       title: '@nocobase/client',
