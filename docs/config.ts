@@ -105,7 +105,7 @@ const sidebar = {
         {
           title: 'Breaking changes',
           'title.zh-CN': '不兼容变更',
-          link: '/breaking-changes/v0-17-0-alpha-5',
+          link: '/breaking-changes/v0-17-0-alpha-8',
         },
         {
           type: 'item',

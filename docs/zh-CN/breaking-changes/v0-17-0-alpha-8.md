@@ -20,29 +20,92 @@
 
 ### 变更
 
-现在扩展用户认证方式的自定义界面，通过用户认证插件提供的接口进行注册。
+现在扩展用户认证方式的自定义界面，通过用户认证插件提供的接口 `registerType` 进行注册。
 
 ```ts
-import AuthPlugin from '@nocobase/plugin-auth/client';
+export type AuthOptions = {
+  components: Partial<{
+    SignInForm: ComponentType<{ authenticator: AuthenticatorType }>;
+    SignInButton: ComponentType<{ authenticator: AuthenticatorType }>;
+    SignUpForm: ComponentType<{ authenticatorName: string }>;
+    AdminSettingsForm: ComponentType;
+  }>;
+};
 
-export class CustomAuthPlugin extends Plugin {
-  async load() {
-    const auth = this.app.pm.get(AuthPlugin);
-    auth.authPages.register('custom-auth-type', {
-      signIn: {
-        display: 'form', // or 'custom'
-        tabTitle: 'Sign in with custom type', // optional
-        Component: SignInPageComponent,
-      },
-      signUp: {
-        Component: SignUpPageComponent,
-      },
-      configForm: {
-        Component: OptionsComponent,
-      },
-    });
-  }
+export class AuthPlugin extends Plugin {
+  registerType(authType: string, options: AuthOptions);
 }
+```
+
+### 示例
+
+#### 扩展登录表单 + 注册表单 + 后台配置表单
+
+```diff
+- import { OptionsComponentProvider, SigninPageProvider, SignupPageProvider } from '@nocobase/client';
++ import AuthPlugin from '@nocobase/plugin-auth/client';
+  import React, { FC } from 'react';
+  import { Options } from './basic/Options';
+  import SignInForm from './basic/SignInForm';
+  import SignUpForm from './basic/SignUpForm';
+
+- export const BasicAuthPluginProvider: FC = (props) => {
+-   return (
+-     <OptionsComponentProvider authType="EmailPassword" component={Options}>
+-       <SigninPageProvider authType="Email/Password" tabTitle="Sign in via password" component={SignInForm}>
+-         <SignupPageProvider authType="EmailPassword" component={SignUpForm}>
+-           {props.children}
+-         </SignupPageProvider>
+-       </SigninPageProvider>
+-     </OptionsComponentProvider>
+-   );
+- }
+
+ export class BasicAuthPlugin extends Plugin {
+   async load() {
+-    this.app.use(BasicAuthPluginProvider);
++    const auth = this.app.pm.get(AuthPlugin);
++    auth.registerType("Email/Password", {
++      components: {
++        SignInForm: SignInForm,
++        SignUpForm: SignUpForm,
++        AdminSettingsForm: Options,
++      },
++    });
+   }
+ }
+```
+
+#### 扩展第三方登录按钮 + 后台配置表单
+
+```diff
+- import { OptionsComponentProvider, SigninPageExtensionProvider } from '@nocobase/client';
++ import AuthPlugin from '@nocobase/plugin-auth/client';
+  import React, { FC } from 'react';
+  import { OIDCButton } from './OIDCButton';
+  import { Options } from './Options';
+
+- export const OIDCProvider: FC = (props) => {
+-   return (
+-     <SigninPageExtensionProvider component={OIDCButton} authType="OIDC">
+-       <OptionsComponentProvider authType="OIDC" component={Options}>
+-         {props.children}
+-       </OptionsComponentProvider>
+-     </SigninPageExtensionProvider>
+-   );
+- };
+
+  export class OidcPlugin extends Plugin {
+    async load() {
+-     const auth = this.app.pm.get(AuthPlugin);
++     auth.registerType("OIDC", {
++       components: {
++         SignInButton: OIDCButton,
++         AdminSettingsForm: Options,
++       },
++     });
+    }
+  }
 ```
 
 完整用法可以参考文档：(待补充)
