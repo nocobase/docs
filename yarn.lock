@@ -1740,10 +1740,10 @@
   dependencies:
     eslint-scope "5.1.1"
 
-"@nocobase/client@^0.16.0-alpha.4":
-  version "0.16.0-alpha.4"
-  resolved "https://registry.npmjs.org/@nocobase/client/-/client-0.16.0-alpha.4.tgz#61ffaa9c48143e42bf2a82ac8ec6facb799995ec"
-  integrity sha512-8eY9tADDVlM3mpEyTyepRSjXp3IwE2qzvkKQsM3A3v1cv8a39hNM/ZqCOhtlJ2mSnb8+1kE2LifawP1hCxOXog==
+"@nocobase/client@^0.17.0-alpha.1":
+  version "0.17.0-alpha.1"
+  resolved "https://registry.npmjs.org/@nocobase/client/-/client-0.17.0-alpha.1.tgz#1edfb9d8af75e0fbcafb90664c25c902c57d78d5"
+  integrity sha512-LtTBUw2cRVUoqv04gGHw+Zwyeh/HKsTMiFW8nYaSozPQp51QBOkIYogjFkgc/IXzvbI+rA52jV+urkRNNnx89g==
   dependencies:
     "@ant-design/cssinjs" "^1.11.1"
     "@ant-design/icons" "^5.1.4"
@@ -1764,9 +1764,9 @@
     "@formily/reactive-react" "^2.2.27"
     "@formily/shared" "^2.2.27"
     "@formily/validator" "^2.2.27"
-    "@nocobase/evaluators" "0.16.0-alpha.4"
-    "@nocobase/sdk" "0.16.0-alpha.4"
-    "@nocobase/utils" "0.16.0-alpha.4"
+    "@nocobase/evaluators" "0.17.0-alpha.1"
+    "@nocobase/sdk" "0.17.0-alpha.1"
+    "@nocobase/utils" "0.17.0-alpha.1"
     "@types/requirejs" "^2.1.34"
     ahooks "^3.7.2"
     antd "^5.8.6"
@@ -1801,27 +1801,27 @@
     solarlunar-es "^1.0.9"
     use-deep-compare-effect "^1.8.1"
 
-"@nocobase/evaluators@0.16.0-alpha.4":
-  version "0.16.0-alpha.4"
-  resolved "https://registry.npmjs.org/@nocobase/evaluators/-/evaluators-0.16.0-alpha.4.tgz#0b23df5aceb1fc0e2efed242a0cc7f84a2c977e1"
-  integrity sha512-AbltBUxuWiNTtU58vhjO65+cuWtV03AdDtwie0mtauVM8DAIVEPfIOsEQ612W+y8hlW89wMFV4lXlYB+zW/42w==
+"@nocobase/evaluators@0.17.0-alpha.1":
+  version "0.17.0-alpha.1"
+  resolved "https://registry.npmjs.org/@nocobase/evaluators/-/evaluators-0.17.0-alpha.1.tgz#e46af2581308570128d0e98e36b84af8fe50f1b6"
+  integrity sha512-igN5ATuTVENB/BNDsZw70iLuYsNLalYK/SGwy7vDu75k2OPmL4QwJgnLjJHwJdz57PvuKD7WTGMEIBTU37KCNw==
   dependencies:
     "@formulajs/formulajs" "4.2.0"
-    "@nocobase/utils" "0.16.0-alpha.4"
+    "@nocobase/utils" "0.17.0-alpha.1"
     mathjs "^10.6.0"
 
-"@nocobase/sdk@0.16.0-alpha.4":
-  version "0.16.0-alpha.4"
-  resolved "https://registry.npmjs.org/@nocobase/sdk/-/sdk-0.16.0-alpha.4.tgz#d6712f4563a1a941c6e5b145692dc552173958b4"
-  integrity sha512-goNt3LTlNSlWKbh+/JYTo7W4q+4R8YDTp3kQQ1jxE/2XYFMNMVxp+1lgS7c3VsPqpUFVqwoTRkS3riA9whSGvA==
+"@nocobase/sdk@0.17.0-alpha.1":
+  version "0.17.0-alpha.1"
+  resolved "https://registry.npmjs.org/@nocobase/sdk/-/sdk-0.17.0-alpha.1.tgz#50e7916a1d8764cb2001af17ad556f40aa8bba1d"
+  integrity sha512-6SM6MU7qHYr/MJgKOIKGDW8hkHp9CRbEpUy63jA0NcerrqBfCFsBjvZgNrE2PbG4XqwcW8N5pIB6WNZVvkarOw==
   dependencies:
     axios "^0.26.1"
     qs "^6.10.1"
 
-"@nocobase/utils@0.16.0-alpha.4":
-  version "0.16.0-alpha.4"
-  resolved "https://registry.npmjs.org/@nocobase/utils/-/utils-0.16.0-alpha.4.tgz#ef1afaff0aed01d20d8685a49a8b002b76f70461"
-  integrity sha512-rHTTLSu8V/HWTDARCOAFlsCSiE/6rimOV4nZxoIsikyLcTKVgCBfPYs3VvLAqgjX1Oc+pA4U66Lku0+EwXi+oQ==
+"@nocobase/utils@0.17.0-alpha.1":
+  version "0.17.0-alpha.1"
+  resolved "https://registry.npmjs.org/@nocobase/utils/-/utils-0.17.0-alpha.1.tgz#098fe81813adbbd83c5fdf85ef6936f75daa0807"
+  integrity sha512-uU6HWjPjCsQ72O9mZAhD4dgaIqoFyE5MKJMKVyS2pb6KvFsEquNzvgPJx2gEvH+Zf7ri+0IlOzSQEi0TqxFeQQ==
   dependencies:
     "@hapi/topo" "^6.0.0"
     "@rc-component/mini-decimal" "^1.1.0"
@@ -5534,10 +5534,10 @@ dumi-assets-types@2.0.0-alpha.0:
   resolved "https://registry.npmjs.org/dumi-assets-types/-/dumi-assets-types-2.0.0-alpha.0.tgz#46bf619ed1cb6d27bbe6a9cfe4be51e5e9589981"
   integrity sha512-a/Y5lf0G6gwsEQ9hop/n03CcjmHsGBk384Cz/AEX6mRYrfSpUx/lQvP9HLoXkCzScl9PL1sSmLPnMkgaXDCZLA==
 
-dumi-theme-nocobase@^0.2.18:
-  version "0.2.18"
-  resolved "https://registry.npmmirror.com/dumi-theme-nocobase/-/dumi-theme-nocobase-0.2.18.tgz#91f9462ad738f347c1e6fb4e304170a891aa8804"
-  integrity sha512-M+FP/gL9yRazibyBXPUV4XRGaJb+MT+o4VU+oMja1RAWcCvzTYNeNQsXifpAvVnUdaGwNlESyJCU9hlLzB8ARQ==
+dumi-theme-nocobase@^0.2.22:
+  version "0.2.22"
+  resolved "https://registry.npmjs.org/dumi-theme-nocobase/-/dumi-theme-nocobase-0.2.22.tgz#736c5663ec2b7b16693508d7b38e0f0f9b32283c"
+  integrity sha512-A2mLANXfjMS1gbB3gpgg63mVcHdg4BAkYi7DFoAtehoTxm+3bmm9b1phQd+faBNkvPikoCifCEV9bpcQjl+iTg==
   dependencies:
     "@ant-design/icons" "^5.1.3"
     "@babel/runtime" "^7.22.3"
