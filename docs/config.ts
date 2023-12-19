@@ -1084,7 +1084,11 @@ const sidebar = {
           'title.zh-CN': '客户端 - Web',
           subTitle: '@nocobase/plugin-client',
           children: [
-            '/plugins/client',
+            {
+              title: 'Overview',
+              'title.zh-CN': '概述',
+              link: '/plugins/client',
+            },
             {
               title: '使用手册',
               'title.zh-CN': '使用手册',
@@ -1128,7 +1132,11 @@ const sidebar = {
               title: 'User manual',
               'title.zh-CN': '使用手册',
               children: [
-                '/plugins/collection-manager/user',
+                {
+                  title: 'Overview',
+                  'title.zh-CN': '概述',
+                  link: '/plugins/collection-manager/user',
+                },
                 {
                   title: 'Collection templates',
                   'title.zh-CN': '数据表模板',
@@ -1171,7 +1179,12 @@ const sidebar = {
                   ],
                 },
                 {
-                  title: 'Association fields',
+                  title: 'Field interfaces',
+                  'title.zh-CN': '数据表字段',
+                  link: '/plugins/collection-manager/user/field-interfaces',
+                },
+                {
+                  title: 'Association field components',
                   'title.zh-CN': '关系字段组件',
                   children: [
                     {
