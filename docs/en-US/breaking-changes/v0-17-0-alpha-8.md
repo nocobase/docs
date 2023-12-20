@@ -109,7 +109,7 @@ export class AuthPlugin extends Plugin {
   }
 ```
 
-For more details, refer to the documentation: [Authentication - Development](../plugins/auth/dev/index.md)
+For more details, refer to the documentation: [Authentication - Development](../plugins/auth/dev/guide.md)
 
 ### Removed
 
