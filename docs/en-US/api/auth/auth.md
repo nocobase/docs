@@ -1,8 +1,8 @@
 # Auth
 
-## 概览
+## Overview
 
-`Auth` 是用户认证类型的抽象类，定义了完成用户认证需要的接口，扩展新的用户认证类型需要继承 `Auth` 类，并实现其中的方法。基础实现可以参考: [BaseAuth](./base-auth.md).
+`Auth` is an abstract class for registering a authentication type, defining the necessary interfaces for completing the user authentication. To extend and implement a new authentication type, inherit from the `Auth` class and implement its methods. A foundational implementation can be found in [BaseAuth](./base-auth.md).
 
 ```ts
 interface IAuth {
@@ -21,34 +21,34 @@ export abstract class Auth implements IAuth {
 }
 
 class CustomAuth extends Auth {
-  // check: 鉴权
+  // check: core logic of authentication
   async check() {
     // ...
   }
 }
 ```
 
-## 属性
+## Properties
 
 ### `user`
 
-认证用户信息。
+Authenticated user infomation.
 
-#### 签名
+#### Signature
 
 - `abstract user: Model`
 
-## 类方法
+## Class Methods
 
 ### `constructor()`
 
-构造函数，创建一个 `Auth` 实例。
+To create a `Auth` instance.
 
-#### 签名
+#### Signature
 
 - `constructor(config: AuthConfig)`
 
-#### 类型
+#### Type
 
 ```ts
 export type AuthConfig = {
@@ -60,40 +60,40 @@ export type AuthConfig = {
 };
 ```
 
-#### 详细信息
+#### Details
 
-- `authenticator` - 认证器数据, 在 NocoBase 应用中的实际类型是 [AuthModel](../../plugins/auth/dev/api.md#authmodel)
-- `options` - 认证器配置
-- `ctx` - 请求上下文
+- `authenticator` - Authenticator data model. In NocoBase application, the actual type is [AuthModel](../../plugins/auth/dev/api.md#authmodel)
+- `options` - Configuration of the authenticator
+- `ctx` - The request context
 
 ### `check()`
 
-用户鉴权，返回用户信息，所有认证类型都必须实现的方法。
+Authentication logic, returning user information. A abstract method that all authentication types must implement.
 
-#### 签名
+#### Signature
 
 - `abstract check(): Promise<Model>`
 
 ### `signIn()`
 
-用户登录。
+User sign-in.
 
-#### 签名
+#### Signature
 
 - `signIn(): Promise<any>`
 
 ### `signUp()`
 
-用户注册。
+User sign-up.
 
-#### 签名
+#### Signature
 
 - `signUp(): Promise<any>`
 
 ### `signOut()`
 
-用户注销登录。
+User sign-out.
 
-#### 签名
+#### Signature
 
 - `signOut(): Promise<any>`

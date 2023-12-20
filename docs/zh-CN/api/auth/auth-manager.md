@@ -2,7 +2,7 @@
 
 ## 概览
 
-AuthManager 是 NocoBase 中的用户认证管理模块，用于注册不同的用户认证类型。
+`AuthManager` 是 NocoBase 中的用户认证管理模块，用于注册不同的用户认证类型。
 
 ### 基本使用
 
@@ -31,9 +31,9 @@ app.resourcer.use(authManager.middleware());
 
 ### 概念解释
 
-认证类型 (`AuthType`): 不同的用户认证方式，比如：密码、短信、OIDC, SAML 等。  
-认证器 (`Authenticator`): 认证方式实体，实际存储到数据表中，对应某种认证类型 (`AuthType`) 的配置记录。一种认证方式可以有多个认证器，对应多个配置，提供不同的用户认证方法。  
-认证器标识 (`Authenticator name`): 认证器的唯一标识，用来确定当前系统使用的认证方式。
+- **认证类型 (`AuthType`)**: 不同的用户认证方式，比如：密码、短信、OIDC, SAML 等。
+- **认证器 (`Authenticator`)**: 认证方式实体，实际存储到数据表中，对应某种认证类型 (`AuthType`) 的配置记录。一种认证方式可以有多个认证器，对应多个配置，提供不同的用户认证方法。
+- **认证器标识 (`Authenticator name`)**: 认证器的唯一标识，用来确定当前请求使用的认证方式。
 
 ## 类方法
 

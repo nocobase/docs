@@ -2,7 +2,7 @@
 
 ## 概览
 
-`BaseAuth` 继承自 `Auth` 抽象类，是用户认证类型的基础实现，用 JWT 作为鉴权方式。大多数情况下，扩展用户认证类型可以继承 `BaseAuth` 进行扩展，没有必要直接继承 `Auth` 抽象类。
+`BaseAuth` 继承自 [Auth](./auth.md) 抽象类，是用户认证类型的基础实现，用 JWT 作为鉴权方式。大多数情况下，扩展用户认证类型可以继承 `BaseAuth` 进行扩展，没有必要直接继承 `Auth` 抽象类。
 
 ```ts
 class BasicAuth extends BaseAuth {

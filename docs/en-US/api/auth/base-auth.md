@@ -1,19 +1,19 @@
 # BaseAuth
 
-## 概览
+## Overview
 
-`BaseAuth` 继承自 `Auth` 抽象类，是用户认证类型的基础实现，用 JWT 作为鉴权方式。大多数情况下，扩展用户认证类型可以继承 `BaseAuth` 进行扩展，没有必要直接继承 `Auth` 抽象类。
+`BaseAuth` extends the abstract class [Auth](./auth.md) and provides a foundational implementation for authentication types, utilizing JWT as the authentication method. In most cases, it's preferable to extend `BaseAuth` for customizing authentication type, rather than directly inheriting from the abstract class `Auth`.
 
 ```ts
 class BasicAuth extends BaseAuth {
   constructor(config: AuthConfig) {
-    // 设置用户数据表
+    // Set user collection
     const userCollection = config.ctx.db.getCollection('users');
     super({ ...config, userCollection });
   }
 
-  // 用户认证逻辑，由 `auth.signIn` 调用
-  // 返回用户数据
+  // User sign-in logic，called by `auth.signIn`
+  // Returning user information
   async validate() {
     const ctx = this.ctx;
     const { values } = ctx.action.params;
@@ -23,46 +23,46 @@ class BasicAuth extends BaseAuth {
 }
 ```
 
-## 类方法
+## Class Methods
 
 ### `constructor()`
 
-构造函数，创建一个 `BaseAuth` 实例。
+To create a `BaseAuth` instance.
 
-#### 签名
+#### Signature
 
 - `constructor(config: AuthConfig & { userCollection: Collection })`
 
-#### 详细信息
+#### Details
 
-- `config` - 参考 [Auth - constructor](./auth.md#constructor)
-- `userCollection` - 用户数据表, 比如: `db.getCollection('users')`
+- `config` - Refer to [Auth - constructor](./auth.md#constructor)
+- `userCollection` - User collection, E.g. `db.getCollection('users')`
 
 ### `user()`
 
-访问器，设置和获取用户信息，默认使用 `ctx.state.currentUser` 对象存取。
+Accessors for setting and getting user information，utilizing `ctx.state.currentUser` as the default storage mechanism.
 
-#### 签名
+#### Signature
 
 - `set user()`
 - `get user()`
 
 ### `check()`
 
-通过请求 token 鉴权，返回用户信息。
+Authenticate using the request token and return the user information.
 
 ### `signIn()`
 
-用户登录，生成 token.
+User sign-in，generate token.
 
 ### `signUp()`
 
-用户注册。
+User sign-up.
 
 ### `signOut()`
 
-用户注销登录，token 过期。
+User sign-out, and the token expires.
 
 ### `validate()` \*
 
-鉴权核心逻辑，由 `signIn` 接口调用，判断用户是否能成功登录。
+Core logic to be implemented and invoked by `signIn` to determine if a user can successfully sign-in.
