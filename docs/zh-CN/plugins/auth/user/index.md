@@ -26,7 +26,7 @@ NocoBase 目前支持的用户认证类型有：
 - SAML，[saml-auth 插件](../../saml/index.md) 扩展
 - OIDC，[oidc-auth 插件](../../oidc/index.md) 扩展
 
-除此之外，也可以自己扩展用户认证，参考[开发指南](../dev/index.md)。
+除此之外，也可以自己扩展用户认证，参考[开发指南](../dev/guide.md)。
 
 ## 密码认证
 
