@@ -1,6 +1,15 @@
-# 0.17.0-alpha.8
+# 0.18.0-alpha.1
 
-## Authentication Client API
+:::warning
+This article only covers incompatibility changes related to plugin development.
+:::
+
+## Test framework changed from jest to vitest
+
+- [Server - Testing](/development/server/test)
+- [Client - Testing](/development/client/test)
+
+## Authentication Client API changes
 
 ### Background
 

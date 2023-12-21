@@ -1,6 +1,15 @@
-# 0.17.0-alpha.8
+# 0.18.0-alpha.1
 
-## 用户认证客户端 API
+:::warning
+本篇文章只介绍与插件开发相关的不兼容变化
+:::
+
+## 测试框架由 jest 更换为 vitest
+
+- [服务端 - 测试](/development/server/test)
+- [客户端 - 测试](/development/client/test)
+
+## 用户认证客户端 API 的变更
 
 ### 背景
 
