@@ -108,7 +108,7 @@ export class AuthPlugin extends Plugin {
   }
 ```
 
-完整用法可以参考文档: [用户认证 - 开发指南](../plugins/auth/dev/index.md)
+完整用法可以参考文档: [用户认证 - 开发指南](../plugins/auth/dev/guide.md)
 
 ### 移除
 
