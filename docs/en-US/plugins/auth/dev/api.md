@@ -49,3 +49,47 @@ class CustomAuth extends BaseAuth {
 ## 客户端
 
 ### `plugin.registerType()`
+
+注册认证类型的客户端。
+
+```ts
+import AuthPlugin from '@nocobase/plugin-auth/client';
+
+class CustomAuthPlugin extends Plugin {
+  async load() {
+    const auth = this.app.pm.get(AuthPlugin);
+    auth.registerType('custom-auth-type', {
+      components: {
+        SignInForm,
+        // SignInButton
+        SignUpForm,
+        AdminSettingsForm,
+      },
+    });
+  }
+}
+```
+
+#### 签名
+
+- `registerType(authType: string, options: AuthOptions)`
+
+#### 类型
+
+```ts
+export type AuthOptions = {
+  components: Partial<{
+    SignInForm: ComponentType<{ authenticator: AuthenticatorType }>;
+    SignInButton: ComponentType<{ authenticator: AuthenticatorType }>;
+    SignUpForm: ComponentType<{ authenticatorName: string }>;
+    AdminSettingsForm: ComponentType;
+  }>;
+};
+```
+
+#### 详细信息
+
+- `SignInForm` - 登录表单
+- `SignInButton` - 登录（第三方）按钮，可以和登录表单二选一
+- `SignUpForm` - 注册表单
+- `AdminSettingsForm` - 后台配置表单
