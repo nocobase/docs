@@ -195,31 +195,40 @@ yarn nocobase upgrade
 
 ### `test`
 
-jest 测试，支持所有 [jest-cli](https://jestjs.io/docs/cli) 的 options，除此之外还扩展了 `-c, --db-clean` 的支持。
+测试，用法与 vitest 一致，和直接运行 vitest 的区别：
+
+- 指定路径时，可以自动识别前后端，前端的必须包含 `/client/`
+- 后端测试默认为 `--single-thread`，如果要关掉可以加上 `--single-thread=false`
+- 默认为 `--run`，测试运行完退出进程，如果需要监听，加上 `--watch`
 
 ```bash
-$ yarn nocobase test -h
+$ nocobase test -h
+vitest/1.0.4
 
-Usage: nocobase test [options]
-
-Options:
-  -c, --db-clean        运行所有测试前清空数据库
-  -h, --help
+Usage:
+  $ vitest [...filters]
 ```
 
 示例
 
 ```bash
-# 运行所有测试文件
-yarn nocobase test
-# 运行指定文件夹下所有测试文件
-yarn nocobase test packages/core/server
-# 运行指定文件里的所有测试
-yarn nocobase test packages/core/database/src/__tests__/database.test.ts
+# 运行全部测试，前后端并行两个 vitest 进程
+yarn test
 
-# 运行测试前，清空数据库
-yarn nocobase test -c
-yarn nocobase test packages/core/server -c
+# 运行 client 相关测试用例
+yarn test --client
+# 等价于
+yarn cross-env TEST_ENV=client-side vitest
+
+# 运行 server 相关测试用例
+yarn test --server
+# 等价于
+yarn cross-env TEST_ENV=server-side vitest
+
+# 指定目录或文件
+yarn test your/path/src/__tests__/test-file.test.ts
+# 前端文件必须包含 /client/
+yarn test your/path/client/src/__tests__/test-file.test.ts
 ```
 
 ### `build`
