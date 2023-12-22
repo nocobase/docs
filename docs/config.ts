@@ -1153,6 +1153,12 @@ const sidebar = {
           link: '/plugins/mobile-client',
         },
         {
+          title: 'Connect to foreign data',
+          'title.zh-CN': '连接外部数据',
+          subTitle: '@nocobase/plugin-collection-fdw',
+          link: '/plugins/collection-fdw',
+        },
+        {
           title: 'Collection manager',
           'title.zh-CN': '数据表管理',
           subTitle: '@nocobase/plugin-collection-manager',
