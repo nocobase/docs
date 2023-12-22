@@ -124,7 +124,7 @@ class CustomAuthPlugin extends Plugin {
 
 ### 登录按钮
 
-![](./static/2023-12-20-12-16-16.png)
+![](./static/2023-12-22-10-21-28.png)
 
 通常为第三方登录按钮，实际上可以是任意组件。
 
