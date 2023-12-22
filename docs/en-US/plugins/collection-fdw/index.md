@@ -20,7 +20,7 @@ MySQL 通过 `federated` 引擎，需要激活，支持连接远程 MySQL 及其
 
 前提条件
 
-- MySQL 需要激活 `federated`，参考 [MySQL 如何启用 federated 引擎](./enable-federated.md)
+- 本地 MySQL（NocoBase 使用的数据库）需要激活 `federated`，参考 [MySQL 如何启用 federated 引擎](./enable-federated.md)
 
 然后通过插件管理器安装并激活插件
 
