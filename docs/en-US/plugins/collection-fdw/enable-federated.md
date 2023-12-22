@@ -36,4 +36,4 @@ docker compose up -d mysql
 show engines
 ```
 
-![Alt text](image-10.png)
+![Alt text](./image-10.png)
