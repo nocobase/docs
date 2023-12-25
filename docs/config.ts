@@ -1642,6 +1642,11 @@ const sidebar = {
       title: '@nocobase/sdk',
       link: '/api/sdk',
     },
+    {
+      title: '@nocobase/test',
+      type: 'subMenu',
+      children: ['/api/test/e2e'],
+    },
   ],
   '/breaking-changes': [
     {
