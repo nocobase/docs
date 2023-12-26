@@ -8,6 +8,7 @@
 | [ACL](/api/acl)                   | `@nocobase/acl`       | Access Control List              |
 | [Client](/api/client/application) | `@nocobase/client`    | Client-side application          |
 | [Cache](/api/cache/cache-manager) | `@nocobase/cache`     | Server-side cache                |
+| [Logger](/api/logger)             | `@nocobase/logger`    | Server-side logger               |
 | [CLI](/api/cli)                   | `@nocobase/cli`       | NocoBase command line tools      |
 | [SDK](/api/sdk)                   | `@nocobase/sdk`       | NocoBase SDK                     |
 | [Actions](/api/actions)           | `@nocobase/actions`   | Built-in common resource actions |

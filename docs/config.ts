@@ -862,6 +862,7 @@ const sidebar = {
         '/development/server/commands',
         '/development/server/events',
         '/development/server/i18n',
+        '/development/server/logger',
         '/development/server/migration',
         '/development/server/test',
       ],
@@ -1207,8 +1208,8 @@ const sidebar = {
                       link: '/plugins/collection-manager/user/collection-templates/expression',
                     },
                     {
-                      title: 'Sql collection',
-                      'title.zh-CN': 'Sql表',
+                      title: 'SQL collection',
+                      'title.zh-CN': 'SQL 表',
                       link: '/plugins/collection-manager/user/collection-templates/sql',
                     },
                     {
@@ -1390,6 +1391,12 @@ const sidebar = {
           'title.zh-CN': '系统设置',
           subTitle: '@nocobase/plugin-system-settings',
           link: '/plugins/system-settings',
+        },
+        {
+          title: 'Logger',
+          'title.zh-CN': '日志',
+          subTitle: '@nocobase/plugin-logger',
+          link: '/plugins/logger',
         },
         {
           title: 'Theme editor',
@@ -1629,6 +1636,10 @@ const sidebar = {
       title: '@nocobase/cache',
       type: 'subMenu',
       children: ['/api/cache/cache-manager', '/api/cache/cache'],
+    },
+    {
+      title: '@nocobase/logger',
+      link: '/api/logger',
     },
     {
       title: '@nocobase/cli',
