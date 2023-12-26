@@ -5,7 +5,7 @@
 ## 安装
 
 :::info{title=提示}
-该插件为商业插件，请咨询开发团队获取。
+该插件为商业插件，请查看 [NocoBase 商业版本](https://www.nocobase.com/commercial-cn)了解详情。
 :::
 
 ## 使用手册

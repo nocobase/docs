@@ -2,9 +2,10 @@
 
 触发器是工作流的执行入口，当应用运行过程中满足触发器条件的事件产生时，工作流将会被触发执行。触发器的类型也就是工作流的类型，在创建工作流时选择，创建后不可修改。目前内置的触发器类型如下：
 
-- [表单事件](../../../../workflow-form-trigger/index/index.md)（插件 @nocobase/plugin-workflow-form-trigger 提供）
 - [数据表事件](../collection/index.md)
 - [定时任务](../schedule/index.md)
+- [表单事件](../../../../workflow-form-trigger/index/index.md)（插件 @nocobase/plugin-workflow-form-trigger 提供）
+- [审批事件](../../../../workflow-approval/index/index.md)（插件 @nocobase/plugin-workflow-approval 提供）
 
 比如用户提交一个表单，或者数据表中的数据由于用户操作或程序调用发生变化，或者定时任务到达执行时间，都会触发对应的工作流执行。
 
