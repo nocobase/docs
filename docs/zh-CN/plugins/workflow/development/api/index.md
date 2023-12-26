@@ -102,8 +102,8 @@ export default class MyPlugin extends Plugin {
     // get workflow plugin instance
     const workflowPlugin = this.app.getPlugin<WorkflowPlugin>(WorkflowPlugin);
 
-    // register trigger instance
-    workflowPlugin.triggers.register('myTrigger', MyTrigger);
+    // register trigger
+    workflowPlugin.registerTrigger('myTrigger', MyTrigger);
   }
 }
 ```
@@ -145,20 +145,6 @@ export class Instruction {
 }
 ```
 
-指令中类型中的 `run` 方法是必须实现的，用于执行指令的逻辑。如果没有停等异步处理的逻辑，正常情况下应该返回一个 `Job` 对象，执行器会根据该对象生成执行结果记录。当有需要异步处理时，`run` 方法可以返回一个 `status` 为 `JOB_STATUS.PENDING` 状态的对象，提示执行器进行等待。同时需要实现 `resume` 方法，用于恢复指令的执行。
-
-节点的执行状态会影响整个流程的成功或失败，通常在没有分支的情况下，某个节点的失败会直接导致整个流程失败。其中最常规的情况是，节点执行成功则继续节点表中的下一个节点，直到没有后续节点，则整个工作流执行以成功的状态完成。
-
-如果执行中某个节点返回了执行失败的状态，则视以下两种情况引擎会有不同的处理：
-
-1.  返回失败状态的节点处于主流程，即均未处于上游的节点开启的任意分支流程之内，则整个主流程会判定为失败，并退出流程。
-
-2.  返回失败状态的节点处于某个分支流程之内，此时将判定流程下一步状态的职责交由开启分支的节点，由该节点的内部逻辑决定后续流程的状态，并且递归上溯到主流程。
-
-最终都在主流程的节点上得出整个流程的下一步状态，如果主流程的节点中返回的是失败，则整个流程以失败的状态结束。
-
-如果任意节点执行后返回了“停等”状态，则整个执行流程会被暂时中断挂起，等待一个由对应节点定义的事件触发以恢复流程的执行。例如审批类型的节点处理，会以“停等”状态从该节点暂停，等待人工介入该流程，决策是否通过。如果人工输入的状态是通过，则继续后续的流程节点，反之则按前面的失败逻辑处理。
-
 `getScope` 可以参考[循环节点的实现](https://github.com/nocobase/nocobase/blob/main/packages/plugins/%40nocobase/plugin-workflow-loop/src/server/LoopInstruction.ts#L83)，用于提供分支的局域变量内容。
 
 ### `plugin.registerInstruction()`
@@ -195,8 +181,8 @@ export default class MyPlugin extends Plugin {
     // get workflow plugin instance
     const workflowPlugin = this.app.getPlugin<WorkflowPlugin>(WorkflowPlugin);
 
-    // register trigger instance
-    workflowPlugin.instructions.register('log', LogInstruction);
+    // register instruction
+    workflowPlugin.registerInstruction('log', LogInstruction);
   }
 }
 ```
@@ -328,9 +314,9 @@ export type NodeAvailableContext = {
 };
 ```
 
-- `useVariables` 如果没有设置，则代表该节点类型不提供取值功能，在流程的节点中无法选该类型节点的结果数据。如果结果值是单一的（不可选），则返回一个可以表达对应信息的静态内容即可。如果需要可选（如一个 Object 中的某个属性），则可以自定义对应的选择组件输出。
-- `Component` 节点自定义渲染组件，当默认节点渲染不满足时可以完全覆盖替代使用，进行自定义节点视图渲染。例如要针对分支类型的开始节点提供更多操作按钮或其他交互，则需要使用该方法，具体可以参考并行分支等节点的前端实现（[相关源码](https://github.com/nocobase/nocobase/blob/main/packages/plugins/@nocobase/plugin-workflow-parallel/src/client/ParallelInstruction.tsx)）。
-- `useInitializers` 用于提供初始化区块的方法，例如在人工节点中可以根据上游节点初始化相关用户区块。如果提供了该方法，则会在人工节点界面配置中初始化区块时可用。
+- `useVariables` 如果没有设置，则代表该节点类型不提供取值功能，在流程的节点中无法选该类型节点的结果数据。如果结果值是单一的（不可选），则返回一个可以表达对应信息的静态内容即可（参考：[运算节点源码](https://github.com/nocobase/nocobase/blob/main/packages/plugins/@nocobase/plugin-workflow/src/client/nodes/calculation.tsx#L68)）。如果需要可选（如一个 Object 中的某个属性），则可以自定义对应的选择组件输出（参考：[新增数据节点源码](https://github.com/nocobase/nocobase/blob/main/packages/plugins/@nocobase/plugin-workflow/src/client/nodes/create.tsx#L41)）。
+- `Component` 节点自定义渲染组件，当默认节点渲染不满足时可以完全覆盖替代使用，进行自定义节点视图渲染。例如要针对分支类型的开始节点提供更多操作按钮或其他交互，则需要使用该方法（参考：[并行分支源码](https://github.com/nocobase/nocobase/blob/main/packages/plugins/@nocobase/plugin-workflow-parallel/src/client/ParallelInstruction.tsx)）。
+- `useInitializers` 用于提供初始化区块的方法，例如在人工节点中可以根据上游节点初始化相关用户区块。如果提供了该方法，则会在人工节点界面配置中初始化区块时可用（参考：[新增数据节点源码](https://github.com/nocobase/nocobase/blob/main/packages/plugins/@nocobase/plugin-workflow/src/client/nodes/create.tsx#L71)）。
 - `isAvailable` 主要用于判断节点是否可以在当前环境中可以被使用（添加）。当前环境包括当前工作流、上游节点和当前分支索引等。
 
 ### `plugin.registerInstruction()`
