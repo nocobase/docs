@@ -1,8 +1,8 @@
 # E2E
 
-## 概览
+## Overview
 
-NocoBase 使用 [Playwright](https://playwright.dev/) 进行 E2E 测试，并提供了一些 Mock 方法，用于简化测试的编写。
+NocoBase uses [Playwright](https://playwright.dev/) for E2E testing and provides some Mocking methods to simplify test writing.
 
 ### mockPage
 
