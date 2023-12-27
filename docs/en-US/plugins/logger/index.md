@@ -91,6 +91,10 @@ NocoBase 日志文件的主要目录结构为：
 | `status`      | 响应状态码                         |
 | `cost`        | 请求耗时                           |
 
+:::info
+`reqId` 会通过 `X-Request-Id` 响应头携带给前端。
+:::
+
 ### 系统日志
 
 `system_YYYY-MM-DD.log`, 应用、中间件、插件等系统运行日志，`error` 级别日志会单独打印到 `system_error_YYYY-MM-DD.log`
