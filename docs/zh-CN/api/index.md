@@ -9,6 +9,7 @@
 | [Auth](/api/auth/auth-manager)    | `@nocobase/auth`      | 用户认证            |
 | [Client](/api/client/application) | `@nocobase/client`    | 客户端应用          |
 | [Cache](/api/cache/cache-manager) | `@nocobase/cache`     | 服务端缓存          |
+| [Logger](/api/logger)             | `@nocobase/logger`    | 服务端日志          |
 | [CLI](/api/cli)                   | `@nocobase/cli`       | NocoBase 命令行工具 |
 | [SDK](/api/sdk)                   | `@nocobase/sdk`       | NocoBase SDK        |
 | [Actions](/api/actions)           | `@nocobase/actions`   | 内置常用资源操作    |

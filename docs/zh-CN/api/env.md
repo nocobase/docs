@@ -154,14 +154,75 @@ DB_LOGGING=on
 
 ### LOGGER_TRANSPORT
 
-日志 transport，默认值 `console,dailyRotateFile`，可选项：
+日志输出方式，多个用 `,` 分隔。开发环境默认值 `console`, 生产环境默认值 `console,dailyRotateFile`.
+可选项：
 
-- `console`
-- `dailyRotateFile`
+- `console` - `console.log`
+- `file` - `文件`
+- `dailyRotateFile` - `按天滚动文件`
+
+```bash
+LOGGER_TRANSPORT=console,dailyRotateFile
+```
 
 ### LOGGER_BASE_PATH
 
 基于文件的日志存储路径，默认为 `storage/logs`。
+
+```bash
+LOGGER_BASE_PATH=storage/logs
+```
+
+### LOGGER_LEVEL
+
+输出日志级别，开发环境默认值 `debug`, 生产环境默认值 `info`. 可选项：
+
+- `error`
+- `warn`
+- `info`
+- `debug`
+
+```bash
+LOGGER_LEVEL=info
+```
+
+数据库日志输出级别为 `debug`, 由 `DB_LOGGING` 控制是否输出，不受 `LOGGER_LEVEL` 影响。
+
+### LOGGER_MAX_FILES
+
+最大保留日志文件数。
+
+- `LOGGER_TRANSPORT` 为 `file` 时，默认值为 `10`.
+- `LOGGER_TRANSPORT` 为 `dailyRotateFile`, 使用 `[n]d` 代表天数。默认值为 `14d`.
+
+```bash
+LOGGER_MAX_FILES=14d
+```
+
+### LOGGER_MAX_SIZE
+
+按大小滚动日志。
+
+- `LOGGER_TRANSPORT` 为 `file` 时，单位为 `byte`, 默认值为 `20971520 (20 * 1024 * 1024)`.
+- `LOGGER_TRANSPORT` 为 `dailyRotateFile`, 可以使用 `[n]k`, `[n]m`, `[n]g`. 默认不配置。
+
+```bash
+LOGGER_MAX_SIZE=20971520
+```
+
+### LOGGER_FORMAT
+
+日志打印格式，开发环境默认 `logfmt`, 生产环境默认 `json`. 可选项:
+
+- `logfmt`
+- `json`
+- `delimiter`
+
+```bash
+LOGGER_FORMAT=json
+```
+
+参考：[日志格式](../plugins/logger/index.md#日志格式)
 
 ### CACHE_DEFAULT_STORE
 
@@ -170,13 +231,25 @@ DB_LOGGING=on
 - `memory`
 - `redis`
 
+```bash
+CACHE_DEFAULT_STORE=memory
+```
+
 ### CACHE_MEMORY_MAX
 
 内存缓存项目最大个数，默认值 `2000`。
 
+```bash
+CACHE_MEMORY_MAX=2000
+```
+
 ### CACHE_REDIS_URL
 
 Redis连接，可选。示例：`redis://localhost:6379`
+
+```bash
+CACHE_REDIS_URL=redis://localhost:6379
+```
 
 ## 临时环境变量
 
