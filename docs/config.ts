@@ -83,6 +83,7 @@ const sidebar = {
             '/welcome/getting-started/upgrading/git-clone',
           ],
         },
+        '/welcome/getting-started/env',
       ],
     },
     {
@@ -863,6 +864,7 @@ const sidebar = {
         '/development/server/events',
         '/development/server/i18n',
         '/development/server/logger',
+        '/development/server/telemetry',
         '/development/server/migration',
         '/development/server/test',
       ],
@@ -1013,7 +1015,7 @@ const sidebar = {
               title: 'Development',
               'title.zh-CN': '开发指南',
               children: ['/plugins/auth/dev/guide', '/plugins/auth/dev/api'],
-            }
+            },
           ],
         },
         {
@@ -1399,6 +1401,12 @@ const sidebar = {
           link: '/plugins/logger',
         },
         {
+          title: 'Telemetry - Prometheus',
+          'title.zh-CN': '遥测 - Prometheus',
+          subTitle: '@nocobase/plugin-telemetry-prometheus',
+          link: '/plugins/telemetry-prometheus',
+        },
+        {
           title: 'Theme editor',
           'title.zh-CN': '主题编辑器',
           subTitle: '@nocobase/plugin-theme-editor',
@@ -1446,7 +1454,7 @@ const sidebar = {
                     '/plugins/workflow/manual/triggers/form',
                     '/plugins/workflow/manual/triggers/collection',
                     '/plugins/workflow/manual/triggers/schedule',
-                  ]
+                  ],
                 },
                 {
                   title: 'Nodes',
@@ -1602,7 +1610,11 @@ const sidebar = {
     {
       title: '@nocobase/auth',
       type: 'subMenu',
-      children: ['/api/auth/auth-manager', '/api/auth/auth', '/api/auth/base-auth'],
+      children: [
+        '/api/auth/auth-manager',
+        '/api/auth/auth',
+        '/api/auth/base-auth',
+      ],
     },
     {
       title: '@nocobase/client',
@@ -1638,6 +1650,15 @@ const sidebar = {
       children: ['/api/cache/cache-manager', '/api/cache/cache'],
     },
     {
+      title: '@nocobase/telemetry',
+      type: 'subMenu',
+      children: [
+        '/api/telemetry/telemetry',
+        '/api/telemetry/trace',
+        '/api/telemetry/metric',
+      ],
+    },
+    {
       title: '@nocobase/logger',
       link: '/api/logger',
     },
@@ -1669,9 +1690,9 @@ const sidebar = {
         '/breaking-changes/v0-17-0-alpha-5',
         '/breaking-changes/v0-17-0-alpha-3',
         '/breaking-changes/v0-17-0-alpha-1',
-      ]
+      ],
     },
-  ]
+  ],
 };
 
 export { nav, sidebar };

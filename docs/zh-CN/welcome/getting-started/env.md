@@ -251,6 +251,30 @@ Redis连接，可选。示例：`redis://localhost:6379`
 CACHE_REDIS_URL=redis://localhost:6379
 ```
 
+### TELEMETRY_ENABLED
+
+启动遥测数据收集，默认为 `false`.
+
+```bash
+TELEMETRY_ENABLED=true
+```
+
+### TELEMETRY_METRIC_READER
+
+启用的监控指标采集器，默认为 `console`. 其他值需要参考对应采集器插件注册的名字，如 `prometheus`. 多个使用 `,` 分隔。
+
+```bash
+TELEMETRY_METRIC_READER=console,prometheus
+```
+
+### TELEMETRY_TRACE_PROCESSOR
+
+启用的链路数据处理器，默认为 `console`. 其他值需要参考对应处理器插件注册的名字。多个使用 `,` 分隔。
+
+```bash
+TELEMETRY_TRACE_PROCESSOR=console
+```
+
 ## 临时环境变量
 
 安装 NocoBase 时，可以通过设置临时的环境变量来辅助安装，如：
