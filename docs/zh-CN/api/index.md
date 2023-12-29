@@ -13,3 +13,4 @@
 | [CLI](/api/cli)                   | `@nocobase/cli`       | NocoBase 命令行工具 |
 | [SDK](/api/sdk)                   | `@nocobase/sdk`       | NocoBase SDK        |
 | [Actions](/api/actions)           | `@nocobase/actions`   | 内置常用资源操作    |
+| [Test](/api/test)                 | `@nocobase/test`      | 自动化测试          |
