@@ -10,24 +10,21 @@
 
 ## 日志格式
 
-NocoBase 支持配置3种不同的日志格式。
+NocoBase 支持配置4种不同的日志格式。
 
-### `logfmt`
+### `console`
 
-> https://brandur.org/logfmt.
+开发环境默认格式，消息以高亮颜色显示。
 
-开发环境默认格式。
-
-```bash
-level=info timestamp=2023-12-21 14:18:02 reqId=8b59a40d-68ee-4c97-8001-71a47a92805a
-message=response method=POST path=/api/authenticators:publicList res={"status":200}
-action={"actionName":"publicList","resourceName":"authenticators","params":{"resourceName":"authenticators","actionName":"publicList"}}
-userId=undefined status=200 cost=14
+```
+2023-12-30 22:40:06 [info ] response                                     method=GET path=/api/uiSchemas:getJsonSchema/nocobase-admin-menu res={"status":200} action={"actionName":"getJsonSchema","resourceName":"uiSchemas","params":{"filterByTk":"nocobase-admin-menu","resourceName":"uiSchemas","resourceIndex":"nocobase-admin-menu","actionName":"getJsonSchema"}} userId=1 status=200 cost=5 app=main reqId=ccf4e3bd-beb0-4350-af6e-b1fc1d9b6c3f
+2023-12-30 22:43:12 [debug] Database dialect: mysql                      module=application method=install app=main reqId=31ffa8b5-f377-456b-a295-0c8a28938228
+2023-12-30 22:43:12 [warn ] app is installed                             module=application method=install app=main reqId=31ffa8b5-f377-456b-a295-0c8a28938228
 ```
 
 ### `json`
 
-生产环境默认格式
+生产环境默认格式。
 
 ```json
 {
@@ -48,11 +45,22 @@ userId=undefined status=200 cost=14
 }
 ```
 
+### `logfmt`
+
+> https://brandur.org/logfmt.
+
+```
+level=info timestamp=2023-12-21 14:18:02 reqId=8b59a40d-68ee-4c97-8001-71a47a92805a
+message=response method=POST path=/api/authenticators:publicList res={"status":200}
+action={"actionName":"publicList","resourceName":"authenticators","params":{"resourceName":"authenticators","actionName":"publicList"}}
+userId=undefined status=200 cost=14
+```
+
 ### `delimiter`
 
 分隔符 `|` 分割。
 
-```bash
+```
 info|2023-12-26 22:07:09|13cd16f0-1568-418d-ac37-6771ee650e14|response|POST|/api/authenticators:publicList|{"status":200}|{"actionName":"publicList","resourceName":"authenticators","params":{"resourceName":"authenticators","actionName":"publicList"}}||200|25
 ```
 
@@ -81,7 +89,6 @@ NocoBase 日志文件的主要目录结构为：
 | ------------- | ---------------------------------- |
 | `level`       | 日志级别                           |
 | `timestamp`   | 日志打印时间 `YYYY-MM-DD hh:mm:ss` |
-| `reqId`       | 请求 ID                            |
 | `message`     | `request` 或 `response`            |
 | `userId`      | `response` 中才有                  |
 | `method`      | 请求方法                           |
@@ -90,6 +97,8 @@ NocoBase 日志文件的主要目录结构为：
 | `action`      | 请求资源和参数                     |
 | `status`      | 响应状态码                         |
 | `cost`        | 请求耗时                           |
+| `app`         | 当前应用名称                       |
+| `reqId`       | 请求 ID                            |
 
 :::info{title=提示}
 `reqId` 会通过 `X-Request-Id` 响应头携带给前端。
@@ -103,12 +112,13 @@ NocoBase 日志文件的主要目录结构为：
 | ----------- | ---------------------------------- |
 | `level`     | 日志级别                           |
 | `timestamp` | 日志打印时间 `YYYY-MM-DD hh:mm:ss` |
-| `reqId`     | 请求 ID                            |
 | `message`   | 日志消息                           |
 | `module`    | 模块                               |
 | `submodule` | 子模块                             |
 | `method`    | 调用方法                           |
 | `meta`      | 其他相关信息, JSON 格式            |
+| `app`       | 当前应用名称                       |
+| `reqId`     | 请求 ID                            |
 
 ### SQL 执行日志
 
@@ -118,8 +128,9 @@ NocoBase 日志文件的主要目录结构为：
 | ----------- | ---------------------------------- |
 | `level`     | 日志级别                           |
 | `timestamp` | 日志打印时间 `YYYY-MM-DD hh:mm:ss` |
-| `reqId`     | 请求 ID                            |
 | `sql`       | SQL 语句                           |
+| `app`       | 当前应用名称                       |
+| `reqId`     | 请求 ID                            |
 
 ## 日志打包下载
 

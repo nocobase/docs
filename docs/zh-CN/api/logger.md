@@ -103,7 +103,7 @@ class Plugin {
 
 ### getLoggerFormat()
 
-`getLoggerFormat(): 'logfmt' | 'json' | 'delimiter'`
+`getLoggerFormat(): 'logfmt' | 'json' | 'delimiter' | 'console'`
 
 获取当前系统配置的日志格式。
 
