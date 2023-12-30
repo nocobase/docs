@@ -17,7 +17,7 @@ interface LoggerOptions
   extends Omit<winston.LoggerOptions, 'transports' | 'format'> {
   dirname?: string;
   filename?: string;
-  format?: 'logfmt' | 'json' | 'delimiter' | winston.Logform.Format;
+  format?: 'logfmt' | 'json' | 'delimiter' | 'console' | winston.Logform.Format;
   transports?: ('console' | 'file' | 'dailyRotateFile' | winston.transport)[];
 }
 ```
