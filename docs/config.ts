@@ -1562,7 +1562,6 @@ const sidebar = {
   ],
   '/api': [
     '/api',
-    '/api/env',
     {
       title: 'HTTP API',
       type: 'subMenu',

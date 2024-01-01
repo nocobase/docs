@@ -1,16 +1,16 @@
 # Metric
 
-## 类方法
+## Class Methods
 
 ### `constructor()`
 
 构造函数，创建一个 `Metric` 实例。
 
-#### 签名
+#### Signature
 
 - `constructor(options?: MetricOptions)`
 
-#### 类型
+#### Type
 
 ```ts
 export type MetricOptions = {
@@ -20,7 +20,7 @@ export type MetricOptions = {
 };
 ```
 
-#### 详细信息
+#### Details
 
 - `meterName` - 默认 `nocobase-meter`.
 - `version` - 默认当前 NocoBase 版本。
@@ -30,7 +30,7 @@ export type MetricOptions = {
 
 初始化 `MetricProvider`.
 
-#### 签名
+#### Signature
 
 - `init(): void`
 
@@ -38,11 +38,11 @@ export type MetricOptions = {
 
 注册 `MetricReader`
 
-#### 签名
+#### Signature
 
 - `registerReader(name: string, reader: GetMetricReader)`
 
-#### 类型
+#### Type
 
 ```ts
 import { MetricReader } from '@opentelemetry/sdk-metrics';
@@ -50,7 +50,7 @@ import { MetricReader } from '@opentelemetry/sdk-metrics';
 type GetMetricReader = () => MetricReader;
 ```
 
-#### 详细信息
+#### Details
 
 - `name` - `MetricReader` 唯一标识。
 - `reader` - 获取 `MetricReader` 的方法。
@@ -59,11 +59,11 @@ type GetMetricReader = () => MetricReader;
 
 添加 `View`. 参考: <a href="https://opentelemetry.io/docs/instrumentation/js/manual/#configure-metric-views" target="_blank">Configure Metric Views</a>.
 
-#### 签名
+#### Signature
 
 - `addView(...view: View[])`
 
-#### 类型
+#### Type
 
 ```ts
 import { View } from '@opentelemetry/sdk-metrics';
@@ -73,11 +73,11 @@ import { View } from '@opentelemetry/sdk-metrics';
 
 获取 `Meter`.
 
-#### 签名
+#### Signature
 
 - `getMeter(name?: string, version?: string)`
 
-#### 详细信息
+#### Details
 
 - `name` - 默认 `nocobase-meter`.
 - `version` - 默认当前 NocoBase 版本。
@@ -86,7 +86,7 @@ import { View } from '@opentelemetry/sdk-metrics';
 
 启动 `MetricReader`.
 
-#### 签名
+#### Signature
 
 - `start(): void`
 
@@ -94,6 +94,6 @@ import { View } from '@opentelemetry/sdk-metrics';
 
 停止 `MetricReader`.
 
-#### 签名
+#### Signature
 
 - `shutdown(): Promise<void>`

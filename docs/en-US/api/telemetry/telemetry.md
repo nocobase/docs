@@ -1,16 +1,16 @@
 # Telemetry
 
-## 类方法
+## Class Methods
 
 ### `constructor()`
 
 构造函数，创建一个 `Telemetry` 实例。
 
-#### 签名
+#### Signature
 
 - `constructor(options?: TelemetryOptions)`
 
-#### 类型
+#### Type
 
 ```ts
 export interface TelemetryOptions {
@@ -21,7 +21,7 @@ export interface TelemetryOptions {
 }
 ```
 
-#### 详细信息
+#### Details
 
 - `serviceName` - 默认 `nocobase`。参考：<a href="https://opentelemetry.io/docs/specs/semconv/resource/#service" target="_blank">Semantic Conventions</a>
 - `version` - 默认当前 NocoBase 版本。参考：<a href="https://opentelemetry.io/docs/specs/semconv/resource/#service" target="_blank">Semantic Conventions</a>
@@ -32,7 +32,7 @@ export interface TelemetryOptions {
 
 注册 Instrumention, 初始化 `Trace`, `Metric`.
 
-#### 签名
+#### Signature
 
 - `init(): void`
 
@@ -40,7 +40,7 @@ export interface TelemetryOptions {
 
 启动 `Trace`, `Metric` 相关数据的处理程序，如：导出到 Prometheus.
 
-#### 签名
+#### Signature
 
 - `start(): void`
 
@@ -48,7 +48,7 @@ export interface TelemetryOptions {
 
 停止 `Trace`, `Metric` 相关的数据处理程序。
 
-#### 签名
+#### Signature
 
 - `shutdown(): Promise<void>`
 
@@ -56,6 +56,6 @@ export interface TelemetryOptions {
 
 添加插桩工具库
 
-#### 签名
+#### Signature
 
 - `addInstrumentation(...instrumentation: InstrumentationOption[])`

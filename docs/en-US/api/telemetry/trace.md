@@ -1,16 +1,16 @@
 # Trace
 
-## 类方法
+## Class Methods
 
 ### `constructor()`
 
 构造函数，创建一个 `Trace` 实例。
 
-#### 签名
+#### Signature
 
 - `constructor(options?: TraceOptions)`
 
-#### 类型
+#### Type
 
 ```ts
 export type TraceOptions = {
@@ -20,7 +20,7 @@ export type TraceOptions = {
 };
 ```
 
-#### 详细信息
+#### Details
 
 - `tracerName` - 默认 `nocobase-trace`.
 - `version` - 默认当前 NocoBase 版本。
@@ -30,7 +30,7 @@ export type TraceOptions = {
 
 初始化 `NodeTracerProvider`.
 
-#### 签名
+#### Signature
 
 - `init(): void`
 
@@ -38,11 +38,11 @@ export type TraceOptions = {
 
 注册 `SpanProcessor`
 
-#### 签名
+#### Signature
 
 - `registerProcessor(name: string, processor: GetSpanProcessor)`
 
-#### 类型
+#### Type
 
 ```ts
 import { SpanProcessor } from '@opentelemetry/sdk-trace-base';
@@ -50,7 +50,7 @@ import { SpanProcessor } from '@opentelemetry/sdk-trace-base';
 type GetSpanProcessor = () => SpanProcessor;
 ```
 
-#### 详细信息
+#### Details
 
 - `name` - `SpanProcessor` 唯一标识。
 - `processor` - 获取 `SpanProcessor` 的方法。
@@ -59,11 +59,11 @@ type GetSpanProcessor = () => SpanProcessor;
 
 获取 `Tracer`.
 
-#### 签名
+#### Signature
 
 - `getTracer(name?: string, version?: string)`
 
-#### 详细信息
+#### Details
 
 - `name` - 默认 `nocobase-trace`.
 - `version` - 默认当前 NocoBase 版本。
@@ -72,7 +72,7 @@ type GetSpanProcessor = () => SpanProcessor;
 
 启动 `SpanProcessor`.
 
-#### 签名
+#### Signature
 
 - `start(): void`
 
@@ -80,6 +80,6 @@ type GetSpanProcessor = () => SpanProcessor;
 
 停止 `SpanProcessor`.
 
-#### 签名
+#### Signature
 
 - `shutdown(): Promise<void>`
