@@ -21,7 +21,7 @@
 配置为 `on`.
 
 ```bash
-TELEMETRY_ENABLED=true
+TELEMETRY_ENABLED=on
 ```
 
 #### TELEMETRY_METRIC_READER
@@ -45,7 +45,7 @@ TELEMETRY_METRIC_READER=prometheus
 
 #### 相关文档
 
-- [环境变量](../../welcome/getting-started/env.md)
+- [环境变量](../../welcome/getting-started/env.md#telemetry_enabled)
 
 ### Prometheus 配置
 
