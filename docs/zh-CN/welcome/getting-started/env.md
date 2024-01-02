@@ -256,7 +256,7 @@ CACHE_REDIS_URL=redis://localhost:6379
 启动遥测数据收集，默认为 `false`.
 
 ```bash
-TELEMETRY_ENABLED=true
+TELEMETRY_ENABLED=on
 ```
 
 ### TELEMETRY_METRIC_READER
