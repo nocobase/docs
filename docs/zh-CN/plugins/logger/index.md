@@ -6,7 +6,7 @@
 
 ## 日志配置
 
-用户可以通过 [环境变量](../../api/env.md#logger_transport) 配置日志级别、输出方式、打印格式等的日志相关参数。
+用户可以通过 [环境变量](../../welcome/getting-started/env.md#logger_transport) 配置日志级别、输出方式、打印格式等的日志相关参数。
 
 ## 日志格式
 

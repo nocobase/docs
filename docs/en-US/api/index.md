@@ -1,14 +1,15 @@
 # Overview
 
-| Modules                           | Package Name          | Description                      |
-| --------------------------------- | --------------------- | -------------------------------- |
-| [Server](/api/server/application) | `@nocobase/server`    | Server-side application          |
-| [Database](/api/database)         | `@nocobase/database`  | Database access layer            |
-| [Resourcer](/api/resourcer)       | `@nocobase/resourcer` | Resource and route mapping       |
-| [ACL](/api/acl)                   | `@nocobase/acl`       | Access Control List              |
-| [Client](/api/client/application) | `@nocobase/client`    | Client-side application          |
-| [Cache](/api/cache/cache-manager) | `@nocobase/cache`     | Server-side cache                |
-| [Logger](/api/logger)             | `@nocobase/logger`    | Server-side logger               |
-| [CLI](/api/cli)                   | `@nocobase/cli`       | NocoBase command line tools      |
-| [SDK](/api/sdk)                   | `@nocobase/sdk`       | NocoBase SDK                     |
-| [Actions](/api/actions)           | `@nocobase/actions`   | Built-in common resource actions |
+| Modules                               | Package Name          | Description                      |
+| ------------------------------------- | --------------------- | -------------------------------- |
+| [Server](/api/server/application)     | `@nocobase/server`    | Server-side application          |
+| [Database](/api/database)             | `@nocobase/database`  | Database access layer            |
+| [Resourcer](/api/resourcer)           | `@nocobase/resourcer` | Resource and route mapping       |
+| [ACL](/api/acl)                       | `@nocobase/acl`       | Access Control List              |
+| [Client](/api/client/application)     | `@nocobase/client`    | Client-side application          |
+| [Cache](/api/cache/cache-manager)     | `@nocobase/cache`     | Server-side cache                |
+| [Logger](/api/logger)                 | `@nocobase/logger`    | Server-side logger               |
+| [Telemetry](/api/telemetry/telemetry) | `@nocobase/telemetry` | Server-side telemetry            |
+| [CLI](/api/cli)                       | `@nocobase/cli`       | NocoBase command line tools      |
+| [SDK](/api/sdk)                       | `@nocobase/sdk`       | NocoBase SDK                     |
+| [Actions](/api/actions)               | `@nocobase/actions`   | Built-in common resource actions |
