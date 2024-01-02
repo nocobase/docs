@@ -36,8 +36,8 @@ TELEMETRY_METRIC_READER=prometheus
 
 是否启动单独的服务。
 
-- `false`. 抓取接口为 `/api/prometheus:metrics`.
-- `true`. 抓取接口为 `:port/metrics`.
+- `off`. 抓取接口为 `/api/prometheus:metrics`.
+- `on`. 抓取接口为 `:port/metrics`.
 
 #### TELEMETRY_PROMETHEUS_PORT
 
