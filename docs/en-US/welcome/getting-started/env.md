@@ -253,7 +253,7 @@ CACHE_REDIS_URL=redis://localhost:6379
 
 ### TELEMETRY_ENABLED
 
-启动遥测数据收集，默认为 `false`.
+启动遥测数据收集，默认为 `off`.
 
 ```bash
 TELEMETRY_ENABLED=on
