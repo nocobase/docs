@@ -73,7 +73,7 @@ yarn pm upgrade hello
 
 NocoBase 插件也是 NPM 包，插件名和 NPM 包名的对应规则为 `${PLUGIN_PACKAGE_PREFIX}-${pluginName}`。
 
-`PLUGIN_PACKAGE_PREFIX` 为插件包前缀，可以在 .env 里自定义，[点此查看 PLUGIN_PACKAGE_PREFIX 说明](/api/env#plugin_package_prefix)。
+`PLUGIN_PACKAGE_PREFIX` 为插件包前缀，可以在 .env 里自定义，[点此查看 PLUGIN_PACKAGE_PREFIX 说明](../getting-started/env.md#plugin_package_prefix)。
 
 例如，有一名为 `my-nocobase-app` 的项目，新增了 `hello` 插件，包名为 `@my-nocobase-app/plugin-hello`。
 

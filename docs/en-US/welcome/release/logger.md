@@ -17,8 +17,8 @@ app.use(middleware);
 
 logger 相关环境变量有：
 
-- [LOGGER_TRANSPORT](/api/env#logger_transport)
-- [LOGGER_BASE_PATH](/api/env#logger_base_path)
+- [LOGGER_TRANSPORT](../getting-started/env.md#logger_transport)
+- [LOGGER_BASE_PATH](./getting-started/env.md#logger_base_path)
 
 ## Application 的 logger 配置
 
