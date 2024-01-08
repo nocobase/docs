@@ -51,7 +51,7 @@
 
 ![collection-list.jpg](./the-first-app/order-list-relation.jpg)
 
-在图形化的数据表里，可以很直观的看出各个表之间的关系。（注：Graph-collection 插件暂未开源）
+在图形化的数据表里，可以很直观的看出各个表之间的关系。
 
 ![graph-collection.jpg](./the-first-app/graph-collection.jpg)
 
