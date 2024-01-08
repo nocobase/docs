@@ -22,4 +22,4 @@ NocoBase uses JavaScript/TypeScript technology stack, one person can complete th
 
 ## Pay once, use forever
 
-NocoBase only charges for premium features. For a one-time fee, you get access to the full source code and 1 year of upgrade rights and technical support. After the expiration date, if you do not renew your subscription, you can stay in the current version and use it for free forever.
+NocoBase only charges for premium features. On top of the open source version, we offer commercial licenses, commercial services, and commercial plugins. Pay once and get lifetime licenses and upgrades, as well as full source code for commercial plugins.
