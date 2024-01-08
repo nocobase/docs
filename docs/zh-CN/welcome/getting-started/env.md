@@ -15,12 +15,16 @@
 APP_ENV=production
 ```
 
-### APP_HOST
+### APP_KEY
 
-应用主机，默认值 `0.0.0.0`
+应用的密钥，用于生成用户 token 等，修改为自己的应用密钥，并确保不对外泄露
+
+:::warning
+如果 APP_KEY 修改了，旧的 token 也会随之失效
+:::
 
 ```bash
-APP_HOST=192.168.3.154
+APP_KEY=app-key-test
 ```
 
 ### APP_PORT
@@ -31,14 +35,6 @@ APP_HOST=192.168.3.154
 APP_PORT=13000
 ```
 
-### APP_KEY
-
-秘钥，用于 jwt 等场景
-
-```bash
-APP_KEY=app-key-test
-```
-
 ### API_BASE_PATH
 
 NocoBase API 地址前缀，默认值 `/api/`
@@ -47,29 +43,14 @@ NocoBase API 地址前缀，默认值 `/api/`
 API_BASE_PATH=/api/
 ```
 
-### PLUGIN_PACKAGE_PREFIX
-
-插件包前缀，默认值 `@nocobase/plugin-,@nocobase/preset-`
-
-例如，有一名为 `my-nocobase-app` 的项目，新增了 `hello` 插件，包名为 `@my-nocobase-app/plugin-hello`。
-
-PLUGIN_PACKAGE_PREFIX 配置如下：
-
-```bash
-PLUGIN_PACKAGE_PREFIX=@nocobase/plugin-,@nocobase/preset-,@my-nocobase-app/plugin-
-```
-
-插件名和包名的对应关系为：
-
-- `users` 插件包名为 `@nocobase/plugin-users`
-- `nocobase` 插件包名为 `@nocobase/preset-nocobase`
-- `hello` 插件包名为 `@my-nocobase-app/plugin-hello`
+### API_BASE_URL
 
 ### DB_DIALECT
 
 数据库类型，默认值 `sqlite`，可选项包括：
 
 - `sqlite`
+- `mariadb`
 - `mysql`
 - `postgres`
 
@@ -102,7 +83,7 @@ DB_HOST=localhost
 
 数据库端口（使用 MySQL 或 PostgreSQL 数据库时需要配置）
 
-- MySQL 默认端口 3306
+- MySQL、MariaDB 默认端口 3306
 - PostgreSQL 默认端口 5432
 
 ```bash
@@ -140,6 +121,22 @@ DB_PASSWORD=nocobase
 ```bash
 DB_TABLE_PREFIX=nocobase_
 ```
+
+### DB_UNDERSCORED
+
+数据库表名、字段名是否转为 snake case 风格，默认为 `false`。如果使用 MySQL（MariaDB）数据库，并且 `lower_case_table_names=1`，则 DB_UNDERSCORED 必须为 `true`
+
+:::warning
+当 `DB_UNDERSCORED=true` 时，数据库实际的表名和字段名与界面所见的并不一致，如 `orderDetails` 数据库里的是 `order_details`
+:::
+
+### DB_TIMEZONE
+
+仅 MySQL（或 MariaDB）有效，MySQL 数据库的 timestamp 日期字段支持时区，但是只支持 1970 ~ 2038 区间，所以日期字段改为 datetime 适配，但 datetime 本身并不支持时区，需要通过环境变量 DB_TIMEZONE 来转换。
+
+:::warning
+如果 DB_TIMEZONE 有改动，已经生成的日期数据不会根据时区变化。
+:::
 
 ### DB_LOGGING
 

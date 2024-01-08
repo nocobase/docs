@@ -1,12 +1,6 @@
 # `create-nocobase-app` 安装的升级
 
-<Alert>
-v0.12 之后的版本，通过 create-nocobase-app 安装的应用不再有 packages/app 目录了，在 packages/app 里自定义的代码，需要移至自定义插件中。
-</Alert>
-
-## 版本升级
-
-v0.12 之后的版本，应用的升级直接执行 `yarn nocobase upgrade` 升级命令即可
+直接执行 `yarn nocobase upgrade` 升级命令即可
 
 ```bash
 # 切换到对应的目录

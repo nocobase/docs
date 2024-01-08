@@ -91,13 +91,13 @@ const sidebar = {
       'title.zh-CN': '产品发布',
       type: 'group',
       children: [
-        // {
-        //   type: 'item',
-        //   title: 'Release notes',
-        //   'title.zh-CN': '发布说明',
-        //   link: 'https://blog.nocobase.com/tags/release/',
-        //   'link.zh-CN': 'https://blog-cn.nocobase.com/tags/release/',
-        // },
+        {
+          type: 'item',
+          title: 'Release notes',
+          'title.zh-CN': '发布说明',
+          link: 'https://blog.nocobase.com/tags/release/',
+          'link.zh-CN': 'https://blog-cn.nocobase.com/tags/release/',
+        },
         // {
         //   title: 'Release notes',
         //   'title.zh-CN': '发布说明',

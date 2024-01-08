@@ -26,7 +26,7 @@ cd nocobase/docker/app-postgres
 ```yml
 services:
   app:
-    image: nocobase/nocobase:main # main 分支
+    image: nocobase/nocobase:latest # main 尝鲜版、latest 最新发布版本
 ```
 
 ## 3. 重启容器
