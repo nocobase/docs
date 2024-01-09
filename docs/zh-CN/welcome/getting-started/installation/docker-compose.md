@@ -103,6 +103,10 @@ NocoBase 版本（[点此查看最新版本](https://hub.docker.com/r/nocobase/n
 - `nocobase/nocobase:latest` 已发布的最新版，如果追求稳定，建议使用这个版本
 - `nocobase/nocobase:0.18.0-alpha.9` 使用某个具体的版本
 
+:::warning
+`nocobase/nocobase:main` 目前不支持 arm64 架构
+:::
+
 ```yml
 services:
   app:
