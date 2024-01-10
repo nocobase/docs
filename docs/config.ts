@@ -1548,6 +1548,12 @@ const sidebar = {
           subTitle: '@nocobase/plugin-workflow-sql',
           link: '/plugins/workflow-sql',
         },
+        {
+          title: 'Workflow - Varaible',
+          'title.zh-CN': '工作流 - 变量节点',
+          subTitle: '@nocobase/plugin-workflow-variable',
+          link: '/plugins/workflow-variable',
+        },
       ],
     },
   ],
