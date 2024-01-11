@@ -20,18 +20,42 @@ OIDC 插件遵循 OIDC (Open ConnectID) 协议标准，使用授权码模式 (Au
 
 ## 配置
 
-![](./static/2023-12-03-18-20-09.png)
+### 基础配置
 
+![](./static/2024-01-11-10-41-56.png)
+
+- Sign up automatically when the user does not exist - 当找不到可匹配绑定的已有用户时，是否自动创建新用户。
 - Issuer - issuer 由 IdP 提供，通常以 `/.well-known/openid-configuration` 结尾
 - Client ID - 客户端ID
 - Client Secret - 客户端密钥
 - scope - 选填，默认为 `openid email profile`.
 - id_token signed response algorithm - id_token 的签名方法，默认为 `RS256`.
-- HTTP - 回调地址是否为 http 协议，默认 `https`.
-- Port - 回调地址端口，默认为 `443/80`
+
+### 字段映射
+
+![](./static/2024-01-11-10-40-02.png)
+
 - Field Map - 字段映射。Nocobase 端目前可供映射的字段有昵称、邮箱和手机号。默认昵称使用 `openid`.
 - Use this field to bind the user - 用于和已有用户匹配绑定的字段，可选择邮箱或用户名，默认为邮箱。需要IdP携带的用户信息包含 `email` 或 `username` 字段。
-- Sign up automatically when the user does not exist - 当找不到可匹配绑定的已有用户时，是否自动创建新用户。
+
+### 高级配置
+
+![](./static/2024-01-11-10-42-44.png)
+
+- HTTP - NocoBase 回调地址是否为 http 协议，默认 `https`.
+- Port - NocoBase 回调地址端口，默认为 `443/80`
+- State token - 用于校验请求来源，防止 CSRF 攻击。可以填写一个固定值，**强烈建议留空，会默认生成随机值。如果要使用固定值，请自行评估你的使用环境和安全风险。**
+- Pass parameters in the authorization code grant exchange - 在使用 code 交换 token 的时候，部分 IdP 可能会要求传递 Client ID 或者 Client Secret 作为参数，可以勾选并填写对应的参数名。
+- Method to call the user info endpoint - 请求获取用户信息的 API 时的 HTTP 方法。
+- Where to put the access token when calling the user info endpoint - 请求获取用户信息的 API 时 access token 的传递方式。
+  - Header - 请求头，默认。
+  - Body - 请求体, 配合 `POST` 方法使用。
+  - Query parameters - 请求参数，配合 `GET` 方法使用。
+
+### 使用
+
+![](./static/2024-01-11-10-43-39.png)
+
 - 使用 (Usage) - 回调URL (Redirect URL) 用于复制并填写到 IdP 相应配置中。
 
 :::info
