@@ -37,6 +37,12 @@ cd docker/app-sqlite
 cd docker/app-mysql
 ```
 
+### MariaDB
+
+```bash
+cd docker/app-mariadb
+```
+
 ### PostgreSQL
 
 ```bash
@@ -59,6 +65,9 @@ cd docker/app-postgres
     ├── app-sqlite
       ├── storage
       ├── docker-compose.yml
+    ├── app-mariadb
+      ├── storage
+      ├── docker-compose.yml
     ├── app-mysql
       ├── storage
       ├── docker-compose.yml
@@ -76,6 +85,7 @@ services:
   app:
   postgres:
   mysql:
+  mariadb:
 ```
 
 app 端口，例子为 13000 端口，访问地址为 `http://your-ip:13000/`
@@ -87,12 +97,20 @@ services:
       - '13000:80'
 ```
 
-NocoBase 版本（[点此查看最新版本](https://hub.docker.com/r/nocobase/nocobase/tags)），升级时，需要修改为最新版本。
+NocoBase 版本（[点此查看最新版本](https://hub.docker.com/r/nocobase/nocobase/tags)），几个重要的版本说明：
+
+- `nocobase/nocobase:main` main 分支版本，非稳定版本，尝鲜用户可以使用
+- `nocobase/nocobase:latest` 已发布的最新版，如果追求稳定，建议使用这个版本
+- `nocobase/nocobase:0.18.0-alpha.9` 使用某个具体的版本
+
+:::warning
+`nocobase/nocobase:main` 目前不支持 arm64 架构
+:::
 
 ```yml
 services:
   app:
-    image: nocobase/nocobase:main
+    image: nocobase/nocobase:latest
 ```
 
 环境变量
@@ -100,18 +118,21 @@ services:
 ```yml
 services:
   app:
-    image: nocobase/nocobase:main
+    image: nocobase/nocobase:latest
     environment:
+      - APP_KEY=your-secret-key
       - DB_DIALECT=postgres
       - DB_HOST=postgres
       - DB_DATABASE=nocobase
       - DB_USER=nocobase
       - DB_PASSWORD=nocobase
-      - LOCAL_STORAGE_BASE_URL=/storage/uploads
 ```
 
-- `DB_*` 为数据库相关，如果不是例子默认的数据库服务，请根据实际情况修改；
-- `LOCAL_STORAGE_BASE_URL` 为本地存储的根 URL，如果不是本地安装，需要改为对应的 ip 或域名。
+:::warning
+- `APP_KEY` 是应用的密钥，用于生成用户 token 等（如果 APP_KEY 修改了，旧的 token 也会随之失效），修改为自己的应用密钥，并确保不对外泄露
+- `DB_*` 为数据库相关，如果不是例子默认的数据库服务，请根据实际情况修改
+- 使用 MySQL（或 MariaDB）时，需要配置 DB_TIMEZONE 环境变量，如 `DB_TIMEZONE=+08:00`
+:::
 
 ## 4. 安装并启动 NocoBase
 
