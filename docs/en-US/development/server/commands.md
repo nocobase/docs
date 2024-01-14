@@ -1,102 +1,37 @@
 # Commands
 
-NocoBase Server Application is a powerful and extensible CLI tool in addition to being used as a WEB server.
-
-Create a new `app.js` file with the following code.
+在插件里，自定义的命令必须放在插件的 `src/server/commands/*.ts` 目录下，内容如下：
 
 ```ts
-const Application = require('@nocobase/server');
+import { Application } from '@nocobase/server';
 
-// omit the specific configuration here
-const app = new Application({
-  /*... */
-});
-
-app.runAsCLI();
-```
-
-app.js run as `runAsCLI()` is a CLI, it will work like this in the command line tool.
-
-```bash
-node app.js install # install
-node app.js start # start
-```
-
-To better develop, build and deploy NocoBase applications, NocoBase has many built-in commands, see the [NocoBase CLI](/api/cli) section for details.
-
-## How to customize Command?
-
-NocoBase CLI is designed to be very similar to [Laravel Artisan](https://laravel.com/docs/9.x/artisan), both are extensible. NocoBase CLI is based on [commander](https://www.npmjs.com/ package/commander) implementation, which extends Command like this
-
-```ts
-export class MyPlugin extends Plugin {
-  load() {
-    this.app
-      .command('echo')
-      .option('--v, --version');
-      .action(async ([options]) => {
-        console.log('Hello World!');
-        if (options.version) {
-          console.log('Current version:', app.getVersion());
-        }
-      });
-  }
+export default function(app: Application) {
+  app
+    .command('echo')
+    .option('-v, --version')
+    .action(async ([options]) => {
+      console.log('Hello World!');
+      if (options.version) {
+        console.log('Current version:', await app.version.get());
+      }
+    });
 }
 ```
 
-This method defines the following command.
+:::warning
+插件自定义的命令行必须在插件安装激活之后才有效
+:::
 
-```bash
-yarn nocobase echo
-# Hello World!
-yarn nocobase echo -v
-# Hello World!
-# Current version: 0.8.0-alpha.1
-```
+Command 的特殊配置
 
-More API details can be found in the [Application.command()](/api/server/application#command) section.
+- `ipc()` 当 app 运行时，命令行通过 ipc 发送指令，操作正在运行的 app 实例，未配置 ipc() 时，会新建一个应用实例，再执行操作（不会干扰正在运行的 app 实例）
+- `auth()` 进行数据库检验，如果数据库配置不正确，不会执行该命令
+- `preload()` 是否预先加载应用配置，也就是执行 app.load()
 
-## Example
-
-### Defining a command for exporting collections
-
-If we want to export the data in the application's collections to a JSON file, we can define a subcommand as follows.
+可以根据命令的实际用途进行配置，例子如下：
 
 ```ts
-import path from 'path';
-import * as fs from 'fs/promises';
-
-class MyPlugin extends Plugin {
-  load() {
-    this.app
-      .command('export')
-      .option('-o, --output-dir')
-      .action(async (options, . .collections) => {
-        const { outputDir = path.join(process.env.PWD, 'storage') } = options;
-        await collections.reduce((promise, collection) => promise.then(async () => {
-          if (!this.db.hasCollection(collection)) {
-            console.warn('No such collection:', collection);
-            return;
-          }
-
-          const repo = this.db.getRepository(collection);
-          const data = repo.find();
-          await fs.writeFile(path.join(outputDir, `${collection}.json`), JSON.stringify(data), { mode: 0o644 });
-        }), Promise.resolve());
-      });
-  }
-}
+app.command('a').ipc().action()
+app.command('a').auth().action()
+app.command('a').preload().action()
 ```
-
-After registering and activating the plugin call from the command line.
-
-```bash
-mkdir -p . /storage/backups
-yarn nocobase export -o . /storage/backups users
-```
-
-After execution, it will generate `. /storage/backups/users.json` file containing the data from the collections.
-
-## Summary
-
-The sample code covered in this chapter is integrated in the [packages/samples/command](https://github.com/nocobase/nocobase/tree/main/packages/samples/command) package and can be run directly locally to see the results.
