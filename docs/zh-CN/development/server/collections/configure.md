@@ -18,21 +18,30 @@ NocoBase 有三种方式配置数据表：
 
 ## 在插件代码里定义
 
-一般用于配置插件功能表或系统配置表，用户可以读写数据，但不能修改表结构。
+在插件里，自定义的数据表必须放在插件的 `src/server/collections/*.ts` 目录下，内容如下：
 
 ```ts
-export class MyPlugin extends Plugin {
-  load() {
-    this.db.collection();
-    this.db.import();
-  }
-}
+import { defineCollection } from '@nocobase/database';
+
+export default defineCollection({
+  name: 'examples',
+});
+```
+
+扩展已有 collection 的配置，使用 `extendCollection()`
+
+```ts
+import { extendCollection } from '@nocobase/database';
+
+export default extendCollection({
+  name: 'examples',
+});
 ```
 
 相关 API 参考
 
-- [db.collection()](/api/database#collection)
-- [db.import()](/api/database#import)
+- [defineCollection()](/api/database#definecollection)
+- [extendCollection()](/api/database#extendcollection)
 
 在插件里配置的 collection，插件激活时自动与数据库同步，生相对应的数据表和字段。
 

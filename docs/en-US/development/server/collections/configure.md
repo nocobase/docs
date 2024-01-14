@@ -18,21 +18,30 @@ Business data is generally recommended to be configured using the interface, and
 
 ## Defined in the plugin code
 
-Generally used to configure plugin functions or system configuration tables where users can read and write data, but cannot modify the data structure.
+In the plugin, custom collection must be placed in the `src/server/collections/*.ts` directory of the plugin, with the following content:
 
 ```ts
-export class MyPlugin extends Plugin {
-  load() {
-    this.db.collection();
-    this.db.import();
-  }
-}
+import { defineCollection } from '@nocobase/database';
+
+export default defineCollection({
+  name: 'examples',
+});
+```
+
+Extend the options of an existing collection using `extendCollection()`.
+
+```ts
+import { extendCollection } from '@nocobase/database';
+
+export default extendCollection({
+  name: 'examples',
+});
 ```
 
 Related API Reference
 
-- [db.collection()](/api/database#collection)
-- [db.import()](/api/database#import)
+- [defineCollection()](/api/database#definecollection)
+- [extendCollection()](/api/database#extendcollection)
 
 The collection configured in the plugin is automatically synchronized with the database when the plugin is activated, giving birth to the corresponding data tables and fields.
 
