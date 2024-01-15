@@ -1,0 +1,647 @@
+export default [
+  {
+    title: 'Overview',
+    'title.zh-CN': '插件总览',
+    link: '/plugins',
+  },
+  {
+    title: 'Plugins',
+    'title.zh-CN': '插件列表',
+    type: 'group',
+    children: [
+      {
+        title: 'ACL',
+        'title.zh-CN': '权限控制',
+        subTitle: '@nocobase/plugin-acl',
+        children: [
+          {
+            title: 'Overview',
+            'title.zh-CN': '概述',
+            link: '/plugins/acl',
+          },
+          '/plugins/acl/user',
+        ],
+      },
+      {
+        title: 'Action - Bulk edit ',
+        'title.zh-CN': '操作 - 批量编辑',
+        subTitle: '@nocobase/plugin-action-bulk-edit',
+        link: '/plugins/action-bulk-edit',
+      },
+      {
+        title: 'Action - Bulk update',
+        'title.zh-CN': '操作 - 批量更新',
+        subTitle: '@nocobase/plugin-action-bulk-update',
+        link: '/plugins/action-bulk-update',
+      },
+      {
+        title: 'Action - Custom request',
+        'title.zh-CN': '操作 - 自定义请求',
+        subTitle: '@nocobase/plugin-custom-request',
+        link: '/plugins/custom-request',
+      },
+      {
+        title: 'Action - Duplicate',
+        'title.zh-CN': '操作 - 复制',
+        subTitle: '@nocobase/plugin-action-duplicate',
+        link: '/plugins/action-duplicate',
+      },
+      {
+        title: 'Action - Export',
+        'title.zh-CN': '操作 - 导出',
+        subTitle: '@nocobase/plugin-export',
+        link: '/plugins/export',
+      },
+      {
+        title: 'Action - Import',
+        'title.zh-CN': '操作 - 导入',
+        subTitle: '@nocobase/plugin-import',
+        link: '/plugins/import',
+      },
+      {
+        title: 'Action - Print',
+        'title.zh-CN': '操作 - 打印',
+        subTitle: '@nocobase/plugin-action-print',
+        link: '/plugins/action-print',
+      },
+      {
+        title: 'API doc',
+        'title.zh-CN': 'API 文档',
+        subTitle: '@nocobase/plugin-api-doc',
+        link: '/plugins/api-doc',
+        // children: ['/plugins/api-doc'],
+      },
+      {
+        title: 'API keys',
+        'title.zh-CN': 'API 密钥',
+        subTitle: '@nocobase/plugin-api-keys',
+        link: '/plugins/api-keys',
+        // children: ['/plugins/api-keys'],
+      },
+      {
+        title: 'Audit logs',
+        'title.zh-CN': '审计日志',
+        subTitle: '@nocobase/plugin-audit-logs',
+        link: '/plugins/audit-logs',
+      },
+      {
+        title: 'Authentication',
+        'title.zh-CN': '用户认证',
+        subTitle: '@nocobase/plugin-auth',
+        children: [
+          {
+            title: 'Overview',
+            'title.zh-CN': '概述',
+            link: '/plugins/auth',
+          },
+          {
+            title: 'User manual',
+            'title.zh-CN': '使用手册',
+            link: '/plugins/auth/user',
+          },
+          {
+            title: 'Development',
+            'title.zh-CN': '开发指南',
+            children: ['/plugins/auth/dev/guide', '/plugins/auth/dev/api'],
+          },
+        ],
+      },
+      {
+        title: 'Authentication - CAS',
+        'title.zh-CN': '用户认证 - CAS',
+        subTitle: '@nocobase/plugin-cas',
+        link: '/plugins/cas',
+      },
+      {
+        title: 'Authentication - OIDC',
+        'title.zh-CN': '用户认证 - OIDC',
+        subTitle: '@nocobase/plugin-oidc',
+        children: [
+          {
+            title: 'User manual',
+            'title.zh-CN': '使用手册',
+            link: '/plugins/oidc',
+          },
+          {
+            title: 'Example',
+            'title.zh-CN': '示例',
+            children: ['/plugins/oidc/example/google'],
+          },
+        ],
+      },
+      {
+        title: 'Authentication - SAML',
+        'title.zh-CN': '用户认证 - SAML',
+        subTitle: '@nocobase/plugin-saml',
+        children: [
+          {
+            title: 'User manual',
+            'title.zh-CN': '使用手册',
+            link: '/plugins/saml',
+          },
+          {
+            title: 'Example',
+            'title.zh-CN': '示例',
+            children: ['/plugins/saml/example/google'],
+          },
+        ],
+      },
+      {
+        title: 'Authentication - SMS',
+        'title.zh-CN': '用户认证 - 短信',
+        subTitle: '@nocobase/plugin-sms-auth',
+        link: '/plugins/sms-auth',
+      },
+      {
+        title: 'Backup & Restore',
+        'title.zh-CN': '备份和还原',
+        subTitle: '@nocobase/plugin-backup-restore',
+        link: '/plugins/backup-restore',
+      },
+      {
+        title: 'China region',
+        'title.zh-CN': '中国行政区',
+        subTitle: '@nocobase/plugin-china-region',
+        link: '/plugins/china-region',
+      },
+      {
+        title: 'Client - Web',
+        'title.zh-CN': '客户端 - Web',
+        subTitle: '@nocobase/plugin-client',
+        children: [
+          {
+            title: 'Overview',
+            'title.zh-CN': '概述',
+            link: '/plugins/client',
+          },
+          {
+            title: '使用手册',
+            'title.zh-CN': '使用手册',
+            children: [
+              '/plugins/client/user/plugin-manager',
+              '/plugins/client/user/plugin-settings',
+              '/plugins/client/user/user-center',
+              {
+                title: 'UI designer',
+                'title.zh-CN': '界面设计器',
+                children: [
+                  '/plugins/client/user/ui-designer',
+                  '/plugins/client/user/ui-designer/menus',
+                  '/plugins/client/user/ui-designer/pages',
+                  {
+                    title: 'Blocks',
+                    'title.zh-CN': '区块',
+                    children: [
+                      {
+                        title: 'Overview',
+                        'title.zh-CN': '概述',
+                        link: '/plugins/client/user/ui-designer/blocks',
+                      },
+                    ],
+                  },
+                  {
+                    title: 'Fields',
+                    'title.zh-CN': '字段',
+                    children: [
+                      {
+                        title: 'Overview',
+                        'title.zh-CN': '概述',
+                        link: '/plugins/client/user/ui-designer/fields',
+                      },
+                    ],
+                  },
+                  {
+                    title: 'Actions',
+                    'title.zh-CN': '操作',
+                    children: [
+                      {
+                        title: 'Overview',
+                        'title.zh-CN': '概述',
+                        link: '/plugins/client/user/ui-designer/actions',
+                      },
+                      '/plugins/client/user/ui-designer/actions/add-new',
+                      '/plugins/client/user/ui-designer/actions/view',
+                      '/plugins/client/user/ui-designer/actions/edit',
+                      '/plugins/client/user/ui-designer/actions/delete',
+                      '/plugins/client/user/ui-designer/actions/filter',
+                      '/plugins/client/user/ui-designer/actions/submit',
+                      '/plugins/client/user/ui-designer/actions/add-record',
+                      '/plugins/client/user/ui-designer/actions/update-record',
+                      '/plugins/client/user/ui-designer/actions/save-record',
+                      '/plugins/client/user/ui-designer/actions/open-popup',
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Client - Mobile',
+        'title.zh-CN': '客户端 - 移动端',
+        subTitle: '@nocobase/plugin-mobile-client',
+        link: '/plugins/mobile-client',
+      },
+      {
+        title: 'Connect to foreign data',
+        'title.zh-CN': '连接外部数据',
+        subTitle: '@nocobase/plugin-collection-fdw',
+        link: '/plugins/collection-fdw',
+      },
+      {
+        title: 'Collection manager',
+        'title.zh-CN': '数据表管理',
+        subTitle: '@nocobase/plugin-collection-manager',
+        children: [
+          {
+            title: 'Overview',
+            'title.zh-CN': '概述',
+            link: '/plugins/collection-manager',
+          },
+          {
+            title: 'User manual',
+            'title.zh-CN': '使用手册',
+            children: [
+              {
+                title: 'Overview',
+                'title.zh-CN': '概述',
+                link: '/plugins/collection-manager/user',
+              },
+              {
+                title: 'Collection templates',
+                'title.zh-CN': '数据表模板',
+                children: [
+                  {
+                    title: 'General collection',
+                    'title.zh-CN': '普通数据表',
+                    link: '/plugins/collection-manager/user/collection-templates/general',
+                  },
+                  {
+                    title: 'Tree collection',
+                    'title.zh-CN': '树表',
+                    link: '/plugins/collection-manager/user/collection-templates/tree',
+                  },
+                  {
+                    title: 'Calender collection',
+                    'title.zh-CN': '日历表',
+                    link: '/plugins/collection-manager/user/collection-templates/calender',
+                  },
+                  {
+                    title: 'File collection',
+                    'title.zh-CN': '文件表',
+                    link: '/plugins/collection-manager/user/collection-templates/file',
+                  },
+                  {
+                    title: 'Expression collection',
+                    'title.zh-CN': '表达式表',
+                    link: '/plugins/collection-manager/user/collection-templates/expression',
+                  },
+                  {
+                    title: 'SQL collection',
+                    'title.zh-CN': 'SQL 表',
+                    link: '/plugins/collection-manager/user/collection-templates/sql',
+                  },
+                  {
+                    title: 'View collection',
+                    'title.zh-CN': '连接数据库视图',
+                    link: '/plugins/collection-manager/user/collection-templates/view',
+                  },
+                ],
+              },
+              {
+                title: 'Field interfaces',
+                'title.zh-CN': '数据表字段',
+                link: '/plugins/collection-manager/user/field-interfaces',
+              },
+              {
+                title: 'Association field components',
+                'title.zh-CN': '关系字段组件',
+                children: [
+                  {
+                    title: 'Cascade select',
+                    'title.zh-CN': '级联选择器',
+                    link: '/plugins/collection-manager/user/association-fields/cascade-select',
+                  },
+                  {
+                    title: 'File manager',
+                    'title.zh-CN': '文件管理器',
+                    link: '/plugins/collection-manager/user/association-fields/file-manager',
+                  },
+                  {
+                    title: 'Record picker',
+                    'title.zh-CN': '数据选择器',
+                    link: '/plugins/collection-manager/user/association-fields/record-picker',
+                  },
+                  {
+                    title: 'Select',
+                    'title.zh-CN': '下拉选择器',
+                    link: '/plugins/collection-manager/user/association-fields/select',
+                  },
+                  {
+                    title: 'Sub detail',
+                    'title.zh-CN': '子详情',
+                    link: '/plugins/collection-manager/user/association-fields/sub-detail',
+                  },
+                  {
+                    title: 'Sub form',
+                    'title.zh-CN': '子表单',
+                    link: '/plugins/collection-manager/user/association-fields/sub-form',
+                  },
+                  {
+                    title: 'Sub-form(popover)',
+                    'title.zh-CN': '子表单（弹窗）',
+                    link: '/plugins/collection-manager/user/association-fields/sub-form(popover)',
+                  },
+                  {
+                    title: 'Sub table',
+                    'title.zh-CN': '子表格',
+                    link: '/plugins/collection-manager/user/association-fields/sub-table',
+                  },
+                  {
+                    title: 'Tag',
+                    'title.zh-CN': '标签',
+                    link: '/plugins/collection-manager/user/association-fields/tag',
+                  },
+                  {
+                    title: 'Title',
+                    'title.zh-CN': '标题',
+                    link: '/plugins/collection-manager/user/association-fields/title',
+                  },
+                  {
+                    title: 'Usage Summary',
+                    'title.zh-CN': '使用总结',
+                    link: '/plugins/collection-manager/user/association-fields/summary',
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Data visualization',
+        'title.zh-CN': '数据可视化',
+        subTitle: '@nocobase/plugin-data-visualization',
+        children: [
+          {
+            title: 'Overview',
+            'title.zh-CN': '概述',
+            link: '/plugins/data-visualization',
+          },
+          {
+            title: 'User manual',
+            'title.zh-CN': '使用手册',
+            children: [
+              '/plugins/data-visualization/user/chart-block',
+              '/plugins/data-visualization/user/configure',
+              '/plugins/data-visualization/user/filter',
+            ],
+          },
+          {
+            title: 'Development',
+            'title.zh-CN': '开发指南',
+            children: [
+              '/plugins/data-visualization/dev',
+              '/plugins/data-visualization/step-by-step',
+            ],
+          },
+        ],
+      },
+      {
+        title: 'File manager',
+        'title.zh-CN': '文件管理器',
+        subTitle: '@nocobase/plugin-file-manager',
+        link: '/plugins/file-manager',
+        // children: ['/plugins/file-manager', '/plugins/file-manager/user'],
+      },
+      {
+        title: 'Formula field',
+        'title.zh-CN': '计算公式字段',
+        subTitle: '@nocobase/plugin-formula-field',
+        link: '/plugins/formula-field',
+      },
+      {
+        title: 'Gantt block',
+        'title.zh-CN': '甘特图区块',
+        subTitle: '@nocobase/plugin-gantt',
+        link: '/plugins/gantt',
+        // children: ['/plugins/gantt-block', '/plugins/gantt-block/user'],
+      },
+      {
+        title: 'Graph collection manager',
+        'title.zh-CN': '可视化数据表管理',
+        subTitle: '@nocobase/plugin-graph-collection-manager',
+        link: '/plugins/graph-collection-manager',
+      },
+      {
+        title: 'Iframe block',
+        'title.zh-CN': 'Iframe 区块',
+        subTitle: '@nocobase/plugin-iframe-block',
+        link: '/plugins/iframe-block',
+      },
+      {
+        title: 'Kanban block',
+        'title.zh-CN': '看板区块',
+        subTitle: '@nocobase/plugin-kanban',
+        link: '/plugins/kanban',
+      },
+      {
+        title: 'Localization management',
+        'title.zh-CN': '本地化管理',
+        subTitle: '@nocobase/plugin-localization-management',
+        link: '/plugins/localization-management',
+      },
+      {
+        title: 'Map',
+        'title.zh-CN': '地图',
+        subTitle: '@nocobase/plugin-map',
+        link: '/plugins/map',
+      },
+      {
+        title: 'Multi-app manager',
+        'title.zh-CN': '多应用管理',
+        subTitle: '@nocobase/plugin-multi-app-manager',
+        link: '/plugins/multi-app-manager',
+      },
+      {
+        title: 'Sequence field',
+        'title.zh-CN': '自动编码',
+        subTitle: '@nocobase/plugin-sequence-field',
+        link: '/plugins/sequence-field',
+      },
+      {
+        title: 'Snapshot field',
+        'title.zh-CN': '快照字段',
+        subTitle: '@nocobase/plugin-snapshot-field',
+        link: '/plugins/snapshot-field',
+      },
+      {
+        title: 'System settings',
+        'title.zh-CN': '系统设置',
+        subTitle: '@nocobase/plugin-system-settings',
+        link: '/plugins/system-settings',
+      },
+      {
+        title: 'Logger',
+        'title.zh-CN': '日志',
+        subTitle: '@nocobase/plugin-logger',
+        link: '/plugins/logger',
+      },
+      {
+        title: 'Telemetry - Prometheus',
+        'title.zh-CN': '遥测 - Prometheus',
+        subTitle: '@nocobase/plugin-telemetry-prometheus',
+        link: '/plugins/telemetry-prometheus',
+      },
+      {
+        title: 'Theme editor',
+        'title.zh-CN': '主题编辑器',
+        subTitle: '@nocobase/plugin-theme-editor',
+        link: '/plugins/theme-editor',
+      },
+      {
+        title: 'UI schema storage',
+        'title.zh-CN': 'UI schema 存储',
+        subTitle: '@nocobase/plugin-ui-schema-storage',
+        link: '/plugins/ui-schema-storage',
+      },
+      {
+        title: 'Users',
+        'title.zh-CN': '用户',
+        subTitle: '@nocobase/plugin-users',
+        link: '/plugins/users',
+      },
+      {
+        title: 'Verification',
+        'title.zh-CN': '验证码',
+        subTitle: '@nocobase/plugin-verification',
+        link: '/plugins/verification',
+      },
+      {
+        title: 'Workflow',
+        'title.zh-CN': '工作流',
+        subTitle: '@nocobase/plugin-workflow',
+        children: [
+          {
+            title: 'Overview',
+            'title.zh-CN': '概述',
+            link: '/plugins/workflow',
+          },
+          {
+            title: 'User manual',
+            'title.zh-CN': '使用手册',
+            children: [
+              '/plugins/workflow/manual',
+              '/plugins/workflow/manual/advanced',
+              {
+                title: 'Triggers',
+                'title.zh-CN': '触发器',
+                children: [
+                  '/plugins/workflow/manual/triggers',
+                  '/plugins/workflow/manual/triggers/collection',
+                  '/plugins/workflow/manual/triggers/schedule',
+                ],
+              },
+              {
+                title: 'Nodes',
+                'title.zh-CN': '节点',
+                children: [
+                  '/plugins/workflow/manual/nodes',
+                  '/plugins/workflow/manual/nodes/condition',
+                  '/plugins/workflow/manual/nodes/calculation',
+                  '/plugins/workflow/manual/nodes/create',
+                  '/plugins/workflow/manual/nodes/update',
+                  '/plugins/workflow/manual/nodes/destroy',
+                  '/plugins/workflow/manual/nodes/query',
+                ],
+              },
+            ],
+          },
+          {
+            title: 'Development',
+            'title.zh-CN': '开发指南',
+            children: [
+              '/plugins/workflow/development',
+              '/plugins/workflow/development/trigger',
+              '/plugins/workflow/development/instruction',
+              '/plugins/workflow/development/api',
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Workflow - Aggregate',
+        'title.zh-CN': '工作流 - 聚合节点',
+        subTitle: '@nocobase/plugin-workflow-aggregate',
+        link: '/plugins/workflow-aggregate',
+      },
+      {
+        title: 'Workflow - Approval',
+        'title.zh-CN': '工作流 - 审批',
+        subTitle: '@nocobase/plugin-workflow-approval',
+        link: '/plugins/workflow-approval',
+      },
+      {
+        title: 'Workflow - Delay',
+        'title.zh-CN': '工作流 - 延时节点',
+        subTitle: '@nocobase/plugin-workflow-delay',
+        link: '/plugins/workflow-delay',
+      },
+      {
+        title: 'Workflow - Dynamic calculation',
+        'title.zh-CN': '工作流 - 动态表达式计算',
+        subTitle: '@nocobase/plugin-workflow-dynamic-calculation',
+        link: '/plugins/workflow-dynamic-calculation',
+      },
+      {
+        title: 'Workflow - Form trigger',
+        'title.zh-CN': '工作流 - 表单事件',
+        subTitle: '@nocobase/plugin-workflow-form-trigger',
+        link: '/plugins/workflow-form-trigger',
+      },
+      {
+        title: 'Workflow - JSON query',
+        'title.zh-CN': '工作流 - JSON 解析节点',
+        subTitle: '@nocobase/plugin-workflow-json-query',
+        link: '/plugins/workflow-json-query',
+      },
+      {
+        title: 'Workflow - Loop',
+        'title.zh-CN': '工作流 - 循环节点',
+        subTitle: '@nocobase/plugin-workflow-loop',
+        link: '/plugins/workflow-loop',
+      },
+      {
+        title: 'Workflow - Manual',
+        'title.zh-CN': '工作流 - 人工节点',
+        subTitle: '@nocobase/plugin-workflow-manual',
+        link: '/plugins/workflow-manual',
+      },
+      {
+        title: 'Workflow - Parallel',
+        'title.zh-CN': '工作流 - 并行分支节点',
+        subTitle: '@nocobase/plugin-workflow-parallel',
+        link: '/plugins/workflow-parallel',
+      },
+      {
+        title: 'Workflow - Request',
+        'title.zh-CN': '工作流 - HTTP 请求节点',
+        subTitle: '@nocobase/plugin-workflow-request',
+        link: '/plugins/workflow-request',
+      },
+      {
+        title: 'Workflow - SQL',
+        'title.zh-CN': '工作流 - SQL 操作节点',
+        subTitle: '@nocobase/plugin-workflow-sql',
+        link: '/plugins/workflow-sql',
+      },
+      {
+        title: 'Workflow - Varaible',
+        'title.zh-CN': '工作流 - 变量节点',
+        subTitle: '@nocobase/plugin-workflow-variable',
+        link: '/plugins/workflow-variable',
+      },
+    ],
+  },
+]

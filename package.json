@@ -5,7 +5,9 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "dumi dev",
+    "dev:en": "cross-env DOC_LANG=en-US dumi dev",
     "build": "dumi build",
+    "build:en": "cross-env DOC_LANG=en-US dumi build",
     "prepare": "husky install && dumi setup"
   },
   "authors": [],
@@ -23,6 +25,7 @@
   "devDependencies": {
     "@commitlint/cli": "^18.2.0",
     "@commitlint/config-conventional": "^18.1.0",
+    "cross-env": "^7.0.3",
     "dumi": "^2.2.14",
     "husky": "^8.0.3",
     "lint-staged": "^15.0.2",

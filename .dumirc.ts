@@ -4,7 +4,7 @@ import { nav, sidebar } from './docs/config';
 
 const lang = process.env.DOC_LANG || 'zh-CN';
 
-console.log('process.env.DOC_LANG', process.env.DOC_LANG);
+console.log('process.env.DOC_LANG', lang);
 
 // 设置多语言的 title
 function setTitle(menuChildren: any) {
