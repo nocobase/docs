@@ -24,24 +24,42 @@ export default [
             link: '/manual/collection',
           },
           {
-            title: 'New collection',
-            'title.zh-CN': '新建数据表',
+            title: 'Collection management',
+            'title.zh-CN': '数据表管理',
             children: [
-              '/manual/collection/collection-templates',
-              '/manual/collection/collection-templates/general',
-              '/manual/collection/collection-templates/tree',
-              '/manual/collection/collection-templates/calender',
-              '/manual/collection/collection-templates/file',
-              '/manual/collection/collection-templates/expression',
-              '/manual/collection/collection-templates/sql',
-              '/manual/collection/collection-templates/view',
+              {
+                title: 'Collection management',
+                'title.zh-CN': '数据表管理',
+                link: '/manual/collection/management',
+              },
+              {
+                title: 'Collection templates',
+                'title.zh-CN': '数据表模板',
+                children: [
+                  '/manual/collection/collection-templates',
+                  '/manual/collection/collection-templates/general',
+                  '/manual/collection/collection-templates/tree',
+                  '/manual/collection/collection-templates/calender',
+                  '/manual/collection/collection-templates/file',
+                  '/manual/collection/collection-templates/expression',
+                  '/manual/collection/collection-templates/sql',
+                  '/manual/collection/collection-templates/view',
+                ],
+              }
             ],
           },
           {
             title: 'Third-party databases',
             'title.zh-CN': '第三方数据库',
             children: [
-              '/manual/collection/external-tables',
+              {
+                title: 'Connect to external data tables',
+                'title.zh-CN': '连接外部数据表',
+                children: [
+                  '/manual/collection/collection-fdw',
+                  '/manual/collection/collection-fdw/enable-federated',
+                ],
+              },
               '/manual/collection/multiple-databases',
             ],
           },
@@ -247,6 +265,7 @@ export default [
                 title: 'Association field components',
                 'title.zh-CN': '关系字段组件',
                 children: [
+                  '/manual/ui/fields/association-components',
                   '/manual/ui/fields/association-components/record-picker',
                   '/manual/ui/fields/association-components/select',
                   '/manual/ui/fields/association-components/cascade-select',
@@ -261,6 +280,11 @@ export default [
               }
             ]
           },
+          {
+            title: 'Inherit',
+            'title.zh-CN': '继承',
+            link: '/manual/ui/inherit',
+          }
         ],
       },
       {
@@ -271,6 +295,11 @@ export default [
             title: 'Overview',
             'title.zh-CN': '概述',
             link: '#',
+          },
+          {
+            title: 'User center',
+            'title.zh-CN': '个人中心',
+            link: '/manual/user/user-center',
           },
           {
             title: 'Auth types',
