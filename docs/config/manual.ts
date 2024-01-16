@@ -114,6 +114,11 @@ export default [
                 link: '/manual/ui/blocks',
               },
               {
+                title: 'Blocks types',
+                'title.zh-CN': '区块类型',
+                link: '#',
+              },
+              {
                 title: '数据区块',
                 'title.zh-CN': '数据区块',
                 children: [
