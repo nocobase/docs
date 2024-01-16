@@ -114,7 +114,7 @@ export default [
                 link: '/manual/ui/blocks',
               },
               {
-                title: 'Blocks types',
+                title: 'Block types',
                 'title.zh-CN': '区块类型',
                 link: '#',
               },
