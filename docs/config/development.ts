@@ -6,7 +6,7 @@ export default [
     children: [
       '/development',
       '/development/your-fisrt-plugin',
-      // '/development/app-ds',
+      '/development/app-ds',
       // '/development/plugin-ds',
       '/development/life-cycle',
       // '/development/learning-guide',
