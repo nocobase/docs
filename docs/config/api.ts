@@ -6,13 +6,36 @@ export default [
     children: ['/api/http', '/api/http/rest-api'],
   },
   {
-    title: '@nocobase/server',
+    title: '@nocobase/acl',
+    type: 'subMenu',
+    children: ['/api/acl/acl', '/api/acl/acl-role', '/api/acl/acl-resource'],
+  },
+  {
+    title: '@nocobase/actions',
+    link: '/api/actions',
+  },
+  {
+    title: '@nocobase/auth',
     type: 'subMenu',
     children: [
-      '/api/server/application',
-      // '/api/server/plugin-manager',
-      '/api/server/plugin',
+      '/api/auth/auth-manager',
+      '/api/auth/auth',
+      '/api/auth/base-auth',
     ],
+  },
+  {
+    title: '@nocobase/cache',
+    type: 'subMenu',
+    children: ['/api/cache/cache-manager', '/api/cache/cache'],
+  },
+  {
+    title: '@nocobase/cli',
+    link: '/api/cli',
+  },
+  {
+    title: '@nocobase/client',
+    link: 'https://client.docs.nocobase.com/core/application/application',
+    'link.zh-CN': 'https://client.docs-cn.nocobase.com/core/application/application',
   },
   {
     title: '@nocobase/database',
@@ -30,6 +53,10 @@ export default [
     ],
   },
   {
+    title: '@nocobase/logger',
+    link: '/api/logger',
+  },
+  {
     title: '@nocobase/resourcer',
     type: 'subMenu',
     children: [
@@ -40,51 +67,17 @@ export default [
     ],
   },
   {
-    title: '@nocobase/acl',
-    type: 'subMenu',
-    children: ['/api/acl/acl', '/api/acl/acl-role', '/api/acl/acl-resource'],
+    title: '@nocobase/sdk',
+    link: '/api/sdk',
   },
   {
-    title: '@nocobase/auth',
+    title: '@nocobase/server',
     type: 'subMenu',
     children: [
-      '/api/auth/auth-manager',
-      '/api/auth/auth',
-      '/api/auth/base-auth',
+      '/api/server/application',
+      // '/api/server/plugin-manager',
+      '/api/server/plugin',
     ],
-  },
-  {
-    title: '@nocobase/client',
-    type: 'subMenu',
-    children: [
-      // '/api/client',
-      '/api/client/application',
-      '/api/client/router',
-      {
-        title: 'SchemaDesigner',
-        'title.zh-CN': 'SchemaDesigner',
-        children: [
-          '/api/client/schema-designer/schema-component',
-          '/api/client/schema-designer/schema-initializer',
-          '/api/client/schema-designer/schema-settings',
-        ],
-      },
-      {
-        title: 'Extensions',
-        'title.zh-CN': 'Extensions',
-        children: [
-          // '/api/client/extensions/schema-component',
-          '/api/client/extensions/collection-manager',
-          '/api/client/extensions/block-provider',
-          '/api/client/extensions/acl',
-        ],
-      },
-    ],
-  },
-  {
-    title: '@nocobase/cache',
-    type: 'subMenu',
-    children: ['/api/cache/cache-manager', '/api/cache/cache'],
   },
   {
     title: '@nocobase/telemetry',
@@ -94,22 +87,6 @@ export default [
       '/api/telemetry/trace',
       '/api/telemetry/metric',
     ],
-  },
-  {
-    title: '@nocobase/logger',
-    link: '/api/logger',
-  },
-  {
-    title: '@nocobase/cli',
-    link: '/api/cli',
-  },
-  {
-    title: '@nocobase/actions',
-    link: '/api/actions',
-  },
-  {
-    title: '@nocobase/sdk',
-    link: '/api/sdk',
   },
   {
     title: '@nocobase/test',
