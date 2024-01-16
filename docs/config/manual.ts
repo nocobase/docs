@@ -281,8 +281,8 @@ export default [
             ]
           },
           {
-            title: 'Inherit',
-            'title.zh-CN': '继承',
+            title: 'Inherit collection\'s UI',
+            'title.zh-CN': '继承表的 UI',
             link: '/manual/ui/inherit',
           }
         ],
