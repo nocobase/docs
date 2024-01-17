@@ -15,8 +15,8 @@ export default [
     type: 'group',
     children: [
       {
-        title: 'Collection configure',
-        'title.zh-CN': '数据表配置',
+        title: 'Data source',
+        'title.zh-CN': '数据源配置',
         children: [
           {
             title: 'Overview',
