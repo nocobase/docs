@@ -101,7 +101,7 @@ export default [
           },
           {
             title: 'Page, modal, drawer',
-            'title.zh-CN': '页面，对话框，抽屉',
+            'title.zh-CN': '页面、对话框、抽屉',
             link: '/manual/ui/pages',
           },
           {
