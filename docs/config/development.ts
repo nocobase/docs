@@ -8,7 +8,6 @@ export default [
       '/development/your-fisrt-plugin',
       '/development/app-ds',
       // '/development/plugin-ds',
-      '/development/life-cycle',
       // '/development/learning-guide',
     ],
   },
@@ -90,6 +89,7 @@ export default [
       '/development/others/build',
       '/development/others/languages',
       '/development/others/deps',
+      '/development/life-cycle',
     ],
   },
 ]

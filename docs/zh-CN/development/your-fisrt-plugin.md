@@ -15,7 +15,7 @@
 yarn pm create @my-project/plugin-hello
 ```
 
-插件所在目录 `packages/plugins/@my-project/plugin-hello`，插件目录结构为：
+插件所在目录 `./packages/plugins/@my-project/plugin-hello`，插件目录结构为：
 
 ```bash
 |- /packages/plugins/@my-project/plugin-hello
@@ -41,25 +41,33 @@ yarn pm add @my-project/plugin-hello
 
 ## 编写插件
 
-查看 `packages/plugins/@my-project/plugin-hello/src/server/plugin.ts` 文件，并修改为：
+在插件里新建 collection 文件，如 `./src/server/collections/hello.ts`，内容如下：
 
 ```ts
-import { InstallOptions, Plugin } from '@nocobase/server';
+import { defineCollection } '@nocobase/database';
+
+export default defineCollection({
+  name: 'hello',
+  fields: [{ type: 'string', name: 'name' }],
+});
+```
+
+修改 `./src/server/plugin.ts` 文件，内容如下
+
+```ts
+import { Plugin } from '@nocobase/server';
 
 export class PluginHelloServer extends Plugin {
-  afterAdd() {}
+  async afterAdd() {}
 
-  beforeLoad() {}
+  async beforeLoad() {}
 
   async load() {
-    this.db.collection({
-      name: 'hello',
-      fields: [{ type: 'string', name: 'name' }],
-    });
-    this.app.acl.allow('hello', '*');
+    // 这是一段示例，表示将 hello 表的所有操作对外公开
+    this.app.acl.allow('hello', '*', 'public');
   }
 
-  async install(options?: InstallOptions) {}
+  async install() {}
 
   async afterEnable() {}
 
@@ -86,7 +94,9 @@ yarn pm enable @my-project/plugin-hello
 
 <img src="https://nocobase.oss-cn-beijing.aliyuncs.com/7b7df26a8ecc32bb1ebc3f99767ff9f9.png" />
 
-备注：插件激活时，会自动创建刚才编辑插件配置的 hello 表。
+:::info
+插件激活时，会自动创建刚才配置的 hello 表
+:::
 
 ## 调试插件
 
