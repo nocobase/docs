@@ -100,8 +100,8 @@ export default [
             link: '/manual/ui/menus',
           },
           {
-            title: '页面',
-            'title.zh-CN': '页面',
+            title: 'Page, modal, drawer',
+            'title.zh-CN': '页面，对话框，抽屉',
             link: '/manual/ui/pages',
           },
           {
