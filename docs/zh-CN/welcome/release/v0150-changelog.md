@@ -14,7 +14,7 @@
 
 当页面仅有一个 Tab 时，新版本的 Tab 会删掉，仅保留页面的标题和图标。
 
-```tsx
+```tsx | pure
 const HelloProvider = React.memo((props) => {
   return (
     <SettingsCenterProvider
@@ -39,7 +39,7 @@ const HelloProvider = React.memo((props) => {
 
 现在需要改为：
 
-```tsx
+```tsx | pure
 class HelloPlugin extends Plugin {
   async load() {
     this.app.pluginSettingsManager.add('hello', {
@@ -56,7 +56,7 @@ class HelloPlugin extends Plugin {
 
 其中参数 `aclSnippet` 的 `pm.hello.tab1` 对应原来的 `settings` 对象的 key：
 
-```tsx
+```tsx | pure
 <SettingsCenterProvider
   settings={{
     hello: {
@@ -73,7 +73,7 @@ class HelloPlugin extends Plugin {
 
 - 案例 2：原页面有多个 Tab 的情况
 
-```tsx
+```tsx | pure
 const HelloProvider = React.memo((props) => {
   return (
     <SettingsCenterProvider
@@ -102,7 +102,7 @@ const HelloProvider = React.memo((props) => {
 
 现在需要改为：
 
-```tsx
+```tsx | pure
 import { Outlet } from 'react-router-dom';
 
 class HelloPlugin extends Plugin {
@@ -128,7 +128,7 @@ class HelloPlugin extends Plugin {
 
 获取 pluginSettingsManager 对应的路由信息
 
-```tsx
+```tsx | pure
 const baseName = app.pluginSettingsManager.getRouteName('hello');
 // admin.settings.hello
 const basePath = app.pluginSettingsManager.getRoutePath('hello');
@@ -137,7 +137,7 @@ const basePath = app.pluginSettingsManager.getRoutePath('hello');
 
 如果插件配置页面内部有链接跳转的话，需要进行相应的更改，例如：
 
-```tsx
+```tsx | pure
 navigate('/admin/settings/hello/1');
 navigate('/admin/settings/hello/2');
 

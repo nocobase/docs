@@ -4,61 +4,74 @@
 
 ```bash
 ├── my-nocobase-app
-  ├── packages        # 采用 Monorepo 的方式管理代码，将不同模块划分到不同包里
-    ├── app
-      ├── client      # 客户端模块
-      ├── server      # 服务端模块
-    ├── plugins       # 插件目录
-  ├── storage        # 用于存放数据库文件、附件、缓存等
-    ├── db
+  ├── packages        # 开发中的包
+    ├── plugins       # 开发中的插件
+  ├── storage         # 用于存放数据库文件、附件、缓存等
+    ├── backups       # 备份文件目录
+    ├── plugins       # 即插即用的插件（已编译）
+    ├── tar           # yarn build --tar 存放的位置
+    ├── uploads       # 本地存储目录
   ├── .env            # 环境变量
-  ├── .buildrc.ts     # packages 的打包配置，支持 cjs、esm 和 umd 三种格式的打包。
-  ├── jest.config.js
-  ├── jest.setup.ts
+  ├── .env.e2e        # e2e 测试的环境变量 yarn e2e test
+  ├── .env.test       # 单元测试的环境变量 yarn test
   ├── lerna.json
   ├── package.json
-  ├── tsconfig.jest.json
+  ├── playwright.config.ts
   ├── tsconfig.json
   ├── tsconfig.server.json
+  ├── vitest.config.mts
 ```
 
-## packages 目录
+## 插件所在目录
+
+开发中的插件存放在 `packages/plugins` 目录下，以 npm packages 的方式组织，示例如下：
 
 ```bash
-├── packages
-  ├── app
-    ├── client
-      ├── public
-      ├── src
-        ├── pages
-          ├── index.tsx
-      ├── .umirc.ts
-      ├── package.json
-    ├── server
-      ├── src
-        ├── config
-        ├── index.ts
-      ├── package.json
-  ├── /plugins
-    ├── my-plugin
-      ├── src
-      ├── package.json
+|- /packages/
+  |- /plugins/
+    |- /@nocobase/
+      |- /plugin-hello1/
+      |- /plugin-hello2/
+    |- /my-nocobase-plugin-hello1/
+    |- /my-nocobase-plugin-hello2/
 ```
 
-NocoBase 采用 Monorepo 的方式管理代码，将不同模块划分到不同包里。
+通过界面添加的插件存放在 `storage/plugins` 目录下，以 npm packages 的方式组织，示例如下：
 
-- `app/client` 为应用的客户端模块，基于 [umi](https://umijs.org/zh-CN) 构建；
-- `app/server` 为应用的服务端模块；
-- `plugins/*` 目录里可以放各种插件。
+```bash
+|- /storage/
+  |- /plugins/
+    |- /@nocobase/
+      |- /plugin-hello1/
+      |- /plugin-hello2/
+    |- /my-nocobase-plugin-hello1/
+    |- /my-nocobase-plugin-hello2/
+```
 
-## storages 目录
+内置的插件或者在 `package.json` 的 `dependencies` 里声明的插件都会在 `node_modules` 里，示例如下：
 
-用于存放数据库文件、附件、缓存等。
+```bash
+|- /node_modules/
+  |- /@nocobase/
+    |- /plugin-acl/
+    |- /plugin-auth/
+```
 
-## .env 文件
+## 插件目录结构
 
-环境变量。
+可以通过 `yarn pm create @my-project/plugin-hello` 快速创建一个空插件，目录结构如下：
 
-## .buildrc.ts 文件
+```bash
+|- /packages/plugins/@my-project/plugin-hello
+  |- /dist          # build 之后的产物
+  |- /src
+    |- /client      # 插件客户端代码
+    |- /server      # 插件服务端代码
+  |- .npmignore     # 发布插件包时哪些文件或目录应该被忽略
+  |- client.d.ts
+  |- client.js
+  |- package.json   # 插件包信息
+  |- server.d.ts
+  |- server.js
+```
 
-packages 的打包配置，支持 cjs、esm 和 umd 三种格式的打包。
