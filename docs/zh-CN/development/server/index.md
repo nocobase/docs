@@ -4,10 +4,14 @@
 
 ```bash
 |- /plugin-sample-hello
-  |- /src
-    |- /server      # 插件服务端代码
-      |- plugin.ts  # 插件类
-      |- index.ts   # 服务端入口
+  |- /src              # 插件源码
+    |- /server
+      |- collections   # 约定式目录，插件的数据表配置
+      |- commands      # 约定式目录，自定义命令
+      |- migrations    # 约定式目录，迁移文件
+      |- plugin.ts     # 插件类
+      |- index.ts      # 服务端入口
+  |- package.json
   |- server.d.ts
   |- server.js
 ```
@@ -17,14 +21,14 @@
 `plugin.ts` 提供了插件生命周期的各种方法的调用
 
 ```ts
-import { InstallOptions, Plugin } from '@nocobase/server';
+import { Plugin } from '@nocobase/server';
 
-export class PluginSampleHelloServer extends Plugin {
-  afterAdd() {
+export class PluginDemoServer extends Plugin {
+  async afterAdd() {
     // 插件 pm.add 注册进来之后。主要用于放置 app beforeLoad 事件的监听
     this.app.on('beforeLoad');
   }
-  beforeLoad() {
+  async beforeLoad() {
     // 自定义类或方法
     this.db.registerFieldTypes();
     this.db.registerModels();
@@ -35,27 +39,18 @@ export class PluginSampleHelloServer extends Plugin {
     this.db.on();
   }
   async load() {
-    // 定义 collection
-    this.db.collection();
-    // 导入 collection
-    this.db.import();
-    this.db.addMigrations();
-
     // 定义 resource
     this.resourcer.define();
     // resource action
     this.resourcer.registerActions();
-
     // 注册 middleware
     this.resourcer.use();
     this.acl.use();
     this.app.use();
 
     this.app.i18n;
-    // 自定义命令行
-    this.app.command();
   }
-  async install(options?: InstallOptions) {
+  async install() {
     // 安装逻辑
   }
   async afterEnable() {
