@@ -49,4 +49,5 @@ NocoBase 的页面和弹窗（对话框、抽屉）可以作为区块的容器�
 目前 NocoBase 中的弹窗有对话框和抽屉两种，同页面一样，对话框和抽屉也可以作为区块的容器，可以添加多个标签页。它们通过添加、编辑、查看等操作打开。
 
 ![2024-01-20_08-52-00](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2024-01-20_08-52-00.jpg)
+
 ![2024-01-20_08-52-24](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2024-01-20_08-52-24.jpg)
