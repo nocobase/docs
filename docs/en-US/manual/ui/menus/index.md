@@ -1,49 +1,51 @@
-# 菜单
+# Menus
 
-## 菜单项类型
+Menus are used to organize pages and external links. In NocoBase's default page layout template, menus are located on the top and left side. In this case, the top side is the first level menu, and the left side is the second level and infinite levels of submenus.
 
-内置三种菜项类型：
+## Menu Item Types
 
-- 分组
-- 页面
-- 链接
+NocoBase has three built-in menu item types:
+
+- Group
+- Page
+- Link
 
 ![](./static/OpdHbIbJ8oZX75x777ycylHxn1Q.png)
 
-### 分组
+### Group
 
-使用分组时，左侧会多出一个子菜单
+"Group" is used to group menu items, which can be on the top or left side. Within a group, you can continue to create groups, i.e. the menu can be infinitely hierarchical.
 
 ![](./static/LTdGbCxxHopt9ix1Nuncj73VnQb.png)
 
-### 页面
+### Page
 
-页面可以用于添加各种区块
+Page can be used as container for blocks, holding a wide variety of blocks. (See [pages and popups](. /pages/index.md) )
 
 ![](./static/SYzbbocHfoNFtsxomWJcUno7nog.png)
 
-### 链接
+### Link
 
-用于 URL 跳转
+Can be used to jump to third-party URLs
 
 ![](./static/T0LTbjTBEo24UaxU9Btc6xgbnMf.png)
 
-## 菜单项设计器
+## Configure Menu
 
-在菜单项的右上角有两个图标，分别是：
+Once you switch into UI Editor mode, there are two icons in the upper right corner of the menu item:
 
-- 拖拽移动
-- 菜单项配置
+- Drag and drop to move
+- Menu Item Configuration
 
 ![](./static/Jp3NbdeVBojspWxvcWhcuDTlnOe.png)
 
-### 菜单项配置
+### Menu Item Configuration
 
 ![](./static/ZLYibDXwToMdqRxMTy4cyTion1f.png)
 
-- 编辑：包括菜单项的标题、图标等
-- 移动到：除了拖拽移动以外，也可以通过「移动到」快速的移动菜单项
-- 在前面插入
-- 在后面插入
-- 在里面插入（仅限于分组类型）
-- 删除
+- Edit: includes menu item title, icon, etc.
+- Move to: besides drag and drop move, you can also move the menu item quickly by "Move to", you can move the menu item in front of, behind or inside of other menu items.
+- Insert before
+- Insert after
+- Insert inner (group type only)
+- Delete
