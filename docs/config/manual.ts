@@ -86,7 +86,7 @@ export default [
         ],
       },
       {
-        title: 'UI Configure',
+        title: 'UI Editor',
         'title.zh-CN': 'UI 配置',
         children: [
           {
@@ -95,7 +95,7 @@ export default [
             link: '/manual/ui',
           },
           {
-            title: '菜单',
+            title: 'Menu',
             'title.zh-CN': '菜单',
             link: '/manual/ui/menus',
           },
@@ -105,7 +105,7 @@ export default [
             link: '/manual/ui/pages',
           },
           {
-            title: '区块',
+            title: 'Block',
             'title.zh-CN': '区块',
             children: [
               {
@@ -119,7 +119,7 @@ export default [
                 link: '#',
               },
               {
-                title: '数据区块',
+                title: 'Data blocks',
                 'title.zh-CN': '数据区块',
                 children: [
                   {
@@ -170,7 +170,7 @@ export default [
                 ],
               },
               {
-                title: '关系区块',
+                title: 'Association blocks',
                 'title.zh-CN': '关系区块',
                 children: [
                   {
@@ -186,7 +186,7 @@ export default [
                 ],
               },
               {
-                title: '筛选区块',
+                title: 'Filter blocks',
                 'title.zh-CN': '筛选区块',
                 children: [
                   {
@@ -202,7 +202,7 @@ export default [
                 ],
               },
               {
-                title: '其他区块',
+                title: 'Other blocks',
                 'title.zh-CN': '其他区块',
                 children: [
                   {
@@ -230,7 +230,7 @@ export default [
             ],
           },
           {
-            title: '操作',
+            title: 'Actions',
             'title.zh-CN': '操作',
             children: [
               {
@@ -316,12 +316,12 @@ export default [
                 link: '#',
               },
               {
-                title: '密码',
+                title: 'Password',
                 'title.zh-CN': '密码',
                 link: '#',
               },
               {
-                title: '短信',
+                title: 'SMS',
                 'title.zh-CN': '短信',
                 link: '#',
               },
@@ -358,22 +358,22 @@ export default [
             'title.zh-CN': '权限',
             children: [
               {
-                title: '通用配置',
+                title: 'General permissions',
                 'title.zh-CN': '通用配置',
                 link: '#',
               },
               {
-                title: '数据表操作权限',
+                title: 'Action permissions',
                 'title.zh-CN': '数据表操作权限',
                 link: '#',
               },
               {
-                title: '菜单访问权限',
+                title: 'Menu permissions',
                 'title.zh-CN': '菜单访问权限',
                 link: '#',
               },
               {
-                title: '插件配置权限',
+                title: 'Plugin settings permissions',
                 'title.zh-CN': '插件配置权限',
                 link: '#',
               },
@@ -391,12 +391,12 @@ export default [
             link: '/manual/workflow',
           },
           {
-            title: '快速入门',
+            title: 'Quick start',
             'title.zh-CN': '快速入门',
             link: '/manual/workflow/start',
           },
           {
-            title: '进阶使用',
+            title: 'Advanced usage',
             'title.zh-CN': '进阶使用',
             link: '/manual/workflow/advanced',
           },
@@ -444,7 +444,7 @@ export default [
         ],
       },
       {
-        title: '文件存储',
+        title: 'Files management',
         'title.zh-CN': '文件存储',
         children: [
           {
@@ -453,7 +453,7 @@ export default [
             link: '/manual/file-manager',
           },
           {
-            title: '存储类型',
+            title: 'Storage types',
             'title.zh-CN': '存储类型',
             children: [
               '/manual/file-manager/local',
@@ -494,20 +494,20 @@ export default [
         'title.zh-CN': '插件管理和配置',
         children: [
           {
-            title: '插件管理器',
+            title: 'Plugin management',
             'title.zh-CN': '插件管理器',
             link: '/manual/plugin-manager/plugin-manager',
           },
           {
-            title: '插件设置中心',
+            title: 'Plugin settings center',
             'title.zh-CN': '插件设置中心',
             link: '/manual/plugin-manager/plugin-settings',
           },
         ],
       },
       {
-        title: '更多模块见插件列表',
-        'title.zh-CN': '更多模块见插件列表',
+        title: 'See plugin list for more features',
+        'title.zh-CN': '更多特性见插件列表',
         link: '/plugins',
       },
     ],
