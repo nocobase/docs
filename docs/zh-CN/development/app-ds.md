@@ -63,14 +63,24 @@
 
 ```bash
 |- /packages/plugins/@my-project/plugin-hello
-  |- /dist          # build 之后的产物
-  |- /src
-    |- /client      # 插件客户端代码
-    |- /server      # 插件服务端代码
-  |- .npmignore     # 发布插件包时哪些文件或目录应该被忽略
+|- /dist             # build 产物
+  |- /src              # 插件源码
+    |- /client
+      |- plugin.ts     # 插件类
+      |- index.ts      # 客户端入口
+    |- /locale         # 约定式目录，前后端共享的多语言文件目录
+    |- /swagger        # 约定式目录，swagger 文档
+    |- /server
+      |- collections   # 约定式目录，插件的数据表配置
+      |- commands      # 约定式目录，自定义命令
+      |- migrations    # 约定式目录，迁移文件
+      |- plugin.ts     # 插件类
+      |- index.ts      # 服务端入口
+    |- index.ts
+  |-.npmignore         # 发布插件包时哪些文件或目录应该被忽略
   |- client.d.ts
   |- client.js
-  |- package.json   # 插件包信息
+  |- package.json
   |- server.d.ts
   |- server.js
 ```
