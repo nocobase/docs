@@ -286,6 +286,11 @@ export default [
             ]
           },
           {
+            title: 'Linkage rules',
+            'title.zh-CN': '联动规则',
+            link: '/manual/ui/linkage',
+          },
+          {
             title: 'Inherit collection\'s UI',
             'title.zh-CN': '继承表的 UI',
             link: '/manual/ui/inherit',

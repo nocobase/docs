@@ -18,6 +18,7 @@ NocoBase 内置三种菜项类型：
 
 ![](./static/LTdGbCxxHopt9ix1Nuncj73VnQb.png)
 
+
 ### 页面
 
 页面可以作为区块的容器，放置各种各样的区块。（详见  [页面和弹窗](./pages/index.md)  ）
