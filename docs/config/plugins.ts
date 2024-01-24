@@ -10,8 +10,8 @@ export default [
     type: 'group',
     children: [
       {
-        title: 'Data Model',
-        'title.zh-CN': '数据模型',
+        title: 'Data modeling',
+        'title.zh-CN': '数据建模',
         children: [
           {
             title: 'Collection manager',
