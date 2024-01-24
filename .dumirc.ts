@@ -47,7 +47,7 @@ export default defineConfig({
     sidebarEnhance: sidebar as any,
     github: 'https://github.com/nocobase/nocobase',
     footer: 'nocobase | Copyright © 2023',
-    alert: lang === 'zh-CN' ? '文档正在建设中，部分内容可能缺失或缺少翻译，详情查看 <a target="_blank" href="https://github.com/nocobase/docs/commits/main/">文档更新日志</a>' : 'The document is currently under construction, with some content possibly missing or awaiting translation. For details, please refer to the <a target="_blank" href="https://github.com/nocobase/docs/commits/main/">changelog</a>',
+    alert: lang === 'zh-CN' ? '文档正在建设中，部分内容可能缺失或缺少翻译，详情查看 <a target="_blank" href="https://github.com/nocobase/docs">文档更新日志</a>' : 'The document is currently under construction, with some content possibly missing or awaiting translation. For details, please refer to the <a target="_blank" href="https://github.com/nocobase/docs/commits/main/">changelog</a>',
     localesEnhance: [
       { id: 'zh-CN', switchPrefix: '中', hostname: 'docs-cn.nocobase.com' },
       { id: 'en-US', switchPrefix: 'en', hostname: 'docs.nocobase.com' }
