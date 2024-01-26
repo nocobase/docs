@@ -35,7 +35,7 @@ export default [
               {
                 title: '概述',
                 'title.zh-CN': '概述',
-                link: '#',
+                link: '/manual/data-modeling/fields',
               },
               {
                 title: 'Field data type',
