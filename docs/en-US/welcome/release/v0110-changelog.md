@@ -1,4 +1,4 @@
-# v0.11: Update instructions
+# v0.11: 2023-07-08
 
 ## New features
 

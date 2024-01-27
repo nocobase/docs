@@ -1,4 +1,4 @@
-# v0.14: New plugin manager, supports adding plugins through UI
+# v0.14: 2023-09-12
 
 This release enables plug-and-play plugins in production environments. You can now add plugins directly through the UI, and support downloading from the npm registry (which can be private), local uploads, and URL downloads.
 
