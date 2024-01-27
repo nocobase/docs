@@ -14,6 +14,8 @@ git pull
 
 ## 3. Delete cache and dependencies (optional)
 
+If the normal upgrade process fails, try emptying the cache and dependencies and re-downloading it.
+
 ```bash
 # delete nocobase cache
 yarn nocobase clean
@@ -48,5 +50,5 @@ Production environment
 yarn build
 
 # Start
-yarn start # Not supported on Windows platforms yet
+yarn start
 ```

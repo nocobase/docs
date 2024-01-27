@@ -6,7 +6,7 @@
 
 ## 1. Download NocoBase
 
-Download with Git (or Download Zip，and extract it to the nocobase directory)
+Download with Git
 
 ```bash
 git clone https://github.com/nocobase/nocobase.git nocobase
@@ -37,6 +37,12 @@ cd docker/app-sqlite
 cd docker/app-mysql
 ```
 
+### MariaDB
+
+```bash
+cd docker/app-mariadb
+```
+
 ### PostgreSQL
 
 ```bash
@@ -59,6 +65,9 @@ Directory structure (related to docker)
     ├── app-sqlite
       ├── storage
       ├── docker-compose.yml
+    ├── app-mariadb
+      ├── storage
+      ├── docker-compose.yml
     ├── app-mysql
       ├── storage
       ├── docker-compose.yml
@@ -76,6 +85,7 @@ services:
   app:
   postgres:
   mysql:
+  mariadb:
 ```
 
 App port, the URL is `http://your-ip:13000/`
@@ -87,31 +97,42 @@ services:
       - '13000:80'
 ```
 
-NocoBase version ([click here for the latest version](https://hub.docker.com/r/nocobase/nocobase/tags)). When upgrading, you need to change to the latest version.
+NocoBase version ([click here for the latest version](https://hub.docker.com/r/nocobase/nocobase/tags)), a few important release notes:
+
+- `nocobase/nocobase:main` Main branch version, non-stable version, can be used by users who want to try it.
+- `nocobase/nocobase:latest` The latest version of the branch that has been released, if you are looking for stability, this is the one to use.
+- `nocobase/nocobase:0.18.0-alpha.9` Use a specific version.
+
+:::warning
+`nocobase/nocobase:main` The arm64 architecture is currently not supported.
+:::
 
 ```yml
 services:
   app:
-    image: nocobase/nocobase:main
+    image: nocobase/nocobase:latest
 ```
 
 Environment variables
 
 ```yml
-services:
-  app:
-    image: nocobase/nocobase:main
-    environment:
+services.
+  app.
+    image: nocobase/nocobase:latest
+    environment: APP_KEY=your-secret-key
+      - APP_KEY=your-secret-key
       - DB_DIALECT=postgres
       - DB_HOST=postgres
       - DB_DATABASE=nocobase
       - DB_USER=nocobase
       - DB_PASSWORD=nocobase
-      - LOCAL_STORAGE_BASE_URL=/storage/uploads
 ```
 
-- `DB_*` is the database related, if it is not the default database service of the example, please change it according to the actual situation.
-- `LOCAL_STORAGE_BASE_URL` is the base URL for local storage, if it is not a local installation, you need to change it to the corresponding ip or domain name.
+:::warning
+- `APP_KEY` is the application key, used to generate user tokens, etc. (if APP_KEY is changed, old tokens will be invalidated), change it to your own application key and make sure it is not disclosed to the public.
+- `DB_*` is database related, if it is not the default database service of the example, please modify it according to the actual situation.
+- If you are using MySQL (or MariaDB), you need to configure DB_TIMEZONE environment variable, such as `DB_TIMEZONE=+08:00`.
+:::
 
 ## 4. Install and start NocoBase
 

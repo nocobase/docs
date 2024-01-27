@@ -15,6 +15,8 @@ You can also switch to the directory where `docker-compose.yml` is located, depe
 cd nocobase/docker/app-sqlite
 # MySQL
 cd nocobase/docker/app-mysql
+# MariaDB
+cd nocobase/docker/app-mariaDB
 # PostgreSQL
 cd nocobase/docker/app-postgres
 ```
@@ -26,7 +28,7 @@ cd nocobase/docker/app-postgres
 ```yml
 services:
   app:
-    image: nocobase/nocobase:main
+    image: nocobase/nocobase:latest # main: non-stable version, latest: stable version
 ```
 
 ## 3. Restart the container

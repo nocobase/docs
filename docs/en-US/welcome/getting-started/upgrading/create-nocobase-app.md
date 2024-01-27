@@ -1,14 +1,8 @@
 # Upgrading for `create-nocobase-app`
 
-<Alert>
-
-After v0.12, apps installed via `create-nocobase-app` no longer have a `packages/app` directory, and code customized in `packages/app` needs to be moved to the custom plugin.
-
-</Alert>
-
 ## Upgrading
 
-After v0.12, upgrading the application can be done by running the `yarn nocobase upgrade` command.
+Upgrade the application by running the `yarn nocobase upgrade` command.
 
 ```bash
 # Switch to the corresponding directory
