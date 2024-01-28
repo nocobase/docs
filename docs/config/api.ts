@@ -54,6 +54,18 @@ export default [
     ],
   },
   {
+    title: '@nocobase/data-source-manager',
+    type: 'subMenu',
+    children: [
+      '/api/data-source-manager',
+      '/api/data-source-manager/data-source',
+      '/api/data-source-manager/i-collection-manager',
+      '/api/data-source-manager/i-collection',
+      '/api/data-source-manager/i-repository',
+      '/api/data-source-manager/i-model',
+    ],
+  },
+  {
     title: '@nocobase/logger',
     link: '/api/logger',
   },

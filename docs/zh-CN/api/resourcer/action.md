@@ -8,6 +8,12 @@
 
 ## API
 
+### action.resourceName
+
+### action.actionName
+
+### action.sourceId
+
 ### action.params
 
 ### action.mergeParams()
