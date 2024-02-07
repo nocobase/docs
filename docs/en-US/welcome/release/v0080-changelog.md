@@ -1,4 +1,4 @@
-# v0.8：Plugin manager & docs
+# v0.8：2022-11-01
 
 Starting with v0.8, NocoBase begins to provide an available plugin manager and development documentation. Here are the main changes in v0.8.
 

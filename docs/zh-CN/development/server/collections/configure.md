@@ -43,7 +43,9 @@ export default extendCollection({
 - [defineCollection()](/api/database#definecollection)
 - [extendCollection()](/api/database#extendcollection)
 
-在插件里配置的 collection，插件激活时自动与数据库同步，生成相对应的数据表和字段。
+:::info{title="提示"}
+在插件里配置的 collection，插件激活时自动与数据库同步，生成相对应的数据表和字段。如果插件已经激活，需要通过升级命令 `yarn nocobase upgrade` 来处理数据表的同步问题。
+:::
 
 ## 通过 REST API 管理数据表
 

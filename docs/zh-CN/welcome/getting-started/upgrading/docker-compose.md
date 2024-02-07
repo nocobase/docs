@@ -15,6 +15,8 @@
 cd nocobase/docker/app-sqlite
 # MySQL
 cd nocobase/docker/app-mysql
+# MariaDB
+cd nocobase/docker/app-mariaDB
 # PostgreSQL
 cd nocobase/docker/app-postgres
 ```

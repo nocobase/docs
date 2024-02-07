@@ -1,4 +1,4 @@
-# v0.10: Update instructions
+# v0.10: 2023-06-20
 
 ## New features in the second quarter
 

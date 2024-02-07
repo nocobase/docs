@@ -45,6 +45,10 @@ Related API Reference
 
 The collection configured in the plugin is automatically synchronized with the database when the plugin is activated, giving birth to the corresponding data tables and fields.
 
+:::info{title="INFO"}
+The collection configured in the plugin is automatically synchronized with the database when the plugin is activated, generating the corresponding data tables and fields. If the plugin is already active, you need to handle the synchronization of the data tables with the upgrade command `yarn nocobase upgrade`.
+:::
+
 ## Managing data tables via REST API
 
 Third parties can also manage data tables via the HTTP interface (permissions required)

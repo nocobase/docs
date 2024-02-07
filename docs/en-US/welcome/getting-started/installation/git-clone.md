@@ -5,7 +5,7 @@
 Make sure you have:
 
 - Git, Node.js 18+, Yarn 1.22.x installed
-- Configured and started the required database SQLite 3.x, MySQL 8.x, PostgreSQL 10.x choose one
+- Configured and started the required database SQLite 3.x, MySQL 8.x, MariaDB 10.9+, PostgreSQL 10.x choose one
 
 ## 1. Download with Git
 
@@ -36,10 +36,16 @@ DB_DIALECT=sqlite
 DB_STORAGE=storage/db/nocobase.sqlite
 ```
 
+:::warning
+- `APP_KEY` is the key of the app, it is used to generate the user token (if APP_KEY is changed, the old token will be invalidated), create-nocobase-app will generate a random key when it creates the app, please make sure that it is not leaked to the public.
+- `DB_*` is database related, if it is not the default database service in the example, please modify it according to the actual situation.
+- When using MySQL (or MariaDB), you need to configure the DB_TIMEZONE environment variable, such as `DB_TIMEZONE=+08:00`.
+:::
+
 ## 5. Install NocoBase
 
 ```bash
-yarn nocobase install --lang=zh-CN
+yarn nocobase install --lang=en-US
 ```
 
 ## 6. Start NocoBase

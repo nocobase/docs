@@ -6,7 +6,14 @@
 
 ## 1. 将 NocoBase 下载到本地
 
-使用 Git 下载（或直接[下载 Zip 包](https://gitee.com/nocobase/nocobase/repository/archive/main.zip)，并解压到 nocobase 目录下）
+使用 Git 下载
+
+
+```bash
+git clone https://github.com/nocobase/nocobase.git nocobase
+```
+
+如果你不能正常连接 GitHub，请使用 Gitee（或直接[下载 Zip 包](https://gitee.com/nocobase/nocobase/repository/archive/main.zip)，并解压到 nocobase 目录下）
 
 ```bash
 git clone https://gitee.com/nocobase/nocobase.git nocobase
