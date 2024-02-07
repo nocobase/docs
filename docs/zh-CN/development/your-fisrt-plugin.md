@@ -94,8 +94,8 @@ yarn pm enable @my-project/plugin-hello
 
 <img src="https://nocobase.oss-cn-beijing.aliyuncs.com/7b7df26a8ecc32bb1ebc3f99767ff9f9.png" />
 
-:::info
-插件激活时，会自动创建刚才配置的 hello 表
+:::info{title="提示"}
+在插件里配置的 collection，插件激活时自动与数据库同步，生成相对应的数据表和字段。如果插件已经激活，需要通过升级命令 `yarn nocobase upgrade` 来处理数据表的同步问题。
 :::
 
 ## 调试插件

@@ -18,7 +18,7 @@ yarn pm create @my-project/plugin-hello
 The directory where the plugin located is `packages/plugins/@my-project/plugin-hello` and the plugin directory structure is
 
 ```bash
-|- /hello
+|- /packages/plugins/@my-project/plugin-hello
   |- /src
     |- /client # plugin client code
     |- /server # plugin server code
@@ -41,25 +41,33 @@ yarn pm add @my-project/plugin-hello
 
 ## Code the plugin
 
-Look at the `packages/plugins/@my-project/plugin-hello/src/server/plugin.ts` file and modify it to
+Create a new collection file in the plugin, e.g. `. /src/server/collections/hello.ts` with the following contents:
 
 ```ts
-import { InstallOptions, Plugin } from '@nocobase/server';
+import { defineCollection } '@nocobase/database';
+
+export default defineCollection({
+  name: 'hello',
+  fields: [{ type: 'string', name: 'name' }],
+});
+```
+
+Modify the `. /src/server/plugin.ts` file as follows
+
+```ts
+import { Plugin } from '@nocobase/server';
 
 export class PluginHelloServer extends Plugin {
-  afterAdd() {}
+  async afterAdd() {}
 
-  beforeLoad() {}
+  async beforeLoad() {}
 
   async load() {
-    this.db.collection({
-      name: 'hello',
-      fields: [{ type: 'string', name: 'name' }],
-    });
-    this.app.acl.allow('hello', '*');
+    // This is just an example. Expose all actions of the hello collection to the public
+    this.app.acl.allow('hello', '*', 'public');
   }
 
-  async install(options?: InstallOptions) {}
+  async install() {}
 
   async afterEnable() {}
 
@@ -86,7 +94,9 @@ The Plugin Manager page defaults to http://localhost:13000/admin/pm/list/local/
 
 <img src="https://nocobase.oss-cn-beijing.aliyuncs.com/7b7df26a8ecc32bb1ebc3f99767ff9f9.png" />
 
-Node: When the plugin is activated, the hello collection that you just configured is automatically created.
+:::info{title="INFO"}
+The collection configured in the plugin is automatically synchronized with the database when the plugin is activated, generating the corresponding data tables and fields. If the plugin is already active, you need to handle the synchronization of the data tables with the upgrade command `yarn nocobase upgrade`.
+:::
 
 ## Debug the Plugin
 
@@ -122,7 +132,7 @@ curl --location --request GET 'http://localhost:13000/api/hello:list'
 ```bash
 yarn build @my-project/plugin-hello --tar
 
-# step-by-step
+# step by step
 yarn build @my-project/plugin-hello
 yarn nocobase tar @my-project/plugin-hello
 ```
