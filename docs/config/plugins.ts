@@ -215,28 +215,9 @@ export default [
         ],
       },
       {
-        title: 'Users authentication & permissions',
-        'title.zh-CN': '用户认证和权限',
+        title: 'Users authentication',
+        'title.zh-CN': '用户认证',
         children: [
-          {
-            title: 'Users',
-            'title.zh-CN': '用户',
-            subTitle: '@nocobase/plugin-users',
-            link: '/plugins/users',
-          },
-          {
-            title: 'ACL',
-            'title.zh-CN': '权限控制',
-            subTitle: '@nocobase/plugin-acl',
-            children: [
-              {
-                title: 'Overview',
-                'title.zh-CN': '概述',
-                link: '/plugins/acl',
-              },
-              '/plugins/acl/user',
-            ],
-          },
           {
             title: 'Authentication',
             'title.zh-CN': '用户认证',
@@ -310,6 +291,31 @@ export default [
             'title.zh-CN': '验证码',
             subTitle: '@nocobase/plugin-verification',
             link: '/plugins/verification',
+          },
+        ],
+      },
+      {
+        title: 'Users & permissions',
+        'title.zh-CN': '用户和权限',
+        children: [
+          {
+            title: 'Users',
+            'title.zh-CN': '用户',
+            subTitle: '@nocobase/plugin-users',
+            link: '/plugins/users',
+          },
+          {
+            title: 'ACL',
+            'title.zh-CN': '权限控制',
+            subTitle: '@nocobase/plugin-acl',
+            children: [
+              {
+                title: 'Overview',
+                'title.zh-CN': '概述',
+                link: '/plugins/acl',
+              },
+              '/plugins/acl/user',
+            ],
           },
         ],
       },
