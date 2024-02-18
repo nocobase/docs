@@ -11,6 +11,7 @@
 - 流程控制类
   - [条件判断](../condition/index.md)
   - [运算](../calculation/index.md)
+  - [结束流程](../end/index.md)
   - [循环](../../../../workflow-loop/index/index.md)（插件 @nocobase/plugin-workflow-loop 提供）
   - [并行分支](../../../../workflow-parallel/index/index.md)（插件 @nocobase/plugin-workflow-parallel 提供）
   - [延时](../../../../workflow-delay/index/index.md)（插件 @nocobase/plugin-workflow-deley 提供）
@@ -23,6 +24,8 @@
   - [SQL 操作](../../../../workflow-sql/index/index.md)（插件 @nocobase/plugin-workflow-sql 提供）
 - 人工处理
   - [人工处理](../../../../workflow-manual/index/index.md)（插件 @nocobase/plugin-workflow-manual 提供）
-- 外部调用
+  - [审批](../../../../workflow-approval/index/index.md)（插件 @nocobase/plugin-workflow-approval 提供）
+- 其他扩展
   - [HTTP 请求](../../../../workflow-request/index/index.md)（插件 @nocobase/plugin-workflow-request 提供）
   - [动态表达式运算](../../../../workflow-dynamic-calculation/index/index.md)（插件 @nocobase/plugin-workflow-dynamic-calculation 提供）
+  - [响应消息](../../../../workflow-response-message/index/index.md)（插件 @nocobase/plugin-workflow-response-message 提供）
