@@ -310,6 +310,7 @@ export default [
                       '/plugins/workflow/manual/nodes/update',
                       '/plugins/workflow/manual/nodes/destroy',
                       '/plugins/workflow/manual/nodes/query',
+                      '/plugins/workflow/manual/nodes/end',
                     ],
                   },
                 ],
@@ -385,6 +386,18 @@ export default [
             'title.zh-CN': '工作流 - HTTP 请求节点',
             subTitle: '@nocobase/plugin-workflow-request',
             link: '/plugins/workflow-request',
+          },
+          {
+            title: 'Workflow - Request interceptor',
+            'title.zh-CN': '工作流 - 请求拦截器',
+            subTitle: '@nocobase/plugin-workflow-request-interceptor',
+            link: '/plugins/workflow-request-interceptor',
+          },
+          {
+            title: 'Workflow - Response message',
+            'title.zh-CN': '工作流 - 响应消息',
+            subTitle: '@nocobase/plugin-workflow-response-message',
+            link: '/plugins/workflow-response-message',
           },
           {
             title: 'Workflow - SQL',
