@@ -1,14 +1,10 @@
-# 数据源 - MariaDB
+# 数据源 - MySQL
 
 ## 介绍
 
-支持接入 MariaDB 数据库，并将其中的数据表作为区块展示在界面上
+支持接入 MySQL 数据库，并将其中的数据表作为区块展示在界面上
 
 ## 安装
-
-前提条件
-
-- 依赖[数据源管理插件（@nocobase/plugin-data-source-manager）](/plugins/data-source-manager)，请确保你以激活该插件
 
 该插件为商业插件，需要通过插件管理器上传并激活插件
 
@@ -16,11 +12,11 @@
 
 ## 使用说明
 
-选择 MariaDB 数据源
+选择 MySQL 数据源
 
 ![Alt text](./image-2.png)
 
-填写需要接入的 MariaDB 数据库信息
+填写需要接入的 MySQL 数据库信息
 
 ![Alt text](./image-1.png)
 

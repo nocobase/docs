@@ -463,30 +463,6 @@ export default [
         ],
       },
       {
-        title: 'Monitoring and logging',
-        'title.zh-CN': '监控和日志',
-        children: [
-          {
-            title: 'Audit logs',
-            'title.zh-CN': '审计日志',
-            subTitle: '@nocobase/plugin-audit-logs',
-            link: '/plugins/audit-logs',
-          },
-          {
-            title: 'Logger',
-            'title.zh-CN': '日志',
-            subTitle: '@nocobase/plugin-logger',
-            link: '/plugins/logger',
-          },
-          {
-            title: 'Telemetry - Prometheus',
-            'title.zh-CN': '遥测 - Prometheus',
-            subTitle: '@nocobase/plugin-telemetry-prometheus',
-            link: '/plugins/telemetry-prometheus',
-          },
-        ],
-      },
-      {
         title: 'Others',
         'title.zh-CN': '其他',
         children: [
