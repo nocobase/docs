@@ -1,7 +1,7 @@
 export default [
   {
     title: 'Guide',
-    'title.zh-CN': '使用指南',
+    'title.zh-CN': '指南',
     link: '/handbook',
   },
   {
@@ -483,12 +483,6 @@ export default [
         // subTitle: '@nocobase/plugin-api-doc',
         link: '/plugins/api-doc',
         // children: ['/plugins/api-doc'],
-      },
-      {
-        title: 'Others',
-        'title.zh-CN': '其他',
-        children: [
-        ],
       },
     ],
   },
