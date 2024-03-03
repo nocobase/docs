@@ -11,10 +11,10 @@ NocoBase 的用户认证模块主要由两部分组成：
 
 除此之外，Nocobase还提供了其他多种用户认证方式插件
 
-- [@nocobase/plugin-sms-auth](../sms-auth/index.md) - 提供短信验证登录功能
-- [@nocobase/plugin-saml](../saml/index.md) - 提供SAML SSO登录功能
-- [@nocobase/plugin-oidc](../oidc/index.md) - 提供OIDC SSO登录功能
-- [@nocobase/plugin-cas](../cas/index.md) - 提供CAS SSO登录功能
+- [@nocobase/plugin-sms-auth](../auth-sms/index.md) - 提供短信验证登录功能
+- [@nocobase/plugin-saml](../auth-saml/index.md) - 提供SAML SSO登录功能
+- [@nocobase/plugin-oidc](../auth-oidc/index.md) - 提供OIDC SSO登录功能
+- [@nocobase/plugin-cas](../auth-cas/index.md) - 提供CAS SSO登录功能
 
 通过以上插件，管理员配置好相应的认证方式以后，用户可以直接使用 Google Workspace, Microsoft Azure 等平台提供的用户身份登录系统，也可以对 接Auth0, Logto, Keycloak 等平台工具。除此之外，开发者也可以通过我们提供的基础接口很方便地扩展自己所需要的其他认证方式。
 
