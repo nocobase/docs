@@ -44,6 +44,12 @@ export default [
     'title.zh-CN': 'API 参考',
     link: '/api',
   },
+  {
+    title: 'NocoBase Home',
+    'title.zh-CN': 'NocoBase 首页',
+    link: 'https://www.nocobase.com',
+    'link.zh-CN': 'https://cn.nocobase.com',
+  },
   // {
   //   title: 'Schema components',
   //   'title.zh-CN': 'Schema 组件库',
