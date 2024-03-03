@@ -4,68 +4,72 @@
 
 ### 支持多数据源
 
-新增「数据源管理」插件，用于管理所有数据源的数据表和字段，数据源管理插件只是提供中心化的数据源管理界面，并不提供接入数据源的能力，需要和各种数据源插件搭配使用，目前支持的数据源包括：
+新增「[数据源管理](/handbook/data-source-manager)」插件，用于管理所有数据源的数据表和字段，数据源管理插件只是提供中心化的数据源管理界面，并不提供接入数据源的能力，需要和各种数据源插件搭配使用，目前支持的数据源包括：
 
-- Main 数据库：NocoBase 主数据库，支持 MySQL、PostgreSQL、SQLite 等关系型数据库。
-- External MySQL：接入已有的 MySQL 数据库作为数据源。
-- External MariaDB：接入已有的 MariaDB 数据库作为数据源。
-- External PostgreSQL：接入已有的 PostgreSQL 数据库作为数据源。
+- [主数据库 Main](/handbook/data-source-main)：NocoBase 主数据库，支持 MySQL、PostgreSQL、SQLite 等关系型数据库。
+- [外部 MySQL 数据源](/handbook/data-source-external-mysql)：接入已有的 MySQL 数据库作为数据源。
+- [外部 MariaDB 数据源](/handbook/data-source-external-mariadb)：接入已有的 MariaDB 数据库作为数据源。
+- [外部 PostgreSQL 数据源](/handbook/data-source-external-postgres)：接入已有的 PostgreSQL 数据库作为数据源。
 
 除此之外，也可以扩展更多数据源，可以是常见的各类数据库，也可以是提供 API（SDK）的平台。
 
-![alt text](./image.png)
+![数据源管理](./image.png)
 
 ### 调整数据表的管理方式
 
 将原来的「数据表管理」移至「数据源 > 主数据库 > 配置」
 
-![alt text](./20240303172205_rec_.gif)
+![Main 数据库配置](./20240303172205_rec_.gif)
 
 ### 支持非 ID 字段作为主键和关系约束
 
 建表时，可以不选择创建 ID 字段
 
-![alt text](./image-1.png)
+![预置字段](./image-1.png)
 
 整数字段可以作为主键
 
-![alt text](./image-3.png)
+![整数字段可以作为主键](./image-3.png)
 
 单行文本字段也可以作为主键
 
-![alt text](./image-2.png)
+![单行文本字段也可以作为主键](./image-2.png)
+
+关系约束支持选择其他设置了 Unique 索引的非主键字段
+
+![](./image-17.png)
 
 ### 调整拖拽排序
 
 新增「排序」类型字段，建表时不再自动生成排序字段，需要自己手动创建
 
-![alt text](./image-4.png)
+![](./image-4.png)
 
 当选了某个字段作为分组时，将先分组再排序
 
-![alt text](./image-5.png)
+![](./image-5.png)
 
 表格拖拽排序时，需要选择排序字段
 
-![alt text](./image-7.png)
+![](./image-7.png)
 
 创建看板区块时，需要选择排序字段
 
-![alt text](./image-6.png)
+![](./image-6.png)
 
 ### 调整用户和权限界面
 
 新增用户管理界面，并将用户、角色的管理统一到一个菜单内
 
-![alt text](./image-8.png)
+![](./image-8.png)
 
 调整角色管理的界面，便于管理角色关联的用户、权限、部门等数据
 
-![alt text](./image-9.png)
+![](./image-9.png)
 
 将原来的「操作权限」移至「数据源」标签页
 
-![alt text](./20240303170947_rec_.gif)
+![](./20240303170947_rec_.gif)
 
 ### 部门插件
 
@@ -87,7 +91,7 @@
 
 该节点执行时将立即结束当前执行的工作流，并以节点配置的状态结束。通常用于特定逻辑的流程控制，在满足某些逻辑条件后，跳出当前工作流，不再继续执行后续流程的处理。可类比编程语言中的 return 指令，用于退出当前执行的函数。
 
-![alt text](./image-16.png)
+![](./image-16.png)
 
 进一步可通过文档了解：https://docs-cn.nocobase.com/plugins/workflow/manual/nodes/end
 
@@ -95,7 +99,7 @@
 
 可在流程中声明变量，或为已声明的变量赋值，通常用于在流程中保存一些临时数据。适用于一些需要在分支内将计算结果储存到分支外使用的场景（如循环、并行等）。
 
-![alt text](./image-12.png)
+![](./image-12.png)
 
 进一步可通过文档了解：https://docs-cn.nocobase.com/plugins/workflow-variable
 
@@ -105,7 +109,7 @@
 搭配使用“响应消息”节点可以为该流程配置返回客户端的响应消息，以对客户端给出相应的提示信息。
 请求拦截器可用于进行业务验证或逻辑检查，以通过或拦截客户端提交的创建、更新和删除等操作请求。
 
-![alt text](./image-13.png)
+![](./image-13.png)
 
 进一步可通过文档了解：https://docs-cn.nocobase.com/plugins/workflow-request-interceptor
 
@@ -115,11 +119,11 @@
 
 节点配置
 
-![alt text](./image-14.png)
+![](./image-14.png)
 
 提示信息
 
-![alt text](./image-15.png)
+![](./image-15.png)
 
 进一步可通过文档了解：https://docs-cn.nocobase.com/plugins/workflow-response-message
 
@@ -131,8 +135,6 @@
 
 | 原来的 API           | 废弃的 API                      | 新 API                                                                                                                 |
 | -------------------- | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| RecordProvider       | RecordProvider_deprecated       | [RecordProvider](https://pr-3418.client.docs-cn.nocobase.com/core/data-block/record-provider)                          |
-| useRecord            | useRecord_deprecated            | [useRecord](https://pr-3418.client.docs-cn.nocobase.com/core/data-block/record-provider#hooks)                         |
 | CollectionProvider   | CollectionProvider_deprecated   | [CollectionProvider](https://pr-3418.client.docs-cn.nocobase.com/core/data-source/collection-provider)                 |
 | useCollection        | useCollection_deprecated        | [useCollection](https://pr-3418.client.docs-cn.nocobase.com/core/data-source/collection-provider#hooks)                |
 | useCollectionField   | useCollectionField_deprecated   | [useCollectionField](https://pr-3418.client.docs-cn.nocobase.com/core/data-source/collection-field#hooks)              |
