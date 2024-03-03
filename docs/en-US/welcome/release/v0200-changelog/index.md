@@ -137,11 +137,11 @@ In this kernel change, some new version APIs conflict with the old version names
 
 | Original API           | Deprecated API                  | New API                                                                                                                |
 | ---------------------- | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| CollectionProvider     | CollectionProvider_deprecated   | [CollectionProvider](https://pr-3418.client.docs-cn.nocobase.com/core/data-source/collection-provider)                 |
-| useCollection          | useCollection_deprecated        | [useCollection](https://pr-3418.client.docs-cn.nocobase.com/core/data-source/collection-provider#hooks)                |
-| useCollectionField     | useCollectionField_deprecated   | [useCollectionField](https://pr-3418.client.docs-cn.nocobase.com/core/data-source/collection-field#hooks)              |
-| useCollectionManager   | useCollectionManager_deprecated | [useCollectionManager](https://pr-3418.client.docs-cn.nocobase.com/core/data-source/collection-manager-provider#hooks) |
-| useContext(CollectionManagerContext) | useCollectionManager_deprecated | [useCollectionManager](https://pr-3418.client.docs-cn.nocobase.com/core/data-source/collection-manager-provider#hooks) |
+| CollectionProvider     | CollectionProvider_deprecated   | [CollectionProvider](https://client.docs.nocobase.com/core/data-source/collection-provider)                 |
+| useCollection          | useCollection_deprecated        | [useCollection](https://client.docs.nocobase.com/core/data-source/collection-provider#hooks)                |
+| useCollectionField     | useCollectionField_deprecated   | [useCollectionField](https://client.docs.nocobase.com/core/data-source/collection-field#hooks)              |
+| useCollectionManager   | useCollectionManager_deprecated | [useCollectionManager](https://client.docs.nocobase.com/core/data-source/collection-manager-provider#hooks) |
+| useContext(CollectionManagerContext) | useCollectionManager_deprecated | [useCollectionManager](https://client.docs.nocobase.com/core/data-source/collection-manager-provider#hooks) |
 
 If you are using the above related APIs, you have two ways to change:
 

@@ -139,11 +139,11 @@
 
 | 原来的 API           | 废弃的 API                      | 新 API                                                                                                                 |
 | -------------------- | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| CollectionProvider   | CollectionProvider_deprecated   | [CollectionProvider](https://pr-3418.client.docs-cn.nocobase.com/core/data-source/collection-provider)                 |
-| useCollection        | useCollection_deprecated        | [useCollection](https://pr-3418.client.docs-cn.nocobase.com/core/data-source/collection-provider#hooks)                |
-| useCollectionField   | useCollectionField_deprecated   | [useCollectionField](https://pr-3418.client.docs-cn.nocobase.com/core/data-source/collection-field#hooks)              |
-| useCollectionManager | useCollectionManager_deprecated | [useCollectionManager](https://pr-3418.client.docs-cn.nocobase.com/core/data-source/collection-manager-provider#hooks) |
-| useContext(CollectionManagerContext) | useCollectionManager_deprecated | [useCollectionManager](https://pr-3418.client.docs-cn.nocobase.com/core/data-source/collection-manager-provider#hooks) |
+| CollectionProvider   | CollectionProvider_deprecated   | [CollectionProvider](https://client.docs-cn.nocobase.com/core/data-source/collection-provider)                 |
+| useCollection        | useCollection_deprecated        | [useCollection](https://client.docs-cn.nocobase.com/core/data-source/collection-provider#hooks)                |
+| useCollectionField   | useCollectionField_deprecated   | [useCollectionField](https://client.docs-cn.nocobase.com/core/data-source/collection-field#hooks)              |
+| useCollectionManager | useCollectionManager_deprecated | [useCollectionManager](https://client.docs-cn.nocobase.com/core/data-source/collection-manager-provider#hooks) |
+| useContext(CollectionManagerContext) | useCollectionManager_deprecated | [useCollectionManager](https://client.docs-cn.nocobase.com/core/data-source/collection-manager-provider#hooks) |
 
 如果用到以上相关 API，你可以有两种更改方式：
 
