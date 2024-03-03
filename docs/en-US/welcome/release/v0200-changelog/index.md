@@ -73,6 +73,10 @@ Moved the original "Operation Permissions" to the "Data Source" tab.
 
 ### Department Plugin
 
+![](./image-18.png)
+
+Further details can be found in the documentation: [Department](/handbook/departments)
+
 ### Workflow: Approval
 
 The approval plugin provides dedicated workflow types (triggers) "Initiate Approval" and "Approval" nodes for this process. Combined with NocoBase's unique custom data tables and custom blocks, various approval scenarios can be quickly and flexibly created and managed.

@@ -73,6 +73,10 @@
 
 ### 部门插件
 
+![](./image-18.png)
+
+进一步可通过文档了解：[部门](/handbook/departments)
+
 ### 工作流：审批
 
 审批插件提供了专用的工作流类型（触发器）“发起审批”和专用于该流程的“审批”节点，结合 NocoBase 特有的自定义数据表和自定义区块，可以快速且灵活地创建与管理各类审批场景。
@@ -85,7 +89,7 @@
 
 ![审批处理](./image-11.png)
 
-进一步可通过文档了解：https://docs-cn.nocobase.com/plugins/workflow-approval
+进一步可通过文档了解：[工作流：审批](/handbook/workflow-approval)
 
 ### 工作流：结束流程节点
 
@@ -93,7 +97,7 @@
 
 ![](./image-16.png)
 
-进一步可通过文档了解：https://docs-cn.nocobase.com/plugins/workflow/manual/nodes/end
+进一步可通过文档了解：[工作流：结束流程节点](/handbook/workflow/manual/nodes/end)
 
 ### 工作流：自定义变量节点
 
@@ -101,7 +105,7 @@
 
 ![](./image-12.png)
 
-进一步可通过文档了解：https://docs-cn.nocobase.com/plugins/workflow-variable
+进一步可通过文档了解：[工作流：自定义变量节点](/handbook/workflow-variable)
 
 ### 工作流：请求拦截器
 
@@ -111,7 +115,7 @@
 
 ![](./image-13.png)
 
-进一步可通过文档了解：https://docs-cn.nocobase.com/plugins/workflow-request-interceptor
+进一步可通过文档了解：[工作流：请求拦截器](/handbook/workflow-request-interceptor)
 
 ### 工作流：响应消息节点
 
@@ -125,7 +129,7 @@
 
 ![](./image-15.png)
 
-进一步可通过文档了解：https://docs-cn.nocobase.com/plugins/workflow-response-message
+进一步可通过文档了解：[工作流：响应消息节点](/handbook/workflow-response-message)
 
 ## 不兼容的变化
 
