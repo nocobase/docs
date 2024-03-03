@@ -1,68 +1,86 @@
 # 核心概念
 
-在 RESTful API 设计中，"Resource"（资源）和 "Action"（动作）是两个关键概念，它们定义了 API 的核心结构和行为。
+## 资源 Resource
 
-- **Resource（资源）：**
-  - **定义：** 是 API 中的核心实体，它代表了应用程序中的某个数据或对象。每个资源都有一个唯一的标识符（URI），用于访问该资源。资源可以是具体的实体（如用户、文章）或抽象概念（如订单、评论）。
-  - **例子：** 
-    - `/users` 表示用户资源
-    - `/articles` 表示文章资源
+在 NocoBase 里，资源（resource）有两种表达方式：
 
-- **Action（操作）：**
-  - **定义：** 是对资源执行的操作或行为，它定义了客户端可以对资源执行的操作类型。在 RESTful API 中，常用的 HTTP 方法（动词）如 GET、POST、PUT、DELETE 等被用于表示对资源的不同操作。
-  - **例子：** 
-    - `GET /users` 表示获取所有用户资源的操作
-    - `POST /users` 表示创建新用户资源的操作
-    - `PUT /users/{id}` 表示更新特定用户资源的操作
-    - `DELETE /users/{id}` 表示删除特定用户资源的操作
+- `<collection>`
+- `<collection>.<association>`
 
-综合来说，RESTful API 的设计理念是基于资源的，每个资源通过唯一的 URI 进行标识，并使用标准的 HTTP 方法来定义对资源的操作。资源和动作的结合使 API 更加直观和符合自然语言的表达方式，提高了可读性和可维护性。
+<Alert>
 
-## NocoBase 的 Resource & Action 与 RESTful API 的差异
+- collection 是所有抽象数据的集合
+- association 为 collection 的关联数据
 
-### 资源
+</Alert>
 
-在 NocoBase 中，资源（resource）分为 collection 和 association
+示例
 
-- collection 资源，如 `/users`，`/articles`
-- association 资源，如 `/users/{uid}/articles`
+- `posts` 文章
+- `posts.user` 文章用户
+- `posts.tags` 文章标签
 
-在 NocoBase 中，资源最多只有两层结构，不支持更多层级，如 `/users/{uid}/articles/{aid}/comments`。因为在关系模型中，所有的数据关系都可以划分为一对一、一对多、多对一、多对多关系，这四种基本类型只需要两层结构即可，更复杂的情况，可以放在筛选里处理。
+配置
 
-### 操作
+```js
+// 文章
+{
+  name: 'posts',
+}
+// 文章用户
+{
+  name: 'posts.user',
+}
+// 文章标签
+{
+  name: 'posts.tags',
+}
+```
 
-在 NocoBase 中，操作（Action）不依赖于请求方法，而是需要显式定义
+## 操作 Action
 
-Collection 资源
+以 `:<action>` 的方式表示资源操作
 
-| 资源操作 | NocoBase HTTP API | RESTful API |
-| -- | -- | -- |
-| 查看用户列表 | `GET /users:list` | `GET /users` |
-| 新增用户 | `POST /users:create` | `POST /users` |
-| 查看某用户详情 | `POST /users:get/{id}` | `GET /users/{id}` |
-| 更新某用户 | `POST /users:update/{id}` | `PUT /users/{id}` |
-| 删除某用户 | `POST /users:destroy/{id}` | `DELETE /users/{id}` |
+- `<collection>:<action>`
+- `<collection>.<association>:<action>`
 
-Association 资源
+**示例**
 
-| 资源操作 | NocoBase HTTP API | RESTful API |
-| -- | -- | -- |
-| 获取所有用户资源 | `GET /users/{uid}/articles:list` | `GET /users/{uid}/articles` |
-| 创建新用户资源 | `POST /users/{uid}/articles:create` | `POST /users/{uid}/articles` |
-| 获取特定用户资源 | `POST /users/{uid}/articles:get/{aid}` | `GET /users/{uid}/articles/{aid}` |
-| 更新特定用户资源 | `POST /users/{uid}/articles:update/{aid}` | `PUT /users/{uid}/articles/{aid}` |
-| 删除特定用户资源 | `POST /users/{uid}/articles:destroy/{aid}` | `DELETE /users/{uid}/articles/{aid}` |
+- `posts:create` 创建文章
+- `posts.user:get` 查看文章用户
+- `posts.tags:add` 附加文章标签（将现有的标签与文章关联）
 
-以上 list、create、get、update、destroy 操作可以与标准的 RESTful API 映射。除此之外，也可以有更多自定义的操作，如：
+配置
 
-| 资源操作 | NocoBase HTTP API |
-| -- | -- |
-| 登录用户 | `POST /users:signIn` |
-| 注销用户 | `POST /users:signOut` |
+```js
+// 文章资源的增删改查配置
+{
+  name: 'posts',
+  actions: {
+    create: async (ctx, next) => {},
+    get: async (ctx, next) => {},
+    list: async (ctx, next) => {},
+    update: async (ctx, next) => {},
+    destroy: async (ctx, next) => {},
+  },
+}
 
-### 请求格式
+// 文章用户
+{
+  name: 'posts.tags',
+  actions: {
+    create: async (ctx, next) => {},
+    get: async (ctx, next) => {},
+    list: async (ctx, next) => {},
+    update: async (ctx, next) => {},
+    destroy: async (ctx, next) => {},
+    add: async (ctx, next) => {},
+    remove: async (ctx, next) => {},
+  },
+}
+```
 
-NocoBase 资源的请求格式为
+## 如何请求资源
 
 ```bash
 <GET|POST>   /api/<collection>:<action>
@@ -71,76 +89,52 @@ NocoBase 资源的请求格式为
 <GET|POST>   /api/<collection>/<sourceId>/<association>:<action>/<filterByTk>
 ```
 
-所有资源都通过 filterByTk 定位
+**示例**
 
-- collection 资源，filterByTk 必须是唯一的
-- association 资源，filterByTk 可能并不是唯一的，需要同时结合 sourceId 来定位。
-
-### 响应格式
-
-响应的格式
-
-```ts
-type ResponseResult = {
-  data?: any; // 主体数据
-  meta?: any; // 附加数据
-  errors?: ResponseError[]; // 报错
-};
-
-type ResponseError = {
-  code?: string;
-  message: string;
-};
-```
-
-查看列表
+posts 资源
 
 ```bash
-GET /api/posts:list
-
-Response 200 (application/json)
-
-{
-  data: [
-    {
-      id: 1
-    }
-  ],
-  meta: {
-    count: 1
-    page: 1,
-    pageSize: 1,
-    totalPage: 1
-  },
-}
+POST  /api/posts:create
+GET   /api/posts:list
+GET   /api/posts:get/1
+POST  /api/posts:update/1
+POST  /api/posts:destroy/1
 ```
 
-查看详情
+posts.comments 资源
 
 ```bash
-GET /api/posts:get/1
-
-Response 200 (application/json)
-
-{
-  data: {
-    id: 1
-  },
-}
+POST  /api/posts/1/comments:create
+GET   /api/posts/1/comments:list
+GET   /api/posts/1/comments:get/1
+POST  /api/posts/1/comments:update/1
+POST  /api/posts/1/comments:destroy/1
 ```
 
-报错
+posts.tags 资源
 
 ```bash
-POST /api/posts:create
-
-Response 400 (application/json)
-
-{
-  errors: [
-    {
-      message: 'name must be required',
-    },
-  ],
-}
+POST  /api/posts/1/tags:create
+GET   /api/posts/1/tags:get
+GET   /api/posts/1/tags:list
+POST  /api/posts/1/tags:update
+POST  /api/posts/1/tags:destroy
+POST  /api/posts/1/tags:add
+GET   /api/posts/1/tags:remove
 ```
+
+## 资源定位
+
+所有资源都通过 `filterByTk` 定位
+
+- collection 资源，`filterByTk` 必须是唯一的
+- association 资源，`filterByTk` 可能并不是唯一的，需要同时提供 `sourceId` 来定位。
+
+例如 `tables.fields` 表示数据表的字段
+
+```bash
+GET   /api/tables/table1/fields/title
+GET   /api/tables/table2/fields/title
+```
+
+table1 和 table2 都有 title 字段，title 在 table1 里是唯一的，但是其他表也可能有 title 字段

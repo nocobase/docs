@@ -5,7 +5,7 @@ export default [
     link: '/handbook',
   },
   {
-    title: '数据建模',
+    title: 'Data modeling',
     'title.zh-CN': '数据建模',
     type: 'group',
     children: [
@@ -37,7 +37,7 @@ export default [
         'title.zh-CN': '数据源',
         children: [
           {
-            title: 'Data sources: Main database',
+            title: 'Main database',
             'title.zh-CN': '主数据库：Main',
             // subTitle: '@nocobase/plugin-collection-manager',
             link: '/handbook/data-source-main',
@@ -67,19 +67,19 @@ export default [
         'title.zh-CN': '数据表',
         children: [
           {
-            title: '文件表',
+            title: 'File collection',
             'title.zh-CN': '文件表',
             // subTitle: '@nocobase/plugin-collection-fdw',
             link: '/handbook/file-manager/file-collection',
           },
           {
-            title: '树表',
+            title: 'Tree collection',
             'title.zh-CN': '树表',
             // subTitle: '@nocobase/plugin-collection-fdw',
             link: '/handbook/collection-tree',
           },
           {
-            title: '日历表',
+            title: 'Calendar collection',
             'title.zh-CN': '日历表',
             // subTitle: '@nocobase/plugin-collection-fdw',
             link: '/handbook/calendar/calendar-collection',
@@ -91,13 +91,13 @@ export default [
             link: '/handbook/workflow-dynamic-calculation/expression',
           },
           {
-            title: 'SQL 表',
+            title: 'SQL collection',
             'title.zh-CN': 'SQL 表',
             // subTitle: '@nocobase/plugin-collection-sql',
             link: '/handbook/collection-sql',
           },
           {
-            title: '数据库视图',
+            title: 'View collection',
             'title.zh-CN': '数据库视图',
             // subTitle: '@nocobase/plugin-collection-view',
             link: '/handbook/collection-view',
@@ -136,27 +136,27 @@ export default [
             'title.zh-CN': 'UI 类型',
             children: [
               {
-                title: '附件',
+                title: 'Attachment',
                 'title.zh-CN': '附件',
                 link: '/handbook/file-manager/attachment-field',
               },
               {
-                title: '公式',
+                title: 'Formula',
                 'title.zh-CN': '公式',
                 link: '/handbook/field-formula',
               },
               {
-                title: '中国行政区划',
+                title: 'China region',
                 'title.zh-CN': '中国行政区划',
                 link: '/handbook/china-region',
               },
               {
-                title: '自动编码',
+                title: 'Sequence',
                 'title.zh-CN': '自动编码',
                 link: '/handbook/field-sequence',
               },
               {
-                title: '快照',
+                title: 'Snapshot',
                 'title.zh-CN': '快照',
                 link: '/handbook/field-snapshot',
               },
@@ -367,43 +367,43 @@ export default [
             'title.zh-CN': '常用设置项',
             children: [
               {
-                title: '联动规则',
+                title: 'Linkage',
                 'title.zh-CN': '联动规则',
                 link: '/handbook/ui/actions/linkage'
               },
               {
-                title: '打开方式',
+                title: 'Open mode',
                 'title.zh-CN': '打开方式',
                 link: '/handbook/ui/actions/open-mode'
               },
               {
-                title: '弹窗尺寸',
+                title: 'Popup size',
                 'title.zh-CN': '弹窗尺寸',
                 link: '/handbook/ui/actions/popup-size'
               },
               {
-                title: '二次确认',
+                title: 'Second confirmation',
                 'title.zh-CN': '二次确认',
                 link: '/handbook/ui/actions/double-check'
               },
               {
-                title: '绑定工作流',
+                title: 'Bind workflows',
                 'title.zh-CN': '绑定工作流',
                 link: '/handbook/ui/actions/bind-workflow'
               },
               {
-                title: '字段赋值',
+                title: 'Assign field values',
                 'title.zh-CN': '字段赋值',
                 link: '/handbook/ui/actions/assign-values'
               },
             ],
           },
           {
-            title: '操作类型',
+            title: 'Action types',
             'title.zh-CN': '操作类型',
             children: [
               {
-                title: 'Pop-up',
+                title: 'Custom pop-up',
                 'title.zh-CN': '自定义弹窗',
                 link: '/handbook/ui/actions/types/pop-up'
               },
@@ -424,7 +424,7 @@ export default [
     ],
   },
   {
-    title: '核心模块',
+    title: 'Core modules',
     'title.zh-CN': '核心模块',
     type: 'group',
     children: [
@@ -439,7 +439,7 @@ export default [
             link: '/handbook/users',
           },
           {
-            title: 'ACL',
+            title: 'Access control',
             'title.zh-CN': '角色和权限',
             link: '/handbook/acl',
           },
@@ -684,27 +684,27 @@ export default [
         'title.zh-CN': '文件存储',
         children: [
           {
-            title: '文件管理器',
+            title: 'File manager',
             'title.zh-CN': '文件管理器',
             link: '/handbook/file-manager',
           },
           {
-            title: '文件存储：本地',
+            title: 'File storage: Local',
             'title.zh-CN': '文件存储：本地',
             link: '/handbook/file-manager/file-storage-local',
           },
           {
-            title: '文件存储：OSS',
+            title: 'File storage: OSS',
             'title.zh-CN': '文件存储：OSS',
             link: '/handbook/file-storage-oss',
           },
           {
-            title: '文件存储：S3',
+            title: 'File storage: S3',
             'title.zh-CN': '文件存储：S3',
             link: '/handbook/file-storage-s3',
           },
           {
-            title: '文件存储：COS',
+            title: 'File storage: COS',
             'title.zh-CN': '文件存储：COS',
             link: '/handbook/file-storage-cos',
           },
@@ -735,7 +735,7 @@ export default [
         ],
       },
       {
-        title: '多应用管理',
+        title: 'Multi-app manager',
         'title.zh-CN': '多应用管理',
         // subTitle: '@nocobase/plugin-api-doc',
         link: '/handbook/multi-app-manager',
