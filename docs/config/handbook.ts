@@ -440,16 +440,13 @@ export default [
           },
           {
             title: 'ACL',
-            'title.zh-CN': '权限控制',
-            // subTitle: '@nocobase/plugin-acl',
-            children: [
-              {
-                title: 'Overview',
-                'title.zh-CN': '概述',
-                link: '/handbook/acl',
-              },
-              '/handbook/acl/user',
-            ],
+            'title.zh-CN': '角色和权限',
+            link: '/handbook/acl',
+          },
+          {
+            title: 'Departments',
+            'title.zh-CN': '部门',
+            link: '/handbook/departments',
           },
         ],
       },
@@ -718,12 +715,6 @@ export default [
         'title.zh-CN': '日志和监控',
         children: [
           {
-            title: 'Audit logs',
-            'title.zh-CN': '审计日志',
-            // subTitle: '@nocobase/plugin-audit-logs',
-            link: '/handbook/audit-logs',
-          },
-          {
             title: 'Logger',
             'title.zh-CN': '日志',
             // subTitle: '@nocobase/plugin-logger',
@@ -734,6 +725,12 @@ export default [
             'title.zh-CN': '遥测 - Prometheus',
             // subTitle: '@nocobase/plugin-telemetry-prometheus',
             link: '/handbook/telemetry-prometheus',
+          },
+          {
+            title: 'Audit logs',
+            'title.zh-CN': '审计日志',
+            // subTitle: '@nocobase/plugin-audit-logs',
+            link: '/handbook/audit-logs',
           },
         ],
       },
