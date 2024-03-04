@@ -4,7 +4,7 @@
 
 ### Support for Multiple Data Sources
 
-Added the "[Data Source Manager](/handbook/data-source-manager)" plugin, used to manage all data tables and fields for data sources. The Data Source Manager plugin provides a centralized interface for managing data sources and does not provide the capability to access data sources. It needs to be used in conjunction with various data source plugins. Currently supported data sources include:
+Added the "[Data Source Manager](/handbook/data-source-manager)" plugin, used to manage all collections and fields for data sources. The Data Source Manager plugin provides a centralized interface for managing data sources and does not provide the capability to access data sources. It needs to be used in conjunction with various data source plugins. Currently supported data sources include:
 
 - [Main Database](/handbook/data-source-main): NocoBase main database, supporting relational databases such as MySQL, PostgreSQL, SQLite, etc.
 - [External MySQL Data Source](/handbook/data-source-external-mysql): Access an existing MySQL database as a data source.
@@ -15,15 +15,15 @@ In addition, more data sources can be extended, which can be common types of dat
 
 ![Data Source Manager](./image.png)
 
-### Adjustment to Data Table Management
+### Adjustment to Collections Management
 
-Moved the original "Data Table Management" to "Data Source > Main Database > Configuration".
+Moved the original "Collection Manager" to "Data Source > Main Database > Configuration".
 
 ![Main Database Configuration](./20240303172205_rec_.gif)
 
 ### Support for Non-ID Fields as Primary and Relationship Constraints
 
-When creating a table, you can choose not to create an ID field.
+When creating a collection, you can choose not to create an ID field.
 
 ![Predefined Fields](./image-1.png)
 
@@ -41,7 +41,7 @@ Relationship constraints support selecting other fields with Unique indexes set 
 
 ### Adjustment to Drag-and-Drop Sorting
 
-Added a "Sort" type field. Sorting fields are no longer automatically generated when creating tables and need to be manually created.
+Added a "Sort" type field. Sorting fields are no longer automatically generated when creating collections and need to be manually created.
 
 ![](./image-4.png)
 
@@ -49,7 +49,7 @@ When selecting a field as a group, grouping will be done before sorting.
 
 ![](./image-5.png)
 
-When sorting in table drag-and-drop, you need to select the sorting field.
+When enabling drag-and-drop sorting in table block, you need to select the sorting field.
 
 ![](./image-7.png)
 
@@ -67,7 +67,7 @@ Adjusted the role management interface to facilitate the management of user-asso
 
 ![](./image-9.png)
 
-Moved the original "Operation Permissions" to the "Data Source" tab.
+Moved the original "Action Permissions" to the "Data Source" tab.
 
 ![](./20240303170947_rec_.gif)
 
@@ -75,7 +75,7 @@ Moved the original "Operation Permissions" to the "Data Source" tab.
 
 ![](./image-18.png)
 
-Further details can be found in the documentation: [Department](/handbook/departments)
+Organize users by departments, set hierarchical relationships, link roles to control permissions, and use departments as variables in workflows and expressions.
 
 ### Workflow: Approval
 
