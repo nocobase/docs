@@ -1,7 +1,7 @@
 # 部门
 
 :::info{title=提示}
-该功能由商业插件 plugin-departments 提供，请查看 [NocoBase 商业版本](https://www.nocobase.com/commercial-cn)了解详情。
+该功能由商业插件 plugin-departments 提供，请查看 [NocoBase 商业版本](https://cn.nocobase.com/commercial-cn)了解详情。
 :::
 
 ## 介绍
