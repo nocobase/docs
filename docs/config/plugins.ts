@@ -10,8 +10,8 @@ export default [
     type: 'group',
     children: [
       {
-        title: 'Data Model',
-        'title.zh-CN': '数据模型',
+        title: 'Data modeling',
+        'title.zh-CN': '数据建模',
         children: [
           {
             title: 'Collection manager',
@@ -26,23 +26,41 @@ export default [
             ],
           },
           {
-            title: 'Connect to foreign data',
-            'title.zh-CN': '连接外部数据',
-            subTitle: '@nocobase/plugin-collection-fdw',
-            link: '/plugins/collection-fdw',
-          },
-          {
             title: 'Graph collection manager',
             'title.zh-CN': '可视化数据表管理',
             subTitle: '@nocobase/plugin-graph-collection-manager',
             link: '/plugins/graph-collection-manager',
           },
-        ],
-      },
-      {
-        title: 'Fields',
-        'title.zh-CN': '字段',
-        children: [
+          {
+            title: 'Connect to foreign data（FDW）',
+            'title.zh-CN': '连接外部数据（FDW）',
+            subTitle: '@nocobase/plugin-collection-fdw',
+            link: '/plugins/collection-fdw',
+          },
+          {
+            title: 'Data source manager',
+            'title.zh-CN': '数据源管理',
+            subTitle: '@nocobase/plugin-data-source-manager',
+            link: '/plugins/data-source-manager',
+          },
+          {
+            title: 'Data source - MariaDB',
+            'title.zh-CN': '数据源 - MariaDB',
+            subTitle: '@nocobase/plugin-data-source-mariadb',
+            link: '/plugins/data-source-mariadb',
+          },
+          {
+            title: 'Data source - MySQL',
+            'title.zh-CN': '数据源 - MySQL',
+            subTitle: '@nocobase/plugin-data-source-mysql',
+            link: '/plugins/data-source-mysql',
+          },
+          {
+            title: 'Data source - PostgreSQL',
+            'title.zh-CN': '数据源 - PostgreSQL',
+            subTitle: '@nocobase/plugin-data-source-postgres',
+            link: '/plugins/data-source-postgres',
+          },
           {
             title: 'China region',
             'title.zh-CN': '中国行政区',
@@ -67,12 +85,37 @@ export default [
             subTitle: '@nocobase/plugin-snapshot-field',
             link: '/plugins/snapshot-field',
           },
+          {
+            title: 'File manager',
+            'title.zh-CN': '文件管理器',
+            subTitle: '@nocobase/plugin-file-manager',
+            link: '/plugins/file-manager',
+            // children: ['/plugins/file-manager', '/plugins/file-manager/user'],
+          },
         ],
       },
       {
-        title: 'Blocks',
-        'title.zh-CN': '区块',
+        title: 'UI editor',
+        'title.zh-CN': 'UI 配置',
         children: [
+          {
+            title: 'UI schema storage',
+            'title.zh-CN': 'UI schema 存储',
+            subTitle: '@nocobase/plugin-ui-schema-storage',
+            link: '/plugins/ui-schema-storage',
+          },
+          {
+            title: 'Web client',
+            'title.zh-CN': 'WEB 客户端',
+            subTitle: '@nocobase/plugin-client',
+            link: '/plugins/client',
+          },
+          {
+            title: 'Mobile client',
+            'title.zh-CN': 'Mobile 客户端',
+            subTitle: '@nocobase/plugin-mobile-client',
+            link: '/plugins/mobile-client',
+          },
           {
             title: 'Data visualization',
             'title.zh-CN': '数据可视化',
@@ -127,12 +170,6 @@ export default [
             subTitle: '@nocobase/plugin-map',
             link: '/plugins/map',
           },
-        ],
-      },
-      {
-        title: 'Actions',
-        'title.zh-CN': '操作',
-        children: [
           {
             title: 'Action - Bulk edit ',
             'title.zh-CN': '操作 - 批量编辑',
@@ -178,28 +215,9 @@ export default [
         ],
       },
       {
-        title: 'Users & permissions',
-        'title.zh-CN': '用户和权限',
+        title: 'Users authentication',
+        'title.zh-CN': '用户认证',
         children: [
-          {
-            title: 'Users',
-            'title.zh-CN': '用户',
-            subTitle: '@nocobase/plugin-users',
-            link: '/plugins/users',
-          },
-          {
-            title: 'ACL',
-            'title.zh-CN': '权限控制',
-            subTitle: '@nocobase/plugin-acl',
-            children: [
-              {
-                title: 'Overview',
-                'title.zh-CN': '概述',
-                link: '/plugins/acl',
-              },
-              '/plugins/acl/user',
-            ],
-          },
           {
             title: 'Authentication',
             'title.zh-CN': '用户认证',
@@ -267,6 +285,37 @@ export default [
             'title.zh-CN': '用户认证 - 短信',
             subTitle: '@nocobase/plugin-sms-auth',
             link: '/plugins/sms-auth',
+          },
+          {
+            title: 'Verification',
+            'title.zh-CN': '验证码',
+            subTitle: '@nocobase/plugin-verification',
+            link: '/plugins/verification',
+          },
+        ],
+      },
+      {
+        title: 'Users & permissions',
+        'title.zh-CN': '用户和权限',
+        children: [
+          {
+            title: 'Users',
+            'title.zh-CN': '用户',
+            subTitle: '@nocobase/plugin-users',
+            link: '/plugins/users',
+          },
+          {
+            title: 'ACL',
+            'title.zh-CN': '权限控制',
+            subTitle: '@nocobase/plugin-acl',
+            children: [
+              {
+                title: 'Overview',
+                'title.zh-CN': '概述',
+                link: '/plugins/acl',
+              },
+              '/plugins/acl/user',
+            ],
           },
         ],
       },
@@ -414,90 +463,6 @@ export default [
         ],
       },
       {
-        title: 'System management',
-        'title.zh-CN': '系统管理',
-        children: [
-          {
-            title: 'System settings',
-            'title.zh-CN': '系统设置',
-            subTitle: '@nocobase/plugin-system-settings',
-            link: '/plugins/system-settings',
-          },
-          {
-            title: 'Backup & Restore',
-            'title.zh-CN': '备份和还原',
-            subTitle: '@nocobase/plugin-backup-restore',
-            link: '/plugins/backup-restore',
-          },
-          {
-            title: 'Multi-app manager',
-            'title.zh-CN': '多应用管理',
-            subTitle: '@nocobase/plugin-multi-app-manager',
-            link: '/plugins/multi-app-manager',
-          },
-          {
-            title: 'Theme editor',
-            'title.zh-CN': '主题编辑器',
-            subTitle: '@nocobase/plugin-theme-editor',
-            link: '/plugins/theme-editor',
-          },
-        ],
-      },
-      {
-        title: 'System & security',
-        'title.zh-CN': '系统和安全',
-        children: [
-          {
-            title: 'Audit logs',
-            'title.zh-CN': '审计日志',
-            subTitle: '@nocobase/plugin-audit-logs',
-            link: '/plugins/audit-logs',
-          },
-          {
-            title: 'Logger',
-            'title.zh-CN': '日志',
-            subTitle: '@nocobase/plugin-logger',
-            link: '/plugins/logger',
-          },
-          {
-            title: 'Telemetry - Prometheus',
-            'title.zh-CN': '遥测 - Prometheus',
-            subTitle: '@nocobase/plugin-telemetry-prometheus',
-            link: '/plugins/telemetry-prometheus',
-          },
-          {
-            title: 'UI schema storage',
-            'title.zh-CN': 'UI schema 存储',
-            subTitle: '@nocobase/plugin-ui-schema-storage',
-            link: '/plugins/ui-schema-storage',
-          },
-          // {
-          //   title: 'Client - Web',
-          //   'title.zh-CN': '客户端 - Web',
-          //   subTitle: '@nocobase/plugin-client',
-          //   children: [
-          //     {
-          //       title: 'Overview',
-          //       'title.zh-CN': '概述',
-          //       link: '/plugins/client',
-          //     },
-          //   ],
-          // },
-        ],
-      },
-      {
-        title: 'Third party services',
-        'title.zh-CN': '第三方服务',
-        children: [
-          {
-            title: 'Verification',
-            'title.zh-CN': '验证码',
-            subTitle: '@nocobase/plugin-verification',
-            link: '/plugins/verification',
-          },
-        ],
-      },
-      {
         title: 'Others',
         'title.zh-CN': '其他',
         children: [
@@ -516,23 +481,34 @@ export default [
             // children: ['/plugins/api-keys'],
           },
           {
-            title: 'Client - Mobile',
-            'title.zh-CN': '客户端 - 移动端',
-            subTitle: '@nocobase/plugin-mobile-client',
-            link: '/plugins/mobile-client',
-          },
-          {
-            title: 'File manager',
-            'title.zh-CN': '文件管理器',
-            subTitle: '@nocobase/plugin-file-manager',
-            link: '/plugins/file-manager',
-            // children: ['/plugins/file-manager', '/plugins/file-manager/user'],
+            title: 'Backup & Restore',
+            'title.zh-CN': '备份和还原',
+            subTitle: '@nocobase/plugin-backup-restore',
+            link: '/plugins/backup-restore',
           },
           {
             title: 'Localization management',
             'title.zh-CN': '本地化管理',
             subTitle: '@nocobase/plugin-localization-management',
             link: '/plugins/localization-management',
+          },
+          {
+            title: 'Multi-app manager',
+            'title.zh-CN': '多应用管理',
+            subTitle: '@nocobase/plugin-multi-app-manager',
+            link: '/plugins/multi-app-manager',
+          },
+          {
+            title: 'System settings',
+            'title.zh-CN': '系统设置',
+            subTitle: '@nocobase/plugin-system-settings',
+            link: '/plugins/system-settings',
+          },
+          {
+            title: 'Theme editor',
+            'title.zh-CN': '主题编辑器',
+            subTitle: '@nocobase/plugin-theme-editor',
+            link: '/plugins/theme-editor',
           },
         ],
       },

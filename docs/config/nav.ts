@@ -20,15 +20,20 @@ export default [
   //   link: '/breaking-changes',
   // },
   {
-    title: 'User manual',
+    title: 'Handbook',
     'title.zh-CN': '使用手册',
-    link: '/manual/quick-start/the-first-app',
+    link: '/handbook',
   },
-  {
-    title: 'Plugins',
-    'title.zh-CN': '插件列表',
-    link: '/plugins',
-  },
+  // {
+  //   title: 'User manual',
+  //   'title.zh-CN': '使用手册',
+  //   link: '/manual/quick-start/the-first-app',
+  // },
+  // {
+  //   title: 'Plugins',
+  //   'title.zh-CN': '插件列表',
+  //   link: '/plugins',
+  // },
   {
     title: 'Plugin development',
     'title.zh-CN': '插件开发',
@@ -38,6 +43,12 @@ export default [
     title: 'API reference',
     'title.zh-CN': 'API 参考',
     link: '/api',
+  },
+  {
+    title: 'NocoBase Home',
+    'title.zh-CN': 'NocoBase 首页',
+    link: 'https://www.nocobase.com',
+    'link.zh-CN': 'https://cn.nocobase.com',
   },
   // {
   //   title: 'Schema components',

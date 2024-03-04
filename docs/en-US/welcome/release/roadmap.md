@@ -4,33 +4,25 @@
 
 ### New Plugins
 
-- Multiple databases as data source
-- API as data source
-- Connect to external data tables
-- Interceptor (workflow)
-- Approval (workflow)
-- JSON-query (workflow)
-- Custom variables (workflow)
-- Organizational structure
+- Embed NocoBase
+- Audit log
+- Stand-alone page
 
 ### New features
 
-- Workflow support for synchronization mechanisms
-- Subform support for selecting existing data
+- Expression support for field default values
+- Detail blocks support linkage rules
 
 ### Optimization
 
 - Front-end performance optimization
 - User manual
-- Front-end refactoring
 
 ## Next up
 
 ### New Plugins
 
-- Embedding into third-party systems
-- Audit log
-- Stand-alone page
+- API Data Structure Conversion
 
 ### New features
 
