@@ -1,7 +1,7 @@
 # 部门
 
 :::info{title=提示}
-This feature is powered by plugin-departments. Please check [NocoBase Commercial Version](https://www.nocobase.com/commercial) for more details.
+This feature is powered by plugin-departments. Please check [NocoBase Commercial Version](https://www.nocobase.com/commercial.html) for more details.
 :::
 
 ## 介绍
