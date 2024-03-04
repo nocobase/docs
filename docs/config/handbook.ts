@@ -174,22 +174,22 @@ export default [
       {
         title: 'Edit UI mode',
         'title.zh-CN': '配置界面模式',
-        link: '/handbook/ui/ui-editor'
+        link: '/handbook/ui/ui-editor',
       },
       {
         title: 'Menu',
         'title.zh-CN': '菜单',
-        link: '/handbook/ui/menus'
+        link: '/handbook/ui/menus',
       },
       {
         title: 'Page',
         'title.zh-CN': '页面',
-        link: '/handbook/ui/pages'
+        link: '/handbook/ui/pages',
       },
       {
         title: 'Pop-up',
         'title.zh-CN': '弹窗',
-        link: '/handbook/ui/pop-up'
+        link: '/handbook/ui/pop-up',
       },
       {
         title: 'Blocks',
@@ -198,7 +198,7 @@ export default [
           {
             title: 'Overview',
             'title.zh-CN': '概述',
-            link: '/handbook/ui/blocks'
+            link: '/handbook/ui/blocks',
           },
           {
             title: 'Data blocks',
@@ -207,27 +207,27 @@ export default [
               {
                 title: 'Table',
                 'title.zh-CN': '表格',
-                link: '/handbook/ui/blocks/data-blocks/table'
+                link: '/handbook/ui/blocks/data-blocks/table',
               },
               {
                 title: 'Form',
                 'title.zh-CN': '表单',
-                link: '/handbook/ui/blocks/data-blocks/form'
+                link: '/handbook/ui/blocks/data-blocks/form',
               },
               {
                 title: 'Table',
                 'title.zh-CN': '详情',
-                link: '/handbook/ui/blocks/data-blocks/details'
+                link: '/handbook/ui/blocks/data-blocks/details',
               },
               {
                 title: 'Gantt',
                 'title.zh-CN': '甘特图',
-                link: '/handbook/block-gantt'
+                link: '/handbook/block-gantt',
               },
               {
                 title: 'Calendar',
                 'title.zh-CN': '日历',
-                link: '/handbook/calendar/calendar-block'
+                link: '/handbook/calendar/calendar-block',
               },
             ],
           },
@@ -238,7 +238,7 @@ export default [
               {
                 title: 'Form',
                 'title.zh-CN': '表单',
-                link: '/handbook/ui/blocks/filter-blocks/form'
+                link: '/handbook/ui/blocks/filter-blocks/form',
               },
             ],
           },
@@ -249,12 +249,12 @@ export default [
               {
                 title: 'Markdown',
                 'title.zh-CN': 'Markdown',
-                link: '/handbook/ui/blocks/other-blocks/markdown'
+                link: '/handbook/ui/blocks/other-blocks/markdown',
               },
               {
                 title: 'Workflow todos',
                 'title.zh-CN': '工作流待办',
-                link: '/handbook/workflow-manual/workflow-todos-block'
+                link: '/handbook/workflow-manual/workflow-todos-block',
               },
             ],
           },
@@ -267,7 +267,7 @@ export default [
           {
             title: 'Overview',
             'title.zh-CN': '概述',
-            link: '/handbook/ui/fields'
+            link: '/handbook/ui/fields',
           },
           {
             title: '通用属性设置',
@@ -360,7 +360,7 @@ export default [
           {
             title: 'Overview',
             'title.zh-CN': '概述',
-            link: '/handbook/ui/actions'
+            link: '/handbook/ui/actions',
           },
           {
             title: '常用设置项',
@@ -369,32 +369,32 @@ export default [
               {
                 title: 'Linkage',
                 'title.zh-CN': '联动规则',
-                link: '/handbook/ui/actions/linkage'
+                link: '/handbook/ui/actions/linkage',
               },
               {
                 title: 'Open mode',
                 'title.zh-CN': '打开方式',
-                link: '/handbook/ui/actions/open-mode'
+                link: '/handbook/ui/actions/open-mode',
               },
               {
                 title: 'Popup size',
                 'title.zh-CN': '弹窗尺寸',
-                link: '/handbook/ui/actions/popup-size'
+                link: '/handbook/ui/actions/popup-size',
               },
               {
                 title: 'Second confirmation',
                 'title.zh-CN': '二次确认',
-                link: '/handbook/ui/actions/double-check'
+                link: '/handbook/ui/actions/double-check',
               },
               {
                 title: 'Bind workflows',
                 'title.zh-CN': '绑定工作流',
-                link: '/handbook/ui/actions/bind-workflow'
+                link: '/handbook/ui/actions/bind-workflow',
               },
               {
                 title: 'Assign field values',
                 'title.zh-CN': '字段赋值',
-                link: '/handbook/ui/actions/assign-values'
+                link: '/handbook/ui/actions/assign-values',
               },
             ],
           },
@@ -405,12 +405,12 @@ export default [
               {
                 title: 'Custom pop-up',
                 'title.zh-CN': '自定义弹窗',
-                link: '/handbook/ui/actions/types/pop-up'
+                link: '/handbook/ui/actions/types/pop-up',
               },
               {
                 title: 'Add new',
                 'title.zh-CN': '添加',
-                link: '/handbook/ui/actions/types/add-new'
+                link: '/handbook/ui/actions/types/add-new',
               },
             ],
           },
@@ -419,7 +419,7 @@ export default [
       {
         title: 'Mobile client',
         'title.zh-CN': '移动端',
-        link: '/handbook/mobile-client'
+        link: '/handbook/mobile-client',
       },
     ],
   },
@@ -446,7 +446,18 @@ export default [
           {
             title: 'Departments',
             'title.zh-CN': '部门',
-            link: '/handbook/departments',
+            children: [
+              {
+                title: 'Overview',
+                'title.zh-CN': '概述',
+                link: '/handbook/departments',
+              },
+              {
+                title: 'User manual',
+                'title.zh-CN': '使用手册',
+                link: '/handbook/departments/manual',
+              },
+            ],
           },
         ],
       },
@@ -472,7 +483,10 @@ export default [
               {
                 title: 'Development',
                 'title.zh-CN': '开发指南',
-                children: ['/handbook/auth/dev/guide', '/handbook/auth/dev/api'],
+                children: [
+                  '/handbook/auth/dev/guide',
+                  '/handbook/auth/dev/api',
+                ],
               },
             ],
           },
@@ -751,7 +765,7 @@ export default [
       {
         title: 'Plugin manager',
         'title.zh-CN': '插件管理',
-        link: '/handbook/plugin-manager'
+        link: '/handbook/plugin-manager',
       },
       {
         title: 'System settings',
@@ -793,4 +807,4 @@ export default [
       },
     ],
   },
-]
+];
