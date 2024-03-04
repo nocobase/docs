@@ -1,7 +1,7 @@
 # 数据源管理
 
 :::info
-This feature is powered by plugin-data-source-manager. 
+This feature is powered by ***plugin-data-source-manager***. 
 :::
 
 ## 介绍
