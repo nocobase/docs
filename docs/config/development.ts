@@ -77,6 +77,13 @@ export default [
           '/development/client/ui-schema/settings',
         ],
       },
+      {
+        title: 'Data Block & Data Source',
+        'title.zh-CN': '区块和数据源',
+        children: [
+          '/development/client/data-block-and-source/data-block',
+        ],
+      },
       '/development/client/i18n',
       '/development/client/test',
     ],
