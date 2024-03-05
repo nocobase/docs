@@ -153,7 +153,7 @@ If you are using the above related APIs, you have two ways to change:
 ### Other APIs Requiring Adjustment
 
 - `registerTemplate()` changed to `app.dataSourceManager.addCollectionTemplates()`
-- `registerField()` changed to `app.dataSourceManager.addFeildInterfaces()`
+- `registerField()` changed to `app.dataSourceManager.addFieldInterfaces()`
 - `registerGroup()` changed to `app.dataSourceManager.addFieldInterfaceGroups()`
 - `useContext(CollectionManagerContext)` changed to `useCollectionManager_deprecated()`
 - Extend collections using `ExtendCollectionsProvider`
@@ -260,7 +260,7 @@ The original object properties become class members.
 
 #### Registration
 
-Previously registered through `registerField`, now needs to be registered through the plugin's `dataSourceManager.addFeildInterfaces` and does not require passing `CollectionManagerProvider` again. For example:
+Previously registered through `registerField`, now needs to be registered through the plugin's `dataSourceManager.addFieldInterfaces` and does not require passing `CollectionManagerProvider` again. For example:
 
 Before:
 
@@ -289,7 +289,7 @@ import { AttachmentFieldInterface } from './attachment'
 
 export class FilPlugin extends Plugin {
   async load() {
-    this.app.dataSourceManager.addFeildInterfaces([AttachmentFieldInterface]);
+    this.app.dataSourceManager.addFieldInterfaces([AttachmentFieldInterface]);
   }
 }
 ```
@@ -344,7 +344,7 @@ Previously, when the parent property was not passed, the value of the last Recor
 
 ```diff
 - <RecordProvider record={recordData}>
-+ <RecordProvider record={recordData} parent={parentRecordData}> 
++ <RecordProvider record={recordData} parent={parentRecordData}>
 ...
 </RecordProvider>
 ```
@@ -353,7 +353,7 @@ If there is no historical baggage, you can also directly use CollectionRecordPro
 
 ```diff
 - <RecordProvider record={recordData}>
-+ <CollectionRecordProvider record={recordData} parent={parentRecordData}> 
++ <CollectionRecordProvider record={recordData} parent={parentRecordData}>
 ...
 - </RecordProvider>
 + </CollectionRecordProvider>

@@ -153,7 +153,7 @@
 ### 其他需要调整的 API
 
 - `registerTemplate()` 变更为 `app.dataSourceManager.addCollectionTemplates()`
-- `registerField()` 变更为 `app.dataSourceManager.addFeildInterfaces()`
+- `registerField()` 变更为 `app.dataSourceManager.addFieldInterfaces()`
 - `registerGroup()` 变更为 `app.dataSourceManager.addFieldInterfaceGroups()`
 - `useContext(CollectionManagerContext)` 变更为 `useCollectionManager_deprecated()`
 - 使用 `ExtendCollectionsProvider` 扩展 collections
@@ -289,7 +289,7 @@ import { AttachmentFieldInterface } from './attachment'
 
 export class FilPlugin extends Plugin {
   async load() {
-    this.app.dataSourceManager.addFeildInterfaces([AttachmentFieldInterface]);
+    this.app.dataSourceManager.addFieldInterfaces([AttachmentFieldInterface]);
   }
 }
 ```
@@ -344,7 +344,7 @@ const Demo = () => {
 
 ```diff
 - <RecordProvider record={recordData}>
-+ <RecordProvider record={recordData} parent={parentRecordData}> 
++ <RecordProvider record={recordData} parent={parentRecordData}>
 ...
 </RecordProvider>
 ```
@@ -353,7 +353,7 @@ const Demo = () => {
 
 ```diff
 - <RecordProvider record={recordData}>
-+ <CollectionRecordProvider record={recordData} parent={parentRecordData}> 
++ <CollectionRecordProvider record={recordData} parent={parentRecordData}>
 ...
 - </RecordProvider>
 + </CollectionRecordProvider>
