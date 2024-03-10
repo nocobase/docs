@@ -55,7 +55,7 @@ function useTableProps(): TableProps<any> {
   }, [dataSource]);
 
   const columns = useMemo(() => {
-    return collection.getFields().map((collectionField) => {
+    return collection?.getFields().map((collectionField) => {
       const tableFieldSchema = {
         name: collectionField.name,
         type: 'void',

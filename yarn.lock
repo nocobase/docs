@@ -1779,10 +1779,10 @@
   dependencies:
     eslint-scope "5.1.1"
 
-"@nocobase/client@^0.20.0-alpha.4":
-  version "0.20.0-alpha.4"
-  resolved "https://registry.yarnpkg.com/@nocobase/client/-/client-0.20.0-alpha.4.tgz#b9952e77554d6f20907873654e0f6f4a5ea76403"
-  integrity sha512-GXFdjNO6pKuVSQNXIKZIFu7pYaX2RTOg+rkI/aN2LeZinC8QX70Szpe1Z/m/ptkiwqNOfg5Xa2ppapu0nzxlEA==
+"@nocobase/client@^0.20.0-alpha.7":
+  version "0.20.0-alpha.7"
+  resolved "https://registry.yarnpkg.com/@nocobase/client/-/client-0.20.0-alpha.7.tgz#ab27d93ab84e867910a4d13bdd1b26a085062e08"
+  integrity sha512-e/E0aZThuQtQ8QTcVwshDQTEw+qKsMuNnIlz8IyuFqfeGF6B49posB5Kio+eqigVxXsPS7xQl9SrqYda+NGaLg==
   dependencies:
     "@ahooksjs/use-url-state" "3.5.1"
     "@ant-design/cssinjs" "^1.11.1"
@@ -1804,9 +1804,9 @@
     "@formily/reactive-react" "^2.2.27"
     "@formily/shared" "^2.2.27"
     "@formily/validator" "^2.2.27"
-    "@nocobase/evaluators" "0.20.0-alpha.4"
-    "@nocobase/sdk" "0.20.0-alpha.4"
-    "@nocobase/utils" "0.20.0-alpha.4"
+    "@nocobase/evaluators" "0.20.0-alpha.7"
+    "@nocobase/sdk" "0.20.0-alpha.7"
+    "@nocobase/utils" "0.20.0-alpha.7"
     ahooks "^3.7.2"
     antd "^5.12.8"
     antd-style "3.4.5"
@@ -1837,27 +1837,27 @@
     sanitize-html "2.10.0"
     use-deep-compare-effect "^1.8.1"
 
-"@nocobase/evaluators@0.20.0-alpha.4":
-  version "0.20.0-alpha.4"
-  resolved "https://registry.yarnpkg.com/@nocobase/evaluators/-/evaluators-0.20.0-alpha.4.tgz#ac7e290a2d04e547220cf46ad0563c5cf348a839"
-  integrity sha512-D7WlL3VGSymaL7L12CBUPnKE88QLgSthGkq49Y8rT+efgcBcRF8S8bBJ6QLyIQQenCFs51wKNRV0K0cSZ9IGTA==
+"@nocobase/evaluators@0.20.0-alpha.7":
+  version "0.20.0-alpha.7"
+  resolved "https://registry.yarnpkg.com/@nocobase/evaluators/-/evaluators-0.20.0-alpha.7.tgz#13569a41d03e128e0169a09f499d9a4e426976a3"
+  integrity sha512-2oy71aDGi/B741lpQXj9n9odTKfIOusAByfvA0E6STPbjRoIvBJWMEtDtiBsoqoVahq/bDYFHmWz536W3EQJGw==
   dependencies:
     "@formulajs/formulajs" "4.2.0"
-    "@nocobase/utils" "0.20.0-alpha.4"
+    "@nocobase/utils" "0.20.0-alpha.7"
     mathjs "^10.6.0"
 
-"@nocobase/sdk@0.20.0-alpha.4":
-  version "0.20.0-alpha.4"
-  resolved "https://registry.yarnpkg.com/@nocobase/sdk/-/sdk-0.20.0-alpha.4.tgz#2d08cf7cbef421c30ce7fcea02279fe5d2bb031d"
-  integrity sha512-K8BUz2LfTqkB9hW9fjLhDZAN9Pxas1Z/nRa5icEHFkDRFCLTxsLIprjuoTBmCDm4i3GaLdp8jLLk/gOhBFZL+A==
+"@nocobase/sdk@0.20.0-alpha.7":
+  version "0.20.0-alpha.7"
+  resolved "https://registry.yarnpkg.com/@nocobase/sdk/-/sdk-0.20.0-alpha.7.tgz#44fb9677388fa08708511d4448351a974765ca40"
+  integrity sha512-eRvz9XS78G3/ssYC9tBScwHo/sQdoyHLUqr6xCPVd7dsrknTKBKURFVqCwOrnDCXwU4uFhYVJzvTw5CDTc9sJg==
   dependencies:
     axios "^0.26.1"
     qs "^6.10.1"
 
-"@nocobase/utils@0.20.0-alpha.4":
-  version "0.20.0-alpha.4"
-  resolved "https://registry.yarnpkg.com/@nocobase/utils/-/utils-0.20.0-alpha.4.tgz#d6227f094c6a2211e81c68e1207e9f09f30c12fd"
-  integrity sha512-iC9WResxn3il8P4G4hZzgG/q/Tzh5ZdGAtzNaB1r6VL2heeIWDG12eEr7y4XJdk5xDmo/8tKkoCUe3tGRnC09w==
+"@nocobase/utils@0.20.0-alpha.7":
+  version "0.20.0-alpha.7"
+  resolved "https://registry.yarnpkg.com/@nocobase/utils/-/utils-0.20.0-alpha.7.tgz#54916bc22ff1fe3b7b9a6b521937949f41a77396"
+  integrity sha512-p93nPxXFLVP1/1G5ScM0I3jEm0nU16Mzfmx2rDXDmuiQnRsjF+NuKGODG0cCe6SPGa1Jd1IeNVHBwzZ0RoR0jA==
   dependencies:
     "@hapi/topo" "^6.0.0"
     "@rc-component/mini-decimal" "^1.1.0"
@@ -9341,11 +9341,6 @@ mock-property@~1.0.0:
     has-property-descriptors "^1.0.0"
     hasown "^2.0.0"
     isarray "^2.0.5"
-
-moment@2.30.1:
-  version "2.30.1"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.30.1.tgz#f8c91c07b7a786e30c59926df530b4eac96974ae"
-  integrity sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==
 
 move-concurrently@^1.0.1:
   version "1.0.1"
