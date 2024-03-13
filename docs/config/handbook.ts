@@ -121,7 +121,7 @@ export default [
             link: '/handbook/data-modeling/collection-fields',
           },
           {
-            title: 'Field types',
+            title: 'Data types',
             'title.zh-CN': '数据类型',
             children: [
               {
@@ -132,7 +132,7 @@ export default [
             ],
           },
           {
-            title: 'Field interfaces',
+            title: 'UI types',
             'title.zh-CN': 'UI 类型',
             children: [
               {
@@ -159,6 +159,37 @@ export default [
                 title: 'Snapshot',
                 'title.zh-CN': '快照',
                 link: '/handbook/field-snapshot',
+              },
+            ],
+          },
+          {
+            title: 'Association types',
+            'title.zh-CN': '关系类型',
+            children: [
+              {
+                title: 'Overview',
+                'title.zh-CN': '概述',
+                link: '/handbook/data-modeling/collection-fields/associations'
+              },
+              {
+                title: 'One-to-one',
+                'title.zh-CN': '一对一',
+                link: '/handbook/data-modeling/collection-fields/associations/o2o'
+              },
+              {
+                title: 'One-to-many',
+                'title.zh-CN': '一对多',
+                link: '/handbook/data-modeling/collection-fields/associations/o2m'
+              },
+              {
+                title: 'Many-to-one',
+                'title.zh-CN': '多对一',
+                link: '/handbook/data-modeling/collection-fields/associations/m2o'
+              },
+              {
+                title: 'Many-to-many',
+                'title.zh-CN': '多对多',
+                link: '/handbook/data-modeling/collection-fields/associations/m2m'
               },
             ],
           },
