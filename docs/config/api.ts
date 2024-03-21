@@ -92,8 +92,9 @@ export default [
     type: 'subMenu',
     children: [
       '/api/server/application',
-      // '/api/server/plugin-manager',
+      '/api/server/plugin-manager',
       '/api/server/plugin',
+      '/api/server/migration',
     ],
   },
   {
