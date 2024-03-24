@@ -1138,6 +1138,12 @@ export default [
         link: '/handbook/system-settings',
       },
       {
+        title: 'Language settings',
+        'title.zh-CN': '语言设置',
+        // subTitle: '@nocobase/plugin-system-settings',
+        link: '/handbook/system-settings/language-settings',
+      },
+      {
         title: 'Theme editor',
         'title.zh-CN': '主题编辑器',
         // subTitle: '@nocobase/plugin-theme-editor',
