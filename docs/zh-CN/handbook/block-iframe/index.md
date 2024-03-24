@@ -1,12 +1,4 @@
 # iframe 区块
 
-:::warning
-文档待补充
-:::
+<PluginInfo name="block-iframe"></PluginInfo>
 
-<!--
-## 介绍
-
-## 安装
-
-## 使用说明 -->

@@ -491,7 +491,7 @@ export default [
               {
                 title: 'Charts',
                 'title.zh-CN': '图表',
-                link: '/handbook/data-visualization',
+                link: '/handbook/data-visualization/user/chart-block',
               },
             ],
           },
@@ -541,6 +541,11 @@ export default [
                 link: '/handbook/audit-logs',
               },
             ],
+          },
+          {
+            title: 'Block templates',
+            'title.zh-CN': '区块模板',
+            link: '/handbook/ui/blocks/block-templates',
           },
         ],
       },
@@ -735,6 +740,11 @@ export default [
                 title: 'Save record',
                 'title.zh-CN': '保存记录',
                 link: '/handbook/ui/actions/types/save-record',
+              },
+              {
+                title: 'Submit',
+                'title.zh-CN': '提交',
+                link: '/handbook/ui/actions/types/submit',
               },
               {
                 title: 'Submit to workflow',
@@ -1111,6 +1121,11 @@ export default [
             link: '/handbook/audit-logs',
           },
         ],
+      },
+      {
+        title: 'Data visualization',
+        'title.zh-CN': '数据可视化',
+        link: '/handbook/data-visualization',
       },
       {
         title: 'Multi-app manager',
