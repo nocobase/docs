@@ -67,45 +67,53 @@ export default [
         'title.zh-CN': '数据表',
         children: [
           {
+            title: 'Overview',
+            'title.zh-CN': '概述',
+            link: '/handbook/data-modeling/collection',
+          },
+          {
+            title: 'General collection',
+            'title.zh-CN': '普通表',
+            link: '/handbook/data-source-main/general-collection',
+          },
+          {
+            title: 'Inheritance collection',
+            'title.zh-CN': '继承表',
+            link: '/handbook/data-source-main/inheritance-collection',
+          },
+          {
             title: 'File collection',
             'title.zh-CN': '文件表',
-            // subTitle: '@nocobase/plugin-collection-fdw',
             link: '/handbook/file-manager/file-collection',
           },
           {
             title: 'Tree collection',
             'title.zh-CN': '树表',
-            // subTitle: '@nocobase/plugin-collection-fdw',
             link: '/handbook/collection-tree',
           },
           {
             title: 'Calendar collection',
             'title.zh-CN': '日历表',
-            // subTitle: '@nocobase/plugin-collection-fdw',
-            link: '/handbook/calendar/calendar-collection',
+            link: '/handbook/block-calendar/collection-calendar',
           },
           {
             title: 'Expression collection',
             'title.zh-CN': '表达式表',
-            // subTitle: '@nocobase/plugin-collection-fdw',
             link: '/handbook/workflow-dynamic-calculation/expression',
           },
           {
             title: 'SQL collection',
             'title.zh-CN': 'SQL 表',
-            // subTitle: '@nocobase/plugin-collection-sql',
             link: '/handbook/collection-sql',
           },
           {
             title: 'View collection',
             'title.zh-CN': '数据库视图',
-            // subTitle: '@nocobase/plugin-collection-view',
             link: '/handbook/collection-view',
           },
           {
             title: 'Foreign data collection（FDW）',
             'title.zh-CN': '外部数据表',
-            // subTitle: '@nocobase/plugin-collection-fdw',
             link: '/handbook/collection-fdw',
           },
         ],
@@ -121,34 +129,198 @@ export default [
             link: '/handbook/data-modeling/collection-fields',
           },
           {
-            title: 'Data types',
-            'title.zh-CN': '数据类型',
+            title: 'Basic',
+            'title.zh-CN': '基本类型',
             children: [
               {
-                title: 'String',
-                'title.zh-CN': '字符串',
-                link: '/handbook/data-modeling/collection-fields/types/string',
+                title: 'Single text',
+                'title.zh-CN': '单行文本',
+                link: '/handbook/data-modeling/collection-fields/basic/input',
+              },
+              {
+                title: 'Textarea',
+                'title.zh-CN': '多行文本',
+                link: '/handbook/data-modeling/collection-fields/basic/textarea',
+              },
+              {
+                title: 'Phone',
+                'title.zh-CN': '手机号码',
+                link: '/handbook/data-modeling/collection-fields/basic/phone',
+              },
+              {
+                title: 'Email',
+                'title.zh-CN': '电子邮箱',
+                link: '/handbook/data-modeling/collection-fields/basic/email',
+              },
+              {
+                title: 'URL',
+                'title.zh-CN': 'URL',
+                link: '/handbook/data-modeling/collection-fields/basic/url',
+              },
+              {
+                title: 'Integer',
+                'title.zh-CN': '整数',
+                link: '/handbook/data-modeling/collection-fields/basic/integer',
+              },
+              {
+                title: 'Number',
+                'title.zh-CN': '数字',
+                link: '/handbook/data-modeling/collection-fields/basic/number',
+              },
+              {
+                title: 'Percent',
+                'title.zh-CN': '百分比',
+                link: '/handbook/data-modeling/collection-fields/basic/percent',
+              },
+              {
+                title: 'Password',
+                'title.zh-CN': '密码',
+                link: '/handbook/data-modeling/collection-fields/basic/password',
+              },
+              {
+                title: 'Color',
+                'title.zh-CN': '颜色',
+                link: '/handbook/data-modeling/collection-fields/basic/color',
+              },
+              {
+                title: 'Icon',
+                'title.zh-CN': '图标',
+                link: '/handbook/data-modeling/collection-fields/basic/icon',
               },
             ],
           },
           {
-            title: 'UI types',
-            'title.zh-CN': 'UI 类型',
+            title: 'Choices',
+            'title.zh-CN': '选择类型',
             children: [
+              {
+                title: 'Checkbox',
+                'title.zh-CN': '勾选',
+                link: '/handbook/data-modeling/collection-fields/choices/checkbox',
+              },
+              {
+                title: 'Single select',
+                'title.zh-CN': '下拉菜单（单选）',
+                link: '/handbook/data-modeling/collection-fields/choices/select',
+              },
+              {
+                title: 'Multiple select',
+                'title.zh-CN': '下拉菜单（多选）',
+                link: '/handbook/data-modeling/collection-fields/choices/multiple-select',
+              },
+              {
+                title: 'Radio group',
+                'title.zh-CN': '单选框',
+                link: '/handbook/data-modeling/collection-fields/choices/radio-group',
+              },
+              {
+                title: 'Checkbox group',
+                'title.zh-CN': '复选框',
+                link: '/handbook/data-modeling/collection-fields/choices/checkbox-group',
+              },
+              {
+                title: 'China region',
+                'title.zh-CN': '中国行政区',
+                link: '/handbook/field-china-region',
+              },
+            ],
+          },
+          {
+            title: 'Media',
+            'title.zh-CN': '多媒体',
+            children: [
+              {
+                title: 'Markdown',
+                'title.zh-CN': 'Markdown',
+                link: '/handbook/data-modeling/collection-fields/media/markdown',
+              },
+              {
+                title: 'Rich text',
+                'title.zh-CN': '富文本',
+                link: '/handbook/data-modeling/collection-fields/media/rich-text',
+              },
               {
                 title: 'Attachment',
                 'title.zh-CN': '附件',
-                link: '/handbook/file-manager/attachment-field',
+                link: '/handbook/file-manager/field-attachment',
+              },
+            ],
+          },
+          {
+            title: 'Date & Time',
+            'title.zh-CN': '日期 & 时间',
+            children: [
+              {
+                title: 'Datetime',
+                'title.zh-CN': '日期',
+                link: '/handbook/data-modeling/collection-fields/datetime/datetime',
+              },
+              {
+                title: 'Unix timestamp',
+                'title.zh-CN': 'Unix 时间戳',
+                link: '/handbook/data-modeling/collection-fields/datetime/unix-timestamp',
+              },
+              {
+                title: 'Time',
+                'title.zh-CN': '时间',
+                link: '/handbook/data-modeling/collection-fields/datetime/time',
+              },
+            ]
+          },
+          {
+            title: 'Geometric',
+            'title.zh-CN': '几何图形',
+            children: [
+              {
+                title: 'Point',
+                'title.zh-CN': '点',
+                link: '/handbook/data-modeling/collection-fields/geometric/point',
+              },
+              {
+                title: 'Line',
+                'title.zh-CN': '线',
+                link: '/handbook/data-modeling/collection-fields/geometric/line',
+              },
+              {
+                title: 'Circle',
+                'title.zh-CN': '圆',
+                link: '/handbook/data-modeling/collection-fields/geometric/circle',
+              },
+              {
+                title: 'Polygon',
+                'title.zh-CN': '多边形',
+                link: '/handbook/data-modeling/collection-fields/geometric/polygon',
+              },
+            ]
+          },
+          {
+            title: 'Advanced',
+            'title.zh-CN': '高级类型',
+            children: [
+              {
+                title: 'UUID',
+                'title.zh-CN': 'UUID',
+                link: '/handbook/data-modeling/collection-fields/advanced/uuid',
+              },
+              {
+                title: 'Nano ID',
+                'title.zh-CN': 'Nano ID',
+                link: '/handbook/data-modeling/collection-fields/advanced/nano-id',
+              },
+              {
+                title: 'Sort',
+                'title.zh-CN': '排序 - Sort',
+                link: '/handbook/field-sort',
+              },
+              {
+                title: 'Expression',
+                'title.zh-CN': '表达式',
+                link: '/handbook/workflow-dynamic-calculation/field-expression',
               },
               {
                 title: 'Formula',
                 'title.zh-CN': '公式',
                 link: '/handbook/field-formula',
-              },
-              {
-                title: 'China region',
-                'title.zh-CN': '中国行政区划',
-                link: '/handbook/china-region',
               },
               {
                 title: 'Sequence',
@@ -160,10 +332,46 @@ export default [
                 'title.zh-CN': '快照',
                 link: '/handbook/field-snapshot',
               },
+              {
+                title: 'Collection 选择器',
+                'title.zh-CN': '数据表选择器',
+                link: '/handbook/data-modeling/collection-fields/advanced/collection-select',
+              },
             ],
           },
           {
-            title: 'Association types',
+            title: 'System info',
+            'title.zh-CN': '系统信息',
+            children: [
+              {
+                title: 'Created at',
+                'title.zh-CN': '创建日期',
+                link: '/handbook/data-modeling/collection-fields/system-info/created-at'
+              },
+              {
+                title: 'Last updated at',
+                'title.zh-CN': '最后修改日期',
+                link: '/handbook/data-modeling/collection-fields/system-info/updated-at'
+              },
+              {
+                title: 'Created by',
+                'title.zh-CN': '创建人',
+                link: '/handbook/users/field-created-by'
+              },
+              {
+                title: 'Last updated by',
+                'title.zh-CN': '最后修改人',
+                link: '/handbook/users/field-updated-by'
+              },
+              {
+                title: 'Table OID',
+                'title.zh-CN': 'Table OID',
+                link: '/handbook/data-modeling/collection-fields/system-info/table-oid'
+              },
+            ],
+          },
+          {
+            title: 'Association',
             'title.zh-CN': '关系类型',
             children: [
               {
@@ -263,7 +471,7 @@ export default [
               {
                 title: 'Calendar',
                 'title.zh-CN': '日历',
-                link: '/handbook/calendar/calendar-block',
+                link: '/handbook/block-calendar',
               },
               {
                 title: 'Gantt',
