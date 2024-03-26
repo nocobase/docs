@@ -1,59 +1,31 @@
 # PluginManager
 
-应用插件管理器的实例，由应用自动创建，可以通过 `app.pm` 访问。
+## 实例属性
+
+### repository
 
 ## 实例方法
 
-### `create()`
+### addPreset
 
-在本地创建一个插件脚手架
+### getPlugins
 
-**签名**
+### getAliases
 
-```ts
-create(name, options): void;
-```
+### get
 
-### `addStatic()`
+### has
 
-**签名**
+### create
 
-```ts
-addStatic(plugin: any, options?: PluginOptions): Plugin;
-```
+### add
 
-**示例**
+### load
 
-```ts
-pm.addStatic('nocobase');
-```
+### install
 
-### `add()`
+### enable
 
-**签名**
+### disable
 
-```ts
-async add(plugin: any, options?: PluginOptions): Promise<Plugin>;
-async add(plugin: string[], options?: PluginOptions): Promise<Plugin[]>;
-```
-
-**示例**
-
-```ts
-await pm.add(['test'], {
-  builtIn: true,
-  enabled: true,
-});
-```
-
-### `get()`
-
-获取插件实例
-
-### `enable()`
-
-### `disable()`
-
-### `remove()`
-
-### `upgrade()`
+### remove
