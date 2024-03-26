@@ -1190,6 +1190,11 @@ export default [
         link: '/handbook/api-doc',
         // children: ['/plugins/api-doc'],
       },
+      {
+        title: 'Embed',
+        'title.zh-CN': '嵌入',
+        link: '/handbook/embed',
+      },
     ],
   },
 ];
