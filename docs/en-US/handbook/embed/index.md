@@ -1,23 +1,25 @@
-# Embedding
+# 嵌入
 
-## Introduction
+<PluginInfo commercial="true" name="embed"></PluginInfo>
 
-This plugin is used to embed NocoBase blocks into other websites or applications.
+## 介绍
 
-## Installation
+本插件用于将 NocoBase 的页面嵌入到其他网站或应用程序中。
 
-:::info{title=Note}
-This plugin is a commercial plugin. Please refer to [NocoBase Commercial Version](https://www.nocobase.com/commercial-en) for details.
-:::
+## 安装
 
-## Instructions for Use
+该插件为商业插件，需要通过插件管理器上传并激活插件
 
-After installing the plugin, in design mode, there will be an option to *Copy Embed Link* in the block's settings menu.
+![20240323162741](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240323162741.png)
+
+## 使用说明
+
+激活界面配置之后，在页面的设置器（右上角）中，点击 「复制嵌入链接」 。
 
 ![](./static/embed-1.jpg)
 
-Clicking on it will provide a link that can be opened separately, for example `https://xxx.com/embed/qs087rz4o2b`.
+点击后获取到的链接可以单独打开，例如 `https://xxx.com/embed/qs087rz4o2b` 。
 
 ![](./static/embed-2.jpg)
 
-If you want to embed NocoBase blocks in other websites or applications, user authentication is required, and the `token` needs to be appended to the link, for example `https://xxx.com/embed/qs087rz4o2b?token=xxx`. For detailed information about user authentication, please refer to [User Authentication](/handbook/auth).
+如果想要在其他网站或应用程序中嵌入 NocoBase 的页面，需要进行用户打通，并将 `token` 拼接到链接中，例如 `https://xxx.com/embed/qs087rz4o2b?token=xxx`，关于用户打通的详细说明请参考 [用户认证](/handbook/auth)。

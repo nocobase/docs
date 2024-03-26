@@ -1,18 +1,20 @@
 # 嵌入
 
+<PluginInfo commercial="true" name="embed"></PluginInfo>
+
 ## 介绍
 
-本插件用于将 NocoBase 的区块嵌入到其他网站或应用程序中。
+本插件用于将 NocoBase 的页面嵌入到其他网站或应用程序中。
 
 ## 安装
 
-:::info{title=提示}
-该插件为商业插件，请查看 [NocoBase 商业版本](https://www.nocobase.com/commercial-cn)了解详情。
-:::
+该插件为商业插件，需要通过插件管理器上传并激活插件
+
+![20240323162741](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240323162741.png)
 
 ## 使用说明
 
-安装插件后，在设计模式下，区块的设置菜单中就会有 *复制嵌入链接* 的选项。
+激活界面配置之后，在页面的设置器（右上角）中，点击 「复制嵌入链接」 。
 
 ![](./static/embed-1.jpg)
 
@@ -20,4 +22,4 @@
 
 ![](./static/embed-2.jpg)
 
-如果想要在其他网站或应用程序中嵌入 NocoBase 的区块，需要进行用户打通，并将 `token` 拼接到链接中，例如 `https://xxx.com/embed/qs087rz4o2b?token=xxx`，关于用户打通的详细说明请参考 [用户认证](/handbook/auth)。
+如果想要在其他网站或应用程序中嵌入 NocoBase 的页面，需要进行用户打通，并将 `token` 拼接到链接中，例如 `https://xxx.com/embed/qs087rz4o2b?token=xxx`，关于用户打通的详细说明请参考 [用户认证](/handbook/auth)。
