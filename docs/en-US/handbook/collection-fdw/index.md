@@ -1,5 +1,7 @@
 # 连接外部数据表
 
+<PluginInfo name="collection-fdw"></PluginInfo>
+
 ## 介绍
 
 基于数据库的 foreign data wrapper 实现的连接远程数据表的功能插件。目前支持 MySQL 和 PostgreSQL 数据库。

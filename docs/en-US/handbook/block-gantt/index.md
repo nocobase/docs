@@ -1,5 +1,7 @@
 # 甘特图
 
+<PluginInfo name="block-gantt"></PluginInfo>
+
 ## 介绍
 
 ## 安装

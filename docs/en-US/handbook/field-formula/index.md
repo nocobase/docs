@@ -1,12 +1,3 @@
 # 计算公式字段
 
-:::warning
-文档待补充
-:::
-
-<!--
-## 介绍
-
-## 安装
-
-## 使用说明 -->
+<PluginInfo name="field-formula"></PluginInfo>

@@ -1,12 +1,17 @@
 # 移动端
 
-:::warning
-文档待补充
-:::
+<PluginInfo name="mobile-client"></PluginInfo>
 
-<!--
 ## 介绍
+
+提供移动端页面配置的能力。
 
 ## 安装
 
-## 使用说明 -->
+预置插件，需要先激活才能使用。
+
+![20240324171718](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240324171718.png)
+
+## 用法
+
+![20240324171605](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240324171605.png)
