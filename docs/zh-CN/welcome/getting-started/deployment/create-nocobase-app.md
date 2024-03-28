@@ -3,6 +3,11 @@
 其他流程与 [create-nocobase-app 安装](/welcome/getting-started/installation/create-nocobase-app) 无异。
 
 <embed src="./env-note.md"></embed>
+- 生产环境部署时，为了减少体积，可以只安装必要的依赖 `yarn install --production`
+
+<br />
+
+[>>> 更多内容，查看完整的「环境变量」列表 <<<](/welcome/getting-started/env)
 
 ## 管理应用进程
 

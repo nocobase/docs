@@ -4,6 +4,10 @@
 
 <embed src="./env-note.md"></embed>
 
+<br />
+
+[>>> 更多内容，查看完整的「环境变量」列表 <<<](/welcome/getting-started/env)
+
 ## 绑定域名
 
 以 nginx 为例，通过 nginx 代理 http://127.0.0.1:13000/
