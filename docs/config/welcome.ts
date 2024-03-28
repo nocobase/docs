@@ -35,6 +35,16 @@ export default [
           '/welcome/getting-started/upgrading/git-clone',
         ],
       },
+      {
+        title: 'Deployment',
+        'title.zh-CN': '部署',
+        children: [
+          '/welcome/getting-started/deployment',
+          '/welcome/getting-started/deployment/docker-compose',
+          '/welcome/getting-started/deployment/create-nocobase-app',
+          '/welcome/getting-started/deployment/git-clone',
+        ],
+      },
       '/welcome/getting-started/env',
     ],
   },

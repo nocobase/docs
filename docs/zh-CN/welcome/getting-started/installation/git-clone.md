@@ -32,6 +32,8 @@ $ yarn config set sqlite3_binary_host_mirror https://npmmirror.com/mirrors/sqlit
 
 ```bash
 yarn install
+# 生产环境部署时，为了减少体积，可以只安装必要的依赖
+yarn install --production
 ```
 
 ## 4. 设置环境变量
