@@ -1,6 +1,6 @@
 # 通过 Docker Compose 部署
 
-与 [Docker 安装](/welcome/getting-started/installation/docker-compose) 流程无异。
+其他流程与 [Docker 安装](/welcome/getting-started/installation/docker-compose) 无异。
 
 <embed src="./env-note.md"></embed>
 
@@ -15,10 +15,10 @@ server {
 
     location / {
         proxy_pass http://127.0.0.1:13000/;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "Upgrade";
         proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
     }
 }
 ```
@@ -35,7 +35,7 @@ services:
 +     - APP_PUBLIC_PATH=/nocobase/
 ```
 
-应用访问的 URL 为 http://127.0.0.1:13000/nocobase/ ，Nginx 配置为
+应用的 URL 是 http://127.0.0.1:13000/nocobase/ ，Nginx 配置为
 
 ```bash
 server {
@@ -44,10 +44,12 @@ server {
 
     location /nocobase/ {
         proxy_pass http://127.0.0.1:13000/nocobase/;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "Upgrade";
         proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
     }
 }
 ```
+
+最后就可以通过 http://your_domain.com/nocobase/ 访问了

@@ -1,12 +1,12 @@
 # create-nocobase-app 部署
 
-与 [create-nocobase-app 安装](/welcome/getting-started/installation/create-nocobase-app) 流程无异。
+其他流程与 [create-nocobase-app 安装](/welcome/getting-started/installation/create-nocobase-app) 无异。
 
 <embed src="./env-note.md"></embed>
 
 ## 管理应用进程
 
-NocoBase 已经内置了 [pm2](https://pm2.keymetrics.io/)，用于管理应用进程，生产环境直接 `yarn start` 就可以了，如果需要后台运行，加上 `-d` 参数即可，例如：
+NocoBase 已经内置了 [PM2](https://pm2.keymetrics.io/)，用于管理应用进程，生产环境直接 `yarn start` 就可以了，如果需要后台运行，加上 `-d` 参数即可，例如：
 
 ```bash
 # 后台运行
@@ -25,7 +25,7 @@ yarn nocobase pm2-restart
 yarn nocobase pm2-stop
 ```
 
-更多 pm2 命令
+更多 PM2 命令
 
 ```bash
 yarn nocobase pm2 -h
@@ -50,5 +50,5 @@ ln -s /app/nocobase/storage/nocobase.conf /etc/nginx/sites-enabled/nocobase.conf
 **备注**
 
 - `/app/nocobase/` 为示例应用所在目录，需要根据实际情况进行调整；
-- `/etc/nginx/sites-enabled` 为默认 Nginx 的配置路径，实际情况可能有差异；
+- `/etc/nginx/sites-enabled` 为默认 Nginx 的配置路径，实际情况可能有差异，可以通过 `nginx -V` 查看；
 - 如果使用的不是 Nginx，可以参考 Nginx 的配置做一些调整。
