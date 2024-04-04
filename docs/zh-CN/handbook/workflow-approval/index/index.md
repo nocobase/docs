@@ -66,7 +66,7 @@ NocoBase 的审批插件基于灵活性的设计，可以与任意自定义数�
 
 ![审批触发器_触发器配置_发起人表单_字段配置](./approval-trigger-configuration-intiator-ui-fields.png)
 
-区别与直接提交的按钮，还可以增加“保存草稿”的操作按钮，用于支持暂存的处理流程：
+区别于直接提交的按钮，还可以增加“保存草稿”的操作按钮，用于支持暂存的处理流程：
 
 ![审批触发器_触发器配置_发起人表单_操作配置](./approval-trigger-configuration-intiator-ui-actions.png)
 
