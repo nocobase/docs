@@ -28,7 +28,7 @@ class CustomAuth extends Auth {
 }
 ```
 
-## 实例成员
+## 实例属性
 
 ### `user`
 

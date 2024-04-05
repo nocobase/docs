@@ -2,7 +2,7 @@
 
 ## 概览
 
-`Telemetry` 是 NocoBase 的遥测模块，基于 <a href="https://opentelemetry.io">OpenTelemetry</a> 封装，支持注册 OpenTelemetry 生态的 Metric 和 Trace 工具。
+`Telemetry` 是 NocoBase 的遥测模块，基于 <a href="https://opentelemetry.io">OpenTelemetry</a> 封装，支持注册 OpenTelemetry 生态的指标 (Metric) 和链路 (Trace) 工具。
 
 ## 类方法
 

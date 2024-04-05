@@ -79,14 +79,12 @@ export interface ActionOptions {
 | 属性          | 类型                                           | 描述             | 默认值   |
 | ------------- | ---------------------------------------------- | ---------------- | -------- |
 | `name`        | `string`                                       | 资源名称         | -        |
-| `type`        | [`ResourceType`](#resourcetype)                | 资源类型         | `single` |
+| `type`        | `ResourceType`                                 | 资源类型         | `single` |
 | `actions`     | [`{ [key: string]: ActionType }`](#actiontype) | 操作             | -        |
 | `only`        | `ActionName[]`                                 | `actions` 白名单 | -        |
 | `except`      | `ActionName[]`                                 | `actions` 黑名单 | -        |
 | `middleware`  | `MiddlewareType`                               | 中间件           | -        |
 | `middlewares` | `MiddlewareType`                               | 中间件           | -        |
-
-##### ResourceType
 
 ##### ActionType
 
