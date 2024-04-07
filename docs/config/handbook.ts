@@ -547,6 +547,57 @@ export default [
             'title.zh-CN': '区块模板',
             link: '/handbook/ui/blocks/block-templates',
           },
+          {
+            title: 'Block settings',
+            'title.zh-CN': '区块配置项',
+            children: [
+              {
+                title: 'Edit block title',
+                'title.zh-CN': '编辑区块标题',
+                link: '/handbook/ui/blocks/block-settings/block-title',
+              },
+              {
+                title: 'Set block height',
+                'title.zh-CN': '设置区块高度',
+                link: '/handbook/ui/blocks/block-settings/block-height',
+              },
+              {
+                title: 'Set the data scope',
+                'title.zh-CN': '设置数据范围',
+                link: '/handbook/ui/blocks/block-settings/data-scope',
+              },
+              {
+                title: 'Set default sorting rules',
+                'title.zh-CN': '设置排序规则',
+                link: '/handbook/ui/blocks/block-settings/sorting-rule',
+              },
+              {
+                title: 'Set data loading mode',
+                'title.zh-CN': '设置数据加载方式',
+                link: '/handbook/ui/blocks/block-settings/loading-mode',
+              },
+              {
+                title: 'Records per page',
+                'title.zh-CN': '每页显示数',
+                link: '/handbook/ui/blocks/block-settings/per-page',
+              },
+              {
+                title:"Connect data blocks",
+                'title.zh-CN': '连接数据区块',
+                link: '/handbook/ui/blocks/block-settings/connect-block',
+              },
+              {
+                title:"Save as template",
+                'title.zh-CN': '保存为区块模板',
+                link: '/handbook/ui/blocks/block-settings/block-template',
+              },
+              {
+                title:"Delete",
+                'title.zh-CN': '删除区块',
+                link: '/handbook/ui/blocks/block-settings/block-delete',
+              }
+            ],
+          },
         ],
       },
       {
