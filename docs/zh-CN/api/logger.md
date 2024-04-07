@@ -49,9 +49,23 @@ export interface SystemLoggerOptions extends LoggerOptions {
 
 #### 详细信息
 
-- `seperateError` - 是否将 `error` 级别日志单独输出
+| 属性            | 描述                            |
+| --------------- | ------------------------------- |
+| `seperateError` | 是否将 `error` 级别日志单独输出 |
 
 ### `requestLogger()`
+
+接口请求和响应日志中间件。
+
+```ts
+app.use(requestLogger(app.name));
+```
+
+#### 签名
+
+- `requestLogger(appName: string, options?: RequestLoggerOptions): MiddewareType`
+
+#### 类型
 
 ```ts
 export interface RequestLoggerOptions extends LoggerOptions {
@@ -61,11 +75,13 @@ export interface RequestLoggerOptions extends LoggerOptions {
 }
 ```
 
-| 属性                | 类型                              | 描述                           | 默认值                                                                                                 |
-| ------------------- | --------------------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `skip`              | `(ctx?: any) => Promise<boolean>` | 根据请求上下文跳过某些请求日志 | -                                                                                                      |
-| `requestWhitelist`  | `string[]`                        | 日志打印的请求信息白名单       | `[ 'action', 'header.x-role', 'header.x-hostname', 'header.x-timezone', 'header.x-locale', 'referer']` |
-| `responseWhitelist` | `string[]`                        | 日志打印的响应信息白名单       | `['status']`                                                                                           |
+#### 详细信息
+
+| 属性                | 类型                              | 描述                           | 默认值                                                                                                                                                  |
+| ------------------- | --------------------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `skip`              | `(ctx?: any) => Promise<boolean>` | 根据请求上下文跳过某些请求日志 | -                                                                                                                                                       |
+| `requestWhitelist`  | `string[]`                        | 日志打印的请求信息白名单       | `[ 'action', 'header.x-role', 'header.x-hostname', 'header.x-timezone', 'header.x-locale','header.x-authenticator', 'header.x-data-source', 'referer']` |
+| `responseWhitelist` | `string[]`                        | 日志打印的响应信息白名单       | `['status']`                                                                                                                                            |
 
 ### app.createLogger()
 
