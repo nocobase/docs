@@ -8,7 +8,7 @@
 
 ### defineConfig
 
-### sleep
+### `sleep()`
 
 延迟一段时间执行。
 
