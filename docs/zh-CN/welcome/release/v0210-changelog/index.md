@@ -156,7 +156,3 @@ Grid 组件也支持分布式处理
 ### UI Schema 的各种 useProps 使用 x-use-decorator-props 和 x-use-component-props 代替
 
 x-use-decorator-props 和 x-use-component-props 无入侵，所有组件都支持
-
-## 预告
-
-![20240407222006](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407222006.png)
