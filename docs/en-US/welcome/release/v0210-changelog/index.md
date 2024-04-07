@@ -156,7 +156,3 @@ Grid component also supports distributed processing.
 ### Various useProps of UI Schema replaced with x-use-decorator-props and x-use-component-props
 
 x-use-decorator-props and x-use-component-props are non-intrusive and supported by all components.
-
-## Preview
-
-![20240407230208](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407230208.png)
