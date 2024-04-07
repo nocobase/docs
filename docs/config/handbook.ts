@@ -982,6 +982,12 @@ export default [
             ],
           },
           {
+            title: 'Workflow - Post-action trigger',
+            'title.zh-CN': '工作流 - 操作后事件',
+            // subTitle: '@nocobase/plugin-workflow-action-trigger',
+            link: '/handbook/workflow-action-trigger',
+          },
+          {
             title: 'Workflow - Aggregate',
             'title.zh-CN': '工作流 - 聚合节点',
             // subTitle: '@nocobase/plugin-workflow-aggregate',
@@ -1004,12 +1010,6 @@ export default [
             'title.zh-CN': '工作流 - 动态表达式计算',
             // subTitle: '@nocobase/plugin-workflow-dynamic-calculation',
             link: '/handbook/workflow-dynamic-calculation',
-          },
-          {
-            title: 'Workflow - Form trigger',
-            'title.zh-CN': '工作流 - 表单事件',
-            // subTitle: '@nocobase/plugin-workflow-form-trigger',
-            link: '/handbook/workflow-form-trigger',
           },
           {
             title: 'Workflow - JSON query',
