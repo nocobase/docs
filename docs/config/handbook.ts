@@ -982,7 +982,7 @@ export default [
             ],
           },
           {
-            title: 'Workflow - Post-action trigger',
+            title: 'Workflow - Post-action event',
             'title.zh-CN': '工作流 - 操作后事件',
             // subTitle: '@nocobase/plugin-workflow-action-trigger',
             link: '/handbook/workflow-action-trigger',
@@ -1042,8 +1042,8 @@ export default [
             link: '/handbook/workflow-request',
           },
           {
-            title: 'Workflow - Request interceptor',
-            'title.zh-CN': '工作流 - 请求拦截器',
+            title: 'Workflow - Pre-action event',
+            'title.zh-CN': '工作流 - 操作前事件',
             // subTitle: '@nocobase/plugin-workflow-request-interceptor',
             link: '/handbook/workflow-request-interceptor',
           },
