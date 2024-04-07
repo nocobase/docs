@@ -83,81 +83,81 @@ export interface ApplicationOptions {
 
 ## 实例属性
 
-### name
+### `name`
 
 应用标识。默认 `main`.
 
-### version
+### `version`
 
 应用版本号管理。可以通过 `version.get()` 获取应用版本号。
 
-### mainDataSource
+### `mainDataSource`
 
 主数据源。
 
-### db
+### `db`
 
 主数据源 `DataBase` 实例。参考 [DataBase](../database/index.md).
 
-### acl
+### `acl`
 
 `ACL` 实例。参考 [ACL](../acl/acl.md).
 
-### log
+### `log`
 
 系统日志。参考 [Logger](../logger.md).
 
-### logger
+### `logger`
 
 和 `log` 等价。
 
-### cache
+### `cache`
 
 应用缓存，`Cache` 实例。参考 [Cache](../cache/cache.md).
 
-### cli
+### `cli`
 
 应用命令行方法。
 
-### i18n
+### `i18n`
 
 国际化。`i18n` 实例
 
-### telemetry
+### `telemetry`
 
 `Telemetry` 实例。参考 [Telemetry](../telemetry/telemetry.md).
 
-### pm
+### `pm`
 
 插件管理。参考 [PluginManager](./plugin-manager).
 
-### dataSourceManager
+### `dataSourceManager`
 
 数据源管理。参考 [DataSourceManager](../data-source-manager/).
 
-### resourceManager
+### `resourceManager`
 
 资源管理。参考 [ResourceManager](../resourcer/resource-manager.md).
 
-### cacheManager
+### `cacheManager`
 
 缓存管理。参考 [CacheManager](../cache/cache-manager.md).
 
-### authManager
+### `authManager`
 
 用户认证管理。参考 [AuthManager](../auth/auth-manager.md).
 
-### cronJobManager
+### `cronJobManager`
 
 应用定时任务管理。
 
-### localeManager
+### `localeManager`
 
 应用本地化资源管理。
 
 ## 流程方法
 
-### load()
+### `load()`
 
 加载应用，进行应用初始化。
 
@@ -185,7 +185,7 @@ interface LoadOptions {
 | `sync`          | `boolean` | 是否同步数据表配置变更                    | `false` |
 | `[key: string]` | `any`     | 其他配置，会传递给 hooks                  | -       |
 
-### reload()
+### `reload()`
 
 重载应用，重新初始化。
 
@@ -193,7 +193,7 @@ interface LoadOptions {
 
 - `reload(options?: LoadOptions): Promise<void>`
 
-### start()
+### `start()`
 
 启动应用，接收请求。
 
@@ -215,7 +215,7 @@ interface StartOptions {
 | -------------- | --------- | ------------------ | ------- |
 | `checkInstall` | `boolean` | 检查应用是否已安装 | `false` |
 
-### restart()
+### `restart()`
 
 重启应用，会执行 `reload()` 和 `start()`.
 
@@ -223,7 +223,7 @@ interface StartOptions {
 
 - `restart(options: StartOptions = {}): Promise<void>`
 
-### install()
+### `install()`
 
 安装应用，整个过程会进行应用初始化，数据表配置变更同步，插件安装，在应用已启动的情况下还会执行应用重启。
 
@@ -243,7 +243,7 @@ export interface InstallOptions {
 | ------- | --------- | -------------------------- | ------- |
 | `force` | `boolean` | 应用已安装时，是否强制重装 | `false` |
 
-### upgrade()
+### `upgrade()`
 
 升级应用，执行各个插件的 `migration` 脚本，并重启应用。
 
@@ -251,7 +251,7 @@ export interface InstallOptions {
 
 - `upgrade(): Promise<void>`
 
-### stop()
+### `stop()`
 
 停止应用，关闭数据库、缓存中间件、遥测连接。
 
@@ -259,7 +259,7 @@ export interface InstallOptions {
 
 - `stop(): Promise<void>`
 
-### destroy()
+### `destroy()`
 
 销毁应用，执行 `stop()`.
 
@@ -267,7 +267,7 @@ export interface InstallOptions {
 
 - `destroy(): Promise<void>`
 
-### isInstalled()
+### `isInstalled()`
 
 检查应用是否已安装。
 
@@ -275,7 +275,7 @@ export interface InstallOptions {
 
 - `isInstalled(): Promise<boolean>`
 
-### isStarted()
+### `isStarted()`
 
 检查应用是否已启动。
 
@@ -283,7 +283,7 @@ export interface InstallOptions {
 
 ## 其他方法
 
-### on()
+### `on()`
 
 监听应用事件。参考 <a href="https://nodejs.org/api/events.html#emitteroneventname-listener" target="_blank">emitter.on(eventName, listener)</a>.
 
@@ -291,7 +291,7 @@ export interface InstallOptions {
 
 - `on(eventName: string | symbol, listener: (...args: any[]) => void): this`
 
-### off()
+### `off()`
 
 取消监听事件。参考 <a href="https://nodejs.org/api/events.html#emitteroffeventname-listener" target="_blank">emitter.off(eventName, listener)</a>.
 
@@ -299,11 +299,11 @@ export interface InstallOptions {
 
 - `off(eventName: string | symbol, listener: (...args: any[]) => void): this`
 
-### use()
+### `use()`
 
 添加应用中间件。参考 <a href="https://koajs.com/#application" target="_blank">Koa - Application</a>.
 
-### command()
+### `command()`
 
 添加应用命令行。
 
@@ -319,7 +319,7 @@ export interface InstallOptions {
 | `desc` | `string`         | 命令描述                                                                                     |
 | `opts` | `CommandOptions` | 命令配置，参考 <a href="https://github.com/tj/commander.js" target="_blank">Commander.js</a> |
 
-### runCommand()
+### `runCommand()`
 
 运行应用命令。
 
@@ -327,7 +327,7 @@ export interface InstallOptions {
 
 - `runCommand(command: string, ...args: any[])`
 
-### authenticate()
+### `authenticate()`
 
 DB 连接检查，版本检查。
 

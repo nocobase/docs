@@ -30,32 +30,32 @@ export default class extends Migration {
 
 当前应用的 `Application` 实例。参考 [Application](./application.md).
 
-### pm
+### `pm`
 
 当前应用的 `PluginManager` 实例。参考 [PluginManager](./plugin-manager.md).
 
-### plugin
+### `plugin`
 
 当前插件的 `Plugin` 实例。参考 [Plugin](./plugin.md).
 
-### db
+### `db`
 
 当前应用的 `DataBase` 实例。参考 [DataBase](../database/index.md).
 
-### sequelize
+### `sequelize`
 
 `Sequelize` 实例。参考 <a href="https://sequelize.org/" target="_blank">Sequelize</a>.
 
-### queryInterface
+### `queryInterface`
 
 参考 <a href="https://sequelize.org/docs/v6/other-topics/query-interface/" target="_blank">Sequelize - Query Interface</a>.
 
 ### 实例方法
 
-### up()
+### `up()`
 
 升级执行方法。
 
-### down()
+### `down()`
 
 降级执行方法。

@@ -46,7 +46,7 @@ export default PluginDemoServer;
 
 ### `db`
 
-当前应用的 `DataBase` 实例。参考 [DataBase](../database/index.md)
+当前应用的 `DataBase` 实例。参考 [DataBase](../database/index.md).
 
 ## 生命周期方法
 
@@ -92,14 +92,14 @@ export default PluginDemoServer;
 
 ## 其他方法
 
-### t()
+### `t()`
 
 国际化方法。
 
-### createLogger()
+### `createLogger()`
 
-创建日志。参考 [Logger](../logger.md)
+创建日志。参考 [Logger](../logger.md).
 
-### toJSON()
+### `toJSON()`
 
 实现性方法。输出插件相关配置信息。

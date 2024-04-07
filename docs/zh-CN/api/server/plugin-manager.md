@@ -4,13 +4,13 @@
 
 ## 实例属性
 
-### repository
+### `repository`
 
 插件数据表的 `Repository` 实例。API 参考 [DataBase - Repository](../database/repository.md).
 
 ## 实例方法
 
-### addPreset
+### `addPreset()`
 
 添加系统内置插件，内置插件默认开启，不会出现在客户端插件管理器列表中。
 
@@ -25,7 +25,7 @@
 | `plugin`  | `string` \| `typeof Plugin` | 插件名或插件实例 |
 | `options` | `any`                       | 插件配置项       |
 
-### getPlugins
+### `getPlugins()`
 
 获取当前应用的所有插件实例。
 
@@ -33,7 +33,7 @@
 
 - `getPlugins(): Map<typeof Plugin, Plugin<any>>`
 
-### getAliases
+### `getAliases()`
 
 获取所有插件名字。
 
@@ -41,7 +41,7 @@
 
 - `getAliases(): IterableIterator<string>`
 
-### get
+### `get()`
 
 获取某个插件。
 
@@ -49,7 +49,7 @@
 
 - `get(name: string | typeof Plugin): Plugin<any>`
 
-### has
+### `has()`
 
 检查某个插件是否存在。
 
@@ -57,7 +57,7 @@
 
 - `has(name: string | typeof Plugin): boolean`
 
-### create
+### `create()`
 
 创建插件，生成插件目录。
 
@@ -72,7 +72,7 @@
 | `pluginName`            | `string`  | 插件名字                       | -       |
 | `options.forceRecreate` | `boolean` | 是否移除原有插件目录，重新生成 | `false` |
 
-### add
+### `add()`
 
 添加或升级插件。
 
@@ -89,7 +89,7 @@
 | `insert`    | `boolean`                   | 是否添加插件数据表记录 | `false` |
 | `isUpgrade` | `boolean`                   | 是否为插件升级         | `false` |
 
-### load
+### `load()`
 
 加载所有已启用插件。
 
@@ -97,7 +97,7 @@
 
 - `load(): Promise<void>`
 
-### install
+### `install()`
 
 安装所有已启用且尚未安装的插件。
 
@@ -105,7 +105,7 @@
 
 - `install(): Promise<void>`
 
-### enable
+### `enable()`
 
 启用一个或多个未启用的插件。
 
@@ -113,7 +113,7 @@
 
 - `enable(name: string | string[]): Promise<void>`
 
-### disable
+### `disable()`
 
 禁用一个或多个已启用的插件。
 
@@ -121,7 +121,7 @@
 
 - `disable(name: string | string[]): Promise<void>`
 
-### remove
+### `remove()`
 
 移除一个或多个插件。
 
