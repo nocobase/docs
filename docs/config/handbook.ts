@@ -592,15 +592,21 @@ export default [
                 link: '/handbook/ui/blocks/block-settings/block-template',
               },
               {
+                title:"Linkage rules",
+                'title.zh-CN': '联动规则',
+                link: '/handbook/ui/blocks/block-settings/linkage-rule',
+              },
+              {
+                title:"Form data templates",
+                'title.zh-CN': '表单数据模板',
+                link: '/handbook/ui/blocks/block-settings/form-data-templates',
+              },
+              {
                 title:"Delete",
                 'title.zh-CN': '删除区块',
                 link: '/handbook/ui/blocks/block-settings/block-delete',
               },
-              {
-                title:"Linkage rules",
-                'title.zh-CN': '联动规则',
-                link: '/handbook/ui/blocks/block-settings/linkage-rule',
-              }
+         
             ],
           },
         ],

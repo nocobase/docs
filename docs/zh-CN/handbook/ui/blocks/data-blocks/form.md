@@ -6,23 +6,30 @@
 
 - 在页面里添加
 
+作为添加表单
+
 ![20240407144250](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407144250.png)
 
-- 在弹窗里添加（
+- 在弹窗里添加
 
-订单表中有多对多关系字段「商品」
+1.作为编辑表单
 
-![20240407145558](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407145558.png)
+![20240408151523](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408151523.png)
+
+2.作为对一关系表的添加表单
+
+商品表有一对一的关系字段「订单」
+
+![20240408151704](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408151704.png)
+
 ### 区块设置项
 
-- [联动规则](/handbook/ui/blocks/block-settings/linkage-rule)
-- [设置数据范围](/handbook/ui/blocks/block-settings/data-scope)
-- [设置数据加载方式](/handbook/ui/blocks/block-settings/loading-mode)
-- [连接数据区块](/handbook/ui/blocks/block-settings/connect-block)
-- [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
 - [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
+- [联动规则](/handbook/ui/blocks/block-settings/linkage-rule)
+- [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
+- [表单数据模板](/handbook/ui/blocks/block-settings/form-data-templates)
+- [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
 
-- 启用拖拽排序
 
 
 
