@@ -1,4 +1,8 @@
-# UI Schema 协议
+# UI Schema
+
+:::warning
+Sorry, this document is not available in English.
+:::
 
 一种描述前端组件的协议，基于 Formily Schema 2.0，类 JSON Schema 风格。
 
@@ -11,10 +15,14 @@ interface ISchema {
   ['x-decorator']?: string;
   // 包装器组件属性
   ['x-decorator-props']?: any;
+  // 动态包装器组件属性
+  ['x-use-decorator-props']?: any;
   // 组件
   ['x-component']?: string;
   // 组件属性
   ['x-component-props']?: any;
+  // 动态组件属性
+  ['x-use-component-props']?: any;
   // 展示状态，默认为 'visible'
   ['x-display']?: 'none' | 'hidden' | 'visible';
   // 组件的子节点，简单使用
@@ -205,6 +213,61 @@ JSX 示例
 <h1>Hello, world!</h1>
 ```
 
+### `x-component-props` 和 `x-use-component-props`
+
+`x-component-props` 是组件属性。
+
+```ts
+{
+  type: 'void',
+  'x-component': 'Table',
+  'x-component-props': {
+    loading: true,
+  },
+}
+```
+
+有些情况下，组件属性是动态的，可以使用 `x-use-component-props`。
+
+```ts
+{
+  type: 'void',
+  'x-component': 'MyTable',
+  'x-use-component-props': 'useTableProps',
+}
+```
+
+这里的 MyTable 组件需要使用 `withDynamicSchemaProps` 高阶函数包一下，例如：
+
+```ts
+const MyTable = withDynamicSchemaProps(Table, { displayName: 'MyTable' });
+```
+
+`useTableProps` 是一个自定义的 hook，用于动态生成组件属性。
+
+```ts
+const useTableProps = () => {
+  const service = useRequest({xx});
+  return {
+    loading: service.loading,
+  };
+};
+```
+
+我们还需要将其注册到 scope 中，具体参考文档 [Schema 渲染](/development/client/ui-schema/rendering)。
+
+```tsx | pure
+<SchemaComponent
+  scope={{ useTableProps }}
+  components={{ MyTable }}
+  schema={{
+    type: 'void',
+    'x-component': 'MyTable',
+    'x-use-component-props': 'useTableProps',
+  }}
+>
+```
+
 ### `x-decorator`
 
 包装器组件
@@ -285,6 +348,10 @@ JSX 等同于
   </CardItem>
 </div>
 ```
+
+### `x-decorator-props` 和 `x-use-decorator-props`
+
+同 `x-component-props` 和 `x-use-component-props` 使用方式想通，`withDynamicSchemaProps()` 高阶函数需要用于包装器组件。
 
 ### `x-display`
 
