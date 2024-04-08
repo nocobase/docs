@@ -595,6 +595,11 @@ export default [
                 title:"Delete",
                 'title.zh-CN': '删除区块',
                 link: '/handbook/ui/blocks/block-settings/block-delete',
+              },
+              {
+                title:"Linkage rules",
+                'title.zh-CN': '联动规则',
+                link: '/handbook/ui/blocks/block-settings/linkage-rule',
               }
             ],
           },
