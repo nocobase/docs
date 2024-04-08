@@ -23,7 +23,10 @@ resourceManager.registerActionHandlers(actions);
 创建资源。 `POST /api/<resource>:create`.
 
 ```shell
-curl -X POST -H "Content-Type: application/json" -d '{"username": "admin"}' "http://localhost:13000/api/users:create"
+curl "http://localhost:13000/api/users:create" \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d '{"username": "admin"}'
 ```
 
 #### 请求体
@@ -78,7 +81,10 @@ curl -X GET http://localhost:13000/api/users:get?filterByTk=1
 更新一个或多个资源。`PUT /api/<resource>:update`.
 
 ```shell
-curl -X PUT -H "Content-Type: application/json" -d '{"username": "admin"}' "http://localhost:13000/api/users:update?filterByTk=1"
+curl "http://localhost:13000/api/users:update?filterByTk=1" \
+  -X PUT \
+  -H "Content-Type: application/json" \
+  -d '{"username": "admin"}'
 ```
 
 #### 参数
@@ -118,7 +124,10 @@ curl -X DELETE http://localhost:13000/api/users:destory?filterByTk=1
 获取或创建一个资源。`POST /api/<resource>:firstOrCreate`.
 
 ```shell
-curl -X POST -H "Content-Type: application/json" -d '{"username": "admin", "nickname": "Admin"}' "http://localhost:13000/api/users:firstOrCreate?filterKeys[]=username"
+curl "http://localhost:13000/api/users:firstOrCreate?filterKeys[]=username" \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d '{"username": "admin", "nickname": "Admin"}'
 ```
 
 #### 参数
@@ -138,7 +147,10 @@ curl -X POST -H "Content-Type: application/json" -d '{"username": "admin", "nick
 更新或创建一个资源。`POST /api/<resource>:updateOrCreate`.
 
 ```shell
-curl -X POST -H "Content-Type: application/json" -d '{"username": "admin", "nickname": "Admin"}' "http://localhost:13000/api/users:updateOrCreate?filterKeys[]=username"
+curl "http://localhost:13000/api/users:updateOrCreate?filterKeys[]=username" \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d '{"username": "admin", "nickname": "Admin"}'
 ```
 
 #### 参数
@@ -177,7 +189,10 @@ curl -X POST "http://localhost:13000/api/users:move?sourceId=1&targetId=2"
 设置资源的关联对象。`POST /api/<resource.association>:set`.
 
 ```shell
-curl -X POST -H "Content-Type: application/json" -d '["admin", "member"]' "http://localhost:13000/api/users.roles:set"
+curl "http://localhost:13000/api/users.roles:set" \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d '["admin", "member"]'
 ```
 
 #### 请求体
@@ -189,7 +204,10 @@ curl -X POST -H "Content-Type: application/json" -d '["admin", "member"]' "http:
 添加资源的关联对象。`POST /api/<resource.association>:add`.
 
 ```shell
-curl -X POST -H "Content-Type: application/json" -d '["admin"]' "http://localhost:13000/api/users.roles:add"
+curl "http://localhost:13000/api/users.roles:add" \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d '["admin"]'
 ```
 
 #### 请求体
@@ -201,7 +219,10 @@ curl -X POST -H "Content-Type: application/json" -d '["admin"]' "http://localhos
 移除资源的关联对象。`POST /api/<resource.association>:remove`.
 
 ```shell
-curl -X POST -H "Content-Type: application/json" -d '["admin"]' "http://localhost:13000/api/users.roles:remove"
+curl "http://localhost:13000/api/users.roles:remove" \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d '["admin"]'
 ```
 
 #### 请求体
@@ -213,7 +234,10 @@ curl -X POST -H "Content-Type: application/json" -d '["admin"]' "http://localhos
 切换资源的关联对象，存在的移除，不存在的添加。`POST /api/<resource.association>:toggle`.
 
 ```shell
-curl -X POST -H "Content-Type: application/json" -d '["admin", "member"]' "http://localhost:13000/api/users.roles:toggle"
+curl "http://localhost:13000/api/users.roles:toggle" \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d '["admin", "member"]'
 ```
 
 #### 请求体

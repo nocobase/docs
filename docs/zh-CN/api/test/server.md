@@ -2,7 +2,7 @@
 
 ## 概览
 
-`@nocobase/test` 为服务端测试提供了一些便捷的方法用于 Mock 服务和数据库。
+NocoBase 基于 <a href="https://vitest.dev/" target="_blank">Vitest</a> 进行服务端测试。 `@nocobase/test` 为服务端测试提供了一些便捷的方法用于 Mock 服务和数据库。
 
 ### 基本使用
 
@@ -28,7 +28,15 @@ describe('actions', () => {
 
 ## API
 
-### defineConfig
+### `defineConfig()`
+
+获取 vitest 配置。
+
+```ts
+import { defineConfig } from '@nocobase/test/vitest.mjs';
+
+const config = defineConfig();
+```
 
 ### `mockDatabase()`
 

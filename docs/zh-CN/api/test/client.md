@@ -2,11 +2,19 @@
 
 ## 概览
 
-`@nocobase/test` 为编写客户端测试用例提供了一些便捷的方法。
+NocoBase 基于 <a href="https://vitest.dev/" target="_blank">Vitest</a> 进行客户端测试。`@nocobase/test/client` 为编写客户端测试用例提供了一些便捷的方法。
 
 ## API
 
-### defineConfig
+### `defineConfig()`
+
+获取 vitest 配置。
+
+```ts
+import { defineConfig } from '@nocobase/test/vitest.mjs';
+
+const config = defineConfig();
+```
 
 ### `sleep()`
 
@@ -19,6 +27,12 @@ sleep(5000);
 #### 签名
 
 - `sleep: (timeout?: number) => Promise<unknown>`
+
+#### 详细信息
+
+| 参数名    | 类型     | 描述            |
+| --------- | -------- | --------------- |
+| `timeout` | `number` | `延迟时间 (ms)` |
 
 ### @testing-library/react
 
