@@ -276,7 +276,7 @@ acl.use(async () => {
 
 #### 详细信息
 
-参考[中间件](../../development/server/middleware)
+参考[中间件](../../development/server/middleware)。
 
 ### `middleware()`
 

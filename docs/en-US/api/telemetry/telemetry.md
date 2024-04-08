@@ -1,10 +1,14 @@
 # Telemetry
 
+## Overview
+
+`Telemetry` is the telemetry module of NocoBase, encapsulating OpenTelemetry support for registering metrics and traces within the OpenTelemetry ecosystem.
+
 ## Class Methods
 
 ### `constructor()`
 
-构造函数，创建一个 `Telemetry` 实例。
+Constructor to create a `Telemetry` instance.
 
 #### Signature
 
@@ -23,14 +27,16 @@ export interface TelemetryOptions {
 
 #### Details
 
-- `serviceName` - 默认 `nocobase`。参考：<a href="https://opentelemetry.io/docs/specs/semconv/resource/#service" target="_blank">Semantic Conventions</a>
-- `version` - 默认当前 NocoBase 版本。参考：<a href="https://opentelemetry.io/docs/specs/semconv/resource/#service" target="_blank">Semantic Conventions</a>
-- `trace` - 参考: [Trace](./trace.md)
-- `Metric` - 参考: [Metric](./metric.md)
+| Property      | Type            | Description                                                                                              | Default Value                      |
+| ------------- | --------------- | -------------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| `serviceName` | `string`        | Optional. Refer to [Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/resource/#service) | `nocobase`                         |
+| `version`     | `string`        | Optional. Refer to [Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/resource/#service) | Optional, current NocoBase version |
+| `trace`       | `TraceOptions`  | Optional. Refer to [Trace](./trace.md)                                                                   | -                                  |
+| `metric`      | `MetricOptions` | Optional. Refer to [Metric](./metric.md)                                                                 | -                                  |
 
 ### `init()`
 
-注册 Instrumention, 初始化 `Trace`, `Metric`.
+Registers instrumentation and initializes `Trace` and `Metric`.
 
 #### Signature
 
@@ -38,7 +44,7 @@ export interface TelemetryOptions {
 
 ### `start()`
 
-启动 `Trace`, `Metric` 相关数据的处理程序，如：导出到 Prometheus.
+Starts the processing of `Trace` and `Metric` related data, such as exporting to Prometheus.
 
 #### Signature
 
@@ -46,7 +52,7 @@ export interface TelemetryOptions {
 
 ### `shutdown()`
 
-停止 `Trace`, `Metric` 相关的数据处理程序。
+Stops the processing of `Trace` and `Metric` related data.
 
 #### Signature
 
@@ -54,7 +60,7 @@ export interface TelemetryOptions {
 
 ### `addInstrumentation()`
 
-添加插桩工具库
+Adds instrumentation libraries.
 
 #### Signature
 

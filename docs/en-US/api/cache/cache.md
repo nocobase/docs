@@ -1,8 +1,8 @@
 # Cache
 
-## Basic methods
+## Basic Methods
 
-Refer to the documentation of <a href="https://github.com/node-cache-manager/node-cache-manager" target="_blank">node-cache-manager</a>.
+You can refer to the documentation of [node-cache-manager](https://github.com/node-cache-manager/node-cache-manager).
 
 - `get()`
 - `set()`
@@ -15,20 +15,20 @@ Refer to the documentation of <a href="https://github.com/node-cache-manager/nod
 - `keys()`
 - `ttl()`
 
-## Advanced methods
+## Other Methods
 
 ### `wrapWithCondition()`
 
-Similar to the wrap() function, but allows conditional control over whether to use caching.
+Similar to `wrap()`, but can decide whether to use caching based on conditions.
 
 ```ts
 async wrapWithCondition<T>(
   key: string,
   fn: () => T | Promise<T>,
   options?: {
-    // Decide whether to use the cached result according to the parameter
+    // External parameter to control whether to use cache results
     useCache?: boolean;
-    // Decide wheter to use the cached result accoding to the response value
+    // Determine whether to cache based on data results
     isCacheable?: (val: unknown) => boolean | Promise<boolean>;
     ttl?: Milliseconds;
   },
@@ -37,7 +37,7 @@ async wrapWithCondition<T>(
 
 ### `setValueInObject()`
 
-Modify the value of a specific key, when the cached content is an object.
+When the cached content is an object, changes the value of a specific key.
 
 ```ts
 async setValueInObject(key: string, objectKey: string, value: unknown)
@@ -45,8 +45,16 @@ async setValueInObject(key: string, objectKey: string, value: unknown)
 
 ### `getValueInObject()`
 
-Retrive the value of a specific key, when the cached content is an object.
+When the cached content is an object, retrieves the value of a specific key.
 
 ```ts
 async getValueInObject(key: string, objectKey: string)
+```
+
+### `delValueInObject()`
+
+When the cached content is an object, deletes a specific key.
+
+```ts
+async delValueInObject(key: string, objectKey: string)
 ```

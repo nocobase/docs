@@ -1,31 +1,31 @@
 # End-to-End
 
-## 概览
+## Overview
 
-NocoBase 使用 [Playwright](https://playwright.dev/) 进行 E2E 测试，并提供了一些 Mock 方法，用于简化测试的编写。
+NocoBase uses [Playwright](https://playwright.dev/) for end-to-end (E2E) testing and provides some mock methods to simplify test writing.
 
 ### mockPage
 
-根据配置，生成一个 NocoBase 的页面
+Generates a NocoBase page based on the configuration.
 
-**签名**
+**Signature**
 
 - `mockPage(pageConfig?: PageConfig): NocoPage`
 
-**参数**
+**Parameters**
 
-| 参数名                   | 类型                          | 默认值    | 描述                            |
-| ------------------------ | ----------------------------- | --------- | ------------------------------- |
-| `pageConfig.type`        | `'group' \| 'page' \| 'link'` | 'page'    | 页面类型                        |
-| `pageConfig.name`        | `string`                      | -         | 用户可见的页面名称              |
-| `pageConfig.url`         | `string`                      | -         | type 为 link 时，表示跳转的链接 |
-| `pageConfig.basePath`    | `string`                      | '/admin/' | 页面的基础路径                  |
-| `pageConfig.collections` | `CollectionSetting[]`         | -         | 页面数据表的配置                |
-| `pageConfig.pageSchema`  | -                             | -         | 页面整体的 Schema               |
+| Parameter                | Type                          | Default   | Description                              |
+| ------------------------ | ----------------------------- | --------- | ---------------------------------------- |
+| `pageConfig.type`        | `'group' \| 'page' \| 'link'` | 'page'    | Type of page                             |
+| `pageConfig.name`        | `string`                      | -         | Name of the page visible to users        |
+| `pageConfig.url`         | `string`                      | -         | URL to navigate when `type` is 'link'    |
+| `pageConfig.basePath`    | `string`                      | '/admin/' | Base path of the page                    |
+| `pageConfig.collections` | `CollectionSetting[]`         | -         | Configuration of collections on the page |
+| `pageConfig.pageSchema`  | -                             | -         | Schema of the entire page                |
 
-**示例**
+**Example**
 
-创建一个空页面，在当前测试用例运行结束后会被自动删除。
+Create an empty page that will be automatically deleted after the current test case finishes running.
 
 ```ts
 import { test } from '@nocobase/test/e2e';
@@ -38,19 +38,19 @@ test('learn how to use mockPage', async ({ mockPage }) => {
 
 ### mockManualDestroyPage
 
-生成一个需要手动销毁的页面实例。
+Generates a page instance that needs to be manually destroyed.
 
-**签名**
+**Signature**
 
 - `mockManualDestroyPage(pageConfig?: PageConfig): NocoPage`
 
-**参数**
+**Parameters**
 
-同 `mockPage`。
+Same as `mockPage`.
 
-**示例**
+**Example**
 
-创建一个空页面，需要手动销毁。在多个测试用例共用同一个页面时，可以使用该方法，避免重复创建相同的页面。
+Create an empty page that needs to be manually destroyed. Use this method when multiple test cases share the same page to avoid creating identical pages repeatedly.
 
 ```ts
 import { test } from '@nocobase/test/e2e';
@@ -66,26 +66,26 @@ test.afterAll(async () => {
 });
 
 test('learn how to use mockManualDestroyPage', async ({ page }) => {
-  // 需要使用 page.goto 方法进行跳转
+  // Use page.goto method to navigate
   await page.goto(nocoPage.getUrl());
 });
 ```
 
 ### mockCollections
 
-根据配置，生成多个 collections。
+Generates multiple collections based on the configuration.
 
-**签名**
+**Signature**
 
 - `mockCollections(collectionSettings: CollectionSetting[]): Promise<void>`
 
-**参数**
+**Parameters**
 
-可以参考这里 [CollectionSetting](https://github.com/nocobase/nocobase/blob/323b527aeb46aee2bc23387fddc54f39a9504739/packages/core/test/src/e2e/e2eUtils.ts#L11-L90) 类型的定义。
+Refer to the definition of [CollectionSetting](https://github.com/nocobase/nocobase/blob/323b527aeb46aee2bc23387fddc54f39a9504739/packages/core/test/src/e2e/e2eUtils.ts#L11-L90) type.
 
-**示例**
+**Example**
 
-创建一个名为 `posts` 的数据表。
+Create a collection named `posts`.
 
 ```ts
 import { test } from '@nocobase/test/e2e';
@@ -101,19 +101,19 @@ test('learn how to use mockCollections', async ({ mockCollections }) => {
 
 ### mockCollection
 
-根据配置，生成一个 collection。
+Generates a collection based on the configuration.
 
-**签名**
+**Signature**
 
 - `mockCollection(collectionSetting: CollectionSetting): Promise<void>`
 
-**参数**
+**Parameters**
 
-可以参考这里 [CollectionSetting](https://github.com/nocobase/nocobase/blob/323b527aeb46aee2bc23387fddc54f39a9504739/packages/core/test/src/e2e/e2eUtils.ts#L11-L90) 类型的定义。
+Refer to the definition of [CollectionSetting](https://github.com/nocobase/nocobase/blob/323b527aeb46aee2bc23387fddc54f39a9504739/packages/core/test/src/e2e/e2eUtils.ts#L11-L90) type.
 
-**示例**
+**Example**
 
-创建一个名为 `posts` 的数据表。
+Create a collection named `posts`.
 
 ```ts
 import { test } from '@nocobase/test/e2e';
@@ -127,20 +127,20 @@ test('learn how to use mockCollection', async ({ mockCollection }) => {
 
 ### mockRecords
 
-生成多条对应 collection 的数据。
+Generates data for multiple collections.
 
-**签名**
+**Signature**
 
 - `mockRecords<T>(collectionName: string, count?: number): Promise<T>`
 - `mockRecords<T>(collectionName: string, records?: T[]): Promise<T[]>`
 
-**参数**
+**Parameters**
 
-可以参考[这里](https://github.com/nocobase/nocobase/blob/323b527aeb46aee2bc23387fddc54f39a9504739/packages/core/test/src/e2e/e2eUtils.ts#L166-L177)的类型定义。
+Refer to the type definition [here](https://github.com/nocobase/nocobase/blob/323b527aeb46aee2bc23387fddc54f39a9504739/packages/core/test/src/e2e/e2eUtils.ts#L166-L177).
 
-**示例**
+**Example**
 
-创建 10 条 `posts` 数据表的数据。
+Create 10 records for the `posts` collection.
 
 ```ts
 import { test } from '@nocobase/test/e2e';
@@ -150,13 +150,13 @@ test('learn how to use mockRecords', async ({ mockRecords }) => {
 });
 ```
 
-自定义某个字段的值。
+Customize the value of a field.
 
 ```ts
 import { test } from '@nocobase/test/e2e';
 
 test('learn how to use mockRecords', async ({ mockRecords }) => {
-  // 创建一条 title 为 hello world 的数据
+  // Create a record with the title 'hello world'
   await mockRecords('posts', [
     {
       title: 'hello world',
@@ -167,57 +167,24 @@ test('learn how to use mockRecords', async ({ mockRecords }) => {
 
 ### mockRecord
 
-生成一条对应 collection 的数据。
+Generates data for a single collection.
 
-**签名**
+**Signature**
 
 - `mockRecord<T>(collectionName: string, data?: T): Promise<T>`
 
-**参数**
+**Parameters**
 
-可以参考[这里](https://github.com/nocobase/nocobase/blob/323b527aeb46aee2bc23387fddc54f39a9504739/packages/core/test/src/e2e/e2eUtils.ts#L156-L162)的类型定义。
+Refer to the type definition [here](https://github.com/nocobase/nocobase/blob/323b527aeb46aee2bc23387fddc54f39a9504739/packages/core/test/src/e2e/e2eUtils.ts#L156-L162).
 
-**示例**
+**Example**
 
-创建一条 `posts` 数据表的数据。
+Create a record for the `posts` collection.
 
 ```ts
 import { test } from '@nocobase/test/e2e';
 
 test('learn how to use mockRecord', async ({ mockRecord }) => {
   await mockRecord('posts');
-});
-```
-
-自定义某个字段的值。
-
-```ts
-import { test } from '@nocobase/test/e2e';
-
-test('learn how to use mockRecord', async ({ mockRecord }) => {
-  // 创建一条 title 为 hello world 的数据
-  await mockRecord('posts', {
-    title: 'hello world',
-  });
-});
-```
-
-### deletePage
-
-这是一个可以便捷删除页面的方法，根据页面的 title 删除对应的页面。
-
-**签名**
-
-- `deletePage(title: string): Promise<void>`
-
-**示例**
-
-删除一个名为 `posts` 的页面。
-
-```ts
-import { test } from '@nocobase/test/e2e';
-
-test('learn how to use deletePage', async ({ deletePage }) => {
-  await deletePage('posts');
 });
 ```

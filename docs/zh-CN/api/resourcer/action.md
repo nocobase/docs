@@ -46,6 +46,31 @@ const { filterByTk } = ctx.action.params;
 ```ts
 ctx.action.mergeParams(
   {
+    filter: {
+      name: 'foo',
+    },
+    fields: ['id', 'name'],
+    except: ['name'],
+    sort: ['id'],
+    page: 1,
+    pageSize: 10,
+    values: {
+      name: 'foo',
+    },
+  },
+  {
+    filter: 'and',
+    fields: 'union',
+    except: 'union',
+    sort: 'overwrite',
+    page: 'overwrite',
+    pageSize: 'overwrite',
+    values: 'deepMerge',
+  },
+);
+
+ctx.action.mergeParams(
+  {
     filter: {},
   },
   {

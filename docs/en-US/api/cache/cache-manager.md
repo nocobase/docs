@@ -2,53 +2,65 @@
 
 ## Overview
 
-CacheManager is the cache management of Nocobase encapsulated based on <a href="https://github.com/node-cache-manager/node-cache-manager" target="_blank">node-cache-manager</a>. Integrated cache methods include:
+CacheManager is based on [node-cache-manager](https://github.com/node-cache-manager/node-cache-manager) and provides caching module management for NocoBase. The built-in cache types are:
 
-- `memory` - `lru-cache` provided by default from `node-cache-manager`
-- `redis` - provided by [`node-cache-manager-redis-yet`](https://github.com/node-cache-manager/node-cache-manager-redis-yet)
+- **memory**: Provided by the default lru-cache of node-cache-manager.
+- **redis**: Supported by node-cache-manager-redis-yet for Redis caching.
 
-Additional cache methods can be registered through the API.
+More types can be extended and registered through the API.
 
-## Basic concept
+### Concepts
 
-### Store
+- **Store**: Defines a caching method, including a factory method for creating caches and other related configurations. Each caching method has a unique identifier provided during registration. The two built-in caching methods correspond to the unique identifiers `memory` and `redis`.
 
-Define a cache method, including the factory method for creating the cache and other related configurations. Each caching method has a unique name provided during registration. The names of the two integrated cache methods are `memory` and `redis`.
+- **Store Factory Method**: Provided by `node-cache-manager` and related extension packages, used to create caches. Examples include `memory` provided by `node-cache-manager` by default, and `redisStore` provided by `node-cache-manager-redis-yet`. In this context, the object to be provided corresponds to [`StoreOptions`](#storeoptions), which is the first parameter of the `caching` method in `node-cache-manager`.
 
-### Store factory method
+- **Cache**: A class encapsulated by NocoBase, providing methods related to cache usage. When actually using caching, operations are performed on instances of `Cache`. Each `Cache` instance has a unique identifier, which serves as a namespace for distinguishing different modules.
 
-Cache creation methods provided by `node-cache-manager` and related extension packages, such as `'memory'` provided default by `node-cache-manager` or the `redisStore` provided by `node-cache-manager-redis-yet`. This correspondings to the first parameter of the `caching` method in `node-cache-manager`.
+## Class Methods
 
-### Cache
+### `constructor()`
 
-A class encapsulated by NocoBase that provides methods for using caching. Actual caching operations involve instances of the `Cache` class. Each instances of `Cache` has a unique name, serving as a namespace for module differentiation.
+#### Signature
 
-## Constructor
+- `constructor(options?: CacheManagerOptions)`
 
-`constructor(options?: CacheManagerOptions)`
+#### Type
 
-### Parameters
+```ts
+export type CacheManagerOptions = Partial<{
+  defaultStore: string;
+  stores: {
+    [storeType: string]: StoreOptions;
+  };
+}>;
 
-- `defaultStore` - `string`  
-  Unique name of default cache method
-- `stores` - `Object`  
-  Registering cache methods, using the unique name of method as the key, paired with an object containing
-  factory method and global configurations. In `node-cache-manager`, the cache creation method is `await caching(store, config)`. The required object is:
+type StoreOptions = {
+  store?: 'memory' | FactoryStore<Store, any>;
+  close?: (store: Store) => Promise<void>;
+  // global config
+  [key: string]: any;
+};
+```
 
-  ```ts
-  {
-    // Store factory method, Corresponding to the first parameter of the 'caching' method
-    store: 'memory' | FactoryStore<Store, any>;
-    // For cache method like Redis that requires connection setup,
-    // provide a callback method to close the connection,
-    // taking the object returned by the store factory method as a parameter
-    close?: (store: Store) => Promise<void>;
-    // Global configurations of store, corresponding to the second parameter of the 'caching' method
-    [key: string]: any;
-  }
-  ```
+#### Details
 
-### Default `options`
+##### CacheManagerOptions
+
+| Property       | Type                           | Description                                                                                                                                                          |
+| -------------- | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `defaultStore` | `string`                       | Unique identifier for the default cache type.                                                                                                                        |
+| `stores`       | `Record<string, StoreOptions>` | Registers cache types. The key is the unique identifier for the cache type, and the value is an object containing the registration method and global configurations. |
+
+##### StoreOptions
+
+| Property        | Type                                   | Description                                                                                                                                                                                              |
+| --------------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `store`         | `memory` \| `FactoryStore<Store, any>` | The store factory method, corresponding to the first parameter of the `caching` method.                                                                                                                  |
+| `close`         | `(store: Store) => Promise<void>`      | Optional. For middleware that requires establishing a connection, such as Redis, provide a callback method for closing the connection. The parameter is the object returned by the store factory method. |
+| `[key: string]` | `any`                                  | Other global configurations for the store, corresponding to the second parameter of the `caching` method.                                                                                                |
+
+#### Default `options`
 
 ```ts
 import { redisStore, RedisStore } from 'cache-manager-redis-yet';
@@ -58,7 +70,7 @@ const defaultOptions: CacheManagerOptions = {
   stores: {
     memory: {
       store: 'memory',
-      // Global configurations
+      // global config
       max: 2000,
     },
     redis: {
@@ -71,90 +83,72 @@ const defaultOptions: CacheManagerOptions = {
 };
 ```
 
-The `options` parameter will be merged with the default options; existing content in the default options can be omitted, e.g.
+The `options` parameter will be merged with the default options. Existing default options can be omitted. For example:
 
 ```ts
 const cacheManager = new CacheManager({
   stores: {
     defaultStore: 'redis',
     redis: {
-      // redisStore is in default options
-      // provide only its specific configuration.
+      // redisStore is already provided in the default options, so only need to provide redisStore configuration.
       url: 'redis://localhost:6379',
     },
   },
 });
 ```
 
-## Methods
-
 ### `registerStore()`
 
-Register a new cache method, for example:
+Register a new caching method. Example:
 
 ```ts
 import { redisStore } from 'cache-manager-redis-yet';
 
 cacheManager.registerStore({
-  // unique name
+  // Unique identifier for the store
   name: 'redis',
-  // factory method of store
+  // Factory method for creating the store
   store: redisStore,
-  // close the connection of store
+  // Callback method for closing the store connection
   close: async (redis: RedisStore) => {
     await redis.client.quit();
   },
-  // global configurations
+  // Global configurations
   url: 'xxx',
-  // ...
 });
 ```
 
+#### Signature
+
+- `registerStore(options: { name: string } & StoreOptions)`
+
 ### `createCache()`
 
-Create a cache, for example:
+Create a cache. Example:
 
 ```ts
 await cacheManager.createCache({
-  name: 'default', // unique name of cache
-  store: 'memory', // unique name of store
-  prefix: 'mycache', // adds a 'mycache:' prefix to cache keys, optional
-  // other custom configurations of store, will be merged with global configurations
+  name: 'default', // Unique identifier for the cache
+  store: 'memory', // Unique identifier for the store
+  prefix: 'mycache', // Automatically adds the 'mycache:' prefix to cache keys, optional
+  // Other store configurations, custom configurations that will be merged with global store configurations
   max: 2000,
 });
 ```
 
-When `store` is omitted, it will use `defaultStore`. In this case, the caching method will change along with the system's default caching method.
+#### Signature
 
-When no custom configuration is provided, it returns the default cache space created by global configuration, shared by the current cache method. It is recommended to include a prefix to avoid key conflicts.
+- `createCache(options: { name: string; prefix?: string; store?: string; [key: string]: any }): Promise<Cache>`
 
-```ts
-// Use default cache method with global configurations
-await cacheManager.createCache({ name: 'default', prefix: 'mycache' });
-```
+#### Details
 
-Usage of `Cache` refer to: [Cache](/api/cache/cache)
+##### options
 
-### `getCache()`
+| Property        | Type     | Description                                        |
+| --------------- | -------- | -------------------------------------------------- |
+| `name`          | `string` | Unique identifier for the cache                    |
+| `store`         | `string` | Unique identifier for the store                    |
+| `prefix`        | `string` | Optional. Prefix automatically added to cache keys |
+| `[key: string]` | `any`    | Other custom store configurations                  |
 
-Get a cache.
-
-```ts
-cacheManager.getCache('default');
-```
-
-### `flushAll()`
-
-Reset all cache spaces.
-
-```ts
-await cacheManager.flushAll();
-```
-
-### `close()`
-
-Close the connections of all cache methods.
-
-```ts
-await cacheManager.close();
-```
+When `store` is omitted, the `defaultStore` will be used. In this case, the caching
