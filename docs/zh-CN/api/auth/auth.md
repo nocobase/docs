@@ -28,7 +28,7 @@ class CustomAuth extends Auth {
 }
 ```
 
-## 属性
+## 实例属性
 
 ### `user`
 
@@ -62,9 +62,13 @@ export type AuthConfig = {
 
 #### 详细信息
 
-- `authenticator` - 认证器数据, 在 NocoBase 应用中的实际类型是 [AuthModel](../../plugins/auth/dev/api.md#authmodel)
-- `options` - 认证器配置
-- `ctx` - 请求上下文
+##### AuthConfig
+
+| 属性            | 类型                                            | 描述                                                                                                 |
+| --------------- | ----------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `authenticator` | [`Authenticator`](./auth-manager#authenticator) | 认证器数据模型，在 NocoBase 应用中的实际类型是 [AuthModel](../../handbook/auth/dev/api.md#authmodel) |
+| `options`       | `Record<string, any>`                           | 认证器相关配置                                                                                       |
+| `ctx`           | `Context`                                       | 请求上下文                                                                                           |
 
 ### `check()`
 

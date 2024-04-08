@@ -8,8 +8,6 @@ export default [
   {
     title: '@nocobase/acl',
     link: '/api/acl/acl',
-    // type: 'subMenu',
-    // children: ['/api/acl/acl', '/api/acl/acl-role', '/api/acl/acl-resource'],
   },
   {
     title: '@nocobase/actions',
@@ -36,7 +34,8 @@ export default [
   {
     title: '@nocobase/client',
     link: 'https://client.docs.nocobase.com/core/application/application',
-    'link.zh-CN': 'https://client.docs-cn.nocobase.com/core/application/application',
+    'link.zh-CN':
+      'https://client.docs-cn.nocobase.com/core/application/application',
   },
   {
     title: '@nocobase/database',
@@ -73,7 +72,7 @@ export default [
     title: '@nocobase/resourcer',
     type: 'subMenu',
     children: [
-      '/api/resourcer',
+      '/api/resourcer/resource-manager',
       // '/api/resourcer/resource',
       '/api/resourcer/action',
       // '/api/resourcer/middleware',
@@ -81,11 +80,7 @@ export default [
   },
   {
     title: '@nocobase/sdk',
-    children: [
-      '/api/sdk',
-      '/api/sdk/auth',
-      '/api/sdk/storage',
-    ]
+    children: ['/api/sdk', '/api/sdk/auth', '/api/sdk/storage'],
   },
   {
     title: '@nocobase/server',
@@ -109,10 +104,6 @@ export default [
   {
     title: '@nocobase/test',
     type: 'subMenu',
-    children: [
-      '/api/test/server',
-      '/api/test/client',
-      '/api/test/e2e',
-    ],
+    children: ['/api/test/server', '/api/test/client', '/api/test/e2e'],
   },
-]
+];

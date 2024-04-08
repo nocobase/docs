@@ -22,9 +22,11 @@ export type TraceOptions = {
 
 #### 详细信息
 
-- `tracerName` - 默认 `nocobase-trace`.
-- `version` - 默认当前 NocoBase 版本。
-- `processorName` - 想启用的已注册的 `SpanProcessor` 的标识。
+| 属性            | 类型                   | 描述                                    | 默认值              |
+| --------------- | ---------------------- | --------------------------------------- | ------------------- |
+| `traceName`     | `string`               | trace 标识                              | `nocobase-trace`    |
+| `version`       | `string`               |                                         | NocoBase 当前版本号 |
+| `processorName` | `string` \| `string[]` | 想启用的已注册的 `SpanProcessor` 的标识 |                     |
 
 ### `init()`
 
@@ -52,8 +54,10 @@ type GetSpanProcessor = () => SpanProcessor;
 
 #### 详细信息
 
-- `name` - `SpanProcessor` 唯一标识。
-- `processor` - 获取 `SpanProcessor` 的方法。
+| 参数        | 类型                  | 描述                        |
+| ----------- | --------------------- | --------------------------- |
+| `name`      | `string`              | `SpanProcessor` 唯一标识    |
+| `processor` | `() => SpanProcessor` | 获取 `SpanProcessor` 的方法 |
 
 ### `getTracer()`
 
@@ -65,8 +69,10 @@ type GetSpanProcessor = () => SpanProcessor;
 
 #### 详细信息
 
-- `name` - 默认 `nocobase-trace`.
-- `version` - 默认当前 NocoBase 版本。
+| 参数      | 类型     | 描述       | 默认值              |
+| --------- | -------- | ---------- | ------------------- |
+| `name`    | `string` | trace 标识 | `nocobase-trace`    |
+| `version` | `string` |            | NocoBase 当前版本号 |
 
 ### `start()`
 

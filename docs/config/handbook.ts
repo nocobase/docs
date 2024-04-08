@@ -265,7 +265,7 @@ export default [
                 'title.zh-CN': '时间',
                 link: '/handbook/data-modeling/collection-fields/datetime/time',
               },
-            ]
+            ],
           },
           {
             title: 'Geometric',
@@ -291,7 +291,7 @@ export default [
                 'title.zh-CN': '多边形',
                 link: '/handbook/data-modeling/collection-fields/geometric/polygon',
               },
-            ]
+            ],
           },
           {
             title: 'Advanced',
@@ -346,27 +346,27 @@ export default [
               {
                 title: 'Created at',
                 'title.zh-CN': '创建日期',
-                link: '/handbook/data-modeling/collection-fields/system-info/created-at'
+                link: '/handbook/data-modeling/collection-fields/system-info/created-at',
               },
               {
                 title: 'Last updated at',
                 'title.zh-CN': '最后修改日期',
-                link: '/handbook/data-modeling/collection-fields/system-info/updated-at'
+                link: '/handbook/data-modeling/collection-fields/system-info/updated-at',
               },
               {
                 title: 'Created by',
                 'title.zh-CN': '创建人',
-                link: '/handbook/users/field-created-by'
+                link: '/handbook/users/field-created-by',
               },
               {
                 title: 'Last updated by',
                 'title.zh-CN': '最后修改人',
-                link: '/handbook/users/field-updated-by'
+                link: '/handbook/users/field-updated-by',
               },
               {
                 title: 'Table OID',
                 'title.zh-CN': 'Table OID',
-                link: '/handbook/data-modeling/collection-fields/system-info/table-oid'
+                link: '/handbook/data-modeling/collection-fields/system-info/table-oid',
               },
             ],
           },
@@ -377,27 +377,27 @@ export default [
               {
                 title: 'Overview',
                 'title.zh-CN': '概述',
-                link: '/handbook/data-modeling/collection-fields/associations'
+                link: '/handbook/data-modeling/collection-fields/associations',
               },
               {
                 title: 'One-to-one',
                 'title.zh-CN': '一对一',
-                link: '/handbook/data-modeling/collection-fields/associations/o2o'
+                link: '/handbook/data-modeling/collection-fields/associations/o2o',
               },
               {
                 title: 'One-to-many',
                 'title.zh-CN': '一对多',
-                link: '/handbook/data-modeling/collection-fields/associations/o2m'
+                link: '/handbook/data-modeling/collection-fields/associations/o2m',
               },
               {
                 title: 'Many-to-one',
                 'title.zh-CN': '多对一',
-                link: '/handbook/data-modeling/collection-fields/associations/m2o'
+                link: '/handbook/data-modeling/collection-fields/associations/m2o',
               },
               {
                 title: 'Many-to-many',
                 'title.zh-CN': '多对多',
-                link: '/handbook/data-modeling/collection-fields/associations/m2m'
+                link: '/handbook/data-modeling/collection-fields/associations/m2m',
               },
             ],
           },
@@ -491,7 +491,7 @@ export default [
               {
                 title: 'Charts',
                 'title.zh-CN': '图表',
-                link: '/handbook/data-visualization/user/chart-block',
+                link: '/handbook/data-visualization/',
               },
             ],
           },
@@ -1125,7 +1125,50 @@ export default [
       {
         title: 'Data visualization',
         'title.zh-CN': '数据可视化',
-        link: '/handbook/data-visualization',
+        children: [
+          {
+            title: 'Overview',
+            'title.zh-CN': '概览',
+            link: '/handbook/data-visualization',
+          },
+          {
+            title: 'User manual',
+            'title.zh-CN': '使用手册',
+            children: [
+              {
+                title: 'Chart block',
+                'title.zh-CN': '图表区块',
+                link: '/handbook/data-visualization/user/chart-block',
+              },
+              {
+                title: 'Configure',
+                'title.zh-CN': '配置图表',
+                link: '/handbook/data-visualization/user/configure',
+              },
+              {
+                title: 'Filter block',
+                'title.zh-CN': '筛选区块',
+                link: '/handbook/data-visualization/user/filter',
+              },
+            ],
+          },
+          {
+            title: 'Development',
+            'title.zh-CN': '开发指南',
+            children: [
+              {
+                title: 'API',
+                'title.zh-CN': 'API 参考',
+                link: '/handbook/data-visualization/dev/',
+              },
+              {
+                title: 'Step by step',
+                'title.zh-CN': '示例教程',
+                link: '/handbook/data-visualization/step-by-step',
+              },
+            ],
+          },
+        ],
       },
       {
         title: 'Multi-app manager',

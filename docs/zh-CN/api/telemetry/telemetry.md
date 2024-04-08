@@ -1,5 +1,9 @@
 # Telemetry
 
+## 概览
+
+`Telemetry` 是 NocoBase 的遥测模块，基于 <a href="https://opentelemetry.io">OpenTelemetry</a> 封装，支持注册 OpenTelemetry 生态的指标 (Metric) 和链路 (Trace) 工具。
+
 ## 类方法
 
 ### `constructor()`
@@ -23,10 +27,12 @@ export interface TelemetryOptions {
 
 #### 详细信息
 
-- `serviceName` - 默认 `nocobase`。参考：<a href="https://opentelemetry.io/docs/specs/semconv/resource/#service" target="_blank">Semantic Conventions</a>
-- `version` - 默认当前 NocoBase 版本。参考：<a href="https://opentelemetry.io/docs/specs/semconv/resource/#service" target="_blank">Semantic Conventions</a>
-- `trace` - 参考: [Trace](./trace.md)
-- `Metric` - 参考: [Metric](./metric.md)
+| 属性          | 类型            | 描述                                                                                                                        | 默认值                     |
+| ------------- | --------------- | --------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| `serviceName` | `string`        | 可选，参考 <a href="https://opentelemetry.io/docs/specs/semconv/resource/#service" target="_blank">Semantic Conventions</a> | `nocobase`                 |
+| `version`     | `string`        | 可选，参考 <a href="https://opentelemetry.io/docs/specs/semconv/resource/#service" target="_blank">Semantic Conventions</a> | 可选，当前 NocoBase 版本号 |
+| `trace`       | `TraceOptions`  | 可选，参考 [Trace](./trace.md)                                                                                              |
+| `metric`      | `MetricOptions` | 可选，参考 [Metric](./metric.md)                                                                                            |
 
 ### `init()`
 

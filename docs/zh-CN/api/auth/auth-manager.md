@@ -26,7 +26,7 @@ authManager.registerTypes('basic', {
 });
 
 // 使用鉴权中间件
-app.resourcer.use(authManager.middleware());
+app.resourceManager.use(authManager.middleware());
 ```
 
 ### 概念解释
@@ -62,11 +62,20 @@ export type AuthManagerOptions = {
 
 #### 详细信息
 
-- `authKey` - 用于从请求头中获取当前认证器标识，如 `X-Authenticator`.
-- `default` - 可选。默认认证器标识。
-- `jwt` - 可选。如果使用 JWT 做鉴权，可以配置。
-  - `secret` - JWT token 密钥
-  - `expiresIn` - 可选。JWT token 有效期。默认 `7d`.
+##### AuthManagerOptions
+
+| 属性      | 类型                        | 描述                                  | 默认值            |
+| --------- | --------------------------- | ------------------------------------- | ----------------- |
+| `authKey` | `string`                    | 可选，请求头中保存当前认证器标识的key | `X-Authenticator` |
+| `default` | `string`                    | 可选, 默认认证器标识                  | `basic`           |
+| `jwt`     | [`JwtOptions`](#jwtoptions) | 可选，如果采用 JWT 做鉴权，可以配置   | -                 |
+
+##### JwtOptions
+
+| 属性        | 类型     | 描述               | 默认值            |
+| ----------- | -------- | ------------------ | ----------------- |
+| `secret`    | `string` | token 密钥         | `X-Authenticator` |
+| `expiresIn` | `string` | 可选, token 有效期 | `7d`              |
 
 ### `setStorer()`
 
@@ -92,11 +101,18 @@ export interface Storer {
 
 #### 详细信息
 
-- `Authenticator` - 认证器
-  - `authType` - 认证类型
-  - `options` - 认证器配置
-- `Storer` - 认证器数据相关的接口
-  - `get` - 通过认证器标识获取认证器, 在 NocoBase 应用中的响应类型实际上是 [AuthModel](../../plugins/auth/dev/api.md#authmodel).
+##### Authenticator
+
+| 属性       | 类型                  | 描述           |
+| ---------- | --------------------- | -------------- |
+| `authType` | `string`              | 认证类型       |
+| `options`  | `Record<string, any>` | 认证器相关配置 |
+
+##### Storer
+
+`Storer` 是认证器存储的接口，包含一个方法。
+
+- `get(name: string): Promise<Authenticator>` - 通过认证器标识获取认证器。在 NocoBase 中实际返回的类型是 [AuthModel](../../handbook/auth/dev/api#authmodel).
 
 ### `registerTypes()`
 
@@ -119,8 +135,10 @@ type AuthConfig = {
 
 #### 详细信息
 
-- `auth` - 参考 [Auth](./auth.md)
-- `title` - 可选。该认证类型在前端展示的标题。
+| 属性    | 类型               | 描述                                 |
+| ------- | ------------------ | ------------------------------------ |
+| `auth`  | `AuthExtend<Auth>` | 认证类型实现, 参考 [Auth](./auth.md) |
+| `title` | `string`           | 可选。该认证类型在前端展示的标题     |
 
 ### `listTypes()`
 
@@ -132,8 +150,10 @@ type AuthConfig = {
 
 #### 详细信息
 
-- `name` - 认证类型
-- `title` - 认证类型标题
+| 属性    | 类型     | 描述         |
+| ------- | -------- | ------------ |
+| `name`  | `string` | 认证类型标识 |
+| `title` | `string` | 认证类型标题 |
 
 ### `get()`
 
@@ -145,8 +165,10 @@ type AuthConfig = {
 
 #### 详细信息
 
-- `name` - 认证器标识
-- `ctx` - 请求上下文
+| 属性   | 类型      | 描述       |
+| ------ | --------- | ---------- |
+| `name` | `string`  | 认证器标识 |
+| `ctx`  | `Context` | 请求上下文 |
 
 ### `middleware()`
 
