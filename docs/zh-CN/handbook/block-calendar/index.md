@@ -30,10 +30,11 @@
 ![20240408170828](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408170828.png)
 ### 区块设置项
 
-![20240408171111](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408171111.png)
+![20240408173339](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408173339.png)
 
 - 展示农历
-  ![20240408171254](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408171254.png)
+
+![20240408173259](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408173259.png)
 - [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
 - [设置数据范围](/handbook/ui/blocks/block-settings/data-scope)
 - [每页显示数量](/handbook/ui/blocks/block-settings/per-page)
