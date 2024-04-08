@@ -1,5 +1,9 @@
 # v0.21：2024-03-29
 
+## 预告
+
+![v1.0](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/img_v3_029o_5f3bdbd4-1180-43dc-8ccb-1a24eebebbcg.png)
+
 ## 新特性
 
 ### 图表支持多数据源

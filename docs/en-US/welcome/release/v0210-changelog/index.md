@@ -1,5 +1,9 @@
 # v0.21: 2024-03-29
 
+## Announcement
+
+![v1.0](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/img_v3_029o_3dd91ba0-bb96-4315-a273-208f06d432fg.png)
+
 ## New features
 
 ### Multi-DataSource support for Charts
