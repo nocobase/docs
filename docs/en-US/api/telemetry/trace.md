@@ -4,7 +4,7 @@
 
 ### `constructor()`
 
-构造函数，创建一个 `Trace` 实例。
+Constructor to create a `Trace` instance.
 
 #### Signature
 
@@ -22,13 +22,15 @@ export type TraceOptions = {
 
 #### Details
 
-- `tracerName` - 默认 `nocobase-trace`.
-- `version` - 默认当前 NocoBase 版本。
-- `processorName` - 想启用的已注册的 `SpanProcessor` 的标识。
+| Property        | Type                   | Description                                        | Default Value               |
+| --------------- | ---------------------- | -------------------------------------------------- | --------------------------- |
+| `tracerName`    | `string`               | Trace identifier                                   | `nocobase-trace`            |
+| `version`       | `string`               |                                                    | Current version of NocoBase |
+| `processorName` | `string` \| `string[]` | Identifier(s) of registered `SpanProcessor` to use | -                           |
 
 ### `init()`
 
-初始化 `NodeTracerProvider`.
+Initializes `NodeTracerProvider`.
 
 #### Signature
 
@@ -36,7 +38,7 @@ export type TraceOptions = {
 
 ### `registerProcessor()`
 
-注册 `SpanProcessor`
+Registers a `SpanProcessor`.
 
 #### Signature
 
@@ -52,12 +54,14 @@ type GetSpanProcessor = () => SpanProcessor;
 
 #### Details
 
-- `name` - `SpanProcessor` 唯一标识。
-- `processor` - 获取 `SpanProcessor` 的方法。
+| Parameter   | Type                  | Description                           |
+| ----------- | --------------------- | ------------------------------------- |
+| `name`      | `string`              | Unique identifier for `SpanProcessor` |
+| `processor` | `() => SpanProcessor` | Function to get `SpanProcessor`       |
 
 ### `getTracer()`
 
-获取 `Tracer`.
+Gets the `Tracer`.
 
 #### Signature
 
@@ -65,12 +69,14 @@ type GetSpanProcessor = () => SpanProcessor;
 
 #### Details
 
-- `name` - 默认 `nocobase-trace`.
-- `version` - 默认当前 NocoBase 版本。
+| Parameter | Type     | Description      | Default Value               |
+| --------- | -------- | ---------------- | --------------------------- |
+| `name`    | `string` | Trace identifier | `nocobase-trace`            |
+| `version` | `string` |                  | Current version of NocoBase |
 
 ### `start()`
 
-启动 `SpanProcessor`.
+Starts the `SpanProcessor`.
 
 #### Signature
 
@@ -78,7 +84,7 @@ type GetSpanProcessor = () => SpanProcessor;
 
 ### `shutdown()`
 
-停止 `SpanProcessor`.
+Stops the `SpanProcessor`.
 
 #### Signature
 

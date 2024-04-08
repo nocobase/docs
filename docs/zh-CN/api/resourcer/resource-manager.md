@@ -123,23 +123,23 @@ app.resourceManager.define({
 });
 ```
 
-| 参数名          | 类型             | 描述                                                    |
-| --------------- | ---------------- | ------------------------------------------------------- |
-| `values`        | `any`            | 操作请求默认值                                          |
-| `filter`        | `Filter`         | 过滤参数，参考 [Filter Operators](./database/operators) |
-| `fields`        | `string[]`       | 要获取的字段                                            |
-| `except`        | `string[]`       | 要排除的字段                                            |
-| `appends`       | `string[]`       | 要附加的关系字段                                        |
-| `whitelist`     | `string[]`       | 字段白名单                                              |
-| `blacklist`     | `string[]`       | 字段黑名单                                              |
-| `sort`          | `string[]`       | 排序参数                                                |
-| `page`          | `number`         | 当前页                                                  |
-| `pageSize`      | `number`         | 每页数据条数                                            |
-| `maxPageSize`   | `number`         | 最大数据条数                                            |
-| `middleware`    | `MiddlewareType` | 中间件                                                  |
-| `middlewares`   | `MiddlewareType` | 中间件                                                  |
-| `handler`       | `HandlerType`    | 当前操作执行的方法                                      |
-| `[key: string]` | `any`            | 其他扩展配置                                            |
+| 参数名          | 类型             | 描述                                                     |
+| --------------- | ---------------- | -------------------------------------------------------- |
+| `values`        | `any`            | 操作请求默认值                                           |
+| `filter`        | `Filter`         | 过滤参数，参考 [Filter Operators](../database/operators) |
+| `fields`        | `string[]`       | 要获取的字段                                             |
+| `except`        | `string[]`       | 要排除的字段                                             |
+| `appends`       | `string[]`       | 要附加的关系字段                                         |
+| `whitelist`     | `string[]`       | 字段白名单                                               |
+| `blacklist`     | `string[]`       | 字段黑名单                                               |
+| `sort`          | `string[]`       | 排序参数                                                 |
+| `page`          | `number`         | 当前页                                                   |
+| `pageSize`      | `number`         | 每页数据条数                                             |
+| `maxPageSize`   | `number`         | 最大数据条数                                             |
+| `middleware`    | `MiddlewareType` | 中间件                                                   |
+| `middlewares`   | `MiddlewareType` | 中间件                                                   |
+| `handler`       | `HandlerType`    | 当前操作执行的方法                                       |
+| `[key: string]` | `any`            | 其他扩展配置                                             |
 
 ### `registerActionHandlers()`
 

@@ -52,6 +52,7 @@ curl -X GET http://localhost:13000/api/users:list
 | `except`   | `string[]` | 要排除的字段                                            | -      |
 | `appends`  | `string[]` | 要附加的关系字段                                        | -      |
 | `sort`     | `string[]` | 排序参数                                                | -      |
+| `pagniate` | `boolean`  | 是否分页                                                | `true` |
 | `page`     | `number`   | 当前页                                                  | `1`    |
 | `pageSize` | `number`   | 每页数据条数                                            | `20`   |
 
@@ -72,9 +73,6 @@ curl -X GET http://localhost:13000/api/users:get?filterByTk=1
 | `fields`     | `string[]`         | 要获取的字段                                            | -      |
 | `except`     | `string[]`         | 要排除的字段                                            | -      |
 | `appends`    | `string[]`         | 要附加的关系字段                                        | -      |
-| `sort`       | `string[]`         | 排序参数                                                | -      |
-| `page`       | `number`           | 分页                                                    | `1`    |
-| `pageSize`   | `number`           | 当前页                                                  | `20`   |
 
 ### update
 
