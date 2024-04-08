@@ -6,7 +6,7 @@
 
 ### Concepts
 
-- **Resource**: Collections, or custom resources can be registered. Refer to [`@nocobase/resourcer`](../resourcer/index).
+- **Resource**: Collections, or custom resources can be registered. Refer to [`@nocobase/resourcer`](../resourcer/resource-manager.md).
 - **Action**: An operation interface for a resource, such as create, read, update, delete, or other custom actions. Refer to [`@nocobase/actions`](../actions).
 - **Strategy**: Configures global permissions for roles, such as permissions for resource operations like create, read, update, delete, import, export, and system permissions like configuring the user interface.
 - **Snippet**: Defines a collection of operations, enabling unified management of operation permissions. Snippet identifiers can be matched using the [minimatch](https://github.com/isaacs/minimatch) rules.

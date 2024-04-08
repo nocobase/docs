@@ -6,7 +6,7 @@
 
 ### 概念解释
 
-- **资源** (`Resource`): 数据表，也可以注册自定义的资源，参考 [`@nocobase/resourcer`](../resourcer/index).
+- **资源** (`Resource`): 数据表，也可以注册自定义的资源，参考 [`@nocobase/resourcer`](../resourcer/resource-manager.md).
 - **操作** (`Action`): 某个资源的操作接口，如创建、查看、更新、删除或其他自定义操作。参考 [`@nocobase/actions`](../actions).
 - **策略** (`Strategy`): 配置角色的全局权限，如创建、查看、更新、删除、导入和导出等资源操作权限，以及配置用户界面等系统权限。
 - **片段** (`Snippet`): 定义一组操作的集合，实现一组操作权限的统一管理。片段标识可以按照 <a href="https://github.com/isaacs/minimatch" target="_blank">minimatch</a> 规则模糊匹配。
