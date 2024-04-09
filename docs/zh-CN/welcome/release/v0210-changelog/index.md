@@ -159,4 +159,29 @@ Grid 组件也支持分布式处理
 
 ### UI Schema 的各种 useProps 使用 x-use-decorator-props 和 x-use-component-props 代替
 
-x-use-decorator-props 和 x-use-component-props 无入侵，所有组件都支持
+`useProps` 使用 `x-use-component-props` 代替。
+
+```diff
+{
+  "x-component": "Input",
++  "x-use-component-props": "useInputProps",
+-  "x-component-props": {
+-    useProps: "{{ useInputProps }}"
+-  }
+}
+```
+
+`useParams` 和 `useSourceId` 使用 `x-use-decorator-props` 代替。
+
+```diff
+{
+  "x-decorator": "TableBlockProvider",
++  "x-use-decorator-props": "useDecoratorProps",
+-  "x-decorator-props": {
+-    useParams: "{{ useParams }}",
+-    useSourceId: "{{ useSourceId }}"
+-  }
+}
+```
+
+`x-use-decorator-props` 的相关介绍可以参考这里：[静态属性和动态属性](https://client.docs-cn.nocobase.com/core/data-block/data-block-provider#%E9%9D%99%E6%80%81%E5%B1%9E%E6%80%A7%E5%92%8C%E5%8A%A8%E6%80%81%E5%B1%9E%E6%80%A7)。
