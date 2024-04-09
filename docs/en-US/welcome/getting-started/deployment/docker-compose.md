@@ -1,4 +1,4 @@
-# Deploy via Docker Compose
+# Docker
 
 The other processes are no different from the [Docker installation](/welcome/getting-started/installation/docker-compose).
 
