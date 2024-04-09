@@ -1,5 +1,5 @@
-# Git 源码部署
+# Git source code
 
-其他流程与 [Git 源码安装](/welcome/getting-started/installation/git-clone) 无异。
+The other processes are no different from the [Git source code](/welcome/getting-started/installation/git-clone).
 
 <embed src="./create-nocobase-app.md#L4-L1000"></embed>

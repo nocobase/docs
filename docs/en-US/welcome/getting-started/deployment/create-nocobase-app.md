@@ -1,59 +1,59 @@
-# create-nocobase-app 部署
+# create-nocobase-app
 
-其他流程与 [create-nocobase-app 安装](/welcome/getting-started/installation/create-nocobase-app) 无异。
+The other processes are no different from the [create-nocobase-app](/welcome/getting-started/installation/create-nocobase-app).
 
 <embed src="./env-note.md"></embed>
-- 生产环境部署时，为了减少体积，可以只安装必要的依赖 `yarn install --production`
+- When deploying in a production environment, to reduce volume, you can install only the necessary dependencies with `yarn install --production`
 
 <br />
 
-[>>> 更多内容，查看完整的「环境变量」列表 <<<](/welcome/getting-started/env)
+[>>> For more information, view the complete 'Environment Variables' <<<](/welcome/getting-started/env)
 
-## 管理应用进程
+## Managing Application Processes
 
-NocoBase 已经内置了 [PM2](https://pm2.keymetrics.io/)，用于管理应用进程，生产环境直接 `yarn start` 就可以了，如果需要后台运行，加上 `-d` 参数即可，例如：
+NocoBase has already built-in [PM2](https://pm2.keymetrics.io/) for managing application processes. In a production environment, you can directly use `yarn start`. If you need it to run in the background, just add the `-d` parameter, for example:
 
 ```bash
-# 后台运行
+# Run in the background
 yarn start -d
 ```
 
-重启
+Restart
 
 ```bash
 yarn nocobase pm2-restart
 ```
 
-停止
+Stop
 
 ```bash
 yarn nocobase pm2-stop
 ```
 
-更多 PM2 命令
+More PM2 commands
 
 ```bash
 yarn nocobase pm2 -h
 ```
 
-## 配置 Nginx
+## Configuring Nginx
 
-生产环境，可以考虑将静态文件交由 Nginx 代理，NocoBase 提供了 `create-nginx-conf` 命令用于生成 Nginx 配置文件。
+In a production environment, you can consider having Nginx proxy the static files. NocoBase provides the `create-nginx-conf` command to generate Nginx configuration files.
 
 ```bash
 yarn nocobase create-nginx-conf
 ```
 
-文件路径在 `./storage/nocobase.conf`，根据实际情况进一步调整，最后将它加入 `/etc/nginx/sites-enabled`，例如：
+The file path is `./storage/nocobase.conf`. Adjust it further according to the actual situation, and finally add it to `/etc/nginx/sites-enabled`, for example:
 
 ```bash
 ln -s /app/nocobase/storage/nocobase.conf /etc/nginx/sites-enabled/nocobase.conf
 ```
 
-**备注**
+**Remarks**
 
-- 部署到子路径，需要配置 `APP_PUBLIC_PATH` 环境变量。配置完之后，需要重新执行 `create-nginx-conf` 命令；
-- 根据实际情况修改生成的 `nocobase.conf`，如配置域名等；
-- `/app/nocobase/` 为示例应用所在目录，需要根据实际情况进行调整；
-- `/etc/nginx/sites-enabled` 为默认 Nginx 的配置路径，实际情况可能有差异，可以通过 `nginx -V` 查看；
-- 如果使用的不是 Nginx，可以参考 Nginx 的配置做一些调整。
+- When deploying to a subpath, you need to configure the `APP_PUBLIC_PATH` environment variable. After configuring, you need to re-execute the `create-nginx-conf` command;
+- Modify the generated `nocobase.conf` according to the actual situation, such as configuring the domain name, etc.;
+- `/app/nocobase/` is the directory where the example application is located, and it needs to be adjusted according to the actual situation;
+- `/etc/nginx/sites-enabled` is the default Nginx configuration path, the actual situation may vary, you can check it with `nginx -V`;
+- If you are not using Nginx, you can make some adjustments referring to the Nginx configuration.
