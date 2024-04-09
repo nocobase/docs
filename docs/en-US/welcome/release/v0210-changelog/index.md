@@ -159,4 +159,29 @@ Grid component also supports distributed processing.
 
 ### Various useProps of UI Schema replaced with x-use-decorator-props and x-use-component-props
 
-x-use-decorator-props and x-use-component-props are non-intrusive and supported by all components.
+For useProps, instead of using x-component-props with the useProps key, you now use x-use-component-props. Here's the diff:
+
+```diff
+{
+  "x-component": "Input",
++  "x-use-component-props": "useInputProps",
+-  "x-component-props": {
+-    useProps: "{{ useInputProps }}"
+-  }
+}
+```
+
+For useParams and useSourceId, instead of using x-decorator-props with the keys for useParams and useSourceId, you now use x-use-decorator-props with a single key. Here's the diff:
+
+```diff
+{
+  "x-decorator": "TableBlockProvider",
++  "x-use-decorator-props": "useDecoratorProps",
+-  "x-decorator-props": {
+-    useParams: "{{ useParams }}",
+-    useSourceId: "{{ useSourceId }}"
+-  }
+}
+```
+
+More information about x-use-decorator-props and the distinction between static and dynamic properties can be found here: [Static and Dynamic Properties](https://client.docs.nocobase.com/core/data-block/data-block-provider#%E9%9D%99%E6%80%81%E5%B1%9E%E6%80%A7%E5%92%8C%E5%8A%A8%E6%80%81%E5%B1%9E%E6%80%A7).
