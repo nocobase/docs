@@ -27,7 +27,7 @@
 
 
 ### 配置字段
-- [列表字段](/handbook/ui/fields/field-settings/detail-form-item)
+- [列表字段](/handbook/ui/fields/field-settings/common/detail-form-item)
 ### 配置操作
 
 - 全局操作

@@ -31,7 +31,7 @@
 ![20240408160844](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408160844.png)
 ### 配置字段
 
-- [网格区块字段](/handbook/ui/fields/field-settings/detail-form-item)
+- [网格区块字段](/handbook/ui/fields/field-settings/common/detail-form-item)
 ### 配置操作
 
 - 全局操作

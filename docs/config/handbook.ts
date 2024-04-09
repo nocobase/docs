@@ -627,32 +627,32 @@ export default [
               {
                 title: '表格字段',
                 'title.zh-CN': '表格字段',
-                link: '/handbook/ui/fields/field-settings/table-column',
+                link: '/handbook/ui/fields/field-settings/common/table-column',
               },
               {
                 title: '表单字段',
                 'title.zh-CN': '表单字段',
-                link: '/handbook/ui/fields/field-settings/form-item',
+                link: '/handbook/ui/fields/field-settings/common/form-item',
               },
               {
                 title: '详情字段',
                 'title.zh-CN': '详情字段',
-                link: '/handbook/ui/fields/field-settings/detail-form-item',
+                link: '/handbook/ui/fields/field-settings/common/detail-form-item',
               },
               {
                 title: '批量编辑表单',
                 'title.zh-CN': '批量编辑表单',
-                link: '/handbook/ui/fields/field-settings/bulk-edit-form-item',
+                link: '/handbook/ui/fields/field-settings/common/bulk-edit-form-item',
               },
               {
                 title: '筛选表单字',
                 'title.zh-CN': '筛选表单',
-                link: '/handbook/ui/fields/field-settings/filter-form-item',
+                link: '/handbook/ui/fields/field-settings/common/filter-form-item',
               },
               {
                 title: '折叠面板',
                 'title.zh-CN': '折叠面板',
-                link: '/handbook/ui/fields/field-settings/filter-collapse-item',
+                link: '/handbook/ui/fields/field-settings/common/filter-collapse-item',
               },
             ],
           },
@@ -661,7 +661,7 @@ export default [
             'title.zh-CN': '特有属性设置',
             children: [
               {
-                title: 'DatePicker',
+                title: '时间日期',
                 'title.zh-CN': 'DatePicker',
                 link: '/handbook/ui/fields/field-settings/DatePicker',
               },
