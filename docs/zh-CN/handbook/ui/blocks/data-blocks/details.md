@@ -31,6 +31,7 @@
 
 
 ### 配置字段
+- [详情字段](/handbook/ui/fields/field-settings/detail-form-item)
 
 ### 配置操作
 

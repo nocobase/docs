@@ -28,6 +28,7 @@
 
 
 ### 配置字段
+- [表格字段](/handbook/ui/fields/field-settings/table-column)
 
 ### 配置操作
 

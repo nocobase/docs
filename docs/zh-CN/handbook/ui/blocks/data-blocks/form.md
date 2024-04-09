@@ -34,7 +34,7 @@
 
 
 ### 配置字段
-
+- [表单字段](/handbook/ui/fields/field-settings/form-item)
 ### 配置操作
 
 - 全局操作

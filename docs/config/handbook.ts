@@ -635,6 +635,11 @@ export default [
                 link: '/handbook/ui/fields/field-settings/form-item',
               },
               {
+                title: '详情字段',
+                'title.zh-CN': '详情字段',
+                link: '/handbook/ui/fields/field-settings/detail-form-item',
+              },
+              {
                 title: '批量编辑表单',
                 'title.zh-CN': '批量编辑表单',
                 link: '/handbook/ui/fields/field-settings/bulk-edit-form-item',
