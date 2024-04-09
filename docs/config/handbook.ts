@@ -673,7 +673,7 @@ export default [
               {
                 title: '子表单',
                 'title.zh-CN': '子表单',
-                link: '/handbook/ui/fields/field-settings/Nester',
+                link: '/handbook/ui/fields/field-settings/nester',
               },
               {
                 title: '弹窗子表单',
