@@ -1,77 +1,70 @@
-# 概述
+# Overview
 
-数据建模是一种系统的方法，通过它可以对数据进行抽象和描述，以便更好地理解和组织数据。这涉及创建一个模型，该模型用于呈现数据之间的关系、结构和规则，从而有助于系统设计、分析和决策。数据建模包括使用不同的技术和图形表示，如实体关系图、数据流程图或数据库表设计，以便更清晰地定义和沟通数据的特征和用途。这有助于团队更有效地管理、利用和理解系统中的数据。
+Data modeling is the process of analyzing and abstracting various types of real-world data and their relationships during the design of a database. It aims to find the intrinsic connection and formalize it into a data model to establish the database structure of the information system. The data model is the foundation that drives NocoBase's work.
 
-NocoBase 的数据建模具有以下特色：
+NocoBase's data modeling has the following features:
 
-## 提供了简易的数据表管理界面
+## Offers a simple collection management interface
 
-用于创建各种模型（数据表）或连接已有模型（数据表）
+Used to create various collections (data tables) or connect to existing collections (data tables)
 
 ![Alt text](./image-1.png)
 
-## 提供了类 ER 图的可视化界面
+## Provides a visualization interface like ER Diagrams
 
-ER 图用于从用户和业务需求中提取实体和它们之间的关系，它提供了一种直观且易于理解的方式来描述数据模型，通过 ER 图可以更清晰地理解系统中的主要数据实体和它们之间的联系。
+ER diagrams are used to extract entities and their relationships from user and business requirements. They provide an intuitive and easy-to-understand way to describe data models. With ER diagrams, we can better understand the main data entities in the system and their relationships.
 
 ![Alt text](./image-5.png)
 
-## 提供了丰富的字段类型
+## Provides a variety of field types
 
-NocoBase 的数据表字段包括「数据类型」和「UI 类型」两个维度：
+The NocoBase collection fields include two dimensions: "Data Type" and "UI Type":
 
-- 数据类型（Field type）：用于定义字段可以存储的数据的种类、格式和结构；
-- UI 类型（Field interface）：是指在用户界面中用于显示和输入字段值的控件类型。
+- Data type (Field type): Used to define the kind, format, and structure of the data that the field can store;
+- UI Type (Field interface): Refers to the type of control used to display and input field values in the user interface.
 
-## 提供了富有想象空间的数据表模板
+## Has imaginative collection templates
 
-用于预定义特定结构下的数据模型，目前已支持的数据表模板包括：
+Used to predefine data models under certain structures. The currently supported collection templates include:
 
-- 普通表：内置了常用的系统字段；
-- 树表：树结构表，目前只支持邻接表设计；
-- 日历表：用于创建日历相关的事件表；
-- 文件表：用于文件存储的管理；
-- 表达式表：用于工作流的动态表达式场景；
-- SQL 表：并不是实际的数据库表，而是快速的将 SQL 查询，结构化的展示出来。
+- Genaral collection: Built-in common system fields;
+- Tree collection: Tree structure table, currently only supports adjacency table design;
+- Calendar collection: Used to create event tables related to calendars;
+- File collection: Used for the management of file storage;
+- Expression collection: Used for dynamic expression scenarios in workflows;
+- SQL collection: Not an actual database table, but quickly presents SQL queries in a structured manner.
 
 ![Alt text](./image-2.png)
 
-## 支持连接数据表视图
+## Supports connecting data table views
 
-提供了更灵活、更高层次的数据访问方式，使得分析和报告更为简便，提高了数据的可用性和可维护性。
+Provides a more flexible and higher-level way of data access, making analysis and reporting easier, enhancing the usability and maintainability of data.
 
 ![Alt text](./image-4.png)
 
-## 支持 FDW 技术
+## Supports FDW technology
 
-"FDW" 是 "Foreign Data Wrapper" 的缩写，中文是 "外部数据包装器"。FDW 是一种数据库技术，允许数据库系统直接访问和查询外部数据源中的数据（当做本地表使用），而无需将数据复制到本地数据库。这种技术使得在数据库中可以轻松地集成和查询来自不同来源的数据。
+"FDW" is the acronym for "Foreign Data Wrapper". FDW is a database technology that allows database systems to directly access and query data from external data sources (used as local tables) without copying the data to the local database. This technology makes it easy to integrate and query data from different sources in the database.
 
 ![Alt text](./image-3.png)
 
-## 支持表继承
+## Supports collection inheritance
 
-可以创建一个父表，然后从该父表派生出子表。子表会继承父表的结构，同时还可以定义自己的列。这种设计模式有助于组织和管理具有相似结构但可能有一些差异的数据。
+You can create a parent collection and derive child collection from that parent collection. The child collection will inherit the structure of the parent collection, and can also define its own columns. This design pattern helps organize and manage data with similar structures but possible differences.
 
-以下是关于支持继承表的一些常见特点：
+Here are some common features of support for inheritable collections:
 
-- 父表： 父表包含了通用的列和数据，定义了整个继承层次结构的基本结构。
-- 子表： 子表继承了父表的结构，但还可以额外定义自己的列。这允许每个子表具有父表的通用属性，同时又可以包含特定于子类的属性。
-- 查询： 在查询时，可以选择查询整个继承层次结构，也可以只查询父表或特定的子表。这使得能够根据需要检索和处理不同层次的数据。
-- 继承关系： 父表和子表之间建立了继承关系，这意味着可以使用父表的结构来定义一致的属性，同时允许子表扩展或覆盖这些属性。
+- Parent Collection: The parent collection contains common columns and data, defining the basic structure of the entire inheritance hierarchy.
+- Child Collection: The child collection inherits the structure of the parent collection, but can also define its own columns. This allows each child collection to have the common properties of the parent collection while containing attributes specific to the subclass.
+- Querying: When querying, you can choose to query the entire inheritance hierarchy, just the parent collection, or a specific child collection. This allows different levels of data to be retrieved and processed as needed.
+- Inheritance Relationship: An inheritance relationship is established between the parent collection and the child collection, meaning that the structure of the parent collection can be used to define consistent attributes, while allowing the child collection to extend or override these attributes.
 
-这种设计模式有助于减少数据冗余，简化数据库模型，同时使数据更容易维护。然而，需要谨慎使用，因为继承表可能会增加查询的复杂性，特别是在处理整个继承层次结构时。支持继承表的数据库系统通常提供了特定的语法和工具来管理和查询这种表结构。
+This design pattern helps to reduce data redundancy, simplify the database model, and make the data easier to maintain. However, it needs to be used with caution as inheritable collections can increase the complexity of queries, especially when dealing with the entire inheritance hierarchy. Databases that support inheritable collections generally provide specific syntax and tools to manage and query these collection structures.
 
 ![Alt text](./image-6.png)
 
-## 多数据源的支持
+## Supports external data sources
 
-可以连接各种数据源，目前已支持的数据源有 MySQL 和 PostgreSQL。除此之外，也可以自由扩展，可以是常见的各类数据库，也可以是提供 API（SDK）的平台。
+It can connect to various external data sources. Currently supported data sources include common relational databases like MySQL, MariaDB, and PostgreSQL. In addition, more types of data sources can be expanded through plugins and can be any common databases, or platforms providing API (SDK).
 
 ![Alt text](./image-7.png)
-
-:::info{title="连接数据源 vs 连接外部数据"}
-- **连接数据源** 指的是与特定数据库或 API 服务建立连接，可以完整的使用数据库的特性或 API 提供的服务；
-- **连接外部数据** 指的是从外部获取数据并映射到本地使用，在数据库里叫 FDW（Foreign Data Wrapper），是一种数据库技术，侧重于将远程表当做本地表使用，只能一张一张表的连接。因为是远程访问，所以在使用时会有各种约束和局限。
-
-二者之间联系：前者用于建立与数据源的连接，后者用于跨数据源访问。例如，连接了某个 PostgreSQL 数据源，这个数据源里有某个表是基于 FDW 创建的外部数据表。
-:::
