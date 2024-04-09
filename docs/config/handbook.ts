@@ -1238,6 +1238,11 @@ export default [
         'title.zh-CN': '嵌入',
         link: '/handbook/embed',
       },
+      {
+        title: 'Custom brand',
+        'title.zh-CN': '自定义品牌',
+        link: '/handbook/custom-brand',
+      },
     ],
   },
 ];
