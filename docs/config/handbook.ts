@@ -637,7 +637,7 @@ export default [
               {
                 title: '批量编辑表单',
                 'title.zh-CN': '批量编辑表单',
-                link: '/handbook/ui/fields/field-settings/BulkEditFormItem',
+                link: '/handbook/ui/fields/field-settings/bulk-edit-form-item',
               },
               {
                 title: '筛选表单字',
