@@ -625,32 +625,32 @@ export default [
             'title.zh-CN': '通用属性设置',
             children: [
               {
-                title: '表格字段',
+                title: 'Table column',
                 'title.zh-CN': '表格字段',
                 link: '/handbook/ui/fields/field-settings/common/table-column',
               },
               {
-                title: '表单字段',
+                title: 'Form',
                 'title.zh-CN': '表单字段',
                 link: '/handbook/ui/fields/field-settings/common/form-item',
               },
               {
-                title: '详情字段',
+                title: 'Detail',
                 'title.zh-CN': '详情字段',
                 link: '/handbook/ui/fields/field-settings/common/detail-form-item',
               },
               {
-                title: '批量编辑表单',
+                title: 'Bulk edit form',
                 'title.zh-CN': '批量编辑表单',
                 link: '/handbook/ui/fields/field-settings/common/bulk-edit-form-item',
               },
               {
-                title: '筛选表单字',
+                title: 'Filter form',
                 'title.zh-CN': '筛选表单',
                 link: '/handbook/ui/fields/field-settings/common/filter-form-item',
               },
               {
-                title: '折叠面板',
+                title: 'Collapse',
                 'title.zh-CN': '折叠面板',
                 link: '/handbook/ui/fields/field-settings/common/filter-collapse-item',
               },
@@ -661,14 +661,14 @@ export default [
             'title.zh-CN': '特有属性设置',
             children: [
               {
-                title: '时间日期',
-                'title.zh-CN': 'DatePicker',
-                link: '/handbook/ui/fields/field-settings/DatePicker',
+                title: 'Date picker',
+                'title.zh-CN': '时间日期',
+                link: '/handbook/ui/fields/field-settings/date-picker',
               },
               {
-                title: '级联选择',
+                title: 'Cascade select',
                 'title.zh-CN': '级联选择',
-                link: '/handbook/ui/fields/field-settings/CascadeSelect',
+                link: '/handbook/ui/fields/field-settings/cascade-select',
               },
               {
                 title: '子表单',
