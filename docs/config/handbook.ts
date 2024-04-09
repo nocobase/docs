@@ -647,7 +647,7 @@ export default [
               {
                 title: '折叠面板',
                 'title.zh-CN': '折叠面板',
-                link: '/handbook/ui/fields/field-settings/FilterCollapseItem',
+                link: '/handbook/ui/fields/field-settings/filter-collapse-item',
               },
             ],
           },
