@@ -1,4 +1,4 @@
-# 连接外部数据表
+# 连接外部数据表（FDW）
 
 <PluginInfo name="collection-fdw"></PluginInfo>
 
@@ -6,11 +6,11 @@
 
 基于数据库的 foreign data wrapper 实现的连接远程数据表的功能插件。目前支持 MySQL 和 PostgreSQL 数据库。
 
-:::info{title="连接数据源 vs 连接外部数据"}
+:::info{title="连接数据源 vs 连接外部数据表"}
 - **连接数据源** 指的是与特定数据库或 API 服务建立连接，可以完整的使用数据库的特性或 API 提供的服务；
-- **连接外部数据** 指的是从外部获取数据并映射到本地使用，在数据库里叫 FDW（Foreign Data Wrapper），是一种数据库技术，侧重于将远程表当做本地表使用，只能一张一张表的连接。因为是远程访问，所以在使用时会有各种约束和局限。
+- **连接外部数据表** 指的是从外部获取数据并映射到本地使用，在数据库里叫 FDW（Foreign Data Wrapper），是一种数据库技术，侧重于将远程表当做本地表使用，只能一张一张表的连接。因为是远程访问，所以在使用时会有各种约束和局限。
 
-二者之间联系：前者用于建立与数据源的连接，后者用于跨数据源访问。例如，连接了某个 PostgreSQL 数据源，这个数据源里有某个表是基于 FDW 创建的外部数据表。
+二者也可以配合使用，前者用于建立与数据源的连接，后者用于跨数据源访问。例如，连接了某个 PostgreSQL 数据源，这个数据源里有某个表是基于 FDW 创建的外部数据表。
 :::
 
 ### MySQL
@@ -29,7 +29,7 @@ MySQL 通过 `federated` 引擎，需要激活，支持连接远程 MySQL 及其
 
 前提条件
 
-- 本地 MySQL（NocoBase 使用的数据库）需要激活 `federated`，参考 [MySQL 如何启用 federated 引擎](./enable-federated.md)
+- 如果 NocoBase 的主数据库是 MySQL，则需要激活 `federated`，参考 [MySQL 如何启用 federated 引擎](./enable-federated.md)
 
 然后通过插件管理器安装并激活插件
 
