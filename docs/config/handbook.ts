@@ -686,9 +686,9 @@ export default [
                 link: '/handbook/ui/fields/field-settings/select',
               },
               {
-                title: '数据选择器',
+                title: 'Record picker',
                 'title.zh-CN': '数据选择器',
-                link: '/handbook/ui/fields/field-settings/Picker',
+                link: '/handbook/ui/fields/field-settings/picker',
               },
               {
                 title: '子表格',
