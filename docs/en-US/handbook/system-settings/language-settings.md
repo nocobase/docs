@@ -1,15 +1,15 @@
-# 语言设置
+# Language Settings
 
 <PluginInfo name="system-settings"></PluginInfo>
 
-在「系统设置」中，通过设置「启用的语言」，可以调整系统的全局语言环境，第一个语言为默认语言。
+In "System Settings" by setting "Enabled Languages," you can adjust the global language environment of the system, with the first language being the default.
 
 ![20240324192005](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240324192005.png)
 
-当启用多种语言时，可以在用户个人中心（右上角）设置当前用户的语言环境。
+When multiple languages are enabled, users can set their language preferences in the user's personal center (top right corner).
 
 ![20240324192509](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240324192509.png)
 
-如果你所使用的语言环境没有翻译，可以使用「[本地化管理](/handbook/localization-management)」插件进行翻译。
+If the language environment you are using is not translated, you can use the "[Localization Management](/handbook/localization-management)" plugin to perform translations.
 
 ![20240324193055](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240324193055.png)
