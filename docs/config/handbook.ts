@@ -696,9 +696,9 @@ export default [
                 link: '/handbook/ui/fields/field-settings/sub-table',
               },
               {
-                title: '标签',
+                title: 'Tag',
                 'title.zh-CN': '标签',
-                link: '/handbook/ui/fields/field-settings/Tag',
+                link: '/handbook/ui/fields/field-settings/tag',
               },
               {
                 title: '文件管理器',
