@@ -8,15 +8,17 @@
 
 表格中使用
 
-![20240410205305](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240410205305.png)
+![20240410212554](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240410212554.png)
 
 详情中使用
 
-![20240410210157](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240410210157.png)
+
+![20240410212625](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240410212625.png)
 
 - 字段组件
 - 标题字段
 - 颜色字段
 - 启用链接（默认开启）点击弹出弹窗可配置当前关系记录详情或编辑表单
 
-![20240410210419](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240410210419.png)
+
+![20240410212643](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240410212643.png)

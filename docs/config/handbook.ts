@@ -701,9 +701,9 @@ export default [
                 link: '/handbook/ui/fields/field-settings/tag',
               },
               {
-                title: '文件管理器',
+                title: 'File manager',
                 'title.zh-CN': '文件管理器',
-                link: '/handbook/ui/fields/field-settings/FileManager',
+                link: '/handbook/ui/fields/field-settings/file-manager',
               },
             ],
           },
