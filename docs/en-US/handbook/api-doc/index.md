@@ -4,7 +4,7 @@
 
 ## Introduction
 
-An OpenAPI documentation generator for NocoBase HTTP API.
+The plugin generates NocoBase HTTP API documentation based on Swagger.
 
 ## Installation
 

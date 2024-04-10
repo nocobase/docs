@@ -4,7 +4,7 @@
 
 ## 介绍
 
-NocoBase HTTP API 的 OpenAPI 文档生成器。
+基于 Swagger 生成 NocoBase HTTP API 文档。  
 
 ## 安装
 
