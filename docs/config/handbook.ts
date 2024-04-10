@@ -691,9 +691,9 @@ export default [
                 link: '/handbook/ui/fields/field-settings/picker',
               },
               {
-                title: '子表格',
+                title: 'Sub table',
                 'title.zh-CN': '子表格',
-                link: '/handbook/ui/fields/field-settings/SubTable',
+                link: '/handbook/ui/fields/field-settings/sub-table',
               },
               {
                 title: '标签',
