@@ -671,19 +671,19 @@ export default [
                 link: '/handbook/ui/fields/field-settings/cascade-select',
               },
               {
-                title: '子表单',
+                title: 'Nester',
                 'title.zh-CN': '子表单',
                 link: '/handbook/ui/fields/field-settings/nester',
               },
               {
-                title: '弹窗子表单',
-                'title.zh-CN': '弹窗子表单',
-                link: '/handbook/ui/fields/field-settings/PopoverNester',
+                title: 'Popover nester',
+                'title.zh-CN': '子表单（弹窗）',
+                link: '/handbook/ui/fields/field-settings/popover-nester',
               },
               {
-                title: '选择器',
+                title: 'Select',
                 'title.zh-CN': '选择器',
-                link: '/handbook/ui/fields/field-settings/Select',
+                link: '/handbook/ui/fields/field-settings/select',
               },
               {
                 title: '数据选择器',
