@@ -42,6 +42,7 @@ export default defineConfig({
   ],
   themeConfig: defineThemeConfig({
     title: 'NocoBase',
+    lang,
     logo: 'https://www.nocobase.com/images/logo.png',
     nav: nav.map((item) => ({ ...item, title: (item?.[`title.${lang}`] || item.title) })),
     sidebarEnhance: sidebar as any,
