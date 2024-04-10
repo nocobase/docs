@@ -1,45 +1,45 @@
-# 界面配置模式
+# UI Editor
 
-## 所见即所得
+## What You See Is What You Get
 
-NocoBase 采用所见即所得的界面配置模式。点击界面配置按钮，可以在配置模式和使用模式之间切换。
+NocoBase employs a what-you-see-is-what-you-get (WYSIWYG) interface configuration mode. By clicking the UI Editor button, you can switch between the configuration mode and the usage mode.
 
 ![2024-01-20_11-42-20](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2024-01-20_11-42-20.jpg)
 
-使用模式：
+Usage mode:
 
 ![2024-01-20_11-28-46](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2024-01-20_11-28-46.jpg)
 
-配置模式：
+Configuration mode:
 
 ![2024-01-20_11-29-50](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2024-01-20_11-29-50.jpg)
 
-## 布局模板
+## Layout Template
 
-NocoBase 内置一个布局模板，顶部和左侧是导航区域，右侧是内容区域。
+NocoBase includes a layout template with navigation areas on the top and left sides, and a content area on the right.
 
 ![2024-01-20_11-36-38](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2024-01-20_11-36-38.jpg)
 
-## 配置项
+## Configuration Items
 
-进入界面配置模式后，界面上会出现橙色的可配置项。通常，每个可配置元素的配置项入口位于该元素的右上角。几乎所有元素都可以在界面上实时配置和查看效果，以下是几个示例：
+Upon entering the interface configuration mode, orange configurable items will appear on the interface. Typically, the entry point for each configurable element's options is located at the top right corner of that element. Almost all elements can be configured and reviewed in real-time on the interface, with the following as some examples:
 
-菜单的配置项：
+Configuration items for the menu:
 
 ![2024-01-20_11-30-29](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2024-01-20_11-30-29.jpg)
 
-页面的配置项：
+Configuration items for the page:
 
 ![2024-01-20_11-30-52](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2024-01-20_11-30-52.jpg)
 
-区块的配置项：
+Configuration items for the block:
 
 ![2024-01-20_11-31-20](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2024-01-20_11-31-20.jpg)
 
-操作的配置项：
+Configuration items for the action:
 
 ![2024-01-20_11-31-50](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2024-01-20_11-31-50.jpg)
 
-表格列的配置项：
+Configuration items for the table column:
 
 ![2024-01-20_11-32-08](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2024-01-20_11-32-08.jpg)

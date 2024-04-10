@@ -1,17 +1,17 @@
-# 移动端
+# Mobile
 
 <PluginInfo name="mobile-client"></PluginInfo>
 
-## 介绍
+## Introduction
 
-提供移动端页面配置的能力。
+Provides the capability to configure mobile pages.
 
-## 安装
+## Installation
 
-预置插件，需要先激活才能使用。
+It's a pre-installed plugin that needs to be activated before use.
 
 ![20240324171718](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240324171718.png)
 
-## 用法
+## Usage
 
 ![20240324171605](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240324171605.png)
