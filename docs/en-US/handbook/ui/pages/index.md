@@ -1,55 +1,55 @@
-# 页面
+# Page
 
-NocoBase 的页面和弹窗（对话框、抽屉）可以作为区块的容器，它们就像一块画布，可以在其中自由放置各种区块。
+NocoBase's pages can act as containers for blocks. They are like a canvas where you can freely place a variety of blocks.
 
-## 页面结构
+## Page Structure
 
-通过 [菜单](/handbook/ui/menus) 创建页面后，可以看到一个空页面由以下两部分组成：
+After creating a page through the [menu](/handbook/ui/menus), you can see that an empty page consists of the following two parts:
 
-1. 页眉
-   1. 页面标题
-   2. 标签页
-2. 区块容器
+1. Header
+   1. Page title
+   2. Tabs
+2. Block container
 
 ![2024-01-20_08-23-10](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2024-01-20_08-23-10.jpg)
 
-## 页面设置
+## Page Settings
 
-将鼠标悬浮到页面右上方的配置项图标，可以看到页面配置项：
+Hovering the mouse over the configuration icon at the top right of the page, you can see the page configuration options:
 
 ![2024-01-20_08-24-27](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2024-01-20_08-24-27.jpg)
 
-可配置的项目包括：
+Configurable items include:
 
-- 启用页眉：用于控制是否显示页眉；
-- 显示页面标题：是否在页眉中显示页面标题；
-- 编辑页面标题：默认的页面标题为菜单项标题，可以自定义；
-- 启用标签页：默认关闭，启用后可以添加多个标签页。
+- Enable page header: Controls whether to display the header;
+- Display page title: Whether to display the page title in the header;
+- Edit page title: The default page title is the menu item title, which can be customized;
+- Enable tabs: Off by default, enabling this option allows adding multiple tabs.
 
-### 启用页眉
+### Enable Header
 
-通常情况下，我们需要启用页眉区域，用于显示页面标题、标签页。也有些情况不希望启用它，比如，当我们建立一个 Dashbodrd 页面，一级菜单就可以很好的体现该页面内容，此时我们可以关闭页眉，只显示页面内的区块。
+Typically, we need to enable the header area to display the page title and tabs. However, there are situations where we might not want to enable it, for instance, when creating a Dashboard page where a top-level menu can effectively reflect the content of the page. In this case, we can disable the header and only display the blocks within the page.
 
 ![20240120084618](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240120084618.png)
 
-### 页面标题
+### Page Title
 
-默认的页面标题为菜单项名称，通过点击“编辑页面标题”，可对其进行修改。同页眉一样，有些时候我们不需要显示页面标题，只需要显示标签页，此时就可以关闭标题。
+The default page title is the name of the menu item. By clicking "Edit Page Title," it can be modified. Just like with the header, sometimes we don't need to display the page title and only need to show the tabs, in which case you can disable the title.
 
 ![2024-01-20_08-28-43](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2024-01-20_08-28-43.jpg)
 
-### 启用标签页
+### Enable Tabs
 
-当一个页面里的内容过多，或者适合分为几个独立部分来组织的时候，我们可以启用标签页（tab），每个标签页都是独立的区块容器。如下图，我们为订单页面添加了 3 个标签页，分别用来显示全部订单、已完成的订单、已退款的订单。将鼠标移到标签页标题上，右上角可以看到排序和配置项按钮。
+When the content of a page is too much, or it is appropriate to divide it into several independent parts, we can enable tabs. Each tab is an independent block container. As shown below, we added 3 tabs to the orders page to display all orders, completed orders, and refunded orders. By moving the mouse to the tab title, you can see the sort and configuration buttons at the top right corner.
 
 ![2024-01-20_08-47-15](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2024-01-20_08-47-15.jpg)
 
-## 添加区块
+## Adding Blocks
 
-点击“新增区块”即可在页面内添加无限数量的区块（查看 [区块](./blocks/index.md) 的介绍）。
+Click "Add block" to add an unlimited number of blocks to the page (see the introduction of [Blocks](./blocks/index.md)).
 
 ![2024-01-20_08-48-36](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2024-01-20_08-48-36.jpg)
 
-在新增多个区块后，可通过区块右上角的移动按钮，对区块任意拖拽排版，调整布局，实现最合适的效果。
+After adding several blocks, you can use the move button at the top right corner of each block to drag and arrange them freely, adjusting the layout to achieve the most suitable effect.
 
 ![page-block](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/page-block.gif)

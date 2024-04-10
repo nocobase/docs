@@ -1,54 +1,54 @@
-# 多应用管理器
+# Multi-App Manager
 
 <PluginInfo name="multi-app-manager"></PluginInfo>
 
-## 介绍
+## Introduction
 
-无需单独部署即可动态管理多个应用，每个应用都是独立的。
+Dynamically manage multiple applications without the need for separate deployments, with each application being an independent instance.
 
 :::warning
-多应用管理插件并不提供用户共享的能力，可以通过「[认证插件](/handbook/auth)」打通，或者使用「[应用切换插件](/handbook/app-switching)」处理。
+The multi-app management plugin does not provide the capability for user sharing. It can be integrated through the "[Authentication plugin](/handbook/auth)" or handled using the "[App Switching plugin](/handbook/app-switching)".
 :::
 
-## 安装
+## Installation
 
-预置插件，需要先激活才能使用。
+This is a preset plugin that needs to be activated before use.
 
 ![20240327144151](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240327144151.png)
 
-## 使用手册
+## User Manual
 
 ![20240327144327](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240327144327.png)
 
-### 添加应用
+### Adding Applications
 
 ![20240327150722](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240327150722.png)
 
-### 启动方式
+### Starting Methods
 
-提供两种启动方式
+Two starting methods are provided:
 
-- 首次访问时启动：当用户通过 URL 首次访问子应用时才启动；
-- 随主应用一同启动：当主应用启动时，子应用也一起启动，会增加主应用的启动时长。
+- Start on first visit: The sub-application starts only when a user visits the sub-application's URL for the first time;
+- Start with the main application: When the main application starts, the sub-applications start as well, which increases the startup time of the main application.
 
 ![20240327170218](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240327170218.png)
 
-### 自定义域名
+### Custom Domain Name
 
-子应用可以通过子路径的方式访问 `/apps/:appName/admin/`，例如：
+Sub-applications can be accessed via subpaths `/apps/:appName/admin/`, for example:
 
 ```bash
 http://localhost:13000/apps/a_7zkxoarusnx/admin/z45sjaukasd
 ```
 
-同时，也可以为子应用配置独立的子域名，需要将域名解析到当前 ip，如果使用了 nginx，也需要在 nginx 配置里添加域名。
+Additionally, sub-applications can be configured with independent subdomains, which require domain resolution to the current IP. If nginx is used, the domain also needs to be added in the nginx configuration.
 
 ![20240327170301](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240327170301.png)
 
-### 在菜单上显示
+### Display in the Menu
 
 :::warning
-当前右侧下拉菜单展示的子应用列表只是快捷链接，用户不共享，子应用也需要登录，并且只能主应用 root 账号使用。完整的应用切换能力将在商业插件「[应用切换](//handbook/app-switching)」里提供。
+The list of sub-applications displayed in the current right drop-down menu is only a set of quick links. Users are not shared; sub-applications require login and can only be used by the main application's root account. Full application switching capabilities will be provided in the commercial plugin "[App Switching](//handbook/app-switching)".
 :::
 
 ![20240327151239](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240327151239.png)

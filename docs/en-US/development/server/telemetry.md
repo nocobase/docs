@@ -3,15 +3,15 @@
 :::warning{title=Experimental}
 :::
 
-NocoBase 的遥测 (Telemetry) 模块基于 <a href="https://opentelemetry.io/" target="_blank">OpenTelemetry</a> 封装。本文介绍如何在使用遥测模块收集链路 (Trace) 和监控指标 (Metric) 数据来增强 NocoBase 系统的可观测性 (Observability)。
+The telemetry module of NocoBase is encapsulated based on <a href="https://opentelemetry.io/" target="_blank">OpenTelemetry</a>. This article introduces how to use the telemetry module to collect Trace and Metric data to enhance the observability of the NocoBase system.
 
-:::info{title=提示}
-NocoBase 在启动前需要配置环境变量 `TELEMETRY_ENABLED=true` 来启动遥测数据收集。其他配置参考：[环境变量 - 遥测](../../welcome/getting-started/env.md#telemetry_enabled)。
+:::info{title=Tip}
+NocoBase needs to be configured with the environment variable `TELEMETRY_ENABLED=true` before starting to enable telemetry data collection. See other configurations: [Environment Variables - Telemetry](../../welcome/getting-started/env.md#telemetry_enabled).
 :::
 
-## 插桩
+## Instrumentation
 
-### 指标
+### Metrics
 
 ```ts
 const meter = app.telemetry.metric.getMeter();
@@ -19,11 +19,11 @@ const counter = meter.createCounter('event_counter', {});
 counter.add(1);
 ```
 
-参考：
+References:
 
 - <a href="https://opentelemetry.io/docs/instrumentation/js/manual/#acquiring-a-meter" target="_blank">https://opentelemetry.io/docs/instrumentation/js/manual/#acquiring-a-meter</a>
 
-### 链路
+### Traces
 
 ```ts
 const tracer = app.telemetry.trace.getTracer();
@@ -31,11 +31,11 @@ tracer.startActiveSpan();
 tracer.startSpan();
 ```
 
-参考:
+References:
 
 - <a href="https://opentelemetry.io/docs/instrumentation/js/manual/#acquiring-a-tracer" target="_blank">https://opentelemetry.io/docs/instrumentation/js/manual/#acquiring-a-tracer</a>
 
-### 工具库
+### Libraries
 
 ```ts
 import { Plugin } from '@nocobase/server';
@@ -51,17 +51,17 @@ class InstrumentationPlugin extends Plugin {
 ```
 
 :::warning
-NocoBase 中遥测模块的初始化位置为 `app.beforeLoad`, 参考：[生命周期](../life-cycle.md)。因此并不是所有插桩库都适用于 NocoBase.  
-例如：<a href="https://www.npmjs.com/package/@opentelemetry/instrumentation-koa" target="_blank">instrumentation-koa</a> 需要在 `Koa` 实例化之前引入，而 NocoBase 的 `Application` 虽然基于 `Koa`, 但是遥测模块是在 `Application` 实例化之后才初始化的，则不能适用。
+In NocoBase, the initialization location of the telemetry module is `app.beforeLoad`, refer to: [Lifecycle](../life-cycle.md). Therefore, not all instrumentation libraries are suitable for NocoBase.  
+For example, <a href="https://www.npmjs.com/package/@opentelemetry/instrumentation-koa" target="_blank">instrumentation-koa</a> needs to be introduced before `Koa` is instantiated, but although NocoBase's `Application` is based on `Koa`, the telemetry module is initialized after the `Application` is instantiated, so it cannot be applied.
 :::
 
-参考:
+References:
 
 - <a href="https://opentelemetry.io/docs/instrumentation/js/libraries/" target="_blank">https://opentelemetry.io/docs/instrumentation/js/libraries/</a>
 
-## 采集
+## Collection
 
-### 指标
+### Metrics
 
 ```ts
 import { Plugin } from '@nocobase/server';
@@ -85,7 +85,7 @@ class MetricReaderPlugin extends Plugin {
 }
 ```
 
-### 链路
+### Traces
 
 ```ts
 import { Plugin } from '@nocobase/server';
@@ -106,6 +106,6 @@ class TraceSpanProcessorPlugin extends Plugin {
 }
 ```
 
-参考
+References:
 
 - <a href="https://opentelemetry.io/docs/instrumentation/js/exporters" target="_blank">https://opentelemetry.io/docs/instrumentation/js/exporters</a>

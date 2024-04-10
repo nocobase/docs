@@ -1,9 +1,5 @@
 # Extending schema components
 
-:::warning
-Sorry, this document is not available in English.
-:::
-
 除了原生的 html 标签，开发也可以适配更多的自定义组件，用于丰富 Schema 组件库。
 
 扩展组件时，常用的方法：

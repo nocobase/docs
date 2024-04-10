@@ -11,7 +11,7 @@
 
 ## 管理应用进程
 
-NocoBase 已经内置了 [PM2](https://pm2.keymetrics.io/)，用于管理应用进程，生产环境直接 `yarn start` 就可以了，如果需要后台运行，加上 `-d` 参数即可，例如：
+NocoBase 已经内置了 [PM2](https://pm2.keymetrics.io/)，用于管理应用进程，生产环境直接 `yarn start` 就可以了。如果需要后台运行，加上 `-d` 参数即可，例如：
 
 ```bash
 # 后台运行

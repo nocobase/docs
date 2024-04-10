@@ -2,7 +2,7 @@
 
 ## 创建日志
 
-### createLogger()
+### `createLogger()`
 
 创建自定义日志。
 
@@ -24,14 +24,16 @@ interface LoggerOptions
 
 #### 详细信息
 
-- `dirname` - 日志输出目录
-- `filename` - 日志文件名
-- `format` - 日志格式
-- `transports` - 日志输出方式
+| 属性         | 描述         |
+| ------------ | ------------ |
+| `dirname`    | 日志输出目录 |
+| `filename`   | 日志文件名   |
+| `format`     | 日志格式     |
+| `transports` | 日志输出方式 |
 
-### createSystemLogger()
+### `createSystemLogger()`
 
-创建以规定方式打印的系统运行日志。参考 [日志插件 - 系统日志](../plugins/logger/index.md#系统日志)
+创建以规定方式打印的系统运行日志。参考 [日志 - 系统日志](../handbook/logger/index.md#系统日志)
 
 #### 签名
 
@@ -47,7 +49,39 @@ export interface SystemLoggerOptions extends LoggerOptions {
 
 #### 详细信息
 
-- `seperateError` - 是否将 `error` 级别日志单独输出
+| 属性            | 描述                            |
+| --------------- | ------------------------------- |
+| `seperateError` | 是否将 `error` 级别日志单独输出 |
+
+### `requestLogger()`
+
+接口请求和响应日志中间件。
+
+```ts
+app.use(requestLogger(app.name));
+```
+
+#### 签名
+
+- `requestLogger(appName: string, options?: RequestLoggerOptions): MiddewareType`
+
+#### 类型
+
+```ts
+export interface RequestLoggerOptions extends LoggerOptions {
+  skip?: (ctx?: any) => Promise<boolean>;
+  requestWhitelist?: string[];
+  responseWhitelist?: string[];
+}
+```
+
+#### 详细信息
+
+| 属性                | 类型                              | 描述                           | 默认值                                                                                                                                                  |
+| ------------------- | --------------------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `skip`              | `(ctx?: any) => Promise<boolean>` | 根据请求上下文跳过某些请求日志 | -                                                                                                                                                       |
+| `requestWhitelist`  | `string[]`                        | 日志打印的请求信息白名单       | `[ 'action', 'header.x-role', 'header.x-hostname', 'header.x-timezone', 'header.x-locale','header.x-authenticator', 'header.x-data-source', 'referer']` |
+| `responseWhitelist` | `string[]`                        | 日志打印的响应信息白名单       | `['status']`                                                                                                                                            |
 
 ### app.createLogger()
 
@@ -128,4 +162,4 @@ const transport = Transports.console({
 ## 相关文档
 
 - [开发指南 - 日志](../development/server/logger.md)
-- [日志插件](../plugins/logger/index.md)
+- [日志](../handbook/logger/index.md)

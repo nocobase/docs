@@ -1,9 +1,5 @@
 # Schema rendering
 
-:::warning
-Sorry, this document is not available in English.
-:::
-
 ## 核心组件
 
 Schema 渲染相关组件包括：

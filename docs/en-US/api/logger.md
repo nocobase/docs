@@ -1,10 +1,10 @@
 # @nocobase/logger
 
-## Create logger
+## Create Logger
 
 ### createLogger()
 
-Create custom logger.
+Creates a custom logger.
 
 #### Signature
 
@@ -24,14 +24,14 @@ interface LoggerOptions
 
 #### Details
 
-- `dirname` - Log directory
-- `filename` - Log file name
-- `format` - Log format
-- `transports` - Log transports
+- `dirname`: Log directory
+- `filename`: Log file name
+- `format`: Log format
+- `transports`: Log transports
 
 ### createSystemLogger()
 
-Create system runtime logs printed in a specified method. Refer to [Logger plugin - System log](../plugins/logger/index.md#系统日志)
+Creates system runtime logs printed in a specified method. Refer to [Logger plugin - System log](../plugins/logger/index.md#system-log).
 
 #### Signature
 
@@ -47,7 +47,7 @@ export interface SystemLoggerOptions extends LoggerOptions {
 
 #### Details
 
-- `seperateError` - Whether to print `error` level logs seperately
+- `seperateError`: Whether to print `error` level logs separately
 
 ### app.createLogger()
 
@@ -65,11 +65,11 @@ class Application {
 }
 ```
 
-When `dirname` is a relative path, the log files will be output to the directory named by the current application.
+When `dirname` is a relative path, the log files will be output to the directory named after the current application.
 
 ### plugin.createLogger()
 
-Usage is the same as `app.createLogger()`
+Usage is the same as `app.createLogger()`.
 
 #### Definition
 
@@ -87,31 +87,31 @@ class Plugin {
 
 `getLoggerLevel(): 'debug' | 'info' | 'warn' | 'error'`
 
-获取当前系统配置的日志级别。
+Gets the log level currently configured in the system.
 
 ### getLoggerFilePath()
 
 `getLoggerFilePath(...paths: string[]): string`
 
-以当前系统配置的日志目录为基础，拼接目录路径。
+Concatenates directory paths based on the log directory currently configured in the system.
 
 ### getLoggerTransports()
 
 `getLoggerTransports(): ('console' | 'file' | 'dailyRotateFile')[]`
 
-获取当前系统配置的日志输出方式。
+Gets the log output methods currently configured in the system.
 
 ### getLoggerFormat()
 
 `getLoggerFormat(): 'logfmt' | 'json' | 'delimiter' | 'console'`
 
-获取当前系统配置的日志格式。
+Gets the log format currently configured in the system.
 
-## Logger transports
+## Logger Transports
 
 ### Transports
 
-预置的输出方式。
+Predefined output methods.
 
 - `Transports.console`
 - `Transports.file`
@@ -127,5 +127,5 @@ const transport = Transports.console({
 
 ## References
 
-- [Development - Logger](../development/server/logger.md)
-- [Logger plugin](../plugins/logger/index.md)
+- [Development - Logger](../handbook/logger/index.md)
+- [Logger Plugin](../plugins/logger/index.md)

@@ -4,9 +4,13 @@
 
 - [数据表事件](../collection/index.md)（内置）
 - [定时任务](../schedule/index.md)（内置）
-- [表单事件](../../../../workflow-form-trigger/index/index.md)（插件 @nocobase/plugin-workflow-form-trigger 提供）
+- [操作前事件](../../../../workflow-request-interceptor/index/index.md)（插件 @nocobase/plugin-workflow-request-interceptor 提供）
+- [操作后事件](../../../../workflow-action-trigger/index/index.md)（插件 @nocobase/plugin-workflow-action-trigger 提供）
 - [审批事件](../../../../workflow-approval/index/index.md)（插件 @nocobase/plugin-workflow-approval 提供）
-- [请求拦截](../../../../workflow-request-interceptor/index/index.md)（插件 @nocobase/plugin-workflow-request-interceptor 提供）
+
+各个事件的触发时机如下图所示：
+
+![工作流的事件](./triggers-in-workflow.png)
 
 比如用户提交一个表单，或者数据表中的数据由于用户操作或程序调用发生变化，或者定时任务到达执行时间，都会触发对应的工作流执行。
 

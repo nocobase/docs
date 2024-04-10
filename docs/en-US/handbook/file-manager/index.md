@@ -1,32 +1,32 @@
-# 文件管理器
+# File Manager
 
 <PluginInfo name="file-manager"></PluginInfo>
 
-## 介绍
+## Introduction
 
-文件管理器插件提供了文件表、附件字段以及文件存储服务，用于有效地管理文件。文件是特定结构的数据表记录，这个特定结构的数据表被称为文件表，用于存储文件的元信息，并可以通过文件管理器进行管理，附件字段是与文件表相关联的特定关系字段。文件支持多种存储方式，目前已支持的文件存储包括本地存储、阿里云 OSS、亚马逊 S3 以及腾讯云 COS。
+The File Manager plugin provides a file collection, attachment field, and file storage services for effectively managing files. Files are structured data table records known as file collection, which store file metadata and can be managed through the File Manager. Attachment fields are specific relational fields associated with the file collection. The plugin supports multiple storage methods, including local storage, Alibaba Cloud OSS, Amazon S3, and Tencent Cloud COS.
 
-## 使用手册
+## User Manual
 
-### 文件表
+### File Collection
 
-内置了 attachments 表，用于存储所有附件字段关联的文件。除此之外，也可以创建新的文件表，用于存储特定文件。
+An `attachments` collection is built-in to store all files associated with attachment fields. Additionally, new file collections can be created to store specific files.
 
-[更多用法查看文件表介绍文档](/handbook/file-manager/file-collection)
+[More usage information can be found in the file table introduction document](/handbook/file-manager/file-collection)
 
-### 附件字段
+### Attachment Field
 
-附件字段是与文件表相关联的特定关系字段，可以通过「附件类型字段」创建，也可以通过「关系字段」配置。
+Attachment fields are specific relational fields related to the file collection, which can be created through "Attachment field" or configured through "Association field".
 
 <p>
 
-[更多用法查看附件字段介绍文档](/handbook/file-manager/field-attachment)
+[More usage information can be found in the attachment field introduction document](/handbook/file-manager/field-attachment)
 
 </p>
 
-### 文件存储
+### File Storage
 
-- [本地存储](/handbook/file-manager/file-storage-local)
-- [阿里云 OSS](/handbook/file-storage-oss)
-- [亚马逊 S3](/handbook/file-storage-s3)
-- [腾讯云 COS](/handbook/file-storage-cos)
+- [Local Storage](/handbook/file-manager/file-storage-local)
+- [Alibaba Cloud OSS](/handbook/file-storage-oss)
+- [Amazon S3](/handbook/file-storage-s3)
+- [Tencent Cloud COS](/handbook/file-storage-cos)

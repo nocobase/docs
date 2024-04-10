@@ -1,8 +1,14 @@
 # API 文档
 
+<PluginInfo name="api-doc"></PluginInfo>
+
 ## 介绍
 
+基于 Swagger 生成 NocoBase HTTP API 文档。  
+
 ## 安装
+
+内置插件，无需安装。激活即可使用。
 
 ## 使用说明
 

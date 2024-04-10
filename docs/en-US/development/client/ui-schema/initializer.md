@@ -1,9 +1,5 @@
 # Schema initializer
 
-:::warning
-Sorry, this document is not available in English.
-:::
-
 当激活 UI 配置之后，界面上直观可见的各种橙色按钮就是 Schema 初始化器，用于向界面内添加各种区块、字段、操作等。
 
 <img src="./image-5.png" style="width: 960px;">

@@ -22,9 +22,11 @@ export type MetricOptions = {
 
 #### 详细信息
 
-- `meterName` - 默认 `nocobase-meter`.
-- `version` - 默认当前 NocoBase 版本。
-- `readerName` - 想启用的已注册的 `MetricReader` 的标识。
+| 属性         | 类型                   | 描述                                   | 默认值              |
+| ------------ | ---------------------- | -------------------------------------- | ------------------- |
+| `meterName`  | `string`               | meter 标识                             | `nocobase-meter`    |
+| `version`    | `string`               |                                        | NocoBase 当前版本号 |
+| `readerName` | `string` \| `string[]` | 想启用的已注册的 `MetricReader` 的标识 |                     |
 
 ### `init()`
 
@@ -52,12 +54,14 @@ type GetMetricReader = () => MetricReader;
 
 #### 详细信息
 
-- `name` - `MetricReader` 唯一标识。
-- `reader` - 获取 `MetricReader` 的方法。
+| 参数        | 类型                 | 描述                       |
+| ----------- | -------------------- | -------------------------- |
+| `name`      | `string`             | `MetricReader` 唯一标识    |
+| `processor` | `() => MetricReader` | 获取 `MetricReader` 的方法 |
 
 ### `addView()`
 
-添加 `View`. 参考: <a href="https://opentelemetry.io/docs/instrumentation/js/manual/#configure-metric-views" target="_blank">Configure Metric Views</a>.
+添加 `View`. 参考 <a href="https://opentelemetry.io/docs/instrumentation/js/manual/#configure-metric-views" target="_blank">Configure Metric Views</a>.
 
 #### 签名
 
@@ -79,8 +83,10 @@ import { View } from '@opentelemetry/sdk-metrics';
 
 #### 详细信息
 
-- `name` - 默认 `nocobase-meter`.
-- `version` - 默认当前 NocoBase 版本。
+| 参数      | 类型     | 描述       | 默认值              |
+| --------- | -------- | ---------- | ------------------- |
+| `name`    | `string` | meter 标识 | `nocobase-meter`    |
+| `version` | `string` |            | NocoBase 当前版本号 |
 
 ### `start()`
 

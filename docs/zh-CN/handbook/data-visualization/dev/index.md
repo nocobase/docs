@@ -94,7 +94,7 @@ init?: (
 
 （此处类型定义较多，不一一列出，请参考源码。）
 
-#### render
+#### getProps
 
 ```typescript
 export type RenderProps = {
@@ -109,10 +109,10 @@ export type RenderProps = {
   };
 };
 
-render: (props: RenderProps) => React.FC<any>;
+getProps(props: RenderProps): any;
 ```
 
-接收图表的配置元数据，包括数据、图表配置和字段配置（元数据 + 数据转换配置），返回一个图表组件用于渲染。
+将数据、图表配置、字段属性、数据转换等图表相关的配置元数据，转换成渲染图表的对应组件的属性，也可以返回一些不暴露配置的默认属性。这个方法通常需要根据使用的图表组件 API 来实现。
 
 #### getReference
 
@@ -231,14 +231,6 @@ infer: (
 - `yFields` - 多个 y 轴字段，通常用于双轴图
 
 拿到推断结果以后，可以结合定义 [`init`方法](#init)，给图表配置做默认初始化。
-
-#### getProps
-
-```typescript
-getProps: (props: RenderProps) => any;
-```
-
-将数据、图表配置、字段属性、数据转换等图表相关的配置元数据，转换成渲染图表的对应组件的属性，也可以返回一些不暴露配置的默认属性。默认的 `render` 方法会通过 `getProps` 拿到图表组件属性，传递给图表组件。这个方法通常需要根据使用的图表组件自己实现。
 
 ## 示例
 

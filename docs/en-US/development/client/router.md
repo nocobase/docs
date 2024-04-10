@@ -1,12 +1,8 @@
-# Page routing and extensions
+# Page Routing and Extensions
 
-:::warning
-Sorry, this document is not available in English.
-:::
+## Introduction
 
-## 简介
-
-NocoBase 客户端通过 [app.router.add()](https://client.docs.nocobase.com/core/application/router-manager) 和 [app.pluginSettingsManager.add()](https://client.docs.nocobase.com/core/application/plugin-settings-manager) 扩展页面，例如：
+NocoBase client extends pages through [app.router.add()](https://client.docs.nocobase.com/core/application/router-manager) and [app.pluginSettingsManager.add()](https://client.docs.nocobase.com/core/application/plugin-settings-manager), for example:
 
 ```tsx | pure
 import { Application, Plugin } from '@nocobase/client';
@@ -28,7 +24,7 @@ class PluginHello extends Plugin {
 }
 ```
 
-可以通过 `app.router.getRoutes()` 方法，查看所有已经注册的页面
+You can use the `app.router.getRoutes()` method to view all registered pages.
 
 ```tsx | pure
 import { Application, Plugin } from '@nocobase/client';
@@ -41,16 +37,16 @@ class PluginHello extends Plugin {
 }
 ```
 
-## 已有页面路由
+## Existing Page Routes
 
-初始安装的 NocoBase，已注册的页面路由有：
+The initially installed NocoBase has the following registered page routes:
 
-| 名称           | 路径               | 组件                |
-| -------------- | ------------------ | ------------------- |
-| admin          | /admin/\*          | AdminLayout         |
-| admin.page     | /admin/:name       | AdminDynamicPage    |
-| admin.settings | /admin/settings/\* | AdminSettingsLayout |
-| admin.pm.list  | //admin/pm/list/\* | PluginManager       |
+| Name           | Path               | Component            |
+| -------------- | ------------------ | -------------------- |
+| admin          | /admin/\*          | AdminLayout          |
+| admin.page     | /admin/:name       | AdminDynamicPage     |
+| admin.settings | /admin/settings/\* | AdminSettingsLayout  |
+| admin.pm.list  | //admin/pm/list/\* | PluginManager        |
 
 ### AdminLayout
 
@@ -70,7 +66,7 @@ router.add('admin.page', {
 });
 ```
 
-由菜单管理动态页面，通过添加菜单项 -> 页面添加
+Dynamic pages are managed through menu management, by adding menu items -> page addition.
 
 ![](./static/WCBPbKackoxlV3xs2zxcXymTnQf.png)
 
@@ -83,25 +79,25 @@ router.add('admin.settings', {
 });
 ```
 
-插件配置页
+Plugin configuration pages.
 
 ![](./static/KItpbzcUQo9A2yx2i1tcOmlLnjI.png)
 
-插件配置页的菜单及标签页通过 `app.pluginSettingsManager` 注册。
+The menu and tabs for plugin configuration pages are registered via `app.pluginSettingsManager`.
 
-## 页面扩展
+## Page Extensions
 
-- 动态 Schema 页面，通过 `添加菜单项` -> `页面` 添加
-- 常规页面通过 [app.router.add()](https://client.docs.nocobase.com/core/application/router-manager) 添加
-- 插件设置页通过 [app.pluginSettingsManager.add()](https://client.docs.nocobase.com/core/application/plugin-settings-manager) 添加
+- Dynamic Schema pages are added through `Add Menu Item` -> `Page`.
+- Regular pages are added through [app.router.add()](https://client.docs.nocobase.com/core/application/router-manager).
+- Plugin settings pages are added through [app.pluginSettingsManager.add()](https://client.docs.nocobase.com/core/application/plugin-settings-manager).
 
-### 动态 Schema 页面
+### Dynamic Schema Pages
 
-通过 `添加菜单项` -> `页面` 添加
+Added through `Add Menu Item` -> `Page`.
 
-### 常规页面扩展
+### Regular Page Extensions
 
-通过 [app.router.add()](https://client.docs.nocobase.com/core/application/router-manager) 扩展页面路由
+Pages are extended through [app.router.add()](https://client.docs.nocobase.com/core/application/router-manager).
 
 ```typescript
 import React from 'react';
@@ -152,9 +148,9 @@ const app = new Application({
 export default app.getRootComponent();
 ```
 
-### 插件设置页扩展
+### Plugin Settings Page Extensions
 
-插件设置页通过 [app.pluginSettingsManager.add()](https://client.docs.nocobase.com/core/application/plugin-settings-manager) 添加。
+Plugin settings pages are added through [app.pluginSettingsManager.add()](https://client.docs.nocobase.com/core/application/plugin-settings-manager).
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
@@ -165,15 +161,15 @@ const HelloSettingPage = () => <div>Hello Setting page</div>;
 export class HelloPlugin extends Plugin {
   async load() {
     this.app.pluginSettingsManager.add('hello', {
-      title: 'Hello', // 设置页面的标题和菜单名称
-      icon: 'ApiOutlined', // 设置页面菜单图标
+      title: 'Hello', // The title and menu name of the settings page
+      icon: 'ApiOutlined', // Menu icon for the settings page
       Component: HelloSettingPage,
     });
   }
 }
 ```
 
-多级路由用法
+Multi-level routing usage
 
 ```tsx | pure
 import { Outlet } from 'react-router-dom';
@@ -185,7 +181,7 @@ class HelloPlugin extends Plugin {
     this.app.pluginSettingsManager.add(pluginName, {
       title: 'HelloWorld',
       icon: '',
-      Component: Outlet, // 可以不传，默认为  `Outlet` 组件
+      Component: Outlet, // No need to pass, default is `Outlet` component
     });
 
     this.app.pluginSettingsManager.add(`${pluginName}.demo1`, {

@@ -1,29 +1,29 @@
-# 文件表
+# File Collecton
 
 <PluginInfo name="file-manager"></PluginInfo>
 
-## 介绍
+## Introduction
 
-文件是特定结构的数据表记录，这个特定结构的数据表被称为文件表，用于存储文件的元信息，并可以通过文件管理器进行管理。
+Files are collection records with a specific structure, the collection is known as file collection, which store the metadata of files and can be managed through the File Manager.
 
-## 使用手册
+## User Manual
 
-创建文件表
+Creating File Collection
 
 ![20240324090414](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240324090414.png)
 
-文件表预置字段
+Preset Fields in File Collection
 
 ![20240324090527](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240324090527.png)
 
-在区块中使用
+Using in Blocks
 
 ![20240324090848](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240324090848.png)
 
-关系字段
+Association Field
 
 ![20240324091529](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240324091529.png)
 
-关系区块
+Association Blocks
 
 ![20240324091321](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240324091321.png)

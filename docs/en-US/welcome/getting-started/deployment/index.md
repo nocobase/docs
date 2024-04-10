@@ -1,7 +1,7 @@
-# 部署概述
+# Overview
 
-NocoBase 支持三种安装方式，部署时略有不同。
+NocoBase supports three different installation methods, each with slightly different deployment procedures.
 
-- [通过 Docker Compose 部署](./docker-compose.md)
-- [create-nocobase-app 部署](./create-nocobase-app.md)
-- [Git 源码部署](./git-clone.md)
+- [Docker](./docker-compose.md)
+- [create-nocobase-app](./create-nocobase-app.md)
+- [Git source code](./git-clone.md)

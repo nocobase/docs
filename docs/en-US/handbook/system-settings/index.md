@@ -1,10 +1,10 @@
-# 系统设置
+# System Settings
 
 <PluginInfo name="system-settings"></PluginInfo>
 
-## 介绍
+## Introduction
+To set the global information of the system, such as system name, main LOGO, enabled language, etc.
 
-## 使用手册
+## User Manual
 
 ![20240324191444](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240324191444.png)
-

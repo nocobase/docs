@@ -1,21 +1,21 @@
-# 通过 Docker Compose 部署
+# Docker
 
-其他流程与 [Docker 安装](/welcome/getting-started/installation/docker-compose) 无异。
+The other processes are no different from the [Docker installation](/welcome/getting-started/installation/docker-compose).
 
 <embed src="./env-note.md"></embed>
 
 <br />
 
-[>>> 更多内容，查看完整的「环境变量」列表 <<<](/welcome/getting-started/env)
+[>>> For more information, view the complete 'Environment Variables' <<<](/welcome/getting-started/env)
 
-## 绑定域名
+## Domain Binding
 
-以 nginx 为例，通过 nginx 代理 http://127.0.0.1:13000/
+Taking nginx as an example, proxy through nginx http://127.0.0.1:13000/
 
 ```bash
 server {
     listen 80;
-    server_name your_domain.com;  # 将 your_domain.com 替换为您的域名
+    server_name your_domain.com;  # Replace your_domain.com with your domain
 
     location / {
         proxy_pass http://127.0.0.1:13000/;
@@ -27,9 +27,9 @@ server {
 }
 ```
 
-## 子路径部署
+## Deploy on Subpath
 
-部署到子路径，需要配置 `APP_PUBLIC_PATH` 环境变量。
+To deploy to a subpath, you need to configure the `APP_PUBLIC_PATH` environment variable.
 
 ```diff
 services:
@@ -39,12 +39,12 @@ services:
 +     - APP_PUBLIC_PATH=/nocobase/
 ```
 
-应用的 URL 是 http://127.0.0.1:13000/nocobase/ ，Nginx 配置为
+The application's URL is http://127.0.0.1:13000/nocobase/, and the Nginx configuration is
 
 ```bash
 server {
     listen 80;
-    server_name your_domain.com;  # 将 your_domain.com 替换为您的域名
+    server_name your_domain.com;  # Replace your_domain.com with your domain
 
     location /nocobase/ {
         proxy_pass http://127.0.0.1:13000/nocobase/;
@@ -56,4 +56,4 @@ server {
 }
 ```
 
-最后就可以通过 http://your_domain.com/nocobase/ 访问了
+Finally, you can access it through http://your_domain.com/nocobase/

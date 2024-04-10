@@ -1,49 +1,51 @@
-# 备份和还原
+# Backup and Restore
 
-## 介绍
+<PluginInfo name="backup-restore"></PluginInfo>
 
-NocoBase 应用的备份与还原插件，可用于应用的复制、迁移、升级等场景。
+## Introduction
 
-## 安装
+The backup and restore plugin can be used for scenarios such as application replication, migration, and upgrade.
 
-内置插件无需手动安装激活。
+## Installation
 
-## 使用说明
+This plugin is built-in and does not require manual installation or activation.
 
-![备份还原列表页](./image.png)
+## User Instructions
 
-### 新建备份
+![Backup and Restore List Page](./image.png)
 
-![新建备份](./image-1.png)
+### Creating a Backup
 
-### 还原备份
+![Creating Backup](./image-1.png)
 
-可以选择从本地上传备份，也可以点击某个备份文件进行还原。
+### Restore Backup
 
-![还原备份](./image-4.png)
+You can choose to upload a backup from your local device or click on a backup file to restore.
 
-选择需要还原的数据，选中的数据将全量覆盖目标应用对应的数据表
+![Restore Backup](./image-4.png)
 
-![还原备份](./image-5.png)
+Select the data you need to restore, the selected data will completely overwrite the corresponding data table of the target application.
 
-### 备份说明
+![Restore Backup](./image-5.png)
 
-点击了解更多（Learn more）查看备份说明
+### Backup Instructions 
 
-![备份还原说明](./image-6.png)
+Click on "Learn more" to view the backup instructions.
 
-备份说明
+![Backup and Restore Instructions](./image-6.png)
 
-![备份还原说明](./image-2.png)
+Backup Instructions
 
-备份分组
+![Backup and Restore Instructions](./image-2.png)
 
-- 必备数据：系统运行必备数据
-- 跳过的数据：跳过不备份的数据
-- 用户数据：与用户有关的数据
-- 日志数据：用于记录各种操作的数据
-- 第三方服务信息：一般为各种服务商信息，如文件存储服务、地图服务、短信服务商配置信息等等
-- 自建表数据：通过数据表管理界面添加的数据表的数据
-- 未知数据：未配置备份规则的数据
+Backup Groups
 
-注：可以按分组选择需要备份或还原的数据，还原时选中的数据会全量覆盖。
+- Required Data: Essential data for system operation.
+- Skipped Data: Data skipped and not backed up.
+- User Data: Data related to users.
+- Log Data: Data used to record some actions log.
+- Third-party Service Information: Generally information about various service providers, such as file storage services, map services, and SMS service provider configuration information, etc.
+- Custom Collection Data: Data of collections added through the collection manager.
+- Unknown Data: Data without configured backup rules.
+
+Note: You can choose the data you want to back up or restore by group. The selected data will completely overwrite when restoring.

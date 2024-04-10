@@ -1,9 +1,5 @@
 # Quick start
 
-:::warning
-Sorry, this document is not available in English.
-:::
-
 ## 1. 编写 Schema 组件
 
 通过配置 `x-component` 将已注册的组件渲染出来

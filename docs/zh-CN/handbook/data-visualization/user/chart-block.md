@@ -1,7 +1,5 @@
 # 图表区块
 
-<PluginInfo name="data-visualization"></PluginInfo>
-
 图表区块是一个用于组织多个图表的面板。
 
 ## 添加

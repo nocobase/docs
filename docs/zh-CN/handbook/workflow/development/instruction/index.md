@@ -33,8 +33,8 @@ export default class MyPlugin extends Plugin {
     // get workflow plugin instance
     const workflowPlugin = this.app.getPlugin<WorkflowPlugin>(WorkflowPlugin);
 
-    // register trigger instance
-    workflowPlugin.instructions.register('my-instruction', MyInstruction);
+    // register instruction
+    workflowPlugin.registerInstruction('my-instruction', MyInstruction);
   }
 }
 ```

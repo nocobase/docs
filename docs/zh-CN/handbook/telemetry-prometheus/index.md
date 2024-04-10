@@ -1,5 +1,7 @@
 # 遥测 - Prometheus
 
+<PluginInfo name="telemetry-prometheus"></PluginInfo>
+
 ## 介绍
 
 本插件用于将 <a href="https://opentelemetry.io/docs/specs/otlp/" target="_blank">OpenTelemetry</a> 协议 (OTLP) 数据转换成 Prometheus 格式，并暴露接口供 Prometheus 抓取指标 (Metric) 数据。
@@ -7,7 +9,7 @@
 ## 安装
 
 :::info{title=提示}
-该插件为商业插件，请查看 [NocoBase 商业版本](https://www.nocobase.com/commercial-cn)了解详情。
+该插件为商业插件，请查看 [NocoBase 商业版本](https://cn.nocobase.com/commercial-cn)了解详情。
 :::
 
 ## 使用手册

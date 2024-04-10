@@ -47,8 +47,8 @@ export default class MyPlugin extends Plugin {
     // get workflow plugin instance
     const workflowPlugin = this.app.getPlugin('workflow');
 
-    // register trigger instance
-    workflowPlugin.triggers.register('interval', new MyTrigger(workflowPlugin));
+    // register trigger
+    workflowPlugin.registerTrigger('interval', MyTrigger);
   }
 }
 ```

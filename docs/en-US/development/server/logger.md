@@ -1,23 +1,23 @@
 # Logger
 
-NocoBase 日志基于 <a href="https://github.com/winstonjs/winston" target="_blank">Winston</a> 封装。默认情况下，NocoBase 将日志分为接口请求日志、系统运行日志和 SQL 执行日志，其中接口请求日志和 SQL 执行日志由应用内部打印，插件开发者通常只需要打印插件相关的系统运行日志。
+NocoBase's logging is based on <a href="https://github.com/winstonjs/winston" target="_blank">Winston</a>. By default, NocoBase divides logs into API request logs, system operation logs, and SQL execution logs, where API request logs and SQL execution logs are printed internally by the application, and plugin developers typically only need to print plugin-related system operation logs.
 
-本文档主要介绍在开发插件的时候，如何创建和打印日志。日志的更多介绍可以参考：[日志插件](../../plugins/logger/index.md)。
+This document mainly introduces how to create and print logs when developing plugins. For more information about logs, refer to: [Logger Plugin](../../plugins/logger/index.md).
 
-## 默认打印方法
+## Default Print Method
 
-NocoBase 提供了系统运行日志的打印方法，日志按照规定字段打印，同时输出到指定文件。 参考：[日志插件 - 系统日志](../../plugins/logger/index.md#系统日志)。
+NocoBase provides a printing method for system operation logs, which are printed according to specified fields and output to a designated file. Refer to: [Logger Plugin - System Logs](../../plugins/logger/index.md#system-logs).
 
 ```ts
-// 默认打印方法
+// Default print method
 app.log.info("message");
 
-// 在中间件中使用
+// Use in middleware
 async function (ctx, next) {
   ctx.log.info("message");
 }
 
-// 在插件中使用
+// Use in a plugin
 class CustomPlugin extends Plugin {
   async load() {
     this.log.info("message");
@@ -25,9 +25,9 @@ class CustomPlugin extends Plugin {
 }
 ```
 
-以上方法都遵循下面的用法：
+All the above methods follow the usage below:
 
-第一个参数为日志消息，第二个参数为可选 metadata 对象，可以是任意键值对，其中 `module`, `submodule`, `method` 会被提取为单独字段，其余字段则放到 `meta` 字段中。
+The first parameter is the log message, the second parameter is an optional metadata object, which can be any key-value pair, where `module`, `submodule`, `method` will be extracted as separate fields, and other fields will be placed in the `meta` field.
 
 ```ts
 app.log.info('message', {
@@ -44,9 +44,9 @@ app.log.warn();
 app.log.error();
 ```
 
-## 输出到其他文件
+## Output to Other Files
 
-如果想沿用系统默认的打印方法，但是不想输出到默认的文件中，可以使用 `createSystemLogger` 创建一个自定义的系统日志实例。
+If you want to use the system's default printing method but do not want to output to the default file, you can use `createSystemLogger` to create a custom system log instance.
 
 ```ts
 import { createSystemLogger } from '@nocobase/logger';
@@ -54,13 +54,13 @@ import { createSystemLogger } from '@nocobase/logger';
 const logger = createSystemLogger({
   dirname: '/pathto/',
   filename: 'xxx',
-  seperateError: true, // 是否将 error 级别日志单独输出到 'xxx_error.log'
+  separateError: true, // Whether to output error-level logs separately to 'xxx_error.log'
 });
 ```
 
-## 自定义日志
+## Custom Logs
 
-如果不想使用系统提供的打印方法，想使用 Winston 原生的方法，可以通过以下方法创建日志。
+If you do not want to use the system-provided printing method and want to use Winston's native methods, you can create logs through the following method.
 
 ### `createLogger`
 
@@ -72,31 +72,31 @@ const logger = createLogger({
 });
 ```
 
-`options` 在原来 `winston.LoggerOptions` 的基础上进行了扩展。
+`options` has been extended based on the original `winston.LoggerOptions`.
 
-- `transports` - 可以使用 `'console' | 'file' | 'dailyRotateFile'` 应用预置的输出方式。
-- `format` - 可以使用 `'logfmt' | 'json' | 'delimiter'` 应用预置的打印格式。
+- `transports` - You can use `'console' | 'file' | 'dailyRotateFile'` to apply preset output methods.
+- `format` - You can use `'logfmt' | 'json' | 'delimiter'` to apply preset printing formats.
 
 ### `app.createLogger`
 
-在多应用的场景下，有时候我们希望自定义的输出目录和文件，可以输出到当前应用名称的目录下。参考：[日志插件 - 日志目录](../../plugins/logger/index.md#日志目录)。
+In scenarios with multiple applications, sometimes we hope to customize the output directory and file, which can be output to the directory under the current application name. Refer to: [Logger Plugin - Log Directory](../../plugins/logger/index.md#log-directory).
 
 ```ts
 app.createLogger({
   dirname: '',
-  filename: 'custom', // 输出到 /storage/logs/main/custom.log
+  filename: 'custom', // Output to /storage/logs/main/custom.log
 });
 ```
 
 ### `plugin.createLogger`
 
-使用场景和用法同 `app.createLogger`.
+The usage scenario and method are the same as `app.createLogger`.
 
 ```ts
 class CustomPlugin extends Plugin {
   async load() {
     const logger = this.createLogger({
-      // 输出到 /storage/logs/main/custom-plugin/YYYY-MM-DD.log
+      // Output to /storage/logs/main/custom-plugin/YYYY-MM-DD.log
       dirname: 'custom-plugin',
       filename: '%DATE%.log',
       transports: ['dailyRotateFile'],
@@ -105,7 +105,7 @@ class CustomPlugin extends Plugin {
 }
 ```
 
-## 相关文档
+## Related Documents
 
-- [日志插件](../../plugins/logger/index.md)
-- [API参考](../../api/logger.md)
+- [Logger Plugin](../../plugins/logger/index.md)
+- [API Reference](../../api/logger.md)

@@ -1,47 +1,53 @@
-# 本地化管理
+# Localization Management
 
-## 介绍
+<PluginInfo name="localization-management"></PluginInfo>
 
-## 安装
+## Introduction
 
-## 使用手册
+The Localization Management plugin is designed to assist in managing and implementing the localization process for NocoBase. It translates NocoBase's menus, data tables, fields, and all plugins to adapt to the language and culture of a specific region.
 
-### 激活插件
+## Installation
+
+This is a built-in plugin, so no additional installation is required.
+
+## User Manual
+
+### Activating the Plugin
 
 ![](./static/Pi1nbxvVEoqSIox28FkcYkw7nID.png)
 
-### 本地化管理
+### Localization Management
 
 ![](./static/TmD3bXzJ2onTXcxyaWXc2g30n0e.png)
 
-### 同步翻译词条
+### Synchronizing Translation Entries
 
 ![](./static/IkBhbaqrfodzsMxxueIcUENnnTd.png)
 
-同步之后，会列出所有可翻译词条
+After synchronization, it will list all the translatable entries for the current language.
 
 ![](./static/S49abMq61oBfMFxRvs7cZTgHnoh.png)
 
-### 发布
+### Publishing
 
-翻译完成之后，需要点击“发布”按钮，才能使修改结果生效
+After completing the translation, you need to click the "Publish" button to make the changes take effect.
 
 ![](./static/IkFDbWE8ios6qSxp78scf2BOnQg.png)
 
-### 翻译其他语言
+### Translating Other Languages
 
-启用其他语言，如简体中文
+Enable other languages in "System Settings," such as Simplified Chinese.
 
 ![](./static/BFRcbhE31oEAHOxss5ncRnEvnZb.png)
 
-切换语言
+Switch to that language.
 
 ![](./static/XO9TbVodPo01SrxFPrkcUsVmngg.png)
 
-词条同步
+Synchronize the entries.
 
 ![](./static/DxQ8bDrtsoi8ObxadwZcCYntn9d.png)
 
-翻译并发布
+Translate and publish.
 
 ![](./static/GaqEbrgAdokzgJxqicMcdKxMnQf.png)

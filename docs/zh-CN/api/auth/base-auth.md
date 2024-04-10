@@ -35,8 +35,10 @@ class BasicAuth extends BaseAuth {
 
 #### 详细信息
 
-- `config` - 参考 [Auth - constructor](./auth.md#constructor)
-- `userCollection` - 用户数据表, 比如: `db.getCollection('users')`
+| 参数             | 类型         | 描述                                                                                                |
+| ---------------- | ------------ | --------------------------------------------------------------------------------------------------- |
+| `config`         | `AuthConfig` | 参考 [Auth - AuthConfig](./auth.md#authconfig)                                                      |
+| `userCollection` | `Collection` | 用户数据表, 比如: `db.getCollection('users')`，参考 [DataBase - Collection](../database/collection) |
 
 ### `user()`
 
