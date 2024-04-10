@@ -1,9 +1,5 @@
 # Schema settings
 
-:::warning
-Sorry, this document is not available in English.
-:::
-
 激活 UI 配置之后，鼠标移动到指定区块、字段、操作上方时，会显示对应的 Schema 工具栏，工具栏的设置按钮就是当前 Schema 的设置器。
 
 ![Alt text](./image-1.png)

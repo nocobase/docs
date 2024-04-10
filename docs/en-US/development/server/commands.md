@@ -1,6 +1,6 @@
 # Commands
 
-在插件里，自定义的命令必须放在插件的 `src/server/commands/*.ts` 目录下，内容如下：
+In a plugin, custom commands must be located in the `src/server/commands/*.ts` directory of the plugin. The content should look like this:
 
 ```ts
 import { Application } from '@nocobase/server';
@@ -19,16 +19,16 @@ export default function(app: Application) {
 ```
 
 :::warning
-插件自定义的命令行必须在插件安装激活之后才有效
+Custom commands in the plugin are only effective after the plugin is installed and activated.
 :::
 
-Command 的特殊配置
+Special Configurations for Commands:
 
-- `ipc()` 当 app 运行时，命令行通过 ipc 发送指令，操作正在运行的 app 实例，未配置 ipc() 时，会新建一个应用实例，再执行操作（不会干扰正在运行的 app 实例）
-- `auth()` 进行数据库检验，如果数据库配置不正确，不会执行该命令
-- `preload()` 是否预先加载应用配置，也就是执行 app.load()
+- `ipc()` When the app is running, the command-line sends instructions through ipc to operate on the running app instance. Without the `ipc()` configuration, a new application instance will be created to execute the command (this will not interfere with the running app instance).
+- `auth()` Performs database verification. If the database configuration is incorrect, the command will not be executed.
+- `preload()` Determines whether to pre-load the application configuration, i.e., execute `app.load()`.
 
-可以根据命令的实际用途进行配置，例子如下：
+These configurations can be adjusted according to the actual use of the command, as shown in the examples below:
 
 ```ts
 app.command('a').ipc().action()

@@ -1,9 +1,5 @@
 # UI Schema
 
-:::warning
-Sorry, this document is not available in English.
-:::
-
 一种描述前端组件的协议，基于 Formily Schema 2.0，类 JSON Schema 风格。
 
 ```ts

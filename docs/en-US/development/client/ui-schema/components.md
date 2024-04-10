@@ -1,9 +1,5 @@
 # Schema components
 
-:::warning
-Sorry, this document is not available in English.
-:::
-
 ## 包装器组件
 
 - BlockItem

@@ -1,9 +1,5 @@
 # Designable
 
-:::warning
-Sorry, this document is not available in English.
-:::
-
 NocoBase 通过 `createDesignable()` 方法为 Schema 提供设计能力
 
 ```ts

@@ -1,9 +1,5 @@
 # Building
 
-:::warning
-Sorry, this document is not available in English.
-:::
-
 ## 自定义打包配置
 
 如果你想要自定义打包配置，可以在插件根目录下创建 `build.config.ts` 文件，内容如下：
