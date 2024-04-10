@@ -4,7 +4,7 @@
 
 ## 介绍
 
-用于存储 NocoBase 应用的元数据，包括系统表数据、自定义表数据等，支持 MySQL、PostgreSQL、SQLite 等关系型数据库。
+NocoBase 的主数据库既可以用于存储业务数据，又用于存储应用的元数据，包括系统表数据、自定义表数据等。主数据库支持 MySQL、PostgreSQL、SQLite 等关系型数据库。在安装 NocoBase 应用的时候，主数据库就要同步安装，且不可删除。
 
 ## 安装
 
@@ -24,7 +24,7 @@
 - [表达式表](/handbook/workflow-dynamic-calculation/expression)：用于工作流的动态表达式场景；
 - [SQL 表](/handbook/collection-sql)：并不是实际的数据库表，而是快速的将 SQL 查询，结构化的展示出来；
 - [视图表](/handbook/collection-view)：连接已有的数据库视图；
-- [外部表](/handbook/collection-fdw)：允许数据库系统直接访问和查询外部数据源中的数据，而无需将数据复制到本地数据库；
+- [外部表](/handbook/collection-fdw)：允许数据库系统直接访问和查询外部数据源中的数据，基于 FDW 技术；
 
 ### 支持数据表的分类管理
 
@@ -34,12 +34,12 @@
 
 ![20240322230950](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240322230950.png)
 
-### 数据表的用途
+### 数据表的使用
 
-用于数据区块的数据来源
+作为数据区块的数据来源
 
 ![20240322231949](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240322231949.png)
 
-用于工作流的数据来源
+作为工作流的数据来源
 
 ![20240322232107](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240322232107.png)

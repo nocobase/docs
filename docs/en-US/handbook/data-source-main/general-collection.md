@@ -1,12 +1,10 @@
-# 普通表
+# General Collection
 
 <PluginInfo name="data-source-main"></PluginInfo>
 
-## 介绍
+## Introduction
+It is used in most scenarios. A general collection can be used unless a special collection template is needed.
 
-
-
-## 使用手册
+## User Manual
 
 ![20240324085739](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240324085739.png)
-
