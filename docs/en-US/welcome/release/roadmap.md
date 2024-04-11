@@ -4,12 +4,12 @@ We are developing or have already planned the following new features and plugins
 
 ## Features:
 
-- Field default values support variables
+- The pop-up for single records supports adding blocks of any collection of any data sources
+  - Variables support cross data sources
+  - Data scope supports cross data sources
 - Field default values support expressions
 - Association fields support linkage rules
 - Details block supports linkage rules
-- Create records across data sources
-- Establish relationship across data sources (weak relationship)
 - Set block height
 - Cluster deployment
 - Fix table block columns
