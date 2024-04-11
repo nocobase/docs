@@ -4,12 +4,15 @@ We are developing or have already planned the following new features and plugins
 
 ## Features:
 
-- Set block height
+- Field default values support variables
+- Field default values support expressions
 - Association fields support linkage rules
 - Details block supports linkage rules
+- Create records across data sources
+- Establish relationship across data sources (weak relationship)
+- Set block height
 - Cluster deployment
 - Fix table block columns
-- Field default values support expressions
 - Support for linked refresh between blocks
 - Add Charts/Gantt/Calendar blocks in pop-ups
 - Use sequence fields as primary keys
