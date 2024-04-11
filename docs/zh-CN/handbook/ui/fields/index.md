@@ -24,36 +24,3 @@
 
 ![](./static/BpmibJbEgoijTgxHkqdcjodanVc.gif)
 
-## 通用的参数配置
-
-- 编辑字段标题
-- 显示标题
-- 编辑描述
-- 必填
-- 验证规则
-- 默认值
-- 显示模式
-
-![](./static/WBkubBX4QoUQ3HxPUHPcht2VnnK.png)
-
-重要参数配置说明：
-
-### 验证规则
-
-待补充
-
-### 默认值
-
-待补充
-
-### 显示模式
-
-和区块不同的是字段组件有三种显示模式：
-
-- 可编辑 - editable
-- 只读（不可编辑）- readonly
-- 只读（阅读模式）- read friendly
-
-## 字段的类型
-
-区块的字段由数据表提供，更多字段类型的配置参考 [数据表字段类型](https://nocobase.feishu.cn/wiki/BJKYw1xpHiVxFHkmgT3cKrKznkd)
