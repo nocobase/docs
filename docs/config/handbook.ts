@@ -711,6 +711,21 @@ export default [
             'title.zh-CN': '字段配置项',
             children: [
               {
+                title: 'Set default value',
+                'title.zh-CN': '默认值',
+                link: '/handbook/ui/fields/field-settings/default-value',
+              },
+              {
+                title: 'Set validation rules',
+                'title.zh-CN': '验证规则',
+                link: '/handbook/ui/fields/field-settings/validation-rules',
+              },
+              {
+                title: 'Pattern',
+                'title.zh-CN': '显示模式',
+                link: '/handbook/ui/fields/field-settings/pattern',
+              },
+              {
                 title: 'Edit field title',
                 'title.zh-CN': '编辑字段标题',
                 link: '/handbook/ui/fields/field-settings/edit-title',
@@ -729,21 +744,6 @@ export default [
                 title: 'Required',
                 'title.zh-CN': '必填',
                 link: '/handbook/ui/fields/field-settings/required',
-              },
-              {
-                title: 'Set validation rules',
-                'title.zh-CN': '验证规则',
-                link: '/handbook/ui/fields/field-settings/validation-rules',
-              },
-              {
-                title: 'Set default value',
-                'title.zh-CN': '默认值',
-                link: '/handbook/ui/fields/field-settings/default-value',
-              },
-              {
-                title: 'Pattern',
-                'title.zh-CN': '显示模式',
-                link: '/handbook/ui/fields/field-settings/pattern',
               },
             ],
           },
