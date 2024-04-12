@@ -770,32 +770,32 @@ export default [
               {
                 title: 'Linkage',
                 'title.zh-CN': '联动规则',
-                link: '/handbook/ui/actions/linkage',
+                link: '/handbook/ui/actions/action-settings/linkage-rule',
               },
               {
                 title: 'Open mode',
                 'title.zh-CN': '打开方式',
-                link: '/handbook/ui/actions/open-mode',
+                link: '/handbook/ui/actions/action-settings/open-mode',
               },
               {
                 title: 'Popup size',
                 'title.zh-CN': '弹窗尺寸',
-                link: '/handbook/ui/actions/popup-size',
+                link: '/handbook/ui/actions/action-settings/popup-size',
               },
               {
                 title: 'Second confirmation',
                 'title.zh-CN': '二次确认',
-                link: '/handbook/ui/actions/double-check',
+                link: '/handbook/ui/actions/action-settings/double-check',
               },
               {
                 title: 'Bind workflows',
                 'title.zh-CN': '绑定工作流',
-                link: '/handbook/ui/actions/bind-workflow',
+                link: '/handbook/ui/actions/action-settings/bind-workflow',
               },
               {
                 title: 'Assign field values',
                 'title.zh-CN': '字段赋值',
-                link: '/handbook/ui/actions/assign-values',
+                link: '/handbook/ui/actions/action-settings/assign-values',
               },
             ],
           },
