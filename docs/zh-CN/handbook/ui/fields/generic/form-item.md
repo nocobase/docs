@@ -2,11 +2,11 @@
 
 ![20240408221914](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408221914.png)
 
-- 编辑字段标题
-- 显示标题
-- 编辑字段描述
-- 编辑字段提示信息
-- 必填
-- 设置默认值
-- 模式 (只读、可编辑、阅读友好)
-- 设置验证规则
+- [编辑字段标题](/handbook/ui/fields/field-settings/edit-title)
+- [显示标题](/handbook/ui/fields/field-settings/display-title)
+- [编辑字段描述](/handbook/ui/fields/field-settings/edit-description)
+- [编辑字段提示信息](/handbook/ui/fields/field-settings/edit-tooltip)
+- [必填](/handbook/ui/fields/field-settings/required)
+- [设置默认值](/handbook/ui/fields/field-settings/default-value)
+- [模式](/handbook/ui/fields/field-settings/pattern)
+- [设置验证规则](/handbook/ui/fields/field-settings/validation-rules)

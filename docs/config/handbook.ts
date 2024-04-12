@@ -711,6 +711,11 @@ export default [
             'title.zh-CN': '字段配置项',
             children: [
               {
+                title: 'Required',
+                'title.zh-CN': '必填',
+                link: '/handbook/ui/fields/field-settings/required',
+              },
+              {
                 title: 'Set default value',
                 'title.zh-CN': '默认值',
                 link: '/handbook/ui/fields/field-settings/default-value',
@@ -741,9 +746,9 @@ export default [
                 link: '/handbook/ui/fields/field-settings/edit-description',
               },
               {
-                title: 'Required',
-                'title.zh-CN': '必填',
-                link: '/handbook/ui/fields/field-settings/required',
+                title: 'Edit tooltip',
+                'title.zh-CN': '编辑提示',
+                link: '/handbook/ui/fields/field-settings/edit-tooltip',
               },
             ],
           },
