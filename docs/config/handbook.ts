@@ -797,6 +797,11 @@ export default [
                 'title.zh-CN': '字段赋值',
                 link: '/handbook/ui/actions/action-settings/assign-values',
               },
+              {
+                title: 'Edit button',
+                'title.zh-CN': '编辑按钮',
+                link: '/handbook/ui/actions/action-settings/edit-button',
+              },
             ],
           },
           {

@@ -3,7 +3,7 @@
 ![20240409100014](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240409100014.png)
 
 
-
+### 字段配置项
 - [编辑字段标题](/handbook/ui/fields/field-settings/edit-title)
 - [显示标题](/handbook/ui/fields/field-settings/display-title)
 - [编辑字段描述](/handbook/ui/fields/field-settings/edit-description)

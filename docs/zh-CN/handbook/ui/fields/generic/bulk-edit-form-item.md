@@ -2,6 +2,7 @@
 
 ![20240409095523](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240409095523.png)
 
+### 字段配置项
 
 - [编辑字段标题](/handbook/ui/fields/field-settings/edit-title)
 - [显示标题](/handbook/ui/fields/field-settings/display-title)
