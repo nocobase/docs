@@ -802,6 +802,11 @@ export default [
                 'title.zh-CN': '编辑按钮',
                 link: '/handbook/ui/actions/action-settings/edit-button',
               },
+              {
+                title: 'After successful submission',
+                'title.zh-CN': '提交成功后',
+                link: '/handbook/ui/actions/action-settings/affter-successful',
+              },
             ],
           },
           {
