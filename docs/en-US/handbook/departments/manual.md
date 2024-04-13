@@ -1,89 +1,89 @@
-# 使用手册
+# User Manual
 
-## 部门管理
+## Department Management
 
 ![](./static/2024-03-04-11-25-32.png)
 
-### 新建部门
+### Create a New Department
 
 ![](./static/2024-03-04-11-28-38.png)
 
 ![](./static/2024-03-04-11-27-44.png)
 
-### 新建子部门
+### Create a Sub-Department
 
 ![](./static/2024-03-04-11-51-21.png)
 
 ![](./static/2024-03-04-11-52-50.png)
 
-### 编辑部门
+### Edit Department
 
 ![](./static/2024-03-04-11-57-41.png)
 
 ![](./static/2024-03-04-11-57-54.png)
 
-### 修改上级部门
+### Change Superior Department
 
-在编辑部门的表单中修改上级部门字段，当前部门和当前部门的下级部门不可选。
+Modify the superior department field in the department editing form. The current department and its sub-departments are not selectable.
 
 ![](./static/2024-03-04-11-59-30.png)
 
-## 部门成员管理
+## Department Member Management
 
-### 查看部门成员列表
+### View Department Member List
 
 ![](./static/2024-03-04-11-54-00.png)
 
-### 给部门添加成员
+### Add Members to the Department
 
-一个用户可以同时加入多个部门，加入的第一个部门默认为主属部门，一个用户只有一个主属部门。
+A user can join multiple departments at the same time. The first department they join is the default main department. A user only has one main department.
 
 ![](./static/2024-03-04-11-56-10.png)
 
-已经是部门成员的用户不会出现在用户选择列表中。
+Users who are already department members will not appear in the user selection list.
 
 ![](./static/2024-03-04-11-56-23.png)
 
-### 设置部门负责人
+### Set Department Head
 
-在编辑部门的表单中点击负责人字段选择部门成员成为负责人，支持多选，已经是部门负责人的成员将不会出现在成员选择列表中。
+Click on the owners field in the department editing form to select a department member as the owner. Multiple selections are supported. Members who are already department owner will not appear in the member selection list.
 
 ![](./static/2024-03-04-12-00-58.png)
 
-### 给用户配置部门
+### Configure Departments for Users
 
-除了给部门添加成员，还可以从用户视角，给用户配置部门。
+In addition to adding members to the department, you can also configure departments for users from the user's perspective.
 
 ![](./static/2024-03-04-12-04-03.png)
 
-已经加入的部门不可选。
+Departments that have already been joined are not selectable.
 
 ![](./static/2024-03-04-12-04-46.png)
 
-### 修改主属部门
+### Change Main Department
 
 ![](./static/2024-03-04-12-05-59.png)
 
-## 部门角色管理
+## Department Role Management
 
-通过给部门关联一个或多个角色，可以使当前部门下的成员拥有这些角色。
+By associating one or more roles with a department, members of the current department can have these roles.
 
-有两种方式可以给部门关联角色。
+There are two ways to associate roles with a department.
 
-第一种是在部门编辑表单的角色字段选择角色。
+The first is to select a role in the role field of the department editing form.
 
 ![](./static/2024-03-04-20-27-04.png)
 
-第二种是在角色管理里面，给对应角色添加部门。
+The second is to add departments to the corresponding role in role management.
 
 ![](./static/2024-03-04-20-25-31.png)
 
-已经拥有该角色的部门不可选。
+Departments that already have this role are not selectable.
 
 ![](./static/2024-03-04-20-24-34.png)
 
-## 搜索用户和部门
+## Search for Users and Departments
 
-按照用户昵称、用户名、手机、邮箱搜索用户，按照部门名称搜索部门。
+Search for users by nickname, username, phone, email, and search for departments by department name.
 
 ![](./static/2024-03-04-20-26-42.png)
