@@ -3,14 +3,14 @@
 ## 使用手册
 
 ### 添加区块
-
-- 在页面里添加
+![20240413222257](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240413222257.png)
+- 在页面上添加
 
 作为添加表单
 
 ![20240407144250](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407144250.png)
 
-- 在弹窗里添加
+- 在弹窗上添加
 
 1.作为编辑表单
 
@@ -37,6 +37,10 @@
 - [表单字段](/handbook/ui/fields/field-settings/common/form-item)
 ### 配置操作
 
-- 全局操作
-- 行操作
+- [提交](/handbook/ui/actions/types/submit)
+- [保存数据](/handbook/ui/actions/types/save-record)
+- 提交至工作流
+- 自定义请求
+
+
 
