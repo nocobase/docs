@@ -2,7 +2,7 @@
 
 - 默认必填
 
-大多数字段必填默认关闭，开启后字段将默认为必填项
+开启后字段将默认为必填项
 
 ![20240411114641](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240411114641.png)
 
