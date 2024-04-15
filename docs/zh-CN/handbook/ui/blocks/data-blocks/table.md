@@ -12,7 +12,7 @@
 
 ### 数据范围
 
-示例：默认筛选「状态」为已发货的单据
+示例：默认筛选「状态」为已发货的单据。
 
 ![20240415215404](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415215404.png)
 
@@ -20,7 +20,7 @@
 
 ### 设置排序规则
 
-示例：按发货日期倒序排序
+示例：按发货日期倒序排序。
 
 ![20240415215509](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415215509.png)
 
@@ -28,7 +28,7 @@
 
 ### 连接数据区块
 
-订单表格区块和订单详情区块实现联动
+订单表格区块和订单详情区块实现联动。
 
   <video width="100%" height="440" controls>
       <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415221426.mp4" type="video/mp4">
@@ -53,7 +53,7 @@
 
 ### 显示继承表字段（父表字段）
 
-租赁订单表继承订单表
+示例：租赁订单表继承订单表。
 
 ![20240415224242](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415224242.png)
 
