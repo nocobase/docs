@@ -114,14 +114,30 @@
 弹窗里的区块都可以使用「当前弹窗记录」这个变量，相关使用场景有：
 
 - 配置区块的数据范围
+- 配置关系字段的数据范围
 - 配置字段的默认值（创建表单）
 - 配置操作的联动规则
+- 表单提交操作的字段赋值配置
 
 #### 配置区块的数据范围
 
+![20240416224307_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416224307_rec_.gif)
+
+#### 配置关系字段的数据范围
+
+![20240416224641_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416224641_rec_.gif)
+
 #### 配置字段的默认值（创建表单）
 
+![20240416223846_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416223846_rec_.gif)
+
 #### 配置操作的联动规则
+
+![20240416223101_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416223101_rec_.gif)
+
+#### 表单提交操作的字段赋值配置
+
+![20240416224014_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416224014_rec_.gif)
 
 ### 表格选中记录
 
