@@ -31,10 +31,11 @@
 
 #### 对于关系字段
 
-1. 所有的关系的 fk(外键) 都会过滤掉
-2. 普通字段和hasOne 和 hasMany 的关系字段是复制
+- 所有的关系的 fk(外键) 都会过滤掉；
 
-- belongsTo 和 belongsToMany 的关系字段是引用，引用可能会变成复制，比如 从 select 变成 sub-form 之后，关系就从引用变成了复制（变成复制之后，所有的字段都是可选的）
+- 普通字段和hasOne 和 hasMany 的关系字段是复制；
+
+- belongsTo 和 belongsToMany 的关系字段是引用，引用可能会变成复制，比如 从 select 变成 sub-form 之后，关系就从引用变成了复制（变成复制之后，所有的字段都是可选的）；
 
 #### 应用场景
 
@@ -55,6 +56,7 @@
 - [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
 - [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
 - [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
+
 ## 配置字段
 
 ### 本表字段
