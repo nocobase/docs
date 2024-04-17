@@ -1,22 +1,36 @@
 # 提交
 
+## 介绍
+
 提交操作用于保存表单数据（表单区块特有）
 
 ![20240413093210](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240413093210.png)
 
+## 操作配置项
+
 ![20240413095124](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240413095124.png)
-### 操作配置项
 
-- [编辑按钮](/handbook/ui/actions/action-settings/edit-button)
-- [二次确认](/handbook/ui/actions/action-settings/double-check)
-- [绑定工作流](/handbook/ui/actions/action-settings/bind-workflow)
-- 保存模式
+### 保存模式
 
-仅针对新建操作中表单区块的提交支持配置保存方式
+仅新建操作中表单区块的提交支持配置保存方式。
 
 ![20240413101209](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240413101209.png)
 
 ![20240413100531](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240413100531.png)
-- 直接插入新建
-- 不存在时插入（需要配置用于判断记录是否存在的字段）
-- 不存在时插入，否则更新（需要配置用于判断记录是否存在的字段）
+
+1. 直接插入新建
+2. 不存在时插入（需要配置用于判断记录是否存在的字段）
+3. 不存在时插入，否则更新（需要配置用于判断记录是否存在的字段）
+
+### 绑定工作流
+
+配置完成工作流后，需要在用户界面的表单操作按钮上绑定“提交至工作流”功能，使其在用户提交表单并完成数据操作后触发
+
+![20240417120149](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417120149.png)
+
+更多内容可参考 [绑定工作流](/handbook/ui/actions/action-settings/bind-workflow)
+
+
+- [编辑按钮](/handbook/ui/actions/action-settings/edit-button)
+- [二次确认](/handbook/ui/actions/action-settings/double-check)
+- [绑定工作流](/handbook/ui/actions/action-settings/bind-workflow)

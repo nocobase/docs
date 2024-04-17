@@ -12,6 +12,8 @@
 
 ### 联动规则
 
+通过联动规则控制表单字段行为
+
 ![20240416220254](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416220254.png)
 
 更多内容参考 [联动规则](/handbook/ui/blocks/block-settings/linkage-rule)
@@ -72,9 +74,11 @@
       <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416231152.mp4" type="video/mp4">
 </video>
 
-更多表单字段的配置 可参考 [表单字段](/handbook/ui/fields/generic/form-item)
+更多表单字段的配置项可参考 [表单字段](/handbook/ui/fields/generic/form-item)
 
 ## 配置操作
+
+![20240417115249](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417115249.png)
 
 - [提交](/handbook/ui/actions/types/submit)
 - [保存数据](/handbook/ui/actions/types/save-record)
