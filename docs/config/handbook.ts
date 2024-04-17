@@ -899,9 +899,19 @@ export default [
                 link: '/handbook/action-import',
               },
               {
+                title: 'Import Pro',
+                'title.zh-CN': '导入 Pro',
+                link: '/handbook/action-import-pro',
+              },
+              {
                 title: 'Export',
                 'title.zh-CN': '导出',
                 link: '/handbook/action-export',
+              },
+              {
+                title: 'Export Pro',
+                'title.zh-CN': '导出 Pro',
+                link: '/handbook/action-export-pro',
               },
             ],
           },
