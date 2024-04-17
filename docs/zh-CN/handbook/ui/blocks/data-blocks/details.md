@@ -26,8 +26,6 @@
 - [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
 
 
-
-
 ## 配置字段
 
 ### 本表字段
@@ -44,4 +42,10 @@
 
 ![20240417214433](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417214433.png)
 
+- [编辑](/handbook/ui/actions/types/edit)
+- [删除](/handbook/ui/actions/types/delete)
+- [弹窗](/handbook/ui/actions/types/pop-up)
+- [更新记录](/handbook/ui/actions/types/update-record)
+- [自定义请求](/handbook/action-custom-request)
+- 提交至工作流
 
