@@ -22,7 +22,6 @@
 
 更多内容参考 [排序规则](/handbook/ui/blocks/block-settings/sorting-rule)
 
-- [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
 - [设置数据加载方式](/handbook/ui/blocks/block-settings/loading-mode)
 - [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
 
@@ -30,6 +29,15 @@
 
 
 ## 配置字段
+
+### 本表字段
+
+![20240417213735](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417213735.png)
+
+### 关系表字段
+
+![20240417214006](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417214006.png)
+
 - [详情字段](/handbook/ui/fields/field-settings/common/detail-form-item)
 
 ## 配置操作
