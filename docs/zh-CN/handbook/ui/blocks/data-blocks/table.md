@@ -16,7 +16,7 @@
 
 ![20240415215404](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415215404.png)
 
-更多内容参考 [数据范围](/handbook/ui/blocks/block-settings/data-scope)
+更多内容参考 [设置数据范围](/handbook/ui/blocks/block-settings/data-scope)
 
 ### 设置排序规则
 
@@ -24,7 +24,7 @@
 
 ![20240415215509](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415215509.png)
 
-更多内容参考 [排序规则](/handbook/ui/blocks/block-settings/sorting-rule)
+更多内容参考 [设置排序规则](/handbook/ui/blocks/block-settings/sorting-rule)
 
 ### 连接数据区块
 
@@ -57,7 +57,7 @@
 
 ![20240415224242](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415224242.png)
 
-- [表格列字段配置项](/handbook/ui/fields/generic/table-column)
+表格列字段配置项可参考 [表格列字段](/handbook/ui/fields/generic/table-column)
 
 ## 配置操作
 
