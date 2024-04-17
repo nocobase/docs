@@ -26,8 +26,8 @@
 
 #### 同步表单字段
 
-- 同步表单字段将当前表单已配置出来的字段都作为模板字段获取值；
-- 如果在后续修改了表单的字段，可再次打开模板配置并点击同步表单按钮，确保表单与模板的一致性；
+- 将当前表单已配置的字段作为模板字段；
+- 在后续修改了表单的字段，可再次打开模板配置并点击同步表单按钮，确保表单与模板的一致性；
 
 #### 对于关系字段
 
@@ -55,7 +55,6 @@
 
 - [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
 - [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
-- [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
 
 ## 配置字段
 
@@ -67,11 +66,13 @@
 
 ![20240416230811](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416230811.png)
 
+关系表字段在表单中只读。
+
 <video width="100%" height="440" controls>
       <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416231152.mp4" type="video/mp4">
 </video>
 
-- [表单字段](/handbook/ui/fields/generic/form-item)
+更多表单字段的配置 可参考 [表单字段](/handbook/ui/fields/generic/form-item)
 
 ## 配置操作
 

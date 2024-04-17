@@ -2,8 +2,7 @@
 
 ## 介绍
 
-表单字段
-
+不同字段有不同的配置项，支持用户通过插件扩展字段的配置项
 
 ![20240408221914](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408221914.png)
 
@@ -14,14 +13,28 @@
    <video width="100%" height="440" controls>
       <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240413223027.mp4" type="video/mp4">
     </video>
-    
+
 ## 字段配置项
+
+### 默认值
+
+支持为字段配置常量/变量作为默认值
+
+![20240417094124](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417094124.png)
+
+更多内容参考 [设置默认值](/handbook/ui/fields/field-settings/default-value)
+
+### 设置验证规则
+
+![20240417095037](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417095037.png)
+
+更多内容参考 [设置验证规则](/handbook/ui/fields/field-settings/validation-rules)
+
 
 - [编辑字段标题](/handbook/ui/fields/field-settings/edit-title)
 - [显示标题](/handbook/ui/fields/field-settings/display-title)
 - [编辑字段描述](/handbook/ui/fields/field-settings/edit-description)
 - [编辑字段提示信息](/handbook/ui/fields/field-settings/edit-tooltip)
 - [必填](/handbook/ui/fields/field-settings/required)
-- [设置默认值](/handbook/ui/fields/field-settings/default-value)
 - [模式](/handbook/ui/fields/field-settings/pattern)
 - [设置验证规则](/handbook/ui/fields/field-settings/validation-rules)

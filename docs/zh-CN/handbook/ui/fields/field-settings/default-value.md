@@ -4,6 +4,8 @@
 
 ### 数据表字段
 
+在所有区块中生效（优先级最低）
+
 ![20240411095933](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240411095933.png)
 
 ### 新增表单的字段
