@@ -1,39 +1,38 @@
 # 详情区块
-## 使用手册
 
-### 添加区块
 
-- **以 Collection 为数据源使用**
+## 添加区块
 
-1. 在页面里添加
+<video width="100%" height="440" controls>
+      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417122622.mp4" type="video/mp4">
+</video>
 
-![20240408153707](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408153707.png)
+## 区块设置项
 
-2. 在弹窗里添加
+![20240417122949](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417122949.png)
+### 设置数据范围
 
-![20240408153543](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408153543.png)
+![20240417122910](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417122910.png)
 
-- **以 Assocation 为数据源使用，在弹窗里添加（关系区块）**
+更多内容参考 [数据范围](/handbook/ui/blocks/block-settings/data-scope)
 
-订单表中有多对多关系字段「商品」、对一的关系字段「客户」
+### 设置排序规则
 
-![20240408153605](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408153605.png)
-### 区块设置项
+![20240417123300](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417123300.png)
+
+更多内容参考 [排序规则](/handbook/ui/blocks/block-settings/sorting-rule)
 
 - [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
-- [设置数据范围](/handbook/ui/blocks/block-settings/data-scope)
-- [设置排序规则](/handbook/ui/blocks/block-settings/sorting-rule)
 - [设置数据加载方式](/handbook/ui/blocks/block-settings/loading-mode)
-- [连接数据区块](/handbook/ui/blocks/block-settings/connect-block)
 - [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
 
 
 
 
-### 配置字段
+## 配置字段
 - [详情字段](/handbook/ui/fields/field-settings/common/detail-form-item)
 
-### 配置操作
+## 配置操作
 
 - 全局操作
 - 行操作
