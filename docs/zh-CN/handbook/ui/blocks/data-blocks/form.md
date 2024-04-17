@@ -74,7 +74,7 @@
       <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416231152.mp4" type="video/mp4">
 </video>
 
-更多表单字段的配置项可参考 [表单字段](/handbook/ui/fields/generic/form-item)
+表单字段配置项可参考 [表单字段](/handbook/ui/fields/generic/form-item)
 
 ## 配置操作
 

@@ -721,6 +721,11 @@ export default [
                 link: '/handbook/ui/fields/field-settings/validation-rules',
               },
               {
+                title: 'Format',
+                'title.zh-CN': '数值格式化',
+                link: '/handbook/ui/fields/field-settings/number-format',
+              },
+              {
                 title: 'Pattern',
                 'title.zh-CN': '显示模式',
                 link: '/handbook/ui/fields/field-settings/pattern',

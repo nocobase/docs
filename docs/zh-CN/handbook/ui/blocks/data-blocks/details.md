@@ -38,10 +38,10 @@
 
 ![20240417214006](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417214006.png)
 
-- [详情字段](/handbook/ui/fields/field-settings/common/detail-form-item)
+详情字段配置项可参考 [详情字段](/handbook/ui/fields/generic/detail-form-item)
 
 ## 配置操作
 
-- 全局操作
-- 行操作
+![20240417214433](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417214433.png)
+
 
