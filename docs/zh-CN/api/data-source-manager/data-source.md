@@ -1,6 +1,20 @@
-# DataSource
+# DataSource (abstract)
 
-`DataSource` 类，用于表示数据源实例。
+`DataSource` 抽象类，用于表示一种类型的数据源，可以是数据库、API等。
+
+## 成员
+
+### collectionManager
+
+数据源的 CollectionManager 实例，详见：
+
+### resourceManager
+
+数据源的 resourceManager 实例，详见：
+
+### acl
+
+数据源的 ACL 实例，详见：
 
 ## API
 
@@ -20,17 +34,6 @@
 
 - `init(options: DataSourceOptions)`
 
-### collectionManager
-
-数据源的 CollectionManager 实例，详见：
-
-### resourceManager
-
-数据源的 resourceManager 实例，详见：
-
-### acl
-
-数据源的 ACL 实例，详见：
 
 ### name
 
@@ -46,7 +49,7 @@
 
 ### testConnection()
 
-静态方法，用于响应测试连接请求结果。
+静态方法，在测试连接操作时调用，可用于参数校验，具体逻辑由子类实现。
 
 #### 签名
 
@@ -54,11 +57,24 @@
 
 ### load()
 
+#### 签名
+
+- `async load(options: any = {})`
+
+数据源的加载操作，逻辑由子类实现。
+
 ### createCollectionManager()
+
+#### 签名
+- `abstract createCollectionManager(options?: any): ICollectionManager`
+
+创建数据源的 CollectionManager 实例，逻辑由子类实现。
 
 ### createResourceManager()
 
+创建数据源的 ResourceManager 实例，字类可覆盖实现，默认创建 `@nocobase/resourcer` 中的 `ResourceManager`。
+
 ### createACL()
 
-- 创建 DataSource 的 ACL 实例
+- 创建 DataSource 的 ACL 实例，字类可覆盖实现，默认创建 `@nocobase/acl` 中的 `ACL`。
 

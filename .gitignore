@@ -6,4 +6,4 @@ node_modules
 /docs/dist
 /server
 .vscode
-
+.idea
