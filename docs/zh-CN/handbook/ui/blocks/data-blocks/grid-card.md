@@ -1,22 +1,16 @@
 # 网格卡片
 
+## 介绍
+
 以网格卡片形式呈现多个数据记录的摘要信息，支持配置不同屏幕尺寸的列数，对移动端等设备友好。
-## 使用手册
 
 ### 添加区块
 
-- **以 Collection 为数据源使用, 在页面里添加** 
-
-![20240408155431](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408155431.png)
-
-- **以 Assocation 为数据源使用，在弹窗里添加（关系区块）**
-
-订单表中有多对多关系字段「商品」
-
-![20240408155507](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408155507.png)
-
+![20240418120045](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240418120045.mp4)
 
 ### 区块设置项
+
+![20240418120317](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240418120317.png)
 
 - [设置数据范围](/handbook/ui/blocks/block-settings/data-scope)
 - [设置排序规则](/handbook/ui/blocks/block-settings/sorting-rule)
