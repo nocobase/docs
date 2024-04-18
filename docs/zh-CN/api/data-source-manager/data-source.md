@@ -6,15 +6,15 @@
 
 ### collectionManager
 
-数据源的 CollectionManager 实例，详见：
+数据源的 CollectionManager 实例，需实现 [`ICollectionManager`](/api/data-source-manager/i-collection-manager) 接口。
 
 ### resourceManager
 
-数据源的 resourceManager 实例，详见：
+数据源的 resourceManager 实例，详见：[`resourceManager`](/api/resourcer/resource-manager)
 
 ### acl
 
-数据源的 ACL 实例，详见：
+数据源的 ACL 实例，详见： [`ACL`](/api/acl/acl)
 
 ## API
 
