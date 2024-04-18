@@ -6,9 +6,11 @@
 
 ### 添加区块
 
-![20240418120045](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240418120045.mp4)
+<video width="100%" height="440" controls>
+      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240418120045.mp4" type="video/mp4">
+</video>
 
-### 区块设置项
+## 区块设置项
 
 ![20240418120317](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240418120317.png)
 
@@ -23,11 +25,25 @@
 ![20240408160228](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408160228.png)
 
 ![20240408160844](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408160844.png)
-### 配置字段
 
-- [网格区块字段](/handbook/ui/fields/field-settings/common/detail-form-item)
-### 配置操作
+## 配置字段
 
-- 全局操作
-- 行操作
+### 本表字段
 
+![20240418123118](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240418123118.png)
+
+### 关系表字段
+
+![20240418123147](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240418123147.png)
+
+网格区块字段配置项可参考 [详情字段](/handbook/ui/fields/generic/detail-form-item)
+
+## 配置操作
+
+### 全局操作
+
+![20240418122905](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240418122905.png)
+
+### 行操作
+
+![20240418122951](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240418122951.png)
