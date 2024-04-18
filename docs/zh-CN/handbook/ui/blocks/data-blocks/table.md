@@ -83,6 +83,7 @@
 - [编辑](/handbook/ui/actions/types/edit)
 - [复制](/handbook/action-duplicate)
 - [删除](/handbook/ui/actions/types/delete)
+- [弹窗](/handbook/ui/actions/types/pop-up)
 - [更新记录](/handbook/ui/actions/types/update-record)
 - [自定义请求](/handbook/action-custom-request)
 
