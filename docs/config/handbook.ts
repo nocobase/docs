@@ -60,6 +60,12 @@ export default [
             // subTitle: '@nocobase/plugin-data-source-external-postgres',
             link: '/handbook/data-source-external-postgres',
           },
+          {
+            title: 'External：HTTP API',
+            'title.zh-CN': '外部数据源：HTTP API',
+            // subTitle: '@nocobase/plugin-data-source-external-postgres',
+            link: '/handbook/data-source-http-api',
+          },
         ],
       },
       {

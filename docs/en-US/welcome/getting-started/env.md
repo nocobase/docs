@@ -275,6 +275,32 @@ TELEMETRY_METRIC_READER=console,prometheus
 TELEMETRY_TRACE_PROCESSOR=console
 ```
 
+## Experimental Environment Variables
+
+### APPEND_PRESET_LOCAL_PLUGINS
+
+Used to append preset local plugins, with the value being the package name (the `name` parameter in `package.json`), separated by commas for multiple plugins.
+
+:::info
+These will only appear in the plugin manager page after initializing installation with `nocobase install` or upgrading with `nocobase upgrade`.
+:::
+
+```bash
+APPEND_PRESET_LOCAL_PLUGINS=@my-project/plugin-foo,@my-project/plugin-bar
+```
+
+### APPEND_PRESET_BUILT_IN_PLUGINS
+
+Used to append built-in plugins that are automatically installed by default, with the value being the package name (the `name` parameter in `package.json`), separated by commas for multiple plugins.
+
+:::info
+These plugins will be automatically installed or upgraded during initialization with `nocobase install` or `nocobase upgrade`.
+:::
+
+```bash
+APPEND_PRESET_LOCAL_PLUGINS=@my-project/plugin-foo,@my-project/plugin-bar
+```
+
 ## Temporary Environment Variables
 
 The installation of NocoBase can be assited by setting temporary environment variables, such as:

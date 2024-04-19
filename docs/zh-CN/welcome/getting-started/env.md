@@ -272,6 +272,32 @@ TELEMETRY_METRIC_READER=console,prometheus
 TELEMETRY_TRACE_PROCESSOR=console
 ```
 
+## 实验性环境变量
+
+### APPEND_PRESET_LOCAL_PLUGINS
+
+用于附加预置的未激活插件，值为插件包名（package.json 的 name 参数），多个插件英文逗号分隔。
+
+:::info
+初始化安装 `nocobase install` 或升级 `nocobase upgrade` 后才会在插件管理器页面里显示。
+:::
+
+```bash
+APPEND_PRESET_LOCAL_PLUGINS=@my-project/plugin-foo,@my-project/plugin-bar
+```
+
+### APPEND_PRESET_BUILT_IN_PLUGINS
+
+用于附加内置并默认安装的插件，值为插件包名（package.json 的 name 参数），多个插件英文逗号分隔。
+
+:::info
+初始化安装 `nocobase install` 或升级 `nocobase upgrade` 时会自动安装或升级插件。
+:::
+
+```bash
+APPEND_PRESET_LOCAL_PLUGINS=@my-project/plugin-foo,@my-project/plugin-bar
+```
+
 ## 临时环境变量
 
 安装 NocoBase 时，可以通过设置临时的环境变量来辅助安装，如：
