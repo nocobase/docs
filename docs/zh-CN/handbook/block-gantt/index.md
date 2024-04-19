@@ -40,8 +40,31 @@
 - [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
 - [设置数据加载方式](/handbook/ui/blocks/block-settings/loading-mode)
 
-## 应用场景
+## 配置操作
 
-- 处理流程可视化：如将整个运单流程划分为不同的任务阶段，例如订单确认、包装、发货、运输、到达目的地等。每个任务阶段都可以在甘特图上表示为一个条形，其长度代表该阶段的持续时间。
+### 全局操作
 
-![](./static/BRIcbgJ8Do7SQ5xHshUcHVjdnMc.gif)
+![20240419213653](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419213653.png)
+
+- [筛选](/handbook/ui/actions/types/filter)
+- [添加](/handbook/ui/actions/types/add-new)
+- [删除](/handbook/ui/actions/types/delete)
+- [刷新](/handbook/ui/actions/types/refresh)
+- [导入](/handbook/action-import)
+- [导出](/handbook/action-export)
+- [添加数据](/handbook/action-add-record)
+- [批量更新](/handbook/action-bulk-update)
+- [批量编辑](/handbook/action-bulk-edit)
+
+### 行操作
+
+![20240419213823](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419213823.png)
+
+- [查看](/handbook/ui/actions/types/view)
+- [编辑](/handbook/ui/actions/types/edit)
+- [复制](/handbook/action-duplicate)
+- [删除](/handbook/ui/actions/types/delete)
+- [弹窗](/handbook/ui/actions/types/pop-up)
+- [更新记录](/handbook/ui/actions/types/update-record)
+- [自定义请求](/handbook/action-custom-request)
+- 提交至工作流
