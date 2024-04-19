@@ -5,45 +5,51 @@
 ## 介绍
 
 以日历视图显示事件和日期相关的数据，适用于会议安排、活动计划等。
-## 使用手册
 
-### 添加区块
+## 添加区块
 
-- **以 Collection 为数据源使用，在页面里添加**
+<video width="100%" height="440" controls>
+      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419201640.mp4" type="video/mp4">
+</video>
 
-![20240408162004](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408162004.png)
+1. 标题字段: 用于显示在日历条形上的信息；
+2. 开始时间: 任务的开始时间；
+3. 结束时间: 任务的结束时间；
 
-![20240408170049](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408170049.png)
-
-1. 标题字段: 用于显示在日历条形上的信息
-2. 开始时间: 任务的开始时间
-3. 结束时间: 任务的结束时间
-
-点击任务条,同一任务条高亮，并弹出弹窗，可配置相关区块
+点击任务条,同一任务条高亮，并弹出弹窗。
 
 ![20240408171928](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408171928.png)
 
-- **以 Assocation 为数据源使用，在弹窗里添加（关系区块）**
+## 区块设置项
 
-订单表中有多对多关系字段「商品」
 
-![20240408170828](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408170828.png)
-### 区块设置项
+![20240419203321](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419203321.png)
 
-![20240408173339](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408173339.png)
+### 展示农历
 
-- 展示农历
+![20240419203603](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419203603.png)
 
-![20240408173259](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408173259.png)
 - [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
 - [设置数据范围](/handbook/ui/blocks/block-settings/data-scope)
 - [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
+### 设置数据范围
 
+![20240419203751](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419203751.png)
 
+更多内容参考 [设置数据范围](/handbook/ui/blocks/block-settings/data-scope)
 
-### 配置字段
+## 配置操作
 
-### 配置操作
+![20240419203424](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419203424.png)
 
-- 全局操作
-- 行操作
+### 今天
+
+日历区块的"今天"按钮提供了便捷的导航功能，允许用户在翻页到其他日期后快速返回到当前日期所在的日历页。
+
+![20240419203514](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419203514.png)
+
+### 切换视图
+
+默认是月
+
+![20240419203349](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419203349.png)
