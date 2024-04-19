@@ -2,6 +2,9 @@
 
 <PluginInfo name="block-calendar"></PluginInfo>
 
+## 安装
+
+内置插件，无需安装。
 ## 介绍
 
 以日历视图显示事件和日期相关的数据，适用于会议安排、活动计划等。
