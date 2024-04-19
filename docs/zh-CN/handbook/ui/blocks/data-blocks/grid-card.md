@@ -66,8 +66,7 @@
 - [导出](/handbook/action-export)
 ### 行操作
 
-![20240418122951](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240418122951.png)
-
+![20240419222251](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419222251.png)
 
 - [编辑](/handbook/ui/actions/types/edit)
 - [删除](/handbook/ui/actions/types/delete)
