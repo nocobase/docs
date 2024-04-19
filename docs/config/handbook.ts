@@ -583,11 +583,6 @@ export default [
                 link: '/handbook/ui/blocks/block-settings/loading-mode',
               },
               {
-                title: 'Records per page',
-                'title.zh-CN': '每页显示数',
-                link: '/handbook/ui/blocks/block-settings/per-page',
-              },
-              {
                 title: 'Connect data blocks',
                 'title.zh-CN': '连接数据区块',
                 link: '/handbook/ui/blocks/block-settings/connect-block',

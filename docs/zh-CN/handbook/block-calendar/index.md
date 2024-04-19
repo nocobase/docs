@@ -37,7 +37,6 @@
 ![20240408173259](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408173259.png)
 - [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
 - [设置数据范围](/handbook/ui/blocks/block-settings/data-scope)
-- [每页显示数量](/handbook/ui/blocks/block-settings/per-page)
 - [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
 
 
