@@ -12,8 +12,7 @@
 
 ## 区块设置项
 
-![20240418120317](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240418120317.png)
-
+![20240419220708](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419220708.png)
 ### 数据范围
 
 <video width="100%" height="440" controls>
