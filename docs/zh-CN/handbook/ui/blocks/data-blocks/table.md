@@ -1,5 +1,8 @@
 # 表格区块
 
+## 介绍
+
+表格区块是 NocoBase 内置的核心数据区块之一，以表格形式展示和管理结构化数据。具备灵活的配置选项，可定制列数、列宽和排序规则，同时支持数据范围设置、筛选、搜索以及编辑等多种数据操作，提升数据管理效率。
 ## 添加区块
 
  <video width="100%" height="440" controls>
@@ -10,7 +13,7 @@
 
 ![20240415215319](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415215319.png)
 
-### 数据范围
+### 设置数据范围
 
 示例：默认筛选「状态」为已发货的单据。
 
@@ -39,6 +42,7 @@
 - [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
 - [设置数据加载方式](/handbook/ui/blocks/block-settings/loading-mode)
 - [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
+
 
 ## 配置字段
 
