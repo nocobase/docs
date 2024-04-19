@@ -64,9 +64,9 @@ DB_DIALECT=mysql
 
 ```bash
 # 相对路径
-DB_HOST=storage/db/nocobase.db
+DB_STORAGE=storage/db/nocobase.db
 # 绝对路径
-DB_HOST=/your/path/nocobase.db
+DB_STORAGE=/your/path/nocobase.db
 ```
 
 ### DB_HOST
