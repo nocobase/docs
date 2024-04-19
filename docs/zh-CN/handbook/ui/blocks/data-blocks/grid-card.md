@@ -59,6 +59,20 @@
 
 ![20240418122905](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240418122905.png)
 
+- [筛选](/handbook/ui/actions/types/filter)
+- [添加](/handbook/ui/actions/types/add-new)
+- [删除](/handbook/ui/actions/types/delete)
+- [刷新](/handbook/ui/actions/types/refresh)
+- [导入](/handbook/action-import)
+- [导出](/handbook/action-export)
 ### 行操作
 
 ![20240418122951](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240418122951.png)
+
+
+- [编辑](/handbook/ui/actions/types/edit)
+- [删除](/handbook/ui/actions/types/delete)
+- [弹窗](/handbook/ui/actions/types/pop-up)
+- [更新记录](/handbook/ui/actions/types/update-record)
+- [自定义请求](/handbook/action-custom-request)
+- 提交至工作流
