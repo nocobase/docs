@@ -1138,7 +1138,7 @@ export default [
         children: [
           {
             title: 'Overview',
-            'title.zh-CN': '概览',
+            'title.zh-CN': '概述',
             link: '/handbook/data-visualization',
           },
           {
@@ -1167,13 +1167,13 @@ export default [
             'title.zh-CN': '开发指南',
             children: [
               {
-                title: 'API',
-                'title.zh-CN': 'API 参考',
+                title: 'Extend chart types',
+                'title.zh-CN': '扩展图表类型',
                 link: '/handbook/data-visualization/dev/',
               },
               {
-                title: 'Step by step',
-                'title.zh-CN': '示例教程',
+                title: 'Example of integrating ECharts',
+                'title.zh-CN': 'ECharts 集成示例',
                 link: '/handbook/data-visualization/step-by-step',
               },
             ],

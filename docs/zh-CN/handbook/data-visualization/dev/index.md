@@ -1,8 +1,131 @@
-# API参考
+# 扩展图表类型
 
-NocoBase 当前使用 [G2Plot](https://g2plot.antv.antgroup.com/) 作为默认的图表库，提供了常用的图表组件。除了默认的图表组件，NocoBase 还支持扩展其他图表组件，也可以接入其他图表库组件，比如: ECharts. 这一部分主要介绍如何扩展接入新的图表组件。
+## 概述
+
+NocoBase 使用 <a href="https://g2plot.antv.antgroup.com/" target="_blank">Ant Design Charts</a> 作为默认的图表库，内置了常用的图表类型。除了内置的图表类型，NocoBase 还支持自己扩展接入其他图表类型，也可以接入其他图表库，比如: ECharts. 这一部分主要介绍如何扩展一个新的图表类型。
+
+## 定义图表
+
+在可视化插件中，每个图表类型都用一个类来定义，这个类需要按照 [ChartType](#charttype) 接口的定义进行实现。为了方便理解和开发，我们提供了 [Chart](#chart) 基类，对 `ChartType` 做了部分实现。大多数情况下，扩展的图表类型只需要继承 `Chart` 类，并补充相应的方法即可。
+
+```ts
+class CustomChart extends Chart {
+  constructor({ name, title, Component, config }: ChartProps) {
+    // ...
+  }
+
+  init(
+    fields: FieldOption[],
+    {
+      measures,
+      dimensions,
+    }: { measures: MeasureProps[]; dimensions: DimensionProps[] },
+  ) {
+    // ...
+  }
+
+  getProps({ data, general, advanced, fieldProps }: RenderProps) {
+    // ...
+  }
+
+  getReference() {
+    // ...
+  }
+}
+```
+
+### 图表信息
+
+一个图表类型的基本信息包括：
+
+| 参数        | 说明               |
+| ----------- | ------------------ |
+| `name`      | 标识               |
+| `title`     | 展示标题           |
+| `Component` | 渲染图表使用的组件 |
+| `config`    | 基础可视化配置表单 |
+
+<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404192352571.png"/>
+
+示例：
+
+```ts
+new CustomChart({
+  name: 'custom',
+  title: 'Custom Chart',
+  Component: CustomChart,
+  config: ['xField', 'yField', 'seriesField'],
+});
+```
+
+具体的用法参考 [Chart](#chart)
+
+### 图表配置初始化
+
+当用户选择了一个图表时，我们可能希望根据用户的数据查询配置，对图表的配置项做初始化处理，减少用户的手动配置操作。  
+每次用户选择一个图表后，插件内部会尝试调用图表类的 `init()` 的方法，并传递当前数据表的所有字段配置和当前的度量和纬度配置，`init()` 方法可以根据参数执行初始化图表配置的逻辑。
+`Chart` 类内部实现了 `infer()` 方法，可以用于简单推导 x 轴字段、y 轴字段和分类字段的初始配置。  
+示例：
+
+```ts
+init(
+  fields: FieldOption[],
+  {
+    measures,
+    dimensions,
+  }: { measures: MeasureProps[]; dimensions: DimensionProps[] },
+) {
+  const { xField, yField, seriesField } = this.infer(fields, { measures, dimensions });
+  return {
+    general: {
+      xField: xField?.value,
+      yField: yField?.value,
+      seriesField: seriesField?.value,
+    },
+  };
+}
+```
+
+### 获取图表组件属性
+
+在得到用户配置的图表配置信息以后，我们可能还需要进一步处理，才能作为相应的属性传递给渲染图表的组件。`getProps()` 方法接收图表数据、图表配置和有关的字段信息作为参数，我们可以将这些参数进一步处理，并返回最终传递给图表组件的属性。
+
+以「统计」图表为例：
+
+```ts
+getProps({ data, fieldProps, general, advanced }: RenderProps) {
+  const record = data[0] || {};
+  const field = general?.field;
+  const props = fieldProps[field];
+  return {
+    value: record[field],
+    formatter: props?.transformer,
+    ...general,
+    ...advanced,
+  };
+}
+```
+
+### 获取图表组件参考信息
+
+`getReference()` 方法主要是获取当前图表类型的参考文档信息。
+
+```ts
+getReference() {
+  return {
+    title: this.title,
+    link: `https://ant.design/components/${this.name}`,
+  };
+}
+```
 
 ## 添加图表
+
+定义好图表类以后，我们还需要将类实例添加到数据可视化插件中。在选择图表的时候，图表分组展示，默认图表分组为「内置」(Built-in).
+
+<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404201042045.png"/>
+
+我们可以添加一组图表，也可以像已有分组添加图表。
 
 ```typescript
 import DataVisualization from '@nocobase/plugin-data-visualization'
@@ -20,132 +143,181 @@ class CustomChartsPlugin extends Plugin {
 
     // Append a chart to an exist group
     // The name of the chart is required to be unique in a group
-    plugin.charts.add('Built-in', CustomChart);
+    plugin.charts.add('Built-in', new CustomChart({
+      // ...
+    }));
   }
 }
 ```
 
-### 方法
+参考 [ChartGroup](#chartgroup)
 
-#### `addGroup`
+## 示例
 
-添加一组图表
+- [src/client/chart/g2plot](https://github.com/nocobase/nocobase/tree/main/packages/plugins/%40nocobase/plugin-data-visualization/src/client/chart/g2plot)
 
-- name `string` - 分组 key, 不能和已有的重复
-- charts `ChartType[]` - 图表数组
+- [src/client/chart/antd](https://github.com/nocobase/nocobase/tree/main/packages/plugins/%40nocobase/plugin-data-visualization/src/client/chart/antd)
 
-#### `setGroup`
+- [ECharts 集成示例](../step-by-step/index.md)
 
-设置一组图表，可以用于覆盖已有分组
+## API
 
-- name `string` - 分组 key
-- charts `ChartType[]` - 图表数组
+### ChartGroup
 
-#### `add`
+#### `addGroup()`
 
-向已有分组中追加一个图表，图表的名字
-
-- group `string` - 分组 key
-- chart `ChartType` - 图表
-
-## ChartType
-
-`/src/client/chart/chart.ts`
-
-`ChartType` 定义了一个图表类需要包含的属性和接口。
-
-### 属性
-
-- name `string` - 图表类型的唯一标识 (key)
-- title `string` - 图表类型展示时使用的标题
-- component `React.FC<any>` - 渲染图表使用的 React 组件
-- schema `ISchema` - 图表基础可视化配置使用的 UI Schema
-
-![](./static/FHzPbretYo6KWexv9wccM91Hnff.png)
-
-### 接口
-
-#### init
+添加一组图表。
 
 ```typescript
-init?: (
-    fields: FieldOption[],
-    query: {
-      measures?: QueryProps['measures'];
-      dimensions?: QueryProps['dimensions'];
-    },
-  ) => {
-    general?: any;
-    advanced?: any;
-  };
+import DataVisualization from '@nocobase/plugin-data-visualization'
+
+class CustomChartsPlugin extends Plugin {
+  async load() {
+    const plugin = this.app.pm.get(DataVisualization);
+
+    // Add a group of charts
+    plugin.charts.addGroup('custom', [...]);
+  }
+}
 ```
 
-可选。初始化默认图表配置。
+**签名**
 
-参数：
+- `addGroup(name: string, charts: ChartType[])`
 
-1. 当前 Collection 的 fields 元数据
-2. 当前度量和维度配置
+**详细信息**
 
-返回：
+| 参数     | 类型          | 说明             |
+| -------- | ------------- | ---------------- |
+| `name`   | `string`      | 图表分组唯一标识 |
+| `charts` | `ChartType[]` | 图表数组         |
 
-- general - 图表基础配置部分
-- advanced - 图表 JSON 配置部分
+#### `add()`
 
-（此处类型定义较多，不一一列出，请参考源码。）
-
-#### getProps
+向已有分组添加图表。
 
 ```typescript
-export type RenderProps = {
-  data: Record<string, any>[];
-  general: any;
-  advanced: any;
-  fieldProps: {
-    [field: string]: {
-      label: string;
-      transformer: (val: any) => string;
-    };
-  };
+import DataVisualization from '@nocobase/plugin-data-visualization';
+
+class CustomChartsPlugin extends Plugin {
+  async load() {
+    const plugin = this.app.pm.get(DataVisualization);
+
+    plugin.charts.add(
+      'Built-in',
+      new CustomChart({
+        // ...
+      }),
+    );
+  }
+}
+```
+
+**签名**
+
+- `add(group: string, chart: ChartType)`
+
+**详细信息**
+
+| 参数    | 类型        | 说明             |
+| ------- | ----------- | ---------------- |
+| `group` | `string`    | 图表分组唯一标识 |
+| `chart` | `ChartType` | 图表             |
+
+#### `setGroup()`
+
+设置一组图表，覆盖原有图表。
+
+```typescript
+import DataVisualization from '@nocobase/plugin-data-visualization'
+
+class CustomChartsPlugin extends Plugin {
+  async load() {
+    const plugin = this.app.pm.get(DataVisualization);
+    // Set a group of charts,
+    // can be used for overriding an exist group
+    plugin.charts.setGroup('custom', [...]);
+  }
+}
+```
+
+**签名**
+
+- `setGroup(name: string, charts: ChartType[])`
+
+**详细信息**
+
+| 参数     | 类型          | 说明             |
+| -------- | ------------- | ---------------- |
+| `name`   | `string`      | 图表分组唯一标识 |
+| `charts` | `ChartType[]` | 图表数组         |
+
+### Chart
+
+#### `constructor()`
+
+构造函数，新建一个 `Chart` 实例。
+
+**签名**
+
+- `constructor({ name, title, Component, config }: ChartProps)`
+
+**类型**
+
+```ts
+export type ChartProps = {
+  name: string;
+  title: string;
+  Component: React.FC<any>;
+  config?: Config[];
 };
 
-getProps(props: RenderProps): any;
+export type FieldConfigProps = Partial<{
+  name: string;
+  title: string;
+  required: boolean;
+  defaultValue: any;
+}>;
+export type ConfigProps =
+  | FieldConfigProps
+  | AnySchemaProperties
+  | (() => AnySchemaProperties);
+export type Config =
+  | (ConfigProps & {
+      property?: string;
+    })
+  | string;
 ```
 
-将数据、图表配置、字段属性、数据转换等图表相关的配置元数据，转换成渲染图表的对应组件的属性，也可以返回一些不暴露配置的默认属性。这个方法通常需要根据使用的图表组件 API 来实现。
+**详细信息**
 
-#### getReference
+| 属性        | 类型                  | 说明                     |
+| ----------- | --------------------- | ------------------------ |
+| `name`      | `string`              | 图表类型标识             |
+| `title`     | `string`              | 图表展示标题             |
+| `Component` | `React.FC<any>`       | 图表渲染组件             |
+| `config`    | [`Config[]`](#config) | 可选。图表可视化配置表单 |
 
-```typescript
-getReference?: () => {
-    title: string;
-    link: string;
-  };
+##### Config
+
+`config` 支持以下几种写法，可以混合使用：
+
+1. UI Schema 字段配置, 在 UI Schema 中如果想使用在「数据配置」部分已经配置好的字段，可以使用 `x-reactions': '{{ useChartFields }}'`.
+
+```ts
+{
+  xField: {
+    title: 'xField',
+    type: 'string',
+    'x-decorator': 'FormItem',
+    'x-component': 'Select',
+    'x-reactions': '{{ useChartFields }}',
+    required,
+  }
+}
 ```
 
-可选。获取当前图表组件的参考文档。
-
-## Chart
-
-`Chart` 类对 `ChartType` 做了基础的实现，通常接入一个新的图表，只需要 `new Chart` 或者 `extends Chart` 即可。
-
-### 属性
-
-- name `string` - 图表类型的唯一标识 (key)
-- title `string` - 图表类型展示时使用的标题
-- component `React.FC<any>` - 渲染图表使用的 React 组件
-- config `Config[]` - 图表配置的 UI Schema 通过 `config` 获取
-
-#### config
-
-`/src/client/chart/configs.ts`
-
-`config` 接收一个配置数组，`Chart` 类中的 `schema getter` 会将配置转换为 UI Schema, 用于图表的基础配置。
-
-配置支持以下几种写法，可以混合使用：
-
-1. 原始的 UI Schema, 在 UI Schema 如果想使用在“数据配置”部分已经配置好的字段，可以使用 `x-reactions': '{{ useChartFields }}'`.
-2. 使用预定义好的 UI Schema
+2. 使用预定义好的 UI Schema.
 
 例如: `config: ['field']`
 
@@ -164,7 +336,7 @@ getReference?: () => {
 }
 ```
 
-1. 使用预定义的 UI Schema, 但是替换部分参数，其中 `property` 为预定义 UI Schema 的 key
+3. 使用预定义的 UI Schema, 但是替换部分属性值，其中 `property` 为预定义 UI Schema 的标识.
 
 ```typescript
 config: [
@@ -193,49 +365,288 @@ config: [
 }
 ```
 
-可以通过 `addConfigs` 方法增加新的预定义 UI Schema.
+所有预定义的 UI Schema 可以参考 <a href="https://github.com/nocobase/nocobase/blob/main/packages/plugins/%40nocobase/plugin-data-visualization/src/client/chart/configs.ts" target="_blank">`/src/client/chart/config.ts`</a>.  
+也可以通过 [`addConfigs()`](#addconfigs) 方法增加新的预定义 UI Schema.
 
-其他用法可以参考 `/src/client/chart/g2plot/index.ts`
+#### `addConfigs()`
 
-### 方法
+添加预定义的图表可视化配置表单的 UI Schema.
 
-#### infer
-
-```typescript
-infer: (
-    fields: FieldOption[],
-    { measures, dimensions }: {
-      measures?: QueryProps['measures'];
-      dimensions?: QueryProps['dimensions'];
+```ts
+// Add
+const booleanField = ({
+  name,
+  title,
+  defaultValue = false,
+}: FieldConfigProps) => {
+  return {
+    [name || 'field']: {
+      'x-content': lang(title || 'Field'),
+      type: 'boolean',
+      'x-decorator': 'FormItem',
+      'x-component': 'Checkbox',
+      default: defaultValue,
     },
-  ) => {
-    xField: FieldOption;
-    yField: FieldOption;
-    seriesField: FieldOption;
-    yFields: FieldOption[];
   };
+};
+chart.addConfigs({ booleanField });
+
+// Usage
+new Chart({
+  config: [
+    'booleanField',
+    {
+      property: 'booleanField',
+      name: 'customBooleanField',
+      title: 'Custom Boolean Field',
+      defaultValue: true,
+    },
+  ],
+});
 ```
 
-`infer` 方法用于根据数据配置中的度量和维度，初步推断出推断出图表配置中的各字段值，减少重复配置。
+**签名**
 
-`infer` 方法接收两个参数：
+- `addConfigs(configs: { [key: string]: (props: FieldConfigProps) => AnySchemaProperties })`
 
-1. 当前 Collection 的 fields 元数据，作为推断基础
-2. 当前度量和维度配置
+**类型**
 
-推断结果返回
+```ts
+export type FieldConfigProps = Partial<{
+  name: string;
+  title: string;
+  required: boolean;
+  defaultValue: any;
+}>;
+```
 
-- `xFields` - x 轴字段
-- `yFields` - y 轴字段
-- `seriesFields` - 分类字段，可用作 `colorFields`
-- `yFields` - 多个 y 轴字段，通常用于双轴图
+**详细信息**
 
-拿到推断结果以后，可以结合定义 [`init`方法](#init)，给图表配置做默认初始化。
+`addConfigs()` 接收一个对象，`key` 为配置的唯一标识，值为获取预定义 UI Schema 的方法。该方法接收可被替换的参数，并返回相应的 UI Schema 字段配置.
 
-## 示例
+##### FieldProps
 
-- [src/client/chart/g2plot](https://github.com/nocobase/nocobase/tree/main/packages/plugins/%40nocobase/plugin-data-visualization/src/client/chart/g2plot)
+| 属性           | 类型      | 说明     |
+| -------------- | --------- | -------- |
+| `name`         | `string`  | 字段名   |
+| `title`        | `string`  | 字段标题 |
+| `required`     | `boolean` | 是否必填 |
+| `defaultValue` | `any`     | 默认值   |
 
-- [src/client/chart/antd](https://github.com/nocobase/nocobase/tree/main/packages/plugins/%40nocobase/plugin-data-visualization/src/client/chart/antd)
+#### `init()`
 
-- [图表扩展教程](../step-by-step/index.md)
+选择图表时初始化图表配置。
+
+**签名**
+
+```ts
+init?: (
+  fields: FieldOption[],
+  query: {
+    measures?: MeasureProps[];
+    dimensions?: DimensionProps[];
+  },
+) => {
+  general?: any;
+  advanced?: any;
+};
+```
+
+**类型**
+
+```ts
+export type FieldOption = {
+  value: string;
+  label: string;
+  key: string;
+  alias?: string;
+  name?: string;
+  type?: string;
+  interface?: string;
+  uiSchema?: ISchema;
+  target?: string;
+  targetFields?: FieldOption[];
+};
+
+export type MeasureProps = {
+  field: string | string[];
+  aggregation?: string;
+  alias?: string;
+};
+
+export type DimensionProps = {
+  field: string | string[];
+  alias?: string;
+  format?: string;
+};
+```
+
+**详细信息**
+
+| 参数               | 类型             | 说明                     |
+| ------------------ | ---------------- | ------------------------ |
+| `fields`           | `FieldOption[]`  | 当前数据表字段的相关属性 |
+| `query.measures`   | `MeasureProps[]` | 度量字段配置             |
+| `query.dimensions` | `DimensionProps` | 维度字段配置             |
+
+#### `infer()`
+
+图表初始配置推导。
+
+```ts
+// pie chart
+init(fields, { measures, dimensions }) {
+  const { xField, yField } = this.infer(fields, { measures, dimensions });
+  return {
+    general: {
+      colorField: xField?.value,
+      angleField: yField?.value,
+    },
+  };
+};
+```
+
+**签名**
+
+```ts
+infer: (fields: FieldOption[], query: {
+  measures?: MeasureProps[];
+  dimensions?: DimensionProps[];
+}) => {
+  xField: FieldOption;
+  yField: FieldOption;
+  seriesField: FieldOption;
+  colorField: FieldOption;
+  yFields: FieldOption[];
+}
+```
+
+**详细信息**
+
+| 属性          | 类型            | 说明          |
+| ------------- | --------------- | ------------- |
+| `xField`      | `FieldOption`   | x 轴字段      |
+| `yField`      | `FieldOption`   | y 轴字段      |
+| `seriesField` | `FieldOption`   | 分类字段      |
+| `colorField`  | `FieldOption`   | 颜色字段      |
+| `yFields`     | `FieldOption[]` | 多个 y 轴字段 |
+
+#### `getProps()`
+
+将图表数据、图表配置元数据处理转换成图表渲染组件需要的属性。
+
+**签名**
+
+- `getProps({ data, general, advanced, fieldProps }: RenderProps)`
+
+**类型**
+
+```ts
+export type RenderProps = {
+  data: Record<string, any>[];
+  general: any;
+  advanced: any;
+  fieldProps: {
+    [field: string]: {
+      label: string;
+      transformer: Transformer;
+      interface: string;
+    };
+  };
+};
+```
+
+| 属性         | 类型                              | 说明                                 |
+| ------------ | --------------------------------- | ------------------------------------ |
+| `data`       | `Record<string, any>[]`           | 图表原始数据                         |
+| `general`    | `any`                             | 图表可视化表单配置                   |
+| `advanced`   | `any`                             | 图表 JSON 配置                       |
+| `fieldProps` | `{ [field: string]: FieldProps }` | 数据表字段的信息，可用于处理图形显示 |
+
+##### FieldProps
+
+| 属性          | 类型          | 说明               |
+| ------------- | ------------- | ------------------ |
+| `label`       | `string`      | 字段名展示标签     |
+| `transformer` | `Transformer` | 字段值数据转换函数 |
+| `interface`   | `string`      | 字段 interface     |
+
+#### `getReference()`
+
+获取图表组件的参考文档信息。
+
+```ts
+getReference() {
+  return {
+    title: this.title,
+    link: `https://ant.design/components/${this.name}`,
+  };
+}
+```
+
+**签名**
+
+```ts
+getReference?: () => {
+  title: string;
+  link: string;
+};
+```
+
+### ChartType
+
+#### `name`
+
+- `string`. 图表类型标识。
+
+#### `title`
+
+- `string`. 图表展示标题。
+
+#### `Component`
+
+- `React.FC<any>`. 图表渲染组件。
+
+#### `schema`
+
+- `ISchema`. 图表可视化配置 UI Schema.
+
+#### `init()`
+
+图表配置初始化方法。
+
+**签名**
+
+```ts
+init?: (
+  fields: FieldOption[],
+  query: {
+    measures?: MeasureProps[];
+    dimensions?: DimensionProps[];
+  },
+) => {
+  general?: any;
+  advanced?: any;
+};
+```
+
+#### `getProps()`
+
+图表组件属性处理和获取。
+
+**签名**
+
+- `getProps(props: RenderProps): any`
+
+#### `getReference()`
+
+获取图表组件参考文档信息。
+
+**签名**
+
+```ts
+getReference?: () => {
+  title: string;
+  link: string;
+};
+```

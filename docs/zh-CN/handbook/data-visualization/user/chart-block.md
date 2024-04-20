@@ -15,8 +15,8 @@
 ## 配置
 
 - 图表区块中的图表可以像普通区块一样，在图表区块中，自由拖拽和组织。
-- 点击“配置” (Configure) 按钮，可以对当前图表进行修改。
+- 点击“配置” (Configure) 按钮，可以修改当前图表的配置。
 - 点击“复制” (Duplicate) 按钮，可以快速复制当前图表。
-- 可以“编辑区块标题” (Edit block title)，给当前图表添加标题说明。
+- 点击“删除” (Delete) 按钮，可以删除当前图表。
 
-![](./static/2023-11-28-15-19-16.png)
+<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404192011039.png"/>
