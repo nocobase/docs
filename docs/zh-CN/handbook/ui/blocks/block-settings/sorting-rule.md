@@ -6,11 +6,17 @@
 
 ![20240407192159](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407192159.png)
 
-## 单个排序规则
+![20240421115056](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240421115056.png)
+
+目前仅支持按本表字段进行排序
+
+## 使用手册
+
+### 单个排序规则
 
 ![20240407192248](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407192248.png)
 
-## 多个排序规则
+### 多个排序规则
 
 适用于复杂的排序需求,如先按照订单状态排序，然后在同一订单状态内按照收货时间排序
 

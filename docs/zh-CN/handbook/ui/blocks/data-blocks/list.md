@@ -59,7 +59,7 @@
 
 ### 全局操作
 
-![20240418114509](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240418114509.png)
+![20240421115811](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240421115811.png)
 
 - [筛选](/handbook/ui/actions/types/filter)
 - [添加](/handbook/ui/actions/types/add-new)
