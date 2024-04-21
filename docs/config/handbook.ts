@@ -1178,6 +1178,11 @@ export default [
               },
             ],
           },
+          {
+            title: 'FAQ',
+            'title.zh-CN': '常见问题',
+            link: '/handbook/data-visualization/faq',
+          },
         ],
       },
       {
