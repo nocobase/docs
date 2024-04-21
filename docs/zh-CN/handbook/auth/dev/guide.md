@@ -1,12 +1,31 @@
 # 扩展认证类型
 
-## 概览
+## 概述
 
-NocoBase 支持按需要扩展用户认证类型。下面介绍如何注册服务端接口和客户端用户界面。
+NocoBase 支持按需要扩展用户认证类型。用户认证一般有两种类型，一种是在 NocoBase 应用 内完成用户身份判断，如密码登录，短信登录等；另一种是由第三方服务判断用户身份，并将结果通过回调通知 NocoBase 应用，如 OIDC, SAML 等认证方式。两种不同类型的认证方式在 NocoBase 中的认证流程基本如下：
+
+### 不依赖第三方回调
+
+1. 客户端使用 NocoBase SDK 调用登录接口 `api.auth.signIn()`，请求登录接口 `auth:signIn`，同时将当前使用的认证器标识通过请求头 `X-Authenticator` 携带给后端。
+2. `auth:signIn` 接口根据请求头中的认证器标识，转发到认证器对应的认证类型，由该认证类型注册的认证类中的 `validate` 方法进行相应的逻辑处理。
+3. 客户端从 `auth:signIn` 接口响应中拿到用户信息和认证 `token`, 将 `token` 保存到 Local Storage, 完成登录。这一步由 SDK 内部自动完成处理。
+
+<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404211416013.png"/>
+
+### 依赖第三方回调
+
+1. 客户端通过自己注册的接口（比如 `auth:getAuthUrl`) 获取第三方登录 URL, 并按协议携带应用名称、认证器标识等信息。
+2. 跳转到第三方 URL 完成登录，第三方服务调用 NocoBase 应用的回调接口 (需要自己注册，比如 `auth:redirect`), 返回认证结果，同时返回应用名称、认证器标识等信息。
+3. 回调接口方法，解析参数获得认证器标识，通过 `AuthManager` 获取对应的认证类，主动调用 `auth.signIn()` 方法。`auth.signIn()` 方法会调用 `validate()` 方法处理鉴权逻辑。
+4. 回调方法拿到认证 `token`, 再 302 跳转回前端页面，并在 URL 参数带上 `token` 和认证器标识，`?authenticator=xxx&token=yyy`.
+
+<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404211451794.png"/>
+
+下面介绍如何注册服务端接口和客户端用户界面。
 
 ## 服务端
 
-### 接口
+### 认证接口
 
 NocoBase 内核提供了扩展认证类型的注册和管理。扩展登录插件的核心逻辑处理，需要继承内核的 `Auth` 抽象类，并对相应的标准接口进行实现。  
 完整 API 参考 [Auth](../../../api/auth/auth.md).
@@ -23,6 +42,15 @@ class CustomAuth extends Auth {
 }
 ```
 
+内核也注册了用户认证相关的基本资源操作。
+
+| API            | 说明             |
+| -------------- | ---------------- |
+| `auth:check`   | 判断用户是否登录 |
+| `auth:signIn`  | 登录             |
+| `auth:signUp`  | 注册             |
+| `auth:signOut` | 注销登录         |
+
 多数情况下，扩展的用户认证类型也可以沿用现有的 JWT 鉴权逻辑来生成用户访问 API 的凭证。内核的 `BaseAuth` 类对 `Auth` 抽象类做了基础实现，参考 [BaseAuth](../../../api/auth/base-auth.md). 插件可以直接继承 `BaseAuth` 类以便复用部分逻辑代码，降低开发成本。
 
 ```javascript
@@ -35,14 +63,14 @@ class CustomAuth extends BaseAuth {
     super({ ...config, userCollection });
   }
 
-  // 实现用户登录逻辑
+  // 实现用户认证逻辑
   async validate() {}
 }
 ```
 
 ### 用户数据
 
-在 NocoBase 应用中，默认情况下相关的表定义为：
+在实现用户认证逻辑时，通常涉及用户数据处理。在 NocoBase 应用中，默认情况下相关的表定义为：
 
 | 数据表                | 作用                                               | 插件                                                        |
 | --------------------- | -------------------------------------------------- | ----------------------------------------------------------- |
@@ -139,3 +167,17 @@ class CustomAuthPlugin extends Plugin {
 ![](./static/2023-12-20-12-19-51.png)
 
 上方为通用的认证器配置，下方为可注册的自定义配置表单部分。
+
+### 请求接口
+
+在客户端发起用户认证相关的接口请求，可以使用 NocoBase 提供的 SDK.
+
+```ts
+import { useAPIClient } from '@nocobase/client';
+
+// use in component
+const api = useAPIClient();
+api.auth.signIn(data, authenticator);
+```
+
+详细 API 参考 [@nocobase/sdk - Auth](../../../api/sdk/auth.md).
