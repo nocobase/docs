@@ -23,7 +23,7 @@
 
 ### 设置排序规则
 
-示例：按发货日期倒序排序。
+示例：将单据按发货日期倒序排序显示。
 
 ![20240415215509](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415215509.png)
 
@@ -31,7 +31,7 @@
 
 ### 连接数据区块
 
-订单表格区块和订单详情区块实现联动。
+示例：订单表格区块和订单详情区块连接，实现筛选联动。
 
   <video width="100%" height="440" controls>
       <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415221426.mp4" type="video/mp4">
@@ -46,11 +46,11 @@
 
 ## 配置字段
 
-### 显示字段（本表字段）
+### 本表字段
 
 ![20240415223714](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415223714.png)
 
-### 显示关系字段（关系表字段）
+### 关系表字段
 
 ![20240415223746](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415223746.png)
 
