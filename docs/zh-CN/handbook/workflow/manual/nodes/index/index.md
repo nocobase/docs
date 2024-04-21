@@ -6,12 +6,13 @@
 工作流的触发器不属于节点，只是以入口节点的形式展示在流程图中，但与节点是不同的概念，详情请参考[触发器](../../triggers/index/index.md)的内容。
 :::
 
-从功能角度，目前已实现的节点可以分为四大类（共 14 种节点）：
+从功能角度，目前已实现的节点可以分为四大类（共 18 种节点）：
 
 - 流程控制类
   - [条件判断](../condition/index.md)
   - [运算](../calculation/index.md)
   - [结束流程](../end/index.md)
+  - [自定义变量](../../../../workflow-variable/index/index.md)（插件 @nocobase/plugin-workflow-variable 提供）
   - [循环](../../../../workflow-loop/index/index.md)（插件 @nocobase/plugin-workflow-loop 提供）
   - [并行分支](../../../../workflow-parallel/index/index.md)（插件 @nocobase/plugin-workflow-parallel 提供）
   - [延时](../../../../workflow-delay/index/index.md)（插件 @nocobase/plugin-workflow-deley 提供）
