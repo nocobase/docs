@@ -2,7 +2,9 @@
 
 <PluginInfo name="block-iframe"></PluginInfo>
 
-- 可以在页面或弹窗中添加
+## 介绍
+Iframe 区块允许将外部网页或内容嵌入到当前页面中。
+## 添加区块
 
 
 ![20240408220259](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408220259.png)
