@@ -14,6 +14,8 @@
 
 ## 区块设置项
 
+![20240421172115](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240421172115.png)
+
 ### 连接数据区块
 
 表单筛选区块+详情区块实现联动
@@ -21,6 +23,7 @@
   <video width="100%" height="440" controls>
       <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240421170947.mp4" type="video/mp4">
     </video>
+更多内容参考 [连接数据区块](/handbook/ui/blocks/block-settings/connect-block)
 
 - [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
 - [联动规则](/handbook/ui/blocks/block-settings/linkage-rule)

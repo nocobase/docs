@@ -1,41 +1,44 @@
 # 折叠面板
 
+## 介绍
+
+Collapse 筛选区块需要连接数据区块使用，支持选择关系字段和选项字段作为筛选条件，以折叠面板为展示效果。用户可以通过点击条件来筛选数据，实现对数据区块的精确筛选
+
 ## 使用手册
 
 ### 添加区块
 
-- **以 Collection 为数据源使用，在页面里添加**
-
 ![20240408212222](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408212222.png)
 
-可以配置关系字段和选项字段为筛选字段，以折叠面板效果展示
-
-![20240408212301](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408212301.png)
-
-如下图,配置订单折叠面板区块与订单表格区块实现筛选联动
+示例：配置订单折叠面板区块与订单表格区块实现筛选联动
 
   <video width="100%" height="440" controls>
       <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408212817.mp4" type="video/mp4">
     </video>
 
-- **以 Assocation 为数据源使用，在弹窗里添加**
+## 区块设置项
 
-订单表中有多对多关系字段「商品」和一对多关系字段「运单」,仅支持对多的关系数据表
+![20240421173427](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240421173427.png)
+
+### 连接数据区块
+
+示例：订单表中有多对多关系字段「商品」和一对多关系字段「运单」
 
 ![20240408213540](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408213540.png)
 
-可以连接弹窗内同数据表区块实现筛选联动
-
+连接弹窗内同数据表区块实现筛选联动
 
   <video width="100%" height="440" controls>
       <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408214743.mp4" type="video/mp4">
     </video>
 
-### 区块设置项
+更多内容参考 [连接数据区块](/handbook/ui/blocks/block-settings/connect-block)
 
 - [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
-- [连接数据区块](/handbook/ui/blocks/block-settings/connect-block)
 - [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
 
-### 配置字段
+## 配置字段
 
+仅支持关系字段和选项字段为筛选字段
+
+![20240408212301](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408212301.png)
