@@ -13,6 +13,7 @@
 ## 区块设置项
 
 ![20240419220708](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419220708.png)
+
 ### 数据范围
 
 <video width="100%" height="440" controls>
@@ -25,13 +26,15 @@
 
 ![20240408160228](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408160228.png)
 
+为不同屏幕尺寸配置列数
+
 ![20240408160844](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408160844.png)
 
 ### 设置数据加载方式
 
 示例：连接数据区块+设置数据加载方式
 
-订单表和商品表是多对多的关系，订单表格区块和商品网格区块实现数据筛选联动，同时设置网格区块数据加载方式为筛选数据后
+订单表和商品表是多对多的关系，订单表格区块和商品网格卡片区块实现数据筛选联动，同时设置网格区块数据加载方式为“筛选数据后”
 
 <video width="100%" height="440" controls>
 <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419175643.mp4" type="video/mp4">
@@ -64,6 +67,7 @@
 - [刷新](/handbook/ui/actions/types/refresh)
 - [导入](/handbook/action-import)
 - [导出](/handbook/action-export)
+
 ### 行操作
 
 ![20240419222251](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419222251.png)

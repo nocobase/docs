@@ -48,9 +48,13 @@ Kanban （看板）是一种敏捷项目管理工具，旨在实现工作可视�
 
 ## 区块设置项
 
-### 数据范围
+### 设置数据范围
 
-数据范围配置项允许用户定义区块所显示的数据的默认筛选条件，支持设置变量/静态值。
+示例：默认筛选促销的商品
+
+![20240422095659](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422095659.png)
+
+更多内容参考 [设置数据范围](/handbook/ui/blocks/block-settings/data-scope)
 
 ## 配置字段
 

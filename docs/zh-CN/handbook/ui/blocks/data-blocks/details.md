@@ -18,7 +18,7 @@
 
 ![20240417122910](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417122910.png)
 
-更多内容参考 [数据范围](/handbook/ui/blocks/block-settings/data-scope)
+更多内容参考 [设置数据范围](/handbook/ui/blocks/block-settings/data-scope)
 
 ### 设置排序规则
 

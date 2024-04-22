@@ -7,7 +7,7 @@
 ![20240417220017](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417220017.png)
 
 ![20240417220039](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417220039.png)
-
+## 使用说明
 支持简单的单位换算，千分位分隔符，前后缀，精确度，科学记数法。
 
 示例：对订单金额进行格式化，包括添加货币符号（人民币符号￥）、千分位分隔符（如逗号或点号）、小数精度等，使金额显示清晰易读。
@@ -18,3 +18,4 @@
 使用科学记数法。
 
 ![20240417220416](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417220416.png)
+
