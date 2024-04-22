@@ -83,9 +83,9 @@ Database file path (required when using a SQLite database)
 
 ```bash
 ### Relative path
-DB_HOST=storage/db/nocobase.db
+DB_STORAGE=storage/db/nocobase.db
 # Absolute path
-DB_HOST=/your/path/nocobase.db
+DB_STORAGE=/your/path/nocobase.db
 ```
 
 ### DB_HOST
