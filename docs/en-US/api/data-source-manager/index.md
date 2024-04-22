@@ -31,26 +31,26 @@
 type DataSourceHook = (dataSource: DataSource) => void;
 ```
 
-### registerDataSourceClass()
+### registerDataSourceType()
 
 注册数据源类型及其类。
 
 #### 签名
 
-- `registerDataSourceClass(type: string, dataSourceClass: typeof DataSource)`
+- `registerDataSourceType(type: string, dataSourceClass: typeof DataSource)`
 
-### getDataSourceClass()
+### getDataSourceType()
 
 获取数据源类。
 
 #### 签名
 
-- `getDataSourceClass(type: string): typeof DataSource`
+- `getDataSourceType(type: string): typeof DataSource`
 
-### createDataSourceInstance()
+### buildDataSourceByType()
 
 根据注册的数据源类型和实例参数，创建数据源实例。
 
 #### 签名
 
-- `createDataSourceInstance(type: string, options: any): DataSource`
+- `buildDataSourceByType(type: string, options: any): DataSource`
