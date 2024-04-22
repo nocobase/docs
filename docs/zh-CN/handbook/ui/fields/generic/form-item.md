@@ -6,7 +6,7 @@
 
 ![20240408221914](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408221914.png)
 
-显示关联表的字段（一对一或多对一的关系字段）。
+显示关联表的字段（一对一或多对一的关系字段），显示为只读。
 
 ![20240413222636](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240413222636.png)
 

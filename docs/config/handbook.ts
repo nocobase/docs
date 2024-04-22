@@ -727,6 +727,11 @@ export default [
                 link: '/handbook/ui/fields/field-settings/number-format',
               },
               {
+                title: 'Data scope',
+                'title.zh-CN': '设置数据范围',
+                link: '/handbook/ui/fields/field-settings/data-scope',
+              },
+              {
                 title: 'Pattern',
                 'title.zh-CN': '显示模式',
                 link: '/handbook/ui/fields/field-settings/pattern',

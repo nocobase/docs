@@ -11,6 +11,7 @@
 支持简单的单位换算，千分位分隔符，前后缀，精确度，科学记数法。
 
 示例：对订单金额进行格式化，包括添加货币符号（人民币符号￥）、千分位分隔符（如逗号或点号）、小数精度等，使金额显示清晰易读。
+
 <video width="100%" height="440" controls>
       <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417220140.mp4" type="video/mp4">
 </video>
