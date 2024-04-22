@@ -2,13 +2,6 @@
 
 `DataSourceManager` 是多 `dataSource ` 实例的管理类。
 
-
-## 成员
-
-### factory
-
-`DataSource` 实例的工厂类，可在其中注册 `dataSource` 类型，以及创建 `dataSource` 实例。
-
 ## API
 
 ### add()
@@ -37,3 +30,27 @@
 ```typescript
 type DataSourceHook = (dataSource: DataSource) => void;
 ```
+
+### registerDataSourceClass()
+
+注册数据源类型及其类。
+
+#### 签名
+
+- `registerDataSourceClass(type: string, dataSourceClass: typeof DataSource)`
+
+### getDataSourceClass()
+
+获取数据源类。
+
+#### 签名
+
+- `getDataSourceClass(type: string): typeof DataSource`
+
+### createDataSourceInstance()
+
+根据注册的数据源类型和实例参数，创建数据源实例。
+
+#### 签名
+
+- `createDataSourceInstance(type: string, options: any): DataSource`
