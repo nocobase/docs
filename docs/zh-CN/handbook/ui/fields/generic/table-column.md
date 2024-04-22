@@ -24,4 +24,8 @@
 
 更多内容参考 [数值格式化](/handbook/ui/fields/field-settings/number-format)
 
+### 排序
 
+对某一列进行排序，只针对当前页的排序，支持升序/降序/默认排序，关系字段暂不支持开启排序
+
+![20240422115501](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422115501.png)
