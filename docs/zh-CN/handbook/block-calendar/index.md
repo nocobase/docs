@@ -34,7 +34,6 @@
 ![20240419203603](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419203603.png)
 
 - [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
-- [设置数据范围](/handbook/ui/blocks/block-settings/data-scope)
 - [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
 ### 设置数据范围
 
