@@ -8,4 +8,4 @@
 
 ![20240413095309](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240413095309.png)
 
-- 详情可查看工作流的 [操作后事件](/handbook/workflow-action-trigger)
+更多内容查看工作流的 [操作后事件](/handbook/workflow-action-trigger)
