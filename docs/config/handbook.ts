@@ -924,6 +924,11 @@ export default [
         ],
       },
       {
+        title: 'Variables',
+        'title.zh-CN': '变量',
+        link: '/handbook/ui/variables',
+      },
+      {
         title: 'Mobile client',
         'title.zh-CN': '移动端',
         link: '/handbook/mobile-client',
