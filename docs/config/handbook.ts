@@ -732,6 +732,11 @@ export default [
                 link: '/handbook/ui/fields/field-settings/data-scope',
               },
               {
+                title: 'Title field',
+                'title.zh-CN': '标题字段',
+                link: '/handbook/ui/fields/field-settings/title-field',
+              },
+              {
                 title: 'Pattern',
                 'title.zh-CN': '显示模式',
                 link: '/handbook/ui/fields/field-settings/pattern',
