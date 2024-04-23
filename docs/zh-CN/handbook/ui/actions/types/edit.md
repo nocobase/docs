@@ -6,7 +6,7 @@
 
 ![20240412115736](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240412115736.png)
 
-按需配置数据区块
+按需配置数据区块。
 
 ![20240421110538](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240421110538.png)
 
@@ -14,7 +14,13 @@
 
 ![20240421110728](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240421110728.png)
 
-- [编辑按钮](/handbook/ui/actions/action-settings/edit-button)：编辑按钮的标题、颜色、图标
-- [联动规则](/handbook/ui/actions/action-settings/linkage-rule)：动态控制按钮的状态（显示/禁用）
-- [打开模式](/handbook/ui/actions/action-settings/open-mode)：弹窗/抽屉
-- [弹窗尺寸](/handbook/ui/actions/action-settings/popup-size)：默认尺寸为中等（大/中/小）
+### 联动规则
+
+示例：已收货订单禁止编辑。
+![20240423211911](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240423211911.png)
+
+更多内容参考 [操作的联动规则](/handbook/ui/actions/action-settings/linkage-rule)。
+
+- [编辑按钮](/handbook/ui/actions/action-settings/edit-button)：编辑按钮的标题、颜色、图标；
+- [打开模式](/handbook/ui/actions/action-settings/open-mode)：弹窗/抽屉；
+- [弹窗尺寸](/handbook/ui/actions/action-settings/popup-size)：默认尺寸为中等（大/中/小）；

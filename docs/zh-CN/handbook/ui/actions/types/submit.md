@@ -2,7 +2,7 @@
 
 ## 介绍
 
-提交操作用于保存表单数据（表单区块特有）。
+提交操作用于保存表单数据（表单区块特有），还可以结合工作流，实现数据自动化流程。
 
 ![20240413093210](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240413093210.png)
 
@@ -33,4 +33,3 @@
 
 - [编辑按钮](/handbook/ui/actions/action-settings/edit-button)
 - [二次确认](/handbook/ui/actions/action-settings/double-check)
-- [绑定工作流](/handbook/ui/actions/action-settings/bind-workflow)
