@@ -5,11 +5,11 @@
 
 ER 关系如下
 
-![alt text](./image-2.png)
+![alt text](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/eaeeac974844db05c75cf0deeedf3652.png)
 
 字段配置
 
-![alt text](./image-1.png)
+![alt text](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/3b4484ebb98d82f832f3dbf752bd84c9.png)
 
 ## 参数说明
 
@@ -37,3 +37,4 @@ ON DELETE 是指在删除父表中的记录时对相关子表中的外键引用�
 - SET NULL：当删除父表中的记录时，将子表中与之关联的外键值设为 NULL。
 - RESTRICT：默认选项，当试图删除父表中的记录时，如果存在与之关联的子表记录，则拒绝删除父表记录。
 - NO ACTION：与 RESTRICT 类似，如果存在与之关联的子表记录，则拒绝删除父表记录。
+

@@ -36,4 +36,5 @@ Check if federated is activated
 show engines
 ```
 
-![Alt text](./image-10.png)
+![Alt text](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/ac5d97cf902ad164e141633a41a23e46.png)
+

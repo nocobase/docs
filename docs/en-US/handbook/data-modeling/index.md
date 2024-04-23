@@ -8,13 +8,13 @@ NocoBase's data modeling has the following features:
 
 Used to create various collections (data tables) or connect to existing collections (data tables)
 
-![Alt text](./image-1.png)
+![Alt text](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/6815410c40801b48c91682953c89744d.png)
 
 ## Provides a visualization interface like ER Diagrams
 
 ER diagrams are used to extract entities and their relationships from user and business requirements. They provide an intuitive and easy-to-understand way to describe data models. With ER diagrams, we can better understand the main data entities in the system and their relationships.
 
-![Alt text](./image-5.png)
+![Alt text](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/7d11018dc2e75a8d6f16739a07d644f2.png)
 
 ## Provides a variety of field types
 
@@ -34,19 +34,19 @@ Used to predefine data models under certain structures. The currently supported 
 - Expression collection: Used for dynamic expression scenarios in workflows;
 - SQL collection: Not an actual database table, but quickly presents SQL queries in a structured manner.
 
-![Alt text](./image-2.png)
+![Alt text](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/228c6ac05a055d051a9fb371064c81eb.png)
 
 ## Supports connecting data table views
 
 Provides a more flexible and higher-level way of data access, making analysis and reporting easier, enhancing the usability and maintainability of data.
 
-![Alt text](./image-4.png)
+![Alt text](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/0a221bf0c89a6760e49974533102f303.png)
 
 ## Supports FDW technology
 
 "FDW" is the acronym for "Foreign Data Wrapper". FDW is a database technology that allows database systems to directly access and query data from external data sources (used as local tables) without copying the data to the local database. This technology makes it easy to integrate and query data from different sources in the database.
 
-![Alt text](./image-3.png)
+![Alt text](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/34ef7b5d17ff3652428359b03a6f3dfc.png)
 
 ## Supports collection inheritance
 
@@ -61,10 +61,11 @@ Here are some common features of inheritable collections:
 
 This design pattern helps to reduce data redundancy, simplify the database model, and make the data easier to maintain. However, it needs to be used with caution as inheritable collections can increase the complexity of queries, especially when dealing with the entire inheritance hierarchy. Databases that support inheritable collections generally provide specific syntax and tools to manage and query these collection structures.
 
-![Alt text](./image-6.png)
+![Alt text](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/4f1dec721319a609bf70eb56a9e98730.png)
 
 ## Supports external data sources
 
 It can connect to various external data sources. Currently supported data sources include common relational databases like MySQL, MariaDB, and PostgreSQL. In addition, more types of data sources can be expanded through plugins and can be any common databases, or platforms providing API (SDK).
 
-![Alt text](./image-7.png)
+![Alt text](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/f293b9528d896f8e43ecdf921ab74477.png)
+

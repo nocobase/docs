@@ -24,5 +24,5 @@
 
 ## 深入了解
 
-- [使用手册](./manual)
-- [开发指南](./development)
+- [使用手册](./manual/index.md)
+- [开发指南](./development/index.md)

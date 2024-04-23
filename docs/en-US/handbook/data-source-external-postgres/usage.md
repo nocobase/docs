@@ -9,13 +9,13 @@
 
 ### 配置字段
 
-![Alt text](./image-6.png)
+![Alt text](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/7073071bbe2bd96d1b8a33636e42d916.png)
 
 #### 不支持的字段类型
 
 不支持的字段类型会单独展示出来，这些字段需要开发适配之后才能使用
 
-![Alt text](./image-7.png)
+![Alt text](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2f2067fc66406ddd543392e351e344ce.png)
 
 #### 系统字段的适配
 
@@ -35,11 +35,12 @@
 
 添加区块
 
-![Alt text](./image-8.png)
+![Alt text](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/54214cd28e5b84b8ab9495e53e19e2db.png)
 
 表格区块
 
-![Alt text](./image-10.png)
+![Alt text](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/59ca6c24d683f4bac4b504d5eedfcdab.png)
 
 ### 作为工作流的数据来源
+
 

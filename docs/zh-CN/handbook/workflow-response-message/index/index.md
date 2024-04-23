@@ -18,7 +18,7 @@
 
 在支持的工作流类型中，可以在流程中的任意位置中添加“响应消息”节点，点击流程中的加号（“+”）按钮，添加“响应消息”节点：
 
-![添加节点](./add-response-message-node.png)
+![添加节点](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/eac2b3565e95e4ce59f340624062ed3d.png)
 
 响应消息会在整个请求过程中以数组的形式存在，在流程中执行到任意响应消息节点时均会将新的消息内容追加至数组中，在服务端发送响应内容时，会将所有消息一并发送至客户端。
 
@@ -26,7 +26,7 @@
 
 消息内容整体是一个模板字符串，其中可以插入变量，在节点配置中可以任意组织该模板内容：
 
-![节点配置](./configuration-message-content.png)
+![节点配置](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/d5fa5f4002d50baf3ba16048818fddfc.png)
 
 在流程执行到该节点时，会对模板进行解析，并生成出消息内容的结果，上面的配置中，变量“局域变量 / 循环所有产品 / 循环对象 / 产品 / 标题”会在实际流程中被替换为特定的值，例如：
 
@@ -34,7 +34,7 @@
 产品 “iPhone 14 pro” 的库存不足
 ```
 
-![消息内容](./response-message-error.png)
+![消息内容](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/06bd4a6b6ec499c853f0c39987f63a6a.png)
 
 ### 使用场景
 

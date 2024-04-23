@@ -8,13 +8,13 @@ NocoBase 的数据建模具有以下特色：
 
 用于创建各种模型（数据表）或连接已有模型（数据表）
 
-![Alt text](./image-1.png)
+![Alt text](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/6815410c40801b48c91682953c89744d.png)
 
 ## 提供了类 ER 图的可视化界面
 
 ER 图用于从用户和业务需求中提取实体和它们之间的关系，它提供了一种直观且易于理解的方式来描述数据模型，通过 ER 图可以更清晰地理解系统中的主要数据实体和它们之间的联系。
 
-![Alt text](./image-5.png)
+![Alt text](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/7d11018dc2e75a8d6f16739a07d644f2.png)
 
 ## 提供了丰富的字段类型
 
@@ -34,19 +34,19 @@ NocoBase 的数据表字段包括「数据类型」和「UI 类型」两个维�
 - 表达式表：用于工作流的动态表达式场景；
 - SQL 表：并不是实际的数据库表，而是快速的将 SQL 查询，结构化的展示出来。
 
-![Alt text](./image-2.png)
+![Alt text](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/228c6ac05a055d051a9fb371064c81eb.png)
 
 ## 支持连接数据表视图
 
 提供了更灵活、更高层次的数据访问方式，使得分析和报告更为简便，提高了数据的可用性和可维护性。
 
-![Alt text](./image-4.png)
+![Alt text](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/0a221bf0c89a6760e49974533102f303.png)
 
 ## 支持 FDW 技术
 
 "FDW" 是 "Foreign Data Wrapper" 的缩写，中文是 "外部数据包装器"。FDW 是一种数据库技术，允许数据库系统直接访问和查询外部数据源中的数据（当做本地表使用），而无需将数据复制到本地数据库。这种技术使得在数据库中可以轻松地集成和查询来自不同来源的数据。
 
-![Alt text](./image-3.png)
+![Alt text](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/34ef7b5d17ff3652428359b03a6f3dfc.png)
 
 ## 支持表继承
 
@@ -61,10 +61,10 @@ NocoBase 的数据表字段包括「数据类型」和「UI 类型」两个维�
 
 这种设计模式有助于减少数据冗余，简化数据库模型，同时使数据更容易维护。然而，需要谨慎使用，因为继承表可能会增加查询的复杂性，特别是在处理整个继承层次结构时。支持继承表的数据库系统通常提供了特定的语法和工具来管理和查询这种表结构。
 
-![Alt text](./image-6.png)
+![Alt text](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/4f1dec721319a609bf70eb56a9e98730.png)
 
 ## 支持外部数据源
 
 可以连接各种外部数据源，目前已支持的数据源有常见的关系型数据库，比如 MySQL、MariaDB、PostgreSQL。除此之外，也可以通过插件扩展更多类型，可以是常见的各类数据库，也可以是提供 API（SDK）的平台。
 
-![Alt text](./image-7.png)
+![Alt text](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/f293b9528d896f8e43ecdf921ab74477.png)

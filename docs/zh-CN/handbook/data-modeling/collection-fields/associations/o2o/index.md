@@ -12,11 +12,11 @@
 
 ER 关系
 
-![alt text](./image-1.png)
+![alt text](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/4359e128936bbd7c9ff51bcff1d646dd.png)
 
 字段配置
 
-![alt text](./image.png)
+![alt text](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/7665a87e094b4fb50c9426a108f87105.png)
 
 ## 一对一（所属关系）
 
@@ -24,11 +24,11 @@ ER 关系
 
 ER 关系
 
-![](./image-2.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/31e7cc3e630220cf1e98753ca24ac72d.png)
 
 字段配置
 
-![alt text](./image-3.png)
+![alt text](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/4f09eeb3c7717d61a349842da43c187c.png)
 
 ## 参数说明
 

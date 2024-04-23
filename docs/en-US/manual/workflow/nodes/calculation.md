@@ -6,11 +6,11 @@
 
 在工作流配置界面中，点击流程中的加号（“+”）按钮，添加“运算”节点：
 
-![运算节点_添加](https://github.com/nocobase/nocobase/assets/525658/3c04dce4-fac5-4b78-980a-5be89c5639f2)
+![运算节点_添加](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/58a455540d26945251cd143eb4b16579.png)
 
 ## 节点配置
 
-![运算节点_节点配置](https://github.com/nocobase/nocobase/assets/525658/56a98294-3e28-4587-993e-4c04f76ecc69)
+![运算节点_节点配置](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/6a155de3f6a883d8cd1881b2d9c33874.png)
 
 ### 运算引擎
 
@@ -19,6 +19,8 @@
 :::info{title=提示}
 需要注意的是，两者在数组下标访问上有所区别，Math.js 的索引是从 `1` 开始，而 Formula.js 是从 `0` 开始。
 :::
+
+另外如果是需要简单的字符串拼接，可以直接使用“字符串模板”，该引擎会将表达式中的变量替换为对应的值，然后返回拼接后的字符串。
 
 ### 表达式
 
@@ -32,8 +34,6 @@
 
 通常一个订单内可能有多个商品，每个商品的价格和数量都不同，订单的总价需要计算所有商品的价格和数量的乘积之和。可以在加载订单明细列表（对多关系数据集）之后使用运算节点来计算订单的总价：
 
-<figure>
-    <img alt="运算节点_示例_节点配置" src="https://github.com/nocobase/nocobase/assets/525658/e0a8198a-44dd-4cc5-a34a-e58ce89e19d2" width="989" />
-</figure>
+![运算节点_示例_节点配置](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/85966b0116afb49aa966eeaa85e78dae.png)
 
 其中 Formula.js 的 `SUMPRODUCT` 函数可以计算两个相同长度数组每行的乘积之和，加总就可以得到订单的总价。

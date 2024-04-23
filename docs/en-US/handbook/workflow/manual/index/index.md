@@ -4,39 +4,39 @@
 
 从顶部菜单栏的插件配置菜单进入工作流插件的管理页面：
 
-![工作流插件管理入口](./567292f7-ce03-461d-b9d7-399eba825a52.png)
+![工作流插件管理入口](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/872169fb0cf277715178d1a6804e12cd.png)
 
 管理界面中会列出所有已创建的工作流：
 
-![工作流管理](./90e6937b-b8cd-4feb-add5-50bce8ffb564.png)
+![工作流管理](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/6d31e5c6c94a51513e6569dbc410c01f.png)
 
 点击“新建”按钮，创建一个新的工作流，选择数据表事件：
 
-![创建工作流](./03ec7908-72fa-43e9-a761-c3bd1e98a150.png)
+![创建工作流](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/57f23ce3c91d153ea235f95268a63d98.png)
 
 点击列表中的“配置”链接，进入工作流配置界面：
 
-![一个空的工作流](./683438dc-4da6-465b-a227-7c68db20b78f.png)
+![一个空的工作流](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/d6a3bc6b3fd03cba5bb10f142c38e2bf.png)
 
 然后点击触发器的卡片，打开触发器配置抽屉，选择一张之前创建的数据表（例如“文章”表），触发时机项选择“新增数据后”触发，点击“保存”按钮，完成触发器的配置：
 
-![配置触发器](./1127f5f2-1dd3-48e6-a0b0-725bdf371368.png)
+![配置触发器](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/f96015efe87759d6836d2a1c58d92884.png)
 
 接下来我们可以点击流程中的加号按钮为流程增加一个节点，例如选择一个运算节点，用于将触发器中的数据的“标题”字段与“ID”字段进行拼接计算：
 
-![新增运算节点](./ad5af5c4-705e-4de9-83b0-c06f54f51711.png)
+![新增运算节点](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/60eeee25e6847a91fad50784c8c508ad.png)
 
 点击节点卡片打开节点配置抽屉，使用 Formula.js 提供的运算函数 `CONCATENATE`，拼接“标题”与“ID”字段，两个字段通过变量选择器插入：
 
-![运算节点使用函数及变量](./cabf5289-0bfc-4768-b48e-b9c6b66b0434.png)
+![运算节点使用函数及变量](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/837e4851a4c70a1932542caadef3431b.png)
 
 之后再创建一个更新数据节点，用于将结果保存到“标题”字段中：
 
-![创建更新数据节点](./6a38b96b-2504-450e-a5a9-ecd4f826c575.png)
+![创建更新数据节点](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/494f72dff72b4410240b04c59cbbd322.png)
 
 同样的点击卡片打开更新数据节点的配置抽屉，选择“文章”表，更新的数据 ID 选择触发器中的数据 ID，更新的数据项选择“标题”，更新的数据值选择运算节点的结果：
 
-![配置更新数据节点](./c7303e35-c7e9-430b-b391-fc35a468c4cd.png)
+![配置更新数据节点](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2e147c93643e7ebc709b9b7ab4f3af8c.png)
 
 最后再点击右上角工具栏里的“启用”/“停用”开关，将工作流切换至启用状态，这样工作流就可以被触发执行了。
 
@@ -44,11 +44,11 @@
 
 回到系统主界面，通过文章区块创建一篇文章，填入文章标题：
 
-![创建文章数据](./7a190df6-4c1a-485f-8b2a-a5d1c0a7bb97.png)
+![创建文章数据](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/d21a1a5833d5f54f52678ea18e9922f2.png)
 
 提交后刷新区块后可以看到文章标题被自动更新为“文章标题 + 文章 ID”的形式：
 
-![被工作流修改的文章标题](./a3baed5d-060c-4b95-8c99-6e97389100eb.png)
+![被工作流修改的文章标题](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/3a700445896965c46c70ac51a07bbdb9.png)
 
 :::info{title=提示}
 由于数据表触发的工作流是异步执行的，所以在提交数据后的界面中无法马上看到数据更新，但片刻之后刷新页面或区块后即可看到更新的内容。
@@ -58,19 +58,19 @@
 
 刚才的工作流已经成功触发执行了一次，我们可以回到工作流的管理界面中查看到对应的执行历史：
 
-![查看工作流列表](./63be0410-8b86-4546-a8a2-835ad9bc3584.png)
+![查看工作流列表](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/92952de7fe6472db7d247a915e36100a.png)
 
 工作流列表中可以看到这个工作流已经产生了一次执行历史，点击次数的链接，可以打开对应工作流的执行历史记录：
 
-![对应工作流的执行历史列表](./60603a21-f1dc-410d-94dd-f22ad33a4b2f.png)
+![对应工作流的执行历史列表](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/00537af15c6ae43d745106178242bc09.png)
 
 再点击“查看”链接可以进入到当次执行的详情页面，可以看到每个节点的执行状态和结果数据：
 
-![工作流执行历史详情](./fd20ed59-2b66-4399-a718-aad81b4bd7e8.png)
+![工作流执行历史详情](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/93ec7ce25391d71cf7a109c9d03d5a48.png)
 
 触发器的触发上下文数据和节点执行的结果数据都可以通过点击对应卡片右上角的状态按钮打开查看，比如我们查看其中运算节点的结果数据：
 
-![运算节点结果](./1bf3f20b-f983-42c7-a70a-65b6f0e163d7.png)
+![运算节点结果](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/10c22b923d3de0a0d58fa9283780f592.png)
 
 可以看到运算节点的结果数据中包含了运算后的标题，这个标题就是后续更新数据节点更新的数据。
 
@@ -88,3 +88,4 @@
 - [进阶使用](../advanced/index.md)
 - [触发器介绍](../triggers/index/index.md)
 - [节点介绍](../nodes/index/index.md)
+

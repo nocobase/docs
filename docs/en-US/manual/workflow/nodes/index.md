@@ -9,20 +9,20 @@
 从功能角度，目前已实现的节点可以分为四大类（共 14 种节点）：
 
 - 流程控制类
-  - [条件判断](./condition)
-  - [运算](./calculation)
-  - [动态表达式运算](./dynamic-calculation)
-  - [循环](./loop)
-  - [并行分支](./parallel)
-  - [延时](./delay)
+  - [条件判断](./condition.md)
+  - [运算](./calculation.md)
+  - [动态表达式运算](./dynamic-calculation.md)
+  - [循环](./loop.md)
+  - [并行分支](./parallel.md)
+  - [延时](./delay.md)
 - 数据表操作
-  - [新增数据](./create)
-  - [更新数据](./update)
-  - [删除数据](./destroy)
-  - [查询数据](./query)
-  - [聚合查询](./aggregate)
-  - [SQL 操作](./sql)
+  - [新增数据](./create.md)
+  - [更新数据](./update.md)
+  - [删除数据](./destroy.md)
+  - [查询数据](./query.md)
+  - [聚合查询](./aggregate.md)
+  - [SQL 操作](./sql.md)
 - 人工处理
-  - [人工处理](./manual)
+  - [人工处理](./manual.md)
 - 外部调用
-  - [HTTP 请求](./request)
+  - [HTTP 请求](./request.md)
