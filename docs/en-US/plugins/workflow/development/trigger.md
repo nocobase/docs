@@ -79,4 +79,4 @@ triggers.register('interval', {
 
 注：客户端注册的触发器类型标识必须与服务端的保持一致，否则会导致错误。
 
-定义触发器类型的其他内容详见 [工作流 API 参考](../api#triggersregister) 部分。
+定义触发器类型的其他内容详见 [工作流 API 参考](../api/index.md#triggersregister) 部分。

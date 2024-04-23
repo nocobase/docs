@@ -140,4 +140,4 @@ instructions.register('randomString', {
 
 注：客户端注册的节点类型标识必须与服务端的保持一致，否则会导致错误。
 
-定义节点类型的其他内容详见 [工作流 API 参考](../api#instructionsregister) 部分。
+定义节点类型的其他内容详见 [工作流 API 参考](../api/index.md#instructionsregister) 部分。
