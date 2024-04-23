@@ -4,7 +4,7 @@
 
 #### 直接复制
 
-![](./static/U9VCbG9I6ohTzQxzvPIc6oR3nid.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2c0ac5d1a539de4b72b49b7d966d8c09.png)
 
 - 默认以直接复制的方式复制数据
 - 目标数据表：是指复制添加的目标数据表（在继承的场景下，可以复制给子表，直接复制只能复制添加到本表）
@@ -18,27 +18,27 @@
 
 可以设置本表或子表为复制添加的目标表
 
-![](./static/Ox76b54eho4fTUxdk67cjcjenCc.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/a072aa572fd0a0fe643eadf95471da2a.png)
 
 配置模板字段：模板字段将作为默认值填充到表单中，只会带出有勾选的字段值
 
-![](./static/KR15bOuXoo0u5QxZXmjcNbUJnoe.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/8032fa2025180ade275da55b97774b4d.png)
 
 「运单」（o2m）是复制的关系，调整其字段组件为子表单，可配置子表单中的字段
 
-![](./static/QqICbfLMMozpgBxYBpMcKuOKnmg.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/b13c9287bae8601646727a2e78b81be7.png)
 
 同步表单字段：完成表单配置后可点击同步表单字段按钮，会自动解析将表单中已配置的字段均勾选上（每次表单字段配置修改之后需要手动再同步一次），同步表单字段后可自定义调整模板字段
 
-![](./static/Pkf4bvn30oWEIjxrFmPc3d0lnPd.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/156b6d8d741521e63d12e49092414d58.png)
 
 点击复制操作会打开弹窗，并按照模板字段带出模板数据作为表单默认值填充，可修改数据后提交完成数据复制
 
-![](./static/RZhIbo49lo2vV5xV5hZc0jkfn1d.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/1c0a0ae0c59971f48b2282a68831d44b.png)
 
 如下图完整示例为订单列表配置复制操作
 
-![](./static/R3f2biRIdoEm7DxUO6Ec1abXnKc.gif)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/fa8a89abf0ba136df04b6d0d838eae4e.gif)
 
 #### 复制、引用、预加载的说明
 

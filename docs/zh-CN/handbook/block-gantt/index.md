@@ -12,9 +12,9 @@
 
 ## 添加区块
 
-![](./static/P3klb1WIOoL4msxQWiycleCgnPb.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/f064f8fadf52947c990f5dad97736f98.png)
 
-![](./static/LcyebGwVVoEBdvx4ZDicXOj1n8f.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/858112f44bc543973b6e5b03856a6360.png)
 
 - 标题字段：用于显示在甘特图条形上的信息；
 - 时间缩放等级：时间缩放等级，默认天；
@@ -22,7 +22,7 @@
 - 结束日期字段：每个任务的结束日期，必填；
 - 进度字段：设置表示进度（百分比字段）的字段，非必填；
 
-![](./static/MDvAbz30ooHoiQxkqRYcDGG1npb.gif)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/fff6fe1e1fe0a88d20f80b3bb7233608.gif)
 
 - 拖拽条形调整任务的开始日期和结束日期；
 - 拖拽进度条调整任务的进度；

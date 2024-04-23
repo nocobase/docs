@@ -2,67 +2,67 @@
 
 ## Department Management
 
-![](./static/2024-03-04-11-25-32.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/a6eb94a5cc85a6c7b310f33173a5259d.png)
 
 ### Create a New Department
 
-![](./static/2024-03-04-11-28-38.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/4857910991ae374b63251cee99511e93.png)
 
-![](./static/2024-03-04-11-27-44.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/0cd13d99dcd21ced0bb1683557f0b76b.png)
 
 ### Create a Sub-Department
 
-![](./static/2024-03-04-11-51-21.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/0be8c7db8d12c23f6fe137e7ce23688a.png)
 
-![](./static/2024-03-04-11-52-50.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2db2fc2037ed383edd60117a46fc9dd0.png)
 
 ### Edit Department
 
-![](./static/2024-03-04-11-57-41.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/a147319577e5cc36b5862c1e511f6722.png)
 
-![](./static/2024-03-04-11-57-54.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/f206f866753cf30ac78aadf4f76bad32.png)
 
 ### Change Superior Department
 
 Modify the superior department field in the department editing form. The current department and its sub-departments are not selectable.
 
-![](./static/2024-03-04-11-59-30.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/9d80ddf42f32c77186566ed8ada70128.png)
 
 ## Department Member Management
 
 ### View Department Member List
 
-![](./static/2024-03-04-11-54-00.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2aaf4d9bf55da105b5fca4e9f7e23ca7.png)
 
 ### Add Members to the Department
 
 A user can join multiple departments at the same time. The first department they join is the default main department. A user only has one main department.
 
-![](./static/2024-03-04-11-56-10.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/60afd282f33b555e6fe0662b9da544cc.png)
 
 Users who are already department members will not appear in the user selection list.
 
-![](./static/2024-03-04-11-56-23.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/6bcd93173c169973f970de35d2657993.png)
 
 ### Set Department Head
 
 Click on the owners field in the department editing form to select a department member as the owner. Multiple selections are supported. Members who are already department owner will not appear in the member selection list.
 
-![](./static/2024-03-04-12-00-58.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/92970546cbd0aeb5a8b6a36da87583bd.png)
 
 ### Configure Departments for Users
 
 In addition to adding members to the department, you can also configure departments for users from the user's perspective.
 
-![](./static/2024-03-04-12-04-03.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/ca82a802012572e225570e8be93a4094.png)
 
 Departments that have already been joined are not selectable.
 
-![](./static/2024-03-04-12-04-46.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/70e16d17ee9c4b5d43f8a5e1c633b177.png)
 
 ### Change Main Department
 
-![](./static/2024-03-04-12-05-59.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/da92dd1e10268adcd35445e9f1dac771.png)
 
 ## Department Role Management
 
@@ -72,18 +72,18 @@ There are two ways to associate roles with a department.
 
 The first is to select a role in the role field of the department editing form.
 
-![](./static/2024-03-04-20-27-04.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/70f77bb89aa1fb415c152a51a51cc23b.png)
 
 The second is to add departments to the corresponding role in role management.
 
-![](./static/2024-03-04-20-25-31.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/f2a7bec937cf2f179ce868a92b98416d.png)
 
 Departments that already have this role are not selectable.
 
-![](./static/2024-03-04-20-24-34.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/be10299893581e1f97a4e01ddd5c7e59.png)
 
 ## Search for Users and Departments
 
 Search for users by nickname, username, phone, email, and search for departments by department name.
 
-![](./static/2024-03-04-20-26-42.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2d71346a5400205b22436b4db331a9b8.png)

@@ -10,11 +10,11 @@
 
 1. 将数据区块保存为区块模板。
 
-![](./static/JNiLb7rksoY07ox092ycaarenGd.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/b7718cea8784587d53524ade3c5b0a82.png)
 
 1. 添加区块时，选择复制或引用模板。
 
-![](./static/ImutbF0YDoWldOxrPilcwQFHnSe.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/135df7344e0f3080199e4bb1071c2fa6.png)
 
 ## 复制和引用的区别
 

@@ -10,7 +10,7 @@ Refer to <a target="_blank" href="https://blog.nocobase.com/posts/organize-text-
 
 Duplicate texts across modules require separate translations.
 
-![](./static/2023-12-13-12-52-32.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/1c5fd02f1348787e1833bd3ece36c9aa.png)
 
 ### Removed `fallbackNS` option from `i18n` instance
 

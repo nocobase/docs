@@ -8,25 +8,25 @@
 - 页面
 - 链接
 
-![](./static/OpdHbIbJ8oZX75x777ycylHxn1Q.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/ccf6f42d3cc2677d440f9e33b9488d1c.png)
 
 ### 分组
 
 使用分组时，左侧会多出一个子菜单
 
-![](./static/LTdGbCxxHopt9ix1Nuncj73VnQb.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/e59b2088fd68666cd240a26566616a3e.png)
 
 ### 页面
 
 页面可以用于添加各种区块
 
-![](./static/SYzbbocHfoNFtsxomWJcUno7nog.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/4cd259f6b79f6792df72ccc291da2af9.png)
 
 ### 链接
 
 用于 URL 跳转
 
-![](./static/T0LTbjTBEo24UaxU9Btc6xgbnMf.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/80a6e6a875c565425224d9325332a1ad.png)
 
 ## 菜单项设计器
 
@@ -35,11 +35,11 @@
 - 拖拽移动
 - 菜单项配置
 
-![](./static/Jp3NbdeVBojspWxvcWhcuDTlnOe.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/963ba10e36d04fd258fea0e996231f68.png)
 
 ### 菜单项配置
 
-![](./static/ZLYibDXwToMdqRxMTy4cyTion1f.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/0a9a05bd88d8bad9d711102a730f351d.png)
 
 - 编辑：包括菜单项的标题、图标等
 - 移动到：除了拖拽移动以外，也可以通过「移动到」快速的移动菜单项

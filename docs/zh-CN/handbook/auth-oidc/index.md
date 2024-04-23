@@ -6,23 +6,23 @@ OIDC 插件遵循 OIDC (Open ConnectID) 协议标准，使用授权码模式 (Au
 
 ## 激活插件
 
-![](./static/2023-12-03-18-18-22.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/a494476c352a949a276d64e96e6ac587.png)
 
 ## 添加 OIDC 认证
 
 进入用户认证插件管理页面。
 
-![](./static/2023-12-03-18-19-33.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/4e598e7df963d7d23188afe3576456d6.png)
 
 添加 - OIDC
 
-![](./static/2023-12-03-18-19-48.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/1efbde1c0e2f4967efc1c4336be45ca2.png)
 
 ## 配置
 
 ### 基础配置
 
-![](./static/2024-01-11-10-41-56.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/d80715319639e1681a28a97ad3131f21.png)
 
 - Sign up automatically when the user does not exist - 当找不到可匹配绑定的已有用户时，是否自动创建新用户。
 - Issuer - issuer 由 IdP 提供，通常以 `/.well-known/openid-configuration` 结尾
@@ -33,14 +33,14 @@ OIDC 插件遵循 OIDC (Open ConnectID) 协议标准，使用授权码模式 (Au
 
 ### 字段映射
 
-![](./static/2024-01-11-10-40-02.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/92d63c8f6f4082b50d9f475674cb5650.png)
 
 - Field Map - 字段映射。Nocobase 端目前可供映射的字段有昵称、邮箱和手机号。默认昵称使用 `openid`.
 - Use this field to bind the user - 用于和已有用户匹配绑定的字段，可选择邮箱或用户名，默认为邮箱。需要IdP携带的用户信息包含 `email` 或 `username` 字段。
 
 ### 高级配置
 
-![](./static/2024-01-11-10-42-44.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/d9e8040118e8e2ecdc3c847f72bbb5a9.png)
 
 - HTTP - NocoBase 回调地址是否为 http 协议，默认 `https`.
 - Port - NocoBase 回调地址端口，默认为 `443/80`
@@ -54,7 +54,7 @@ OIDC 插件遵循 OIDC (Open ConnectID) 协议标准，使用授权码模式 (Au
 
 ### 使用
 
-![](./static/2024-01-11-10-43-39.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2edbea211232cea6d38c79630132418c.png)
 
 - 使用 (Usage) - 回调URL (Redirect URL) 用于复制并填写到 IdP 相应配置中。
 
@@ -66,4 +66,4 @@ OIDC 插件遵循 OIDC (Open ConnectID) 协议标准，使用授权码模式 (Au
 
 访问登录页面，点击登录表单下方按钮发起第三方登录。
 
-![](./static/2023-12-03-18-20-35.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/e493d156254c2ac0b6f6e1002e6a2e6b.png)

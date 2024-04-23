@@ -1,10 +1,10 @@
 # 树表
 
-![](./static/Q1OgbmzcHowD3fxFylUcGMBbndc.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/48ea3612a65ba18ea6d898b25a78c4f4.png)
 
 和普通表一样支持自定义设置数据表的行为
 
-![](./static/VDg1bTG3noShtXxtU7QcwGMKnch.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/f49bac32396d6fbdbf979de37a2546f7.png)
 
 树表模板的预定义字段
 
@@ -37,7 +37,7 @@
 
 树表创建后初始化字段
 
-![](./static/MmJhbxcoeo66DqxMDhaclBGPndh.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/0b06b5a954c8d40567d3dcafa2baff96.png)
 
 树表数据表模板是通过自关联字段实现树形结构的设计
 
@@ -49,4 +49,4 @@
 - 树表格 :默认开启（禁用时，数据将平铺返回）
 - 添加子记录：为当前记录添加子记录
 
-![](./static/MtYebfdtAook0ZxJZkfcrGTAnHh.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/97a7ddf0f26c323a2c986d10b43d7174.png)

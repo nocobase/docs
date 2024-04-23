@@ -4,12 +4,12 @@
 
 - 通过数据选择器选择关联数据
 
-![](./static/UyHLbOe4YoH5sBxTPFJcBhrxnme.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/4e21501fb12e3a44405988d2d33e7bd4.png)
 
 数据选择器以弹窗形式展示关系数据，在表格区块中可以配置更多目标表字段
 
-![](./static/DVSobGGxuoBncUxwz7Oc6MJfn5C.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/c4724501b0ad2d5d683782236de13b9d.png)
 
 - 通过数据选择器，不仅可以选择关联数据，还可对关系目标表进一步管理（新增、删除、导入导出等）
 
-![](./static/VEhzbnCSfooc1jxDr7EcGV4enaf.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/ca460a7aa9f0c7ca3bca28cc287979a3.png)

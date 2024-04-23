@@ -61,7 +61,7 @@ class CustomChartsPlugin extends Plugin {
 - component `React.FC<any>` - 渲染图表使用的 React 组件
 - schema `ISchema` - 图表基础可视化配置使用的 UI Schema
 
-![](./static/FHzPbretYo6KWexv9wccM91Hnff.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/0a884208a26048cf58d4027626df7078.png)
 
 ### 接口
 
