@@ -2,11 +2,11 @@
 
 ## 介绍
 
-删除操作用于删除数据记录（行按钮/批量操作按钮）
+删除操作用于删除数据记录，通过配置行删除按钮或批量操作按钮进行删除。
 
 ![20240413211215](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240413211215.png)
 
-### 操作配置项
+## 操作配置项
 
 ![20240413211439](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240413211439.png)
 

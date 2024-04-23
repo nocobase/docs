@@ -17,6 +17,8 @@
 
 ![20240422163640](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422163640.png)
 
+更多关于变量内容参考 [变量](/handbook/ui/variables)
+
 ### 关系字段联动
 
 关系字段之间通过数据设置数据范围实现联动。

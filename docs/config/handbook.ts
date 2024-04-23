@@ -558,16 +558,6 @@ export default [
             'title.zh-CN': '区块配置项',
             children: [
               {
-                title: 'Edit block title',
-                'title.zh-CN': '编辑区块标题',
-                link: '/handbook/ui/blocks/block-settings/block-title',
-              },
-              {
-                title: 'Set block height',
-                'title.zh-CN': '设置区块高度',
-                link: '/handbook/ui/blocks/block-settings/block-height',
-              },
-              {
                 title: 'Set the data scope',
                 'title.zh-CN': '设置数据范围',
                 link: '/handbook/ui/blocks/block-settings/data-scope',
@@ -596,6 +586,16 @@ export default [
                 title: 'Linkage rules',
                 'title.zh-CN': '联动规则',
                 link: '/handbook/ui/blocks/block-settings/linkage-rule',
+              },
+              {
+                title: 'Edit block title',
+                'title.zh-CN': '编辑区块标题',
+                link: '/handbook/ui/blocks/block-settings/block-title',
+              },
+              {
+                title: 'Set block height',
+                'title.zh-CN': '设置区块高度',
+                link: '/handbook/ui/blocks/block-settings/block-height',
               },
               {
                 title: 'Delete',
@@ -758,7 +758,7 @@ export default [
               },
               {
                 title: 'Edit tooltip',
-                'title.zh-CN': '编辑提示',
+                'title.zh-CN': '编辑提示信息',
                 link: '/handbook/ui/fields/field-settings/edit-tooltip',
               },
             ],
