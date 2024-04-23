@@ -10,11 +10,11 @@
 
 在工作流配置界面中，点击流程中的加号（“+”）按钮，添加“结束流程”节点：
 
-![结束流程_添加](./create-node.png)
+![结束流程_添加](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/672186ab4c8f7313dd3cf9c880b524b8.png)
 
 ## 节点配置
 
-![结束流程_节点配置](./configuration.png)
+![结束流程_节点配置](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/bb6a597f25e9afb72836a14a0fe0683e.png)
 
 ### 结束状态
 

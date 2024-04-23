@@ -33,38 +33,39 @@ Prerequisites
 
 Then install and activate the plugin through the plugin manager
 
-![Install and activate the plugin](./image.png)
+![Install and activate the plugin](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/f84276c5712851fb3ff33af3f1ff0f59.png)
 
 ## User Manual
 
 Under "Collection manager > Create collection", select "Connect to foreign data"
 
-![Connect External Data](./image-1.png)
+![Connect External Data](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/029d946a6d067d1c35a39755219d623c.png)
 
 In the "Database Server" dropdown, select an existing database service, or "Create Database Server"
 
-![Database Service](./image-2.png)
+![Database Service](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/766271708a911950a5599d60d6be4a4d.png)
 
 Create a database server
 
-![Create Database Service](./image-3.png)
+![Create Database Service](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/1e357216e04cc4f200bd6212827281c8.png)
 
 After selecting the database server, in the "Remote table" dropdown, select the data table you need to connect.
 
-![Select the data table you need to connect](./image-4.png)
+![Select the data table you need to connect](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/e91fd6152b52b4fc01b3808053cc8dc4.png)
 
 Configure field information
 
-![Configure field information](./image-5.png)
+![Configure field information](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/e618fecc5fe327f6a495e61405e5f040.png)
 
 If the remote table has structural changes, you can also "Sync from remote table"
 
-![Sync from Remote Table](./image-6.png)
+![Sync from Remote Table](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/3751a9a39f933889fb3fcc4d85a6f4ad.png)
 
 Remote table sync
 
-![Remote table sync](./image-7.png)
+![Remote table sync](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/13f18200e31ea223fdd8dadaff1e9d28.png)
 
 Finally, display it on the interface
 
-![Display on the interface](./image-9.png)
+![Display on the interface](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/368fca27a99277d9360ca81350949357.png)
+

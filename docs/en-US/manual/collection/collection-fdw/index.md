@@ -24,38 +24,38 @@ MySQL 通过 `federated` 引擎，需要激活，支持连接远程 MySQL 及其
 
 然后通过插件管理器安装并激活插件
 
-![安装并激活插件](./image.png)
+![安装并激活插件](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/f84276c5712851fb3ff33af3f1ff0f59.png)
 
 ## 使用手册
 
 在「数据表管理 > 创建数据表」 下拉中，选择「连接外部数据」
 
-![连接外部数据](./image-1.png)
+![连接外部数据](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/029d946a6d067d1c35a39755219d623c.png)
 
 在「数据库服务」下拉选项中，选择已存在的数据库服务，或者「创建数据库服务」
 
-![数据库服务](./image-2.png)
+![数据库服务](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/766271708a911950a5599d60d6be4a4d.png)
 
 创建数据库服务
 
-![创建数据库服务](./image-3.png)
+![创建数据库服务](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/1e357216e04cc4f200bd6212827281c8.png)
 
 选择数据库服务之后， 在「远程表」的下拉选项中，选择需要连接的数据表。
 
-![选择需要连接的数据表](./image-4.png)
+![选择需要连接的数据表](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/e91fd6152b52b4fc01b3808053cc8dc4.png)
 
 配置字段信息
 
-![配置字段信息](./image-5.png)
+![配置字段信息](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/e618fecc5fe327f6a495e61405e5f040.png)
 
 如果远程表有结构变化，也可以「从远程表同步」
 
-![从远程表同步](./image-6.png)
+![从远程表同步](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/3751a9a39f933889fb3fcc4d85a6f4ad.png)
 
 远程表同步
 
-![远程表同步](./image-7.png)
+![远程表同步](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/13f18200e31ea223fdd8dadaff1e9d28.png)
 
 最后，在界面里显示
 
-![在界面里显示](./image-9.png)
+![在界面里显示](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/368fca27a99277d9360ca81350949357.png)

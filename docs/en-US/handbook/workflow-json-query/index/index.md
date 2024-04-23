@@ -14,7 +14,7 @@
 
 在工作流配置界面中，点击流程中的加号（“+”）按钮，添加“JSON 解析”节点：
 
-![创建节点](./create-node.png)
+![创建节点](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/7de796517539ad9dfc88b7160f1d0dd7.png)
 
 :::info{title=提示}
 通常会将 JSON 解析节点创建在其他数据节点的下方，以便对其进行解析。
@@ -30,13 +30,13 @@ JSON 解析节点通过不同的解析引擎来支持不同的解析语法，可
 - [JSONPath Plus](https://jsonpath-plus.github.io/JSONPath/docs/ts/)
 - [JSONata](https://jsonata.org/)
 
-![解析引擎选择](./query-engine.png)
+![解析引擎选择](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/29be3b92a62b7d20312d1673e749f2ec.png)
 
 #### 数据源
 
 数据源可以是上游节点的结果，也可以是流程上下文中的数据对象，通常是一个没有内置结构化的数据对象，例如 SQL 节点的结果，或者 HTTP 请求节点的结果。
 
-![数据源](./datasource.png)
+![数据源](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/f5a97e20693b3d30b3a994a576aa282d.png)
 
 :::info{title=提示}
 通常数据表相关节点的数据对象都是通过数据表配置信息结构化过的，一般不需要通过 JSON 解析节点进行解析。
@@ -46,7 +46,7 @@ JSON 解析节点通过不同的解析引擎来支持不同的解析语法，可
 
 基于解析需求和解析引擎的不同，自定义的解析表达式。
 
-![解析表达式](./query-expression.png)
+![解析表达式](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/181abd162fd32c09b62f6aa1d1cb3ed4.png)
 
 :::info{title=提示}
 不同解析引擎提供不同的解析语法，具体可以查阅链接中的文档。
@@ -56,7 +56,7 @@ JSON 解析节点通过不同的解析引擎来支持不同的解析语法，可
 
 当解析的结果是一个对象（或对象数组）时，可以通过属性映射进一步将所需要的属性映射为子级变量，以供后续节点使用。
 
-![属性映射](./properties-mapping.png)
+![属性映射](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/b876abe4ccf6b4709eb8748f21ef3527.png)
 
 :::info{title=提示}
 对于对象（或对象数组）结果，如果不进行属性映射，则会将整个对象（或对象数组）作为一个变量保存在节点的结果中，无法以变量的方式直接使用对象的属性值。
@@ -113,7 +113,7 @@ JSON 解析节点通过不同的解析引擎来支持不同的解析语法，可
 
 如果我们需要解析并计算出数据中两个订单分别的总价，并和对应的订单 ID 组装成对象，用于更新订单总价，可以按下面的配置：
 
-![示例-解析 SQL 配置](./example-sql-configuration.png)
+![示例-解析 SQL 配置](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/e62322a868b26ff98120bfcd6dcdb3bd.png)
 
 1. 选择 JSONata 解析引擎；
 2. 选择 SQL 节点的结果作为数据源；
@@ -137,4 +137,5 @@ JSON 解析节点通过不同的解析引擎来支持不同的解析语法，可
 
 之后再循环取值完成的订单数组，更新订单的总价即可。
 
-![更新对应订单的总价](./example-sql-update-order-price.png)
+![更新对应订单的总价](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/b3329b0efe4471f5eed1f0673bef740e.png)
+

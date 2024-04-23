@@ -18,10 +18,11 @@
 
 在工作流配置界面中，点击流程中的加号（“+”）按钮，添加“SQL 操作”节点：
 
-![SQL 操作_添加](./1d3f21b3-d3f4-4f97-9195-e6a98ccb5289.png)
+![SQL 操作_添加](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/0ce40a226d7a5bf3717813e27da40e62.png)
 
 ### 节点配置
 
 通过编辑框右上角的变量按钮插入需要的变量，会在执行前通过文本替换为对应变量的值：
 
-![SQL节点_节点配置](./dd4e2f21-acd3-4c14-bbc9-0c28554e2fda.png)
+![SQL节点_节点配置](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/98611dc13bcda04348bd0856561a7b04.png)
+

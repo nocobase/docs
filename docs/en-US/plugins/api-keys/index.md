@@ -8,11 +8,11 @@
 
 http://localhost:13000/admin/settings/api-keys/configuration
 
-![](./image.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/d64ccbdc8a512a0224e9f81dfe14a0a8.png)
 
 ### 添加 API 密钥
 
-![](./image-1.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/46141872fc0ad9a96fa5b14e97fcba12.png)
 
 **注意事项**
 

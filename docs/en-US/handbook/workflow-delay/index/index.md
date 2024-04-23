@@ -14,11 +14,11 @@
 
 在工作流配置界面中，点击流程中的加号（“+”）按钮，添加“延时”节点：
 
-![创建延时节点](./c6c46d94-e03b-45b6-aa20-f4c1bd2c2f0e.png)
+![创建延时节点](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/d0816999c9f7acaec1c409bd8fb6cc36.png)
 
 ### 节点配置
 
-![延时节点_节点配置](./5f46759c-6796-44c6-a135-84c76c7d5af7.png)
+![延时节点_节点配置](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/5fe8a36535f20a087a0148ffa1cd2aea.png)
 
 #### 延时时间
 
@@ -32,4 +32,5 @@
 
 以工单发起后需要在限时内答复的场景为例，我们需要在并行的两个分支中其一添加一个人工节点，另一个分支添加延时节点，如果人工处理未在 10 分钟内答复，则更新工单状态为超时未处理。
 
-![延时节点_示例_流程组织](./a2f1001b-c19c-4aa4-a4a5-84311f9705ec.png)
+![延时节点_示例_流程组织](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/898c84adc376dc211b003a62e16e8e5b.png)
+

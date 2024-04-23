@@ -8,11 +8,11 @@
 
 在工作流配置界面中，点击流程中的加号（“+”）按钮，添加“更新数据”节点：
 
-![更新数据_添加](./9d29da49-3950-45af-854d-0347eee07d41.png)
+![更新数据_添加](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/9ff24d7bc173b3a71decc1f70ca9fb66.png)
 
 ## 节点配置
 
-![更新节点_节点配置](./e4bf1fea-d343-4976-99d4-26724221ca16.png)
+![更新节点_节点配置](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/98e0f941c57275fc835f08260d0b2e86.png)
 
 ### 数据表
 
@@ -36,6 +36,6 @@
 
 例如当新增“文章”时，需要自动更新“文章分类”表的“文章数量”字段，可以使用更新节点来实现：
 
-![更新节点_示例_节点配置](./e4bf1fea-d343-4976-99d4-26724221ca16.png)
+![更新节点_示例_节点配置](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/98e0f941c57275fc835f08260d0b2e86.png)
 
 当工作流触发后，会自动更新“文章分类”表的“文章数量”字段为当前文章数量 +1。
