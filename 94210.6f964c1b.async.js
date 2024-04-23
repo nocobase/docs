@@ -1,0 +1,18 @@
+(self.webpackChunknocobase_docs=self.webpackChunknocobase_docs||[]).push([[94210],{64217:function(M,_,r){"use strict";r.d(_,{Z:function(){return y}});var h=r(1413),E=`accept acceptCharset accessKey action allowFullScreen allowTransparency
+    alt async autoComplete autoFocus autoPlay capture cellPadding cellSpacing challenge
+    charSet checked classID className colSpan cols content contentEditable contextMenu
+    controls coords crossOrigin data dateTime default defer dir disabled download draggable
+    encType form formAction formEncType formMethod formNoValidate formTarget frameBorder
+    headers height hidden high href hrefLang htmlFor httpEquiv icon id inputMode integrity
+    is keyParams keyType kind label lang list loop low manifest marginHeight marginWidth max maxLength media
+    mediaGroup method min minLength multiple muted name noValidate nonce open
+    optimum pattern placeholder poster preload radioGroup readOnly rel required
+    reversed role rowSpan rows sandbox scope scoped scrolling seamless selected
+    shape size sizes span spellCheck src srcDoc srcLang srcSet start step style
+    summary tabIndex target title type useMap value width wmode wrap`,c=`onCopy onCut onPaste onCompositionEnd onCompositionStart onCompositionUpdate onKeyDown
+    onKeyPress onKeyUp onFocus onBlur onChange onInput onSubmit onClick onContextMenu onDoubleClick
+    onDrag onDragEnd onDragEnter onDragExit onDragLeave onDragOver onDragStart onDrop onMouseDown
+    onMouseEnter onMouseLeave onMouseMove onMouseOut onMouseOver onMouseUp onSelect onTouchCancel
+    onTouchEnd onTouchMove onTouchStart onScroll onWheel onAbort onCanPlay onCanPlayThrough
+    onDurationChange onEmptied onEncrypted onEnded onError onLoadedData onLoadedMetadata
+    onLoadStart onPause onPlay onPlaying onProgress onRateChange onSeeked onSeeking onStalled onSuspend onTimeUpdate onVolumeChange onWaiting onLoad onError`,s="".concat(E," ").concat(c).split(/[\s\n]+/),i="aria-",v="data-";function d(f,m){return f.indexOf(m)===0}function y(f){var m=arguments.length>1&&arguments[1]!==void 0?arguments[1]:!1,l;m===!1?l={aria:!0,data:!0,attr:!0}:m===!0?l={aria:!0}:l=(0,h.Z)({},m);var e={};return Object.keys(f).forEach(function(n){(l.aria&&(n==="role"||d(n,i))||l.data&&d(n,v)||l.attr&&s.includes(n))&&(e[n]=f[n])}),e}},95013:function(M,_,r){"use strict";r.d(_,{Z:function(){return h}});function h(E,c){for(var s=E,i=0;i<c.length;i+=1){if(s==null)return;s=s[c[i]]}return s}},8880:function(M,_,r){"use strict";r.d(_,{T:function(){return l},Z:function(){return d}});var h=r(71002),E=r(1413),c=r(74902),s=r(84506),i=r(95013);function v(e,n,t,o){if(!n.length)return t;var b=(0,s.Z)(n),g=b[0],a=b.slice(1),u;return!e&&typeof g=="number"?u=[]:Array.isArray(e)?u=(0,c.Z)(e):u=(0,E.Z)({},e),o&&t===void 0&&a.length===1?delete u[g][a[0]]:u[g]=v(u[g],a,t,o),u}function d(e,n,t){var o=arguments.length>3&&arguments[3]!==void 0?arguments[3]:!1;return n.length&&o&&t===void 0&&!(0,i.Z)(e,n.slice(0,-1))?e:v(e,n,t,o)}function y(e){return(0,h.Z)(e)==="object"&&e!==null&&Object.getPrototypeOf(e)===Object.prototype}function f(e){return Array.isArray(e)?[]:{}}var m=typeof Reflect=="undefined"?Object.keys:Reflect.ownKeys;function l(){for(var e=arguments.length,n=new Array(e),t=0;t<e;t++)n[t]=arguments[t];var o=f(n[0]);return n.forEach(function(b){function g(a,u){var C=new Set(u),p=(0,i.Z)(b,a),D=Array.isArray(p);if(D||y(p)){if(!C.has(p)){C.add(p);var P=(0,i.Z)(o,a);D?o=d(o,a,[]):(!P||(0,h.Z)(P)!=="object")&&(o=d(o,a,f(p))),m(p).forEach(function(O){g([].concat((0,c.Z)(a),[O]),C)})}}else o=d(o,a,p)}g([])}),o}},52361:function(){},94616:function(){}}]);
