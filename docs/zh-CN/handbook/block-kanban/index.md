@@ -4,7 +4,7 @@
 
 ## 介绍
 
-Kanban （看板）是一种敏捷项目管理工具，旨在实现工作可视化、限制进行中的工作数量并最大限度地提高工作效率。看板区块是任务管理的理想选择，它以看板视图展示数据，支持直接拖拽调整数据状态。
+Kanban（看板）区块以看板视图展示数据，支持直接拖拽调整数据状态。
 
 ## 安装
 
@@ -30,17 +30,17 @@ Kanban （看板）是一种敏捷项目管理工具，旨在实现工作可视�
 
 ### 点击卡片
 
-点击卡片，弹出弹窗，在弹窗中可配置数据区块进行数据管理
+点击卡片，弹出弹窗，在弹窗中可配置数据区块进行数据管理。
 
 ![20240419220115](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419220115.png)
 
-支持配置弹窗打开方式、弹窗尺寸
+支持配置弹窗打开方式、弹窗尺寸。
 
 ![20240419220159](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419220159.png)
 
 ### 拖拽卡片
 
-在列之间拖拽，从而更新其状态
+示例：通过拖拽卡片调整商品状态
 
 <video width="100%" height="440" controls>
       <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419221247.mp4" type="video/mp4">
@@ -66,4 +66,3 @@ Kanban （看板）是一种敏捷项目管理工具，旨在实现工作可视�
 
 - [筛选](/handbook/ui/actions/types/filter)
 - [添加](/handbook/ui/actions/types/add-new)
-
