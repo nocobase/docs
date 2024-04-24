@@ -2,7 +2,7 @@
 
 ## 介绍
 
-网格卡片区块以卡片形式展示多个数据记录的摘要信息，支持根据不同屏幕尺寸配置列数，以确保在移动设备等各种设备上的友好显示。
+网格卡片区块以卡片形式展示数据记录的摘要信息，支持根据不同屏幕尺寸配置列数，以确保在不同尺寸的设备上友好显示。
 
 ### 添加区块
 
@@ -53,7 +53,7 @@
 
 ![20240418123147](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240418123147.png)
 
-网格区块字段配置项可参考 [详情字段](/handbook/ui/fields/generic/detail-form-item)
+网格卡片区块字段配置项可参考 [详情字段](/handbook/ui/fields/generic/detail-form-item)
 
 ## 配置操作
 
