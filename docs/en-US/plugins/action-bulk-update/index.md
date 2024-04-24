@@ -4,7 +4,7 @@
 
 批量更新操作用于需要对一组记录进行相同更新的情况，在执行批量更新操作之前，用户需要预先定义好更新的字段赋值逻辑。这一套逻辑将在用户点击更新按钮时应用到所有选中的记录上
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/d9e6804f7cdbecd43ce4695bb83561cd.png)
+![](https://static-docs.nocobase.com/d9e6804f7cdbecd43ce4695bb83561cd.png)
 
 ## 使用指南
 
@@ -13,4 +13,4 @@
 
 如图在运单表格中配置批量更新操作，将选中的数据批量更新为确认送达
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/41eb7980cd31ebfb013c05c1bbb747a5.gif)
+![](https://static-docs.nocobase.com/41eb7980cd31ebfb013c05c1bbb747a5.gif)

@@ -8,7 +8,7 @@
 
 ### 筛选区块连接数据区块
 
-![20240407180953](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407180953.png)
+![20240407180953](https://static-docs.nocobase.com/20240407180953.png)
 
 ### 数据区块连接数据区块
 

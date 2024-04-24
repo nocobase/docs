@@ -18,7 +18,7 @@
 
 操作后事件与操作前事件的区别在于，在整个操作请求发出并获得响应的过程中，一个在操作处理前触发，一个在操作处理后触发，如下图所示：
 
-![操作执行顺序](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/7c901be2282067d785205b70391332b7.png)
+![操作执行顺序](https://static-docs.nocobase.com/7c901be2282067d785205b70391332b7.png)
 
 操作前事件是在操作执行前触发，操作前事件是在请求执行前，可以对请求的数据进行校验或处理，如果请求被拦截，该操作将不会被执行。
 
@@ -46,13 +46,13 @@
 
 创建工作流时，类型选择“操作后事件”：
 
-![创建工作流_操作后事件触发器](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/13c87035ec1bb7332514676d3e896007.png)
+![创建工作流_操作后事件触发器](https://static-docs.nocobase.com/13c87035ec1bb7332514676d3e896007.png)
 
 #### 执行模式
 
 对于操作后事件，创建时还可以选择执行模式为“同步”或“异步”：
 
-![创建工作流_选择同步或异步](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/bc83525c7e539d578f9e2e20baf9ab69.png)
+![创建工作流_选择同步或异步](https://static-docs.nocobase.com/bc83525c7e539d578f9e2e20baf9ab69.png)
 
 如果是需要在用户操作后立即执行并返回的流程，可以使用同步模式，否则默认为异步模式。异步模式下触发工作流后该操作即完成，工作流会在应用后台以队列的方式陆续执行。
 
@@ -60,13 +60,13 @@
 
 进入工作流画布，点击触发器打开配置弹窗，首先需要选择要绑定的数据表：
 
-![工作流配置_选择数据表](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/35c49a91eba731127edcf76719c97634.png)
+![工作流配置_选择数据表](https://static-docs.nocobase.com/35c49a91eba731127edcf76719c97634.png)
 
 #### 选择触发模式
 
 然后选择触发模式，有局部模式和全局模式两种：
 
-![工作流配置_选择触发模式](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/317809c48b2f2a2d38aedc7d08abdadc.png)
+![工作流配置_选择触发模式](https://static-docs.nocobase.com/317809c48b2f2a2d38aedc7d08abdadc.png)
 
 其中：
 
@@ -93,7 +93,7 @@
 
 如需在后续流程中使用触发数据的关联数据，可以选择需要预加载的关系字段：
 
-![工作流配置_预加载关系](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/5cded063509c7ba1d34f49bec8d68227.png)
+![工作流配置_预加载关系](https://static-docs.nocobase.com/5cded063509c7ba1d34f49bec8d68227.png)
 
 在触发后则可以在流程中直接使用这些关联数据。
 
@@ -103,17 +103,17 @@
 
 针对“提交”按钮（含“保存数据”按钮）配置的工作流，将在用户提交对应表单且数据操作完成后被触发。
 
-![操作后事件_提交按钮](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/ae12d219b8400d75b395880ec4cb2bda.png)
+![操作后事件_提交按钮](https://static-docs.nocobase.com/ae12d219b8400d75b395880ec4cb2bda.png)
 
 针对自定义的“提交至工作流”按钮配置的工作流，将在用户点击对应按钮时，直接将已配置的表单数据提交到对应工作流进行处理。
 
-![操作后事件_提交至工作流按钮](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/f15eed5ccb1ac23e7a7bf25f91ab5e38.png)
+![操作后事件_提交至工作流按钮](https://static-docs.nocobase.com/f15eed5ccb1ac23e7a7bf25f91ab5e38.png)
 
 从按钮配置的菜单中选择“绑定工作流”，即可打开绑定配置弹窗。弹窗中可以配置任意多个要触发的工作流，如果一个都不配置，则代表无需触发。针对每一个工作流，需要先限定触发的数据是整个表单的数据还是表单中的某个关系字段的数据，之后再根据所选的数据模型对应的数据表，选择已配置了匹配该表模型的表单工作流。
 
-![操作后事件_绑定工作流配置_上下文选择](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/358315fc175849a7fbadbe3276ac6fed.png)
+![操作后事件_绑定工作流配置_上下文选择](https://static-docs.nocobase.com/358315fc175849a7fbadbe3276ac6fed.png)
 
-![操作后事件_绑定工作流配置_工作流选择](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/175a71a61b93540cce62a1cb124eb0b5.png)
+![操作后事件_绑定工作流配置_工作流选择](https://static-docs.nocobase.com/175a71a61b93540cce62a1cb124eb0b5.png)
 
 :::info{title="提示"}
 工作流需要启用后，才可以在以上界面被选择。
@@ -134,21 +134,21 @@
 
 之后先创建一个“操作后事件”类型的工作流，并且把触发器中的数据表模型配置为“费用报销”表：
 
-![示例_触发器配置_选择数据表](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/6e1abb5c3e1198038676115943714f07.png)
+![示例_触发器配置_选择数据表](https://static-docs.nocobase.com/6e1abb5c3e1198038676115943714f07.png)
 
 将工作流设置为启用状态后，流程的具体处理节点稍后再回来配置。
 
 然后我们在界面上创建“费用报销”数据表的表格区块，并且在工具栏增加一个“添加”按钮，配置对应的表单字段。这里我们不使用默认的“提交”按钮，而是移除后重新添加一个“提交至工作流”的按钮：
 
-![示例_表单按钮配置_绑定工作流](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/8f9b2bbe294803893b9ac75a63bb5b9a.png)
+![示例_表单按钮配置_绑定工作流](https://static-docs.nocobase.com/8f9b2bbe294803893b9ac75a63bb5b9a.png)
 
 并打开按钮的“绑定工作流”配置对话框，选择整个表单数据作为上下文，以及工作流为我们之前创建的工作流：
 
-![示例_表单按钮配置_绑定工作流](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/fc00bdcdb975bb8850e5cab235f854f3.png)
+![示例_表单按钮配置_绑定工作流](https://static-docs.nocobase.com/fc00bdcdb975bb8850e5cab235f854f3.png)
 
 表单配置完成后，再回到工作流的逻辑编排。比如我们需要金额大于 500 元时要求管理员进行人工审核，否则直接通过，审核通过后才创建报销记录，并由财务进一步处理（略）。
 
-![示例_处理流程](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/059e8e3d5ffb34cc2da6880fa3dc490b.png)
+![示例_处理流程](https://static-docs.nocobase.com/059e8e3d5ffb34cc2da6880fa3dc490b.png)
 
 忽略后续财务的处理的话，这样就完成了申请报销流程的配置，当员工填写报销申请并提交后，会触发对应的工作流，如果费用金额小于 500，会自动创建记录并等待财务进一步处理，否则会由主管审核，审核通过后也是一样创建记录并交给财务处理。
 

@@ -21,8 +21,8 @@ This is a built-in plugin and does not need to be installed separately.
 
 When the application is initialized and installed, a data source for storing NocoBase data is provided by default, referred to as the main database.
 
-![20240322220423](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240322220423.png)
+![20240322220423](https://static-docs.nocobase.com/20240322220423.png)
 
 If external data source plugins are installed, you can also connect to external data sources via Add new.
 
-![20240322221124](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240322221124.png)
+![20240322221124](https://static-docs.nocobase.com/20240322221124.png)

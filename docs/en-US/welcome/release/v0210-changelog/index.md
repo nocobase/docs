@@ -2,13 +2,13 @@
 
 ## Announcement
 
-![v1.0](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/img_v3_029o_3dd91ba0-bb96-4315-a273-208f06d432fg.png)
+![v1.0](https://static-docs.nocobase.com/img_v3_029o_3dd91ba0-bb96-4315-a273-208f06d432fg.png)
 
 ## New features
 
 ### Multi-DataSource support for Charts
 
-![20240407222304](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407222304.png)
+![20240407222304](https://static-docs.nocobase.com/20240407222304.png)
 
 <br />
 
@@ -16,7 +16,7 @@
 
 ### Multi-DataSource support for workflow
 
-![20240407222523](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407222523.png)
+![20240407222523](https://static-docs.nocobase.com/20240407222523.png)
 
 <br />
 
@@ -37,7 +37,7 @@ Enhancements to trigger mode configuration for the following events:
 
 #### Post-action events
 
-![20240407222652](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407222652.png)
+![20240407222652](https://static-docs.nocobase.com/20240407222652.png)
 
 <br />
 
@@ -45,7 +45,7 @@ Enhancements to trigger mode configuration for the following events:
 
 #### Pre-action events
 
-![20240407222834](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407222834.png)
+![20240407222834](https://static-docs.nocobase.com/20240407222834.png)
 
 <br />
 
@@ -53,7 +53,7 @@ Enhancements to trigger mode configuration for the following events:
 
 ### Custom brand Plugin
 
-![20240407222949](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407222949.png)
+![20240407222949](https://static-docs.nocobase.com/20240407222949.png)
 
 <br />
 
@@ -61,7 +61,7 @@ Enhancements to trigger mode configuration for the following events:
 
 ### Support for nanoid field
 
-![20240407223221](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407223221.png)
+![20240407223221](https://static-docs.nocobase.com/20240407223221.png)
 
 <br />
 
@@ -69,7 +69,7 @@ Enhancements to trigger mode configuration for the following events:
 
 ### Support for uuid field
 
-![20240407223431](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407223431.png)
+![20240407223431](https://static-docs.nocobase.com/20240407223431.png)
 
 <br />
 
@@ -77,7 +77,7 @@ Enhancements to trigger mode configuration for the following events:
 
 ### Support for unix timestamp field
 
-![20240407223512](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407223512.png)
+![20240407223512](https://static-docs.nocobase.com/20240407223512.png)
 
 <br />
 
@@ -85,7 +85,7 @@ Enhancements to trigger mode configuration for the following events:
 
 ### Number type field supports formatting configuration
 
-![20240407223736_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407223736_rec_.gif)
+![20240407223736_rec_](https://static-docs.nocobase.com/20240407223736_rec_.gif)
 
 <br />
 
@@ -126,15 +126,15 @@ Now, you can access via http://your_domain.com/nocobase/.
 
 Block Cards
 
-![20240407224956](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407224956.png)
+![20240407224956](https://static-docs.nocobase.com/20240407224956.png)
 
 Kanban Cards
 
-![20240407224811](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407224811.png)
+![20240407224811](https://static-docs.nocobase.com/20240407224811.png)
 
 Table Cells
 
-![20240407230028](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407230028.png)
+![20240407230028](https://static-docs.nocobase.com/20240407230028.png)
 
 #### Distributed processing of block configuration
 

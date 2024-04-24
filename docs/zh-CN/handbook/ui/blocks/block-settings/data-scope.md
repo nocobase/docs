@@ -6,11 +6,11 @@
 
 ## 使用手册
 
-![20240407180322](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407180322.png)
+![20240407180322](https://static-docs.nocobase.com/20240407180322.png)
 
 筛选字段支持选择本表字段、关系表字段（最多三层关系）
 
-![20240422113637](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422113637.png)
+![20240422113637](https://static-docs.nocobase.com/20240422113637.png)
 ### 静态值
 
 设置默认筛选条件「状态」为「已发货」。
@@ -23,7 +23,7 @@
 
 设置默认筛选条件「发货日期」早于「昨天」。
 
-![20240422090134](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422090134.png)
+![20240422090134](https://static-docs.nocobase.com/20240422090134.png)
 
  <video width="100%" height="440" controls>
       <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415214709.mp4" type="video/mp4">

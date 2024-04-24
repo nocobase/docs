@@ -6,7 +6,7 @@ NocoBase 采用微内核架构，各类功能以插件形式扩展。插件化�
 
 NocoBase 提供了强大的插件管理器用于管理插件。无代码用户可以通过界面管理插件的添加、激活、禁用和删除。
 
-![插件管理器](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/f914d978dbfd8c45a650bd88ef867832.png)
+![插件管理器](https://static-docs.nocobase.com/f914d978dbfd8c45a650bd88ef867832.png)
 
 开发者也可以通过 CLI 的方式管理插件
 

@@ -10,8 +10,8 @@ Provides the capability to configure mobile pages.
 
 It's a pre-installed plugin that needs to be activated before use.
 
-![20240324171718](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240324171718.png)
+![20240324171718](https://static-docs.nocobase.com/20240324171718.png)
 
 ## Usage
 
-![20240324171605](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240324171605.png)
+![20240324171605](https://static-docs.nocobase.com/20240324171605.png)

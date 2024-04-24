@@ -8,4 +8,4 @@ SQL 表并非实际的数据库表，而是快速将 SQL 查询结果以结构�
 
 ## 使用手册
 
-![20240324145240](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240324145240.png)
+![20240324145240](https://static-docs.nocobase.com/20240324145240.png)

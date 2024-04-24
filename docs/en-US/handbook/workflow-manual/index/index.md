@@ -14,7 +14,7 @@
 
 在工作流配置界面中，点击流程中的加号（“+”）按钮，添加“人工处理”节点：
 
-![创建人工节点](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/4dd259f1aceeaf9b825abb4b257df909.png)
+![创建人工节点](https://static-docs.nocobase.com/4dd259f1aceeaf9b825abb4b257df909.png)
 
 ### 配置节点
 
@@ -24,7 +24,7 @@
 
 选定一个用户，或者通过变量选择上下文中的用户数据的主键或外键。
 
-![人工节点_配置_负责人_选择变量](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/22fbca3b8e21fda3a831019037001445.png)
+![人工节点_配置_负责人_选择变量](https://static-docs.nocobase.com/22fbca3b8e21fda3a831019037001445.png)
 
 :::info{title=提示}
 目前人工节点的负责人选项暂不支持针对多人处理，会在未来的版本中支持。
@@ -34,7 +34,7 @@
 
 待办事项的界面配置是人工节点的核心内容，可以通过点击“配置用户界面”按钮弹窗打开独立配置，和普通页面一样，可以所见即所得地配置：
 
-![人工节点_节点配置_界面配置](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/fd360168c879743cf22d57440cd2590f.png)
+![人工节点_节点配置_界面配置](https://static-docs.nocobase.com/fd360168c879743cf22d57440cd2590f.png)
 
 ##### 标签页
 
@@ -48,11 +48,11 @@
 
 数据区块可选择触发器数据或任意的节点处理结果，用于提供给待办负责人相关的上下文信息。例如工作流是表单事件触发的，即可以创建一个触发数据的详情区块，与普通页面的详情配置一致，可任选触发数据内有的字段进行数据展示：
 
-![人工节点_节点配置_界面配置_数据区块_触发器](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/675c3e58a1a4f45db310a72c2d0a404c.png)
+![人工节点_节点配置_界面配置_数据区块_触发器](https://static-docs.nocobase.com/675c3e58a1a4f45db310a72c2d0a404c.png)
 
 节点数据区块类似，可以选择上游节点中的数据结果作为详情展示。例如上游一个计算节点的结果，作为负责人待办的上下文参考信息：
 
-![人工节点_节点配置_界面配置_数据区块_节点数据](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/a583e26e508e954b47e5ddff80d998c4.png)
+![人工节点_节点配置_界面配置_数据区块_节点数据](https://static-docs.nocobase.com/a583e26e508e954b47e5ddff80d998c4.png)
 
 :::info{title=提示}
 由于配置界面时工作流都处于未执行的状态，所以数据区块中都是没有具体数据显示的，只有当工作流被触发执行后，在待办弹窗界面中才可看到具体流程的相关数据。
@@ -66,7 +66,7 @@
 - 新增数据表单
 - 更新数据表单
 
-![人工节点_节点配置_界面配置_表单类型](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2d068f3012ab07e32a265405492104a8.png)
+![人工节点_节点配置_界面配置_表单类型](https://static-docs.nocobase.com/2d068f3012ab07e32a265405492104a8.png)
 
 新增数据表单和更新数据表单需要选择基于的数据表，待办用户提交后会使用表单内的值新增或更新特定数据表的数据。自定义表单则可以自由定义一个数据表无关的临时表单，待办用户提交后的字段值可以在后续节点中使用。
 
@@ -76,15 +76,15 @@
 - 提交后终止流程
 - 仅暂存表单值
 
-![人工节点_节点配置_界面配置_表单按钮](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/6b45995b14152e85a821dff6f6e3189a.png)
+![人工节点_节点配置_界面配置_表单按钮](https://static-docs.nocobase.com/6b45995b14152e85a821dff6f6e3189a.png)
 
 三个按钮代表流程处理中三种节点状态，提交后该节点的状态修改为“完成”、“拒绝”或继续处于“等待”的状态，一个表单至少要配置前两者之一，以决定整个流程的后续处理流向。
 
 在“继续流程”按钮上可以配置对表单字段的赋值：
 
-![人工节点_节点配置_界面配置_表单按钮_设置表单值](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2cec2d4e2957f068877e616dec3b56dd.png)
+![人工节点_节点配置_界面配置_表单按钮_设置表单值](https://static-docs.nocobase.com/2cec2d4e2957f068877e616dec3b56dd.png)
 
-![人工节点_节点配置_界面配置_表单按钮_设置表单值弹窗](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/5ff51b60c76cdb76e6f1cc95dc3d8640.png)
+![人工节点_节点配置_界面配置_表单按钮_设置表单值弹窗](https://static-docs.nocobase.com/5ff51b60c76cdb76e6f1cc95dc3d8640.png)
 
 打开弹窗后可以对表单任意字段进行赋值，表单提交后将会以该值作为字段的终值。通常在对一些数据进行审核时比较有用，可以在表单中使用多个不同的“继续流程”按钮，每个按钮对类似状态的字段设置不同的枚举值，以达到继续后续流程执行且使用不同数据值的效果。
 
@@ -92,15 +92,15 @@
 
 对于人工处理来说，还需要在页面中添加待办列表，用于展示待办任务，相关人员才可以通过该列表进入人工节点的具体任务处理。可以从页面中的区块中选择“工作流待办”，添加待办列表的区块：
 
-![人工节点_添加待办区块](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/198b417454cd73b704267bf30fe5e647.png)
+![人工节点_添加待办区块](https://static-docs.nocobase.com/198b417454cd73b704267bf30fe5e647.png)
 
 待办列表区块示例：
 
-![人工节点_待办列表](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/cfefb0d2c6a91c5c9dfa550d6b220f34.png)
+![人工节点_待办列表](https://static-docs.nocobase.com/cfefb0d2c6a91c5c9dfa550d6b220f34.png)
 
 之后相关人员可以点击对应的待办任务，进入待办弹窗，进行人工处理：
 
-![人工节点_待办详情](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/ccfd0533deebff6b3f6ef4408066e688.png)
+![人工节点_待办详情](https://static-docs.nocobase.com/ccfd0533deebff6b3f6ef4408066e688.png)
 
 ### 示例
 
@@ -187,4 +187,3 @@
 </figure>
 
 发送请求节点里的数据也可以使用人工节点中相应的表单变量，以区分通过和拒绝的短信内容。这样就完成了整个流程的配置，在开启工作流后，当员工提交请假申请的表单后，主管即可在待办任务中进行审批处理，操作基本与文章审核流程类似。
-

@@ -11,13 +11,13 @@
 
 ## 区块设置项
 
-![20240415215319](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415215319.png)
+![20240415215319](https://static-docs.nocobase.com/20240415215319.png)
 
 ### 设置数据范围
 
 示例：默认筛选「状态」为已发货的单据。
 
-![20240415215404](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415215404.png)
+![20240415215404](https://static-docs.nocobase.com/20240415215404.png)
 
 更多内容参考 [设置数据范围](/handbook/ui/blocks/block-settings/data-scope)
 
@@ -25,7 +25,7 @@
 
 示例：将单据按发货日期倒序显示。
 
-![20240415215509](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415215509.png)
+![20240415215509](https://static-docs.nocobase.com/20240415215509.png)
 
 更多内容参考 [设置排序规则](/handbook/ui/blocks/block-settings/sorting-rule)
 
@@ -48,17 +48,17 @@
 
 ### 本表字段
 
-![20240415223714](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415223714.png)
+![20240415223714](https://static-docs.nocobase.com/20240415223714.png)
 
 ### 关系表字段
 
-![20240415223746](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415223746.png)
+![20240415223746](https://static-docs.nocobase.com/20240415223746.png)
 
 ### 显示继承表字段（父表字段）
 
 示例：租赁订单表继承订单表。
 
-![20240415224242](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415224242.png)
+![20240415224242](https://static-docs.nocobase.com/20240415224242.png)
 
 表格列字段配置项可参考 [表格列字段](/handbook/ui/fields/generic/table-column)
 
@@ -66,7 +66,7 @@
 
 ### 全局操作
 
-![20240415225525](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415225525.png)
+![20240415225525](https://static-docs.nocobase.com/20240415225525.png)
 
 - [筛选](/handbook/ui/actions/types/filter)
 - [添加](/handbook/ui/actions/types/add-new)
@@ -80,7 +80,7 @@
 
 ### 行操作
 
-![20240415225657](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415225657.png)
+![20240415225657](https://static-docs.nocobase.com/20240415225657.png)
 
 - [查看](/handbook/ui/actions/types/view)
 - [编辑](/handbook/ui/actions/types/edit)
@@ -89,5 +89,4 @@
 - [弹窗](/handbook/ui/actions/types/pop-up)
 - [更新记录](/handbook/ui/actions/types/update-record)
 - [自定义请求](/handbook/action-custom-request)
-
 

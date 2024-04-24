@@ -14,7 +14,7 @@
 
 ## 区块设置项
 
-![20240421172115](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240421172115.png)
+![20240421172115](https://static-docs.nocobase.com/20240421172115.png)
 
 ### 连接数据区块
 
@@ -34,7 +34,7 @@
 
 ### 本表字段
 
-![20240421171135](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240421171135.png)
+![20240421171135](https://static-docs.nocobase.com/20240421171135.png)
 
 ### 关系表字段
 
@@ -47,4 +47,4 @@
 
 ## 配置操作
 
-![筛选操作](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240421171839.png)
+![筛选操作](https://static-docs.nocobase.com/20240421171839.png)

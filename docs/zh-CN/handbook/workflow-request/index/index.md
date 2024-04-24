@@ -18,11 +18,11 @@ HTTP 请求节点暂不支持请求响应的结果进行使用，可能会在未
 
 在工作流配置界面中，点击流程中的加号（“+”）按钮，添加“HTTP 请求”节点：
 
-![HTTP 请求_添加](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/46f2a6fc3f6869c80f8fbd362a54e644.png)
+![HTTP 请求_添加](https://static-docs.nocobase.com/46f2a6fc3f6869c80f8fbd362a54e644.png)
 
 ### 节点配置
 
-![HTTP请求节点_节点配置](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2fcb29af66b892fa704add52e2974a52.png)
+![HTTP请求节点_节点配置](https://static-docs.nocobase.com/2fcb29af66b892fa704add52e2974a52.png)
 
 #### 请求方法
 
@@ -64,6 +64,6 @@ HTTP 服务的 URL，需要包含协议部分（`http://` 或 `https://`），�
 
 例如我们可以使用请求节点来对接云平台发送通知短信，以阿里云发送短信接口为例配置如下（相关参数需自行查阅文档适配）：
 
-![HTTP请求节点_节点配置](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2fcb29af66b892fa704add52e2974a52.png)
+![HTTP请求节点_节点配置](https://static-docs.nocobase.com/2fcb29af66b892fa704add52e2974a52.png)
 
 工作流触发该节点执行时会以配置的内容调用阿里云的短信接口，请求成功的话将通过短信云服务发送一条短信。

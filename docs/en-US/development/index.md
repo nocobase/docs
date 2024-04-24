@@ -6,7 +6,7 @@ NocoBase adopts a microkernel architecture, where various functionalities are ex
 
 NocoBase provides a powerful plugin manager to handle plugin management. No-code users can manage the addition, activation, deactivation, and deletion of plugins through the interface.
 
-![Plugin Manager](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/f914d978dbfd8c45a650bd88ef867832.png)
+![Plugin Manager](https://static-docs.nocobase.com/f914d978dbfd8c45a650bd88ef867832.png)
 
 Developers can also manage plugins through the CLI.
 
@@ -35,4 +35,3 @@ Modules are distributed as follows:
   - Providers and contexts
   - UI Schema
   - Internationalization
-

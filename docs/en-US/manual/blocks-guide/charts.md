@@ -10,7 +10,7 @@
 
 ## 添加和编辑图表
 
-![chart-edit.gif](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/97c1d74a7ca9d0e8d2971cca2ab8de50.gif)
+![chart-edit.gif](https://static-docs.nocobase.com/97c1d74a7ca9d0e8d2971cca2ab8de50.gif)
 
 ## 图表配置
 

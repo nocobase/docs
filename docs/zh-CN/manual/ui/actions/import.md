@@ -4,13 +4,13 @@
 
 1. 配置可导入的字段
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/967a130c06237e0724e5815fc3b16903.png)
+![](https://static-docs.nocobase.com/967a130c06237e0724e5815fc3b16903.png)
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/0046c530677bff984db4d560956da35a.png)
+![](https://static-docs.nocobase.com/0046c530677bff984db4d560956da35a.png)
 
 1. 下载导入的模板，在模板中添加数据后导入
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/1038ab1b1fcdc7ad6e5346cde27eed49.png)
+![](https://static-docs.nocobase.com/1038ab1b1fcdc7ad6e5346cde27eed49.png)
 
 详见导入说明
 

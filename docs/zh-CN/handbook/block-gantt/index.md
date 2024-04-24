@@ -12,9 +12,9 @@
 
 ## 添加区块
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/f064f8fadf52947c990f5dad97736f98.png)
+![](https://static-docs.nocobase.com/f064f8fadf52947c990f5dad97736f98.png)
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/858112f44bc543973b6e5b03856a6360.png)
+![](https://static-docs.nocobase.com/858112f44bc543973b6e5b03856a6360.png)
 
 - 标题字段：用于显示在甘特图条形上的信息；
 - 时间缩放等级：时间缩放等级，默认天；
@@ -22,18 +22,18 @@
 - 结束日期字段：每个任务的结束日期，必填；
 - 进度字段：设置表示进度（百分比字段）的字段，非必填；
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/fff6fe1e1fe0a88d20f80b3bb7233608.gif)
+![](https://static-docs.nocobase.com/fff6fe1e1fe0a88d20f80b3bb7233608.gif)
 
 - 拖拽条形调整任务的开始日期和结束日期；
 - 拖拽进度条调整任务的进度；
 
 ## 区块设置项
 
-![20240419211301](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419211301.png)
+![20240419211301](https://static-docs.nocobase.com/20240419211301.png)
 
 ### 设置数据范围
 
-![20240419211033](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419211033.png)
+![20240419211033](https://static-docs.nocobase.com/20240419211033.png)
 
 更多内容参考 [设置数据范围](/handbook/ui/blocks/block-settings/data-scope)
 
@@ -44,7 +44,7 @@
 
 ### 全局操作
 
-![20240419213653](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419213653.png)
+![20240419213653](https://static-docs.nocobase.com/20240419213653.png)
 
 - [筛选](/handbook/ui/actions/types/filter)
 - [添加](/handbook/ui/actions/types/add-new)
@@ -58,7 +58,7 @@
 
 ### 行操作
 
-![20240419213823](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419213823.png)
+![20240419213823](https://static-docs.nocobase.com/20240419213823.png)
 
 - [查看](/handbook/ui/actions/types/view)
 - [编辑](/handbook/ui/actions/types/edit)

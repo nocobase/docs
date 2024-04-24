@@ -10,13 +10,13 @@
 
 目前页面里的区块类型包括：数据区块、筛选区块、其他区块
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/dad0a394d33dd26f31c3202a76bb0153.png)
+![](https://static-docs.nocobase.com/dad0a394d33dd26f31c3202a76bb0153.png)
 
 ### 弹窗（对话框或抽屉）里的区块
 
 弹窗有对话框和抽屉两种，和页面一样也可以添加区块，区别在于弹窗里的区块通常为单条记录的添加、编辑或查看等，区块类型包括数据区块、其他区块。
 
-![2024-04-10_11-27-04](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2024-04-10_11-27-04.png)
+![2024-04-10_11-27-04](https://static-docs.nocobase.com/2024-04-10_11-27-04.png)
 
 ## 区块的设计器
 
@@ -26,26 +26,26 @@
 2. 快捷添加区块
 3. 区块参数配置
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/b488f3013532a246df59b89c0688a58f.png)
+![](https://static-docs.nocobase.com/b488f3013532a246df59b89c0688a58f.png)
 
 简单的区块所有的配置项都集中在「区块参数配置」里，如 Markdown
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/f37e277863068b2661f66d4020af806a.png)
+![](https://static-docs.nocobase.com/f37e277863068b2661f66d4020af806a.png)
 
 复杂的数据类型区块还会提供独立的内嵌的「配置字段」和「配置操作」
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/71b550da637d23145a5f62d48ee8521b.png)
+![](https://static-docs.nocobase.com/71b550da637d23145a5f62d48ee8521b.png)
 
 除此之外，也可以自由发挥，提供更多嵌套的可能，如图表区块
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/07588190b3f41ae3060e71d8b76b4447.png)
+![](https://static-docs.nocobase.com/07588190b3f41ae3060e71d8b76b4447.png)
 
 ## 区块布局
 
 多个区块可以通过拖拽调整布局
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/f6692295ac0917f3babce9a60ce80879.gif)
+![](https://static-docs.nocobase.com/f6692295ac0917f3babce9a60ce80879.gif)
 
 ## 区块类型
 
-![区块类型](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/f71af45b5cd914ea0558f760ddbbba58.png)
+![区块类型](https://static-docs.nocobase.com/f71af45b5cd914ea0558f760ddbbba58.png)

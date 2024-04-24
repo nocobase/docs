@@ -4,11 +4,11 @@
 
 ER 关系如下
 
-![alt text](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/0e9921228e1ee375dc639431bb89782c.png)
+![alt text](https://static-docs.nocobase.com/0e9921228e1ee375dc639431bb89782c.png)
 
 字段配置
 
-![alt text](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/8e2739ac5d44fb46f30e2da42ca87a82.png)
+![alt text](https://static-docs.nocobase.com/8e2739ac5d44fb46f30e2da42ca87a82.png)
 
 ## 参数说明
 

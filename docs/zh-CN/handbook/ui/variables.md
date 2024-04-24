@@ -6,13 +6,13 @@
 
 当前登录的用户。
 
-![20240416154950](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416154950.png)
+![20240416154950](https://static-docs.nocobase.com/20240416154950.png)
 
 ## 当前角色（标识）
 
 当前用户的角色标识（role name）。
 
-![20240416155100](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416155100.png)
+![20240416155100](https://static-docs.nocobase.com/20240416155100.png)
 
 ## 当前表单
 
@@ -25,21 +25,21 @@
 
 ### 当前表单的联动规则
 
-![20240416170732_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416170732_rec_.gif)
+![20240416170732_rec_](https://static-docs.nocobase.com/20240416170732_rec_.gif)
 
 ### 表单字段默认值（仅新增数据时有效）
 
-![20240416171129_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416171129_rec_.gif)
+![20240416171129_rec_](https://static-docs.nocobase.com/20240416171129_rec_.gif)
 
 ### 关系字段的数据范围设置
 
 用于处理关系之间的联动，例如：
 
-![20240416171743_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416171743_rec_.gif)
+![20240416171743_rec_](https://static-docs.nocobase.com/20240416171743_rec_.gif)
 
 ### 提交操作的字段赋值配置
 
-![20240416171215_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416171215_rec_.gif)
+![20240416171215_rec_](https://static-docs.nocobase.com/20240416171215_rec_.gif)
 
 ## 当前对象
 
@@ -84,11 +84,11 @@
 
 ### 子字段的默认值
 
-![20240416172933_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416172933_rec_.gif)
+![20240416172933_rec_](https://static-docs.nocobase.com/20240416172933_rec_.gif)
 
 ### 子关系字段的数据范围
 
-![20240416173043_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416173043_rec_.gif)
+![20240416173043_rec_](https://static-docs.nocobase.com/20240416173043_rec_.gif)
 
 ## 当前记录
 
@@ -100,7 +100,7 @@
 
 ### 行操作的联动规则
 
-![20240416174813_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416174813_rec_.gif)
+![20240416174813_rec_](https://static-docs.nocobase.com/20240416174813_rec_.gif)
 
 ## 当前弹窗记录
 
@@ -119,23 +119,23 @@
 
 ### 配置区块的数据范围
 
-![20240416224307_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416224307_rec_.gif)
+![20240416224307_rec_](https://static-docs.nocobase.com/20240416224307_rec_.gif)
 
 ### 配置关系字段的数据范围
 
-![20240416224641_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416224641_rec_.gif)
+![20240416224641_rec_](https://static-docs.nocobase.com/20240416224641_rec_.gif)
 
 ### 配置字段的默认值（创建表单）
 
-![20240416223846_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416223846_rec_.gif)
+![20240416223846_rec_](https://static-docs.nocobase.com/20240416223846_rec_.gif)
 
 ### 配置操作的联动规则
 
-![20240416223101_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416223101_rec_.gif)
+![20240416223101_rec_](https://static-docs.nocobase.com/20240416223101_rec_.gif)
 
 ### 表单提交操作的字段赋值配置
 
-![20240416224014_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416224014_rec_.gif)
+![20240416224014_rec_](https://static-docs.nocobase.com/20240416224014_rec_.gif)
 
 ## 表格选中记录
 

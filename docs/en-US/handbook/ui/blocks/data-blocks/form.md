@@ -12,13 +12,13 @@ The form block is an essential block for building data input and editing interfa
 
 ## Block Settings
 
-![20240416220148](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416220148.png)
+![20240416220148](https://static-docs.nocobase.com/20240416220148.png)
 
 ### Linkage Rules
 
 Control form field behavior through linkage rules.
 
-![20240416220254](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416220254.png)
+![20240416220254](https://static-docs.nocobase.com/20240416220254.png)
 
 For more information, refer to [Linkage Rules](/handbook/ui/blocks/block-settings/linkage-rule).
 
@@ -26,9 +26,9 @@ For more information, refer to [Linkage Rules](/handbook/ui/blocks/block-setting
 
 The purpose of the form data template is to simplify the data entry process and improve efficiency. Define data templates by selecting data from the corresponding data table to populate default values in the form. By setting data scope, users can ensure the applicability of template data.
 
-![20240408143719](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408143719.png)
+![20240408143719](https://static-docs.nocobase.com/20240408143719.png)
 
-![20240408143812](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408143812.png)
+![20240408143812](https://static-docs.nocobase.com/20240408143812.png)
 
 #### Synchronize Form Fields
 
@@ -49,7 +49,7 @@ Solution: Select an existing product as a template and use its attribute informa
 
 - Create a product promotion template
 
-![20240408145855](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408145855.png)
+![20240408145855](https://static-docs.nocobase.com/20240408145855.png)
 
 - Quickly enter promotional products
 
@@ -64,13 +64,13 @@ Solution: Select an existing product as a template and use its attribute informa
 
 ### Fields in Current Collection
 
-![20240416230739](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416230739.png)
+![20240416230739](https://static-docs.nocobase.com/20240416230739.png)
 
 ### Fields in Related Collections
 
 Fields in related tables are read-only in the form and are typically used in conjunction with relationship fields to display multiple field values of related data.
 
-![20240416230811](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416230811.png)
+![20240416230811](https://static-docs.nocobase.com/20240416230811.png)
 
 <video width="100%" height="440" controls>
       <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416231152.mp4" type="video/mp4">
@@ -80,7 +80,7 @@ Form field configuration options can be found in [Form Fields](/handbook/ui/fiel
 
 ## Configure Actions
 
-![20240417115249](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417115249.png)
+![20240417115249](https://static-docs.nocobase.com/20240417115249.png)
 
 - [Submit](/handbook/ui/actions/types/submit)
 - [Save Data](/handbook/ui/actions/types/save-record)

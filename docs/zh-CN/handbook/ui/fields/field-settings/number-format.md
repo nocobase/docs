@@ -4,9 +4,9 @@
 
 数值格式化是指对只读状态下的数值类型字段（包括公式字段）进行视觉上的美化和规范化处理，包括千分位分隔符、小数位数精度、单位换算、科学记数法等，以提升数字显示的可读性和美观性。通过配置各种选项，实现数值在界面上的清晰展示，同时符合不同地区和行业的数值表达习惯，提高用户体验和数据可视化效果。
 
-![20240417220017](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417220017.png)
+![20240417220017](https://static-docs.nocobase.com/20240417220017.png)
 
-![20240417220039](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417220039.png)
+![20240417220039](https://static-docs.nocobase.com/20240417220039.png)
 ## 使用说明
 支持简单的单位换算，千分位分隔符，前后缀，精确度，科学记数法。
 
@@ -18,5 +18,4 @@
 
 使用科学记数法。
 
-![20240417220416](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417220416.png)
-
+![20240417220416](https://static-docs.nocobase.com/20240417220416.png)

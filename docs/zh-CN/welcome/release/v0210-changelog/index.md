@@ -2,13 +2,13 @@
 
 ## 预告
 
-![v1.0](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/img_v3_029o_5f3bdbd4-1180-43dc-8ccb-1a24eebebbcg.png)
+![v1.0](https://static-docs.nocobase.com/img_v3_029o_5f3bdbd4-1180-43dc-8ccb-1a24eebebbcg.png)
 
 ## 新特性
 
 ### 图表支持多数据源
 
-![20240407222304](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407222304.png)
+![20240407222304](https://static-docs.nocobase.com/20240407222304.png)
 
 <br />
 
@@ -16,7 +16,7 @@
 
 ### 工作流支持多数据源
 
-![20240407222523](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407222523.png)
+![20240407222523](https://static-docs.nocobase.com/20240407222523.png)
 
 <br />
 
@@ -37,7 +37,7 @@
 
 #### 操作后事件
 
-![20240407222652](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407222652.png)
+![20240407222652](https://static-docs.nocobase.com/20240407222652.png)
 
 <br />
 
@@ -45,7 +45,7 @@
 
 #### 操作前事件
 
-![20240407222834](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407222834.png)
+![20240407222834](https://static-docs.nocobase.com/20240407222834.png)
 
 <br />
 
@@ -53,7 +53,7 @@
 
 ### 自定义品牌插件
 
-![20240407222949](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407222949.png)
+![20240407222949](https://static-docs.nocobase.com/20240407222949.png)
 
 <br />
 
@@ -61,7 +61,7 @@
 
 ### 支持 nanoid 字段
 
-![20240407223221](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407223221.png)
+![20240407223221](https://static-docs.nocobase.com/20240407223221.png)
 
 <br />
 
@@ -69,7 +69,7 @@
 
 ### 支持 uuid 字段
 
-![20240407223431](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407223431.png)
+![20240407223431](https://static-docs.nocobase.com/20240407223431.png)
 
 <br />
 
@@ -77,7 +77,7 @@
 
 ### 支持 Unix 时间戳字段
 
-![20240407223512](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407223512.png)
+![20240407223512](https://static-docs.nocobase.com/20240407223512.png)
 
 <br />
 
@@ -85,7 +85,7 @@
 
 ### 数字类型字段支持格式化配置
 
-![20240407223736_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407223736_rec_.gif)
+![20240407223736_rec_](https://static-docs.nocobase.com/20240407223736_rec_.gif)
 
 <br />
 
@@ -126,15 +126,15 @@ server {
 
 区块卡片
 
-![20240407224956](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407224956.png)
+![20240407224956](https://static-docs.nocobase.com/20240407224956.png)
 
 看板卡片
 
-![20240407224811](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407224811.png)
+![20240407224811](https://static-docs.nocobase.com/20240407224811.png)
 
 表格单元格
 
-![20240407230028](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407230028.png)
+![20240407230028](https://static-docs.nocobase.com/20240407230028.png)
 
 #### 区块配置的分布式处理
 

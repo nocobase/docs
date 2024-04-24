@@ -12,31 +12,31 @@ This plugin is built-in and does not require manual installation or activation.
 
 ## User Instructions
 
-![Backup and Restore List Page](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/071b969c4db9bdc6d2c359e1b6bef5da.png)
+![Backup and Restore List Page](https://static-docs.nocobase.com/071b969c4db9bdc6d2c359e1b6bef5da.png)
 
 ### Creating a Backup
 
-![Creating Backup](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/0e3d9410e6b1cfbda38044033f0b4053.png)
+![Creating Backup](https://static-docs.nocobase.com/0e3d9410e6b1cfbda38044033f0b4053.png)
 
 ### Restore Backup
 
 You can choose to upload a backup from your local device or click on a backup file to restore.
 
-![Restore Backup](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/e4b95a4376260fd516de7828fd9f1056.png)
+![Restore Backup](https://static-docs.nocobase.com/e4b95a4376260fd516de7828fd9f1056.png)
 
 Select the data you need to restore, the selected data will completely overwrite the corresponding data table of the target application.
 
-![Restore Backup](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/9c7cb78b51c8f949e417b5a1e0180ae2.png)
+![Restore Backup](https://static-docs.nocobase.com/9c7cb78b51c8f949e417b5a1e0180ae2.png)
 
 ### Backup Instructions 
 
 Click on "Learn more" to view the backup instructions.
 
-![Backup and Restore Instructions](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/4f54eba0fde2d6481274665cb184a79e.png)
+![Backup and Restore Instructions](https://static-docs.nocobase.com/4f54eba0fde2d6481274665cb184a79e.png)
 
 Backup Instructions
 
-![Backup and Restore Instructions](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/bd5c68cf7e35d04e525f9b13e48e32d9.png)
+![Backup and Restore Instructions](https://static-docs.nocobase.com/bd5c68cf7e35d04e525f9b13e48e32d9.png)
 
 Backup Groups
 
@@ -49,4 +49,3 @@ Backup Groups
 - Unknown Data: Data without configured backup rules.
 
 Note: You can choose the data you want to back up or restore by group. The selected data will completely overwrite when restoring.
-

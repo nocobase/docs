@@ -6,13 +6,13 @@
 
 ### 自动加载数据
 
-![20240407170234](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407170234.png)
+![20240407170234](https://static-docs.nocobase.com/20240407170234.png)
 
 ### 筛选后才加载数据
 
 适用于交互式筛选和动态加载数据的场景（连接数据区块）。默认不加载数据，只有在用户进行了筛选并且有了筛选条件时才会触发数据加载。
 
-![20240407173122](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407173122.png)
+![20240407173122](https://static-docs.nocobase.com/20240407173122.png)
 
  <video width="100%" height="440" controls>
       <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422104827.mp4" type="video/mp4">

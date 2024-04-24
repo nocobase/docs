@@ -273,4 +273,4 @@ export default () => {
 
 ### 使用主题编辑器插件
 
-![主题编辑器](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/440f844d056a485f9f0dc64a8ca1b4f4.png)
+![主题编辑器](https://static-docs.nocobase.com/440f844d056a485f9f0dc64a8ca1b4f4.png)

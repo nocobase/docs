@@ -12,7 +12,7 @@ NocoBase 的主数据库既可以用于存储业务数据，又用于存储应�
 
 ## 使用手册
 
-![20240322230134](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240322230134.png)
+![20240322230134](https://static-docs.nocobase.com/20240322230134.png)
 
 ### 支持创建各种数据表
 
@@ -28,18 +28,18 @@ NocoBase 的主数据库既可以用于存储业务数据，又用于存储应�
 
 ### 支持数据表的分类管理
 
-![20240322231520](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240322231520.png)
+![20240322231520](https://static-docs.nocobase.com/20240322231520.png)
 
 ### 提供了丰富的数据表字段类型
 
-![20240322230950](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240322230950.png)
+![20240322230950](https://static-docs.nocobase.com/20240322230950.png)
 
 ### 数据表的使用
 
 作为数据区块的数据来源
 
-![20240322231949](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240322231949.png)
+![20240322231949](https://static-docs.nocobase.com/20240322231949.png)
 
 作为工作流的数据来源
 
-![20240322232107](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240322232107.png)
+![20240322232107](https://static-docs.nocobase.com/20240322232107.png)

@@ -68,7 +68,7 @@ router.add('admin.page', {
 
 由菜单管理动态页面，通过添加菜单项 -> 页面添加
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/9204957c39f644cfbf23eef3cbdc7eca.png)
+![](https://static-docs.nocobase.com/9204957c39f644cfbf23eef3cbdc7eca.png)
 
 ### AdminSettingsLayout
 
@@ -81,7 +81,7 @@ router.add('admin.settings', {
 
 插件配置页
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/ea22826eba4fd38d68a5a52fd68e7719.png)
+![](https://static-docs.nocobase.com/ea22826eba4fd38d68a5a52fd68e7719.png)
 
 插件配置页的菜单及标签页通过 `app.pluginSettingsManager` 注册。
 

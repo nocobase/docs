@@ -8,11 +8,11 @@
 
 在工作流配置界面中，点击流程中的加号（“+”）按钮，添加“新增数据”节点：
 
-![创建新增数据节点](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/386c8c01c89b1eeab848510e77f4841a.png)
+![创建新增数据节点](https://static-docs.nocobase.com/386c8c01c89b1eeab848510e77f4841a.png)
 
 ## 节点配置
 
-![新增节点_示例_节点配置](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/5f7b97a51b64a1741cf82a4d4455b610.png)
+![新增节点_示例_节点配置](https://static-docs.nocobase.com/5f7b97a51b64a1741cf82a4d4455b610.png)
 
 ### 数据表
 
@@ -32,8 +32,8 @@
 
 例如当“文章”表的数据新增或更新后，需要自动新增一条“文章版本”数据，记录文章的一次变更历史，可以使用新增节点来实现：
 
-![新增节点_示例_流程配置](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/dfd4820d49c145fa331883fc09c9161f.png)
+![新增节点_示例_流程配置](https://static-docs.nocobase.com/dfd4820d49c145fa331883fc09c9161f.png)
 
-![新增节点_示例_节点配置](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/1a0992e66170be12a068da6503298868.png)
+![新增节点_示例_节点配置](https://static-docs.nocobase.com/1a0992e66170be12a068da6503298868.png)
 
 按此配置启用工作流后，当“文章”表的数据变更时，会自动新增一条“文章版本”数据，记录文章的变更历史。

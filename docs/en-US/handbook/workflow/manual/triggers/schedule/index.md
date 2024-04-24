@@ -13,7 +13,7 @@
 
 在工作流列表创建工作流的类型中选择“定时任务”类型：
 
-![创建定时任务](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/e09b6c9065167875b2ca7de5f5a799a7.png)
+![创建定时任务](https://static-docs.nocobase.com/e09b6c9065167875b2ca7de5f5a799a7.png)
 
 ### 自定义时间模式
 
@@ -52,11 +52,11 @@
 
 创建一个基于定时任务的工作流，触发器配置中选择“自定义时间”模式，开始时间选择任意不晚于当前时间的时间点，重复规则选择“每分钟”，结束条件留空：
 
-![定时任务_触发器配置_自定义时间模式](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/71131e3f2034263f883062389b356cbd.png)
+![定时任务_触发器配置_自定义时间模式](https://static-docs.nocobase.com/71131e3f2034263f883062389b356cbd.png)
 
 之后根据流程的逻辑配置其他节点，计算出 30 分钟，如果超时未支付则修改为已取消状态：
 
-![定时任务_触发器配置_自定义时间模式](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/188bc5287ffa1fb24a4e7baa1de6eb29.png)
+![定时任务_触发器配置_自定义时间模式](https://static-docs.nocobase.com/188bc5287ffa1fb24a4e7baa1de6eb29.png)
 
 工作流启用后，从开始时间起每分钟会触发一次，计算 30 分钟前的时间，用于更新创建时间早于该时间点的订单状态为取消。
 
@@ -64,10 +64,10 @@
 
 创建一个基于定时任务的工作流，触发器配置中选择“数据表时间字段”模式，数据表选择“订单”表，开始时间选择订单的创建时间之后 30 分钟，重复规则选择“不重复”：
 
-![定时任务_触发器配置_数据表时间字段模式_触发器](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/d40d5aef57f42799d31cc5882dd94246.png)
+![定时任务_触发器配置_数据表时间字段模式_触发器](https://static-docs.nocobase.com/d40d5aef57f42799d31cc5882dd94246.png)
 
 之后根据流程的逻辑配置其他节点，更新 ID 为触发数据 ID 且状态是“未支付”的订单为取消状态：
 
-![定时任务_触发器配置_数据表时间字段模式_更新节点](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/491dde9df8f773f5b14a4fd8ceac9d3e.png)
+![定时任务_触发器配置_数据表时间字段模式_更新节点](https://static-docs.nocobase.com/491dde9df8f773f5b14a4fd8ceac9d3e.png)
 
 与自定义时间模式不同的是，这里不需要计算 30 分钟前的时间，因为工作流触发数据上下文中即包含对应符合时间条件的数据行，所以可以直接更新对应订单的状态。

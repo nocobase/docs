@@ -10,7 +10,7 @@
 
 不同模块重复的文本不再只保留一个，需要分别添加对应的翻译
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/1c5fd02f1348787e1833bd3ece36c9aa.png)
+![](https://static-docs.nocobase.com/1c5fd02f1348787e1833bd3ece36c9aa.png)
 
 ### `i18n` 实例移除 `fallbackNS` 选项
 
