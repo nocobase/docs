@@ -3,6 +3,7 @@
 ## 介绍
 
 子表格适用于处理对多的关系字段，支持批量新建目标表数据后关联或从已有数据选择关联。
+
 ## 使用说明
 
 ![20240410151306](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240410151306.png)
@@ -24,6 +25,7 @@
 支持拖拽排序。
 
 ![20240422215629](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422215629.gif)
+
 ## 字段配置项
 
 ### 允许选择已有数据（默认不开启）
