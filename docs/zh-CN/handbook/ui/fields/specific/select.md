@@ -52,8 +52,6 @@
 
 ### 标题字段
 
-选项的 label 值
-
 ![20240422205632](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422205632.gif)
 
 更多内容参考 [标题字段](/handbook/ui/fields/field-settings/title-field)
