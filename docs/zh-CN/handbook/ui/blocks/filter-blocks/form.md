@@ -2,11 +2,11 @@
 
 ## 介绍
 
-表单筛选区块需要连接数据区块，为数据区块提供筛选功能，使用户能够根据自定义条件过滤数据，从而实现数据的精确查找。
+表单筛选区块通常需要连接数据区块使用，为数据区块提供筛选功能。
 
 ## 添加区块
 
-为关系区块添加筛选区块
+为关系区块添加筛选区块.
 
   <video width="100%" height="440" controls>
       <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408205156.mp4" type="video/mp4">
@@ -18,7 +18,7 @@
 
 ### 连接数据区块
 
-表单筛选区块+详情区块实现联动
+表单筛选区块+详情区块实现联动.
 
   <video width="100%" height="440" controls>
       <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240421170947.mp4" type="video/mp4">
@@ -38,9 +38,10 @@
 
 ### 关系表字段
 
-支持以关系表的字段为筛选条件
+支持以关系表的字段为筛选条件.
 
 示例：订单表有多对一关系字段「客户」，以客户名称和手机号为筛选条件筛选订单
+
 <video width="100%" height="440" controls>
 <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240421171437.mp4" type="video/mp4">
 </video>
