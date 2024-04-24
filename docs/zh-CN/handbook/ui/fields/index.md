@@ -6,7 +6,7 @@
 
 字段一般不单独使用，而是作为数据类型区块的子元素存在。数据类型的区块通常都有「配置字段」，字段列表由当前数据表提供。
 
-![](./static/MIcrb5RbUoGYoZxWazPcGMWInjc.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/c5ea18ad1847332fe78075413f23de46.png)
 
 ## 字段的设计器（工具栏）
 
@@ -16,11 +16,10 @@
 - 快捷添加字段
 - 字段参数配置
 
-![](./static/P82Kbwh5moSEL5x5UeYcn6kIn3Y.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/30cc5fcaeeb171862f79449a72a7fcf9.png)
 
 ## 字段的布局
 
 通过拖拽移动可以自定义调整字段在区块中的布局
 
-![](./static/BpmibJbEgoijTgxHkqdcjodanVc.gif)
-
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/0825ea8c014c9073f505e74f707ded66.gif)

@@ -14,40 +14,40 @@ This is a built-in plugin, so no additional installation is required.
 
 ### Activating the Plugin
 
-![](./static/Pi1nbxvVEoqSIox28FkcYkw7nID.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/d16f6ecd6bfb8d1e8acff38f23ad37f8.png)
 
 ### Localization Management
 
-![](./static/TmD3bXzJ2onTXcxyaWXc2g30n0e.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/c117b5337941f0afd564152053666480.png)
 
 ### Synchronizing Translation Entries
 
-![](./static/IkBhbaqrfodzsMxxueIcUENnnTd.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/bc380a4ebdb2af075abcab5f16287cf9.png)
 
 After synchronization, it will list all the translatable entries for the current language.
 
-![](./static/S49abMq61oBfMFxRvs7cZTgHnoh.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/cf501e6b4d2f67520ad35b00d1ed3446.png)
 
 ### Publishing
 
 After completing the translation, you need to click the "Publish" button to make the changes take effect.
 
-![](./static/IkFDbWE8ios6qSxp78scf2BOnQg.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/1f9dc52defb37ac67912011ba31c3160.png)
 
 ### Translating Other Languages
 
 Enable other languages in "System Settings," such as Simplified Chinese.
 
-![](./static/BFRcbhE31oEAHOxss5ncRnEvnZb.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/618830967aaeb643c892fce355d59a73.png)
 
 Switch to that language.
 
-![](./static/XO9TbVodPo01SrxFPrkcUsVmngg.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/35548a7bf099df4f30d160c72863c6b8.png)
 
 Synchronize the entries.
 
-![](./static/DxQ8bDrtsoi8ObxadwZcCYntn9d.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/12f39cfcd7d8d9ce3d367426b959af16.png)
 
 Translate and publish.
 
-![](./static/GaqEbrgAdokzgJxqicMcdKxMnQf.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/eb22725dcab6807dc8a410f5e10e9492.png)

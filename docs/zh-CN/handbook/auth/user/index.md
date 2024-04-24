@@ -4,19 +4,19 @@
 
 用户认证插件安装时，会初始化一个 `密码` 的认证方式，基于用户的用户名和邮箱。
 
-![](./static/GOJ0bwOYVoNkBKxkpmGcEqyqnI2.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/66eaa9d5421c9cb713b117366bd8a5d5.png)
 
 ## 激活认证类型
 
-![](./static/HYNZb9vvXo0GXuxpLCvcDTC5nfh.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/7f1fb8f8ca5de67ffc68eff0a65848f5.png)
 
 只有激活的认证类型才会显示在登录页面
 
-![](./static/UulRbfMpWogGHnxpk1Yc0asenFe.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/8375a36ef98417af0f0977f1e07345dd.png)
 
 ## 用户认证类型
 
-![](./static/Ut6KbpRe0oI1NoxHkbZcXftkndc.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/da4250c0cea343ebe470cbf7be4b12e4.png)
 
 NocoBase 目前支持的用户认证类型有：
 
@@ -32,22 +32,22 @@ NocoBase 目前支持的用户认证类型有：
 
 ### 配置界面
 
-![](./static/EvrrbNVmUoJVczxJvkzclPKqn7e.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/403529f12669495fe6f3afef4405d45e.png)
 
 ### 允许注册
 
 允许注册时，登录页会显示创建账号的连接，并可以跳转至注册页
 
-![](./static/NsBebeTkAoDSnExFStmc84iondd.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/78903930d4b47aaf75cf94c55dd3596e.png)
 
 注册页
 
-![](./static/Rs2obD3ZRohmtjxlQxPcT123n7e.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/ac3c3ab42df28cb7c6dc70b24e99e7f7.png)
 
 不允许注册时，登录页不会显示创建账号的连接
 
-![](./static/Kc72bM430oWacrxbxvScS3S3nGc.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/8d5e3b6df9991bfc1c2e095a93745121.png)
 
 不允许注册时，无法访问注册页面
 
-![](./static/OyOHbaKJyogTBXxhW5wcO3QEn0e.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/09325c4b07e09f88f80a14dff8430556.png)

@@ -14,7 +14,7 @@
 
 ### 激活插件
 
-![](./static/Pi1nbxvVEoqSIox28FkcYkw7nID.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/d16f6ecd6bfb8d1e8acff38f23ad37f8.png)
 
 ### 本地化管理
 
@@ -52,7 +52,7 @@
 
 在“系统设置”中启用其他语言，如简体中文
 
-![](./static/BFRcbhE31oEAHOxss5ncRnEvnZb.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/618830967aaeb643c892fce355d59a73.png)
 
 切换到该语言
 

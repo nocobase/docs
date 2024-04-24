@@ -9,4 +9,4 @@
 3. 插件的标签页
 4. 正文内容
 
-![](./static/N50VbOPHpoKvYVxacuUc1i6Cnrd.jpeg)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/1c0e3cb111e993232b51aa6233e07478.jpeg)

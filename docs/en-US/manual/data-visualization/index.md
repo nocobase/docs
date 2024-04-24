@@ -4,7 +4,7 @@
 
 NocoBase的数据可视化插件提供了可视化的数据检索功能和丰富的图表组件，基于系统Collection数据，用户可以快速建立可视化面板，灵活组织图表，进行业务数据分析。
 
-![](./static/2023-11-28-14-06-23.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/51be43d5400d6294f6c20d11009f23c4.png)
 
 ## 安装
 

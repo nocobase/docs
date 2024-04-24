@@ -6,10 +6,10 @@
 
 - 关系为对一，级联为单选
 
-![](./static/ZOtzbc1BOoailOxdK41cnJvvnjd.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/3f8ad42c318ebf6b6c1367da33f4e235.png)
 
 - 关系为对多，级联为多选，支持拖拽排序
 
-![](./static/OHftb05waogIjzxjUgNcfUIan8f.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2a4f58986712b073d69a33f17f1d44fc.png)
 
-![](./static/GjqEbeQ8IoFUFtxeS8cc16Fjnac.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/02fec13f436d55108a7328a0716cdfde.png)

@@ -16,10 +16,10 @@ This plugin is a commercial plugin and needs to be uploaded and activated throug
 
 After activating the interface configuration, click "Copy embedded link" in the page's configuration menu (top right corner).
 
-![](./static/embed-1.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/f11bd6d5e88d38731d7cd3cb149022c8.png)
 
 After clicking, you will get a link that can be opened separately, for example, `https://xxx.com/embed/qs087rz4o2b`.
 
-![](./static/embed-2.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/9d847805a00fd07372a474665ec0e968.png)
 
 If you want to embed NocoBase pages into other websites or applications, user authentication is required, and the `token` needs to be appended to the link, for example, `https://xxx.com/embed/qs087rz4o2b?token=xxx`. For detailed instructions on user authentication, please refer to [User Authentication](/handbook/auth).

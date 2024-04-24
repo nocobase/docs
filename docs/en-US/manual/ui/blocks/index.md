@@ -10,7 +10,7 @@
 
 目前页面里的区块类型包括：数据区块、筛选区块、其他区块
 
-![](./static/Tvjfb4qr4osyzxxPKdRcfn1knsd.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/dad0a394d33dd26f31c3202a76bb0153.png)
 
 ### 弹窗（对话框或抽屉）里的区块
 
@@ -18,11 +18,11 @@
 
 #### 抽屉
 
-![](./static/BEmxbD2SgoUTDexnYjzcmh7Knhg.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/e18726fb0b52ddab89b9b1a44788f361.png)
 
 #### 对话框
 
-![](./static/EicAbMa7Jo2MD9x8FSfcpgTGnHc.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/4763fc5fc008bdf3915f84a7e433c0f8.png)
 
 ## 区块的设计器
 
@@ -32,25 +32,25 @@
 2. 快捷添加区块
 3. 区块参数配置
 
-![](./static/PSD8bf1fzoZkIUxJW7lc4XuGnee.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/b488f3013532a246df59b89c0688a58f.png)
 
 简单的区块所有的配置项都集中在「区块参数配置」里，如 Markdown
 
-![](./static/L0aJb1V9DoETnNxrr1gcz0g0nDb.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/f37e277863068b2661f66d4020af806a.png)
 
 复杂的数据类型区块还会提供独立的内嵌的「配置字段」和「配置操作」
 
-![](./static/OpBcbf9UlooZ5UxZDwwcHZi8nWf.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/71b550da637d23145a5f62d48ee8521b.png)
 
 除此之外，也可以自由发挥，提供更多嵌套的可能，如图表区块
 
-![](./static/Uo6ubaMwFo5bi1xVMU5cshlTn1g.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/07588190b3f41ae3060e71d8b76b4447.png)
 
 ## 区块布局
 
 多个区块可以通过拖拽调整布局
 
-![](./static/XjdHbvC9ZotdQAx8GJoczwoancc.gif)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/f6692295ac0917f3babce9a60ce80879.gif)
 
 ## 区块模板
 
@@ -60,11 +60,11 @@
 
 1. 将数据区块保存为区块模板（只有数据类型的区块才有这个配置项）
 
-![](./static/JNiLb7rksoY07ox092ycaarenGd.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/b7718cea8784587d53524ade3c5b0a82.png)
 
 1. 添加区块时，选择复制或引用模板
 
-![](./static/ImutbF0YDoWldOxrPilcwQFHnSe.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/135df7344e0f3080199e4bb1071c2fa6.png)
 
 ### 复制和引用的区别
 

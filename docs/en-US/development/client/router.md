@@ -68,7 +68,7 @@ router.add('admin.page', {
 
 Dynamic pages are managed through menu management, by adding menu items -> page addition.
 
-![](./static/WCBPbKackoxlV3xs2zxcXymTnQf.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/9204957c39f644cfbf23eef3cbdc7eca.png)
 
 ### AdminSettingsLayout
 
@@ -81,7 +81,7 @@ router.add('admin.settings', {
 
 Plugin configuration pages.
 
-![](./static/KItpbzcUQo9A2yx2i1tcOmlLnjI.png)
+![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/ea22826eba4fd38d68a5a52fd68e7719.png)
 
 The menu and tabs for plugin configuration pages are registered via `app.pluginSettingsManager`.
 
