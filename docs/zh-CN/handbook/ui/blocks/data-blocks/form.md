@@ -28,7 +28,7 @@
 
 ![20240408143719](https://static-docs.nocobase.com/20240408143719.png)
 
-![20240408143812](https://static-docs.nocobase.com/20240408143812.png)
+![20240424143911](https://static-docs.nocobase.com/20240424143911.png)
 #### 模板配置
 1. 配置数据范围筛选出一条或一组数据，作为模板。
 2. 配置标题字段，用于识别模板数据。
