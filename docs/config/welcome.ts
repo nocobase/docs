@@ -47,6 +47,7 @@ export default [
         ],
       },
       '/welcome/getting-started/env',
+      '/welcome/getting-started/plugin',
     ],
   },
   {
