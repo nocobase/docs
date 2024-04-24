@@ -12,13 +12,13 @@
 
 ## 区块设置项
 
-![20240416220148](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416220148.png)
+![20240416220148](https://static-docs.nocobase.com/20240416220148.png)
 
 ### 联动规则
 
 通过联动规则控制表单字段行为。
 
-![20240416220254](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416220254.png)
+![20240416220254](https://static-docs.nocobase.com/20240416220254.png)
 
 更多内容参考 [联动规则](/handbook/ui/blocks/block-settings/linkage-rule)
 
@@ -26,9 +26,9 @@
 
 表单数据模板目的是简化数据录入流程，提高录入效率。通过数据范围筛选出一条或一组数据作为模板，选中的目标数据模板将作为表单的默认值填充。
 
-![20240408143719](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408143719.png)
+![20240408143719](https://static-docs.nocobase.com/20240408143719.png)
 
-![20240424143911](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240424143911.png)
+![20240408143812](https://static-docs.nocobase.com/20240408143812.png)
 #### 模板配置
 1. 配置数据范围筛选出一条或一组数据，作为模板。
 2. 配置标题字段，用于识别模板数据。
@@ -54,7 +54,7 @@
 
 - 创建商品促销模板
 
-![20240408145855](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408145855.png)
+![20240408145855](https://static-docs.nocobase.com/20240408145855.png)
 
 - 快捷录入促销商品
 
@@ -69,13 +69,13 @@
 
 ### 本表字段
 
-![20240416230739](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416230739.png)
+![20240416230739](https://static-docs.nocobase.com/20240416230739.png)
 
 ### 关系表字段
 
 关系表字段在表单中只读，通常配合关系字段一起使用，可以显示关系数据的多个字段值。
 
-![20240416230811](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416230811.png)
+![20240416230811](https://static-docs.nocobase.com/20240416230811.png)
 
 <video width="100%" height="440" controls>
       <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416231152.mp4" type="video/mp4">
@@ -85,7 +85,7 @@
 
 ## 配置操作
 
-![20240417115249](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417115249.png)
+![20240417115249](https://static-docs.nocobase.com/20240417115249.png)
 
 - [提交](/handbook/ui/actions/types/submit)
 - [保存数据](/handbook/ui/actions/types/save-record)

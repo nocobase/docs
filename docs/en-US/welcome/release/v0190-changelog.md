@@ -26,7 +26,7 @@ export default function (app) {
 
 命令行的执行流程：
 
-![20240115141900](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240115141900.png)
+![20240115141900](https://static-docs.nocobase.com/20240115141900.png)
 
 Command 的特殊配置
 
@@ -44,15 +44,15 @@ app.command('a').preload().action();
 
 ### 安装流程优化
 
-![20240115141914](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240115141914.png)
+![20240115141914](https://static-docs.nocobase.com/20240115141914.png)
 
 ### 启动流程优化
 
-![20240115141922](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240115141922.png)
+![20240115141922](https://static-docs.nocobase.com/20240115141922.png)
 
 ### 升级流程优化
 
-![20240115141933](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240115141933.png)
+![20240115141933](https://static-docs.nocobase.com/20240115141933.png)
 
 升级的 migrations 有 beforeLoad、afterSync 和 afterLoad 之分：
 

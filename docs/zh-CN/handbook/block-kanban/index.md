@@ -16,7 +16,7 @@ Kanban（看板）区块以看板视图展示数据，支持直接拖拽调整�
       <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419214551.mp4" type="video/mp4">
 </video>
 
-![20240419214751](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419214751.png)
+![20240419214751](https://static-docs.nocobase.com/20240419214751.png)
 
 ### 分组字段
 
@@ -32,11 +32,11 @@ Kanban（看板）区块以看板视图展示数据，支持直接拖拽调整�
 
 点击卡片，弹出弹窗，在弹窗中可配置数据区块进行数据管理。
 
-![20240419220115](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419220115.png)
+![20240419220115](https://static-docs.nocobase.com/20240419220115.png)
 
 支持配置弹窗打开方式、弹窗尺寸。
 
-![20240419220159](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419220159.png)
+![20240419220159](https://static-docs.nocobase.com/20240419220159.png)
 
 ### 拖拽卡片
 
@@ -52,17 +52,17 @@ Kanban（看板）区块以看板视图展示数据，支持直接拖拽调整�
 
 示例：默认筛选促销的商品
 
-![20240422095659](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422095659.png)
+![20240422095659](https://static-docs.nocobase.com/20240422095659.png)
 
 更多内容参考 [设置数据范围](/handbook/ui/blocks/block-settings/data-scope)
 
 ## 配置字段
 
-![20240419215909](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419215909.png)
+![20240419215909](https://static-docs.nocobase.com/20240419215909.png)
 
 ## 配置操作
 
-![20240419220903](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419220903.png)
+![20240419220903](https://static-docs.nocobase.com/20240419220903.png)
 
 - [筛选](/handbook/ui/actions/types/filter)
 - [添加](/handbook/ui/actions/types/add-new)

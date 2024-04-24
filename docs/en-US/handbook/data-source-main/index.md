@@ -12,7 +12,7 @@ This is a built-in plugin, no separate installation is required.
 
 ## User Manual
 
-![20240322230134](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240322230134.png)
+![20240322230134](https://static-docs.nocobase.com/20240322230134.png)
 
 ### Supporting the creation of various data tables
 
@@ -28,18 +28,18 @@ This is a built-in plugin, no separate installation is required.
 
 ### Supporting classification management of collections
 
-![20240322231520](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240322231520.png)
+![20240322231520](https://static-docs.nocobase.com/20240322231520.png)
 
 ### Offering a wide range of field types
 
-![20240322230950](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240322230950.png)
+![20240322230950](https://static-docs.nocobase.com/20240322230950.png)
 
 ### Usage of the collections
 
 Serving as the data source for data blocks
 
-![20240322231949](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240322231949.png)
+![20240322231949](https://static-docs.nocobase.com/20240322231949.png)
 
 Serving as the data source for workflows
 
-![20240322232107](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240322232107.png)
+![20240322232107](https://static-docs.nocobase.com/20240322232107.png)

@@ -5,17 +5,17 @@
 
 ## 使用说明
 
-![20240422153711](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422153711.png)
+![20240422153711](https://static-docs.nocobase.com/20240422153711.png)
 
 ### 静态值
 
 示例：仅在售商品可以选择关联
 
-![20240422155953](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422155953.png)
+![20240422155953](https://static-docs.nocobase.com/20240422155953.png)
 
 ### 变量值
 
-![20240422163640](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422163640.png)
+![20240422163640](https://static-docs.nocobase.com/20240422163640.png)
 
 更多关于变量内容参考 [变量](/handbook/ui/variables)
 
@@ -27,7 +27,7 @@
 
 商品数据为当前表单中所选客户关联的商品。
 
-![20240422154145](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422154145.png)
+![20240422154145](https://static-docs.nocobase.com/20240422154145.png)
 
 <video width="100%" height="440" controls>
       <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422155351.mp4" type="video/mp4">

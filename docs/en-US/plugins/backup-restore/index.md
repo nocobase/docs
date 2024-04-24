@@ -10,31 +10,31 @@ NocoBase 应用的备份与还原插件，可用于应用的复制、迁移、�
 
 ## 使用说明
 
-![备份还原列表页](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/071b969c4db9bdc6d2c359e1b6bef5da.png)
+![备份还原列表页](https://static-docs.nocobase.com/071b969c4db9bdc6d2c359e1b6bef5da.png)
 
 ### 新建备份
 
-![新建备份](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/0e3d9410e6b1cfbda38044033f0b4053.png)
+![新建备份](https://static-docs.nocobase.com/0e3d9410e6b1cfbda38044033f0b4053.png)
 
 ### 还原备份
 
 可以选择从本地上传备份，也可以点击某个备份文件进行还原。
 
-![还原备份](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/e4b95a4376260fd516de7828fd9f1056.png)
+![还原备份](https://static-docs.nocobase.com/e4b95a4376260fd516de7828fd9f1056.png)
 
 选择需要还原的数据，选中的数据将全量覆盖目标应用对应的数据表
 
-![还原备份](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/9c7cb78b51c8f949e417b5a1e0180ae2.png)
+![还原备份](https://static-docs.nocobase.com/9c7cb78b51c8f949e417b5a1e0180ae2.png)
 
 ### 备份说明
 
 点击了解更多（Learn more）查看备份说明
 
-![备份还原说明](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/4f54eba0fde2d6481274665cb184a79e.png)
+![备份还原说明](https://static-docs.nocobase.com/4f54eba0fde2d6481274665cb184a79e.png)
 
 备份说明
 
-![备份还原说明](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/bd5c68cf7e35d04e525f9b13e48e32d9.png)
+![备份还原说明](https://static-docs.nocobase.com/bd5c68cf7e35d04e525f9b13e48e32d9.png)
 
 备份分组
 

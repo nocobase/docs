@@ -12,11 +12,11 @@
 
 ER 关系
 
-![alt text](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/4359e128936bbd7c9ff51bcff1d646dd.png)
+![alt text](https://static-docs.nocobase.com/4359e128936bbd7c9ff51bcff1d646dd.png)
 
 字段配置
 
-![alt text](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/7665a87e094b4fb50c9426a108f87105.png)
+![alt text](https://static-docs.nocobase.com/7665a87e094b4fb50c9426a108f87105.png)
 
 ## 一对一（所属关系）
 
@@ -24,11 +24,11 @@ ER 关系
 
 ER 关系
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/31e7cc3e630220cf1e98753ca24ac72d.png)
+![](https://static-docs.nocobase.com/31e7cc3e630220cf1e98753ca24ac72d.png)
 
 字段配置
 
-![alt text](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/4f09eeb3c7717d61a349842da43c187c.png)
+![alt text](https://static-docs.nocobase.com/4f09eeb3c7717d61a349842da43c187c.png)
 
 ## 参数说明
 
@@ -60,4 +60,3 @@ ON DELETE 是指在删除父表中的记录时对相关子表中的外键引用�
 - SET NULL：当删除父表中的记录时，将子表中与之关联的外键值设为 NULL。
 - RESTRICT：默认选项，当试图删除父表中的记录时，如果存在与之关联的子表记录，则拒绝删除父表记录。
 - NO ACTION：与 RESTRICT 类似，如果存在与之关联的子表记录，则拒绝删除父表记录。
-

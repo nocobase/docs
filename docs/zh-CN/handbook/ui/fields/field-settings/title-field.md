@@ -10,14 +10,14 @@
 
 全局生效
 
-![20240422210646](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422210646.png)
+![20240422210646](https://static-docs.nocobase.com/20240422210646.png)
 
 ### 关系字段组件配置标题字段
 
 仅区块内生效，优先级最高
 
-![20240422210935](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422210935.png)
+![20240422210935](https://static-docs.nocobase.com/20240422210935.png)
 
-![20240422211020](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422211020.png)
+![20240422211020](https://static-docs.nocobase.com/20240422211020.png)
 
-![20240422211116](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422211116.png)
+![20240422211116](https://static-docs.nocobase.com/20240422211116.png)

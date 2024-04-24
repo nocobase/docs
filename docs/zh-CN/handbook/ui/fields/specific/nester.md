@@ -8,18 +8,18 @@
 
 ### 对多的关系字段子表单
 
-![20240409213911](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240409213911.png)
+![20240409213911](https://static-docs.nocobase.com/20240409213911.png)
 
 支持多层关系字段的嵌套显示，商品/库存。
 
-![20240422172545](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422172545.png)
+![20240422172545](https://static-docs.nocobase.com/20240422172545.png)
 
 #### 允许添加/关联多条(默认开启)
 
 开启时通过点击 + 号添加多条记录。
 
-![20240422172237](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422172237.png)
+![20240422172237](https://static-docs.nocobase.com/20240422172237.png)
 
 ### 对一关系字段子表单
 
-![20240409214419](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240409214419.png)
+![20240409214419](https://static-docs.nocobase.com/20240409214419.png)

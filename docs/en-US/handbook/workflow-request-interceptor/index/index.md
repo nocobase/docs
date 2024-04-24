@@ -14,33 +14,33 @@
 
 创建工作流时，类型选择“请求拦截”：
 
-![创建请求拦截器](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2add03f2bdb0a836baae5fe9864fc4b6.png)
+![创建请求拦截器](https://static-docs.nocobase.com/2add03f2bdb0a836baae5fe9864fc4b6.png)
 
 拦截工作流的触发器中首先要配置的是操作对应的数据表：
 
-![拦截事件配置_数据表](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/8f7122caca8159d334cf776f838d53d6.png)
+![拦截事件配置_数据表](https://static-docs.nocobase.com/8f7122caca8159d334cf776f838d53d6.png)
 
 然后选择拦截模式，可以选择仅对绑定了该工作流的操作按钮拦截，也可以选择针对该数据表的所选操作都拦截（不区分来自哪个表单，也无需绑定对应工作流）：
 
-![拦截事件配置_拦截模式](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/145a7f7c3ba440bb6ca93a5ee84f16e2.png)
+![拦截事件配置_拦截模式](https://static-docs.nocobase.com/145a7f7c3ba440bb6ca93a5ee84f16e2.png)
 
 目前支持的操作类型有“创建”、“更新”和“删除”，可以同时选择多个操作类型。
 
 配置好触发器之后，可以在工作流中自定义相关的判断逻辑，通常会使用“条件判断”节点的分支模式，根据具体业务条件判断结果，选择是否“结束流程”，并返回预设的“响应消息”：
 
-![拦截流程配置](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/cfddda5d8012fd3d0ca09f04ea610539.png)
+![拦截流程配置](https://static-docs.nocobase.com/cfddda5d8012fd3d0ca09f04ea610539.png)
 
 如果触发器配置中选择了“绑定该工作流的表单提交时才触发拦截”的模式，还需要回到表单界面，在对应操作按钮上绑定该工作流：
 
-![新增订单_绑定工作流](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/bae3931e60f9bcc51bbc222e40e891e5.png)
+![新增订单_绑定工作流](https://static-docs.nocobase.com/bae3931e60f9bcc51bbc222e40e891e5.png)
 
 在绑定工作流的配置中选择对应的工作流，通常触发数据的上下文选择默认为“整个表单数据”即可：
 
-![选择要绑定的工作流](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/78e2f023029bd570c91ee4cd19b7a0a7.png)
+![选择要绑定的工作流](https://static-docs.nocobase.com/78e2f023029bd570c91ee4cd19b7a0a7.png)
 
 至此即完成了对应工作流的配置，并可以尝试提交一个不满足流程中条件判断配置的数据，触发拦截器的拦截逻辑，这时可以看到返回的响应消息：
 
-![提示出错的响应消息](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/06bd4a6b6ec499c853f0c39987f63a6a.png)
+![提示出错的响应消息](https://static-docs.nocobase.com/06bd4a6b6ec499c853f0c39987f63a6a.png)
 
 ### 相关提示
 
@@ -71,7 +71,7 @@
 
 如果在“结束流程”节点中配置的是以“成功”状态退出，且执行到该“结束流程”节点时，该操作的请求仍会被拦截，但返回的响应消息会以“成功”（而不是“错误”）的状态显示：
 
-![成功状态的响应消息](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/9559bbf56067144759451294b18c790e.png)
+![成功状态的响应消息](https://static-docs.nocobase.com/9559bbf56067144759451294b18c790e.png)
 
 ### 示例
 
@@ -79,19 +79,18 @@
 
 其他步骤与说明中的相同，但由于一个订单要针对多个商品，除了在数据建模时增加“订单” <-- m:1 -- “订单详情” -- 1:m --> “产品” 的多对多关系外，还需要在“请求拦截”工作流中增加一个“循环”节点，用于循环检测每个产品的库存是否充足：
 
-![示例_循环检测流程](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/8307de47d5629595ab6cf00f8aa898e3.png)
+![示例_循环检测流程](https://static-docs.nocobase.com/8307de47d5629595ab6cf00f8aa898e3.png)
 
 循环的对象选择为提交的订单数据中的“订单详情”数组：
 
-![示例_循环对象配置](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/ed662b54cc1f5425e2b472053f89baba.png)
+![示例_循环对象配置](https://static-docs.nocobase.com/ed662b54cc1f5425e2b472053f89baba.png)
 
 循环流程中的条件判断节点用于判断当前循环产品对象的库存是否充足：
 
-![示例_循环中的条件判断](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/4af91112934b0a04a4ce55e657c0833b.png)
+![示例_循环中的条件判断](https://static-docs.nocobase.com/4af91112934b0a04a4ce55e657c0833b.png)
 
 其他配置与基本使用中的配置相同，最终提交订单时，如果任意一个产品库存不足，则会拦截订单提交，并返回相应的提示信息。测试时也尝试在一个订单内提交多个产品，其中一个产品库存不足，另一个产品库存充足，可以看到返回的响应消息：
 
-![示例_提交后的响应消息](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/dd9e81084aa237bda0241d399ac19270.png)
+![示例_提交后的响应消息](https://static-docs.nocobase.com/dd9e81084aa237bda0241d399ac19270.png)
 
 可以看到，响应消息中并未提示第一个产品“iPhone 15 pro”的库存不足，而只提示了第二个产品“iPhone 14 pro”的库存不足，这是因为在循环中，第一个产品库存充足，所以不会拦截，而第二个产品库存不足，所以拦截了订单提交。
-

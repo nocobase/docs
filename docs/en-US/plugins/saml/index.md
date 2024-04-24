@@ -6,7 +6,7 @@ SAML 插件遵循 SAML2.0 协议标准，实现用户使用第三方身份认证
 
 ## 激活插件
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/6a12f3d8073c47532a4f8aac900e4296.png)
+![](https://static-docs.nocobase.com/6a12f3d8073c47532a4f8aac900e4296.png)
 
 ## 添加 SAML 认证
 
@@ -16,11 +16,11 @@ SAML 插件遵循 SAML2.0 协议标准，实现用户使用第三方身份认证
 
 添加 - SAML
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/5076fe56086b7799be308bbaf7c4425d.png)
+![](https://static-docs.nocobase.com/5076fe56086b7799be308bbaf7c4425d.png)
 
 ## 配置
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/976b66e589973c322d81dcddd22c6146.png)
+![](https://static-docs.nocobase.com/976b66e589973c322d81dcddd22c6146.png)
 
 - SSO URL - 由 IdP 提供，用于单点登录的网址
 - 公钥 (Public Certificate) - 由 IdP 提供
@@ -51,4 +51,4 @@ NocoBase可供映射的字段有：
 
 访问登录页面，点击登录表单下方按钮发起第三方登录。
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/74963865c9d36a294948e6adeb5b24bc.png)
+![](https://static-docs.nocobase.com/74963865c9d36a294948e6adeb5b24bc.png)

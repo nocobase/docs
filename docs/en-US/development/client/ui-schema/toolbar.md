@@ -2,7 +2,7 @@
 
 激活 UI 配置之后，鼠标移动到指定区块、字段、操作上方时，会显示对应的 Schema 的工具栏。
 
-![Alt text](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/e6d327da8e85d6548529e1051d06c31a.png)
+![Alt text](https://static-docs.nocobase.com/e6d327da8e85d6548529e1051d06c31a.png)
 
 工具栏的组成部分包括：
 
@@ -59,4 +59,3 @@ SchemaToolbar 组件用于 `x-toolbar` 中，如：
 ## 为自定义组件支持 `x-toolbar`
 
 <code src="./demos/schema-toolbar-basic/button.tsx"></code>
-

@@ -8,7 +8,8 @@
 
 ### 数据表字段
 
-![20240417114311](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417114311.png)
+
+![20240417114311](https://static-docs.nocobase.com/20240417114311.png)
 
 ### 字段设置
 
@@ -16,6 +17,6 @@
 
 除了预置的多种日期时间格式，还支持自定义格式满足个性化需求。
 
-![20240409174559](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240409174559.png)
+![20240409174559](https://static-docs.nocobase.com/20240409174559.png)
 
-![20240422165602](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422165602.png)
+![20240422165602](https://static-docs.nocobase.com/20240422165602.png)

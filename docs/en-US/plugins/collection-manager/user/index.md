@@ -6,13 +6,13 @@
 
 数据表的增删改查及拖拽排序
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/a8ba0e5c00db508225f3858e5b224f7c.gif)
+![](https://static-docs.nocobase.com/a8ba0e5c00db508225f3858e5b224f7c.gif)
 
 ### 数据表字段管理
 
 数据表字段的增删改
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/c692613fdfa4d3dac895257e0dc42d3c.gif)
+![](https://static-docs.nocobase.com/c692613fdfa4d3dac895257e0dc42d3c.gif)
 
 ### 数据表分类管理
 
@@ -20,7 +20,7 @@
 
 数据表分类的增删改及排序
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/665f120f44e1e30b9468db59bf433a59.gif)
+![](https://static-docs.nocobase.com/665f120f44e1e30b9468db59bf433a59.gif)
 
 ### 数据表继承
 
@@ -32,7 +32,7 @@
 
 在订单系统中，配置"批发订单表"继承自主表 "订单"，用于处理批发订单，配置了批发客户特有的字段，如批发价格、批次号等。
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/da9ce9ad5ef74e8c1d6a6dba85b9e6fa.gif)
+![](https://static-docs.nocobase.com/da9ce9ad5ef74e8c1d6a6dba85b9e6fa.gif)
 
 商品表的继承关系也可以做如下梳理
 
@@ -54,13 +54,13 @@
 4. 子表"订单商品"（OrderProduct）：用于继承订单和商品。每个记录表示一个订单中的一个商品，同时记录了数量等信息。
 5. 子表 "订单运单关联"（OrderShipment）：用于继承订单和运单。每个记录表示一个订单与一个运单的关系，同时记录了相关信息
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/d7ad16046c2214c743ade98d70f0b7fa.gif)
+![](https://static-docs.nocobase.com/d7ad16046c2214c743ade98d70f0b7fa.gif)
 
 #### 字段重写
 
 继承关系中子表可重新定义或覆盖从父表继承的字段，自定义字段属性以适应特定需求
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2077885a406a79555b46a5acd6e8421a.gif)
+![](https://static-docs.nocobase.com/2077885a406a79555b46a5acd6e8421a.gif)
 
 ##### 关系字段重写
 
@@ -69,7 +69,7 @@
 
 如图：批发订单表中重写商品关系字段（将目标表重写为电子商品表）
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/f7533bb4845b07c3ec187753a0340716.gif)
+![](https://static-docs.nocobase.com/f7533bb4845b07c3ec187753a0340716.gif)
 
 ##### 可选项类型字段的重写
 
@@ -100,43 +100,43 @@
 
 子表在区块中使用时除了本表字段还有所有父表的字段供配置
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/33921f1e2367b3b4edac9450d2c1fef2.png)
+![](https://static-docs.nocobase.com/33921f1e2367b3b4edac9450d2c1fef2.png)
 
 #### 添加操作可以启用子表
 
 父表配置 TableOID(记录是由哪个表创建的数据)
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/9bfaa4d261fd482e2473469a2f4c3250.png)
+![](https://static-docs.nocobase.com/9bfaa4d261fd482e2473469a2f4c3250.png)
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/ce4d4ca099600e4a38058369a6dc38c7.gif)
+![](https://static-docs.nocobase.com/ce4d4ca099600e4a38058369a6dc38c7.gif)
 
 子表的数据汇聚在父表中
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/fc4b50175aa9b7b7404895f636db8d8f.gif)
+![](https://static-docs.nocobase.com/fc4b50175aa9b7b7404895f636db8d8f.gif)
 
 在父表中为子表配置添加操作
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/81ab8e1d14a0d84620e4a0b214edef5a.gif)
+![](https://static-docs.nocobase.com/81ab8e1d14a0d84620e4a0b214edef5a.gif)
 
 可选项为当前表的所有子表
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/c5944d8b2ac4dd5b938bf31667d34516.png)
+![](https://static-docs.nocobase.com/c5944d8b2ac4dd5b938bf31667d34516.png)
 
 #### 继承表数据的查看与编辑（按 \_\_collection 显示）
 
 UI 配置状态下可以为子表配置区块（表单/详情区块）
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/fbadc32ae1931c711707ad5bd9a6c603.png)
+![](https://static-docs.nocobase.com/fbadc32ae1931c711707ad5bd9a6c603.png)
 
 非 UI 配置状态下,按 \_\_collection 只显示对应数据表记录的区块
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/07dc8529f7b33deb0e4aaf1a004be213.gif)
+![](https://static-docs.nocobase.com/07dc8529f7b33deb0e4aaf1a004be213.gif)
 
 #### 关系数据的弹窗（按 \_\_collection 显示）
 
 关系数据的详情在非 UI 配置状态下按 \_\_collection 仅显示对应数据的区块
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/101753398b9fd5a1013fcee833cbeec0.gif)
+![](https://static-docs.nocobase.com/101753398b9fd5a1013fcee833cbeec0.gif)
 
 #### 继承下的筛选联动
 

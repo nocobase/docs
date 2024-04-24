@@ -4,8 +4,8 @@
 
 支持多层关系字段的嵌套显示
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/966964d3f3ade50d9af03baed79247cf.png)
+![](https://static-docs.nocobase.com/966964d3f3ade50d9af03baed79247cf.png)
 
 可以配置是否显示标题和调整布局
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/6b375a39b4b1cba4033f92736c3676f3.png)
+![](https://static-docs.nocobase.com/6b375a39b4b1cba4033f92736c3676f3.png)

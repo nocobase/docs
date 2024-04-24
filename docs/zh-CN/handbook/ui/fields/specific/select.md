@@ -4,7 +4,7 @@
 
 下拉选择器关系中字段组件支持从目标表的已有数据选择关联或为目标表添加数据后关联。
 
-![20240409230638](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240409230638.png)
+![20240409230638](https://static-docs.nocobase.com/20240409230638.png)
 
 ## 字段配置项
 
@@ -34,7 +34,7 @@
 
 控制下拉列表的数据范围。
 
-![20240422204957](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422204957.png)
+![20240422204957](https://static-docs.nocobase.com/20240422204957.png)
 
 更多内容参考 [设置数据范围](/handbook/ui/fields/field-settings/data-scope)
 
@@ -44,7 +44,7 @@
 
 示例：按生产日期倒序排序。
 
-![20240422205340](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422205340.png)
+![20240422205340](https://static-docs.nocobase.com/20240422205340.png)
 
 ### 允许添加/关联多条
 
@@ -52,6 +52,7 @@
 
 ### 标题字段
 
-![20240422205632](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422205632.gif)
+
+![20240422205632](https://static-docs.nocobase.com/20240422205632.gif)
 
 更多内容参考 [标题字段](/handbook/ui/fields/field-settings/title-field)

@@ -8,40 +8,40 @@
 
 ### 激活插件
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/d16f6ecd6bfb8d1e8acff38f23ad37f8.png)
+![](https://static-docs.nocobase.com/d16f6ecd6bfb8d1e8acff38f23ad37f8.png)
 
 ### 本地化管理
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/c117b5337941f0afd564152053666480.png)
+![](https://static-docs.nocobase.com/c117b5337941f0afd564152053666480.png)
 
 ### 同步翻译词条
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/bc380a4ebdb2af075abcab5f16287cf9.png)
+![](https://static-docs.nocobase.com/bc380a4ebdb2af075abcab5f16287cf9.png)
 
 同步之后，会列出所有可翻译词条
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/cf501e6b4d2f67520ad35b00d1ed3446.png)
+![](https://static-docs.nocobase.com/cf501e6b4d2f67520ad35b00d1ed3446.png)
 
 ### 发布
 
 翻译完成之后，需要点击“发布”按钮，才能使修改结果生效
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/1f9dc52defb37ac67912011ba31c3160.png)
+![](https://static-docs.nocobase.com/1f9dc52defb37ac67912011ba31c3160.png)
 
 ### 翻译其他语言
 
 启用其他语言，如简体中文
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/618830967aaeb643c892fce355d59a73.png)
+![](https://static-docs.nocobase.com/618830967aaeb643c892fce355d59a73.png)
 
 切换语言
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/35548a7bf099df4f30d160c72863c6b8.png)
+![](https://static-docs.nocobase.com/35548a7bf099df4f30d160c72863c6b8.png)
 
 词条同步
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/12f39cfcd7d8d9ce3d367426b959af16.png)
+![](https://static-docs.nocobase.com/12f39cfcd7d8d9ce3d367426b959af16.png)
 
 翻译并发布
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/eb22725dcab6807dc8a410f5e10e9492.png)
+![](https://static-docs.nocobase.com/eb22725dcab6807dc8a410f5e10e9492.png)

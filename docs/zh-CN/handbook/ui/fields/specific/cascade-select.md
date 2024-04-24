@@ -8,11 +8,11 @@
 
 - 关系为对一，级联为单选。
 
-![20240409205542](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240409205542.png)
+![20240409205542](https://static-docs.nocobase.com/20240409205542.png)
 
 - 关系为对多，级联为多选，且支持拖拽排序。
 
-![20240409210705](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240409210705.png)
+![20240409210705](https://static-docs.nocobase.com/20240409210705.png)
 
 ## 字段配置项
 

@@ -12,13 +12,13 @@
 
 ## 区块设置项
 
-![20240417224539](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417224539.png)
+![20240417224539](https://static-docs.nocobase.com/20240417224539.png)
 
 ### 设置数据范围
 
 如图：默认筛选订单状态为退款的单据
 
-![20240417224701](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417224701.png)
+![20240417224701](https://static-docs.nocobase.com/20240417224701.png)
 
 更多内容参考 [设置数据范围](/handbook/ui/blocks/block-settings/data-scope)
 
@@ -26,7 +26,7 @@
 
 如图：按订单金额大小倒序排序
 
-![20240417225302](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417225302.png)
+![20240417225302](https://static-docs.nocobase.com/20240417225302.png)
 
 更多内容参考 [设置排序规则](/handbook/ui/blocks/block-settings/sorting-rule)
 
@@ -47,11 +47,11 @@
 
 ### 本表字段
 
-![20240417230027](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417230027.png)
+![20240417230027](https://static-docs.nocobase.com/20240417230027.png)
 
 ### 关系表字段
 
-![20240417230115](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417230115.png)
+![20240417230115](https://static-docs.nocobase.com/20240417230115.png)
 
 列表字段配置项可参考 [详情字段](/handbook/ui/fields/generic/detail-form-item)
 
@@ -59,7 +59,7 @@
 
 ### 全局操作
 
-![20240421115811](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240421115811.png)
+![20240421115811](https://static-docs.nocobase.com/20240421115811.png)
 
 - [筛选](/handbook/ui/actions/types/filter)
 - [添加](/handbook/ui/actions/types/add-new)
@@ -69,7 +69,7 @@
 
 ### 行操作
 
-![20240418114424](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240418114424.png)
+![20240418114424](https://static-docs.nocobase.com/20240418114424.png)
 
 - [查看](/handbook/ui/actions/types/view)
 - [编辑](/handbook/ui/actions/types/edit)

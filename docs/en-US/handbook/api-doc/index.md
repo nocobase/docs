@@ -16,11 +16,11 @@ This is a built-in plugin, no installation required. Activate to use.
 
 http://localhost:13000/admin/settings/api-doc/documentation
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/8db51cf50e3c666aba5a850a0fb664a0.png)
+![](https://static-docs.nocobase.com/8db51cf50e3c666aba5a850a0fb664a0.png)
 
 ### Documentation Overview
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/5bb4d3e5bba6c6fdfcd830592e72385b.png)
+![](https://static-docs.nocobase.com/5bb4d3e5bba6c6fdfcd830592e72385b.png)
 
 - Total API Documentation: `/api/swagger:get`
 - Core API Documentation: `/api/swagger:get?ns=core`

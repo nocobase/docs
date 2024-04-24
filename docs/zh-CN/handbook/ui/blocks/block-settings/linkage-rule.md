@@ -4,9 +4,9 @@
 
 表单区块的联动规则允许根据用户的行为动态调整表单，通过配置联动规则可实现复杂的业务逻辑。
 
-![20240408100711](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408100711.png)
+![20240408100711](https://static-docs.nocobase.com/20240408100711.png)
 
-![20240408100757](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408100757.png)
+![20240408100757](https://static-docs.nocobase.com/20240408100757.png)
 
 ## 使用说明
 
@@ -28,15 +28,15 @@
 
 - 年采购额 大于 20000 客户级别为 A+。
 
-![20240408102241](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408102241.png)
+![20240408102241](https://static-docs.nocobase.com/20240408102241.png)
 
 - 年采购额 大于 10000 客户级别小于等于20000为 A。
 
-![20240408102303](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408102303.png)
+![20240408102303](https://static-docs.nocobase.com/20240408102303.png)
 
 - 年采购额 小于 10000 客户级别为 A-。
 
-![20240408102324](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408102324.png)
+![20240408102324](https://static-docs.nocobase.com/20240408102324.png)
 
 ### 必填
 
@@ -44,11 +44,11 @@
 
 - 是否促销为 true ,促销价格必填。
 
-![20240408105031](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408105031.png)
+![20240408105031](https://static-docs.nocobase.com/20240408105031.png)
 
 - 是否促销为 false ,促销价格非必填。
 
-![20240408105115](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408105115.png)
+![20240408105115](https://static-docs.nocobase.com/20240408105115.png)
 
 ### 显示/隐藏
 
@@ -56,8 +56,8 @@
 
 - 是否促销为 true,促销价格显示且必填。
 
-![20240408115240](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408115240.png)
+![20240408115240](https://static-docs.nocobase.com/20240408115240.png)
 
 - 是否促销为 false,促销价格隐藏且非必填。
 
-![20240408115338](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408115338.png)
+![20240408115338](https://static-docs.nocobase.com/20240408115338.png)

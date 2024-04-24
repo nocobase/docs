@@ -10,20 +10,20 @@
 
 创建文件表
 
-![20240324090414](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240324090414.png)
+![20240324090414](https://static-docs.nocobase.com/20240324090414.png)
 
 文件表预置字段
 
-![20240324090527](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240324090527.png)
+![20240324090527](https://static-docs.nocobase.com/20240324090527.png)
 
 在区块中使用
 
-![20240324090848](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240324090848.png)
+![20240324090848](https://static-docs.nocobase.com/20240324090848.png)
 
 关系字段
 
-![20240324091529](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240324091529.png)
+![20240324091529](https://static-docs.nocobase.com/20240324091529.png)
 
 关系区块
 
-![20240324091321](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240324091321.png)
+![20240324091321](https://static-docs.nocobase.com/20240324091321.png)

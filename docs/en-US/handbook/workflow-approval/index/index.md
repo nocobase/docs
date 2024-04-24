@@ -12,7 +12,7 @@
 
 该插件为商业插件，需要通过插件管理器上传并激活插件
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240323162741.png)
+![](https://static-docs.nocobase.com/20240323162741.png)
 
 ## 使用手册
 
@@ -22,7 +22,7 @@
 
 创建工作流时选择“审批”类型，即可创建审批流程：
 
-![审批触发器_创建审批流程](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/f52dda854f46a669e0c1c7fb487a17ea.png)
+![审批触发器_创建审批流程](https://static-docs.nocobase.com/f52dda854f46a669e0c1c7fb487a17ea.png)
 
 之后在工作流配置界面中点击触发器打开弹窗进行更多的配置。
 
@@ -30,11 +30,11 @@
 
 NocoBase 的审批插件基于灵活性的设计，可以与任意自定义数据表配合使用，即审批配置无需重复配置数据模型，而是直接复用已创建的数据表。所以在进入触发器配置后，首先需要选择数据表，以决定该流程由哪个数据表的数据创建或更新时触发：
 
-![审批触发器_触发器配置_选择数据表](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/8732a4419b1e28d2752b8f601132c82d.png)
+![审批触发器_触发器配置_选择数据表](https://static-docs.nocobase.com/8732a4419b1e28d2752b8f601132c82d.png)
 
 然后在对应数据表的创建（或编辑）数据的表单中将该工作流绑定到提交按钮上：
 
-![发起审批_绑定工作流](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2872ff108c61d7bf6d0bfb19886774c6.png)
+![发起审批_绑定工作流](https://static-docs.nocobase.com/2872ff108c61d7bf6d0bfb19886774c6.png)
 
 之后用户对该表单的提交即可触发对应的审批工作流，提交的数据除了保存在对应的数据表中，也会被快照至审批流中，供后续审批人员查阅使用。
 
@@ -42,7 +42,7 @@ NocoBase 的审批插件基于灵活性的设计，可以与任意自定义数�
 
 在用户端界面有两个位置可以发起审批：一是通过已绑定的数据表的创建（或更新）数据表单提交发起，该位置通常只针对单一的审批流程发起；二是可以集中地从审批中心区块发起，通常针对于中心化管理的全局流程。
 
-![审批触发器_触发器配置_选择发起审批的位置](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/1a193ec0acfa6cde221c6e5d49a50b3e.png)
+![审批触发器_触发器配置_选择发起审批的位置](https://static-docs.nocobase.com/1a193ec0acfa6cde221c6e5d49a50b3e.png)
 
 勾选“在数据区块和审批中心都可以发起和审批”后，该流程会在审批中心区块的“发起”按钮下拉菜单中出现，用户可以集中在该位置发起不同的审批。
 
@@ -50,7 +50,7 @@ NocoBase 的审批插件基于灵活性的设计，可以与任意自定义数�
 
 如果一个审批流程允许发起人撤回，可以勾选“允许撤回”的选项：
 
-![审批触发器_触发器配置_允许撤回](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/09185712fc55bc536892136ce0ade4a8.png)
+![审批触发器_触发器配置_允许撤回](https://static-docs.nocobase.com/09185712fc55bc536892136ce0ade4a8.png)
 
 勾选后该流程发起的审批在任何审批人处理之前均可被发起人撤回，但在任何后续审批节点配置的审批人处理过后，将不再可被撤回。
 
@@ -58,17 +58,17 @@ NocoBase 的审批插件基于灵活性的设计，可以与任意自定义数�
 
 最后需要配置发起人的表单界面，该界面将用于从审批中心区块发起时和用户撤回后重新发起时的提交操作。点击配置按钮打开弹窗：
 
-![审批触发器_触发器配置_发起人表单](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/ca8b7e362d912138cf7d73bb60b37ac1.png)
+![审批触发器_触发器配置_发起人表单](https://static-docs.nocobase.com/ca8b7e362d912138cf7d73bb60b37ac1.png)
 
 可以为发起人的界面添加基于绑定的数据表的填写表单，或用以提示和引导的说明文案（Markdown）。其中表单是必须添加的，否则发起人进入到该界面后将无法操作。
 
 添加表单区块后，和普通表单配置界面一样，可以添加对应数据表的字段组件，并且可以任意排列，以组织表单需要填写的内容：
 
-![审批触发器_触发器配置_发起人表单_字段配置](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/5a1e7f9c9d8de092c7b55585dad7d633.png)
+![审批触发器_触发器配置_发起人表单_字段配置](https://static-docs.nocobase.com/5a1e7f9c9d8de092c7b55585dad7d633.png)
 
 区别与直接提交的按钮，还可以增加“保存草稿”的操作按钮，用于支持暂存的处理流程：
 
-![审批触发器_触发器配置_发起人表单_操作配置](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2f4850d2078e94538995a9df70d3d2d1.png)
+![审批触发器_触发器配置_发起人表单_操作配置](https://static-docs.nocobase.com/2f4850d2078e94538995a9df70d3d2d1.png)
 
 ### 审批节点
 
@@ -82,7 +82,7 @@ NocoBase 的审批插件基于灵活性的设计，可以与任意自定义数�
 
 点击流程中的加号（“+”）按钮，添加“审批”节点，再选择其中一种通过模式，创建审批节点：
 
-![审批节点_创建](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/f15d61208a3918d005cd2031fc9b6ce7.png)
+![审批节点_创建](https://static-docs.nocobase.com/f15d61208a3918d005cd2031fc9b6ce7.png)
 
 #### 通过模式
 
@@ -90,11 +90,11 @@ NocoBase 的审批插件基于灵活性的设计，可以与任意自定义数�
 
 1.  直通模式：通常用于较为简单的流程，审批节点通过与否只决定流程是否结束，未通过的情况下直接退出流程。
 
-    ![审批节点_通过模式_直通模式](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/a9d446a186f61c546607cf1c2534b287.png)
+    ![审批节点_通过模式_直通模式](https://static-docs.nocobase.com/a9d446a186f61c546607cf1c2534b287.png)
 
 2.  分支模式：通常用于更复杂的数据逻辑，审批节点产生任何结果后，可在其结果分支内继续执行其他节点。
 
-    ![审批节点_通过模式_分支模式](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/57dc6a8907f3bb02fb28c354c241e4e5.png)
+    ![审批节点_通过模式_分支模式](https://static-docs.nocobase.com/57dc6a8907f3bb02fb28c354c241e4e5.png)
 
     其中如果节点配置了“退回”操作，才会产生“退回”分支，且退回分支执行完以后会强制退出当前流程。
 
@@ -108,7 +108,7 @@ NocoBase 的审批插件基于灵活性的设计，可以与任意自定义数�
 
 审批人是负责该节点审批行为的用户集合，可以是一个或多个用户，选择的来源可以是从用户列表选择的静态值，也可以是由变量指定的动态值。
 
-![审批节点_审批人](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/29c64297d577b9ca9457b1d7ac62287d.png)
+![审批节点_审批人](https://static-docs.nocobase.com/29c64297d577b9ca9457b1d7ac62287d.png)
 
 选择变量时，仅可选择上下文和节点结果中用户数据的主键或外键。如果选择的变量在执行中是数组（对多关系），那么数组中的每个用户都会合并到整个审批人集合中。
 
@@ -137,25 +137,25 @@ NocoBase 的审批插件基于灵活性的设计，可以与任意自定义数�
 
 “通过模式”设置为“分支模式”时，可以选择在拒绝分支结束后退出工作流。勾选以后，拒绝分支的末尾会显示一个“✗”，表示该分支结束后不再继续后续节点：
 
-![审批节点_拒绝后退出](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/1e740df93c128fb6fe54bf85a740e683.png)
+![审批节点_拒绝后退出](https://static-docs.nocobase.com/1e740df93c128fb6fe54bf85a740e683.png)
 
 #### 审批人界面配置
 
 审批人界面配置用于提供审批人对审批工作流执行到该节点时的操作界面，点击配置按钮打开弹窗：
 
-![审批节点_界面配置_弹窗](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2c321ae164b436f1c572305ff27cc9dd.png)
+![审批节点_界面配置_弹窗](https://static-docs.nocobase.com/2c321ae164b436f1c572305ff27cc9dd.png)
 
 在配置弹窗中可以添加提交审批的详情、操作栏和自定义提示文字等区块：
 
-![审批节点_界面配置_添加区块](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/9f8f11926e935ad8f8fbeec368edebfe.png)
+![审批节点_界面配置_添加区块](https://static-docs.nocobase.com/9f8f11926e935ad8f8fbeec368edebfe.png)
 
 其中审批内容详情区块即发起人提交的数据区块，与普通的数据区块类似，可以任意添加数据表的字段组件，并且可以任意排列，以组织审批人需要查看的内容：
 
-![审批节点_界面配置_详情区块](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/1140ec13caeea1b364d12e057720a29c.png)
+![审批节点_界面配置_详情区块](https://static-docs.nocobase.com/1140ec13caeea1b364d12e057720a29c.png)
 
 操作栏中可以添加该节点支持的操作按钮，例如“通过”、“拒绝”和“退回”等：
 
-![审批节点_界面配置_操作栏](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/1bb090ed123f62ba8a524a3e9e7da328.png)
+![审批节点_界面配置_操作栏](https://static-docs.nocobase.com/1bb090ed123f62ba8a524a3e9e7da328.png)
 
 另外，操作栏中也可以添加相关的字段要求审批人填写，如“评论”字段。
 
@@ -167,7 +167,7 @@ NocoBase 的审批插件基于灵活性的设计，可以与任意自定义数�
 
 在配置好一个审批工作流并启用后，可以将该工作流绑定在对应的数据表的表单提交按钮上，以供用户在提交的时候发起审批：
 
-![发起审批_绑定工作流](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2872ff108c61d7bf6d0bfb19886774c6.png)
+![发起审批_绑定工作流](https://static-docs.nocobase.com/2872ff108c61d7bf6d0bfb19886774c6.png)
 
 绑定工作流后，用户在提交当前表单时，即发起审批。
 
@@ -175,63 +175,62 @@ NocoBase 的审批插件基于灵活性的设计，可以与任意自定义数�
 
 在已提交的数据详情弹窗中，可以配置审批区块，用于展示对应数据的审批记录，以及处理入口：
 
-![详情审批区块_创建区块](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/6b40f47474609d1dfd33618d80228189.png)
+![详情审批区块_创建区块](https://static-docs.nocobase.com/6b40f47474609d1dfd33618d80228189.png)
 
 #### 发起人处理
 
 审批区块中会展示基本的申请信息，以及审批处理记录。对于发起人，可以在弹窗中查看自己发起的申请内容详情，如果配置了可被撤回，且流程在进入首个审批节点后但还未被任何审批人处理，可以撤回已发起的申请：
 
-![详情审批区块_发起人查看](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/5c7d4a6dca8de820d154487e41808c2a.png)
+![详情审批区块_发起人查看](https://static-docs.nocobase.com/5c7d4a6dca8de820d154487e41808c2a.png)
 
 如果发起人执行了撤回操作，会在审批区块中显示撤回的记录，并且可以点击查看后会重新打开申请的弹窗：
 
-![详情审批区块_发起人撤回后再次查看](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/df52cb5203c1fd0a2f7af1757fbf6ecd.png)
+![详情审批区块_发起人撤回后再次查看](https://static-docs.nocobase.com/df52cb5203c1fd0a2f7af1757fbf6ecd.png)
 
 弹窗中的内容与之前的内容一致，可以修改后再次提交：
 
-![详情审批区块_发起人撤回后再次提交](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/4b3a6119e9871760d2dbdc8a2a75ff2c.png)
+![详情审批区块_发起人撤回后再次提交](https://static-docs.nocobase.com/4b3a6119e9871760d2dbdc8a2a75ff2c.png)
 
 #### 审批人处理
 
 审批人同样通过该区块查看审批的内容详情，在处理记录的节点列表中，如果当前登录用户为该节点的负责人之一，会在详情列中显示“查看”按钮，点击后会打开审批的弹窗：
 
-![详情审批区块_审批人处理节点](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/b160090482823ff5dc87592d0d5cedec.png)
+![详情审批区块_审批人处理节点](https://static-docs.nocobase.com/b160090482823ff5dc87592d0d5cedec.png)
 
 弹窗中将展示该审批节点中配置的审批人界面，通常会包含审批内容详情和操作栏：
 
-![详情审批区块_审批人处理弹窗](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/26acffffd314e86a658334ae9bef9d9b.png)
+![详情审批区块_审批人处理弹窗](https://static-docs.nocobase.com/26acffffd314e86a658334ae9bef9d9b.png)
 
 审批人可以在弹窗中执行通过、拒绝或退回操作，操作后会在处理记录中生成对应的记录，如果操作是退回，则发起人可以再次修改申请内容后重新发起：
 
-![详情审批区块_审批人退回](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/5da879b24923ed25c31be658636ada64.png)
+![详情审批区块_审批人退回](https://static-docs.nocobase.com/5da879b24923ed25c31be658636ada64.png)
 
 通过或拒绝会根据节点配置的对应规则产生相应的状态：
 
-![详情审批区块_审批人通过](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/b020b1f82fce7c27b905ecf0b4c0046d.png)
+![详情审批区块_审批人通过](https://static-docs.nocobase.com/b020b1f82fce7c27b905ecf0b4c0046d.png)
 
 ### 审批中心区块
 
 审批插件提供了两个全局区块用于集中地管理部分审批流程，分别是“发起审批”和“审批待办”：
 
-![审批中心区块_创建](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/fb3957320f082159f6f1f908937894b6.png)
+![审批中心区块_创建](https://static-docs.nocobase.com/fb3957320f082159f6f1f908937894b6.png)
 
 “发起审批”区块用于发起人的视角，可以从区块的操作栏发起新的审批：
 
-![审批中心区块_发起审批](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/a888630f892f15882eb1ec6b8826c528.png)
+![审批中心区块_发起审批](https://static-docs.nocobase.com/a888630f892f15882eb1ec6b8826c528.png)
 
 如果在审批触发器中配置了“在数据区块和审批中心都可以发起和审批”，那么在“申请”按钮的下拉菜单中会出现对应的审批流程。
 
 当然，也可以在列表中查看已发起的审批的状态：
 
-![审批中心区块_查看发起列表](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/4379ff809ae6a545dccab434cf6a6cfb.png)
+![审批中心区块_查看发起列表](https://static-docs.nocobase.com/4379ff809ae6a545dccab434cf6a6cfb.png)
 
 点击“查看”打开的弹窗与数据详情中的审批区块内容类似，区别是发起人提交的内容和审批历史分别在不同的标签页展示：
 
-![审批中心区块_发起人查看详情](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/234edf3af9a3fb9e3c7aa820c3befd66.png)
+![审批中心区块_发起人查看详情](https://static-docs.nocobase.com/234edf3af9a3fb9e3c7aa820c3befd66.png)
 
 “审批待办”区块用于审批人视角，可以在列表中查看待处理的审批，点击对应的“查看”按钮将打开处理弹窗，与数据详情中的审批区块内容类似，区别是审批人的处理表单和审批历史分别在不同的标签页展示：
 
-![审批中心区块_审批人查看已处理的详情](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/bc425bd18837d6a918c609849c38da5d.png)
+![审批中心区块_审批人查看已处理的详情](https://static-docs.nocobase.com/bc425bd18837d6a918c609849c38da5d.png)
 
 如果是已处理过的，将以提交处理的内容展示，且不可修改。
-

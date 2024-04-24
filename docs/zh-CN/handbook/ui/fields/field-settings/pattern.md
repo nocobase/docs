@@ -8,4 +8,4 @@
 - 只读（不可编辑）；
 - 只读（阅读模式）；
 
-![20240411112743](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240411112743.png)
+![20240411112743](https://static-docs.nocobase.com/20240411112743.png)

@@ -116,26 +116,26 @@ class CustomAuthPlugin extends Plugin {
 
 ### 登录表单
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/33afe18f229c3db45c7a1921c2c050b7.png)
+![](https://static-docs.nocobase.com/33afe18f229c3db45c7a1921c2c050b7.png)
 
 如果有多个认证器对应的认证类型都注册了登录表单，会以 Tab 的形式展示。Tab 标题为后台配置的认证器标题。
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/ada6d7add744be0c812359c23bf4c7fc.png)
+![](https://static-docs.nocobase.com/ada6d7add744be0c812359c23bf4c7fc.png)
 
 ### 登录按钮
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/e706f7785782adc77b0f4ee4faadfab8.png)
+![](https://static-docs.nocobase.com/e706f7785782adc77b0f4ee4faadfab8.png)
 
 通常为第三方登录按钮，实际上可以是任意组件。
 
 ### 注册表单
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/f95c53431bf21ec312fcfd51923f0b42.png)
+![](https://static-docs.nocobase.com/f95c53431bf21ec312fcfd51923f0b42.png)
 
 如果需要从登录页跳转到注册页，需要在登录组件中自己处理。
 
 ### 后台管理表单
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/f4b544b5b0f5afee5621ad4abf66b24f.png)
+![](https://static-docs.nocobase.com/f4b544b5b0f5afee5621ad4abf66b24f.png)
 
 上方为通用的认证器配置，下方为可注册的自定义配置表单部分。

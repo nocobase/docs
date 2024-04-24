@@ -12,13 +12,13 @@ The table block is one of the core data blocks built into NocoBase, displaying a
 
 ## Block Settings
 
-![20240415215319](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415215319.png)
+![20240415215319](https://static-docs.nocobase.com/20240415215319.png)
 
 ### Data Scope
 
 Example: Default filter for invoices with the "Shipped" status.
 
-![20240415215404](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415215404.png)
+![20240415215404](https://static-docs.nocobase.com/20240415215404.png)
 
 For more information, refer to [Setting Data Scope](/handbook/ui/blocks/block-settings/data-scope).
 
@@ -26,7 +26,7 @@ For more information, refer to [Setting Data Scope](/handbook/ui/blocks/block-se
 
 Example: Display invoices in reverse order by shipping date.
 
-![20240415215509](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415215509.png)
+![20240415215509](https://static-docs.nocobase.com/20240415215509.png)
 
 For more information, refer to [Setting Sorting Rule](/handbook/ui/blocks/block-settings/sorting-rule).
 
@@ -48,17 +48,17 @@ For more information, refer to [Connecting Data Blocks](/handbook/ui/blocks/bloc
 
 ### Fields in Current Collection
 
-![20240415223714](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415223714.png)
+![20240415223714](https://static-docs.nocobase.com/20240415223714.png)
 
 ### Fields in Related Collections
 
-![20240415223746](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415223746.png)
+![20240415223746](https://static-docs.nocobase.com/20240415223746.png)
 
 ### Display Inherited Table Fields (Parent Table Fields)
 
 Example: Lease order table inherits from the order table.
 
-![20240415224242](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415224242.png)
+![20240415224242](https://static-docs.nocobase.com/20240415224242.png)
 
 Configuration options for table column fields can be found in [Table Column Fields](/handbook/ui/fields/generic/table-column).
 
@@ -66,7 +66,7 @@ Configuration options for table column fields can be found in [Table Column Fiel
 
 ### Global Actions
 
-![20240415225525](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415225525.png)
+![20240415225525](https://static-docs.nocobase.com/20240415225525.png)
 
 - [Filter](/handbook/ui/actions/types/filter)
 - [Add](/handbook/ui/actions/types/add-new)
@@ -80,7 +80,7 @@ Configuration options for table column fields can be found in [Table Column Fiel
 
 ### Row Actions
 
-![20240415225657](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415225657.png)
+![20240415225657](https://static-docs.nocobase.com/20240415225657.png)
 
 - [View](/handbook/ui/actions/types/view)
 - [Edit](/handbook/ui/actions/types/edit)

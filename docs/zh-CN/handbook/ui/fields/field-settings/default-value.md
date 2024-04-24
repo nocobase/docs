@@ -9,13 +9,13 @@
 
 在所有区块中生效（优先级最低）。
 
-![20240411095933](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240411095933.png)
+![20240411095933](https://static-docs.nocobase.com/20240411095933.png)
 
 ### 新增表单的字段
 
 新增表单的大部分字段都支持设置默认值。
 
-![20240411100030](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240411100030.png)
+![20240411100030](https://static-docs.nocobase.com/20240411100030.png)
 
 ### 子表单的添加
 
@@ -23,24 +23,24 @@
 
 子表单的 Add new
 
-![20240411100341](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240411100341.png)
+![20240411100341](https://static-docs.nocobase.com/20240411100341.png)
 
 子表格 Add new
 
-![20240411100424](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240411100424.png)
+![20240411100424](https://static-docs.nocobase.com/20240411100424.png)
 
-![20240411100634](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240411100634.png)
+![20240411100634](https://static-docs.nocobase.com/20240411100634.png)
 
 编辑已有的数据，数据为空时也不会被默认值填充，新添加的数据才会用默认值填充，未保存。
 
-![20240411100729](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240411100729.png)
+![20240411100729](https://static-docs.nocobase.com/20240411100729.png)
 
 
 ### 关系数据的默认值
 
 只有「**多对一**」和「**多对多**」类型的关系，并使用的选择器组件（Select、RecordPicker）时才有默认值。
 
-![20240411101025](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240411101025.png)
+![20240411101025](https://static-docs.nocobase.com/20240411101025.png)
 
 ## 默认值变量
 
@@ -88,7 +88,7 @@
 
 ### 字段层级（可选字段）
 
-![20240411101157](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240411101157.png)
+![20240411101157](https://static-docs.nocobase.com/20240411101157.png)
 - 非关系默认值变量
 
   - 多层级选择字段时，仅限于对一的关系，不支持对多的关系；
@@ -106,11 +106,11 @@
 
 模型
 
-![20240411101558](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240411101558.png)
+![20240411101558](https://static-docs.nocobase.com/20240411101558.png)
 
 多对多设置默认值变量时，如果变量有多条记录，那选中的数据就有多条，如下图所示：
 当表格区块数据表与关系字段数据表相同时使用。
-![20240411103021](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240411103021.png)
+![20240411103021](https://static-docs.nocobase.com/20240411103021.png)
 
 
 ### 为什么一对一和一对多没有默认值？

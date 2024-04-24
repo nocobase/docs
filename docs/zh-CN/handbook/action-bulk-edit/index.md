@@ -4,7 +4,7 @@
 
 批量编辑操作用于需要为不同记录组配置不同更新逻辑的情况，适用于灵活性要求较高的数据处理场景。用户点击批量编辑按钮后，在弹窗中配置批量编辑表单，为字段指定不同的赋值逻辑。
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/70e1fb4122f56fc340405b16d229bd60.png)
+![](https://static-docs.nocobase.com/70e1fb4122f56fc340405b16d229bd60.png)
 
 ## 安装
 
@@ -13,7 +13,7 @@
 
 1. 设置批量编辑的数据：选中/所有，默认为选中。
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/c158538d86397bd48fdaed606b647166.png)
+![](https://static-docs.nocobase.com/c158538d86397bd48fdaed606b647166.png)
 
 2. 为字段设置更新逻辑，支持为特定字段设置逻辑。
 
@@ -23,6 +23,6 @@
 
 示例：在运单表格区块中配置批量编辑操作，选中的数据，将运输模式修改为空运，确认送达和实际到达时间清空。
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/65db9e898d11b01441b7830895f4dd76.gif)
+![](https://static-docs.nocobase.com/65db9e898d11b01441b7830895f4dd76.gif)
 
 更多批量编辑表单内容参考 [批量编辑表单](/handbook/ui/fields/generic/bulk-edit-form-item)
