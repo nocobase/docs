@@ -8,9 +8,10 @@
 
 ### 标题字段
 
-当弹窗关闭时显示的字段信息。
 
 ![20240409230258](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240409230258.png)
+
+弹窗外实时显示标题字段值。
 
 ![20240409225851](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240409225851.png)
 
