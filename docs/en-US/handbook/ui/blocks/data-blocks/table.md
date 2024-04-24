@@ -50,7 +50,7 @@ For more information, refer to [Connecting Data Blocks](/handbook/ui/blocks/bloc
 
 ![20240415223714](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415223714.png)
 
-### Association Fields
+### Fields in Related Collections
 
 ![20240415223746](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415223746.png)
 
