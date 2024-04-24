@@ -10,20 +10,20 @@ Files are collection records with a specific structure, the collection is known 
 
 Creating File Collection
 
-![20240324090414](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240324090414.png)
+![20240324090414](https://static-docs.nocobase.com/20240324090414.png)
 
 Preset Fields in File Collection
 
-![20240324090527](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240324090527.png)
+![20240324090527](https://static-docs.nocobase.com/20240324090527.png)
 
 Using in Blocks
 
-![20240324090848](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240324090848.png)
+![20240324090848](https://static-docs.nocobase.com/20240324090848.png)
 
 Association Field
 
-![20240324091529](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240324091529.png)
+![20240324091529](https://static-docs.nocobase.com/20240324091529.png)
 
 Association Blocks
 
-![20240324091321](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240324091321.png)
+![20240324091321](https://static-docs.nocobase.com/20240324091321.png)

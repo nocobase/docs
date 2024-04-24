@@ -10,19 +10,19 @@
 
 当弹窗关闭时显示的字段信息
 
-![20240409230258](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240409230258.png)
+![20240409230258](https://static-docs.nocobase.com/20240409230258.png)
 
-![20240409225851](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240409225851.png)
+![20240409225851](https://static-docs.nocobase.com/20240409225851.png)
 
 ### 允许添加/关联多条(默认开启)
 
 关闭时只允许添加/关联一条数据。
 
-![20240422202542](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422202542.png)
+![20240422202542](https://static-docs.nocobase.com/20240422202542.png)
 
 
 ### 子表格中的关系字段使用
 
-![20240422204245](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422204245.png)
+![20240422204245](https://static-docs.nocobase.com/20240422204245.png)
 
-![20240422204155](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422204155.png)
+![20240422204155](https://static-docs.nocobase.com/20240422204155.png)

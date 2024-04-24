@@ -140,7 +140,7 @@ NocoBase 日志文件的主要目录结构为：
 2. 选择想要下载的日志文件。
 3. 点击下载 (Download) 按钮。
 
-![2024-04-10_10-50-50](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2024-04-10_10-50-50.png)
+![2024-04-10_10-50-50](https://static-docs.nocobase.com/2024-04-10_10-50-50.png)
 
 ## 相关文档
 

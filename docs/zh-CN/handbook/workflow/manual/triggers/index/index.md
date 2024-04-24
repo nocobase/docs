@@ -10,7 +10,7 @@
 
 各个事件的触发时机如下图所示：
 
-![工作流的事件](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/739ae74ff8a2767940c3a41adb5d4e0e.png)
+![工作流的事件](https://static-docs.nocobase.com/739ae74ff8a2767940c3a41adb5d4e0e.png)
 
 比如用户提交一个表单，或者数据表中的数据由于用户操作或程序调用发生变化，或者定时任务到达执行时间，都会触发对应的工作流执行。
 
@@ -18,4 +18,4 @@
 
 创建工作流以后，在工作流查看页面中，触发器会以入口节点的样式显示在流程的开始位置，点击该卡片即可打开配置弹窗。根据触发器的类型不同，可以配置触发器的相关条件。
 
-![触发器_入口节点](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/e8dc1937e41b2712b67d84d60e94b11e.png)
+![触发器_入口节点](https://static-docs.nocobase.com/e8dc1937e41b2712b67d84d60e94b11e.png)

@@ -14,11 +14,11 @@
 
 在工作流配置界面中，点击流程中的加号（“+”）按钮，添加“聚合查询”节点：
 
-![创建聚合查询节点](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/7f9d806ebf5064f80c30f8b67f316f0f.png)
+![创建聚合查询节点](https://static-docs.nocobase.com/7f9d806ebf5064f80c30f8b67f316f0f.png)
 
 ### 节点配置
 
-![聚合查询节点_节点配置](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/57362f747b9992230567c6bb5e986fd2.png)
+![聚合查询节点_节点配置](https://static-docs.nocobase.com/57362f747b9992230567c6bb5e986fd2.png)
 
 #### 聚合函数
 
@@ -56,6 +56,6 @@
 
 之后增加一个聚合查询节点，配置如下：
 
-![聚合查询节点_示例_节点配置](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/542272e638c6c0a567373d1b37ddda78.png)
+![聚合查询节点_示例_节点配置](https://static-docs.nocobase.com/542272e638c6c0a567373d1b37ddda78.png)
 
 这样在工作流被触发后，聚合查询节点中将会统计新增文章的分类下所有文章的数量，并保存为节点的结果。

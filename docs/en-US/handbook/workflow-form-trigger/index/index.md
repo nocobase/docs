@@ -12,17 +12,17 @@
 
 针对“提交”按钮（含“保存数据”按钮）配置的工作流，将在用户提交对应表单且数据操作完成后被触发。
 
-![表单事件_提交按钮](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/ae12d219b8400d75b395880ec4cb2bda.png)
+![表单事件_提交按钮](https://static-docs.nocobase.com/ae12d219b8400d75b395880ec4cb2bda.png)
 
 针对自定义的“提交至工作流”按钮配置的工作流，将在用户点击对应按钮时，直接将已配置的表单数据提交到对应工作流进行处理。
 
-![表单事件_提交至工作流按钮](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/f15eed5ccb1ac23e7a7bf25f91ab5e38.png)
+![表单事件_提交至工作流按钮](https://static-docs.nocobase.com/f15eed5ccb1ac23e7a7bf25f91ab5e38.png)
 
 从按钮配置的菜单中选择“绑定工作流”，即可打开绑定配置弹窗。弹窗中可以配置任意多个要触发的工作流，如果一个都不配置，则代表无需触发。针对每一个工作流，需要先限定触发的数据是整个表单的数据还是表单中的某个关系字段的数据，之后再根据所选的数据模型对应的数据表，选择已配置了匹配该表模型的表单工作流。
 
-![表单事件_绑定工作流配置_上下文选择](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/358315fc175849a7fbadbe3276ac6fed.png)
+![表单事件_绑定工作流配置_上下文选择](https://static-docs.nocobase.com/358315fc175849a7fbadbe3276ac6fed.png)
 
-![表单事件_绑定工作流配置_工作流选择](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/7e994b635952c0e18bd3d10841cc23a2.png)
+![表单事件_绑定工作流配置_工作流选择](https://static-docs.nocobase.com/7e994b635952c0e18bd3d10841cc23a2.png)
 
 ### 相关提示
 
@@ -51,23 +51,22 @@
 
 之后先创建一个“表单事件”类型的工作流，并且把触发器中的数据表模型配置为“费用报销”表：
 
-![配置表单事件工作流的数据模型](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/7cf6f204e3ff2da6c45f1e31503e5715.png)
+![配置表单事件工作流的数据模型](https://static-docs.nocobase.com/7cf6f204e3ff2da6c45f1e31503e5715.png)
 
 将工作流设置为启用状态后，流程的具体处理节点稍后再回来配置。
 
 然后我们在界面上创建“费用报销”数据表的表格区块，并且在工具栏增加一个“添加”按钮，配置对应的表单字段。这里我们不使用默认的“提交”按钮，而是移除后重新添加一个“提交至工作流”的按钮：
 
-![配置提交表单](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/3eb326ffded07335d29d139b374f184d.png)
+![配置提交表单](https://static-docs.nocobase.com/3eb326ffded07335d29d139b374f184d.png)
 
 并打开按钮的“绑定工作流”配置对话框，选择整个表单数据作为上下文，以及工作流为我们之前创建的工作流：
 
-![配置绑定工作流](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/f1fd64d22ebd836e824e7f1c74879b80.png)
+![配置绑定工作流](https://static-docs.nocobase.com/f1fd64d22ebd836e824e7f1c74879b80.png)
 
 表单配置完成后，再回到工作流的逻辑编排。比如我们需要金额大于 500 元时要求管理员进行人工审核，否则直接通过，审核通过后才创建报销记录，并由财务进一步处理（略）。
 
-![配置绑定工作流](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/b4c8e33226747e1eaca6f9f746046f05.png)
+![配置绑定工作流](https://static-docs.nocobase.com/b4c8e33226747e1eaca6f9f746046f05.png)
 
 忽略后续财务的处理的话，这样就完成了申请报销流程的配置，当员工填写报销申请并提交后，会触发对应的工作流，如果费用金额小于 500，会自动创建记录并等待财务进一步处理，否则会由主管审核，审核通过后也是一样创建记录并交给财务处理。
 
 该示例的流程也可以配置在普通“提交”按钮上，可以根据具体的业务场景决定是否需要先创建记录再执行后续的流程。
-

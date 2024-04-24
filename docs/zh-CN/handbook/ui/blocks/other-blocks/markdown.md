@@ -6,5 +6,4 @@ Markdown 区块使用 Markdown 语法定义文本内容，用于显示格式化�
 
 ## 添加区块
 
-![20240421175040](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240421175040.gif)
-
+![20240421175040](https://static-docs.nocobase.com/20240421175040.gif)

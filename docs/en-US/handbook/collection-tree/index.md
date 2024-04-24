@@ -8,6 +8,6 @@
 
 ## 使用手册
 
-![20240324143228](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240324143228.png)
+![20240324143228](https://static-docs.nocobase.com/20240324143228.png)
 
-![20240324143555](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240324143555.png)
+![20240324143555](https://static-docs.nocobase.com/20240324143555.png)

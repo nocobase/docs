@@ -140,7 +140,7 @@ The main directory structure of NocoBase log files is:
 2. Select the log files you wish to download.
 3. Click the download button.
 
-![2024-04-10_10-50-50](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/2024-04-10_10-50-50.png)
+![2024-04-10_10-50-50](https://static-docs.nocobase.com/2024-04-10_10-50-50.png)
 
 
 ## Related Documents

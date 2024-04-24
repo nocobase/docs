@@ -12,11 +12,11 @@
 2. 操作区：可以放置各种操作按钮，用于操作区块数据
 3. 配置区：操作区块配置的按钮
 
-![6.block.jpg](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/07ea73c9abcc16846dd5cd0c960d7cb0.jpg)
+![6.block.jpg](https://static-docs.nocobase.com/07ea73c9abcc16846dd5cd0c960d7cb0.jpg)
 
 ## 区块类型
 
-![add-block.jpg](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/c105b36b1f61420f2082d8bc5153f3f0.jpg)
+![add-block.jpg](https://static-docs.nocobase.com/c105b36b1f61420f2082d8bc5153f3f0.jpg)
 
 NocoBase 目前内置 10 几种区块，未来可以通过插件的方式支持更多种。
 
@@ -40,7 +40,7 @@ NocoBase 目前内置 10 几种区块，未来可以通过插件的方式支持�
 3. 选择创建方式：创建空白区块，或者从复制区块模板，或者引用区块模板
 4. 选择模板：若第 3 步选择了从模板创建，则在第 4 步选择模板
 
-![6.block-add.jpg](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/4a4dad014fddada53f2d49f5dba681fb.jpg)
+![6.block-add.jpg](https://static-docs.nocobase.com/4a4dad014fddada53f2d49f5dba681fb.jpg)
 
 ## 配置区块
 
@@ -54,13 +54,13 @@ NocoBase 目前内置 10 几种区块，未来可以通过插件的方式支持�
 
 以表格区块为例，区块内容是指表格中要显示的列。点击 Configure columns 即可配置要显示的列：
 
-![6.block-content.gif](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/4644fe7e4f6a93e58d63219a1ef19633.gif)
+![6.block-content.gif](https://static-docs.nocobase.com/4644fe7e4f6a93e58d63219a1ef19633.gif)
 
 ### 配置区块操作
 
 以表格区块为例，有筛选、添加、删除、查看、编辑、自定义等操作可选。点击 Configure actions 按钮可以配置操作。其中，每个操作按钮都可以单独配置属性：
 
-![6.block-content.gif](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/4644fe7e4f6a93e58d63219a1ef19633.gif)
+![6.block-content.gif](https://static-docs.nocobase.com/4644fe7e4f6a93e58d63219a1ef19633.gif)
 
 ### 配置区块属性
 
@@ -76,7 +76,7 @@ NocoBase 目前内置 10 几种区块，未来可以通过插件的方式支持�
 
 页面内既可以只放一个区块，也可以放多个区块进行组合。你可以通过拖拽完成区块位置和宽度的调整。
 
-![block-drag.gif](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/afa28c9ec8958c0581ec70f6d40891b6.gif)
+![block-drag.gif](https://static-docs.nocobase.com/afa28c9ec8958c0581ec70f6d40891b6.gif)
 
 ## 区块模板
 
@@ -84,4 +84,4 @@ NocoBase 目前内置 10 几种区块，未来可以通过插件的方式支持�
 
 比如，一个数据表的表单，既用于新增数据，又用于编辑数据，那就可以将这个表单保存为模板，在新增数据和编辑数据的界面里引用它。
 
-![block-template.jpg](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/d024cfc5dfd96bfc3ed48cd5c9963cde.jpg)
+![block-template.jpg](https://static-docs.nocobase.com/d024cfc5dfd96bfc3ed48cd5c9963cde.jpg)

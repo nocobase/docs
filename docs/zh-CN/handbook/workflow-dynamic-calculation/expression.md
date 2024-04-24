@@ -6,4 +6,4 @@
 
 ## 使用手册
 
-![20240324145112](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240324145112.png)
+![20240324145112](https://static-docs.nocobase.com/20240324145112.png)

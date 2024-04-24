@@ -13,67 +13,67 @@
 
 除此之外，也可以扩展更多数据源，可以是常见的各类数据库，也可以是提供 API（SDK）的平台。
 
-![数据源管理](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/fe8ecdaf640097eeb310c94a997b9090.png)
+![数据源管理](https://static-docs.nocobase.com/fe8ecdaf640097eeb310c94a997b9090.png)
 
 ### 调整数据表的管理方式
 
 将原来的「数据表管理」移至「数据源 > 主数据库 > 配置」
 
-![Main 数据库配置](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/b5ad882a131e447f78b0c22a92ec9df6.gif)
+![Main 数据库配置](https://static-docs.nocobase.com/b5ad882a131e447f78b0c22a92ec9df6.gif)
 
 ### 支持非 ID 字段作为主键和关系约束
 
 建表时，可以不选择创建 ID 字段
 
-![预置字段](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/87dc4101a884f97cbfce00f1891f7cf6.png)
+![预置字段](https://static-docs.nocobase.com/87dc4101a884f97cbfce00f1891f7cf6.png)
 
 整数字段可以作为主键
 
-![整数字段可以作为主键](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/cce37d7d8e9feaa66970da0c643a2d9d.png)
+![整数字段可以作为主键](https://static-docs.nocobase.com/cce37d7d8e9feaa66970da0c643a2d9d.png)
 
 单行文本字段也可以作为主键
 
-![单行文本字段也可以作为主键](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/b2c797f52bedfcfa06936a244dd9be4b.png)
+![单行文本字段也可以作为主键](https://static-docs.nocobase.com/b2c797f52bedfcfa06936a244dd9be4b.png)
 
 关系约束支持选择其他设置了 Unique 索引的非主键字段
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/e5515e58426c5be08ba982b0bb311410.png)
+![](https://static-docs.nocobase.com/e5515e58426c5be08ba982b0bb311410.png)
 
 ### 调整拖拽排序
 
 新增「排序」类型字段，建表时不再自动生成排序字段，需要自己手动创建
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/470891c7bb34c506328c1f3824a6cf20.png)
+![](https://static-docs.nocobase.com/470891c7bb34c506328c1f3824a6cf20.png)
 
 当选了某个字段作为分组时，将先分组再排序
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/0794d0a9c0dc288a8fc924a3542bb86e.png)
+![](https://static-docs.nocobase.com/0794d0a9c0dc288a8fc924a3542bb86e.png)
 
 表格拖拽排序时，需要选择排序字段
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20cf12fd7ca3d8c0aa1917a95c0a7e7c.png)
+![](https://static-docs.nocobase.com/20cf12fd7ca3d8c0aa1917a95c0a7e7c.png)
 
 创建看板区块时，需要选择排序字段
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/b810265790d6a1ec099e3d88d1361271.png)
+![](https://static-docs.nocobase.com/b810265790d6a1ec099e3d88d1361271.png)
 
 ### 调整用户和权限界面
 
 新增用户管理界面，并将用户、角色的管理统一到一个菜单内
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/7be26746652098f07ce105dbae373522.png)
+![](https://static-docs.nocobase.com/7be26746652098f07ce105dbae373522.png)
 
 调整角色管理的界面，便于管理角色关联的用户、权限、部门等数据
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/4ec942af764dfcec1ddc9a244816a6ee.png)
+![](https://static-docs.nocobase.com/4ec942af764dfcec1ddc9a244816a6ee.png)
 
 将原来的「操作权限」移至「数据源」标签页
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/461ab881fe94a33f9a122e9734b85f4d.gif)
+![](https://static-docs.nocobase.com/461ab881fe94a33f9a122e9734b85f4d.gif)
 
 ### 部门插件
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/093473d9c23a789d41899df9bcaf3389.png)
+![](https://static-docs.nocobase.com/093473d9c23a789d41899df9bcaf3389.png)
 
 以部门来组织用户，设定上下级关系，绑定角色控制权限，并支持作为变量用于工作流和表达式。
 
@@ -83,11 +83,11 @@
 
 审批配置
 
-![审批配置](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/21acc5615ecc03aeeb44671ab945baea.png)
+![审批配置](https://static-docs.nocobase.com/21acc5615ecc03aeeb44671ab945baea.png)
 
 审批处理
 
-![审批处理](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/6a879641bd15de0648cd4602779ef9fa.png)
+![审批处理](https://static-docs.nocobase.com/6a879641bd15de0648cd4602779ef9fa.png)
 
 进一步可通过文档了解：[工作流：审批](/handbook/workflow-approval)
 
@@ -95,7 +95,7 @@
 
 该节点执行时将立即结束当前执行的工作流，并以节点配置的状态结束。通常用于特定逻辑的流程控制，在满足某些逻辑条件后，跳出当前工作流，不再继续执行后续流程的处理。可类比编程语言中的 return 指令，用于退出当前执行的函数。
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/38d6352211d791fd4233f5cd4bdb34f2.png)
+![](https://static-docs.nocobase.com/38d6352211d791fd4233f5cd4bdb34f2.png)
 
 进一步可通过文档了解：[工作流：结束流程节点](/handbook/workflow/manual/nodes/end)
 
@@ -103,7 +103,7 @@
 
 可在流程中声明变量，或为已声明的变量赋值，通常用于在流程中保存一些临时数据。适用于一些需要在分支内将计算结果储存到分支外使用的场景（如循环、并行等）。
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/c19913f99968d987a52aaa53578a7318.png)
+![](https://static-docs.nocobase.com/c19913f99968d987a52aaa53578a7318.png)
 
 进一步可通过文档了解：[工作流：自定义变量节点](/handbook/workflow-variable)
 
@@ -113,7 +113,7 @@
 搭配使用“响应消息”节点可以为该流程配置返回客户端的响应消息，以对客户端给出相应的提示信息。
 请求拦截器可用于进行业务验证或逻辑检查，以通过或拦截客户端提交的创建、更新和删除等操作请求。
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/3f3991aaf9d73b8c2f7c179e7702d16b.png)
+![](https://static-docs.nocobase.com/3f3991aaf9d73b8c2f7c179e7702d16b.png)
 
 进一步可通过文档了解：[工作流：请求拦截器](/handbook/workflow-request-interceptor)
 
@@ -123,11 +123,11 @@
 
 节点配置
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/4376843af541ef6a08696e074cb6cd07.png)
+![](https://static-docs.nocobase.com/4376843af541ef6a08696e074cb6cd07.png)
 
 提示信息
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/051f12855bd0ce74b22de191b8b87cf5.png)
+![](https://static-docs.nocobase.com/051f12855bd0ce74b22de191b8b87cf5.png)
 
 进一步可通过文档了解：[工作流：响应消息节点](/handbook/workflow-response-message)
 

@@ -8,11 +8,11 @@
 
 - 关系为对一，级联为单选
 
-![20240409205542](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240409205542.png)
+![20240409205542](https://static-docs.nocobase.com/20240409205542.png)
 
 - 关系为对多，级联为多选，支持拖拽排序
 
-![20240409210705](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240409210705.png)
+![20240409210705](https://static-docs.nocobase.com/20240409210705.png)
 
 1. 设置标题字段：设置级联组件拉选选项显示的内容（标题字段）
 

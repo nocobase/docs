@@ -4,7 +4,7 @@
 
 ## 区块里的操作
 
-![20240412113815](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240412113815.png)
+![20240412113815](https://static-docs.nocobase.com/20240412113815.png)
 
 ## 操作的设计器（工具栏）
 
@@ -12,10 +12,10 @@
 - 拖拽
 - 参数配置
 
-![20240412113855](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240412113855.png)
+![20240412113855](https://static-docs.nocobase.com/20240412113855.png)
 
 ## 操作的拖拽排序
 
 按住按钮设计器里的「拖拽」图标，可以对按钮进行排序
 
-![20240412114236](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240412114236.gif)
+![20240412114236](https://static-docs.nocobase.com/20240412114236.gif)

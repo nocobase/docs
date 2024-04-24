@@ -18,7 +18,7 @@
 
 ### 创建排序字段
 
-![20240409091123_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240409091123_rec_.gif)
+![20240409091123_rec_](https://static-docs.nocobase.com/20240409091123_rec_.gif)
 
 创建排序字段时，会对排序值进行初始化：
 
@@ -34,19 +34,19 @@
 
 sort1 字段无分组
 
-![20240409091510](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240409091510.png)
+![20240409091510](https://static-docs.nocobase.com/20240409091510.png)
 
 各记录排序字段的初始化值会依据表的主键或创建日期的顺序进行初始化：
 
-![20240409092305](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240409092305.png)
+![20240409092305](https://static-docs.nocobase.com/20240409092305.png)
 
 #### 示例二：创建一个基于 Class ID 分组的 sort2 字段
 
-![20240409092620](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240409092620.png)
+![20240409092620](https://static-docs.nocobase.com/20240409092620.png)
 
 此时会对数据表中的全部记录先分组（按 Class ID 分组），再进行排序字段（sort2）的初始化，各记录的初始化值：
 
-![20240409092847](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240409092847.png)
+![20240409092847](https://static-docs.nocobase.com/20240409092847.png)
 
 ### 拖拽排序
 
@@ -63,7 +63,7 @@ sort1 字段无分组
 
 表格区块
 
-![20240409104621_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240409104621_rec_.gif)
+![20240409104621_rec_](https://static-docs.nocobase.com/20240409104621_rec_.gif)
 
 关系表格区块
 
@@ -80,7 +80,7 @@ sort1 字段无分组
 
 #### 看板卡片的拖拽排序
 
-![20240409110423_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240409110423_rec_.gif)
+![20240409110423_rec_](https://static-docs.nocobase.com/20240409110423_rec_.gif)
 
 ### 排序规则说明
 

@@ -2,7 +2,7 @@
 
 ## 新特性
 
-![Plugin settings manager](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240115140600.png)
+![Plugin settings manager](https://static-docs.nocobase.com/20240115140600.png)
 
 ## 不兼容的变化
 

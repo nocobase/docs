@@ -4,6 +4,6 @@
 
 - 需要配置标签的颜色字段（从目标表中选择）
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/7f436d6de401aaa13f1d8a876aedac07.png)
+![](https://static-docs.nocobase.com/7f436d6de401aaa13f1d8a876aedac07.png)
 
-![](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/3f62febe926d5650a587b979a5db8f8f.png)
+![](https://static-docs.nocobase.com/3f62febe926d5650a587b979a5db8f8f.png)

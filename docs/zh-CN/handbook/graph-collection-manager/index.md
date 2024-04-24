@@ -10,8 +10,8 @@
 
 预置插件，需要先激活才能使用。
 
-![20240322221627](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240322221627.png)
+![20240322221627](https://static-docs.nocobase.com/20240322221627.png)
 
 ## 使用手册
 
-![20240410075906](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240410075906.png)
+![20240410075906](https://static-docs.nocobase.com/20240410075906.png)

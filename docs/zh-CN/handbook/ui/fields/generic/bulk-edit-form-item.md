@@ -4,7 +4,7 @@
 
 批量编辑表单是批量操作特有的表单。
 
-![20240422151115](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422151115.png)
+![20240422151115](https://static-docs.nocobase.com/20240422151115.png)
 ## 更新逻辑
 
 - 不更新：这个字段就不会更新；

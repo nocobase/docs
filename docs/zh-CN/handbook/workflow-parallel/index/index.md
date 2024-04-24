@@ -12,11 +12,11 @@
 
 在工作流配置界面中，点击流程中的加号（“+”）按钮，添加“并行分支”节点：
 
-![并行分支_添加](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/9e0f3faa0b9335270647a30477559eac.png)
+![并行分支_添加](https://static-docs.nocobase.com/9e0f3faa0b9335270647a30477559eac.png)
 
 在流程中增加并行分支节点后，会默认增加两个子分支，同时也可以点击增加分支的按钮增加任意多个分支，每个分支都可以增加任意的节点，不需要的分支可以点击分支开始处的删除按钮删除。
 
-![并行分支_分支管理](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/36088a8b7970c8a1771eb3ee9bc2a757.png)
+![并行分支_分支管理](https://static-docs.nocobase.com/36088a8b7970c8a1771eb3ee9bc2a757.png)
 
 ### 节点配置
 

@@ -12,7 +12,7 @@
 
 ## 区块设置项
 
-![20240419220708](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419220708.png)
+![20240419220708](https://static-docs.nocobase.com/20240419220708.png)
 
 ### 数据范围
 
@@ -24,11 +24,11 @@
 
 ### 设置一行展示的列数
 
-![20240408160228](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408160228.png)
+![20240408160228](https://static-docs.nocobase.com/20240408160228.png)
 
 为不同屏幕尺寸配置列数
 
-![20240408160844](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408160844.png)
+![20240408160844](https://static-docs.nocobase.com/20240408160844.png)
 
 ### 设置数据加载方式
 
@@ -47,11 +47,11 @@
 
 ### 本表字段
 
-![20240418123118](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240418123118.png)
+![20240418123118](https://static-docs.nocobase.com/20240418123118.png)
 
 ### 关系表字段
 
-![20240418123147](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240418123147.png)
+![20240418123147](https://static-docs.nocobase.com/20240418123147.png)
 
 网格卡片区块字段配置项可参考 [详情字段](/handbook/ui/fields/generic/detail-form-item)
 
@@ -59,7 +59,7 @@
 
 ### 全局操作
 
-![20240418122905](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240418122905.png)
+![20240418122905](https://static-docs.nocobase.com/20240418122905.png)
 
 - [筛选](/handbook/ui/actions/types/filter)
 - [添加](/handbook/ui/actions/types/add-new)
@@ -70,7 +70,7 @@
 
 ### 行操作
 
-![20240419222251](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419222251.png)
+![20240419222251](https://static-docs.nocobase.com/20240419222251.png)
 
 - [编辑](/handbook/ui/actions/types/edit)
 - [删除](/handbook/ui/actions/types/delete)
