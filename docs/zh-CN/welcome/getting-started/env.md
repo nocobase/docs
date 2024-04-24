@@ -279,7 +279,8 @@ TELEMETRY_TRACE_PROCESSOR=console
 用于附加预置的未激活插件，值为插件包名（package.json 的 name 参数），多个插件英文逗号分隔。
 
 :::info
-初始化安装 `nocobase install` 或升级 `nocobase upgrade` 后才会在插件管理器页面里显示。
+1. 需要确保插件已经下载到本地，并且在 `node_modules` 目录里可以找到，更多内容查看 [插件的组织方式](/development/plugin)。  
+2. 添加了环境变量后，需要在初始化安装 `nocobase install` 或升级 `nocobase upgrade` 后才会在插件管理器页面里显示。
 :::
 
 ```bash
@@ -291,11 +292,12 @@ APPEND_PRESET_LOCAL_PLUGINS=@my-project/plugin-foo,@my-project/plugin-bar
 用于附加内置并默认安装的插件，值为插件包名（package.json 的 name 参数），多个插件英文逗号分隔。
 
 :::info
-初始化安装 `nocobase install` 或升级 `nocobase upgrade` 时会自动安装或升级插件。
+1. 需要确保插件已经下载到本地，并且在 `node_modules` 目录里可以找到，更多内容查看 [插件的组织方式](/development/plugin)。  
+2. 添加了环境变量后，需要在初始化安装 `nocobase install` 或升级 `nocobase upgrade` 时会自动安装或升级插件。
 :::
 
 ```bash
-APPEND_PRESET_LOCAL_PLUGINS=@my-project/plugin-foo,@my-project/plugin-bar
+APPEND_PRESET_BUILT_IN_PLUGINS=@my-project/plugin-foo,@my-project/plugin-bar
 ```
 
 ## 临时环境变量

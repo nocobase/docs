@@ -23,6 +23,7 @@ export default [
           '/welcome/getting-started/installation/docker-compose',
           '/welcome/getting-started/installation/create-nocobase-app',
           '/welcome/getting-started/installation/git-clone',
+          '/welcome/getting-started/installation/install-plugin',
         ],
       },
       {
