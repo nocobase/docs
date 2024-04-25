@@ -6,7 +6,7 @@
 
 ## 添加区块
 
-为关系区块添加筛选区块.
+为关系区块添加筛选区块。
 
   <video width="100%" height="440" controls>
       <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408205156.mp4" type="video/mp4">
