@@ -4,11 +4,11 @@
 
 ## 添加区块
 
-区块可以放置于页面（Page）、对话框（Modal）或抽屉（Drawer）里
+区块可以放置于页面（Page）、对话框（Modal）或抽屉（Drawer）里。
 
 ### 页面里的区块
 
-目前页面里的区块类型包括：数据区块、筛选区块、其他区块
+目前页面里的区块类型包括：数据区块、筛选区块、其他区块。
 
 ![](https://static-docs.nocobase.com/dad0a394d33dd26f31c3202a76bb0153.png)
 
@@ -32,17 +32,17 @@
 
 ![](https://static-docs.nocobase.com/f37e277863068b2661f66d4020af806a.png)
 
-复杂的数据类型区块还会提供独立的内嵌的「配置字段」和「配置操作」
+复杂的数据类型区块还会提供独立的内嵌的「配置字段」和「配置操作」。
 
 ![](https://static-docs.nocobase.com/71b550da637d23145a5f62d48ee8521b.png)
 
-除此之外，也可以自由发挥，提供更多嵌套的可能，如图表区块
+除此之外，也可以自由发挥，提供更多嵌套的可能，如图表区块。
 
 ![](https://static-docs.nocobase.com/07588190b3f41ae3060e71d8b76b4447.png)
 
 ## 区块布局
 
-多个区块可以通过拖拽调整布局
+多个区块可以通过拖拽调整布局。
 
 ![](https://static-docs.nocobase.com/f6692295ac0917f3babce9a60ce80879.gif)
 
