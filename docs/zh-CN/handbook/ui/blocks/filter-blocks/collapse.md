@@ -16,7 +16,7 @@ Collapse 筛选区块需要连接数据区块使用，为数据区块提供筛�
       <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408212817.mp4" type="video/mp4">
     </video>
 
-## 区块设置项
+## 区块配置项
 
 ![20240421173427](https://static-docs.nocobase.com/20240421173427.png)
 

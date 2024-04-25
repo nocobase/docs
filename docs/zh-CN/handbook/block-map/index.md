@@ -45,7 +45,7 @@
 
 ![多边形](https://static-docs.nocobase.com/20240408200546.png)
 
-## 区块设置项
+## 区块配置项
 
 ![20240421121949](https://static-docs.nocobase.com/20240421121949.png)
 

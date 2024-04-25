@@ -555,7 +555,7 @@ export default [
           },
           {
             title: 'Block settings',
-            'title.zh-CN': '区块配置项',
+            'title.zh-CN': '区块设置项',
             children: [
               {
                 title: 'Set the data scope',

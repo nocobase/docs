@@ -24,7 +24,7 @@
 
 ![20240408171928](https://static-docs.nocobase.com/20240408171928.png)
 
-## 区块设置项
+## 区块配置项
 
 
 ![20240419203321](https://static-docs.nocobase.com/20240419203321.png)
