@@ -824,11 +824,7 @@ export default [
             title: 'Action types',
             'title.zh-CN': '操作类型',
             children: [
-              {
-                title: 'Custom pop-up',
-                'title.zh-CN': '自定义弹窗',
-                link: '/handbook/ui/actions/types/pop-up',
-              },
+           
               {
                 title: 'View',
                 'title.zh-CN': '查看',
@@ -863,6 +859,11 @@ export default [
                 title: 'Add record',
                 'title.zh-CN': '添加记录',
                 link: '/handbook/ui/actions/types/add-record',
+              },
+              {
+                title: 'Custom pop-up',
+                'title.zh-CN': '自定义弹窗',
+                link: '/handbook/ui/actions/types/pop-up',
               },
               {
                 title: 'Update record',
