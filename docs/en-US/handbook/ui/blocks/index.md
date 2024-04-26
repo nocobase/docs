@@ -1,6 +1,14 @@
 # Block
 
-Blocks are carriers of content. They can be placed in a Page, a Modal dialog, or a Drawer, and multiple blocks can be freely dragged and arranged.
+Blocks are carriers of data and content. They can be placed in a Page, a Modal dialog, or a Drawer, and multiple blocks can be freely dragged and arranged.
+
+## Block Types
+
+![Block Types](https://static-docs.nocobase.com/f71af45b5cd914ea0558f760ddbbba58.png)
+
+- Data Blocks: Used to display data from the data sources on the interface.
+- Filter Blocks: Used to use data from the data sources as filtering criteria for other data blocks.
+- Other Blocks: Used to contain specific or independent content such as workflow tasks, audit logs, Markdown, etc.
 
 ## Adding Blocks
 
@@ -46,24 +54,3 @@ Multiple blocks can adjust the layout by dragging.
 
 ![](https://static-docs.nocobase.com/f6692295ac0917f3babce9a60ce80879.gif)
 
-## Block Templates
-
-A data type block can be saved as a template, so it can be directly copied or referenced when adding blocks later. For example, a data table form, which is used for both adding and editing data. That form can be saved as a template and referenced in the interfaces for adding and editing data.
-
-### Add and Use Templates
-
-Save the data block as a block template (only data type blocks have this configuration item).
-
-![](https://static-docs.nocobase.com/b7718cea8784587d53524ade3c5b0a82.png)
-
-When adding a block, choose to duplicate or reference a template.
-
-![](https://static-docs.nocobase.com/135df7344e0f3080199e4bb1071c2fa6.png)
-
-### The Difference Between duplicating and Referencing
-
-Duplicating creates a new block based on the block template; adjustments to the block do not affect the template; referencing directly uses the block template, adjustments to the block will change the template, and all blocks that reference the current template will be affected.
-
-## Block Types
-
-![Block Types](https://static-docs.nocobase.com/f71af45b5cd914ea0558f760ddbbba58.png)

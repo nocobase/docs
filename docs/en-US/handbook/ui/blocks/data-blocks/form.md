@@ -22,28 +22,42 @@ Control form field behavior through linkage rules.
 
 For more information, refer to [Linkage Rules](/handbook/ui/blocks/block-settings/linkage-rule).
 
-### Form Data Template (“Add New” Forms Only)
+### Form Data Templates (Supports Form for Adding New Data Only)
 
-The purpose of the form data template is to simplify the data entry process and improve efficiency. Define data templates by selecting data from the corresponding data table to populate default values in the form. By setting data scope, users can ensure the applicability of template data.
+The purpose of the form data templates is to simplify the data entry process and improve efficiency. By filtering out a single piece or a group of records as a template from the data range, the selected target data template will be populated as the default values in the form.
 
 ![20240408143719](https://static-docs.nocobase.com/20240408143719.png)
 
-![20240408143812](https://static-docs.nocobase.com/20240408143812.png)
+![20240424143911](https://static-docs.nocobase.com/20240424143911.png)
 
-#### Synchronize Form Fields
+1. Filter out a single piece or a group of records as template data.
+2. Select the title field to identify the template data.
+3. Check the template fields, and the selected fields will be automatically populated into the form.
 
-- Use currently configured form fields as template fields.
-- After modifying the form fields, you can reopen the template configuration and click the "Sync Form" button to ensure consistency between the form and the template.
+#### Synchronize From Form Fields
 
-#### For Relationship Fields
+- Automatically parse the configured fields in the current form block as template fields.
+- If there are subsequent modifications to the form block fields (such as adjustments to association field components), you can reopen the template configuration and click the sync form button to ensure consistency between the form and the template.
 
-- All foreign key fields of relationships will be filtered out.
-- Ordinary fields and fields of 'hasOne' and 'hasMany' relationships are copied.
-- 'belongsTo' and 'belongsToMany' relationship fields are referenced, which may become copies. For example, after changing from select to sub-form, the relationship changes from reference to copy (after becoming a copy, all fields are optional).
+#### The following fields' data will be filtered out for the selected data template record:
+- Primary Key
+- Foreign Key
+- Fields disallowing duplicates
+- Sort fields
+- Sequence fields
+- Password
+- Created by
+- Created at
+- Last updated by
+- Last updated at
 
-#### Application Scenarios
+#### For Association Fields
+- Regular fields and hasOne and hasMany relationship fields are copied.
+- belongsTo and belongsToMany relationship fields are referenced, and references may become copies. For example, after changing from select to sub-form, the relationship changes from reference to copy (after becoming a copy, all fields are optional).
 
-Scenario Description: An e-commerce platform frequently needs to add new products, and these new products are similar or identical to existing products in many attributes.
+#### Example Scenarios
+
+Scenario Description: An e-commerce platform needs to frequently add new products, and these new products are similar or identical to existing products in many attributes.
 
 Solution: Select an existing product as a template and use its attribute information as the form data template. When creating a new product, users can choose to apply this template, thus quickly copying the attribute information of the template product to the new product, improving the efficiency of entering new products.
 
@@ -51,7 +65,7 @@ Solution: Select an existing product as a template and use its attribute informa
 
 ![20240408145855](https://static-docs.nocobase.com/20240408145855.png)
 
-- Quickly enter promotional products
+- Create promotional products quickly
 
 <video width="100%" height="440" controls>
       <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408150250.mp4" type="video/mp4">
