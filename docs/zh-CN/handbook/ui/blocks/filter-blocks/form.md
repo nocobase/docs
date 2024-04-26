@@ -2,14 +2,12 @@
 
 ## 介绍
 
-表单筛选区块需要连接数据区块使用，为数据区块提供筛选功能。
+表单筛选区块需要连接数据区块使用，为数据区块提供筛选能力。
 
 ## 添加区块
 
-为关系区块添加筛选区块。
-
   <video width="100%" height="440" controls>
-      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408205156.mp4" type="video/mp4">
+      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426172722.mp4" type="video/mp4">
     </video>
 
 ## 区块配置项
