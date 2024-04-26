@@ -46,7 +46,7 @@ Kanban（看板）区块以看板视图展示数据，支持直接拖拽调整�
       <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419221247.mp4" type="video/mp4">
 </video>
 
-## 区块设置项
+## 区块配置项
 
 ### 设置数据范围
 
