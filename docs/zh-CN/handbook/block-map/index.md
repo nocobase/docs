@@ -4,7 +4,7 @@
 
 ## 介绍
 
-地图区块用于展示和管理地图字段，包括点、线和多边形。
+地图区块用于展示和管理地图字段，扩展了四种地图字段，包括点、线、圆和多边形。
 
 ## 安装
 
@@ -12,11 +12,17 @@
 
 ![20240421120958](https://static-docs.nocobase.com/20240421120958.png)
 
-启用插件后需配置地图认证信息
+启用插件后需配置地图认证信息。
 
 ![20240421121032](https://static-docs.nocobase.com/20240421121032.png)
 
+数据表中可以添加地图字段。
+
+![20240426171356](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426171356.png)
+
 ## 添加区块
+
+仅数据表中有地图字段的区块支持添加地图区块。
 
 ![20240408194209](https://static-docs.nocobase.com/20240408194209.png)
 
@@ -27,11 +33,11 @@
 
 ### 点
 
+应用场景：零售店网点分布。
+
 ![20240408195630](https://static-docs.nocobase.com/20240408195630.png)
 
 ### 线
-
-在页面或弹窗中添加。
 
 线是由一组地图点组成，如下显示运单轨迹。
 
@@ -42,6 +48,8 @@
 ![20240408201939](https://static-docs.nocobase.com/20240408201939.png)
 
 ### 多边形
+
+应用场景：适用片区规划。
 
 ![多边形](https://static-docs.nocobase.com/20240408200546.png)
 
@@ -73,7 +81,6 @@
 
 更多内容参考 [设置数据范围](/handbook/ui/blocks/block-settings/data-scope)
 
-
 - [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
 - [连接数据区块](/handbook/ui/blocks/block-settings/connect-block)
 - [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
@@ -82,7 +89,7 @@
 
 ![20240421122020](https://static-docs.nocobase.com/20240421122020.png)
 
-批量选中点。
+### 批量选中点。
 
 ![20240422102334](https://static-docs.nocobase.com/20240422102334.gif)
 

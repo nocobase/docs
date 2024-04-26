@@ -42,7 +42,7 @@ Kanban（看板）区块以看板视图展示数据，支持直接拖拽调整�
 
 ### 拖拽卡片
 
-示例：通过拖拽卡片调整商品状态
+示例：通过拖拽卡片调整商品状态，拖拽完成即保存数据。
 
 <video width="100%" height="440" controls>
       <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419221247.mp4" type="video/mp4">
@@ -52,7 +52,7 @@ Kanban（看板）区块以看板视图展示数据，支持直接拖拽调整�
 
 ### 设置数据范围
 
-示例：默认筛选促销的商品
+示例：默认筛选促销的商品。
 
 ![20240422095659](https://static-docs.nocobase.com/20240422095659.png)
 
