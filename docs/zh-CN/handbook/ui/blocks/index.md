@@ -1,6 +1,14 @@
 # 区块
 
-区块是内容的载体，可以放置于页面（Page）、对话框（Modal）或抽屉（Drawer）里，多个区块可以自由拖拽排列。
+区块是数据和内容的载体，可以放置于页面（Page）、对话框（Modal）或抽屉（Drawer）里，多个区块可以自由拖拽排列。
+
+## 区块类型
+
+![区块类型](https://static-docs.nocobase.com/f71af45b5cd914ea0558f760ddbbba58.png)
+
+- 数据区块：用于将数据源中的数据展示在界面上。
+- 筛选区块：用于将数据源中的数据作为筛选条件，对其他数据区块发起筛选。
+- 其他区块：用于承载工作流待办、审计日志、Markdown 等特定或独立的内容。
 
 ## 添加区块
 
@@ -45,7 +53,3 @@
 多个区块可以通过拖拽调整布局。
 
 ![](https://static-docs.nocobase.com/f6692295ac0917f3babce9a60ce80879.gif)
-
-## 区块类型
-
-![区块类型](https://static-docs.nocobase.com/f71af45b5cd914ea0558f760ddbbba58.png)
