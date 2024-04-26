@@ -39,9 +39,19 @@ The purpose of the form data templates is to simplify the data entry process and
 - Automatically parse the configured fields in the current form block as template fields.
 - If there are subsequent modifications to the form block fields (such as adjustments to association field components), you can reopen the template configuration and click the sync form button to ensure consistency between the form and the template.
 
-#### For Association Fields
+#### The following fields' data will be filtered out for the selected data template record:
+- Primary Key
+- Foreign Key
+- Fields disallowing duplicates
+- Sort fields
+- Sequence fields
+- Password
+- Created by
+- Created at
+- Last updated by
+- Last updated at
 
-- All foreign key (fk) of relationships will be discarded.
+#### For Association Fields
 - Regular fields and hasOne and hasMany relationship fields are copied.
 - belongsTo and belongsToMany relationship fields are referenced, and references may become copies. For example, after changing from select to sub-form, the relationship changes from reference to copy (after becoming a copy, all fields are optional).
 

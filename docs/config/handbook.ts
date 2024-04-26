@@ -460,7 +460,7 @@ export default [
                 link: '/handbook/ui/blocks/data-blocks/form',
               },
               {
-                title: 'Table',
+                title: 'Details',
                 'title.zh-CN': '详情',
                 link: '/handbook/ui/blocks/data-blocks/details',
               },
