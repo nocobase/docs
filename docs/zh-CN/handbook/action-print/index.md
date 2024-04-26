@@ -11,4 +11,3 @@
 
 ![20240426105637](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426105637.png)
 
-![20240426110036](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426110036.png)
