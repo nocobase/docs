@@ -417,8 +417,8 @@ export default [
     type: 'group',
     children: [
       {
-        title: 'Edit UI mode',
-        'title.zh-CN': '配置界面模式',
+        title: 'UI Editor mode',
+        'title.zh-CN': '界面配置模式',
         link: '/handbook/ui/ui-editor',
       },
       {
@@ -438,7 +438,7 @@ export default [
       },
       {
         title: 'Blocks',
-        'title.zh-CN': '添加区块',
+        'title.zh-CN': '区块',
         children: [
           {
             title: 'Overview',
@@ -607,8 +607,8 @@ export default [
         ],
       },
       {
-        title: 'Configure fields',
-        'title.zh-CN': '配置字段',
+        title: 'Fields',
+        'title.zh-CN': '字段',
         children: [
           {
             title: 'Overview',
@@ -616,8 +616,8 @@ export default [
             link: '/handbook/ui/fields',
           },
           {
-            title: '通用属性设置',
-            'title.zh-CN': '通用属性设置',
+            title: 'Common ettings',
+            'title.zh-CN': '通用配置项',
             children: [
               {
                 title: 'Table column',
@@ -652,8 +652,8 @@ export default [
             ],
           },
           {
-            title: '特有属性设置',
-            'title.zh-CN': '特有属性设置',
+            title: 'Specific settings',
+            'title.zh-CN': '特有配置项',
             children: [
               {
                 title: 'Date picker',
@@ -766,8 +766,8 @@ export default [
         ],
       },
       {
-        title: 'Configure actions',
-        'title.zh-CN': '配置操作',
+        title: 'Actions',
+        'title.zh-CN': '操作',
         children: [
           {
             title: 'Overview',
@@ -775,8 +775,8 @@ export default [
             link: '/handbook/ui/actions',
           },
           {
-            title: '常用设置项',
-            'title.zh-CN': '常用设置项',
+            title: 'Common settings',
+            'title.zh-CN': '通用配置项',
             children: [
               {
                 title: 'Linkage',
@@ -962,7 +962,7 @@ export default [
             link: '/handbook/users',
           },
           {
-            title: 'Access control',
+            title: 'Roles & permissions',
             'title.zh-CN': '角色和权限',
             link: '/handbook/acl',
           },
