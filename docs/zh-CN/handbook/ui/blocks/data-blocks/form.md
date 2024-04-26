@@ -28,7 +28,7 @@
 
 ![20240408143719](https://static-docs.nocobase.com/20240408143719.png)
 
-![20240424143911](https://static-docs.nocobase.com/20240424143911.png)
+![20240426212024](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426212024.png)
 
 1. 筛选出一条或者一组数据，作为模板数据
 2. 选择标题字段，用于识别模板数据
