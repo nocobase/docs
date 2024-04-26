@@ -6,7 +6,7 @@
 
 ![20240413104530](https://static-docs.nocobase.com/20240413104530.png)
 
-在弹窗中按需配置数据区块。
+在弹窗中按需配置区块。
 
 ![20240426161322](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426161322.png)
 
