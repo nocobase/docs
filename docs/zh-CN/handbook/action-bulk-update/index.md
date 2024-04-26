@@ -6,6 +6,9 @@
 
 ![](https://static-docs.nocobase.com/d9e6804f7cdbecd43ce4695bb83561cd.png)
 
+## 安装
+
+内置插件，无需单独安装
 ## 使用指南
 
 1. 设置更新的数据：选中/所有，默认为选中
