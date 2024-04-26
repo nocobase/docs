@@ -1,5 +1,7 @@
 # 导入数据
 
+<PluginInfo name="action-import"></PluginInfo>
+
 ## 介绍
 
 ## 安装

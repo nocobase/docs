@@ -10,7 +10,7 @@
       <source src="https://static-docs.nocobase.com/20240418120045.mp4" type="video/mp4">
 </video>
 
-## 区块设置项
+## 区块配置项
 
 ![20240419220708](https://static-docs.nocobase.com/20240419220708.png)
 
