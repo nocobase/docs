@@ -15,6 +15,6 @@
 ![20240407173122](https://static-docs.nocobase.com/20240407173122.png)
 
  <video width="100%" height="440" controls>
-      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422104827.mp4" type="video/mp4">
+      <source src="https://static-docs.nocobase.com/20240422104827.mp4" type="video/mp4">
 </video>
-<!-- ![20240422104827](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422104827.mp4) -->
+<!-- ![20240422104827](https://static-docs.nocobase.com/20240422104827.mp4) -->

@@ -2,24 +2,24 @@
 
 图表的配置面板整体上划分为三个部分：数据配置、图表配置和图表预览。
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404192019222.png"/>
+<img src="https://static-docs.nocobase.com/202404192019222.png"/>
 
 ## 数据配置
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404192020544.png"/>
+<img src="https://static-docs.nocobase.com/202404192020544.png"/>
 
 - 顶部下拉框代表当前正在配置的数据表 (Collection)，通过下拉菜单可以切换。
 - 配置完成后，点击“执行查询” (Run query) 可以通过配置获取数据，“数据” (Data) 面板会展示数据。
 
 ### 度量 (Measures)
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404192023854.png"/>
+<img src="https://static-docs.nocobase.com/202404192023854.png"/>
 
 度量字段，通常是图表需要展示的核心数据。度量数据可以通过聚合函数进行统计，支持常用的数据库统计函数 `求和 (Sum)`,`计数 (Count)`,`平均值 (Avg)`,`最大值 (Max)`,`最小值 (Min)`. 度量字段可以有多个，可以设置别名。
 
 ### 维度 (Dimesions)
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404192025717.png"/>
+<img src="https://static-docs.nocobase.com/202404192025717.png"/>
 
 维度字段，通常是图表数据分组的依据。对于日期类型字段，支持如图所示的格式化方式，格式化通过数据库函数实现（例如：MySQL 对应 `date_format`），其他类型数据格式化见[数据转换](#数据转换)部分。
 
@@ -32,7 +32,7 @@
 
 ### 筛选 (Filter)
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404192029597.png"/>
+<img src="https://static-docs.nocobase.com/202404192029597.png"/>
 
 筛选配置将对分组前的数据进行过滤。支持使用变量给图表配置动态的筛选范围：
 
@@ -42,13 +42,13 @@
 
 ### 排序 (Sort) 和限制 (Limit)
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404192034106.png"/>
+<img src="https://static-docs.nocobase.com/202404192034106.png"/>
 
 默认数据集条数上限为 2000.
 
 ### 缓存
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404192035918.png"/>
+<img src="https://static-docs.nocobase.com/202404192035918.png"/>
 
 开启缓存后，图表将展示缓存的数据。可以配置数据缓存的时间。
 
@@ -61,19 +61,19 @@
 - 图表标题
 - 是否显示图表边框
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404192037644.png"/>
+<img src="https://static-docs.nocobase.com/202404192037644.png"/>
 
 图表标题展示效果：
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404192048473.png"/>
+<img src="https://static-docs.nocobase.com/202404192048473.png"/>
 
 显示图表边框展示效果：
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404192048223.png"/>
+<img src="https://static-docs.nocobase.com/202404192048223.png"/>
 
 ### 图表配置
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404192050696.png"/>
+<img src="https://static-docs.nocobase.com/202404192050696.png"/>
 
 - 图表类型 (Chart Type) - 用于展示的图表类型。NocoBase 使用 <a href="https://g2plot.antv.antgroup.com/" target="_blank">Ant Design Charts</a> 2.x 作为默认的图表库，如果想扩展使用其他图表库或组件，可以参考[开发指南](../dev/index.md)。
 - 基础配置 - 选择图表后，会出现相应的基础可视化配置，如 x 轴字段，y 轴字段，分类字段等。字段配置通常提供了下拉菜单供选择，选项中包含了 Collection 的基础字段和字段别名。
@@ -90,7 +90,7 @@
 
 ## 数据转换
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404192109597.png"/>
+<img src="https://static-docs.nocobase.com/202404192109597.png"/>
 
 使用数据转换可以对接口响应的数据做进一步处理，目前支持转换处理的数据类型为 `number`,`date`,`time`,`datetime`, 对于不属于支持的数据类型的字段，可以手动选择为这几个类型，以使用对应的转换方法。
 

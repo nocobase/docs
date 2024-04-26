@@ -16,14 +16,14 @@
 
 不同类型的字段支持不同的操作符，例如文本字段支持等于、不等于、包含等操作符，数字字段支持大于、小于等操作符，日期字段则支持在范围内、在特定日期之前等操作符。
 
-![20240424154003](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240424154003.png)
+![20240424154003](https://static-docs.nocobase.com/20240424154003.png)
 
 ### 静态值
 
 示例：订单「状态」为「已发货」。
 
  <video width="100%" height="440" controls>
-      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415204206.mp4" type="video/mp4">
+      <source src="https://static-docs.nocobase.com/20240415204206.mp4" type="video/mp4">
 </video>
 
 ### 变量值
@@ -33,7 +33,7 @@
 ![20240422090134](https://static-docs.nocobase.com/20240422090134.png)
 
  <video width="100%" height="440" controls>
-      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415214709.mp4" type="video/mp4">
+      <source src="https://static-docs.nocobase.com/20240415214709.mp4" type="video/mp4">
 </video>
 
 更多关于变量内容参考 [变量](/handbook/ui/variables)

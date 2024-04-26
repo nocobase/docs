@@ -67,7 +67,7 @@ sort1 字段无分组
 
 关系表格区块
 
-<video controls width="100%" src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240409111903_rec_.mp4" title="Title"></video>
+<video controls width="100%" src="https://static-docs.nocobase.com/20240409111903_rec_.mp4" title="Title"></video>
 
 :::warning
 一对多关系区块里

@@ -19,4 +19,4 @@
 - 点击“复制” (Duplicate) 按钮，可以快速复制当前图表。
 - 点击“删除” (Delete) 按钮，可以删除当前图表。
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404192011039.png"/>
+<img src="https://static-docs.nocobase.com/202404192011039.png"/>

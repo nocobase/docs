@@ -11,7 +11,7 @@
 ![20240413222636](https://static-docs.nocobase.com/20240413222636.png)
 
    <video width="100%" height="440" controls>
-      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240413223027.mp4" type="video/mp4">
+      <source src="https://static-docs.nocobase.com/20240413223027.mp4" type="video/mp4">
     </video>
 
 ## 字段配置项

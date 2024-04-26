@@ -45,7 +45,7 @@ class CustomChart extends Chart {
 | `Component` | 渲染图表使用的组件 |
 | `config`    | 基础可视化配置表单 |
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404192352571.png"/>
+<img src="https://static-docs.nocobase.com/202404192352571.png"/>
 
 示例：
 
@@ -123,7 +123,7 @@ getReference() {
 
 定义好图表类以后，我们还需要将类实例添加到数据可视化插件中。在选择图表的时候，图表分组展示，默认图表分组为「内置」(Built-in).
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404201042045.png"/>
+<img src="https://static-docs.nocobase.com/202404201042045.png"/>
 
 我们可以添加一组图表，也可以像已有分组添加图表。
 

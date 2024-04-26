@@ -13,7 +13,7 @@ Kanban（看板）区块以看板视图展示数据，支持直接拖拽调整�
 ## 添加区块
 
 <video width="100%" height="440" controls>
-      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419214551.mp4" type="video/mp4">
+      <source src="https://static-docs.nocobase.com/20240419214551.mp4" type="video/mp4">
 </video>
 
 ![20240419214751](https://static-docs.nocobase.com/20240419214751.png)
@@ -43,7 +43,7 @@ Kanban（看板）区块以看板视图展示数据，支持直接拖拽调整�
 示例：通过拖拽卡片调整商品状态
 
 <video width="100%" height="440" controls>
-      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419221247.mp4" type="video/mp4">
+      <source src="https://static-docs.nocobase.com/20240419221247.mp4" type="video/mp4">
 </video>
 
 ## 区块设置项

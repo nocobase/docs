@@ -11,7 +11,7 @@
 已选中的数据不会显示在表格选择器中。
 
  <video width="100%" height="440" controls>
-  <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240410121032.mp4" type="video/mp4">
+  <source src="https://static-docs.nocobase.com/20240410121032.mp4" type="video/mp4">
 </video>
 
 在表格选择器中，还可对关系目标表进一步管理（新增、删除、导入导出等）。
@@ -25,7 +25,7 @@
 为目标表添加数据后选中该数据。
 
   <video width="100%" height="440" controls>
-  <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422214222.mp4" type="video/mp4">
+  <source src="https://static-docs.nocobase.com/20240422214222.mp4" type="video/mp4">
   </video>
 
 ### 允许添加/关联多条

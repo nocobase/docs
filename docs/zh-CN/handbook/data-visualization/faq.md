@@ -4,15 +4,15 @@
 
 通过图表组件参考链接，查阅文档或通过 Demo 了解不同组件支持的属性配置，通过 JSON 键值对的形式进行配置。
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404212046877.png"/><br />
+<img src="https://static-docs.nocobase.com/202404212046877.png"/><br />
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404212047075.png"/>
+<img src="https://static-docs.nocobase.com/202404212047075.png"/>
 
 ### 以调换表格列顺序为例
 
 表格使用的组件是 Antd 的表格组件，打开参考链接 <a href="https://ant.design/components/table/" target="_blank">Table</a>, API 部分即对应组件所有支持的可配置属性。
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404212052108.png"/>
+<img src="https://static-docs.nocobase.com/202404212052108.png"/>
 
 要调整表格列顺序，需要调整 `columns` 配置，示例：
 

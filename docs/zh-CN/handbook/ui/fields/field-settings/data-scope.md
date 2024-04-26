@@ -29,5 +29,5 @@
 ![20240422154145](https://static-docs.nocobase.com/20240422154145.png)
 
 <video width="100%" height="440" controls>
-      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240422155351.mp4" type="video/mp4">
+      <source src="https://static-docs.nocobase.com/20240422155351.mp4" type="video/mp4">
 </video>

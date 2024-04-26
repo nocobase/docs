@@ -7,7 +7,7 @@
 ## 添加区块
 
 <video width="100%" height="440" controls>
-      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417122622.mp4" type="video/mp4">
+      <source src="https://static-docs.nocobase.com/20240417122622.mp4" type="video/mp4">
 </video>
 
 ## 区块设置项

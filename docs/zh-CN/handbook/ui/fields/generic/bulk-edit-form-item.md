@@ -4,7 +4,7 @@
 
 批量编辑表单是批量编辑操作特有的表单区块。
 
-![20240425100652](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240425100652.png)
+![20240425100652](https://static-docs.nocobase.com/20240425100652.png)
 
 ![20240422151115](https://static-docs.nocobase.com/20240422151115.png)
 
@@ -12,11 +12,11 @@
 
 仅支持配置本表字段。
 
-![20240425100730](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240425100730.png)
+![20240425100730](https://static-docs.nocobase.com/20240425100730.png)
 
 关系字段可以切换字段组件灵活使用。
 
-![20240425100857](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240425100857.png)
+![20240425100857](https://static-docs.nocobase.com/20240425100857.png)
 
 - 不更新；
 - 修改为：字段为必填；
