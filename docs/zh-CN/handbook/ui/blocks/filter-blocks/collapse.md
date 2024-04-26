@@ -20,11 +20,7 @@ Collapse 筛选区块需要连接数据区块使用，为数据区块提供筛�
 
 ### 连接数据区块
 
-示例：订单表中有多对多关系字段「商品」和一对多关系字段「运单」。
-
-![20240408213540](https://static-docs.nocobase.com/20240408213540.png)
-
-连接弹窗内同数据表区块实现筛选联动。
+示例：连接弹窗内同数据表区块实现筛选联动。
 
   <video width="100%" height="440" controls>
       <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408214743.mp4" type="video/mp4">
