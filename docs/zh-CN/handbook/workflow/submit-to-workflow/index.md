@@ -1,5 +1,6 @@
 # 提交至工作流
 
+<PluginInfo name="workflow-action-trigger"></PluginInfo>
 ## 介绍
 提交至工作流操作是将数据直接提交至绑定的工作流。一旦绑定了工作流，点击按钮将触发相应的工作流程。
 

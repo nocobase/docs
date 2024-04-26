@@ -1,4 +1,5 @@
 # 自定义请求
+<PluginInfo name="action-custom-request"></PluginInfo>
 
 ## 介绍
 

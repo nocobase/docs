@@ -1,12 +1,9 @@
 # 导出数据
 
-:::warning
-文档待补充
-:::
-
-<!--
 ## 介绍
+
+<PluginInfo name="action-export"></PluginInfo>
 
 ## 安装
 
-## 使用说明 -->
+## 使用说明
