@@ -7,7 +7,7 @@
 ## 添加区块
 
 <video width="100%" height="440" controls>
-      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416215917.mp4" type="video/mp4">
+      <source src="https://static-docs.nocobase.com/20240416215917.mp4" type="video/mp4">
 </video>
 
 ## 区块配置项
@@ -68,7 +68,7 @@
 - 快捷录入促销商品
 
 <video width="100%" height="440" controls>
-      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408150250.mp4" type="video/mp4">
+      <source src="https://static-docs.nocobase.com/20240408150250.mp4" type="video/mp4">
 </video>
 
 - [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
@@ -87,7 +87,7 @@
 ![20240416230811](https://static-docs.nocobase.com/20240416230811.png)
 
 <video width="100%" height="440" controls>
-      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416231152.mp4" type="video/mp4">
+      <source src="https://static-docs.nocobase.com/20240416231152.mp4" type="video/mp4">
 </video>
 
 表单字段配置项可参考 [表单字段](/handbook/ui/fields/generic/form-item)

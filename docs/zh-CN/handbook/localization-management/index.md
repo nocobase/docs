@@ -18,11 +18,11 @@
 
 ### 本地化管理
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404202134187.png"/>
+<img src="https://static-docs.nocobase.com/202404202134187.png"/>
 
 ### 同步翻译词条
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404202134850.png"/>
+<img src="https://static-docs.nocobase.com/202404202134850.png"/>
 
 目前可以同步的部分包括：
 
@@ -32,7 +32,7 @@
 
 同步之后，会列出当前语言所有可翻译词条。
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404202136567.png"/>
+<img src="https://static-docs.nocobase.com/202404202136567.png"/>
 
 :::info{title=提示}
 不同模块可能存在相同的原文词条，需要分别翻译。
@@ -40,13 +40,13 @@
 
 ### 编辑翻译内容
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404202142836.png"/>
+<img src="https://static-docs.nocobase.com/202404202142836.png"/>
 
 ### 发布
 
 翻译完成之后，需要点击“发布”按钮，才能使修改结果生效
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404202143135.png"/>
+<img src="https://static-docs.nocobase.com/202404202143135.png"/>
 
 ### 翻译其他语言
 
@@ -56,12 +56,12 @@
 
 切换到该语言
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404202144789.png"/>
+<img src="https://static-docs.nocobase.com/202404202144789.png"/>
 
 同步词条
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404202145877.png"/>
+<img src="https://static-docs.nocobase.com/202404202145877.png"/>
 
 翻译并发布
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404202143135.png"/>
+<img src="https://static-docs.nocobase.com/202404202143135.png"/>

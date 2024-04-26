@@ -17,7 +17,7 @@
 订单表有多对一关系字段「标签」。
 
  <video width="100%" height="440" controls>
-      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240410113002.mp4" type="video/mp4">
+      <source src="https://static-docs.nocobase.com/20240410113002.mp4" type="video/mp4">
  </video>
 
 #### 弹窗添加
@@ -27,7 +27,7 @@
 订单表有多对多关系字段「商品」。
 
 <video width="100%" height="440" controls>
-      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240410113351.mp4" type="video/mp4">
+      <source src="https://static-docs.nocobase.com/20240410113351.mp4" type="video/mp4">
 </video>
 
 ### 设置数据范围

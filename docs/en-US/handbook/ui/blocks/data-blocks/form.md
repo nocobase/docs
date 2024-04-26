@@ -7,7 +7,7 @@ The form block is an essential block for building data input and editing interfa
 ## Adding Blocks
 
 <video width="100%" height="440" controls>
-      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416215917.mp4" type="video/mp4">
+      <source src="https://static-docs.nocobase.com/20240416215917.mp4" type="video/mp4">
 </video>
 
 ## Block Settings
@@ -68,7 +68,7 @@ Solution: Select an existing product as a template and use its attribute informa
 - Create promotional products quickly
 
 <video width="100%" height="440" controls>
-      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408150250.mp4" type="video/mp4">
+      <source src="https://static-docs.nocobase.com/20240408150250.mp4" type="video/mp4">
 </video>
 
 - [Edit Block Title](/handbook/ui/blocks/block-settings/block-title)
@@ -87,7 +87,7 @@ Fields in related tables are read-only in the form and are typically used in con
 ![20240416230811](https://static-docs.nocobase.com/20240416230811.png)
 
 <video width="100%" height="440" controls>
-      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240416231152.mp4" type="video/mp4">
+      <source src="https://static-docs.nocobase.com/20240416231152.mp4" type="video/mp4">
 </video>
 
 Form field configuration options can be found in [Form Fields](/handbook/ui/fields/generic/form-item).

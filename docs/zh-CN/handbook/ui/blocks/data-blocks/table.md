@@ -6,7 +6,7 @@
 ## 添加区块
 
  <video width="100%" height="440" controls>
-      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415215027.mp4" type="video/mp4">
+      <source src="https://static-docs.nocobase.com/20240415215027.mp4" type="video/mp4">
 </video>
 
 ## 区块配置项
@@ -34,7 +34,7 @@
 示例：订单表格区块和订单详情区块连接，实现筛选联动。
 
   <video width="100%" height="440" controls>
-      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415221426.mp4" type="video/mp4">
+      <source src="https://static-docs.nocobase.com/20240415221426.mp4" type="video/mp4">
 </video>
 
 更多内容参考 [连接数据区块](/handbook/ui/blocks/block-settings/connect-block)

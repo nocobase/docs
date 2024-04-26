@@ -7,7 +7,7 @@
 ### 添加区块
 
 <video width="100%" height="440" controls>
-      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240418120045.mp4" type="video/mp4">
+      <source src="https://static-docs.nocobase.com/20240418120045.mp4" type="video/mp4">
 </video>
 
 ## 区块配置项
@@ -17,7 +17,7 @@
 ### 数据范围
 
 <video width="100%" height="440" controls>
-      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419173617.mp4" type="video/mp4">
+      <source src="https://static-docs.nocobase.com/20240419173617.mp4" type="video/mp4">
 </video>
 
 更多内容参考 [设置数据范围](/handbook/ui/blocks/block-settings/data-scope)
@@ -37,7 +37,7 @@
 订单表和商品表是多对多的关系，订单表格区块和商品网格卡片区块实现数据筛选联动，同时设置网格区块数据加载方式为“筛选数据后”
 
 <video width="100%" height="440" controls>
-<source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419175643.mp4" type="video/mp4">
+<source src="https://static-docs.nocobase.com/20240419175643.mp4" type="video/mp4">
 </video>
 
 - [设置排序规则](/handbook/ui/blocks/block-settings/sorting-rule)

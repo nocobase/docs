@@ -7,7 +7,7 @@ The table block is one of the core data blocks built into NocoBase, displaying a
 ## Adding a Block
 
  <video width="100%" height="440" controls>
-      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415215027.mp4" type="video/mp4">
+      <source src="https://static-docs.nocobase.com/20240415215027.mp4" type="video/mp4">
 </video>
 
 ## Block Settings
@@ -35,7 +35,7 @@ For more information, refer to [Setting Sorting Rule](/handbook/ui/blocks/block-
 Example: Connect the order table block with the order details block to achieve filter linkage.
 
   <video width="100%" height="440" controls>
-      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240415221426.mp4" type="video/mp4">
+      <source src="https://static-docs.nocobase.com/20240415221426.mp4" type="video/mp4">
 </video>
 
 For more information, refer to [Connecting Data Blocks](/handbook/ui/blocks/block-settings/connect-block).

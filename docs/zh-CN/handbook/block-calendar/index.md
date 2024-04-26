@@ -13,7 +13,7 @@
 ## 添加区块
 
 <video width="100%" height="440" controls>
-      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240419201640.mp4" type="video/mp4">
+      <source src="https://static-docs.nocobase.com/20240419201640.mp4" type="video/mp4">
 </video>
 
 1. 标题字段: 用于显示在日历条形上的信息；

@@ -11,7 +11,7 @@ Collapse 筛选区块需要连接数据区块使用，为数据区块提供筛�
 示例：配置订单折叠面板区块与订单表格区块实现筛选联动。
 
   <video width="100%" height="440" controls>
-      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408212817.mp4" type="video/mp4">
+      <source src="https://static-docs.nocobase.com/20240408212817.mp4" type="video/mp4">
     </video>
 
 ## 区块配置项
@@ -23,7 +23,7 @@ Collapse 筛选区块需要连接数据区块使用，为数据区块提供筛�
 示例：连接弹窗内同数据表区块实现筛选联动。
 
   <video width="100%" height="440" controls>
-      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240408214743.mp4" type="video/mp4">
+      <source src="https://static-docs.nocobase.com/20240408214743.mp4" type="video/mp4">
     </video>
 
 更多内容参考 [连接数据区块](/handbook/ui/blocks/block-settings/connect-block)

@@ -16,7 +16,7 @@
 校验数值最小值（目前仅支持常量）。
 
 <video width="100%" height="440" controls>
-      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417111233.mp4" type="video/mp4">
+      <source src="https://static-docs.nocobase.com/20240417111233.mp4" type="video/mp4">
 </video>
 
 ### 自定义正则校验

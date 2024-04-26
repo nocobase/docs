@@ -10,7 +10,7 @@ NocoBase 支持按需要扩展用户认证类型。用户认证一般有两种�
 2. `auth:signIn` 接口根据请求头中的认证器标识，转发到认证器对应的认证类型，由该认证类型注册的认证类中的 `validate` 方法进行相应的逻辑处理。
 3. 客户端从 `auth:signIn` 接口响应中拿到用户信息和认证 `token`, 将 `token` 保存到 Local Storage, 完成登录。这一步由 SDK 内部自动完成处理。
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404211852848.png"/>
+<img src="https://static-docs.nocobase.com/202404211852848.png"/>
 
 ### 依赖第三方回调
 
@@ -19,7 +19,7 @@ NocoBase 支持按需要扩展用户认证类型。用户认证一般有两种�
 3. 回调接口方法，解析参数获得认证器标识，通过 `AuthManager` 获取对应的认证类，主动调用 `auth.signIn()` 方法。`auth.signIn()` 方法会调用 `validate()` 方法处理鉴权逻辑。
 4. 回调方法拿到认证 `token`, 再 302 跳转回前端页面，并在 URL 参数带上 `token` 和认证器标识，`?authenticator=xxx&token=yyy`.
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202404211852377.png"/>
+<img src="https://static-docs.nocobase.com/202404211852377.png"/>
 
 下面介绍如何注册服务端接口和客户端用户界面。
 

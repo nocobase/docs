@@ -7,7 +7,7 @@
 ## 添加区块
 
  <video width="100%" height="440" controls>
-      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417224417.mp4" type="video/mp4">
+      <source src="https://static-docs.nocobase.com/20240417224417.mp4" type="video/mp4">
 </video>
 
 ## 区块配置项
@@ -35,7 +35,7 @@
 通常与筛选区块搭配使用，实现筛选时才加载数据
 
  <video width="100%" height="440" controls>
-      <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240417225539.mp4" type="video/mp4">
+      <source src="https://static-docs.nocobase.com/20240417225539.mp4" type="video/mp4">
 </video>
 
 更多内容参考 [设置数据加载方式](/handbook/ui/blocks/block-settings/loading-mode)
