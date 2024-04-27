@@ -1,12 +1,12 @@
-# 关系字段
+# Association Fields
 
-NocoBase 中，关系字段并不是真实的字段，而是用于建立表和表之间的连接，这个概念与关系数据库的关系等价。
+In NocoBase, association fields are not actual fields, but are used to establish connections between collections, a concept equivalent to relationships in relational databases.
 
-在关系型数据库中，常见的关系类型主要有以下几种：
+In relational databases, common types of relationships mainly include the following:
 
-- [一对一（One-to-one）](./o2o/index.md)：两个表中的每个实体只能与另一个表中的一个实体相对应。这种关系通常用于将实体的不同方面存储在不同的表中，以减少冗余和提高数据的一致性。
-- [一对多（One-to-many）](./o2m/index.md)：一个表中的每个实体可以关联到另一个表中的多个实体。这是最常见的关系类型之一，例如，一个作者可以写多篇文章，但一篇文章只能有一个作者。
-- [多对一（Many-to-one）](./m2o/index.md)：多个实体在一个表中可以关联到另一个表中的一个实体。这种关系在数据建模中也很常见，例如，多个学生可以属于同一个班级。
-- [多对多（Many-to-many](./m2m/index.md)）：两个表中的多个实体可以相互关联。这种关系通常需要一个中间表来记录各个实体之间的关联，例如，学生和课程之间的关系，一个学生可以选择多门课程，而一门课程也可以被多个学生选修。
+- [One-to-one](./o2o/index.md): Each entity in one table can only correspond to one entity in another table. This type of relationship is often used to store different aspects of entities in different tables to reduce redundancy and improve data consistency.
+- [One-to-many](./o2m/index.md): Each entity in one table can be associated with multiple entities in another table. This is one of the most common relationship types; for example, an author can write multiple articles, but an article can only have one author.
+- [Many-to-one](./m2o/index.md): Multiple entities in one table can be associated with one entity in another table. This type of relationship is also common in data modeling; for example, multiple students can belong to the same class.
+- [Many-to-many](./m2m/index.md): Multiple entities in two tables can be associated with each other. This type of relationship usually requires an intermediate table to record the associations between entities; for example, the relationship between students and courses, where a student can enroll in multiple courses, and a course can be taken by multiple students.
 
-这些关系类型在数据库设计和数据建模中都有重要的作用，可以帮助描述实际世界中复杂的关系和数据结构。
+These relationship types play important roles in database design and data modeling, helping to describe complex relationships and data structures in the real world.

@@ -1,42 +1,42 @@
-# 一对多
+# One-to-Many
 
-班级和学生的关系，一个班级可以有多个学生，但一个学生只能属于一个班级。这种情况下，班级和学生之间就是一对多关系。
+The relationship between classes and students, where one class can have multiple students, but one student can only belong to one class. In this case, the relationship between classes and students is a one-to-many relationship.
 
-ER 关系如下
+ER Diagram
 
 ![alt text](https://static-docs.nocobase.com/9475f044d123d28ac8e56a077411f8dc.png)
 
-字段配置
+Field Configuration
 
 ![alt text](https://static-docs.nocobase.com/a608ce54821172dad7e8ab760107ff4e.png)
 
-## 参数说明
+## Parameter Description
 
-### Source collection
+### Source Collection
 
-源表，也就是当前字段所在表。
+The source table, which is the table where the current field resides.
 
-### Target collection
+### Target Collection
 
-目标表，与哪个表关联。
+The target table to which it is associated.
 
 ### Source key
 
-外键约束引用的字段，必须具备唯一性。
+The field referenced by the foreign key constraint, which must be unique.
 
 ### Foreign key
 
-目标表的字段，用于建立两个表之间的关联。
+The field in the target table used to establish the relationship between the two tables.
 
 ### Target key
 
-目标表的字段，用于关系区块的每行记录的查看，一般为具备唯一性的字段。
+The field in the target table used for viewing each row record in the relationship block, usually a field with uniqueness.
 
 ### ON DELETE
 
-ON DELETE 是指在删除父表中的记录时对相关子表中的外键引用的操作规则，它是用于定义外键约束时的一个选项。常见的 ON DELETE 选项包括：
+ON DELETE refers to the action rule for the foreign key references in the child table when records in the parent table are deleted. It is an option used to define the behavior of the foreign key constraint. Common ON DELETE options include:
 
-- CASCADE：当删除父表中的记录时，自动删除子表中与之关联的所有记录。
-- SET NULL：当删除父表中的记录时，将子表中与之关联的外键值设为 NULL。
-- RESTRICT：默认选项，当试图删除父表中的记录时，如果存在与之关联的子表记录，则拒绝删除父表记录。
-- NO ACTION：与 RESTRICT 类似，如果存在与之关联的子表记录，则拒绝删除父表记录。
+- CASCADE: Automatically deletes all associated records in the child table when a record in the parent table is deleted.
+- SET NULL: Sets the foreign key values in the child table to NULL when a record in the parent table is deleted.
+- RESTRICT: Default option, refuses to delete the record in the parent table if there are associated records in the child table.
+- NO ACTION: Similar to RESTRICT, refuses to delete the record in the parent table if there are associated records in the child table.

@@ -1,62 +1,62 @@
-# 一对一
+# One-to-One
 
-员工和个人资料的关系，每个员工只能有一条个人资料记录，而每条个人资料记录也只能对应一个员工，这种情况下，员工和个人资料是一对一关系。
+The relationship between employees and personal profiles, where each employee can have only one personal profile record, and each personal profile record can only correspond to one employee. In this case, the relationship between employees and personal profiles is a one-to-one relationship.
 
-一对一的外键放在源表或目标表里都可以，如果表示的「有一个」，外键放目标表里更合适；如果表示的「所属关系」，那外键放在源表里更合适。
+The foreign key for a one-to-one relationship can be placed in either the source collection or the target collection. If it represents "having one," it is more appropriate to place the foreign key in the target collection; if it represents "belongs to," then placing the foreign key in the source collection is more appropriate.
 
-例如上述例子，员工只有一条个人资料，个人资料属于员工，所以这个外键适合放在个人资料表里。
+For example, in the above example, an employee has only one personal profile, and the personal profile belongs to the employee, so the foreign key is suitable to be placed in the personal profile table.
 
-## 一对一（有一个）
+## One-to-One (Having One)
 
-表示某员工有一条个人资料记录
+Indicates that a certain employee has one personal profile record.
 
-ER 关系
+ER Diagram
 
 ![alt text](https://static-docs.nocobase.com/4359e128936bbd7c9ff51bcff1d646dd.png)
 
-字段配置
+Field Configuration
 
 ![alt text](https://static-docs.nocobase.com/7665a87e094b4fb50c9426a108f87105.png)
 
-## 一对一（所属关系）
+## One-to-One (Belongs To)
 
-表示某条个人资料属于某员工
+Indicates that a certain personal profile belongs to a specific employee.
 
-ER 关系
+ER Diagram
 
 ![](https://static-docs.nocobase.com/31e7cc3e630220cf1e98753ca24ac72d.png)
 
-字段配置
+Field Configuration
 
 ![alt text](https://static-docs.nocobase.com/4f09eeb3c7717d61a349842da43c187c.png)
 
-## 参数说明
+## Parameter Description
 
-### Source collection
+### Source Collection
 
-源表，也就是当前字段所在表。
+The source table, which is the table where the current field resides.
 
-### Target collection
+### Target Collection
 
-目标表，与哪个表关联。
+The target table to which it is associated.
 
-### Foreign key
+### Foreign Key
 
-用于建立两个表之间的关联。一对一的外键放在源表或目标表里都可以，如果表示的「有一个」，外键放目标表里更合适；如果表示的「所属关系」，那外键放在源表里更合适。
+Used to establish the relationship between two tables. The foreign key for a one-to-one relationship can be placed in either the source collection or the target collection. If it represents "having one," it is more appropriate to place the foreign key in the target collection; if it represents "belongs to," then placing the foreign key in the source collection is more appropriate.
 
-### Source key <- Foreign key（外键在目标表）
+### Source Key <- Foreign Key (Foreign Key in Target Collection)
 
-外键约束引用的字段，必须具备唯一性。当外键放在目标时，表示「有一个」。
+The field referenced by the foreign key constraint must be unique. When the foreign key is placed in the target collection, it indicates "having one."
 
-### Target key <- Foreign key（外键在源表）
+### Target Key <- Foreign Key (Foreign Key in Source Collection)
 
-外键约束引用的字段，必须具备唯一性。当外键放在源表时，表示「所属关系」
+The field referenced by the foreign key constraint must be unique. When the foreign key is placed in the source collection, it indicates "belongs to."
 
 ### ON DELETE
 
-ON DELETE 是指在删除父表中的记录时对相关子表中的外键引用的操作规则，它是用于定义外键约束时的一个选项。常见的 ON DELETE 选项包括：
+ON DELETE refers to the action rule for the foreign key references in the child table when records in the parent table are deleted. It is an option used to define the behavior of the foreign key constraint. Common ON DELETE options include:
 
-- CASCADE：当删除父表中的记录时，自动删除子表中与之关联的所有记录。
-- SET NULL：当删除父表中的记录时，将子表中与之关联的外键值设为 NULL。
-- RESTRICT：默认选项，当试图删除父表中的记录时，如果存在与之关联的子表记录，则拒绝删除父表记录。
-- NO ACTION：与 RESTRICT 类似，如果存在与之关联的子表记录，则拒绝删除父表记录。
+- CASCADE: Automatically deletes all associated records in the child table when a record in the parent table is deleted.
+- SET NULL: Sets the foreign key values in the child table to NULL when a record in the parent table is deleted.
+- RESTRICT: Default option, refuses to delete the record in the parent table if there are associated records in the child table.
+- NO ACTION: Similar to RESTRICT, refuses to delete the record in the parent table if there are associated records in the child table.
