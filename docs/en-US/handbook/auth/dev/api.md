@@ -1,20 +1,20 @@
-# API 参考
+# API Reference
 
-## 服务端
+## Server Side
 
 ### Auth
 
-内核 API，参考: [Auth](../../../api/auth/auth.md)
+Kernel API, reference: [Auth](../../../api/auth/auth.md)
 
 ### BaseAuth
 
-内核 API, 参考: [BaseAuth](../../../api/auth/base-auth.md)
+Kernel API, reference: [BaseAuth](../../../api/auth/base-auth.md)
 
 ### AuthModel
 
-#### 概览
+#### Overview
 
-`AuthModel` 是 NocoBase 应用中使用的认证器 (`Authenticator`, 参考: [AuthManager - setStorer](../../../api/auth/auth-manager.md#setstorer) 和 [Auth - constructor](../../../api/auth/auth.md#constructor)) 数据模型，提供了一些和用户数据表交互的方法。除此之外，也可以使用 Sequelize Model 提供的方法。
+`AuthModel` is the authenticator used in NocoBase applications (`Authenticator`, reference: [AuthManager - setStorer](../../../api/auth/auth-manager.md#setstorer) and [Auth - constructor](../../../api/auth/auth.md#constructor)) data model, providing some methods for interacting with the user data collection. In addition, methods provided by Sequelize Model can also be used.
 
 ```ts
 import { AuthModel } from '@nocobase/plugin-auth';
@@ -31,26 +31,26 @@ class CustomAuth extends BaseAuth {
 }
 ```
 
-#### 类方法
+#### Class Methods
 
-- `findUser(uuid: string): UserModel` - 通过 `uuid` 查询用户。
+- `findUser(uuid: string): UserModel` - Query user by `uuid`.
 
-  - `uuid` - 来自当前认证类型的用户唯一标识
+  - `uuid` - User unique identifier from the current authentication type
 
-- `newUser(uuid: string, userValues?: any): UserModel` - 创建新用户，通过 `uuid` 将用户和当前认证器绑定。
+- `newUser(uuid: string, userValues?: any): UserModel` - Create a new user, bind the user to the current authenticator through `uuid`.
 
-  - `uuid` - 来自当前认证类型的用户唯一标识
-  - `userValues` - 可选。用户其他信息。不传递时将 `uuid` 作为用户昵称。
+  - `uuid` - User unique identifier from the current authentication type
+  - `userValues` - Optional. Other user information. When not passed, `uuid` will be used as the user's nickname.
 
-- `findOrCreateUser(uuid: string, userValues?: any): UserModel` - 查找或创建新用户，创建规则同上。
-  - `uuid` - 来自当前认证类型的用户唯一标识
-  - `userValues` - 可选。用户其他信息。
+- `findOrCreateUser(uuid: string, userValues?: any): UserModel` - Find or create a new user, the creation rule is the same as above.
+  - `uuid` - User unique identifier from the current authentication type
+  - `userValues` - Optional. Other user information.
 
-## 客户端
+## Client Side
 
 ### `plugin.registerType()`
 
-注册认证类型的客户端。
+Register the client of the authentication type.
 
 ```ts
 import AuthPlugin from '@nocobase/plugin-auth/client';
@@ -70,11 +70,11 @@ class CustomAuthPlugin extends Plugin {
 }
 ```
 
-#### 签名
+#### Signature
 
 - `registerType(authType: string, options: AuthOptions)`
 
-#### 类型
+#### Type
 
 ```ts
 export type AuthOptions = {
@@ -87,9 +87,9 @@ export type AuthOptions = {
 };
 ```
 
-#### 详细信息
+#### Details
 
-- `SignInForm` - 登录表单
-- `SignInButton` - 登录（第三方）按钮，可以和登录表单二选一
-- `SignUpForm` - 注册表单
-- `AdminSettingsForm` - 后台配置表单
+- `SignInForm` - Sign in form
+- `SignInButton` - Sign in (third-party) button, can be used as an alternative to the sign-in form
+- `SignUpForm` - Sign up form
+- `AdminSettingsForm` - Admin configuration form
