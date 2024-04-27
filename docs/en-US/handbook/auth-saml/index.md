@@ -1,54 +1,54 @@
-# SAML 认证
+# SAML Authentication
 
-## 介绍
+## Introduction
 
-SAML 插件遵循 SAML2.0 协议标准，实现用户使用第三方身份认证服务商 (IdP) 提供的账号登 录NocoBase，无需输入用户名和密码。
+The SAML plugin follows the SAML 2.0 protocol standard, allowing users to log in to NocoBase using accounts provided by third-party identity authentication service providers (IdP) without entering a username and password.
 
-## 激活插件
+## Activate Plugin
 
 ![](https://static-docs.nocobase.com/6a12f3d8073c47532a4f8aac900e4296.png)
 
-## 添加 SAML 认证
+## Add SAML Authentication
 
-进入用户认证插件管理页面。
+Enter the user authentication plugin management page.
 
 ![](../auth-oidc/static/2023-12-03-18-19-33.png)
 
-添加 - SAML
+Add - SAML
 
 ![](https://static-docs.nocobase.com/5076fe56086b7799be308bbaf7c4425d.png)
 
-## 配置
+## Configuration
 
 ![](https://static-docs.nocobase.com/976b66e589973c322d81dcddd22c6146.png)
 
-- SSO URL - 由 IdP 提供，用于单点登录的网址
-- 公钥 (Public Certificate) - 由 IdP 提供
-- 实体ID (IdP Issuer) - 可选，由 IdP 提供
-- http - 如果你的 NocoBase 应用是 http 协议的，请勾选
-- Use this field to bind the user - 用于和已有用户匹配绑定的字段，可选择邮箱或用户名，默认为邮箱。需要 IdP 携带的用户信息包含 `email` 或 `username` 字段。
-- Sign up automatically when the user does not exist - 当找不到可匹配绑定的已有用户时，是否自动创建新用户。
-- 使用 (Usage) - `SP Issuer / EntityID` 和 `ACS URL` 用于复制并填写到 IdP 相应配置中。
+- SSO URL - Provided by IdP, used for single sign-on
+- Public Certificate - Provided by IdP
+- Entity ID (IdP Issuer) - Optional, provided by IdP
+- http - If your NocoBase application is http protocol, please check
+- Use this field to bind the user - The field used to match and bind with existing users, can choose email or username, default is email. The user information carried by IdP needs to contain the `email` or `username` field.
+- Sign up automatically when the user does not exist - Whether to automatically create a new user when no matching existing user is found.
+- Usage - `SP Issuer / EntityID` and `ACS URL` are used to copy and fill in the corresponding configuration in the IdP.
 
-## 字段映射
+## Field Mapping
 
-字段映射需要在IdP的配置平台上进行配置，可参考[示例](../auth-saml/example/google.md)。
+Field mapping needs to be configured on the IdP's configuration platform, you can refer to the [example](../auth-saml/example/google.md).
 
-NocoBase可供映射的字段有：
+The fields available for mapping in NocoBase are:
 
-- email（必填）
-- phone (仅对 scope 支持 `phone` 的平台生效，如阿里云，飞书)
+- email (required)
+- phone (only effective for platforms that support `phone` in scope, such as Alibaba Cloud, Lark)
 - nickname
 - username
 - firstName
 - lastName
 
-`nameID` 为 SAML 协议携带，无需映射，将作为用户唯一标识保存。
-新用户昵称使用规则优先级: `nickname` > `firstName lastName` > `username` > `nameID`
-暂时不支持映射用户组织、角色。
+`nameID` is carried by the SAML protocol and does not need to be mapped, it will be saved as a unique user identifier.
+The priority of the new user nickname use rule is: `nickname` > `firstName lastName` > `username` > `nameID`
+Currently, user organization and role mapping are not supported.
 
-## 登录
+## Log In
 
-访问登录页面，点击登录表单下方按钮发起第三方登录。
+Visit the login page and click the button under the login form to initiate third-party login.
 
 ![](https://static-docs.nocobase.com/74963865c9d36a294948e6adeb5b24bc.png)
