@@ -1,159 +1,170 @@
-# 变量
+# Variables
 
-## 介绍
+## Introduction
+Variables can be used when setting block data scope, field default values, linkage rules, and workflows.
 
-## 当前用户
+Types of variables include:
+- Current user
+- Current role
+- Current form
+- Current object
+- Current record
+- Current popup record
+- Selected records in table
+- Date variables
 
-当前登录的用户。
+## Current User
+
+The user currently logged in.
 
 ![20240416154950](https://static-docs.nocobase.com/20240416154950.png)
 
-## 当前角色（标识）
+## Current Role (Identifier)
 
-当前用户的角色标识（role name）。
+The role identifier of the current user.
 
 ![20240416155100](https://static-docs.nocobase.com/20240416155100.png)
 
-## 当前表单
+## Current Form
 
-当前表单的实时值（form.values），仅用于表单区块。使用场景有：
+The real-time values of the current form (form.values), only used for form blocks. Use cases include:
 
-- 当前表单的联动规则
-- 表单字段默认值（仅新增数据时有效）
-- 关系字段的数据范围设置
-- 提交操作的字段赋值配置
+- Linkage rules for the current form
+- Default values of form fields (effective only when adding new data)
+- Data scope setting for relationship fields
+- Field value configuration for submission actions
 
-### 当前表单的联动规则
+### Linkage Rules for Current Form
 
 ![20240416170732_rec_](https://static-docs.nocobase.com/20240416170732_rec_.gif)
 
-### 表单字段默认值（仅新增数据时有效）
+### Default Values of Form Fields (Effective Only When Adding New Data)
 
 ![20240416171129_rec_](https://static-docs.nocobase.com/20240416171129_rec_.gif)
 
-### 关系字段的数据范围设置
+### Data Scope Setting for Relationship Fields
 
-用于处理关系之间的联动，例如：
+Used to handle linkage between relationships, for example:
 
 ![20240416171743_rec_](https://static-docs.nocobase.com/20240416171743_rec_.gif)
 
-### 提交操作的字段赋值配置
+### Field Value Configuration for Submission actions
 
 ![20240416171215_rec_](https://static-docs.nocobase.com/20240416171215_rec_.gif)
 
-## 当前对象
+## Current Object
 
-表示内嵌的关系字段的值。
+Represents the value of nested relationship fields.
 
-示例：对一关系，只有一个对象（object）
+Example: For to-one relationship, there is only one object.
 
 ```js
-// 当前表单
+// Current form
 {
   username: 'user1',
   profile: {
-    // 对 profile 里的字段来说，profile 这个 object 就是当前对象
+    // For fields in the profile, profile is the current object
     age: 30,
   }
 }
 ```
 
-示例：对多关系，有多个对象（object）
+Example: For to-many relationships, there are multiple objects.
 
 ```js
-// 当前表单
+// Current form
 {
   title: 'title1',
   tags: [
     {
-      // 对 tag 里的字段来说，tag1 为当前对象
+      // For fields in tag, tag1 is the current object
       name: 'tag1',
     },
     {
-      // 对 tag 里的字段来说，tag2 为当前对象
+      // For fields in tag, tag2 is the current object
       name: 'tag2',
     },
   ]
 }
 ```
 
-仅用于表单区块的子表单和子表格的字段配置：
+Only used for field configuration in form blocks for subforms and subtables:
 
-- 子字段的默认值
-- 子关系字段的数据范围
+- Default values of subfields
+- Data scope for sub-relationship fields
 
-### 子字段的默认值
+### Default Values of Subfields
 
 ![20240416172933_rec_](https://static-docs.nocobase.com/20240416172933_rec_.gif)
 
-### 子关系字段的数据范围
+### Data Scope for Sub-Relationship Fields
 
 ![20240416173043_rec_](https://static-docs.nocobase.com/20240416173043_rec_.gif)
 
-## 当前记录
+## Current Record
 
-记录是指数据表中的行，每一行代表着一条记录。在展示类的区块的**行操作的联动规则**里都有「当前记录」变量。
+A record refers to a row in a data table, where each row represents a record. The "Current Record" variable is present in the "Row Actions' Linkage Rules" of display-type blocks.
 
 :::warning
-为了不困扰用户，在表单区块中，没有「当前记录」变量，请使用「当前表单」代替。
+To avoid confusion for users, there is no "Current Record" variable in form blocks; please use "Current Form" instead.
 :::
 
-### 行操作的联动规则
+### Row Actions' Linkage Rules
 
 ![20240416174813_rec_](https://static-docs.nocobase.com/20240416174813_rec_.gif)
 
-## 当前弹窗记录
+## Current Popup Record
 
-弹窗操作在 NocoBase 界面配置中扮演着非常重要的角色。
+Popup plays a very important role in the NocoBase interface configuration.
 
-- 行操作的弹窗：每个弹窗都会有个「当前弹窗记录」变量，表示当前行记录。
-- 关系字段的弹窗：每个弹窗都会有个「当前弹窗记录」变量，表示当前点击的关系记录。
+- Popup of Row Actions: Each popup has a "Current Popup Record" variable, representing the current row record.
+- Popup of Relationship fields: Each popup has a "Current Popup Record" variable, representing the currently clicked relationship record.
 
-弹窗里的区块都可以使用「当前弹窗记录」这个变量，相关使用场景有：
+Blocks inside popups can use the "Current Popup Record" variable, with use cases including:
 
-- 配置区块的数据范围
-- 配置关系字段的数据范围
-- 配置字段的默认值（创建表单）
-- 配置操作的联动规则
-- 表单提交操作的字段赋值配置
+- Configuring block data scope
+- Configuring data scope for relationship fields
+- Configuring default values for fields (Form for Adding Data)
+- Configuring linkage rules for actions
+- Field value configuration for form submission operations
 
-### 配置区块的数据范围
+### Configuring Block Data Scope
 
 ![20240416224307_rec_](https://static-docs.nocobase.com/20240416224307_rec_.gif)
 
-### 配置关系字段的数据范围
+### Configuring Data Scope for Relationship Fields
 
 ![20240416224641_rec_](https://static-docs.nocobase.com/20240416224641_rec_.gif)
 
-### 配置字段的默认值（创建表单）
+### Configuring Default Values for Fields (Form for Adding Data)
 
 ![20240416223846_rec_](https://static-docs.nocobase.com/20240416223846_rec_.gif)
 
-### 配置操作的联动规则
+### Configuring Linkage Rules for Actions
 
 ![20240416223101_rec_](https://static-docs.nocobase.com/20240416223101_rec_.gif)
 
-### 表单提交操作的字段赋值配置
+### Field Value Configuration for Form Submission Actions
 
 ![20240416224014_rec_](https://static-docs.nocobase.com/20240416224014_rec_.gif)
 
-## 表格选中记录
+## Selected Records in Table
 
-目前仅用于表格区块的 Add record 操作的表单字段默认值
+Currently used only for default values of form fields in the "Add record" action of table blocks.
 
-### Add record 操作的表单字段默认值
+### Default Values of Form Fields in "Add record" Action
 
-## 父级记录（已弃用）
+## Parent Record (Deprecated)
 
-仅限于关系区块里使用，表示关系数据的源记录。
+Restricted to use within relationship blocks, indicating the source record of relationship data.
 
 :::warning
-「父级记录」已弃用，建议使用等价的「当前弹窗记录」代替。
+"Parent Record" is deprecated; it is recommended to use the equivalent "Current Popup Record" instead.
 :::
 
-## 日期变量
+## Date Variables
 
-相关变量有：
+Related variables include:
 
 - Current time
 - Yesterday
@@ -181,20 +192,20 @@
 <br />
 
 :::warning
-除了当前时间（Current time）为时刻，其他的日期变量都是时段。
+Except for "Current Time," which is a moment, all other date variables represent periods.
 :::
 
-相关使用场景有：
+Related use cases include:
 
-- 区块数据范围的日期字段条件设置
-- 关系字段的数据范围的日期字段条件设置
-- 操作联动规则的日期字段条件设置
-- 日期字段默认值设置
+- Date field condition settings for block data scope
+- Date field condition settings for relationship field data scope
+- Date field condition settings for actions' linkage rules
+- Default value settings for date fields
 
-### 区块数据范围的日期字段条件设置
+### Date Field Condition Settings for Block Data Scope
 
-### 关系字段的数据范围的日期字段条件设置
+### Date Field Condition Settings for Relationship Field Data Scope
 
-### 操作联动规则的日期字段条件设置
+### Date Field Condition Settings for Actions' Linkage Rules
 
-### 日期字段默认值设置
+### Default Value Settings for Date Fields
