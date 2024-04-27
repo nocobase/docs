@@ -5,8 +5,8 @@ export default [
     type: 'group',
     children: [
       '/welcome/introduction',
-      '/welcome/introduction/features',
-      '/welcome/introduction/why',
+      // '/welcome/introduction/features',
+      // '/welcome/introduction/why',
       // '/welcome/introduction/learning-guide',
     ],
   },

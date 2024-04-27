@@ -1,10 +1,8 @@
 # 介绍
 
-![NocoBase](https://nocobase-file.oss-cn-beijing.aliyuncs.com/main-l.png)
-
-**注意:** 📌
-
-NocoBase 正处在早期开发阶段，可能变动频繁，请谨慎用于生产环境。
+<video width="100%" controls>
+      <source src="https://static-docs.nocobase.com/NocoBase-CN-0426.mp4" type="video/mp4">
+</video>
 
 ## NocoBase 是什么
 
@@ -20,10 +18,19 @@ https://demo-cn.nocobase.com/new
 文档：  
 https://docs-cn.nocobase.com/
 
-## 商业服务
+商业授权和商业插件：  
+https://cn.nocobase.com/commercial-cn.html
 
-如果你需要商业版本和商业服务，欢迎通过邮件联系我们：hello@nocobase.com
+许可协议：  
+https://cn.nocobase.com/agreement-cn.html
 
-或者添加我们的微信：
+## 联系我们  
 
-![](https://nocobase-file.oss-cn-beijing.aliyuncs.com/wechat.png)
+邮件：  
+hello@nocobase.com
+
+微信：  
+![wechat](https://static-docs.nocobase.com/wechat.png)
+
+
+
