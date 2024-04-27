@@ -1,4 +1,4 @@
-# Sort Fields
+# Sort Field
 
 <PluginInfo name="field-sort"></PluginInfo>
 
