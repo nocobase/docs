@@ -31,6 +31,3 @@ hello@nocobase.com
 
 微信：  
 ![wechat](https://static-docs.nocobase.com/wechat.png)
-
-
-
