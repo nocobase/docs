@@ -19,10 +19,10 @@ Documents:
 https://docs.nocobase.com/
 
 Commericial license & plugins:  
-https://cn.nocobase.com/commercial-cn.html
+https://www.nocobase.com/commercial.html
 
 License agreement:   
-https://cn.nocobase.com/agreement-cn.html
+https://www.nocobase.com/agreement.html
 
 
 ## Contact Us:  
