@@ -37,20 +37,21 @@
 
 示例：展示当前订单数据。
 
-![20240427110408](https://static-docs.nocobase.com/20240427110408.gif)
+
+![20240427123900](https://static-docs.nocobase.com/20240427123900.gif)
 
 ### 关系记录
 
-示例：展示于当前订单关联的商品数据。
+示例：展示当前订单关联的商品数据。
 
-![20240427115154](https://static-docs.nocobase.com/20240427115154.gif)
+
+![20240427124021](https://static-docs.nocobase.com/20240427124021.gif)
 
 ### 其他记录
 
 示例：订单表格区块的弹窗操作中配置仓库详情区块。
 
-![20240427120201](https://static-docs.nocobase.com/20240427120201.gif)
-
+![20240427124152](https://static-docs.nocobase.com/20240427124152.gif)
 ### 当前弹窗记录
 
 - 行操作的弹窗：每个弹窗都会有个「当前弹窗记录」变量，表示当前行记录。
