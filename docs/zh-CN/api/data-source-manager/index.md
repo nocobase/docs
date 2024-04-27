@@ -1,6 +1,6 @@
 # DataSourceManager
 
-`DataSourceManager` 是多 `dataSource ` 实例的管理类。
+`DataSourceManager` 是多 `dataSource` 实例的管理类。
 
 ## API
 
