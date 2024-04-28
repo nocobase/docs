@@ -27,7 +27,6 @@ After 3 years of development, NocoBase has reached its first major version upgra
 - Field: Markdown (Vditor)
 
   - Used to store Markdown and render it using Vditor editor, supports common Markdown syntax and supports uploading images, recordings, etc.It also allows for instant rendering, where what you see is what you get.
-  - 
 - Comments
   - Provides comment collection template and block to add commenting functionality for any collection.
 
@@ -367,5 +366,6 @@ At this point, the application interface is no longer accessible, so we need to 
 3. Upgrade the application
     - For Docker version, simply restart the container
     - For source code or create-nocobase-app version
-        - 1. Download dependencies `yarn install`
-        - 2. Execute upgrade command `yarn noc
+        - Download dependencies `yarn install`
+        - Execute upgrade command `yarn noc
+        - Restart the application
