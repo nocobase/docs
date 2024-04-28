@@ -29,6 +29,10 @@ this.app.acl.registerSnippet({
 
 支持在 URL 和请求体中配置变量。
 
+- 当前记录
+- 当前用户
+- 当前时间
+
 ![20240426120953](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426120953.png)
 
 ![20240426121051](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426121051.png)
