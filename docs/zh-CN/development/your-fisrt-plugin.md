@@ -129,6 +129,8 @@ curl --location --request GET 'http://localhost:13000/api/hello:list'
 
 ## 构建并打包插件
 
+如果是 clone 的源码，在源码仓库创建的插件，需要执行 `yarn build` 进行一次全量构建，否则会报类型错误。
+
 ```bash
 yarn build @my-project/plugin-hello --tar
 

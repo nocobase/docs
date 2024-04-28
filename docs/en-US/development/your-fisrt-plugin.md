@@ -129,6 +129,8 @@ curl --location --request GET 'http://localhost:13000/api/hello:list'
 
 ## Build the plugin
 
+If you cloned the source code, you need to execute `yarn build` for a full build, otherwise, a type error will be reported.
+
 ```bash
 yarn build @my-project/plugin-hello --tar
 
