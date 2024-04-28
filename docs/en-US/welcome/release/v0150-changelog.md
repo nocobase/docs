@@ -1,30 +1,32 @@
 # v0.15：2023-11-13
 
-## 新特性
+## Features
 
 ![Plugin settings manager](https://static-docs.nocobase.com/20240115140600.png)
 
-## 不兼容的变化
+## Breaking changes
 
-### 插件配置页面注册方式
+### Plugin configuration page registration API
 
-以前使用 `SettingsCenterProvider` 注册插件配置页面，现在需要通过插件化注册。
+以前使用 `SettingsCenterProvider` 注册插件配置页面，现在需要通过插件注册。
 
-- 案例 1：原页面仅有一个 Tab 的情况
+Previously, the plugin configuration page was registered using `SettingsCenterProvider`, and now it needs to be registered through the plugin.
 
-当页面仅有一个 Tab 时，新版本的 Tab 会删掉，仅保留页面的标题和图标。
+- Case 1: There is only one Tab on the original page
+
+When there is only one Tab on the page, the new version of the Tab will be deleted, leaving only the title and icon of the page.
 
 ```tsx | pure
-const HelloProvider = React.memo((props) => {
+const HelloProvider = React.memo(props => {
   return (
     <SettingsCenterProvider
       settings={{
         hello: {
-          title: 'Hello',
-          icon: 'ApiOutlined',
+          title: "Hello",
+          icon: "ApiOutlined",
           tabs: {
             tab1: {
-              title: 'Hello tab',
+              title: "Hello tab",
               component: HelloPluginSettingPage,
             },
           },
@@ -37,33 +39,34 @@ const HelloProvider = React.memo((props) => {
 });
 ```
 
-现在需要改为：
+Now it needs to be changed to:
 
 ```tsx | pure
 class HelloPlugin extends Plugin {
   async load() {
-    this.app.pluginSettingsManager.add('hello', {
-      title: 'Hello', // 原 title
-      icon: 'ApiOutlined', // 原 icon
-      Component: HelloPluginSettingPage, // 原 tab component
-      aclSnippet: 'pm.hello.tab1', // 权限片段，保证权限的 code 和之前的一致，如果是新插件，不需要传这个参数
+    this.app.pluginSettingsManager.add("hello", {
+      title: "Hello",
+      icon: "ApiOutlined",
+      Component: HelloPluginSettingPage,
+      // It is not necessary to pass this parameter if it is a new plugin
+      aclSnippet: "pm.hello.tab1",
     });
   }
 }
 ```
 
-也就是删除了 `tab1` 的 `Hello Tab`。
+The `Hello Tab` of `tab1` is deleted.
 
-其中参数 `aclSnippet` 的 `pm.hello.tab1` 对应原来的 `settings` 对象的 key：
+`aclSnippet` parameter `pm.hello.tab1` corresponds to the key of the original `settings` object:
 
-```tsx | pure
+```tsx
 <SettingsCenterProvider
   settings={{
     hello: {
-      // 这里的 hello 对应 `pm.hello.tab1` 中的 `hello`
+      // This `hello` corresponds to `hello` in `pm.hello.tab1`
       tabs: {
         tab1: {
-          // 这里的 tab1 对应 `pm.hello.tab1` 中的 tab1
+          // Here, `tab1` corresponds to `tab1` in `pm.hello.tab1`
         },
       },
     },
@@ -71,23 +74,23 @@ class HelloPlugin extends Plugin {
 ></SettingsCenterProvider>
 ```
 
-- 案例 2：原页面有多个 Tab 的情况
+- Case 2: There are multiple Tabs on the original page
 
-```tsx | pure
-const HelloProvider = React.memo((props) => {
+```tsx
+const HelloProvider = React.memo(props => {
   return (
     <SettingsCenterProvider
       settings={{
         hello: {
-          title: 'Hello',
-          icon: 'ApiOutlined',
+          title: "Hello",
+          icon: "ApiOutlined",
           tabs: {
             tab1: {
-              title: 'Hello tab1',
+              title: "Hello tab1",
               component: HelloPluginSettingPage1,
             },
             tab2: {
-              title: 'Hello tab2',
+              title: "Hello tab2",
               component: HelloPluginSettingPage2,
             },
           },
@@ -100,55 +103,54 @@ const HelloProvider = React.memo((props) => {
 });
 ```
 
-现在需要改为：
+Now it needs to be changed to:
 
-```tsx | pure
-import { Outlet } from 'react-router-dom';
+```tsx
+import { Outlet } from "react-router-dom";
 
 class HelloPlugin extends Plugin {
   async load() {
-    this.app.pluginSettingsManager.add('hello', {
-      title: 'Hello', // 原 title
-      icon: 'ApiOutlined', // 原 icon
+    this.app.pluginSettingsManager.add("hello", {
+      title: "Hello",
+      icon: "ApiOutlined",
       Component: Outlet,
     });
 
-    this.app.pluginSettingsManager.add('hello.tab1', {
-      title: 'Hello tab1', // 原 tab1 title
-      Component: HelloPluginSettingPage1, // 原 tab1 component
+    this.app.pluginSettingsManager.add("hello.tab1", {
+      title: "Hello tab1",
+      Component: HelloPluginSettingPage1,
     });
 
-    this.app.pluginSettingsManager.add('hello.tab2', {
-      title: 'Hello tab2', // 原 tab2 title
-      Component: HelloPluginSettingPage1, // 原 tab2 component
+    this.app.pluginSettingsManager.add("hello.tab2", {
+      title: "Hello tab2",
+      Component: HelloPluginSettingPage1,
     });
   }
 }
 ```
 
-获取 pluginSettingsManager 对应的路由信息
+Get the routing information corresponding to the pluginSettingsManager
 
-```tsx | pure
-const baseName = app.pluginSettingsManager.getRouteName('hello');
+```tsx
+const baseName = app.pluginSettingsManager.getRouteName("hello");
 // admin.settings.hello
-const basePath = app.pluginSettingsManager.getRoutePath('hello');
+const basePath = app.pluginSettingsManager.getRoutePath("hello"); // /admin/settings.
 // /admin/settings/hello
 ```
 
-如果插件配置页面内部有链接跳转的话，需要进行相应的更改，例如：
+If there is a link jump inside the plugin configuration page, you need to change it accordingly, for example:
 
 ```tsx | pure
-navigate('/admin/settings/hello/1');
-navigate('/admin/settings/hello/2');
+navigate("/admin/settings/hello/1").navigate("/admin/settings/hello/2");
 
-// 可以更改为
-const basePath = app.pluginSettingsManager.getRoutePath('hello');
+// This can be changed to
+const basePath = app.pluginSettingsManager.getRoutePath("hello");
 navigate(`${basePath}/1`);
 navigate(`${basePath}/2`);
 ```
 
-更多信息，请参考 [插件配置页面](https://docs-cn.nocobase.com/development/client/plugin-settings)。
+For more information, see the [plugin settings manager](https://docs.nocobase.com/development/client/plugin-settings).
 
-## 更新记录
+## Changelog
 
-完整的更新记录，请参考 [更新记录](https://github.com/nocobase/nocobase/blob/main/CHANGELOG.md)。
+For a complete changelog, please refer to [Changelog](https://github.com/nocobase/nocobase/blob/main/CHANGELOG.md).
