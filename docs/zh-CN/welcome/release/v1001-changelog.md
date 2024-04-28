@@ -365,6 +365,6 @@ yarn nocobase upgrade
 3. 升级应用
     - docker 版本直接重启容器即可
     - 源码或 create-nocobase-app 版本
-        - 1. 下载依赖 `yarn install`
-        - 2. 执行升级命令 `yarn nocobase upgrade`
-        - 2. 重启应用
+        1. 下载依赖 `yarn install`
+        2. 执行升级命令 `yarn nocobase upgrade`
+        3. 重启应用
