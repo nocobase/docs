@@ -6,13 +6,8 @@
 
 ### 1. 获取插件包
 
-如果是 NocoBase 提供的商业插件，请前往 [user.nocobase.com](https://user.nocobase.com/) 下载
-
-如果是自制插件，参考 [编写第一个插件](/development/your-fisrt-plugin) 流程，构建并打包插件，如：
-
-```bash
-yarn build @my-project/plugin-hello --tar
-```
+- 如果是 NocoBase 提供的商业插件，请前往 [service.nocobase.com](https://service.nocobase.com/) 下载；
+- 如果是自制插件，参考 [编写第一个插件](/development/your-fisrt-plugin) 流程，构建并打包插件。
 
 ### 2. 添加插件
 
@@ -28,14 +23,14 @@ yarn build @my-project/plugin-hello --tar
 
 ### 4. 更新插件
 
-如果是 NocoBase 提供的商业插件，请前往 [user.nocobase.com](https://user.nocobase.com/) 下载最新版
-如果是自制插件，参考 [编写第一个插件](/development/your-fisrt-plugin) 流程，构建并打包插件
+- 如果是 NocoBase 提供的商业插件，请前往 [service.nocobase.com](https://service.nocobase.com/) 下载最新版；
+- 如果是自制插件，参考 [编写第一个插件](/development/your-fisrt-plugin) 流程，重新构建并打包新版本插件。
 
 之后将下载的插件上传并提交更新
 
 :::warning
 - 预置的插件会随主应用一起升级，没有「更新」的操作
-- 不要通过先删除，再添加的方式升级插件。
+- 点击插件的「更新」操作来升级，不要通过先删除，再添加的方式升级插件。
 :::
 
 ![20240424221119_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240424221119_rec_.gif)
