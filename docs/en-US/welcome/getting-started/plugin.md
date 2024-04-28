@@ -1,85 +1,80 @@
-# 独立插件的安装与升级
+# Installation and Upgrade of Plugins
 
-## 通过界面安装与更新插件
+## Installing and Updating Plugins via Interface
 
-这个办法非常简单，但需要一个一个添加、激活、更新。
+This method is very simple but requires adding, activating, and updating one by one.
 
-### 1. 获取插件包
+### 1. Get the Plugin Package
 
-如果是 NocoBase 提供的商业插件，请前往 [user.nocobase.com](https://user.nocobase.com/) 下载
+- If it's a commercial plugin provided by NocoBase, please go to [service.nocobase.com](https://service.nocobase.com/) to download.
+- If it's a custom-developed plugin, refer to the process of [Writing Your First Plugin](/development/your-fisrt-plugin), build and package the plugin.
 
-如果是自制插件，参考 [编写第一个插件](/development/your-fisrt-plugin) 流程，构建并打包插件，如：
+### 2. Add the Plugin
 
-```bash
-yarn build @my-project/plugin-hello --tar
-```
-
-### 2. 添加插件
-
-将插件包上传并添加
+Upload and add the plugin package.
 
 ![20240424221258_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240424221258_rec_.gif)
 
-### 3. 激活插件
+### 3. Activate the Plugin
 
-激活上传的插件
+Activate the uploaded plugin.
 
 ![20240424220854](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240424220854.png)
 
-### 4. 更新插件
+### 4. Update the Plugin
 
-如果是 NocoBase 提供的商业插件，请前往 [user.nocobase.com](https://user.nocobase.com/) 下载最新版
-如果是自制插件，参考 [编写第一个插件](/development/your-fisrt-plugin) 流程，构建并打包插件
+- If it's a commercial plugin provided by NocoBase, please go to [service.nocobase.com](https://service.nocobase.com/) to download the latest version.
+- If it's a custom-made plugin, refer to the process of [Writing Your First Plugin](/development/your-fisrt-plugin), rebuild and package the new version of the plugin.
 
-之后将下载的插件上传并提交更新
+Then upload the downloaded plugin and submit the update.
 
 :::warning
-- 预置的插件会随主应用一起升级，没有「更新」的操作
-- 不要通过先删除，再添加的方式升级插件。
+- Pre-installed plugins will be upgraded along with the main application without a separate "update" operation.
+- Click on the "update" operation of the plugin to upgrade it; do not upgrade the plugin by deleting and then adding it again.
 :::
 
 ![20240424221119_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240424221119_rec_.gif)
 
-## 通过命令行安装与更新插件
+## Installing and Updating Plugins via Command Line
 
-支持批量处理，如果应用更新导致插件不兼容并无法启动时，也可以使用命令行的方式处理
+Supports batch processing. If an application update renders a plugin incompatible and unable to start, you can also use the command line to handle it.
 
-### 0. Docker 版本需要先进入容器
+### 0. Enter the Docker container for Docker versions first
 
 ```bash
 docker-compose exec app bash
 ```
 
-### 1. 登录插件所在 npm registry
+### 1. Log in to the npm registry where the plugin is located
 
-命令的方式，推荐以 npm registry 的方式添加、更新插件，例如 NocoBase 商业插件的 npm registry 是 https://pkg.nocobase.com/
+In command-line mode, it's recommended to add and update plugins via npm registry. For example, the npm registry for NocoBase commercial plugins is https://pkg.nocobase.com/
 
 ```bash
 npm login --registry=https://pkg.nocobase.com/
 ```
 
-### 2. 添加插件
+### 2. Add the Plugin
 
 ```bash
 yarn pm add @nocobase/plugin-data-source-external-mysql @nocobase/plugin-embed --registry=https://pkg.nocobase.com/
 ```
 
-更多用法参考 [`pm add`](#)
+For more usage, refer to [`pm add`](#)
 
-### 3. 激活插件
+### 3. Activate the Plugin
 
 ```bash
 yarn pm enable @nocobase/plugin-data-source-external-mysql @nocobase/plugin-embed
 ```
 
-### 4. 更新插件
+### 4. Update the Plugin
 
 :::warning
-如果你需要同时升级应用与插件，请参考 [NocoBase 升级概述](/welcome/getting-started/upgrading)，先将 NocoBase 升级到最新版之后，再执行 `pm update` 命令。
+If you need to upgrade both the application and the plugins simultaneously, please refer to the [NocoBase Upgrade Overview](/welcome/getting-started/upgrading), upgrade NocoBase to the latest version first, and then execute the `pm update` command.
 :::
 
 ```bash
 yarn pm update @nocobase/plugin-data-source-external-mysql @nocobase/plugin-embed --registry=https://pkg.nocobase.com/
 ```
 
-更多用法参考 [`pm update`](#)
+For more usage, refer to [`pm update`](#)
