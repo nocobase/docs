@@ -366,6 +366,6 @@ At this point, the application interface is no longer accessible, so we need to 
 3. Upgrade the application
     - For Docker version, simply restart the container
     - For source code or create-nocobase-app version
-        - Download dependencies `yarn install`
-        - Execute upgrade command `yarn noc
-        - Restart the application
+        1. Download dependencies `yarn install`
+        2. Execute upgrade command `yarn nocobase upgrade`
+        3. Restart the application
