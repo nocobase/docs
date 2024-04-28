@@ -1,11 +1,11 @@
 # v1.0：2024-04-28
 
-为了更好地服务用户，NocoBase 决定推出 1.0 版本，也标志着 NocoBase 即将迈入 1.x 阶段。0.x 阶段和 1.x 阶段有着显著的不同：
+## 新特性
+
+近期我们又推出了几个新插件，相关内容将后续单独发文介绍，本期内容主要针对 NocoBase 1.0 发布。v1.0 和 v0.21 并没有太多不同，更多的是过去所有成果的一次总结，也标志着 NocoBase 即将迈入 1.x 阶段。1.x 阶段 和 0.x 阶段有着显著的不同：
 
 - 0.x 阶段：核心 API 和功能推进的非常迅速，变动较大，每一次版本迭代都可能存在不兼容的变更；
 - 1.x 阶段：核心 API 逐步稳定，这个阶段我们会更注重于产品稳定性，也包括产品的安全性、性能等方面的优化。
-
-本次 NocoBase 1.0 发布，主要内容如下：
 
 ## 插件列表
 
@@ -57,10 +57,47 @@ NocoBase 作为插件化驱动的产品，官方目前支持的插件有
 
 ### 1. 升级应用
 
-参考 [NocoBase 升级概述](/welcome/getting-started/upgrading)，将 NocoBase 升级到最新版。如果你之前启用了 cas、odic、saml 插件，升级时会有以下提示：
+参考 [NocoBase 升级概述](/welcome/getting-started/upgrading)，将 NocoBase 升级到最新版。如果你之前启用了 CAS、OIDC、SAML 插件，升级时会有以下提示：
 
-你可以根据提示删除插件或者联系 NocoBase 团队获取插件 1.0 版本。
+命令行升级时终端提示：
 
-### 2. 独立插件的升级
+![20240428194753](https://static-docs.nocobase.com/20240428194753.png)
 
-参考文档 [独立插件的安装与升级](/welcome/getting-started/plugin)
+Docker 版界面提示：
+
+![20240428194926](https://static-docs.nocobase.com/20240428194926.png)
+
+### 2. 删除插件 or 获取插件 1.0 版本？
+
+#### 如果你选择删除插件后继续升级：
+
+根据提示删除插件
+
+```bash
+# 主应用
+yarn pm remove cas oidc saml --force
+# 如果是子应用，需要添加 --app 参数
+yarn pm remove cas oidc saml --force --app=sub-app1
+```
+
+继续升级
+
+```bash
+yarn nocobase upgrade
+```
+
+#### 如果你选择插件更新到 1.0 版本
+
+联系 NocoBase 团队获取插件 1.0 版本，并继续进行升级
+
+### CAS、OIDC、SAML 插件 升级流程
+
+此时，应用界面已经无法访问了，所以我们需要用手动的方式升级
+
+1. 使用账号登录 [service.nocobase.com](service.nocobase.com) 下载最新版插件
+2. 将插件解压到指定目录
+    - CAS 插件解压至` ./storage/plugins/@nocobase/auth-cas`
+    - OIDC 插件解压至 `./storage/plugins/@nocobase/auth-oidc`
+    - SAML 插件解压至 `./storage/plugins/@nocobase/auth-saml`
+3. 执行升级命令 `yarn nocobase upgrade`
+4. 重启应用
