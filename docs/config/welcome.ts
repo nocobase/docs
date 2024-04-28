@@ -23,6 +23,7 @@ export default [
           '/welcome/getting-started/installation/docker-compose',
           '/welcome/getting-started/installation/create-nocobase-app',
           '/welcome/getting-started/installation/git-clone',
+          // '/welcome/getting-started/installation/install-plugin',
         ],
       },
       {
@@ -46,6 +47,7 @@ export default [
         ],
       },
       '/welcome/getting-started/env',
+      '/welcome/getting-started/plugin',
     ],
   },
   {
@@ -62,6 +64,7 @@ export default [
         title: 'Release notes',
         'title.zh-CN': '更新日志',
         children: [
+          '/welcome/release/v1001-changelog',
           '/welcome/release/v0210-changelog',
           '/welcome/release/v0200-changelog',
           '/welcome/release/v0190-changelog',
