@@ -90,14 +90,18 @@ yarn nocobase upgrade
 
 联系 NocoBase 团队获取插件 1.0 版本，并继续进行升级
 
-### CAS、OIDC、SAML 插件 升级流程
+### 3. CAS、OIDC、SAML 插件升级流程
 
 此时，应用界面已经无法访问了，所以我们需要用手动的方式升级
 
 1. 使用账号登录 [service.nocobase.com](service.nocobase.com) 下载最新版插件
 2. 将插件解压到指定目录
-    - CAS 插件解压至` ./storage/plugins/@nocobase/auth-cas`
-    - OIDC 插件解压至 `./storage/plugins/@nocobase/auth-oidc`
-    - SAML 插件解压至 `./storage/plugins/@nocobase/auth-saml`
-3. 执行升级命令 `yarn nocobase upgrade`
-4. 重启应用
+    - CAS 插件解压至 `./storage/plugins/@nocobase/plugin-auth-cas`
+    - OIDC 插件解压至 `./storage/plugins/@nocobase/plugin-auth-oidc`
+    - SAML 插件解压至 `./storage/plugins/@nocobase/plugin-auth-saml`
+3. 升级应用
+    - docker 版本直接重启容器即可
+    - 源码或 create-nocobase-app 版本
+        - 1. 下载依赖 `yarn install`
+        - 2. 执行升级命令 `yarn nocobase upgrade`
+        - 2. 重启应用
