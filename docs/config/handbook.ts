@@ -763,6 +763,11 @@ export default [
               },
             ],
           },
+          {
+            title: 'Asscoation field component',
+            'title.zh-CN': '关系字段组件',
+            link: '/handbook/ui/fields/association-field',
+          },
         ],
       },
       {
