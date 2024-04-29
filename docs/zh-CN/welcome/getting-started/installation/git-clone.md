@@ -31,9 +31,9 @@ $ yarn config set sqlite3_binary_host_mirror https://npmmirror.com/mirrors/sqlit
 📢 由于网络环境、系统配置等因素影响，接下来这一步骤可能需要十几分钟时间。
 
 ```bash
-yarn install
+yarn install --frozen-lockfile
 # 生产环境部署时，为了减少体积，可以只安装必要的依赖
-yarn install --production
+yarn install --frozen-lockfile --production
 ```
 
 ## 4. 设置环境变量
@@ -70,7 +70,7 @@ yarn dev
 生产环境
 
 ```bash
-# 编译
+# 编译（请确保已执行 `yarn install --frozen-lockfile`，注意不带 `--production`）
 yarn build
 # 启动
 yarn start
