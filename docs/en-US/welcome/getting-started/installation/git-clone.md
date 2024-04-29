@@ -22,7 +22,9 @@ cd my-nocobase-app
 ## 3. Install dependencies
 
 ```bash
-yarn install
+yarn install --frozen-lockfile
+# If you are deploying in a production environment, you can install only the necessary dependencies to reduce the size
+yarn install --frozen-lockfile --production
 ```
 
 ## 4. Set environment variables
@@ -59,7 +61,7 @@ yarn dev
 Production
 
 ```bash
-# Compile
+# Build (make sure you have executed `yarn install --frozen-lockfile`, note that it does not include `--production`)
 yarn build
 # Start
 yarn start
