@@ -32,3 +32,5 @@
 
 - 弹窗尺寸：默认为中等尺寸
 - 颜色字段
+
+- [字段组件](/handbook/ui/fields/association-field)；

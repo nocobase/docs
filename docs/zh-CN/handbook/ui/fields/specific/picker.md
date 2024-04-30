@@ -39,3 +39,6 @@
 更多内容参考 [标题字段](/handbook/ui/fields/field-settings/title-field)
 
 - [弹窗尺寸](/handbook/ui/actions/action-settings/popup-size)
+
+- [字段组件](/handbook/ui/fields/association-field)；
+

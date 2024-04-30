@@ -14,3 +14,5 @@
 点击弹出弹窗可自定义配置区块进行数据管理。
 
 ![20240429223831](https://static-docs.nocobase.com/20240429223831.png)
+
+- [字段组件](/handbook/ui/fields/association-field)；

@@ -56,3 +56,5 @@
 ![20240422205632](https://static-docs.nocobase.com/20240422205632.gif)
 
 更多内容参考 [标题字段](/handbook/ui/fields/field-settings/title-field)
+
+- [字段组件](/handbook/ui/fields/association-field)；

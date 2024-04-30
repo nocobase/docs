@@ -34,3 +34,5 @@
 ![20240410160432](https://static-docs.nocobase.com/20240410160432.png)
 
 ![20240410160714](https://static-docs.nocobase.com/20240410160714.png)
+
+- [字段组件](/handbook/ui/fields/association-field)；
