@@ -691,6 +691,11 @@ export default [
                 link: '/handbook/ui/fields/specific/sub-table',
               },
               {
+                title: 'Title',
+                'title.zh-CN': '标题',
+                link: '/handbook/ui/fields/specific/title',
+              },
+              {
                 title: 'Tag',
                 'title.zh-CN': '标签',
                 link: '/handbook/ui/fields/specific/tag',
@@ -762,6 +767,11 @@ export default [
                 link: '/handbook/ui/fields/field-settings/edit-tooltip',
               },
             ],
+          },
+          {
+            title: 'Asscoation field component',
+            'title.zh-CN': '关系字段组件',
+            link: '/handbook/ui/fields/association-field',
           },
         ],
       },

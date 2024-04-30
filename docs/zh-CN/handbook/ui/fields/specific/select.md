@@ -2,7 +2,7 @@
 
 ## 介绍
 
-下拉选择器支持从目标表的已有数据选择数据关联或为目标表添加数据后关联。
+下拉选择器支持从目标表的已有数据选择数据关联或为目标表添加数据后关联，下拉选项支持模糊搜索。
 
 ![20240409230638](https://static-docs.nocobase.com/20240409230638.png)
 
@@ -56,3 +56,5 @@
 ![20240422205632](https://static-docs.nocobase.com/20240422205632.gif)
 
 更多内容参考 [标题字段](/handbook/ui/fields/field-settings/title-field)
+
+- [字段组件](/handbook/ui/fields/association-field)；
