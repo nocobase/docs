@@ -30,7 +30,6 @@
 
 ![20240410212643](https://static-docs.nocobase.com/20240410212643.png)
 
-- 弹窗尺寸：默认为中等尺寸
-- 颜色字段
 
-- [字段组件](/handbook/ui/fields/association-field)；
+更多内容参考 [字段组件](/handbook/ui/fields/association-field)；
+
