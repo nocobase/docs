@@ -48,30 +48,31 @@
 
 | PostgreSQL | NocoBase Field Type | NocoBase Field Interface |
 |  -------------------------------  |  ------------------------  |  ------------------------------------------------------------------------  |
-| BOOLEAN<br/>TINYINT(1) | boolean | checkbox <br/> switch |
-| TINYINT<br/>SMALLINT<br/>MEDIUMINT<br/>INTEGER | integer<br/>boolean<br/>sort | integer<br/>sort<br/>checkbox<br/>switch<br/>select<br/>radioGroup |
-| BIGINT | bigInt<br/>sort | integer<br/>sort<br/>checkbox<br/>switch<br/>select<br/>radioGroup<br/>unixTimestamp<br/>createdAt<br/>updatedAt |
-| FLOAT | float | number<br/>percent |
+| BOOLEAN | boolean | checkbox <br/> switch |
+| SMALLINT<br/>INTEGER<br/>SERIAL<br/>SMALLSERIAL | integer<br/>boolean<br/>sort | integer<br/>sort<br/>checkbox<br/>switch<br/>select<br/>radioGroup |
+| BIGINT<br/>BIGSERIAL | bigInt<br/>sort | integer<br/>sort<br/>checkbox<br/>switch<br/>select<br/>radioGroup<br/>unixTimestamp<br/>createdAt<br/>updatedAt |
+| REAL | float | number<br/>percent |
 | DOUBLE PRECISION | double | number<br/>percent |
-| DECIMAL | decimal | number<br/>percent<br/>currency |
+| DECIMAL<br/>NUMERIC | decimal | number<br/>percent<br/>currency |
 | VARCHAR<br/>CHAR | string<br/>password<br/>uuid<br/>nanoid | input<br/>email<br/>phone<br/>password<br/>color<br/>icon<br/>select<br/>radioGroup<br/>uuid<br/>nanoid |
-| TEXT<br/>TINYTEXT<br/>MEDIUMTEXT<br/>LONGTEXT | text<br/>json | textarea<br/>markdown<br/>vditor<br/>richText<br/>url<br/>json |
-| - | uuid | uuid |
-| JSON | json | json |
-| DATETIME<br/>TIMESTAMP | date | date<br/>time<br/>createdAt<br/>updatedAt |
+| TEXT | text<br/>json | textarea<br/>markdown<br/>vditor<br/>richText<br/>url<br/>json |
+| UUID | uuid | uuid |
+| JSON<br/>JSONB | json | json |
+| TIMESTAMP | date | date<br/>time<br/>createdAt<br/>updatedAt |
 | DATE | dateOnly | datetime |
 | TIME | time | time |
-| YEAR |  | datetime |
-|  | circle | json<br/>circle |
-| LINESTRING | lineString | Json<br/>lineString |
-| POINT | point | json<br/>point |
-| POLYGON | polygon | json<br/>polygon |
+| CIRCEL | circle | json<br/>circle |
+| PATH<br/>GEOMETRY(LINESTRING) | lineString | Json<br/>lineString |
+| POINT<br/>GEOMETRY(POINT) | point | json<br/>point |
+| POLYGON<br/>GEOMETRY(POLYGON) | polygon | json<br/>polygon |
 | GEOMETRY |  -  |  -  |
+| GEOGRAPHY | - | - |
 | BLOB | blob |  -  |
 | ENUM | enum | select<br/>radioGroup |
-|  -  | array | multipleSelect<br/>checkboxGroup |
+|  ARRAY  | array | multipleSelect<br/>checkboxGroup |
 | BIT | - | - |
 | SET | set | multipleSelect<br/>checkboxGroup |
+| RANGE | - | - |
 
 ### 不支持的字段类型
 
