@@ -7,9 +7,9 @@
 NocoBase provides a data source manager plugin for managing data sources and data tables. The data source manager plugin only provides a management interface for all data sources, and does not provide the ability to access data sources. It needs to be used in conjunction with various data source plugins. The currently supported data sources include:
 
 - [Main Database](/handbook/data-source-main): NocoBase's main database, which supports relational databases such as MySQL, PostgreSQL, SQLite, etc.
-- [External MySQL](/handbook/data-source-mysql): Uses an external MySQL database as a data source.
-- [External MariaDB](/handbook/data-source-mariadb): Uses an external MariaDB database as a data source.
-- [External PostgreSQL](/handbook/data-source-postgres): Uses an external PostgreSQL database as a data source.
+- [External MySQL](/handbook/data-source-external-mysql): Uses an external MySQL database as a data source.
+- [External MariaDB](/handbook/data-source-external-mariadb): Uses an external MariaDB database as a data source.
+- [External PostgreSQL](/handbook/data-source-external-postgres): Uses an external PostgreSQL database as a data source.
 
 In addition, more types can be expanded through plugins, which can be common databases or platforms providing an API (SDK).
 
