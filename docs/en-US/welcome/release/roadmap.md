@@ -15,7 +15,7 @@ We are developing or have already planned the following new features and plugins
 - Fix table block columns
 - Support for linked refresh between blocks
 - Add Charts/Gantt/Calendar blocks in pop-ups
-- Use sequence fields as primary keys
+- Refactor the Import and Export plugin to handle more data at a time
   
 ## Plugins:
 
