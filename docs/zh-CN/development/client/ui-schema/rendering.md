@@ -48,7 +48,7 @@ scope 指的是 schema 内可用的变量或函数。例如以下例子的函数
 
 ## 注册 components 和 scopes
 
-SchemaComponentProvider、SchemaComponentOptions 和 SchemaComponent 的可以注册 components 和 scopes。区别在于：
+SchemaComponentProvider、SchemaComponentOptions 和 SchemaComponent 都可以注册 components 和 scopes。区别在于：
 
 - SchemaComponentProvider 提供最顶层的上下文
 - SchemaComponentOptions 用于局部上下文的替换和扩展

@@ -6,9 +6,9 @@ Kanban （看板）是一种敏捷项目管理工具，旨在实现工作可视�
 
 ### 配置看板区块
 
-![](./static/GrhobxsDJoB72Bx0kCAcXPp8nwe.png)
+![](https://static-docs.nocobase.com/8771d39e07c157d60d3b839c6bf45f8d.png)
 
-![](./static/JupDbsBBSowHoqx5fIhcWVn5nTg.png)
+![](https://static-docs.nocobase.com/b1bdffc5ebd9c5b6342383d7d92260d1.png)
 
 ### 分组字段
 
@@ -25,4 +25,4 @@ Kanban （看板）是一种敏捷项目管理工具，旨在实现工作可视�
 
 如图示例配置库存管理看板
 
-![](./static/ER09beUFAoC59JxXPprctLmbnwE.gif)
+![](https://static-docs.nocobase.com/c6954acf2033d56c49e4a076284052b2.gif)

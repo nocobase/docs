@@ -4,7 +4,7 @@
 
 ## 区块里的操作
 
-![](./static/DKwnbW8MfohvHjxplG4cVkcnn8d.png)
+![](https://static-docs.nocobase.com/3e69f1f2991842ecad640705bc9feda4.png)
 
 ## 操作的设计器（工具栏）
 
@@ -13,7 +13,7 @@
 - 拖拽
 - 参数配置
 
-![](./static/XbxybS8u3od6TfxiQDYcTMq4n7g.png)
+![](https://static-docs.nocobase.com/007422d42678c54f79668dfafe69b60e.png)
 
 ## 操作的拖拽排序
 
@@ -30,16 +30,16 @@
 - 弹窗尺寸：大、中、小
 - 删除
 
-![](./static/C8RzbI7v5opcUNx7OWzcz1l6nxc.png)
+![](https://static-docs.nocobase.com/e99916932f6c4d58bcad4d892b5daf15.png)
 
 ## 操作的联动规则
 
 有上下文数据的操作，还可以配置「联动规则」
 
-![](./static/JzDSbax1BoXxy2xrD6CcYuEKnRp.png)
+![](https://static-docs.nocobase.com/c431434a285278ea00bedf9e4dac4d45.png)
 
 联动规则配置
 
-![](./static/U9AwbR4ehodjDyxFgdFcjZssn1e.png)
+![](https://static-docs.nocobase.com/149c049bb0c0ce931c6c0333e12b0610.png)
 
 可以添加多条，条件与筛选用法一致，可以控制按钮的显示、隐藏、启用、禁用

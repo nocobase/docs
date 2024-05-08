@@ -1,52 +1,51 @@
-# 菜单
+# Menu
 
-菜单用来组织页面和外部链接。在 NocoBase 默认的页面布局模板中，菜单位于顶部和左侧。其中，顶部为一级菜单，左侧为二级和无限层级的子菜单。
+Menus are used to organize pages and external links. In the default page layout template of NocoBase, the menu is located at the top and on the left side. Among them, the top is the primary menu, and the left side is for secondary and infinitely nested sub-menus.
 
-## 菜单项类型
+## Types of Menu Items
 
-NocoBase 内置三种菜项类型：
+NocoBase has three built-in types of menu items:
 
-- 分组
-- 页面
-- 链接
+- Group
+- Page
+- Link
 
-![](./static/OpdHbIbJ8oZX75x777ycylHxn1Q.png)
+![](https://static-docs.nocobase.com/ccf6f42d3cc2677d440f9e33b9488d1c.png)
 
-### 分组
+### Group
 
-“分组”用来对菜单项进行分组，它可以位于顶部或左侧。在一个分组内，可以继续建立分组，即菜单可以无限层级。
+"Group" is used to group menu items, which can be located at the top or on the left side. Within a group, you can continue to create sub-groups, meaning the menu can have an infinite hierarchy.
 
-![](./static/LTdGbCxxHopt9ix1Nuncj73VnQb.png)
+![](https://static-docs.nocobase.com/e59b2088fd68666cd240a26566616a3e.png)
 
+### Page
 
-### 页面
+A page can serve as a container for blocks, housing a variety of blocks. (See [Pages](./pages/index.md))
 
-页面可以作为区块的容器，放置各种各样的区块。（详见  [页面和弹窗](./pages/index.md)  ）
+![](https://static-docs.nocobase.com/4cd259f6b79f6792df72ccc291da2af9.png)
 
-![](./static/SYzbbocHfoNFtsxomWJcUno7nog.png)
+### Link
 
-### 链接
+Links can redirect to third-party URLs.
 
-可以跳转到第三方 URL
+![](https://static-docs.nocobase.com/80a6e6a875c565425224d9325332a1ad.png)
 
-![](./static/T0LTbjTBEo24UaxU9Btc6xgbnMf.png)
+## Configuring the Menu
 
-## 配置菜单
+After entering the interface configuration mode, there are two icons in the upper right corner of the menu item:
 
-进入界面配置模式后，在菜单项的右上角有两个图标，分别是：
+- Drag to move
+- Menu item configuration
 
-- 拖拽移动
-- 菜单项配置
+![](https://static-docs.nocobase.com/963ba10e36d04fd258fea0e996231f68.png)
 
-![](./static/Jp3NbdeVBojspWxvcWhcuDTlnOe.png)
+### Menu Item Configuration
 
-### 菜单项配置
+![](https://static-docs.nocobase.com/0a9a05bd88d8bad9d711102a730f351d.png)
 
-![](./static/ZLYibDXwToMdqRxMTy4cyTion1f.png)
-
-- 编辑：包括菜单项的标题、图标等
-- 移动到：除了拖拽移动以外，也可以通过「移动到」快速的移动菜单项，可以将菜单项移动到其他菜单项的前面、后面、内部
-- 在前面插入
-- 在后面插入
-- 在里面插入（仅限于分组类型）
-- 删除
+- Edit: Includes the menu item's title, icon, etc.
+- Move to: In addition to dragging to move, you can also quickly move a menu item via "Move to", allowing you to move a menu item to the front, back, or inside of another menu item.
+- Insert before
+- Insert after
+- Insert inner (Only for group types)
+- Delete

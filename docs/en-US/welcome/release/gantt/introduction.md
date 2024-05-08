@@ -2,20 +2,20 @@
 
 ## Create gantt block
 
-![](./static/VM3qbBhLeoEcKwxwAZkcRHBynOd.png)
+![](https://static-docs.nocobase.com/c87178922308143656bc444c57bac45d.png)
 
 ## Gantt block (No data)
 
-![](./static/UxT7b8mVCo1isIxrsjtcZ8hpnlf.png)
+![](https://static-docs.nocobase.com/1b439225f12b7a09aaab9d3a6dc11215.png)
 
 ## Block settings
 
-![](./static/YJZZb0aO3oG9n6x4aZwcAB07nng.png)
+![](https://static-docs.nocobase.com/e3b1950ca356fd58b4e1b644067337e4.png)
 
 ## General tasks
 
-![](./static/VGTZbOs38obgyqxm5YfcGS1Vnhb.png)
+![](https://static-docs.nocobase.com/4bb22d6c98dc5f4e0a27aecd67a0e586.png)
 
 ## Tree tasks
 
-![](./static/V9w1b43YsoIRYpxtFdscpf2MnQf.png)
+![](https://static-docs.nocobase.com/672625d0238dbd685f3e1c1ef810024f.png)

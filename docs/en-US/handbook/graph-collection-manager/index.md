@@ -1,12 +1,17 @@
-# 可视化数据表管理
+# Graph Collection Manager
 
-:::warning
-文档待补充
-:::
+<PluginInfo name="graph-collection-manager"></PluginInfo>
 
-<!--
-## 介绍
+## Introduction
 
-## 安装
+This is a tool similar to ER diagrams, which currently only supports the main database.
 
-## 使用说明 -->
+## Installation
+
+This preset plugin needs to be activated before it can be used.
+
+![20240322221627](https://static-docs.nocobase.com/20240322221627.png)
+
+## User Manual
+
+![20240410075906](https://static-docs.nocobase.com/20240410075906.png)

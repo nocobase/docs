@@ -1,24 +1,28 @@
-# 数据源管理
+# Data Source Manager
 
-:::info
-This feature is powered by plugin-data-source-manager. 
-:::
+<PluginInfo name="data-source-manager"></PluginInfo>
 
-## 介绍
+## Introduction
 
-NocoBase 提供了数据源管理插件，用于管理数据源的数据表，数据源管理插件只是提供所有数据源的管理界面，并不提供接入数据源的能力，需要和适配的各种数据源插件搭配使用，目前支持接入的数据源包括：
+NocoBase provides a data source manager plugin for managing data sources and data tables. The data source manager plugin only provides a management interface for all data sources, and does not provide the ability to access data sources. It needs to be used in conjunction with various data source plugins. The currently supported data sources include:
 
-- Main 数据库：NocoBase 主数据库，支持 MySQL、PostgreSQL、SQLite 等关系型数据库。
-- External MySQL：使用外部的 MySQL 数据库作为数据源。
-- External MariaDB：使用外部的 MariaDB 数据库作为数据源。
-- External PostgreSQL：使用外部的 PostgreSQL 数据库作为数据源。
+- [Main Database](/handbook/data-source-main): NocoBase's main database, which supports relational databases such as MySQL, PostgreSQL, SQLite, etc.
+- [External MySQL](/handbook/data-source-external-mysql): Uses an external MySQL database as a data source.
+- [External MariaDB](/handbook/data-source-external-mariadb): Uses an external MariaDB database as a data source.
+- [External PostgreSQL](/handbook/data-source-external-postgres): Uses an external PostgreSQL database as a data source.
 
-除此之外，也可以扩展，可以是常见的各类数据库，也可以是提供 API（SDK）的平台。
+In addition, more types can be expanded through plugins, which can be common databases or platforms providing an API (SDK).
 
-## 安装
+## Installation
 
-内置插件无需安装。
+This is a built-in plugin and does not need to be installed separately.
 
-## 使用手册
+## User Manual
 
-![Alt text](./image-7.png)
+When the application is initialized and installed, a data source for storing NocoBase data is provided by default, referred to as the main database.
+
+![20240322220423](https://static-docs.nocobase.com/20240322220423.png)
+
+If external data source plugins are installed, you can also connect to external data sources via Add new.
+
+![20240322221124](https://static-docs.nocobase.com/20240322221124.png)

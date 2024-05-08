@@ -51,21 +51,21 @@ m:1 只是通常的用法，但实际上普通数据表与表达式表的关系�
 
 1. 创建工作流，订单创建时触发：
 
-![](./static/YLhxb1qGxoniCgxB13IcrDiZntf.png)
+![](https://static-docs.nocobase.com/fda005ee028675b7ac5f11784b5fc437.png)
 
 1. 创建一个运算节点，配置动态表达式为触发数据/商品/优惠规则：
 
-![](./static/OLLTb4M2vocObkxd3bkcxZkLnqh.png)
+![](https://static-docs.nocobase.com/67de28dcda9fc0f662933ea0a6d272d6.png)
 
 配置变量数据源为触发数据中的商品：
 
-![](./static/OTDBbV7ygocjFLxQyt0czIorn5c.png)
+![](https://static-docs.nocobase.com/c58eeb07213d7fe6bb6c19b84b187e23.png)
 
 1. 增加一个更新数据节点，配置更新订单总价为计算节点的结果：
-   ![](./static/A6xibwy6ZoyskKxGmdQc7jOcnRe.png)
+   ![](https://static-docs.nocobase.com/a1200868b89997ed3caa8332b1ebca4f.png)
 2. 创建订单触发工作流，再查看订单列表，核对价格：
 
-![](./static/V6sCbY59GoZ6g5xlAaJcutx5nUb.png)
+![](https://static-docs.nocobase.com/6e62f43a46f7959d487c4d581a3af3ce.png)
 
 | 订单商品      | 订单商品 / 原价 | 优惠规则 | 总价                 |
 | ------------- | --------------- | -------- | -------------------- |

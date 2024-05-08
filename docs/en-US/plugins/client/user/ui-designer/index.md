@@ -2,7 +2,7 @@
 
 当激活界面配置按钮，进入 UI 配置状态
 
-![](./static/X8u0b5QJFomar7xbFTKceqIPngb.jpg)
+![](https://static-docs.nocobase.com/0619e0aa0b24b81b8c08d7c572d3e0ba.jpg)
 
 界面设计器的组成部分
 

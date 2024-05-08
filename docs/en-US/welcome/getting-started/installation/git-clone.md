@@ -22,7 +22,9 @@ cd my-nocobase-app
 ## 3. Install dependencies
 
 ```bash
-yarn install
+yarn install --frozen-lockfile
+# If you are deploying in a production environment, you can install only the necessary dependencies to reduce the size
+yarn install --frozen-lockfile --production
 ```
 
 ## 4. Set environment variables
@@ -37,9 +39,9 @@ DB_STORAGE=storage/db/nocobase.sqlite
 ```
 
 :::warning
-- `APP_KEY` is the key of the app, it is used to generate the user token (if APP_KEY is changed, the old token will be invalidated), create-nocobase-app will generate a random key when it creates the app, please make sure that it is not leaked to the public.
-- `DB_*` is database related, if it is not the default database service in the example, please modify it according to the actual situation.
-- When using MySQL (or MariaDB), you need to configure the DB_TIMEZONE environment variable, such as `DB_TIMEZONE=+08:00`.
+- `APP_KEY` is the application's secret key, used for generating user tokens and so on (if APP_KEY is changed, the old tokens will also become invalid). It can be any random string. Please change it to your own secret key and ensure it is not disclosed to the public.
+- `DB_*` is related to the database. If it is not the default database service in the example, please modify it according to the actual situation.
+- When using MySQL (or MariaDB), you need to configure the DB_TIMEZONE environment variable, such as `DB_TIMEZONE=+08:00`
 :::
 
 ## 5. Install NocoBase
@@ -59,7 +61,7 @@ yarn dev
 Production
 
 ```bash
-# Compile
+# Build (make sure you have executed `yarn install --frozen-lockfile`, note that it does not include `--production`)
 yarn build
 # Start
 yarn start

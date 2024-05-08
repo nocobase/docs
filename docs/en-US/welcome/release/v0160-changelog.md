@@ -1,14 +1,13 @@
 # v0.16：2023-11-20
 
-## 新特性
+## New Features
 
-之前版本的 cache 可用性较差（仅支持 memory 缓存），v0.16 版本进行了重构，内置了 memory 和 redis 两种 store（缓存存储方式），也支持自定义存储方式，具体的使用方法请参考 [API 文档](https://docs-cn.nocobase.com/api/cache/cache-manager)。
+The previous version of cache has poor usability (only support memory cache), v0.16 has been refactored, built-in memory and redis store, it also supports custom store. please refer to the [API documentation](https://docs.nocobase.com/api/cache/cache-manager) for the details of how to use.
 
-## 不兼容的变化
+## Breaking Changes
 
-### Node 最低版本更改为 18
-
-Node v16 已经停止维护了，最低版本更改为 v18
+### Node minimum version changed to 18
+Node v16 is no longer maintained, the minimum version has been changed to v18.
 
 ```json
 {
@@ -18,49 +17,47 @@ Node v16 已经停止维护了，最低版本更改为 v18
 }
 ```
 
-### 创建缓存方法变更
+### Cache creation method update
 
-以前创建缓存通过 `createCache` 方法创建，该方法已废弃。
+Deprecated: Use `createCache` for cache creation.
 
 ```ts
-import { createCache } from '@nocobase/cache';
+import { createCache } from "@nocobase/cache";
 
 const cache = createCache();
 ```
 
-新的缓存由 `CacheManager` 统一管理，通过 `app.cacheManager` 创建。
+Cache now managed by `CacheManager` and created with `app.cacheManager`.
 
 ```ts
 const cache = await app.cacheManager.createCache({
-  name: 'memory', // 缓存唯一标识
-  store: 'memory', // 缓存方式
-  // 其他缓存配置
+  name: "memory", // unique name of cache
+  store: "memory", // unique name of cache method
+  // other config
   max: 2000,
   ttl: 60 * 1000,
 });
 ```
 
-### 环境变量变更
+### Environment variables update
 
-以前的缓存环境变量配置需要配置一个 JSON 字符串作为配置参数。
+Previous environment variables of cache required a JSON string for configuring.
 
 ```bash
 CACHE_CONFIG={"storePackage":"cache-manager-fs-hash","ttl":86400,"max":1000}
 ```
 
-新的环境变量：
+New environment variables for configuring cache:
 
 ```bash
-# 默认缓存方式，值为缓存方式的唯一标识
+# Unique name of default cache method, memory or redis
 CACHE_DEFAULT_STORE=memory
-# 内存缓存项目最大数量
+# Max number of items in memory cache
 CACHE_MEMORY_MAX=2000
-# Redis，可选
+# Redis，optional
 CACHE_REDIS_URL=redis://localhost:6379
 ```
-
-## 完整更新记录
-
+## Full changelog
 - refactor(cache): improve cache [`#3004`](https://github.com/nocobase/nocobase/pull/3004)
 - fix: local storage base url [`#3063`](https://github.com/nocobase/nocobase/pull/3063)
 - feat: show table definition [`#3061`](https://github.com/nocobase/nocobase/pull/3061)

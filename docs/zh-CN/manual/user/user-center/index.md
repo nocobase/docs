@@ -12,4 +12,4 @@
 - Clear cache: 清除缓存，由用户认证插件实现提供（有权限控制）
 - Restart application：重启应用，由用户认证插件实现提供（有权限控制）
 
-![](./static/FNtmbksNrorQ4xxbXEMcRHx7ndb.png)
+![](https://static-docs.nocobase.com/9db96c7432f9c1cfbc0429589f58674f.png)

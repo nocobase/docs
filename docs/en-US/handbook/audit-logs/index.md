@@ -1,12 +1,6 @@
-# 审计日志
+# Audit Log
 
 :::warning
-文档待补充
+Documentation to be added
 :::
 
-<!--
-## 介绍
-
-## 安装
-
-## 使用说明 -->

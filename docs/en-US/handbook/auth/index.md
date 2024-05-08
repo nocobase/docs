@@ -1,21 +1,19 @@
-# 用户认证
+# User Authentication
 
-## 介绍
+## Introduction
 
-NocoBase 的用户认证模块主要由两部分组成：
+The user authentication module of NocoBase mainly consists of two parts:
 
-- 内核中的 `@nocobase/auth` 定义登录、注册、校验等用户认证相关的可扩展接口和中间件，同时用于注册和管理各种扩展认证方式
-- 插件中的 `@nocobase/plugin-auth` 用于初始化内核中的认证管理模块，同时提供基础的用户名（或邮箱）/密码认证方式。
+- The `@nocobase/auth` in the kernel defines login, registration, verification and other user authentication related expandable interfaces and middleware, and is also used for registering and managing various extended authentication methods.
+- The `@nocobase/plugin-auth` in the plugin is used to initialize the authentication management module in the kernel, and also provides basic username (or email) / password authentication method.
 
-> 需要同时配合 [`@nocobase/plugin-users` 插件](../users/index.md) 提供的用户管理功能
+> It needs to be used in conjunction with the user management function provided by the [`@nocobase/plugin-users` plugin](../users/index.md)
 
-除此之外，Nocobase还提供了其他多种用户认证方式插件
+In addition, NocoBase also provides other various user authentication method plugins
 
-- [@nocobase/plugin-auth-sms](../auth-sms/index.md) - 提供短信验证登录功能
-- [@nocobase/plugin-auth-saml](../auth-saml/index.md) - 提供SAML SSO登录功能
-- [@nocobase/plugin-auth-oidc](../auth-oidc/index.md) - 提供OIDC SSO登录功能
-- [@nocobase/plugin-auth-cas](../auth-cas/index.md) - 提供CAS SSO登录功能
+- [@nocobase/plugin-auth-sms](../auth-sms/index.md) - Provides SMS verification login function
+- [@nocobase/plugin-auth-saml](../auth-saml/index.md) - Provides SAML SSO login function
+- [@nocobase/plugin-auth-oidc](../auth-oidc/index.md) - Provides OIDC SSO login function
+- [@nocobase/plugin-auth-cas](../auth-cas/index.md) - Provides CAS SSO login function
 
-通过以上插件，管理员配置好相应的认证方式以后，用户可以直接使用 Google Workspace, Microsoft Azure 等平台提供的用户身份登录系统，也可以对 接Auth0, Logto, Keycloak 等平台工具。除此之外，开发者也可以通过我们提供的基础接口很方便地扩展自己所需要的其他认证方式。
-
-## 安装
+Through the above plugins, after the administrator configures the corresponding authentication method, users can directly use the user identity provided by platforms such as Google Workspace, Microsoft Azure to log in to the system, and can also connect to Auth0, Logto, Keycloak and other platform tools. In addition, developers can also conveniently expand other authentication methods they need through the basic interfaces we provide.

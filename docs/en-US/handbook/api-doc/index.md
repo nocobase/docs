@@ -1,33 +1,39 @@
-# API 文档
+# API Documentation
 
-## 介绍
+<PluginInfo name="api-doc"></PluginInfo>
 
-## 安装
+## Introduction
 
-## 使用说明
+The plugin generates NocoBase HTTP API documentation based on Swagger.
 
-### 访问 API 文档页面
+## Installation
+
+This is a built-in plugin, no installation required. Activate to use.
+
+## Usage Instructions
+
+### Accessing the API Documentation Page
 
 http://localhost:13000/admin/settings/api-doc/documentation
 
-![](./static/NFhXbRvfgoP08QxpAwdclb17nfc.png)
+![](https://static-docs.nocobase.com/8db51cf50e3c666aba5a850a0fb664a0.png)
 
-### 文档概览
+### Documentation Overview
 
-![](./static/HYjubXpVOokLitxuC90cxSzHnJb.png)
+![](https://static-docs.nocobase.com/5bb4d3e5bba6c6fdfcd830592e72385b.png)
 
-- 总 API 文档：`/api/swagger:get`
-- 内核 API 文档：`/api/swagger:get?ns=core`
-- 所有插件 API 文档：`/api/swagger:get?ns=plugins`
-- 每个插件的文档：`/api/swagger:get?ns=plugins/{name}`
-- 用户自定义 collections 的 API 文档：`/api/swagger:get?ns=collections`
-- 指定 `${collection}` 及相关 `${collection}.${association}` 资源：`/api/swagger:get?ns=collections/{name}`
+- Total API Documentation: `/api/swagger:get`
+- Core API Documentation: `/api/swagger:get?ns=core`
+- All Plugins API Documentation: `/api/swagger:get?ns=plugins`
+- Each Plugin's Documentation: `/api/swagger:get?ns=plugins/{name}`
+- User Customized Collections API Documentation: `/api/swagger:get?ns=collections`
+- Specified `${collection}` and related `${collection}.${association}` resources: `/api/swagger:get?ns=collections/{name}`
 
-## 开发指南
+## Developer Guide
 
-### 如何为插件编写 swagger 文档
+### How to Write Swagger Documentation for Plugins
 
-在插件 `src` 文件夹里添加 `swagger/index.ts` 文件，内容如下：
+Add a `swagger/index.ts` file in the plugin's `src` folder with the following content:
 
 ```typescript
 export default {
@@ -42,4 +48,4 @@ export default {
 };
 ```
 
-详细编写规则请参考 [Swagger 官方文档](https://swagger.io/docs/specification/about/)
+For detailed writing rules, please refer to the [Swagger Official Documentation](https://swagger.io/docs/specification/about/).

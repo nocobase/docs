@@ -2,46 +2,104 @@
 
 ## Overview
 
-Plugins in NocoBase are in the form of `Class`. Custom plugins need to inherit the `Plugin` class.
+`Plugin` is the plugin class for the NocoBase server, providing configuration properties and lifecycle methods related to server-side plugins.
 
-```typescript
+### Basic Usage
+
+```ts
 import { Plugin } from '@nocobase/server';
 
-class MyPlugin extends Plugin {
-  // ...
-}
+export class PluginDemoServer extends Plugin {}
 
-app.plugin(MyPlugin, { name: 'my-plugin' });
+export default PluginDemoServer;
 ```
 
-## Plugin Lifecycle
+## Instance Properties
 
-Each plugin contains lifecycle methods, you can override these methods in order to execute them at certain stages during runtime. Lifecycle methods will be called by `Application` at certain stages, refer to [`Application` LifeCycle](./application.md).
+### `options`
 
-### `beforeLoad()`
+Configuration options for the plugin.
 
-To implement the logic before plugin is loaded, such as event or class registration. The core interface can be accessed here, while other plugins are not available.
+### `name`
 
-### `load()`
+`string` - The name of the plugin.
 
-To implement the logic to load plugin, configurations and so on. Other plugin instances can be called in `load`, but not in `beforeLoad`.
+### `enabled`
 
-### `install()`
+`boolean` - Whether the plugin is enabled.
 
-To implement the logic to install plugin, such as data initialization.
+### `installed`
+
+`boolean` - Whether the plugin is installed.
+
+### `log`
+
+System log instance, with the default `module` set to the plugin name. Refer to [Logger](../logger.md).
+
+### `app`
+
+The `Application` instance of the current application. Refer to [Application](./application.md).
+
+### `pm`
+
+The `PluginManager` instance of the current application. Refer to [PluginManager](./plugin-manager.md).
+
+### `db`
+
+The `DataBase` instance of the current application. Refer to [DataBase](../database/index.md).
+
+## Lifecycle Methods
 
 ### `afterAdd()`
 
-To implement the logic after the add/addStatic of plugin.
+Executed after the plugin is added, i.e., after [`pm.add()`](./plugin-manager.md#add).
+
+### `beforeLoad()`
+
+Executed during [`pm.load()`](./plugin-manager.md#load). Used to register events, initialize classes, or perform other preprocessing logic before plugin loading. At this stage, the core API can be accessed, but not other plugin APIs.
+
+### `load()`
+
+Loads the plugin and its related configurations. Executed during [`pm.load()`](./plugin-manager.md#load), after all [`beforeLoad()`](#beforeload) methods of plugins have finished execution. At this stage, other plugin APIs can be accessed.
+
+### `install()`
+
+Installation logic of the plugin, executed during application installation, upgrade, or when the plugin is first enabled. Typically used to perform tasks such as inserting preset data into tables.
+
+### `beforeEnable()`
+
+Executed before the plugin is enabled.
 
 ### `afterEnable()`
 
-To implement the logic after plugin is enabled.
+Executed after the plugin is enabled.
+
+### `beforeDisable()`
+
+Executed before the plugin is disabled.
 
 ### `afterDisable()`
 
-To implement the logic after plugin is disabled.
+Executed after the plugin is disabled.
 
-### `remove()`
+### `beforeRemove()`
 
-To implement the logic to remove plugin.
+Executed before the plugin is removed.
+
+### `afterRemove()`
+
+Executed after the plugin is removed.
+
+## Other Methods
+
+### `t()`
+
+Internationalization method.
+
+### `createLogger()`
+
+Creates a logger. Refer to [Logger](../logger.md).
+
+### `toJSON()`
+
+A method for internal use. Outputs plugin-related configuration information.

@@ -6,7 +6,7 @@ This release enables plug-and-play plugins in production environments. You can n
 
 ### New plugin manager interface
 
-<img src="https://demo-cn.nocobase.com/storage/uploads/6de7c906518b6c6643570292523b06c8.png"/>
+![20240429074459](https://static-docs.nocobase.com/20240429074459.png)
 
 ### Uploaded plugins are located in the storage/plugins directory.
 
@@ -27,7 +27,7 @@ The storage/plugins directory is used to upload plugins, and is organized as npm
 
 Currently, only plugins under storage/plugins can be updated, as shown here:
 
-<img src="https://demo-cn.nocobase.com/storage/uploads/703809b8cd74cc95e1ab2ab766980817.gif" />
+![20240429074511](https://static-docs.nocobase.com/20240429074511.png)
 
 Note: In order to facilitate maintenance and upgrading, and to avoid unavailability of the storage plugins due to upgrading, you can put the new plugin directly into storage/plugins and then perform the upgrade operation.
 

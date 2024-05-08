@@ -50,3 +50,11 @@ async setValueInObject(key: string, objectKey: string, value: unknown)
 ```ts
 async getValueInObject(key: string, objectKey: string)
 ```
+
+### `delValueInObject()`
+
+当缓存内容是对象时，删除某个key.
+
+```ts
+async delValueInObject(key: string, objectKey: string)
+```

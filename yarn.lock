@@ -1779,10 +1779,10 @@
   dependencies:
     eslint-scope "5.1.1"
 
-"@nocobase/client@^0.20.0-alpha.7":
-  version "0.20.0-alpha.7"
-  resolved "https://registry.yarnpkg.com/@nocobase/client/-/client-0.20.0-alpha.7.tgz#ab27d93ab84e867910a4d13bdd1b26a085062e08"
-  integrity sha512-e/E0aZThuQtQ8QTcVwshDQTEw+qKsMuNnIlz8IyuFqfeGF6B49posB5Kio+eqigVxXsPS7xQl9SrqYda+NGaLg==
+"@nocobase/client@^1.0.0-alpha.6":
+  version "1.0.0-alpha.6"
+  resolved "https://registry.yarnpkg.com/@nocobase/client/-/client-1.0.0-alpha.6.tgz#5e54953041ea0a2a94788356d3193968f46cbcd0"
+  integrity sha512-VkyhKo7Cbb8tujdBVK8b2YGNnJM4hS0YH8FQPkSRP9+jE3jUFYYUY3Sx4S+sutDffkxPwNE+3gfDy0a45h5M0Q==
   dependencies:
     "@ahooksjs/use-url-state" "3.5.1"
     "@ant-design/cssinjs" "^1.11.1"
@@ -1804,13 +1804,14 @@
     "@formily/reactive-react" "^2.2.27"
     "@formily/shared" "^2.2.27"
     "@formily/validator" "^2.2.27"
-    "@nocobase/evaluators" "0.20.0-alpha.7"
-    "@nocobase/sdk" "0.20.0-alpha.7"
-    "@nocobase/utils" "0.20.0-alpha.7"
+    "@nocobase/evaluators" "1.0.0-alpha.6"
+    "@nocobase/sdk" "1.0.0-alpha.6"
+    "@nocobase/utils" "1.0.0-alpha.6"
     ahooks "^3.7.2"
     antd "^5.12.8"
     antd-style "3.4.5"
     axios "^0.26.1"
+    bignumber.js "^9.1.2"
     classnames "^2.3.1"
     cronstrue "^2.11.0"
     file-saver "^2.0.5"
@@ -1830,6 +1831,7 @@
     react-i18next "^11.15.1"
     react-iframe "~1.8.5"
     react-image-lightbox "^5.1.4"
+    react-intersection-observer "9.8.1"
     react-js-cron "^3.1.0"
     react-quill "^2.0.0"
     react-router-dom "^6.11.2"
@@ -1837,27 +1839,27 @@
     sanitize-html "2.10.0"
     use-deep-compare-effect "^1.8.1"
 
-"@nocobase/evaluators@0.20.0-alpha.7":
-  version "0.20.0-alpha.7"
-  resolved "https://registry.yarnpkg.com/@nocobase/evaluators/-/evaluators-0.20.0-alpha.7.tgz#13569a41d03e128e0169a09f499d9a4e426976a3"
-  integrity sha512-2oy71aDGi/B741lpQXj9n9odTKfIOusAByfvA0E6STPbjRoIvBJWMEtDtiBsoqoVahq/bDYFHmWz536W3EQJGw==
+"@nocobase/evaluators@1.0.0-alpha.6":
+  version "1.0.0-alpha.6"
+  resolved "https://registry.yarnpkg.com/@nocobase/evaluators/-/evaluators-1.0.0-alpha.6.tgz#70d18ef9be164812b274fd6d5915c9a0a8bd5bf8"
+  integrity sha512-0uo+Uh3zlUFqAM/KLDrpObI8wK5xn8l3DRAm7C9c01UibAqNkPC95oToAUwuQ92CIwUoZEBszq21SIKKl5/bBA==
   dependencies:
     "@formulajs/formulajs" "4.2.0"
-    "@nocobase/utils" "0.20.0-alpha.7"
+    "@nocobase/utils" "1.0.0-alpha.6"
     mathjs "^10.6.0"
 
-"@nocobase/sdk@0.20.0-alpha.7":
-  version "0.20.0-alpha.7"
-  resolved "https://registry.yarnpkg.com/@nocobase/sdk/-/sdk-0.20.0-alpha.7.tgz#44fb9677388fa08708511d4448351a974765ca40"
-  integrity sha512-eRvz9XS78G3/ssYC9tBScwHo/sQdoyHLUqr6xCPVd7dsrknTKBKURFVqCwOrnDCXwU4uFhYVJzvTw5CDTc9sJg==
+"@nocobase/sdk@1.0.0-alpha.6":
+  version "1.0.0-alpha.6"
+  resolved "https://registry.yarnpkg.com/@nocobase/sdk/-/sdk-1.0.0-alpha.6.tgz#397bd6b659a88a3220eb9b65cf08f5626201cfa4"
+  integrity sha512-D5leg2Um9qEeD2J/EH2REcB8FAHN1X3PFyau360iD1M1QEoYqfPZD3u7o2corzvzH79hHQWwvwL4Kyt7mL6r/Q==
   dependencies:
     axios "^0.26.1"
     qs "^6.10.1"
 
-"@nocobase/utils@0.20.0-alpha.7":
-  version "0.20.0-alpha.7"
-  resolved "https://registry.yarnpkg.com/@nocobase/utils/-/utils-0.20.0-alpha.7.tgz#54916bc22ff1fe3b7b9a6b521937949f41a77396"
-  integrity sha512-p93nPxXFLVP1/1G5ScM0I3jEm0nU16Mzfmx2rDXDmuiQnRsjF+NuKGODG0cCe6SPGa1Jd1IeNVHBwzZ0RoR0jA==
+"@nocobase/utils@1.0.0-alpha.6":
+  version "1.0.0-alpha.6"
+  resolved "https://registry.yarnpkg.com/@nocobase/utils/-/utils-1.0.0-alpha.6.tgz#2129538a73119929d08efbc5fafcaeb3f28876aa"
+  integrity sha512-nCt1/S6+JFLi0v1SI1zMGapUvLLPqDUGNpgtdCq9eMhHpYD3ETCRRp+eDmQBgmDkae5D7hUvaYe22Cr+GhZn5Q==
   dependencies:
     "@hapi/topo" "^6.0.0"
     "@rc-component/mini-decimal" "^1.1.0"
@@ -3834,6 +3836,11 @@ big.js@^5.2.2:
   resolved "https://registry.npmjs.org/big.js/-/big.js-5.2.2.tgz#65f0af382f578bcdc742bd9c281e9cb2d7768328"
   integrity sha512-vyL2OymJxmarO8gxMr0mhChsO9QGwhynfuu4+MHTAW6czfq9humCB7rKpUjDd9YUiDPU4mzpyupFSvOClAwbmQ==
 
+bignumber.js@^9.1.2:
+  version "9.1.2"
+  resolved "https://registry.yarnpkg.com/bignumber.js/-/bignumber.js-9.1.2.tgz#b7c4242259c008903b13707983b5f4bbd31eda0c"
+  integrity sha512-2/mKyZH9K85bzOEfhXDBFZTGd1CTs+5IHpeFQo9luiBG7hghdC851Pj2WAhb6E3R6b9tZj/XKhbg4fum+Kepug==
+
 binary-extensions@^2.0.0:
   version "2.2.0"
   resolved "https://registry.npmjs.org/binary-extensions/-/binary-extensions-2.2.0.tgz#75f502eeaf9ffde42fc98829645be4ea76bd9e2d"
@@ -5595,10 +5602,10 @@ dumi-assets-types@2.0.0-alpha.0:
   resolved "https://registry.npmjs.org/dumi-assets-types/-/dumi-assets-types-2.0.0-alpha.0.tgz#46bf619ed1cb6d27bbe6a9cfe4be51e5e9589981"
   integrity sha512-a/Y5lf0G6gwsEQ9hop/n03CcjmHsGBk384Cz/AEX6mRYrfSpUx/lQvP9HLoXkCzScl9PL1sSmLPnMkgaXDCZLA==
 
-dumi-theme-nocobase@^0.2.27:
-  version "0.2.27"
-  resolved "https://registry.yarnpkg.com/dumi-theme-nocobase/-/dumi-theme-nocobase-0.2.27.tgz#976f63960acdd1fe7cc4e6b3fc94c275cbe9cfcf"
-  integrity sha512-3R+KbisBWLhn2CNJ4iLtsGCESRUegBF8yhuePBuoGd5zoniyF7nJR/e50WgRhW1542TN3n8JxPo/LyknhV3Xfg==
+dumi-theme-nocobase@^0.2.28:
+  version "0.2.28"
+  resolved "https://registry.yarnpkg.com/dumi-theme-nocobase/-/dumi-theme-nocobase-0.2.28.tgz#86da2b74894414618567a696d79b4b5b36235f53"
+  integrity sha512-nRnPZeR36tmDIKv2Hb0YMFrtcI/BHoSR59xVgs5Tkaxq1aQ3uI6iUfrV7PL16Xn9+aP5gJ1MItCau0uRvz5cwg==
   dependencies:
     "@ant-design/icons" "^5.1.3"
     "@babel/runtime" "^7.22.3"
@@ -11448,6 +11455,11 @@ react-image-lightbox@^5.1.4:
   dependencies:
     prop-types "^15.7.2"
     react-modal "^3.11.1"
+
+react-intersection-observer@9.8.1:
+  version "9.8.1"
+  resolved "https://registry.yarnpkg.com/react-intersection-observer/-/react-intersection-observer-9.8.1.tgz#9c3631c0c9acd624a2af1c192318752ea73b5d91"
+  integrity sha512-QzOFdROX8D8MH3wE3OVKH0f3mLjKTtEN1VX/rkNuECCff+aKky0pIjulDhr3Ewqj5el/L+MhBkM3ef0Tbt+qUQ==
 
 react-intl@^6.4.4:
   version "6.5.5"

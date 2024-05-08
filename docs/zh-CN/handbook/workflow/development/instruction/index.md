@@ -33,8 +33,8 @@ export default class MyPlugin extends Plugin {
     // get workflow plugin instance
     const workflowPlugin = this.app.getPlugin<WorkflowPlugin>(WorkflowPlugin);
 
-    // register trigger instance
-    workflowPlugin.instructions.register('my-instruction', MyInstruction);
+    // register instruction
+    workflowPlugin.registerInstruction('my-instruction', MyInstruction);
   }
 }
 ```
@@ -142,7 +142,7 @@ export class PayInstruction extends Instruction {
 
 如果任意节点执行后返回了“停等”状态，则整个执行流程会被暂时中断挂起，等待一个由对应节点定义的事件触发以恢复流程的执行。例如 [人工节点](../../../workflow-manual/index/index.md)，执行到该节点后会以“停等”状态从该节点暂停，等待人工介入该流程，决策是否通过。如果人工输入的状态是通过，则继续后续的流程节点，反之则按前面的失败逻辑处理。
 
-更多的的指令返回状态可以参考 [工作流 API 参考](../api#JOB_STATUS) 部分。
+更多的的指令返回状态可以参考 [工作流 API 参考](../api/index.md#JOB_STATUS) 部分。
 
 ### 提前退出
 
@@ -204,4 +204,4 @@ export default class MyPlugin extends Plugin {
 客户端注册的节点类型标识必须与服务端的保持一致，否则会导致错误。
 :::
 
-定义节点类型的各个参数定义见 [工作流 API 参考](../api#instruction-1) 部分。
+定义节点类型的各个参数定义见 [工作流 API 参考](../api/index.md#instruction-1) 部分。

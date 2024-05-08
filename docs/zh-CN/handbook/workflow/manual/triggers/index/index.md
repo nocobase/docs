@@ -4,9 +4,13 @@
 
 - [数据表事件](../collection/index.md)（内置）
 - [定时任务](../schedule/index.md)（内置）
-- [表单事件](../../../../workflow-form-trigger/index/index.md)（插件 @nocobase/plugin-workflow-form-trigger 提供）
+- [操作前事件](../../../../workflow-request-interceptor/index/index.md)（插件 @nocobase/plugin-workflow-request-interceptor 提供）
+- [操作后事件](../../../../workflow-action-trigger/index/index.md)（插件 @nocobase/plugin-workflow-action-trigger 提供）
 - [审批事件](../../../../workflow-approval/index/index.md)（插件 @nocobase/plugin-workflow-approval 提供）
-- [请求拦截](../../../../workflow-request-interceptor/index/index.md)（插件 @nocobase/plugin-workflow-request-interceptor 提供）
+
+各个事件的触发时机如下图所示：
+
+![工作流的事件](https://static-docs.nocobase.com/739ae74ff8a2767940c3a41adb5d4e0e.png)
 
 比如用户提交一个表单，或者数据表中的数据由于用户操作或程序调用发生变化，或者定时任务到达执行时间，都会触发对应的工作流执行。
 
@@ -14,4 +18,4 @@
 
 创建工作流以后，在工作流查看页面中，触发器会以入口节点的样式显示在流程的开始位置，点击该卡片即可打开配置弹窗。根据触发器的类型不同，可以配置触发器的相关条件。
 
-![触发器_入口节点](./6823e074-683d-44b2-9f88-e7102667cd34.png)
+![触发器_入口节点](https://static-docs.nocobase.com/e8dc1937e41b2712b67d84d60e94b11e.png)

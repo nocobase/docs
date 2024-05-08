@@ -1,8 +1,14 @@
 # API 文档
 
+<PluginInfo name="api-doc"></PluginInfo>
+
 ## 介绍
 
+基于 Swagger 生成 NocoBase HTTP API 文档。  
+
 ## 安装
+
+内置插件，无需安装。激活即可使用。
 
 ## 使用说明
 
@@ -10,11 +16,11 @@
 
 http://localhost:13000/admin/settings/api-doc/documentation
 
-![](./static/NFhXbRvfgoP08QxpAwdclb17nfc.png)
+![](https://static-docs.nocobase.com/8db51cf50e3c666aba5a850a0fb664a0.png)
 
 ### 文档概览
 
-![](./static/HYjubXpVOokLitxuC90cxSzHnJb.png)
+![](https://static-docs.nocobase.com/5bb4d3e5bba6c6fdfcd830592e72385b.png)
 
 - 总 API 文档：`/api/swagger:get`
 - 内核 API 文档：`/api/swagger:get?ns=core`

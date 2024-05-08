@@ -2,31 +2,31 @@
 
 ## Overview
 
-`AuthManager` is the authentication management module within NocoBase, designed for registering various types of authentication.
+`AuthManager` is the user authentication management module in NocoBase, used for registering different types of user authentication.
 
 ### Basic Usage
 
 ```ts
 const authManager = new AuthManager({
-  // Use for retrieving the current authenticator name from the request header
+  // Key to retrieve the current authenticator identifier from the request header
   authKey: 'X-Authenticator',
 });
 
-// Set methods for storing and retrieving authenticators data in AuthManager
+// Set methods for storing and retrieving authenticators in AuthManager
 authManager.setStorer({
   get: async (name: string) => {
     return db.getRepository('authenticators').find({ filter: { name } });
   },
 });
 
-// Register a new authentication type
+// Register an authentication type
 authManager.registerTypes('basic', {
   auth: BasicAuth,
   title: 'Password',
 });
 
 // Use authentication middleware
-app.resourcer.use(authManager.middleware());
+app.resourceManager.use(authManager.middleware());
 ```
 
 ### Concepts
@@ -39,13 +39,13 @@ app.resourcer.use(authManager.middleware());
 
 ### `constructor()`
 
-To create a `AuthManager` instance.
+Constructor, creates an instance of `AuthManager`.
 
 #### Signature
 
 - `constructor(options: AuthManagerOptions)`
 
-#### Type
+#### Types
 
 ```ts
 export interface JwtOptions {
@@ -62,21 +62,30 @@ export type AuthManagerOptions = {
 
 #### Details
 
-- `authKey` - Used to retrieve the current authenticator identifier from the request header, for example, `X-Authenticator`.
-- `default` - Optional. Default authenticator name.
-- `jwt` - Optional. Can be configured if using JWT authentication.
-  - `secret` - JWT token seret key.
-  - `expiresIn` - Optional. JWT token expiration period. Default is `7d`.
+##### AuthManagerOptions
+
+| Attribute | Type                        | Description                                                                     | Default           |
+| --------- | --------------------------- | ------------------------------------------------------------------------------- | ----------------- |
+| `authKey` | `string`                    | Optional key to save the current authenticator identifier in the request header | `X-Authenticator` |
+| `default` | `string`                    | Optional, default authenticator identifier                                      | `basic`           |
+| `jwt`     | [`JwtOptions`](#jwtoptions) | Optional, configure if using JWT for authentication                             | -                 |
+
+##### JwtOptions
+
+| Attribute   | Type     | Description                       | Default           |
+| ----------- | -------- | --------------------------------- | ----------------- |
+| `secret`    | `string` | Token secret key                  | `X-Authenticator` |
+| `expiresIn` | `string` | Optional, token expiration period | `7d`              |
 
 ### `setStorer()`
 
-Configure methods for storing and retrieving authenticator data.
+Set methods for storing and retrieving authenticator data.
 
 #### Signature
 
 - `setStorer(storer: Storer)`
 
-#### Type
+#### Types
 
 ```ts
 export interface Authenticator = {
@@ -92,21 +101,28 @@ export interface Storer {
 
 #### Details
 
-- `Authenticator`
-  - `authType` - Authentication type
-  - `options` - Authenticator options
-- `Storer` - Authenticator storer interface
-  - `get` - Retrieve an authenticator by the authenticator name. In the NocoBase application, the actual response type for this is [AuthModel](../../plugins/auth/dev/api.md#authmodel).
+##### Authenticator
+
+| Attribute  | Type                  | Description                          |
+| ---------- | --------------------- | ------------------------------------ |
+| `authType` | `string`              | Authentication type                  |
+| `options`  | `Record<string, any>` | Authenticator-related configurations |
+
+##### Storer
+
+`Storer` is the interface for authenticator storage, containing one method.
+
+- `get(name: string): Promise<Authenticator>` - Get authenticator by identifier. In NocoBase, the actual returned type is [AuthModel](../../handbook/auth/dev/api#authmodel).
 
 ### `registerTypes()`
 
-Register a authentication type.
+Register authentication types.
 
 #### Signature
 
 - `registerTypes(authType: string, authConfig: AuthConfig)`
 
-#### Type
+#### Types
 
 ```ts
 export type AuthExtend<T extends Auth> = new (config: Config) => T;
@@ -119,12 +135,14 @@ type AuthConfig = {
 
 #### Details
 
-- `auth` - Refer to [Auth](./auth.md)
-- `title` - Optional。The title displayed for this authentication type in the frontend.
+| Attribute | Type               | Description                                                          |
+| --------- | ------------------ | -------------------------------------------------------------------- |
+| `auth`    | `AuthExtend<Auth>` | Authentication type implementation, refer to [Auth](./auth.md)       |
+| `title`   | `string`           | Optional. Title of the authentication type displayed on the frontend |
 
 ### `listTypes()`
 
-Retrieve a list of registered authentication types.
+Get a list of registered authentication types.
 
 #### Signature
 
@@ -132,12 +150,14 @@ Retrieve a list of registered authentication types.
 
 #### Details
 
-- `name` - Name of the authentication type
-- `title` - Title of the authentication type
+| Attribute | Type     | Description                      |
+| --------- | -------- | -------------------------------- |
+| `name`    | `string` | Authentication type identifier   |
+| `title`   | `string` | Title of the authentication type |
 
 ### `get()`
 
-Get a authenticator.
+Get authenticator.
 
 #### Signature
 
@@ -145,9 +165,11 @@ Get a authenticator.
 
 #### Details
 
-- `name` - Authenticator name
-- `ctx` - Request context
+| Attribute | Type      | Description              |
+| --------- | --------- | ------------------------ |
+| `name`    | `string`  | Authenticator identifier |
+| `ctx`     | `Context` | Request context          |
 
 ### `middleware()`
 
-Authentication middleware. Retrieve the current authenticator and perform user authentication.
+Authentication middleware. Get the current authenticator and perform user authentication.

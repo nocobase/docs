@@ -4,7 +4,7 @@
 
 如在任务管理应用模型中，任务表中有关系字段「附件」（一对一），当关系字段的目标表为文件表时，默认字段组件为文件管理器
 
-![](./static/PmuLburnvoPOwfxXOcNcFYxdnId.png)
+![](https://static-docs.nocobase.com/96c15ff2a8b13797a6c7b675f2a5ad7a.png)
 
 可以通过文件管理器组件来管理与当前任务关联的附件文件。
 

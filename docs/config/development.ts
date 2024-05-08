@@ -7,6 +7,7 @@ export default [
       '/development',
       '/development/your-fisrt-plugin',
       '/development/app-ds',
+      // '/development/plugin',
       // '/development/plugin-ds',
       // '/development/learning-guide',
     ],

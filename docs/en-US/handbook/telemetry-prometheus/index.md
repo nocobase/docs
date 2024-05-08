@@ -1,24 +1,26 @@
-# 遥测 - Prometheus
+# Telemetry - Prometheus
 
-## 介绍
+<PluginInfo name="telemetry-prometheus"></PluginInfo>
 
-本插件用于将 <a href="https://opentelemetry.io/docs/specs/otlp/" target="_blank">OpenTelemetry</a> 协议 (OTLP) 数据转换成 Prometheus 格式，并暴露接口供 Prometheus 抓取指标 (Metric) 数据。
+## Introduction
 
-## 安装
+This plugin is used to convert OpenTelemetry protocol (OTLP) data into Prometheus format and expose an interface for Prometheus to scrape metric data.
 
-:::info{title=提示}
-该插件为商业插件，请查看 [NocoBase 商业版本](https://www.nocobase.com/commercial-cn)了解详情。
+## Installation
+
+:::info{title=Note}
+This is a commercial plugin. Please see [NocoBase commercial version](https://www.nocobase.com/commercial) for details.
 :::
 
-## 使用手册
+## User Manual
 
-### 环境变量
+### Environment Variables
 
-启动 NocoBase 前，需要先配置好环境变量。
+Configure the environment variables before starting NocoBase.
 
 #### TELEMETRY_ENABLED
 
-配置为 `on`.
+Set to `on`.
 
 ```bash
 TELEMETRY_ENABLED=on
@@ -26,7 +28,7 @@ TELEMETRY_ENABLED=on
 
 #### TELEMETRY_METRIC_READER
 
-添加 `prometheus`.
+Add `prometheus`.
 
 ```bash
 TELEMETRY_METRIC_READER=prometheus
@@ -34,22 +36,22 @@ TELEMETRY_METRIC_READER=prometheus
 
 #### TELEMETRY_PROMETHEUS_SERVER
 
-是否启动单独的服务。
+Whether to start a separate server.
 
-- `off`. 抓取接口为 `/api/prometheus:metrics`.
-- `on`. 抓取接口为 `:port/metrics`.
+- `off`. The scraping interface is `/api/prometheus:metrics`.
+- `on`. The scraping interface is `:port/metrics`.
 
 #### TELEMETRY_PROMETHEUS_PORT
 
-启动单独服务时的服务端口。默认 `9464`.
+The port for the separate server when activated. Default `9464`.
 
-#### 相关文档
+#### Related Documents
 
-- [环境变量](../../welcome/getting-started/env.md#telemetry_enabled)
+- [Environment Variables](../../welcome/getting-started/env.md#telemetry_enabled)
 
-### Prometheus 配置
+### Prometheus Configuration
 
-单独 server
+Separate server
 
 ```yaml
 scrape_configs:
@@ -58,7 +60,7 @@ scrape_configs:
       - targets: ['localhost:9464']
 ```
 
-内部 API
+Internal API
 
 ```yaml
 scrape_configs:

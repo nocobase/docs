@@ -65,7 +65,7 @@ yarn create nocobase-app my-nocobase-app -d postgres \
 ```
 
 :::warning
-- `APP_KEY` 是应用的密钥，用于生成用户 token 等（如果 APP_KEY 修改了，旧的 token 也会随之失效），create-nocobase-app 创建 app 时会随机生成一个密钥，请确保不对外泄露
+- `APP_KEY` 是应用的密钥，用于生成用户 token 等（如果 APP_KEY 修改了，旧的 token 也会随之失效）。它可以是任意随机字符串。请修改为自己的秘钥，并确保不对外泄露。
 - `DB_*` 为数据库相关，如果不是例子默认的数据库服务，请根据实际情况修改
 - 使用 MySQL（或 MariaDB）时，需要配置 DB_TIMEZONE 环境变量，如 `DB_TIMEZONE=+08:00`
 :::
@@ -82,6 +82,8 @@ cd my-nocobase-app
 
 ```bash
 yarn install
+# 生产环境部署时，为了减少体积，可以只安装必要的依赖
+yarn install --production
 ```
 
 ## 4. 安装 NocoBase

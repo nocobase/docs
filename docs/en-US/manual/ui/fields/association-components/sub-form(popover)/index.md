@@ -4,14 +4,14 @@
 
 子表单（弹窗）不仅简化了表单布局，同时也有效地解决了子表格中关系字段无法直接填写数据的问题。
 
-![](./static/UTzwbpNczoCK0kxtFPhcGYoKneb.gif)
+![](https://static-docs.nocobase.com/a386b9333964279e1234e05e53df57ed.gif)
 
 - 配置标题字段可控制对外的显示字段
 
-![](./static/NEQRbYpxSoy3AyxgiC5cWOSRnFd.png)
+![](https://static-docs.nocobase.com/e899ff37d80f70c254052441bf7446df.png)
 
 - 子表格中的关系字段也可以使用子表单（弹窗）填写关系数据
 
-![](./static/ZHqsbWKTYoMjZ4xX0rKc5ff2ndk.gif)
+![](https://static-docs.nocobase.com/531504bdf10c107cdbc9def08cdccf0c.gif)
 
 子表单（弹窗）内部也支持多层关系字段的配置，可根据实际情况配置。

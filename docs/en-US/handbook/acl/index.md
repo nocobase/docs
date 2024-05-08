@@ -1,12 +1,12 @@
-# 权限控制
+# Access Control
 
-## 介绍
+## Introduction
 
-NocoBase 的 ACL 模块主要由两部分组成：
+NocoBase's ACL module mainly consists of two parts:
 
-- 内核中的 `@nocobase/acl`，提供核心功能
-- 插件中的 `@nocobase/plugin-acl`，提供动态配置能力
+- `@nocobase/acl` in the kernel, which provides core functions
+- `@nocobase/plugin-acl` in the plugin, which provides dynamic configuration capabilities
 
-## 安装
+## Installation
 
-内置插件，无需单独安装。
+Built-in plugin, no separate installation required.

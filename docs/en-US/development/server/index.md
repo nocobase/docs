@@ -1,114 +1,110 @@
 # Overview
 
-:::warning
-Sorry, this document is not available in English.
-:::
-
-初始化的空插件，服务端相关目录结构如下：
+The directory structure related to the server side of an initialized empty plugin is as follows:
 
 ```bash
 |- /plugin-sample-hello
   |- /src
-    |- /server      # 插件服务端代码
-      |- plugin.ts  # 插件类
-      |- index.ts   # 服务端入口
+    |- /server      # Plugin server-side code
+      |- plugin.ts  # Plugin class
+      |- index.ts   # Server-side entry point
   |- server.d.ts
   |- server.js
 ```
 
 ## Plugin
 
-`plugin.ts` 提供了插件生命周期的各种方法的调用
+`plugin.ts` facilitates the invocation of various methods across the plugin lifecycle.
 
 ```ts
 import { InstallOptions, Plugin } from '@nocobase/server';
 
 export class PluginSampleHelloServer extends Plugin {
   afterAdd() {
-    // 插件 pm.add 注册进来之后。主要用于放置 app beforeLoad 事件的监听
+    // After the plugin is registered with pm.add. Mainly used for placing listeners for the app beforeLoad event
     this.app.on('beforeLoad');
   }
   beforeLoad() {
-    // 自定义类或方法
+    // Customize classes or methods
     this.db.registerFieldTypes();
     this.db.registerModels();
     this.db.registerRepositories();
     this.db.registerOperators();
-    // 事件监听
+    // Event listeners
     this.app.on();
     this.db.on();
   }
   async load() {
-    // 定义 collection
+    // Define collection
     this.db.collection();
-    // 导入 collection
+    // Import collection configurations
     this.db.import();
     this.db.addMigrations();
 
-    // 定义 resource
+    // Define resource
     this.resourcer.define();
-    // resource action
+    // Register resource actions
     this.resourcer.registerActions();
 
-    // 注册 middleware
+    // Register middleware
     this.resourcer.use();
     this.acl.use();
     this.app.use();
 
     this.app.i18n;
-    // 自定义命令行
+    // Custom commands
     this.app.command();
   }
   async install(options?: InstallOptions) {
-    // 安装逻辑
+    // Installation logic
   }
   async afterEnable() {
-    // 激活之后
+    // After activation
   }
   async afterDisable() {
-    // 禁用之后
+    // After deactivation
   }
   async remove() {
-    // 删除逻辑
+    // Deletion logic
   }
 }
 
 export default MyPlugin;
 ```
 
-## 插件的生命周期
+## Plugin Lifecycle
 
-<img alt="插件的生命周期" src="./image.png" style="width: 320px;" />
+<img alt="Plugin Lifecycle" src="./image.png" style="width: 320px;" />
 
-- 在插件初始化之后，触发 `afterAdd`，在 `afterAdd` 里其他插件不一定都实例化
-- 在 `beforeLoad` 里所有已激活的插件都实例化了，可以通过 `app.pluginManager.get()` 获取到实例
-- 在 `load` 里，所有插件的 `beforeLoad` 方法都已执行
+- After the plugin is initialized, `afterAdd` is triggered. In `afterAdd`, not all other plugins might have been instantiated.
+- In `beforeLoad`, all activated plugins have been instantiated, and their instances can be retrieved via `app.pluginManager.get()`.
+- In `load`, the `beforeLoad` method of all plugins has been executed.
 
-## 插件类里常用的属性及方法
+## Common Properties and Methods in the Plugin Class
 
-| API                              | 教程               |
-| -------------------------------- | ------------------ |
-| this.name                        | 插件名             |
-| this.enabled                     | 已激活             |
-| this.installed                   | 已安装             |
-| this.app                         | 应用实例           |
-| this.pm                          | 插件管理器实例     |
-| this.db                          | 数据库实例         |
-| this.resourcer                   | 资源管理器         |
-| this.acl                         | 权限控制           |
-| this.log                         | 日志               |
-| this.app.i18n                    | 国际化             |
-| this.db.registerFieldTypes()     | 注册字段 type      |
-| this.db.registerModels()         | 注册 Model         |
-| this.db.registerRepositories()   | 注册 Repository    |
-| this.db.registerOperators()      | 注册自定义的运算符 |
-| this.app.on()                    | 应用事件           |
-| this.db.on()                     | 数据库事件         |
-| this.db.collection()             | 配置数据表         |
-| this.db.import()                 | 导入数据表配置     |
-| this.db.addMigrations()          | 迁移               |
-| this.resourcer.registerActions() | 注册资源操作       |
-| this.resourcer.use()             | 中间件             |
-| this.acl.use()                   | 中间件             |
-| this.app.use()                   | 中间件             |
-| this.app.command()               | 命令行             |
+| API                              | Tutorial          |
+| -------------------------------- | ----------------- |
+| this.name                        | Plugin name       |
+| this.enabled                     | Activated         |
+| this.installed                   | Installed         |
+| this.app                         | Application instance |
+| this.pm                          | Plugin manager instance |
+| this.db                          | Database instance |
+| this.resourcer                   | Resource manager  |
+| this.acl                         | Access control    |
+| this.log                         | Logging           |
+| this.app.i18n                    | Internationalization |
+| this.db.registerFieldTypes()     | Register field types |
+| this.db.registerModels()         | Register Models   |
+| this.db.registerRepositories()   | Register Repositories |
+| this.db.registerOperators()      | Register custom operators |
+| this.app.on()                    | Application events |
+| this.db.on()                     | Database events   |
+| this.db.collection()             | Configure data tables |
+| this.db.import()                 | Import data table configurations |
+| this.db.addMigrations()          | Migrations        |
+| this.resourcer.registerActions() | Register resource actions |
+| this.resourcer.use()             | Middleware        |
+| this.acl.use()                   | Middleware        |
+| this.app.use()                   | Middleware        |
+| this.app.command()               | Command line      |

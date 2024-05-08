@@ -31,7 +31,9 @@ $ yarn config set sqlite3_binary_host_mirror https://npmmirror.com/mirrors/sqlit
 📢 由于网络环境、系统配置等因素影响，接下来这一步骤可能需要十几分钟时间。
 
 ```bash
-yarn install
+yarn install --frozen-lockfile
+# 生产环境部署时，为了减少体积，可以只安装必要的依赖
+yarn install --frozen-lockfile --production
 ```
 
 ## 4. 设置环境变量
@@ -46,7 +48,7 @@ DB_STORAGE=storage/db/nocobase.sqlite
 ```
 
 :::warning
-- `APP_KEY` 是应用的密钥，用于生成用户 token 等（如果 APP_KEY 修改了，旧的 token 也会随之失效），修改为自己的应用密钥，并确保不对外泄露
+- `APP_KEY` 是应用的密钥，用于生成用户 token 等（如果 APP_KEY 修改了，旧的 token 也会随之失效）。它可以是任意随机字符串。请修改为自己的秘钥，并确保不对外泄露。
 - `DB_*` 为数据库相关，如果不是例子默认的数据库服务，请根据实际情况修改
 - 使用 MySQL（或 MariaDB）时，需要配置 DB_TIMEZONE 环境变量，如 `DB_TIMEZONE=+08:00`
 :::
@@ -68,7 +70,7 @@ yarn dev
 生产环境
 
 ```bash
-# 编译
+# 编译（请确保已执行 `yarn install --frozen-lockfile`，注意不带 `--production`）
 yarn build
 # 启动
 yarn start

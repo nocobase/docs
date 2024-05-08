@@ -33,8 +33,8 @@ export default class MyPlugin extends Plugin {
     // get workflow plugin instance
     const workflowPlugin = this.app.getPlugin<WorkflowPlugin>(WorkflowPlugin);
 
-    // register trigger instance
-    workflowPlugin.instructions.register('my-instruction', MyInstruction);
+    // register instruction
+    workflowPlugin.registerInstruction('my-instruction', MyInstruction);
   }
 }
 ```
@@ -204,4 +204,4 @@ export default class MyPlugin extends Plugin {
 客户端注册的节点类型标识必须与服务端的保持一致，否则会导致错误。
 :::
 
-定义节点类型的各个参数定义见 [工作流 API 参考](../api#instruction-1) 部分。
+定义节点类型的各个参数定义见 [工作流 API 参考](../api/index.md#instruction-1) 部分。

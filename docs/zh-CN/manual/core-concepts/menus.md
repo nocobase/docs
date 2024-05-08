@@ -19,11 +19,11 @@
 
 在 NocoBase 内置的页面模板中，菜单会出现在顶部和左侧。
 
-![menu-position.jpg](./menus/menu-position.jpg)
+![menu-position.jpg](https://static-docs.nocobase.com/d4d0a34c74684c988e369abf5a227186.jpg)
 
 ## 添加
 
-![5.menu-add.jpg](./menus/5.menu-add.jpg)
+![5.menu-add.jpg](https://static-docs.nocobase.com/c11557b3bed06be90b98e395c94f7fc7.jpg)
 
 点击 Add menu item，选择添加的类型。支持无限级子菜单。
 
@@ -40,4 +40,4 @@
 - Insert Inner
 - Delete
 
-![menu-move.gif](./menus/menu-move.gif)
+![menu-move.gif](https://static-docs.nocobase.com/ffd21aebbbd1b10a5138ada9727d33a8.gif)

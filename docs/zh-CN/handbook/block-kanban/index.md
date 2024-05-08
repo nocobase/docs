@@ -1,28 +1,70 @@
 # 看板区块
 
-## 使用手册
+<PluginInfo name="block-kanban"></PluginInfo>
 
-Kanban （看板）是一种敏捷项目管理工具，旨在实现工作可视化、限制进行中的工作数量并最大限度地提高工作效率，看板区块是任务管理的理想选择，它以看板视图展示数据，支持直接拖拽调整数据状态。
+## 介绍
 
-### 配置看板区块
+Kanban（看板）区块以看板视图展示数据，支持直接拖拽调整数据状态。
 
-![](./static/GrhobxsDJoB72Bx0kCAcXPp8nwe.png)
+## 安装
 
-![](./static/JupDbsBBSowHoqx5fIhcWVn5nTg.png)
+内置插件，无需安装。
+
+## 添加区块
+
+<video width="100%" height="440" controls>
+      <source src="https://static-docs.nocobase.com/20240419214551.mp4" type="video/mp4">
+</video>
+
+![20240419214751](https://static-docs.nocobase.com/20240419214751.png)
 
 ### 分组字段
 
-在创建或配置看板区块时，需要选择单选字段作为分组字段，以便根据选定的单选字段值来对数据进行分组和展示
+用于将数据按照特定的分类进行分组，在创建或配置看板区块时，需要选择单选字段作为分组字段。
 
-### 数据范围
+### 排序字段
 
-数据范围配置项允许用户定义区块所显示的数据的默认筛选条件，支持设置变量/静态值
+用于在每个分组内对数据进行排序，只能选择与分组字段绑定的排序字段，在创建看板区块时支持快捷创建排序字段。
 
-### 应用场景
+![20240426170628](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426170628.png)
 
-- 订单处理看板：追踪和管理订单的生命周期。 显示当前订单状态、待处理订单、已发货订单等信息，以便团队可以迅速识别和处理订单流程中的问题
-- 库存管理看板： 实时监控和管理库存水平，可视化展示各种商品的库存量，低库存或过剩库存，支持快速的库存调整和补货决策
+## 看板管理数据
 
-如图示例配置库存管理看板
+### 点击卡片
 
-![](./static/ER09beUFAoC59JxXPprctLmbnwE.gif)
+点击卡片，在弹出的弹窗中可按需配置数据区块。如配置编辑表单修改当前卡片记录。
+
+![20240419220115](https://static-docs.nocobase.com/20240419220115.png)
+
+支持配置弹窗打开方式、弹窗尺寸。
+
+![20240419220159](https://static-docs.nocobase.com/20240419220159.png)
+
+### 拖拽卡片
+
+示例：通过拖拽卡片调整商品状态，拖拽完成即保存数据。
+
+<video width="100%" height="440" controls>
+      <source src="https://static-docs.nocobase.com/20240419221247.mp4" type="video/mp4">
+</video>
+
+## 区块配置项
+
+### 设置数据范围
+
+示例：默认筛选促销的商品。
+
+![20240422095659](https://static-docs.nocobase.com/20240422095659.png)
+
+更多内容参考 [设置数据范围](/handbook/ui/blocks/block-settings/data-scope)
+
+## 配置字段
+
+![20240419215909](https://static-docs.nocobase.com/20240419215909.png)
+
+## 配置操作
+
+![20240419220903](https://static-docs.nocobase.com/20240419220903.png)
+
+- [筛选](/handbook/ui/actions/types/filter)
+- [添加](/handbook/ui/actions/types/add-new)

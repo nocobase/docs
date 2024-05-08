@@ -2,7 +2,7 @@
 
 ## Overview
 
-`BaseAuth` extends the abstract class [Auth](./auth.md) and provides a foundational implementation for authentication types, utilizing JWT as the authentication method. In most cases, it's preferable to extend `BaseAuth` for customizing authentication type, rather than directly inheriting from the abstract class `Auth`.
+`BaseAuth` inherits from the abstract class [Auth](./auth.md) and serves as the basic implementation for user authentication types, using JWT as the authentication method. In most cases, extending user authentication types can be achieved by inheriting from `BaseAuth` instead of directly inheriting from the `Auth` abstract class.
 
 ```ts
 class BasicAuth extends BaseAuth {
@@ -12,8 +12,8 @@ class BasicAuth extends BaseAuth {
     super({ ...config, userCollection });
   }
 
-  // User sign-in logic，called by `auth.signIn`
-  // Returning user information
+  // User authentication logic, called by `auth.signIn`
+  // Returns user data
   async validate() {
     const ctx = this.ctx;
     const { values } = ctx.action.params;
@@ -27,7 +27,7 @@ class BasicAuth extends BaseAuth {
 
 ### `constructor()`
 
-To create a `BaseAuth` instance.
+Constructor, creates an instance of `BaseAuth`.
 
 #### Signature
 
@@ -35,12 +35,14 @@ To create a `BaseAuth` instance.
 
 #### Details
 
-- `config` - Refer to [Auth - constructor](./auth.md#constructor)
-- `userCollection` - User collection, E.g. `db.getCollection('users')`
+| Parameter        | Type         | Description                                                                                                  |
+| ---------------- | ------------ | ------------------------------------------------------------------------------------------------------------ |
+| `config`         | `AuthConfig` | Refer to [Auth - AuthConfig](./auth.md#authconfig)                                                           |
+| `userCollection` | `Collection` | User collection, e.g., `db.getCollection('users')`, refer to [DataBase - Collection](../database/collection) |
 
 ### `user()`
 
-Accessors for setting and getting user information，utilizing `ctx.state.currentUser` as the default storage mechanism.
+Accessor for setting and getting user information, defaulting to using the `ctx.state.currentUser` object.
 
 #### Signature
 
@@ -49,20 +51,20 @@ Accessors for setting and getting user information，utilizing `ctx.state.curren
 
 ### `check()`
 
-Authenticate using the request token and return the user information.
+Authenticates through the request token and returns user information.
 
 ### `signIn()`
 
-User sign-in，generate token.
+User login, generates a token.
 
 ### `signUp()`
 
-User sign-up.
+User registration.
 
 ### `signOut()`
 
-User sign-out, and the token expires.
+User logout, token expiration.
 
 ### `validate()` \*
 
-Core logic to be implemented and invoked by `signIn` to determine if a user can successfully sign-in.
+Core authentication logic, called by the `signIn` interface, to determine whether the user can successfully log in.

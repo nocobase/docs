@@ -7,8 +7,8 @@
 - 跳过必填校验
 - 提交成功后的动作
 
-![](./static/RUsJb4OBFow7zcxSgKocJN6Fnah.png)
+![](https://static-docs.nocobase.com/2d35b787114dede3a0f08d7431edb37a.png)
 
 - 绑定工作流
 
-![](./static/R5eGbDbcEoLPrexCEzAcgnWfnjT.png)
+![](https://static-docs.nocobase.com/6d93cd53d45c8408ed78b0289f0f5dae.png)

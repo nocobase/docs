@@ -1,24 +1,24 @@
 # Migration
 
-插件在更新迭代过程中，可能会出现某些不兼容的改动，这些不兼容的升级脚本可以通过编写 migration 文件来处理，由 `nocobase upgrade` 命令触发，相关流程如下：
+During the update and iteration process of plugins, there might be some incompatible changes. These incompatible upgrades can be handled by writing migration files, which are triggered by the `nocobase upgrade` command. The relevant process is as follows:
 
 <img src="./image-2.png" style="max-width: 800px; width: 800px;">
 
-升级的 migrations 有 beforeLoad、afterSync 和 afterLoad 之分：
+The migrations for upgrades are divided into beforeLoad, afterSync, and afterLoad:
 
-- beforeLoad：在各模块加载前执行，分为三个阶段：
-  - 内核模块加载前
-  - preset 插件加载前
-  - 其他插件加载前
-- afterSync：在数据表配置与数据库同步之后，分为三个阶段：
-  - 内核表与数据库同步之后
-  - preset 插件的表与数据库同步之后
-  - 其他插件的表与数据库同步后
-- afterLoad：应用全部加载之后才执行
+- beforeLoad: Executed before the loading of each module, divided into three phases:
+  - Before the loading of the core module
+  - Before the loading of preset plugins
+  - Before the loading of other plugins
+- afterSync: After the synchronization of table configurations with the database, divided into three phases:
+  - After the synchronization of the core tables with the database
+  - After the synchronization of the preset plugins' tables with the database
+  - After the synchronization of other plugins' tables with the database
+- afterLoad: Executed after all applications have been loaded
 
-## 创建 migration 文件
+## Creating migration files
 
-通过 create-migration 命令创建 migration 文件
+Create migration files through the create-migration command
 
 ```bash
 yarn nocobase create-migration -h
@@ -27,11 +27,11 @@ Usage: nocobase create-migration [options] <name>
 
 Options:
   --pkg <pkg>  package name
-  --on [on]    Options include beforeLoad, afterSync and afterLoad
+  --on [on]    Options include beforeLoad, afterSync, and afterLoad
   -h, --help   display help for command
 ```
 
-示例
+Example
 
 ```bash
 $ yarn nocobase create-migration update-ui --pkg=@nocobase/plugin-client
@@ -41,7 +41,7 @@ $ yarn nocobase create-migration update-ui --pkg=@nocobase/plugin-client
 ✨  Done in 5.02s.
 ```
 
-将在插件包 @nocobase/plugin-client 的 src/server/migrations 里生成一个 migration 文件，名为 20240107173313-update-ui.ts，初始内容如下：
+A migration file named 20240107173313-update-ui.ts will be generated in the src/server/migrations of the plugin package @nocobase/plugin-client, with the initial content as follows:
 
 ```ts
 import { Migration } from '@nocobase/server';
@@ -56,15 +56,15 @@ export default class extends Migration {
 }
 ```
 
-## 触发 migration
+## Triggering migration
 
-通过 `nocobase upgrade` 命令触发
+Triggered by the `nocobase upgrade` command
 
 ```bash
 $ yarn nocobase upgrade
 ```
 
-## 测试 migration
+## Testing migration
 
 ```ts
 import { createMockServer, MockServer } from '@nocobase/test';
@@ -74,8 +74,8 @@ describe('test example', () => {
 
   beforeEach(async () => {
     app = await createMockServer({
-      plugins: ['my-plugin'], // 插件
-      version: '0.18.0-alpha.5', // 升级前的版本
+      plugins: ['my-plugin'], // Plugins
+      version: '0.18.0-alpha.5', // Version before upgrade
     });
   });
 

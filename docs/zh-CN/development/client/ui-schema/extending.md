@@ -4,8 +4,9 @@
 
 扩展组件时，常用的方法：
 
-- [connect](https://react.formilyjs.org/api/shared/connect) 无侵入接入第三方组件，一般用于适配字段组件，和 [mapProps](https://react.formilyjs.org/api/shared/map-props)[、mapReadPretty](https://react.formilyjs.org/api/shared/map-read-pretty) 搭配使用
-- [observer](https://react.formilyjs.org/api/shared/observer) 当组件内部使用了 observable 对象，而你希望组件响应 observable 对象的变化时
+- [connect](https://react.formilyjs.org/api/shared/connect) 无侵入接入第三方组件，一般用于适配字段组件，和 [mapProps](https://react.formilyjs.org/api/shared/map-props)[、mapReadPretty](https://react.formilyjs.org/api/shared/map-read-pretty) 搭配使用；
+- [observer](https://react.formilyjs.org/api/shared/observer) 当组件内部使用了 observable 对象，而你希望组件响应 observable 对象的变化时；
+- [withDynamicSchemaProps](#) 用于无入侵实现动态 props。
 
 ## 最简单的扩展
 
@@ -145,6 +146,8 @@ export default () => {
   );
 };
 ```
+
+## 使用 withDynamicSchemaProps 实现动态 props
 
 ## 嵌套的 Schema
 

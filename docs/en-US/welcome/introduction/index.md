@@ -1,10 +1,9 @@
 # Introduction
 
-![NocoBase](https://nocobase-file.oss-cn-beijing.aliyuncs.com/main-l.png)
+<video width="100%" controls>
+      <source src="https://static-docs.nocobase.com/NocoBase-EN.mp4" type="video/mp4">
+</video>
 
-**Note:** 📌
-
-NocoBase is in early stage of development and is subject to frequent changes, please use caution in production environments.
 
 ## What is NocoBase
 
@@ -20,9 +19,12 @@ https://demo.nocobase.com/new
 Documents:  
 https://docs.nocobase.com/
 
-Contact Us:  
+Commericial license & plugins:  
+https://www.nocobase.com/commercial.html
+
+License agreement:   
+https://www.nocobase.com/agreement.html
+
+
+## Contact Us:  
 hello@nocobase.com
-
-## Commercial Version & Business Services
-
-If you need commercial version and commercial services, please feel free to contact us by email: hello@nocobase.com

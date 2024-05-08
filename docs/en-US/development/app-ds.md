@@ -1,19 +1,19 @@
-# Directory structure
+# Directory Structure
 
-无论是 [Git 源码](/welcome/getting-started/installation/git-clone) 还是 [create-nocobase-app](/welcome/getting-started/installation/create-nocobase-app) 创建的 NocoBase 应用，目录结构都是一样的，结构如下：
+Whether it is a NocoBase application created via [Git source](/welcome/getting-started/installation/git-clone) or [create-nocobase-app](/welcome/getting-started/installation/create-nocobase-app), the directory structure is the same, as follows:
 
 ```bash
 ├── my-nocobase-app
-  ├── packages        # 开发中的包
-    ├── plugins       # 开发中的插件
-  ├── storage         # 用于存放数据库文件、附件、缓存等
-    ├── backups       # 备份文件目录
-    ├── plugins       # 即插即用的插件（已编译）
-    ├── tar           # yarn build --tar 存放的位置
-    ├── uploads       # 本地存储目录
-  ├── .env            # 环境变量
-  ├── .env.e2e        # e2e 测试的环境变量 yarn e2e test
-  ├── .env.test       # 单元测试的环境变量 yarn test
+  ├── packages        # Packages under development
+    ├── plugins       # Plugins under development
+  ├── storage         # Used to store database files, attachments, cache, etc.
+    ├── backups       # Backup files directory
+    ├── plugins       # Plug-and-play plugins (already compiled)
+    ├── tar           # Location for storing output of yarn build --tar
+    ├── uploads       # Local storage directory
+  ├── .env            # Environment variables
+  ├── .env.e2e        # Environment variables for e2e tests yarn e2e test
+  ├── .env.test       # Environment variables for unit tests yarn test
   ├── lerna.json
   ├── package.json
   ├── playwright.config.ts
@@ -22,9 +22,9 @@
   ├── vitest.config.mts
 ```
 
-## 插件所在目录
+## Plugins Directory
 
-开发中的插件存放在 `packages/plugins` 目录下，以 npm packages 的方式组织，示例如下：
+Plugins under development are stored in the `packages/plugins` directory, organized as npm packages, example as below:
 
 ```bash
 |- /packages/
@@ -36,7 +36,7 @@
     |- /my-nocobase-plugin-hello2/
 ```
 
-通过界面添加的插件存放在 `storage/plugins` 目录下，以 npm packages 的方式组织，示例如下：
+Plugins added via the interface are stored in the `storage/plugins` directory, organized as npm packages, example as below:
 
 ```bash
 |- /storage/
@@ -48,7 +48,7 @@
     |- /my-nocobase-plugin-hello2/
 ```
 
-内置的插件或者在 `package.json` 的 `dependencies` 里声明的插件都会在 `node_modules` 里，示例如下：
+Built-in plugins or plugins declared in the `dependencies` of `package.json` will all be in `node_modules`, example as below:
 
 ```bash
 |- /node_modules/
@@ -57,21 +57,20 @@
     |- /plugin-auth/
 ```
 
-## 插件目录结构
+## Plugin Directory Structure
 
-可以通过 `yarn pm create @my-project/plugin-hello` 快速创建一个空插件，目录结构如下：
+You can quickly create an empty plugin with `yarn pm create @my-project/plugin-hello`. The directory structure is as follows:
 
 ```bash
 |- /packages/plugins/@my-project/plugin-hello
-  |- /dist          # build 之后的产物
+  |- /dist          # The produсt of build
   |- /src
-    |- /client      # 插件客户端代码
-    |- /server      # 插件服务端代码
-  |- .npmignore     # 发布插件包时哪些文件或目录应该被忽略
+    |- /client      # Plugin client code
+    |- /server      # Plugin server code
+  |- .npmignore     # Which files or directories should be ignored when publishing the plugin package
   |- client.d.ts
   |- client.js
-  |- package.json   # 插件包信息
+  |- package.json   # Plugin package information
   |- server.d.ts
   |- server.js
 ```
-

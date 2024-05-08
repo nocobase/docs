@@ -6,13 +6,13 @@ v0.17 提供全新的 SchemaInitializer 和 SchemaSettings。
 
 为了降低开发学习成本，提供更好的前端开发体验，在过去的几个月里，我们分阶段的对前端内核进行了重构，其中包括：
 
-![20240115141058](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240115141058.png)
+![20240115141058](https://static-docs.nocobase.com/20240115141058.png)
 
 这一次 v0.17 重构了 UI Schema 设计器相关的 SchemaInitializer 和 SchemaSettings
 
-![20240115141118](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240115141118.png)
+![20240115141118](https://static-docs.nocobase.com/20240115141118.png)
 
-![20240115141129](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240115141129.png)
+![20240115141129](https://static-docs.nocobase.com/20240115141129.png)
 
 为了解决用户上手难的问题，我们也重新梳理了各部分文档
 

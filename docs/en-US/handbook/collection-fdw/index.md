@@ -1,68 +1,70 @@
-# 连接外部数据表
+# Connect Foreign Data Tables(FDW)
 
-## 介绍
+<PluginInfo name="collection-fdw"></PluginInfo>
 
-基于数据库的 foreign data wrapper 实现的连接远程数据表的功能插件。目前支持 MySQL 和 PostgreSQL 数据库。
+## Introduction
 
-:::info{title="连接数据源 vs 连接外部数据"}
-- **连接数据源** 指的是与特定数据库或 API 服务建立连接，可以完整的使用数据库的特性或 API 提供的服务；
-- **连接外部数据** 指的是从外部获取数据并映射到本地使用，在数据库里叫 FDW（Foreign Data Wrapper），是一种数据库技术，侧重于将远程表当做本地表使用，只能一张一张表的连接。因为是远程访问，所以在使用时会有各种约束和局限。
+This is a plugin that connects to remote data tables based on the foreign data wrapper of the database. Currently, it supports MySQL and PostgreSQL databases.
 
-二者之间联系：前者用于建立与数据源的连接，后者用于跨数据源访问。例如，连接了某个 PostgreSQL 数据源，这个数据源里有某个表是基于 FDW 创建的外部数据表。
+:::info{title="Connecting Data Sources vs Connecting External Data Tables"}
+- **Connecting data sources** refers to establishing a connection with a specific database or API service, and you can fully use the features of the database or the services provided by the API;
+- **Connecting external data tables** refers to obtaining data from the outside and mapping it for local use. In the database, it is called FDW (Foreign Data Wrapper), which is a database technology that focuses on using remote tables as local tables and can only connect one by one. Because it is remote access, there will be various constraints and limitations when using it.
+- 
+The two can also be used in combination. The former is used to establish a connection with the data source, and the latter is used for cross data-source access. For example, a certain PostgreSQL data source is connected, and a certain table in this data source is an external data table created based on FDW.
 :::
 
 ### MySQL
 
-MySQL 通过 `federated` 引擎，需要激活，支持连接远程 MySQL 及其协议兼容数据库，如 MariaDB。详情文档参考 [Federated Storage Engine](https://dev.mysql.com/doc/refman/8.0/en/federated-storage-engine.html)。
+MySQL uses the `federated` engine, which needs to be activated, and supports connecting to remote MySQL and protocol-compatible databases, such as MariaDB. For more details, refer to the [Federated Storage Engine](https://dev.mysql.com/doc/refman/8.0/en/federated-storage-engine.html) documentation.
 
 ### PostgreSQL
 
-在 PostgreSQL 中，可通过不同类型的 `fdw` 扩展来支持不同的远程数据类型，目前支持的扩展有：
+In PostgreSQL, different types of `fdw` extensions can be used to support different types of remote data. The currently supported extensions include:
 
-- [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html)：在 PostgreSQL 中连接远程 PostgreSQL 数据库。
-- [mysql_fdw(开发中)](https://github.com/EnterpriseDB/mysql_fdw)：在 PostgreSQL 中连接远程 MySQL 数据库。
-- 其余类型的 fdw 扩展，可参考 [PostgreSQL Foreign Data Wrappers](https://wiki.postgresql.org/wiki/Foreign_data_wrappers)，接入 NocoBase 需要在代码中实现相应的适配接口。
+- [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html): Connect to a remote PostgreSQL database in PostgreSQL.
+- [mysql_fdw(under development)](https://github.com/EnterpriseDB/mysql_fdw): Connect to a remote MySQL database in PostgreSQL.
+- For other types of fdw extensions, refer to [PostgreSQL Foreign Data Wrappers](https://wiki.postgresql.org/wiki/Foreign_data_wrappers). You need to implement the corresponding adaptation interface in the code.
 
-## 安装
+## Installation
 
-前提条件
+Prerequisites
 
-- 本地 MySQL（NocoBase 使用的数据库）需要激活 `federated`，参考 [MySQL 如何启用 federated 引擎](./enable-federated.md)
+- If the Main database of NocoBase is MySQL, it needs to activate `federated`. Refer to [How to enable the federated engine in MySQL](./enable-federated.md)
 
-然后通过插件管理器安装并激活插件
+Then install and activate the plugin through the plugin manager
 
-![安装并激活插件](./image.png)
+![Install and activate the plugin](https://static-docs.nocobase.com/f84276c5712851fb3ff33af3f1ff0f59.png)
 
-## 使用手册
+## User Manual
 
-在「数据表管理 > 创建数据表」 下拉中，选择「连接外部数据」
+Under "Collection manager > Create collection", select "Connect to foreign data"
 
-![连接外部数据](./image-1.png)
+![Connect External Data](https://static-docs.nocobase.com/029d946a6d067d1c35a39755219d623c.png)
 
-在「数据库服务」下拉选项中，选择已存在的数据库服务，或者「创建数据库服务」
+In the "Database Server" dropdown, select an existing database service, or "Create Database Server"
 
-![数据库服务](./image-2.png)
+![Database Service](https://static-docs.nocobase.com/766271708a911950a5599d60d6be4a4d.png)
 
-创建数据库服务
+Create a database server
 
-![创建数据库服务](./image-3.png)
+![Create Database Service](https://static-docs.nocobase.com/1e357216e04cc4f200bd6212827281c8.png)
 
-选择数据库服务之后， 在「远程表」的下拉选项中，选择需要连接的数据表。
+After selecting the database server, in the "Remote table" dropdown, select the data table you need to connect.
 
-![选择需要连接的数据表](./image-4.png)
+![Select the data table you need to connect](https://static-docs.nocobase.com/e91fd6152b52b4fc01b3808053cc8dc4.png)
 
-配置字段信息
+Configure field information
 
-![配置字段信息](./image-5.png)
+![Configure field information](https://static-docs.nocobase.com/e618fecc5fe327f6a495e61405e5f040.png)
 
-如果远程表有结构变化，也可以「从远程表同步」
+If the remote table has structural changes, you can also "Sync from remote table"
 
-![从远程表同步](./image-6.png)
+![Sync from Remote Table](https://static-docs.nocobase.com/3751a9a39f933889fb3fcc4d85a6f4ad.png)
 
-远程表同步
+Remote table sync
 
-![远程表同步](./image-7.png)
+![Remote table sync](https://static-docs.nocobase.com/13f18200e31ea223fdd8dadaff1e9d28.png)
 
-最后，在界面里显示
+Finally, display it on the interface
 
-![在界面里显示](./image-9.png)
+![Display on the interface](https://static-docs.nocobase.com/368fca27a99277d9360ca81350949357.png)

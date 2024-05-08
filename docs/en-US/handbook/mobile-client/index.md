@@ -1,12 +1,17 @@
-# 移动端
+# Mobile
 
-:::warning
-文档待补充
-:::
+<PluginInfo name="mobile-client"></PluginInfo>
 
-<!--
-## 介绍
+## Introduction
 
-## 安装
+Provides the capability to configure mobile pages.
 
-## 使用说明 -->
+## Installation
+
+It's a pre-installed plugin that needs to be activated before use.
+
+![20240324171718](https://static-docs.nocobase.com/20240324171718.png)
+
+## Usage
+
+![20240324171605](https://static-docs.nocobase.com/20240324171605.png)

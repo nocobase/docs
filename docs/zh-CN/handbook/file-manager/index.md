@@ -1,12 +1,32 @@
 # 文件管理器
 
-:::warning
-文档待补充
-:::
+<PluginInfo name="file-manager"></PluginInfo>
 
-<!--
 ## 介绍
 
-## 安装
+文件管理器插件提供了文件表、附件字段以及文件存储服务，用于有效地管理文件。文件是特定结构的数据表记录，这个特定结构的数据表被称为文件表，用于存储文件的元信息，并可以通过文件管理器进行管理，附件字段是与文件表相关联的特定关系字段。文件支持多种存储方式，目前已支持的文件存储包括本地存储、阿里云 OSS、亚马逊 S3 以及腾讯云 COS。
 
-## 使用说明 -->
+## 使用手册
+
+### 文件表
+
+内置了 attachments 表，用于存储所有附件字段关联的文件。除此之外，也可以创建新的文件表，用于存储特定文件。
+
+[更多用法查看文件表介绍文档](/handbook/file-manager/file-collection)
+
+### 附件字段
+
+附件字段是与文件表相关联的特定关系字段，可以通过「附件类型字段」创建，也可以通过「关系字段」配置。
+
+<p>
+
+[更多用法查看附件字段介绍文档](/handbook/file-manager/field-attachment)
+
+</p>
+
+### 文件存储
+
+- [本地存储](/handbook/file-manager/file-storage-local)
+- [阿里云 OSS](/handbook/file-storage-oss)
+- [亚马逊 S3](/handbook/file-storage-s3)
+- [腾讯云 COS](/handbook/file-storage-cos)

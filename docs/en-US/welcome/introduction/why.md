@@ -2,7 +2,7 @@
 
 ## Open source, autonomous and controllable
 
-NocoBase is open source under the Apache-2.0 & AGPL-3.0 licenses, and can be used free of charge as long as you follow the licenses. Advanced features are provided through the commercial version, which also provides full source code and is privately deployed to keep data private and secure.
+NocoBase is open source under the AGPL-3.0 license, and can be used free of charge as long as you follow the license. Advanced features are provided through the commercial version, which also provides full source code and is privately deployed to keep data private and secure.
 
 ## Strong no-code capability
 
@@ -22,4 +22,4 @@ NocoBase uses JavaScript/TypeScript technology stack, one person can complete th
 
 ## Pay once, use forever
 
-NocoBase only charges for premium features. On top of the open source version, we offer commercial licenses, commercial services, and commercial plugins. Pay once and get lifetime licenses and upgrades, as well as full source code for commercial plugins.
+NocoBase only charges for premium features. On top of the open source version, we offer commercial licenses, commercial services, and commercial plugins. Pay once and get lifetime licenses, as well as full source code for commercial plugins.

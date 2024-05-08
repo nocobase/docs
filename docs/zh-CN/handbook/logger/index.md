@@ -1,12 +1,14 @@
 # 日志
 
+<PluginInfo name="logger"></PluginInfo>
+
 ## 介绍
 
 日志是帮助我们定位系统问题的重要手段。NocoBase 的服务端日志主要包括接口请求日志和系统运行日志，支持日志级别、滚动策略、大小、打印格式等配置。本篇文档主要介绍 NocoBase 服务端日志的相关内容，以及如何使用日志插件提供的服务端日志打包和下载的功能。
 
 ## 日志配置
 
-用户可以通过 [环境变量](../../welcome/getting-started/env.md#logger_transport) 配置日志级别、输出方式、打印格式等的日志相关参数。
+可以通过 [环境变量](../../welcome/getting-started/env.md#logger_transport) 配置日志级别、输出方式、打印格式等的日志相关参数。
 
 ## 日志格式
 
@@ -138,7 +140,7 @@ NocoBase 日志文件的主要目录结构为：
 2. 选择想要下载的日志文件。
 3. 点击下载 (Download) 按钮。
 
-![](./static/2023-12-26-23-01-17.png)
+![2024-04-10_10-50-50](https://static-docs.nocobase.com/2024-04-10_10-50-50.png)
 
 ## 相关文档
 

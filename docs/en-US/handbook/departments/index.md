@@ -1,19 +1,19 @@
-# 部门
+# Departments
 
-:::info{title=提示}
-This feature is powered by plugin-departments. Please check [NocoBase Commercial Version](https://www.nocobase.com/commercial.html) for more details.
+:::info{title=Tip}
+This feature is provided by the commercial plugin plugin-departments, please see [NocoBase Commercial Plugins](https://www.nocobase.com/commercial.html) for details.
 :::
 
-## 介绍
+## Introduction
 
-部门插件支持在 NocoBase 中以部门的形式来组织用户，设定上下级关系。可以通过给部门绑定角色来控制一组用户的权限。支持将部门信息作为变量用于工作流和表达式等支持设置变量的地方。
+The departments plugin supports organizing users in the form of departments in NocoBase, setting up superior-subordinate relationships. You can control a group of users' permissions by binding roles to departments. It supports using department information as variables for workflows and expressions and other places that support setting variables.
 
-![](./static/2024-03-04-11-25-32.png)
+![](https://static-docs.nocobase.com/a6eb94a5cc85a6c7b310f33173a5259d.png)
 
-## 安装
+## Installation
 
-该插件为商业插件，需要通过插件管理器上传并激活。
+This plugin is a commercial plugin, which needs to be uploaded and activated through the plugin manager.
 
-![](./static/image.png)
+![](https://static-docs.nocobase.com/907d85bc27f90eaa91b17d568f6dbbd7.png)
 
-![](./static/2024-03-03-17-53-47.png)
+![](https://static-docs.nocobase.com/c1e704259f7ae6ef4998a04a1d21e480.png)

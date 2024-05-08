@@ -1,91 +1,91 @@
 # v0.19：2024-01-08
 
-## 新特性
+## New features
 
-### 遥测
+### Telemetry
 
-- 开发文档：https://docs-cn.nocobase.com/development/server/telemetry
-- 内核 API：https://docs-cn.nocobase.com/api/telemetry/telemetry
-- Prometheus 插件：https://docs-cn.nocobase.com/plugins/telemetry-prometheus
+- Development documentation: https://docs.nocobase.com/development/server/telemetry
+- Kernel API: https://docs.nocobase.com/api/telemetry/telemetry
+- Prometheus plugin: https://docs.nocobase.com/plugins/telemetry-prometheus
 
-### 应用的备份和还原
+### Application backup and restore
 
-- 插件文档：https://docs-cn.nocobase.com/plugins/backup-restore
+- Plugin documentation: https://docs.nocobase.com/plugins/backup-restore
 
-## 内核优化
+## Kernel optimizations
 
-### 命令行的优化
+### Command line optimizations
 
-NocoBase 0.19 及以上版本，插件自定义的命令必须放在插件的 `src/server/commands/*.ts` 目录下，内容如下：
+For NocoBase 0.19 and above, plugin customized commands must be placed in the plugin's `src/server/commands/*.ts` directory with the following contents:
 
 ```typescript
-export default function (app) {
+export default function(app) {
   app.command('custom1').action();
 }
 ```
 
-命令行的执行流程：
+The execution flow of the command line:
 
-![20240115141900](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240115141900.png)
+![20240115141900](https://static-docs.nocobase.com/20240115141900.png)
 
-Command 的特殊配置
+Special configuration of Command
 
-- `ipc()` 当 app 运行时，命令行通过 ipc 发送指令，操作正在运行的 app 实例，未配置 ipc() 时，会新建一个应用实例，再执行操作（不会干扰正在运行的 app 实例）
-- `auth()` 进行数据库检验，如果数据库配置不正确，不会执行该命令
-- `preload()` 是否预先加载应用配置，也就是执行 app.load()
+- `ipc()` When the app is running, the command line sends commands via ipc to operate the running app instance, when ipc() is not configured, a new app instance will be created and then the operation will be executed (it will not interfere with the running app instance)
+- `auth()` performs database verification, if the database configuration is incorrect, this command will not be executed.
+- `preload()` whether to preload the application configuration, that is, execute app.load()
 
-可以根据命令的实际用途进行配置，例子如下：
+This can be configured according to the actual usage of the command, examples are as follows:
 
 ```typescript
-app.command('a').ipc().action();
-app.command('a').auth().action();
-app.command('a').preload().action();
+app.command('a').ipc().action()
+app.command('a').auth().action()
+app.command('a').preload().action()
 ```
 
-### 安装流程优化
+### Installation process optimization
 
-![20240115141914](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240115141914.png)
+![20240115141914](https://static-docs.nocobase.com/20240115141914.png)
 
-### 启动流程优化
+### Startup process optimization
 
-![20240115141922](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240115141922.png)
+![20240115141922](https://static-docs.nocobase.com/20240115141922.png)
 
-### 升级流程优化
+### Upgrade process optimization
 
-![20240115141933](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240115141933.png)
+![20240115141933](https://static-docs.nocobase.com/20240115141933.png)
 
-升级的 migrations 有 beforeLoad、afterSync 和 afterLoad 之分：
+The upgrade migrations are categorized into beforeLoad, afterSync, and afterLoad:
 
-- beforeLoad：在各模块加载前执行，分为三个阶段：
+- beforeLoad: Executed before the loading of each module, divided into three stages:
 
-  - 内核模块加载前
-  - preset 插件加载前
-  - 其他插件加载前
+  - Before loading kernel modules
+  - Before loading preset plugins
+  - Before loading other plugins
 
-- afterSync：在数据表配置与数据库同步之后，分为三个阶段：
+- afterSync: Executed after the synchronization of data table configurations with the database, divided into three stages:
 
-  - 内核表与数据库同步之后
-  - preset 插件的表与数据库同步之后
-  - 其他插件的表与数据库同步后
+  - After synchronizing kernel tables with the database
+  - After synchronizing preset plugin tables with the database
+  - After synchronizing other plugin tables with the database
 
-- afterLoad：应用全部加载之后才执行
+- afterLoad: Executed only after the complete loading of the application.
 
 ```typescript
 export default class extends Migration {
-  // 运行的时机
+  // When to perform the migration
   on = 'beforeLoad';
-  // 满足以下应用版本号时才执行
+  // Execute only when the following app version number is met.
   appVersion = '<=0.13.0-alpha.5';
-  // 满足以下插件版本号时才执行
+  // Execute only when the following plugin version number is met.
   pluginVersion = '<=0.13.0-alpha.5';
-  // 升级脚本
+  // Upgrade script.
   async up() {}
 }
 ```
 
-### 新增 create-migration 命令
+### Add the create-migration command
 
-创建 migration 文件
+Creates a migration file
 
 ```bash
 yarn nocobase create-migration -h
@@ -98,17 +98,17 @@ Options:
   -h, --help   display help for command
 ```
 
-示例
+Example
 
 ```bash
 $ yarn nocobase create-migration update-ui --pkg=@nocobase/plugin-client
 
-2024-01-07 17:33:13 [info ] add app main into supervisor
+2024-01-07 17:33:13 [info ] add app main into supervisor     
 2024-01-07 17:33:13 [info ] migration file in /nocobase/packages/plugins/@nocobase/plugin-client/src/server/migrations/20240107173313-update-ui.ts
 ✨  Done in 5.02s.
 ```
 
-将在插件包 `@nocobase/plugin-client` 的 `src/server/migrations` 里生成一个 migration 文件，名为 `20240107173313-update-ui.ts`，初始内容如下：
+A migration file will be generated in `src/server/migrations` of the plugin package `@nocobase/plugin-client` as `20240107173313-update-ui.ts` with the following initial contents:
 
 ```typescript
 import { Migration } from '@nocobase/server';
@@ -123,25 +123,25 @@ export default class extends Migration {
 }
 ```
 
-### 插件的约定式目录
+### The plugin's convention-based directories
 
 ```bash
 |- /plugin-sample-hello
-  |- /dist             # 插件编译之后的目录
-  |- /src              # 插件源码
+  |- /dist             # Directory for compiled plugin
+  |- /src              # Source code for the plugin
     |- /client
       |- plugin.ts
-      |- index.ts      # 客户端入口
-    |- /locale         # 约定式目录，前后端共享的多语言文件目录
-    |- /swagger        # 约定式目录，swagger 文档
+      |- index.ts      # Client-side entry point
+    |- /locale         # Conventional directory for shared multilingual files between frontend and backend
+    |- /swagger        # Conventional directory for Swagger documentation
     |- /server
-      |- collections   # 约定式目录，插件的数据表配置
-      |- commands      # 约定式目录，自定义命令
-      |- migrations    # 约定式目录，迁移文件
-      |- plugin.ts     # 插件类
-      |- index.ts      # 服务端入口
+      |- collections   # Conventional directory for plugin's data table configurations
+      |- commands      # Conventional directory for custom commands
+      |- migrations    # Conventional directory for migration files
+      |- plugin.ts     # Plugin class
+      |- index.ts      # Server-side entry point
     |- index.ts
-  |-.npmignore
+  |- .npmignore
   |- client.d.ts
   |- client.js
   |- package.json
@@ -149,12 +149,12 @@ export default class extends Migration {
   |- server.js
 ```
 
-### 测试流程优化
+Testing process optimization
 
-提供了更易用的 createMockServer、startMockServer 方法用于编写测试用例
+Provided more user-friendly `createMockServer()` and `startMockServer()` methods for writing test cases:
 
-- `createMockServer()` 快速创建并启动一个应用
-- `startMockServer()` 快速启动一个应用（不会重新安装）
+- `createMockServer()` Quickly creates and starts an application.
+- `startMockServer()` Quickly starts an application (without reinstalling).
 
 ```typescript
 import { createMockServer } from '@nocobase/server';
@@ -178,11 +178,11 @@ describe('test example', () => {
 });
 ```
 
-## 不兼容的变化
+## Breaking changes
 
-### collections、commands、migrations 配置变更为约定式目录
+### Collections, commands, migrations configuration changes to convention-based directories
 
-示例一：通过 importCollections 加载的 collections，代码直接删掉，collections 配置文件必须放在 `src/server/collections` 目录下
+Example 1: Collections loaded by importCollections, the code is deleted directly, and the collections configuration file must be placed in the `src/server/collections` directory.
 
 ```diff
 export class AuthPlugin extends Plugin {
@@ -192,7 +192,7 @@ export class AuthPlugin extends Plugin {
 }
 ```
 
-示例二：通过 this.db.import 加载的 collections，代码直接删掉，collections 配置文件必须放在 `src/server/collections` 目录下
+Example 2: Collections loaded through this.db.import, the code is directly deleted, the collections configuration file must be placed in the `src/server/collections` directory
 
 ```diff
 export class AuthPlugin extends Plugin {
@@ -204,7 +204,7 @@ export class AuthPlugin extends Plugin {
 }
 ```
 
-示例三：通过 db.collection() 定义的 collection，建议放到 `src/server/collections` 目录下
+Example 3: A collection defined by db.collection() is recommended to be placed in the `src/server/collections` directory.
 
 ```diff
 export class AuthPlugin extends Plugin {
@@ -216,7 +216,7 @@ export class AuthPlugin extends Plugin {
 }
 ```
 
-新增 `src/server/collections/examples.ts` 文件，内容如下：
+Add a new `src/server/collections/examples.ts` file with the following contents:
 
 ```typescript
 import { defineCollection } from '@nocobase/database';
@@ -226,7 +226,7 @@ export default defineCollection({
 });
 ```
 
-示例四：移除 db.addMigrations()，migration 文件放置 `src/server/migrations` 目录下
+Example 4: Remove db.addMigrations() and place the migration file in the `src/server/migrations` directory.
 
 ```diff
 export class AuthPlugin extends Plugin {
@@ -242,7 +242,7 @@ export class AuthPlugin extends Plugin {
 }
 ```
 
-示例五：自定义命令行
+Example 5: Customizing the command line
 
 ```diff
 export class MyPlugin extends Plugin {
@@ -260,7 +260,7 @@ export class MyPlugin extends Plugin {
 }
 ```
 
-新增 `src/server/collections/echo.ts` 文件，内容如下：
+Add a new `src/server/collections/echo.ts` file with the following contents:
 
 ```typescript
 export default function(app) {

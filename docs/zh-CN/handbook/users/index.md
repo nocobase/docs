@@ -1,8 +1,10 @@
 # 用户
 
+<PluginInfo name="users"></PluginInfo>
+
 ## 介绍
 
-用户插件提供了基础的用户模型，同时为其他数据模型提供创建人和最后更新人字段。
+用户插件提供了基础的用户模型和用户管理界面。
 
 ## 安装
 
@@ -12,28 +14,28 @@
 
 ### 用户管理
 
-NocoBase 在插件配置中心里内置了一个用户管理界面。应用初始化以后会添加一个不可删除的管理员账号, 管理员拥有 Root 权限，可以访问所有资源。
+该插件在配置中心里提供了一个用户管理界面。应用初始化以后会添加一个不可删除的超级管理员账号, 管理员拥有 Root 权限，可以访问所有资源。
 
-![](./static/2024-03-02-12-10-34.png)
+![](https://static-docs.nocobase.com/44bf40f56b45d4dd96c424fb08082cf6.png)
 
 除此之外，也可以在页面中使用用户表添加各种不同的区块来管理用户，比如表格区块：
 
-![](./static/2024-03-03-17-26-33.png)
+![](https://static-docs.nocobase.com/76b5a4652f869541a9e8f18a4568a7c9.png)
 
 ### 添加用户
 
-![](./static/2024-03-03-17-46-29.png)
+![](https://static-docs.nocobase.com/4f8ef9ffc1c17f275b62b462f6385b19.png)
 
-![](./static/2024-03-03-17-45-32.png)
+![](https://static-docs.nocobase.com/437828173950bd7c21b40a6243ffe150.png)
 
 ### 修改用户资料
 
-![](./static/2024-03-03-17-46-49.png)
+![](https://static-docs.nocobase.com/d25e06872bd1d48ed8c1139728fa5ff3.png)
 
-![](./static/2024-03-03-17-44-08.png)
+![](https://static-docs.nocobase.com/c140bcaab240385b9b5aca32a2ec2801.png)
 
 ### 修改用户密码
 
-![](./static/2024-03-03-17-47-09.png)
+![](https://static-docs.nocobase.com/26c24c4cebda3d144dc4e9b728c2ede5.png)
 
-![](./static/2024-03-03-17-45-58.png)
+![](https://static-docs.nocobase.com/23a2b2223cb5b387b3699cc6143302e8.png)

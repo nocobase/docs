@@ -2,29 +2,29 @@
 
 图表的配置面板整体上划分为三个部分：数据配置、图表配置和图表预览。
 
-![](./static/BlkEby9Z7or3CWxvhTCcLXumnHf.png)
+<img src="https://static-docs.nocobase.com/202404192019222.png"/>
 
 ## 数据配置
 
-![](./static/2023-11-28-17-48-11.png)
+<img src="https://static-docs.nocobase.com/202404192020544.png"/>
 
 - 顶部下拉框代表当前正在配置的数据表 (Collection)，通过下拉菜单可以切换。
 - 配置完成后，点击“执行查询” (Run query) 可以通过配置获取数据，“数据” (Data) 面板会展示数据。
 
 ### 度量 (Measures)
 
-![](./static/SVYhbc1LNoFSvzxYoOAc78mvn3e.png)
+<img src="https://static-docs.nocobase.com/202404192023854.png"/>
 
 度量字段，通常是图表需要展示的核心数据。度量数据可以通过聚合函数进行统计，支持常用的数据库统计函数 `求和 (Sum)`,`计数 (Count)`,`平均值 (Avg)`,`最大值 (Max)`,`最小值 (Min)`. 度量字段可以有多个，可以设置别名。
 
 ### 维度 (Dimesions)
 
-![](./static/DEFSbBh6WoujLyxoktHcXEADnom.png)
+<img src="https://static-docs.nocobase.com/202404192025717.png"/>
 
 维度字段，通常是图表数据分组的依据。对于日期类型字段，支持如图所示的格式化方式，格式化通过数据库函数实现（例如：MySQL 对应 `date_format`），其他类型数据格式化见[数据转换](#数据转换)部分。
 
 :::info
-**维度格式化 (Dimensions Format) VS 数据转换 (Transform)**
+**维度格式化 (Dimensions Format) VS 数据转换 (Transformation)**
 
 - 维度格式化发生在获取最终数据之前，数据分组按照维度格式化后的值进行，通常在按时间段筛选数据时有此需求。
 - 数据转换对响应数据做进一步处理，诸如可读性处理，以展现恰当的数据，数据转换在前端进行。
@@ -32,32 +32,88 @@
 
 ### 筛选 (Filter)
 
-![](./static/TdsOb1FBfomRaxxSdrHciggGnub.png)
+<img src="https://static-docs.nocobase.com/202404192029597.png"/>
 
-筛选配置将对分组前的数据进行过滤。有“当前用户”和“当前日期”变量可供选择，给图表配置动态的筛选范围。
+筛选配置将对分组前的数据进行过滤。支持使用变量给图表配置动态的筛选范围：
+
+- 当前用户：当前登录的用户相关信息。
+- 日期变量：根据当前日期动态计算的日期范围。
+- 当前筛选：当前图表区块里配置的自定义筛选字段。参考：[筛选区块](./filter.md)
 
 ### 排序 (Sort) 和限制 (Limit)
 
-![](./static/TUZCbKXHOo6fN6xfxSWcjkhhngg.png)
+<img src="https://static-docs.nocobase.com/202404192034106.png"/>
 
 默认数据集条数上限为 2000.
 
 ### 缓存
 
-![](./static/SdgrbugCjopiffxOrLZcZKhxnEh.png)
+<img src="https://static-docs.nocobase.com/202404192035918.png"/>
 
-开启缓存后，图表将展示缓存的数据。
+开启缓存后，图表将展示缓存的数据。可以配置数据缓存的时间。
 
 ## 图表配置
 
-![](./static/E2pwbBm4BofyHzxut4jcjonJn0s.png)
+### 容器配置
 
-- 图表类型 (Chart Type) - 用于展示的图表类型。NocoBase 使用 [G2Plot](https://g2plot.antv.antgroup.com/) 作为默认的图表库，想扩展使用其他图表库，可以参考[开发指南](../dev/index.md)。
-- 基础配置 - 选择图表后，会出现相应的基础可视化配置，字段配置通常提供了下拉菜单供选择，选项中包含了 Collection 的基础字段和字段别名。
-- JSON 配置 - 当基础配置不满足要求时，可以使用 JSON 配置其他图表属性。参考 [G2Plot 文档](https://g2plot.antv.antgroup.com/api/plot-api)。
+配置展示图表的容器组件的相关属性。
+
+- 图表标题
+- 是否显示图表边框
+
+<img src="https://static-docs.nocobase.com/202404192037644.png"/>
+
+图表标题展示效果：
+
+<img src="https://static-docs.nocobase.com/202404192048473.png"/>
+
+显示图表边框展示效果：
+
+<img src="https://static-docs.nocobase.com/202404192048223.png"/>
+
+### 图表配置
+
+<img src="https://static-docs.nocobase.com/202404192050696.png"/>
+
+- 图表类型 (Chart Type) - 用于展示的图表类型。NocoBase 使用 <a href="https://g2plot.antv.antgroup.com/" target="_blank">Ant Design Charts</a> 2.x 作为默认的图表库，如果想扩展使用其他图表库或组件，可以参考[开发指南](../dev/index.md)。
+- 基础配置 - 选择图表后，会出现相应的基础可视化配置，如 x 轴字段，y 轴字段，分类字段等。字段配置通常提供了下拉菜单供选择，选项中包含了 Collection 的基础字段和字段别名。
+- JSON 配置 - 当基础配置不满足要求时，可以参考图表组件的相关文档，使用 JSON 配置图表组件的其他属性。如果你希望在 JSON 配置中使用 JavaScript 表达式，可以用 `{{}}` 包裹对应表达式。示例：
+
+```json
+{
+  "label": {
+    "type": "inner",
+    "content": "{{ ({ percent }) => `${(percent * 100).toFixed(0)}%` }}"
+  }
+}
+```
 
 ## 数据转换
 
-![](./static/R0VlbVbkEoVcL1xA2xEcxHQLn1c.png)
+<img src="https://static-docs.nocobase.com/202404192109597.png"/>
 
 使用数据转换可以对接口响应的数据做进一步处理，目前支持转换处理的数据类型为 `number`,`date`,`time`,`datetime`, 对于不属于支持的数据类型的字段，可以手动选择为这几个类型，以使用对应的转换方法。
+
+可以对同一个字段，应用多个转换方法，程序会按照顺序依次执行转换，上一个转换方法的处理结果会传递给下一个，可以通过拖拽调整转换顺序。
+
+:::warning
+需要注意的是部分转换方法可能会改变原有的数据类型，在应用多个转换方法时，需要根据每次转换后的数据类型选择正确的转换方法。例如：在结合精确度和前缀将数字处理为货币表示时，应该先应用精确度转化，再使用前缀拼接。因为经过前缀拼接处理后的数字会转换为字符串，不再能应用精确度转换。
+:::
+
+目前支持的转换方法：
+
+| 类型                                  | 方法       | 说明                                                                                                                           | 转换后类型         |
+| ------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------ |
+| 数字 (`number`)                       | 前缀       |                                                                                                                                | `string`           |
+|                                       | 后缀       |                                                                                                                                | `string`           |
+|                                       | 精确度     | `1`, `1.0`, `1.00`, `1.000`                                                                                                    | `number`           |
+|                                       | 分隔符     | `100,000.00`, `100.000,00`, `100 000.00`                                                                                       | `string`           |
+|                                       | 百分比     |                                                                                                                                | `string`           |
+|                                       | 科学计数法 |                                                                                                                                | `number`           |
+|                                       | 缩写       | `1K`, `1M`, `1千`, `1亿` 等                                                                                                    | `string`           |
+| 日期时间 (`datetime`, `date`, `time`) | 格式化     | 预置格式有 `YYYY-MM-DD` 等，也可以自己填写。参考 <a href="https://day.js.org/docs/en/display/format" target="_blank">dayjs</a> | `string`           |
+|                                       | 前缀       |                                                                                                                                | `string`           |
+|                                       | 后缀       |                                                                                                                                | `string`           |
+| 字符串 (`string`)                     | 类型转换   | 转换成日期时间、数字                                                                                                           | `Date` \| `number` |
+|                                       | 前缀       |                                                                                                                                | `string`           |
+|                                       | 后缀       |                                                                                                                                | `string`           |

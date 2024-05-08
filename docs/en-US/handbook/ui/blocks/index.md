@@ -1,75 +1,56 @@
-# 区块
+# Block
 
-区块是内容的载体，可以放置于页面（Page）、对话框（Modal）或抽屉（Drawer）里，多个区块可以自由拖拽排列。
+Blocks are carriers of data and content. They can be placed in a Page, a Modal dialog, or a Drawer, and multiple blocks can be freely dragged and arranged.
 
-## 添加区块
+## Block Types
 
-区块可以放置于页面（Page）、对话框（Modal）或抽屉（Drawer）里
+![Block Types](https://static-docs.nocobase.com/f71af45b5cd914ea0558f760ddbbba58.png)
 
-### 页面里的区块
+- Data Blocks: Used to display data from the data sources on the interface.
+- Filter Blocks: Used to use data from the data sources as filtering criteria for other data blocks.
+- Other Blocks: Used to contain specific or independent content such as workflow tasks, audit logs, Markdown, etc.
 
-目前页面里的区块类型包括：数据区块、筛选区块、其他区块
+## Adding Blocks
 
-![](./static/Tvjfb4qr4osyzxxPKdRcfn1knsd.png)
+Blocks can be placed in a Page, Modal dialog, or Drawer.
 
-### 弹窗（对话框或抽屉）里的区块
+### Blocks in a Page
 
-弹窗有对话框和抽屉两种，和页面一样也可以添加区块，区别在于弹窗里的区块通常为单条记录的添加、编辑或查看等，区块类型包括当前数据区块、关系区块、其他区块。
+Currently, the types of blocks in a page include: Data Blocks, Filter Blocks, and Other Blocks.
 
-#### 抽屉
+![](https://static-docs.nocobase.com/dad0a394d33dd26f31c3202a76bb0153.png)
 
-![](./static/BEmxbD2SgoUTDexnYjzcmh7Knhg.png)
+### Blocks in a Popup (Modal or Drawer)
 
-#### 对话框
+Popups come in two forms: Modals and Drawers, and, like pages, can also have blocks added to them. The difference is that blocks in popups are generally used for adding, editing, or viewing individual records. The types of blocks include Data Blocks and Other Blocks.
 
-![](./static/EicAbMa7Jo2MD9x8FSfcpgTGnHc.png)
+![2024-04-10_11-27-04](https://static-docs.nocobase.com/2024-04-10_11-27-04.png)
 
-## 区块的设计器
+## Block Designer
 
-每个区块右上角都有三个小图标，从左到右分别为：
+Every block has three small icons in the upper right corner, from left to right they are:
 
-1. 拖拽布局
-2. 快捷添加区块
-3. 区块参数配置
+1. Drag Layout
+2. Quick Add Block
+3. Block Configuration
 
-![](./static/PSD8bf1fzoZkIUxJW7lc4XuGnee.png)
+![](https://static-docs.nocobase.com/b488f3013532a246df59b89c0688a58f.png)
 
-简单的区块所有的配置项都集中在「区块参数配置」里，如 Markdown
+Simple blocks have all their configuration items concentrated in "Block Configuration," such as Markdown.
 
-![](./static/L0aJb1V9DoETnNxrr1gcz0g0nDb.png)
+![](https://static-docs.nocobase.com/f37e277863068b2661f66d4020af806a.png)
 
-复杂的数据类型区块还会提供独立的内嵌的「配置字段」和「配置操作」
+Complex data type blocks will also provide separate embedded "Configure Fields" and "Configure Actions".
 
-![](./static/OpBcbf9UlooZ5UxZDwwcHZi8nWf.png)
+![](https://static-docs.nocobase.com/71b550da637d23145a5f62d48ee8521b.png)
 
-除此之外，也可以自由发挥，提供更多嵌套的可能，如图表区块
+Besides, there is also the potential for more nested possibilities, such as Chart Blocks.
 
-![](./static/Uo6ubaMwFo5bi1xVMU5cshlTn1g.png)
+![](https://static-docs.nocobase.com/07588190b3f41ae3060e71d8b76b4447.png)
 
-## 区块布局
+## Block Layout
 
-多个区块可以通过拖拽调整布局
+Multiple blocks can adjust the layout by dragging.
 
-![](./static/XjdHbvC9ZotdQAx8GJoczwoancc.gif)
+![](https://static-docs.nocobase.com/f6692295ac0917f3babce9a60ce80879.gif)
 
-## 区块模板
-
-可以将一个数据类型区块保存为模板，以后添加区块时可以直接复制或引用这个模板。比如，一个数据表的表单，既用于新增数据，又用于编辑数据，那就可以将这个表单保存为模板，在新增数据和编辑数据的界面里引用它。
-
-### 如何添加和使用模板？
-
-1. 将数据区块保存为区块模板（只有数据类型的区块才有这个配置项）
-
-![](./static/JNiLb7rksoY07ox092ycaarenGd.png)
-
-1. 添加区块时，选择复制或引用模板
-
-![](./static/ImutbF0YDoWldOxrPilcwQFHnSe.png)
-
-### 复制和引用的区别
-
-复制是基于区块模板创建的全新区块，区块有调整不影响模块；引用是直接使用区块模板，区块调整会改变模板，所有引用了当前模板的区块都会产生变化。
-
-## 区块类型
-
-![区块类型](./static/image.png)

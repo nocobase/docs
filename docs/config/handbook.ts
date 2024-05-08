@@ -60,6 +60,12 @@ export default [
             // subTitle: '@nocobase/plugin-data-source-external-postgres',
             link: '/handbook/data-source-external-postgres',
           },
+          {
+            title: 'External：HTTP API',
+            'title.zh-CN': '外部数据源：HTTP API',
+            // subTitle: '@nocobase/plugin-data-source-external-postgres',
+            link: '/handbook/data-source-http-api',
+          },
         ],
       },
       {
@@ -67,45 +73,53 @@ export default [
         'title.zh-CN': '数据表',
         children: [
           {
+            title: 'Overview',
+            'title.zh-CN': '概述',
+            link: '/handbook/data-modeling/collection',
+          },
+          {
+            title: 'General collection',
+            'title.zh-CN': '普通表',
+            link: '/handbook/data-source-main/general-collection',
+          },
+          {
+            title: 'Inheritance collection',
+            'title.zh-CN': '继承表',
+            link: '/handbook/data-source-main/inheritance-collection',
+          },
+          {
             title: 'File collection',
             'title.zh-CN': '文件表',
-            // subTitle: '@nocobase/plugin-collection-fdw',
             link: '/handbook/file-manager/file-collection',
           },
           {
             title: 'Tree collection',
             'title.zh-CN': '树表',
-            // subTitle: '@nocobase/plugin-collection-fdw',
             link: '/handbook/collection-tree',
           },
           {
             title: 'Calendar collection',
             'title.zh-CN': '日历表',
-            // subTitle: '@nocobase/plugin-collection-fdw',
-            link: '/handbook/calendar/calendar-collection',
+            link: '/handbook/block-calendar/collection-calendar',
           },
           {
             title: 'Expression collection',
             'title.zh-CN': '表达式表',
-            // subTitle: '@nocobase/plugin-collection-fdw',
             link: '/handbook/workflow-dynamic-calculation/expression',
           },
           {
             title: 'SQL collection',
             'title.zh-CN': 'SQL 表',
-            // subTitle: '@nocobase/plugin-collection-sql',
             link: '/handbook/collection-sql',
           },
           {
             title: 'View collection',
             'title.zh-CN': '数据库视图',
-            // subTitle: '@nocobase/plugin-collection-view',
             link: '/handbook/collection-view',
           },
           {
             title: 'Foreign data collection（FDW）',
             'title.zh-CN': '外部数据表',
-            // subTitle: '@nocobase/plugin-collection-fdw',
             link: '/handbook/collection-fdw',
           },
         ],
@@ -121,34 +135,198 @@ export default [
             link: '/handbook/data-modeling/collection-fields',
           },
           {
-            title: 'Field types',
-            'title.zh-CN': '数据类型',
+            title: 'Basic',
+            'title.zh-CN': '基本类型',
             children: [
               {
-                title: 'String',
-                'title.zh-CN': '字符串',
-                link: '/handbook/data-modeling/collection-fields/types/string',
+                title: 'Single text',
+                'title.zh-CN': '单行文本',
+                link: '/handbook/data-modeling/collection-fields/basic/input',
+              },
+              {
+                title: 'Textarea',
+                'title.zh-CN': '多行文本',
+                link: '/handbook/data-modeling/collection-fields/basic/textarea',
+              },
+              {
+                title: 'Phone',
+                'title.zh-CN': '手机号码',
+                link: '/handbook/data-modeling/collection-fields/basic/phone',
+              },
+              {
+                title: 'Email',
+                'title.zh-CN': '电子邮箱',
+                link: '/handbook/data-modeling/collection-fields/basic/email',
+              },
+              {
+                title: 'URL',
+                'title.zh-CN': 'URL',
+                link: '/handbook/data-modeling/collection-fields/basic/url',
+              },
+              {
+                title: 'Integer',
+                'title.zh-CN': '整数',
+                link: '/handbook/data-modeling/collection-fields/basic/integer',
+              },
+              {
+                title: 'Number',
+                'title.zh-CN': '数字',
+                link: '/handbook/data-modeling/collection-fields/basic/number',
+              },
+              {
+                title: 'Percent',
+                'title.zh-CN': '百分比',
+                link: '/handbook/data-modeling/collection-fields/basic/percent',
+              },
+              {
+                title: 'Password',
+                'title.zh-CN': '密码',
+                link: '/handbook/data-modeling/collection-fields/basic/password',
+              },
+              {
+                title: 'Color',
+                'title.zh-CN': '颜色',
+                link: '/handbook/data-modeling/collection-fields/basic/color',
+              },
+              {
+                title: 'Icon',
+                'title.zh-CN': '图标',
+                link: '/handbook/data-modeling/collection-fields/basic/icon',
               },
             ],
           },
           {
-            title: 'Field interfaces',
-            'title.zh-CN': 'UI 类型',
+            title: 'Choices',
+            'title.zh-CN': '选择类型',
             children: [
+              {
+                title: 'Checkbox',
+                'title.zh-CN': '勾选',
+                link: '/handbook/data-modeling/collection-fields/choices/checkbox',
+              },
+              {
+                title: 'Single select',
+                'title.zh-CN': '下拉菜单（单选）',
+                link: '/handbook/data-modeling/collection-fields/choices/select',
+              },
+              {
+                title: 'Multiple select',
+                'title.zh-CN': '下拉菜单（多选）',
+                link: '/handbook/data-modeling/collection-fields/choices/multiple-select',
+              },
+              {
+                title: 'Radio group',
+                'title.zh-CN': '单选框',
+                link: '/handbook/data-modeling/collection-fields/choices/radio-group',
+              },
+              {
+                title: 'Checkbox group',
+                'title.zh-CN': '复选框',
+                link: '/handbook/data-modeling/collection-fields/choices/checkbox-group',
+              },
+              {
+                title: 'China region',
+                'title.zh-CN': '中国行政区',
+                link: '/handbook/field-china-region',
+              },
+            ],
+          },
+          {
+            title: 'Media',
+            'title.zh-CN': '多媒体',
+            children: [
+              {
+                title: 'Markdown',
+                'title.zh-CN': 'Markdown',
+                link: '/handbook/data-modeling/collection-fields/media/markdown',
+              },
+              {
+                title: 'Rich text',
+                'title.zh-CN': '富文本',
+                link: '/handbook/data-modeling/collection-fields/media/rich-text',
+              },
               {
                 title: 'Attachment',
                 'title.zh-CN': '附件',
-                link: '/handbook/file-manager/attachment-field',
+                link: '/handbook/file-manager/field-attachment',
+              },
+            ],
+          },
+          {
+            title: 'Date & Time',
+            'title.zh-CN': '日期 & 时间',
+            children: [
+              {
+                title: 'Datetime',
+                'title.zh-CN': '日期',
+                link: '/handbook/data-modeling/collection-fields/datetime/datetime',
+              },
+              {
+                title: 'Unix timestamp',
+                'title.zh-CN': 'Unix 时间戳',
+                link: '/handbook/data-modeling/collection-fields/datetime/unix-timestamp',
+              },
+              {
+                title: 'Time',
+                'title.zh-CN': '时间',
+                link: '/handbook/data-modeling/collection-fields/datetime/time',
+              },
+            ],
+          },
+          {
+            title: 'Geometric',
+            'title.zh-CN': '几何图形',
+            children: [
+              {
+                title: 'Point',
+                'title.zh-CN': '点',
+                link: '/handbook/data-modeling/collection-fields/geometric/point',
+              },
+              {
+                title: 'Line',
+                'title.zh-CN': '线',
+                link: '/handbook/data-modeling/collection-fields/geometric/line',
+              },
+              {
+                title: 'Circle',
+                'title.zh-CN': '圆',
+                link: '/handbook/data-modeling/collection-fields/geometric/circle',
+              },
+              {
+                title: 'Polygon',
+                'title.zh-CN': '多边形',
+                link: '/handbook/data-modeling/collection-fields/geometric/polygon',
+              },
+            ],
+          },
+          {
+            title: 'Advanced',
+            'title.zh-CN': '高级类型',
+            children: [
+              {
+                title: 'UUID',
+                'title.zh-CN': 'UUID',
+                link: '/handbook/data-modeling/collection-fields/advanced/uuid',
+              },
+              {
+                title: 'Nano ID',
+                'title.zh-CN': 'Nano ID',
+                link: '/handbook/data-modeling/collection-fields/advanced/nano-id',
+              },
+              {
+                title: 'Sort',
+                'title.zh-CN': '排序 - Sort',
+                link: '/handbook/field-sort',
+              },
+              {
+                title: 'Expression',
+                'title.zh-CN': '表达式',
+                link: '/handbook/workflow-dynamic-calculation/field-expression',
               },
               {
                 title: 'Formula',
                 'title.zh-CN': '公式',
                 link: '/handbook/field-formula',
-              },
-              {
-                title: 'China region',
-                'title.zh-CN': '中国行政区划',
-                link: '/handbook/china-region',
               },
               {
                 title: 'Sequence',
@@ -159,6 +337,73 @@ export default [
                 title: 'Snapshot',
                 'title.zh-CN': '快照',
                 link: '/handbook/field-snapshot',
+              },
+              {
+                title: 'Collection 选择器',
+                'title.zh-CN': '数据表选择器',
+                link: '/handbook/data-modeling/collection-fields/advanced/collection-select',
+              },
+            ],
+          },
+          {
+            title: 'System info',
+            'title.zh-CN': '系统信息',
+            children: [
+              {
+                title: 'Created at',
+                'title.zh-CN': '创建日期',
+                link: '/handbook/data-modeling/collection-fields/system-info/created-at',
+              },
+              {
+                title: 'Last updated at',
+                'title.zh-CN': '最后修改日期',
+                link: '/handbook/data-modeling/collection-fields/system-info/updated-at',
+              },
+              {
+                title: 'Created by',
+                'title.zh-CN': '创建人',
+                link: '/handbook/users/field-created-by',
+              },
+              {
+                title: 'Last updated by',
+                'title.zh-CN': '最后修改人',
+                link: '/handbook/users/field-updated-by',
+              },
+              {
+                title: 'Table OID',
+                'title.zh-CN': 'Table OID',
+                link: '/handbook/data-modeling/collection-fields/system-info/table-oid',
+              },
+            ],
+          },
+          {
+            title: 'Association',
+            'title.zh-CN': '关系类型',
+            children: [
+              {
+                title: 'Overview',
+                'title.zh-CN': '概述',
+                link: '/handbook/data-modeling/collection-fields/associations',
+              },
+              {
+                title: 'One-to-one',
+                'title.zh-CN': '一对一',
+                link: '/handbook/data-modeling/collection-fields/associations/o2o',
+              },
+              {
+                title: 'One-to-many',
+                'title.zh-CN': '一对多',
+                link: '/handbook/data-modeling/collection-fields/associations/o2m',
+              },
+              {
+                title: 'Many-to-one',
+                'title.zh-CN': '多对一',
+                link: '/handbook/data-modeling/collection-fields/associations/m2o',
+              },
+              {
+                title: 'Many-to-many',
+                'title.zh-CN': '多对多',
+                link: '/handbook/data-modeling/collection-fields/associations/m2m',
               },
             ],
           },
@@ -172,8 +417,8 @@ export default [
     type: 'group',
     children: [
       {
-        title: 'Edit UI mode',
-        'title.zh-CN': '配置界面模式',
+        title: 'UI Editor mode',
+        'title.zh-CN': '界面配置模式',
         link: '/handbook/ui/ui-editor',
       },
       {
@@ -193,7 +438,7 @@ export default [
       },
       {
         title: 'Blocks',
-        'title.zh-CN': '添加区块',
+        'title.zh-CN': '区块',
         children: [
           {
             title: 'Overview',
@@ -215,9 +460,24 @@ export default [
                 link: '/handbook/ui/blocks/data-blocks/form',
               },
               {
-                title: 'Table',
+                title: 'Details',
                 'title.zh-CN': '详情',
                 link: '/handbook/ui/blocks/data-blocks/details',
+              },
+              {
+                title: 'List',
+                'title.zh-CN': '列表',
+                link: '/handbook/ui/blocks/data-blocks/list',
+              },
+              {
+                title: 'Grid card',
+                'title.zh-CN': '网格卡片',
+                link: '/handbook/ui/blocks/data-blocks/grid-card',
+              },
+              {
+                title: 'Calendar',
+                'title.zh-CN': '日历',
+                link: '/handbook/block-calendar',
               },
               {
                 title: 'Gantt',
@@ -225,9 +485,19 @@ export default [
                 link: '/handbook/block-gantt',
               },
               {
-                title: 'Calendar',
-                'title.zh-CN': '日历',
-                link: '/handbook/calendar/calendar-block',
+                title: 'Kanban',
+                'title.zh-CN': '看板',
+                link: '/handbook/block-kanban',
+              },
+              {
+                title: 'Map',
+                'title.zh-CN': '地图',
+                link: '/handbook/block-map',
+              },
+              {
+                title: 'Charts',
+                'title.zh-CN': '图表',
+                link: '/handbook/data-visualization/',
               },
             ],
           },
@@ -239,6 +509,11 @@ export default [
                 title: 'Form',
                 'title.zh-CN': '表单',
                 link: '/handbook/ui/blocks/filter-blocks/form',
+              },
+              {
+                title: 'Collapse',
+                'title.zh-CN': '折叠面板',
+                link: '/handbook/ui/blocks/filter-blocks/collapse',
               },
             ],
           },
@@ -252,17 +527,88 @@ export default [
                 link: '/handbook/ui/blocks/other-blocks/markdown',
               },
               {
+                title: 'iframe',
+                'title.zh-CN': 'iframe',
+                link: '/handbook/block-iframe',
+              },
+              {
                 title: 'Workflow todos',
                 'title.zh-CN': '工作流待办',
                 link: '/handbook/workflow-manual/workflow-todos-block',
+              },
+              {
+                title: 'Workflow todos',
+                'title.zh-CN': '审批',
+                link: '/handbook/workflow-approval',
+              },
+              {
+                title: 'Audit logs',
+                'title.zh-CN': '审计日志',
+                link: '/handbook/audit-logs',
+              },
+            ],
+          },
+          {
+            title: 'Block templates',
+            'title.zh-CN': '区块模板',
+            link: '/handbook/ui/blocks/block-templates',
+          },
+          {
+            title: 'Block settings',
+            'title.zh-CN': '区块设置项',
+            children: [
+              {
+                title: 'Set the data scope',
+                'title.zh-CN': '设置数据范围',
+                link: '/handbook/ui/blocks/block-settings/data-scope',
+              },
+              {
+                title: 'Set default sorting rules',
+                'title.zh-CN': '设置排序规则',
+                link: '/handbook/ui/blocks/block-settings/sorting-rule',
+              },
+              {
+                title: 'Set data loading mode',
+                'title.zh-CN': '设置数据加载方式',
+                link: '/handbook/ui/blocks/block-settings/loading-mode',
+              },
+              {
+                title: 'Connect data blocks',
+                'title.zh-CN': '连接数据区块',
+                link: '/handbook/ui/blocks/block-settings/connect-block',
+              },
+              {
+                title: 'Save as template',
+                'title.zh-CN': '保存为区块模板',
+                link: '/handbook/ui/blocks/block-settings/block-template',
+              },
+              {
+                title: 'Linkage rules',
+                'title.zh-CN': '联动规则',
+                link: '/handbook/ui/blocks/block-settings/linkage-rule',
+              },
+              {
+                title: 'Edit block title',
+                'title.zh-CN': '编辑区块标题',
+                link: '/handbook/ui/blocks/block-settings/block-title',
+              },
+              {
+                title: 'Set block height',
+                'title.zh-CN': '设置区块高度',
+                link: '/handbook/ui/blocks/block-settings/block-height',
+              },
+              {
+                title: 'Delete',
+                'title.zh-CN': '删除区块',
+                link: '/handbook/ui/blocks/block-settings/block-delete',
               },
             ],
           },
         ],
       },
       {
-        title: 'Configure fields',
-        'title.zh-CN': '配置字段',
+        title: 'Fields',
+        'title.zh-CN': '字段',
         children: [
           {
             title: 'Overview',
@@ -270,92 +616,168 @@ export default [
             link: '/handbook/ui/fields',
           },
           {
-            title: '通用属性设置',
-            'title.zh-CN': '通用属性设置',
+            title: 'Common ettings',
+            'title.zh-CN': '通用配置项',
             children: [
               {
-                title: '表格字段',
+                title: 'Table column',
                 'title.zh-CN': '表格字段',
-                link: '/handbook/ui/fields/field-settings/table-column',
+                link: '/handbook/ui/fields/generic/table-column',
               },
               {
-                title: '表单字段',
+                title: 'Form',
                 'title.zh-CN': '表单字段',
-                link: '/handbook/ui/fields/field-settings/form-item',
+                link: '/handbook/ui/fields/generic/form-item',
               },
               {
-                title: '批量编辑表单',
+                title: 'Detail',
+                'title.zh-CN': '详情字段',
+                link: '/handbook/ui/fields/generic/detail-form-item',
+              },
+              {
+                title: 'Bulk edit form',
                 'title.zh-CN': '批量编辑表单',
-                link: '/handbook/ui/fields/field-settings/BulkEditFormItem',
+                link: '/handbook/ui/fields/generic/bulk-edit-form-item',
               },
               {
-                title: '筛选表单字',
+                title: 'Filter form',
                 'title.zh-CN': '筛选表单',
-                link: '/handbook/ui/fields/field-settings/filter-form-item',
+                link: '/handbook/ui/fields/generic/filter-form-item',
               },
               {
-                title: '折叠面板',
+                title: 'Collapse',
                 'title.zh-CN': '折叠面板',
-                link: '/handbook/ui/fields/field-settings/FilterCollapseItem',
+                link: '/handbook/ui/fields/generic/filter-collapse-item',
               },
             ],
           },
           {
-            title: '特有属性设置',
-            'title.zh-CN': '特有属性设置',
+            title: 'Specific settings',
+            'title.zh-CN': '特有配置项',
             children: [
               {
-                title: 'DatePicker',
-                'title.zh-CN': 'DatePicker',
-                link: '/handbook/ui/fields/field-settings/DatePicker',
+                title: 'Date picker',
+                'title.zh-CN': '时间日期',
+                link: '/handbook/ui/fields/specific/date-picker',
               },
               {
-                title: '级联选择',
+                title: 'Cascade select',
                 'title.zh-CN': '级联选择',
-                link: '/handbook/ui/fields/field-settings/CascadeSelect',
+                link: '/handbook/ui/fields/specific/cascade-select',
               },
               {
-                title: '子表单',
+                title: 'Nester',
                 'title.zh-CN': '子表单',
-                link: '/handbook/ui/fields/field-settings/Nester',
+                link: '/handbook/ui/fields/specific/nester',
               },
               {
-                title: '弹窗子表单',
-                'title.zh-CN': '弹窗子表单',
-                link: '/handbook/ui/fields/field-settings/PopoverNester',
+                title: 'Popover nester',
+                'title.zh-CN': '子表单（弹窗）',
+                link: '/handbook/ui/fields/specific/popover-nester',
               },
               {
-                title: '选择器',
+                title: 'Select',
                 'title.zh-CN': '选择器',
-                link: '/handbook/ui/fields/field-settings/Select',
+                link: '/handbook/ui/fields/specific/select',
               },
               {
-                title: '数据选择器',
+                title: 'Record picker',
                 'title.zh-CN': '数据选择器',
-                link: '/handbook/ui/fields/field-settings/Picker',
+                link: '/handbook/ui/fields/specific/picker',
               },
               {
-                title: '子表格',
+                title: 'Sub table',
                 'title.zh-CN': '子表格',
-                link: '/handbook/ui/fields/field-settings/SubTable',
+                link: '/handbook/ui/fields/specific/sub-table',
               },
               {
-                title: '标签',
+                title: 'Title',
+                'title.zh-CN': '标题',
+                link: '/handbook/ui/fields/specific/title',
+              },
+              {
+                title: 'Tag',
                 'title.zh-CN': '标签',
-                link: '/handbook/ui/fields/field-settings/Tag',
+                link: '/handbook/ui/fields/specific/tag',
               },
               {
-                title: '文件管理器',
+                title: 'File manager',
                 'title.zh-CN': '文件管理器',
-                link: '/handbook/ui/fields/field-settings/FileManager',
+                link: '/handbook/ui/fields/specific/file-manager',
               },
             ],
+          },
+          {
+            title: 'Field Settings',
+            'title.zh-CN': '字段配置项',
+            children: [
+              {
+                title: 'Required',
+                'title.zh-CN': '必填',
+                link: '/handbook/ui/fields/field-settings/required',
+              },
+              {
+                title: 'Set default value',
+                'title.zh-CN': '默认值',
+                link: '/handbook/ui/fields/field-settings/default-value',
+              },
+              {
+                title: 'Set validation rules',
+                'title.zh-CN': '验证规则',
+                link: '/handbook/ui/fields/field-settings/validation-rules',
+              },
+              {
+                title: 'Format',
+                'title.zh-CN': '数值格式化',
+                link: '/handbook/ui/fields/field-settings/number-format',
+              },
+              {
+                title: 'Data scope',
+                'title.zh-CN': '设置数据范围',
+                link: '/handbook/ui/fields/field-settings/data-scope',
+              },
+              {
+                title: 'Title field',
+                'title.zh-CN': '标题字段',
+                link: '/handbook/ui/fields/field-settings/title-field',
+              },
+              {
+                title: 'Pattern',
+                'title.zh-CN': '显示模式',
+                link: '/handbook/ui/fields/field-settings/pattern',
+              },
+              {
+                title: 'Edit field title',
+                'title.zh-CN': '编辑字段标题',
+                link: '/handbook/ui/fields/field-settings/edit-title',
+              },
+              {
+                title: 'Display title',
+                'title.zh-CN': '显示标题',
+                link: '/handbook/ui/fields/field-settings/display-title',
+              },
+              {
+                title: 'Edit description',
+                'title.zh-CN': '编辑描述',
+                link: '/handbook/ui/fields/field-settings/edit-description',
+              },
+              {
+                title: 'Edit tooltip',
+                'title.zh-CN': '编辑提示信息',
+                link: '/handbook/ui/fields/field-settings/edit-tooltip',
+              },
+            ],
+          },
+          {
+            title: 'Asscoation field component',
+            'title.zh-CN': '关系字段组件',
+            link: '/handbook/ui/fields/association-field',
           },
         ],
       },
       {
-        title: 'Configure actions',
-        'title.zh-CN': '配置操作',
+        title: 'Actions',
+        'title.zh-CN': '操作',
         children: [
           {
             title: 'Overview',
@@ -363,38 +785,48 @@ export default [
             link: '/handbook/ui/actions',
           },
           {
-            title: '常用设置项',
-            'title.zh-CN': '常用设置项',
+            title: 'Common settings',
+            'title.zh-CN': '通用配置项',
             children: [
               {
                 title: 'Linkage',
                 'title.zh-CN': '联动规则',
-                link: '/handbook/ui/actions/linkage',
+                link: '/handbook/ui/actions/action-settings/linkage-rule',
               },
               {
                 title: 'Open mode',
                 'title.zh-CN': '打开方式',
-                link: '/handbook/ui/actions/open-mode',
+                link: '/handbook/ui/actions/action-settings/open-mode',
               },
               {
                 title: 'Popup size',
                 'title.zh-CN': '弹窗尺寸',
-                link: '/handbook/ui/actions/popup-size',
+                link: '/handbook/ui/actions/action-settings/popup-size',
               },
               {
                 title: 'Second confirmation',
                 'title.zh-CN': '二次确认',
-                link: '/handbook/ui/actions/double-check',
+                link: '/handbook/ui/actions/action-settings/double-check',
               },
               {
                 title: 'Bind workflows',
                 'title.zh-CN': '绑定工作流',
-                link: '/handbook/ui/actions/bind-workflow',
+                link: '/handbook/ui/actions/action-settings/bind-workflow',
               },
               {
                 title: 'Assign field values',
                 'title.zh-CN': '字段赋值',
-                link: '/handbook/ui/actions/assign-values',
+                link: '/handbook/ui/actions/action-settings/assign-values',
+              },
+              {
+                title: 'Edit button',
+                'title.zh-CN': '编辑按钮',
+                link: '/handbook/ui/actions/action-settings/edit-button',
+              },
+              {
+                title: 'After successful submission',
+                'title.zh-CN': '提交成功后',
+                link: '/handbook/ui/actions/action-settings/affter-successful',
               },
             ],
           },
@@ -402,19 +834,120 @@ export default [
             title: 'Action types',
             'title.zh-CN': '操作类型',
             children: [
+           
               {
-                title: 'Custom pop-up',
-                'title.zh-CN': '自定义弹窗',
-                link: '/handbook/ui/actions/types/pop-up',
+                title: 'View',
+                'title.zh-CN': '查看',
+                link: '/handbook/ui/actions/types/view',
+              },
+              {
+                title: 'Filter',
+                'title.zh-CN': '筛选',
+                link: '/handbook/ui/actions/types/filter',
               },
               {
                 title: 'Add new',
                 'title.zh-CN': '添加',
                 link: '/handbook/ui/actions/types/add-new',
               },
+              {
+                title: 'Edit',
+                'title.zh-CN': '编辑',
+                link: '/handbook/ui/actions/types/edit',
+              },
+              {
+                title: 'Delete',
+                'title.zh-CN': '删除',
+                link: '/handbook/ui/actions/types/delete',
+              },
+              {
+                title: 'Refresh',
+                'title.zh-CN': '刷新',
+                link: '/handbook/ui/actions/types/refresh',
+              },
+              {
+                title: 'Add record',
+                'title.zh-CN': '添加记录',
+                link: '/handbook/ui/actions/types/add-record',
+              },
+              {
+                title: 'Custom pop-up',
+                'title.zh-CN': '自定义弹窗',
+                link: '/handbook/ui/actions/types/pop-up',
+              },
+              {
+                title: 'Update record',
+                'title.zh-CN': '更新记录',
+                link: '/handbook/ui/actions/types/update-record',
+              },
+              {
+                title: 'Save record',
+                'title.zh-CN': '保存记录',
+                link: '/handbook/ui/actions/types/save-record',
+              },
+              {
+                title: 'Submit',
+                'title.zh-CN': '提交',
+                link: '/handbook/ui/actions/types/submit',
+              },
+              {
+                title: 'Submit to workflow',
+                'title.zh-CN': '提交至工作流',
+                link: '/handbook/workflow/submit-to-workflow',
+              },
+              {
+                title: 'Bulk edit',
+                'title.zh-CN': '批量编辑',
+                link: '/handbook/action-bulk-edit',
+              },
+              {
+                title: 'Bulk update',
+                'title.zh-CN': '批量更新',
+                link: '/handbook/action-bulk-update',
+              },
+              {
+                title: 'Custom request',
+                'title.zh-CN': '自定义请求',
+                link: '/handbook/action-custom-request',
+              },
+              {
+                title: 'Duplicate',
+                'title.zh-CN': '复制',
+                link: '/handbook/action-duplicate',
+              },
+              {
+                title: 'Print',
+                'title.zh-CN': '打印',
+                link: '/handbook/action-print',
+              },
+              {
+                title: 'Import',
+                'title.zh-CN': '导入',
+                link: '/handbook/action-import',
+              },
+              {
+                title: 'Import Pro',
+                'title.zh-CN': '导入 Pro',
+                link: '/handbook/action-import-pro',
+              },
+              {
+                title: 'Export',
+                'title.zh-CN': '导出',
+                link: '/handbook/action-export',
+              },
+              {
+                title: 'Export Pro',
+                'title.zh-CN': '导出 Pro',
+                link: '/handbook/action-export-pro',
+              },
             ],
           },
         ],
+      },
+      {
+        title: 'Variables',
+        'title.zh-CN': '变量',
+        link: '/handbook/ui/variables',
       },
       {
         title: 'Mobile client',
@@ -439,7 +972,7 @@ export default [
             link: '/handbook/users',
           },
           {
-            title: 'Access control',
+            title: 'Roles & permissions',
             'title.zh-CN': '角色和权限',
             link: '/handbook/acl',
           },
@@ -608,6 +1141,12 @@ export default [
             ],
           },
           {
+            title: 'Workflow - Post-action event',
+            'title.zh-CN': '工作流 - 操作后事件',
+            // subTitle: '@nocobase/plugin-workflow-action-trigger',
+            link: '/handbook/workflow-action-trigger',
+          },
+          {
             title: 'Workflow - Aggregate',
             'title.zh-CN': '工作流 - 聚合节点',
             // subTitle: '@nocobase/plugin-workflow-aggregate',
@@ -630,12 +1169,6 @@ export default [
             'title.zh-CN': '工作流 - 动态表达式计算',
             // subTitle: '@nocobase/plugin-workflow-dynamic-calculation',
             link: '/handbook/workflow-dynamic-calculation',
-          },
-          {
-            title: 'Workflow - Form trigger',
-            'title.zh-CN': '工作流 - 表单事件',
-            // subTitle: '@nocobase/plugin-workflow-form-trigger',
-            link: '/handbook/workflow-form-trigger',
           },
           {
             title: 'Workflow - JSON query',
@@ -668,8 +1201,8 @@ export default [
             link: '/handbook/workflow-request',
           },
           {
-            title: 'Workflow - Request interceptor',
-            'title.zh-CN': '工作流 - 请求拦截器',
+            title: 'Workflow - Pre-action event',
+            'title.zh-CN': '工作流 - 操作前事件',
             // subTitle: '@nocobase/plugin-workflow-request-interceptor',
             link: '/handbook/workflow-request-interceptor',
           },
@@ -749,6 +1282,59 @@ export default [
         ],
       },
       {
+        title: 'Data visualization',
+        'title.zh-CN': '数据可视化',
+        children: [
+          {
+            title: 'Overview',
+            'title.zh-CN': '概述',
+            link: '/handbook/data-visualization',
+          },
+          {
+            title: 'User manual',
+            'title.zh-CN': '使用手册',
+            children: [
+              {
+                title: 'Chart block',
+                'title.zh-CN': '图表区块',
+                link: '/handbook/data-visualization/user/chart-block',
+              },
+              {
+                title: 'Configure',
+                'title.zh-CN': '配置图表',
+                link: '/handbook/data-visualization/user/configure',
+              },
+              {
+                title: 'Filter block',
+                'title.zh-CN': '筛选区块',
+                link: '/handbook/data-visualization/user/filter',
+              },
+            ],
+          },
+          {
+            title: 'Development',
+            'title.zh-CN': '开发指南',
+            children: [
+              {
+                title: 'Extend chart types',
+                'title.zh-CN': '扩展图表类型',
+                link: '/handbook/data-visualization/dev/',
+              },
+              {
+                title: 'Example of integrating ECharts',
+                'title.zh-CN': 'ECharts 集成示例',
+                link: '/handbook/data-visualization/step-by-step',
+              },
+            ],
+          },
+          {
+            title: 'FAQ',
+            'title.zh-CN': '常见问题',
+            link: '/handbook/data-visualization/faq',
+          },
+        ],
+      },
+      {
         title: 'Multi-app manager',
         'title.zh-CN': '多应用管理',
         // subTitle: '@nocobase/plugin-api-doc',
@@ -772,6 +1358,12 @@ export default [
         'title.zh-CN': '系统设置',
         // subTitle: '@nocobase/plugin-system-settings',
         link: '/handbook/system-settings',
+      },
+      {
+        title: 'Language settings',
+        'title.zh-CN': '语言设置',
+        // subTitle: '@nocobase/plugin-system-settings',
+        link: '/handbook/system-settings/language-settings',
       },
       {
         title: 'Theme editor',
@@ -804,6 +1396,16 @@ export default [
         // subTitle: '@nocobase/plugin-api-doc',
         link: '/handbook/api-doc',
         // children: ['/plugins/api-doc'],
+      },
+      {
+        title: 'Embed',
+        'title.zh-CN': '嵌入',
+        link: '/handbook/embed',
+      },
+      {
+        title: 'Custom brand',
+        'title.zh-CN': '自定义品牌',
+        link: '/handbook/custom-brand',
       },
     ],
   },

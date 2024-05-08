@@ -8,11 +8,11 @@
 
 在工作流配置界面中，点击流程中的加号（“+”）按钮，添加“查询数据”节点：
 
-![查询数据_添加](./40d07623-b1c9-43ce-9513-0d42ac4a5b87.png)
+![查询数据_添加](https://static-docs.nocobase.com/c1ef2b851b437806faf7a39c6ab9d33a.png)
 
 ## 节点配置
 
-![查询节点_节点配置](./90d21bdb-426a-4f41-8bbe-2d095a6f9d3e.png)
+![查询节点_节点配置](https://static-docs.nocobase.com/dbec23f35e2d96b5287b3988705fb829.png)
 
 ### 数据表
 

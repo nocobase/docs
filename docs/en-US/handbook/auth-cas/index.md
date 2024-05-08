@@ -1,33 +1,33 @@
-# CAS 认证
+# CAS Authentication
 
-## 介绍
+## Introduction
 
-CAS (Central Authentication Service) 是一种单点登录协议，它允许用户在一个应用程序中进行身份验证，然后在不需要重新登录的情况下访问其他应用程序。
+CAS (Central Authentication Service) is a single sign-on protocol that allows users to authenticate in one application and then access other applications without having to log in again.
 
-## 安装
+## Installation
 
-## 使用手册
+## User Manual
 
-### 激活插件
+### Activate Plugin
 
-![](./static/OAYab64AWoL3jkxeLUDc3YBfnFs.png)
+![](https://static-docs.nocobase.com/469c48d9f2e8d41a088092c34ddb41f5.png)
 
-### 添加 CAS 认证
+### Add CAS Authentication
 
-访问用户认证管理页面
+Visit the user authentication management page
 
 http://localhost:13000/admin/settings/auth/authenticators
 
-添加 CAS 认证方式
+Add CAS authentication method
 
-![](./static/XnzpbO09Vo5ha6xJfsTcifEunkh.png)
+![](https://static-docs.nocobase.com/a268500c5008d3b90e57ff1e2ea41aca.png)
 
-配置 CAS 并激活
+Configure CAS and activate
 
-![](./static/P3eDbyNhioPiJIxEIzWcfyTfnRe.png)
+![](https://static-docs.nocobase.com/2518b3fcc80d8a41391f3b629a510a02.png)
 
-### 访问登录页
+### Visit the Login Page
 
 http://localhost:13000/signin
 
-![](./static/AGr7blmfHoef1kxKpDVc7JTnnlf.png)
+![](https://static-docs.nocobase.com/49116aafbb2ed7218306f929ac8af967.png)

@@ -1,6 +1,6 @@
 # 数据库视图
 
-![](./static/PnZ1bBK5OopbXFxkqBfclaTknih.png)
+![](https://static-docs.nocobase.com/3e33ae5e23399105ab83c7d5ecb32a26.png)
 
 ## 基础概念
 
@@ -26,7 +26,7 @@ SELECT t2.customer_name,
 
 数据库中的视图：
 
-![](./static/Rh9Vb4rLXorm57xKGaWcQdR1nkh.png)
+![](https://static-docs.nocobase.com/a5eaaadd358f41b33e036198cf0600ce.png)
 
 ## 创建视图数据表
 
@@ -34,26 +34,26 @@ SELECT t2.customer_name,
 
 选择目标视图
 
-![](./static/PguWbMOdAoA5wYxPWopcFGNMn7b.png)
+![](https://static-docs.nocobase.com/cf950e4d2851bdde475838a2f040a79e.png)
 
 - 支持自定义视图的列名（字段名）
 - 来源字段：即源表的元字段，当字段未解析出源表来源字段时（聚合的字段无来源字段），可指定字段的 interface
 - 视图数据是否支持增删改操作（默认不支持）
 
-![](./static/QVhmbkwRso7zrAxP3e8cjoKbndf.png)
+![](https://static-docs.nocobase.com/0d99fc9047f25119dbce0c396a866cf7.png)
 
 完整的示例配置流程如图
 
-![](./static/Ey2Ob9o39oP95Yx2bRIcbamznLd.gif)
+![](https://static-docs.nocobase.com/bd0f54c899b4d8740779dd0cb8f1d65f.gif)
 
 - Sync from database 支持调整视图表配置（若数据库中视图进行了调整，可重新连接视图同步数据）
 - 删除：这里删除操作不会将源表字段删除，仅删除视图表中的字段
 
-![](./static/T2qXbDwugovgGJxjmOWcnYQfnYc.png)
+![](https://static-docs.nocobase.com/39e906c75a7f7a3d1c38d8fa0be7d068.png)
 
 是否支持对视图数据表的增删改操作（默认不启用），启用时，对应区块才支持增加、删除等操作
 
-![](./static/AEvTbdf38oXhlnxlS6lcPpV0nVe.png)
+![](https://static-docs.nocobase.com/064ce37acb2f1f61cfe91a5892b34bdb.png)
 
 ## 视图数据表在 UI 中的使用
 
@@ -61,4 +61,4 @@ SELECT t2.customer_name,
 
 视图表与其他任意方式创建的数据表一样在所有区块中都能选中作为数据源
 
-![](./static/PGUxb8ur2oylWdxn9wuc99vVnrc.gif)
+![](https://static-docs.nocobase.com/1208a826507e9dd210ba63f9bfeaa90d.gif)

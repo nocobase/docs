@@ -36,4 +36,4 @@ docker compose up -d mysql
 show engines
 ```
 
-![Alt text](./image-10.png)
+![Alt text](https://static-docs.nocobase.com/ac5d97cf902ad164e141633a41a23e46.png)

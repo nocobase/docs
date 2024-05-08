@@ -28,4 +28,4 @@ NocoBase 目前支持 10 几种操作，未来可以通过插件的方式支持�
 
 在界面配置模式下，将鼠标移到操作按钮上，右上角就会出现该操作支持的配置项。比如筛选操作：
 
-![action-config-5.jpg](./actions/action-config-5.jpg)
+![action-config-5.jpg](https://static-docs.nocobase.com/9562124b304e77e0fc576476781df2bd.jpg)

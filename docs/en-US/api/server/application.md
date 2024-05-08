@@ -1,306 +1,364 @@
 # Application
 
-## Overview
-
-### Web Service
-
-NocoBase Application is a web framework implemented based on [Koa](https://koajs.com/), compatible with Koa API.
-
-```javascript
-// index.js
-const { Application } = require('@nocobase/server');
-
-// Create App instance and configure the database
-const app = new Application({
-  database: {
-    dialect: 'sqlite',
-    storage: ':memory:',
-  },
-});
-
-// Register middleware, response to requests
-app.use(async (ctx) => {
-  ctx.body = 'Hello World';
-});
-
-// Run in the CLI mode
-app.runAsCLI();
-```
-
-After running `node index.js start` in CLI to start service, use `curl` to request service.
-
-```bash
-$> curl localhost:3000
-Hello World
-```
-
-### CLI Tool
-
-NocoBase Application has a built-in `cli commander`, which can be run as CLI tool.
-
-```javascript
-// cmd.js
-const { Application } = require('@nocobase/server');
-const app = new Application({
-  database: {
-    dialect: 'sqlite',
-    storage: ':memory:',
-  },
-});
-
-app.cli.command('hello').action(async () => {
-  console.log('hello world');
-});
-
-app.runAsCLI();
-```
-
-Run in CLI:
-
-```bash
-$> node cmd.js hello
-hello world
-```
-
-### Inject Plugin
-
-NocoBase Application is designed as a highly extensible framework, plugins can be written and injected to the applicationto to extend its functionality. For example, the above-mentioned web service can be replaced with a plugin.
-
-```javascript
-const { Application, Plugin } = require('@nocobase/server');
-
-// Write plugin by inheriting the Plugin class
-class HelloWordPlugin extends Plugin {
-  load() {
-    this.app.use(async (ctx, next) => {
-      ctx.body = 'Hello World';
-    });
-  }
-}
-
-const app = new Application({
-  database: {
-    dialect: 'sqlite',
-    storage: ':memory:',
-  },
-});
-
-// Inject plugin
-app.plugin(HelloWordPlugin, { name: 'hello-world-plugin' });
-
-app.runAsCLI();
-```
-
-### More Examples
-
-Please refer to the detailed guides of [plugin development](./plugin.md). Read more [examples](https://github.com/nocobase/nocobase/blob/main/examples/index.md) of the Application class.
-
-## Lifecycle
-
-Application has three lifecycle stages depends on the running mode.
-
-### Install
-
-Use the `install` command in `cli` to invoke the installation. Generally, if needs to write new tables or data to the database before using the plugin, you have to do it during installation. Installation is also required when using NocoBase for the first time.
-
-- Call the `load` method to load registered plugins.
-- Trigger the `beforeInstall` event.
-- Call the `db.sync` method to synchronize database.
-- Call the `pm.install` method to execute the `install` methods of registered plugins.
-- Write the version of `nocobase`.
-- Trigger the `afterInstall` event.
-- Call the `stop` method to end installation.
-
-### Start
-
-Use the `start` command in `cli` to start NocoBase Web service.
-
-- Call the `load` method to load registered plugins.
-- Call the `start` medthod:
-  - Trigger the `beforeStart` event
-  - Start port listening
-  - Trigger the `afterStart` event
-
-### Upgrade
-
-Use the `upgrade` command in `cli` to upgrade NocoBase Web service when needed.
-
-- Call the `load` method to load registered plugins.
-- Trigger the `beforeUpgrade` event.
-- Call the `db.migrator.up` method to migrate database.
-- Call the `db.sync` method to synchronize database.
-- Call the `version.update` method to update the version of `nocobase`.
-- Trigger the `afterUpgrade` event.
-- Call the `stop` medthod to end upgrade.
+`Application` is the core module of the NocoBase server, based on [Koa](https://koajs.com) extensions. It's responsible for major application initialization logic and managing the application lifecycle.
 
 ## Constructor
 
 ### `constructor()`
 
-Create an application instance.
+#### Signature
 
-**Signature**
+- `constructor(public options: ApplicationOptions)`
 
-- `constructor(options: ApplicationOptions)`
+#### Types
 
-**Parameter**
+```typescript
+export type PluginType = string | typeof Plugin;
+export type PluginConfiguration = PluginType | [PluginType, any];
 
-| Name                      | Type                                                                                                           | Default | Description                                                                                                       |
-| ------------------------- | -------------------------------------------------------------------------------------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------- |
-| `options.database`        | `IDatabaseOptions` or `Database`                                                                               | `{}`    | Database configuration                                                                                            |
-| `options.resourcer`       | `ResourcerOptions`                                                                                             | `{}`    | Resource route configuration                                                                                      |
-| `options.logger`          | `AppLoggerOptions`                                                                                             | `{}`    | Log                                                                                                               |
-| `options.cors`            | [`CorsOptions`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/koa__cors/index.d.ts#L24) | `{}`    | Cross-domain configuration, refer to [@koa/cors](https://npmjs.com/package/@koa/cors)                             |
-| `options.dataWrapping`    | `boolean`                                                                                                      | `true`  | Whether or not to wrap the response data, `true` will wrap the usual `ctx.body` into a `{ data, meta }` structure |
-| `options.registerActions` | `boolean`                                                                                                      | `true`  | Whether or not to register the default [actions](#)                                                               |
-| `options.i18n`            | `I18nOptions`                                                                                                  | `{}`    | Internationalization configuration, refer to [i18next](https://www.i18next.com/overview/api)                      |
-| `options.plugins`         | `PluginConfiguration[]`                                                                                        | `[]`    | Configuration of the plugins enabled by default                                                                   |
+export interface ResourceManagerOptions {
+  prefix?: string;
+}
 
-Type
+export interface AppLoggerOptions {
+  request: RequestLoggerOptions;
+  system: SystemLoggerOptions;
+}
 
-```ts
-interface ApplicationOptions {}
+export interface AppTelemetryOptions extends TelemetryOptions {
+  enabled?: boolean;
+}
+
+export interface ApplicationOptions {
+  database?: IDatabaseOptions | Database;
+  cacheManager?: CacheManagerOptions;
+  resourceManager?: ResourceManagerOptions;
+  bodyParser?: any;
+  cors?: any;
+  dataWrapping?: boolean;
+  registerActions?: boolean;
+  i18n?: i18n | InitOptions;
+  plugins?: PluginConfiguration[];
+  acl?: boolean;
+  logger?: AppLoggerOptions;
+  name?: string;
+  authManager?: AuthManagerOptions;
+  telemetry?: AppTelemetryOptions;
+}
 ```
 
-## Instance Members
+#### Details
 
-### `cli`
+##### ApplicationOptions
 
-CLI tool instance, refer to the npm package [Commander](https://www.npmjs.com/package/commander)。
+| Property          | Type                                    | Description                                                           |
+| ----------------- | --------------------------------------- | --------------------------------------------------------------------- |
+| `name`            | `string`                                | Application identifier                                                |
+| `database`        | `IDatabaseOptions` \| `DataBase`        | Configuration for `DataBase` instance or the instance itself          |
+| `cacheManager`    | `CacheManagerOptions`                   | Configuration for `CacheManager` instance                             |
+| `resourceManager` | [`ResourcerOptions`](#resourceroptions) | Configuration for resource management                                 |
+| `authManager`     | `AuthManagerOptions`                    | Configuration for user authentication management                      |
+| `bodyParser`      | `bodyParser.Options`                    | Parameters passed to the `@koa/bodyparser` middleware                 |
+| `bodyParser`      | `any`                                   | Parameters passed to the `@koa/cors` middleware                       |
+| `dataWrapping`    | `boolean`                               | Whether to format response data                                       |
+| `registerActions` | `boolean`                               | Whether to register default CRUD operation interfaces for data tables |
+| `i18n`            | `i18n` \| `InitOptions`                 | `i18n` instance or initialization configuration                       |
+| `plugins`         | `PluginConfiguration[]`                 | Names of built-in installed plugins or an array of instances          |
+| `acl`             | `boolean`                               | Whether to enable access control                                      |
+| `logger`          | [`AppLoggerOptions`](#apploggeroptions) | Configuration for application logging                                 |
+| `telemetry`       | `AppTelemetryOptions`                   | Configuration for telemetry module                                    |
 
-### `db`
+##### ResourcerOptions
 
-Database instance, refer to [Database](/api/database) for the related API.
+| Property | Type     | Description              |
+| -------- | -------- | ------------------------ |
+| `prefix` | `string` | Prefix for resource APIs |
 
-### `resourcer`
+##### AppLoggerOptions
 
-Resource route management instance created automatically during app initialization, refer to [Resourcer](/api/resourcer) for the related API.
+| Property  | Type                   | Description                                                               |
+| --------- | ---------------------- | ------------------------------------------------------------------------- |
+| `request` | `RequestLoggerOptions` | Refer to [Logger - requestLogger()](../logger.md#requestlogger)           |
+| `system`  | `SystemLoggerOptions`  | Refer to [Logger - createSystemLogger()](../logger.md#createsystemlogger) |
 
-### `acl`
+## Instance Properties
 
-ACL instance, refer to [ACL](/api/acl) for the related API.
+### `name`
 
-### `logger`
-
-Winston instance, refer to [Winston](https://github.com/winstonjs/winston#table-of-contents) for the related API.
-
-### `i18n`
-
-I18next instance, refer to [I18next](https://www.i18next.com/overview/api) for the related API.
-
-### `pm`
-
-Plugin manager instance, refer to [PluginManager](./plugin-manager) for the related API.
+Application identifier. Default is `main`.
 
 ### `version`
 
-App version instance, refer to [ApplicationVersion](./application-version) for the related API.
+Application version management. Application version can be obtained using `version.get()`.
 
-### `middleware`
+### `mainDataSource`
 
-Built-in middleware includes:
+Main data source.
 
-- logger
-- i18next
-- bodyParser
-- cors
-- dataWrapping
-- db2resource
-- restApiMiddleware
+### `db`
 
-### `context`
+Instance of `DataBase` for the main data source. Refer to [DataBase](../database/index.md).
 
-Context inherited from koa, accessible via `app.context`, is used to inject context-accessible content to each request. Refer to [Koa Context](https://koajs.com/#app-context).
+### `acl`
 
-NocoBase injects the following members to context by default, which can be used directly in the request handler function:
+Instance of `ACL`. Refer to [ACL](../acl/acl.md).
 
-| Variable Name          | Type          | Description                                        |
-| ---------------------- | ------------- | -------------------------------------------------- |
-| `ctx.app`              | `Application` | Application instance                               |
-| `ctx.db`               | `Database`    | Database instance                                  |
-| `ctx.resourcer`        | `Resourcer`   | Resource route manager instance                    |
-| `ctx.action`           | `Action`      | Resource action related object instance            |
-| `ctx.logger`           | `Winston`     | Log instance                                       |
-| `ctx.i18n`             | `I18n`        | Internationlization instance                       |
-| `ctx.t`                | `i18n.t`      | Shortcut of internationalized translation function |
-| `ctx.getBearerToken()` | `Function`    | Get the bearer token in the header of request      |
+### `log`
 
-## Instance Methods
+System logs. Refer to [Logger](../logger.md).
 
-### `use()`
+### `logger`
 
-Register middleware, compatible with all [Koa plugins](https://www.npmjs.com/search?q=koa).
+Equivalent to `log`.
 
-### `on()`
+### `cache`
 
-Subscribe to application-level events, mainly are related to lifecycle. It is equivalent to `eventEmitter.on()`. Refer to [events](#events) for all subscribable events.
+Application cache, instance of `Cache`. Refer to [Cache](../cache/cache.md).
 
-### `command()`
+### `cli`
 
-Customize command.
+Application command-line methods.
 
-### `findCommand()`
+### `i18n`
 
-Find defined command.
+Internationalization. Instance of `i18n`.
 
-### `runAsCLI()`
+### `telemetry`
 
-Run as CLI.
+Instance of `Telemetry`. Refer to [Telemetry](../telemetry/telemetry.md).
+
+### `pm`
+
+Plugin management. Refer to [PluginManager](./plugin-manager).
+
+### `dataSourceManager`
+
+Data source management. Refer to [DataSourceManager](../data-source-manager/).
+
+### `resourceManager`
+
+Resource management. Refer to [ResourceManager](../resourcer/resource-manager.md).
+
+### `cacheManager`
+
+Cache management. Refer to [CacheManager](../cache/cache-manager.md).
+
+### `authManager`
+
+User authentication management. Refer to [AuthManager](../auth/auth-manager.md).
+
+### `cronJobManager`
+
+Application cron job management.
+
+### `localeManager`
+
+Application localization resource management.
+
+## Lifecycle Methods
 
 ### `load()`
 
-Load application configuration.
+Loads the application and performs application initialization.
 
-**Signature**
+#### Signature
 
-- `async load(): Promise<void>`
+- `load(options?: LoadOptions): Promise<void>`
+
+#### Types
+
+```typescript
+interface LoadOptions {
+  reload?: boolean;
+  hooks?: boolean;
+  sync?: boolean;
+  [key: string]: any;
+}
+```
+
+#### Details
+
+| Property        | Type      | Description                                             | Default |
+| --------------- | --------- | ------------------------------------------------------- | ------- |
+| `reload`        | `boolean` | Indicates if it's a reload operation                    | `false` |
+| `hooks`         | `boolean` | Whether to trigger `beforeLoad` / `afterLoad` hooks     | `true`  |
+| `sync`          | `boolean` | Whether to synchronize data table configuration changes | `false` |
+| `[key: string]` | `any`     | Additional configuration, will be passed to hooks       | -       |
 
 ### `reload()`
 
-Reload application configuration.
+Reloads the application, triggering a re-initialization.
 
-### `install()`
+#### Signature
 
-Initialize the installation of the application, meanwhile, install the plugin.
-
-### `upgrade()`
-
-Upgrade application, meanwhile, upgrade plugin.
+- `reload(options?: LoadOptions): Promise<void>`
 
 ### `start()`
 
-Start application, listening will also be started if the listening port is configured, then the application can accept HTTP requests.
+Starts the application to accept requests.
 
-**Signature**
+#### Signature
 
-- `async start(options: StartOptions): Promise<void>`
+- `start(options: StartOptions = {}): Promise<void>`
 
-**Parameter**
+#### Types
 
-| Name                   | Type            | Default       | Description                      |
-| ---------------------- | --------------- | ------------- | -------------------------------- |
-| `options.listen?`      | `ListenOptions` | `{}`          | HTTP Listening parameters object |
-| `options.listen.port?` | `number`        | 13000         | Port                             |
-| `options.listen.host?` | `string`        | `'localhost'` | Domain name                      |
+```typescript
+interface StartOptions {
+  checkInstall?: boolean;
+}
+```
 
-### `stop()`
+#### Details
 
-Stop application. This method will deconnect database, close HTTP port, but will not delete data.
+| Property       | Type      | Description                                                | Default |
+| -------------- | --------- | ---------------------------------------------------------- | ------- |
+| `checkInstall` | `boolean` | Indicates whether to check if the application is installed | `false` |
+
+### `restart()`
+
+Restarts the application, executing `reload()` and `start()`.
+
+#### Signature
+
+- `restart(options: StartOptions = {}): Promise<void>`
+
+### `install()`
+
+Installs the application, which involves application initialization, synchronization of data table configuration changes, plugin installation, and application restart if it's already started.
+
+#### Signature
+
+- `install(options: InstallOptions = {}): Promise<void>`
+
+#### Details
+
+| Property | Type      | Description                                                              | Default |
+| -------- | --------- | ------------------------------------------------------------------------ | ------- |
+| `force`  | `boolean` | Indicates whether to reinstall the application if it's already installed | `false` |
+
+### `upgrade()`
+
+Upgrades the application by executing migration scripts for each plugin and restarting the application.
+
+#### Signature
+
+- `upgrade(): Promise<void>`
+
+### `
+
+stop()`
+
+Stops the application by closing database connections, cache middleware, and telemetry connections.
+
+#### Signature
+
+- `stop(): Promise<void>`
 
 ### `destroy()`
 
-Delete application. This methos will delete the corresponding database of application.
+Destroys the application, equivalent to calling `stop()`.
+
+#### Signature
+
+- `destroy(): Promise<void>`
+
+### `isInstalled()`
+
+Checks if the application is installed.
+
+#### Signature
+
+- `isInstalled(): Promise<boolean>`
+
+### `isStarted()`
+
+Checks if the application is started.
+
+#### Signature
+
+- `isStarted(): Promise<boolean>`
+
+## Other Methods
+
+### `on()`
+
+Listens for application events. Refer to [emitter.on(eventName, listener)](https://nodejs.org/api/events.html#emitteroneventname-listener).
+
+#### Signature
+
+- `on(eventName: string | symbol, listener: (...args: any[]) => void): this`
+
+### `off()`
+
+Removes event listeners. Refer to [emitter.off(eventName, listener)](https://nodejs.org/api/events.html#emitteroffeventname-listener).
+
+#### Signature
+
+- `off(eventName: string | symbol, listener: (...args: any[]) => void): this`
+
+### `use()`
+
+Adds application middleware. Refer to [Koa - Application](https://koajs.com/#application).
+
+### `command()`
+
+Adds application command-line commands.
+
+#### Signature
+
+- `command(name: string, desc?: string, opts?: CommandOptions): AppCommand`
+
+#### Details
+
+| Property | Type             | Description                                                                        |
+| -------- | ---------------- | ---------------------------------------------------------------------------------- |
+| `name`   | `string`         | Command                                                                            |
+| `desc`   | `string`         | Command description                                                                |
+| `opts`   | `CommandOptions` | Command configuration, refer to [Commander.js](https://github.com/tj/commander.js) |
+
+### `runCommand()`
+
+Runs application commands.
+
+#### Signature
+
+- `runCommand(command: string, ...args: any[])`
+
+### `authenticate()`
+
+Performs DB connection check and version check.
+
+#### Signature
+
+- `authenticate(): Promise<void>`
 
 ## Events
 
 ### `'beforeLoad'` / `'afterLoad'`
 
+Triggered before and after [`load()`](#load) and [`reload()`](#reload).
+
+### `'beforeReload'` / `'afterReload'`
+
+Triggered before and after [`reload()`](#reload).
+
 ### `'beforeInstall'` / `'afterInstall'`
+
+Triggered before and after [`install()`](#install).
 
 ### `'beforeUpgrade'` / `'afterUpgrade'`
 
+Triggered before and after [`upgrade()`](#upgrade).
+
 ### `'beforeStart'` / `'afterStart'`
+
+Triggered before and after [`start()`](#start).
 
 ### `'beforeStop'` / `'afterStop'`
 
+Triggered before and after [`stop()`](#stop) and [`destroy()`](#destroy). `'beforeStop'` is triggered before [`restart()`](#restart).
+
 ### `'beforeDestroy'` / `'afterDestroy'`
+
+Triggered before and after [`destroy()`](#destroy).

@@ -5,8 +5,8 @@ export default [
     type: 'group',
     children: [
       '/welcome/introduction',
-      '/welcome/introduction/features',
-      '/welcome/introduction/why',
+      // '/welcome/introduction/features',
+      // '/welcome/introduction/why',
       // '/welcome/introduction/learning-guide',
     ],
   },
@@ -23,6 +23,7 @@ export default [
           '/welcome/getting-started/installation/docker-compose',
           '/welcome/getting-started/installation/create-nocobase-app',
           '/welcome/getting-started/installation/git-clone',
+          // '/welcome/getting-started/installation/install-plugin',
         ],
       },
       {
@@ -35,7 +36,18 @@ export default [
           '/welcome/getting-started/upgrading/git-clone',
         ],
       },
+      {
+        title: 'Deployment',
+        'title.zh-CN': '部署',
+        children: [
+          '/welcome/getting-started/deployment',
+          '/welcome/getting-started/deployment/docker-compose',
+          '/welcome/getting-started/deployment/create-nocobase-app',
+          '/welcome/getting-started/deployment/git-clone',
+        ],
+      },
       '/welcome/getting-started/env',
+      '/welcome/getting-started/plugin',
     ],
   },
   {
@@ -52,6 +64,8 @@ export default [
         title: 'Release notes',
         'title.zh-CN': '更新日志',
         children: [
+          '/welcome/release/v1001-changelog',
+          '/welcome/release/v0210-changelog',
           '/welcome/release/v0200-changelog',
           '/welcome/release/v0190-changelog',
           '/welcome/release/v0180-changelog',

@@ -6,7 +6,7 @@
 
 - 选择关联数据，从目标表的已有数据中选择关联
 
-![](./static/AWz1bGNV3oTl8UxyXbNcFRXsnDe.png)
+![](https://static-docs.nocobase.com/3b6cca8f0ffefbae76cab9260e3cf991.png)
 
 - 新增数据后关联
 
@@ -14,14 +14,14 @@
 
 下拉菜单添加，创建成功后自动选中创建的数据，需要配置标题字段
 
-![](./static/ZIOdbT8nGoNAqZxqsmAcbAITnAg.png)
+![](https://static-docs.nocobase.com/67de33d271534826d756593d03d30d7b.png)
 
 示例如下
 
-![](./static/DbUxbR6jFoJ1jWx2BVYc2WkFnQh.gif)
+![](https://static-docs.nocobase.com/697202774f114f60888ed56ba97ae04a.gif)
 
 弹窗添加：创建成功后会自动选中创建的数据
 
-![](./static/CZYAbOp1Ho6HxYxwxuyclVDxnBf.gif)
+![](https://static-docs.nocobase.com/af5c283ae21e794bf310e9851fef6211.gif)
 
 在很多场景中，希望通过关系选择器带出关联数据，而下拉选择器只能带出目标表中的简单字段，关系的关系数据则要通过配置数据选择器来带出

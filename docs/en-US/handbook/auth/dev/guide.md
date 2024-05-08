@@ -1,15 +1,15 @@
-# 扩展认证类型
+# Extend Authentication Type
 
-## 概览
+## Overview
 
-NocoBase 支持按需要扩展用户认证类型。下面介绍如何注册服务端接口和客户端用户界面。
+NocoBase supports extending user authentication types as needed. Here's how to register server interfaces and client user interfaces.
 
-## 服务端
+## Server
 
-### 接口
+### Interface
 
-NocoBase 内核提供了扩展认证类型的注册和管理。扩展登录插件的核心逻辑处理，需要继承内核的 `Auth` 抽象类，并对相应的标准接口进行实现。  
-完整 API 参考 [Auth](../../../api/auth/auth.md).
+The NocoBase kernel provides registration and management for extending authentication types. The core logic processing of extending the login plugin requires inheriting the `Auth` abstract class of the kernel and implementing the corresponding standard interfaces.  
+For the complete API, see [Auth](../../../api/auth/auth.md).
 
 ```typescript
 import { Auth } from '@nocobase/auth';
@@ -23,45 +23,45 @@ class CustomAuth extends Auth {
 }
 ```
 
-多数情况下，扩展的用户认证类型也可以沿用现有的 JWT 鉴权逻辑来生成用户访问 API 的凭证。内核的 `BaseAuth` 类对 `Auth` 抽象类做了基础实现，参考 [BaseAuth](../../../api/auth/base-auth.md). 插件可以直接继承 `BaseAuth` 类以便复用部分逻辑代码，降低开发成本。
+In most cases, the extended user authentication type can also use the existing JWT authentication logic to generate the credential for the user to access the API. The `BaseAuth` class in the kernel has done the basic implementation of the `Auth` abstract class, see [BaseAuth](../../../api/auth/base-auth.md). Plugins can directly inherit the `BaseAuth` class to reuse part of the logic code and reduce development costs.
 
 ```javascript
 import { BaseAuth } from '@nocobase/auth';
 
 class CustomAuth extends BaseAuth {
   constructor(config: AuthConfig) {
-    // 设置用户数据表
+    // Set user data table
     const userCollection = config.ctx.db.getCollection('users');
     super({ ...config, userCollection });
   }
 
-  // 实现用户登录逻辑
+  // Implement user login logic
   async validate() {}
 }
 ```
 
-### 用户数据
+### User Data
 
-在 NocoBase 应用中，默认情况下相关的表定义为：
+In a NocoBase application, the related collections are defined by default as:
 
-| 数据表                | 作用                                               | 插件                                                        |
-| --------------------- | -------------------------------------------------- | ----------------------------------------------------------- |
-| `users`               | 存储用户信息，邮箱、昵称和密码等                   | [用户插件 (`@nocobase/plugin-users`)](../../users/index.md) |
-| `authenticators`      | 存储认证器（认证类型实体）信息，对应认证类型和配置 | 用户认证插件 (`@nocobase/plugin-auth`)                      |
-| `usersAuthenticators` | 关联用户和认证器，保存用户在对应认证器下的信息     | 用户认证插件 (`@nocobase/plugin-auth`)                      |
+| Collections             | Description                                       | Plugin                                                        |
+| ------------------------ | -------------------------------------------------- | ------------------------------------------------------------- |
+| `users`                  | Store user information, such as email, nickname, and password                   | [User Plugin (`@nocobase/plugin-users`)](../../users/index.md) |
+| `authenticators`         | Store authenticator (authentication type entity) information, corresponding to authentication type and configuration | User Authentication Plugin (`@nocobase/plugin-auth`)                      |
+| `usersAuthenticators`    | Associates users and authenticators, saves user information under the corresponding authenticator     | User Authentication Plugin (`@nocobase/plugin-auth`)                      |
 
-通常情况下，扩展登录方式用 `users` 和 `usersAuthenticators` 来存储相应的用户数据即可，特殊情况下才需要自己新增 Collection.
+In general, extended login methods use `users` and `usersAuthenticators` to store corresponding user data. Only in special cases do you need to add a new Collection yourself.
 
-`usersAuthenticators` 的主要字段为
+The main fields of `usersAuthenticators` are
 
-| 字段            | 说明                                                 |
-| --------------- | ---------------------------------------------------- |
-| `uuid`          | 该种认证方式的用户唯一标识，如手机号、微信 openid 等 |
-| `meta`          | JSON 字段，其他需要保存的信息                        |
-| `userId`        | 用户 ID                                              |
-| `authenticator` | 认证器名字（唯一标识）                               |
+| Field             | Description                                                 |
+| ----------------- | ----------------------------------------------------------- |
+| `uuid`            | Unique identifier for this type of authentication, such as phone number, WeChat openid, etc |
+| `meta`            | JSON field, other information to be saved                        |
+| `userId`          | User ID                                              |
+| `authenticator`   | Authenticator name (unique identifier)                               |
 
-对于用户查询和创建操作，`authenticators` 的数据模型 `AuthModel` 也封装了几个方法，可以在 `CustomAuth` 类中通过 `this.authenticator[方法名]` 使用。完整 API 参考 [AuthModel](../dev/api.md#authmodel).
+For user query and creation operations, the `authenticators` data model `AuthModel` also encapsulates several methods that can be used in the `CustomAuth` class via `this.authenticator[methodName]`. For the complete API, see [AuthModel](../dev/api.md#authmodel).
 
 ```ts
 import { AuthModel } from '@nocobase/plugin-auth';
@@ -70,17 +70,17 @@ class CustomAuth extends BaseAuth {
   async validate() {
     // ...
     const authenticator = this.authenticator as AuthModel;
-    this.authenticator.findUser(); // 查询用户
-    this.authenticator.newUser(); // 创建新用户
-    this.authenticator.findOrCreateUser(); // 查询或创建新用户
+    this.authenticator.findUser(); // Query user
+    this.authenticator.newUser(); // Create new user
+    this.authenticator.findOrCreateUser(); // Query or create new user
     // ...
   }
 }
 ```
 
-### 认证类型注册
+### Authentication Type Registration
 
-扩展的认证方式需要向认证管理模块注册。
+The extended authentication method needs to be registered with the authentication management module.
 
 ```javascript
 class CustomAuthPlugin extends Plugin {
@@ -92,9 +92,9 @@ class CustomAuthPlugin extends Plugin {
 }
 ```
 
-## 客户端
+## Client
 
-客户端用户界面通过用户认证插件客户端提供的接口 `registerType` 进行注册：
+The client user interface is registered through the interface `registerType` provided by the user authentication plugin client:
 
 ```ts
 import AuthPlugin from '@nocobase/plugin-auth/client';
@@ -104,38 +104,38 @@ class CustomAuthPlugin extends Plugin {
     const auth = this.app.pm.get(AuthPlugin);
     auth.registerType('custom-auth-type', {
       components: {
-        SignInForm, // 登录表单
-        SignInButton, // 登录（第三方）按钮，可以和登录表单二选一
-        SignUpForm, // 注册表单
-        AdminSettingsForm, // 后台管理表单
+        SignInForm, // Login form
+        SignInButton, // Login (third party) button, can be either with the login form
+        SignUpForm, // Registration form
+        AdminSettingsForm, // Backstage management form
       },
     });
   }
 }
 ```
 
-### 登录表单
+### Login Form
 
-![](./static/2023-12-20-12-12-45.png)
+![](https://static-docs.nocobase.com/33afe18f229c3db45c7a1921c2c050b7.png)
 
-如果有多个认证器对应的认证类型都注册了登录表单，会以 Tab 的形式展示。Tab 标题为后台配置的认证器标题。
+If multiple authenticators corresponding to the authentication type have registered login forms, they will be displayed in the form of Tabs. The Tab title is the title of the authenticator configured in the background.
 
-![](./static/2023-12-20-12-08-49.png)
+![](https://static-docs.nocobase.com/ada6d7add744be0c812359c23bf4c7fc.png)
 
-### 登录按钮
+### Login Button
 
-![](./static/2023-12-22-10-21-28.png)
+![](https://static-docs.nocobase.com/e706f7785782adc77b0f4ee4faadfab8.png)
 
-通常为第三方登录按钮，实际上可以是任意组件。
+Usually for third-party login buttons, but can actually be any component.
 
-### 注册表单
+### Registration Form
 
-![](./static/2023-12-20-12-17-07.png)
+![](https://static-docs.nocobase.com/f95c53431bf21ec312fcfd51923f0b42.png)
 
-如果需要从登录页跳转到注册页，需要在登录组件中自己处理。
+If you need to jump from the login page to the registration page, you need to handle it yourself in the login component.
 
-### 后台管理表单
+### Backend Management Form
 
-![](./static/2023-12-20-12-19-51.png)
+![](https://static-docs.nocobase.com/f4b544b5b0f5afee5621ad4abf66b24f.png)
 
-上方为通用的认证器配置，下方为可注册的自定义配置表单部分。
+The top is the generic authenticator configuration, and the bottom is the part of the custom configuration form that can be registered.

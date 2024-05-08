@@ -1,9 +1,5 @@
 # Styles & Themes
 
-:::warning
-Sorry, this document is not available in English.
-:::
-
 为了更好的适应 NocoBase 动态主题的能力，在插件里，推荐使用 [antd-style](https://ant-design.github.io/antd-style/zh-CN/guide) 来编写样式。再结合现有的 [theme token](https://ant.design/docs/react/customize-theme-cn#seedtoken) 处理主题的动态能力。同时 NocoBase 也提供了[主题编辑器插件](#)，可用于便捷的调整样式。
 
 ## 编写样式
@@ -277,4 +273,4 @@ export default () => {
 
 ### 使用主题编辑器插件
 
-![主题编辑器](./image-1.png)
+![主题编辑器](https://static-docs.nocobase.com/440f844d056a485f9f0dc64a8ca1b4f4.png)

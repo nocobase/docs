@@ -91,7 +91,7 @@ export class ECharts extends Chart {
 
 ECharts 主要是通过配置 `series` 来配置不同的图形，所以在基类的构造函数基础上，我们可以增加一个 `series` 参数，同时将前面定义好的 `ReactECharts` 组件传入。`config` 参数默认设置了 `xField`, `yField`, `seriesField`, 这样我们默认的可视化配置就是如图的效果。
 
-![](./static/IJiQbtTxwoLz8lxsgbwc77Ggntb.png)
+![](https://static-docs.nocobase.com/9a1ff5ff7c9f409978292f0d771b4358.png)
 
 ### 步骤二
 

@@ -6,18 +6,18 @@
 
 管理插件，包括：添加、激活、禁用、删除
 
-![](./static/CbzRbkcI2onjbkxFOVccwafpnrh.png)
+![](https://static-docs.nocobase.com/23ee6d074e2829617c4b766282c16627.png)
 
 ## 插件管理中心
 
 各个插件的配置页面
 
-![](./static/PqPnbVWuYo9GYgxCrxfcTK8rnof.png)
+![](https://static-docs.nocobase.com/f0236b3cf5b65c39fa723c66a182d214.png)
 
 ## 用户个人中心
 
-![](./static/T3J0b4zZ2o8ZiUxBG7lcgNYIn2g.png)
+![](https://static-docs.nocobase.com/58ff74ebe37542180e7fd2629f940a79.png)
 
 ## 界面设计器
 
-![](./static/M6U6b8YAgovpFIxTzaccmcp5nme.png)
+![](https://static-docs.nocobase.com/8dc5d2b1e4487622e40e8a6510e3e492.png)

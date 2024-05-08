@@ -1,14 +1,18 @@
 # 审批
 
+<PluginInfo commercial="true" name="workflow-approval"></PluginInfo>
+
+## 介绍
+
 审批是一种专用于人工发起且由人工处理以决定相关数据状态的流程形式。通常用于办公自动化或其他人工决策事务的流程管理，例如可以创建并管理“请假申请”、“费用报销审批”和“原料采购审批”等场景的人工流程。
 
 审批插件提供了专用的工作流类型（触发器）“发起审批”和专用于该流程的“审批”节点，结合 NocoBase 特有的自定义数据表和自定义区块，可以快速且灵活地创建与管理各类审批场景。
 
 ## 安装
 
-:::info{title=提示}
-该插件为商业插件，请咨询开发团队获取。
-:::
+该插件为商业插件，需要通过插件管理器上传并激活插件
+
+![](https://static-docs.nocobase.com/20240323162741.png)
 
 ## 使用手册
 
@@ -18,7 +22,7 @@
 
 创建工作流时选择“审批”类型，即可创建审批流程：
 
-![审批触发器_创建审批流程](./approval-trigger-create-workflow.png)
+![审批触发器_创建审批流程](https://static-docs.nocobase.com/f52dda854f46a669e0c1c7fb487a17ea.png)
 
 之后在工作流配置界面中点击触发器打开弹窗进行更多的配置。
 
@@ -26,11 +30,11 @@
 
 NocoBase 的审批插件基于灵活性的设计，可以与任意自定义数据表配合使用，即审批配置无需重复配置数据模型，而是直接复用已创建的数据表。所以在进入触发器配置后，首先需要选择数据表，以决定该流程由哪个数据表的数据创建或更新时触发：
 
-![审批触发器_触发器配置_选择数据表](./approval-trigger-configuration-select-collection.png)
+![审批触发器_触发器配置_选择数据表](https://static-docs.nocobase.com/8732a4419b1e28d2752b8f601132c82d.png)
 
 然后在对应数据表的创建（或编辑）数据的表单中将该工作流绑定到提交按钮上：
 
-![发起审批_绑定工作流](./approval-initiate-bind-workflow.png)
+![发起审批_绑定工作流](https://static-docs.nocobase.com/2872ff108c61d7bf6d0bfb19886774c6.png)
 
 之后用户对该表单的提交即可触发对应的审批工作流，提交的数据除了保存在对应的数据表中，也会被快照至审批流中，供后续审批人员查阅使用。
 
@@ -38,7 +42,7 @@ NocoBase 的审批插件基于灵活性的设计，可以与任意自定义数�
 
 在用户端界面有两个位置可以发起审批：一是通过已绑定的数据表的创建（或更新）数据表单提交发起，该位置通常只针对单一的审批流程发起；二是可以集中地从审批中心区块发起，通常针对于中心化管理的全局流程。
 
-![审批触发器_触发器配置_选择发起审批的位置](./approval-trigger-configuration-select-place-to-initiate.png)
+![审批触发器_触发器配置_选择发起审批的位置](https://static-docs.nocobase.com/1a193ec0acfa6cde221c6e5d49a50b3e.png)
 
 勾选“在数据区块和审批中心都可以发起和审批”后，该流程会在审批中心区块的“发起”按钮下拉菜单中出现，用户可以集中在该位置发起不同的审批。
 
@@ -46,7 +50,7 @@ NocoBase 的审批插件基于灵活性的设计，可以与任意自定义数�
 
 如果一个审批流程允许发起人撤回，可以勾选“允许撤回”的选项：
 
-![审批触发器_触发器配置_允许撤回](./approval-trigger-configuration-withdrawable.png)
+![审批触发器_触发器配置_允许撤回](https://static-docs.nocobase.com/09185712fc55bc536892136ce0ade4a8.png)
 
 勾选后该流程发起的审批在任何审批人处理之前均可被发起人撤回，但在任何后续审批节点配置的审批人处理过后，将不再可被撤回。
 
@@ -54,17 +58,17 @@ NocoBase 的审批插件基于灵活性的设计，可以与任意自定义数�
 
 最后需要配置发起人的表单界面，该界面将用于从审批中心区块发起时和用户撤回后重新发起时的提交操作。点击配置按钮打开弹窗：
 
-![审批触发器_触发器配置_发起人表单](./approval-trigger-configuration-intiator-ui.png)
+![审批触发器_触发器配置_发起人表单](https://static-docs.nocobase.com/ca8b7e362d912138cf7d73bb60b37ac1.png)
 
 可以为发起人的界面添加基于绑定的数据表的填写表单，或用以提示和引导的说明文案（Markdown）。其中表单是必须添加的，否则发起人进入到该界面后将无法操作。
 
 添加表单区块后，和普通表单配置界面一样，可以添加对应数据表的字段组件，并且可以任意排列，以组织表单需要填写的内容：
 
-![审批触发器_触发器配置_发起人表单_字段配置](./approval-trigger-configuration-intiator-ui-fields.png)
+![审批触发器_触发器配置_发起人表单_字段配置](https://static-docs.nocobase.com/5a1e7f9c9d8de092c7b55585dad7d633.png)
 
-区别与直接提交的按钮，还可以增加“保存草稿”的操作按钮，用于支持暂存的处理流程：
+区别于直接提交的按钮，还可以增加“保存草稿”的操作按钮，用于支持暂存的处理流程：
 
-![审批触发器_触发器配置_发起人表单_操作配置](./approval-trigger-configuration-intiator-ui-actions.png)
+![审批触发器_触发器配置_发起人表单_操作配置](https://static-docs.nocobase.com/2f4850d2078e94538995a9df70d3d2d1.png)
 
 ### 审批节点
 
@@ -78,7 +82,7 @@ NocoBase 的审批插件基于灵活性的设计，可以与任意自定义数�
 
 点击流程中的加号（“+”）按钮，添加“审批”节点，再选择其中一种通过模式，创建审批节点：
 
-![审批节点_创建](./approval-node-create.png)
+![审批节点_创建](https://static-docs.nocobase.com/f15d61208a3918d005cd2031fc9b6ce7.png)
 
 #### 通过模式
 
@@ -86,11 +90,11 @@ NocoBase 的审批插件基于灵活性的设计，可以与任意自定义数�
 
 1.  直通模式：通常用于较为简单的流程，审批节点通过与否只决定流程是否结束，未通过的情况下直接退出流程。
 
-    ![审批节点_通过模式_直通模式](./approval-node-branch-mode-passthrough.png)
+    ![审批节点_通过模式_直通模式](https://static-docs.nocobase.com/a9d446a186f61c546607cf1c2534b287.png)
 
 2.  分支模式：通常用于更复杂的数据逻辑，审批节点产生任何结果后，可在其结果分支内继续执行其他节点。
 
-    ![审批节点_通过模式_分支模式](./approval-node-branch-mode-branched.png)
+    ![审批节点_通过模式_分支模式](https://static-docs.nocobase.com/57dc6a8907f3bb02fb28c354c241e4e5.png)
 
     其中如果节点配置了“退回”操作，才会产生“退回”分支，且退回分支执行完以后会强制退出当前流程。
 
@@ -104,7 +108,7 @@ NocoBase 的审批插件基于灵活性的设计，可以与任意自定义数�
 
 审批人是负责该节点审批行为的用户集合，可以是一个或多个用户，选择的来源可以是从用户列表选择的静态值，也可以是由变量指定的动态值。
 
-![审批节点_审批人](./approval-node-assignees.png)
+![审批节点_审批人](https://static-docs.nocobase.com/29c64297d577b9ca9457b1d7ac62287d.png)
 
 选择变量时，仅可选择上下文和节点结果中用户数据的主键或外键。如果选择的变量在执行中是数组（对多关系），那么数组中的每个用户都会合并到整个审批人集合中。
 
@@ -118,7 +122,7 @@ NocoBase 的审批插件基于灵活性的设计，可以与任意自定义数�
 2. 会签：需要所有人通过才代表节点通过，只需其中一人拒绝即代表节点拒绝。
 3. 投票：需要超过设定比例的人数通过才代表节点通过，否则代表节点拒绝。
 
-针对退回操作，在任何模式下，如果审批人集合中有人处理为退回，那么节点会直接退出流程。
+针对退回操作，在任何模式下，如果审批人集合中有用户处理为退回，那么节点会直接退出流程。
 
 #### 处理顺序
 
@@ -133,25 +137,25 @@ NocoBase 的审批插件基于灵活性的设计，可以与任意自定义数�
 
 “通过模式”设置为“分支模式”时，可以选择在拒绝分支结束后退出工作流。勾选以后，拒绝分支的末尾会显示一个“✗”，表示该分支结束后不再继续后续节点：
 
-![审批节点_拒绝后退出](./approval-node-exit-on-rejection.png)
+![审批节点_拒绝后退出](https://static-docs.nocobase.com/1e740df93c128fb6fe54bf85a740e683.png)
 
 #### 审批人界面配置
 
 审批人界面配置用于提供审批人对审批工作流执行到该节点时的操作界面，点击配置按钮打开弹窗：
 
-![审批节点_界面配置_弹窗](./approval-node-ui-drawer.png)
+![审批节点_界面配置_弹窗](https://static-docs.nocobase.com/2c321ae164b436f1c572305ff27cc9dd.png)
 
 在配置弹窗中可以添加提交审批的详情、操作栏和自定义提示文字等区块：
 
-![审批节点_界面配置_添加区块](./approval-node-ui-blocks.png)
+![审批节点_界面配置_添加区块](https://static-docs.nocobase.com/9f8f11926e935ad8f8fbeec368edebfe.png)
 
 其中审批内容详情区块即发起人提交的数据区块，与普通的数据区块类似，可以任意添加数据表的字段组件，并且可以任意排列，以组织审批人需要查看的内容：
 
-![审批节点_界面配置_详情区块](./approval-node-ui-blocks-details.png)
+![审批节点_界面配置_详情区块](https://static-docs.nocobase.com/1140ec13caeea1b364d12e057720a29c.png)
 
 操作栏中可以添加该节点支持的操作按钮，例如“通过”、“拒绝”和“退回”等：
 
-![审批节点_界面配置_操作栏](./approval-node-ui-blocks-actions.png)
+![审批节点_界面配置_操作栏](https://static-docs.nocobase.com/1bb090ed123f62ba8a524a3e9e7da328.png)
 
 另外，操作栏中也可以添加相关的字段要求审批人填写，如“评论”字段。
 
@@ -163,70 +167,157 @@ NocoBase 的审批插件基于灵活性的设计，可以与任意自定义数�
 
 在配置好一个审批工作流并启用后，可以将该工作流绑定在对应的数据表的表单提交按钮上，以供用户在提交的时候发起审批：
 
-![发起审批_绑定工作流](./approval-initiate-bind-workflow.png)
+![发起审批_绑定工作流](https://static-docs.nocobase.com/2872ff108c61d7bf6d0bfb19886774c6.png)
 
 绑定工作流后，用户在提交当前表单时，即发起审批。
+
+:::info{title=提示}
+发起审批的按钮目前仅支持使用新增或更新表单中的“提交”（或“保存”）按钮，不支持使用“提交至工作流”按钮（该按钮仅可绑定“操作后事件”）。
+:::
 
 ### 数据详情中的审批区块
 
 在已提交的数据详情弹窗中，可以配置审批区块，用于展示对应数据的审批记录，以及处理入口：
 
-![详情审批区块_创建区块](./approval-record-detail-create-approval-block.png)
+![详情审批区块_创建区块](https://static-docs.nocobase.com/6b40f47474609d1dfd33618d80228189.png)
 
 #### 发起人处理
 
 审批区块中会展示基本的申请信息，以及审批处理记录。对于发起人，可以在弹窗中查看自己发起的申请内容详情，如果配置了可被撤回，且流程在进入首个审批节点后但还未被任何审批人处理，可以撤回已发起的申请：
 
-![详情审批区块_发起人查看](./approval-record-detail-application-content.png)
+![详情审批区块_发起人查看](https://static-docs.nocobase.com/5c7d4a6dca8de820d154487e41808c2a.png)
 
 如果发起人执行了撤回操作，会在审批区块中显示撤回的记录，并且可以点击查看后会重新打开申请的弹窗：
 
-![详情审批区块_发起人撤回后再次查看](./approval-record-detail-withdrawn.png)
+![详情审批区块_发起人撤回后再次查看](https://static-docs.nocobase.com/df52cb5203c1fd0a2f7af1757fbf6ecd.png)
 
 弹窗中的内容与之前的内容一致，可以修改后再次提交：
 
-![详情审批区块_发起人撤回后再次提交](./approval-record-detail-withdrawn-resubmit.png)
+![详情审批区块_发起人撤回后再次提交](https://static-docs.nocobase.com/4b3a6119e9871760d2dbdc8a2a75ff2c.png)
 
 #### 审批人处理
 
 审批人同样通过该区块查看审批的内容详情，在处理记录的节点列表中，如果当前登录用户为该节点的负责人之一，会在详情列中显示“查看”按钮，点击后会打开审批的弹窗：
 
-![详情审批区块_审批人处理节点](./approval-record-detail-assignee-view.png)
+![详情审批区块_审批人处理节点](https://static-docs.nocobase.com/b160090482823ff5dc87592d0d5cedec.png)
 
 弹窗中将展示该审批节点中配置的审批人界面，通常会包含审批内容详情和操作栏：
 
-![详情审批区块_审批人处理弹窗](./approval-record-detail-assignee-drawer.png)
+![详情审批区块_审批人处理弹窗](https://static-docs.nocobase.com/26acffffd314e86a658334ae9bef9d9b.png)
 
 审批人可以在弹窗中执行通过、拒绝或退回操作，操作后会在处理记录中生成对应的记录，如果操作是退回，则发起人可以再次修改申请内容后重新发起：
 
-![详情审批区块_审批人退回](./approval-record-detail-returned.png)
+![详情审批区块_审批人退回](https://static-docs.nocobase.com/5da879b24923ed25c31be658636ada64.png)
 
 通过或拒绝会根据节点配置的对应规则产生相应的状态：
 
-![详情审批区块_审批人通过](./approval-record-detail-passed.png)
+![详情审批区块_审批人通过](https://static-docs.nocobase.com/b020b1f82fce7c27b905ecf0b4c0046d.png)
 
 ### 审批中心区块
 
 审批插件提供了两个全局区块用于集中地管理部分审批流程，分别是“发起审批”和“审批待办”：
 
-![审批中心区块_创建](./approval-blocks-create.png)
+![审批中心区块_创建](https://static-docs.nocobase.com/fb3957320f082159f6f1f908937894b6.png)
 
 “发起审批”区块用于发起人的视角，可以从区块的操作栏发起新的审批：
 
-![审批中心区块_发起审批](./approval-blocks-initiate.png)
+![审批中心区块_发起审批](https://static-docs.nocobase.com/a888630f892f15882eb1ec6b8826c528.png)
 
 如果在审批触发器中配置了“在数据区块和审批中心都可以发起和审批”，那么在“申请”按钮的下拉菜单中会出现对应的审批流程。
 
 当然，也可以在列表中查看已发起的审批的状态：
 
-![审批中心区块_查看发起列表](./approval-blocks-initiations-list.png)
+![审批中心区块_查看发起列表](https://static-docs.nocobase.com/4379ff809ae6a545dccab434cf6a6cfb.png)
 
 点击“查看”打开的弹窗与数据详情中的审批区块内容类似，区别是发起人提交的内容和审批历史分别在不同的标签页展示：
 
-![审批中心区块_发起人查看详情](./approval-blocks-initiation-view.png)
+![审批中心区块_发起人查看详情](https://static-docs.nocobase.com/234edf3af9a3fb9e3c7aa820c3befd66.png)
 
 “审批待办”区块用于审批人视角，可以在列表中查看待处理的审批，点击对应的“查看”按钮将打开处理弹窗，与数据详情中的审批区块内容类似，区别是审批人的处理表单和审批历史分别在不同的标签页展示：
 
-![审批中心区块_审批人查看已处理的详情](./approval-blocks-assignee-view-processed.png)
+![审批中心区块_审批人查看已处理的详情](https://static-docs.nocobase.com/bc425bd18837d6a918c609849c38da5d.png)
 
 如果是已处理过的，将以提交处理的内容展示，且不可修改。
+
+## 深入理解
+
+### 提交审批的数据快照
+
+审批中的数据遵循事务数据不变性的原则，每次提交都将生成一份快照，在审批过程中流转。具体如下流程：
+
+![审批数据快照流程示意](https://static-docs.nocobase.com/62a545a85d9e72c6b47e4b52707c4380.png)
+
+在流程中产生“撤回”和“退回”行为后，在同一个申请单据中已进行过的流程中，都将保存当次的数据快照：
+
+![审批数据快照_流程示例](https://static-docs.nocobase.com/62800d88772c88f1eaa11f6f493aea55.png)
+
+如上图所属，每次撤回并重新申请提交的数据都会保存在当次的流程中。
+
+### 审批处理的状态
+
+对于发起人，提交的审批申请在单据数据中会有一个状态字段，用于标识当前审批的状态，通常有以下几种状态：
+
+| 状态 | 说明 |
+| --- | --- |
+| 草稿 | 申请人仅将申请表单中的数据暂时保存，还未正式提交启动流程。 |
+| 已提交 | 申请已提交，等待审批人处理。此时还未经任何审批人提交处理结果，如果配置了可撤回，则发起人可以进行撤回操作。 |
+| 处理中 | 经过任意一个审批节点，且至少有一个审批人提交了该节点审批处理的结果。此时发起人将不再能撤回。 |
+| 已退回 | 申请被任意一个审批人处理为退回，发起人可以再次修改后重新提交。 |
+| 已通过 | 流程经过的所有审批节点都被审批人处理为通过，流程结束。 |
+| 已拒绝 | 流程经过的任意审批节点中被审批人处理为拒绝，流程结束。 |
+
+对于每个审批节点，会对节点配置的审批人生成对应的处理记录，每个审批人的处理记录中也包含一个状态字段，用于标识当前审批人的处理状态，通常有以下几种状态：
+
+| 状态 | 说明 |
+| --- | --- |
+| 已分配 | 对应审批人的处理记录已创建，但由于处理规则配置为串行处理，当前记录的审批人需要等待前一个审批人处理完成后再处理。 |
+| 待处理 | 等待当前审批人处理。 |
+| 已退回 | 当前审批人处理为退回。 |
+| 已通过 | 当前审批人处理为通过。 |
+| 已拒绝 | 当前审批人处理为拒绝。 |
+| 未处理 | 根据节点配置的处理规则，由其他审批人处理后已达到节点处理的终态，或者该工作流已失效，无需当前审批人再处理。 |
+
+## 外部调用
+
+审批事件不仅限于用户界面的操作发起，也可以通过 HTTP API 调用触发。
+
+针对从数据区块和审批中心区块发起的审批，都可以这样调用（以 `posts` 表创建按钮举例）：
+
+```bash
+curl -X POST -H 'Authorization: Bearer <your token>' -H 'X-Role: <roleName>' -d \
+  '{
+    "title": "Hello, world!",
+    "content": "This is a test post."
+  }'
+  "http://localhost:3000/api/posts:create?triggerWorkflows=workflowKey"
+```
+
+其中 URL 参数 `triggerWorkflows` 为工作流的 key，多个工作流用逗号分隔。该 key 可在工作流画布顶部工作流名称处鼠标悬浮后获得：
+
+![工作流_key_查看方式](https://static-docs.nocobase.com/20240426135108.png)
+
+调用成功后，将触发对应 `posts` 表的审批工作流。
+
+:::info{title="提示"}
+因为外部调用也需要基于用户身份，所以通过 HTTP API 调用时，和普通界面发送的请求一致，都需要提供认证信息，包括 `Authorization` 请求头或 `token` 参数（登录获得的 token），以及 `X-Role` 请求头（用户当前角色名）。
+:::
+
+如果需要触发该操作中对一关系数据（对多暂不支持）的事件，可以在参数中使用 `!` 来指定关系字段的触发数据：
+
+```bash
+curl -X POST -H 'Authorization: Bearer <your token>' -H 'X-Role: <roleName>' -d \
+  '{
+    "title": "Hello, world!",
+    "content": "This is a test post.",
+    "category": {
+      "title": "Test category"
+    }
+  }'
+  "http://localhost:3000/api/posts:create?triggerWorkflows=workflowKey!category"
+```
+
+以上调用成功后，将触发对应 `categories` 表的审批事件。
+
+:::info{title="提示"}
+通过 HTTP API 调用触发操作后事件时，也需要注意工作流的启用状态，以及数据表配置是否匹配，否则可能不会调用成功，或出现错误。
+:::
