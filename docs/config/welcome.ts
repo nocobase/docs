@@ -5,6 +5,7 @@ export default [
     type: 'group',
     children: [
       '/welcome/introduction',
+      '/welcome/how',
       // '/welcome/introduction/features',
       // '/welcome/introduction/why',
       // '/welcome/introduction/learning-guide',
