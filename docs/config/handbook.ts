@@ -834,7 +834,7 @@ export default [
             title: 'Action types',
             'title.zh-CN': '操作类型',
             children: [
-           
+
               {
                 title: 'View',
                 'title.zh-CN': '查看',
@@ -1157,6 +1157,12 @@ export default [
             'title.zh-CN': '工作流 - 审批',
             // subTitle: '@nocobase/plugin-workflow-approval',
             link: '/handbook/workflow-approval',
+          },
+          {
+            title: 'Workflow - Custom action trigger',
+            'title.zh-CN': '工作流 - 自定义操作事件',
+            // subTitle: '@nocobase/plugin-workflow-approval',
+            link: '/handbook/workflow-custom-action-trigger',
           },
           {
             title: 'Workflow - Delay',
