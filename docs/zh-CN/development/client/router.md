@@ -46,7 +46,10 @@ class PluginHello extends Plugin {
 | admin          | /admin/\*          | AdminLayout         |
 | admin.page     | /admin/:name       | AdminDynamicPage    |
 | admin.settings | /admin/settings/\* | AdminSettingsLayout |
-| admin.pm.list  | //admin/pm/list/\* | PluginManager       |
+| admin.pm.list  | /admin/pm/list/\* | PluginManager       |
+| auth  | - | AuthLayout       |
+| auth.signin  | /signin | SignInPage       |
+| auth.signup  | /signup | SignUpPage       |
 
 ### AdminLayout
 

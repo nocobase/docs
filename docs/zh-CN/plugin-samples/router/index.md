@@ -1,0 +1,38 @@
+# 说明
+
+Nocobase 的前端页面目前内置了以下[页面路由](/development/client/router#已有页面路由)：
+
+| 名称           | 路径               | 组件                |
+| -------------- | ------------------ | -------------------|
+| admin          | /admin/\*          | Admin 后台管理页面  |
+| admin.page     | /admin/:name       | 动态创建的页面      |
+| admin.settings | /admin/settings/\* | 插件配置页面        |
+| admin.pm.list  | /admin/pm/list/\* | 插件管理页面         |
+| auth  | - |        |
+| auth.signin  | /signin |   登录页     |
+| auth.signup  | /signup |   注册页    |
+
+但这些页面并不一定满足所有的需求，例如：
+
+**新增场景**
+
+- 新增一个仅用于前端展示页面，比如 `/about`，展示一些关于网站的信息
+- 需要在 `/admin/*` 下扩展一个新的页面，此页面需要登录后才能访问
+- 新增了一个插件，其需要增加配置页面
+
+**修改场景**
+
+- 完全替换已有页面：例如完全自定义登录页面，而不是使用默认的登录页
+- 修改已有页面的布局：例如修改 `/admin/*` 的布局，不需要顶部的菜单栏
+
+**删除场景**
+
+- 例如我们不需要注册页，可以删除 `/signup` 页面
+
+针对以上场景，我们可以通过 Nocobase 提供的前端路由扩展功能来实现，我们提供了如下示例：
+
+- [新增页面](/plugin-samples/router/add-page)
+- [新增插件配置页](/plugin-samples/router/add-plugin-settings-page)
+- [替换页面](/plugin-samples/router/replace-page)
+- [修改页面布局](/plugin-samples/router/modify-layout)
+- [删除页面](/plugin-samples/router/remove-page)

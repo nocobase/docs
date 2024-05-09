@@ -4,6 +4,7 @@ import development from './development';
 import handbook from './handbook';
 import nav from './nav';
 import welcome from './welcome';
+import pluginSamples from './pluginSamples'
 
 const sidebar = {
   '/welcome': welcome,
@@ -12,6 +13,7 @@ const sidebar = {
   '/development': development,
   // '/plugins': plugins,
   '/api': api,
+  '/plugin-samples': pluginSamples,
   '/breaking-changes': breaking,
 };
 
