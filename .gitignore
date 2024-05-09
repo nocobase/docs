@@ -7,3 +7,5 @@ node_modules
 /server
 .vscode
 .idea
+.env
+
