@@ -32,8 +32,8 @@ yarn nocobase install
 然后初始化一个插件，并添加到系统中：
 
 ```bash
-yarn pm create @my-project/plugin-add-page
-yarn pm enable @my-project/plugin-add-page
+yarn pm create @nocobase-sample/plugin-add-page
+yarn pm enable @nocobase-sample/plugin-add-page
 ```
 
 然后启动项目即可：
@@ -49,26 +49,27 @@ yarn dev
 
 ### 第 1 步：新增 `/about` 页面
 
-按照插件开发教程中 [页面路由及扩展](/development/client/router)，我们需要修改插件的 `packages/plugins/@my-project/plugin-add-page/src/client/index.tsx`：
+按照插件开发教程中 [页面路由及扩展](/development/client/router)，我们需要修改插件的 `packages/plugins/@nocobase-sample/plugin-add-page/src/client/index.tsx`：
 
 ```ts
 import React from 'react';
-import { Plugin } from '@nocobase/client';
+import { Plugin, useDocumentTitle } from '@nocobase/client';
 
-const AboutPage = () => <div>About Page</div>;
+const AboutPage = () => {
+  const { setTitle } = useDocumentTitle();
 
-const DataViewPage = () => <div>DataView</div>;
+  useEffect(() => {
+    setTitle('About');
+  }, [])
+
+  return <div>About Page</div>;
+}
 
 export class PluginAddPageClient extends Plugin {
   async load() {
     this.app.router.add('about', {
       path: '/about',
       Component: AboutPage,
-    })
-
-    this.app.router.add('admin.dataView', {
-      path: '/admin/data-view',
-      Component: DataViewPage,
     })
   }
 }
@@ -78,20 +79,37 @@ export default PluginAddPageClient;
 
 其中 `router.add()` 第一个参数是页面的名称，仅用于增删改查和层级嵌套，第二个参数是页面的配置，其中 path 是页面的路径，Component 是页面的组件。
 
+`useDocumentTitle()` 用于修改页面的标题。
+
 然后我们访问 `http://localhost:3000/about` 就可以看到页面上已经显示了 `About Page` 了。
 
 ### 第 2 步：新增 `/admin/data-view` 页面
 
 同样的，我们还是使用 `router.add()` 新增路由，不过这次是在 `/admin/*` 下新增一个页面，则第一个参数需要加上 `admin.` 前缀：
 
-
 ```diff
 import React from 'react';
-import { Plugin } from '@nocobase/client';
+import { Plugin, useDocumentTitle } from '@nocobase/client';
 
-const AboutPage = () => <div>About Page</div>;
+const AboutPage = () => {
+  const { setTitle } = useDocumentTitle();
 
-+ const DataViewPage = () => <div>DataView</div>;
+  useEffect(() => {
+    setTitle('About');
+  }, [])
+
+  return <div>About Page</div>;
+}
+
++ const DataViewPage = () => {
++   const { setTitle } = useDocumentTitle();
++
++   useEffect(() => {
++     setTitle('DataView');
++   }, [])
++
++   return <div>DataView</div>
++ };
 
 export class PluginAddPageClient extends Plugin {
   async load() {
@@ -114,11 +132,12 @@ export default PluginAddPageClient;
 
 ### 第 3 步：新增 `/admin/material-manage` 以及其子页面
 
-我们可以新建 `packages/plugins/@my-project/plugin-add-page/src/client/MaterialPage.tsx` 文件，其内容如下：
+我们可以新建 `packages/plugins/@nocobase-sample/plugin-add-page/src/client/MaterialPage.tsx` 文件，其内容如下：
 
 ```tsx | pure
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
+import { useDocumentTitle } from '@nocobase/client';
 
 export const MaterialPage = () => {
   return <div>
@@ -135,8 +154,24 @@ export const MaterialPage = () => {
   </div>
 }
 
-export const MaterialVideo = () => <div>Material Video</div>
-export const MaterialImg = () => <div>Material Img</div>
+export const MaterialVideo = () => {
+  const { setTitle } = useDocumentTitle();
+
+  useEffect(() => {
+    setTitle('Material Video');
+  }, [])
+
+  return <div>Material Video</div>
+}
+export const MaterialImg = () => {
+  const { setTitle } = useDocumentTitle();
+
+  useEffect(() => {
+    setTitle('Material Img');
+  }, [])
+
+  return <div>Material Img</div>;
+}
 ```
 
 然后在 `client/index.tsx` 中引入并使用：
@@ -177,12 +212,6 @@ this.app.router.add('admin.material', {
 
 然后我们访问 `http://localhost:3000/admin/material/video` 就可以看到页面上已经显示了 `Material Page` 了，并且点击 `Video` 和 `Img` 链接可以切换到对应的页面。
 
-## 最终效果展示
-
-TODO
-
-可以放这里，或者放最前面
-
 ## 打包和上传到生产环境
 
 按照 [构建并打包插件](/development/your-fisrt-plugin#构建并打包插件) 文档说明，我们可以打包插件并上传到生产环境。
@@ -196,7 +225,7 @@ yarn build
 如果是使用的 `create-nocobase-app` 创建的项目，可以直接执行：
 
 ```bash
-yarn build @my-project/plugin-add-page --tar
+yarn build @nocobase-sample/plugin-add-page --tar
 ```
 
-这样就可以看到 `storage/tar/@my-project/plugin-add-page.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
+这样就可以看到 `storage/tar/@nocobase-sample/plugin-add-page.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。

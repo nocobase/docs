@@ -8,9 +8,6 @@ Nocobase 的前端页面目前内置了以下[页面路由](/development/client/
 | admin.page     | /admin/:name       | 动态创建的页面      |
 | admin.settings | /admin/settings/\* | 插件配置页面        |
 | admin.pm.list  | /admin/pm/list/\* | 插件管理页面         |
-| auth  | - |        |
-| auth.signin  | /signin |   登录页     |
-| auth.signup  | /signup |   注册页    |
 
 但这些页面并不一定满足所有的需求，例如：
 
@@ -27,12 +24,10 @@ Nocobase 的前端页面目前内置了以下[页面路由](/development/client/
 
 **删除场景**
 
-- 例如我们不需要注册页，可以删除 `/signup` 页面
+- 例如我们不需要某个已经注册的页面，可以删除改页面
 
 针对以上场景，我们可以通过 Nocobase 提供的前端路由扩展功能来实现，我们提供了如下示例：
 
 - [新增页面](/plugin-samples/router/add-page)
 - [新增插件配置页](/plugin-samples/router/add-plugin-settings-page)
-- [替换页面](/plugin-samples/router/replace-page)
-- [修改页面布局](/plugin-samples/router/modify-layout)
-- [删除页面](/plugin-samples/router/remove-page)
+- [修改页面布局](/plugin-samples/modify-layout)

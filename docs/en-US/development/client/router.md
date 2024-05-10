@@ -47,9 +47,7 @@ The initially installed NocoBase has the following registered page routes:
 | admin.page     | /admin/:name       | AdminDynamicPage     |
 | admin.settings | /admin/settings/\* | AdminSettingsLayout  |
 | admin.pm.list  | /admin/pm/list/\* | PluginManager        |
-| auth  | - | AuthLayout       |
-| auth.signin  | /signin | SignInPage       |
-| auth.signup  | /signup | SignUpPage       |
+
 
 ### AdminLayout
 
