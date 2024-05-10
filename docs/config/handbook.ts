@@ -834,7 +834,6 @@ export default [
             title: 'Action types',
             'title.zh-CN': '操作类型',
             children: [
-
               {
                 title: 'View',
                 'title.zh-CN': '查看',
@@ -1060,6 +1059,18 @@ export default [
                 title: 'Example',
                 'title.zh-CN': '示例',
                 children: ['/handbook/auth-saml/example/google'],
+              },
+            ],
+          },
+          {
+            title: 'Authentication - LDAP',
+            'title.zh-CN': '用户认证 - LDAP',
+            // subTitle: '@nocobase/plugin-saml',
+            children: [
+              {
+                title: 'User manual',
+                'title.zh-CN': '使用手册',
+                link: '/handbook/auth-ldap',
               },
             ],
           },
