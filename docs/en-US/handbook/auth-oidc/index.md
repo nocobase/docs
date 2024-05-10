@@ -62,8 +62,8 @@ Add - OIDC
 When testing locally, please use `127.0.0.1` instead of `localhost`, because the OIDC login method needs to write the state to the client cookie for security verification. If the login window flashes by but does not log in successfully, please check whether there are unmatched state logs on the server and whether the request cookie contains the state parameter. This situation is usually due to the mismatch between the state in the client cookie and the state carried in the request.
 :::
 
-## Log In
+## Sign In
 
-Visit the login page and click the button under the login form to initiate third-party login.
+Visit the sign in page and click the button under the sign in form to initiate third-party login.
 
 ![](https://static-docs.nocobase.com/e493d156254c2ac0b6f6e1002e6a2e6b.png)

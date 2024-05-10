@@ -39,7 +39,7 @@ LDAP 插件遵循 LDAP 协议标准，实现用户使用第三方身份认证服
 - Scope - `Base`, `One level`, `Subtree`, 默认 `Subtree`
 - Size limit - 搜索分页大小
 
-### 属性映射配置
+### 属性映射
 
 <img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405101612814.png"/>
 

@@ -47,8 +47,8 @@ The fields available for mapping in NocoBase are:
 The priority of the new user nickname use rule is: `nickname` > `firstName lastName` > `username` > `nameID`
 Currently, user organization and role mapping are not supported.
 
-## Log In
+## Sign In
 
-Visit the login page and click the button under the login form to initiate third-party login.
+Visit the sign in page and click the button under the sign in form to initiate third-party login.
 
 ![](https://static-docs.nocobase.com/74963865c9d36a294948e6adeb5b24bc.png)
