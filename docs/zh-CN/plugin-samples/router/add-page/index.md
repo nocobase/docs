@@ -16,7 +16,7 @@
 
 但不会对内容过多开发，仅用于演示如何新增页面。
 
-本文档完整的示例代码可以在 [plugin-samples/plugin-add-page](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase/plugin-add-page) 中查看。
+本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-add-page) 中查看。
 
 ## 初始化插件
 
@@ -32,8 +32,8 @@ yarn nocobase install
 然后初始化一个插件，并添加到系统中：
 
 ```bash
-yarn pm create @nocobase-sample/plugin-add-page
-yarn pm enable @nocobase-sample/plugin-add-page
+yarn pm create @nocobase-sample/plugin-change-page
+yarn pm enable @nocobase-sample/plugin-change-page
 ```
 
 然后启动项目即可：
@@ -225,7 +225,7 @@ yarn build
 如果是使用的 `create-nocobase-app` 创建的项目，可以直接执行：
 
 ```bash
-yarn build @nocobase-sample/plugin-add-page --tar
+yarn build @nocobase-sample/plugin-change-page --tar
 ```
 
-这样就可以看到 `storage/tar/@nocobase-sample/plugin-add-page.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
+这样就可以看到 `storage/tar/@nocobase-sample/plugin-change-page.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。

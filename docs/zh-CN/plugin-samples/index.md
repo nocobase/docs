@@ -4,4 +4,4 @@
 
 - [新增页面](/plugin-samples/router/add-page)
 - [新增插件配置页](/plugin-samples/router/add-plugin-settings-page)
-- [修改页面布局](/plugin-samples/modify-layout)
+- [修改页面](/plugin-samples/router/change-page)

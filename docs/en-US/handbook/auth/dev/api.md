@@ -93,3 +93,22 @@ export type AuthOptions = {
 - `SignInButton` - Sign in (third-party) button, can be used as an alternative to the sign-in form
 - `SignUpForm` - Sign up form
 - `AdminSettingsForm` - Admin configuration form
+
+### Route
+
+The frontend routes for registering the auth plugin are as follows:
+
+- Auth Layout
+  - name: `auth`
+  - path: `-`
+  - component: `AuthLayout`
+
+- SignIn Page
+  - name: `auth.signin`
+  - path: `/signin`
+  - component: `SignInPage`
+
+- SignUp Page
+  - name: `auth.signup`
+  - path: `/signup`
+  - component: `SignUpPage`
