@@ -26,7 +26,7 @@ Configure CAS and activate
 
 ![](https://static-docs.nocobase.com/2518b3fcc80d8a41391f3b629a510a02.png)
 
-### Visit the Login Page
+### Visit the Sign in Page
 
 http://localhost:13000/signin
 
