@@ -28,6 +28,7 @@ We are developing or have already planned the following new features and plugins
 - Share pages
 - Data source: API
 - Workflow: Script Node
+- [x] Workflow: Custom action trigger
 - API doc Pro
 - Input mask
 - Embed External Systems
