@@ -26,11 +26,11 @@ We are developing or have already planned the following new features and plugins
 - Action: Export records pro
 - Multi-application manager
 - Share pages
-- Transform API Data Structure
+- Data source: API
 - Workflow: Script Node
 - API doc Pro
 - Input mask
 - Embed External Systems
-- Auth: LDAP
+- [x] Auth: LDAP
 - Mobile client Pro
 - Notification

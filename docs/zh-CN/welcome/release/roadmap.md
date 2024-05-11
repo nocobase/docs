@@ -26,11 +26,11 @@
 - 操作：导出数据 Pro
 - 多应用管理
 - 分享页面
-- 转换 API 数据结构
+- 数据源：API
 - 工作流: Script 节点
 - API doc Pro
 - Input mask
 - 嵌入外部系统
-- 认证: LDAP
+- [x] 认证: LDAP
 - 移动端 Pro
 - 通知
