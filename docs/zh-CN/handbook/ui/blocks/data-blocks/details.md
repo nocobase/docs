@@ -12,7 +12,7 @@
 
 ## 区块配置项
 
-![20240417122949](https://static-docs.nocobase.com/20240417122949.png)
+![20240511114328](https://static-docs.nocobase.com/20240511114328.png)
 
 ### 设置数据范围
 
@@ -31,6 +31,16 @@
 - [设置数据加载方式](/handbook/ui/blocks/block-settings/loading-mode)
 - [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
 
+
+### 联动规则
+
+详情区块中的联动规则支持动态设置字段 显示/隐藏。
+
+示例：收货日期早于发货日期时隐藏发货日期。
+
+![20240511115156](https://static-docs.nocobase.com/20240511115156.png)
+
+更多内容参考 [联动规则](/handbook/ui/blocks/block-settings/linkage-rule)
 
 ## 配置字段
 
