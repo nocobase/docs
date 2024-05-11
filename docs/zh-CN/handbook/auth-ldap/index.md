@@ -1,8 +1,8 @@
-# LDAP 认证
+# 认证：LDAP
 
 ## 介绍
 
-LDAP 插件遵循 LDAP 协议标准，实现用户使用第三方身份认证服务商 (IdP) 提供的账号登录NocoBase，无需输入用户名和密码。
+认证：LDAP 插件遵循 LDAP (Lightweight Directory Access Protocol) 协议标准，实现用户使用 LDAP 服务器的账号密码登录NocoBase。
 
 ## 激活插件
 

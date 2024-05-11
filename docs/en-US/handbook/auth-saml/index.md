@@ -1,8 +1,8 @@
-# SAML Authentication
+# Auth: SAML 2.0
 
 ## Introduction
 
-The SAML plugin follows the SAML 2.0 protocol standard, allowing users to log in to NocoBase using accounts provided by third-party identity authentication service providers (IdP) without entering a username and password.
+The Auth: SAML 2.0 plugin follows the SAML 2.0 (Security Assertion Markup Language 2.0) protocol standard, allowing users to sign in to NocoBase using accounts provided by third-party identity authentication service providers (IdP).
 
 ## Activate Plugin
 

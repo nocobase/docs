@@ -1,8 +1,8 @@
-# OIDC 认证
+# 认证：OIDC
 
 ## 介绍
 
-OIDC 插件遵循 OIDC (Open ConnectID) 协议标准，使用授权码模式 (Authorization Code Flow), 实现用户使用第三方身份认证服务商 (IdP) 提供的账号登录 NocoBase，无需输入用户名和密码。
+认证：OIDC 插件遵循 OIDC (Open ConnectID) 协议标准，使用授权码模式 (Authorization Code Flow), 实现用户使用第三方身份认证服务商 (IdP) 提供的账号登录 NocoBase.
 
 ## 激活插件
 

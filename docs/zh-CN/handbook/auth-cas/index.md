@@ -1,8 +1,8 @@
-# CAS 认证
+# 认证：CAS
 
 ## 介绍
 
-CAS (Central Authentication Service) 是一种单点登录协议，它允许用户在一个应用程序中进行身份验证，然后在不需要重新登录的情况下访问其他应用程序。
+认证：CAS 插件遵循 CAS (Central Authentication Service) 协议标准，实现用户使用第三方身份认证服务商 (IdP) 提供的账号登录NocoBase.
 
 ## 安装
 

@@ -1,8 +1,8 @@
-# CAS Authentication
+# Auth: CAS
 
 ## Introduction
 
-CAS (Central Authentication Service) is a single sign-on protocol that allows users to authenticate in one application and then access other applications without having to log in again.
+The Auth: CAS plugin follows the CAS (Central Authentication Service) protocol standard, allowing users to sign in to NocoBase using accounts provided by third-party identity authentication service providers (IdP).
 
 ## Installation
 

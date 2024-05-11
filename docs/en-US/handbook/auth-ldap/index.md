@@ -1,8 +1,8 @@
-# LDAP Authentication
+# Auth: LDAP
 
 ## Introduction
 
-The LDAP plugin follows the LDAP protocol standard, allowing users to log in to NocoBase using accounts provided by third-party identity providers (IdPs), without entering usernames and passwords.
+The Auth: LDAP plugin follows the LDAP (Lightweight Directory Access Protocol) protocol standard, enabling users to sign in to NocoBase using their LDAP server credentials.
 
 ## Activate plugin
 
