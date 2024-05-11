@@ -41,12 +41,12 @@ class PluginHello extends Plugin {
 
 The initially installed NocoBase has the following registered page routes:
 
-| Name           | Path               | Component            |
-| -------------- | ------------------ | -------------------- |
-| admin          | /admin/\*          | AdminLayout          |
-| admin.page     | /admin/:name       | AdminDynamicPage     |
-| admin.settings | /admin/settings/\* | AdminSettingsLayout  |
-| admin.pm.list  | /admin/pm/list/\* | PluginManager        |
+| Name           | Path               | Component            | Description |
+| -------------- | ------------------ | ------------------- |---------|
+| admin          | /admin/\*          | AdminLayout         |  Admin page  |
+| admin.page     | /admin/:name       | AdminDynamicPage    | Dynamic page |
+| admin.settings | /admin/settings/\* | AdminSettingsLayout | Plugin configuration page  |
+| admin.pm.list  | /admin/pm/list/\* | PluginManager       | Plugin management page  |
 
 
 ### AdminLayout

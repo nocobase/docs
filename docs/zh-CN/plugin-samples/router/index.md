@@ -2,12 +2,12 @@
 
 Nocobase 的前端页面目前内置了以下[页面路由](/development/client/router#已有页面路由)：
 
-| 名称           | 路径               | 组件                |
-| -------------- | ------------------ | -------------------|
-| admin          | /admin/\*          | Admin 后台管理页面  |
-| admin.page     | /admin/:name       | 动态创建的页面      |
-| admin.settings | /admin/settings/\* | 插件配置页面        |
-| admin.pm.list  | /admin/pm/list/\* | 插件管理页面         |
+| 名称           | 路径               | 组件                | 说明 |
+| -------------- | ------------------ | ------------------- |---------|
+| admin          | /admin/\*          | AdminLayout         | 后台管理页面  |
+| admin.page     | /admin/:name       | AdminDynamicPage    | 动态创建的页面 |
+| admin.settings | /admin/settings/\* | AdminSettingsLayout | 插件配置页面  |
+| admin.pm.list  | /admin/pm/list/\* | PluginManager       | 插件管理页面  |
 
 但这些页面并不一定满足所有的需求，例如：
 
@@ -29,5 +29,7 @@ Nocobase 的前端页面目前内置了以下[页面路由](/development/client/
 针对以上场景，我们可以通过 Nocobase 提供的前端路由扩展功能来实现，我们提供了如下示例：
 
 - [新增页面](/plugin-samples/router/add-page)
-- [新增插件配置页](/plugin-samples/router/add-plugin-settings-page)
-- [修改页面](/plugin-samples/router/change-page)
+- [修改页面](/plugin-samples/router/replace-page)
+- [插件配置页面（单个路由）](/plugin-samples/router/add-setting-page-single-route)
+- [插件配置页面（Tabs 路由）](/plugin-samples/router/add-setting-page-tabs-routes)
+- [插件配置页面（不同布局）](/plugin-samples/router/add-setting-page-layout-routes)

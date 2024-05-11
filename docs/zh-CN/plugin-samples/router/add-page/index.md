@@ -2,7 +2,7 @@
 
 ## 场景说明
 
-在某些情况下，我们需要在系统中新增一些页面用于个性化的展示。
+新增一些页面，用于个性化的展示。
 
 ## 示例说明
 
@@ -18,6 +18,8 @@
 
 本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-add-page) 中查看。
 
+TODO：最终效果演示视频
+
 ## 初始化插件
 
 我们按照 [编写第一个插件](/development/your-fisrt-plugin) 文档说明，如果没有一个项目，可以先创建一个项目，如果已经有了或者是 clone 的源码，则跳过这一步。
@@ -32,8 +34,8 @@ yarn nocobase install
 然后初始化一个插件，并添加到系统中：
 
 ```bash
-yarn pm create @nocobase-sample/plugin-change-page
-yarn pm enable @nocobase-sample/plugin-change-page
+yarn pm create @nocobase-sample/plugin-add-page
+yarn pm enable @nocobase-sample/plugin-add-page
 ```
 
 然后启动项目即可：
@@ -42,7 +44,7 @@ yarn pm enable @nocobase-sample/plugin-change-page
 yarn dev
 ```
 
-然后登录后访问 `http://localhost:13000/admin/pm/list/local/` 就可以看到插件已经安装并启用了。
+然后登录后访问 [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) 就可以看到插件已经安装并启用了。
 
 
 ## 实现功能
@@ -52,7 +54,7 @@ yarn dev
 按照插件开发教程中 [页面路由及扩展](/development/client/router)，我们需要修改插件的 `packages/plugins/@nocobase-sample/plugin-add-page/src/client/index.tsx`：
 
 ```ts
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Plugin, useDocumentTitle } from '@nocobase/client';
 
 const AboutPage = () => {
@@ -77,65 +79,53 @@ export class PluginAddPageClient extends Plugin {
 export default PluginAddPageClient;
 ```
 
-其中 `router.add()` 第一个参数是页面的名称，仅用于增删改查和层级嵌套，第二个参数是页面的配置，其中 path 是页面的路径，Component 是页面的组件。
+其中 `router.add()` 第一个参数是页面的名称，仅用于增删改查和层级嵌套，第二个参数是页面的配置，其中 `path` 是页面的路径，`Component` 是页面的组件。
 
 `useDocumentTitle()` 用于修改页面的标题。
 
-然后我们访问 `http://localhost:3000/about` 就可以看到页面上已经显示了 `About Page` 了。
+然后我们访问 [http://localhost:13000/about](http://localhost:13000/about) 就可以看到页面上已经显示了 `About Page` 了。
+
+TODO：截图
 
 ### 第 2 步：新增 `/admin/data-view` 页面
 
-同样的，我们还是使用 `router.add()` 新增路由，不过这次是在 `/admin/*` 下新增一个页面，则第一个参数需要加上 `admin.` 前缀：
+根据 [已有页面路由](/development/client/router#已有页面路由) 文档得知，`/admin/*` 对应的 `name` 为 `admin`，如果我们需要再其下面新增一个页面，可以使用 `admin.` 前缀，例如 `admin.dataView`。
 
-```diff
-import React from 'react';
-import { Plugin, useDocumentTitle } from '@nocobase/client';
-
-const AboutPage = () => {
+```tsx | pure
+// ...
+const DataViewPage = () => {
   const { setTitle } = useDocumentTitle();
 
   useEffect(() => {
-    setTitle('About');
+    setTitle('DataView');
   }, [])
 
-  return <div>About Page</div>;
-}
-
-+ const DataViewPage = () => {
-+   const { setTitle } = useDocumentTitle();
-+
-+   useEffect(() => {
-+     setTitle('DataView');
-+   }, [])
-+
-+   return <div>DataView</div>
-+ };
+  return <div>DataView</div>
+};
 
 export class PluginAddPageClient extends Plugin {
   async load() {
-    this.app.router.add('about', {
-      path: '/about',
-      Component: AboutPage,
+    // ...
+    this.app.router.add('admin.dataView', {
+      path: '/admin/data-view',
+      Component: DataViewPage,
     })
-
-+   this.app.router.add('admin.dataView', {
-+     path: '/admin/data-view',
-+     Component: DataViewPage,
-+   })
   }
 }
 
 export default PluginAddPageClient;
 ```
 
-然后我们访问 `http://localhost:3000/admin/data-view` 就可以看到页面上已经显示了 `DataView` 了，并且如果退出登录后再访问，会跳转到登录页。
+然后我们访问 [http://localhost:13000/admin/data-view](http://localhost:13000/admin/data-view) 就可以看到页面上已经显示了 `DataView` 了，并且如果退出登录后再访问，会跳转到登录页。
+
+TODO：截图
 
 ### 第 3 步：新增 `/admin/material-manage` 以及其子页面
 
 我们可以新建 `packages/plugins/@nocobase-sample/plugin-add-page/src/client/MaterialPage.tsx` 文件，其内容如下：
 
 ```tsx | pure
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { useDocumentTitle } from '@nocobase/client';
 
@@ -174,7 +164,7 @@ export const MaterialImg = () => {
 }
 ```
 
-然后在 `client/index.tsx` 中引入并使用：
+然后在 `packages/plugins/@nocobase-sample/plugin-add-page/src/client/index.tsx` 中引入并使用：
 
 ```ts
 // ...
@@ -210,7 +200,9 @@ this.app.router.add('admin.material', {
 })
 ```
 
-然后我们访问 `http://localhost:3000/admin/material/video` 就可以看到页面上已经显示了 `Material Page` 了，并且点击 `Video` 和 `Img` 链接可以切换到对应的页面。
+然后我们访问 [http://localhost:13000/admin/material](http://localhost:13000/admin/material) 就可以看到页面上已经显示了 `Material Page` 了，并且点击 `Video` 和 `Img` 链接可以切换到对应的页面。
+
+TODO：截图
 
 ## 打包和上传到生产环境
 
@@ -225,7 +217,7 @@ yarn build
 如果是使用的 `create-nocobase-app` 创建的项目，可以直接执行：
 
 ```bash
-yarn build @nocobase-sample/plugin-change-page --tar
+yarn build @nocobase-sample/plugin-add-page --tar
 ```
 
-这样就可以看到 `storage/tar/@nocobase-sample/plugin-change-page.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
+这样就可以看到 `storage/tar/@nocobase-sample/plugin-add-page.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
