@@ -13,17 +13,17 @@
 
 ### 区块的弹窗操作
 
-![20240427104837](https://static-docs.nocobase.com/20240427104837.png)
+![20240511141127](https://static-docs.nocobase.com/20240511141127.png)
 
 ### 关系数据的弹窗操作
 
-![20240427105407](https://static-docs.nocobase.com/20240427105407.png)
+![20240511141247](https://static-docs.nocobase.com/20240511141247.png)
 
 ## 添加区块
 
 弹窗中的添加区块，目前可以用于添加以下类型区块。
 
-![20240427105530](https://static-docs.nocobase.com/20240427105530.png)
+![20240511141349](https://static-docs.nocobase.com/20240511141349.png)
 
 弹窗中的数据分为了三个维度：
 
@@ -31,27 +31,26 @@
 - 关系记录：用于展示与当前记录有关的关系数据；
 - 其他记录：用于展示其他表的数据；
 
-![20240427105705](https://static-docs.nocobase.com/20240427105705.png)
+![20240511141442](https://static-docs.nocobase.com/20240511141442.png)
 
 ### 当前记录
 
 示例：展示当前订单数据。
 
-
-![20240427123900](https://static-docs.nocobase.com/20240427123900.gif)
+![20240511141809](https://static-docs.nocobase.com/20240511141809.gif)
 
 ### 关系记录
 
 示例：展示当前订单关联的商品数据。
 
+![20240511143040](https://static-docs.nocobase.com/20240511143040.gif)
 
-![20240427124021](https://static-docs.nocobase.com/20240427124021.gif)
 
 ### 其他记录
 
 示例：订单表格区块的弹窗操作中配置仓库详情区块。
 
-![20240427124152](https://static-docs.nocobase.com/20240427124152.gif)
+![20240511143415](https://static-docs.nocobase.com/20240511143415.gif)
 ### 当前弹窗记录
 
 - 行操作的弹窗：每个弹窗都会有个「当前弹窗记录」变量，表示当前行记录。
