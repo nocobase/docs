@@ -27,7 +27,8 @@ We are developing or have already planned the following new features and plugins
 - Multi-application manager
 - Share pages
 - Data source: API
-- Workflow: Script Node
+- Workflow: Script node
+- Workflow: Webhook trigger
 - [x] Workflow: Custom action trigger
 - API doc Pro
 - Input mask

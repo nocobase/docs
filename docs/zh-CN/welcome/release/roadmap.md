@@ -28,6 +28,7 @@
 - 分享页面
 - 数据源：API
 - 工作流： Script 节点
+- 工作流：Webhook 触发器
 - [x] 工作流： 自定义操作触发器
 - API doc Pro
 - Input mask
