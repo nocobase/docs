@@ -19,7 +19,7 @@ This is a built-in plugin, no separate installation is required.
 - [General collection](/handbook/data-source-main/general-collection): built-in commonly used system fields;
 - [Inheritance collection](/handbook/data-source-main/inheritance-collection): allows the creation of a parent table, from which child tables can be derived. Child tables will inherit the structure of the parent table, and can also define their own columns.
 - [Tree collection](/handbook/collection-tree): tree-structured table, currently only supports adjacent table design;
-- [Calendar collection](/handbook/block-calendar/collection-calendar): for creating calendar-related event tables;
+- [Calendar collection](/handbook/calendar/collection-calendar): for creating calendar-related event tables;
 - [File collection](/handbook/file-manager/file-collection): for managing file storage;
 - [Expression Collection](/handbook/workflow-dynamic-calculation/expression): for dynamic expression scenarios in workflows;
 - [SQL Collection](/handbook/collection-sql): Not an actual database table, but quickly presenting the SQL query in a structured manner;

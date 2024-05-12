@@ -1,6 +1,6 @@
 # 日历表
 
-<PluginInfo name="block-calendar"></PluginInfo>
+<PluginInfo name="calendar"></PluginInfo>
 
 ## 介绍
 

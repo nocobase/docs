@@ -34,15 +34,19 @@
 
 ### 配置字段
 
+:::info
+如果你初次接触 NocoBase，可以先阅读 [数据表字段/概述](/handbook/data-modeling/collection-fields) 章节内容了解字段的概念。
+:::
+
 数据库中真实的字段会直接罗列出来，可以快速查看并配置字段的标题、存储类型（Field type）和 UI 类型（Field interface），复杂的字段，可以点击「编辑」，修改更多配置。
 
 ![20240507210537](https://static-docs.nocobase.com/20240507210537.png)
 
-关系字段配置需要新增字段
+关系字段并不是真实的数据库字段，需要新增字段来配置
 
 ![20240507220140](https://static-docs.nocobase.com/20240507220140.png)
 
-更多字段的配置查看 「[数据表字段/概述](/handbook/data-modeling/collection-fields)」 章节介绍
+更多字段的配置查看 「[数据表字段](/handbook/data-modeling/collection-fields)」 章节介绍
 
 ### PostgreSQL 字段类型映射
 
