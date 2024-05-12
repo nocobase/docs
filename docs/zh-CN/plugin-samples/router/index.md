@@ -1,4 +1,4 @@
-# 说明
+# 前端路由示例概述
 
 Nocobase 的前端页面目前内置了以下[页面路由](/development/client/router#已有页面路由)：
 

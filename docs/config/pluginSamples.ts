@@ -1,12 +1,17 @@
 export default [
   {
+    title: 'Overview',
+    'title.zh-CN': '总览',
+    link: '/plugin-samples',
+  },
+  {
     title: 'Router',
     'title.zh-CN': '前端路由',
     type: 'group',
     children: [
       {
         title: 'Overview',
-        'title.zh-CN': '说明',
+        'title.zh-CN': '概述',
         link: '/plugin-samples/router',
       },
       {
