@@ -41,12 +41,12 @@ class PluginHello extends Plugin {
 
 初始安装的 NocoBase，已注册的页面路由有：
 
-| 名称           | 路径               | 组件                |
-| -------------- | ------------------ | ------------------- |
-| admin          | /admin/\*          | AdminLayout         |
-| admin.page     | /admin/:name       | AdminDynamicPage    |
-| admin.settings | /admin/settings/\* | AdminSettingsLayout |
-| admin.pm.list  | //admin/pm/list/\* | PluginManager       |
+| 名称           | 路径               | 组件                | 说明 |
+| -------------- | ------------------ | ------------------- |---------|
+| admin          | /admin/\*          | AdminLayout         | 后台管理页面  |
+| admin.page     | /admin/:name       | AdminDynamicPage    | 动态创建的页面 |
+| admin.settings | /admin/settings/\* | AdminSettingsLayout | 插件配置页面  |
+| admin.pm.list  | /admin/pm/list/\* | PluginManager       | 插件管理页面  |
 
 ### AdminLayout
 

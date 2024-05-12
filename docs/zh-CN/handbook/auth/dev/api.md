@@ -93,3 +93,22 @@ export type AuthOptions = {
 - `SignInButton` - 登录（第三方）按钮，可以和登录表单二选一
 - `SignUpForm` - 注册表单
 - `AdminSettingsForm` - 后台配置表单
+
+### Route
+
+auth 插件注册前端路由如下：
+
+- Auth 布局
+  - name: `auth`
+  - path: `-`
+  - component: `AuthLayout`
+
+- 登录页
+  - name: `auth.signin`
+  - path: `/signin`
+  - component: `SignInPage`
+
+- 注册页
+  - name: `auth.signup`
+  - path: `/signup`
+  - component: `SignUpPage`
