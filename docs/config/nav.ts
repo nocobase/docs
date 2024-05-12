@@ -47,7 +47,7 @@ export default [
   {
     title: 'Plugin Samples',
     'title.zh-CN': '插件示例',
-    link: '/plugin-samples'
+    link: '/plugin-samples/router'
   },
   {
     title: 'NocoBase Home',

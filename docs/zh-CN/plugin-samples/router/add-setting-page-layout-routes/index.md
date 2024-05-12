@@ -8,11 +8,13 @@
 
 本实例会有一个配置页面，然后配置页面里面有一个详情链接，点击详情链接会跳转到一个新的页面。
 
-本篇内容不会对内容过多开发，仅用于演示如何新增一个插件配置页面，具体的配置页面内容和逻辑可参考 [Plugin Settings 插件示例](https://www.baidu.com) `TODO` 文档。
+本篇内容不会对内容过多开发，仅用于演示如何新增一个插件配置页面，具体的配置页面内容和逻辑可参考 Plugin Settings 插件示例（TODO） 文档。
 
 本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-add-setting-page-layout-routes) 中查看。
 
-TODO：最终效果视频如下。
+<video width="100%" controls>
+  <source src="https://static-docs.nocobase.com/10.mp4" type="video/mp4">
+</video>
 
 ## 初始化插件
 
@@ -72,7 +74,6 @@ export default PluginAddSettingPageLayoutRoutesClient;
 
 然后我们就可以访问 [http://localhost:13000/admin/settings/@nocobase-sample/plugin-add-setting-page-layout-routes](http://localhost:13000/admin/settings/@nocobase-sample/plugin-add-setting-page-layout-routes) 来查看插件配置页面了。
 
-TODO：截图
 
 ### 第 2 步：新增详情页面
 
@@ -99,7 +100,9 @@ export class PluginAddSettingPageLayoutRoutesClient extends Plugin {
 
 当我们点击 `details` 链接时，会跳转到 `/admin/@nocobase-sample/plugin-add-setting-page-layout-routes-detail` 页面。
 
-TODO：截图
+<video width="100%" controls>
+  <source src="https://static-docs.nocobase.com/10.mp4" type="video/mp4">
+</video>
 
 ## 权限配置
 
@@ -107,7 +110,7 @@ TODO：截图
 
 我们访问 [http://localhost:13000/admin/settings/users-permissions/roles](http://localhost:13000/admin/settings/users-permissions/roles) 就可以看到所有的角色了，我们可以在插件配置中配置权限。
 
-TODO：截图
+![20240512201624](https://static-docs.nocobase.com/20240512201624.png)
 
 ## 打包和上传到生产环境
 

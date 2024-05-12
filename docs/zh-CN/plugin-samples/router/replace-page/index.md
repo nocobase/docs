@@ -10,7 +10,7 @@
 
 本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-replace-page) 中查看。
 
-TODO：最终效果视频如下。
+![20240512200917](https://static-docs.nocobase.com/20240512200917.png)
 
 ## 初始化插件
 
@@ -219,7 +219,7 @@ this.app.router.add('auth', {
 
 然后我们退出登录，访问 [http://localhost:13000/signin](http://localhost:13000/signin) 就可以看到登录页的布局已经改变了。
 
-TODO：最终效果如下（视频）。
+![20240512200917](https://static-docs.nocobase.com/20240512200917.png)
 
 ## 打包和上传到生产环境
 

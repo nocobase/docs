@@ -18,8 +18,6 @@
 
 本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-add-page) 中查看。
 
-TODO：最终效果演示视频
-
 ## 初始化插件
 
 我们按照 [编写第一个插件](/development/your-fisrt-plugin) 文档说明，如果没有一个项目，可以先创建一个项目，如果已经有了或者是 clone 的源码，则跳过这一步。
@@ -85,7 +83,7 @@ export default PluginAddPageClient;
 
 然后我们访问 [http://localhost:13000/about](http://localhost:13000/about) 就可以看到页面上已经显示了 `About Page` 了。
 
-TODO：截图
+![20240512200508](https://static-docs.nocobase.com/20240512200508.png)
 
 ### 第 2 步：新增 `/admin/data-view` 页面
 
@@ -118,7 +116,7 @@ export default PluginAddPageClient;
 
 然后我们访问 [http://localhost:13000/admin/data-view](http://localhost:13000/admin/data-view) 就可以看到页面上已经显示了 `DataView` 了，并且如果退出登录后再访问，会跳转到登录页。
 
-TODO：截图
+![20240512200555](https://static-docs.nocobase.com/20240512200555.png)
 
 ### 第 3 步：新增 `/admin/material-manage` 以及其子页面
 
@@ -202,7 +200,9 @@ this.app.router.add('admin.material', {
 
 然后我们访问 [http://localhost:13000/admin/material](http://localhost:13000/admin/material) 就可以看到页面上已经显示了 `Material Page` 了，并且点击 `Video` 和 `Img` 链接可以切换到对应的页面。
 
-TODO：截图
+<video width="100%" controls>
+      <source src="https://static-docs.nocobase.com/3.mp4" type="video/mp4">
+</video>
 
 ## 打包和上传到生产环境
 
