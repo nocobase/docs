@@ -1,38 +1,39 @@
-# Many-to-One
 
-A library database consists of two entities: books and authors. An author can write multiple books, but each book has only one author(in most cases). In this case, the relationship between authors and books is a many-to-one relationship. Multiple books can be associated with the same author, but each book can only have one author.
+# 多对一
 
-ER Diagram
+一个图书馆数据库，其中有两个实体：图书和作者。一个作者可以写多本书，但每本书只有一个作者（多数情况下）。这种情况下，作者和书之间就是多对一的关系。多本书可以关联到同一个作者，但每本书只能有一个作者。
+
+ER 关系如下
 
 ![alt text](https://static-docs.nocobase.com/eaeeac974844db05c75cf0deeedf3652.png)
 
-Field Configuration
+字段配置
 
 ![alt text](https://static-docs.nocobase.com/3b4484ebb98d82f832f3dbf752bd84c9.png)
 
-## Parameter Description
+## 参数说明
 
-### Source Collection
+### Source collection
 
-The source table, which is the table where the current field resides.
+源表，也就是当前字段所在表。
 
-### Target Collection
+### Target collection
 
-The target table to which it is associated.
+目标表，与哪个表关联。
 
-### Foreign Key
+### Foreign key
 
-The field in the source table used to establish the relationship between the two tables.
+源表的字段，用于建立两个表之间的关联。
 
-### Target Key
+### Target key
 
-The field referenced by the foreign key constraint, which must be unique.
+外键约束引用的字段，必须具备唯一性。
 
 ### ON DELETE
 
-ON DELETE refers to the action rule for the foreign key references in the child table when records in the parent table are deleted. It is an option used to define the behavior of the foreign key constraint. Common ON DELETE options include:
+ON DELETE 是指在删除父表中的记录时对相关子表中的外键引用的操作规则，它是用于定义外键约束时的一个选项。常见的 ON DELETE 选项包括：
 
-- CASCADE: Automatically deletes all associated records in the child table when a record in the parent table is deleted.
-- SET NULL: Sets the foreign key values in the child table to NULL when a record in the parent table is deleted.
-- RESTRICT: Default option, refuses to delete the record in the parent table if there are associated records in the child table.
-- NO ACTION: Similar to RESTRICT, refuses to delete the record in the parent table if there are associated records in the child table.
+- CASCADE：当删除父表中的记录时，自动删除子表中与之关联的所有记录。
+- SET NULL：当删除父表中的记录时，将子表中与之关联的外键值设为 NULL。
+- RESTRICT：默认选项，当试图删除父表中的记录时，如果存在与之关联的子表记录，则拒绝删除父表记录。
+- NO ACTION：与 RESTRICT 类似，如果存在与之关联的子表记录，则拒绝删除父表记录。

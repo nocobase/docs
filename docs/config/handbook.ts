@@ -59,7 +59,7 @@ export default [
             ],
           },
           {
-            title: 'HTTP API 数据源',
+            title: 'HTTP API Data source',
             'title.zh-CN': 'HTTP API 数据源',
             // subTitle: '@nocobase/plugin-data-source-external-postgres',
             link: '/handbook/data-source-http-api',
@@ -200,7 +200,7 @@ export default [
                 link: '/handbook/data-modeling/collection-fields/basic/input',
               },
               {
-                title: 'Textarea',
+                title: 'Long text',
                 'title.zh-CN': '多行文本',
                 link: '/handbook/data-modeling/collection-fields/basic/textarea',
               },
