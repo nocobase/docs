@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This is used to connect to data from HTTP API sources, supporting adaptation for common CRUD operations.
+This is used to connect to data from HTTP API sources.
 
 :::warning
 The plugin is currently under development. Please stay tuned.

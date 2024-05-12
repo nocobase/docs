@@ -1,70 +1,53 @@
-# Overview
+# 概述
 
-Data modeling is the process of analyzing and abstracting various types of real-world data and their relationships during the design of a database. It aims to find the intrinsic connection and formalize it into a data model to establish the database structure of the information system. The data model is the foundation that drives NocoBase's work.
+数据建模是设计数据库时的关键步骤，它涉及对现实世界各类数据及其相互关系进行深入分析和抽象的过程。在这一过程中，我们试图揭示数据之间的内在联系，并将其形式化描述为数据模型，为信息系统的数据库结构奠定基础。NocoBase 是一个数据模型驱动的平台，具有以下特色：
 
-NocoBase's data modeling has the following features:
+## 支持接入各种来源数据
 
-## Offers a simple collection management interface
+NocoBase 的数据源可以是常见的各类数据库、API（SDK）平台和文件。
 
-Used to create various collections (data tables) or connect to existing collections (data tables)
+![20240512085558](https://static-docs.nocobase.com/20240512085558.png)
 
-![Alt text](https://static-docs.nocobase.com/6815410c40801b48c91682953c89744d.png)
+NocoBase 提供了[数据源管理插件](/handbook/data-source-manager)，用于管理各数据源及其数据表。数据源管理插件只是提供所有数据源的管理界面，并不提供接入数据源的能力，它需要和各种数据源插件搭配使用。目前支持的数据源包括：
 
-## Provides a visualization interface like ER Diagrams
+- [Main Database](/handbook/data-source-main)：NocoBase 主数据库，支持 MySQL、PostgreSQL、SQLite 等关系型数据库。
+- [External MySQL](/handbook/data-source-external-mysql)：使用外部的 MySQL 数据库作为数据源。
+- [External MariaDB](/handbook/data-source-external-mariadb)：使用外部的 MariaDB 数据库作为数据源。
+- [External PostgreSQL](/handbook/data-source-external-postgres)：使用外部的 PostgreSQL 数据库作为数据源。
 
-ER diagrams are used to extract entities and their relationships from user and business requirements. They provide an intuitive and easy-to-understand way to describe data models. With ER diagrams, we can better understand the main data entities in the system and their relationships.
+![20240512083651](https://static-docs.nocobase.com/20240512083651.png)
 
-![Alt text](https://static-docs.nocobase.com/7d11018dc2e75a8d6f16739a07d644f2.png)
+## 提供了多样的数据建模工具
 
-## Provides a variety of field types
+**简易的数据表管理界面**：用于创建各种模型（数据表）或连接已有模型（数据表）。
 
-The NocoBase collection fields include two dimensions: "Data Type" and "UI Type":
+![20240512090751](https://static-docs.nocobase.com/20240512090751.png)
 
-- Data type (Field type): Used to define the kind, format, and structure of the data that the field can store;
-- UI Type (Field interface): Refers to the type of control used to display and input field values in the user interface.
+**类 ER 图的可视化界面**：用于从用户和业务需求中提取实体和它们之间的关系，它提供了一种直观且易于理解的方式来描述数据模型，通过 ER 图可以更清晰地理解系统中的主要数据实体和它们之间的联系。
 
-## Has imaginative collection templates
+![20240512091042](https://static-docs.nocobase.com/20240410075906.png)
 
-Used to predefine data models under certain structures. The currently supported collection templates include:
+## 支持创建各种数据表
 
-- Genaral collection: Built-in common system fields;
-- Tree collection: Tree structure table, currently only supports adjacency table design;
-- Calendar collection: Used to create event tables related to calendars;
-- File collection: Used for the management of file storage;
-- Expression collection: Used for dynamic expression scenarios in workflows;
-- SQL collection: Not an actual database table, but quickly presents SQL queries in a structured manner.
+| 数据表 | 描述 |
+| - | - |
+| [普通表](/handbook/data-source-main/general-collection) | 内置了常用的系统字段 |
+| [继承表](/handbook/data-source-main/inheritance-collection) | 创建一个父表，然后从该父表派生出子表，子表会继承父表的字段，同时还可以定义自己的字段 |
+| [树表](/handbook/collection-tree) | 树结构表，目前只支持邻接表设计 |
+| [日历表](/handbook/calendar/calendar-collection) | 用于创建日历相关的事件表 |
+| [文件表](/handbook/file-manager/file-collection) | 用于文件存储的管理 |
+| [评论表](/handbook/comments/comment-collection) | 用于存储对数据的评论或反馈 |
+| [表达式表](/handbook/workflow-dynamic-calculation/expression) | 用于工作流的动态表达式场景 |
+| [SQL 表](/handbook/collection-sql) | 并不是实际的数据库表，而是快速的将 SQL 查询，结构化的展示出来 |
+| [视图表](/handbook/collection-view) | 连接已有的数据库视图 |
+| [外部数据表（FDW）](/handbook/collection-fdw) | 基于数据库的 FDW 技术实现的连接远程数据表 |
 
-![Alt text](https://static-docs.nocobase.com/228c6ac05a055d051a9fb371064c81eb.png)
+![20240512102212](https://static-docs.nocobase.com/20240512102212.png)
 
-## Supports connecting data table views
+更多内容查看 「[数据表 / 概述](/handbook/data-modeling/collection)」 章节
 
-Provides a more flexible and higher-level way of data access, making analysis and reporting easier, enhancing the usability and maintainability of data.
+## 提供了丰富的字段类型
 
-![Alt text](https://static-docs.nocobase.com/0a221bf0c89a6760e49974533102f303.png)
+![20240512110352](https://static-docs.nocobase.com/20240512110352.png)
 
-## Supports FDW technology
-
-"FDW" is the acronym for "Foreign Data Wrapper". FDW is a database technology that allows database systems to directly access and query data from external data sources (used as local tables) without copying the data to the local database. This technology makes it easy to integrate and query data from different sources in the database.
-
-![Alt text](https://static-docs.nocobase.com/34ef7b5d17ff3652428359b03a6f3dfc.png)
-
-## Supports collection inheritance
-
-You can create a parent collection and derive child collection from that parent collection. The child collection will inherit the structure of the parent collection, and can also define its own columns. This design pattern helps organize and manage data with similar structures but possible differences.
-
-Here are some common features of inheritable collections:
-
-- Parent Collection: The parent collection contains common columns and data, defining the basic structure of the entire inheritance hierarchy.
-- Child Collection: The child collection inherits the structure of the parent collection, but can also define its own columns. This allows each child collection to have the common properties of the parent collection while containing attributes specific to the subclass.
-- Querying: When querying, you can choose to query the entire inheritance hierarchy, just the parent collection, or a specific child collection. This allows different levels of data to be retrieved and processed as needed.
-- Inheritance Relationship: An inheritance relationship is established between the parent collection and the child collection, meaning that the structure of the parent collection can be used to define consistent attributes, while allowing the child collection to extend or override these attributes.
-
-This design pattern helps to reduce data redundancy, simplify the database model, and make the data easier to maintain. However, it needs to be used with caution as inheritable collections can increase the complexity of queries, especially when dealing with the entire inheritance hierarchy. Databases that support inheritable collections generally provide specific syntax and tools to manage and query these collection structures.
-
-![Alt text](https://static-docs.nocobase.com/4f1dec721319a609bf70eb56a9e98730.png)
-
-## Supports external data sources
-
-It can connect to various external data sources. Currently supported data sources include common relational databases like MySQL, MariaDB, and PostgreSQL. In addition, more types of data sources can be expanded through plugins and can be any common databases, or platforms providing API (SDK).
-
-![Alt text](https://static-docs.nocobase.com/f293b9528d896f8e43ecdf921ab74477.png)
+更多内容查看 「[数据表字段 / 概述](/handbook/data-modeling/collection-fields)」 章节

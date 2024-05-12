@@ -1,70 +1,53 @@
 # 概述
 
-数据建模是在设计数据库时，将现实世界各类数据及其关系进行分析、抽象，从中找出内在联系，并形式化描述为数据模型，建立信息系统的数据库结构的过程。数据模型是驱动 NocoBase 工作的基础。
+数据建模是设计数据库时的关键步骤，它涉及对现实世界各类数据及其相互关系进行深入分析和抽象的过程。在这一过程中，我们试图揭示数据之间的内在联系，并将其形式化描述为数据模型，为信息系统的数据库结构奠定基础。NocoBase 是一个数据模型驱动的平台，具有以下特色：
 
-NocoBase 的数据建模具有以下特色：
+## 支持接入各种来源数据
 
-## 提供了简易的数据表管理界面
+NocoBase 的数据源可以是常见的各类数据库、API（SDK）平台和文件。
 
-用于创建各种模型（数据表）或连接已有模型（数据表）
+![20240512085558](https://static-docs.nocobase.com/20240512085558.png)
 
-![Alt text](https://static-docs.nocobase.com/6815410c40801b48c91682953c89744d.png)
+NocoBase 提供了[数据源管理插件](/handbook/data-source-manager)，用于管理各数据源及其数据表。数据源管理插件只是提供所有数据源的管理界面，并不提供接入数据源的能力，它需要和各种数据源插件搭配使用。目前支持的数据源包括：
 
-## 提供了类 ER 图的可视化界面
+- [Main Database](/handbook/data-source-main)：NocoBase 主数据库，支持 MySQL、PostgreSQL、SQLite 等关系型数据库。
+- [External MySQL](/handbook/data-source-external-mysql)：使用外部的 MySQL 数据库作为数据源。
+- [External MariaDB](/handbook/data-source-external-mariadb)：使用外部的 MariaDB 数据库作为数据源。
+- [External PostgreSQL](/handbook/data-source-external-postgres)：使用外部的 PostgreSQL 数据库作为数据源。
 
-ER 图用于从用户和业务需求中提取实体和它们之间的关系，它提供了一种直观且易于理解的方式来描述数据模型，通过 ER 图可以更清晰地理解系统中的主要数据实体和它们之间的联系。
+![20240512083651](https://static-docs.nocobase.com/20240512083651.png)
 
-![Alt text](https://static-docs.nocobase.com/7d11018dc2e75a8d6f16739a07d644f2.png)
+## 提供了多样的数据建模工具
+
+**简易的数据表管理界面**：用于创建各种模型（数据表）或连接已有模型（数据表）。
+
+![20240512090751](https://static-docs.nocobase.com/20240512090751.png)
+
+**类 ER 图的可视化界面**：用于从用户和业务需求中提取实体和它们之间的关系，它提供了一种直观且易于理解的方式来描述数据模型，通过 ER 图可以更清晰地理解系统中的主要数据实体和它们之间的联系。
+
+![20240512091042](https://static-docs.nocobase.com/20240410075906.png)
+
+## 支持创建各种数据表
+
+| 数据表 | 描述 |
+| - | - |
+| [普通表](/handbook/data-source-main/general-collection) | 内置了常用的系统字段 |
+| [继承表](/handbook/data-source-main/inheritance-collection) | 创建一个父表，然后从该父表派生出子表，子表会继承父表的字段，同时还可以定义自己的字段 |
+| [树表](/handbook/collection-tree) | 树结构表，目前只支持邻接表设计 |
+| [日历表](/handbook/calendar/calendar-collection) | 用于创建日历相关的事件表 |
+| [文件表](/handbook/file-manager/file-collection) | 用于文件存储的管理 |
+| [评论表](/handbook/comments/comment-collection) | 用于存储对数据的评论或反馈 |
+| [表达式表](/handbook/workflow-dynamic-calculation/expression) | 用于工作流的动态表达式场景 |
+| [SQL 表](/handbook/collection-sql) | 并不是实际的数据库表，而是快速的将 SQL 查询，结构化的展示出来 |
+| [视图表](/handbook/collection-view) | 连接已有的数据库视图 |
+| [外部数据表（FDW）](/handbook/collection-fdw) | 基于数据库的 FDW 技术实现的连接远程数据表 |
+
+![20240512102212](https://static-docs.nocobase.com/20240512102212.png)
+
+更多内容查看 「[数据表 / 概述](/handbook/data-modeling/collection)」 章节
 
 ## 提供了丰富的字段类型
 
-NocoBase 的数据表字段包括「数据类型」和「UI 类型」两个维度：
+![20240512110352](https://static-docs.nocobase.com/20240512110352.png)
 
-- 数据类型（Field type）：用于定义字段可以存储的数据的种类、格式和结构；
-- UI 类型（Field interface）：是指在用户界面中用于显示和输入字段值的控件类型。
-
-## 提供了富有想象空间的数据表模板
-
-用于预定义特定结构下的数据模型，目前已支持的数据表模板包括：
-
-- 普通表：内置了常用的系统字段；
-- 树表：树结构表，目前只支持邻接表设计；
-- 日历表：用于创建日历相关的事件表；
-- 文件表：用于文件存储的管理；
-- 表达式表：用于工作流的动态表达式场景；
-- SQL 表：并不是实际的数据库表，而是快速的将 SQL 查询，结构化的展示出来。
-
-![Alt text](https://static-docs.nocobase.com/228c6ac05a055d051a9fb371064c81eb.png)
-
-## 支持连接数据表视图
-
-提供了更灵活、更高层次的数据访问方式，使得分析和报告更为简便，提高了数据的可用性和可维护性。
-
-![Alt text](https://static-docs.nocobase.com/0a221bf0c89a6760e49974533102f303.png)
-
-## 支持 FDW 技术
-
-"FDW" 是 "Foreign Data Wrapper" 的缩写，中文是 "外部数据包装器"。FDW 是一种数据库技术，允许数据库系统直接访问和查询外部数据源中的数据（当做本地表使用），而无需将数据复制到本地数据库。这种技术使得在数据库中可以轻松地集成和查询来自不同来源的数据。
-
-![Alt text](https://static-docs.nocobase.com/34ef7b5d17ff3652428359b03a6f3dfc.png)
-
-## 支持表继承
-
-可以创建一个父表，然后从该父表派生出子表。子表会继承父表的结构，同时还可以定义自己的列。这种设计模式有助于组织和管理具有相似结构但可能有一些差异的数据。
-
-以下是关于继承表的一些常见特点：
-
-- 父表： 父表包含了通用的列和数据，定义了整个继承层次结构的基本结构。
-- 子表： 子表继承了父表的结构，但还可以额外定义自己的列。这允许每个子表具有父表的通用属性，同时又可以包含特定于子类的属性。
-- 查询： 在查询时，可以选择查询整个继承层次结构，也可以只查询父表或特定的子表。这使得能够根据需要检索和处理不同层次的数据。
-- 继承关系： 父表和子表之间建立了继承关系，这意味着可以使用父表的结构来定义一致的属性，同时允许子表扩展或覆盖这些属性。
-
-这种设计模式有助于减少数据冗余，简化数据库模型，同时使数据更容易维护。然而，需要谨慎使用，因为继承表可能会增加查询的复杂性，特别是在处理整个继承层次结构时。支持继承表的数据库系统通常提供了特定的语法和工具来管理和查询这种表结构。
-
-![Alt text](https://static-docs.nocobase.com/4f1dec721319a609bf70eb56a9e98730.png)
-
-## 支持外部数据源
-
-可以连接各种外部数据源，目前已支持的数据源有常见的关系型数据库，比如 MySQL、MariaDB、PostgreSQL。除此之外，也可以通过插件扩展更多类型，可以是常见的各类数据库，也可以是提供 API（SDK）的平台。
-
-![Alt text](https://static-docs.nocobase.com/f293b9528d896f8e43ecdf921ab74477.png)
+更多内容查看 「[数据表字段 / 概述](/handbook/data-modeling/collection-fields)」 章节

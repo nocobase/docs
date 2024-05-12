@@ -15,59 +15,115 @@ export default [
         link: '/handbook/data-modeling',
       },
       {
-        title: 'Data model tools',
-        'title.zh-CN': '数据建模工具',
+        title: 'Data sources',
+        'title.zh-CN': '数据源',
         children: [
           {
             title: 'Data source manager',
             'title.zh-CN': '数据源管理',
-            // subTitle: '@nocobase/plugin-data-source-manager',
             link: '/handbook/data-source-manager',
           },
           {
-            title: 'Graph collection manager',
-            'title.zh-CN': '可视化数据表管理',
+            title: 'Main database',
+            'title.zh-CN': '主数据库',
+            // subTitle: '@nocobase/plugin-collection-manager',
+            link: '/handbook/data-source-main',
+          },
+          {
+            title: 'External database',
+            'title.zh-CN': '外部数据库',
+            children: [
+              {
+                title: 'External database manager',
+                'title.zh-CN': '介绍',
+                link: '/handbook/data-source-manager/external-database',
+              },
+              {
+                title: 'External MySQL',
+                'title.zh-CN': '外部 MySQL',
+                // subTitle: '@nocobase/plugin-data-source-external-mysql',
+                link: '/handbook/data-source-external-mysql',
+              },
+              {
+                title: 'External MariaDB',
+                'title.zh-CN': '外部 MariaDB',
+                // subTitle: '@nocobase/plugin-data-source-external-mariadb',
+                link: '/handbook/data-source-external-mariadb',
+              },
+              {
+                title: 'External PostgreSQL',
+                'title.zh-CN': '外部 PostgreSQL',
+                // subTitle: '@nocobase/plugin-data-source-external-postgres',
+                link: '/handbook/data-source-external-postgres',
+              },
+            ],
+          },
+          {
+            title: 'HTTP API Data source',
+            'title.zh-CN': 'HTTP API 数据源',
+            // subTitle: '@nocobase/plugin-data-source-external-postgres',
+            link: '/handbook/data-source-http-api',
+          },
+          {
+            title: 'ER diagram-like tool',
+            'title.zh-CN': '类 ER 工具',
             // subTitle: '@nocobase/plugin-graph-collection-manager',
             link: '/handbook/graph-collection-manager',
           },
         ],
       },
-      {
-        title: 'Data sources',
-        'title.zh-CN': '数据源',
-        children: [
-          {
-            title: 'Main database',
-            'title.zh-CN': '主数据库：Main',
-            // subTitle: '@nocobase/plugin-collection-manager',
-            link: '/handbook/data-source-main',
-          },
-          {
-            title: 'External MySQL',
-            'title.zh-CN': '外部数据源：MySQL',
-            // subTitle: '@nocobase/plugin-data-source-external-mysql',
-            link: '/handbook/data-source-external-mysql',
-          },
-          {
-            title: 'External MariaDB',
-            'title.zh-CN': '外部数据源：MariaDB',
-            // subTitle: '@nocobase/plugin-data-source-external-mariadb',
-            link: '/handbook/data-source-external-mariadb',
-          },
-          {
-            title: 'External PostgreSQL',
-            'title.zh-CN': '外部数据源：PostgreSQL',
-            // subTitle: '@nocobase/plugin-data-source-external-postgres',
-            link: '/handbook/data-source-external-postgres',
-          },
-          {
-            title: 'External：HTTP API',
-            'title.zh-CN': '外部数据源：HTTP API',
-            // subTitle: '@nocobase/plugin-data-source-external-postgres',
-            link: '/handbook/data-source-http-api',
-          },
-        ],
-      },
+      // {
+      //   title: 'Data sources',
+      //   'title.zh-CN': '数据源',
+      //   children: [
+      //     {
+      //       title: 'Overview',
+      //       'title.zh-CN': '概述',
+      //       link: '/handbook/data-modeling/data-source',
+      //     },
+      //     {
+      //       title: 'Overview',
+      //       'title.zh-CN': '数据源管理',
+      //       link: '/handbook/data-modeling/data-source',
+      //     },
+      //     {
+      //       title: 'Main database',
+      //       'title.zh-CN': '主数据库',
+      //       // subTitle: '@nocobase/plugin-collection-manager',
+      //       link: '/handbook/data-source-main',
+      //     },
+      //     {
+      //       title: 'External database',
+      //       'title.zh-CN': '外部数据库',
+      //       children: [
+      //         {
+      //           title: 'External MySQL',
+      //           'title.zh-CN': '外部数据源：MySQL',
+      //           // subTitle: '@nocobase/plugin-data-source-external-mysql',
+      //           link: '/handbook/data-source-external-mysql',
+      //         },
+      //         {
+      //           title: 'External MariaDB',
+      //           'title.zh-CN': '外部数据源：MariaDB',
+      //           // subTitle: '@nocobase/plugin-data-source-external-mariadb',
+      //           link: '/handbook/data-source-external-mariadb',
+      //         },
+      //         {
+      //           title: 'External PostgreSQL',
+      //           'title.zh-CN': '外部数据源：PostgreSQL',
+      //           // subTitle: '@nocobase/plugin-data-source-external-postgres',
+      //           link: '/handbook/data-source-external-postgres',
+      //         },
+      //       ],
+      //     },
+      //     {
+      //       title: 'External：HTTP API',
+      //       'title.zh-CN': '外部数据源：HTTP API',
+      //       // subTitle: '@nocobase/plugin-data-source-external-postgres',
+      //       link: '/handbook/data-source-http-api',
+      //     },
+      //   ],
+      // },
       {
         title: 'Collections',
         'title.zh-CN': '数据表',
@@ -100,7 +156,7 @@ export default [
           {
             title: 'Calendar collection',
             'title.zh-CN': '日历表',
-            link: '/handbook/block-calendar/collection-calendar',
+            link: '/handbook/calendar/calendar-collection',
           },
           {
             title: 'Expression collection',
@@ -144,7 +200,7 @@ export default [
                 link: '/handbook/data-modeling/collection-fields/basic/input',
               },
               {
-                title: 'Textarea',
+                title: 'Long text',
                 'title.zh-CN': '多行文本',
                 link: '/handbook/data-modeling/collection-fields/basic/textarea',
               },
@@ -241,6 +297,11 @@ export default [
                 link: '/handbook/data-modeling/collection-fields/media/markdown',
               },
               {
+                title: 'Markdown(Vditor)',
+                'title.zh-CN': 'Markdown(Vditor)',
+                link: '/handbook/field-markdown-vditor',
+              },
+              {
                 title: 'Rich text',
                 'title.zh-CN': '富文本',
                 link: '/handbook/data-modeling/collection-fields/media/rich-text',
@@ -315,17 +376,12 @@ export default [
               },
               {
                 title: 'Sort',
-                'title.zh-CN': '排序 - Sort',
+                'title.zh-CN': '排序',
                 link: '/handbook/field-sort',
               },
               {
-                title: 'Expression',
-                'title.zh-CN': '表达式',
-                link: '/handbook/workflow-dynamic-calculation/field-expression',
-              },
-              {
                 title: 'Formula',
-                'title.zh-CN': '公式',
+                'title.zh-CN': '计算公式',
                 link: '/handbook/field-formula',
               },
               {
@@ -334,9 +390,9 @@ export default [
                 link: '/handbook/field-sequence',
               },
               {
-                title: 'Snapshot',
-                'title.zh-CN': '快照',
-                link: '/handbook/field-snapshot',
+                title: 'JSON',
+                'title.zh-CN': 'JSON',
+                link: '/handbook/data-modeling/collection-fields/advanced/json',
               },
               {
                 title: 'Collection 选择器',
@@ -477,7 +533,7 @@ export default [
               {
                 title: 'Calendar',
                 'title.zh-CN': '日历',
-                link: '/handbook/block-calendar',
+                link: '/handbook/calendar',
               },
               {
                 title: 'Gantt',

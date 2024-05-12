@@ -1,50 +1,50 @@
-# Many-to-Many
+# 多对多
 
-In a course enrollment system, there are two entities: students and courses. A student can enroll in multiple courses, and a course can be enrolled by multiple students. This constitutes a many-to-many relationship. In relational databases, to represent the many-to-many relationship between students and courses, an intermediate table is typically used, such as an enrollment table. This table can record which courses each student has chosen and which students have enrolled in each course. This design effectively represents the many-to-many relationship between students and courses.
+在选课系统中，有学生和课程两个实体，一个学生可以选修多门课程，一门课程也可以有多个学生选修，这就构成了多对多的关系。在关系数据库中，为了表示学生和课程之间的多对多关系，通常会使用一个中间表，比如选课表。这个表可以记录每个学生选择了哪些课程，每门课程被哪些学生选修。这样的设计可以很好地表示学生和课程之间的多对多关系。
 
-ER Diagram
+ER 关系如下
 
 ![alt text](https://static-docs.nocobase.com/0e9921228e1ee375dc639431bb89782c.png)
 
-Field Configuration
+字段配置
 
 ![alt text](https://static-docs.nocobase.com/8e2739ac5d44fb46f30e2da42ca87a82.png)
 
-## Parameter Description
+## 参数说明
 
-### Source Collection
+### Source collection
 
-The source table, which is the table where the current field resides.
+源表，也就是当前字段所在表。
 
-### Target Collection
+### Target collection
 
-The target table to which it is associated.
+目标表，与哪个表关联。
 
-### Through Collection
+### Through collection
 
-The intermediate table used when there is a many-to-many relationship between two entities. The intermediate table has two foreign keys used to store the relationship between the two entities.
+中间表，当两个实体之间存在多对多的关系时，需要使用中间表来存储这种关系。中间表有两个外键，用于保存两个实体之间的关联。
 
-### Source Key
+### Source key
 
-The field referenced by the foreign key constraint, which must be unique.
+外键约束引用的字段，必须具备唯一性。
 
-### Foreign Key 1
+### Foreign key 1
 
-The field in the intermediate table used to establish the relationship with the source table.
+中间表的字段，用于建立与源表之间的关联。
 
-### Foreign Key 2
+### Foreign key 2
 
-The field in the intermediate table used to establish the relationship with the target table.
+中间表的字段，用于建立与目标表之间的关联。
 
-### Target Key
+### Target key
 
-The field referenced by the foreign key constraint, which must be unique.
+外键约束引用的字段，必须具备唯一性。
 
 ### ON DELETE
 
-ON DELETE refers to the action rule for the foreign key references in the child table when records in the parent table are deleted. It is an option used to define the behavior of the foreign key constraint. Common ON DELETE options include:
+ON DELETE 是指在删除父表中的记录时对相关子表中的外键引用的操作规则，它是用于定义外键约束时的一个选项。常见的 ON DELETE 选项包括：
 
-- CASCADE: Automatically deletes all associated records in the child table when a record in the parent table is deleted.
-- SET NULL: Sets the foreign key values in the child table to NULL when a record in the parent table is deleted.
-- RESTRICT: Default option, refuses to delete the record in the parent table if there are associated records in the child table.
-- NO ACTION: Similar to RESTRICT, refuses to delete the record in the parent table if there are associated records in the child table.
+- CASCADE：当删除父表中的记录时，自动删除子表中与之关联的所有记录。
+- SET NULL：当删除父表中的记录时，将子表中与之关联的外键值设为 NULL。
+- RESTRICT：默认选项，当试图删除父表中的记录时，如果存在与之关联的子表记录，则拒绝删除父表记录。
+- NO ACTION：与 RESTRICT 类似，如果存在与之关联的子表记录，则拒绝删除父表记录。
