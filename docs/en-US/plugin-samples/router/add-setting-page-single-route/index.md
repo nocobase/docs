@@ -66,7 +66,10 @@ export class PluginAddSettingPageSingleRouteClient extends Plugin {
 export default PluginAddSettingPageSingleRouteClient;
 ```
 
-Where `name` is the unique identifier, `title` is the title of the plugin configuration management page menu, `icon` is the icon of the plugin configuration management page menu, and `Component` is the content of the settings page.
+- `name`: The name of the plugin, used to uniquely identify the plugin.
+- `title`: The title of the plugin configuration management page menu.
+- `icon`: The icon of the plugin configuration management page menu. For more icons, you can refer to the [Ant Design Icons](https://ant.design/components/icon/).
+- `Component`: The content of the setting page.
 
 Then we can visit [http://localhost:13000/admin/settings/@nocobase-sample/plugin-add-setting-page-single-route](http://localhost:13000/admin/settings/@nocobase-sample/plugin-add-setting-page-single-route) to view the plugin configuration page.
 

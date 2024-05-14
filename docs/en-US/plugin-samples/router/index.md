@@ -1,6 +1,6 @@
 # Explanation
 
-Nocobase's frontend pages currently include the following [page routes](/development/client/router#existing-page-routes):
+NocoBase's frontend pages currently include the following [page routes](/development/client/router#existing-page-routes):
 
 | Name           | Path               | Component           | Description |
 | -------------- | ------------------ | ------------------- |-------------|
@@ -26,7 +26,7 @@ However, these pages may not meet all requirements, for example:
 
 - For example, if we no longer need a registered page, we can delete it.
 
-针对以上场景，我们可以通过 Nocobase 提供的前端路由扩展功能来实现，我们提供了如下示例：
+To address the above scenarios, we can use NocoBase's frontend router extension feature. We provide the following examples:
 
 - [Add Page](/plugin-samples/router/add-page) (Add a new page)
 - [Replace Page](/plugin-samples/router/replace-page) (Modify a page)
