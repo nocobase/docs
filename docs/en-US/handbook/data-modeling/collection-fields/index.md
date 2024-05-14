@@ -1,29 +1,29 @@
-# 数据表字段
+# Overview
 
-## 字段的 Interface 类型
+## Interface Types of Fields
 
-NocoBase 从 Interface 视角将字段分为了以下几类：
+NocoBase classifies fields into the following categories from the Interface perspective:
 
 ![20240512110352](https://static-docs.nocobase.com/20240512110352.png)
 
-## 字段数据类型
+## Field Data Types
 
-每个 Field Interface 都有一个默认的数据类型，例如 Interface 为数字（Number）的字段，数据类型默认是 double，但也可以是 float、decimal 等。目前支持的数据类型有：
+Each Field Interface has a default data type. For instance, for fields with the Interface as a Number, the default data type is double, but it can also be float, decimal, etc. The data types currently supported are:
 
 ![20240512103733](https://static-docs.nocobase.com/20240512103733.png)
 
-## 字段类型映射
+## Field Type Mapping
 
-主数据库新增字段的流程为：
+The process for adding new fields to the main database is as follows:
 
-1. 选择 Interface 类型
-2. 配置当前 Interface 可选数据类型
+1. Select the Interface type
+2. Configure the optional data type for the current Interface
 
 ![20240512172416](https://static-docs.nocobase.com/20240512172416.png)
 
-外部数据源的字段映射流程为：
+The process for field mapping from external data sources is:
 
-1. 自动根据外部数据库的字段类型，映射相对应的数据类型（Field type）和 UI 类型（Field Interface）。
-2. 按需修改为更合适的数据类型和 Interface 类型
+1. Automatically map the corresponding data type (Field type) and UI type (Field Interface) based on the field type of the external database.
+2. Modify to a more suitable data type and Interface type as needed
 
 ![20240512172759](https://static-docs.nocobase.com/20240512172759.png)
