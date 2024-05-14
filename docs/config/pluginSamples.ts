@@ -40,5 +40,32 @@ export default [
         link: '/plugin-samples/router/add-setting-page-layout-routes',
       },
     ]
+  },
+  {
+    title: 'Plugin Settings',
+    'title.zh-CN': '插件配置',
+    type: 'group',
+    children: [
+      {
+        title: 'Overview',
+        'title.zh-CN': '概述',
+        link: '/plugin-samples/plugin-setting',
+      },
+      {
+        title: 'Form Configuration Page',
+        'title.zh-CN': '表单配置页面',
+        link: '/plugin-samples/plugin-setting/form',
+      },
+      {
+        title: 'Table Configuration Page',
+        'title.zh-CN': '表格配置页面',
+        link: '/plugin-samples/plugin-setting/table',
+      },
+      {
+        title: 'Table Configuration Page (Multiple Add Forms)',
+        'title.zh-CN': '表格配置页面（多个新增表单）',
+        link: '/plugin-samples/plugin-setting/table-multiple-add-forms',
+      },
+    ]
   }
 ];
