@@ -34,7 +34,7 @@ export default [
             'title.zh-CN': '外部数据库',
             children: [
               {
-                title: 'External database manager',
+                title: 'Overview',
                 'title.zh-CN': '介绍',
                 link: '/handbook/data-source-manager/external-database',
               },

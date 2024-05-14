@@ -1,45 +1,47 @@
-# 外部数据库
+# Overview
 
-## 介绍
+## Introduction
 
-使用外部已有的数据库作为数据源，目前已支持的外部数据库有 MySQL、MariaDB、PostgreSQL。
+Use an existing external database as a data source. Currently, the supported external databases are MySQL, MariaDB, and PostgreSQL.
 
-## 使用说明
+## Usage Instructions
 
-### 添加外部数据库
+### Adding an External Database
 
-激活插件之后，才可以在数据源管理的 Add new 下拉菜单中选择并添加。
+After activating the plugin, you can select and add it from the Add new dropdown menu in the data source management.
 
 ![20240507204316](https://static-docs.nocobase.com/20240507204316.png)
 
-填写需要接入的数据库信息
+Fill in the information of the database you need to connect to.
 
 ![20240507204820](https://static-docs.nocobase.com/20240507204820.png)
 
-### 数据表同步
+### Data Table Synchronization
 
-外部数据库建立连接之后，会直接读取数据源里的所有数据表。外部数据库不支持直接添加数据表或修改表结构，如果需要修改，可以通过数据库客户端进行操作，再在界面上点击「刷新」按钮来同步。
+After establishing a connection with the external database, all data tables in the data source will be directly read. The external database does not support directly adding data tables or modifying table structures. If modifications are needed, they can be made through the database client, and then the "Refresh" button can be clicked on the interface to synchronize.
 
 ![20240507204725](https://static-docs.nocobase.com/20240507204725.png)
 
-### 配置字段
+### Configuring Fields
 
-外部数据库会自动读取已有数据表的字段，并展示出来。可以快速查看并配置字段的标题、数据类型（Field type）和 UI 类型（Field interface），也可以点击「编辑」按钮，修改更多配置。
+The external database will automatically read the fields of the existing data tables and display them. You can quickly view and configure the title of the field, the data type (Field type), and the UI type (Field interface). You can also click the "Edit" button to modify more configurations.
 
 ![20240507210537](https://static-docs.nocobase.com/20240507210537.png)
 
-因为外部数据库不支持修改表结构，所以新增字段时，可选的类型只有关系字段。关系字段并不是真实的字段，而是用于建立表和表之间的连接。
+Because the external database does not support modifying table structures, the only type available when adding new fields is the relationship field. Relationship fields are not real fields, but are used to establish connections between tables.
 
 ![20240507220140](https://static-docs.nocobase.com/20240507220140.png)
 
-更多内容 [数据表字段/概述](/handbook/data-modeling/collection-fields) 章节。
+For more content, refer to the [Collection Fields/Overview](/handbook/data-modeling/collection-fields) section.
 
-### 字段类型映射
+### Field Type Mapping
 
-NocoBase 会自动为外部数据库的字段类型，映射相对应的数据类型（Field type）和 UI 类型（Field Interface）。
+NocoBase will automatically map the corresponding data type (Field type) and UI type (Field Interface) for the field types of the external database.
 
-- 数据类型（Field type）：用于定义字段可以存储的数据的种类、格式和结构；
-- UI 类型（Field interface）：是指在用户界面中用于显示和输入字段值的控件类型。
+- Data type (Field type): Used to define the kind, format, and structure of data that the field can store.
+- UI type (Field Interface): Refers to the type of control used to display and input field values in the user interface.
+
+The table below shows the mapping of field types for PostgreSQL, MySQL/MariaDB to NocoBase Data Type and NocoBase Interface Type.
 
 | PostgreSQL | MySQL/MariaDB | NocoBase Data Type | NocoBase Interface Type |
 | - | - | - | - |
@@ -69,18 +71,18 @@ NocoBase 会自动为外部数据库的字段类型，映射相对应的数据�
 | SET | SET | set | multipleSelect<br/>checkboxGroup |
 | RANGE | - | - | - |
 
-### 不支持的字段类型
+### Unsupported Field Types
 
-不支持的字段类型会单独展示出来，这些字段需要开发适配之后才能使用。
+Unsupported field types will be displayed separately. These fields need to be developed for adaptation before they can be used.
 
 ![20240507221854](https://static-docs.nocobase.com/20240507221854.png)
 
-### 筛选目标键
+### Filter Target Key
 
-作为区块展示的数据表必须配置了筛选目标键（Filter target key），筛选目标键指的是根据特定字段筛选数据，字段值必须具备唯一性。筛选目标键默认为数据表主键字段，如果是视图或者无主键数据表、联合主键的数据表，需要自定义筛选目标键。
+Data tables that are displayed as blocks must have a filter target key configured. The filter target key refers to filtering data based on a specific field, and the field value must be unique. The filter target key defaults to the primary key field of the data table. If it is a view or a data table without a primary key, or a data table with a composite primary key, you need to customize the filter target key.
 
 ![20240507210230](https://static-docs.nocobase.com/20240507210230.png)
 
-设置了筛选目标键的数据表才可以在页面里添加
+Only data tables that have set a filter target key can be added to the page.
 
 ![20240507222827](https://static-docs.nocobase.com/20240507222827.png)

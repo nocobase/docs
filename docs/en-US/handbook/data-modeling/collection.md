@@ -1,17 +1,17 @@
-# 数据表概述
+# Overview
 
-NocoBase 提供了一种特有的 DSL 来描述数据的结构，称之为 Collection，将各种来源的数据结构统一起来，为后续数据管理、分析和应用提供了可靠的基础。
+NocoBase provides a unique DSL to describe the structure of data, known as Collection, which unifies the data structure from various sources, providing a reliable foundation for data management, analysis, and application.
 
 ![20240512161522](https://static-docs.nocobase.com/20240512161522.png)
 
-为了便捷的使用各种数据模型，支持创建各种数据表：
+To conveniently use various data models, it supports various types of collections:
 
-- [普通表](/handbook/data-source-main/general-collection)：内置了常用的系统字段；
-- [继承表](/handbook/data-source-main/inheritance-collection)：可以创建一个父表，然后从该父表派生出子表，子表会继承父表的结构，同时还可以定义自己的列。
-- [树表](/handbook/collection-tree)：树结构表，目前只支持邻接表设计；
-- [日历表](/handbook/calendar/calendar-collection)：用于创建日历相关的事件表；
-- [文件表](/handbook/file-manager/file-collection)：用于文件存储的管理；
-- [表达式表](/handbook/workflow-dynamic-calculation/expression)：用于工作流的动态表达式场景；
-- [SQL 表](/handbook/collection-sql)：并不是实际的数据库表，而是快速的将 SQL 查询，结构化的展示出来；
-- [视图表](/handbook/collection-view)：连接已有的数据库视图；
-- [外部表](/handbook/collection-fdw)：允许数据库系统直接访问和查询外部数据源中的数据，基于 FDW 技术；
+- [General collection](/handbook/data-source-main/general-collection): Built-in common system fields;
+- [Inheritance collection](/handbook/data-source-main/inheritance-collection): You can create a parent collection and then derive a child collection from the parent collection. The child collection will inherit the structure of the parent collection and can also define its own columns.
+- [Tree collection](/handbook/collection-tree): Tree structure collection, currently only supports adjacency collection design;
+- [Calendar Tabcollectionle](/handbook/calendar/calendar-collection): Used to create calendar-related event collections;
+- [File collection](/handbook/file-manager/file-collection): Used for file storage management;
+- [Expression collection](/handbook/workflow-dynamic-calculation/expression): Used for dynamic expression scenarios in workflows;
+- [SQL collection](/handbook/collection-sql): Not an actual database collection, but quickly presents SQL queries in a structured manner;
+- [Connect to database view](/handbook/collection-view): Connects to existing database views;
+- [Connect to foreign data](/handbook/collection-fdw): Allows the database system to directly access and query data in external data sources, based on FDW technology.
