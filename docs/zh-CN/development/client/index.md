@@ -2,21 +2,20 @@
 
 ## 目录结构
 
-初始化的空插件，服务端相关目录结构如下：
+初始化的空插件，客户端相关目录结构如下：
 
 ```bash
 |- /plugin-sample-hello
   |- /src
-    |- /client      # 插件服务端代码
-      |- plugin.tsx  # 插件类
-      |- index.ts   # 服务端入口
+    |- /client      # 插件客户端代码
+      |- index.tsx   # 客户端入口文件
   |- client.d.ts
   |- client.js
 ```
 
-## Plugin
+## Plugin Class
 
-`Plugin.tsx` 提供了插件生命周期的各种方法的调用
+插件类提供了插件生命周期的各种方法。
 
 ```ts
 import { Plugin } from '@nocobase/client';

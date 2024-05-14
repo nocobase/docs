@@ -2,21 +2,20 @@
 
 ## Directory Structure
 
-The directory structure related to the server for an initialized empty plugin is as follows:
+Initialized empty plugin, the client directory structure is as follows:
 
 ```bash
 |- /plugin-sample-hello
   |- /src
-    |- /client      # Plugin server-side code
-      |- plugin.tsx  # Plugin class
-      |- index.ts   # Server-side entry point
+    |- /client
+      |- index.tsx
   |- client.d.ts
   |- client.js
 ```
 
-## Plugin
+## Plugin Class
 
-`Plugin.tsx` facilitates the invocation of methods across the plugin lifecycle.
+The plugin class provides various methods for the plugin lifecycle.
 
 ```ts
 import { Plugin } from '@nocobase/client';
