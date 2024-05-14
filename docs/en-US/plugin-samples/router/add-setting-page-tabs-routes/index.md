@@ -2,8 +2,6 @@
 
 ## Description
 
-# Multiple Configuration Pages for the Plugin
-
 The plugin requires multiple configuration pages, with each page corresponding to a tab.
 
 ## Example Description

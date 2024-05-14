@@ -1,6 +1,6 @@
 # 前端路由示例概述
 
-Nocobase 的前端页面目前内置了以下[页面路由](/development/client/router#已有页面路由)：
+NocoBase 的前端页面目前内置了以下[页面路由](/development/client/router#已有页面路由)：
 
 | 名称           | 路径               | 组件                | 说明 |
 | -------------- | ------------------ | ------------------- |---------|
@@ -26,7 +26,7 @@ Nocobase 的前端页面目前内置了以下[页面路由](/development/client/
 
 - 例如我们不需要某个已经注册的页面，可以删除改页面
 
-针对以上场景，我们可以通过 Nocobase 提供的前端路由扩展功能来实现，我们提供了如下示例：
+针对以上场景，我们可以通过 NocoBase 提供的前端路由扩展功能来实现，我们提供了如下示例：
 
 - [新增页面](/plugin-samples/router/add-page)
 - [修改页面](/plugin-samples/router/replace-page)

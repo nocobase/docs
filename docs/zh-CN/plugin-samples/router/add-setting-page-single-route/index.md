@@ -66,7 +66,10 @@ export class PluginAddSettingPageSingleRouteClient extends Plugin {
 export default PluginAddSettingPageSingleRouteClient;
 ```
 
-其中 `name` 是唯一标识，`title` 是插件配置管理页面菜单的标题，`icon` 是插件配置管理页面菜单的图标，`Component` 是设置页面的内容。
+- `name`：插件的名称，用于唯一标识插件
+- `title`：插件配置管理页面菜单的标题
+- `icon`：插件配置管理页面菜单的图标，更多图标可以参考 [Ant Design 图标](https://ant.design/components/icon/)
+- `Component`：设置页面的内容
 
 然后我们就可以访问 [http://localhost:13000/admin/settings/@nocobase-sample/plugin-add-setting-page-single-route](http://localhost:13000/admin/settings/@nocobase-sample/plugin-add-setting-page-single-route) 来查看插件配置页面了。
 
