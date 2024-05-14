@@ -54,5 +54,10 @@ export default defineConfig({
       { id: 'en-US', switchPrefix: 'en', hostname: 'docs.nocobase.com' }
     ],
   }),
+  favicons: [
+    '/favicon.ico',
+    '/favicon-32x32.png',
+    '/favicon-16x16.png',
+  ],
   // mfsu: true, // 报错
 });
