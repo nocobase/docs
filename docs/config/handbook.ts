@@ -161,7 +161,7 @@ export default [
           {
             title: 'Expression collection',
             'title.zh-CN': '表达式表',
-            link: '/handbook/workflow-dynamic-calculation/expression',
+            link: '/handbook/workflow/manual/nodes/dynamic-calculation/expression',
           },
           {
             title: 'SQL collection',
@@ -590,7 +590,7 @@ export default [
               {
                 title: 'Workflow todos',
                 'title.zh-CN': '工作流待办',
-                link: '/handbook/workflow-manual/workflow-todos-block',
+                link: '/handbook/workflow/manual/nodes/manual/workflow-todos-block',
               },
               {
                 title: 'Workflow todos',
