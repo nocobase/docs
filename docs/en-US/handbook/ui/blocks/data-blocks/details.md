@@ -52,4 +52,4 @@ For more details on detail field configuration, please refer to [Detail Fields](
 - [Pop-up](/handbook/ui/actions/types/pop-up)
 - [Update Record](/handbook/ui/actions/types/update-record)
 - [Custom Request](/handbook/action-custom-request)
-- Submit to Workflow
+- [Trigger workflow](/handbook/workflow/manual/triggers/cutom-action-trigger)
