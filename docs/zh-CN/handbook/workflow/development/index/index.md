@@ -5,7 +5,7 @@
 扩展主要分为两部分内容：
 
 - [扩展触发器类型](../trigger/index.md)
-- [扩展节点类型](../node/index.md)
+- [扩展节点类型](../instruction/index.md)
 
 ## 其他内容
 

@@ -142,7 +142,7 @@ export class PayInstruction extends Instruction {
 
 如果任意节点执行后返回了“停等”状态，则整个执行流程会被暂时中断挂起，等待一个由对应节点定义的事件触发以恢复流程的执行。例如 [人工节点](../../../workflow-manual/index/index.md)，执行到该节点后会以“停等”状态从该节点暂停，等待人工介入该流程，决策是否通过。如果人工输入的状态是通过，则继续后续的流程节点，反之则按前面的失败逻辑处理。
 
-更多的的指令返回状态可以参考 [工作流 API 参考](../api#JOB_STATUS) 部分。
+更多的的指令返回状态可以参考 [工作流 API 参考](../api/index.md#JOB_STATUS) 部分。
 
 ### 提前退出
 
@@ -154,24 +154,32 @@ export class PayInstruction extends Instruction {
 扩展节点进行分支流程的调度有一定复杂性，需要谨慎处理，并进行充分的测试。
 :::
 
+### 了解更多
+
+定义节点类型的各个参数定义见 [工作流 API 参考](../api/index.md#instruction) 部分。
+
 ## 客户端
 
-与触发器类型，节点类型的配置内容需要在前端实现。
+与触发器类似，指令（节点类型）的配置表单需要在前端实现。
+
+### 最简单的节点指令
+
+所有的指令都需要派生自 `Instruction` 基类，相关属性和方法用于对节点的配置和使用。
 
 例如我们需要为上面在服务端定义的随机数字符串类型（`randomString`）的节点提供配置界面，其中有一个配置项是 `digit` 代表随机数的位数，在配置表单中我们使用一个数字输入框来接收用户输入。
 
 ```tsx | pure
-import WorkflowPlugin, { Instruction } from '@nocobase/workflow/client';
+import WorkflowPlugin, { Instruction, VariableOption } from '@nocobase/workflow/client';
 
 class MyInstruction extends Instruction {
   title = 'Random number string';
   type = 'randomString';
   group = 'extended';
   fieldset = {
-    'config.digit': {
+    'digit': {
       type: 'number',
       title: 'Digit',
-      name: 'config.digit',
+      name: 'digit',
       'x-decorator': 'FormItem',
       'x-component': 'InputNumber',
       'x-component-props': {
@@ -181,10 +189,10 @@ class MyInstruction extends Instruction {
       default: 6,
     },
   };
-  useVariables(node, options) {
+  useVariables(node, options): VariableOption {
     return {
-      [fieldNames.value]: node.key,
-      [fieldNames.label]: node.title,
+      value: node.key,
+      label: node.title,
     };
   }
 }
@@ -203,5 +211,90 @@ export default class MyPlugin extends Plugin {
 :::info{title=提示}
 客户端注册的节点类型标识必须与服务端的保持一致，否则会导致错误。
 :::
+
+### 提供节点的结果作为变量
+
+可以注意到上面例子中的 `useVariables` 方法，如果需要将节点的结果（`result` 部分）作为变量供后续节点使用，需要在集成的指令类中实现该方法，并返回一个符合 `VariableOption` 类型的对象，该对象作为对节点运行结果的结构描述，提供变量名映射，以供后续节点中进行选择使用。
+
+其中 `VariableOption` 类型定义如下：
+
+```ts
+export type VariableOption = {
+  value?: string;
+  label?: string;
+  children?: VariableOption[] | null;
+  [key: string]: any;
+};
+```
+
+核心是 `value` 属性，代表变量名的分段路径值，`label` 用于显示在界面上，`children` 用于表示多层级的变量结构，当节点的结果是一个深层对象是会使用。
+
+一个可使用的变量在系统内部的表达是一个通过 `.` 分隔的路径模板字符串，例如 `{{jobsMapByNodeKey.2dw92cdf.abc}}`。其中 `$jobsMapByNodeKey` 表示的是所有节点的结果集（已内部定义，无需处理），`2dw92cdf` 是节点的 `key`，`abc` 是节点的结果对象中的某个自定义属性。
+
+另外，由于节点的结果也可能是一个简单值，所以要求提供节点变量时，第一层**必须**是节点本身的描述：
+
+```ts
+{
+  value: node.key,
+  label: node.title,
+}
+```
+
+即第一层是节点的 `key` 和标题。例如运算节点的[代码参考](https://github.com/nocobase/nocobase/blob/main/packages/plugins/%40nocobase/plugin-workflow/src/client/nodes/calculation.tsx#L77)，则在使用运算节点的结果时，界面的选项如下：
+
+![运算节点的结果](https://static-docs.nocobase.com/20240514230014.png)
+
+当节点的结果是一个复杂对象时，可以通过 `children` 继续描述深层属性，例如一个自定义指令会返回如下的 JSON 数据：
+
+```json
+{
+  "message": "ok",
+  "data": {
+    "id": 1,
+    "name": "test",
+  }
+}
+```
+
+则可以通过如下的 `useVariables` 方法返回：
+
+```ts
+useVariables(node, options): VariableOption {
+  return {
+    value: node.key,
+    label: node.title,
+    children: [
+      {
+        value: 'message',
+        label: 'Message',
+      },
+      {
+        value: 'data',
+        label: 'Data',
+        children: [
+          {
+            value: 'id',
+            label: 'ID',
+          },
+          {
+            value: 'name',
+            label: 'Name',
+          },
+        ],
+      },
+    ],
+  };
+}
+```
+
+这样在后续节点中就可以用以下的界面来选择其中的变量：
+
+![映射后的结果变量](https://static-docs.nocobase.com/20240514230103.png)
+
+:::info{title="提示"}
+当结果中某个结构是深层对象数组时，同样可以使用 `children` 来描述路径，但不能包含数组索引，因为在 NocoBase 工作流的变量处理中，针对对象数组的变量路径描述，在使用时会自动扁平化为深层值的数组，而不能通过索引来访问第几个值。可以参考《[工作流：进阶使用](../../manual/advanced/index.md#使用变量)》部分的内容。
+:::
+
+### 了解更多
 
 定义节点类型的各个参数定义见 [工作流 API 参考](../api/index.md#instruction-1) 部分。

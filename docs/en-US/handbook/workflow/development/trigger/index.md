@@ -8,7 +8,7 @@
 
 - `'collection'`：数据表操作触发；
 - `'schedule'`：定时任务触发；
-- `'form'`：表单事件触发；
+- `'action'`：操作后事件触发；
 
 扩展的触发器类型需要保证标识唯一，在服务端注册触发器的订阅/取消订阅的实现，在客户端注册界面配置的实现。
 
@@ -28,7 +28,7 @@ class MyTrigger extends Trigger {
     // register event
     this.timer = setInterval(() => {
       // trigger workflow
-      this.plugin.trigger(workflow, { date: new Date() });
+      this.workflow.trigger(workflow, { date: new Date() });
     }, workflow.config.interval ?? 60000);
   }
 

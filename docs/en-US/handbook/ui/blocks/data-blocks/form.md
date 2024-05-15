@@ -99,4 +99,4 @@ Form field configuration options can be found in [Form Fields](/handbook/ui/fiel
 - [Submit](/handbook/ui/actions/types/submit)
 - [Save Data](/handbook/ui/actions/types/save-record)
 - [Custom Request](/handbook/action-custom-request)
-- Submit to Workflow
+- [Trigger workflow](/handbook/workflow/manual/triggers/cutom-action-trigger)
