@@ -44,9 +44,9 @@ TODO：截图 Theme editor 插件
 
 针对以上场景，我们提供了如下示例：
 
-- [表单配置页面](/plugin-samples/plugin-setting/form)
-- [表格配置页面](/plugin-samples/plugin-setting/table)
-- [表格配置页面（多个新增表单）](/plugin-samples/plugin-setting/table-multiple-forms.md)
+- [表单配置页面](/plugin-samples/plugin-settings/form)
+- [表格配置页面](/plugin-samples/plugin-settings/table)
+- [表格配置页面（多个新增表单）](/plugin-samples/plugin-settings/table-multiple-forms.md)
 
 至于特殊的情况，只需要根据实际情况进行开发即可。
 

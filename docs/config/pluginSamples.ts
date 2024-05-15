@@ -49,22 +49,22 @@ export default [
       {
         title: 'Overview',
         'title.zh-CN': '概述',
-        link: '/plugin-samples/plugin-setting',
+        link: '/plugin-samples/plugin-settings',
       },
       {
         title: 'Form Configuration Page',
         'title.zh-CN': '表单配置页面',
-        link: '/plugin-samples/plugin-setting/form',
+        link: '/plugin-samples/plugin-settings/form',
       },
       {
         title: 'Table Configuration Page',
         'title.zh-CN': '表格配置页面',
-        link: '/plugin-samples/plugin-setting/table',
+        link: '/plugin-samples/plugin-settings/table',
       },
       {
         title: 'Table Configuration Page (Multiple Add Forms)',
         'title.zh-CN': '表格配置页面（多个新增表单）',
-        link: '/plugin-samples/plugin-setting/table-multiple-add-forms',
+        link: '/plugin-samples/plugin-settings/table-multiple-add-forms',
       },
     ]
   }
