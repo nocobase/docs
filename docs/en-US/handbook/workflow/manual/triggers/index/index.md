@@ -4,10 +4,10 @@
 
 - [数据表事件](../collection/index.md)（内置）
 - [定时任务](../schedule/index.md)（内置）
-- [操作前事件](../request-interceptor/index.md)（插件 @nocobase/plugin-workflow-request-interceptor 提供）
-- [自定义操作事件](../custom-action-trigger/index.md)（插件 @nocobase/plugin-workflow-custom-action-trigger 提供）
-- [操作后事件](../action-trigger/index.md)（插件 @nocobase/plugin-workflow-action-trigger 提供）
-- [审批事件](../approval/index.md)（插件 @nocobase/plugin-workflow-approval 提供）
+- [操作前事件](../pre-action/index.md)（插件 @nocobase/plugin-workflow-request-interceptor 提供）
+- [自定义操作事件](../custom-action/index.md)（插件 @nocobase/plugin-workflow-custom-action-trigger 提供）
+- [操作后事件](../post-action/index.md)（插件 @nocobase/plugin-workflow-action-trigger 提供）
+- [审批事件](../../../../workflow-approval/index.md)（插件 @nocobase/plugin-workflow-approval 提供）
 
 各个事件的触发时机如下图所示：
 
