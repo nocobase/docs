@@ -46,6 +46,7 @@ yarn dev
 
 - [数据表和字段](/development/server/collections)
 - [数据表创建](/development/server/collections/configure#在插件代码里定义)
+- [Field Type](/development/server/collections/options#field-type)
 - [defineCollection()  API](/api/database#definecollection)
 - [Collection API](/api/database/collection)
 
@@ -79,6 +80,8 @@ export default defineCollection({
 yarn nocobase upgrade
 ```
 
+TODO：截图数据库
+
 ## 前端功能实现
 
 ### 1. 创建插件配置页面
@@ -106,6 +109,8 @@ export default PluginSettingsFormClient;
 ```
 
 然后访问 [http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-form](http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-form) 就可以我们的配置页面了。
+
+TODO：截图
 
 ### 2. 定义数据表结构
 
@@ -179,7 +184,7 @@ import { useMemo } from 'react';
 import { App as AntdApp } from 'antd';
 import { createForm } from '@formily/core';
 import { useForm } from '@formily/react';
-import { uid } from '@nocobase/utils/client';
+import { uid } from '@formily/shared';
 import { ActionProps, ISchema, useCollection, useCollectionRecordData, useDataBlockResource } from '@nocobase/client';
 
 const schema: ISchema = {
@@ -282,8 +287,6 @@ export const PluginSettingsForm = () => {
 
 ### 5. 注册插件配置页面
 
-我们将 `PluginSettingsForm` 在 `PluginSettingsFormClient` 中注册到插件配置页面中。
-
 我们修改 `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/index.tsx` 文件，其内容如下：
 
 ```diff
@@ -374,6 +377,9 @@ export const PluginSettingsFormProvider: FC<{ children: React.ReactNode }> = ({c
   const request = useRequest<{ data?: { key: string; secret: string } }>({
     url: 'mapConfiguration:get',
   });
+
+  console.log('PluginSettingsFormProvider', request.data?.data);
+
   return <PluginSettingsFormContext.Provider value={request}>{children}</PluginSettingsFormContext.Provider>;
 }
 
