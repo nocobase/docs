@@ -93,13 +93,13 @@ export const TopAnnouncement: FC<{ children: ReactNode }> = ({ children }) => {
 import { Plugin } from '@nocobase/client';
 import { TopAnnouncement } from './TopAnnouncement';
 
-export class PluginProviderRenderClient extends Plugin {
+export class PluginProviderContentClient extends Plugin {
   async load() {
     this.app.addProvider(TopAnnouncement)
   }
 }
 
-export default PluginProviderRenderClient;
+export default PluginProviderContentClient;
 ```
 
 然后我们访问 [http://localhost:13000](http://localhost:13000)，就能看到页面顶部展示了公告了。
