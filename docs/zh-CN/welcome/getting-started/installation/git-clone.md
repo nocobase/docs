@@ -5,7 +5,7 @@
 请确保你已经：
 
 - 安装了 Git、Node.js 18+、Yarn 1.22.x
-- 配置并启动了所需数据库 SQLite 3.x、MySQL 8.0.17+、MariaDB 10.9+、PostgreSQL 10.x 任选其一
+- 配置并启动了所需数据库 SQLite 3.x、MySQL 8.0.17+、MariaDB 10.9+、PostgreSQL 10+ 任选其一
 
 ## 1. 将 NocoBase 下载到本地
 
