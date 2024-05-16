@@ -6,7 +6,7 @@
 
 我们要实现一个公告功能，如果后端返回了公告信息，那么我们就在页面的顶部展示这个公告。
 
-本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-provider-render) 中查看。
+本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-provider-content) 中查看。
 
 TODO：截图示例最终效果。
 
@@ -24,8 +24,8 @@ yarn nocobase install
 然后初始化一个插件，并添加到系统中：
 
 ```bash
-yarn pm create @nocobase-sample/plugin-provider-render
-yarn pm enable @nocobase-sample/plugin-provider-render
+yarn pm create @nocobase-sample/plugin-provider-content
+yarn pm enable @nocobase-sample/plugin-provider-content
 ```
 
 然后启动项目即可：
@@ -42,7 +42,7 @@ yarn dev
 
 Provider 组件就是普通的 React 组件，但是需要注意，要将 `children` 渲染出来。
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-provider-render/src/client/TopAnnouncement.tsx`
+我们新建 `packages/plugins/@nocobase-sample/plugin-provider-content/src/client/TopAnnouncement.tsx`
 
 ```tsx | pure
 import React, { FC, ReactNode } from 'react';
@@ -83,10 +83,11 @@ export const TopAnnouncement: FC<{ children: ReactNode }> = ({ children }) => {
 
 关于公告的配置和数据，可以参考 [插件表单配置页面](/plugin-samples/plugin-settings/form) 示例说明，这里只使用 Mock 数据。
 
+需要注意 `children` 别忘记渲染出来。
 
 ### 第 2 步：注册到系统中
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-provider-render/src/index.ts` 文件，将 `TopAnnouncement` 组件注册到系统中。
+我们修改 `packages/plugins/@nocobase-sample/plugin-provider-content/src/index.ts` 文件，将 `TopAnnouncement` 组件注册到系统中。
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
@@ -118,7 +119,7 @@ yarn build
 如果是使用的 `create-nocobase-app` 创建的项目，可以直接执行：
 
 ```bash
-yarn build @nocobase-sample/plugin-provider-render --tar
+yarn build @nocobase-sample/plugin-provider-content --tar
 ```
 
-这样就可以看到 `storage/tar/@nocobase-sample/plugin-provider-render.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
+这样就可以看到 `storage/tar/@nocobase-sample/plugin-provider-content.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。

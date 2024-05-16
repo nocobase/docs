@@ -67,5 +67,27 @@ export default [
         link: '/plugin-samples/plugin-settings/table-multiple-add-forms',
       },
     ]
+  },
+  {
+    title: 'Provider',
+    'title.zh-CN': 'Provider',
+    type: 'group',
+    children: [
+      {
+        title: 'Overview',
+        'title.zh-CN': '概述',
+        link: '/plugin-samples/provider',
+      },
+      {
+        title: 'Global Content',
+        'title.zh-CN': '全局内容',
+        link: '/plugin-samples/provider/content',
+      },
+      {
+        title: 'Global Context',
+        'title.zh-CN': '全局上下文',
+        link: '/plugin-samples/provider/context',
+      },
+    ]
   }
 ];
