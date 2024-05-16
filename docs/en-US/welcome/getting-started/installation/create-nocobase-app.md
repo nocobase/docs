@@ -7,7 +7,7 @@ Make sure you have:
 - Installed Node.js 18+, Yarn 1.22.x
 - Configured and started one of the required database SQLite 3.x, MySQL 8.x, MariaDB 10.9+, PostgreSQL 10+
 
-Please make sure you have Node.js 16.x or above installed. You can download and install the latest LTS version from the official website. It is recommended to use nvm (or nvm-windows for Win systems) to manage Node.js versions if you plan to work with Node.js for a long time.
+You can download and install the latest LTS version from the official website. It is recommended to use nvm (or nvm-windows for Win systems) to manage Node.js versions if you plan to work with Node.js for a long time.
 
 ```bash
 $ node -v
