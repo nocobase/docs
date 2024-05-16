@@ -40,9 +40,7 @@ yarn dev
 
 ### 1. 创建数据表
 
-后端主要是创建一个数据表用于存储配置信息。
-
-关于数据表创建我们需要了解以下知识：
+后端主要是创建一个数据表用于存储配置信息。关于数据表创建我们需要了解以下知识：
 
 - [数据表和字段](/development/server/collections)
 - [数据表创建](/development/server/collections/configure#在插件代码里定义)
@@ -50,13 +48,13 @@ yarn dev
 - [defineCollection()  API](/api/database#definecollection)
 - [Collection API](/api/database/collection)
 
-对于本实例而言，我们创建 `packages/plugins/@nocobase-sample/plugin-settings-form/src/server/collections/map-configuration.ts` 文件，其内容如下：
+对于本示例而言，我们创建 `packages/plugins/@nocobase-sample/plugin-settings-form/src/server/collections/map-configuration.ts` 文件，其内容如下：
 
 ```ts
 import { defineCollection } from '@nocobase/database';
 
 export default defineCollection({
-  name: 'mapConfiguration',
+  name: 'SamplesMapConfiguration',
   fields: [
     {
       type: 'string',
@@ -70,7 +68,7 @@ export default defineCollection({
 });
 ```
 
-根据需求，我们创建了一个 `mapConfiguration` 数据表，包含 `key` 和 `secret` 两个字段，并且都是字符串类型。
+根据需求，我们创建了一个 `SamplesMapConfiguration` 数据表，包含 `key` 和 `secret` 两个字段，并且都是字符串类型。
 
 ### 2. 执行更新
 
@@ -126,7 +124,7 @@ TODO：截图
 
 ```ts
 const mapConfigurationCollection = {
-  name: 'mapConfiguration',
+  name: 'SamplesMapConfiguration',
   filterTargetKey: 'id',
   fields: [
     {
@@ -134,7 +132,6 @@ const mapConfigurationCollection = {
       name: 'key',
       interface: 'input',
       uiSchema: {
-        type: 'string',
         title: 'Title',
         required: true,
         'x-component': 'Input',
@@ -145,7 +142,6 @@ const mapConfigurationCollection = {
       name: 'secret',
       interface: 'input',
       uiSchema: {
-        type: 'string',
         title: 'Secret',
         required: true,
         'x-component': 'Input',
@@ -155,13 +151,12 @@ const mapConfigurationCollection = {
 };
 ```
 
-我们定义了一个 `mapConfiguration` 数据表，包含 `key` 和 `secret` 两个字段。以下是 `fields` 字段的说明：
+我们定义了一个 `SamplesMapConfiguration` 数据表，包含 `key` 和 `secret` 两个字段。以下是 `fields` 字段的说明：
 
 - `type`：因为是其值字符串，所以其值为 `string`，需要和后端的数据表字段类型一致
 - `name`：字段的名称，需要和后端的数据表字段名称一致
 - `interface`：其主要作用是 ？？，这里因为其值字符串，对应到 interface，所以其值为 `input`
 - `uiSchema`：其对应着前端表单项组件的渲染
-  - `type`：因为是其值字符串，所以其值为 `string`
   - `title`：表单项的标题
   - `required`：因为是必填项，所以其值为 `true`
   - `x-component`：这里选用单行文本的 [Input 组件](https://client.docs.nocobase.com/components/input)
@@ -225,7 +220,7 @@ const useFormBlockProps = () => {
   const recordData = useCollectionRecordData();
   const form = useMemo(
     () => createForm({
-      values: recordData,
+      initialValues: recordData,
     }),
     [recordData],
   );
@@ -262,7 +257,8 @@ const useSubmitActionProps = (): ActionProps => {
 - [CollectionField](https://client.docs.nocobase.com/core/data-source/collection-field)：数据表字段组件，用于读取 Collection 中的 UI Schema 并渲染
 - [Action](https://client.docs.nocobase.com/components/action)：操作按钮组件，用于提交表单
 - `useSubmitActionProps`: 用于获取提交按钮的属性
-  - `useDataBlockResource`：是 DataBlockProvider 提供的一个 hook，用于获取数据块的资源，方便增删改查
+  - [useCollection](/core/data-source/collection-provider)：用于获取数据表的信息
+  - [useDataBlockResource](/core/data-block/data-block-resource-provider)：是 DataBlockProvider 提供的一个 hook，用于获取数据块的资源，方便增删改查
 
 ### 4. 创建表单组件
 
@@ -330,7 +326,7 @@ import React from 'react';
 
 export const PluginSettingsFormPage = () => {
   const { data, loading } = useRequest<{ data?: { key: string; secret: string } }>({
-    url: 'mapConfiguration:get',
+    url: 'SamplesMapConfiguration:get',
   });
 
   if (loading) return null;
@@ -375,7 +371,7 @@ const PluginSettingsFormContext = createContext<UseRequestResult<{ data?: { key:
 
 export const PluginSettingsFormProvider: FC<{ children: React.ReactNode }> = ({children}) => {
   const request = useRequest<{ data?: { key: string; secret: string } }>({
-    url: 'mapConfiguration:get',
+    url: 'SamplesMapConfiguration:get',
   });
 
   console.log('PluginSettingsFormProvider', request.data?.data);

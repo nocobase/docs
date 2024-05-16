@@ -40,9 +40,7 @@ yarn dev
 
 ### 1. 创建数据表
 
-后端主要是创建一个数据表用于存储配置信息。
-
-关于数据表创建我们需要了解以下知识：
+后端主要是创建一个数据表用于存储配置信息。关于数据表创建我们需要了解以下知识：
 
 - [数据表和字段](/development/server/collections)
 - [数据表创建](/development/server/collections/configure#在插件代码里定义)
@@ -50,13 +48,13 @@ yarn dev
 - [defineCollection()  API](/api/database#definecollection)
 - [Collection API](/api/database/collection)
 
-对于本实例而言，我们创建 `packages/plugins/@nocobase-sample/plugin-settings-table/src/server/collections/email-templates.ts` 文件，其内容如下：
+对于本示例而言，我们创建 `packages/plugins/@nocobase-sample/plugin-settings-table/src/server/collections/email-templates.ts` 文件，其内容如下：
 
 ```ts
 import { defineCollection } from '@nocobase/database';
 
 export default defineCollection({
-  name: 'emailTemplates',
+  name: 'samplesEmailTemplates',
   fields: [
     {
       type: 'string',
@@ -70,7 +68,7 @@ export default defineCollection({
 });
 ```
 
-根据需求，我们创建了一个 `emailTemplates` 数据表，包含 `subject` 和 `content` 两个字段，两个字段我们根据需求使用单行文本以及富文本进行存储。
+根据需求，我们创建了一个 `samplesEmailTemplates` 数据表，包含 `subject` 和 `content` 两个字段，两个字段我们根据需求使用单行文本以及富文本进行存储。
 
 - `subject`字段是单行文本类型，所以 type 值为 `string`
 - `content` 字段是长文本类型，所以 type 值为 `text`
@@ -129,7 +127,7 @@ TODO：截图
 
 ```ts
 const emailTemplatesCollection = {
-  name: 'emailTemplates',
+  name: 'samplesEmailTemplates',
   filterTargetKey: 'id',
   fields: [
     {
@@ -137,7 +135,6 @@ const emailTemplatesCollection = {
       name: 'subject',
       interface: 'input',
       uiSchema: {
-        type: 'string',
         title: 'Subject',
         required: true,
         'x-component': 'Input',
@@ -148,7 +145,6 @@ const emailTemplatesCollection = {
       name: 'content',
       interface: 'richText',
       uiSchema: {
-        type: 'string',
         title: 'Content',
         required: true,
         'x-component': 'RichText',
@@ -158,7 +154,7 @@ const emailTemplatesCollection = {
 };
 ```
 
-我们定义了一个 `emailTemplates` 数据表，包含 `subject` 和 `content` 两个字段。以下是 `fields` 字段的说明：
+我们定义了一个 `samplesEmailTemplates` 数据表，包含 `subject` 和 `content` 两个字段。以下是 `fields` 字段的说明：
 
 - `type`：因为是其值字符串，所以其值需要和后端的数据表字段类型一致
 - `name`：字段的名称，需要和后端的数据表字段名称一致
@@ -345,16 +341,12 @@ const schema: ISchema = {
                   'x-component': 'FormV2',
                   properties: {
                     subject: {
-                      type: 'string',
                       'x-decorator': 'FormItem',
                       'x-component': 'CollectionField',
-                      required: true,
                     },
                     content: {
-                      type: 'string',
                       'x-decorator': 'FormItem',
                       'x-component': 'CollectionField',
-                      required: true,
                     },
                     footer: {
                       type: 'void',
@@ -501,16 +493,12 @@ const schema: ISchema = {
                           'x-use-component-props': 'useEditFormProps',
                           properties: {
                             subject: {
-                              type: 'string',
                               'x-decorator': 'FormItem',
                               'x-component': 'CollectionField',
-                              required: true,
                             },
                             content: {
-                              type: 'string',
                               'x-decorator': 'FormItem',
                               'x-component': 'CollectionField',
-                              required: true,
                             },
                             footer: {
                               type: 'void',
@@ -548,25 +536,24 @@ const schema: ISchema = {
 ```diff
 const useSubmitActionProps = () => {
   // ...
++ const collection = useCollection();
   return {
     type: 'primary',
     async onClick() {
       await form.submit();
       const values = form.values;
 -     await resource.create({ values })
-+     if (values.id) {
-+       await resource.update({
-+         filterByTk: values.id,
-+         values
-+       })
-+     } else {
-+       await resource.create({ values })
-+     }
++     await resource.updateOrCreate({
++       values,
++       filterKeys: [collection.filterTargetKey],
++     });
       // ...
     },
   };
 };
 ```
+
+- [useCollection](https://client.docs.nocobase.com/core/data-source/collection-provider#usecollection): 由 DataBlockProvider 提供的数据表对象
 
 最后将 `useEditFormProps` 注册到上下文中：
 
@@ -583,7 +570,7 @@ export const PluginSettingsTable = () => {
 
 ### 8. 实现删除功能
 
-删除功能比较简单，我们只需要在 Action 列中增加 `Delete` 按钮，点击后调用 `resource.delete(id)` 然后再刷新 Table 数据即可。
+删除功能比较简单，我们只需要在 Action 列中增加 `Delete` 按钮，点击后调用 `resource.destroy()` 然后再刷新 Table 数据即可。
 
 - Action [Confirm](https://client.docs.nocobase.com/components/action#confirm)
 
@@ -596,6 +583,7 @@ function useDeleteActionProps(): ActionProps {
   const { message } = AntdApp.useApp();
   const record = useCollectionRecordData();
   const resource = useDataBlockResource();
+  const collection = useCollection();
   const { runAsync } = useDataBlockRequest();
   return {
     confirm: {
@@ -604,7 +592,7 @@ function useDeleteActionProps(): ActionProps {
     },
     async onClick() {
       await resource.destroy({
-        filterByTk: record.id
+        filterByTk: record[collection.filterTargetKey]
       });
       await runAsync();
       message.success('Deleted!');
@@ -669,7 +657,7 @@ import React from 'react';
 
 export const PluginSettingsTablePage = () => {
   const { data, loading } = useRequest<{ data?: any[] }>({
-    url: 'emailTemplates:list',
+    url: 'samplesEmailTemplates:list',
   });
 
   if (loading) return null;
@@ -714,7 +702,7 @@ const PluginSettingsTableContext = createContext<UseRequestResult<{ data?: any[]
 
 export const PluginSettingsTableProvider: FC<{ children: React.ReactNode }> = ({children}) => {
   const request = useRequest<{ data?: any[] }>({
-    url: 'emailTemplates:list',
+    url: 'samplesEmailTemplates:list',
   });
 
   console.log('PluginSettingsTableProvider', request.data?.data);
