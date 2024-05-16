@@ -5,7 +5,7 @@
 Make sure you have:
 
 - Git, Node.js 18+, Yarn 1.22.x installed
-- Configured and started the required database SQLite 3.x, MySQL 8.x, MariaDB 10.9+, PostgreSQL 10.x choose one
+- Configured and started the required database SQLite 3.x, MySQL 8.x, MariaDB 10.9+, PostgreSQL 10+ choose one
 
 ## 1. Download with Git
 
