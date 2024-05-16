@@ -5,7 +5,7 @@
 请确保你已经：
 
 - 安装了 Node.js 18+、Yarn 1.22.x
-- 配置并启动了所需数据库 SQLite 3.x、MySQL 8.0.17+、MariaDB 10.9+、PostgreSQL 10.x 任选其一
+- 配置并启动了所需数据库 SQLite 3.x、MySQL 8.0.17+、MariaDB 10.9+、PostgreSQL 10+ 任选其一
 
 如果你没有安装 Node.js 可以从官网下载并安装最新的 LTS 版本。如果你打算长期与 Node.js 打交道，推荐使用 nvm（Win 系统可以使用 nvm-windows ）来管理 Node.js 版本。
 
