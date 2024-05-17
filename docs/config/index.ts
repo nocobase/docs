@@ -5,13 +5,14 @@ import handbook from './handbook';
 import nav from './nav';
 import welcome from './welcome';
 import pluginSamples from './pluginSamples'
+import plugins from './plugins';
 
 const sidebar = {
   '/welcome': welcome,
   // '/manual': manual,
   '/handbook': handbook,
   '/development': development,
-  // '/plugins': plugins,
+  '/plugins': plugins,
   '/api': api,
   '/plugin-samples': pluginSamples,
   '/breaking-changes': breaking,

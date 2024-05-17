@@ -161,7 +161,7 @@ export default [
           {
             title: 'Expression collection',
             'title.zh-CN': '表达式表',
-            link: '/handbook/workflow/manual/nodes/dynamic-calculation/expression',
+            link: '/handbook/workflow/plugins/dynamic-calculation/collection',
           },
           {
             title: 'SQL collection',
@@ -948,7 +948,7 @@ export default [
               {
                 title: 'Trigger workflow',
                 'title.zh-CN': '触发工作流',
-                link: '/handbook/workflow/manual/triggers/custom-action',
+                link: '/handbook/ui/actions/types/trigger-workflow',
               },
               {
                 title: 'Bulk edit',
@@ -1151,107 +1151,6 @@ export default [
         ],
       },
       {
-        title: 'Workflow',
-        'title.zh-CN': '工作流',
-        children: [
-          {
-            title: 'Overview',
-            'title.zh-CN': '概述',
-            link: '/handbook/workflow',
-          },
-          {
-            title: 'User manual',
-            'title.zh-CN': '使用手册',
-            children: [
-              '/handbook/workflow/manual',
-              '/handbook/workflow/manual/advanced',
-              {
-                title: 'Triggers',
-                'title.zh-CN': '触发器',
-                children: [
-                  '/handbook/workflow/manual/triggers',
-                  '/handbook/workflow/manual/triggers/collection',
-                  '/handbook/workflow/manual/triggers/schedule',
-                  '/handbook/workflow/manual/triggers/pre-action',
-                  '/handbook/workflow/manual/triggers/post-action',
-                  '/handbook/workflow/manual/triggers/custom-action',
-                ],
-              },
-              {
-                title: 'Nodes',
-                'title.zh-CN': '节点',
-                children: [
-                  '/handbook/workflow/manual/nodes',
-                  {
-                    title: 'Control',
-                    'title.zh-CN': '流程控制类',
-                    type: 'group',
-                    children: [
-                      '/handbook/workflow/manual/nodes/condition',
-                      '/handbook/workflow/manual/nodes/calculation',
-                      '/handbook/workflow/manual/nodes/dynamic-calculation',
-                      '/handbook/workflow/manual/nodes/delay',
-                      '/handbook/workflow/manual/nodes/end',
-                      '/handbook/workflow/manual/nodes/loop',
-                      '/handbook/workflow/manual/nodes/parallel',
-                    ],
-                  },
-                  {
-                    title: 'Collection actions',
-                    'title.zh-CN': '数据表操作',
-                    type: 'group',
-                    children: [
-                      '/handbook/workflow/manual/nodes/create',
-                      '/handbook/workflow/manual/nodes/update',
-                      '/handbook/workflow/manual/nodes/destroy',
-                      '/handbook/workflow/manual/nodes/query',
-                      '/handbook/workflow/manual/nodes/aggregate',
-                      '/handbook/workflow/manual/nodes/sql'
-                    ],
-                  },
-                  {
-                    title: 'Manual',
-                    'title.zh-CN': '人工处理',
-                    type: 'group',
-                    children: [
-                      '/handbook/workflow/manual/nodes/manual'
-                    ],
-                  },
-                  {
-                    title: 'Extended',
-                    'title.zh-CN': '扩展类型',
-                    type: 'group',
-                    children: [
-                      '/handbook/workflow/manual/nodes/request',
-                      '/handbook/workflow/manual/nodes/dynamic-calculation',
-                      '/handbook/workflow/manual/nodes/json-query',
-                      '/handbook/workflow/manual/nodes/response-message',
-                      '/handbook/workflow/manual/nodes/variable'
-                    ],
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            title: 'Development',
-            'title.zh-CN': '开发指南',
-            children: [
-              '/handbook/workflow/development',
-              '/handbook/workflow/development/trigger',
-              '/handbook/workflow/development/instruction',
-              '/handbook/workflow/development/api',
-            ],
-          },
-          {
-            title: 'Workflow - Approval',
-            'title.zh-CN': '工作流 - 审批',
-            // subTitle: '@nocobase/plugin-workflow-approval',
-            link: '/handbook/workflow-approval',
-          },
-        ],
-      },
-      {
         title: 'File storages',
         'title.zh-CN': '文件存储',
         children: [
@@ -1366,6 +1265,227 @@ export default [
         link: '/handbook/multi-app-manager',
         // children: ['/plugins/api-doc'],
       },
+    ],
+  },
+  {
+    title: 'Workflow',
+    'title.zh-CN': '工作流',
+    type: 'group',
+    children: [
+      '/handbook/workflow',
+      '/handbook/workflow/quick-start',
+      '/handbook/workflow/advanced',
+      {
+        title: 'Triggers',
+        'title.zh-CN': '触发器',
+        children: [
+          '/handbook/workflow/triggers',
+          '/handbook/workflow/triggers/collection',
+          '/handbook/workflow/triggers/schedule',
+          '/handbook/workflow/triggers/pre-action',
+          '/handbook/workflow/triggers/custom-action',
+          '/handbook/workflow/triggers/post-action',
+          '/handbook/workflow/triggers/approval',
+        ],
+      },
+      {
+        title: 'Nodes',
+        'title.zh-CN': '节点',
+        children: [
+          '/handbook/workflow/nodes',
+          {
+            title: 'Control',
+            'title.zh-CN': '流程控制类',
+            type: 'group',
+            children: [
+              '/handbook/workflow/nodes/condition',
+              '/handbook/workflow/nodes/calculation',
+              '/handbook/workflow/nodes/dynamic-calculation',
+              '/handbook/workflow/nodes/delay',
+              '/handbook/workflow/nodes/end',
+              '/handbook/workflow/nodes/loop',
+              '/handbook/workflow/nodes/parallel',
+            ],
+          },
+          {
+            title: 'Collection actions',
+            'title.zh-CN': '数据表操作',
+            type: 'group',
+            children: [
+              '/handbook/workflow/nodes/create',
+              '/handbook/workflow/nodes/update',
+              '/handbook/workflow/nodes/destroy',
+              '/handbook/workflow/nodes/query',
+              '/handbook/workflow/nodes/aggregate',
+              '/handbook/workflow/nodes/sql'
+            ],
+          },
+          {
+            title: 'Manual',
+            'title.zh-CN': '人工处理',
+            type: 'group',
+            children: [
+              '/handbook/workflow/nodes/manual',
+              '/handbook/workflow/nodes/approval',
+            ],
+          },
+          {
+            title: 'Extended',
+            'title.zh-CN': '扩展类型',
+            type: 'group',
+            children: [
+              '/handbook/workflow/nodes/request',
+              '/handbook/workflow/nodes/dynamic-calculation',
+              '/handbook/workflow/nodes/json-query',
+              '/handbook/workflow/nodes/response-message',
+              '/handbook/workflow/nodes/variable'
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Development',
+        'title.zh-CN': '开发指南',
+        children: [
+          '/handbook/workflow/development',
+          '/handbook/workflow/development/trigger',
+          '/handbook/workflow/development/instruction',
+          '/handbook/workflow/development/api',
+        ],
+      },
+      {
+        title: 'Related plugins',
+        'title.zh-CN': '相关插件',
+        children: [
+          {
+            title: 'Post-action trigger',
+            'title.zh-CN': '操作后事件',
+            subTitle: '@nocobase/plugin-workflow-action-trigger',
+            children: [
+              '/handbook/workflow/plugins/action-trigger',
+              '/handbook/workflow/plugins/action-trigger/trigger',
+              '/handbook/workflow/plugins/action-trigger/action',
+              '/handbook/workflow/plugins/action-trigger/example',
+              '/handbook/workflow/plugins/action-trigger/http-api',
+            ],
+          },
+          {
+            title: 'Aggregate',
+            'title.zh-CN': '聚合查询',
+            subTitle: '@nocobase/plugin-workflow-aggregate',
+            link: '/handbook/workflow/plugins/aggregate',
+          },
+          {
+            title: 'Approval',
+            'title.zh-CN': '审批',
+            subTitle: '@nocobase/plugin-workflow-approval',
+            children: [
+              '/handbook/workflow/plugins/approval',
+              '/handbook/workflow/plugins/approval/trigger',
+              '/handbook/workflow/plugins/approval/node',
+              '/handbook/workflow/plugins/approval/action',
+              '/handbook/workflow/plugins/approval/block',
+              '/handbook/workflow/plugins/approval/advanced',
+              '/handbook/workflow/plugins/approval/http-api',
+            ],
+          },
+          {
+            title: 'Custom action trigger',
+            'title.zh-CN': '自定义操作事件',
+            subTitle: '@nocobase/plugin-workflow-custom-action-trigger',
+            children: [
+              '/handbook/workflow/plugins/custom-action-trigger',
+              '/handbook/workflow/plugins/custom-action-trigger/trigger',
+              '/handbook/workflow/plugins/custom-action-trigger/action',
+              '/handbook/workflow/plugins/custom-action-trigger/example',
+              '/handbook/workflow/plugins/custom-action-trigger/http-api',
+            ],
+          },
+          {
+            title: 'Delay',
+            'title.zh-CN': '延时',
+            subTitle: '@nocobase/plugin-workflow-delay',
+            link: '/handbook/workflow/plugins/delay',
+          },
+          {
+            title: 'Dynamic calculation',
+            'title.zh-CN': '动态表达式',
+            subTitle: '@nocobase/plugin-workflow-dynamic-calculation',
+            children: [
+              '/handbook/workflow/plugins/dynamic-calculation',
+              '/handbook/workflow/plugins/dynamic-calculation/collection',
+              '/handbook/workflow/plugins/dynamic-calculation/node',
+            ],
+          },
+          {
+            title: 'JSON query',
+            'title.zh-CN': 'JSON 解析',
+            subTitle: '@nocobase/plugin-workflow-json-query',
+            link: '/handbook/workflow/plugins/json-query',
+          },
+          {
+            title: 'Loop',
+            'title.zh-CN': '循环',
+            subTitle: '@nocobase/plugin-workflow-loop',
+            link: '/handbook/workflow/plugins/loop',
+          },
+          {
+            title: 'Manual process',
+            'title.zh-CN': '人工处理',
+            subTitle: '@nocobase/plugin-workflow-manual',
+            children: [
+              '/handbook/workflow/plugins/manual',
+              '/handbook/workflow/plugins/manual/node',
+              '/handbook/workflow/plugins/manual/block',
+              '/handbook/workflow/plugins/manual/example',
+            ],
+          },
+          {
+            title: 'Parallel',
+            'title.zh-CN': '并行分支',
+            subTitle: '@nocobase/plugin-workflow-parallel',
+            link: '/handbook/workflow/plugins/parallel',
+          },
+          {
+            title: 'HTTP Request',
+            'title.zh-CN': 'HTTP 请求',
+            subTitle: '@nocobase/plugin-workflow-request',
+            link: '/handbook/workflow/plugins/request',
+          },
+          {
+            title: 'Pre-action trigger',
+            'title.zh-CN': '操作前事件',
+            subTitle: '@nocobase/plugin-workflow-request-interceptor',
+            link: '/handbook/workflow/plugins/request-interceptor',
+            children: [
+              '/handbook/workflow/plugins/request-interceptor',
+              '/handbook/workflow/plugins/request-interceptor/trigger',
+              '/handbook/workflow/plugins/request-interceptor/action',
+              '/handbook/workflow/plugins/request-interceptor/advanced',
+              '/handbook/workflow/plugins/request-interceptor/example',
+              '/handbook/workflow/plugins/request-interceptor/http-api',
+            ],
+          },
+          {
+            title: 'Response message',
+            'title.zh-CN': '响应消息',
+            subTitle: '@nocobase/plugin-workflow-response-message',
+            link: '/handbook/workflow/plugins/response-message',
+          },
+          {
+            title: 'SQL action',
+            'title.zh-CN': 'SQL 操作',
+            subTitle: '@nocobase/plugin-workflow-sql',
+            link: '/handbook/workflow/plugins/sql',
+          },
+          {
+            title: 'Custom variable',
+            'title.zh-CN': '自定义变量',
+            subTitle: '@nocobase/plugin-workflow-variable',
+            link: '/handbook/workflow/plugins/variable',
+          },
+        ],
+      }
     ],
   },
   {
