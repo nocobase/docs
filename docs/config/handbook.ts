@@ -1325,7 +1325,8 @@ export default [
             'title.zh-CN': '人工处理',
             type: 'group',
             children: [
-              '/handbook/workflow/nodes/manual'
+              '/handbook/workflow/nodes/manual',
+              '/handbook/workflow/nodes/approval',
             ],
           },
           {

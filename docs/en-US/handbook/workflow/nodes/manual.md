@@ -1,4 +1,4 @@
-# 人工节点
+# 人工处理
 
 <PluginInfo name="workflow-manual" link="/handbook/workflow/plugins/manual"></PluginInfo>
 

@@ -1,6 +1,5 @@
 # 自定义操作事件
 
-
 <PluginInfo commercial="true" name="workflow-custom-action-trigger" link="/handbook/workflow/plugins/custom-action-trigger"></PluginInfo>
 
 <embed src="../plugins/custom-action-trigger/trigger.md#L3-L999"></embed>
