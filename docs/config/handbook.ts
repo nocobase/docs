@@ -948,7 +948,7 @@ export default [
               {
                 title: 'Trigger workflow',
                 'title.zh-CN': '触发工作流',
-                link: '/handbook/workflow/manual/triggers/custom-action',
+                link: '/handbook/ui/actions/types/trigger-workflow',
               },
               {
                 title: 'Bulk edit',
@@ -1360,7 +1360,13 @@ export default [
             title: 'Post-action trigger',
             'title.zh-CN': '操作后事件',
             subTitle: '@nocobase/plugin-workflow-action-trigger',
-            link: '/handbook/workflow/plugins/action-trigger',
+            children: [
+              '/handbook/workflow/plugins/action-trigger',
+              '/handbook/workflow/plugins/action-trigger/trigger',
+              '/handbook/workflow/plugins/action-trigger/action',
+              '/handbook/workflow/plugins/action-trigger/example',
+              '/handbook/workflow/plugins/action-trigger/http-api',
+            ],
           },
           {
             title: 'Aggregate',
@@ -1386,7 +1392,13 @@ export default [
             title: 'Custom action trigger',
             'title.zh-CN': '自定义操作事件',
             subTitle: '@nocobase/plugin-workflow-custom-action-trigger',
-            link: '/handbook/workflow/plugins/custom-action-trigger',
+            children: [
+              '/handbook/workflow/plugins/custom-action-trigger',
+              '/handbook/workflow/plugins/custom-action-trigger/trigger',
+              '/handbook/workflow/plugins/custom-action-trigger/action',
+              '/handbook/workflow/plugins/custom-action-trigger/example',
+              '/handbook/workflow/plugins/custom-action-trigger/http-api',
+            ],
           },
           {
             title: 'Delay',
@@ -1444,6 +1456,14 @@ export default [
             'title.zh-CN': '操作前事件',
             subTitle: '@nocobase/plugin-workflow-request-interceptor',
             link: '/handbook/workflow/plugins/request-interceptor',
+            children: [
+              '/handbook/workflow/plugins/request-interceptor',
+              '/handbook/workflow/plugins/request-interceptor/trigger',
+              '/handbook/workflow/plugins/request-interceptor/action',
+              '/handbook/workflow/plugins/request-interceptor/advanced',
+              '/handbook/workflow/plugins/request-interceptor/example',
+              '/handbook/workflow/plugins/request-interceptor/http-api',
+            ],
           },
           {
             title: 'Response message',
