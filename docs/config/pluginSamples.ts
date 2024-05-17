@@ -89,5 +89,27 @@ export default [
         link: '/plugin-samples/provider/context',
       },
     ]
+  },
+  {
+    title: 'Component and Scope',
+    'title.zh-CN': 'Component 和 Scope 注册和使用',
+    type: 'group',
+    children: [
+      {
+        title: 'Overview',
+        'title.zh-CN': '概述',
+        link: '/plugin-samples/component-and-scope',
+      },
+      {
+        title: 'Global Content',
+        'title.zh-CN': '全局注册和使用',
+        link: '/plugin-samples/component-and-scope/global',
+      },
+      {
+        title: 'Global Context',
+        'title.zh-CN': '局部注册和使用',
+        link: '/plugin-samples/component-and-scope/local',
+      },
+    ]
   }
 ];
