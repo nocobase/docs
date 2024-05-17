@@ -74,7 +74,7 @@ export default PluginComponentAndScopeGlobalClient;
 
 然后我们访问 [http://localhost:13000/admin/custom-page1](http://localhost:13000/admin/custom-page1) 就可以看到 `SamplesCustomPage` 组件的内容了。
 
-TODO：截图
+![img_v3_02av_55c3115b-f4b6-4c24-8ea2-914869d498bg](https://static-docs.nocobase.com/img_v3_02av_55c3115b-f4b6-4c24-8ea2-914869d498bg.jpg)
 
 ### 3. 使用 `SchemaComponent` 渲染 Schema
 
@@ -154,6 +154,8 @@ export default PluginComponentAndScopeGlobalClient;
 ```
 
 然后我们访问 [http://localhost:13000/admin/custom-page1](http://localhost:13000/admin/custom-page1) 就可以看到 `CustomPage` 组件的内容了。
+
+![img_v3_02av_79e76ad8-d697-4e3b-aaa9-46ed90e2bb9g](https://static-docs.nocobase.com/img_v3_02av_79e76ad8-d697-4e3b-aaa9-46ed90e2bb9g.jpg)
 
 ## 打包和上传到生产环境
 

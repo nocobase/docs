@@ -132,6 +132,8 @@ export default PluginProviderContextClient;
 
 然后我们访问 [http://localhost:13000/admin/features-test](http://localhost:13000/admin/features-test) 就可以看到上下文数据了。
 
+![img_v3_02av_51b7cb08-1b42-42f4-b553-49b4e3f217bg](https://static-docs.nocobase.com/img_v3_02av_51b7cb08-1b42-42f4-b553-49b4e3f217bg.jpg)
+
 #### 3.2 其他插件中使用
 
 如果需要在其他插件中使用，那就需要将 `useFeatures` 和 `useFeature` 方法导出。

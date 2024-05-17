@@ -8,7 +8,7 @@
 
 本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-provider-content) 中查看。
 
-TODO：截图示例最终效果。
+![img_v3_02av_cd3c7f37-0c5b-4c9c-b10e-e413af409ccg](https://static-docs.nocobase.com/img_v3_02av_cd3c7f37-0c5b-4c9c-b10e-e413af409ccg.jpg)
 
 ## 初始化插件
 
@@ -104,7 +104,7 @@ export default PluginProviderContentClient;
 
 然后我们访问 [http://localhost:13000](http://localhost:13000)，就能看到页面顶部展示了公告了。
 
-TODO：截图
+![img_v3_02av_cd3c7f37-0c5b-4c9c-b10e-e413af409ccg](https://static-docs.nocobase.com/img_v3_02av_cd3c7f37-0c5b-4c9c-b10e-e413af409ccg.jpg)
 
 ## 打包和上传到生产环境
 

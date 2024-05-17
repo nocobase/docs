@@ -72,7 +72,7 @@ export default PluginComponentAndScopeLocalClient;
 
 然后我们访问 [http://localhost:13000/admin/custom-page2](http://localhost:13000/admin/custom-page2) 就可以看到 `SamplesCustomPage` 组件的内容了。
 
-TODO：截图
+![img_v3_02av_46e020ae-41d2-4bc3-a047-e28d97c20bdg](https://static-docs.nocobase.com/img_v3_02av_46e020ae-41d2-4bc3-a047-e28d97c20bdg.jpg)
 
 ### 3. 使用 `SchemaComponent` 渲染内容
 
@@ -141,6 +141,8 @@ export const SamplesCustomPage = () => {
 - 最后我们使用 `SchemaComponent` 的 `components` 和 `scope` 属性局部注册 `SamplesHello` 和 `useSamplesHelloProps`
 
 然后我们访问 [http://localhost:13000/admin/custom-page2](http://localhost:13000/admin/custom-page2) 就可以看到 `CustomPage` 组件的内容了。
+
+![img_v3_02av_e8d4d0c7-7a59-4f9e-a120-a2551e719ebg](https://static-docs.nocobase.com/img_v3_02av_e8d4d0c7-7a59-4f9e-a120-a2551e719ebg.jpg)
 
 ## 打包和上传到生产环境
 

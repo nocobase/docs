@@ -81,7 +81,7 @@ export default defineCollection({
 yarn nocobase upgrade
 ```
 
-TODO：截图数据库
+![img_v3_02av_eb156d0e-9f25-4702-a5de-2bfa5cde84bg](https://static-docs.nocobase.com/img_v3_02av_eb156d0e-9f25-4702-a5de-2bfa5cde84bg.jpg)
 
 ## 前端功能实现
 
@@ -111,7 +111,7 @@ export default PluginSettingsTableClient;
 
 然后访问 [http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-table](http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-table) 就可以我们的配置页面了。
 
-TODO：截图
+![img_v3_02av_c610403d-95d8-466a-a3d1-cfcab232057g](https://static-docs.nocobase.com/img_v3_02av_c610403d-95d8-466a-a3d1-cfcab232057g.jpg)
 
 ### 2. 定义数据表结构
 
@@ -158,7 +158,7 @@ const emailTemplatesCollection = {
 
 - `type`：因为是其值字符串，所以其值需要和后端的数据表字段类型一致
 - `name`：字段的名称，需要和后端的数据表字段名称一致
-- `interface`：其主要作用是 ？？
+- `interface`
   - `subject` 字段：单行文本，对应到 interface，所以其值为 `input`
   - `content` 字段：富文本，对应到 interface，所以其值为 `richText`
 - `uiSchema`：其对应着前端表单项组件的渲染
@@ -292,7 +292,7 @@ export default PluginSettingFormClient;
 
 然后我们访问 [http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-table](http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-table) 就可以看到我们的配置页面了。
 
-TODO：截图
+![img_v3_02av_97fd272d-1333-4faf-9ce1-6363c6a049dg](https://static-docs.nocobase.com/img_v3_02av_97fd272d-1333-4faf-9ce1-6363c6a049dg.jpg)
 
 ### 6. 实现新增功能
 
@@ -422,7 +422,9 @@ export const PluginSettingsTable = () => {
 };
 ```
 
-TODO：截图新增操作过程
+<video width="100%" controls>
+  <source src="https://static-docs.nocobase.com/20240517-190400.mp4" type="video/mp4">
+</video>
 
 ### 7. 实现编辑功能
 
@@ -543,10 +545,16 @@ const useSubmitActionProps = () => {
       await form.submit();
       const values = form.values;
 -     await resource.create({ values })
-+     await resource.updateOrCreate({
-+       values,
-+       filterKeys: [collection.filterTargetKey],
-+     });
++     if (values[collection.filterTargetKey]) {
++       await resource.update({
++         values,
++         filterByTk: values[collection.filterTargetKey],
++       });
++     } else {
++       await resource.create({
++         values,
++       });
++     }
       // ...
     },
   };
@@ -567,6 +575,10 @@ export const PluginSettingsTable = () => {
   );
 };
 ```
+
+<video width="100%" controls>
+  <source src="https://static-docs.nocobase.com/20240517-190849.mp4" type="video/mp4">
+</video>
 
 ### 8. 实现删除功能
 
@@ -640,6 +652,10 @@ export const PluginSettingsTable = () => {
 };
 ```
 
+<video width="100%" controls>
+  <source src="https://static-docs.nocobase.com/20240517-191110.mp4" type="video/mp4">
+</video>
+
 ### 9. 在页面内部使用配置数据
 
 关于使用表单数据，有 2 种场景，一种是在页面内部使用，一种是在全局使用。两者的区别是：
@@ -686,7 +702,7 @@ export class PluginSettingFormClient extends Plugin {
 
 然后我们访问 [http://localhost:13000/admin/plugin-settings-table-page](http://localhost:13000/admin/plugin-settings-table-page) 就可以看到我们的表单数据了。
 
-TODO：截图
+![img_v3_02av_753dd9f1-9e8c-43c5-a1c6-1fb217844cag](https://static-docs.nocobase.com/img_v3_02av_753dd9f1-9e8c-43c5-a1c6-1fb217844cag.jpg)
 
 ### 10. 全局使用配置数据
 
@@ -764,7 +780,9 @@ function useDeleteActionProps(): ActionProps {
 }
 ```
 
-截图：TODO
+<video width="100%" controls>
+  <source src="https://static-docs.nocobase.com/20240517-191452.mp4" type="video/mp4">
+</video>
 
 ## 打包和上传到生产环境
 

@@ -78,7 +78,7 @@ export default defineCollection({
 yarn nocobase upgrade
 ```
 
-TODO：截图数据库
+![img_v3_02av_db5e9985-eb20-4420-a0b2-8a809ff05a5g](https://static-docs.nocobase.com/img_v3_02av_db5e9985-eb20-4420-a0b2-8a809ff05a5g.jpg)
 
 ## 前端功能实现
 
@@ -108,7 +108,7 @@ export default PluginSettingsFormClient;
 
 然后访问 [http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-form](http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-form) 就可以我们的配置页面了。
 
-TODO：截图
+![img_v3_02av_c90b5767-97dd-4fef-8dd0-c7ff9a136a9g](https://static-docs.nocobase.com/img_v3_02av_c90b5767-97dd-4fef-8dd0-c7ff9a136a9g.jpg)
 
 ### 2. 定义数据表结构
 
@@ -155,7 +155,7 @@ const mapConfigurationCollection = {
 
 - `type`：因为是其值字符串，所以其值为 `string`，需要和后端的数据表字段类型一致
 - `name`：字段的名称，需要和后端的数据表字段名称一致
-- `interface`：其主要作用是 ？？，这里因为其值字符串，对应到 interface，所以其值为 `input`
+- `interface`：这里因为其值字符串，对应到 interface，所以其值为 `input`
 - `uiSchema`：其对应着前端表单项组件的渲染
   - `title`：表单项的标题
   - `required`：因为是必填项，所以其值为 `true`
@@ -198,10 +198,12 @@ const schema: ISchema = {
       'x-use-component-props': 'useFormBlockProps',
       properties: {
         key: {
+          title: 'Key',
           'x-decorator': 'FormItem',
           'x-component': 'CollectionField',
         },
         secret: {
+          title: 'Secret',
           'x-decorator': 'FormItem',
           'x-component': 'CollectionField',
         },
@@ -307,7 +309,9 @@ export default PluginSettingFormClient;
 
 然后我们访问 [http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-form](http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-form) 就可以看到我们的配置页面了。
 
-TODO：截图
+<video width="100%" controls>
+  <source src="https://static-docs.nocobase.com/20240517-182716.mp4" type="video/mp4">
+</video>
 
 ### 6. 在页面内部使用配置数据
 
@@ -355,7 +359,7 @@ export class PluginSettingFormClient extends Plugin {
 
 然后我们访问 [http://localhost:13000/admin/plugin-settings-form-page](http://localhost:13000/admin/plugin-settings-form-page) 就可以看到我们的表单数据了。
 
-TODO：截图
+![img_v3_02av_70ade722-7069-4fc7-a2c3-c080f85ff30g](https://static-docs.nocobase.com/img_v3_02av_70ade722-7069-4fc7-a2c3-c080f85ff30g.jpg)
 
 ### 7. 全局使用配置数据
 
@@ -426,7 +430,9 @@ const useSubmitActionProps = (): ActionProps => {
 };
 ```
 
-截图：TODO
+<video width="100%" controls>
+  <source src="https://static-docs.nocobase.com/20240517-182717.mp4" type="video/mp4">
+</video>
 
 ## 打包和上传到生产环境
 
