@@ -1,39 +1,39 @@
-# 运算
+# Calculation
 
-运算节点虽然不对流程进行控制，但是流程中一种重要的功能，运算节点可以对一个表达式进行计算，运算结果会保存在对应节点的结果中，以供后续其他节点使用。是一种用于计算、处理和转换数据的工具，一定程度上，可以代替编程语言中对一个值计算函数调用并赋值给变量的功能。
+Although the calculation node does not control the flow of the process, it is an important function in the workflow. The calculation node can evaluate an expression, and the result will be stored in the corresponding node's result for later use by other nodes. It is a tool for calculating, processing, and transforming data. To some extent, it can replace the functionality of calling a function to compute a value in programming languages and assigning it to a variable.
 
-## 创建节点
+## Creating a Node
 
-在工作流配置界面中，点击流程中的加号（“+”）按钮，添加“运算”节点：
+In the workflow configuration UI, click the plus ("+") button in the flow to add a "Calculation" node:
 
-![运算节点_添加](https://static-docs.nocobase.com/58a455540d26945251cd143eb4b16579.png)
+![Calculation Node - Adding](https://static-docs.nocobase.com/58a455540d26945251cd143eb4b16579.png)
 
-## 节点配置
+## Node Configuration
 
-![运算节点_节点配置](https://static-docs.nocobase.com/6a155de3f6a883d8cd1881b2d9c33874.png)
+![Calculation Node - Configuration](https://static-docs.nocobase.com/6a155de3f6a883d8cd1881b2d9c33874.png)
 
-### 运算引擎
+### Calculation Engine
 
-运算引擎规定了表达式支持的语法，目前支持的运算引擎有 [Math.js](https://mathjs.org/) 和 [Formula.js](https://formulajs.info/)，引擎各自都内置了大量的常用函数和数据操作的方法，具体的用法可以参考其官方文档。
+The calculation engine specifies the syntax supported of the expression. Currently supported calculation engines include [Math.js](https://mathjs.org/) and [Formula.js](https://formulajs.info/), each of which has built-in support for a large number of common functions and methods for data manipulation. Specific usage can be found in their official documentation.
 
-:::info{title=提示}
-需要注意的是，两者在数组下标访问上有所区别，Math.js 的索引是从 `1` 开始，而 Formula.js 是从 `0` 开始。
+:::info{title=Note}
+It's important to note that there is a difference in array indexing between the them. In Math.js, indexing starts from `1`, while in Formula.js, it starts from `0`.
 :::
 
-另外如果是需要简单的字符串拼接，可以直接使用“字符串模板”，该引擎会将表达式中的变量替换为对应的值，然后返回拼接后的字符串。
+Additionally, if simple string concatenation is needed, the "String Template" can be used directly. This engine will replace variables in the expression with their corresponding values and then return the concatenated string.
 
-### 表达式
+### Expression
 
-表达式即一个运算公式的字符串表达，可以由变量、常量、运算符和支持的函数等组成。可以使用流程上下文的变量，例如运算节点的前置节点的结果，或者是循环的局部变量等。
+The expression is a string representation of a calculation formula, composed of variables, constants, operators, and supported functions. Variables from the workflow context can be used, such as results from preceding nodes of the calculation node or scope variables from loops.
 
-表达式输入不符合语法时会在节点配置中提示错误，如果在具体执行时变量不存在或者类型不匹配，又或者使用了不存在的函数，运算节点会以出错的状态提前终止。
+If the expression input does not comply with the syntax, an error will be prompted in the node configuration. If a variable does not exist during execution or its type does not match, or if an undefined function is used, the calculation node will terminate prematurely with an error status.
 
-## 示例
+## Example
 
-### 计算订单总价
+### Calculating Total Order Price
 
-通常一个订单内可能有多个商品，每个商品的价格和数量都不同，订单的总价需要计算所有商品的价格和数量的乘积之和。可以在加载订单明细列表（对多关系数据集）之后使用运算节点来计算订单的总价：
+Typically, an order may contain multiple items, each with different prices and quantities. The total price of the order requires calculating the sum of the products of prices and quantities for all items. You can use a calculation node to compute the total order price after loading the list of order details (a many-to-many relationship dataset):
 
-![运算节点_示例_节点配置](https://static-docs.nocobase.com/85966b0116afb49aa966eeaa85e78dae.png)
+![Calculation Node - Example - Node Configuration](https://static-docs.nocobase.com/85966b0116afb49aa966eeaa85e78dae.png)
 
-其中 Formula.js 的 `SUMPRODUCT` 函数可以计算两个相同长度数组每行的乘积之和，加总就可以得到订单的总价。
+Where the `SUMPRODUCT` function from Formula.js calculates the sum of the products of two arrays of the same length, and then summing them up yields the total order price.

@@ -1,7 +1,7 @@
-# 动态表达式运算
+# Dynamic Calculation
 
 <embed src="../plugins/dynamic-calculation/node.md#L3-L999"></embed>
 
-## 相关内容
+## Related Content
 
-除节点配置外，动态表达式运算节点还有一些相关的内容可以通过 [插件文档](../plugins/dynamic-calculation/index.md) 进一步了解。
+Except for node configuration, there are also some related contents about dynamic calculation that can be further understood through the [plugin documentation](../plugins/dynamic-calculation/index.md).

@@ -1,32 +1,32 @@
-# 概述
+# Overview
 
-节点是工作流中逻辑编排的基本单元，一个工作流可以配置任意多个节点，每个节点的类型代表一个指令，决定了节点的行为。节点的配置即对应指令的参数，参数决定其行为的操作数据对象或其他内容。
+Nodes are the basic units of logical arrangement in a workflow. A workflow can contains any number of nodes, and each node type represents an instruction that determines the behavior of the node. The configuration of a node corresponds to the parameters of the instruction, which determining the operation data object or other content of its behavior.
 
-:::info{title=提示}
-工作流的触发器不属于节点，只是以入口节点的形式展示在流程图中，但与节点是不同的概念，详情请参考[触发器](../triggers/index.md)的内容。
+:::info{title=Note}
+Workflow triggers are not considered to be nodes but are displayed in the workflow diagram as entry nodes. They are different concepts from nodes. For details, please refer to the [Triggers](../triggers/index.md) section.
 :::
 
-从功能角度，目前已实现的节点可以分为四大类（共 18 种节点）：
+From a functional perspective, the nodes implemented so far are in four categories (a total of 18 types of nodes):
 
-- 流程控制类
-  - [运算](./calculation.md)
-  - [条件判断](./condition.md)
-  - [延时](./delay.md)（插件 @nocobase/plugin-workflow-deley 提供）
-  - [结束流程](./end.md)
-  - [循环](./loop.md)（插件 @nocobase/plugin-workflow-loop 提供）
-  - [并行分支](./parallel.md)（插件 @nocobase/plugin-workflow-parallel 提供）
-  - [自定义变量](./variable.md)（插件 @nocobase/plugin-workflow-variable 提供）
-- 数据表操作
-  - [新增数据](./create.md)
-  - [更新数据](./update.md)
-  - [删除数据](./destroy.md)
-  - [查询数据](./query.md)
-  - [聚合查询](./aggregate.md)（插件 @nocobase/plugin-workflow-aggregate 提供）
-  - [SQL 操作](./sql.md)（插件 @nocobase/plugin-workflow-sql 提供）
-- 人工处理
-  - [人工处理](./manual.md)（插件 @nocobase/plugin-workflow-manual 提供）
-  - [审批](./approval.md)（插件 @nocobase/plugin-workflow-approval 提供）
-- 其他扩展
-  - [HTTP 请求](./request.md)（插件 @nocobase/plugin-workflow-request 提供）
-  - [动态表达式运算](./dynamic-calculation.md)（插件 @nocobase/plugin-workflow-dynamic-calculation 提供）
-  - [响应消息](./response-message.md)（插件 @nocobase/plugin-workflow-response-message 提供）
+- Flow Control
+  - [Calculation](./calculation.md)
+  - [Condition](./condition.md)
+  - [Delay](./delay.md) (provided by plugin @nocobase/plugin-workflow-deley)
+  - [End Process](./end.md)
+  - [Loop](./loop.md) (provided by plugin @nocobase/plugin-workflow-loop)
+  - [Parallel Branch](./parallel.md) (provided by plugin @nocobase/plugin-workflow-parallel)
+  - [Custom Variable](./variable.md) (provided by plugin @nocobase/plugin-workflow-variable)
+- Data Table Operations
+  - [Create record](./create.md)
+  - [Update record](./update.md)
+  - [Destroy record](./destroy.md)
+  - [Query record](./query.md)
+  - [Aggregate Query](./aggregate.md) (provided by plugin @nocobase/plugin-workflow-aggregate)
+  - [SQL Operation](./sql.md) (provided by plugin @nocobase/plugin-workflow-sql)
+- Manual Processing
+  - [Manual Processing](./manual.md) (provided by plugin @nocobase/plugin-workflow-manual)
+  - [Approval](./approval.md) (provided by plugin @nocobase/plugin-workflow-approval)
+- Other Extensions
+  - [HTTP Request](./request.md) (provided by plugin @nocobase/plugin-workflow-request)
+  - [Dynamic Expression Calculation](./dynamic-calculation.md) (provided by plugin @nocobase/plugin-workflow-dynamic-calculation)
+  - [Response Message](./response-message.md) (provided by plugin @nocobase/plugin-workflow-response-message)

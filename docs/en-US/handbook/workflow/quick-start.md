@@ -1,91 +1,90 @@
-# 快速入门
+# Quick Start
 
-## 配置一个工作流
+## Configuring a Workflow
 
-从顶部菜单栏的插件配置菜单进入工作流插件的管理页面：
+To configure a workflow, go to the management page of the Workflow plugin by accessing the plugin configuration menu in the top navigation bar:
 
-![工作流插件管理入口](https://static-docs.nocobase.com/872169fb0cf277715178d1a6804e12cd.png)
+![Workflow Plugin Management Entry](https://static-docs.nocobase.com/872169fb0cf277715178d1a6804e12cd.png)
 
-管理界面中会列出所有已创建的工作流：
+The management page will display all the created workflows:
 
-![工作流管理](https://static-docs.nocobase.com/6d31e5c6c94a51513e6569dbc410c01f.png)
+![Workflow Management](https://static-docs.nocobase.com/6d31e5c6c94a51513e6569dbc410c01f.png)
 
-点击“新建”按钮，创建一个新的工作流，选择数据表事件：
+Click the "Add new" button to create a new workflow and select a data collection event:
 
-![创建工作流](https://static-docs.nocobase.com/57f23ce3c91d153ea235f95268a63d98.png)
+![Create Workflow](https://static-docs.nocobase.com/57f23ce3c91d153ea235f95268a63d98.png)
 
-点击列表中的“配置”链接，进入工作流配置界面：
+Click the "Configure" link in the list to enter the workflow configuration page:
 
-![一个空的工作流](https://static-docs.nocobase.com/d6a3bc6b3fd03cba5bb10f142c38e2bf.png)
+![An Empty Workflow](https://static-docs.nocobase.com/d6a3bc6b3fd03cba5bb10f142c38e2bf.png)
 
-然后点击触发器的卡片，打开触发器配置抽屉，选择一张之前创建的数据表（例如“文章”表），触发时机项选择“新增数据后”触发，点击“保存”按钮，完成触发器的配置：
+Then, click on the trigger card to open the trigger configuration drawer. Select a previously created data collection (e.g., "Posts") and choose the trigger condition "After data created", click the "Save" button to complete the trigger configuration:
 
-![配置触发器](https://static-docs.nocobase.com/f96015efe87759d6836d2a1c58d92884.png)
+![Configure Trigger](https://static-docs.nocobase.com/f96015efe87759d6836d2a1c58d92884.png)
 
-接下来我们可以点击流程中的加号按钮为流程增加一个节点，例如选择一个运算节点，用于将触发器中的数据的“标题”字段与“ID”字段进行拼接计算：
+Next, you can click the plus button in the workflow to add a node. For example, select an calculation node to concatenate the "Title" and "ID" fields of the trigger data:
 
-![新增运算节点](https://static-docs.nocobase.com/60eeee25e6847a91fad50784c8c508ad.png)
+![Add Operation Node](https://static-docs.nocobase.com/60eeee25e6847a91fad50784c8c508ad.png)
 
-点击节点卡片打开节点配置抽屉，使用 Formula.js 提供的运算函数 `CONCATENATE`，拼接“标题”与“ID”字段，两个字段通过变量选择器插入：
+Click on the node card to open the node configuration drawer. Use the `CONCATENATE` function provided by Formula.js to concatenate the "Title" and "ID" fields, and insert the fields using the variable selector:
 
-![运算节点使用函数及变量](https://static-docs.nocobase.com/837e4851a4c70a1932542caadef3431b.png)
+![Operation Node with Function and Variable](https://static-docs.nocobase.com/837e4851a4c70a1932542caadef3431b.png)
 
-之后再创建一个更新数据节点，用于将结果保存到“标题”字段中：
+Then create an "Update record" node to save the result to the "Title" field:
 
-![创建更新数据节点](https://static-docs.nocobase.com/494f72dff72b4410240b04c59cbbd322.png)
+![Create Update Data Node](https://static-docs.nocobase.com/494f72dff72b4410240b04c59cbbd322.png)
 
-同样地，点击卡片打开更新数据节点的配置抽屉，选择“文章”表，更新的数据 ID 选择触发器中的数据 ID，更新的数据项选择“标题”，更新的数据值选择运算节点的结果：
+Similarly, click on the card to open the configuration drawer of the "Update record" node. Select the "Posts" collection, choose the record ID from the trigger, select the "Title" field to update, and choose the result from the calculation node as the value to update:
 
-![配置更新数据节点](https://static-docs.nocobase.com/2e147c93643e7ebc709b9b7ab4f3af8c.png)
+![Configure Update Data Node](https://static-docs.nocobase.com/2e147c93643e7ebc709b9b7ab4f3af8c.png)
 
-最后再点击右上角工具栏里的“启用”/“停用”开关，将工作流切换至启用状态，这样工作流就可以被触发执行了。
+Finally, click the "Enable/Disable" switch in the top-right toolbar to switch the workflow to the enabled state. This allows the workflow to be triggered and executed.
 
-## 触发工作流
+## Trigger a Workflow
 
-回到系统主界面，通过文章区块创建一篇文章，填入文章标题：
+Go back to the main pages and create an post using the its data block. Fill in the post title:
 
-![创建文章数据](https://static-docs.nocobase.com/d21a1a5833d5f54f52678ea18e9922f2.png)
+![Create Post Data](https://static-docs.nocobase.com/d21a1a5833d5f54f52678ea18e9922f2.png)
 
-提交后刷新区块后可以看到文章标题被自动更新为“文章标题 + 文章 ID”的形式：
+After submission and refreshing the block, you will see that the post title has been automatically updated to the form of "Post title + post ID":
 
-![被工作流修改的文章标题](https://static-docs.nocobase.com/3a700445896965c46c70ac51a07bbdb9.png)
+![Post Title Modified by Workflow](https://static-docs.nocobase.com/3a700445896965c46c70ac51a07bbdb9.png)
 
-:::info{title=提示}
-由于数据表触发的工作流是异步执行的，所以在提交数据后的界面中无法马上看到数据更新，但片刻之后刷新页面或区块后即可看到更新的内容。
+:::info{title=Note}
+Since workflow triggered in data collections will be executed asynchronously, you may not immediately see the updated record on the submission page. However, refreshing the page or block after a moment, updated content will show.
 :::
 
-## 查看执行历史
+## View Execution History
 
-刚才的工作流已经成功触发执行了一次，我们可以回到工作流的管理界面中查看到对应的执行历史：
+The workflow we triggered earlier has been successfully executed. We can go back to the workflow management page to view the corresponding execution history:
 
-![查看工作流列表](https://static-docs.nocobase.com/92952de7fe6472db7d247a915e36100a.png)
+![View Workflow List](https://static-docs.nocobase.com/92952de7fe6472db7d247a915e36100a.png)
 
-工作流列表中可以看到这个工作流已经产生了一次执行历史，点击次数的链接，可以打开对应工作流的执行历史记录：
+In the workflow list, you can see that there is one execution in the workflow history. Clicking the number link in the "Executed" column will open the execution history of the corresponding workflow:
 
-![对应工作流的执行历史列表](https://static-docs.nocobase.com/00537af15c6ae43d745106178242bc09.png)
+![Execution History List of the Corresponding Workflow](https://static-docs.nocobase.com/00537af15c6ae43d745106178242bc09.png)
 
-再点击“查看”链接可以进入到当次执行的详情页面，可以看到每个节点的执行状态和结果数据：
+Clicking the "View" link will take you to the details page of that particular execution. Here, you can see the execution status and result data of each node:
 
-![工作流执行历史详情](https://static-docs.nocobase.com/93ec7ce25391d71cf7a109c9d03d5a48.png)
+![Workflow Execution History Details](https://static-docs.nocobase.com/93ec7ce25391d71cf7a109c9d03d5a48.png)
 
-触发器的上下文数据和节点执行的结果数据都可以通过点击对应卡片右上角的状态按钮打开查看，比如我们查看其中运算节点的结果数据：
+The context data of trigger and the result data of node can be viewed by clicking the status button in the top right corner of the corresponding card. For example, let's view the result data of an operation node:
 
-![运算节点结果](https://static-docs.nocobase.com/10c22b923d3de0a0d58fa9283780f592.png)
+![Result of calcualtion node](https://static-docs.nocobase.com/10c22b923d3de0a0d58fa9283780f592.png)
 
-可以看到运算节点的结果数据中包含了运算后的标题，这个标题就是后续更新数据节点更新的数据。
+You can see that the result data of the calculation node includes the computed title, which is the data updated by the subsequent "Update record" node.
 
-## 小结
+## Summary
 
-通过上面的步骤，我们已经完成了一个简单的工作流的配置和触发，也接触了以下几个基础概念：
+Through the above steps, we have completed the configuration and triggering of a simple workflow, and have also been introduced to the following basic concepts:
 
-- **工作流**：用于定义流程的基本信息，包括名称、触发器类型和启用状态等，可在其中配置任意多个执行节点，是承载流程的实体。
-- **触发器**：每个工作流都包含一个触发器，可配置为工作流被触发的特定条件，是流程的入口。
-- **节点**：节点是工作流内的执行特定操作的指令单元，工作流中多个节点之间通过上下游关系组成完整的执行流程。
-- **执行计划**：执行计划是工作流触发后的具体执行对象，也称为执行记录或执行历史，包含了执行的状态、触发上下文数据等信息。其中针对每个节点也有对应的执行结果，包含了节点执行后的状态和结果数据信息。
+- **Workflow**: It defines the basic information of the workflow, including its name, trigger type, and enable/disable status. Within a workflow, you can configure multiple nodes. It serves as the container for the process.
+- **Trigger**: Each workflow contains a trigger, which can be configured to specific conditions that triggers the workflow. It serves as the entry point of the workflow.
+- **Node**: A node is an instruction unit within the workflow that performs specific actions. Multiple nodes within a workflow are interconnected in an upstream and downstream relationship, forming a complete process flow.
+- **Execution**: The execution represents the specific objects that are executed after the workflow is triggered. It is also known as execution record or execution history, and it includes information such as the execution status and trigger context data. For each node, there is a corresponding execution result which includes the node's execution status and data.
 
-更深入的使用可以进一步参考以下内容：
+For more in-depth usage, you can refer to the following resources:
 
-- [进阶使用](./advanced.md)
-- [触发器介绍](./triggers/index.md)
-- [节点介绍](./nodes/index.md)
-- [开发指南](./development/index.md)
+- [Advance usage](./advanced.md)
+- [Triggers](./triggers/index.md)
+- [Nodes](./nodes/index.md)

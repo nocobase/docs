@@ -1,43 +1,39 @@
-# 查询数据
+# Query Record
 
-用于对某个数据表的满足条件的数据进行查询并获取数据记录。
+Used to query and retrieve data records that meet certain conditions from a collection.
 
-可以配置查询单条数据或多条数据，查询结果可以作为变量在后续节点使用。当查询多条数据时，查询结果为一个数组。当查询结果为空时，可以选择是否继续执行后续节点。
+It can be configured to query single or multiple data records, and the query result can be used as a variable in subsequent nodes. When querying multiple data records, the query result is an array. When the query result is empty, you can choose whether to continue executing subsequent nodes.
 
-## 创建节点
+## Creating a Node
 
-在工作流配置界面中，点击流程中的加号（“+”）按钮，添加“查询数据”节点：
+In the workflow configuration UI, click the plus ("+") button in the workflow and add a "Query Record" node:
 
-![查询数据_添加](https://static-docs.nocobase.com/c1ef2b851b437806faf7a39c6ab9d33a.png)
+![Query Record_Add](https://static-docs.nocobase.com/c1ef2b851b437806faf7a39c6ab9d33a.png)
 
-## 节点配置
+## Node Configuration
 
-![查询节点_节点配置](https://static-docs.nocobase.com/dbec23f35e2d96b5287b3988705fb829.png)
+![Query Node_Node Configuration](https://static-docs.nocobase.com/dbec23f35e2d96b5287b3988705fb829.png)
 
-### 数据表
+### Collection
 
-选择要查询数据的数据表。
+Select the collection to query record from.
 
-### 查询模式
+### Query Mode
 
-勾选“允许结果是多条数据”后，将会查询出满足条件的所有数据，否则只会查询出满足条件的第一条数据。如果勾选了“允许结果是多条数据”，则查询节点的结果会是一个数组类型。
+After checking "Allow multiple data results", all data that meets the conditions will be queried; otherwise, only the first data that meets the conditions will be queried. If "Allow multiple data results" is checked, the result of the query node will be an array type.
 
-### 筛选条件
+### Filter Conditions
 
-与普通的数据表查询时的筛选条件类似，可以使用流程的上下文变量。
+Similar to the filter conditions when querying a normal collection, you can use context variables of the workflow.
 
-### 排序
+### Sorting
 
-查询一条或多条数据时均可通过排序规则来控制需要的结果。例如查询最新的一条数据，可以通过“创建时间”字段降序排序。
+When querying one or more data records, sorting rules can be used to control the desired results. For example, to query the latest data record, you can sort by the "Created at" field in descending order.
 
-### 分页
+### Pagination
 
-当结果集可能会很大时，可以使用分页来控制查询结果的数量。例如查询最新的 10 条数据，可以通过“创建时间”字段降序排序，然后设置分页为 1 页 10 条数据。
+When the result set may be large, pagination can be used to control the number of query results. For example, to query the latest 10 data records, you can sort by the "Creation Time" field in descending order and then set pagination to 1 page with 10 data records.
 
-### 结果为空的处理
+### Handling Empty Results
 
-在单条结果模式下，没有符合条件的数据的话查询结果会是 `null`，多条结果的模式下是空数组（`[]`）。可以根据需要是否勾选“查询结果为空是，退出流程”，勾选后，如果查询结果为空，则不会执行后续节点，以失败的状态提前退出。
-
-## 示例
-
-TODO
+In single result mode, if there are no data records that meet the conditions, the query result will be `null`; in multiple result mode, it will be an empty array (`[]`). You can choose whether to check "Exit the workflow if the query result is empty". After checked, if the query result is empty, subsequent nodes will not be executed, and the workflow will exit prematurely with a failed status.

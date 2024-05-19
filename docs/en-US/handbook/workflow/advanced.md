@@ -1,154 +1,154 @@
-# 进阶使用
+# Advanced Usage
 
-从 [快速开始](./index) 中我们已经了解了工作流最基本的用法，本篇进一步介绍其中一些更深入的概念。
+From [Quick Start](./index) we have already learned the most basic usage of workflows, this article further introduces some more in-depth concepts.
 
-## 使用变量
+## Using Variables
 
-正如程序语言中的变量，在工作流中**变量**是用于串接和组织流程的重要工具。
+Just like variables in programming languages, **variables** are important tools for connecting and organizing processes in workflows.
 
-在工作流触发后执行每个节点时，一些配置项可以选择使用变量，变量的来源即该节点的前序数据，包括以下几类：
+When each node is executed after the workflow is triggered, variables can be used in some configuration options, and the source of the variables is from data result of upstream node, including the following categories:
 
-- 触发上下文数据：表单触发、数据表触发等情况下，单行数据对象可以被所有节点使用。
-- 上游节点数据：流程进行到任意节点时，之前已完成的节点的结果数据。
-- 局域变量：当节点处在一些特殊分支结构内时，可以使用对应分支内特有的局域变量，例如循环结构中可以使用每轮循环的数据对象。
-- 系统变量：一些内置的系统参数，如当前时间等。
+- Trigger context data: In cases such as action triggers and collection triggers, single record object can be used by all nodes.
+- Upstream node data: When executing any node, the result data of the previously completed nodes.
+- Scope variables: When the node is in some special branch structures, scope variables specific to the corresponding branch can be used, such as in loop structures, where data objects for each round of the loop can be used.
+- System variables: Some built-in system parameters, such as the current time, etc.
 
-我们在 [快速开始](./index) 中已经多次使用了变量的功能，例如在运算节点中，我们可以使用变量来引用触发上下文数据，来进行计算：
+We have used the function of variables many times in [Quick Start](./index), for example, in the calculation node, we can use variables to reference trigger context data for calculation:
 
-![运算节点使用函数及变量](https://static-docs.nocobase.com/837e4851a4c70a1932542caadef3431b.png)
+![Function and variable usage in the calculation node](https://static-docs.nocobase.com/837e4851a4c70a1932542caadef3431b.png)
 
-在更新节点中，使用触发上下文数据作为筛选条件的变量，并引用运算节点的结果作为更新数据的字段值变量：
+In the update node, use trigger context data as the filtering condition variable, and refer to the result of the calculation node as the field value variable to be updated:
 
-![更新数据节点变量](https://static-docs.nocobase.com/2e147c93643e7ebc709b9b7ab4f3af8c.png)
+![Variable in update data node](https://static-docs.nocobase.com/2e147c93643e7ebc709b9b7ab4f3af8c.png)
 
-变量的内部是一个 JSON 结构，通常可以按 JSON 的路径使用数据的特定部分。由于很多变量基于 NocoBase 的数据表结构，关系数据将会作为对象的属性按层级组成类似树的结构，例如我们可以选择查询到数据的关系数据的某个字段的值。另外当关系数据是对多的结构时，变量可能会是一个数组。
+The internal of a variable is a JSON structure, which can usually be used to access specific parts of the data according to the path of JSON. Because many variables are based on the data collection of NocoBase, association data will be composed as a tree-like structure of objects, such as selecting the value of a field of related data that is queried. In addition, when association data is a to-many structure, the variable may be an array.
 
-选择变量在大多数时候会需要选到最后一层值属性，通常是简单数据类型，如数字、字符串等。但当变量层级中有数组时，末级的属性也会被映射成一个数组，只有对应的节点支持数组的情况下，才能正确处理数组数据。例如在运算节点中，一些计算引擎有专门处理数组的函数，又比如在循环节点中，循环对象也可以直接选择一个数组。
+Selecting variables will often need to select the value attribute at the last layer of the JSON path, usually a simple data type such as number, string, etc. However, when there is an array in the variable hierarchy, the attributes at the end level will also be mapped to an array, and only when the corresponding node supports array can the array data be correctly processed. For example, in the calculation node, some calculation engines have functions specially designed for arrays, and in the loop node, the loop object can directly select an array.
 
-举个例子，当一个查询节点查询了多条数据时，节点结果将会是一个包含多行同构数据的数组：
+For example, when a query node queries multiple data rows, the node result will be an array containing multiple rows of homogeneous data:
 
 ```json
 [
   {
     "id": 1,
-    "title": "标题1"
+    "title": "Title 1"
   },
   {
     "id": 2,
-    "title": "标题2"
+    "title": "Title 2"
   }
 ]
 ```
 
-但是在后续节点中将其作为变量使用时，如果选择的变量是 `节点数据/查询节点/标题` 的形式，将会得到一个被映射后是对应字段值的数组：
+However, when it is used as a variable in subsequent nodes, if the selected variable is in the form of `Node Data / Query Node / Title`, it will be mapped to an flat array of corresponding field values:
 
 ```json
-["标题1", "标题2"]
+["Title 1", "Title 2"]
 ```
 
-如果是多维数组（如多对多关系字段），将会得到一个对应字段被拍平后的一维数组。
+If it is a multi-dimensional array (such as a many-to-many relationship field), it will be a one-dimensional array after the corresponding field is flattened.
 
-## 执行计划（历史记录）
+## Execution Plan (History)
 
-每个工作流触发后，会创建对应的执行计划，以跟踪此次任务的执行。每个执行计划都有一个状态值用于表示当前的执行状态，该状态在执行历史的列表和详情中都可以查看到：
+After each workflow is triggered, a corresponding execution plan will be created to track the process of this task. Each execution plan has a status value to indicate the current execution status, which can be viewed in the list and details of the execution history:
 
-![执行计划状态](https://static-docs.nocobase.com/d4440d92ccafac6fac85da4415bb2a26.png)
+![Execution plan status](https://static-docs.nocobase.com/d4440d92ccafac6fac85da4415bb2a26.png)
 
-当主流程分支中的节点全部都以“完成”状态执行到流程终点时，整个执行计划将以“完成”状态结束。当主流程分支中的节点出现“失败”、“出错”、“取消”、“拒绝”等终态时，整个执行计划将以对应的状态**提前终止**。当主流程分支中的节点出现“等待”状态时，整个执行计划将暂停执行，但仍显示“执行中”的状态，直到等待的节点被恢复后继续执行。不同的节点类型对等待状态的处理方式不同，比如人工节点需要等待人工处理，而延时节点需要等待时间到达后继续执行。
+When all nodes in the main branch of the process are executed to the end of the process with a "Succeeded" status, the entire execution plan will end with a "Succeeded" status. When nodes in the main branch of the process appear in final status such as "failed", "error", "canceled" or "rejected", etc., the entire execution plan will be terminated early with the corresponding status. When nodes in the main branch of the process are in a "pending" status, the entire execution plan will be paused, but still display an "On-going" status, until the waiting node is resumed and continues execution. Different node types have different ways of handling the "pending" status. For example, "Manual" nodes need to wait for manual processing, while "Delay" nodes need to wait until the time arrives to continue execution.
 
-执行计划的状态如下表：
+The status of the execution plan is as follows:
 
-| 状态   | 对应主流程最后执行的节点状态 | 含义                                             |
-| ------ | ---------------------------- | ------------------------------------------------ |
-| 队列中 | -                            | 流程已触发并生成执行计划，排队等待调度器安排执行 |
-| 进行中 | 等待                         | 节点要求暂停，等待进一步输入或回调再继续         |
-| 完成   | 完成                         | 未遇到任何问题，所有节点按预期逐个执行完成。     |
-| 失败   | 失败                         | 由于未满足节点配置，导致失败。                   |
-| 出错   | 出错                         | 节点遇到未捕获的程序错误，提前结束。             |
-| 取消   | 取消                         | 等待中的节点被流程管理者从外部取消执行，提前结束 |
-| 拒绝   | 拒绝                         | 在人工处理的节点中，被人工拒绝不再继续后续流程   |
+| Status  | Corresponding Final Node status in the Main Process | Explanation                                         |
+| ------- | --------------------------------------------------- | ----------------------------------------------- |
+| Queued  | -                                                   | The process has been triggered and an execution plan has been generated, waiting in the queue for scheduling by the scheduler. |
+| On-going | Pending                                           | The node requests a pause, waiting for further input or callback to continue. |
+| Succeeded | Succeeded                                          | No problems encountered, all nodes executed as expected one by one and completed. |
+| Failed  | Failed                                              | Failed due to unmet the logic of node configurations.       |
+| Error | Error                                            | The node encountered an uncaught program error and terminated early. |
+| Canceled | Canceled                                        | The waiting node was externally canceled from execution by the administrator, and terminated early. |
+| Rejected | Rejected                                          | In nodes requiring manual processing, it was rejected by user and no longer continued with subsequent processes. |
 
-在 [快速开始](./index) 的例子中，我们已经知道查看工作流的执行历史的详情可以检查执行过程中所有节点的执行是否正常，以及每个已执行的节点的执行状态和结果数据，在一些高级的流程和节点中，节点的结果还可能有多个，例如循环节点的结果：
+In the examples of [Quick Start](./index), we already know that checking the details of the execution history of a workflow can check whether all nodes in the execution are executed normally, and the status and result data of each executed node. In some advanced workflows and nodes, the executed results of the nodes may be multiple, such as the results of "Loop" nodes:
 
-![多次执行的节点结果](https://static-docs.nocobase.com/bbda259fa2ddf62b0fc0f982efbedae9.png)
+![Results of nodes executed multiple times](https://static-docs.nocobase.com/bbda259fa2ddf62b0fc0f982efbedae9.png)
 
-:::info{title=提示}
-工作流可以被并发的触发，但执行是逐个排队执行的，即使同时触发多个工作流，也会依次执行，不会并行执行。所以出现“队列中”的情况时，代表有其他工作流正在执行，需要等待。
+:::info{title=Note}
+Workflows can be triggered concurrently, but executed one by one in queue, even if multiple workflows are triggered simultaneously, they will be executed sequentially, not in parallel. So when the status shows "Queued," it means that one of the workflows is executing and need to wait.
 
-“进行中”的状态只代表该执行计划已经开始，且通常由于内部节点的等待状态而暂停，并不代表该执行计划抢占了队头的执行资源。所以存在“进行中”的执行计划时，其他“队列中”的执行计划仍可被调度开始执行。
+The "On-going" status only indicates that the execution plan has started and is usually paused due to the pending status of some node, and does not mean that the execution plan preemptively occupies the execution resources at the head of the queue. Therefore, when there are "On-going" execution plans, other "Queued" execution plans can still be scheduled and executed.
 :::
 
-## 节点执行状态
+## Node Execution Status
 
-执行计划的状态是由其中每个节点的执行决定的，在一次触发后的执行计划中，每个节点执行后会产生一个执行状态，状态则会决定后续流程是否继续执行。通常情况下，节点执行成功后，会继续执行下一个节点，直到所有节点依次执行完成，或者被中断。当遇到流程控制相关节点时，如分支、循环、并行、延时等，会根据节点配置的条件，以及运行时的上下文数据，决定下一个节点的执行流向。
+The status of the execution plan is determined by each node. In an execution plan after a trigger, each executed node will produce a node status, and the status will determine whether the subsequent process continues to process. Usually, after a node is executed successfully, the next node will continue to execute until all nodes are executed in sequence, or interrupted. When encountering process control nodes, such as "Branch", "Loop", "Parallel" and "Delay", etc., the next node's execution flow will be determined according to the control node's configured conditions and the runtime context data.
 
-每个节点执行后可能产生的状态如下表：
+The possible status that may be produced after each node is executed are following:
 
-| 状态 | 是否是终态 | 是否提前终止 | 含义                                                   |
-| ---- | :--------: | :----------: | ------------------------------------------------------ |
-| 等待 |     否     |      否      | 节点要求暂停，等待进一步输入或回调再继续               |
-| 完成 |     是     |      否      | 未遇到任何问题，执行成功，继续执行下一个节点直至结束。 |
-| 失败 |     是     |      是      | 由于未满足节点配置，导致失败。                         |
-| 出错 |     是     |      是      | 节点遇到未捕获的程序错误，提前结束。                   |
-| 取消 |     是     |      是      | 等待中的节点被流程管理者从外部取消执行，提前结束       |
-| 拒绝 |     是     |      是      | 在人工处理的节点中，被人工拒绝不再继续后续流程         |
+| Status | Is a Final status? | Will it Terminates Early? | Explanation                                                 |
+| ------ | :------------------------: | :-------------------------: | -------------------------------------------------------- |
+| Pending |            No              |              No             | The node requests a pause, waiting for further input or callback to continue. |
+| Succeeded |           Yes             |              No             | No problems encountered, executed successfully, and continue to execute the next node until the end. |
+| Failed |              Yes             |               Yes            | Failed due to unmet node configurations.                  |
+| Error |             Yes             |               Yes            | The node encountered an uncaught program error and terminated early. |
+| Canceled |           Yes             |               Yes            | The pending node was canceled externally by the administrator, and terminated early. |
+| Rejected |            Yes            |                Yes           | In nodes requiring manual processing, it was rejected by user and no longer continued with subsequent processes. |
 
-除等待状态外，其他状态都是节点执行的终态，只有终态是“完成”的状态，才会继续执行，否则都会提前终止整个流程的执行。当节点处在分支流程中时（并行分支、条件判断、循环等），节点执行产生的终态会由开启分支的节点接管处理，并以此类推决定整个流程的流转。
+Except for the "Pending" status, all other status are final status of node execution. Only when the final status is "Succeeded" the process will continue to execute, otherwise the execution of the entire process will be terminated early. When a node is in a branch process ("Parallel branch", "Condition", "Loop", etc.), the final status generated by the node will be taken over and processed by the node that opens the branch, and so on, determining the entire process flow.
 
-例如当我们使用了“‘是’则继续”模式的条件节点时，当执行时如果结果为“否”，则会提前终止整个流程的执行，并已失败状态退出，不再执行后续节点，如下图所示：
+For example, when we use a "Condition" node with the "continue if true" mode, if the result is "false" during execution, the entire process execution will be terminated early and exited with a failed status, as shown in the figure below:
 
-![节点执行失败](https://static-docs.nocobase.com/993aecfa1465894bb574444f0a44313e.png)
+![Node execution failed](https://static-docs.nocobase.com/993aecfa1465894bb574444f0a44313e.png)
 
-:::info{title=提示}
-所有非“完成”的终止状态都可以被视为失败，但失败的原因不同，可以通过查看节点的执行结果来进一步了解失败的原因。
+:::info{title=Note}
+All final status other than "Succeeded" can be regarded as failures, but the reasons for failure will be different, by checking the results of the nodes to know more about the failure.
 :::
 
-## 执行模式
+## Execution Modes
 
-工作流基于创建时所选择的触发类型，会以“异步”或“同步”的方式执行。异步模式代表在特定事件触发后会进入工作流的队列，被后台调度逐个执行，而同步模式在触发后不会进入调度队列，而是直接开始执行，并且会在执行完后立即反馈。
+Workflow execution is based on the trigger type selected when creating, and can be executed in "Asynchronously" or "Synchronously" mode. "Asynchronously" mode means that after a specific event is triggered, it will enter the execution queue and be executed one by one by the background scheduler, while "synchronously" mode will not enter the scheduling queue after triggering, and will start execution directly, and will immediately provide feedback after execution.
 
-数据表事件、表单事件、定时任务事件和审批事件将默认以异步的方式执行，请求拦截类型的工作流则默认以同步的方式执行。其中数据表事件和表单事件两种模式都支持，在创建工作流时可以进行选择：
+Collection events, post-action events, custom action events, schedule events and approval events will be executed asynchronously by default, while pre-action events will be executed synchronously by default. Among them, collection events, post-action events and custom action events support both modes, and you can choose when creating a workflow:
 
-![同步模式_创建同步工作流](https://static-docs.nocobase.com/39bc0821f50c1bde4729c531c6236795.png)
+![Synchronous mode: Creating synchronous workflow](https://static-docs.nocobase.com/39bc0821f50c1bde4729c531c6236795.png)
 
-:::info{title=提示}
-同步模式的工作流受限于其模式，内部不能使用会产生“等待”状态的节点，例如“人工处理”等。
+:::info{title=Note}
+Synchronously mode workflows are limited by their mode and cannot use nodes that generate a "pending" status, such as "manual process" etc.
 :::
 
-## 自动删除历史记录
+## Automatically Delete History
 
-当工作流的触发较为频繁时，可以通过配置自动删除历史记录来减少干扰，同时也将降低数据库的存储压力。
+When workflows are triggered frequently, you can reduce interference and database storage pressure by configuring automatic deletion of historical executions.
 
-同样在工作流的新建和编辑弹窗中可以配置对应流程是否自动删除历史记录：
+Similarly, in the pop-up for creating and editing workflows, you can configure whether the corresponding process automatically deletes history:
 
-![自动删除历史记录配置](https://static-docs.nocobase.com/b2e4c08e7a01e213069912fe04baa7bd.png)
+![Configure automatic deletion of history](https://static-docs.nocobase.com/b2e4c08e7a01e213069912fe04baa7bd.png)
 
-自动删除可以根据执行结果的状态来进行配置，大部分情况下，建议仅勾选“完成”状态，这样可以保留执行失败的记录，以便后续排查问题。
+Automatic deletion can be configured based on the status of the execution. In most cases, it is recommended to only select the "Succeeded" status, so that history of execution failures can be retained for subsequent troubleshooting.
 
-建议在调试工作流时不要开启自动删除历史记录，以便通过历史记录来检查工作流的执行逻辑是否符合预期。
+It is recommended not to enable automatic deletion of history when debugging workflows, so that the execution logic of the workflows can be reviewed in history.
 
-:::info{title=提示}
-删除工作流的历史并不会减少工作流已执行过的计数。
+:::info{title=Note}
+Deleting the history of workflows will not reduce the count of workflows already executed.
 :::
 
-## 工作流的版本
+## Workflow Versions
 
-在已配置的工作流触发至少一次以后，如希望修改工作流的配置或其中的节点，需要通过创建新版本后再修改，这样同时也保证了当回顾已触发过的工作流历史执行记录时不受未来修改的影响。
+After a configured workflow is triggered at least once, if you want to modify the configuration of the workflow or its nodes, you need to create a new version and then modify it, which also ensures that when reviewing execution history of workflows that have been triggered, they are not affected by future modifications.
 
-在工作流的配置页面，可以在右上角的版本菜单查看已有的工作流版本：
+On the configuration page of the workflow, you can view existing workflow versions in the version menu in the top right corner:
 
-![查看工作流版本](https://static-docs.nocobase.com/ad93d2c08166b0e3e643fb148713a63f.png)
+![View workflow versions](https://static-docs.nocobase.com/ad93d2c08166b0e3e643fb148713a63f.png)
 
-在其右侧的更多操作（“…”）菜单中，可以选择基于当前查看的版本复制到新版本：
+In the more operations ("...") menu on the right side, you can do "copy to a new version" based on the current version being viewed:
 
-![复制工作流为新版本](https://static-docs.nocobase.com/2805798e6caca2af004893390a744256.png)
+![Copy workflow to new version](https://static-docs.nocobase.com/2805798e6caca2af004893390a744256.png)
 
-复制到新版本之后，点击“启用”/“停用”开关，将对应版本切换到启用状态后，新的工作流版本将会生效。
+After copying to a new version, click the "Enable"/"Disable" switch. After switching the corresponding version to the enabled status, the new workflow version will take effect.
 
-如需重新选择旧版本，从版本菜单中切换后，再次点击“启用”/“停用”开关切换至启用状态后，当前查看的版本将生效，后续触发将执行对应版本的流程。
+If you need to use an old version again, switch one from the version menu, and then switch to the enabled status by clicking the "Enable"/"Disable" switch again, then the current viewed version will take effect, and furtuer triggers will run on the corresponding version of the workflow.
 
-当需要停用工作流时，点击“启用”/“停用”开关切换至停用状态后，该工作流将不再会被触发。
+When need to disable a workflow, after clicking the "Enable"/"Disable" switch to the disabled status, the workflow will no longer be triggered.
 
-:::info{title=提示}
-与工作流管理列表中的“复制”工作流不同，“复制到新版本”的工作流仍会归集在同一组工作流中，只是可以通过版本区分。但复制工作流则会被视为一个全新的工作流，与之前工作流的版本无关，且执行次数也会归零。
+:::info{title=Note}
+Different from duplicate a workflow in the workflow management list, the workflow copied to a new version will still be grouped in the same group of workflows, but can be distinguished by version. However, duplicating a workflow will be make a completely new workflow, unrelated to the previous versions of the workflow, and the execution count will also be reset to 0.
 :::

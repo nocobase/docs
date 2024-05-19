@@ -1,35 +1,35 @@
-# 删除数据
+# Delete Record
 
-用于对某个数据表的满足条件的数据进行删除。
+Used to delete data from a specific collection that meets certain conditions.
 
-删除节点的基本使用与更新节点类似，只是删除节点不需要字段赋值，只需要选择数据表和筛选条件即可。删除节点的结果会返回删除成功数据的行数，只在执行历史里可查看，不可作为变量在后续节点使用。
+The basic usage of the delete node is similar to the update node, except that the delete node does not require field assignments, only the selection of the collection and filter conditions are needed. The result of the delete node will return the number of rows deleted successfully, which can only be viewed in the execution history and cannot be used as a variable in subsequent nodes.
 
-:::info{title=注意}
-目前删除节点不支持逐条删除，均为批量删除，因此不会触发每条数据删除的其他事件。
+:::info{title=Note}
+Currently, the delete node does not support deleting one by one, all deletions are performed in batches, so other events triggered by each data deletion will not be triggered.
 :::
 
-## 创建节点
+## Creating a Node
 
-在工作流配置界面中，点击流程中的加号（“+”）按钮，添加“删除数据”节点：
+In the workflow configuration interface, click the plus ("+") button in the flow to add a "Delete Record" node:
 
-![创建删除数据节点](https://static-docs.nocobase.com/e1d6b8728251fcdbed6c7f50e5570da2.png)
+![Creating a Delete Record Node](https://static-docs.nocobase.com/e1d6b8728251fcdbed6c7f50e5570da2.png)
 
-## 节点配置
+## Node Configuration
 
-![删除节点_节点配置](https://static-docs.nocobase.com/580600c2b13ef4e01dfa48b23539648e.png)
+![Delete Node Node Configuration](https://static-docs.nocobase.com/580600c2b13ef4e01dfa48b23539648e.png)
 
-### 数据表
+### Collection
 
-选择要删除数据的数据表。
+Select the collection from which data will be deleted.
 
-### 筛选条件
+### Filter Conditions
 
-与普通的数据表查询时的筛选条件类似，可以使用流程的上下文变量。
+Similar to the filter conditions used in regular collection queries, variables from the workflow context can be used.
 
-## 示例
+## Example
 
-例如定时清理已取消的无效历史订单数据，可以使用删除节点来实现：
+For example, to regularly clean up invalid historical order data that has been canceled, you can use a delete node:
 
-![删除节点_示例_节点配置](https://static-docs.nocobase.com/b94b75077a17252f8523c3f13ce5f320.png)
+![Delete Node Example Node Configuration](https://static-docs.nocobase.com/b94b75077a17252f8523c3f13ce5f320.png)
 
-工作流将定时触发，并执行删除所有已取消的无效历史订单数据。
+The workflow will be triggered periodically and execute to delete all invalid historical order data that has been canceled.
