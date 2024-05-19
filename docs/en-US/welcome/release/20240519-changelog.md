@@ -1,4 +1,4 @@
-# Recent Updates 2024.05.06 ~ 2024.05.19
+# v1.0.0-alpha.15: 2024.05.19
 
 ## New Features
 
