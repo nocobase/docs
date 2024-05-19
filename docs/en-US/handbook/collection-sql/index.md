@@ -10,27 +10,27 @@ SQL collection 提供了一种通过 SQL 语句获取数据的方法。通过 SQ
 
 ### 新建
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405191452918.png"/>
+<img src="https://static-docs.nocobase.com/202405191452918.png"/>
 
 <p>1. 在 SQL 输入框输入 SQL 语句后，点击执行 (Execute) 后，系统将会尝试解析 SQL 使用了哪些表和字段，从来源表中解析出字段元数据。</p>
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405191453556.png"/>
+<img src="https://static-docs.nocobase.com/202405191453556.png"/>
 
 <p>2. 如果系统自动分析的来源表和字段不对，可以手动选择对应的表和字段，来使用对应字段的元数据。需要先选择来源表，才能在下方的字段来源中选择该表的字段。</p>
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405191453579.png"/>
+<img src="https://static-docs.nocobase.com/202405191453579.png"/>
 
 <p>3. 如果字段没有对应的来源字段，系统会根据数据类型推断字段类型，如果推断结果不对，可以手动选择字段类型。</p>
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405191454703.png"/>
+<img src="https://static-docs.nocobase.com/202405191454703.png"/>
 
 <p>4. 在配置字段的同时可以在预览区域看到对应的展示效果。</p>
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405191455439.png"/>
+<img src="https://static-docs.nocobase.com/202405191455439.png"/>
 
 <p>5. 配置完成，确认无误之后，需要点击 SQL 输入框下方的确认 (Confirm) 按钮才能进行最后的提交。</p>
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405191455302.png"/>
+<img src="https://static-docs.nocobase.com/202405191455302.png"/>
 
 ### 编辑
 
@@ -42,7 +42,7 @@ SQL collection 提供了一种通过 SQL 语句获取数据的方法。通过 SQ
 
 SQL 语句无变化，但数据库表结构有变化时，可以通过点击配置字段 (Configure fields) - 从数据库同步 (Sync from database) 对字段进行同步和配置。
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405191456216.png"/>
+<img src="https://static-docs.nocobase.com/202405191456216.png"/>
 
 ### SQL 表对比连接数据库视图
 
