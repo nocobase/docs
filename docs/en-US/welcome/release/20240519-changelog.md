@@ -30,19 +30,19 @@ Added the "Auth: LDAP" plugin (commercial plugin), which allows users to sign in
 
 #### Support for `application/www-x-form-urlencoded` Data Format
 
-Previously, request nodes only supported JSON format (`application/json`) for the body part of the Content-Type. After the upgrade, they also support configuring form format data in key-value pairs.
+Previously, request node only supported JSON format (`application/json`) for the body part of the Content-Type. After the upgrade, it also support configuring form format data in key-value pairs.
 
 <img src="https://static-docs.nocobase.com/202405191514472.png"/>
 
 #### String Template Support for Value Input Fields
 
-Previously, the value input fields in the "Request Headers" and "Request Parameters" sections of request nodes only supported pure input or variable selection. After the upgrade, you can directly enter a string with embedded variables. It will be automatically parsed as the final string value before sending the request.
+Previously, the value input fields in the "Headers" and "Parameters" sections of request node only supported pure input or variable selection. After the upgrade, you can directly enter a string with embedded variables. It will be automatically parsed as the final string value before sending the request.
 
 <img src="https://static-docs.nocobase.com/202405191514748.png"/>
 
-### Workflow Custom Action Events
+### Workflow Custom Action Event
 
-The "Trigger Workflow" action button, previously bound to the "After Action" event, has been split and renamed to "Custom Action Events" (commercial plugin). The previously added action buttons in the open-source version can still be used, but no longer supported for new additions. Please use the new "Custom Action Events" instead. See the [Usage Manual](https://docs-cn.nocobase.com/handbook/workflow/plugins/custom-action-trigger) for more information.
+The "Trigger Workflow" action button, previously bound to the "Post-Action" event, has been split and renamed to "Custom Action Event" (commercial plugin). The previously added action buttons in the open-source version can still be used, but no longer supported for new additions. Please use the new "Custom Action Event" instead. See the [Usage Manual](https://docs-cn.nocobase.com/handbook/workflow/plugins/custom-action-trigger) for more information.
 
 <img src="https://static-docs.nocobase.com/202405191515770.png"/>
 
