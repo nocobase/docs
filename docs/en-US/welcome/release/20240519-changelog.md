@@ -16,7 +16,7 @@ Refer to [Adding Blocks in Modals](https://docs-cn.nocobase.com/handbook/ui/pop-
 
 ### Support for Adding Linkage Rules in Detail Blocks
 
-The linkage rules in detail blocks now support dynamically setting fields to show/hide. Refer to [Cascading Rules in Detail Blocks](https://docs-cn.nocobase.com/handbook/ui/blocks/data-blocks/details#%E8%81%94%E5%8A%A8%E8%A7%84%E5%88%99)
+The linkage rules in detail blocks now support dynamically setting fields to show/hide. Refer to [Linkage Rules in Detail Blocks](https://docs-cn.nocobase.com/handbook/ui/blocks/data-blocks/details#%E8%81%94%E5%8A%A8%E8%A7%84%E5%88%99)
 
 <img src="https://static-docs.nocobase.com/202405191513781.png"/>
 
