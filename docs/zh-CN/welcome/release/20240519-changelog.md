@@ -92,3 +92,5 @@
 - 工作流请求节点变量输入框溢出。<a href="https://github.com/nocobase/nocobase/pull/4353" target="_blank">fix(plugin-workflow-request): fix value fields overflowing #4354</a>
 - 特殊字符导致工作流请求节点挂起。<a href="https://github.com/nocobase/nocobase/pull/4376" target="_blank">fix(plugin-workflow-request): fix request hanging when invalid header value #4376</a>
 - 修复主题编辑器中设置 marginBlock 之后会影响表单字段间距的问题。<a href="https://github.com/nocobase/nocobase/pull/4374" target="_blank">fix(theme-editor): form field spacing should not be affected by token.marginBlock #4374</a>
+- 修复点击页面右上角的“许可证”选项时跳转错误的问题。[PR #4415](https://github.com/nocobase/nocobase/pull/4415)
+- 修复当把筛选表单保存为区块模板后，字段的操作符无效的问题。[PR #4390](https://github.com/nocobase/nocobase/pull/4390)

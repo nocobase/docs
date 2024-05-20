@@ -171,6 +171,10 @@ Other exceptions such as no response from the server (`status` is `null`), or fa
 
 - Setting marginBlock in the theme editor affected the spacing between form fields. <a href="https://github.com/nocobase/nocobase/pull/4374" target="_blank">fix(theme-editor): form field spacing should not be affected by token.marginBlock #4374</a>
 
+- Fixed an issue where clicking on the "License" option in the top right corner of the page would result in incorrect redirection. [PR #4415](https://github.com/nocobase/nocobase/pull/4415)
+
+- Fixed the issue where the operator of the field becomes invalid after saving the filter form as a block template. [PR #4390](https://github.com/nocobase/nocobase/pull/4390)
+
 ## Documentation
 
 - Added plugin sample documentation: https://docs-cn.nocobase.com/plugin-samples
