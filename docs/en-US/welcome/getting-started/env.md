@@ -181,6 +181,7 @@ LOGGER_BASE_PATH=storage/logs
 - `warn`
 - `info`
 - `debug`
+- `trace`
 
 ```bash
 LOGGER_LEVEL=info
@@ -212,10 +213,11 @@ LOGGER_MAX_SIZE=20971520
 
 ### LOGGER_FORMAT
 
-日志打印格式，开发环境默认 `logfmt`, 生产环境默认 `json`. 可选项:
+日志打印格式，开发环境默认 `console`, 生产环境默认 `json`. 可选项:
 
-- `logfmt`
+- `console`
 - `json`
+- `logfmt`
 - `delimiter`
 
 ```bash

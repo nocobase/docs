@@ -1,7 +1,5 @@
 # Logging
 
-<PluginInfo name="logger"></PluginInfo>
-
 ## Introduction
 
 Logs are an important tool for us to locate system issues. NocoBase's server logs mainly include interface request logs and system operation logs, supporting configuration of log level, rolling strategy, size, printing format, and more. This document mainly introduces the related content of NocoBase server logs, as well as how to use the logging plugin to package and download server logs.
@@ -87,20 +85,20 @@ The main directory structure of NocoBase log files is:
 
 `request_YYYY-MM-DD.log`, interface request and response logs.
 
-| Field         | Description                         |
-|---------------|-------------------------------------|
-| `level`       | Log level                           |
-| `timestamp`   | Log print time `YYYY-MM-DD hh:mm:ss`|
-| `message`     | `request` or `response`             |
-| `userId`      | Only in `response`                  |
-| `method`      | Request method                      |
-| `path`        | Request path                        |
-| `req` / `res` | Request/Response content            |
-| `action`      | Requested resources and parameters  |
-| `status`      | Response status code                |
-| `cost`        | Request time                        |
-| `app`         | Current application name            |
-| `reqId`       | Request ID                          |
+| Field         | Description                          |
+| ------------- | ------------------------------------ |
+| `level`       | Log level                            |
+| `timestamp`   | Log print time `YYYY-MM-DD hh:mm:ss` |
+| `message`     | `request` or `response`              |
+| `userId`      | Only in `response`                   |
+| `method`      | Request method                       |
+| `path`        | Request path                         |
+| `req` / `res` | Request/Response content             |
+| `action`      | Requested resources and parameters   |
+| `status`      | Response status code                 |
+| `cost`        | Request time                         |
+| `app`         | Current application name             |
+| `reqId`       | Request ID                           |
 
 :::info{title=Note}
 `reqId` will be carried to the front end via the `X-Request-Id` response header.
@@ -111,7 +109,7 @@ The main directory structure of NocoBase log files is:
 `system_YYYY-MM-DD.log`, application, middleware, plugins, and other system operation logs, `error` level logs will be printed separately to `system_error_YYYY-MM-DD.log`.
 
 | Field       | Description                            |
-|-------------|----------------------------------------|
+| ----------- | -------------------------------------- |
 | `level`     | Log level                              |
 | `timestamp` | Log print time `YYYY-MM-DD hh:mm:ss`   |
 | `message`   | Log message                            |
@@ -126,22 +124,23 @@ The main directory structure of NocoBase log files is:
 
 `sql_YYYY-MM-DD.log`, database SQL execution logs. `INSERT INTO` statements are limited to the first 2000 characters.
 
-| Field       | Description                            |
-|-------------|----------------------------------------|
-| `level`     | Log level                              |
-| `timestamp` | Log print time `YYYY-MM-DD hh:mm:ss`   |
-| `sql`       | SQL statement                          |
-| `app`       | Current application name               |
-| `reqId`     | Request ID                             |
+| Field       | Description                          |
+| ----------- | ------------------------------------ |
+| `level`     | Log level                            |
+| `timestamp` | Log print time `YYYY-MM-DD hh:mm:ss` |
+| `sql`       | SQL statement                        |
+| `app`       | Current application name             |
+| `reqId`     | Request ID                           |
 
 ## Log Packaging and Downloading
+
+<PluginInfo name="logger"></PluginInfo>
 
 1. Navigate to the log management page.
 2. Select the log files you wish to download.
 3. Click the download button.
 
 ![2024-04-10_10-50-50](https://static-docs.nocobase.com/2024-04-10_10-50-50.png)
-
 
 ## Related Documents
 
