@@ -111,5 +111,22 @@ export default [
         link: '/plugin-samples/component-and-scope/local',
       },
     ]
+  },
+  {
+    title: 'Schema Initializer',
+    'title.zh-CN': 'Schema Initializer',
+    type: 'group',
+    children: [
+      {
+        title: 'Overview',
+        'title.zh-CN': '概述',
+        link: '/plugin-samples/schema-initializer',
+      },
+      {
+        title: 'Global Content',
+        'title.zh-CN': '向已有的 Add block 里添加新子项',
+        link: '/plugin-samples/schema-initializer/add-item-to-block',
+      },
+    ]
   }
 ];
