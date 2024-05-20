@@ -1,4 +1,4 @@
-# 自定义变量
+# Custom Variable
 
 <PluginInfo name="workflow-variable" link="/handbook/workflow/plugins/variable" commercial="true"></PluginInfo>
 

@@ -1,4 +1,4 @@
-# JSON 解析
+# JSON Query
 
 <PluginInfo name="workflow-json-query" link="/handbook/workflow/plugins/json-query" commercial="true"></PluginInfo>
 

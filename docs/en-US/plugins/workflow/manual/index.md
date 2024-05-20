@@ -85,6 +85,6 @@
 
 更深入的使用可以进一步参考以下内容：
 
-- [进阶使用](./advanced)
-- [触发器介绍](./triggers)
-- [节点介绍](./nodes)
+- [进阶使用](./advanced.md)
+- [触发器介绍](./triggers/index.md)
+- [节点介绍](./nodes/index.md)

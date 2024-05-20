@@ -1,4 +1,4 @@
-# 延时
+# Delay
 
 <PluginInfo name="workflow-delay" link="/handbook/workflow/plugins/delay"></PluginInfo>
 

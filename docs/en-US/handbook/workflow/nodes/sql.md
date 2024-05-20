@@ -1,3 +1,3 @@
-# SQL 操作
+# SQL Operation
 
 <embed src="../plugins/sql.md#L3-L999"></embed>

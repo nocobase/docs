@@ -1,4 +1,4 @@
-# 人工节点
+# Node Configuration
 
 ## 创建节点
 

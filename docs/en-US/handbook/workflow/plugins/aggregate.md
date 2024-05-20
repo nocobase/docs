@@ -1,4 +1,4 @@
-# 聚合查询
+# Aggregate
 
 <PluginInfo name="workflow-aggregate" link="/handbook/workflow/plugins/aggregate"></PluginInfo>
 

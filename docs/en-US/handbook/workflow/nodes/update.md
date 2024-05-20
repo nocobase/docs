@@ -1,41 +1,41 @@
-# 更新数据
+# Update Record
 
-用于对某个数据表的满足条件的数据进行更新。
+Used to update data records that meet certain conditions in a collection.
 
-数据表和字段赋值部分与新增节点相同，更新节点的区别主要是增加了筛选条件，而且需要选择更新模式。另外，更新节点的结果会返回更新成功数据的行数，只在执行历史里可查看，不可作为变量在后续节点使用。
+The collection and field assignment sections are the same as in the "Create Record" node. The main difference between "Update Record" node and "Create record" node is the filter conditions, and the need to select an update mode. In addition, the update node will return the number of rows of successfully updated data, which can only be viewed in the execution history and cannot be used as a variable in subsequent nodes.
 
-## 创建节点
+## Creating a Node
 
-在工作流配置界面中，点击流程中的加号（“+”）按钮，添加“更新数据”节点：
+In the workflow configuration UI, click the plus ("+") button in the workflow and add an "Update Record" node:
 
-![更新数据_添加](https://static-docs.nocobase.com/9ff24d7bc173b3a71decc1f70ca9fb66.png)
+![Update Record_Add](https://static-docs.nocobase.com/9ff24d7bc173b3a71decc1f70ca9fb66.png)
 
-## 节点配置
+## Node Configuration
 
-![更新节点_节点配置](https://static-docs.nocobase.com/98e0f941c57275fc835f08260d0b2e86.png)
+![Update Node_Node Configuration](https://static-docs.nocobase.com/98e0f941c57275fc835f08260d0b2e86.png)
 
-### 数据表
+### Collection
 
-选择要更新数据的数据表。
+Select the collection to update record in.
 
-### 更新模式
+### Update Mode
 
-更新模式有“批量”和“逐条”的模式，批量模式下，不会再触发每条更新数据的数据表事件，而逐条更新的话会触发每条更新数据的数据表事件，但在大数据量下会有性能问题，需要谨慎使用。通常根据更新的目标数据和是否要触发其他工作流事件来选择，如果是根据主键更新单条数据的，建议使用逐条更新，如果是根据条件更新多条数据的，建议使用批量更新。
+There are "Batch" and "Individual" modes for updating. In batch mode, each record updating will not trigger the collection events; whereas, in individual mode, each record updating could trigger the collection events. However, there may be performance issues with individual updates, especially with large amounts of data, so use with caution. Typically, choose based on the target data to be updated and whether other workflow events need to be triggered. If updating a single data record based on a primary key, it is recommended to use individual updates; if updating multiple data records based on conditions, it is recommended to use batch updates.
 
-### 筛选条件
+### Filter Conditions
 
-与普通的数据表查询时的筛选条件类似，可以使用流程的上下文变量。
+Similar to the filter conditions when querying a normal collection, you can use context variables of the workflow.
 
-### 字段值
+### Field Values
 
-与新增节点的字段赋值类似，可以使用流程上下文的变量，也可以手动填写静态值。
+Similar to the field assignment in the "Create Record" node, you can use variables from the workflow context or manually enter static values.
 
-注：工作流中更新节点更新的数据不会自动处理“最后修改人”数据，需要根据情况自行配置这个字段的值。
+Note: The update node in the workflow does not automatically handle the "Last Modified By" data; you need to configure the value of this field based on the situation.
 
-## 示例
+## Example
 
-例如当新增“文章”时，需要自动更新“文章分类”表的“文章数量”字段，可以使用更新节点来实现：
+For example, when a "Post" created, the "Post Category" collection needs to be automatically updated with the "Post Count" field. This can be achieved using an update node:
 
-![更新节点_示例_节点配置](https://static-docs.nocobase.com/98e0f941c57275fc835f08260d0b2e86.png)
+![Update Node_Example_Node Configuration](https://static-docs.nocobase.com/98e0f941c57275fc835f08260d0b2e86.png)
 
-当工作流触发后，会自动更新“文章分类”表的“文章数量”字段为当前文章数量 +1。
+When the workflow is triggered, the "Post Count" field in the "Post Category" collection will automatically be updated to the current post count +1.

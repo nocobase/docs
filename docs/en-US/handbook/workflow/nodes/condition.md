@@ -1,43 +1,33 @@
-# 条件判断
+# Condition
 
-类型于编程语言中的 `if` 语句，根据配置条件判断的结果，决定后续流程的走向。
+Similar to the `if` statement in programming languages, the condition node determines the direction of the subsequent flow based on the result of the configured condition.
 
-## 创建节点
+## Creating a Node
 
-条件判断有两种模式，分别是“‘是’则继续”和“‘是’和‘否’分别继续”，在创建节点时需要选择其中一种模式，之后在节点的配置中不能修改。
+There are two modes for condition: "Continue if 'true'" and "Continue if 'true' or 'false'". When creating the node, you need to choose one of these modes, and it cannot be changed in the node's configuration afterward.
 
-![条件判断_模式选择](https://static-docs.nocobase.com/3de27308c1179523d8606c66bf3a5fb4.png)
+![Mode Selection for Condition](https://static-docs.nocobase.com/3de27308c1179523d8606c66bf3a5fb4.png)
 
-“‘是’则继续”的模式下，当条件判断的结果为“是”时，流程将继续执行后续节点，否则流程将终止，并以失败的状态提前退出。
+In the "Continue if 'true'" mode, when the result of the condition judgment is "true", workflow will continue to execute the subsequent nodes; otherwise, the flow will terminate and exit prematurely with a failed status.
 
-![“是”则继续模式](https://static-docs.nocobase.com/0f6ae1afe61d501f8eb1f6dedb3d4ad7.png)
+![Continue if 'true' Mode](https://static-docs.nocobase.com/0f6ae1afe61d501f8eb1f6dedb3d4ad7.png)
 
-这种模式适合于不满足条件的情况下，流程不再继续的场景，例如使用“提交至工作流”表单按钮配置了提交订单的表单，但在订单对应商品库存不足的情况下，不继续生成订单，而是失败退出。
+This mode is suitable for scenarios where the flow should not continue if the condition is not met. For example, when configuring a form button to submit an order which bound with a "Pre-action event", if there is insufficient stock for the items in the order, the process should not continue to generate the order but instead fail and exit.
 
-“‘是’和‘否’分别继续”的模式下，条件节点后续会产生两条分支流程，分别对应条件判断的结果为“是”和“否”时的流程，两条分支流程可以分别配置后续节点，在任意分支执行完毕后，再自动汇合到条件节点所在的上级分支，继续执行之后的节点。
+In the "Continue if 'true' or 'false'" mode, the condition node will produce two branches of the flow, corresponding to the scenarios where the condition judgment results are "true" and "false". Each branch can have subsequent nodes configured separately. After either branch completes execution, it will automatically return back to the parent branch where the condition node is located and continue executing the subsequent nodes.
 
-![“是”和“否”分别继续模式](https://static-docs.nocobase.com/974a1fcd8603629b64ffce6c55d59282.png)
+![Continue if 'true' or 'false' Mode](https://static-docs.nocobase.com/974a1fcd8603629b64ffce6c55d59282.png)
 
-这种模式适合于满足条件和不满足条件的情况下，流程需要分别执行不同的操作的场景，例如查询某条数据是否存在，不存在的时候新增，存在的时候更新。
+This mode is suitable for scenarios where different operations need to be performed depending on whether the condition is met or not. For example, checking if a piece of data exists, and if it doesn't, inserting it; if it does, updating it.
 
-## 节点配置
+## Node Configuration
 
-### 运算引擎
+### Calculation Engine
 
-目前支持三种引擎：
+Currently, three engines are supported:
 
-- **基础**：通过简单的双目计算和“与”、“或”分组，得到逻辑结果。
-- **Math.js**：计算 [Math.js](https://mathjs.org/) 引擎支持的表达式得到逻辑结果。
-- **Formula.js**：计算 [Formula.js](https://formulajs.info/) 引擎支持的表达式得到逻辑结果。
+- **Basic**: Obtains logical results through simple binary calculations and grouping with "AND" and "OR".
+- **Math.js**: Computes logical results from expressions supported by the [Math.js](https://mathjs.org/) engine.
+- **Formula.js**: Computes logical results from expressions supported by the [Formula.js](https://formulajs.info/) engine.
 
-三种计算中均可以使用流程上下文的变量，用作计算的操作数。
-
-## 示例
-
-### “‘是’则继续”模式
-
-<!-- TODO -->
-
-### “‘是’和‘否’分别继续”模式
-
-<!-- TODO -->
+All three calculations can use variables from the workflow context as operands for computation.

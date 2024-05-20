@@ -1,31 +1,31 @@
-# 概述
+# Overview
 
-## 介绍
+## Introduction
 
-工作流插件是一个编排和配置自动化流程的强大工具，业界通常称为业务流程管理（BPM）工具。常用于基于数据模型的业务流程设计与编排，通过触发条件与执行流程节点编排实现业务流程的自动化流转。
+The Workflow plugin is a powerful tool commonly known as a Business Process Management (BPM) tool in the industry. It is used for designing and orchestration of business processes based on data models. By organizing the trigger conditions and flow nodes, it makes the business process running automatically.
 
-在 NocoBase 应用中，工作流插件针对无代码场景设计，使用该插件可以在 UI 界面上完成大部分常见业务的编排与数据处理，以动态地实现系统中的业务流程变更。
+In NocoBase applications, the Workflow plugin is designed for no-code scenarios, allowing users to orchestrate and process common business tasks through the UI. Therefore they can change the business processes in the system runtime dynamically.
 
-每个工作流通过一个触发器与若干节点编排而成，通过每个节点的特定功能，描述系统中对应事件产生后需要处理的业务逻辑。一个典型的工作流如下图所示：
+Each workflow consists of a trigger and several nodes. Through the specific functionality of each node, the workflow describes the business logic that needs to be processed when the corresponding event occurs in the system. A typical workflow is illustrated in the following diagram:
 
-![工作流示例](https://static-docs.nocobase.com/4511011beac54779cb68e66555ebf8a8.png)
+![Example of workflow](https://static-docs.nocobase.com/4511011beac54779cb68e66555ebf8a8.png)
 
-以上工作流的功能是：当用户提交一个订单表单后，系统自动检查订单中的商品库存，如果库存充足，则扣减库存，否则订单更新为无效。
+The functionality of the above workflow is as follows: When a user submits an order form, the system automatically checks the inventory of the products in the order. If there is sufficient stock, the inventory will be deducted; otherwise, the order will be updated as invalid.
 
-从更通用的角度，工作流在 NocoBase 应用中可以解决几大场景的问题：
+As a more general perspective, workflows in NocoBase applications can address the following scenarios:
 
-- **数据自动化处理**：比如在数据表中新增一条数据后，自动按预定流程处理数据，如计算触发数据后更新关联数据等。
-- **人工介入的业务流程**：当业务流程不能完全自动化决策时，可以通过人工类型的节点，将部分决策权交给人工处理，比如审批、复核等。人工处理的结果提交以后，再继续执行后续流程。
-- **与外部系统连接**：可以通过请求节点（或扩展各类调用第三方功能的节点）调用外部系统的 API 接口，实现和外部系统的数据交互。
+- **Data automation processing**: For example, automatically process data in a collection according to predefined workflows, such as calculating and updating associated data after a triggered event.
+- **Human-involved business processes**: When a business process cannot be fully automated, partial decision-making can be assigned to user through manual nodes, such as approval and review. After the results of processing are submitted by user, the subsequent processes continue.
+- **Integration with external systems**: API interfaces of external systems can be called through request nodes (or nodes that extend various types of third-party function calls) to achieve data interaction with external systems.
 
-## 安装
+## Installation
 
-工作流是 NocoBase 的内置插件，无需额外安装。
+Workflow is a built-in plugin in NocoBase and does not require additional installation.
 
-## 开始
+## Learn More
 
-- [快速开始](./quick-start.md)
-- [进阶使用](./advance.md)
-- [触发器](./triggers/index.md)
-- [节点](./nodes/index.md)
-- [开发指南](./development/index.md)
+- [Quick start](./quick-start.md)
+- [Advanced](./advance.md)
+- [Triggers](./triggers/index.md)
+- [Nodes](./nodes/index.md)
+- [Development Guide](./development/index.md)

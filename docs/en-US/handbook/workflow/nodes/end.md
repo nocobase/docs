@@ -1,25 +1,23 @@
-# 结束流程
+# End Process
 
-该节点执行时将立即结束当前执行的工作流，并以节点配置的状态结束。通常用于特定逻辑的流程控制，在满足某些逻辑条件后，跳出当前工作流，不再继续执行后续流程的处理。可类比编程语言中的 `return` 指令，用于退出当前执行的函数。
+When executed, this node will immediately end the current workflow execution and end it with the status as configured in the node. It is typically used for specific logic flow control, to exit the current workflow after meeting certain logical conditions, and not continue with subsequent processing. It can be compared to the `return` instruction in programming languages, used to exit the currently executing function.
 
-:::info{title=提示}
-在“请求拦截”类型的流程中使用时，会导致对发起的请求进行拦截。详情请参考[“请求拦截”的使用说明](../triggers/pre-action)。
-:::
+## Creating a Node
 
-## 创建节点
+In the workflow configuration UI, click the plus ("+") button in the flow to add an "End Process" node:
 
-在工作流配置界面中，点击流程中的加号（“+”）按钮，添加“结束流程”节点：
+![Add End Process](https://static-docs.nocobase.com/672186ab4c8f7313dd3cf9c880b524b8.png)
 
-![结束流程_添加](https://static-docs.nocobase.com/672186ab4c8f7313dd3cf9c880b524b8.png)
+## Node Configuration
 
-## 节点配置
+![End Process Node Configuration](https://static-docs.nocobase.com/bb6a597f25e9afb72836a14a0fe0683e.png)
 
-![结束流程_节点配置](https://static-docs.nocobase.com/bb6a597f25e9afb72836a14a0fe0683e.png)
+### End Status
 
-### 结束状态
+The end status will affect the final status of the execution plan of the workflow. It can be configured as "Success" or "Failure". When the workflow reaches this node, it will immediately exit with the configured status.
 
-结束状态将影响该工作流执行计划的最终状态，可配置为“成功”或“失败”。当流程执行到该节点时，会以配置的状态立即退出。
+:::info{title=Note}
+When used in workflows of the "Pre-action" type, it will intercept the action requests. For more details, please refer to the ["Pre-action" usage instructions](../triggers/pre-action).
 
-:::info{title=提示}
-在“请求拦截”类型的流程中使用时，除了会导致对发起的请求进行拦截，结束状态的配置还会影响“响应消息”在该类型流程中反馈信息的状态。
+Besides intercepting the action requests, the configuration of the end status will also affect the status of the feedback information in the "Response Message" in this type of workflow.
 :::

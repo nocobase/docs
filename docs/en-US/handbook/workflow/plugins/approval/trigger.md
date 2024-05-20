@@ -1,4 +1,4 @@
-# 审批触发器
+# Trigger Configuration
 
 ## 创建流程
 

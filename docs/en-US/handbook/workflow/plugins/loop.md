@@ -1,4 +1,4 @@
-# 循环
+# Loop
 
 <PluginInfo name="workflow-loop" link="/handbook/workflow/plugins/loop"></PluginInfo>
 

@@ -1,4 +1,4 @@
-# HTTP 请求
+# HTTP Request
 
 <PluginInfo name="workflow-request" link="/handbook/workflow/plugins/request"></PluginInfo>
 

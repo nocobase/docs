@@ -1,4 +1,4 @@
-# 触发器配置
+# Trigger Configuration
 
 ## 创建触发器
 

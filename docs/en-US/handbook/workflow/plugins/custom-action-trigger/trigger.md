@@ -1,4 +1,4 @@
-# 触发器
+# Trigger Configuration
 
 ## 创建工作流
 
