@@ -18,9 +18,9 @@
 分为新增、改进、修复三块内容，内容格式：
 
 ```md
-## <title> ([#<pr-number>(<pr-url>)]) <!-- 如果没有 pr 可以不写 -->
+## <scope>：<title> ([#<pr-number>(<pr-url>)]) <!-- 如果没有 pr 可以不写 -->
 
-<description> <!-- 如果描述可以不写 -->
+<description> <!-- 没有描述可以不写 -->
 
 ![](<img-url>) <!-- 截图必须有，尺寸为 1440x900 -->
 ```
@@ -33,7 +33,7 @@
 
 ![](https://static-docs.nocobase.com/202405191513995.png)
 
-### 这也是一个新功能的例子 ([#4260](https://github.com/nocobase/nocobase/pull/4260))
+### 插件：LDAP 认证 ([#4260](https://github.com/nocobase/nocobase/pull/4260))
 
 支持用户使用 LDAP 服务器账号密码登录 NocoBase，详情参考 [认证：LDAP](/handbook/auth-ldap) 文档。
 
