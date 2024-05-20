@@ -8,7 +8,7 @@
 
 本示例会有一个配置页面，然后配置页面里面有一个详情链接，点击详情链接会跳转到一个新的页面。
 
-本篇内容不会对内容过多开发，仅用于演示如何新增一个插件配置页面，具体的配置页面内容和逻辑可参考 Plugin Settings 插件示例（TODO） 文档。
+本篇内容不会对内容过多开发，仅用于演示如何新增一个插件配置页面，具体的配置页面内容和逻辑可参考 [Plugin Settings 插件示例](/plugin-samples/plugin-settings) 文档。
 
 本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-add-setting-page-layout-routes) 中查看。
 

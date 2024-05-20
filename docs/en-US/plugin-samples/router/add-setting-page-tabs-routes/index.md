@@ -8,7 +8,7 @@ The plugin requires multiple configuration pages, with each page corresponding t
 
 Assuming we integrate with a third-party email service and need to configure the email service token. At the same time, we also need a configuration page to set up email service templates. In this case, we need a configuration page with two tabs.
 
-This document does not go into much detail about the content development. It is only used to demonstrate how to add a plugin configuration page. For specific configuration page content and logic, please refer to the Plugin Settings plugin example (TODO) documentation.
+This document does not go into much detail about the content development. It is only used to demonstrate how to add a plugin configuration page. For specific configuration page content and logic, please refer to the [Plugin Settings plugin example](/plugin-samples/plugin-settings) documentation.
 
 You can find the complete example code for this document in the [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-add-setting-page-tabs-routes) repository.
 
