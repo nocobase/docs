@@ -8,7 +8,7 @@ The plugin requires multiple configuration pages, and some pages are not under [
 
 This example will have a configuration page, and inside the configuration page, there will be a detail link that, when clicked, will navigate to a new page.
 
-This document will not go into much detail about the content development. It is only used to demonstrate how to add a plugin configuration page. For specific content and logic of the configuration page, please refer to the Plugin Settings plugin example (TODO) documentation.
+This document will not go into much detail about the content development. It is only used to demonstrate how to add a plugin configuration page. For specific content and logic of the configuration page, please refer to the [Plugin Settings plugin example](/plugin-samples/plugin-settings) documentation.
 
 You can find the complete example code for this document in the [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-add-setting-page-layout-routes) repository.
 

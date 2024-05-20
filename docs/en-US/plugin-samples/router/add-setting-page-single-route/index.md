@@ -8,7 +8,7 @@ The plugin requires a simple configuration page with only one route.
 
 Assuming we integrate with a third-party email service and need to configure the email service token, we need a configuration page.
 
-This document will not go into too much development detail, but only demonstrate how to add a plugin configuration page. For specific configuration page content and logic, please refer to the Plugin Settings plugin example (TODO) documentation.
+This document will not go into too much development detail, but only demonstrate how to add a plugin configuration page. For specific configuration page content and logic, please refer to the [Plugin Settings plugin example](/plugin-samples/plugin-settings) documentation.
 
 You can view the complete example code for this document in the [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-add-setting-page-single-route) repository.
 

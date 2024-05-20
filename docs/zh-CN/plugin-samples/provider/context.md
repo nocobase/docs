@@ -69,7 +69,7 @@ export const useFeature = (feature: string) => {
 
 需要注意 `children` 别忘记渲染出来。
 
-关于公告的配置和数据，可以参考 [插件表单配置页面](/plugin-samples/plugin-settings/form) 示例说明，这里只使用 Mock 数据。
+关于 `features` 的配置和数据，可以参考 [插件表单配置页面](/plugin-samples/plugin-settings/form) 示例说明，这里只使用 Mock 数据。
 
 ### 第 2 步：注册到系统中
 
