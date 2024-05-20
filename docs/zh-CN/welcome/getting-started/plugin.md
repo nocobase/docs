@@ -4,6 +4,10 @@
 
 这个办法非常简单，但需要一个一个添加、激活、更新。
 
+:::warning{title="注意"}
+通过界面安装与升级的方式不适合共享代码的多应用场景。
+:::
+
 ### 1. 获取插件包
 
 - 如果是 NocoBase 提供的商业插件，请前往 [service.nocobase.com](https://service.nocobase.com/) 下载；
