@@ -65,7 +65,8 @@ export default [
         title: 'Release notes',
         'title.zh-CN': '更新日志',
         children: [
-          '/welcome/release/20240519-changelog',
+          '/welcome/changelog/20240519',
+          // '/welcome/release/20240519-changelog',
           '/welcome/release/v1001-changelog',
           '/welcome/release/v0210-changelog',
           '/welcome/release/v0200-changelog',
