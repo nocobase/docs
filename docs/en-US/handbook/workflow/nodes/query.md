@@ -12,15 +12,18 @@ In the workflow configuration UI, click the plus ("+") button in the workflow an
 
 ## Node Configuration
 
-![Query Node_Node Configuration](https://static-docs.nocobase.com/dbec23f35e2d96b5287b3988705fb829.png)
+![Query Node_Node Configuration](https://static-docs.nocobase.com/20240520131324.png)
 
 ### Collection
 
 Select the collection to query record from.
 
-### Query Mode
+### Result type
 
-After checking "Allow multiple data results", all data that meets the conditions will be queried; otherwise, only the first data that meets the conditions will be queried. If "Allow multiple data results" is checked, the result of the query node will be an array type.
+There are two result types: "Single Data" and "Multiple record":
+
+- Single record: The result will be an object of the first matching record only, or null if no matched record.
+- Multiple records: The result will be an array containing matched records, or an empty one if no matching records. This can be used to be processed in a loop node.
 
 ### Filter Conditions
 
