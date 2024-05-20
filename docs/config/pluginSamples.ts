@@ -123,9 +123,9 @@ export default [
         link: '/plugin-samples/schema-initializer',
       },
       {
-        title: 'Global Content',
-        'title.zh-CN': '向已有的 Add block 里添加新子项',
-        link: '/plugin-samples/schema-initializer/add-item-to-block',
+        title: 'Add New Block',
+        'title.zh-CN': '新增 Block',
+        link: '/plugin-samples/schema-initializer/block',
       },
     ]
   }

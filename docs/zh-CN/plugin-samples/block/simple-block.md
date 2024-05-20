@@ -2,13 +2,13 @@
 
 ## 场景说明
 
-Nocobase 有很多 `Add block` 按钮用于向界面添加区块，但是目前已有的区块类型不一定满足我们的需求，我们需要向已有的 `Add block` 里添加子项用于创建新的区块。
+NocoBase 有很多 `Add block` 按钮用于向界面添加区块，但是目前已有的区块类型不一定满足我们的需求，我们需要向已有的 `Add block` 里添加子项用于创建新的区块。
 
 ## 示例说明
 
 我们基于 ant-design 的 [Carousel](https://ant.design/components/carousel) 组件创建一种新的区块类型，然后向已有的 `Add block` 里添加这个新的区块类型。
 
-本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-add-initiaizer-item-to-block) 中查看。
+本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-add-initializer-item-to-block) 中查看。
 
 TODO：效果展示
 

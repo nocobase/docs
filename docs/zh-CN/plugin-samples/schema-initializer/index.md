@@ -9,7 +9,6 @@
 
 根据以上场景，我们提供了如下示例：
 
-- [向已有的 Add block 里添加新子项](/plugin-samples/schema-initializer/add-item-to-block)
-- [向已有的 Configure actions 里添加新子项](/plugin-samples/schema-initializer/add-item-to-actions)
-- [复用已有的 Initializer 子项](/plugin-samples/schema-initializer/reuse-existing-item)
-- [创建并使用新的 Initializer](/plugin-samples/schema-initializer/create-new)
+- [向已有的 Add block 里添加新子项](/plugin-samples/schema-initializer/block)
+- [向已有的 Configure actions 里添加新子项](/plugin-samples/schema-initializer/action)
+- [创建并使用新的 Initializer](/plugin-samples/schema-initializer/new-initializer)
