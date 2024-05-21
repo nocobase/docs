@@ -9,6 +9,8 @@
 
 根据以上场景，我们提供了如下示例：
 
-- [向已有的 Add block 里添加新子项](/plugin-samples/schema-initializer/block)
-- [向已有的 Configure actions 里添加新子项](/plugin-samples/schema-initializer/action)
+- [添加简单区块 Simple Block](/plugin-samples/schema-initializer/simple-block)
+- [添加数据区块 Data Block](/plugin-samples/schema-initializer/data-block)
+- [添加复杂场景的数据区块 Data Block](/plugin-samples/schema-initializer/complex-data-block)
+- [添加操作按钮 Action](/plugin-samples/schema-initializer/action)
 - [创建并使用新的 Initializer](/plugin-samples/schema-initializer/new-initializer)

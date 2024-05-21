@@ -2,11 +2,20 @@
 
 ## 场景说明
 
-如果新创建的区块是一个复杂的数据区块，那么它内部可能包含多个动态添加的部分，我们就需要创建新的 Schema Initializer 来实现。
+如果新创建的区块是一个复杂的数据区块，那么它内部可能包含多个动态添加的部分，例如 `Table` 区块中的 `Configure actions` 对应的 initializer 和 `Configure columns` 对应的 initializer。
+
+TODO：截图
+
+我们就需要创建新的 Schema Initializer 实现内部动态添加的功能。
 
 ## 示例说明
 
-本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-add-initializer-item-to-actions) 中查看。
+本实例会创建一个 Demo 区块，内部也会包含两个动态添加的部分，一个是 `Configure actions` 对应的 initializer，另一个是 `Configure fields` 对应的 initializer。
+
+- `Configure fields`：会将对应数据表结构中的字段列出来，并且点击后将字段结构输出为 JSON 字符串
+- `Configure actions`：会注册一个 `Add new` 按钮和一个 `Refresh` 按钮，点击 `Add new` 会打开一个空的弹窗，点击 `Refresh` 会重新请求数据
+
+本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-initializer-new) 中查看。
 
 TODO：效果展示
 
@@ -24,8 +33,8 @@ yarn nocobase install
 然后初始化一个插件，并添加到系统中：
 
 ```bash
-yarn pm create @nocobase-sample/plugin-add-initializer-item-to-actions
-yarn pm enable @nocobase-sample/plugin-add-initializer-item-to-actions
+yarn pm create @nocobase-sample/plugin-initializer-new
+yarn pm enable @nocobase-sample/plugin-initializer-new
 ```
 
 然后启动项目即可：
@@ -38,280 +47,188 @@ yarn dev
 
 ## 功能实现
 
-### 1. 实现新的区块类型
+### 1. 创建一个新的区块类型
 
-首先我们新建 `packages/plugins/@nocobase-sample/plugin-add-initializer-item-to-actions/src/client/CarouselBlock.tsx` 文件，其内容如下：
+我们参考 [向已有的 Add block 里添加新子项](/plugin-samples/schema-initializer/block) 迅速创建一个新的区块类型。
+
+首先我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-new/src/client/JsonBlock.tsx` 文件：
 
 ```tsx | pure
-import React, { FC } from 'react';
-import { Carousel, Result } from 'antd';
-import { withDynamicSchemaProps } from '@nocobase/client';
+import React from 'react';
+import { ISchema, SchemaInitializerItemType, SchemaSettings, useSchemaInitializer } from '@nocobase/client'
 
-export interface CarouselBlockProps {
-  images: { url: string; title: string }[];
-  /**
-   * @default 300
-   */
-  height?: number;
+export const JsonBlock = () => {
+  return <div>JSON Block</div>
 }
 
-export const CarouselBlock: FC<{ images: any[], height?: number }> = withDynamicSchemaProps(({ images, height = 300 }) => {
-  return (images && images.length) ? (
-    <Carousel>
-      {images.map((image) => (
-        <div>
-          <img key={image.title} src={image.url} alt={image.title} style={{ height, width: '100%', objectFit: 'cover', display: 'inline-block' }} />
-        </div>
-      ))}
-    </Carousel>
-  ) : <Result status='404' />
-}, { displayName: 'CarouselBlock' })
-```
+export const JsonBlockSettings = new SchemaSettings({
+  name: 'blockSettings:json',
+  items: [
+    {
+      name: 'remove',
+      type: 'remove',
+    }
+  ]
+})
 
-`CarouselBlock` 是一个基于 ant-design 的 `Carousel` 组件实现的新的区块类型，接受 `images` 和 `height` 两个参数。
+const jsonBlockSchema: ISchema = {
+  type: 'void',
+  'x-decorator': 'CardItem',
+  'x-component': 'JsonBlock',
+  'x-settings': JsonBlockSettings.name
+};
 
-需要注意其需要被 [withDynamicSchemaProps](/development/client/ui-schema/what-is-ui-schema#x-component-props-和-x-use-component-props) 包裹，这样就可以接受动态的参数了。
-
-### 2. 定义 Schema Initializer Item
-
-我们继续修改 `packages/plugins/@nocobase-sample/plugin-add-initializer-item-to-actions/src/client/CarouselBlock.tsx` 文件，添加 `CarouselBlock` 的 Schema Initializer Item：
-
-```ts | pure
-import { SchemaInitializerItemType, useSchemaInitializer } from '@nocobase/client';
-
-export const CarouselInitializerItem: SchemaInitializerItemType = {
+export const jsonInitializerItem: SchemaInitializerItemType = {
   type: 'item',
-  name: 'CarouselBlock',
-  icon: 'PlayCircleOutlined',
+  name: 'JsonBlock',
+  icon: 'CodeOutlined',
   useComponentProps() {
     const { insert } = useSchemaInitializer();
     return {
-      title: 'Carousel',
+      title: 'Json',
       onClick: () => {
-        const carouselBlockSchema: ISchema = {
-          type: 'void',
-          'x-decorator': 'CardItem',
-          'x-component': 'CarouselBlock',
-        };
-
-        insert(carouselBlockSchema);
+        insert(jsonBlockSchema);
       },
     };
   },
 }
 ```
 
-- `type`：类型，这里是 `item`，表示是一个文本，其有点击事件，点击后可以插入一个新的 Schema
-- `name`：唯一标识符，用于区分不同的 Schema Item 和增删改查操作
-- `icon`：图标，更多 icon 可以参考 [Ant Design Icons](https://ant.design/components/icon)
-- `useComponentProps`：返回一个对象，包含 `title` 和 `onClick` 两个属性，`title` 是显示的文本，`onClick` 是点击后的回调函数
-- [useSchemaInitializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#useschemainitializer)：用于获取 `SchemaInitializerContext` 上下文，包含了一些操作方法
-
-更多关于 Schema Item 的定义可以参考 [Schema Initializer Item](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types) 文档。
-
-关于 `carouselBlockSchema` 的定义：
-
-- `type`：类型，这里是 `void`，表示没有任何数据
-- `x-decorator`：装饰器，这里是 [CardItem](https://client.docs.nocobase.com/components/card-item)，表示是一个卡片
-- `x-component`：组件，这里是 `CarouselBlock`，就是我们上面定义的新的区块类型
-
-更多关于 Schema 的说明请查看 [UI Schema](/development/client/ui-schema/what-is-ui-schema) 文档。
-
-### 4. 添加到页面 Add block 中
-
-系统中有很多个 `Add block` 按钮，但他们的 **name 是不同的**，如果我们需要添加到页面级别的 `Add block` 中，我们需要知道对应的 `name`。
-
-TODO：截图
-
-然后我们修改 `packages/plugins/@nocobase-sample/plugin-add-initializer-item-to-actions/src/client/index.tsx` 文件：
+然后修改 `packages/plugins/@nocobase-sample/plugin-initializer-new/src/client/index.tsx` 文件，导入并注册这个区块：
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
-import { CarouselBlock, CarouselInitializerItem } from './CarouselBlock';
+import { JsonBlock, JsonBlockSettings, jsonInitializerItem } from './JsonBlock'
 
-export class PluginAddInitializerItemToBlockClient extends Plugin {
+export class PluginInitializerNewClient extends Plugin {
   async load() {
-    this.app.addComponents({ CarouselBlock })
-    this.app.schemaInitializerManager.addItem('page:addBlock', `otherBlocks.${CarouselInitializerItem.name}`, CarouselInitializerItem)
+    this.app.addComponents({ JsonBlock });
+
+    this.app.schemaInitializerManager.addItem('page:addBlock', `otherBlocks.${jsonInitializerItem.name}`, jsonInitializerItem)
+
+    this.app.schemaSettingsManager.add(JsonBlockSettings);
   }
 }
 
-export default PluginAddInitializerItemToBlockClient;
+export default PluginInitializerNewClient;
 ```
 
-上述代码首先将 `CarouselBlock` 组件注册到系统中，这样前面 `carouselBlockSchema` 定义的 `x-component: 'CarouselBlock'` 才能找到对应的组件，更多详细解释可以查看 [全局注册 Component 和 Scope](/plugin-samples/component-and-scope/global)。
+TODO：视频演示添加新区块
 
-然后使用 [app.schemaInitializerManager.addItem](https://client.docs.nocobase.com/core/ui-schema/schema-initializer-manager#schemainitializermanageradditem) 将 `CarouselInitializerItem` 添加对应 Initializer 子项中，其中 `page:addBlock` 是页面上 `Add block` 的 name，`otherBlocks` 是其父级的 name。
+### 2. 实现数据表结构的动态添加
 
-然后我们 hover `Add block` 按钮，就可以看到 `Carousel` 这个新的区块类型了。
+目前是将区块注册到了 `otherBlocks` 中，我们需要将区块注册到 `Data blocks` 中，并且根据数据表结构动态添加子项。
 
-TODO：效果展示
 
-然后点击 `Carousel`，就可以添加一个新的 `CarouselBlock` 区块了。
 
-TODO：截图
 
-### 5. 添加 Schema Settings
+### 3. 实现 `Configure fields` initializer
 
-目前的 `CarouselBlock` 区块是没有任何数据的，我们需要通过 Schema Settings 的能力做到可视化配置数据。
+#### 3.1 新建 `Configure fields` initializer
 
-我们继续修改 `packages/plugins/@nocobase-sample/plugin-add-initializer-item-to-actions/src/client/CarouselBlock.tsx` 文件：
+我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-new/src/client/configureFields.tsx` 文件：
 
 ```tsx | pure
-import { useFieldSchema } from '@formily/react'
-import { ISchema, SchemaInitializerItemType, SchemaSettings, useDesignable, useSchemaInitializer, withDynamicSchemaProps } from '@nocobase/client';
+import { Grid, SchemaInitializer, useSchemaInitializer } from "@nocobase/client";
 
-export const carouselSettings = new SchemaSettings({
-  name: 'blockSettings:carousel',
+export const configureFields = new SchemaInitializer({
+  wrap: Grid.wrap,
+  name: 'json:configureFields',
+  icon: 'SettingOutlined',
+  title: 'Configure fields',
   items: [
     {
-      name: 'images',
-      type: 'actionModal',
-      useComponentProps() {
-        const fieldSchema = useFieldSchema();
-        const { deepMerge } = useDesignable();
+      type: 'itemGroup',
+      name: 'fields',
+      title: 'Display fields',
+      useChildren() {
+        const { insert } = useSchemaInitializer();
 
-        const modalSchema: ISchema = {
-          type: 'object',
-          properties: {
-            images: {
-              title: 'Edit images',
-              type: 'string',
-              default: fieldSchema['x-component-props']?.images,
-              'x-decorator': 'FormItem',
-              'x-component': 'Upload.Attachment',
-              'x-component-props': {
-                action: 'attachments:create',
-                multiple: true,
-              },
-            },
-          },
-        }
-        return {
-          title: 'Edit images',
-          schema: modalSchema,
-          onSubmit({ images }: any) {
-            deepMerge({
-              'x-uid': fieldSchema['x-uid'],
-              'x-component-props': {
-                images,
-              },
-            });
+        return [
+          {
+            name: 'test',
+            type: 'item',
+            title: 'Test',
+            onClick() {
+              insert({
+                type: 'void',
+                'x-component': 'div',
+                'x-content': 'Test content'
+              })
+            }
           }
-        }
+        ]
       },
-    },
-    {
-      name: 'height',
-      type: 'actionModal',
-      useComponentProps() {
-        const fieldSchema = useFieldSchema();
-        const { deepMerge } = useDesignable();
-
-        const modalSchema: ISchema = {
-          type: 'object',
-          properties: {
-            height: {
-              title: 'Edit height',
-              type: 'number',
-              default: fieldSchema['x-component-props']?.height || 300,
-              'x-decorator': 'FormItem',
-              'x-component': 'InputNumber',
-            },
-          },
-        }
-        return {
-          title: 'Edit height',
-          schema: modalSchema,
-          onSubmit({ height }: any) {
-            deepMerge({
-              'x-uid': fieldSchema['x-uid'],
-              'x-component-props': {
-                height,
-              },
-            });
-          }
-        }
-      },
-    },
-    {
-      type: 'remove',
-      name: 'remove',
     }
   ]
 });
 ```
 
-我们总共定义了三个设置项：
+- [SchemaInitializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer)：用于创建一个 Schema Initializer 实例
+- `wrap`：布局包装器，它是一个函数，当点击 Item 时，Item 的 Schema 会自动传入，并返回处理后的 Schema。`Grid.wrap` 是将 Item Schema 包装在 `Col` 组件中，更多是说明参考 [Grid 组件](https://client.docs.nocobase.com/components/grid)
+- `icon`：图标，更多图标可参考 Ant Design [Icons](https://ant.design/components/icon/)
+- `title`：按钮标题
+- [items](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types)：按钮下的子项
+  - `type: 'itemGroup'`：子项类型，用于包装多个子项
+  - `name: 'fields'`：子项名称
+  - `title: 'Display fields'`：子项标题
+  - `useChildren`：子项的子项，返回一个数组，数组中的每一项都是一个子项
 
-- `images`：编辑图片，[actionModal](https://client.docs.nocobase.com/core/ui-schema/schema-settings#built-in-components-and-types) 类型，可以上传多个图片
-- `height`：编辑高度，[actionModal](https://client.docs.nocobase.com/core/ui-schema/schema-settings#built-in-components-and-types) 类型，可以编辑高度
-- `remove`：删除区块，[remove](https://client.docs.nocobase.com/core/ui-schema/schema-settings#schemasettingsremove-1) 类型 点击后可以删除当前区块
+目前只是简单的添加了一个 `Test` 字段，点击后会在页面上显示 `Test content`。
 
-关于 SchemaSettings 更多详细的说明可以查看 [Schema Settings](/plugin-samples/schema-settings) 文档，这里就不做详细解释了。
+#### 3.2 注册 `Configure fields` initializer
 
-然后我们修改 `carouselBlockSchema` 的定义：
+然后修改 `packages/plugins/@nocobase-sample/plugin-initializer-new/src/client/index.tsx` 文件，导入并注册这个 initializer：
 
-```diff
-export const CarouselInitializerItem: SchemaInitializerItemType = {
-  type: 'item',
-  name: 'CarouselBlock',
-  icon: 'PlayCircleOutlined',
-  useComponentProps() {
-    const { insert } = useSchemaInitializer();
-    return {
-      title: 'Carousel',
-      onClick: () => {
-        const carouselBlockSchema: ISchema = {
-          type: 'void',
-          'x-decorator': 'CardItem',
-          'x-component': 'CarouselBlock',
-+         'x-settings': carouselSettings.name,
-        };
+```tsx | pure
+import { configureFields } from './configureFields'
 
-        insert(carouselBlockSchema);
-      },
-    };
-  },
-}
-```
-
-然后修改 `packages/plugins/@nocobase-sample/plugin-add-initializer-item-to-actions/src/client/index.tsx`，将 `carouselSettings` 注册到系统中：
-
-```diff
-export class PluginAddInitializerItemToBlockClient extends Plugin {
+export class PluginInitializerNewClient extends Plugin {
   async load() {
-    this.app.schemaInitializerManager.addItem('page:addBlock', `otherBlocks.${CarouselInitializerItem.name}`, CarouselInitializerItem)
-    this.app.addComponents({ CarouselBlock })
-+   this.app.schemaSettingsManager.add(carouselSettings)
+    this.app.schemaInitializerManager.add(configureFields)
   }
 }
 ```
 
-然后我们重新添加一个 `CarouselBlock` 区块，就可以看到右上角有一个 `Settings` 按钮了，点击后就可以编辑图片和高度了。
+#### 3.3 修改 `jsonBlockSchema` 区块
 
-TODO：视频
-
-### 5. 添加到弹窗 Add block 中
-
-我们不仅需要将其添加到页面级别的 `Add block` 中，还需要将其添加到弹窗级别的 `Add block` 中。
-
-我们先获取弹窗中 `Add block` 的 name，然后修改 `packages/plugins/@nocobase-sample/plugin-add-initializer-item-to-actions/src/client/index.tsx` 文件：
+我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-new/src/client/JsonBlock.tsx` 文件，将 `jsonBlockSchema` 区块修改为：
 
 ```diff
-export class PluginAddInitializerItemToBlockClient extends Plugin {
-  async load() {
-    this.app.schemaInitializerManager.addItem('page:addBlock', `otherBlocks.${CarouselInitializerItem.name}`, CarouselInitializerItem)
-    this.app.schemaInitializerManager.addItem('popup:addNew:addBlock', `otherBlocks.${CarouselInitializerItem.name}`, CarouselInitializerItem)
-    this.app.addComponents({ CarouselBlock })
-    this.app.schemaSettingsManager.add(carouselSettings)
-  }
+const jsonBlockSchema: ISchema = {
+  type: 'void',
+  'x-decorator': 'CardItem',
+  'x-component': 'JsonBlock',
+  'x-settings': JsonBlockSettings.name,
++ properties: {
++   fields: {
++     type: 'void',
++     'x-component': 'Grid',
++     'x-initializer': 'json:configureFields',
++  }
++ }
+};
+```
+
+我们在 `jsonBlockSchema` 中添加了一个 `fields` 字段，它的组件是 `Grid`，并且指定了 `x-initializer` 为 `json:configureFields`，因为 `Grid` 内置了 [useSchemaInitializerRender()](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#useschemainitializerrender) 的渲染逻辑，所以我们可以直接使用，如果是一个自定义的组件，需要自己通过 `useSchemaInitializerRender()` 实现渲染逻辑。
+
+#### 3.4 修改 `JsonBlock` 组件
+
+我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-new/src/client/JsonBlock.tsx` 文件，将 `JsonBlock` 组件修改为：
+
+```tsx | pure
+export const JsonBlock = ({ children }) => {
+  return <div>{children}</div>
 }
 ```
 
-TODO：截图
+`properties` 的内容会被传入到 `JsonBlock` 组件的 `children` 中，所以我们直接将 `children` 渲染出来即可。
 
-如果需要更多的 `Add block`，可以继续添加，只需要知道对应的 `name` 即可。
+TODO：效果演示
+
+#### 3.5 读取数据表结构
+
+### 3. 实现 `Configure actions` initializer
 
 ## 打包和上传到生产环境
 
@@ -326,8 +243,8 @@ yarn build
 如果是使用的 `create-nocobase-app` 创建的项目，可以直接执行：
 
 ```bash
-yarn build @nocobase-sample/plugin-add-initializer-item-to-actions --tar
+yarn build @nocobase-sample/plugin-initializer-new --tar
 ```
 
-这样就可以看到 `storage/tar/@nocobase-sample/plugin-add-initializer-item-to-actions.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
+这样就可以看到 `storage/tar/@nocobase-sample/plugin-initializer-new.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
 

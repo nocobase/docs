@@ -1,12 +1,12 @@
-# 向已有的 Add block 里添加子项
+# 添加新的简单区块 Simple Block
 
 ## 场景说明
 
-NocoBase 有很多 `Add block` 按钮用于向界面添加区块。
+NocoBase 有很多 `Add block` 按钮用于向界面添加区块。其中有些和数据表有关系的被成为数据区块 `Data Block`，有些和数据表无关的被称为简单区块 `Simple Block`。
 
 TODO：目前已有的图片的截图
 
-但是目前已有的区块类型不一定满足我们的需求，我们需要向已有的 `Add block` 里添加子项用于创建新的区块类型。
+但是目前已有的区块类型不一定满足我们的需求，我们就需要根据需求自定开发一些区块，本篇文章就是针对简单区块 `Simple Block` 进行说明。
 
 ## 示例说明
 
@@ -14,7 +14,7 @@ TODO：目前已有的图片的截图
 
 本实例主要为了演示 initializer 的使用，更多关于区块扩展可以查看 [区块扩展](/plugin-samples/block) 文档。
 
-本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-initializer-block) 中查看。
+本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-initializer-simple-block) 中查看。
 
 TODO：效果展示
 
@@ -32,8 +32,8 @@ yarn nocobase install
 然后初始化一个插件，并添加到系统中：
 
 ```bash
-yarn pm create @nocobase-sample/plugin-initializer-block
-yarn pm enable @nocobase-sample/plugin-initializer-block
+yarn pm create @nocobase-sample/plugin-initializer-simple-block
+yarn pm enable @nocobase-sample/plugin-initializer-simple-block
 ```
 
 然后启动项目即可：
@@ -48,7 +48,7 @@ yarn dev
 
 ### 1. 实现 Image 区块类型
 
-首先我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block/src/client/ImageBlock.tsx` 文件，其内容如下：
+首先我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-simple-block/src/client/ImageBlock.tsx` 文件，其内容如下：
 
 ```tsx | pure
 import React, { FC } from 'react';
@@ -67,7 +67,7 @@ export const ImageBlock = () => {
 
 ### 2. 定义 Schema Initializer Item
 
-我们继续修改 `packages/plugins/@nocobase-sample/plugin-initializer-block/src/client/ImageBlock.tsx` 文件，添加 `ImageBlock` 的 Schema Initializer Item：
+我们继续修改 `packages/plugins/@nocobase-sample/plugin-initializer-simple-block/src/client/ImageBlock.tsx` 文件，添加 `ImageBlock` 的 Schema Initializer Item：
 
 ```ts | pure
 import { ISchema, SchemaInitializerItemType, useSchemaInitializer } from '@nocobase/client';
@@ -143,13 +143,13 @@ const imageBlockSchema: ISchema = {
 
 TODO：截图
 
-然后我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-block/src/client/index.tsx` 文件：
+然后我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-simple-block/src/client/index.tsx` 文件：
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
 import { ImageBlock, imageBlockSettings, imageInitializerItem } from './ImageBlock';
 
-export class PluginInitializerBlockClient extends Plugin {
+export class PluginInitializerSimpleBlockClient extends Plugin {
   async load() {
     this.app.addComponents({ ImageBlock })
     this.app.schemaSettingsManager.add(imageBlockSettings)
@@ -158,7 +158,7 @@ export class PluginInitializerBlockClient extends Plugin {
   }
 }
 
-export default PluginInitializerBlockClient;
+export default PluginInitializerSimpleBlockClient;
 ```
 
 上述代码首先将 `ImageBlock` 组件注册到系统中，这样前面 `imageBlockSchema` 定义的 `x-component: 'ImageBlock'` 才能找到对应的组件，更多详细解释可以查看 [全局注册 Component 和 Scope](/plugin-samples/component-and-scope/global)。
@@ -183,10 +183,10 @@ TODO：截图
 
 TODO：获取 name
 
-然后修改 `packages/plugins/@nocobase-sample/plugin-initializer-block/src/client/index.tsx` 文件：
+然后修改 `packages/plugins/@nocobase-sample/plugin-initializer-simple-block/src/client/index.tsx` 文件：
 
 ```diff
-export class PluginInitializerBlockClient extends Plugin {
+export class PluginInitializerSimpleBlockClient extends Plugin {
   async load() {
     this.app.addComponents({ ImageBlock })
     this.app.schemaSettingsManager.add(imageBlockSettings)
@@ -210,10 +210,10 @@ TODO：截图
 
 TODO：获取 name
 
-然后修改 `packages/plugins/@nocobase-sample/plugin-initializer-block/src/client/index.tsx` 文件：
+然后修改 `packages/plugins/@nocobase-sample/plugin-initializer-simple-block/src/client/index.tsx` 文件：
 
 ```diff
-export class PluginInitializerBlockClient extends Plugin {
+export class PluginInitializerSimpleBlockClient extends Plugin {
   async load() {
     this.app.addComponents({ ImageBlock })
     this.app.schemaSettingsManager.add(imageBlockSettings)
@@ -240,7 +240,7 @@ yarn build
 如果是使用的 `create-nocobase-app` 创建的项目，可以直接执行：
 
 ```bash
-yarn build @nocobase-sample/plugin-initializer-block --tar
+yarn build @nocobase-sample/plugin-initializer-simple-block --tar
 ```
 
-这样就可以看到 `storage/tar/@nocobase-sample/plugin-initializer-block.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
+这样就可以看到 `storage/tar/@nocobase-sample/plugin-initializer-simple-block.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
