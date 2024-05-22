@@ -46,6 +46,12 @@ yarn dev
 
 ## 功能实现
 
+在实现本示例之前，我们需要先了解一些基础知识：
+
+- [SchemaInitializer 教程](/development/client/ui-schema/initializer)：用于向界面内添加各种区块、字段、操作等
+- [SchemaInitializer API](https://client.docs.nocobase.com/core/ui-schema/schema-initializer)：用于向界面内添加各种区块、字段、操作等
+- [UI Schema](/development/client/ui-schema/what-is-ui-schema)：用于定义界面的结构和样式
+- [Designable 设计器](/development/client/ui-schema/designable)：用于修改 Schema
 
 ### 1. 实现 InfoBlock 组件
 

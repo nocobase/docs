@@ -12,4 +12,5 @@
 - [添加简单区块 Simple Block](/plugin-samples/schema-initializer/simple-block)
 - [添加数据区块 Data Block](/plugin-samples/schema-initializer/data-block)
 - [添加按钮到已有 Initializer](/plugin-samples/schema-initializer/action)
-- [实现数据字段 Initializer](/plugin-samples/schema-initializer/configure-fields)
+- [数据字段 Initializer](/plugin-samples/schema-initializer/configure-fields)
+- [配置操作 Initializer](/plugin-samples/schema-initializer/configure-actions)

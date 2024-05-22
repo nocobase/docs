@@ -42,6 +42,13 @@ yarn dev
 
 ## 功能实现
 
+在实现本示例之前，我们需要先了解一些基础知识：
+
+- [SchemaInitializer 教程](/development/client/ui-schema/initializer)：用于向界面内添加各种区块、字段、操作等
+- [SchemaInitializer API](https://client.docs.nocobase.com/core/ui-schema/schema-initializer)：用于向界面内添加各种区块、字段、操作等
+- [UI Schema](/development/client/ui-schema/what-is-ui-schema)：用于定义界面的结构和样式
+- [Designable 设计器](/development/client/ui-schema/designable)：用于修改 Schema
+
 ### 1. Copy 代码并修改插件名称
 
 前面已经说明本示例会在 [添加数据区块 Data Block](/plugin-samples/schema-initializer/data-block) 基础上继续实现，所以我们可以直接复制以下 2 个文件：
@@ -108,7 +115,7 @@ export const configureFields = new SchemaInitializer({
 ```tsx | pure
 import { configureFields } from './configureFields'
 
-export class PluginInitializerNewClient extends Plugin {
+export class PluginInitializerConfigureFieldsClient extends Plugin {
   async load() {
     this.app.schemaInitializerManager.add(configureFields)
   }
@@ -157,6 +164,8 @@ export const InfoBlock = ({ children }) => {
 TODO：效果演示
 
 ### 6. 读取数据表字段作为 `Configure fields` 的子项
+
+我们继续修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-fields/src/client/configureFields.tsx` 文件：
 
 ```tsx | pure
 interface GetFieldInitializerItemOptions {
@@ -215,7 +224,7 @@ TODO：效果演示
 
 ### 7. 实现 `switch` 的添加和删除
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-fields/src/client/configureFields.tsx` 文件，将 `onClick` 事件实现为：
+我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-fields/src/client/configureFields.tsx` 文件：
 
 ```diff
 + import { CollectionFieldOptions, ISchema, SchemaInitializer, SchemaInitializerItemType, SchemaSettings, useCollection, useDesignable, useSchemaInitializer } from "@nocobase/client";

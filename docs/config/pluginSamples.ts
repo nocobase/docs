@@ -139,8 +139,13 @@ export default [
       },
       {
         title: 'Configure fields',
-        'title.zh-CN': '实现数据字段 Initializer',
+        'title.zh-CN': '数据字段 Initializer',
         link: '/plugin-samples/schema-initializer/configure-fields',
+      },
+      {
+        title: 'Configure Actions',
+        'title.zh-CN': '配置操作 Initializer',
+        link: '/plugin-samples/schema-initializer/configure-actions',
       },
     ]
   }
