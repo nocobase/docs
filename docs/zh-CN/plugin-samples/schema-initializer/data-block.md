@@ -4,7 +4,7 @@
 
 NocoBase 有很多 `Add block` 按钮用于向界面添加区块。其中有些和数据表有关系的被成为数据区块 `Data Block`，有些和数据表无关的被称为简单区块 `Simple Block`。
 
-TODO：目前已有的图片的截图
+![img_v3_02b4_170eddb5-d3b4-461e-b74b-f83250941e5g](https://static-docs.nocobase.com/img_v3_02b4_170eddb5-d3b4-461e-b74b-f83250941e5g.jpg)
 
 但是目前已有的区块类型不一定满足我们的需求，我们就需要根据需求自定开发一些区块，本篇文章就是针对简单区块 `Data Block` 进行说明。
 
@@ -16,7 +16,9 @@ TODO：目前已有的图片的截图
 
 本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-initializer-data-block) 中查看。
 
-TODO：效果展示
+<video width="100%" controls="">
+  <source src="https://static-docs.nocobase.com/20240522-182547.mp4" type="video/mp4" />
+</video>
 
 ## 初始化插件
 
@@ -104,9 +106,17 @@ export const infoInitializerItem: SchemaInitializerItemType = {
 
 更多关于 Schema Initializer 的定义可以参考 [Schema Initializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer) 文档。
 
-TODO：点击效果。
-
 ### 3. 注册组件和 Schema Initializer Item
+
+系统中有很多个 `Add block` 按钮，但他们的 **name 是不同的**。
+
+![img_v3_02b4_049b0a62-8e3b-420f-adaf-a6350d84840g](https://static-docs.nocobase.com/img_v3_02b4_049b0a62-8e3b-420f-adaf-a6350d84840g.jpg)
+
+如果我们需要添加到页面级别的 `Add block` 中，我们需要知道对应的 `name`，我们可以通过 TODO 方式查看对应的 `name`。
+
+TODO：截图
+
+通过上图可以看到页面级别的 `Add block` 对应的 name 为 `page:addBlock`，`Data Blocks` 对应的 name 为 `dataBlocks`。
 
 然后我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-data-block/src/client/index.tsx` 文件：
 
@@ -124,7 +134,11 @@ export class PluginInitializerNewClient extends Plugin {
 export default PluginInitializerNewClient;
 ```
 
-然后我们就可以看到 `Info` 这个新的区块类型了，点击后看到控制台就有我们的输出了，其中 2 个重要的信息是 `item.name` 数据表名称 和 `item.dataSource` 数据表所属的数据源。
+<video width="100%" controls="">
+  <source src="https://static-docs.nocobase.com/20240522-183616.mp4" type="video/mp4" />
+</video>
+
+从视频中我们就可以看到 `Info` 这个新的区块类型了，点击后看到控制台就有我们的输出了，其中 2 个重要的信息是 `item.name` 数据表名称 和 `item.dataSource` 数据表所属的数据源。
 
 ### 4. 实现 infoBlockSchema
 
@@ -209,6 +223,10 @@ export class PluginInitializerDataBlockClient extends Plugin {
 
 然后我们点击 `Info` 区块，就可以看到一个新的信息区块了，里面显示的是 TODO。
 
+<video width="100%" controls="">
+  <source src="https://static-docs.nocobase.com/20240522-183846.mp4" type="video/mp4" />
+</video>
+
 ### 5. 实现 InfoBlock 组件
 
 我们继续修改 `packages/plugins/@nocobase-sample/plugin-initializer-data-block/src/client/InfoBlock.tsx` 文件：
@@ -228,12 +246,11 @@ export const InfoBlock = () => {
 
 DataBlockProvider 会将数据传递子节点，通过我们可以通过 [useCollection](https://client.docs.nocobase.com/core/data-source/collection-provider#usecollection) 获取当前数据表，通过 [useDataBlockRequest](https://client.docs.nocobase.com/core/data-block/data-block-request-provider#usedatablockrequest) 获取数据区块请求。
 
-
-TODO：截图效果
+![img_v3_02b4_82c6307a-44d4-422f-85b0-da16ea04a14g](https://static-docs.nocobase.com/img_v3_02b4_82c6307a-44d4-422f-85b0-da16ea04a14g.jpg)
 
 ### 6. 添加到更多的 Add block 中
 
-目前我们只添加到了 `page:addBlock` 中，我们可以添加到更多的地方，比如 `table:addBlock`、`mobile:addBlock` 等。
+目前我们只添加到了 `page:addBlock` 中，我们可以添加到更多的地方，比如 `table:addBlock`、`mobile:addBlock` 等，[添加新的简单区块 Simple Block](/plugin-samples/schema-initializer/simple-block#5-添加到弹窗-add-block-中) 已经说明了如何添加到更多的地方，这里我们只需要修改 `packages/plugins/@nocobase-sample/plugin-initializer-data-block/src/client/index.tsx` 文件：
 
 ```diff
 import { Plugin } from '@nocobase/client';
@@ -253,7 +270,9 @@ export class PluginInitializerDataBlockClient extends Plugin {
 export default PluginInitializerDataBlockClient;
 ```
 
-TODO：截图效果
+<video width="100%" controls="">
+  <source src="https://static-docs.nocobase.com/20240522-182547.mp4" type="video/mp4" />
+</video>
 
 ## 打包和上传到生产环境
 

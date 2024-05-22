@@ -4,7 +4,7 @@
 
 如果新创建的区块是一个复杂的数据区块，那么它内部可能包含多个动态添加的部分，其中重点就是通过 `Configure fields` 对应的 initializer 动态添加字段。例如 `Form` 区块，我们可以通过 `Configure fields` 来配置显示的字段。
 
-TODO：截图
+![img_v3_02b4_111734a2-755f-4100-949d-96803ad1912g](https://static-docs.nocobase.com/img_v3_02b4_111734a2-755f-4100-949d-96803ad1912g.jpg)
 
 ## 示例说明
 
@@ -12,7 +12,9 @@ TODO：截图
 
 本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-initializer-configure-fields) 中查看。
 
-TODO：效果展示
+<video width="100%" controls="">
+  <source src="https://static-docs.nocobase.com/20240522-190508.mp4" type="video/mp4" />
+</video>
 
 ## 初始化插件
 
@@ -161,7 +163,9 @@ export const InfoBlock = ({ children }) => {
 
 `properties` 的内容会被传入到 `InfoBlock` 组件的 `children` 中，所以我们直接将 `children` 渲染出来即可。
 
-TODO：效果演示
+<video width="100%" controls="">
+  <source src="https://static-docs.nocobase.com/20240522-190759.mp4" type="video/mp4" />
+</video>
 
 ### 6. 读取数据表字段作为 `Configure fields` 的子项
 
@@ -220,7 +224,7 @@ export const configureFields = new SchemaInitializer({
   - `type: 'switch'`：子项类型，[Switch 类型](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#type-switch--schemainitializerswitch)，其核心是要实现 `onClick` 方法，当点击后如果已经存在则删除，如果不存在则添加。
   - `onClick`：点击事件，我们这里暂时不实现，后续会实现。
 
-TODO：效果演示
+![img_v3_02b4_7d5c145e-cb15-4d93-9004-bde406e42a5g](https://static-docs.nocobase.com/img_v3_02b4_7d5c145e-cb15-4d93-9004-bde406e42a5g.jpg)
 
 ### 7. 实现 `switch` 的添加和删除
 
@@ -263,7 +267,6 @@ export const configureFields = new SchemaInitializer({
 - [useDesignable()](https://client.docs.nocobase.com/core/ui-schema/designable#usedesignable)：可以增删改查 Schema 的方法
 - [useSchemaInitializer()](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#useschemainitializer)：用于提供 SchemaInitializer 上下文
   - `insert`：用于插入 Schema。这里之所以使用 `useSchemaInitializer()` 所提供的 insert 方法，而不是 `useDesignable()` 提供的 insert 方法，是因为 Schema 是有层级的，`useSchemaInitializer()` 获取的是 `SchemaInitializer` 所在层级，而 `useDesignable()` 获取的是当前 Schema 所在层级，我们需要插入到 `SchemaInitializer` 所在层级的兄弟层，所以应该使用 `useSchemaInitializer()` 提供的 insert 方法。
-
 
 ```tsx | pure
 function getInfoItemSchema(collectionFieldName: string) {
@@ -370,7 +373,9 @@ export class PluginInitializerComplexDataBlockClient extends Plugin {
 }
 ```
 
-TODO：效果演示
+<video width="100%" controls="">
+  <source src="https://static-docs.nocobase.com/20240522-190508.mp4" type="video/mp4" />
+</video>
 
 ## 打包和上传到生产环境
 

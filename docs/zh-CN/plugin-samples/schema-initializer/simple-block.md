@@ -4,7 +4,7 @@
 
 NocoBase 有很多 `Add block` 按钮用于向界面添加区块。其中有些和数据表有关系的被成为数据区块 `Data Block`，有些和数据表无关的被称为简单区块 `Simple Block`。
 
-TODO：目前已有的图片的截图
+![img_v3_02b4_a4529308-62e3-4fa7-be4d-5dcae332c49g](https://static-docs.nocobase.com/img_v3_02b4_a4529308-62e3-4fa7-be4d-5dcae332c49g.jpg)
 
 但是目前已有的区块类型不一定满足我们的需求，我们就需要根据需求自定开发一些区块，本篇文章就是针对简单区块 `Simple Block` 进行说明。
 
@@ -16,7 +16,9 @@ TODO：目前已有的图片的截图
 
 本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-initializer-simple-block) 中查看。
 
-TODO：效果展示
+<video width="100%" controls="">
+  <source src="https://static-docs.nocobase.com/20240522-181816.mp4" type="video/mp4" />
+</video>
 
 ## 初始化插件
 
@@ -147,9 +149,15 @@ const imageBlockSchema: ISchema = {
 
 ### 4. 添加到页面 Add block 中
 
-系统中有很多个 `Add block` 按钮，但他们的 **name 是不同的**，如果我们需要添加到页面级别的 `Add block` 中，我们需要知道对应的 `name`。
+系统中有很多个 `Add block` 按钮，但他们的 **name 是不同的**。
+
+![img_v3_02b4_049b0a62-8e3b-420f-adaf-a6350d84840g](https://static-docs.nocobase.com/img_v3_02b4_049b0a62-8e3b-420f-adaf-a6350d84840g.jpg)
+
+如果我们需要添加到页面级别的 `Add block` 中，我们需要知道对应的 `name`，我们可以通过 TODO 方式查看对应的 `name`。
 
 TODO：截图
+
+通过上图可以看到页面级别的 `Add block` 对应的 name 为 `page:addBlock`，`Other Blocks` 对应的 name 为 `otherBlocks`。
 
 然后我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-simple-block/src/client/index.tsx` 文件：
 
@@ -175,21 +183,19 @@ export default PluginInitializerSimpleBlockClient;
 
 然后使用 [app.schemaInitializerManager.addItem](https://client.docs.nocobase.com/core/ui-schema/schema-initializer-manager#schemainitializermanageradditem) 将 `imageInitializerItem` 添加对应 Initializer 子项中，其中 `page:addBlock` 是页面上 `Add block` 的 name，`otherBlocks` 是其父级的 name。
 
-然后我们 hover `Add block` 按钮，就可以看到 `Image` 这个新的区块类型了。
+然后我们 hover `Add block` 按钮，就可以看到 `Image` 这个新的区块类型了，点击 `Image`，就可以添加一个新的 `ImageBlock` 区块了。
 
-TODO：效果展示
-
-然后点击 `Image`，就可以添加一个新的 `ImageBlock` 区块了。
-
-TODO：截图
+<video width="100%" controls="">
+  <source src="https://static-docs.nocobase.com/20240522-175523.mp4" type="video/mp4" />
+</video>
 
 ### 5. 添加到弹窗 Add block 中
 
-我们不仅需要将其添加到页面级别的 `Add block` 中，还需要将其添加到弹窗级别的 `Add block` 中。
+我们不仅需要将其添加到页面级别的 `Add block` 中，还需要将其添加到 `Table` 区块 `Add new` 弹窗的 `Add block` 中。
 
-我们先获取弹窗中 `Add block` 的 name。
+![img_v3_02b4_fc47fe3a-35a1-4186-999c-0b48e6e001dg](https://static-docs.nocobase.com/img_v3_02b4_fc47fe3a-35a1-4186-999c-0b48e6e001dg.jpg)
 
-TODO：获取 name
+我们按照页面级别获取 `name` 的方式获取到 `Table` 区块的 `Add block` 的 `name` 为 `popup:addNew:addBlock`，`Other Blocks` 对应的 name 为 `otherBlocks`。
 
 然后修改 `packages/plugins/@nocobase-sample/plugin-initializer-simple-block/src/client/index.tsx` 文件：
 
@@ -205,18 +211,13 @@ export class PluginInitializerSimpleBlockClient extends Plugin {
 }
 ```
 
-TODO：截图
-
+![img_v3_02b4_7062bfab-5a7b-439c-b385-92c5704b6b3g](https://static-docs.nocobase.com/img_v3_02b4_7062bfab-5a7b-439c-b385-92c5704b6b3g.jpg)
 
 ### 6. 添加到移动端 Add block 中
 
 > 首先要激活移动端插件，参考 [激活插件](/welcome/getting-started/plugin#3-activate-the-plugin) 文档。
 
-我们可以将其添加到移动端的 `Add block` 中。
-
-我们先获取对应 `Add block` 的 name。
-
-TODO：获取 name
+我们可以将其添加到移动端的 `Add block` 中，获取 `name` 的方法这里就不再赘述了。
 
 然后修改 `packages/plugins/@nocobase-sample/plugin-initializer-simple-block/src/client/index.tsx` 文件：
 
@@ -232,6 +233,8 @@ export class PluginInitializerSimpleBlockClient extends Plugin {
   }
 }
 ```
+
+![img_v3_02b4_ec873b25-5a09-4f3a-883f-1d722035799g](https://static-docs.nocobase.com/img_v3_02b4_ec873b25-5a09-4f3a-883f-1d722035799g.jpg)
 
 如果需要更多的 `Add block`，可以继续添加，只需要知道对应的 `name` 即可。
 

@@ -2,17 +2,19 @@
 
 ## 场景说明
 
-如果新创建的区块是一个复杂的数据区块，那么它内部可能包含多个动态添加的部分，其中 `Configure actions` 对应的 initializer 主要是负责动态添加一些按钮实现各种操作。例如 `Form` 区块，我们可以通过 `Configure actions` 添加 `Submit`、`Custom Request` 按钮。
+如果新创建的区块是一个复杂的数据区块，那么它内部可能包含多个动态添加的部分，其中 `Configure actions` 对应的 initializer 主要是负责动态添加一些按钮实现各种操作。例如 `Details` 区块，我们可以通过 `Configure actions` 添加 `Edit`、`Print` 等按钮。
 
-TODO：截图
+![img_v3_02b4_9b80a4a0-6d9b-4e53-a544-f92c17d81d2g](https://static-docs.nocobase.com/img_v3_02b4_9b80a4a0-6d9b-4e53-a544-f92c17d81d2g.jpg)
 
 ## 示例说明
 
-本实例会在 [添加数据区块 Data Block](/plugin-samples/schema-initializer/data-block) 基础上继续实现类似 `Form` 区块的效果，通过 `Configure actions` 来配置按钮。
+本实例会在 [添加数据区块 Data Block](/plugin-samples/schema-initializer/data-block) 基础上继续实现类似 `Details` 区块的效果，通过 `Configure actions` 来配置按钮。
 
 本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-initializer-configure-actions) 中查看。
 
-TODO：效果展示
+<video width="100%" controls="">
+  <source src="https://static-docs.nocobase.com/20240522-191602.mp4" type="video/mp4" />
+</video>
 
 ## 初始化插件
 
@@ -98,7 +100,6 @@ export const configureActions = new SchemaInitializer({
 - `title`：按钮标题
 - [items](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types)：按钮下的子项
 
-
 ### 3. 注册 `Configure actions` initializer
 
 然后修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/index.tsx` 文件，导入并注册这个 initializer：
@@ -165,7 +166,7 @@ export const InfoBlock = ({ children }) => {
 - `children`： `properties` 的内容会被传入到 `InfoBlock` 组件的 `children` 中，所以我们直接将 `children` 渲染出来即可。
 - [useDataBlockRequest()](https://client.docs.nocobase.com/core/data-block/data-block-request-provider)：数据区块的请求对象，由 `DataBlockProvider` 内部提供，用于自动获取数据区块的数据。
 
-TODO：效果演示
+![img_v3_02b4_4c6cb675-789e-48d5-99ce-072984dcfc9g](https://static-docs.nocobase.com/img_v3_02b4_4c6cb675-789e-48d5-99ce-072984dcfc9g.jpg)
 
 ### 6. 实现 `Custom request` Action
 
@@ -188,7 +189,7 @@ export const configureActions = new SchemaInitializer({
 
 因为 `Custom request` 我们这里直接复用了 `CustomRequestInitializer` 组件，更多可复用的 Initializer Item 可参考 *TODO*。
 
-TODO：效果演示
+![img_v3_02b4_0d439087-cfe1-4681-bfab-4e4bc3e34cbg](https://static-docs.nocobase.com/img_v3_02b4_0d439087-cfe1-4681-bfab-4e4bc3e34cbg.jpg)
 
 ### 7. 实现自定义 Action
 
@@ -303,7 +304,9 @@ export const InfoBlock = ({ children }) => {
 
 关于 `SchemaComponentOptions` 的使用可以参考 [SchemaComponentOptions](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponentoptions) 文档以及 [局部注册 Component 和 Scope](/plugin-samples/component-and-scope/local)。
 
-TODO：演示
+<video width="100%" controls="">
+  <source src="https://static-docs.nocobase.com/20240522-191602.mp4" type="video/mp4" />
+</video>
 
 ## 打包和上传到生产环境
 

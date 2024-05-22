@@ -4,7 +4,7 @@
 
 NocoBase 中除了有许多 `Add block` 按钮用于向界面添加区块，还有很多 `Configure actions` 用于向界面添加操作按钮。
 
-TODO：截图
+![img_v3_02b4_51f4918f-d344-43b2-b19e-48dca709467g](https://static-docs.nocobase.com/img_v3_02b4_51f4918f-d344-43b2-b19e-48dca709467g.jpg)
 
 如果目前已有的操作按钮不一定满足我们的需求，我们需要向已有的 `Configure actions` 里添加子项用于创建新的操作按钮。
 
@@ -14,7 +14,9 @@ TODO：截图
 
 本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-initializer-action) 中查看。
 
-TODO：效果展示
+<video width="100%" controls="">
+  <source src="https://static-docs.nocobase.com/20240522-185359.mp4" type="video/mp4" />
+</video>
 
 ## 初始化插件
 
@@ -137,7 +139,6 @@ export const createDocumentActionInitializerItem = (blockComponent: string): Sch
 
 TODO
 
-
 然后我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-action/src/client/index.tsx` 文件：
 
 ```tsx | pure
@@ -160,13 +161,9 @@ export default PluginAddInitializerItemToBlockClient;
 
 然后使用 [app.schemaInitializerManager.addItem](https://client.docs.nocobase.com/core/ui-schema/schema-initializer-manager#schemainitializermanageradditem) 将 `createDocumentActionInitializerItem()` 得到的 schema 添加到子项中。
 
-然后我们 hover `Configure actions` 按钮，就可以看到 `Document` 这个新的按钮了。
+然后我们 hover `Configure actions` 按钮，就可以看到 `Document` 这个新的按钮了，然后点击 `Document`，就可以添加一个新的 `DocumentAction` 按钮了。
 
-TODO：效果展示
-
-然后点击 `Document`，就可以添加一个新的 `DocumentAction` 按钮了。
-
-TODO：截图
+![img_v3_02b4_77a66cd7-64c7-467d-b44c-6f246b49dfcg](https://static-docs.nocobase.com/img_v3_02b4_77a66cd7-64c7-467d-b44c-6f246b49dfcg.jpg)
 
 ### 4. 添加 Schema Settings
 
@@ -223,7 +220,7 @@ export class PluginInitializerActionClient extends Plugin {
 
 然后就可以看到 `Document` 按钮右上角有 Settings 按钮了。
 
-TODO：截图
+![img_v3_02b4_16f0bb0e-5a7e-448d-bab0-cf19acfacddg](https://static-docs.nocobase.com/img_v3_02b4_16f0bb0e-5a7e-448d-bab0-cf19acfacddg.jpg)
 
 ## 打包和上传到生产环境
 
