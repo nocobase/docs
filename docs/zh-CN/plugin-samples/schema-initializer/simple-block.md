@@ -98,7 +98,8 @@ export const imageInitializerItem: SchemaInitializerItemType = {
 - `name`：唯一标识符，用于区分不同的 Schema Item 和增删改查操作
 - `icon`：图标，更多 icon 可以参考 [Ant Design Icons](https://ant.design/components/icon)
 - `useComponentProps`：返回一个对象，包含 `title` 和 `onClick` 两个属性，`title` 是显示的文本，`onClick` 是点击后的回调函数
-- [useSchemaInitializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#useschemainitializer)：用于获取 `SchemaInitializerContext` 上下文，包含了一些操作方法
+- [useSchemaInitializer()](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#useschemainitializer)：用于获取 `SchemaInitializerContext` 上下文
+  - `insert`：插入一个新的 Schema
 
 更多关于 Schema Item 的定义可以参考 [Schema Initializer Item](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types) 文档。
 
