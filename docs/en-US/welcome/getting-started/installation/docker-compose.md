@@ -53,7 +53,7 @@ cd docker/app-postgres
 
 <Alert>
 
-Non-developers skip this step. If you know development, you can also learn more about how to configure `docker-compose.yml`.
+Non-developers skip this step. If you know to how develop, you can also learn more about how to configure `docker-compose.yml`.
 
 </Alert>
 
