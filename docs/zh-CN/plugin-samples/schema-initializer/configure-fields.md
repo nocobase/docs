@@ -56,14 +56,14 @@ import { Plugin } from '@nocobase/client';
 import { InfoBlock, infoBlockSettings, infoInitializerItem } from './InfoBlock';
 
 - export class PluginInitializerDataBlockClient extends Plugin {
-+ export class PluginInitializerComplexDataBlockClient extends Plugin {
++ export class PluginInitializerConfigureFieldsClient extends Plugin {
   async load() {
     // ...
   }
 }
 
 - export default PluginInitializerDataBlockClient;
-+ export default PluginInitializerComplexDataBlockClient;
++ export default PluginInitializerConfigureFieldsClient;
 ```
 
 ### 2. 创建 `Configure fields` 对应的 initializer
@@ -101,7 +101,7 @@ export const configureFields = new SchemaInitializer({
   - `title: 'Display fields'`：子项标题
   - `useChildren`：子项的子项，返回一个数组，数组中的每一项都是一个子项
 
-#### 3. 注册 `Configure fields` initializer
+### 3. 注册 `Configure fields` initializer
 
 然后修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-fields/src/client/index.tsx` 文件，导入并注册这个 initializer：
 
@@ -115,7 +115,7 @@ export class PluginInitializerNewClient extends Plugin {
 }
 ```
 
-#### 4. 修改 `getInfoBlockSchema()` 区块
+### 4. 修改 `getInfoBlockSchema()` 区块
 
 我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-fields/src/client/InfoBlock.tsx` 文件，将 `getInfoBlockSchema()` 区块修改为：
 
@@ -142,7 +142,7 @@ function getInfoBlockSchema({ dataSource, collection }) {
 
 我们在 `InfoBlock` 的子节点中添加了一个 `fields` 字段，为了更好的布局，我们使用 `Grid` 组件包裹了一下，并且指定了 `x-initializer` 为 `info:configureFields`，因为 `Grid` 内置了 [useSchemaInitializerRender()](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#useschemainitializerrender) 的渲染逻辑，所以我们可以直接使用，如果是一个自定义的组件，需要自己通过 `useSchemaInitializerRender()` 实现渲染逻辑。
 
-#### 5. 修改 `InfoBlock` 组件
+### 5. 修改 `InfoBlock` 组件
 
 我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-fields/src/client/InfoBlock.tsx` 文件，将 `InfoBlock` 组件修改为：
 
@@ -156,7 +156,7 @@ export const InfoBlock = ({ children }) => {
 
 TODO：效果演示
 
-#### 5. 读取数据表字段作为 `Configure fields` 的子项
+### 6. 读取数据表字段作为 `Configure fields` 的子项
 
 ```tsx | pure
 interface GetFieldInitializerItemOptions {
@@ -213,7 +213,7 @@ export const configureFields = new SchemaInitializer({
 
 TODO：效果演示
 
-### 6. 实现 `switch` 的添加和删除
+### 7. 实现 `switch` 的添加和删除
 
 我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-fields/src/client/configureFields.tsx` 文件，将 `onClick` 事件实现为：
 
@@ -297,7 +297,7 @@ function getFieldInitializerItem(options: GetFieldInitializerItemOptions) {
 
 然后我们通过读取 `schema.properties` 中的数据，找到对应的字段的 Schema，如果存在则删除，如果不存在则插入。
 
-### 7. 完善子节点 Schema 和组件
+### 8. 完善子节点 Schema 和组件
 
 ```ts
 export const infoItemSettings = new SchemaSettings({

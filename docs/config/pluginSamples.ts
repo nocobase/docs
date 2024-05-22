@@ -123,9 +123,24 @@ export default [
         link: '/plugin-samples/schema-initializer',
       },
       {
-        title: 'Add New Block',
-        'title.zh-CN': '新增 Block',
-        link: '/plugin-samples/schema-initializer/block',
+        title: 'Add Simple Block',
+        'title.zh-CN': '添加简单区块 Simple Block',
+        link: '/plugin-samples/schema-initializer/simple-block',
+      },
+      {
+        title: 'Add Data Block',
+        'title.zh-CN': '添加数据区块 Data Block',
+        link: '/plugin-samples/schema-initializer/data-block',
+      },
+      {
+        title: 'Add Action to Existing Initializer',
+        'title.zh-CN': '添加按钮到已有 Initializer',
+        link: '/plugin-samples/schema-initializer/action',
+      },
+      {
+        title: 'Configure fields',
+        'title.zh-CN': '实现数据字段 Initializer',
+        link: '/plugin-samples/schema-initializer/configure-fields',
       },
     ]
   }

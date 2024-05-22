@@ -207,7 +207,7 @@ export class PluginInitializerDataBlockClient extends Plugin {
 
 我们继续修改 `packages/plugins/@nocobase-sample/plugin-initializer-data-block/src/client/InfoBlock.tsx` 文件：
 
-```tsx
+```tsx | pure
 import { SchemaInitializerItemType, SchemaSettings, useCollection, useDataBlockRequest, useSchemaInitializer } from '@nocobase/client'
 
 export const InfoBlock = () => {

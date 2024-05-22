@@ -122,7 +122,7 @@ export const createDocumentActionInitializerItem = (blockComponent: string): Sch
 
 更多关于 Schema 的说明请查看 [UI Schema](/development/client/ui-schema/what-is-ui-schema) 文档。
 
-### 4. 添加到页面 Configure actions 中
+### 3. 添加到页面 Configure actions 中
 
 系统中有很多个 `Configure actions` 按钮，但他们的 **name 是不同的**，我们根据需要将其添加到 `Table`、`Details` 以及 `Form` 区块中的 `Configure actions` 中。
 
@@ -161,7 +161,7 @@ TODO：效果展示
 
 TODO：截图
 
-### 5. 添加 Schema Settings
+### 4. 添加 Schema Settings
 
 目前我们的 `DocumentAction` 添加后不能删除，我们可以使用 [Schema Settings](https://client.docs.nocobase.com/core/ui-schema/schema-settings) 来设置。
 
