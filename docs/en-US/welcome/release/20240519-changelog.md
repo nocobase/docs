@@ -26,7 +26,7 @@ Added the "Auth: LDAP" plugin (commercial plugin), which allows users to sign in
 
 <img src="https://static-docs.nocobase.com/202405191513995.png"/>
 
-### Workflow Request Nodes
+### Workflow HTTP Request Node
 
 #### Support for `application/www-x-form-urlencoded` Data Format
 
@@ -104,9 +104,9 @@ After: The folder path for workflow and custom request log files belongs to the 
 
 ### Workflow
 
-#### Request Node Result Data
+#### HTTP Request Node Result Data
 
-Previously, the result data structure after successful or failed request nodes was inconsistent.
+Previously, the result data structure after successful or failed HTTP request node was inconsistent.
 
 ```js
 // Only the response data part is returned when successful
@@ -163,11 +163,11 @@ Other exceptions such as no response from the server (`status` is `null`), or fa
 
 - Workflow aggregate node association field selection bug. <a href="https://github.com/nocobase/nocobase/pull/4315" target="_blank">fix(plugin-workflow-aggregate): fix association field select #4315</a>
 
-- Ignore error option was invalid in request node sync mode. <a href="https://github.com/nocobase/nocobase/pull/4334" target="_blank">fix(plugin-workflow-request): fix ignoreFail in sync mode #4334</a>
+- Ignore error option was invalid in HTTP request node sync mode. <a href="https://github.com/nocobase/nocobase/pull/4334" target="_blank">fix(plugin-workflow-request): fix ignoreFail in sync mode #4334</a>
 
-- Value input fields in workflow request nodes overflowed. <a href="https://github.com/nocobase/nocobase/pull/4353" target="_blank">fix(plugin-workflow-request): fix value fields overflowing #4354</a>
+- Value input fields in workflow HTTP request node overflowed. <ahref="https://github.com/nocobase/nocobase/pull/4353" target="_blank">fix(plugin-workflow-request): fix value fields overflowing #4354</a>
 
-- Special characters caused workflow request nodes to hang. <a href="https://github.com/nocobase/nocobase/pull/4376" target="_blank">fix(plugin-workflow-request): fix request hanging when invalid header value #4376</a>
+- Special characters caused workflow HTTP request node to hang. <ahref="https://github.com/nocobase/nocobase/pull/4376" target="_blank">fix(plugin-workflow-request): fix request hanging when invalid header value #4376</a>
 
 - Setting marginBlock in the theme editor affected the spacing between form fields. <a href="https://github.com/nocobase/nocobase/pull/4374" target="_blank">fix(theme-editor): form field spacing should not be affected by token.marginBlock #4374</a>
 
