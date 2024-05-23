@@ -133,19 +133,29 @@ export default [
         link: '/plugin-samples/schema-initializer/data-block',
       },
       {
-        title: 'Add Action to Existing Initializer',
-        'title.zh-CN': '添加按钮到已有 Initializer',
-        link: '/plugin-samples/schema-initializer/action',
+        title: 'Add Simple Action',
+        'title.zh-CN': '添加简单 Action',
+        link: '/plugin-samples/schema-initializer/simple-action',
       },
       {
-        title: 'Configure fields',
-        'title.zh-CN': '数据字段 Initializer',
+        title: 'Add Modal Action',
+        'title.zh-CN': '添加弹窗 Action',
+        link: '/plugin-samples/schema-initializer/modal-action',
+      },
+      {
+        title: 'Configure Fields',
+        'title.zh-CN': '区块内嵌的 Initializer - 配置字段',
         link: '/plugin-samples/schema-initializer/configure-fields',
       },
       {
         title: 'Configure Actions',
-        'title.zh-CN': '配置操作 Initializer',
+        'title.zh-CN': '区块内嵌的 Initializer - 配置操作',
         link: '/plugin-samples/schema-initializer/configure-actions',
+      },
+      {
+        title: 'Configure Custom',
+        'title.zh-CN': '区块内嵌的 Initializer - 其他自定义',
+        link: '/plugin-samples/schema-initializer/configure-custom',
       },
     ]
   }

@@ -10,7 +10,7 @@ NocoBase 有很多 `Add block` 按钮用于向界面添加区块。其中有些�
 
 ## 示例说明
 
-本实例会创建一个信息区块类型，并将其添加到 `Page`、`Table` 以及移动端的 `Add block` 中。
+本实例会创建一个 `Info` 区块，并将其添加到 `Page`、`Table` 以及移动端的 `Add block` 中。
 
 本实例主要为了演示 initializer 的使用，更多关于区块扩展可以查看 [区块扩展](/plugin-samples/block) 文档。
 
@@ -55,19 +55,227 @@ yarn dev
 - [UI Schema](/development/client/ui-schema/what-is-ui-schema)：用于定义界面的结构和样式
 - [Designable 设计器](/development/client/ui-schema/designable)：用于修改 Schema
 
-### 1. 实现 InfoBlock 组件
+### 1. 实现区块组件
+
+#### 1.1 定义区块组件
+
+本示例要做的是一个 `Info` 区块组件，我们取名为 `InfoBlock`，其具体的需求是：
+
+- 显示当前区块数据表名称
+- 显示当前区块数据列表
 
 首先我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-data-block/src/client/InfoBlock.tsx` 文件，其内容如下：
 
 ```tsx | pure
-import React from 'react';
+export interface InfoBlockProps {
+  collectionName: string;
+  data?: any[];
+  loading?: boolean;
+}
 
-export const InfoBlock = () => {
-  return 'TODO'
+export const InfoBlock: FC<InfoBlockProps> = withDynamicSchemaProps(({ collectionName, data }) => {
+  return <div>
+    <div>collection: {collectionName}</div>
+    <div>data list: <pre>{JSON.stringify(data, null, 2)}</pre></div>
+  </div>
+}, { displayName: 'InfoBlock' })
+```
+
+`InfoBlock` 组件整体来说是一个被 `withDynamicSchemaProps` 包裹的函数组件，[withDynamicSchemaProps](/development/client/ui-schema/what-is-ui-schema#x-component-props-和-x-use-component-props) 是一个高阶组件，用于处理 Schema 中的的动态属性。
+
+如果不看 `withDynamicSchemaProps` 的话，`InfoBlock` 组件就是一个简单的函数组件。
+
+#### 1.2 注册区块组件
+
+我们需要将 `InfoBlock` 通过插件注册到系统中。
+
+```tsx | pure
+import { Plugin } from '@nocobase/client';
+import { InfoBlock } from './InfoBlock';
+
+export class PluginInitializerDataBlockClient extends Plugin {
+  async load() {
+    this.app.addComponents({ InfoBlock })
+  }
+}
+
+export default PluginInitializerDataBlockClient;
+```
+
+#### 1.3 验证区块组件
+
+组件验证方式有 2 种：
+
+- 临时页面验证：我们可以临时建一个页面，然后渲染 `InfoBlock` 组件，查看是否符合需求
+- 文档示例验证：可以启动文档 `yarn doc packages/plugins/@nocobase-sample/plugin-initializer-data-block`，通过写文档示例的方式验证是否符合需求（TODO）
+
+我们以 `临时页面验证` 为例，我们新建一个页面，根据属性参数添加一个或者多个 `InfoBlock` 组件，查看是否符合需求。
+
+```tsx | pure
+import React from 'react';
+import { Plugin } from '@nocobase/client';
+import { InfoBlock } from './InfoBlock';
+
+export class PluginInitializerDataBlockClient extends Plugin {
+  async load() {
+    this.app.addComponents({ InfoBlock })
+
+    this.app.router.add('admin.data-block', {
+      path: '/admin/data-block',
+      Component: () => {
+        return <>
+          <div style={{ marginTop: 20, marginBottom: 20 }}>
+            <InfoBlock collectionName='test' data={[{ id: 1 }, { id: 2 }]} />
+          </div>
+        </>
+      }
+    })
+  }
+}
+
+export default PluginInitializerDataBlockClient;
+```
+
+然后访问 `http://localhost:13000/admin/data-block` 就可以看到对应测试页面的内容了。
+
+TODO：截图
+
+验证完毕后需要删除测试页面。
+
+### 2. 定义区块 Schema
+
+#### 2.1 定义区块 Schema
+
+NocoBase 的动态页面都是通过 Schema 来渲染，所以我们需要定义一个 Schema，后续用于在界面中添加 `InfoBlock` 区块。在实现本小节之前，我们需要先了解一些基础知识：
+
+- [UI Schema 协议](/development/client/ui-schema/what-is-ui-schema)：详细介绍 Schema 的结构和每个属性的作用
+- [DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider)：数据区块
+
+我们继续 `packages/plugins/@nocobase-sample/plugin-initializer-data-block/src/client/InfoBlock.tsx` 文件，添加 `InfoBlock` 的 Schema：
+
+```ts
+export function getInfoBlockSchema({ dataSource = 'main', collection }) {
+  return {
+    type: 'void',
+    'x-decorator': 'DataBlockProvider',
+    'x-decorator-props': {
+      dataSource,
+      collection,
+      action: 'list',
+    },
+    'x-component': 'CardItem',
+    properties: {
+      info: {
+        type: 'void',
+        'x-component': 'InfoBlock',
+        'x-use-component-props': 'useInfoBlockProps',
+      }
+    }
+  }
+}
+
+export function useInfoBlockProps() {
+  const collection = useCollection();
+  const { data, loading } = useDataBlockRequest();
+
+  return {
+    collectionName: collection.name,
+    data: data?.data,
+    loading: loading
+  }
 }
 ```
 
-### 2. 定义 Schema Initializer Item
+这里有 2 个点需要说明：
+
+- `getInfoBlockSchema()`：之所以定义为函数，因为 `dataSource` 和 `collection` 是动态的，由点击的数据表决定
+- `useInfoBlockProps()`：用于处理 `InfoBlock` 组件的动态属性，并且因为要存到数据库，所以这里的值类型为 string 类型。
+
+`getInfoBlockSchema()`：返回 InfoBlock 的 Schema
+  - `type: 'void'`：表示没有任何数据
+  - `x-decorator: 'DataBlockProvider'`：数据区块提供者，用于提供数据，更多关于 DataBlockProvider 可以查看 [DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider)
+  - `x-decorator-props`：`DataBlockProvider` 的属性
+    - `dataSource`：数据源
+    - `collection`：数据表
+    - `action: 'list'`：操作类型，这里是 `list`，获取数据列表
+  - `x-component: 'CardItem'`：[CardItem 组件](https://client.docs.nocobase.com/components/card-item)，目前的区块都是被包裹在卡片中的，用于提供样式、布局和拖拽等功能
+  - `properties`：子节点
+    - `info`：信息区块
+
+`useInfoBlockProps()`：InfoBlock 组件的动态属性
+  - [useCollection](https://client.docs.nocobase.com/core/data-source/collection-provider#usecollection)：获取当前数据表，由 [DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider) 提供
+  - [useDataBlockRequest](https://client.docs.nocobase.com/core/data-block/data-block-request-provider#usedatablockrequest) 获取数据区块请求，由 [DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider) 提供
+
+上述 Schema 转为 React 组件后相当于：
+
+```tsx | pure
+<DataBlockProvider collection={collection} dataSource={dataSource} action='list'>
+  <CardItem>
+    <InfoBlock {...useInfoBlockProps()} />
+  </CardItem>
+</DataBlockProvider>
+```
+
+#### 2.2 注册 scope
+
+我们需要将 `useInfoBlockProps` 注册到系统中，这样 `x-use-component-props` 才能找到对应的 scope。
+
+```tsx | pure
+import { Plugin } from '@nocobase/client';
+import { InfoBlock, useInfoBlockProps } from './InfoBlock';
+
+export class PluginInitializerDataBlockClient extends Plugin {
+  async load() {
+    this.app.addComponents({ InfoBlock })
+    this.app.addScopes({ useInfoBlockProps });
+  }
+}
+
+export default PluginInitializerDataBlockClient;
+```
+
+更多关于 Scope 的说明可以查看 [全局注册 Component 和 Scope](/plugin-samples/component-and-scope/global)
+
+#### 2.3 验证区块 Schema
+
+同验证组件一样，我们可以通过临时页面验证或者文档示例验证的方式来验证 Schema 是否符合需求。我们这里以临时页面验证为例：
+
+```tsx | pure
+import React from 'react';
+import { Plugin, SchemaComponent, SchemaComponentOptions } from '@nocobase/client';
+import { InfoBlock, getInfoBlockSchema, useInfoBlockProps } from './InfoBlock';
+
+export class PluginInitializerDataBlockClient extends Plugin {
+  async load() {
+    // ...
+    this.app.router.add('admin.data-block', {
+      path: '/admin/data-block',
+      Component: () => {
+        return <>
+          <div style={{ marginTop: 20, marginBottom: 20 }}>
+            <SchemaComponent schema={{ properties: { test: getInfoBlockSchema({ collection: 'users' }) } }} />
+          </div>
+
+          <div style={{ marginTop: 20, marginBottom: 20 }}>
+            <SchemaComponent schema={{ properties: { test: getInfoBlockSchema({ collection: 'roles' }) } }} />
+          </div>
+        </>
+      }
+    })
+  }
+}
+
+export default PluginInitializerDataBlockClient;
+```
+
+- [SchemaComponentOptions](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponentoptions)：用于传递 Schema 中所需的 `components` 和 `scope`，具体的可查看 [局部注册 Component 和 Scope](/plugin-samples/component-and-scope/local)
+- [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponent-1)：用于渲染 Schema
+
+TODO：截图界面
+
+验证完毕后需要删除测试页面。
+
+### 3. 定义 Schema Initializer Item
 
 我们继续修改 `packages/plugins/@nocobase-sample/plugin-initializer-data-block/src/client/InfoBlock.tsx` 文件，添加 `InfoBlock` 的 Schema Initializer Item：
 
@@ -86,7 +294,7 @@ export const infoInitializerItem: SchemaInitializerItemType = {
       icon: <CodeOutlined />,
       componentType: 'Info',
       onCreateBlockSchema({ item }) {
-        console.log('item', item)
+        insert(getInfoBlockSchema({ dataSource: item.dataSource, collection: item.name }))
       },
     };
   },
@@ -102,15 +310,81 @@ export const infoInitializerItem: SchemaInitializerItemType = {
     - `icon`：图标，更多图标可以查看 [Ant Design Icons](https://ant.design/components/icon/)
     - `componentType`：组件类型，这里是 `Info`
     - `onCreateBlockSchema`：当点击数据表后的回调
-      - [useSchemaInitializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#useschemainitializer)：提供了插入 Schema 的方法
+      - `item`：点击的数据表信息
+        - `item.name`：数据表名称
+        - `item.dataSource`：数据表所属的数据源
+    - [useSchemaInitializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#useschemainitializer)：提供了插入 Schema 的方法
 
 更多关于 Schema Initializer 的定义可以参考 [Schema Initializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer) 文档。
 
-### 3. 注册组件和 Schema Initializer Item
+### 4. 实现 Schema Settings
+
+#### 4.1 定义 Schema Settings
+
+一个完整的 Block 还需要有 Schema Settings，用于配置一些属性，但 Schema Settings 不是本示例的重点，所以我们这里仅有一个 `remove` 操作。
+
+```ts
+export const infoBlockSettings = new SchemaSettings({
+  name: 'blockSettings:info',
+  items: [
+    {
+      name: 'remove',
+      type: 'remove',
+    }
+  ]
+})
+```
+
+#### 4.2 注册 Schema Settings
+
+```ts
+import { Plugin } from '@nocobase/client';
+import { infoBlockSettings } from './InfoBlock';
+
+export class PluginInitializerDataBlockClient extends Plugin {
+  async load() {
+    // ...
+    this.app.schemaSettingsManager.add(infoBlockSettings)
+  }
+}
+
+export default PluginInitializerDataBlockClient;
+```
+
+#### 4.3 使用 Schema Settings
+
+修改 `getInfoBlockSchema` 为：
+
+```diff
+export function getInfoBlockSchema({ dataSource = 'main', collection }) {
+  return {
+    type: 'void',
+    'x-decorator': 'DataBlockProvider',
+    'x-decorator-props': {
+      dataSource,
+      collection,
+      action: 'list',
+    },
++   'x-settings': infoBlockSettings.name,
+    'x-component': 'CardItem',
+    properties: {
+      info: {
+        type: 'void',
+        'x-component': 'InfoBlock',
+        'x-use-component-props': 'useInfoBlockProps',
+      }
+    }
+  }
+}
+```
+
+### 5. 添加到 Add block 中
 
 系统中有很多个 `Add block` 按钮，但他们的 **name 是不同的**。
 
 ![img_v3_02b4_049b0a62-8e3b-420f-adaf-a6350d84840g](https://static-docs.nocobase.com/img_v3_02b4_049b0a62-8e3b-420f-adaf-a6350d84840g.jpg)
+
+#### 5.1 添加到页面级别 Add block 中
 
 如果我们需要添加到页面级别的 `Add block` 中，我们需要知道对应的 `name`，我们可以通过 TODO 方式查看对应的 `name`。
 
@@ -124,133 +398,29 @@ TODO：截图
 import { Plugin } from '@nocobase/client';
 import { InfoBlock, infoBlockSettings, infoInitializerItem } from './InfoBlock';
 
-export class PluginInitializerNewClient extends Plugin {
+export class PluginInitializerDataBlockClient extends Plugin {
   async load() {
     this.app.addComponents({ InfoBlock });
+    this.app.schemaSettingsManager.add(infoBlockSettings);
+
     this.app.schemaInitializerManager.addItem('page:addBlock', `dataBlocks.${infoInitializerItem.name}`, infoInitializerItem)
   }
 }
 
-export default PluginInitializerNewClient;
+export default PluginInitializerDataBlockClient;
 ```
 
-<video width="100%" controls="">
-  <source src="https://static-docs.nocobase.com/20240522-183616.mp4" type="video/mp4" />
-</video>
+TODO：截图
 
-从视频中我们就可以看到 `Info` 这个新的区块类型了，点击后看到控制台就有我们的输出了，其中 2 个重要的信息是 `item.name` 数据表名称 和 `item.dataSource` 数据表所属的数据源。
+#### 5.2 添加到弹窗 Add block 中
 
-### 4. 实现 infoBlockSchema
+我们不仅需要将其添加到页面级别的 `Add block` 中，还需要将其添加到 `Table` 区块 `Add new` 弹窗的 `Add block` 中。
 
-```tsx | pure
-export const infoBlockSettings = new SchemaSettings({
-  name: 'blockSettings:info',
-  items: [
-    {
-      name: 'remove',
-      type: 'remove',
-    }
-  ]
-})
+![img_v3_02b4_fc47fe3a-35a1-4186-999c-0b48e6e001dg](https://static-docs.nocobase.com/img_v3_02b4_fc47fe3a-35a1-4186-999c-0b48e6e001dg.jpg)
 
-function getInfoBlockSchema({ dataSource, collection }) {
-  return {
-    type: 'void',
-    'x-decorator': 'DataBlockProvider',
-    'x-decorator-props': {
-      dataSource,
-      collection,
-      action: 'list',
-    },
-    'x-settings': infoBlockSettings.name,
-    'x-component': 'CardItem',
-    properties: {
-      info: {
-        type: 'void',
-        'x-component': 'InfoBlock',
-      }
-    }
-  }
-}
-```
+我们按照页面级别获取 `name` 的方式获取到 `Table` 区块的 `Add block` 的 `name` 为 `popup:addNew:addBlock`，`Data Blocks` 对应的 name 为 `dataBlocks`。
 
-```diff
-export const infoInitializerItem: SchemaInitializerItemType = {
-  name: 'InfoBlock',
-  Component: 'DataBlockInitializer',
-  useComponentProps() {
-    const { insert } = useSchemaInitializer();
-    return {
-      title: 'Info',
-      icon: <CodeOutlined />,
-      componentType: 'Info',
-      onCreateBlockSchema({ item }) {
--       console.log('item', item)
-+       insert(getInfoBlockSchema({ dataSource: item.dataSource, collection: item.name }))
-      },
-    };
-  },
-}
-```
-
-我们将 `console.log` 替换为 `insert` 方法，将 `getInfoBlockSchema` 的返回值插入到 Schema 中。
-
-`getInfoBlockSchema` 返回的 Schema 说明：
-  - `type: 'void'`：表示没有任何数据
-  - `x-decorator: 'DataBlockProvider'`：数据区块提供者，用于提供数据，更多关于 DataBlockProvider 可以查看 [DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider)
-  - `x-decorator-props`：`DataBlockProvider` 的属性
-    - `dataSource`：数据源
-    - `collection`：数据表
-    - `action: 'list'`：操作类型，这里是 `list`，获取数据列表
-  - `x-settings: infoBlockSettings.name`：Schema Settings
-  - `x-component: 'CardItem'`：[CardItem 组件](https://client.docs.nocobase.com/components/card-item)
-  - `properties`：子节点
-    - `info`：信息区块
-
-然后修改 `packages/plugins/@nocobase-sample/plugin-initializer-data-block/src/client/index.tsx` 文件，将 `infoBlockSettings` 添加到系统中：
-
-```diff
-import { Plugin } from '@nocobase/client';
-import { InfoBlock, infoBlockSettings, infoInitializerItem } from './InfoBlock';
-
-export class PluginInitializerDataBlockClient extends Plugin {
-  async load() {
-    // ...
-+   this.app.schemaSettingsManager.add(infoBlockSettings);
-  }
-}
-```
-
-然后我们点击 `Info` 区块，就可以看到一个新的信息区块了，里面显示的是 TODO。
-
-<video width="100%" controls="">
-  <source src="https://static-docs.nocobase.com/20240522-183846.mp4" type="video/mp4" />
-</video>
-
-### 5. 实现 InfoBlock 组件
-
-我们继续修改 `packages/plugins/@nocobase-sample/plugin-initializer-data-block/src/client/InfoBlock.tsx` 文件：
-
-```tsx | pure
-import { SchemaInitializerItemType, SchemaSettings, useCollection, useDataBlockRequest, useSchemaInitializer } from '@nocobase/client'
-
-export const InfoBlock = () => {
-  const collection = useCollection();
-  const { data } = useDataBlockRequest();
-  return <div>
-    <div>collection: {collection.name}</div>
-    <div>data list: <pre>{JSON.stringify(data?.data, null, 2)}</pre></div>
-  </div>
-}
-```
-
-DataBlockProvider 会将数据传递子节点，通过我们可以通过 [useCollection](https://client.docs.nocobase.com/core/data-source/collection-provider#usecollection) 获取当前数据表，通过 [useDataBlockRequest](https://client.docs.nocobase.com/core/data-block/data-block-request-provider#usedatablockrequest) 获取数据区块请求。
-
-![img_v3_02b4_82c6307a-44d4-422f-85b0-da16ea04a14g](https://static-docs.nocobase.com/img_v3_02b4_82c6307a-44d4-422f-85b0-da16ea04a14g.jpg)
-
-### 6. 添加到更多的 Add block 中
-
-目前我们只添加到了 `page:addBlock` 中，我们可以添加到更多的地方，比如 `table:addBlock`、`mobile:addBlock` 等，[添加新的简单区块 Simple Block](/plugin-samples/schema-initializer/simple-block#5-添加到弹窗-add-block-中) 已经说明了如何添加到更多的地方，这里我们只需要修改 `packages/plugins/@nocobase-sample/plugin-initializer-data-block/src/client/index.tsx` 文件：
+然后修改 `packages/plugins/@nocobase-sample/plugin-initializer-data-block/src/client/index.tsx` 文件：
 
 ```diff
 import { Plugin } from '@nocobase/client';
@@ -263,6 +433,33 @@ export class PluginInitializerDataBlockClient extends Plugin {
 
     this.app.schemaInitializerManager.addItem('page:addBlock', `dataBlocks.${infoInitializerItem.name}`, infoInitializerItem)
 +   this.app.schemaInitializerManager.addItem('popup:addNew:addBlock', `dataBlocks.${infoInitializerItem.name}`, infoInitializerItem)
+  }
+}
+
+export default PluginInitializerDataBlockClient;
+```
+
+![img_v3_02b4_7062bfab-5a7b-439c-b385-92c5704b6b3g](https://static-docs.nocobase.com/img_v3_02b4_7062bfab-5a7b-439c-b385-92c5704b6b3g.jpg)
+
+#### 5.3 添加到移动端 Add block 中
+
+> 首先要激活移动端插件，参考 [激活插件](/welcome/getting-started/plugin#3-activate-the-plugin) 文档。
+
+我们可以将其添加到移动端的 `Add block` 中，获取 `name` 的方法这里就不再赘述了。
+
+然后修改 `packages/plugins/@nocobase-sample/plugin-initializer-data-block/src/client/index.tsx` 文件：
+
+```diff
+import { Plugin } from '@nocobase/client';
+import { InfoBlock, infoBlockSettings, infoInitializerItem } from './InfoBlock';
+
+export class PluginInitializerDataBlockClient extends Plugin {
+  async load() {
+    this.app.addComponents({ InfoBlock });
+    this.app.schemaSettingsManager.add(infoBlockSettings);
+
+    this.app.schemaInitializerManager.addItem('page:addBlock', `dataBlocks.${infoInitializerItem.name}`, infoInitializerItem)
+    this.app.schemaInitializerManager.addItem('popup:addNew:addBlock', `dataBlocks.${infoInitializerItem.name}`, infoInitializerItem)
 +   this.app.schemaInitializerManager.addItem('mobilePage:addBlock', `dataBlocks.${infoInitializerItem.name}`, infoInitializerItem)
   }
 }
@@ -270,9 +467,8 @@ export class PluginInitializerDataBlockClient extends Plugin {
 export default PluginInitializerDataBlockClient;
 ```
 
-<video width="100%" controls="">
-  <source src="https://static-docs.nocobase.com/20240522-182547.mp4" type="video/mp4" />
-</video>
+
+如果需要更多的 `Add block`，可以继续添加，只需要知道对应的 `name` 即可。
 
 ## 打包和上传到生产环境
 

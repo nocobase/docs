@@ -9,8 +9,15 @@
 
 根据以上场景，我们提供了如下示例：
 
+**向已有的 Initializer 中添加子项**
+
 - [添加简单区块 Simple Block](/plugin-samples/schema-initializer/simple-block)
 - [添加数据区块 Data Block](/plugin-samples/schema-initializer/data-block)
-- [添加按钮到已有 Initializer](/plugin-samples/schema-initializer/action)
-- [数据字段 Initializer](/plugin-samples/schema-initializer/configure-fields)
-- [配置操作 Initializer](/plugin-samples/schema-initializer/configure-actions)
+- [添加简单 Action](/plugin-samples/schema-initializer/simple-action)
+- [添加弹窗 Action](/plugin-samples/schema-initializer/modal-action)
+
+**创建新的 Initializer**
+
+- [区块内嵌的 Initializer - 配置字段](/plugin-samples/schema-initializer/configure-fields)
+- [区块内嵌的 Initializer - 配置操作](/plugin-samples/schema-initializer/configure-actions)
+- [区块内嵌的 Initializer - 其他自定义](/plugin-samples/schema-initializer/configure-custom)

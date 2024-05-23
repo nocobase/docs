@@ -1,4 +1,4 @@
-# 向已有的 Configure actions 里添加新子项
+# 添加简单的 Action 组件
 
 ## 场景说明
 
@@ -8,11 +8,13 @@ NocoBase 中除了有许多 `Add block` 按钮用于向界面添加区块，还�
 
 如果目前已有的操作按钮不一定满足我们的需求，我们需要向已有的 `Configure actions` 里添加子项用于创建新的操作按钮。
 
+标题中简单的 Action 指的是不需要弹窗的 Action，可以查看 [添加弹窗 Action](/plugin-samples/schema-initializer/modal-action)。
+
 ## 示例说明
 
 本实例会创建一个按钮，点击后后打开对应区块的文档，并将这个按钮添加到 `Table`、`Details` 以及 `Form` 区块中的 `Configure actions` 中。
 
-本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-initializer-action) 中查看。
+本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-initializer-simple-action) 中查看。
 
 <video width="100%" controls="">
   <source src="https://static-docs.nocobase.com/20240522-185359.mp4" type="video/mp4" />
@@ -32,8 +34,8 @@ yarn nocobase install
 然后初始化一个插件，并添加到系统中：
 
 ```bash
-yarn pm create @nocobase-sample/plugin-initializer-action
-yarn pm enable @nocobase-sample/plugin-initializer-action
+yarn pm create @nocobase-sample/plugin-initializer-simple-action
+yarn pm enable @nocobase-sample/plugin-initializer-simple-action
 ```
 
 然后启动项目即可：
@@ -54,39 +56,101 @@ yarn dev
 - [UI Schema](/development/client/ui-schema/what-is-ui-schema)：用于定义界面的结构和样式
 - [Designable 设计器](/development/client/ui-schema/designable)：用于修改 Schema
 
-### 1. 实现 `DocumentAction` 组件
+### 1. 定义 Schema
 
-首先我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-action/src/client/DocumentAction.tsx` 文件，其内容如下：
+#### 1.1 定义 Schema
 
-```tsx | pure
-import React, { FC } from 'react';
-import { SchemaComponent } from "@nocobase/client"
+NocoBase 的动态页面都是通过 Schema 来渲染，所以我们需要定义一个 Schema，后续用于在界面中添加。在实现本小节之前，我们需要先了解一些基础知识：
 
-export const DocumentAction: FC<{ blockComponent: string }> = ({ blockComponent }) => {
-  const documentActionSchema = {
-    type: 'void',
-    name: 'document',
-    'x-component': 'Action',
-    title: 'Document',
-    'x-component-props': {
-      type: 'primary',
-      onClick() {
-        window.open(`https://client.docs.nocobase.com/components/${blockComponent}`)
-      }
+- [Action 组件](https://client.docs.nocobase.com/components/action)
+- [UI Schema 协议](/development/client/ui-schema/what-is-ui-schema)：详细介绍 Schema 的结构和每个属性的作用
+
+我们新增 `packages/plugins/@nocobase-sample/plugin-initializer-simple-action/src/client/DocumentAction.tsx` 文件，内容为：
+```ts
+import { useFieldSchema } from '@formily/react';
+import { ISchema } from "@nocobase/client"
+
+export function useDocumentActionProps() {
+  const fieldSchema = useFieldSchema();
+  return {
+    type: 'primary',
+    onClick() {
+      window.open(fieldSchema['x-doc-url'])
     }
   }
-  return <SchemaComponent schema={documentActionSchema} />
 }
 
+export const createDocumentActionSchema = (blockComponent: string): ISchema & { 'x-doc-url': string } => {
+  return {
+    type: 'void',
+    'x-component': 'Action',
+    title: 'Document',
+    'x-doc-url': `https://client.docs.nocobase.com/components/${blockComponent}`,
+    'x-use-component-props': 'useDocumentActionProps',
+  }
+}
 ```
 
-`DocumentAction` 组件接收一个 `blockComponent` 参数，然后根据这个参数生成一个 `Action` 按钮，点击后打开对应的文档。
+`createDocumentActionSchema` 组件接收一个 `blockComponent` 参数，返回一个 Schema，这个 Schema 用于在界面中添加一个按钮，点击后打开对应区块的文档。
 
-这里采用了 [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component) 组件，用于渲染 [Schema](https://client.docs.nocobase.com/core/ui-schema/what-is-ui-schema)。
+`createDocumentActionSchema`：
+- `type`：类型，这里是 `void`，表示纯 UI 组件
+- `x-component: 'Action'`：[Action 组件](https://client.docs.nocobase.com/components/action) 用于生成一个按钮
+- `title: 'Document'`：按钮的标题
+- `x-doc-url`：自定义的 Schema 属性，代表文档地址
+- `x-use-component-props: 'useDocumentActionProps'`：动态属性，更多请参考 [文档](/development/client/ui-schema/what-is-ui-schema#x-component-props-和-x-use-component-props)
 
-### 2. 定义 Schema Initializer Item
+`useDocumentActionProps()`：
+- [useFieldSchema()](https://client.docs.nocobase.com/core/ui-schema/designable#usefieldschema)：获取当前节点的 Schema
+- `type: 'primary'`：按钮类型
+- `onClick`：点击事件，打开对应区块的文档
 
-我们继续修改 `packages/plugins/@nocobase-sample/plugin-initializer-action/src/client/DocumentAction.tsx` 文件，添加 `DocumentAction` 的 Schema Initializer Item：
+更多关于 Schema 的说明请查看 [UI Schema](/development/client/ui-schema/what-is-ui-schema) 文档。
+
+#### 2.2 注册 scope
+
+我们需要将 `useInfoBlockProps` 注册到系统中，这样 `x-use-component-props` 才能找到对应的 scope。
+
+#### 2.3 验证区块 Schema
+
+同验证组件一样，我们可以通过临时页面验证或者文档示例验证的方式来验证 Schema 是否符合需求。我们这里以临时页面验证为例：
+
+```tsx | pure
+import React from 'react';
+import { Plugin, SchemaComponent } from '@nocobase/client';
+import { DocumentAction, createDocumentActionSchema } from './DocumentAction';
+
+export class PluginInitializerSimpleActionClient extends Plugin {
+  async load() {
+    this.app.addComponents({ DocumentAction })
+    this.app.router.add('admin.simple-action', {
+      path: '/admin/simple-action',
+      Component: () => {
+        return <>
+          <div style={{ marginTop: 20, marginBottom: 20 }}>
+            <SchemaComponent schema={{ properties: { test1: createDocumentActionSchema('table-v2') } }} />
+          </div>
+          <div style={{ marginTop: 20, marginBottom: 20 }}>
+            <SchemaComponent schema={{ properties: { test2: createDocumentActionSchema('details') } }} />
+          </div>
+        </>
+      }
+    })
+  }
+}
+
+export default PluginInitializerSimpleActionClient;
+```
+
+关于 `SchemaComponent` 的详细说明可以查看 [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponent-1) 文档。
+
+TODO：截图
+
+验证完毕后需要删除测试页面。
+
+### 3. 定义 Schema Initializer Item
+
+我们继续修改 `packages/plugins/@nocobase-sample/plugin-initializer-simple-action/src/client/DocumentAction.tsx` 文件，添加 `DocumentAction` 的 Schema Initializer Item：
 
 ```ts | pure
 import { ISchema, SchemaInitializerItemType, useSchemaInitializer } from "@nocobase/client"
@@ -100,15 +164,7 @@ export const createDocumentActionInitializerItem = (blockComponent: string): Sch
     return {
       title: 'Document',
       onClick: () => {
-        const documentActionSchema: ISchema = {
-          type: 'void',
-          'x-component': 'DocumentAction',
-          'x-component-props': {
-            blockComponent: blockComponent
-          }
-        };
-
-        insert(documentActionSchema);
+        insert(createDocumentActionSchema(blockComponent));
       },
     };
   },
@@ -124,13 +180,60 @@ export const createDocumentActionInitializerItem = (blockComponent: string): Sch
 
 更多关于 Schema Item 的定义可以参考 [Schema Initializer Item](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types) 文档。
 
-关于 `documentActionSchema` 的定义：
+### 4. 实现 Schema Settings
 
-- `type`：类型，这里是 `void`，表示没有任何数据
-- `x-decorator`：装饰器，这里是 [CardItem](https://client.docs.nocobase.com/components/card-item)，表示是一个卡片
-- `x-component`：组件，这里是 `DocumentAction`，就是我们上面定义的新的区块类型
+#### 4.1 定义 Schema Settings
 
-更多关于 Schema 的说明请查看 [UI Schema](/development/client/ui-schema/what-is-ui-schema) 文档。
+目前我们的 `DocumentAction` 添加后不能删除，我们可以使用 [Schema Settings](https://client.docs.nocobase.com/core/ui-schema/schema-settings) 来设置。
+
+我们继续修改 `packages/plugins/@nocobase-sample/plugin-initializer-simple-action/src/client/DocumentAction.tsx` 文件：
+
+```tsx | pure
+import { SchemaSettings } from "@nocobase/client"
+
+export const documentActionSettings = new SchemaSettings({
+  name: 'actionSettings:document',
+  items: [
+    {
+      name: 'remove',
+      type: 'remove',
+    }
+  ]
+});
+```
+
+#### 4.2 注册 Schema Settings
+
+```diff
+import { Plugin } from '@nocobase/client';
+- import { DocumentAction } from './DocumentAction';
++ import { DocumentAction, documentActionSettings } from './DocumentAction';
+
+export class PluginInitializerSimpleActionClient extends Plugin {
+  async load() {
+    this.app.addComponents({ DocumentAction })
++   this.app.schemaSettingsManager.add(documentActionSettings)
+  }
+}
+
+export default PluginInitializerSimpleActionClient;
+```
+
+#### 4.3 使用 Schema Settings
+
+我们修改 `createDocumentActionSchema` 为：
+
+```diff
+export const createDocumentActionSchema = (blockComponent: string): ISchema => {
+  return {
+    type: 'void',
+    'x-component': 'DocumentAction',
+    'x-component-props': {
+      blockComponent: blockComponent
+    }
+  }
+};
+```
 
 ### 3. 添加到页面 Configure actions 中
 
@@ -140,7 +243,7 @@ export const createDocumentActionInitializerItem = (blockComponent: string): Sch
 
 TODO
 
-然后我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-action/src/client/index.tsx` 文件：
+然后我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-simple-action/src/client/index.tsx` 文件：
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
@@ -170,7 +273,7 @@ export default PluginAddInitializerItemToBlockClient;
 
 目前我们的 `DocumentAction` 添加后不能删除，我们可以使用 [Schema Settings](https://client.docs.nocobase.com/core/ui-schema/schema-settings) 来设置。
 
-我们继续修改 `packages/plugins/@nocobase-sample/plugin-initializer-action/src/client/DocumentAction.tsx` 文件：
+我们继续修改 `packages/plugins/@nocobase-sample/plugin-initializer-simple-action/src/client/DocumentAction.tsx` 文件：
 
 ```tsx | pure
 import { SchemaSettings } from "@nocobase/client"
@@ -206,7 +309,7 @@ Schema Settings 不是本示例的重点，所以我们这里仅有一个 `remov
   }
 ```
 
-最后我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-action/src/client/index.tsx` 文件，将其注册到系统中：
+最后我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-simple-action/src/client/index.tsx` 文件，将其注册到系统中：
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
@@ -236,8 +339,8 @@ yarn build
 如果是使用的 `create-nocobase-app` 创建的项目，可以直接执行：
 
 ```bash
-yarn build @nocobase-sample/plugin-initializer-action --tar
+yarn build @nocobase-sample/plugin-initializer-simple-action --tar
 ```
 
-这样就可以看到 `storage/tar/@nocobase-sample/plugin-initializer-action.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
+这样就可以看到 `storage/tar/@nocobase-sample/plugin-initializer-simple-action.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
 
