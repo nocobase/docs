@@ -1,4 +1,4 @@
-# 实现配置操作 Initializer
+# 区块内嵌的 Initializer - 配置操作
 
 ## 场景说明
 
@@ -51,7 +51,7 @@ yarn dev
 - [UI Schema](/development/client/ui-schema/what-is-ui-schema)：用于定义界面的结构和样式
 - [Designable 设计器](/development/client/ui-schema/designable)：用于修改 Schema
 
-### 1. Copy 代码并修改插件名称
+### 1. 创建区块
 
 前面已经说明本示例会在 [添加数据区块 Data Block](/plugin-samples/schema-initializer/data-block) 基础上继续实现，所以我们可以直接复制以下 2 个文件：
 
@@ -75,7 +75,9 @@ import { InfoBlock, infoBlockSettings, infoInitializerItem } from './InfoBlock';
 + export default PluginInitializerConfigureActionsClient;
 ```
 
-### 2. 创建 `Configure actions` 对应的 initializer
+### 2. 实现 initializer
+
+#### 2.1 定义 initializer
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/configureActions.tsx` 文件：
 
@@ -95,12 +97,14 @@ export const configureActions = new SchemaInitializer({
 });
 ```
 
+我们通过上述代码定义了一个新的 `SchemaInitializer`，其子项暂时为空。
+
 - [SchemaInitializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer)：用于创建一个 Schema Initializer 实例
 - `icon`：图标，更多图标可参考 Ant Design [Icons](https://ant.design/components/icon/)
 - `title`：按钮标题
 - [items](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types)：按钮下的子项
 
-### 3. 注册 `Configure actions` initializer
+#### 2.2 注册 initializer
 
 然后修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/index.tsx` 文件，导入并注册这个 initializer：
 
@@ -114,7 +118,7 @@ export class PluginInitializerConfigureActionsClient extends Plugin {
 }
 ```
 
-### 4. 修改 `getInfoBlockSchema()` 区块
+#### 2.3 使用 initializer
 
 我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/InfoBlock.tsx` 文件，将 `getInfoBlockSchema()` 区块修改为：
 
@@ -130,10 +134,10 @@ function getInfoBlockSchema({ dataSource, collection }) {
 +         actions: {
 +           type: 'void',
 +           'x-component': 'ActionBar',
-+           'x-initializer': 'info:configureActions',
 +           'x-component-props': {
 +             layout: 'one-column'
 +           }
++           'x-initializer': 'info:configureActions',
 +         }
 +       }
       }
@@ -142,6 +146,9 @@ function getInfoBlockSchema({ dataSource, collection }) {
 }
 ```
 
+`configure actions` 一般与 [ActionBar](https://client.docs.nocobase.com/components/action#actionbar) 组件搭配使用。
+
+
 我们在 `InfoBlock` 的子节点中添加了一个 `actions` 字段：
 
 - `type: 'void'`：类型为 `void`，表示这是一个容器
@@ -149,7 +156,7 @@ function getInfoBlockSchema({ dataSource, collection }) {
 - `x-initializer: 'createForm:configureActions'`：使用 `configureActions` 这个 Schema Initializer
 - `x-component-props.layout: 'one-column'`：布局为一列，具体示例可参考 [ActionBar one-column](https://client.docs.nocobase.com/components/action#one-column)
 
-### 5. 修改 `InfoBlock` 组件
+#### 2.4 区块渲染子节点
 
 我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/InfoBlock.tsx` 文件，将 `InfoBlock` 组件修改为：
 
@@ -168,7 +175,9 @@ export const InfoBlock = ({ children }) => {
 
 ![img_v3_02b4_4c6cb675-789e-48d5-99ce-072984dcfc9g](https://static-docs.nocobase.com/img_v3_02b4_4c6cb675-789e-48d5-99ce-072984dcfc9g.jpg)
 
-### 6. 实现 `Custom request` Action
+### 3. 实现 initializer items
+
+#### 3.1 复用：`Custom request` Action
 
 我们继续修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/configureActions.tsx` 文件：
 
@@ -191,9 +200,120 @@ export const configureActions = new SchemaInitializer({
 
 ![img_v3_02b4_0d439087-cfe1-4681-bfab-4e4bc3e34cbg](https://static-docs.nocobase.com/img_v3_02b4_0d439087-cfe1-4681-bfab-4e4bc3e34cbg.jpg)
 
-### 7. 实现自定义 Action
+#### 3.2 自定义：`Custom Refresh` Action
 
-除了复用已有的 Initializer Item，我们也可以自定义 Action，这里我们实现一个 `Custom Refresh` Action。
+除了复用已有的 Initializer Item，我们也可以自定义 Action。关于自定义 Action 的详细步骤可以参考 [添加简单 Action](/plugin-samples/schema-initializer/simple-action) 和 [添加弹窗 Action](/plugin-samples/schema-initializer/modal-action)。
+
+这里我们实现一个 `Custom Refresh` Action。
+
+#### 3.2.1 定义 Schema
+
+##### 3.2.1.1 定义 Schema
+
+```ts
+import { ISchema, useDataBlockRequest } from "@nocobase/client";
+export const useCustomRequestActionProps = (): ActionProps => {
+  const { runAsync } = useDataBlockRequest();
+  return {
+    type: 'primary',
+    async onClick() {
+      await runAsync();
+    },
+  }
+}
+
+const refreshActionSchema: ISchema = {
+  type: 'void',
+  'x-component': 'Action',
+  title: 'Custom Refresh',
+  'x-use-component-props': 'useCustomRequestActionProps'
+}
+```
+
+我们定义了 `refreshActionSchema` 以及动态属性 `useCustomRequestActionProps`。
+
+`refreshActionSchema`：
+  - `type: 'void'`：类型为 `void`，表示普通 UI，不包含数据
+  - `x-component: 'Action'`：使用 [Action](https://client.docs.nocobase.com/components/action) 组件，用于展示按钮
+  - `x-settings: customRequestActionSettings.name`：使用 `customRequestActionSettings` 这个 Schema Settings
+  - `title: 'Custom Refresh'`：按钮标题
+  - `x-use-component-props: 'useCustomRequestActionProps'`：使用 `useCustomRequestActionProps` 这个 Hooks 返回的属性。因为 Schema 会保存到服务器，所以这里需要使用字符串的方式。
+
+`useCustomRequestActionProps`：这个是 React Hooks，需要返回 Action 组件的属性。
+  - [useDataBlockRequest()](https://client.docs.nocobase.com/core/data-block/data-block-request-provider)：数据区块的请求对象，由 `DataBlockProvider` 内部提供，用于自动获取数据区块的数据
+    - `runAsync`：一个异步请求方法，用于刷新数据区块的数据
+  - `type: 'primary'`：按钮类型为 `primary`
+  - `onClick`：点击事件。
+
+
+##### 3.2.1.2 注册上下文 
+
+我们还需要将 `useCustomRequestActionProps` 注册到上下文中。我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/InfoBlock.tsx` 文件：
+
+```tsx | pure
+import { useCustomRequestActionProps } from './configureActions'
+export const InfoBlock = ({ children }) => {
+  const { data } = useDataBlockRequest<any[]>();
+  return <SchemaComponentOptions scope={{ useCustomRequestActionProps }}>
+    <div>
+      {children}
+      <div>data length: {data?.data?.length}</div>
+    </div>
+  </SchemaComponentOptions>
+}
+```
+
+关于 `SchemaComponentOptions` 的使用可以参考 [SchemaComponentOptions](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponentoptions) 文档以及 [局部注册 Component 和 Scope](/plugin-samples/component-and-scope/local)。
+
+#### 3.2.2 实现 settings
+
+##### 3.2.2.1 定义 settings
+
+```tsx | pure
+import { ISchema, ActionProps, SchemaInitializer, SchemaSettings, useDataBlockRequest, useSchemaInitializer } from "@nocobase/client";
+
+export const customRequestActionSettings = new SchemaSettings({
+  name: 'actionSettings:customRefresh',
+  items: [
+    {
+      name: 'remove',
+      type: 'remove',
+    }
+  ]
+})
+
+```
+
+`customRequestActionSettings`：这里只简单定义了一个 `remove` 操作，更多关于 Schema Settings 的定义可以参考 [Schema Settings](https://client.docs.nocobase.com/core/ui-schema/schema-settings) 文档。
+
+##### 3.2.2.2 注册 settings
+
+然后将 `customRequestActionSettings` 注册到系统中。我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/index.tsx` 文件：
+
+```ts
+import { configureActions, customRequestActionSettings } from './configureActions';
+export class PluginInitializerConfigureActionsClient extends Plugin {
+  async load() {
+    this.app.schemaSettingsManager.add(infoBlockSettings, customRequestActionSettings);
+  }
+}
+```
+
+##### 3.2.2.2 使用 settings
+
+我们修改 `refreshActionSchema`：
+
+```diff
+const refreshActionSchema: ISchema = {
+  type: 'void',
+  'x-component': 'Action',
+  'x-settings': customRequestActionSettings.name,
+  title: 'Custom Refresh',
+  'x-use-component-props': 'useCustomRequestActionProps'
+}
+```
+
+##### 3.2.3 定义 SchemaInitializer item
 
 我们继续修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/configureActions.tsx` 文件：
 
@@ -229,80 +349,6 @@ export const configureActions = new SchemaInitializer({
 
 更多关于 Schema Item 的定义可以参考 [Schema Initializer Item](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types) 文档。
 
-```tsx | pure
-import { ISchema, ActionProps, SchemaInitializer, SchemaSettings, useDataBlockRequest, useSchemaInitializer } from "@nocobase/client";
-
-export const customRequestActionSettings = new SchemaSettings({
-  name: 'actionSettings:customRefresh',
-  items: [
-    {
-      name: 'remove',
-      type: 'remove',
-    }
-  ]
-})
-
-export const useCustomRequestActionProps = (): ActionProps => {
-  const { runAsync } = useDataBlockRequest();
-  return {
-    type: 'primary',
-    async onClick() {
-      await runAsync();
-    },
-  }
-}
-
-const refreshActionSchema: ISchema = {
-  type: 'void',
-  'x-component': 'Action',
-  "x-settings": customRequestActionSettings.name,
-  title: 'Custom Refresh',
-  'x-use-component-props': 'useCustomRequestActionProps'
-}
-```
-
-`refreshActionSchema`：
-  - `type: 'void'`：类型为 `void`，表示普通 UI，不包含数据
-  - `x-component: 'Action'`：使用 [Action](https://client.docs.nocobase.com/components/action) 组件，用于展示按钮
-  - `x-settings: customRequestActionSettings.name`：使用 `customRequestActionSettings` 这个 Schema Settings
-  - `title: 'Custom Refresh'`：按钮标题
-  - `x-use-component-props: 'useCustomRequestActionProps'`：使用 `useCustomRequestActionProps` 这个 Hooks 返回的属性。这个 Schema 会保存到服务器，所以这里需要使用字符串的方式。
-
-`customRequestActionSettings`：这里只简单定义了一个 `remove` 操作，更多关于 Schema Settings 的定义可以参考 [Schema Settings](https://client.docs.nocobase.com/core/ui-schema/schema-settings) 文档。
-
-`useCustomRequestActionProps`：这个是 React Hooks，需要返回 Action 组件的属性。
-  - [useDataBlockRequest()](https://client.docs.nocobase.com/core/data-block/data-block-request-provider)：数据区块的请求对象，由 `DataBlockProvider` 内部提供，用于自动获取数据区块的数据
-    - `runAsync`：一个异步请求方法，用于刷新数据区块的数据
-  - `type: 'primary'`：按钮类型为 `primary`
-  - `onClick`：点击事件。
-
-然后将 `customRequestActionSettings` 注册到系统中。我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/index.tsx` 文件：
-
-```ts
-import { configureActions, customRequestActionSettings } from './configureActions';
-export class PluginInitializerConfigureActionsClient extends Plugin {
-  async load() {
-    this.app.schemaSettingsManager.add(infoBlockSettings, customRequestActionSettings);
-  }
-}
-```
-
-我们还需要将 `useCustomRequestActionProps` 注册到上下文中。我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/InfoBlock.tsx` 文件：
-
-```tsx | pure
-import { useCustomRequestActionProps } from './configureActions'
-export const InfoBlock = ({ children }) => {
-  const { data } = useDataBlockRequest<any[]>();
-  return <SchemaComponentOptions scope={{ useCustomRequestActionProps }}>
-    <div>
-      {children}
-      <div>data length: {data?.data?.length}</div>
-    </div>
-  </SchemaComponentOptions>
-}
-```
-
-关于 `SchemaComponentOptions` 的使用可以参考 [SchemaComponentOptions](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponentoptions) 文档以及 [局部注册 Component 和 Scope](/plugin-samples/component-and-scope/local)。
 
 <video width="100%" controls="">
   <source src="https://static-docs.nocobase.com/20240522-191602.mp4" type="video/mp4" />
