@@ -165,7 +165,7 @@ export default PluginInitializerSimpleActionClient;
 
 关于 `SchemaComponent` 的详细说明可以查看 [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponent-1) 文档。
 
-TODO：截图
+<video controls src="https://static-docs.nocobase.com/20240526171318_rec_.mp4"></video>
 
 验证完毕后需要删除测试页面。
 
