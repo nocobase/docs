@@ -27,10 +27,13 @@ export default defineConfig({
   hash: true,
   alias: {
   },
-  // ssr: {},
   exportStatic: {
     ignorePreRenderError: true
   },
+  ssr: process.env.NODE_ENV === 'production' ? { builder: 'webpack' } : false,
+  sitemap: process.env.NODE_ENV === 'production' ? {
+    hostname: lang === 'zh-CN' ? 'https://docs-cn.nocobase.com' : 'https://docs.nocobase.com'
+  } : false,
   cacheDirectoryPath: `node_modules/.docs-${lang}-cache`,
   outputPath: `./dist/${lang}`,
   resolve: {
