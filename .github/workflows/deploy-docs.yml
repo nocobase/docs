@@ -8,6 +8,7 @@ on:
       - 'docs/**'
       - '.github/workflows/deploy-docs.yml'
       - 'package.json'
+      - '.dumirc.ts'
   pull_request:
     branches:
       - '**'
