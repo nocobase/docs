@@ -152,11 +152,11 @@ export default [
         'title.zh-CN': '区块内嵌的 Initializer - 配置操作',
         link: '/plugin-samples/schema-initializer/configure-actions',
       },
-      {
-        title: 'Configure Custom',
-        'title.zh-CN': '区块内嵌的 Initializer - 其他自定义',
-        link: '/plugin-samples/schema-initializer/configure-custom',
-      },
+      // {
+      //   title: 'Configure Custom',
+      //   'title.zh-CN': '区块内嵌的 Initializer - 其他自定义',
+      //   link: '/plugin-samples/schema-initializer/configure-custom',
+      // },
     ]
   }
 ];

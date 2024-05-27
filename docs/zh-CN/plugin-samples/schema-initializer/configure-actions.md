@@ -82,7 +82,7 @@ import { InfoBlock, infoBlockSettings, infoInitializerItem } from './InfoBlock';
 我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/configureActions.tsx` 文件：
 
 ```tsx | pure
-import { Grid, SchemaInitializer, useSchemaInitializer } from "@nocobase/client";
+import { SchemaInitializer } from "@nocobase/client";
 
 export const configureActions = new SchemaInitializer({
   name: 'info:configureActions',

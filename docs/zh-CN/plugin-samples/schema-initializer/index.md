@@ -20,4 +20,4 @@
 
 - [区块内嵌的 Initializer - 配置字段](/plugin-samples/schema-initializer/configure-fields)
 - [区块内嵌的 Initializer - 配置操作](/plugin-samples/schema-initializer/configure-actions)
-- [区块内嵌的 Initializer - 其他自定义](/plugin-samples/schema-initializer/configure-custom)
+<!-- - [区块内嵌的 Initializer - 其他自定义](/plugin-samples/schema-initializer/configure-custom) -->
