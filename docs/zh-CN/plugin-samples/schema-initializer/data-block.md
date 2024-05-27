@@ -138,7 +138,7 @@ export default PluginInitializerDataBlockClient;
 
 然后访问 `http://localhost:13000/admin/data-block` 就可以看到对应测试页面的内容了。
 
-TODO：截图
+![20240526165834](https://static-docs.nocobase.com/20240526165834.png)
 
 验证完毕后需要删除测试页面。
 
@@ -253,11 +253,11 @@ export class PluginInitializerDataBlockClient extends Plugin {
       Component: () => {
         return <>
           <div style={{ marginTop: 20, marginBottom: 20 }}>
-            <SchemaComponent schema={{ properties: { test: getInfoBlockSchema({ collection: 'users' }) } }} />
+            <SchemaComponent schema={{ properties: { test1: getInfoBlockSchema({ collection: 'users' }) } }} />
           </div>
 
           <div style={{ marginTop: 20, marginBottom: 20 }}>
-            <SchemaComponent schema={{ properties: { test: getInfoBlockSchema({ collection: 'roles' }) } }} />
+            <SchemaComponent schema={{ properties: { test2: getInfoBlockSchema({ collection: 'roles' }) } }} />
           </div>
         </>
       }
@@ -271,7 +271,7 @@ export default PluginInitializerDataBlockClient;
 - [SchemaComponentOptions](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponentoptions)：用于传递 Schema 中所需的 `components` 和 `scope`，具体的可查看 [局部注册 Component 和 Scope](/plugin-samples/component-and-scope/local)
 - [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponent-1)：用于渲染 Schema
 
-TODO：截图界面
+![20240526170053](https://static-docs.nocobase.com/20240526170053.png)
 
 验证完毕后需要删除测试页面。
 
@@ -388,7 +388,7 @@ export function getInfoBlockSchema({ dataSource = 'main', collection }) {
 
 如果我们需要添加到页面级别的 `Add block` 中，我们需要知道对应的 `name`，我们可以通过 TODO 方式查看对应的 `name`。
 
-TODO：截图
+TODO
 
 通过上图可以看到页面级别的 `Add block` 对应的 name 为 `page:addBlock`，`Data Blocks` 对应的 name 为 `dataBlocks`。
 
@@ -410,7 +410,7 @@ export class PluginInitializerDataBlockClient extends Plugin {
 export default PluginInitializerDataBlockClient;
 ```
 
-TODO：截图
+<video controls width='100%' src="https://static-docs.nocobase.com/20240526170424_rec_.mp4"></video>
 
 #### 5.2 添加到弹窗 Add block 中
 

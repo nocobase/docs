@@ -138,7 +138,7 @@ export default PluginInitializerSimpleBlockClient;
 
 然后访问 `http://localhost:13000/admin/image-block` 就可以看到对应测试页面的内容了。
 
-TODO：截图
+![20240526165057](https://static-docs.nocobase.com/20240526165057.png)
 
 验证完毕后需要删除测试页面。
 
@@ -205,7 +205,7 @@ export default PluginInitializerSimpleBlockClient;
 
 关于 `SchemaComponent` 的详细说明可以查看 [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponent-1) 文档。
 
-TODO：截图
+![20240526165408](https://static-docs.nocobase.com/20240526165408.png)
 
 验证完毕后需要删除测试页面。
 
@@ -298,7 +298,7 @@ const imageBlockSchema: ISchema = {
 
 如果我们需要添加到页面级别的 `Add block` 中，我们需要知道对应的 `name`，我们可以通过 TODO 方式查看对应的 `name`。
 
-TODO：截图
+TODO
 
 通过上图可以看到页面级别的 `Add block` 对应的 name 为 `page:addBlock`，`Other Blocks` 对应的 name 为 `otherBlocks`。
 
