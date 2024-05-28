@@ -40,7 +40,6 @@ export default defineConfig({
   ],
   headScripts: [
     `document.addEventListener('DOMContentLoaded', function () {
-      document.body.querySelector('.dumi-default-search-bar').setAttribute('style', 'display: none');
       document.body.style.visibility = 'hidden';
     });
 
@@ -50,7 +49,6 @@ export default defineConfig({
       const antdIsLoaded = headerMenu && window.getComputedStyle(headerMenu).listStyle === 'outside none none';
       if (loading || antdIsLoaded) {
         document.body.style.visibility = 'initial';
-        document.body.querySelector('.dumi-default-search-bar').setAttribute('style', 'display: block');
         clearInterval(checkLoading);
       }
     }, 50);`
