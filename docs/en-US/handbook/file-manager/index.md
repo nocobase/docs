@@ -18,15 +18,10 @@ An `attachments` collection is built-in to store all files associated with attac
 
 Attachment fields are specific relational fields related to the file collection, which can be created through "Attachment field" or configured through "Association field".
 
-<p>
-
 [More usage information can be found in the attachment field introduction document](/handbook/file-manager/field-attachment)
-
-</p>
 
 ### File Storage
 
-- [Local Storage](/handbook/file-manager/file-storage-local)
-- [Alibaba Cloud OSS](/handbook/file-storage-oss)
-- [Amazon S3](/handbook/file-storage-s3)
-- [Tencent Cloud COS](/handbook/file-storage-cos)
+The file storage engine is used to save files to specific services, including local storage (saving to the server's hard drive), cloud storage, etc.
+
+[More usage information can be found in the file storage introduction document](./storage/index.md)
