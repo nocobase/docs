@@ -218,7 +218,7 @@ export function useInfoBlockProps() {
 
 #### 2.2 注册 scope
 
-我们需要将 `useInfoBlockProps` 注册到系统中，这样 `x-use-component-props` 才能找到对应的 scope。
+我们需要将 `useInfoBlockProps` 注册到系统中，这样 [x-use-component-props](/development/client/ui-schema/what-is-ui-schema#x-component-props-和-x-use-component-props) 才能找到对应的 scope。
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
