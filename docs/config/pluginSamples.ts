@@ -125,22 +125,27 @@ export default [
       {
         title: 'Add Simple Block',
         'title.zh-CN': '添加简单区块 Simple Block',
-        link: '/plugin-samples/schema-initializer/simple-block',
+        link: '/plugin-samples/schema-initializer/block-simple',
       },
       {
         title: 'Add Data Block',
         'title.zh-CN': '添加数据区块 Data Block',
-        link: '/plugin-samples/schema-initializer/data-block',
+        link: '/plugin-samples/schema-initializer/block-data',
+      },
+      {
+        title: 'Add Data Block Modal',
+        'title.zh-CN': '添加带弹窗的数据区块 Data Block Modal',
+        link: '/plugin-samples/schema-initializer/block-data-modal',
       },
       {
         title: 'Add Simple Action',
         'title.zh-CN': '添加简单 Action',
-        link: '/plugin-samples/schema-initializer/simple-action',
+        link: '/plugin-samples/schema-initializer/action-simple',
       },
       {
         title: 'Add Modal Action',
         'title.zh-CN': '添加弹窗 Action',
-        link: '/plugin-samples/schema-initializer/modal-action',
+        link: '/plugin-samples/schema-initializer/action-modal',
       },
       {
         title: 'Configure Fields',

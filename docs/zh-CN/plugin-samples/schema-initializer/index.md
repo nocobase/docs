@@ -11,10 +11,11 @@
 
 **向已有的 Initializer 中添加子项**
 
-- [添加简单区块 Simple Block](/plugin-samples/schema-initializer/simple-block)
+- [添加简单区块 Simple Block](/plugin-samples/schema-initializer/block-simple)
 - [添加数据区块 Data Block](/plugin-samples/schema-initializer/data-block)
-- [添加简单 Action](/plugin-samples/schema-initializer/simple-action)
-- [添加弹窗 Action](/plugin-samples/schema-initializer/modal-action)
+- [添加带弹窗的数据区块 Data Block Modal](/plugin-samples/schema-initializer/data-block-modal)
+- [添加简单 Action](/plugin-samples/schema-initializer/action-simple)
+- [添加弹窗 Action](/plugin-samples/schema-initializer/action-modal)
 
 **创建新的 Initializer**
 

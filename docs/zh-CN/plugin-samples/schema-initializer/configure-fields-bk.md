@@ -55,23 +55,23 @@ yarn dev
 
 前面已经说明本示例会在 [添加数据区块 Data Block](/plugin-samples/schema-initializer/data-block) 基础上继续实现，所以我们可以直接复制以下 2 个文件：
 
-- `packages/plugins/@nocobase-sample/plugin-initializer-data-block/src/client/InfoBlock.tsx`
-- `packages/plugins/@nocobase-sample/plugin-initializer-data-block/src/client/index.tsx`
+- `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/InfoBlock.tsx`
+- `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/index.tsx`
 
 到 `packages/plugins/@nocobase-sample/plugin-initializer-configure-fields/src/client` 目录，并修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-fields/src/client/index.tsx` 为：
 
 ```diff
 import { Plugin } from '@nocobase/client';
-import { InfoBlock, infoBlockSettings, infoInitializerItem } from './InfoBlock';
+import { InfoBlock, infoBlockSettings, infoBlockInitializerItem } from './InfoBlock';
 
-- export class PluginInitializerDataBlockClient extends Plugin {
+- export class PluginInitializerBlockDataClient extends Plugin {
 + export class PluginInitializerConfigureFieldsClient extends Plugin {
   async load() {
     // ...
   }
 }
 
-- export default PluginInitializerDataBlockClient;
+- export default PluginInitializerBlockDataClient;
 + export default PluginInitializerConfigureFieldsClient;
 ```
 
