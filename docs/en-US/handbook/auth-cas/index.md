@@ -1,5 +1,7 @@
 # Auth: CAS
 
+<PluginInfo commercial="true" name="auth-cas"></PluginInfo>
+
 ## Introduction
 
 The Auth: CAS plugin follows the CAS (Central Authentication Service) protocol standard, allowing users to sign in to NocoBase using accounts provided by third-party identity authentication service providers (IdP).
