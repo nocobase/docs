@@ -75,6 +75,8 @@ import { InfoBlock, infoBlockSettings, infoBlockInitializerItem } from './InfoBl
 + export default PluginInitializerConfigureFieldsClient;
 ```
 
+为了避免和其他示例冲突，把所有 `InfoBlock` 改为了 `InfoBlock2`，但是本示例文档中仍然按照 `InfoBlock` 来说明。
+
 ### 2. 创建 `Configure fields` 对应的 initializer
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-configure-fields/src/client/configureFields.tsx` 文件：

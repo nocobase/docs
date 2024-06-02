@@ -4,13 +4,19 @@
 
 ![Alt text](https://static-docs.nocobase.com/3f37519ddd9ba1a99f1fdbfe32b4a454.png)
 
+## SchemaSettings 的作用
+
+`SchemaSettings` 通过修改 [FieldSchema](https://client.docs.nocobase.com/core/ui-schema/designable#usefieldschema) 或者 [Field](https://client.docs.nocobase.com/core/ui-schema/designable#usefield) 的属性，组件读取这些属性来实现对区块、字段、操作等的配置。
+
+`Field` 是 `FieldSchema` 的实例，如果是修改 `Field` 不会将 Schema 结构保存到数据库，只是修改当前实例的属性，刷新页面后会丢失。如果你需要保存到数据库，需要修改 `FieldSchema`。
+
 ## 内置的设置器
 
 <img src="./image-4.png" />
 
 ## 向已有的设置器里添加设置项
 
-推荐使用 `schemaSettingsManager.addItem()` 方法添加设置项，item 的详细配置参考 [SchemaSettings Item API](#)
+推荐使用 `schemaSettingsManager.addItem()` 方法添加设置项，item 的详细配置参考 [SchemaSettings Item API](https://client.docs.nocobase.com/core/ui-schema/schema-settings-manager#schemasettingsmanageradditem)
 
 ```ts
 class PluginDemoAddSchemaSettingsItem extends Plugin {

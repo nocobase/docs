@@ -75,6 +75,8 @@ import { InfoBlock, infoBlockSettings, infoBlockInitializerItem } from './InfoBl
 + export default PluginInitializerConfigureActionsClient;
 ```
 
+为了避免和其他示例冲突，把所有 `InfoBlock` 改为了 `InfoBlock2`，但是本示例文档中仍然按照 `InfoBlock` 来说明。
+
 ### 2. 实现 initializer
 
 #### 2.1 定义 initializer

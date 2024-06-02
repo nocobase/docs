@@ -153,12 +153,16 @@ NocoBase 的动态页面都是通过 Schema 来渲染，所以我们需要定义
 我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/imageBlockSchema.ts` 文件：
 
 ```tsx | pure
-import { ISchema } from '@nocobase/client';
+import { ISchema } from "@nocobase/client";
 
 export const imageBlockSchema: ISchema = {
   type: 'void',
-  'x-decorator': 'CardItem',
-  'x-component': 'ImageBlock',
+  'x-component': 'CardItem',
+  properties: {
+    image: {
+      'x-component': 'ImageBlock',
+    }
+  },
 };
 ```
 
@@ -294,8 +298,8 @@ export default PluginInitializerBlockSimpleClient;
 const imageBlockSchema: ISchema = {
   type: 'void',
   'x-decorator': 'CardItem',
-  'x-component': 'ImageBlock',
 + 'x-settings': imageBlockSettings.name,
+  // ...
 };
 ```
 
