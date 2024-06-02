@@ -181,7 +181,7 @@ export default [
       },
       {
         title: 'Add New SchemaSettings',
-        'title.zh-CN': '添加数据区块 Data Block',
+        'title.zh-CN': '新增 SchemaSettings',
         link: '/plugin-samples/schema-settings/new',
       },
     ]
