@@ -744,7 +744,7 @@ export default PluginInitializerBlockDataModalClient;
 如果需要更多的 `Add block`，可以继续添加，只需要知道对应的 `name` 即可。
 
 
-### 6. 总结
+### 7. 总结
 
 通过上述步骤，我们就可以实现一个带弹窗的数据的区块，并将其添加到 `Page`、`Table` 以及移动端的 `Add block` 中。
 
