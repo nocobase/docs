@@ -64,7 +64,7 @@ yarn dev
 - 然后需要确认 [Table Block Schema](https://client.docs.nocobase.com/ui-schema/blocks/data/table) 中 `TableV2` 组件的属性存储位置： 我们通过 [文档](https://client.docs.nocobase.com/ui-schema/blocks/data/table) 在 `x-decorator-props` 中
 - 最后需要确认 `showIndex` 属性的值是否传递到 `TableV2` 组件中：我们通过 [文档](https://client.docs.nocobase.com/ui-schema/blocks/data/table) 可以得知 `showIndex` 属性是通过 `useTableBlockProps` 传递到 `TableV2` 组件中
 
-### 定义 SchemaSettingsItem
+### 1. 定义 SchemaSettingsItem
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-schema-settings-add-item/src/client/tableShowIndexSettingsItem.tsx` 文件：
 
@@ -87,7 +87,7 @@ export const tableShowIndexSettingsItem: SchemaSettingsItemType = {
 - `type`：配置项的类型，用于渲染不同的组件，更多类型可以查看 [SchemaSettings API](https://client.docs.nocobase.com/core/ui-schema/schema-settings#built-in-components-and-types)
 - `useComponentProps`：用于配置组件的属性
 
-### 修改 Schema
+### 2. 修改 Schema
 
 ```diff
 import { SchemaSettingsItemType, useDesignable } from '@nocobase/client';
@@ -132,7 +132,7 @@ Props：
 - `x-uid`：字段的唯一标识，用于服务端的查询和修改
 - `x-decorator-props`：字段的属性，用于配置组件的属性
 
-### 注册 SchemaSettingsItem
+### 3. 注册 SchemaSettingsItem
 
 我们修改 `packages/plugins/@nocobase-sample/plugin-schema-settings-add-item/src/client/index.ts` 文件：
 

@@ -14,6 +14,8 @@
 - `objectFit`：选择 img 的 `object-fit` 属性
 - `Lazy`：是否懒加载
 
+<br />
+
 <video width="100%" controls="">
   <source src="https://static-docs.nocobase.com/20240602112410_rec_.mp4" type="video/mp4" />
 </video>
@@ -51,7 +53,7 @@ yarn dev
 
 ### 1. 创建区块/字段/操作
 
-前面已经说明本示例会在 [简单区块](/plugin-samples/schema-initializer/simple-block) 基础上继续实现，所以我们可以复制 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client` 目录覆盖 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client`。
+前面已经说明本示例会在 [简单区块](/plugin-samples/schema-initializer/simple-block) 基础上继续实现，所以我们可以复制 `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client` 目录覆盖 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client`。
 
 然后修改 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/index.tsx`：
 
@@ -268,7 +270,7 @@ export class PluginSchemaSettingsNewClient extends Plugin {
 
 验证完毕后需要删除测试页面。
 
-### 4. 定义 SchemaSettings
+### 4. 实现 SchemaSettings
 
 [简单区块文档](/plugin-samples/schema-initializer/block-simple#4-实现-schema-settings) 中已经说明了如何实现 `SchemaSettings`。
 

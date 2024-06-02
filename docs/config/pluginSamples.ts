@@ -113,8 +113,8 @@ export default [
     ]
   },
   {
-    title: 'Schema Initializer',
-    'title.zh-CN': 'Schema Initializer',
+    title: 'SchemaInitializer',
+    'title.zh-CN': 'SchemaInitializer',
     type: 'group',
     children: [
       {
@@ -162,6 +162,28 @@ export default [
       //   'title.zh-CN': '区块内嵌的 Initializer - 其他自定义',
       //   link: '/plugin-samples/schema-initializer/configure-custom',
       // },
+    ]
+  },
+  {
+    title: 'SchemaSettings',
+    'title.zh-CN': 'SchemaSettings',
+    type: 'group',
+    children: [
+      {
+        title: 'Overview',
+        'title.zh-CN': '概述',
+        link: '/plugin-samples/schema-settings',
+      },
+      {
+        title: 'Add Item to Existing SchemaSettings',
+        'title.zh-CN': '添加子项到已有的 SchemaSettings',
+        link: '/plugin-samples/schema-settings/add-item',
+      },
+      {
+        title: 'Add New SchemaSettings',
+        'title.zh-CN': '添加数据区块 Data Block',
+        link: '/plugin-samples/schema-settings/new',
+      },
     ]
   }
 ];

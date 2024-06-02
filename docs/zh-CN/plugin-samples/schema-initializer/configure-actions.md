@@ -53,12 +53,9 @@ yarn dev
 
 ### 1. 创建区块
 
-前面已经说明本示例会在 [添加数据区块 Data Block](/plugin-samples/schema-initializer/data-block) 基础上继续实现，所以我们可以直接复制以下 2 个文件：
+前面已经说明本示例会在 [添加数据区块 Data Block](/plugin-samples/schema-initializer/data-block) 基础上继续实现，所以我们可以复制 `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client` 目录覆盖 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client`。
 
-- `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/InfoBlock.tsx`
-- `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/index.tsx`
-
-到 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client` 目录，并修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/index.tsx` 为：
+然后修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/index.tsx`：
 
 ```diff
 import { Plugin } from '@nocobase/client';
