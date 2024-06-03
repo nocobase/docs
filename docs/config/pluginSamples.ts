@@ -199,17 +199,17 @@ export default [
       {
         title: 'Carousel Block',
         'title.zh-CN': 'Carousel 区块',
-        link: '/plugin-samples/block-carousel',
+        link: '/plugin-samples/block/block-carousel',
       },
       {
         title: 'Form Block',
         'title.zh-CN': 'Form 区块',
-        link: '/plugin-samples/block-form',
+        link: '/plugin-samples/block/block-form',
       },
       {
         title: 'Table Block',
         'title.zh-CN': 'Table 区块',
-        link: '/plugin-samples/block-table',
+        link: '/plugin-samples/block/block-table',
       },
     ]
   }

@@ -329,7 +329,7 @@ export const infoBlockInitializerItem: SchemaInitializerItemType = {
 
 #### 4.1 定义 Schema Settings
 
-一个完整的 Block 还需要有 Schema Settings，用于配置一些属性，但 Schema Settings 不是本示例的重点，所以我们这里仅有一个 `remove` 操作。
+一个完整的 Block 还需要有 Schema Settings，用于配置一些属性和操作，但 Schema Settings 不是本示例的重点，所以我们这里仅有一个 `remove` 操作。
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/infoBlockSettings.ts` 文件：
 
