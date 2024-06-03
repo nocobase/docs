@@ -2,11 +2,9 @@
 
 ## 场景说明
 
-NocoBase 有很多 `Add block` 按钮用于向界面添加区块。其中有些和数据表有关系的被成为数据区块 `Data Block`，有些和数据表无关的被称为简单区块 `Simple Block`。
+NocoBase 有很多 `Add block` 按钮用于向界面添加区块，但是目前已有的区块类型不一定满足我们的需求，我们就需要根据需求自定开发一些区块。
 
-![img_v3_02b4_a4529308-62e3-4fa7-be4d-5dcae332c49g](https://static-docs.nocobase.com/img_v3_02b4_a4529308-62e3-4fa7-be4d-5dcae332c49g.jpg)
-
-但是目前已有的区块类型不一定满足我们的需求，我们就需要根据需求自定开发一些区块，本篇文章就是针对简单区块 `Simple Block` 进行说明。
+其中有些和数据表有关系的被成为数据区块 `Data Block`，有些和数据表无关的被称为简单区块 `Simple Block`，本篇文章就是针对简单区块 `Simple Block` 举例说明。
 
 ## 示例说明
 
@@ -15,7 +13,7 @@ NocoBase 有很多 `Add block` 按钮用于向界面添加区块。其中有些�
 本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-block-carousel) 中查看。
 
 <video width="100%" controls="">
-  <source src="" type="video/mp4" />
+  <source src="https://static-docs.nocobase.com/20240603155655_rec_.mp4" type="video/mp4" />
 </video>
 
 ## 初始化插件
@@ -58,7 +56,7 @@ yarn dev
 
 我们首先需要定义区块名称，它将会使用在各个地方。
 
-我们新建 `packages\plugins\@nocobase-sample\plugin-block-carousel\src\client\constants.ts`：
+我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/constants.ts`：
 
 ```ts
 export const CarouselBlockName = 'Carousel';
@@ -179,7 +177,9 @@ export default PluginBlockCarouselClient;
 
 然后访问 `http://localhost:13000/admin/carousel-component` 就可以看到对应测试页面的内容了。
 
-![20240526165057](https://static-docs.nocobase.com/20240526165057.png)
+<video width="100%" controls="">
+  <source src="https://static-docs.nocobase.com/20240603155918_rec_.mp4" type="video/mp4" />
+</video>
 
 验证完毕后需要删除测试页面。
 
@@ -304,7 +304,9 @@ export default PluginBlockCarouselClient;
 
 我们访问 [http://localhost:13000/admin/carousel-schema](http://localhost:13000/admin/carousel-schema) 就可以看到对应测试页面的内容了。
 
-TODO: 截图
+<video width="100%" controls="">
+  <source src="https://static-docs.nocobase.com/20240603155918_rec_.mp4" type="video/mp4" />
+</video>
 
 验证完毕后需要删除测试页面。
 
@@ -343,9 +345,98 @@ export const carouselInitializerItem: SchemaInitializerItemType = {
 
 更多关于 Schema Item 的定义可以参考 [Schema Initializer Item](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types) 文档。
 
-### 4. 实现 Schema Settings
+### 4. 添加到 Add block 中
 
-#### 4.1 定义 Schema Settings
+系统中有很多个 `Add block` 按钮，但他们的 **name 是不同的**。
+
+![img_v3_02b4_049b0a62-8e3b-420f-adaf-a6350d84840g](https://static-docs.nocobase.com/img_v3_02b4_049b0a62-8e3b-420f-adaf-a6350d84840g.jpg)
+
+#### 4.1 添加到页面级别 Add block 中
+
+如果我们需要添加到页面级别的 `Add block` 中，我们需要知道对应的 `name`，我们可以通过 TODO 方式查看对应的 `name`。
+
+TODO
+
+通过上图可以看到页面级别的 `Add block` 对应的 name 为 `page:addBlock`，`Other Blocks` 对应的 name 为 `otherBlocks`。
+
+然后我们修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/index.tsx` 文件：
+
+```tsx | pure
+import { Plugin } from '@nocobase/client';
+
+import { Carousel } from './Carousel';
+import { carouselBlockSchema, useCarouselBlockProps } from './carouselBlockSchema';
+import { carouselSettings } from './carouselSettings';
+import { carouselInitializerItem } from './carouselInitializerItem';
+
+export class PluginBlockCarouselClient extends Plugin {
+  async load() {
+    this.app.addComponents({ Carousel })
+    this.app.schemaSettingsManager.add(carouselSettings);
+    this.app.addScopes({ useCarouselBlockProps });
+
+    this.app.schemaInitializerManager.addItem('page:addBlock', `otherBlocks.${carouselInitializerItem.name}`, carouselInitializerItem)
+  }
+}
+
+export default PluginBlockCarouselClient;
+```
+
+上述代码首先将 `Carousel` 组件注册到系统中，这样前面 `carouselBlockSchema` 定义的 `x-component: 'Carousel'` 才能找到对应的组件，更多详细解释可以查看 [全局注册 Component 和 Scope](/plugin-samples/component-and-scope/global)。
+
+然后将 `carouselSettings` 通过 [app.schemaSettingsManager.add](https://client.docs.nocobase.com/core/ui-schema/schema-settings-manager#schemasettingsmanageradd) 添加到系统中。
+
+然后使用 [app.schemaInitializerManager.addItem](https://client.docs.nocobase.com/core/ui-schema/schema-initializer-manager#schemainitializermanageradditem) 将 `carouselInitializerItem` 添加对应 Initializer 子项中，其中 `page:addBlock` 是页面上 `Add block` 的 name，`otherBlocks` 是其父级的 name。
+
+然后我们 hover `Add block` 按钮，就可以看到 `Image` 这个新的区块类型了，点击 `Image`，就可以添加一个新的 `Carousel` 区块了。
+
+![20240603161730](https://static-docs.nocobase.com/20240603161730.png)
+
+#### 4.2 添加到弹窗 Add block 中
+
+我们不仅需要将其添加到页面级别的 `Add block` 中，还需要将其添加到 `Table` 区块 `Add new` 弹窗的 `Add block` 中。
+
+![img_v3_02b4_fc47fe3a-35a1-4186-999c-0b48e6e001dg](https://static-docs.nocobase.com/img_v3_02b4_fc47fe3a-35a1-4186-999c-0b48e6e001dg.jpg)
+
+我们按照页面级别获取 `name` 的方式获取到 `Table` 区块的 `Add block` 的 `name` 为 `popup:addNew:addBlock`，`Other Blocks` 对应的 name 为 `otherBlocks`。
+
+然后修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/index.tsx` 文件：
+
+```diff
+export class PluginBlockCarouselClient extends Plugin {
+  async load() {
+    // ...
++   this.app.schemaInitializerManager.addItem('popup:addNew:addBlock', `otherBlocks.${carouselInitializerItem.name}`, carouselInitializerItem)
+  }
+}
+```
+
+![20240603161814](https://static-docs.nocobase.com/20240603161814.png)
+
+#### 4.3 添加到移动端 Add block 中
+
+> 首先要激活移动端插件，参考 [激活插件](/welcome/getting-started/plugin#3-activate-the-plugin) 文档。
+
+我们可以将其添加到移动端的 `Add block` 中，获取 `name` 的方法这里就不再赘述了。
+
+然后修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/index.tsx` 文件：
+
+```diff
+export class PluginBlockCarouselClient extends Plugin {
+  async load() {
+    // ...
++   this.app.schemaInitializerManager.addItem('mobilePage:addBlock', `otherBlocks.${carouselInitializerItem.name}`, carouselInitializerItem)
+  }
+}
+```
+
+![20240603161913](https://static-docs.nocobase.com/20240603161913.png)
+
+如果需要更多的 `Add block`，可以继续添加，只需要知道对应的 `name` 即可。
+
+### 5. 实现 Schema Settings
+
+#### 5.1 定义 Schema Settings
 
 一个完整的 Block 还需要有 Schema Settings，用于配置一些属性和操作。
 
@@ -362,7 +453,7 @@ export const carouselSettings = new SchemaSettings({
 });
 ```
 
-#### 4.2 注册 Schema Settings
+#### 5.2 注册 Schema Settings
 
 ```ts
 import { Plugin } from '@nocobase/client';
@@ -378,7 +469,7 @@ export class PluginBlockCarouselClient extends Plugin {
 export default PluginBlockCarouselClient;
 ```
 
-#### 4.3 使用 Schema Settings
+#### 5.3 使用 Schema Settings
 
 我们修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/carouselBlockSchema.ts` 中的 `carouselBlockSchema`：
 
@@ -393,13 +484,15 @@ const carouselBlockSchema: ISchema = {
 };
 ```
 
-### 5. 实现 Schema Settings items
+![20240603162037](https://static-docs.nocobase.com/20240603162037.png)
+
+### 6. 实现 Schema Settings items
 
 目前我们只实现了 `Schema Settings`，但是没有实现任何操作，我们需要根据需求实现各个操作。
 
 目前 Schema Settings 支持的内置操作类型请参考 [Schema Settings - Built-in Components and Types](https://client.docs.nocobase.com/core/ui-schema/schema-settings#built-in-components-and-types) 文档。
 
-#### 5.1 实现 `remove` 操作
+#### 6.1 实现 `remove` 操作
 
 目前通过 initializers 添加的区块是无法删除的，我们需要实现 `remove` 操作。
 
@@ -420,7 +513,11 @@ export const carouselSettings = new SchemaSettings({
 });
 ```
 
-#### 5.2 实现 `Edit Block title` 操作
+<video width="100%" controls="">
+  <source src="https://static-docs.nocobase.com/20240603162229_rec_.mp4" type="video/mp4" />
+</video>
+
+#### 6.2 实现 `Edit Block title` 操作
 
 我们可以实现一个 `Edit Block title` 操作，用于修改区块的标题。
 
@@ -454,18 +551,17 @@ export const carouselSettings = new SchemaSettings({
 });
 ```
 
-
 <video width="100%" controls="">
-  <source src="" type="video/mp4" />
+  <source src="https://static-docs.nocobase.com/20240603162340_rec_.mp4" type="video/mp4" />
 </video>
 
 更多可以复用的 SchemaSettings items 可以查看 TODO。
 
-#### 5.3 实现 `Edit Images` 操作
+#### 6.3 实现 `Edit Images` 操作
 
 我们可以实现一个 `Edit Images` 操作，用于修改轮播的的图片。
 
-##### 5.3.1 定义 Schema Settings item
+##### 6.3.1 定义 Schema Settings item
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/carouselSettings/items/images.ts` 文件：
 
@@ -538,7 +634,7 @@ export const schemaSettingsImagesItem: SchemaSettingsItemType = {
     - [FormItem](https://client.docs.nocobase.com/components/form-item)：表单项
   - `onSubmit`：表单提交事件
 
-##### 5.3.2 使用 SchemaSettings Item
+##### 6.3.2 使用 SchemaSettings Item
 
 我们修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/carouselSettings/index.ts`：
 
@@ -562,9 +658,13 @@ export const carouselSettings = new SchemaSettings({
 });
 ```
 
-#### 5.4 实现 Edit Height
+<video width="100%" controls="">
+  <source src="https://static-docs.nocobase.com/20240603162436_rec_.mp4" type="video/mp4" />
+</video>
 
-##### 5.4.1 实现 SchemaSettings Item
+#### 6.4 实现 Edit Height
+
+##### 6.4.1 实现 SchemaSettings Item
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/carouselSettings/items/height.ts` 文件：
 
@@ -632,7 +732,7 @@ export const schemaSettingsHeightItem: SchemaSettingsItemType = {
     - [FormItem](https://client.docs.nocobase.com/components/form-item)：表单项
   - `onSubmit`：表单提交事件
 
-##### 5.4.2 使用 SchemaSettings Item
+##### 6.4.2 使用 SchemaSettings Item
 
 我们修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/carouselSettings/index.ts`：
 
@@ -656,15 +756,13 @@ export const carouselSettings = new SchemaSettings({
   ]
 });
 ```
-
 <video width="100%" controls="">
-  <source src="https://static-docs.nocobase.com/20240602110936_rec_.mp4" type="video/mp4" />
+  <source src="https://static-docs.nocobase.com/20240603162555_rec_.mp4" type="video/mp4" />
 </video>
 
+#### 6.5 实现 ObjectFit
 
-#### 5.5 实现 ObjectFit
-
-##### 5.5.1 实现 SchemaSettings Item
+##### 6.5.1 实现 SchemaSettings Item
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/carouselSettings/items/objectFit.ts` 文件：
 
@@ -726,7 +824,7 @@ export const schemaSettingsObjectFitItem: SchemaSettingsItemType = {
   - `value`：默认值
   - `onChange`：选择事件
 
-##### 5.5.2 使用 SchemaSettings Item
+##### 6.5.2 使用 SchemaSettings Item
 
 我们修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/carouselSettings/index.ts`：
 
@@ -753,12 +851,12 @@ export const carouselSettings = new SchemaSettings({
 ```
 
 <video width="100%" controls="">
-  <source src="https://static-docs.nocobase.com/20240602111256_rec_.mp4" type="video/mp4" />
+  <source src="https://static-docs.nocobase.com/20240603162655_rec_.mp4" type="video/mp4" />
 </video>
 
-#### 5.6 实现 Autoplay
+#### 6.6 实现 Autoplay
 
-##### 5.6.1 实现 SchemaSettings Item
+##### 6.6.1 实现 SchemaSettings Item
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/carouselSettings/items/autoplay.ts` 文件：
 
@@ -814,7 +912,7 @@ export const schemaSettingsAutoplayItem: SchemaSettingsItemType = {
   - `onChange`：开关事件
 
 
-##### 5.6.2 使用 SchemaSettings Item
+##### 6.6.2 使用 SchemaSettings Item
 
 我们修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/carouselSettings/index.ts`：
 
@@ -842,10 +940,10 @@ export const carouselSettings = new SchemaSettings({
 ```
 
 <video width="100%" controls="">
-  <source src="https://static-docs.nocobase.com/20240602111748_rec_.mp4" type="video/mp4" />
+  <source src="https://static-docs.nocobase.com/20240603162803_rec_.mp4" type="video/mp4" />
 </video>
 
-#### 5.7 增加 divider
+#### 6.7 增加 divider
 
 `editBlockTitle` 和 `remove` 是一个通用的逻辑，而 `src`、`height`、`objectFit`、`autoplay` 是针对 `ImageBlock` 的配置，我们可以通过 `divider` 来区分。
 
@@ -880,98 +978,7 @@ export const carouselSettings = new SchemaSettings({
 });
 ```
 
-![20240602112229](https://static-docs.nocobase.com/20240602112229.png)
-
-### 6. 添加到 Add block 中
-
-系统中有很多个 `Add block` 按钮，但他们的 **name 是不同的**。
-
-![img_v3_02b4_049b0a62-8e3b-420f-adaf-a6350d84840g](https://static-docs.nocobase.com/img_v3_02b4_049b0a62-8e3b-420f-adaf-a6350d84840g.jpg)
-
-#### 6.1 添加到页面级别 Add block 中
-
-如果我们需要添加到页面级别的 `Add block` 中，我们需要知道对应的 `name`，我们可以通过 TODO 方式查看对应的 `name`。
-
-TODO
-
-通过上图可以看到页面级别的 `Add block` 对应的 name 为 `page:addBlock`，`Other Blocks` 对应的 name 为 `otherBlocks`。
-
-然后我们修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/index.tsx` 文件：
-
-```tsx | pure
-import { Plugin } from '@nocobase/client';
-
-import { Carousel } from './Carousel';
-import { carouselBlockSchema, useCarouselBlockProps } from './carouselBlockSchema';
-import { carouselSettings } from './carouselSettings';
-import { carouselInitializerItem } from './carouselInitializerItem';
-
-export class PluginBlockCarouselClient extends Plugin {
-  async load() {
-    this.app.addComponents({ Carousel })
-    this.app.schemaSettingsManager.add(carouselSettings);
-    this.app.addScopes({ useCarouselBlockProps });
-
-    this.app.schemaInitializerManager.addItem('page:addBlock', `otherBlocks.${carouselInitializerItem.name}`, carouselInitializerItem)
-  }
-}
-
-export default PluginBlockCarouselClient;
-```
-
-上述代码首先将 `Carousel` 组件注册到系统中，这样前面 `carouselBlockSchema` 定义的 `x-component: 'Carousel'` 才能找到对应的组件，更多详细解释可以查看 [全局注册 Component 和 Scope](/plugin-samples/component-and-scope/global)。
-
-然后将 `carouselSettings` 通过 [app.schemaSettingsManager.add](https://client.docs.nocobase.com/core/ui-schema/schema-settings-manager#schemasettingsmanageradd) 添加到系统中。
-
-然后使用 [app.schemaInitializerManager.addItem](https://client.docs.nocobase.com/core/ui-schema/schema-initializer-manager#schemainitializermanageradditem) 将 `carouselInitializerItem` 添加对应 Initializer 子项中，其中 `page:addBlock` 是页面上 `Add block` 的 name，`otherBlocks` 是其父级的 name。
-
-然后我们 hover `Add block` 按钮，就可以看到 `Image` 这个新的区块类型了，点击 `Image`，就可以添加一个新的 `Carousel` 区块了。
-
-<video width="100%" controls="">
-  <source src="https://static-docs.nocobase.com/20240522-175523.mp4" type="video/mp4" />
-</video>
-
-#### 6.2 添加到弹窗 Add block 中
-
-我们不仅需要将其添加到页面级别的 `Add block` 中，还需要将其添加到 `Table` 区块 `Add new` 弹窗的 `Add block` 中。
-
-![img_v3_02b4_fc47fe3a-35a1-4186-999c-0b48e6e001dg](https://static-docs.nocobase.com/img_v3_02b4_fc47fe3a-35a1-4186-999c-0b48e6e001dg.jpg)
-
-我们按照页面级别获取 `name` 的方式获取到 `Table` 区块的 `Add block` 的 `name` 为 `popup:addNew:addBlock`，`Other Blocks` 对应的 name 为 `otherBlocks`。
-
-然后修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/index.tsx` 文件：
-
-```diff
-export class PluginBlockCarouselClient extends Plugin {
-  async load() {
-    // ...
-+   this.app.schemaInitializerManager.addItem('popup:addNew:addBlock', `otherBlocks.${carouselInitializerItem.name}`, carouselInitializerItem)
-  }
-}
-```
-
-![img_v3_02b4_7062bfab-5a7b-439c-b385-92c5704b6b3g](https://static-docs.nocobase.com/img_v3_02b4_7062bfab-5a7b-439c-b385-92c5704b6b3g.jpg)
-
-#### 6.3 添加到移动端 Add block 中
-
-> 首先要激活移动端插件，参考 [激活插件](/welcome/getting-started/plugin#3-activate-the-plugin) 文档。
-
-我们可以将其添加到移动端的 `Add block` 中，获取 `name` 的方法这里就不再赘述了。
-
-然后修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/index.tsx` 文件：
-
-```diff
-export class PluginBlockCarouselClient extends Plugin {
-  async load() {
-    // ...
-+   this.app.schemaInitializerManager.addItem('mobilePage:addBlock', `otherBlocks.${carouselInitializerItem.name}`, carouselInitializerItem)
-  }
-}
-```
-
-![img_v3_02b4_ec873b25-5a09-4f3a-883f-1d722035799g](https://static-docs.nocobase.com/img_v3_02b4_ec873b25-5a09-4f3a-883f-1d722035799g.jpg)
-
-如果需要更多的 `Add block`，可以继续添加，只需要知道对应的 `name` 即可。
+![20240603162933](https://static-docs.nocobase.com/20240603162933.png)
 
 ## 打包和上传到生产环境
 

@@ -2,7 +2,7 @@
 
 NocoBase 支持多种类型的区块。
 
-TODO：截图
+![20240603155329](https://static-docs.nocobase.com/20240603155329.png)
 
 但是目前已有的区块不一定满足需求，我们可以扩展区块。
 
