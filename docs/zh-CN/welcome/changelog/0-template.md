@@ -23,10 +23,32 @@
 
 <description> <!-- 没有描述可以不写 -->
 
-![](<img-url>) <!-- 截图必须有，尺寸为 1440x900 -->
+![](<img-url>) <!-- 如果没有截图，放「其他」里，尺寸为 1440x900 -->
+
+<!-- 只有一个文档时 -->
+参考文档（Reference Document）：[文档1](#) 
+
+<!-- 多个文档时 -->
+参考文档（Reference Documents）：
+- [文档1](#)  
+- [文档2](#)
 ```
 
-## 新增 - Added
+未配图的放到各个板块的「其他」里，如
+
+```md
+## 新特性
+### 其他
+- 特性1
+## 优化
+### 其他
+- 优化1
+## 缺陷修复
+### 其他
+- 修复1
+```
+
+## 新特性 - New features
 
 ### 新增功能 XXX ([#4260](https://github.com/nocobase/nocobase/pull/4260))
 
@@ -40,7 +62,7 @@
 
 ![](https://static-docs.nocobase.com/202405191513995.png)
 
-## 改进 - Improved
+## 优化 - Optimization
 
 ### 改进或优化了某个功能 ([#4260](https://github.com/nocobase/nocobase/pull/4260))
 
@@ -63,10 +85,15 @@
 
 ![20240520153033](https://static-docs.nocobase.com/20240520153033.png)
 
-## 修复 - Fixed
+## 缺陷修复 - Bug fixes
 
 ### 修复某个缺陷 XXX ([#4260](https://github.com/nocobase/nocobase/pull/4260))
 
 一句话概括，然后后面放一张截图、动图或视频说明。
 
 ![](https://static-docs.nocobase.com/202405191513995.png)
+
+### 其他
+
+- 修复问题 1
+- 修复问题 2
