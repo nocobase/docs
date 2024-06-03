@@ -185,5 +185,32 @@ export default [
         link: '/plugin-samples/schema-settings/new',
       },
     ]
+  },
+  {
+    title: 'Block',
+    'title.zh-CN': '区块',
+    type: 'group',
+    children: [
+      {
+        title: 'Overview',
+        'title.zh-CN': '概述',
+        link: '/plugin-samples/block',
+      },
+      {
+        title: 'Carousel Block',
+        'title.zh-CN': 'Carousel 区块',
+        link: '/plugin-samples/block-carousel',
+      },
+      {
+        title: 'Form Block',
+        'title.zh-CN': 'Form 区块',
+        link: '/plugin-samples/block-form',
+      },
+      {
+        title: 'Table Block',
+        'title.zh-CN': 'Table 区块',
+        link: '/plugin-samples/block-table',
+      },
+    ]
   }
 ];
