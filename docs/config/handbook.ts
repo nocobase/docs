@@ -906,6 +906,11 @@ export default [
                 link: '/handbook/ui/actions/types/add-new',
               },
               {
+                title: 'Link',
+                'title.zh-CN': '链接',
+                link: '/handbook/ui/actions/types/link',
+              },
+              {
                 title: 'Edit',
                 'title.zh-CN': '编辑',
                 link: '/handbook/ui/actions/types/edit',
