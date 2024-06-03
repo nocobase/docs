@@ -10,7 +10,7 @@
 
 ### 1. 获取插件包
 
-- 如果是 NocoBase 提供的商业插件，请前往 [service.nocobase.com](https://service.nocobase.com/) 下载；
+- 如果是 NocoBase 提供的商业插件，请前往商业用户服务平台下载；
 - 如果是自制插件，参考 [编写第一个插件](/development/your-fisrt-plugin) 流程，构建并打包插件。
 
 ### 2. 添加插件

@@ -6,7 +6,7 @@ This method is very simple but requires adding, activating, and updating one by 
 
 ### 1. Get the Plugin Package
 
-- If it's a commercial plugin provided by NocoBase, please go to [service.nocobase.com](https://service.nocobase.com/) to download.
+- If it's a commercial plugin provided by NocoBase, please go to Business User Services Platform to download.
 - If it's a custom-developed plugin, refer to the process of [Writing Your First Plugin](/development/your-fisrt-plugin), build and package the plugin.
 
 ### 2. Add the Plugin
