@@ -28,7 +28,7 @@
 
 ![20240408143719](https://static-docs.nocobase.com/20240408143719.png)
 
-![20240426212024](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426212024.png)
+![20240426212024](https://static-docs.nocobase.com/20240426212024.png)
 
 1. 筛选出一条或者一组数据，作为模板数据
 2. 选择标题字段，用于识别模板数据
@@ -40,6 +40,7 @@
 - 在后续修改了表单区块字段（如关系字段组件调整），可再次打开模板配置并点击同步表单按钮，确保表单与模板的一致性；
 
 #### 被选为数据模板的记录会过滤掉以下字段的数据：
+
 - 主键
 - 外键
 - 不允许重复的字段
@@ -52,6 +53,7 @@
 - 最后更新日期
 
 #### 对于关系字段
+
 - 普通字段和 hasOne 和 hasMany 的关系字段是复制；
 - belongsTo 和 belongsToMany 的关系字段是引用，引用可能会变成复制，比如 从 select 变成 sub-form 之后，关系就从引用变成了复制（变成复制之后，所有的字段都是可选的）；
 
@@ -73,6 +75,14 @@
 
 - [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
 - [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
+
+### 设置区块高度
+
+示例：设置创建订单区块高度为「全高」模式。
+
+![20240604230831](https://static-docs.nocobase.com/20240604230831.gif)
+
+更多内容参考 [区块高度](/handbook/ui/blocks/block-settings/block-height)
 
 ## 配置字段
 
