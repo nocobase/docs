@@ -18,7 +18,7 @@
 
 数据表中可以添加地图字段。
 
-![20240426171356](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426171356.png)
+![20240426171356](https://static-docs.nocobase.com/20240426171356.png)
 
 ## 添加区块
 
@@ -80,6 +80,14 @@
 ![20240422101250](https://static-docs.nocobase.com/20240422101250.png)
 
 更多内容参考 [设置数据范围](/handbook/ui/blocks/block-settings/data-scope)
+
+### 设置区块高度
+
+示例：调整地图区块高度。
+
+![20240605221111](https://static-docs.nocobase.com/20240605221111.gif)
+
+更多内容参考 [区块高度](/handbook/ui/blocks/block-settings/block-height)
 
 - [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
 - [连接数据区块](/handbook/ui/blocks/block-settings/connect-block)
