@@ -1,5 +1,7 @@
 # 树筛选区块
 
+<PluginInfo commercial="true" name="block-tree"></PluginInfo>
+
 ## 介绍
 
 树筛选区块需要连接数据区块使用，为数据区块提供筛选能力。
