@@ -27,7 +27,7 @@
 
 ### 4. 更新插件
 
-- 如果是 NocoBase 提供的商业插件，请前往 [service.nocobase.com](https://service.nocobase.com/) 下载最新版；
+- 如果是 NocoBase 提供的商业插件，请前往商业用户服务平台下载最新版；
 - 如果是自制插件，参考 [编写第一个插件](/development/your-fisrt-plugin) 流程，重新构建并打包新版本插件。
 
 之后将下载的插件上传并提交更新

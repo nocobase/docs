@@ -23,7 +23,7 @@ Activate the uploaded plugin.
 
 ### 4. Update the Plugin
 
-- If it's a commercial plugin provided by NocoBase, please go to [service.nocobase.com](https://service.nocobase.com/) to download the latest version.
+- If it's a commercial plugin provided by NocoBase, please go to Business User Services Platform to download the latest version.
 - If it's a custom-made plugin, refer to the process of [Writing Your First Plugin](/development/your-fisrt-plugin), rebuild and package the new version of the plugin.
 
 Then upload the downloaded plugin and submit the update.
