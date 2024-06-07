@@ -1,5 +1,7 @@
 # Auth: LDAP
 
+<PluginInfo commercial="true" name="auth-ldap"></PluginInfo>
+
 ## Introduction
 
 The Auth: LDAP plugin follows the LDAP (Lightweight Directory Access Protocol) protocol standard, enabling users to sign in to NocoBase using their LDAP server credentials.

@@ -1,5 +1,7 @@
 # 认证：CAS
 
+<PluginInfo commercial="true" name="auth-cas"></PluginInfo>
+
 ## 介绍
 
 认证：CAS 插件遵循 CAS (Central Authentication Service) 协议标准，实现用户使用第三方身份认证服务商 (IdP) 提供的账号登录NocoBase.

@@ -357,7 +357,7 @@ yarn nocobase upgrade
 
 此时，应用界面已经无法访问了，所以我们需要用手动的方式升级
 
-1. 使用账号登录 [service.nocobase.com](https://service.nocobase.com) 下载最新版插件
+1. 使用账号登录商业用户服务平台下载最新版插件
 2. 将插件解压到指定目录
     - CAS 插件解压至 `./storage/plugins/@nocobase/plugin-auth-cas`
     - OIDC 插件解压至 `./storage/plugins/@nocobase/plugin-auth-oidc`

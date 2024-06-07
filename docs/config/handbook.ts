@@ -1156,33 +1156,50 @@ export default [
         ],
       },
       {
-        title: 'File storages',
-        'title.zh-CN': '文件存储',
+        title: 'File manager',
+        'title.zh-CN': '文件管理器',
         children: [
           {
-            title: 'File manager',
-            'title.zh-CN': '文件管理器',
+            title: 'Overview',
+            'title.zh-CN': '概述',
             link: '/handbook/file-manager',
           },
           {
-            title: 'File storage: Local',
-            'title.zh-CN': '文件存储：本地',
-            link: '/handbook/file-manager/file-storage-local',
+            title: 'File collection',
+            'title.zh-CN': '文件表',
+            link: '/handbook/file-manager/file-collection',
           },
           {
-            title: 'File storage: OSS',
-            'title.zh-CN': '文件存储：OSS',
-            link: '/handbook/file-storage-oss',
+            title: 'Attachment field',
+            'title.zh-CN': '附件字段',
+            link: '/handbook/file-manager/field-attachment',
           },
           {
-            title: 'File storage: S3',
-            'title.zh-CN': '文件存储：S3',
-            link: '/handbook/file-storage-s3',
-          },
-          {
-            title: 'File storage: COS',
-            'title.zh-CN': '文件存储：COS',
-            link: '/handbook/file-storage-cos',
+            title: 'File storage',
+            'title.zh-CN': '文件存储引擎',
+            children: [
+              '/handbook/file-manager/storage',
+              {
+                title: 'File storage: Local',
+                'title.zh-CN': '文件存储：本地',
+                link: '/handbook/file-manager/storage/local',
+              },
+              {
+                title: 'File storage: OSS',
+                'title.zh-CN': '文件存储：OSS',
+                link: '/handbook/file-manager/storage/aliyun-oss',
+              },
+              {
+                title: 'File storage: S3',
+                'title.zh-CN': '文件存储：S3',
+                link: '/handbook/file-manager/storage/amazon-s3',
+              },
+              {
+                title: 'File storage: COS',
+                'title.zh-CN': '文件存储：COS',
+                link: '/handbook/file-manager/storage/tencent-cos',
+              },
+            ]
           },
         ],
       },

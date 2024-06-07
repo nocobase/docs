@@ -1,5 +1,7 @@
 # 认证：LDAP
 
+<PluginInfo commercial="true" name="auth-ldap"></PluginInfo>
+
 ## 介绍
 
 认证：LDAP 插件遵循 LDAP (Lightweight Directory Access Protocol) 协议标准，实现用户使用 LDAP 服务器的账号密码登录NocoBase。

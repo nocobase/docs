@@ -47,7 +47,7 @@
 
 ![20240520152448](https://static-docs.nocobase.com/20240520152448.png)
 
-### 优化工作流请求节点
+### 优化工作流 HTTP 请求节点
 
 - 支持 `application/www-x-form-urlencoded` 格式数据
 - 值输入框支持字符串模板
@@ -57,7 +57,7 @@
 
 ![](https://static-docs.nocobase.com/202405191514748.png)
 
-工作流请求节点结果数据格式统一为：
+工作流 HTTP 请求节点结果数据格式统一为：
 
 ```js
 {
@@ -88,9 +88,9 @@
 - bigint 字段阅读状态下数值精度丢失。<a href="https://github.com/nocobase/nocobase/pull/4360" target="_blank">fix: bigint field loses precision in read pretty mode #4360</a>
 - 子应用停止后，打开的日志文件没有关闭。<a href="https://github.com/nocobase/nocobase/pull/4380" target="_blank">fix(logger): should close log stream after destroying app #4380</a>
 - 工作流聚合节点关系数据模式选择 bug. <a href="https://github.com/nocobase/nocobase/pull/4315" target="_blank">fix(plugin-workflow-aggregate): fix association field select #4315</a>
-- 工作流请求节点同步模式下忽略错误选项无效。<a href="https://github.com/nocobase/nocobase/pull/4334" target="_blank">fix(plugin-workflow-request): fix ignoreFail in sync mode #4334</a>
-- 工作流请求节点变量输入框溢出。<a href="https://github.com/nocobase/nocobase/pull/4353" target="_blank">fix(plugin-workflow-request): fix value fields overflowing #4354</a>
-- 特殊字符导致工作流请求节点挂起。<a href="https://github.com/nocobase/nocobase/pull/4376" target="_blank">fix(plugin-workflow-request): fix request hanging when invalid header value #4376</a>
+- 工作流 HTTP 请求节点同步模式下忽略错误选项无效。<a href="https://github.com/nocobase/nocobase/pull/4334" target="_blank">fix(plugin-workflow-request): fix ignoreFail in sync mode #4334</a>
+- 工作流 HTTP 请求节点变量输入框溢出。<a href="https://github.com/nocobase/nocobase/pull/4353" target="_blank">fix(plugin-workflow-request): fix value fields overflowing #4354</a>
+- 特殊字符导致工作流 HTTP 请求节点挂起。<a href="https://github.com/nocobase/nocobase/pull/4376" target="_blank">fix(plugin-workflow-request): fix request hanging when invalid header value #4376</a>
 - 修复主题编辑器中设置 marginBlock 之后会影响表单字段间距的问题。<a href="https://github.com/nocobase/nocobase/pull/4374" target="_blank">fix(theme-editor): form field spacing should not be affected by token.marginBlock #4374</a>
 - 修复点击页面右上角的“许可证”选项时跳转错误的问题。[PR #4415](https://github.com/nocobase/nocobase/pull/4415)
 - 修复当把筛选表单保存为区块模板后，字段的操作符无效的问题。[PR #4390](https://github.com/nocobase/nocobase/pull/4390)

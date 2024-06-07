@@ -358,7 +358,7 @@ Contact the NocoBase team to obtain version 1.0 of the plugins and continue with
 
 At this point, the application interface is no longer accessible, so we need to upgrade manually.
 
-1. Log in with your account at [service.nocobase.com](https://service.nocobase.com) to download the latest version of the plugins.
+1. Log in with your account at Business User Services Platform to download the latest version of the plugins.
 2. Unzip the plugins to the specified directory
     - CAS plugin unzip to `./storage/plugins/@nocobase/plugin-auth-cas`
     - OIDC plugin unzip to `./storage/plugins/@nocobase/plugin-auth-oidc`

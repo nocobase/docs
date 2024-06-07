@@ -1,5 +1,7 @@
 # Auth: OIDC
 
+<PluginInfo commercial="true" name="auth-oidc"></PluginInfo>
+
 ## Introduction
 
 The Auth: OIDC plugin follows the OIDC (Open ConnectID) protocol standard, using the Authorization Code Flow, to allow users to sign in to NocoBase using accounts provided by third-party identity authentication service providers (IdP).

@@ -1,5 +1,7 @@
 # 认证：OIDC
 
+<PluginInfo commercial="true" name="auth-oidc"></PluginInfo>
+
 ## 介绍
 
 认证：OIDC 插件遵循 OIDC (Open ConnectID) 协议标准，使用授权码模式 (Authorization Code Flow), 实现用户使用第三方身份认证服务商 (IdP) 提供的账号登录 NocoBase.

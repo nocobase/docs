@@ -1,5 +1,7 @@
 # Auth: SAML 2.0
 
+<PluginInfo commercial="true" name="auth-saml"></PluginInfo>
+
 ## Introduction
 
 The Auth: SAML 2.0 plugin follows the SAML 2.0 (Security Assertion Markup Language 2.0) protocol standard, allowing users to sign in to NocoBase using accounts provided by third-party identity authentication service providers (IdP).
