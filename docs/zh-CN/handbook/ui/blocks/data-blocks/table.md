@@ -3,6 +3,7 @@
 ## 介绍
 
 表格区块是 NocoBase 内置的核心数据区块之一，以表格形式展示和管理结构化数据。它具备灵活的配置选项，可定制表格列、列宽、排序规则、数据范围等，同时内置了多种操作供配置：筛选、新建、复制、编辑、删除等。
+
 ## 添加区块
 
  <video width="100%" height="440" controls>
@@ -39,10 +40,17 @@
 
 更多内容参考 [连接数据区块](/handbook/ui/blocks/block-settings/connect-block)
 
+### 设置区块高度
+
+示例：设置订单表格区块高度为「全高」模式。
+
+![20240604225958](https://static-docs.nocobase.com/20240604225958.gif)
+
+更多内容参考 [区块高度](/handbook/ui/blocks/block-settings/block-height)
+
 - [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
 - [设置数据加载方式](/handbook/ui/blocks/block-settings/loading-mode)
 - [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
-
 
 ## 配置字段
 
@@ -89,4 +97,3 @@
 - [弹窗](/handbook/ui/actions/types/pop-up)
 - [更新记录](/handbook/ui/actions/types/update-record)
 - [自定义请求](/handbook/action-custom-request)
-

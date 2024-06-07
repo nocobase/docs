@@ -1,5 +1,17 @@
 # <版本号>：<日期>
 
+版本号：
+
+- Release Version：x.y.z
+- Pre-release Version：1.x.y-alpha.z
+
+相关说明：
+
+- 兼容性变更：x + 1
+- 新插件、新功能发布：y + 1
+- 缺陷修复：z + 1
+- alpha -> beta -> rc
+
 更新日志每周一篇，文件名格式：
 
 ```bash

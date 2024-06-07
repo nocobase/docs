@@ -2,7 +2,6 @@
 
 <PluginInfo name="calendar"></PluginInfo>
 
-
 ## 介绍
 
 日历区块以日历视图显示事件和日期相关的数据，适用于会议安排、活动计划等场景。
@@ -10,6 +9,7 @@
 ## 安装
 
 内置插件，无需安装。
+
 ## 添加区块
 
 <video width="100%" height="440" controls>
@@ -26,7 +26,6 @@
 
 ## 区块配置项
 
-
 ![20240419203321](https://static-docs.nocobase.com/20240419203321.png)
 
 ### 展示农历
@@ -35,11 +34,20 @@
 
 - [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
 - [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
+
 ### 设置数据范围
 
 ![20240419203751](https://static-docs.nocobase.com/20240419203751.png)
 
 更多内容参考 [设置数据范围](/handbook/ui/blocks/block-settings/data-scope)
+
+### 设置区块高度
+
+示例：调整订单日历区块高度,日历区块内部不会出现滚动条。
+
+![20240605215742](https://static-docs.nocobase.com/20240605215742.gif)
+
+更多内容参考 [区块高度](/handbook/ui/blocks/block-settings/block-height)
 
 ## 配置操作
 

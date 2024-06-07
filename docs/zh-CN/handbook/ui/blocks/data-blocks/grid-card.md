@@ -40,6 +40,14 @@
 <source src="https://static-docs.nocobase.com/20240419175643.mp4" type="video/mp4">
 </video>
 
+### 设置区块高度
+
+示例：设置订单网格卡片区块高度为「全高」模式。
+
+![20240604232619](https://static-docs.nocobase.com/20240604232619.gif)
+
+更多内容参考 [区块高度](/handbook/ui/blocks/block-settings/block-height)
+
 - [设置排序规则](/handbook/ui/blocks/block-settings/sorting-rule)
 - [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
 

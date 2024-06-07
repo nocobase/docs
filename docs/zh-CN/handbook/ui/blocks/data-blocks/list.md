@@ -40,6 +40,14 @@
 
 更多内容参考 [设置数据加载方式](/handbook/ui/blocks/block-settings/loading-mode)
 
+### 设置区块高度
+
+示例：设置订单列表区块高度为「全高」模式。
+
+![20240604233102](https://static-docs.nocobase.com/20240604233102.gif)
+
+更多内容参考 [区块高度](/handbook/ui/blocks/block-settings/block-height)
+
 - [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
 - [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
 

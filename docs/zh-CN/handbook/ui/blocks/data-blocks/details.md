@@ -31,7 +31,6 @@
 - [设置数据加载方式](/handbook/ui/blocks/block-settings/loading-mode)
 - [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
 
-
 ### 联动规则
 
 详情区块中的联动规则支持动态设置字段 显示/隐藏。
@@ -41,6 +40,14 @@
 ![20240511115156](https://static-docs.nocobase.com/20240511115156.png)
 
 更多内容参考 [联动规则](/handbook/ui/blocks/block-settings/linkage-rule)
+
+### 设置区块高度
+
+示例：设置订单详情区块高度为「全高」模式。
+
+![20240604232307](https://static-docs.nocobase.com/20240604232307.gif)
+
+更多内容参考 [区块高度](/handbook/ui/blocks/block-settings/block-height)
 
 ## 配置字段
 

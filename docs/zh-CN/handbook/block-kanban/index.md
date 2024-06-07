@@ -26,7 +26,7 @@ Kanban（看板）区块以看板视图展示数据，支持直接拖拽调整�
 
 用于在每个分组内对数据进行排序，只能选择与分组字段绑定的排序字段，在创建看板区块时支持快捷创建排序字段。
 
-![20240426170628](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426170628.png)
+![20240426170628](https://static-docs.nocobase.com/20240426170628.png)
 
 ## 看板管理数据
 
@@ -57,6 +57,14 @@ Kanban（看板）区块以看板视图展示数据，支持直接拖拽调整�
 ![20240422095659](https://static-docs.nocobase.com/20240422095659.png)
 
 更多内容参考 [设置数据范围](/handbook/ui/blocks/block-settings/data-scope)
+
+### 设置区块高度
+
+示例：调整订单看板区块高度,滚动条出现在列上。
+
+![20240605220635](https://static-docs.nocobase.com/20240605220635.gif)
+
+更多内容参考 [区块高度](/handbook/ui/blocks/block-settings/block-height)
 
 ## 配置字段
 
