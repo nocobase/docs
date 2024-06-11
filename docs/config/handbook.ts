@@ -1084,6 +1084,12 @@ export default [
             ],
           },
           {
+            title: 'Authentication - SMS',
+            'title.zh-CN': '用户认证 - 短信',
+            // subTitle: '@nocobase/plugin-sms-auth',
+            link: '/handbook/auth-sms',
+          },
+          {
             title: 'Authentication - CAS',
             'title.zh-CN': '用户认证 - CAS',
             // subTitle: '@nocobase/plugin-cas',
@@ -1136,10 +1142,9 @@ export default [
             ],
           },
           {
-            title: 'Authentication - SMS',
-            'title.zh-CN': '用户认证 - 短信',
-            // subTitle: '@nocobase/plugin-sms-auth',
-            link: '/handbook/auth-sms',
+            title: 'Authentication - DingTalk',
+            'title.zh-CN': '用户认证 - 钉钉',
+            link: '/handbook/auth-dingtalk',
           },
           {
             title: 'Verification',
@@ -1199,7 +1204,7 @@ export default [
                 'title.zh-CN': '文件存储：COS',
                 link: '/handbook/file-manager/storage/tencent-cos',
               },
-            ]
+            ],
           },
         ],
       },
@@ -1339,7 +1344,7 @@ export default [
               '/handbook/workflow/nodes/destroy',
               '/handbook/workflow/nodes/query',
               '/handbook/workflow/nodes/aggregate',
-              '/handbook/workflow/nodes/sql'
+              '/handbook/workflow/nodes/sql',
             ],
           },
           {
@@ -1360,7 +1365,7 @@ export default [
               '/handbook/workflow/nodes/dynamic-calculation',
               '/handbook/workflow/nodes/json-query',
               '/handbook/workflow/nodes/response-message',
-              '/handbook/workflow/nodes/variable'
+              '/handbook/workflow/nodes/variable',
             ],
           },
         ],
@@ -1507,7 +1512,7 @@ export default [
             link: '/handbook/workflow/plugins/variable',
           },
         ],
-      }
+      },
     ],
   },
   {
