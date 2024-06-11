@@ -52,20 +52,80 @@ yarn dev
 - [UI Schema 协议](/development/client/ui-schema/what-is-ui-schema)：详细介绍 Schema 的结构和每个属性的作用
 - [Designable 设计器](/development/client/ui-schema/designable)：用于修改 Schema
 
-### 0. 定义名称
+### 1. 定义名称
 
 我们首先需要定义区块名称，它将会使用在各个地方。
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/constants.ts`：
 
 ```ts
-export const CarouselBlockName = 'Carousel';
-export const CarouselBlockNameLowercase = CarouselBlockName.toLowerCase();
+export const BlockName = 'Carousel';
+export const BlockNameLowercase = BlockName.toLowerCase();
 ```
 
-### 1. 实现区块组件
+### 2. 多语言
 
-#### 1.1 定义区块组件
+#### 2.1 定义工具函数
+
+如果插件需要支持多语言，我们需要定义多语言工具函数。
+
+我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/local.ts` 文件：
+
+```ts
+import { useTranslation } from 'react-i18next';
+
+// @ts-ignore
+import pkg from './../../package.json';
+
+export function useCarouselTranslation() {
+  return useTranslation(pkg.name, { nsMode: 'fallback' });
+}
+
+export function generateNTemplate(key: string) {
+  return `{{t('${key}', { ns: '${pkg.name}', nsMode: 'fallback' })}}`;
+}
+
+export function generateCommonTemplate(key: string) {
+  return `{{t('${key}')}}`;
+}
+```
+
+- [useTranslation()](https://react.i18next.com/latest/usetranslation-hook)：用于获取多语言工具函数
+- `useCarouselTranslation()`：获取 Carousel 组件的多语言工具函数，需要将插件的名字作为命名空间
+- `generateNTemplate()`：用于生成 Carousel 组件的多语言模板
+- `generateCommonTemplate()`：用于生成通用的多语言模板
+
+#### 2.2 多语言文件
+
+:::warning
+多语言文件变更后，需要重启服务才能生效
+:::
+
+##### 2.2.1 英语
+
+我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/locale/en-US.json` 内容为：
+
+```json
+{
+  "Carousel": "Carousel"
+}
+```
+
+##### 2.2.2 中文
+
+我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/locale/zh-CN.json` 内容为：
+
+```json
+{
+  "Carousel": "走马灯"
+}
+```
+
+如果需要更多的多语言支持，可以继续添加。
+
+### 3. 实现区块组件
+
+#### 3.1 定义区块组件
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/Carousel.tsx` 文件，其内容如下：
 
@@ -73,7 +133,7 @@ export const CarouselBlockNameLowercase = CarouselBlockName.toLowerCase();
 import React, { FC } from 'react';
 import { Carousel as AntdCarousel, Result, CarouselProps as AntdCarouselProps } from 'antd';
 import { withDynamicSchemaProps } from '@nocobase/client';
-import { CarouselBlockName } from './constants';
+import { BlockName } from './constants';
 
 export interface CarouselProps extends AntdCarouselProps {
   images?: { url: string; title?: string }[];
@@ -98,7 +158,7 @@ export const Carousel: FC<CarouselProps> = withDynamicSchemaProps((props) => {
       ))}
     </AntdCarousel>
   ) : <Result status='404' />
-}, { displayName: CarouselBlockName })
+}, { displayName: BlockName })
 
 ```
 
@@ -106,7 +166,7 @@ export const Carousel: FC<CarouselProps> = withDynamicSchemaProps((props) => {
 
 如果不看 `withDynamicSchemaProps` 的话，`Carousel` 组件就是一个简单的函数组件。
 
-#### 1.2 注册区块组件
+#### 3.2 注册区块组件
 
 我们需要将 `Carousel` 通过插件注册到系统中。
 
@@ -123,12 +183,12 @@ export class PluginBlockCarouselClient extends Plugin {
 export default PluginBlockCarouselClient;
 ```
 
-#### 1.3 验证区块组件
+#### 3.3 验证区块组件
 
 组件验证方式有 2 种：
 
 - 临时页面验证：我们可以临时建一个页面，然后渲染 `Carousel` 组件，查看是否符合需求
-- 文档示例验证：可以启动文档 `yarn doc packages/plugins/@nocobase-sample/plugin-block-carousel`，通过写文档示例的方式验证是否符合需求（TODO）
+- 文档示例验证：可以启动文档 `yarn doc plugins/@nocobase-sample/plugin-block-carousel`，通过写文档示例的方式验证是否符合需求（TODO）
 
 我们以 `临时页面验证` 为例，我们新建一个页面，根据属性参数添加一个或者多个 `Carousel` 组件，查看是否符合需求。
 
@@ -183,9 +243,9 @@ export default PluginBlockCarouselClient;
 
 验证完毕后需要删除测试页面。
 
-### 2. 定义区块 Schema
+### 4. 定义区块 Schema
 
-#### 2.1 定义区块 Schema
+#### 4.1 定义区块 Schema
 
 NocoBase 的动态页面都是通过 Schema 来渲染，所以我们需要定义一个 Schema，后续用于在界面中添加 `Carousel` 区块。在实现本小节之前，我们需要先了解一些基础知识：
 
@@ -197,24 +257,24 @@ NocoBase 的动态页面都是通过 Schema 来渲染，所以我们需要定义
 import { ISchema } from '@nocobase/client';
 import { useFieldSchema } from '@formily/react'
 
-import { CarouselBlockName, CarouselBlockNameLowercase } from './constants';
+import { BlockName, BlockNameLowercase } from './constants';
 
 export function useCarouselBlockProps() {
   const fieldSchema = useFieldSchema();
-  return fieldSchema.parent?.['x-decorator-props']?.[CarouselBlockNameLowercase]
+  return fieldSchema.parent?.['x-decorator-props']?.[BlockNameLowercase]
 }
 
 export const carouselBlockSchema: ISchema = {
   type: 'void',
   'x-component': 'CardItem',
   'x-decorator-props': {
-    [CarouselBlockNameLowercase]: {},
+    [BlockNameLowercase]: {},
   },
   properties: {
     carousel: {
       type: 'void',
-      'x-component': CarouselBlockName,
-      'x-use-component-props': useCarouselBlockProps.name
+      'x-component': BlockName,
+      'x-use-component-props': 'useCarouselBlockProps'
     }
   }
 };
@@ -227,8 +287,8 @@ export const carouselBlockSchema: ISchema = {
 - `x-decorator-props`：用于存储 `Carousel` 组件的属性
 - `properties`：子节点
   - `carousel`：
-    - `'x-component': CarouselBlockName`：`Carousel` 组件
-    - `'x-use-component-props': useCarouselBlockProps.name`：用于动态获取 `Carousel` 组件的属性
+    - `'x-component': BlockName`：`Carousel` 组件
+    - `'x-use-component-props': 'useCarouselBlockProps'`：用于动态获取 `Carousel` 组件的属性
 
 上述 Schema 转为 React 组件后相当于：
 
@@ -238,7 +298,7 @@ export const carouselBlockSchema: ISchema = {
 </CardItem>
 ```
 
-#### 2.2 注册 scope
+#### 4.2 注册 scope
 
 我们需要将 `useCarouselBlockProps` 注册到系统中，这样 [x-use-component-props](/development/client/ui-schema/what-is-ui-schema#x-component-props-和-x-use-component-props) 才能找到对应的 scope。
 
@@ -259,7 +319,7 @@ export default PluginBlockCarouselClient;
 
 更多关于 Scope 的说明可以查看 [全局注册 Component 和 Scope](/plugin-samples/component-and-scope/global)
 
-#### 2.3 验证区块 Schema
+#### 4.3 验证区块 Schema
 
 同验证组件一样，我们可以通过临时页面验证或者文档示例验证的方式来验证 Schema 是否符合需求。我们这里以临时页面验证为例：
 
@@ -310,7 +370,7 @@ export default PluginBlockCarouselClient;
 
 验证完毕后需要删除测试页面。
 
-### 3. 定义 Schema Initializer Item
+### 5. 定义 Schema Initializer Item
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/carouselInitializerItem.ts` 文件：
 
@@ -318,16 +378,18 @@ export default PluginBlockCarouselClient;
 import { SchemaInitializerItemType, useSchemaInitializer } from '@nocobase/client';
 
 import { carouselBlockSchema } from './carouselBlockSchema';
-import { CarouselBlockName, CarouselBlockNameLowercase } from './constants';
+import { BlockName, BlockNameLowercase } from './constants';
+import { useCarouselTranslation } from './local';
 
 export const carouselInitializerItem: SchemaInitializerItemType = {
   type: 'item',
-  name: CarouselBlockNameLowercase,
+  name: BlockNameLowercase,
   icon: 'PlayCircleOutlined',
   useComponentProps() {
     const { insert } = useSchemaInitializer();
+    const { t } = useCarouselTranslation();
     return {
-      title: CarouselBlockName,
+      title: t(BlockName),
       onClick: () => {
         insert(carouselBlockSchema);
       },
@@ -342,16 +404,17 @@ export const carouselInitializerItem: SchemaInitializerItemType = {
 - `useComponentProps`：返回一个对象，包含 `title` 和 `onClick` 两个属性，`title` 是显示的文本，`onClick` 是点击后的回调函数
 - [useSchemaInitializer()](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#useschemainitializer)：用于获取 `SchemaInitializerContext` 上下文
   - `insert`：插入一个新的 Schema
+- `useCarouselTranslation()`：用于获取多语言工具函数
 
 更多关于 Schema Item 的定义可以参考 [Schema Initializer Item](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types) 文档。
 
-### 4. 添加到 Add block 中
+### 6. 添加到 Add block 中
 
 系统中有很多个 `Add block` 按钮，但他们的 **name 是不同的**。
 
 ![img_v3_02b4_049b0a62-8e3b-420f-adaf-a6350d84840g](https://static-docs.nocobase.com/img_v3_02b4_049b0a62-8e3b-420f-adaf-a6350d84840g.jpg)
 
-#### 4.1 添加到页面级别 Add block 中
+#### 6.1 添加到页面级别 Add block 中
 
 如果我们需要添加到页面级别的 `Add block` 中，我们需要知道对应的 `name`，我们可以通过 TODO 方式查看对应的 `name`。
 
@@ -392,7 +455,7 @@ export default PluginBlockCarouselClient;
 
 ![20240603161730](https://static-docs.nocobase.com/20240603161730.png)
 
-#### 4.2 添加到弹窗 Add block 中
+#### 6.2 添加到弹窗 Add block 中
 
 我们不仅需要将其添加到页面级别的 `Add block` 中，还需要将其添加到 `Table` 区块 `Add new` 弹窗的 `Add block` 中。
 
@@ -413,7 +476,7 @@ export class PluginBlockCarouselClient extends Plugin {
 
 ![20240603161814](https://static-docs.nocobase.com/20240603161814.png)
 
-#### 4.3 添加到移动端 Add block 中
+#### 6.3 添加到移动端 Add block 中
 
 > 首先要激活移动端插件，参考 [激活插件](/welcome/getting-started/plugin#3-activate-the-plugin) 文档。
 
@@ -434,9 +497,9 @@ export class PluginBlockCarouselClient extends Plugin {
 
 如果需要更多的 `Add block`，可以继续添加，只需要知道对应的 `name` 即可。
 
-### 5. 实现 Schema Settings
+### 7. 实现 Schema Settings
 
-#### 5.1 定义 Schema Settings
+#### 7.1 定义 Schema Settings
 
 一个完整的 Block 还需要有 Schema Settings，用于配置一些属性和操作。
 
@@ -444,16 +507,17 @@ export class PluginBlockCarouselClient extends Plugin {
 
 ```ts | pure
 import { SchemaSettings } from "@nocobase/client";
+import { BlockNameLowercase } from '../constants';
 
 export const carouselSettings = new SchemaSettings({
-  name: 'blockSettings:image',
+  name: `blockSettings:${BlockNameLowercase}`,
   items: [
     // TODO
   ]
 });
 ```
 
-#### 5.2 注册 Schema Settings
+#### 7.2 注册 Schema Settings
 
 ```ts
 import { Plugin } from '@nocobase/client';
@@ -469,7 +533,7 @@ export class PluginBlockCarouselClient extends Plugin {
 export default PluginBlockCarouselClient;
 ```
 
-#### 5.3 使用 Schema Settings
+#### 7.3 使用 Schema Settings
 
 我们修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/carouselBlockSchema.ts` 中的 `carouselBlockSchema`：
 
@@ -486,13 +550,13 @@ const carouselBlockSchema: ISchema = {
 
 ![20240603162037](https://static-docs.nocobase.com/20240603162037.png)
 
-### 6. 实现 Schema Settings items
+### 8. 实现 Schema Settings items
 
 目前我们只实现了 `Schema Settings`，但是没有实现任何操作，我们需要根据需求实现各个操作。
 
 目前 Schema Settings 支持的内置操作类型请参考 [Schema Settings - Built-in Components and Types](https://client.docs.nocobase.com/core/ui-schema/schema-settings#built-in-components-and-types) 文档。
 
-#### 6.1 实现 `remove` 操作
+#### 8.1 实现 `remove` 操作
 
 目前通过 initializers 添加的区块是无法删除的，我们需要实现 `remove` 操作。
 
@@ -500,24 +564,34 @@ const carouselBlockSchema: ISchema = {
 
 ```diff
 import { SchemaSettings, SchemaSettingsBlockTitleItem } from '@nocobase/client';
-import { CarouselBlockNameLowercase } from '../constants';
+import { BlockNameLowercase } from '../constants';
 
 export const carouselSettings = new SchemaSettings({
-  name: `blockSettings:${CarouselBlockNameLowercase}`,
+  name: `blockSettings:${BlockNameLowercase}`,
   items: [
 +   {
 +     type: 'remove',
 +     name: 'remove',
++     componentProps: {
++       removeParentsIfNoChildren: true,
++       breakRemoveOn: {
++         'x-component': 'Grid',
++       },
++     }
 +   }
   ]
 });
 ```
 
+- componentProps
+  - `removeParentsIfNoChildren`：如果没有子节点，是否删除父节点
+  - `breakRemoveOn`：删除时的中断条件。因为 `Add Block` 会自动将子项的包裹在 `Grid` 中，所以这里设置 `breakRemoveOn: { 'x-component': 'Grid' }`，当删除 `Grid` 时，不再向上删除。
+
 <video width="100%" controls="">
   <source src="https://static-docs.nocobase.com/20240603162229_rec_.mp4" type="video/mp4" />
 </video>
 
-#### 6.2 实现 `Edit Block title` 操作
+#### 8.2 实现 `Edit Block title` 操作
 
 我们可以实现一个 `Edit Block title` 操作，用于修改区块的标题。
 
@@ -530,14 +604,14 @@ export const carouselSettings = new SchemaSettings({
 + import { SchemaSettings, SchemaSettingsBlockTitleItem } from "@nocobase/client";
 
 import { SchemaSettings, SchemaSettingsBlockTitleItem } from '@nocobase/client';
-import { CarouselBlockNameLowercase } from '../constants';
+import { BlockNameLowercase } from '../constants';
 import { schemaSettingsHeightItem } from './items/height';
 import { schemaSettingsObjectFitItem } from './items/objectFit';
 import { schemaSettingsImagesItem } from './items/images';
 import { schemaSettingsAutoplayItem } from './items/autoplay';
 
 export const carouselSettings = new SchemaSettings({
-  name: `blockSettings:${CarouselBlockNameLowercase}`,
+  name: `blockSettings:${BlockNameLowercase}`,
   items: [
 +   {
 +     name: 'editBlockTitle',
@@ -546,6 +620,12 @@ export const carouselSettings = new SchemaSettings({
     {
       type: 'remove',
       name: 'remove',
+      componentProps: {
+        removeParentsIfNoChildren: true,
+        breakRemoveOn: {
+          'x-component': 'Grid',
+        },
+      }
     }
   ]
 });
@@ -557,18 +637,20 @@ export const carouselSettings = new SchemaSettings({
 
 更多可以复用的 SchemaSettings items 可以查看 TODO。
 
-#### 6.3 实现 `Edit Images` 操作
+#### 8.3 实现 `Edit Images` 操作
 
 我们可以实现一个 `Edit Images` 操作，用于修改轮播的的图片。
 
-##### 6.3.1 定义 Schema Settings item
+##### 7.3.1 定义 Schema Settings item
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/carouselSettings/items/images.ts` 文件：
 
 ```ts
 import { SchemaSettingsItemType, useDesignable, } from "@nocobase/client";
 import { useFieldSchema } from '@formily/react';
-import { CarouselBlockNameLowercase } from "../../constants";
+
+import { BlockNameLowercase } from "../../constants";
+import { useCarouselTranslation } from "../../local";
 
 export const schemaSettingsImagesItem: SchemaSettingsItemType = {
   name: 'images',
@@ -576,17 +658,18 @@ export const schemaSettingsImagesItem: SchemaSettingsItemType = {
   useComponentProps() {
     const filedSchema = useFieldSchema();
     const { deepMerge } = useDesignable();
+    const { t } = useCarouselTranslation();
 
     return {
-      title: 'Edit Images',
+      title: t('Edit Images'),
       schema: {
         type: 'object',
-        title: 'Edit Images',
+        title: t('Edit Images'),
         properties: {
           src: {
-            title: 'Images',
+            title: t('Images'),
             type: 'string',
-            default: filedSchema['x-decorator-props'][CarouselBlockNameLowercase]?.images ?? [],
+            default: filedSchema['x-decorator-props'][BlockNameLowercase]?.images ?? [],
             'x-decorator': 'FormItem',
             'x-component': 'Upload.Attachment',
             'x-component-props': {
@@ -601,8 +684,8 @@ export const schemaSettingsImagesItem: SchemaSettingsItemType = {
           'x-uid': filedSchema['x-uid'],
           'x-decorator-props': {
             ...filedSchema['x-decorator-props'],
-            [CarouselBlockNameLowercase]: {
-              ...filedSchema['x-decorator-props']?.[CarouselBlockNameLowercase],
+            [BlockNameLowercase]: {
+              ...filedSchema['x-decorator-props']?.[BlockNameLowercase],
               images,
             },
           },
@@ -634,7 +717,7 @@ export const schemaSettingsImagesItem: SchemaSettingsItemType = {
     - [FormItem](https://client.docs.nocobase.com/components/form-item)：表单项
   - `onSubmit`：表单提交事件
 
-##### 6.3.2 使用 SchemaSettings Item
+##### 7.3.2 使用 SchemaSettings Item
 
 我们修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/carouselSettings/index.ts`：
 
@@ -643,7 +726,7 @@ export const schemaSettingsImagesItem: SchemaSettingsItemType = {
 + import { schemaSettingsImagesItem } from "./items/images";
 
 export const carouselSettings = new SchemaSettings({
-  name: `blockSettings:${CarouselBlockNameLowercase}`,
+  name: `blockSettings:${BlockNameLowercase}`,
   items: [
     {
       name: 'editBlockTitle',
@@ -653,6 +736,12 @@ export const carouselSettings = new SchemaSettings({
     {
       type: 'remove',
       name: 'remove',
+      componentProps: {
+        removeParentsIfNoChildren: true,
+        breakRemoveOn: {
+          'x-component': 'Grid',
+        },
+      }
     }
   ]
 });
@@ -662,15 +751,18 @@ export const carouselSettings = new SchemaSettings({
   <source src="https://static-docs.nocobase.com/20240603162436_rec_.mp4" type="video/mp4" />
 </video>
 
-#### 6.4 实现 Edit Height
+#### 8.4 实现 Edit Height
 
-##### 6.4.1 实现 SchemaSettings Item
+##### 8.4.1 实现 SchemaSettings Item
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/carouselSettings/items/height.ts` 文件：
 
 ```ts
-import { SchemaSettingsItemType, useDesignable } from "@nocobase/client";
+import { SchemaSettingsItemType, useDesignable, } from "@nocobase/client";
 import { useFieldSchema } from '@formily/react';
+
+import { BlockNameLowercase } from "../../constants";
+import { useCarouselTranslation } from "../../local";
 
 export const schemaSettingsHeightItem: SchemaSettingsItemType = {
   name: 'height',
@@ -678,17 +770,18 @@ export const schemaSettingsHeightItem: SchemaSettingsItemType = {
   useComponentProps() {
     const filedSchema = useFieldSchema();
     const { deepMerge } = useDesignable();
+    const { t } = useCarouselTranslation();
 
     return {
-      title: 'Edit height',
+      title: t('Edit Height'),
       schema: {
         type: 'object',
-        title: 'Edit Height',
+        title: t('Edit Height'),
         properties: {
           height: {
-            title: 'Image Height',
+            title: t('Height'),
             type: 'number',
-            default: filedSchema['x-decorator-props'][CarouselBlockNameLowercase]?.height,
+            default: filedSchema['x-decorator-props']?.[BlockNameLowercase]?.height,
             'x-decorator': 'FormItem',
             'x-component': 'InputNumber',
           },
@@ -699,8 +792,8 @@ export const schemaSettingsHeightItem: SchemaSettingsItemType = {
           'x-uid': filedSchema['x-uid'],
           'x-decorator-props': {
             ...filedSchema['x-decorator-props'],
-            carousel: {
-              ...filedSchema['x-decorator-props']?.[CarouselBlockNameLowercase],
+            [BlockNameLowercase]: {
+              ...filedSchema['x-decorator-props']?.[BlockNameLowercase],
               height,
             },
           },
@@ -732,7 +825,7 @@ export const schemaSettingsHeightItem: SchemaSettingsItemType = {
     - [FormItem](https://client.docs.nocobase.com/components/form-item)：表单项
   - `onSubmit`：表单提交事件
 
-##### 6.4.2 使用 SchemaSettings Item
+##### 8.4.2 使用 SchemaSettings Item
 
 我们修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/carouselSettings/index.ts`：
 
@@ -741,7 +834,7 @@ export const schemaSettingsHeightItem: SchemaSettingsItemType = {
 + import { schemaSettingsHeightItem } from "./items/height";
 
 export const carouselSettings = new SchemaSettings({
-  name: `blockSettings:${CarouselBlockNameLowercase}`,
+  name: `blockSettings:${BlockNameLowercase}`,
   items: [
     {
       name: 'editBlockTitle',
@@ -752,6 +845,12 @@ export const carouselSettings = new SchemaSettings({
     {
       type: 'remove',
       name: 'remove',
+      componentProps: {
+        removeParentsIfNoChildren: true,
+        breakRemoveOn: {
+          'x-component': 'Grid',
+        },
+      }
     }
   ]
 });
@@ -760,15 +859,17 @@ export const carouselSettings = new SchemaSettings({
   <source src="https://static-docs.nocobase.com/20240603162555_rec_.mp4" type="video/mp4" />
 </video>
 
-#### 6.5 实现 ObjectFit
+#### 8.5 实现 ObjectFit
 
-##### 6.5.1 实现 SchemaSettings Item
+##### 8.5.1 实现 SchemaSettings Item
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/carouselSettings/items/objectFit.ts` 文件：
 
 ```ts
 import { SchemaSettingsItemType, useDesignable, } from "@nocobase/client";
 import { useFieldSchema } from '@formily/react';
+import { BlockNameLowercase } from "../../constants";
+import { useCarouselTranslation } from "../../local";
 
 export const schemaSettingsObjectFitItem: SchemaSettingsItemType = {
   name: 'objectFit',
@@ -776,9 +877,10 @@ export const schemaSettingsObjectFitItem: SchemaSettingsItemType = {
   useComponentProps() {
     const filedSchema = useFieldSchema();
     const { deepMerge } = useDesignable();
+    const { t } = useCarouselTranslation();
 
     return {
-      title: 'Object Fit',
+      title: t('Object Fit'),
       options: [
         { label: 'Cover', value: 'cover' },
         { label: 'Contain', value: 'contain' },
@@ -786,14 +888,14 @@ export const schemaSettingsObjectFitItem: SchemaSettingsItemType = {
         { label: 'None', value: 'none' },
         { label: 'Scale Down', value: 'scale-down' },
       ],
-      value: filedSchema['x-decorator-props'][CarouselBlockNameLowercase]?.objectFit || 'cover',
+      value: filedSchema['x-decorator-props']?.[BlockNameLowercase]?.objectFit || 'cover',
       onChange(v) {
         deepMerge({
           'x-uid': filedSchema['x-uid'],
           'x-decorator-props': {
             ...filedSchema['x-decorator-props'],
-            carousel: {
-              ...filedSchema['x-decorator-props']?.[CarouselBlockNameLowercase],
+            [BlockNameLowercase]: {
+              ...filedSchema['x-decorator-props']?.[BlockNameLowercase],
               objectFit: v,
             },
           },
@@ -824,7 +926,7 @@ export const schemaSettingsObjectFitItem: SchemaSettingsItemType = {
   - `value`：默认值
   - `onChange`：选择事件
 
-##### 6.5.2 使用 SchemaSettings Item
+##### 8.5.2 使用 SchemaSettings Item
 
 我们修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/carouselSettings/index.ts`：
 
@@ -833,7 +935,7 @@ export const schemaSettingsObjectFitItem: SchemaSettingsItemType = {
 + import { schemaSettingsObjectFitItem } from "./items/objectFit";
 
 export const carouselSettings = new SchemaSettings({
-  name: `blockSettings:${CarouselBlockNameLowercase}`,
+  name: `blockSettings:${BlockNameLowercase}`,
   items: [
     {
       name: 'editBlockTitle',
@@ -845,6 +947,12 @@ export const carouselSettings = new SchemaSettings({
     {
       type: 'remove',
       name: 'remove',
+      componentProps: {
+        removeParentsIfNoChildren: true,
+        breakRemoveOn: {
+          'x-component': 'Grid',
+        },
+      }
     }
   ]
 });
@@ -854,16 +962,18 @@ export const carouselSettings = new SchemaSettings({
   <source src="https://static-docs.nocobase.com/20240603162655_rec_.mp4" type="video/mp4" />
 </video>
 
-#### 6.6 实现 Autoplay
+#### 8.6 实现 Autoplay
 
-##### 6.6.1 实现 SchemaSettings Item
+##### 8.6.1 实现 SchemaSettings Item
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/carouselSettings/items/autoplay.ts` 文件：
 
 ```ts
 import { SchemaSettingsItemType, useDesignable, } from "@nocobase/client";
 import { useFieldSchema } from '@formily/react';
-import { CarouselBlockNameLowercase } from "../../constants";
+
+import { BlockNameLowercase } from "../../constants";
+import { useCarouselTranslation } from "../../local";
 
 export const schemaSettingsAutoplayItem: SchemaSettingsItemType = {
   name: 'autoplay',
@@ -871,17 +981,18 @@ export const schemaSettingsAutoplayItem: SchemaSettingsItemType = {
   useComponentProps() {
     const filedSchema = useFieldSchema();
     const { deepMerge } = useDesignable();
+    const { t } = useCarouselTranslation();
 
     return {
-      title: 'Autoplay',
-      checked: !!filedSchema['x-decorator-props']?.[CarouselBlockNameLowercase]?.autoplay,
+      title: t('Autoplay'),
+      checked: !!filedSchema['x-decorator-props']?.[BlockNameLowercase]?.autoplay,
       onChange(v) {
         deepMerge({
           'x-uid': filedSchema['x-uid'],
           'x-decorator-props': {
             ...filedSchema['x-decorator-props'],
-            [CarouselBlockNameLowercase]: {
-              ...filedSchema['x-decorator-props']?.[CarouselBlockNameLowercase],
+            [BlockNameLowercase]: {
+              ...filedSchema['x-decorator-props']?.[BlockNameLowercase],
               autoplay: v,
             },
           },
@@ -912,7 +1023,7 @@ export const schemaSettingsAutoplayItem: SchemaSettingsItemType = {
   - `onChange`：开关事件
 
 
-##### 6.6.2 使用 SchemaSettings Item
+##### 8.6.2 使用 SchemaSettings Item
 
 我们修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/carouselSettings/index.ts`：
 
@@ -921,7 +1032,7 @@ export const schemaSettingsAutoplayItem: SchemaSettingsItemType = {
 + import { schemaSettingsAutoplayItem } from "./items/autoplay";
 
 export const carouselSettings = new SchemaSettings({
-  name: `blockSettings:${CarouselBlockNameLowercase}`,
+  name: `blockSettings:${BlockNameLowercase}`,
   items: [
     {
       name: 'editBlockTitle',
@@ -934,6 +1045,12 @@ export const carouselSettings = new SchemaSettings({
     {
       type: 'remove',
       name: 'remove',
+      componentProps: {
+        removeParentsIfNoChildren: true,
+        breakRemoveOn: {
+          'x-component': 'Grid',
+        },
+      }
     }
   ]
 });
@@ -943,7 +1060,7 @@ export const carouselSettings = new SchemaSettings({
   <source src="https://static-docs.nocobase.com/20240603162803_rec_.mp4" type="video/mp4" />
 </video>
 
-#### 6.7 增加 divider
+#### 8.7 增加 divider
 
 `editBlockTitle` 和 `remove` 是一个通用的逻辑，而 `src`、`height`、`objectFit`、`autoplay` 是针对 `ImageBlock` 的配置，我们可以通过 `divider` 来区分。
 
@@ -952,7 +1069,7 @@ export const carouselSettings = new SchemaSettings({
 ```diff
 // ...
 export const carouselSettings = new SchemaSettings({
-  name: `blockSettings:${CarouselBlockNameLowercase}`,
+  name: `blockSettings:${BlockNameLowercase}`,
   items: [
     {
       name: 'editBlockTitle',
@@ -973,12 +1090,60 @@ export const carouselSettings = new SchemaSettings({
     {
       type: 'remove',
       name: 'remove',
+      componentProps: {
+        removeParentsIfNoChildren: true,
+        breakRemoveOn: {
+          'x-component': 'Grid',
+        },
+      }
     }
   ]
 });
 ```
 
 ![20240603162933](https://static-docs.nocobase.com/20240603162933.png)
+
+### 9. 权限
+
+TODO
+
+### 10. 完善多语言
+
+#### 10.1 英文
+
+我们编辑 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/local/en.ts` 文件：
+
+```diff
+{
+  "Carousel": "Carousel",
++ "Edit Images": "Edit Images",
++ "Images": "Images",
++ "Autoplay": "Autoplay",
++ "Edit Height": "Edit Height",
++ "Height": "Height"
+}
+```
+
+#### 10.2 中文
+
+我们编辑 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/local/zh.ts` 文件：
+
+```diff
+{
+  "Carousel": "走马灯",
++ "Edit Images": "编辑图片",
++ "Images": "图片",
++ "Autoplay": "自动播放",
++ "Edit Height": "编辑高度",
++ "Height": "高度"
+}
+```
+
+我们可以通过 [http://localhost:13000/admin/settings/system-settings](http://localhost:13000/admin/settings/system-settings) 添加多个语言，并且在右上角切换语言。
+
+![20240611113758](https://static-docs.nocobase.com/20240611113758.png)
+
+![20240611114018](https://static-docs.nocobase.com/20240611114018.png)
 
 ## 打包和上传到生产环境
 

@@ -103,7 +103,7 @@ export default PluginInitializerBlockSimpleClient;
 组件验证方式有 2 种：
 
 - 临时页面验证：我们可以临时建一个页面，然后渲染 `ImageBlock` 组件，查看是否符合需求
-- 文档示例验证：可以启动文档 `yarn doc packages/plugins/@nocobase-sample/plugin-initializer-block-simple`，通过写文档示例的方式验证是否符合需求（TODO）
+- 文档示例验证：可以启动文档 `yarn doc plugins/@nocobase-sample/plugin-initializer-block-simple`，通过写文档示例的方式验证是否符合需求（TODO）
 
 我们以 `临时页面验证` 为例，我们新建一个页面，根据属性参数添加一个或者多个 `ImageBlock` 组件，查看是否符合需求。
 
@@ -267,6 +267,12 @@ export const imageBlockSettings = new SchemaSettings({
     {
       type: 'remove',
       name: 'remove',
+      componentProps: {
+        removeParentsIfNoChildren: true,
+        breakRemoveOn: {
+          'x-component': 'Grid',
+        },
+      }
     }
   ]
 });
