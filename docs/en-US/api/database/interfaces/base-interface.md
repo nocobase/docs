@@ -24,8 +24,8 @@ db.interfaceManager.registerInterfaceType('customInterface', CustomInterface)
 
 ### toValue(value: string, ctx?: any): Promise<any>
 
-将外部的字符串转换为 interface 的实际值，值可直接传递给 Repository 进行写入操作
+将外部的字符串转换为 interface 的实际值，值可直接传递给 Repository 进行写入操作。
 
 ### toString(value: any, ctx?: any)
 
-将 interface 的实际值转换为 string 类型，string 类型可用作导出、展示时使用
+将 interface 的实际值转换为 string 类型，string 类型可用作导出、展示时使用。
