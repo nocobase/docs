@@ -249,13 +249,13 @@ NocoBase 的动态页面都是通过 Schema 来渲染，所以我们需要定义
 
 ```tsx | pure
 import { ISchema } from "@nocobase/client";
-import { BlockName } from "../constants";
+import { BlockName, BlockNameLowercase } from "../constants";
 
 export const imageSchema: ISchema = {
   type: 'void',
   'x-component': 'CardItem',
   properties: {
-    image: {
+    [BlockNameLowercase]: {
       'x-component': BlockName,
     }
   }
