@@ -2,7 +2,7 @@
 
 *Updated on June 11, 2024*
 
-We are developing or have already planned the following new features and plugins:
+We are developing or have already planned the following new features and plugins, ☑️ indicates just completed and published:
 
 ## Features:
 
