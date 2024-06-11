@@ -8,6 +8,7 @@ We are developing or have already planned the following new features and plugins
 
 - Field default values support expressions
 - Association fields support linkage rules
+- Record open mode: Page (alongside Dialog, Drawer)
 - [x] Link action, supports variables and expressions
 - [x] Data scope and field default values support Query params
 - [x] Set block height
