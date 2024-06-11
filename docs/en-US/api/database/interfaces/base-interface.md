@@ -14,8 +14,6 @@ class CustomInterface extends BaseInterface {
     // 自定义的 toString 逻辑
   }
 }
-
-
 // 注册 Interface
 db.interfaceManager.registerInterfaceType('customInterface', CustomInterface)
 ```
