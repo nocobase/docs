@@ -45,6 +45,7 @@ export default [
       '/api/database/collection',
       '/api/database/field',
       '/api/database/repository',
+      '/api/database/interfaces/base-interface',
       '/api/database/relation-repository/has-one-repository',
       '/api/database/relation-repository/has-many-repository',
       '/api/database/relation-repository/belongs-to-repository',
