@@ -72,7 +72,7 @@ import { InfoBlock, infoBlockSettings, infoBlockInitializerItem } from './InfoBl
 + export default PluginSchemaSettingsNewClient;
 ```
 
-为了避免和其他示例冲突，把所有 `ImageBlock` 改为了 `ImageBlock2`，但是本示例文档中仍然按照 `ImageBlock` 来说明。
+为了避免和其他示例冲突，把所有 `Image` 改为了 `Image2`，但是本示例文档中仍然按照 `Image` 来说明。
 
 ### 2. 组件属性
 
@@ -80,13 +80,13 @@ import { InfoBlock, infoBlockSettings, infoBlockInitializerItem } from './InfoBl
 
 我们需要先让组件支持需求中的属性。
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/ImageBlock.tsx` 文件：
+我们修改 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/Image.tsx` 文件：
 
 ```tsx | pure
 import React, { FC } from 'react';
 import { withDynamicSchemaProps } from '@nocobase/client';
 
-export interface ImageBlockProps {
+export interface ImageProps {
   src?: { url: string; title?: string };
   /**
    * @default 500
@@ -102,7 +102,7 @@ export interface ImageBlockProps {
   lazy?: boolean;
 }
 
-export const ImageBlock: FC<ImageBlockProps> = withDynamicSchemaProps((props) => {
+export const Image: FC<ImageProps> = withDynamicSchemaProps((props) => {
   const { src, height = 500, objectFit = 'cover', lazy = false } = props;
   return <div style={{ height }}>
     {
@@ -114,17 +114,17 @@ export const ImageBlock: FC<ImageBlockProps> = withDynamicSchemaProps((props) =>
       /> : null
     }
   </div>
-}, { displayName: 'ImageBlock' })
+}, { displayName: 'Image' })
 ```
 
 #### 2.2 验证组件
 
 组件验证方式有 2 种：
 
-- 临时页面验证：我们可以临时建一个页面，然后渲染 `ImageBlock` 组件，查看是否符合需求
+- 临时页面验证：我们可以临时建一个页面，然后渲染 `Image` 组件，查看是否符合需求
 - 文档示例验证：可以启动文档 `yarn doc plugins/@@nocobase-sample/plugin-schema-settings-new`，通过写文档示例的方式验证是否符合需求（TODO）
 
-我们以 `临时页面验证` 为例，我们新建一个页面，根据属性参数添加一个或者多个 `ImageBlock` 组件，查看是否符合需求。
+我们以 `临时页面验证` 为例，我们新建一个页面，根据属性参数添加一个或者多个 `Image` 组件，查看是否符合需求。
 
 ```tsx | pure
 // ...
@@ -136,19 +136,19 @@ export class PluginSchemaSettingsNewClient extends Plugin {
       Component: () => {
         return <>
           <div style={{ marginTop: 20, marginBottom: 20 }}>
-            <ImageBlock />
+            <Image />
           </div>
 
           <div style={{ marginTop: 20, marginBottom: 20 }}>
-            <ImageBlock src={{ url: 'https://picsum.photos/1200/500' }} height={200} />
+            <Image src={{ url: 'https://picsum.photos/1200/500' }} height={200} />
           </div>
 
           <div style={{ marginTop: 20, marginBottom: 20 }}>
-            <ImageBlock src={{ url: 'https://picsum.photos/1200/500' }} objectFit='contain' />
+            <Image src={{ url: 'https://picsum.photos/1200/500' }} objectFit='contain' />
           </div>
 
           <div style={{ marginTop: 20, marginBottom: 20 }}>
-            <ImageBlock src={{ url: 'https://picsum.photos/1200/500' }} lazy />
+            <Image src={{ url: 'https://picsum.photos/1200/500' }} lazy />
           </div>
         </>
       }
@@ -169,20 +169,20 @@ export class PluginSchemaSettingsNewClient extends Plugin {
 
 #### 3.1 定义 Schema
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/imageBlockSchema.ts`：
+我们修改 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/imageSchema.ts`：
 
 ```diff
 import { ISchema } from "@nocobase/client";
 import { useFieldSchema } from '@formily/react';
-import { imageBlockSettings } from "./imageBlockSettings";
-+ import { ImageBlockProps } from "./ImageBlock";
+import { imageSettings } from "./imageSettings";
++ import { ImageProps } from "./Image";
 
-+ export function useImageBlockProps(): ImageBlockProps {
++ export function useImageProps(): ImageProps {
 +  const fieldSchema = useFieldSchema();
 +  return fieldSchema.parent?.['x-decorator-props']?.['image'];
 + }
 
-export const imageBlockSchema: ISchema = {
+export const imageSchema: ISchema = {
   type: 'void',
   'x-component': 'CardItem',
 +  'x-decorator-props': {
@@ -190,17 +190,17 @@ export const imageBlockSchema: ISchema = {
 + },
   properties: {
     image: {
-      'x-component': 'ImageBlock',
-+     'x-use-component-props': 'useImageBlockProps'
+      'x-component': 'Image',
++     'x-use-component-props': 'useImageProps'
     }
   },
-  'x-settings': imageBlockSettings.name
+  'x-settings': imageSettings.name
 };
 ```
 
-我们将 `ImageBlock` 的属性存储在 `x-decorator-props` 的 `image`  属性中，然后通过 `x-use-component-props` 来获取。
+我们将 `Image` 的属性存储在 `x-decorator-props` 的 `image`  属性中，然后通过 `x-use-component-props` 来获取。
 
-`useImageBlockProps()`：返回 `ImageBlock` 组件对应的属性
+`useImageProps()`：返回 `Image` 组件对应的属性
 
 - `useFieldSchema()`：获取当前字段的 schema，并通过 `parent` 获取父级 schema。如果是数据区块则可以通过 [useDataBlockProps](https://client.docs.nocobase.com/core/data-block/data-block-provider#usedatablockprops) 获取属性。
 
@@ -219,7 +219,7 @@ export class PluginSchemaSettingsNewClient extends Plugin {
             <SchemaComponent schema={{
               properties: {
                 test1: {
-                  ...imageBlockSchema,
+                  ...imageSchema,
                   'x-decorator-props': { image: {} }
                 }
               }
@@ -229,7 +229,7 @@ export class PluginSchemaSettingsNewClient extends Plugin {
             <SchemaComponent schema={{
               properties: {
                 test1: {
-                  ...imageBlockSchema,
+                  ...imageSchema,
                   'x-decorator-props': { image: { src: { url: 'https://picsum.photos/1200/500' }, height: 200 } }
                 }
               }
@@ -239,7 +239,7 @@ export class PluginSchemaSettingsNewClient extends Plugin {
             <SchemaComponent schema={{
               properties: {
                 test1: {
-                  ...imageBlockSchema,
+                  ...imageSchema,
                   'x-decorator-props': { image: { src: { url: 'https://picsum.photos/1200/500' }, objectFit: 'contain' } }
                 }
               }
@@ -249,7 +249,7 @@ export class PluginSchemaSettingsNewClient extends Plugin {
             <SchemaComponent schema={{
               properties: {
                 test1: {
-                  ...imageBlockSchema,
+                  ...imageSchema,
                   'x-decorator-props': { image: { src: { url: 'https://picsum.photos/1200/500' }, lazy: true } }
                 }
               }
@@ -286,7 +286,7 @@ export class PluginSchemaSettingsNewClient extends Plugin {
 - import { SchemaSettingsBlockTitleItem } from "@nocobase/client";
 + import { SchemaSettings, SchemaSettingsBlockTitleItem } from "@nocobase/client";
 
-export const imageBlockSettings = new SchemaSettings({
+export const imageSettings = new SchemaSettings({
   name: 'blockSettings:image',
   items: [
 +   {
@@ -389,13 +389,13 @@ export const schemaSettingsSrcItem: SchemaSettingsItemType = {
 
 ##### 5.2.2 使用 SchemaSettings Item
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/imageBlockSettings.ts`：
+我们修改 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/imageSettings.ts`：
 
 ```diff
 // ...
 + import { schemaSettingsSrcItem } from "./SchemaSettingsItems/src";
 
-export const imageBlockSettings = new SchemaSettings({
+export const imageSettings = new SchemaSettings({
   name: 'blockSettings:image',
   items: [
     {
@@ -494,13 +494,13 @@ export const schemaSettingsHeightItem: SchemaSettingsItemType = {
 
 ##### 5.3.2 使用 SchemaSettings Item
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/imageBlockSettings.ts`：
+我们修改 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/imageSettings.ts`：
 
 ```diff
 // ...
 + import { schemaSettingsHeightItem } from "./SchemaSettingsItems/height";
 
-export const imageBlockSettings = new SchemaSettings({
+export const imageSettings = new SchemaSettings({
   name: 'blockSettings:image',
   items: [
     {
@@ -595,13 +595,13 @@ export const schemaSettingsObjectFitItem: SchemaSettingsItemType = {
 
 ##### 5.4.2 使用 SchemaSettings Item
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/imageBlockSettings.ts`：
+我们修改 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/imageSettings.ts`：
 
 ```diff
 // ...
 + import { schemaSettingsObjectFitItem } from "./SchemaSettingsItems/objectFit";
 
-export const imageBlockSettings = new SchemaSettings({
+export const imageSettings = new SchemaSettings({
   name: 'blockSettings:image',
   items: [
     {
@@ -688,13 +688,13 @@ export const schemaSettingsLazyItem: SchemaSettingsItemType = {
 
 ##### 5.5.2 使用 SchemaSettings Item
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/imageBlockSettings.ts`：
+我们修改 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/imageSettings.ts`：
 
 ```diff
 // ...
 + import { schemaSettingsLazyItem } from "./SchemaSettingsItems/lazy";
 
-export const imageBlockSettings = new SchemaSettings({
+export const imageSettings = new SchemaSettings({
   name: 'blockSettings:image',
   items: [
     {
@@ -725,13 +725,13 @@ export const imageBlockSettings = new SchemaSettings({
 
 #### 5.6 增加 divider
 
-`editBlockTitle` 和 `remove` 是一个通用的逻辑，而 `src`、`height`、`objectFit`、`lazy` 是针对 `ImageBlock` 的配置，我们可以通过 `divider` 来区分。
+`editBlockTitle` 和 `remove` 是一个通用的逻辑，而 `src`、`height`、`objectFit`、`lazy` 是针对 `Image` 的配置，我们可以通过 `divider` 来区分。
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/imageBlockSettings.ts`：
+我们修改 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/imageSettings.ts`：
 
 ```diff
 // ...
-export const imageBlockSettings = new SchemaSettings({
+export const imageSettings = new SchemaSettings({
   name: 'blockSettings:image',
   items: [
     {

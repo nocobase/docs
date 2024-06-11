@@ -52,6 +52,23 @@ yarn dev
 - [UI Schema 协议](/development/client/ui-schema/what-is-ui-schema)：详细介绍 Schema 的结构和每个属性的作用
 - [Designable 设计器](/development/client/ui-schema/designable)：用于修改 Schema
 
+```bash
+.
+├── client # 客户端插件
+│   ├── initializer # 初始化器
+│   ├── component # 区块组件
+│   ├── index.tsx # 客户端插件入口
+│   ├── locale.ts # 多语言工具函数
+│   ├── constants.ts # 常量
+│   ├── schema # Schema
+│   └── settings # Schema Settings
+├── locale # 多语言文件
+│   ├── en-US.json # 英语
+│   └── zh-CN.json # 中文
+├── index.ts # 服务端插件入口
+└── server # 服务端插件
+```
+
 ### 1. 定义名称
 
 我们首先需要定义区块名称，它将会使用在各个地方。
@@ -69,7 +86,7 @@ export const BlockNameLowercase = BlockName.toLowerCase();
 
 如果插件需要支持多语言，我们需要定义多语言工具函数。
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/local.ts` 文件：
+我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/locale.ts` 文件：
 
 ```ts
 import { useTranslation } from 'react-i18next';
@@ -1062,7 +1079,7 @@ export const carouselSettings = new SchemaSettings({
 
 #### 8.7 增加 divider
 
-`editBlockTitle` 和 `remove` 是一个通用的逻辑，而 `src`、`height`、`objectFit`、`autoplay` 是针对 `ImageBlock` 的配置，我们可以通过 `divider` 来区分。
+`editBlockTitle` 和 `remove` 是一个通用的逻辑，而 `src`、`height`、`objectFit`、`autoplay` 是针对 `Image` 的配置，我们可以通过 `divider` 来区分。
 
 我们修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/carouselSettings/index.ts`：
 

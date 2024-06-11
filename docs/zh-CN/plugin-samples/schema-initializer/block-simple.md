@@ -55,77 +55,172 @@ yarn dev
 - [UI Schema 协议](/development/client/ui-schema/what-is-ui-schema)：详细介绍 Schema 的结构和每个属性的作用
 - [Designable 设计器](/development/client/ui-schema/designable)：用于修改 Schema
 
-### 1. 实现区块组件
+```bash
+.
+├── client # 客户端插件
+│   ├── initializer # 初始化器
+│   ├── component # 区块组件
+│   ├── index.tsx # 客户端插件入口
+│   ├── locale.ts # 多语言工具函数
+│   ├── constants.ts # 常量
+│   ├── schema # Schema
+│   └── settings # Schema Settings
+├── locale # 多语言文件
+│   ├── en-US.json # 英语
+│   └── zh-CN.json # 中文
+├── index.ts # 服务端插件入口
+└── server # 服务端插件
+```
 
-#### 1.1 定义区块组件
+### 1. 定义名称
 
-本示例要做的是一个图片区块组件，我们取名为 `ImageBlock`。
+我们首先需要定义区块名称，它将会使用在各个地方。
 
-所以我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/ImageBlock.tsx` 文件，其内容如下：
+我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/constants.ts`：
+
+```ts
+export const BlockName = 'Image';
+export const BlockNameLowercase = BlockName.toLowerCase();
+```
+
+### 2. 多语言
+
+#### 2.1 定义工具函数
+
+如果插件需要支持多语言，我们需要定义多语言工具函数。
+
+我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/locale.ts` 文件：
+
+```ts
+import { useTranslation } from 'react-i18next';
+
+// @ts-ignore
+import pkg from './../../package.json';
+
+export function useImageTranslation() {
+  return useTranslation(pkg.name, { nsMode: 'fallback' });
+}
+
+export function generateNTemplate(key: string) {
+  return `{{t('${key}', { ns: '${pkg.name}', nsMode: 'fallback' })}}`;
+}
+
+export function generateCommonTemplate(key: string) {
+  return `{{t('${key}')}}`;
+}
+```
+
+- [useTranslation()](https://react.i18next.com/latest/usetranslation-hook)：用于获取多语言工具函数
+- `useImageTranslation()`：获取插件的多语言工具函数，需要将插件的名字作为命名空间
+- `generateNTemplate()`：用于生成 Carousel 组件的多语言模板
+- `generateCommonTemplate()`：用于生成通用的多语言模板
+
+#### 2.2 多语言文件
+
+:::warning
+多语言文件变更后，需要重启服务才能生效
+:::
+
+##### 2.2.1 英语
+
+我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/locale/en-US.json` 内容为：
+
+```json
+{
+  "Image": "Image"
+}
+```
+
+##### 2.2.2 中文
+
+我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/locale/zh-CN.json` 内容为：
+
+```json
+{
+  "Image": "图片"
+}
+```
+
+如果需要更多的多语言支持，可以继续添加。
+
+### 3. 实现区块组件
+
+#### 3.1 定义区块组件
+
+本示例要做的是一个图片区块组件，我们取名为 `Image`。
+
+所以我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/component/Image.tsx` 文件，其内容如下：
 
 ```tsx | pure
 import React, { FC } from 'react';
 import { withDynamicSchemaProps } from '@nocobase/client';
+import { BlockName } from '../constants';
 
-export const ImageBlock: FC<{ height?: number }> = withDynamicSchemaProps(({ height = 500 }) => {
+export const Image: FC<{ height?: number }> = withDynamicSchemaProps(({ height = 500 }) => {
   return <div style={{ height }}>
     <img
       style={{ width: '100%', height: '100%', objectFit: 'cover' }}
       src="https://picsum.photos/2000/500"
     />
   </div>
-}, { displayName: 'ImageBlock' })
+}, { displayName: BlockName })
 ```
 
-`ImageBlock` 组件整体来说是一个被 `withDynamicSchemaProps` 包裹的函数组件，[withDynamicSchemaProps](/development/client/ui-schema/what-is-ui-schema#x-component-props-和-x-use-component-props) 是一个高阶组件，用于处理 Schema 中的的动态属性。
+`Image` 组件整体来说是一个被 `withDynamicSchemaProps` 包裹的函数组件，[withDynamicSchemaProps](/development/client/ui-schema/what-is-ui-schema#x-component-props-和-x-use-component-props) 是一个高阶组件，用于处理 Schema 中的的动态属性。
 
-如果不看 `withDynamicSchemaProps` 的话，`ImageBlock` 组件就是一个简单的函数组件。
+如果不看 `withDynamicSchemaProps` 的话，`Image` 组件就是一个简单的函数组件。
 
-#### 1.2 注册区块组件
+然后将其在 `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/component/index.ts` 中导出：
 
-我们需要将 `ImageBlock` 通过插件注册到系统中。
+```tsx | pure
+export * from './Image';
+```
+
+#### 3.2 注册区块组件
+
+我们需要将 `Image` 通过插件注册到系统中。
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
-import { ImageBlock } from './ImageBlock';
+import { Image } from './component'
 
 export class PluginInitializerBlockSimpleClient extends Plugin {
   async load() {
-    this.app.addComponents({ ImageBlock })
+    this.app.addComponents({ Image })
   }
 }
 
 export default PluginInitializerBlockSimpleClient;
 ```
 
-#### 1.3 验证区块组件
+#### 3.3 验证区块组件
 
 组件验证方式有 2 种：
 
-- 临时页面验证：我们可以临时建一个页面，然后渲染 `ImageBlock` 组件，查看是否符合需求
+- 临时页面验证：我们可以临时建一个页面，然后渲染 `Image` 组件，查看是否符合需求
 - 文档示例验证：可以启动文档 `yarn doc plugins/@nocobase-sample/plugin-initializer-block-simple`，通过写文档示例的方式验证是否符合需求（TODO）
 
-我们以 `临时页面验证` 为例，我们新建一个页面，根据属性参数添加一个或者多个 `ImageBlock` 组件，查看是否符合需求。
+我们以 `临时页面验证` 为例，我们新建一个页面，根据属性参数添加一个或者多个 `Image` 组件，查看是否符合需求。
 
 ```tsx | pure
 import React from 'react';
 import { Plugin } from '@nocobase/client';
-import { ImageBlock } from './ImageBlock';
+import { Image } from './component'
 
 export class PluginInitializerBlockSimpleClient extends Plugin {
   async load() {
-    this.app.addComponents({ ImageBlock })
+    this.app.addComponents({ Image })
 
-    this.app.router.add('admin.image-block-component', {
-      path: '/admin/image-block-component',
+    this.app.router.add('admin.image-component', {
+      path: '/admin/image-component',
       Component: () => {
         return <>
           <div style={{ marginTop: 20, marginBottom: 20 }}>
-            <ImageBlock />
+            <Image />
           </div>
 
           <div style={{ marginTop: 20, marginBottom: 20 }}>
-            <ImageBlock height={400} />
+            <Image height={400} />
           </div>
         </>
       }
@@ -136,69 +231,70 @@ export class PluginInitializerBlockSimpleClient extends Plugin {
 export default PluginInitializerBlockSimpleClient;
 ```
 
-然后访问 `http://localhost:13000/admin/image-block-component` 就可以看到对应测试页面的内容了。
+然后访问 `http://localhost:13000/admin/image-component` 就可以看到对应测试页面的内容了。
 
 ![20240526165057](https://static-docs.nocobase.com/20240526165057.png)
 
 验证完毕后需要删除测试页面。
 
-### 2. 定义区块 Schema
+### 4. 定义区块 Schema
 
-#### 2.1 定义区块 Schema
+#### 4.1 定义区块 Schema
 
-NocoBase 的动态页面都是通过 Schema 来渲染，所以我们需要定义一个 Schema，后续用于在界面中添加 `ImageBlock` 区块。在实现本小节之前，我们需要先了解一些基础知识：
+NocoBase 的动态页面都是通过 Schema 来渲染，所以我们需要定义一个 Schema，后续用于在界面中添加 `Image` 区块。在实现本小节之前，我们需要先了解一些基础知识：
 
 - [UI Schema 协议](/development/client/ui-schema/what-is-ui-schema)：详细介绍 Schema 的结构和每个属性的作用
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/imageBlockSchema.ts` 文件：
+我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/schema/index.ts` 文件：
 
 ```tsx | pure
 import { ISchema } from "@nocobase/client";
+import { BlockName } from "../constants";
 
-export const imageBlockSchema: ISchema = {
+export const imageSchema: ISchema = {
   type: 'void',
   'x-component': 'CardItem',
   properties: {
     image: {
-      'x-component': 'ImageBlock',
+      'x-component': BlockName,
     }
-  },
+  }
 };
 ```
 
-关于 `imageBlockSchema` 的详细说明：
+关于 `imageSchema` 的详细说明：
 
 - `type`：类型，这里是 `void`，表示纯 UI 节点，没有数据
 - `x-decorator`：装饰器，这里是 [CardItem 组件](https://client.docs.nocobase.com/components/card-item)，目前的区块都是被包裹在卡片中的，用于提供样式、布局和拖拽等功能
-- `x-component`：组件，这里是 `ImageBlock`，就是我们刚定义的组件
+- `x-component`：组件，这里是 `Image`，就是我们刚定义的组件
 
 上述 Schema 转为 React 组件后相当于：
 
 ```tsx | pure
 <CardItem>
-  <ImageBlock />
+  <Image />
 </CardItem>
 ```
 
-#### 2.2 验证区块 Schema
+#### 4.2 验证区块 Schema
 
 同验证组件一样，我们可以通过临时页面验证或者文档示例验证的方式来验证 Schema 是否符合需求。我们这里以临时页面验证为例：
 
 ```tsx | pure
 import React from 'react';
 import { Plugin, SchemaComponent } from '@nocobase/client';
-import { ImageBlock } from './ImageBlock';
-import { imageBlockSchema } from './imageBlockSchema';
+import { Image } from './component'
+import { imageSchema } from './schema'
 
 export class PluginInitializerBlockSimpleClient extends Plugin {
   async load() {
-    this.app.addComponents({ ImageBlock })
+    this.app.addComponents({ Image })
 
-    this.app.router.add('admin.image-block-schema', {
-      path: '/admin/image-block-schema',
+    this.app.router.add('admin.image-schema', {
+      path: '/admin/image-schema',
       Component: () => {
         return <div style={{ marginTop: 20, marginBottom: 20 }}>
-          <SchemaComponent schema={{ properties: { test: imageBlockSchema } }} />
+          <SchemaComponent schema={{ properties: { test: imageSchema } }} />
         </div>
       }
     })
@@ -210,31 +306,34 @@ export default PluginInitializerBlockSimpleClient;
 
 关于 `SchemaComponent` 的详细说明可以查看 [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponent-1) 文档。
 
-我们访问 [http://localhost:13000/admin/image-block-schema](http://localhost:13000/admin/image-block-schema) 就可以看到对应测试页面的内容了。
+我们访问 [http://localhost:13000/admin/image-schema](http://localhost:13000/admin/image-schema) 就可以看到对应测试页面的内容了。
 
 ![20240526165408](https://static-docs.nocobase.com/20240526165408.png)
 
 验证完毕后需要删除测试页面。
 
-### 3. 定义 Schema Initializer Item
+### 5. 定义 Schema Initializer Item
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/imageBlockInitializerItem.ts` 文件：
+我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/initializer/index.ts` 文件：
 
 ```ts
 import { SchemaInitializerItemType, useSchemaInitializer } from '@nocobase/client';
-import { imageBlockSchema } from './imageBlockSchema';
 
-export const imageBlockInitializerItem: SchemaInitializerItemType = {
+import { useImageTranslation } from '../locale';
+import { imageSchema } from '../schema';
+import { BlockName, BlockNameLowercase } from '../constants';
+
+export const imageInitializerItem: SchemaInitializerItemType = {
   type: 'item',
-  name: 'ImageBlock',
+  name: BlockNameLowercase,
   icon: 'FileImageOutlined',
   useComponentProps() {
     const { insert } = useSchemaInitializer();
+    const { t } = useImageTranslation()
     return {
-      title: 'Image',
+      title: t(BlockName),
       onClick: () => {
-
-        insert(imageBlockSchema);
+        insert(imageSchema);
       },
     };
   },
@@ -250,19 +349,20 @@ export const imageBlockInitializerItem: SchemaInitializerItemType = {
 
 更多关于 Schema Item 的定义可以参考 [Schema Initializer Item](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types) 文档。
 
-### 4. 实现 Schema Settings
+### 6. 实现 Schema Settings
 
-#### 4.1 定义 Schema Settings
+#### 6.1 定义 Schema Settings
 
 一个完整的 Block 还需要有 Schema Settings，用于配置一些属性和操作，但 Schema Settings 不是本示例的重点，所以我们这里仅有一个 `remove` 操作。
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/imageBlockSettings.ts` 文件：
+我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/settings/index.ts` 文件：
 
 ```ts | pure
 import { SchemaSettings } from "@nocobase/client";
+import { BlockNameLowercase } from "../constants";
 
-export const imageBlockSettings = new SchemaSettings({
-  name: 'blockSettings:image',
+export const imageSettings = new SchemaSettings({
+  name: `blockSettings:${BlockNameLowercase}`,
   items: [
     {
       type: 'remove',
@@ -278,44 +378,48 @@ export const imageBlockSettings = new SchemaSettings({
 });
 ```
 
-#### 4.2 注册 Schema Settings
+- componentProps
+  - `removeParentsIfNoChildren`：如果没有子节点，是否删除父节点
+  - `breakRemoveOn`：删除时的中断条件。因为 `Add Block` 会自动将子项的包裹在 `Grid` 中，所以这里设置 `breakRemoveOn: { 'x-component': 'Grid' }`，当删除 `Grid` 时，不再向上删除。
+
+#### 6.2 注册 Schema Settings
 
 ```ts
 import { Plugin } from '@nocobase/client';
-import { imageBlockSettings } from './imageBlockSettings';
+import { imageSettings } from './settings';
 
 export class PluginInitializerBlockSimpleClient extends Plugin {
   async load() {
     // ...
-    this.app.schemaSettingsManager.add(imageBlockSettings)
+    this.app.schemaSettingsManager.add(imageSettings)
   }
 }
 
 export default PluginInitializerBlockSimpleClient;
 ```
 
-#### 4.3 使用 Schema Settings
+#### 6.3 使用 Schema Settings
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/imageBlockSchema.ts` 中的 `imageBlockSchema`：
+我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/schema/index.ts` 中的 `imageSchema`：
 
 ```diff
-+ import { imageBlockSettings } from "./imageBlockSettings";
++ import { imageSettings } from "../settings";
 
-const imageBlockSchema: ISchema = {
+const imageSchema: ISchema = {
   type: 'void',
   'x-decorator': 'CardItem',
-+ 'x-settings': imageBlockSettings.name,
++ 'x-settings': imageSettings.name,
   // ...
 };
 ```
 
-### 5. 添加到 Add block 中
+### 7. 添加到 Add block 中
 
 系统中有很多个 `Add block` 按钮，但他们的 **name 是不同的**。
 
 ![img_v3_02b4_049b0a62-8e3b-420f-adaf-a6350d84840g](https://static-docs.nocobase.com/img_v3_02b4_049b0a62-8e3b-420f-adaf-a6350d84840g.jpg)
 
-#### 5.1 添加到页面级别 Add block 中
+#### 7.1 添加到页面级别 Add block 中
 
 如果我们需要添加到页面级别的 `Add block` 中，我们需要知道对应的 `name`，我们可以通过 TODO 方式查看对应的 `name`。
 
@@ -327,34 +431,35 @@ TODO
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
-import { ImageBlock } from './ImageBlock';
-import { imageBlockInitializerItem } from './imageBlockInitializerItem';
-import { imageBlockSettings } from './imageBlockSettings';
+
+import { Image } from './component'
+import { imageSettings } from './settings';
+import { imageInitializerItem } from './initializer';
 
 export class PluginInitializerBlockSimpleClient extends Plugin {
   async load() {
-    this.app.addComponents({ ImageBlock })
-    this.app.schemaSettingsManager.add(imageBlockSettings)
-    this.app.schemaInitializerManager.addItem('page:addBlock', `otherBlocks.${imageBlockInitializerItem.name}`, imageBlockInitializerItem)
+    this.app.addComponents({ Image })
+    this.app.schemaSettingsManager.add(imageSettings)
+    this.app.schemaInitializerManager.addItem('page:addBlock', `otherBlocks.${imageInitializerItem.name}`, imageInitializerItem)
   }
 }
 
 export default PluginInitializerBlockSimpleClient;
 ```
 
-上述代码首先将 `ImageBlock` 组件注册到系统中，这样前面 `imageBlockSchema` 定义的 `x-component: 'ImageBlock'` 才能找到对应的组件，更多详细解释可以查看 [全局注册 Component 和 Scope](/plugin-samples/component-and-scope/global)。
+上述代码首先将 `Image` 组件注册到系统中，这样前面 `imageSchema` 定义的 `x-component: 'Image'` 才能找到对应的组件，更多详细解释可以查看 [全局注册 Component 和 Scope](/plugin-samples/component-and-scope/global)。
 
-然后将 `imageBlockSettings` 通过 [app.schemaSettingsManager.add](https://client.docs.nocobase.com/core/ui-schema/schema-settings-manager#schemasettingsmanageradd) 添加到系统中。
+然后将 `imageSettings` 通过 [app.schemaSettingsManager.add](https://client.docs.nocobase.com/core/ui-schema/schema-settings-manager#schemasettingsmanageradd) 添加到系统中。
 
-然后使用 [app.schemaInitializerManager.addItem](https://client.docs.nocobase.com/core/ui-schema/schema-initializer-manager#schemainitializermanageradditem) 将 `imageBlockInitializerItem` 添加对应 Initializer 子项中，其中 `page:addBlock` 是页面上 `Add block` 的 name，`otherBlocks` 是其父级的 name。
+然后使用 [app.schemaInitializerManager.addItem](https://client.docs.nocobase.com/core/ui-schema/schema-initializer-manager#schemainitializermanageradditem) 将 `imageInitializerItem` 添加对应 Initializer 子项中，其中 `page:addBlock` 是页面上 `Add block` 的 name，`otherBlocks` 是其父级的 name。
 
-然后我们 hover `Add block` 按钮，就可以看到 `Image` 这个新的区块类型了，点击 `Image`，就可以添加一个新的 `ImageBlock` 区块了。
+然后我们 hover `Add block` 按钮，就可以看到 `Image` 这个新的区块类型了，点击 `Image`，就可以添加一个新的 `Image` 区块了。
 
 <video width="100%" controls="">
   <source src="https://static-docs.nocobase.com/20240522-175523.mp4" type="video/mp4" />
 </video>
 
-#### 5.2 添加到弹窗 Add block 中
+#### 7.2 添加到弹窗 Add block 中
 
 我们不仅需要将其添加到页面级别的 `Add block` 中，还需要将其添加到 `Table` 区块 `Add new` 弹窗的 `Add block` 中。
 
@@ -367,18 +472,18 @@ export default PluginInitializerBlockSimpleClient;
 ```diff
 export class PluginInitializerBlockSimpleClient extends Plugin {
   async load() {
-    this.app.addComponents({ ImageBlock })
-    this.app.schemaSettingsManager.add(imageBlockSettings)
+    this.app.addComponents({ Image })
+    this.app.schemaSettingsManager.add(imageSettings)
 
-    this.app.schemaInitializerManager.addItem('page:addBlock', `otherBlocks.${imageBlockInitializerItem.name}`, imageBlockInitializerItem)
-+   this.app.schemaInitializerManager.addItem('popup:addNew:addBlock', `otherBlocks.${imageBlockInitializerItem.name}`, imageBlockInitializerItem)
+    this.app.schemaInitializerManager.addItem('page:addBlock', `otherBlocks.${imageInitializerItem.name}`, imageInitializerItem)
++   this.app.schemaInitializerManager.addItem('popup:addNew:addBlock', `otherBlocks.${imageInitializerItem.name}`, imageInitializerItem)
   }
 }
 ```
 
 ![img_v3_02b4_7062bfab-5a7b-439c-b385-92c5704b6b3g](https://static-docs.nocobase.com/img_v3_02b4_7062bfab-5a7b-439c-b385-92c5704b6b3g.jpg)
 
-#### 5.3 添加到移动端 Add block 中
+#### 7.3 添加到移动端 Add block 中
 
 > 首先要激活移动端插件，参考 [激活插件](/welcome/getting-started/plugin#3-activate-the-plugin) 文档。
 
@@ -389,12 +494,12 @@ export class PluginInitializerBlockSimpleClient extends Plugin {
 ```diff
 export class PluginInitializerBlockSimpleClient extends Plugin {
   async load() {
-    this.app.addComponents({ ImageBlock })
-    this.app.schemaSettingsManager.add(imageBlockSettings)
+    this.app.addComponents({ Image })
+    this.app.schemaSettingsManager.add(imageSettings)
 
-    this.app.schemaInitializerManager.addItem('page:addBlock', `otherBlocks.${imageBlockInitializerItem.name}`, imageBlockInitializerItem)
-    this.app.schemaInitializerManager.addItem('popup:addNew:addBlock', `otherBlocks.${imageBlockInitializerItem.name}`, imageBlockInitializerItem)
-+   this.app.schemaInitializerManager.addItem('mobilePage:addBlock', `otherBlocks.${imageBlockInitializerItem.name}`, imageBlockInitializerItem)
+    this.app.schemaInitializerManager.addItem('page:addBlock', `otherBlocks.${imageInitializerItem.name}`, imageInitializerItem)
+    this.app.schemaInitializerManager.addItem('popup:addNew:addBlock', `otherBlocks.${imageInitializerItem.name}`, imageInitializerItem)
++   this.app.schemaInitializerManager.addItem('mobilePage:addBlock', `otherBlocks.${imageInitializerItem.name}`, imageInitializerItem)
   }
 }
 ```
@@ -402,14 +507,6 @@ export class PluginInitializerBlockSimpleClient extends Plugin {
 ![img_v3_02b4_ec873b25-5a09-4f3a-883f-1d722035799g](https://static-docs.nocobase.com/img_v3_02b4_ec873b25-5a09-4f3a-883f-1d722035799g.jpg)
 
 如果需要更多的 `Add block`，可以继续添加，只需要知道对应的 `name` 即可。
-
-### 6. 总结
-
-通过上述步骤，我们就可以实现一个简单的区块 `Simple Block`，并将其添加到 `Page`、`Table` 以及移动端的 `Add block` 中。
-
-其中上述各个概念的关系是：
-
-`Schema Initializer Item` 提供了样式和点击事件回调 -> 通过点击事件回调插入 `Schema` 到界面 -> `Schema` 包含了组件和 `SchemaSettings`。
 
 ## 打包和上传到生产环境
 
