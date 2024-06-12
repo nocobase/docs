@@ -56,24 +56,116 @@ yarn dev
 - [UI Schema](/development/client/ui-schema/what-is-ui-schema)：用于定义界面的结构和样式
 - [Designable 设计器](/development/client/ui-schema/designable)：用于修改 Schema
 
-### 1. 定义 Schema
 
-#### 1.1 定义 Schema
+```bash
+.
+├── client # 客户端插件
+│   ├── initializer # 初始化器
+│   ├── index.tsx # 客户端插件入口
+│   ├── locale.ts # 多语言工具函数
+│   ├── constants.ts # 常量
+│   ├── schema # Schema
+│   └── settings # Schema Settings
+├── locale # 多语言文件
+│   ├── en-US.json # 英语
+│   └── zh-CN.json # 中文
+├── index.ts # 服务端插件入口
+└── server # 服务端插件
+```
+
+### 1. 定义名称
+
+我们首先需要定义操作名称，它将会使用在各个地方。
+
+我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-action-simple/src/client/constants.ts`：
+
+```ts
+export const ActionName = 'Document';
+export const ActionNameLowercase = ActionName.toLowerCase();
+```
+
+### 2. 多语言
+
+#### 2.1 定义工具函数
+
+如果插件需要支持多语言，我们需要定义多语言工具函数。
+
+我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-action-simple/src/client/locale.ts` 文件：
+
+```ts
+import { useTranslation } from 'react-i18next';
+
+// @ts-ignore
+import pkg from './../../package.json';
+
+export function useDocumentTranslation() {
+  return useTranslation([pkg.name, 'client'], { nsMode: 'fallback' });
+}
+
+export function generateNTemplate(key: string) {
+  return `{{t('${key}', { ns: '${pkg.name}', nsMode: 'fallback' })}}`;
+}
+
+export function generateCommonTemplate(key: string) {
+  return `{{t('${key}')}}`;
+}
+```
+
+- [useTranslation()](https://react.i18next.com/latest/usetranslation-hook)：用于获取多语言工具函数
+- `useImageTranslation()`：获取插件的多语言工具函数，需要将插件的名字作为命名空间
+- `generateNTemplate()`：用于生成插件的多语言模板
+- `generateCommonTemplate()`：用于生成通用的多语言模板
+
+#### 2.2 多语言文件
+
+:::warning
+多语言文件变更后，需要重启服务才能生效
+:::
+
+##### 2.2.1 英语
+
+我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-action-simple/src/locale/en-US.json` 内容为：
+
+```json
+{
+  "Document": "Document"
+}
+```
+
+##### 2.2.2 中文
+
+我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-action-simple/src/locale/zh-CN.json` 内容为：
+
+```json
+{
+  "Document": "文档"
+}
+```
+
+如果需要更多的多语言支持，可以继续添加。
+
+### 3. 定义 Schema
+
+#### 3.1 定义 Schema
 
 NocoBase 的动态页面都是通过 Schema 来渲染，所以我们需要定义一个 Schema，后续用于在界面中添加。在实现本小节之前，我们需要先了解一些基础知识：
 
 - [Action 组件](https://client.docs.nocobase.com/components/action)
 - [UI Schema 协议](/development/client/ui-schema/what-is-ui-schema)：详细介绍 Schema 的结构和每个属性的作用
 
-我们新增 `packages/plugins/@nocobase-sample/plugin-initializer-action-simple/src/client/documentActionSchema.ts` 文件，内容为：
+我们新增 `packages/plugins/@nocobase-sample/plugin-initializer-action-simple/src/client/schema/index.ts` 文件，内容为：
 
 ```ts
 import { useFieldSchema } from '@formily/react';
 import { ISchema } from "@nocobase/client"
+import { useDocumentTranslation } from '../locale';
+import { ActionName } from '../constants';
 
 export function useDocumentActionProps() {
   const fieldSchema = useFieldSchema();
+  const { t } = useDocumentTranslation();
   return {
+    title: t(ActionName),
     type: 'primary',
     onClick() {
       window.open(fieldSchema['x-doc-url'])
@@ -85,7 +177,6 @@ export const createDocumentActionSchema = (blockComponent: string): ISchema & { 
   return {
     type: 'void',
     'x-component': 'Action',
-    title: 'Document',
     'x-doc-url': `https://client.docs.nocobase.com/components/${blockComponent}`,
     'x-use-component-props': 'useDocumentActionProps',
   }
@@ -108,12 +199,12 @@ export const createDocumentActionSchema = (blockComponent: string): ISchema & { 
 
 更多关于 Schema 的说明请查看 [UI Schema](/development/client/ui-schema/what-is-ui-schema) 文档。
 
-#### 1.2 注册 scope
+#### 3.2 注册 scope
 
-我们需要将 `useInfoBlockProps` 注册到系统中，这样 `x-use-component-props` 才能找到对应的 scope。
+我们需要将 `useDocumentActionProps` 注册到系统中，这样 `x-use-component-props` 才能找到对应的 scope。
 
 ```ts
-import { useDocumentActionProps } from './documentActionSchema';
+import { useDocumentActionProps } from './schema';
 import { Plugin } from '@nocobase/client';
 
 export class PluginInitializerActionSimpleClient extends Plugin {
@@ -125,7 +216,7 @@ export class PluginInitializerActionSimpleClient extends Plugin {
 export default PluginInitializerActionSimpleClient;
 ```
 
-#### 1.3 验证区块 Schema
+#### 3.3 验证区块 Schema
 
 验证 Schema 方式有 2 种：
 
@@ -136,7 +227,7 @@ export default PluginInitializerActionSimpleClient;
 
 ```tsx | pure
 import { Plugin, SchemaComponent } from '@nocobase/client';
-import { createDocumentActionSchema, useDocumentActionProps } from './documentActionSchema';
+import { createDocumentActionSchema, useDocumentActionProps } from './schema';
 import React from 'react';
 
 export class PluginInitializerActionSimpleClient extends Plugin {
@@ -169,22 +260,25 @@ export default PluginInitializerActionSimpleClient;
 
 验证完毕后需要删除测试页面。
 
-### 2. 定义 Schema Initializer Item
+### 4. 定义 Schema Initializer Item
 
-我们新增 `packages/plugins/@nocobase-sample/plugin-initializer-action-simple/src/client/documentActionInitializerItem.ts` 文件：
+我们新增 `packages/plugins/@nocobase-sample/plugin-initializer-action-simple/src/client/initializer/index.ts` 文件：
 
 ```tsx | pure
 import { SchemaInitializerItemType, useSchemaInitializer } from "@nocobase/client"
-import { createDocumentActionSchema } from './documentActionSchema';
+
+import { createDocumentActionSchema } from '../schema';
+import { ActionNameLowercase, ActionName } from "../constants";
+import { useDocumentTranslation } from "../locale";
 
 export const createDocumentActionInitializerItem = (blockComponent: string): SchemaInitializerItemType => ({
   type: 'item',
-  title: 'Document',
-  name: 'document',
+  name: ActionNameLowercase,
   useComponentProps() {
     const { insert } = useSchemaInitializer();
+    const { t } = useDocumentTranslation();
     return {
-      title: 'Document',
+      title: t(ActionName),
       onClick: () => {
         insert(createDocumentActionSchema(blockComponent));
       },
@@ -202,19 +296,21 @@ export const createDocumentActionInitializerItem = (blockComponent: string): Sch
 
 更多关于 Schema Item 的定义可以参考 [Schema Initializer Item](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types) 文档。
 
-### 3. 实现 Schema Settings
+### 5. 实现 Schema Settings
 
-#### 3.1 定义 Schema Settings
+#### 5.1 定义 Schema Settings
 
 目前我们通过 `createDocumentActionInitializerItem()` 添加后不能删除，我们可以使用 [Schema Settings](https://client.docs.nocobase.com/core/ui-schema/schema-settings) 来设置。
 
-我们新增 `packages/plugins/@nocobase-sample/plugin-initializer-action-simple/src/client/documentActionSettings.ts` 文件：
+我们新增 `packages/plugins/@nocobase-sample/plugin-initializer-action-simple/src/client/settings/index.ts` 文件：
 
 ```ts
-import { SchemaSettings } from "@nocobase/client"
+import { SchemaSettings } from "@nocobase/client";
+
+import { ActionNameLowercase } from "../constants";
 
 export const documentActionSettings = new SchemaSettings({
-  name: 'actionSettings:document',
+  name: `actionSettings:${ActionNameLowercase}`,
   items: [
     {
       name: 'remove',
@@ -224,12 +320,12 @@ export const documentActionSettings = new SchemaSettings({
 });
 ```
 
-#### 3.2 注册 Schema Settings
+#### 5.2 注册 Schema Settings
 
 ```diff
 import { Plugin } from '@nocobase/client';
-import { useDocumentActionProps } from './documentActionSchema';
-+ import { documentActionSettings } from './documentActionSettings';
+import { useDocumentActionProps } from './schema';
++ import { documentActionSettings } from './settings';
 
 export class PluginInitializerActionSimpleClient extends Plugin {
   async load() {
@@ -241,30 +337,24 @@ export class PluginInitializerActionSimpleClient extends Plugin {
 export default PluginInitializerActionSimpleClient;
 ```
 
-#### 3.3 使用 Schema Settings
+#### 5.3 使用 Schema Settings
 
-
-我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-action-simple/src/client/documentActionSchema.ts` 文件中的 `createDocumentActionSchema` 为：
+我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-action-simple/src/client/schema/index.ts` 文件中的 `createDocumentActionSchema` 为：
 
 ```diff
-+ import { documentActionSettings } from './documentActionSettings';
++ import { documentActionSettings } from '../settings';
 
 export const createDocumentActionSchema = (blockComponent: string): ISchema & { 'x-doc-url': string } => {
   return {
     type: 'void',
     'x-component': 'Action',
 +   'x-settings': documentActionSettings.name,
-    title: 'Document',
-    'x-doc-url': `https://client.docs.nocobase.com/components/${blockComponent}`,
-    'x-component-props': {
-      type: 'primary',
-    },
-    'x-use-component-props': 'useDocumentActionProps',
+    // ...
   }
 }
 ```
 
-### 4. 添加到页面 Configure actions 中
+### 6. 添加到页面 Configure actions 中
 
 系统中有很多个 `Configure actions` 按钮，但他们的 **name 是不同的**，我们根据需要将其添加到 `Table`、`Details` 以及 `Form` 区块中的 `Configure actions` 中。
 
@@ -276,9 +366,9 @@ TODO
 
 ```diff
 import { Plugin } from '@nocobase/client';
-import { useDocumentActionProps } from './documentActionSchema';
-import { documentActionSettings } from './documentActionSettings';
-+ import { createDocumentActionInitializerItem } from './documentActionInitializerItem';
+import { useDocumentActionProps } from './schema';
+import { documentActionSettings } from './settings';
++ import { createDocumentActionInitializerItem } from './initializer';
 
 export class PluginInitializerActionSimpleClient extends Plugin {
   async load() {
