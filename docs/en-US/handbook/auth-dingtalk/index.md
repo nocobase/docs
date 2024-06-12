@@ -8,7 +8,7 @@
 
 ## 激活插件
 
-![](https://static-docs.nocobase.com/a494476c352a949a276d64e96e6ac587.png)
+![](https://static-docs.nocobase.com/202406120929356.png)
 
 ## 在钉钉开发者后台申请接口权限
 
