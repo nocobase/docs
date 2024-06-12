@@ -52,9 +52,96 @@ yarn dev
 - [UI Schema](/development/client/ui-schema/what-is-ui-schema)：用于定义界面的结构和样式
 - [Designable 设计器](/development/client/ui-schema/designable)：用于修改 Schema
 
-### 1. 定义 Schema
+```bash
+.
+├── client # 客户端插件
+│   ├── initializer # 初始化器
+│   ├── index.tsx # 客户端插件入口
+│   ├── locale.ts # 多语言工具函数
+│   ├── constants.ts # 常量
+│   ├── schema # Schema
+│   └── settings # Schema Settings
+├── locale # 多语言文件
+│   ├── en-US.json # 英语
+│   └── zh-CN.json # 中文
+├── index.ts # 服务端插件入口
+└── server # 服务端插件
+```
 
-#### 1.1 定义 Schema
+### 1. 定义名称
+
+我们首先需要定义操作名称，它将会使用在各个地方。
+
+我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/constants.ts`：
+
+```ts
+export const ActionName = 'Open Document';
+export const ActionNameLowercase = 'open-document';
+```
+
+### 2. 多语言
+
+#### 2.1 定义工具函数
+
+如果插件需要支持多语言，我们需要定义多语言工具函数。
+
+我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/locale.ts` 文件：
+
+```ts
+import { useTranslation } from 'react-i18next';
+
+// @ts-ignore
+import pkg from './../../package.json';
+
+export function useOpenDocumentTranslation() {
+  return useTranslation([pkg.name, 'client'], { nsMode: 'fallback' });
+}
+
+export function generateNTemplate(key: string) {
+  return `{{t('${key}', { ns: '${pkg.name}', nsMode: 'fallback' })}}`;
+}
+
+export function generateCommonTemplate(key: string) {
+  return `{{t('${key}')}}`;
+}
+```
+
+- [useTranslation()](https://react.i18next.com/latest/usetranslation-hook)：用于获取多语言工具函数
+- `useImageTranslation()`：获取插件的多语言工具函数，需要将插件的名字作为命名空间
+- `generateNTemplate()`：用于生成插件的多语言模板
+- `generateCommonTemplate()`：用于生成通用的多语言模板
+
+#### 2.2 多语言文件
+
+:::warning
+多语言文件变更后，需要重启服务才能生效
+:::
+
+##### 2.2.1 英语
+
+我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/locale/en-US.json` 内容为：
+
+```json
+{
+  "Open Document": "Open Document"
+}
+```
+
+##### 2.2.2 中文
+
+我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/locale/zh-CN.json` 内容为：
+
+```json
+{
+  "Open Document": "打开文档"
+}
+```
+
+如果需要更多的多语言支持，可以继续添加。
+
+### 3. 定义 Schema
+
+#### 3.1 定义 Schema
 
 NocoBase 的动态页面都是通过 Schema 来渲染，所以我们需要定义一个 Schema，后续用于在界面中添加。在实现本小节之前，我们需要先了解一些基础知识：
 
@@ -62,19 +149,27 @@ NocoBase 的动态页面都是通过 Schema 来渲染，所以我们需要定义
 - [Action.Drawer 组件](https://client.docs.nocobase.com/components/action#actiondrawer)
 - [UI Schema 协议](/development/client/ui-schema/what-is-ui-schema)：详细介绍 Schema 的结构和每个属性的作用
 
-我们新增 `packages/plugins/@nocobase-sample/plugin-initializer-action-simple/src/client/documentActionSchema.ts` 文件，内容为：
+我们新增 `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/schema/index.ts` 文件，内容为：
 
 ```ts
 import { ISchema } from "@nocobase/client"
+
+import { ActionName } from "../constants";
+import { useOpenDocumentTranslation } from "../locale";
+
+export function useOpenDocumentActionProps() {
+  const { t } = useOpenDocumentTranslation();
+  return {
+    title: t(ActionName),
+    type: 'primary'
+  }
+}
 
 export const createDocumentActionModalSchema = (blockComponent: string): ISchema => {
   return {
     type: 'void',
     'x-component': 'Action',
-    title: 'Open Document',
-    'x-component-props': {
-      type: 'primary',
-    },
+    'x-use-component-props': 'useOpenDocumentActionProps',
     properties: {
       drawer: {
         type: 'void',
@@ -82,7 +177,6 @@ export const createDocumentActionModalSchema = (blockComponent: string): ISchema
         'x-component-props': {
           size: 'large'
         },
-        title: 'Block Document',
         properties: {
           iframe: {
             type: 'void',
@@ -114,7 +208,24 @@ export const createDocumentActionModalSchema = (blockComponent: string): ISchema
 
 更多关于 Schema 的说明请查看 [UI Schema](/development/client/ui-schema/what-is-ui-schema) 文档。
 
-#### 1.2 验证 Schema
+#### 3.2 注册 scope
+
+我们需要将 `useOpenDocumentActionProps` 注册到系统中，这样 `x-use-component-props` 才能找到对应的 scope。
+
+```ts
+import { useOpenDocumentActionProps } from './schema';
+import { Plugin } from '@nocobase/client';
+
+export class PluginInitializerActionModalClient extends Plugin {
+  async load() {
+    this.app.addScopes({ useOpenDocumentActionProps });
+  }
+}
+
+export default PluginInitializerActionModalClient;
+```
+
+#### 3.3 验证 Schema
 
 验证 Schema 方式有 2 种：
 
@@ -126,12 +237,14 @@ export const createDocumentActionModalSchema = (blockComponent: string): ISchema
 ```tsx | pure
 import React from 'react';
 import { Plugin, SchemaComponent } from '@nocobase/client';
-import { createDocumentActionModalSchema } from './documentActionSchema';
+import { useOpenDocumentActionProps, createDocumentActionModalSchema } from './schema';
 
 export class PluginInitializerActionModalClient extends Plugin {
   async load() {
-    this.app.router.add('admin.document-action-modal', {
-      path: '/admin/document-action-modal',
+    this.app.addScopes({ useOpenDocumentActionProps })
+
+    this.app.router.add('admin.open-document-schema', {
+      path: '/admin/open-document-schema',
       Component: () => {
         return <>
           <div style={{ marginTop: 20, marginBottom: 20 }}>
@@ -149,7 +262,7 @@ export class PluginInitializerActionModalClient extends Plugin {
 export default PluginInitializerActionModalClient;
 ```
 
-然后我们访问 [http://localhost:13000//admin/document-action-modal](http://localhost:13000/admin/document-action-modal) 就可以看到我们添加的临时页面了。
+然后我们访问 [http://localhost:13000//admin/open-document-schema](http://localhost:13000/admin/open-document-schema) 就可以看到我们添加的临时页面了。
 
 关于 `SchemaComponent` 的详细说明可以查看 [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponent-1) 文档。
 
@@ -157,21 +270,26 @@ export default PluginInitializerActionModalClient;
 
 验证完毕后需要删除测试页面。
 
-### 2. 定义 Schema Initializer Item
+### 4. 定义 Schema Initializer Item
 
-我们新增 `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/documentModalActionInitializerItem.ts` 文件：
+我们新增 `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/initializer/index.ts` 文件：
 
 ```ts
 import { SchemaInitializerItemType, useSchemaInitializer } from "@nocobase/client"
 
+import { useOpenDocumentTranslation } from "../locale";
+import { createDocumentActionModalSchema } from '../schema';
+import { ActionName, ActionNameLowercase } from "../constants";
+
 export const createDocumentActionModalInitializerItem = (blockComponent: string): SchemaInitializerItemType => ({
   type: 'item',
-  title: 'Open Document',
-  name: 'open-document',
+  title: ActionName,
+  name: ActionNameLowercase,
   useComponentProps() {
     const { insert } = useSchemaInitializer();
+    const { t } = useOpenDocumentTranslation();
     return {
-      title: 'Open Document',
+      title: t(ActionName),
       onClick: () => {
         insert(createDocumentActionModalSchema(blockComponent));
       },
@@ -189,19 +307,20 @@ export const createDocumentActionModalInitializerItem = (blockComponent: string)
 
 更多关于 Schema Item 的定义可以参考 [Schema Initializer Item](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types) 文档。
 
-### 3. 实现 Schema Settings
+### 5. 实现 Schema Settings
 
-#### 3.1 定义 Schema Settings
+#### 5.1 定义 Schema Settings
 
 目前我们通过 `createDocumentActionInitializerItem()` 添加后不能删除，我们可以使用 [Schema Settings](https://client.docs.nocobase.com/core/ui-schema/schema-settings) 来设置。
 
-我们新增 `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/infoBlockSettings.ts` 文件：
+我们新增 `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/settings/index.ts` 文件：
 
-```tsx | pure
-import { SchemaSettings } from "@nocobase/client"
+```ts
+import { SchemaSettings } from "@nocobase/client";
+import { ActionNameLowercase } from "../constants";
 
 export const documentActionModalSettings = new SchemaSettings({
-  name: 'actionSettings:documentModal',
+  name: `actionSettings:${ActionNameLowercase}`,
   items: [
     {
       name: 'remove',
@@ -211,11 +330,11 @@ export const documentActionModalSettings = new SchemaSettings({
 });
 ```
 
-#### 3.2 注册 Schema Settings
+#### 5.2 注册 Schema Settings
 
 ```ts
 import { Plugin } from '@nocobase/client';
-import { documentActionModalSettings } from './infoBlockSettings';
+import { documentActionModalSettings } from './settings';
 
 export class PluginInitializerActionModalClient extends Plugin {
   async load() {
@@ -226,9 +345,9 @@ export class PluginInitializerActionModalClient extends Plugin {
 export default PluginInitializerActionModalClient;
 ```
 
-#### 3.3 使用 Schema Settings
+#### 5.3 使用 Schema Settings
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/documentActionModalSettings.ts` 文件中的 `createDocumentActionModalSchema` 函数，将 `documentActionModalSettings` 添加到 `x-settings` 中。
+我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/schema/index.ts` 文件中的 `createDocumentActionModalSchema` 函数，将 `documentActionModalSettings` 添加到 `x-settings` 中。
 
 ```diff
 export const createDocumentActionModalSchema = (blockComponent: string): ISchema => {
@@ -241,7 +360,7 @@ export const createDocumentActionModalSchema = (blockComponent: string): ISchema
 }
 ```
 
-### 4. 添加到页面 Configure actions 中
+### 6. 添加到页面 Configure actions 中
 
 系统中有很多个 `Configure actions` 按钮，但他们的 **name 是不同的**，我们根据需要将其添加到 `Table`、`Details` 以及 `Form` 区块中的 `Configure actions` 中。
 
