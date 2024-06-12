@@ -61,80 +61,168 @@ yarn dev
 - [UI Schema](/development/client/ui-schema/what-is-ui-schema)：用于定义界面的结构和样式
 - [Designable 设计器](/development/client/ui-schema/designable)：用于修改 Schema
 
-### 1. 实现区块组件
+```bash
+.
+├── client # 客户端插件
+│   ├── initializer # 初始化器
+│   ├── component # 区块组件
+│   ├── index.tsx # 客户端插件入口
+│   ├── locale.ts # 多语言工具函数
+│   ├── constants.ts # 常量
+│   ├── schema # Schema
+│   └── settings # Schema Settings
+├── locale # 多语言文件
+│   ├── en-US.json # 英语
+│   └── zh-CN.json # 中文
+├── index.ts # 服务端插件入口
+└── server # 服务端插件
+```
 
-#### 1.1 定义区块组件
+### 1. 定义名称
 
-本示例要做的是一个 `Timeline` 区块组件，我们取名为 `TimelineBlock`，其具体的需求是：
+我们首先需要定义区块名称，它将会使用在各个地方。
 
-首先我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-data-modal/src/client/TimelineBlock.tsx` 文件，其内容如下：
+我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-data-modal/src/client/constants.ts`：
+
+```ts
+export const BlockName = 'Timeline';
+export const BlockNameLowercase = BlockName.toLowerCase();
+```
+
+### 2. 多语言
+
+#### 2.1 定义工具函数
+
+如果插件需要支持多语言，我们需要定义多语言工具函数。
+
+我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-data-modal/src/client/locale.ts` 文件：
+
+```ts
+import { useTranslation } from 'react-i18next';
+
+// @ts-ignore
+import pkg from './../../package.json';
+
+export function useTimelineTranslation() {
+  return useTranslation([pkg.name, 'client'], { nsMode: 'fallback' });
+}
+
+export function generateNTemplate(key: string) {
+  return `{{t('${key}', { ns: '${pkg.name}', nsMode: 'fallback' })}}`;
+}
+
+export function generateCommonTemplate(key: string) {
+  return `{{t('${key}')}}`;
+}
+```
+
+- [useTranslation()](https://react.i18next.com/latest/usetranslation-hook)：用于获取多语言工具函数
+- `useTimelineTranslation()`：获取插件的多语言工具函数，需要将插件的名字作为命名空间
+- `generateNTemplate()`：用于生成插件的多语言模板
+- `generateCommonTemplate()`：用于生成通用的多语言模板
+
+#### 2.2 多语言文件
+
+:::warning
+多语言文件变更后，需要重启服务才能生效
+:::
+
+##### 2.2.1 英语
+
+我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-data-modal/src/locale/en-US.json` 内容为：
+
+```json
+{
+  "Timeline": "Timeline"
+}
+```
+
+##### 2.2.2 中文
+
+我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-data-modal/src/locale/zh-CN.json` 内容为：
+
+```json
+{
+  "Timeline": "时间线"
+}
+```
+
+如果需要更多的多语言支持，可以继续添加。
+
+### 3. 实现区块组件
+
+#### 3.1 定义区块组件
+
+本示例要做的是一个 `Timeline` 区块组件，其具体的需求是：
+
+首先我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-data-modal/src/client/component/Timeline.tsx` 文件，其内容如下：
 
 ```tsx | pure
 import React, { FC } from 'react';
-import { Timeline, TimelineProps, Spin } from 'antd';
+import { Timeline as AntdTimeline, TimelineProps as AntdTimelineProps, Spin } from 'antd';
 import { withDynamicSchemaProps } from "@nocobase/client";
+import { BlockName } from '../constants';
 
-export interface TimelineBlockProps {
-  data?: TimelineProps['items'];
+export interface TimelineProps {
+  data?: AntdTimelineProps['items'];
   loading?: boolean;
 }
 
-export const TimelineBlock: FC<TimelineBlockProps> = withDynamicSchemaProps((props) => {
+export const Timeline: FC<TimelineProps> = withDynamicSchemaProps((props) => {
   const { data, loading } = props;
   if (loading) return <div style={{ height: 100, textAlign: 'center' }}><Spin /></div>
-
-  return <Timeline mode='left' items={data}></Timeline>
-}, { displayName: 'TimelineBlock' });
+  return <AntdTimeline mode='left' items={data}></AntdTimeline>
+}, { displayName: BlockName });
 ```
 
-`TimelineBlock` 组件整体来说是一个被 `withDynamicSchemaProps` 包裹的组件，其接受 2 个参数：
+`Timeline` 组件整体来说是一个被 `withDynamicSchemaProps` 包裹的组件，其接受 2 个参数：
 
 - `loading`：数据加载状态
 - `data`：`Timeline` 组件的 `items` 属性
 
 [withDynamicSchemaProps](/development/client/ui-schema/what-is-ui-schema#x-component-props-和-x-use-component-props) 是一个高阶组件，用于处理 Schema 中的的动态属性。
 
-#### 1.2 注册区块组件
+#### 3.2 注册区块组件
 
-我们需要将 `TimelineBlock` 通过插件注册到系统中。
+我们需要将 `Timeline` 通过插件注册到系统中。
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
-import { TimelineBlock } from './TimelineBlock';
+import { Timeline } from './component';
 
 export class PluginInitializerBlockDataModalClient extends Plugin {
   async load() {
-    this.app.addComponents({ TimelineBlock })
+    this.app.addComponents({ Timeline })
   }
 }
 
 export default PluginInitializerBlockDataModalClient;
 ```
 
-#### 1.3 验证区块组件
+#### 3.3 验证区块组件
 
 组件验证方式有 2 种：
 
-- 临时页面验证：我们可以临时建一个页面，然后渲染 `TimelineBlock` 组件，查看是否符合需求
+- 临时页面验证：我们可以临时建一个页面，然后渲染 `Timeline` 组件，查看是否符合需求
 - 文档示例验证：可以启动文档 `yarn doc plugins/@nocobase-sample/plugin-initializer-block-data-modal`，通过写文档示例的方式验证是否符合需求（TODO）
 
-我们以 `临时页面验证` 为例，我们新建一个页面，根据属性参数添加一个或者多个 `TimelineBlock` 组件，查看是否符合需求。
+我们以 `临时页面验证` 为例，我们新建一个页面，根据属性参数添加一个或者多个 `Timeline` 组件，查看是否符合需求。
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
-import { TimelineBlock } from './TimelineBlock';
+import { Timeline } from './component';
 import React from 'react';
 
 export class PluginInitializerBlockDataModalClient extends Plugin {
   async load() {
-    this.app.addComponents({ TimelineBlock })
+    this.app.addComponents({ Timeline })
 
     this.app.router.add('admin.timeline-block-component', {
       path: '/admin/timeline-block-component',
       Component: () => {
         return <>
           <div style={{ marginTop: 20, marginBottom: 20 }}>
-            <TimelineBlock
+            <Timeline
               data={[
                 {
                   label: '2015-09-01',
@@ -151,7 +239,7 @@ export class PluginInitializerBlockDataModalClient extends Plugin {
               ]} />
           </div>
           <div style={{ marginTop: 20, marginBottom: 20 }}>
-            <TimelineBlock loading={true} />
+            <Timeline loading={true} />
           </div>
         </>
       }
@@ -168,11 +256,11 @@ export default PluginInitializerBlockDataModalClient;
 
 验证完毕后需要删除测试页面。
 
-### 2. 定义配置表单
+### 4. 定义配置表单
 
 根据需求，我们需要在选择数据表后配置 `Time Field` 和 `Title Field`，所以我们需要定义一个配置表单，取名为 `TimelineInitializerConfigForm`。
 
-#### 2.1 定义配置表单组件
+#### 4.1 定义配置表单组件
 
 我们需要先了解以下知识：
 
@@ -181,10 +269,15 @@ export default PluginInitializerBlockDataModalClient;
 - [ActionContextProvider](https://client.docs.nocobase.com/components/action#actioncontext)：`Action` 上下文
 - [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponent-1)：用于渲染 Schema
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-data-modal/src/client/TimelineInitializerConfigForm.tsx` 文件，其内容如下：
+我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-data-modal/src/client/initializer/ConfigForm.tsx` 文件，其内容如下：
 
 ```tsx | pure
-const createSchema = (fields: CollectionFieldOptions[]): ISchema => {
+import React, { FC, useMemo } from "react";
+import { ISchema } from '@formily/react';
+import { ActionContextProvider, SchemaComponent, useApp, CollectionFieldOptions } from '@nocobase/client';
+import { useTimelineTranslation } from "../locale";
+
+const createSchema = (fields: CollectionFieldOptions, { t }: ReturnType<typeof useTimelineTranslation>): ISchema => {
   // TODO
 }
 
@@ -204,14 +297,14 @@ export interface TimelineConfigFormProps {
 export const TimelineInitializerConfigForm: FC<TimelineConfigFormProps> = ({ visible, setVisible, collection, dataSource, onSubmit }) => {
   const app = useApp();
   const fields = useMemo(() => app.getCollectionManager(dataSource).getCollection(collection).getFields(), [collection, dataSource])
-  const schema = useMemo(() => createSchema(fields), [fields]);
+  const tt = useTimelineTranslation();
+  const schema = useMemo(() => createSchema(fields, tt), [fields]);
 
   return <ActionContextProvider value={{ visible, setVisible }}>
     <SchemaComponent schema={schema}  />
   </ActionContextProvider>
 }
 ```
-
 
 `TimelineInitializerConfigForm` 组件接受 4 个参数：
 
@@ -230,7 +323,7 @@ export const TimelineInitializerConfigForm: FC<TimelineConfigFormProps> = ({ vis
 
 [ActionContextProvider](https://client.docs.nocobase.com/components/action#actioncontext) 用于传递 `visible` 和 `setVisible` 给子节点，`SchemaComponent` 用于渲染 Schema。
 
-#### 2.2 实现配置表单 Schema
+#### 4.2 实现配置表单 Schema
 
 我们需要先了解以下知识：
 
@@ -328,20 +421,20 @@ const createSchema = (fields: CollectionFieldOptions[]): ISchema => {
 +   <SchemaComponent schema={schema} scope={{ useSubmitActionProps: useSubmitActionProps.bind(null, onSubmit), useCloseActionProps }} />
 ```
 
-#### 2.3 验证配置表单
+#### 4.3 验证配置表单
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
-import { TimelineBlock } from './TimelineBlock';
+import { Timeline } from './component';
 import React, { useState } from 'react';
-import { TimelineInitializerConfigForm } from './TimelineInitializerConfigForm';
+import { TimelineInitializerConfigForm } from './initializer/ConfigForm';
 
 export class PluginInitializerBlockDataModalClient extends Plugin {
   async load() {
-    this.app.addComponents({ TimelineBlock })
+    this.app.addComponents({ Timeline })
 
-    this.app.router.add('admin.data-block-config-form', {
-      path: '/admin/timeline-block-config-form',
+    this.app.router.add('admin.timeline-config-form', {
+      path: '/admin/timeline-config-form',
       Component: () => {
         const [visible, setVisible] = useState(true);
         function onSubmit(values) {
@@ -360,7 +453,7 @@ export class PluginInitializerBlockDataModalClient extends Plugin {
 export default PluginInitializerBlockDataModalClient;
 ```
 
-然后访问 `http://localhost:13000/admin/timeline-block-config-form` 就可以看到对应测试页面的内容了。
+然后访问 `http://localhost:13000/admin/timeline-config-form` 就可以看到对应测试页面的内容了。
 
 <video width="100%" controls="">
   <source src="https://static-docs.nocobase.com/20240529215127_rec_.mp4" type="video/mp4" />
@@ -368,29 +461,30 @@ export default PluginInitializerBlockDataModalClient;
 
 验证完毕后需要删除测试页面。
 
-### 3. 定义区块 Schema
+### 5. 定义区块 Schema
 
-#### 3.1 定义区块 Schema
+#### 5.1 定义区块 Schema
 
-NocoBase 的动态页面都是通过 Schema 来渲染，所以我们需要定义一个 Schema，后续用于在界面中添加 `TimelineBlock` 区块。在实现本小节之前，我们需要先了解一些基础知识：
+NocoBase 的动态页面都是通过 Schema 来渲染，所以我们需要定义一个 Schema，后续用于在界面中添加 `Timeline` 区块。在实现本小节之前，我们需要先了解一些基础知识：
 
 - [UI Schema 协议](/development/client/ui-schema/what-is-ui-schema)：详细介绍 Schema 的结构和每个属性的作用
 - [DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider)：数据区块
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-data-modal/src/client/timelineSchema.tsx` 文件：
+我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-data-modal/src/client/schema/index.tsx` 文件：
 
 ```ts
 import { useDataBlockProps, useDataBlockRequest } from "@nocobase/client";
-import { TimelineBlockProps } from './TimelineBlock';
+import { TimelineProps } from '../component';
+import { BlockName, BlockNameLowercase } from "../constants";
 
-interface GetTimelineBlockSchemaOptions {
+interface GetTimelineSchemaOptions {
   dataSource?: string;
   collection: string;
   titleField: string;
   timeField: string;
 }
 
-export function getTimelineBlockSchema(options: GetTimelineBlockSchemaOptions) {
+export function getTimelineSchema(options: GetTimelineSchemaOptions) {
   return {
     type: 'void',
     'x-decorator': 'DataBlockProvider',
@@ -401,30 +495,31 @@ export function getTimelineBlockSchema(options: GetTimelineBlockSchemaOptions) {
       params: {
         sort: `-${timeField}`
       },
-      timeline: {
+      [BlockNameLowercase]: {
         titleField,
         timeField,
       }
     },
     'x-component': 'CardItem',
     properties: {
-      timeline: {
+      [BlockNameLowercase]: {
         type: 'void',
-        'x-component': 'TimelineBlock',
-        'x-use-component-props': 'useTimelineBlockProps',
+        'x-component': BlockName,
+        'x-use-component-props': 'useTimelineProps',
       }
     }
   }
 }
 
-export function useTimelineBlockProps(): TimelineBlockProps {
-  const { timeline } = useDataBlockProps();
+export function useTimelineProps(): TimelineProps {
+  const dataProps = useDataBlockProps();
+  const props = dataProps[BlockNameLowercase];
   const { loading, data } = useDataBlockRequest<any[]>();
   return {
     loading,
     data: data?.data?.map((item) => ({
-      label: item[timeline.timeField],
-      children: item[timeline.titleField],
+      label: item[props.timeField],
+      children: item[props.titleField],
     }))
   }
 }
@@ -432,7 +527,7 @@ export function useTimelineBlockProps(): TimelineBlockProps {
 
 这里有 2 个点需要说明：
 
-`getTimelineBlockSchema()` 接收 `dataSource`、`collection`、`titleField`、`timeField` 并返回一个 Schema，这个 Schema 用于渲染 `TimelineBlock` 区块：
+`getTimelineSchema()` 接收 `dataSource`、`collection`、`titleField`、`timeField` 并返回一个 Schema，这个 Schema 用于渲染 `Timeline` 区块：
   - `type: 'void'`：表示没有任何数据
   - `x-decorator: 'DataBlockProvider'`：数据区块提供者，用于提供数据，更多关于 DataBlockProvider 可以查看 [DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider)
   - `x-decorator-props`：`DataBlockProvider` 的属性
@@ -441,10 +536,10 @@ export function useTimelineBlockProps(): TimelineBlockProps {
   - `action: 'list'`：操作类型，这里是 `list`，获取数据列表
   - `params: { sort }`：请求参数，这里我们将 `timeField` 倒叙，更多关于请求参数请参考 [useRequest](https://client.docs.nocobase.com/core/request#userequest)
   - `x-component: 'CardItem'`：[CardItem 组件](https://client.docs.nocobase.com/components/card-item)，目前的区块都是被包裹在卡片中的，用于提供样式、布局和拖拽等功能
-  - `'x-component': 'TimelineBlock'`：区块组件，就是我们定义的 `TimelineBlock` 组件
-  - `'x-use-component-props': 'useTimelineBlockProps'`：用于处理 `TimelineBlock` 组件的动态属性，并且因为要存到数据库，所以这里的值类型为 string 类型。
+  - `'x-component': 'Timeline'`：区块组件，就是我们定义的 `Timeline` 组件
+  - `'x-use-component-props': 'useTimelineProps'`：用于处理 `Timeline` 组件的动态属性，并且因为要存到数据库，所以这里的值类型为 string 类型。
 
-`useTimelineBlockProps()`：TimelineBlock 组件的动态属性
+`useTimelineProps()`：Timeline 组件的动态属性
   - [useDataBlockProps](https://client.docs.nocobase.com/core/data-block/data-block-provider#usedatablockprops)：获取 [DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider) 的 props 属性，也就是 `x-decorator-props` 的值
   - [useDataBlockRequest](https://client.docs.nocobase.com/core/data-block/data-block-request-provider#usedatablockrequest) 获取数据区块请求，由 [DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider) 提供
 
@@ -453,24 +548,24 @@ export function useTimelineBlockProps(): TimelineBlockProps {
 ```tsx | pure
 <DataBlockProvider collection={collection} dataSource={dataSource} action='list' params={{ sort: `-${timeField}` }} timeline={{ titleField, timeField }}>
   <CardItem>
-    <TimelineBlock {...useTimelineBlockProps()} />
+    <Timeline {...useTimelineProps()} />
   </CardItem>
 </DataBlockProvider>
 ```
 
-#### 3.2 注册 scope
+#### 5.2 注册 scope
 
-我们需要将 `useTimelineBlockProps` 注册到系统中，这样 `x-use-component-props` 才能找到对应的 scope。
+我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-block-data-modal/src/client/index.tsx` 文件，将 `useTimelineProps` 注册到系统中，这样 `x-use-component-props` 才能找到对应的 scope。
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
-import { TimelineBlock } from './TimelineBlock';
-import { useTimelineBlockProps } from './timelineSchema';
+import { Timeline } from './component';
+import { useTimelineProps } from './schema';
 
 export class PluginInitializerBlockDataModalClient extends Plugin {
   async load() {
-    this.app.addComponents({ TimelineBlock })
-    this.app.addScopes({ useTimelineBlockProps });
+    this.app.addComponents({ Timeline })
+    this.app.addScopes({ useTimelineProps });
   }
 }
 
@@ -479,25 +574,25 @@ export default PluginInitializerBlockDataModalClient;
 
 更多关于 Scope 的说明可以查看 [全局注册 Component 和 Scope](/plugin-samples/component-and-scope/global)
 
-#### 3.3 验证区块 Schema
+#### 5.3 验证区块 Schema
 
 同验证组件一样，我们可以通过临时页面验证或者文档示例验证的方式来验证 Schema 是否符合需求。我们这里以临时页面验证为例：
 
 ```tsx | pure
 import { Plugin, SchemaComponent } from '@nocobase/client';
-import { TimelineBlock, getTimelineBlockSchema, useTimelineBlockProps } from './TimelineBlock';
+import { Timeline, getTimelineSchema, useTimelineProps } from './component';
 import React from 'react';
 
 export class PluginInitializerBlockDataModalClient extends Plugin {
   async load() {
     // ...
 
-    this.app.router.add('admin.timeline-block-schema', {
-      path: '/admin/timeline-block-schema',
+    this.app.router.add('admin.timeline-schema', {
+      path: '/admin/timeline-schema',
       Component: () => {
         return <>
           <div style={{ marginTop: 20, marginBottom: 20 }}>
-            <SchemaComponent schema={{ properties: { test1: getTimelineBlockSchema({ collection: 'users' })({ timeField: 'createdAt', titleField: 'nickname' }) } }} />
+            <SchemaComponent schema={{ properties: { test1: getTimelineSchema({ collection: 'users' })({ timeField: 'createdAt', titleField: 'nickname' }) } }} />
           </div>
         </>
       }
@@ -512,7 +607,7 @@ export default PluginInitializerBlockDataModalClient;
 - [SchemaComponentOptions](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponentoptions)：用于传递 Schema 中所需的 `components` 和 `scope`，具体的可查看 [局部注册 Component 和 Scope](/plugin-samples/component-and-scope/local)
 - [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponent-1)：用于渲染 Schema
 
-我们访问 `http://localhost:13000/admin/timeline-block-schema` 就可以看到对应测试页面的内容了。
+我们访问 `http://localhost:13000/admin/timeline-schema` 就可以看到对应测试页面的内容了。
 
 <video width="100%" controls="">
   <source src="https://static-docs.nocobase.com/20240529220626_rec_.mp4" type="video/mp4" />
@@ -520,26 +615,29 @@ export default PluginInitializerBlockDataModalClient;
 
 验证完毕后需要删除测试页面。
 
-### 4. 定义 Schema Initializer Item
+### 6. 定义 Schema Initializer Item
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-data-modal/src/client/timelineInitializerItem.tsx` 文件，定义 Schema Initializer Item：
+我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-data-modal/src/client/initializer/index.tsx` 文件，定义 Schema Initializer Item：
 
 ```tsx | pure
 import React, { useCallback, useState } from 'react';
 import { FieldTimeOutlined } from '@ant-design/icons';
 import { DataBlockInitializer, SchemaInitializerItemType, useSchemaInitializer } from "@nocobase/client";
 
-import { getTimelineBlockSchema } from './timelineSchema';
-import { TimelineConfigFormProps, TimelineInitializerConfigForm } from './TimelineInitializerConfigForm';
+import { getTimelineSchema } from '../schema';
+import { useTimelineTranslation } from '../locale';
+import { TimelineConfigFormProps, TimelineInitializerConfigForm } from './ConfigForm';
+import { BlockName, BlockNameLowercase } from '../constants';
 
 export const TimelineInitializerComponent = () => {
   const { insert } = useSchemaInitializer();
   const [collection, setCollection] = useState<string>();
   const [dataSource, setDataSource] = useState<string>();
   const [showConfigForm, setShowConfigForm] = useState(false);
+  const { t } = useTimelineTranslation()
 
   const onSubmit: TimelineConfigFormProps['onSubmit'] = useCallback((values) => {
-    const schema = getTimelineBlockSchema({ collection, dataSource, timeField: values.timeField, titleField: values.titleField });
+    const schema = getTimelineSchema({ collection, dataSource, timeField: values.timeField, titleField: values.titleField });
     insert(schema);
   }, [collection, dataSource])
 
@@ -552,10 +650,10 @@ export const TimelineInitializerComponent = () => {
       dataSource={dataSource}
     />}
     <DataBlockInitializer
-      name='timeline'
-      title='Timeline'
+      name={BlockNameLowercase}
+      title={t(BlockName)}
       icon={<FieldTimeOutlined />}
-      componentType='Timeline'
+      componentType={BlockName}
       onCreateBlockSchema={({ item }) => {
         const { name: collection, dataSource } = item;
         setCollection(collection);
@@ -568,7 +666,7 @@ export const TimelineInitializerComponent = () => {
 }
 
 export const timelineInitializerItem: SchemaInitializerItemType = {
-  name: 'TimelineBlock',
+  name: 'Timeline',
   Component: TimelineInitializerComponent,
 }
 ```
@@ -594,13 +692,13 @@ export const timelineInitializerItem: SchemaInitializerItemType = {
 
 更多关于 Schema Initializer 的定义可以参考 [Schema Initializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer) 文档。
 
-### 5. 实现 Schema Settings
+### 7. 实现 Schema Settings
 
-#### 5.1 定义 Schema Settings
+#### 7.1 定义 Schema Settings
 
 一个完整的 Block 还需要有 Schema Settings，用于配置一些属性和操作，但 Schema Settings 不是本示例的重点，所以我们这里仅有一个 `remove` 操作。
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-data-modal/src/client/timelineSettings.ts` 文件，其内容如下：
+我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-data-modal/src/client/settings/index.ts` 文件，其内容如下：
 
 ```ts
 import { SchemaSettings } from "@nocobase/client";
@@ -622,11 +720,15 @@ export const timelineSettings = new SchemaSettings({
 })
 ```
 
-#### 5.2 注册 Schema Settings
+- componentProps
+  - `removeParentsIfNoChildren`：如果没有子节点，是否删除父节点
+  - `breakRemoveOn`：删除时的中断条件。因为 `Add Block` 会自动将子项的包裹在 `Grid` 中，所以这里设置 `breakRemoveOn: { 'x-component': 'Grid' }`，当删除 `Grid` 时，不再向上删除。
+
+#### 7.2 注册 Schema Settings
 
 ```ts
 import { Plugin } from '@nocobase/client';
-import { timelineSettings } from './timelineSettings';
+import { timelineSettings } from './settings';
 
 export class PluginInitializerBlockDataModalClient extends Plugin {
   async load() {
@@ -638,12 +740,14 @@ export class PluginInitializerBlockDataModalClient extends Plugin {
 export default PluginInitializerBlockDataModalClient;
 ```
 
-#### 5.3 使用 Schema Settings
+#### 7.3 使用 Schema Settings
 
-我们需要修改 `packages/plugins/@nocobase-sample/plugin-initializer-block-data-modal/src/client/timelineSchema.tsx` 的 `getTimelineBlockSchema()` 为：
+我们需要修改 `packages/plugins/@nocobase-sample/plugin-initializer-block-data-modal/src/client/schema/index.tsx` 的 `getTimelineSchema()` 为：
 
 ```diff
-export function getTimelineBlockSchema(options: GetTimelineBlockSchemaOptions) {
++ import { timelineSettings } from '../settings';
+
+export function getTimelineSchema(options: GetTimelineSchemaOptions) {
   const { dataSource, collection, titleField, timeField } = options;
   return {
     type: 'void',
@@ -654,13 +758,13 @@ export function getTimelineBlockSchema(options: GetTimelineBlockSchemaOptions) {
 }
 ```
 
-### 6. 添加到 Add block 中
+### 8. 添加到 Add block 中
 
 系统中有很多个 `Add block` 按钮，但他们的 **name 是不同的**。
 
 ![img_v3_02b4_049b0a62-8e3b-420f-adaf-a6350d84840g](https://static-docs.nocobase.com/img_v3_02b4_049b0a62-8e3b-420f-adaf-a6350d84840g.jpg)
 
-#### 5.1 添加到页面级别 Add block 中
+#### 8.1 添加到页面级别 Add block 中
 
 如果我们需要添加到页面级别的 `Add block` 中，我们需要知道对应的 `name`，我们可以通过 TODO 方式查看对应的 `name`。
 
@@ -672,15 +776,15 @@ TODO
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
-import { TimelineBlock } from './TimelineBlock';
-import { useTimelineBlockProps } from './timelineSchema';
-import { timelineSettings } from './timelineSettings';
+import { Timeline } from './component';
+import { useTimelineProps } from './schema';
+import { timelineSettings } from './settings';
 import { timelineInitializerItem } from './timelineInitializerItem';
 
 export class PluginInitializerBlockDataModalClient extends Plugin {
   async load() {
-    this.app.addComponents({ TimelineBlock })
-    this.app.addScopes({ useTimelineBlockProps });
+    this.app.addComponents({ Timeline })
+    this.app.addScopes({ useTimelineProps });
     this.app.schemaSettingsManager.add(timelineSettings)
 
     this.app.schemaInitializerManager.addItem('page:addBlock', `dataBlocks.${timelineInitializerItem.name}`, timelineInitializerItem)
@@ -692,7 +796,7 @@ export default PluginInitializerBlockDataModalClient;
 
 <video controls width='100%' src="https://static-docs.nocobase.com/20240529222118_rec_.mp4"></video>
 
-#### 5.2 添加到弹窗 Add block 中
+#### 8.2 添加到弹窗 Add block 中
 
 我们不仅需要将其添加到页面级别的 `Add block` 中，还需要将其添加到 `Table` 区块 `Add new` 弹窗的 `Add block` 中。
 
@@ -704,15 +808,15 @@ export default PluginInitializerBlockDataModalClient;
 
 ```diff
 import { Plugin } from '@nocobase/client';
-import { TimelineBlock } from './TimelineBlock';
-import { useTimelineBlockProps } from './timelineSchema';
-import { timelineSettings } from './timelineSettings';
+import { Timeline } from './component';
+import { useTimelineProps } from './schema';
+import { timelineSettings } from './settings';
 import { timelineInitializerItem } from './timelineInitializerItem';
 
 export class PluginInitializerBlockDataModalClient extends Plugin {
   async load() {
-    this.app.addComponents({ TimelineBlock })
-    this.app.addScopes({ useTimelineBlockProps });
+    this.app.addComponents({ Timeline })
+    this.app.addScopes({ useTimelineProps });
     this.app.schemaSettingsManager.add(timelineSettings)
     this.app.schemaInitializerManager.addItem('page:addBlock', `dataBlocks.${timelineInitializerItem.name}`, timelineInitializerItem)
 +   this.app.schemaInitializerManager.addItem('popup:addNew:addBlock', `dataBlocks.${timelineInitializerItem.name}`, timelineInitializerItem);
@@ -724,7 +828,7 @@ export default PluginInitializerBlockDataModalClient;
 
 ![20240529223046](https://static-docs.nocobase.com/20240529223046.png)
 
-#### 5.3 添加到移动端 Add block 中
+#### 8.3 添加到移动端 Add block 中
 
 > 首先要激活移动端插件，参考 [激活插件](/welcome/getting-started/plugin#3-activate-the-plugin) 文档。
 
@@ -749,14 +853,35 @@ export default PluginInitializerBlockDataModalClient;
 
 如果需要更多的 `Add block`，可以继续添加，只需要知道对应的 `name` 即可。
 
+### 9. 完善多语言
 
-### 7. 总结
+#### 9.1 英文
 
-通过上述步骤，我们就可以实现一个带弹窗的数据的区块，并将其添加到 `Page`、`Table` 以及移动端的 `Add block` 中。
+我们编辑 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/locale/en.ts` 文件：
 
-其中上述各个概念的关系是：
+```diff
+{
+  "Timeline": "Timeline",
++ "Title Field": "Title Field",
++ "Time Field": "Time Field"
+}
+```
 
-`Schema Initializer Item` 提供了样式和点击事件回调 -> 通过点击事件先获取到 `dataSource` 和 `collection` 参数 -> 然后打开配置表单选择 `timeField` 和 `titleField`-> 表单提交后插入 `Schema` 到界面 -> `Schema` 包含了组件和 `SchemaSettings`。
+#### 9.2 中文
+
+我们编辑 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/locale/zh.ts` 文件：
+
+```diff
+{
+  "Timeline": "时间线",
++ "Title Field": "标题字段",
++ "Time Field": "时间字段"
+}
+```
+
+我们可以通过 [http://localhost:13000/admin/settings/system-settings](http://localhost:13000/admin/settings/system-settings) 添加多个语言，并且在右上角切换语言。
+
+![20240611113758](https://static-docs.nocobase.com/20240611113758.png)
 
 ## 打包和上传到生产环境
 
