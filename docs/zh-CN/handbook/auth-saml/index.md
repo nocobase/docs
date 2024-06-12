@@ -4,7 +4,7 @@
 
 ## 介绍
 
-认证：SAML 2.0 插件遵循 SAML 2.0 (Security Assertion Markup Language 2.0) 协议标准，实现用户使用第三方身份认证服务商 (IdP) 提供的账号登录NocoBase.
+认证：SAML 2.0 插件遵循 SAML 2.0 (Security Assertion Markup Language 2.0) 协议标准，实现用户使用第三方身份认证服务商 (IdP) 提供的账号登录 NocoBase.
 
 ## 激活插件
 

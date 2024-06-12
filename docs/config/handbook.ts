@@ -571,6 +571,11 @@ export default [
                 'title.zh-CN': '折叠面板',
                 link: '/handbook/ui/blocks/filter-blocks/collapse',
               },
+              {
+                title: 'Tree',
+                'title.zh-CN': '树',
+                link: '/handbook/block-tree',
+              },
             ],
           },
           {
@@ -586,6 +591,11 @@ export default [
                 title: 'iframe',
                 'title.zh-CN': 'iframe',
                 link: '/handbook/block-iframe',
+              },
+              {
+                title: 'Workbench',
+                'title.zh-CN': '工作台',
+                link: '/handbook/block-workbench',
               },
               {
                 title: 'Workflow todos',
@@ -985,21 +995,26 @@ export default [
                 'title.zh-CN': '导入',
                 link: '/handbook/action-import',
               },
-              {
-                title: 'Import Pro',
-                'title.zh-CN': '导入 Pro',
-                link: '/handbook/action-import-pro',
-              },
+              // {
+              //   title: 'Import Pro',
+              //   'title.zh-CN': '导入 Pro',
+              //   link: '/handbook/action-import-pro',
+              // },
               {
                 title: 'Export',
                 'title.zh-CN': '导出',
                 link: '/handbook/action-export',
               },
               {
-                title: 'Export Pro',
-                'title.zh-CN': '导出 Pro',
-                link: '/handbook/action-export-pro',
+                title: 'QR scan',
+                'title.zh-CN': 'QR 扫码',
+                link: '/handbook/action-qr-scan',
               },
+              // {
+              //   title: 'Export Pro',
+              //   'title.zh-CN': '导出 Pro',
+              //   link: '/handbook/action-export-pro',
+              // },
             ],
           },
         ],
@@ -1084,6 +1099,12 @@ export default [
             ],
           },
           {
+            title: 'Authentication - SMS',
+            'title.zh-CN': '用户认证 - 短信',
+            // subTitle: '@nocobase/plugin-sms-auth',
+            link: '/handbook/auth-sms',
+          },
+          {
             title: 'Authentication - CAS',
             'title.zh-CN': '用户认证 - CAS',
             // subTitle: '@nocobase/plugin-cas',
@@ -1136,10 +1157,9 @@ export default [
             ],
           },
           {
-            title: 'Authentication - SMS',
-            'title.zh-CN': '用户认证 - 短信',
-            // subTitle: '@nocobase/plugin-sms-auth',
-            link: '/handbook/auth-sms',
+            title: 'Authentication - DingTalk',
+            'title.zh-CN': '用户认证 - 钉钉',
+            link: '/handbook/auth-dingtalk',
           },
           {
             title: 'Verification',
@@ -1199,7 +1219,7 @@ export default [
                 'title.zh-CN': '文件存储：COS',
                 link: '/handbook/file-manager/storage/tencent-cos',
               },
-            ]
+            ],
           },
         ],
       },
@@ -1339,7 +1359,7 @@ export default [
               '/handbook/workflow/nodes/destroy',
               '/handbook/workflow/nodes/query',
               '/handbook/workflow/nodes/aggregate',
-              '/handbook/workflow/nodes/sql'
+              '/handbook/workflow/nodes/sql',
             ],
           },
           {
@@ -1360,7 +1380,7 @@ export default [
               '/handbook/workflow/nodes/dynamic-calculation',
               '/handbook/workflow/nodes/json-query',
               '/handbook/workflow/nodes/response-message',
-              '/handbook/workflow/nodes/variable'
+              '/handbook/workflow/nodes/variable',
             ],
           },
         ],
@@ -1507,7 +1527,7 @@ export default [
             link: '/handbook/workflow/plugins/variable',
           },
         ],
-      }
+      },
     ],
   },
   {
