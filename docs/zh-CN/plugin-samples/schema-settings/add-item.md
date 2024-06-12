@@ -10,7 +10,7 @@
 
 本实例主要为了演示 SchemaSettings 的使用，更多关于区块扩展可以查看 [区块扩展](/plugin-samples/block) 文档。
 
-本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-initializer-block-simple) 中查看。
+本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-schema-settings-add-item) 中查看。
 
 <video width="100%" controls="">
   <source src="https://static-docs.nocobase.com/20240601161535_rec_.mp4" type="video/mp4" />

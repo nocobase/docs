@@ -112,7 +112,7 @@ export function generateCommonTemplate(key: string) {
 
 - [useTranslation()](https://react.i18next.com/latest/usetranslation-hook)：用于获取多语言工具函数
 - `useImageTranslation()`：获取插件的多语言工具函数，需要将插件的名字作为命名空间
-- `generateNTemplate()`：用于生成 Carousel 组件的多语言模板
+- `generateNTemplate()`：用于生成插件的多语言模板
 - `generateCommonTemplate()`：用于生成通用的多语言模板
 
 #### 2.2 多语言文件

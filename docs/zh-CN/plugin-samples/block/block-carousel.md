@@ -183,7 +183,7 @@ export const Carousel: FC<CarouselProps> = withDynamicSchemaProps((props) => {
 
 如果不看 `withDynamicSchemaProps` 的话，`Carousel` 组件就是一个简单的函数组件。
 
-然后将其在 `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/component/index.ts` 中导出：
+然后将其在 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/component/index.ts` 中导出：
 
 ```tsx | pure
 export * from './Carousel';
