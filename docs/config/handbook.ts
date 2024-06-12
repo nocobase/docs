@@ -571,6 +571,11 @@ export default [
                 'title.zh-CN': '折叠面板',
                 link: '/handbook/ui/blocks/filter-blocks/collapse',
               },
+              {
+                title: 'Tree',
+                'title.zh-CN': '树',
+                link: '/handbook/block-tree',
+              },
             ],
           },
           {
