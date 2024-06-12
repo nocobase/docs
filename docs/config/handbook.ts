@@ -593,6 +593,11 @@ export default [
                 link: '/handbook/block-iframe',
               },
               {
+                title: 'Workbench',
+                'title.zh-CN': '工作台',
+                link: '/handbook/block-workbench',
+              },
+              {
                 title: 'Workflow todos',
                 'title.zh-CN': '工作流待办',
                 link: '/handbook/workflow/manual/nodes/manual/workflow-todos-block',
@@ -990,21 +995,26 @@ export default [
                 'title.zh-CN': '导入',
                 link: '/handbook/action-import',
               },
-              {
-                title: 'Import Pro',
-                'title.zh-CN': '导入 Pro',
-                link: '/handbook/action-import-pro',
-              },
+              // {
+              //   title: 'Import Pro',
+              //   'title.zh-CN': '导入 Pro',
+              //   link: '/handbook/action-import-pro',
+              // },
               {
                 title: 'Export',
                 'title.zh-CN': '导出',
                 link: '/handbook/action-export',
               },
               {
-                title: 'Export Pro',
-                'title.zh-CN': '导出 Pro',
-                link: '/handbook/action-export-pro',
+                title: 'QR scan',
+                'title.zh-CN': 'QR 扫码',
+                link: '/handbook/action-qr-scan',
               },
+              // {
+              //   title: 'Export Pro',
+              //   'title.zh-CN': '导出 Pro',
+              //   link: '/handbook/action-export-pro',
+              // },
             ],
           },
         ],
