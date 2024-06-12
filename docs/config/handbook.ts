@@ -574,7 +574,7 @@ export default [
               {
                 title: 'Tree',
                 'title.zh-CN': '树',
-                link: '/handbook/ui/blocks/filter-blocks/tree',
+                link: '/handbook/block-tree',
               },
             ],
           },
