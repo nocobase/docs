@@ -98,7 +98,7 @@ import { useTranslation } from 'react-i18next';
 import pkg from './../../package.json';
 
 export function useImageTranslation() {
-  return useTranslation(pkg.name, { nsMode: 'fallback' });
+  return useTranslation([pkg.name, 'client'], { nsMode: 'fallback' });
 }
 
 export function generateNTemplate(key: string) {
