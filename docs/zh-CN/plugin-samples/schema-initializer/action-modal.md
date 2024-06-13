@@ -153,23 +153,17 @@ NocoBase 的动态页面都是通过 Schema 来渲染，所以我们需要定义
 
 ```ts
 import { ISchema } from "@nocobase/client"
-
+import { generatePluginTranslationTemplate } from "../locale";
 import { ActionName } from "../constants";
-import { usePluginTranslation } from "../locale";
-
-export function useOpenDocumentActionProps() {
-  const { t } = usePluginTranslation();
-  return {
-    title: t(ActionName),
-    type: 'primary'
-  }
-}
 
 export const createDocumentActionModalSchema = (blockComponent: string): ISchema => {
   return {
     type: 'void',
     'x-component': 'Action',
-    'x-use-component-props': 'useOpenDocumentActionProps',
+    title: generatePluginTranslationTemplate(ActionName),
+    'x-component-props': {
+      type: 'primary'
+    },
     properties: {
       drawer: {
         type: 'void',
@@ -208,24 +202,7 @@ export const createDocumentActionModalSchema = (blockComponent: string): ISchema
 
 更多关于 Schema 的说明请查看 [UI Schema](/development/client/ui-schema/what-is-ui-schema) 文档。
 
-#### 3.2 注册 scope
-
-我们需要将 `useOpenDocumentActionProps` 注册到系统中，这样 `x-use-component-props` 才能找到对应的 scope。
-
-```ts
-import { useOpenDocumentActionProps } from './schema';
-import { Plugin } from '@nocobase/client';
-
-export class PluginInitializerActionModalClient extends Plugin {
-  async load() {
-    this.app.addScopes({ useOpenDocumentActionProps });
-  }
-}
-
-export default PluginInitializerActionModalClient;
-```
-
-#### 3.3 验证 Schema
+#### 3.2 验证 Schema
 
 验证 Schema 方式有 2 种：
 
@@ -237,12 +214,10 @@ export default PluginInitializerActionModalClient;
 ```tsx | pure
 import React from 'react';
 import { Plugin, SchemaComponent } from '@nocobase/client';
-import { useOpenDocumentActionProps, createDocumentActionModalSchema } from './schema';
+import { createDocumentActionModalSchema } from './schema';
 
 export class PluginInitializerActionModalClient extends Plugin {
   async load() {
-    this.app.addScopes({ useOpenDocumentActionProps })
-
     this.app.router.add('admin.open-document-schema', {
       path: '/admin/open-document-schema',
       Component: () => {
