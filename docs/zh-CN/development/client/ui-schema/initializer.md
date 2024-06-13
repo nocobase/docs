@@ -27,7 +27,7 @@ class PluginDemoAddSchemaInitializerItem extends Plugin {
 }
 ```
 
-<code src="./demos/schema-initializer-manager-add-item/index.tsx"></code>
+<!-- <code src="./demos/schema-initializer-manager-add-item/index.tsx"></code> -->
 
 ## 添加新的初始化器
 

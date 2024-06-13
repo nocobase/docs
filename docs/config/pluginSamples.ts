@@ -111,5 +111,123 @@ export default [
         link: '/plugin-samples/component-and-scope/local',
       },
     ]
-  }
+  },
+  {
+    title: 'SchemaInitializer',
+    'title.zh-CN': 'SchemaInitializer',
+    type: 'group',
+    children: [
+      {
+        title: 'Overview',
+        'title.zh-CN': '概述',
+        link: '/plugin-samples/schema-initializer',
+      },
+      {
+        title: 'Add Simple Block',
+        'title.zh-CN': '添加简单区块 Simple Block',
+        link: '/plugin-samples/schema-initializer/block-simple',
+      },
+      {
+        title: 'Add Data Block',
+        'title.zh-CN': '添加数据区块 Data Block',
+        link: '/plugin-samples/schema-initializer/block-data',
+      },
+      {
+        title: 'Add Data Block Modal',
+        'title.zh-CN': '添加带弹窗的数据区块 Data Block Modal',
+        link: '/plugin-samples/schema-initializer/block-data-modal',
+      },
+      {
+        title: 'Add Simple Action',
+        'title.zh-CN': '添加简单 Action',
+        link: '/plugin-samples/schema-initializer/action-simple',
+      },
+      {
+        title: 'Add Modal Action',
+        'title.zh-CN': '添加弹窗 Action',
+        link: '/plugin-samples/schema-initializer/action-modal',
+      },
+      {
+        title: 'Configure Actions',
+        'title.zh-CN': '区块内嵌的 Initializer - 配置操作',
+        link: '/plugin-samples/schema-initializer/configure-actions',
+      },
+      {
+        title: 'Configure Fields',
+        'title.zh-CN': '区块内嵌的 Initializer - 配置字段',
+        link: '/plugin-samples/schema-initializer/configure-fields',
+      },
+      // {
+      //   title: 'Configure Custom',
+      //   'title.zh-CN': '区块内嵌的 Initializer - 其他自定义',
+      //   link: '/plugin-samples/schema-initializer/configure-custom',
+      // },
+    ]
+  },
+  {
+    title: 'SchemaSettings',
+    'title.zh-CN': 'SchemaSettings',
+    type: 'group',
+    children: [
+      {
+        title: 'Overview',
+        'title.zh-CN': '概述',
+        link: '/plugin-samples/schema-settings',
+      },
+      {
+        title: 'Add Item to Existing SchemaSettings',
+        'title.zh-CN': '添加子项到已有的 SchemaSettings',
+        link: '/plugin-samples/schema-settings/add-item',
+      },
+      {
+        title: 'Add New SchemaSettings',
+        'title.zh-CN': '新增 SchemaSettings',
+        link: '/plugin-samples/schema-settings/new',
+      },
+    ]
+  },
+  {
+    title: 'Block',
+    'title.zh-CN': '区块',
+    type: 'group',
+    children: [
+      {
+        title: 'Overview',
+        'title.zh-CN': '概述',
+        link: '/plugin-samples/block',
+      },
+      {
+        title: 'Carousel Block',
+        'title.zh-CN': 'Carousel 区块',
+        link: '/plugin-samples/block/block-carousel',
+      },
+      {
+        title: 'Form Block',
+        'title.zh-CN': 'Form 区块',
+        link: '/plugin-samples/block/block-form',
+      },
+      {
+        title: 'Table Block',
+        'title.zh-CN': 'Table 区块',
+        link: '/plugin-samples/block/block-table',
+      },
+    ]
+  },
+  // {
+  //   title: 'Field',
+  //   'title.zh-CN': ' 字段',
+  //   type: 'group',
+  //   children: [
+  //     {
+  //       title: 'Overview',
+  //       'title.zh-CN': '概述',
+  //       link: '/plugin-samples/field',
+  //     },
+  //     {
+  //       title: 'Extra Field',
+  //       'title.zh-CN': '新增附加字段',
+  //       link: '/plugin-samples/field/extra-field',
+  //     },
+  //   ]
+  // }
 ];

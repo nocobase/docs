@@ -40,14 +40,14 @@ export default [
     link: '/development',
   },
   {
-    title: 'API reference',
-    'title.zh-CN': 'API 参考',
-    link: '/api',
-  },
-  {
     title: 'Plugin samples',
     'title.zh-CN': '插件示例',
     link: '/plugin-samples'
+  },
+  {
+    title: 'API reference',
+    'title.zh-CN': 'API 参考',
+    link: '/api',
   },
   {
     title: 'NocoBase Home',
