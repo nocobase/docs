@@ -148,14 +148,14 @@ export default [
         link: '/plugin-samples/schema-initializer/action-modal',
       },
       {
-        title: 'Configure Fields',
-        'title.zh-CN': '区块内嵌的 Initializer - 配置字段',
-        link: '/plugin-samples/schema-initializer/configure-fields',
-      },
-      {
         title: 'Configure Actions',
         'title.zh-CN': '区块内嵌的 Initializer - 配置操作',
         link: '/plugin-samples/schema-initializer/configure-actions',
+      },
+      {
+        title: 'Configure Fields',
+        'title.zh-CN': '区块内嵌的 Initializer - 配置字段',
+        link: '/plugin-samples/schema-initializer/configure-fields',
       },
       // {
       //   title: 'Configure Custom',
@@ -212,5 +212,22 @@ export default [
         link: '/plugin-samples/block/block-table',
       },
     ]
-  }
+  },
+  // {
+  //   title: 'Field',
+  //   'title.zh-CN': ' 字段',
+  //   type: 'group',
+  //   children: [
+  //     {
+  //       title: 'Overview',
+  //       'title.zh-CN': '概述',
+  //       link: '/plugin-samples/field',
+  //     },
+  //     {
+  //       title: 'Extra Field',
+  //       'title.zh-CN': '新增附加字段',
+  //       link: '/plugin-samples/field/extra-field',
+  //     },
+  //   ]
+  // }
 ];
