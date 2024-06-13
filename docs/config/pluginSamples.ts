@@ -213,21 +213,21 @@ export default [
       },
     ]
   },
-  // {
-  //   title: 'Field',
-  //   'title.zh-CN': ' 字段',
-  //   type: 'group',
-  //   children: [
-  //     {
-  //       title: 'Overview',
-  //       'title.zh-CN': '概述',
-  //       link: '/plugin-samples/field',
-  //     },
-  //     {
-  //       title: 'Extra Field',
-  //       'title.zh-CN': '新增附加字段',
-  //       link: '/plugin-samples/field/extra-field',
-  //     },
-  //   ]
-  // }
+  {
+    title: 'Field',
+    'title.zh-CN': ' 字段',
+    type: 'group',
+    children: [
+      {
+        title: 'Overview',
+        'title.zh-CN': '概述',
+        link: '/plugin-samples/field',
+      },
+      {
+        title: 'Extra Field',
+        'title.zh-CN': '新增附加字段',
+        link: '/plugin-samples/field/without-value',
+      },
+    ]
+  }
 ];
