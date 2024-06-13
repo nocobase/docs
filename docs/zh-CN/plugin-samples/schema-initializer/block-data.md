@@ -394,7 +394,7 @@ import { CodeOutlined } from '@ant-design/icons';
 
 import { getInfoSchema } from '../schema'
 import { usePluginTranslation } from '../locale';
-import { BlockNameLowercase } from '../constants';
+import { BlockName, BlockNameLowercase } from '../constants';
 
 export const infoInitializerItem: SchemaInitializerItemType = {
   name: BlockNameLowercase,
@@ -403,9 +403,9 @@ export const infoInitializerItem: SchemaInitializerItemType = {
     const { insert } = useSchemaInitializer();
     const { t } = usePluginTranslation();
     return {
-      title: t('Info'),
+      title: t(BlockName),
       icon: <CodeOutlined />,
-      componentType: 'Info',
+      componentType: BlockName,
       useTranslationHooks: usePluginTranslation,
       onCreateBlockSchema({ item }) {
         insert(getInfoSchema({ dataSource: item.dataSource, collection: item.name }))
