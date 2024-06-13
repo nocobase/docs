@@ -16,7 +16,7 @@
 
 ### 连接数据区块
 
-表单筛选区块连接详情数据区块实现联动。
+示例：表单筛选区块连接详情数据区块实现联动。
 
   <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240421170947.mp4" type="video/mp4">

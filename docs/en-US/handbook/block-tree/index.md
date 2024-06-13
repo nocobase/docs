@@ -1,35 +1,35 @@
-# 树筛选区块
+# Tree Filter Block
 
 <PluginInfo commercial="true" name="block-tree"></PluginInfo>
 
-## 介绍
+## Introduction
 
-树筛选区块需要连接数据区块使用，为数据区块提供筛选能力。
+The tree filter block needs to be connected to the data block for use, providing filtering capabilities for the data block.
 
-## 添加区块
+## Adding Block
 
 <video width="100%" controls>
   <source src="https://static-docs.nocobase.com/20240607144133_rec_.mp4" type="video/mp4">
 </video>
 
-## 区块配置项
+## Block Configuration
 
 ![20240607144440](https://static-docs.nocobase.com/20240607144440.png)
 
-### 连接数据区块
+### Connecting Data Block
 
-表单筛选区块连接详情数据区块实现联动。
+Example: The form filter block connects to the detail data block to achieve linkage.
 
 <video width="100%" height="440" controls>
     <source src="https://static-docs.nocobase.com/20240607145351_rec_.mp4" type="video/mp4">
   </video>
 
-更多内容参考 [连接数据区块](/handbook/ui/blocks/block-settings/connect-block)
+For more information, refer to [Connecting Data Block](/handbook/ui/blocks/block-settings/connect-block)
 
-- [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
-- [联动规则](/handbook/ui/blocks/block-settings/linkage-rule)
-- [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
+- [Editing Block Title](/handbook/ui/blocks/block-settings/block-title)
+- [Linkage Rule](/handbook/ui/blocks/block-settings/linkage-rule)
+- [Save as Block Template](/handbook/ui/blocks/block-settings/block-template)
 
-## 配置字段
+## Configuring Fields
 
 ![20240607145820](https://static-docs.nocobase.com/20240607145820.png)

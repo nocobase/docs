@@ -1,53 +1,53 @@
-# 表单筛选区块
+# Form Filter Block
 
-## 介绍
+## Introduction
 
-表单筛选区块可以和数据区块进行连接，连接之后就可以为数据区块提供筛选能力。
+The Form filter block can be connected with the data block. Once connected, it can provide filtering capabilities.
 
-## 添加区块
+## Adding Block
 
   <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240426172722.mp4" type="video/mp4">
     </video>
 
-## 区块配置项
+## Block Configuration Options
 
 ![20240421172115](https://static-docs.nocobase.com/20240421172115.png)
 
-### 连接数据区块
+### Connect to Data Block
 
-表单筛选区块连接详情数据区块实现联动。
+Example: The Form filter block connects to the details data block to implement linkage.
 
   <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240421170947.mp4" type="video/mp4">
     </video>
 
-更多内容参考 [连接数据区块](/handbook/ui/blocks/block-settings/connect-block)
+For more content, refer to [Connect to Data Block](/handbook/ui/blocks/block-settings/connect-block)
 
-- [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
-- [联动规则](/handbook/ui/blocks/block-settings/linkage-rule)
-- [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
+- [Edit Block Title](/handbook/ui/blocks/block-settings/block-title)
+- [Linkage Rules](/handbook/ui/blocks/block-settings/linkage-rule)
+- [Save as Block Template](/handbook/ui/blocks/block-settings/block-template)
 
-## 配置字段
+## Field Configuration
 
-### 本表字段
+### Fields in This Collection
 
 ![20240421171135](https://static-docs.nocobase.com/20240421171135.png)
 
-### 关系表字段
+### Fields in Related Collections
 
-支持以关系表的字段为筛选条件
+Supports using the fields of the related collections as filtering conditions
 
-示例：订单表有多对一关系字段「客户」，以客户名称和手机号为筛选条件筛选订单
+Example: The order collection has a many-to-one relationship field "Customer", filter the orders by customer name and phone number as filtering conditions
 
 <video width="100%" height="440" controls>
 <source src="https://static-docs.nocobase.com/20240421171437.mp4" type="video/mp4">
 </video>
 
-### 给字段设置默认值
+### Setting Default Values for Fields
 
-像普通的[表单区块](/handbook/ui/blocks/data-blocks/form)一样，可以为普通字段和关系字段设置默认值。**当字段存在默认值时，会在页面首次渲染时自动触发一次筛选操作，以使与其相连接的数据区块展示相匹配的数据。**
+Like a normal [Form Block](/handbook/ui/blocks/data-blocks/form), you can set default values for normal fields and relationship fields. **When a field has a default value, a filtering operation will be automatically triggered at the first rendering of the page, so that the data block connected with it can display the matching data.**
 
-## 配置操作
+## Configuration Operations
 
-![筛选操作](https://static-docs.nocobase.com/20240421171839.png)
+![Filter Operations](https://static-docs.nocobase.com/20240421171839.png)
