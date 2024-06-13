@@ -598,14 +598,14 @@ export default [
                 link: '/handbook/block-workbench',
               },
               {
-                title: 'Workflow todos',
-                'title.zh-CN': '工作流待办',
-                link: '/handbook/workflow/manual/nodes/manual/workflow-todos-block',
+                title: 'Workflow: Manual todos',
+                'title.zh-CN': '工作流：人工待办',
+                link: '/handbook/ui/blocks/other-blocks/workflow-manual-todos',
               },
               {
-                title: 'Workflow todos',
-                'title.zh-CN': '审批',
-                link: '/handbook/workflow-approval',
+                title: 'Workflow: Approval',
+                'title.zh-CN': '工作流：审批',
+                link: '/handbook/ui/blocks/other-blocks/workflow-approval',
               },
               // {
               //   title: 'Audit logs',
