@@ -10,7 +10,7 @@ Markdown 区块无需绑定数据源使用，使用 Markdown 语法定义文本�
 
 ![20240612205004](https://static-docs.nocobase.com/20240612205004.png)
 
-也可以在表单区块里添加内联（inline-block）的 Markdown 区块
+也可以在表单区块和详情区块里添加内联（inline-block）的 Markdown 区块
 
 ![20240612205215](https://static-docs.nocobase.com/20240612205215.png)
 
@@ -26,9 +26,9 @@ Markdown 的文本里也支持使用变量
 
 更多变量的介绍查看 [配置界面 / 变量](/handbook/ui/variables) 章节
 
-## 二维码标签
+## 二维码
 
-Markdown 里也支持配置二维码，可以结合变量使用。
+Markdown 里支持配置二维码，可以结合变量使用。
 
 ```html
 <qr-code value="https://www.nocobase.com/" type="svg"></qr-code>

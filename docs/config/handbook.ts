@@ -607,11 +607,11 @@ export default [
                 'title.zh-CN': '审批',
                 link: '/handbook/workflow-approval',
               },
-              {
-                title: 'Audit logs',
-                'title.zh-CN': '审计日志',
-                link: '/handbook/audit-logs',
-              },
+              // {
+              //   title: 'Audit logs',
+              //   'title.zh-CN': '审计日志',
+              //   link: '/handbook/audit-logs',
+              // },
             ],
           },
           {
@@ -1006,8 +1006,8 @@ export default [
                 link: '/handbook/action-export',
               },
               {
-                title: 'QR scan',
-                'title.zh-CN': 'QR 扫码',
+                title: 'Scan QR code',
+                'title.zh-CN': '扫二维码',
                 link: '/handbook/action-qr-scan',
               },
               // {

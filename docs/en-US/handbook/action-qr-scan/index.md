@@ -1,13 +1,13 @@
-# QR 扫码
+# Scan QR Code
 
-## 介绍
+## Introduction
 
-二维码扫码操作，可以在工作台区块里添加
+Scan-QR code action can be added in the workbench block.
 
-## 示例
+## Example
 
 <video width="100%" controls>
   <source src="https://static-docs.nocobase.com/20240612214013_rec_.mp4" type="video/mp4">
 </video>
 
-更多查看 [工作台区块](/handbook/block-workbench) 文档
+For more information, please refer to [Workbench Block](/handbook/block-workbench).

@@ -1,32 +1,32 @@
-# iframe 区块
+# Iframe Block
 
 <PluginInfo name="block-iframe"></PluginInfo>
 
-## 介绍
-Iframe 区块允许将外部网页或内容嵌入到当前页面中。
+## Introduction
+The Iframe block allows you to embed external web pages or content into the current page.
 
-## 安装
+## Installation
 
-内置插件，无需安装。
-## 添加区块
+It's a built-in plugin, no installation is required.
 
+## Adding a Block
 
 ![20240408220259](https://static-docs.nocobase.com/20240408220259.png)
 
-配置 URL 或 Html 直接将外部应用嵌入。
+Configure the URL or Html to directly embed the external application.
 
 ![20240408220322](https://static-docs.nocobase.com/20240408220322.png)
 
-## 传入变量
+## Passing Variables
 
-### html 支持变量解析
+### Html supports variable resolution
 
 ![20240603120321](https://static-docs.nocobase.com/20240603120321.png)
 
 ![20240603120629](https://static-docs.nocobase.com/20240603120629.gif)
 
-### url 支持变量
+### Url supports variables
 
 ![20240603142219](https://static-docs.nocobase.com/20240603142219.png)
 
-更多关于变量内容参考 [变量](/handbook/ui/variables)
+For more information on variables, refer to [Variables](/handbook/ui/variables)

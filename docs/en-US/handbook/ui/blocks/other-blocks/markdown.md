@@ -1,34 +1,34 @@
-# Markdown 区块
+# Markdown Block
 
-## 介绍
+## Introduction
 
-Markdown 区块无需绑定数据源使用，使用 Markdown 语法定义文本内容，可用于显示格式化的文本内容。
+Markdown blocks can be used without binding to a data source. They are defined using Markdown syntax and are suitable for displaying formatted text content.
 
-## 添加区块
+## Adding Blocks
 
-可以在页面或弹窗里添加 Markdown 区块
+Markdown blocks can be added within pages or pop-ups.
 
 ![20240612205004](https://static-docs.nocobase.com/20240612205004.png)
 
-也可以在表单区块里添加内联（inline-block）的 Markdown 区块
+Inline Markdown blocks can also be added within form blocks and details blocks.
 
 ![20240612205215](https://static-docs.nocobase.com/20240612205215.png)
 
-## 使用变量
+## Using Variables
 
-Markdown 的文本里也支持使用变量
+Markdown also supports variables.
 
 ![20240612205857](https://static-docs.nocobase.com/20240612205857.png)
 
-区块内联的 Markdown 也支持变量
+Inline Markdown within blocks also supports variables.
 
 ![20240612210333](https://static-docs.nocobase.com/20240612210333.png)
 
-更多变量的介绍查看 [配置界面 / 变量](/handbook/ui/variables) 章节
+For more introductions to variables, check out the [Edit UI / Variables](/handbook/ui/variables) section.
 
-## 二维码标签
+## QR Codes
 
-Markdown 里也支持配置二维码，可以结合变量使用。
+Markdown also supports the configuration of QR codes, which can be used in combination with variables.
 
 ```html
 <qr-code value="https://www.nocobase.com/" type="svg"></qr-code>

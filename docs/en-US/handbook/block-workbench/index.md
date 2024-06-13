@@ -1,22 +1,22 @@
-# 工作台区块
+# Workbench Block
 
-## 介绍
+## Introduction
 
-用于放置各种快捷操作，目前支持 [链接](#链接) 和 [QR 扫码](#qr-扫码)。
+It is used for placing various quick actions. Currently, it supports [link](/handbook/ui/actions/types/link) and [Scan QR code](/handbook/action-qr-scan).
 
 ![20240612213229](https://static-docs.nocobase.com/20240612213229.png)
 
-## 操作类型
+## Action Types
 
-工作台支持的操作类型有：
+The workbench supports the following action types:
 
-### 链接
+### Link
 
 <video width="100%" controls>
   <source src="https://static-docs.nocobase.com/20240612213731_rec_.mp4" type="video/mp4">
 </video>
 
-### QR 扫码
+### Scan QR Code
 
 <video width="100%" controls>
   <source src="https://static-docs.nocobase.com/20240612214013_rec_.mp4" type="video/mp4">
