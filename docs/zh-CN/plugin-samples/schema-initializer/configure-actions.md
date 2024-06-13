@@ -59,11 +59,14 @@ yarn dev
 
 ```diff
 import { Plugin } from '@nocobase/client';
-import { InfoBlock, infoBlockSettings, infoBlockInitializerItem } from './InfoBlock';
+- import { Info } from './component';
++ import { InfoV2 } from './component';
 
 - export class PluginInitializerBlockDataClient extends Plugin {
 + export class PluginInitializerConfigureActionsClient extends Plugin {
   async load() {
+-   this.app.addComponents({ Info })
++   this.app.addComponents({ InfoV2 })
     // ...
   }
 }
@@ -72,13 +75,18 @@ import { InfoBlock, infoBlockSettings, infoBlockInitializerItem } from './InfoBl
 + export default PluginInitializerConfigureActionsClient;
 ```
 
-为了避免和其他示例冲突，把所有 `InfoBlock` 改为了 `InfoBlock2`，但是本示例文档中仍然按照 `InfoBlock` 来说明。
+然后修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/constants.ts`：
+
+```ts
+export const BlockName = 'InfoV2';
+export const BlockNameLowercase = 'info-v2';
+```
 
 ### 2. 实现 initializer
 
 #### 2.1 定义 initializer
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/configureActionsInitializer/index.ts` 文件：
+我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/configureActionsInitializer.ts` 文件：
 
 ```tsx | pure
 import { SchemaInitializer } from "@nocobase/client";
@@ -103,13 +111,30 @@ export const configureActionsInitializer = new SchemaInitializer({
 - `title`：按钮标题
 - [items](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types)：按钮下的子项
 
+然后将其在 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/index.ts` 中导出：
+
+```tsx | pure
+export * from './configureActionsInitializer';
+```
+
+并且修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/index.tsx` 将 `configureActions` 导出：
+
+```diff
+import React from 'react';
+import { SchemaInitializerItemType, useSchemaInitializer } from '@nocobase/client'
+import { CodeOutlined } from '@ant-design/icons';
+
++ export * from './configureActions'
+// ...
+```
+
 #### 2.2 注册 initializer
 
 然后修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/index.tsx` 文件，导入并注册这个 initializer：
 
 ```tsx | pure
 // ...
-import { configureActionsInitializer } from './configureActionsInitializer';
+import { infoInitializerItem, configureActionsInitializer } from './initializer';
 
 export class PluginInitializerConfigureActionsClient extends Plugin {
   async load() {
@@ -122,25 +147,28 @@ export class PluginInitializerConfigureActionsClient extends Plugin {
 
 #### 2.3 使用 initializer
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/infoBlockSchema.ts` 文件，新增 `actions` 子节点：
+我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/schema/index.ts` 文件，新增 `actions` 子节点：
 
 ```diff
+// ...
++ import { configureActionsInitializer } from "../initializer";
+
 function getInfoBlockSchema({ dataSource, collection }) {
   return {
     // ...
     properties: {
       info: {
-        type: 'void',
-        'x-component': 'InfoBlock',
+        'x-component': BlockName,
+        'x-use-component-props': 'useInfoProps',
 +       properties: {
 +         actions: {
 +           type: 'void',
 +           'x-component': 'ActionBar',
 +           'x-component-props': {
-+             layout: 'one-column',
++             layout: 'two-column',
 +             style: { marginBottom: 20 }
 +           },
-+           'x-initializer': 'info:configureActions',
++           'x-initializer': configureActionsInitializer.name,
 +         }
 +       }
       }
@@ -152,39 +180,39 @@ function getInfoBlockSchema({ dataSource, collection }) {
 `configure actions` 一般与 [ActionBar](https://client.docs.nocobase.com/components/action#actionbar) 组件搭配使用。
 
 
-我们在 `InfoBlock` 的子节点中添加了一个 `actions` 字段：
+我们在 `Info` 的子节点中添加了一个 `actions` 字段：
 
 - `type: 'void'`：类型为 `void`，表示这是一个容器
 - `x-component: 'ActionBar'`：使用 [ActionBar](https://client.docs.nocobase.com/components/action#actionbar) 组件，用于展示按钮
-- `x-initializer: 'createForm:configureActions'`：使用 `configureActions` 这个 Schema Initializer
-- `x-component-props.layout: 'one-column'`：布局为一列，具体示例可参考 [ActionBar one-column](https://client.docs.nocobase.com/components/action#one-column)
+- `x-initializer: configureActionsInitializer.name`：使用我们刚创建的 Schema Initializer
+- `x-component-props.layout: 'two-column'`：左右布局，具体示例可参考 [ActionBar two-column](https://client.docs.nocobase.com/components/action#two-column)
 
 #### 2.4 区块渲染子节点
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/InfoBlock.tsx` 文件，将 `InfoBlock` 组件修改为：
+我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/component/Info.tsx` 文件，将 `Info` 组件修改为：
 
 ```diff
 import React, { FC } from 'react';
 import { withDynamicSchemaProps } from '@nocobase/client'
 
-export interface InfoBlockProps {
+export interface InfoV2Props {
   collectionName: string;
   data?: any[];
   loading?: boolean;
 + children?: React.ReactNode;
 }
 
-export const InfoBlock: FC<InfoBlockProps> = withDynamicSchemaProps(({ children, collectionName, data }) => {
+export const InfoV2: FC<InfoV2Props> = withDynamicSchemaProps(({ children, collectionName, data }) => {
   return <div>
 +   {children}
 -   <div>collection: {collectionName}</div>
 -   <div>data list: <pre>{JSON.stringify(data, null, 2)}</pre></div>
 +   <div>data length: {data?.length}</div>
   </div>
-}, { displayName: 'InfoBlock' })
+}, { displayName: BlockName })
 ```
 
-- `children`： `properties` 的内容会被传入到 `InfoBlock` 组件的 `children` 中，所以我们直接将 `children` 渲染出来即可。
+- `children`： `properties` 的内容会被传入到 `InfoV2` 组件的 `children` 中，所以我们直接将 `children` 渲染出来即可。
 
 ![img_v3_02b4_4c6cb675-789e-48d5-99ce-072984dcfc9g](https://static-docs.nocobase.com/img_v3_02b4_4c6cb675-789e-48d5-99ce-072984dcfc9g.jpg)
 
@@ -192,7 +220,7 @@ export const InfoBlock: FC<InfoBlockProps> = withDynamicSchemaProps(({ children,
 
 #### 3.1 复用：`Custom request` Action
 
-我们继续修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/configureActions.tsx` 文件：
+我们继续修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/configureActionsInitializer.ts` 文件：
 
 ```diff
 export const configureActions = new SchemaInitializer({

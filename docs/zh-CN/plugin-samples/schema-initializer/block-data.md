@@ -98,23 +98,23 @@ import { useTranslation } from 'react-i18next';
 // @ts-ignore
 import pkg from './../../package.json';
 
-export function useInfoTranslation() {
+export function usePluginTranslation() {
   return useTranslation([pkg.name, 'client'], { nsMode: 'fallback' });
 }
 
-export function generateNTemplate(key: string) {
+export function generatePluginTranslationTemplate(key: string) {
   return `{{t('${key}', { ns: '${pkg.name}', nsMode: 'fallback' })}}`;
 }
 
-export function generateCommonTemplate(key: string) {
+export function generateCommonTranslationTemplate(key: string) {
   return `{{t('${key}')}}`;
 }
 ```
 
 - [useTranslation()](https://react.i18next.com/latest/usetranslation-hook)：用于获取多语言工具函数
-- `useInfoTranslation()`：获取插件的多语言工具函数，需要将插件的名字作为命名空间
-- `generateNTemplate()`：用于生成插件的多语言模板
-- `generateCommonTemplate()`：用于生成通用的多语言模板
+- `usePluginTranslation()`：获取插件的多语言工具函数，需要将插件的名字作为命名空间
+- `generatePluginTranslationTemplate()`：用于生成插件的多语言模板
+- `generateCommonTranslationTemplate()`：用于生成通用的多语言模板
 
 #### 2.2 多语言文件
 
@@ -256,7 +256,7 @@ NocoBase 的动态页面都是通过 Schema 来渲染，所以我们需要定义
 import { useCollection, useDataBlockRequest } from "@nocobase/client";
 
 import { InfoProps } from "../component";
-import { BlockNameLowercase } from "../constants";
+import { BlockName, BlockNameLowercase } from "../constants";
 
 export function useInfoProps(): InfoProps {
   const collection = useCollection();
@@ -282,7 +282,7 @@ export function getInfoSchema({ dataSource = 'main', collection }) {
     properties: {
       [BlockNameLowercase]: {
         type: 'void',
-        'x-component': 'Info',
+        'x-component': BlockName,
         'x-use-component-props': 'useInfoProps',
       }
     }
@@ -393,7 +393,7 @@ import { SchemaInitializerItemType, useSchemaInitializer } from '@nocobase/clien
 import { CodeOutlined } from '@ant-design/icons';
 
 import { getInfoSchema } from '../schema'
-import { useInfoTranslation } from '../locale';
+import { usePluginTranslation } from '../locale';
 import { BlockNameLowercase } from '../constants';
 
 export const infoInitializerItem: SchemaInitializerItemType = {
@@ -401,12 +401,12 @@ export const infoInitializerItem: SchemaInitializerItemType = {
   Component: 'DataBlockInitializer',
   useComponentProps() {
     const { insert } = useSchemaInitializer();
-    const { t } = useInfoTranslation();
+    const { t } = usePluginTranslation();
     return {
       title: t('Info'),
       icon: <CodeOutlined />,
       componentType: 'Info',
-      useTranslationHooks: useInfoTranslation,
+      useTranslationHooks: usePluginTranslation,
       onCreateBlockSchema({ item }) {
         insert(getInfoSchema({ dataSource: item.dataSource, collection: item.name }))
       },

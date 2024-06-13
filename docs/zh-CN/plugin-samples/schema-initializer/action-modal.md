@@ -93,23 +93,23 @@ import { useTranslation } from 'react-i18next';
 // @ts-ignore
 import pkg from './../../package.json';
 
-export function useOpenDocumentTranslation() {
+export function usePluginTranslation() {
   return useTranslation([pkg.name, 'client'], { nsMode: 'fallback' });
 }
 
-export function generateNTemplate(key: string) {
+export function generatePluginTranslationTemplate(key: string) {
   return `{{t('${key}', { ns: '${pkg.name}', nsMode: 'fallback' })}}`;
 }
 
-export function generateCommonTemplate(key: string) {
+export function generateCommonTranslationTemplate(key: string) {
   return `{{t('${key}')}}`;
 }
 ```
 
 - [useTranslation()](https://react.i18next.com/latest/usetranslation-hook)：用于获取多语言工具函数
-- `useImageTranslation()`：获取插件的多语言工具函数，需要将插件的名字作为命名空间
-- `generateNTemplate()`：用于生成插件的多语言模板
-- `generateCommonTemplate()`：用于生成通用的多语言模板
+- `usePluginTranslation()`：获取插件的多语言工具函数，需要将插件的名字作为命名空间
+- `generatePluginTranslationTemplate()`：用于生成插件的多语言模板
+- `generateCommonTranslationTemplate()`：用于生成通用的多语言模板
 
 #### 2.2 多语言文件
 
@@ -155,10 +155,10 @@ NocoBase 的动态页面都是通过 Schema 来渲染，所以我们需要定义
 import { ISchema } from "@nocobase/client"
 
 import { ActionName } from "../constants";
-import { useOpenDocumentTranslation } from "../locale";
+import { usePluginTranslation } from "../locale";
 
 export function useOpenDocumentActionProps() {
-  const { t } = useOpenDocumentTranslation();
+  const { t } = usePluginTranslation();
   return {
     title: t(ActionName),
     type: 'primary'
@@ -277,7 +277,7 @@ export default PluginInitializerActionModalClient;
 ```ts
 import { SchemaInitializerItemType, useSchemaInitializer } from "@nocobase/client"
 
-import { useOpenDocumentTranslation } from "../locale";
+import { usePluginTranslation } from "../locale";
 import { createDocumentActionModalSchema } from '../schema';
 import { ActionName, ActionNameLowercase } from "../constants";
 
@@ -287,7 +287,7 @@ export const createDocumentActionModalInitializerItem = (blockComponent: string)
   name: ActionNameLowercase,
   useComponentProps() {
     const { insert } = useSchemaInitializer();
-    const { t } = useOpenDocumentTranslation();
+    const { t } = usePluginTranslation();
     return {
       title: t(ActionName),
       onClick: () => {

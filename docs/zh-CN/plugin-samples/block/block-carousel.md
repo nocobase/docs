@@ -94,23 +94,23 @@ import { useTranslation } from 'react-i18next';
 // @ts-ignore
 import pkg from './../../package.json';
 
-export function useCarouselTranslation() {
+export function usePluginTranslation() {
   return useTranslation([pkg.name, 'client'], { nsMode: 'fallback' });
 }
 
-export function generateNTemplate(key: string) {
+export function generatePluginTranslationTemplate(key: string) {
   return `{{t('${key}', { ns: '${pkg.name}', nsMode: 'fallback' })}}`;
 }
 
-export function generateCommonTemplate(key: string) {
+export function generateCommonTranslationTemplate(key: string) {
   return `{{t('${key}')}}`;
 }
 ```
 
 - [useTranslation()](https://react.i18next.com/latest/usetranslation-hook)：用于获取多语言工具函数
-- `useCarouselTranslation()`：获取 Carousel 组件的多语言工具函数，需要将插件的名字作为命名空间
-- `generateNTemplate()`：用于生成 Carousel 组件的多语言模板
-- `generateCommonTemplate()`：用于生成通用的多语言模板
+- `usePluginTranslation()`：获取 Carousel 组件的多语言工具函数，需要将插件的名字作为命名空间
+- `generatePluginTranslationTemplate()`：用于生成 Carousel 组件的多语言模板
+- `generateCommonTranslationTemplate()`：用于生成通用的多语言模板
 
 #### 2.2 多语言文件
 
@@ -402,7 +402,7 @@ import { SchemaInitializerItemType, useSchemaInitializer } from '@nocobase/clien
 
 import { carouselSchema } from '../schema';
 import { BlockName, BlockNameLowercase } from '../constants';
-import { useCarouselTranslation } from '../locale';
+import { usePluginTranslation } from '../locale';
 
 export const carouselInitializerItem: SchemaInitializerItemType = {
   type: 'item',
@@ -410,7 +410,7 @@ export const carouselInitializerItem: SchemaInitializerItemType = {
   icon: 'PlayCircleOutlined',
   useComponentProps() {
     const { insert } = useSchemaInitializer();
-    const { t } = useCarouselTranslation();
+    const { t } = usePluginTranslation();
     return {
       title: t(BlockName),
       onClick: () => {
@@ -427,7 +427,7 @@ export const carouselInitializerItem: SchemaInitializerItemType = {
 - `useComponentProps`：返回一个对象，包含 `title` 和 `onClick` 两个属性，`title` 是显示的文本，`onClick` 是点击后的回调函数
 - [useSchemaInitializer()](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#useschemainitializer)：用于获取 `SchemaInitializerContext` 上下文
   - `insert`：插入一个新的 Schema
-- `useCarouselTranslation()`：用于获取多语言工具函数
+- `usePluginTranslation()`：用于获取多语言工具函数
 
 更多关于 Schema Item 的定义可以参考 [Schema Initializer Item](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types) 文档。
 
@@ -673,7 +673,7 @@ import { SchemaSettingsItemType, useDesignable, } from "@nocobase/client";
 import { useFieldSchema } from '@formily/react';
 
 import { BlockNameLowercase } from "../../constants";
-import { useCarouselTranslation } from "../../locale";
+import { usePluginTranslation } from "../../locale";
 
 export const imagesSchemaSettingsItem: SchemaSettingsItemType = {
   name: 'images',
@@ -681,7 +681,7 @@ export const imagesSchemaSettingsItem: SchemaSettingsItemType = {
   useComponentProps() {
     const filedSchema = useFieldSchema();
     const { deepMerge } = useDesignable();
-    const { t } = useCarouselTranslation();
+    const { t } = usePluginTranslation();
 
     return {
       title: t('Edit Images'),
@@ -785,7 +785,7 @@ import { SchemaSettingsItemType, useDesignable, } from "@nocobase/client";
 import { useFieldSchema } from '@formily/react';
 
 import { BlockNameLowercase } from "../../constants";
-import { useCarouselTranslation } from "../../locale";
+import { usePluginTranslation } from "../../locale";
 
 export const heightSchemaSettingsItem: SchemaSettingsItemType = {
   name: 'height',
@@ -793,7 +793,7 @@ export const heightSchemaSettingsItem: SchemaSettingsItemType = {
   useComponentProps() {
     const filedSchema = useFieldSchema();
     const { deepMerge } = useDesignable();
-    const { t } = useCarouselTranslation();
+    const { t } = usePluginTranslation();
 
     return {
       title: t('Edit Height'),
@@ -892,7 +892,7 @@ export const carouselSettings = new SchemaSettings({
 import { SchemaSettingsItemType, useDesignable, } from "@nocobase/client";
 import { useFieldSchema } from '@formily/react';
 import { BlockNameLowercase } from "../../constants";
-import { useCarouselTranslation } from "../../locale";
+import { usePluginTranslation } from "../../locale";
 
 export const objectFitSchemaSettingsItem: SchemaSettingsItemType = {
   name: 'objectFit',
@@ -900,7 +900,7 @@ export const objectFitSchemaSettingsItem: SchemaSettingsItemType = {
   useComponentProps() {
     const filedSchema = useFieldSchema();
     const { deepMerge } = useDesignable();
-    const { t } = useCarouselTranslation();
+    const { t } = usePluginTranslation();
 
     return {
       title: t('Object Fit'),
@@ -996,7 +996,7 @@ import { SchemaSettingsItemType, useDesignable, } from "@nocobase/client";
 import { useFieldSchema } from '@formily/react';
 
 import { BlockNameLowercase } from "../../constants";
-import { useCarouselTranslation } from "../../locale";
+import { usePluginTranslation } from "../../locale";
 
 export const autoplaySchemaSettingsItem: SchemaSettingsItemType = {
   name: 'autoplay',
@@ -1004,7 +1004,7 @@ export const autoplaySchemaSettingsItem: SchemaSettingsItemType = {
   useComponentProps() {
     const filedSchema = useFieldSchema();
     const { deepMerge } = useDesignable();
-    const { t } = useCarouselTranslation();
+    const { t } = usePluginTranslation();
 
     return {
       title: t('Autoplay'),
