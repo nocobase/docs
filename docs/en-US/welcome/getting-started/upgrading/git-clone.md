@@ -52,3 +52,7 @@ yarn build
 # Start
 yarn start
 ```
+
+## 7. Upgrading independent plugins
+
+After upgrading NocoBase, independent plugins installed through the interface might also need to be upgraded. Please refer to documentation [Installation and Upgrade of Plugins](/welcome/getting-started/plugin)

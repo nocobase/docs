@@ -38,3 +38,7 @@ docker-compose pull
 docker-compose up -d app
 docker-compose logs app
 ```
+
+## 4. Upgrading independent plugins
+
+After upgrading NocoBase, independent plugins installed through the interface might also need to be upgraded. Please refer to documentation [Installation and Upgrade of Plugins](/welcome/getting-started/plugin)

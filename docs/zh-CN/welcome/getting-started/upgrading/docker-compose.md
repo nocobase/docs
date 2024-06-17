@@ -41,3 +41,7 @@ docker-compose up -d app
 # 查看 app 进程的情况
 docker-compose logs app
 ```
+
+## 4. 独立插件的升级
+
+NocoBase 升级之后，通过界面安装的独立插件可能也需要升级，参考文档 [独立插件的安装与升级](/welcome/getting-started/plugin)

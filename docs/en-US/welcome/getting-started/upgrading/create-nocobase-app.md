@@ -14,3 +14,7 @@ yarn dev
 ```
 
 If there are problems with upgrading, you can also [recreate new app](/welcome/getting-started/installation/create-nocobase-app) and refer to the old version of .env to change the environment variables. The database information needs to be configured correctly. When using a SQLite database, you need to copy the database files to the `./storage/db/` directory. Finally, run `yarn nocobase upgrade` to upgrade.
+
+## Upgrading independent plugins
+
+After upgrading NocoBase, independent plugins installed through the interface might also need to be upgraded. Please refer to documentation [Installation and Upgrade of Plugins](/welcome/getting-started/plugin)
