@@ -363,16 +363,16 @@ export class PluginBlockCarouselClient extends Plugin {
         const images = [{ url: 'https://picsum.photos/id/1/1200/300' }, { url: 'https://picsum.photos/id/2/1200/300' }];
         return <>
           <div style={{ marginTop: 20, marginBottom: 20 }}>
-            <SchemaComponent schema={{ properties: { test: carouselSchema } }} />
+            <SchemaComponent schema={{ properties: { test1: carouselSchema } }} />
           </div>
           <div style={{ marginTop: 20, marginBottom: 20 }}>
-            <SchemaComponent schema={{ properties: { test: { ...carouselSchema, 'x-decorator-props': { carousel: { images, height: 100 } } } } }} />
+            <SchemaComponent schema={{ properties: { test2: { ...carouselSchema, 'x-decorator-props': { carousel: { images, height: 100 } } } } }} />
           </div>
           <div style={{ marginTop: 20, marginBottom: 20 }}>
-            <SchemaComponent schema={{ properties: { test: { ...carouselSchema, 'x-decorator-props': { carousel: { images, objectFit: 'contain' } } } } }} />
+            <SchemaComponent schema={{ properties: { test3: { ...carouselSchema, 'x-decorator-props': { carousel: { images, objectFit: 'contain' } } } } }} />
           </div>
           <div style={{ marginTop: 20, marginBottom: 20 }}>
-            <SchemaComponent schema={{ properties: { test: { ...carouselSchema, 'x-decorator-props': { carousel: { images, autoplay: true } } } } }} />
+            <SchemaComponent schema={{ properties: { test4: { ...carouselSchema, 'x-decorator-props': { carousel: { images, autoplay: true } } } } }} />
           </div>
         </>
       }
