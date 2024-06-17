@@ -224,8 +224,8 @@ export default [
         link: '/plugin-samples/field',
       },
       {
-        title: 'Extra Field',
-        'title.zh-CN': '新增附加字段',
+        title: 'Without Value Field',
+        'title.zh-CN': '无值字段组件',
         link: '/plugin-samples/field/without-value',
       },
     ]
