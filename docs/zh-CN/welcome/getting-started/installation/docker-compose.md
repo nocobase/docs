@@ -4,24 +4,25 @@
 
 ⚡⚡ 请确保你已经安装了 [Docker](https://docs.docker.com/get-docker/)
 
-## 1. 将 NocoBase 下载到本地
+## 1. 辨别 AMD64 和 ARM64
 
-使用 Git 下载
+NocoBase 的 Docker 镜像目前支持 AMD64 和 ARM64 两种 CPU 架构。
 
+### Windows
 
-```bash
-git clone https://github.com/nocobase/nocobase.git nocobase
-```
+打开 “设置” -> “系统” -> “关于”，查看 “设备规格” 中的 “系统类型”。如果显示的是 “基于 x64 的处理器”，则为 AMD64。如果显示的是 “基于 ARM64 的处理器”，则为 ARM64。
 
-如果你不能正常连接 GitHub，请使用 Gitee（或直接[下载 Zip 包](https://gitee.com/nocobase/nocobase/repository/archive/main.zip)，并解压到 nocobase 目录下）
+### Linux/MacOS
 
-```bash
-git clone https://gitee.com/nocobase/nocobase.git nocobase
-```
+使用命令 `uname -m`。如果输出是 x86_64，则为 AMD64。如果输出是 aarch64，则为 ARM64。
 
-## 2. 选择数据库（任选其一）
+### MacOS
 
-将目录切换到第一步下载的文件夹里（根据实际情况调整）。
+MacOS 自 2020 年起开始采用 ARM64 架构（称为 Apple Silicon）。在“关于本机”中，如果显示的是 Apple M1、M1 Pro、M1 Max、M1 Ultra 或 M2，则为 ARM64。如果是 Intel，则可能是 AMD64。
+
+## 2. 配置 docker-compose.yml
+
+在指定目录新建一个 nocobase 文件夹
 
 ```bash
 # MacOS, Linux...
@@ -30,116 +31,292 @@ cd /your/path/nocobase
 cd C:\your\path\nocobase
 ```
 
-不同数据库的 docker 配置有些许差异，请选择切换到对应的目录下。
+并在 nocobase 文件夹里新建 docker-compose.yml 文件，内容如下：
 
-### SQLite
+:::warning
+不同操作系统 CPU 架构可能不同，AMD64 使用默认的镜像即可，ARM64 使用 `-arm` 结尾的镜像。
+:::
 
-```bash
-cd docker/app-sqlite
+### PostgreSQL
+
+```yml
+version: "3"
+
+networks:
+  nocobase:
+    driver: bridge
+
+services:
+  app:
+    # latest 版本（AMD64 架构）
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
+    # latest 版本（ARM64 架构）
+    #image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest-arm
+    # Docker Hub 镜像，可能会下载不了
+    #image: nocobase/nocobase:latest
+    networks:
+      - nocobase
+    environment:
+      # 应用的密钥，用于生成用户 token 等
+      # 如果 APP_KEY 修改了，旧的 token 也会随之失效
+      # 可以是任意随机字符串，并确保不对外泄露
+      - APP_KEY=your-secret-key
+      # 数据库类型，支持 postgres, mysql, mariadb, sqlite
+      - DB_DIALECT=postgres
+      # 数据库主机，可以替换为已有的数据库服务器 IP
+      - DB_HOST=postgres
+      # 数据库名
+      - DB_DATABASE=nocobase
+      # 数据库用户
+      - DB_USER=nocobase
+      # 数据库密码
+      - DB_PASSWORD=nocobase
+    volumes:
+      - ./storage:/app/nocobase/storage
+    ports:
+      - "13000:80"
+    depends_on:
+      - postgres
+    # init: true
+
+  # 如果使用已有数据库服务器，可以不启动 postgres
+  postgres:
+    # NocoBase 发布的 PostgreSQL 16 镜像（AMD64 架构）
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/postgres:16
+    # NocoBase 发布的 PostgreSQL 16 镜像（ARM64 架构）
+    #image: registry.cn-shanghai.aliyuncs.com/nocobase/postgres:16-arm
+    # Docker Hub 镜像，可能下载不了
+    #image: nocobase/postgres:16
+    restart: always
+    command: postgres -c wal_level=logical
+    environment:
+      POSTGRES_USER: nocobase
+      POSTGRES_DB: nocobase
+      POSTGRES_PASSWORD: nocobase
+    volumes:
+      - ./storage/db/postgres:/var/lib/postgresql/data
+    networks:
+      - nocobase
 ```
 
 ### MySQL
 
-```bash
-cd docker/app-mysql
+```yml
+version: "3"
+
+networks:
+  nocobase:
+    driver: bridge
+
+services:
+  app:
+    # latest 版本（AMD64 架构）
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
+    # latest 版本（ARM64 架构）
+    #image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest-arm
+    # Docker Hub 镜像，可能会下载不了
+    #image: nocobase/nocobase:latest
+    networks:
+      - nocobase
+    depends_on:
+      - mysql
+    environment:
+      # 应用的密钥，用于生成用户 token 等
+      # 如果 APP_KEY 修改了，旧的 token 也会随之失效
+      # 可以是任意随机字符串，并确保不对外泄露
+      - APP_KEY=your-secret-key
+      # 数据库类型，支持 postgres, mysql, mariadb, sqlite
+      - DB_DIALECT=mysql
+      # 数据库主机，可以替换为已有的数据库服务器 IP
+      - DB_HOST=mysql
+      - DB_DATABASE=nocobase
+      - DB_USER=root
+      - DB_PASSWORD=nocobase
+      - DB_TIMEZONE=+08:00
+    volumes:
+      - ./storage:/app/nocobase/storage
+    ports:
+      - "13000:80"
+    init: true
+  
+  # 如果使用已有数据库服务器，可以不启动 mysql
+  mysql:
+    # NocoBase 发布的 MySQL 8 镜像（AMD64 架构）
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/mysql:8
+    # NocoBase 发布的 MySQL 8 镜像（ARM64 架构）
+    #image: registry.cn-shanghai.aliyuncs.com/nocobase/mysql:8-arm
+    # Docker Hub 镜像，可能下载不了
+    #image: nocobase/mysql:8
+    environment:
+      MYSQL_DATABASE: nocobase
+      MYSQL_USER: nocobase
+      MYSQL_PASSWORD: nocobase
+      MYSQL_ROOT_PASSWORD: nocobase
+    restart: always
+    volumes:
+      - ./storage/db/mysql:/var/lib/mysql
+    networks:
+      - nocobase
 ```
 
 ### MariaDB
 
-```bash
-cd docker/app-mariadb
-```
-
-### PostgreSQL
-
-```bash
-cd docker/app-postgres
-```
-
-## 3. 配置 docker-compose.yml（非必须）
-
-<Alert>
-
-非开发人员，跳过这一步。如果你懂得开发，也可以进一步了解怎么配置 `docker-compose.yml`。
-
-</Alert>
-
-目录结构（与 docker 相关）
-
-```bash
-├── nocobase
-  ├── docker
-    ├── app-sqlite
-      ├── storage
-      ├── docker-compose.yml
-    ├── app-mariadb
-      ├── storage
-      ├── docker-compose.yml
-    ├── app-mysql
-      ├── storage
-      ├── docker-compose.yml
-    ├── app-postgres
-      ├── storage
-      ├── docker-compose.yml
-```
-
-`docker-compose.yml` 的配置说明：
-
-SQLite 只有 app 服务，PostgreSQL 和 MySQL 会有对应的 postgres 或 mysql 服务，可以使用例子的数据库服务，或者自己配置。
-
 ```yml
+version: "3"
+
+networks:
+  nocobase:
+    driver: bridge
+
 services:
   app:
-  postgres:
-  mysql:
-  mariadb:
-```
-
-app 端口，例子为 13000 端口，访问地址为 `http://your-ip:13000/`
-
-```yml
-services:
-  app:
-    ports:
-      - '13000:80'
-```
-
-NocoBase 版本（[点此查看最新版本](https://hub.docker.com/r/nocobase/nocobase/tags)），几个重要的版本说明：
-
-- `nocobase/nocobase:main` main 分支版本，非稳定版本，尝鲜用户可以使用
-- `nocobase/nocobase:latest` 已发布的最新版，如果追求稳定，建议使用这个版本
-- `nocobase/nocobase:0.18.0-alpha.9` 使用某个具体的版本
-
-:::warning
-`nocobase/nocobase:main` 目前不支持 arm64 架构
-:::
-
-```yml
-services:
-  app:
-    image: nocobase/nocobase:latest
-```
-
-环境变量
-
-```yml
-services:
-  app:
-    image: nocobase/nocobase:latest
+    # latest 版本（AMD64 架构）
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
+    # latest 版本（ARM64 架构）
+    #image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest-arm
+    # Docker Hub 镜像，可能会下载不了
+    #image: nocobase/nocobase:latest
+    networks:
+      - nocobase
+    depends_on:
+      - mariadb
     environment:
+      # 应用的密钥，用于生成用户 token 等
+      # 如果 APP_KEY 修改了，旧的 token 也会随之失效
+      # 可以是任意随机字符串，并确保不对外泄露
       - APP_KEY=your-secret-key
-      - DB_DIALECT=postgres
-      - DB_HOST=postgres
+      # 数据库类型，支持 postgres, mysql, mariadb, sqlite
+      - DB_DIALECT=mariadb
+      - DB_HOST=mariadb
       - DB_DATABASE=nocobase
-      - DB_USER=nocobase
+      - DB_USER=root
       - DB_PASSWORD=nocobase
+      - DB_TIMEZONE=+08:00
+      - DB_UNDERSCORED=true
+    volumes:
+      - ./storage:/app/nocobase/storage
+    ports:
+      - "13000:80"
+    # init: true
+
+  # 如果使用已有数据库服务器，可以不启动 mariadb
+  mariadb:
+    # NocoBase 发布的 MariaDB 11 镜像（AMD64 架构）
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/mariadb:11
+    # NocoBase 发布的 MariaDB 11 镜像（ARM64 架构）
+    #image: registry.cn-shanghai.aliyuncs.com/nocobase/mariadb:11-arm
+    # Docker Hub 镜像，可能下载不了
+    #image: nocobase/mariadb:11
+    environment:
+      MYSQL_DATABASE: nocobase
+      MYSQL_USER: nocobase
+      MYSQL_PASSWORD: nocobase
+      MYSQL_ROOT_PASSWORD: nocobase
+    restart: always
+    volumes:
+      - ./storage/db/mariadb:/var/lib/mysql
+    networks:
+      - nocobase
 ```
 
-:::warning
-- `APP_KEY` 是应用的密钥，用于生成用户 token 等（如果 APP_KEY 修改了，旧的 token 也会随之失效）。它可以是任意随机字符串。请修改为自己的秘钥，并确保不对外泄露。
-- `DB_*` 为数据库相关，如果不是例子默认的数据库服务，请根据实际情况修改
-- 使用 MySQL（或 MariaDB）时，需要配置 DB_TIMEZONE 环境变量，如 `DB_TIMEZONE=+08:00`
-:::
+### SQLite
+
+仅用于测试，不建议生产环境使用。
+
+```yml
+version: "3"
+
+networks:
+  nocobase:
+    driver: bridge
+
+services:
+  app:
+    # latest 版本（AMD64 架构）
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
+    # latest 版本（ARM64 架构）
+    #image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest-arm
+    # Docker Hub 镜像，可能会下载不了
+    #image: nocobase/nocobase:latest
+    networks:
+      - nocobase
+    environment:
+      # 应用的密钥，用于生成用户 token 等
+      # 如果 APP_KEY 修改了，旧的 token 也会随之失效
+      # 可以是任意随机字符串，并确保不对外泄露
+      - APP_KEY=your-secret-key
+    volumes:
+      - ./storage:/app/nocobase/storage
+    ports:
+      - "13000:80"
+```
+
+## 3. 选择合适的 NocoBase 镜像
+
+- `nocobase/nocobase:main` Git 源码的 main 分支版本，非稳定版本，尝鲜用户可以使用
+- `nocobase/nocobase:latest` 已发布的最新版，如果追求稳定，建议使用这个版本
+- `nocobase/nocobase:1.2.4-alpha` 使用某个具体的版本
+- `registry.cn-shanghai.aliyuncs.com/nocobase/*`  
+  由 NocoBase 推送的阿里云镜像，用于解决无法从 DockerHub 下载镜像的问题
+
+
+以下为 ARM64 架构的镜像
+
+- `registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:*-arm`  
+  ARM64 架构的 NocoBase 镜像
+- `registry.cn-shanghai.aliyuncs.com/nocobase/postgres:16-arm`  
+  ARM64 架构的 PostgreSQL 镜像
+- `registry.cn-shanghai.aliyuncs.com/nocobase/mysql:8-arm`  
+  ARM64 架构的 MySQL 镜像
+- `registry.cn-shanghai.aliyuncs.com/nocobase/mariadb:11-arm`  
+  ARM64 架构的 MariaDB 镜像
+
+示例
+
+```yml
+# ...
+services:
+  app:
+    # 阿里云 main 版本（只支持 AMD64 架构）
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:main
+    # 阿里云 latest 版本（AMD64 架构）
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
+    # 阿里云 latest 版本（ARM64 架构）
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest-arm
+    # 阿里云指定版本（AMD64 架构）
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:1.2.4-alpha
+    # 阿里云指定版本（ARM64 架构）
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:1.2.4-alpha-arm
+    # Docker Hub 镜像，可能会下载不了
+    image: nocobase/nocobase:main
+    image: nocobase/nocobase:latest
+    image: nocobase/nocobase:1.2.4-alpha
+# ...
+  postgres:
+    # NocoBase 发布的 PostgreSQL 16 镜像（AMD64 架构）
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/postgres:16
+    # NocoBase 发布的 PostgreSQL 16 镜像（ARM64 架构）
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/postgres:16-arm
+    # Docker Hub 镜像，可能下载不了
+    image: nocobase/postgres:16
+# ...
+  mysql:
+    # NocoBase 发布的 MySQL 8 镜像（AMD64 架构）
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/mysql:8
+    # NocoBase 发布的 MySQL 8 镜像（ARM64 架构）
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/mysql:8-arm
+    # Docker Hub 镜像，可能下载不了
+    image: nocobase/mysql:8
+# ...
+  mariadb:
+    # NocoBase 发布的 MariaDB 11 镜像（AMD64 架构）
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/mariadb:11
+    # NocoBase 发布的 MariaDB 11 镜像（ARM64 架构）
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/mariadb:11-arm
+    # Docker Hub 镜像，可能下载不了
+    image: nocobase/mariadb:11
+# ...
+```
 
 ## 4. 安装并启动 NocoBase
 
