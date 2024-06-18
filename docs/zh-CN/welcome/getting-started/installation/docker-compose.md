@@ -4,23 +4,7 @@
 
 ⚡⚡ 请确保你已经安装了 [Docker](https://docs.docker.com/get-docker/)
 
-## 1. 辨别 AMD64 和 ARM64
-
-NocoBase 的 Docker 镜像目前支持 AMD64 和 ARM64 两种 CPU 架构。
-
-### Windows
-
-打开 “设置” -> “系统” -> “关于”，查看 “设备规格” 中的 “系统类型”。如果显示的是 “基于 x64 的处理器”，则为 AMD64。如果显示的是 “基于 ARM64 的处理器”，则为 ARM64。
-
-### Linux/MacOS
-
-使用命令 `uname -m`。如果输出是 x86_64，则为 AMD64。如果输出是 aarch64，则为 ARM64。
-
-### MacOS
-
-MacOS 自 2020 年起开始采用 ARM64 架构（称为 Apple Silicon）。在“关于本机”中，如果显示的是 Apple M1、M1 Pro、M1 Max、M1 Ultra 或 M2，则为 ARM64。如果是 Intel，则可能是 AMD64。
-
-## 2. 配置 docker-compose.yml
+## 1. 配置 docker-compose.yml
 
 在指定目录新建一个 nocobase 文件夹
 
@@ -33,10 +17,6 @@ cd C:\your\path\nocobase
 
 并在 nocobase 文件夹里新建 docker-compose.yml 文件，内容如下：
 
-:::warning
-不同操作系统 CPU 架构可能不同，AMD64 使用默认的镜像即可，ARM64 使用 `-arm` 结尾的镜像。
-:::
-
 ### PostgreSQL
 
 ```yml
@@ -48,10 +28,8 @@ networks:
 
 services:
   app:
-    # latest 版本（AMD64 架构）
+    # latest 版本
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
-    # latest 版本（ARM64 架构）
-    #image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest-arm
     # Docker Hub 镜像，可能会下载不了
     #image: nocobase/nocobase:latest
     networks:
@@ -81,10 +59,8 @@ services:
 
   # 如果使用已有数据库服务器，可以不启动 postgres
   postgres:
-    # NocoBase 发布的 PostgreSQL 16 镜像（AMD64 架构）
+    # 阿里云 postgres:16 镜像
     image: registry.cn-shanghai.aliyuncs.com/nocobase/postgres:16
-    # NocoBase 发布的 PostgreSQL 16 镜像（ARM64 架构）
-    #image: registry.cn-shanghai.aliyuncs.com/nocobase/postgres:16-arm
     # Docker Hub 镜像，可能下载不了
     #image: nocobase/postgres:16
     restart: always
@@ -110,10 +86,8 @@ networks:
 
 services:
   app:
-    # latest 版本（AMD64 架构）
+    # latest 版本
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
-    # latest 版本（ARM64 架构）
-    #image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest-arm
     # Docker Hub 镜像，可能会下载不了
     #image: nocobase/nocobase:latest
     networks:
@@ -141,10 +115,8 @@ services:
   
   # 如果使用已有数据库服务器，可以不启动 mysql
   mysql:
-    # NocoBase 发布的 MySQL 8 镜像（AMD64 架构）
+    # 阿里云 mysql:8 镜像
     image: registry.cn-shanghai.aliyuncs.com/nocobase/mysql:8
-    # NocoBase 发布的 MySQL 8 镜像（ARM64 架构）
-    #image: registry.cn-shanghai.aliyuncs.com/nocobase/mysql:8-arm
     # Docker Hub 镜像，可能下载不了
     #image: nocobase/mysql:8
     environment:
@@ -170,10 +142,8 @@ networks:
 
 services:
   app:
-    # latest 版本（AMD64 架构）
+    # latest 版本
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
-    # latest 版本（ARM64 架构）
-    #image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest-arm
     # Docker Hub 镜像，可能会下载不了
     #image: nocobase/nocobase:latest
     networks:
@@ -201,10 +171,8 @@ services:
 
   # 如果使用已有数据库服务器，可以不启动 mariadb
   mariadb:
-    # NocoBase 发布的 MariaDB 11 镜像（AMD64 架构）
+    # 阿里云 mariadb:11 镜像
     image: registry.cn-shanghai.aliyuncs.com/nocobase/mariadb:11
-    # NocoBase 发布的 MariaDB 11 镜像（ARM64 架构）
-    #image: registry.cn-shanghai.aliyuncs.com/nocobase/mariadb:11-arm
     # Docker Hub 镜像，可能下载不了
     #image: nocobase/mariadb:11
     environment:
@@ -232,10 +200,8 @@ networks:
 
 services:
   app:
-    # latest 版本（AMD64 架构）
+    # latest 版本
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
-    # latest 版本（ARM64 架构）
-    #image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest-arm
     # Docker Hub 镜像，可能会下载不了
     #image: nocobase/nocobase:latest
     networks:
@@ -251,25 +217,13 @@ services:
       - "13000:80"
 ```
 
-## 3. 选择合适的 NocoBase 镜像
+## 2. 选择合适的 NocoBase 镜像
 
 - `nocobase/nocobase:main` Git 源码的 main 分支版本，非稳定版本，尝鲜用户可以使用
 - `nocobase/nocobase:latest` 已发布的最新版，如果追求稳定，建议使用这个版本
 - `nocobase/nocobase:1.2.4-alpha` 使用某个具体的版本
 - `registry.cn-shanghai.aliyuncs.com/nocobase/*`  
   由 NocoBase 推送的阿里云镜像，用于解决无法从 DockerHub 下载镜像的问题
-
-
-以下为 ARM64 架构的镜像
-
-- `registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:*-arm`  
-  ARM64 架构的 NocoBase 镜像
-- `registry.cn-shanghai.aliyuncs.com/nocobase/postgres:16-arm`  
-  ARM64 架构的 PostgreSQL 镜像
-- `registry.cn-shanghai.aliyuncs.com/nocobase/mysql:8-arm`  
-  ARM64 架构的 MySQL 镜像
-- `registry.cn-shanghai.aliyuncs.com/nocobase/mariadb:11-arm`  
-  ARM64 架构的 MariaDB 镜像
 
 示例
 
@@ -279,46 +233,36 @@ services:
   app:
     # 阿里云 main 版本（只支持 AMD64 架构）
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:main
-    # 阿里云 latest 版本（AMD64 架构）
+    # 阿里云 latest 版本
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
-    # 阿里云 latest 版本（ARM64 架构）
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest-arm
-    # 阿里云指定版本（AMD64 架构）
+    # 阿里云指定版本
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:1.2.4-alpha
-    # 阿里云指定版本（ARM64 架构）
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:1.2.4-alpha-arm
     # Docker Hub 镜像，可能会下载不了
     image: nocobase/nocobase:main
     image: nocobase/nocobase:latest
     image: nocobase/nocobase:1.2.4-alpha
 # ...
   postgres:
-    # NocoBase 发布的 PostgreSQL 16 镜像（AMD64 架构）
+    # 阿里云 PostgreSQL 16 镜像
     image: registry.cn-shanghai.aliyuncs.com/nocobase/postgres:16
-    # NocoBase 发布的 PostgreSQL 16 镜像（ARM64 架构）
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/postgres:16-arm
     # Docker Hub 镜像，可能下载不了
     image: nocobase/postgres:16
 # ...
   mysql:
-    # NocoBase 发布的 MySQL 8 镜像（AMD64 架构）
+    # 阿里云 MySQL 8 镜像
     image: registry.cn-shanghai.aliyuncs.com/nocobase/mysql:8
-    # NocoBase 发布的 MySQL 8 镜像（ARM64 架构）
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/mysql:8-arm
     # Docker Hub 镜像，可能下载不了
     image: nocobase/mysql:8
 # ...
   mariadb:
-    # NocoBase 发布的 MariaDB 11 镜像（AMD64 架构）
+    # 阿里云 MariaDB 11 镜像
     image: registry.cn-shanghai.aliyuncs.com/nocobase/mariadb:11
-    # NocoBase 发布的 MariaDB 11 镜像（ARM64 架构）
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/mariadb:11-arm
     # Docker Hub 镜像，可能下载不了
     image: nocobase/mariadb:11
 # ...
 ```
 
-## 4. 安装并启动 NocoBase
+## 3. 安装并启动 NocoBase
 
 安装过程可能需要等待几分钟
 
@@ -342,6 +286,6 @@ app-sqlite-app-1  | 2022-04-28T15:45:38: PM2 log: App [index:0] online
 app-sqlite-app-1  | 🚀 NocoBase server running at: http://localhost:13000/
 ```
 
-## 5. 登录 NocoBase
+## 4. 登录 NocoBase
 
 使用浏览器打开 http://localhost:13000/ 初始化账号和密码是 `admin@nocobase.com` 和 `admin123`。
