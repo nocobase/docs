@@ -4,20 +4,30 @@
 
 ⚡⚡ 请确保你已经安装了 [Docker](https://docs.docker.com/get-docker/)
 
-## 1. 配置 docker-compose.yml
+## 1. 新建 docker-compose.yml
 
-在指定目录新建一个 nocobase 文件夹
+在指定目录（假设是 `/your/path`）新建一个 `my-project` 文件夹，并在文件夹里创建一个空的 docker-compose.yml 文件
 
 ```bash
-# MacOS, Linux...
-cd /your/path/nocobase
+# MacOS, Linux
+cd /your/path
 # Windows
-cd C:\your\path\nocobase
+cd C:\your\path
+
+# 新建 my-project 文件，可以根据实际情况，更换为其他名称
+mkdir my-project && cd my-project
+
+# 创建一个空的 docker-compose.yml 文件
+echo > docker-compose.yml
 ```
 
-并在 nocobase 文件夹里新建 docker-compose.yml 文件，内容如下：
+## 2. 配置 docker-compose.yml
 
-### PostgreSQL
+不同数据库配置参数略有不同，请选择合适的数据库配置，并复制到 docker-compose.yml 里
+
+<Tabs>
+
+<div label="PostgreSQL" name="postgres">
 
 ```yml
 version: "3"
@@ -28,10 +38,7 @@ networks:
 
 services:
   app:
-    # latest 版本
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
-    # Docker Hub 镜像，可能会下载不了
-    #image: nocobase/nocobase:latest
     networks:
       - nocobase
     environment:
@@ -59,10 +66,7 @@ services:
 
   # 如果使用已有数据库服务器，可以不启动 postgres
   postgres:
-    # 阿里云 postgres:16 镜像
     image: registry.cn-shanghai.aliyuncs.com/nocobase/postgres:16
-    # Docker Hub 镜像，可能下载不了
-    #image: nocobase/postgres:16
     restart: always
     command: postgres -c wal_level=logical
     environment:
@@ -75,7 +79,9 @@ services:
       - nocobase
 ```
 
-### MySQL
+</div>
+
+<div label="MySQL" name="mysql">
 
 ```yml
 version: "3"
@@ -86,10 +92,7 @@ networks:
 
 services:
   app:
-    # latest 版本
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
-    # Docker Hub 镜像，可能会下载不了
-    #image: nocobase/nocobase:latest
     networks:
       - nocobase
     depends_on:
@@ -115,10 +118,7 @@ services:
   
   # 如果使用已有数据库服务器，可以不启动 mysql
   mysql:
-    # 阿里云 mysql:8 镜像
     image: registry.cn-shanghai.aliyuncs.com/nocobase/mysql:8
-    # Docker Hub 镜像，可能下载不了
-    #image: nocobase/mysql:8
     environment:
       MYSQL_DATABASE: nocobase
       MYSQL_USER: nocobase
@@ -131,7 +131,9 @@ services:
       - nocobase
 ```
 
-### MariaDB
+</div>
+
+<div label="MariaDB" name="mariadb">
 
 ```yml
 version: "3"
@@ -142,10 +144,7 @@ networks:
 
 services:
   app:
-    # latest 版本
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
-    # Docker Hub 镜像，可能会下载不了
-    #image: nocobase/nocobase:latest
     networks:
       - nocobase
     depends_on:
@@ -171,10 +170,7 @@ services:
 
   # 如果使用已有数据库服务器，可以不启动 mariadb
   mariadb:
-    # 阿里云 mariadb:11 镜像
     image: registry.cn-shanghai.aliyuncs.com/nocobase/mariadb:11
-    # Docker Hub 镜像，可能下载不了
-    #image: nocobase/mariadb:11
     environment:
       MYSQL_DATABASE: nocobase
       MYSQL_USER: nocobase
@@ -187,9 +183,9 @@ services:
       - nocobase
 ```
 
-### SQLite
+</div>
 
-仅用于测试，不建议生产环境使用。
+<div label="SQLite" name="sqlite">
 
 ```yml
 version: "3"
@@ -200,10 +196,7 @@ networks:
 
 services:
   app:
-    # latest 版本
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
-    # Docker Hub 镜像，可能会下载不了
-    #image: nocobase/nocobase:latest
     networks:
       - nocobase
     environment:
@@ -217,48 +210,32 @@ services:
       - "13000:80"
 ```
 
-## 2. 选择合适的 NocoBase 镜像
+</div>
 
-- `nocobase/nocobase:main` Git 源码的 main 分支版本，非稳定版本，尝鲜用户可以使用
-- `nocobase/nocobase:latest` 已发布的最新版，如果追求稳定，建议使用这个版本
-- `nocobase/nocobase:1.2.4-alpha` 使用某个具体的版本
-- `registry.cn-shanghai.aliyuncs.com/nocobase/*`  
-  由 NocoBase 推送的阿里云镜像，用于解决无法从 DockerHub 下载镜像的问题
+</Tabs>
 
-示例
+选择合适的 NocoBase 版本
+
+- `main` Git 源码的 main 分支版本，非稳定版本，尝鲜用户可以使用（只支持 AMD64 架构）
+- `latest` 已发布的最新版，如果追求稳定，建议使用这个版本
+- `1.2.4-alpha` 指定版本号升级，最新版本情况，查看[已发布版本列表](https://hub.docker.com/r/nocobase/nocobase/tags)
+
+示例（如果你无法从 Docker Hub 下载镜像，建议使用阿里云镜像）
 
 ```yml
 # ...
 services:
   app:
-    # 阿里云 main 版本（只支持 AMD64 架构）
+    # main 版本（只支持 AMD64 架构）
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:main
-    # 阿里云 latest 版本
+    # latest 版本
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
-    # 阿里云指定版本
+    # 指定版本
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:1.2.4-alpha
-    # Docker Hub 镜像，可能会下载不了
+    # Docker Hub 镜像（国内用户无法下载）
     image: nocobase/nocobase:main
     image: nocobase/nocobase:latest
     image: nocobase/nocobase:1.2.4-alpha
-# ...
-  postgres:
-    # 阿里云 PostgreSQL 16 镜像
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/postgres:16
-    # Docker Hub 镜像，可能下载不了
-    image: nocobase/postgres:16
-# ...
-  mysql:
-    # 阿里云 MySQL 8 镜像
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/mysql:8
-    # Docker Hub 镜像，可能下载不了
-    image: nocobase/mysql:8
-# ...
-  mariadb:
-    # 阿里云 MariaDB 11 镜像
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/mariadb:11
-    # Docker Hub 镜像，可能下载不了
-    image: nocobase/mariadb:11
 # ...
 ```
 
