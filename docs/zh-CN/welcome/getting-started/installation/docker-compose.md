@@ -7,16 +7,11 @@
 ## 1. 新建 docker-compose.yml
 
 ```bash
-# MacOS, Linux
-cd /your/path
-# Windows
-cd C:\your\path
-
 # 创建一个名为 my-project（可以是其他名称）的文件夹，用于存放 NocoBase 生成的系统文件
 mkdir my-project && cd my-project
 
 # 创建一个空的 docker-compose.yml 文件
-echo > docker-compose.yml
+vim docker-compose.yml
 ```
 
 ## 2. 配置 docker-compose.yml
@@ -62,7 +57,7 @@ services:
       - "13000:80"
     # init: true
 
-  # 如果使用已有数据库服务器，可以不启动 postgres
+  # 如果使用已有数据库服务，可以不启动 postgres
   postgres:
     image: registry.cn-shanghai.aliyuncs.com/nocobase/postgres:16
     restart: always
@@ -120,7 +115,7 @@ services:
       - "13000:80"
     # init: true
 
-  # 如果使用已有数据库服务器，可以不启动 mysql
+  # 如果使用已有数据库服务，可以不启动 mysql
   mysql:
     image: registry.cn-shanghai.aliyuncs.com/nocobase/mysql:8
     environment:
@@ -178,7 +173,7 @@ services:
       - "13000:80"
     # init: true
 
-  # 如果使用已有数据库服务器，可以不启动 mariadb
+  # 如果使用已有数据库服务，可以不启动 mariadb
   mariadb:
     image: registry.cn-shanghai.aliyuncs.com/nocobase/mariadb:11
     environment:
@@ -228,20 +223,19 @@ services:
 
 - `main` Git 源码的 main 分支版本，非稳定版本，尝鲜用户可以使用（只支持 AMD64 架构）
 - `latest` 已发布的最新版，如果追求稳定，建议使用这个版本
-- `1.2.4-alpha` 指定版本号升级，最新版本情况，查看[已发布版本列表](https://hub.docker.com/r/nocobase/nocobase/tags)
+- `1.2.4-alpha` 指定版本号。最新版本查看 [已发布版本列表](https://hub.docker.com/r/nocobase/nocobase/tags)
 
-示例（如果你无法从 Docker Hub 下载镜像，建议使用阿里云镜像）
+示例
 
 ```yml
 # ...
 services:
   app:
-    # main 版本（只支持 AMD64 架构）
+    # 国内用户建议使用阿里云镜像
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:main
-    # latest 版本
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
-    # 指定版本
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:1.2.4-alpha
+
     # Docker Hub 镜像（国内用户无法下载）
     image: nocobase/nocobase:main
     image: nocobase/nocobase:latest
