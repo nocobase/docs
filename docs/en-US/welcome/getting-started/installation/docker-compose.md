@@ -11,7 +11,7 @@
 mkdir my-project && cd my-project
 
 # Create an empty docker-compose.yml file
-vim docker-compose.yml
+vi docker-compose.yml
 ```
 
 ## 2. Configure `docker-compose.yml`

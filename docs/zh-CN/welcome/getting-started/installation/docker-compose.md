@@ -11,7 +11,7 @@
 mkdir my-project && cd my-project
 
 # 创建一个空的 docker-compose.yml 文件
-vim docker-compose.yml
+vi docker-compose.yml
 ```
 
 ## 2. 配置 docker-compose.yml

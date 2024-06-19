@@ -12,9 +12,9 @@ For example:
 
 ```bash
 # MacOS, Linux...
-cd /your/path/nocobase/
+cd /your/path/my-project/
 # Windows
-cd C:\your\path\nocobase
+cd C:\your\path\my-project
 ```
 
 ## 2. Update the image version
