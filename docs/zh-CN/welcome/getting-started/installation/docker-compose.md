@@ -4,144 +4,246 @@
 
 ⚡⚡ 请确保你已经安装了 [Docker](https://docs.docker.com/get-docker/)
 
-## 1. 将 NocoBase 下载到本地
-
-使用 Git 下载
-
+## 1. 新建 docker-compose.yml
 
 ```bash
-git clone https://github.com/nocobase/nocobase.git nocobase
+# 创建一个名为 my-project（可以是其他名称）的文件夹，用于存放 NocoBase 生成的系统文件
+mkdir my-project && cd my-project
+
+# 创建一个空的 docker-compose.yml 文件
+vi docker-compose.yml
 ```
 
-如果你不能正常连接 GitHub，请使用 Gitee（或直接[下载 Zip 包](https://gitee.com/nocobase/nocobase/repository/archive/main.zip)，并解压到 nocobase 目录下）
+## 2. 配置 docker-compose.yml
 
-```bash
-git clone https://gitee.com/nocobase/nocobase.git nocobase
-```
+不同数据库配置参数略有不同，请选择合适的数据库配置，并复制到 docker-compose.yml 里
 
-## 2. 选择数据库（任选其一）
+<Tabs>
 
-将目录切换到第一步下载的文件夹里（根据实际情况调整）。
-
-```bash
-# MacOS, Linux...
-cd /your/path/nocobase
-# Windows
-cd C:\your\path\nocobase
-```
-
-不同数据库的 docker 配置有些许差异，请选择切换到对应的目录下。
-
-### SQLite
-
-```bash
-cd docker/app-sqlite
-```
-
-### MySQL
-
-```bash
-cd docker/app-mysql
-```
-
-### MariaDB
-
-```bash
-cd docker/app-mariadb
-```
-
-### PostgreSQL
-
-```bash
-cd docker/app-postgres
-```
-
-## 3. 配置 docker-compose.yml（非必须）
-
-<Alert>
-
-非开发人员，跳过这一步。如果你懂得开发，也可以进一步了解怎么配置 `docker-compose.yml`。
-
-</Alert>
-
-目录结构（与 docker 相关）
-
-```bash
-├── nocobase
-  ├── docker
-    ├── app-sqlite
-      ├── storage
-      ├── docker-compose.yml
-    ├── app-mariadb
-      ├── storage
-      ├── docker-compose.yml
-    ├── app-mysql
-      ├── storage
-      ├── docker-compose.yml
-    ├── app-postgres
-      ├── storage
-      ├── docker-compose.yml
-```
-
-`docker-compose.yml` 的配置说明：
-
-SQLite 只有 app 服务，PostgreSQL 和 MySQL 会有对应的 postgres 或 mysql 服务，可以使用例子的数据库服务，或者自己配置。
+<div label="PostgreSQL" name="postgres">
 
 ```yml
+version: "3"
+
+networks:
+  nocobase:
+    driver: bridge
+
 services:
   app:
-  postgres:
-  mysql:
-  mariadb:
-```
-
-app 端口，例子为 13000 端口，访问地址为 `http://your-ip:13000/`
-
-```yml
-services:
-  app:
-    ports:
-      - '13000:80'
-```
-
-NocoBase 版本（[点此查看最新版本](https://hub.docker.com/r/nocobase/nocobase/tags)），几个重要的版本说明：
-
-- `nocobase/nocobase:main` main 分支版本，非稳定版本，尝鲜用户可以使用
-- `nocobase/nocobase:latest` 已发布的最新版，如果追求稳定，建议使用这个版本
-- `nocobase/nocobase:0.18.0-alpha.9` 使用某个具体的版本
-
-:::warning
-`nocobase/nocobase:main` 目前不支持 arm64 架构
-:::
-
-```yml
-services:
-  app:
-    image: nocobase/nocobase:latest
-```
-
-环境变量
-
-```yml
-services:
-  app:
-    image: nocobase/nocobase:latest
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
+    networks:
+      - nocobase
+    depends_on:
+      - postgres
     environment:
+      # 应用的密钥，用于生成用户 token 等
+      # 如果 APP_KEY 修改了，旧的 token 也会随之失效
+      # 可以是任意随机字符串，并确保不对外泄露
       - APP_KEY=your-secret-key
+      # 数据库类型，支持 postgres, mysql, mariadb, sqlite
       - DB_DIALECT=postgres
+      # 数据库主机，可以替换为已有的数据库服务器 IP
       - DB_HOST=postgres
+      # 数据库名
       - DB_DATABASE=nocobase
+      # 数据库用户
       - DB_USER=nocobase
+      # 数据库密码
       - DB_PASSWORD=nocobase
+    volumes:
+      - ./storage:/app/nocobase/storage
+    ports:
+      - "13000:80"
+    # init: true
+
+  # 如果使用已有数据库服务，可以不启动 postgres
+  postgres:
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/postgres:16
+    restart: always
+    command: postgres -c wal_level=logical
+    environment:
+      POSTGRES_USER: nocobase
+      POSTGRES_DB: nocobase
+      POSTGRES_PASSWORD: nocobase
+    volumes:
+      - ./storage/db/postgres:/var/lib/postgresql/data
+    networks:
+      - nocobase
 ```
 
-:::warning
-- `APP_KEY` 是应用的密钥，用于生成用户 token 等（如果 APP_KEY 修改了，旧的 token 也会随之失效）。它可以是任意随机字符串。请修改为自己的秘钥，并确保不对外泄露。
-- `DB_*` 为数据库相关，如果不是例子默认的数据库服务，请根据实际情况修改
-- 使用 MySQL（或 MariaDB）时，需要配置 DB_TIMEZONE 环境变量，如 `DB_TIMEZONE=+08:00`
-:::
+</div>
 
-## 4. 安装并启动 NocoBase
+<div label="MySQL" name="mysql">
+
+```yml
+version: "3"
+
+networks:
+  nocobase:
+    driver: bridge
+
+services:
+  app:
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
+    networks:
+      - nocobase
+    depends_on:
+      - mysql
+    environment:
+      # 应用的密钥，用于生成用户 token 等
+      # 如果 APP_KEY 修改了，旧的 token 也会随之失效
+      # 可以是任意随机字符串，并确保不对外泄露
+      - APP_KEY=your-secret-key
+      # 数据库类型，支持 postgres, mysql, mariadb, sqlite
+      - DB_DIALECT=mysql
+      # 数据库主机，可以替换为已有的数据库服务器 IP
+      - DB_HOST=mysql
+      # 数据库名
+      - DB_DATABASE=nocobase
+      # 数据库用户
+      - DB_USER=root
+      # 数据库密码
+      - DB_PASSWORD=nocobase
+      # 仅 MySQL（或 MariaDB）有效
+      - DB_TIMEZONE=+08:00
+      # 数据库表名、字段名是否转为 snake case 风格
+      - DB_UNDERSCORED=true
+    volumes:
+      - ./storage:/app/nocobase/storage
+    ports:
+      - "13000:80"
+    # init: true
+
+  # 如果使用已有数据库服务，可以不启动 mysql
+  mysql:
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/mysql:8
+    environment:
+      MYSQL_DATABASE: nocobase
+      MYSQL_USER: nocobase
+      MYSQL_PASSWORD: nocobase
+      MYSQL_ROOT_PASSWORD: nocobase
+    restart: always
+    volumes:
+      - ./storage/db/mysql:/var/lib/mysql
+    networks:
+      - nocobase
+```
+
+</div>
+
+<div label="MariaDB" name="mariadb">
+
+```yml
+version: "3"
+
+networks:
+  nocobase:
+    driver: bridge
+
+services:
+  app:
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
+    networks:
+      - nocobase
+    depends_on:
+      - mariadb
+    environment:
+      # 应用的密钥，用于生成用户 token 等
+      # 如果 APP_KEY 修改了，旧的 token 也会随之失效
+      # 可以是任意随机字符串，并确保不对外泄露
+      - APP_KEY=your-secret-key
+      # 数据库类型，支持 postgres, mysql, mariadb, sqlite
+      - DB_DIALECT=mariadb
+      # 数据库主机，可以替换为已有的数据库服务器 IP
+      - DB_HOST=mariadb
+      # 数据库名
+      - DB_DATABASE=nocobase
+      # 数据库用户
+      - DB_USER=root
+      # 数据库密码
+      - DB_PASSWORD=nocobase
+      # 仅 MySQL（或 MariaDB）有效
+      - DB_TIMEZONE=+08:00
+      # 数据库表名、字段名是否转为 snake case 风格
+      - DB_UNDERSCORED=true
+    volumes:
+      - ./storage:/app/nocobase/storage
+    ports:
+      - "13000:80"
+    # init: true
+
+  # 如果使用已有数据库服务，可以不启动 mariadb
+  mariadb:
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/mariadb:11
+    environment:
+      MYSQL_DATABASE: nocobase
+      MYSQL_USER: nocobase
+      MYSQL_PASSWORD: nocobase
+      MYSQL_ROOT_PASSWORD: nocobase
+    restart: always
+    volumes:
+      - ./storage/db/mariadb:/var/lib/mysql
+    networks:
+      - nocobase
+```
+
+</div>
+
+<div label="SQLite" name="sqlite">
+
+```yml
+version: "3"
+
+networks:
+  nocobase:
+    driver: bridge
+
+services:
+  app:
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
+    networks:
+      - nocobase
+    environment:
+      # 应用的密钥，用于生成用户 token 等
+      # 如果 APP_KEY 修改了，旧的 token 也会随之失效
+      # 可以是任意随机字符串，并确保不对外泄露
+      - APP_KEY=your-secret-key
+    volumes:
+      - ./storage:/app/nocobase/storage
+    ports:
+      - "13000:80"
+```
+
+</div>
+
+</Tabs>
+
+选择合适的 NocoBase 版本
+
+- `main` Git 源码的 main 分支版本，非稳定版本，尝鲜用户可以使用（只支持 AMD64 架构）
+- `latest` 已发布的最新版，如果追求稳定，建议使用这个版本
+- `1.2.4-alpha` 指定版本号。最新版本查看 [已发布版本列表](https://hub.docker.com/r/nocobase/nocobase/tags)
+
+示例
+
+```yml
+# ...
+services:
+  app:
+    # 国内用户建议使用阿里云镜像
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:main
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:1.2.4-alpha
+
+    # Docker Hub 镜像（国内用户无法下载）
+    image: nocobase/nocobase:main
+    image: nocobase/nocobase:latest
+    image: nocobase/nocobase:1.2.4-alpha
+# ...
+```
+
+## 3. 安装并启动 NocoBase
 
 安装过程可能需要等待几分钟
 
@@ -165,6 +267,6 @@ app-sqlite-app-1  | 2022-04-28T15:45:38: PM2 log: App [index:0] online
 app-sqlite-app-1  | 🚀 NocoBase server running at: http://localhost:13000/
 ```
 
-## 5. 登录 NocoBase
+## 4. 登录 NocoBase
 
 使用浏览器打开 http://localhost:13000/ 初始化账号和密码是 `admin@nocobase.com` 和 `admin123`。
