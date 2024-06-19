@@ -1,6 +1,6 @@
 # Upgrading for `create-nocobase-app`
 
-## 0. Pre-upgrade preparation
+## 0. Preparing for the upgrade
 
 :::warning
 Make sure to backup the database before upgrading!!!
