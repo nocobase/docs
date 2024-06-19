@@ -31,6 +31,16 @@ yarn rimraf -rf node_modules
 
 ## 4. 更新依赖
 
+由于国内网络环境的原因，强烈建议你更换国内镜像。
+
+```bash
+$ yarn config set disable-self-update-check true
+$ yarn config set registry https://registry.npmmirror.com/
+$ yarn config set sqlite3_binary_host_mirror https://npmmirror.com/mirrors/sqlite3/
+```
+
+📢 由于网络环境、系统配置等因素影响，接下来这一步骤可能需要十几分钟时间。
+
 ```bash
 yarn install
 ```

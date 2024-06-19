@@ -24,6 +24,7 @@ cd my-nocobase-app
 由于国内网络环境的原因，强烈建议你更换国内镜像。
 
 ```bash
+$ yarn config set disable-self-update-check true
 $ yarn config set registry https://registry.npmmirror.com/
 $ yarn config set sqlite3_binary_host_mirror https://npmmirror.com/mirrors/sqlite3/
 ```
@@ -32,8 +33,6 @@ $ yarn config set sqlite3_binary_host_mirror https://npmmirror.com/mirrors/sqlit
 
 ```bash
 yarn install --frozen-lockfile
-# 生产环境部署时，为了减少体积，可以只安装必要的依赖
-yarn install --frozen-lockfile --production
 ```
 
 ## 4. 设置环境变量
@@ -70,7 +69,7 @@ yarn dev
 生产环境
 
 ```bash
-# 编译（请确保已执行 `yarn install --frozen-lockfile`，注意不带 `--production`）
+# 编译（请确保已执行 `yarn install --frozen-lockfile`）
 yarn build
 # 启动
 yarn start

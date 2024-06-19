@@ -27,6 +27,7 @@ $ yarn -v
 由于国内网络环境的原因，强烈建议你更换国内镜像。
 
 ```bash
+$ yarn config set disable-self-update-check true
 $ yarn config set registry https://registry.npmmirror.com/
 $ yarn config set sqlite3_binary_host_mirror https://npmmirror.com/mirrors/sqlite3/
 ```
