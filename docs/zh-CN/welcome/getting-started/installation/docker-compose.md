@@ -6,15 +6,13 @@
 
 ## 1. 新建 docker-compose.yml
 
-在指定目录（假设是 `/your/path`）新建一个 `my-project` 文件夹，并在文件夹里创建一个空的 docker-compose.yml 文件
-
 ```bash
 # MacOS, Linux
 cd /your/path
 # Windows
 cd C:\your\path
 
-# 新建 my-project 文件，可以根据实际情况，更换为其他名称
+# 创建一个名为 my-project（可以是其他名称）的文件夹，用于存放 NocoBase 生成的系统文件
 mkdir my-project && cd my-project
 
 # 创建一个空的 docker-compose.yml 文件
@@ -41,6 +39,8 @@ services:
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
     networks:
       - nocobase
+    depends_on:
+      - postgres
     environment:
       # 应用的密钥，用于生成用户 token 等
       # 如果 APP_KEY 修改了，旧的 token 也会随之失效
@@ -60,8 +60,6 @@ services:
       - ./storage:/app/nocobase/storage
     ports:
       - "13000:80"
-    depends_on:
-      - postgres
     # init: true
 
   # 如果使用已有数据库服务器，可以不启动 postgres
@@ -106,16 +104,22 @@ services:
       - DB_DIALECT=mysql
       # 数据库主机，可以替换为已有的数据库服务器 IP
       - DB_HOST=mysql
+      # 数据库名
       - DB_DATABASE=nocobase
+      # 数据库用户
       - DB_USER=root
+      # 数据库密码
       - DB_PASSWORD=nocobase
+      # 仅 MySQL（或 MariaDB）有效
       - DB_TIMEZONE=+08:00
+      # 数据库表名、字段名是否转为 snake case 风格
+      - DB_UNDERSCORED=true
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
       - "13000:80"
-    init: true
-  
+    # init: true
+
   # 如果使用已有数据库服务器，可以不启动 mysql
   mysql:
     image: registry.cn-shanghai.aliyuncs.com/nocobase/mysql:8
@@ -156,11 +160,17 @@ services:
       - APP_KEY=your-secret-key
       # 数据库类型，支持 postgres, mysql, mariadb, sqlite
       - DB_DIALECT=mariadb
+      # 数据库主机，可以替换为已有的数据库服务器 IP
       - DB_HOST=mariadb
+      # 数据库名
       - DB_DATABASE=nocobase
+      # 数据库用户
       - DB_USER=root
+      # 数据库密码
       - DB_PASSWORD=nocobase
+      # 仅 MySQL（或 MariaDB）有效
       - DB_TIMEZONE=+08:00
+      # 数据库表名、字段名是否转为 snake case 风格
       - DB_UNDERSCORED=true
     volumes:
       - ./storage:/app/nocobase/storage

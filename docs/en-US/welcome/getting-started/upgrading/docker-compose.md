@@ -31,13 +31,6 @@ Images can only be upgraded, not downgraded. The `main` version cannot be downgr
 # ...
 services:
   app:
-    # Alibaba Cloud main version (supports only AMD64 architecture)
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:main
-    # Alibaba Cloud latest version
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
-    # Alibaba Cloud specific version
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:1.2.4-alpha
-    # Docker Hub images, may not be downloadable
     image: nocobase/nocobase:main
     image: nocobase/nocobase:latest
     image: nocobase/nocobase:1.2.4-alpha
