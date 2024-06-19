@@ -1,34 +1,41 @@
 # Docker 安装的升级
 
-<Alert>
+## 1. 切换到 `docker-compose.yml` 所在的目录
 
-本篇文档所讲的 Docker 安装是基于 `docker-compose.yml` 配置文件，在 [NocoBase GitHub 仓库](https://github.com/nocobase/nocobase/tree/main/docker) 里也有提供。
-
-</Alert>
-
-## 1. 切换到之前安装时的目录
-
-也可以根据实际情况，切换到 `docker-compose.yml` 所在的目录
+例如
 
 ```bash
-# SQLite
-cd nocobase/docker/app-sqlite
-# MySQL
-cd nocobase/docker/app-mysql
-# MariaDB
-cd nocobase/docker/app-mariaDB
-# PostgreSQL
-cd nocobase/docker/app-postgres
+# MacOS, Linux...
+cd /your/path/nocobase/
+# Windows
+cd C:\your\path\nocobase
 ```
 
 ## 2. 更新 image 版本号
 
-`docker-compose.yml` 文件，app 容器的 image 替换为最新版本
+- `main` Git 源码的 main 分支版本，非稳定版本，尝鲜用户可以使用（只支持 AMD64 架构）
+- `latest` 已发布的最新版，如果追求稳定，建议使用这个版本
+- `1.2.4-alpha` 指定版本号升级，最新版本情况，查看[已发布版本列表](https://hub.docker.com/r/nocobase/nocobase/tags)
+
+:::warning
+镜像只能升级不能降级，main 最新，不能将 main 降级为 latest
+:::
 
 ```yml
+# ...
 services:
   app:
-    image: nocobase/nocobase:latest # main 尝鲜版、latest 最新发布版本
+    # 阿里云 main 版本（只支持 AMD64 架构）
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:main
+    # 阿里云 latest 版本
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
+    # 阿里云指定版本
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:1.2.4-alpha
+    # Docker Hub 镜像，可能会下载不了
+    image: nocobase/nocobase:main
+    image: nocobase/nocobase:latest
+    image: nocobase/nocobase:1.2.4-alpha
+# ...
 ```
 
 ## 3. 重启容器

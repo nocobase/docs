@@ -27,7 +27,7 @@ NocoBase 支持三种安装方式：
 
 各种安装方式已发布版本列表如下：
 
-- [Docker 已发布版本列表列表](https://hub.docker.com/r/nocobase/nocobase/tags)
+- [Docker 已发布版本列表](https://hub.docker.com/r/nocobase/nocobase/tags)
 - [create-nocobase-app 已发布版本列表](https://www.npmjs.com/package/create-nocobase-app?activeTab=versions)
 - [Git 源码已发布版本列表](https://github.com/nocobase/nocobase/tags)
 

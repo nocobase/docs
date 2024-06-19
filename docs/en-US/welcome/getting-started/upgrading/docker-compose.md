@@ -1,34 +1,41 @@
 # Upgrading for Docker compose
 
-<Alert>
+## 1. Navigate to the directory containing `docker-compose.yml`
 
-The Docker installation described in this document is based on the `docker-compose.yml` configuration file, which is also available in the [NocoBase GitHub repository](https://github.com/nocobase/nocobase/tree/main/docker).
-
-</Alert>
-
-## 1. Switch to the directory where you installed it before
-
-You can also switch to the directory where `docker-compose.yml` is located, depending on the situation.
+For example:
 
 ```bash
-# SQLite
-cd nocobase/docker/app-sqlite
-# MySQL
-cd nocobase/docker/app-mysql
-# MariaDB
-cd nocobase/docker/app-mariaDB
-# PostgreSQL
-cd nocobase/docker/app-postgres
+# MacOS, Linux...
+cd /your/path/nocobase/
+# Windows
+cd C:\your\path\nocobase
 ```
 
-## 2. Update the image version number
+## 2. Update the image version
 
-`docker-compose.yml` file, replace the image of the app container with the latest version.
+- `main`: Main branch version from Git source, not stable, for early adopters (supports only AMD64 architecture)
+- `latest`: Latest released version, recommended for stability
+- `1.2.4-alpha`: Upgrade to a specific version. For the latest versions, see the [released versions list](https://hub.docker.com/r/nocobase/nocobase/tags)
+
+:::warning
+Images can only be upgraded, not downgraded. The `main` version cannot be downgraded to `latest`.
+:::
 
 ```yml
+# ...
 services:
   app:
-    image: nocobase/nocobase:latest # main: non-stable version, latest: stable version
+    # Alibaba Cloud main version (supports only AMD64 architecture)
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:main
+    # Alibaba Cloud latest version
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
+    # Alibaba Cloud specific version
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:1.2.4-alpha
+    # Docker Hub images, may not be downloadable
+    image: nocobase/nocobase:main
+    image: nocobase/nocobase:latest
+    image: nocobase/nocobase:1.2.4-alpha
+# ...
 ```
 
 ## 3. Restart the container

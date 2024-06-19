@@ -4,17 +4,9 @@
 
 ⚡⚡ Please make sure you have installed [Docker](https://docs.docker.com/get-docker/)
 
-## 1. Download NocoBase
+## 1. Configure `docker-compose.yml`
 
-Download with Git
-
-```bash
-git clone https://github.com/nocobase/nocobase.git nocobase
-```
-
-## 2. Select database (choose one)
-
-Change the directory to the folder downloaded in the first step.
+Create a `nocobase` folder in the specified directory.
 
 ```bash
 # MacOS, Linux...
@@ -23,118 +15,247 @@ cd /your/path/nocobase
 cd C:\your\path\nocobase
 ```
 
-The docker configuration of different databases is slightly different, please choose to switch to the corresponding directory.
+Create a `docker-compose.yml` file inside the `nocobase` folder with the following content:
 
-### SQLite
+### PostgreSQL
 
-```bash
-cd docker/app-sqlite
+```yml
+version: "3"
+
+networks:
+  nocobase:
+    driver: bridge
+
+services:
+  app:
+    image: nocobase/nocobase:latest
+    # Use the following image if unable to download from DockerHub
+    #image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
+    networks:
+      - nocobase
+    environment:
+      # Application key used for generating user tokens, etc.
+      # If APP_KEY changes, old tokens will become invalid
+      # It can be any random string, make sure it is not exposed
+      - APP_KEY=your-secret-key
+      # Database type, supports postgres, mysql, mariadb, sqlite
+      - DB_DIALECT=postgres
+      # Database host, can be replaced with the IP of an existing database server
+      - DB_HOST=postgres
+      # Database name
+      - DB_DATABASE=nocobase
+      # Database user
+      - DB_USER=nocobase
+      # Database password
+      - DB_PASSWORD=nocobase
+    volumes:
+      - ./storage:/app/nocobase/storage
+    ports:
+      - "13000:80"
+    depends_on:
+      - postgres
+    # init: true
+
+  # Skip this service if using an existing database server
+  postgres:
+    image: nocobase/postgres:16
+    # Use the following image if unable to download from DockerHub
+    #image: registry.cn-shanghai.aliyuncs.com/nocobase/postgres:16
+    restart: always
+    command: postgres -c wal_level=logical
+    environment:
+      POSTGRES_USER: nocobase
+      POSTGRES_DB: nocobase
+      POSTGRES_PASSWORD: nocobase
+    volumes:
+      - ./storage/db/postgres:/var/lib/postgresql/data
+    networks:
+      - nocobase
 ```
 
 ### MySQL
 
-```bash
-cd docker/app-mysql
+```yml
+version: "3"
+
+networks:
+  nocobase:
+    driver: bridge
+
+services:
+  app:
+    image: nocobase/nocobase:latest
+    # Use the following image if unable to download from DockerHub
+    #image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
+    networks:
+      - nocobase
+    depends_on:
+      - mysql
+    environment:
+      # Application key used for generating user tokens, etc.
+      # If APP_KEY changes, old tokens will become invalid
+      # It can be any random string, make sure it is not exposed
+      - APP_KEY=your-secret-key
+      # Database type, supports postgres, mysql, mariadb, sqlite
+      - DB_DIALECT=mysql
+      # Database host, can be replaced with the IP of an existing database server
+      - DB_HOST=mysql
+      - DB_DATABASE=nocobase
+      - DB_USER=root
+      - DB_PASSWORD=nocobase
+      - DB_TIMEZONE=+08:00
+    volumes:
+      - ./storage:/app/nocobase/storage
+    ports:
+      - "13000:80"
+    init: true
+
+  # Skip this service if using an existing database server
+  mysql:
+    image: nocobase/mysql:8
+    # Use the following image if unable to download from DockerHub
+    #image: registry.cn-shanghai.aliyuncs.com/nocobase/mysql:8
+    environment:
+      MYSQL_DATABASE: nocobase
+      MYSQL_USER: nocobase
+      MYSQL_PASSWORD: nocobase
+      MYSQL_ROOT_PASSWORD: nocobase
+    restart: always
+    volumes:
+      - ./storage/db/mysql:/var/lib/mysql
+    networks:
+      - nocobase
 ```
 
 ### MariaDB
 
-```bash
-cd docker/app-mariadb
-```
-
-### PostgreSQL
-
-```bash
-cd docker/app-postgres
-```
-
-## 3. Configure docker-compose.yml (optional)
-
-<Alert>
-
-Non-developers skip this step. If you know to how develop, you can also learn more about how to configure `docker-compose.yml`.
-
-</Alert>
-
-Directory structure (related to docker)
-
-```bash
-├── nocobase
-  ├── docker
-    ├── app-sqlite
-      ├── storage
-      ├── docker-compose.yml
-    ├── app-mariadb
-      ├── storage
-      ├── docker-compose.yml
-    ├── app-mysql
-      ├── storage
-      ├── docker-compose.yml
-    ├── app-postgres
-      ├── storage
-      ├── docker-compose.yml
-```
-
-Configuration notes for `docker-compose.yml`:
-
-SQLite only has app service, PostgreSQL and MySQL will have corresponding postgres or mysql service, you can use the example database service or configure it yourself.
-
 ```yml
-services:
-  app:
-  postgres:
-  mysql:
-  mariadb:
-```
+version: "3"
 
-App port, the URL is `http://your-ip:13000/`
+networks:
+  nocobase:
+    driver: bridge
 
-```yml
-services:
-  app:
-    ports:
-      - '13000:80'
-```
-
-NocoBase version ([click here for the latest version](https://hub.docker.com/r/nocobase/nocobase/tags)), a few important release notes:
-
-- `nocobase/nocobase:main` Main branch version, non-stable version, can be used by users who want to try it.
-- `nocobase/nocobase:latest` The latest version of the branch that has been released, if you are looking for stability, this is the one to use.
-- `nocobase/nocobase:0.18.0-alpha.9` Use a specific version.
-
-:::warning
-`nocobase/nocobase:main` The arm64 architecture is currently not supported.
-:::
-
-```yml
 services:
   app:
     image: nocobase/nocobase:latest
-```
-
-Environment variables
-
-```yml
-services.
-  app.
-    image: nocobase/nocobase:latest
-    environment: APP_KEY=your-secret-key
+    # Use the following image if unable to download from DockerHub
+    #image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
+    networks:
+      - nocobase
+    depends_on:
+      - mariadb
+    environment:
+      # Application key used for generating user tokens, etc.
+      # If APP_KEY changes, old tokens will become invalid
+      # It can be any random string, make sure it is not exposed
       - APP_KEY=your-secret-key
-      - DB_DIALECT=postgres
-      - DB_HOST=postgres
+      # Database type, supports postgres, mysql, mariadb, sqlite
+      - DB_DIALECT=mariadb
+      - DB_HOST=mariadb
       - DB_DATABASE=nocobase
-      - DB_USER=nocobase
+      - DB_USER=root
       - DB_PASSWORD=nocobase
+      - DB_TIMEZONE=+08:00
+      - DB_UNDERSCORED=true
+    volumes:
+      - ./storage:/app/nocobase/storage
+    ports:
+      - "13000:80"
+    # init: true
+
+  # Skip this service if using an existing database server
+  mariadb:
+    image: nocobase/mariadb:11
+    # Use the following image if unable to download from DockerHub
+    #image: registry.cn-shanghai.aliyuncs.com/nocobase/mariadb:11
+    environment:
+      MYSQL_DATABASE: nocobase
+      MYSQL_USER: nocobase
+      MYSQL_PASSWORD: nocobase
+      MYSQL_ROOT_PASSWORD: nocobase
+    restart: always
+    volumes:
+      - ./storage/db/mariadb:/var/lib/mysql
+    networks:
+      - nocobase
 ```
 
-:::warning
-- `APP_KEY` is the application's secret key, used for generating user tokens and so on (if APP_KEY is changed, the old tokens will also become invalid). It can be any random string. Please change it to your own secret key and ensure it is not disclosed to the public.
-- `DB_*` is related to the database. If it is not the default database service in the example, please modify it according to the actual situation.
-- When using MySQL (or MariaDB), you need to configure the DB_TIMEZONE environment variable, such as `DB_TIMEZONE=+08:00`
-:::
+### SQLite
 
-## 4. Install and start NocoBase
+For testing purposes only, not recommended for production environments.
+
+```yml
+version: "3"
+
+networks:
+  nocobase:
+    driver: bridge
+
+services:
+  app:
+    image: nocobase/nocobase:latest
+    # Use the following image if unable to download from DockerHub
+    #image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
+    networks:
+      - nocobase
+    environment:
+      # Application key used for generating user tokens, etc.
+      # If APP_KEY changes, old tokens will become invalid
+      # It can be any random string, make sure it is not exposed
+      - APP_KEY=your-secret-key
+    volumes:
+      - ./storage:/app/nocobase/storage
+    ports:
+      - "13000:80"
+```
+
+## 2. Select the appropriate NocoBase image
+
+- `nocobase/nocobase:main` Git source main branch version, not stable, for early adopters.
+- `nocobase/nocobase:latest` Latest released version, recommended for stability.
+- `nocobase/nocobase:1.2.4-alpha` A specific version.
+- `registry.cn-shanghai.aliyuncs.com/nocobase/*`  
+  Alibaba Cloud images pushed by NocoBase, for cases where DockerHub download is unavailable.
+
+Example
+
+```yml
+# ...
+services:
+  app:
+    # Docker Hub images
+    image: nocobase/nocobase:main
+    image: nocobase/nocobase:latest
+    image: nocobase/nocobase:1.2.4-alpha
+    # Alibaba Cloud main version (AMD64 architecture only)
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:main
+    # Alibaba Cloud latest version
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
+    # Alibaba Cloud specific version
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:1.2.4-alpha
+# ...
+  postgres:
+    # Docker Hub images
+    image: nocobase/postgres:16
+    # Alibaba Cloud PostgreSQL 16 image
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/postgres:16
+# ...
+  mysql:
+    # Docker Hub images
+    image: nocobase/mysql:8
+    # Alibaba Cloud MySQL 8 image
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/mysql:8
+# ...
+  mariadb:
+    # Docker Hub images, may not be downloadable
+    image: nocobase/mariadb:11
+    # Alibaba Cloud MariaDB 11 image
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/mariadb:11
+# ...
+```
+
+## 3. Install and start NocoBase
 
 It may take a few minutes
 
