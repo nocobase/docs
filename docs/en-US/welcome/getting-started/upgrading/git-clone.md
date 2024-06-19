@@ -1,5 +1,11 @@
 # Upgrading for Git source code
 
+## 0. Pre-upgrade preparation
+
+:::warning
+Make sure to backup the database before upgrading!!!
+:::
+
 ## 1. switch to the NocoBase project directory
 
 ```bash

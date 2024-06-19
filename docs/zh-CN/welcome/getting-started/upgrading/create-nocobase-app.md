@@ -1,6 +1,12 @@
 # `create-nocobase-app` 安装的升级
 
-## 升级
+## 0. 升级前的准备
+
+:::warning
+升级前一定要先备份数据库！！！
+:::
+
+## 1. 升级
 
 直接执行 `yarn nocobase upgrade` 升级命令即可
 

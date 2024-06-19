@@ -1,5 +1,11 @@
 # Upgrading for Docker compose
 
+## 0. Pre-upgrade preparation
+
+:::warning
+Make sure to backup the database before upgrading!!!
+:::
+
 ## 1. Navigate to the directory containing `docker-compose.yml`
 
 For example:
