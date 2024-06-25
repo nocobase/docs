@@ -69,7 +69,7 @@ A record refers to a row in a collection, with each row representing a record. T
 
 ### Current popup record
 
-Popup actions play a very important role in the NocoBase interface configuration.
+In NocoBase, each popup opened by an action button or an association field has a context of a record, whose value usually refers to the row record where the action button is located, or the value of the association field. These action buttons play a very important role in the NocoBase interface configuration.
 
 - Row action popup: Each popup has a "Current popup record" variable, representing the current row record.
 - Association field popup: Each popup has a "Current popup record" variable, representing the clicked relationship record.
@@ -102,13 +102,15 @@ The blocks in the popup can use the "Current popup record" variable, with the fo
 
 ![20240416224014_rec_](https://static-docs.nocobase.com/20240416224014_rec_.gif)
 
-### Parent record (Deprecated)
+### Parent popup record
+
+This variable is defined the same as the `Current popup record`, but it only exists in nested popups and represents the value of the `Current popup record` variable in the parent popup.
+
+![20240625204231](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240625204231.png)
+
+### Parent record
 
 Only used in association blocks, representing the source record of the association data.
-
-:::warning
-"Parent record" is deprecated, it is recommended to use the equivalent "Current popup record" instead.
-:::
 
 ### Date variables
 
