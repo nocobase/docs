@@ -1162,6 +1162,11 @@ export default [
             link: '/handbook/auth-dingtalk',
           },
           {
+            title: 'Authentication - WeCom',
+            'title.zh-CN': '用户认证 - 企业微信',
+            link: '/handbook/auth-wecom',
+          },
+          {
             title: 'Verification',
             'title.zh-CN': '验证码',
             // subTitle: '@nocobase/plugin-verification',
