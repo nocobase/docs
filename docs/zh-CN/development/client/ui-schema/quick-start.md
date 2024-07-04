@@ -18,9 +18,9 @@
 
 涉及知识点：
 
-- [Designable 设计器](#)
-- [UI Schema 协议 - x-initializer 参数](#)
-- [SchemaInitializer 初始化器](#)
+- [Designable 设计器](/development/client/ui-schema/designable)
+- [UI Schema 协议 - x-initializer 参数](/development/client/ui-schema/what-is-ui-schema#x-initializer)
+- [SchemaInitializer 初始化器](/development/client/ui-schema/initializer)
 
 <code src="./demos/demo2.tsx"></code>
 
@@ -30,8 +30,8 @@
 
 涉及知识点：
 
-- [UI Schema 协议 - x-settings 参数](#)
-- [SchemaSettings 配置器](#)
-- [现有 schema 节点的拖拽移动](#)
+- [UI Schema 协议 - x-settings 参数](/development/client/ui-schema/what-is-ui-schema#x-settings)
+- [SchemaSettings 设置器](/development/client/ui-schema/settings)
+- [现有 schema 节点的拖拽移动](/development/client/ui-schema/designable#移节点间的移动)
 
 <code src="./demos/demo3.tsx"></code>
