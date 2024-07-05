@@ -184,10 +184,10 @@ curl -X POST "http://localhost:13000/api/users:move?sourceId=1&targetId=2"
 
 ### set
 
-设置资源的关联对象。`POST /api/<resource.association>:set`.
+设置资源的关联对象。`POST /api/<resource>/<resourceKey>/<association>:set`.
 
 ```shell
-curl "http://localhost:13000/api/users.roles:set" \
+curl "http://localhost:13000/api/users/1/roles:set" \
   -X POST \
   -H "Content-Type: application/json" \
   -d '["admin", "member"]'
@@ -199,10 +199,10 @@ curl "http://localhost:13000/api/users.roles:set" \
 
 ### add
 
-添加资源的关联对象。`POST /api/<resource.association>:add`.
+添加资源的关联对象。`POST /api/<resource>/<resourceKey>/<association>:add`.
 
 ```shell
-curl "http://localhost:13000/api/users.roles:add" \
+curl "http://localhost:13000/api/users/1/roles:add" \
   -X POST \
   -H "Content-Type: application/json" \
   -d '["admin"]'
@@ -214,10 +214,10 @@ curl "http://localhost:13000/api/users.roles:add" \
 
 ### remove
 
-移除资源的关联对象。`POST /api/<resource.association>:remove`.
+移除资源的关联对象。`POST /api/<resource>/<resourceKey>/<association>:remove`.
 
 ```shell
-curl "http://localhost:13000/api/users.roles:remove" \
+curl "http://localhost:13000/api/users/1/roles:remove" \
   -X POST \
   -H "Content-Type: application/json" \
   -d '["admin"]'
@@ -229,10 +229,10 @@ curl "http://localhost:13000/api/users.roles:remove" \
 
 ### toggle
 
-切换资源的关联对象，存在的移除，不存在的添加。`POST /api/<resource.association>:toggle`.
+切换资源的关联对象，存在的移除，不存在的添加。`POST /api/<resource>/<resourceKey>/<association>:toggle`.
 
 ```shell
-curl "http://localhost:13000/api/users.roles:toggle" \
+curl "http://localhost:13000/api/users/1/roles:toggle" \
   -X POST \
   -H "Content-Type: application/json" \
   -d '["admin", "member"]'

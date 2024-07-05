@@ -461,6 +461,11 @@ export default [
                 'title.zh-CN': '多对多',
                 link: '/handbook/data-modeling/collection-fields/associations/m2m',
               },
+              {
+                title: 'Many-to-many (array)',
+                'title.zh-CN': '多对多（数组）',
+                link: '/handbook/field-m2m-array',
+              },
             ],
           },
         ],
