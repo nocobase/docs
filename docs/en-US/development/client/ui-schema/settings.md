@@ -1,22 +1,22 @@
 # Schema settings
 
-激活 UI 配置之后，鼠标移动到指定区块、字段、操作上方时，会显示对应的 Schema 工具栏，工具栏的设置按钮就是当前 Schema 的设置器。
+After activating the UI configuration, when the mouse moves over a specific block, field, or action, the corresponding Schema toolbar will be displayed. The settings button in the toolbar is the settings component for the current Schema.
 
 ![Alt text](https://static-docs.nocobase.com/3f37519ddd9ba1a99f1fdbfe32b4a454.png)
 
-## 内置的设置器
+## Built-in settings
 
 <img src="./image-4.png" />
 
-## 向已有的设置器里添加设置项
+## Adding settings items to existing settings
 
-推荐使用 `schemaSettingsManager.addItem()` 方法添加设置项，item 的详细配置参考 [SchemaSettings Item API](#)
+It is recommended to use the `schemaSettingsManager.addItem()` method to add settings items. For detailed item configurations, refer to [SchemaSettings Item API](#).
 
 ```ts
 class PluginDemoAddSchemaSettingsItem extends Plugin {
   async load() {
     this.schemaSettingsManager.addItem(
-      'mySettings', // 示例，已存在的 schema settings
+      'mySettings', // Example of existing schema settings
       'customItem',
       {
         type: 'item',
@@ -29,15 +29,15 @@ class PluginDemoAddSchemaSettingsItem extends Plugin {
 
 <code src="./demos/schema-settings-manager-add-item/index.tsx"></code>
 
-## 添加新的设置器
+## Adding new settings
 
-SchemaSettings 的详细参数参考 [SchemaSettingsOptions API](https://client.docs-cn.nocobase.com/core/ui-schema/schema-settings#new-schemasettingsoptions)
+For detailed parameters of SchemaSettings, refer to [SchemaSettingsOptions API](https://client.docs-cn.nocobase.com/core/ui-schema/schema-settings#new-schemasettingsoptions).
 
 ```ts
 const mySettings = new SchemaSettings({
-  // 必须是唯一标识
+  // Must be a unique identifier
   name: 'mySettings',
-  // 下拉菜单项
+  // Dropdown menu items
   items: [
     {
       name: 'edit',
@@ -48,14 +48,14 @@ const mySettings = new SchemaSettings({
 });
 ```
 
-### 在插件的 load 方法中添加
+### Adding in the plugin's load method
 
-推荐使用 `schemaSettingsManager.add()` 将新增的设置器添加到应用里
+It is recommended to use `schemaSettingsManager.add()` to add the new settings to the application.
 
 ```ts
 class PluginDemoAddSchemaSettings extends Plugin {
   async load() {
-    // 注册全局组件
+    // Register global components
     this.app.addComponents({ CardItem, HomePage });
     const mySettings = new SchemaSettings({
       name: 'mySettings',
@@ -64,7 +64,7 @@ class PluginDemoAddSchemaSettings extends Plugin {
           type: 'item',
           name: 'edit',
           useComponentProps() {
-            // TODO: 补充相关设置逻辑
+            // TODO: Add relevant settings logic
             return {
               title: 'Edit',
               onClick() {
@@ -80,13 +80,13 @@ class PluginDemoAddSchemaSettings extends Plugin {
 }
 ```
 
-### 如何使用新添加的设置器
+### How to use the newly added settings
 
-添加进来的 SchemaSettings，可以用于 Schema 的 `x-settings` 参数中，并不是所有的组件都支持 `x-settings`，通常需要和 BlockItem、FormItem、CardItem 这类包装器组件结合使用。自定义的组件中，也可以使用 `useSchemaSettingsRender()` 自主处理 `x-settings` 的渲染。
+The added SchemaSettings can be used in the Schema's `x-settings` parameter. Not all components support `x-settings`; it is usually used in combination with wrapper components such as BlockItem, FormItem, CardItem. In custom components, you can also use `useSchemaSettingsRender()` to handle the rendering of `x-settings` independently.
 
-#### 现有支持 `x-settings` 的 Schema 组件
+#### Schema components that currently support `x-settings`
 
-大部分场景 `x-settings` 需要和 BlockItem、FormItem、CardItem 这类包装器组件结合使用。例如：
+In most scenarios, `x-settings` need to be used in combination with wrapper components such as BlockItem, FormItem, CardItem. For example:
 
 ```ts
 {
@@ -99,19 +99,19 @@ class PluginDemoAddSchemaSettings extends Plugin {
 
 <code src="./demos/schema-settings-manager-add/index.tsx"></code>
 
-#### 自定义组件如何支持 `x-settings` 参数
+#### How to support `x-settings` in custom components
 
-如果 BlockItem、FormItem、CardItem 这类包装器组件并不满足需求时，也可以使用 `useSchemaSettingsRender()` 处理 `x-settings` 的渲染。
+If the wrapper components like BlockItem, FormItem, CardItem do not meet your needs, you can use `useSchemaSettingsRender()` to handle the rendering of `x-settings`.
 
 <code src="./demos/use-schema-settings-render/index.tsx"></code>
 
-大部分场景 settings 都是放在 SchemaToolbar 上的，所以为自定义组件支持 `x-toolbar`，也可以变相的支持 `x-settings`，更多用法参考 [Schema 工具栏](/development/client/ui-schema/toolbar)
+In most scenarios, settings are placed on the SchemaToolbar, so supporting `x-toolbar` for custom components can also indirectly support `x-settings`. For more usage details, refer to [Schema toolbar](/development/client/ui-schema/toolbar).
 
 <code src="./demos/schema-toolbar-basic/button.tsx"></code>
 
-## 如何实现 Schema 的设置？
+## How to implement Schema settings?
 
-通过 `useSchemaSettings()` 获取当前 Schema 的 `Designable`，通过 `Designable` 来操作 Schema，常用 api 有
+Use `useSchemaSettings()` to get the current Schema's `Designable`, and operate the Schema through `Designable`. Common APIs include:
 
 - `dn.insertAdjacent()`
 - `dn.getSchemaAttribute()`
@@ -122,14 +122,14 @@ class PluginDemoAddSchemaSettings extends Plugin {
 - `dn.remove()`
 - `dn.remove()`
 
-更多细节参考
+For more details, refer to:
 
-- [Designable 设计器](/development/client/ui-schema/designable)
+- [Designable Designer](/development/client/ui-schema/designable)
 - [Designable API](https://client.docs-cn.nocobase.com/core/ui-schema/designable)
 
 <code src="./demos/schema-settings-basic/index.tsx"></code>
 
-## API 参考
+## API Reference
 
 - [SchemaSettingsManager](https://client.docs-cn.nocobase.com/core/ui-schema/schema-settings-manager)
 - [SchemaSettings](https://client.docs-cn.nocobase.com/core/ui-schema/schema-settings)

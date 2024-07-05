@@ -1,15 +1,15 @@
-# Extending schema components
+# Extending Schema Components
 
-除了原生的 html 标签，开发也可以适配更多的自定义组件，用于丰富 Schema 组件库。
+In addition to native HTML tags, developers can adapt more custom components to enrich the Schema component library.
 
-扩展组件时，常用的方法：
+Common methods for extending components include:
 
-- [connect](https://react.formilyjs.org/api/shared/connect) 无侵入接入第三方组件，一般用于适配字段组件，和 [mapProps](https://react.formilyjs.org/api/shared/map-props)[、mapReadPretty](https://react.formilyjs.org/api/shared/map-read-pretty) 搭配使用
-- [observer](https://react.formilyjs.org/api/shared/observer) 当组件内部使用了 observable 对象，而你希望组件响应 observable 对象的变化时
+- [connect](https://react.formilyjs.org/api/shared/connect): Non-intrusive integration with third-party components, generally used for adapting field components, often used in conjunction with [mapProps](https://react.formilyjs.org/api/shared/map-props) and [mapReadPretty](https://react.formilyjs.org/api/shared/map-read-pretty).
+- [observer](https://react.formilyjs.org/api/shared/observer): Used when the component uses observable objects internally, and you want the component to respond to changes in the observable objects.
 
-## 最简单的扩展
+## Simple Extension
 
-直接将现成的 React 组件注册进来。
+Register an existing React component directly.
 
 ```tsx
 /**
@@ -35,7 +35,7 @@ export default () => {
 };
 ```
 
-## 通过 connect 接入第三方组件
+## Integrating Third-Party Components with Connect
 
 ```tsx
 /**
@@ -55,7 +55,7 @@ const SingleText = connect(
   mapProps((props, field) => {
     return {
       ...props,
-      suffix: '后缀',
+      suffix: 'Suffix',
     };
   }),
   mapReadPretty(ReadPretty),
@@ -87,7 +87,7 @@ export default () => {
 };
 ```
 
-## 使用 observer 响应数据
+## Using Observer to Respond to Data Changes
 
 ```tsx
 /**
@@ -146,23 +146,23 @@ export default () => {
 };
 ```
 
-## 嵌套的 Schema
+## Nested Schema
 
-- `props.children` 嵌套，适用于 void 和 object 类型的 properties，例子见 [void 和 object 类型 schema 的嵌套](#void-和-object-类型-schema-的嵌套)
-- `<RecursionField />` 自定义嵌套，所有类型都适用，例子见 [array 类型 schema 的嵌套](#array-类型-schema-的嵌套)
+- `props.children` nesting is suitable for `void` and `object` type properties. For examples, see [Nesting void and object type schema](#nesting-void-and-object-type-schema)
+- `<RecursionField />` for custom nesting, suitable for all types. For examples, see [Nesting array type schema](#nesting-array-type-schema).
 
-注意：
+Note:
 
-- 除了 void 和 object 类型以外的 schema 的 `properties` 无法直接通过 `props.children` 渲染，但是可以使用 `<RecursionField />` 解决嵌套问题
-- 仅 void 和 object 类型的 schema 可以与 onlyRenderProperties 使用
+- Properties other than `void` and `object` types cannot be directly rendered through `props.children`, but you can use `<RecursionField />` to solve the nesting problem.
+- Only `void` and `object` type schemas can be used with `onlyRenderProperties`.
 
 ```tsx | pure
 <RecursionField schema={schema} onlyRenderProperties />
 ```
 
-### void 和 object 类型 schema 的嵌套
+### Nesting void and object type schema
 
-直接通过 props.children 就可以适配 properties 节点了
+Properties nodes can be adapted directly through `props.children`.
 
 ```tsx
 /**
@@ -171,7 +171,7 @@ export default () => {
 import React from 'react';
 import { SchemaComponent, SchemaComponentProvider } from '@nocobase/client';
 
-// Hello 组件适配了 children，可以嵌套 properties 了
+// The Hello component adapted children, allowing nested properties.
 const Hello = (props) => <h1>Hello, {props.children}!</h1>;
 const World = () => <span>world</span>;
 
@@ -196,7 +196,7 @@ export default () => {
 };
 ```
 
-各类型 properties 渲染结果对比
+Rendering results comparison of various property types:
 
 ```tsx
 import React from 'react';
@@ -210,7 +210,7 @@ const schema = {
   properties: {
     title1: {
       type: 'void',
-      'x-content': 'Void schema，渲染 properties',
+      'x-content': 'Void schema, rendering properties',
     },
     void: {
       type: 'void',
@@ -225,7 +225,7 @@ const schema = {
     },
     title2: {
       type: 'void',
-      'x-content': 'Object schema，渲染 properties',
+      'x-content': 'Object schema, rendering properties',
     },
     object: {
       type: 'object',
@@ -240,7 +240,7 @@ const schema = {
     },
     title3: {
       type: 'void',
-      'x-content': 'Array schema，不渲染 properties',
+      'x-content': 'Array schema, not rendering properties',
     },
     array: {
       type: 'array',
@@ -255,7 +255,7 @@ const schema = {
     },
     title4: {
       type: 'void',
-      'x-content': 'String schema，不渲染 properties',
+      'x-content': 'String schema, not rendering properties',
     },
     string: {
       type: 'string',
@@ -280,11 +280,11 @@ export default () => {
 };
 ```
 
-### array 类型 schema 的嵌套
+### Nesting array type schema
 
-可以通过 `<RecursionField />` 解决自定义嵌套问题
+You can use `<RecursionField />` to solve custom nesting issues.
 
-#### Array 元素是 string 或 number 时
+#### When array elements are string or number
 
 ```tsx
 import React from 'react';
@@ -317,7 +317,7 @@ const ArrayList = observer(
         String Array
         <ul>
           {field.value?.map((item, index) => {
-            // 只有一个元素
+            // Only one element
             return <RecursionField name={index} schema={schema} />;
           })}
         </ul>
@@ -357,7 +357,7 @@ export default () => {
 };
 ```
 
-#### Array 元素是 Object 时
+#### When array elements are objects
 
 ```tsx
 import React from 'react';
@@ -375,7 +375,7 @@ const ArrayList = observer(
   (props) => {
     const field = useField();
     const schema = useFieldSchema();
-    // array 类型的 schema 无法 onlyRenderProperties，需要转化为 object 类型
+    // Convert array schema to object schema as array type schema cannot onlyRenderProperties
     const objSchema = new Schema({
       type: 'object',
       properties: schema.properties,
@@ -383,7 +383,7 @@ const ArrayList = observer(
     return (
       <ul>
         {field.value?.map((item, index) => {
-          // array 元素是 object
+          // Array element is object
           return (
             <RecursionField
               name={index}
@@ -428,7 +428,7 @@ export default () => {
 };
 ```
 
-#### Tree 结构数据
+#### Tree Structure Data
 
 ```tsx
 import { ArrayField } from '@formily/core';

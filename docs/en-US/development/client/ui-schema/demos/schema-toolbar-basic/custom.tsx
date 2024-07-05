@@ -12,7 +12,7 @@ import { createApp } from './app';
 const MyToolbar = (props) => {
   const fieldSchema = useFieldSchema();
   return (
-    <SchemaToolbar title="这是标题" settings={fieldSchema['x-settings']} {...props}/>
+    <SchemaToolbar title="Title here" settings={fieldSchema['x-settings']} {...props}/>
   );
 };
 
@@ -26,7 +26,7 @@ const HomePage = () => {
         'x-toolbar': 'MyToolbar',
         'x-settings': 'mySettings',
         'x-component': 'div',
-        'x-content': '这是 BlockItem 的样式',
+        'x-content': 'This is a BlockItem',
       }}
     />
   );

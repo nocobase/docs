@@ -1,63 +1,63 @@
 # UI Schema
 
-一种描述前端组件的协议，基于 Formily Schema 2.0，类 JSON Schema 风格。
+A protocol for describing frontend components, based on Formily Schema 2.0, in a JSON Schema style.
 
 ```ts
 interface ISchema {
   type: 'void' | 'string' | 'number' | 'object' | 'array';
   name?: string;
   title?: any;
-  // 包装器组件
+  // Decorator component
   ['x-decorator']?: string;
-  // 包装器组件属性
+  // Decorator component properties
   ['x-decorator-props']?: any;
-  // 动态包装器组件属性
+  // Dynamic decorator component properties
   ['x-use-decorator-props']?: any;
-  // 组件
+  // Component
   ['x-component']?: string;
-  // 组件属性
+  // Component properties
   ['x-component-props']?: any;
-  // 动态组件属性
+  // Dynamic component properties
   ['x-use-component-props']?: any;
-  // 展示状态，默认为 'visible'
+  // Display state, default is 'visible'
   ['x-display']?: 'none' | 'hidden' | 'visible';
-  // 组件的子节点，简单使用
+  // Component's child nodes, simple usage
   ['x-content']?: any;
-  // children 节点 schema
+  // children node schema
   properties?: Record<string, ISchema>;
 
-  // 以下仅字段组件时使用
+  // Below are only used for field components
 
-  // 字段联动
+  // Field reactions
   ['x-reactions']?: SchemaReactions;
-  // 字段 UI 交互模式，默认为 'editable'
+  // Field UI interaction mode, default is 'editable'
   ['x-pattern']?: 'editable' | 'disabled' | 'readPretty';
-  // 字段校验
+  // Field validation
   ['x-validator']?: Validator;
-  // 默认数据
-  default: ?:any;
+  // Default data
+  default?: any;
 
-  // 设计器相关
+  // For designer related
 
-  // 初始化器，决定当前 schema 相邻位置可以插入什么
+  // Initializer, determines what can be inserted adjacent to the current schema
   ['x-initializer']?: string;
   ['x-initializer-props']?: any;
 
-  // 区块设置，决定当前 schema 可以配置哪些参数
+  // Block settings, determines what parameters can be configured for the current schema
   ['x-settings']?: string;
   ['x-settings-props']?: any;
 
-  // 工具栏组件
+  // Toolbar component
   ['x-toolbar']?: string;
   ['x-toolbar-props']?: any;
 }
 ```
 
-## 示例
+## Examples
 
-### 最简单的组件
+### Simplest Component
 
-所有的原生 html 标签都可以转为 schema 的写法。如：
+All native HTML tags can be written as schemas. For example:
 
 ```ts
 {
@@ -67,15 +67,15 @@ interface ISchema {
 }
 ```
 
-JSX 示例
+JSX Example
 
 ```tsx | pure
 <h1>Hello, world!</h1>
 ```
 
-### 子组件
+### Child Components
 
-children 组件写在 properties 里
+Children components are written in properties
 
 ```tsx | pure
 {
@@ -91,7 +91,7 @@ children 组件写在 properties 里
 }
 ```
 
-JSX 等同于
+Equivalent JSX
 
 ```tsx | pure
 <div className={'form-item'}>
@@ -99,11 +99,11 @@ JSX 等同于
 </div>
 ```
 
-## 参数说明
+## Parameter Descriptions
 
 ### `type`
 
-节点的类型
+Type of the node
 
 ```ts
 type SchemaTypes =
@@ -120,26 +120,26 @@ interface ISchema {
 
 ### `name`
 
-schema 名称
+Schema name
 
 ```ts
 type SchemaName = string;
 interface ISchema {
-  name?: SchemaName; // 根节点
+  name?: SchemaName; // Root node
   properties?: {
-    [name: SchemaName]?: ISchema; // 子节点
+    [name: SchemaName]?: ISchema; // Child node
   }
 };
 ```
 
-所有的 schema 都有 name，子节点 name 也是 properties 的 key
+All schemas have a name, and child node names are also the keys of properties
 
 ```ts
 {
   name: 'root',
   properties: {
     child1: {
-      // 这里就不需要写 name 了
+      // No need to write name here
     },
   },
 }
@@ -147,7 +147,7 @@ interface ISchema {
 
 ### `title`
 
-节点标题
+Node title
 
 ```ts
 type SchemaTitle = string;
@@ -158,7 +158,7 @@ interface ISchema {
 
 ### `properties`
 
-children 组件可以写在 properties 里
+Children components can be written in properties
 
 ```ts
 {
@@ -174,7 +174,7 @@ children 组件可以写在 properties 里
 }
 ```
 
-JSX 等同于
+Equivalent JSX
 
 ```tsx | pure
 <div className={'form-item'}>
@@ -184,7 +184,7 @@ JSX 等同于
 
 ### `x-component`
 
-组件
+Component
 
 ```ts
 type Component = any;
@@ -193,7 +193,7 @@ interface ISchema {
 }
 ```
 
-所有的原生 html 标签都可以转为 schema 的写法。如：
+All native HTML tags can be written as schemas. For example:
 
 ```ts
 {
@@ -203,15 +203,15 @@ interface ISchema {
 }
 ```
 
-JSX 示例
+JSX Example
 
 ```tsx | pure
 <h1>Hello, world!</h1>
 ```
 
-### `x-component-props` 和 `x-use-component-props`
+### `x-component-props` and `x-use-component-props`
 
-`x-component-props` 是组件属性。
+`x-component-props` are component properties.
 
 ```ts
 {
@@ -223,7 +223,7 @@ JSX 示例
 }
 ```
 
-有些情况下，组件属性是动态的，可以使用 `x-use-component-props`。
+In some cases, component properties are dynamic, so you can use `x-use-component-props`.
 
 ```ts
 {
@@ -233,13 +233,13 @@ JSX 示例
 }
 ```
 
-这里的 MyTable 组件需要使用 `withDynamicSchemaProps` 高阶函数包一下，例如：
+The `MyTable` component needs to be wrapped with a higher-order function `withDynamicSchemaProps`. For example:
 
 ```ts
 const MyTable = withDynamicSchemaProps(Table, { displayName: 'MyTable' });
 ```
 
-`useTableProps` 是一个自定义的 hook，用于动态生成组件属性。
+`useTableProps` is a custom hook for dynamically generating component properties.
 
 ```ts
 const useTableProps = () => {
@@ -250,7 +250,7 @@ const useTableProps = () => {
 };
 ```
 
-我们还需要将其注册到 scope 中，具体参考文档 [Schema 渲染](/development/client/ui-schema/rendering)。
+You also need to register it in the scope, refer to the documentation [Schema Rendering](/development/client/ui-schema/rendering).
 
 ```tsx | pure
 <SchemaComponent
@@ -266,7 +266,7 @@ const useTableProps = () => {
 
 ### `x-decorator`
 
-包装器组件
+Decorator component
 
 ```ts
 type Decorator = any;
@@ -275,9 +275,9 @@ interface ISchema {
 }
 ```
 
-x-decorator + x-component 的组合，可以将两个组件放在一个 schema 节点里，降低 schema 结构复杂度，提高组件的复用率。
+The combination of x-decorator and x-component allows you to place two components in one schema node, reducing schema structure complexity and increasing component reusability.
 
-例如表单场景里，可以将 FormItem 组件与任意字段组件组合，在这里 FormItem 就是 Decorator。
+For example, in a form scenario, you can combine the FormItem component with any field component, where FormItem is the Decorator.
 
 ```ts
 {
@@ -298,7 +298,7 @@ x-decorator + x-component 的组合，可以将两个组件放在一个 schema �
 }
 ```
 
-JSX 等同于
+Equivalent JSX
 
 ```tsx | pure
 <div>
@@ -311,7 +311,7 @@ JSX 等同于
 </div>
 ```
 
-也可以提供一个 CardItem 组件，用于包裹所有区块，这样所有区块就都是 Card 包裹的了。
+You can also provide a CardItem component to wrap all blocks, so all blocks are wrapped by Card.
 
 ```ts
 {
@@ -332,7 +332,7 @@ JSX 等同于
 }
 ```
 
-JSX 等同于
+Equivalent JSX
 
 ```tsx | pure
 <div>
@@ -345,17 +345,17 @@ JSX 等同于
 </div>
 ```
 
-### `x-decorator-props` 和 `x-use-decorator-props`
+### `x-decorator-props` and `x-use-decorator-props`
 
-同 `x-component-props` 和 `x-use-component-props` 使用方式想通，`withDynamicSchemaProps()` 高阶函数需要用于包装器组件。
+Use similarly to `x-component-props` and `x-use-component-props`. The `withDynamicSchemaProps()` higher-order function needs to be used for decorator components.
 
 ### `x-display`
 
-组件的展示状态
+Component display state
 
-- `'x-display': 'visible'`：显示组件
-- `'x-display': 'hidden'`：隐藏组件，数据不隐藏
-- `'x-display': 'none'`：隐藏组件，数据也隐藏
+- `'x-display': 'visible'`: Show component
+- `'x-display': 'hidden'`: Hide component, data is not hidden
+- `'x-display': 'none'`: Hide component, data is also hidden
 
 #### `'x-display': 'visible'`
 
@@ -374,7 +374,7 @@ JSX 等同于
 }
 ```
 
-JSX 等同于
+Equivalent JSX
 
 ```tsx | pure
 <div className={'form-item'}>
@@ -399,11 +399,11 @@ JSX 等同于
 }
 ```
 
-JSX 等同于
+Equivalent JSX
 
 ```tsx | pure
 <div className={'form-item'}>
-  {/* 此处不输出 input 组件，对应的 name=title 的字段模型还存在 */}
+  {/* No input component is output here, but the field model with name=title still exists */}
 </div>
 ```
 
@@ -424,25 +424,25 @@ JSX 等同于
 }
 ```
 
-JSX 等同于
+Equivalent JSX
 
 ```tsx | pure
 <div className={'form-item'}>
-  {/* 此处不输出 input 组件，对应的 name=title 的字段模型也不存在了 */}
+  {/* No input component is output here, and the field model with name=title does not exist */}
 </div>
 ```
 
 ### `x-pattern`
 
-组件的显示模式
+Component display mode
 
-用于字段组件，有三种显示模式：
+Used for field components, there are three display modes:
 
-- `'x-pattern': 'editable'` 可编辑
-- `'x-pattern': 'disabled'` 不可编辑
-- `'x-pattern': 'readPretty'` 友好阅读
+- `'x-pattern': 'editable'`: Editable
+- `'x-pattern': 'disabled'`: Non-editable
+- `'x-pattern': 'readPretty'`: Read-only
 
-如单行文本 `<SingleText />` 组件，编辑和不可编辑模式为 `<input />`，友好阅读模式为 `<div />`
+For example, the single-line text `<SingleText />` component, editable and non-editable modes are `<input />`, read-only mode is `<div />`.
 
 #### `'x-pattern': 'editable'`
 
@@ -463,7 +463,7 @@ const schema = {
 };
 ```
 
-JSX 等同于
+Equivalent JSX
 
 ```tsx | pure
 <div className={'form-item'}>
@@ -490,7 +490,7 @@ const schema = {
 };
 ```
 
-JSX 等同于
+Equivalent JSX
 
 ```tsx | pure
 <div className={'form-item'}>
@@ -517,7 +517,7 @@ const schema = {
 };
 ```
 
-JSX 等同于
+Equivalent JSX
 
 ```tsx | pure
 <div className={'form-item'}>
@@ -527,7 +527,7 @@ JSX 等同于
 
 ### `x-initializer`
 
-并不是所有的组件都支持 `x-initializer`，已有的通用的 schema 组件中，只有 Grid、ActionBar、Tabs 支持 `x-initializer` 参数。
+Not all components support `x-initializer`. Among existing common schema components, only Grid, ActionBar, and Tabs support the `x-initializer` parameter.
 
 ```ts
 {
@@ -537,11 +537,11 @@ JSX 等同于
 }
 ```
 
-自定义的组件中，也可以使用 `useSchemaInitializerRender()` 自主处理 `x-initializer` 的渲染，详细用法参考 [SchemaInitializer 初始化器](#) 章节。
+Custom components can also use `useSchemaInitializerRender()` to handle `x-initializer` rendering. Refer to the [SchemaInitializer Initializer](/development/client/ui-schema/initializer) section for detailed usage.
 
 ### `x-settings`
 
-并不是所有的组件都支持 `x-settings`，通常需要和 BlockItem、FormItem、CardItem 这类包装器组件结合使用。
+Not all components support `x-settings`. Usually, it needs to be combined with wrapper components such as BlockItem, FormItem, CardItem.
 
 ```ts
 {
@@ -552,11 +552,11 @@ JSX 等同于
 }
 ```
 
-自定义的组件中，也可以使用 `useSchemaSettingsRender()` 自主处理 `x-settings` 的渲染，详细用法参考 [SchemaSettings 配置器](#) 章节。
+Custom components can also use `useSchemaSettingsRender()` to handle `x-settings` rendering. Refer to the [SchemaSettings Configurator](/development/client/ui-schema/settings) section for detailed usage.
 
 ### `x-toolbar`
 
-并不是所有的组件都支持 `x-toolbar`，通常需要和 BlockItem、FormItem、CardItem 这类包装器组件结合使用。
+Not all components support `x-toolbar`. Usually, it needs to be combined with wrapper components such as BlockItem, FormItem, CardItem.
 
 ```ts
 {
@@ -567,4 +567,4 @@ JSX 等同于
 }
 ```
 
-自定义的组件中，也可以使用 `useToolbarRender()` 自主处理 `x-toolbar` 的渲染，详细用法参考 [SchemaToolbar 工具栏](#) 章节。
+Custom components can also use `useToolbarRender()` to handle `x-toolbar` rendering. Refer to the [SchemaToolbar Toolbar](/development/client/ui-schema/toolbar) section for detailed usage.

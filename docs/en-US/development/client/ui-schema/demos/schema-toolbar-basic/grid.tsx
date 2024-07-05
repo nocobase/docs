@@ -15,7 +15,7 @@ import { createApp } from './app';
 const MyToolbar = (props) => {
   const fieldSchema = useFieldSchema();
   return (
-    <SchemaToolbar title="这是标题" settings={fieldSchema['x-settings']} {...props}/>
+    <SchemaToolbar title="Title here" settings={fieldSchema['x-settings']} {...props}/>
   );
 };
 
@@ -32,7 +32,7 @@ const HomePage = () => {
             type: 'void',
             'x-decorator': 'CardItem',
             'x-decorator-props': {
-              title: '内置 SchemaToolbar',
+              title: 'Built-in SchemaToolbar',
             },
             'x-settings': 'mySettings',
             'x-component': 'div',
@@ -42,7 +42,7 @@ const HomePage = () => {
             type: 'void',
             'x-decorator': 'CardItem',
             'x-decorator-props': {
-              title: '自定义 MyToolbar',
+              title: 'Custom MyToolbar',
             },
             'x-toolbar': 'MyToolbar',
             'x-settings': 'mySettings',

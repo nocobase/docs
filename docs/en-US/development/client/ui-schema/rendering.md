@@ -1,14 +1,14 @@
-# Schema rendering
+# Schema Rendering
 
-## 核心组件
+## Core Components
 
-Schema 渲染相关组件包括：
+Schema rendering involves several core components:
 
-- `<SchemaComponentProvider />` 提供 schema 渲染所需的上下文
-- `<SchemaComponentOptions />` 用于扩展 components 和 scopes，非必须
-- `<SchemaComponent />` 用于渲染 schema，必须用在 `<SchemaComponentProvider />` 内部
+- `<SchemaComponentProvider />` provides the context needed for schema rendering.
+- `<SchemaComponentOptions />` extends components and scopes, optional.
+- `<SchemaComponent />` renders the schema, must be used within `<SchemaComponentProvider />`.
 
-基本用法如下
+Basic usage is as follows:
 
 ```tsx
 import React from 'react';
@@ -31,11 +31,11 @@ export default () => {
 };
 ```
 
-具体 API 参见 [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component)。
+For specific API details, refer to [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component).
 
-## 什么是 scope？
+## What is Scope?
 
-scope 指的是 schema 内可用的变量或函数。例如以下例子的函数 `t()` 需要注册到 scope 里，才能正确渲染 title
+Scope refers to variables or functions available within the schema. For example, the function `t()` in the following example needs to be registered in the scope to render the title correctly.
 
 ```tsx | pure
 <SchemaComponent
@@ -46,15 +46,15 @@ scope 指的是 schema 内可用的变量或函数。例如以下例子的函数
 >
 ```
 
-## 注册 components 和 scopes
+## Registering Components and Scopes
 
-SchemaComponentProvider、SchemaComponentOptions 和 SchemaComponent 的可以注册 components 和 scopes。区别在于：
+Components and scopes can be registered with SchemaComponentProvider, SchemaComponentOptions, and SchemaComponent. The differences are:
 
-- SchemaComponentProvider 提供最顶层的上下文
-- SchemaComponentOptions 用于局部上下文的替换和扩展
-- SchemaComponent 为当前 schema 的上下文
+- SchemaComponentProvider provides the top-level context.
+- SchemaComponentOptions is used to replace and extend the local context.
+- SchemaComponent provides the current schema's context.
 
-例如以下示例：
+For example:
 
 ```tsx | pure
 <SchemaComponentProvider components={{ ComponentA }}>
@@ -67,41 +67,41 @@ SchemaComponentProvider、SchemaComponentOptions 和 SchemaComponent 的可以�
 </SchemaComponentProvider>
 ```
 
-- schema1 里可以使用 ComponentA、ComponentB
-- schema2 里可以使用 ComponentA、ComponentC
-- schema3 里可以使用 ComponentA、ComponentD、ComponentE
-- schema4 里可以使用 ComponentA、ComponentD、ComponentF
+- schema1 can use ComponentA and ComponentB
+- schema2 can use ComponentA and ComponentC
+- schema3 can use ComponentA, ComponentD, and ComponentE
+- schema4 can use ComponentA, ComponentD, and ComponentF
 
-## 在 Application 里使用
+## Using in Application
 
-NocoBase 客户端的 Application 的 Providers 内置了 SchemaComponentProvider 组件
+The Application in the NocoBase client has built-in SchemaComponentProvider components in its Providers.
 
 ```ts
 class Application {
-  // 默认提供的 Providers
+  // Default Providers
   addDefaultProviders() {
     this.addProvider(SchemaComponentProvider, {
-      scopes: this.scopes
+      scopes: this.scopes,
       components: this.components,
     });
   }
 }
 ```
 
-最终渲染的组件结构如下
+The final rendering component structure is as follows:
 
 ```tsx | pure
 <Router>
-  {/* 路由的 Context Provider */}
+  {/* Context Provider for routing */}
   <SchemaComponentProvider components={app.components} scopes={app.scopes}>
-    {/* 其他自定义 Provider 组件 - 开始标签 */}
+    {/* Custom Provider components - start tag */}
     <Routes />
-    {/* 其他自定义 Provider 组件 - 结束标签 */}
+    {/* Custom Provider components - end tag */}
   </SchemaComponentProvider>
 </Router>
 ```
 
-应用内部使用时，无需再套 SchemaComponentProvider，直接用 SchemaComponent 就可以了
+When using it within the application, you don't need to wrap it with SchemaComponentProvider; you can directly use SchemaComponent.
 
 ```tsx
 import {
@@ -150,16 +150,16 @@ const app = new Application({
 export default app.getRootComponent();
 ```
 
-在应用的生命周期方法内可以使用 `app.addComponents()` 和 `app.addScopes()` 扩展全局的 components 和 scopes。
+In the application's lifecycle methods, you can use `app.addComponents()` and `app.addScopes()` to extend global components and scopes.
 
 ```ts
 class PluginHello extends Plugin {
   async load() {
     this.app.addComponents({
-      // 扩展的组件
+      // Extended components
     });
     this.app.addScopes({
-      // 扩展的 scope
+      // Extended scope
     });
   }
 }

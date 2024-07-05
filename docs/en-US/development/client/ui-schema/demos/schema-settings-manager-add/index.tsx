@@ -15,7 +15,7 @@ const HomePage = () => {
         type: 'void',
         'x-decorator': 'CardItem',
         'x-decorator-props': {
-          title: '卡片',
+          title: 'Card',
           bordered: true,
         },
         'x-settings': 'mySettings',

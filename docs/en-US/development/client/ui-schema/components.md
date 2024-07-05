@@ -1,23 +1,23 @@
 # Schema components
 
-## 包装器组件
+## Wrapper Components
 
 - BlockItem
 - FormItem
 - CardItem
 
-## 布局
+## Layout
 
 - Page
 - Grid
 - Tabs
 - Space
 
-## 字段组件
+## Field Components
 
-字段组件一般不单独使用，而是用在数据展示组件当中
+Field components are generally not used alone but are utilized within data display components.
 
-- CollectionField：万能组件
+- CollectionField: Universal component
 - Cascader
 - Checkbox
 - ColorSelect
@@ -38,9 +38,9 @@
 - TreeSelect
 - Upload
 
-## 数据展示组件
+## Data Display Components
 
-需要与字段组件搭配使用
+These need to be used in conjunction with field components.
 
 - Calendar
 - Form
@@ -48,22 +48,22 @@
 - Table
 - TableV2
 
-## 操作（onClick 事件型组件）
+## Actions (onClick Event Components)
 
 - Action
 - Action.Drawer
 - Action.Modal
-- ActionBar：用于操作布局
+- ActionBar: Used for action layout
 - Menu
 
-## 其他
+## Others
 
 - G2plot
 - Markdown.Void
 
-## `x-designer` 和 `x-initializer` 的使用场景
+## Use Cases of `x-designer` and `x-initializer`
 
-`x-decorator` 或 `x-component` 是以下组件时，`x-designer` 生效：
+`x-designer` is effective when `x-decorator` or `x-component` is one of the following components:
 
 - BlockItem
 - CardItem
@@ -71,7 +71,7 @@
 - Table.Column
 - Tabs.TabPane
 
-`x-decorator` 或 `x-component` 是以下组件时，`x-initializer` 生效：
+`x-initializer` is effective when `x-decorator` or `x-component` is one of the following components:
 
 - ActionBar
 - BlockItem

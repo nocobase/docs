@@ -1,37 +1,37 @@
 # Quick start
 
-## 1. 编写 Schema 组件
+## 1. Create Schema Component
 
-通过配置 `x-component` 将已注册的组件渲染出来
+Render registered components by configuring `x-component`.
 
-涉及知识点：
+Key Concepts:
 
-- [UI Schema 协议](/development/client/ui-schema/what-is-ui-schema)
-- [Schema 渲染](/development/client/ui-schema/rendering)
-- [扩展 Schema 组件](/development/client/ui-schema/extending)
+- [UI Schema Protocol](/development/client/ui-schema/what-is-ui-schema)
+- [Schema Rendering](/development/client/ui-schema/rendering)
+- [Extending Schema Components](/development/client/ui-schema/extending)
 
 <code src="./demos/demo1.tsx"></code>
 
-## 2. 将 Schema 组件添加到页面里
+## 2. Add Schema Component to the Page
 
-通过配置 `x-initializer` 将新的组件插入到已存在的 Schema 的相邻位置
+Insert new components adjacent to existing Schemas by configuring `x-initializer`.
 
-涉及知识点：
+Key Concepts:
 
-- [Designable 设计器](/development/client/ui-schema/designable)
-- [UI Schema 协议 - x-initializer 参数](/development/client/ui-schema/what-is-ui-schema#x-initializer)
-- [SchemaInitializer 初始化器](/development/client/ui-schema/initializer)
+- [Designable Designer](/development/client/ui-schema/designable)
+- [UI Schema Protocol - x-initializer Parameter](/development/client/ui-schema/what-is-ui-schema#x-initializer)
+- [SchemaInitializer](/development/client/ui-schema/initializer)
 
 <code src="./demos/demo2.tsx"></code>
 
-## 3. 为 Schema 添加设计器工具栏
+## 3. Add Designer Toolbar to Schema
 
-通过配置 `x-settings` 为 Schema 组件提供参数配置器，设计器工具栏默认开启拖拽功能
+Provide a parameter configurator for Schema components by configuring `x-settings`. The designer toolbar has drag-and-drop functionality enabled by default.
 
-涉及知识点：
+Key Concepts:
 
-- [UI Schema 协议 - x-settings 参数](/development/client/ui-schema/what-is-ui-schema#x-settings)
-- [SchemaSettings 设置器](/development/client/ui-schema/settings)
-- [现有 schema 节点的拖拽移动](/development/client/ui-schema/designable#移节点间的移动)
+- [UI Schema Protocol - x-settings Parameter](/development/client/ui-schema/what-is-ui-schema#x-settings)
+- [SchemaSettings](/development/client/ui-schema/settings)
+- [Dragging and Moving Existing Schema Nodes](/development/client/ui-schema/designable#move-between-nodes)
 
 <code src="./demos/demo3.tsx"></code>

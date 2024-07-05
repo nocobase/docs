@@ -1,23 +1,23 @@
 # Schema initializer
 
-当激活 UI 配置之后，界面上直观可见的各种橙色按钮就是 Schema 初始化器，用于向界面内添加各种区块、字段、操作等。
+After activating the UI configuration, the various visible orange buttons on the interface are Schema initializers, used for adding various blocks, fields, actions, etc., to the interface.
 
 <img src="./image-5.png" style="width: 960px;">
 
-## 内置的初始化器
+## Built-in initializers
 
 <img src="./image-3.png" style="width: 960px;"/>
 
-## 向已有的初始化器里添加项
+## Adding items to existing initializers
 
-推荐使用 [`schemaInitializerManager.addItem()`](#) 方法添加项，item 的详细配置参考 [SchemaInitializer Item API](#)
+It is recommended to use the [`schemaInitializerManager.addItem()`](#) method to add items. For detailed item configurations, refer to [SchemaInitializer Item API](#).
 
 ```ts
 class PluginDemoAddSchemaInitializerItem extends Plugin {
   async load() {
     this.schemaInitializerManager.addItem(
-      'myInitializer', // 示例，已存在的 schema initializer
-      'otherBlocks.custom', // 向 otherBlocks 分组内添加 custom
+      'myInitializer', // Example of an existing schema initializer
+      'otherBlocks.custom', // Add custom to the otherBlocks group
       {
         type: 'item',
         useComponentProps() {},
@@ -29,20 +29,20 @@ class PluginDemoAddSchemaInitializerItem extends Plugin {
 
 <!-- <code src="./demos/schema-initializer-manager-add-item/index.tsx"></code> -->
 
-## 添加新的初始化器
+## Adding new initializers
 
-SchemaInitializer 的详细参数参考 [SchemaInitializerOptions API](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer#new-schemainitializeroptions)
+For detailed parameters of SchemaInitializer, refer to [SchemaInitializerOptions API](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer#new-schemainitializeroptions).
 
 ```ts
 const myInitializer = new SchemaInitializer({
-  // 初始化器标识，全局唯一
+  // Unique identifier for the initializer
   name: 'myInitializer',
   title: 'Add Block',
-  // 包装，例如插入到 Grid 里，需要用 Grid.wrap 处理（添加行列标签）
+  // Wrapper, for example, inserting into a Grid requires using Grid.wrap (adds row and column tags)
   wrap: Grid.wrap,
-  // 插入位置，默认为 beforeEnd，支持 'beforeBegin' | 'afterBegin' | 'beforeEnd' | 'afterEnd'
+  // Insertion position, defaults to beforeEnd, supports 'beforeBegin' | 'afterBegin' | 'beforeEnd' | 'afterEnd'
   insertPosition: 'beforeEnd',
-  // 下拉菜单项
+  // Dropdown menu items
   items: [
     {
       name: 'a',
@@ -53,9 +53,9 @@ const myInitializer = new SchemaInitializer({
 });
 ```
 
-### 在插件的 load 方法中注册
+### Registering in the plugin's load method
 
-推荐使用 `schemaInitializerManager.add()` 将新增的初始化器添加到应用里
+It is recommended to use `schemaInitializerManager.add()` to add the new initializer to the application.
 
 ```ts
 class PluginDemoAddSchemaInitializer extends Plugin {
@@ -90,13 +90,13 @@ class PluginDemoAddSchemaInitializer extends Plugin {
 }
 ```
 
-### 如何使用新添加的初始化器
+### How to use the newly added initializer
 
-SchemaInitializer 用于 Schema 的 `x-initializer` 参数中。
+SchemaInitializer is used in the Schema's `x-initializer` parameter.
 
-#### 现有支持 `x-initializer` 的 Schema 组件
+#### Schema components that support `x-initializer`
 
-通用的支持 `x-initializer` 的 Schema 组件有 Grid、ActionBar、Tabs，例如：
+General Schema components that support `x-initializer` include Grid, ActionBar, Tabs. For example:
 
 ```ts
 {
@@ -108,13 +108,13 @@ SchemaInitializer 用于 Schema 的 `x-initializer` 参数中。
 
 <code src="./demos/schema-initializer-manager-add/index.tsx"></code>
 
-#### 自定义组件如何支持 `x-initializer` 参数
+#### How to support `x-initializer` in custom components
 
-如果 Grid、ActionBar、Tabs 这类组件并不满足需求，自定义的组件中，也可以使用 [useSchemaInitializerRender()](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer#useschemainitializerrender) 处理 `x-initializer` 的渲染。
+If Grid, ActionBar, Tabs, and similar components do not meet your needs, you can use [useSchemaInitializerRender()](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer#useschemainitializerrender) to handle the rendering of `x-initializer` in custom components.
 
 <code src="./demos/use-schema-initializer-render/index.tsx"></code>
 
-## API 参考
+## API Reference
 
 - [SchemaInitializerManager](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer-manager)
 - [SchemaInitializer](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer)

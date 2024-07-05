@@ -1,25 +1,25 @@
 # Designable
 
-NocoBase 通过 `createDesignable()` 方法为 Schema 提供设计能力
+NocoBase provides design capabilities for Schema through the `createDesignable()` method.
 
 ```ts
 import React from 'react';
 import { Schema } from '@formily/json-schema';
 import { createDesignable } from '@nocobase/client';
 
-// 创建一个 schema 示例
+// Create a schema example
 const current = new Schema({
   name: 'root',
   type: 'void',
   'x-component': 'Page',
 });
 
-// 为当前 schema 创建 designable
+// Create a designable for the current schema
 const dn = createDesignable({
   current,
 });
 
-// 在 schema 节点内部新增一个 hello 节点
+// Add a hello node inside the schema node
 dn.insertAfterBegin({
   name: 'hello',
   type: 'void',
@@ -42,16 +42,16 @@ console.log(current.toJSON());
 }
 ```
 
-在 Schema 组件中，可以直接使用 `useDesignable()` 来处理当前 Schema 节点
+In the Schema component, `useDesignable()` can be directly used to handle the current Schema node.
 
-```tsx
+```javascript
 import React from 'react';
 import { Button } from 'antd';
 import {
   SchemaComponent,
   SchemaComponentProvider,
   useDesignable,
-} from '@nocobase/client';
+} from '@nocobase.client';
 
 const Hello = () => <h1>Hello, world!</h1>;
 
@@ -67,7 +67,7 @@ const Page = (props) => {
           });
         }}
       >
-        点此新增子节点
+        Click to add a child node
       </Button>
       {props.children}
     </div>
@@ -91,68 +91,68 @@ export default () => {
 
 ## createDesignable vs useDesignable
 
-- createDesignable 需要传 current 参数，useDesignable 直接用于当前节点，不需要传 current
-- createDesignable 可以用在事件中，useDesignable 是 react hook 方法，必须先执行
-- createDesignable 的 current 可以是任意 schema，useDesignable 只能是当前 schema
+- `createDesignable` requires the `current` parameter, while `useDesignable` is used directly on the current node without needing `current`.
+- `createDesignable` can be used in events, while `useDesignable` is a React hook method that must be executed first.
+- `createDesignable`'s `current` can be any schema, while `useDesignable` can only be the current schema.
 
-使用场景
+Use cases:
 
-- 如果明确就是当前节点操作，直接用 useDesignable 更加便捷
-- 如果操作的不是当前节点，用 createDesignable 更合适
-- 如果是事件触发，如拖拽移动等，用 createDesignable 更合适
+- If it's clear that the operation is on the current node, using `useDesignable` is more convenient.
+- If the operation is not on the current node, `createDesignable` is more appropriate.
+- If the operation is triggered by an event, such as drag and drop, `createDesignable` is more suitable.
 
-## designable 的设计能力
+## Design capabilities of designable
 
-designable 为 schema 提供的设计能力体现在
+The design capabilities provided by designable for schema are reflected in:
 
-- 增：当前节点相邻位置插入
-- 查：查找子节点
-- 改：通过 patch 修改 schema 参数
-- 删：删除当前节点或者某个子节点
-- 移：节点间的移动
+- Add: Insert at an adjacent position of the current node.
+- Query: Find child nodes.
+- Modify: Change schema parameters via patch.
+- Delete: Delete the current node or a specific child node.
+- Move: Move between nodes.
 
-### 增：当前节点相邻位置插入
+### Add: Insert at an adjacent position of the current node
 
-与 DOM 的 [insert adjacent](https://dom.spec.whatwg.org/#insert-adjacent) 概念相似，Schema 也提供了 `insertAdjacent()` 方法用于解决邻近位置的插入问题。
+Similar to the DOM's [insert adjacent](https://dom.spec.whatwg.org/#insert-adjacent) concept, Schema also provides the `insertAdjacent()` method for resolving adjacent position insertion issues.
 
-四个邻近位置
+Four adjacent positions:
 
 ```html
 <!-- root -->
 <div>
-  <!-- beforeBegin 在当前节点的前面插入 -->
+  <!-- beforeBegin Insert before the current node -->
   <p>
-    <!-- afterBegin 在当前节点的第一个子节点前面插入 -->
+    <!-- afterBegin Insert before the first child of the current node -->
     ...
-    <!-- beforeEnd 在当前节点的最后一个子节点后面 -->
+    <!-- beforeEnd Insert after the last child of the current node -->
   </p>
-  <!-- afterEnd 在当前节点的后面 -->
+  <!-- afterEnd Insert after the current node -->
 </div>
 ```
 
-Schema 的写法如下
+The Schema is written as follows:
 
 ```ts
 {
   type: 'void',
   'x-component': 'div',
   properties: {
-    // beforeBegin 在当前节点的前面插入
+    // beforeBegin Insert before the current node
     node1: {
       type: 'void',
       'x-component': 'p',
       properties: {
-        // afterBegin 在当前节点的第一个子节点前面插入
+        // afterBegin Insert before the first child of the current node
         // ...
-        // beforeEnd 在当前节点的最后一个子节点后面
+        // beforeEnd Insert after the last child of the current node
       },
     },
-    // afterEnd 在当前节点的后面
+    // afterEnd Insert after the current node
   },
 }
 ```
 
-使用 `useDesignable()` 在当前 schema 相邻位置插入
+Use `useDesignable()` to insert at an adjacent position of the current schema.
 
 ```tsx
 import React from 'react';
@@ -246,7 +246,7 @@ export default () => {
 };
 ```
 
-使用 `createDesignable()` 在指定 schema 相邻位置插入
+Use `createDesignable()` to insert at an adjacent position of a specified schema.
 
 ```tsx
 import React from 'react';
@@ -288,7 +288,7 @@ const Page = (props) => {
           });
         }}
       >
-        在 Title2 后面添加
+        Add after Title2
       </Button>
       {props.children}
     </div>
@@ -327,23 +327,23 @@ export default () => {
 };
 ```
 
-### 查：查找子节点
+### Query: Find child nodes
 
-formily 的 json-schema 提供了 `reduceProperties` 遍历查找节点，但是太难用了，为此 Designable 提供了更易用的 `findProperties` 和 `findProperty` 方法来查找子节点
+formily's json-schema provides `reduceProperties` for traversing and finding nodes, but it's too cumbersome to use. Therefore, Designable provides easier-to-use `findProperties` and `findProperty` methods to find child nodes.
 
 #### `findProperties`
 
-查找满足条件的全部子节点，返回一个数组
+Find all child nodes that meet the conditions and return an array.
 
 ```ts
 interface FindOptions {
-  // 过滤条件
+  // Filter conditions
   filter: any;
-  // 跳过查找的元素
+  // Elements to skip during the search
   skipOn?: (s: Schema) => boolean;
-  // 当查到什么元素时退出
+  // Exit when finding a certain element
   breakOn?: (s: Schema) => boolean;
-  // 递归查找
+  // Recursive search
   recursive?: boolean;
 }
 
@@ -352,7 +352,7 @@ class Designable {
 }
 ```
 
-示例查找满足条件的所有节点
+Example to find all nodes that meet the conditions:
 
 ```ts
 const items = dn.findProperties({
@@ -378,17 +378,17 @@ console.log(items.map((s) => schema.toJSON()));
 
 #### `findProperty`
 
-查找满足条件的第一个子节点
+Find the first child node that meets the conditions.
 
 ```ts
 interface FindOptions {
-  // 过滤条件
+  // Filter conditions
   filter: any;
-  // 跳过查找的元素
+  // Elements to skip during the search
   skipOn?: (s: Schema) => boolean;
-  // 当查到什么元素时退出
+  // Exit when finding a certain element
   breakOn?: (s: Schema) => boolean;
-  // 递归查找
+  // Recursive search
   recursive?: boolean;
 }
 
@@ -397,7 +397,7 @@ class Designable {
 }
 ```
 
-示例
+Example:
 
 ```ts
 const current = new Schema({
@@ -432,7 +432,7 @@ console.log(schema.toJSON());
 }
 ```
 
-### 改：修改 schema 参数
+### Modify: Change schema parameters
 
 ```ts
 const current = new Schema({
@@ -454,7 +454,7 @@ dn.shallowMerge({
 });
 ```
 
-### 删：删除当前节点或者某个子节点
+### Delete: Delete the current node or a specific child node
 
 ```ts
 const current = new Schema({
@@ -478,11 +478,11 @@ dn.remove({
 });
 ```
 
-### 移：节点间的移动
+### Move: Move between nodes
 
-insertAdjacent 等方法也可用于节点的拖拽移动
+`insertAdjacent` and other methods can also be used for node drag and drop movement.
 
-```tsx
+```javascript
 import React from 'react';
 import { uid } from '@formily/shared';
 import { observer, useField, useFieldSchema } from '@formily/react';
@@ -506,7 +506,7 @@ const useDragEnd = () => {
     const activeSchema = active?.data?.current?.schema;
     const overSchema = over?.data?.current?.schema;
 
-    if (!activeSchema || !overSchema) {
+    if (!activeSchema or !overSchema) {
       return;
     }
 

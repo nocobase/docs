@@ -25,13 +25,13 @@ const HomePage = () => {
             'x-decorator': 'BlockItem',
             'x-settings': 'mySettings',
             'x-component': 'div',
-            'x-content': '这是 BlockItem 的样式',
+            'x-content': 'This is a BlockItem.',
           },
           hello2: {
             type: 'void',
             'x-decorator': 'CardItem',
             'x-decorator-props': {
-              title: '卡片',
+              title: 'Card',
               bordered: true,
             },
             'x-settings': 'mySettings',
@@ -40,14 +40,14 @@ const HomePage = () => {
           },
           hello3: {
             type: 'void',
-            title: '字段',
+            title: 'Field',
             'x-decorator': 'FormItem',
             'x-settings': 'mySettings',
             'x-component': 'Input',
           },
           hello4: {
             type: 'void',
-            title: '操作',
+            title: 'Action',
             'x-settings': 'mySettings',
             'x-component': 'Action',
           },
