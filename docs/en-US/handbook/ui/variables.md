@@ -155,3 +155,7 @@ Related use cases include:
 This variable represents the search parameters in the current page URL. This variable is only available when there is a query string in the page URL. It is more convenient to use it together with [Link](/handbook/ui/actions/types/link).
 
 ![20240603200410](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240603200410.gif)
+
+### API token
+
+This variable's value is a string that serves as a credential for accessing the NocoBase API. It can be used to authenticate the user's identity.
