@@ -161,3 +161,7 @@
 该变量表示的是当前页面 URL 中的查询参数，只有当页面 URL 中存在查询字符串时该变量才是可用状态。配合[链接操作](/handbook/ui/actions/types/link)一起使用会更方便。
 
 ![20240603200410](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240603200410.gif)
+
+### API token
+
+该变量的值是一个字符串，是用于访问 NocoBase API 的凭证。可以用于验证用户的身份。
