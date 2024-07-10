@@ -181,3 +181,63 @@ curl -X POST "http://localhost:13000/api/users:move?sourceId=1&targetId=2"
 | `targetScope` | `string`                   | Sorting scope, a resource can be sorted by different scopes | -       |
 | `sticky`      | `boolean`                  | Whether to stick the moved element                          | -       |
 | `method`      | `insertAfter` \| `prepend` | Insertion type, whether to insert before                    |
+
+### set
+
+设置资源的关联对象。`POST /api/<resource>/<resourceKey>/<association>:set`.
+
+```shell
+curl "http://localhost:13000/api/users/1/roles:set" \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d '["admin", "member"]'
+```
+
+#### 请求体
+
+- `TargetKey | TargetKey[]` - 关联对象主键值数组。
+
+### add
+
+添加资源的关联对象。`POST /api/<resource>/<resourceKey>/<association>:add`.
+
+```shell
+curl "http://localhost:13000/api/users/1/roles:add" \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d '["admin"]'
+```
+
+#### 请求体
+
+- `TargetKey | TargetKey[]` - 关联对象主键值数组。
+
+### remove
+
+移除资源的关联对象。`POST /api/<resource>/<resourceKey>/<association>:remove`.
+
+```shell
+curl "http://localhost:13000/api/users/1/roles:remove" \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d '["admin"]'
+```
+
+#### 请求体
+
+- `TargetKey | TargetKey[]` - 关联对象主键值数组。
+
+### toggle
+
+切换资源的关联对象，存在的移除，不存在的添加。`POST /api/<resource>/<resourceKey>/<association>:toggle`.
+
+```shell
+curl "http://localhost:13000/api/users/1/roles:toggle" \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -d '["admin", "member"]'
+```
+
+#### 请求体
+
+- `TargetKey | TargetKey[]` - 关联对象主键值数组。
