@@ -26,9 +26,9 @@ A page can serve as a container for blocks, housing a variety of blocks. (See [P
 
 ### Link
 
-Links can redirect to third-party URLs.
+Links can redirect to third-party URLs. You can use variables in the URL and Search params.
 
-![](https://static-docs.nocobase.com/80a6e6a875c565425224d9325332a1ad.png)
+![20240709231114](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240709231114.png)
 
 ## Configuring the Menu
 
