@@ -19,12 +19,12 @@ cd C:\your\path\my-project
 
 ## 2. 更新 image 版本号
 
-- `main` Git 源码的 main 分支版本，非稳定版本，尝鲜用户可以使用（只支持 AMD64 架构）
-- `latest` 已发布的最新版，如果追求稳定，建议使用这个版本
+- `latest` 截止目前最稳定的版本，推荐安装此版本；
+- `next` 内测版，包含一些未发布的新特性，这个版本可能还不完全稳定，适用于开发者或测试人员，用于提前体验新功能或进行兼容性测试；
 - `1.2.4-alpha` 指定版本号升级，最新版本情况，查看[已发布版本列表](https://hub.docker.com/r/nocobase/nocobase/tags)
 
 :::warning
-镜像只能升级不能降级，main 最新，不能将 main 降级为 latest
+镜像只能升级不能降级，不能将 next 降级为 latest
 :::
 
 ```yml

@@ -19,12 +19,12 @@ cd C:\your\path\my-project
 
 ## 2. Update the image version
 
-- `main`: Main branch version from Git source, not stable, for early adopters (supports only AMD64 architecture)
-- `latest`: Latest released version, recommended for stability
+- `latest` or `main`：The most stable version to date, recommended for installation;
+- `next`：Alpha version, including some unreleased new features. This version may not be completely stable and is suitable for developers or testers to experience new features in advance or conduct compatibility testing;
 - `1.2.4-alpha`: Upgrade to a specific version. For the latest versions, see the [released versions list](https://hub.docker.com/r/nocobase/nocobase/tags)
 
 :::warning
-Images can only be upgraded, not downgraded. The `main` version cannot be downgraded to `latest`.
+Images can only be upgraded, not downgraded. The `next` version cannot be downgraded to `latest`.
 :::
 
 ```yml
