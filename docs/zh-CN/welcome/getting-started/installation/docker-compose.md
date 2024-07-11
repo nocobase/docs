@@ -16,7 +16,7 @@ vi docker-compose.yml
 
 ## 2. 配置 docker-compose.yml
 
-不同数据库配置参数略有不同，请选择合适的数据库配置，并复制到 docker-compose.yml 里
+不同数据库配置参数略有不同（[了解各数据库的差异](/welcome/getting-started/installation#选择哪种数据库)），请选择合适的数据库配置，并复制到 docker-compose.yml 里
 
 <Tabs>
 
