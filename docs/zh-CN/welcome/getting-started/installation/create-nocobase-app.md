@@ -34,29 +34,14 @@ $ yarn config set sqlite3_binary_host_mirror https://npmmirror.com/mirrors/sqlit
 
 ## 1. 创建 NocoBase 项目
 
+### latest 版本
+
+截止目前最稳定的版本，推荐安装此版本。
+
+<Tabs>
+<div label="PostgreSQL" name="postgres">
+
 ```bash
-# SQLite
-yarn create nocobase-app my-nocobase-app -d sqlite
-
-# MySQL
-yarn create nocobase-app my-nocobase-app -d mysql \
-   -e DB_HOST=localhost \
-   -e DB_PORT=3306 \
-   -e DB_DATABASE=nocobase \
-   -e DB_USER=nocobase \
-   -e DB_PASSWORD=nocobase \
-   -e DB_TIMEZONE=+08:00
-
-# MariaDB
-yarn create nocobase-app my-nocobase-app -d mariadb \
-   -e DB_HOST=localhost \
-   -e DB_PORT=3306 \
-   -e DB_DATABASE=nocobase \
-   -e DB_USER=nocobase \
-   -e DB_PASSWORD=nocobase \
-   -e DB_TIMEZONE=+08:00
-
-# PostgreSQL
 yarn create nocobase-app my-nocobase-app -d postgres \
    -e DB_HOST=localhost \
    -e DB_PORT=5432 \
@@ -64,6 +49,100 @@ yarn create nocobase-app my-nocobase-app -d postgres \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase
 ```
+
+</div>
+
+<div label="MySQL" name="mysql">
+
+```bash
+yarn create nocobase-app my-nocobase-app -d mysql \
+   -e DB_HOST=localhost \
+   -e DB_PORT=3306 \
+   -e DB_DATABASE=nocobase \
+   -e DB_USER=nocobase \
+   -e DB_PASSWORD=nocobase \
+   -e DB_TIMEZONE=+08:00
+```
+
+</div>
+
+<div label="MariaDB" name="mariadb">
+
+```bash
+yarn create nocobase-app my-nocobase-app -d mariadb \
+   -e DB_HOST=localhost \
+   -e DB_PORT=3306 \
+   -e DB_DATABASE=nocobase \
+   -e DB_USER=nocobase \
+   -e DB_PASSWORD=nocobase \
+   -e DB_TIMEZONE=+08:00
+```
+
+</div>
+
+<div label="SQLite" name="sqlite">
+
+```bash
+yarn create nocobase-app my-nocobase-app -d sqlite
+```
+
+</div>
+</Tabs>
+
+### next 版本
+
+内测版，包含一些未发布的新特性，这个版本可能还不完全稳定，适用于开发者或测试人员，用于提前体验新功能或进行兼容性测试。
+
+<Tabs>
+<div label="PostgreSQL" name="postgres">
+
+```bash
+npx create-nocobase-app@next my-nocobase-app -d postgres \
+   -e DB_HOST=localhost \
+   -e DB_PORT=5432 \
+   -e DB_DATABASE=nocobase \
+   -e DB_USER=nocobase \
+   -e DB_PASSWORD=nocobase
+```
+
+</div>
+
+<div label="MySQL" name="mysql">
+
+```bash
+npx create-nocobase-app@next my-nocobase-app -d mysql \
+   -e DB_HOST=localhost \
+   -e DB_PORT=3306 \
+   -e DB_DATABASE=nocobase \
+   -e DB_USER=nocobase \
+   -e DB_PASSWORD=nocobase \
+   -e DB_TIMEZONE=+08:00
+```
+
+</div>
+
+<div label="MariaDB" name="mariadb">
+
+```bash
+npx create-nocobase-app@next my-nocobase-app -d mariadb \
+   -e DB_HOST=localhost \
+   -e DB_PORT=3306 \
+   -e DB_DATABASE=nocobase \
+   -e DB_USER=nocobase \
+   -e DB_PASSWORD=nocobase \
+   -e DB_TIMEZONE=+08:00
+```
+
+</div>
+
+<div label="SQLite" name="sqlite">
+
+```bash
+npx create-nocobase-app@next my-nocobase-app -d sqlite
+```
+
+</div>
+</Tabs>
 
 :::warning
 - `APP_KEY` 是应用的密钥，用于生成用户 token 等（如果 APP_KEY 修改了，旧的 token 也会随之失效）。它可以是任意随机字符串。请修改为自己的秘钥，并确保不对外泄露。

@@ -26,29 +26,14 @@ $ yarn -v
 
 ## 1. Create a NocoBase project
 
+### Latest version
+
+The most stable version to date, recommended for installation.
+
+<Tabs>
+<div label="PostgreSQL" name="postgres">
+
 ```bash
-# SQLite
-yarn create nocobase-app my-nocobase-app -d sqlite
-
-# MySQL
-yarn create nocobase-app my-nocobase-app -d mysql \
-   -e DB_HOST=localhost \
-   -e DB_PORT=3306 \
-   -e DB_DATABASE=nocobase \
-   -e DB_USER=nocobase \
-   -e DB_PASSWORD=nocobase \
-   -e DB_TIMEZONE=+08:00
-
-# MariaDB
-yarn create nocobase-app my-nocobase-app -d mariadb \
-   -e DB_HOST=localhost \
-   -e DB_PORT=3306 \
-   -e DB_DATABASE=nocobase \
-   -e DB_USER=nocobase \
-   -e DB_PASSWORD=nocobase \
-   -e DB_TIMEZONE=+08:00
-
-# PostgreSQL
 yarn create nocobase-app my-nocobase-app -d postgres \
    -e DB_HOST=localhost \
    -e DB_PORT=5432 \
@@ -56,6 +41,100 @@ yarn create nocobase-app my-nocobase-app -d postgres \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase
 ```
+
+</div>
+
+<div label="MySQL" name="mysql">
+
+```bash
+yarn create nocobase-app my-nocobase-app -d mysql \
+   -e DB_HOST=localhost \
+   -e DB_PORT=3306 \
+   -e DB_DATABASE=nocobase \
+   -e DB_USER=nocobase \
+   -e DB_PASSWORD=nocobase \
+   -e DB_TIMEZONE=+08:00
+```
+
+</div>
+
+<div label="MariaDB" name="mariadb">
+
+```bash
+yarn create nocobase-app my-nocobase-app -d mariadb \
+   -e DB_HOST=localhost \
+   -e DB_PORT=3306 \
+   -e DB_DATABASE=nocobase \
+   -e DB_USER=nocobase \
+   -e DB_PASSWORD=nocobase \
+   -e DB_TIMEZONE=+08:00
+```
+
+</div>
+
+<div label="SQLite" name="sqlite">
+
+```bash
+yarn create nocobase-app my-nocobase-app -d sqlite
+```
+
+</div>
+</Tabs>
+
+### Next version
+
+Alpha version, including some unreleased new features. This version may not be completely stable and is suitable for developers or testers to experience new features in advance or conduct compatibility testing.
+
+<Tabs>
+<div label="PostgreSQL" name="postgres">
+
+```bash
+npx create-nocobase-app@next my-nocobase-app -d postgres \
+   -e DB_HOST=localhost \
+   -e DB_PORT=5432 \
+   -e DB_DATABASE=nocobase \
+   -e DB_USER=nocobase \
+   -e DB_PASSWORD=nocobase
+```
+
+</div>
+
+<div label="MySQL" name="mysql">
+
+```bash
+npx create-nocobase-app@next my-nocobase-app -d mysql \
+   -e DB_HOST=localhost \
+   -e DB_PORT=3306 \
+   -e DB_DATABASE=nocobase \
+   -e DB_USER=nocobase \
+   -e DB_PASSWORD=nocobase \
+   -e DB_TIMEZONE=+08:00
+```
+
+</div>
+
+<div label="MariaDB" name="mariadb">
+
+```bash
+npx create-nocobase-app@next my-nocobase-app -d mariadb \
+   -e DB_HOST=localhost \
+   -e DB_PORT=3306 \
+   -e DB_DATABASE=nocobase \
+   -e DB_USER=nocobase \
+   -e DB_PASSWORD=nocobase \
+   -e DB_TIMEZONE=+08:00
+```
+
+</div>
+
+<div label="SQLite" name="sqlite">
+
+```bash
+npx create-nocobase-app@next my-nocobase-app -d sqlite
+```
+
+</div>
+</Tabs>
 
 :::warning
 - `APP_KEY` is the application's secret key, used for generating user tokens and so on (if APP_KEY is changed, the old tokens will also become invalid). It can be any random string. Please change it to your own secret key and ensure it is not disclosed to the public.

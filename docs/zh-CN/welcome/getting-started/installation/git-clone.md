@@ -9,8 +9,20 @@
 
 ## 1. 将 NocoBase 下载到本地
 
+### latest 版本
+
+截止目前最稳定的版本，推荐下载此版本。
+
 ```bash
-git clone https://github.com/nocobase/nocobase.git my-nocobase-app
+git clone https://github.com/nocobase/nocobase.git -b main --depth=1 my-nocobase
+```
+
+### next 版本
+
+内测版，包含一些未发布的新特性，这个版本可能还不完全稳定，适用于开发者或测试人员，用于提前体验新功能或进行兼容性测试。
+
+```bash
+git clone https://github.com/nocobase/nocobase.git -b next --depth=1 my-nocobase
 ```
 
 ## 2. 切换目录

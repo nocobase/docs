@@ -221,8 +221,8 @@ services:
 
 Choose the appropriate NocoBase version:
 
-- `main`: Main branch version from the Git repository, not stable, for experimental use (only supports AMD64 architecture)
-- `latest`: Latest released version, recommended for stability
+- `latest` or `main`：The most stable version to date, recommended for installation;
+- `next`：Alpha version, including some unreleased new features. This version may not be completely stable and is suitable for developers or testers to experience new features in advance or conduct compatibility testing;
 - `1.2.4-alpha`: Specify the version number. To check the latest version, see the [list of released versions](https://hub.docker.com/r/nocobase/nocobase/tags).
 
 Example:
@@ -231,8 +231,8 @@ Example:
 # ...
 services:
   app:
-    image: nocobase/nocobase:main
     image: nocobase/nocobase:latest
+    image: nocobase/nocobase:next
     image: nocobase/nocobase:1.2.4-alpha
 # ...
 ```

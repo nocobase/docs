@@ -9,8 +9,20 @@ Make sure you have:
 
 ## 1. Download with Git
 
+### Latest version
+
+The most stable version to date, recommended for download.
+
 ```bash
-git clone https://github.com/nocobase/nocobase.git my-nocobase-app
+git clone https://github.com/nocobase/nocobase.git -b main --depth=1 my-nocobase
+```
+
+### Next version
+
+Alpha version, including some unreleased new features. This version may not be completely stable and is suitable for developers or testers to experience new features in advance or conduct compatibility testing.
+
+```bash
+git clone https://github.com/nocobase/nocobase.git -b next --depth=1 my-nocobase
 ```
 
 ## 2. Switch to the project directory

@@ -221,9 +221,9 @@ services:
 
 选择合适的 NocoBase 版本
 
-- `main` Git 源码的 main 分支版本，非稳定版本，尝鲜用户可以使用（只支持 AMD64 架构）
-- `latest` 已发布的最新版，如果追求稳定，建议使用这个版本
-- `1.2.4-alpha` 指定版本号。最新版本查看 [已发布版本列表](https://hub.docker.com/r/nocobase/nocobase/tags)
+- `latest` 或 `main`：截止目前最稳定的版本，推荐安装此版本；
+- `next`：内测版，包含一些未发布的新特性，这个版本可能还不完全稳定，适用于开发者或测试人员，用于提前体验新功能或进行兼容性测试；
+- `1.2.4-alpha`：指定版本号，最新版本查看 [已发布版本列表](https://hub.docker.com/r/nocobase/nocobase/tags)
 
 示例
 
@@ -232,13 +232,13 @@ services:
 services:
   app:
     # 国内用户建议使用阿里云镜像
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:main
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:next
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:1.2.4-alpha
 
     # Docker Hub 镜像（国内用户无法下载）
-    image: nocobase/nocobase:main
     image: nocobase/nocobase:latest
+    image: nocobase/nocobase:next
     image: nocobase/nocobase:1.2.4-alpha
 # ...
 ```
