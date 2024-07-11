@@ -41,7 +41,7 @@ services:
       # If APP_KEY is changed, old tokens will also become invalid.
       # It can be any random string, and make sure it is not exposed.
       - APP_KEY=your-secret-key
-      # Database type, supports postgres, mysql, mariadb, sqlite
+      # Database type, supports postgres, mysql, mariadb
       - DB_DIALECT=postgres
       # Database host, can be replaced with the IP of an existing database server
       - DB_HOST=postgres
@@ -95,7 +95,7 @@ services:
       # If APP_KEY is changed, old tokens will also become invalid.
       # It can be any random string, and make sure it is not exposed.
       - APP_KEY=your-secret-key
-      # Database type, supports postgres, mysql, mariadb, sqlite
+      # Database type, supports postgres, mysql, mariadb
       - DB_DIALECT=mysql
       # Database host, can be replaced with the IP of an existing database server
       - DB_HOST=mysql
@@ -153,7 +153,7 @@ services:
       # If APP_KEY is changed, old tokens will also become invalid.
       # It can be any random string, and make sure it is not exposed.
       - APP_KEY=your-secret-key
-      # Database type, supports postgres, mysql, mariadb, sqlite
+      # Database type, supports postgres, mysql, mariadb
       - DB_DIALECT=mariadb
       # Database host, can be replaced with the IP of an existing database server
       - DB_HOST=mariadb
@@ -189,34 +189,6 @@ services:
 ```
 
 </div>
-
-<div label="SQLite" name="sqlite">
-
-```yml
-version: "3"
-
-networks:
-  nocobase:
-    driver: bridge
-
-services:
-  app:
-    image: nocobase/nocobase:latest
-    networks:
-      - nocobase
-    environment:
-      # The application's secret key, used to generate user tokens, etc.
-      # If APP_KEY is changed, old tokens will also become invalid.
-      # It can be any random string, and make sure it is not exposed.
-      - APP_KEY=your-secret-key
-    volumes:
-      - ./storage:/app/nocobase/storage
-    ports:
-      - "13000:80"
-```
-
-</div>
-
 </Tabs>
 
 Choose the appropriate NocoBase version:
@@ -249,16 +221,16 @@ $ docker-compose up -d
 # view app logs
 $ docker-compose logs app
 
-app-sqlite-app-1  | nginx started
-app-sqlite-app-1  | yarn run v1.22.15
-app-sqlite-app-1  | $ cross-env DOTENV_CONFIG_PATH=.env node -r dotenv/config packages/app/server/lib/index.js install -s
-app-sqlite-app-1  | Done in 2.72s.
-app-sqlite-app-1  | yarn run v1.22.15
-app-sqlite-app-1  | $ pm2-runtime start --node-args="-r dotenv/config" packages/app/server/lib/index.js -- start
-app-sqlite-app-1  | 2022-04-28T15:45:38: PM2 log: Launching in no daemon mode
-app-sqlite-app-1  | 2022-04-28T15:45:38: PM2 log: App [index:0] starting in -fork mode-
-app-sqlite-app-1  | 2022-04-28T15:45:38: PM2 log: App [index:0] online
-app-sqlite-app-1  | 🚀 NocoBase server running at: http://localhost:13000/
+app-postgres-app-1  | nginx started
+app-postgres-app-1  | yarn run v1.22.15
+app-postgres-app-1  | $ cross-env DOTENV_CONFIG_PATH=.env node -r dotenv/config packages/app/server/lib/index.js install -s
+app-postgres-app-1  | Done in 2.72s.
+app-postgres-app-1  | yarn run v1.22.15
+app-postgres-app-1  | $ pm2-runtime start --node-args="-r dotenv/config" packages/app/server/lib/index.js -- start
+app-postgres-app-1  | 2022-04-28T15:45:38: PM2 log: Launching in no daemon mode
+app-postgres-app-1  | 2022-04-28T15:45:38: PM2 log: App [index:0] starting in -fork mode-
+app-postgres-app-1  | 2022-04-28T15:45:38: PM2 log: App [index:0] online
+app-postgres-app-1  | 🚀 NocoBase server running at: http://localhost:13000/
 ```
 
 ## 4. Log in to NocoBase

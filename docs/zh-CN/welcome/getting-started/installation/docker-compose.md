@@ -16,7 +16,7 @@ vi docker-compose.yml
 
 ## 2. 配置 docker-compose.yml
 
-不同数据库配置参数略有不同（[了解各数据库的差异](/welcome/getting-started/installation#选择哪种数据库)），请选择合适的数据库配置，并复制到 docker-compose.yml 里
+不同数据库配置参数略有不同，请选择合适的数据库配置，并复制到 docker-compose.yml 里
 
 <Tabs>
 
@@ -189,34 +189,6 @@ services:
 ```
 
 </div>
-
-<div label="SQLite" name="sqlite">
-
-```yml
-version: "3"
-
-networks:
-  nocobase:
-    driver: bridge
-
-services:
-  app:
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
-    networks:
-      - nocobase
-    environment:
-      # 应用的密钥，用于生成用户 token 等
-      # 如果 APP_KEY 修改了，旧的 token 也会随之失效
-      # 可以是任意随机字符串，并确保不对外泄露
-      - APP_KEY=your-secret-key
-    volumes:
-      - ./storage:/app/nocobase/storage
-    ports:
-      - "13000:80"
-```
-
-</div>
-
 </Tabs>
 
 选择合适的 NocoBase 版本
@@ -255,16 +227,16 @@ $ docker-compose up -d
 # 查看 app 进程的情况
 $ docker-compose logs app
 
-app-sqlite-app-1  | nginx started
-app-sqlite-app-1  | yarn run v1.22.15
-app-sqlite-app-1  | $ cross-env DOTENV_CONFIG_PATH=.env node -r dotenv/config packages/app/server/lib/index.js install -s
-app-sqlite-app-1  | Done in 2.72s.
-app-sqlite-app-1  | yarn run v1.22.15
-app-sqlite-app-1  | $ pm2-runtime start --node-args="-r dotenv/config" packages/app/server/lib/index.js -- start
-app-sqlite-app-1  | 2022-04-28T15:45:38: PM2 log: Launching in no daemon mode
-app-sqlite-app-1  | 2022-04-28T15:45:38: PM2 log: App [index:0] starting in -fork mode-
-app-sqlite-app-1  | 2022-04-28T15:45:38: PM2 log: App [index:0] online
-app-sqlite-app-1  | 🚀 NocoBase server running at: http://localhost:13000/
+app-postgres-app-1  | nginx started
+app-postgres-app-1  | yarn run v1.22.15
+app-postgres-app-1  | $ cross-env DOTENV_CONFIG_PATH=.env node -r dotenv/config packages/app/server/lib/index.js install -s
+app-postgres-app-1  | Done in 2.72s.
+app-postgres-app-1  | yarn run v1.22.15
+app-postgres-app-1  | $ pm2-runtime start --node-args="-r dotenv/config" packages/app/server/lib/index.js -- start
+app-postgres-app-1  | 2022-04-28T15:45:38: PM2 log: Launching in no daemon mode
+app-postgres-app-1  | 2022-04-28T15:45:38: PM2 log: App [index:0] starting in -fork mode-
+app-postgres-app-1  | 2022-04-28T15:45:38: PM2 log: App [index:0] online
+app-postgres-app-1  | 🚀 NocoBase server running at: http://localhost:13000/
 ```
 
 ## 4. 登录 NocoBase

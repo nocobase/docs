@@ -5,7 +5,7 @@
 Make sure you have:
 
 - Installed Node.js 18+, Yarn 1.22.x
-- Configured and started one of the required database SQLite 3.x, MySQL 8.x, MariaDB 10.9+, PostgreSQL 10+
+- Configured and started one of the required database MySQL 8.x, MariaDB 10.9+, PostgreSQL 10+
 
 You can download and install the latest LTS version from the official website. It is recommended to use nvm (or nvm-windows for Win systems) to manage Node.js versions if you plan to work with Node.js for a long time.
 
@@ -71,14 +71,6 @@ yarn create nocobase-app my-nocobase-app -d mariadb \
 ```
 
 </div>
-
-<div label="SQLite" name="sqlite">
-
-```bash
-yarn create nocobase-app my-nocobase-app -d sqlite
-```
-
-</div>
 </Tabs>
 
 ### Next version
@@ -123,14 +115,6 @@ npx create-nocobase-app@next my-nocobase-app -d mariadb \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
    -e DB_TIMEZONE=+08:00
-```
-
-</div>
-
-<div label="SQLite" name="sqlite">
-
-```bash
-npx create-nocobase-app@next my-nocobase-app -d sqlite
 ```
 
 </div>

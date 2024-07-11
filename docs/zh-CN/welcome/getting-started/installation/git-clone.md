@@ -5,7 +5,7 @@
 请确保你已经：
 
 - 安装了 Git、Node.js 18+、Yarn 1.22.x
-- 配置并启动了所需数据库 SQLite 3.x、MySQL 8.0.17+、MariaDB 10.9+、PostgreSQL 10+ 任选其一（[了解各数据库的差异](/welcome/getting-started/installation#选择哪种数据库)）
+- 配置并启动了所需数据库 MySQL 8.0.17+、MariaDB 10.9+、PostgreSQL 10+ 任选其一
 
 ## 1. 将 NocoBase 下载到本地
 
@@ -52,10 +52,11 @@ yarn install --frozen-lockfile
 NocoBase 所需的环境变量储存在根目录 `.env` 文件里，根据实际情况修改环境变量，如果你不知道怎么改，[点此查看环境变量说明](../env.md)，也可以保持默认。
 
 ```bash
-# 使用 sqlite 数据库
-DB_DIALECT=sqlite
-# sqlite 文件地址
-DB_STORAGE=storage/db/nocobase.sqlite
+DB_HOST=localhost
+DB_PORT=5432
+DB_DATABASE=postgres
+DB_USER=nocobase
+DB_PASSWORD=nocobase
 ```
 
 :::warning

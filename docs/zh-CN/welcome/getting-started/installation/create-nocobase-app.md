@@ -5,7 +5,7 @@
 请确保你已经：
 
 - 安装了 Node.js 18+、Yarn 1.22.x
-- 配置并启动了所需数据库 SQLite 3.x、MySQL 8.0.17+、MariaDB 10.9+、PostgreSQL 10+ 任选其一（[了解各数据库的差异](/welcome/getting-started/installation#选择哪种数据库)）
+- 配置并启动了所需数据库 MySQL 8.0.17+、MariaDB 10.9+、PostgreSQL 10+ 任选其一
 
 如果你没有安装 Node.js 可以从官网下载并安装最新的 LTS 版本。如果你打算长期与 Node.js 打交道，推荐使用 nvm（Win 系统可以使用 nvm-windows ）来管理 Node.js 版本。
 
@@ -79,15 +79,6 @@ yarn create nocobase-app my-nocobase-app -d mariadb \
 ```
 
 </div>
-
-<div label="SQLite" name="sqlite">
-
-```bash
-# 仅用于开发测试
-yarn create nocobase-app my-nocobase-app -d sqlite
-```
-
-</div>
 </Tabs>
 
 ### next 版本
@@ -132,14 +123,6 @@ npx create-nocobase-app@next my-nocobase-app -d mariadb \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
    -e DB_TIMEZONE=+08:00
-```
-
-</div>
-
-<div label="SQLite" name="sqlite">
-
-```bash
-npx create-nocobase-app@next my-nocobase-app -d sqlite
 ```
 
 </div>

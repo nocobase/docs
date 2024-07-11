@@ -5,7 +5,7 @@
 Make sure you have:
 
 - Git, Node.js 18+, Yarn 1.22.x installed
-- Configured and started the required database SQLite 3.x, MySQL 8.x, MariaDB 10.9+, PostgreSQL 10+ choose one
+- Configured and started the required database MySQL 8.x, MariaDB 10.9+, PostgreSQL 10+ choose one
 
 ## 1. Download with Git
 
@@ -44,10 +44,11 @@ yarn install --frozen-lockfile --production
 The environment variables required by NocoBase are stored in the root `.env` file, modify the environment variables according to the actual situation, if you don't know how to change them, [click here for environment variables description](../env.md), or you can leave it as default.
 
 ```bash
-# Using sqlite database
-DB_DIALECT=sqlite
-# sqlite file path
-DB_STORAGE=storage/db/nocobase.sqlite
+DB_HOST=localhost
+DB_PORT=5432
+DB_DATABASE=postgres
+DB_USER=nocobase
+DB_PASSWORD=nocobase
 ```
 
 :::warning
