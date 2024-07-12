@@ -1030,9 +1030,26 @@ export default [
         link: '/handbook/ui/variables',
       },
       {
-        title: 'Mobile client',
+        title: 'Mobile',
         'title.zh-CN': '移动端',
-        link: '/handbook/mobile-client',
+        children: [
+          {
+            title: 'Overview',
+            'title.zh-CN': '概述',
+            link: '/handbook/mobile',
+          },
+          {
+            title: 'Development',
+            'title.zh-CN': '开发指南',
+            children: [
+              {
+                title: 'Frontend',
+                'title.zh-CN': '前端',
+                link: '/handbook/mobile/development/frontend',
+              }
+            ]
+          },
+        ],
       },
     ],
   },
