@@ -108,18 +108,13 @@ export function usePluginTranslation() {
 }
 
 export function generatePluginTranslationTemplate(key: string) {
-  return `{{t('${key}', { ns: '${pkg.name}', nsMode: 'fallback' })}}`;
-}
-
-export function generateCommonTranslationTemplate(key: string) {
-  return `{{t('${key}')}}`;
+  return `{{t('${key}', { ns: ['${pkg.name}', 'client'], nsMode: 'fallback' })}}`;
 }
 ```
 
 - [useTranslation()](https://react.i18next.com/latest/usetranslation-hook)：用于获取多语言工具函数
 - `usePluginTranslation()`：获取插件的多语言工具函数，需要将插件的名字作为命名空间
 - `generatePluginTranslationTemplate()`：用于生成插件的多语言模板
-- `generateCommonTranslationTemplate()`：用于生成通用的多语言模板
 
 #### 2.2 多语言文件
 
