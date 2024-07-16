@@ -59,10 +59,10 @@ export default [
             ],
           },
           {
-            title: 'HTTP API Data source',
-            'title.zh-CN': 'HTTP API 数据源',
+            title: 'REST API Data source',
+            'title.zh-CN': 'REST API 数据源',
             // subTitle: '@nocobase/plugin-data-source-external-postgres',
-            link: '/handbook/data-source-http-api',
+            link: '/handbook/data-source-rest-api',
           },
           {
             title: 'ER diagram-like tool',
