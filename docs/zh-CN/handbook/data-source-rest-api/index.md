@@ -98,7 +98,7 @@ REST API 数据源的 Collection 配置如下
 
 调试流程说明
 
-![20240716221214](https://static-docs.nocobase.com/20240716221214.png)
+![20240717110051](https://static-docs.nocobase.com/20240717110051.png)
 
 ## 变量
 
