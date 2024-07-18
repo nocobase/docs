@@ -22,6 +22,12 @@
 
 ![20240603151934](https://static-docs.nocobase.com/20240603151934.png)
 
+### 新窗口打开
+
+勾选「新窗口打开」后，链接将在新窗口中打开。
+
+![20240718160541](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240718160541.png)
+
 完整配置示例如下：
 
 <video width="100%" height="440" controls>
