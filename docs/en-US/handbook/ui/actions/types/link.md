@@ -22,6 +22,12 @@
 
 ![20240603151934](https://static-docs.nocobase.com/20240603151934.png)
 
+### Open in New Window
+
+When "Open in new window" is checked, the link will open in a new window.
+
+![20240718160541](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240718160541.png)
+
 完整配置示例如下：
 
 <video width="100%" height="440" controls>
