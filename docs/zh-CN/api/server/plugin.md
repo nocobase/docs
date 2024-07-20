@@ -90,6 +90,29 @@ export default PluginDemoServer;
 
 插件移除后执行。
 
+### `onSync()`
+
+在分布式环境中，处理来自其他节点当前插件发布的同步事件。在插件使用了内存状态时，需要覆盖实现该事件的处理逻辑，以保证与其他节点的状态同步。
+
+#### 签名
+
+```
+onSync(message: SyncMessage): void | Promise<void>
+```
+
+#### 参数
+
+- `message` 同步消息。其他节点发送的消息内容，键值对的形式。
+
+#### 示例
+
+```ts
+onSync(message: SyncMessage) {
+  console.log('onSync', message);
+  // this.reloadData();
+}
+```
+
 ## 其他方法
 
 ### `t()`
@@ -103,3 +126,25 @@ export default PluginDemoServer;
 ### `toJSON()`
 
 实现性方法。输出插件相关配置信息。
+
+### `sync()`
+
+发布同步消息。使用该方法发送的同步消息只会被其他节点的同一个插件接收，与其他插件无关。
+
+#### 签名
+
+```ts
+sync(data: SyncMessageData = {}): void | Promise<void>
+```
+
+#### 参数
+
+- `data`：同步消息数据。键值对的形式。
+
+#### 示例
+
+```ts
+this.sync({
+  key: 'value'
+});
+```

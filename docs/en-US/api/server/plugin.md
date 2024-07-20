@@ -90,6 +90,29 @@ Executed before the plugin is removed.
 
 Executed after the plugin is removed.
 
+### `onSync()`
+
+In a distributed environment, handle synchronization events published by the current plugin from other nodes. When the plugin uses memory state, it is necessary to override the event handling logic to ensure synchronization with the state of other nodes.
+
+#### Signature
+
+```
+onSync(message: SyncMessage): void | Promise<void>
+```
+
+#### Arguments
+
+- `message`: Sync message data from other nodes.
+
+#### Example
+
+```ts
+onSync(message: SyncMessage) {
+  console.log('onSync', message);
+  // this.reloadData();
+}
+```
+
 ## Other Methods
 
 ### `t()`
@@ -103,3 +126,25 @@ Creates a logger. Refer to [Logger](../logger.md).
 ### `toJSON()`
 
 A method for internal use. Outputs plugin-related configuration information.
+
+### `sync()`
+
+Publish synchronization messages. The synchronization messages sent by this method will only be received by the same plugin on other nodes, and will not be related to other plugins.
+
+#### Signature
+
+```ts
+sync(data: SyncMessageData = {}): void | Promise<void>
+```
+
+#### Arguments
+
+- `data`: Sync message data, in key-value pair format. The keys and values must be strings.
+
+#### Example
+
+```ts
+this.sync({
+  key: 'value'
+});
+```
