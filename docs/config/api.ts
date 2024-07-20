@@ -91,6 +91,7 @@ export default [
       '/api/server/plugin-manager',
       '/api/server/plugin',
       '/api/server/migration',
+      '/api/server/sync-manager',
     ],
   },
   {
