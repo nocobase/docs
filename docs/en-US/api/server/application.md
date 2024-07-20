@@ -143,6 +143,10 @@ Resource management. Refer to [ResourceManager](../resourcer/resource-manager.md
 
 Cache management. Refer to [CacheManager](../cache/cache-manager.md).
 
+### `syncManager`
+
+Sync signal management. Refer to [SyncManager](./sync-manager.md).
+
 ### `authManager`
 
 User authentication management. Refer to [AuthManager](../auth/auth-manager.md).

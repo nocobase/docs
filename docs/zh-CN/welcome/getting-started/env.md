@@ -45,6 +45,38 @@ API_BASE_PATH=/api/
 
 ### API_BASE_URL
 
+### CLUSTER_MODE
+
+多核（集群）启动模式，如配置了该变量，会透传至 `pm2 start` 命令中作为 `-i <instances>` 的参数。可选项与 pm2 `-i` 参数一致（参考 [PM2: Cluster Mode](https://pm2.keymetrics.io/docs/usage/cluster-mode/)），包括：
+
+- `max`：使用 CPU 最大核数
+- `-1`：使用 CPU 最大核数 -1
+- `<number>`：指定核数
+
+默认值为空，代表不开启。
+
+:::warning{title="注意"}
+该模式需要配合集群模式相关的插件使用，如 `@nocobase/plugin-sync-adapter-redis` 等。否则应用的功能可能出现异常。
+:::
+
+### PLUGIN_PACKAGE_PREFIX
+
+插件包名前缀，默认为：`@nocobase/plugin-,@nocobase/preset-`。
+
+例如，添加 `hello` 插件到 `my-nocobase-app` 项目，插件的完整包名则为 `@my-nocobase-app/plugin-hello`。
+
+PLUGIN_PACKAGE_PREFIX 可以配置为：
+
+```bash
+PLUGIN_PACKAGE_PREFIX=@nocobase/plugin-,@nocobase-preset-,@my-nocobase-app/plugin-
+```
+
+则插件名称和包名对应关系如下：
+
+- `users` 插件的包名为 `@nocobase/plugin-users`
+- `nocobase` 插件的包名为 `@nocobase/preset-nocobase`
+- `hello` 插件的包名为 `@my-nocobase-app/plugin-hello`
+
 ### DB_DIALECT
 
 数据库类型，默认值 `sqlite`，可选项包括：
