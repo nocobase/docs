@@ -27,3 +27,9 @@
 这里使用了 HTML 进行配置，是为了方便用户更灵活的配置内容。如果只需要简单改一下文字，则可以直接在现有的基础上进行修改，如下图所示：
 
 ![20240409114740](https://static-docs.nocobase.com/20240409114740.png)
+
+### 设置网站图标 favicon（v1.2.23-alpha）
+
+在 v1.2.23-alpha 版本中，我们新增了设置网站图标 favicon 的功能，如下图所示：
+
+![350438864-08053d02-5429-407f-a3f7-fed439993623](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/350438864-08053d02-5429-407f-a3f7-fed439993623.gif)
