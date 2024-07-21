@@ -2,18 +2,12 @@
 
 ## 介绍
 
-区块的数据加载方式默认为自动加载，适用于无需用户干预即可展示数据的场景；另一种是筛选后加载，需要与连接数据区块配合使用，只有在用户进行筛选时才触发数据加载，适用于需要用户交互才展示数据的场景。
+默认的数据加载方式是“筛选条件为空时加载全部数据”，这里的“筛选条件”指的是「筛选区块」中的值。另一个可选项是“筛选条件为空时不加载数据”。
 
-### 自动加载数据
+### 筛选条件为空时加载全部数据
 
-![20240407170234](https://static-docs.nocobase.com/20240407170234.png)
+![![20240407170234](httpsstatic-docs.nocobase.com20240407170234.png)](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/![20240407170234](httpsstatic-docs.nocobase.com20240407170234.png).gif)
 
-### 筛选后才加载数据
+### 筛选条件为空时不加载数据
 
-适用于交互式筛选和动态加载数据的场景（连接数据区块）。默认不加载数据，只有在用户进行了筛选并且有了筛选条件时才会触发数据加载。
-
-![20240407173122](https://static-docs.nocobase.com/20240407173122.png)
-
- <video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240422104827.mp4" type="video/mp4">
-</video>
+![20240721160327_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240721160327_rec_.gif)
