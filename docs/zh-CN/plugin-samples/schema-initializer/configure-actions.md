@@ -305,7 +305,7 @@ export const customRefreshActionSchema: ISchema = {
 然后将其在 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/items/customRefresh/index.ts` 中导出：
 
 ```ts
-export * from './initializer';
+export * from './schema';
 ```
 
 并修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/index.ts` 将 `customRefresh` 导出：
