@@ -14,7 +14,7 @@ const PluginInfo = (props) => {
           {zhCN ? (
             <p>该功能由{commercial ? '商业' : ''}插件 <Link to={link ?? `/handbook/${name}`}>plugin-{name}</Link> 提供{commercial && <>，请查看 <a target="_blank" href="https://cn.nocobase.com/commercial-cn.html">商业授权</a> 了解详情</>}。</p>
           ) : (
-            <p>This feature is provided by the {commercial ? 'commercial ' : ''}plugin <Link to={`/handbook/${name}`}>plugin-{name}</Link>. {commercial && <><br/> Please refer to the <a target="_blank" href="https://www.nocobase.com/commercial.html">commercial license</a> for details.</>}</p>
+            <p>This feature is provided by the {commercial ? 'commercial ' : ''}plugin <Link to={link ?? `/handbook/${name}`}>plugin-{name}</Link>. {commercial && <><br/> Please refer to the <a target="_blank" href="https://www.nocobase.com/commercial.html">commercial license</a> for details.</>}</p>
           )}
         </section>
       </div>
