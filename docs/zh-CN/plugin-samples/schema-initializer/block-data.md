@@ -274,6 +274,7 @@ export function getInfoSchema({ dataSource = 'main', collection }) {
       action: 'list',
     },
     'x-component': 'CardItem',
+    "x-toolbar": "BlockSchemaToolbar",
     properties: {
       [BlockNameLowercase]: {
         type: 'void',
@@ -423,6 +424,7 @@ export const infoInitializerItem: SchemaInitializerItemType = {
         - `item.name`：数据表名称
         - `item.dataSource`：数据表所属的数据源
     - [useSchemaInitializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#useschemainitializer)：提供了插入 Schema 的方法
+  - `"x-toolbar": "BlockSchemaToolbar"`：`BlockSchemaToolbar` 用于左上角显示当前数据表，一般和 `DataBlockProvider` 搭配使用
 
 更多关于 Schema Initializer 的定义可以参考 [Schema Initializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer) 文档。
 

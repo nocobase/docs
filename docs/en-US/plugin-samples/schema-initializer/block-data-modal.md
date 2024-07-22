@@ -482,6 +482,7 @@ interface GetTimelineSchemaOptions {
 export function getTimelineSchema(options: GetTimelineSchemaOptions) {
   return {
     type: 'void',
+    "x-toolbar": "BlockSchemaToolbar",
     'x-decorator': 'DataBlockProvider',
     'x-decorator-props': {
       dataSource,

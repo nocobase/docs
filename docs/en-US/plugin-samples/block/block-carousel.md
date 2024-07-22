@@ -581,7 +581,7 @@ const carouselSchema: ISchema = {
 [NocoBase] 内置了 [remove](https://client.docs.nocobase.com/core/ui-schema/schema-settings#schemasettingsremove-1) 操作类型，我们修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/index.ts` 文件：
 
 ```diff
-import { SchemaSettings, SchemaSettingsBlockTitleItem } from '@nocobase/client';
+import { SchemaSettings } from '@nocobase/client';
 import { BlockNameLowercase } from '../constants';
 
 export const carouselSettings = new SchemaSettings({
