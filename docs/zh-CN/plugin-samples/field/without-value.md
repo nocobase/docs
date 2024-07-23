@@ -9,7 +9,7 @@
 本示例会演示一个通过实时检测订单号字段变化，查询订单详情并展示的场景。
 
 <video width="100%" controls="">
-  <source src="https://static-docs.nocobase.com/20240613183226_rec_.mp4" type="video/mp4" />
+  <source src="https://static-docs.nocobase.com/1721721250.mov" type="video/mp4" />
 </video>
 
 本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-field-component-without-value) 中查看。
@@ -157,8 +157,8 @@ export const OrderDetails: FC<OrderDetailsProps> = observer(({ orderField }) => 
   const form = useForm();
   const value = orderField ? form.values[orderField] : undefined;
 
-  const { data, loading } = useRequest<{ data: any[] }>({ url: `users:get/${value}` }, {
-    ready: !!orderField,
+  const { data, loading } = useRequest<{ data: any[] }>({ url: `https://jsonplaceholder.typicode.com/todos/${value}` }, {
+    ready: !!value,
     refreshDeps: [orderField, value],
   })
 
@@ -194,10 +194,11 @@ export * from './OrderDetails'
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
 import { OrderDetails } from './component';
+import { FieldComponentName } from './constants';
 
 export class PluginFieldComponentWithoutValueClient extends Plugin {
   async load() {
-    this.app.addComponents({ OrderDetails })
+    this.app.addComponents({ [FieldComponentName]: OrderDetails })
   }
 }
 
@@ -214,9 +215,11 @@ export default PluginFieldComponentWithoutValueClient;
 我们以 `临时页面验证` 为例，我们新建一个页面，根据属性参数添加一个或者多个 `OrderDetails` 组件，查看是否符合需求。
 
 ```tsx | pure
-import { Plugin, SchemaComponent } from '@nocobase/client';
-import { OrderDetails } from './component';
 import React from 'react';
+import { Plugin, SchemaComponent } from '@nocobase/client';
+
+import { OrderDetails } from './component';
+import { FieldComponentName } from './constants';
 
 export class PluginFieldOrderDetailsClient extends Plugin {
   async load() {
@@ -272,7 +275,7 @@ export default PluginFieldOrderDetailsClient;
 然后访问 `http://localhost:13000/admin/order-details-component` 就可以看到对应测试页面的内容了。
 
 <video width="100%" controls="">
-  <source src="https://static-docs.nocobase.com/20240613170733_rec_.mp4" type="video/mp4" />
+  <source src="https://static-docs.nocobase.com/1721721815326.mov" type="video/mp4" />
 </video>
 
 验证完毕后需要删除测试页面。
@@ -327,6 +330,8 @@ export const getOrderDetailsSchema = (orderField: string): ISchema => ({
 ```tsx | pure
 import { Plugin, SchemaComponent } from '@nocobase/client';
 import { OrderDetails } from './component';
+import { FieldComponentName } from './constants';
+
 import React from 'react';
 
 export class PluginFieldOrderDetailsClient extends Plugin {
@@ -371,7 +376,7 @@ export default PluginFieldOrderDetailsClient;
 我们访问 [http://localhost:13000/admin/order-details-schema](http://localhost:13000/admin/order-details-schema) 就可以看到对应测试页面的内容了。
 
 <video width="100%" controls="">
-  <source src="https://static-docs.nocobase.com/20240613170733_rec_.mp4" type="video/mp4" />
+  <source src="https://static-docs.nocobase.com/1721721815326.mov" type="video/mp4" />
 </video>
 
 ### 5. 定义 Schema Initializer Item
@@ -471,9 +476,7 @@ export default PluginFieldComponentWithoutValueClient;
 
 我们使用 [app.schemaInitializerManager.addItem](https://client.docs.nocobase.com/core/ui-schema/schema-initializer-manager#schemainitializermanageradditem) 将 `orderDetailsInitializerItem` 添加对应 Initializer 子项中。
 
-<video width="100%" controls="">
-  <source src="https://static-docs.nocobase.com/20240613183701_rec_.mp4" type="video/mp4" />
-</video>
+![20240723161400](https://static-docs.nocobase.com/20240723161400.png)
 
 ### 7. 实现 Schema Settings
 
@@ -620,10 +623,7 @@ export const orderDetailsSettings = new SchemaSettings({
 });
 ```
 
-<video width="100%" controls="">
-  <source src="https://static-docs.nocobase.com/20240613183924_rec_.mp4" type="video/mp4" />
-</video>
-
+![20240723161525](https://static-docs.nocobase.com/20240723161525.png)
 
 你可以根据需要实现更多的 Settings 配置。
 
