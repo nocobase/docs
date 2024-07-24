@@ -9,7 +9,7 @@
 本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-field-value) 中查看。
 
 <video width="100%" controls="">
-  <source src="https://static-docs.nocobase.com/20240603155655_rec_.mp4" type="video/mp4" />
+  <source src="https://static-docs.nocobase.com/1721790389902.mov" type="video/mp4" />
 </video>
 
 ## 初始化插件
@@ -53,7 +53,9 @@ yarn dev
 .
 ├── client # 客户端插件
 │   ├── QRCode.tsx # 组件
-│   └── settings.tsx # Schema Settings
+│   ├── settings.tsx # Schema Settings
+│   ├── locale.ts #  多语言工具函数
+│   └── index.ts # 客户端入口文件
 ├── locale # 多语言文件
 │   ├── en-US.json # 英语
 │   └── zh-CN.json # 中文
@@ -257,7 +259,11 @@ export default PluginFieldComponentValueClient;
 
 其中关于 `dataSourceManager.collectionFieldInterfaceManager.addFieldInterfaceComponentOption` 的使用可以参考 [SchemaInitializer 教程](https://client.docs.nocobase.com/core/data-source/collection-field-interface-manager)。
 
-TODO: 添加到界面的截图
+![编辑模式](https://static-docs.nocobase.com/20240724111012.png)
+
+![ReadOnly 模式](https://static-docs.nocobase.com/20240724111116.png)
+
+![预览模式](https://static-docs.nocobase.com/20240724111231.png)
 
 ### 3. 实现 Schema Settings
 
@@ -346,6 +352,8 @@ export const qrCodeComponentFieldSettings = new SchemaSettings({
 - `defaultValue`：默认值
 - `useOptions`：选项
 
+![20240724111505](https://static-docs.nocobase.com/20240724111505.png)
+
 #### 4.2 实现 `Bordered`
 
 `Border` 我们使用 `switch` 开关来选择是否显示边框。
@@ -368,6 +376,8 @@ export const qrCodeComponentFieldSettings = new SchemaSettings({
 - `name`：唯一标识
 - `schemaKey`：Schema 的 key，我们这里将其存储在 `x-component-props.bordered` 中
 - `defaultValue`：默认值
+
+![20240724111935](https://static-docs.nocobase.com/20240724111935.png)
 
 #### 4.3 实现 `Color`
 
@@ -400,6 +410,8 @@ export const qrCodeComponentFieldSettings = new SchemaSettings({
   ],
 });
 ```
+
+![20240724112041](https://static-docs.nocobase.com/20240724112041.png)
 
 ### 5. 完善多语言
 
@@ -439,7 +451,7 @@ export const qrCodeComponentFieldSettings = new SchemaSettings({
 }
 ```
 
-TODO：截图
+![TODO：截图](https://static-docs.nocobase.com/TODO：截图.png)
 
 ## 打包和上传到生产环境
 
