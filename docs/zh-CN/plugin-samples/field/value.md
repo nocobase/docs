@@ -4,7 +4,7 @@
 
 ## 示例说明
 
-本实例会新增 `Video` 组件，用于展示视频，支持自动播放、编辑图片、编辑高度等配置属性。
+本实例会新增 `QRCode` 组件，用于 URL 字段的值展示，并支持 `尺寸`、`颜色`、`边框` 的配置。
 
 本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-field-value) 中查看。
 
@@ -52,13 +52,8 @@ yarn dev
 ```bash
 .
 ├── client # 客户端插件
-│   ├── initializer # 初始化器
-│   ├── component # 区块组件
-│   ├── index.tsx # 客户端插件入口
-│   ├── locale.ts # 多语言工具函数
-│   ├── constants.ts # 常量
-│   ├── schema # Schema
-│   └── settings # Schema Settings
+│   ├── QRCode.tsx # 组件
+│   └── settings.tsx # Schema Settings
 ├── locale # 多语言文件
 │   ├── en-US.json # 英语
 │   └── zh-CN.json # 中文
@@ -66,20 +61,9 @@ yarn dev
 └── server # 服务端插件
 ```
 
-### 1. 定义名称
+### 1. 多语言
 
-我们首先需要定义区块名称，它将会使用在各个地方。
-
-我们新建 `packages/plugins/@nocobase-sample/plugin-field-value/src/client/constants.ts`：
-
-```ts
-export const BlockName = 'Carousel';
-export const BlockNameLowercase = BlockName.toLowerCase();
-```
-
-### 2. 多语言
-
-#### 2.1 定义工具函数
+#### 1.1 定义工具函数
 
 如果插件需要支持多语言，我们需要定义多语言工具函数。
 
@@ -104,72 +88,358 @@ export function generatePluginTranslationTemplate(key: string) {
 - `usePluginTranslation()`：获取 Carousel 组件的多语言工具函数，需要将插件的名字作为命名空间
 - `generatePluginTranslationTemplate()`：用于生成 Carousel 组件的多语言模板
 
-#### 2.2 多语言文件
+#### 1.2 多语言文件
 
 :::warning
 多语言文件变更后，需要重启服务才能生效
 :::
 
-##### 2.2.1 英语
+##### 1.2.1 英语
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-field-value/src/locale/en-US.json` 内容为：
 
 ```json
 {
-  "Carousel": "Carousel"
+  "QRCode": "QRCode"
 }
 ```
 
-##### 2.2.2 中文
+##### 1.2.2 中文
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-field-value/src/locale/zh-CN.json` 内容为：
 
 ```json
 {
-  "Carousel": "走马灯"
+  "QRCode": "二维码"
 }
 ```
 
 如果需要更多的多语言支持，可以继续添加。
 
+### 2. 组件
 
-### 10. 完善多语言
+![20240723211323](https://static-docs.nocobase.com/20240723211323.png)
 
-#### 10.1 英文
+对于组件而言我们需要适配三种模式：
 
-我们编辑 `packages/plugins/@nocobase-sample/plugin-field-value/src/client/locale/en.ts` 文件：
+- Editable：编辑模式
+- ReadOnly：只读模式（禁止编辑）
+- Easy-reading：阅览模式
 
-```diff
-{
-  "Carousel": "Carousel",
-+ "Edit Images": "Edit Images",
-+ "Images": "Images",
-+ "Autoplay": "Autoplay",
-+ "Edit Height": "Edit Height",
-+ "Height": "Height"
+其中 `ReadOnly` 模式属于编辑模式的 `disabled` 属性，所以我们只需要适配 `Editable` 和 `Easy-reading` 两种模式。
+
+#### 2.1 编辑模式组件
+
+在编辑模式下，组件会自动注入 `onChange`、`value`、`disabled` 以及 `schema` 中的 [x-component-props](/development/client/ui-schema/what-is-ui-schema#x-component-props-and-x-use-component-props) 属性。
+
+我们新建 `packages/plugins/@nocobase-sample/plugin-field-value/src/client/QRCode.tsx` 文件：
+
+```tsx | pure
+import React, { FC } from 'react';
+import { QRCode as AntdQRCode, Space, QRCodeProps as AntdQRCodeProps } from 'antd';
+import { Input } from '@nocobase/client';
+
+interface QRCodeProps extends AntdQRCodeProps {
+  onChange: (value: string) => void;
+  disabled?: boolean;
+}
+
+const EditableQRCode: FC<QRCodeProps> = ({ value, disabled, onChange, ...otherProps }) => {
+  return <Space direction="vertical" align="center">
+    <AntdQRCode value={value || '-'} {...otherProps} />
+    <Input.URL
+      maxLength={60}
+      value={value}
+      disabled={disabled}
+      onChange={(e) => onChange(e.target.value)}
+    />
+  </Space>;
 }
 ```
 
-#### 10.2 中文
+编辑模式下，我们使用 `Space` 组件将 `QRCode` 和 `Input.URL` 组件放在一起，`QRCode` 组件用于展示 URL 字段的值，`Input.URL` 用于编辑 URL 字段的值。
 
-我们编辑 `packages/plugins/@nocobase-sample/plugin-field-value/src/client/locale/zh.ts` 文件：
+其中 `value`、`disabled`、`onChange` 是 `Editable` 模式下自动注入的属性。
 
-```diff
-{
-  "Carousel": "走马灯",
-+ "Edit Images": "编辑图片",
-+ "Images": "图片",
-+ "Autoplay": "自动播放",
-+ "Edit Height": "编辑高度",
-+ "Height": "高度"
+#### 2.2 预览模式组件
+
+在预览模式下，组件会自动注入 `value` 以及 `schema` 中的 [x-component-props](/development/client/ui-schema/what-is-ui-schema#x-component-props-and-x-use-component-props) 属性。
+
+我们继续修改 `packages/plugins/@nocobase-sample/plugin-field-value/src/client/QRCode.tsx` 文件：
+
+```tsx | pure
+const ReadPrettyQrCode: FC<QRCodeProps> = ({ value, ...otherProps }) => {
+  if (!value) return null;
+  return <AntdQRCode value={value} {...otherProps} />;
 }
 ```
+
+#### 2.3 连接组件
+
+我们需要将 `EditableQRCode` 和 `ReadPrettyQrCode` 组件连接起来，这样在 Schema 中就能够通过 [x-pattern](https://docs.nocobase.com/development/client/ui-schema/what-is-ui-schema#x-pattern) 自动切换组件。
+
+我们继续修改 `packages/plugins/@nocobase-sample/plugin-field-value/src/client/QRCode.tsx` 文件：
+
+```tsx | pure
+import { connect, mapReadPretty } from '@formily/react';
+
+export const QRCode: FC<QRCodeProps>  = connect(EditableQRCode, mapReadPretty(ReadPrettyQrCode)
+```
+
+我们使用 [connect](https://react.formilyjs.org/api/shared/connect) 函数能将 `EditableQRCode` 和 `ReadPrettyQrCode` 组件连接起来。
+
+
+#### 2.4 将 `ReadPrettyQrCode` 添加到 `QRCode` 的属性上
+
+为了外部其他组件更简单的复用，我们可以将 `ReadPrettyQrCode` 组件添加到 `QRCode` 的属性上。
+
+```tsx | pure
+export const QRCode: FC<QRCodeProps> & {
+  ReadPretty: typeof ReadPrettyQrCode;
+} = Object.assign(connect(EditableQRCode, mapReadPretty(ReadPrettyQrCode)),{
+    ReadPretty: ReadPrettyQrCode,
+})
+```
+
+这样外部就可以通过 `QRCode.ReadPretty` 来使用 `ReadPrettyQrCode` 组件了。
+
+#### 2.5 注册组件
+
+我们需要将 `QRCode` 通过插件注册到系统中。
+
+```ts
+import { Plugin } from '@nocobase/client';
+
+import { QRCode } from './QRCode';
+
+export class PluginFieldComponentValueClient extends Plugin {
+  async load() {
+    this.app.addComponents({ QRCode });
+  }
+}
+
+export default PluginFieldComponentValueClient;
+```
+
+这样就可以在 Schema 中以字符串的方式使用 `QRCode` 组件了。
+
+```json
+{
+  "type": "string",
+  "x-component": "QRCode",
+}
+```
+
+#### 2.6 添加到 field interface 的 `componentOptions` 中
+
+我们还需要将 `QRCode` 组件添加到 `url` interface 字段的 `componentOptions` 中，这样就可以通过界面自由切换组件了。
+
+```ts
+import { Plugin } from '@nocobase/client';
+
+import { QRCode } from './QRCode';
+import { qrCodeComponentFieldSettings } from './settings';
+import { generatePluginTranslationTemplate } from './locale';
+
+export class PluginFieldComponentValueClient extends Plugin {
+  async load() {
+    this.app.addComponents({ QRCode });
+    this.schemaSettingsManager.add(qrCodeComponentFieldSettings);
+    this.dataSourceManager.collectionFieldInterfaceManager.addFieldInterfaceComponentOption('url', {
+      label: generatePluginTranslationTemplate('QRCode'),
+      value: 'QRCode',
+    });
+  }
+}
+
+export default PluginFieldComponentValueClient;
+```
+
+其中关于 `dataSourceManager.collectionFieldInterfaceManager.addFieldInterfaceComponentOption` 的使用可以参考 [SchemaInitializer 教程](https://client.docs.nocobase.com/core/data-source/collection-field-interface-manager)。
+
+TODO: 添加到界面的截图
+
+### 3. 实现 Schema Settings
+
+我们需要通过 Schema Settings 来配置 `QRCode` 组件的属性。
+
+#### 3.1 定义 Schema Settings
+
+我们新建 `packages/plugins/@nocobase-sample/plugin-field-value/src/client/settings.tsx` 文件：
+
+```ts
+import { createModalSettingsItem, createSelectSchemaSettingsItem, createSwitchSettingsItem, SchemaSettings } from "@nocobase/client";
+
+import { generatePluginTranslationTemplate, usePluginTranslation } from './locale';
+
+export const qrCodeComponentFieldSettings = new SchemaSettings({
+  name: 'fieldSettings:component:QRCode',
+  items: [
+    // TODO
+  ]
+});
+```
+
+其中 `name` 的命名规则为 `fieldSettings:component:${componentName}`，`componentName` 为组件的名字。
+
+#### 3.2 注册 Schema Settings
+
+我们将 `qrCodeComponentFieldSettings` 注册到系统中。
+
+我们修改 `packages/plugins/@nocobase-sample/plugin-field-component-value/src/client/index.tsx` 文件：
+
+```ts
+// ...
+import { qrCodeComponentFieldSettings } from './settings';
+
+export class PluginFieldComponentValueClient extends Plugin {
+  async load() {
+    // ...
+    this.schemaSettingsManager.add(qrCodeComponentFieldSettings);
+  }
+}
+```
+
+### 4. 实现 Schema Settings items
+
+#### 4.1 实现 `Size`
+
+`Size` 我们使用 `select` 选择框来选择 `small`、`middle`、`large`。
+
+我们修改 `packages/plugins/@nocobase-sample/plugin-field-component-value/src/client/settings.ts`：
+
+```ts
+// ...
+export const qrCodeComponentFieldSettings = new SchemaSettings({
+  name: 'fieldSettings:component:QRCode',
+  items: [
+    createSelectSchemaSettingsItem({
+      name: 'size',
+      title: generatePluginTranslationTemplate('Size'),
+      schemaKey: 'x-component-props.size',
+      defaultValue: 160,
+      useOptions() {
+        const { t } = usePluginTranslation();
+        return [
+          {
+            label: t('Small'),
+            value: 100,
+          },
+          {
+            label: t('Middle'),
+            value: 160,
+          },
+          {
+            label: t('Large'),
+            value: 200,
+          }
+        ]
+      }
+    }),
+  ],
+});
+```
+
+- `name`：唯一标识
+- `title`：标题
+- `schemaKey`：Schema 的 key，我们这里将其存储在 `x-component-props.size` 中
+- `defaultValue`：默认值
+- `useOptions`：选项
+
+#### 4.2 实现 `Bordered`
+
+`Border` 我们使用 `switch` 开关来选择是否显示边框。
+
+```ts
+export const qrCodeComponentFieldSettings = new SchemaSettings({
+  name: 'fieldSettings:component:QRCode',
+  items: [
+    // ...
+    createSwitchSettingsItem({
+      name: 'bordered',
+      schemaKey: 'x-component-props.bordered',
+      title: generatePluginTranslationTemplate('Bordered'),
+      defaultValue: true,
+    }),
+  ],
+});
+```
+
+- `name`：唯一标识
+- `schemaKey`：Schema 的 key，我们这里将其存储在 `x-component-props.bordered` 中
+- `defaultValue`：默认值
+
+#### 4.3 实现 `Color`
+
+`Color` 我们使用 `Modal` 弹窗来选择颜色。
+
+```ts
+export const qrCodeComponentFieldSettings = new SchemaSettings({
+  name: 'fieldSettings:component:QRCode',
+  items: [
+    // ...
+    createModalSettingsItem({
+      name: 'color',
+      title: generatePluginTranslationTemplate('Color'),
+      parentSchemaKey: 'x-component-props',
+      schema({ color }) {
+        return {
+          type: 'object',
+          title: generatePluginTranslationTemplate('Color'),
+          properties: {
+            color: {
+              type: 'string',
+              title: generatePluginTranslationTemplate('Color'),
+              default: color,
+              'x-component': 'ColorPicker',
+            }
+          }
+        }
+      },
+    }),
+  ],
+});
+```
+
+### 5. 完善多语言
 
 我们可以通过 [http://localhost:13000/admin/settings/system-settings](http://localhost:13000/admin/settings/system-settings) 添加多个语言，并且在右上角切换语言。
 
 ![20240611113758](https://static-docs.nocobase.com/20240611113758.png)
 
-![20240611114018](https://static-docs.nocobase.com/20240611114018.png)
+#### 5.1 英语
+
+我们编辑 `packages/plugins/@nocobase-sample/plugin-field-value/src/client/locale/zh.ts` 文件：
+
+```diff
+{
+  "QRCode": "QRCode",
++ "Size": "Size",
++ "Bordered": "Bordered",
++ "Color": "Color",
++ "Small": "Small",
++ "Middle": "Middle",
++ "Large": "Large"
+}
+```
+
+#### 5.1 中文
+
+我们编辑 `packages/plugins/@nocobase-sample/plugin-field-value/src/client/locale/zh.ts` 文件：
+
+```diff
+{
+  "QRCode": "二维码",
++ "Size": "尺寸",
++ "Bordered": "边框",
++ "Color": "颜色",
++ "Small": "小",
++ "Middle": "中",
++ "Large": "大"
+}
+```
+
+TODO：截图
 
 ## 打包和上传到生产环境
 
