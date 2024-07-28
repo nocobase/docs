@@ -228,6 +228,16 @@ export default [
         'title.zh-CN': '无值字段组件',
         link: '/plugin-samples/field/without-value',
       },
+      {
+        title: 'Value Field',
+        'title.zh-CN': '有值字段组件',
+        link: '/plugin-samples/field/value',
+      },
+      {
+        title: 'Interface',
+        'title.zh-CN': 'Field interface',
+        link: '/plugin-samples/field/interface',
+      },
     ]
   }
 ];
