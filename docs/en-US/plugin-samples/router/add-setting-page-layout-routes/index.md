@@ -44,7 +44,7 @@ Then, after logging in, visit [http://localhost:13000/admin/pm/list/local/](http
 
 ## Function Implementation
 
-### Step 1: Register the Plugin Setting Page
+### 1.  Register the Plugin Setting Page
 
 Following the instructions in the [Plugin Setting Page Extension](/development/client/router#plugin-setting-page-extension) section of the plugin development tutorial, we need to modify the `packages/plugins/@nocobase-sample/plugin-add-setting-page-layout-routes/src/client/index.tsx` file:
 
@@ -75,7 +75,7 @@ export default PluginAddSettingPageLayoutRoutesClient;
 Then we can visit [http://localhost:13000/admin/settings/@nocobase-sample/plugin-add-setting-page-layout-routes](http://localhost:13000/admin/settings/@nocobase-sample/plugin-add-setting-page-layout-routes) to view the plugin configuration page.
 
 
-### Step 2: Add Detail Page
+### 2.  Add Detail Page
 
 我们准备在 `AdminLayout` 下面新增一个详情页面，我们继续修改 `packages/plugins/@nocobase-sample/plugin-add-setting-page-layout-routes/src/client/index.tsx`：
 

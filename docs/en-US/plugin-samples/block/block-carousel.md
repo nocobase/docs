@@ -80,63 +80,9 @@ export const BlockName = 'Carousel';
 export const BlockNameLowercase = BlockName.toLowerCase();
 ```
 
-### 2. 多语言
+### 2. 实现区块组件
 
-#### 2.1 定义工具函数
-
-如果插件需要支持多语言，我们需要定义多语言工具函数。
-
-我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/locale.ts` 文件：
-
-```ts
-// @ts-ignore
-import pkg from './../../package.json';
-import { useApp } from '@nocobase/client';
-
-export function useT() {
-  const app = useApp();
-  return (str: string) => app.i18n.t(str, { ns: pkg.name });
-}
-
-export function tStr(key: string) {
-  return `{{t('${key}', { ns: '${pkg.name}', nsMode: 'fallback' })}}`;
-}
-```
-
-- `useT()`：获取插件的多语言工具函数，需要将插件的名字作为命名空间
-- `tStr()`：用于生成插件组件的多语言字符串模板
-
-#### 2.2 多语言文件
-
-:::warning
-多语言文件变更后，需要重启服务才能生效
-:::
-
-##### 2.2.1 英语
-
-我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/locale/en-US.json` 内容为：
-
-```json
-{
-  "Carousel": "Carousel"
-}
-```
-
-##### 2.2.2 中文
-
-我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/locale/zh-CN.json` 内容为：
-
-```json
-{
-  "Carousel": "走马灯"
-}
-```
-
-如果需要更多的多语言支持，可以继续添加。
-
-### 3. 实现区块组件
-
-#### 3.1 定义区块组件
+#### 2.1 定义区块组件
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/component/Carousel.tsx` 文件，其内容如下：
 
@@ -183,7 +129,7 @@ export const Carousel: FC<CarouselProps> = withDynamicSchemaProps((props) => {
 export * from './Carousel';
 ```
 
-#### 3.2 注册区块组件
+#### 2.2 注册区块组件
 
 我们需要将 `Carousel` 通过插件注册到系统中。
 
@@ -200,7 +146,7 @@ export class PluginBlockCarouselClient extends Plugin {
 export default PluginBlockCarouselClient;
 ```
 
-#### 3.3 验证区块组件
+#### 2.3 验证区块组件
 
 组件验证方式有 2 种：
 
@@ -260,9 +206,9 @@ export default PluginBlockCarouselClient;
 
 验证完毕后需要删除测试页面。
 
-### 4. 定义区块 Schema
+### 3. 定义区块 Schema
 
-#### 4.1 定义区块 Schema
+#### 3.1 定义区块 Schema
 
 NocoBase 的动态页面都是通过 Schema 来渲染，所以我们需要定义一个 Schema，后续用于在界面中添加 `Carousel` 区块。在实现本小节之前，我们需要先了解一些基础知识：
 
@@ -315,7 +261,7 @@ export const carouselSchema: ISchema = {
 </CardItem>
 ```
 
-#### 4.2 注册 scope
+#### 3.2 注册 scope
 
 我们需要将 `useCarouselBlockProps` 注册到系统中，这样 [x-use-component-props](/development/client/ui-schema/what-is-ui-schema#x-component-props-和-x-use-component-props) 才能找到对应的 scope。
 
@@ -336,7 +282,7 @@ export default PluginBlockCarouselClient;
 
 更多关于 Scope 的说明可以查看 [全局注册 Component 和 Scope](/plugin-samples/component-and-scope/global)
 
-#### 4.3 验证区块 Schema
+#### 3.3 验证区块 Schema
 
 同验证组件一样，我们可以通过临时页面验证或者文档示例验证的方式来验证 Schema 是否符合需求。我们这里以临时页面验证为例：
 
@@ -387,7 +333,7 @@ export default PluginBlockCarouselClient;
 
 验证完毕后需要删除测试页面。
 
-### 5. 定义 Schema Initializer Item
+### 4. 定义 Schema Initializer Item
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/initializer/index.ts` 文件：
 
@@ -425,13 +371,13 @@ export const carouselInitializerItem: SchemaInitializerItemType = {
 
 更多关于 Schema Item 的定义可以参考 [Schema Initializer Item](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types) 文档。
 
-### 6. 添加到 Add block 中
+### 5. 添加到 Add block 中
 
 系统中有很多个 `Add block` 按钮，但他们的 **name 是不同的**。
 
 ![img_v3_02b4_049b0a62-8e3b-420f-adaf-a6350d84840g](https://static-docs.nocobase.com/img_v3_02b4_049b0a62-8e3b-420f-adaf-a6350d84840g.jpg)
 
-#### 6.1 添加到页面级别 Add block 中
+#### 5.1 添加到页面级别 Add block 中
 
 如果我们需要添加到页面级别的 `Add block` 中，我们需要知道对应的 `name`，我们可以通过 TODO 方式查看对应的 `name`。
 
@@ -472,7 +418,7 @@ export default PluginBlockCarouselClient;
 
 ![20240603161730](https://static-docs.nocobase.com/20240603161730.png)
 
-#### 6.2 添加到弹窗 Add block 中
+#### 5.2 添加到弹窗 Add block 中
 
 我们不仅需要将其添加到页面级别的 `Add block` 中，还需要将其添加到 `Table` 区块 `Add new` 弹窗的 `Add block` 中。
 
@@ -493,7 +439,7 @@ export class PluginBlockCarouselClient extends Plugin {
 
 ![20240603161814](https://static-docs.nocobase.com/20240603161814.png)
 
-#### 6.3 添加到移动端 Add block 中
+#### 5.3 添加到移动端 Add block 中
 
 > 首先要激活移动端插件，参考 [激活插件](/welcome/getting-started/plugin#3-activate-the-plugin) 文档。
 
@@ -514,9 +460,9 @@ export class PluginBlockCarouselClient extends Plugin {
 
 如果需要更多的 `Add block`，可以继续添加，只需要知道对应的 `name` 即可。
 
-### 7. 实现 Schema Settings
+### 6. 实现 Schema Settings
 
-#### 7.1 定义 Schema Settings
+#### 6.1 定义 Schema Settings
 
 一个完整的 Block 还需要有 Schema Settings，用于配置一些属性和操作。
 
@@ -534,7 +480,7 @@ export const carouselSettings = new SchemaSettings({
 });
 ```
 
-#### 7.2 注册 Schema Settings
+#### 6.2 注册 Schema Settings
 
 ```ts
 import { Plugin } from '@nocobase/client';
@@ -550,7 +496,7 @@ export class PluginBlockCarouselClient extends Plugin {
 export default PluginBlockCarouselClient;
 ```
 
-#### 7.3 使用 Schema Settings
+#### 6.3 使用 Schema Settings
 
 我们修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/schema/index.ts` 中的 `carouselSchema`：
 
@@ -567,13 +513,13 @@ const carouselSchema: ISchema = {
 
 ![20240603162037](https://static-docs.nocobase.com/20240603162037.png)
 
-### 8. 实现 Schema Settings items
+### 7. 实现 Schema Settings items
 
 目前我们只实现了 `Schema Settings`，但是没有实现任何操作，我们需要根据需求实现各个操作。
 
 目前 Schema Settings 支持的内置操作类型请参考 [Schema Settings - Built-in Components and Types](https://client.docs.nocobase.com/core/ui-schema/schema-settings#built-in-components-and-types) 文档。
 
-#### 8.1 实现 `remove` 操作
+#### 7.1 实现 `remove` 操作
 
 目前通过 initializers 添加的区块是无法删除的，我们需要实现 `remove` 操作。
 
@@ -608,7 +554,7 @@ export const carouselSettings = new SchemaSettings({
   <source src="https://static-docs.nocobase.com/20240603162229_rec_.mp4" type="video/mp4" />
 </video>
 
-#### 8.2 实现 `Edit Block title` 操作
+#### 7.2 实现 `Edit Block title` 操作
 
 我们可以实现一个 `Edit Block title` 操作，用于修改区块的标题。
 
@@ -654,7 +600,7 @@ export const carouselSettings = new SchemaSettings({
 
 更多可以复用的 SchemaSettings items 可以查看 TODO。
 
-#### 8.3 实现 `Edit Images` 操作
+#### 7.3 实现 `Edit Images` 操作
 
 我们可以实现一个 `Edit Images` 操作，用于修改轮播的的图片。
 
@@ -768,9 +714,9 @@ export const carouselSettings = new SchemaSettings({
   <source src="https://static-docs.nocobase.com/20240603162436_rec_.mp4" type="video/mp4" />
 </video>
 
-#### 8.4 实现 Edit Height
+#### 7.4 实现 Edit Height
 
-##### 8.4.1 实现 SchemaSettings Item
+##### 7.4.1 实现 SchemaSettings Item
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/items/height.ts` 文件：
 
@@ -842,7 +788,7 @@ export const heightSchemaSettingsItem: SchemaSettingsItemType = {
     - [FormItem](https://client.docs.nocobase.com/components/form-item)：表单项
   - `onSubmit`：表单提交事件
 
-##### 8.4.2 使用 SchemaSettings Item
+##### 7.4.2 使用 SchemaSettings Item
 
 我们修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/index.ts`：
 
@@ -876,9 +822,9 @@ export const carouselSettings = new SchemaSettings({
   <source src="https://static-docs.nocobase.com/20240603162555_rec_.mp4" type="video/mp4" />
 </video>
 
-#### 8.5 实现 ObjectFit
+#### 7.5 实现 ObjectFit
 
-##### 8.5.1 实现 SchemaSettings Item
+##### 7.5.1 实现 SchemaSettings Item
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/items/objectFit.ts` 文件：
 
@@ -943,7 +889,7 @@ export const objectFitSchemaSettingsItem: SchemaSettingsItemType = {
   - `value`：默认值
   - `onChange`：选择事件
 
-##### 8.5.2 使用 SchemaSettings Item
+##### 7.5.2 使用 SchemaSettings Item
 
 我们修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/index.ts`：
 
@@ -979,9 +925,9 @@ export const carouselSettings = new SchemaSettings({
   <source src="https://static-docs.nocobase.com/20240603162655_rec_.mp4" type="video/mp4" />
 </video>
 
-#### 8.6 实现 Autoplay
+#### 7.6 实现 Autoplay
 
-##### 8.6.1 实现 SchemaSettings Item
+##### 7.6.1 实现 SchemaSettings Item
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/items/autoplay.ts` 文件：
 
@@ -1040,7 +986,7 @@ export const autoplaySchemaSettingsItem: SchemaSettingsItemType = {
   - `onChange`：开关事件
 
 
-##### 8.6.2 使用 SchemaSettings Item
+##### 7.6.2 使用 SchemaSettings Item
 
 我们修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/index.ts`：
 
@@ -1077,7 +1023,7 @@ export const carouselSettings = new SchemaSettings({
   <source src="https://static-docs.nocobase.com/20240603162803_rec_.mp4" type="video/mp4" />
 </video>
 
-#### 8.7 增加 divider
+#### 7.7 增加 divider
 
 `editBlockTitle` 和 `remove` 是一个通用的逻辑，而 `src`、`height`、`objectFit`、`autoplay` 是针对 `Image` 的配置，我们可以通过 `divider` 来区分。
 
@@ -1120,39 +1066,39 @@ export const carouselSettings = new SchemaSettings({
 
 ![20240603162933](https://static-docs.nocobase.com/20240603162933.png)
 
-### 9. 权限
+### 8. 权限
 
 TODO
 
-### 10. 完善多语言
+### 9. 多语言
 
-#### 10.1 英文
+#### 9.1 英文
 
-我们编辑 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/locale/en.ts` 文件：
+我们编辑 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/locale/en-US.json` 文件：
 
-```diff
+```json
 {
   "Carousel": "Carousel",
-+ "Edit Images": "Edit Images",
-+ "Images": "Images",
-+ "Autoplay": "Autoplay",
-+ "Edit Height": "Edit Height",
-+ "Height": "Height"
+  "Edit Images": "Edit Images",
+  "Images": "Images",
+  "Autoplay": "Autoplay",
+  "Edit Height": "Edit Height",
+  "Height": "Height"
 }
 ```
 
-#### 10.2 中文
+#### 9.2 中文
 
-我们编辑 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/locale/zh.ts` 文件：
+我们编辑 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/locale/zh-CN.json` 文件：
 
-```diff
+```json
 {
   "Carousel": "走马灯",
-+ "Edit Images": "编辑图片",
-+ "Images": "图片",
-+ "Autoplay": "自动播放",
-+ "Edit Height": "编辑高度",
-+ "Height": "高度"
+  "Edit Images": "编辑图片",
+  "Images": "图片",
+  "Autoplay": "自动播放",
+  "Edit Height": "编辑高度",
+  "Height": "高度"
 }
 ```
 

@@ -57,7 +57,7 @@ yarn dev
 .
 ├── client # 客户端插件
 │   ├── EncryptionFieldInterface.tsx # 前端 Field Interface
-│   ├── locale.tsx # 多语言工具函数
+│   ├── locale.ts # 多语言工具函数
 │   └── index.ts # 前端入口文件
 ├── locale
 │   ├── en-US.json # 英语
@@ -126,7 +126,6 @@ export class EncryptionFieldInterface extends CollectionFieldInterface {
 所有的 Field interface 都需要继承 `CollectionFieldInterface` 类，然后实现 `name`、`type`、`group`、`order`、`title`、`default`、`availableTypes`、`hasDefaultValue`、`properties`、`filterable` 等属性，具体每个属性的含义为：
 
 - `tStr`：生成多语言字符串模板
-
 - `name`：Field interface 的唯一标识，用于区分不同的 Field interface
 - `type`：？
 - `group`：分组，用于在字段设置中分组显示，这里我们设置为 `advanced`
@@ -382,7 +381,7 @@ export default PluginFieldInterfaceServer;
 
 ![20240726192832](https://static-docs.nocobase.com/20240726192832.png)
 
-## 完善多语言
+## 多语言
 
 我们可以通过 [http://localhost:13000/admin/settings/system-settings](http://localhost:13000/admin/settings/system-settings) 添加多个语言，并且在右上角切换语言。
 
@@ -390,7 +389,7 @@ export default PluginFieldInterfaceServer;
 
 ### 英语
 
-我们编辑 `packages/plugins/@nocobase-sample/plugin-field-interface/src/client/locale/zh.ts` 文件：
+我们编辑 `packages/plugins/@nocobase-sample/plugin-field-interface/src/locale/zh-CN.json` 文件：
 
 ```diff
 {
@@ -400,7 +399,7 @@ export default PluginFieldInterfaceServer;
 
 ### 中文
 
-我们编辑 `packages/plugins/@nocobase-sample/plugin-field-interface/src/client/locale/zh.ts` 文件：
+我们编辑 `packages/plugins/@nocobase-sample/plugin-field-interface/src/locale/zh-CN.json` 文件：
 
 ```diff
 {

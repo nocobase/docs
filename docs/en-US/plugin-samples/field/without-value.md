@@ -80,64 +80,9 @@ export const FieldTitle = 'Order Details';
 export const FieldNameLowercase = 'orderDetails';
 ```
 
-### 2. 多语言
+### 2. 实现字段组件
 
-#### 2.1 定义工具函数
-
-如果插件需要支持多语言，我们需要定义多语言工具函数。
-
-我们新建 `packages/plugins/@nocobase-sample/plugin-field-component-without-value/src/client/locale.ts` 文件：
-
-```ts
-// @ts-ignore
-import pkg from './../../package.json';
-import { useApp } from '@nocobase/client';
-
-export function useT() {
-  const app = useApp();
-  return (str: string) => app.i18n.t(str, { ns: pkg.name });
-}
-
-export function tStr(key: string) {
-  return `{{t('${key}', { ns: '${pkg.name}', nsMode: 'fallback' })}}`;
-}
-
-```
-
-- `useT()`：获取插件的多语言工具函数，需要将插件的名字作为命名空间
-- `tStr()`：用于生成插件组件的多语言字符串模板
-
-#### 2.2 多语言文件
-
-:::warning
-多语言文件变更后，需要重启服务才能生效
-:::
-
-##### 2.2.1 英语
-
-我们新建 `packages/plugins/@nocobase-sample/plugin-field-component-without-value/src/locale/en-US.json` 内容为：
-
-```json
-{
-  "Order Details": "Order Details"
-}
-```
-
-##### 2.2.2 中文
-
-我们新建 `packages/plugins/@nocobase-sample/plugin-field-component-without-value/src/locale/zh-CN.json` 内容为：
-
-```json
-{
-  "Order Details": "订单详情"
-}
-```
-
-如果需要更多的多语言支持，可以继续添加。
-
-### 3. 实现字段组件
-
-#### 3.1 定义字段组件
+#### 2.1 定义字段组件
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-field-component-without-value/src/client/component/OrderDetails.tsx` 文件，其内容如下：
 
@@ -187,7 +132,7 @@ export const OrderDetails: FC<OrderDetailsProps> = observer(({ orderField }) => 
 export * from './OrderDetails'
 ```
 
-#### 3.2 注册字段组件
+#### 2.2 注册字段组件
 
 我们需要将 `OrderDetails` 通过插件注册到系统中。
 
@@ -205,7 +150,7 @@ export class PluginFieldComponentWithoutValueClient extends Plugin {
 export default PluginFieldComponentWithoutValueClient;
 ```
 
-#### 3.3 验证字段组件
+#### 2.3 验证字段组件
 
 组件验证方式有 2 种：
 
@@ -280,13 +225,13 @@ export default PluginFieldOrderDetailsClient;
 
 验证完毕后需要删除测试页面。
 
-### 4. 定义字段 Schema
+### 3. 定义字段 Schema
 
 NocoBase 的动态页面都是通过 Schema 来渲染，所以我们需要定义一个 Schema，后续用于在界面中添加 `Carousel` 区块。在实现本小节之前，我们需要先了解一些基础知识：
 
 - [UI Schema 协议](/development/client/ui-schema/what-is-ui-schema)：详细介绍 Schema 的结构和每个属性的作用
 
-#### 4.1 定义字段 Schema
+#### 3.1 定义字段 Schema
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-field-component-without-value/src/client/schema/index.ts` 文件：
 
@@ -322,7 +267,7 @@ export const getOrderDetailsSchema = (orderField: string): ISchema => ({
 </FormItem>
 ```
 
-#### 4.2 验证字段 Schema
+#### 3.2 验证字段 Schema
 
 同验证组件一样，我们可以通过临时页面验证或者文档示例验证的方式来验证 Schema 是否符合需求。我们这里以临时页面验证为例：
 
@@ -379,7 +324,7 @@ export default PluginFieldOrderDetailsClient;
   <source src="https://static-docs.nocobase.com/1721721815326.mov" type="video/mp4" />
 </video>
 
-### 5. 定义 Schema Initializer Item
+### 4. 定义 Schema Initializer Item
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-field-component-without-value/src/client/initializer/index.ts` 文件：
 
@@ -454,7 +399,7 @@ export const orderDetailsInitializerItem: SchemaInitializerItemType = {
 
 更多关于 Schema Item 的定义可以参考 [Schema Initializer Item](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types) 文档。
 
-### 6. 添加到 Form Block `Configure fields` 中
+### 5. 添加到 Form Block `Configure fields` 中
 
 表单区块的 `Configure fields` 对应的 name 为 `form:configureFields`。
 
@@ -478,9 +423,9 @@ export default PluginFieldComponentWithoutValueClient;
 
 ![20240723161400](https://static-docs.nocobase.com/20240723161400.png)
 
-### 7. 实现 Schema Settings
+### 6. 实现 Schema Settings
 
-#### 7.1 定义 Schema Settings
+#### 6.1 定义 Schema Settings
 
 一个完整的 Block 还需要有 Schema Settings，用于配置一些属性和操作。
 
@@ -499,7 +444,7 @@ export const orderDetailsSettings = new SchemaSettings({
 });
 ```
 
-#### 7.2 注册 Schema Settings
+#### 6.2 注册 Schema Settings
 
 ```ts
 import { Plugin } from '@nocobase/client';
@@ -515,7 +460,7 @@ export class PluginFieldComponentWithoutValueClient extends Plugin {
 export default PluginFieldComponentWithoutValueClient;
 ```
 
-#### 7.3 使用 Schema Settings
+#### 6.3 使用 Schema Settings
 
 我们修改 `packages/plugins/@nocobase-sample/plugin-field-component-without-value/src/client/schema/index.ts` 中的 `carouselSchema`：
 
@@ -530,13 +475,13 @@ export const getOrderDetailsSchema = (orderField: string): ISchema => ({
 };
 ```
 
-### 8. 实现 Schema Settings items
+### 7. 实现 Schema Settings items
 
 目前我们只实现了 `Schema Settings`，但是没有实现任何操作，我们需要根据需求实现各个操作。
 
 目前 Schema Settings 支持的内置操作类型请参考 [Schema Settings - Built-in Components and Types](https://client.docs.nocobase.com/core/ui-schema/schema-settings#built-in-components-and-types) 文档。
 
-#### 8.1 实现 `remove` 操作
+#### 7.1 实现 `remove` 操作
 
 目前通过 initializers 添加的字段是无法删除的，我们需要实现 `remove` 操作。
 
@@ -566,11 +511,11 @@ export const orderDetailsSettings = new SchemaSettings({
 
 ![20240613183852](https://static-docs.nocobase.com/20240613183852.png)
 
-#### 8.2 实现 `Order field` 选择
+#### 7.2 实现 `Order field` 选择
 
 我们除了在添加字段的时候选择了 `Order field`，还可以在 `Schema Settings` 中选择 `Order field`。
 
-##### 8.2.1 定义 Schema Settings item
+##### 7.2.1 定义 Schema Settings item
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-field-component-without-value/src/client/settings/items/orderField.ts` 文件：
 
@@ -627,27 +572,27 @@ export const orderDetailsSettings = new SchemaSettings({
 
 你可以根据需要实现更多的 Settings 配置。
 
-### 10. 完善多语言
+### 8. 多语言
 
-#### 10.1 英文
+#### 8.1 英文
 
-我们编辑 `packages/plugins/@nocobase-sample/plugin-field-component-without-value/src/client/locale/en.ts` 文件：
+我们编辑 `packages/plugins/@nocobase-sample/plugin-field-component-without-value/src/locale/en-US.json` 文件：
 
-```diff
+```ts
 {
   "Order Details": "Order Details",
-+ "Order field": "Order field"
+  "Order field": "Order field"
 }
 ```
 
-#### 10.2 中文
+#### 8.2 中文
 
-我们编辑 `packages/plugins/@nocobase-sample/plugin-field-component-without-value/src/client/locale/zh.ts` 文件：
+我们编辑 `packages/plugins/@nocobase-sample/plugin-field-component-without-value/src/locale/zh-CN.json` 文件：
 
-```diff
+```ts
 {
   "Order Details": "订单详情",
-+ "Order field": "订单字段"
+  "Order field": "订单字段"
 }
 ```
 

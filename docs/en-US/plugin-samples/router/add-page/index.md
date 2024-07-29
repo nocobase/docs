@@ -46,7 +46,7 @@ Then, after logging in, visit [http://localhost:13000/admin/pm/list/local/](http
 
 ## Function Implementation
 
-### Step 1: Add `/about` page
+### 1.  Add `/about` page
 
 According to the [Page Routing and Extension](/development/client/router) documentation in the plugin development tutorial, we need to modify the `packages/plugins/@nocobase-sample/plugin-add-page/src/client/index.tsx` file of the plugin:
 
@@ -84,7 +84,7 @@ Then, when we visit [http://localhost:13000/about](http://localhost:13000/about)
 
 ![20240512200508](https://static-docs.nocobase.com/20240512200508.png)
 
-### Step 2: Add `/admin/data-view` page
+### 2.  Add `/admin/data-view` page
 
 According to the [Existing Page Routes](/development/client/router#existing-page-routes) documentation, we know that `/admin/*` corresponds to the `name` `admin`. If we want to add a new page under it, we can use the `admin.` prefix, for example `admin.dataView`.
 
@@ -117,7 +117,7 @@ Then we visit [http://localhost:13000/admin/data-view](http://localhost:13000/ad
 
 ![20240512200555](https://static-docs.nocobase.com/20240512200555.png)
 
-### Step 3: Add `/admin/material-manage` and its sub-pages
+### 3.  Add `/admin/material-manage` and its sub-pages
 
 We can create a `packages/plugins/@nocobase-sample/plugin-add-page/src/client/MaterialPage.tsx` file with the following content:
 

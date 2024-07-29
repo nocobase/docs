@@ -353,7 +353,7 @@ export const qrCodeComponentFieldSettings = new SchemaSettings({
 
 #### 4.1 英语
 
-我们编辑 `packages/plugins/@nocobase-sample/plugin-field-value/src/client/locale/zh.ts` 文件：
+我们编辑 `packages/plugins/@nocobase-sample/plugin-field-value/src/locale/zh-CN.json` 文件：
 
 ```diff
 {
@@ -369,7 +369,7 @@ export const qrCodeComponentFieldSettings = new SchemaSettings({
 
 #### 4.1 中文
 
-我们编辑 `packages/plugins/@nocobase-sample/plugin-field-value/src/client/locale/zh.ts` 文件：
+我们编辑 `packages/plugins/@nocobase-sample/plugin-field-value/src/locale/zh-CN.json` 文件：
 
 ```diff
 {

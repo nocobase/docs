@@ -797,39 +797,43 @@ export const imageSettings = new SchemaSettings({
 ![20240602112229](https://static-docs.nocobase.com/20240602112229.png)
 
 
-### 6. 完善多语言
+### 6. 多语言
+
+:::warning
+多语言文件变更后，需要重启服务才能生效
+:::
 
 #### 6.1 英文
 
-我们编辑 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/local/en.ts` 文件：
+我们编辑 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/locale/en-US.json` 文件：
 
-```diff
+```json
 {
   "Image": "Image",
-+ "Edit Image": "Edit Image",
-+ "Images": "Images",
-+ "Autoplay": "Autoplay",
-+ "Edit height": "Edit Height",
-+ "Height": "Height",
-+ "Lazy": "Lazy"
+  "Edit Image": "Edit Image",
+  "Images": "Images",
+  "Autoplay": "Autoplay",
+  "Edit height": "Edit Height",
+  "Height": "Height",
+  "Lazy": "Lazy"
 }
 ```
 
 #### 6.2 中文
 
-我们编辑 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/local/zh.ts` 文件：
+我们编辑 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/locale/zh-CN.json` 文件：
 
-```diff
+```json
 {
   "Image": "图片",
-+ "Edit Image": "编辑图片",
-+ "Images": "图片",
-+ "Edit height": "编辑高度",
-+ "Height": "高度",
-+ "Lazy": "懒加载"
+  "Edit Image": "编辑图片",
+  "Images": "图片",
+  "Edit height": "编辑高度",
+  "Height": "高度",
+  "Lazy": "懒加载"
 }
 ```
-
+如果需要更多的多语言支持，可以继续添加。
 
 ## 打包和上传到生产环境
 

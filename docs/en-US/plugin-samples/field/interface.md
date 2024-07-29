@@ -57,7 +57,7 @@ yarn dev
 .
 ├── client # 客户端插件
 │   ├── EncryptionFieldInterface.tsx # 前端 Field Interface
-│   ├── locale.tsx # 多语言工具函数
+│   ├── locale.ts # 多语言工具函数
 │   └── index.ts # 前端入口文件
 ├── locale
 │   ├── en-US.json # 英语
@@ -382,7 +382,7 @@ export default PluginFieldInterfaceServer;
 
 ![20240726192832](https://static-docs.nocobase.com/20240726192832.png)
 
-## 完善多语言
+## 多语言
 
 我们可以通过 [http://localhost:13000/admin/settings/system-settings](http://localhost:13000/admin/settings/system-settings) 添加多个语言，并且在右上角切换语言。
 
@@ -390,7 +390,7 @@ export default PluginFieldInterfaceServer;
 
 ### 英语
 
-我们编辑 `packages/plugins/@nocobase-sample/plugin-field-interface/src/client/locale/zh.ts` 文件：
+我们编辑 `packages/plugins/@nocobase-sample/plugin-field-interface/src/locale/zh-CN.json` 文件：
 
 ```diff
 {
@@ -400,7 +400,7 @@ export default PluginFieldInterfaceServer;
 
 ### 中文
 
-我们编辑 `packages/plugins/@nocobase-sample/plugin-field-interface/src/client/locale/zh.ts` 文件：
+我们编辑 `packages/plugins/@nocobase-sample/plugin-field-interface/src/locale/zh-CN.json` 文件：
 
 ```diff
 {
