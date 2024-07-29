@@ -92,23 +92,23 @@ export const FormV3BlockNameLowercase = 'form-v3';
 我们新建 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/locale.ts` 文件：
 
 ```ts
-import { useTranslation } from 'react-i18next';
-
 // @ts-ignore
 import pkg from './../../package.json';
+import { useApp } from '@nocobase/client';
 
-export function usePluginTranslation() {
-  return useTranslation([pkg.name, 'client'], { nsMode: 'fallback' });
+export function useT() {
+  const app = useApp();
+  return (str: string) => app.i18n.t(str, { ns: pkg.name });
 }
 
-export function generatePluginTranslationTemplate(key: string) {
-  return `{{t('${key}', { ns: ['${pkg.name}', 'client'], nsMode: 'fallback' })}}`;
+export function tStr(key: string) {
+  return `{{t('${key}', { ns: '${pkg.name}', nsMode: 'fallback' })}}`;
 }
+
 ```
 
-- [useTranslation()](https://react.i18next.com/latest/usetranslation-hook)：用于获取多语言工具函数
-- `usePluginTranslation()`：获取 Form 组件的多语言工具函数，需要将插件的名字作为命名空间
-- `generatePluginTranslationTemplate()`：用于生成 Form 组件的多语言模板
+- `useT()`：获取 Form 组件的多语言工具函数，需要将插件的名字作为命名空间
+- `tStr()`：用于生成 Form 组件的多语言字符串模板
 
 #### 2.2 多语言文件
 
@@ -440,14 +440,14 @@ import { FormOutlined } from '@ant-design/icons';
 
 import { getFormV3Schema } from './FormV3.schema'
 import { FormV3BlockName } from './constants';
-import { usePluginTranslation } from './locale';
+import { useT } from './locale';
 
 export const formV3InitializerItem: SchemaInitializerItemType = {
   name: FormV3BlockName,
   Component: 'DataBlockInitializer',
   useComponentProps() {
     const { insert } = useSchemaInitializer();
-    const { t } = usePluginTranslation();
+    const t = useT();
 
     return {
       title: t(FormV3BlockName),
@@ -668,7 +668,7 @@ import { FormV3BlockNameLowercase } from "../constants";
 export const formV3ConfigureActionsInitializer = new SchemaInitializer({
   name: `${FormV3BlockNameLowercase}:configureActions`,
   icon: 'SettingOutlined',
-  title: generatePluginTranslationTemplate('Configure actions'),
+  title: tStr('Configure actions'),
   style: {
     marginLeft: 8,
   },
@@ -785,7 +785,7 @@ export function getFormV3Schema(options: GetFormV3SchemaOptions): ISchema {
 import { useForm } from '@formily/react';
 import { App } from 'antd';
 import { ActionProps, useDataBlockResource } from "@nocobase/client";
-import { generatePluginTranslationTemplate } from '../../../locale'
+import { tStr } from '../../../locale'
 
 export const useFormV3SubmitActionProps = (): ActionProps => {
   const resource = useDataBlockResource();
@@ -806,7 +806,7 @@ export const useFormV3SubmitActionProps = (): ActionProps => {
 
 export const submitActionSchema = {
   type: 'void',
-  title: generatePluginTranslationTemplate('Submit'),
+  title: tStr('Submit'),
   'x-component': 'Action',
   'x-use-component-props': 'useFormV3SubmitActionProps',
   'x-toolbar': 'ActionSchemaToolbar'
@@ -863,12 +863,12 @@ export class PluginBlockFormClient extends Plugin {
 ```tsx | pure
 import { SchemaInitializerItemType, useSchemaInitializer } from "@nocobase/client";
 import { submitActionSchema } from "./schema";
-import { generatePluginTranslationTemplate } from '../../../locale';
+import { tStr } from '../../../locale';
 
 export const submitActionInitializerItem: SchemaInitializerItemType = {
   type: 'item',
   name: 'submit',
-  title: generatePluginTranslationTemplate('Submit'),
+  title: tStr('Submit'),
   useComponentProps() {
     const { insert } = useSchemaInitializer();
     return {
@@ -976,7 +976,7 @@ export class PluginBlockFormClient extends Plugin {
 
 export const submitActionSchema = {
   type: 'void',
-  title: generatePluginTranslationTemplate('Submit'),
+  title: tStr('Submit'),
   'x-component': 'Action',
 + 'x-settings': formV3SubmitActionSettings.name,
   'x-use-component-props': 'useFormV3SubmitActionProps',
@@ -999,7 +999,7 @@ export const submitActionSchema = {
 import { SchemaInitializer } from "@nocobase/client";
 import { FormV3BlockNameLowercase } from "../constants";
 import { submitActionInitializerItem } from "./items/submit";
-+ import { generatePluginTranslationTemplate } from '../locale'
++ import { tStr } from '../locale'
 
 export const formV3ConfigureActionsInitializer = new SchemaInitializer({
   name: `${FormV3BlockNameLowercase}:configureActions`,
@@ -1012,7 +1012,7 @@ export const formV3ConfigureActionsInitializer = new SchemaInitializer({
     submitActionInitializerItem,
 +   {
 +     name: 'customRequest',
-+     title: generatePluginTranslationTemplate('Custom request'),
++     title: tStr('Custom request'),
 +     Component: 'CustomRequestInitializer',
 +   },
   ]
@@ -1037,7 +1037,7 @@ export const formV3ConfigureFieldsInitializer = new SchemaInitializer({
   name: `${FormV3BlockNameLowercase}:configureFields`,
   icon: 'SettingOutlined',
   wrap: gridRowColWrap,
-  title: generatePluginTranslationTemplate('Configure fields'),
+  title: tStr('Configure fields'),
   items: [
     // TODO
   ]
@@ -1167,7 +1167,7 @@ export const formV3ConfigureFieldsInitializer = new SchemaInitializer({
 
 ```diff
 // ...
-+ import { generatePluginTranslationTemplate } from '../locale'
++ import { tStr } from '../locale'
 
 export const formV3ConfigureFieldsInitializer = new SchemaInitializer({
   name: `${FormV3BlockNameLowercase}:configureFields`,
@@ -1185,7 +1185,7 @@ export const formV3ConfigureFieldsInitializer = new SchemaInitializer({
 +   },
 +   {
 +     name: 'addText',
-+     title: generatePluginTranslationTemplate('Add text'),
++     title: tStr('Add text'),
 +     Component: 'MarkdownFormItemInitializer',
 +   },
   ]

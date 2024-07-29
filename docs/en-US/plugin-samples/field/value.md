@@ -173,14 +173,14 @@ import { Plugin } from '@nocobase/client';
 
 import { QRCode } from './QRCode';
 import { qrCodeComponentFieldSettings } from './settings';
-import { generatePluginTranslationTemplate } from './locale';
+import { tStr } from './locale';
 
 export class PluginFieldComponentValueClient extends Plugin {
   async load() {
     this.app.addComponents({ QRCode });
     this.schemaSettingsManager.add(qrCodeComponentFieldSettings);
     this.app.addFieldInterfaceComponentOption('url', {
-      label: generatePluginTranslationTemplate('QRCode'),
+      label: tStr('QRCode'),
       value: 'QRCode',
     });
   }
@@ -208,7 +208,7 @@ export default PluginFieldComponentValueClient;
 ```ts
 import { createModalSettingsItem, createSelectSchemaSettingsItem, createSwitchSettingsItem, SchemaSettings } from "@nocobase/client";
 
-import { generatePluginTranslationTemplate, usePluginTranslation } from './locale';
+import { tStr, useT } from './locale';
 
 export const qrCodeComponentFieldSettings = new SchemaSettings({
   name: 'fieldSettings:component:QRCode',
@@ -253,11 +253,11 @@ export const qrCodeComponentFieldSettings = new SchemaSettings({
   items: [
     createSelectSchemaSettingsItem({
       name: 'size',
-      title: generatePluginTranslationTemplate('Size'),
+      title: tStr('Size'),
       schemaKey: 'x-component-props.size',
       defaultValue: 160,
       useOptions() {
-        const { t } = usePluginTranslation();
+        const t = useT();
         return [
           {
             label: t('Small'),
@@ -298,7 +298,7 @@ export const qrCodeComponentFieldSettings = new SchemaSettings({
     createSwitchSettingsItem({
       name: 'bordered',
       schemaKey: 'x-component-props.bordered',
-      title: generatePluginTranslationTemplate('Bordered'),
+      title: tStr('Bordered'),
       defaultValue: true,
     }),
   ],
@@ -322,16 +322,16 @@ export const qrCodeComponentFieldSettings = new SchemaSettings({
     // ...
     createModalSettingsItem({
       name: 'color',
-      title: generatePluginTranslationTemplate('Color'),
+      title: tStr('Color'),
       parentSchemaKey: 'x-component-props',
       schema({ color }) {
         return {
           type: 'object',
-          title: generatePluginTranslationTemplate('Color'),
+          title: tStr('Color'),
           properties: {
             color: {
               type: 'string',
-              title: generatePluginTranslationTemplate('Color'),
+              title: tStr('Color'),
               default: color,
               'x-component': 'ColorPicker',
             }

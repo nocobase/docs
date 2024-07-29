@@ -89,23 +89,23 @@ export const FieldNameLowercase = 'orderDetails';
 我们新建 `packages/plugins/@nocobase-sample/plugin-field-component-without-value/src/client/locale.ts` 文件：
 
 ```ts
-import { useTranslation } from 'react-i18next';
-
 // @ts-ignore
 import pkg from './../../package.json';
+import { useApp } from '@nocobase/client';
 
-export function usePluginTranslation() {
-  return useTranslation([pkg.name, 'client'], { nsMode: 'fallback' });
+export function useT() {
+  const app = useApp();
+  return (str: string) => app.i18n.t(str, { ns: pkg.name });
 }
 
-export function generatePluginTranslationTemplate(key: string) {
-  return `{{t('${key}', { ns: ['${pkg.name}', 'client'], nsMode: 'fallback' })}}`;
+export function tStr(key: string) {
+  return `{{t('${key}', { ns: '${pkg.name}', nsMode: 'fallback' })}}`;
 }
+
 ```
 
-- [useTranslation()](https://react.i18next.com/latest/usetranslation-hook)：用于获取多语言工具函数
-- `usePluginTranslation()`：获取 Carousel 组件的多语言工具函数，需要将插件的名字作为命名空间
-- `generatePluginTranslationTemplate()`：用于生成 Carousel 组件的多语言模板
+- `useT()`：获取插件的多语言工具函数，需要将插件的名字作为命名空间
+- `tStr()`：用于生成插件组件的多语言字符串模板
 
 #### 2.2 多语言文件
 
@@ -389,7 +389,7 @@ import { SchemaInitializerActionModal, SchemaInitializerItemType, SelectProps, u
 import { MenuOutlined } from "@ant-design/icons";
 
 import { FieldNameLowercase } from "../constants";
-import { usePluginTranslation } from "../locale";
+import { useT } from "../locale";
 import { getOrderDetailsSchema } from '../schema'
 
 export function useFieldOptions(): SelectProps['options'] {
@@ -402,7 +402,7 @@ export function useFieldOptions(): SelectProps['options'] {
 }
 
 const OrderDetailsSchemaInitializer = () => {
-  const { t } = usePluginTranslation();
+  const t = useT();
   const { insert } = useSchemaInitializer();
   const options = useFieldOptions();
   return <SchemaInitializerActionModal
@@ -444,7 +444,7 @@ export const orderDetailsInitializerItem: SchemaInitializerItemType = {
     - `schema`：弹窗内的表单 schema
     - `onSubmit`：表单提交事件
   - `useFieldOptions`：获取字段选项
-  - `usePluginTranslation`：获取多语言工具函数
+  - `useT`：获取多语言工具函数
   - [useSchemaInitializer()](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#useschemainitializer)：获取 Schema Initializer 上下文
     - `insert`：插入 Schema Item
 

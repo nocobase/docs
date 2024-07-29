@@ -93,23 +93,23 @@ export const BlockNameLowercase = BlockName.toLowerCase();
 我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/locale.ts` 文件：
 
 ```ts
-import { useTranslation } from 'react-i18next';
-
 // @ts-ignore
 import pkg from './../../package.json';
+import { useApp } from '@nocobase/client';
 
-export function usePluginTranslation() {
-  return useTranslation([pkg.name, 'client'], { nsMode: 'fallback' });
+export function useT() {
+  const app = useApp();
+  return (str: string) => app.i18n.t(str, { ns: pkg.name });
 }
 
-export function generatePluginTranslationTemplate(key: string) {
-  return `{{t('${key}', { ns: ['${pkg.name}', 'client'], nsMode: 'fallback' })}}`;
+export function tStr(key: string) {
+  return `{{t('${key}', { ns: '${pkg.name}', nsMode: 'fallback' })}}`;
 }
+
 ```
 
-- [useTranslation()](https://react.i18next.com/latest/usetranslation-hook)：用于获取多语言工具函数
-- `usePluginTranslation()`：获取插件的多语言工具函数，需要将插件的名字作为命名空间
-- `generatePluginTranslationTemplate()`：用于生成插件的多语言模板
+- `useT()`：获取插件的多语言工具函数，需要将插件的名字作为命名空间
+- `tStr()`：用于生成插件的多语言字符串模板
 
 #### 2.2 多语言文件
 
@@ -389,7 +389,7 @@ import { SchemaInitializerItemType, useSchemaInitializer } from '@nocobase/clien
 import { CodeOutlined } from '@ant-design/icons';
 
 import { getInfoSchema } from '../schema'
-import { usePluginTranslation } from '../locale';
+import { useT } from '../locale';
 import { BlockName, BlockNameLowercase } from '../constants';
 
 export const infoInitializerItem: SchemaInitializerItemType = {
@@ -397,12 +397,12 @@ export const infoInitializerItem: SchemaInitializerItemType = {
   Component: 'DataBlockInitializer',
   useComponentProps() {
     const { insert } = useSchemaInitializer();
-    const { t } = usePluginTranslation();
+    const t = useT();
     return {
       title: t(BlockName),
       icon: <CodeOutlined />,
       componentType: BlockName,
-      useTranslationHooks: usePluginTranslation,
+      useTranslationHooks: useT,
       onCreateBlockSchema({ item }) {
         insert(getInfoSchema({ dataSource: item.dataSource, collection: item.name }))
       },

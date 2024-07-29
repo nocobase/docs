@@ -342,7 +342,7 @@ export const imageSettings = new SchemaSettings({
 ```ts
 import { SchemaSettingsItemType, useDesignable, } from "@nocobase/client";
 import { useFieldSchema } from '@formily/react';
-import { usePluginTranslation } from "../../locale";
+import { useT } from "../../locale";
 import { BlockNameLowercase } from "../../constants";
 
 export const imageSchemaSettingsItem: SchemaSettingsItemType = {
@@ -351,7 +351,7 @@ export const imageSchemaSettingsItem: SchemaSettingsItemType = {
   useComponentProps() {
     const filedSchema = useFieldSchema();
     const { deepMerge } = useDesignable();
-    const { t } = usePluginTranslation();
+    const t = useT();
 
     return {
       title: t('Edit Image'),
@@ -452,7 +452,7 @@ export const imageSettings = new SchemaSettings({
 ```ts
 import { SchemaSettingsItemType, useDesignable, } from "@nocobase/client";
 import { useFieldSchema } from '@formily/react';
-import { usePluginTranslation } from '../../locale'
+import { useT } from '../../locale'
 import { BlockNameLowercase } from "../../constants";
 
 export const heightSchemaSettingsItem: SchemaSettingsItemType = {
@@ -461,7 +461,7 @@ export const heightSchemaSettingsItem: SchemaSettingsItemType = {
   useComponentProps() {
     const filedSchema = useFieldSchema();
     const { deepMerge } = useDesignable();
-    const { t } = usePluginTranslation();
+    const t = useT();
 
     return {
       title: t('Edit height'),
@@ -561,7 +561,7 @@ export const imageSettings = new SchemaSettings({
 ```ts
 import { SchemaSettingsItemType, useDesignable, } from "@nocobase/client";
 import { useFieldSchema } from '@formily/react';
-import { usePluginTranslation } from "../../locale";
+import { useT } from "../../locale";
 import { BlockNameLowercase } from "../../constants";
 
 export const objectFitSchemaSettingsItem: SchemaSettingsItemType = {
@@ -570,7 +570,7 @@ export const objectFitSchemaSettingsItem: SchemaSettingsItemType = {
   useComponentProps() {
     const filedSchema = useFieldSchema();
     const { deepMerge } = useDesignable();
-    const { t } = usePluginTranslation();
+    const t = useT();
 
     return {
       title: t('Object Fit'),
@@ -665,7 +665,7 @@ export const imageSettings = new SchemaSettings({
 ```ts
 import { SchemaSettingsItemType, useDesignable, } from "@nocobase/client";
 import { useFieldSchema } from '@formily/react';
-import { usePluginTranslation } from "../../locale";
+import { useT } from "../../locale";
 import { BlockNameLowercase } from "../../constants";
 
 export const lazySchemaSettingsItem: SchemaSettingsItemType = {
@@ -674,7 +674,7 @@ export const lazySchemaSettingsItem: SchemaSettingsItemType = {
   useComponentProps() {
     const filedSchema = useFieldSchema();
     const { deepMerge } = useDesignable();
-    const { t } = usePluginTranslation();
+    const t = useT();
 
     return {
       title: t('Lazy'),

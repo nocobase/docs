@@ -91,14 +91,14 @@ yarn dev
 ```tsx | pure
 import { CollectionFieldInterface, defaultProps } from '@nocobase/client';
 import { uid } from '@nocobase/utils/client';
-import { generatePluginTranslationTemplate } from './locale';
+import { tStr } from './locale';
 
 export class EncryptionFieldInterface extends CollectionFieldInterface {
   name = 'encryption';
   type = 'object';
   group = 'advanced';
   order = 10;
-  title = generatePluginTranslationTemplate('Encryption');
+  title = tStr('Encryption');
   default = {
     type: 'encryption',
     iv: uid(16),
@@ -125,7 +125,7 @@ export class EncryptionFieldInterface extends CollectionFieldInterface {
 
 所有的 Field interface 都需要继承 `CollectionFieldInterface` 类，然后实现 `name`、`type`、`group`、`order`、`title`、`default`、`availableTypes`、`hasDefaultValue`、`properties`、`filterable` 等属性，具体每个属性的含义为：
 
-- `generatePluginTranslationTemplate`：生成多语言模板
+- `tStr`：生成多语言字符串模板
 
 - `name`：Field interface 的唯一标识，用于区分不同的 Field interface
 - `type`：？

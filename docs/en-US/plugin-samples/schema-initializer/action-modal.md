@@ -88,23 +88,23 @@ export const ActionNameLowercase = 'open-document';
 我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/locale.ts` 文件：
 
 ```ts
-import { useTranslation } from 'react-i18next';
-
 // @ts-ignore
 import pkg from './../../package.json';
+import { useApp } from '@nocobase/client';
 
-export function usePluginTranslation() {
-  return useTranslation([pkg.name, 'client'], { nsMode: 'fallback' });
+export function useT() {
+  const app = useApp();
+  return (str: string) => app.i18n.t(str, { ns: pkg.name });
 }
 
-export function generatePluginTranslationTemplate(key: string) {
-  return `{{t('${key}', { ns: ['${pkg.name}', 'client'], nsMode: 'fallback' })}}`;
+export function tStr(key: string) {
+  return `{{t('${key}', { ns: '${pkg.name}', nsMode: 'fallback' })}}`;
 }
+
 ```
 
-- [useTranslation()](https://react.i18next.com/latest/usetranslation-hook)：用于获取多语言工具函数
-- `usePluginTranslation()`：获取插件的多语言工具函数，需要将插件的名字作为命名空间
-- `generatePluginTranslationTemplate()`：用于生成插件的多语言模板
+- `useT()`：获取插件的多语言工具函数，需要将插件的名字作为命名空间
+- `tStr()`：用于生成插件的多语言字符串模板
 
 #### 2.2 多语言文件
 
@@ -148,14 +148,14 @@ NocoBase 的动态页面都是通过 Schema 来渲染，所以我们需要定义
 
 ```ts
 import { ISchema } from "@nocobase/client"
-import { generatePluginTranslationTemplate } from "../locale";
+import { tStr } from "../locale";
 import { ActionName } from "../constants";
 
 export const createDocumentActionModalSchema = (blockComponent: string): ISchema => {
   return {
     type: 'void',
     'x-component': 'Action',
-    title: generatePluginTranslationTemplate(ActionName),
+    title: tStr(ActionName),
     'x-component-props': {
       type: 'primary'
     },
@@ -247,7 +247,7 @@ export default PluginInitializerActionModalClient;
 ```ts
 import { SchemaInitializerItemType, useSchemaInitializer } from "@nocobase/client"
 
-import { usePluginTranslation } from "../locale";
+import { useT } from "../locale";
 import { createDocumentActionModalSchema } from '../schema';
 import { ActionName, ActionNameLowercase } from "../constants";
 
@@ -257,7 +257,7 @@ export const createDocumentActionModalInitializerItem = (blockComponent: string)
   name: ActionNameLowercase,
   useComponentProps() {
     const { insert } = useSchemaInitializer();
-    const { t } = usePluginTranslation();
+    const t = useT();
     return {
       title: t(ActionName),
       onClick: () => {

@@ -98,23 +98,23 @@ export const BlockNameLowercase = BlockName.toLowerCase();
 我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-data-modal/src/client/locale.ts` 文件：
 
 ```ts
-import { useTranslation } from 'react-i18next';
-
 // @ts-ignore
 import pkg from './../../package.json';
+import { useApp } from '@nocobase/client';
 
-export function usePluginTranslation() {
-  return useTranslation([pkg.name, 'client'], { nsMode: 'fallback' });
+export function useT() {
+  const app = useApp();
+  return (str: string) => app.i18n.t(str, { ns: pkg.name });
 }
 
-export function generatePluginTranslationTemplate(key: string) {
-  return `{{t('${key}', { ns: ['${pkg.name}', 'client'], nsMode: 'fallback' })}}`;
+export function tStr(key: string) {
+  return `{{t('${key}', { ns: '${pkg.name}', nsMode: 'fallback' })}}`;
 }
+
 ```
 
-- [useTranslation()](https://react.i18next.com/latest/usetranslation-hook)：用于获取多语言工具函数
-- `usePluginTranslation()`：获取插件的多语言工具函数，需要将插件的名字作为命名空间
-- `generatePluginTranslationTemplate()`：用于生成插件的多语言模板
+- `useT()`：获取插件的多语言工具函数，需要将插件的名字作为命名空间
+- `tStr()`：用于生成插件的多语言字符串模板
 
 #### 2.2 多语言文件
 
@@ -270,9 +270,9 @@ export default PluginInitializerBlockDataModalClient;
 import React, { FC, useMemo } from "react";
 import { ISchema } from '@formily/react';
 import { ActionContextProvider, SchemaComponent, useApp, CollectionFieldOptions } from '@nocobase/client';
-import { usePluginTranslation } from "../locale";
+import { useT } from "../locale";
 
-const createSchema = (fields: CollectionFieldOptions, { t }: ReturnType<typeof usePluginTranslation>): ISchema => {
+const createSchema = (fields: CollectionFieldOptions, t: ReturnType<typeof useT>): ISchema => {
   // TODO
 }
 
@@ -292,8 +292,8 @@ export interface TimelineConfigFormProps {
 export const TimelineInitializerConfigForm: FC<TimelineConfigFormProps> = ({ visible, setVisible, collection, dataSource, onSubmit }) => {
   const app = useApp();
   const fields = useMemo(() => app.getCollectionManager(dataSource).getCollection(collection).getFields(), [collection, dataSource])
-  const tt = usePluginTranslation();
-  const schema = useMemo(() => createSchema(fields, tt), [fields]);
+  const t = useT();
+  const schema = useMemo(() => createSchema(fields, t), [fields]);
 
   return <ActionContextProvider value={{ visible, setVisible }}>
     <SchemaComponent schema={schema}  />
@@ -621,7 +621,7 @@ import { FieldTimeOutlined } from '@ant-design/icons';
 import { DataBlockInitializer, SchemaInitializerItemType, useSchemaInitializer } from "@nocobase/client";
 
 import { getTimelineSchema } from '../schema';
-import { usePluginTranslation } from '../locale';
+import { useT } from '../locale';
 import { TimelineConfigFormProps, TimelineInitializerConfigForm } from './ConfigForm';
 import { BlockName, BlockNameLowercase } from '../constants';
 
@@ -630,7 +630,7 @@ export const TimelineInitializerComponent = () => {
   const [collection, setCollection] = useState<string>();
   const [dataSource, setDataSource] = useState<string>();
   const [showConfigForm, setShowConfigForm] = useState(false);
-  const { t } = usePluginTranslation()
+  const t = useT()
 
   const onSubmit: TimelineConfigFormProps['onSubmit'] = useCallback((values) => {
     const schema = getTimelineSchema({ collection, dataSource, timeField: values.timeField, titleField: values.titleField });
