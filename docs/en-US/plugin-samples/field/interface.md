@@ -126,6 +126,7 @@ export class EncryptionFieldInterface extends CollectionFieldInterface {
 所有的 Field interface 都需要继承 `CollectionFieldInterface` 类，然后实现 `name`、`type`、`group`、`order`、`title`、`default`、`availableTypes`、`hasDefaultValue`、`properties`、`filterable` 等属性，具体每个属性的含义为：
 
 - `tStr`：生成多语言字符串模板
+
 - `name`：Field interface 的唯一标识，用于区分不同的 Field interface
 - `type`：？
 - `group`：分组，用于在字段设置中分组显示，这里我们设置为 `advanced`
@@ -256,14 +257,6 @@ export class EncryptionField extends Field {
 - dataType：加解密对应到数据库中是字符串，所以我们使用 `DataTypes.STRING` 类型
 - get：获取字段值时，解密
 - set：设置字段值时，加密
-
-对于需要异步的场景，例如数据校验、异步数据转换等，可以我们需要使用到各种 [数据库事件](/api/database#beforesync--aftersync)，本示例不需要异步操作，所以不需要实现。
-
-### 3. 导入、导出
-
-某些情况下导入、导出和界面显示到逻辑并不相同，这时候我们需要实现后端的 [Interface](/api/database/interfaces/base-interface)。
-
-本示例导入和导出的逻辑和界面显示的逻辑是一致的，所以不需要实现。
 
 #### 2.2 注册
 

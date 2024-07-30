@@ -38,7 +38,7 @@ yarn dev
 
 上下文的实现需要结合 React `Context` 功能。
 
-### 第 1 步：创建上下文
+### 1. 创建上下文
 
 ```tsx | pure
 import { useRequest } from '@nocobase/client';
@@ -71,7 +71,7 @@ export const useFeature = (feature: string) => {
 
 关于 `features` 的配置和数据，可以参考 [插件表单配置页面](/plugin-samples/plugin-settings/form) 示例说明，这里只使用 Mock 数据。
 
-### 第 2 步：注册到系统中
+### 2. 注册到系统中
 
 我们修改 `packages/plugins/@nocobase-sample/plugin-provider-context/src/index.ts` 文件，将 `FeaturesProvider` 组件注册到系统中。
 

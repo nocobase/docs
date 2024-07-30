@@ -84,64 +84,9 @@ export const BlockName = 'Info';
 export const BlockNameLowercase = BlockName.toLowerCase();
 ```
 
-### 2. 多语言
+### 2. 实现区块组件
 
-#### 2.1 定义工具函数
-
-如果插件需要支持多语言，我们需要定义多语言工具函数。
-
-我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/locale.ts` 文件：
-
-```ts
-import { useTranslation } from 'react-i18next';
-
-// @ts-ignore
-import pkg from './../../package.json';
-
-export function usePluginTranslation() {
-  return useTranslation([pkg.name, 'client'], { nsMode: 'fallback' });
-}
-
-export function generatePluginTranslationTemplate(key: string) {
-  return `{{t('${key}', { ns: ['${pkg.name}', 'client'], nsMode: 'fallback' })}}`;
-}
-```
-
-- [useTranslation()](https://react.i18next.com/latest/usetranslation-hook)：用于获取多语言工具函数
-- `usePluginTranslation()`：获取插件的多语言工具函数，需要将插件的名字作为命名空间
-- `generatePluginTranslationTemplate()`：用于生成插件的多语言模板
-
-#### 2.2 多语言文件
-
-:::warning
-多语言文件变更后，需要重启服务才能生效
-:::
-
-##### 2.2.1 英语
-
-我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/locale/en-US.json` 内容为：
-
-```json
-{
-  "Info": "Info"
-}
-```
-
-##### 2.2.2 中文
-
-我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/locale/zh-CN.json` 内容为：
-
-```json
-{
-  "Info": "信息"
-}
-```
-
-如果需要更多的多语言支持，可以继续添加。
-
-### 3. 实现区块组件
-
-#### 3.1 定义区块组件
+#### 2.1 定义区块组件
 
 本示例要做的是一个 `Info` 区块组件，具体的需求是：
 
@@ -179,7 +124,7 @@ export const Info: FC<InfoProps> = withDynamicSchemaProps(({ collectionName, dat
 export * from './Info';
 ```
 
-#### 3.2 注册区块组件
+#### 2.2 注册区块组件
 
 我们需要将 `Info` 通过插件注册到系统中。
 
@@ -196,7 +141,7 @@ export class PluginInitializerBlockDataClient extends Plugin {
 export default PluginInitializerBlockDataClient;
 ```
 
-#### 3.3 验证区块组件
+#### 2.3 验证区块组件
 
 组件验证方式有 2 种：
 
@@ -236,9 +181,9 @@ export default PluginInitializerBlockDataClient;
 
 验证完毕后需要删除测试页面。
 
-### 4. 定义区块 Schema
+### 3. 定义区块 Schema
 
-#### 4.1 定义区块 Schema
+#### 3.1 定义区块 Schema
 
 NocoBase 的动态页面都是通过 Schema 来渲染，所以我们需要定义一个 Schema，后续用于在界面中添加 `Info` 区块。在实现本小节之前，我们需要先了解一些基础知识：
 
@@ -316,7 +261,7 @@ export function getInfoSchema({ dataSource = 'main', collection }) {
 </DataBlockProvider>
 ```
 
-#### 4.2 注册 scope
+#### 3.2 注册 scope
 
 我们需要将 `useInfoProps` 注册到系统中，这样 [x-use-component-props](/development/client/ui-schema/what-is-ui-schema#x-component-props-和-x-use-component-props) 才能找到对应的 scope。
 
@@ -337,7 +282,7 @@ export default PluginInitializerBlockDataClient;
 
 更多关于 Scope 的说明可以查看 [全局注册 Component 和 Scope](/plugin-samples/component-and-scope/global)
 
-#### 4.3 验证区块 Schema
+#### 3.3 验证区块 Schema
 
 同验证组件一样，我们可以通过临时页面验证或者文档示例验证的方式来验证 Schema 是否符合需求。我们这里以临时页面验证为例：
 
@@ -379,7 +324,7 @@ export default PluginInitializerBlockDataClient;
 
 验证完毕后需要删除测试页面。
 
-### 5. 定义 Schema Initializer Item
+### 4. 定义 Schema Initializer Item
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/initializer/index.tsx` 文件：
 
@@ -389,7 +334,7 @@ import { SchemaInitializerItemType, useSchemaInitializer } from '@nocobase/clien
 import { CodeOutlined } from '@ant-design/icons';
 
 import { getInfoSchema } from '../schema'
-import { usePluginTranslation } from '../locale';
+import { useT } from '../locale';
 import { BlockName, BlockNameLowercase } from '../constants';
 
 export const infoInitializerItem: SchemaInitializerItemType = {
@@ -397,12 +342,12 @@ export const infoInitializerItem: SchemaInitializerItemType = {
   Component: 'DataBlockInitializer',
   useComponentProps() {
     const { insert } = useSchemaInitializer();
-    const { t } = usePluginTranslation();
+    const t = useT();
     return {
       title: t(BlockName),
       icon: <CodeOutlined />,
       componentType: BlockName,
-      useTranslationHooks: usePluginTranslation,
+      useTranslationHooks: useT,
       onCreateBlockSchema({ item }) {
         insert(getInfoSchema({ dataSource: item.dataSource, collection: item.name }))
       },
@@ -428,9 +373,9 @@ export const infoInitializerItem: SchemaInitializerItemType = {
 
 更多关于 Schema Initializer 的定义可以参考 [Schema Initializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer) 文档。
 
-### 6. 实现 Schema Settings
+### 5. 实现 Schema Settings
 
-#### 6.1 定义 Schema Settings
+#### 5.1 定义 Schema Settings
 
 一个完整的 Block 还需要有 Schema Settings，用于配置一些属性和操作，但 Schema Settings 不是本示例的重点，所以我们这里仅有一个 `remove` 操作。
 
@@ -457,7 +402,7 @@ export const infoSettings = new SchemaSettings({
 })
 ```
 
-#### 6.2 注册 Schema Settings
+#### 5.2 注册 Schema Settings
 
 ```ts
 import { Plugin } from '@nocobase/client';
@@ -473,7 +418,7 @@ export class PluginInitializerBlockDataClient extends Plugin {
 export default PluginInitializerBlockDataClient;
 ```
 
-#### 6.3 使用 Schema Settings
+#### 5.3 使用 Schema Settings
 
 我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/schema/index.ts` 文件的 `getInfoSchema` 方法，将 `x-settings` 设置为 `infoSettings.name`。
 
@@ -490,13 +435,13 @@ export function getInfoSchema({ dataSource = 'main', collection }) {
 }
 ```
 
-### 7. 添加到 Add block 中
+### 6. 添加到 Add block 中
 
 系统中有很多个 `Add block` 按钮，但他们的 **name 是不同的**。
 
 ![img_v3_02b4_049b0a62-8e3b-420f-adaf-a6350d84840g](https://static-docs.nocobase.com/img_v3_02b4_049b0a62-8e3b-420f-adaf-a6350d84840g.jpg)
 
-#### 7.1 添加到页面级别 Add block 中
+#### 6.1 添加到页面级别 Add block 中
 
 如果我们需要添加到页面级别的 `Add block` 中，我们需要知道对应的 `name`，我们可以通过 TODO 方式查看对应的 `name`。
 
@@ -529,7 +474,7 @@ export default PluginDataBlockInitializerClient;
 
 <video controls width='100%' src="https://static-docs.nocobase.com/20240526170424_rec_.mp4"></video>
 
-#### 7.2 添加到弹窗 Add block 中
+#### 6.2 添加到弹窗 Add block 中
 
 我们不仅需要将其添加到页面级别的 `Add block` 中，还需要将其添加到 `Table` 区块 `Add new` 弹窗的 `Add block` 中。
 
@@ -565,7 +510,7 @@ export default PluginDataBlockInitializerClient;
 
 ![img_v3_02b4_7062bfab-5a7b-439c-b385-92c5704b6b3g](https://static-docs.nocobase.com/img_v3_02b4_7062bfab-5a7b-439c-b385-92c5704b6b3g.jpg)
 
-#### 7.3 添加到移动端 Add block 中
+#### 6.3 添加到移动端 Add block 中
 
 > 首先要激活移动端插件，参考 [激活插件](/welcome/getting-started/plugin#3-activate-the-plugin) 文档。
 

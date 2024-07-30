@@ -83,64 +83,9 @@ export const FormV3BlockNameLowercase = 'form-v3';
 
 > 为了不与已有的 `Form` 组件冲突，我们这里将其命名为 `FormV3`
 
-### 2. 多语言
+### 2. 实现区块组件
 
-#### 2.1 定义工具函数
-
-如果插件需要支持多语言，我们需要定义多语言工具函数。
-
-我们新建 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/locale.ts` 文件：
-
-```ts
-import { useTranslation } from 'react-i18next';
-
-// @ts-ignore
-import pkg from './../../package.json';
-
-export function usePluginTranslation() {
-  return useTranslation([pkg.name, 'client'], { nsMode: 'fallback' });
-}
-
-export function generatePluginTranslationTemplate(key: string) {
-  return `{{t('${key}', { ns: ['${pkg.name}', 'client'], nsMode: 'fallback' })}}`;
-}
-```
-
-- [useTranslation()](https://react.i18next.com/latest/usetranslation-hook)：用于获取多语言工具函数
-- `usePluginTranslation()`：获取 Form 组件的多语言工具函数，需要将插件的名字作为命名空间
-- `generatePluginTranslationTemplate()`：用于生成 Form 组件的多语言模板
-
-#### 2.2 多语言文件
-
-:::warning
-多语言文件变更后，需要重启服务才能生效
-:::
-
-##### 2.2.1 英语
-
-我们新建 `packages/plugins/@nocobase-sample/plugin-block-form/src/locale/en-US.json` 内容为：
-
-```json
-{
-  "FormV3": "FormV3"
-}
-```
-
-##### 2.2.2 中文
-
-我们新建 `packages/plugins/@nocobase-sample/plugin-block-form/src/locale/zh-CN.json` 内容为：
-
-```json
-{
-  "FormV3": "表单 V3"
-}
-```
-
-如果需要更多的多语言支持，可以继续添加。
-
-### 3. 实现区块组件
-
-#### 3.1 定义区块组件
+#### 2.1 定义区块组件
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.tsx` 文件，其内容如下：
 
@@ -163,7 +108,7 @@ export const FormV3: FC<FormV3Props> = withDynamicSchemaProps((props) => {
 
 如果不看 `withDynamicSchemaProps` 的话，`Form` 组件就是一个简单的函数组件。
 
-#### 3.2 注册区块组件
+#### 2.2 注册区块组件
 
 我们需要将 `FormV3` 通过插件注册到系统中。
 
@@ -180,7 +125,7 @@ export class PluginBlockFormClient extends Plugin {
 export default PluginBlockFormClient;
 ```
 
-#### 3.3 验证区块组件
+#### 2.3 验证区块组件
 
 组件验证方式有 2 种：
 
@@ -247,9 +192,9 @@ export default PluginBlockFormClient;
 
 验证完毕后需要删除测试页面。
 
-### 4. 定义区块 Schema
+### 3. 定义区块 Schema
 
-#### 4.1 定义区块 Schema
+#### 3.1 定义区块 Schema
 
 NocoBase 的动态页面都是通过 Schema 来渲染，所以我们需要定义一个 Schema，后续用于在界面中添加 `Form` 区块。在实现本小节之前，我们需要先了解一些基础知识：
 
@@ -329,7 +274,7 @@ export function getFormV3Schema(options: GetFormV3SchemaOptions): ISchema {
 </CardItem>
 ```
 
-#### 4.2 注册 scope
+#### 3.2 注册 scope
 
 我们需要将 `useFormV3Props` 注册到系统中，这样 [x-use-component-props](/development/client/ui-schema/what-is-ui-schema#x-component-props-和-x-use-component-props) 才能找到对应的 scope。
 
@@ -350,7 +295,7 @@ export default PluginBlockFormClient;
 
 更多关于 Scope 的说明可以查看 [全局注册 Component 和 Scope](/plugin-samples/component-and-scope/global)
 
-#### 4.3 验证区块 Schema
+#### 3.3 验证区块 Schema
 
 同验证组件一样，我们可以通过临时页面验证或者文档示例验证的方式来验证 Schema 是否符合需求。我们这里以临时页面验证为例：
 
@@ -429,7 +374,7 @@ export default PluginBlockFormClient;
 
 验证完毕后需要删除测试页面。
 
-### 5. 定义 Schema Initializer Item
+### 4. 定义 Schema Initializer Item
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.initializer.tsx` 文件：
 
@@ -440,14 +385,14 @@ import { FormOutlined } from '@ant-design/icons';
 
 import { getFormV3Schema } from './FormV3.schema'
 import { FormV3BlockName } from './constants';
-import { usePluginTranslation } from './locale';
+import { useT } from './locale';
 
 export const formV3InitializerItem: SchemaInitializerItemType = {
   name: FormV3BlockName,
   Component: 'DataBlockInitializer',
   useComponentProps() {
     const { insert } = useSchemaInitializer();
-    const { t } = usePluginTranslation();
+    const t = useT();
 
     return {
       title: t(FormV3BlockName),
@@ -476,7 +421,7 @@ export const formV3InitializerItem: SchemaInitializerItemType = {
 
 更多关于 Schema Initializer 的定义可以参考 [Schema Initializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer) 文档。
 
-### 6. 添加到 Add block 中
+### 5. 添加到 Add block 中
 
 系统中有很多个 `Add block` 按钮，但他们的 **name 是不同的**。
 
@@ -519,11 +464,11 @@ export default PluginBlockFormClient;
 
 ![20240719112149](https://static-docs.nocobase.com/20240719112149.png)
 
-### 7. 实现 Schema Settings
+### 6. 实现 Schema Settings
 
 目前的区块只能添加，但是无法删除，我们需要实现 `Schema Settings`，用于配置一些属性和操作。
 
-#### 7.1 定义 Schema Settings
+#### 6.1 定义 Schema Settings
 
 一个完整的 Block 还需要有 Schema Settings，用于配置一些属性和操作。
 
@@ -541,7 +486,7 @@ export const formV3Settings = new SchemaSettings({
 })
 ```
 
-#### 7.2 注册 Schema Settings
+#### 6.2 注册 Schema Settings
 
 ```ts
 import { Plugin } from '@nocobase/client';
@@ -557,7 +502,7 @@ export class PluginBlockFormClient extends Plugin {
 export default PluginBlockFormClient;
 ```
 
-#### 7.3 使用 Schema Settings
+#### 6.3 使用 Schema Settings
 
 我们修改 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/schema/index.ts` 中的 `getFormV3Schema`：
 
@@ -576,13 +521,13 @@ export function getFormV3Schema(options: GetFormV3SchemaOptions): ISchema {
 ```
 
 
-### 8. 实现 Schema Settings items
+### 7. 实现 Schema Settings items
 
 目前我们只实现了 `Schema Settings`，但是没有实现任何操作，我们需要根据需求实现各个操作。
 
 目前 Schema Settings 支持的内置操作类型请参考 [Schema Settings - Built-in Components and Types](https://client.docs.nocobase.com/core/ui-schema/schema-settings#built-in-components-and-types) 文档。
 
-#### 8.1 实现 `remove` 操作
+#### 7.1 实现 `remove` 操作
 
 目前通过 initializers 添加的区块是无法删除的，我们需要实现 `remove` 操作。
 
@@ -619,7 +564,7 @@ schema 的变更不会影响之前添加的区块，只有新添加的区块会�
 
 ![20240719145202](https://static-docs.nocobase.com/20240719145202.png)
 
-#### 8.2 实现 `Edit block title` 操作
+#### 7.2 实现 `Edit block title` 操作
 
 `Edit block title` 也是一个常见的操作，`@nocobase/client` 内置了 `SchemaSettingsBlockTitleItem` 组件，我们可以直接使用。
 
@@ -651,13 +596,13 @@ export const formV3Settings = new SchemaSettings({
 ![20240719145326](https://static-docs.nocobase.com/20240719145326.png)
 
 
-### 9. 实现 `Configure actions`
+### 8. 实现 `Configure actions`
 
 `Configure actions` 用于添加一些操作，比如 `Submit`、`Custom request` 等。
 
 关于 `Configure actions` 的详细说明可以查看 [区块内嵌的 Initializer - 配置操作](/plugin-samples/schema-initializer/configure-actions) 文档。
 
-#### 9.1 定义 initializer
+#### 8.1 定义 initializer
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configFields/index.ts` 文件：
 
@@ -668,7 +613,7 @@ import { FormV3BlockNameLowercase } from "../constants";
 export const formV3ConfigureActionsInitializer = new SchemaInitializer({
   name: `${FormV3BlockNameLowercase}:configureActions`,
   icon: 'SettingOutlined',
-  title: generatePluginTranslationTemplate('Configure actions'),
+  title: tStr('Configure actions'),
   style: {
     marginLeft: 8,
   },
@@ -685,7 +630,7 @@ export const formV3ConfigureActionsInitializer = new SchemaInitializer({
 - `title`：按钮标题
 - [items](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types)：按钮下的子项
 
-#### 9.2 注册 initializer
+#### 8.2 注册 initializer
 
 然后修改 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/index.tsx` 文件，导入并注册这个 initializer：
 
@@ -702,7 +647,7 @@ export class PluginBlockFormClient extends Plugin {
 }
 ```
 
-#### 9.3 使用 initializer
+#### 8.3 使用 initializer
 
 我们修改 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.schema.ts` 文件，新增 `actionBar` 子节点：
 
@@ -761,7 +706,7 @@ export function getFormV3Schema(options: GetFormV3SchemaOptions): ISchema {
 
 ![20240719152528](https://static-docs.nocobase.com/20240719152528.png)
 
-### 10. 实现 `Configure actions` items
+### 9. 实现 `Configure actions` items
 
 ```bash
 .
@@ -775,9 +720,9 @@ export function getFormV3Schema(options: GetFormV3SchemaOptions): ISchema {
         └── settings.ts
 ```
 
-#### 10.1 实现 `Submit` 操作
+#### 9.1 实现 `Submit` 操作
 
-#### 10.1.1 定义 Schema
+##### 9.1.1 定义 Schema
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configActions/items/submit/schema.ts` 文件：
 
@@ -785,7 +730,7 @@ export function getFormV3Schema(options: GetFormV3SchemaOptions): ISchema {
 import { useForm } from '@formily/react';
 import { App } from 'antd';
 import { ActionProps, useDataBlockResource } from "@nocobase/client";
-import { generatePluginTranslationTemplate } from '../../../locale'
+import { tStr } from '../../../locale'
 
 export const useFormV3SubmitActionProps = (): ActionProps => {
   const resource = useDataBlockResource();
@@ -806,7 +751,7 @@ export const useFormV3SubmitActionProps = (): ActionProps => {
 
 export const submitActionSchema = {
   type: 'void',
-  title: generatePluginTranslationTemplate('Submit'),
+  title: tStr('Submit'),
   'x-component': 'Action',
   'x-use-component-props': 'useFormV3SubmitActionProps',
   'x-toolbar': 'ActionSchemaToolbar'
@@ -837,7 +782,7 @@ export const submitActionSchema = {
 export * from './schema';
 ```
 
-#### 10.1.2 注册 Scope
+##### 9.1.2 注册 Scope
 
 我们还需要将 `useFormV3SubmitActionProps` 注册到上下文中。我们修改 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/index.tsx` 文件：
 
@@ -856,19 +801,19 @@ export class PluginBlockFormClient extends Plugin {
 
 关于 `SchemaComponentOptions` 的使用可以参考 [SchemaComponentOptions](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponentoptions) 文档以及 [全局注册 Component 和 Scope](/plugin-samples/component-and-scope/global)。
 
-##### 10.1.3 定义 SchemaInitializer item
+##### 9.1.3 定义 SchemaInitializer item
 
 我们新增 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configActions/items/submit/initializer.tsx` 文件：
 
 ```tsx | pure
 import { SchemaInitializerItemType, useSchemaInitializer } from "@nocobase/client";
 import { submitActionSchema } from "./schema";
-import { generatePluginTranslationTemplate } from '../../../locale';
+import { tStr } from '../../../locale';
 
 export const submitActionInitializerItem: SchemaInitializerItemType = {
   type: 'item',
   name: 'submit',
-  title: generatePluginTranslationTemplate('Submit'),
+  title: tStr('Submit'),
   useComponentProps() {
     const { insert } = useSchemaInitializer();
     return {
@@ -914,7 +859,7 @@ export const formV3ConfigureActionsInitializer = new SchemaInitializer({
 });
 ```
 
-##### 10.1.4 定义 settings
+##### 9.1.4 定义 settings
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configActions/items/submit/settings.ts`
 
@@ -952,7 +897,7 @@ export const formV3SubmitActionSettings = new SchemaSettings({
 export * from './settings';
 ```
 
-##### 3.3.2.2 注册 settings
+##### 9.1.5 注册 settings
 
 然后将 `formV3SubmitActionSettings` 注册到系统中。我们修改 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/index.tsx` 文件：
 
@@ -967,7 +912,7 @@ export class PluginBlockFormClient extends Plugin {
 }
 ```
 
-##### 3.3.2.2 使用 settings
+##### 9.1.6 使用 settings
 
 我们修改 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configActions/items/submit/schema.ts` 文件的 `submitActionSchema` 方法，将 `x-settings` 设置为 `formV3SubmitActionSettings.name`。
 
@@ -976,7 +921,7 @@ export class PluginBlockFormClient extends Plugin {
 
 export const submitActionSchema = {
   type: 'void',
-  title: generatePluginTranslationTemplate('Submit'),
+  title: tStr('Submit'),
   'x-component': 'Action',
 + 'x-settings': formV3SubmitActionSettings.name,
   'x-use-component-props': 'useFormV3SubmitActionProps',
@@ -988,7 +933,7 @@ export const submitActionSchema = {
   <source src="https://static-docs.nocobase.com/20240719160328.mov" type="video/mp4" />
 </video>
 
-#### 10.2 实现 `Custom request`
+#### 9.2 实现 `Custom request`
 
 `Custom request` 是一个常见的操作，NocoBase 内置了 `CustomRequest` 组件，我们可以直接使用。
 
@@ -999,7 +944,7 @@ export const submitActionSchema = {
 import { SchemaInitializer } from "@nocobase/client";
 import { FormV3BlockNameLowercase } from "../constants";
 import { submitActionInitializerItem } from "./items/submit";
-+ import { generatePluginTranslationTemplate } from '../locale'
++ import { tStr } from '../locale'
 
 export const formV3ConfigureActionsInitializer = new SchemaInitializer({
   name: `${FormV3BlockNameLowercase}:configureActions`,
@@ -1012,7 +957,7 @@ export const formV3ConfigureActionsInitializer = new SchemaInitializer({
     submitActionInitializerItem,
 +   {
 +     name: 'customRequest',
-+     title: generatePluginTranslationTemplate('Custom request'),
++     title: tStr('Custom request'),
 +     Component: 'CustomRequestInitializer',
 +   },
   ]
@@ -1021,11 +966,11 @@ export const formV3ConfigureActionsInitializer = new SchemaInitializer({
 
 ![20240719165222](https://static-docs.nocobase.com/20240719165222.png)
 
-### 11. 实现 `Configure fields`
+### 10. 实现 `Configure fields`
 
 `Configure fields` 的作用是向 FormV3 区块添加数据字段。
 
-#### 11.1 定义 initializer
+#### 10.1 定义 initializer
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configFields/index.ts` 文件：
 
@@ -1037,7 +982,7 @@ export const formV3ConfigureFieldsInitializer = new SchemaInitializer({
   name: `${FormV3BlockNameLowercase}:configureFields`,
   icon: 'SettingOutlined',
   wrap: gridRowColWrap,
-  title: generatePluginTranslationTemplate('Configure fields'),
+  title: tStr('Configure fields'),
   items: [
     // TODO
   ]
@@ -1053,7 +998,7 @@ export const formV3ConfigureFieldsInitializer = new SchemaInitializer({
 
 更多关于 Schema Item 的定义可以参考 [Schema Initializer Item](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types) 文档。
 
-#### 11.2 注册 initializer
+#### 10.2 注册 initializer
 
 然后修改 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/index.tsx` 文件，导入并注册这个 initializer：
 
@@ -1069,7 +1014,7 @@ export class PluginBlockFormClient extends Plugin {
 }
 ```
 
-#### 11.3 使用 initializer
+#### 10.3 使用 initializer
 
 我们修改 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.schema.ts` 文件，新增 `fields` 子节点：
 
@@ -1124,9 +1069,9 @@ export function getFormV3Schema(options: GetFormV3SchemaOptions): ISchema {
 
 ![20240719171211](https://static-docs.nocobase.com/20240719171211.png)
 
-### 12 实现 `Configure fields` items
+### 11. 实现 `Configure fields` items
 
-#### 12.1 实现 `Collection Fields`
+#### 11.1 实现 `Collection Fields`
 
 `Configure fields` 主要是基于 [CollectionFieldsToInitializerItems](https://client.docs-en.nocobase.com/core/data-source/collection-fields-to-initializer-items#collectionfieldstoinitializeritems) 实现。
 
@@ -1159,7 +1104,7 @@ export const formV3ConfigureFieldsInitializer = new SchemaInitializer({
   <source src="https://static-docs.nocobase.com/2024-07-19-17-17-38.mov" type="video/mp4" />
 </video>
 
-#### 12.2 实现 `Add text`
+#### 11.2 实现 `Add text`
 
 向界面添加文本，这是一个常见的需求。因此，NocoBase 在 `@nocobase/client` 中提供了 `MarkdownFormItemInitializer` 来实现此功能。
 
@@ -1167,7 +1112,7 @@ export const formV3ConfigureFieldsInitializer = new SchemaInitializer({
 
 ```diff
 // ...
-+ import { generatePluginTranslationTemplate } from '../locale'
++ import { tStr } from '../locale'
 
 export const formV3ConfigureFieldsInitializer = new SchemaInitializer({
   name: `${FormV3BlockNameLowercase}:configureFields`,
@@ -1185,7 +1130,7 @@ export const formV3ConfigureFieldsInitializer = new SchemaInitializer({
 +   },
 +   {
 +     name: 'addText',
-+     title: generatePluginTranslationTemplate('Add text'),
++     title: tStr('Add text'),
 +     Component: 'MarkdownFormItemInitializer',
 +   },
   ]
@@ -1196,11 +1141,11 @@ export const formV3ConfigureFieldsInitializer = new SchemaInitializer({
   <source src="https://static-docs.nocobase.com/2024-07-19-17-27-21.mov" type="video/mp4" />
 </video>
 
-### 13. 权限
+### 12. 权限
 
 TODO
 
-### 14. 完善多语言
+### 13. 多语言
 
 我们可以通过 [http://localhost:13000/admin/settings/system-settings](http://localhost:13000/admin/settings/system-settings) 添加多个语言，并且在右上角切换语言。
 

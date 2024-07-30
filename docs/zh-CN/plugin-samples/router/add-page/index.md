@@ -47,7 +47,7 @@ yarn dev
 
 ## 实现功能
 
-### 第 1 步：新增 `/about` 页面
+### 1. 新增 `/about` 页面
 
 按照插件开发教程中 [页面路由及扩展](/development/client/router)，我们需要修改插件的 `packages/plugins/@nocobase-sample/plugin-add-page/src/client/index.tsx`：
 
@@ -85,7 +85,7 @@ export default PluginAddPageClient;
 
 ![20240512200508](https://static-docs.nocobase.com/20240512200508.png)
 
-### 第 2 步：新增 `/admin/data-view` 页面
+### 2. 新增 `/admin/data-view` 页面
 
 根据 [已有页面路由](/development/client/router#已有页面路由) 文档得知，`/admin/*` 对应的 `name` 为 `admin`，如果我们需要再其下面新增一个页面，可以使用 `admin.` 前缀，例如 `admin.dataView`。
 
@@ -118,7 +118,7 @@ export default PluginAddPageClient;
 
 ![20240512200555](https://static-docs.nocobase.com/20240512200555.png)
 
-### 第 3 步：新增 `/admin/material-manage` 以及其子页面
+### 3. 新增 `/admin/material-manage` 以及其子页面
 
 我们可以新建 `packages/plugins/@nocobase-sample/plugin-add-page/src/client/MaterialPage.tsx` 文件，其内容如下：
 

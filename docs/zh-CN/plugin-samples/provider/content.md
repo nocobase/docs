@@ -38,7 +38,7 @@ yarn dev
 
 ## 功能实现
 
-### 第 1 步：新增 `Provider` 组件
+### 1. 新增 `Provider` 组件
 
 Provider 组件就是普通的 React 组件，但是需要注意，要将 `children` 渲染出来。
 
@@ -85,7 +85,7 @@ export const TopAnnouncement: FC<{ children: ReactNode }> = ({ children }) => {
 
 需要注意 `children` 别忘记渲染出来。
 
-### 第 2 步：注册到系统中
+### 2. 注册到系统中
 
 我们修改 `packages/plugins/@nocobase-sample/plugin-provider-content/src/index.ts` 文件，将 `TopAnnouncement` 组件注册到系统中。
 

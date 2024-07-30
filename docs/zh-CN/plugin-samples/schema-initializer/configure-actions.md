@@ -265,11 +265,11 @@ export const ActionNameLowercase = 'customRequest';
 
 ```ts
 import { ActionProps, useDataBlockRequest, ISchema } from "@nocobase/client";
-import { usePluginTranslation } from "../../../../locale";
+import { useT } from "../../../../locale";
 
 export const useCustomRefreshActionProps = (): ActionProps => {
   const { runAsync } = useDataBlockRequest();
-  const { t } = usePluginTranslation();
+  const t = useT();
   return {
     type: 'primary',
     title: t('Custom Refresh'),
@@ -406,14 +406,14 @@ export const customRefreshActionSchema: ISchema = {
 import { SchemaInitializerItemType, useSchemaInitializer } from "@nocobase/client";
 import { customRefreshActionSchema } from "./schema";
 import { ActionName } from "./constants";
-import { usePluginTranslation } from "../../../../locale";
+import { useT } from "../../../../locale";
 
 export const customRefreshActionInitializerItem: SchemaInitializerItemType = {
   type: 'item',
   name: ActionName,
   useComponentProps() {
     const { insert } = useSchemaInitializer();
-    const { t } = usePluginTranslation();
+    const t = useT();
     return {
       title: t(ActionName),
       onClick() {

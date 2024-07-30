@@ -44,7 +44,7 @@ yarn dev
 
 ## 实现功能
 
-### 第 1 步：注册插件配置页
+### 1. 注册插件配置页
 
 按照插件开发教程中 [插件设置页扩展](/development/client/router#插件设置页扩展)，我们需要修改插件的 `packages/plugins/@nocobase-sample/plugin-add-setting-page-layout-routes/src/client/index.tsx`：
 
@@ -75,7 +75,7 @@ export default PluginAddSettingPageLayoutRoutesClient;
 然后我们就可以访问 [http://localhost:13000/admin/settings/@nocobase-sample/plugin-add-setting-page-layout-routes](http://localhost:13000/admin/settings/@nocobase-sample/plugin-add-setting-page-layout-routes) 来查看插件配置页面了。
 
 
-### 第 2 步：新增详情页面
+### 2. 新增详情页面
 
 我们准备在 `AdminLayout` 下面新增一个详情页面，我们继续修改 `packages/plugins/@nocobase-sample/plugin-add-setting-page-layout-routes/src/client/index.tsx`：
 
