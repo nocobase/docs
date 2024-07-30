@@ -257,6 +257,14 @@ export class EncryptionField extends Field {
 - get：获取字段值时，解密
 - set：设置字段值时，加密
 
+对于需要异步的场景，例如数据校验、异步数据转换等，可以我们需要使用到各种 [数据库事件](/api/database#beforesync--aftersync)，本示例不需要异步操作，所以不需要实现。
+
+### 3. 导入、导出
+
+某些情况下导入、导出和界面显示到逻辑并不相同，这时候我们需要实现后端的 [Interface](/api/database/interfaces/base-interface)。
+
+本示例导入和导出的逻辑和界面显示的逻辑是一致的，所以不需要实现。
+
 #### 2.2 注册
 
 我们新建 `packages/plugins/@nocobase-sample/plugin-field-interface/src/server/plugin.ts` 文件：
