@@ -399,6 +399,11 @@ export default [
                 'title.zh-CN': '数据表选择器',
                 link: '/handbook/data-modeling/collection-fields/advanced/collection-select',
               },
+              {
+                title: 'Encryption',
+                'title.zh-CN': '加密',
+                link: '/handbook/data-modeling/collection-fields/advanced/encryption',
+              },
             ],
           },
           {
