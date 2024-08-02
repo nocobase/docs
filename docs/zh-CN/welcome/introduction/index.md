@@ -10,7 +10,7 @@ NocoBase 是一个极易扩展的开源无代码开发平台。
 不必投入几年时间、数百万资金研发，花几分钟时间部署 NocoBase，马上拥有一个私有、可控、极易扩展的无代码开发平台。
 
 中文官网：  
-https://cn.nocobase.com/
+https://www.nocobase.com/cn/
 
 在线体验：  
 https://demo-cn.nocobase.com/new
@@ -19,10 +19,10 @@ https://demo-cn.nocobase.com/new
 https://docs-cn.nocobase.com/
 
 商业授权和商业插件：  
-https://cn.nocobase.com/commercial-cn.html
+https://www.nocobase.com/cn/commercial
 
 许可协议：  
-https://cn.nocobase.com/agreement-cn.html
+https://www.nocobase.com/cn/agreement
 
 ## 联系我们  
 
