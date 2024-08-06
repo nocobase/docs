@@ -32,3 +32,9 @@
 ### 固定列
 
 ![20240511140524](https://static-docs.nocobase.com/20240511140524.png)
+
+### 组件切换
+
+部分字段支持切换为其他组件，例如：`URL` 组件可以切换为 `Preview` 组件。
+
+![20240806165152](https://static-docs.nocobase.com/20240806165152.png)

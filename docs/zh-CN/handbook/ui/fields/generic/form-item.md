@@ -41,3 +41,9 @@
 - [编辑字段描述](/handbook/ui/fields/field-settings/edit-description)
 - [编辑字段提示信息](/handbook/ui/fields/field-settings/edit-tooltip)
 - [模式](/handbook/ui/fields/field-settings/pattern)
+
+### 组件切换
+
+部分字段支持切换为其他组件，例如：`URL` 组件可以切换为 `Preview` 组件。
+
+![20240806164801](https://static-docs.nocobase.com/20240806164801.png)

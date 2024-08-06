@@ -23,3 +23,9 @@
 通过拖拽移动可以自定义调整字段在区块中的布局。
 
 ![](https://static-docs.nocobase.com/0825ea8c014c9073f505e74f707ded66.gif)
+
+## 组件切换
+
+部分字段支持切换为其他组件，例如：`URL` 组件可以切换为 `Preview` 组件。
+
+![20240806164801](https://static-docs.nocobase.com/20240806164801.png)
