@@ -402,7 +402,7 @@ export default [
               {
                 title: 'Encryption',
                 'title.zh-CN': '加密',
-                link: '/handbook/data-modeling/collection-fields/advanced/encryption',
+                link: '/handbook/field-encryption',
               },
             ],
           },
