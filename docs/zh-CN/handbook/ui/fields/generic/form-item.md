@@ -41,3 +41,11 @@
 - [编辑字段描述](/handbook/ui/fields/field-settings/edit-description)
 - [编辑字段提示信息](/handbook/ui/fields/field-settings/edit-tooltip)
 - [模式](/handbook/ui/fields/field-settings/pattern)
+
+### 风格
+
+表单在阅读模式下可以设置风格
+
+![2024-06-26-15-16-09-表单风格入口](https://static-docs.nocobase.com/2024-06-26-15-16-09-表单风格入口.png)
+![2024-06-26-15-21-31-样式配置](https://static-docs.nocobase.com/2024-06-26-15-21-31-样式配置.png)
+![2024-06-26-15-22-42-表单-最终效果](https://static-docs.nocobase.com/2024-06-26-15-22-42-表单-最终效果.png)
