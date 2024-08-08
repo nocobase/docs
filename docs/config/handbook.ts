@@ -837,6 +837,11 @@ export default [
                 'title.zh-CN': '编辑提示信息',
                 link: '/handbook/ui/fields/field-settings/edit-tooltip',
               },
+              {
+                title: 'Edit style',
+                'title.zh-CN': '设置风格',
+                link: '/handbook/ui/fields/field-settings/edit-style',
+              },
             ],
           },
           {
