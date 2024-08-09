@@ -6,6 +6,8 @@
 
 ## 类型和尺寸
 
+> 在 v1.3.0-alpha 及以上的版本，支持以[页面](/handbook/ui/pop-up#页面)的方式打开。
+
 弹窗有抽屉和对话框两种类型，在打开弹窗的操作上配置弹窗的类型和尺寸。
 
 <video width="100%" height="440" controls>
@@ -22,6 +24,14 @@
 
 ![2024-06-13_09-45-56-2024-06-13-09-46-20](https://static-docs.nocobase.com/2024-06-13_09-45-56-2024-06-13-09-46-20.png)
 
+### 页面
+
+:::info{title=提示}
+需要 NocoBase 的版本是 v1.3.0-alpha 及以上。
+:::
+
+![20240809170648](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240809170648.png)
+
 ## 使用场景
 
 弹窗目前的主要场景有：
@@ -36,6 +46,16 @@
 ### 关系数据的弹窗操作
 
 ![20240511141247](https://static-docs.nocobase.com/20240511141247.png)
+
+### 对外分享单条记录的数据
+
+:::info{title=提示}
+需要 NocoBase 的版本是 v1.3.0-alpha 及以上。
+:::
+
+如果想跟其他人分享单条记录的数据，可以在打开弹窗之后，直接复制浏览器地址栏的 URL，然后分享给其他人。当其他人打开这个 URL 后，会在页面中自动弹出对应的弹窗。
+
+![20240809173339_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240809173339_rec_.gif)
 
 ## 添加区块
 

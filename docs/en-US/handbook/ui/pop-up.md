@@ -6,6 +6,8 @@ A popup window is a small window on the page, used to display some extended cont
 
 ## Types & Size
 
+> In version v1.3.0-alpha and above, it supports opening as a [page](/handbook/ui/pop-up#page).
+
 Pop-ups come in two types: drawer and dialog. Configure the type and size of the pop-up during the configuration of actions.
 
 <video width="100%" height="440" controls>
@@ -22,6 +24,14 @@ Pop-ups come in two types: drawer and dialog. Configure the type and size of the
 
 ![2024-06-13_09-45-56-2024-06-13-09-46-20](https://static-docs.nocobase.com/2024-06-13_09-45-56-2024-06-13-09-46-20.png)
 
+### Page
+
+:::info{title=Tip}
+The version of NocoBase needs to be v1.3.0-alpha or above.
+:::
+
+![20240809170648](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240809170648.png)
+
 ## Use Cases
 
 The main scenarios of the popup window currently include:
@@ -36,6 +46,16 @@ The main scenarios of the popup window currently include:
 ### Popup Actions of Relationship Data
 
 ![20240511141247](https://static-docs.nocobase.com/20240511141247.png)
+
+### Sharing a Single Record's Data
+
+:::info{title=Tip}
+The version of NocoBase needs to be v1.3.0-alpha or above.
+:::
+
+If you want to share the data of a single record with others, you can directly copy the URL of the browser address bar after opening the popup window, and then share it with others. When others open this URL, the corresponding popup window will automatically pop up on the page.
+
+![20240809173339_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240809173339_rec_.gif)
 
 ## Adding a Block
 
