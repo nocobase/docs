@@ -36,3 +36,8 @@
 ![20240806165321](https://static-docs.nocobase.com/20240806165321.png)
 
 如果你需要扩展更多的组件，可以参考 [扩展有值字段组件组件](/plugin-samples/field/value)。
+### 风格
+
+![2024-06-26-15-16-09-表单风格入口](https://static-docs.nocobase.com/2024-06-26-15-16-09-表单风格入口.png)
+![2024-06-26-15-21-31-样式配置](https://static-docs.nocobase.com/2024-06-26-15-21-31-样式配置.png)
+![2024-06-26-15-22-42-表单-最终效果](https://static-docs.nocobase.com/2024-06-26-15-22-42-表单-最终效果.png)

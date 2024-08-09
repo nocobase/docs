@@ -40,3 +40,10 @@
 ![20240806165152](https://static-docs.nocobase.com/20240806165152.png)
 
 如果你需要扩展更多的组件，可以参考 [扩展有值字段组件组件](/plugin-samples/field/value)。
+
+### 风格
+
+支持按条件配置列的颜色和背景颜色
+![风格入口](https://static-docs.nocobase.com/风格入口.png)
+![2024-06-26-14-06-07-样式配置](https://static-docs.nocobase.com/2024-06-26-14-06-07-样式配置.png)
+![2024-06-26-14-06-17-最终效果](https://static-docs.nocobase.com/2024-06-26-14-06-17-最终效果.png)

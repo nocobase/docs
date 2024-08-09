@@ -842,6 +842,11 @@ export default [
                 'title.zh-CN': '字段组件',
                 link: '/handbook/ui/fields/field-settings/field-component',
               },
+              {
+                title: 'Edit style',
+                'title.zh-CN': '设置风格',
+                link: '/handbook/ui/fields/field-settings/edit-style',
+              },
             ],
           },
           {
