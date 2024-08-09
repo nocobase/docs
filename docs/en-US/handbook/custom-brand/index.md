@@ -27,3 +27,9 @@ The `Brand` option is used to set the text at the bottom of the login page (posi
 HTML is used for the configuration to allow users more flexibility in customizing their content. However, if you only need to make simple text changes, you can directly modify the existing content, as shown in the image below:
 
 ![20240409114740](https://static-docs.nocobase.com/20240409114740.png)
+
+### Favicon（v1.2.23-alpha）
+
+In v1.2.23-alpha, we added the ability to set a favicon as shown below:
+
+![350438864-08053d02-5429-407f-a3f7-fed439993623](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/350438864-08053d02-5429-407f-a3f7-fed439993623.gif)
