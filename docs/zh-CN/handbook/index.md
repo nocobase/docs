@@ -1,6 +1,6 @@
 # 手册指南
 
-1. 如果你是第一接触 NocoBase，建议你从「[数据建模 - 概述](/handbook/data-modeling)」开始了解，这一章节你可以了解到 NocoBase 数据建模的特色；
+1. 如果你是第一次接触 NocoBase，建议你从「[数据建模 - 概述](/handbook/data-modeling)」开始了解，这一章节你可以了解到 NocoBase 数据建模的特色；
 2. 更进一步，你可以在界面里添加「[页面](/handbook/ui/pages)」和「[区块](/handbook/ui/blocks)」了，你可以选择合适的区块来展示数据源里的数据；
 3. 接下来，为数据区块「[配置字段](/handbook/ui/fields)」和「[配置操作](/handbook/ui/actions)」，到这一步简单的数据处理流程就都可以了；
 4. 如果你想编排操作，可以查看「[工作流](/handbook/workflow)」章节，工作流提供了各种触发器和动作节点，可以满足你对编排操作的无限想象；
