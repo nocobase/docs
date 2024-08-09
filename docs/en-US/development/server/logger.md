@@ -2,11 +2,11 @@
 
 NocoBase's logging is based on <a href="https://github.com/winstonjs/winston" target="_blank">Winston</a>. By default, NocoBase divides logs into API request logs, system operation logs, and SQL execution logs, where API request logs and SQL execution logs are printed internally by the application, and plugin developers typically only need to print plugin-related system operation logs.
 
-This document mainly introduces how to create and print logs when developing plugins. For more information about logs, refer to: [Logger Plugin](../../plugins/logger/index.md).
+This document mainly introduces how to create and print logs when developing plugins. For more information about logs, refer to: [Logger Plugin](../../handbook/logger/index.md).
 
 ## Default Print Method
 
-NocoBase provides a printing method for system operation logs, which are printed according to specified fields and output to a designated file. Refer to: [Logger Plugin - System Logs](../../plugins/logger/index.md#system-logs).
+NocoBase provides a printing method for system operation logs, which are printed according to specified fields and output to a designated file. Refer to: [Logger Plugin - System Logs](../../handbook/logger/index.md#system-logs).
 
 ```ts
 // Default print method
@@ -79,7 +79,7 @@ const logger = createLogger({
 
 ### `app.createLogger`
 
-In scenarios with multiple applications, sometimes we hope to customize the output directory and file, which can be output to the directory under the current application name. Refer to: [Logger Plugin - Log Directory](../../plugins/logger/index.md#log-directory).
+In scenarios with multiple applications, sometimes we hope to customize the output directory and file, which can be output to the directory under the current application name. Refer to: [Logger Plugin - Log Directory](../../handbook/logger/index.md#log-directory).
 
 ```ts
 app.createLogger({
@@ -107,5 +107,5 @@ class CustomPlugin extends Plugin {
 
 ## Related Documents
 
-- [Logger Plugin](../../plugins/logger/index.md)
+- [Logger Plugin](../../handbook/logger/index.md)
 - [API Reference](../../api/logger.md)
