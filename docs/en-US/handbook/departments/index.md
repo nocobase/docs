@@ -1,8 +1,6 @@
 # Departments
 
-:::info{title=Tip}
-This feature is provided by the commercial plugin plugin-departments, please see [NocoBase Commercial Plugins](https://www.nocobase.com/commercial.html) for details.
-:::
+<PluginInfo commercial="true" name="departments"></PluginInfo>
 
 ## Introduction
 
