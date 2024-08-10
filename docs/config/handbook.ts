@@ -399,6 +399,11 @@ export default [
                 'title.zh-CN': '数据表选择器',
                 link: '/handbook/data-modeling/collection-fields/advanced/collection-select',
               },
+              {
+                title: 'Encryption',
+                'title.zh-CN': '加密',
+                link: '/handbook/field-encryption',
+              },
             ],
           },
           {
@@ -836,6 +841,16 @@ export default [
                 title: 'Edit tooltip',
                 'title.zh-CN': '编辑提示信息',
                 link: '/handbook/ui/fields/field-settings/edit-tooltip',
+              },
+              {
+                title: 'Field Component',
+                'title.zh-CN': '字段组件',
+                link: '/handbook/ui/fields/field-settings/field-component',
+              },
+              {
+                title: 'Edit style',
+                'title.zh-CN': '设置风格',
+                link: '/handbook/ui/fields/field-settings/edit-style',
               },
             ],
           },
