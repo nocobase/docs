@@ -17,6 +17,21 @@ Configure the URL or Html to directly embed the external application.
 
 ![20240408220322](https://static-docs.nocobase.com/20240408220322.png)
 
+## Template engine
+
+![20240811205327](https://static-docs.nocobase.com/20240811205327.png)
+
+### string template
+The default rendering engine supports variables
+### Handlebars
+
+Handlebars is a JavaScript templating engine that supports conditionals ({{#if}}) and loops ({{#each}}), but currently does not support custom helpers.
+
+
+![20240811205239](https://static-docs.nocobase.com/20240811205239.png)
+
+<a href="https://handlebarsjs.com/guide/builtin-helpers" target="_blank"> Handlebars Syntax reference</a>
+
 ## Passing Variables
 
 ### Html supports variable resolution

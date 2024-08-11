@@ -17,6 +17,20 @@ Iframe 区块允许将外部网页或内容嵌入到当前页面中。
 
 ![20240408220322](https://static-docs.nocobase.com/20240408220322.png)
 
+## 模板引擎
+
+![20240811205327](https://static-docs.nocobase.com/20240811205327.png)
+### 字符串模板
+
+默认的模板引擎
+### Handlebars
+
+Handlebars 是一个 JavaScript 模板引擎，支持条件判断（{{#if}}）和循环（{{#each}}）等内置语法，目前暂不支持扩展helpers。
+
+![20240811205239](https://static-docs.nocobase.com/20240811205239.png)
+
+<a href="https://handlebarsjs.com/guide/builtin-helpers" target="_blank"> Handlebars 语法参考</a>
+
 ## 传入变量
 
 ### html 支持变量解析
