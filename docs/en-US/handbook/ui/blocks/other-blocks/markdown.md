@@ -14,6 +14,27 @@ Inline Markdown blocks can also be added within form blocks and details blocks.
 
 ![20240612205215](https://static-docs.nocobase.com/20240612205215.png)
 
+## Template engine
+
+![20240811204945](https://static-docs.nocobase.com/20240811204945.png)
+
+
+### string template
+
+![20240811204803](https://static-docs.nocobase.com/20240811204803.png)
+
+### Handlebars
+
+Handlebars is a JavaScript templating engine that supports conditionals ({{#if}}) and loops ({{#each}}), but currently does not support custom helpers.
+
+![20240811204856](https://static-docs.nocobase.com/20240811204856.png)
+
+![20240811203846](https://static-docs.nocobase.com/20240811203846.png)
+
+
+<a href="https://handlebarsjs.com/guide/builtin-helpers" target="_blank">Handlebars Syntax reference</a>
+
+
 ## Using Variables
 
 Markdown also supports variables.

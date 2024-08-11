@@ -14,6 +14,23 @@ Markdown 区块无需绑定数据源使用，使用 Markdown 语法定义文本�
 
 ![20240612205215](https://static-docs.nocobase.com/20240612205215.png)
 
+
+## 模板引擎
+
+![20240811204945](https://static-docs.nocobase.com/20240811204945.png)
+### 字符串模板
+
+![20240811204803](https://static-docs.nocobase.com/20240811204803.png)
+### Handlebars
+
+Handlebars 是一个 JavaScript 模板引擎，支持条件判断（{{#if}}）和循环（{{#each}}）等内置语法，目前暂不支持扩展helpers。
+
+![20240811204856](https://static-docs.nocobase.com/20240811204856.png)
+
+![20240811203846](https://static-docs.nocobase.com/20240811203846.png)
+
+<a href="https://handlebarsjs.com/guide/builtin-helpers" target="_blank"> Handlebars 语法参考</a>
+
 ## 使用变量
 
 Markdown 的文本里也支持使用变量
