@@ -1087,6 +1087,29 @@ export default [
               },
             ],
           },
+          {
+            title: 'Synchronize',
+            'title.zh-CN': '同步',
+            children: [
+              {
+                title: 'Overview',
+                'title.zh-CN': '概述',
+                link: '/handbook/user-data-sync',
+              },
+              {
+                title: 'User manual',
+                'title.zh-CN': '使用手册',
+                link: '/handbook/user-data-sync/manual',
+              },
+              {
+                title: 'Development',
+                'title.zh-CN': '开发指南',
+                children: [
+                  '/handbook/user-data-sync/dev/guide',
+                ],
+              },
+            ],
+          }
         ],
       },
       {
