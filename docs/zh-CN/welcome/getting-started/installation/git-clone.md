@@ -28,7 +28,7 @@ git clone https://github.com/nocobase/nocobase.git -b next --depth=1 my-nocobase
 ## 2. 切换目录
 
 ```bash
-cd my-nocobase-app
+cd my-nocobase
 ```
 
 ## 3. 安装依赖

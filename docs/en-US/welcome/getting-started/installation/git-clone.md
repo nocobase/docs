@@ -5,7 +5,7 @@
 Make sure you have:
 
 - Git, Node.js 18+, Yarn 1.22.x installed
-- Configured and started the required database MySQL 8.x, MariaDB 10.9+, PostgreSQL 10+ choose one
+- Configured and started the required database &mdash; MySQL 8.x, MariaDB 10.9+, PostgreSQL 10+ &mdash; choose any one.
 
 ## 1. Download with Git
 
@@ -28,7 +28,7 @@ git clone https://github.com/nocobase/nocobase.git -b next --depth=1 my-nocobase
 ## 2. Switch to the project directory
 
 ```bash
-cd my-nocobase-app
+cd my-nocobase
 ```
 
 ## 3. Install dependencies
