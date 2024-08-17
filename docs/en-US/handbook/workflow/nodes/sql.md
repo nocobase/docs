@@ -1,3 +1,3 @@
 # SQL Operation
 
-<embed src="../plugins/sql.md#L3-L999"></embed>
+<embed src="../../workflow-sql/index.md#L3-L999"></embed>

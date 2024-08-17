@@ -9,13 +9,15 @@ Workflow triggers are not considered to be nodes but are displayed in the workfl
 From a functional perspective, the nodes implemented so far are in four categories (a total of 18 types of nodes):
 
 - Flow Control
-  - [Calculation](./calculation.md)
   - [Condition](./condition.md)
   - [Delay](./delay.md) (provided by plugin @nocobase/plugin-workflow-deley)
   - [End Process](./end.md)
   - [Loop](./loop.md) (provided by plugin @nocobase/plugin-workflow-loop)
   - [Parallel Branch](./parallel.md) (provided by plugin @nocobase/plugin-workflow-parallel)
   - [Custom Variable](./variable.md) (provided by plugin @nocobase/plugin-workflow-variable)
+- Calculation
+  - [Calculation](./calculation.md)
+  - [Dynamic Expression Calculation](./dynamic-calculation.md) (provided by plugin @nocobase/plugin-workflow-dynamic-calculation)
 - Data Table Operations
   - [Create record](./create.md)
   - [Update record](./update.md)
@@ -28,5 +30,4 @@ From a functional perspective, the nodes implemented so far are in four categori
   - [Approval](./approval.md) (provided by plugin @nocobase/plugin-workflow-approval)
 - Other Extensions
   - [HTTP Request](./request.md) (provided by plugin @nocobase/plugin-workflow-request)
-  - [Dynamic Expression Calculation](./dynamic-calculation.md) (provided by plugin @nocobase/plugin-workflow-dynamic-calculation)
   - [Response Message](./response-message.md) (provided by plugin @nocobase/plugin-workflow-response-message)

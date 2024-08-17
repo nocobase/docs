@@ -85,6 +85,10 @@
 
 更深入的使用可以进一步参考以下内容：
 
-- [进阶使用](./advanced.md)
+- 进阶理解
+  - [使用变量](./advanced/variables.md)
+  - [执行计划](./advanced/executions.md)
+  - [版本管理](./advanced/revisions.md)
+  - [高级配置](./advanced/options.md)
 - [触发器介绍](./triggers/index.md)
 - [节点介绍](./nodes/index.md)

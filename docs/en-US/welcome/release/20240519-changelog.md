@@ -42,7 +42,7 @@ Previously, the value input fields in the "Headers" and "Parameters" sections of
 
 ### Workflow Custom Action Event
 
-The "Submit to Workflow" action button, originally bound to directly trigger type of the "Post-action Events", has been split and independently created as the "Trigger Workflow" action button for "Custom Action Events" (a commercial plugin). The previously added action buttons in the open-source version can still be used, but no longer supported for new additions. Please use the new "Custom Action Event" instead. See the [Usage Manual](https://docs-cn.nocobase.com/handbook/workflow/plugins/custom-action-trigger) for more information.
+The "Submit to Workflow" action button, originally bound to directly trigger type of the "Post-action Events", has been split and independently created as the "Trigger Workflow" action button for "Custom Action Events" (a commercial plugin). The previously added action buttons in the open-source version can still be used, but no longer supported for new additions. Please use the new "Custom Action Event" instead. See the [Usage Manual](https://docs-cn.nocobase.com/handbook/workflow-custom-action-trigger) for more information.
 
 <img src="https://static-docs.nocobase.com/202405191515770.png"/>
 

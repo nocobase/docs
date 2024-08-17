@@ -1,3 +1,3 @@
 # Parallel Branch
 
-<embed src="../plugins/parallel.md#L3-L999"></embed>
+<embed src="../../workflow-parallel/index.md#L3-L999"></embed>

@@ -1,6 +1,6 @@
 # Response Message
 
-<PluginInfo name="workflow-response-message" link="/handbook/workflow/plugins/response-message" commercial="true"></PluginInfo>
+<PluginInfo name="workflow-response-message" link="/handbook/workflow-response-message" commercial="true"></PluginInfo>
 
 响应消息节点用于在特定类型的流程中向提交操作的客户端反馈流程中自定义的消息。
 
@@ -8,7 +8,7 @@
 目前支持在同步模式的“自定义操作事件”、“操作后事件”和“操作前事件”类型的工作流中使用。
 :::
 
-<embed src="../../../_partials/commercial-installation.md"></embed>
+<CommercialInstallation></CommercialInstallation>
 
 ## 使用手册
 
