@@ -1,30 +1,30 @@
-# REST API 数据源
+# REST API data source
 
 <PluginInfo commercial="true" name="data-source-rest-api"></PluginInfo>
 
-## 介绍
+## Introduction
 
-用于接入 REST API 来源的数据。
+To access data from REST API sources.
 
-## 安装
+## Installation
 
-该插件为商业插件，需要通过插件管理器上传并激活插件
+This plugin is a commercial plugin, which needs to be uploaded and activated through the plugin manager.
 
 ![20240323162741](https://static-docs.nocobase.com/20240323162741.png)
 
-## 添加 REST API 源
+## Add REST API source
 
-激活插件之后，在数据源管理的 Add new 下拉菜单中选择 REST API。
+After activating the plugin, select 'REST API' in the 'Add new' drop-down menu in Data Source Manager.
 
 ![20240721171420](https://static-docs.nocobase.com/20240721171420.png)
 
-配置 REST API 源
+Configure REST API source
 
 ![20240721171507](https://static-docs.nocobase.com/20240721171507.png)
 
-## 添加 Collection
+## Add Collection
 
-RESTful 的资源就是 NocoBase 的 Collection，例如 Users 资源
+RESTful resources are NocoBase Collections, for example, the 'Users' resource/collection.
 
 ```bash
 GET /users
@@ -34,7 +34,7 @@ PUT /users/1
 DELETE /users/1
 ```
 
-映射到 NocoBase API 里的配置为
+Mapped to the configuration in NocoBase API as:
 
 ```bash
 GET /users:list
@@ -44,154 +44,154 @@ POST /users:update?filterByTk=1
 POST /users:destroy?filterByTk=1
 ```
 
-完整的 NocoBase API 设计规范参考 API 文档
+For complete NocoBase API design specifications, refer to the API documentation.
 
 ![20240716213344](https://static-docs.nocobase.com/20240716213344.png)
 
-查看「NocoBase API - Core」章节
+View the [NocoBase API - Core] section:
 
 ![20240716213258](https://static-docs.nocobase.com/20240716213258.png)
 
-REST API 数据源的 Collection 配置如下
+The Collection configuration for the REST API data source is as shown.
 
 ### List
 
-配置查看资源列表的接口映射
+Configuration for mapping the interface to view the list of resources:
 
 ![20240716211351](https://static-docs.nocobase.com/20240716211351.png)
 
 ### Get
 
-配置查看资源详情的接口映射
+Configuration for mapping the interface to view the details of a resource:
 
 ![20240716211532](https://static-docs.nocobase.com/20240716211532.png)
 
 ### Create
 
-配置创建资源的接口映射
+Configuration for mapping the interface to create a resource:
 
 ![20240716211634](https://static-docs.nocobase.com/20240716211634.png)
 
 ### Update
 
-配置更新资源的接口映射
+Configuration for mapping the interface to update a resource:
 
 ![20240716211733](https://static-docs.nocobase.com/20240716211733.png)
 
-### Destroy
+### Delete
 
-配置删除资源的接口映射
+Configuration for mapping the interface to delete a resource:
 
 ![20240716211808](https://static-docs.nocobase.com/20240716211808.png)
 
-## 调试 API
+## Debug API
 
-可以点击 Try it out 进行调试
+You can debug by clicking 'Try it out'.
 
 ![20240716212722](https://static-docs.nocobase.com/20240716212722.png)
 
-调试流程说明
+Debugging Process Description:
 
 ![20240717110051](https://static-docs.nocobase.com/20240717110051.png)
 
-## 变量
+## Variables
 
-REST API 数据源提供了三类变量用于接口的对接
+REST API data sources provide three types of variables for interface integration:
 
-- 数据源自定义变量
-- NocoBase 请求
-- 第三方响应
+- Custom variables of the data source
+- NocoBase requests
+- Third-party responses
 
-### 数据源自定义变量
+### Custom variables of the data source
 
 ![20240716221937](https://static-docs.nocobase.com/20240716221937.png)
 
 ![20240716221858](https://static-docs.nocobase.com/20240716221858.png)
 
-### NocoBase 请求
+### NocoBase requests
 
-- Params：URL 查询参数（Search Params），各个接口的 Params 有所不同；
-- Headers：请求体，主要提供了一些 NocoBase 自定义的 X- 信息；
-- Body：请求的 Body；
-- Token：当前 NocoBase 请求的 API token。
+- Params：URL query parameters (Search Params), with each interface having different Params.
+- Headers：Request body, mainly providing some NocoBase custom X- information.
+- Body：Request body
+- Token：The current NocoBase request's API token.
 
 ![20240716222042](https://static-docs.nocobase.com/20240716222042.png)
 
-### 第三方响应
+### Third-party Responses
 
-目前提供的只有响应的 Body
+Currently, only the response body is provided.
 
 ![20240716222303](https://static-docs.nocobase.com/20240716222303.png)
 
-各个接口对接时可用变量如下：
+The available variables for each interface integration are as follows:
 
 ### List
 
-| 参数 | 说明 |
+| Parameter | Description |
 | -- | -- |
-| request.params.page | 分页参数 |
-| request.params.pageSize | 每页显示数量 |
-| request.params.filter | 条件过滤 |
-| request.params.sort | 排序 |
-| request.params.appends | 按需加载的字段，一般用于关系字段的按需加载 |
-| request.params.fields | 接口只输出哪些字段（白名单） |
-| request.params.except | 排除哪些字段（黑名单） |
+| request.params.page | Pagination parameter |
+| request.params.pageSize | Number of items per page |
+| request.params.filter | Conditional filtering |
+| request.params.sort | Sorting |
+| request.params.appends | Fields to be loaded on demand, generally used for relation fields |
+| request.params.fields | Fields only which the interface outputs (whitelist) |
+| request.params.except | Fields to exclude (blacklist) |
 
 ### Get
 
-| 参数 | 说明 |
+| Parameter | Description |
 | -- | -- |
-| request.params.filterByTk | 每页显示数量 |
-| request.params.filter | 条件过滤 |
-| request.params.appends | 按需加载的字段，一般用于关系字段的按需加载 |
-| request.params.fields | 接口只输出哪些字段（白名单） |
-| request.params.except | 排除哪些字段（黑名单） |
+| request.params.filterByTk | Number of items per page |
+| request.params.filter | Conditional filtering |
+| request.params.appends | Fields to be loaded on demand, generally used for relation fields |
+| request.params.fields | Fields only which the interface outputs (whitelist) |
+| request.params.except | Fields to exclude (blacklist) |
 
 ### Create
 
-| 参数 | 说明 |
+| Parameter | Description |
 | -- | -- |
-| request.params.whiteList | 白名单 |
-| request.params.blacklist | 黑名单 |
-| request.body | 创建的初始化数据 |
+| request.params.whiteList | Whitelist |
+| request.params.blacklist | Blacklist |
+| request.body | Initial data for creation |
 
 ### Update
 
-| 参数 | 说明 |
+| Parameter | Description |
 | -- | -- |
-| request.params.filterByTk | 每页显示数量 |
-| request.params.filter | 条件过滤 |
-| request.params.whiteList | 白名单 |
-| request.params.blacklist | 黑名单 |
-| request.body | 更新的数据 |
+| request.params.filterByTk | Number of items per page |
+| request.params.filter | Conditional filtering |
+| request.params.whiteList | Whitelist |
+| request.params.blacklist | Blacklist |
+| request.body | Data to be updated |
 
-### Destroy
+### Delete
 
-| 参数 | 说明 |
+| Parameter | Description |
 | -- | -- |
-| request.params.filterByTk | 每页显示数量 |
-| request.params.filter | 条件过滤 |
+| request.params.filterByTk | Number of items per page |
+| request.params.filter | Conditional filtering |
 
-## 配置字段
+## Configure Fields
 
-从适配的资源的 CRUD 接口的数据中，提取字段的元数据（Fields）作为 collection 的字段
+Extract field metadata (Fields) from the data of the adapted resource's CRUD interface as fields for the collection.
 
 ![20240716223636](https://static-docs.nocobase.com/20240716223636.png)
 
-提取字段元数据
+Extract field metadata:
 
 ![20240716224010](https://static-docs.nocobase.com/20240716224010.png)
 
-字段及预览
+Fields and Preview:
 
 ![20240716224403](https://static-docs.nocobase.com/20240716224403.png)
 
-编辑字段（和其他数据源的方式类似）
+Edit Fields (similar to other data source methods):
 
 ![20240716224704](https://static-docs.nocobase.com/20240716224704.png)
 
-## 添加 REST API 数据源区块
+## Add a REST API Data Source Block:
 
-Collection 配置好了之后，就可以去界面添加区块了
+After the Collection is configured, you can go to the interface to add blocks.
 
 ![20240716225120](https://static-docs.nocobase.com/20240716225120.png)
