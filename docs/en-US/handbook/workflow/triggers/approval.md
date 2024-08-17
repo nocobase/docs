@@ -1,9 +1,9 @@
 # Approval
 
-<PluginInfo commercial="true" name="workflow-approval" link="/handbook/workflow/plugins/approval"></PluginInfo>
+<PluginInfo commercial="true" name="workflow-approval" link="/handbook/workflow-approval"></PluginInfo>
 
-<embed src="../plugins/approval/trigger.md#L3-L999"></embed>
+<embed src="../../workflow-approval/trigger.md#L3-L999"></embed>
 
-## Related content
+## Related Content
 
-Except for trigger configuration, there are also some related contents about approval that can be further understood through the [plugin documentation](../plugins/approval/index.md).
+Except for trigger configuration, there are also some related contents about approval that can be further understood through the [plugin documentation](../../workflow-approval/index.md).

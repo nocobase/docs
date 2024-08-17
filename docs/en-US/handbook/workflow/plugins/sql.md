@@ -8,7 +8,7 @@
 
 ### SQL 节点的结果如何使用？
 
-如果使用了 `SELECT` 语句，查询结果会以 Seqeulize 的 JSON 格式保存在节点中，可以通过 [JSON-query](/handbook/workflow/plugins/json-query) 插件进行解析并使用。
+如果使用了 `SELECT` 语句，查询结果会以 Seqeulize 的 JSON 格式保存在节点中，可以通过 [JSON-query](/handbook/workflow-json-query) 插件进行解析并使用。
 
 ### SQL 操作是否会触发数据表事件？
 

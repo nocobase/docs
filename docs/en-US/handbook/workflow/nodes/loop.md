@@ -1,3 +1,3 @@
 # Loop
 
-<embed src="../plugins/loop.md#L3-L999"></embed>
+<embed src="../../workflow-loop/index.md#L3-L999"></embed>

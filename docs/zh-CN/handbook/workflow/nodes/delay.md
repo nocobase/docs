@@ -1,3 +1,3 @@
 # 延时
 
-<embed src="../plugins/delay.md#L3-L999"></embed>
+<embed src="../../workflow-delay/index.md#L3-L999"></embed>

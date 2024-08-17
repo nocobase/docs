@@ -56,7 +56,7 @@ API_BASE_PATH=/api/
 默认值为空，代表不开启。
 
 :::warning{title="注意"}
-该模式需要配合集群模式相关的插件使用，如 `@nocobase/plugin-sync-adapter-redis` 等。否则应用的功能可能出现异常。
+该模式需要配合集群模式相关的插件使用，否则应用的功能可能出现异常。
 :::
 
 ### PLUGIN_PACKAGE_PREFIX

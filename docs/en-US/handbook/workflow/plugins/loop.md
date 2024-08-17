@@ -1,6 +1,6 @@
 # Loop
 
-<PluginInfo name="workflow-loop" link="/handbook/workflow/plugins/loop"></PluginInfo>
+<PluginInfo name="workflow-loop" link="/handbook/workflow-loop"></PluginInfo>
 
 循环相当编程语言中的 `for`/`while`/`forEach` 等语法结构，当需要一定次数或针对某个数据集合（数组）重复执行一些操作时，可以使用循环节点。
 

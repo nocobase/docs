@@ -1,6 +1,6 @@
 # Aggregate
 
-<PluginInfo name="workflow-aggregate" link="/handbook/workflow/plugins/aggregate"></PluginInfo>
+<PluginInfo name="workflow-aggregate" link="/handbook/workflow-aggregate"></PluginInfo>
 
 用于对某个数据表的满足条件的数据进行聚合函数查询，并返回对应的统计结果。常用于处理报表相关的统计数据。
 

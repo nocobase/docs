@@ -1,10 +1,10 @@
 # Custom Variable
 
-<PluginInfo name="workflow-variable" link="/handbook/workflow/plugins/variable" commercial="true"></PluginInfo>
+<PluginInfo name="workflow-variable" link="/handbook/workflow-variable" commercial="true"></PluginInfo>
 
 可在流程中声明变量，或为已声明的变量赋值，通常用于在流程中保存一些临时数据。
 
-<embed src="../../../_partials/commercial-installation.md"></embed>
+<CommercialInstallation></CommercialInstallation>
 
 ## 使用手册
 

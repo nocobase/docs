@@ -1,3 +1,3 @@
 # Response Message
 
-<embed src="../plugins/response-message.md#L3-L999"></embed>
+<embed src="../../workflow-response-message/index.md#L3-L999"></embed>

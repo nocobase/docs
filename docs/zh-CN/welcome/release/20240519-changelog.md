@@ -10,7 +10,7 @@
 
 ### 新插件：工作流自定义操作事件
 
-当常规的增删改操作无法满足需求时，可以使用工作流的自定义操作事件自己编排数据处理逻辑，详情参考 [工作流 / 自定义操作事件](/handbook/workflow/plugins/custom-action-trigger) 文档。
+当常规的增删改操作无法满足需求时，可以使用工作流的自定义操作事件自己编排数据处理逻辑，详情参考 [工作流 / 自定义操作事件](/handbook/workflow-custom-action-trigger) 文档。
 
 ![](https://static-docs.nocobase.com/202405191515770.png)
 

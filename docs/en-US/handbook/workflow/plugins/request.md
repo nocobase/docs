@@ -1,6 +1,6 @@
 # HTTP Request
 
-<PluginInfo name="workflow-request" link="/handbook/workflow/plugins/request"></PluginInfo>
+<PluginInfo name="workflow-request" link="/handbook/workflow-request"></PluginInfo>
 
 当需要与另一个 web 系统进行交互时，可以使用 HTTP 请求节点。该节点在执行时会根据配置向对应的地址发出一个 HTTP 请求，可以携带 JSON 或 `application/x-www-form-urlencoded` 格式的数据，完成与外部系统的数据交互。
 

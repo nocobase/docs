@@ -1,6 +1,6 @@
 # Delay
 
-<PluginInfo name="workflow-delay" link="/handbook/workflow/plugins/delay"></PluginInfo>
+<PluginInfo name="workflow-delay" link="/handbook/workflow-delay"></PluginInfo>
 
 延时节点可以在流程中增加一个延时，延时结束后，可根据配置是继续执行延时结束后的节点或是提前终止流程。
 
