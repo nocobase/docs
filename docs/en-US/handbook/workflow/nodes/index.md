@@ -18,6 +18,7 @@ From a functional perspective, the nodes implemented so far are in four categori
 - Calculation
   - [Calculation](./calculation.md)
   - [Dynamic Expression Calculation](./dynamic-calculation.md) (provided by plugin @nocobase/plugin-workflow-dynamic-calculation)
+  - [Date Calculation](./date-calculation.md) (provided by plugin @nocobase/plugin-workflow-date-calculation)
 - Data Table Operations
   - [Create record](./create.md)
   - [Update record](./update.md)

@@ -15,9 +15,10 @@
   - [循环](./loop.md)（插件 @nocobase/plugin-workflow-loop 提供）
   - [并行分支](./parallel.md)（插件 @nocobase/plugin-workflow-parallel 提供）
   - [自定义变量](./variable.md)（插件 @nocobase/plugin-workflow-variable 提供）
-- 运算类
+- 计算类
   - [运算](./calculation.md)
   - [动态表达式运算](./dynamic-calculation.md)（插件 @nocobase/plugin-workflow-dynamic-calculation 提供）
+  - [日期计算](./date-calculation.md)（插件 @nocobase/plugin-workflow-date-calculation 提供）
 - 数据表操作
   - [新增数据](./create.md)
   - [更新数据](./update.md)
