@@ -1503,6 +1503,12 @@ export default [
             ],
           },
           {
+            title: 'Date calculation',
+            'title.zh-CN': '日期计算',
+            subTitle: '@nocobase/plugin-workflow-date-calculation',
+            link: '/handbook/workflow-date-calculation',
+          },
+          {
             title: 'Delay',
             'title.zh-CN': '延时',
             subTitle: '@nocobase/plugin-workflow-delay',
