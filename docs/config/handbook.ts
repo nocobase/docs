@@ -1392,12 +1392,20 @@ export default [
             type: 'group',
             children: [
               '/handbook/workflow/nodes/condition',
-              '/handbook/workflow/nodes/calculation',
-              '/handbook/workflow/nodes/dynamic-calculation',
               '/handbook/workflow/nodes/delay',
               '/handbook/workflow/nodes/end',
               '/handbook/workflow/nodes/loop',
               '/handbook/workflow/nodes/parallel',
+            ],
+          },
+          {
+            title: 'Calculation',
+            'title.zh-CN': '运算',
+            type: 'group',
+            children: [
+              '/handbook/workflow/nodes/calculation',
+              '/handbook/workflow/nodes/date-calculation',
+              '/handbook/workflow/nodes/dynamic-calculation',
             ],
           },
           {
