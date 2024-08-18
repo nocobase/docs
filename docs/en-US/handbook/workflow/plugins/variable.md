@@ -4,8 +4,6 @@
 
 可在流程中声明变量，或为已声明的变量赋值，通常用于在流程中保存一些临时数据。
 
-<CommercialInstallation></CommercialInstallation>
-
 ## 使用手册
 
 ### 创建节点
