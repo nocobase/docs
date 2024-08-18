@@ -8,8 +8,6 @@
 目前支持在同步模式的“自定义操作事件”、“操作后事件”和“操作前事件”类型的工作流中使用。
 :::
 
-<CommercialInstallation></CommercialInstallation>
-
 ## 使用手册
 
 ### 创建节点

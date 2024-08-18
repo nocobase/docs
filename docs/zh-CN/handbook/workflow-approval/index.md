@@ -6,8 +6,6 @@
 
 审批插件提供了专用的工作流类型（触发器）“审批（事件）”和专用于该流程的“审批”节点，结合 NocoBase 特有的自定义数据表和自定义区块，可以快速且灵活地创建与管理各类审批场景。
 
-<CommercialInstallation></CommercialInstallation>
-
 ## 使用手册
 
 审批的使用分为几个部分：
