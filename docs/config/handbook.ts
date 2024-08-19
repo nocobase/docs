@@ -848,9 +848,9 @@ export default [
                 link: '/handbook/ui/fields/field-settings/field-component',
               },
               {
-                title: 'Edit style',
-                'title.zh-CN': '设置风格',
-                link: '/handbook/ui/fields/field-settings/edit-style',
+                title: 'Style',
+                'title.zh-CN': '样式',
+                link: '/handbook/ui/fields/field-settings/style',
               },
             ],
           },
@@ -1061,8 +1061,8 @@ export default [
                 title: 'Frontend',
                 'title.zh-CN': '前端',
                 link: '/handbook/mobile/development/frontend',
-              }
-            ]
+              },
+            ],
           },
         ],
       },
