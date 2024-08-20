@@ -326,7 +326,7 @@ export default PluginFieldOrderDetailsClient;
 
 ### 4. 定义 Schema Initializer Item
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-field-component-without-value/src/client/initializer/index.ts` 文件：
+我们新建 `packages/plugins/@nocobase-sample/plugin-field-component-without-value/src/client/initializer/index.tsx` 文件：
 
 ```ts
 import React from "react";
