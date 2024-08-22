@@ -44,7 +44,7 @@ yarn pm add @my-project/plugin-hello
 Create a new collection file in the plugin, e.g. `. /src/server/collections/hello.ts` with the following contents:
 
 ```ts
-import { defineCollection } '@nocobase/database';
+import { defineCollection } from '@nocobase/database';
 
 export default defineCollection({
   name: 'hello',
