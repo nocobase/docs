@@ -59,6 +59,15 @@ NocoBase 的关系字段组件旨在帮助用户更好地展示和处理关联�
 
 更多内容参考 [子表格](/handbook/ui/fields/specific/sub-table)
 
+### 子详情
+
+子详情是子表单在阅读模式下的对应组件，支持多层关系嵌套展示数据。
+
+![20240822223651](https://static-docs.nocobase.com/20240822223651.png)
+
+更多内容参考 [子详情](/handbook/ui/fields/specific/sub-detail)
+
+
 ### 文件管理器
 
 文件管理器是专门用于处理关系目标表为文件表的关系字段组件。

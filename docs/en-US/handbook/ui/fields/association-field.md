@@ -54,6 +54,16 @@ The sub-table presents one-to-many or many-to-many relationship records in the f
 
 For more information, refer to [Sub-Table](/handbook/ui/fields/specific/sub-table)
 
+### Sub-Detail
+
+The sub details are the corresponding components of the sub form in reading mode, and the multi-level relational data is displayed in a nested form.
+
+
+![20240822223651](https://static-docs.nocobase.com/20240822223651.png)
+
+For more information, refer to [Sub-Detail](/handbook/ui/fields/specific/sub-detail)
+
+
 ### File Manager
 
 The file manager is a relationship field component specifically for dealing with relationship target collections as file collections.

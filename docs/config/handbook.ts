@@ -767,6 +767,11 @@ export default [
                 link: '/handbook/ui/fields/specific/sub-table',
               },
               {
+                title: 'Sub detail',
+                'title.zh-CN': '子详情',
+                link: '/handbook/ui/fields/specific/sub-detail',
+              },
+              {
                 title: 'Title',
                 'title.zh-CN': '标题',
                 link: '/handbook/ui/fields/specific/title',
