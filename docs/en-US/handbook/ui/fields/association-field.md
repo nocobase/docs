@@ -56,7 +56,7 @@ For more information, refer to [Sub-Table](/handbook/ui/fields/specific/sub-tabl
 
 ### Sub-Detail
 
-The sub details are the corresponding components of the sub form in reading mode, and the multi-level relational data is displayed in a nested form.
+The sub-detail are the corresponding components of the sub-form in reading mode, and the multi-level relational data is displayed in a nested form.
 
 
 ![20240822223651](https://static-docs.nocobase.com/20240822223651.png)
