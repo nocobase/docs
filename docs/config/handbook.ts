@@ -318,14 +318,29 @@ export default [
             'title.zh-CN': '日期 & 时间',
             children: [
               {
-                title: 'Datetime',
-                'title.zh-CN': '日期',
+                title: 'Overview',
+                'title.zh-CN': '概述',
+                link: '/handbook/data-modeling/collection-fields/datetime',
+              },
+              {
+                title: 'Datetime(with time zone)',
+                'title.zh-CN': '日期时间（含时区）',
                 link: '/handbook/data-modeling/collection-fields/datetime/datetime',
+              },
+              {
+                title: 'Datetime(without time zone)',
+                'title.zh-CN': '日期时间（不含时区）',
+                link: '/handbook/data-modeling/collection-fields/datetime/datetime-without-tz',
               },
               {
                 title: 'Unix timestamp',
                 'title.zh-CN': 'Unix 时间戳',
                 link: '/handbook/data-modeling/collection-fields/datetime/unix-timestamp',
+              },
+              {
+                title: 'Date(without time)',
+                'title.zh-CN': '日期（不含时间）',
+                link: '/handbook/data-modeling/collection-fields/datetime/date',
               },
               {
                 title: 'Time',
