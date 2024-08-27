@@ -56,6 +56,12 @@ export default [
                 // subTitle: '@nocobase/plugin-data-source-external-postgres',
                 link: '/handbook/data-source-external-postgres',
               },
+              {
+                title: 'External MSSQL',
+                'title.zh-CN': '外部 MSSQL',
+                // subTitle: '@nocobase/plugin-data-source-external-mysql',
+                link: '/handbook/data-source-external-mssql',
+              },
             ],
           },
           {
