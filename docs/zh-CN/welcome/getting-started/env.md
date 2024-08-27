@@ -11,7 +11,7 @@
 https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 :::warning
-与时间相关的操作会依据该时区进行处理，修改 TZ 可能会影响数据库里的日期值，详情查看「[日期 & 时间概述](#)」
+与时间相关的操作会依据该时区进行处理，修改 TZ 可能会影响数据库里的日期值，详情查看「[日期 & 时间概述](/handbook/data-modeling/collection-fields/datetime)」
 :::
 
 ### APP_ENV
