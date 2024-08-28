@@ -52,6 +52,12 @@ NocoBase 为移动端提供了特有的 UI 配置界面
   <source src="https://static-docs.nocobase.com/20240828222736_rec_.mp4" type="video/mp4">
 </video>
 
+### 筛选
+
+采用 [弹出层](https://mobile.ant.design/components/popup) 的交互方式
+
+![20240828230549](https://static-docs.nocobase.com/20240828230549.png)
+
 ## 开发指南
 
 目前支持的扩展点有
