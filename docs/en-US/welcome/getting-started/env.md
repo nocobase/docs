@@ -4,6 +4,16 @@
 
 Saved in the `.env` file
 
+### TZ
+
+Used to set the application's time zone, with the default being the system's time zone.
+
+https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+
+:::warning
+Time-related operations will be handled according to this time zone. Changing TZ may affect date values in the database. For more details, refer to [Date & Time Overview](/handbook/data-modeling/collection-fields/datetime).
+:::
+
 ### APP_ENV
 
 Application environment, default is `development`, options include

@@ -52,9 +52,9 @@ DB_PASSWORD=nocobase
 ```
 
 :::warning
+- `TZ` is used to set the application's time zone, with the default being the system's time zone;
 - `APP_KEY` is the application's secret key, used for generating user tokens and so on (if APP_KEY is changed, the old tokens will also become invalid). It can be any random string. Please change it to your own secret key and ensure it is not disclosed to the public.
 - `DB_*` is related to the database. If it is not the default database service in the example, please modify it according to the actual situation.
-- When using MySQL (or MariaDB), you need to configure the DB_TIMEZONE environment variable, such as `DB_TIMEZONE=+08:00`
 :::
 
 ## 5. Install NocoBase
