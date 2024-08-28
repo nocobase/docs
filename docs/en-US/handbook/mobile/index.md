@@ -4,7 +4,7 @@
 
 ## 介绍
 
-提供移动端页面配置，内核框架基于 Ant Design Mobile 实现，实现了各种扩展点，兼容添加部分桌面端区块。
+提供移动端页面配置，内核框架基于 Ant Design Mobile 实现，提供了各种扩展点，兼容添加部分桌面端区块。
 
 :::warning
 旧的 `plugin-mobile-client` 已废弃，v1.3 及以上的版本，请使用 `plugin-mobile` 代替。两个插件不兼容，新版本需要重新配置移动端。
