@@ -1,84 +1,93 @@
-# 复制
+### 3. Refinement Stage
 
-## 介绍
+**Participant:** Refinement Expert
 
-复制操作是一种便捷的方式，允许用户基于已存在的数据创建新的数据记录。提供了两种操作方式：直接复制和复制到表单并继续填写，按钮权限与新建操作一致
+**Output:** Final Polished Translation
 
-## 使用指南
+---
 
-#### 直接复制
+## Copy
 
-![](https://static-docs.nocobase.com/2c0ac5d1a539de4b72b49b7d966d8c09.png)
+### Introduction
 
-- 默认以直接复制的方式复制数据
-- 目标数据表：是指复制添加的目标数据表（在继承的场景下，可以复制给子表，直接复制只能复制添加到本表）
-- 模版字段：用于指定要复制的字段，可全选，必填
+The copy function offers a convenient way for users to generate new data records based on existing ones. You can choose between two options: direct copy or copy to form and continue filling out. The permissions for these actions align with those for creating new records.
 
-完成配置后点击按钮即复制数据
+### User Guide
 
-#### 复制到表单并继续填写
+#### Direct Copy
 
-配置的模板字段作为将默认值填充到表单中，可修改后提交
+![Direct Copy](https://static-docs.nocobase.com/2c0ac5d1a539de4b72b49b7d966d8c09.png)
 
-可以设置本表或子表为复制添加的目标表（继承的场景下）
+- By default, data is copied directly.
+- Target Collection: This refers to the destination table where the copied data will be added (in scenarios involving inheritance, the data can be copied to a child table; direct copy only allows adding to the current table).
+- Data Fields: These fields specify which data elements will be copied. You can select all fields, and this selection is required.
 
-![](https://static-docs.nocobase.com/a072aa572fd0a0fe643eadf95471da2a.png)
+After setting the configuration, simply click the button to copy the data.
 
-配置模板字段：模板字段将作为默认值填充到表单中，只会带出有勾选的字段值
+#### Copy to Form and Continue Filling Out
 
-![](https://static-docs.nocobase.com/8032fa2025180ade275da55b97774b4d.png)
+The selected template fields will automatically populate the form with default values, which can then be edited before submission.
 
-「运单」（o2m）是复制的关系，调整其字段组件为子表单，可配置子表单中的字段
+You can designate either the current table or a child table as the target table for the copied data (especially in inheritance scenarios).
 
-![](https://static-docs.nocobase.com/b13c9287bae8601646727a2e78b81be7.png)
+![Copy to Form](https://static-docs.nocobase.com/a072aa572fd0a0fe643eadf95471da2a.png)
 
-同步表单字段：完成表单配置后可点击同步表单字段按钮，会自动解析将表单中已配置的字段均勾选上（每次表单字段配置修改之后需要手动再同步一次），同步表单字段后可自定义调整模板字段
+Configure Template Fields: The template fields will populate the form with default values, and only the selected fields will be transferred.
 
-![](https://static-docs.nocobase.com/156b6d8d741521e63d12e49092414d58.png)
+![Template Fields](https://static-docs.nocobase.com/8032fa2025180ade275da55b97774b4d.png)
 
-点击复制操作会打开弹窗，并按照模板字段带出模板数据作为表单默认值填充，可修改数据后提交完成数据复制
+The "Waybill" (o2m) relationship is copied. You can adjust its field component to a sub-form, which allows you to configure the fields within the sub-form.
 
-![](https://static-docs.nocobase.com/1c0a0ae0c59971f48b2282a68831d44b.png)
+![Waybill](https://static-docs.nocobase.com/b13c9287bae8601646727a2e78b81be7.png)
 
-如下图完整示例为订单列表配置复制操作
+Sync from form fields: Once you’ve configured the form, click the Sync Form Fields button to automatically parse and select all the fields that have been configured (after any modification to the form’s field configuration, you must manually sync it again). After syncing, you can customize the template fields.
 
-![](https://static-docs.nocobase.com/fa8a89abf0ba136df04b6d0d838eae4e.gif)
+![Sync Form Fields](https://static-docs.nocobase.com/156b6d8d741521e63d12e49092414d58.png)
 
-## 补充说明
+When you initiate the copy operation, a pop-up window will appear, pre-populated with the template data as default values based on the selected template fields. You can modify the data before submitting to complete the copy process.
 
-#### 复制、引用、预加载的说明
+![Copy Operation](https://static-docs.nocobase.com/1c0a0ae0c59971f48b2282a68831d44b.png)
 
-对于不同字段（不同关系类型）有不同的处理逻辑（复制、引用、预加载），其中调整关系字段的字段组件中也会影响处理逻辑（Select 和 Record pikcer 用于处理引用关系，Sub-form 和 Sub-table 用于处理复制关系）
+Below is a full example of configuring a copy operation within an order list:
 
-- 复制
+![Order List Example](https://static-docs.nocobase.com/fa8a89abf0ba136df04b6d0d838eae4e.gif)
 
-  - 普通字段是复制
-  - hasOne 和 hasMany 的关系字段只能是复制（即该类型的关系字段不能用 Select、Record picker 作为字段组件，应使用 Sub-form、Sub-table 等）
-    - hasOne 和 hasMany 字段组件的变更不会改变处理逻辑（复制）
-    - 复制的关系字段，所有的子字段都可以被选择
+### Additional Notes
 
-- 引用
+#### Understanding Copy, Reference, and Preload
 
-  - belongsTo 和 belongsToMany 是引用
-  - **引用是可能变成复制的，比如字段组件从 select 调整为 sub-form 后，关系就从引用变成了复制（变成复制之后，所有的子字段都是可选的）**
+Different fields and relationships are handled differently—through copy, reference, or preload. Adjusting the field components in relationships also influences this logic (Select and Record picker handle reference relationships, while Sub-form and Sub-table handle copy relationships).
 
-- 预加载：引用字段里的关系字段
+- Copy
+  - Regular fields are copied.
+  - hasOne and hasMany relationship fields can only be copied (these relationship types should not use Select or Record picker as field components; instead, use Sub-form or Sub-table).
+    - Altering the field components for hasOne and hasMany relationships does not change the logic (copy).
+    - In copied relationships, all child fields are selectable.
 
-  - 引用的关系字段下的关系字段为预加载
-  - 预加载的关系字段在字段组件变更后可能变成引用或者复制
+- Reference
+  - belongsTo and belongsToMany are reference types.
+  - **References can become copies; for instance, if a field component changes from select to sub-form, the relationship changes from reference to copy (and all child fields become selectable).**
 
-#### 全选
+- Preload: Relationship fields within reference fields.
+  - These fields are preloaded within reference relationships.
+  - Preloaded fields may change to reference or copy if their components are modified.
 
-- 所有的复制字段和引用字段都勾选上
+#### Select All
 
-#### 模板数据的处理逻辑
+- All fields, both copied and referenced, are selected.
 
-- 所有的关系的 fk 都会过滤掉
-- 如果是复制的关系数据 pk 也会过滤掉
-- 引用和预加载有 pk 字段
+#### Handling Logic for Template Data
 
-#### 如何理解同步表单字段
+- All foreign keys (FKs) in relationships are filtered out.
+- Primary keys (PKs) for copied relationship data are also filtered out.
+- Reference and preload relationships include PK fields.
 
-在大多数场景下，表单配置涉及的字段非常繁多。在处理这种复杂表单场景时，手动配置模板字段通常会变得非常繁琐。为了解决这个问题，引入了同步表单字段按钮。这个按钮的作用是自动解析表单字段的配置，根据字段类型和关系字段组件的配置来处理字段复制逻辑，包括复制、引用和预加载。在这个过程中，已经配置出来的字段会默认被勾选上
+#### Syncing Form Fields
 
-每当用户修改表单字段配置之后，系统不会自动同步这些变化。因此，用户需要手动点击同步表单字段按钮，以便将最新的配置信息应用到模板配置中。
+In many cases, configuring forms involves numerous fields, making manual setup cumbersome. To streamline this, the Sync Form Fields button is available. It automatically parses and selects the appropriate fields based on their type and relationship configuration, handling copy, reference, and preload logic. The fields that have already been configured are selected by default.
+
+After modifying the form field configuration, the system doesn’t automatically sync these changes. Therefore, users need to manually click the Sync Form Fields button to update the template configuration with the latest information.
+
+---
+
+This completes the refinement process. The translation is now polished and ready for use. If you have any further requests or adjustments, feel free to ask!

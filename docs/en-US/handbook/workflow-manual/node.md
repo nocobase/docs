@@ -1,79 +1,79 @@
 # Node Configuration
 
-## 创建节点
+## Creating a Node
 
-在工作流配置界面中，点击流程中的加号（“+”）按钮，添加“人工处理”节点：
+In the workflow configuration interface, click the plus (“+”) button within the process to add a "Manual" node:
 
-![创建人工节点](https://static-docs.nocobase.com/4dd259f1aceeaf9b825abb4b257df909.png)
+![Create Manual Node](https://static-docs.nocobase.com/4dd259f1aceeaf9b825abb4b257df909.png)
 
-## 配置节点
+## Configuring the Node
 
-### 负责人
+### Assignee
 
-人工节点需要指定一个用户，作为待办任务的执行者。待办任务的列表可以在页面添加区块时添加，每个节点的任务弹窗内容需要在节点中进行界面配置。
+A manual node requires assigning a user who will be responsible for executing the pending task. You can add a list of pending tasks when setting up blocks on the page. Additionally, the content of each node's task pop-up window needs to be configured within the node’s interface.
 
-选定一个用户，或者通过变量选择上下文中的用户数据的主键或外键。
+You can either select a specific user or use variables to choose the primary or foreign key of user data from the context.
 
-![人工节点_配置_负责人_选择变量](https://static-docs.nocobase.com/22fbca3b8e21fda3a831019037001445.png)
+![Manual Node Configuration - Assignee Variable Selection](https://static-docs.nocobase.com/22fbca3b8e21fda3a831019037001445.png)
 
-:::info{title=提示}
-目前人工节点的负责人选项暂不支持针对多人处理，会在未来的版本中支持。
+:::info{title=Note}
+At present, the assignee option for manual nodes does not support multi-user processing, though this feature is planned for future versions.
 :::
 
-### 配置用户界面
+### Configuring the User Interface
 
-待办事项的界面配置是人工节点的核心内容，可以通过点击“配置用户界面”按钮弹窗打开独立配置，和普通页面一样，可以所见即所得地配置：
+The interface setup for the to-do list is central to configuring the manual node. By clicking the “Configure” button, you can open a separate pop-up window for configuration. This interface works like a regular page, allowing you to design it using a WYSIWYG (What You See Is What You Get) editor:
 
-![人工节点_节点配置_界面配置](https://static-docs.nocobase.com/fd360168c879743cf22d57440cd2590f.png)
+![Manual Node Configuration - User Interface Configuration](https://static-docs.nocobase.com/fd360168c879743cf22d57440cd2590f.png)
 
-#### 标签页
+#### Tabs
 
-标签页可以用于区分不同的内容，例如一个标签页用于通过的表单提交，另一个标签页用于拒绝的表单提交，或者用于展示相关数据的详情等，可自由配置。
+Tabs can be utilized to differentiate between various content types. For example, one tab might be used for approved form submissions, another for rejected submissions, or you might use them to display details of related data. These tabs can be configured freely according to your needs.
 
-#### 区块
+#### Blocks
 
-支持的区块类型主要有两大类，数据区块和表单区块，另外的 Markdown 主要用于提示信息等静态内容。
+The blocks you can use primarily fall into two categories: Data Blocks and Form Blocks. In addition, Markdown blocks are available for informational prompts and other static content.
 
-##### 数据区块
+##### Data Blocks
 
-数据区块可选择触发器数据或任意的节点处理结果，用于提供给待办负责人相关的上下文信息。例如工作流是表单事件触发的，即可以创建一个触发数据的详情区块，与普通页面的详情配置一致，可任选触发数据内有的字段进行数据展示：
+Data blocks allow you to display information from triggers or the results of any node processing, providing necessary context for the task assignee. For example, if the workflow is triggered by a form event, a data block can be created to show the details of the triggered data. This setup is similar to configuring details on a regular page, where you can select any fields from the triggered data for display:
 
-![人工节点_节点配置_界面配置_数据区块_触发器](https://static-docs.nocobase.com/675c3e58a1a4f45db310a72c2d0a404c.png)
+![Manual Node Configuration - Data Block - Trigger](https://static-docs.nocobase.com/675c3e58a1a4f45db310a72c2d0a404c.png)
 
-节点数据区块类似，可以选择上游节点中的数据结果作为详情展示。例如上游一个计算节点的结果，作为负责人待办的上下文参考信息：
+Similarly, node data blocks can be configured to display data results from upstream nodes as reference information for the task assignee. For example, if an upstream calculation node generates results, these can be displayed as contextual data:
 
-![人工节点_节点配置_界面配置_数据区块_节点数据](https://static-docs.nocobase.com/a583e26e508e954b47e5ddff80d998c4.png)
+![Manual Node Configuration - Data Block - Node Data](https://static-docs.nocobase.com/a583e26e508e954b47e5ddff80d998c4.png)
 
-:::info{title=提示}
-由于配置界面时工作流都处于未执行的状态，所以数据区块中都是没有具体数据显示的，只有当工作流被触发执行后，在待办弹窗界面中才可看到具体流程的相关数据。
+:::info{title=Note}
+Since the workflow is in a non-executing state during interface configuration, data blocks won’t display specific data. The relevant data will only appear in the to-do pop-up interface once the workflow is triggered and executed.
 :::
 
-##### 表单区块
+##### Form Blocks
 
-待办界面中至少需要配置一个表单区块，作为工作流是否继续执行的最终决策处理，不配置表单会导致流程中断后无法继续。表单区块有三种类型，分别是：
+Form blocks are crucial in the to-do interface, as they determine whether the workflow continues. Failing to configure a form block will cause the workflow to halt. There are three types of form blocks available:
 
-- 自定义表单
-- 新增数据表单
-- 更新数据表单
+- Custom Form
+- Create record form
+- Update record form
 
-![人工节点_节点配置_界面配置_表单类型](https://static-docs.nocobase.com/2d068f3012ab07e32a265405492104a8.png)
+![Manual Node Configuration - Form Block Types](https://static-docs.nocobase.com/2d068f3012ab07e32a265405492104a8.png)
 
-新增数据表单和更新数据表单需要选择基于的数据表，待办用户提交后会使用表单内的值新增或更新特定数据表的数据。自定义表单则可以自由定义一个数据表无关的临时表单，待办用户提交后的字段值可以在后续节点中使用。
+For Create record forms and Update record forms, you'll need to select the data table they are based on. When the assignee submits the form, the values entered will be used to add or update data in the selected table. The Custom Form allows you to create a temporary form not linked to any data table, with the submitted values available for use in subsequent nodes.
 
-表单的提交按钮可以配置三种类型，分别是：
+You can configure the form submission button with one of three options:
 
-- 提交后继续流程
-- 提交后终止流程
-- 仅暂存表单值
+- Continue the process
+- Terminate the process
+- Save temporarily
 
-![人工节点_节点配置_界面配置_表单按钮](https://static-docs.nocobase.com/6b45995b14152e85a821dff6f6e3189a.png)
+![Manual Node Configuration - Form Button Types](https://static-docs.nocobase.com/6b45995b14152e85a821dff6f6e3189a.png)
 
-三个按钮代表流程处理中三种节点状态，提交后该节点的状态修改为“完成”、“拒绝”或继续处于“等待”的状态，一个表单至少要配置前两者之一，以决定整个流程的后续处理流向。
+These three button options correspond to different node states in the workflow: "Complete," "Reject," or "Waiting." At least one of the first two options must be configured to determine how the workflow proceeds.
 
-在“继续流程”按钮上可以配置对表单字段的赋值：
+On the "Continue the process" button, you can configure specific values for form fields:
 
-![人工节点_节点配置_界面配置_表单按钮_设置表单值](https://static-docs.nocobase.com/2cec2d4e2957f068877e616dec3b56dd.png)
+![Manual Node Configuration - Set Form Values](https://static-docs.nocobase.com/2cec2d4e2957f068877e616dec3b56dd.png)
 
-![人工节点_节点配置_界面配置_表单按钮_设置表单值弹窗](https://static-docs.nocobase.com/5ff51b60c76cdb76e6f1cc95dc3d8640.png)
+![Manual Node Configuration - Set Form Values Pop-up](https://static-docs.nocobase.com/5ff51b60c76cdb76e6f1cc95dc3d8640.png)
 
-打开弹窗后可以对表单任意字段进行赋值，表单提交后将会以该值作为字段的终值。通常在对一些数据进行审核时比较有用，可以在表单中使用多个不同的“继续流程”按钮，每个按钮对类似状态的字段设置不同的枚举值，以达到继续后续流程执行且使用不同数据值的效果。
+In the pop-up window, you can assign values to any field in the form. Once the form is submitted, these values will be used as the final values for those fields. This feature is particularly useful when reviewing data. You can configure multiple "Continue the process" buttons in the form, each setting different enumeration values for similar fields, allowing the workflow to continue with varying outcomes based on these values.

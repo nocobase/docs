@@ -1,12 +1,12 @@
-# 验证码
+# Verification Code
 
 :::warning
-文档待补充
+To be added.
 :::
 
 <!--
-## 介绍
+## Introduction
 
-## 安装
+## Installation
 
-## 使用说明 -->
+## Instructions -->

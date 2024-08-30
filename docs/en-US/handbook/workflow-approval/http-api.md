@@ -1,8 +1,8 @@
 # HTTP API
 
-审批事件不仅限于用户界面的操作发起，也可以通过 HTTP API 调用触发。
+Approval events aren’t confined to actions within the user interface; they can also be triggered through HTTP API calls.
 
-针对从数据区块和审批中心区块发起的审批，都可以这样调用（以 `posts` 表创建按钮举例）：
+For approvals initiated from data blocks and approval center blocks, you can trigger them using an API call (using the creation button for the `posts` table as an example):
 
 ```bash
 curl -X POST -H 'Authorization: Bearer <your token>' -H 'X-Role: <roleName>' -d \
@@ -13,17 +13,17 @@ curl -X POST -H 'Authorization: Bearer <your token>' -H 'X-Role: <roleName>' -d 
   "http://localhost:3000/api/posts:create?triggerWorkflows=workflowKey"
 ```
 
-其中 URL 参数 `triggerWorkflows` 为工作流的 key，多个工作流用逗号分隔。该 key 可在工作流画布顶部工作流名称处鼠标悬浮后获得：
+The URL parameter `triggerWorkflows` is the key of the workflow, with multiple workflows separated by commas. You can find this key by hovering over the workflow name at the top of the workflow canvas:
 
-![工作流_key_查看方式](https://static-docs.nocobase.com/20240426135108.png)
+![How to View Workflow Key](https://static-docs.nocobase.com/20240426135108.png)
 
-调用成功后，将触发对应 `posts` 表的审批工作流。
+Once the call is successful, the approval workflow for the `posts` table will be triggered.
 
-:::info{title="提示"}
-因为外部调用也需要基于用户身份，所以通过 HTTP API 调用时，和普通界面发送的请求一致，都需要提供认证信息，包括 `Authorization` 请求头或 `token` 参数（登录获得的 token），以及 `X-Role` 请求头（用户当前角色名）。
+:::info{title="Note"}
+Because external calls also rely on user identity, HTTP API calls must include authentication details, just like standard interface requests. This includes the `Authorization` header or the `token` parameter (token obtained during login), as well as the `X-Role` header (indicating the user’s current role).
 :::
 
-如果需要触发该操作中对一关系数据（对多暂不支持）的事件，可以在参数中使用 `!` 来指定关系字段的触发数据：
+If you need to trigger an event related to a one-to-one relationship (note that one-to-many relationships are not yet supported), you can use `!` in the parameters to specify the related field that should trigger the event:
 
 ```bash
 curl -X POST -H 'Authorization: Bearer <your token>' -H 'X-Role: <roleName>' -d \
@@ -37,8 +37,8 @@ curl -X POST -H 'Authorization: Bearer <your token>' -H 'X-Role: <roleName>' -d 
   "http://localhost:3000/api/posts:create?triggerWorkflows=workflowKey!category"
 ```
 
-以上调用成功后，将触发对应 `categories` 表的审批事件。
+When the call is successfully executed, the approval event for the `categories` table will be triggered.
 
-:::info{title="提示"}
-通过 HTTP API 调用触发操作后事件时，也需要注意工作流的启用状态，以及数据表配置是否匹配，否则可能不会调用成功，或出现错误。
+:::info{title="Note"}
+When triggering events via HTTP API calls, ensure that the workflow is enabled and that the data table configuration is correct; otherwise, the call may not be successful or may result in errors.
 :::

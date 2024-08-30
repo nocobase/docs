@@ -1,18 +1,18 @@
-# 插件的组织方式
+### Plugin Organization Methods
 
-NocoBase 提供了三种方式组织插件，所有插件包最终都会汇聚到项目根目录下的 `node_modules` 里：
+NocoBase offers three distinct methods for organizing plugins, ensuring that all plugin packages are ultimately consolidated within the `node_modules` directory at the project's root:
 
 ![20240428091419](https://static-docs.nocobase.com/20240428091419.png)
 
-## storages/plugins
+#### storages/plugins
 
-用于存放已经编译好的插件，无需下载额外依赖的插件，即插即用，通过界面添加的插件就是放在这个目录，也可以通过 pm add 添加。
+This directory is reserved for storing pre-compiled plugins that require no additional dependencies. These plugins are designed for immediate use—simply plug and play. Plugins added via the interface are placed in this directory, and you can also add plugins using the `pm add` command.
 
 ```bash
 tar -xvzf /downloads/plugin-data-source-external-mysql-0.21.0-alpha.10.tgz -C /my-nocobase-app/storage/plugins/@nocobase/plugin-data-source-external-mysql --strip-components=1
 ```
 
-目录结构如下：
+The directory structure is organized as follows:
 
 ```bash
 |- /storage/
@@ -21,9 +21,9 @@ tar -xvzf /downloads/plugin-data-source-external-mysql-0.21.0-alpha.10.tgz -C /m
       |- /plugin-data-source-external-mysql/
 ```
 
-## packages/plugins
+#### packages/plugins
 
-开发中的插件，通过 yarn workspace 维护，yarn install 会下载所有插件的依赖，有源码，生产环境需要编译之后才能使用。插件包和 npm packages 的组织方式一致，目录结构如下：
+For plugins that are still in development, maintenance is handled through Yarn workspaces. Running `yarn install` will ensure that all dependencies for these plugins are downloaded. The source code is accessible, but these plugins require compilation before they can be deployed in a production environment. The structure of these plugin packages mirrors that of npm packages, as illustrated below:
 
 ```bash
 |- /packages/
@@ -35,9 +35,9 @@ tar -xvzf /downloads/plugin-data-source-external-mysql-0.21.0-alpha.10.tgz -C /m
     |- /my-nocobase-plugin-hello2/
 ```
 
-## package.json + dependencies
+#### package.json + dependencies
 
-例如 NocoBase 的 preset 插件，将插件写在了 dependencies 里，yarn install 时，就会将声明的插件全部下载下来
+An example of this method is the NocoBase preset plugin, which lists its plugins under the `dependencies` section in `package.json`. When you run `yarn install`, all specified plugins are automatically downloaded and ready for use.
 
 ```js
 {

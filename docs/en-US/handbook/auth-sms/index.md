@@ -1,4 +1,4 @@
-# SMS Authentication
+# Auth: SMS
 
 ## Introduction
 

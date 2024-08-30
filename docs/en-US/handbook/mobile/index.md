@@ -1,65 +1,65 @@
-# 移动端
+# Mobile
 
 <PluginInfo name="mobile"></PluginInfo>
 
-## 介绍
+## Introduction
 
-提供移动端页面配置，内核框架基于 Ant Design Mobile 实现，提供了各种扩展点，兼容添加部分桌面端区块。
+This plugin facilitates the configuration of mobile pages, leveraging a core framework built on Ant Design Mobile. It offers a variety of extension points and supports the integration of specific desktop blocks.
 
 :::warning
-旧的 `plugin-mobile-client` 已废弃，v1.3 及以上的版本，请使用 `plugin-mobile` 代替。两个插件不兼容，新版本需要重新配置移动端。
+The older `plugin-mobile-client` has been deprecated. Starting from version v1.3, it is recommended to transition to `plugin-mobile`. These two plugins are incompatible, so the new version will necessitate a complete reconfiguration of mobile settings.
 :::
 
-## 安装
+## Installation
 
-预置插件，需要先激活才能使用。
+This plugin comes pre-installed but requires activation to function.
 
 ![20240712113500](https://static-docs.nocobase.com/20240712113500.png)
 
-## 使用手册
+## User Manual
 
-### UI 配置界面
+### UI Configuration Interface
 
-NocoBase 为移动端提供了特有的 UI 配置界面
+NocoBase provides a specialized UI configuration interface tailored for mobile use.
 
 ![20240828220321](https://static-docs.nocobase.com/20240828220321.png)
 
-### 标签栏
+### Tab Bar
 
-支持添加链接和页面两种类型
+Supports the addition of two types: links and pages.
 
 ![20240828223244](https://static-docs.nocobase.com/20240828223244.png)
 
-### 添加区块
+### Adding Blocks
 
-目前支持添加的桌面端区块有
+The following desktop blocks can currently be added:
 
 ![20240828223454](https://static-docs.nocobase.com/20240828223454.png)
 
-### 页面配置
+### Page Configuration
 
 ![20240828221452](https://static-docs.nocobase.com/20240828221452.png)
 
-### 页面标签页
+### Page Tabs
 
 ![20240828222225](https://static-docs.nocobase.com/20240828222225.png)
 
-### 子页面
+### Sub-Pages
 
-移动端弹窗操作都是以子页面方式打开，支持滑动返回
+On mobile devices, pop-up actions open as sub-pages with swipe-back functionality.
 
 <video width="100%" controls>
   <source src="https://static-docs.nocobase.com/20240828222736_rec_.mp4" type="video/mp4">
 </video>
 
-### 筛选
+### Filtering
 
-采用 [弹出层](https://mobile.ant.design/components/popup) 的交互方式
+Filtering utilizes a [Popup](https://mobile.ant.design/components/popup) interaction method.
 
 ![20240828230549](https://static-docs.nocobase.com/20240828230549.png)
 
-## 开发指南
+## Development Guide
 
-目前支持的扩展点有
+Currently supported extension points include:
 
 ![20240712115610](https://static-docs.nocobase.com/20240712115610.png)

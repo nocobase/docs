@@ -1,65 +1,65 @@
-# 地图区块
+## Block Map
 
 <PluginInfo name="block-map"></PluginInfo>
 
-## 介绍
+### Overview
 
-地图区块用于展示和管理地图字段，扩展了四种地图字段，包括点、线、圆和多边形。
+The Block Map is an essential tool for displaying and managing map-related data, offering support for four types of map fields: points, lines, circles, and polygons.
 
-## 安装
+### Installation
 
-预置插件，需要先激活才能使用。
+This plugin comes pre-installed but must be activated before use.
 
 ![20240421120958](https://static-docs.nocobase.com/20240421120958.png)
 
-启用插件后需配置地图认证信息。
+After activation, map authentication details need to be configured.
 
 ![20240421121032](https://static-docs.nocobase.com/20240421121032.png)
 
-数据表中可以添加地图字段。
+Once configured, map fields can be integrated into your data tables.
 
 ![20240426171356](https://static-docs.nocobase.com/20240426171356.png)
 
-## 添加区块
+### Adding Map Blocks
 
-仅数据表中有地图字段的区块支持添加地图区块。
+Map blocks can only be added if the associated data table includes map fields.
 
 ![20240408194209](https://static-docs.nocobase.com/20240408194209.png)
 
 ![20240408194420](https://static-docs.nocobase.com/20240408194420.png)
 
-1. 地图字段: 地图元素类型（点、线、多边形）。
-2. 标记字段: 地图标注（仅点类型支持）。
+1. **Map Field:** Defines the type of map element (point, line, polygon).
+2. **Marker Field:** Specifies map markers (applicable only for point types).
 
-### 点
+#### Points
 
-应用场景：零售店网点分布。
+**Use Case:** Ideal for visualizing the distribution of retail store locations.
 
 ![20240408195630](https://static-docs.nocobase.com/20240408195630.png)
 
-### 线
+#### Lines
 
-线是由一组地图点组成，如下显示运单轨迹。
+Lines are constructed from a sequence of map points, commonly used to illustrate paths, such as delivery routes.
 
 ![20240408201608](https://static-docs.nocobase.com/20240408201608.png)
 
-### 圆
+#### Circles
 
 ![20240408201939](https://static-docs.nocobase.com/20240408201939.png)
 
-### 多边形
+#### Polygons
 
-应用场景：适用片区规划。
+**Use Case:** Perfect for area planning and zoning applications.
 
-![多边形](https://static-docs.nocobase.com/20240408200546.png)
+![Polygon](https://static-docs.nocobase.com/20240408200546.png)
 
-## 区块配置项
+### Block Configuration Options
 
 ![20240421121949](https://static-docs.nocobase.com/20240421121949.png)
 
-### 连接顺序字段
+#### Sequential Field Connections
 
-将点按顺序字段依次连接。
+Connect points according to the order defined by sequential fields.
 
 ![20240408202645](https://static-docs.nocobase.com/20240408202645.png)
 
@@ -67,42 +67,42 @@
 
 ![20240422101027](https://static-docs.nocobase.com/20240422101027.png)
 
-### 地图默认缩放级别
+#### Default Map Zoom Level
 
-默认值为13。
+The zoom level defaults to 13 but can be adjusted as needed.
 
 ![20240408202854](https://static-docs.nocobase.com/20240408202854.png)
 
-### 设置数据范围
+#### Defining Data Scope
 
-示例：筛选订单状态为已发货的运单（通过关系字段筛选），符合数据范围内的运单记录才会打点。
+**Example:** Filter for waybills marked as "shipped" (using relational fields). Only waybills within the specified data scope will be displayed.
 
 ![20240422101250](https://static-docs.nocobase.com/20240422101250.png)
 
-更多内容参考 [设置数据范围](/handbook/ui/blocks/block-settings/data-scope)
+For further details, refer to [Setting Data Scope](/handbook/ui/blocks/block-settings/data-scope).
 
-### 设置区块高度
+#### Adjusting Block Height
 
-示例：调整地图区块高度。
+**Example:** Modify the height of the map block to suit your layout.
 
 ![20240605221111](https://static-docs.nocobase.com/20240605221111.gif)
 
-更多内容参考 [区块高度](/handbook/ui/blocks/block-settings/block-height)
+For more information, see [Block Height](/handbook/ui/blocks/block-settings/block-height).
 
-- [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
-- [连接数据区块](/handbook/ui/blocks/block-settings/connect-block)
-- [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
+- [Edit Block Title](/handbook/ui/blocks/block-settings/block-title)
+- [Connect Data Block](/handbook/ui/blocks/block-settings/connect-block)
+- [Save as Block Template](/handbook/ui/blocks/block-settings/block-template)
 
-## 配置操作
+### Configuration Operations
 
 ![20240421122020](https://static-docs.nocobase.com/20240421122020.png)
 
-### 批量选中点。
+#### Batch Point Selection
 
 ![20240422102334](https://static-docs.nocobase.com/20240422102334.gif)
 
-- [筛选](/handbook/ui/actions/types/filter)
-- [添加](/handbook/ui/actions/types/add-new)
-- [刷新](/handbook/ui/actions/types/refresh)
-- [批量更新](/handbook/action-bulk-update)
-- [批量编辑](/handbook/action-bulk-edit)
+- [Filter](/handbook/ui/actions/types/filter)
+- [Add](/handbook/ui/actions/types/add-new)
+- [Refresh](/handbook/ui/actions/types/refresh)
+- [Bulk Update](/handbook/action-bulk-update)
+- [Bulk Edit](/handbook/action-bulk-edit)

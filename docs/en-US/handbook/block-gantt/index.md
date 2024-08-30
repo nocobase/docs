@@ -1,38 +1,38 @@
-# 甘特图
+# Block Gantt
 
 <PluginInfo name="block-gantt"></PluginInfo>
 
-## 介绍
+## Introduction
 
-## 安装
+## Installation
 
-## 使用手册
+## User Manual
 
-甘特图区块以时间线的形式呈现数据，用于可视化任务、项目或事件的时间线和进度。适用于项目管理、事件计划、工程计划和任务调度等场景，支持拖拽甘特图条形调整任务的时间和进度
+The Gantt block offers a clear and intuitive way to present data in a timeline format, making it perfect for visualizing the timing and progress of tasks, projects, or events. It’s particularly effective in areas like project management, event planning, engineering schedules, and task management. This tool allows you to easily adjust task timelines and progress by simply dragging the bars on the chart.
 
 ![](https://static-docs.nocobase.com/f064f8fadf52947c990f5dad97736f98.png)
 
 ![](https://static-docs.nocobase.com/858112f44bc543973b6e5b03856a6360.png)
 
-### 甘特图区块参数配置
+### Gantt Block Parameter Configuration
 
 ![](https://static-docs.nocobase.com/592416fe9437106db822e0a793fa7a1c.png)
 
-- 标题字段：用于显示在甘特图条形上的信息
-- 时间缩放等级：时间缩放等级，默认天
-- 开始日期字段：每个任务的开始日期，必填
-- 结束日期字段：每个任务的结束日期，必填
-- 进度字段：设置表示进度（百分比字段）的字段，非必填
+- **Title Field**: Displays the information directly on the Gantt chart bars
+- **Time Scale**: Sets the time scale, with the default level being days
+- **Start Date Field**: Defines the start date for each task (required)
+- **End Date Field**: Defines the end date for each task (required)
+- **Progress Field**: Indicates the progress of a task (optional percentage field)
 
-### 用甘特图管理数据
+### Managing Data with the Gantt Chart
 
-- 拖拽条形调整任务的开始日期和结束日期
-- 拖拽进度条调整任务的进度
+- Drag and adjust bars to change the start and end dates of tasks
+- Drag the progress bar to update the progress of tasks
 
 ![](https://static-docs.nocobase.com/fff6fe1e1fe0a88d20f80b3bb7233608.gif)
 
-### 应用场景
+### Application Scenarios
 
-- 处理流程可视化：如将整个运单流程划分为不同的任务阶段，例如订单确认、包装、发货、运输、到达目的地等。每个任务阶段都可以在甘特图上表示为一个条形，其长度代表该阶段的持续时间
+- **Process Visualization**: For example, the entire shipping process can be divided into various stages, such as order confirmation, packaging, shipping, transportation, and delivery. Each stage is represented as a bar on the Gantt chart, with its length illustrating the duration of that stage.
 
 ![](https://static-docs.nocobase.com/03852cf63fce3372ccd259d3bd5bc0b8.gif)

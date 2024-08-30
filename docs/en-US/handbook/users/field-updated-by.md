@@ -1,13 +1,13 @@
-# 最后更新人
+# Last Updated By
 
 <PluginInfo name="users"></PluginInfo>
 
-## 介绍
+## Introduction
 
-## 字段配置
+## Field Configuration
 
 ![20240512174708](https://static-docs.nocobase.com/20240512174708.png)
 
-## 示例
+## Example
 
-待补充
+To be added.

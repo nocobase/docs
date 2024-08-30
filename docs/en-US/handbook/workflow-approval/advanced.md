@@ -1,37 +1,37 @@
 # Advanced Understanding
 
-## 提交审批的数据快照
+## Snapshot of Submitted Data for Approval
 
-审批中的数据遵循事务数据不变性的原则，每次提交都将生成一份快照，在审批过程中流转。具体如下流程：
+In the approval process, data is governed by the principle of transactional data immutability. Each submission generates a snapshot that is then tracked and circulated during the approval process. The flow of this process is as follows:
 
-![审批数据快照流程示意](https://static-docs.nocobase.com/62a545a85d9e72c6b47e4b52707c4380.png)
+![Approval Data Snapshot Process Diagram](https://static-docs.nocobase.com/62a545a85d9e72c6b47e4b52707c4380.png)
 
-在流程中产生“撤回”和“退回”行为后，在同一个申请单据中已进行过的流程中，都将保存当次的数据快照：
+When actions such as "withdraw" or "return" are triggered within the process, the system preserves a snapshot of the data as it existed at that point within the same application document:
 
-![审批数据快照_流程示例](https://static-docs.nocobase.com/62800d88772c88f1eaa11f6f493aea55.png)
+![Approval Data Snapshot Process Example](https://static-docs.nocobase.com/62800d88772c88f1eaa11f6f493aea55.png)
 
-如上图所属，每次撤回并重新申请提交的数据都会保存在当次的流程中。
+As illustrated above, every time data is withdrawn and then resubmitted, a new snapshot is saved for that particular submission process.
 
-## 审批处理的状态
+## Approval Process Statuses
 
-对于发起人，提交的审批申请在单据数据中会有一个状态字段，用于标识当前审批的状态，通常有以下几种状态：
+For the initiator, an application document's status field indicates the current stage of the approval process, typically reflecting the following states:
 
-| 状态 | 说明 |
-| --- | --- |
-| 草稿 | 申请人仅将申请表单中的数据暂时保存，还未正式提交启动流程。 |
-| 已提交 | 申请已提交，等待审批人处理。此时还未经任何审批人提交处理结果，如果配置了可撤回，则发起人可以进行撤回操作。 |
-| 处理中 | 经过任意一个审批节点，且至少有一个审批人提交了该节点审批处理的结果。此时发起人将不再能撤回。 |
-| 已退回 | 申请被任意一个审批人处理为退回，发起人可以再次修改后重新提交。 |
-| 已通过 | 流程经过的所有审批节点都被审批人处理为通过，流程结束。 |
-| 已拒绝 | 流程经过的任意审批节点中被审批人处理为拒绝，流程结束。 |
+| Status         | Description |
+|----------------| ----------- |
+| **Draft**      | The applicant has temporarily saved the application form's data but has not yet officially submitted it to start the process. |
+| **Submitted**  | The application has been submitted and is awaiting approval. At this stage, no approver has yet processed it, and if allowed by the configuration, the initiator can still withdraw the application. |
+| **On going** | The application has moved through at least one approval node, with at least one approver having submitted their decision. The initiator can no longer withdraw the application at this stage. |
+| **Returned**   | The application has been returned by one of the approvers, allowing the initiator to modify and resubmit it. |
+| **Approved**   | All approval nodes have been processed, and the application has been approved at each stage, marking the process as complete. |
+| **Rejected**   | The application has been rejected at one of the approval nodes, thereby terminating the process. |
 
-对于每个审批节点，会对节点配置的审批人生成对应的处理记录，每个审批人的处理记录中也包含一个状态字段，用于标识当前审批人的处理状态，通常有以下几种状态：
+For each approval node, a record of the processing action is generated for the designated approver. Each approver’s record includes a status field indicating the current state of their processing, which typically includes the following statuses:
 
-| 状态 | 说明 |
-| --- | --- |
-| 已分配 | 对应审批人的处理记录已创建，但由于处理规则配置为串行处理，当前记录的审批人需要等待前一个审批人处理完成后再处理。 |
-| 待处理 | 等待当前审批人处理。 |
-| 已退回 | 当前审批人处理为退回。 |
-| 已通过 | 当前审批人处理为通过。 |
-| 已拒绝 | 当前审批人处理为拒绝。 |
-| 未处理 | 根据节点配置的处理规则，由其他审批人处理后已达到节点处理的终态，或者该工作流已失效，无需当前审批人再处理。 |
+| Status    | Description |
+| --------- | ----------- |
+| **Assigned**  | A record for the corresponding approver has been created, but since the processing rule requires serial handling, the approver must wait for the previous approver to finish before they can proceed. |
+| **Pending**   | The application is awaiting action from the current approver. |
+| **Returned**  | The current approver has returned the application. |
+| **Approved**  | The current approver has approved the application. |
+| **Rejected**  | The current approver has rejected the application. |
+| **Unprocessed** | The application has reached a terminal state according to the node's processing rules after being handled by other approvers, or the workflow has become invalid, so the current approver is no longer required to take action. |

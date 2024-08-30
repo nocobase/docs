@@ -1,12 +1,12 @@
-# 树表
+# Tree Collection
 
 <PluginInfo name="collection-tree"></PluginInfo>
 
-## 介绍
+## Introduction
 
-树结构表是一种数据表设计模式，用于存储具有层次关系的数据。这种表结构类似于树形结构，其中每个数据项都可以有一个或多个子项，而这些子项又可以有自己的子项。
+A tree structure collection is a data collection design pattern used for organizing hierarchical data. This collection structure mirrors a tree, where each data item may have one or more child items, and those child items can, in turn, have their own descendants.
 
-## 使用手册
+## User Manual
 
 ![20240324143228](https://static-docs.nocobase.com/20240324143228.png)
 

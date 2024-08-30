@@ -1,9 +1,9 @@
-# 应用切换
+# App Switching
 
 <PluginInfo commercial="true" name="app-switching"></PluginInfo>
 
-## 介绍
+## Introduction
 
 :::warning
-应用切换插件正在开发中，尚未发布。
+The App Switching plugin is currently under development and has yet to be released.
 :::

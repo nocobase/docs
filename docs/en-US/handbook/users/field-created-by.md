@@ -1,13 +1,13 @@
-# 创建人
+# Creator
 
 <PluginInfo name="users"></PluginInfo>
 
-## 介绍
+## Introduction
 
-## 字段配置
+## Field Configuration
 
 ![20240512174625](https://static-docs.nocobase.com/20240512174625.png)
 
-## 示例
+## Example
 
-待补充
+To be added.

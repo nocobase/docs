@@ -1,12 +1,12 @@
-# 打印
+# Printing
 
 :::warning
-文档待补充
+Documentation Pending
 :::
 
 <!--
-## 介绍
+## Introduction
 
-## 安装
+## Installation
 
-## 使用说明 -->
+## Instructions -->
