@@ -12,7 +12,7 @@ The tree filter block needs to be connected to the data block for use, providing
   <source src="https://static-docs.nocobase.com/20240607144133_rec_.mp4" type="video/mp4">
 </video>
 
-## Block Configuration
+## Block Settings
 
 ![20240607144440](https://static-docs.nocobase.com/20240607144440.png)
 

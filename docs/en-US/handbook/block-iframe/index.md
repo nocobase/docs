@@ -9,7 +9,7 @@ The Iframe block allows you to embed external web pages or content into the curr
 
 It's a built-in plugin, no installation is required.
 
-## Adding a Block
+## Adding Blocks
 
 ![20240408220259](https://static-docs.nocobase.com/20240408220259.png)
 

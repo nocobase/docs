@@ -57,7 +57,7 @@ If you want to share the data of a single record with others, you can directly c
 
 ![20240809173339_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240809173339_rec_.gif)
 
-## Adding a Block
+## Adding Blocks
 
 The block added in the popup window can currently be used to add the following types of blocks.
 

@@ -4,7 +4,7 @@
 
 The table block is one of the core data blocks built into NocoBase, displaying and managing structured data in table form. It features flexible configuration options for customizing table columns, column widths, sorting rules, data scope, and includes various built-in actions for configuration: filter, add new, duplicate, edit, delete, etc.
 
-## Adding a Block
+## Adding Blocks
 
  <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240415215027.mp4" type="video/mp4">

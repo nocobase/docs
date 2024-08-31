@@ -14,7 +14,7 @@ Example: Configure the order collapse block and order table block to achieve fil
       <source src="https://static-docs.nocobase.com/20240408212817.mp4" type="video/mp4">
     </video>
 
-## Block Configuration Items
+## Block Settings
 
 ![20240421173427](https://static-docs.nocobase.com/20240421173427.png)
 

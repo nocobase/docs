@@ -2,7 +2,7 @@
 
 To facilitate manual processing, a todo list should be added to the page. This list will display tasks that require attention, allowing relevant personnel to easily access and manage specific tasks within the manual node.
 
-## Adding a Block
+## Adding Blocks
 
 To add a todo list block, select "Workflow Todo" from the available blocks on the page:
 

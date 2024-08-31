@@ -4,13 +4,13 @@
 
 The details block is used to display the values of each field for each data item in detail. It supports flexible field layout and has built-in various actions.
 
-## Add Block
+## Adding Blocks
 
 <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240417122622.mp4" type="video/mp4">
 </video>
 
-## Block Configuration
+## Block Settings
 
 ![20240417122949](https://static-docs.nocobase.com/20240417122949.png)
 

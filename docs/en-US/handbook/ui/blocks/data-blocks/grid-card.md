@@ -4,13 +4,13 @@
 
 The Grid Card block offers a concise and visually appealing way to display summary information of data records. Designed for flexibility, it allows you to configure the number of columns based on screen size, ensuring a seamless user experience across all devices.
 
-### Adding Blocks
+## Adding Blocks
 
 <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240418120045.mp4" type="video/mp4">
 </video>
 
-## Block Configuration Options
+## Block Settings
 
 ![20240419220708](https://static-docs.nocobase.com/20240419220708.png)
 

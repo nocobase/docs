@@ -4,7 +4,11 @@
 
 ## Introduction
 
+The Gantt chart block displays data in the form of a timeline, making it ideal for project management, event planning, engineering schedules, and task scheduling.
+
 ## Installation
+
+It's a built-in plugin, no installation is required.
 
 ## User Manual
 
