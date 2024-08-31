@@ -4,13 +4,13 @@
 
 The list block displays data in a list format, suitable for scenarios such as task lists, news updates, product information, and other data presentation needs.
 
-## Adding Blocks
+## Adding a Block
 
 <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240417224417.mp4" type="video/mp4">
 </video>
 
-## Block Settings
+## Block Configuration Options
 
 ![20240417224539](https://static-docs.nocobase.com/20240417224539.png)
 
