@@ -1,17 +1,17 @@
 # Action Configuration
 
-对于局部触发模式的操作，工作流配置完成后，需要回到用户界面，在对应数据区块的表单操作按钮上绑定该工作流。
+When configuring actions in local trigger mode, once the workflow setup is complete, you'll need to return to the user interface and link the workflow to the relevant form operation button in the corresponding data block.
 
-针对“提交”按钮（含“保存数据”按钮）配置的工作流，将在用户提交对应表单且数据操作完成后被触发。
+The workflow associated with the "Submit" button (including the "Save record" button) will be triggered after the user submits the form and the data operation is completed.
 
-![操作后事件_提交按钮](https://static-docs.nocobase.com/ae12d219b8400d75b395880ec4cb2bda.png)
+![Operation After Event_Submit Button](https://static-docs.nocobase.com/ae12d219b8400d75b395880ec4cb2bda.png)
 
-从按钮配置的菜单中选择“绑定工作流”，即可打开绑定配置弹窗。弹窗中可以配置任意多个要触发的工作流，如果一个都不配置，则代表无需触发。针对每一个工作流，需要先限定触发的数据是整个表单的数据还是表单中的某个关系字段的数据，之后再根据所选的数据模型对应的数据表，选择已配置了匹配该表模型的表单工作流。
+To bind a workflow, simply select "Bind Workflows" from the button configuration menu to open the binding configuration dialog. Here, you can set up multiple workflows to be triggered. If none are configured, it indicates that no workflows will be triggered. For each workflow, you'll need to determine whether the trigger involves data from the entire form or data from a specific relational field within the form. Then, based on the selected data model, choose the form workflow that corresponds to the data model of the associated table.
 
-![操作后事件_绑定工作流配置_上下文选择](https://static-docs.nocobase.com/358315fc175849a7fbadbe3276ac6fed.png)
+![Operation After Event_Bind Workflow Configuration_Context Selection](https://static-docs.nocobase.com/358315fc175849a7fbadbe3276ac6fed.png)
 
-![操作后事件_绑定工作流配置_工作流选择](https://static-docs.nocobase.com/175a71a61b93540cce62a1cb124eb0b5.png)
+![Operation After Event_Bind Workflow Configuration_Workflow Selection](https://static-docs.nocobase.com/175a71a61b93540cce62a1cb124eb0b5.png)
 
-:::info{title="提示"}
-工作流需要启用后，才可以在以上界面被选择。
+:::info{title="Note"}
+Ensure that the workflow is enabled before attempting to select it in the above interface.
 :::

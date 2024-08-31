@@ -1,23 +1,23 @@
 # Node Configuration
 
-## 创建节点
+## Creating a Node
 
-创建一个动态表达式计算节点：
+Create a dynamic calculation node:
 
-![创建动态表达式计算节点](https://static-docs.nocobase.com/14613f73a7dfc822a30276c8c04cdeb7.png)
+![Creating a Dynamic Calculation Node](https://static-docs.nocobase.com/14613f73a7dfc822a30276c8c04cdeb7.png)
 
-## 节点配置
+#### Node Configuration
 
-### 动态表达式
+##### Calculation Expression
 
-与普通运算节点的表达式选项不同，动态表达式需要根据已经查询出来的数据进行选择，而不是直接录入表达式。选择之前从触发器中预加载的商品优惠规则数据：
+Unlike the expression options in a standard calculation node, dynamic expressions must be selected based on preloaded data rather than directly inputting the expression. Choose the preloaded product discount rule data from the trigger:
 
-![选择动态表达式数据](https://static-docs.nocobase.com/21ccc63e604dd90b7d26c3c33c12d671.png)
+![Select Dynamic Expression Data](https://static-docs.nocobase.com/21ccc63e604dd90b7d26c3c33c12d671.png)
 
-### 变量数据源
+##### Variable Data Source
 
-同时还需要选择表达式中变量所需要使用的数据表数据行对象，可以从流程的上下文中选择已经提前加载（或查询）出来的结果对象。该对象需要是表达式数据中所关联的数据表的数据行对象，这里选择商品数据：
+You also need to select the data row object from the table to be used as a variable in the expression. This can be chosen from the workflow context, where results have been preloaded or queried. The object must be a data row from the table associated with the expression data. In this case, select the product data:
 
-![选择变量数据源](https://static-docs.nocobase.com/afbffe9661539d26e4b175ae8a4b28f7.png)
+![Select Variable Data Source](https://static-docs.nocobase.com/afbffe9661539d26e4b175ae8a4b28f7.png)
 
-保存节点配置即完成所有配置流程。
+Saving the node configuration completes the entire setup process.

@@ -1,27 +1,26 @@
-# 设置验证规则
+# Validation Rules
 
-## 介绍
+## Introduction
 
-设置验证规则是为了确保用户输入的数据符合预期，除了预置的格式校验，支持用户自定义规则。
-
+Setting validation rules is crucial to ensure that user-entered data aligns with expected standards. While there are preset format validations, users also have the flexibility to define custom rules.
 
 ![20240411112215](https://static-docs.nocobase.com/20240411112215.png)
 
-预置了多种常用格式校验（如数值、身份证号码、邮箱、手机号等）
+We provide several preset format validations for commonly used data types, including numerical values, ID numbers, email addresses, and phone numbers.
 
 ![20240411112413](https://static-docs.nocobase.com/20240411112413.png)
 
-### 长度/大小校验
+### Length/Size Validation
 
-校验数值最小值（目前仅支持常量）。
+This feature allows for validating the minimum value of numerical data, with current support limited to constants.
 
 <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240417111233.mp4" type="video/mp4">
 </video>
 
-### 自定义正则校验
+### Custom Regular Expression Validation
 
-示例：自定义正则校验电话号码为新加坡电话号码，以及配置错误信息。
+Example: Create a custom regular expression to validate Singaporean phone numbers and configure the corresponding error messages.
 
 ![20240417222427](https://static-docs.nocobase.com/20240417222427.png)
 

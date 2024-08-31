@@ -1,50 +1,48 @@
 # Trigger Configuration
 
-## 创建工作流
+#### Creating a Workflow
 
-创建工作流时，类型选择“操作后事件”：
+To create a workflow, begin by selecting "Post-action Event" as the type:
 
-![创建工作流_操作后事件触发器](https://static-docs.nocobase.com/13c87035ec1bb7332514676d3e896007.png)
+![Creating Workflow with Post-action Trigger](https://static-docs.nocobase.com/13c87035ec1bb7332514676d3e896007.png)
 
-## 执行模式
+#### Execution Mode
 
-对于操作后事件，创建时还可以选择执行模式为“同步”或“异步”：
+When setting up post-action events, you have the option to choose between "Synchronous" and "Asynchronous" execution modes:
 
-![创建工作流_选择同步或异步](https://static-docs.nocobase.com/bc83525c7e539d578f9e2e20baf9ab69.png)
+![Creating Workflow - Choosing Synchronous or Asynchronous](https://static-docs.nocobase.com/bc83525c7e539d578f9e2e20baf9ab69.png)
 
-如果是需要在用户操作后立即执行并返回的流程，可以使用同步模式，否则默认为异步模式。异步模式下触发工作流后该操作即完成，工作流会在应用后台以队列的方式陆续执行。
+Use the synchronous mode if the process needs to execute and provide feedback immediately after a user operation. For other scenarios, the default asynchronous mode is generally suitable. In asynchronous mode, the user operation completes instantly, and the workflow continues to execute in the background as part of a queued process.
 
-## 配置数据表
+#### Configuring the Data Table
 
-进入工作流画布，点击触发器打开配置弹窗，首先需要选择要绑定的数据表：
+To begin configuration, navigate to the workflow canvas and click on the trigger to open the settings window. The first step is to select the data table that you wish to bind:
 
-![工作流配置_选择数据表](https://static-docs.nocobase.com/35c49a91eba731127edcf76719c97634.png)
+![Workflow Configuration - Selecting Data Table](https://static-docs.nocobase.com/35c49a91eba731127edcf76719c97634.png)
 
-## 选择触发模式
+#### Selecting Trigger Mode
 
-然后选择触发模式，有局部模式和全局模式两种：
+Next, determine the trigger mode by choosing between Local Mode and Global Mode:
 
-![工作流配置_选择触发模式](https://static-docs.nocobase.com/317809c48b2f2a2d38aedc7d08abdadc.png)
+![Workflow Configuration - Choosing Trigger Mode](https://static-docs.nocobase.com/317809c48b2f2a2d38aedc7d08abdadc.png)
 
-其中：
+- **Local Mode**: This mode triggers the workflow only on the action buttons that have been explicitly bound to it. If the workflow is not bound, clicking the button will not initiate the workflow. This mode is ideal when you want to tailor the workflow to specific forms or actions.
+- **Global Mode**: In this mode, the workflow is triggered by any action button configured within the data table, regardless of the form's origin, and does not require specific workflow binding.
 
-* 局部模式只在绑定了该工作流的操作按钮上触发，未绑定该工作流的按钮点击后不会触发。可基于用途不同的表单，是否触发同一个流程的考虑，以决定是否绑定该工作流。
-* 全局模式则是在数据表的所配置操作按钮上都会触发，不区分来自哪个表单，也无需绑定对应工作流。
+In Local Mode, you can currently bind the following action buttons:
 
-局部模式下，目前支持绑定的操作按钮如下：
+- The "Submit" and "Save" buttons in new forms.
+- The "Submit" and "Save" buttons in update forms.
+- The "Update Data" button within data rows (such as in tables, lists, or kanban views).
 
-* 新增表单的“提交”和“保存”按钮。
-* 更新表单的“提交”和“保存”按钮。
-* 数据行（表格、列表、看板等）中的“更新数据”按钮。
+#### Choosing Action Type
 
-## 选择操作类型
+When using Global Mode, you also need to specify the action type. The available options are "Create record action" and "Update record action." The workflow is triggered upon the successful completion of either operation.
 
-如选择了全局模式，还需要选择操作类型，目前支持“创建数据操作”和“更新数据操作”。两种操作均在操作成功后触发工作流。
+#### Preloading Related Data
 
-## 选择预加载关系数据
+If subsequent workflow steps require the use of related data from the trigger, you can select the relationship fields to preload:
 
-如需在后续流程中使用触发数据的关联数据，可以选择需要预加载的关系字段：
+![Workflow Configuration - Preloading Relationships](https://static-docs.nocobase.com/5cded063509c7ba1d34f49bec8d68227.png)
 
-![工作流配置_预加载关系](https://static-docs.nocobase.com/5cded063509c7ba1d34f49bec8d68227.png)
-
-在触发后则可以在流程中直接使用这些关联数据。
+These preloaded related data will then be readily accessible throughout the workflow after it is triggered.

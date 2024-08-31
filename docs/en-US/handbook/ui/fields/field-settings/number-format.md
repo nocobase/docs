@@ -1,21 +1,23 @@
-# 数值格式化
+# Number Format
 
-## 介绍
+## Introduction
 
-数值格式化是指对阅读状态下的数值类型字段（包括公式字段）进行视觉上的美化和规范化处理，包括千分位分隔符、小数位数精度、单位换算、科学记数法等设置。通过配置数值格式化，可以满足不同地区和行业的数值表达习惯。
+Number **Format** is the process of visually enhancing and standardizing numerical fields (including formula fields) to make them more readable. This includes configuring options such as thousand separators, decimal precision, unit conversion, and scientific notation. By setting up numerical formatting, you can cater to the numerical expression preferences of different regions and industries.
 
 ![20240417220017](https://static-docs.nocobase.com/20240417220017.png)
 
 ![20240417220039](https://static-docs.nocobase.com/20240417220039.png)
-## 使用说明
-支持简单的单位换算，千分位分隔符，前后缀，精确度，科学记数法。
 
-示例：对订单金额进行格式化，包括添加货币符号（人民币符号￥）、千分位分隔符（如逗号或点号）、小数精度等，使金额清晰易读。
+## Instructions for Use
+
+This feature supports simple unit conversions, thousand separators, prefixes and suffixes, precision adjustments, and scientific notation.
+
+Example: Formatting an order amount to include a currency symbol (such as the Chinese Yuan symbol ￥), thousand separators (like commas or periods), and specific decimal precision to ensure the amount is clearly and easily understood.
 
 <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240417220140.mp4" type="video/mp4">
 </video>
 
-使用科学记数法。
+Scientific notation in use.
 
 ![20240417220416](https://static-docs.nocobase.com/20240417220416.png)

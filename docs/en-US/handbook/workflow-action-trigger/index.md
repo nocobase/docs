@@ -2,49 +2,49 @@
 
 <PluginInfo name="workflow-action-trigger" link="/handbook/workflow-action-trigger"></PluginInfo>
 
-系统中的所有用户产生的数据变动，通常都通过某项操作来完成，具体形式通常是点击某个按钮，按钮可能是表单中的提交按钮，也可能是数据区块中的操作按钮。操作后事件用于对这些按钮的操作绑定相关的工作流，以达成用户操作成功后触发特定流程的效果。
+In the system, all user-generated data changes are typically carried out through some form of operation, usually by clicking a button. This button could be a submit button on a form or an action button within a data block. Post-action events are designed to bind specific workflows to these button actions, ensuring that a particular process is triggered upon successful user interaction.
 
-例如，在新增或更新数据时，用户可以通过配置按钮的“绑定工作流”选项，点击操作完成后，会触发绑定的工作流。
+For instance, when adding or updating data, users can configure the "Bind Workflows" option on a button. Once the action is completed, the bound workflow will be triggered automatically.
 
-在实现层面，由于操作后事件的处理处于中间件层（Koa 的中间件），因此，对 NocoBase 的 HTTP API 调用也可以触发已定义的操作后事件。
+From an implementation standpoint, since Post-action event processing occurs at the middleware level (using Koa middleware), even making an HTTP API call to NocoBase can trigger defined Post-action events.
 
-:::info{title="提示"}
-操作后事件原名为“表单事件”，在早前的版本中，该功能只针对表单按钮。`v0.20` 版本开始支持更多数据区块中的操作按钮，所以更名为“操作后事件”。
+:::info{title="Note"}
+The Post-action event was initially called "Form Event." In earlier versions, this feature was limited to form buttons. However, starting from version `v0.20`, it has also become available for operation buttons within more data blocks, leading to its renaming as "Post-action event."
 :::
 
 ## FAQ
 
-### 与操作前事件的区别
+### Difference Between Post-action and Pre-action Events
 
-操作后事件与操作前事件的区别在于，在整个操作请求发出并获得响应的过程中，一个在操作处理前触发，一个在操作处理后触发，如下图所示：
+The distinction between Post-action and Pre-action events lies in the timing of their triggers during the operation request and response cycle. One is triggered before the operation is processed, while the other is triggered afterward, as illustrated below:
 
-![操作执行顺序](https://static-docs.nocobase.com/7c901be2282067d785205b70391332b7.png)
+![Operation Sequence](https://static-docs.nocobase.com/7c901be2282067d785205b70391332b7.png)
 
-操作前事件是在操作执行前触发，操作前事件是在请求执行前，可以对请求的数据进行校验或处理，如果请求被拦截，该操作将不会被执行。
+Pre-action events are triggered before the operation is executed, meaning they occur before the request is processed. These events can be utilized to validate or manipulate the request data, and if the request is blocked, the operation will not proceed.
 
-而操作后事件是在用户操作成功后触发，此时数据已经提交成功，可以根据成功的结果继续处理相关的流程。
+Conversely, Post-action events are triggered after the user's action has been successfully completed. At this stage, the data has already been submitted successfully, and the related processes can proceed based on the successful outcome.
 
-### 与数据表事件的区别
+### Difference Between Post-action and Table Events
 
-操作后事件与数据表事件有类似之处，从效果上看都是在数据变动后触发的流程，但实现的层面各有不同，操作后事件是针对 API 层面的，而数据表事件是针对数据表的数据变动的。
+Post-action events and table events have similarities in that both are triggered after data changes occur. However, their implementations differ. Post-action events are focused on the API level, whereas table events are concerned with changes in data within tables.
 
-数据表事件更靠近系统底层，在一些情况下可能由一个事件导致的数据变动触发另一个事件，能产生连锁反应。尤其是部分关联数据表的数据在当前表的操作中也发生了变动，则关联表相关的事件也会被触发。
+Table events are closer to the system's core. In some instances, a single event may trigger data changes that lead to another event, creating a chain reaction. This is particularly true when related table data is altered during operations on the current table, which can trigger events in associated tables.
 
-数据表事件的触发不包含用户相关的信息。而操作后事件更贴近用户端，是用户操作的结果，流程的上下文也会包含用户的相关信息，适合处理用户操作的流程。在 NocoBase 对未来的设计中，可能会扩展更多可用于触发的操作后事件，所以**更推荐使用操作后事件**来处理用户操作导致数据变动的流程。
+Table events do not contain user-related information. In contrast, Post-action events are more closely linked to the user end, reflecting the results of user actions. The context of these processes will include user-related information, making them suitable for handling workflows resulting from user actions. In NocoBase's future design, more Post-action events may be added to expand the triggers available, so it is **recommended to use Post-action events** for managing workflows stemming from data changes caused by user actions.
 
-另一点区别是，操作后事件可以局部绑定在特定的表单上，如果有多个表单，可以一部分表单的提交触发该事件，而另一部分不触发，而数据表事件是针对整个数据表的数据变动，无法局部绑定。
+Another key difference is that Post-action events can be selectively bound to specific forms. If there are multiple forms, some can trigger the event upon submission, while others do not. On the other hand, table events are tied to data changes across the entire table and cannot be selectively bound.
 
-## 安装
+## Installation
 
-内置插件，无需安装。
+This plugin is built-in and does not require installation.
 
-## 使用手册
+## User Manual
 
-操作后事件的使用分为几个部分：
+The use of Post-action events is divided into several parts:
 
-- [触发器配置](./trigger.md)
-- [操作配置](./action.md)
+- [Trigger Configuration](./trigger.md)
+- [Action Configuration](./action.md)
 
-并可以参考 [示例](./example.md) 了解实际场景中的使用。
+You can also refer to [Examples](./example.md) to understand their application in real-world scenarios.
 
-如果需要从外部系统调用，可以参考 [外部调用](./http-api.md)。
+If external system calls are necessary, please refer to [External Calls](./http-api.md).

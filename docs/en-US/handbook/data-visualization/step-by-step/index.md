@@ -1,10 +1,10 @@
-# 扩展教程
+# Extended Tutorial
 
-> 以添加 ECharts 图表为例，完整代码可参考 `@nocobase/plugin-sample-add-custom-charts` 插件
+> Using the addition of ECharts charts as an example, the complete code is available in the `@nocobase/plugin-sample-add-custom-charts` plugin.
 
-## 新建插件
+## Creating a New Plugin
 
-按照[插件开发指南](https://docs.nocobase.com/development/your-fisrt-plugin)的步骤，创建一个新的插件。添加好依赖 `echarts`, `echarts-for-react`, `@nocobase/plugin-data-visualization`，外部依赖放到 `package.json` 的 `devDependencies` 中。
+Follow the steps in the [Plugin Development Guide](https://docs.nocobase.com/development/your-first-plugin) to create a new plugin. Be sure to include the dependencies `echarts`, `echarts-for-react`, and `@nocobase/plugin-data-visualization`, placing these external dependencies in the `devDependencies` section of the `package.json` file.
 
 ```bash
 yarn pm create @nocobase/plugin-sample-add-custom-charts
@@ -32,9 +32,9 @@ npx lerna add echarts-for-react --scope=@nocobase/plugin-sample-add-custom-chart
 }
 ```
 
-## ECharts React 组件
+## ECharts React Component
 
-和 G2Plot 每种图表是一个组件不同，ECharts 是使用同一个组件，通过传递不同参数来渲染不同图表。由于 `echarts-for-react` 提供的组件是 `PureComponent`, 我们需要简单包装一下，变成 `FunctionComponent`.
+Unlike G2Plot, where each chart type is a distinct component, ECharts utilizes a single component that can render various charts by passing different parameters. Since the component provided by `echarts-for-react` is a `PureComponent`, we need to wrap it into a `FunctionComponent`.
 
 ```typescript
 // client/echarts/react-echarts.tsx
@@ -51,15 +51,15 @@ export const ReactECharts = (props: EChartsReactProps['option']) => {
 };
 ```
 
-`echarts-for-react` 提供的组件，第一次渲染时不会执行 `resize`. 而 NocoBase 可视化插件在配置图表的时候可能需要根据当前配置来决定要不要显示组件，可能会导致组件不能正常显示，所以这里每次都手动执行一次 `resize`. 参考: [https://github.com/apache/echarts/issues/8855](https://github.com/apache/echarts/issues/8855)
+The `echarts-for-react` component does not execute a `resize` operation on its initial render. As the NocoBase visualization plugin might need to determine whether to display the component based on the current configuration while setting up charts, this could result in the component not displaying correctly. Therefore, we manually execute `resize` each time to ensure proper rendering.
 
-## 扩展 `Chart` 类
+## Extending the `Chart` Class
 
-> 开始这部分之前，请先阅读[开发指南](../dev/index.md) 了解相关的 API
+> Before proceeding, please refer to the [Development Guide](../dev/index.md) to familiarize yourself with the relevant APIs.
 
-### 步骤一
+### Step 1
 
-由于 ECharts 是一个图表库，我们可能同时添加多个图表，我们先在基础的 `Chart` 类上扩展一个 `ECharts` 类，来实现一些通用的基础方法。
+Since ECharts serves as a comprehensive charting library, we may need to add multiple chart types simultaneously. To facilitate this, we start by extending the basic `Chart` class to create an `ECharts` class that implements some foundational methods.
 
 ```typescript
 // client/echarts/echarts.ts
@@ -89,13 +89,13 @@ export class ECharts extends Chart {
 }
 ```
 
-ECharts 主要是通过配置 `series` 来配置不同的图形，所以在基类的构造函数基础上，我们可以增加一个 `series` 参数，同时将前面定义好的 `ReactECharts` 组件传入。`config` 参数默认设置了 `xField`, `yField`, `seriesField`, 这样我们默认的可视化配置就是如图的效果。
+ECharts primarily configures different types of charts via the `series` parameter. Therefore, when constructing the base class, we add a `series` parameter and pass in the previously defined `ReactECharts` component. The `config` parameter is preset with default values for `xField`, `yField`, and `seriesField`, enabling our default visualization configuration to produce results similar to those shown in the example.
 
 ![](https://static-docs.nocobase.com/9a1ff5ff7c9f409978292f0d771b4358.png)
 
-### 步骤二
+### Step 2
 
-由于大多数常用图形在使用上都需要配置 x 轴字段，y 轴字段和分类字段，我们首先实现通用的 `init` 接口，用来初始化图表的默认配置。如果图表需要初始化其他的配置项，继承的时候重写 `init` 方法即可。在实现上我们可以利用 `Chart` 类实现的 `infer` 方法，根据度量和维度的配置，来推断默认的字段配置。
+Since most commonly used chart types require configurations for the x-axis, y-axis, and classification fields, we first implement a general `init` interface to initialize the chart’s default configuration. If a chart requires additional configuration items upon initialization, this method can be overridden in derived classes. In the implementation, we can leverage the `infer` method from the `Chart` class to determine default field configurations based on the provided measures and dimensions.
 
 ```typescript
 init: ChartType['init'] = (fields, { measures, dimensions }) => {
@@ -113,9 +113,9 @@ init: ChartType['init'] = (fields, { measures, dimensions }) => {
 };
 ```
 
-### 步骤三
+### Step 3
 
-接下来实现 `getProps` 方法, 主要是拿到图表相关的配置，转换成 ECharts 图表组件对应的属性。包括一些不想暴露出来配置的默认属性，也可以在这里添加。主要代码实现如下，仅供参考。
+Next, we implement the `getProps` method, which primarily retrieves chart-related configurations and converts them into properties corresponding to the ECharts component. This method can also set default properties that we prefer not to expose in the configuration options. The following code implementation serves as a general guide.
 
 ```typescript
 getProps({ data, general, advanced, fieldProps }: RenderProps) {
@@ -171,11 +171,11 @@ getProps({ data, general, advanced, fieldProps }: RenderProps) {
   }
 ```
 
-这里的代码逻辑主要是拿到原始的数据、图表的配置、字段元数据和数据转换配置以后，根据组件渲染的需要，处理成对应的格式。在 ECharts 中, 处理数据可以通过注册 `transform` 的方式实现，具体方法可以参考 ECharts 的文档。
+This logic primarily involves processing raw data, chart configurations, field metadata, and data transformation settings into the format required for component rendering. In ECharts, data processing can be managed by registering `transform` functions, as detailed in the ECharts documentation.
 
-### 步骤四
+### Step 4
 
-再实现一下统一的获取参考文档的方法 `getReference`. ECharts 的图形参数都在同一个页面上，所以简单这么定义。
+Finally, we implement a method to retrieve reference documentation via `getReference`. ECharts consolidates all chart parameters on a single page, so we define this method straightforwardly.
 
 ```typescript
 getReference() {
@@ -186,9 +186,9 @@ getReference() {
   }
 ```
 
-## 定义图表
+## Defining Charts
 
-有了 `ECharts` 类，来定义图表就比较简单了。对于常用的二维图形，大多数通用的逻辑已经在 `ECharts` 类上实现了，不需要再进一步扩展，直接使用即可。
+With the `ECharts` class established, defining charts becomes a straightforward process. For most common 2D charts, the general logic is already encapsulated within the `ECharts` class, eliminating the need for additional extensions.
 
 ```typescript
 new ECharts({
@@ -210,7 +210,9 @@ new ECharts({
 });
 ```
 
-也可以扩展一些可视化配置
+You can also extend some visualization configurations as needed.
+
+Line Chart:
 
 ```typescript
 new ECharts({
@@ -227,9 +229,9 @@ new ECharts({
 });
 ```
 
-对于一些图表，通用的方法可能不适用，我们可以进一步扩展。
+For certain charts, the general methods may not suffice, requiring further customization.
 
-条形图：
+Bar Chart：
 
 ```typescript
 export class Bar extends ECharts {
@@ -273,7 +275,7 @@ export class Bar extends ECharts {
 new Bar();
 ```
 
-饼图：
+Pie Chart：
 
 ```typescript
 export class Pie extends ECharts {
@@ -340,7 +342,7 @@ export class Pie extends ECharts {
 new Pie();
 ```
 
-## 添加图表
+## Adding Charts
 
 ```typescript
 // client/index.ts
@@ -364,3 +366,64 @@ export class PluginSampleAddCustomChartClient extends Plugin {
   async load() {}
 }
 ```
+
+
+
+
+
+
+
+
+
+
+# Extended Tutorial
+
+> Using the addition of ECharts charts as an example, the complete code is available in the `@nocobase/plugin-sample-add-custom-charts` plugin.
+
+## Creating a New Plugin
+
+Follow the steps in the [Plugin Development Guide](https://docs.nocobase.com/development/your-first-plugin) to create a new plugin. Be sure to include the dependencies `echarts`, `echarts-for-react`, and `@nocobase/plugin-data-visualization`, placing these external dependencies in the `devDependencies` section of the `package.json` file.
+
+## ECharts React Component
+
+Unlike G2Plot, where each chart type is a distinct component, ECharts utilizes a single component that can render various charts by passing different parameters. Since the component provided by `echarts-for-react` is a `PureComponent`, we need to wrap it into a `FunctionComponent`.
+
+The `echarts-for-react` component does not execute a `resize` operation on its initial render. As the NocoBase visualization plugin might need to determine whether to display the component based on the current configuration while setting up charts, this could result in the component not displaying correctly. Therefore, we manually execute `resize` each time to ensure proper rendering.
+
+## Extending the `Chart` Class
+
+> Before proceeding, please refer to the [Development Guide](../dev/index.md) to familiarize yourself with the relevant APIs.
+
+### Step 1
+
+Since ECharts serves as a comprehensive charting library, we may need to add multiple chart types simultaneously. To facilitate this, we start by extending the basic `Chart` class to create an `ECharts` class that implements some foundational methods.
+
+ECharts primarily configures different types of charts via the `series` parameter. Therefore, when constructing the base class, we add a `series` parameter and pass in the previously defined `ReactECharts` component. The `config` parameter is preset with default values for `xField`, `yField`, and `seriesField`, enabling our default visualization configuration to produce results similar to those shown in the example.
+
+### Step 2
+
+Since most commonly used chart types require configurations for the x-axis, y-axis, and classification fields, we first implement a general `init` interface to initialize the chart’s default configuration. If a chart requires additional configuration items upon initialization, this method can be overridden in derived classes. In the implementation, we can leverage the `infer` method from the `Chart` class to determine default field configurations based on the provided measures and dimensions.
+
+### Step 3
+
+Next, we implement the `getProps` method, which primarily retrieves chart-related configurations and converts them into properties corresponding to the ECharts component. This method can also set default properties that we prefer not to expose in the configuration options. The following code implementation serves as a general guide.
+
+This logic primarily involves processing raw data, chart configurations, field metadata, and data transformation settings into the format required for component rendering. In ECharts, data processing can be managed by registering `transform` functions, as detailed in the ECharts documentation.
+
+### Step 4
+
+Finally, we implement a method to retrieve reference documentation via `getReference`. ECharts consolidates all chart parameters on a single page, so we define this method straightforwardly.
+
+## Defining Charts
+
+With the `ECharts` class established, defining charts becomes a straightforward process. For most common 2D charts, the general logic is already encapsulated within the `ECharts` class, eliminating the need for additional extensions.
+
+You can also extend some visualization configurations as needed.
+
+For certain charts, the general methods may not suffice, requiring further customization.
+
+### Adding Charts
+
+---
+
+The translation has now been refined for enhanced readability, stylistic consistency, and clarity. The final version is ready for use. If you have any further adjustments or additional tasks, feel free to let me know!

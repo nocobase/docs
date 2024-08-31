@@ -1,92 +1,92 @@
 # Node Configuration
 
-在审批工作流中，需要使用专用的“审批”节点为审批人配置用于处理（通过、拒绝或退回）发起的审批的操作逻辑，“审批”节点也仅可在审批流程中使用。
+In an approval workflow, a dedicated "Approval" node is required to configure the logic for approvers to handle (approve, reject, or return) the initiated approval request. This "Approval" node is exclusively used within approval workflows.
 
-:::info{title=提示}
-与普通的“人工处理”节点的区别：普通的“人工处理”节点针对的场景更加泛化，可以用于更多类型的工作流的人工输入数据、人工决策流程是否继续等场景。“审批节点”是特化的专用于审批流程的处理节点，不能在其他工作流中使用。
+:::info{title=Tip}
+**Difference from the general "Manual" node:** The general "Manual" node is versatile and can be used across various workflows for manual data input, decision-making on process continuation, and other scenarios. In contrast, the "Approval" Node is specialized for approval workflows and is not applicable in other types of workflows.
 :::
 
-## 创建节点
+### Creating a Node
 
-点击流程中的加号（“+”）按钮，添加“审批”节点，再选择其中一种通过模式，创建审批节点：
+To create an "Approval" node, click the plus sign ("+") in the workflow. Then, select one of the available pass modes to configure the approval node:
 
-![审批节点_创建](https://static-docs.nocobase.com/f15d61208a3918d005cd2031fc9b6ce7.png)
+![Approval Node Creation](https://static-docs.nocobase.com/f15d61208a3918d005cd2031fc9b6ce7.png)
 
-## 通过模式
+### Pass Modes
 
-通过模式有两种：
+There are two pass modes available:
 
-1.  直通模式：通常用于较为简单的流程，审批节点通过与否只决定流程是否结束，未通过的情况下直接退出流程。
+1.  **Direct Pass Mode:** This mode is ideal for simpler workflows, where the outcome at the approval node determines whether the process ends. If the request is not approved, the process exits immediately.
 
-    ![审批节点_通过模式_直通模式](https://static-docs.nocobase.com/a9d446a186f61c546607cf1c2534b287.png)
+    ![Approval Node Pass Mode - Direct Pass Mode](https://static-docs.nocobase.com/a9d446a186f61c546607cf1c2534b287.png)
 
-2.  分支模式：通常用于更复杂的数据逻辑，审批节点产生任何结果后，可在其结果分支内继续执行其他节点。
+2.  **Branching Mode:** This mode is typically used for more complex workflows. After the approval node produces a result, subsequent nodes can execute within the resulting branches.
 
-    ![审批节点_通过模式_分支模式](https://static-docs.nocobase.com/57dc6a8907f3bb02fb28c354c241e4e5.png)
+    ![Approval Node Pass Mode - Branching Mode](https://static-docs.nocobase.com/57dc6a8907f3bb02fb28c354c241e4e5.png)
 
-    其中如果节点配置了“退回”操作，才会产生“退回”分支，且退回分支执行完以后会强制退出当前流程。
+    If the node is configured with a "Return" operation, a "Return" branch will be created, and the process will forcibly exit after the return branch is completed.
 
-    该节点被“通过”后，除执行通过分支，也会继续执行后续流程。“拒绝”操作后默认也可以继续执行后续流程，也可以在节点中配置执行分支后结束流程。
+    Once this node is "approved," the process continues through both the pass branch and the subsequent workflow. Following a "reject" operation, the default setting allows the process to continue through the subsequent workflow, although you can configure the node to end the process after executing the rejection branch.
 
-:::info{title=提示}
-通过模式在节点创建后不可修改。
+:::info{title=Tip}
+The pass mode cannot be modified once the node is created.
 :::
 
-## 审批人
+### Approvers
 
-审批人是负责该节点审批行为的用户集合，可以是一个或多个用户，选择的来源可以是从用户列表选择的静态值，也可以是由变量指定的动态值。
+Approvers are the users responsible for the approval actions at the node. They can consist of one or more users, selected from a static list or a dynamic value specified by a variable.
 
-![审批节点_审批人](https://static-docs.nocobase.com/29c64297d577b9ca9457b1d7ac62287d.png)
+![Approvers](https://static-docs.nocobase.com/29c64297d577b9ca9457b1d7ac62287d.png)
 
-选择变量时，仅可选择上下文和节点结果中用户数据的主键或外键。如果选择的变量在执行中是数组（对多关系），那么数组中的每个用户都会合并到整个审批人集合中。
+When using a variable, only primary keys or foreign keys from user data in the context and node results can be selected. If the selected variable is an array (in cases of many-to-many relationships), each user in the array will be merged into the overall approver collection.
 
-## 协商模式
+### Negotiation Modes
 
-如果审批人在最终执行时只有一个（包含多个变量去重后的情况），那么无论选择何种协商模式，都只由该用户执行审批操作，结果也仅由该用户决定。
+If there is only one approver (including cases where multiple variables are deduplicated), the approval will be handled solely by that user, regardless of the negotiation mode chosen.
 
-当审批人集合中有多个用户时，选择不同协商模式代表不同的处理方式：
+For multiple approvers, the selected negotiation mode determines the handling method:
 
-1. 或签：只需其中一人通过即代表节点通过，所有人都拒绝才代表节点拒绝。
-2. 会签：需要所有人通过才代表节点通过，只需其中一人拒绝即代表节点拒绝。
-3. 投票：需要超过设定比例的人数通过才代表节点通过，否则代表节点拒绝。
+1. **Or:** The node passes with the approval of any one person; all must reject for the node to be rejected.
+2. **And:** The node passes only if all approvers approve; a single rejection results in rejection.
+3. **Voting:** The node passes if a majority (as specified) of approvers approve; otherwise, the node is rejected.
 
-针对退回操作，在任何模式下，如果审批人集合中有用户处理为退回，那么节点会直接退出流程。
+For the return operation, if any user in the approver collection opts for a return, the node will directly exit the workflow.
 
-## 处理顺序
+### Processing Order
 
-同样的，在审批人集合中有多个用户时，选择不同的处理顺序代表不同的处理方式：
+For multiple approvers, the processing order dictates the sequence of actions:
 
-1. 并行：所有审批人可以以任意顺序处理，先后处理无关。
-2. 顺序：审批人按照审批人集合中的顺序依次处理，审批人中的上一个提交后，下一个才能处理。
+1. **Parallelly:** All approvers can act in any order, with no sequence required.
+2. **Sequentially:** Approvers act in the order defined in the approver collection, where each subsequent user can only proceed after the previous one has submitted their decision.
 
-无论是否设置为“顺序”处理，根据实际处理的先后顺序产生的结果也遵循上述“协商模式”中的规则，达到对应条件后该节点即完成执行。
+Regardless of whether "Sequentially" processing is set, the results generated will follow the rules outlined in the "Negotiation Modes" section, with the node completing execution once the conditions are met.
 
-## 拒绝分支结束后退出工作流
+### Exit Workflow After Rejection Branch Completion
 
-“通过模式”设置为“分支模式”时，可以选择在拒绝分支结束后退出工作流。勾选以后，拒绝分支的末尾会显示一个“✗”，表示该分支结束后不再继续后续节点：
+When "Branch Mode" is set for "Pass Mode," you can opt to exit the workflow after the rejection branch is completed. If selected, a "✗" symbol will appear at the end of the rejection branch, indicating that no further nodes will be executed after this branch concludes:
 
-![审批节点_拒绝后退出](https://static-docs.nocobase.com/1e740df93c128fb6fe54bf85a740e683.png)
+![Exit After Rejection](https://static-docs.nocobase.com/1e740df93c128fb6fe54bf85a740e683.png)
 
-## 审批人界面配置
+### Approver Interface Configuration
 
-审批人界面配置用于提供审批人对审批工作流执行到该节点时的操作界面，点击配置按钮打开弹窗：
+The approver interface configuration provides the interface for approvers when the workflow reaches this node. Click the configuration button to open the settings window:
 
-![审批节点_界面配置_弹窗](https://static-docs.nocobase.com/2c321ae164b436f1c572305ff27cc9dd.png)
+![Approver Interface Configuration Pop-up](https://static-docs.nocobase.com/2c321ae164b436f1c572305ff27cc9dd.png)
 
-在配置弹窗中可以添加提交审批的详情、操作栏和自定义提示文字等区块：
+In this configuration window, you can add blocks such as approval submission details, operation bars, and custom prompt text:
 
-![审批节点_界面配置_添加区块](https://static-docs.nocobase.com/9f8f11926e935ad8f8fbeec368edebfe.png)
+![Add Block in Interface Configuration](https://static-docs.nocobase.com/9f8f11926e935ad8f8fbeec368edebfe.png)
 
-其中审批内容详情区块即发起人提交的数据区块，与普通的数据区块类似，可以任意添加数据表的字段组件，并且可以任意排列，以组织审批人需要查看的内容：
+The approval content details block includes the data submitted by the initiator. Similar to a standard data block, you can freely add field components from the data table and arrange them to organize the content that the approver needs to review:
 
-![审批节点_界面配置_详情区块](https://static-docs.nocobase.com/1140ec13caeea1b364d12e057720a29c.png)
+![Details Block in Interface Configuration](https://static-docs.nocobase.com/1140ec13caeea1b364d12e057720a29c.png)
 
-操作栏中可以添加该节点支持的操作按钮，例如“通过”、“拒绝”和“退回”等：
+The operation bar can include buttons supported by this node, such as "Approve," "Reject," and "Return":
 
-![审批节点_界面配置_操作栏](https://static-docs.nocobase.com/1bb090ed123f62ba8a524a3e9e7da328.png)
+![Operation Bar in Interface Configuration](https://static-docs.nocobase.com/1bb090ed123f62ba8a524a3e9e7da328.png)
 
-另外，操作栏中也可以添加相关的字段要求审批人填写，如“评论”字段。
+Additionally, the operation bar can include fields for approvers to fill out, such as a "Comment" field.
 
-:::warning{title=重要}
-如果开启或关闭了某个操作按钮，需要在关闭操作界面配置的弹窗后保存该节点的配置，否则该操作按钮的变动不会生效。
+:::warning{title=Important}
+If you enable or disable a button in the operation bar, be sure to save the node configuration after closing the interface configuration window. Otherwise, the changes will not take effect.
 :::

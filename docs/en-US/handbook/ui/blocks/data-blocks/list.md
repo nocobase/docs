@@ -1,87 +1,87 @@
-# 列表区块
+# List Block
 
-## 介绍
+## Introduction
 
-列表区块以列表形式展示数据，适用于任务列表、新闻资讯、产品信息等数据展示场景。
+The list block displays data in a list format, suitable for scenarios such as task lists, news updates, product information, and other data presentation needs.
 
-## 添加区块
+## Adding a Block
 
- <video width="100%" height="440" controls>
+<video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240417224417.mp4" type="video/mp4">
 </video>
 
-## 区块配置项
+## Block Configuration Options
 
 ![20240417224539](https://static-docs.nocobase.com/20240417224539.png)
 
-### 设置数据范围
+### Setting Data Scope
 
-如图：默认筛选订单状态为退款的单据
+As shown in the image: The default filter selects orders with a "Refunded" status.
 
 ![20240417224701](https://static-docs.nocobase.com/20240417224701.png)
 
-更多内容参考 [设置数据范围](/handbook/ui/blocks/block-settings/data-scope)
+For more details, refer to [Setting Data Scope](/handbook/ui/blocks/block-settings/data-scope).
 
-### 设置排序规则
+### Setting Sorting Rules
 
-如图：按订单金额大小倒序排序
+As shown in the image: Orders are sorted in descending order by order amount.
 
 ![20240417225302](https://static-docs.nocobase.com/20240417225302.png)
 
-更多内容参考 [设置排序规则](/handbook/ui/blocks/block-settings/sorting-rule)
+For more details, refer to [Setting Sorting Rules](/handbook/ui/blocks/block-settings/sorting-rule).
 
-### 设置数据加载方式
+### Setting Data Loading Method
 
-通常与筛选区块搭配使用，实现筛选时才加载数据
+Typically used in conjunction with the filter block to load data only when filtered.
 
- <video width="100%" height="440" controls>
+<video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240417225539.mp4" type="video/mp4">
 </video>
 
-更多内容参考 [设置数据加载方式](/handbook/ui/blocks/block-settings/loading-mode)
+For more details, refer to [Setting Data Loading Method](/handbook/ui/blocks/block-settings/loading-mode).
 
-### 设置区块高度
+### Setting Block Height
 
-示例：设置订单列表区块高度为「全高」模式。
+Example: Set the height of the order list block to "Full Height" mode.
 
 ![20240604233102](https://static-docs.nocobase.com/20240604233102.gif)
 
-更多内容参考 [区块高度](/handbook/ui/blocks/block-settings/block-height)
+For more details, refer to [Block Height](/handbook/ui/blocks/block-settings/block-height).
 
-- [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
-- [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
+- [Edit Block Title](/handbook/ui/blocks/block-settings/block-title)
+- [Save as Block Template](/handbook/ui/blocks/block-settings/block-template)
 
-## 配置字段
+## Configuring Fields
 
-### 本表字段
+### Main Table Fields
 
 ![20240417230027](https://static-docs.nocobase.com/20240417230027.png)
 
-### 关系表字段
+### Related Table Fields
 
 ![20240417230115](https://static-docs.nocobase.com/20240417230115.png)
 
-列表字段配置项可参考 [详情字段](/handbook/ui/fields/generic/detail-form-item)
+For more details on configuring list fields, refer to [Detail Fields](/handbook/ui/fields/generic/detail-form-item).
 
-## 配置操作
+## Configuring Actions
 
-### 全局操作
+### Global Actions
 
 ![20240421115811](https://static-docs.nocobase.com/20240421115811.png)
 
-- [筛选](/handbook/ui/actions/types/filter)
-- [添加](/handbook/ui/actions/types/add-new)
-- [刷新](/handbook/ui/actions/types/refresh)
-- [导入](/handbook/action-import)
-- [导出](/handbook/action-export)
+- [Filter](/handbook/ui/actions/types/filter)
+- [Add New](/handbook/ui/actions/types/add-new)
+- [Refresh](/handbook/ui/actions/types/refresh)
+- [Import](/handbook/action-import)
+- [Export](/handbook/action-export)
 
-### 行操作
+### Row Actions
 
 ![20240418114424](https://static-docs.nocobase.com/20240418114424.png)
 
-- [查看](/handbook/ui/actions/types/view)
-- [编辑](/handbook/ui/actions/types/edit)
-- [删除](/handbook/ui/actions/types/delete)
-- [弹窗](/handbook/ui/actions/types/pop-up)
-- [更新记录](/handbook/ui/actions/types/update-record)
-- [自定义请求](/handbook/action-custom-request)
+- [View](/handbook/ui/actions/types/view)
+- [Edit](/handbook/ui/actions/types/edit)
+- [Delete](/handbook/ui/actions/types/delete)
+- [Pop-Up](/handbook/ui/actions/types/pop-up)
+- [Update Record](/handbook/ui/actions/types/update-record)
+- [Custom Request](/handbook/action-custom-request)

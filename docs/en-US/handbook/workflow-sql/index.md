@@ -1,33 +1,33 @@
-# SQL 操作
+### SQL Actions
 
-在一些特殊场景里，上面简单的数据表操作节点可能无法复杂的操作，则可以直接使用 SQL 节点，使数据库直接执行复杂的 SQL 语句进行数据操作。
+In certain scenarios where the standard data table operation nodes fall short for more complex tasks, you can directly employ the SQL Action node to execute sophisticated SQL queries within the database.
 
-与在应用外部直接连接数据库进行 SQL 操作的区别是，在工作流内可以使用流程上下文的变量，作为 SQL 语句中的部分参数。
+Unlike executing SQL operations by connecting to the database externally, within the workflow, you can leverage variables from the workflow context as parameters within your SQL statements.
 
-## FAQ
+## Frequently Asked Questions
 
-### SQL 节点的结果如何使用？
+### How can the results of an SQL Action node be utilized?
 
-如果使用了 `SELECT` 语句，查询结果会以 Seqeulize 的 JSON 格式保存在节点中，可以通过 [JSON-query](/handbook/workflow-json-query) 插件进行解析并使用。
+When using a `SELECT` statement, the query results are stored in the node in Sequelize's JSON format. You can parse and utilize these results through the [JSON-query](/handbook/workflow-json-query) plugin.
 
-### SQL 操作是否会触发数据表事件？
+### Will SQL actions trigger table events?
 
-**不会**。SQL 操作是直接将 SQL 语句发送到数据库进行处理，相关的 `CREATE` / `UPDATE` / `DELETE` 操作都发生在数据库中，而数据表事件发生在 Node.js 的应用层（ORM 处理），所以不会触发数据表的事件。
+**No, they won’t.** SQL actions directly execute SQL commands on the database. Actions such as `CREATE`, `UPDATE`, and `DELETE` occur in the database, while table events are managed at the Node.js application layer (ORM processing). As a result, these operations do not trigger table events.
 
-## 安装
+## Installation
 
-内置插件，无需安装。
+This plugin is built-in, so no installation is necessary.
 
-## 使用手册
+## User Guide
 
-### 创建节点
+### Creating a Node
 
-在工作流配置界面中，点击流程中的加号（“+”）按钮，添加“SQL 操作”节点：
+In the workflow configuration interface, click the plus sign (“+”) within the flow to add an "SQL Action" node:
 
-![SQL 操作_添加](https://static-docs.nocobase.com/0ce40a226d7a5bf3717813e27da40e62.png)
+![Adding SQL Actions](https://static-docs.nocobase.com/0ce40a226d7a5bf3717813e27da40e62.png)
 
-### 节点配置
+### Configuring the Node
 
-通过编辑框右上角的变量按钮插入需要的变量，会在执行前通过文本替换为对应变量的值：
+Insert the necessary variables by clicking the variable button in the top right corner of the editor box. These variables will be replaced with the appropriate values before execution:
 
-![SQL节点_节点配置](https://static-docs.nocobase.com/98611dc13bcda04348bd0856561a7b04.png)
+![SQL Node Configuration](https://static-docs.nocobase.com/98611dc13bcda04348bd0856561a7b04.png)

@@ -1,11 +1,11 @@
 # Action Configuration
 
-在配置好一个审批工作流并启用后，可以将该工作流绑定在对应的数据表的表单提交按钮上，以供用户在提交的时候发起审批：
+After configuring and activating an approval workflow, you can link it to the submit button of the relevant data table form. This setup allows users to automatically initiate the approval process when they submit the form:
 
-![发起审批_绑定工作流](https://static-docs.nocobase.com/2872ff108c61d7bf6d0bfb19886774c6.png)
+![Initiate Approval_Bind Workflow](https://static-docs.nocobase.com/2872ff108c61d7bf6d0bfb19886774c6.png)
 
-绑定工作流后，用户在提交当前表单时，即发起审批。
+Once the workflow is linked, users will trigger the approval process upon submitting the form.
 
-:::info{title=提示}
-发起审批的按钮目前仅支持使用新增或更新表单中的“提交”（或“保存”）按钮，不支持使用“提交至工作流”按钮（该按钮仅可绑定“操作后事件”）。
+:::info{title=Tip}
+The approval initiation button currently only supports the "Submit" (or "Save") button in "Add" or "Update" forms. It does not support the "Submit to Workflow" button (which can only be linked to "Post-action event").
 :::

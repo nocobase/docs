@@ -1,21 +1,21 @@
 # Example
 
-结合上面基本的使用说明，我们以一个“订单提交”场景为例，假设我们需要在用户提交订单时，对用户选择的所有产品库存进行校验，如果任意一个所选产品库存不足，则拦截该订单的提交，并返回相应的提示信息；循环检测每个产品直到所有产品的库存都充足，则通过，为用户生成订单数据。
+Building on the basic instructions provided earlier, let's explore an example scenario of "Order Submission." In this scenario, we need to verify the stock levels of all products selected by the user at the time of order submission. If any product has insufficient stock, the order submission will be blocked, and a relevant notification will be displayed. The system will iterate through each product, and if all products have sufficient stock, the order data will be generated successfully.
 
-其他步骤与说明中的相同，但由于一个订单要针对多个商品，除了在数据建模时增加“订单” <-- m:1 -- “订单详情” -- 1:m --> “产品” 的多对多关系外，还需要在“操作前事件”工作流中增加一个“循环”节点，用于循环检测每个产品的库存是否充足：
+The other steps follow the same procedure outlined in the instructions. However, since an order may include multiple products, in addition to establishing a many-to-many relationship between "Order" <-- m:1 -- "Details" -- 1:m --> "Product" during data modeling, it's necessary to introduce a "Loop" node in the "Pre-Action Event" workflow. This loop will be used to check the stock level of each product:
 
-![示例_循环检测流程](https://static-docs.nocobase.com/8307de47d5629595ab6cf00f8aa898e3.png)
+![Example_Loop Check Process](https://static-docs.nocobase.com/8307de47d5629595ab6cf00f8aa898e3.png)
 
-循环的对象选择为提交的订单数据中的“订单详情”数组：
+The loop object should be set to the "Details" array within the submitted order data:
 
-![示例_循环对象配置](https://static-docs.nocobase.com/ed662b54cc1f5425e2b472053f89baba.png)
+![Example_Loop Object Configuration](https://static-docs.nocobase.com/ed662b54cc1f5425e2b472053f89baba.png)
 
-循环流程中的条件判断节点用于判断当前循环产品对象的库存是否充足：
+Within the loop, a condition check node is employed to determine whether the stock of the current product is sufficient:
 
-![示例_循环中的条件判断](https://static-docs.nocobase.com/4af91112934b0a04a4ce55e657c0833b.png)
+![Example_Condition Check in Loop](https://static-docs.nocobase.com/4af91112934b0a04a4ce55e657c0833b.png)
 
-其他配置与基本使用中的配置相同，最终提交订单时，如果任意一个产品库存不足，则会拦截订单提交，并返回相应的提示信息。测试时也尝试在一个订单内提交多个产品，其中一个产品库存不足，另一个产品库存充足，可以看到返回的响应消息：
+The other configurations remain consistent with those in the basic usage instructions. Upon order submission, if any product's stock is insufficient, the order will be blocked, and a corresponding notification will be returned. During testing, you can attempt to submit multiple products in one order, with one product having insufficient stock and another having sufficient stock. The response message you receive will look like this:
 
-![示例_提交后的响应消息](https://static-docs.nocobase.com/dd9e81084aa237bda0241d399ac19270.png)
+![Example_Submission Response Message](https://static-docs.nocobase.com/dd9e81084aa237bda0241d399ac19270.png)
 
-可以看到，响应消息中并未提示第一个产品“iPhone 15 pro”的库存不足，而只提示了第二个产品“iPhone 14 pro”的库存不足，这是因为在循环中，第一个产品库存充足，所以不会拦截，而第二个产品库存不足，所以拦截了订单提交。
+As illustrated, the response message does not flag the insufficient stock of the first product, "iPhone 15 Pro," but it does indicate the insufficient stock of the second product, "iPhone 14 Pro." This happens because the first product's stock was adequate, allowing the submission to proceed, while the second product's insufficient stock led to the order being blocked.

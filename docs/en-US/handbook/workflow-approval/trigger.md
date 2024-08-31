@@ -1,53 +1,55 @@
 # Trigger Configuration
 
-## 创建流程
+#### Creating a Workflow
 
-创建工作流时选择“审批”类型，即可创建审批流程：
+To set up an approval workflow, start by selecting the "Approval" type during the workflow creation process:
 
-![审批触发器_创建审批流程](https://static-docs.nocobase.com/f52dda854f46a669e0c1c7fb487a17ea.png)
+![Approval Trigger_Create Approval Workflow](https://static-docs.nocobase.com/f52dda854f46a669e0c1c7fb487a17ea.png)
 
-之后在工作流配置界面中点击触发器打开弹窗进行更多的配置。
+Next, in the workflow configuration interface, click on the trigger to open a popup window for additional configuration options.
 
-## 绑定数据表
+#### Binding Data Tables
 
-NocoBase 的审批插件基于灵活性的设计，可以与任意自定义数据表配合使用，即审批配置无需重复配置数据模型，而是直接复用已创建的数据表。所以在进入触发器配置后，首先需要选择数据表，以决定该流程由哪个数据表的数据创建或更新时触发：
+NocoBase’s approval plugin is designed with flexibility in mind, allowing it to be integrated with any custom data collection. This means there’s no need to repeatedly configure the data model for approval processes. Instead, you can reuse existing data collections. When configuring the trigger, the first step is to select a data table to determine which data entries will trigger the workflow upon creation or update:
 
-![审批触发器_触发器配置_选择数据表](https://static-docs.nocobase.com/8732a4419b1e28d2752b8f601132c82d.png)
+![Approval Trigger_Trigger Configuration_Select Data Table](https://static-docs.nocobase.com/8732a4419b1e28d2752b8f601132c82d.png)
 
-然后在对应数据表的创建（或编辑）数据的表单中将该工作流绑定到提交按钮上：
+After selecting the data table, bind the workflow to the submit button in the form used for creating or editing data within the chosen table:
 
-![发起审批_绑定工作流](https://static-docs.nocobase.com/2872ff108c61d7bf6d0bfb19886774c6.png)
+![Initiate Approval_Bind Workflow](https://static-docs.nocobase.com/2872ff108c61d7bf6d0bfb19886774c6.png)
 
-之后用户对该表单的提交即可触发对应的审批工作流，提交的数据除了保存在对应的数据表中，也会被快照至审批流中，供后续审批人员查阅使用。
+Once the form is submitted, the corresponding approval workflow will be triggered. The submitted data will be saved in the specified data table and also snapshotted within the approval flow for future review by approvers.
 
-## 发起审批的位置
+#### Where to Initiate an Approval
 
-在用户端界面有两个位置可以发起审批：一是通过已绑定的数据表的创建（或更新）数据表单提交发起，该位置通常只针对单一的审批流程发起；二是可以集中地从审批中心区块发起，通常针对于中心化管理的全局流程。
+There are two locations within the user interface where approvals can be initiated:
+1. Through the submission of a data collection form that has been bound to an approval process, typically used for initiating a single approval process.
+2. Via the Approval block, which allows for the centralized initiation of global processes.
 
-![审批触发器_触发器配置_选择发起审批的位置](https://static-docs.nocobase.com/1a193ec0acfa6cde221c6e5d49a50b3e.png)
+![Approval Trigger_Trigger Configuration_Where to Initiate Approval](https://static-docs.nocobase.com/1a193ec0acfa6cde221c6e5d49a50b3e.png)
 
-勾选“在数据区块和审批中心都可以发起和审批”后，该流程会在审批中心区块的“发起”按钮下拉菜单中出现，用户可以集中在该位置发起不同的审批。
+By selecting "Initiate and approve in both data blocks and global approval blocks" the process will appear in the “Initiations” dropdown menu within the Approval Center block, enabling users to manage various approvals from a central location.
 
-## 撤回
+#### Withdrawal
 
-如果一个审批流程允许发起人撤回，可以勾选“允许撤回”的选项：
+If the approval process permits the initiator to withdraw the request, select the "Allowed to be withdrawn" option:
 
-![审批触发器_触发器配置_允许撤回](https://static-docs.nocobase.com/09185712fc55bc536892136ce0ade4a8.png)
+![Approval Trigger_Trigger Configuration_Allow Withdrawal](https://static-docs.nocobase.com/09185712fc55bc536892136ce0ade4a8.png)
 
-勾选后该流程发起的审批在任何审批人处理之前均可被发起人撤回，但在任何后续审批节点配置的审批人处理过后，将不再可被撤回。
+When this option is selected, the initiator can withdraw the approval request at any time before any approver has processed it. However, once any subsequent approval nodes have been processed, the approval can no longer be withdrawn.
 
-## 发起审批的表单界面配置
+#### Configuring the Form Interface for Initiating Approvals
 
-最后需要配置发起人的表单界面，该界面将用于从审批中心区块发起时和用户撤回后重新发起时的提交操作。点击配置按钮打开弹窗：
+Finally, you’ll need to configure the form interface for the initiator. This interface is used when initiating an approval from the Approval Center block or when re-initiating after a withdrawal. Click the configuration button to open a popup window:
 
-![审批触发器_触发器配置_发起人表单](https://static-docs.nocobase.com/ca8b7e362d912138cf7d73bb60b37ac1.png)
+![Approval Trigger_Trigger Configuration_Initiator Form](https://static-docs.nocobase.com/ca8b7e362d912138cf7d73bb60b37ac1.png)
 
-可以为发起人的界面添加基于绑定的数据表的填写表单，或用以提示和引导的说明文案（Markdown）。其中表单是必须添加的，否则发起人进入到该界面后将无法操作。
+You can add a form based on the bound data table or include explanatory text (Markdown) to guide the initiator. A form is required; otherwise, the initiator will not be able to proceed upon entering this interface.
 
-添加表单区块后，和普通表单配置界面一样，可以添加对应数据表的字段组件，并且可以任意排列，以组织表单需要填写的内容：
+After adding the form block, you can configure the corresponding data table's field components and arrange them as needed to organize the content to be filled out, similar to the regular form configuration interface:
 
-![审批触发器_触发器配置_发起人表单_字段配置](https://static-docs.nocobase.com/5a1e7f9c9d8de092c7b55585dad7d633.png)
+![Approval Trigger_Trigger Configuration_Initiator Form_Field Configuration](https://static-docs.nocobase.com/5a1e7f9c9d8de092c7b55585dad7d633.png)
 
-区别于直接提交的按钮，还可以增加“保存草稿”的操作按钮，用于支持暂存的处理流程：
+In addition to the submit button, you can also add a “Save Draft” button to support the temporary storage of data during the process:
 
-![审批触发器_触发器配置_发起人表单_操作配置](https://static-docs.nocobase.com/2f4850d2078e94538995a9df70d3d2d1.png)
+![Approval Trigger_Trigger Configuration_Initiator Form_Action Configuration](https://static-docs.nocobase.com/2f4850d2078e94538995a9df70d3d2d1.png)

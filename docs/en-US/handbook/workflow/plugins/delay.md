@@ -2,36 +2,36 @@
 
 <PluginInfo name="workflow-delay" link="/handbook/workflow-delay"></PluginInfo>
 
-延时节点可以在流程中增加一个延时，延时结束后，可根据配置是继续执行延时结束后的节点或是提前终止流程。
+The Delay node enables you to introduce a pause in the workflow. After this delay period ends, the workflow can either proceed with the subsequent steps or terminate prematurely, depending on the settings you’ve configured.
 
-通常配合并行分支节点一起使用，可以在其中一个分支中增加延时节点，以达到超时后相关处理的目的。例如并行分支中其中一个分支包含人工处理，另一个分支包含延时节点，当人工处理超时后，如果设置的是超时失败，则代表人工处理必须在限定时间内完成，如果设置的是超时继续，则代表到时间后可以忽略该人工处理。
+This node is particularly effective when used alongside parallel branch nodes. For instance, you can place a delay node in one branch to manage timeouts effectively. In a scenario where one branch involves manual processing and another includes a delay node, if the manual task exceeds the allotted time and the timeout is set to "fail," it indicates that the task must be completed within the specified timeframe. Conversely, if the timeout is set to "continue," the manual process will be bypassed after the delay.
 
-## 安装
+## Installation
 
-内置插件，无需安装。
+This is a built-in plugin, so no installation is required.
 
-## 使用手册
+## User Manual
 
-### 创建节点
+### Creating a Node
 
-在工作流配置界面中，点击流程中的加号（“+”）按钮，添加“延时”节点：
+To add a “Delay” node, navigate to the workflow configuration interface, and click the plus (“+”) button within the process:
 
-![创建延时节点](https://static-docs.nocobase.com/d0816999c9f7acaec1c409bd8fb6cc36.png)
+![Creating a Delay Node](https://static-docs.nocobase.com/d0816999c9f7acaec1c409bd8fb6cc36.png)
 
-### 节点配置
+### Node Configuration
 
-![延时节点_节点配置](https://static-docs.nocobase.com/5fe8a36535f20a087a0148ffa1cd2aea.png)
+![Delay Node Configuration](https://static-docs.nocobase.com/5fe8a36535f20a087a0148ffa1cd2aea.png)
 
-#### 延时时间
+#### Delay Time
 
-延时时间可以填写一个数字，并选择时间单位，支持的时间单位有：秒、分钟、小时、天和周。
+Specify the delay duration by entering a number and selecting the appropriate time unit. Supported units include seconds, minutes, hours, days, and weeks.
 
-#### 到时状态
+#### Timeout Status
 
-到时状态可以选择“通过并继续”和“失败并退出”，前者代表延时结束后，流程会继续执行延时结束后的节点，后者代表延时结束后，流程会以失败状态提前终止。
+The timeout status can be configured as either "Succeed and continue" or "Fail and Exit". If set to "Pass and Continue", the workflow will proceed with the next steps after the delay ends. If set to "Fail and Exit", the workflow will terminate prematurely, indicating a failure.
 
-### 示例
+### Example
 
-以工单发起后需要在限时内答复的场景为例，我们需要在并行的两个分支中其一添加一个人工节点，另一个分支添加延时节点，如果人工处理未在 10 分钟内答复，则更新工单状态为超时未处理。
+Consider a scenario where a work order must be responded to within a specified timeframe. In this case, you would add a manual node to one branch of the workflow and a delay node to the other. If the manual process isn’t completed within 10 minutes, the work order status will be updated to "unprocessed due to timeout."
 
-![延时节点_示例_流程组织](https://static-docs.nocobase.com/898c84adc376dc211b003a62e16e8e5b.png)
+![Delay Node Example Workflow](https://static-docs.nocobase.com/898c84adc376dc211b003a62e16e8e5b.png)

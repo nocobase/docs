@@ -1,30 +1,34 @@
 # Example
 
-这里通过新增操作的方式进行演示。
+**Output:** Final Polished Translation
 
-假设一个“报销申请”的场景，我们需要在员工提交费用报销后，进行额度的自动审核和超出额度的人工审核，审核成功的才通过申请，并在之后交由财务处理。
+---
 
-首先，我们可以先创建一张“费用报销”数据表，有以下字段：
+Here, we will walk through the process by adding a new operation.
 
-- 项目名称：单行文本
-- 申请人：多对一（用户）
-- 金额：数字
-- 状态：单选（“审核通过”、“处理完成”）
+Imagine a scenario involving a "Expenses applications." After an employee submits an expense reimbursement, the system needs to perform an automatic review of the amount and, if necessary, trigger a manual review for amounts exceeding a set limit. Only requests that pass these reviews will be approved and subsequently forwarded to the finance department for processing.
 
-之后先创建一个“操作后事件”类型的工作流，并且把触发器中的数据表模型配置为“费用报销”表：
+To start, we can create a "Expenses" collection with the following fields:
 
-![示例_触发器配置_选择数据表](https://static-docs.nocobase.com/6e1abb5c3e1198038676115943714f07.png)
+- **Project Name:** Single-line Text
+- **Applicant:** Many-to-One (User)
+- **Amount:** Numeric
+- **Status:** Single Choice (Options: "Approved", "Processed")
 
-将工作流设置为启用状态后，流程的具体处理节点稍后再回来配置。
+Next, we'll create a workflow categorized as a "Post-action Event" and configure the trigger's data table model to point to the "Expenses" collection:
 
-然后我们在界面上创建“费用报销”数据表的表格区块，并且在工具栏增加一个“添加”按钮，配置对应的表单字段。并在表单“提交”操作按钮的配置项中打开按钮的“绑定工作流”配置对话框，选择整个表单数据作为上下文，以及工作流为我们之前创建的工作流：
+![Example_Trigger Configuration_Select Data Table](https://static-docs.nocobase.com/6e1abb5c3e1198038676115943714f07.png)
 
-![示例_表单按钮配置_绑定工作流](https://static-docs.nocobase.com/fc00bdcdb975bb8850e5cab235f854f3.png)
+Once the workflow is enabled, we can proceed with configuring the specific processing nodes.
 
-表单配置完成后，再回到工作流的逻辑编排。比如我们需要金额大于 500 元时要求管理员进行人工审核，否则直接通过，审核通过后才创建报销记录，并由财务进一步处理（略）。
+Then, on the user interface, create a table block for the "Expenses" data table and add an "Add" button to the toolbar, ensuring the corresponding form fields are properly configured. In the settings for the form's "Submit" button, open the "Bind Workflow" configuration dialog, select the entire form's data as the context, and link it to the workflow we previously created:
 
-![示例_处理流程](https://static-docs.nocobase.com/059e8e3d5ffb34cc2da6880fa3dc490b.png)
+![Example_Form Button Configuration_Bind Workflow](https://static-docs.nocobase.com/fc00bdcdb975bb8850e5cab235f854f3.png)
 
-忽略后续财务的处理的话，这样就完成了申请报销流程的配置，当员工填写报销申请并提交后，会触发对应的工作流，如果费用金额小于 500，会自动创建记录并等待财务进一步处理，否则会由主管审核，审核通过后也是一样创建记录并交给财务处理。
+Once the form configuration is complete, return to the workflow to arrange the logic. For instance, if the reimbursement amount exceeds 500, the system will require an administrator's manual review; otherwise, it will automatically approve the request. Upon approval, a expenses record is generated and forwarded to finance for further processing (details omitted).
 
-该示例的流程也可以配置在普通“提交”按钮上，可以根据具体的业务场景决定是否需要先创建记录再执行后续的流程。
+![Example_Process Flow](https://static-docs.nocobase.com/059e8e3d5ffb34cc2da6880fa3dc490b.png)
+
+Setting aside the subsequent financial processing, this completes the configuration of the expenses application process. When an employee fills out and submits a expenses request, the system triggers the corresponding workflow. If the amount is under 500, a record is automatically created and awaits further action by finance. If the amount exceeds this threshold, the request undergoes a supervisor's review. Upon approval, the record is created and handed over to finance for processing.
+
+This example workflow can also be applied to a standard "Submit" button, depending on whether the business scenario requires a record to be created before moving on to subsequent steps.

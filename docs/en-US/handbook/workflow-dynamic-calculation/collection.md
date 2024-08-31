@@ -1,23 +1,23 @@
 # Expression Collection
 
-## 创建“表达式”模板表
+### Creating an “Expression collection” Template
 
-在工作流内使用动态表达式运算节点之前，需要先在数据表管理工具中创建一张“表达式”模板表，用于存放不同的表达式：
+Before utilizing dynamic expression operation nodes within a workflow, it's essential to first create an “Expression” template table using the data table management tool. This table serves as a repository for various expressions:
 
-![创建表达式模板表](https://static-docs.nocobase.com/33afe3369a1ea7943f12a04d9d4443ce.png)
+![Creating an Expression Template Table](https://static-docs.nocobase.com/33afe3369a1ea7943f12a04d9d4443ce.png)
 
-## 录入表达式数据
+### Entering Expression Data
 
-然后创建一个表格区块对该模板表添加几条公式数据，“表达式”模板表中每行数据都可以被理解为针对特定表数据模型的一个计算规则。每行公式数据可使用不同数据表的数据模型中的字段值作为变量，编写不同的表达式作为计算规则，当然，也可以使用不同的计算引擎。
+Following this, you can set up a table block and input several formula entries into the template table. Each row in the “Expression” template table can be viewed as a calculation rule designed for a specific data model within the table. You can utilize different fields from the data models of various tables as variables, crafting unique expressions as calculation rules. Moreover, you can leverage different calculation engines as needed.
 
-![录入表达式数据](https://static-docs.nocobase.com/761047f8daabacccbc6a924a73564093.png)
+![Entering Expression Data](https://static-docs.nocobase.com/761047f8daabacccbc6a924a73564093.png)
 
-:::info{title=提示}
-创建好公式以后还需要将业务数据与公式进行关联，将每行业务数据直接关联公式数据行会比较繁琐，所以通常我们会使用类似分类的元数据表与公式表进行多对一（或一对一）关联，再将业务数据与分类元数据进行多对一的关联，那么在创建业务数据时只需指定特定的分类元数据，即可在后续使用中通过这个关联路径找到对应的公式数据进行使用。
+:::info{title=Tip}
+Once the formulas are established, they need to be linked to the business data. Directly associating each row of business data with formula data can be tedious, so a common approach is to use a metadata table, similar to a classification table, to create a many-to-one (or one-to-one) relationship with the formula table. Then, the business data is associated with the classified metadata in a many-to-one relationship. This approach allows you to simply specify the relevant classified metadata when creating business data, making it easy to locate and utilize the corresponding formula data through the established association path.
 :::
 
-## 流程中加载相应的数据
+### Loading Relevant Data into the Process
 
-以数据表事件为例创建一个工作流，当订单创建时触发，并需要预加载订单关联的商品数据和商品相关的表达式数据：
+As an example, consider creating a workflow triggered by a data table event. When an order is created, the trigger should preload the associated product data along with the product-related expression data:
 
-![数据表事件_触发器配置](https://static-docs.nocobase.com/f181f75b10007afd5de068f3458d2e04.png)
+![Data Table Event_Trigger Configuration](https://static-docs.nocobase.com/f181f75b10007afd5de068f3458d2e04.png)

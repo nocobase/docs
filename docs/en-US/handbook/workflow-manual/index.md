@@ -2,19 +2,19 @@
 
 <PluginInfo name="workflow-manual" link="/handbook/workflow-manual"></PluginInfo>
 
-当业务流程不能完全自动化决策时，可以通过人工节点，将部分决策权交给人工处理。
+When a business process cannot be fully automated, a manual node can be implemented to transfer part of the decision-making authority to a human operator.
 
-人工节点在执行到时会先中断整个流程的执行，生成对应用户的待办任务，在用户提交后根据所选的状态决定继续流程、继续等待还是终止流程。在需要进行流程审批等场景会非常有用。
+Upon reaching a manual node, the process will pause and generate a task for the assigned user. Based on the status selected by the user during submission, the process will either resume, remain on hold, or be terminated. This functionality is particularly valuable in scenarios requiring process approval.
 
-## 安装
+## Installation
 
-内置插件，无需安装。
+This is a built-in plugin, requiring no installation.
 
-## 使用手册
+## User Manual
 
-人工节点的使用分为两个部分：
+The use of manual nodes is divided into two parts:
 
-- [节点配置](./node.md)
-- [待办区块](./block.md)
+- [Node Configuration](./node.md)
+- [ToDo Block](./block.md)
 
-并可以参考 [示例](./example.md) 了解实际场景中的使用。
+For further insight into practical applications, you can refer to the [Examples](./example.md) section.

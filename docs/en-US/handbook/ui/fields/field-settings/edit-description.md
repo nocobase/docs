@@ -1,8 +1,8 @@
-# 编辑描述
+# Edit description
 
-## 介绍
+## Introduction
 
-字段描述是在字段组件下方以浅灰体显示的简短说明文字，可用于帮助用户理解字段的用途和输入要求。
+Field descriptions are short descriptive text displayed in light gray below the field component, which can be used to help users understand the purpose of the field and the input requirements.
 
 ![20240411114048](https://static-docs.nocobase.com/20240411114048.png)
 

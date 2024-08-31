@@ -1,87 +1,87 @@
-# HTTP 请求
+# HTTP Requests
 
 <PluginInfo name="workflow-request" link="/handbook/workflow-request"></PluginInfo>
 
-当需要与另一个 web 系统进行交互时，可以使用 HTTP 请求节点。该节点在执行时会根据配置向对应的地址发出一个 HTTP 请求，可以携带 JSON 或 `application/x-www-form-urlencoded` 格式的数据，完成与外部系统的数据交互。
+When you need to interact with another web system, the HTTP Request node is your go-to tool. This node allows you to send an HTTP request to a specified address, complete with data in JSON or `application/x-www-form-urlencoded` formats, facilitating seamless communication with external systems.
 
-如果对 Postman 这类请求发送工具比较熟悉，那么可以很快掌握 HTTP 请求节点的用法。与这些工具不同的是，HTTP 请求节点中各项参数均可使用当前流程中的上下文变量，可以与当前系统的业务处理有机结合起来。
+If you're already familiar with tools like Postman, mastering the HTTP Request node will be straightforward. However, unlike traditional tools, this node leverages context variables from the current workflow, making it a powerful addition to your business process integration.
 
-## 安装
+### Installation
 
-内置插件，无需安装。
+This is a built-in plugin, so there's no need for installation.
 
-## 使用手册
+### User Guide
 
-### 创建节点
+#### Creating a Node
 
-在工作流配置界面中，点击流程中的加号（“+”）按钮，添加“HTTP 请求”节点：
+In the workflow configuration interface, click the plus (“+”) button within your process to add an "HTTP Request" node:
 
-![HTTP 请求_添加](https://static-docs.nocobase.com/46f2a6fc3f6869c80f8fbd362a54e644.png)
+![HTTP Request_Add](https://static-docs.nocobase.com/46f2a6fc3f6869c80f8fbd362a54e644.png)
 
-### 节点配置
+#### Node Configuration
 
-![HTTP请求节点_节点配置](https://static-docs.nocobase.com/2fcb29af66b892fa704add52e2974a52.png)
+![HTTP Request Node_Configuration](https://static-docs.nocobase.com/2fcb29af66b892fa704add52e2974a52.png)
 
-#### 请求方法
+**Request Method**
 
-可选的 HTTP 请求方法：`GET`、`POST`、`PUT`、`PATCH` 和 `DELETE`。
+Choose from the available HTTP request methods: `GET`, `POST`, `PUT`, `PATCH`, and `DELETE`.
 
-#### 请求地址
+**Request URL**
 
-HTTP 服务的 URL，需要包含协议部分（`http://` 或 `https://`），推荐使用 `https://`。
+Specify the URL of the HTTP service, including the protocol (`http://` or `https://`). For security, `https://` is recommended.
 
-#### 请求数据格式
+**Request Data Format**
 
-即请求头中的 `Content-Type`，支持 `application/json` 和 `application/x-www-form-urlencoded` 两种格式。
+This defines the `Content-Type` in the request header, with options for `application/json` and `application/x-www-form-urlencoded`.
 
-#### 请求头配置
+**Request Header Configuration**
 
-请求 Header 部分的键值对，相关值可以使用流程上下文的变量。
+Set key-value pairs for the request headers, with values that can dynamically reference variables from the workflow context.
 
-:::info{title=提示}
-对 `Content-Type` 请求头，已通过请求数据格式配置，无需填写，覆盖无效。
+:::info{title=Note}
+The `Content-Type` header is predetermined by the request data format setting. Manual input here will not override this configuration.
 :::
 
-#### 请求参数
+**Request Parameters**
 
-请求 query 部分的键值对，相关值可以使用流程上下文的变量。
+Define key-value pairs for the query string. Values can dynamically utilize variables from the workflow context.
 
-#### 请求体
+**Request Body**
 
-请求的 Body 部分，目前仅支持标准的 JSON 格式，可以通过文本编辑框右上角的变量按钮插入流程上下文中的变量。
+Currently, the request body supports only standard JSON format. Use the variable button in the upper-right corner of the text editor to insert context variables.
 
-:::info{title=提示}
-注：变量必须在 JSON 的字符串中使用，例如：`"a": "{{$context.data.a}}"`。
+:::info{title=Note}
+Ensure that variables within JSON are used as strings, for example: `"a": "{{$context.data.a}}"`.
 :::
 
-#### 超时设置
+**Timeout Settings**
 
-当请求长时间未响应时，通过超时设置取消该请求的执行。请求超时后会以失败状态提前终止当前流程。
+If the request takes too long to respond, the timeout setting will cancel it, leading to the premature termination of the current workflow with a failure status.
 
-#### 忽略失败
+**Ignore Failure**
 
-请求节点会以标准 HTTP 状态码的 `200`~`299` 之间（含）的状态认为是成功状态，其他的均认为是失败。如勾选了“忽略失败的请求并继续工作流”选项，则当请求失败后仍继续执行后续的其他流程节点。
+The request node considers any HTTP status code between `200` and `299` as a success. Codes outside this range are deemed failures. If you select the "Ignore failed requests and continue workflow" option, the workflow will proceed with subsequent nodes, even if the request fails.
 
-### 使用响应结果
+### Using Response Results
 
-HTTP 请求的响应结果可以通过 [JSON 解析](./plugins/json-query.md) 节点进行解析，以便后续节点使用。
+The HTTP request's response results can be parsed using the [JSON Query](./plugins/json-query.md) node, enabling further use in subsequent workflow nodes.
 
-自 `v1.0.0-alpha.16` 版本起，请求节点结果响应中的三个部分可以分别作为变量使用：
+Starting from version `v1.0.0-alpha.16`, the request node’s response includes three components that can be used as variables:
 
-* 响应状态码
-* 响应头
-* 响应数据
+- Status Code
+- Response Headers
+- Data
 
-![HTTP请求节点_响应结果使用](https://static-docs.nocobase.com/20240529110610.png)
+![HTTP Request Node_Response Result Usage](https://static-docs.nocobase.com/20240529110610.png)
 
-其中响应状态码通常是数字形式的标准的 HTTP 状态码，如 `200`、`403` 等（具体由服务提供方给出）。
+The response status code is a standard numerical HTTP status code, such as `200` or `403`, as provided by the service.
 
-响应头（Response headers）为 JSON 格式，包括 JSON 格式的响应数据，仍需要使用 JSON 节点节点解析后使用。
+Response headers are in JSON format, and the response data—also in JSON—must be parsed using the JSON node before being utilized.
 
-### 示例
+### Example
 
-例如我们可以使用请求节点来对接云平台发送通知短信，以阿里云发送短信接口为例配置如下（相关参数需自行查阅文档适配）：
+For instance, you can configure the request node to interface with a cloud platform for sending notification SMS. Here’s how you would set up the Alibaba Cloud SMS API (with parameters adapted according to the relevant documentation):
 
-![HTTP请求节点_节点配置](https://static-docs.nocobase.com/20240515124004.png)
+![HTTP Request Node_Configuration](https://static-docs.nocobase.com/20240515124004.png)
 
-工作流触发该节点执行时会以配置的内容调用阿里云的短信接口，请求成功的话将通过短信云服务发送一条短信。
+When the workflow triggers this node, it will call Alibaba Cloud’s SMS API based on the configuration. If successful, a text message will be sent via the cloud SMS service.

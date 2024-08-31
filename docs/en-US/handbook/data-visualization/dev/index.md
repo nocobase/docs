@@ -1,8 +1,8 @@
-# API参考
+# API Reference
 
-NocoBase 当前使用 [G2Plot](https://g2plot.antv.antgroup.com/) 作为默认的图表库，提供了常用的图表组件。除了默认的图表组件，NocoBase 还支持扩展其他图表组件，也可以接入其他图表库组件，比如: ECharts. 这一部分主要介绍如何扩展接入新的图表组件。
+NocoBase currently utilizes [G2Plot](https://g2plot.antv.antgroup.com/) as its default chart library, offering a selection of commonly used chart components. Beyond the default options, NocoBase allows for the extension of additional chart components, including the integration of other chart libraries such as ECharts. This section focuses on how to extend and incorporate new chart components.
 
-## 添加图表
+## Adding Charts
 
 ```typescript
 import DataVisualization from '@nocobase/plugin-data-visualization'
@@ -15,57 +15,57 @@ class CustomChartsPlugin extends Plugin {
     plugin.charts.addGroup('custom', [...]);
 
     // Set a group of charts,
-    // can be used for overriding an exist group
+    // can be used for overriding an existing group
     plugin.charts.setGroup('custom', [...]);
 
-    // Append a chart to an exist group
-    // The name of the chart is required to be unique in a group
+    // Append a chart to an existing group
+    // The name of the chart must be unique within the group
     plugin.charts.add('Built-in', CustomChart);
   }
 }
 ```
 
-### 方法
+## Methods
 
-#### `addGroup`
+**`addGroup`**
 
-添加一组图表
+Adds a group of charts.
 
-- name `string` - 分组 key, 不能和已有的重复
-- charts `ChartType[]` - 图表数组
+- name `string` - The group key, which must be unique.
+- charts `ChartType[]` - An array of charts.
 
-#### `setGroup`
+**`setGroup`**
 
-设置一组图表，可以用于覆盖已有分组
+Defines or overrides a group of charts.
 
-- name `string` - 分组 key
-- charts `ChartType[]` - 图表数组
+- name `string` - The group key.
+- charts `ChartType[]` - An array of charts.
 
-#### `add`
+**`add`**
 
-向已有分组中追加一个图表，图表的名字
+Adds a chart to an existing group; the chart name must be unique within that group.
 
-- group `string` - 分组 key
-- chart `ChartType` - 图表
+- group `string` - The group key.
+- chart `ChartType` - The chart.
 
 ## ChartType
 
-`/src/client/chart/chart.ts`
+Located at `/src/client/chart/chart.ts`
 
-`ChartType` 定义了一个图表类需要包含的属性和接口。
+`ChartType` outlines the essential properties and interfaces required for a chart class.
 
-### 属性
+**Properties**
 
-- name `string` - 图表类型的唯一标识 (key)
-- title `string` - 图表类型展示时使用的标题
-- component `React.FC<any>` - 渲染图表使用的 React 组件
-- schema `ISchema` - 图表基础可视化配置使用的 UI Schema
+- name `string` - A unique identifier (key) for the chart type.
+- title `string` - The title displayed for the chart type.
+- component `React.FC<any>` - The React component used to render the chart.
+- schema `ISchema` - The UI Schema utilized for the chart’s basic visualization configuration.
 
 ![](https://static-docs.nocobase.com/0a884208a26048cf58d4027626df7078.png)
 
-### 接口
+**Interfaces**
 
-#### init
+**`init`**
 
 ```typescript
 init?: (
@@ -80,21 +80,21 @@ init?: (
   };
 ```
 
-可选。初始化默认图表配置。
+Optional. Initializes the default chart configuration.
 
-参数：
+Parameters:
 
-1. 当前 Collection 的 fields 元数据
-2. 当前度量和维度配置
+1. Metadata fields from the current Collection.
+2. The current configuration of measures and dimensions.
 
-返回：
+Returns:
 
-- general - 图表基础配置部分
-- advanced - 图表 JSON 配置部分
+- general - The basic configuration of the chart.
+- advanced - The JSON configuration of the chart.
 
-（此处类型定义较多，不一一列出，请参考源码。）
+(Note: Extensive type definitions exist here; please refer to the source code for more details.)
 
-#### render
+**`render`**
 
 ```typescript
 export type RenderProps = {
@@ -112,9 +112,9 @@ export type RenderProps = {
 render: (props: RenderProps) => React.FC<any>;
 ```
 
-接收图表的配置元数据，包括数据、图表配置和字段配置（元数据 + 数据转换配置），返回一个图表组件用于渲染。
+Accepts the chart’s metadata configuration, including data, chart settings, and field configurations (metadata + data transformation), and returns a chart component for rendering.
 
-#### getReference
+**`getReference`**
 
 ```typescript
 getReference?: () => {
@@ -123,33 +123,33 @@ getReference?: () => {
   };
 ```
 
-可选。获取当前图表组件的参考文档。
+Optional. Retrieves reference documentation for the current chart component.
 
 ## Chart
 
-`Chart` 类对 `ChartType` 做了基础的实现，通常接入一个新的图表，只需要 `new Chart` 或者 `extends Chart` 即可。
+The `Chart` class offers a foundational implementation of `ChartType`, typically requiring only a `new Chart` or `extends Chart` to integrate a new chart.
 
-### 属性
+**Properties**
 
-- name `string` - 图表类型的唯一标识 (key)
-- title `string` - 图表类型展示时使用的标题
-- component `React.FC<any>` - 渲染图表使用的 React 组件
-- config `Config[]` - 图表配置的 UI Schema 通过 `config` 获取
+- name `string` - A unique identifier (key) for the chart type.
+- title `string` - The title displayed for the chart type.
+- component `React.FC<any>` - The React component used to render the chart.
+- config `Config[]` - The UI Schema configuration of the chart, accessible via `config`.
 
-#### config
+**`config`**
 
-`/src/client/chart/configs.ts`
+Located at `/src/client/chart/configs.ts`
 
-`config` 接收一个配置数组，`Chart` 类中的 `schema getter` 会将配置转换为 UI Schema, 用于图表的基础配置。
+`config` accepts an array of configurations, and the `schema getter` in the `Chart` class converts these configurations into a UI Schema for the chart’s basic setup.
 
-配置支持以下几种写法，可以混合使用：
+Configurations can be mixed and matched in the following ways:
 
-1. 原始的 UI Schema, 在 UI Schema 如果想使用在“数据配置”部分已经配置好的字段，可以使用 `x-reactions': '{{ useChartFields }}'`.
-2. 使用预定义好的 UI Schema
+1. Raw UI Schema: If fields configured in the "data configuration" section are to be used in the UI Schema, you can apply `x-reactions': '{{ useChartFields }}'`.
+2. Predefined UI Schema.
 
-例如: `config: ['field']`
+Example: `config: ['field']`
 
-对应生成
+Generates:
 
 ```typescript
 {
@@ -164,7 +164,7 @@ getReference?: () => {
 }
 ```
 
-1. 使用预定义的 UI Schema, 但是替换部分参数，其中 `property` 为预定义 UI Schema 的 key
+3. Predefined UI Schema with parameter replacement, where `property` is the key of the predefined UI Schema.
 
 ```typescript
 config: [
@@ -177,7 +177,7 @@ config: [
 ];
 ```
 
-对应生成
+Generates:
 
 ```typescript
 {
@@ -193,13 +193,13 @@ config: [
 }
 ```
 
-可以通过 `addConfigs` 方法增加新的预定义 UI Schema.
+You can add new predefined UI Schema using the `addConfigs` method.
 
-其他用法可以参考 `/src/client/chart/g2plot/index.ts`
+For additional usage examples, refer to `/src/client/chart/g2plot/index.ts`.
 
-### 方法
+**Methods**
 
-#### infer
+**`infer`**
 
 ```typescript
 infer: (
@@ -216,34 +216,34 @@ infer: (
   };
 ```
 
-`infer` 方法用于根据数据配置中的度量和维度，初步推断出推断出图表配置中的各字段值，减少重复配置。
+The `infer` method is used to infer the values of various fields in the chart configuration based on the measure and dimension settings, reducing redundant configurations.
 
-`infer` 方法接收两个参数：
+The `infer` method accepts two parameters:
 
-1. 当前 Collection 的 fields 元数据，作为推断基础
-2. 当前度量和维度配置
+1. Metadata fields from the current Collection, which serve as the basis for inference.
+2. The current configuration of measures and dimensions.
 
-推断结果返回
+The inference result returns:
 
-- `xFields` - x 轴字段
-- `yFields` - y 轴字段
-- `seriesFields` - 分类字段，可用作 `colorFields`
-- `yFields` - 多个 y 轴字段，通常用于双轴图
+- `xField` - x-axis field.
+- `yField` - y-axis field.
+- `seriesField` - Category field, which can also be used as a `colorField`.
+- `yFields` - Multiple y-axis fields, typically for dual-axis charts.
 
-拿到推断结果以后，可以结合定义 [`init`方法](#init)，给图表配置做默认初始化。
+After obtaining the inference result, it can be combined with the definition of the [`init` method](#init) to set default values in the chart configuration.
 
-#### getProps
+**`getProps`**
 
 ```typescript
 getProps: (props: RenderProps) => any;
 ```
 
-将数据、图表配置、字段属性、数据转换等图表相关的配置元数据，转换成渲染图表的对应组件的属性，也可以返回一些不暴露配置的默认属性。默认的 `render` 方法会通过 `getProps` 拿到图表组件属性，传递给图表组件。这个方法通常需要根据使用的图表组件自己实现。
+Transforms the metadata configuration related to the chart, including data, chart settings, field properties, data transformation, etc., into properties for the chart rendering component. It can also return default properties that are not exposed in the configuration. The default `render` method uses `getProps` to acquire chart component properties and pass them to the chart component. This method typically requires implementation based on the specific chart component in use.
 
-## 示例
+## Examples
 
 - [src/client/chart/g2plot](https://github.com/nocobase/nocobase/tree/main/packages/plugins/%40nocobase/plugin-data-visualization/src/client/chart/g2plot)
 
 - [src/client/chart/antd](https://github.com/nocobase/nocobase/tree/main/packages/plugins/%40nocobase/plugin-data-visualization/src/client/chart/antd)
 
-- [图表扩展教程](../step-by-step/index.md)
+- [Chart Extension Tutorial](../step-by-step/index.md)

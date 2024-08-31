@@ -1,12 +1,10 @@
-# 插件管理中心
+# Plugin Management
 
-管理中心为用户提供了一个集中管理和配置系统信息以及与工作相关设置的平台。用户可以根据其特定的业务需求和个人偏好来自定义系统、数据表建模、工作流配置和插件配置
+The Management Center offers users a unified platform to manage and configure system information and work-related settings. It allows users to tailor the system, data table modeling, workflow configuration, and plugin settings to meet their specific business needs and personal preferences.
 
-插件管理中心的组成
+## Overview of the Plugin Management Center
 
-1. 置顶的快捷配置项
-2. 所有激活的插件配置列表
-3. 插件的标签页
-4. 正文内容
-
-![](https://static-docs.nocobase.com/1c0e3cb111e993232b51aa6233e07478.jpeg)
+1. Quick Configuration Items at the Top
+2. List of All Activated Plugin Configurations
+3. Plugin Tabs
+4. Main Content Area

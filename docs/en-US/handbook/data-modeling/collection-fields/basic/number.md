@@ -1,11 +1,11 @@
-# 数字
+# Number
 
-## 介绍
+## Introduction
 
-## 字段配置
+## Field configuration
 
 ![20240512175752](https://static-docs.nocobase.com/20240512175752.png)
 
-## 示例
+## Instructions
 
-待补充
+to be added.

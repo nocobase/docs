@@ -1,12 +1,12 @@
-# UI Schema 存储
+# UI Schema Storage
 
 :::warning
-文档待补充
+Document pending.
 :::
 
 <!--
-## 介绍
+## Introduction
 
-## 安装
+## Installation
 
-## 使用说明 -->
+## Instructions -->

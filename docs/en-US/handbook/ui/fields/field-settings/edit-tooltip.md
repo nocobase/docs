@@ -1,10 +1,8 @@
-# 编辑提示信息
+# Edit tooltip
 
-## 介绍
+## Introduction
 
-字段提示信息是鼠标悬停在字段上时显示的文字，旨在提供有关该字段的额外说明或指导。这些提示信息通常包括字段的用途、输入格式、限制条件等内容，帮助用户更好地理解和使用该字段。
-
-![20240412112137](https://static-docs.nocobase.com/20240412112137.png)
+When a user hovers over a field, a tooltip with additional information or guidance appears. This tooltip typically provides details such as the field's purpose, input format, and any restrictions, helping users to better understand and utilize the field.![20240412112137](https://static-docs.nocobase.com/20240412112137.png)
 
 ![20240412112218](https://static-docs.nocobase.com/20240412112218.png)
 

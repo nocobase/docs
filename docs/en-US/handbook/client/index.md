@@ -1,9 +1,9 @@
-# 客户端
+# WEB Client
 
-## 介绍
+## Introduction
 
-为 NocoBase 服务端提供客户端界面。
+Offers a seamless user interface for interacting with the NocoBase server.
 
-## 安装
+## Installation
 
-内置插件，无需单独安装。
+As a built-in plugin, no additional installation is necessary.

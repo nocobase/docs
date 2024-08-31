@@ -1,26 +1,26 @@
-# 区块模板
+# Block Template
 
 <PluginInfo name="ui-schema-storage"></PluginInfo>
 
-## 介绍
+## Introduction
 
-将一个数据类型区块保存为模板，以后添加区块时可以直接复制或引用这个模板。如一个数据表的表单，既用于新增数据，又用于编辑数据，那就可以将这个表单保存为模板，在新增数据和编辑数据的界面里引用它。
+Save a data block as a template, enabling you to effortlessly copy or reference this template when adding new blocks in the future. For instance, if a form for a data table is used both for adding new records and editing existing ones, you can save this form as a template and reference it in both the data entry and editing interfaces.
 
-## 如何添加和使用模板？
+## How to Add and Use a Template?
 
-1. 将数据区块保存为区块模板。
+1. Save as block template.
 
 ![](https://static-docs.nocobase.com/b7718cea8784587d53524ade3c5b0a82.png)
 
-1. 添加区块时，选择复制或引用模板。
+2. When adding a block, choose **Reference template** or **Duplicate template**.
 
 ![](https://static-docs.nocobase.com/135df7344e0f3080199e4bb1071c2fa6.png)
 
-## 复制和引用的区别
+## Copying vs. Referencing: What's the Difference?
 
-复制是基于区块模板创建的全新区块，区块有调整不影响模块；引用是直接使用区块模板，区块调整会改变模板，所有引用了当前模板的区块都会产生变化。
+Copying creates an entirely new block based on the block template, allowing for adjustments without affecting the original template. Referencing, on the other hand, directly uses the block template. Any changes made to a referenced block will modify the template itself, affecting all blocks that reference it.
 
-## 注意事项
+## Important Notes
 
-- 使用关系区块创建的模板，只能用于创建关系区块。
-- 使用非关系区块创建的模板，只能用于创建非关系区块。
+- Templates created with relationship blocks can only be used to create relationship blocks.
+- Templates created with non-relationship blocks can only be used to create non-relationship blocks.

@@ -1,16 +1,16 @@
-# 批量更新
+# Bulk update
 
-## 介绍
+## Introduction
 
-批量更新操作用于需要对一组记录进行相同更新的情况，在执行批量更新操作之前，用户需要预先定义好更新的字段赋值逻辑。这一套逻辑将在用户点击更新按钮时应用到所有选中的记录上
+The bulk update function is designed for situations where you need to apply the same modification across multiple records. Before executing a batch update, users must first define the logic for assigning values to the fields that will be updated. This logic is applied to all selected records once the update button is clicked.
 
 ![](https://static-docs.nocobase.com/d9e6804f7cdbecd43ce4695bb83561cd.png)
 
-## 使用指南
+## User Guide
 
-1. 设置更新的数据：选中/所有，默认为选中
-2. 字段赋值：设置批量更新的字段，只有设置的字段会更新
+1. Set the Data to Update: Choose between "Selected" or "All," with "Selected" being the default option.
+2. Field Assignment: Specify which fields will be included in the batch update; only these specified fields will be affected.
 
-如图在运单表格中配置批量更新操作，将选中的数据批量更新为确认送达
+In the example shown, the batch update operation is configured in the waybill table to mark the selected records as "Delivery Confirmed."
 
 ![](https://static-docs.nocobase.com/41eb7980cd31ebfb013c05c1bbb747a5.gif)

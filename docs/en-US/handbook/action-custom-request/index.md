@@ -1,12 +1,12 @@
-# 自定义请求
+# Http API
 
 :::warning
-文档待补充
+To be added.
 :::
 
 <!--
-## 介绍
+## Introduction
 
-## 安装
+## Installation
 
-## 使用说明 -->
+## Instructions -->

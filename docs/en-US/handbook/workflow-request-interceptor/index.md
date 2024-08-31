@@ -2,15 +2,15 @@
 
 <PluginInfo name="workflow-request-interceptor" link="/handbook/workflow-request-interceptor" commercial="true"></PluginInfo>
 
-操作前事件插件提供了一种可以对表单的操作请求进行拦截的机制，拦截事件会在对应的表单操作提交后且被处理之前触发。如果在触发后的流程中有“结束流程”节点被执行，或者其他节点执行失败（出错或其他未能执行完成的情况），则该表单操作将被拦截，否则预定操作将被正常执行。搭配使用“响应消息”节点可以为该流程配置返回客户端的响应消息，以对客户端给出相应的提示信息。操作前事件可用于进行业务验证或逻辑检查，以通过或拦截客户端提交的创建、更新和删除等操作请求。
+The pre-operation event plugin introduces a powerful mechanism for intercepting form operation requests. This interception occurs after a form operation is submitted but before it’s processed. If the process triggered includes an "End Process" node or if any other nodes fail to execute correctly (whether due to errors or incomplete execution), the form operation will be intercepted. Otherwise, the operation will proceed as planned. When paired with the "Response Message" node, this feature allows you to configure the process to return specific response messages to the client, offering clear and relevant prompts. Pre-operation events are ideal for business validation or logic checks, enabling the approval or interception of client-submitted requests for creating, updating, or deleting records.
 
-## 使用手册
+## User Guide
 
-操作前事件的使用分为几个部分：
+Using pre-operation events involves several key steps:
 
-- [触发器配置](./trigger.md)
-- [操作配置](./node.md)
+- [Trigger Configuration](./trigger.md)
+- [Operation Configuration](./node.md)
 
-其中进一步的概念可以在 [进阶使用](./advanced.md) 中了解。并可以参考 [示例](./example.md) 了解实际场景中的使用。
+For a deeper understanding, you can explore [Advanced Usage](./advanced.md), and see how it’s applied in real scenarios by reviewing the [Examples](./example.md).
 
-如果需要从外部系统调用，可以参考 [外部调用](./http-api.md)。
+If you need to integrate with an external system, refer to [External Call](./http-api.md).

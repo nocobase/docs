@@ -1,23 +1,22 @@
-# Extend Trigger Type
+# **Extend Trigger Types**
 
-每个工作流都必须配置特定的触发器，作为启动流程执行的入口。
+Every workflow must be configured with a specific trigger that serves as the entry point for executing the process.
 
-触发器类型通常代表特定的系统环境事件。在应用运行周期中，任何提供了可被订阅的事件环节都可以用于触发器类型的定义。例如接收请求、数据表操作、定时任务等。
+Trigger types typically correspond to specific system events. Throughout an application's lifecycle, any event that offers a subscription option can be defined as a trigger type. Examples include receiving requests, data table operations, or scheduled tasks.
 
-触发器类型基于字符串标识注册在插件的触发器表中，工作流插件内置了几种触发器：
+Trigger types are registered in the plugin's trigger registry using unique string identifiers. The workflow plugin comes with several built-in triggers:
 
-- `'collection'`：数据表操作触发；
-- `'schedule'`：定时任务触发；
-- `'action'`：操作后事件触发；
+- `'collection'`: Triggered by data table operations.
+- `'schedule'`: Triggered by scheduled tasks.
+- `'action'`: Triggered by post-operation events.
 
+When extending trigger types, it's essential to ensure that each identifier is unique. The server side should handle the registration for subscribing and unsubscribing to triggers, while the client side should provide the corresponding configuration interface.
 
-扩展的触发器类型需要保证标识唯一，在服务端注册触发器的订阅/取消订阅的实现，在客户端注册界面配置的实现。
+## **Server-Side Implementation**
 
-## 服务端
+Any custom trigger should extend the `Trigger` base class and implement the `on` and `off` methods, which manage the subscription and unsubscription to specific system events. The `on` method must invoke `this.workflow.trigger()` within the event callback to trigger the workflow. The `off` method should ensure proper cleanup during unsubscription.
 
-任意触发器需要继承自 `Trigger` 基类，并实现 `on`/`off` 方法，分别用于订阅和取消订阅具体的环境事件。在 `on` 方法中，需要在具体的事件回调函数中调用 `this.workflow.trigger()`，以最终触发事件。另外在 `off` 方法中，需要做取消订阅的相关清理工作。
-
-其中 `this.workflow` 是 `Trigger` 基类在构造函数中传入的工作流插件实例。
+The `this.workflow` property refers to the workflow plugin instance, passed into the `Trigger` base class during construction.
 
 ```ts
 import { Trigger } from '@nocobase/plugin-workflow';
@@ -26,50 +25,50 @@ class MyTrigger extends Trigger {
   timer: NodeJS.Timeout;
 
   on(workflow) {
-    // register event
+    // Register event
     this.timer = setInterval(() => {
-      // trigger workflow
+      // Trigger workflow
       this.workflow.trigger(workflow, { date: new Date() });
     }, workflow.config.interval ?? 60000);
   }
 
   off(workflow) {
-    // unregister event
+    // Unregister event
     clearInterval(this.timer);
   }
 }
 ```
 
-之后在对工作流进行扩展的插件中将触发器实例注册到工作流引擎上：
+Next, register the trigger instance with the workflow engine in the plugin that extends the workflow:
 
 ```ts
 import WorkflowPlugin from '@nocobase/plugin-workflow';
 
 export default class MyPlugin extends Plugin {
   load() {
-    // get workflow plugin instance
+    // Get workflow plugin instance
     const workflowPlugin = this.app.pm.get(WorkflowPlugin) as WorkflowPlugin;
 
-    // register trigger
+    // Register trigger
     workflowPlugin.registerTrigger('interval', MyTrigger);
   }
 }
 ```
 
-服务端启动加载以后，`'interval'` 类型的触发器就可以被添加和执行了。
+Once the server is up and running, the `'interval'` trigger type will be available for addition and execution.
 
-## 客户端
+## **Client-Side Configuration**
 
-客户端的部分主要根据触发器类型所需的配置项提供配置界面。每种触发器类型同样需要向工作流插件注册相应的类型配置。
+On the client side, the primary task is to provide a configuration interface tailored to the specific settings required for each trigger type. Each trigger type should also be registered with the workflow plugin.
 
-例如对上面的定时执行的触发器，定义配置界面表单中需要的间隔时间配置项（`interval`）：
+For instance, to configure the interval-based trigger mentioned earlier, define the `interval` configuration field in the form interface:
 
 ```ts
 import { Trigger } from '@nocobase/workflow/client';
 
 class MyTrigger extends Trigger {
-  title = 'Interval timer trigger';
-  // fields of trigger config
+  title = 'Interval Timer Trigger';
+  // Fields of trigger config
   fieldset = {
     interval: {
       type: 'number',
@@ -83,7 +82,7 @@ class MyTrigger extends Trigger {
 }
 ```
 
-然后在扩展的插件内向工作流插件实例注册这个触发器类型：
+Then, register this trigger type with the workflow plugin instance in the extending plugin:
 
 ```ts
 import { Plugin } from '@nocobase/client';
@@ -92,7 +91,7 @@ import WorkflowPlugin from '@nocobase/plugin-workflow/client';
 import MyTrigger from './MyTrigger';
 
 export default class extends Plugin {
-  // You can get and modify the app instance here
+  // Modify the app instance here if necessary
   async load() {
     const workflow = this.app.pm.get(WorkflowPlugin) as WorkflowPlugin;
     workflow.registerTrigger('interval', MyTrigger);
@@ -100,10 +99,10 @@ export default class extends Plugin {
 }
 ```
 
-之后在工作流的配置界面中就可以看到新的触发器类型了。
+Once registered, the new trigger type will appear in the workflow configuration interface.
 
-:::info{title=提示}
-客户端注册的触发器类型标识必须与服务端的保持一致，否则会导致错误。
+:::info{title=Tip}
+Ensure that the trigger type identifier registered on the client side matches the one on the server side to avoid errors.
 :::
 
-定义触发器类型的其他内容详见 [工作流 API 参考](./api#pluginregisterTrigger) 部分。
+For further details on defining trigger types, refer to the [Workflow API Reference](./api#pluginregisterTrigger) section.

@@ -1,23 +1,23 @@
 # Trigger Configuration
 
-## 创建工作流
+## Creating a Workflow
 
-创建工作流时，选择“自定义操作事件”：
+When setting up a workflow, begin by selecting "Custom action event":
 
-![创建“自定义操作事件”工作流](https://static-docs.nocobase.com/20240509091820.png)
+![Creating "Custom Operation Event" Workflow](https://static-docs.nocobase.com/20240509091820.png)
 
-## 触发器配置
+## Trigger Configuration
 
-### 数据表
+### Data Table
 
-自定义操作事件是基于数据行的，所以首先需要选择要绑定数据模型的数据表：
+Since custom operation events are tied to specific data rows, you'll need to first choose the data table that will be associated with your data model:
 
-![触发器配置_选择数据表](https://static-docs.nocobase.com/20240509150515.png)
+![Trigger Configuration_Select Data Table](https://static-docs.nocobase.com/20240509150515.png)
 
-### 待使用的关系数据
+### Related Data to Utilize
 
-如果需要在工作流中使用触发数据行的关联数据，可以在这里选择深层的关联字段：
+If your workflow requires the use of related data from the triggered data row, you can select the necessary deep relationship fields here:
 
-![触发器配置_选择待使用的关系数据](https://static-docs.nocobase.com/20240509154856.png)
+![Trigger Configuration_Select Data Relations to Use](https://static-docs.nocobase.com/20240509154856.png)
 
-这些字段会在事件触发后自动预加载到工作流的上下文中，以便在工作流中使用。
+These fields will be automatically preloaded into the workflow's context once the event is triggered, making them available for use within the workflow.

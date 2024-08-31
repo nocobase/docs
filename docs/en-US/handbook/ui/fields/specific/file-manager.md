@@ -1,13 +1,13 @@
-# 文件管理器
+# File Manager
 
-## 介绍
+## Introduction
 
-文件管理器是用于处理关系目标表为文件表的关系字段组件。
+The File Manager is a sophisticated relational field component designed to manage relationships where the target table is a file table. This powerful tool streamlines file handling within your database structure.
 
 ![20240410213026](https://static-docs.nocobase.com/20240410213026.png)
 
-## 字段配置项
+## Field Configuration Options
 
-- [字段组件](/handbook/ui/fields/association-field)：切换为其他关系字段组件，如下拉选择、数据选择器等；
-- 快速上传：默认开启，上传文件后关联；
-- 选择文件：默认开启，从已上传的文件选择关联；
+- [Field Component](/handbook/ui/fields/association-field): Seamlessly switch between various relational field components, including dropdown selections, data selectors, and more, to suit your specific needs.
+- Quick Upload: Enabled by default, this feature allows for effortless file association immediately upon upload, enhancing workflow efficiency.
+- Select File: Also enabled by default, this option provides the flexibility to associate previously uploaded files, leveraging existing resources within your system.

@@ -1,62 +1,62 @@
-# 一对一
+# One-to-One
 
-员工和个人资料的关系，每个员工只能有一条个人资料记录，而每条个人资料记录也只能对应一个员工，这种情况下，员工和个人资料是一对一关系。
+In the relationship between employees and personal profiles, each employee can only have one personal profile record, and each personal profile record can only correspond to one employee. In this case, the relationship between the employee and the personal profile is one-to-one.
 
-一对一的外键放在源表或目标表里都可以，如果表示的「有一个」，外键放目标表里更合适；如果表示的「所属关系」，那外键放在源表里更合适。
+The foreign key in a one-to-one relationship can be placed in either the source collection or the target collection. If it represents "having one," the foreign key is more appropriately placed in the target collection; if it represents "belonging to," then the foreign key is better placed in the source collection.
 
-例如上述例子，员工只有一条个人资料，个人资料属于员工，所以这个外键适合放在个人资料表里。
+For example, in the case mentioned above, where an employee has only one personal profile and the personal profile belongs to the employee, it is appropriate to place the foreign key in the personal profile collection.
 
-## 一对一（有一个）
+## One-to-One (Having One)
 
-表示某员工有一条个人资料记录
+This indicates that an employee has a personal profile record.
 
-ER 关系
+ER Relationship
 
 ![alt text](https://static-docs.nocobase.com/4359e128936bbd7c9ff51bcff1d646dd.png)
 
-字段配置
+Field Configuration
 
 ![alt text](https://static-docs.nocobase.com/7665a87e094b4fb50c9426a108f87105.png)
 
-## 一对一（所属关系）
+## One-to-One (Belonging Relationship)
 
-表示某条个人资料属于某员工
+This indicates that a personal profile belongs to a specific employee.
 
-ER 关系
+ER Relationship
 
 ![](https://static-docs.nocobase.com/31e7cc3e630220cf1e98753ca24ac72d.png)
 
-字段配置
+Field Configuration
 
 ![alt text](https://static-docs.nocobase.com/4f09eeb3c7717d61a349842da43c187c.png)
 
-## 参数说明
+## Parameter Descriptions
 
-### Source collection
+### Source Collection
 
-源表，也就是当前字段所在表。
+The source collection, which is the collection where the current field is located.
 
-### Target collection
+### Target Collection
 
-目标表，与哪个表关联。
+The target collection, the collection that is being related.
 
-### Foreign key
+### Foreign Key
 
-用于建立两个表之间的关联。一对一的外键放在源表或目标表里都可以，如果表示的「有一个」，外键放目标表里更合适；如果表示的「所属关系」，那外键放在源表里更合适。
+Used to establish a relationship between two collections. In a one-to-one relationship, the foreign key can be placed in either the source collection or the target collection. If it represents "having one," the foreign key is more appropriately placed in the target collection; if it represents "belonging to," then the foreign key is better placed in the source collection.
 
-### Source key <- Foreign key（外键在目标表）
+### Source Key <- Foreign Key (Foreign Key in the Target collection)
 
-外键约束引用的字段，必须具备唯一性。当外键放在目标时，表示「有一个」。
+The field referenced by the foreign key constraint must be unique. When the foreign key is placed in the target collection, it indicates "having one."
 
-### Target key <- Foreign key（外键在源表）
+### Target Key <- Foreign Key (Foreign Key in the Source collection)
 
-外键约束引用的字段，必须具备唯一性。当外键放在源表时，表示「所属关系」
+The field referenced by the foreign key constraint must be unique. When the foreign key is placed in the source collection, it indicates a "belonging relationship."
 
 ### ON DELETE
 
-ON DELETE 是指在删除父表中的记录时对相关子表中的外键引用的操作规则，它是用于定义外键约束时的一个选项。常见的 ON DELETE 选项包括：
+ON DELETE refers to the action rules for the foreign key reference in the related child collection when deleting records from the parent collection. It is an option defined when establishing a foreign key constraint. Common ON DELETE options include:
 
-- CASCADE：当删除父表中的记录时，自动删除子表中与之关联的所有记录。
-- SET NULL：当删除父表中的记录时，将子表中与之关联的外键值设为 NULL。
-- RESTRICT：默认选项，当试图删除父表中的记录时，如果存在与之关联的子表记录，则拒绝删除父表记录。
-- NO ACTION：与 RESTRICT 类似，如果存在与之关联的子表记录，则拒绝删除父表记录。
+- CASCADE: When a record in the parent collection is deleted, automatically delete all related records in the child collection.
+- SET NULL: When a record in the parent collection is deleted, set the foreign key value in the related child collection to NULL.
+- RESTRICT: The default option, where deletion of a parent collection record is refused if there are related records in the child collection.
+- NO ACTION: Similar to RESTRICT, deletion of a parent collection record is refused if there are related records in the child collection.

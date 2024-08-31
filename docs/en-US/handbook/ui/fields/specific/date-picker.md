@@ -1,21 +1,20 @@
-# 时间日期
+# Date picker
 
-## 介绍
+## Introduction
 
-日期字段支持自定义日期和时间格式。
+The date field offers flexibility with customizable date and time formats to suit your needs.
 
-## 哪里可以设置日期格式
+## Configuring Date Formats
 
-### 数据表字段
-
+### Data Table Fields
 
 ![20240417114311](https://static-docs.nocobase.com/20240417114311.png)
 
-### 字段设置
+### Field Settings
 
 ![20240409174158](https://static-docs.nocobase.com/20240409174158.png)
 
-除了预置的多种日期时间格式，还支持自定义格式满足个性化需求。
+Beyond the array of preset date and time formats, the system accommodates custom formats, allowing you to tailor the display to your specific preferences.
 
 ![20240409174559](https://static-docs.nocobase.com/20240409174559.png)
 

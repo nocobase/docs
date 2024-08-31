@@ -1,39 +1,40 @@
-# 区块高度
+# Block Height
 
-## 介绍
+## Introduction
 
-区块高度设置支持三种情况：默认高度、指定高度和全高。大部分区块都支持高度设置（甘特图区块暂不支持，图表区块通过参数控制高度。
+Block height settings in NocoBase accommodate three scenarios: default height, specified height, and full height. This feature is supported by most blocks, with the exception of Gantt chart blocks. For chart blocks, height is controlled through specific parameters.
 
 ![20240602194552](https://static-docs.nocobase.com/20240602194552.png)
 
 ![20240602194609](https://static-docs.nocobase.com/20240602194609.png)
 
-### 默认
+### Default Height
 
-不同类型的区块有不同的默认高度处理。例如，表格和表单区块会根据内容自适应高度，而看板区块的默认高度则设为视口高度的70%。
-### 指定高度
+Each block type handles default height uniquely. For instance, table and form blocks dynamically adjust their height to fit the content, while kanban blocks default to 70% of the viewport height.
 
-用户可以指定区块的外框总高度，区块内部自动计算并分配高度。
+### Specified Height
+
+Users have the flexibility to define the overall height of a block's outer frame. The block's internal components then automatically calculate and distribute the available space.
 
 ![20240604172359](https://static-docs.nocobase.com/20240604172359.gif)
 
-### 全高
+### Full Height
 
-与指定高度类似，全高模式会基于窗口可视区域的高度自动计算并分配区块的高度。页面不会出现滚动条，滚动条只会在区块内部出现。
+The full height mode, akin to specified height, automatically determines and allocates block height based on the window's visible area. This approach eliminates page-level scrollbars, confining them to the interior of individual blocks.
 
-不同区块的高度处理存在细节差异：
+Height handling varies subtly across different block types:
 
-- 表格： tbody 内部滚动；
-- 表单/详情： Grid 内滚动，也就是除了操作以外的部分滚动；
-- 列表/网格卡片： Grid 内滚动，也就是除了操作和分页栏以外的部分滚动；
-- 看板：列高（滚动条在每一列内部）；
-- 地图和日历：（整体自适应高度，无滚动条）；
-- Iframe/Markdown：限制的是区块外框总高度,滚动条出现在区块内;
+- Tables: Scrolling occurs within the tbody;
+- Forms/Details: The Grid area scrolls, excluding the operations section;
+- Lists/Grid Cards: The Grid area scrolls, excluding operations and pagination;
+- Kanban: Each column scrolls independently;
+- Maps and Calendars: Adapt to full height without scrollbars;
+- Iframes/Markdown: The block's outer frame height is fixed, with scrolling inside the block.
 
-#### 表格全高
+#### Full Height Table Example
 
 ![20240604172439](https://static-docs.nocobase.com/20240604172439.gif)
 
-#### 表单全高
+#### Full Height Form Example
 
 ![20240604222711](https://static-docs.nocobase.com/20240604222711.gif)

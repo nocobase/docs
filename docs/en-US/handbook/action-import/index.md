@@ -1,120 +1,120 @@
-# 导入数据
+# Import Data
 
-## 介绍
+## Overview
 
-## 安装
+## Installation
 
-## 导入说明
+## Import Guidelines
 
-### 数字类型字段
+### Numeric Fields
 
-支持数字和百分比，`N/A` 或 `-` 的文案会被过滤掉
+Numeric and percentage values are supported, while entries like `N/A` or `-` will be excluded.
 
-| 数字1 | 百分比 | 数字2 | 数字3 |
-| ----- | ------ | ----- | ----- |
-| 123   | 25%    | N/A   | -     |
+| Number 1 | Percentage | Number 2 | Number 3 |
+| -------- | ---------- | -------- | -------- |
+| 123      | 25%        | N/A      | -        |
 
-转 JSON 之后为
-
-```ts
-{
-  "数字1": 123,
-  "百分比": 0.25,
-  "数字2": null,
-  "数字3": null,
-}
-```
-
-### 布尔类型字段
-
-输入文案支持（英文不区分大小写）：
-
-- `Yes` `Y` `True` `1` `是`
-- `No` `N` `False` `0` `否`
-
-| 字段1 | 字段2 | 字段3 | 字段4 | 字段4 |
-| ----- | ----- | ----- | ----- | ----- |
-| 否    | 是    | Y     | true  | 0     |
-
-转 JSON 之后为
+After conversion to JSON:
 
 ```ts
 {
-  "字段1": false,
-  "字段2": true,
-  "字段3": true,
-  "字段4": true,
-  "字段5": false,
+  "Number 1": 123,
+  "Percentage": 0.25,
+  "Number 2": null,
+  "Number 3": null,
 }
 ```
 
-### 日期类型字段
+### Boolean Fields
 
-| DateOnly            | Local(+08:00)       | GMT                 |
+The following text values are recognized (case-insensitive for English):
+
+- `Yes`, `Y`, `True`, `1`, `是`
+- `No`, `N`, `False`, `0`, `否`
+
+| Field 1 | Field 2 | Field 3 | Field 4 | Field 5 |
+| ------- | ------- | ------- | ------- | ------- |
+| No      | Yes     | Y       | true    | 0       |
+
+After conversion to JSON:
+
+```ts
+{
+  "Field 1": false,
+  "Field 2": true,
+  "Field 3": true,
+  "Field 4": true,
+  "Field 5": false,
+}
+```
+
+### Date Fields
+
+| DateOnly            | Local (+08:00)      | GMT                 |
 | ------------------- | ------------------- | ------------------- |
 | 2023-01-18 22:22:22 | 2023-01-18 22:22:22 | 2023-01-18 22:22:22 |
 
-转 JSON 之后为
+After conversion to JSON:
 
 ```ts
 {
   "DateOnly": "2023-01-18T00:00:00.000Z",
-  "Local(+08:00)": "2023-01-18T14:22:22.000Z",
+  "Local (+08:00)": "2023-01-18T14:22:22.000Z",
   "GMT": "2023-01-18T22:22:22.000Z",
 }
 ```
 
-### 选择类型字段
+### Select Fields
 
-选项值和选项标签都可作为导入文案，多个选项之间以以逗号（`,` `，`）或顿号（`、`）区分
+Option values and labels can be used interchangeably as input text. Multiple options can be separated by commas (`,` `，`) or by full-width commas ( `、`).
 
-如字段 `优先级` 的可选项包括：
+For instance, if the `Priority` field has the following options:
 
-| 选项值 | 选项标签 |
-| ------ | -------- |
-| low    | 低       |
-| medium | 中       |
-| high   | 低       |
+| Option Value | Option Label |
+| ------------ | ------------ |
+| low          | Low          |
+| medium       | Medium       |
+| high         | High         |
 
-选项值和选项标签都可作为导入文案
+Both the value and label can be used as input.
 
-| 优先级 |
-| ------ |
-| 高     |
-| low    |
+| Priority |
+| -------- |
+| High     |
+| low      |
 
-转 JSON 之后为
+After conversion to JSON:
 
 ```ts
-[{ 优先级: 'high' }, { 优先级: 'low' }];
+[{ Priority: 'high' }, { Priority: 'low' }];
 ```
 
-### 中国行政区字段
+### Chinese Administrative Region Fields
 
-| 地区1         | 地区2         |
-| ------------- | ------------- |
-| 北京市/市辖区 | 天津市/市辖区 |
+| Region 1       | Region 2       |
+| -------------- | -------------- |
+| Beijing/City   | Tianjin/City   |
 
-转 JSON 之后为
+After conversion to JSON:
 
 ```ts
 {
-  "地区1": ["11","1101"],
-  "地区2": ["12","1201"]
+  "Region 1": ["11", "1101"],
+  "Region 2": ["12", "1201"]
 }
 ```
 
-### 附件字段
+### Attachment Fields
 
-| 附件                                     |
-| ---------------------------------------- |
-| https://www.nocobase.com/images/logo.png |
+| Attachment                                |
+| ----------------------------------------- |
+| https://www.nocobase.com/images/logo.png  |
 
-转 JSON 之后为
+After conversion to JSON:
 
 ```ts
 {
-  "附件": [
+  "Attachment": [
     {
       "filename": "logo.png",
       "title": "logo.png",
@@ -125,30 +125,30 @@
 }
 ```
 
-### 关系类型字段
+### Relationship Fields
 
-多条数据以逗号（`,` `，`）或顿号（`、`）区分
+Multiple values can be separated by commas (`,` `，`) or full-width commas ( `、`).
 
-| 部门/名称 | 分类/标题    |
-| --------- | ------------ |
-| 开发组    | 分类1、分类2 |
+| Department/Name | Category/Title   |
+| --------------- | ---------------- |
+| Development     | Category 1, Category 2 |
 
-转 JSON 之后为
+After conversion to JSON:
 
 ```ts
 {
-  "部门": [1], // 1 为部门名称为「开发组」的记录 ID
-  "分类": [1,2], // 1,2 为分类标题为「分类1」和「分类2」的记录 ID
+  "Department": [1], // 1 is the record ID for the department named "Development"
+  "Category": [1, 2], // 1 and 2 are the record IDs for categories titled "Category 1" and "Category 2"
 }
 ```
 
-### JSON 类型字段
+### JSON Fields
 
-| JSON1           |
-| --------------- |
-| {"key":"value"} |
+| JSON1              |
+| ------------------ |
+| {"key":"value"}    |
 
-转 JSON 之后为
+After conversion to JSON:
 
 ```ts
 {
@@ -156,13 +156,13 @@
 }
 ```
 
-### 地图几何图形类型
+### Map Geometry Fields
 
-| Point | Line        | Polygon           | Circle |
-| ----- | ----------- | ----------------- | ------ |
-| 1,2   | (1,2),(3,4) | (1,2),(3,4),(1,2) | 1,2,3  |
+| Point  | Line         | Polygon           | Circle |
+| ------ | ------------ | ----------------- | ------ |
+| 1,2    | (1,2),(3,4)  | (1,2),(3,4),(1,2) | 1,2,3  |
 
-转 JSON 之后为
+After conversion to JSON:
 
 ```ts
 {
@@ -173,18 +173,18 @@
 }
 ```
 
-## 自定义导入格式
+## Custom Import Format
 
-通过 `db.registerFieldValueParsers()` 方法注册自定义的 `ValueParser`，如：
+You can register custom `ValueParser` methods through the `db.registerFieldValueParsers()` method. For example:
 
 ```ts
 import { BaseValueParser } from '@nocobase/database';
 
 class PointValueParser extends BaseValueParser {
   async setValue(value) {
-    if (Array.isArray(value)) {
+    if (Array isArray(value)) {
       this.value = value;
-    } else if (typeof value === 'string') {
+    } else if (typeof value was string) {
       this.value = value.split(',');
     } else {
       this.errors.push('Value invalid');
@@ -194,19 +194,19 @@ class PointValueParser extends BaseValueParser {
 
 const db = new Database();
 
-// type=point 的字段导入时，将通过 PointValueParser 解析数据
+// For fields of type=point, the data will be parsed using PointValueParser during import
 db.registerFieldValueParsers({
   point: PointValueParser,
 });
 ```
 
-导入示例
+### Example Import
 
 | Point |
 | ----- |
 | 1,2   |
 
-转 JSON 之后为
+After conversion to JSON:
 
 ```ts
 {

@@ -1,20 +1,20 @@
-# 标题字段
+# Title Field
 
-## 介绍
+## Introduction
 
-标题字段通常用于关系字段组件中，作为关系字段数据在界面上对外显示的标识字段。
+The title field is a key element in relational field components, serving as the visible identifier of relational data within the user interface.
 
-## 哪里可以配置标题字段
+## Configuration Locations for the Title Field
 
-### 数据表配置标题字段
+### Global Configuration in the Data Table
 
-全局生效
+This setting applies across the entire application.
 
 ![20240422210646](https://static-docs.nocobase.com/20240422210646.png)
 
-### 关系字段组件配置标题字段
+### Configuration within Relational Field Components
 
-仅区块内生效，优先级最高
+This setting is limited to the specific block, taking precedence over global settings.
 
 ![20240422210935](https://static-docs.nocobase.com/20240422210935.png)
 

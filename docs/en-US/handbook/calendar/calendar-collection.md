@@ -1,11 +1,11 @@
-# 日历表
+# Calendar collection
 
 <PluginInfo name="calendar"></PluginInfo>
 
-## 介绍
+## Introduction
 
-日历表是一种用于存储日期和与日期相关信息的数据表，通常用于在应用程序或系统中跟踪时间和日期。日历表的设计旨在提供对日期的灵活和高效的访问，以便在需要时快速地获取与日期相关的信息。
+A calendar Collection is a specialized data table designed to store dates and date-related information. It is commonly used to manage and track time within applications or systems. The primary goal of the calendar table is to offer flexible and efficient access to date information, allowing for the swift retrieval of relevant data as needed.
 
-## 使用手册
+## User Manual
 
 ![20240512182454](https://static-docs.nocobase.com/20240512182454.png)

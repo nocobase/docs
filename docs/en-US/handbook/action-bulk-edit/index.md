@@ -1,25 +1,25 @@
-# 批量编辑
+# **Bulk Edit**
 
-## 介绍
+## Introduction
 
-批量编辑操作用于需要为不同记录组配置不同更新逻辑的情况，适用于灵活性要求较高的数据处理场景。用户点击批量编辑按钮后，系统会弹出一个配置界面，允许用户为每个字段指定不同的赋值逻辑。用户可以根据需要为每个记录指定特定的更新方式
+The Bulk editing feature is crafted for situations where different update logic must be applied to various groups of records, offering high flexibility in data processing tasks. When the user clicks the batch editing button, a configuration interface appears, enabling the user to define distinct assignment logic for each field. This allows for precise control over how each record is updated based on specific needs.
 
-![](https://static-docs.nocobase.com/70e1fb4122f56fc340405b16d229bd60.png)
+![Bulk Editing Interface](https://static-docs.nocobase.com/70e1fb4122f56fc340405b16d229bd60.png)
 
-## 安装
+## Installation
 
-## 使用指南
+## User Guide
 
-1. 设置批量编辑的数据：选中/所有，默认为选中
+1. Select the data for Bulk editing: either Selected or All, with the default option being Selected.
 
-![](https://static-docs.nocobase.com/c158538d86397bd48fdaed606b647166.png)
+![Bulk Editing Data Selection](https://static-docs.nocobase.com/c158538d86397bd48fdaed606b647166.png)
 
-2. 为字段设置更新逻辑，支持为特定字段设置逻辑
+2. Define the update logic for each field, with options to:
 
-- 不更新
-- 修改为指定值
-- 清空
+  - Leave unchanged
+  - Modify to a specified value
+  - Clear the field
 
-如图在运单表格区块中配置批量编辑操作，选中的数据，将运输模式修改为空运，确认送达和实际到达时间清空
+In the example shown, the Bulk editing operation is applied within the shipment table block. The selected data has the transportation mode updated to air freight, and both the delivery confirmation and actual arrival times are cleared.
 
-![](https://static-docs.nocobase.com/65db9e898d11b01441b7830895f4dd76.gif)
+![Bulk Editing Configuration](https://static-docs.nocobase.com/65db9e898d11b01441b7830895f4dd76.gif)
