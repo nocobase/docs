@@ -1,88 +1,88 @@
-# 网格卡片# 网格卡片
+# Grid Cards
 
-## 介绍
+## Introduction
 
-网格卡片区块以卡片形式展示数据记录的摘要信息，支持根据不同屏幕尺寸配置列数，以确保在不同尺寸的设备上友好显示。
+The Grid Card block offers a concise and visually appealing way to display summary information of data records. Designed for flexibility, it allows you to configure the number of columns based on screen size, ensuring a seamless user experience across all devices.
 
-### 添加区块
+### Adding Blocks
 
 <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240418120045.mp4" type="video/mp4">
 </video>
 
-## 区块配置项
+## Block Configuration Options
 
 ![20240419220708](https://static-docs.nocobase.com/20240419220708.png)
 
-### 数据范围
+### Data Scope
 
 <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240419173617.mp4" type="video/mp4">
 </video>
 
-更多内容参考 [设置数据范围](/handbook/ui/blocks/block-settings/data-scope)
+For a detailed guide, see [Setting the Data Scope](/handbook/ui/blocks/block-settings/data-scope).
 
-### 设置一行展示的列数
+### Configuring the Number of Columns per Row
 
 ![20240408160228](https://static-docs.nocobase.com/20240408160228.png)
 
-支持为不同屏幕尺寸配置列数。
+You can adjust the number of columns to fit different screen sizes, ensuring optimal display.
 
 ![20240408160844](https://static-docs.nocobase.com/20240408160844.png)
 
-### 设置数据加载方式
+### Configuring the Data Loading Method
 
-示例：连接数据区块+设置数据加载方式。
+Example: Connecting data blocks and setting the appropriate data loading method.
 
-订单表和商品表是多对多的关系，订单表格区块和商品网格卡片区块实现数据筛选联动，同时设置网格区块数据加载方式为“筛选数据后”。
+The Orders table and Products table have a many-to-many relationship. The Orders Table block and Products Grid Card block can be linked to enable data filtering. In this setup, the grid block’s data loading method is configured to load "After Filtering Data."
 
 <video width="100%" height="440" controls>
 <source src="https://static-docs.nocobase.com/20240419175643.mp4" type="video/mp4">
 </video>
 
-### 设置区块高度
+### Setting Block Height
 
-示例：设置订单网格卡片区块高度为「全高」模式。
+Example: Configure the Orders Grid Card block to display in "Full Height" mode for an expansive view.
 
 ![20240604232619](https://static-docs.nocobase.com/20240604232619.gif)
 
-更多内容参考 [区块高度](/handbook/ui/blocks/block-settings/block-height)
+For more details, refer to [Block Height](/handbook/ui/blocks/block-settings/block-height).
 
-- [设置排序规则](/handbook/ui/blocks/block-settings/sorting-rule)
-- [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
+- [Setting Sorting Rules](/handbook/ui/blocks/block-settings/sorting-rule)
+- [Saving as a Block Template](/handbook/ui/blocks/block-settings/block-template)
 
-## 配置字段
+## Configuring Fields
 
-### 本表字段
+### Fields of the Current Table
 
 ![20240418123118](https://static-docs.nocobase.com/20240418123118.png)
 
-### 关系表字段
+### Fields of Related Tables
 
 ![20240418123147](https://static-docs.nocobase.com/20240418123147.png)
 
-网格卡片区块字段配置项可参考 [详情字段](/handbook/ui/fields/generic/detail-form-item)
+For a comprehensive guide to field configuration options for the Grid Card block, see [Detail Fields](/handbook/ui/fields/generic/detail-form-item).
 
-## 配置操作
+## Configuring Actions
 
-### 全局操作
+### Global Actions
 
 ![20240418122905](https://static-docs.nocobase.com/20240418122905.png)
 
-- [筛选](/handbook/ui/actions/types/filter)
-- [添加](/handbook/ui/actions/types/add-new)
-- [删除](/handbook/ui/actions/types/delete)
-- [刷新](/handbook/ui/actions/types/refresh)
-- [导入](/handbook/action-import)
-- [导出](/handbook/action-export)
+- [Filter](/handbook/ui/actions/types/filter)
+- [Add](/handbook/ui/actions/types/add-new)
+- [Delete](/handbook/ui/actions/types/delete)
+- [Refresh](/handbook/ui/actions/types/refresh)
+- [Import](/handbook/action-import)
+- [Export](/handbook/action-export)
 
-### 行操作
+### Row Actions
 
 ![20240419222251](https://static-docs.nocobase.com/20240419222251.png)
 
-- [编辑](/handbook/ui/actions/types/edit)
-- [删除](/handbook/ui/actions/types/delete)
-- [弹窗](/handbook/ui/actions/types/pop-up)
-- [更新记录](/handbook/ui/actions/types/update-record)
-- [自定义请求](/handbook/action-custom-request)
-- [触发工作流](/handbook/workflow/manual/triggers/custom-action)
+- [Edit](/handbook/ui/actions/types/edit)
+- [Delete](/handbook/ui/actions/types/delete)
+- [Pop-up](/handbook/ui/actions/types/pop-up)
+- [Update Record](/handbook/ui/actions/types/update-record)
+- [Custom Request](/handbook/action-custom-request)
+- [Trigger Workflow](/handbook/workflow/manual/triggers/custom-action)

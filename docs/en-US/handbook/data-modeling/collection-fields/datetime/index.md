@@ -1,70 +1,68 @@
-# 概述
+# DateTime Field Types
 
-## 日期时间字段类型
+DateTime field types can be categorized as follows:
 
-日期时间字段类型包括以下几种：
+- **DateTime (with Time Zone):** These values are standardized to UTC (Coordinated Universal Time) and are subject to time zone adjustments when necessary.
+- **DateTime (without Time Zone):** This type stores date and time data without incorporating any time zone information.
+- **Date (without Time):** This format exclusively stores date information, omitting any time component.
+- **Time:** Stores only time information, excluding the date.
+- **Unix Timestamp:** This type represents the number of seconds that have elapsed since January 1, 1970, and is stored as a Unix timestamp.
 
-- **日期时间（含时区）** - 日期时间会统一转换为 UTC 时间（协调世界时），并在需要时进行时区转换；
-- **日期时间（不含时区）** - 存储不带时区信息的日期和时间；
-- **日期（不含时间）** - 仅存储日期，不包含时间部分；
-- **时间** - 仅存储时间，不包含日期部分；
-- **Unix 时间戳** - 存储为 Unix 时间戳，通常为自1970年1月1日以来的秒数。
+Here are examples for each DateTime-related field type:
 
-各日期相关字段类型的示例：
+| **Field Type**               | **Example Value**            | **Description**                                       |
+|------------------------------|------------------------------|-------------------------------------------------------|
+| DateTime (with Time Zone)     | 2024-08-24T07:30:00.000Z     | Converted to UTC and can be adjusted for time zones    |
+| DateTime (without Time Zone)  | 2024-08-24 15:30:00          | Stores date and time without time zone considerations  |
+| Date (without Time)           | 2024-08-24                   | Captures only the date, with no time information       |
+| Time                          | 15:30:00                     | Captures only the time, excluding any date details     |
+| Unix Timestamp                | 1724437800                   | Represents seconds since 1970-01-01 00:00:00 UTC       |
 
-| **字段类型**         | **示例值**                 | **描述**                                   |
-|--------------------|---------------------------|--------------------------------------------|
-| 日期时间（含时区）    | 2024-08-24T07:30:00.000Z   | 日期时间会统一转换为 UTC 时间（协调世界时）      |
-| 日期时间（不含时区）  | 2024-08-24 15:30:00        | 不带时区的日期时间，仅记录日期和时间             |
-| 日期（不含时间）     | 2024-08-24                 | 仅存储日期信息，不包括时间                     |
-| 时间               | 15:30:00                   | 仅存储时间信息，不包括日期                     |
-| Unix 时间戳        | 1724437800                 | 从 UTC 时间1970年1月1日00:00:00开始所经过的秒数 |
+## Data Source Comparisons
 
-## 各数据源对照
+Below is a comparison table for NocoBase, MySQL, and PostgreSQL:
 
-NocoBase、MySQL 和 PostgreSQL 的对照表格：
+| **Field Type**                | **NocoBase**               | **MySQL**                  | **PostgreSQL**                         |
+|-------------------------------|----------------------------|----------------------------|----------------------------------------|
+| DateTime (with Time Zone)      | Datetime with timezone     | TIMESTAMP<br/> DATETIME    | TIMESTAMP WITH TIME ZONE               |
+| DateTime (without Time Zone)   | Datetime without timezone  | DATETIME                   | TIMESTAMP WITHOUT TIME ZONE            |
+| Date (without Time)            | Date                       | DATE                       | DATE                                   |
+| Time                           | Time                       | TIME                       | TIME WITHOUT TIME ZONE                 |
+| Unix Timestamp                 | Unix timestamp             | INTEGER<br/>BIGINT         | INTEGER<br/>BIGINT                     |
+| Time (with Time Zone)          | -                          | -                          | TIME WITH TIME ZONE                    |
 
-| **字段类型**       | **NocoBase**               | **MySQL**          | **PostgreSQL**                |
-|------------------|-----------------------------|--------------------|-------------------------------|
-| 日期时间（含时区）   | Datetime with timezone    | TIMESTAMP<br/> DATETIME | TIMESTAMP WITH TIME ZONE      |
-| 日期时间（不含时区）  | Datetime without timezone  | DATETIME           | TIMESTAMP WITHOUT TIME ZONE   |
-| 日期（不含时间）     | Date                      | DATE                 | DATE                          |
-| 时间               | Time                     | TIME                 | TIME WITHOUT TIME ZONE        |
-| Unix 时间戳        | Unix timestamp            | INTEGER<br/>BIGINT   | INTEGER<br/>BIGINT              |
-| 时间（含时区）      | -                         | -                  | TIME WITH TIME ZONE           |
+**Note:**
+- MySQL’s TIMESTAMP type covers a range between `1970-01-01 00:00:01 UTC` and `2038-01-19 03:14:07 UTC`. For dates and times outside this range, it is recommended to use DATETIME or BIGINT to store Unix timestamps.
 
-备注：
-- MySQL TIMESTAMP 的数据范围介于 UTC 时间 `1970-01-01 00:00:01 ~ 2038-01-19 03:14:07` 之间，超出此范围时，建议使用 DATETIME 或 BIGINT 存储 Unix 时间戳。
+## DateTime Storage Processing Workflow
 
-## 日期时间存储的处理流程
+### With Time Zone
 
-### 含时区
-
-包括`日期时间（不含时区）`和 `Unix 时间戳`
+This includes `DateTime (without Time Zone)` and `Unix Timestamp`.
 
 ![20240824191933](https://static-docs.nocobase.com/20240824191933.png)
 
-备注：
-- 为了支持更广泛的数据范围，NocoBase 的日期时间（含时区）的字段 MySQL 数据库里使用的是 DATETIME，存储的日期值是根据服务端 TZ 环境变量转换之后的值，如果 TZ 环境变量变更之后，日期时间的存值会产生变化。
-- UTC 时间与本地时间存在时区差，直接展示 UTC 原始值可能会让用户误解。
+**Note:**
+- To accommodate a broader range of dates, NocoBase uses the DATETIME type in MySQL for DateTime (with Time Zone) fields. The date value stored is converted based on the server's TZ environment variable, meaning that if the TZ environment variable changes, the stored DateTime value will also change.
+- Since there is a time zone difference between UTC and local time, directly displaying the raw UTC value could lead to user confusion.
 
-### 不含时区
+### Without Time Zone
 
 ![20240824185600](https://static-docs.nocobase.com/20240824185600.png)
 
 ## UTC
 
-UTC（协调世界时，Coordinated Universal Time）是全球时间标准，用于协调和统一世界各地的时间。它是基于原子钟的高精度时间标准，并且与地球自转的时间保持同步。
+UTC (Coordinated Universal Time) is the global time standard used to coordinate and synchronize time worldwide. It is a highly precise time standard, maintained by atomic clocks, and synchronized with the Earth's rotation.
 
-UTC 时间与本地时间存在时区差，直接展示 UTC 原始值可能会让用户误解，例如：
+The difference between UTC and local time can cause confusion when displaying raw UTC values. For example:
 
-| **时区**       | **日期时间**                      |
-|----------------|----------------------------------|
-| UTC            | 2024-08-24T07:30:00.000Z          |
-| 东八区 (UTC+8) | 2024-08-24 15:30:00               |
-| 东五区 (UTC+5) | 2024-08-24 12:30:00               |
-| 西五区 (UTC-5) | 2024-08-24 02:30:00               |
-| 英国时间 (UTC+0) | 2024-08-24 07:30:00              |
-| 中部时间 (UTC-6) | 2024-08-23 01:30:00              |
+| **Time Zone**   | **DateTime**                    |
+|-----------------|---------------------------------|
+| UTC             | 2024-08-24T07:30:00.000Z        |
+| UTC+8           | 2024-08-24 15:30:00             |
+| UTC+5           | 2024-08-24 12:30:00             |
+| UTC-5           | 2024-08-24 02:30:00             |
+| UTC+0           | 2024-08-24 07:30:00             |
+| UTC-6           | 2024-08-23 01:30:00             |
 
-以上表示的都是一个时间，只是时区有所区别。
+These different times all correspond to the same moment, merely expressed in various time zones.

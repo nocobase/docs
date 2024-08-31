@@ -1,130 +1,129 @@
-# 日期计算
+# Date Calculation
 
 <PluginInfo name="workflow-date-calculation" link="/handbook/workflow-date-calculation" commercial="true"></PluginInfo>
 
-日期计算节点提供了包括增加时间段，减少时间段，时间字符串的格式化输出，时长单位转换在内的九种计算函数，每个函数都有特定的输入值类型和输出值类型，同时还能接收其他节点结果作为参数变量，并采用计算管道的方式将配置好的函数计算结果串连起来，最后得到一个预期的输出。
+The Date Calculation node offers a set of nine powerful functions, enabling operations such as adding or subtracting time periods, formatting time strings, and converting duration units. Each function is designed with specific input and output value types, and can seamlessly integrate the results from other nodes as parameter variables. By chaining these functions through a calculation pipeline, you can achieve the desired output with precision.
 
-## 使用手册
+## User Manual
 
-### 创建节点
+### Creating a Node
 
-在工作流配置界面中，点击流程中的加号（“+”）按钮，添加“时间计算”节点：
+To add a "Date Calculation" node in the workflow configuration interface, simply click the plus (“+”) button within the process:
 
-![日期计算节点_创建节点](https://static-docs.nocobase.com/[图片].png)
+![Create Node for Date Calculation](https://static-docs.nocobase.com/[图片].png)
 
-### 节点配置
+### Node Configuration
 
-![日期计算节点_节点配置](https://static-docs.nocobase.com/20240817184423.png)
+![Node Configuration for Date Calculation](https://static-docs.nocobase.com/20240817184423.png)
 
-#### 输入值
+#### Input Value
 
-输入值可以选择变量或者是日期的常量，变量可以是触发这个工作流的数据，也可以是这个工作流中上游节点的结果，常量则可以选择任何一个日期。
+Input values can be either variables or date constants. Variables might include data that triggers the workflow or results from upstream nodes. Constants can be any selected date.
 
-#### 输入值类型
+#### Input Value Type
 
-指代输入值的类型，有两种取值。
+The input value type determines how the input will be processed and is categorized into two types:
 
-* 日期类型：指输入值最终能转换为日期时间的类型，比如数值类型的时间戳或者是指代时间的字符串。
-* 数值类型：由于输入值的类型会影响下面时间运算步骤的选择，因此需要正确选择输入值的类型。
+* **Date Type:** This includes any input that can be converted into a date-time format, such as numeric timestamps or strings representing time.
+* **Number Type:** The input value type influences the selection of time calculation steps, so it’s crucial to choose the correct type.
 
-#### 计算步骤
+#### Calculation Steps
 
-每个计算步骤由一个计算函数和其参数配置组成，同时采用的是管道化的设计，上一个函数计算得到的结果会作为下一个函数计算的输入值继续参与计算，通过这种方式，可以完成一系列的时间计算和转换。
+Each calculation step consists of a specific function and its parameter configuration. The pipeline design allows the output of one function to feed directly into the next, enabling a sequence of time calculations and conversions.
 
-每个计算步骤之后，输出的类型也是固定的，并会影响下一步计算可使用的函数，类型匹配才可以继续计算。否则一个步骤的结果将作为最后节点的输出结果。
+The output type after each step is fixed, which in turn determines the functions available for the next step. If the types are compatible, the calculation continues; if not, the result of the current step becomes the final output of the node.
 
-### 计算函数
+### Calculation Functions
 
-#### 加一段时间
+#### Add a range
 
-- 接收输入值类型：日期
-- 参数
-  - 增加的数量，可以填写数字，也可以选择节点内置的变量。
-  - 时间单位。
-- 输出值类型：日期
-- 示例：输入值为 `2024-7-15 00:00:00`，数量为 `1`，单位为“天”时，则计算结果为 `2024-7-16 00:00:00`。
+- **Accepted Input Value Type:** Date
+- **Parameters:**
+  - The amount to add, which can be a numeric value or a variable from within the node.
+  - The time unit (e.g., days, hours).
+- **Output Value Type:** Date
+- **Example:** If the input value is `2024-7-15 00:00:00`, the amount is `1`, and the unit is "days," the output will be `2024-7-16 00:00:00`.
 
-#### 减一段时间
+#### Subtract a range
 
-- 接收输入值类型：日期
-- 参数
-  - 减少的数量，可以填写数字，也可以选择节点内置的变量。
-  - 时间单位。
-- 输出值类型：日期
-- 示例：输入值为 `2024-7-15 00:00:00`，数量为 `1`，单位为“天”时，则计算结果为 `2024-7-14 00:00:00`。
+- **Accepted Input Value Type:** Date
+- **Parameters:**
+  - The amount to subtract, which can be a numeric value or a variable from within the node.
+  - The time unit (e.g., days, hours).
+- **Output Value Type:** Date
+- **Example:** If the input value is `2024-7-15 00:00:00`, the amount is `1`, and the unit is "days," the output will be `2024-7-14 00:00:00`.
 
-#### 计算与另一个时间的差值
+#### Get difference with another data value
 
-- 接收输入值类型：日期
-- 参数
-  - 需要计算差值的日期，可以选择一个日期常量，也可以选择工作流上下文中的变量。
-  - 时间单位。
-  - 是否取绝对值。
-  - 取整操作：可选择保留小数，四舍五入，向上取整和向下取整。
-- 输出值类型：数值
-- 示例：输入值为 `2024-7-15 00:00:00`，比较对象为 `2024-7-16 06:00:00`，单位为“天”，不取绝对值，保留小数时，则计算结果为 `-1.25`。
+- **Accepted Input Value Type:** Date
+- **Parameters:**
+  - The date for comparison, which can be a constant or a variable in the workflow context.
+  - The time unit (e.g., days, hours).
+  - Whether to take the absolute value.
+  - Rounding options: retain decimals, round off, round up, or round down.
+- **Output Value Type:** Numeric
+- **Example:** If the input value is `2024-7-15 00:00:00`, and you compare it with `2024-7-16 06:00:00`, using "days" as the unit, without taking the absolute value and retaining decimals, the output will be `-1.25`.
 
-:::info{title=提示}
-绝对值和取整同时配置时，会先取绝对值再取整。
+:::info{title=Note}
+If both absolute value and rounding are selected, the absolute value is applied first, followed by rounding.
 :::
 
-#### 取时间在特定单位上的数值
+#### Get value on specific unit of input date
 
-- 接收输入值类型：日期
-- 参数
-  - 时间单位。
-- 输出值类型：数值
-- 示例：输入值为 `2024-7-15 00:00:00`，单位为“天”时，则计算结果为 `15`。
+- **Accepted Input Value Type:** Date
+- **Parameters:**
+  - The time unit (e.g., days, hours).
+- **Output Value Type:** Numeric
+- **Example:** If the input value is `2024-7-15 00:00:00` and the unit is "days," the output will be `15`.
 
-#### 将日期设置为特定单位的开始时间
+#### Set to time of unit start
 
-- 接收输入值类型：日期
-- 参数
-  - 时间单位。
-- 输出值类型：日期
-- 示例：输入值为 `2024-7-15 14:26:30`，单位为“天”时。则计算结果为 `2024-7-15 00:00:00`
+- **Accepted Input Value Type:** Date
+- **Parameters:**
+  - The time unit (e.g., days, hours).
+- **Output Value Type:** Date
+- **Example:** If the input value is `2024-7-15 14:26:30` and the unit is "days," the output will be `2024-7-15 00:00:00`.
 
-#### 将日期设置为特定单位的结束时间
+#### Set to time of unit end
 
-- 接收输入值类型：日期
-- 参数
-  - 时间单位。
-- 输出值类型：日期
-- 示例：输入值为 `2024-7-15 14:26:30`，单位为“天”时。则计算结果为 `2024-7-15 23:59:59`
+- **Accepted Input Value Type:** Date
+- **Parameters:**
+  - The time unit (e.g., days, hours).
+- **Output Value Type:** Date
+- **Example:** If the input value is `2024-7-15 14:26:30` and the unit is "days," the output will be `2024-7-15 23:59:59`.
 
-#### 判断闰年
+#### Is leap year
 
-- 接收输入值类型：日期
-- 参数
-  - 无参数
-- 输出值类型：布尔
-- 示例：输入值为 `2024-7-15 14:26:30`，则计算结果为 `true`。
+- **Accepted Input Value Type:** Date
+- **Parameters:** None
+- **Output Value Type:** Boolean
+- **Example:** If the input value is `2024-7-15 14:26:30`, the output will be `true`.
 
-#### 格式化为字符串
+#### Format to String
 
-- 接收输入值类型：日期
-- 参数
-  - 格式，参考 [Day.js: Format](https://day.js.org/docs/zh-CN/display/format)
-- 输出值类型：字符串
-- 示例：输入值为 `2024-7-15 14:26:30`，格式为 `the time is YYYY/MM/DD HH:mm:ss`，则计算结果为 `the time is 2024/07/15 14:26:30`。
+- **Accepted Input Value Type:** Date
+- **Parameters:**
+  - The format, as specified in [Day.js: Format](https://day.js.org/docs/zh-CN/display/format).
+- **Output Value Type:** String
+- **Example:** If the input value is `2024-7-15 14:26:30` and the format is `the time is YYYY/MM/DD HH:mm:ss`, the output will be `the time is 2024/07/15 14:26:30`.
 
-#### 转换单位
+#### Convert unit
 
-- 接收输入值类型：数值
-- 参数
-  - 转换前的时间单位。
-  - 转换后的时间单位。
-  - 取整操作，可选保留小数，四舍五入，向上取整和向下取整。
-- 输出值类型：数值
-- 示例：输入值为 `2`，转换前的单位为“周”，转换后的单位为“天”，不保留小数时，则计算结果为 `14`。
+- **Accepted Input Value Type:** Numeric
+- **Parameters:**
+  - The original time unit.
+  - The target time unit.
+  - Rounding options: retain decimals, round off, round up, or round down.
+- **Output Value Type:** Numeric
+- **Example:** If the input value is `2`, the original unit is "weeks," the target unit is "days," and no decimals are retained, the output will be `14`.
 
-### 示例
+### Example
 
-![日期计算节点_示例](https://static-docs.nocobase.com/20240817184137.png)
+![Example of Date Calculation Node](https://static-docs.nocobase.com/20240817184137.png)
 
-假设有促销活动，我们希望每个商品创建的时候能在商品的字段上加上一个促销活动的结束时间，这个结束时间是在商品创建时间的下一周的最后一天的晚上 23:59:59，于是我们可以创建两个时间函数，并让它们以管道的方式运行：
+Imagine a promotional activity where you want to automatically set an end time for the promotion when a product is created. This end time would be the last day of the following week at 23:59:59. To achieve this, you can create two time functions and link them in a pipeline:
 
-- 计算得到下个星期的时间
-- 将得到的结果重置为所在星期的最后一天 23:59:59
+1. Calculate the date for the following week.
+2. Adjust the date to the last day of that week at 23:59:59.
 
-这样就得到我们期望的时间值，并传入下一个节点，例如数据表修改节点，将促销活动的结束时间加入到数据表中。
+By doing this, you'll generate the desired time value, which can then be passed to the next node, such as a data table modification node, to set the promotion end time in the database.

@@ -1,31 +1,31 @@
-# 批量编辑表单字段#
+# Bulk Edit Fields
 
-## 介绍
+## Introduction
 
-批量编辑表单是批量编辑操作特有的表单区块。
+The Bulk edit form is a specialized form block designed for batch editing operations.
 
 ![20240425100652](https://static-docs.nocobase.com/20240425100652.png)
 
 ![20240422151115](https://static-docs.nocobase.com/20240422151115.png)
 
-## 配置字段
+## Field Configuration
 
-仅支持配置本表字段，字段更新逻辑有三种。
+You can configure only the fields within the current table. There are three methods for updating fields:
 
-- 不更新：提交后字段保持原值；
-- 修改为：字段为必填；
-- 清空：提交后清空字段的值；
+- **No Update:** The field retains its original value after submission.
+- **Modify To:** The field becomes required.
+- **Clear:** The field's value is cleared after submission.
 
 ![20240425100730](https://static-docs.nocobase.com/20240425100730.png)
 
-关系字段可以切换字段组件灵活使用。
+For relationship fields, you can flexibly switch between different field components.
 
 ![20240425100857](https://static-docs.nocobase.com/20240425100857.png)
 
-## 字段配置项
+## Field Configuration Options
 
-- [编辑字段标题](/handbook/ui/fields/field-settings/edit-title)
-- [显示标题](/handbook/ui/fields/field-settings/display-title)
-- [编辑字段描述](/handbook/ui/fields/field-settings/edit-description)
-- [编辑字段提示信息](/handbook/ui/fields/field-settings/edit-tooltip)
-- [设置验证规则](/handbook/ui/fields/field-settings/validation-rules)
+- [Edit Field Title](/handbook/ui/fields/field-settings/edit-title)
+- [Display Title](/handbook/ui/fields/field-settings/display-title)
+- [Edit Field Description](/handbook/ui/fields/field-settings/edit-description)
+- [Edit Field Tooltip](/handbook/ui/fields/field-settings/edit-tooltip)
+- [Set Validation Rules](/handbook/ui/fields/field-settings/validation-rules)

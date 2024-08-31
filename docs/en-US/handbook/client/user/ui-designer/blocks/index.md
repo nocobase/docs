@@ -1,90 +1,90 @@
-# 区块
+# Block
 
-区块是内容的载体，可以放置于页面（Page）、对话框（Modal）或抽屉（Drawer）里，多个区块可以自由拖拽排列。
+A block serves as the content container, designed to be placed within a page, modal, or drawer. These blocks can be easily rearranged through drag-and-drop functionality, allowing for flexible layout customization.
 
-## 添加区块
+## Adding Blocks
 
-区块可以放置于页面（Page）、对话框（Modal）或抽屉（Drawer）里
+Blocks can be seamlessly integrated into a page, a modal, or a drawer, depending on the desired application.
 
-### 页面里的区块
+### Blocks within Pages
 
-目前页面里的区块类型包括：数据区块、筛选区块、其他区块
+Within pages, you can choose from various block types, including Data Blocks, Filter Blocks, and Other Blocks, each serving distinct purposes.
 
 ![](https://static-docs.nocobase.com/dad0a394d33dd26f31c3202a76bb0153.png)
 
-### 弹窗（对话框或抽屉）里的区块
+### Blocks within Modals (Dialogs or Drawers)
 
-弹窗有对话框和抽屉两种，和页面一样也可以添加区块，区别在于弹窗里的区块通常为单条记录的添加、编辑或查看等，区块类型包括当前数据区块、关系区块、其他区块。
+Modals, which include dialogs and drawers, also support block integration. While similar to pages, the blocks within modals are typically used for operations related to single records, such as adding, editing, or viewing data. Available block types include Current Data Blocks, Relationship Blocks, and Other Blocks.
 
-#### 抽屉
+#### Drawers
 
 ![](https://static-docs.nocobase.com/e18726fb0b52ddab89b9b1a44788f361.png)
 
-#### 对话框
+#### Dialogs
 
 ![](https://static-docs.nocobase.com/4763fc5fc008bdf3915f84a7e433c0f8.png)
 
-## 区块的设计器
+## Block Designer
 
-每个区块右上角都有三个小图标，从左到右分别为：
+Each block features three icons in the upper right corner, offering easy access to essential tools:
 
-1. 拖拽布局
-2. 快捷添加区块
-3. 区块参数配置
+1. Drag-and-Drop Layout
+2. Quick Add Block
+3. Block Parameter Configuration
 
 ![](https://static-docs.nocobase.com/b488f3013532a246df59b89c0688a58f.png)
 
-简单的区块所有的配置项都集中在「区块参数配置」里，如 Markdown
+For simple blocks, all configuration options are centralized under "Block Parameter Configuration," such as in Markdown blocks.
 
 ![](https://static-docs.nocobase.com/f37e277863068b2661f66d4020af806a.png)
 
-复杂的数据类型区块还会提供独立的内嵌的「配置字段」和「配置操作」
+More complex blocks, especially those dealing with data, provide additional embedded options like "Configure Field" and "Configure Action," offering greater flexibility.
 
 ![](https://static-docs.nocobase.com/71b550da637d23145a5f62d48ee8521b.png)
 
-除此之外，也可以自由发挥，提供更多嵌套的可能，如图表区块
+Moreover, you can explore advanced nesting possibilities, as demonstrated by the Chart Block.
 
 ![](https://static-docs.nocobase.com/07588190b3f41ae3060e71d8b76b4447.png)
 
-## 区块布局
+## Block Layout
 
-多个区块可以通过拖拽调整布局
+To customize the layout, simply drag and drop blocks into your preferred arrangement.
 
 ![](https://static-docs.nocobase.com/f6692295ac0917f3babce9a60ce80879.gif)
 
-## 区块模板
+## Block Templates
 
-可以将一个数据类型区块保存为模板，以后添加区块时可以直接复制或引用这个模板。比如，一个数据表的表单，既用于新增数据，又用于编辑数据，那就可以将这个表单保存为模板，在新增数据和编辑数据的界面里引用它。
+You can save any data-type block as a template, which allows for quick duplication or referencing in future projects. For example, a form used for both adding and editing data can be saved as a template, streamlining your workflow by reusing it in different contexts.
 
-### 如何添加和使用模板？
+### How to Add and Use Templates
 
-1. 将数据区块保存为区块模板（只有数据类型的区块才有这个配置项）
+1. Save a data block as a block template (note: only data-type blocks have this feature).
 
 ![](https://static-docs.nocobase.com/b7718cea8784587d53524ade3c5b0a82.png)
 
-1. 添加区块时，选择复制或引用模板
+2. When adding a block, select either the duplicate or reference option for the template.
 
 ![](https://static-docs.nocobase.com/135df7344e0f3080199e4bb1071c2fa6.png)
 
-### 复制和引用的区别
+### Difference Between Duplicate and Referencing
 
-复制是基于区块模板创建的全新区块，区块有调整不影响模块；引用是直接使用区块模板，区块调整会改变模板，所有引用了当前模板的区块都会产生变化。
+Duplicate template a new block based on the template, with no link to the original template—any changes to the block will not affect the template. Referencing, however, directly links to the template, meaning any changes to the block will alter the template, and all instances where the template is referenced will be updated accordingly.
 
-## 区块类型
+## Block Types
 
-NocoBase 默认将区块分为四种类型：
+NocoBase categorizes blocks into four primary types:
 
-- 数据区块：可以将 Collection 的数据展示在区块里
-- 筛选区块：目前只能在页面里添加，可用于数据区块的数据筛选
-- 关系区块：目前只能在弹窗里添加，可用于当前记录的关系数据的增删改查等
-- 其他区块：用于放置独立区块，如 Markdown、审计日志区块、工作流待办区块等
+- **Data Blocks:** Used to display Collection data within the block.
+- **Filter Blocks:** These can be added to pages and are specifically designed for filtering data within Data Blocks.
+- **Relationship Blocks:** These are added to modals and are used for CRUD operations on data related to the current record.
+- **Other Blocks:** These include standalone blocks like Markdown, Audit Log blocks, Workflow To-Do blocks, etc.
 
-### 数据区块
+### Data Blocks
 
-### 筛选区块
+### Filter Blocks
 
-### 关系区块
+### Relationship Blocks
 
-### 其他区块
+### Other Blocks
 
-## 筛选联动
+## Filter Interactions

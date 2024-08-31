@@ -1,17 +1,15 @@
-# 界面设计器
+# Interface Designer
 
-当激活界面配置按钮，进入 UI 配置状态
+When the interface configuration button is activated, it enters the UI configuration state.
 
 ![](https://static-docs.nocobase.com/0619e0aa0b24b81b8c08d7c572d3e0ba.jpg)
 
-界面设计器的组成部分
+### Components of the Interface Designer
 
-1. 菜单
-2. 页面
-3. 区块
-
-   - 无字段和操作的区块
-   - 带字段和操作的区块
-
-4. 字段（附属于区块）
-5. 操作（附属于区块）
+1. Menu
+2. Page
+3. Block
+  - Blocks without fields or operations
+  - Blocks with fields and operations
+4. Fields (attached to blocks)
+5. Operations (attached to blocks)

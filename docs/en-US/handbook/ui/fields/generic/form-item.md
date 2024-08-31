@@ -1,58 +1,59 @@
-# 表单字段
+# Data blocks - Form Fields
 
-## 介绍
+## Introduction
 
-表单中不同类型的字段有不同的配置项，支持用户通过插件扩展字段的配置项满足更多个性化需求。
+Different types of fields in a form have different configuration options, allowing users to extend the configuration options through plugins to meet more personalized needs.
 
 ![20240408221914](https://static-docs.nocobase.com/20240408221914.png)
 
-显示关联表的字段（一对一或多对一的关系字段），显示为只读。
+Displays fields related to associated tables (one-to-one or many-to-one relationship fields) as read-only.
 
 ![20240413222636](https://static-docs.nocobase.com/20240413222636.png)
 
-   <video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240413223027.mp4" type="video/mp4">
-    </video>
+<video width="100%" height="440" controls>
+  <source src="https://static-docs.nocobase.com/20240413223027.mp4" type="video/mp4">
+</video>
 
-## 字段配置项
+## Field Configuration Options
 
-### 默认值
+### Default Values
 
-支持为字段配置常量/变量作为默认值。
+Supports setting constants/variables as the default values for fields.
 
 ![20240417094124](https://static-docs.nocobase.com/20240417094124.png)
 
-更多内容参考 [设置默认值](/handbook/ui/fields/field-settings/default-value)
+For more information, refer to [Setting Default Values](/handbook/ui/fields/field-settings/default-value).
 
-### 设置验证规则
+### Setting Validation Rules
 
 ![20240417095037](https://static-docs.nocobase.com/20240417095037.png)
 
-更多内容参考 [设置验证规则](/handbook/ui/fields/field-settings/validation-rules)
+For more information, refer to [Setting Validation Rules](/handbook/ui/fields/field-settings/validation-rules).
 
-### 必填
+### Required Fields
 
 ![20240417111850](https://static-docs.nocobase.com/20240417111850.png)
 
-更多内容参考 [必填](/handbook/ui/fields/field-settings/required)
+For more information, refer to [Required Fields](/handbook/ui/fields/field-settings/required).
 
-- [编辑字段标题](/handbook/ui/fields/field-settings/edit-title)
-- [显示标题](/handbook/ui/fields/field-settings/display-title)
-- [编辑字段描述](/handbook/ui/fields/field-settings/edit-description)
-- [编辑字段提示信息](/handbook/ui/fields/field-settings/edit-tooltip)
-- [模式](/handbook/ui/fields/field-settings/pattern)
+- [Edit Field Title](/handbook/ui/fields/field-settings/edit-title)
+- [Display Title](/handbook/ui/fields/field-settings/display-title)
+- [Edit Field Description](/handbook/ui/fields/field-settings/edit-description)
+- [Edit Field Tooltip](/handbook/ui/fields/field-settings/edit-tooltip)
+- [Pattern](/handbook/ui/fields/field-settings/pattern)
 
-### 字段组件
+### Field Components
 
-部分字段支持切换为其他组件，例如：`URL` 组件可以切换为 `Preview` 组件。
+Some fields support switching to other components. For example, the `URL` component can be switched to the `Preview` component.
 
 ![20240806164801](https://static-docs.nocobase.com/20240806164801.png)
 
-如果你需要扩展更多的组件，可以参考 [扩展有值字段组件组件](/plugin-samples/field/value)。
-### 风格
+If you need to extend more components, refer to [Extending Value Field Components](/plugin-samples/field/value).
 
-表单在阅读模式下可以设置风格
+### Style
 
-![2024-06-26-15-16-09-表单风格入口](https://static-docs.nocobase.com/2024-06-26-15-16-09-表单风格入口.png)
-![2024-06-26-15-21-31-样式配置](https://static-docs.nocobase.com/2024-06-26-15-21-31-样式配置.png)
-![2024-06-26-15-22-42-表单-最终效果](https://static-docs.nocobase.com/2024-06-26-15-22-42-表单-最终效果.png)
+In reading mode, the form can be styled.
+
+![2024-06-26-15-16-09-Form Style Entry](https://static-docs.nocobase.com/2024-06-26-15-16-09-表单风格入口.png)
+![2024-06-26-15-21-31-Style Configuration](https://static-docs.nocobase.com/2024-06-26-15-21-31-样式配置.png)
+![2024-06-26-15-22-42-Final Form Effect](https://static-docs.nocobase.com/2024-06-26-15-22-42-表单-最终效果.png)

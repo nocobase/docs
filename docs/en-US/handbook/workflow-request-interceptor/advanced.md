@@ -1,42 +1,42 @@
 # Advanced Understanding
 
-## 达成拦截的条件
+**Conditions for Interception**
 
-在“操作前事件”中有两种条件会导致对应操作被拦截：
+In "pre-action events," two specific conditions may cause the corresponding operation to be intercepted:
 
-1. 流程执行到任意的“结束流程”节点，类似前面的使用说明中，当触发流程的数据不满足“条件判断”节点中预设的条件时，会进入“否”的分支并执行“结束流程”节点，此时流程会结束，并且请求的操作将被拦截。
-2. 流程中的任意节点执行失败，包括节点执行出错，或其他异常情况，此时流程会以对应状态结束，并且请求的操作也将被拦截。例如流程中有通过“HTTP 请求”调用外部数据时，如果请求失败，该流程以失败的状态结束的同时，也会拦截对应的操作请求。
+1. The process reaches an "End Process" node. As explained earlier, if the triggering data does not meet the conditions set in the "Condition" node, the process will follow the "No" branch, executing the "End Process" node. This causes the process to terminate, and the requested operation is intercepted.
+2. Any node within the process fails to execute—whether due to an error or other exceptional circumstances. In such cases, the process concludes with the corresponding status, and the operation is intercepted. For instance, if an "HTTP Request" is used to fetch external data and the request fails, the process ends in a failed state, simultaneously intercepting the corresponding operation request.
 
-达成拦截条件后，对应的操作不再会被执行，例如提交订单被拦截后，不会生成对应的订单数据。
+Once these interception conditions are met, the operation in question is halted entirely. For example, if an order submission is intercepted, no corresponding order data will be generated.
 
-## 对应操作的相关参数
+**Parameters for Corresponding Operations**
 
-“操作前事件”类型的工作流中，针对不同的操作，触发器中有不同的数据可作为变量在流程中使用：
+In "pre-action event" workflows, various data points are available as variables within the process, depending on the operation:
 
-| 操作类型 \\ 变量   | “操作者” | “操作者角色标识” | 操作参数：“ID” | 操作参数：“提交的数据对象” |
-| ------------------ | -------- | ---------------- | -------------- | -------------------------- |
-| 创建一条记录       | ✓        | ✓                | -              | ✓                          |
-| 更新一条记录       | ✓        | ✓                | ✓              | ✓                          |
-| 删除单条或多条记录 | ✓        | ✓                | ✓              | -                          |
+| Operation Type \\ Variable | "User acted" | "Role of user acted" | Operation Parameter: "ID" | Parameter: "Values submitted" |
+| -------------------------- | ---------- | -------------------------- | ------------------------- | -------------------------------------------- |
+| Create a record             | ✓          | ✓                          | -                         | ✓                                              |
+| Update a record             | ✓          | ✓                          | ✓                         | ✓                                              |
+| Delete one or more records  | ✓          | ✓                          | ✓                         | -                                              |
 
-:::info{title=提示}
-操作前事件的变量“触发器数据 / 操作参数 / 提交的数据对象”，不是数据库中的实际数据，只是操作提交的相关参数，如果需要数据库中的实际数据，需要在流程中通过“查询数据”节点查询出相关数据。
+:::info{title=Tip}
+The variables "Trigger variables / Parameter / Values submitted" in pre-action events are not the actual data stored in the database but the parameters submitted with the operation. To retrieve actual database data, you must use the "Query record" node within the process.
 
-另外对于删除操作，在针对单条记录时，操作参数中的“ID”是一个简单的值，而在针对多条记录时，操作参数中的“ID”是一个数组。
+Additionally, for delete operations, when dealing with a single record, the "ID" in the operation parameters is a simple value. For multiple records, however, the "ID" is an array.
 :::
 
-## 输出响应消息
+**Response Messages**
 
-配置好触发器之后，可以在工作流中自定义相关的判断逻辑，通常会使用“条件判断”节点的分支模式，根据具体业务条件判断结果，选择是否“结束流程”，并返回预设的“响应消息”：
+Once the trigger is configured, you can define the relevant logic within the workflow. Typically, the "Condition" node's branching mechanism is used to decide whether to "End Process" based on specific business conditions, returning a pre-defined "Response Message":
 
-![拦截流程配置](https://static-docs.nocobase.com/cfddda5d8012fd3d0ca09f04ea610539.png)
+![Interception Process Configuration](https://static-docs.nocobase.com/cfddda5d8012fd3d0ca09f04ea610539.png)
 
-至此即完成了对应工作流的配置，并可以尝试提交一个不满足流程中条件判断配置的数据，触发拦截器的拦截逻辑，这时可以看到返回的响应消息：
+At this stage, the workflow configuration is complete. You can test it by submitting data that does not meet the configured conditions, triggering the interception logic. This will result in the return of a response message:
 
-![提示出错的响应消息](https://static-docs.nocobase.com/06bd4a6b6ec499c853f0c39987f63a6a.png)
+![Error Response Message](https://static-docs.nocobase.com/06bd4a6b6ec499c853f0c39987f63a6a.png)
 
-#### 响应消息的状态
+**Response Message Status**
 
-如果在“结束流程”节点中配置的是以“成功”状态退出，且执行到该“结束流程”节点时，该操作的请求仍会被拦截，但返回的响应消息会以“成功”（而不是“错误”）的状态显示：
+If the "End Process" node is set to exit with a "Success" status and the process reaches this node, the operation request will still be intercepted. However, the returned response message will display a "Success" (instead of "Error") status:
 
-![成功状态的响应消息](https://static-docs.nocobase.com/9559bbf56067144759451294b18c790e.png)
+![Success Status Response Message](https://static-docs.nocobase.com/9559bbf56067144759451294b18c790e.png)

@@ -1,17 +1,17 @@
-# 多行文本
+# TextArea
 
-## 介绍
+## Introduction
 
-## 字段配置
+## Field configuration
 
 ![20240512165017](https://static-docs.nocobase.com/20240512165017.png)
 
-## 界面配置
+## UI interface configuration
 
-可编辑模式
+Edit mode
 
 ![20240512164001](https://static-docs.nocobase.com/20240512164001.png)
 
-阅读模式
+Read mode
 
 ![20240512164138](https://static-docs.nocobase.com/20240512164138.png)

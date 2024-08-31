@@ -1,124 +1,126 @@
-# 默认值
+# Default Values
 
-## 介绍
+## Introduction
 
-默认值是字段在新建状态下的初始值。可以在数据表配置字段时为其设定默认值，也可以在新增表单区块中为字段指定默认值，可以设置为常量或变量。
-## 哪些地方可以配置默认值
+Default values are the initial values for fields in a new state. You can set default values when configuring fields in a data table, or you can specify default values for fields in a new form block. These values can be constants or variables.
 
-### 数据表字段
+## Where Can Default Values Be Configured?
+
+### Data Table Fields
 
 ![20240411095933](https://static-docs.nocobase.com/20240411095933.png)
 
-### 新增表单的字段
+### Fields in New Forms
 
-新增表单的大部分字段都支持设置默认值。
+Most fields in new forms support setting default values.
 
 ![20240411100030](https://static-docs.nocobase.com/20240411100030.png)
 
-### 子表单的添加
+### Adding Subforms
 
-无论是新增或编辑表单里的子表单字段添加的子数据都有默认值。
+Whether adding subforms in new or edit forms, the added sub-data will have default values.
 
-子表单的 Add new
+Subform "Add new"
 
 ![20240411100341](https://static-docs.nocobase.com/20240411100341.png)
 
-子表格 Add new
+Subtable "Add new"
 
 ![20240411100424](https://static-docs.nocobase.com/20240411100424.png)
 
 ![20240411100634](https://static-docs.nocobase.com/20240411100634.png)
 
-编辑已有的数据，数据为空时也不会被默认值填充，新添加的数据才会用默认值填充，未保存。
+When editing existing data, if the data is empty, it will not be filled with default values; only newly added data will be filled with default values and will not be saved.
 
 ![20240411100729](https://static-docs.nocobase.com/20240411100729.png)
 
+### Default Values for Relationship Data
 
-### 关系数据的默认值
-
-只有「**多对一**」和「**多对多**」类型的关系，并使用的选择器组件（Select、RecordPicker）时才有默认值。
+Default values are only available for "many-to-one" and "many-to-many" relationship types when using selector components (Select, RecordPicker).
 
 ![20240411101025](https://static-docs.nocobase.com/20240411101025.png)
 
-## 默认值变量
+## Default Value Variables
 
-### 有哪些变量
+### What Variables Are Available?
 
-- 日期变量；
-- 当前用户；
-- 当前记录，已存在的数据才有当前记录的概念；
-- 当前表单，理想情况只列出表单里的字段；
-- 当前对象，子表单里的概念（子表单里的每一行数据对象）；
-- 表单选中记录，目前仅限于 「Table 区块 + Add Record 表单」组合；
+- Date variables;
+- Current user;
+- Current record (the concept only applies to existing data);
+- Current form (ideally, only fields in the form are listed);
+- Current object (concept for each row of data in a subform);
+- Form selected records (currently limited to the "Table Block + Add Record Form" combination);
 
-更多关于变量内容参考 [变量](/handbook/ui/variables)
+For more information on variables, refer to [Variables](/handbook/ui/variables).
 
-### 字段默认值变量
+### Field Default Value Variables
 
-分为非关系字段和关系字段两类。
+There are two types: non-relational field variables and relational field variables.
 
-#### 关系字段默认值变量
+#### Relational Field Default Value Variables
 
-- 变量对象必须是 collection 记录；
-- 必须是继承链路上的表，可以是当前表，也可以是父子表；
-- 「表单选中记录」变量仅限于「多对多」和「一对多/多对一」关系字段里可用；
-- **多层级时，需要拍平并去重处理**
+- The variable object must be a collection record;
+- It must be from a table on the inheritance path, either the current table or a parent-child table;
+- The "Form selected records" variable is only available for "many-to-many" and "one-to-many/many-to-one" relationship fields;
+- **For multiple levels, flatten and deduplicate the data**
 
 ```typescript
-// 表格选中记录：
+// Table selected records:
 [{id:1},{id:2},{id:3},{id:4}]
 
-// 表格选中记录/对一：
-[{对一: {id:2}}, {对一: {id:3}}, {对一: {id:3}}] 
-// 拍平并去重
+// Table selected records/one-to-one:
+[{one-to-one: {id:2}}, {one-to-one: {id:3}}, {one-to-one: {id:3}}]
+// Flatten and deduplicate
 [{id: 2}, {id: 3}]
 
-// 表格选中记录/对多：
-[{对多: [{id: 1}, {id:2}]}, {对多: {[id:3}, {id:4}]}]
-// 拍平  
+// Table selected records/many-to-many:
+[{many-to-many: [{id: 1}, {id:2}]}, {many-to-many: {[id:3}, {id:4}]}]
+// Flatten
 [{id:1},{id:2},{id:3},{id:4}]
 ```
 
-#### 非关系默认值变量
+#### Non-relational Default Value Variables
 
-- 类型一致或兼容，如字符串兼容数字，和所有有提供 toString 方法的对象；
-- JSON 字段比较特殊，什么数据都可以存；
+- The type must be consistent or compatible, such as strings being compatible with numbers, and all objects that provide a toString method;
+- JSON fields are special and can store any type of data;
 
-### 字段层级（可选字段）
+### Field Hierarchy (Optional Fields)
 
 ![20240411101157](https://static-docs.nocobase.com/20240411101157.png)
-- 非关系默认值变量
 
-  - 多层级选择字段时，仅限于对一的关系，不支持对多的关系；
-  - JSON 字段比较特殊，可以不限制；
-- 关系默认值变量
+- Non-relational default value variables
 
-  - hasOne，只支持对一关系；
-  - hasMany，对一（内部转换）和对多都可以；
-  - belongsToMany，对一（内部转换）和对多都可以；
-  - belongsTo，一般为对一，当父级关系为 hasMany 时，也支持对多（因为 hasMany/belongsTo 实质就是多对多关系）；
+  - When selecting fields with multiple levels, only one-to-one relationships are supported; many-to-many relationships are not supported;
+  - JSON fields are special and may have fewer restrictions;
 
-## 特殊情况说明
+- Relational default value variables
 
-### 「多对多」等价于「一对多/多对一」组合
+  - hasOne: only supports one-to-one relationships;
+  - hasMany: supports both one-to-one (internally converted) and many-to-many relationships;
+  - belongsToMany: supports both one-to-one (internally converted) and many-to-many relationships;
+  - belongsTo: generally for one-to-one relationships, but when the parent relationship is hasMany, it also supports many-to-many (as hasMany/belongsTo is essentially a many-to-many relationship);
 
-模型
+## Special Cases
+
+### "Many-to-many" is equivalent to a "one-to-many/many-to-one" combination
+
+Model
 
 ![20240411101558](https://static-docs.nocobase.com/20240411101558.png)
 
-多对多设置默认值变量时，如果变量有多条记录，那选中的数据就有多条，如下图所示：
-当表格区块数据表与关系字段数据表相同时使用。
+When setting default value variables for a many-to-many relationship, if the variable has multiple records, the selected data will have multiple records, as shown below:
+When the data table in the table block and the relationship field data table are the same.
+
 ![20240411103021](https://static-docs.nocobase.com/20240411103021.png)
 
+### Why Don't One-to-one and One-to-many Relationships Have Default Values?
 
-### 为什么一对一和一对多没有默认值？
+For example, in an A.B relationship, if b1 is associated with a1, it cannot be associated with a2. If b1 is associated with a2, it will disassociate from a1. In this case, the data is not shared, while default values operate on a shared mechanism (both can be associated), so one-to-one and one-to-many cannot have default values.
 
-例如 A.B 关系，b1 被 a1 关联了，就不能被 a2 关联了，如果 b1 关联 a2，那就会解除与 a1 的关联，这种情况下数据并不是共享的，而默认值是共享的机制（都可以关联），所以一对一和一对多不能设置默认值。
+### Why Can't Subforms or Subtables with Many-to-one and Many-to-many Relationships Have Default Values?
 
-### 为什么多对一和多对多的子表单或子表格也不能有默认值？
+Because subforms and subtables focus on directly editing relationship data (including adding or removing), and relationship default values work on a shared mechanism where both can be associated but cannot modify the relationship data. Therefore, it is not suitable to provide default values in this scenario.
 
-因为子表单和子表格的侧重点是直接对关系数据进行编辑（包括新增、移除），而关系默认值是共享机制，都可以关联，但不能修改关系数据。所以这种场景下不适合提供默认值。
+Additionally, subforms or subtables have subfields, so it would be unclear whether the default value is for rows or columns.
 
-另外，子表单或子表格是有子字段的，子表单或子表格的默认值设置的是行默认值还是列默认值会分不清楚。
-
-综合考虑，无论什么关系子表单或子表格都不能直接设置默认值比较合适。
+Considering this, it is more appropriate not to allow setting default values for any type of subform or subtable relationship.

@@ -1,47 +1,47 @@
 # Example
 
-例如，我们有一个“样品”数据表，针对“已采集”（状态）的样品，需要提供一个“送检”的操作，送检会先检查样品的基本信息，然后生成一条“送检记录”数据，再把样品状态修改为“已送检”。而这一系列过程无法通过简单的“增删改查”按钮点击完成，这时就可以使用自定义操作事件来实现。
+Imagine we have a "Sample" collection. For samples marked as "Collected," a "Send to Testing" operation is needed. This operation first checks the sample's basic information, generates a "Testing" Record, and then updates the sample's status to "Testing". This entire process is too complex to be handled by simple "Create, Read, Update, Delete" button clicks. In such scenarios, custom operation events are the perfect solution.
 
-先创建一张“样品”数据表和一张“送检记录”数据表，对样品表录入基本的测试数据：
+To start, create a "Sample" collection and a "Testing" collection, and input some basic test data into the Sample collection:
 
-![示例_样品数据表](https://static-docs.nocobase.com/20240509172234.png)
+![Example_Sample_Data_Table](https://static-docs.nocobase.com/20240509172234.png)
 
-然后创建一个“自定义操作事件”工作流，如果需要操作流程有比较及时的反馈，可以选择同步模式（同步模式下不能使用人工处理等异步类型的节点）：
+Next, you'll need to create a "Custom action Event" workflow. If you require immediate feedback during the operation, opt for the synchronous mode (bear in mind that synchronous mode doesn't support asynchronous nodes like human intervention):
 
-![示例_创建工作流](https://static-docs.nocobase.com/20240509173106.png)
+![Example_Create_Workflow](https://static-docs.nocobase.com/20240509173106.png)
 
-在触发器配置中，数据表选择“样品”：
+Within the trigger configuration, choose "Sample" as the collection:
 
-![示例_触发器配置](https://static-docs.nocobase.com/20240509173148.png)
+![Example_Trigger_Configuration](https://static-docs.nocobase.com/20240509173148.png)
 
-根据业务需求，编排流程中的逻辑，例如指标参数大于 `90` 时才允许送检，否则提示相关问题：
+Now, arrange the logic of the process according to your business needs. For instance, you might set it so that the "Send to Testing" operation is only allowed when the index parameter exceeds `90`; otherwise, a relevant warning is provided:
 
-![示例_业务逻辑编排](https://static-docs.nocobase.com/20240509174159.png)
+![Example_Business_Logic_Arrangement](https://static-docs.nocobase.com/20240509174159.png)
 
-:::info{title=提示}
-“[响应消息](../../nodes/response-message.md)”节点可以在同步的自定义操作事件中使用，用于返回给客户端的提示信息。异步模式下无法使用。
+:::info{title=Note}
+The "[Response Message](../../nodes/response-message.md)" node can be utilized in synchronous custom operation events to send feedback messages to the client. This feature isn't available in asynchronous mode.
 :::
 
-配置好流程并启用后，再返回表格界面，在表格的操作列中添加“触发工作流”的按钮：
+After setting up and enabling the workflow, return to the table interface, and add a "Trigger Workflow" button in the operations column:
 
-![示例_添加操作按钮](https://static-docs.nocobase.com/20240509174525.png)
+![Example_Add_Operation_Button](https://static-docs.nocobase.com/20240509174525.png)
 
-然后在按钮的配置菜单中选择绑定工作流，打开配置弹窗：
+Next, in the button's configuration menu, select the option to bind the workflow, and open the configuration window:
 
-![示例_打开绑定工作流弹窗](https://static-docs.nocobase.com/20240509174633.png)
+![Example_Open_Workflow_Binding_Popup](https://static-docs.nocobase.com/20240509174633.png)
 
-添加之前启用的工作流：
+Add the workflow that was previously enabled:
 
-![示例_选择工作流](https://static-docs.nocobase.com/20240509174723.png)
+![Example_Select_Workflow](https://static-docs.nocobase.com/20240509174723.png)
 
-提交后，再将按钮文本修改为操作名称，如“送检”字样，配置流程就完成了。
+After submission, rename the button to reflect the action, like "Testing," and the configuration is complete.
 
-使用时，在表格中任选一条样品数据，并点击“送检”按钮，即可触发自定义操作事件。正如之前编排的逻辑，如果样品指标参数小于 90，点击后则会如下提示：
+To use the feature, select any sample data from the table and click the "Send to Testing" button to trigger the custom operation event. As per the pre-arranged logic, if the sample's index parameter is below 90, you'll see a warning message like this:
 
-![示例_指标不满足送检](https://static-docs.nocobase.com/20240509175026.png)
+![Example_Inspection_Criteria_Not_Met](https://static-docs.nocobase.com/20240509175026.png)
 
-如果指标参数大于 90，则会正常执行流程，生成“送检记录”数据，并将样品状态修改为“已送检”：
+If the index parameter is over 90, the process will proceed as expected, creating a "Testing Record" entry and updating the sample's status to "Testing":
 
-![示例_送检成功](https://static-docs.nocobase.com/20240509175247.png)
+![Example_Inspection_Successful](https://static-docs.nocobase.com/20240509175247.png)
 
-至此，一个简单的自定义操作事件就完成了。同样的，对类似有复杂操作的业务，如订单处理、提交报告等，都可以通过自定义操作事件来实现。
+And there you have it—a simple custom operation event. This approach can be similarly applied to other complex business operations, such as order processing or report submission, using custom operation events to achieve the desired results.

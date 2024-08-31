@@ -1,31 +1,31 @@
-# 页面
+### Page
 
-## 页面结构
+#### Page Structure
 
-1. 页面设计器
-2. 页面标题
-3. 页面标签页（子页面）
-4. 页面主体（承载区块）
+1. Page Designer
+2. Page Title
+3. Page Tabs (Subpages)
+4. Page Body (Hosts blocks)
 
 ![](https://static-docs.nocobase.com/0c84950f8d58246497da21fbdd2ffc6b.png)
 
-## 页面设计器
+#### Page Designer
 
 ![](https://static-docs.nocobase.com/19ce82228c9fb0681dcd9a73798b49f9.png)
 
-- 启用页眉：用于控制是否显示页眉；
-- 显示页面标题：是否在页眉中显示页面标题；
-- 编辑页面标题：默认的页面标题为菜单项标题，也可以自定义修改；
-- 启用标签页：标签页即页面的子页面。
+- **Enable page header:** Controls whether the header is displayed.
+- **Display page title:** Controls whether the page title is displayed in the header.
+- **Edit page title:** The default page title is the menu item title, but you can customize it.
+- **Enable page tabs:** Tabs refer to the subpages of the page.
 
-## 页面标签页
+#### Page Tabs
 
-启用页面标签页之后，可以在页面里添加子页面。
+After enabling page tabs, you can add subpages within the page.
 
 ![](https://static-docs.nocobase.com/febacab3419e1a0ea98b178db63fa86d.png)
 
-## 页面布局
+#### Page Layout
 
-多个区块可以通过拖拽调整布局。
+Multiple blocks can be arranged by dragging to adjust the layout.
 
 ![](https://static-docs.nocobase.com/f6692295ac0917f3babce9a60ce80879.gif)

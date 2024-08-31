@@ -1,7 +1,7 @@
-# 弹窗尺寸
+# Popup Size
 
-## 介绍
+## Introduction
 
-弹窗尺寸有大、中、小三，默认为中等，可根据弹窗内容调整合适的弹窗尺寸。
+Popups are available in three sizes: large, medium, and small, with medium being the default. You can adjust the popup size to match the content.
 
 ![20240413102716](https://static-docs.nocobase.com/20240413102716.png)

@@ -1,11 +1,11 @@
-# Unix 时间戳
+# Unix timestamp
 
-## 介绍
+## Introduction
 
-## 字段配置
+## Field configuration
 
 ![20240512180432](https://static-docs.nocobase.com/20240512180432.png)
 
-## 示例
+## Instructions
 
-待补充
+to be added.

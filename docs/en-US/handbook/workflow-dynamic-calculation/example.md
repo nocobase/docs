@@ -1,65 +1,65 @@
 # Example
 
-根据上面介绍的配置流程，以商品下单过程中根据不同商品进行不同优惠规则的最终价格计算举例。
+Following the configuration steps outlined above, let's illustrate how to calculate the final price for different products by applying various Price Rules during the order placement process.
 
-1.  建立商品表：
+1. **Set Up the Product Collection:**
 
-    | 字段名   | 类型                      |
-    | -------- | ------------------------- |
-    | 商品名   | 文本                      |
-    | 商品原价 | 数字                      |
-    | 优惠规则 | `belongsTo`（优惠规则表） |
+   | Field Name     | Type                   |
+       | -------------- | ---------------------- |
+   | Product Name   | Text                   |
+   | Price | Number                 |
+   | Price Rule  | `belongsTo` (Price Rule Collection) |
 
-2.  建立优惠规则表（使用表达式表模板创建）：
+2. **Set Up the Price Rule Collection (using the expression Collection template):**
 
-    | 字段名   | 类型                     |
-    | -------- | ------------------------ |
-    | 规则名称 | 文本                     |
-    | 数据表   | 单选（数据表）           |
-    | 计算引擎 | 单选（mathjs/formulajs） |
-    | 表达式   | 文本                     |
+   | Field Name      | Type                        |
+       | --------------- | --------------------------- |
+   | Rule Name       | Text                        |
+   | Collection      | Single Select (Data Collection)   |
+   | Calculation Engine | Single Select (mathjs/formulajs) |
+   | Expression      | Text                        |
 
-3.  录入优惠规则：
+3. **Input Price Rules:**
 
-    | ID  | 名称     | 数据表 | 计算引擎   | 表达式                |
-    | --- | -------- | ------ | ---------- | --------------------- |
-    | 1   | 八折商品 | 商品   | formula.js | `{{商品.价格}} * 0.8` |
-    | 2   | 九折商品 | 商品   | formula.js | `{{商品.价格}} * 0.9` |
+   | ID  | Name    | Collection | Calculation Engine | Expression                |
+       | --- |---------| ---------- | ------------------ | ------------------------- |
+   | 1   | 80% off | Product    | formula.js         | `{{Product.Price}} * 0.8` |
+   | 2   | 90% off | Product    | formula.js         | `{{Product.Price}} * 0.9` |
 
-4.  创建商品，并关联优惠规则：
+4. **Create Products and Assign Price Rules:**
 
-    | ID  | 商品名称      | 价格 | 优惠规则 |
-    | --- | ------------- | ---- | -------- |
-    | 1   | iPhone 14 Pro | 7999 | 2        |
-    | 2   | iPhone 13 Pro | 6999 | 1        |
+   | ID  | Product Name  | Price | Price Rule |
+       | --- | ------------- | ----- | ------------- |
+   | 1   | iPhone 14 Pro | 7999  | 2             |
+   | 2   | iPhone 13 Pro | 6999  | 1             |
 
-5.  创建工作流，订单创建时触发：
+5. **Set Up a Workflow Triggered by Order Creation:**
 
-    ![触发器_创建订单触发](https://static-docs.nocobase.com/f181f75b10007afd5de068f3458d2e04.png)
+   ![Trigger_CreateOrder](https://static-docs.nocobase.com/f181f75b10007afd5de068f3458d2e04.png)
 
-6.  创建一个动态表达式计算节点，配置动态表达式为触发数据/商品/优惠规则：
+6. **Create a Dynamic Expression Calculation Node and Configure it Using Trigger Data/Product/Price Rule:**
 
-    ![选择动态表达式数据](https://static-docs.nocobase.com/21ccc63e604dd90b7d26c3c33c12d671.png)
+   ![SelectDynamicExpressionData](https://static-docs.nocobase.com/21ccc63e604dd90b7d26c3c33c12d671.png)
 
-    配置变量数据源为触发数据中的商品：
+   Set the variable data source to the product in the trigger data:
 
-    ![选择变量数据源](https://static-docs.nocobase.com/afbffe9661539d26e4b175ae8a4b28f7.png)
+   ![SelectVariableDataSource](https://static-docs.nocobase.com/afbffe9661539d26e4b175ae8a4b28f7.png)
 
-7.  增加一个更新数据节点，配置更新订单总价为计算节点的结果：
+7. **Add a Data Update Node to Update the Order Total Price with the Result from the Calculation Node:**
 
-    ![更新订单数据](https://static-docs.nocobase.com/5cc7ffb113c8d6a2fd3b1b34abe06dcc.png)
+   ![UpdateOrderData](https://static-docs.nocobase.com/5cc7ffb113c8d6a2fd3b1b34abe06dcc.png)
 
-8.  创建订单触发工作流，再查看订单列表，核对价格：
+8. **Trigger the Workflow Upon Order Creation and Verify the Prices in the Order List:**
 
-    | 订单商品      | 订单商品 / 原价 | 优惠规则 | 总价                 |
-    | ------------- | --------------- | -------- | -------------------- |
-    | iPhone 14 Pro | 7999            | 九折     | 7999 \* 0.9 = 7199.1 |
-    | iPhone 13 Pro | 6999            | 八折     | 6999 \* 0.8 = 5599.2 |
+   | Order Product    | Price | Price Rule     | Total Price          |
+       | ---------------- | -------------- |----------------|----------------------|
+   | iPhone 14 Pro    | 7999           | Rule1: 90% off | 7999 \* 0.9 = 7199.1 |
+   | iPhone 13 Pro    | 6999           | Rule2: 80% off | 6999 \* 0.8 = 5599.2 |
 
-    下图中的总价应与上表中的总价一致：
+   The final price displayed in the image below should match the calculated price in the Collection above:
 
-    ![创建订单后自动计算出的订单总价](https://static-docs.nocobase.com/a5610aca292e79c4841c97457bd3cc7c.png)
+   ![OrderTotalPrice_AfterCreation](https://static-docs.nocobase.com/a5610aca292e79c4841c97457bd3cc7c.png)
 
-    :::info{title=提示}
-    由于工作流是异步执行的，刚创建完订单后表格刷新的结果可能并不包含总价，需要等待一段时间后再刷新查看即可观察到总价。
-    :::
+   :::info{title=Tip}
+   Since the workflow operates asynchronously, the total price might not be immediately reflected in the Collection after the order is created. You may need to wait a moment before refreshing the page to see the updated total price.
+   :::

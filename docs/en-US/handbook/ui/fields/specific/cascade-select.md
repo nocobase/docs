@@ -1,21 +1,21 @@
-# 级联选择
+# Cascading Select
 
-## 介绍
+## Introduction
 
-级联选择器适用于目标表为树表的关系字段，用户可以按照树表的层级结构选取数据，支持对数据的模糊搜索。
+The cascading selector is tailored for relational fields where the target table follows a tree structure. It allows users to select data according to the hierarchical levels of the tree, with support for fuzzy search to streamline the selection process.
 
-## 使用说明
+## Instructions
 
-- 关系为对一，级联为单选。
+- For one-to-one relationships, the cascading selector is configured for single selection.
 
 ![20240409205542](https://static-docs.nocobase.com/20240409205542.png)
 
-- 关系为对多，级联为多选，且支持拖拽排序。
+- For one-to-many relationships, the cascading selector enables multi-selection and supports drag-and-drop sorting for more intuitive organization.
 
 ![20240409210705](https://static-docs.nocobase.com/20240409210705.png)
 
-## 字段配置项
+## Field Configuration Options
 
-- [标题字段](/handbook/ui/fields/field-settings/title-field)：设置级联组件拉选选项显示的内容（标题字段）；
+- [Title Field](/handbook/ui/fields/field-settings/title-field): Defines the content displayed by the cascading component (title field) for easier identification.
 
-- [字段组件](/handbook/ui/fields/association-field)：切换为其他关系字段组件，如下拉选择、数据选择器等；
+- [Field Component](/handbook/ui/fields/association-field): Offers the flexibility to switch to other relational field components, such as dropdown selectors, data pickers, and more.

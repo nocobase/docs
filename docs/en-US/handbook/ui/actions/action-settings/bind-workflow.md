@@ -1,20 +1,17 @@
-# 绑定工作流
+# Bind Workflow
 
-## 介绍
+## Introduction
 
-绑定工作流是实现数据自动化处理的方式之一，通过将操作与工作流绑定，实现数据的业务流程流转，需要注意的是只有在数据提交成功后才会触发工作流，如果操作的逻辑处理为失败则不会触发工作流。
+Binding a workflow is a powerful way to automate data processing. By linking an operation to a workflow, you ensure that data flows seamlessly through business processes. It’s important to note that workflows are triggered only after a successful data submission; if the operation fails, the workflow will not be activated.
 
 ![20240413095247](https://static-docs.nocobase.com/20240413095247.png)
 
 ![20240413095309](https://static-docs.nocobase.com/20240413095309.png)
 
-目前支持绑定的操作按钮如下：
+The following operation buttons currently support workflow binding:
 
-新增表单的“提交”、“保存”按钮。
+- "Submit" and "Save" buttons for new forms.
+- "Submit" and "Save" buttons for update forms.
+- "Update Data" button in data rows (including tables, lists, boards, etc.).
 
-更新表单的“提交”、“保存”按钮。
-
-数据行（表格、列表、看板等）中的“更新数据”按钮。
-
-更多内容查看工作流的 [操作后事件](/handbook/workflow-action-trigger)
-
+For more details, see [Post-Action Events](/handbook/workflow-action-trigger) in the workflow documentation.

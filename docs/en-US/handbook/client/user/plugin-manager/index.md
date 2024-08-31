@@ -1,42 +1,42 @@
-# 插件管理器
+# Plugin Manager
 
-插件管理器支持通过界面添加插件，以简单、直观，轻量级的使用体验来扩展 NocoBase 的功能。轻松扩展和定制应用功能，包括安装、升级、和卸载插件
+The Plugin Manager offers a straightforward and intuitive interface for adding plugins, enhancing NocoBase's functionality with a lightweight and user-friendly experience. It allows for seamless expansion and customization of application features, including the installation, upgrade, and uninstallation of plugins.
 
-插件管理器的组成部分
+**Key Components of the Plugin Manager:**
 
-1. 本地插件/插件市场
-2. 插件分类（内置、启用、未启用、有问题,支持按插件名称模糊搜索）
-3. 添加新插件
-4. 插件配置主体
+1. **Local Plugins/Plugin Marketplace**: Access and manage plugins available locally or through the marketplace.
+2. **Plugin Classification**: Organize plugins by categories such as Built-in, Enabled, Disabled, and Problematic. The system supports fuzzy search by plugin name.
+3. **Add New Plugin**: Easily expand functionality by adding new plugins.
+4. **Plugin Configuration Main Body**: Centralize your plugin configurations in one place.
 
-![](https://static-docs.nocobase.com/86fb70757a77ab3654f97faffc2dce78.png)
+![Plugin Manager Interface](https://static-docs.nocobase.com/86fb70757a77ab3654f97faffc2dce78.png)
 
-#### 查看插件文档
+## Viewing Plugin Documentation
 
-点击插件可以快速阅览插件的介绍文档（包括说明文档、依赖兼容性检查、更新日志）
+A simple click on any plugin allows for a quick view of its documentation, which includes user instructions, compatibility checks for dependencies, and update logs.
 
-![](https://static-docs.nocobase.com/a4015bea903d3c6874ca94e6c1085278.png)
+![View Plugin Documentation](https://static-docs.nocobase.com/a4015bea903d3c6874ca94e6c1085278.png)
 
-#### 添加插件
+## Adding a Plugin
 
-即插即用，可以直接通过界面添加插件，支持从 npm registry（可以是私有的）下载、本地上传、URL 下载
+With plug-and-play convenience, you can effortlessly add new plugins via the interface. The system supports downloading from the npm registry (private registries are also supported), local uploads, and URL downloads.
 
-![](https://static-docs.nocobase.com/103baa0ba0dd88e7481c0636147c7a7c.png)
+![Add Plugin](https://static-docs.nocobase.com/103baa0ba0dd88e7481c0636147c7a7c.png)
 
-#### 激活插件
+## Activating a Plugin
 
-![](https://static-docs.nocobase.com/c76b7228678c358ba6f8f68ef05d3cd5.gif)
+![Activate Plugin](https://static-docs.nocobase.com/c76b7228678c358ba6f8f68ef05d3cd5.gif)
 
-#### 禁用插件
+## Disabling a Plugin
 
-![](https://static-docs.nocobase.com/86f526669dba0d4f3245d24d9e9d35a9.gif)
+![Disable Plugin](https://static-docs.nocobase.com/86f526669dba0d4f3245d24d9e9d35a9.gif)
 
-#### 删除插件
+## Deleting a Plugin
 
-![](https://static-docs.nocobase.com/b32d6507aaee2b708290311cf1e7ebca.gif)
+![Delete Plugin](https://static-docs.nocobase.com/b32d6507aaee2b708290311cf1e7ebca.gif)
 
-#### 更新插件
+## Updating a Plugin
 
-目前仅 storage/plugins 下的插件才有更新操作，如图
+Currently, the option to update plugins is available only for those located under storage/plugins, as illustrated below:
 
-![](https://static-docs.nocobase.com/7bfaec2785dc6a2e864fee2337fc57ef.png)
+![Update Plugin](https://static-docs.nocobase.com/7bfaec2785dc6a2e864fee2337fc57ef.png)

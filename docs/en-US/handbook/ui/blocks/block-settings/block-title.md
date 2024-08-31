@@ -1,8 +1,8 @@
-# 区块标题
+# Block Title
 
-## 介绍
+## Introduction
 
-自定义区块标题。
+Custom block title.
 
 ![20240407175754](https://static-docs.nocobase.com/20240407175754.png)
 

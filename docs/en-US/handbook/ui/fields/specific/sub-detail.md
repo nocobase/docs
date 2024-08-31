@@ -1,31 +1,31 @@
-# 子详情
+# Sub-details
 
-## 介绍
+## Introduction
 
-子详情是子表单在阅读模式下的对应组件，与标签和标题组件相比，子详情不仅可以展示更多本表数据，还可以配置展示关系表数据信息，多层级的关系数据以嵌套详情的形式清晰展示。
+Sub-details serve as the dedicated components for sub-forms in reading mode. Unlike label and title components, sub-details provide the ability to display more extensive data from the current table and enable the configuration of related table data. This allows multi-level relational data to be presented clearly in a nested format.
 
-## 使用说明
+## Instructions
 
-### 对多的关系字段子详情
+### Sub-details for Many-to-Many Relationship Fields
 
 ![20240822225058](https://static-docs.nocobase.com/20240822225058.png)
 
-支持多层关系字段的嵌套显示，示例：订单/商品/库存，订单/商品/供应商。
+This feature supports the nested display of multi-level relationship fields, such as Orders/Products/Inventory or Orders/Products/Suppliers.
 
 ![20240822225231](https://static-docs.nocobase.com/20240822225231.png)
 
-### 对一的关系字段子详情
+### Sub-details for One-to-One Relationship Fields
 
 ![20240822230215](https://static-docs.nocobase.com/20240822230215.png)
 
-## 字段配置项
+## Field Configuration Options
 
-#### 设定排序规则
+### Setting Sorting Rules
 
-支持为对多的关系数据调整数据展示顺序。
+You can adjust the display order for many-to-many relational data.
 
 ![20240822230359](https://static-docs.nocobase.com/20240822230359.png)
 
 ![20240822230422](https://static-docs.nocobase.com/20240822230422.png)
 
-- [字段组件](/handbook/ui/fields/association-field)：切换为其他关系字段组件，如标题、标签、子表格等；
+- [Field Component](/handbook/ui/fields/association-field): Switch to alternative relationship field components, such as titles, labels, or sub-tables.

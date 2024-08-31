@@ -1,8 +1,8 @@
-# 二次确认
+# Double check
 
-## 介绍
+## Introduction
 
-二次确认配置用于确认操作是否执行，在操作点击时弹出确认框，删除按钮默认开启二次确认，以防止误操作导致数据丢失或不可逆的结果。
+The Double check configuration is designed to ensure that an operation is deliberate before it proceeds. When an action is clicked, a confirmation box will appear. By default, the delete button has secondary confirmation enabled to prevent accidental operations that could lead to data loss or irreversible outcomes.
 
 ![20240413094528](https://static-docs.nocobase.com/20240413094528.png)
 

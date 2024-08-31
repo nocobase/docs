@@ -1,11 +1,11 @@
 # Markdown
 
-## 介绍
+## Introduction
 
-## 字段配置
+## Field configuration
 
 ![20240512181311](https://static-docs.nocobase.com/20240512181311.png)
 
-## 示例
+## Instructions
 
-待补充
+to be added.

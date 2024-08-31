@@ -1,29 +1,29 @@
-# 字段赋值
+# Assign Values
 
-## 介绍
+## Introduction
 
-字段赋值是指在执行操作前预设字段的值，在进行更新或创建记录时自动填入这些数据，无需手动填写数据，如批量更新订单状态、订单送达时将送达时间设为当前时间等场景。
+Field values assignment allows you to preset values for fields before executing operations. This feature ensures that data is automatically populated when updating or creating records, eliminating the need for manual input. Common scenarios include bulk updating order statuses or automatically setting the delivery time to the current time when an order is delivered.
 
 ![20240413103137](https://static-docs.nocobase.com/20240413103137.png)
 
 ![20240413215221](https://static-docs.nocobase.com/20240413215221.png)
 
-## 使用说明
+## Usage Instructions
 
-### 配置字段
+### Configuring Fields
 
-仅支持配置本表字段。
+Only fields within the current table can be configured.
 
 ![20240413103207](https://static-docs.nocobase.com/20240413103207.png)
 
-### 常量
+### Constants
 
 ![20240426153323](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426153323.png)
-### 变量
 
-不同类型的字段支持不同变量类型
+### Variables
+
+Different field types support various variable types, offering flexibility depending on the data you're working with.
 
 ![20240426153534](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426153534.png)
 
-更多关于变量内容参考 [变量](/handbook/ui/variables)
-
+For more information on variables, refer to the [Variables](/handbook/ui/variables) section.

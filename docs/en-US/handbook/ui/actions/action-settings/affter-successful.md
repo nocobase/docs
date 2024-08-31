@@ -1,8 +1,8 @@
-# 提交成功后
+# After Successful
 
-## 介绍
+## Introduction
 
-提交成功后的配置允许用户定制操作完成后的响应行为，包括自定义成功提示信息、选择自动或手动关闭提示，以及根据需求选择停留在当前页或跳转到指定路由。
+After a successful submission, users can customize the behavior of the application. This includes creating custom success messages, choosing whether the prompt closes automatically or manually, and deciding whether to stay on the current page or navigate to a different route.
 
 ![20240413213519](https://static-docs.nocobase.com/20240413213519.png)
 

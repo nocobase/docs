@@ -2,66 +2,66 @@
 
 <PluginInfo name="workflow-aggregate" link="/handbook/workflow-aggregate"></PluginInfo>
 
-用于对某个数据表的满足条件的数据进行聚合函数查询，并返回对应的统计结果。常用于处理报表相关的统计数据。
+This plugin is designed to execute aggregate function queries on specific data within a table that meets defined conditions, returning the relevant statistical outcomes. It is particularly useful for generating statistical data for reports.
 
-节点的实现上基于数据库的聚合函数，目前仅支持对一个数据表的单字段进行统计，统计结果的数值会保存在节点的结果中供后续其他节点使用。
+The node operates using database aggregate functions and currently supports querying a single field within a single data table. The resulting statistics are stored within the node’s output, making them available for subsequent nodes in the workflow.
 
-## 安装
+## Installation
 
-内置插件，无需安装。
+This is a built-in plugin, so no installation steps are required.
 
-## 使用手册
+## User Manual
 
-### 创建节点
+### Creating a Node
 
-在工作流配置界面中，点击流程中的加号（“+”）按钮，添加“聚合查询”节点：
+In the workflow configuration interface, click the plus ("+") button within the process flow to add an "Aggregate Query" node:
 
-![创建聚合查询节点](https://static-docs.nocobase.com/7f9d806ebf5064f80c30f8b67f316f0f.png)
+![Create Aggregate Query Node](https://static-docs.nocobase.com/7f9d806ebf5064f80c30f8b67f316f0f.png)
 
-### 节点配置
+### Node Configuration
 
-![聚合查询节点_节点配置](https://static-docs.nocobase.com/57362f747b9992230567c6bb5e986fd2.png)
+![Aggregate Query Node_Configuration](https://static-docs.nocobase.com/57362f747b9992230567c6bb5e986fd2.png)
 
-#### 聚合函数
+#### Aggregate Functions
 
-支持 SQL 中的 `COUNT`、`SUM`、`AVG`、`MIN` 和 `MAX` 共 5 种聚合函数，选择其中一种对数据进行聚合查询。
+This plugin supports five SQL aggregate functions: `COUNT`, `SUM`, `AVG`, `MIN`, and `MAX`. You can select any one of these functions to perform the aggregate query on your data.
 
-#### 目标类型
+#### Target Type
 
-聚合查询的目标可以通过两种模式选择，一种是直接选择目标数据表和其中的一个字段，另一种是通过流程上下文已有的数据对象，选择其对多的关系数据表及字段，进行聚合查询。
+There are two methods for selecting the target of the aggregate query. The first is to directly select the target data table and one of its fields. The second is to choose a related data table and field from the existing data objects in the workflow context to perform the aggregate query.
 
-#### 去重
+#### Distinct
 
-即 SQL 中的 `DISTINCT`，去重的字段与选择的数据表字段相同，暂时不支持两者选不同的字段。
+This feature corresponds to the `DISTINCT` keyword in SQL. The distinct field must be the same as the selected data table field, and currently, different fields cannot be selected for the distinct and target fields.
 
-#### 筛选条件
+#### Filter Conditions
 
-与普通的数据表查询时的筛选条件类似，可以使用流程的上下文变量。
+You can apply filter conditions similar to those in a standard data table query, using the workflow’s context variables.
 
-### 示例
+### Example
 
-聚合目标为“数据表数据”比较容易理解，这里以“统计新增文章后该文章分类的总文章数”为例，介绍聚合目标为“关联数据表数据”的用法。
+The aggregate target "Collection Table Data" is quite intuitive, so let's illustrate the usage of the aggregate target as "Related Collection Table Data" with the example of "counting the total number of articles in a category after adding a new article to that category."
 
-首先，创建两张数据表：“文章”和“分类”，其中文章有一个多对一关系字段指向分类表，同时创建反向关系字段分类一对多文章：
+First, create two data tables: "Posts" and "Categories." The "Posts" collection includes a many-to-one relationship field pointing to the "Categories" collection, and a reverse relationship field that allows one category to contain multiple articles:
 
-| 字段名   | 类型           |
-| -------- | -------------- |
-| 标题     | 单行文本       |
-| 所属分类 | 多对一（分类） |
+| Field Name        | Type               |
+| ----------------- | ------------------ |
+| Title             | Single Line Text   |
+| Category          | Many-to-One (Category) |
 
-| 字段名   | 类型           |
-| -------- | -------------- |
-| 分类名称 | 单行文本       |
-| 包含文章 | 一对多（文章） |
+| Field Name    | Type               |
+|---------------| ------------------ |
+| Category Name | Single Line Text   |
+| Posts         | One-to-Many (Articles) |
 
-接下来创建一个数据表事件触发的工作流，选择文章表新增数据后触发。
+Next, create a workflow triggered by an event in the data table, specifically when new data is added to the "Articles" table.
 
-之后增加一个聚合查询节点，配置如下：
+Then, add an aggregate query node with the following configuration:
 
-![聚合查询节点_示例_节点配置](https://static-docs.nocobase.com/542272e638c6c0a567373d1b37ddda78.png)
+![Aggregate Query Node_Example_Configuration](https://static-docs.nocobase.com/542272e638c6c0a567373d1b37ddda78.png)
 
-这样在工作流被触发后，聚合查询节点中将会统计新增文章的分类下所有文章的数量，并保存为节点的结果。
+Once the workflow is triggered, the aggregate query node will calculate the total number of articles within the category of the newly added article and save this count as the node’s output.
 
-:::info{title=提示}
-其中如需使用数据表事件触发器的关系数据，需要在触发器中配置“预加载关联数据”的相关字段，否则无法选择。
+:::info{title=Tip}
+If you need to access related data in a collection table event trigger, ensure you configure the relevant fields for "Preload associations" in the trigger; otherwise, these fields won’t be selectable.
 :::

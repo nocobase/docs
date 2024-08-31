@@ -1,9 +1,9 @@
-# 打开弹窗
+# Open popup
 
-打开弹窗操作以弹窗的方式呈现数据，可自定义配置详情区块或表单区块，适用于多种场景。如当数据表中有许多字段，可以将字段拆分到不同的操作区块中，专注于查看或修改某些字段，根据业务需求创建多个定制化数据展示或编辑界面的操作
+The Open popup operation presents data in a popup window, allowing you to customize detail blocks or form blocks. This feature is suitable for various scenarios. For example, when a data table has many fields, these fields can be divided into different operation blocks, allowing you to focus on viewing or modifying specific fields. You can create multiple customized data display or editing interfaces based on business needs.
 
-![](https://static-docs.nocobase.com/c859041afb43752431e78c6e81c44c43.png)
+![Open popup](https://static-docs.nocobase.com/c859041afb43752431e78c6e81c44c43.png)
 
-如图订单表格中配置了三个打开弹窗操作，查看主订单（订单主信息），查看商品（订单的关联的商品信息）和查看客户（订单关联的客户信息）
+As illustrated, the order table is configured with three Open popup operations: View Main Order (Order Main Information), View Products (Product Information associated with the Order), and View Customer (Customer Information associated with the Order).
 
-![](https://static-docs.nocobase.com/110e2eed418c755ef40b7259e5816c73.png)
+![Open popup Operations](https://static-docs.nocobase.com/110e2eed418c755ef40b7259e5816c73.png)

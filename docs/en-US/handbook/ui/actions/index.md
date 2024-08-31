@@ -1,21 +1,21 @@
-# 操作
+# Actions
 
-在 UI 里，操作是用来触发一段指令的按钮。可以直接放在页面、对话框、抽屉里，也可以和区块组合使用。目前可动态配置的操作，主要是和区块组合使用。
+In the UI, Actions are represented by buttons that trigger specific commands. These buttons can be directly placed on pages, within dialogs, or inside drawers, and they can also be combined with blocks. The current dynamic configuration options for Actions are primarily used when combined with blocks.
 
-## 区块里的操作
+#### Actions within Blocks
 
 ![20240412113815](https://static-docs.nocobase.com/20240412113815.png)
 
-## 操作的设计器（工具栏）
+#### Operation Designer (Toolbar)
 
-和区块、字段不太一样，操作的设计器里只有两个图标，分别为：
-- 拖拽
-- 参数配置
+Unlike blocks and fields, the operation designer features only two icons:
+- Drag
+- Configuration actions
 
 ![20240412113855](https://static-docs.nocobase.com/20240412113855.png)
 
-## 操作的拖拽排序
+#### Operation Drag-and-Drop Sorting
 
-按住按钮设计器里的「拖拽」图标，可以对按钮进行排序。
+To reorder buttons, simply hold down the "Drag" icon in the button designer and rearrange the buttons as needed.
 
 ![20240412114236](https://static-docs.nocobase.com/20240412114236.gif)

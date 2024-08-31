@@ -1,29 +1,36 @@
-# 连接数据区块
+# Connecting Data Blocks
 
-## 介绍
+## Introduction
 
-连接数据区块用于实现区块之间的筛选联动。核心在于连接两个表，其中一个作为源表（主表），另一个作为目标表（外键表），实现数据的筛选联动。连接区块的可选项为当前页面（或当前弹窗）的**同表数据区块或有关系的外键约束或是有继承关系的不同表区块**，可同时连接多个区块，无论是哪一种方式本质都是源表（主动连接的表）提供 filter 参数给目标表(被连接的表)。
+Connecting data blocks is a powerful feature that enables dynamic filtering linkage between different data components. At its core, this functionality involves establishing a relationship between two collections: a source collection (primary collection) and a target collection (foreign key collection). This connection facilitates seamless data filtering and interaction.
 
-## 使用手册
+The options for connecting blocks are versatile, including:
+- Data blocks from the same collection on the current page or pop-up window
+- Blocks from different collections with foreign key constraints
+- Blocks from collections with inheritance relationships
 
-### 筛选区块连接数据区块
+Users can connect multiple blocks simultaneously, enhancing the flexibility of data interactions. Regardless of the chosen method, the underlying principle remains consistent: the source collection (actively connecting collection) supplies filter parameters to the target collection (connected collection), enabling precise data filtering and display.
 
-![20240407180953](https://static-docs.nocobase.com/20240407180953.png)
+## User Manual
 
-### 数据区块连接数据区块
+### Connecting Filter Blocks to Data Blocks
 
-#### 同数据表数据区块联动
+![Illustration of connecting filter blocks to data blocks](https://static-docs.nocobase.com/20240407180953.png)
 
-示例：订单表格区块与订单详情区块实现联动。
+### Connecting Data Blocks to Data Blocks
+
+#### Linkage Between Data Blocks from the Same collection
+
+Example: Creating a dynamic linkage between an order collection block and its corresponding order details block.
 
  <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240407161700.mp4" type="video/mp4">
  </video>
 
-#### 关系数据表区块联动（有关系的外键约束的不同表区块）
+#### Linkage Between Related Data collection Blocks (Different collection Blocks with Foreign Key Constraints)
 
-示例：订单表与客户表是多对一的关系，客户表格区块与订单表格区块实现筛选联动，查询指定客户下的订单数据。
+Example: Leveraging the many-to-one relationship between the order collection and customer collection to implement filtering linkage. This setup allows users to query order data for a specific customer by creating a connection between the customer collection block and the order collection block.
 
  <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240407163523.mp4" type="video/mp4">
-  </video>
+ </video>

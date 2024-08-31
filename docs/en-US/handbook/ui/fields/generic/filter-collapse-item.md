@@ -1,31 +1,31 @@
-# 折叠面板字段
+# Collaps Panel Fields
 
-## 介绍
+## Introduction
 
-Collapse 筛选区块仅支持选择关系字段和选项字段作为筛选字段。
+The Collapse filter block exclusively supports the selection of relational fields and option fields as filter criteria.
 
-## 字段配置项
+## Field Configuration Options
 
 ![20240409120906](https://static-docs.nocobase.com/20240409120906.png)
 
-### 设置数据范围
+### Setting the Data Scope
 
-为关系字段配置数据范围。
+Define the data scope for relational fields.
 
 ![20240422152530](https://static-docs.nocobase.com/20240422152530.png)
 
-示例：筛选非促销商品。
+Example: Filtering out non-promotional products.
 
 ![20240422152614](https://static-docs.nocobase.com/20240422152614.png)
 
-更多内容参考 [设置数据范围](/handbook/ui/fields/field-settings/data-scope)
+For additional information, refer to [Setting the Data Scope](/handbook/ui/fields/field-settings/data-scope).
 
-### 标题字段
+### Title Field
 
 ![20240423085854](https://static-docs.nocobase.com/20240423085854.png)
 
-更多内容参考 [标题字段](/handbook/ui/fields/field-settings/title-field)
+For further details, refer to [Title Field](/handbook/ui/fields/field-settings/title-field).
 
-- 默认展示（默认不展开 ）
-- 设置排序规则(关系数据的排序)
-- 自定义标题
+- Default display (collapsed by default)
+- Define sorting rules (for relational data)
+- Customize the title

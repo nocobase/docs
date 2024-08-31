@@ -1,24 +1,23 @@
-# 设置排序规则
+# Sorting Rules
 
-## 介绍
+## Introduction
 
-设置排序规则是指为数据区块定义默认的排序规则，区块的数据将按照特定的顺序呈现。
+Configuring sort rules allows you to define default sorting criteria for data blocks, ensuring that the information within each block is presented in a specific, predetermined order.
 
-## 使用手册
+## User Guide
 
 ![20240407192159](https://static-docs.nocobase.com/20240407192159.png)
 
 ![20240421115056](https://static-docs.nocobase.com/20240421115056.png)
 
-目前仅支持按本表字段进行排序。
+At present, the system only supports sorting based on fields within the current table.
 
-
-### 单个排序规则
+### Single Sort Rule
 
 ![20240407192248](https://static-docs.nocobase.com/20240407192248.png)
 
-### 多个排序规则
+### Multiple Sort Rules
 
-适用于复杂的排序需求,如先按照订单状态排序，在同一订单状态内按照收货时间排序。
+This feature is ideal for complex sorting scenarios. For instance, you might want to first organize data by order status, and then arrange items within each status category according to their delivery time.
 
 ![20240407193837](https://static-docs.nocobase.com/20240407193837.png)
