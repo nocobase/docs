@@ -5,7 +5,7 @@
 The Response Message node is designed to deliver custom messages to the client who initiates an operation within certain types of workflows.
 
 :::info{title=Note}
-This feature is currently supported in synchronous mode for the workflow types "Custom Action Event," "Post-Action Event," and "Pre-Action Event."
+This node currently can be used in the workflow types "Pre-Action Event" and "Custom Action Event (synchronous mode)".
 :::
 
 #### User Manual
@@ -36,8 +36,8 @@ Insufficient stock for product "iPhone 14 Pro"
 
 ###### "Pre-Action Event" Workflow
 
-In a "Pre-Action Event" workflow, a response message can be used to provide feedback to the client upon completion of the process. For further details, refer to [Request Interception](../triggers/pre-action.md).
+In a "Pre-Action Event" workflow, a response message can be used to provide feedback to the client upon completion of the process. For further details, refer to [Request Interception](../workflow/triggers/pre-action.md).
 
-###### "Post-Action Event" Workflow
+###### "Custom Action Event" Workflow
 
-In synchronous mode within a "Post-Action Event" workflow, the response message is sent to the client after the process is completed. Unlike the "Pre-Action Event" workflow, where the result might vary, the message displayed here is always a "success" notification. This consistency occurs because the triggering operation has already been successfully executed, and the success of the linked workflow does not impact the original operation's result.
+In synchronous mode's "Custom Action Event," using response messages allows you to send corresponding feedback messages to the client after the process ends. For details, please refer to [Custom Action Event](../workflow/triggers/custom-action.md)
