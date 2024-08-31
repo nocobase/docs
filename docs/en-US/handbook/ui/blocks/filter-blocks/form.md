@@ -10,7 +10,7 @@ The Form filter block can be connected with the data block. Once connected, it c
       <source src="https://static-docs.nocobase.com/20240426172722.mp4" type="video/mp4">
     </video>
 
-## Block Configuration Options
+## Block Settings
 
 ![20240421172115](https://static-docs.nocobase.com/20240421172115.png)
 

@@ -1,4 +1,4 @@
-## Calendar Block
+# Calendar Block
 
 <PluginInfo name="calendar"></PluginInfo>
 
@@ -10,7 +10,7 @@ The Calendar Block offers a streamlined way to view and manage events and date-r
 
 This plugin comes pre-installed, so no additional setup is required.
 
-## Adding a Block
+## Adding Blocks
 
 <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240419201640.mp4" type="video/mp4">
@@ -24,7 +24,7 @@ Clicking on a task bar highlights the selection and opens a detailed pop-up wind
 
 ![20240408171928](https://static-docs.nocobase.com/20240408171928.png)
 
-## Block Configuration Options
+## Configure Fields
 
 ![20240419203321](https://static-docs.nocobase.com/20240419203321.png)
 
@@ -41,7 +41,7 @@ Clicking on a task bar highlights the selection and opens a detailed pop-up wind
 
 For additional information, see [Set Data Range](/handbook/ui/blocks/block-settings/data-scope).
 
-## Configuration Operations
+## Configure Actions
 
 ![20240419203424](https://static-docs.nocobase.com/20240419203424.png)
 
