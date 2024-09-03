@@ -1644,6 +1644,12 @@ export default [
         // subTitle: '@nocobase/plugin-backup-restore',
         link: '/handbook/backup-restore',
       },
+      {
+        title: 'Backups Manager',
+        'title.zh-CN': '备份管理器',
+        // subTitle: '@nocobase/plugin-backups',
+        link: '/handbook/backups',
+      },
     ],
   },
   {
