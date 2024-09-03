@@ -35,6 +35,7 @@ For more content, refer to [Connect to Data Block](/handbook/ui/blocks/block-set
 ![20240421171135](https://static-docs.nocobase.com/20240421171135.png)
 
 ### Fields in Related Collections
+> In version v1.3.14-beta and above, it supports configuring "many-to-many" and "one-to-many" relationship fields.
 
 Supports using the fields of the related collections as filtering conditions
 
