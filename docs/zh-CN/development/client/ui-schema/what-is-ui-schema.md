@@ -347,7 +347,7 @@ JSX 等同于
 
 ### `x-decorator-props` 和 `x-use-decorator-props`
 
-同 `x-component-props` 和 `x-use-component-props` 使用方式想通，`withDynamicSchemaProps()` 高阶函数需要用于包装器组件。
+同 `x-component-props` 和 `x-use-component-props` 的使用方式相同，需要使用`withDynamicSchemaProps()` 高阶函数包装组件。
 
 ### `x-display`
 
