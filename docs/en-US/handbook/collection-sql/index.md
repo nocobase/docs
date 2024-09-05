@@ -1,4 +1,4 @@
-## SQL collection
+# SQL Collection
 
 <PluginInfo name="collection-sql"></PluginInfo>
 

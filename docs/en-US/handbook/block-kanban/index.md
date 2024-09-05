@@ -4,31 +4,75 @@
 
 ## Introduction
 
-Kanban is a powerful agile project management tool that brings work processes into clear view, helping to limit tasks in progress and optimize overall efficiency. The Kanban block is perfect for task management, offering a visually intuitive Kanban view and supporting direct drag-and-drop functionality to adjust task statuses effortlessly.
+The Kanban block presents data in a Kanban view, enabling drag-and-drop functionality to update the status of items.
 
 ## Installation
 
-## User Manual
+This is a built-in plugin, so no installation is needed.
 
-### Configuring the Kanban Block
+## Adding a Block
 
-![Kanban Configuration Image 1](https://static-docs.nocobase.com/8771d39e07c157d60d3b839c6bf45f8d.png)
+<video width="100%" height="440" controls>
+      <source src="https://static-docs.nocobase.com/20240419214551.mp4" type="video/mp4">
+</video>
 
-![Kanban Configuration Image 2](https://static-docs.nocobase.com/b1bdffc5ebd9c5b6342383d7d92260d1.png)
+![20240419214751](https://static-docs.nocobase.com/20240419214751.png)
 
-### Grouping Fields
+### Grouping Field
 
-When setting up or modifying a Kanban block, you’ll need to choose a single-choice field as your grouping parameter. This selection will allow the data to be organized and displayed according to the values of the chosen field.
+Used to organize data into specific groups. When creating or configuring a Kanban block, you must select a single-choice field as the grouping field.
 
-### Data Scope
+### Sorting Field
 
-The data scope configuration gives users the ability to define default filtering criteria for the data shown in the block. It supports both variable and static value settings.
+Used to arrange data within each group. Only fields tied to the grouping field can be selected for sorting. You can also quickly create a sorting field while setting up the Kanban block.
 
-### Application Scenarios
+![20240426170628](https://static-docs.nocobase.com/20240426170628.png)
 
-- **Order Processing Kanban**: Keep track of and manage the entire order lifecycle. Easily view the current status of orders, including pending and shipped orders, enabling your team to swiftly pinpoint and resolve any issues within the order process.
-- **Inventory Management Kanban**: Stay on top of inventory levels in real-time. Get a clear visual representation of stock levels across different products, quickly spot low or overstock situations, and make informed decisions on inventory adjustments and restocking.
+## Managing Kanban Data
 
-Here’s an example of how an inventory management Kanban might be configured:
+### Clicking a Card
 
-![Kanban Inventory Example](https://static-docs.nocobase.com/c6954acf2033d56c49e4a076284052b2.gif)
+Clicking on a card opens a pop-up window where you can configure data blocks as needed, such as setting up an edit form to modify the current card's record.
+
+![20240419220115](https://static-docs.nocobase.com/20240419220115.png)
+
+You can also configure how the pop-up window opens and its size.
+
+![20240419220159](https://static-docs.nocobase.com/20240419220159.png)
+
+### Dragging a Card
+
+Example: Adjust the status of a product by dragging the card. Once dragging is complete, the data will be saved automatically.
+
+<video width="100%" height="440" controls>
+      <source src="https://static-docs.nocobase.com/20240419221247.mp4" type="video/mp4">
+</video>
+
+## Block Configuration Options
+
+### Setting Data Range
+
+Example: Default filtering for promotional products.
+
+![20240422095659](https://static-docs.nocobase.com/20240422095659.png)
+
+For more details, refer to [Setting Data Range](/handbook/ui/blocks/block-settings/data-scope).
+
+### Setting Block Height
+
+Example: Adjust the height of the order Kanban block, with the scrollbar appearing within the columns.
+
+![20240605220635](https://static-docs.nocobase.com/20240605220635.gif)
+
+For more details, refer to [Block Height](/handbook/ui/blocks/block-settings/block-height).
+
+## Configuring Fields
+
+![20240419215909](https://static-docs.nocobase.com/20240419215909.png)
+
+## Configuring Actions
+
+![20240419220903](https://static-docs.nocobase.com/20240419220903.png)
+
+- [Filter](/handbook/ui/actions/types/filter)
+- [Add New](/handbook/ui/actions/types/add-new)

@@ -5,7 +5,7 @@
 The Response Message node is designed to deliver custom messages to the client who initiates an operation within certain types of workflows.
 
 :::info{title=Note}
-This feature is currently supported in synchronous mode for the workflow types "Custom Action Event," "Post-Action Event," and "Pre-Action Event."
+This node currently can be used in the workflow types "Pre-Action Event" and "Custom Action Event (synchronous mode)".
 :::
 
 #### User Manual

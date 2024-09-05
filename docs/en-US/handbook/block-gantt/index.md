@@ -10,33 +10,63 @@ The Gantt chart block displays data in the form of a timeline, making it ideal f
 
 It's a built-in plugin, no installation is required.
 
-## User Manual
-
-The Gantt block offers a clear and intuitive way to present data in a timeline format, making it perfect for visualizing the timing and progress of tasks, projects, or events. It’s particularly effective in areas like project management, event planning, engineering schedules, and task management. This tool allows you to easily adjust task timelines and progress by simply dragging the bars on the chart.
+## Adding a Block
 
 ![](https://static-docs.nocobase.com/f064f8fadf52947c990f5dad97736f98.png)
 
 ![](https://static-docs.nocobase.com/858112f44bc543973b6e5b03856a6360.png)
-
-### Gantt Block Parameter Configuration
-
-![](https://static-docs.nocobase.com/592416fe9437106db822e0a793fa7a1c.png)
 
 - **Title Field**: Displays the information directly on the Gantt chart bars
 - **Time Scale**: Sets the time scale, with the default level being days
 - **Start Date Field**: Defines the start date for each task (required)
 - **End Date Field**: Defines the end date for each task (required)
 - **Progress Field**: Indicates the progress of a task (optional percentage field)
-
-### Managing Data with the Gantt Chart
-
-- Drag and adjust bars to change the start and end dates of tasks
-- Drag the progress bar to update the progress of tasks
+## Usage Instructions
 
 ![](https://static-docs.nocobase.com/fff6fe1e1fe0a88d20f80b3bb7233608.gif)
 
-### Application Scenarios
+- Hover over a task to see a floating card that displays task duration and progress.
+- Drag the task to adjust the start and end dates.
+- Drag the progress bar to adjust task progress.
 
-- **Process Visualization**: For example, the entire shipping process can be divided into various stages, such as order confirmation, packaging, shipping, transportation, and delivery. Each stage is represented as a bar on the Gantt chart, with its length illustrating the duration of that stage.
+## Block Configuration Options
 
-![](https://static-docs.nocobase.com/03852cf63fce3372ccd259d3bd5bc0b8.gif)
+![20240419211301](https://static-docs.nocobase.com/20240419211301.png)
+
+### Set Data Range
+
+![20240419211033](https://static-docs.nocobase.com/20240419211033.png)
+
+For more details, refer to [Setting Data Range](/handbook/ui/blocks/block-settings/data-scope).
+
+- [Save as Block Template](/handbook/ui/blocks/block-settings/block-template)
+- [Set Data Loading Mode](/handbook/ui/blocks/block-settings/loading-mode)
+
+## Action Configuration
+
+### Global Actions
+
+![20240419213653](https://static-docs.nocobase.com/20240419213653.png)
+
+- [Filter](/handbook/ui/actions/types/filter)
+- [Add New](/handbook/ui/actions/types/add-new)
+- [Delete](/handbook/ui/actions/types/delete)
+- [Refresh](/handbook/ui/actions/types/refresh)
+- [Import](/handbook/action-import)
+- [Export](/handbook/action-export)
+- [Add Record](/handbook/action-add-record)
+- [Bulk Update](/handbook/action-bulk-update)
+- [Bulk Edit](/handbook/action-bulk-edit)
+
+### Row Actions
+
+![20240419213823](https://static-docs.nocobase.com/20240419213823.png)
+
+- [View](/handbook/ui/actions/types/view)
+- [Edit](/handbook/ui/actions/types/edit)
+- [Duplicate](/handbook/action-duplicate)
+- [Delete](/handbook/ui/actions/types/delete)
+- [Pop-Up](/handbook/ui/actions/types/pop-up)
+- [Update Record](/handbook/ui/actions/types/update-record)
+- [Custom Request](/handbook/action-custom-request)
+- [Trigger Workflow](/handbook/workflow/manual/triggers/custom-action)
