@@ -20,12 +20,22 @@
 ![20240409214419](https://static-docs.nocobase.com/20240409214419.png)
 
 ## 字段配置项
-#### 允许添加/关联多条(默认开启)
+### 允许添加/关联多条(默认开启)
 
 开启时通过点击 + 号添加多条记录。
 
 ![20240422172237](https://static-docs.nocobase.com/20240422172237.png)
 
 
+### 字段组件
 
-- [字段组件](/handbook/ui/fields/association-field)：切换为其他关系字段组件，如下拉选择、数据选择器等；
+[字段组件](/handbook/ui/fields/association-field)：切换为其他关系字段组件，如下拉选择、数据选择器等；
+
+### 联动规则
+:::info{title=提示}
+需要 NocoBase v1.3.16-beta 及以上版本。
+:::
+
+![20240906083737_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240906083737_rec_.gif)
+
+更多内容参考 [联动规则](/handbook/ui/blocks/block-settings/linkage-rule)

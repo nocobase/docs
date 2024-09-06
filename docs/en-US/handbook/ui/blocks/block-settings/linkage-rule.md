@@ -2,7 +2,8 @@
 
 ## Introduction
 
-Block linkage rules empower dynamic form adjustments based on user interactions. Form block linkage rules offer the flexibility to dynamically control field states or assign values, while detail block linkage rules provide the ability to dynamically manage field visibility.
+Linkage rules allow dynamic adjustment of form field states based on user behavior, such as Visible/Hidden, Required/Not Required, and value assignment. Currently, the following components support configuring linkage rules: [Form Blocks](https://docs.nocobase.com/handbook/ui/blocks/data-blocks/form#linkage-rules), [Details Blocks](https://docs.nocobase.com/handbook/ui/blocks/data-blocks/details#linkage-rules), [Action Buttons](https://docs.nocobase.com/handbook/ui/actions/action-settings/linkage-rule), [Sub Forms](https://docs.nocobase.com/handbook/ui/fields/specific/nester) (requires v1.3.15-beta or above), and [Sub Tables](https://docs.nocobase.com/handbook/ui/fields/specific/sub-table) (requires v1.3.15-beta or above).
+
 
 ![20240408100711](https://static-docs.nocobase.com/20240408100711.png)
 
