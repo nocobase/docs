@@ -58,6 +58,12 @@ Filtering utilizes a [Popup](https://mobile.ant.design/components/popup) interac
 
 ![20240828230549](https://static-docs.nocobase.com/20240828230549.png)
 
+### Configure menu access permissions
+
+You can configure menu access permissions just like on the desktop side, as shown below (the mobile plugin must be enabled first):
+
+![20240903221327_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240903221327_rec_.gif)
+
 ## Development Guide
 
 Currently supported extension points include:
