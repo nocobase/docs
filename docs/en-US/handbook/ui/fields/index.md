@@ -23,3 +23,11 @@ Like blocks, field components feature three icons in the upper right corner:
 You can customize the layout of fields within a block by dragging and rearranging them as needed.
 
 ![](https://static-docs.nocobase.com/0825ea8c014c9073f505e74f707ded66.gif)
+
+## Field Components
+
+Certain fields support switching between different components. For example, the `URL` component can be switched to the `Preview` component.
+
+![20240806164801](https://static-docs.nocobase.com/20240806164801.png)
+
+If you need to add more components, refer to [Extending Value Field Components](/plugin-samples/field/value).

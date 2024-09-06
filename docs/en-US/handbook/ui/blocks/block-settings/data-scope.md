@@ -8,24 +8,19 @@ Data scope is a powerful feature that allows users to define default filtering c
 
 ![20240407180322](https://static-docs.nocobase.com/20240407180322.png)
 
-The filtering mechanism is highly versatile, supporting field selection from both the current table and related tables, with the ability to traverse up to three levels of relationships. This depth of filtering provides users with granular control over their data views.
+Filter fields support selecting fields from the current table, as well as from related tables (up to three levels of relationships).
 
 ![20240422113637](https://static-docs.nocobase.com/20240422113637.png)
 
 ### Operators
 
-The system offers a rich set of operators, carefully tailored to different field types:
-- Text fields: Employ logical operators such as equals, not equals, contains, etc.
-- Numeric fields: Utilize comparative operators like greater than, less than, etc.
-- Date fields: Feature time-based operators including within range, before a specific date, etc.
-
-This diverse array of operators empowers users to create precise and nuanced data filters.
+Different field types support various operators. For instance, text fields support operators such as "equals," "not equals," and "contains." Numeric fields allow for operators like "greater than" and "less than," while date fields offer options such as "within a range" or "before a specific date."
 
 ![20240424154003](https://static-docs.nocobase.com/20240424154003.png)
 
 ### Static Values
 
-To illustrate, consider this example: Setting an Order "Status" to "Shipped".
+Example: Setting an Order "Status" to "Shipped".
 
  <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240415204206.mp4" type="video/mp4">
@@ -33,10 +28,12 @@ To illustrate, consider this example: Setting an Order "Status" to "Shipped".
 
 ### Variable Values
 
-For more dynamic filtering, variables can be employed. For instance: Filtering for a "Delivery Date" earlier than "Yesterday".
+Example: "Delivery Date" is earlier than "yesterday."
 
 ![20240422090134](https://static-docs.nocobase.com/20240422090134.png)
 
- <video width="100%" height="440" controls>
+<video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240415214709.mp4" type="video/mp4">
 </video>
+
+For more information about variables, refer to [Variables](/handbook/ui/variables).

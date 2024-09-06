@@ -52,10 +52,10 @@ Illustration: Dynamically adjust the requirement status of the product's promoti
 
 Illustration: Manage the visibility of the promotional price input field based on the product's promotion status.
 
-- When "IsPromotion" is active, the promotional price field is displayed and required.
+- When "IsPromotion" is true, the promotional price field is displayed and required.
 
 ![20240408115240](https://static-docs.nocobase.com/20240408115240.png)
 
-- When "IsPromotion" is inactive, the promotional price field is hidden and not required.
+- When "IsPromotion" is false, the promotional price field is hidden and not required.
 
 ![20240408115338](https://static-docs.nocobase.com/20240408115338.png)
