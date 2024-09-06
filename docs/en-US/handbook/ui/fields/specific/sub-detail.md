@@ -20,7 +20,7 @@ This feature supports the nested display of multi-level relationship fields, suc
 
 ## Field Configuration Options
 
-### Setting Sorting Rules
+#### Setting Sorting Rules
 
 You can adjust the display order for many-to-many relational data.
 
