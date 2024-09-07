@@ -66,48 +66,42 @@ JSON 解析节点通过不同的解析引擎来支持不同的解析语法，可
 
 ```json
 [
-  [
-    {
-      "id": 1,
-      "products": [
-        {
-          "id": 1,
-          "title": "Product 1",
-          "price": 100,
-          "quantity": 1
-        },
-        {
-          "id": 2,
-          "title": "Product 2",
-          "price": 120,
-          "quantity": 2
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "products": [
-        {
-          "id": 3,
-          "title": "Product 3",
-          "price": 130,
-          "quantity": 1
-        },
-        {
-          "id": 4,
-          "title": "Product 4",
-          "price": 140,
-          "quantity": 2
-        }
-      ]
-    }
-  ]
+  {
+    "id": 1,
+    "products": [
+      {
+        "id": 1,
+        "title": "Product 1",
+        "price": 100,
+        "quantity": 1
+      },
+      {
+        "id": 2,
+        "title": "Product 2",
+        "price": 120,
+        "quantity": 2
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "products": [
+      {
+        "id": 3,
+        "title": "Product 3",
+        "price": 130,
+        "quantity": 1
+      },
+      {
+        "id": 4,
+        "title": "Product 4",
+        "price": 140,
+        "quantity": 2
+      }
+    ]
+  }
 ]
 ```
-
-:::info{title=提示}
-以上代码中外层的数组并非错误，而是 SQL 节点返回的正常结果，因为 SQL 节点的结果是一个二元数组，第一个元素是查询的结果行，第二个元素是查询的元信息。
-:::
 
 如果我们需要解析并计算出数据中两个订单分别的总价，并和对应的订单 ID 组装成对象，用于更新订单总价，可以按下面的配置：
 

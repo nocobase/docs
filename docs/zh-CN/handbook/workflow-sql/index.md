@@ -8,7 +8,7 @@
 
 ### SQL 节点的结果如何使用？
 
-如果使用了 `SELECT` 语句，查询结果会以 Seqeulize 的 JSON 格式保存在节点中，可以通过 [JSON-query](/handbook/workflow-json-query) 插件进行解析并使用。
+如果使用了 `SELECT` 语句，查询结果会以 Seqeulize 的 JSON 格式保存在节点中，可以通过 [JSON-query](../workflow-json-query/index.md) 插件进行解析并使用。
 
 ### SQL 操作是否会触发数据表事件？
 
@@ -28,6 +28,47 @@
 
 ### 节点配置
 
-通过编辑框右上角的变量按钮插入需要的变量，会在执行前通过文本替换为对应变量的值：
+![SQL节点_节点配置](https://static-docs.nocobase.com/20240904002334.png)
 
-![SQL节点_节点配置](https://static-docs.nocobase.com/98611dc13bcda04348bd0856561a7b04.png)
+#### 数据源
+
+选择执行 SQL 的数据源。
+
+数据源必须是数据库类型的，例如主数据源、PostgreSQL 类型等基于 Sequelize 兼容的数据源。
+
+#### SQL 内容
+
+编辑 SQL 语句。目前仅支持一条 SQL 语句。
+
+通过编辑框右上角的变量按钮插入需要的变量，会在执行前通过文本替换为对应变量的值，再使用替换后的文本作为最终的 SQL 语句，发送到数据库进行查询。
+
+### 节点执行结果
+
+自 `v1.3.15-beta` 起，SQL 节点执行的结果为一个纯数据组成的数组，在此之前是 Sequelize 原生返回包含查询元信息的结构（详见：[`sequelize.query()`](https://sequelize.org/api/v6/class/src/sequelize.js~sequelize#instance-method-query)）。
+
+例如以下查询：
+
+```sql
+select count(id) from posts;
+```
+
+在 `v1.3.15-beta` 之前的结果：
+
+```json
+[
+    [
+        { "count": 1 }
+    ],
+    {
+        // meta
+    }
+]
+```
+
+在 `v1.3.15-beta` 之后的结果：
+
+```json
+[
+    { "count": 1 }
+]
+```
