@@ -32,7 +32,7 @@ This option enables linking to existing records within the dataset.
 
 ### Linkage Rules
 :::info{title=Tip}
-The version of NocoBase needs to be v1.3.16-beta or above.
+The version of NocoBase needs to be v1.3.17-beta or above.
 :::
 
 ![20240906084911_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240906084911_rec_.gif)

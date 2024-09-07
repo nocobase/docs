@@ -34,7 +34,7 @@
 
 ### 联动规则
 :::info{title=提示}
-需要 NocoBase v1.3.16-beta 及以上版本。
+需要 NocoBase v1.3.17-beta 及以上版本。
 :::
 
 ![20240906090603_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240906090603_rec_.gif)
