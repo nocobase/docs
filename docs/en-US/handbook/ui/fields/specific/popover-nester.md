@@ -32,4 +32,15 @@ By default, multiple entries can be added or associated. When this option is dis
 
 ![20240422202542](https://static-docs.nocobase.com/20240422202542.png)
 
-- [Field Component](/handbook/ui/fields/association-field): Enables switching to different relational field components as needed.
+### Field Component
+
+[Field Component](/handbook/ui/fields/association-field): Switch to other relationship field components, such as dropdown select, data selector, etc.
+
+### Linkage Rules
+:::info{title=Tip}
+The version of NocoBase needs to be v1.3.17-beta or above.
+:::
+
+![20240906085955_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240906085955_rec_.gif)
+
+For more information, refer to [Linkage Rules](/handbook/ui/blocks/block-settings/linkage-rule)

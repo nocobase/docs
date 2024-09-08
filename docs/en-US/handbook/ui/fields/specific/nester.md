@@ -20,8 +20,21 @@ Effortlessly display nested multi-level relationship fields, such as products an
 
 ## Field Configuration
 
-#### Multiple Record Addition/Association (Enabled by Default)
+### Multiple Record Addition/Association (Enabled by Default)
 
 When activated, this feature allows users to add multiple records with a simple click of the + icon.
 
 ![20240422172237](https://static-docs.nocobase.com/20240422172237.png)
+
+### Field Component
+
+[Field Component](/handbook/ui/fields/association-field): Switch to other relationship field components, such as dropdown select, data selector, etc.
+
+### Linkage Rules
+:::info{title=Tip}
+The version of NocoBase needs to be v1.3.17-beta or above.
+:::
+
+![20240906083737_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240906083737_rec_.gif)
+
+For more information, refer to [Linkage Rules](/handbook/ui/blocks/block-settings/linkage-rule)

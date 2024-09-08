@@ -2,7 +2,7 @@
 
 ## 介绍
 
-区块的联动规则允许根据用户的行为动态调整表单，表单区块的联动规则支持动态控制字段状态或为字段赋值，而详情区块的联动规则支持动态控制字段的显示/隐藏。
+联动规则允许根据用户的行为动态调整表单字段的状态，例如：显示/隐藏、必填/非必填、赋值等。现在支持配置联动规则的有：[表单区块](https://docs-cn.nocobase.com/handbook/ui/blocks/data-blocks/form#%E8%81%94%E5%8A%A8%E8%A7%84%E5%88%99)、[详情区块](https://docs-cn.nocobase.com/handbook/ui/blocks/data-blocks/details#%E8%81%94%E5%8A%A8%E8%A7%84%E5%88%99)、[操作按钮](https://docs-cn.nocobase.com/handbook/ui/actions/action-settings/linkage-rule)、[子表单](https://docs-cn.nocobase.com/handbook/ui/fields/specific/nester)（需 v1.3.17-beta 及以上版本）、[子表格](https://docs-cn.nocobase.com/handbook/ui/fields/specific/sub-table)（需 v1.3.17-beta 及以上版本）。
 
 ![20240408100711](https://static-docs.nocobase.com/20240408100711.png)
 

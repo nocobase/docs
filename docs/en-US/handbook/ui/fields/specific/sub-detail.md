@@ -28,4 +28,15 @@ You can adjust the display order for many-to-many relational data.
 
 ![20240822230422](https://static-docs.nocobase.com/20240822230422.png)
 
-- [Field Component](/handbook/ui/fields/association-field): Switch to alternative relationship field components, such as titles, labels, or sub-tables.
+### Field Component
+
+[Field Component](/handbook/ui/fields/association-field): Switch to other relationship field components, such as dropdown select, data selector, etc.
+
+### Linkage Rules
+:::info{title=Tip}
+The version of NocoBase needs to be v1.3.17-beta or above.
+:::
+
+![20240906090603_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240906090603_rec_.gif)
+
+For more information, refer to [Linkage Rules](/handbook/ui/blocks/block-settings/linkage-rule)
