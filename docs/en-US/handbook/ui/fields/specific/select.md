@@ -1,4 +1,4 @@
-# Selector
+# Select
 
 ## Introduction
 
@@ -14,13 +14,13 @@ The selector offers a streamlined way to select or associate data within the tar
 
 When new data is added to the target table, it will be automatically selected and linked upon form submission. This method is ideal for straightforward data scenarios, such as tagging.
 
-For example, the order table contains a many-to-one relationship field called "Tags."
+For example, the order table contains a many-to-one relationship field called "Tag"
 
 <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240410113002.mp4" type="video/mp4">
 </video>
 
-#### Add via Popup
+#### Add Popup
 
 This option allows you to configure a new form in a popup window, making it suitable for more complex scenarios, such as product entries.
 

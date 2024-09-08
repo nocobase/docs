@@ -1,24 +1,24 @@
-# Save as Template
+# Save as template
 <PluginInfo name="ui-schema-storage"></PluginInfo>
 
 ## Introduction
 
-The "Save as Block Template" feature allows you to preserve a block and its associated data tables as a reusable template. These templates are centrally managed in the template management page, streamlining your workflow when creating new blocks. When adding blocks to your project, you can either reference an existing template or create a copy, enabling rapid and consistent block creation.
+Saving a block as a template allows you to save both the block and its associated data tables. These templates can be centrally managed on the template management page. When adding a block, you can choose to reference or copy a template to quickly create a new block.
 
-## User Manual
+## User Guide
+
 ![20240407175846](https://static-docs.nocobase.com/20240407175846.png)
 
-Personalize your block template by giving it a unique and descriptive name.
+You can customize the name of the block template.
 
 ![20240407153407](https://static-docs.nocobase.com/20240407153407.png)
 
-Efficiently manage your entire collection of block templates through the centralized **block templates** page.
+All block templates can be centrally managed on the block template management page.
 
 ![20240407153550](https://static-docs.nocobase.com/20240407153550.png)
 
-Accelerate your block creation process by choosing to either reference or copy an existing template when adding new blocks to your project.
+When adding a block, you can either reference or copy a template to create the block quickly.
 
 ![20240422095346](https://static-docs.nocobase.com/20240422095346.png)
 
-For a comprehensive guide on block templates and their capabilities, please consult our detailed documentation on [Block Templates](/handbook/ui/blocks/block-templates)
-
+For more information about block templates, refer to [Block Templates](/handbook/ui/blocks/block-templates).

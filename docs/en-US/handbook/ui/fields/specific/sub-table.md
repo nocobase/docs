@@ -1,26 +1,39 @@
-# Sub-tables
+# Sub table
 
 ## Introduction
 
-Sub-tables are designed to manage complex many-to-many relationship fields, offering the ability to create and associate multiple records simultaneously or to link existing data seamlessly.
+Sub table are ideal for managing many-to-many relationship fields. They support bulk creation of target table data with associations, or selecting from existing data for association.
 
-## Instructions
+## Instructions for Use
 
-In a subtable, different field types are represented by their respective components. Larger fields, such as rich text, JSON, or multi-line text, can be edited via a convenient floating popup window.
+![20240410151306](https://static-docs.nocobase.com/20240410151306.png)
 
-For relationship fields within the subtable:
+Different field types in the sub table display distinct field components. Larger fields (such as rich text, JSON, and multi-line text) are edited via a floating pop-up window.
+
+![20240410154316](https://static-docs.nocobase.com/20240410154316.png)
+
+Relationship fields in the sub table:
 
 Order (one-to-many) > Product (one-to-many) > Inventory.
 
-The default interface for relationship fields is a dropdown selector, which also supports data selectors and subforms through popup windows.
+![20240410152232](https://static-docs.nocobase.com/20240410152232.png)
 
-Drag-and-drop sorting functionality is available, making it easy to organize your data.
+By default, relationship field components are dropdown selectors (supporting data selectors or subforms via pop-up windows).
 
+![20240410152847](https://static-docs.nocobase.com/20240410152847.png)
+
+Supports drag-and-drop sorting.
+
+![20240422215629](https://static-docs.nocobase.com/20240422215629.gif)
 ## Field Configuration Options
 
-### Allow Selection of Existing Data (Disabled by Default)
+### Allow Selecting Existing Data (disabled by default)
 
-This option enables linking to existing records within the dataset.
+Supports associating data from existing records.
+
+![20240410160432](https://static-docs.nocobase.com/20240410160432.png)
+
+![20240410160714](https://static-docs.nocobase.com/20240410160714.png)
 
 ![20240410160432](https://static-docs.nocobase.com/20240410160432.png)
 
