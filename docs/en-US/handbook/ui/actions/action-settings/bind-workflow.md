@@ -1,4 +1,4 @@
-# Bind Workflow
+# Bind Workflows
 
 ## Introduction
 
@@ -10,8 +10,11 @@ Binding a workflow is a powerful way to automate data processing. By linking an 
 
 The following operation buttons currently support workflow binding:
 
-- "Submit" and "Save" buttons for new forms.
-- "Submit" and "Save" buttons for update forms.
-- "Update Data" button in data rows (including tables, lists, boards, etc.).
+"Submit" and "Save" buttons for new forms.
+
+"Submit" and "Save" buttons for update forms.
+
+"Update Data" button in data rows (including tables, lists, kanban, etc.).
 
 For more details, see [Post-Action Events](/handbook/workflow-action-trigger) in the workflow documentation.
+

@@ -1,8 +1,8 @@
-# Linkage Rules
+# Linkage
 
 ## Introduction
 
-Operation linkage rules are designed to manage the state of various operationsâ€”such as Visible, Hidden, Editable, or Disabled on contextual data conditions and execution outcomes. These rules provide a dynamic and responsive way to control your application's interface.
+The linkage rules for actions are configured based on contextual data conditions and execution results. By configuring these linkage rules, you can control the status of actions (Visible, Hidden, Enabled, Disabled).
 
 ![20240423113057](https://static-docs.nocobase.com/20240423113057.png)
 
@@ -10,14 +10,16 @@ Operation linkage rules are designed to manage the state of various operationsâ€
 
 ![20240413102150](https://static-docs.nocobase.com/20240413102150.png)
 
-Actions are triggered when the defined conditions are met. If no conditions are specified, the action is triggered by default. You can leverage constants or variables within these conditions to create more nuanced control.
+When conditions are met (by default, they pass without conditions), the action is triggered. Constants and variables can be used in the condition evaluation.
 
 ### Applicable Buttons for Linkage Rules
 
-Currently, only buttons with a data context are eligible for linkage rule configurations. This includes:
+Currently, only buttons with data context support configuring linkage rules.
 
-- Row buttons in tables and Gantt charts.
-- Buttons in detailed views or sections.
+Row buttons in blocks such as tables and Gantt charts;
+
+Buttons in detail blocks;
+
 
 ### Constants
 

@@ -1,13 +1,13 @@
-# Data Loading
+# Data Loading Mode
 
 ## Introduction
 
-When it comes to data loading, the system offers two primary approaches. By default, it employs the "Automatically load data" method. In this context, "filter conditions" refer to the values set within the "Filter block". For users seeking more control over data retrieval, an alternative option is available: "Load data after filtering".
+The default data loading method is "Load all data when filter criteria are empty." The "filter criteria" refers to the values in the **Filter Block**. Another option is "Do not load data when filter criteria are empty."
 
-### Automatically load data
+### Load all data when filter is empty
 
 ![![20240407170234](httpsstatic-docs.nocobase.com20240407170234.png)](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/![20240407170234](httpsstatic-docs.nocobase.com20240407170234.png).gif)
 
-### Load data after filtering
+### Do not load data when filter is empty
 
 ![20240721160327_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240721160327_rec_.gif)

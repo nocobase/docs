@@ -1,4 +1,4 @@
-# Number Format
+# Format
 
 ## Introduction
 
