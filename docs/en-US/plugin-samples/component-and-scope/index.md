@@ -1,14 +1,14 @@
-# Component 和 Scope 的注册和使用
+# Registration and Usage of Component and Scope
 
-## 场景说明
+## Scenario Explanation
 
-Component 和 Scope 之所以需要注册，有以下 2 方面的原因：
+There are two main reasons why Components and Scopes need to be registered:
 
-### 原因 1：UI Schema 需要存储在服务端
+### Reason 1: UI Schema Needs to Be Stored on the Server
 
-NocoBase 的前端页面是基于 [UI Schema](/development/client/ui-schema/what-is-ui-schema) 来渲染的，而 UI Schema 又是需要存储在数据库中的，所以其不能有引用类型的属性，所以我们只能将 `x-component`、`x-decorator`、`x-use-component-props`、`x-use-decorator-props` 等属性的值存储为字符串，然后将对应的 Component 和 Scope 注册到 NocoBase 中，这样在渲染页面时，就可以根据字符串找到对应的 Component 和 Scope。
+NocoBase’s front-end pages are rendered based on the [UI Schema](/development/client/ui-schema/what-is-ui-schema), which must be stored in the database. Since the UI Schema cannot have reference-type properties, we can only store the values of properties like `x-component`, `x-decorator`, `x-use-component-props`, and `x-use-decorator-props` as strings. Then, we register the corresponding Component and Scope in NocoBase so that during page rendering, the system can match the stored strings to the appropriate Component and Scope.
 
-相反对于不需要存储在数据库中的 UI Schema，我们可以直接使用引用类型的属性，例如在开发本地的[插件配置页面](/plugin-samples/plugin-settings/form) 其中涉及的 `x-component`、`x-use-component-props` 等属性的值可以直接使用引用类型的属性。
+In contrast, for UI Schemas that do not need to be stored in the database, we can directly use reference-type properties. For example, in the locally developed [plugin configuration page](/plugin-samples/plugin-settings/form), properties like `x-component` and `x-use-component-props` can use reference-type values directly.
 
 ```ts
 const schema: ISchema = {
@@ -19,9 +19,9 @@ const schema: ISchema = {
 }
 ```
 
-### 原因 2：扩展性需求
+### Reason 2: Extensibility Needs
 
-Component 一方面是用来 UI Schema 中，一方面可以用来路由中，两种场景都存在覆盖某些组件，以达到定制化的目的。例如：
+Components can be used both in the UI Schema and in routing. In both cases, it may be necessary to override certain components to achieve customization. For example:
 
 ```ts
 class AuthPlugin extends Plugin {
@@ -35,9 +35,9 @@ class AuthPlugin extends Plugin {
 }
 ```
 
-假设别人需要替换掉登录页面时就有 2 种选择。
+If someone needs to replace the login page, there are two options:
 
-#### 方案1：替换路由
+#### Option 1: Replace the Route
 
 ```ts
 class CustomPlugin extends Plugin {
@@ -50,7 +50,7 @@ class CustomPlugin extends Plugin {
 }
 ```
 
-#### 方案2：直接替换 Component
+#### Option 2: Directly Replace the Component
 
 ```ts
 class CustomPlugin extends Plugin {
@@ -60,15 +60,15 @@ class CustomPlugin extends Plugin {
 }
 ```
 
-综上，如果不是这 2 种场景，我们是不需要注册 Component 和 Scope 的，而是可以直接使用引用类型的属性。
+In summary, if it's not one of these two scenarios, there's no need to register the Component and Scope, and you can directly use reference-type properties instead.
 
-## 全局注册和局部注册
+## Global Registration and Local Registration
 
-Component 和 Scope 可以全局注册，也可以局部注册。
+Components and Scopes can be registered globally or locally.
 
-### 全局注册
+### Global Registration
 
-全局注册需要通过 [app.addComponents()](https://client.docs.nocobase.com/core/application/application#appaddcomponents) 和 [app.addScopes()](https://client.docs.nocobase.com/core/application/application#appaddscopes) 方法来注册。例如：
+For global registration, use the methods [app.addComponents()](https://client.docs.nocobase.com/core/application/application#appaddcomponents) and [app.addScopes()](https://client.docs.nocobase.com/core/application/application#appaddscopes). For example:
 
 ```ts
 class MyPlugin extends Plugin {
@@ -79,9 +79,9 @@ class MyPlugin extends Plugin {
 }
 ```
 
-### 局部注册
+### Local Registration
 
-局部注册需要通过 [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponent-1) 和 [SchemaComponentOptions](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponentoptions) 组件的 `components` 和 `scope` 属性来注册。例如：
+For local registration, use the `components` and `scope` properties of the [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponent-1) and [SchemaComponentOptions](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponentoptions) components. For example:
 
 ```tsx | pure
 <SchemaComponentProvider components={{ Hello }} scope={{ useDeleteProps }}>
@@ -89,12 +89,11 @@ class MyPlugin extends Plugin {
 </SchemaComponentProvider>
 ```
 
-`SchemaComponentProvider` 可以多层嵌套，内部的 `SchemaComponent` 会继承外部的 `components` 和 `scope`。
+`SchemaComponentProvider` can be nested multiple layers deep, and inner `SchemaComponent` elements will inherit the `components` and `scope` from outer layers.
 
+For the scenarios mentioned, we provide the following examples:
 
-针对以上场景，我们提供了如下示例：
+- [Global Registration of Component and Scope](/plugin-samples/component-and-scope/global)
+- [Local Registration of Component and Scope](/plugin-samples/component-and-scope/local)
 
-- [全局注册 Component 和 Scope](/plugin-samples/component-and-scope/global)
-- [局部注册 Component 和 Scope](/plugin-samples/component-and-scope/local)
-
-覆盖场景我们可以参考路由示例种的 [替换页面](/plugin-samples/router/replace-page)
+For the customization scenario, refer to the routing example [Replace Page](/plugin-samples/router/replace-page).

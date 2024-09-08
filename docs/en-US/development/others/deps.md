@@ -1,14 +1,14 @@
 # Dependencies
 
-插件的依赖分为自身的依赖和全局依赖，全局依赖由 `@nocobase/server` 和 `@nocobase/client` 提供，不会打包到插件产物中，自身的依赖会被打包到产物中。
+The plugin's dependencies are categorized into local dependencies and global dependencies. Global dependencies are provided by `@nocobase/server` and `@nocobase/client`, and they are not included in the plugin's final bundle. However, local dependencies will be bundled with the plugin.
 
-因为自身的依赖会被打包到产物中（包括 server 依赖的 npm 包，也会被打包到 `dist/node_modules`），所以在开发插件时，将所有依赖放到 `devDependencies` 中即可。
+Since the local dependencies will be bundled (including npm packages required by the server, which will also be included in `dist/node_modules`), when developing a plugin, all dependencies should be added to `devDependencies`.
 
 <Alert type="warning">
-当插件安装如下依赖时，要注意 **版本** 和 `@nocobase/server` 和 `@nocobase/client` 的保持一致。
+When installing the following dependencies for the plugin, ensure that their **versions** are consistent with those of `@nocobase/server` and `@nocobase/client`.
 </Alert>
 
-### 全局依赖
+## Global Dependencies
 
 ```js
 // nocobase

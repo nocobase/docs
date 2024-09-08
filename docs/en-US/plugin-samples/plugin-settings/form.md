@@ -1,18 +1,18 @@
-# 表单配置页面
+# Form Configuration Page
 
-## 场景说明
+## Scenario Description
 
-配置界面是由一个表单组成的。
+The configuration interface is composed of a form.
 
-## 示例说明
+## Example Description
 
-假设我们需要对接一个第三方地图服务，需要配置地图的 `key` 和 `secret`，我们可以通过插件的方式添加一个配置页面，用于填写这些信息。
+Suppose we need to connect to a third-party map service and configure the map's `key` and `secret`. We can add a configuration page via a plugin to fill in this information.
 
-本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-settings-form) 中查看。
+The complete example code in this document can be found in [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-settings-form).
 
-## 初始化插件
+## Initialize the Plugin
 
-我们按照 [编写第一个插件](/development/your-fisrt-plugin) 文档说明，如果没有一个项目，可以先创建一个项目，如果已经有了或者是 clone 的源码，则跳过这一步。
+Following the [Writing Your First Plugin](/development/your-fisrt-plugin) document, if you don’t have a project yet, you can create one first. If you already have one or have cloned the source code, you can skip this step.
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d sqlite
@@ -21,34 +21,34 @@ yarn install
 yarn nocobase install
 ```
 
-然后初始化一个插件，并添加到系统中：
+Then, initialize a plugin and add it to the system:
 
 ```bash
 yarn pm create @nocobase-sample/plugin-settings-form
 yarn pm enable @nocobase-sample/plugin-settings-form
 ```
 
-然后启动项目即可：
+Now, start the project:
 
 ```bash
 yarn dev
 ```
 
-然后登录后访问 [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) 就可以看到插件已经安装并启用了。
+After logging in, visit [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) to see that the plugin has been installed and enabled.
 
-## 后端功能实现
+## Backend Implementation
 
-### 1. 创建数据表
+### 1. Create the Database Table
 
-后端主要是创建一个数据表用于存储配置信息。关于数据表创建我们需要了解以下知识：
+The backend mainly involves creating a database table to store configuration information. For creating database tables, we need to be familiar with the following:
 
-- [数据表和字段](/development/server/collections)
-- [数据表创建](/development/server/collections/configure#在插件代码里定义)
+- [Tables and Fields](/development/server/collections)
+- [Creating Tables](/development/server/collections/configure#在插件代码里定义)
 - [Field Type](/development/server/collections/options#field-type)
-- [defineCollection()  API](/api/database#definecollection)
+- [defineCollection() API](/api/database#definecollection)
 - [Collection API](/api/database/collection)
 
-对于本示例而言，我们创建 `packages/plugins/@nocobase-sample/plugin-settings-form/src/server/collections/map-configuration.ts` 文件，其内容如下：
+In this example, we create the `packages/plugins/@nocobase-sample/plugin-settings-form/src/server/collections/map-configuration.ts` file with the following content:
 
 ```ts
 import { defineCollection } from '@nocobase/database';
@@ -68,11 +68,11 @@ export default defineCollection({
 });
 ```
 
-根据需求，我们创建了一个 `SamplesMapConfiguration` 数据表，包含 `key` 和 `secret` 两个字段，并且都是字符串类型。
+As needed, we created a `SamplesMapConfiguration` database table containing two fields: `key` and `secret`, both of string type.
 
-### 2. 执行更新
+### 2. Execute the Update
 
-我们还需要将数据表定义更新到数据库中，我们可以通过以下命令来执行更新：
+We need to update the database with the defined table, which can be done with the following command:
 
 ```bash
 yarn nocobase upgrade
@@ -80,13 +80,13 @@ yarn nocobase upgrade
 
 ![img_v3_02av_db5e9985-eb20-4420-a0b2-8a809ff05a5g](https://static-docs.nocobase.com/img_v3_02av_db5e9985-eb20-4420-a0b2-8a809ff05a5g.jpg)
 
-## 前端功能实现
+## Frontend Implementation
 
-### 1. 创建插件配置页面
+### 1. Create the Plugin Configuration Page
 
-之前的 [新增插件配置页面（单个路由）](/plugin-samples/router/add-setting-page-single-route) 已经详细介绍过，我们这里就不再赘述了。
+We've already introduced the detailed steps for [Adding a Plugin Configuration Page (Single Route)](/plugin-samples/router/add-setting-page-single-route), so we won’t repeat them here.
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/index.tsx` 文件，其内容如下：
+We modify the `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/index.tsx` file as follows:
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
@@ -106,21 +106,21 @@ export class PluginSettingsFormClient extends Plugin {
 export default PluginSettingsFormClient;
 ```
 
-然后访问 [http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-form](http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-form) 就可以我们的配置页面了。
+Then, visit [http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-form](http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-form) to see the configuration page.
 
 ![img_v3_02av_c90b5767-97dd-4fef-8dd0-c7ff9a136a9g](https://static-docs.nocobase.com/img_v3_02av_c90b5767-97dd-4fef-8dd0-c7ff9a136a9g.jpg)
 
-### 2. 定义数据表结构
+### 2. Define the Data Table Structure
 
-基于 Schema 的写法，我们需要先定义数据表的结构。关于前端数据表结构的定义，我们需要了解以下知识：
+Based on the Schema definition method, we first need to define the structure of the data table. To define the data table structure on the frontend, we need to understand the following concepts:
 
-- [数据表和字段](/development/server/collections#field-component)
+- [Tables and Fields](/development/server/collections#field-component)
 - [Field Type](/development/server/collections/options#field-type)
 - [Field Interface](/development/server/collections/options#field-interface)
-- [UI Schema 协议](/development/client/ui-schema/what-is-ui-schema)
-- [字段组件](https://client.docs.nocobase.com/components)
+- [UI Schema Protocol](/development/client/ui-schema/what-is-ui-schema)
+- [Field Components](https://client.docs.nocobase.com/components)
 
-然后我们新建 `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/PluginSettingsForm.tsx` 文件，其内容如下：
+We then create the `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/PluginSettingsForm.tsx` file with the following content:
 
 ```ts
 const mapConfigurationCollection = {
@@ -151,28 +151,28 @@ const mapConfigurationCollection = {
 };
 ```
 
-我们定义了一个 `SamplesMapConfiguration` 数据表，包含 `key` 和 `secret` 两个字段。以下是 `fields` 字段的说明：
+We've defined a `SamplesMapConfiguration` data table with two fields: `key` and `secret`. The `fields` are explained as follows:
 
-- `type`：因为是其值字符串，所以其值为 `string`，需要和后端的数据表字段类型一致
-- `name`：字段的名称，需要和后端的数据表字段名称一致
-- `interface`：这里因为其值字符串，对应到 interface，所以其值为 `input`
-- `uiSchema`：其对应着前端表单项组件的渲染
-  - `title`：表单项的标题
-  - `required`：因为是必填项，所以其值为 `true`
-  - `x-component`：这里选用单行文本的 [Input 组件](https://client.docs.nocobase.com/components/input)
+- `type`: Since the values are strings, it is set to `string` and must match the backend field type.
+- `name`: The field's name, which must match the backend field name.
+- `interface`: Corresponding to the string value, it is set to `input`.
+- `uiSchema`: Refers to the rendering of the frontend form components.
+  - `title`: The title of the form field.
+  - `required`: As it is mandatory, it is set to `true`.
+  - `x-component`: The [Input component](https://client.docs.nocobase.com/components/input) is chosen for single-line text input.
 
-### 3. 创建表单 Schema
+### 3. Create Form Schema
 
-关于表单 Schema 的写法，我们需要了解以下知识：
+For writing form schemas, the following concepts are important:
 
-- [Form 组件](https://client.docs.nocobase.com/components/form-v2)
-- [CollectionField 组件](https://client.docs.nocobase.com/core/data-source/collection-field)
-- [CardItem 组件](https://client.docs.nocobase.com/components/card-item)
-- [Schema 协议](/development/client/ui-schema/what-is-ui-schema)
-- [DataBlockProvider 组件](https://client.docs.nocobase.com/core/data-block/data-block-provider)
-- [Action 组件](https://client.docs.nocobase.com/components/action)
+- [Form Component](https://client.docs.nocobase.com/components/form-v2)
+- [CollectionField Component](https://client.docs.nocobase.com/core/data-source/collection-field)
+- [CardItem Component](https://client.docs.nocobase.com/components/card-item)
+- [Schema Protocol](/development/client/ui-schema/what-is-ui-schema)
+- [DataBlockProvider Component](https://client.docs.nocobase.com/core/data-block/data-block-provider)
+- [Action Component](https://client.docs.nocobase.com/components/action)
 
-我们依然在 `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/PluginSettingsForm.tsx` 文件中继续编写：
+We continue to write the following in `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/PluginSettingsForm.tsx`:
 
 ```ts
 import { useMemo } from 'react';
@@ -252,24 +252,26 @@ const useSubmitActionProps = (): ActionProps => {
 };
 ```
 
-- [CardItem](https://client.docs.nocobase.com/components/card-item)：卡片组件，主要是提供卡片样式
-- [DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider)：数据块组件，用于向子节点提供数据，因为是表单获取单行数据，我们提供了 `collection` 和 `action` 两个属性
-- [FormV2](https://client.docs.nocobase.com/components/form-v2)：表单组件，用于渲染表单
-- `useFormBlockProps`：用于获取数据块的属性，并传递给 FormV2 组件，具体示例参考 FormV2 [Default values](https://client.docs.nocobase.com/components/form-v2#default-values)
-- [CollectionField](https://client.docs.nocobase.com/core/data-source/collection-field)：数据表字段组件，用于读取 Collection 中的 UI Schema 并渲染
-- [Action](https://client.docs.nocobase.com/components/action)：操作按钮组件，用于提交表单
-- `useSubmitActionProps`: 用于获取提交按钮的属性
-  - [useCollection](/core/data-source/collection-provider)：用于获取数据表的信息
-  - [useDataBlockResource](/core/data-block/data-block-resource-provider)：是 DataBlockProvider 提供的一个 hook，用于获取数据块的资源，方便增删改查
+- [CardItem](https://client
 
-### 4. 创建表单组件
+.docs.nocobase.com/components/card-item): A card component that provides card-style layouts.
+- [DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider): A component that provides data to child nodes, with the `collection` and `action` attributes since the form fetches single-row data.
+- [FormV2](https://client.docs.nocobase.com/components/form-v2): A form component used to render the form.
+- `useFormBlockProps`: Used to get the data block's attributes and pass them to the FormV2 component. For detailed examples, see FormV2 [Default values](https://client.docs.nocobase.com/components/form-v2#default-values).
+- [CollectionField](https://client.docs.nocobase.com/core/data-source/collection-field): A data table field component used to read the UI Schema of the Collection and render it.
+- [Action](https://client.docs.nocobase.com/components/action): An action button component used to submit the form.
+- `useSubmitActionProps`: Used to get the attributes of the submit button.
+  - [useCollection](/core/data-source/collection-provider): Used to get information about the data table.
+  - [useDataBlockResource](/core/data-block/data-block-resource-provider): A hook provided by DataBlockProvider to access the data block's resources for CRUD operations.
 
-将 Schema 渲染成组件，我们需要了解以下知识：
+### 4. Create the Form Component
 
-- [ExtendCollectionsProvider](https://client.docs.nocobase.com/core/data-source/extend-collections-provider) 组件来扩展数据表
-- [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component) 组件来渲染表单
+To render the schema into a component, we need to understand the following concepts:
 
-我们继续在 `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/PluginSettingsForm.tsx` 文件中继续编写：
+- [ExtendCollectionsProvider](https://client.docs.nocobase.com/core/data-source/extend-collections-provider) component to extend data tables.
+- [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component) component to render forms.
+
+We continue writing in `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/PluginSettingsForm.tsx`:
 
 ```tsx | pure
 import React from 'react';
@@ -283,9 +285,9 @@ export const PluginSettingsForm = () => {
 };
 ```
 
-### 5. 注册插件配置页面
+### 5. Register the Plugin Configuration Page
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/index.tsx` 文件，其内容如下：
+We modify the `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/index.tsx` file as follows:
 
 ```diff
 import { Plugin } from '@nocobase/client';
@@ -307,22 +309,22 @@ export class PluginSettingFormClient extends Plugin {
 export default PluginSettingFormClient;
 ```
 
-然后我们访问 [http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-form](http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-form) 就可以看到我们的配置页面了。
+Now, visit [http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-form](http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-form) to see the configuration page.
 
 <video width="100%" controls>
   <source src="https://static-docs.nocobase.com/20240517-182716.mp4" type="video/mp4">
 </video>
 
-### 6. 在页面内部使用配置数据
+### 6. Use Configuration Data Inside the Page
 
-关于使用表单数据，有 2 种场景，一种是在页面内部使用，一种是在全局使用。两者的区别是：
+When using form data, there are two scenarios: using the data inside the page and using it globally. The difference is:
 
-- 全局使用：需要在表单数据更新后，将数据同步到全局状态中，达到实时更新的效果
-- 页面内部使用：因为页面的切换会自动销毁和创建，所以不需要同步数据
+- Global usage: After updating the form data, it needs to be synchronized to the global state for real-time updates.
+- Page-specific usage: Since the page will be automatically destroyed and created upon switching, there’s no need to synchronize the data.
 
-本步骤我们主要讲解在页面内部使用表单数据。
+In this step, we'll demonstrate using form data inside a page.
 
-我们创建 `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/PluginSettingsFormPage.tsx` 文件，其内容如下：
+We create the `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/PluginSettingsFormPage.tsx` file with the following content:
 
 ```tsx | pure
 import { useRequest } from '@nocobase/client';
@@ -339,7 +341,7 @@ export const PluginSettingsFormPage = () => {
 }
 ```
 
-然后我们在 `PluginSettingsForm` 组件中引入 `PluginSettingsFormPage` 组件：
+Then we introduce the `PluginSettingsFormPage` component in the `PluginSettingsForm` component:
 
 ```tsx | pure
 import { PluginSettingsFormPage } from './PluginSettingsFormPage'
@@ -357,15 +359,15 @@ export class PluginSettingFormClient extends Plugin {
 }
 ```
 
-然后我们访问 [http://localhost:13000/admin/plugin-settings-form-page](http://localhost:13000/admin/plugin-settings-form-page) 就可以看到我们的表单数据了。
+Now, visit [http://localhost:13000/admin/plugin-settings-form-page](http://localhost:13000/admin/plugin-settings-form-page) to see the form data.
 
 ![img_v3_02av_70ade722-7069-4fc7-a2c3-c080f85ff30g](https://static-docs.nocobase.com/img_v3_02av_70ade722-7069-4fc7-a2c3-c080f85ff30g.jpg)
 
-### 7. 全局使用配置数据
+### 7. Use Configuration Data Globally
 
-全局使用且需要实时刷新，需要使用到 `Context` 和 NocoBase [Provider](/development/client/providers) 能力。
+To use the data globally and ensure real-time updates, we need to use `Context` and NocoBase's [Provider](/development/client/providers) capabilities.
 
-我们创建 `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/PluginSettingsFormProvider.tsx` 文件，其内容如下：
+We create the `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/PluginSettingsFormProvider.tsx` file with the following content:
 
 ```tsx | pure
 import React, { createContext, FC } from 'react';
@@ -388,7 +390,7 @@ export const usePluginSettingsFormRequest = () => {
 };
 ```
 
-然后修改 `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/index.tsx` 文件，将其注册到全局中：
+Then we modify the `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/index.tsx` file to register it globally:
 
 ```ts
 import { PluginSettingsFormProvider } from './PluginSettingsFormProvider'
@@ -402,7 +404,7 @@ export class PluginSettingFormClient extends Plugin {
 }
 ```
 
-然后在表单更新后，我们需要重新获取全局的数据。我们修改 `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/PluginSettingsForm.tsx`：
+After updating the form, we need to re-fetch the global data. We modify the `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/PluginSettingsForm.tsx` file:
 
 ```diff
 + import { usePluginSettingsFormRequest } from './PluginSettingsFormProvider';
@@ -434,20 +436,20 @@ const useSubmitActionProps = (): ActionProps => {
   <source src="https://static-docs.nocobase.com/20240517-182717.mp4" type="video/mp4">
 </video>
 
-## 打包和上传到生产环境
+## Packaging and Uploading to Production Environment
 
-按照 [构建并打包插件](/development/your-fisrt-plugin#构建并打包插件) 文档说明，我们可以打包插件并上传到生产环境。
+Following the [Build and Package Plugin](/development/your-fisrt-plugin#构建并打包插件) document, we can package the plugin and upload it to the production environment.
 
-如果是 clone 的源码，需要先执行一次全量 build，将插件的依赖也构建好。
+If you've cloned the source code, you need to perform a full build first to package the plugin's dependencies.
 
 ```bash
 yarn build
 ```
 
-如果是使用的 `create-nocobase-app` 创建的项目，可以直接执行：
+If you used the `create-nocobase-app` to create the project, you can directly execute:
 
 ```bash
 yarn build @nocobase-sample/plugin-settings-form --tar
 ```
 
-这样就可以看到 `storage/tar/@nocobase-sample/plugin-settings-form.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
+Then you’ll see the `storage/tar/@nocobase-sample/plugin-settings-form.tar.gz` file, which can be installed by following the [uploading instructions](/welcome/getting-started/plugin).

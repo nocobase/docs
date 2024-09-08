@@ -1,18 +1,18 @@
-# 全局内容展示
+# Global Content Display
 
-我们可以通过 `Provider` 来进行全局内容展示。
+We can display global content using the `Provider` component.
 
-## 示例说明
+## Example Description
 
-我们要实现一个公告功能，如果后端返回了公告信息，那么我们就在页面的顶部展示这个公告。
+We want to implement an announcement feature. If the backend returns announcement information, it will be displayed at the top of the page.
 
-本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-provider-content) 中查看。
+You can view the complete example code in the [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-provider-content) repository.
 
 ![img_v3_02av_cd3c7f37-0c5b-4c9c-b10e-e413af409ccg](https://static-docs.nocobase.com/img_v3_02av_cd3c7f37-0c5b-4c9c-b10e-e413af409ccg.jpg)
 
-## 初始化插件
+## Initializing the Plugin
 
-我们按照 [编写第一个插件](/development/your-fisrt-plugin) 文档说明，如果没有一个项目，可以先创建一个项目，如果已经有了或者是 clone 的源码，则跳过这一步。
+Follow the instructions in the [Writing Your First Plugin](/development/your-fisrt-plugin) guide. If you don't already have a project, you can create one. If you already have a project or have cloned the source code, you can skip this step.
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d sqlite
@@ -21,28 +21,28 @@ yarn install
 yarn nocobase install
 ```
 
-然后初始化一个插件，并添加到系统中：
+Next, initialize a plugin and add it to the system:
 
 ```bash
 yarn pm create @nocobase-sample/plugin-provider-content
 yarn pm enable @nocobase-sample/plugin-provider-content
 ```
 
-然后启动项目即可：
+Now, start the project:
 
 ```bash
 yarn dev
 ```
 
-然后登录后访问 [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) 就可以看到插件已经安装并启用了。
+After logging in, visit [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) to verify that the plugin has been installed and enabled.
 
-## 功能实现
+## Feature Implementation
 
-### 1. 新增 `Provider` 组件
+### 1. Adding the `Provider` Component
 
-Provider 组件就是普通的 React 组件，但是需要注意，要将 `children` 渲染出来。
+The `Provider` component is a regular React component, but it is important to remember to render the `children` as part of it.
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-provider-content/src/client/TopAnnouncement.tsx`
+Create a new file at `packages/plugins/@nocobase-sample/plugin-provider-content/src/client/TopAnnouncement.tsx`:
 
 ```tsx | pure
 import React, { FC, ReactNode } from 'react';
@@ -81,13 +81,13 @@ export const TopAnnouncement: FC<{ children: ReactNode }> = ({ children }) => {
 };
 ```
 
-关于公告的配置和数据，可以参考 [插件表单配置页面](/plugin-samples/plugin-settings/form) 示例说明，这里只使用 Mock 数据。
+For the announcement configuration and data, you can refer to the [Plugin Form Configuration Page](/plugin-samples/plugin-settings/form). In this example, mock data is used.
 
-需要注意 `children` 别忘记渲染出来。
+Remember to render `children` within the component.
 
-### 2. 注册到系统中
+### 2. Registering It in the System
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-provider-content/src/index.ts` 文件，将 `TopAnnouncement` 组件注册到系统中。
+Modify the `packages/plugins/@nocobase-sample/plugin-provider-content/src/index.ts` file to register the `TopAnnouncement` component within the system.
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
@@ -102,24 +102,25 @@ export class PluginProviderContentClient extends Plugin {
 export default PluginProviderContentClient;
 ```
 
-然后我们访问 [http://localhost:13000](http://localhost:13000)，就能看到页面顶部展示了公告了。
+Now, visit [http://localhost:13000](http://localhost:13000), and you will see the announcement displayed at the top of the page.
 
 ![img_v3_02av_cd3c7f37-0c5b-4c9c-b10e-e413af409ccg](https://static-docs.nocobase.com/img_v3_02av_cd3c7f37-0c5b-4c9c-b10e-e413af409ccg.jpg)
 
-## 打包和上传到生产环境
+## Packaging and Deploying to Production
 
-按照 [构建并打包插件](/development/your-fisrt-plugin#构建并打包插件) 文档说明，我们可以打包插件并上传到生产环境。
+Follow the instructions in the [Build and Package Plugin](/development/your-fisrt-plugin#构建并打包插件) document to package the plugin and upload it to the production environment.
 
-如果是 clone 的源码，需要先执行一次全量 build，将插件的依赖也构建好。
+If you cloned the source code, run a full build first to package the plugin’s dependencies as well:
 
 ```bash
 yarn build
 ```
 
-如果是使用的 `create-nocobase-app` 创建的项目，可以直接执行：
+If you used `create-nocobase-app` to create the project, you can directly run:
 
 ```bash
 yarn build @nocobase-sample/plugin-provider-content --tar
 ```
 
-这样就可以看到 `storage/tar/@nocobase-sample/plugin-provider-content.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
+You will now see the `storage/tar/@nocobase-sample/plugin-provider-content.tar.gz` file. You can then install it by [uploading it](/welcome/getting-started/plugin).
+]()
