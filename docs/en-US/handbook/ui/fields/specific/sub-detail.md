@@ -1,4 +1,4 @@
-# Sub-details
+# Sub detail
 
 ## Introduction
 
