@@ -101,12 +101,14 @@ Restore operations are not allowed in the following scenarios:
 
 Click the "Restore" button of the backup item in the backup list, enter the backup file encryption password in the pop-up window, and click "Confirm" to restore the backup.
 > Leave password empty for unencrypted backup.
+
 ![Restore Backup](./static/restore-backup.png)
 
 #### Restore from local backup file
 
 Click the "Restore from local backup" button, select the local backup file in the pop-up window, enter the backup file encryption password, and click "Confirm" to restore the backup.
 > Leave password empty for unencrypted backup.
+
 ![Restore from Local Backup](./static/restore-from-local.png)
 
 #### Download Backup File

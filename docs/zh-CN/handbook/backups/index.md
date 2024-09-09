@@ -96,7 +96,7 @@ apt install -y postgresql-client-16
   - dialect 数据库类型
   - underscored 字段配置
   - table prefix 表前缀
-  - schema 表结构  
+  - schema 表结构
 
 > **备份还原均为数据库全量操作，推荐在备份还原前先备份一份当前数据库**
 
@@ -104,12 +104,14 @@ apt install -y postgresql-client-16
 
 点击备份列表中备份项的`还原`按钮，在弹出窗口中输入备份文件加密密码，点击确认还原备份。
 > 未加密备份文件无需输入密码。
+
 ![还原备份](./static/restore-backup.png)
 
 #### 上传本地备份文件还原
 
 点击`从本地备份还原`按钮，在弹出窗口中选择本地备份文件，输入备份文件加密密码，点击确认还原备份。
 > 未加密备份文件无需输入密码。
+
 ![从本地还原备份](./static/restore-from-local.png)
 
 #### 下载备份文件
