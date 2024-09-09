@@ -46,6 +46,25 @@ Inline Markdown within blocks also supports variables.
 
 ![20240612210333](https://static-docs.nocobase.com/20240612210333.png)
 
+### 补充说明
+
+When using association data in variables, particularly for to-many relationships, different template engines support different syntaxes. Therefore, when working with array-type data variables, it's necessary to distinguish between the various syntaxes. The following example uses the User/Role (one-to-many) variable
+
+string template:
+
+![20240909154424](https://static-docs.nocobase.com/20240909154424.png)
+
+Automatically display an array in a string template with elements separated by commas.
+
+![20240909154449](https://static-docs.nocobase.com/20240909154449.png)
+
+Handlebars：
+
+![20240909155651](https://static-docs.nocobase.com/20240909155651.png)
+
+Iterate over an array using #each.
+
+![20240909155720](https://static-docs.nocobase.com/20240909155720.png)
 For more introductions to variables, check out the [Edit UI / Variables](/handbook/ui/variables) section.
 
 ## QR Codes
