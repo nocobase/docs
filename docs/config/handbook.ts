@@ -1638,11 +1638,17 @@ export default [
         // subTitle: '@nocobase/plugin-localization-management',
         link: '/handbook/localization-management',
       },
+      // {
+      //   title: 'Backup & Restore',
+      //   'title.zh-CN': '备份和还原',
+      //   // subTitle: '@nocobase/plugin-backup-restore',
+      //   link: '/handbook/backup-restore',
+      // }, // replace by backups manager
       {
-        title: 'Backup & Restore',
-        'title.zh-CN': '备份和还原',
-        // subTitle: '@nocobase/plugin-backup-restore',
-        link: '/handbook/backup-restore',
+        title: 'Backups Manager',
+        'title.zh-CN': '备份管理器',
+        // subTitle: '@nocobase/plugin-backups',
+        link: '/handbook/backups',
       },
     ],
   },
