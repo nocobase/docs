@@ -901,7 +901,7 @@ export default [
             'title.zh-CN': '通用配置项',
             children: [
               {
-                title: 'Linkage',
+                title: 'Linkage rule',
                 'title.zh-CN': '联动规则',
                 link: '/handbook/ui/actions/action-settings/linkage-rule',
               },
