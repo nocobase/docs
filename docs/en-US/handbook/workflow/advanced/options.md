@@ -4,12 +4,12 @@
 
 Workflow execution is based on the trigger type selected when creating, and can be executed in "Asynchronously" or "Synchronously" mode. "Asynchronously" mode means that after a specific event is triggered, it will enter the execution queue and be executed one by one by the background scheduler, while "synchronously" mode will not enter the scheduling queue after triggering, and will start execution directly, and will immediately provide feedback after execution.
 
-Collection events, post-action events, custom action events, schedule events and approval events will be executed asynchronously by default, while pre-action events will be executed synchronously by default. Among them, collection events, post-action events and custom action events support both modes, and you can choose when creating a workflow:
+Collection event, post-action event, custom action event, schedule event and approval event will be executed asynchronously by default, while pre-action event will be executed synchronously by default. Among them, collection event, post-action event and custom action event support both modes, and you can choose when creating a workflow:
 
 ![Synchronous mode: Creating synchronous workflow](https://static-docs.nocobase.com/39bc0821f50c1bde4729c531c6236795.png)
 
 :::info{title=Note}
-Synchronously mode workflows are limited by their mode and cannot use nodes that generate a "pending" status, such as "manual process" etc.
+Synchronously mode workflow are limited by their mode and cannot use nodes that generate a "pending" status, such as "manual process" etc.
 :::
 
 ## Automatically Delete History

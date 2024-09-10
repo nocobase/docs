@@ -819,22 +819,22 @@ export default [
                 link: '/handbook/ui/fields/field-settings/required',
               },
               {
-                title: 'Set default value',
+                title: 'Default value',
                 'title.zh-CN': '默认值',
                 link: '/handbook/ui/fields/field-settings/default-value',
               },
               {
-                title: 'Set validation rules',
+                title: 'Validation rules',
                 'title.zh-CN': '验证规则',
                 link: '/handbook/ui/fields/field-settings/validation-rules',
               },
               {
-                title: 'Format',
+                title: 'Number format',
                 'title.zh-CN': '数值格式化',
                 link: '/handbook/ui/fields/field-settings/number-format',
               },
               {
-                title: 'Data scope',
+                title: 'Set the data scope',
                 'title.zh-CN': '设置数据范围',
                 link: '/handbook/ui/fields/field-settings/data-scope',
               },
@@ -901,7 +901,7 @@ export default [
             'title.zh-CN': '通用配置项',
             children: [
               {
-                title: 'Linkage',
+                title: 'Linkage rule',
                 'title.zh-CN': '联动规则',
                 link: '/handbook/ui/actions/action-settings/linkage-rule',
               },
@@ -916,7 +916,7 @@ export default [
                 link: '/handbook/ui/actions/action-settings/popup-size',
               },
               {
-                title: 'Second confirmation',
+                title: 'Secondary confirmation',
                 'title.zh-CN': '二次确认',
                 link: '/handbook/ui/actions/action-settings/double-check',
               },

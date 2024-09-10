@@ -37,4 +37,4 @@ Here is a complete configuration example:
 </video>
 
 - [Edit Button](/handbook/ui/actions/action-settings/edit-button): Customize the button's title, color, and icon.
-- [Linkage Rules](/handbook/ui/actions/action-settings/linkage-rule): Dynamically control the button's state.
+- [Linkage Rule](/handbook/ui/actions/action-settings/linkage-rule): Dynamically control the button's state.

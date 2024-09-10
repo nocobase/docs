@@ -1,4 +1,4 @@
-# Linkage
+# Linkage Rule
 
 ## Introduction
 

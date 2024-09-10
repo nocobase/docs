@@ -1,6 +1,6 @@
-# HTTP request
+# HTTP Request
 
-NocoBase 提供了 `APIClient` 用于发起 HTTP 请求，在客户端应用的 [插件生命周期](/development/client#插件的声明周期) 内，可以使用 `app.apiClient` 发起客户端请求，在组件内可以使用 `useAPIClient()` 和 `useRequest()`。
+NocoBase provides an `APIClient` for making HTTP requests. Within the [plugin lifecycle](/development/client#插件的声明周期) of a client-side application, you can use `app.apiClient` to make client-side requests. Inside components, you can use `useAPIClient()` and `useRequest()`.
 
 ## app.apiClient
 
@@ -16,18 +16,18 @@ class PluginSampleAPIClient extends Plugin {
 
 ### apiClient.request()
 
-常规请求，更多详情用法参考 axios 的 [request config](https://axios-http.com/docs/req_config)
+For standard requests, refer to axios's [request config](https://axios-http.com/docs/req_config) for more details on usage.
 
 ```ts
 class APIClient {
-  // 客户端请求，支持 AxiosRequestConfig 和 ResourceActionOptions
+  // Client-side requests, supporting AxiosRequestConfig and ResourceActionOptions
   request<T = any, R = AxiosResponse<T>, D = any>(
     config: AxiosRequestConfig<D> | ResourceActionOptions,
   ): Promise<R>;
 }
 ```
 
-示例
+Example:
 
 ```ts
 const response = await apiClient.request({ url });
@@ -35,9 +35,9 @@ const response = await apiClient.request({ url });
 
 ### apiClient.axios
 
-`AxiosInstance` 实例
+`AxiosInstance` instance
 
-可以用来修改 axios 的 [默认配置](https://axios-http.com/docs/config_defaults)
+It can be used to modify axios's [default configuration](https://axios-http.com/docs/config_defaults).
 
 ```ts
 axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
@@ -45,10 +45,10 @@ axios.defaults.headers.post['Content-Type'] =
   'application/x-www-form-urlencoded';
 ```
 
-也可以用来 [拦截请求或响应](https://axios-http.com/docs/interceptors)
+It can also be used to [intercept requests or responses](https://axios-http.com/docs/interceptors).
 
 ```ts
-// 添加请求拦截器：使用 qs 转换 params 参数
+// Add request interceptor: use qs to convert params
 axios.interceptors.request.use((config) => {
   config.paramsSerializer = (params) => {
     return qs.stringify(params, {
@@ -59,7 +59,7 @@ axios.interceptors.request.use((config) => {
   return config;
 });
 
-// 添加请求拦截器：自定义请求头
+// Add request interceptor: customize request headers
 axios.interceptors.request.use((config) => {
   config.headers['Authorization'] = `Bearer token123`;
   config.headers['X-Hostname'] = `localhost`;
@@ -71,34 +71,34 @@ axios.interceptors.request.use((config) => {
   return config;
 });
 
-// 添加响应拦截器
+// Add response interceptor
 axios.interceptors.response.use(
   (response) => response,
   (error) => {
-    // 报错的请求给出通知提示
+    // Notify the user about the error
     notification.error({
-      message: '请求响应错误',
+      message: 'Request Response Error',
     });
   },
 );
 ```
 
-### NocoBase Server 自定义请求头
+### Custom Request Headers in NocoBase Server
 
-- `X-App` 多应用时，通过 `X-App` 指定当前访问的应用
-- `X-Locale` 当前语言
-- `X-Hostname` 客户端 hostname
-- `X-Timezone` 客户端所在时区
-- `X-Role` 当前角色
-- `X-Authenticator` 当前用户认证方式
+- `X-App`: Specify the current app when using multiple apps.
+- `X-Locale`: Current language.
+- `X-Hostname`: Client hostname.
+- `X-Timezone`: Client timezone.
+- `X-Role`: Current role.
+- `X-Authenticator`: Current user authentication method.
 
 ## useAPIClient()
 
-在组件内部可以使用 `useAPIClient()` 获取当前应用的 APIClient 实例，其返回结果等于 `app.apiClient`。
+Within a component, you can use `useAPIClient()` to get the APIClient instance of the current app, which is equivalent to `app.apiClient`.
 
 ## useRequest()
 
-异步数据管理，可以是发起的客户端请求数据，也可以是自定义的异步函数。详细用法参考 ahooks 的 [useRequest()](https://ahooks.js.org/hooks/use-request/index)
+Asynchronous data management, which can either be data from client requests or a custom asynchronous function. For detailed usage, refer to ahooks's [useRequest()](https://ahooks.js.org/hooks/use-request/index).
 
 ```ts
 function useRequest<P>(
@@ -107,12 +107,12 @@ function useRequest<P>(
 );
 ```
 
-示例
+Example:
 
 ```ts
 const { data, loading, refresh, run, params } = useRequest({ url: '/users' });
 
-// useRequest 里传的是 AxiosRequestConfig，所以 run 里传的也是 AxiosRequestConfig
+// Since useRequest accepts AxiosRequestConfig, the run function also accepts AxiosRequestConfig.
 run({
   params: {
     pageSize: 20,

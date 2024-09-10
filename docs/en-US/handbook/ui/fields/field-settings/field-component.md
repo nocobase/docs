@@ -10,4 +10,4 @@ Certain fields support multiple components, allowing us to select the most appro
 
 ![20240807092859](https://static-docs.nocobase.com/20240807092859.png)
 
-Need to expand more components? Refer to [Expand Value Field Components](/plugin-samples/field/value)。
+If you need to expand more components, referring to [Expand Value Field Components](/plugin-samples/field/value)。

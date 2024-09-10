@@ -1,16 +1,16 @@
-# 全局上下文
+# Global Context
 
-很多时候我们需要在全局上下文中存储一些数据，以便在任何地方都能访问到，例如主题、权限等。
+In many situations, we need to store data in a global context so that it can be accessed anywhere, such as themes, permissions, and more.
 
-## 示例说明
+## Example Overview
 
-我们需要实现一个功能开关插件，用于控制某些功能的开关。
+We need to implement a feature toggle plugin to control the activation or deactivation of certain functions.
 
-本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-provider-context) 中查看。
+The full sample code for this document can be viewed in the [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-provider-context) repository.
 
-## 初始化插件
+## Plugin Initialization
 
-我们按照 [编写第一个插件](/development/your-fisrt-plugin) 文档说明，如果没有一个项目，可以先创建一个项目，如果已经有了或者是 clone 的源码，则跳过这一步。
+Following the instructions in [Writing Your First Plugin](/development/your-first-plugin), if you don’t already have a project, you can create one. If you already have a project or have cloned the source code, you can skip this step.
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d sqlite
@@ -19,26 +19,26 @@ yarn install
 yarn nocobase install
 ```
 
-然后初始化一个插件，并添加到系统中：
+Next, initialize a plugin and add it to the system:
 
 ```bash
 yarn pm create @nocobase-sample/plugin-provider-context
 yarn pm enable @nocobase-sample/plugin-provider-context
 ```
 
-然后启动项目即可：
+Then, start the project:
 
 ```bash
 yarn dev
 ```
 
-然后登录后访问 [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) 就可以看到插件已经安装并启用了。
+After logging in, you can visit [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) to verify that the plugin has been installed and enabled.
 
-## 功能实现
+## Feature Implementation
 
-上下文的实现需要结合 React `Context` 功能。
+The implementation of the global context requires utilizing React’s `Context` API.
 
-### 1. 创建上下文
+### 1. Creating the Context
 
 ```tsx | pure
 import { useRequest } from '@nocobase/client';
@@ -67,13 +67,13 @@ export const useFeature = (feature: string) => {
 }
 ```
 
-需要注意 `children` 别忘记渲染出来。
+Don’t forget to render the `children` component.
 
-关于 `features` 的配置和数据，可以参考 [插件表单配置页面](/plugin-samples/plugin-settings/form) 示例说明，这里只使用 Mock 数据。
+For configuration and data related to `features`, refer to the [Plugin Form Configuration Page](/plugin-samples/plugin-settings/form) for example usage. In this case, we're using mock data.
 
-### 2. 注册到系统中
+### 2. Registering the Plugin into the System
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-provider-context/src/index.ts` 文件，将 `FeaturesProvider` 组件注册到系统中。
+Modify the `packages/plugins/@nocobase-sample/plugin-provider-context/src/index.ts` file to register the `FeaturesProvider` component into the system.
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
@@ -88,15 +88,15 @@ export class PluginProviderContextClient extends Plugin {
 export default PluginProviderContextClient;
 ```
 
-### 3. 访问上下文数据
+### 3. Accessing Context Data
 
-在需要访问上下文的地方，可以使用 `useFeatures` 和 `useFeature` 方法。
+To access the context data, you can use the `useFeatures` and `useFeature` methods.
 
-但是这里也分两种情况，一种是在本插件中使用，一种是在其他插件中使用。
+There are two cases: using it within this plugin or in other plugins.
 
-#### 3.1 本插件中使用
+#### 3.1 Using it Within This Plugin
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-provider-context/src/index.ts` 文件，添加一个测试页面，用于测试上下文数据。
+Modify the `packages/plugins/@nocobase-sample/plugin-provider-context/src/index.ts` file to add a test page for checking the context data.
 
 ```tsx | pure
 import React from 'react';
@@ -130,42 +130,42 @@ export class PluginProviderContextClient extends Plugin {
 export default PluginProviderContextClient;
 ```
 
-然后我们访问 [http://localhost:13000/admin/features-test](http://localhost:13000/admin/features-test) 就可以看到上下文数据了。
+Now, visit [http://localhost:13000/admin/features-test](http://localhost:13000/admin/features-test) to see the context data.
 
 ![img_v3_02av_51b7cb08-1b42-42f4-b553-49b4e3f217bg](https://static-docs.nocobase.com/img_v3_02av_51b7cb08-1b42-42f4-b553-49b4e3f217bg.jpg)
 
-#### 3.2 其他插件中使用
+#### 3.2 Using it in Other Plugins
 
-如果需要在其他插件中使用，那就需要将 `useFeatures` 和 `useFeature` 方法导出。
+If you need to use the context in other plugins, you should export the `useFeatures` and `useFeature` methods.
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-provider-context/src/index.ts` 文件：
+Modify the `packages/plugins/@nocobase-sample/plugin-provider-context/src/index.ts` file:
 
 ```tsx | pure
 export { useFeatures, useFeature } from './FeaturesProvider';
 ```
 
-然后使用 `useFeatures` 和 `useFeature` 方法即可。
+Then, you can use the `useFeatures` and `useFeature` methods as shown below:
 
 ```tsx | pure
 import { useFeature } from '@nocobase-sample/plugin-provider-context/client';
 ```
 
-注意，这里是 `'@nocobase-sample/plugin-provider-context/client'` 而不是 `'@nocobase-sample/plugin-provider-context'`。
+Note that the import path should be `'@nocobase-sample/plugin-provider-context/client'` rather than `'@nocobase-sample/plugin-provider-context'`.
 
-## 打包和上传到生产环境
+## Packaging and Deploying to Production
 
-按照 [构建并打包插件](/development/your-fisrt-plugin#构建并打包插件) 文档说明，我们可以打包插件并上传到生产环境。
+Following the [Build and Package Plugin](/development/your-first-plugin#build-and-package-plugin) guide, you can package the plugin and upload it to the production environment.
 
-如果是 clone 的源码，需要先执行一次全量 build，将插件的依赖也构建好。
+If you cloned the source code, you’ll need to perform a full build to include the plugin's dependencies.
 
 ```bash
 yarn build
 ```
 
-如果是使用的 `create-nocobase-app` 创建的项目，可以直接执行：
+If the project was created using `create-nocobase-app`, simply run:
 
 ```bash
 yarn build @nocobase-sample/plugin-provider-context --tar
 ```
 
-这样就可以看到 `storage/tar/@nocobase-sample/plugin-provider-context.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
+This will generate the `storage/tar/@nocobase-sample/plugin-provider-context.tar.gz` file, which can then be installed by following the [upload process](/welcome/getting-started/plugin).
