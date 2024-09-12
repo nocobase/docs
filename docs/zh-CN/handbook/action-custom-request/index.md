@@ -32,6 +32,7 @@ this.app.acl.registerSnippet({
 - 当前记录
 - 当前用户
 - 当前时间
+- API token（v1.3.22-beta 及以上版本支持）
 
 ![20240426120953](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426120953.png)
 
