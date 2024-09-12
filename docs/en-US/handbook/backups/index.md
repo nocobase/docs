@@ -1,6 +1,6 @@
 # Backup manager
 
-<PluginInfo commercial="true" name="backups"></PluginInfo>
+<PluginInfo name="backups"></PluginInfo>
 
 ## Introduction
 
@@ -8,9 +8,7 @@ The NocoBase backup manager plugin provides features for fully backing up of the
 
 ## Installation
 
-This plugin is a commercial plugin, which needs to be uploaded and activated through the plugin manager.
-
-![20240323162741](https://static-docs.nocobase.com/20240323162741.png)
+This plugin is built into the NocoBase Professional Edition and does not require manual installation. Please refer to the <a target="_blank" href="https://www.nocobase.com/en/commercial">commercial version</a> for more details.
 
 :::warning{title="Attention"}
 - This plugin is based on the native database client. Before using it, the corresponding database client must be installed in the NocoBase server environment.
