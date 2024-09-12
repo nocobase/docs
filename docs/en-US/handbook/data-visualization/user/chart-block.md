@@ -8,7 +8,7 @@ Click "Add Block" - "Charts" to create an empty chart block.
 
 ![](https://static-docs.nocobase.com/790faf0a126e4ffcc3ff976818325cfd.png)
 
-Inside the chart block, click "Add Block" - "Chart" and select the corresponding data table (Collection) to create and configure charts. Only tables that the user has permission to view can be used for chart configuration, otherwise, they will be hidden from the options.
+Inside the chart block, click "Add Block" - "Chart" and select the corresponding data Collection to create and configure charts. Only tables that the user has permission to view can be used for chart configuration, otherwise, they will be hidden from the options.
 
 ![](https://static-docs.nocobase.com/93ed2fada2478fba1b243d8705717a34.png)
 
@@ -67,4 +67,3 @@ Individual charts also support configuring a refresh button, functioning the sam
 - If both the chart block and an individual chart are configured with auto-refresh intervals, the interval configured for the individual chart takes precedence.
 - If the chart block is configured with an auto-refresh interval, and an individual chart either has auto-refresh disabled or has no refresh button configured, the auto-refresh interval of the chart block will apply.
 :::
-
