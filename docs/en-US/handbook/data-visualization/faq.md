@@ -1,4 +1,4 @@
-# Frequently Asked Questions
+# FAQ
 
 ## How should JSON configuration be used?
 
