@@ -1,6 +1,6 @@
 # 备份管理器
 
-<PluginInfo commercial="true" name="backups"></PluginInfo>
+<PluginInfo name="backups"></PluginInfo>
 
 ## 介绍
 
@@ -8,9 +8,7 @@ NocoBase 备份管理器插件，提供了 NocoBase 数据库及用户上传文�
 
 ## 安装
 
-该插件为商业插件，需要通过插件管理器上传并激活插件。
-
-![20240323162741](https://static-docs.nocobase.com/20240323162741.png)
+该插件为 NocoBase 专业版内置插件，无需单独安装。请查看 <a target="_blank" href="https://www.nocobase.com/cn/commercial">商业版本</a> 了解详情。
 
 :::warning{title=注意}
 - 本插件是基于数据库原生客户端实现的，使用前需要在 NocoBase 服务器运行环境中安装对应数据库的客户端。
