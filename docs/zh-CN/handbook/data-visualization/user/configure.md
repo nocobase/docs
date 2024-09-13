@@ -17,7 +17,7 @@
 
 度量字段，通常是图表需要展示的核心数据。度量数据可以通过聚合函数进行统计，支持常用的数据库统计函数 `求和 (Sum)`,`计数 (Count)`,`平均值 (Avg)`,`最大值 (Max)`,`最小值 (Min)`. 度量字段可以有多个，可以设置别名。
 
-### 维度 (Dimesions)
+### 维度 (Dimensions)
 
 <img src="https://static-docs.nocobase.com/202404192025717.png"/>
 

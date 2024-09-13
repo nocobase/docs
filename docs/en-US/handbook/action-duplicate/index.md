@@ -1,93 +1,98 @@
-### 3. Refinement Stage
+# Copy
 
-**Participant:** Refinement Expert
+<PluginInfo name="action-duplicate"></PluginInfo>
 
-**Output:** Final Polished Translation
+## Overview
 
----
+The copy feature allows users to create new data entries based on existing records. It supports two modes: direct copy and copy to a form for further editing.
 
-## Copy
+## Installation
 
-### Introduction
+This is a built-in plugin, so no additional installation is needed.
 
-The copy function offers a convenient way for users to generate new data records based on existing ones. You can choose between two options: direct copy or copy to form and continue filling out. The permissions for these actions align with those for creating new records.
+## Copy Modes
 
-### User Guide
+### Direct Duplicate
 
-#### Direct Copy
+![](https://static-docs.nocobase.com/2c0ac5d1a539de4b72b49b7d966d8c09.png)
 
-![Direct Copy](https://static-docs.nocobase.com/2c0ac5d1a539de4b72b49b7d966d8c09.png)
+- By default, data is copied using the direct copy mode;
+- Target collection: Specifies where the copied data will be stored(For inherited tables, the data can be copied to a sub-table. Direct copy is limited to the current table);
+- Data fields: Defines which fields to include in the copy. You can select all or specific fields, required.
 
-- By default, data is copied directly.
-- Target Collection: This refers to the destination table where the copied data will be added (in scenarios involving inheritance, the data can be copied to a child table; direct copy only allows adding to the current table).
-- Data Fields: These fields specify which data elements will be copied. You can select all fields, and this selection is required.
+Once configured, simply click the button to copy the data.
 
-After setting the configuration, simply click the button to copy the data.
+### Copy Into the Form and Continue to Fill in
 
-#### Copy to Form and Continue Filling Out
+The fields defined in the template will be pre-filled as default values in a form, allowing you to modify them before submitting to complete the copy.
 
-The selected template fields will automatically populate the form with default values, which can then be edited before submission.
+You can choose to copy the data to the current table or a sub-table (in inherited cases).
 
-You can designate either the current table or a child table as the target table for the copied data (especially in inheritance scenarios).
+![](https://static-docs.nocobase.com/a072aa572fd0a0fe643eadf95471da2a.png)
 
-![Copy to Form](https://static-docs.nocobase.com/a072aa572fd0a0fe643eadf95471da2a.png)
+Template Field Configuration: Only the selected fields will be pre-filled in the form as default values.
 
-Configure Template Fields: The template fields will populate the form with default values, and only the selected fields will be transferred.
+![](https://static-docs.nocobase.com/8032fa2025180ade275da55b97774b4d.png)
 
-![Template Fields](https://static-docs.nocobase.com/8032fa2025180ade275da55b97774b4d.png)
+The "Waybill" (o2m) relationship is copied, and its field components are set as a sub-form. The fields within the sub-form are configurable.
 
-The "Waybill" (o2m) relationship is copied. You can adjust its field component to a sub-form, which allows you to configure the fields within the sub-form.
+![](https://static-docs.nocobase.com/b13c9287bae8601646727a2e78b81be7.png)
 
-![Waybill](https://static-docs.nocobase.com/b13c9287bae8601646727a2e78b81be7.png)
+#### Sync From Form Fields
 
-Sync from form fields: Once you’ve configured the form, click the Sync Form Fields button to automatically parse and select all the fields that have been configured (after any modification to the form’s field configuration, you must manually sync it again). After syncing, you can customize the template fields.
+- The system will automatically interpret the fields already configured in the current form block as template fields;
+- After modifying the form block fields (e.g., adjusting relationship components), you can reopen the template configuration and click the "Sync Form" button to ensure consistency between the form and the template.
 
-![Sync Form Fields](https://static-docs.nocobase.com/156b6d8d741521e63d12e49092414d58.png)
+![](https://static-docs.nocobase.com/156b6d8d741521e63d12e49092414d58.png)
 
-When you initiate the copy operation, a pop-up window will appear, pre-populated with the template data as default values based on the selected template fields. You can modify the data before submitting to complete the copy process.
+Template data will populate the form with default values, allowing you to adjust them and submit to complete the copy operation.
 
-![Copy Operation](https://static-docs.nocobase.com/1c0a0ae0c59971f48b2282a68831d44b.png)
+![](https://static-docs.nocobase.com/1c0a0ae0c59971f48b2282a68831d44b.png)
 
-Below is a full example of configuring a copy operation within an order list:
+Below is an example of setting up the copy function for an order list.
 
-![Order List Example](https://static-docs.nocobase.com/fa8a89abf0ba136df04b6d0d838eae4e.gif)
+![](https://static-docs.nocobase.com/fa8a89abf0ba136df04b6d0d838eae4e.gif)
 
-### Additional Notes
+### Additional Information
 
-#### Understanding Copy, Reference, and Preload
+#### Copying, Referencing, and Preloading
 
-Different fields and relationships are handled differently—through copy, reference, or preload. Adjusting the field components in relationships also influences this logic (Select and Record picker handle reference relationships, while Sub-form and Sub-table handle copy relationships).
+Different field types (with different relationships) require different handling logic, such as copying, referencing, or preloading. Modifications to relationship field components can also affect this logic (Select and Record picker components handle references, while Sub-form and Sub-table components handle copies).
 
-- Copy
-  - Regular fields are copied.
-  - hasOne and hasMany relationship fields can only be copied (these relationship types should not use Select or Record picker as field components; instead, use Sub-form or Sub-table).
-    - Altering the field components for hasOne and hasMany relationships does not change the logic (copy).
-    - In copied relationships, all child fields are selectable.
+- Copying:
 
-- Reference
-  - belongsTo and belongsToMany are reference types.
-  - **References can become copies; for instance, if a field component changes from select to sub-form, the relationship changes from reference to copy (and all child fields become selectable).**
+  - Standard fields are copied;
+  - For hasOne and hasMany relationships, fields can only be copied (i.e., these types of relationships cannot use Select or Record picker as components but must use Sub-form, Sub-table, etc.);
+    - Adjusting hasOne or hasMany field components won’t change the copying logic;
+    - All sub-fields of copied relationships can be selected.
 
-- Preload: Relationship fields within reference fields.
-  - These fields are preloaded within reference relationships.
-  - Preloaded fields may change to reference or copy if their components are modified.
+- Referencing
+
+  - belongsTo and belongsToMany relationships are handled as references;
+  - **References can transform into copies. For example, if the field component changes from select to sub-form, the relationship turns from a reference to a copy. After this, all subfields become selectable.**
+
+- Preloading: Refers to relationship fields within referenced fields.
+
+  - Fields within referenced relationships are preloaded;
+  - Adjustments to preloaded relationship fields can cause them to switch to a reference or copy logic.
 
 #### Select All
 
-- All fields, both copied and referenced, are selected.
+- All copy and reference fields are selected by default.
 
-#### Handling Logic for Template Data
+#### Fields Excluded When Selected as Data Templates:
+- Primary keys of copied relationships are filtered out, but primary keys of references and preloaded data are not
+- Foreign keys
+- Fields that must remain unique
+- Sorting fields
+- Auto-generated fields
+- Password field
+- Creator
+- Creation date
+- Last updated by
+- Last update date
 
-- All foreign keys (FKs) in relationships are filtered out.
-- Primary keys (PKs) for copied relationship data are also filtered out.
-- Reference and preload relationships include PK fields.
+#### Sync From Form Fields
 
-#### Syncing Form Fields
-
-In many cases, configuring forms involves numerous fields, making manual setup cumbersome. To streamline this, the Sync Form Fields button is available. It automatically parses and selects the appropriate fields based on their type and relationship configuration, handling copy, reference, and preload logic. The fields that have already been configured are selected by default.
-
-After modifying the form field configuration, the system doesn’t automatically sync these changes. Therefore, users need to manually click the Sync Form Fields button to update the template configuration with the latest information.
-
----
-
-This completes the refinement process. The translation is now polished and ready for use. If you have any further requests or adjustments, feel free to ask!
+- The fields already configured in the form block will be automatically parsed as template fields.
+- After modifying the form block (e.g., adjusting relationship field components), reopen the template configuration and click the "Sync Form" button to ensure the form aligns with the template.
