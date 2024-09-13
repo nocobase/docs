@@ -1,6 +1,6 @@
-# Collection Events
+# Collection event
 
-Trigger types of collection events will listen for adding, deletting and updating events of the collection. When an action on the record of collection occurs and meets the configured conditions, the corresponding workflow will be triggered. For example, reducing the inventory of goods after adding a new order, waiting for manual review after adding a comment, etc.
+Trigger types of collection events will listen for adding, deleting and updating events of the collection. When an action on the record of collection occurs and meets the configured conditions, the corresponding workflow will be triggered. For example, reducing the inventory of goods after adding a new order, waiting for manual review after adding a comment, etc.
 
 ## Basic Usage
 
