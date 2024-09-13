@@ -1,50 +1,51 @@
-# 自定义请求
+# Custom Request
 <PluginInfo name="action-custom-request"></PluginInfo>
 
-## 介绍
+## Overview
 
-## 安装
+## Installation
 
-内置插件，无需单独安装
+This plugin is built-in, so no separate installation is required.
 
-## 使用说明
+## Instructions for Use
 
 ![20240426120014](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426120014.png)
 
-### 配置权限
+### Configuring Permissions
 
-当勾选了允许配置界面时，可以配置自定义请求。
+When the "Allows to configuration interface" option is selected, you can set up custom requests.
 
 ![20240426114957](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426114957.png)
 
-customRequests 表是系统级的，通过 acl.registerSnippet 配置权限。
+The customRequests table is system-level, and permissions are controlled via the acl.registerSnippet method.
 
 ```typescript
 this.app.acl.registerSnippet({
-  name: 'ui.customRequests', // ui.* 对应的允许配置界面权限
+  name: 'ui.customRequests', // Permission for configuring interface related to ui.*
   actions: ['customRequests:*'],
 });
 ```
-### 变量
 
-支持在 URL 和请求体中配置变量。
+### Variables
 
-- 当前记录
-- 当前用户
-- 当前时间
-- API token（v1.3.22-beta 及以上版本支持）
+You can configure variables within both the URL and request body, including:
+
+- Current record
+- Current user
+- Current time
 
 ![20240426120953](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426120953.png)
 
 ![20240426121051](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426121051.png)
-## 操作配置项
 
-### 请求设置
+## Operation Configuration Items
+
+### Request Settings
 
 ![20240426120131](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426120131.png)
 
-### 权限控制
+### Access Control
 
-每个自定义请求操作支持自定义角色权限，默认拥有权限。
+Each custom request can have custom role-based permissions, with default permissions granted to all users.
 
 ![20240426120451](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426120451.png)

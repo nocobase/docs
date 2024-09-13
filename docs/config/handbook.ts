@@ -1317,9 +1317,9 @@ export default [
                 link: '/handbook/data-visualization/user/chart-block',
               },
               {
-                title: 'Configure',
+                title: 'Configure chart',
                 'title.zh-CN': '配置图表',
-                link: '/handbook/data-visualization/user/configure',
+                link: '/handbook/data-visualization/user/Configure',
               },
               {
                 title: 'Filter block',

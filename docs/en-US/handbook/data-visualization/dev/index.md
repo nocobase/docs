@@ -1,8 +1,131 @@
-# API Reference
+# Extend Chart Types
 
-NocoBase currently utilizes [G2Plot](https://g2plot.antv.antgroup.com/) as its default chart library, offering a selection of commonly used chart components. Beyond the default options, NocoBase allows for the extension of additional chart components, including the integration of other chart libraries such as ECharts. This section focuses on how to extend and incorporate new chart components.
+## Overview
 
-## Adding Charts
+NocoBase uses [Ant Design Charts](https://g2plot.antv.antgroup.com/) as the default chart library, which includes commonly used chart types. Besides the built-in chart types, NocoBase also supports integrating other chart types or libraries, such as ECharts. This section primarily explains how to extend a new chart type.
+
+## Defining a Chart
+
+In the visualization plugin, each chart type is defined using a class that must implement the [ChartType](#charttype) interface. To simplify development, we provide a [Chart](#chart) base class, which partially implements the `ChartType` interface. In most cases, to extend a chart type, you only need to inherit from the `Chart` class and implement the required methods.
+
+```ts
+class CustomChart extends Chart {
+  constructor({ name, title, Component, config }: ChartProps) {
+    // ...
+  }
+
+  init(
+    fields: FieldOption[],
+    {
+      measures,
+      dimensions,
+    }: { measures: MeasureProps[]; dimensions: DimensionProps[] },
+  ) {
+    // ...
+  }
+
+  getProps({ data, general, advanced, fieldProps }: RenderProps) {
+    // ...
+  }
+
+  getReference() {
+    // ...
+  }
+}
+```
+
+### Chart Information
+
+The basic information for a chart type includes:
+
+| Parameter   | Description           |
+| ----------- | --------------------- |
+| `name`      | Identifier            |
+| `title`     | Display title         |
+| `Component` | Component used to render the chart |
+| `config`    | Basic visualization configuration form |
+
+<img src="https://static-docs.nocobase.com/202404192352571.png"/>
+
+Example:
+
+```ts
+new CustomChart({
+  name: 'custom',
+  title: 'Custom Chart',
+  Component: CustomChart,
+  config: ['xField', 'yField', 'seriesField'],
+});
+```
+
+Refer to [Chart](#chart) for specific usage.
+
+### Initializing Chart Configuration
+
+When a user selects a chart, we may want to initialize the chart configuration based on the user’s data query settings to reduce manual configuration.  
+Each time a chart is selected, the plugin internally calls the `init()` method of the chart class, passing all the field configurations from the current data table, as well as the current measures and dimensions configuration. The `init()` method can then initialize the chart configuration based on the parameters.  
+The `Chart` class includes an `infer()` method, which can be used to easily infer the initial x-axis, y-axis, and category fields configuration.  
+Example:
+
+```ts
+init(
+  fields: FieldOption[],
+  {
+    measures,
+    dimensions,
+  }: { measures: MeasureProps[]; dimensions: DimensionProps[] },
+) {
+  const { xField, yField, seriesField } = this.infer(fields, { measures, dimensions });
+  return {
+    general: {
+      xField: xField?.value,
+      yField: yField?.value,
+      seriesField: seriesField?.value,
+    },
+  };
+}
+```
+
+### Retrieving Chart Component Properties
+
+After obtaining the user’s chart configuration, we may need to further process the data before passing it as properties to the chart component. The `getProps()` method accepts chart data, chart configuration, and related field information as parameters, processes them, and returns the final properties passed to the chart component.
+
+For example, in a “statistics” chart:
+
+```ts
+getProps({ data, fieldProps, general, advanced }: RenderProps) {
+  const record = data[0] || {};
+  const field = general?.field;
+  const props = fieldProps[field];
+  return {
+    value: record[field],
+    formatter: props?.transformer,
+    ...general,
+    ...advanced,
+  };
+}
+```
+
+### Retrieving Chart Component References
+
+The `getReference()` method retrieves reference documentation for the current chart type.
+
+```ts
+getReference() {
+  return {
+    title: this.title,
+    link: `https://ant.design/components/${this.name}`,
+  };
+}
+```
+
+## Adding a Chart
+
+After defining the chart class, we need to add the class instance to the data visualization plugin. When selecting charts, they are grouped for display, with the default group being "Built-in".
+
+<img src="https://static-docs.nocobase.com/202404201042045.png"/>
+
+We can add a group of charts or add charts to an existing group.
 
 ```typescript
 import DataVisualization from '@nocobase/plugin-data-visualization'
@@ -15,141 +138,190 @@ class CustomChartsPlugin extends Plugin {
     plugin.charts.addGroup('custom', [...]);
 
     // Set a group of charts,
-    // can be used for overriding an existing group
+    // can be used for overriding an exist group
     plugin.charts.setGroup('custom', [...]);
 
-    // Append a chart to an existing group
-    // The name of the chart must be unique within the group
-    plugin.charts.add('Built-in', CustomChart);
+    // Append a chart to an exist group
+    // The name of the chart is required to be unique in a group
+    plugin.charts.add('Built-in', new CustomChart({
+      // ...
+    }));
   }
 }
 ```
 
-## Methods
+Refer to [ChartGroup](#chartgroup) for more details.
 
-**`addGroup`**
+## Examples
 
-Adds a group of charts.
+- [src/client/chart/g2plot](https://github.com/nocobase/nocobase/tree/main/packages/plugins/%40nocobase/plugin-data-visualization/src/client/chart/g2plot)
 
-- name `string` - The group key, which must be unique.
-- charts `ChartType[]` - An array of charts.
+- [src/client/chart/antd](https://github.com/nocobase/nocobase/tree/main/packages/plugins/%40nocobase/plugin-data-visualization/src/client/chart/antd)
 
-**`setGroup`**
+- [ECharts Integration Example](../step-by-step/index.md)
 
-Defines or overrides a group of charts.
+## API
 
-- name `string` - The group key.
-- charts `ChartType[]` - An array of charts.
+### ChartGroup
 
-**`add`**
+#### `addGroup()`
 
-Adds a chart to an existing group; the chart name must be unique within that group.
-
-- group `string` - The group key.
-- chart `ChartType` - The chart.
-
-## ChartType
-
-Located at `/src/client/chart/chart.ts`
-
-`ChartType` outlines the essential properties and interfaces required for a chart class.
-
-**Properties**
-
-- name `string` - A unique identifier (key) for the chart type.
-- title `string` - The title displayed for the chart type.
-- component `React.FC<any>` - The React component used to render the chart.
-- schema `ISchema` - The UI Schema utilized for the chart’s basic visualization configuration.
-
-![](https://static-docs.nocobase.com/0a884208a26048cf58d4027626df7078.png)
-
-**Interfaces**
-
-**`init`**
+Add a group of charts.
 
 ```typescript
-init?: (
-    fields: FieldOption[],
-    query: {
-      measures?: QueryProps['measures'];
-      dimensions?: QueryProps['dimensions'];
-    },
-  ) => {
-    general?: any;
-    advanced?: any;
-  };
+import DataVisualization from '@nocobase/plugin-data-visualization'
+
+class CustomChartsPlugin extends Plugin {
+  async load() {
+    const plugin = this.app.pm.get(DataVisualization);
+
+    // Add a group of charts
+    plugin.charts.addGroup('custom', [...]);
+  }
+}
 ```
 
-Optional. Initializes the default chart configuration.
+**Signature**
 
-Parameters:
+- `addGroup(name: string, charts: ChartType[])`
 
-1. Metadata fields from the current Collection.
-2. The current configuration of measures and dimensions.
+**Details**
 
-Returns:
+| Parameter | Type          | Description             |
+| --------- | ------------- | ----------------------- |
+| `name`    | `string`      | Unique identifier for the chart group |
+| `charts`  | `ChartType[]` | Array of charts         |
 
-- general - The basic configuration of the chart.
-- advanced - The JSON configuration of the chart.
+#### `add()`
 
-(Note: Extensive type definitions exist here; please refer to the source code for more details.)
-
-**`render`**
+Add a chart to an existing group.
 
 ```typescript
-export type RenderProps = {
-  data: Record<string, any>[];
-  general: any;
-  advanced: any;
-  fieldProps: {
-    [field: string]: {
-      label: string;
-      transformer: (val: any) => string;
-    };
-  };
+import DataVisualization from '@nocobase/plugin-data-visualization';
+
+class CustomChartsPlugin extends Plugin {
+  async load() {
+    const plugin = this.app.pm.get(DataVisualization);
+
+    plugin.charts.add(
+      'Built-in',
+      new CustomChart({
+        // ...
+      }),
+    );
+  }
+}
+```
+
+**Signature**
+
+- `add(group: string, chart: ChartType)`
+
+**Details**
+
+| Parameter  | Type        | Description             |
+| ---------- | ----------- | ----------------------- |
+| `group`    | `string`    | Unique identifier for the chart group |
+| `chart`    | `ChartType` | Chart to add            |
+
+#### `setGroup()`
+
+Set a group of charts, overriding the original set.
+
+```typescript
+import DataVisualization from '@nocobase/plugin-data-visualization'
+
+class CustomChartsPlugin extends Plugin {
+  async load() {
+    const plugin = this.app.pm.get(DataVisualization);
+    // Set a group of charts,
+    // can be used for overriding an exist group
+    plugin.charts.setGroup('custom', [...]);
+  }
+}
+```
+
+**Signature**
+
+- `setGroup(name: string, charts: ChartType[])`
+
+**Details**
+
+| Parameter | Type          | Description             |
+| --------- | ------------- | ----------------------- |
+| `name`    | `string`      | Unique identifier for the chart group |
+| `charts`  | `ChartType[]` | Array of charts         |
+
+### Chart
+
+#### `constructor()`
+
+Constructor to create a new `Chart` instance.
+
+**Signature**
+
+- `constructor({ name, title, Component, config }: ChartProps)`
+
+**Type Definitions**
+
+```ts
+export type ChartProps = {
+  name: string;
+  title: string;
+  Component: React.FC<any>;
+  config?: Config[];
 };
 
-render: (props: RenderProps) => React.FC<any>;
+export type FieldConfigProps = Partial<{
+  name: string;
+  title: string;
+  required: boolean;
+  defaultValue: any;
+}>;
+
+export type ConfigProps =
+  | FieldConfigProps
+  | AnySchemaProperties
+  | (() => AnySchemaProperties);
+
+export type Config =
+  | (ConfigProps & {
+      property?: string;
+    })
+  | string;
 ```
 
-Accepts the chart’s metadata configuration, including data, chart settings, and field configurations (metadata + data transformation), and returns a chart component for rendering.
+**Details**
 
-**`getReference`**
+| Property    | Type                  | Description                       |
+| ----------- | --------------------- | --------------------------------- |
+| `name`      | `string`              | Unique identifier for the chart   |
+| `title`     | `string`              | Display title of the chart        |
+| `Component` | `React.FC<any>`       | Component used to render the chart |
+| `config`    | [`Config[]`](#config) | Optional. Visualization configuration form |
 
-```typescript
-getReference?: () => {
-    title: string;
-    link: string;
-  };
+##### Config
+
+The `config` supports multiple formats, which can be used in combination:
+
+1. UI Schema field configuration. If you want to use fields already configured in the "Data Configuration" section within the UI Schema, you can use `x-reactions': '{{ useChartFields }}'`.
+
+```ts
+{
+  xField: {
+    title: 'xField',
+    type: 'string',
+    'x-decorator': 'FormItem',
+    'x-component': 'Select',
+    'x-reactions': '{{ useChartFields }}',
+    required,
+  }
+}
 ```
 
-Optional. Retrieves reference documentation for the current chart component.
+2. Using predefined UI Schema.
 
-## Chart
-
-The `Chart` class offers a foundational implementation of `ChartType`, typically requiring only a `new Chart` or `extends Chart` to integrate a new chart.
-
-**Properties**
-
-- name `string` - A unique identifier (key) for the chart type.
-- title `string` - The title displayed for the chart type.
-- component `React.FC<any>` - The React component used to render the chart.
-- config `Config[]` - The UI Schema configuration of the chart, accessible via `config`.
-
-**`config`**
-
-Located at `/src/client/chart/configs.ts`
-
-`config` accepts an array of configurations, and the `schema getter` in the `Chart` class converts these configurations into a UI Schema for the chart’s basic setup.
-
-Configurations can be mixed and matched in the following ways:
-
-1. Raw UI Schema: If fields configured in the "data configuration" section are to be used in the UI Schema, you can apply `x-reactions': '{{ useChartFields }}'`.
-2. Predefined UI Schema.
-
-Example: `config: ['field']`
-
-Generates:
+For example, `config: ['field']` corresponds to:
 
 ```typescript
 {
@@ -164,7 +336,7 @@ Generates:
 }
 ```
 
-3. Predefined UI Schema with parameter replacement, where `property` is the key of the predefined UI Schema.
+3. Using predefined UI Schema with some properties replaced, where `property` refers to the predefined UI Schema identifier.
 
 ```typescript
 config: [
@@ -177,7 +349,7 @@ config: [
 ];
 ```
 
-Generates:
+This corresponds to:
 
 ```typescript
 {
@@ -188,62 +360,293 @@ Generates:
     'x-component': 'Select',
     'x-reactions': '{{ useChartFields }}',
     required,
-    defaultValue: 'default'
+    defaultValue: 'default',
   }
 }
 ```
 
-You can add new predefined UI Schema using the `addConfigs` method.
+You can find all predefined UI Schema options in the <a href="https://github.com/nocobase/nocobase/blob/main/packages/plugins/%40nocobase/plugin-data-visualization/src/client/chart/configs.ts" target="_blank">`/src/client/chart/config.ts`</a> file.  
+Additionally, you can add new predefined UI Schema options using the [`addConfigs()`](#addconfigs) method.
 
-For additional usage examples, refer to `/src/client/chart/g2plot/index.ts`.
+#### `addConfigs()`
 
-**Methods**
+Adds predefined UI Schema for the chart's visualization configuration form.
 
-**`infer`**
-
-```typescript
-infer: (
-    fields: FieldOption[],
-    { measures, dimensions }: {
-      measures?: QueryProps['measures'];
-      dimensions?: QueryProps['dimensions'];
+```ts
+// Add
+const booleanField = ({
+  name,
+  title,
+  defaultValue = false,
+}: FieldConfigProps) => {
+  return {
+    [name || 'field']: {
+      'x-content': lang(title || 'Field'),
+      type: 'boolean',
+      'x-decorator': 'FormItem',
+      'x-component': 'Checkbox',
+      default: defaultValue,
     },
-  ) => {
-    xField: FieldOption;
-    yField: FieldOption;
-    seriesField: FieldOption;
-    yFields: FieldOption[];
   };
+};
+chart.addConfigs({ booleanField });
+
+// Usage
+new Chart({
+  config: [
+    'booleanField',
+    {
+      property: 'booleanField',
+      name: 'customBooleanField',
+      title: 'Custom Boolean Field',
+      defaultValue: true,
+    },
+  ],
+});
 ```
 
-The `infer` method is used to infer the values of various fields in the chart configuration based on the measure and dimension settings, reducing redundant configurations.
+**Signature**
 
-The `infer` method accepts two parameters:
+- `addConfigs(configs: { [key: string]: (props: FieldConfigProps) => AnySchemaProperties })`
 
-1. Metadata fields from the current Collection, which serve as the basis for inference.
-2. The current configuration of measures and dimensions.
+**Type Definitions**
 
-The inference result returns:
-
-- `xField` - x-axis field.
-- `yField` - y-axis field.
-- `seriesField` - Category field, which can also be used as a `colorField`.
-- `yFields` - Multiple y-axis fields, typically for dual-axis charts.
-
-After obtaining the inference result, it can be combined with the definition of the [`init` method](#init) to set default values in the chart configuration.
-
-**`getProps`**
-
-```typescript
-getProps: (props: RenderProps) => any;
+```ts
+export type FieldConfigProps = Partial<{
+  name: string;
+  title: string;
+  required: boolean;
+  defaultValue: any;
+}>;
 ```
 
-Transforms the metadata configuration related to the chart, including data, chart settings, field properties, data transformation, etc., into properties for the chart rendering component. It can also return default properties that are not exposed in the configuration. The default `render` method uses `getProps` to acquire chart component properties and pass them to the chart component. This method typically requires implementation based on the specific chart component in use.
+**Details**
 
-## Examples
+The `addConfigs()` method accepts an object where the `key` is the unique identifier for the configuration, and the value is a function that returns a predefined UI Schema. This function takes customizable parameters and returns the corresponding UI Schema field configuration.
 
-- [src/client/chart/g2plot](https://github.com/nocobase/nocobase/tree/main/packages/plugins/%40nocobase/plugin-data-visualization/src/client/chart/g2plot)
+##### FieldProps
 
-- [src/client/chart/antd](https://github.com/nocobase/nocobase/tree/main/packages/plugins/%40nocobase/plugin-data-visualization/src/client/chart/antd)
+| Property       | Type      | Description        |
+| -------------- | --------- | ------------------ |
+| `name`         | `string`  | Field name         |
+| `title`        | `string`  | Field title        |
+| `required`     | `boolean` | Whether it's required |
+| `defaultValue` | `any`     | Default value      |
 
-- [Chart Extension Tutorial](../step-by-step/index.md)
+#### `init()`
+
+Initialization of chart configuration when a chart is selected.
+
+**Signature**
+
+```ts
+init?: (
+  fields: FieldOption[],
+  query: {
+    measures?: MeasureProps[];
+    dimensions?: DimensionProps[];
+  },
+) => {
+  general?: any;
+  advanced?: any;
+};
+```
+
+**Type Definitions**
+
+```ts
+export type FieldOption = {
+  value: string;
+  label: string;
+  key: string;
+  alias?: string;
+  name?: string;
+  type?: string;
+  interface?: string;
+  uiSchema?: ISchema;
+  target?: string;
+  targetFields?: FieldOption[];
+};
+
+export type MeasureProps = {
+  field: string | string[];
+  aggregation?: string;
+  alias?: string;
+};
+
+export type DimensionProps = {
+  field: string | string[];
+  alias?: string;
+  format?: string;
+};
+```
+
+**Details**
+
+| Parameter          | Type             | Description                      |
+| ------------------ | ---------------- | -------------------------------- |
+| `fields`           | `FieldOption[]`  | Properties of the current data table fields |
+| `query.measures`   | `MeasureProps[]` | Configuration of measure fields  |
+| `query.dimensions` | `DimensionProps` | Configuration of dimension fields |
+
+#### `infer()`
+
+Inference of initial chart configuration.
+
+```ts
+// pie chart
+init(fields, { measures, dimensions }) {
+  const { xField, yField } = this.infer(fields, { measures, dimensions });
+  return {
+    general: {
+      colorField: xField?.value,
+      angleField: yField?.value,
+    },
+  };
+};
+```
+
+**Signature**
+
+```ts
+infer: (fields: FieldOption[], query: {
+  measures?: MeasureProps[];
+  dimensions?: DimensionProps[];
+}) => {
+  xField: FieldOption;
+  yField: FieldOption;
+  seriesField: FieldOption;
+  colorField: FieldOption;
+  yFields: FieldOption[];
+}
+```
+
+**Details**
+
+| Property        | Type               | Description        |
+| --------------- | ------------------ | ------------------ |
+| `xField`        | `FieldOption`       | Field for the x-axis |
+| `yField`        | `FieldOption`       | Field for the y-axis |
+| `seriesField`   | `FieldOption`       | Category field      |
+| `colorField`    | `FieldOption`       | Color field         |
+| `yFields`       | `FieldOption[]`     | Multiple y-axis fields |
+
+#### `getProps()`
+
+Processes the chart data and chart configuration metadata into the properties needed for the chart rendering component.
+
+**Signature**
+
+- `getProps({ data, general, advanced, fieldProps }: RenderProps)`
+
+**Type**
+
+```ts
+export type RenderProps = {
+  data: Record<string, any>[];
+  general: any;
+  advanced: any;
+  fieldProps: {
+    [field: string]: {
+      label: string;
+      transformer: Transformer;
+      interface: string;
+    };
+  };
+};
+```
+
+| Property       | Type                              | Description                           |
+| -------------- | --------------------------------- | ------------------------------------- |
+| `data`         | `Record<string, any>[]`           | Raw chart data                        |
+| `general`      | `any`                             | Chart visualization form configuration |
+| `advanced`     | `any`                             | JSON configuration for the chart      |
+| `fieldProps`   | `{ [field: string]: FieldProps }` | Information on data table fields for rendering |
+
+##### FieldProps
+
+| Property       | Type          | Description           |
+| -------------- | ------------- | --------------------- |
+| `label`        | `string`      | Field label display    |
+| `transformer`  | `Transformer` | Data transformation function for the field |
+| `interface`    | `string`      | Field interface        |
+
+#### `getReference()`
+
+Fetches the reference information for the chart component.
+
+```ts
+getReference() {
+  return {
+    title: this.title,
+    link: `https://ant.design/components/${this.name}`,
+  };
+}
+```
+
+**Signature**
+
+```ts
+getReference?: () => {
+  title: string;
+  link: string;
+};
+```
+
+### ChartType
+
+#### `name`
+
+- `string`. Identifier for the chart type.
+
+#### `title`
+
+- `string`. Display title for the chart.
+
+#### `Component`
+
+- `React.FC<any>`. Rendering component for the chart.
+
+#### `schema`
+
+- `ISchema`. UI Schema for chart visualization configuration.
+
+#### `init()`
+
+Initialization method for chart configuration.
+
+**Signature**
+
+```ts
+init?: (
+  fields: FieldOption[],
+  query: {
+    measures?: MeasureProps[];
+    dimensions?: DimensionProps[];
+  },
+) => {
+  general?: any;
+  advanced?: any;
+};
+```
+
+#### `getProps()`
+
+Handles and retrieves properties for the chart component.
+
+**Signature**
+
+- `getProps(props: RenderProps): any`
+
+#### `getReference()`
+
+Fetches reference document information for the chart component.
+
+**Signature**
+
+```ts
+getReference?: () => {
+  title: string;
+  link: string;
+};
+```
