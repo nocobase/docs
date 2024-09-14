@@ -96,7 +96,7 @@ Date format: {{dateFormat $nDate.now "YYYY-MM-DD HH:mm:ss" "UTC"}}
 ```
 
 更多内置 helper 可参考
-<a href="https://www.npmjs.com/package/@budibase/handlebars-helpers" target="_blank"> Handlebars helpers</a>
+<a href="https://www.npmjs.com/package/@budibase/handlebars-helpers#helpers" target="_blank"> Handlebars helpers</a>
 
 ## 使用变量
 

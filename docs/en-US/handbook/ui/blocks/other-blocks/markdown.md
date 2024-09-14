@@ -95,19 +95,9 @@ Convert the string to either all uppercase or all lowercase
 
 ```
 
-For more built-in helpers, refer to <a href="https://www.npmjs.com/package/@budibase/handlebars-helpers" target="_blank">Handlebars helpers Syntax reference</a>
+For more built-in helpers, refer to <a href="https://www.npmjs.com/package/@budibase/handlebars-helpers#helpers" target="_blank">Handlebars helpers Syntax reference</a>
 
-## Using Variables
-
-Markdown also supports variables.
-
-![20240612205857](https://static-docs.nocobase.com/20240612205857.png)
-
-Inline Markdown within blocks also supports variables.
-
-![20240612210333](https://static-docs.nocobase.com/20240612210333.png)
-
-### 补充说明
+### Supplementary explanation
 
 When using association data in variables, particularly for to-many relationships, different template engines support different syntaxes. Therefore, when working with array-type data variables, it's necessary to distinguish between the various syntaxes. The following example uses the User/Role (one-to-many) variable
 
@@ -126,6 +116,17 @@ Handlebars：
 Iterate over an array using #each.
 
 ![20240909155720](https://static-docs.nocobase.com/20240909155720.png)
+
+## Using Variables
+
+Markdown also supports variables.
+
+![20240612205857](https://static-docs.nocobase.com/20240612205857.png)
+
+Inline Markdown within blocks also supports variables.
+
+![20240612210333](https://static-docs.nocobase.com/20240612210333.png)
+
 For more introductions to variables, check out the [Edit UI / Variables](/handbook/ui/variables) section.
 
 ## QR Codes
