@@ -49,6 +49,16 @@
 
 更多内容参考 [区块高度](/handbook/ui/blocks/block-settings/block-height)
 
+### 背景颜色字段
+
+该选项可以用来配置日历事件的背景颜色。使用方法如下：
+
+1. 日历数据表中需要有一个**下拉单选（Single select）**或者**单选框（Radio group）**类型的字段，该字段需要配置上颜色。
+2. 然后，回到日历区块的配置界面，在**背景颜色字段**中选择刚刚配置上颜色的字段。
+3. 最后，可以试一下给一个日历事件选中一个颜色，然后点击提交，就可以看到颜色已经生效了。
+
+![20240914192017_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240914192017_rec_.gif)
+
 ## 配置操作
 
 ![20240419203424](https://static-docs.nocobase.com/20240419203424.png)
