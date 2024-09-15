@@ -18,7 +18,7 @@ The Post-action event was initially called "Form Event." In earlier versions, th
 
 The distinction between Post-action and Pre-action events lies in the timing of their triggers during the operation request and response cycle. One is triggered before the operation is processed, while the other is triggered afterward, as illustrated below:
 
-![Operation Sequence](https://static-docs.nocobase.com/7c901be2282067d785205b70391332b7.png)
+![Operation Sequence](https://static-docs.nocobase.com/Handbook/20240916013804.png)
 
 Pre-action events are triggered before the operation is executed, meaning they occur before the request is processed. These events can be utilized to validate or manipulate the request data, and if the request is blocked, the operation will not proceed.
 
