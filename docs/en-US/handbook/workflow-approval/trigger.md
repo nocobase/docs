@@ -1,6 +1,6 @@
 # Trigger Configuration
 
-#### Creating a Workflow
+## Creating a Workflow
 
 To set up an approval workflow, start by selecting the "Approval" type during the workflow creation process:
 
@@ -8,7 +8,7 @@ To set up an approval workflow, start by selecting the "Approval" type during th
 
 Next, in the workflow configuration interface, click on the trigger to open a popup window for additional configuration options.
 
-#### Binding Data Tables
+## Binding Data Tables
 
 NocoBase’s approval plugin is designed with flexibility in mind, allowing it to be integrated with any custom data collection. This means there’s no need to repeatedly configure the data model for approval processes. Instead, you can reuse existing data collections. When configuring the trigger, the first step is to select a data table to determine which data entries will trigger the workflow upon creation or update:
 
@@ -20,7 +20,7 @@ After selecting the data table, bind the workflow to the submit button in the fo
 
 Once the form is submitted, the corresponding approval workflow will be triggered. The submitted data will be saved in the specified data table and also snapshotted within the approval flow for future review by approvers.
 
-#### Where to Initiate an Approval
+## Where to Initiate an Approval
 
 There are two locations within the user interface where approvals can be initiated:
 1. Through the submission of a data collection form that has been bound to an approval process, typically used for initiating a single approval process.
@@ -30,7 +30,7 @@ There are two locations within the user interface where approvals can be initiat
 
 By selecting "Initiate and approve in both data blocks and global approval blocks" the process will appear in the “Initiations” dropdown menu within the Approval Center block, enabling users to manage various approvals from a central location.
 
-#### Withdrawal
+## Withdrawn
 
 If the approval process permits the initiator to withdraw the request, select the "Allowed to be withdrawn" option:
 
@@ -38,7 +38,7 @@ If the approval process permits the initiator to withdraw the request, select th
 
 When this option is selected, the initiator can withdraw the approval request at any time before any approver has processed it. However, once any subsequent approval nodes have been processed, the approval can no longer be withdrawn.
 
-#### Configuring the Form Interface for Initiating Approvals
+## Configuring the Form Interface for Initiating Approvals
 
 Finally, you’ll need to configure the form interface for the initiator. This interface is used when initiating an approval from the Approval Center block or when re-initiating after a withdrawal. Click the configuration button to open a popup window:
 
