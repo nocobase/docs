@@ -52,7 +52,7 @@ For more information, refer to [Block Height](/handbook/ui/blocks/block-settings
 ### Background Color Field
 
 :::info{title=Tip}
-The version of NocoBase needs to be v1.3.23-beta or above.
+The version of NocoBase needs to be v1.4.0-beta or above.
 :::
 
 This option can be used to configure the background color of calendar events. Here's how to use it:
