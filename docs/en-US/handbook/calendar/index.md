@@ -41,6 +41,28 @@ Clicking on a task bar highlights the selection and opens a detailed pop-up wind
 
 For additional information, see [Set Data Range](/handbook/ui/blocks/block-settings/data-scope).
 
+### Set Block Height
+
+Example: Adjust the height of the order calendar block. No scrollbar will appear inside the calendar block.
+
+![20240605215742](https://static-docs.nocobase.com/20240605215742.gif)
+
+For more information, refer to [Block Height](/handbook/ui/blocks/block-settings/block-height)
+
+### Background Color Field
+
+:::info{title=Tip}
+The version of NocoBase needs to be v1.4.0-beta or above.
+:::
+
+This option can be used to configure the background color of calendar events. Here's how to use it:
+
+1. The calendar data table needs to have a field of type **Single select** or **Radio group**, and this field needs to be configured with colors.
+2. Then, return to the calendar block configuration interface and select the field you just configured with colors in the **Background Color Field**.
+3. Finally, you can try selecting a color for a calendar event and click submit. You'll see that the color has taken effect.
+
+![20240914192017_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240914192017_rec_.gif)
+
 ## Configure Actions
 
 ![20240419203424](https://static-docs.nocobase.com/20240419203424.png)
