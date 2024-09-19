@@ -624,8 +624,8 @@ export default [
                 link: '/handbook/block-iframe',
               },
               {
-                title: 'Workbench',
-                'title.zh-CN': '工作台',
+                title: 'Action panel',
+                'title.zh-CN': '操作面板',
                 link: '/handbook/block-workbench',
               },
               {
