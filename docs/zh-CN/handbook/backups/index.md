@@ -12,69 +12,11 @@ NocoBase 备份管理器插件，提供了 NocoBase 数据库及用户上传文�
 
 :::warning{title=注意}
 - 本插件是基于数据库原生客户端实现的，使用前需要在 NocoBase 服务器运行环境中安装对应数据库的客户端。
+  - [Postgres 数据库客户端安装](./installation/postgres.md)
+  - [MySQL 数据库客户端安装](./installation/mysql.md)
+  - [MariaDB 数据库客户端安装](./installation/mariadb.md)
 - 还原操作时，目标数据库版本应当不低于创建该备份的数据库版本。
 :::
-
-### MySQL/MariaDB 客户端安装
-
-请选择<strong>还原备份时</strong>使用的数据库版本，以保证数据库版本兼容。
-
-#### Docker环境
-
-1. 访问 MySQL 官方发布页面，选择对应的 MySQL 版本，复制下载链接。
-- 历史版本： https://downloads.mysql.com/archives/community/
-- 最新版本： https://dev.mysql.com/downloads/mysql/
-
-NocoBase 镜像是基于 Debian 11 系统构建的，选择对应 Debian 11 系统的 MySQL 客户端版本，例如：从以上链接找到 8.1.0 版本下载地址为：https://downloads.mysql.com/archives/get/p/23/file/mysql-community-client-core_8.1.0-1debian11_amd64.deb
-
-2. 进入 NocoBase 容器
-```bash
-docker exec -it nocobase bash
-```
-
-3. 安装 MySQL 客户端
-```bash
-apt-get update && apt-get install -y wget
-wget https://downloads.mysql.com/archives/get/p/23/file/mysql-community-client-core_8.1.0-1debian11_amd64.deb
-dpkg -x mysql-community-client-core_8.1.0-1debian11_amd64.deb /tmp/mysql-client
-cp /tmp/mysql-client/usr/bin/mysqldump /usr/bin/
-cp /tmp/mysql-client/usr/bin/mysql /usr/bin/
-```
-
-#### 其它运行环境
-
-请访问 MySQL 官方发布页面，选择对应的 MySQL 版本，根据 MySQL 官方文档进行安装。
-- 历史版本： https://downloads.mysql.com/archives/community/
-- 最新版本： https://dev.mysql.com/downloads/mysql/
-
-### PostgreSQL 客户端安装
-
-请选择<strong>还原备份时</strong>使用的数据库版本，以保证数据库版本兼容。
-
-#### Docker 环境
-
-1. 进入 NocoBase 容器
-
-```bash
-# 独立docker启动的
-# docker exec -it nocobase bash
-
-# 官方docker compose 启动的
-docker compose exec -it app bash
-```
-
-2. 安装 PostgreSQL 客户端
-
-```bash
-apt install -y postgresql-common gnupg
-/usr/share/postgresql-common/pgdg/apt.postgresql.org.sh
-# postgresql-client-16 为16版本，根据实际情况选择对应版本
-apt install -y postgresql-client-16
-```
-
-#### 其它运行环境
-
-请访问https://www.postgresql.org/download/, 选择对应的 PostgreSQL 版本，并根据官方文档进行安装。
 
 ## 使用说明
 
