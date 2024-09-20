@@ -17,8 +17,8 @@ Configure the URL or Html to directly embed the external application.
 
 ![20240408220322](https://static-docs.nocobase.com/20240408220322.png)
 
+## String Template
 
-## string template
 The default rendering engine supports variables
 ## Handlebars
 
@@ -94,7 +94,6 @@ Convert the string to either all uppercase or all lowercase
 <p>{{upperCase $user.nickname }}</p>
 
 ```
-
 For more built-in helpers, refer to <a href="https://www.npmjs.com/package/@budibase/handlebars-helpers#helpers" target="_blank">Handlebars helpers Syntax reference</a>
 
 ## Passing Variables

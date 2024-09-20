@@ -8,8 +8,8 @@ Iframe 区块允许将外部网页或内容嵌入到当前页面中。
 ## 安装
 
 内置插件，无需安装。
-## 添加区块
 
+## 添加区块
 
 ![20240408220259](https://static-docs.nocobase.com/20240408220259.png)
 
@@ -24,7 +24,6 @@ Iframe 区块允许将外部网页或内容嵌入到当前页面中。
 
 Handlebars 是一个 JavaScript 模板引擎，支持条件判断（{{#if}}）和循环（{{#each}}）,内置了大量常用 helper 供用户使用（`dateFormat`等），目前暂不支持扩展自定义helper。
 
-
 ![20240811205239](https://static-docs.nocobase.com/20240811205239.png)
 
 <a href="https://handlebarsjs.com/guide/builtin-helpers" target="_blank"> Handlebars 语法参考</a>
@@ -34,6 +33,8 @@ Handlebars 是一个 JavaScript 模板引擎，支持条件判断（{{#if}}）�
 #### `dateFormat`
 
 将时间字段格式化（支持时区处理）
+
+![20240914125432](https://static-docs.nocobase.com/20240914125432.png)
 
 ```javascript
 {{$nDate.now }}
@@ -45,6 +46,8 @@ Date format: {{dateFormat $nDate.now "YYYY-MM-DD HH:mm:ss" "UTC"}}
 #### `isEmpty`
 
 检查给定的数组、对象或字符串是否为空。
+
+![20240914132524](https://static-docs.nocobase.com/20240914132524.png)
 
 ```javascript
 {{#isEmpty someArray}}
