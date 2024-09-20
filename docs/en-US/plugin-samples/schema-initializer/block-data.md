@@ -1,28 +1,28 @@
-# 添加数据区块 Data Block
+# Adding Data Blocks
 
-## 场景说明
+## Scenario Description
 
-NocoBase 有很多 `Add block` 按钮用于向界面添加区块。其中有些和数据表有关系的被成为数据区块 `Data Block`，有些和数据表无关的被称为简单区块 `Simple Block`。
+NocoBase has many `Add block` buttons used to add blocks to the interface. Some of these blocks are related to data tables and are referred to as Data Blocks, while others that are not related to data tables are called Simple Blocks.
 
 ![img_v3_02b4_170eddb5-d3b4-461e-b74b-f83250941e5g](https://static-docs.nocobase.com/img_v3_02b4_170eddb5-d3b4-461e-b74b-f83250941e5g.jpg)
 
-但是目前已有的区块类型不一定满足我们的需求，我们就需要根据需求自定开发一些区块，本篇文章就是针对简单区块 `Data Block` 进行说明。
+However, the existing block types may not fully meet our needs, so we may need to custom-develop some blocks according to our requirements. This article specifically explains how to create Data Blocks.
 
-## 示例说明
+## Example Explanation
 
-本实例会创建一个 `Info` 区块，并将其添加到 `Page`、`Table` 以及移动端的 `Add block` 中。
+In this example, we will create an `Info` block and add it to the `Page`, `Table`, and the mobile `Add block` sections.
 
-本实例主要为了演示 initializer 的使用，更多关于区块扩展可以查看 [区块扩展](/plugin-samples/block) 文档。
+This example mainly demonstrates the usage of the initializer. For more information on block extensions, refer to the [Block Extension](/plugin-samples/block) documentation.
 
-本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-initializer-block-data) 中查看。
+The complete sample code for this document can be found in the [plugin-samples repository](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-initializer-block-data).
 
 <video width="100%" controls="">
   <source src="https://static-docs.nocobase.com/20240522-182547.mp4" type="video/mp4" />
 </video>
 
-## 初始化插件
+## Initializing the Plugin
 
-我们按照 [编写第一个插件](/development/your-fisrt-plugin) 文档说明，如果没有一个项目，可以先创建一个项目，如果已经有了或者是 clone 的源码，则跳过这一步。
+Following the instructions in the [Creating Your First Plugin](/development/your-fisrt-plugin) document, if you don't have a project yet, you can create one first. If you already have a project or have cloned the source code, skip this step.
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d sqlite
@@ -31,69 +31,68 @@ yarn install
 yarn nocobase install
 ```
 
-然后初始化一个插件，并添加到系统中：
+Next, initialize a plugin and add it to the system:
 
 ```bash
 yarn pm create @nocobase-sample/plugin-initializer-block-data
 yarn pm enable @nocobase-sample/plugin-initializer-block-data
 ```
 
-然后启动项目即可：
+Then, start the project:
 
 ```bash
 yarn dev
 ```
 
-然后登录后访问 [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) 就可以看到插件已经安装并启用了。
+After logging in, visit [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) to see that the plugin has been installed and enabled.
 
-## 功能实现
+## Feature Implementation
 
-在实现本示例之前，我们需要先了解一些基础知识：
+Before implementing this example, we need to understand some basic concepts:
 
-- [SchemaInitializer 教程](/development/client/ui-schema/initializer)：用于向界面内添加各种区块、字段、操作等
-- [SchemaInitializer API](https://client.docs.nocobase.com/core/ui-schema/schema-initializer)：用于向界面内添加各种区块、字段、操作等
-- [UI Schema](/development/client/ui-schema/what-is-ui-schema)：用于定义界面的结构和样式
-- [Designable 设计器](/development/client/ui-schema/designable)：用于修改 Schema
-
+- [SchemaInitializer Tutorial](/development/client/ui-schema/initializer): Used to add various blocks, fields, operations, etc., to the interface.
+- [SchemaInitializer API](https://client.docs.nocobase.com/core/ui-schema/schema-initializer): Provides an API for adding various blocks, fields, operations, etc., to the interface.
+- [UI Schema](/development/client/ui-schema/what-is-ui-schema): Used for defining the structure and style of the interface.
+- [Designable](/development/client/ui-schema/designable): A designer tool used for modifying schemas.
 
 ```bash
 .
-├── client # 客户端插件
-│   ├── initializer # 初始化器
-│   ├── component # 区块组件
-│   ├── index.tsx # 客户端插件入口
-│   ├── locale.ts # 多语言工具函数
-│   ├── constants.ts # 常量
+├── client # Client-side plugin
+│   ├── initializer # Initializer
+│   ├── component # Block components
+│   ├── index.tsx # Entry point for the client-side plugin
+│   ├── locale.ts # Multi-language utility functions
+│   ├── constants.ts # Constants
 │   ├── schema # Schema
-│   └── settings # Schema Settings
-├── locale # 多语言文件
-│   ├── en-US.json # 英语
-│   └── zh-CN.json # 中文
-├── index.ts # 服务端插件入口
-└── server # 服务端插件
+│   └── settings # Schema settings
+├── locale # Multi-language files
+│   ├── en-US.json # English
+│   └── zh-CN.json # Chinese
+├── index.ts # Server-side plugin entry point
+└── server # Server-side plugin
 ```
 
-### 1. 定义名称
+### 1. Defining Names
 
-我们首先需要定义区块名称，它将会使用在各个地方。
+First, we need to define the block's name, which will be used in various places.
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/constants.ts`：
+Create `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/constants.ts`:
 
 ```ts
 export const BlockName = 'Info';
 export const BlockNameLowercase = BlockName.toLowerCase();
 ```
 
-### 2. 实现区块组件
+### 2. Implementing Block Components
 
-#### 2.1 定义区块组件
+#### 2.1 Defining the Block Component
 
-本示例要做的是一个 `Info` 区块组件，具体的需求是：
+In this example, we need to create an `Info` block component with the following requirements:
 
-- 显示当前区块数据表名称
-- 显示当前区块数据列表
+- Display the name of the current block's data table.
+- Display the current block's data list.
 
-首先我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/component/Info.tsx` 文件，其内容如下：
+First, create `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/component/Info.tsx` with the following content:
 
 ```tsx | pure
 import React, { FC } from 'react';
@@ -108,25 +107,25 @@ export interface InfoProps {
 
 export const Info: FC<InfoProps> = withDynamicSchemaProps(({ collectionName, data }) => {
   return <div>
-    <div>collection: {collectionName}</div>
-    <div>data list: <pre>{JSON.stringify(data, null, 2)}</pre></div>
+    <div>Collection: {collectionName}</div>
+    <div>Data list: <pre>{JSON.stringify(data, null, 2)}</pre></div>
   </div>
 }, { displayName: BlockName })
 ```
 
-`Info` 组件整体来说是一个被 `withDynamicSchemaProps` 包裹的函数组件，[withDynamicSchemaProps](/development/client/ui-schema/what-is-ui-schema#x-component-props-和-x-use-component-props) 是一个高阶组件，用于处理 Schema 中的的动态属性。
+The `Info` component is essentially a functional component wrapped by `withDynamicSchemaProps`. The [withDynamicSchemaProps](/development/client/ui-schema/what-is-ui-schema#x-component-props-和-x-use-component-props) is a higher-order component used to handle dynamic properties in schemas.
 
-如果不看 `withDynamicSchemaProps` 的话，`Info` 组件就是一个简单的函数组件。
+Without considering `withDynamicSchemaProps`, the `Info` component is a simple functional component.
 
-然后将其在 `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/component/index.ts` 中导出：
+Next, export it in `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/component/index.ts`:
 
 ```tsx | pure
 export * from './Info';
 ```
 
-#### 2.2 注册区块组件
+#### 2.2 Registering the Block Component
 
-我们需要将 `Info` 通过插件注册到系统中。
+We need to register the `Info` component in the system via the plugin.
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
@@ -141,14 +140,14 @@ export class PluginInitializerBlockDataClient extends Plugin {
 export default PluginInitializerBlockDataClient;
 ```
 
-#### 2.3 验证区块组件
+#### 2.3 Verifying the Block Component
 
-组件验证方式有 2 种：
+There are two ways to verify the component:
 
-- 临时页面验证：我们可以临时建一个页面，然后渲染 `Info` 组件，查看是否符合需求
-- 文档示例验证：可以启动文档 `yarn doc plugins/@nocobase-sample/plugin-initializer-block-data`，通过写文档示例的方式验证是否符合需求（TODO）
+- Temporary page verification: You can create a temporary page, render the `Info` component, and check if it meets the requirements.
+- Documentation example verification: You can start the documentation with `yarn doc plugins/@nocobase-sample/plugin-initializer-block-data` and verify the component through a documentation example (TODO).
 
-我们以 `临时页面验证` 为例，我们新建一个页面，根据属性参数添加一个或者多个 `Info` 组件，查看是否符合需求。
+For this example, we'll use **Temporary Page Verification**. Create a page and add one or more `Info` components based on the parameters, then check if it meets the requirements.
 
 ```tsx | pure
 import React from 'react';
@@ -175,11 +174,28 @@ export class PluginInitializerBlockDataClient extends Plugin {
 export default PluginInitializerBlockDataClient;
 ```
 
-然后访问 `http://localhost:13000/admin/info-component` 就可以看到对应测试页面的内容了。
+Then, visit `http://localhost:13000/admin/info-component` to see the corresponding content on the test page.
 
 ![20240526165834](https://static-docs.nocobase.com/20240526165834.png)
 
-验证完毕后需要删除测试页面。
+After verification, delete the test page.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### 3. 定义区块 Schema
 
@@ -372,6 +388,33 @@ export const infoInitializerItem: SchemaInitializerItemType = {
   - `"x-toolbar": "BlockSchemaToolbar"`：`BlockSchemaToolbar` 用于左上角显示当前数据表，一般和 `DataBlockProvider` 搭配使用
 
 更多关于 Schema Initializer 的定义可以参考 [Schema Initializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer) 文档。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### 5. 实现 Schema Settings
 
