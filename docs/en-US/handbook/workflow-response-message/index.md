@@ -1,4 +1,4 @@
-#Response Message
+# Response Message
 
 <PluginInfo name="workflow-response-message" link="/handbook/workflow-response-message" commercial="true"></PluginInfo>
 

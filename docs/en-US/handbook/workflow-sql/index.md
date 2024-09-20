@@ -1,4 +1,4 @@
-### SQL Actions
+# SQL Actions
 
 In certain scenarios where the standard data table operation nodes fall short for more complex tasks, you can directly employ the SQL Action node to execute sophisticated SQL queries within the database.
 
@@ -12,7 +12,7 @@ When using a `SELECT` statement, the query results are stored in the node in Seq
 
 ### Will SQL actions trigger table events?
 
-**No, they won’t.** SQL actions directly execute SQL commands on the database. Actions such as `CREATE` / `UPDATE` / `DELETE` occur in the database, while table events are managed at the Node.js application layer (ORM processing). As a result, these operations do not trigger table events.
+**No**. SQL actions directly execute SQL commands on the database. Actions such as `CREATE` / `UPDATE` / `DELETE` occur in the database, while table events are managed at the Node.js application layer (ORM processing). As a result, these operations do not trigger table events.
 
 ## Installation
 

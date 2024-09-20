@@ -1,0 +1,61 @@
+# 联动规则
+
+## 介绍
+
+联动规则允许根据用户的行为动态调整表单字段的状态，例如：显示/隐藏、必填/非必填、赋值等。现在支持配置联动规则的有：[表单区块](https://docs-cn.nocobase.com/handbook/ui/blocks/data-blocks/form#%E8%81%94%E5%8A%A8%E8%A7%84%E5%88%99)、[详情区块](https://docs-cn.nocobase.com/handbook/ui/blocks/data-blocks/details#%E8%81%94%E5%8A%A8%E8%A7%84%E5%88%99)、[操作按钮](https://docs-cn.nocobase.com/handbook/ui/actions/action-settings/linkage-rule)、[子表单](https://docs-cn.nocobase.com/handbook/ui/fields/specific/nester)（需 v1.3.17-beta 及以上版本）、[子表格](https://docs-cn.nocobase.com/handbook/ui/fields/specific/sub-table)（需 v1.3.17-beta 及以上版本）。
+
+![20240408100711](https://static-docs.nocobase.com/20240408100711.png)
+
+![20240408100757](https://static-docs.nocobase.com/20240408100757.png)
+
+## 使用说明
+
+1. 配置表单字段：所有在规则中使用的表单字段都需要配置出来，以确保规则的有效性和准确性。
+
+2. 条件触发：当规则中的条件满足时（非必填），会自动执行下方的属性修改操作。
+
+3. 支持多个规则：可以为一个表单配置多个联动规则，当同时符合多个规则条件时，系统会按照规则的先后顺序从前往后执行结果。
+
+4. 规则管理：支持自定义命名、排序、删除、启用、禁用和复制规则。
+
+5. 支持常量/变量：在字段赋值和条件配置中支持使用常量或变量，关于变量内容可参考 [变量](/handbook/ui/variables)。
+
+### 赋值
+
+示例：根据预计年采购额自动评估并设置客户的级别（例如：A+ 级、A 级、 A- 级)。
+
+- 年采购额 大于 20000 客户级别为 A+。
+
+![20240408102241](https://static-docs.nocobase.com/20240408102241.png)
+
+- 年采购额 大于 10000 客户级别小于等于20000为 A。
+
+![20240408102303](https://static-docs.nocobase.com/20240408102303.png)
+
+- 年采购额 小于 10000 客户级别为 A-。
+
+![20240408102324](https://static-docs.nocobase.com/20240408102324.png)
+
+### 必填
+
+示例: 根据是否促销控制商品促销价格是否必填。
+
+- 是否促销为 true ,促销价格必填。
+
+![20240408105031](https://static-docs.nocobase.com/20240408105031.png)
+
+- 是否促销为 false ,促销价格非必填。
+
+![20240408105115](https://static-docs.nocobase.com/20240408105115.png)
+
+### 显示/隐藏
+
+示例: 根据是否促销控制促销价格输入框是否显示。
+
+- 是否促销为 true,促销价格显示且必填。
+
+![20240408115240](https://static-docs.nocobase.com/20240408115240.png)
+
+- 是否促销为 false,促销价格隐藏且非必填。
+
+![20240408115338](https://static-docs.nocobase.com/20240408115338.png)
