@@ -1,4 +1,4 @@
-# Node Configuration
+# Manual Node
 
 ## Creating a Node
 
@@ -8,7 +8,7 @@ In the workflow configuration interface, click the plus (“+”) button within 
 
 ## Configuring the Node
 
-### Assignee
+### Assignees
 
 A manual node requires assigning a user who will be responsible for executing the pending task. You can add a list of pending tasks when setting up blocks on the page. Additionally, the content of each node's task pop-up window needs to be configured within the node’s interface.
 

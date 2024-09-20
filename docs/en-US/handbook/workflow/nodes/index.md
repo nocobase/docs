@@ -22,7 +22,7 @@ From a functional perspective, the nodes implemented so far are in four categori
 - Data Table Operations
   - [Create record](./create.md)
   - [Update record](./update.md)
-  - [Destroy record](./destroy.md)
+  - [Delete record](./destroy.md)
   - [Query record](./query.md)
   - [Aggregate Query](./aggregate.md) (provided by plugin @nocobase/plugin-workflow-aggregate)
   - [SQL Operation](./sql.md) (provided by plugin @nocobase/plugin-workflow-sql)

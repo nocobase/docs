@@ -1,4 +1,4 @@
-# Node Configuration
+# Approval Node Configuration
 
 In an approval workflow, a dedicated "Approval" node is required to configure the logic for approvers to handle (approve, reject, or return) the initiated approval request. This "Approval" node is exclusively used within approval workflows.
 
@@ -6,21 +6,21 @@ In an approval workflow, a dedicated "Approval" node is required to configure th
 **Difference from the general "Manual" node:** The general "Manual" node is versatile and can be used across various workflows for manual data input, decision-making on process continuation, and other scenarios. In contrast, the "Approval" Node is specialized for approval workflows and is not applicable in other types of workflows.
 :::
 
-### Creating a Node
+## Creating a Node
 
 To create an "Approval" node, click the plus sign ("+") in the workflow. Then, select one of the available pass modes to configure the approval node:
 
 ![Approval Node Creation](https://static-docs.nocobase.com/f15d61208a3918d005cd2031fc9b6ce7.png)
 
-### Pass Modes
+## Pass Modes
 
 There are two pass modes available:
 
-1.  **Direct Pass Mode:** This mode is ideal for simpler workflows, where the outcome at the approval node determines whether the process ends. If the request is not approved, the process exits immediately.
+1.  Direct Pass Mode: This mode is ideal for simpler workflows, where the outcome at the approval node determines whether the process ends. If the request is not approved, the process exits immediately.
 
     ![Approval Node Pass Mode - Direct Pass Mode](https://static-docs.nocobase.com/a9d446a186f61c546607cf1c2534b287.png)
 
-2.  **Branching Mode:** This mode is typically used for more complex workflows. After the approval node produces a result, subsequent nodes can execute within the resulting branches.
+2.  Branching Mode: This mode is typically used for more complex workflows. After the approval node produces a result, subsequent nodes can execute within the resulting branches.
 
     ![Approval Node Pass Mode - Branching Mode](https://static-docs.nocobase.com/57dc6a8907f3bb02fb28c354c241e4e5.png)
 
@@ -32,42 +32,42 @@ There are two pass modes available:
 The pass mode cannot be modified once the node is created.
 :::
 
-### Approvers
+## Approvers
 
 Approvers are the users responsible for the approval actions at the node. They can consist of one or more users, selected from a static list or a dynamic value specified by a variable.
 
-![Approvers](https://static-docs.nocobase.com/29c64297d577b9ca9457b1d7ac62287d.png)
+![Approval Node_Approvers](https://static-docs.nocobase.com/29c64297d577b9ca9457b1d7ac62287d.png)
 
 When using a variable, only primary keys or foreign keys from user data in the context and node results can be selected. If the selected variable is an array (in cases of many-to-many relationships), each user in the array will be merged into the overall approver collection.
 
-### Negotiation Modes
+## Negotiation Modes
 
 If there is only one approver (including cases where multiple variables are deduplicated), the approval will be handled solely by that user, regardless of the negotiation mode chosen.
 
 For multiple approvers, the selected negotiation mode determines the handling method:
 
-1. **Or:** The node passes with the approval of any one person; all must reject for the node to be rejected.
-2. **And:** The node passes only if all approvers approve; a single rejection results in rejection.
-3. **Voting:** The node passes if a majority (as specified) of approvers approve; otherwise, the node is rejected.
+1. Or: The node passes with the approval of any one person; all must reject for the node to be rejected.
+2. And: The node passes only if all approvers approve; a single rejection results in rejection.
+3. Voting: The node passes if a majority (as specified) of approvers approve; otherwise, the node is rejected.
 
 For the return operation, if any user in the approver collection opts for a return, the node will directly exit the workflow.
 
-### Processing Order
+## Processing Order
 
 For multiple approvers, the processing order dictates the sequence of actions:
 
-1. **Parallelly:** All approvers can act in any order, with no sequence required.
-2. **Sequentially:** Approvers act in the order defined in the approver collection, where each subsequent user can only proceed after the previous one has submitted their decision.
+1. Parallelly: All approvers can act in any order, with no sequence required.
+2. Sequentially: Approvers act in the order defined in the approver collection, where each subsequent user can only proceed after the previous one has submitted their decision.
 
 Regardless of whether "Sequentially" processing is set, the results generated will follow the rules outlined in the "Negotiation Modes" section, with the node completing execution once the conditions are met.
 
-### Exit Workflow After Rejection Branch Completion
+## Exit Workflow After Rejection Branch Completion
 
 When "Branch Mode" is set for "Pass Mode," you can opt to exit the workflow after the rejection branch is completed. If selected, a "✗" symbol will appear at the end of the rejection branch, indicating that no further nodes will be executed after this branch concludes:
 
 ![Exit After Rejection](https://static-docs.nocobase.com/1e740df93c128fb6fe54bf85a740e683.png)
 
-### Approver Interface Configuration
+## Approver Interface Configuration
 
 The approver interface configuration provides the interface for approvers when the workflow reaches this node. Click the configuration button to open the settings window:
 

@@ -1,4 +1,4 @@
-# Scheduled Tasks
+# Schedule event
 
 Scheduled tasks are events triggered based on time conditions, including two modes:
 
@@ -9,11 +9,11 @@ When the system reaches the time (accurate to seconds) that meets the configured
 
 ## Basic Usage
 
-### Creating Scheduled Tasks
+### Creating Schedule event
 
-Select the "Scheduled Task" type when creating a workflow in the workflow list:
+Select the "Schedule event" type when creating a workflow in the workflow list:
 
-![Create Scheduled Task](https://static-docs.nocobase.com/e09b6c9065167875b2ca7de5f5a799a7.png)
+![Create Scheduled event](https://static-docs.nocobase.com/e09b6c9065167875b2ca7de5f5a799a7.png)
 
 ### Custom Time Mode
 

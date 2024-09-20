@@ -11,9 +11,9 @@ The approval plugin offers a dedicated workflow type (trigger) known as "Approva
 The approval process is organized into several key sections:
 
 - [Trigger Configuration](./trigger.md)
-- [Node Configuration](./node.md)
-- [Action Configuration](./action.md)
-- [Blocks](./block.md)
+- [Approval Node Configuration](./node.md)
+- [Initiate Approval Configuration](./action.md)
+- [Approval Relevant Blocks](./block.md)
 
 For a deeper dive into these concepts, see [Advanced](./advanced.md).
 

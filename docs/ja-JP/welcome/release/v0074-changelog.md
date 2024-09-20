@@ -1,0 +1,40 @@
+# v0.7.4：2022-08-12
+
+## Merged
+
+- chore(versions): 😊 publish v0.7.4-alpha.4 [`#727`](https://github.com/nocobase/nocobase/pull/727)
+- fix: sync table sort to export [`#723`](https://github.com/nocobase/nocobase/pull/723)
+- feat: full version of the NocoBase dockerfile [`#719`](https://github.com/nocobase/nocobase/pull/719)
+- fix(plugin-workflow): fix extend collection [`#708`](https://github.com/nocobase/nocobase/pull/708)
+- fix: DB_TABLE_PREFIX doesn't get applied [`#710`](https://github.com/nocobase/nocobase/pull/710)
+- feat: default value [`#679`](https://github.com/nocobase/nocobase/pull/679)
+- fix: required field delete submit error (#688) [`#694`](https://github.com/nocobase/nocobase/pull/694)
+- chore(versions): 😊 publish v0.7.4-alpha.1 [`#696`](https://github.com/nocobase/nocobase/pull/696)
+- fix: append roles to current user [`#695`](https://github.com/nocobase/nocobase/pull/695)
+- fix: fix date format [`#686`](https://github.com/nocobase/nocobase/pull/686)
+- test(plugin-workflow): skip prompt tests [`#692`](https://github.com/nocobase/nocobase/pull/692)
+- fix: fix accuracy of percent [`#685`](https://github.com/nocobase/nocobase/pull/685)
+- fix(plugin-workflow): adjust await sleep time for test cases [`#691`](https://github.com/nocobase/nocobase/pull/691)
+- feat(plugin-workflow): add assignees config for prompt instruction [`#690`](https://github.com/nocobase/nocobase/pull/690)
+- fix: role export button display (#616) [`#666`](https://github.com/nocobase/nocobase/pull/666)
+- feat: uid validate [`#681`](https://github.com/nocobase/nocobase/pull/681)
+- refactor: replace react-drag-listview with @dnd-kit/sortable [`#660`](https://github.com/nocobase/nocobase/pull/660)
+- refactor(plugin-users): improve extendibility of middlewares [`#677`](https://github.com/nocobase/nocobase/pull/677)
+- feat: o2m delete not refresh [`#646`](https://github.com/nocobase/nocobase/pull/646)
+- feat: kanban add description [`#659`](https://github.com/nocobase/nocobase/pull/659)
+- fix: field loss enum [`#667`](https://github.com/nocobase/nocobase/pull/667)
+- feat: add editor hot key Ctrl+Shift+U [`#675`](https://github.com/nocobase/nocobase/pull/675)
+- fix: Fix calendar change field error (#626) [`#671`](https://github.com/nocobase/nocobase/pull/671)
+- chore: fix eslint not work [`#670`](https://github.com/nocobase/nocobase/pull/670)
+- feat: number precision [`#661`](https://github.com/nocobase/nocobase/pull/661)
+- feat: nginx config [`#664`](https://github.com/nocobase/nocobase/pull/664)
+- feat: form item designer form switch issue [`#656`](https://github.com/nocobase/nocobase/pull/656)
+
+## Commits
+
+- feat: add examples [`b848b9c`](https://github.com/nocobase/nocobase/commit/b848b9cd6774df6ed86acd30edb81ed6381c3555)
+- fix: record provider required for read pretty [`38c3e3e`](https://github.com/nocobase/nocobase/commit/38c3e3e4cc2698069c741d25ddda8e3e8e4d1db0)
+- Update README.zh-CN.md [`ba0e618`](https://github.com/nocobase/nocobase/commit/ba0e61873e7f69dee6a76929eb774828ac980760)
+- fix(client): fieldNames of RecordPicker [`9038d11`](https://github.com/nocobase/nocobase/commit/9038d111ea71a89798cb1499f3dadc3f9c3dbfd7)
+- fix(client): required for the sub-table field [`609b0e2`](https://github.com/nocobase/nocobase/commit/609b0e2ff2d5aece96185cbcd30ec1810194be0d)
+- feat(client): tab icon [`d9b2bf8`](https://github.com/nocobase/nocobase/commit/d9b2bf8af1c42e2f4e81533f6db92b19523410bd)

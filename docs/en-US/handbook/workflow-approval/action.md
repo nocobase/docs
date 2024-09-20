@@ -1,4 +1,4 @@
-# Action Configuration
+# Initiate Approval Configuration
 
 After configuring and activating an approval workflow, you can link it to the submit button of the relevant data table form. This setup allows users to automatically initiate the approval process when they submit the form:
 
