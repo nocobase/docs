@@ -1358,6 +1358,15 @@ export default [
         link: '/handbook/multi-app-manager',
         // children: ['/plugins/api-doc'],
       },
+      {
+        title: 'Notification',
+        'title.zh-CN': '通知',
+        children: [
+          '/handbook/notification/overview',
+          '/handbook/notification/handbook',
+          '/handbook/notification/development',
+        ],
+      },
     ],
   },
   {
