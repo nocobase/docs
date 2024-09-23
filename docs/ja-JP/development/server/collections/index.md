@@ -1,11 +1,11 @@
-# 核心概念
+# コアコンセプト
 
-## Collection
+## コレクション
 
-Collection 是所有种类数据的集合，中文翻译为「数据表」，如订单、商品、用户、评论等都是 Collection。不同 Collection 通过 name 区分，如：
+コレクションは、あらゆる種類のデータの集合であり、中文では「データテーブル」と訳されます。注文、商品、ユーザー、コメントなどがコレクションに該当します。異なるコレクションは名前で区別されます。例えば：
 
 ```ts
-// 订单
+// 注文
 {
   name: 'orders',
 }
@@ -13,34 +13,34 @@ Collection 是所有种类数据的集合，中文翻译为「数据表」，如
 {
   name: 'products',
 }
-// 用户
+// ユーザー
 {
   name: 'users',
 }
-// 评论
+// コメント
 {
   name: 'comments',
 }
 ```
 
-## Collection Field
+## コレクションフィールド
 
-每个 Collection 都有若干 Fields。
+各コレクションには、いくつかのフィールドがあります。
 
 ```ts
-// Collection 配置
+// コレクション設定
 {
   name: 'users',
   fields: [
     { type: 'string', name: 'name' },
     { type: 'integer', name: 'age' },
-    // 其他字段
+    // その他のフィールド
   ],
 }
-// 示例数据
+// サンプルデータ
 [
   {
-    name: '张三',
+    name: '張三',
     age: 20,
   },
   {
@@ -50,13 +50,13 @@ Collection 是所有种类数据的集合，中文翻译为「数据表」，如
 ];
 ```
 
-在 NocoBase 中 Collection Field 的构成包括：
+NocoBaseにおけるコレクションフィールドの構成は以下の通りです：
 
 <img src="./collection-field.svg" />
 
-### Field Type
+### フィールドタイプ
 
-不同字段通过 name 区分，type 表示字段的数据类型，分为 Attribute Type 和 Association Type，如：
+異なるフィールドは名前で区別され、`type`はフィールドのデータタイプを示します。これには属性タイプと関連タイプがあります。例えば：
 
 **属性 - Attribute Type**
 
@@ -72,7 +72,7 @@ Collection 是所有种类数据的集合，中文翻译为「数据表」，如
 - virtual
 - ...
 
-**关系 - Association Type**
+**関係 - Association Type**
 
 - hasOne
 - hasMany
@@ -80,12 +80,12 @@ Collection 是所有种类数据的集合，中文翻译为「数据表」，如
 - belongsToMany
 - ...
 
-### Field Component
+### フィールドコンポーネント
 
-字段有了数据类型，字段值的 IO 没问题了，但是还不够，如果需要将字段展示在界面上，还需要另一个维度的配置 —— `uiSchema`，如：
+フィールドにはデータタイプが設定され、フィールド値の入出力に問題はありませんが、さらに必要な設定があります。フィールドをインターフェースに表示するには、別の次元の設定——`uiSchema`が必要です。例えば：
 
 ```tsx | pure
-// 邮箱字段，用 Input 组件展示，使用 email 校验规则
+// メールフィールド、Inputコンポーネントを使用して表示し、email検証ルールを適用
 {
   type: 'string',
   name: 'email',
@@ -93,31 +93,31 @@ Collection 是所有种类数据的集合，中文翻译为「数据表」，如
     'x-component': 'Input',
     'x-component-props': { size: 'large' },
     'x-validator': 'email',
-    'x-pattern': 'editable', // 可编辑状态，还有 readonly 不可编辑状态、read-pretty 阅读态
+    'x-pattern': 'editable', // 編集可能状態、またはreadonly（非編集状態）、read-pretty（閲覧状態）
   },
 }
 
-// 数据示例
+// データサンプル
 {
   email: 'admin@nocobase.com',
 }
 
-// 组件示例
+// コンポーネントサンプル
 <Input name={'email'} size={'large'} value={'admin@nocobase.com'} />
 ```
 
-uiSchema 用于配置字段展示在界面上的组件，每个字段组件都会对应一个 value，包括几个维护的配置：
+`uiSchema`は、フィールドをインターフェースに表示するためのコンポーネントを設定するために使用されます。各フィールドコンポーネントには、いくつかの維持される設定が含まれます：
 
-- 字段的组件
-- 组件的参数
-- 字段的校验规则
-- 字段的模式（editable、readonly、read-pretty）
-- 字段的默认值
-- 其他
+- フィールドのコンポーネント
+- コンポーネントのパラメータ
+- フィールドの検証ルール
+- フィールドのモード（editable、readonly、read-pretty）
+- フィールドのデフォルト値
+- その他
 
-[更多信息查看 UI Schema 章节](/development/client/ui-schema-designer/what-is-ui-schema)。
+[詳細な情報はUIスキーマの章を参照してください](/development/client/ui-schema-designer/what-is-ui-schema)。
 
-NocoBase 内置的字段组件有：
+NocoBaseに内蔵されているフィールドコンポーネントには以下があります：
 
 - Input
 - InputNumber
@@ -126,12 +126,12 @@ NocoBase 内置的字段组件有：
 - Checkbox
 - ...
 
-### Field Interface
+### フィールドインターフェース
 
-有了 Field Type 和 Field Component 就可以自由组合出若干字段，我们将这种组合之后的模板称之为 Field Interface，如：
+フィールドタイプとフィールドコンポーネントを組み合わせることで、複数のフィールドを自由に作成できます。この組み合わせ後のテンプレートをフィールドインターフェースと呼びます。例えば：
 
 ```ts
-// 邮箱字段 string + input，email 校验规则
+// メールフィールド string + input、email検証ルール
 {
   type: 'string',
   name: 'email',
@@ -142,7 +142,7 @@ NocoBase 内置的字段组件有：
   },
 }
 
-// 手机字段 string + input，phone 校验规则
+// 電話フィールド string + input、phone検証ルール
 {
   type: 'string',
   name: 'phone',
@@ -154,10 +154,10 @@ NocoBase 内置的字段组件有：
 }
 ```
 
-上面 email 和 phone 每次都需要配置完整的 uiSchema 非常繁琐，为了简化配置，又引申出另一个概念 Field interface，可以将一些参数模板化，如：
+上記のemailとphoneは、毎回完全な`uiSchema`を設定する必要があるため非常に手間がかかります。設定を簡素化するために、別の概念であるフィールドインターフェースが導入され、一部のパラメータをテンプレート化できます。例えば：
 
 ```ts
-// email 字段的模板
+// emailフィールドのテンプレート
 interface email {
   type: 'string';
   uiSchema: {
@@ -167,7 +167,7 @@ interface email {
   };
 }
 
-// phone 字段的模板
+// phoneフィールドのテンプレート
 interface phone {
   type: 'string';
   uiSchema: {
@@ -177,7 +177,7 @@ interface phone {
   };
 }
 
-// 简化之后的字段配置
+// 簡素化されたフィールド設定
 // email
 {
   interface: 'email',
@@ -191,4 +191,5 @@ interface phone {
 }
 ```
 
-[更多 Field Interface 点此查看](https://github.com/nocobase/nocobase/tree/main/packages/core/client/src/collection-manager/interfaces)
+[さらにフィールドインターフェースについてはこちらを参照してください](https://github.com/nocobase/nocobase/tree/main/packages/core/client/src/collection-manager/interfaces)
+

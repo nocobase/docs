@@ -1,44 +1,44 @@
-# API 文档
+# APIドキュメント
 
 <PluginInfo name="api-doc"></PluginInfo>
 
-## 介绍
+## イントロダクション
 
-基于 Swagger 生成 NocoBase HTTP API 文档。  
+Swaggerに基づいてNocoBase HTTP APIドキュメントを生成します。
 
-## 安装
+## インストール
 
-内置插件，无需安装。激活即可使用。
+組み込みプラグインで、インストールは不要です。アクティベートするだけで使用できます。
 
-## 使用说明
+## 使用説明
 
-### 访问 API 文档页面
+### APIドキュメントページへのアクセス
 
 http://localhost:13000/admin/settings/api-doc/documentation
 
 ![](https://static-docs.nocobase.com/8db51cf50e3c666aba5a850a0fb664a0.png)
 
-### 文档概览
+### ドキュメント概要
 
 ![](https://static-docs.nocobase.com/5bb4d3e5bba6c6fdfcd830592e72385b.png)
 
-- 总 API 文档：`/api/swagger:get`
-- 内核 API 文档：`/api/swagger:get?ns=core`
-- 所有插件 API 文档：`/api/swagger:get?ns=plugins`
-- 每个插件的文档：`/api/swagger:get?ns=plugins/{name}`
-- 用户自定义 collections 的 API 文档：`/api/swagger:get?ns=collections`
-- 指定 `${collection}` 及相关 `${collection}.${association}` 资源：`/api/swagger:get?ns=collections/{name}`
+- 総APIドキュメント：`/api/swagger:get`
+- コアAPIドキュメント：`/api/swagger:get?ns=core`
+- すべてのプラグインAPIドキュメント：`/api/swagger:get?ns=plugins`
+- 各プラグインのドキュメント：`/api/swagger:get?ns=plugins/{name}`
+- ユーザー定義コレクションのAPIドキュメント：`/api/swagger:get?ns=collections`
+- 指定された`${collection}`および関連する`${collection}.${association}`リソース：`/api/swagger:get?ns=collections/{name}`
 
-## 开发指南
+## 開発ガイド
 
-### 如何为插件编写 swagger 文档
+### プラグインのためにSwaggerドキュメントを書く方法
 
-在插件 `src` 文件夹里添加 `swagger/index.ts` 文件，内容如下：
+プラグインの`src`フォルダーに`swagger/index.ts`ファイルを追加し、以下の内容にします：
 
 ```typescript
 export default {
   info: {
-    title: 'NocoBase API - Auth plugin',
+    title: 'NocoBase API - Authプラグイン',
   },
   tags: [],
   paths: {},
@@ -48,4 +48,5 @@ export default {
 };
 ```
 
-详细编写规则请参考 [Swagger 官方文档](https://swagger.io/docs/specification/about/)
+詳細な記述ルールについては、[Swagger公式ドキュメント](https://swagger.io/docs/specification/about/)を参照してください。
+

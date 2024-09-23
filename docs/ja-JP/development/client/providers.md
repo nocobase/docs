@@ -1,30 +1,30 @@
-# Provider 组件
+# Provider コンポーネント
 
-在 NocoBase 客户端应用里，Provider 组件在外层定义，核心结构如下：
+NocoBase クライアントアプリケーションでは、Provider コンポーネントは外部で定義されており、コア構造は以下の通りです：
 
 ```tsx | pure
 <Router>
   {' '}
-  {/* 路由的 Context Provider */}
+  {/* ルーティングのコンテキストプロバイダー */}
   <ProviderA>
     <ProviderB>
-      {/* 其他自定义 Provider 组件 - 开始标签 */}
+      {/* 他のカスタムプロバイダーコンポーネント - 開始タグ */}
       <Routes />
-      {/* 其他自定义 Provider 组件 - 结束标签 */}
+      {/* 他のカスタムプロバイダーコンポーネント - 終了タグ */}
     </ProviderB>
   </ProviderA>
 </Router>
 ```
 
-因为定义在外层，所以 Provider 组件的用处有：
+外部で定義されているため、Provider コンポーネントの役割は以下の通りです：
 
-- 提供全局共享的上下文（Context），需要渲染 `props.children`
-- 提供全局内容展示，需要渲染 `props.children`
-- 拦截作用，根据条件渲染 `props.children`
+- グローバルに共有されるコンテキスト（Context）を提供し、`props.children` をレンダリングします。
+- グローバルな内容を表示し、`props.children` をレンダリングします。
+- 条件に基づいて `props.children` をレンダリングするためのインターセプト機能を提供します。
 
-## 提供全局共享的上下文
+## グローバル共有のコンテキストを提供
 
-使用 `createContext` 定义上下文，`useContext` 获取定义的上下文
+`createContext` を使用してコンテキストを定義し、`useContext` でそのコンテキストを取得します。
 
 ```tsx
 import { Plugin, Application } from '@nocobase/client';
@@ -33,9 +33,9 @@ import { createContext, useContext } from 'react';
 const MyContext = createContext({ color: null });
 
 const HomePage = () => {
-  // 读取 context 值
+  // コンテキストの値を読み取る
   const { color } = useContext(MyContext);
-  return <div>color is : {color}</div>;
+  return <div>色: {color}</div>;
 };
 
 class PluginSampleProvider extends Plugin {
@@ -59,17 +59,17 @@ const app = new Application({
 export default app.getRootComponent();
 ```
 
-## 提供全局内容展示
+## グローバル内容の表示を提供
 
 ```tsx
 import { Plugin, Application } from '@nocobase/client';
 
-// 创建一个组件，注意对 children 的渲染
+// コンポーネントを作成し、children のレンダリングに注意する
 const MyProvider = (props) => {
   const { children, name } = props;
   return (
     <div>
-      <div>全局内容展示 - {name}</div>
+      <div>グローバル内容の表示 - {name}</div>
       {children}
     </div>
   );
@@ -81,7 +81,7 @@ class PluginSampleProvider extends Plugin {
 
     this.app.router.add('home', {
       path: '/',
-      Component: () => <div>Home page</div>,
+      Component: () => <div>ホームページ</div>,
     });
   }
 }
@@ -97,28 +97,30 @@ const app = new Application({
 export default app.getRootComponent();
 ```
 
-## 拦截作用
+## インターセプトの機能
 
 ```tsx
 import { Plugin, Application } from '@nocobase/client';
 import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 
-// 创建一个组件，注意对 children 的渲染
+// コンポーネントを作成し、children のレンダリングに注意する
 const MyProvider = (props) => {
   const { children, name } = props;
   const location = useLocation();
+  
   if (location.pathname === '/about') {
     return (
       <div>
-        内容被拦截了，返回 <Link to={'/'}>Home</Link>
+        コンテンツがインターセプトされました。<Link to={'/'}>ホーム</Link>に戻る
       </div>
     );
   }
+
   return (
     <div>
-      <div>Hello {name}</div>
-      <Link to={'/'}>Home</Link>, <Link to={'/about'}>About</Link>
+      <div>こんにちは {name}</div>
+      <Link to={'/'}>ホーム</Link>, <Link to={'/about'}>アバウト</Link>
       {children}
     </div>
   );
@@ -129,7 +131,7 @@ class PluginSampleProvider extends Plugin {
     this.app.addProvider(MyProvider);
     this.app.router.add('home', {
       path: '/',
-      Component: () => <div>Home page</div>,
+      Component: () => <div>ホームページ</div>,
     });
   }
 }
@@ -144,3 +146,4 @@ const app = new Application({
 
 export default app.getRootComponent();
 ```
+

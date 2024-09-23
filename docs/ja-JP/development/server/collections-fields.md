@@ -1,12 +1,12 @@
-# 数据表与字段
+# データテーブルとフィールド
 
-## 基础概念
+## 基本概念
 
-数据建模是一个应用最底层的基础，在 NocoBase 应用中我们通过数据表（Collection）和字段（Field）来进行数据建模，并且建模也将映射到数据库表以持久化。
+データモデリングはアプリケーションの最も基本的な基盤であり、NocoBaseアプリケーションではデータテーブル（コレクション）とフィールドを用いてデータモデリングを行い、モデリングはデータベーステーブルにマッピングされて永続化されます。
 
-### Collection
+### コレクション
 
-Collection 是所有同类数据的集合，在 NocoBase 中对应数据库表的概念，如订单、商品、用户、评论等都可以形成 Collection 定义。不同 Collection 通过 name 区分，包含的字段由 `fields` 定义，如：
+コレクションは同種のデータの集合であり、NocoBaseではデータベーステーブルの概念に対応します。例えば、注文、商品、ユーザー、コメントなどはすべてコレクションとして定義できます。異なるコレクションは名前で区別され、含まれるフィールドは `fields` で定義します。例：
 
 ```ts
 db.collection({
@@ -19,11 +19,11 @@ db.collection({
 });
 ```
 
-定义完成后 collection 暂时只处于内存中，还需要调用 [`db.sync()`](/api/database#sync) 方法将其同步到数据库中。
+定義が完了すると、コレクションは一時的にメモリ内に存在します。データベースに同期させるには、[`db.sync()`](/api/database#sync) メソッドを呼び出す必要があります。
 
-### Field
+### フィールド
 
-对应数据库表“字段”的概念，每个数据表（Collection）都可以有若干 Fields，例如：
+フィールドはデータベーステーブルの「フィールド」の概念に対応し、各データテーブル（コレクション）には複数のフィールドがあります。例：
 
 ```ts
 db.collection({
@@ -31,22 +31,22 @@ db.collection({
   fields: [
     { type: 'string', name: 'name' },
     { type: 'integer', name: 'age' },
-    // 其他字段
+    // 他のフィールド
   ],
 });
 ```
 
-其中字段名称（`name`）和字段类型（`type`）是必填项，不同字段通过字段名（`name`）区分，除 `name` 与 `type` 以外，根据不同字段类型可以有更多的配置信息。所有数据库字段类型及配置详见 API 参考的[内置字段类型列表](/api/database/field#内置字段类型列表)部分。
+フィールド名（`name`）とフィールドタイプ（`type`）は必須項目です。異なるフィールドはフィールド名（`name`）で区別され、`name` と `type` 以外にも、フィールドタイプに応じてさらなる設定情報を持つことができます。すべてのデータベースフィールドタイプと設定の詳細は、APIリファレンスの[組み込みフィールドタイプリスト](/api/database/field#内置字段类型列表)セクションを参照してください。
 
-## 示例
+## 例
 
-对于开发者，通常我们会建立与普通数据表不同的一些功能型数据表，并把这些数据表固化成插件的一部分，并结合其他数据处理流程以形成完整的功能。
+開発者にとって、通常のデータテーブルとは異なる機能的なデータテーブルを作成し、それをプラグインの一部として固め、他のデータ処理フローと組み合わせて完全な機能を形成することがよくあります。
 
-接下来我们以一个简单的在线商店插件为例来介绍如何建模并管理插件的数据表。假设你已经学习过 [编写第一个插件](/development/your-first-plugin)，我们继续在之前的插件代码上开发，只不过插件的名称从 `hello` 改为 `shop-modeling`。
+次に、シンプルなオンラインストアプラグインの例を用いて、プラグインのデータテーブルをモデリングし管理する方法を紹介します。あなたが既に[最初のプラグインの作成](/development/your-first-plugin)を学んでいると仮定し、前回のプラグインコードを基に開発を続けます。ただし、プラグインの名前は`hello`から`shop-modeling`に変更します。
 
-### 插件中定义并创建数据表
+### プラグイン内でのデータテーブルの定義と作成
 
-对于一个店铺，首先需要建立一张商品的数据表，命名为 `products`。与直接调用 [`db.collection()`](/api/database#collection) 这样的方法稍有差异，在插件中我们会使用更方便的方法一次性导入多个文件定义的数据表。所以我们先为商品数据表的定义创建一个文件命名为 `collections/products.ts`，填入以下内容：
+店舗にとって、まず商品データテーブルを作成する必要があります。名前を`products`とします。[`db.collection()`](/api/database#collection)を直接呼び出す方法とは若干異なり、プラグイン内では複数のファイルで定義されたデータテーブルを一度にインポートする便利な方法を使用します。したがって、商品データテーブルの定義用のファイルを`collections/products.ts`という名前で作成し、以下の内容を記入します：
 
 ```ts
 export default {
@@ -72,9 +72,9 @@ export default {
 };
 ```
 
-可以看到，NocoBase 的数据表结构定义可以直接使用标准的 JSON 格式，其中 `name` 和 `fields` 都是必填项，代表数据表名和该表中的字段定义。字段定义中与 Sequelize 类似会默认创建主键（`id`）、数据创建时间（`createdAt`）和数据更新时间（`updatedAt`）等系统字段，如有特殊需要可以以同名的配置覆盖定义。
+NocoBaseのデータテーブル構造定義は標準のJSON形式を直接使用できることがわかります。`name` と `fields` は必須項目であり、データテーブル名とそのテーブル内のフィールド定義を表します。フィールド定義では、Sequelizeに似て、主キー（`id`）、データ作成時間（`createdAt`）、データ更新時間（`updatedAt`）などのシステムフィールドが自動的に作成されます。特別なニーズがある場合は、同名の設定で上書き定義することが可能です。
 
-该文件定义的数据表我们可以在插件主类的 `load()` 周期中使用 `db.import()` 引入并完成定义。如下所示：
+このファイルで定義したデータテーブルは、プラグインのメインクラスの `load()` ライフサイクル内で `db.import()` を使用してインポートし、定義を完了させることができます。以下のように：
 
 ```ts
 import path from 'path';
@@ -93,23 +93,23 @@ export default class ShopPlugin extends Plugin {
 }
 ```
 
-同时我们为了方便测试，先暂时允许针对这几张表里的数据资源的所有访问权限，后面我们会在 [权限管理](/development/guide/acl) 中详细介绍如何管理资源的权限。
+また、テストを容易にするために、一時的にこれらのテーブル内のデータリソースに対する全てのアクセス権を許可します。後で[権限管理](/development/guide/acl)でリソースの権限管理について詳しく説明します。
 
-这样在插件被主应用加载时，我们定义的 `products` 表也就被加载到数据库管理实例的内存中了。同时，基于 NocoBase 约定式的数据表资源映射，在应用的服务启动以后，会自动生成对应的 CRUD HTTP API。
+これにより、プラグインがメインアプリケーションにロードされる際、定義した `products` テーブルもデータベース管理インスタンスのメモリにロードされます。また、NocoBaseの定義されたデータテーブルリソースマッピングに基づき、アプリケーションのサービス起動後に自動的に対応するCRUD HTTP APIが生成されます。
 
-当从客户端请求以下 URL 时，会得到对应的响应结果：
+クライアントから以下のURLにリクエストすると、対応する応答結果が得られます：
 
-- `GET /api/products:list`：获取所有商品数据列表
-- `GET /api/products:get?filterByTk=<id>`：获取指定 ID 的商品数据
-- `POST /api/products`：创建一条新的商品数据
-- `PUT /api/products:update?filterByTk=<id>`：更新一条商品数据
-- `DELETE /api/products:destroy?filterByTk=<id>`：删除一条商品数据
+- `GET /api/products:list`：全商品データリストを取得
+- `GET /api/products:get?filterByTk=<id>`：指定IDの商品データを取得
+- `POST /api/products`：新しい商品データを作成
+- `PUT /api/products:update?filterByTk=<id>`：商品データを更新
+- `DELETE /api/products:destroy?filterByTk=<id>`：商品データを削除
 
-### 定义关系表和关联字段
+### 関係テーブルと関連フィールドの定義
 
-在上面的例子中，我们只定义了一个商品数据表，但是实际上一个商品还需要关联到一个分类，一个品牌，一个供应商等等。这些关联关系可以通过定义关系表来实现，比如我们可以定义一个 `categories` 表，用来存储商品的分类，然后在商品表中添加一个 `category` 字段来关联到分类表。
+前述の例では、商品データテーブルを1つだけ定義しましたが、実際には商品はカテゴリー、ブランド、供給者などに関連付ける必要があります。これらの関連関係は、関係テーブルを定義することで実現できます。例えば、商品カテゴリーを保存するための `categories` テーブルを定義し、商品テーブルに `category` フィールドを追加してカテゴリーテーブルに関連付けることができます。
 
-新增文件 `collections/categories.ts`，并填入内容：
+新たに `collections/categories.ts` というファイルを作成し、内容を記入します：
 
 ```ts
 export default {
@@ -127,9 +127,9 @@ export default {
 };
 ```
 
-我们为 `categories` 表定义了两个字段，一个是标题，另一个是该分类下关联的所有产品的一对多字段，会在后面一起介绍。因为我们已经在插件的主类中使用了 `db.import()` 方法导入 `collections` 目录下的所有数据表定义，所以这里新增的 `categories` 表也会被自动导入到数据库管理实例中。
+`categories` テーブルには、タイトルとそのカテゴリに関連するすべての製品を表す一対多のフィールドを定義しています。この内容については後ほど詳しく説明します。プラグインの主クラス内で `db.import()` メソッドを使用して `collections` ディレクトリ内のすべてのデータベース定義をインポートしているため、ここで追加した `categories` テーブルも自動的にデータベース管理インスタンスにインポートされます。
 
-修改文件 `collections/products.ts`，在 `fields` 中添加一个 `category` 字段：
+次に、`collections/products.ts` ファイルを修正し、`fields` に `category` フィールドを追加します：
 
 ```ts
 {
@@ -145,25 +145,25 @@ export default {
 }
 ```
 
-可以看到，我们为 `products` 表新增的 `category` 字段是一个 `belongsTo` 类型的字段，它的 `target` 属性指向了 `categories` 表，这样就定义了一个 `products` 表和 `categories` 表之间的多对一关系。同时结合我们在 `categories` 表中定义的 `hasMany` 字段，就可以实现一个商品可以关联到多个分类，一个分类下可以有多个商品的关系。通常 `belongsTo` 和 `hasMany` 可以成对出现，分别定义在两张表中。
+`products` テーブルに追加した `category` フィールドは `belongsTo` タイプであり、その `target` 属性は `categories` テーブルを指しています。これにより、`products` テーブルと `categories` テーブルの間に多対一の関係が定義されます。また、`categories` テーブルで定義した `hasMany` フィールドと組み合わせることで、1つの製品が複数のカテゴリに関連付けられ、1つのカテゴリには複数の製品が含まれる関係を実現できます。通常、`belongsTo` と `hasMany` は対になって、2つのテーブルにそれぞれ定義されます。
 
-定义好两张表之间的关系后，同样的我们就可以直接通过 HTTP API 来请求关联数据了：
+2つのテーブル間の関係を定義した後、同様にHTTP APIを介して関連データを直接リクエストできます：
 
-- `GET /api/products:list?appends=category`：获取所有商品数据，同时包含关联的分类数据
-- `GET /api/products:get?filterByTk=<id>&appends=category`：获取指定 ID 的商品数据，同时包含关联的分类数据
-- `GET /api/categories/<categoryId>/products:list`：获取指定分类下的所有商品数据
-- `POST /api/categories/<categoryId>/products`：在指定分类下创建新的商品
+- `GET /api/products:list?appends=category`：すべての製品データを取得し、関連するカテゴリデータも含まれます。
+- `GET /api/products:get?filterByTk=<id>&appends=category`：指定されたIDの製品データを取得し、関連するカテゴリデータも含まれます。
+- `GET /api/categories/<categoryId>/products:list`：指定されたカテゴリ内のすべての製品データを取得します。
+- `POST /api/categories/<categoryId>/products`：指定されたカテゴリ内に新しい製品を作成します。
 
-与一般的 ORM 框架类似，NocoBase 内置了四种关系字段类型，更多信息可以参考 API 字段类型相关的章节：
+一般的なORMフレームワークと同様に、NocoBaseには4種類のリレーションシップフィールドタイプが組み込まれています。詳細はAPIフィールドタイプに関する章を参照してください：
 
-- [`belongsTo` 类型](/api/database/field#belongsto)
-- [`belongsToMany` 类型](/api/database/field#belongstomany)
-- [`hasMany` 类型](/api/database/field#hasmany)
-- [`hasOne` 类型](/api/database/field#hasone)
+- [`belongsTo` タイプ](/api/database/field#belongsto)
+- [`belongsToMany` タイプ](/api/database/field#belongstomany)
+- [`hasMany` タイプ](/api/database/field#hasmany)
+- [`hasOne` タイプ](/api/database/field#hasone)
 
-### 扩展已有数据表
+### 既存データベースの拡張
 
-在上面的例子中，我们已经有了商品表和分类表，为了提供销售流程，我们还需要一个订单表。我们可以在 `collections` 目录下新增一个 `orders.ts` 文件，然后定义一个 `orders` 表：
+上記の例では、製品テーブルとカテゴリテーブルが既に存在します。販売プロセスを提供するために、注文テーブルがさらに必要です。`collections` ディレクトリに新しい `orders.ts` ファイルを追加し、`orders` テーブルを定義します：
 
 ```ts
 export default {
@@ -202,12 +202,12 @@ export default {
 };
 ```
 
-为了简化，订单表与商品的关联我们只简单的定义为多对一关系，而在实际业务中可能会用到多对多或快照等复杂的建模方式。可以看到，一个订单除了对应某个商品，我们还增加了一个对应用户的关系定义，用户是 NocoBase 内置插件管理的数据表（详细参考[用户插件的代码](https://github.com/nocobase/nocobase/tree/main/packages/plugins/users)）。如果我们希望针对已存在的用户表扩展定义“一个用户所拥有的多个订单”的关系，可以在当前的 shop-modeling 插件内继续新增一个数据表文件 `collections/users.ts`，与直接导出 JSON 数据表配置不同的是，这里使用 `@nocobase/database` 包的 `extend()` 方法，进行对已有数据表的扩展定义：
+簡略化のため、注文テーブルと製品の関連は多対一の関係として定義しますが、実際のビジネスでは多対多やスナップショットなどの複雑なモデルが必要になる場合があります。注文は特定の製品に関連付けられ、さらにユーザーとの関連定義も追加しました。ユーザーはNocoBaseに組み込まれたプラグイン管理のデータテーブルです（詳細は[ユーザープラグインのコード](https://github.com/nocobase/nocobase/tree/main/packages/plugins/users)を参照）。既存のユーザーテーブルに「1人のユーザーが持つ複数の注文」の関係を拡張したい場合、現在のshop-modelingプラグイン内で新しいデータテーブルファイル `collections/users.ts` を追加します。JSONデータテーブル設定を直接エクスポートするのとは異なり、ここでは `@nocobase/database` パッケージの `extend()` メソッドを使用して、既存のデータテーブルを拡張定義します：
 
 ```ts
 import { extend } from '@nocobase/database';
 
-export extend({
+export default extend({
   name: 'users',
   fields: [
     {
@@ -218,21 +218,21 @@ export extend({
 });
 ```
 
-这样，原先已存在的用户表也就拥有了一个 `orders` 关联字段，我们可以通过 `GET /api/users/<userId>/orders:list` 来获取指定用户的所有订单数据。
+これにより、既存のユーザーテーブルにも `orders` 関連フィールドが追加され、`GET /api/users/<userId>/orders:list` を通じて指定されたユーザーのすべての注文データを取得できます。
 
-这个方法在扩展其他插件已定义的数据表时非常有用，使得其他已有插件不会反向依赖新的插件，仅形成单向依赖关系，方便在扩展层面进行一定程度的解耦。
+この方法は、他のプラグインで定義されたデータテーブルを拡張する際に非常に便利です。これにより、他の既存プラグインは新しいプラグインに逆依存せず、単方向の依存関係のみが形成され、拡張面で一定の程度のデカップリングが容易になります。
 
-### 扩展字段类型
+### フィールドタイプの拡張
 
-我们在定义订单表的时候针对 `id` 字段使用了 `uuid` 类型，这是一个内置的字段类型。有时候我们也会觉得 UUID 看起来太长比较浪费空间，且查询性能不佳，希望用一个更适合的字段类型，比如一个含日期信息等复杂的编号逻辑，或者是 Snowflake 算法，我们就需要扩展一个自定义字段类型。
+注文テーブルを定義する際に `id` フィールドに `uuid` タイプを使用しましたが、UUIDは長く、スペースを無駄にすることがあるため、より適したフィールドタイプを使用したい場合があります。たとえば、日付情報を含む複雑な番号ロジックやSnowflakeアルゴリズムを使用する場合、カスタムフィールドタイプを拡張する必要があります。
 
-假设我们需要直接应用 Snowflake ID 生成算法，扩展出一个 `snowflake` 字段类型，我们可以创建一个 `fields/snowflake.ts` 文件：
+Snowflake ID生成アルゴリズムを直接適用し、`snowflake` フィールドタイプを拡張する場合、`fields/snowflake.ts` ファイルを作成します：
 
 ```ts
 import { DataTypes } from 'sequelize';
-// 引入算法工具包
+// アルゴリズムツールキットをインポート
 import { Snowflake } from 'nodejs-snowflake';
-// 引入字段类型基类
+// フィールドタイプの基底クラスをインポート
 import { Field, BaseColumnFieldOptions } from '@nocobase/database';
 
 export interface SnowflakeFieldOptions extends BaseColumnFieldOptions {
@@ -277,7 +277,7 @@ export class SnowflakeField extends Field {
 export default SnowflakeField;
 ```
 
-之后在插件主文件向数据库注册新的字段类型：
+その後、プラグインのメインファイルでデータベースに新しいフィールドタイプを登録します：
 
 ```ts
 import SnowflakeField from './fields/snowflake';
@@ -293,29 +293,30 @@ export default class ShopPlugin extends Plugin {
 }
 ```
 
-这样，我们就可以在订单表中使用 `snowflake` 字段类型了：
+これにより、注文テーブルで `snowflake` フィールドタイプを使用できるようになります：
 
 ```ts
 export default {
   name: 'orders',
   fields: [
     {
-      type: 'snowflake'
+      type: 'snowflake',
       name: 'id',
       primaryKey: true
     },
-    // ...other fields
+    // ...他のフィールド
   ]
 }
 ```
 
-## 小结
+## 小結
 
-通过上面的示例，我们基本了解了如何在一个插件中进行数据建模，包括：
+上記の例を通じて、プラグイン内でのデータモデリングの基本を理解できました。具体的には：
 
-- 定义数据表和普通字段
-- 定义关联表和关联字段关系
-- 扩展已有的数据表的字段
-- 扩展新的字段类型
+- データテーブルと通常のフィールドの定義
+- 関連テーブルと関連フィールドの関係の定義
+- 既存のデータテーブルのフィールドの拡張
+- 新しいフィールドタイプの追加
 
-我们将本章所涉及的代码放到了一个完整的示例包 [packages/samples/shop-modeling](https://github.com/nocobase/nocobase/tree/main/packages/samples/shop-modeling) 中，可以直接在本地运行，查看效果。
+この章で取り扱ったコードは、完全なサンプルパッケージ [packages/samples/shop-modeling](https://github.com/nocobase/nocobase/tree/main/packages/samples/shop-modeling) にまとめており、ローカルで直接実行して効果を確認できます。
+

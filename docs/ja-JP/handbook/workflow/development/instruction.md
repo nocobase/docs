@@ -1,74 +1,74 @@
-# 扩展节点类型
+# 拡張ノードタイプ
 
-节点的类型本质上就是操作指令，不同的指令代表流程中执行的不同的操作。
+ノードのタイプは本質的に操作指令であり、異なる指令はプロセス内で実行される異なる操作を表します。
 
-与触发器类似，扩展节点的类型也分为前后端两部分。服务端需要对注册的指令进行逻辑实现，客户端需要提供指令所在节点相关参数的界面配置。
+トリガーと同様に、拡張ノードのタイプも前面と背面の2つの部分に分かれています。サーバー側は登録された指令のロジックを実装する必要があり、クライアント側は指令に関連するノードのパラメータ設定のインターフェースを提供する必要があります。
 
-## 服务端
+## サーバー側
 
-### 最简单的节点指令
+### 最も簡単なノード指令
 
-指令的核心内容是一个函数，也就是指令类中的 `run` 方法是必须实现的，用于执行指令的逻辑。函数中可以执行任意需要的操作，例如数据库操作、文件操作、调用第三方 API 等等。
+指令のコア内容は関数であり、指令クラス内の `run` メソッドは必ず実装する必要があります。これは指令のロジックを実行するために使用されます。関数内では、データベース操作、ファイル操作、サードパーティAPIの呼び出しなど、必要な任意の操作を実行できます。
 
-所有指令都需要派生自 `Instruction` 基类，最简单的指令只需要实现一个 `run` 函数即可：
+すべての指令は `Instruction` 基本クラスから派生する必要があり、最も簡単な指令は `run` 関数を実装するだけで済みます：
 
 ```ts
 import { Instruction, JOB_STATUS } from '@nocobase/plugin-workflow';
 
 export class MyInstruction extends Instruction {
   run(node, input, processor) {
-    console.log('my instruction runs!');
+    console.log('私の指令が実行されました！');
     return {
-      status: JOB_STATUS.RESOVLED,
+      status: JOB_STATUS.RESOLVED,
     };
   }
 }
 ```
 
-并将该指令注册到工作流插件中：
+この指令をワークフロープラグインに登録するには、以下のようにします：
 
 ```ts
 export default class MyPlugin extends Plugin {
   load() {
-    // get workflow plugin instance
+    // ワークフロープラグインインスタンスを取得
     const workflowPlugin = this.app.getPlugin<WorkflowPlugin>(WorkflowPlugin);
 
-    // register instruction
+    // 指令を登録
     workflowPlugin.registerInstruction('my-instruction', MyInstruction);
   }
 }
 ```
 
-指令的返回对象中的状态值（`status`）是必填内容，而且必须是常量 `JOB_STATUS` 中的值，该值将决定该节点在流程中的后续处理的流向。通常使用 `JOB_STATUS.RESOVLED` 即可，代表该节点成功执行完毕，会继续后续节点的执行。如果有需要提前保存的结果值，也可以调用 `processor.saveJob` 方法，并返回该方法的返回对象。执行器会根据该对象生成执行结果记录。
+指令の返却オブジェクトの状態値（`status`）は必須であり、定数 `JOB_STATUS` の値でなければなりません。この値がそのノードの後続処理の流れを決定します。通常は `JOB_STATUS.RESOLVED` を使用することで、このノードが正常に実行され、後続ノードの実行が継続されることを示します。事前に保存する必要がある結果値がある場合は、`processor.saveJob` メソッドを呼び出し、そのメソッドの返却オブジェクトを返すことができます。実行者はそのオブジェクトに基づいて実行結果の記録を生成します。
 
-### 节点的结果值
+### ノードの結果値
 
-如果有特定的执行结果，尤其是准备可供后续节点使用的数据，可以通过 `result` 属性返回，并保存在节点任务对象中：
+特定の実行結果、特に後続ノードで使用するデータを準備する必要がある場合は、`result` プロパティを介して返却し、ノードタスクオブジェクトに保存できます：
 
 ```ts
 import { Instruction, JOB_STATUS } from '@nocobase/plugin-workflow';
 
 export class RandomStringInstruction extends Instruction {
   run(node, input, processor) {
-    // customized config from node
+    // ノードからのカスタマイズ設定
     const { digit = 1 } = node.config;
     const result = `${Math.round(10 ** digit * Math.random())}`.padStart(
       digit,
       '0',
     );
     return {
-      status: JOB_STATUS.RESOVLED,
+      status: JOB_STATUS.RESOLVED,
       result,
     };
   },
 };
 ```
 
-其中 `node.config` 是节点的配置项，可以是需要的任意值，会以 `JSON` 类型字段保存在数据库对应的节点记录中。
+ここで `node.config` はノードの設定項目であり、必要な任意の値であり、データベースの対応するノード記録に `JSON` タイプフィールドとして保存されます。
 
-### 指令的错误处理
+### 指令のエラー処理
 
-如果执行过程可能会有异常，可以提前捕获后并返回失败状态：
+実行プロセス中に例外が発生する可能性がある場合は、事前に捕捉して失敗状態を返却できます：
 
 ```ts
 import { JOB_STATUS } from '@nocobase/plugin-workflow';
@@ -76,7 +76,7 @@ import { JOB_STATUS } from '@nocobase/plugin-workflow';
 export const errorInstruction = {
   run(node, input, processor) {
     try {
-      throw new Error('exception');
+      throw new Error('例外');
     } catch (error) {
       return {
         status: JOB_STATUS.ERROR,
@@ -87,98 +87,98 @@ export const errorInstruction = {
 };
 ```
 
-如果不对可预测的异常进行捕获，那么流程引擎会自动捕获并返回出错状态，以避免未捕获的异常造成程序崩溃。
+もし予測可能な例外を捕捉しない場合、プロセスエンジンは自動的に例外を捕捉し、エラーステータスを返します。これにより、未捕捉の例外によるプログラムのクラッシュを防ぎます。
 
-### 异步节点
+### 非同期ノード
 
-当需要进行流程控制或者异步（耗时）IO 操作时，`run` 方法可以返回一个 `status` 为 `JOB_STATUS.PENDING` 状态的对象，提示执行器进行等待（挂起），等待某些外部异步操作完成后，通知流程引擎继续执行。如果在 `run` 函数中返回了挂起的状态值，则该指令必须实现 `resume` 方法，否则无法恢复流程的执行：
+プロセス制御や非同期（時間のかかる）IO操作が必要な場合、`run` メソッドは `status` が `JOB_STATUS.PENDING` のオブジェクトを返すことができます。これにより、実行者は待機（サスペンド）するよう指示され、外部の非同期操作が完了した後にプロセスエンジンに実行を続けるよう通知します。`run` 関数内でサスペンド状態の値を返した場合、この命令は `resume` メソッドを実装しなければなりません。そうしないと、プロセスの実行を再開することはできません：
 
 ```ts
 import { Instruction, JOB_STATUS } from '@nocobase/plugin-workflow';
 
 export class PayInstruction extends Instruction {
   async run(node, input, processor) {
-    // job could be create first via processor
+    // ジョブはプロセッサを介して最初に作成できます
     const job = await processor.saveJob({
       status: JOB_STATUS.PENDING,
     });
 
     const { plugin } = processor;
-    // do payment asynchronously
+    // 非同期で支払い処理を行う
     paymentService.pay(node.config, (result) => {
-      // notify processor to resume the job
+      // プロセッサにジョブを再開するよう通知する
       return plugin.resume(job.id, result);
     });
 
-    // return created job instance
+    // 作成したジョブインスタンスを返します
     return job;
   }
 
   resume(node, job, processor) {
-    // check payment status
-    job.set('status', job.result.status === 'ok' ? JOB_STATUS.RESOVLED : JOB_STATUS.REJECTED);
+    // 支払いステータスを確認します
+    job.set('status', job.result.status === 'ok' ? JOB_STATUS.RESOLVED : JOB_STATUS.REJECTED);
     return job;
-  },
+  }
 };
 ```
 
-其中 `paymentService` 指代某个支付服务，在服务的回调中再触发工作流恢复对应任务的执行流程，当前流程先退出。之后由工作流引擎创建新的处理器转交到节点的 `resume` 方法中，将之前已挂起的节点继续执行。
+`paymentService` は特定の支払いサービスを指し、サービスのコールバック内でワークフローをトリガーし、対応するタスクの実行プロセスを再開します。現在のプロセスは一旦終了し、その後、ワークフローエンジンが新しいプロセッサを作成し、ノードの `resume` メソッドに引き渡して、以前に保留されていたノードの実行を続けます。
 
-:::info{title=提示}
-这里说的“异步操作”不是指 JavaScript 中的 `async` 函数，而是与其他外部系统交互时，某些非即时返回的操作，比如支付服务会需要等待另外的通知才能知道结果。
+:::info{title=ヒント}
+ここで言う「非同期操作」とは、JavaScriptの `async` 関数を指すのではなく、他の外部システムとのやり取り時に即時に返されない操作を指します。例えば、支払いサービスは結果を知るために別の通知を待つ必要があります。
 :::
 
-### 节点的结果状态
+### ノードの結果ステータス
 
-节点的执行状态会影响整个流程的成功或失败，通常在没有分支的情况下，某个节点的失败会直接导致整个流程失败。其中最常规的情况是，节点执行成功则继续节点表中的下一个节点，直到没有后续节点，则整个工作流执行以成功的状态完成。
+ノードの実行ステータスは、プロセス全体の成功または失敗に影響を与えます。通常、分岐がない場合、あるノードの失敗は直接的に全体のプロセスを失敗に導きます。最も一般的なケースとして、ノードの実行が成功すると、ノードテーブルの次のノードに進み、続くノードがない場合、全体のワークフローは成功の状態で完了します。
 
-如果执行中某个节点返回了执行失败的状态，则视以下两种情况引擎会有不同的处理：
+もし実行中にあるノードが失敗のステータスを返した場合、エンジンは以下の2つの状況に応じて異なる処理を行います：
 
-1.  返回失败状态的节点处于主流程，即均未处于上游的节点开启的任意分支流程之内，则整个主流程会判定为失败，并退出流程。
+1. 失敗ステータスを返したノードが主プロセスにある場合、つまり上流のノードが開いたいかなる分岐プロセスにも属していない場合、全体の主プロセスは失敗と判定され、プロセスは終了します。
 
-2.  返回失败状态的节点处于某个分支流程之内，此时将判定流程下一步状态的职责交由开启分支的节点，由该节点的内部逻辑决定后续流程的状态，并且递归上溯到主流程。
+2. 失敗ステータスを返したノードが特定の分岐プロセス内にある場合、次のステップの状態を判断する責任は分岐を開いたノードに委ねられ、そのノードの内部ロジックに基づいて後続プロセスの状態が決まります。そして、主プロセスに遡って判断されます。
 
-最终都在主流程的节点上得出整个流程的下一步状态，如果主流程的节点中返回的是失败，则整个流程以失败的状态结束。
+最終的には、主プロセスのノード上で全体のプロセスの次のステータスが決定され、主プロセスのノードが失敗を返した場合、全体のプロセスは失敗の状態で終了します。
 
-如果任意节点执行后返回了“停等”状态，则整个执行流程会被暂时中断挂起，等待一个由对应节点定义的事件触发以恢复流程的执行。例如 [人工节点](../manual/nodes/manual)，执行到该节点后会以“停等”状态从该节点暂停，等待人工介入该流程，决策是否通过。如果人工输入的状态是通过，则继续后续的流程节点，反之则按前面的失败逻辑处理。
+もし任意のノードが実行後に「待機」状態を返した場合、全体の実行プロセスは一時的に中断され、対応するノードによって定義されたイベントのトリガーを待ってプロセスの実行が再開されます。例えば、[手動ノード](../manual/nodes/manual)は、そのノードに到達した後、「待機」状態で一時停止し、プロセスに介入して判断を行います。手動入力の状態が通過であれば、後続のプロセスノードを続行し、そうでなければ前述の失敗ロジックに従って処理されます。
 
-更多的的指令返回状态可以参考 [工作流 API 参考](./api#JOB_STATUS) 部分。
+より多くのコマンドのステータスの返却については、[ワークフロー API リファレンス](./api#JOB_STATUS) セクションを参照してください。
 
-### 提前退出
+### 事前の終了
 
-在某些特殊的流程中，可能需要在某个节点中直接结束流程，可以返回 `null`，表示退出当前流程，并且不会继续执行后续节点。
+特定のプロセスでは、ノード内で直接プロセスを終了する必要がある場合があります。この場合、`null` を返すことで現在のプロセスを終了させ、以降のノードの実行を続行しません。
 
-这种情况在一些流程控制类型的节点中比较常见，例如 [并行分支节点](../manual/nodes/parallel) 中（[代码参考](https://github.com/nocobase/nocobase/blob/main/packages/plugins/%40nocobase/plugin-workflow-parallel/src/server/ParallelInstruction.ts#L87)），当前节点的流程退出，但是会对子分支分别开启新的流程并继续执行。
+この状況は、[並行ブランチノード](../manual/nodes/parallel)のようなプロセス制御タイプのノードで一般的です（[コード参照](https://github.com/nocobase/nocobase/blob/main/packages/plugins/%40nocobase/plugin-workflow-parallel/src/server/ParallelInstruction.ts#L87)）。現在のノードのプロセスは終了しますが、サブブランチごとに新しいプロセスが開始され、実行が続行されます。
 
-:::warn{title=提示}
-扩展节点进行分支流程的调度有一定复杂性，需要谨慎处理，并进行充分的测试。
+:::warn{title=ヒント}
+拡張ノードによるブランチプロセスのスケジューリングには一定の複雑性があるため、慎重に処理し、十分なテストを行う必要があります。
 :::
 
-### 了解更多
+### さらに詳しく
 
-定义节点类型的各个参数定义见 [工作流 API 参考](.api#instruction) 部分。
+ノードタイプの各パラメータ定義については、[ワークフロー API リファレンス](./api#instruction) セクションを参照してください。
 
-## 客户端
+## クライアント
 
-与触发器类似，指令（节点类型）的配置表单需要在前端实现。
+トリガーと同様に、指示（ノードタイプ）の設定フォームはフロントエンドで実装する必要があります。
 
-### 最简单的节点指令
+### 最もシンプルなノード指示
 
-所有的指令都需要派生自 `Instruction` 基类，相关属性和方法用于对节点的配置和使用。
+すべての指示は `Instruction` 基底クラスから派生する必要があり、関連する属性とメソッドはノードの設定と使用に利用されます。
 
-例如我们需要为上面在服务端定义的随机数字符串类型（`randomString`）的节点提供配置界面，其中有一个配置项是 `digit` 代表随机数的位数，在配置表单中我们使用一个数字输入框来接收用户输入。
+例えば、上記でサーバー側に定義されたランダム文字列タイプ（`randomString`）のノードに対して設定インターフェースを提供する場合、設定項目の1つに `digit` があり、これがランダム数の桁数を表します。設定フォームでは、ユーザーの入力を受け取るために数字入力ボックスを使用します。
 
 ```tsx | pure
 import WorkflowPlugin, { Instruction, VariableOption } from '@nocobase/workflow/client';
 
 class MyInstruction extends Instruction {
-  title = 'Random number string';
+  title = 'ランダム番号文字列';
   type = 'randomString';
-  group = 'extended';
+  group = '拡張';
   fieldset = {
     'digit': {
       type: 'number',
-      title: 'Digit',
+      title: '桁数',
       name: 'digit',
       'x-decorator': 'FormItem',
       'x-component': 'InputNumber',
@@ -199,24 +199,24 @@ class MyInstruction extends Instruction {
 
 export default class MyPlugin extends Plugin {
   load() {
-    // get workflow plugin instance
+    // ワークフロープラグインのインスタンスを取得
     const workflowPlugin = this.app.getPlugin<WorkflowPlugin>(WorkflowPlugin);
 
-    // register instruction
+    // インストラクションを登録
     workflowPlugin.registerInstruction('log', LogInstruction);
   }
 }
 ```
 
-:::info{title=提示}
-客户端注册的节点类型标识必须与服务端的保持一致，否则会导致错误。
+:::info{title=ヒント}
+クライアントで登録されたノードタイプの識別子は、サーバー側と一致している必要があります。そうでない場合、エラーが発生します。
 :::
 
-### 提供节点的结果作为变量
+### ノードの結果を変数として提供
 
-可以注意到上面例子中的 `useVariables` 方法，如果需要将节点的结果（`result` 部分）作为变量供后续节点使用，需要在继承的指令类中实现该方法，并返回一个符合 `VariableOption` 类型的对象，该对象作为对节点运行结果的结构描述，提供变量名映射，以供后续节点中进行选择使用。
+上記の例に見られる `useVariables` メソッドについて説明します。このメソッドを実装することで、ノードの結果（`result` 部分）を変数として後続のノードで使用できるようになります。このメソッドは、継承した指令クラス内で実装し、`VariableOption` 型のオブジェクトを返す必要があります。このオブジェクトはノードの実行結果の構造を表現し、変数名のマッピングを提供します。
 
-其中 `VariableOption` 类型定义如下：
+`VariableOption` 型の定義は以下の通りです：
 
 ```ts
 export type VariableOption = {
@@ -227,11 +227,11 @@ export type VariableOption = {
 };
 ```
 
-核心是 `value` 属性，代表变量名的分段路径值，`label` 用于显示在界面上，`children` 用于表示多层级的变量结构，当节点的结果是一个深层对象是会使用。
+ここでの核心は `value` 属性であり、これは変数名の段階的なパス値を表します。`label` はインターフェース上で表示される内容を示し、`children` は多層構造の変数を表現するために使用されます。ノードの結果が深いオブジェクトである場合に利用されます。
 
-一个可使用的变量在系统内部的表达是一个通过 `.` 分隔的路径模板字符串，例如 `{{jobsMapByNodeKey.2dw92cdf.abc}}`。其中 `$jobsMapByNodeKey` 表示的是所有节点的结果集（已内部定义，无需处理），`2dw92cdf` 是节点的 `key`，`abc` 是节点的结果对象中的某个自定义属性。
+使用可能な変数は、システム内部で `.` で区切られたパスのテンプレート文字列として表現されます。例えば `{{jobsMapByNodeKey.2dw92cdf.abc}}` のように、`$jobsMapByNodeKey` はすべてのノードの結果集を示します（内部で定義されており、特別な処理は必要ありません）。`2dw92cdf` はノードの `key` を示し、`abc` はノードの結果オブジェクト内の特定のカスタム属性を表します。
 
-另外，由于节点的结果也可能是一个简单值，所以要求提供节点变量时，第一层**必须**是节点本身的描述：
+さらに、ノードの結果が単純な値である場合も考慮し、ノード変数を提供する際には、第一層は**必ず**ノード自身の説明でなければなりません：
 
 ```ts
 {
@@ -240,23 +240,23 @@ export type VariableOption = {
 }
 ```
 
-即第一层是节点的 `key` 和标题。例如运算节点的[代码参考](https://github.com/nocobase/nocobase/blob/main/packages/plugins/%40nocobase/plugin-workflow/src/client/nodes/calculation.tsx#L77)，则在使用运算节点的结果时，界面的选项如下：
+つまり、第一層はノードの `key` とタイトルで構成されます。例えば計算ノードの[コードリファレンス](https://github.com/nocobase/nocobase/blob/main/packages/plugins/%40nocobase/plugin-workflow/src/client/nodes/calculation.tsx#L77)を参照し、計算ノードの結果を使用する際、インターフェースのオプションは以下のようになります：
 
-![运算节点的结果](https://static-docs.nocobase.com/20240514230014.png)
+![計算ノードの結果](https://static-docs.nocobase.com/20240514230014.png)
 
-当节点的结果是一个复杂对象时，可以通过 `children` 继续描述深层属性，例如一个自定义指令会返回如下的 JSON 数据：
+ノードの結果が複雑なオブジェクトである場合、`children` を使用して深層属性を記述できます。例えば、カスタム指令は以下のような JSON データを返します：
 
 ```json
 {
   "message": "ok",
   "data": {
     "id": 1,
-    "name": "test",
+    "name": "test"
   }
 }
 ```
 
-则可以通过如下的 `useVariables` 方法返回：
+この場合、次の `useVariables` メソッドを通じて返すことができます：
 
 ```ts
 useVariables(node, options): VariableOption {
@@ -266,11 +266,11 @@ useVariables(node, options): VariableOption {
     children: [
       {
         value: 'message',
-        label: 'Message',
+        label: 'メッセージ',
       },
       {
         value: 'data',
-        label: 'Data',
+        label: 'データ',
         children: [
           {
             value: 'id',
@@ -278,7 +278,7 @@ useVariables(node, options): VariableOption {
           },
           {
             value: 'name',
-            label: 'Name',
+            label: '名前',
           },
         ],
       },
@@ -287,14 +287,15 @@ useVariables(node, options): VariableOption {
 }
 ```
 
-这样在后续节点中就可以用以下的界面来选择其中的变量：
+これにより、後続のノードでは次のインターフェースを使用して変数を選択できます：
 
-![映射后的结果变量](https://static-docs.nocobase.com/20240514230103.png)
+![マッピングされた結果変数](https://static-docs.nocobase.com/20240514230103.png)
 
-:::info{title="提示"}
-当结果中某个结构是深层对象数组时，同样可以使用 `children` 来描述路径，但不能包含数组索引，因为在 NocoBase 工作流的变量处理中，针对对象数组的变量路径描述，在使用时会自动扁平化为深层值的数组，而不能通过索引来访问第几个值。可以参考《[工作流：进阶使用](../manual/advanced#使用变量)》部分的内容。
+:::info{title="ヒント"}
+結果の中に深層オブジェクトの配列が存在する場合も、同様に `children` を使用してパスを記述できますが、配列のインデックスを含めることはできません。NocoBase ワークフローの変数処理において、オブジェクト配列の変数パス記述は、使用時に自動的に深層値の配列に平坦化され、インデックスを使用して特定の値にアクセスすることはできません。詳細は「[ワークフロー：進階使用](../manual/advanced#使用変数)」の内容を参照してください。
 :::
 
-### 了解更多
+### さらに知る
 
-定义节点类型的各个参数定义见 [工作流 API 参考](./api#instruction-1) 部分。
+ノードタイプの各パラメータ定義については、[ワークフロー API 参考](./api#instruction-1) セクションを参照してください。
+

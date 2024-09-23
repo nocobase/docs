@@ -1,63 +1,63 @@
-# UI Schema
+# UI スキーマ
 
-一种描述前端组件的协议，基于 Formily Schema 2.0，类 JSON Schema 风格。
+フロントエンドコンポーネントを記述するためのプロトコルで、Formily Schema 2.0 に基づき、JSON Schema スタイルです。
 
 ```ts
 interface ISchema {
   type: 'void' | 'string' | 'number' | 'object' | 'array';
   name?: string;
   title?: any;
-  // 包装器组件
+  // ラッパーコンポーネント
   ['x-decorator']?: string;
-  // 包装器组件属性
+  // ラッパーコンポーネントの属性
   ['x-decorator-props']?: any;
-  // 动态包装器组件属性
+  // 動的ラッパーコンポーネントの属性
   ['x-use-decorator-props']?: any;
-  // 组件
+  // コンポーネント
   ['x-component']?: string;
-  // 组件属性
+  // コンポーネントの属性
   ['x-component-props']?: any;
-  // 动态组件属性
+  // 動的コンポーネントの属性
   ['x-use-component-props']?: any;
-  // 展示状态，默认为 'visible'
+  // 表示状態、デフォルトは 'visible'
   ['x-display']?: 'none' | 'hidden' | 'visible';
-  // 组件的子节点，简单使用
+  // コンポーネントの子ノード、簡単に使用
   ['x-content']?: any;
-  // children 节点 schema
+  // children ノードのスキーマ
   properties?: Record<string, ISchema>;
 
-  // 以下仅字段组件时使用
+  // 以下はフィールドコンポーネントのみで使用
 
-  // 字段联动
+  // フィールドの反応
   ['x-reactions']?: SchemaReactions;
-  // 字段 UI 交互模式，默认为 'editable'
+  // フィールド UI インタラクションモード、デフォルトは 'editable'
   ['x-pattern']?: 'editable' | 'disabled' | 'readPretty';
-  // 字段校验
+  // フィールドの検証
   ['x-validator']?: Validator;
-  // 默认数据
-  default: ?:any;
+  // デフォルトデータ
+  default?: any;
 
-  // 设计器相关
+  // デザイナー関連
 
-  // 初始化器，决定当前 schema 相邻位置可以插入什么
+  // 初期化器、現在のスキーマの隣接位置に挿入可能な要素を決定
   ['x-initializer']?: string;
   ['x-initializer-props']?: any;
 
-  // 区块设置，决定当前 schema 可以配置哪些参数
+  // ブロック設定、現在のスキーマで設定可能なパラメータを決定
   ['x-settings']?: string;
   ['x-settings-props']?: any;
 
-  // 工具栏组件
+  // ツールバーコンポーネント
   ['x-toolbar']?: string;
   ['x-toolbar-props']?: any;
 }
 ```
 
-## 示例
+## サンプル
 
-### 最简单的组件
+### 最も簡単なコンポーネント
 
-所有的原生 html 标签都可以转为 schema 的写法。如：
+すべてのネイティブ HTML タグはスキーマ形式に変換できます。例えば：
 
 ```ts
 {
@@ -67,15 +67,15 @@ interface ISchema {
 }
 ```
 
-JSX 示例
+JSX サンプル
 
 ```tsx | pure
 <h1>Hello, world!</h1>
 ```
 
-### 子组件
+### 子コンポーネント
 
-children 组件写在 properties 里
+children コンポーネントは properties に記述します。
 
 ```tsx | pure
 {
@@ -91,7 +91,7 @@ children 组件写在 properties 里
 }
 ```
 
-JSX 等同于
+JSX は次のように等価です。
 
 ```tsx | pure
 <div className={'form-item'}>
@@ -99,11 +99,11 @@ JSX 等同于
 </div>
 ```
 
-## 参数说明
+## パラメータの説明
 
 ### `type`
 
-节点的类型
+ノードのタイプ
 
 ```ts
 type SchemaTypes =
@@ -120,26 +120,26 @@ interface ISchema {
 
 ### `name`
 
-schema 名称
+スキーマ名
 
 ```ts
 type SchemaName = string;
 interface ISchema {
-  name?: SchemaName; // 根节点
+  name?: SchemaName; // ルートノード
   properties?: {
-    [name: SchemaName]?: ISchema; // 子节点
+    [name: SchemaName]?: ISchema; // 子ノード
   }
 };
 ```
 
-所有的 schema 都有 name，子节点 name 也是 properties 的 key
+すべてのスキーマには name があり、子ノードの name も properties のキーとして使用されます。
 
 ```ts
 {
   name: 'root',
   properties: {
     child1: {
-      // 这里就不需要写 name 了
+      // ここでは name を書く必要はありません
     },
   },
 }
@@ -147,7 +147,7 @@ interface ISchema {
 
 ### `title`
 
-节点标题
+ノードタイトル
 
 ```ts
 type SchemaTitle = string;
@@ -158,7 +158,7 @@ interface ISchema {
 
 ### `properties`
 
-children 组件可以写在 properties 里
+children コンポーネントは properties に記述できます。
 
 ```ts
 {
@@ -174,7 +174,7 @@ children 组件可以写在 properties 里
 }
 ```
 
-JSX 等同于
+JSX は次のように等価です。
 
 ```tsx | pure
 <div className={'form-item'}>
@@ -184,7 +184,7 @@ JSX 等同于
 
 ### `x-component`
 
-组件
+コンポーネント
 
 ```ts
 type Component = any;
@@ -193,7 +193,7 @@ interface ISchema {
 }
 ```
 
-所有的原生 html 标签都可以转为 schema 的写法。如：
+すべてのネイティブ HTML タグはスキーマ形式に変換できます。例えば：
 
 ```ts
 {
@@ -203,15 +203,15 @@ interface ISchema {
 }
 ```
 
-JSX 示例
+JSX サンプル
 
 ```tsx | pure
 <h1>Hello, world!</h1>
 ```
 
-### `x-component-props` 和 `x-use-component-props`
+### `x-component-props` と `x-use-component-props`
 
-`x-component-props` 是组件属性。
+`x-component-props` はコンポーネントの属性です。
 
 ```ts
 {
@@ -223,7 +223,7 @@ JSX 示例
 }
 ```
 
-有些情况下，组件属性是动态的，可以使用 `x-use-component-props`。
+場合によっては、コンポーネントの属性は動的であり、`x-use-component-props`を使用することができます。
 
 ```ts
 {
@@ -233,24 +233,24 @@ JSX 示例
 }
 ```
 
-这里的 MyTable 组件需要使用 `withDynamicSchemaProps` 高阶函数包一下，例如：
+ここでの MyTable コンポーネントは、`withDynamicSchemaProps` 高階関数でラップする必要があります。例えば：
 
 ```ts
 const MyTable = withDynamicSchemaProps(Table, { displayName: 'MyTable' });
 ```
 
-`useTableProps` 是一个自定义的 hook，用于动态生成组件属性。
+`useTableProps` は、コンポーネントの属性を動的に生成するためのカスタムフックです。
 
 ```ts
 const useTableProps = () => {
-  const service = useRequest({xx});
+  const service = useRequest({ xx });
   return {
     loading: service.loading,
   };
 };
 ```
 
-我们还需要将其注册到 scope 中，具体参考文档 [Schema 渲染](/development/client/ui-schema/rendering)。
+これをスコープに登録する必要があります。詳細はドキュメント [Schema 渲染](/development/client/ui-schema/rendering) を参照してください。
 
 ```tsx | pure
 <SchemaComponent
@@ -266,7 +266,7 @@ const useTableProps = () => {
 
 ### `x-decorator`
 
-包装器组件
+ラッパーコンポーネント
 
 ```ts
 type Decorator = any;
@@ -275,9 +275,9 @@ interface ISchema {
 }
 ```
 
-x-decorator + x-component 的组合，可以将两个组件放在一个 schema 节点里，降低 schema 结构复杂度，提高组件的复用率。
+`x-decorator` と `x-component` の組み合わせにより、2つのコンポーネントを1つのスキーマノードに配置でき、スキーマ構造の複雑さを軽減し、コンポーネントの再利用率を向上させます。
 
-例如表单场景里，可以将 FormItem 组件与任意字段组件组合，在这里 FormItem 就是 Decorator。
+例えば、フォームのシナリオでは、FormItem コンポーネントと任意のフィールドコンポーネントを組み合わせることができます。この場合、FormItem はデコレーターです。
 
 ```ts
 {
@@ -298,7 +298,7 @@ x-decorator + x-component 的组合，可以将两个组件放在一个 schema �
 }
 ```
 
-JSX 等同于
+JSX は次のようになります。
 
 ```tsx | pure
 <div>
@@ -311,7 +311,7 @@ JSX 等同于
 </div>
 ```
 
-也可以提供一个 CardItem 组件，用于包裹所有区块，这样所有区块就都是 Card 包裹的了。
+すべてのブロックを包むための CardItem コンポーネントを提供することもでき、これによりすべてのブロックが Card で包まれます。
 
 ```ts
 {
@@ -332,7 +332,7 @@ JSX 等同于
 }
 ```
 
-JSX 等同于
+JSX は次のようになります。
 
 ```tsx | pure
 <div>
@@ -345,17 +345,17 @@ JSX 等同于
 </div>
 ```
 
-### `x-decorator-props` 和 `x-use-decorator-props`
+### `x-decorator-props` と `x-use-decorator-props`
 
-同 `x-component-props` 和 `x-use-component-props` 的使用方式相同，需要使用`withDynamicSchemaProps()` 高阶函数包装组件。
+`x-component-props` と `x-use-component-props` の使用法と同様に、コンポーネントを `withDynamicSchemaProps()` 高階関数でラップする必要があります。
 
 ### `x-display`
 
-组件的展示状态
+コンポーネントの表示状態
 
-- `'x-display': 'visible'`：显示组件
-- `'x-display': 'hidden'`：隐藏组件，数据不隐藏
-- `'x-display': 'none'`：隐藏组件，数据也隐藏
+- `'x-display': 'visible'`：コンポーネントを表示
+- `'x-display': 'hidden'`：コンポーネントを非表示にし、データは非表示にしない
+- `'x-display': 'none'`：コンポーネントを非表示にし、データも非表示
 
 #### `'x-display': 'visible'`
 
@@ -374,7 +374,7 @@ JSX 等同于
 }
 ```
 
-JSX 等同于
+JSX は次のようになります。
 
 ```tsx | pure
 <div className={'form-item'}>
@@ -399,11 +399,11 @@ JSX 等同于
 }
 ```
 
-JSX 等同于
+JSX は次のようになります。
 
 ```tsx | pure
 <div className={'form-item'}>
-  {/* 此处不输出 input 组件，对应的 name=title 的字段模型还存在 */}
+  {/* ここでは input コンポーネントは出力されず、name=title のフィールドモデルは存在します */}
 </div>
 ```
 
@@ -424,25 +424,25 @@ JSX 等同于
 }
 ```
 
-JSX 等同于
+JSX は次のようになります。
 
 ```tsx | pure
 <div className={'form-item'}>
-  {/* 此处不输出 input 组件，对应的 name=title 的字段模型也不存在了 */}
+  {/* ここでは input コンポーネントは出力されず、name=title のフィールドモデルも存在しません */}
 </div>
 ```
 
 ### `x-pattern`
 
-组件的显示模式
+コンポーネントの表示モード
 
-用于字段组件，有三种显示模式：
+フィールドコンポーネントに使用され、3つの表示モードがあります。
 
-- `'x-pattern': 'editable'` 可编辑
-- `'x-pattern': 'disabled'` 不可编辑
-- `'x-pattern': 'readPretty'` 友好阅读
+- `'x-pattern': 'editable'`：編集可能
+- `'x-pattern': 'disabled'`：編集不可
+- `'x-pattern': 'readPretty'`：読みやすい
 
-如单行文本 `<SingleText />` 组件，编辑和不可编辑模式为 `<input />`，友好阅读模式为 `<div />`
+単一行テキスト `<SingleText />` コンポーネントの場合、編集可能と編集不可モードは `<input />`、読みやすいモードは `<div />` です。
 
 #### `'x-pattern': 'editable'`
 
@@ -463,7 +463,7 @@ const schema = {
 };
 ```
 
-JSX 等同于
+JSX は次のように等価です。
 
 ```tsx | pure
 <div className={'form-item'}>
@@ -490,7 +490,7 @@ const schema = {
 };
 ```
 
-JSX 等同于
+JSX は次のように等価です。
 
 ```tsx | pure
 <div className={'form-item'}>
@@ -517,7 +517,7 @@ const schema = {
 };
 ```
 
-JSX 等同于
+JSX は次のように等価です。
 
 ```tsx | pure
 <div className={'form-item'}>
@@ -527,7 +527,7 @@ JSX 等同于
 
 ### `x-initializer`
 
-并不是所有的组件都支持 `x-initializer`，已有的通用的 schema 组件中，只有 Grid、ActionBar、Tabs 支持 `x-initializer` 参数。
+すべてのコンポーネントが `x-initializer` をサポートしているわけではなく、既存の汎用スキーマコンポーネントでは、Grid、ActionBar、Tabs のみが `x-initializer` パラメータをサポートします。
 
 ```ts
 {
@@ -537,11 +537,11 @@ JSX 等同于
 }
 ```
 
-自定义的组件中，也可以使用 `useSchemaInitializerRender()` 自主处理 `x-initializer` 的渲染，详细用法参考 [SchemaInitializer 初始化器](#) 章节。
+カスタムコンポーネントでも、`useSchemaInitializerRender()` を使用して `x-initializer` のレンダリングを処理できます。詳細な使い方は [SchemaInitializer 初期化器](#) セクションを参照してください。
 
 ### `x-settings`
 
-并不是所有的组件都支持 `x-settings`，通常需要和 BlockItem、FormItem、CardItem 这类包装器组件结合使用。
+すべてのコンポーネントが `x-settings` をサポートしているわけではなく、通常は BlockItem、FormItem、CardItem などのラッパーコンポーネントと組み合わせて使用します。
 
 ```ts
 {
@@ -552,11 +552,11 @@ JSX 等同于
 }
 ```
 
-自定义的组件中，也可以使用 `useSchemaSettingsRender()` 自主处理 `x-settings` 的渲染，详细用法参考 [SchemaSettings 配置器](#) 章节。
+カスタムコンポーネントでも、`useSchemaSettingsRender()` を使用して `x-settings` のレンダリングを処理できます。詳細な使い方は [SchemaSettings 設定器](#) セクションを参照してください。
 
 ### `x-toolbar`
 
-并不是所有的组件都支持 `x-toolbar`，通常需要和 BlockItem、FormItem、CardItem 这类包装器组件结合使用。
+すべてのコンポーネントが `x-toolbar` をサポートしているわけではなく、通常は BlockItem、FormItem、CardItem などのラッパーコンポーネントと組み合わせて使用します。
 
 ```ts
 {
@@ -567,4 +567,5 @@ JSX 等同于
 }
 ```
 
-自定义的组件中，也可以使用 `useToolbarRender()` 自主处理 `x-toolbar` 的渲染，详细用法参考 [SchemaToolbar 工具栏](#) 章节。
+カスタムコンポーネントでも、`useToolbarRender()` を使用して `x-toolbar` のレンダリングを処理できます。詳細な使い方は [SchemaToolbar ツールバー](#) セクションを参照してください。
+

@@ -1,39 +1,40 @@
-# 添加数据
+# データの追加
 
-## 介绍
+## 概要
 
-添加数据操作允许用户在操作中为任意数据表中添加记录。
+データ追加操作では、ユーザーが任意のデータテーブルにレコードを追加できます。
 
 ![20240423202949](https://static-docs.nocobase.com/20240423202949.png)
 
-选择目标数据表，添加表单区块。
+対象のデータテーブルを選択し、追加フォームブロックを設定します。
 
 ![20240423203010](https://static-docs.nocobase.com/20240423203010.png)
 
-## 使用表格选中记录
+## テーブルでレコードを選択
 
-目前仅用于表格区块的「添加记录」操作的表单字段默认值。
+この機能は、テーブルブロックの「レコードを追加」操作において、フォームフィールドのデフォルト値を設定するためにのみ使用されます。
 
-示例：订单表和商品表是多对多的关系，在商品表格区块配置「添加记录」操作，为订单表添加数据。
+例：注文テーブルと商品テーブルが多対多の関係にある場合、商品テーブルブロックで「レコードを追加」操作を設定して、注文テーブルにデータを追加できます。
 
 ![20240426101803](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426101803.png)
 
-配置订单表关系字段「商品」的默认值为「表格选中记录」。
+注文テーブルの関係フィールド「商品」のデフォルト値を「テーブルで選択したレコード」に設定します。
 
 ![20240426101823](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426101823.png)
 
 ![20240426101922](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426101922.png)
 
-完整操作如下：
+完全な操作は以下の通りです：
 
 <video width="100%" height="440" controls>
 <source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426102142.mp4" type="video/mp4">
 </video>
 
-## 操作配置项
+## 操作設定項目
 
 ![20240423203050](https://static-docs.nocobase.com/20240423203050.png)
 
-- [编辑按钮](/handbook/ui/actions/action-settings/edit-button)
-- [打开模式](/handbook/ui/actions/action-settings/open-mode)
-- [弹窗尺寸](/handbook/ui/actions/action-settings/popup-size)
+- [編集ボタン](/handbook/ui/actions/action-settings/edit-button)
+- [オープンモード](/handbook/ui/actions/action-settings/open-mode)
+- [ポップアップサイズ](/handbook/ui/actions/action-settings/popup-size)
+

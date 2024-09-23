@@ -2,6 +2,7 @@
 
 <PluginInfo name="file-storage-oss"></PluginInfo>
 
-## 介绍
+## 概要
 
-## 使用手册
+## 使用手引き
+

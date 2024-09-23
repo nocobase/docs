@@ -1,53 +1,61 @@
-# 环境变量
+# 環境変数
 
-## 全局环境变量
+## グローバル環境変数
 
-保存在 `.env` 文件里
+`.env` ファイルに保存されます。
 
 ### TZ
 
-用于设置应用的时区，默认为操作系统时区。
+アプリケーションのタイムゾーンを設定するために使用され、デフォルトはオペレーティングシステムのタイムゾーンです。
 
 https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 :::warning
-与时间相关的操作会依据该时区进行处理，修改 TZ 可能会影响数据库里的日期值，详情查看「[日期 & 时间概述](/handbook/data-modeling/collection-fields/datetime)」
+時間に関連する操作は、このタイムゾーンに基づいて処理されます。TZを変更すると、データベース内の日付値に影響を与える可能性があります。詳細は「[日付 & 時間の概要](/handbook/data-modeling/collection-fields/datetime)」を参照してください。
 :::
 
 ### APP_ENV
 
-应用环境，默认值 `development`，可选项包括：
+アプリケーションの環境を指定します。デフォルト値は `development` で、選択肢は以下の通りです：
 
-- `production` 生产环境
-- `development` 开发环境
+- `production` 本番環境
+- `development` 開発環境
 
 ```bash
 APP_ENV=production
 ```
 
+### APP_HOST
+
+アプリケーションホストの設定です。デフォルト値は `0.0.0.0` です。
+
+```bash
+APP_HOST=192.168.3.154
+```
+
+### APP_PORT
+
+アプリケーションポートの設定です。デフォルト値は `13000` です。
+
+```bash
+APP_PORT=13000
+```
+
 ### APP_KEY
 
-应用的密钥，用于生成用户 token 等，修改为自己的应用密钥，并确保不对外泄露
+アプリケーションのキーで、ユーザートークンの生成に使用されます。自分のアプリケーションのキーに変更し、外部に漏れないようにしてください。
 
 :::warning
-如果 APP_KEY 修改了，旧的 token 也会随之失效
+APP_KEYを変更すると、古いトークンも無効になります。
 :::
 
 ```bash
 APP_KEY=app-key-test
 ```
 
-### APP_PORT
-
-应用端口，默认值 `13000`
-
-```bash
-APP_PORT=13000
-```
-
 ### API_BASE_PATH
 
-NocoBase API 地址前缀，默认值 `/api/`
+NocoBase APIのアドレスプレフィックスで、デフォルト値は `/api/` です。
 
 ```bash
 API_BASE_PATH=/api/
@@ -57,39 +65,39 @@ API_BASE_PATH=/api/
 
 ### CLUSTER_MODE
 
-多核（集群）启动模式，如配置了该变量，会透传至 `pm2 start` 命令中作为 `-i <instances>` 的参数。可选项与 pm2 `-i` 参数一致（参考 [PM2: Cluster Mode](https://pm2.keymetrics.io/docs/usage/cluster-mode/)），包括：
+マルチコア（クラスター）起動モードです。この変数が設定されている場合、`pm2 start` コマンドに `-i <instances>` の引数として透過的に渡されます。選択肢は pm2 の `-i` パラメータと一致します（参考：[PM2: クラスター モード](https://pm2.keymetrics.io/docs/usage/cluster-mode/)）：
 
-- `max`：使用 CPU 最大核数
-- `-1`：使用 CPU 最大核数 -1
-- `<number>`：指定核数
+- `max`：CPUの最大コア数を使用
+- `-1`：CPUの最大コア数 - 1
+- `<number>`：指定したコア数
 
-默认值为空，代表不开启。
+デフォルト値は空で、クラスターは無効になります。
 
 :::warning{title="注意"}
-该模式需要配合集群模式相关的插件使用，否则应用的功能可能出现异常。
+このモードはクラスター モード関連のプラグインと併せて使用する必要があります。そうしないと、アプリケーションの機能に異常が生じる可能性があります。
 :::
 
 ### PLUGIN_PACKAGE_PREFIX
 
-插件包名前缀，默认为：`@nocobase/plugin-,@nocobase/preset-`。
+プラグインパッケージの名前接頭辞です。デフォルトは `@nocobase/plugin-,@nocobase/preset-` となります。
 
-例如，添加 `hello` 插件到 `my-nocobase-app` 项目，插件的完整包名则为 `@my-nocobase-app/plugin-hello`。
+例えば、`my-nocobase-app` プロジェクトに `hello` プラグインを追加する場合、プラグインの完全なパッケージ名は `@my-nocobase-app/plugin-hello` になります。
 
-PLUGIN_PACKAGE_PREFIX 可以配置为：
+PLUGIN_PACKAGE_PREFIX は次のように設定できます：
 
 ```bash
-PLUGIN_PACKAGE_PREFIX=@nocobase/plugin-,@nocobase-preset-,@my-nocobase-app/plugin-
+PLUGIN_PACKAGE_PREFIX=@nocobase/plugin-,@nocobase/preset-,@my-nocobase-app/plugin-
 ```
 
-则插件名称和包名对应关系如下：
+この場合、プラグイン名とパッケージ名の対応関係は以下の通りです：
 
-- `users` 插件的包名为 `@nocobase/plugin-users`
-- `nocobase` 插件的包名为 `@nocobase/preset-nocobase`
-- `hello` 插件的包名为 `@my-nocobase-app/plugin-hello`
+- `users` プラグインのパッケージ名は `@nocobase/plugin-users`
+- `nocobase` プラグインのパッケージ名は `@nocobase/preset-nocobase`
+- `hello` プラグインのパッケージ名は `@my-nocobase-app/plugin-hello`
 
 ### DB_DIALECT
 
-数据库类型，默认值 `sqlite`，可选项包括：
+データベースの種類です。デフォルト値は `sqlite` で、選択肢は以下の通りです：
 
 - `sqlite`
 - `mariadb`
@@ -102,20 +110,20 @@ DB_DIALECT=mysql
 
 ### DB_STORAGE
 
-数据库文件路径（使用 SQLite 数据库时配置）
+データベースファイルのパス（SQLiteデータベースを使用する場合に設定します）。
 
 ```bash
-# 相对路径
+# 相対パス
 DB_STORAGE=storage/db/nocobase.db
-# 绝对路径
+# 絶対パス
 DB_STORAGE=/your/path/nocobase.db
 ```
 
 ### DB_HOST
 
-数据库主机（使用 MySQL 或 PostgreSQL 数据库时需要配置）
+データベースホスト（MySQLまたはPostgreSQLデータベースを使用する場合に設定します）。
 
-默认值 `localhost`
+デフォルト値は `localhost` です。
 
 ```bash
 DB_HOST=localhost
@@ -123,10 +131,10 @@ DB_HOST=localhost
 
 ### DB_PORT
 
-数据库端口（使用 MySQL 或 PostgreSQL 数据库时需要配置）
+データベースポート（MySQLまたはPostgreSQLデータベースを使用する場合に設定します）。
 
-- MySQL、MariaDB 默认端口 3306
-- PostgreSQL 默认端口 5432
+- MySQL、MariaDB のデフォルトポートは 3306 です。
+- PostgreSQL のデフォルトポートは 5432 です。
 
 ```bash
 DB_PORT=3306
@@ -134,7 +142,7 @@ DB_PORT=3306
 
 ### DB_DATABASE
 
-数据库名（使用 MySQL 或 PostgreSQL 数据库时需要配置）
+データベース名（MySQLまたはPostgreSQLデータベースを使用する場合に設定します）。
 
 ```bash
 DB_DATABASE=nocobase
@@ -142,7 +150,7 @@ DB_DATABASE=nocobase
 
 ### DB_USER
 
-数据库用户（使用 MySQL 或 PostgreSQL 数据库时需要配置）
+データベースユーザー（MySQL または PostgreSQL データベースを使用する場合は設定が必要です）
 
 ```bash
 DB_USER=nocobase
@@ -150,7 +158,7 @@ DB_USER=nocobase
 
 ### DB_PASSWORD
 
-数据库密码（使用 MySQL 或 PostgreSQL 数据库时需要配置）
+データベースパスワード（MySQL または PostgreSQL データベースを使用する場合は設定が必要です）
 
 ```bash
 DB_PASSWORD=nocobase
@@ -158,7 +166,7 @@ DB_PASSWORD=nocobase
 
 ### DB_TABLE_PREFIX
 
-数据表前缀
+データテーブルのプレフィックス
 
 ```bash
 DB_TABLE_PREFIX=nocobase_
@@ -166,18 +174,18 @@ DB_TABLE_PREFIX=nocobase_
 
 ### DB_UNDERSCORED
 
-数据库表名、字段名是否转为 snake case 风格，默认为 `false`。如果使用 MySQL（MariaDB）数据库，并且 `lower_case_table_names=1`，则 DB_UNDERSCORED 必须为 `true`
+データベースのテーブル名やフィールド名をスネークケーススタイルに変換するかどうか。デフォルトは `false` です。MySQL（MariaDB）データベースを使用し、`lower_case_table_names=1` の場合、DB_UNDERSCORED は `true` でなければなりません。
 
 :::warning
-当 `DB_UNDERSCORED=true` 时，数据库实际的表名和字段名与界面所见的并不一致，如 `orderDetails` 数据库里的是 `order_details`
+`DB_UNDERSCORED=true` の場合、データベースの実際のテーブル名とフィールド名は、画面に表示されるものとは一致しません。例えば、`orderDetails` はデータベース内では `order_details` となります。
 :::
 
 ### DB_LOGGING
 
-数据库日志开关，默认值 `off`，可选项包括：
+データベースログのスイッチ。デフォルト値は `off` で、選択肢は以下の通りです：
 
-- `on` 打开
-- `off` 关闭
+- `on` - 有効
+- `off` - 無効
 
 ```bash
 DB_LOGGING=on
@@ -185,12 +193,11 @@ DB_LOGGING=on
 
 ### LOGGER_TRANSPORT
 
-日志输出方式，多个用 `,` 分隔。开发环境默认值 `console`, 生产环境默认值 `console,dailyRotateFile`.
-可选项：
+ログ出力方法。複数の場合は `,` で区切ります。開発環境のデフォルト値は `console`、本番環境のデフォルト値は `console,dailyRotateFile` です。選択肢：
 
 - `console` - `console.log`
-- `file` - `文件`
-- `dailyRotateFile` - `按天滚动文件`
+- `file` - `ファイル`
+- `dailyRotateFile` - 日毎にローテーションファイル
 
 ```bash
 LOGGER_TRANSPORT=console,dailyRotateFile
@@ -198,7 +205,7 @@ LOGGER_TRANSPORT=console,dailyRotateFile
 
 ### LOGGER_BASE_PATH
 
-基于文件的日志存储路径，默认为 `storage/logs`。
+ファイルベースのログストレージパス。デフォルトは `storage/logs` です。
 
 ```bash
 LOGGER_BASE_PATH=storage/logs
@@ -206,7 +213,7 @@ LOGGER_BASE_PATH=storage/logs
 
 ### LOGGER_LEVEL
 
-输出日志级别，开发环境默认值 `debug`, 生产环境默认值 `info`. 可选项：
+出力ログレベルについて、開発環境のデフォルト値は `debug`、本番環境のデフォルト値は `info` です。選択肢は以下の通りです：
 
 - `error`
 - `warn`
@@ -218,14 +225,14 @@ LOGGER_BASE_PATH=storage/logs
 LOGGER_LEVEL=info
 ```
 
-数据库日志输出级别为 `debug`, 由 `DB_LOGGING` 控制是否输出，不受 `LOGGER_LEVEL` 影响。
+データベースのログ出力レベルは `debug` で、`DB_LOGGING` によって出力の有無が制御され、`LOGGER_LEVEL` の設定には影響を受けません。
 
 ### LOGGER_MAX_FILES
 
-最大保留日志文件数。
+最大保持ログファイル数を設定します。
 
-- `LOGGER_TRANSPORT` 为 `file` 时，默认值为 `10`.
-- `LOGGER_TRANSPORT` 为 `dailyRotateFile`, 使用 `[n]d` 代表天数。默认值为 `14d`.
+- `LOGGER_TRANSPORT` が `file` の場合、デフォルト値は `10` です。
+- `LOGGER_TRANSPORT` が `dailyRotateFile` の場合、`[n]d` で日数を表し、デフォルト値は `14d` です。
 
 ```bash
 LOGGER_MAX_FILES=14d
@@ -233,10 +240,10 @@ LOGGER_MAX_FILES=14d
 
 ### LOGGER_MAX_SIZE
 
-按大小滚动日志。
+サイズによるログのロールオーバー設定です。
 
-- `LOGGER_TRANSPORT` 为 `file` 时，单位为 `byte`, 默认值为 `20971520 (20 * 1024 * 1024)`.
-- `LOGGER_TRANSPORT` 为 `dailyRotateFile`, 可以使用 `[n]k`, `[n]m`, `[n]g`. 默认不配置。
+- `LOGGER_TRANSPORT` が `file` の場合、単位は `byte` で、デフォルト値は `20971520 (20 * 1024 * 1024)` です。
+- `LOGGER_TRANSPORT` が `dailyRotateFile` の場合、`[n]k`、`[n]m`、`[n]g` を使用できます。デフォルトは未設定です。
 
 ```bash
 LOGGER_MAX_SIZE=20971520
@@ -244,7 +251,7 @@ LOGGER_MAX_SIZE=20971520
 
 ### LOGGER_FORMAT
 
-日志打印格式，开发环境默认 `console`, 生产环境默认 `json`. 可选项:
+ログ出力フォーマットについて、開発環境のデフォルトは `console`、本番環境のデフォルトは `json` です。選択肢は以下の通りです：
 
 - `console`
 - `json`
@@ -255,11 +262,11 @@ LOGGER_MAX_SIZE=20971520
 LOGGER_FORMAT=json
 ```
 
-参考：[日志格式](../plugins/logger/index.md#日志格式)
+参考：[ログフォーマット](../plugins/logger/index.md#ログフォーマット)
 
 ### CACHE_DEFAULT_STORE
 
-使用缓存方式的唯一标识，指定服务端默认缓存方式，默认值 `memory`, 内置可选项：
+キャッシュ方式のユニーク識別子で、サーバーのデフォルトキャッシュ方式を指定します。デフォルト値は `memory` で、選択肢は以下の通りです：
 
 - `memory`
 - `redis`
@@ -270,7 +277,7 @@ CACHE_DEFAULT_STORE=memory
 
 ### CACHE_MEMORY_MAX
 
-内存缓存项目最大个数，默认值 `2000`。
+メモリキャッシュ項目の最大数を設定します。デフォルト値は `2000` です。
 
 ```bash
 CACHE_MEMORY_MAX=2000
@@ -278,7 +285,7 @@ CACHE_MEMORY_MAX=2000
 
 ### CACHE_REDIS_URL
 
-Redis连接，可选。示例：`redis://localhost:6379`
+Redis接続（オプション）。例：`redis://localhost:6379`
 
 ```bash
 CACHE_REDIS_URL=redis://localhost:6379
@@ -286,7 +293,7 @@ CACHE_REDIS_URL=redis://localhost:6379
 
 ### TELEMETRY_ENABLED
 
-启动遥测数据收集，默认为 `off`.
+遥測データ収集を有効にします。デフォルトは `off` です。
 
 ```bash
 TELEMETRY_ENABLED=on
@@ -294,7 +301,7 @@ TELEMETRY_ENABLED=on
 
 ### TELEMETRY_METRIC_READER
 
-启用的监控指标采集器，默认为 `console`. 其他值需要参考对应采集器插件注册的名字，如 `prometheus`. 多个使用 `,` 分隔。
+有効な監視指標収集器。デフォルトは `console` です。他の値については、対応する収集器プラグインに登録された名前を参照してください。複数指定する場合は `,` で区切ります。
 
 ```bash
 TELEMETRY_METRIC_READER=console,prometheus
@@ -302,23 +309,24 @@ TELEMETRY_METRIC_READER=console,prometheus
 
 ### TELEMETRY_TRACE_PROCESSOR
 
-启用的链路数据处理器，默认为 `console`. 其他值需要参考对应处理器插件注册的名字。多个使用 `,` 分隔。
+有効なトレースデータ処理器。デフォルトは `console` です。他の値については、対応する処理器プラグインに登録された名前を参照してください。複数指定する場合は `,` で区切ります。
 
 ```bash
 TELEMETRY_TRACE_PROCESSOR=console
 ```
 
-## 实验性环境变量
+## 実験的環境変数
 
 ### APPEND_PRESET_LOCAL_PLUGINS
 
-用于附加预置的未激活插件，值为插件包名（package.json 的 name 参数），多个插件英文逗号分隔。
+未アクティブなプレセットプラグインを追加するためのもので、値はプラグインパッケージ名（package.json の name パラメータ）で、複数のプラグインはカンマで区切ります。
 
 :::info
 
-1. 需要确保插件已经下载到本地，并且在 `node_modules` 目录里可以找到，更多内容查看 [插件的组织方式](/development/plugin)。
-2. 添加了环境变量后，需要在初始化安装 `nocobase install` 或升级 `nocobase upgrade` 后才会在插件管理器页面里显示。
-   :::
+1. プラグインがローカルにダウンロードされ、`node_modules` ディレクトリ内で見つけられることを確認する必要があります。詳細は [プラグインの組織方法](/development/plugin) を参照してください。
+2. 環境変数を追加した後、初期インストール `nocobase install` またはアップグレード `nocobase upgrade` を行った後にプラグイン管理ページに表示されます。
+
+:::
 
 ```bash
 APPEND_PRESET_LOCAL_PLUGINS=@my-project/plugin-foo,@my-project/plugin-bar
@@ -326,21 +334,22 @@ APPEND_PRESET_LOCAL_PLUGINS=@my-project/plugin-foo,@my-project/plugin-bar
 
 ### APPEND_PRESET_BUILT_IN_PLUGINS
 
-用于附加内置并默认安装的插件，值为插件包名（package.json 的 name 参数），多个插件英文逗号分隔。
+組み込みのデフォルトインストールプラグインを追加するためのもので、値はプラグインパッケージ名（package.json の name パラメータ）で、複数のプラグインはカンマで区切ります。
 
 :::info
+1. プラグインがローカルにダウンロードされ、`node_modules` ディレクトリ内に存在することを確認してください。詳細については、[プラグインの組織方法](/development/plugin) を参照してください。
 
-1. 需要确保插件已经下载到本地，并且在 `node_modules` 目录里可以找到，更多内容查看 [插件的组织方式](/development/plugin)。
-2. 添加了环境变量后，需要在初始化安装 `nocobase install` 或升级 `nocobase upgrade` 时会自动安装或升级插件。
-   :::
+2. 環境変数を追加した後、初期化時に `nocobase install` またはアップグレード時に `nocobase upgrade` を実行すると、自動的にプラグインがインストールまたはアップグレードされます。
+
+:::
 
 ```bash
 APPEND_PRESET_BUILT_IN_PLUGINS=@my-project/plugin-foo,@my-project/plugin-bar
 ```
 
-## 临时环境变量
+## 一時的な環境変数
 
-安装 NocoBase 时，可以通过设置临时的环境变量来辅助安装，如：
+NocoBase をインストールする際には、一時的な環境変数を設定してインストールを補助できます。例：
 
 ```bash
 yarn cross-env \
@@ -350,20 +359,20 @@ yarn cross-env \
   INIT_ROOT_NICKNAME="Super Admin" \
   nocobase install
 
-# 等同于
+# 同等のコマンド
 yarn nocobase install \
   --lang=zh-CN  \
   --root-email=demo@nocobase.com \
   --root-password=admin123 \
   --root-nickname="Super Admin"
 
-# 等同于
+# 同等のコマンド
 yarn nocobase install -l zh-CN -e demo@nocobase.com -p admin123 -n "Super Admin"
 ```
 
 ### INIT_APP_LANG
 
-安装时的语言，默认值 `en-US`，可选项包括：
+インストール時の言語です。デフォルトは `en-US` で、選択肢は以下の通りです：
 
 - `en-US`
 - `zh-CN`
@@ -376,7 +385,7 @@ yarn cross-env \
 
 ### INIT_ROOT_EMAIL
 
-Root 用户邮箱
+ルートユーザーのメールアドレスを設定します。
 
 ```bash
 yarn cross-env \
@@ -387,7 +396,7 @@ yarn cross-env \
 
 ### INIT_ROOT_PASSWORD
 
-Root 用户密码
+ルートユーザーパスワード
 
 ```bash
 yarn cross-env \
@@ -399,13 +408,14 @@ yarn cross-env \
 
 ### INIT_ROOT_NICKNAME
 
-Root 用户昵称
+ルートユーザーのニックネーム
 
 ```bash
 yarn cross-env \
   INIT_APP_LANG=zh-CN \
   INIT_ROOT_EMAIL=demo@nocobase.com \
   INIT_ROOT_PASSWORD=admin123 \
-  INIT_ROOT_NICKNAME="Super Admin" \
+  INIT_ROOT_NICKNAME="スーパ管理者" \
   nocobase install
 ```
+

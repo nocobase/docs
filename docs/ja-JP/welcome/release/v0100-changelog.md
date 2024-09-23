@@ -1,76 +1,76 @@
 # v0.10：2023-06-20
 
-## 第二季度的新特性
+## 第2四半期の新機能
 
-- 关系字段组件改进，支持多种组件切换
-  - 下拉选择器
-  - 数据选择器
-  - 子表单/子详情
-  - 子表格
-  - 文件管理器
-  - 标题（仅阅读模式）
-- 快捷创建关系数据，支持两种快捷创建模式
-  - 下拉菜单里添加，基于标题字段快速创建一条新纪录
-  - 弹窗里添加，可以配置复杂的添加表单
-- 复制操作，支持两种复制模式
-  - 直接复制
-  - 复制到表单里并继续填写
-- 表单数据模板
-- 筛选数据范围支持变量
-- 列表区块
-- 网格卡片区块
-- 移动端插件
-- 用户认证插件，支持不同的登录方式
-  - Email/Password
+- 関係フィールドコンポーネントの改善、複数のコンポーネントの切り替えをサポート
+  - ドロップダウンセレクター
+  - データセレクター
+  - サブフォーム/サブ詳細
+  - サブテーブル
+  - ファイルマネージャー
+  - タイトル（閲覧モードのみ）
+- 関係データのクイック作成、2つのクイック作成モードをサポート
+  - ドロップダウンメニューで追加、タイトルフィールドに基づいて新しいレコードを迅速に作成
+  - ポップアップで追加、複雑な追加フォームを設定可能
+- コピー操作、2つのコピー方法をサポート
+  - 直接コピー
+  - フォームにコピーして続行
+- フォームデータテンプレートの追加
+- データ範囲のフィルタリングに変数をサポート
+- リストブロックの追加
+- グリッドカードブロックの追加
+- モバイルプラグインの追加
+- ユーザー認証プラグイン、異なるログイン方法をサポート
+  - Email/パスワード
   - SMS
   - OIDC
   - SAML
-- 工作流新增节点
-  - 人工节点升级，支持从现有数据表里新增和编辑
-  - 循环节点
-  - 聚合查询节点
-- 文件管理器
-  - 提供文件表模板
-  - 提供文件管理器组件
+- ワークフローに新しいノードを追加
+  - 人工ノードのアップグレード、既存のデータテーブルからの追加と編集をサポート
+  - ループノードの追加
+  - 集約クエリノードの追加
+- ファイルマネージャー
+  - ファイルテーブルテンプレートを提供
+  - ファイルマネージャーコンポーネントを提供
 
-## 应用升级
+## アプリケーションのアップグレード
 
-### Docker 安装的升级
+### Docker インストールのアップグレード
 
-无变化，升级参考 [Docker 镜像升级指南](/welcome/getting-started/upgrading/docker-compose)
+変更はありません。アップグレードの参考に [Docker イメージアップグレードガイド](/welcome/getting-started/upgrading/docker-compose) をご覧ください。
 
-### 源码安装的升级
+### ソースコードインストールのアップグレード
 
-v0.10 进行了依赖的重大升级，源码升级时，以防出错，需要删掉以下目录之后再升级
+v0.10では依存関係に重大なアップグレードが行われました。ソースコードをアップグレードする際、エラーを防ぐために以下のディレクトリを削除してからアップグレードしてください。
 
 ```bash
-# 删除 .umi 相关缓存
+# .umi 関連のキャッシュを削除
 yarn rimraf -rf "./**/{.umi,.umi-production}"
-# 删除编译文件
+# コンパイルファイルを削除
 yarn rimraf -rf "packages/*/*/{lib,esm,es,dist,node_modules}"
-# 删除依赖
+# 依存関係を削除
 yarn rimraf -rf node_modules
 ```
 
-更多详情参考 [Git 源码升级指南](/welcome/getting-started/upgrading/git-clone)
+さらなる詳細は [Git ソースコードアップグレードガイド](/welcome/getting-started/upgrading/git-clone) をご覧ください。
 
-### create-nocobase-app 安装的升级
+### create-nocobase-app インストールのアップグレード
 
-建议 `yarn create` 重新下载新版本，再更新 .env 配置，更多详情参考 [大版本升级指南](/welcome/getting-started/upgrading/create-nocobase-app#大版本升级)
+`yarn create` を使用して新しいバージョンを再ダウンロードし、.env 設定を更新することをお勧めします。さらなる詳細は [メジャーバージョンアップグレードガイド](/welcome/getting-started/upgrading/create-nocobase-app#大版本升级) をご覧ください。
 
-## 即将遗弃和可能不兼容的变化
+## 近い将来の廃止と互換性のない変更
 
-### 子表格字段组件
+### サブテーブルフィールドコンポーネント
 
-不兼容新版，区块字段需要删除重配（只需要 UI 重配）
+新しいバージョンとの互換性がなく、ブロックフィールドは削除し、再構成する必要があります（UIの再構成のみが必要です）。
 
-### 附件上传接口的变更
+### 添付ファイルアップロードインターフェースの変更
 
-除了内置的 attachments 表以外，用户也可以自定义文件表，附件的上传接口由 `/api/attachments:upload` 变更为 `/api/<file-collection>:create`，upload 已废弃，依旧兼容 v0.10，但会在下个大版本里移除。
+組み込みの attachments テーブルに加え、ユーザーはカスタムファイルテーブルも作成可能です。添付ファイルのアップロードインターフェースは `/api/attachments:upload` から `/api/<file-collection>:create` に変更されました。upload は廃止されますが、v0.10 との互換性は維持され、次の主要バージョンで削除される予定です。
 
-### 登录、注册接口的变更
+### ログイン、登録インターフェースの変更
 
-nocobase 内核提供了更强大的 [auth 模块](https://github.com/nocobase/nocobase/tree/main/packages/plugins/auth)，用户登录、注册、校验、注销接口变更如下：
+nocobase コアは、より強力な [auth モジュール](https://github.com/nocobase/nocobase/tree/main/packages/plugins/auth) を提供します。ユーザーのログイン、登録、検証、ログアウトインターフェースは以下のように変更されます：
 
 ```bash
 /api/users:signin -> /api/auth:signIn
@@ -79,46 +79,46 @@ nocobase 内核提供了更强大的 [auth 模块](https://github.com/nocobase/n
 /api/users:check -> /api/auth:check
 ```
 
-注：以上 users 接口，已废弃，依旧兼容 v0.10，但会在下个大版本里移除。
+注：上記の users インターフェースは廃止され、v0.10 との互換性は維持されますが、次の主要バージョンで削除される予定です。
 
-### 日期字段筛选的调整
+### 日付フィールドフィルタの調整
 
-如果之前数据范围里配置了日期相关筛选，需要删掉重新配置。
+以前のデータ範囲に日付関連のフィルタが設定されている場合は、削除して再構成する必要があります。
 
-## 第三方插件升级指南
+## サードパーティプラグインアップグレードガイド
 
-### 依赖升级
+### 依存関係のアップグレード
 
-v0.10 依赖升级，主要包括
+v0.10 の依存関係のアップグレードは、主に以下を含みます：
 
-- `react` 升级到 v18
-- `react-dom` 升级到 v18
-- `react-router` 升级到 v6.11
-- `umi` 升级到 v4
-- `dumi` 升级到 v2
+- `react` を v18 にアップグレード
+- `react-dom` を v18 にアップグレード
+- `react-router` を v6.11 にアップグレード
+- `umi` を v4 にアップグレード
+- `dumi` を v2 にアップグレード
 
-插件的 `package.json` 相关依赖要更改为最新版，如：
+プラグインの `package.json` に関連する依存関係を最新版に変更する必要があります。例：
 
 ```diff
 {
   "devDependencies": {
-+   "react": "^18".
-+   "react-dom": "^18".
-+   "react-router-dom": "^6.11.2".
--   "react": "^17".
--   "react-dom": "^17".
--   "react-router-dom": "^5".
++   "react": "^18",
++   "react-dom": "^18",
++   "react-router-dom": "^6.11.2",
+-   "react": "^17",
+-   "react-dom": "^17",
+-   "react-router-dom": "^5",
   }
 }
 ```
 
-### 代码修改
+### コードの修正
 
-由于 react-router 的升级，代码层面也需要改动，主要变更包括
+react-routerのアップグレードに伴い、コードレベルでの変更が必要です。主な変更点は以下の通りです。
 
-#### Layout 布局组件
+#### Layout コンポーネント
 
-Layout 布局组件需要使用 `<Outlet />` 代替 `props.children`。
+Layout コンポーネントは `props.children` の代わりに `<Outlet />` を使用する必要があります。
 
 ```diff
 import React from 'react';
@@ -134,7 +134,7 @@ export default function Layout(props) {
 }
 ```
 
-使用了 `React.cloneElement` 方式渲染的路由组件改造，示例：
+`React.cloneElement` を使用してレンダリングされたルートコンポーネントの改造例：
 
 ```diff
 import React from 'react';
@@ -150,7 +150,7 @@ export default function RouteComponent(props) {
 }
 ```
 
-组件改成从 `useOutletContext` 取值
+コンポーネントは `useOutletContext` から値を取得するように変更します。
 
 ```diff
 import React from 'react';
@@ -165,7 +165,7 @@ import React from 'react';
 
 #### Redirect
 
-`<Redirect>` 转为 `<Navigate replace />`。
+`<Redirect>` は `<Navigate replace />` に変換します。
 
 ```diff
 - <Redirect to="about" />
@@ -174,32 +174,32 @@ import React from 'react';
 
 #### useHistory
 
-`useNavigate` 代替 `useHistory`。
+`useNavigate` は `useHistory` の代わりとして使用します。
 
 ```diff
 - import { useHistory } from 'react-router-dom';
-+ import { useNavigate} from 'react-router-dom';
++ import { useNavigate } from 'react-router-dom';
 
 - const history = useHistory();
 + const navigate = useNavigate();
 
-- history.push('/about')
-+ navigate('/about')
+- history.push('/about');
++ navigate('/about');
 
-- history.replace('/about')
-+ navigate('/about', { replace: true })
+- history.replace('/about');
++ navigate('/about', { replace: true });
 ```
 
 #### useLocation
 
-`useLocation<type>()` 改为 `useLocation`。
+`useLocation<type>()` は `useLocation` に変更されます。
 
 ```diff
-- const location= useLocation<type>();
-+ const location= useLocation();
+- const location = useLocation<type>();
++ const location = useLocation();
 ```
 
-`const { query } = useLocation()` 改为 `useSearchParams()`。
+`const { query } = useLocation()` は `useSearchParams()` に変更されます。
 
 ```diff
 - const location = useLocation();
@@ -211,7 +211,7 @@ import React from 'react';
 
 #### path
 
-支持下面的 `path` 方式
+以下の `path` 形式がサポートされています。
 
 ```
 /groups
@@ -222,7 +222,7 @@ import React from 'react';
 /files/:id/*
 ```
 
-不再支持如下方式
+以下の形式はサポートされなくなります。
 
 ```
 /tweets/:id(\d+)
@@ -230,4 +230,5 @@ import React from 'react';
 /files-*
 ```
 
-更多改动和 api 变更，请查阅 [react-router@6](https://reactrouter.com/en/main/upgrading/v5)。
+さらなる変更およびAPIの変更については、[react-router@6](https://reactrouter.com/en/main/upgrading/v5)をご確認ください。
+

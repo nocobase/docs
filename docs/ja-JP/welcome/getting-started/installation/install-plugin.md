@@ -1,124 +1,125 @@
-# 如何安装第三方插件
+# サードパーティプラグインのインストール方法
 
-NocoBase 预置了一些插件供使用，同时也支持安装第三方插件。你可以通过以下方式安装：
+NocoBaseにはいくつかのプラグインがプリインストールされており、サードパーティプラグインのインストールもサポートしています。以下の方法でインストールできます：
 
-- 通过界面安装；
-- 通过命令安装；
-- 预置插件的安装。
+- インターフェースからのインストール
+- コマンドによるインストール
+- プリインストールプラグインのインストール
 
-## 通过界面安装
+## インターフェースからのインストール
 
 :::warning
-- 通过界面添加的插件存放在 `storages/plugins` 目录下，必须是已编译的插件，无需安装其他依赖。
+- インターフェースから追加されたプラグインは `storages/plugins` ディレクトリに保存され、必ずビルド済みのプラグインであり、他の依存関係をインストールする必要はありません。
 :::
 
 ![20240424135049](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240424135049.png)
 
-添加后的插件还需要激活才能使用
+追加したプラグインは使用する前にアクティブ化する必要があります。
 
 ![20240424175655](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240424175655.png)
 
-## 通过命令安装
+## コマンドによるインストール
 
-将本地已有的插件添加到应用里
+ローカルに既にあるプラグインをアプリに追加します。
 
 ```bash
-yarn pm add <packageName> # 这种用法常用于添加本地开发中的插件
+yarn pm add <packageName> # この使い方はローカルで開発中のプラグインを追加するのに一般的です。
 ```
 
-如果你需要先下载、再解压，再添加到应用里，可以使用以下几种方式（插件存放在 `storages/plugins` 目录下）：
+先にダウンロードして解凍し、アプリに追加する場合は、以下の方法を使用できます（プラグインは `storages/plugins` ディレクトリに保存されます）：
 
 ```bash
-# 从远程的 npm registry 下载并添加到应用里
+# リモートのnpmレジストリからダウンロードしてアプリに追加
 yarn pm add <packageName> --registry=<registry>
-# 从远程 URL 下载并添加到应用里
+# リモートURLからダウンロードしてアプリに追加
 yarn pm add <url>
-# 将本地压缩包解压并添加到应用里
+# ローカルの圧縮ファイルを解凍してアプリに追加
 yarn pm add <filePath>
 ```
 
 :::warning
-- 使用 Docker 版本时，需要先进入 Docker 容器再执行 `pm add` 命令；
+- Docker版を使用する際は、先にDockerコンテナに入ってから `pm add` コマンドを実行する必要があります。
 :::
 
-示例
+### 例
 
 ```bash
-# 将本地已有的插件添加到应用里
+# ローカルに既存のプラグインをアプリに追加する
 yarn pm add @nocobase/plugin-data-source-external-mariadb
-# 从远程的 npm registry 下载并添加到应用里
+# リモートの npm レジストリからダウンロードしてアプリに追加する
 yarn pm add @nocobase/plugin-data-source-external-mariadb --registry=https://pkg.nocobase.com/
-# 从远程 URL 下载并添加到应用里
+# リモート URL からダウンロードしてアプリに追加する
 yarn pm add https://registry.npmmirror.com/@nocobase/plugin-sample-hello/-/plugin-sample-hello-0.21.0-alpha.15.tgz
-# 将本地压缩包解压并添加到应用里
+# ローカルの圧縮ファイルを解凍してアプリに追加する
 yarn pm add /downloads/plugin-custom-brand-0.21.0-alpha.15.tgz
 ```
 
-`pm add` 命令只用于添加插件，插件还需要激活才能使用，请使用 `pm enable` 命令激活
+`pm add` コマンドはプラグインを追加するためにのみ使用され、追加されたプラグインは有効化する必要があります。`pm enable` コマンドを使用して有効化してください。
 
 ```bash
 yarn pm enable <packageName>
 ```
 
-示例
+### 例
 
 ```bash
 yarn pm enable @nocobase/plugin-data-source-external-mariadb @nocobase/plugin-custom-brand
 ```
 
-## 预置插件的安装
+## プレセットプラグインのインストール
 
-为了方便安装插件，提供了两个环境变量用于配置预置插件，预置插件会在应用安装或升级时，自动添加、安装或升级。
+プラグインのインストールを簡素化するために、プレセットプラグインを設定するための2つの環境変数が用意されています。プレセットプラグインはアプリのインストールやアップグレード時に自動的に追加、インストール、またはアップグレードされます。
 
-- [APPEND_PRESET_LOCAL_PLUGINS](/welcome/getting-started/env#append_preset_local_plugins)：用于附加预置的未激活插件；
-- [APPEND_PRESET_BUILT_IN_PLUGINS](/welcome/getting-started/env#append_preset_built_in_plugins)：用于附加内置并默认安装的插件。
+- [APPEND_PRESET_LOCAL_PLUGINS](/welcome/getting-started/env#append_preset_local_plugins)：未アクティブなプレセットプラグインを追加するために使用します。
+- [APPEND_PRESET_BUILT_IN_PLUGINS](/welcome/getting-started/env#append_preset_built_in_plugins)：組み込みのデフォルトでインストールされるプラグインを追加するために使用します。
 
 :::warning
-- 配置了预置插件的环境变量后，需要执行 `nocobase install` 或 `nocobase upgrade` 命令，插件才会自动添加或安装。
-- 确保在执行 `nocobase install` 或 `nocobase upgrade` 时，插件已经下载到本地，并且在 `node_modules` 目录里可以找到。你可以查看 [插件的组织方式](/development/plugin) 以便了解插件的具体情况。
+- プリセットプラグインの環境変数を設定した後は、`nocobase install` または `nocobase upgrade` コマンドを実行する必要があります。そうしないと、プラグインは自動的に追加またはインストールされません。
+- `nocobase install` または `nocobase upgrade` を実行する際は、プラグインがローカルにダウンロードされ、`node_modules` ディレクトリ内に存在することを確認してください。プラグインの具体的な情報については、[プラグインの組織方法](/development/plugin)を参照してください。
 :::
 
-**示例**
+### 例
 
-#### 1. 将以下插件添加到预置插件列表里，默认不激活。
+#### 1. 以下のプラグインをプリセットプラグインリストに追加し、デフォルトで無効にします。
 
 ```bash
 APPEND_PRESET_LOCAL_PLUGINS=@nocobase/plugin-data-source-external-postgres,@nocobase/plugin-data-source-external-mysql,@nocobase/plugin-data-source-external-mariadb
 ```
 
-#### 2. 预置插件建议通过 dependencies 的方式声明，添加到项目目录的 package.json 里。
+#### 2. プリセットプラグインは、依存関係として宣言することをお勧めします。プロジェクトディレクトリの `package.json` に追加してください。
 
-你可以直接通过 `yarn add` 添加插件声明并下载
+`yarn add` コマンドを使用して、プラグイン宣言を直接追加し、ダウンロードできます。
 
 ```bash
 yarn add @nocobase/plugin-data-source-external-postgres @nocobase/plugin-data-source-external-mysql @nocobase/plugin-data-source-external-mariadb -W
 ```
 
-或者手动 package.json 里填写，再通过 `yarn install` 下载插件
+または、手動で `package.json` に記入し、その後 `yarn install` でプラグインをダウンロードしてください。
 
 ```ts
 {
   "dependencies": {
     "@nocobase/plugin-data-source-external-postgres": "0.21.0-alpha.15",
     "@nocobase/plugin-data-source-external-mysql": "0.21.0-alpha.15",
-    "@nocobase/plugin-data-source-external-mariadb": "0.21.0-alpha.15",
+    "@nocobase/plugin-data-source-external-mariadb": "0.21.0-alpha.15"
   }
 }
 ```
 
-#### 3. 最后，别忘了执行 `nocobase install` 或 `nocobase upgrade` 命令
+#### 3. 最後に、`nocobase install` または `nocobase upgrade` コマンドを実行することをお忘れなく。
 
-安装或重装
+インストールまたは再インストール
 
 ```bash
-# 安装
+# インストール
 yarn nocobase install
-# 重装
+# 再インストール
 yarn nocobase install -f
 ```
 
-如果应用已安装，执行升级操作
+アプリケーションが既にインストールされている場合は、アップグレード操作を実行してください。
 
 ```bash
 yarn nocobase upgrade
 ```
+

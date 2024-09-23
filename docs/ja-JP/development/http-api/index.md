@@ -1,36 +1,36 @@
-# 概述
+# 概要
 
-NocoBase 的 HTTP API 基于 Resource & Action 设计，是 REST API 的超集，操作不局限于增删改查，在 NocoBase 里，Resource Action 可以任意的扩展。
+NocoBase の HTTP API はリソースとアクションに基づいて設計されており、REST API のスーパーセットです。操作は CRUD にとどまらず、NocoBase ではリソースアクションを自由に拡張できます。
 
-## 资源 Resource
+## リソース
 
-在 NocoBase 里，资源（resource）有两种表达方式：
+NocoBase では、リソースは二つの表現方法があります：
 
 - `<collection>`
 - `<collection>.<association>`
 
 <Alert>
 
-- collection 是所有抽象数据的集合
-- association 为 collection 的关联数据
-- resource 包括 collection 和 collection.association 两类
+- collection はすべての抽象データの集合です。
+- association は collection の関連データです。
+- resource は collection と collection.association の二つの種類を含みます。
 
 </Alert>
 
-### 示例
+### 例
 
-- `posts` 文章
-- `posts.user` 文章用户
-- `posts.tags` 文章标签
+- `posts` 記事
+- `posts.user` 記事ユーザー
+- `posts.tags` 記事タグ
 
-## 操作 Action
+## 操作
 
-以 `:<action>` 的方式表示资源操作
+リソース操作は `:<action>` の形式で表します。
 
 - `<collection>:<action>`
 - `<collection>.<association>:<action>`
 
-内置的全局操作，可用于 collection 或 association
+内蔵のグローバル操作は、collection または association に使用できます。
 
 - `create`
 - `get`
@@ -39,20 +39,20 @@ NocoBase 的 HTTP API 基于 Resource & Action 设计，是 REST API 的超集�
 - `destroy`
 - `move`
 
-内置的关联操作，仅用于 association
+内蔵の関連操作は、association のみに使用されます。
 
 - `set`
 - `add`
 - `remove`
 - `toggle`
 
-### 示例
+### 例
 
-- `posts:create` 创建文章
-- `posts.user:get` 查看文章用户
-- `posts.tags:add` 附加文章标签（将现有的标签与文章关联）
+- `posts:create` 記事を作成
+- `posts.user:get` 記事ユーザーを表示
+- `posts.tags:add` 記事タグを追加（既存のタグを記事に関連付ける）
 
-## 请求 URL
+## リクエスト URL
 
 ```bash
 <GET|POST>   /api/<collection>:<action>
@@ -61,9 +61,9 @@ NocoBase 的 HTTP API 基于 Resource & Action 设计，是 REST API 的超集�
 <GET|POST>   /api/<collection>/<collectionIndex>/<association>:<action>/<associationIndex>
 ```
 
-### 示例
+### 例
 
-posts 资源
+posts リソース
 
 ```bash
 POST  /api/posts:create
@@ -73,7 +73,7 @@ POST  /api/posts:update/1
 POST  /api/posts:destroy/1
 ```
 
-posts.comments 资源
+posts.comments リソース
 
 ```bash
 POST  /api/posts/1/comments:create
@@ -83,7 +83,7 @@ POST  /api/posts/1/comments:update/1
 POST  /api/posts/1/comments:destroy/1
 ```
 
-posts.tags 资源
+posts.tags リソース
 
 ```bash
 POST  /api/posts/1/tags:create
@@ -95,48 +95,48 @@ POST  /api/posts/1/tags:add
 GET   /api/posts/1/tags:remove
 ```
 
-## 资源定位
+## リソースの特定
 
-- collection 资源，通过 `collectionIndex` 定位到待处理的数据，`collectionIndex` 必须唯一
-- association 资源，通过 `collectionIndex` 和 `associationIndex` 联合定位待处理的数据，`associationIndex` 可能不是唯一的，但是 `collectionIndex` 和 `associationIndex` 的联合索引必须唯一
+- collection リソースは `collectionIndex` を使用して処理対象データを特定します。`collectionIndex` は一意でなければなりません。
+- association リソースは `collectionIndex` と `associationIndex` を組み合わせて処理対象データを特定します。`associationIndex` は一意でない可能性がありますが、`collectionIndex` と `associationIndex` の組み合わせは一意でなければなりません。
 
-查看 association 资源详情时，请求的 URL 需要同时提供 `<collectionIndex>` 和 `<associationIndex>`，`<collectionIndex>` 并不多余，因为 `<associationIndex>` 可能不是唯一的。
+association リソースの詳細を確認する際は、リクエスト URL に `<collectionIndex>` と `<associationIndex>` の両方を同時に提供する必要があります。`<collectionIndex>` は不要ではなく、`<associationIndex>` は一意でない可能性があるためです。
 
-例如 `tables.fields` 表示数据表的字段
+例えば `tables.fields` はデータベースのフィールドを表します。
 
 ```bash
 GET   /api/tables/table1/fields/title
 GET   /api/tables/table2/fields/title
 ```
 
-table1 和 table2 都有 title 字段，title 在 table1 里是唯一的，但是其他表也可能有 title 字段
+table1 と table2 の両方に title フィールドがありますが、table1 では title が一意です。しかし、他のテーブルにも title フィールドが存在する可能性があります。
 
-## 请求参数
+## リクエストパラメータ
 
-请求的参数可以放在 Request 的 headers、parameters（query string）、body（GET 请求没有 body） 里。
+リクエストパラメータは、リクエストのヘッダー、パラメータ（クエリ文字列）、ボディ（GET リクエストにはボディがありません）に含めることができます。
 
-几个特殊的 Parameters 请求参数
+いくつかの特別なリクエストパラメータ：
 
-- `filter` 数据过滤，用于查询相关操作里；
-- `filterByTk` 根据 tk 字段字过滤，用于指定详情数据的操作里；
-- `sort` 排序，用于查询相关操作里。
-- `fields` 输出哪些数据，用于查询相关操作里；
-- `appends` 附加关系字段，用于查询相关操作里；
-- `except` 排除哪些字段（不输出），用于查询相关操作里；
-- `whitelist` 字段白名单，用于数据的创建和更新相关操作里；
-- `blacklist` 字段黑名单，用于数据的创建和更新相关操作里；
+- `filter` データフィルタリング、関連操作のクエリに使用；
+- `filterByTk` tk フィールドでフィルタリング、詳細データの操作に使用；
+- `sort` ソート、関連操作のクエリに使用；
+- `fields` 出力するデータを指定、関連操作のクエリに使用；
+- `appends` 関連フィールドを追加、関連操作のクエリに使用；
+- `except` 除外するフィールド（出力しない）、関連操作のクエリに使用；
+- `whitelist` フィールドのホワイトリスト、データ作成と更新の関連操作に使用；
+- `blacklist` フィールドのブラックリスト、データ作成と更新の関連操作に使用；
 
 ### filter
 
-数据过滤
+データフィルタリング
 
 ```bash
-# simple
+# シンプル
 GET /api/posts?filter[status]=publish
-# 推荐使用 json string 的格式，需要 encodeURIComponent 编码
+# json 文字列の形式を推奨、encodeURIComponent でエンコードする必要があります
 GET /api/posts?filter={"status":"published"}
 
-# filter operators
+# フィルターオペレーター
 GET /api/posts?filter[status.$eq]=publish
 GET /api/posts?filter={"status.$eq":"published"}
 
@@ -145,19 +145,19 @@ GET /api/posts?filter={"$and": [{"status.$eq":"published"}, {"title.$includes":"
 # $or
 GET /api/posts?filter={"$or": [{"status.$eq":"pending"}, {"status.$eq":"draft"}]}
 
-# association field
+# 関連フィールド
 GET /api/posts?filter[user.email.$includes]=gmail
 GET /api/posts?filter={"user.email.$includes":"gmail"}
 ```
 
-[点此查看更多关于 filter operators 的内容](http-api/filter-operators)
+[こちらをクリックしてフィルタ演算子についての詳細を確認してください](http-api/filter-operators)
 
 ### filterByTk
 
-根据 tk 字段过滤，默认情况：
+tk フィールドでフィルタリングします。デフォルトでは：
 
-- collection 资源，tk 为数据表的主键；
-- association 资源，tk 为 association 的 targetKey 字段。
+- コレクションリソースの場合、tk はデータベースの主キーです。
+- アソシエーションリソースの場合、tk はアソシエーションの targetKey フィールドです。
 
 ```bash
 GET   /api/posts:get?filterByTk=1&fields=name,title&appends=tags
@@ -165,20 +165,20 @@ GET   /api/posts:get?filterByTk=1&fields=name,title&appends=tags
 
 ### sort
 
-排序。降序时，字段前面加上减号 `-`。
+ソートします。降順の場合、フィールドの前にマイナス記号 `-` を付けます。
 
 ```bash
-# createAt 字段升序
+# createdAt フィールドの昇順
 GET   /api/posts:get?sort=createdAt
-# createAt 字段降序
+# createdAt フィールドの降順
 GET   /api/posts:get?sort=-createdAt
-# 多个字段联合排序，createAt 字段降序、title A-Z 升序
+# 複数フィールドの組み合わせソート、createdAt フィールド降順、title A-Z 昇順
 GET   /api/posts:get?sort=-createdAt,title
 ```
 
 ### fields
 
-输出哪些数据
+出力するデータを指定します。
 
 ```bash
 GET   /api/posts:list?fields=name,title
@@ -197,47 +197,47 @@ Response 200 (application/json)
 
 ### appends
 
-附加关系字段
+関連フィールドを追加します。
 
 ### except
 
-排除哪些字段（不输出），用于查询相关操作里；
+除外するフィールド（出力しない）に関連する操作に使用します。
 
 ### whitelist
 
-白名单
+ホワイトリスト
 
 ```bash
 POST  /api/posts:create?whitelist=title
 
 {
-  "title": "My first post",
-  "date": "2022-05-19"      # date 字段会被过滤掉，不会写入数据库
+  "title": "私の最初の投稿",
+  "date": "2022-05-19"      # date フィールドはフィルタリングされ、データベースに書き込まれません
 }
 ```
 
 ### blacklist
 
-黑名单
+ブラックリスト
 
 ```bash
 POST  /api/posts:create?blacklist=date
 
 {
-  "title": "My first post",
-  "date": "2022-05-19"      # date 字段会被过滤掉，不会写入数据库
+  "title": "私の最初の投稿",
+  "date": "2022-05-19"      # date フィールドはフィルタリングされ、データベースに書き込まれません
 }
 ```
 
-## 请求响应
+## リクエスト応答
 
-响应的格式
+応答の形式
 
 ```ts
 type ResponseResult = {
-  data?: any; // 主体数据
-  meta?: any; // 附加数据
-  errors?: ResponseError[]; // 报错
+  data?: any; // 主体データ
+  meta?: any; // 附加データ
+  errors?: ResponseError[]; // エラー
 };
 
 type ResponseError = {
@@ -246,9 +246,9 @@ type ResponseError = {
 };
 ```
 
-### 示例
+### 例
 
-查看列表
+リストを確認
 
 ```bash
 GET /api/posts:list
@@ -262,7 +262,7 @@ Response 200 (application/json)
     }
   ],
   meta: {
-    count: 1
+    count: 1,
     page: 1,
     pageSize: 1,
     totalPage: 1
@@ -270,7 +270,7 @@ Response 200 (application/json)
 }
 ```
 
-查看详情
+詳細を確認
 
 ```bash
 GET /api/posts:get/1
@@ -284,7 +284,7 @@ Response 200 (application/json)
 }
 ```
 
-报错
+エラー
 
 ```bash
 POST /api/posts:create
@@ -294,8 +294,9 @@ Response 400 (application/json)
 {
   errors: [
     {
-      message: 'name must be required',
+      message: 'name は必須です',
     },
   ],
 }
 ```
+

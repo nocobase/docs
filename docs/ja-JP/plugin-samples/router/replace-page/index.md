@@ -1,20 +1,20 @@
-# 替换页面
+# ページの置き換え
 
-## 场景说明
+## シナリオ説明
 
-需要更改已有页面的布局或者直接替换整个页面的内容的场景。
+既存のページのレイアウトを変更するか、ページ全体の内容を直接置き換える必要があるシナリオです。
 
-## 示例说明
+## サンプル説明
 
-我们需要定制登录和注册页面的布局，目前是只有一个表单，我们需要改为左右布局，左侧是一个图片，右侧是表单。
+ログインおよび登録ページのレイアウトをカスタマイズする必要があります。現在は1つのフォームのみですが、左右にレイアウトを変更し、左側に画像、右側にフォームを配置します。
 
-本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-replace-page) 中查看。
+この文書の完全なサンプルコードは、[plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-replace-page)で確認できます。
 
 ![20240512200917](https://static-docs.nocobase.com/20240512200917.png)
 
-## 初始化插件
+## プラグインの初期化
 
-我们按照 [编写第一个插件](/development/your-fisrt-plugin) 文档说明，如果没有一个项目，可以先创建一个项目，如果已经有了或者是 clone 的源码，则跳过这一步。
+[最初のプラグインを書く](/development/your-fisrt-plugin)の文書に従い、プロジェクトがなければ新しく作成し、すでにある場合やクローンしたソースコードがある場合はこのステップをスキップしてください。
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d sqlite
@@ -23,45 +23,45 @@ yarn install
 yarn nocobase install
 ```
 
-然后初始化一个插件，并添加到系统中：
+次に、プラグインを初期化し、システムに追加します：
 
 ```bash
 yarn pm create @nocobase-sample/plugin-replace-page
 yarn pm enable @nocobase-sample/plugin-replace-page
 ```
 
-然后启动项目即可：
+その後、プロジェクトを起動します：
 
 ```bash
 yarn dev
 ```
 
-然后登录后访问 [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) 就可以看到插件已经安装并启用了。
+ログイン後、[http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/)にアクセスすると、プラグインがインストールされ、有効化されていることを確認できます。
 
-## 实现功能
+## 機能の実装
 
-### 1. 分析需求和源码
+### 1. 要件とソースコードの分析
 
-登录和注册页面是由 [Auth 插件](/handbook/auth/dev/api#route)注册的，其注册了如下路由：
+ログインおよび登録ページは、[Auth プラグイン](/handbook/auth/dev/api#route)によって登録されています。以下のルートが登録されています：
 
-- Auth 布局
-  - name: `auth`
-  - path: `-`
-  - component: `AuthLayout`
+- Auth レイアウト
+  - 名前: `auth`
+  - パス: `-`
+  - コンポーネント: `AuthLayout`
 
-- 登录页
-  - name: `auth.signin`
-  - path: `/signin`
-  - component: `SignInPage`
+- ログインページ
+  - 名前: `auth.signin`
+  - パス: `/signin`
+  - コンポーネント: `SignInPage`
 
-- 注册页
-  - name: `auth.signup`
-  - path: `/signup`
-  - component: `SignUpPage`
+- 登録ページ
+  - 名前: `auth.signup`
+  - パス: `/signup`
+  - コンポーネント: `SignUpPage`
 
-其中 `AuthLayout` 是整个登录和注册页的布局，我们可以通过替换 `AuthLayout` 来实现自定义布局。
+ここで `AuthLayout` がログインおよび登録ページ全体のレイアウトです。`AuthLayout` を置き換えることでカスタムレイアウトを実現できます。
 
-关于如何实现，我们是需要参考原 [AuthLayout](https://github.com/nocobase/nocobase/blob/main/packages/plugins/%40nocobase/plugin-auth/src/client/pages/AuthLayout.tsx) 的源码。
+実装方法については、元の[AuthLayout](https://github.com/nocobase/nocobase/blob/main/packages/plugins/%40nocobase/plugin-auth/src/client/pages/AuthLayout.tsx)のソースコードを参考にしてください。
 
 ```tsx | pure
 export function AuthLayout() {
@@ -95,79 +95,80 @@ export function AuthLayout() {
 }
 ```
 
-源码整体来说还是比较简单的，我们需要实现的是左右布局，左侧是一个图片，右侧是登录和注册的表单，那么可以直接把现有的 `AuthLayout` 拷贝过来放在右侧或者是直接导入原 `AuthLayout`，然后在左侧放一个图片即可。
+ソースコード全体は比較的シンプルです。左右レイアウトを実現するために、左側に画像を配置し、右側にログインおよび登録のフォームを設置します。既存の `AuthLayout` をコピーして右側に配置するか、元の `AuthLayout` を直接インポートし、左側に画像を置くだけで済みます。
 
-### 2. 实现自定义的 AuthLayout 组件
+### 2. カスタム AuthLayout コンポーネントの実装
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-replace-page/src/client/AuthLayout.tsx`，其内容如下：
+`packages/plugins/@nocobase-sample/plugin-replace-page/src/client/AuthLayout.tsx`を新しく作成し、内容は以下の通りです：
 
 ```tsx | pure
 import React from 'react';
 import { Col, Row } from 'antd';
 import { Outlet } from 'react-router-dom';
 import { PoweredBy, css, useSystemSettings } from '@nocobase/client';
-import { AuthenticatorsContextProvider } from '@nocobase/plugin-auth/client'
+import { AuthenticatorsContextProvider } from '@nocobase/plugin-auth/client';
 
-import authImg from './auth-image.jpg'
+import authImg from './auth-image.jpg';
 
 export function CustomAuthLayout() {
   const { data } = useSystemSettings();
 
-  return <Row style={{ height: '100%' }}>
-    <Col xs={{ span: 0 }} md={{ span: 12 }}>
-      <img src={authImg} style={{
-        objectFit: 'cover',
-        objectPosition: 'center',
-        width: '100%',
-        height: '100%',
-        maxWidth: '100%',
-        display: 'block',
-        verticalAlign: 'middle'
-      }} />
-    </Col>
-    <Col xs={{ span: 24 }} md={{ span: 12 }}>
-      <div
-        style={{
-          maxWidth: 320,
-          margin: '0 auto',
-          paddingTop: '20vh',
-        }}
-      >
-        <h1>{data?.data?.title}</h1>
-        <AuthenticatorsContextProvider>
-          <Outlet />
-        </AuthenticatorsContextProvider>
+  return (
+    <Row style={{ height: '100%' }}>
+      <Col xs={{ span: 0 }} md={{ span: 12 }}>
+        <img src={authImg} style={{
+          objectFit: 'cover',
+          objectPosition: 'center',
+          width: '100%',
+          height: '100%',
+          maxWidth: '100%',
+          display: 'block',
+          verticalAlign: 'middle'
+        }} />
+      </Col>
+      <Col xs={{ span: 24 }} md={{ span: 12 }}>
         <div
-          className={css`
-          position: absolute;
-          bottom: 24px;
-          width: 100%;
-          left: 0;
-          text-align: center;
-        `}
+          style={{
+            maxWidth: 320,
+            margin: '0 auto',
+            paddingTop: '20vh',
+          }}
         >
-          <PoweredBy />
+          <h1>{data?.data?.title}</h1>
+          <AuthenticatorsContextProvider>
+            <Outlet />
+          </AuthenticatorsContextProvider>
+          <div
+            className={css`
+              position: absolute;
+              bottom: 24px;
+              width: 100%;
+              left: 0;
+              text-align: center;
+            `}
+          >
+            <PoweredBy />
+          </div>
         </div>
-      </div>
-    </Col>
-  </Row>
+      </Col>
+    </Row>
+  );
 }
 ```
 
-然后将左侧背景图 [auth-image.jpg](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-replace-page/src/client/auth-image.jpg) 放到 `packages/plugins/@nocobase-sample/plugin-replace-page/src/client` 目录下。
+左側の背景画像 [auth-image.jpg](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-replace-page/src/client/auth-image.jpg) を `packages/plugins/@nocobase-sample/plugin-replace-page/src/client` ディレクトリに配置します。
 
-这样就实现了一个左右布局的登录页。
+これで左右レイアウトのログインページが完成しました。
 
+### 3. `CustomAuthLayout` を使って `AuthLayout` を置き換える
 
-### 3. 使用 `CustomAuthLayout` 替换 `AuthLayout`
+次に、`packages/plugins/@nocobase-sample/plugin-replace-page/src/client/index.tsx` に `CustomAuthLayout` をインポートし、使用します。
 
-然后我们需要在 `packages/plugins/@nocobase-sample/plugin-replace-page/src/client/index.tsx` 中引入 `CustomAuthLayout` 并使用。
+`AuthLayout` を置き換える方法は2種類あります。一つは[ルーティングのオーバーライド](/development/client/router#常规页面扩展)、もう一つは[コンポーネントのオーバーライド](/development/client/ui-schema/rendering#登録-components-和-scopes)です。
 
-我们有 2 种方式实现替换 `AuthLayout`，一种方式是通过[路由的覆盖](/development/client/router#常规页面扩展)，另一种方式是通过[组件的覆盖](/development/client/ui-schema/rendering#注册-components-和-scopes)。
+#### ルーティングオーバーライドの方法
 
-#### 路由覆盖的方式
-
-上面已经介绍过了 `AuthLayout` 对应的路由名称是 `auth`，我们可以通过路由的方式进行覆盖：
+`AuthLayout` に対応するルート名は `auth` です。ルートをオーバーライドすることができます：
 
 ```ts
 import { Plugin } from '@nocobase/client';
@@ -177,16 +178,16 @@ export class PluginReplacePageClient extends Plugin {
   async load() {
     this.app.router.add('auth', {
       Component: CustomAuthLayout,
-    })
+    });
   }
 }
 
 export default PluginReplacePageClient;
 ```
 
-其中 `router.add()` 方法的第一个参数是路由的名称，如果重复添加会覆盖原有的路由。
+ここで `router.add()` メソッドの最初の引数はルートの名前です。同じ名前を再度追加すると、既存のルートが上書きされます。
 
-#### 组件覆盖的方式
+#### コンポーネントオーバーライドの方法
 
 ```ts
 import { Plugin } from '@nocobase/client';
@@ -194,47 +195,48 @@ import { CustomAuthLayout } from './AuthLayout';
 
 export class PluginChangePageClient extends Plugin {
   async load() {
-   this.app.addComponents({ AuthLayout: CustomAuthLayout })
+    this.app.addComponents({ AuthLayout: CustomAuthLayout });
   }
 }
 ```
 
-需要注意的是这种方式的覆盖必须是采用 *字符串 Component* 注册的路由，例如[auth 插件的源码](https://github.com/nocobase/nocobase/blob/cff530acac45cc615291c344b4a26c7bc7f410dc/packages/plugins/%40nocobase/plugin-auth/src/client/index.tsx#L47)如下：
+この方法でのオーバーライドは、*文字列コンポーネント*として登録されたルートに対して行う必要があります。例えば[authプラグインのソースコード](https://github.com/nocobase/nocobase/blob/cff530acac45cc615291c344b4a26c7bc7f410dc/packages/plugins/%40nocobase/plugin-auth/src/client/index.tsx#L47)は以下のようになります：
 
 ```ts
 this.app.router.add('auth', {
   Component: 'AuthLayout',
-})
+});
 
-this.app.addComponents({ AuthLayout })
+this.app.addComponents({ AuthLayout });
 ```
 
-如果是 auth 插件的源码是安装如下方式注册的，则无法覆盖：
+もしauthプラグインのソースコードが以下のように登録されている場合は、オーバーライドできません：
 
 ```ts
 this.app.router.add('auth', {
   Component: AuthLayout,
-})
+});
 ```
 
-然后我们退出登录，访问 [http://localhost:13000/signin](http://localhost:13000/signin) 就可以看到登录页的布局已经改变了。
+その後、ログアウトして [http://localhost:13000/signin](http://localhost:13000/signin) にアクセスすると、ログインページのレイアウトが変更されていることを確認できます。
 
 ![20240512200917](https://static-docs.nocobase.com/20240512200917.png)
 
-## 打包和上传到生产环境
+## パッケージ化と本番環境へのアップロード
 
-按照 [构建并打包插件](/development/your-fisrt-plugin#构建并打包插件) 文档说明，我们可以打包插件并上传到生产环境。
+[プラグインのビルドとパッケージ化](/development/your-fisrt-plugin#构建并打包插件)のドキュメントに従って、プラグインをパッケージ化して本番環境にアップロードできます。
 
-如果是 clone 的源码，需要先执行一次全量 build，将插件的依赖也构建好。
+クローンしたソースコードの場合、最初に全体のビルドを一度実行し、プラグインの依存関係もビルドする必要があります。
 
 ```bash
 yarn build
 ```
 
-如果是使用的 `create-nocobase-app` 创建的项目，可以直接执行：
+`create-nocobase-app`で作成したプロジェクトの場合は、そのまま実行できます：
 
 ```bash
 yarn build @nocobase-sample/plugin-replace-page --tar
 ```
 
-这样就可以看到 `storage/tar/@nocobase-sample/plugin-replace-page.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
+これにより、`storage/tar/@nocobase-sample/plugin-replace-page.tar.gz`ファイルが生成されます。その後、[アップロード方法](/welcome/getting-started/plugin)に従ってインストールしてください。
+

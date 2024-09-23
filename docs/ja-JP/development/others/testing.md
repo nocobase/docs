@@ -1,17 +1,17 @@
-# 单元测试
+# 単体テスト
 
-## 介绍
+## 概要
 
-NocoBase 的测试基于 [Jest](https://jestjs.io/) 测试框架。同时，为了方便的编写测试，我们提供了两个工具类，在测试环境模拟正常的数据库和应用的服务端。
+NocoBaseのテストは、[Jest](https://jestjs.io/)テストフレームワークに基づいています。また、テストを簡単に作成するために、正常なデータベースとアプリケーションサーバーを模擬する2つのツールクラスを提供しています。
 
 ### MockDatabase
 
-模拟数据库类继承自 [`Database`](/api/database) 类，大部分内容没有区别，主要在构造函数默认内置了随机表前缀，在每个测试用例初始化数据库时相关数据表都通过前缀名称与其他用例进行隔离，在运行测试用例时互不影响。
+モックデータベースクラスは[`Database`](/api/database)クラスを継承しており、大部分の内容は同じですが、コンストラクタにはランダムなテーブルプレフィックスがデフォルトで内蔵されています。各テストケースの初期化時に、関連するデータテーブルはプレフィックス名を使用して他のケースと隔離され、テストケースの実行時に相互に影響しないようになっています。
 
 ```ts
 import { MockDatabase } from '@nocobase/test';
 
-describe('my suite', () => {
+describe('私のスイート', () => {
   let db;
 
   beforeEach(async () => {
@@ -30,27 +30,27 @@ describe('my suite', () => {
     await db.sync();
   });
 
-  test('my case', async () => {
+  test('私のケース', async () => {
     const postRepository = db.getRepository('posts');
     const p1 = await postRepository.create({
       values: {
-        title: 'hello',
+        title: 'こんにちは',
       },
     });
 
-    expect(p1.get('title')).toEqual('hello');
+    expect(p1.get('title')).toEqual('こんにちは');
   });
 });
 ```
 
 ### MockServer
 
-模拟服务器也继承自 [Application](/api/server/application) 类，除了内置的数据库实例是通过模拟数据库类生成的以外，还提供了比较方便的生成基于 [superagent](https://www.npmjs.com/package/superagent) 请求代理功能，针对从发送请求到获取响应的写法也集成了 `.resource('posts').create()`，比较简化。
+モックサーバーも[Application](/api/server/application)クラスを継承しており、内蔵のデータベースインスタンスはモックデータベースクラスによって生成され、[superagent](https://www.npmjs.com/package/superagent)に基づくリクエストプロキシ機能を簡単に生成できます。リクエストの送信からレスポンスの取得までの書き方も`.resource('posts').create()`を統合しており、より簡素化されています。
 
 ```ts
 import { mockServer } from '@nocobase/test';
 
-describe('my suite', () => {
+describe('私のスイート', () => {
   let app;
   let agent;
   let db;
@@ -73,27 +73,27 @@ describe('my suite', () => {
     await app.load();
   });
 
-  test('my case', async () => {
+  test('私のケース', async () => {
     const { body } = await agent.resource('posts').create({
       values: {
-        title: 'hello',
+        title: 'こんにちは',
       },
     });
 
-    expect(body.data.title).toEqual('hello');
+    expect(body.data.title).toEqual('こんにちは');
   });
 });
 ```
 
-## 示例
+## 例
 
-我们以之前在 [资源与操作](development/guide/resources-actions) 章节的功能为例，来写一个插件的测试：
+以前の[リソースと操作](development/guide/resources-actions)章の機能を例に、プラグインのテストを作成します：
 
 ```ts
 import { mockServer } from '@nocobase/test';
 import Plugin from '../../src/server';
 
-describe('shop actions', () => {
+describe('ショップアクション', () => {
   let app;
   let agent;
   let db;
@@ -112,7 +112,7 @@ describe('shop actions', () => {
     await app.destroy();
   });
 
-  test('product order case', async () => {
+  test('商品注文ケース', async () => {
     const { body: product } = await agent.resource('products').create({
       values: {
         title: 'iPhone 14 Pro',
@@ -144,20 +144,21 @@ describe('shop actions', () => {
 });
 ```
 
-编写完成后，在命令行中允许测试命令：
+作成が完了したら、コマンドラインでテストコマンドを実行します：
 
 ```bash
 yarn test packages/samples/shop-actions
 ```
 
-该测试将验证：
+このテストでは、以下の項目を検証します：
 
-1. 商品可以创建成功；
-2. 订单可以创建成功；
-3. 订单可以发货成功；
+1. 商品が正常に作成できること；
+2. 注文が正常に作成できること；
+3. 注文が正常に発送できること；
 
-当然这只是个最基本的例子，从业务上来说并不完善，但作为示例已经可以说明整个测试的流程。
+もちろん、これは最も基本的な例であり、ビジネス上は不完全ですが、全体のテストプロセスを示すための参考となります。
 
-## 小结
+## 小結
 
-本章涉及的示例代码整合在对应的包 [packages/samples/shop-actions](https://github.com/nocobase/nocobase/tree/main/packages/samples/shop-actions) 中，可以直接在本地运行，查看效果。
+本章に関連するサンプルコードは、対応するパッケージ [packages/samples/shop-actions](https://github.com/nocobase/nocobase/tree/main/packages/samples/shop-actions) に統合されており、ローカルで直接実行して結果を確認できます。
+

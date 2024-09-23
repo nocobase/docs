@@ -1,37 +1,38 @@
-# 快速入门
+# クイックスタート
 
-## 1. 编写 Schema 组件
+## 1. スキーマコンポーネントの作成
 
-通过配置 `x-component` 将已注册的组件渲染出来
+`x-component` を設定して、登録済みのコンポーネントをレンダリングします。
 
-涉及知识点：
+関連情報：
 
-- [UI Schema 协议](/development/client/ui-schema/what-is-ui-schema)
-- [Schema 渲染](/development/client/ui-schema/rendering)
-- [扩展 Schema 组件](/development/client/ui-schema/extending)
+- [UIスキーマプロトコル](/development/client/ui-schema/what-is-ui-schema)
+- [スキーマレンダリング](/development/client/ui-schema/rendering)
+- [スキーマコンポーネントの拡張](/development/client/ui-schema/extending)
 
 <code src="./demos/demo1.tsx"></code>
 
-## 2. 将 Schema 组件添加到页面里
+## 2. スキーマコンポーネントをページに追加する
 
-通过配置 `x-initializer` 将新的组件插入到已存在的 Schema 的相邻位置
+`x-initializer` を設定して、新しいコンポーネントを既存のスキーマの隣接位置に挿入します。
 
-涉及知识点：
+関連情報：
 
-- [Designable 设计器](/development/client/ui-schema/designable)
-- [UI Schema 协议 - x-initializer 参数](/development/client/ui-schema/what-is-ui-schema#x-initializer)
-- [SchemaInitializer 初始化器](/development/client/ui-schema/initializer)
+- [デザイナブルデザイナー](/development/client/ui-schema/designable)
+- [UIスキーマプロトコル - x-initializerパラメータ](/development/client/ui-schema/what-is-ui-schema#x-initializer)
+- [SchemaInitializerイニシャライザー](/development/client/ui-schema/initializer)
 
 <code src="./demos/demo2.tsx"></code>
 
-## 3. 为 Schema 添加设计器工具栏
+## 3. スキーマにデザイナーツールバーを追加する
 
-通过配置 `x-settings` 为 Schema 组件提供参数配置器，设计器工具栏默认开启拖拽功能
+`x-settings` を設定して、スキーマコンポーネントにパラメータ設定機能を提供します。デザイナーツールバーはデフォルトでドラッグアンドドロップ機能が有効になっています。
 
-涉及知识点：
+関連情報：
 
-- [UI Schema 协议 - x-settings 参数](/development/client/ui-schema/what-is-ui-schema#x-settings)
-- [SchemaSettings 设置器](/development/client/ui-schema/settings)
-- [现有 schema 节点的拖拽移动](/development/client/ui-schema/designable#移节点间的移动)
+- [UIスキーマプロトコル - x-settingsパラメータ](/development/client/ui-schema/what-is-ui-schema#x-settings)
+- [SchemaSettingsセッター](/development/client/ui-schema/settings)
+- [既存スキーマノードのドラッグ移動](/development/client/ui-schema/designable#move-between-nodes)
 
 <code src="./demos/demo3.tsx"></code>
+

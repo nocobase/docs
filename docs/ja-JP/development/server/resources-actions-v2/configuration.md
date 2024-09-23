@@ -1,14 +1,14 @@
-# 配置资源和操作
+# リソースと操作の設定
 
-最简单的 resource actions
-带默认参数的 Action
-使用全局 Action
-Action 参数的多来源合并
-内置 Actions 的用法
+最も簡単なリソースアクション  
+デフォルトパラメータ付きのアクション  
+グローバルアクションの使用  
+アクションパラメータの多ソースマージ  
+ビルトインアクションの使い方  
 
-在 NocoBase 中，resource 是为 collection 服务的，已配置的 collections（包括 associations） 会自动转为相应的 resources。
+NocoBaseでは、リソースがコレクションにサービスを提供し、設定されたコレクション（関連を含む）は自動的に対応するリソースに変換されます。
 
-## 自动转换
+## 自動変換
 
 ```ts
 export class PluginSampleToResourcesServer extends Plugin {
@@ -30,9 +30,9 @@ export class PluginSampleToResourcesServer extends Plugin {
 }
 ```
 
-以上示例的 `posts` 和 `posts.comments` 的接口如下：
+上記の例の `posts` と `posts.comments` のインターフェースは以下の通りです：
 
-posts 资源
+posts リソース
 
 ```bash
 POST  /api/posts:create
@@ -42,7 +42,7 @@ POST  /api/posts:update/1
 POST  /api/posts:destroy/1
 ```
 
-posts.comments 资源
+posts.comments リソース
 
 ```bash
 POST  /api/posts/1/comments:create
@@ -52,13 +52,13 @@ POST  /api/posts/1/comments:update/1
 POST  /api/posts/1/comments:destroy/1
 ```
 
-NocoBase 的 HTTP API 是 REST API 的超集，标准的 CRUD API 也支持 RESTful 风格。
+NocoBaseのHTTP APIはREST APIのスーパーセットであり、標準のCRUD APIもRESTfulスタイルをサポートしています。
 
-## 内置的操作
+## ビルトイン操作
 
-上面 collection 转为 resource 之后，之所以可以直接进行 CRUD 操作了，是因为内置了一些常用的操作
+上記のコレクションがリソースに変換された後、直接CRUD操作を行えるのは、いくつかの一般的な操作がビルトインされているためです。
 
-内置的全局操作，可用于 collection 或 association
+ビルトインのグローバル操作は、コレクションまたは関連に使用できます。
 
 - create
 - get
@@ -67,18 +67,18 @@ NocoBase 的 HTTP API 是 REST API 的超集，标准的 CRUD API 也支持 REST
 - destroy
 - move
 
-内置的关联操作，仅用于 association
+ビルトインの関連操作は、関連にのみ使用されます。
 
 - set
 - add
 - remove
 - toggle
 
-内置 Actions 的用法参考 API 文档
+ビルトインアクションの使い方については、APIドキュメントを参照してください。
 
-## 自定义操作
+## カスタム操作
 
-### 全局操作
+### グローバル操作
 
 ```ts
 export class PluginSampleResourcerServer extends Plugin {
@@ -91,7 +91,7 @@ export class PluginSampleResourcerServer extends Plugin {
 }
 ```
 
-### 某资源的操作
+### 特定リソースの操作
 
 ```ts
 export class PluginSampleResourcerServer extends Plugin {
@@ -103,9 +103,9 @@ export class PluginSampleResourcerServer extends Plugin {
 }
 ```
 
-## 自定义资源
+## カスタムリソース
 
-如果有特殊需求，也可以显式的定义资源及相关操作
+特別な要件がある場合は、リソースと関連操作を明示的に定義することもできます。
 
 ```ts
 app.resourcer.define({
@@ -119,3 +119,4 @@ app.resourcer.define({
   },
 });
 ```
+

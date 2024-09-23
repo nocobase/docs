@@ -2,6 +2,7 @@ export default [
   {
     title: 'Welcome',
     'title.zh-CN': '欢迎',
+    'title.ja-JP': 'ようこそ',
     type: 'group',
     children: [
       '/welcome/introduction',
@@ -14,11 +15,13 @@ export default [
   {
     title: 'Getting started',
     'title.zh-CN': '快速开始',
+    'title.ja-JP': '始めに',
     type: 'group',
     children: [
       {
         title: 'Installation',
         'title.zh-CN': '安装',
+        'title.ja-JP': 'インストール',
         children: [
           '/welcome/getting-started/installation',
           '/welcome/getting-started/installation/docker-compose',
@@ -30,6 +33,7 @@ export default [
       {
         title: 'Upgrading',
         'title.zh-CN': '升级',
+        'title.ja-JP': 'アップグレード',
         children: [
           '/welcome/getting-started/upgrading',
           '/welcome/getting-started/upgrading/docker-compose',
@@ -40,6 +44,7 @@ export default [
       {
         title: 'Deployment',
         'title.zh-CN': '部署',
+        'title.ja-JP': 'デプロイ',
         children: [
           '/welcome/getting-started/deployment',
           '/welcome/getting-started/deployment/docker-compose',
@@ -54,16 +59,19 @@ export default [
   // {
   //   title: 'Releases',
   //   'title.zh-CN': '产品发布',
+  //   'title.ja-JP': 'リリース',
   //   type: 'group',
   //   children: [
   //     {
   //       title: 'Roadmap',
   //       'title.zh-CN': '路线图',
+  //       'title.ja-JP': 'ロードマップ',
   //       link: '/welcome/release/roadmap',
   //     },
   //     {
   //       title: 'Release notes',
   //       'title.zh-CN': '更新日志',
+  //       'title.ja-JP': 'リリースノート',
   //       children: [
   //         '/welcome/changelog/20240607',
   //         '/welcome/changelog/20240519',
@@ -102,12 +110,12 @@ export default [
   {
     title: 'Community',
     'title.zh-CN': '社区',
+    'title.ja-JP': 'コミュニティ',
     type: 'group',
     children: [
       '/welcome/community/contributing',
       // '/welcome/community/faq',
       '/welcome/community/translations',
-
       '/welcome/community/thanks',
     ],
   },

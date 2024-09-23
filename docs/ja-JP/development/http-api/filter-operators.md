@@ -1,6 +1,6 @@
-# Filter operators
+# フィルター演算子
 
-## 通用
+## 一般
 
 - $eq
 - $ne
@@ -21,7 +21,7 @@
 - $empty
 - $notEmpty
 
-## array
+## 配列
 
 - $match
 - $notMatch
@@ -30,17 +30,17 @@
 - $arrayEmpty
 - $arrayNotEmpty
 
-## association
+## 関連
 
 - $exists
 - $notExists
 
-## boolean
+## ブール
 
 - $isTruly
 - $isFalsy
 
-## date
+## 日付
 
 - $dateOn
 - $dateNotOn
@@ -49,11 +49,12 @@
 - $dateAfter
 - $dateNotAfter
 
-## string
+## 文字列
 
 - $includes
 - $notIncludes
 - $startsWith
 - $notStartsWith
-- $endWith
-- $notEndWith
+- $endsWith
+- $notEndsWith
+

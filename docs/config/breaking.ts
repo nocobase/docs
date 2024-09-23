@@ -2,6 +2,7 @@ export default [
   {
     title: 'Breaking changes',
     'title.zh-CN': '不兼容变更',
+    'title.ja-JP': '互換性のない変更',
     type: 'group',
     children: [
       '/breaking-changes/v0-19-0-alpha-1',

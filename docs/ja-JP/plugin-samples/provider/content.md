@@ -1,18 +1,18 @@
-# 全局内容展示
+# グローバルコンテンツの表示
 
-我们可以通过 `Provider` 来进行全局内容展示。
+`Provider` を使用してグローバルコンテンツを表示できます。
 
-## 示例说明
+## 例の説明
 
-我们要实现一个公告功能，如果后端返回了公告信息，那么我们就在页面的顶部展示这个公告。
+お知らせ機能を実装します。バックエンドからお知らせ情報が返された場合、ページの上部にそのお知らせを表示します。
 
-本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-provider-content) 中查看。
+この文書の完全な例のコードは [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-provider-content) で確認できます。
 
 ![img_v3_02av_cd3c7f37-0c5b-4c9c-b10e-e413af409ccg](https://static-docs.nocobase.com/img_v3_02av_cd3c7f37-0c5b-4c9c-b10e-e413af409ccg.jpg)
 
-## 初始化插件
+## プラグインの初期化
 
-我们按照 [编写第一个插件](/development/your-fisrt-plugin) 文档说明，如果没有一个项目，可以先创建一个项目，如果已经有了或者是 clone 的源码，则跳过这一步。
+[最初のプラグインを書く](/development/your-fisrt-plugin) の文書に従い、プロジェクトがない場合は新しいプロジェクトを作成します。すでにプロジェクトがある場合やソースコードをクローンしている場合は、このステップをスキップしてください。
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d sqlite
@@ -21,28 +21,28 @@ yarn install
 yarn nocobase install
 ```
 
-然后初始化一个插件，并添加到系统中：
+次に、プラグインを初期化し、システムに追加します：
 
 ```bash
 yarn pm create @nocobase-sample/plugin-provider-content
 yarn pm enable @nocobase-sample/plugin-provider-content
 ```
 
-然后启动项目即可：
+その後、プロジェクトを起動します：
 
 ```bash
 yarn dev
 ```
 
-然后登录后访问 [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) 就可以看到插件已经安装并启用了。
+ログイン後、[http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) にアクセスすると、プラグインがインストールされ、有効になっていることを確認できます。
 
-## 功能实现
+## 機能の実装
 
-### 1. 新增 `Provider` 组件
+### 1. `Provider` コンポーネントの追加
 
-Provider 组件就是普通的 React 组件，但是需要注意，要将 `children` 渲染出来。
+`Provider` コンポーネントは通常の React コンポーネントですが、`children` をレンダリングすることに注意が必要です。
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-provider-content/src/client/TopAnnouncement.tsx`
+`packages/plugins/@nocobase-sample/plugin-provider-content/src/client/TopAnnouncement.tsx` を新規作成します。
 
 ```tsx | pure
 import React, { FC, ReactNode } from 'react';
@@ -51,7 +51,7 @@ import { useRequest } from '@nocobase/client';
 
 const mockRequest = () => new Promise((resolve) => {
   Math.random() > 0.5 ?
-    resolve({ data: { message: 'This is an important message.', type: 'info' } }) :
+    resolve({ data: { message: 'これは重要なお知らせです。', type: 'info' } }) :
     resolve({ data: undefined })
 })
 
@@ -81,13 +81,13 @@ export const TopAnnouncement: FC<{ children: ReactNode }> = ({ children }) => {
 };
 ```
 
-关于公告的配置和数据，可以参考 [插件表单配置页面](/plugin-samples/plugin-settings/form) 示例说明，这里只使用 Mock 数据。
+お知らせの設定とデータについては [プラグインフォーム設定ページ](/plugin-samples/plugin-settings/form) の例を参考にしてください。ここではモックデータのみを使用します。
 
-需要注意 `children` 别忘记渲染出来。
+`children` をレンダリングすることをお忘れなく。
 
-### 2. 注册到系统中
+### 2. システムへの登録
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-provider-content/src/index.ts` 文件，将 `TopAnnouncement` 组件注册到系统中。
+`packages/plugins/@nocobase-sample/plugin-provider-content/src/index.ts` ファイルを修正し、`TopAnnouncement` コンポーネントをシステムに登録します。
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
@@ -102,24 +102,25 @@ export class PluginProviderContentClient extends Plugin {
 export default PluginProviderContentClient;
 ```
 
-然后我们访问 [http://localhost:13000](http://localhost:13000)，就能看到页面顶部展示了公告了。
+その後、[http://localhost:13000](http://localhost:13000) にアクセスすると、ページの上部にお知らせが表示されます。
 
 ![img_v3_02av_cd3c7f37-0c5b-4c9c-b10e-e413af409ccg](https://static-docs.nocobase.com/img_v3_02av_cd3c7f37-0c5b-4c9c-b10e-e413af409ccg.jpg)
 
-## 打包和上传到生产环境
+## パッケージ化と本番環境へのアップロード
 
-按照 [构建并打包插件](/development/your-fisrt-plugin#构建并打包插件) 文档说明，我们可以打包插件并上传到生产环境。
+[プラグインのビルドとパッケージ化](/development/your-fisrt-plugin#プラグインのビルドとパッケージ化) の文書に従って、プラグインをパッケージ化し、本番環境にアップロードします。
 
-如果是 clone 的源码，需要先执行一次全量 build，将插件的依赖也构建好。
+クローンしたソースコードの場合は、最初にフルビルドを実行し、プラグインの依存関係もビルドします。
 
 ```bash
 yarn build
 ```
 
-如果是使用的 `create-nocobase-app` 创建的项目，可以直接执行：
+`create-nocobase-app` を使用して作成したプロジェクトの場合、次のコマンドを直接実行できます：
 
 ```bash
 yarn build @nocobase-sample/plugin-provider-content --tar
 ```
 
-这样就可以看到 `storage/tar/@nocobase-sample/plugin-provider-content.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
+これにより、`storage/tar/@nocobase-sample/plugin-provider-content.tar.gz` ファイルが生成されます。その後、[アップロードの方法](/welcome/getting-started/plugin)に従ってインストールしてください。
+

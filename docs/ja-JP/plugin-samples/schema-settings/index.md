@@ -1,13 +1,14 @@
-# SchemaSettings
+# スキーマ設定
 
-[SchemaSettings](/development/client/ui-schema/settings) 通过修改 Schema 动态配置区块、字段、操作的属性。
+[スキーマ設定](/development/client/ui-schema/settings) を使用して、スキーマの動的なブロック、フィールド、操作の属性を変更します。
 
-根据需求不同可能有以下扩展场景：
+ニーズに応じて、以下のような拡張シナリオがあります：
 
-- 向已有的 SchemaSettings 中添加子项
-- 创建新的 SchemaSettings
+- 既存のスキーマ設定に子項目を追加する
+- 新しいスキーマ設定を作成する
 
-根据以上场景，我们提供了如下示例：
+これらのシナリオに基づいて、以下の例を提供します：
 
-- [创建新的 SchemaSettings](/plugin-samples/schema-settings/new)
-- [添加子项到已有的 SchemaSettings](/plugin-samples/schema-settings/add-item)
+- [新しいスキーマ設定を作成する](/plugin-samples/schema-settings/new)
+- [既存のスキーマ設定に子項目を追加する](/plugin-samples/schema-settings/add-item)
+

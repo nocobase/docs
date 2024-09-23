@@ -1,38 +1,38 @@
 # v0.11：2023-07-08
 
-## 新特性
+## 新機能
 
-- 全新的客户端 Application、Plugin 和 Router
-- antd 升级到 v5
-- 新插件
-  - 数据可视化
-  - API 密钥
-  - Google 地图
+- 完全に新しいクライアントアプリケーション、プラグイン、ルーター
+- antdをv5にアップグレード
+- 新しいプラグイン
+  - データビジュアライゼーション
+  - APIキー
+  - Googleマップ
 
-## 不兼容的变化
+## 非互換の変更
 
-### 全新的客户端 Application、Plugin 和 Router
+### 完全に新しいクライアントアプリケーション、プラグイン、ルーター
 
-#### 插件的变化
+#### プラグインの変更
 
-以前必须传递一个组件，并且组件需要透传 `props.children`，例如：
+以前はコンポーネントを渡す必要があり、そのコンポーネントは`props.children`を透過的に渡す必要がありました。例えば：
 
 ```tsx | pure
 const HelloProvider = (props) => {
-  // do something logic
+  // 何らかのロジックを実行
   return <div>{props.children}</div>;
 };
 
 export default HelloProvider;
 ```
 
-现在需要改为插件的方式，例如：
+現在はプラグイン形式に変更する必要があります。例えば：
 
 ```diff | pure
 +import { Plugin } from '@nocobase/client'
 
 const HelloProvider = (props) => {
-  // do something logic
+  // 何らかのロジックを実行
   return <div>
     {props.children}
   </div>;
@@ -48,22 +48,22 @@ const HelloProvider = (props) => {
 + export default HelloPlugin;
 ```
 
-插件的功能很强大，可以在 `load` 阶段做很多事情：
+プラグインの機能は非常に強力で、`load`フェーズで多くのことが可能です：
 
-- 修改路由
-- 增加 Components
-- 增加 Providers
-- 增加 Scopes
-- 加载其他插件
+- ルートの変更
+- コンポーネントの追加
+- プロバイダーの追加
+- スコープの追加
+- 他のプラグインの読み込み
 
-#### 路由的变化
+#### ルーティングの変更
 
-如果之前使用了 `RouteSwitchContext` 进行路由修改，现在需要通过插件替换：
+以前`RouteSwitchContext`を使用してルーティングを変更していた場合、今はプラグインを通じて置き換える必要があります：
 
 ```tsx | pure
 import { RouteSwitchContext } from '@nocobase/client';
 
-const HelloProvider = () => {
+const HelloProvider = (props) => {
   const { routes, ...others } = useContext(RouteSwitchContext);
   routes[1].routes.unshift({
     path: '/hello',
@@ -80,7 +80,7 @@ const HelloProvider = () => {
 };
 ```
 
-需要改为：
+現在はプラグイン形式に変更する必要があります。例えば：
 
 ```diff | pure
 - import { RouteSwitchContext } from '@nocobase/client';
@@ -112,9 +112,10 @@ const HelloProvider = (props) => {
 + export default HelloPlugin;
 ```
 
-更多文档和示例见 [packages/core/client/src/application/index.md](https://github.com/nocobase/nocobase/blob/main/packages/core/client/src/application/index.md)
+さらに詳しいドキュメントやサンプルについては、[packages/core/client/src/application/index.md](https://github.com/nocobase/nocobase/blob/main/packages/core/client/src/application/index.md)を参照してください。
 
-### antd 升级到 v5
+### antdのv5へのアップグレード
 
-- antd 相关详情查看官网 [从 v4 到 v5](https://ant.design/docs/react/migration-v5-cn)
-- `@formily/antd` 替换为 `@formily/antd-v5`
+- antdに関する詳細は公式サイトの[バージョン4からバージョン5へ](https://ant.design/docs/react/migration-v5-cn)をご確認ください。
+- `@formily/antd`を`@formily/antd-v5`に置き換えてください。
+

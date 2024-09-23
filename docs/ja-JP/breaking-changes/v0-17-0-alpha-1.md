@@ -1,53 +1,53 @@
 # 0.17.0-alpha.1
 
 :::warning
-本篇文章只介绍与插件开发相关的不兼容变化
+本記事では、プラグイン開発に関連する非互換の変更点のみを紹介します。
 :::
 
-## SchemaInitializer 的变化
+## SchemaInitializer の変更点
 
-- 新增 `SchemaInitializerManager`，用于注册 `SchemaInitializer`
-- 新增 `useSchemaInitializerRender()` 代替原来的 `useSchemaInitializer()` 的 `render()`
-- 新增 `useSchemaInitializerItem()`，用于获取当前初始化项的上下文
-- 新增 `SchemaInitializerItemGroup` 组件，用作 `type: 'itemGroup'` 的默认组件
-- 新增 `SchemaInitializerSubMenu` 组件，用作 `type: 'subMenu'` 的默认组件
-- 新增 `SchemaInitializerDivider` 组件，用作 `type: 'divider'` 的默认组件
-- 新增 `SchemaInitializerChildren` 组件，用于自定义渲染多个列表项
-- 新增 `SchemaInitializerChild` 组件，用于自定义渲染单个列表项
-- 更改 `SchemaInitializerContext` 职责变更，用于存放当前初始化器的上下文
-- 更改 `useSchemaInitializer()` 职责变更，用于获取当前初始化器的上下文
-- 更改 `function SchemaInitializer` 变更为 `class SchemaInitializer`，用于定义初始化器
-- 更改 `SchemaInitializer` 参数变更
-  - 新增 `name` 必填参数，用于 `x-initializer` 的值。
-  - 新增 `Component` 参数，用于定制化渲染的按钮。默认为 `SchemaInitializerButton`。
-  - 新增 `componentProps`、`style` 用于配置 `Component` 的属性和样式。
-  - 新增 `ItemsComponent` 参数，用于定制化渲染的列表。默认为 `SchemaInitializerItems`。
-  - 新增 `itemsComponentProps`、`itemsComponentStyle` 用于配置 `ItemsComponent` 的属性和样式。
-  - 新增 `popover` 参数，用于配置是否显示 `popover` 效果。
-  - 新增 `useInsert` 参数，用于当 `insert` 函数需要使用 hooks 时。
-  - 更改 将 `dropdown` 参数改为了 `popoverProps`，使用 `Popover` 代替了 `Dropdown`。
-- 更改 `SchemaInitializer` 的 `items` 参数变更
-  - 新增 `useChildren` 函数，用于动态控制子项。
-  - 新增 `componentProps` 函数，用于组件自身的属性。
-  - 新增 `useComponentProps` 函数，用于动态处理组件的 props
-  - 更改 将 `key` 参数改为了 `name`，用于列表项的唯一标识。
-  - 更改 将 `visible` 参数改为了 `useVisible` 函数，用于动态控制是否显示。
-  - 更改 将 `component` 参数改为了 `Component`，用于列表项的渲染。
-- 更改 `SchemaInitializer.Button` 变更为 `SchemaInitializerButton`，是 SchemaInitializer 的 Component 参数的默认值；
-- 更改 `SchemaInitializer.Item` 变更为 `SchemaInitializerItem`，参数不变；
-- 更改 `SchemaInitializer.ActionModal` 变更为 `SchemaInitializerActionModal`，参数不变；
-- 更改 `SchemaInitializer.SwitchItem` 变更为 `SchemaInitializer.Switch`，参数不变。
-- 删除 `SchemaInitializerProvider`，用 `SchemaInitializerManager` 代替
-- 删除 `SchemaInitializer.itemWrap`，不需要再包裹 `item` 组件了；
+- 新たに `SchemaInitializerManager` が追加され、`SchemaInitializer` を登録するために使用されます。
+- 新たに `useSchemaInitializerRender()` が追加され、従来の `useSchemaInitializer()` の `render()` を置き換えます。
+- 新たに `useSchemaInitializerItem()` が追加され、現在の初期化アイテムのコンテキストを取得するために使用されます。
+- 新たに `SchemaInitializerItemGroup` コンポーネントが追加され、`type: 'itemGroup'` のデフォルトコンポーネントとして使用されます。
+- 新たに `SchemaInitializerSubMenu` コンポーネントが追加され、`type: 'subMenu'` のデフォルトコンポーネントとして使用されます。
+- 新たに `SchemaInitializerDivider` コンポーネントが追加され、`type: 'divider'` のデフォルトコンポーネントとして使用されます。
+- 新たに `SchemaInitializerChildren` コンポーネントが追加され、複数のリスト項目をカスタムレンダリングするために使用されます。
+- 新たに `SchemaInitializerChild` コンポーネントが追加され、単一のリスト項目をカスタムレンダリングするために使用されます。
+- `SchemaInitializerContext` の役割が変更され、現在の初期化器のコンテキストを保存するために使用されます。
+- `useSchemaInitializer()` の役割が変更され、現在の初期化器のコンテキストを取得するために使用されます。
+- `function SchemaInitializer` が `class SchemaInitializer` に変更され、初期化器を定義するために使用されます。
+- `SchemaInitializer` のパラメータが変更されました。
+  - 新たに必須パラメータ `name` が追加され、`x-initializer` の値として使用されます。
+  - 新たに `Component` パラメータが追加され、カスタムレンダリングされるボタン用です。デフォルトは `SchemaInitializerButton` です。
+  - 新たに `componentProps`、`style` が追加され、`Component` の属性とスタイルを設定するために使用されます。
+  - 新たに `ItemsComponent` パラメータが追加され、カスタムレンダリングされるリスト用です。デフォルトは `SchemaInitializerItems` です。
+  - 新たに `itemsComponentProps`、`itemsComponentStyle` が追加され、`ItemsComponent` の属性とスタイルを設定するために使用されます。
+  - 新たに `popover` パラメータが追加され、`popover` 効果の表示を設定するために使用されます。
+  - 新たに `useInsert` パラメータが追加され、`insert` 関数がフックを使用する必要がある場合に使用されます。
+  - `dropdown` パラメータが `popoverProps` に変更され、`Popover` が `Dropdown` の代わりに使用されます。
+- `SchemaInitializer` の `items` パラメータが変更されました。
+  - 新たに `useChildren` 関数が追加され、子項目を動的に制御するために使用されます。
+  - 新たに `componentProps` 関数が追加され、コンポーネント自身の属性として使用されます。
+  - 新たに `useComponentProps` 関数が追加され、コンポーネントの props を動的に処理するために使用されます。
+  - `key` パラメータが `name` に変更され、リスト項目の一意の識別子として使用されます。
+  - `visible` パラメータが `useVisible` 関数に変更され、表示の動的制御に使用されます。
+  - `component` パラメータが `Component` に変更され、リスト項目のレンダリングに使用されます。
+- `SchemaInitializer.Button` が `SchemaInitializerButton` に変更され、`SchemaInitializer` のコンポーネントパラメータのデフォルト値となります。
+- `SchemaInitializer.Item` が `SchemaInitializerItem` に変更され、パラメータは変わりません。
+- `SchemaInitializer.ActionModal` が `SchemaInitializerActionModal` に変更され、パラメータは変わりません。
+- `SchemaInitializer.SwitchItem` が `SchemaInitializer.Switch` に変更され、パラメータは変わりません。
+- `SchemaInitializerProvider` が削除され、`SchemaInitializerManager` に置き換えられました。
+- `SchemaInitializer.itemWrap` が削除され、`item` コンポーネントをラップする必要がなくなりました。
 
-相关文档参考
+関連文書の参照
 
-- [插件开发 / Schema 初始化器](/development/client/ui-schema/initializer)
-- [API 文档 / SchemaInitializer](https://client.docs-cn.nocobase.com/core/ui-schema/schema-component)
+- [プラグイン開発 / Schema 初期化器](/development/client/ui-schema/initializer)
+- [API 文書 / SchemaInitializer](https://client.docs-cn.nocobase.com/core/ui-schema/schema-component)
 
-### 向已有的初始化器里添加项
+### 既存の初期化器に項目を追加する
 
-以前是通过 `SchemaInitializerContext` 获取到全部的 `Initializers` 然后进行增删改。例如下面代码是为了往 `BlockInitializers` 中的 `media` 下添加 `Hello`：
+以前は `SchemaInitializerContext` を通じてすべての `Initializers` を取得し、追加、削除、変更を行っていました。以下のコードは `BlockInitializers` の `media` 内に `Hello` を追加するためのものです。
 
 ```tsx | pure
 const items = useContext<any>(SchemaInitializerContext);
@@ -64,13 +64,13 @@ if (!children.find((item) => item.key === 'hello')) {
   children.push({
     key: 'hello',
     type: 'item',
-    title: '{{t("Hello block")}}',
+    title: '{{t("こんにちはブロック")}}',
     component: HelloBlockInitializer,
   });
 }
 ```
 
-新的方式在插件的 load 方法里，使用 schemaInitializerManager.addItem() 方法添加项
+新しい方法では、プラグインの load メソッド内で `schemaInitializerManager.addItem()` メソッドを使用して項目を追加します。
 
 ```tsx | pure
 class MyPlugin extends Plugin {
@@ -79,7 +79,7 @@ class MyPlugin extends Plugin {
       'BlockInitializers',
       'otherBlocks.hello',
       {
-        title: '{{t("Hello block")}}',
+        title: '{{t("こんにちはブロック")}}',
         Component: HelloBlockInitializer,
       },
     );
@@ -87,14 +87,14 @@ class MyPlugin extends Plugin {
 }
 ```
 
-详细文档参考
+詳細なドキュメントは以下を参照してください。
 
-- [插件开发 / Schema 初始化器 / 向已有的初始化器里添加项](/development/client/ui-schema/initializer)
-- [API 文档 / SchemaInitializer / 内置组件和类型](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer)
+- [プラグイン開発 / スキーマ初期化子 / 既存の初期化子に項目を追加する](/development/client/ui-schema/initializer)
+- [API ドキュメント / SchemaInitializer / 組み込みコンポーネントとタイプ](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer)
 
-### 将新的初始化器添加到应用里
+### 新しい初期化子をアプリに追加する
 
-以前通过 `SchemaInitializerProvider` 添加，例如：
+以前は `SchemaInitializerProvider` を通じて追加していました。例えば：
 
 ```tsx | pure
 <SchemaInitializerProvider
@@ -103,7 +103,7 @@ class MyPlugin extends Plugin {
 ></SchemaInitializerProvider>
 ```
 
-现在在插件的 load 里添加，例如：
+現在は、プラグインの load メソッドの中で追加します。例えば：
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
@@ -116,23 +116,23 @@ class MyPlugin extends Plugin {
 }
 ```
 
-详细文档参考
+詳細なドキュメントは以下を参照してください。
 
-- [插件开发 / Schema 初始化器 / 添加新的初始化器](/development/client/ui-schema/initializer)
-- [API 文档 / SchemaInitializerManager / schemaInitializerManager.addItem()](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer-manager)
+- [プラグイン開発 / スキーマ初期化子 / 新しい初期化子を追加する](/development/client/ui-schema/initializer)
+- [API ドキュメント / SchemaInitializerManager / schemaInitializerManager.addItem()](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer-manager)
 
-### 添加新的初始化器
+### 新しい初期化子を追加する
 
-以前 `SchemaInitializer` 支持 JSON 对象和组件的写法，现在只有 `new SchemaInitializer()`。
+以前は `SchemaInitializer` が JSON オブジェクトとコンポーネントの書き方をサポートしていましたが、現在は `new SchemaInitializer()` のみです。
 
-示例一：以前 JSON 的写法，修改为 `new SchemaInitializer()` 方式
+例1：以前の JSON の書き方を `new SchemaInitializer()` 方式に変更
 
 ```diff
 - export const BlockInitializers = {
 + export const blockInitializers = new SchemaInitializer({
 + name: 'BlockInitializers',
   'data-testid': 'add-block-button-in-page',
-  title: '{{t("Add block")}}',
+  title: '{{t("ブロックを追加")}}',
   icon: 'PlusOutlined',
   wrap: gridRowColWrap,
    items: [
@@ -140,20 +140,20 @@ class MyPlugin extends Plugin {
 -     key: 'dataBlocks',
 +     name: 'data-blocks',
       type: 'itemGroup',
-      title: '{{t("Data blocks")}}',
+      title: '{{t("データブロック")}}',
       children: [
         {
 -         key: 'table',
 +         name: 'table',
--         type: 'item', // 当有 Component 参数时，就不需要此了
-          title: '{{t("Table")}}',
+-         type: 'item', // Component パラメータがある場合、これは必要ありません
+          title: '{{t("テーブル")}}',
 -         component: TableBlockInitializer,
 +         Component: TableBlockInitializer,
         },
          {
           key: 'form',
           type: 'item',
-          title: '{{t("Form")}}',
+          title: '{{t("フォーム")}}',
           component: FormBlockInitializer,
         }
       ],
@@ -162,9 +162,9 @@ class MyPlugin extends Plugin {
 });
 ```
 
-示例二：组件的写法修改为 `new SchemaInitializer()` 方式
+例2：コンポーネントの書き方を `new SchemaInitializer()` 方式に変更
 
-原来是组件定义的方式：
+元々はコンポーネント定義の方式：
 
 ```tsx | pure
 export const BulkEditFormItemInitializers = (props: any) => {
@@ -182,7 +182,7 @@ export const BulkEditFormItemInitializers = (props: any) => {
       items={[
         {
           type: 'itemGroup',
-          title: t('Display fields'),
+          title: t('表示フィールド'),
           children: useCustomBulkEditFormItemInitializerFields(),
         },
         {
@@ -190,19 +190,19 @@ export const BulkEditFormItemInitializers = (props: any) => {
         },
         {
           type: 'item',
-          title: t('Add text'),
+          title: t('テキストを追加'),
           component: BlockItemInitializer,
         },
       ]}
       insertPosition={insertPosition}
       component={component}
-      title={component ? null : t('Configure fields')}
+      title={component ? null : t('フィールドを設定')}
     />
   );
 };
 ```
 
-现在需要改为 `new SchemaInitializer()` 的方式：
+現在は `new SchemaInitializer()` 方式に変更する必要があります。
 
 ```tsx | pure
 const bulkEditFormItemInitializers = new SchemaInitializer({
@@ -210,34 +210,34 @@ const bulkEditFormItemInitializers = new SchemaInitializer({
   'data-testid': 'configure-fields-button-of-bulk-edit-form-item',
   wrap: gridRowColWrap,
   icon: 'SettingOutlined',
-  // 原 insertPosition 和 component 是透传的，这里不用管，也是透传的
+  // 元の insertPosition と component は透過されるため、ここでは気にしない
   items: [
     {
       type: 'itemGroup',
-      title: t('Display fields'),
-      name: 'displayFields', // 记得加上 name
-      useChildren: useCustomBulkEditFormItemInitializerFields, // 使用到了 useChildren
+      title: t('表示フィールド'),
+      name: 'displayFields', // name を追加
+      useChildren: useCustomBulkEditFormItemInitializerFields, // useChildren を使用
     },
     {
       type: 'divider',
     },
     {
-      title: t('Add text'),
+      title: t('テキストを追加'),
       name: 'addText',
-      Component: BlockItemInitializer, // component 替换为 Component
+      Component: BlockItemInitializer, // component を Component に置き換え
     },
   ],
 });
 ```
 
-详细文档参考
+詳細なドキュメントは以下を参照してください。
 
-- [插件开发 / Schema 初始化器 / 添加新的初始化器](/development/client/ui-schema/initializer)
-- [API 文档 / SchemaInitializer / new SchemaInitializer(options)](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer)
+- [プラグイン開発 / スキーマ初期化器 / 新しい初期化子を追加する](/development/client/ui-schema/initializer)
+- [API ドキュメント / SchemaInitializer / new SchemaInitializer(options)](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer)
 
-### Item 的定义与实现
+### Item の定義と実装
 
-以前配置 Item 时，将组件的 props 都放在了 item 里，现在推荐使用 `componentProps` 和 `useComponentProps`。
+以前は Item を設定する際、コンポーネントの props をすべて item に入れていましたが、現在は `componentProps` と `useComponentProps` の使用が推奨されています。
 
 ```diff
 {
@@ -246,7 +246,7 @@ const bulkEditFormItemInitializers = new SchemaInitializer({
   {
     name: 'xxx',
     Component: XXXSchemaInitializerItem,
-    title: 'Title 1',
+    title: 'タイトル 1',
     schema: {},
 -   foo: 'bar',
 +   useComponentProps: () => {
@@ -257,10 +257,10 @@ const bulkEditFormItemInitializers = new SchemaInitializer({
 }
 ```
 
-在 Item 组件里，以前 Item 配置是直接 props 传递，现在通过 `useSchemaInitializerItem()` 获取，相关 hook 包括：
+Item コンポーネント内では、以前は Item 設定が直接 props に渡されましたが、現在は `useSchemaInitializerItem()` を使用して取得します。関連する hook には以下が含まれます：
 
-- `useSchemaInitializer()` 获取当前初始化器的上下文
-- `useSchemaInitializerItem()` 获取当前项的上下文
+- `useSchemaInitializer()` 現在の初期化器のコンテキストを取得
+- `useSchemaInitializerItem()` 現在の項目のコンテキストを取得
 
 ```diff
 const XXXSchemaInitializerItem = (props) => {
@@ -272,50 +272,50 @@ const XXXSchemaInitializerItem = (props) => {
 }
 ```
 
-详细文档参考
+詳細なドキュメントを参照してください。
 
-- [API 文档 / SchemaInitializer / 内置组件和类型](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer)
+- [API ドキュメント / SchemaInitializer / 組み込みコンポーネントとタイプ](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer)
 
-## SchemaSettings 的变化
+## SchemaSettings の変更点
 
-- 新增 `SchemaSettingsManager` 用于注册 `SchemaSettings`
-- 新增 `useSchemaSettingsItem()`
-- 新增 `useSchemaSettingsRender()`
-- 新增 `x-settings` 参数，用于配置 schema 的设置器
-- 新增 `x-toolbar` 参数，用于配置 schema 的工具栏
-- 新增 `SchemaToolbar` 组件，用于自定义 schema 的工具栏
-- 新增 `useSchemaToolbarRender()`，代替原来的 `useDesigner()`
-- 更改 `function SchemaSettings` 变更为 `class SchemaSettings`，用于定义设置器
-- 更改 原 `SchemaSettings` 变更为 `SchemaSettingsDropdown`
-- 更改 `SchemaSettings.Item` 变更为 `SchemaSettingsItem`
-- 更改 `SchemaSettings.ItemGroup` 变更为 `SchemaSettingsItemGroup`
-- 更改 `SchemaSettings.SubMenu` 变更为 `SchemaSettingsSubMenu`
-- 更改 `SchemaSettings.Divider` 变更为 `SchemaSettingsDivider`
-- 更改 `SchemaSettings.Remove` 变更为 `SchemaSettingsRemove`
-- 更改 `SchemaSettings.SelectItem` 变更为 `SchemaSettingsSelectItem`
-- 更改 `SchemaSettings.CascaderItem` 变更为 `SchemaSettingsCascaderItem`
-- 更改 `SchemaSettings.SwitchItem` 变更为 `SchemaSettingsSwitchItem`
-- 更改 `SchemaSettings.ModalItem` 变更为 `SchemaSettingsModalItem`
-- 更改 `SchemaSettings.ActionModalItem` 变更为 `SchemaSettingsActionModalItem`
-- 删除 `x-designer` 参数已废弃，将来会删除，使用 `x-toolbar` 代替，
-- 删除 `useDesigner()` 已废弃，将来会删除，使用 `useSchemaToolbarRender()` 代替
+- 新たに `SchemaSettingsManager` を追加し、`SchemaSettings` を登録するために使用します。
+- 新たに `useSchemaSettingsItem()` を追加します。
+- 新たに `useSchemaSettingsRender()` を追加します。
+- 新たに `x-settings` パラメータを追加し、スキーマの設定器を構成するために使用します。
+- 新たに `x-toolbar` パラメータを追加し、スキーマのツールバーを構成するために使用します。
+- 新たに `SchemaToolbar` コンポーネントを追加し、スキーマのツールバーをカスタマイズするために使用します。
+- 新たに `useSchemaToolbarRender()` を追加し、従来の `useDesigner()` の代わりに使用します。
+- `function SchemaSettings` を `class SchemaSettings` に変更し、設定器を定義するために使用します。
+- 既存の `SchemaSettings` を `SchemaSettingsDropdown` に変更します。
+- `SchemaSettings.Item` を `SchemaSettingsItem` に変更します。
+- `SchemaSettings.ItemGroup` を `SchemaSettingsItemGroup` に変更します。
+- `SchemaSettings.SubMenu` を `SchemaSettingsSubMenu` に変更します。
+- `SchemaSettings.Divider` を `SchemaSettingsDivider` に変更します。
+- `SchemaSettings.Remove` を `SchemaSettingsRemove` に変更します。
+- `SchemaSettings.SelectItem` を `SchemaSettingsSelectItem` に変更します。
+- `SchemaSettings.CascaderItem` を `SchemaSettingsCascaderItem` に変更します。
+- `SchemaSettings.SwitchItem` を `SchemaSettingsSwitchItem` に変更します。
+- `SchemaSettings.ModalItem` を `SchemaSettingsModalItem` に変更します。
+- `SchemaSettings.ActionModalItem` を `SchemaSettingsActionModalItem` に変更します。
+- `x-designer` パラメータは廃止され、将来的に削除されます。代わりに `x-toolbar` を使用してください。
+- `useDesigner()` は廃止され、将来的に削除されます。代わりに `useSchemaToolbarRender()` を使用してください。
 
-相关文档参考
+関連文書の参照
 
-- [插件开发 / SchemaSettings 设置器](/development/client/ui-schema/initializer)
-- [插件开发 / SchemaToolbar 工具栏](/development/client/ui-schema/initializer)
-- [API 文档 / SchemaSettings](https://client.docs-cn.nocobase.com/core/ui-schema/schema-component)
-- [API 文档 / SchemaSettingsManager](https://client.docs-cn.nocobase.com/core/ui-schema/schema-component)
-- [API 文档 / SchemaToolbar](https://client.docs-cn.nocobase.com/core/ui-schema/schema-component)
+- [プラグイン開発 / SchemaSettings 設定器](/development/client/ui-schema/initializer)
+- [プラグイン開発 / SchemaToolbar ツールバー](/development/client/ui-schema/initializer)
+- [API 文書 / SchemaSettings](https://client.docs-cn.nocobase.com/core/ui-schema/schema-component)
+- [API 文書 / SchemaSettingsManager](https://client.docs-cn.nocobase.com/core/ui-schema/schema-component)
+- [API 文書 / SchemaToolbar](https://client.docs-cn.nocobase.com/core/ui-schema/schema-component)
 
-### 设置器定义与实现
+### 設定器の定義と実装
 
-以前 SchemaSettings 和 GeneralSchemaDesigner 一起实现，并用在 `x-designer` 里。
+以前は `SchemaSettings` と `GeneralSchemaDesigner` が一緒に実装され、`x-designer` で使用されていました。
 
 ```tsx | pure
 <GeneralSchemaDesigner>
   <SchemaSettings.SwitchItem
-    title={'Enable Header'}
+    title={'ヘッダーを有効にする'}
     onClick={() => {}}
   ></SchemaSettings.SwitchItem>
   <SchemaSettings.Divider />
@@ -327,7 +327,7 @@ const XXXSchemaInitializerItem = (props) => {
 </GeneralSchemaDesigner>
 ```
 
-现在将二者拆分为 `x-toolbar` 和 `x-settings`，`x-toolbar` 可缺失，SchemaSettings 用在 `x-settings` 里
+現在は二者を `x-toolbar` と `x-settings` に分割し、`x-toolbar` は省略可能で、`SchemaSettings` は `x-settings` で使用されます。
 
 ```ts
 const mySettings = new SchemaSettings({
@@ -337,7 +337,7 @@ const mySettings = new SchemaSettings({
       name: 'enableHeader',
       type: 'switch',
       componentProps: {
-        title: 'Enable Header',
+        title: 'ヘッダーを有効にする',
         onClick: () => {},
       },
     },
@@ -349,7 +349,7 @@ const mySettings = new SchemaSettings({
       name: 'xxx',
       type: 'modal',
       useComponentProps() {
-        // useSchemaDesigner() 会传入 props
+        // useSchemaDesigner() で props が渡されます
         const { onSubmit } = useSchemaDesigner();
         return {
           title: 'xxx',
@@ -362,22 +362,22 @@ const mySettings = new SchemaSettings({
 });
 ```
 
-在 schema 里的变化
+スキーマ内の変更
 
 ```diff
 {
   type: 'void',
 - 'x-designer': 'CustomButton.Designer'
-+ 'x-toolbar': 'CustomButtonToolbar',  // 非必须
++ 'x-toolbar': 'CustomButtonToolbar',  // 任意
 + 'x-settings': 'CustomButtonSettings',
   'x-component': 'CustomButton',
   'x-content': 'Hello2',
 }
 ```
 
-### 设置项 Item 的实现
+### 設定項目 Item の実装
 
-以前版本实现 Item 组件写法非常费劲，现在通过 useSchemaSettings() 获取当前 Schema 的 Designable，通过 Designable 来修改当前 Schema
+以前のバージョンでは、Itemコンポーネントの実装が非常に手間がかかりましたが、現在はuseSchemaSettings()を使用して現在のSchemaのDesignableを取得し、Designableを通じて現在のSchemaを変更できるようになりました。
 
 ```diff
 function EditBlockTitle(props) {
@@ -388,16 +388,16 @@ function EditBlockTitle(props) {
 
   return (
     <SchemaSettings.ModalItem
-      title={'Edit block title'}
+      title={'ブロックタイトルを編集'}
       schema={
         {
           type: 'object',
-          title: 'Edit block title',
+          title: 'ブロックタイトルを編集',
           properties: {
             title: {
-              title: 'Block title',
+              title: 'ブロックタイトル',
               type: 'string',
-              // 获取 schema 的默认值
+              // schemaのデフォルト値を取得
 -             default: fieldSchema?.['x-decorator-props']?.title,
 +             default: dn.getSchemaAttribute('x-decorator-props.title'),
               'x-decorator': 'FormItem',
@@ -431,25 +431,25 @@ function EditBlockTitle(props) {
 }
 ```
 
-相关文档参考
+関連文書の参照
 
-- [插件开发 / SchemaSettings 设置器 / 如何实现 Schema 的设置](/development/client/ui-schema/settings)
-- [插件开发 / Designable 设计器](/development/client/ui-schema/designable)
-- [API 参考 / SchemaSettings / 内置组件和类型](https://client.docs-cn.nocobase.com/core/ui-schema/schema-settings)
-- [API 参考 / Designable](https://client.docs-cn.nocobase.com/core/ui-schema/designable)
+- [プラグイン開発 / SchemaSettings セッター / Schemaの設定を実現する方法](/development/client/ui-schema/settings)
+- [プラグイン開発 / Designable デザイナー](/development/client/ui-schema/designable)
+- [API 参照 / SchemaSettings / 内蔵コンポーネントとタイプ](https://client.docs-cn.nocobase.com/core/ui-schema/schema-settings)
+- [API 参照 / Designable](https://client.docs-cn.nocobase.com/core/ui-schema/designable)
 
-## 其他
+## その他
 
-### app.addComponent 方法私有化
+### app.addComponent メソッドの非公開化
 
-`app.addComponent` 方法私有化，不再对外暴露，需要通过 `app.addComponents` 方法注册组件。
+`app.addComponent` メソッドは非公開化され、外部に露出しなくなりました。コンポーネントを登録するには、`app.addComponents` メソッドを使用する必要があります。
 
 ```diff
 - app.addComponent(MyComponent, 'MyComponent')
 + app.addComponents({ MyComponent })
 ```
 
-### 删除 `PluginManagerContext`
+### `PluginManagerContext` の削除
 
 ```diff
 const MyProvider = props => {
@@ -461,3 +461,4 @@ return <div>
 </div>
 }
 ```
+

@@ -1,12 +1,12 @@
 # 0.19.0-alpha.1
 
 :::warning
-本篇文章只介绍与插件开发相关的不兼容变化
+本記事では、プラグイン開発に関連する非互換の変更についてのみ説明します。
 :::
 
-## collections、commands、migrations 配置变更为约定式目录
+## collections、commands、migrations の設定が規約ベースのディレクトリに変更されました
 
-示例一：通过 importCollections 加载的 collections，代码直接删掉，collections 配置文件必须放在 `src/server/collections` 目录下
+例1：`importCollections`を使用してロードしたcollectionsは、コードから直接削除し、collections設定ファイルは`src/server/collections`ディレクトリに配置する必要があります。
 
 ```diff
 export class AuthPlugin extends Plugin {
@@ -16,7 +16,7 @@ export class AuthPlugin extends Plugin {
 }
 ```
 
-示例二：通过 this.db.import 加载的 collections，代码直接删掉，collections 配置文件必须放在 `src/server/collections` 目录下
+例2：`this.db.import`を使用してロードしたcollectionsは、コードから直接削除し、collections設定ファイルは`src/server/collections`ディレクトリに配置する必要があります。
 
 ```diff
 export class AuthPlugin extends Plugin {
@@ -28,7 +28,7 @@ export class AuthPlugin extends Plugin {
 }
 ```
 
-示例三：通过 db.collection() 定义的 collection，建议放到 `src/server/collections` 目录下
+例3：`db.collection()`で定義されたcollectionは、`src/server/collections`ディレクトリに配置することを推奨します。
 
 ```diff
 export class AuthPlugin extends Plugin {
@@ -40,7 +40,7 @@ export class AuthPlugin extends Plugin {
 }
 ```
 
-新增 `src/server/collections/examples.ts` 文件，内容如下：
+新たに`src/server/collections/examples.ts`ファイルを作成し、内容は以下の通りです。
 
 ```typescript
 import { defineCollection } from '@nocobase/database';
@@ -50,7 +50,7 @@ export default defineCollection({
 });
 ```
 
-示例四：移除 db.addMigrations()，migration 文件放置 `src/server/migrations` 目录下
+例4：`db.addMigrations()`を削除し、migrationファイルは`src/server/migrations`ディレクトリに配置します。
 
 ```diff
 export class AuthPlugin extends Plugin {
@@ -66,7 +66,7 @@ export class AuthPlugin extends Plugin {
 }
 ```
 
-示例五：自定义命令行
+例5：カスタムコマンドラインを作成します。
 
 ```diff
 export class MyPlugin extends Plugin {
@@ -75,16 +75,16 @@ export class MyPlugin extends Plugin {
 -      .command('echo')
 -      .option('-v, --version');
 -      .action(async ([options]) => {
--        console.log('Hello World!');
+-        console.log('こんにちは、世界！');
 -        if (options.version) {
--          console.log('Current version:', app.getVersion());
+-          console.log('現在のバージョン:', app.getVersion());
 -        }
 -      });
 -  }
 }
 ```
 
-新增 `src/server/collections/echo.ts` 文件，内容如下：
+新たに`src/server/collections/echo.ts`ファイルを作成し、内容は以下の通りです。
 
 ```typescript
 export default function(app) {
@@ -92,10 +92,11 @@ export default function(app) {
     .command('echo')
     .option('-v, --version');
     .action(async ([options]) => {
-      console.log('Hello World!');
+      console.log('こんにちは、世界！');
       if (options.version) {
-        console.log('Current version:', await app.version.get());
+        console.log('現在のバージョン:', await app.version.get());
       }
     });
 }
 ```
+

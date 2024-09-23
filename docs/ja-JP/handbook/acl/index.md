@@ -1,25 +1,25 @@
-# 权限控制
+# 権限管理
 
-## 介绍
+## イントロダクション
 
-NocoBase 的 ACL 模块主要由两部分组成：
+NocoBaseのACLモジュールは主に2つの部分で構成されています：
 
-- 内核中的 `@nocobase/acl`，提供核心功能
-- 插件中的 `@nocobase/plugin-acl`，提供动态配置能力
+- コア内の `@nocobase/acl`：コア機能を提供します。
+- プラグイン内の `@nocobase/plugin-acl`：動的設定機能を提供します。
 
-## 安装
+## インストール
 
-内置插件，无需单独安装。
+このモジュールは組み込みプラグインのため、別途インストールは不要です。
 
-## 开发指南
+## 開発ガイド
 
-### 扩展一个新的权限配置栏
+### 新しい権限設定タブの拡張
 
-下面以“移动端菜单”配置项为例，演示如何扩展一个新的权限配置栏。效果如下图所示：
+以下に「モバイルメニュー」設定項目を例に、新しい権限設定タブの拡張方法を示します。効果は下の図のようになります：
 
 ![20240903210248](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240903210248.png)
 
-代码如下：
+コードは以下の通りです：
 
 ```typescript
 import { Plugin } from '@nocobase/client';
@@ -44,9 +44,9 @@ class PluginMobileClient extends Plugin {
 }
 ```
 
-首先，我们需要获取到 `PluginACLClient` 插件的实例（[获取插件实例的其它方法](https://docs-cn.nocobase.com/development/client/life-cycle#%E8%8E%B7%E5%8F%96%E6%8F%92%E4%BB%B6)），通过 `settingsUI.addPermissionsTab` 方法添加一个新的权限配置栏。在这个例子中，我们添加了一个名为“移动端菜单”的权限配置栏。
+まず、`PluginACLClient` プラグインのインスタンスを取得する必要があります（[プラグインインスタンスの取得方法](https://docs.nocobase.com/development/client/life-cycle#%E8%8E%B7%E5%8F%96%E6%8F%92%E4%BB%B6)）。次に、`settingsUI.addPermissionsTab` メソッドを使用して、新しい権限設定タブを追加します。この例では、「モバイルメニュー」という名前の権限設定タブを追加しました。
 
-`settingsUI` 属性的值是一个名为 `ACLSettingsUI` 的类的实例，其类型信息如下：
+`settingsUI` プロパティの値は、`ACLSettingsUI` クラスのインスタンスであり、型情報は以下の通りです：
 
 ```typescript
 import { TabsProps } from 'antd/es/tabs/index';
@@ -62,20 +62,21 @@ type TabCallback = (props: PermissionsTabsProps) => Tab;
 
 interface PermissionsTabsProps {
   /**
-   * the key of the currently active tab panel
+   * 現在アクティブなタブパネルのキー
    */
   activeKey: string;
   /**
-   * the currently selected role
+   * 現在選択されているロール
    */
   role: Role;
   /**
-   * translation function
+   * 翻訳関数
    */
   t: TFunction;
   /**
-   * used to constrain the size of the container in the Tab
+   * タブ内のコンテナのサイズを制約するために使用
    */
   TabLayout: React.FC;
 }
 ```
+

@@ -1,17 +1,18 @@
-# 数据表概述
+# データテーブルの概要
 
-NocoBase 提供了一种特有的 DSL 来描述数据的结构，称之为 Collection，将各种来源的数据结构统一起来，为后续数据管理、分析和应用提供了可靠的基础。
+NocoBaseは、データ構造を記述するための独自のDSL（ドメイン固有言語）を提供しており、これを「コレクション」と呼びます。さまざまなソースからのデータ構造を統一し、後続のデータ管理、分析、アプリケーションのための信頼できる基盤を提供します。
 
 ![20240512161522](https://static-docs.nocobase.com/20240512161522.png)
 
-为了便捷的使用各种数据模型，支持创建各种数据表：
+多様なデータモデルを便利に利用できるように、さまざまなデータテーブルの作成をサポートしています：
 
-- [普通表](/handbook/data-source-main/general-collection)：内置了常用的系统字段；
-- [继承表](/handbook/data-source-main/inheritance-collection)：可以创建一个父表，然后从该父表派生出子表，子表会继承父表的结构，同时还可以定义自己的列。
-- [树表](/handbook/collection-tree)：树结构表，目前只支持邻接表设计；
-- [日历表](/handbook/calendar/calendar-collection)：用于创建日历相关的事件表；
-- [文件表](/handbook/file-manager/file-collection)：用于文件存储的管理；
-- [表达式表](/handbook/workflow-dynamic-calculation/expression)：用于工作流的动态表达式场景；
-- [SQL 表](/handbook/collection-sql)：并不是实际的数据库表，而是快速的将 SQL 查询，结构化的展示出来；
-- [视图表](/handbook/collection-view)：连接已有的数据库视图；
-- [外部表](/handbook/collection-fdw)：允许数据库系统直接访问和查询外部数据源中的数据，基于 FDW 技术；
+- [一般テーブル](/handbook/data-source-main/general-collection)：一般的なシステムフィールドを内蔵しています。
+- [継承テーブル](/handbook/data-source-main/inheritance-collection)：親テーブルを作成し、その親テーブルから子テーブルを派生させることができます。子テーブルは親テーブルの構造を継承し、独自の列を定義することも可能です。
+- [ツリーテーブル](/handbook/collection-tree)：ツリー構造のテーブルで、現在は隣接リスト設計のみをサポートしています。
+- [カレンダーテーブル](/handbook/calendar/calendar-collection)：カレンダーに関連するイベントテーブルを作成するために使用します。
+- [ファイルテーブル](/handbook/file-manager/file-collection)：ファイルストレージの管理に使用します。
+- [式テーブル](/handbook/workflow-dynamic-calculation/expression)：ワークフローの動的式シナリオに使用します。
+- [SQLテーブル](/handbook/collection-sql)：実際のデータベーステーブルではなく、SQLクエリを迅速に構造化して表示します。
+- [ビューテーブル](/handbook/collection-view)：既存のデータベースビューを接続します。
+- [外部テーブル](/handbook/collection-fdw)：データベースシステムがFDW技術に基づいて外部データソース内のデータに直接アクセスし、クエリを実行できるようにします。
+

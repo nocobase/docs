@@ -1,31 +1,32 @@
-# 折叠面板字段
+# 折りたたみパネルフィールド
 
-## 介绍
+## 概要
 
-Collapse 筛选区块仅支持选择关系字段和选项字段作为筛选字段。
+折りたたみフィルターセクションは、選択関係フィールドおよびオプションフィールドのみをフィルターフィールドとしてサポートしています。
 
-## 字段配置项
+## フィールド設定項目
 
 ![20240409120906](https://static-docs.nocobase.com/20240409120906.png)
 
-### 设置数据范围
+### データ範囲の設定
 
-为关系字段配置数据范围。
+関係フィールドのデータ範囲を設定します。
 
 ![20240422152530](https://static-docs.nocobase.com/20240422152530.png)
 
-示例：筛选非促销商品。
+例：非販促商品をフィルタリングします。
 
 ![20240422152614](https://static-docs.nocobase.com/20240422152614.png)
 
-更多内容参考 [设置数据范围](/handbook/ui/fields/field-settings/data-scope)
+詳細は [データ範囲の設定](/handbook/ui/fields/field-settings/data-scope) を参照してください。
 
-### 标题字段
+### タイトルフィールド
 
 ![20240423085854](https://static-docs.nocobase.com/20240423085854.png)
 
-更多内容参考 [标题字段](/handbook/ui/fields/field-settings/title-field)
+詳細は [タイトルフィールド](/handbook/ui/fields/field-settings/title-field) を参照してください。
 
-- 默认展示（默认不展开 ）
-- 设置排序规则(关系数据的排序)
-- 自定义标题
+- デフォルト表示（初期状態では折りたたまれています）
+- ソートルールの設定（関係データのソート）
+- タイトルのカスタマイズ
+

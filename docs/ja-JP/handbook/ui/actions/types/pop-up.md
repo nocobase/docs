@@ -1,20 +1,21 @@
-# 自定义弹窗
+# カスタムポップアップ
 
-## 介绍
+## 概要
 
-自定义弹窗操作与查看和编辑操作类似，属于表格的行按钮，有当前记录作为上下文，用户可以在表格行操作中配置多个弹窗操作。
+カスタムポップアップの操作は、表示および編集の操作に似ており、テーブルの行ボタンに関連しています。現在のレコードがコンテキストとして使用され、ユーザーはテーブル行操作の中で複数のポップアップ操作を設定できます。
 
 ![20240413104530](https://static-docs.nocobase.com/20240413104530.png)
 
-在弹窗中按需配置区块。
+ポップアップ内では、必要に応じてブロックを設定できます。
 
 ![20240426161322](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426161322.png)
 
-## 操作配置项
+## 操作設定項目
 
 ![20240413104602](https://static-docs.nocobase.com/20240413104602.png)
 
-- [编辑按钮](/handbook/ui/actions/action-settings/edit-button)：编辑按钮的标题、颜色、图标
-- [联动规则](/handbook/ui/actions/action-settings/linkage-rule)：动态控制按钮的状态（显示/禁用）
-- [打开模式](/handbook/ui/actions/action-settings/open-mode)：弹窗/抽屉
-- [弹窗尺寸](/handbook/ui/actions/action-settings/popup-size)：默认尺寸为中等（大/中/小）
+- [編集ボタン](/handbook/ui/actions/action-settings/edit-button)：編集ボタンのタイトル、色、アイコンをカスタマイズします。
+- [連動ルール](/handbook/ui/actions/action-settings/linkage-rule)：ボタンの状態（表示/無効）を動的に制御します。
+- [オープンモード](/handbook/ui/actions/action-settings/open-mode)：ポップアップまたはドロワーのいずれかを選択します。
+- [ポップアップサイズ](/handbook/ui/actions/action-settings/popup-size)：デフォルトサイズは「中」で、選択肢は「大」、「中」、「小」です。
+

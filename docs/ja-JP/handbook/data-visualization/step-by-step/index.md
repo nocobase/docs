@@ -1,10 +1,10 @@
-# 扩展教程
+# 拡張チュートリアル
 
-> 以添加 ECharts 图表为例，完整代码可参考 `@nocobase/plugin-sample-add-custom-charts` 插件
+> ECharts グラフの追加を例に、完全なコードは `@nocobase/plugin-sample-add-custom-charts` プラグインを参照してください。
 
-## 新建插件
+## 新しいプラグインの作成
 
-按照[插件开发指南](https://docs.nocobase.com/development/your-fisrt-plugin)的步骤，创建一个新的插件。添加好依赖 `echarts`, `echarts-for-react`, `@nocobase/plugin-data-visualization`，外部依赖放到 `package.json` 的 `devDependencies` 中。
+[プラグイン開発ガイド](https://docs.nocobase.com/development/your-first-plugin)の手順に従って、新しいプラグインを作成してください。依存関係として `echarts`、`echarts-for-react`、`@nocobase/plugin-data-visualization` を追加し、外部依存関係は `package.json` の `devDependencies` に配置します。
 
 ```bash
 yarn pm create @nocobase/plugin-sample-add-custom-charts
@@ -32,9 +32,9 @@ npx lerna add echarts-for-react --scope=@nocobase/plugin-sample-add-custom-chart
 }
 ```
 
-## ECharts React 组件
+## ECharts React コンポーネント
 
-和 G2Plot 每种图表是一个组件不同，ECharts 是使用同一个组件，通过传递不同参数来渲染不同图表。由于 `echarts-for-react` 提供的组件是 `PureComponent`, 我们需要简单包装一下，变成 `FunctionComponent`.
+G2Plotの各グラフは個別のコンポーネントであるのに対し、EChartsは同じコンポーネントを使用し、異なるパラメータを渡すことで異なるグラフを描画します。「echarts-for-react」が提供するコンポーネントは「PureComponent」であるため、簡単にラップして「FunctionComponent」に変換する必要があります。
 
 ```typescript
 // client/echarts/react-echarts.tsx
@@ -44,22 +44,24 @@ import ReactEChartsComponent, { EChartsInstance, EChartsReactProps } from 'echar
 
 export const ReactECharts = (props: EChartsReactProps['option']) => {
   const echartRef = React.useRef<EChartsInstance>();
+  
   useEffect(() => {
     echartRef.current?.resize();
   });
+
   return <ReactEChartsComponent option={props} ref={(e) => (echartRef.current = e)} />;
 };
 ```
 
-`echarts-for-react` 提供的组件，第一次渲染时不会执行 `resize`. 而 NocoBase 可视化插件在配置图表的时候可能需要根据当前配置来决定要不要显示组件，可能会导致组件不能正常显示，所以这里每次都手动执行一次 `resize`. 参考: [https://github.com/apache/echarts/issues/8855](https://github.com/apache/echarts/issues/8855)
+「echarts-for-react」が提供するコンポーネントは、初回のレンダリング時に「resize」を実行しません。一方、NocoBaseの可視化プラグインでは、グラフを設定する際に現在の設定に基づいてコンポーネントの表示を決定する必要があるため、コンポーネントが正しく表示されない可能性があります。そのため、ここでは毎回手動で「resize」を実行しています。参考: [https://github.com/apache/echarts/issues/8855](https://github.com/apache/echarts/issues/8855)
 
-## 扩展 `Chart` 类
+## `Chart` クラスの拡張
 
-> 开始这部分之前，请先阅读[开发指南](../dev/index.md) 了解相关的 API
+> このセクションを始める前に、[開発ガイド](../dev/index.md)を読んで関連APIを理解してください。
 
-### 步骤一
+### ステップ1
 
-由于 ECharts 是一个图表库，我们可能同时添加多个图表，我们先在基础的 `Chart` 类上扩展一个 `ECharts` 类，来实现一些通用的基础方法。
+EChartsはグラフライブラリであるため、複数のグラフを同時に追加することがあります。まず、基本の`Chart`クラスを拡張して`ECharts`クラスを作成し、いくつかの共通の基本メソッドを実装します。
 
 ```typescript
 // client/echarts/echarts.ts
@@ -89,13 +91,13 @@ export class ECharts extends Chart {
 }
 ```
 
-ECharts 主要是通过配置 `series` 来配置不同的图形，所以在基类的构造函数基础上，我们可以增加一个 `series` 参数，同时将前面定义好的 `ReactECharts` 组件传入。`config` 参数默认设置了 `xField`, `yField`, `seriesField`, 这样我们默认的可视化配置就是如图的效果。
+EChartsは主に`series`を設定することで異なるグラフを構成します。そのため、基底クラスのコンストラクタに基づいて`series`パラメータを追加し、前に定義された`ReactECharts`コンポーネントを渡します。`config`パラメータにはデフォルトで`xField`、`yField`、`seriesField`が設定されており、これによりデフォルトの可視化設定は図のような効果を得られます。
 
 ![](https://static-docs.nocobase.com/9a1ff5ff7c9f409978292f0d771b4358.png)
 
-### 步骤二
+### ステップ2
 
-由于大多数常用图形在使用上都需要配置 x 轴字段，y 轴字段和分类字段，我们首先实现通用的 `init` 接口，用来初始化图表的默认配置。如果图表需要初始化其他的配置项，继承的时候重写 `init` 方法即可。在实现上我们可以利用 `Chart` 类实现的 `infer` 方法，根据度量和维度的配置，来推断默认的字段配置。
+ほとんどの一般的なグラフでは、x軸フィールド、y軸フィールド、分類フィールドの設定が必要です。まず、グラフのデフォルト設定を初期化するための汎用`init`インターフェースを実装します。グラフが他の設定項目を初期化する必要がある場合は、継承時に`init`メソッドをオーバーライドしてください。実装においては、`Chart`クラスが実装した`infer`メソッドを利用し、メトリックとディメンションの設定に基づいてデフォルトのフィールド設定を推論します。
 
 ```typescript
 init: ChartType['init'] = (fields, { measures, dimensions }) => {
@@ -113,9 +115,9 @@ init: ChartType['init'] = (fields, { measures, dimensions }) => {
 };
 ```
 
-### 步骤三
+### ステップ3
 
-接下来实现 `getProps` 方法, 主要是拿到图表相关的配置，转换成 ECharts 图表组件对应的属性。包括一些不想暴露出来配置的默认属性，也可以在这里添加。主要代码实现如下，仅供参考。
+次に、`getProps` メソッドを実装します。このメソッドの主な目的は、グラフに関連する設定を取得し、ECharts グラフコンポーネントに対応する属性に変換することです。表示したくないデフォルト属性をここに追加することも可能です。主なコード実装は以下の通りですので、参考にしてください。
 
 ```typescript
 getProps({ data, general, advanced, fieldProps }: RenderProps) {
@@ -124,58 +126,58 @@ getProps({ data, general, advanced, fieldProps }: RenderProps) {
     const yLabel = fieldProps[yField]?.label;
     let seriesName = [yLabel];
     if (seriesField) {
-      seriesName = Array.from(new Set(data.map((row: any) => row[seriesField]))).map((value) => value || 'null');
+        seriesName = Array.from(new Set(data.map((row: any) => row[seriesField]))).map((value) => value || 'null');
     }
     return deepmerge(
-      {
-        legend: {
-          data: seriesName,
-        },
-        tooltip: {
-          data: seriesName,
-        },
-        dataset: [
-          {
-            dimensions: [xField, ...(seriesField ? seriesName : [yField])],
-            source: data,
-          },
-          {
-            transform: [
-              {
-                type: 'data-visualization:transform',
-                config: { fieldProps },
-              },
-              {
-                type: 'data-visualization:toSeries',
-                config: { xField, yField, seriesField },
-              },
+        {
+            legend: {
+                data: seriesName,
+            },
+            tooltip: {
+                data: seriesName,
+            },
+            dataset: [
+                {
+                    dimensions: [xField, ...(seriesField ? seriesName : [yField])],
+                    source: data,
+                },
+                {
+                    transform: [
+                        {
+                            type: 'data-visualization:transform',
+                            config: { fieldProps },
+                        },
+                        {
+                            type: 'data-visualization:toSeries',
+                            config: { xField, yField, seriesField },
+                        },
+                    ],
+                },
             ],
-          },
-        ],
-        series: seriesName.map((name) => ({
-          name,
-          datasetIndex: 1,
-          ...this.series,
-        })),
-        xAxis: {
-          name: xLabel,
-          type: 'category',
+            series: seriesName.map((name) => ({
+                name,
+                datasetIndex: 1,
+                ...this.series,
+            })),
+            xAxis: {
+                name: xLabel,
+                type: 'category',
+            },
+            yAxis: {
+                name: yLabel,
+            },
+            animation: false,
         },
-        yAxis: {
-          name: yLabel,
-        },
-        animation: false,
-      },
-      advanced,
+        advanced,
     );
-  }
+}
 ```
 
-这里的代码逻辑主要是拿到原始的数据、图表的配置、字段元数据和数据转换配置以后，根据组件渲染的需要，处理成对应的格式。在 ECharts 中, 处理数据可以通过注册 `transform` 的方式实现，具体方法可以参考 ECharts 的文档。
+ここでのコードロジックは、元のデータ、グラフの設定、フィールドメタデータ、およびデータ変換設定を取得した後、コンポーネントのレンダリングのニーズに応じて、対応するフォーマットに処理することを主な目的としています。EChartsでは、データの処理は`transform`を登録することで実現できます。具体的な方法については、EChartsのドキュメントを参照してください。
 
-### 步骤四
+### ステップ4
 
-再实现一下统一的获取参考文档的方法 `getReference`. ECharts 的图形参数都在同一个页面上，所以简单这么定义。
+統一された参照文書を取得するメソッド`getReference`を実装します。EChartsのグラフィックパラメータはすべて同じページにあるため、このように簡単に定義できます。
 
 ```typescript
 getReference() {
@@ -183,70 +185,70 @@ getReference() {
       title: 'ECharts',
       link: 'https://echarts.apache.org/en/option.html',
     };
-  }
+}
 ```
 
-## 定义图表
+## グラフの定義
 
-有了 `ECharts` 类，来定义图表就比较简单了。对于常用的二维图形，大多数通用的逻辑已经在 `ECharts` 类上实现了，不需要再进一步扩展，直接使用即可。
+`ECharts`クラスがあれば、グラフの定義は比較的簡単です。一般的な2次元グラフについては、ほとんどの共通ロジックが`ECharts`クラスに実装されているため、さらに拡張する必要はなく、そのまま使用できます。
 
 ```typescript
 new ECharts({
   name: 'line',
-  title: 'Line Chart',
+  title: '折れ線グラフ',
   series: { type: 'line' },
 });
 
 new ECharts({
   name: 'column',
-  title: 'Column Chart',
+  title: '縦棒グラフ',
   series: { type: 'bar' },
 });
 
 new ECharts({
   name: 'area',
-  title: 'Area Chart',
+  title: '面グラフ',
   series: { type: 'line', areaStyle: {} },
 });
 ```
 
-也可以扩展一些可视化配置
+いくつかの視覚化設定を拡張することも可能です。
 
 ```typescript
 new ECharts({
   name: 'line',
-  title: 'Line Chart',
+  title: '折れ線グラフ',
   series: { type: 'line' },
   config: [
     {
       property: 'booleanField',
       name: 'smooth',
-      title: 'isSmooth',
+      title: 'スムーズ',
     },
   ],
 });
 ```
 
-对于一些图表，通用的方法可能不适用，我们可以进一步扩展。
+一部のグラフについては、一般的な方法が適用できない場合があるため、さらに拡張が可能です。
 
-条形图：
+棒グラフ：
 
 ```typescript
 export class Bar extends ECharts {
   constructor() {
     super({
       name: 'bar',
-      title: 'Bar Chart',
+      title: '棒グラフ',
       series: { type: 'bar' },
     });
     this.config = [
       {
         property: 'yField',
-        title: 'xField',
+        title: 'X軸フィールド',
       },
       {
         property: 'xField',
-        title: 'yField',
+        title: 'Y軸フィールド',
       },
       'seriesField',
     ];
@@ -273,27 +275,27 @@ export class Bar extends ECharts {
 new Bar();
 ```
 
-饼图：
+円グラフ：
 
 ```typescript
 export class Pie extends ECharts {
   constructor() {
     super({
       name: 'pie',
-      title: 'Pie Chart',
+      title: '円グラフ',
       series: { type: 'pie' },
     });
     this.config = [
       {
         property: 'field',
         name: 'angleField',
-        title: 'angleField',
+        title: '角度フィールド',
         required: true,
       },
       {
         property: 'field',
         name: 'colorField',
-        title: 'colorField',
+        title: '色フィールド',
         required: true,
       },
     ];
@@ -340,7 +342,7 @@ export class Pie extends ECharts {
 new Pie();
 ```
 
-## 添加图表
+## チャートを追加
 
 ```typescript
 // client/index.ts
@@ -360,7 +362,8 @@ export class PluginSampleAddCustomChartClient extends Plugin {
     ]);
   }
 
-  // You can get and modify the app instance here
+  // ここでアプリインスタンスを取得し、修正を行うことができます
   async load() {}
 }
 ```
+

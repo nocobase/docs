@@ -1,17 +1,17 @@
-# 遥测
+# テレメトリ
 
-:::warning{title=实验性}
+:::warning{title=実験的}
 :::
 
-NocoBase 的遥测 (Telemetry) 模块基于 <a href="https://opentelemetry.io/" target="_blank">OpenTelemetry</a> 封装。本文介绍如何在使用遥测模块收集链路 (Trace) 和监控指标 (Metric) 数据来增强 NocoBase 系统的可观测性 (Observability)。
+NocoBaseのテレメトリモジュールは、<a href="https://opentelemetry.io/" target="_blank">OpenTelemetry</a>を基盤としています。本記事では、テレメトリモジュールを使用してトレース（Trace）やメトリック（Metric）データを収集し、NocoBaseシステムの可観測性（Observability）を向上させる方法について説明します。
 
-:::info{title=提示}
-NocoBase 在启动前需要配置环境变量 `TELEMETRY_ENABLED=true` 来启动遥测数据收集。其他配置参考：[环境变量 - 遥测](../../welcome/getting-started/env.md#telemetry_enabled)。
+:::info{title=ヒント}
+NocoBaseを起動する前に、環境変数`TELEMETRY_ENABLED=true`を設定してテレメトリデータの収集を有効にする必要があります。その他の設定については、[環境変数 - テレメトリ](../../welcome/getting-started/env.md#telemetry_enabled)を参照してください。
 :::
 
-## 插桩
+## インストゥルメンテーション
 
-### 指标
+### メトリック
 
 ```ts
 const meter = app.telemetry.metric.getMeter();
@@ -23,7 +23,7 @@ counter.add(1);
 
 - <a href="https://opentelemetry.io/docs/instrumentation/js/manual/#acquiring-a-meter" target="_blank">https://opentelemetry.io/docs/instrumentation/js/manual/#acquiring-a-meter</a>
 
-### 链路
+### トレース
 
 ```ts
 const tracer = app.telemetry.trace.getTracer();
@@ -31,11 +31,11 @@ tracer.startActiveSpan();
 tracer.startSpan();
 ```
 
-参考:
+参考：
 
 - <a href="https://opentelemetry.io/docs/instrumentation/js/manual/#acquiring-a-tracer" target="_blank">https://opentelemetry.io/docs/instrumentation/js/manual/#acquiring-a-tracer</a>
 
-### 工具库
+### ライブラリ
 
 ```ts
 import { Plugin } from '@nocobase/server';
@@ -51,17 +51,17 @@ class InstrumentationPlugin extends Plugin {
 ```
 
 :::warning{title=注意}
-NocoBase 中遥测模块的初始化位置为 `app.beforeLoad`, 参考：[生命周期](../life-cycle.md)。因此并不是所有插桩库都适用于 NocoBase.  
-例如：<a href="https://www.npmjs.com/package/@opentelemetry/instrumentation-koa" target="_blank">instrumentation-koa</a> 需要在 `Koa` 实例化之前引入，而 NocoBase 的 `Application` 虽然基于 `Koa`, 但是遥测模块是在 `Application` 实例化之后才初始化的，则不能适用。
+NocoBaseにおけるテレメトリモジュールの初期化位置は`app.beforeLoad`です。詳細は[ライフサイクル](../life-cycle.md)を参照してください。したがって、すべてのインストゥルメンテーションライブラリがNocoBaseに適用されるわけではありません。  
+例えば、<a href="https://www.npmjs.com/package/@opentelemetry/instrumentation-koa" target="_blank">instrumentation-koa</a>は`Koa`のインスタンス化前にインポートする必要がありますが、NocoBaseの`Application`は`Koa`を基盤としており、テレメトリモジュールは`Application`のインスタンス化後に初期化されるため、適用できません。
 :::
 
-参考:
+参考：
 
 - <a href="https://opentelemetry.io/docs/instrumentation/js/libraries/" target="_blank">https://opentelemetry.io/docs/instrumentation/js/libraries/</a>
 
-## 采集
+## データ収集
 
-### 指标
+### メトリック
 
 ```ts
 import { Plugin } from '@nocobase/server';
@@ -85,7 +85,7 @@ class MetricReaderPlugin extends Plugin {
 }
 ```
 
-### 链路
+### トレース
 
 ```ts
 import { Plugin } from '@nocobase/server';
@@ -109,3 +109,4 @@ class TraceSpanProcessorPlugin extends Plugin {
 参考：
 
 - <a href="https://opentelemetry.io/docs/instrumentation/js/exporters" target="_blank">https://opentelemetry.io/docs/instrumentation/js/exporters</a>
+

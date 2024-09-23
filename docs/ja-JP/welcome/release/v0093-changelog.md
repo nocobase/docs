@@ -1,133 +1,134 @@
 # v0.9.3：2023-05-11
 
-## Merged
+## マージされた項目
 
-- refactor(plugin-workflow): change single form to custom form block [`#1707`](https://github.com/nocobase/nocobase/pull/1707)
-- chore(ci): add timeout config for jobs [`#1725`](https://github.com/nocobase/nocobase/pull/1725)
-- refactor(plugin-workflow): migrate menu items to options [`#1724`](https://github.com/nocobase/nocobase/pull/1724)
-- fix(client): fix error on clear value in variable input [`#1723`](https://github.com/nocobase/nocobase/pull/1723)
-- fix(record-picker): fix the table paging problem [`#1718`](https://github.com/nocobase/nocobase/pull/1718)
-- fix(map-plugin): some data is incorrect [`#1717`](https://github.com/nocobase/nocobase/pull/1717)
-- fix: data scope not effect in gantt [`#1716`](https://github.com/nocobase/nocobase/pull/1716)
-- fix: button loading does not disappear when the operation submit failed [`#1698`](https://github.com/nocobase/nocobase/pull/1698)
-- fix(linkage rule):multiple select condition judgment failed [`#1715`](https://github.com/nocobase/nocobase/pull/1715)
-- Fix/save through table data [`#1714`](https://github.com/nocobase/nocobase/pull/1714)
-- feat: improve ui design for linkage action [`#1659`](https://github.com/nocobase/nocobase/pull/1659)
-- feat(map): support to filter other blocks [`#1691`](https://github.com/nocobase/nocobase/pull/1691)
-- refactor: improve linkage rule enable [`#1700`](https://github.com/nocobase/nocobase/pull/1700)
-- fix: find fields arg [`#1710`](https://github.com/nocobase/nocobase/pull/1710)
-- feat(form-block): data templates [`#1704`](https://github.com/nocobase/nocobase/pull/1704)
-- fix: linkage relationship data condition judgment failed [`#1681`](https://github.com/nocobase/nocobase/pull/1681)
-- fix(gantt): update permission check in gantt block [`#1701`](https://github.com/nocobase/nocobase/pull/1701)
-- fix: clearFormGraph [`#1706`](https://github.com/nocobase/nocobase/pull/1706)
-- fix(plugin-workflow): fix request body variable component [`#1703`](https://github.com/nocobase/nocobase/pull/1703)
-- fix(gantt): improve task bar text [`#1696`](https://github.com/nocobase/nocobase/pull/1696)
-- fix: long text should be line feed [`#1686`](https://github.com/nocobase/nocobase/pull/1686)
-- fix: cannot display data when remove last page and the page only just one item [`#1685`](https://github.com/nocobase/nocobase/pull/1685)
-- fix: meta acl with association query [`#1695`](https://github.com/nocobase/nocobase/pull/1695)
-- fix: linkage rule title can not set empty [`#1688`](https://github.com/nocobase/nocobase/pull/1688)
-- feat: improve plugin manager ui [`#1650`](https://github.com/nocobase/nocobase/pull/1650)
-- feat: gantt block [`#1393`](https://github.com/nocobase/nocobase/pull/1393)
-- fix(client): fix constant input lose focus in variable [`#1689`](https://github.com/nocobase/nocobase/pull/1689)
-- feat(plugin-workflow): add workflow specific logger [`#1677`](https://github.com/nocobase/nocobase/pull/1677)
-- fix: remove designer [`#1684`](https://github.com/nocobase/nocobase/pull/1684)
-- test: should load the .env.test [`#1678`](https://github.com/nocobase/nocobase/pull/1678)
-- fix: incorrect language after logout [`#1679`](https://github.com/nocobase/nocobase/pull/1679)
-- feat: optimize file collection [`#1666`](https://github.com/nocobase/nocobase/pull/1666)
-- fix: sort field init performance [`#1675`](https://github.com/nocobase/nocobase/pull/1675)
-- fix(plugin-workflow): fix null collection fields [`#1674`](https://github.com/nocobase/nocobase/pull/1674)
-- fix(client): fix variable component read pretty mode [`#1673`](https://github.com/nocobase/nocobase/pull/1673)
-- fix: ui problem of compact theme [`#1670`](https://github.com/nocobase/nocobase/pull/1670)
-- fix: linkage rule enable effect in form [`#1669`](https://github.com/nocobase/nocobase/pull/1669)
-- feat: collection template summary [`#1672`](https://github.com/nocobase/nocobase/pull/1672)
-- feat: (plugin-workflow) dynamic expression [`#1560`](https://github.com/nocobase/nocobase/pull/1560)
-- chore: find inherit collection warn [`#1663`](https://github.com/nocobase/nocobase/pull/1663)
-- fix: linkage rule title config clear exception [`#1665`](https://github.com/nocobase/nocobase/pull/1665)
-- feat: support tableoid filter [`#1657`](https://github.com/nocobase/nocobase/pull/1657)
-- feat(plugin-workflow): add array mapping support in processor [`#1662`](https://github.com/nocobase/nocobase/pull/1662)
-- fix(plugin-workflow): fix appends null to collection trigger [`#1661`](https://github.com/nocobase/nocobase/pull/1661)
-- feat(filter-operators): eq and ne operators support array [`#1658`](https://github.com/nocobase/nocobase/pull/1658)
-- fix(plugin-workflow): fix todo drawer data load [`#1656`](https://github.com/nocobase/nocobase/pull/1656)
-- refactor(client): improve translation [`#1654`](https://github.com/nocobase/nocobase/pull/1654)
-- fix: fix the 'Add menu item' button disappears [`#1655`](https://github.com/nocobase/nocobase/pull/1655)
-- chore: add new allowAddtoCurrent config [`#1652`](https://github.com/nocobase/nocobase/pull/1652)
-- feat: support file collection [`#1636`](https://github.com/nocobase/nocobase/pull/1636)
-- fix(plugin-workflow): fix manual node drawer [`#1653`](https://github.com/nocobase/nocobase/pull/1653)
-- chore: inhertis api with difference schema [`#1545`](https://github.com/nocobase/nocobase/pull/1545)
-- fix: select record can not enable child collection [`#1649`](https://github.com/nocobase/nocobase/pull/1649)
-- feat: plugin before enable hook [`#1648`](https://github.com/nocobase/nocobase/pull/1648)
-- chore: add transaction in set field action [`#1647`](https://github.com/nocobase/nocobase/pull/1647)
-- fix(linkage rule):linkage rule not display in action [`#1644`](https://github.com/nocobase/nocobase/pull/1644)
-- refactor: view collection options [`#1643`](https://github.com/nocobase/nocobase/pull/1643)
-- fix: update field error [`#1645`](https://github.com/nocobase/nocobase/pull/1645)
-- feat(Table): column action support linkage rules [`#1638`](https://github.com/nocobase/nocobase/pull/1638)
-- fix(view-collection): field name cannot be edited when there with field source [`#1642`](https://github.com/nocobase/nocobase/pull/1642)
-- fix: linkage rule config closing rules require reopening the form to take effect [`#1640`](https://github.com/nocobase/nocobase/pull/1640)
-- refactor(client): change Variable.TextArea to controlled component [`#1605`](https://github.com/nocobase/nocobase/pull/1605)
-- fix: get pg view def [`#1641`](https://github.com/nocobase/nocobase/pull/1641)
-- fix: infer view column type with alias [`#1634`](https://github.com/nocobase/nocobase/pull/1634)
-- fix(plugin-workflow): fix minors ui issues [`#1635`](https://github.com/nocobase/nocobase/pull/1635)
-- chore: disabled underscored in view collection. [`#1633`](https://github.com/nocobase/nocobase/pull/1633)
-- fix: form action dragging area is too large [`#1628`](https://github.com/nocobase/nocobase/pull/1628)
-- fix: FixedBlock related ui [`#1632`](https://github.com/nocobase/nocobase/pull/1632)
-- feat: database view collection [`#1587`](https://github.com/nocobase/nocobase/pull/1587)
-- fix: init sort value in sort field with scopeKey [`#1626`](https://github.com/nocobase/nocobase/pull/1626)
-- style: linkage rule style improve [`#1625`](https://github.com/nocobase/nocobase/pull/1625)
-- fix: find with attributes and group [`#1411`](https://github.com/nocobase/nocobase/pull/1411)
-- docs: transform video link to video tag [`#1414`](https://github.com/nocobase/nocobase/pull/1414)
-- feat(parse-variables): support to parse variables in filter params [`#1558`](https://github.com/nocobase/nocobase/pull/1558)
-- fix(linkage rules) : support naming, enabling and disabling, copying, and assigning null values [`#1511`](https://github.com/nocobase/nocobase/pull/1511)
-- chore: update test ci [`#1622`](https://github.com/nocobase/nocobase/pull/1622)
-- fix: history add new button does not support enabling child collection [`#1536`](https://github.com/nocobase/nocobase/pull/1536)
-- fix/(linkages-action): detail block actions does not support linkage rules [`#1504`](https://github.com/nocobase/nocobase/pull/1504)
-- fix: avoid fixedblock height working in popup [`#1621`](https://github.com/nocobase/nocobase/pull/1621)
-- fix: when the page has FixedBlock, the table of popup is not displayed [`#1619`](https://github.com/nocobase/nocobase/pull/1619)
-- feat: association-filter-improve [`#1606`](https://github.com/nocobase/nocobase/pull/1606)
-- fix(Table): cannot display table data [`#1617`](https://github.com/nocobase/nocobase/pull/1617)
-- fix(plugin-workflow): fix todo list form read-pretty for non-assigneed user [`#1615`](https://github.com/nocobase/nocobase/pull/1615)
-- feat(table): hidden pagination when only one page is available [`#1614`](https://github.com/nocobase/nocobase/pull/1614)
-- refactor: improve FixedBlock performance [`#1593`](https://github.com/nocobase/nocobase/pull/1593)
-- fix(collection-manager): infinite recursion [`#1608`](https://github.com/nocobase/nocobase/pull/1608)
-- fix(audit-logs): Add ellipsis feature to table columns [`#1603`](https://github.com/nocobase/nocobase/pull/1603)
-- feat: improve the non-link ui of association data [`#1602`](https://github.com/nocobase/nocobase/pull/1602)
-- feat(Kanban): the card support open mode [`#1601`](https://github.com/nocobase/nocobase/pull/1601)
-- fix( importable-field): incorrect display when moving sort handle [`#1613`](https://github.com/nocobase/nocobase/pull/1613)
-- fix: enable child collections remain after deleting a child collection [`#1610`](https://github.com/nocobase/nocobase/pull/1610)
-- fix: destroy through table record referencing collections table [`#1611`](https://github.com/nocobase/nocobase/pull/1611)
-- fix(plugin-workflow): add default actions value of manual node [`#1600`](https://github.com/nocobase/nocobase/pull/1600)
-- feat(plugin-workflow): add failOnEmpty option for query node [`#1599`](https://github.com/nocobase/nocobase/pull/1599)
-- fix(plugin-workflow): use toJSON instead of get to get valid result [`#1596`](https://github.com/nocobase/nocobase/pull/1596)
-- Translation pt-BR (Brazilian Portuguese) [`#1591`](https://github.com/nocobase/nocobase/pull/1591)
-- fix: role permission add new scope display blank [`#1592`](https://github.com/nocobase/nocobase/pull/1592)
-- fix(FixedBlock): avoid kanban triggering programmatic scrolling [`#1406`](https://github.com/nocobase/nocobase/pull/1406)
-- fix: repeat request categories when switching between graph interface and collection&fields [`#1590`](https://github.com/nocobase/nocobase/pull/1590)
-- fix: collectionFieldsOptions cannot get all fields [`#1588`](https://github.com/nocobase/nocobase/pull/1588)
-- fix(plugin-workflow): fix input width in request node config [`#1585`](https://github.com/nocobase/nocobase/pull/1585)
-- feat(filter-blocks): support filter-blocks [`#1505`](https://github.com/nocobase/nocobase/pull/1505)
-- refactor: multi-app [`#1578`](https://github.com/nocobase/nocobase/pull/1578)
-- feat: compact theme [`#1574`](https://github.com/nocobase/nocobase/pull/1574)
-- feat: support cron field [`#1421`](https://github.com/nocobase/nocobase/pull/1421)
-- fix(Calendar): ensur to get correct gridInitializer when adding a new… [`#1425`](https://github.com/nocobase/nocobase/pull/1425)
-- feat(markdown): support mermaid and better style [`#1583`](https://github.com/nocobase/nocobase/pull/1583)
-- fix(plugin-map): map block repeats [`#1582`](https://github.com/nocobase/nocobase/pull/1582)
-- feat: tree collection [`#1561`](https://github.com/nocobase/nocobase/pull/1561)
-- feat(plugin-map): add map block [`#1486`](https://github.com/nocobase/nocobase/pull/1486)
-- chore: lazy load sub app in share collection [`#1569`](https://github.com/nocobase/nocobase/pull/1569)
-- fix(record-picker): supports adding sub-collection records [`#1573`](https://github.com/nocobase/nocobase/pull/1573)
-- fix: app manager reload [`#1565`](https://github.com/nocobase/nocobase/pull/1565)
-- feat: multi-app-share-collection plugin [`#1562`](https://github.com/nocobase/nocobase/pull/1562)
-- feat: record picker support to enable links [`#1515`](https://github.com/nocobase/nocobase/pull/1515)
-- feat: multiple apps [`#1540`](https://github.com/nocobase/nocobase/pull/1540)
-- docs(client): add variable docs [`#1556`](https://github.com/nocobase/nocobase/pull/1556)
-- fix(charts): improve chart table preview with object type [`#1555`](https://github.com/nocobase/nocobase/pull/1555)
-- feat(plugin-workflow) config preload associations in triggers and nodes [`#1548`](https://github.com/nocobase/nocobase/pull/1548)
+- リファクタリング (plugin-workflow): 単一フォームをカスタムフォームブロックに変更 [`#1707`](https://github.com/nocobase/nocobase/pull/1707)
+- チューニング (ci): ジョブのタイムアウト設定を追加 [`#1725`](https://github.com/nocobase/nocobase/pull/1725)
+- リファクタリング (plugin-workflow): メニュー項目をオプションに移行 [`#1724`](https://github.com/nocobase/nocobase/pull/1724)
+- 修正 (client): 変数入力で値をクリアするときのエラーを修正 [`#1723`](https://github.com/nocobase/nocobase/pull/1723)
+- 修正 (record-picker): テーブルのページング問題を修正 [`#1718`](https://github.com/nocobase/nocobase/pull/1718)
+- 修正 (map-plugin): 一部のデータが不正確な問題を修正 [`#1717`](https://github.com/nocobase/nocobase/pull/1717)
+- 修正: ガントチャートでデータ範囲が効かない問題を修正 [`#1716`](https://github.com/nocobase/nocobase/pull/1716)
+- 修正: 操作の送信に失敗した場合にボタンのローディングが消えない問題を修正 [`#1698`](https://github.com/nocobase/nocobase/pull/1698)
+- 修正 (linkage rule): 複数選択条件の判定失敗を修正 [`#1715`](https://github.com/nocobase/nocobase/pull/1715)
+- 修正: テーブルデータの保存 [`#1714`](https://github.com/nocobase/nocobase/pull/1714)
+- 機能追加: リンケージアクションのUIデザインを改善 [`#1659`](https://github.com/nocobase/nocobase/pull/1659)
+- 機能追加 (map): 他のブロックをフィルタリングする機能を追加 [`#1691`](https://github.com/nocobase/nocobase/pull/1691)
+- リファクタリング: リンケージルールの有効化を改善 [`#1700`](https://github.com/nocobase/nocobase/pull/1700)
+- 修正: フィールド引数を見つける [`#1710`](https://github.com/nocobase/nocobase/pull/1710)
+- 機能追加 (form-block): データテンプレート [`#1704`](https://github.com/nocobase/nocobase/pull/1704)
+- 修正: リンケージ関係データの条件判定失敗を修正 [`#1681`](https://github.com/nocobase/nocobase/pull/1681)
+- 修正 (gantt): ガントブロックでの権限チェックを更新 [`#1701`](https://github.com/nocobase/nocobase/pull/1701)
+- 修正: clearFormGraph [`#1706`](https://github.com/nocobase/nocobase/pull/1706)
+- 修正 (plugin-workflow): リクエストボディ変数コンポーネントを修正 [`#1703`](https://github.com/nocobase/nocobase/pull/1703)
+- 修正 (gantt): タスクバーのテキストを改善 [`#1696`](https://github.com/nocobase/nocobase/pull/1696)
+- 修正: 長いテキストは改行されるべきである [`#1686`](https://github.com/nocobase/nocobase/pull/1686)
+- 修正: 最後のページを削除する際、ページに1つのアイテムしかない場合にデータが表示されない問題を修正 [`#1685`](https://github.com/nocobase/nocobase/pull/1685)
+- 修正: メタACLと関連クエリの修正 [`#1695`](https://github.com/nocobase/nocobase/pull/1695)
+- 修正: リンケージルールのタイトルを空にできない問題を修正 [`#1688`](https://github.com/nocobase/nocobase/pull/1688)
+- 機能追加: プラグインマネージャーのUIを改善 [`#1650`](https://github.com/nocobase/nocobase/pull/1650)
+- 機能追加: ガントブロック [`#1393`](https://github.com/nocobase/nocobase/pull/1393)
+- 修正 (client): 変数コンポーネントでの定数入力がフォーカスを失う問題を修正 [`#1689`](https://github.com/nocobase/nocobase/pull/1689)
+- 機能追加 (plugin-workflow): ワークフロー専用ロガーを追加 [`#1677`](https://github.com/nocobase/nocobase/pull/1677)
+- 修正: デザイナーを削除 [`#1684`](https://github.com/nocobase/nocobase/pull/1684)
+- テスト: .env.testを読み込むべき [`#1678`](https://github.com/nocobase/nocobase/pull/1678)
+- 修正: ログアウト後に言語が不正確になる問題を修正 [`#1679`](https://github.com/nocobase/nocobase/pull/1679)
+- 機能追加: ファイルコレクションを最適化 [`#1666`](https://github.com/nocobase/nocobase/pull/1666)
+- 修正: ソートフィールドの初期パフォーマンスを改善 [`#1675`](https://github.com/nocobase/nocobase/pull/1675)
+- 修正 (plugin-workflow): nullコレクションフィールドを修正 [`#1674`](https://github.com/nocobase/nocobase/pull/1674)
+- 修正 (client): 変数コンポーネントの読み取りモードを修正 [`#1673`](https://github.com/nocobase/nocobase/pull/1673)
+- 修正: コンパクトテーマのUI問題を修正 [`#1670`](https://github.com/nocobase/nocobase/pull/1670)
+- 修正: リンケージルールの有効化がフォームに影響しない問題を修正 [`#1669`](https://github.com/nocobase/nocobase/pull/1669)
+- 機能追加: コレクションテンプレートの要約 [`#1672`](https://github.com/nocobase/nocobase/pull/1672)
+- 機能追加 (plugin-workflow): 動的式 [`#1560`](https://github.com/nocobase/nocobase/pull/1560)
+- チューニング: 継承コレクションの警告を探す [`#1663`](https://github.com/nocobase/nocobase/pull/1663)
+- 修正: リンケージルールのタイトル設定のクリア例外 [`#1665`](https://github.com/nocobase/nocobase/pull/1665)
+- 機能追加: tableoidフィルターをサポート [`#1657`](https://github.com/nocobase/nocobase/pull/1657)
+- 機能追加 (plugin-workflow): プロセッサでの配列マッピングサポートを追加 [`#1662`](https://github.com/nocobase/nocobase/pull/1662)
+- 修正 (plugin-workflow): コレクショントリガーにnullを追加する問題を修正 [`#1661`](https://github.com/nocobase/nocobase/pull/1661)
+- 機能追加: フィルターオペレーターに配列をサポート [`#1658`](https://github.com/nocobase/nocobase/pull/1658)
+- 修正 (plugin-workflow): TODOドロワーデータの読み込みを修正 [`#1656`](https://github.com/nocobase/nocobase/pull/1656)
+- リファクタリング (client): 翻訳を改善 [`#1654`](https://github.com/nocobase/nocobase/pull/1654)
+- 修正: 'メニュー項目を追加'ボタンが消える問題を修正 [`#1655`](https://github.com/nocobase/nocobase/pull/1655)
+- チューニング: 新しいallowAddtoCurrent設定を追加 [`#1652`](https://github.com/nocobase/nocobase/pull/1652)
+- 機能追加: ファイルコレクションをサポート [`#1636`](https://github.com/nocobase/nocobase/pull/1636)
+- 修正 (plugin-workflow): マニュアルノードドロワーを修正 [`#1653`](https://github.com/nocobase/nocobase/pull/1653)
+- チューニング: 異なるスキーマでAPIを継承 [`#1545`](https://github.com/nocobase/nocobase/pull/1545)
+- 修正: レコードを選択できないため、子コレクションが有効にならない問題を修正 [`#1649`](https://github.com/nocobase/nocobase/pull/1649)
+- 機能追加: プラグインの有効化前フック [`#1648`](https://github.com/nocobase/nocobase/pull/1648)
+- チューニング: フィールドアクションにトランザクションを追加 [`#1647`](https://github.com/nocobase/nocobase/pull/1647)
+- 修正 (linkage rule): リンケージルールがアクションに表示されない問題を修正 [`#1644`](https://github.com/nocobase/nocobase/pull/1644)
+- リファクタリング: ビューコレクションオプションを改善 [`#1643`](https://github.com/nocobase/nocobase/pull/1643)
+- 修正: フィールドエラーを更新 [`#1645`](https://github.com/nocobase/nocobase/pull/1645)
+- 機能追加 (Table): カラムアクションがリンケージルールをサポート [`#1638`](https://github.com/nocobase/nocobase/pull/1638)
+- 修正 (view-collection): フィールドソースがある場合、フィールド名を編集できない問題を修正 [`#1642`](https://github.com/nocobase/nocobase/pull/1642)
+- 修正: リンケージルール設定を閉じるルールは、フォームを再度開く必要がある問題を修正 [`#1640`](https://github.com/nocobase/nocobase/pull/1640)
+- リファクタリング (client): Variable.TextAreaを制御コンポーネントに変更 [`#1605`](https://github.com/nocobase/nocobase/pull/1605)
+- 修正: pgビュー定義を取得 [`#1641`](https://github.com/nocobase/nocobase/pull/1641)
+- 修正: エイリアスを使ったビューカラムタイプの推論 [`#1634`](https://github.com/nocobase/nocobase/pull/1634)
+- 修正 (plugin-workflow): 軽微なUI問題を修正 [`#1635`](https://github.com/nocobase/nocobase/pull/1635)
+- チューニング: ビューコレクションでアンダースコアを無効化 [`#1633`](https://github.com/nocobase/nocobase/pull/1633)
+- 修正: フォームアクションのドラッグエリアが大きすぎる問題を修正 [`#1628`](https://github.com/nocobase/nocobase/pull/1628)
+- 修正: FixedBlock関連のUIを改善 [`#1632`](https://github.com/nocobase/nocobase/pull/1632)
+- 機能追加: データベースビューコレクション [`#1587`](https://github.com/nocobase/nocobase/pull/1587)
+- 修正: スコープキーでのソートフィールドの初期値を設定 [`#1626`](https://github.com/nocobase/nocobase/pull/1626)
+- スタイル: リンケージルールのスタイルを改善 [`#1625`](https://github.com/nocobase/nocobase/pull/1625)
+- 修正: 属性とグループでの検索 [`#1411`](https://github.com/nocobase/nocobase/pull/1411)
+- ドキュメント: ビデオリンクをビデオタグに変換 [`#1414`](https://github.com/nocobase/nocobase/pull/1414)
+- 機能追加 (parse-variables): フィルターパラメータでの変数解析をサポート [`#1558`](https://github.com/nocobase/nocobase/pull/1558)
+- 修正 (linkage rules): 名称の付与、有効化・無効化、コピー、およびnull値の割り当てをサポート [`#1511`](https://github.com/nocobase/nocobase/pull/1511)
+- チューニング: テストCIを更新 [`#1622`](https://github.com/nocobase/nocobase/pull/1622）
+- 修正: 履歴の新しいボタンが子コレクションを有効にできない問題を修正 [`#1536`](https://github.com/nocobase/nocobase/pull/1536）
+- 修正 (linkages-action): 詳細ブロックアクションがリンケージルールをサポートしていない問題を修正 [`#1504`](https://github.com/nocobase/nocobase/pull/1504）
+- 修正: ポップアップでのFixedBlockの高さが機能しない問題を回避 [`#1621`](https://github.com/nocobase/nocobase/pull/1621）
+- 修正: ページにFixedBlockがある場合、ポップアップのテーブルが表示されない問題を修正 [`#1619`](https://github.com/nocobase/nocobase/pull/1619）
+- 機能追加: 関連フィルターの改善 [`#1606`](https://github.com/nocobase/nocobase/pull/1606）
+- 修正 (Table): テーブルデータが表示されない問題を修正 [`#1617`](https://github.com/nocobase/nocobase/pull/1617）
+- 修正 (plugin-workflow): 未割り当てユーザーのためのTODOリストフォームの表示を修正 [`#1615`](https://github.com/nocobase/nocobase/pull/1615）
+- 機能追加 (table): ページが1ページのみのときにページネーションを非表示にする機能を追加 [`#1614`](https://github.com/nocobase/nocobase/pull/1614）
+- リファクタリング: FixedBlockのパフォーマンスを改善 [`#1593`](https://github.com/nocobase/nocobase/pull/1593）
+- 修正 (collection-manager): 無限再帰の問題を修正 [`#1608`](https://github.com/nocobase/nocobase/pull/1608）
+- 修正 (audit-logs): テーブルカラムにエリプシス機能を追加 [`#1603`](https://github.com/nocobase/nocobase/pull/1603）
+- 機能追加: 関連データの非リンクUIを改善 [`#1602`](https://github.com/nocobase/nocobase/pull/1602）
+- 機能追加 (Kanban): カードがオープンモードをサポート [`#1601`](https://github.com/nocobase/nocobase/pull/1601）
+- 修正 (importable-field): ソートハンドルを移動する際の不正確な表示を修正 [`#1613`](https://github.com/nocobase/nocobase/pull/1613）
+- 修正: 子コレクションを削除した後も有効な子コレクションが残る問題を修正 [`#1610`](https://github.com/nocobase/nocobase/pull/1610）
+- 修正: コレクションテーブルを参照するレコードを削除する際の問題を修正 [`#1611`](https://github.com/nocobase/nocobase/pull/1611）
+- 修正 (plugin-workflow): マニュアルノードのデフォルトアクション値を追加 [`#1600`](https://github.com/nocobase/nocobase/pull/1600）
+- 機能追加 (plugin-workflow): クエリノードのfailOnEmptyオプションを追加 [`#1599`](https://github.com/nocobase/nocobase/pull/1599）
+- 修正 (plugin-workflow): 有効な結果を得るためにgetの代わりにtoJSONを使用 [`#1596`](https://github.com/nocobase/nocobase/pull/1596）
+- 翻訳: pt-BR (ブラジルポルトガル語) [`#1591`](https://github.com/nocobase/nocobase/pull/1591）
+- 修正: 役割の権限に新しいスコープを追加した際に表示が空になる問題を修正 [`#1592`](https://github.com/nocobase/nocobase/pull/1592）
+- 修正 (FixedBlock): カンバンのプログラムによるスクロールを回避 [`#1406`](https://github.com/nocobase/nocobase/pull/1406）
+- 修正: グラフインターフェースとコレクション&フィールドの間で切り替える際にリクエストカテゴリが繰り返される問題を修正 [`#1590`](https://github.com/nocobase/nocobase/pull/1590）
+- 修正: collectionFieldsOptionsがすべてのフィールドを取得できない問題を修正 [`#1588`](https://github.com/nocobase/nocobase/pull/1588）
+- 修正 (plugin-workflow): リクエストノード設定における入力幅を修正 [`#1585`](https://github.com/nocobase/nocobase/pull/1585）
+- 機能追加 (filter-blocks): フィルターブロックをサポート [`#1505`](https://github.com/nocobase/nocobase/pull/1505）
+- リファクタリング: マルチアプリ [`#1578`](https://github.com/nocobase/nocobase/pull/1578）
+- 機能追加: コンパクトテーマ [`#1574`](https://github.com/nocobase/nocobase/pull/1574）
+- 機能追加: cronフィールドをサポート [`#1421`](https://github.com/nocobase/nocobase/pull/1421）
+- 修正 (Calendar): 新しいグリッドイニシャライザーを取得する際の問題を修正 [`#1425`](https://github.com/nocobase/nocobase/pull/1425）
+- 機能追加 (markdown): mermaidをサポートし、スタイルを改善 [`#1583`](https://github.com/nocobase/nocobase/pull/1583）
+- 修正 (plugin-map): マップブロックが繰り返される問題を修正 [`#1582`](https://github.com/nocobase/nocobase/pull/1582）
+- 機能追加: ツリーコレクション [`#1561`](https://github.com/nocobase/nocobase/pull/1561）
+- 機能追加 (plugin-map): マップブロックを追加 [`#1486`](https://github.com/nocobase/nocobase/pull/1486）
+- チューニング: 共有コレクション内のサブアプリを遅延読み込み [`#1569`](https://github.com/nocobase/nocobase/pull/1569）
+- 修正 (record-picker): サブコレクションレコードの追加をサポート [`#1573`](https://github.com/nocobase/nocobase/pull/1573）
+- 修正: アプリマネージャーのリロードを修正 [`#1565`](https://github.com/nocobase/nocobase/pull/1565）
+- 機能追加: マルチアプリ共有コレクションプラグイン [`#1562`](https://github.com/nocobase/nocobase/pull/1562）
+- 機能追加: レコードピッカーでリンクを有効にする機能を追加 [`#1515`](https://github.com/nocobase/nocobase/pull/1515）
+- 機能追加: 複数アプリ [`#1540`](https://github.com/nocobase/nocobase/pull/1540）
+- ドキュメント (client): 変数に関するドキュメントを追加 [`#1556`](https://github.com/nocobase/nocobase/pull/1556）
+- 修正 (charts): オブジェクトタイプでのチャートテーブルプレビューを改善 [`#1555`](https://github.com/nocobase/nocobase/pull/1555）
+- 機能追加 (plugin-workflow): トリガーとノードでの関連付けを事前読み込みする設定を追加 [`#1548`](https://github.com/nocobase/nocobase/pull/1548）
 
-## Fixed
+## 修正内容
 
-- fix(plugin-workflow): fix todo list form read-pretty for non-assigneed user (#1615) [`#1572`](https://github.com/nocobase/nocobase/issues/1572)
+- 修正 (plugin-workflow): 未割り当てユーザーのためのTODOリストフォームの表示を修正 (#1615) [`#1572`](https://github.com/nocobase/nocobase/issues/1572）
 
-## Commits
+## コミット
 
-- chore(versions): 😊 publish v0.9.2-alpha.1 [`d1adc9d`](https://github.com/nocobase/nocobase/commit/d1adc9de0b87b896e90c81c226646b840309c240)
-- fix(file-manager): upgrade s3 version [`50183b0`](https://github.com/nocobase/nocobase/commit/50183b065d32be5d2f6590bfb0c6190fafc12881)
-- fix: linkage rule [`b8776fe`](https://github.com/nocobase/nocobase/commit/b8776fe2d0fd6729c18b968d9f7b15e7c81c4ef2)
+- チューニング (versions): 😊 v0.9.2-alpha.1を公開 [`d1adc9d`](https://github.com/nocobase/nocobase/commit/d1adc9de0b87b896e90c81c226646b840309c240）
+- 修正 (file-manager): S3バージョンをアップグレード [`50183b0`](https://github.com/nocobase/nocobase/commit/50183b065d32be5d2f6590bfb0c6190fafc12881）
+- 修正: リンケージルールを修正 [`b8776fe`](https://github.com/nocobase/nocobase/commit/b8776fe2d0fd6729c18b968d9f7b15e7c81c4ef2）
+

@@ -1,14 +1,14 @@
-# Schema 渲染
+# スキーマレンダリング
 
-## 核心组件
+## コアコンポーネント
 
-Schema 渲染相关组件包括：
+スキーマレンダリングに関連するコンポーネントは以下の通りです：
 
-- `<SchemaComponentProvider />` 提供 schema 渲染所需的上下文
-- `<SchemaComponentOptions />` 用于扩展 components 和 scopes，非必须
-- `<SchemaComponent />` 用于渲染 schema，必须用在 `<SchemaComponentProvider />` 内部
+- `<SchemaComponentProvider />`：スキーマレンダリングに必要なコンテキストを提供します。
+- `<SchemaComponentOptions />`：コンポーネントとスコープを拡張するために使用され、必須ではありません。
+- `<SchemaComponent />`：スキーマをレンダリングするために使用し、`<SchemaComponentProvider />` 内で使用する必要があります。
 
-基本用法如下
+基本的な使用法は以下の通りです。
 
 ```tsx
 import React from 'react';
@@ -31,11 +31,11 @@ export default () => {
 };
 ```
 
-具体 API 参见 [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component)。
+具体的なAPIについては [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component) を参照してください。
 
-## 什么是 scope？
+## スコープとは？
 
-scope 指的是 schema 内可用的变量或函数。例如以下例子的函数 `t()` 需要注册到 scope 里，才能正确渲染 title
+スコープとは、スキーマ内で利用可能な変数や関数を指します。以下の例の関数 `t()` は、タイトルを正しくレンダリングするためにスコープに登録する必要があります。
 
 ```tsx | pure
 <SchemaComponent
@@ -46,62 +46,62 @@ scope 指的是 schema 内可用的变量或函数。例如以下例子的函数
 >
 ```
 
-## 注册 components 和 scopes
+## コンポーネントとスコープの登録
 
-SchemaComponentProvider、SchemaComponentOptions 和 SchemaComponent 都可以注册 components 和 scopes。区别在于：
+`SchemaComponentProvider`、`SchemaComponentOptions`、および `SchemaComponent` は、コンポーネントとスコープを登録することができます。各コンポーネントの役割は以下の通りです：
 
-- SchemaComponentProvider 提供最顶层的上下文
-- SchemaComponentOptions 用于局部上下文的替换和扩展
-- SchemaComponent 为当前 schema 的上下文
+- `SchemaComponentProvider`：最上位のコンテキストを提供します。
+- `SchemaComponentOptions`：局所的なコンテキストの置き換えと拡張に使用します。
+- `SchemaComponent`：現在のスキーマのコンテキストを提供します。
 
-例如以下示例：
+以下の例を参照してください：
 
 ```tsx | pure
 <SchemaComponentProvider components={{ ComponentA }}>
-  <SchemaComponent components={{ ComponentB }} schema={schema1}>
-  <SchemaComponent components={{ ComponentC }} schema={schema2}>
+  <SchemaComponent components={{ ComponentB }} schema={schema1} />
+  <SchemaComponent components={{ ComponentC }} schema={schema2} />
   <SchemaComponentOptions components={{ ComponentD }}>
-    <SchemaComponent components={{ ComponentE }} schema={schema3}>
-    <SchemaComponent components={{ ComponentF }} schema={schema4}>
+    <SchemaComponent components={{ ComponentE }} schema={schema3} />
+    <SchemaComponent components={{ ComponentF }} schema={schema4} />
   </SchemaComponentOptions>
 </SchemaComponentProvider>
 ```
 
-- schema1 里可以使用 ComponentA、ComponentB
-- schema2 里可以使用 ComponentA、ComponentC
-- schema3 里可以使用 ComponentA、ComponentD、ComponentE
-- schema4 里可以使用 ComponentA、ComponentD、ComponentF
+- `schema1` では `ComponentA` と `ComponentB` が使用可能です。
+- `schema2` では `ComponentA` と `ComponentC` が使用可能です。
+- `schema3` では `ComponentA`、`ComponentD`、および `ComponentE` が使用可能です。
+- `schema4` では `ComponentA`、`ComponentD`、および `ComponentF` が使用可能です。
 
-## 在 Application 里使用
+## アプリケーション内での使用
 
-NocoBase 客户端的 Application 的 Providers 内置了 SchemaComponentProvider 组件
+NocoBaseクライアントのアプリケーションプロバイダーには、`SchemaComponentProvider` コンポーネントが組み込まれています。
 
 ```ts
 class Application {
-  // 默认提供的 Providers
+  // デフォルト提供されるプロバイダー
   addDefaultProviders() {
     this.addProvider(SchemaComponentProvider, {
-      scopes: this.scopes
+      scopes: this.scopes,
       components: this.components,
     });
   }
 }
 ```
 
-最终渲染的组件结构如下
+最終的にレンダリングされるコンポーネントの構造は以下の通りです。
 
 ```tsx | pure
 <Router>
-  {/* 路由的 Context Provider */}
+  {/* ルートのコンテキストプロバイダー */}
   <SchemaComponentProvider components={app.components} scopes={app.scopes}>
-    {/* 其他自定义 Provider 组件 - 开始标签 */}
+    {/* その他のカスタムプロバイダーコンポーネント - 開始タグ */}
     <Routes />
-    {/* 其他自定义 Provider 组件 - 结束标签 */}
+    {/* その他のカスタムプロバイダーコンポーネント - 終了タグ */}
   </SchemaComponentProvider>
 </Router>
 ```
 
-应用内部使用时，无需再套 SchemaComponentProvider，直接用 SchemaComponent 就可以了
+アプリケーション内部で使用する際は、再度 `SchemaComponentProvider` をラップする必要はなく、直接 `SchemaComponent` を使用できます。
 
 ```tsx
 import {
@@ -125,41 +125,18 @@ const HelloPage = () => {
     />
   );
 };
-
-class PluginHello extends Plugin {
-  async load() {
-    this.app.addProvider(SchemaComponentProvider, {
-      components: this.app.components,
-      scopes: this.app.scopes,
-    });
-    this.app.addComponents({ Hello });
-    this.router.add('hello', {
-      path: '/',
-      Component: HelloPage,
-    });
-  }
-}
-
-const app = new Application({
-  router: {
-    type: 'memory',
-  },
-  plugins: [PluginHello],
-});
-
-export default app.getRootComponent();
 ```
 
-在应用的生命周期方法内可以使用 `app.addComponents()` 和 `app.addScopes()` 扩展全局的 components 和 scopes。
+アプリケーションのライフサイクルメソッド内では、`app.addComponents()` および `app.addScopes()` を使用して、グローバルなコンポーネントとスコープを拡張できます。
 
 ```ts
 class PluginHello extends Plugin {
   async load() {
     this.app.addComponents({
-      // 扩展的组件
+      // 拡張するコンポーネント
     });
     this.app.addScopes({
-      // 扩展的 scope
+      // 拡張するスコープ
     });
   }
 }

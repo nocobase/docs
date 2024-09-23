@@ -1,24 +1,24 @@
-# 实现数据字段 Initializer
+# データフィールドイニシャライザーの実装
 
-## 场景说明
+## シーン説明
 
-如果新创建的区块是一个复杂的数据区块，那么它内部可能包含多个动态添加的部分，其中重点就是通过 `Configure fields` 对应的 initializer 动态添加字段。例如 `Form` 区块，我们可以通过 `Configure fields` 来配置显示的字段。
+新しく作成されたブロックが複雑なデータブロックである場合、その内部には複数の動的に追加された部分が含まれる可能性があります。その中で重要なのは、`Configure fields` に対応するイニシャライザーを使用してフィールドを動的に追加することです。例えば、`Form` ブロックでは、`Configure fields` を使用して表示するフィールドを設定できます。
 
 ![img_v3_02b4_111734a2-755f-4100-949d-96803ad1912g](https://static-docs.nocobase.com/img_v3_02b4_111734a2-755f-4100-949d-96803ad1912g.jpg)
 
-## 示例说明
+## 例の説明
 
-本实例会在 [添加数据区块 Data Block](/plugin-samples/schema-initializer/data-block) 基础上继续实现类似 `Form` 区块的效果，通过 `Configure fields` 来配置显示的字段。
+この例では、[データブロックの追加](/plugin-samples/schema-initializer/data-block) に基づいて、`Form` ブロックのような効果を実現します。`Configure fields` を使用して表示するフィールドを構成します。
 
-本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-initializer-configure-fields) 中查看。
+この文書の完全な例コードは、[plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-initializer-configure-fields) にて確認できます。
 
 <video width="100%" controls="">
   <source src="https://static-docs.nocobase.com/20240522-190508.mp4" type="video/mp4" />
 </video>
 
-## 初始化插件
+## プラグインの初期化
 
-我们按照 [编写第一个插件](/development/your-fisrt-plugin) 文档说明，如果没有一个项目，可以先创建一个项目，如果已经有了或者是 clone 的源码，则跳过这一步。
+まず、[最初のプラグインを書く](/development/your-fisrt-plugin) のドキュメントに従い、プロジェクトがない場合は新しく作成します。すでにプロジェクトがあるか、ソースコードをクローンしている場合は、このステップをスキップしてください。
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d sqlite
@@ -27,35 +27,35 @@ yarn install
 yarn nocobase install
 ```
 
-然后初始化一个插件，并添加到系统中：
+次に、プラグインを初期化してシステムに追加します：
 
 ```bash
 yarn pm create @nocobase-sample/plugin-initializer-configure-fields
 yarn pm enable @nocobase-sample/plugin-initializer-configure-fields
 ```
 
-然后启动项目即可：
+その後、プロジェクトを起動します：
 
 ```bash
 yarn dev
 ```
 
-然后登录后访问 [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) 就可以看到插件已经安装并启用了。
+ログイン後、[http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) にアクセスすると、プラグインがインストールされ、有効になっていることが確認できます。
 
-## 功能实现
+## 機能の実装
 
-在实现本示例之前，我们需要先了解一些基础知识：
+この例を実現する前に、いくつかの基本的な知識を理解する必要があります：
 
-- [SchemaInitializer 教程](/development/client/ui-schema/initializer)：用于向界面内添加各种区块、字段、操作等
-- [SchemaInitializer API](https://client.docs.nocobase.com/core/ui-schema/schema-initializer)：用于向界面内添加各种区块、字段、操作等
-- [UI Schema](/development/client/ui-schema/what-is-ui-schema)：用于定义界面的结构和样式
-- [Designable 设计器](/development/client/ui-schema/designable)：用于修改 Schema
+- [SchemaInitializer チュートリアル](/development/client/ui-schema/initializer)：インターフェースにさまざまなブロック、フィールド、操作を追加するためのもの
+- [SchemaInitializer API](https://client.docs.nocobase.com/core/ui-schema/schema-initializer)：インターフェースにさまざまなブロック、フィールド、操作を追加するためのもの
+- [UI スキーマ](/development/client/ui-schema/what-is-ui-schema)：インターフェースの構造とスタイルを定義するためのもの
+- [Designable デザイナー](/development/client/ui-schema/designable)：スキーマを変更するためのもの
 
-### 1. Copy 代码并修改插件名称
+### 1. コードをコピーしてプラグイン名を変更
 
-前面已经说明本示例会在 [添加数据区块 Data Block](/plugin-samples/schema-initializer/data-block) 基础上继续实现，所以我们可以复制 `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client` 目录覆盖 `packages/plugins/@nocobase-sample/plugin-initializer-configure-fields/src/client`。
+この例は、[データブロックの追加](/plugin-samples/schema-initializer/data-block) に基づいて続けて実装することが説明されていますので、`packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client` ディレクトリをコピーして、`packages/plugins/@nocobase-sample/plugin-initializer-configure-fields/src/client` に上書きします。
 
-然后修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-fields/src/client/index.tsx`：
+次に、`packages/plugins/@nocobase-sample/plugin-initializer-configure-fields/src/client/index.tsx` を変更します：
 
 ```diff
 import { Plugin } from '@nocobase/client';
@@ -72,11 +72,11 @@ import { InfoBlock, infoBlockSettings, infoBlockInitializerItem } from './InfoBl
 + export default PluginInitializerConfigureFieldsClient;
 ```
 
-为了避免和其他示例冲突，把所有 `InfoBlock` 改为了 `InfoBlock2`，但是本示例文档中仍然按照 `InfoBlock` 来说明。
+他の例との衝突を避けるために、すべての `InfoBlock` を `InfoBlock2` に変更しますが、この例の文書では依然として `InfoBlock` として説明します。
 
-### 2. 创建 `Configure fields` 对应的 initializer
+### 2. `Configure fields` に対応するイニシャライザーを作成する
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-configure-fields/src/client/configureFields.tsx` 文件：
+`packages/plugins/@nocobase-sample/plugin-initializer-configure-fields/src/client/configureFields.tsx` ファイルを新規作成します：
 
 ```tsx | pure
 import { Grid, SchemaInitializer, useSchemaInitializer } from "@nocobase/client";
@@ -84,12 +84,12 @@ import { Grid, SchemaInitializer, useSchemaInitializer } from "@nocobase/client"
 export const configureFields = new SchemaInitializer({
   name: 'info:configureFields',
   icon: 'SettingOutlined',
-  title: 'Configure fields',
+  title: 'フィールド設定',
   items: [
     {
       type: 'itemGroup',
       name: 'fields',
-      title: 'Display fields',
+      title: '表示フィールド',
       useChildren() {
         const { insert } = useSchemaInitializer();
 
@@ -100,18 +100,18 @@ export const configureFields = new SchemaInitializer({
 });
 ```
 
-- [SchemaInitializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer)：用于创建一个 Schema Initializer 实例
-- `icon`：图标，更多图标可参考 Ant Design [Icons](https://ant.design/components/icon/)
-- `title`：按钮标题
-- [items](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types)：按钮下的子项
-  - `type: 'itemGroup'`：子项类型，用于包装多个子项
-  - `name: 'fields'`：子项名称
-  - `title: 'Display fields'`：子项标题
-  - `useChildren`：子项的子项，返回一个数组，数组中的每一项都是一个子项
+- [SchemaInitializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer)：Schema Initializer インスタンスを作成するために使用します。
+- `icon`：アイコン。詳細なアイコンは Ant Design [Icons](https://ant.design/components/icon/) を参照してください。
+- `title`：ボタンのタイトル。
+- [items](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types)：ボタンの下のサブアイテム。
+  - `type: 'itemGroup'`：サブアイテムの型。複数のサブアイテムをラップするために使用します。
+  - `name: 'fields'`：サブアイテムの名前。
+  - `title: '表示フィールド'`：サブアイテムのタイトル。
+  - `useChildren`：サブアイテムのサブアイテムを定義し、配列を返します。配列内の各項目がサブアイテムとなります。
 
-### 3. 注册 `Configure fields` initializer
+### 3. `Configure fields` 初期化子の登録
 
-然后修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-fields/src/client/index.tsx` 文件，导入并注册这个 initializer：
+次に `packages/plugins/@nocobase-sample/plugin-initializer-configure-fields/src/client/index.tsx` ファイルを修正し、この初期化子をインポートして登録します：
 
 ```tsx | pure
 import { configureFields } from './configureFields'
@@ -123,9 +123,9 @@ export class PluginInitializerConfigureFieldsClient extends Plugin {
 }
 ```
 
-### 4. 修改 `getInfoBlockSchema()` 区块
+### 4. `getInfoBlockSchema()` ブロックの修正
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-fields/src/client/InfoBlock.tsx` 文件，将 `getInfoBlockSchema()` 区块修改为：
+`packages/plugins/@nocobase-sample/plugin-initializer-configure-fields/src/client/InfoBlock.tsx` ファイルを修正し、`getInfoBlockSchema()` ブロックを次のように変更します：
 
 ```diff
 function getInfoBlockSchema({ dataSource, collection }) {
@@ -148,11 +148,11 @@ function getInfoBlockSchema({ dataSource, collection }) {
 }
 ```
 
-我们在 `InfoBlock` 的子节点中添加了一个 `fields` 字段，为了更好的布局，我们使用 `Grid` 组件包裹了一下，并且指定了 `x-initializer` 为 `info:configureFields`，因为 `Grid` 内置了 [useSchemaInitializerRender()](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#useschemainitializerrender) 的渲染逻辑，所以我们可以直接使用，如果是一个自定义的组件，需要自己通过 `useSchemaInitializerRender()` 实现渲染逻辑。
+`InfoBlock` の子ノードに `fields` フィールドを追加しました。より良いレイアウトのために `Grid` コンポーネントでラップし、`x-initializer` を `info:configureFields` に指定しました。`Grid` は [useSchemaInitializerRender()](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#useschemainitializerrender) のレンダリングロジックを内蔵しているため、直接使用できます。カスタムコンポーネントの場合は、自分で `useSchemaInitializerRender()` を使用してレンダリングロジックを実装する必要があります。
 
-### 5. 修改 `InfoBlock` 组件
+### 5. `InfoBlock` コンポーネントの修正
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-fields/src/client/InfoBlock.tsx` 文件，将 `InfoBlock` 组件修改为：
+`packages/plugins/@nocobase-sample/plugin-initializer-configure-fields/src/client/InfoBlock.tsx` ファイルを修正し、`InfoBlock` コンポーネントを次のように変更します：
 
 ```tsx | pure
 export const InfoBlock = ({ children }) => {
@@ -160,15 +160,15 @@ export const InfoBlock = ({ children }) => {
 }
 ```
 
-`properties` 的内容会被传入到 `InfoBlock` 组件的 `children` 中，所以我们直接将 `children` 渲染出来即可。
+`properties` の内容は `InfoBlock` コンポーネントの `children` に渡されるため、直接 `children` をレンダリングします。
 
 <video width="100%" controls="">
   <source src="https://static-docs.nocobase.com/20240522-190759.mp4" type="video/mp4" />
 </video>
 
-### 6. 读取数据表字段作为 `Configure fields` 的子项
+### 6. データソースフィールドを `Configure fields` の子項目として読み取る
 
-我们继续修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-fields/src/client/configureFields.tsx` 文件：
+引き続き `packages/plugins/@nocobase-sample/plugin-initializer-configure-fields/src/client/configureFields.tsx` ファイルを修正します：
 
 ```tsx | pure
 interface GetFieldInitializerItemOptions {
@@ -192,12 +192,12 @@ function getFieldInitializerItem(options: GetFieldInitializerItemOptions) {
 export const configureFields = new SchemaInitializer({
   name: 'info:configureFields',
   icon: 'SettingOutlined',
-  title: 'Configure fields',
+  title: 'フィールド設定',
   items: [
     {
       type: 'itemGroup',
       name: 'fields',
-      title: 'Display fields',
+      title: '表示フィールド',
       useChildren() {
         const collection = useCollection();
 
@@ -205,7 +205,7 @@ export const configureFields = new SchemaInitializer({
           .getFields()
           .map<SchemaInitializerItemType>(getFieldInitializerItem({
             collectionField,
-          }))
+          }));
 
         return schemaItems;
       },
@@ -214,20 +214,20 @@ export const configureFields = new SchemaInitializer({
 });
 ```
 
-- [useCollection()](https://client.docs.nocobase.com/core/data-source/collection-provider#usecollection)：用于获取当前数据表的实例。在 `getInfoBlockSchema()` 中我们使用了 [DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider) ，其内部包含了 [CollectionProvider](https://client.docs.nocobase.com/core/data-source/collection-provider) ，所以我们可以直接使用。
-  - `collection.getFields()`：获取数据表的字段
+- [useCollection()](https://client.docs.nocobase.com/core/data-source/collection-provider#usecollection)：現在のデータテーブルのインスタンスを取得するために使用します。`getInfoBlockSchema()`内では、[DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider)を使用しており、その内部には[CollectionProvider](https://client.docs.nocobase.com/core/data-source/collection-provider)が含まれているため、直接使用することができます。
+  - `collection.getFields()`：データテーブルのフィールドを取得します。
 
-- getFieldInitializerItem：用于获取字段的 Schema Initializer Item
-  - `name`：子项名称，用于唯一标识
-  - `title`：子项标题，用于显示，如果字段有 `uiSchema.title` 则使用 `uiSchema.title`，否则使用字段名称，关于 `field.uiSchema` 的数据结构可以参考 [CollectionField](https://client.docs.nocobase.com/core/data-source/collection-field)
-  - `type: 'switch'`：子项类型，[Switch 类型](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#type-switch--schemainitializerswitch)，其核心是要实现 `onClick` 方法，当点击后如果已经存在则删除，如果不存在则添加。
-  - `onClick`：点击事件，我们这里暂时不实现，后续会实现。
+- getFieldInitializerItem：フィールドのスキーマイニシャライザーアイテムを取得するために使用します。
+  - `name`：サブアイテム名で、ユニークに識別します。
+  - `title`：サブアイテムのタイトルで、表示に使用します。フィールドに`uiSchema.title`がある場合はそれを使用し、なければフィールド名を使用します。`field.uiSchema`のデータ構造については[CollectionField](https://client.docs.nocobase.com/core/data-source/collection-field)を参照してください。
+  - `type: 'switch'`：サブアイテムのタイプで、[Switchタイプ](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#type-switch--schemainitializerswitch)です。核心は`onClick`メソッドを実装することで、クリックされたときに存在すれば削除し、存在しなければ追加します。
+  - `onClick`：クリックイベントです。ここでは一時的に実装されておらず、今後の実装を予定しています。
 
 ![img_v3_02b4_7d5c145e-cb15-4d93-9004-bde406e42a5g](https://static-docs.nocobase.com/img_v3_02b4_7d5c145e-cb15-4d93-9004-bde406e42a5g.jpg)
 
-### 7. 实现 `switch` 的添加和删除
+### 7. `switch`の追加と削除の実装
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-fields/src/client/configureFields.tsx` 文件：
+`packages/plugins/@nocobase-sample/plugin-initializer-configure-fields/src/client/configureFields.tsx`ファイルを修正します：
 
 ```diff
 + import { CollectionFieldOptions, ISchema, SchemaInitializer, SchemaInitializerItemType, SchemaSettings, useCollection, useDesignable, useSchemaInitializer } from "@nocobase/client";
@@ -235,12 +235,12 @@ export const configureFields = new SchemaInitializer({
 export const configureFields = new SchemaInitializer({
   name: 'info:configureFields',
   icon: 'SettingOutlined',
-  title: 'Configure fields',
+  title: 'フィールド設定',
   items: [
     {
       type: 'itemGroup',
       name: 'fields',
-      title: 'Display fields',
+      title: '表示フィールド',
       useChildren() {
 +       const { insert } = useSchemaInitializer();
 +       const { remove } = useDesignable();
@@ -254,7 +254,7 @@ export const configureFields = new SchemaInitializer({
 +           schema,
 +           remove,
 +           insert
-+         }))
++         }));
 
         return schemaItems;
       },
@@ -263,14 +263,14 @@ export const configureFields = new SchemaInitializer({
 });
 ```
 
-- [useDesignable()](https://client.docs.nocobase.com/core/ui-schema/designable#usedesignable)：可以增删改查 Schema 的方法
-- [useSchemaInitializer()](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#useschemainitializer)：用于提供 SchemaInitializer 上下文
-  - `insert`：用于插入 Schema。这里之所以使用 `useSchemaInitializer()` 所提供的 insert 方法，而不是 `useDesignable()` 提供的 insert 方法，是因为 Schema 是有层级的，`useSchemaInitializer()` 获取的是 `SchemaInitializer` 所在层级，而 `useDesignable()` 获取的是当前 Schema 所在层级，我们需要插入到 `SchemaInitializer` 所在层级的兄弟层，所以应该使用 `useSchemaInitializer()` 提供的 insert 方法。
+- [useDesignable()](https://client.docs.nocobase.com/core/ui-schema/designable#usedesignable)：スキーマの追加、削除、更新、取得を行うためのメソッドです。
+- [useSchemaInitializer()](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#useschemainitializer)：スキーマイニシャライザコンテキストを提供するために使用されます。
+  - `insert`：スキーマを挿入するために使用されます。`useSchemaInitializer()` が提供する insert メソッドを使用する理由は、スキーマが階層的であり、`useSchemaInitializer()` で取得されるのは `SchemaInitializer` の階層で、`useDesignable()` で取得されるのは現在のスキーマの階層であるため、`SchemaInitializer` の兄弟階層に挿入する必要があります。したがって、`useSchemaInitializer()` の insert メソッドを使用します。
 
 ```tsx | pure
 function getInfoItemSchema(collectionFieldName: string) {
   return {
-     type: 'void',
+    type: 'void',
     'x-collection-field': collectionFieldName,
     // TODO
   }
@@ -295,20 +295,20 @@ function getFieldInitializerItem(options: GetFieldInitializerItemOptions) {
     checked: !!collectionFieldSchema,
     onClick() {
       if (collectionFieldSchema) {
-        remove(collectionFieldSchema)
+        remove(collectionFieldSchema);
         return;
       }
-      insert(getInfoItemSchema(name))
+      insert(getInfoItemSchema(name));
     }
   } as SchemaInitializerItemType;
 }
 ```
 
-首先 `getInfoItemSchema` 用于返回一个字段的 Schema，其中一个关键点是 `x-collection-field` 字段，用于标识这个 Schema 是哪个字段的。
+まず `getInfoItemSchema` はフィールドのスキーマを返すために使用されます。ここで重要なポイントは `x-collection-field` フィールドであり、これはこのスキーマがどのフィールドに属するかを示します。
 
-然后我们通过读取 `schema.properties` 中的数据，找到对应的字段的 Schema，如果存在则删除，如果不存在则插入。
+次に、`schema.properties` のデータを読み取ることで、対応するフィールドのスキーマを見つけます。存在する場合は削除し、存在しない場合は挿入します。
 
-### 8. 完善子节点 Schema 和组件
+### 8. サブノードのスキーマとコンポーネントを充実させる
 
 ```ts
 export const infoItemSettings = new SchemaSettings({
@@ -357,11 +357,11 @@ function getInfoItemSchema(collectionFieldName: string) {
 }
 ```
 
-我们在 `getInfoBlockSchema()` 中使用 `Grid` 组件作为父级，那么子节点就需要使用 `Grid.Row` 和 `Grid.Col` 组件，然后在 `Grid.Col` 中使用 `InfoItem` 组件。
+`getInfoBlockSchema()` 関数では、親として `Grid` コンポーネントを使用します。そのため、子ノードには `Grid.Row` と `Grid.Col` コンポーネントを使用し、さらに `Grid.Col` 内で `InfoItem` コンポーネントを使用します。
 
-`InfoItem` 就是具体的字段信息展示组件，我们这里做的事情很简单，首先读取当前字段的 Schema，其中 `schema.name` 对应 `collectionFieldName`，然后通过 [collection.getField(collectionFieldName)](https://client.docs.nocobase.com/core/data-source/collection#collectiongetfieldname) 获取字段的详细信息，然后展示出来。
+`InfoItem` は具体的なフィールド情報を表示するコンポーネントです。ここでは、まず現在のフィールドのスキーマを読み込みます。その中で `schema.name` は `collectionFieldName` に対応し、次に [collection.getField(collectionFieldName)](https://client.docs.nocobase.com/core/data-source/collection#collectiongetfieldname) を通じてフィールドの詳細情報を取得し、それを表示します。
 
-然后我们将 `InfoItem` 和 `infoItemSettings` 组件注册到系统中：
+次に、`InfoItem` と `infoItemSettings` コンポーネントをシステムに登録します：
 
 ```ts
 export class PluginInitializerComplexDataBlockClient extends Plugin {
@@ -376,21 +376,21 @@ export class PluginInitializerComplexDataBlockClient extends Plugin {
   <source src="https://static-docs.nocobase.com/20240522-190508.mp4" type="video/mp4" />
 </video>
 
-## 打包和上传到生产环境
+## パッケージ化と本番環境へのアップロード
 
-按照 [构建并打包插件](/development/your-fisrt-plugin#构建并打包插件) 文档说明，我们可以打包插件并上传到生产环境。
+[プラグインのビルドとパッケージ化](/development/your-fisrt-plugin#构建并打包插件) に関するドキュメントに従い、プラグインをパッケージ化して本番環境にアップロードできます。
 
-如果是 clone 的源码，需要先执行一次全量 build，将插件的依赖也构建好。
+クローンしたソースコードの場合、まず全体ビルドを一度実行し、プラグインの依存関係を構築します。
 
 ```bash
 yarn build
 ```
 
-如果是使用的 `create-nocobase-app` 创建的项目，可以直接执行：
+`create-nocobase-app` を使用して作成したプロジェクトの場合、次のコマンドを直接実行できます：
 
 ```bash
 yarn build @nocobase-sample/plugin-initializer-configure-fields --tar
 ```
 
-这样就可以看到 `storage/tar/@nocobase-sample/plugin-initializer-configure-fields.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
+これにより `storage/tar/@nocobase-sample/plugin-initializer-configure-fields.tar.gz` ファイルが生成され、その後 [アップロードの方法](/welcome/getting-started/plugin) に従ってインストールを行います。
 

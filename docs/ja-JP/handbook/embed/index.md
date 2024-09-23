@@ -1,25 +1,26 @@
-# 嵌入 NocoBase
+# NocoBaseの埋め込み
 
 <PluginInfo commercial="true" name="embed"></PluginInfo>
 
-## 介绍
+## イントロダクション
 
-本插件用于将 NocoBase 的页面嵌入到其他网站或应用程序中。
+このプラグインは、NocoBaseのページを他のウェブサイトやアプリケーションに埋め込むためのものです。
 
-## 安装
+## インストール
 
-该插件为商业插件，需要通过插件管理器上传并激活插件
+このプラグインは商業用プラグインであり、プラグインマネージャーを通じてアップロードし、アクティブ化する必要があります。
 
 ![20240323162741](https://static-docs.nocobase.com/20240323162741.png)
 
-## 使用说明
+## 使用方法
 
-激活界面配置之后，在页面的设置器（右上角）中，点击 「复制嵌入链接」 。
+インターフェースの設定を有効化した後、ページの設定ツール（右上隅）で「埋め込みリンクをコピー」をクリックします。
 
 ![](https://static-docs.nocobase.com/f11bd6d5e88d38731d7cd3cb149022c8.png)
 
-点击后获取到的链接可以单独打开，例如 `https://xxx.com/embed/qs087rz4o2b` 。
+クリック後に取得したリンクは、単独で開くことができます。例えば、`https://xxx.com/embed/qs087rz4o2b` のようになります。
 
 ![](https://static-docs.nocobase.com/9d847805a00fd07372a474665ec0e968.png)
 
-如果想要在其他网站或应用程序中嵌入 NocoBase 的页面，需要进行用户打通，并将 `token` 拼接到链接中，例如 `https://xxx.com/embed/qs087rz4o2b?token=xxx`，关于用户打通的详细说明请参考 [用户认证](/handbook/auth)。
+他のウェブサイトやアプリケーションにNocoBaseのページを埋め込むには、ユーザーの認証が必要です。`token` をリンクに追加することで実現できます。例えば、`https://xxx.com/embed/qs087rz4o2b?token=xxx` のように、ユーザー認証の詳細については [ユーザー認証](/handbook/auth) を参照してください。
+

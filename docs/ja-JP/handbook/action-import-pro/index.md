@@ -1,9 +1,10 @@
-# 导入 Pro
+# Proのインポート
 
 <PluginInfo commercial="true" name="action-import-pro"></PluginInfo>
 
-## 介绍
+## 概要
 
 :::warning
-插件正在开发中。
+プラグインは現在開発中です。
 :::
+

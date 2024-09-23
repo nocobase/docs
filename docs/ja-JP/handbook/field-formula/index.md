@@ -1,13 +1,14 @@
-# 计算公式
+# 計算式
 
 <PluginInfo name="field-formula"></PluginInfo>
 
-## 介绍
+## イントロダクション
 
-## 字段配置
+## フィールド設定
 
 ![20240512173541](https://static-docs.nocobase.com/20240512173541.png)
 
-## 示例
+## 説明
 
-待补充
+後で追加予定です。
+

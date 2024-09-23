@@ -1,20 +1,20 @@
-# 事件
+# イベント
 
-NocoBase 在应用、插件、数据库的生命周期中提供了非常多的事件监听，这些方法只有在触发了事件之后才会执行。
+NocoBase では、アプリケーション、プラグイン、データベースのライフサイクルにおいて多くのイベントリスナーを提供しており、これらのメソッドはイベントがトリガーされた後にのみ実行されます。
 
-## 如何添加事件监听？
+## イベントリスナーの追加方法
 
-事件的注册一般放于 afterAdd 或 beforeLoad 中
+イベントの登録は一般的に `afterAdd` または `beforeLoad` 内に行います。
 
 ```ts
 export class MyPlugin extends Plugin {
-  // 插件添加进来之后，有没有激活都执行 afterAdd()
+  // プラグインが追加されると、アクティブかどうかに関係なく afterAdd() が実行されます
   afterAdd() {
     this.app.on();
     this.db.on();
   }
 
-  // 只有插件激活之后才会执行 beforeLoad()
+  // プラグインがアクティブになった後にのみ beforeLoad() が実行されます
   beforeLoad() {
     this.app.on();
     this.db.on();
@@ -24,7 +24,7 @@ export class MyPlugin extends Plugin {
 
 ### `db.on`
 
-数据库相关事件与 Collection 配置、Repository 的 CRUD 相关，包括：
+データベース関連のイベントは Collection 設定や Repository の CRUD 操作に関連しており、以下が含まれます：
 
 - 'beforeSync' / 'afterSync'
 - 'beforeValidate' / 'afterValidate'
@@ -37,13 +37,13 @@ export class MyPlugin extends Plugin {
 - 'afterSaveWithAssociations'
 - 'beforeDefineCollection'
 - 'afterDefineCollection'
-- 'beforeRemoveCollection' / 'afterRemoveCollection
+- 'beforeRemoveCollection' / 'afterRemoveCollection'
 
-更多详情参考 [Database API](/api/database#内置事件)。
+詳細については [Database API](/api/database#内置事件) を参照してください。
 
 ### `app.on()`
 
-app 的事件与应用的生命周期相关，相关事件有：
+アプリケーションのイベントはアプリケーションのライフサイクルに関連しており、関連するイベントは次の通りです：
 
 - 'beforeLoad' / 'afterLoad'
 - 'beforeInstall' / 'afterInstall'
@@ -52,15 +52,15 @@ app 的事件与应用的生命周期相关，相关事件有：
 - 'beforeStop' / 'afterStop'
 - 'beforeDestroy' / 'afterDestroy'
 
-更多详情参考 [Application API](/api/server/application#事件)。
+詳細については [Application API](/api/server/application#事件) を参照してください。
 
-## 示例
+## 例
 
-我们继续以简单的在线商店来举例，相关的数据表建模可以回顾 [数据表和字段](/development/) 部分的示例。
+簡単なオンラインストアを例に続けます。関連するデータテーブルのモデリングについては [データテーブルとフィールド](/development/) の例を参照してください。
 
-### 创建订单后减商品库存
+### 注文作成後に商品在庫を減少
 
-通常我们的商品和订单是不同的数据表。客户在下单以后把商品的库存减掉可以解决超卖的问题。这时候我们可以针对创建订单这个数据操作定义相应的事件，在这个时机一并解决库存修改的问题：
+通常、商品と注文は異なるデータテーブルです。顧客が注文した後に商品在庫を減少させることで、オーバーセールの問題を解決できます。この際、注文作成というデータ操作に対応するイベントを定義し、在庫の変更を同時に処理します：
 
 ```ts
 class ShopPlugin extends Plugin {
@@ -83,9 +83,9 @@ class ShopPlugin extends Plugin {
 }
 ```
 
-因为默认 Sequelize 的事件中就携带事务等信息，所以我们可以直接使用 transaction 以保证两个数据操作都在同一事务中进行。
+Sequelize のデフォルトイベントにはトランザクションなどの情報が含まれているため、transaction を直接使用して二つのデータ操作が同一のトランザクション内で行われることを保証できます。
 
-同样的，也可以在创建发货记录后修改订单状态为已发货：
+同様に、出荷記録作成後に注文のステータスを「発送済み」に変更することもできます：
 
 ```ts
 class ShopPlugin extends Plugin {
@@ -96,7 +96,7 @@ class ShopPlugin extends Plugin {
         filterByTk: delivery.orderId,
         value: {
           status: 2
-        }
+        },
         transaction: options.transaction
       });
     });
@@ -104,9 +104,9 @@ class ShopPlugin extends Plugin {
 }
 ```
 
-### 随应用同时存在的定时任务
+### アプリケーションと共に存在する定期タスク
 
-在不考虑使用工作流插件等复杂情况下，我们也可以通过应用级的事件实现一个简单的定时任务机制，且可以与应用的进程绑定，退出后就停止。比如我们希望定时扫描所有订单，超过签收时间后自动签收：
+ワークフロープラグインなどの複雑な使用を考慮しない場合でも、アプリケーションレベルのイベントを活用してシンプルな定期タスク機構を実現し、アプリケーションのプロセスにバインドして、終了後に停止することができます。例えば、すべての注文を定期的にスキャンし、受領時間を超えた場合に自動的に受領する機能を希望する場合：
 
 ```ts
 class ShopPlugin extends Plugin {
@@ -149,7 +149,7 @@ class ShopPlugin extends Plugin {
 
   load() {
     this.app.on('beforeStart', () => {
-      // 每分钟执行一次
+      // 毎分実行
       this.timer = setInterval(this.checkOrder, 1000 * 60);
     });
 
@@ -161,11 +161,12 @@ class ShopPlugin extends Plugin {
 }
 ```
 
-## 小结
+## 小結
 
-通过上面的示例，我们基本了解了事件的作用和可以用于扩展的方式：
+上記の例を通じて、イベントの役割と拡張に使用できる方法について基本的な理解を得ることができました：
 
-- 数据库相关的事件
-- 应用相关的事件
+- データベース関連のイベント
+- アプリケーション関連のイベント
 
-本章涉及的示例代码整合在对应的包 [packages/samples/shop-events](https://github.com/nocobase/nocobase/tree/main/packages/samples/shop-events) 中，可以直接在本地运行，查看效果。
+本章で取り上げた例のコードは、対応するパッケージ [packages/samples/shop-events](https://github.com/nocobase/nocobase/tree/main/packages/samples/shop-events) に統合されており、ローカルで直接実行してその効果を確認できます。
+

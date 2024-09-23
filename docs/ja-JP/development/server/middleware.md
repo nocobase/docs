@@ -1,8 +1,8 @@
-# 中间件
+# ミドルウェア
 
-## 如何注册中间件？
+## ミドルウェアの登録方法
 
-中间件的注册方法一般写在 load 方法里
+ミドルウェアの登録方法は一般的に `load` メソッド内に記述します。
 
 ```ts
 export class MyPlugin extends Plugin {
@@ -14,13 +14,13 @@ export class MyPlugin extends Plugin {
 }
 ```
 
-说明：
+### 説明：
 
-1. `app.acl.use()` 添加资源权限级中间件，在权限判断之前执行
-2. `app.resourcer.use()` 添加资源级中间件，只有请求已定义的 resource 时才执行
-3. `app.use()` 添加应用级中间件，每次请求都执行
+1. `app.acl.use()` はリソース権限レベルのミドルウェアを追加し、権限判断の前に実行されます。
+2. `app.resourcer.use()` はリソースレベルのミドルウェアを追加し、定義されたリソースに対するリクエスト時にのみ実行されます。
+3. `app.use()` はアプリケーションレベルのミドルウェアを追加し、すべてのリクエストで実行されます。
 
-## 洋葱圈模型
+## オニオンモデル
 
 ```ts
 app.use(async (ctx, next) => {
@@ -38,13 +38,13 @@ app.use(async (ctx, next) => {
 });
 ```
 
-访问 http://localhost:13000/api/hello 查看，浏览器响应的数据是：
+`http://localhost:13000/api/hello` にアクセスすると、ブラウザのレスポンスデータは次の通りです：
 
 ```js
 {"data": [1,3,4,2]}
 ```
 
-## 内置中间件及执行顺序
+## ビルトインミドルウェアと実行順序
 
 1. `cors`
 2. `bodyParser`
@@ -55,28 +55,28 @@ app.use(async (ctx, next) => {
    1. `parseToken`
    2. `checkRole`
    3. `acl`
-      1. `acl.use()` 添加的其他中间件
-   4. `resourcer.use()` 添加的其他中间件
+      1. `acl.use()` で追加された他のミドルウェア
+   4. `resourcer.use()` で追加された他のミドルウェア
    5. `action handler`
-7. `app.use()` 添加的其他中间件
+7. `app.use()` で追加された他のミドルウェア
 
-也可以使用 `before` 或 `after` 将中间件插入到前面的某个 `tag` 标记的位置，如：
+`before` または `after` を使用して、前の `tag` の位置にミドルウェアを挿入することもできます。例えば：
 
 ```ts
 app.use(m1, { tag: 'restApi' });
 app.resourcer.use(m2, { tag: 'parseToken' });
 app.resourcer.use(m3, { tag: 'checkRole' });
-// m4 将排在 m1 前面
+// m4 は m1 の前に配置されます
 app.use(m4, { before: 'restApi' });
-// m5 会插入到 m2 和 m3 之间
+// m5 は m2 と m3 の間に挿入されます
 app.resourcer.use(m5, { after: 'parseToken', before: 'checkRole' });
 ```
 
-如果未特殊指定位置，新增的中间件的执行顺序是：
+特別な位置が指定されていない場合、新しいミドルウェアの実行順序は次の通りです：
 
-1. 优先执行 acl.use 添加的，
-2. 然后是 resourcer.use 添加的，包括 middleware handler 和 action handler，
-3. 最后是 app.use 添加的。
+1. 最初に `acl.use()` で追加されたものが実行され、
+2. 次に `resourcer.use()` で追加されたものが実行されます（ミドルウェアハンドラーとアクションハンドラーを含む）、
+3. 最後に `app.use()` で追加されたものが実行されます。
 
 ```ts
 app.use(async (ctx, next) => {
@@ -113,19 +113,19 @@ app.resourcer.define({
 });
 ```
 
-访问 http://localhost:13000/api/hello 查看，浏览器响应的数据是：
+`http://localhost:13000/api/hello` にアクセスすると、ブラウザのレスポンスデータは次の通りです：
 
 ```js
 {"data": [1,2]}
 ```
 
-访问 http://localhost:13000/api/test:list 查看，浏览器响应的数据是：
+`http://localhost:13000/api/test:list` にアクセスすると、ブラウザのレスポンスデータは次の通りです：
 
 ```js
 {"data": [5,3,7,1,2,8,4,6]}
 ```
 
-### resource 未定义，不执行 resourcer.use() 添加的中间件
+### リソースが未定義の場合、`resourcer.use()` で追加されたミドルウェアは実行されません
 
 ```ts
 app.use(async (ctx, next) => {
@@ -143,18 +143,19 @@ app.resourcer.use(async (ctx, next) => {
 });
 ```
 
-访问 http://localhost:13000/api/hello 查看，浏览器响应的数据是：
+`http://localhost:13000/api/hello` にアクセスすると、ブラウザのレスポンスデータは次の通りです：
 
 ```js
 {"data": [1,2]}
 ```
 
-以上示例，hello 资源未定义，不会进入 resourcer，所以就不会执行 resourcer 里的中间件
+上記の例では、`hello` リソースが未定義のため、`resourcer` に入らず、`resourcer` 内のミドルウェアは実行されません。
 
-## 中间件用途
+## ミドルウェアの用途
 
-待补充
+追記予定
 
-## 示例
+## 例
 
-- [samples/ratelimit](https://github.com/nocobase/nocobase/blob/main/packages/samples/ratelimit/) IP rate-limiting
+- [samples/ratelimit](https://github.com/nocobase/nocobase/blob/main/packages/samples/ratelimit/) IP レート制限
+

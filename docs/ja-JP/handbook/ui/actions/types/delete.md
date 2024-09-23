@@ -1,15 +1,16 @@
-# 删除
+# 削除
 
-## 介绍
+## 概要
 
-删除操作用于删除数据记录，通过配置行删除按钮或批量操作按钮进行数据记录的删除。
+削除操作は、データレコードを削除するために使用されます。行の削除ボタンやバッチ操作ボタンを設定することで、データレコードを削除できます。
 
 ![20240413211215](https://static-docs.nocobase.com/20240413211215.png)
 
-## 操作配置项
+## 操作設定項目
 
 ![20240413211439](https://static-docs.nocobase.com/20240413211439.png)
 
-- [编辑按钮](/handbook/ui/actions/action-settings/edit-button)
-- [二次确认](/handbook/ui/actions/action-settings/double-check)
-- 执行后刷新数据：默认开启，执行操作后刷新区块数据
+- [編集ボタン](/handbook/ui/actions/action-settings/edit-button)
+- [二重確認](/handbook/ui/actions/action-settings/double-check)
+- 実行後にデータを更新：デフォルトで有効。操作実行後にブロックデータが自動的に更新されます。
+

@@ -2,63 +2,75 @@ export default [
   {
     title: 'Guide',
     'title.zh-CN': '指南',
+    'title.ja-JP': 'ガイド',
     link: '/handbook',
   },
   {
     title: 'Data modeling',
     'title.zh-CN': '数据建模',
+    'title.ja-JP': 'データモデリング',
     type: 'group',
     children: [
       {
         title: 'Overview',
         'title.zh-CN': '概述',
+        'title.ja-JP': '概要',
         link: '/handbook/data-modeling',
       },
       {
         title: 'Data sources',
         'title.zh-CN': '数据源',
+        'title.ja-JP': 'データソース',
         children: [
           {
             title: 'Data source manager',
             'title.zh-CN': '数据源管理',
+            'title.ja-JP': 'データソースマネージャー',
             link: '/handbook/data-source-manager',
           },
           {
             title: 'Main database',
             'title.zh-CN': '主数据库',
+            'title.ja-JP': 'メインデータベース',
             // subTitle: '@nocobase/plugin-collection-manager',
             link: '/handbook/data-source-main',
           },
           {
             title: 'External database',
             'title.zh-CN': '外部数据库',
+            'title.ja-JP': '外部データベース',
             children: [
               {
                 title: 'Overview',
                 'title.zh-CN': '介绍',
+                'title.ja-JP': '概要',
                 link: '/handbook/data-source-manager/external-database',
               },
               {
                 title: 'External MySQL',
                 'title.zh-CN': '外部 MySQL',
+                'title.ja-JP': '外部 MySQL',
                 // subTitle: '@nocobase/plugin-data-source-external-mysql',
                 link: '/handbook/data-source-external-mysql',
               },
               {
                 title: 'External MariaDB',
                 'title.zh-CN': '外部 MariaDB',
+                'title.ja-JP': '外部 MariaDB',
                 // subTitle: '@nocobase/plugin-data-source-external-mariadb',
                 link: '/handbook/data-source-external-mariadb',
               },
               {
                 title: 'External PostgreSQL',
                 'title.zh-CN': '外部 PostgreSQL',
+                'title.ja-JP': '外部 PostgreSQL',
                 // subTitle: '@nocobase/plugin-data-source-external-postgres',
                 link: '/handbook/data-source-external-postgres',
               },
               {
                 title: 'External MSSQL',
                 'title.zh-CN': '外部 MSSQL',
+                'title.ja-JP': '外部 MSSQL',
                 // subTitle: '@nocobase/plugin-data-source-external-mysql',
                 link: '/handbook/data-source-external-mssql',
               },
@@ -67,12 +79,14 @@ export default [
           {
             title: 'REST API Data source',
             'title.zh-CN': 'REST API 数据源',
+            'title.ja-JP': 'REST API データソース',
             // subTitle: '@nocobase/plugin-data-source-external-postgres',
             link: '/handbook/data-source-rest-api',
           },
           {
             title: 'ER diagram-like tool',
             'title.zh-CN': '类 ER 工具',
+            'title.ja-JP': 'ER図のようなツール',
             // subTitle: '@nocobase/plugin-graph-collection-manager',
             link: '/handbook/graph-collection-manager',
           },
@@ -133,55 +147,66 @@ export default [
       {
         title: 'Collections',
         'title.zh-CN': '数据表',
+        'title.ja-JP': 'コレクション',
         children: [
           {
             title: 'Overview',
             'title.zh-CN': '概述',
+            'title.ja-JP': '概要',
             link: '/handbook/data-modeling/collection',
           },
           {
             title: 'General collection',
             'title.zh-CN': '普通表',
+            'title.ja-JP': '一般コレクション',
             link: '/handbook/data-source-main/general-collection',
           },
           {
             title: 'Inheritance collection',
             'title.zh-CN': '继承表',
+            'title.ja-JP': '継承コレクション',
             link: '/handbook/data-source-main/inheritance-collection',
           },
           {
             title: 'File collection',
             'title.zh-CN': '文件表',
+            'title.ja-JP': 'ファイルコレクション',
             link: '/handbook/file-manager/file-collection',
           },
           {
             title: 'Tree collection',
             'title.zh-CN': '树表',
+            'title.ja-JP': 'ツリーコレクション',
             link: '/handbook/collection-tree',
           },
           {
             title: 'Calendar collection',
             'title.zh-CN': '日历表',
+            'title.ja-JP': 'カレンダーコレクション',
             link: '/handbook/calendar/calendar-collection',
           },
           {
             title: 'Expression collection',
             'title.zh-CN': '表达式表',
+            'title.ja-JP': '式コレクション',
             link: '/handbook/workflow-dynamic-calculation/collection',
           },
           {
             title: 'SQL collection',
             'title.zh-CN': 'SQL 表',
+            'title.ja-JP': 'SQLコレクション',
             link: '/handbook/collection-sql',
           },
           {
             title: 'View collection',
             'title.zh-CN': '数据库视图',
+            'title.ja-JP': 'ビューコレクション',
             link: '/handbook/collection-view',
           },
           {
             title: 'Foreign data collection（FDW）',
             'title.zh-CN': '外部数据表',
+            'title.ja-JP': '外部データコレクション（FDW）',
             link: '/handbook/collection-fdw',
           },
         ],
@@ -189,70 +214,84 @@ export default [
       {
         title: 'Collection fields',
         'title.zh-CN': '数据表字段',
+        'title.ja-JP': 'コレクションフィールド',
         children: [
           {
             title: 'Overview',
             'title.zh-CN': '概述',
+            'title.ja-JP': '概要',
             // subTitle: '@nocobase/plugin-data-source-external-mariadb',
             link: '/handbook/data-modeling/collection-fields',
           },
           {
             title: 'Basic',
             'title.zh-CN': '基本类型',
+            'title.ja-JP': '基本タイプ',
             children: [
               {
                 title: 'Single text',
                 'title.zh-CN': '单行文本',
+                'title.ja-JP': '単一行テキスト',
                 link: '/handbook/data-modeling/collection-fields/basic/input',
               },
               {
                 title: 'Long text',
                 'title.zh-CN': '多行文本',
+                'title.ja-JP': '複数行テキスト',
                 link: '/handbook/data-modeling/collection-fields/basic/textarea',
               },
               {
                 title: 'Phone',
                 'title.zh-CN': '手机号码',
+                'title.ja-JP': '電話番号',
                 link: '/handbook/data-modeling/collection-fields/basic/phone',
               },
               {
                 title: 'Email',
                 'title.zh-CN': '电子邮箱',
+                'title.ja-JP': '電子メール',
                 link: '/handbook/data-modeling/collection-fields/basic/email',
               },
               {
                 title: 'URL',
                 'title.zh-CN': 'URL',
+                'title.ja-JP': 'URL',
                 link: '/handbook/data-modeling/collection-fields/basic/url',
               },
               {
                 title: 'Integer',
                 'title.zh-CN': '整数',
+                'title.ja-JP': '整数',
                 link: '/handbook/data-modeling/collection-fields/basic/integer',
               },
               {
                 title: 'Number',
                 'title.zh-CN': '数字',
+                'title.ja-JP': '数値',
                 link: '/handbook/data-modeling/collection-fields/basic/number',
               },
               {
                 title: 'Percent',
                 'title.zh-CN': '百分比',
+                'title.ja-JP': 'パーセント',
                 link: '/handbook/data-modeling/collection-fields/basic/percent',
               },
               {
                 title: 'Password',
                 'title.zh-CN': '密码',
+                'title.ja-JP': 'パスワード',
                 link: '/handbook/data-modeling/collection-fields/basic/password',
               },
               {
                 title: 'Color',
                 'title.zh-CN': '颜色',
+                'title.ja-JP': '色',
                 link: '/handbook/data-modeling/collection-fields/basic/color',
               },
               {
                 title: 'Icon',
                 'title.zh-CN': '图标',
+                'title.ja-JP': 'アイコン',
                 link: '/handbook/data-modeling/collection-fields/basic/icon',
               },
             ],
@@ -260,35 +299,42 @@ export default [
           {
             title: 'Choices',
             'title.zh-CN': '选择类型',
+            'title.ja-JP': '選択タイプ',
             children: [
               {
                 title: 'Checkbox',
                 'title.zh-CN': '勾选',
+                'title.ja-JP': 'チェックボックス',
                 link: '/handbook/data-modeling/collection-fields/choices/checkbox',
               },
               {
                 title: 'Single select',
                 'title.zh-CN': '下拉菜单（单选）',
+                'title.ja-JP': '単一選択',
                 link: '/handbook/data-modeling/collection-fields/choices/select',
               },
               {
                 title: 'Multiple select',
                 'title.zh-CN': '下拉菜单（多选）',
+                'title.ja-JP': '複数選択',
                 link: '/handbook/data-modeling/collection-fields/choices/multiple-select',
               },
               {
                 title: 'Radio group',
                 'title.zh-CN': '单选框',
+                'title.ja-JP': 'ラジオボタン',
                 link: '/handbook/data-modeling/collection-fields/choices/radio-group',
               },
               {
                 title: 'Checkbox group',
                 'title.zh-CN': '复选框',
+                'title.ja-JP': 'チェックボックスグループ',
                 link: '/handbook/data-modeling/collection-fields/choices/checkbox-group',
               },
               {
                 title: 'China region',
                 'title.zh-CN': '中国行政区',
+                'title.ja-JP': '中国の行政区',
                 link: '/handbook/field-china-region',
               },
             ],
@@ -296,25 +342,30 @@ export default [
           {
             title: 'Media',
             'title.zh-CN': '多媒体',
+            'title.ja-JP': 'メディア',
             children: [
               {
                 title: 'Markdown',
                 'title.zh-CN': 'Markdown',
+                'title.ja-JP': 'Markdown',
                 link: '/handbook/data-modeling/collection-fields/media/markdown',
               },
               {
                 title: 'Markdown(Vditor)',
                 'title.zh-CN': 'Markdown(Vditor)',
+                'title.ja-JP': 'Markdown(Vditor)',
                 link: '/handbook/field-markdown-vditor',
               },
               {
                 title: 'Rich text',
                 'title.zh-CN': '富文本',
+                'title.ja-JP': 'リッチテキスト',
                 link: '/handbook/data-modeling/collection-fields/media/rich-text',
               },
               {
                 title: 'Attachment',
                 'title.zh-CN': '附件',
+                'title.ja-JP': '添付ファイル',
                 link: '/handbook/file-manager/field-attachment',
               },
             ],
@@ -322,35 +373,42 @@ export default [
           {
             title: 'Date & Time',
             'title.zh-CN': '日期 & 时间',
+            'title.ja-JP': '日付と時間',
             children: [
               {
                 title: 'Overview',
                 'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
                 link: '/handbook/data-modeling/collection-fields/datetime',
               },
               {
                 title: 'Datetime(with time zone)',
                 'title.zh-CN': '日期时间（含时区）',
+                'title.ja-JP': '日付と時間（タイムゾーンあり）',
                 link: '/handbook/data-modeling/collection-fields/datetime/datetime',
               },
               {
                 title: 'Datetime(without time zone)',
                 'title.zh-CN': '日期时间（不含时区）',
+                'title.ja-JP': '日付と時間（タイムゾーンなし）',
                 link: '/handbook/data-modeling/collection-fields/datetime/datetime-without-tz',
               },
               {
                 title: 'Unix timestamp',
                 'title.zh-CN': 'Unix 时间戳',
+                'title.ja-JP': 'Unix タイムスタンプ',
                 link: '/handbook/data-modeling/collection-fields/datetime/unix-timestamp',
               },
               {
                 title: 'Date(without time)',
                 'title.zh-CN': '日期（不含时间）',
+                'title.ja-JP': '日付（時間なし）',
                 link: '/handbook/data-modeling/collection-fields/datetime/date',
               },
               {
                 title: 'Time',
                 'title.zh-CN': '时间',
+                'title.ja-JP': '時間',
                 link: '/handbook/data-modeling/collection-fields/datetime/time',
               },
             ],
@@ -358,25 +416,30 @@ export default [
           {
             title: 'Geometric',
             'title.zh-CN': '几何图形',
+            'title.ja-JP': '幾何学',
             children: [
               {
                 title: 'Point',
                 'title.zh-CN': '点',
+                'title.ja-JP': '点',
                 link: '/handbook/data-modeling/collection-fields/geometric/point',
               },
               {
                 title: 'Line',
                 'title.zh-CN': '线',
+                'title.ja-JP': '線',
                 link: '/handbook/data-modeling/collection-fields/geometric/line',
               },
               {
                 title: 'Circle',
                 'title.zh-CN': '圆',
+                'title.ja-JP': '円',
                 link: '/handbook/data-modeling/collection-fields/geometric/circle',
               },
               {
                 title: 'Polygon',
                 'title.zh-CN': '多边形',
+                'title.ja-JP': '多角形',
                 link: '/handbook/data-modeling/collection-fields/geometric/polygon',
               },
             ],
@@ -384,45 +447,54 @@ export default [
           {
             title: 'Advanced',
             'title.zh-CN': '高级类型',
+            'title.ja-JP': '高度なタイプ',
             children: [
               {
                 title: 'UUID',
                 'title.zh-CN': 'UUID',
+                'title.ja-JP': 'UUID',
                 link: '/handbook/data-modeling/collection-fields/advanced/uuid',
               },
               {
                 title: 'Nano ID',
                 'title.zh-CN': 'Nano ID',
+                'title.ja-JP': 'Nano ID',
                 link: '/handbook/data-modeling/collection-fields/advanced/nano-id',
               },
               {
                 title: 'Sort',
                 'title.zh-CN': '排序',
+                'title.ja-JP': 'ソート',
                 link: '/handbook/field-sort',
               },
               {
                 title: 'Formula',
                 'title.zh-CN': '计算公式',
+                'title.ja-JP': '計算式',
                 link: '/handbook/field-formula',
               },
               {
                 title: 'Sequence',
                 'title.zh-CN': '自动编码',
+                'title.ja-JP': 'シーケンス',
                 link: '/handbook/field-sequence',
               },
               {
                 title: 'JSON',
                 'title.zh-CN': 'JSON',
+                'title.ja-JP': 'JSON',
                 link: '/handbook/data-modeling/collection-fields/advanced/json',
               },
               {
                 title: 'Collection 选择器',
                 'title.zh-CN': '数据表选择器',
+                'title.ja-JP': 'コレクションセレクター',
                 link: '/handbook/data-modeling/collection-fields/advanced/collection-select',
               },
               {
                 title: 'Encryption',
                 'title.zh-CN': '加密',
+                'title.ja-JP': '暗号化',
                 link: '/handbook/field-encryption',
               },
             ],
@@ -430,30 +502,36 @@ export default [
           {
             title: 'System info',
             'title.zh-CN': '系统信息',
+            'title.ja-JP': 'システム情報',
             children: [
               {
                 title: 'Created at',
                 'title.zh-CN': '创建日期',
+                'title.ja-JP': '作成日',
                 link: '/handbook/data-modeling/collection-fields/system-info/created-at',
               },
               {
                 title: 'Last updated at',
                 'title.zh-CN': '最后修改日期',
+                'title.ja-JP': '最終更新日',
                 link: '/handbook/data-modeling/collection-fields/system-info/updated-at',
               },
               {
                 title: 'Created by',
                 'title.zh-CN': '创建人',
+                'title.ja-JP': '作成者',
                 link: '/handbook/users/field-created-by',
               },
               {
                 title: 'Last updated by',
                 'title.zh-CN': '最后修改人',
+                'title.ja-JP': '最終更新者',
                 link: '/handbook/users/field-updated-by',
               },
               {
                 title: 'Table OID',
                 'title.zh-CN': 'Table OID',
+                'title.ja-JP': 'テーブルOID',
                 link: '/handbook/data-modeling/collection-fields/system-info/table-oid',
               },
             ],
@@ -461,35 +539,42 @@ export default [
           {
             title: 'Association',
             'title.zh-CN': '关系类型',
+            'title.ja-JP': '関連タイプ',
             children: [
               {
                 title: 'Overview',
                 'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
                 link: '/handbook/data-modeling/collection-fields/associations',
               },
               {
                 title: 'One-to-one',
                 'title.zh-CN': '一对一',
+                'title.ja-JP': '一対一',
                 link: '/handbook/data-modeling/collection-fields/associations/o2o',
               },
               {
                 title: 'One-to-many',
                 'title.zh-CN': '一对多',
+                'title.ja-JP': '一対多',
                 link: '/handbook/data-modeling/collection-fields/associations/o2m',
               },
               {
                 title: 'Many-to-one',
                 'title.zh-CN': '多对一',
+                'title.ja-JP': '多対一',
                 link: '/handbook/data-modeling/collection-fields/associations/m2o',
               },
               {
                 title: 'Many-to-many',
                 'title.zh-CN': '多对多',
+                'title.ja-JP': '多対多',
                 link: '/handbook/data-modeling/collection-fields/associations/m2m',
               },
               {
                 title: 'Many-to-many (array)',
                 'title.zh-CN': '多对多（数组）',
+                'title.ja-JP': '多対多（配列）',
                 link: '/handbook/field-m2m-array',
               },
             ],
@@ -501,89 +586,107 @@ export default [
   {
     title: 'Edit UI',
     'title.zh-CN': '配置界面',
+    'title.ja-JP': 'UI編集',
     type: 'group',
     children: [
       {
         title: 'UI Editor mode',
         'title.zh-CN': '界面配置模式',
+        'title.ja-JP': 'UIエディタモード',
         link: '/handbook/ui/ui-editor',
       },
       {
         title: 'Menu',
         'title.zh-CN': '菜单',
+        'title.ja-JP': 'メニュー',
         link: '/handbook/ui/menus',
       },
       {
         title: 'Page',
         'title.zh-CN': '页面',
+        'title.ja-JP': 'ページ',
         link: '/handbook/ui/pages',
       },
       {
         title: 'Pop-up',
         'title.zh-CN': '弹窗',
+        'title.ja-JP': 'ポップアップ',
         link: '/handbook/ui/pop-up',
       },
       {
         title: 'Blocks',
         'title.zh-CN': '区块',
+        'title.ja-JP': 'ブロック',
         children: [
           {
             title: 'Overview',
             'title.zh-CN': '概述',
+            'title.ja-JP': '概要',
             link: '/handbook/ui/blocks',
           },
           {
             title: 'Data blocks',
             'title.zh-CN': '数据区块',
+            'title.ja-JP': 'データブロック',
             children: [
               {
                 title: 'Table',
                 'title.zh-CN': '表格',
+                'title.ja-JP': 'テーブル',
                 link: '/handbook/ui/blocks/data-blocks/table',
               },
               {
                 title: 'Form',
                 'title.zh-CN': '表单',
+                'title.ja-JP': 'フォーム',
                 link: '/handbook/ui/blocks/data-blocks/form',
               },
               {
                 title: 'Details',
                 'title.zh-CN': '详情',
+                'title.ja-JP': '詳細',
                 link: '/handbook/ui/blocks/data-blocks/details',
               },
               {
                 title: 'List',
                 'title.zh-CN': '列表',
+                'title.ja-JP': 'リスト',
                 link: '/handbook/ui/blocks/data-blocks/list',
               },
               {
                 title: 'Grid card',
                 'title.zh-CN': '网格卡片',
+                'title.ja-JP': 'グリッドカード',
                 link: '/handbook/ui/blocks/data-blocks/grid-card',
               },
               {
                 title: 'Calendar',
                 'title.zh-CN': '日历',
+                'title.ja-JP': 'カレンダー',
                 link: '/handbook/calendar',
               },
               {
                 title: 'Gantt',
                 'title.zh-CN': '甘特图',
+                'title.ja-JP': 'ガントチャート',
                 link: '/handbook/block-gantt',
               },
               {
                 title: 'Kanban',
                 'title.zh-CN': '看板',
+                'title.ja-JP': 'カンバン',
                 link: '/handbook/block-kanban',
               },
               {
                 title: 'Map',
                 'title.zh-CN': '地图',
+                'title.ja-JP': '地図',
                 link: '/handbook/block-map',
               },
               {
                 title: 'Charts',
                 'title.zh-CN': '图表',
+                'title.ja-JP': 'チャート',
                 link: '/handbook/data-visualization/',
               },
             ],
@@ -591,20 +694,24 @@ export default [
           {
             title: 'Filter blocks',
             'title.zh-CN': '筛选区块',
+            'title.ja-JP': 'フィルターブロック',
             children: [
               {
                 title: 'Form',
                 'title.zh-CN': '表单',
+                'title.ja-JP': 'フォーム',
                 link: '/handbook/ui/blocks/filter-blocks/form',
               },
               {
                 title: 'Collapse',
                 'title.zh-CN': '折叠面板',
+                'title.ja-JP': '折りたたみパネル',
                 link: '/handbook/ui/blocks/filter-blocks/collapse',
               },
               {
                 title: 'Tree',
                 'title.zh-CN': '树',
+                'title.ja-JP': 'ツリー',
                 link: '/handbook/block-tree',
               },
             ],
@@ -612,30 +719,36 @@ export default [
           {
             title: 'Other blocks',
             'title.zh-CN': '其他区块',
+            'title.ja-JP': 'その他のブロック',
             children: [
               {
                 title: 'Markdown',
                 'title.zh-CN': 'Markdown',
+                'title.ja-JP': 'Markdown',
                 link: '/handbook/ui/blocks/other-blocks/markdown',
               },
               {
                 title: 'iframe',
                 'title.zh-CN': 'iframe',
+                'title.ja-JP': 'iframe',
                 link: '/handbook/block-iframe',
               },
               {
                 title: 'Action panel',
                 'title.zh-CN': '操作面板',
+                'title.ja-JP': 'アクションパネル',
                 link: '/handbook/block-workbench',
               },
               {
                 title: 'Workflow: Manual todos',
                 'title.zh-CN': '工作流：人工待办',
+                'title.ja-JP': 'ワークフロー：手動タスク',
                 link: '/handbook/ui/blocks/other-blocks/workflow-manual-todos',
               },
               {
                 title: 'Workflow: Approval',
                 'title.zh-CN': '工作流：审批',
+                'title.ja-JP': 'ワークフロー：承認',
                 link: '/handbook/ui/blocks/other-blocks/workflow-approval',
               },
               // {
@@ -648,55 +761,66 @@ export default [
           {
             title: 'Block templates',
             'title.zh-CN': '区块模板',
+            'title.ja-JP': 'ブロックテンプレート',
             link: '/handbook/ui/blocks/block-templates',
           },
           {
             title: 'Block settings',
             'title.zh-CN': '区块设置项',
+            'title.ja-JP': 'ブロック設定',
             children: [
               {
                 title: 'Set the data scope',
                 'title.zh-CN': '设置数据范围',
+                'title.ja-JP': 'データ範囲を設定',
                 link: '/handbook/ui/blocks/block-settings/data-scope',
               },
               {
                 title: 'Set default sorting rules',
                 'title.zh-CN': '设置排序规则',
+                'title.ja-JP': 'デフォルトのソートルールを設定',
                 link: '/handbook/ui/blocks/block-settings/sorting-rule',
               },
               {
                 title: 'Set data loading mode',
                 'title.zh-CN': '设置数据加载方式',
+                'title.ja-JP': 'データ読み込みモードを設定',
                 link: '/handbook/ui/blocks/block-settings/loading-mode',
               },
               {
                 title: 'Connect data blocks',
                 'title.zh-CN': '连接数据区块',
+                'title.ja-JP': 'データブロックを接続',
                 link: '/handbook/ui/blocks/block-settings/connect-block',
               },
               {
                 title: 'Save as template',
                 'title.zh-CN': '保存为区块模板',
+                'title.ja-JP': 'テンプレートとして保存',
                 link: '/handbook/ui/blocks/block-settings/block-template',
               },
               {
                 title: 'Linkage rules',
                 'title.zh-CN': '联动规则',
+                'title.ja-JP': '連動ルール',
                 link: '/handbook/ui/blocks/block-settings/linkage-rule',
               },
               {
                 title: 'Edit block title',
                 'title.zh-CN': '编辑区块标题',
+                'title.ja-JP': 'ブロックタイトルを編集',
                 link: '/handbook/ui/blocks/block-settings/block-title',
               },
               {
                 title: 'Set block height',
                 'title.zh-CN': '设置区块高度',
+                'title.ja-JP': 'ブロックの高さを設定',
                 link: '/handbook/ui/blocks/block-settings/block-height',
               },
               {
                 title: 'Delete',
                 'title.zh-CN': '删除区块',
+                'title.ja-JP': 'ブロックを削除',
                 link: '/handbook/ui/blocks/block-settings/block-delete',
               },
             ],
@@ -706,44 +830,53 @@ export default [
       {
         title: 'Fields',
         'title.zh-CN': '字段',
+        'title.ja-JP': 'フィールド',
         children: [
           {
             title: 'Overview',
             'title.zh-CN': '概述',
+            'title.ja-JP': '概要',
             link: '/handbook/ui/fields',
           },
           {
             title: 'Common ettings',
             'title.zh-CN': '通用配置项',
+            'title.ja-JP': '一般設定',
             children: [
               {
                 title: 'Table column',
                 'title.zh-CN': '表格字段',
+                'title.ja-JP': 'テーブルカラム',
                 link: '/handbook/ui/fields/generic/table-column',
               },
               {
                 title: 'Form',
                 'title.zh-CN': '表单字段',
+                'title.ja-JP': 'フォームフィールド',
                 link: '/handbook/ui/fields/generic/form-item',
               },
               {
                 title: 'Detail',
                 'title.zh-CN': '详情字段',
+                'title.ja-JP': '詳細フィールド',
                 link: '/handbook/ui/fields/generic/detail-form-item',
               },
               {
                 title: 'Bulk edit form',
                 'title.zh-CN': '批量编辑表单',
+                'title.ja-JP': 'バルク編集フォーム',
                 link: '/handbook/ui/fields/generic/bulk-edit-form-item',
               },
               {
                 title: 'Filter form',
                 'title.zh-CN': '筛选表单',
+                'title.ja-JP': 'フィルターフォーム',
                 link: '/handbook/ui/fields/generic/filter-form-item',
               },
               {
                 title: 'Collapse',
                 'title.zh-CN': '折叠面板',
+                'title.ja-JP': '折りたたみパネル',
                 link: '/handbook/ui/fields/generic/filter-collapse-item',
               },
             ],
@@ -751,60 +884,72 @@ export default [
           {
             title: 'Specific settings',
             'title.zh-CN': '特有配置项',
+            'title.ja-JP': '特有設定',
             children: [
               {
                 title: 'Date picker',
                 'title.zh-CN': '时间日期',
+                'title.ja-JP': '日付ピッカー',
                 link: '/handbook/ui/fields/specific/date-picker',
               },
               {
                 title: 'Cascade select',
                 'title.zh-CN': '级联选择',
+                'title.ja-JP': 'カスケードセレクト',
                 link: '/handbook/ui/fields/specific/cascade-select',
               },
               {
                 title: 'Nester',
                 'title.zh-CN': '子表单',
+                'title.ja-JP': 'ネスター',
                 link: '/handbook/ui/fields/specific/nester',
               },
               {
                 title: 'Popover nester',
                 'title.zh-CN': '子表单（弹窗）',
+                'title.ja-JP': 'ポップオーバーネスター',
                 link: '/handbook/ui/fields/specific/popover-nester',
               },
               {
                 title: 'Select',
                 'title.zh-CN': '选择器',
+                'title.ja-JP': 'セレクター',
                 link: '/handbook/ui/fields/specific/select',
               },
               {
                 title: 'Record picker',
                 'title.zh-CN': '数据选择器',
+                'title.ja-JP': 'レコードピッカー',
                 link: '/handbook/ui/fields/specific/picker',
               },
               {
                 title: 'Sub table',
                 'title.zh-CN': '子表格',
+                'title.ja-JP': 'サブテーブル',
                 link: '/handbook/ui/fields/specific/sub-table',
               },
               {
                 title: 'Sub detail',
                 'title.zh-CN': '子详情',
+                'title.ja-JP': 'サブ詳細',
                 link: '/handbook/ui/fields/specific/sub-detail',
               },
               {
                 title: 'Title',
                 'title.zh-CN': '标题',
+                'title.ja-JP': 'タイトル',
                 link: '/handbook/ui/fields/specific/title',
               },
               {
                 title: 'Tag',
                 'title.zh-CN': '标签',
+                'title.ja-JP': 'タグ',
                 link: '/handbook/ui/fields/specific/tag',
               },
               {
                 title: 'File manager',
                 'title.zh-CN': '文件管理器',
+                'title.ja-JP': 'ファイルマネージャー',
                 link: '/handbook/ui/fields/specific/file-manager',
               },
             ],
@@ -812,70 +957,84 @@ export default [
           {
             title: 'Field Settings',
             'title.zh-CN': '字段配置项',
+            'title.ja-JP': 'フィールド設定',
             children: [
               {
                 title: 'Required',
                 'title.zh-CN': '必填',
+                'title.ja-JP': '必須',
                 link: '/handbook/ui/fields/field-settings/required',
               },
               {
                 title: 'Default value',
                 'title.zh-CN': '默认值',
+                'title.ja-JP': 'デフォルト値',
                 link: '/handbook/ui/fields/field-settings/default-value',
               },
               {
                 title: 'Validation rules',
                 'title.zh-CN': '验证规则',
+                'title.ja-JP': '検証ルール',
                 link: '/handbook/ui/fields/field-settings/validation-rules',
               },
               {
                 title: 'Number format',
                 'title.zh-CN': '数值格式化',
+                'title.ja-JP': '数値フォーマット',
                 link: '/handbook/ui/fields/field-settings/number-format',
               },
               {
                 title: 'Set the data scope',
                 'title.zh-CN': '设置数据范围',
+                'title.ja-JP': 'データ範囲を設定',
                 link: '/handbook/ui/fields/field-settings/data-scope',
               },
               {
                 title: 'Title field',
                 'title.zh-CN': '标题字段',
+                'title.ja-JP': 'タイトルフィールド',
                 link: '/handbook/ui/fields/field-settings/title-field',
               },
               {
                 title: 'Pattern',
                 'title.zh-CN': '显示模式',
+                'title.ja-JP': '表示パターン',
                 link: '/handbook/ui/fields/field-settings/pattern',
               },
               {
                 title: 'Edit field title',
                 'title.zh-CN': '编辑字段标题',
+                'title.ja-JP': 'フィールドタイトルを編集',
                 link: '/handbook/ui/fields/field-settings/edit-title',
               },
               {
                 title: 'Display title',
                 'title.zh-CN': '显示标题',
+                'title.ja-JP': '表示タイトル',
                 link: '/handbook/ui/fields/field-settings/display-title',
               },
               {
                 title: 'Edit description',
                 'title.zh-CN': '编辑描述',
+                'title.ja-JP': '説明を編集',
                 link: '/handbook/ui/fields/field-settings/edit-description',
               },
               {
                 title: 'Edit tooltip',
                 'title.zh-CN': '编辑提示信息',
+                'title.ja-JP': 'ツールチップを編集',
                 link: '/handbook/ui/fields/field-settings/edit-tooltip',
               },
               {
                 title: 'Field Component',
                 'title.zh-CN': '字段组件',
+                'title.ja-JP': 'フィールドコンポーネント',
                 link: '/handbook/ui/fields/field-settings/field-component',
               },
               {
                 title: 'Style',
                 'title.zh-CN': '样式',
+                'title.ja-JP': 'スタイル',
                 link: '/handbook/ui/fields/field-settings/style',
               },
             ],
@@ -883,6 +1042,7 @@ export default [
           {
             title: 'Asscoation field component',
             'title.zh-CN': '关系字段组件',
+            'title.ja-JP': '関連フィールドコンポーネント',
             link: '/handbook/ui/fields/association-field',
           },
         ],
@@ -890,54 +1050,65 @@ export default [
       {
         title: 'Actions',
         'title.zh-CN': '操作',
+        'title.ja-JP': 'アクション',
         children: [
           {
             title: 'Overview',
             'title.zh-CN': '概述',
+            'title.ja-JP': '概要',
             link: '/handbook/ui/actions',
           },
           {
             title: 'Common settings',
             'title.zh-CN': '通用配置项',
+            'title.ja-JP': '一般設定',
             children: [
               {
                 title: 'Linkage rule',
                 'title.zh-CN': '联动规则',
+                'title.ja-JP': '連動ルール',
                 link: '/handbook/ui/actions/action-settings/linkage-rule',
               },
               {
                 title: 'Open mode',
                 'title.zh-CN': '打开方式',
+                'title.ja-JP': 'オープンモード',
                 link: '/handbook/ui/actions/action-settings/open-mode',
               },
               {
                 title: 'Popup size',
                 'title.zh-CN': '弹窗尺寸',
+                'title.ja-JP': 'ポップアップサイズ',
                 link: '/handbook/ui/actions/action-settings/popup-size',
               },
               {
                 title: 'Secondary confirmation',
                 'title.zh-CN': '二次确认',
+                'title.ja-JP': '二次確認',
                 link: '/handbook/ui/actions/action-settings/double-check',
               },
               {
                 title: 'Bind workflows',
                 'title.zh-CN': '绑定工作流',
+                'title.ja-JP': 'ワークフローをバインド',
                 link: '/handbook/ui/actions/action-settings/bind-workflow',
               },
               {
                 title: 'Assign field values',
                 'title.zh-CN': '字段赋值',
+                'title.ja-JP': 'フィールド値を割り当て',
                 link: '/handbook/ui/actions/action-settings/assign-values',
               },
               {
                 title: 'Edit button',
                 'title.zh-CN': '编辑按钮',
+                'title.ja-JP': 'ボタンを編集',
                 link: '/handbook/ui/actions/action-settings/edit-button',
               },
               {
                 title: 'After successful submission',
                 'title.zh-CN': '提交成功后',
+                'title.ja-JP': '送信成功後',
                 link: '/handbook/ui/actions/action-settings/affter-successful',
               },
             ],
@@ -945,100 +1116,120 @@ export default [
           {
             title: 'Action types',
             'title.zh-CN': '操作类型',
+            'title.ja-JP': 'アクションタイプ',
             children: [
               {
                 title: 'View',
                 'title.zh-CN': '查看',
+                'title.ja-JP': '表示',
                 link: '/handbook/ui/actions/types/view',
               },
               {
                 title: 'Filter',
                 'title.zh-CN': '筛选',
+                'title.ja-JP': 'フィルター',
                 link: '/handbook/ui/actions/types/filter',
               },
               {
                 title: 'Add new',
                 'title.zh-CN': '添加',
+                'title.ja-JP': '追加',
                 link: '/handbook/ui/actions/types/add-new',
               },
               {
                 title: 'Link',
                 'title.zh-CN': '链接',
+                'title.ja-JP': 'リンク',
                 link: '/handbook/ui/actions/types/link',
               },
               {
                 title: 'Edit',
                 'title.zh-CN': '编辑',
+                'title.ja-JP': '編集',
                 link: '/handbook/ui/actions/types/edit',
               },
               {
                 title: 'Delete',
                 'title.zh-CN': '删除',
+                'title.ja-JP': '削除',
                 link: '/handbook/ui/actions/types/delete',
               },
               {
                 title: 'Refresh',
                 'title.zh-CN': '刷新',
+                'title.ja-JP': 'リフレッシュ',
                 link: '/handbook/ui/actions/types/refresh',
               },
               {
                 title: 'Add record',
                 'title.zh-CN': '添加记录',
+                'title.ja-JP': 'レコードを追加',
                 link: '/handbook/ui/actions/types/add-record',
               },
               {
                 title: 'Custom pop-up',
                 'title.zh-CN': '自定义弹窗',
+                'title.ja-JP': 'カスタムポップアップ',
                 link: '/handbook/ui/actions/types/pop-up',
               },
               {
                 title: 'Update record',
                 'title.zh-CN': '更新记录',
+                'title.ja-JP': 'レコードを更新',
                 link: '/handbook/ui/actions/types/update-record',
               },
               {
                 title: 'Save record',
                 'title.zh-CN': '保存记录',
+                'title.ja-JP': 'レコードを保存',
                 link: '/handbook/ui/actions/types/save-record',
               },
               {
                 title: 'Submit',
                 'title.zh-CN': '提交',
+                'title.ja-JP': '送信',
                 link: '/handbook/ui/actions/types/submit',
               },
               {
                 title: 'Trigger workflow',
                 'title.zh-CN': '触发工作流',
+                'title.ja-JP': 'ワークフローをトリガー',
                 link: '/handbook/ui/actions/types/trigger-workflow',
               },
               {
                 title: 'Bulk edit',
                 'title.zh-CN': '批量编辑',
+                'title.ja-JP': 'バルク編集',
                 link: '/handbook/action-bulk-edit',
               },
               {
                 title: 'Bulk update',
                 'title.zh-CN': '批量更新',
+                'title.ja-JP': 'バルク更新',
                 link: '/handbook/action-bulk-update',
               },
               {
                 title: 'Custom request',
                 'title.zh-CN': '自定义请求',
+                'title.ja-JP': 'カスタムリクエスト',
                 link: '/handbook/action-custom-request',
               },
               {
                 title: 'Duplicate',
                 'title.zh-CN': '复制',
+                'title.ja-JP': '複製',
                 link: '/handbook/action-duplicate',
               },
               {
                 title: 'Print',
                 'title.zh-CN': '打印',
+                'title.ja-JP': '印刷',
                 link: '/handbook/action-print',
               },
               {
                 title: 'Import',
                 'title.zh-CN': '导入',
+                'title.ja-JP': 'インポート',
                 link: '/handbook/action-import',
               },
               // {
@@ -1049,11 +1240,13 @@ export default [
               {
                 title: 'Export',
                 'title.zh-CN': '导出',
+                'title.ja-JP': 'エクスポート',
                 link: '/handbook/action-export',
               },
               {
                 title: 'Scan QR code',
                 'title.zh-CN': '扫二维码',
+                'title.ja-JP': 'QRコードをスキャン',
                 link: '/handbook/action-qr-scan',
               },
               // {
@@ -1068,11 +1261,13 @@ export default [
       {
         title: 'Variables',
         'title.zh-CN': '变量',
+        'title.ja-JP': '変数',
         link: '/handbook/ui/variables',
       },
       {
         title: 'Mobile',
         'title.zh-CN': '移动端',
+        'title.ja-JP': 'モバイル',
         link: '/handbook/mobile',
       },
     ],
@@ -1080,35 +1275,42 @@ export default [
   {
     title: 'Core modules',
     'title.zh-CN': '核心模块',
+    'title.ja-JP': 'コアモジュール',
     type: 'group',
     children: [
       {
         title: 'Users & permissions',
         'title.zh-CN': '用户和权限',
+        'title.ja-JP': 'ユーザーと権限',
         children: [
           {
             title: 'Users',
             'title.zh-CN': '用户',
+            'title.ja-JP': 'ユーザー',
             // subTitle: '@nocobase/plugin-users',
             link: '/handbook/users',
           },
           {
             title: 'Roles & permissions',
             'title.zh-CN': '角色和权限',
+            'title.ja-JP': '役割と権限',
             link: '/handbook/acl',
           },
           {
             title: 'Departments',
             'title.zh-CN': '部门',
+            'title.ja-JP': '部門',
             children: [
               {
                 title: 'Overview',
                 'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
                 link: '/handbook/departments',
               },
               {
                 title: 'User manual',
                 'title.zh-CN': '使用手册',
+                'title.ja-JP': 'ユーザーマニュアル',
                 link: '/handbook/departments/manual',
               },
             ],
@@ -1118,25 +1320,30 @@ export default [
       {
         title: 'Users authentication',
         'title.zh-CN': '用户认证',
+        'title.ja-JP': 'ユーザー認証',
         children: [
           {
             title: 'Authentication',
             'title.zh-CN': '用户认证',
+            'title.ja-JP': 'ユーザー認証',
             // subTitle: '@nocobase/plugin-auth',
             children: [
               {
                 title: 'Overview',
                 'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
                 link: '/handbook/auth',
               },
               {
                 title: 'User manual',
                 'title.zh-CN': '使用手册',
+                'title.ja-JP': 'ユーザーマニュアル',
                 link: '/handbook/auth/user',
               },
               {
                 title: 'Development',
                 'title.zh-CN': '开发指南',
+                'title.ja-JP': '開発ガイド',
                 children: [
                   '/handbook/auth/dev/guide',
                   '/handbook/auth/dev/api',
@@ -1147,28 +1354,33 @@ export default [
           {
             title: 'Authentication - SMS',
             'title.zh-CN': '用户认证 - 短信',
+            'title.ja-JP': 'ユーザー認証 - SMS',
             // subTitle: '@nocobase/plugin-sms-auth',
             link: '/handbook/auth-sms',
           },
           {
             title: 'Authentication - CAS',
             'title.zh-CN': '用户认证 - CAS',
+            'title.ja-JP': 'ユーザー認証 - CAS',
             // subTitle: '@nocobase/plugin-cas',
             link: '/handbook/auth-cas',
           },
           {
             title: 'Authentication - OIDC',
             'title.zh-CN': '用户认证 - OIDC',
+            'title.ja-JP': 'ユーザー認証 - OIDC',
             // subTitle: '@nocobase/plugin-oidc',
             children: [
               {
                 title: 'User manual',
                 'title.zh-CN': '使用手册',
+                'title.ja-JP': 'ユーザーマニュアル',
                 link: '/handbook/auth-oidc',
               },
               {
                 title: 'Example',
                 'title.zh-CN': '示例',
+                'title.ja-JP': '例',
                 children: ['/handbook/auth-oidc/example/google'],
               },
             ],
@@ -1176,16 +1388,19 @@ export default [
           {
             title: 'Authentication - SAML',
             'title.zh-CN': '用户认证 - SAML',
+            'title.ja-JP': 'ユーザー認証 - SAML',
             // subTitle: '@nocobase/plugin-saml',
             children: [
               {
                 title: 'User manual',
                 'title.zh-CN': '使用手册',
+                'title.ja-JP': 'ユーザーマニュアル',
                 link: '/handbook/auth-saml',
               },
               {
                 title: 'Example',
                 'title.zh-CN': '示例',
+                'title.ja-JP': '例',
                 children: ['/handbook/auth-saml/example/google'],
               },
             ],
@@ -1193,11 +1408,13 @@ export default [
           {
             title: 'Authentication - LDAP',
             'title.zh-CN': '用户认证 - LDAP',
+            'title.ja-JP': 'ユーザー認証 - LDAP',
             // subTitle: '@nocobase/plugin-saml',
             children: [
               {
                 title: 'User manual',
                 'title.zh-CN': '使用手册',
+                'title.ja-JP': 'ユーザーマニュアル',
                 link: '/handbook/auth-ldap',
               },
             ],
@@ -1205,22 +1422,26 @@ export default [
           {
             title: 'Authentication - DingTalk',
             'title.zh-CN': '用户认证 - 钉钉',
+            'title.ja-JP': 'ユーザー認証 - DingTalk',
             link: '/handbook/auth-dingtalk',
           },
           {
             title: 'Authentication - WeCom',
             'title.zh-CN': '用户认证 - 企业微信',
+            'title.ja-JP': 'ユーザー認証 - WeCom',
             link: '/handbook/auth-wecom',
           },
           {
             title: 'Verification',
             'title.zh-CN': '验证码',
+            'title.ja-JP': '検証',
             // subTitle: '@nocobase/plugin-verification',
             link: '/handbook/verification',
           },
           {
             title: 'API Keys',
             'title.zh-CN': 'API 密钥',
+            'title.ja-JP': 'APIキー',
             // subTitle: '@nocobase/plugin-verification',
             link: '/handbook/api-keys',
           },
@@ -1229,45 +1450,54 @@ export default [
       {
         title: 'File manager',
         'title.zh-CN': '文件管理器',
+        'title.ja-JP': 'ファイルマネージャー',
         children: [
           {
             title: 'Overview',
             'title.zh-CN': '概述',
+            'title.ja-JP': '概要',
             link: '/handbook/file-manager',
           },
           {
             title: 'File collection',
             'title.zh-CN': '文件表',
+            'title.ja-JP': 'ファイルコレクション',
             link: '/handbook/file-manager/file-collection',
           },
           {
             title: 'Attachment field',
             'title.zh-CN': '附件字段',
+            'title.ja-JP': '添付フィールド',
             link: '/handbook/file-manager/field-attachment',
           },
           {
             title: 'File storage',
             'title.zh-CN': '文件存储引擎',
+            'title.ja-JP': 'ファイルストレージエンジン',
             children: [
               '/handbook/file-manager/storage',
               {
                 title: 'File storage: Local',
                 'title.zh-CN': '文件存储：本地',
+                'title.ja-JP': 'ファイルストレージ：ローカル',
                 link: '/handbook/file-manager/storage/local',
               },
               {
                 title: 'File storage: OSS',
                 'title.zh-CN': '文件存储：OSS',
+                'title.ja-JP': 'ファイルストレージ：OSS',
                 link: '/handbook/file-manager/storage/aliyun-oss',
               },
               {
                 title: 'File storage: S3',
                 'title.zh-CN': '文件存储：S3',
+                'title.ja-JP': 'ファイルストレージ：S3',
                 link: '/handbook/file-manager/storage/amazon-s3',
               },
               {
                 title: 'File storage: COS',
                 'title.zh-CN': '文件存储：COS',
+                'title.ja-JP': 'ファイルストレージ：COS',
                 link: '/handbook/file-manager/storage/tencent-cos',
               },
             ],
@@ -1277,22 +1507,26 @@ export default [
       {
         title: 'Logging and monitoring',
         'title.zh-CN': '日志和监控',
+        'title.ja-JP': 'ログと監視',
         children: [
           {
             title: 'Logger',
             'title.zh-CN': '日志',
+            'title.ja-JP': 'ログ',
             // subTitle: '@nocobase/plugin-logger',
             link: '/handbook/logger',
           },
           {
             title: 'Telemetry - Prometheus',
             'title.zh-CN': '遥测 - Prometheus',
+            'title.ja-JP': 'テレメトリ - Prometheus',
             // subTitle: '@nocobase/plugin-telemetry-prometheus',
             link: '/handbook/telemetry-prometheus',
           },
           {
             title: 'Audit logs',
             'title.zh-CN': '审计日志',
+            'title.ja-JP': '監査ログ',
             // subTitle: '@nocobase/plugin-audit-logs',
             link: '/handbook/audit-logs',
           },
@@ -1301,29 +1535,35 @@ export default [
       {
         title: 'Data visualization',
         'title.zh-CN': '数据可视化',
+        'title.ja-JP': 'データビジュアライゼーション',
         children: [
           {
             title: 'Overview',
             'title.zh-CN': '概述',
+            'title.ja-JP': '概要',
             link: '/handbook/data-visualization',
           },
           {
             title: 'User manual',
             'title.zh-CN': '使用手册',
+            'title.ja-JP': 'ユーザーマニュアル',
             children: [
               {
                 title: 'Chart block',
                 'title.zh-CN': '图表区块',
+                'title.ja-JP': 'チャートブロック',
                 link: '/handbook/data-visualization/user/chart-block',
               },
               {
                 title: 'Configure chart',
                 'title.zh-CN': '配置图表',
+                'title.ja-JP': 'チャートを設定',
                 link: '/handbook/data-visualization/user/Configure',
               },
               {
                 title: 'Filter block',
                 'title.zh-CN': '筛选区块',
+                'title.ja-JP': 'フィルターブロック',
                 link: '/handbook/data-visualization/user/filter',
               },
             ],
@@ -1331,15 +1571,18 @@ export default [
           {
             title: 'Development',
             'title.zh-CN': '开发指南',
+            'title.ja-JP': '開発ガイド',
             children: [
               {
                 title: 'Extend chart types',
                 'title.zh-CN': '扩展图表类型',
+                'title.ja-JP': 'チャートタイプを拡張',
                 link: '/handbook/data-visualization/dev/',
               },
               {
                 title: 'Example of integrating ECharts',
                 'title.zh-CN': 'ECharts 集成示例',
+                'title.ja-JP': 'ECharts統合の例',
                 link: '/handbook/data-visualization/step-by-step',
               },
             ],
@@ -1347,6 +1590,7 @@ export default [
           {
             title: 'FAQ',
             'title.zh-CN': '常见问题',
+            'title.ja-JP': 'よくある質問',
             link: '/handbook/data-visualization/faq',
           },
         ],
@@ -1354,6 +1598,7 @@ export default [
       {
         title: 'Multi-app manager',
         'title.zh-CN': '多应用管理',
+        'title.ja-JP': 'マルチアプリ管理',
         // subTitle: '@nocobase/plugin-api-doc',
         link: '/handbook/multi-app-manager',
         // children: ['/plugins/api-doc'],
@@ -1363,6 +1608,7 @@ export default [
   {
     title: 'Workflow',
     'title.zh-CN': '工作流',
+    'title.ja-JP': 'ワークフロー',
     type: 'group',
     children: [
       '/handbook/workflow',
@@ -1370,6 +1616,7 @@ export default [
       {
         title: 'Advanced',
         'title.zh-CN': '进阶理解',
+        'title.ja-JP': '高度な理解',
         children: [
           '/handbook/workflow/advanced/variables',
           '/handbook/workflow/advanced/executions',
@@ -1380,6 +1627,7 @@ export default [
       {
         title: 'Triggers',
         'title.zh-CN': '触发器',
+        'title.ja-JP': 'トリガー',
         children: [
           '/handbook/workflow/triggers',
           '/handbook/workflow/triggers/collection',
@@ -1393,11 +1641,13 @@ export default [
       {
         title: 'Nodes',
         'title.zh-CN': '节点',
+        'title.ja-JP': 'ノード',
         children: [
           '/handbook/workflow/nodes',
           {
             title: 'Control',
             'title.zh-CN': '流程控制类',
+            'title.ja-JP': 'フロー制御',
             type: 'group',
             children: [
               '/handbook/workflow/nodes/condition',
@@ -1410,6 +1660,7 @@ export default [
           {
             title: 'Calculation',
             'title.zh-CN': '运算',
+            'title.ja-JP': '計算',
             type: 'group',
             children: [
               '/handbook/workflow/nodes/calculation',
@@ -1420,6 +1671,7 @@ export default [
           {
             title: 'Collection actions',
             'title.zh-CN': '数据表操作',
+            'title.ja-JP': 'コレクションアクション',
             type: 'group',
             children: [
               '/handbook/workflow/nodes/create',
@@ -1433,6 +1685,7 @@ export default [
           {
             title: 'Manual',
             'title.zh-CN': '人工处理',
+            'title.ja-JP': '手動処理',
             type: 'group',
             children: [
               '/handbook/workflow/nodes/manual',
@@ -1442,6 +1695,7 @@ export default [
           {
             title: 'Extended',
             'title.zh-CN': '扩展类型',
+            'title.ja-JP': '拡張タイプ',
             type: 'group',
             children: [
               '/handbook/workflow/nodes/request',
@@ -1456,6 +1710,7 @@ export default [
       {
         title: 'Development',
         'title.zh-CN': '开发指南',
+        'title.ja-JP': '開発ガイド',
         children: [
           '/handbook/workflow/development',
           '/handbook/workflow/development/trigger',
@@ -1466,10 +1721,12 @@ export default [
       {
         title: 'Related plugins',
         'title.zh-CN': '相关插件',
+        'title.ja-JP': '関連プラグイン',
         children: [
           {
             title: 'Post-action trigger',
             'title.zh-CN': '操作后事件',
+            'title.ja-JP': 'アクション後トリガー',
             subTitle: '@nocobase/plugin-workflow-action-trigger',
             children: [
               '/handbook/workflow-action-trigger',
@@ -1482,12 +1739,14 @@ export default [
           {
             title: 'Aggregate',
             'title.zh-CN': '聚合查询',
+            'title.ja-JP': '集約クエリ',
             subTitle: '@nocobase/plugin-workflow-aggregate',
             link: '/handbook/workflow-aggregate',
           },
           {
             title: 'Approval',
             'title.zh-CN': '审批',
+            'title.ja-JP': '承認',
             subTitle: '@nocobase/plugin-workflow-approval',
             children: [
               '/handbook/workflow-approval',
@@ -1502,6 +1761,7 @@ export default [
           {
             title: 'Custom action trigger',
             'title.zh-CN': '自定义操作事件',
+            'title.ja-JP': 'カスタムアクショントリガー',
             subTitle: '@nocobase/plugin-workflow-custom-action-trigger',
             children: [
               '/handbook/workflow-custom-action-trigger',
@@ -1514,18 +1774,21 @@ export default [
           {
             title: 'Date calculation',
             'title.zh-CN': '日期计算',
+            'title.ja-JP': '日付計算',
             subTitle: '@nocobase/plugin-workflow-date-calculation',
             link: '/handbook/workflow-date-calculation',
           },
           {
             title: 'Delay',
             'title.zh-CN': '延时',
+            'title.ja-JP': '遅延',
             subTitle: '@nocobase/plugin-workflow-delay',
             link: '/handbook/workflow-delay',
           },
           {
             title: 'Dynamic calculation',
             'title.zh-CN': '动态表达式',
+            'title.ja-JP': '動的計算',
             subTitle: '@nocobase/plugin-workflow-dynamic-calculation',
             children: [
               '/handbook/workflow-dynamic-calculation',
@@ -1536,18 +1799,21 @@ export default [
           {
             title: 'JSON query',
             'title.zh-CN': 'JSON 解析',
+            'title.ja-JP': 'JSONクエリ',
             subTitle: '@nocobase/plugin-workflow-json-query',
             link: '/handbook/workflow-json-query',
           },
           {
             title: 'Loop',
             'title.zh-CN': '循环',
+            'title.ja-JP': 'ループ',
             subTitle: '@nocobase/plugin-workflow-loop',
             link: '/handbook/workflow-loop',
           },
           {
             title: 'Manual process',
             'title.zh-CN': '人工处理',
+            'title.ja-JP': '手動処理',
             subTitle: '@nocobase/plugin-workflow-manual',
             children: [
               '/handbook/workflow-manual',
@@ -1559,18 +1825,21 @@ export default [
           {
             title: 'Parallel',
             'title.zh-CN': '并行分支',
+            'title.ja-JP': '並行分岐',
             subTitle: '@nocobase/plugin-workflow-parallel',
             link: '/handbook/workflow-parallel',
           },
           {
             title: 'HTTP Request',
             'title.zh-CN': 'HTTP 请求',
+            'title.ja-JP': 'HTTPリクエスト',
             subTitle: '@nocobase/plugin-workflow-request',
             link: '/handbook/workflow-request',
           },
           {
             title: 'Pre-action trigger',
             'title.zh-CN': '操作前事件',
+            'title.ja-JP': 'アクション前トリガー',
             subTitle: '@nocobase/plugin-workflow-request-interceptor',
             link: '/handbook/workflow-request-interceptor',
             children: [
@@ -1585,18 +1854,21 @@ export default [
           {
             title: 'Response message',
             'title.zh-CN': '响应消息',
+            'title.ja-JP': 'レスポンスメッセージ',
             subTitle: '@nocobase/plugin-workflow-response-message',
             link: '/handbook/workflow-response-message',
           },
           {
             title: 'SQL action',
             'title.zh-CN': 'SQL 操作',
+            'title.ja-JP': 'SQLアクション',
             subTitle: '@nocobase/plugin-workflow-sql',
             link: '/handbook/workflow-sql',
           },
           {
             title: 'Custom variable',
             'title.zh-CN': '自定义变量',
+            'title.ja-JP': 'カスタム変数',
             subTitle: '@nocobase/plugin-workflow-variable',
             link: '/handbook/workflow-variable',
           },
@@ -1607,34 +1879,40 @@ export default [
   {
     title: 'System management',
     'title.zh-CN': '系统管理',
+    'title.ja-JP': 'システム管理',
     type: 'group',
     children: [
       {
         title: 'Plugin manager',
         'title.zh-CN': '插件管理',
+        'title.ja-JP': 'プラグイン管理',
         link: '/handbook/plugin-manager',
       },
       {
         title: 'System settings',
         'title.zh-CN': '系统设置',
+        'title.ja-JP': 'システム設定',
         // subTitle: '@nocobase/plugin-system-settings',
         link: '/handbook/system-settings',
       },
       {
         title: 'Language settings',
         'title.zh-CN': '语言设置',
+        'title.ja-JP': '言語設定',
         // subTitle: '@nocobase/plugin-system-settings',
         link: '/handbook/system-settings/language-settings',
       },
       {
         title: 'Theme editor',
         'title.zh-CN': '主题编辑器',
+        'title.ja-JP': 'テーマエディタ',
         // subTitle: '@nocobase/plugin-theme-editor',
         link: '/handbook/theme-editor',
       },
       {
         title: 'Localization management',
         'title.zh-CN': '本地化管理',
+        'title.ja-JP': 'ローカリゼーション管理',
         // subTitle: '@nocobase/plugin-localization-management',
         link: '/handbook/localization-management',
       },
@@ -1647,6 +1925,7 @@ export default [
       {
         title: 'Backups Manager',
         'title.zh-CN': '备份管理器',
+        'title.ja-JP': 'バックアップマネージャー',
         // subTitle: '@nocobase/plugin-backups',
         link: '/handbook/backups',
       },
@@ -1655,11 +1934,13 @@ export default [
   {
     title: 'Others',
     'title.zh-CN': '其他',
+    'title.ja-JP': 'その他',
     type: 'group',
     children: [
       {
         title: 'API doc',
         'title.zh-CN': 'API 文档',
+        'title.ja-JP': 'APIドキュメント',
         // subTitle: '@nocobase/plugin-api-doc',
         link: '/handbook/api-doc',
         // children: ['/plugins/api-doc'],
@@ -1667,11 +1948,13 @@ export default [
       {
         title: 'Embed',
         'title.zh-CN': '嵌入',
+        'title.ja-JP': '埋め込み',
         link: '/handbook/embed',
       },
       {
         title: 'Custom brand',
         'title.zh-CN': '自定义品牌',
+        'title.ja-JP': 'カスタムブランド',
         link: '/handbook/custom-brand',
       },
     ],

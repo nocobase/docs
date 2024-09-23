@@ -1,23 +1,23 @@
-# Schema 组件库
+# スキーマ コンポーネントライブラリ
 
-## 包装器组件
+## ラッパーコンポーネント
 
 - BlockItem
 - FormItem
 - CardItem
 
-## 布局
+## レイアウト
 
 - Page
 - Grid
 - Tabs
 - Space
 
-## 字段组件
+## フィールドコンポーネント
 
-字段组件一般不单独使用，而是用在数据展示组件当中
+フィールドコンポーネントは一般的に単独では使用せず、データ表示コンポーネント内で利用されます。
 
-- CollectionField：万能组件
+- CollectionField：汎用コンポーネント
 - Cascader
 - Checkbox
 - ColorSelect
@@ -38,9 +38,9 @@
 - TreeSelect
 - Upload
 
-## 数据展示组件
+## データ表示コンポーネント
 
-需要与字段组件搭配使用
+フィールドコンポーネントと組み合わせて使用する必要があります。
 
 - Calendar
 - Form
@@ -48,22 +48,22 @@
 - Table
 - TableV2
 
-## 操作（onClick 事件型组件）
+## 操作（onClick イベント型コンポーネント）
 
 - Action
 - Action.Drawer
 - Action.Modal
-- ActionBar：用于操作布局
+- ActionBar：操作レイアウト用
 - Menu
 
-## 其他
+## その他
 
 - G2plot
 - Markdown.Void
 
-## `x-designer` 和 `x-initializer` 的使用场景
+## `x-designer` と `x-initializer` の使用シーン
 
-`x-decorator` 或 `x-component` 是以下组件时，`x-designer` 生效：
+`x-decorator` または `x-component` が以下のコンポーネントの場合、`x-designer` が有効になります：
 
 - BlockItem
 - CardItem
@@ -71,7 +71,7 @@
 - Table.Column
 - Tabs.TabPane
 
-`x-decorator` 或 `x-component` 是以下组件时，`x-initializer` 生效：
+`x-decorator` または `x-component` が以下のコンポーネントの場合、`x-initializer` が有効になります：
 
 - ActionBar
 - BlockItem
@@ -80,3 +80,4 @@
 - Grid
 - Table
 - Tabs
+

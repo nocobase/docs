@@ -1,33 +1,34 @@
-# 更新记录
+# 更新履歴
 
-## 介绍
+## イントロダクション
 
-自定义的行操作更新数据，通过配置字段赋值配置字段更新逻辑。
+カスタム行操作を使用してデータを更新し、フィールドの設定を通じてフィールドの更新ロジックを構成します。
 
 ![20240413212430](https://static-docs.nocobase.com/20240413212430.png)
 
-## 操作配置项
+## 操作設定項目
 
 ![20240413212816](https://static-docs.nocobase.com/20240413212816.png)
 
-### 联动规则
+### リンクルール
 
-示例：单据状态为取消时按钮隐藏。
+例：伝票の状態がキャンセルの場合、ボタンを非表示にします。
 
 ![20240423210252](https://static-docs.nocobase.com/20240423210252.png)
 
-更多内容参考 [操作的联动规则](/handbook/ui/actions/action-settings/linkage-rule)。
+詳細については[操作のリンクルール](/handbook/ui/actions/action-settings/linkage-rule)をご覧ください。
 
-### 字段赋值
+### フィールド値の設定
 
-示例：更新当前记录中的收货时间为当前时间。
+例：現在のレコードの受取時間を現在の時間に更新します。
 
 ![20240423210506](https://static-docs.nocobase.com/20240423210506.png)
 
-更多内容参考 [字段赋值](/handbook/ui/actions/action-settings/assign-values)。
+詳細については[フィールド値の設定](/handbook/ui/actions/action-settings/assign-values)をご覧ください。
 
-- [编辑按钮](/handbook/ui/actions/action-settings/edit-button)
-- [二次确认](/handbook/ui/actions/action-settings/double-check)
-- [提交成功后](/handbook/ui/actions/action-settings/affter-successful)
-- [绑定工作流](/handbook/ui/actions/action-settings/bind-workflow)
-- 执行后刷新数据
+- [編集ボタン](/handbook/ui/actions/action-settings/edit-button)
+- [二重確認](/handbook/ui/actions/action-settings/double-check)
+- [送信成功後](/handbook/ui/actions/action-settings/after-successful)
+- [ワークフローをバインド](/handbook/ui/actions/action-settings/bind-workflow)
+- 実行後にデータを更新
+

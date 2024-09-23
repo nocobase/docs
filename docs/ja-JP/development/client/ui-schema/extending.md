@@ -1,16 +1,16 @@
-# 扩展 Schema 组件
+# スキーマコンポーネントの拡張
 
-除了原生的 html 标签，开发也可以适配更多的自定义组件，用于丰富 Schema 组件库。
+ネイティブの HTML タグに加え、開発者はスキーマコンポーネントライブラリを充実させるために、より多くのカスタムコンポーネントに対応できます。
 
-扩展组件时，常用的方法：
+コンポーネントを拡張する一般的な方法は以下の通りです：
 
-- [connect](https://react.formilyjs.org/api/shared/connect) 无侵入接入第三方组件，一般用于适配字段组件，和 [mapProps](https://react.formilyjs.org/api/shared/map-props)[、mapReadPretty](https://react.formilyjs.org/api/shared/map-read-pretty) 搭配使用；
-- [observer](https://react.formilyjs.org/api/shared/observer) 当组件内部使用了 observable 对象，而你希望组件响应 observable 对象的变化时；
-- [withDynamicSchemaProps](#) 用于无入侵实现动态 props。
+- [connect](https://react.formilyjs.org/api/shared/connect): 第三者コンポーネントに非侵襲的に接続するために使用され、主にフィールドコンポーネントの適応に利用されます。通常、[mapProps](https://react.formilyjs.org/api/shared/map-props) や [mapReadPretty](https://react.formilyjs.org/api/shared/map-read-pretty) と組み合わせて使用します。
+- [observer](https://react.formilyjs.org/api/shared/observer): コンポーネント内部で observable オブジェクトが使用されている場合、コンポーネントがその変化に応答する必要があるときに使用します。
+- [withDynamicSchemaProps](#): 非侵襲的に動的 props を実現するために使用されます。
 
-## 最简单的扩展
+## 最もシンプルな拡張
 
-直接将现成的 React 组件注册进来。
+既存の React コンポーネントを直接登録します。
 
 ```tsx
 /**
@@ -19,7 +19,7 @@
 import React from 'react';
 import { SchemaComponent, SchemaComponentProvider } from '@nocobase/client';
 
-const Hello = () => <h1>Hello, world!</h1>;
+const Hello = () => <h1>こんにちは、世界！</h1>;
 
 const schema = {
   type: 'void',
@@ -36,7 +36,7 @@ export default () => {
 };
 ```
 
-## 通过 connect 接入第三方组件
+## connect を使用して第三者コンポーネントに接続
 
 ```tsx
 /**
@@ -56,7 +56,7 @@ const SingleText = connect(
   mapProps((props, field) => {
     return {
       ...props,
-      suffix: '后缀',
+      suffix: 'サフィックス',
     };
   }),
   mapReadPretty(ReadPretty),
@@ -67,12 +67,12 @@ const schema = {
   properties: {
     t1: {
       type: 'string',
-      default: 'hello t1',
+      default: 'こんにちは t1',
       'x-component': 'SingleText',
     },
     t2: {
       type: 'string',
-      default: 'hello t2',
+      default: 'こんにちは t2',
       'x-component': 'SingleText',
       'x-pattern': 'readPretty',
     },
@@ -88,7 +88,7 @@ export default () => {
 };
 ```
 
-## 使用 observer 响应数据
+## observer を使用してデータに応答
 
 ```tsx
 /**
@@ -147,25 +147,25 @@ export default () => {
 };
 ```
 
-## 使用 withDynamicSchemaProps 实现动态 props
+## withDynamicSchemaPropsを使用して動的propsを実現する
 
-## 嵌套的 Schema
+## ネストされたスキーマ
 
-- `props.children` 嵌套，适用于 void 和 object 类型的 properties，例子见 [void 和 object 类型 schema 的嵌套](#void-和-object-类型-schema-的嵌套)
-- `<RecursionField />` 自定义嵌套，所有类型都适用，例子见 [array 类型 schema 的嵌套](#array-类型-schema-的嵌套)
+- `props.children`をネストでき、voidおよびobjectタイプのプロパティに適用されます。例については[voidとobjectタイプのスキーマのネスト](#voidとobjectタイプのスキーマのネスト)を参照してください。
+- `<RecursionField />`はカスタムネストであり、すべてのタイプに適用されます。例については[arrayタイプのスキーマのネスト](#arrayタイプのスキーマのネスト)を参照してください。
 
 注意：
 
-- 除了 void 和 object 类型以外的 schema 的 `properties` 无法直接通过 `props.children` 渲染，但是可以使用 `<RecursionField />` 解决嵌套问题
-- 仅 void 和 object 类型的 schema 可以与 onlyRenderProperties 使用
+- voidおよびobjectタイプ以外のスキーマの`properties`は直接`props.children`を通じてレンダリングできませんが、ネストの問題は`<RecursionField />`を使用して解決できます。
+- voidおよびobjectタイプのスキーマのみが`onlyRenderProperties`と使用できます。
 
 ```tsx | pure
 <RecursionField schema={schema} onlyRenderProperties />
 ```
 
-### void 和 object 类型 schema 的嵌套
+### voidおよびobjectタイプのスキーマのネスト
 
-直接通过 props.children 就可以适配 properties 节点了
+直接`props.children`を通じてpropertiesノードに適用できます。
 
 ```tsx
 /**
@@ -174,7 +174,7 @@ export default () => {
 import React from 'react';
 import { SchemaComponent, SchemaComponentProvider } from '@nocobase/client';
 
-// Hello 组件适配了 children，可以嵌套 properties 了
+// Helloコンポーネントはchildrenを適用しており、propertiesをネストできます。
 const Hello = (props) => <h1>Hello, {props.children}!</h1>;
 const World = () => <span>world</span>;
 
@@ -199,7 +199,7 @@ export default () => {
 };
 ```
 
-各类型 properties 渲染结果对比
+各タイプのpropertiesレンダリング結果の比較
 
 ```tsx
 import React from 'react';
@@ -213,7 +213,7 @@ const schema = {
   properties: {
     title1: {
       type: 'void',
-      'x-content': 'Void schema，渲染 properties',
+      'x-content': 'Voidスキーマ、propertiesをレンダリング',
     },
     void: {
       type: 'void',
@@ -228,7 +228,7 @@ const schema = {
     },
     title2: {
       type: 'void',
-      'x-content': 'Object schema，渲染 properties',
+      'x-content': 'Objectスキーマ、propertiesをレンダリング',
     },
     object: {
       type: 'object',
@@ -243,7 +243,7 @@ const schema = {
     },
     title3: {
       type: 'void',
-      'x-content': 'Array schema，不渲染 properties',
+      'x-content': 'Arrayスキーマ、propertiesをレンダリングしない',
     },
     array: {
       type: 'array',
@@ -258,7 +258,7 @@ const schema = {
     },
     title4: {
       type: 'void',
-      'x-content': 'String schema，不渲染 properties',
+      'x-content': 'Stringスキーマ、propertiesをレンダリングしない',
     },
     string: {
       type: 'string',
@@ -283,11 +283,11 @@ export default () => {
 };
 ```
 
-### array 类型 schema 的嵌套
+### array 型 schema のネスト
 
-可以通过 `<RecursionField />` 解决自定义嵌套问题
+カスタムネストの問題は `<RecursionField />` で解決できます。
 
-#### Array 元素是 string 或 number 时
+#### Array 要素が string または number の場合
 
 ```tsx
 import React from 'react';
@@ -317,10 +317,10 @@ const ArrayList = observer(
     const schema = useValueSchema();
     return (
       <>
-        String Array
+        文字列の配列
         <ul>
           {field.value?.map((item, index) => {
-            // 只有一个元素
+            // 要素が1つだけ
             return <RecursionField name={index} schema={schema} />;
           })}
         </ul>
@@ -331,7 +331,7 @@ const ArrayList = observer(
 );
 
 const Value = connect((props) => {
-  return <li>value: {props.value}</li>;
+  return <li>値: {props.value}</li>;
 });
 
 const schema = {
@@ -360,7 +360,7 @@ export default () => {
 };
 ```
 
-#### Array 元素是 Object 时
+#### Array 要素が Object の場合
 
 ```tsx
 import React from 'react';
@@ -378,7 +378,7 @@ const ArrayList = observer(
   (props) => {
     const field = useField();
     const schema = useFieldSchema();
-    // array 类型的 schema 无法 onlyRenderProperties，需要转化为 object 类型
+    // array 型の schema は onlyRenderProperties を使用できないため、object 型に変換します
     const objSchema = new Schema({
       type: 'object',
       properties: schema.properties,
@@ -386,7 +386,7 @@ const ArrayList = observer(
     return (
       <ul>
         {field.value?.map((item, index) => {
-          // array 元素是 object
+          // array 要素は object
           return (
             <RecursionField
               name={index}
@@ -402,7 +402,7 @@ const ArrayList = observer(
 );
 
 const Value = connect((props) => {
-  return <li>value: {props.value}</li>;
+  return <li>値: {props.value}</li>;
 });
 
 const schema = {
@@ -431,7 +431,7 @@ export default () => {
 };
 ```
 
-#### Tree 结构数据
+#### ツリー構造データ
 
 ```tsx
 import { ArrayField } from '@formily/core';
@@ -479,7 +479,7 @@ const ArrayTable = observer(
 );
 
 const Value = connect((props) => {
-  return <li>value: {props.value}</li>;
+  return <li>値: {props.value}</li>;
 });
 
 const schema: ISchema = {
@@ -558,3 +558,4 @@ export default () => {
   );
 };
 ```
+

@@ -1,14 +1,14 @@
-# Component 和 Scope 的注册和使用
+# コンポーネントとスコープの登録と使用
 
-## 场景说明
+## シーン説明
 
-Component 和 Scope 之所以需要注册，有以下 2 方面的原因：
+コンポーネントとスコープを登録する必要がある理由は、以下の2つです。
 
-### 原因 1：UI Schema 需要存储在服务端
+### 理由1：UIスキーマはサーバー側に保存する必要がある
 
-NocoBase 的前端页面是基于 [UI Schema](/development/client/ui-schema/what-is-ui-schema) 来渲染的，而 UI Schema 又是需要存储在数据库中的，所以其不能有引用类型的属性，所以我们只能将 `x-component`、`x-decorator`、`x-use-component-props`、`x-use-decorator-props` 等属性的值存储为字符串，然后将对应的 Component 和 Scope 注册到 NocoBase 中，这样在渲染页面时，就可以根据字符串找到对应的 Component 和 Scope。
+NocoBaseのフロントエンドページは[UIスキーマ](/development/client/ui-schema/what-is-ui-schema)に基づいてレンダリングされますが、UIスキーマはデータベースに保存する必要があるため、参照型のプロパティを持つことはできません。そのため、`x-component`、`x-decorator`、`x-use-component-props`、`x-use-decorator-props`などの属性の値を文字列として保存し、対応するコンポーネントとスコープをNocoBaseに登録します。これにより、ページをレンダリングする際に文字列に基づいて対応するコンポーネントとスコープを見つけることができます。
 
-相反对于不需要存储在数据库中的 UI Schema，我们可以直接使用引用类型的属性，例如在开发本地的[插件配置页面](/plugin-samples/plugin-settings/form) 其中涉及的 `x-component`、`x-use-component-props` 等属性的值可以直接使用引用类型的属性。
+逆に、データベースに保存する必要がないUIスキーマでは、参照型のプロパティを直接使用できます。例えば、ローカルの[プラグイン設定ページ](/plugin-samples/plugin-settings/form)で使用される`x-component`や`x-use-component-props`などの属性の値は、参照型のプロパティを直接使用することができます。
 
 ```ts
 const schema: ISchema = {
@@ -19,9 +19,9 @@ const schema: ISchema = {
 }
 ```
 
-### 原因 2：扩展性需求
+### 理由2：拡張性の要求
 
-Component 一方面是用来 UI Schema 中，一方面可以用来路由中，两种场景都存在覆盖某些组件，以达到定制化的目的。例如：
+コンポーネントは、UIスキーマ内で使用されるだけでなく、ルーティングでも使用されます。この2つのシーンでは、特定のコンポーネントをオーバーライドしてカスタマイズできます。例えば：
 
 ```ts
 class AuthPlugin extends Plugin {
@@ -35,9 +35,9 @@ class AuthPlugin extends Plugin {
 }
 ```
 
-假设别人需要替换掉登录页面时就有 2 种选择。
+他の人がログインページを置き換える必要がある場合、2つの選択肢があります。
 
-#### 方案1：替换路由
+#### 方案1：ルートの置き換え
 
 ```ts
 class CustomPlugin extends Plugin {
@@ -50,7 +50,7 @@ class CustomPlugin extends Plugin {
 }
 ```
 
-#### 方案2：直接替换 Component
+#### 方案2：コンポーネントの直接置き換え
 
 ```ts
 class CustomPlugin extends Plugin {
@@ -60,15 +60,15 @@ class CustomPlugin extends Plugin {
 }
 ```
 
-综上，如果不是这 2 种场景，我们是不需要注册 Component 和 Scope 的，而是可以直接使用引用类型的属性。
+このように、これら2つのシーンでない限り、コンポーネントとスコープを登録する必要はなく、参照型のプロパティを直接使用できます。
 
-## 全局注册和局部注册
+## グローバル登録とローカル登録
 
-Component 和 Scope 可以全局注册，也可以局部注册。
+コンポーネントとスコープは、グローバルに登録することもローカルに登録することもできます。
 
-### 全局注册
+### グローバル登録
 
-全局注册需要通过 [app.addComponents()](https://client.docs.nocobase.com/core/application/application#appaddcomponents) 和 [app.addScopes()](https://client.docs.nocobase.com/core/application/application#appaddscopes) 方法来注册。例如：
+グローバル登録は、[app.addComponents()](https://client.docs.nocobase.com/core/application/application#appaddcomponents)と[app.addScopes()](https://client.docs.nocobase.com/core/application/application#appaddscopes)メソッドを使用して行います。例えば：
 
 ```ts
 class MyPlugin extends Plugin {
@@ -79,9 +79,9 @@ class MyPlugin extends Plugin {
 }
 ```
 
-### 局部注册
+### ローカル登録
 
-局部注册需要通过 [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponent-1) 和 [SchemaComponentOptions](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponentoptions) 组件的 `components` 和 `scope` 属性来注册。例如：
+ローカル登録は、[SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponent-1)と[SchemaComponentOptions](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponentoptions)コンポーネントの`components`と`scope`属性を使用して行います。例えば：
 
 ```tsx | pure
 <SchemaComponentProvider components={{ Hello }} scope={{ useDeleteProps }}>
@@ -89,12 +89,12 @@ class MyPlugin extends Plugin {
 </SchemaComponentProvider>
 ```
 
-`SchemaComponentProvider` 可以多层嵌套，内部的 `SchemaComponent` 会继承外部的 `components` 和 `scope`。
+`SchemaComponentProvider`は多層にネストでき、内部の`SchemaComponent`は外部の`components`と`scope`を継承します。
 
+上記のシーンに対して、以下の例を提供します：
 
-针对以上场景，我们提供了如下示例：
+- [グローバル登録コンポーネントとスコープ](/plugin-samples/component-and-scope/global)
+- [ローカル登録コンポーネントとスコープ](/plugin-samples/component-and-scope/local)
 
-- [全局注册 Component 和 Scope](/plugin-samples/component-and-scope/global)
-- [局部注册 Component 和 Scope](/plugin-samples/component-and-scope/local)
+オーバーライドシーンについては、ルートの例での[ページの置き換え](/plugin-samples/router/replace-page)を参考にしてください。
 
-覆盖场景我们可以参考路由示例种的 [替换页面](/plugin-samples/router/replace-page)

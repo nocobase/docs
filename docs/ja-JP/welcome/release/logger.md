@@ -1,26 +1,26 @@
-# v0.9.0：NocoBase 的 Logging 系统
+# v0.9.0：NocoBase のロギングシステム
 
 ## `@nocobase/logger`
 
-基于 Winston 实现，提供了便捷的创建 logger 实例的方法。
+Winston を基に実装されており、logger インスタンスを簡単に作成する方法を提供します。
 
 ```ts
 const logger = createLogger();
-logger.info('Hello distributed log files!');
+logger.info('分散ログファイルへようこそ！');
 
-const { instance, middleware } = createAppLogger(); // 用于 @nocobase/server
+const { instance, middleware } = createAppLogger(); // @nocobase/server 用
 app.logger = instance;
 app.use(middleware);
 ```
 
-## 新增的环境变量
+## 新しい環境変数
 
-logger 相关环境变量有：
+logger に関連する環境変数は以下の通りです：
 
 - [LOGGER_TRANSPORT](../getting-started/env.md#logger_transport)
 - [LOGGER_BASE_PATH](../getting-started/env.md#logger_base_path)
 
-## Application 的 logger 配置
+## アプリケーションの logger 設定
 
 ```ts
 const app = new Application({
@@ -35,21 +35,21 @@ const app = new Application({
 });
 ```
 
-更多配置项参考 [Winston 文档](https://github.com/winstonjs/winston#table-of-contents)
+詳細な設定オプションについては [Winston ドキュメント](https://github.com/winstonjs/winston#table-of-contents) を参照してください。
 
 ## app.logger & ctx.logger
 
-ctx.logger 带有 reqId，整个 ctx 周期里都是一个 reqId
+ctx.logger には reqId が含まれており、ctx の全期間にわたって同じ reqId が保持されます。
 
 ```ts
 ctx.logger = app.logger.child({ reqId: ctx.reqId });
 ```
 
-`app.logger` 和 `ctx.logger` 都是 Winston 实例，详细用法参考 [Winston 文档](https://github.com/winstonjs/winston#table-of-contents)
+`app.logger` と `ctx.logger` は両方とも Winston インスタンスです。詳細な使用法については [Winston ドキュメント](https://github.com/winstonjs/winston#table-of-contents) を参照してください。
 
-## 自定义 Transports
+## カスタムトランスポート
 
-除了 Winston 的方式以外，NocoBase 还提供了一种更便捷的方式
+Winston の標準的な方法に加えて、NocoBase ではより便利な方法も提供しています。
 
 ```ts
 import { Transports } from '@nocobase/logger';
@@ -64,3 +64,4 @@ const app = new Application({
   },
 });
 ```
+

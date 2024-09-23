@@ -1,137 +1,137 @@
-# v0.8：2022-11-01
+# v0.8：2022年11月1日
 
-从 v0.8 开始，NocoBase 开始提供可用的插件管理器和开发文档。以下是 v0.8 的主要变化。
+v0.8から、NocoBaseは利用可能なプラグインマネージャーと開発ドキュメントを提供し始めました。以下はv0.8の主な変更点です。
 
-## 界面右上角的调整
+## インターフェース右上の調整
 
-- 界面配置
-- 插件管理器
-- 配置中心
-- 个人中心
+- インターフェース設定
+- プラグインマネージャー
+- 設定センター
+- 個人センター
 
 <img src="./v08-changelog/topright.jpg" style="max-width: 500px;" />
 
-## 全新的插件管理器
+## 新しいプラグインマネージャー
 
-v0.8 提供了强大的插件管理器用于无代码的方式管理插件。
+v0.8では、ノーコードでプラグインを管理するための強力なプラグインマネージャーを提供します。
 
-### 插件管理器流程
+### プラグインマネージャーの流れ
 
 <img src="./v08-changelog/pm-flow.svg" style="max-width: 580px;"/>
 
-### 插件管理器界面
+### プラグインマネージャーのインターフェース
 
-目前主要用于本地插件的禁用、激活和删除。内置插件不能删除，插件市场敬请期待。
+現在、主にローカルプラグインの無効化、アクティブ化、削除に使用されます。組み込みプラグインは削除できませんので、プラグインマーケットにご期待ください。
 
 <img src="./v08-changelog/pm-ui.jpg" />
 
-### 插件管理器命令行
+### プラグインマネージャーのコマンドライン
 
-除了可以在无代码界面激活、禁用插件，也可以通过命令行更完整的管理插件。
+ノーコードインターフェースでプラグインをアクティブ化、無効化できるだけでなく、コマンドラインからもプラグインをより完全に管理できます。
 
 ```bash
-# 创建插件
+# プラグインを作成
 yarn pm create hello
-# 注册插件
+# プラグインを登録
 yarn pm add hello
-# 激活插件
+# プラグインをアクティブ化
 yarn pm enable hello
-# 禁用插件
+# プラグインを無効化
 yarn pm disable hello
-# 删除插件
+# プラグインを削除
 yarn pm remove hello
 ```
 
-备注：插件的发布和升级会在后续的版本里支持。
+備考：プラグインの公開とアップグレードは、今後のバージョンでサポートされる予定です。
 
 ```bash
-# 发布插件
+# プラグインを公開
 yarn pm publish hello
-# 升级插件
+# プラグインをアップグレード
 yarn pm upgrade hello
 ```
 
-更多插件示例，查看 [packages/samples](https://github.com/nocobase/nocobase/tree/main/packages/samples)。
+プラグインのさらなる例については、[packages/samples](https://github.com/nocobase/nocobase/tree/main/packages/samples)をご覧ください。
 
-## 插件的变化
+## プラグインの変更
 
-### 插件目录结构
+### プラグインディレクトリ構造
 
 ```bash
 |- /hello
   |- /src
-    |- /client      # 插件客户端代码
-    |- /server      # 插件服务端代码
+    |- /client      # プラグインクライアントコード
+    |- /server      # プラグインサーバーコード
   |- client.d.ts
   |- client.js
-  |- package.json   # 插件包信息
+  |- package.json   # プラグインパッケージ情報
   |- server.d.ts
   |- server.js
 ```
 
-### 插件名称规范
+### プラグイン名の規則
 
-NocoBase 插件也是 NPM 包，插件名和 NPM 包名的对应规则为 `${PLUGIN_PACKAGE_PREFIX}-${pluginName}`。
+NocoBase プラグインは NPM パッケージでもあり、プラグイン名と NPM パッケージ名の対応規則は `${PLUGIN_PACKAGE_PREFIX}-${pluginName}` です。
 
-`PLUGIN_PACKAGE_PREFIX` 为插件包前缀，可以在 .env 里自定义，[点此查看 PLUGIN_PACKAGE_PREFIX 说明](../getting-started/env.md#plugin_package_prefix)。
+`PLUGIN_PACKAGE_PREFIX` はプラグインパッケージのプレフィックスであり、.env でカスタマイズ可能です。[こちらをクリックして PLUGIN_PACKAGE_PREFIX の説明を確認してください](../getting-started/env.md#plugin_package_prefix)。
 
-例如，有一名为 `my-nocobase-app` 的项目，新增了 `hello` 插件，包名为 `@my-nocobase-app/plugin-hello`。
+例えば、`my-nocobase-app` というプロジェクトに `hello` プラグインを追加した場合、パッケージ名は `@my-nocobase-app/plugin-hello` になります。
 
-PLUGIN_PACKAGE_PREFIX 配置如下：
+PLUGIN_PACKAGE_PREFIX の設定は次の通りです：
 
 ```bash
 PLUGIN_PACKAGE_PREFIX=@nocobase/plugin-,@nocobase/preset-,@my-nocobase-app/plugin-
 ```
 
-插件名和包名的对应关系为：
+プラグイン名とパッケージ名の対応関係は次の通りです：
 
-- `users` 插件包名为 `@nocobase/plugin-users`
-- `nocobase` 插件包名为 `@nocobase/preset-nocobase`
-- `hello` 插件包名为 `@my-nocobase-app/plugin-hello`
+- `users` プラグインのパッケージ名は `@nocobase/plugin-users`
+- `nocobase` プラグインのパッケージ名は `@nocobase/preset-nocobase`
+- `hello` プラグインのパッケージ名は `@my-nocobase-app/plugin-hello`
 
-### 插件的生命周期
+### プラグインのライフサイクル
 
-v0.8 提供了更完整的插件生命周期方法
+v0.8 では、より包括的なプラグインライフサイクルメソッドが提供されています。
 
 ```ts
 import { InstallOptions, Plugin } from '@nocobase/server';
 
 export class HelloPlugin extends Plugin {
   afterAdd() {
-    // 插件通过 pm.add 添加之后
+    // プラグインが pm.add で追加された後
   }
 
   beforeLoad() {
-    // 所有插件执行 load 之前，一般用于注册类和事件监听
+    // すべてのプラグインが load を実行する前に、一般的にクラスやイベントリスナーを登録するために使用されます。
   }
 
   async load() {
-    // 加载配置
+    // 設定を読み込みます。
   }
 
   async install(options?: InstallOptions) {
-    // 安装逻辑
+    // インストールロジックを実行します。
   }
 
   async afterEnable() {
-    // 激活之后
+    // 有効化後の処理を実行します。
   }
 
   async afterDisable() {
-    // 禁用之后
+    // 無効化後の処理を実行します。
   }
 
   async remove() {
-    // 删除逻辑
+    // 削除ロジックを実行します。
   }
 }
 
 export default HelloPlugin;
 ```
 
-### 插件的前后端入口
+### プラグインの前後端入口
 
-插件的生命周期由服务端控制
+プラグインのライフサイクルはサーバーによって制御されます。
 
 ```ts
 import { Application } from '@nocobase/server';
@@ -153,7 +153,7 @@ class MyPlugin extends Plugin {
 app.plugin(MyPlugin, { name: 'my-plugin' });
 ```
 
-插件的客户端以 Context.Provider 形式存在（类似于服务端的 Middleware）
+プラグインのクライアントは Context.Provider 形式で存在します（サーバー側の Middleware に似ています）。
 
 ```tsx | pure
 import React from 'react';
@@ -168,7 +168,7 @@ const app = new Application({
   },
 });
 
-// 访问 /hello 页面时，显示 Hello world!
+// /helloページにアクセスすると「Hello world!」と表示されます。
 const HelloProvider = React.memo((props) => {
   const location = useLocation();
   if (location.pathname === '/hello') {
@@ -181,37 +181,38 @@ HelloProvider.displayName = 'HelloProvider';
 app.use(HelloProvider);
 ```
 
-## 自定义的业务代码
+## カスタムビジネスコード
 
-v0.7 的插件并不完整，自定义的业务代码可能分散在 `packages/app/client` 和 `packages/app/server` 里，不利于升级、维护。v0.8 推荐以插件包的形式整理，并使用 `yarn pm` 来管理插件。
+v0.7のプラグインは未完成であり、カスタムビジネスコードは`packages/app/client`と`packages/app/server`に分散しているため、アップグレードやメンテナンスが困難です。v0.8では、プラグインパッケージの形式で整理し、`yarn pm`を使用してプラグインを管理することを推奨します。
 
-## 提供了更完整的文档
+## より完全なドキュメントを提供
 
-- **欢迎**：快速了解 NocoBase
-- **用户使用手册**：进一步了解 NocoBase 平台提供的核心功能
-- **插件开发教程**：进阶深入插件开发
-- **API 参考**：插件开发过程中，查阅各 API 用法
-- **客户端组件库**（正在准备中）：提供 NocoBase 各组件的示例和用法
+- **ウェルカム**：NocoBaseの概要を迅速に理解
+- **ユーザーガイド**：NocoBaseプラットフォームが提供するコア機能を深く理解
+- **プラグイン開発チュートリアル**：プラグイン開発を詳細に学ぶ
+- **APIリファレンス**：プラグイン開発中に各APIの使用法を確認
+- **クライアントコンポーネントライブラリ**（準備中）：NocoBaseの各コンポーネントの例と使用法を提供
 
-备注：文档还有很多细节待补充，也会根据大家进一步反馈，继续调整。
+備考：ドキュメントにはまだ多くの詳細が追加される予定であり、皆様からのさらなるフィードバックに基づいて調整を続けていきます。
 
-## 提供了更多插件示例
+## より多くのプラグインの例を提供
 
-- [command](https://github.com/nocobase/nocobase/tree/develop/packages/samples/command 'command')
-- [custom-block](https://github.com/nocobase/nocobase/tree/develop/packages/samples/custom-block 'custom-block')
-- [custom-page](https://github.com/nocobase/nocobase/tree/develop/packages/samples/custom-page 'custom-page')
-- [custom-signup-page](https://github.com/nocobase/nocobase/tree/develop/packages/samples/custom-signup-page 'custom-signup-page')
-- [hello](https://github.com/nocobase/nocobase/tree/develop/packages/samples/hello 'hello')
-- [ratelimit](https://github.com/nocobase/nocobase/tree/develop/packages/samples/ratelimit 'ratelimit')
-- [shop-actions](https://github.com/nocobase/nocobase/tree/develop/packages/samples/shop-actions 'shop-actions')
-- [shop-events](https://github.com/nocobase/nocobase/tree/develop/packages/samples/shop-events 'shop-events')
-- [shop-i18n](https://github.com/nocobase/nocobase/tree/develop/packages/samples/shop-i18n 'shop-i18n')
-- [shop-modeling](https://github.com/nocobase/nocobase/tree/develop/packages/samples/shop-modeling 'shop-modeling')
+- [コマンド](https://github.com/nocobase/nocobase/tree/develop/packages/samples/command 'コマンド')
+- [カスタムブロック](https://github.com/nocobase/nocobase/tree/develop/packages/samples/custom-block 'カスタムブロック')
+- [カスタムページ](https://github.com/nocobase/nocobase/tree/develop/packages/samples/custom-page 'カスタムページ')
+- [カスタムサインアップページ](https://github.com/nocobase/nocobase/tree/develop/packages/samples/custom-signup-page 'カスタムサインアップページ')
+- [ハロー](https://github.com/nocobase/nocobase/tree/develop/packages/samples/hello 'ハロー')
+- [レートリミット](https://github.com/nocobase/nocobase/tree/develop/packages/samples/ratelimit 'レートリミット')
+- [ショップアクション](https://github.com/nocobase/nocobase/tree/develop/packages/samples/shop-actions 'ショップアクション')
+- [ショップイベント](https://github.com/nocobase/nocobase/tree/develop/packages/samples/shop-events 'ショップイベント')
+- [ショップi18n](https://github.com/nocobase/nocobase/tree/develop/packages/samples/shop-i18n 'ショップi18n')
+- [ショップモデリング](https://github.com/nocobase/nocobase/tree/develop/packages/samples/shop-modeling 'ショップモデリング')
 
-## 其他新特性和功能
+## その他の新機能と機能
 
-- 导入
-- 批量更新 & 编辑
-- 图形化数据表配置
-- 工作流支持查看执行历史
-- JSON 字段
+- インポート
+- 一括更新および編集
+- グラフィカルデータテーブル設定
+- ワークフローの実行履歴表示サポート
+- JSONフィールド
+

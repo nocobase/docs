@@ -1,81 +1,82 @@
-# 独立插件的安装与升级
+# 独立プラグインのインストールとアップグレード
 
-## 通过界面安装与更新插件
+## インターフェースを通じてプラグインをインストールおよび更新する
 
-这个办法非常简单，但需要一个一个添加、激活、更新。
+この方法は非常に簡単ですが、一つずつ追加、アクティブ化、更新する必要があります。
 
 :::warning{title="注意"}
-通过界面安装与升级的方式不适合共享代码的多应用场景。
+インターフェースを通じたインストールとアップグレードの方法は、共有コードの多アプリケーションシーンには適していません。
 :::
 
-### 1. 获取插件包
+### 1. プラグインパッケージを取得する
 
-- 如果是 NocoBase 提供的商业插件，请前往商业用户服务平台下载；
-- 如果是自制插件，参考 [编写第一个插件](/development/your-fisrt-plugin) 流程，构建并打包插件。
+- NocoBaseが提供する商業プラグインの場合は、商業ユーザーサービスプラットフォームからダウンロードしてください。
+- 自作プラグインの場合は、[最初のプラグインを書く](/development/your-first-plugin)の手順を参考にして、プラグインを構築しパッケージ化します。
 
-### 2. 添加插件
+### 2. プラグインを追加する
 
-将插件包上传并添加
+プラグインパッケージをアップロードして追加します。
 
 ![20240424221258_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240424221258_rec_.gif)
 
-### 3. 激活插件
+### 3. プラグインをアクティブ化する
 
-激活上传的插件
+アップロードしたプラグインをアクティブ化します。
 
 ![20240424220854](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240424220854.png)
 
-### 4. 更新插件
+### 4. プラグインを更新する
 
-将待更新的插件包上传并提交更新
+更新するプラグインパッケージをアップロードして更新を提出します。
 
 :::warning
-- 预置的插件会随主应用一起升级，没有「更新」的操作
-- 点击插件的「更新」操作来升级，不要通过先删除，再添加的方式升级插件。
+- プリセットのプラグインは、メインアプリケーションとともにアップグレードされ、「更新」の操作はありません。
+- プラグインの「更新」操作をクリックしてアップグレードし、削除してから再追加する方法でアップグレードしないでください。
 :::
 
 ![20240424221119_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240424221119_rec_.gif)
 
-## 通过命令行安装与更新插件
+## コマンドラインを通じてプラグインをインストールおよび更新する
 
-支持批量处理，如果应用更新导致插件不兼容并无法启动时，也可以使用命令行的方式处理
+バッチ処理をサポートしており、アプリケーションの更新によってプラグインが互換性がなくなり起動できない場合でも、コマンドラインの方法で処理できます。
 
-### 0. Docker 版本需要先进入容器
+### 0. Dockerバージョンは、まずコンテナに入る必要があります。
 
 ```bash
 docker-compose exec app bash
 ```
 
-### 1. 登录插件所在 npm registry
+### 1. プラグインがあるnpmレジストリにログインする
 
-命令的方式，推荐以 npm registry 的方式添加、更新插件，例如 NocoBase 商业插件的 npm registry 是 https://pkg.nocobase.com/
+コマンドラインでnpmレジストリを使用してプラグインを追加・更新することをお勧めします。例えば、NocoBase商業プラグインのnpmレジストリは https://pkg.nocobase.com/ です。
 
 ```bash
 npm login --registry=https://pkg.nocobase.com/
 ```
 
-### 2. 添加插件
+### 2. プラグインを追加する
 
 ```bash
 yarn pm add @nocobase/plugin-data-source-external-mysql @nocobase/plugin-embed --registry=https://pkg.nocobase.com/
 ```
 
-更多用法参考 [`pm add`](#)
+より多くの使用法については [`pm add`](#) を参照してください。
 
-### 3. 激活插件
+### 3. プラグインを有効化する
 
 ```bash
 yarn pm enable @nocobase/plugin-data-source-external-mysql @nocobase/plugin-embed
 ```
 
-### 4. 更新插件
+### 4. プラグインを更新する
 
 :::warning
-如果你需要同时升级应用与插件，请参考 [NocoBase 升级概述](/welcome/getting-started/upgrading)，先将 NocoBase 升级到最新版之后，再执行 `pm update` 命令。
+アプリケーションとプラグインを同時にアップグレードする必要がある場合は、[NocoBase アップグレード概要](/welcome/getting-started/upgrading) を参照し、まず NocoBase を最新バージョンにアップグレードしてから `pm update` コマンドを実行してください。
 :::
 
 ```bash
 yarn pm update @nocobase/plugin-data-source-external-mysql @nocobase/plugin-embed --registry=https://pkg.nocobase.com/
 ```
 
-更多用法参考 [`pm update`](#)
+より多くの使用法については [`pm update`](#) を参照してください。
+

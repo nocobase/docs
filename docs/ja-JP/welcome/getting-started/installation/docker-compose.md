@@ -1,22 +1,22 @@
-# Docker 安装
+# Docker インストール
 
-## 0. 先决条件
+## 0. 前提条件
 
-⚡⚡ 请确保你已经安装了 [Docker](https://docs.docker.com/get-docker/)
+⚡⚡ すでに [Docker](https://docs.docker.com/get-docker/) がインストールされていることを確認してください。
 
-## 1. 新建 docker-compose.yml
+## 1. 新しい `docker-compose.yml` の作成
 
 ```bash
-# 创建一个名为 my-project（可以是其他名称）的文件夹，用于存放 NocoBase 生成的系统文件
+# NocoBase によって生成されたシステムファイルを保存するための my-project（他の名前でも可）という名前のフォルダを作成
 mkdir my-project && cd my-project
 
-# 创建一个空的 docker-compose.yml 文件
-vi docker-compose.yml
+# 空の docker-compose.yml ファイルを作成
+touch docker-compose.yml
 ```
 
-## 2. 配置 docker-compose.yml
+## 2. `docker-compose.yml` の設定
 
-不同数据库配置参数略有不同，请选择合适的数据库配置，并复制到 docker-compose.yml 里
+データベースによって構成パラメータが異なるため、適切なデータベース設定を選択し、`docker-compose.yml` にコピーしてください。
 
 <Tabs>
 
@@ -37,21 +37,21 @@ services:
     depends_on:
       - postgres
     environment:
-      # 应用的密钥，用于生成用户 token 等
-      # 如果 APP_KEY 修改了，旧的 token 也会随之失效
-      # 可以是任意随机字符串，并确保不对外泄露
+      # アプリケーションの秘匿キー。ユーザーのトークン生成などに使用されます。
+      # APP_KEYを変更すると、古いトークンが無効になります。
+      # 任意のランダムな文字列を使用し、外部に漏れないようにしてください。
       - APP_KEY=your-secret-key
-      # 数据库类型，支持 postgres, mysql, mariadb, sqlite
+      # データベースの種類。postgres、mysql、mariadb、sqliteをサポートしています。
       - DB_DIALECT=postgres
-      # 数据库主机，可以替换为已有的数据库服务器 IP
+      # データベースホスト。既存のデータベースサーバーのIPに置き換え可能です。
       - DB_HOST=postgres
-      # 数据库名
+      # データベース名
       - DB_DATABASE=nocobase
-      # 数据库用户
+      # データベースユーザー
       - DB_USER=nocobase
-      # 数据库密码
+      # データベースパスワード
       - DB_PASSWORD=nocobase
-      # 时区
+      # タイムゾーン
       - TZ=Asia/Shanghai
     volumes:
       - ./storage:/app/nocobase/storage
@@ -59,7 +59,7 @@ services:
       - "13000:80"
     # init: true
 
-  # 如果使用已有数据库服务，可以不启动 postgres
+  # 既存のデータベースサービスを使用する場合、Postgresを起動する必要はありません。
   postgres:
     image: registry.cn-shanghai.aliyuncs.com/nocobase/postgres:16
     restart: always
@@ -93,23 +93,23 @@ services:
     depends_on:
       - mysql
     environment:
-      # 应用的密钥，用于生成用户 token 等
-      # 如果 APP_KEY 修改了，旧的 token 也会随之失效
-      # 可以是任意随机字符串，并确保不对外泄露
+      # アプリケーションの秘匿キー。ユーザーのトークン生成などに使用されます。
+      # APP_KEYを変更すると、古いトークンが無効になります。
+      # 任意のランダムな文字列を使用し、外部に漏れないようにしてください。
       - APP_KEY=your-secret-key
-      # 数据库类型，支持 postgres, mysql, mariadb, sqlite
+      # データベースの種類。postgres、mysql、mariadb、sqliteをサポートしています。
       - DB_DIALECT=mysql
-      # 数据库主机，可以替换为已有的数据库服务器 IP
+      # データベースホスト。既存のデータベースサーバーのIPに置き換え可能です。
       - DB_HOST=mysql
-      # 数据库名
+      # データベース名
       - DB_DATABASE=nocobase
-      # 数据库用户
+      # データベースユーザー
       - DB_USER=root
-      # 数据库密码
+      # データベースパスワード
       - DB_PASSWORD=nocobase
-      # 数据库表名、字段名是否转为 snake case 风格
+      # データベースのテーブル名およびフィールド名をスネークケースにするかどうか。
       - DB_UNDERSCORED=true
-      # 时区
+      # タイムゾーン
       - TZ=Asia/Shanghai
     volumes:
       - ./storage:/app/nocobase/storage
@@ -117,7 +117,7 @@ services:
       - "13000:80"
     # init: true
 
-  # 如果使用已有数据库服务，可以不启动 mysql
+  # 既存のデータベースサービスを使用する場合、MySQLを起動する必要はありません。
   mysql:
     image: registry.cn-shanghai.aliyuncs.com/nocobase/mysql:8
     environment:
@@ -151,23 +151,23 @@ services:
     depends_on:
       - mariadb
     environment:
-      # 应用的密钥，用于生成用户 token 等
-      # 如果 APP_KEY 修改了，旧的 token 也会随之失效
-      # 可以是任意随机字符串，并确保不对外泄露
+      # アプリケーションの秘匿キー。ユーザーのトークン生成などに使用されます。
+      # APP_KEYを変更すると、古いトークンが無効になります。
+      # 任意のランダムな文字列を使用し、外部に漏れないようにしてください。
       - APP_KEY=your-secret-key
-      # 数据库类型，支持 postgres, mysql, mariadb, sqlite
+      # データベースの種類。postgres、mysql、mariadb、sqliteをサポートしています。
       - DB_DIALECT=mariadb
-      # 数据库主机，可以替换为已有的数据库服务器 IP
+      # データベースホスト。既存のデータベースサーバーのIPに置き換え可能です。
       - DB_HOST=mariadb
-      # 数据库名
+      # データベース名
       - DB_DATABASE=nocobase
-      # 数据库用户
+      # データベースユーザー
       - DB_USER=root
-      # 数据库密码
+      # データベースパスワード
       - DB_PASSWORD=nocobase
-      # 数据库表名、字段名是否转为 snake case 风格
+      # データベースのテーブル名およびフィールド名をスネークケースにするかどうか。
       - DB_UNDERSCORED=true
-      # 时区
+      # タイムゾーン
       - TZ=Asia/Shanghai
     volumes:
       - ./storage:/app/nocobase/storage
@@ -175,7 +175,7 @@ services:
       - "13000:80"
     # init: true
 
-  # 如果使用已有数据库服务，可以不启动 mariadb
+  # 既存のデータベースサービスを使用する場合、MariaDBを起動する必要はありません。
   mariadb:
     image: registry.cn-shanghai.aliyuncs.com/nocobase/mariadb:11
     environment:
@@ -193,54 +193,44 @@ services:
 </div>
 </Tabs>
 
-选择合适的 NocoBase 版本
+適切な NocoBase のバージョンを選択してください。
 
-- `latest` 或 `main`：截止目前最稳定的版本，推荐安装此版本；
-- `next`：内测版，包含一些未发布的新特性，这个版本可能还不完全稳定，适用于开发者或测试人员，用于提前体验新功能或进行兼容性测试；
-- `1.2.4-alpha`：指定版本号，最新版本查看 [已发布版本列表](https://hub.docker.com/r/nocobase/nocobase/tags)
+- `latest` または `main`：現時点で最も安定したバージョンであり、このバージョンのインストールを推奨します。
+- `next`：ベータ版で、新機能が含まれています。このバージョンは完全には安定していない可能性があり、開発者やテスター向けに新機能を事前に体験したり、互換性テストを行うために使用されます。
+- `1.2.4-alpha`：指定されたバージョン番号。最新のバージョンは[リリースバージョン一覧](https://hub.docker.com/r/nocobase/nocobase/tags)でご確認ください。
 
-示例
+例
 
 ```yml
 # ...
 services:
   app:
-    # 国内用户建议使用阿里云镜像
+    # 国内ユーザーは阿里云のイメージを使用することをお勧めします
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:next
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:1.2.4-alpha
 
-    # Docker Hub 镜像（国内用户无法下载）
+    # Docker Hub イメージ（国内ユーザーはダウンロードできません）
     image: nocobase/nocobase:latest
     image: nocobase/nocobase:next
     image: nocobase/nocobase:1.2.4-alpha
 # ...
 ```
 
-## 3. 安装并启动 NocoBase
+## 3. NocoBase のインストールと起動
 
-安装过程可能需要等待几分钟
+インストールプロセスには数分かかります。
 
 ```bash
-# 拉取最新镜像
+# 最新のイメージを取得
 $ docker-compose pull
-# 在后台运行
+# バックグラウンドで実行
 $ docker-compose up -d
-# 查看 app 进程的情况
+# app プロセスの状況を確認
 $ docker-compose logs app
-
-app-postgres-app-1  | nginx started
-app-postgres-app-1  | yarn run v1.22.15
-app-postgres-app-1  | $ cross-env DOTENV_CONFIG_PATH=.env node -r dotenv/config packages/app/server/lib/index.js install -s
-app-postgres-app-1  | Done in 2.72s.
-app-postgres-app-1  | yarn run v1.22.15
-app-postgres-app-1  | $ pm2-runtime start --node-args="-r dotenv/config" packages/app/server/lib/index.js -- start
-app-postgres-app-1  | 2022-04-28T15:45:38: PM2 log: Launching in no daemon mode
-app-postgres-app-1  | 2022-04-28T15:45:38: PM2 log: App [index:0] starting in -fork mode-
-app-postgres-app-1  | 2022-04-28T15:45:38: PM2 log: App [index:0] online
-app-postgres-app-1  | 🚀 NocoBase server running at: http://localhost:13000/
 ```
 
-## 4. 登录 NocoBase
+## 4. NocoBase にログイン
 
-使用浏览器打开 http://localhost:13000/ 初始化账号和密码是 `admin@nocobase.com` 和 `admin123`。
+ブラウザで http://localhost:13000/ を開きます。初期のアカウントは `admin@nocobase.com`、パスワードは `admin123` です。
+

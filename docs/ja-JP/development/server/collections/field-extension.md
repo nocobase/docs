@@ -1,12 +1,12 @@
-# 字段扩展
+# フィールド拡張
 
-在 NocoBase 中 Collection Field 的构成包括：
+NocoBase におけるコレクションフィールドの構成は以下の通りです：
 
 <img src="./collection-field.svg" />
 
-## Field Type 扩展
+## フィールドタイプの拡張
 
-例如扩展密码类型字段 `type: 'password'`
+例えば、パスワードタイプフィールドを拡張する場合は、次のように記述します： `type: 'password'`
 
 ```ts
 export class MyPlugin extends Plugin {
@@ -24,16 +24,17 @@ export class PasswordField extends Field {
 }
 ```
 
-- [更多内置 field types 的实现点此查看](https://github.com/nocobase/nocobase/tree/main/packages/core/database/src/fields)
-- 也可以查看完整的 samples 插件 [packages/samples/shop-modeling](https://github.com/nocobase/nocobase/tree/main/packages/samples/shop-modeling)
+- [その他のビルトインフィールドタイプの実装についてはこちらを参照](https://github.com/nocobase/nocobase/tree/main/packages/core/database/src/fields)
+- 完全なサンプルプラグインは [packages/samples/shop-modeling](https://github.com/nocobase/nocobase/tree/main/packages/samples/shop-modeling) で確認できます
 
-## Field Component 扩展
+## フィールドコンポーネントの拡張
 
-相关扩展文档查看：
+関連する拡張ドキュメントは以下をご覧ください：
 
-- [扩展 Schema 组件](/development/client/ui-schema-designer/extending-schema-components)
-- [Schema 组件库](/development/client/ui-schema-designer/component-library)
+- [スキーマコンポーネントの拡張](/development/client/ui-schema-designer/extending-schema-components)
+- [スキーマコンポーネントライブラリ](/development/client/ui-schema-designer/component-library)
 
-## Field Interface 扩展
+## フィールドインターフェースの拡張
 
-- [内置 field interfaces 点此查看](https://github.com/nocobase/nocobase/tree/main/packages/core/client/src/collection-manager/interfaces)
+- [ビルトインフィールドインターフェースの詳細はこちらを参照](https://github.com/nocobase/nocobase/tree/main/packages/core/client/src/collection-manager/interfaces)
+

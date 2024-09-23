@@ -1,12 +1,13 @@
-## Provider
+## プロバイダー
 
-根据 [Provider 教程](/development/client/providers) 文档，其主要作用有以下三点：
+[プロバイダーのチュートリアル](/development/client/providers) ドキュメントに基づき、その主な役割は以下の三点です：
 
-- 提供全局共享的上下文
-- 提供全局内容展示
-- 拦截作用，根据条件渲染
+- グローバルに共有されるコンテキストの提供
+- グローバルコンテンツの表示
+- 条件に基づくレンダリングの実施
 
-针对以上三点，我们提供了如下示例：
+上記の役割に対して、以下のサンプルを提供します：
 
-- [全局内容展示](/plugin-samples/provider/content)
-- [全局上下文](/plugin-samples/provider/context)
+- [グローバルコンテンツの表示](/plugin-samples/provider/content)
+- [グローバルコンテキスト](/plugin-samples/provider/context)
+

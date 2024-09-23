@@ -1,18 +1,18 @@
-# 表格配置页面
+# テーブル設定ページ
 
-## 场景说明
+## シーン説明
 
-配置界面是由一个表格组成，表格可以添加、编辑、删除数据。
+設定インターフェースはテーブルで構成されており、テーブルを利用してデータの追加、編集、削除が可能です。
 
-## 示例说明
+## 例の説明
 
-假设我们需要做一个邮件通知的插件，邮件通知的模板可以有多个，每个模板包含邮件主题和邮件内容等信息，我们需要一个配置界面来管理这些模板。
+メール通知のプラグインを作成すると仮定します。メール通知には複数のテンプレートがあり、各テンプレートには件名や内容などの情報が含まれます。これらのテンプレートを管理するための設定インターフェースが必要です。
 
-本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-settings-table) 中查看。
+この文書の完全な例コードは、[plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-settings-table) で確認できます。
 
-## 初始化插件
+## プラグインの初期化
 
-我们按照 [编写第一个插件](/development/your-fisrt-plugin) 文档说明，如果没有一个项目，可以先创建一个项目，如果已经有了或者是 clone 的源码，则跳过这一步。
+[最初のプラグインの作成](/development/your-first-plugin)の文書に従い、プロジェクトがない場合は新しく作成し、既存のプロジェクトがある場合やソースコードをクローンした場合はこのステップをスキップしてください。
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d sqlite
@@ -21,34 +21,34 @@ yarn install
 yarn nocobase install
 ```
 
-然后初始化一个插件，并添加到系统中：
+次に、プラグインを初期化し、システムに追加します：
 
 ```bash
 yarn pm create @nocobase-sample/plugin-settings-table
 yarn pm enable @nocobase-sample/plugin-settings-table
 ```
 
-然后启动项目即可：
+プロジェクトを起動します：
 
 ```bash
 yarn dev
 ```
 
-然后登录后访问 [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) 就可以看到插件已经安装并启用了。
+ログイン後、[http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/)にアクセスすると、プラグインがインストールされており、有効化されていることが確認できます。
 
-## 后端功能实现
+## バックエンド機能の実装
 
-### 1. 创建数据表
+### 1. データテーブルの作成
 
-后端主要是创建一个数据表用于存储配置信息。关于数据表创建我们需要了解以下知识：
+バックエンドでは、設定情報を保存するためのデータテーブルを作成します。データテーブルの作成に関して、以下の知識を理解する必要があります：
 
-- [数据表和字段](/development/server/collections)
-- [数据表创建](/development/server/collections/configure#在插件代码里定义)
-- [Field Type](/development/server/collections/options#field-type)
-- [defineCollection()  API](/api/database#definecollection)
-- [Collection API](/api/database/collection)
+- [データテーブルとフィールド](/development/server/collections)
+- [データテーブルの作成](/development/server/collections/configure#プラグインコード内で定義)
+- [フィールドタイプ](/development/server/collections/options#field-type)
+- [defineCollection() API](/api/database#definecollection)
+- [コレクションAPI](/api/database/collection)
 
-对于本示例而言，我们创建 `packages/plugins/@nocobase-sample/plugin-settings-table/src/server/collections/email-templates.ts` 文件，其内容如下：
+本例では、`packages/plugins/@nocobase-sample/plugin-settings-table/src/server/collections/email-templates.ts`ファイルを作成し、内容は以下の通りです：
 
 ```ts
 import { defineCollection } from '@nocobase/database';
@@ -68,14 +68,14 @@ export default defineCollection({
 });
 ```
 
-根据需求，我们创建了一个 `samplesEmailTemplates` 数据表，包含 `subject` 和 `content` 两个字段，两个字段我们根据需求使用单行文本以及富文本进行存储。
+要求に応じて、`samplesEmailTemplates`データテーブルを作成し、`subject`と`content`の2つのフィールドを含めました。これらのフィールドは、単行テキストとリッチテキストとして保存されます。
 
-- `subject`字段是单行文本类型，所以 type 值为 `string`
-- `content` 字段是长文本类型，所以 type 值为 `text`
+- `subject`フィールドは単行テキスト型で、type値は`string`
+- `content`フィールドは長文テキスト型で、type値は`text`
 
-### 2. 执行更新
+### 2. 更新の実行
 
-我们还需要将数据表定义更新到数据库中，我们可以通过以下命令来执行更新：
+データテーブルの定義をデータベースに更新する必要があります。以下のコマンドを使用して更新を実行できます：
 
 ```bash
 yarn nocobase upgrade
@@ -83,13 +83,13 @@ yarn nocobase upgrade
 
 ![img_v3_02av_eb156d0e-9f25-4702-a5de-2bfa5cde84bg](https://static-docs.nocobase.com/img_v3_02av_eb156d0e-9f25-4702-a5de-2bfa5cde84bg.jpg)
 
-## 前端功能实现
+## フロントエンド機能の実装
 
-### 1. 创建插件配置页面
+### 1. プラグイン設定ページの作成
 
-之前的 [新增插件配置页面（单个路由）](/plugin-samples/router/add-setting-page-single-route) 已经详细介绍过，我们这里就不再赘述了。
+以前の[プラグイン設定ページの追加（単一ルート）](/plugin-samples/router/add-setting-page-single-route)で詳細に説明したため、ここでは省略します。
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/index.tsx` 文件，其内容如下：
+`packages/plugins/@nocobase-sample/plugin-settings-table/src/client/index.tsx`ファイルを修正し、内容は以下の通りです：
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
@@ -99,7 +99,7 @@ import { name } from '../../package.json';
 export class PluginSettingsTableClient extends Plugin {
   async load() {
     this.app.pluginSettingsManager.add(name, {
-      title: 'Plugin Settings Table',
+      title: 'プラグイン設定テーブル',
       icon: 'TableOutlined',
       Component: () => 'TODO',
     });
@@ -109,21 +109,21 @@ export class PluginSettingsTableClient extends Plugin {
 export default PluginSettingsTableClient;
 ```
 
-然后访问 [http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-table](http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-table) 就可以我们的配置页面了。
+次に、[http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-table](http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-table)にアクセスすると、設定ページが表示されます。
 
 ![img_v3_02av_c610403d-95d8-466a-a3d1-cfcab232057g](https://static-docs.nocobase.com/img_v3_02av_c610403d-95d8-466a-a3d1-cfcab232057g.jpg)
 
-### 2. 定义数据表结构
+### 2. データテーブル構造の定義
 
-基于 Schema 的写法，我们需要先定义数据表的结构。关于前端数据表结构的定义，我们需要了解以下知识：
+スキーマに基づいてデータテーブルの構造を先に定義する必要があります。フロントエンドのデータテーブル構造の定義に関して、以下の知識を理解する必要があります：
 
-- [数据表和字段](/development/server/collections#field-component)
-- [Field Type](/development/server/collections/options#field-type)
-- [Field Interface](/development/server/collections/options#field-interface)
-- [UI Schema 协议](/development/client/ui-schema/what-is-ui-schema)
-- [字段组件](https://client.docs.nocobase.com/components)
+- [データテーブルとフィールド](/development/server/collections#field-component)
+- [フィールドタイプ](/development/server/collections/options#field-type)
+- [フィールドインターフェース](/development/server/collections/options#field-interface)
+- [UIスキーマのプロトコル](/development/client/ui-schema/what-is-ui-schema)
+- [フィールドコンポーネント](https://client.docs.nocobase.com/components)
 
-然后我们新建 `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTable.tsx` 文件，其内容如下：
+次に、`packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTable.tsx` ファイルを新規作成し、その内容は以下の通りです：
 
 ```ts
 const emailTemplatesCollection = {
@@ -135,7 +135,7 @@ const emailTemplatesCollection = {
       name: 'subject',
       interface: 'input',
       uiSchema: {
-        title: 'Subject',
+        title: '件名',
         required: true,
         'x-component': 'Input',
       },
@@ -145,7 +145,7 @@ const emailTemplatesCollection = {
       name: 'content',
       interface: 'richText',
       uiSchema: {
-        title: 'Content',
+        title: '内容',
         required: true,
         'x-component': 'RichText',
       },
@@ -154,36 +154,36 @@ const emailTemplatesCollection = {
 };
 ```
 
-我们定义了一个 `samplesEmailTemplates` 数据表，包含 `subject` 和 `content` 两个字段。以下是 `fields` 字段的说明：
+`samplesEmailTemplates` データテーブルを定義し、`subject` と `content` の2つのフィールドを含みます。以下は `fields` フィールドの説明です：
 
-- `type`：因为是其值字符串，所以其值需要和后端的数据表字段类型一致
-- `name`：字段的名称，需要和后端的数据表字段名称一致
+- `type`：値は文字列であり、その値はバックエンドのデータテーブルフィールドタイプと一致する必要があります。
+- `name`：フィールドの名称であり、バックエンドのデータテーブルフィールド名と一致する必要があります。
 - `interface`
-  - `subject` 字段：单行文本，对应到 interface，所以其值为 `input`
-  - `content` 字段：富文本，对应到 interface，所以其值为 `richText`
-- `uiSchema`：其对应着前端表单项组件的渲染
-  - `type`：无论是单行文本还是长文本，其值都是字符串，所以其值为 `string`
-  - `title`：表单项的标题
-  - `required`：因为是必填项，所以其值为 `true`
+  - `subject` フィールド：単一行テキストであり、インターフェースに対応するため、その値は `input` です。
+  - `content` フィールド：リッチテキストであり、インターフェースに対応するため、その値は `richText` です。
+- `uiSchema`：フロントエンドのフォーム項目コンポーネントのレンダリングに対応します。
+  - `type`：単一行テキストまたは長文にかかわらず、その値は文字列であり、その値は `string` です。
+  - `title`：フォーム項目のタイトルです。
+  - `required`：必須項目であるため、その値は `true` です。
   - `x-component`：
-    - `subject` 字段：使用 [Input 组件](https://client.docs.nocobase.com/components/input)
-    - `content` 字段：使用 [RichText 组件](https://client.docs.nocobase.com/components/rich-text)
+    - `subject` フィールド： [Input コンポーネント](https://client.docs.nocobase.com/components/input) を使用します。
+    - `content` フィールド： [RichText コンポーネント](https://client.docs.nocobase.com/components/rich-text) を使用します。
 
-### 3. 创建 Table Schema
+### 3. テーブルスキーマの作成
 
-关于表单 Schema 的写法，我们需要了解以下知识：
+フォームスキーマの記述方法について、以下の知識を理解する必要があります：
 
-- [Table 组件](https://client.docs.nocobase.com/components/table-v2)
-- [CollectionField 组件](https://client.docs.nocobase.com/core/data-source/collection-field)
-- [CardItem 组件](https://client.docs.nocobase.com/components/card-item)
-- [Schema 协议](/development/client/ui-schema/what-is-ui-schema)
-- [DataBlockProvider 组件](https://client.docs.nocobase.com/core/data-block/data-block-provider)
+- [テーブルコンポーネント](https://client.docs.nocobase.com/components/table-v2)
+- [CollectionField コンポーネント](https://client.docs.nocobase.com/core/data-source/collection-field)
+- [CardItem コンポーネント](https://client.docs.nocobase.com/components/card-item)
+- [スキーマプロトコル](/development/client/ui-schema/what-is-ui-schema)
+- [DataBlockProvider コンポーネント](https://client.docs.nocobase.com/core/data-block/data-block-provider)
 
-我们参考 Table [Extends Collection](https://client.docs.nocobase.com/components/table-v2#extends-collection) 示例，继续修改 `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTable.tsx` 文件：
+テーブルの [コレクションを拡張する](https://client.docs.nocobase.com/components/table-v2#extends-collection) の例を参考にして、`packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTable.tsx` ファイルを引き続き修正します：
 
 ```tsx | pure
 import { ISchema } from '@nocobase/client';
-import { uid } from '@formily/shared'
+import { uid } from '@formily/shared';
 
 const schema: ISchema = {
   type: 'void',
@@ -210,7 +210,7 @@ const schema: ISchema = {
       properties: {
         subject: {
           type: 'void',
-          title: 'Subject',
+          title: '件名',
           'x-component': 'TableV2.Column',
           properties: {
             subject: {
@@ -222,7 +222,7 @@ const schema: ISchema = {
         },
         content: {
           type: 'void',
-          title: 'Content',
+          title: '内容',
           'x-component': 'TableV2.Column',
           properties: {
             content: {
@@ -238,21 +238,21 @@ const schema: ISchema = {
 }
 ```
 
-- [CardItem](https://client.docs.nocobase.com/components/card-item)：卡片组件，主要是提供卡片样式
-- [DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider)：数据块组件，用于向子节点提供数据，因为是表单获取单行数据，我们提供了 `collection` 和 `action` 两个属性
-- [TableV2](https://client.docs.nocobase.com/components/table-v2)：Table 组件，用于渲染表单
-- `useTableBlockProps`：用于获取数据块的属性，并传递给 TableV2 组件，一般情况下不需要改
-- `TableV2.Column`：Table 列组件，用于渲染表单列
-- [CollectionField](https://client.docs.nocobase.com/core/data-source/collection-field)：数据表字段组件，用于读取 Collection 中的 `UI Schema` 并渲染
+- [CardItem](https://client.docs.nocobase.com/components/card-item)：カードコンポーネントで、主にカードスタイルを提供します。
+- [DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider)：データブロックコンポーネントで、子ノードにデータを提供するために使用されます。フォームは単一行データを取得するため、`collection` と `action` の2つの属性を提供しています。
+- [TableV2](https://client.docs.nocobase.com/components/table-v2)：Tableコンポーネントで、フォームをレンダリングするために使用されます。
+- `useTableBlockProps`：データブロックの属性を取得し、TableV2コンポーネントに渡すために使用されます。一般的には変更する必要はありません。
+- `TableV2.Column`：Table列コンポーネントで、フォーム列をレンダリングするために使用されます。
+- [CollectionField](https://client.docs.nocobase.com/core/data-source/collection-field)：データテーブルフィールドコンポーネントで、Collection内の`UI Schema`を読み取り、レンダリングします。
 
-### 4. 创建 Table 组件
+### 4. Tableコンポーネントの作成
 
-将 Schema 渲染成组件，我们需要了解以下知识：
+スキーマをコンポーネントにレンダリングするには、以下の知識を理解する必要があります：
 
-- [ExtendCollectionsProvider](https://client.docs.nocobase.com/core/data-source/extend-collections-provider) 组件来扩展数据表
-- [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component) 组件来渲染表单
+- [ExtendCollectionsProvider](https://client.docs.nocobase.com/core/data-source/extend-collections-provider)コンポーネントでデータテーブルを拡張します。
+- [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component)コンポーネントでフォームをレンダリングします。
 
-我们继续在 `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTable.tsx` 文件中编写：
+次に、`packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTable.tsx`ファイルに以下を記述します：
 
 ```tsx | pure
 import React from 'react';
@@ -266,23 +266,24 @@ export const PluginSettingsTable = () => {
 };
 ```
 
-### 5. 注册插件配置页面
+### 5. プラグイン設定ページの登録
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/index.tsx` 文件，其内容如下：
+`packages/plugins/@nocobase-sample/plugin-settings-table/src/client/index.tsx`ファイルを修正し、内容は以下のようになります：
 
 ```diff
 import { Plugin } from '@nocobase/client';
 // @ts-ignore
 import { name } from '../../package.json';
-+ import { PluginSettingsTable } from './PluginSettingsTable'
++ import { PluginSettingsTable } from './PluginSettingsTable';
+```
 
+```javascript
 export class PluginSettingFormClient extends Plugin {
   async load() {
     this.app.pluginSettingsManager.add(name, {
-      title: 'Plugin Settings Form',
+      title: 'プラグイン設定フォーム',
       icon: 'FormOutlined',
--     Component: () => 'TODO',
-+     Component: PluginSettingsTable,
+      Component: PluginSettingsTable,
     });
   }
 }
@@ -290,19 +291,19 @@ export class PluginSettingFormClient extends Plugin {
 export default PluginSettingFormClient;
 ```
 
-然后我们访问 [http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-table](http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-table) 就可以看到我们的配置页面了。
+次に、[http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-table](http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-table) にアクセスすると、設定ページを表示できます。
 
 ![img_v3_02av_97fd272d-1333-4faf-9ce1-6363c6a049dg](https://static-docs.nocobase.com/img_v3_02av_97fd272d-1333-4faf-9ce1-6363c6a049dg.jpg)
 
-### 6. 实现新增功能
+### 6. 新機能の実装
 
-现在的 Table 没有任何数据，我们需要增加新增功能。想实现新增功能，需要参考以下文档：
+現在のテーブルにはデータがありませんので、新機能を追加する必要があります。新機能を実装するには、以下のドキュメントを参考にしてください：
 
-- Table 组件 [With ActionToolbar 示例](https://client.docs.nocobase.com/components/table-v2)
-- [Form 组件](https://client.docs.nocobase.com/components/form-v2)
-- [Action 组件](https://client.docs.nocobase.com/components/action)
+- テーブルコンポーネント [With ActionToolbar の例](https://client.docs.nocobase.com/components/table-v2)
+- [フォームコンポーネント](https://client.docs.nocobase.com/components/form-v2)
+- [アクションコンポーネント](https://client.docs.nocobase.com/components/action)
 
-我们继续在 `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTable.tsx` 文件中编写：
+引き続き `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTable.tsx` ファイルに記述していきます：
 
 ```tsx | pure
 import React from 'react';
@@ -325,7 +326,7 @@ const schema: ISchema = {
         add: {
           type: 'void',
           'x-component': 'Action',
-          title: 'Add New',
+          title: '新規追加',
           'x-align': 'right',
           'x-component-props': {
             type: 'primary',
@@ -334,7 +335,7 @@ const schema: ISchema = {
             drawer: {
               type: 'void',
               'x-component': 'Action.Drawer',
-              title: 'Add new',
+              title: '新規追加',
               properties: {
                 form: {
                   type: 'void',
@@ -353,7 +354,7 @@ const schema: ISchema = {
                       'x-component': 'Action.Drawer.Footer',
                       properties: {
                         submit: {
-                          title: 'Submit',
+                          title: '送信',
                           'x-component': 'Action',
                           'x-use-component-props': 'useSubmitActionProps',
                         },
@@ -387,29 +388,29 @@ const useSubmitActionProps = () => {
     async onClick() {
       await form.submit();
       const values = form.values;
-      await resource.create({ values })
-      await runAsync()
-      message.success('Saved successfully');
+      await resource.create({ values });
+      await runAsync();
+      message.success('保存に成功しました');
       setVisible(false);
     },
   };
 };
 ```
 
-其中：
+その後：
 
-- [ActionBar](https://client.docs.nocobase.com/components/action#actionbar)：提供了操作按钮的布局
-- [Action](https://client.docs.nocobase.com/components/action)：新增按钮
-- [Action.Drawer](https://client.docs.nocobase.com/components/action#actiondrawer)：点击后是弹窗
-- [FormV2](https://client.docs.nocobase.com/components/form-v2)：表单组件
-- [FormItem](https://client.docs.nocobase.com/components/form-v2#formitem)：表单项组件
-- [Action.Drawer.Footer](https://client.docs.nocobase.com/components/action#actiondrawerfooter)：弹窗底部
-- [useSubmitActionProps](https://client.docs.nocobase.com/core/data-block/use-data-block-request#use-submit-action-props)：用于提交表单
-  - `useActionContext()`：获取 Action 上下文
-  - [useDataBlockResource()](https://client.docs.nocobase.com/core/data-block/data-block-resource-provider)：获取 `TableBlockProvider` 提供的 `resource`，用于对数据进行增删改查
-  - [useDataBlockRequest()](https://client.docs.nocobase.com/core/data-block/data-block-request-provider)：Table 区块的请求对象，当调用 `runAsync` 会重新请求，已达到刷新 Table 数据的目的
+- [ActionBar](https://client.docs.nocobase.com/components/action#actionbar)：操作ボタンのレイアウトを提供します。
+- [Action](https://client.docs.nocobase.com/components/action)：新しいボタンを追加します。
+- [Action.Drawer](https://client.docs.nocobase.com/components/action#actiondrawer)：クリック後にポップアップが表示されます。
+- [FormV2](https://client.docs.nocobase.com/components/form-v2)：フォームコンポーネントです。
+- [FormItem](https://client.docs.nocobase.com/components/form-v2#formitem)：フォーム項目コンポーネントです。
+- [Action.Drawer.Footer](https://client.docs.nocobase.com/components/action#actiondrawerfooter)：ポップアップの底部です。
+- [useSubmitActionProps](https://client.docs.nocobase.com/core/data-block/use-data-block-request#use-submit-action-props)：フォームを提出するために使用します。
+  - `useActionContext()`：アクションコンテキストを取得します。
+  - [useDataBlockResource()](https://client.docs.nocobase.com/core/data-block/data-block-resource-provider)：データのCRUD操作に使用される `TableBlockProvider` が提供する `resource` を取得します。
+  - [useDataBlockRequest()](https://client.docs.nocobase.com/core/data-block/data-block-request-provider)：テーブルブロックのリクエストオブジェクトで、`runAsync` を呼び出すとリクエストが再実行され、テーブルデータを更新します。
 
-然后需要将 `useSubmitActionProps` 添加到上下文中：
+次に、`useSubmitActionProps` をコンテキストに追加する必要があります：
 
 ```diff
 export const PluginSettingsTable = () => {
@@ -426,15 +427,15 @@ export const PluginSettingsTable = () => {
   <source src="https://static-docs.nocobase.com/20240517-190400.mp4" type="video/mp4">
 </video>
 
-### 7. 实现编辑功能
+### 7. 編集機能を実装する
 
-编辑功能和新增功能类似，只是需要在 Table 中添加编辑按钮，然后在弹窗中更改数据。想要实现编辑功能，需要参考以下文档：
+編集機能は新規作成機能と似ていますが、テーブルに編集ボタンを追加し、ポップアップ内でデータを変更する必要があります。編集機能を実現するには、以下のドキュメントを参考にしてください：
 
-- Table 组件 [View Or Edit Record](https://client.docs.nocobase.com/components/table-v2#view-or-edit-record)
-- Form 组件 [Default Values](https://client.docs.nocobase.com/components/form-v2#default-values)
-- [useCollectionRecord()](https://client.docs.nocobase.com/core/data-block/collection-record-provider)：用于获取当前行的数据
+- テーブルコンポーネント [View Or Edit Record](https://client.docs.nocobase.com/components/table-v2#view-or-edit-record)
+- フォームコンポーネント [Default Values](https://client.docs.nocobase.com/components/form-v2#default-values)
+- [useCollectionRecord()](https://client.docs.nocobase.com/core/data-block/collection-record-provider)：現在の行のデータを取得するために使用されます。
 
-我们继续在 `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTable.tsx` 文件中编写：
+次に、`packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTable.tsx` ファイルに以下を記述します：
 
 ```tsx | pure
 import { useCollectionRecordData } from '@nocobase/client';
@@ -447,93 +448,20 @@ const useEditFormProps = () => {
       createForm({
         values: recordData,
       }),
-    [],
+    [recordData],
   );
 
   return {
     form,
   };
 }
-
-const schema: ISchema = {
-  // ...
-  properties: {
-    // ...
-    table: {
-      // ...
-      properties: {
-        // ...
-        actions: {
-          type: 'void',
-          title: 'Actions',
-          'x-component': 'TableV2.Column',
-          properties: {
-            actions: {
-              type: 'void',
-              'x-component': 'Space',
-              'x-component-props': {
-                split: '|',
-              },
-              properties: {
-                edit: {
-                  type: 'void',
-                  title: 'Edit',
-                  'x-component': 'Action.Link',
-                  'x-component-props': {
-                    openMode: 'drawer',
-                    icon: 'EditOutlined',
-                  },
-                  properties: {
-                    drawer: {
-                      type: 'void',
-                      title: 'Edit',
-                      'x-component': 'Action.Drawer',
-                      properties: {
-                        form: {
-                          type: 'void',
-                          'x-component': 'FormV2',
-                          'x-use-component-props': 'useEditFormProps',
-                          properties: {
-                            subject: {
-                              'x-decorator': 'FormItem',
-                              'x-component': 'CollectionField',
-                            },
-                            content: {
-                              'x-decorator': 'FormItem',
-                              'x-component': 'CollectionField',
-                            },
-                            footer: {
-                              type: 'void',
-                              'x-component': 'Action.Drawer.Footer',
-                              properties: {
-                                submit: {
-                                  title: 'Submit',
-                                  'x-component': 'Action',
-                                  'x-use-component-props': 'useSubmitActionProps',
-                                },
-                              },
-                            },
-                          },
-                        },
-                      },
-                    },
-                  },
-                },
-              },
-            }
-          },
-        }
-      }
-    }
-  }
-}
 ```
 
-`Table` 会将每行的数据通过 [CollectionRecordProvider](https://client.docs.nocobase.com/core/data-block/collection-record-provider) 向子节点传递。
+`Table` は、各行のデータを [CollectionRecordProvider](https://client.docs.nocobase.com/core/data-block/collection-record-provider) を通じて子ノードに渡します。
 
-我们在我们 `useEditFormProps` 中使用 `useCollectionRecordData()` 获取当前行的数据，然后通过 `createForm` 创建一个表单，将当前行的数据作为默认值传递给表单。
+`useEditFormProps` 内で `useCollectionRecordData()` を使用して現在の行のデータを取得し、そのデータをデフォルト値としてフォームを作成するために `createForm` を使用します。
 
-然后我们修改 `useSubmitActionProps()` 的逻辑，让其支持新增和编辑：
+次に、`useSubmitActionProps()` のロジックを修正し、新規作成と編集をサポートします。
 
 ```diff
 const useSubmitActionProps = () => {
@@ -561,9 +489,9 @@ const useSubmitActionProps = () => {
 };
 ```
 
-- [useCollection](https://client.docs.nocobase.com/core/data-source/collection-provider#usecollection): 由 DataBlockProvider 提供的数据表对象
+- [useCollection](https://client.docs.nocobase.com/core/data-source/collection-provider#usecollection): DataBlockProviderによって提供されるデータテーブルオブジェクト
 
-最后将 `useEditFormProps` 注册到上下文中：
+最後に、`useEditFormProps`をコンテキストに登録します：
 
 ```diff
 export const PluginSettingsTable = () => {
@@ -580,13 +508,13 @@ export const PluginSettingsTable = () => {
   <source src="https://static-docs.nocobase.com/20240517-190849.mp4" type="video/mp4">
 </video>
 
-### 8. 实现删除功能
+### 8. 削除機能の実装
 
-删除功能比较简单，我们只需要在 Action 列中增加 `Delete` 按钮，点击后调用 `resource.destroy()` 然后再刷新 Table 数据即可。
+削除機能は比較的簡単で、アクション列に`Delete`ボタンを追加し、クリック後に`resource.destroy()`を呼び出してテーブルデータを更新するだけです。
 
-- Action [Confirm](https://client.docs.nocobase.com/components/action#confirm)
+- アクション [Confirm](https://client.docs.nocobase.com/components/action#confirm)
 
-我们继续在 `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTable.tsx` 文件中编写：
+次に、`packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTable.tsx`ファイルに記述します：
 
 ```ts
 import { ActionProps } from '@nocobase/client';
@@ -599,15 +527,15 @@ function useDeleteActionProps(): ActionProps {
   const { runAsync } = useDataBlockRequest();
   return {
     confirm: {
-      title: 'Delete',
-      content: 'Are you sure you want to delete it?',
+      title: '削除',
+      content: '本当に削除してもよろしいですか？',
     },
     async onClick() {
       await resource.destroy({
         filterByTk: record[collection.filterTargetKey]
       });
       await runAsync();
-      message.success('Deleted!');
+      message.success('削除しました！');
     },
   };
 }
@@ -626,7 +554,7 @@ const schema: ISchema = {
             // ...
             delete: {
               type: 'void',
-              title: 'Delete',
+              title: '削除',
               'x-component': 'Action.Link',
               'x-use-component-props': 'useDeleteActionProps',
             }
@@ -638,8 +566,7 @@ const schema: ISchema = {
 }
 ```
 
-然后我们将 `useDeleteActionProps` 注册到上下文中。
-
+次に、`useDeleteActionProps`をコンテキストに登録します。
 
 ```diff
 export const PluginSettingsTable = () => {
@@ -656,16 +583,16 @@ export const PluginSettingsTable = () => {
   <source src="https://static-docs.nocobase.com/20240517-191110.mp4" type="video/mp4">
 </video>
 
-### 9. 在页面内部使用配置数据
+### 9. ページ内での設定データの使用
 
-关于使用表单数据，有 2 种场景，一种是在页面内部使用，一种是在全局使用。两者的区别是：
+フォームデータの利用には、ページ内での使用とグローバルでの使用の2つのシナリオがあります。両者の違いは以下の通りです：
 
-- 全局使用：需要在表单数据更新后，将数据同步到全局状态中，达到实时更新的效果
-- 页面内部使用：因为页面的切换会自动销毁和创建，所以不需要同步数据
+- グローバル使用：フォームデータが更新された後、データをグローバル状態に同期させ、リアルタイムで更新される効果を得る必要があります。
+- ページ内使用：ページの切り替えによって自動的に破棄され、新たに生成されるため、データの同期は不要です。
 
-本步骤我们主要讲解在页面内部使用表单数据。
+本ステップでは、主にページ内でのフォームデータの使用について説明します。
 
-我们创建 `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTablePage.tsx` 文件，其内容如下：
+`packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTablePage.tsx` ファイルを作成し、その内容は以下の通りです：
 
 ```tsx | pure
 import { useRequest } from '@nocobase/client';
@@ -682,7 +609,7 @@ export const PluginSettingsTablePage = () => {
 }
 ```
 
-然后我们在 `PluginSettingsTable` 组件中引入 `PluginSettingsTablePage` 组件：
+次に、`PluginSettingsTable` コンポーネント内で `PluginSettingsTablePage` コンポーネントをインポートします：
 
 ```tsx | pure
 import { PluginSettingsTablePage } from './PluginSettingsTablePage'
@@ -700,15 +627,15 @@ export class PluginSettingFormClient extends Plugin {
 }
 ```
 
-然后我们访问 [http://localhost:13000/admin/plugin-settings-table-page](http://localhost:13000/admin/plugin-settings-table-page) 就可以看到我们的表单数据了。
+その後、[http://localhost:13000/admin/plugin-settings-table-page](http://localhost:13000/admin/plugin-settings-table-page) にアクセスすると、フォームデータが表示されます。
 
 ![img_v3_02av_753dd9f1-9e8c-43c5-a1c6-1fb217844cag](https://static-docs.nocobase.com/img_v3_02av_753dd9f1-9e8c-43c5-a1c6-1fb217844cag.jpg)
 
-### 10. 全局使用配置数据
+### 10. グローバルでの設定データの使用
 
-全局使用且需要实时刷新，需要使用到 `Context` 和 NocoBase [Provider](/development/client/providers) 能力。
+グローバルで使用し、リアルタイムで更新が必要な場合は、`Context` と NocoBase [Provider](/development/client/providers) の機能を使用します。
 
-我们创建 `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTableProvider.tsx` 文件，其内容如下：
+`packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTableProvider.tsx` ファイルを作成し、その内容は以下の通りです：
 
 ```tsx | pure
 import React, { createContext, FC } from 'react';
@@ -716,7 +643,7 @@ import { useRequest, UseRequestResult } from '@nocobase/client';
 
 const PluginSettingsTableContext = createContext<UseRequestResult<{ data?: any[] }>>(null as any);
 
-export const PluginSettingsTableProvider: FC<{ children: React.ReactNode }> = ({children}) => {
+export const PluginSettingsTableProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
   const request = useRequest<{ data?: any[] }>({
     url: 'samplesEmailTemplates:list',
   });
@@ -731,7 +658,7 @@ export const usePluginSettingsTableRequest = () => {
 };
 ```
 
-然后修改 `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/index.tsx` 文件，将其注册到全局中：
+次に、`packages/plugins/@nocobase-sample/plugin-settings-table/src/client/index.tsx` ファイルを修正し、グローバルに登録します：
 
 ```ts
 import { PluginSettingsTableProvider } from './PluginSettingsTableProvider'
@@ -745,7 +672,7 @@ export class PluginSettingFormClient extends Plugin {
 }
 ```
 
-然后在表单更新后，我们需要重新获取全局的数据。我们修改 `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTable.tsx`：
+その後、フォームが更新された後、グローバルデータを再取得する必要があります。`packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTable.tsx` を修正します：
 
 ```diff
 import { usePluginSettingsTableRequest } from './PluginSettingsTableProvider';
@@ -761,7 +688,7 @@ const useSubmitActionProps = (): ActionProps => {
     async onClick() {
       // ...
 +     await globalSettingsTableRequest.runAsync();
-      message.success('Saved successfully!');
+      message.success('保存に成功しました！');
     },
   };
 };
@@ -774,7 +701,7 @@ function useDeleteActionProps(): ActionProps {
     async onClick() {
       // ...
 +     await globalSettingsTableRequest.runAsync();
-      message.success('Deleted!');
+      message.success('削除しました！');
     }
   }
 }
@@ -784,20 +711,39 @@ function useDeleteActionProps(): ActionProps {
   <source src="https://static-docs.nocobase.com/20240517-191452.mp4" type="video/mp4">
 </video>
 
-## 打包和上传到生产环境
+### パッケージ化と本番環境へのアップロード
 
-按照 [构建并打包插件](/development/your-fisrt-plugin#构建并打包插件) 文档说明，我们可以打包插件并上传到生产环境。
+[プラグインの構築とパッケージ化](/development/your-fisrt-plugin#build-and-package-plugin)の文書に従って、プラグインをパッケージ化し、本番環境にアップロードできます。
 
-如果是 clone 的源码，需要先执行一次全量 build，将插件的依赖也构建好。
+ソースコードをクローンした場合は、最初にフルビルドを行い、プラグインの依存関係も構築する必要があります。
 
 ```bash
 yarn build
 ```
 
-如果是使用的 `create-nocobase-app` 创建的项目，可以直接执行：
+`create-nocobase-app` を使用してプロジェクトを作成した場合は、次のコマンドを直接実行できます：
 
 ```bash
 yarn build @nocobase-sample/plugin-settings-table --tar
 ```
 
-这样就可以看到 `storage/tar/@nocobase-sample/plugin-settings-table.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
+これにより、`storage/tar/@nocobase-sample/plugin-settings-table.tar.gz` ファイルが生成されます。その後、[アップロードの方法](/welcome/getting-started/plugin)でインストールします。
+
+## パッケージングと本番環境へのアップロード
+
+[プラグインのビルドとパッケージング](/development/your-fisrt-plugin#ビルドとパッケージング)に従って、プラグインをパッケージングし、本番環境にアップロードできます。
+
+ソースコードをクローンした場合は、最初に全量ビルドを実行し、プラグインの依存関係を構築する必要があります。
+
+```bash
+yarn build
+```
+
+`create-nocobase-app` で作成したプロジェクトの場合は、以下のコマンドを直接実行できます：
+
+```bash
+yarn build @nocobase-sample/plugin-settings-table --tar
+```
+
+これにより、`storage/tar/@nocobase-sample/plugin-settings-table.tar.gz` ファイルが作成され、その後[アップロードの方法](/welcome/getting-started/plugin)に従ってインストールできます。
+

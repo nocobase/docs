@@ -1,41 +1,41 @@
-# 贡献
+# 貢献
 
-- Fork 源代码到自己的仓库
-- 修改源代码
-- 提交 Pull Request
-- 签署 CLA
+- ソースコードを自分のリポジトリにフォークする
+- ソースコードを修正する
+- プルリクエストを提出する
+- CLAに署名する
 
-## 下载项目
+## プロジェクトのダウンロード
 
 ```bash
-# 替换为自己的仓库地址
+# 自分のリポジトリのURLに置き換えてください
 git clone https://github.com/nocobase/nocobase.git
 cd nocobase
 yarn install
 ```
 
-## 应用开发与测试
+## アプリ開発とテスト
 
 ```bash
-# 安装并启动应用
+# アプリをインストールして起動します
 yarn dev
-# 运行所有测试
+# すべてのテストを実行します
 yarn test
-# 运行文件夹下所有测试文件
+# フォルダ内のすべてのテストファイルを実行します
 yarn test <dir>
-# 运行单个测试文件
+# 単一のテストファイルを実行します
 yarn test <file>
 ```
 
-## 文档预览
+## ドキュメントのプレビュー
 
 ```bash
-# 启动文档
+# ドキュメントを起動します
 yarn doc --lang=zh-CN
 yarn doc --lang=en-US
 ```
 
-文档在 docs 目录下，遵循 Markdown 语法
+ドキュメントは `docs` ディレクトリ内にあり、Markdown 構文に従っています。
 
 ```bash
 |- /docs/
@@ -43,6 +43,7 @@ yarn doc --lang=en-US
   |- zh-CN
 ```
 
-## 其他
+## その他
 
-更多 Commands 使用说明 [参考 NocoBase CLI 章节](https://docs-cn.nocobase.com/api/cli)。
+さらなるコマンドの使用説明は [NocoBase CLI セクション](https://docs-cn.nocobase.com/api/cli)を参照してください。
+

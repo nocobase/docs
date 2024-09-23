@@ -1,44 +1,45 @@
-# 详情字段
+# 詳細フィールド
 
-## 介绍
+## イントロダクション
 
-详情区块、列表区块、网格区块等字段配置基本一致，主要控制阅读状态下字段的展示。
+詳細ブロック、リストブロック、グリッドブロックなどのフィールド設定は基本的に一致しており、主に読み取り状態でのフィールドの表示を制御します。
 
 ![20240409131155](https://static-docs.nocobase.com/20240409131155.png)
 
-## 字段配置项
+## フィールド設定項目
 
-### 日期字段格式化
+### 日付フィールドのフォーマット
 
 ![20240417223807](https://static-docs.nocobase.com/20240417223807.png)
 
-更多内容参考 [日期格式化](/handbook/ui/fields/specific/date-picker)
+詳細は [日付フォーマット](/handbook/ui/fields/specific/date-picker) を参照してください。
 
-### 数值字段格式化
+### 数値フィールドのフォーマット
 
 ![20240417223608](https://static-docs.nocobase.com/20240417223608.png)
 
-支持简单的单位换算，千分位分隔符，前后缀，精确度，科学记数法。
+単位換算、千分位区切り、前後の接頭辞・接尾辞、精度、科学的記数法をサポートしています。
 
 ![20240417223709](https://static-docs.nocobase.com/20240417223709.png)
 
-更多内容参考 [数值格式化](/handbook/ui/fields/field-settings/number-format)
+詳細は [数値フォーマット](/handbook/ui/fields/field-settings/number-format) を参照してください。
 
-- [编辑字段标题](/handbook/ui/fields/field-settings/edit-title)
-- [显示标题](/handbook/ui/fields/field-settings/display-title)
-- [编辑字段描述](/handbook/ui/fields/field-settings/edit-description)
-- [编辑字段提示信息](/handbook/ui/fields/field-settings/edit-tooltip)
+- [フィールドタイトルの編集](/handbook/ui/fields/field-settings/edit-title)
+- [タイトルの表示](/handbook/ui/fields/field-settings/display-title)
+- [フィールド説明の編集](/handbook/ui/fields/field-settings/edit-description)
+- [フィールドヒント情報の編集](/handbook/ui/fields/field-settings/edit-tooltip)
 
-### 字段组件
+### フィールドコンポーネント
 
-部分字段支持切换为其他组件，例如：`URL` 组件可以切换为 `Preview` 组件。
+一部のフィールドは他のコンポーネントに切り替えることができます。例えば、`URL` コンポーネントを `Preview` コンポーネントに切り替えることが可能です。
 
 ![20240806165321](https://static-docs.nocobase.com/20240806165321.png)
 
-如果你需要扩展更多的组件，可以参考 [扩展有值字段组件组件](/plugin-samples/field/value)。
+さらに多くのコンポーネントを拡張したい場合は、[値のあるフィールドコンポーネントの拡張](/plugin-samples/field/value) を参照してください。
 
-### 样式
+### スタイル
 
-![2024-06-26-15-16-09-表单风格入口](https://static-docs.nocobase.com/2024-06-26-15-16-09-表单风格入口.png)
-![2024-06-26-15-21-31-样式配置](https://static-docs.nocobase.com/2024-06-26-15-21-31-样式配置.png)
-![2024-06-26-15-22-42-表单-最终效果](https://static-docs.nocobase.com/2024-06-26-15-22-42-表单-最终效果.png)
+![2024-06-26-15-16-09-フォームスタイルの入口](https://static-docs.nocobase.com/2024-06-26-15-16-09-表单风格入口.png)  
+![2024-06-26-15-21-31-スタイル設定](https://static-docs.nocobase.com/2024-06-26-15-21-31-样式配置.png)  
+![2024-06-26-15-22-42-フォーム-最終効果](https://static-docs.nocobase.com/2024-06-26-15-22-42-表单-最终效果.png)
+

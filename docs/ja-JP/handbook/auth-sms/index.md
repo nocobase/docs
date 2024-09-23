@@ -1,31 +1,32 @@
-# 短信认证
+# SMS認証
 
-## 介绍
+## 概要
 
-短信认证插件支持用户通过短信注册用户，登录 NocoBase.
+SMS認証プラグインは、ユーザーがSMSを通じてNocoBaseに登録し、ログインすることをサポートします。
 
-> 需要配合 [`@nocobase/plugin-verification` 插件](../verification/index.md)提供的短信验证码功能使用
+> [`@nocobase/plugin-verification` プラグイン](../verification/index.md)が提供するSMS認証コード機能と併用する必要があります。
 
-## 添加短信认证
+## SMS認証の追加
 
-进入用户认证插件管理页面。
+ユーザー認証プラグイン管理ページにアクセスします。
 
 ![](../auth-oidc/static/2023-12-03-18-19-33.png)
 
-添加 - 短信 (SMS)
+「追加」 - 「SMS」を選択します。
 
 ![](https://static-docs.nocobase.com/29c8916492fd5e1564a872b31ad3ac0d.png)
 
-## 配置
+## 設定
 
 ![](https://static-docs.nocobase.com/a4d35ec63ba22ae2ea9e3e8e1cbb783d.png)
 
-短信验证码功能配置见[验证码插件 (@nocobase/plugin-verification) 文档](../verification/index.md)，短信登录认证功能将使用已配置并设置为默认的短信验证码 Provider 来发送短信。
+SMS認証コード機能の設定については、[認証コードプラグイン (@nocobase/plugin-verification) のドキュメント](../verification/index.md)を参照してください。SMSログイン認証機能は、設定されたデフォルトのSMS認証コードプロバイダーを使用してSMSを送信します。
 
-用户不存在时自动注册 (Sign up automatically when the user does not exist): 该选项勾选后，当用户使用的手机号不存在时，将使用手机号作为昵称注册新用户。
+ユーザーが存在しない場合の自動登録（ユーザーが存在しない場合に自動的にサインアップ）: このオプションが選択されている場合、ユーザーが使用する電話番号が存在しないとき、その電話番号をニックネームとして新しいユーザーが登録されます。
 
-## 登录
+## ログイン
 
-访问登录页面使用。
+ログインページにアクセスします。
 
 ![](https://static-docs.nocobase.com/8d630739201bc27d8b0de076ab4f75e2.png)
+

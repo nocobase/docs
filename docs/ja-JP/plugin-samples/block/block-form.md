@@ -1,16 +1,16 @@
-# `Form` 区块
+# `Form` ブロック
 
-## 场景说明
+## シーン説明
 
-`Form` 区块是 NocoBase 中最重要的区块之一，它用于展示和编辑数据表的数据。文本会详细介绍 `Form` 区块实现。
+`Form` ブロックは NocoBase の中で最も重要なブロックの一つであり、データテーブルのデータを表示および編集するために使用されます。本節では、`Form` ブロックの実装について詳しく説明します。
 
 <video width="100%" controls="">
   <source src="https://static-docs.nocobase.com/2024-07-19-18-07-25.mov" type="video/mp4" />
 </video>
 
-## 初始化插件
+## プラグインの初期化
 
-我们按照 [编写第一个插件](/development/your-fisrt-plugin) 文档说明，如果没有一个项目，可以先创建一个项目，如果已经有了或者是 clone 的源码，则跳过这一步。
+[最初のプラグインを作成する](/development/your-fisrt-plugin) ドキュメントに従い、プロジェクトがない場合は新しいプロジェクトを作成してください。すでにプロジェクトが存在する場合や、クローンしたソースコードがある場合は、このステップをスキップできます。
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d sqlite
@@ -19,98 +19,98 @@ yarn install
 yarn nocobase install
 ```
 
-然后初始化一个插件，并添加到系统中：
+次に、プラグインを初期化し、システムに追加します：
 
 ```bash
 yarn pm create @nocobase-sample/plugin-block-form
 yarn pm enable @nocobase-sample/plugin-block-form
 ```
 
-然后启动项目即可：
+プロジェクトを起動します：
 
 ```bash
 yarn dev
 ```
 
-然后登录后访问 [http://localhost:13000/admin/pm/list/locale/](http://localhost:13000/admin/pm/list/locale/) 就可以看到插件已经安装并启用了。
+ログイン後、[http://localhost:13000/admin/pm/list/locale/](http://localhost:13000/admin/pm/list/locale/) にアクセスすると、プラグインがインストールされ、有効になっていることを確認できます。
 
-## 功能实现
+## 機能実装
 
-在实现本示例之前，我们需要先了解一些基础知识：
+この例を実装する前に、いくつかの基礎知識を理解する必要があります：
 
 - [ant-design Form](https://ant.design/components/form)
 - [@formily/antd-v5 Form](https://antd5.formilyjs.org/components/form)
-- [SchemaInitializer 教程](/development/client/ui-schema/initializer)：用于向界面内添加各种区块、字段、操作等
-- [SchemaInitializer API](https://client.docs.nocobase.com/core/ui-schema/schema-initializer)：用于向界面内添加各种区块、字段、操作等
-- [UI Schema 协议](/development/client/ui-schema/what-is-ui-schema)：详细介绍 Schema 的结构和每个属性的作用
-- [Designable 设计器](/development/client/ui-schema/designable)：用于修改 Schema
+- [SchemaInitializer チュートリアル](/development/client/ui-schema/initializer)：さまざまなブロック、フィールド、操作などをインターフェースに追加するために使用します
+- [SchemaInitializer API](https://client.docs.nocobase.com/core/ui-schema/schema-initializer)：インターフェースにさまざまなブロック、フィールド、操作などを追加するために使用します
+- [UI Schema プロトコル](/development/client/ui-schema/what-is-ui-schema)：Schema の構造と各属性の役割について詳細に説明します
+- [Designable デザイナー](/development/client/ui-schema/designable)：Schema の変更に使用します
 
 ```bash
 .
-├── client # 客户端插件
-│   ├── FormV3.configActions # 配置初始化器
+├── client # クライアントプラグイン
+│   ├── FormV3.configActions # 設定初期化器
 │   ├── index.ts
 │   └── items
-│       └── submit # 提交操作
+│       └── submit # 提出操作
 │           ├── index.ts
 │           ├── initializer.tsx
 │           ├── schema.ts
 │           └── settings.ts
-│   ├── FormV3.configFields # 字段初始化器
-│   ├── FormV3.settings # 设置
-│   ├── FormV3.initializer.ts # 初始化器
+│   ├── FormV3.configFields # フィールド初期化器
+│   ├── FormV3.settings # 設定
+│   ├── FormV3.initializer.ts # 初期化器
 │   ├── FormV3.schema.ts # Schema
-│   ├── FormV3.tsx # Component
-│   ├── index.tsx # 客户端插件入口
-│   └── locale.ts # 多语言工具函数
-├── locale # 多语言文件
-│   ├── en-US.json # 英语
-│   └── zh-CN.json # 中文
-├── index.ts # 服务端插件入口
-└── server # 服务端插件
+│   ├── FormV3.tsx # コンポーネント
+│   ├── index.tsx # クライアントプラグインエントリ
+│   └── locale.ts # 多言語ツール関数
+├── locale # 多言語ファイル
+│   ├── en-US.json # 英語
+│   └── zh-CN.json # 中国語
+├── index.ts # サーバープラグインエントリ
+└── server # サーバープラグイン
 ```
 
-### 1. 定义名称
+### 1. 名前の定義
 
-我们首先需要定义区块名称，它将会使用在各个地方。
+まず、ブロックの名前を定義する必要があります。これはさまざまな場所で使用されます。
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/constants.ts`：
+`packages/plugins/@nocobase-sample/plugin-block-form/src/client/constants.ts` を新規作成します：
 
 ```ts
 export const FormV3BlockName = 'FormV3';
 export const FormV3BlockNameLowercase = 'form-v3';
 ```
 
-> 为了不与已有的 `Form` 组件冲突，我们这里将其命名为 `FormV3`
+> 既存の `Form` コンポーネントと衝突しないように、ここでは `FormV3` と名付けます。
 
-### 2. 实现区块组件
+### 2. ブロックコンポーネントの実装
 
-#### 2.1 定义区块组件
+#### 2.1 ブロックコンポーネントの定義
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.tsx` 文件，其内容如下：
+`packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.tsx` ファイルを新規作成し、次の内容を記述します：
 
 ```tsx | pure
 import React, { FC } from 'react';
 import { Form, FormProps } from '@formily/antd-v5';
 import { withDynamicSchemaProps } from '@nocobase/client';
-import { FormV3BlockName } from './constants'
+import { FormV3BlockName } from './constants';
 
 export interface FormV3Props extends FormProps {
   children?: React.ReactNode;
 }
 
 export const FormV3: FC<FormV3Props> = withDynamicSchemaProps((props) => {
-  return <Form {...props} layout={props.layout || 'vertical'} />
+  return <Form {...props} layout={props.layout || 'vertical'} />;
 }, { displayName: FormV3BlockName });
 ```
 
-`Form` 组件整体来说是一个被 `withDynamicSchemaProps` 包裹的函数组件，[withDynamicSchemaProps](/development/client/ui-schema/what-is-ui-schema#x-component-props-和-x-use-component-props) 是一个高阶组件，用于处理 Schema 中的的动态属性。
+`Form` コンポーネントは全体として `withDynamicSchemaProps` でラップされた関数コンポーネントです。[withDynamicSchemaProps](/development/client/ui-schema/what-is-ui-schema#x-component-props-と-x-use-component-props) は、Schema 内の動的属性を処理するための高階コンポーネントです。
 
-如果不看 `withDynamicSchemaProps` 的话，`Form` 组件就是一个简单的函数组件。
+`withDynamicSchemaProps` を考慮しなければ、`Form` コンポーネントは単純な関数コンポーネントです。
 
-#### 2.2 注册区块组件
+#### 2.2 ブロックコンポーネントの登録
 
-我们需要将 `FormV3` 通过插件注册到系统中。
+`FormV3` をプラグインを通じてシステムに登録する必要があります。
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
@@ -118,21 +118,21 @@ import { FormV3 } from './FormV3';
 
 export class PluginBlockFormClient extends Plugin {
   async load() {
-    this.app.addComponents({ FormV3 })
+    this.app.addComponents({ FormV3 });
   }
 }
 
 export default PluginBlockFormClient;
 ```
 
-#### 2.3 验证区块组件
+#### 2.3 ブロックコンポーネントの検証
 
-组件验证方式有 2 种：
+コンポーネントの検証方法は2つあります：
 
-- 临时页面验证：我们可以临时建一个页面，然后渲染 `Form` 组件，查看是否符合需求
-- 文档示例验证：可以启动文档 `yarn doc plugins/@nocobase-sample/plugin-block-form`，通过写文档示例的方式验证是否符合需求（TODO）
+- 一時ページ検証：一時的にページを作成し、`Form` コンポーネントをレンダリングして、要件を満たしているか確認します。
+- ドキュメントサンプル検証：ドキュメント `yarn doc plugins/@nocobase-sample/plugin-block-form` を起動し、ドキュメントサンプルの方式で要件を満たしているか検証します（TODO）。
 
-我们以 `临时页面验证` 为例，我们新建一个页面，根据属性参数添加一个或者多个 `Form` 组件，查看是否符合需求。
+ここでは `一時ページ検証` の例を示します。一つまたは複数の `Form` コンポーネントを属性パラメータに基づいて追加し、要件を満たしているか確認します。
 
 ```tsx | pure
 import React from 'react';
@@ -141,43 +141,47 @@ import { FormV3 } from './FormV3';
 
 export class PluginBlockFormClient extends Plugin {
   async load() {
-    this.app.addComponents({ FormV3 })
+    this.app.addComponents({ FormV3 });
 
     this.app.router.add('admin.block-form-component', {
       path: '/admin/block-form-component',
       Component: () => {
-        return <FormV3>
-          <SchemaComponent schema={{
-            type: 'void',
-            properties: {
-              username: {
-                type: 'string',
-                'x-decorator': 'FormItem',
-                'x-component': 'Input',
-                title: 'Username',
-                required: true,
-              },
-              nickname: {
-                type: 'string',
-                'x-decorator': 'FormItem',
-                'x-component': 'Input',
-                title: 'Nickname',
-              },
-              password: {
-                type: 'string',
-                'x-decorator': 'FormItem',
-                'x-component': 'Input',
-                title: 'Password',
-              },
-              button: {
+        return (
+          <FormV3>
+            <SchemaComponent 
+              schema={{
                 type: 'void',
-                'x-component': 'Action',
-                title: 'Submit',
-                'x-use-component-props': useSubmitActionProps,
-              },
-            }
-          }} />
-        </FormV3>
+                properties: {
+                  username: {
+                    type: 'string',
+                    'x-decorator': 'FormItem',
+                    'x-component': 'Input',
+                    title: 'ユーザー名',
+                    required: true,
+                  },
+                  nickname: {
+                    type: 'string',
+                    'x-decorator': 'FormItem',
+                    'x-component': 'Input',
+                    title: 'ニックネーム',
+                  },
+                  password: {
+                    type: 'string',
+                    'x-decorator': 'FormItem',
+                    'x-component': 'Input',
+                    title: 'パスワード',
+                  },
+                  button: {
+                    type: 'void',
+                    'x-component': 'Action',
+                    title: '送信',
+                    'x-use-component-props': useSubmitActionProps,
+                  },
+                },
+              }} 
+            />
+          </FormV3>
+        );
       }
     });
   }
@@ -186,21 +190,21 @@ export class PluginBlockFormClient extends Plugin {
 export default PluginBlockFormClient;
 ```
 
-然后访问 `http://localhost:13000/admin/form-component` 就可以看到对应测试页面的内容了。
+次に `http://localhost:13000/admin/form-component` にアクセスすると、対応するテストページの内容が表示されます。
 
 ![20240718175735](https://static-docs.nocobase.com/20240718175735.png)
 
-验证完毕后需要删除测试页面。
+検証が完了したら、テストページを削除する必要があります。
 
-### 3. 定义区块 Schema
+### 3. ブロック Schema の定義
 
-#### 3.1 定义区块 Schema
+#### 3.1 ブロック Schema の定義
 
-NocoBase 的动态页面都是通过 Schema 来渲染，所以我们需要定义一个 Schema，后续用于在界面中添加 `Form` 区块。在实现本小节之前，我们需要先了解一些基础知识：
+NocoBase の動的ページはすべて Schema を使用してレンダリングされるため、Schema を定義する必要があります。これにより、後続の操作で `Form` ブロックをインターフェースに追加できます。この節を実装する前に、いくつかの基本知識を理解しておく必要があります：
 
-- [UI Schema 协议](/development/client/ui-schema/what-is-ui-schema)：详细介绍 Schema 的结构和每个属性的作用
+- [UI Schema プロトコル](/development/client/ui-schema/what-is-ui-schema)：Schema の構造と各属性の役割について詳しく説明しています。
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.schema.ts` 文件：
+新しく `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.schema.ts` ファイルを作成します：
 
 ```tsx | pure
 import { ISchema, useDataBlockProps } from "@nocobase/client";
@@ -245,24 +249,24 @@ export function getFormV3Schema(options: GetFormV3SchemaOptions): ISchema {
 ```
 
 `getFormV3Schema`：
-  - `type`：类型，这里是 `void`，表示纯 UI 节点，没有数据
-  - `'x-component': 'CardItem'`：[CardItem 组件](https://client.docs.nocobase.com/components/card-item)，目前的区块都是被包裹在卡片中的，用于提供样式、布局和拖拽等功能
-  - `x-decorator: 'DataBlockProvider'`：数据区块提供者，用于提供数据，更多关于 DataBlockProvider 可以查看 [DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider)
-  - `x-decorator-props`：`DataBlockProvider` 的属性
-    - `dataSource`：数据源
-    - `collection`：数据表
-    - `[FormV3BlockNameLowercase]: {}`：`FormV3` 组件的属性
-  - `properties: { [FormV3BlockNameLowercase]: { ... } }`：子节点
-    - `[FormV3BlockNameLowercase]`：`FormV3` 组件的属性
-    - `'x-component': FormV3BlockName`：`FormV3` 组件
-    - `'x-use-component-props': 'useFormV3Props'`：使用 [x-use-component-props](/development/client/ui-schema/what-is-ui-schema#x-component-props-和-x-use-component-props) 获取 `FormV3` 组件的属性
-  - `"x-toolbar": "BlockSchemaToolbar"`：`BlockSchemaToolbar` 用于左上角显示当前数据表，一般和 `DataBlockProvider` 搭配使用
+  - `type`：タイプ。ここでは `void`、データのない純粋なUIノードを示します。
+  - `'x-component': 'CardItem'`：[CardItem コンポーネント](https://client.docs.nocobase.com/components/card-item)。現在のブロックはすべてカード内にラップされており、スタイル、レイアウト、ドラッグ＆ドロップなどの機能を提供します。
+  - `x-decorator: 'DataBlockProvider'`：データブロックプロバイダー。データを提供します。DataBlockProviderについての詳細は[こちら](https://client.docs.nocobase.com/core/data-block/data-block-provider)を参照してください。
+  - `x-decorator-props`：`DataBlockProvider` のプロパティ
+    - `dataSource`：データソース
+    - `collection`：データテーブル
+    - `[FormV3BlockNameLowercase]: {}`：`FormV3` コンポーネントのプロパティ
+  - `properties: { [FormV3BlockNameLowercase]: { ... } }`：子ノード
+    - `[FormV3BlockNameLowercase]`：`FormV3` コンポーネントのプロパティ
+    - `'x-component': FormV3BlockName`：`FormV3` コンポーネント
+    - `'x-use-component-props': 'useFormV3Props'`：[x-use-component-props](/development/client/ui-schema/what-is-ui-schema#x-component-props-と-x-use-component-props) を使用して `FormV3` コンポーネントのプロパティを取得します。
+  - `"x-toolbar": "BlockSchemaToolbar"`：`BlockSchemaToolbar` は左上隅に現在のデータテーブルを表示するためのもので、一般的に `DataBlockProvider` と組み合わせて使用されます。
 
-`useFormV3Props`：Hooks，用于获取 `FormV3` 组件的属性
-  - [useDataBlockProps](https://client.docs.nocobase.com/core/data-block/data-block-provider#usedatablockprops)：获取 [DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider) 的 props 属性，也就是 `x-decorator-props` 的值
-  - `blockProps[FormV3BlockNameLowercase]`：对应 `FormV3` 组件的属性
+`useFormV3Props`：Hooks。`FormV3` コンポーネントのプロパティを取得するために使用されます。
+  - [useDataBlockProps](https://client.docs.nocobase.com/core/data-block/data-block-provider#usedatablockprops)：[DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider) の props 属性、つまり `x-decorator-props` の値を取得します。
+  - `blockProps[FormV3BlockNameLowercase]`：`FormV3` コンポーネントのプロパティに対応します。
 
-上述 Schema 转为 React 组件后相当于：
+上記の Schema を React コンポーネントに変換すると次のようになります：
 
 ```tsx | pure
 <CardItem>
@@ -274,9 +278,9 @@ export function getFormV3Schema(options: GetFormV3SchemaOptions): ISchema {
 </CardItem>
 ```
 
-#### 3.2 注册 scope
+#### 3.2 スコープの登録
 
-我们需要将 `useFormV3Props` 注册到系统中，这样 [x-use-component-props](/development/client/ui-schema/what-is-ui-schema#x-component-props-和-x-use-component-props) 才能找到对应的 scope。
+`useFormV3Props` をシステムに登録する必要があります。そうしないと [x-use-component-props](/development/client/ui-schema/what-is-ui-schema#x-component-props-と-x-use-component-props) が対応するスコープを見つけることができません。
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
@@ -285,7 +289,7 @@ import { useFormV3Props } from './FormV3.schema';
 
 export class PluginBlockFormClient extends Plugin {
   async load() {
-    this.app.addComponents({ FormV3 })
+    this.app.addComponents({ FormV3 });
     this.app.addScopes({ useFormV3Props });
   }
 }
@@ -293,11 +297,11 @@ export class PluginBlockFormClient extends Plugin {
 export default PluginBlockFormClient;
 ```
 
-更多关于 Scope 的说明可以查看 [全局注册 Component 和 Scope](/plugin-samples/component-and-scope/global)
+スコープに関する詳細は[こちら](/plugin-samples/component-and-scope/global)を参照してください。
 
-#### 3.3 验证区块 Schema
+#### 3.3 ブロック Schema の検証
 
-同验证组件一样，我们可以通过临时页面验证或者文档示例验证的方式来验证 Schema 是否符合需求。我们这里以临时页面验证为例：
+コンポーネントの検証と同様に、テンポラリーページ検証またはドキュメントサンプル検証の方法で Schema が要件を満たしているかを検証できます。ここではテンポラリーページ検証を例にします：
 
 ```tsx | pure
 import React from 'react';
@@ -349,7 +353,7 @@ export class PluginBlockFormClient extends Plugin {
                     submit: {
                       type: 'void',
                       'x-component': 'Action',
-                      title: 'Submit',
+                      title: '送信',
                       'x-use-component-props': useSubmitActionProps,
                     },
                   }
@@ -366,24 +370,24 @@ export class PluginBlockFormClient extends Plugin {
 export default PluginBlockFormClient;
 ```
 
-关于 `SchemaComponent` 的详细说明可以查看 [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponent-1) 文档。
+SchemaComponent に関する詳細な説明は、[SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponent-1) ドキュメントを参照してください。
 
-我们访问 [http://localhost:13000/admin/block-form-schema](http://localhost:13000/admin/block-form-schema) 就可以看到对应测试页面的内容了。
+[http://localhost:13000/admin/block-form-schema](http://localhost:13000/admin/block-form-schema) にアクセスすると、対応するテストページの内容が表示されます。
 
 ![20240718180826](https://static-docs.nocobase.com/20240718180826.png)
 
-验证完毕后需要删除测试页面。
+検証が完了したら、テストページを削除する必要があります。
 
-### 4. 定义 Schema Initializer Item
+### 4. Schema Initializer Itemの定義
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.initializer.tsx` 文件：
+`packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.initializer.tsx` ファイルを新規作成します：
 
 ```ts
 import React from 'react';
-import { SchemaInitializerItemType, useSchemaInitializer } from '@nocobase/client'
+import { SchemaInitializerItemType, useSchemaInitializer } from '@nocobase/client';
 import { FormOutlined } from '@ant-design/icons';
 
-import { getFormV3Schema } from './FormV3.schema'
+import { getFormV3Schema } from './FormV3.schema';
 import { FormV3BlockName } from './constants';
 import { useT } from './locale';
 
@@ -399,7 +403,7 @@ export const formV3InitializerItem: SchemaInitializerItemType = {
       icon: <FormOutlined />,
       componentType: FormV3BlockName,
       onCreateBlockSchema({ item }) {
-        insert(getFormV3Schema({ dataSource: item.dataSource, collection: item.name }))
+        insert(getFormV3Schema({ dataSource: item.dataSource, collection: item.name }));
       },
     };
   },
@@ -408,32 +412,32 @@ export const formV3InitializerItem: SchemaInitializerItemType = {
 
 `formV3InitializerItem`：
 
-- `Component`：与 [添加简单区块 Simple Block](/plugin-samples/schema-initializer/block-simple) 中使用的是 `type`，这里使用的是 `Component`，[2 种定义方式](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#two-ways-to-define-component-and-type) 都是可以的
-- `useComponentProps`：`DataBlockInitializer` 组件的属性
-  - `title`：标题
-  - `icon`：图标，更多图标可以查看 [Ant Design Icons](https://ant.design/components/icon/)
-  - `componentType`：组件类型，这里是 `Info`
-  - `onCreateBlockSchema`：当点击数据表后的回调
-    - `item`：点击的数据表信息
-      - `item.name`：数据表名称
-      - `item.dataSource`：数据表所属的数据源
-  - [useSchemaInitializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#useschemainitializer)：提供了插入 Schema 的方法
+- `Component`： [追加シンプルブロック](/plugin-samples/schema-initializer/block-simple) で使用される `type` とは異なり、こちらでは `Component` を使用します。 [2つの定義方法](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#two-ways-to-define-component-and-type) のいずれかを選択できます。
+- `useComponentProps`：`DataBlockInitializer` コンポーネントのプロパティ
+  - `title`：タイトル
+  - `icon`：アイコン。その他のアイコンについては [Ant Design Icons](https://ant.design/components/icon/) を参照してください。
+  - `componentType`：コンポーネントタイプ。ここでは `Info` です。
+  - `onCreateBlockSchema`：データテーブルをクリックした際のコールバック
+    - `item`：クリックしたデータテーブルの情報
+      - `item.name`：データテーブル名
+      - `item.dataSource`：データテーブルに関連するデータソース
+  - [useSchemaInitializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#useschemainitializer)：スキーマを挿入するためのメソッドを提供します。
 
-更多关于 Schema Initializer 的定义可以参考 [Schema Initializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer) 文档。
+スキーマイニシャライザーの定義については、[スキーマイニシャライザー](https://client.docs.nocobase.com/core/ui-schema/schema-initializer) ドキュメントを参照してください。
 
-### 5. 添加到 Add block 中
+### 5. Add block に追加
 
-系统中有很多个 `Add block` 按钮，但他们的 **name 是不同的**。
+システム内には多くの `Add block` ボタンがありますが、**name は異なります**。
 
 ![img_v3_02b4_049b0a62-8e3b-420f-adaf-a6350d84840g](https://static-docs.nocobase.com/img_v3_02b4_049b0a62-8e3b-420f-adaf-a6350d84840g.jpg)
 
-如果我们需要添加到页面级别的 `Add block` 中，我们需要知道对应的 `name`，我们可以通过 TODO 方式查看对应的 `name`。
+ページレベルの `Add block` に追加する必要がある場合、対応する `name` を知る必要があります。TODO方式を使用して、適切な `name` を確認できます。
 
 TODO
 
-通过上图可以看到页面级别的 `Add block` 对应的 name 为 `page:addBlock`，`Data Blocks` 对应的 name 为 `dataBlocks`。
+上の図から、ページレベルの `Add block` に対応する name は `page:addBlock` であり、`Data Blocks` に対応する name は `dataBlocks` です。
 
-然后我们修改 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/index.tsx` 文件：
+次に、`packages/plugins/@nocobase-sample/plugin-block-form/src/client/index.tsx` ファイルを修正します：
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
@@ -444,7 +448,7 @@ import { formV3InitializerItem } from './FormV3.initializer';
 
 export class PluginBlockFormClient extends Plugin {
   async load() {
-    this.app.addComponents({ FormV3 })
+    this.app.addComponents({ FormV3 });
     this.app.addScopes({ useFormV3Props });
 
     this.app.schemaInitializerManager.addItem('page:addBlock', `dataBlocks.${formV3InitializerItem.name}`, formV3InitializerItem);
@@ -454,25 +458,25 @@ export class PluginBlockFormClient extends Plugin {
 export default PluginBlockFormClient;
 ```
 
-这里使用 [app.schemaInitializerManager.addItem](https://client.docs.nocobase.com/core/ui-schema/schema-initializer-manager#schemainitializermanageradditem) 将 `formV3InitializerItem` 添加对应 Initializer 子项中，其中 `page:addBlock` 是页面上 `Add block` 的 name，`dataBlocks` 是其父级的 name。
+ここでは [app.schemaInitializerManager.addItem](https://client.docs.nocobase.com/core/ui-schema/schema-initializer-manager#schemainitializermanageradditem) を使用して、`formV3InitializerItem` を対応するイニシャライザーサブアイテムに追加します。`page:addBlock` はページ上の `Add block` の name であり、`dataBlocks` はその親の name です。
 
-然后我们 hover `Add block` 按钮，就可以看到 `FormV3` 这个新的区块类型。
+その後、`Add block` ボタンにホバーすると、新しいブロックタイプである `FormV3` が表示されます。
 
 ![20240719112105](https://static-docs.nocobase.com/20240719112105.png)
 
-点击 `Users` 表，就可以添加一个新的 `FormV3` 区块了，但是目前子节点是空的。
+`Users` テーブルをクリックすると、新しい `FormV3` ブロックを追加できますが、現在子ノードは空です。
 
 ![20240719112149](https://static-docs.nocobase.com/20240719112149.png)
 
-### 6. 实现 Schema Settings
+### 6. スキーマ設定の実装
 
-目前的区块只能添加，但是无法删除，我们需要实现 `Schema Settings`，用于配置一些属性和操作。
+現在のブロックは追加のみ可能で、削除はできません。`Schema Settings` を実装して、いくつかの属性と操作を設定する必要があります。
 
-#### 6.1 定义 Schema Settings
+#### 6.1 スキーマ設定の定義
 
-一个完整的 Block 还需要有 Schema Settings，用于配置一些属性和操作。
+完全なブロックにはスキーマ設定が必要で、いくつかの属性と操作を設定します。
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.settings/index.ts` 文件：
+新たに `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.settings/index.ts` ファイルを作成します：
 
 ```ts | pure
 import { SchemaSettings } from "@nocobase/client";
@@ -483,10 +487,10 @@ export const formV3Settings = new SchemaSettings({
   items: [
     // TODO
   ]
-})
+});
 ```
 
-#### 6.2 注册 Schema Settings
+#### 6.2 スキーマ設定の登録
 
 ```ts
 import { Plugin } from '@nocobase/client';
@@ -495,16 +499,16 @@ import { formV3Settings } from './FormV3.settings';
 export class PluginBlockFormClient extends Plugin {
   async load() {
     // ...
-    this.app.schemaSettingsManager.add(formV3Settings)
+    this.app.schemaSettingsManager.add(formV3Settings);
   }
 }
 
 export default PluginBlockFormClient;
 ```
 
-#### 6.3 使用 Schema Settings
+#### 6.3 スキーマ設定の使用
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/schema/index.ts` 中的 `getFormV3Schema`：
+`packages/plugins/@nocobase-sample/plugin-block-form/src/client/schema/index.ts` の `getFormV3Schema` を修正します：
 
 ```diff
 + import { formV3Settings } from "./FormV3.settings";
@@ -520,18 +524,17 @@ export function getFormV3Schema(options: GetFormV3SchemaOptions): ISchema {
 };
 ```
 
+### 7. スキーマ設定アイテムの実装
 
-### 7. 实现 Schema Settings items
+現在、`スキーマ設定` は実装されていますが、操作は実装されていません。要求に応じて各操作を実装する必要があります。
 
-目前我们只实现了 `Schema Settings`，但是没有实现任何操作，我们需要根据需求实现各个操作。
+スキーマ設定がサポートする組み込み操作タイプについては、[スキーマ設定 - 組み込みコンポーネントとタイプ](https://client.docs.nocobase.com/core/ui-schema/schema-settings#built-in-components-and-types) ドキュメントを参照してください。
 
-目前 Schema Settings 支持的内置操作类型请参考 [Schema Settings - Built-in Components and Types](https://client.docs.nocobase.com/core/ui-schema/schema-settings#built-in-components-and-types) 文档。
+#### 7.1 `remove` 操作の実装
 
-#### 7.1 实现 `remove` 操作
+現在、初期化子を介して追加されたブロックは削除できません。`remove` 操作を実装する必要があります。
 
-目前通过 initializers 添加的区块是无法删除的，我们需要实现 `remove` 操作。
-
-[NocoBase] 内置了 [remove](https://client.docs.nocobase.com/core/ui-schema/schema-settings#schemasettingsremove-1) 操作类型，我们修改 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/settings/index.ts` 文件：
+[NocoBase] には、[remove](https://client.docs.nocobase.com/core/ui-schema/schema-settings#schemasettingsremove-1) 操作タイプが組み込まれています。`packages/plugins/@nocobase-sample/plugin-block-form/src/client/settings/index.ts` ファイルを修正します：
 
 ```diff
 import { SchemaSettings } from '@nocobase/client';
@@ -555,18 +558,18 @@ export const formV3Settings = new SchemaSettings({
 ```
 
 - componentProps
-  - `removeParentsIfNoChildren`：如果没有子节点，是否删除父节点
-  - `breakRemoveOn`：删除时的中断条件。因为 `Add Block` 会自动将子项的包裹在 `Grid` 中，所以这里设置 `breakRemoveOn: { 'x-component': 'Grid' }`，当删除 `Grid` 时，不再向上删除。
+  - `removeParentsIfNoChildren`：子ノードがない場合、親ノードを削除するかどうか
+  - `breakRemoveOn`：削除時の中断条件。`Add Block` は自動的に子項目を `Grid` で包みますので、ここで `breakRemoveOn: { 'x-component': 'Grid' }` を設定します。`Grid` を削除する際には、上位の削除を行わないようにします。
 
 :::warning
-schema 的变更不会影响之前添加的区块，只有新添加的区块会才能有最新的 schema，我们这里需要新添加一个区块来查看效果。
+スキーマの変更は、以前に追加されたブロックには影響しません。新しく追加されたブロックのみが最新のスキーマを持ちます。効果を確認するために、新しいブロックを追加する必要があります。
 :::
 
 ![20240719145202](https://static-docs.nocobase.com/20240719145202.png)
 
-#### 7.2 实现 `Edit block title` 操作
+#### 7.2 `ブロックタイトルの編集` 操作の実装
 
-`Edit block title` 也是一个常见的操作，`@nocobase/client` 内置了 `SchemaSettingsBlockTitleItem` 组件，我们可以直接使用。
+`ブロックタイトルの編集` も一般的な操作です。`@nocobase/client` には `SchemaSettingsBlockTitleItem` コンポーネントが組み込まれており、直接使用できます。
 
 ```diff
 - import { SchemaSettings } from "@nocobase/client";
@@ -590,21 +593,18 @@ export const formV3Settings = new SchemaSettings({
       }
     },
   ]
-})
+});
 ```
 
-![20240719145326](https://static-docs.nocobase.com/20240719145326.png)
+### 8. `Configure actions` の実装
 
+`Configure actions` は、`Submit` や `Custom request` などの操作を追加するために使用されます。
 
-### 8. 实现 `Configure actions`
+`Configure actions` に関する詳細な説明は、[ブロック内埋め込まれた Initializer - 操作の設定](/plugin-samples/schema-initializer/configure-actions) ドキュメントをご覧ください。
 
-`Configure actions` 用于添加一些操作，比如 `Submit`、`Custom request` 等。
+#### 8.1 Initializerの定義
 
-关于 `Configure actions` 的详细说明可以查看 [区块内嵌的 Initializer - 配置操作](/plugin-samples/schema-initializer/configure-actions) 文档。
-
-#### 8.1 定义 initializer
-
-我们新建 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configFields/index.ts` 文件：
+`packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configFields/index.ts` ファイルを新規作成します：
 
 ```ts
 import { SchemaInitializer } from "@nocobase/client";
@@ -623,16 +623,16 @@ export const formV3ConfigureActionsInitializer = new SchemaInitializer({
 });
 ```
 
-我们通过上述代码定义了一个新的 `SchemaInitializer`，其子项暂时为空。
+上記のコードで、新しい `SchemaInitializer` を定義しましたが、その子項目は一時的に空です。
 
-- [SchemaInitializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer)：用于创建一个 Schema Initializer 实例
-- `icon`：图标，更多图标可参考 Ant Design [Icons](https://ant.design/components/icon/)
-- `title`：按钮标题
-- [items](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types)：按钮下的子项
+- [SchemaInitializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer)：Schema Initializer インスタンスを作成するためのもの
+- `icon`：アイコン、詳細なアイコンは Ant Design [Icons](https://ant.design/components/icon/) を参照
+- `title`：ボタンのタイトル
+- [items](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types)：ボタンの下の子項目
 
-#### 8.2 注册 initializer
+#### 8.2 Initializerの登録
 
-然后修改 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/index.tsx` 文件，导入并注册这个 initializer：
+次に、`packages/plugins/@nocobase-sample/plugin-block-form/src/client/index.tsx` ファイルを修正し、この initializer をインポートして登録します：
 
 ```tsx | pure
 // ...
@@ -647,9 +647,9 @@ export class PluginBlockFormClient extends Plugin {
 }
 ```
 
-#### 8.3 使用 initializer
+#### 8.3 Initializerの使用
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.schema.ts` 文件，新增 `actionBar` 子节点：
+`packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.schema.ts` ファイルを修正し、`actionBar` 子ノードを追加します：
 
 ```diff
 // ...
@@ -664,8 +664,6 @@ export function getFormV3Schema(options: GetFormV3SchemaOptions): ISchema {
     'x-decorator-props': {
       dataSource,
       collection,
-      action,
-      params,
       [FormV3BlockNameLowercase]: {},
     },
     'x-settings': formV3Settings.name,
@@ -695,42 +693,42 @@ export function getFormV3Schema(options: GetFormV3SchemaOptions): ISchema {
 }
 ```
 
-`configure actions` 一般与 [ActionBar](https://client.docs.nocobase.com/components/action#actionbar) 组件搭配使用。
+`configure actions` は一般に [ActionBar](https://client.docs.nocobase.com/components/action#actionbar) コンポーネントと組み合わせて使用されます。
 
-我们在 `FormV3` 的子节点中添加了一个 `actionBar` 节点：
+`FormV3` の子ノードに `actionBar` ノードを追加しました。
 
-- `type: 'void'`：类型为 `void`，表示这是一个容器
-- `x-component: 'ActionBar'`：使用 [ActionBar](https://client.docs.nocobase.com/components/action#actionbar) 组件，用于展示按钮
-- `x-initializer: formV3ConfigureActionsInitializer.name`：使用我们刚创建的 Initializer
-- `x-component-props.layout: 'one-column'`：左侧布局，具体示例可参考 [ActionBar one-column](https://client.docs.nocobase.com/components/action#one-column)
+- `type: 'void'`：タイプは `void` で、これはコンテナであることを示します。
+- `x-component: 'ActionBar'`：ボタンを表示するために [ActionBar](https://client.docs.nocobase.com/components/action#actionbar) コンポーネントを使用します。
+- `x-initializer: formV3ConfigureActionsInitializer.name`：作成した Initializer を使用します。
+- `x-component-props.layout: 'one-column'`：左側のレイアウトで、具体例は [ActionBar one-column](https://client.docs.nocobase.com/components/action#one-column) を参照してください。
 
 ![20240719152528](https://static-docs.nocobase.com/20240719152528.png)
 
-### 9. 实现 `Configure actions` items
+### 9. `Configure actions` アイテムを実装する
 
 ```bash
 .
 ├── FormV3.configActions
 ├── index.ts
 └── items
-    └── submit # 提交操作
+    └── submit # 提出操作
         ├── index.ts
         ├── initializer.tsx
         ├── schema.ts
         └── settings.ts
 ```
 
-#### 9.1 实现 `Submit` 操作
+#### 9.1 `Submit` 操作を実装する
 
-##### 9.1.1 定义 Schema
+##### 9.1.1 スキーマを定義する
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configActions/items/submit/schema.ts` 文件：
+新しく `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configActions/items/submit/schema.ts` ファイルを作成します：
 
 ```ts
 import { useForm } from '@formily/react';
 import { App } from 'antd';
 import { ActionProps, useDataBlockResource } from "@nocobase/client";
-import { tStr } from '../../../locale'
+import { tStr } from '../../../locale';
 
 export const useFormV3SubmitActionProps = (): ActionProps => {
   const resource = useDataBlockResource();
@@ -742,12 +740,12 @@ export const useFormV3SubmitActionProps = (): ActionProps => {
     async onClick() {
       await form.submit();
       const values = form.values;
-      await resource.create({ values })
+      await resource.create({ values });
       await form.reset();
-      message.success('Created successfully');
+      message.success('作成成功');
     },
-  }
-}
+  };
+};
 
 export const submitActionSchema = {
   type: 'void',
@@ -759,32 +757,31 @@ export const submitActionSchema = {
 ```
 
 `submitActionSchema`：
-  - `type: 'void'`：类型为 `void`，表示普通 UI，不包含数据
-  - `x-component: 'Action'`：使用 [Action](https://client.docs.nocobase.com/components/action) 组件，用于展示按钮
-  - `title: 'Submit'`：按钮标题
-  - `x-use-component-props: 'useFormV3SubmitActionProps'`：使用 `useFormV3SubmitActionProps` 这个 Hooks 返回的属性。因为 Schema 会保存到服务器，所以这里需要使用字符串的方式。
-  - `'x-toolbar': 'ActionSchemaToolbar'`：一般于 `Action` 组件搭配使用，与默认的 ToolBar 不同的是，其将 Action 右上角的 `Initializer` 隐藏，仅保留 Drag 和 Settings。
+  - `type: 'void'`：タイプは `void` で、通常のUIであり、データを含まないことを示します。
+  - `x-component: 'Action'`：ボタンを表示するために [Action](https://client.docs.nocobase.com/components/action) コンポーネントを使用します。
+  - `title: 'Submit'`：ボタンのタイトルです。
+  - `x-use-component-props: 'useFormV3SubmitActionProps'`：`useFormV3SubmitActionProps` フックから返されるプロパティを使用します。スキーマはサーバーに保存されるため、ここでは文字列の形式を使用する必要があります。
+  - `'x-toolbar': 'ActionSchemaToolbar'`：一般的に `Action` コンポーネントと組み合わせて使用され、デフォルトの ToolBar とは異なり、Action の右上隅の `Initializer` を隠し、ドラッグと設定のみを保持します。
 
-`useFormV3SubmitActionProps`：这个是 React Hooks，需要返回 Action 组件的属性。
-  - [useDataBlockResource()](https://client.docs.nocobase.com/core/data-block/data-block-request-provider)：数据区块的请求对象，由 `DataBlockProvider` 内部提供，用于自动获取数据区块的数据
-    - `resource.create`：用于创建数据
-  - `useForm`：获取 Formily 的 form 对象
-    - `form.submit()`：提交表单，触发校验
-    - `form.values`：获取表单数据
-    - `form.reset()`：重置表单
-  - `type: 'primary'`：按钮类型为 `primary`
-  - `onClick`：点击事件。
+`useFormV3SubmitActionProps`：これは React フックで、Action コンポーネントのプロパティを返す必要があります。
+  - [useDataBlockResource()](https://client.docs.nocobase.com/core/data-block/data-block-request-provider)：データブロックのリクエストオブジェクトで、`DataBlockProvider` 内部から提供され、データブロックのデータを自動的に取得するために使用されます。
+    - `resource.create`：データを作成するためのメソッドです。
+  - `useForm`：Formily のフォームオブジェクトを取得します。
+    - `form.submit()`：フォームを提出し、バリデーションをトリガーします。
+    - `form.values`：フォームデータを取得します。
+    - `form.reset()`：フォームをリセットします。
+  - `type: 'primary'`：ボタンのタイプは `primary` です。
+  - `onClick`：クリックイベントです。
 
-
-然后将其在 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configActions/items/submit/index.ts` 中导出：
+次に、これを `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configActions/items/submit/index.ts` でエクスポートします：
 
 ```ts
 export * from './schema';
 ```
 
-##### 9.1.2 注册 Scope
+##### 9.1.2 スコープを登録する
 
-我们还需要将 `useFormV3SubmitActionProps` 注册到上下文中。我们修改 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/index.tsx` 文件：
+`useFormV3SubmitActionProps` をコンテキストに登録する必要があります。`packages/plugins/@nocobase-sample/plugin-block-form/src/client/index.tsx` ファイルを修正します：
 
 ```diff
 // ...
@@ -799,11 +796,11 @@ export class PluginBlockFormClient extends Plugin {
 }
 ```
 
-关于 `SchemaComponentOptions` 的使用可以参考 [SchemaComponentOptions](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponentoptions) 文档以及 [全局注册 Component 和 Scope](/plugin-samples/component-and-scope/global)。
+`SchemaComponentOptions` の使用方法については、[SchemaComponentOptions](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponentoptions) ドキュメントや [全体的なコンポーネントおよびスコープの登録](/plugin-samples/component-and-scope/global) を参照してください。
 
-##### 9.1.3 定义 SchemaInitializer item
+##### 9.1.3 SchemaInitializer アイテムを定義する
 
-我们新增 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configActions/items/submit/initializer.tsx` 文件：
+`packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configActions/items/submit/initializer.tsx` ファイルを新規作成します：
 
 ```tsx | pure
 import { SchemaInitializerItemType, useSchemaInitializer } from "@nocobase/client";
@@ -818,29 +815,28 @@ export const submitActionInitializerItem: SchemaInitializerItemType = {
     const { insert } = useSchemaInitializer();
     return {
       onClick() {
-        insert(submitActionSchema)
+        insert(submitActionSchema);
       },
     };
   },
 };
 ```
 
-- `type: 'item'`：类型为 `item`，表示文本，当点击后会触发 `onClick` 事件
-- `name: 'submit'`：唯一标识符，用于区分不同的 Schema Item 和增删改查操作
-- `title: 'Submit'`：按钮标题
+- `type: 'item'`：タイプは `item` で、クリック時に `onClick` イベントをトリガーします。
+- `name: 'submit'`：一意の識別子で、異なるスキーマアイテムや CRUD 操作を区別します。
+- `title: 'Submit'`：ボタンのタイトルです。
 
-更多关于 Schema Item 的定义可以参考 [Schema Initializer Item](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types) 文档。
+スキーマアイテムの定義についての詳細は、[Schema Initializer Item](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types) ドキュメントを参照してください。
 
-
-然后修改 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configActions/items/submit/index.ts` 将其导出：
+次に、`packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configActions/items/submit/index.ts` ファイルを修正してエクスポートします：
 
 ```tsx | pure
 export * from './initializer';
 ```
 
-###### 10.1.4 使用 SchemaInitializer item
+###### 9.1.4 スキーマイニシャライザーアイテムを使用する
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configActions/index.ts` 文件，将 `submitActionInitializerItem` 添加到 `items` 中：
+`packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configActions/index.ts` ファイルを修正し、`submitActionInitializerItem` をアイテムに追加します：
 
 ```diff
 // ...
@@ -849,7 +845,7 @@ export * from './initializer';
 export const formV3ConfigureActionsInitializer = new SchemaInitializer({
   name: `${FormV3BlockNameLowercase}:configureActions`,
   icon: 'SettingOutlined',
-  title: 'Configure actions',
+  title: tStr('Configure actions'),
   style: {
     marginLeft: 8,
   },
@@ -859,9 +855,9 @@ export const formV3ConfigureActionsInitializer = new SchemaInitializer({
 });
 ```
 
-##### 9.1.4 定义 settings
+##### 9.1.4 設定を定義する
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configActions/items/submit/settings.ts`
+`packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configActions/items/submit/settings.ts` ファイルを新規作成します：
 
 ```tsx | pure
 import { ButtonEditor, SchemaSettings, useSchemaToolbar } from "@nocobase/client";
@@ -880,26 +876,26 @@ export const formV3SubmitActionSettings = new SchemaSettings({
     {
       name: 'remove',
       type: 'remove',
-    }
+    },
   ]
-})
+});
 ```
 
 `formV3SubmitActionSettings`：
-  - `editButton`：用于编辑按钮的样式。
-  - `remove`：用于删除
+  - `editButton`：ボタンのスタイルを編集するために使用します。
+  - `remove`：削除するために使用します。
 
-更多关于 Schema Settings 的定义可以参考 [Schema Settings](https://client.docs.nocobase.com/core/ui-schema/schema-settings) 文档。
+スキーマ設定の定義についての詳細は、[Schema Settings](https://client.docs.nocobase.com/core/ui-schema/schema-settings) ドキュメントを参照してください。
 
-修改 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configActions/items/submit/index.ts` 将其导出：
+次に、`packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configActions/items/submit/index.ts` ファイルを修正してエクスポートします：
 
 ```tsx | pure
 export * from './settings';
 ```
 
-##### 9.1.5 注册 settings
+##### 9.1.5 設定を登録する
 
-然后将 `formV3SubmitActionSettings` 注册到系统中。我们修改 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/index.tsx` 文件：
+次に、`formV3SubmitActionSettings` をシステムに登録します。`packages/plugins/@nocobase-sample/plugin-block-form/src/client/index.tsx` ファイルを修正します：
 
 ```diff
 - import { useFormV3SubmitActionProps } from './FormV3.configActions/items/submit';
@@ -912,9 +908,9 @@ export class PluginBlockFormClient extends Plugin {
 }
 ```
 
-##### 9.1.6 使用 settings
+##### 9.1.6 設定を使用する
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configActions/items/submit/schema.ts` 文件的 `submitActionSchema` 方法，将 `x-settings` 设置为 `formV3SubmitActionSettings.name`。
+`packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configActions/items/submit/schema.ts` ファイルの `submitActionSchema` メソッドを修正し、`x-settings` を `formV3SubmitActionSettings.name` に設定します。
 
 ```diff
 + import { formV3SubmitActionSettings } from './settings';
@@ -933,23 +929,22 @@ export const submitActionSchema = {
   <source src="https://static-docs.nocobase.com/20240719160328.mov" type="video/mp4" />
 </video>
 
-#### 9.2 实现 `Custom request`
+#### 9.2 `Custom request` の実装
 
-`Custom request` 是一个常见的操作，NocoBase 内置了 `CustomRequest` 组件，我们可以直接使用。
+`Custom request` は一般的な操作であり、NocoBase には `CustomRequest` コンポーネントが組み込まれています。これを直接使用することができます。
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configActions/index.ts`：
+`packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configActions/index.ts` ファイルを修正します：
 
 ```diff
-
 import { SchemaInitializer } from "@nocobase/client";
 import { FormV3BlockNameLowercase } from "../constants";
 import { submitActionInitializerItem } from "./items/submit";
-+ import { tStr } from '../locale'
++ import { tStr } from '../locale';
 
 export const formV3ConfigureActionsInitializer = new SchemaInitializer({
   name: `${FormV3BlockNameLowercase}:configureActions`,
   icon: 'SettingOutlined',
-  title: 'Configure actions',
+  title: tStr('Configure actions'),
   style: {
     marginLeft: 8,
   },
@@ -966,13 +961,13 @@ export const formV3ConfigureActionsInitializer = new SchemaInitializer({
 
 ![20240719165222](https://static-docs.nocobase.com/20240719165222.png)
 
-### 10. 实现 `Configure fields`
+### 10. `Configure fields` の実装
 
-`Configure fields` 的作用是向 FormV3 区块添加数据字段。
+`Configure fields` の役割は、FormV3 ブロックにデータフィールドを追加することです。
 
-#### 10.1 定义 initializer
+#### 10.1 Initializerの定義
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configFields/index.ts` 文件：
+`packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configFields/index.ts` ファイルを新規作成します：
 
 ```ts
 import { gridRowColWrap, SchemaInitializer } from "@nocobase/client";
@@ -990,17 +985,17 @@ export const formV3ConfigureFieldsInitializer = new SchemaInitializer({
 ```
 
 `formV3ConfigureFieldsInitializer`：
-  - `name`：唯一标识符
-  - `icon`：图标
-  - `wrap`：我们将每个字段包裹在 `Grid` 中，这样可以方便布局和拖拽
-  - `title`：标题
-  - `items`：子项
+  - `name`：一意の識別子
+  - `icon`：アイコン
+  - `wrap`：各フィールドを `Grid` で包むことで、レイアウトやドラッグ＆ドロップが容易になります。
+  - `title`：タイトル
+  - `items`：子項目
 
-更多关于 Schema Item 的定义可以参考 [Schema Initializer Item](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types) 文档。
+スキーマアイテムの定義に関する詳細は、[スキーマイニシャライザーアイテム](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types) ドキュメントを参照してください。
 
-#### 10.2 注册 initializer
+#### 10.2 Initializerの登録
 
-然后修改 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/index.tsx` 文件，导入并注册这个 initializer：
+次に、`packages/plugins/@nocobase-sample/plugin-block-form/src/client/index.tsx` ファイルを修正し、この initializer をインポートして登録します：
 
 ```diff
 + import { formV3ConfigureFieldsInitializer } from './FormV3.configFields';
@@ -1014,9 +1009,9 @@ export class PluginBlockFormClient extends Plugin {
 }
 ```
 
-#### 10.3 使用 initializer
+#### 10.3 Initializerの使用
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.schema.ts` 文件，新增 `fields` 子节点：
+`packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.schema.ts` ファイルを修正し、`fields` 子ノードを追加します：
 
 ```diff
 // ...
@@ -1065,19 +1060,19 @@ export function getFormV3Schema(options: GetFormV3SchemaOptions): ISchema {
 }
 ```
 
-为了方便布局，我们将其包裹在 `Grid` 中，这样可以方便布局和拖拽。
+レイアウトを容易にするために、これを `Grid` で包んで、レイアウトやドラッグ＆ドロップを簡単にします。
 
 ![20240719171211](https://static-docs.nocobase.com/20240719171211.png)
 
-### 11. 实现 `Configure fields` items
+### 11. `Configure fields` アイテムを実装する
 
-#### 11.1 实现 `Collection Fields`
+#### 11.1 `Collection Fields` の実装
 
-`Configure fields` 主要是基于 [CollectionFieldsToInitializerItems](https://client.docs-en.nocobase.com/core/data-source/collection-fields-to-initializer-items#collectionfieldstoinitializeritems) 实现。
+`Configure fields` は、[CollectionFieldsToInitializerItems](https://client.docs-en.nocobase.com/core/data-source/collection-fields-to-initializer-items#collectionfieldstoinitializeritems) を基に実装されます。
 
-我们这里可以直接内核提供的 `CollectionFieldsToFormInitializerItems`，它的作用就是将数据表的字段转换为 `Initializer` 的子项。
+ここでは、内蔵の `CollectionFieldsToFormInitializerItems` を直接使用することができます。このコンポーネントは、データテーブルのフィールドを `Initializer` の子項目に変換します。
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configFields/index.ts` 文件：
+`packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configFields/index.ts` ファイルを修正します：
 
 ```diff
 - import { gridRowColWrap, SchemaInitializer } from "@nocobase/client";
@@ -1087,7 +1082,7 @@ export const formV3ConfigureFieldsInitializer = new SchemaInitializer({
   name: `${FormV3BlockNameLowercase}:configureFields`,
   icon: 'SettingOutlined',
   wrap: gridRowColWrap,
-  title: 'Configure fields',
+  title: tStr('Configure fields'),
   items: [
 +   {
 +     name: 'collectionFields',
@@ -1097,28 +1092,28 @@ export const formV3ConfigureFieldsInitializer = new SchemaInitializer({
 });
 ```
 
-- `name: 'collectionFields'`：唯一标识符
-- `Component: CollectionFieldsToFormInitializerItems`：内核提供的组件，用于将数据表的字段转换 FormItem 类型的 Initializer 子项
+- `name: 'collectionFields'`：一意の識別子
+- `Component: CollectionFieldsToFormInitializerItems`：内蔵のコンポーネントで、データテーブルのフィールドを FormItem タイプの Initializer 子項目に変換します。
 
 <video width="100%" controls="">
   <source src="https://static-docs.nocobase.com/2024-07-19-17-17-38.mov" type="video/mp4" />
 </video>
 
-#### 11.2 实现 `Add text`
+#### 11.2 `Add text` の実装
 
-向界面添加文本，这是一个常见的需求。因此，NocoBase 在 `@nocobase/client` 中提供了 `MarkdownFormItemInitializer` 来实现此功能。
+テキストをインターフェースに追加することは一般的なニーズであり、NocoBase では `@nocobase/client` に `MarkdownFormItemInitializer` が提供されています。
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configFields/index.ts` 文件：
+`packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configFields/index.ts` ファイルを修正します：
 
 ```diff
 // ...
-+ import { tStr } from '../locale'
++ import { tStr } from '../locale';
 
 export const formV3ConfigureFieldsInitializer = new SchemaInitializer({
   name: `${FormV3BlockNameLowercase}:configureFields`,
   icon: 'SettingOutlined',
   wrap: gridRowColWrap,
-  title: 'Configure fields',
+  title: tStr('Configure fields'),
   items: [
     {
       name: 'collectionFields',
@@ -1141,32 +1136,415 @@ export const formV3ConfigureFieldsInitializer = new SchemaInitializer({
   <source src="https://static-docs.nocobase.com/2024-07-19-17-27-21.mov" type="video/mp4" />
 </video>
 
-### 12. 权限
+### 12. 権限
 
 TODO
 
-### 13. 多语言
+### 13. 多言語
 
-我们可以通过 [http://localhost:13000/admin/settings/system-settings](http://localhost:13000/admin/settings/system-settings) 添加多个语言，并且在右上角切换语言。
+[http://localhost:13000/admin/settings/system-settings](http://localhost:13000/admin/settings/system-settings) にアクセスして、複数の言語を追加し、右上で言語を切り替えることができます。
 
 ![20240611113758](https://static-docs.nocobase.com/20240611113758.png)
 
-由于 FormV3 所使用的文案和 FormV2 相同，已经做了多语言处理，所以这里并没有什么需要更改的。
+FormV3 で使用される文言は FormV2 と同じであり、多言語対応は既に行われているため、ここでの変更は必要ありません。
 
-## 打包和上传到生产环境
+## パッケージ化と本番環境へのアップロード
 
-按照 [构建并打包插件](/development/your-fisrt-plugin#构建并打包插件) 文档说明，我们可以打包插件并上传到生产环境。
+[プラグインのビルドとパッケージ化](/development/your-fisrt-plugin#プラグインのビルドとパッケージ化) ドキュメントに従って、プラグインをパッケージ化し、本番環境にアップロードできます。
 
-如果是 clone 的源码，需要先执行一次全量 build，将插件的依赖也构建好。
+クローンしたソースコードの場合、最初にイニシャルビルドを実行し、プラグインの依存関係を構築する必要があります。
 
 ```bash
 yarn build
 ```
 
-如果是使用的 `create-nocobase-app` 创建的项目，可以直接执行：
+`create-nocobase-app` で作成したプロジェクトの場合、次のコマンドを直接実行できます：
 
 ```bash
 yarn build @nocobase-sample/plugin-block-form --tar
 ```
 
-这样就可以看到 `storage/tar/@nocobase-sample/plugin-block-form.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
+これで `storage/tar/@nocobase-sample/plugin-block-form.tar.gz` ファイルが生成され、[アップロードの方法](/welcome/getting-started/plugin) を通じてインストールできます。
+
+```plaintext
+##### 9.1.2 スコープの登録
+
+`useFormV3SubmitActionProps` をコンテキストに登録する必要があります。`packages/plugins/@nocobase-sample/plugin-block-form/src/client/index.tsx` ファイルを修正します：
+
+```diff
+// ...
++ import { useFormV3SubmitActionProps } from './FormV3.configActions/items/submit';
+```
+
+```plaintext
+`SchemaComponentOptions` の使用については、[SchemaComponentOptions](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponentoptions) ドキュメントおよび [グローバル登録 Component と Scope](/plugin-samples/component-and-scope/global) を参照してください。
+
+##### 9.1.3 SchemaInitializer Item の定義
+
+新たに `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configActions/items/submit/initializer.tsx` ファイルを作成します：
+
+```tsx | pure
+import { SchemaInitializerItemType, useSchemaInitializer } from "@nocobase/client";
+import { submitActionSchema } from "./schema";
+import { tStr } from '../../../locale';
+
+export const submitActionInitializerItem: SchemaInitializerItemType = {
+  type: 'item',
+  name: 'submit',
+  title: tStr('Submit'),
+  useComponentProps() {
+    const { insert } = useSchemaInitializer();
+    return {
+      onClick() {
+        insert(submitActionSchema);
+      },
+    };
+  },
+};
+```
+
+- `type: 'item'`：タイプは `item` で、クリック時に `onClick` イベントが発生します。
+- `name: 'submit'`：ユニークな識別子で、異なる Schema Item と CRUD 操作を区別します。
+- `title: 'Submit'`：ボタンのタイトルです。
+
+Schema Item の定義については、[Schema Initializer Item](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types) ドキュメントを参照してください。
+
+次に、`packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configActions/items/submit/index.ts` を修正し、エクスポートします：
+
+```tsx | pure
+export * from './initializer';
+```
+
+###### 10.1.4 SchemaInitializer Item の使用
+
+`packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configActions/index.ts` ファイルを修正し、`submitActionInitializerItem` を `items` に追加します：
+
+```diff
+// ...
++ import { submitActionInitializerItem } from "./items/submit";
+
+export const formV3ConfigureActionsInitializer = new SchemaInitializer({
+  name: `${FormV3BlockNameLowercase}:configureActions`,
+  icon: 'SettingOutlined',
+  title: 'Configure actions',
+  style: {
+    marginLeft: 8,
+  },
+  items: [
++   submitActionInitializerItem,
+  ]
+});
+```
+
+##### 9.1.4 settings の定義
+
+新たに `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configActions/items/submit/settings.ts` ファイルを作成します：
+
+```tsx | pure
+import { ButtonEditor, SchemaSettings, useSchemaToolbar } from "@nocobase/client";
+
+export const formV3SubmitActionSettings = new SchemaSettings({
+  name: `actionSettings:formV3Submit`,
+  items: [
+    {
+      name: 'editButton',
+      Component: ButtonEditor,
+      useComponentProps() {
+        const { buttonEditorProps } = useSchemaToolbar();
+        return buttonEditorProps;
+      },
+    },
+    {
+      name: 'remove',
+      type: 'remove',
+    }
+  ]
+});
+```
+
+`formV3SubmitActionSettings`：
+  - `editButton`：ボタンのスタイルを編集するためのものです。
+  - `remove`：削除に使用します。
+
+Schema Settings の定義については、[Schema Settings](https://client.docs.nocobase.com/core/ui-schema/schema-settings) ドキュメントを参照してください。
+
+`packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configActions/items/submit/index.ts` を修正し、以下をエクスポートします：
+
+```tsx | pure
+export * from './settings';
+```
+
+##### 9.1.5 settings の登録
+
+次に、`formV3SubmitActionSettings` をシステムに登録します。`packages/plugins/@nocobase-sample/plugin-block-form/src/client/index.tsx` ファイルを修正します：
+
+```diff
+- import { useFormV3SubmitActionProps } from './FormV3.configActions/items/submit';
++ import { formV3SubmitActionSettings, useFormV3SubmitActionProps } from './FormV3.configActions/items/submit';
+
+export class PluginBlockFormClient extends Plugin {
+  async load() {
++   this.app.schemaSettingsManager.add(formV3SubmitActionSettings);
+  }
+}
+```
+
+##### 9.1.6 settings の使用
+
+`packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configActions/items/submit/schema.ts` ファイルの `submitActionSchema` メソッドを修正し、`x-settings` を `formV3SubmitActionSettings.name` に設定します。
+
+```diff
++ import { formV3SubmitActionSettings } from './settings';
+
+export const submitActionSchema = {
+  type: 'void',
+  title: tStr('Submit'),
+  'x-component': 'Action',
++ 'x-settings': formV3SubmitActionSettings.name,
+  'x-use-component-props': 'useFormV3SubmitActionProps',
+  'x-toolbar': 'ActionSchemaToolbar'
+};
+```
+
+<video width="100%" controls="">
+  <source src="https://static-docs.nocobase.com/20240719160328.mov" type="video/mp4" />
+</video>
+
+#### 9.2 `Custom request` の実装
+
+`Custom request` は一般的な操作で、NocoBase には `CustomRequest` コンポーネントが内蔵されているため、直接使用できます。
+
+`packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configActions/index.ts` を修正します：
+
+```diff
+import { SchemaInitializer } from "@nocobase/client";
+import { FormV3BlockNameLowercase } from "../constants";
+import { submitActionInitializerItem } from "./items/submit";
++ import { tStr } from '../locale';
+
+export const formV3ConfigureActionsInitializer = new SchemaInitializer({
+  name: `${FormV3BlockNameLowercase}:configureActions`,
+  icon: 'SettingOutlined',
+  title: 'Configure actions',
+  style: {
+    marginLeft: 8,
+  },
+  items: [
+    submitActionInitializerItem,
++   {
++     name: 'customRequest',
++     title: tStr('Custom request'),
++     Component: 'CustomRequestInitializer',
++   },
+  ]
+});
+```
+
+![20240719165222](https://static-docs.nocobase.com/20240719165222.png)
+
+### 10. `Configure fields` の実装
+
+`Configure fields` の役割は、FormV3 ブロックにデータフィールドを追加することです。
+
+#### 10.1 initializerの定義
+
+新たに `packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configFields/index.ts` ファイルを作成します：
+
+```ts
+import { gridRowColWrap, SchemaInitializer } from "@nocobase/client";
+import { FormV3BlockNameLowercase } from '../constants';
+
+export const formV3ConfigureFieldsInitializer = new SchemaInitializer({
+  name: `${FormV3BlockNameLowercase}:configureFields`,
+  icon: 'SettingOutlined',
+  wrap: gridRowColWrap,
+  title: tStr('Configure fields'),
+  items: [
+    // TODO
+  ]
+});
+```
+
+`formV3ConfigureFieldsInitializer`：
+- `name`：ユニークな識別子
+- `icon`：アイコン
+- `wrap`：各フィールドを `Grid` でラップし、レイアウトとドラッグアンドドロップを容易にします
+- `title`：タイトル
+- `items`：サブアイテム
+
+Schema Item の定義についての詳細は、[Schema Initializer Item](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types) ドキュメントを参照してください。
+
+#### 10.2 初期化子の登録
+
+次に `packages/plugins/@nocobase-sample/plugin-block-form/src/client/index.tsx` ファイルを修正し、この初期化子をインポートして登録します：
+
+```diff
++ import { formV3ConfigureFieldsInitializer } from './FormV3.configFields';
+
+export class PluginBlockFormClient extends Plugin {
+  async load() {
+-   this.app.schemaInitializerManager.add(formV3ConfigureActionsInitializer);
++   this.app.schemaInitializerManager.add(formV3ConfigureActionsInitializer, formV3ConfigureFieldsInitializer);
+    // ...
+  }
+}
+```
+
+#### 10.3 初期化子の使用
+
+`packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.schema.ts` ファイルを修正し、`fields` サブノードを追加します：
+
+```diff
+// ...
++ import { formV3ConfigureFieldsInitializer } from "./FormV3.configFields";
+
+export function getFormV3Schema(options: GetFormV3SchemaOptions): ISchema {
+  const { dataSource, collection, properties = {} } = options;
+  return {
+    type: 'void',
+    'x-component': 'CardItem',
+    'x-decorator': 'DataBlockProvider',
+    'x-decorator-props': {
+      dataSource,
+      collection,
+      [FormV3BlockNameLowercase]: {},
+    },
+    'x-settings': formV3Settings.name,
+    "x-toolbar": "BlockSchemaToolbar",
+    properties: {
+      [FormV3BlockNameLowercase]: {
+        type: 'void',
+        'x-component': FormV3BlockName,
+        'x-use-component-props': 'useFormV3Props',
+        properties: {
+          ...properties as any,
++         fields: {
++           "type": "void",
++           "x-component": "Grid",
++           "x-initializer": formV3ConfigureFieldsInitializer.name
++         },
+          actionBar: {
+            type: 'void',
+            "x-initializer": formV3ConfigureActionsInitializer.name,
+            "x-component": "ActionBar",
+            "x-component-props": {
+              "layout": "one-column",
+              "style": {
+                "marginTop": 24
+              }
+            },
+          },
+        }
+      }
+    }
+  }
+}
+```
+
+レイアウトを簡素化するために、これを `Grid` で包み、レイアウトやドラッグアンドドロップを容易にします。
+
+![20240719171211](https://static-docs.nocobase.com/20240719171211.png)
+
+### 11. `Configure fields` アイテムの実装
+
+#### 11.1 `Collection Fields` の実装
+
+`Configure fields` は主に [CollectionFieldsToInitializerItems](https://client.docs-en.nocobase.com/core/data-source/collection-fields-to-initializer-items#collectionfieldstoinitializeritems) に基づいて実装されます。
+
+ここでは、コア提供の `CollectionFieldsToFormInitializerItems` を直接使用できます。これはデータベースのフィールドを `Initializer` のサブアイテムに変換する役割を持ちます。
+
+`packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configFields/index.ts` ファイルを修正します：
+
+```diff
+- import { gridRowColWrap, SchemaInitializer } from "@nocobase/client";
++ import { gridRowColWrap, SchemaInitializer, CollectionFieldsToFormInitializerItems } from "@nocobase/client";
+
+export const formV3ConfigureFieldsInitializer = new SchemaInitializer({
+  name: `${FormV3BlockNameLowercase}:configureFields`,
+  icon: 'SettingOutlined',
+  wrap: gridRowColWrap,
+  title: 'フィールドの設定',
+  items: [
+    {
+      name: 'collectionFields',
+      Component: CollectionFieldsToFormInitializerItems,
+    },
+  ]
+});
+```
+
+- `name: 'collectionFields'`：ユニークな識別子
+- `Component: CollectionFieldsToFormInitializerItems`：データテーブルのフィールドをFormItemタイプのInitializerサブアイテムに変換するためのコアコンポーネント
+
+<video width="100%" controls="">
+  <source src="https://static-docs.nocobase.com/2024-07-19-17-17-38.mov" type="video/mp4" />
+</video>
+
+#### 11.2 `テキストを追加`の実装
+
+インターフェースにテキストを追加します。これは一般的なニーズです。そのため、NocoBaseは`@nocobase/client`に`MarkdownFormItemInitializer`を提供してこの機能を実現します。
+
+`packages/plugins/@nocobase-sample/plugin-block-form/src/client/FormV3.configFields/index.ts`ファイルを修正します：
+
+```diff
+// ...
++ import { tStr } from '../locale'
+
+export const formV3ConfigureFieldsInitializer = new SchemaInitializer({
+  name: `${FormV3BlockNameLowercase}:configureFields`,
+  icon: 'SettingOutlined',
+  wrap: gridRowColWrap,
+  title: 'フィールドの設定',
+  items: [
+    {
+      name: 'collectionFields',
+      Component: CollectionFieldsToFormInitializerItems,
+    },
+    {
+      name: 'divider',
+      type: 'divider',
+    },
+    {
+      name: 'addText',
+      title: tStr('テキストを追加'),
+      Component: 'MarkdownFormItemInitializer',
+    },
+  ]
+});
+```
+
+<video width="100%" controls="">
+  <source src="https://static-docs.nocobase.com/2024-07-19-17-27-21.mov" type="video/mp4" />
+</video>
+
+### 12. 権限
+
+TODO
+
+### 13. 多言語
+
+[http://localhost:13000/admin/settings/system-settings](http://localhost:13000/admin/settings/system-settings)を通じて複数の言語を追加し、右上隅で言語を切り替えることができます。
+
+![20240611113758](https://static-docs.nocobase.com/20240611113758.png)
+
+FormV3で使用されている文言はFormV2と同じで、すでに多言語処理が行われているため、ここで特に変更する必要はありません。
+
+## パッケージ化と本番環境へのアップロード
+
+[プラグインのビルドとパッケージ化](/development/your-fisrt-plugin#プラグインのビルドとパッケージ化)のドキュメントに従って、プラグインをパッケージ化し、本番環境にアップロードできます。
+
+クローンしたソースコードの場合は、最初に全量ビルドを実行して、プラグインの依存関係を構築する必要があります。
+
+```bash
+yarn build
+```
+
+`create-nocobase-app`を使用して作成したプロジェクトの場合は、直接以下を実行できます：
+
+```bash
+yarn build @nocobase-sample/plugin-block-form --tar
+```
+
+これにより、`storage/tar/@nocobase-sample/plugin-block-form.tar.gz`ファイルが生成され、その後[アップロードの方法](/welcome/getting-started/plugin)でインストールできます。
+```
+

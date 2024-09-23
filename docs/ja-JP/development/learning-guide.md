@@ -1,125 +1,126 @@
-# 学习路线指南
+# 学習ルートガイド
 
-## 1. 从安装运行 NocoBase 开始
+## 1. NocoBaseのインストールと実行を始める
 
-**相关文档：<a href="/welcome/getting-started/installation" target="_blank">快速开始</a>**
+**関連文書：<a href="/welcome/getting-started/installation" target="_blank">クイックスタート</a>**
 
-主要命令包括：
+主なコマンドは以下の通りです：
 
-下载
+ダウンロード
 
 ```bash
 yarn create/git clone
 yarn install
 ```
 
-安装
+インストール
 
 ```bash
 yarn nocobase install
 ```
 
-运行
+実行
 
 ```bash
-# for development
+# 開発用
 yarn dev
 
-# for production
+# 本番用
 yarn build
 yarn start
 ```
 
-## 2. 了解 NocoBase 平台提供的核心功能
+## 2. NocoBaseプラットフォームが提供する主要機能を理解する
 
-**相关文档：<a href="/manual" target="_blank">使用手册</a>**
+**関連文書：<a href="/manual" target="_blank">使用マニュアル</a>**
 
-主要的三部分包括：
+主な三部構成は以下の通りです：
 
-- UI 设计器：主要包括区块、字段和操作
-- 插件管理器：功能需求扩展
-- 配置中心：已激活插件提供的配置功能
+- UIデザイナー：主にブロック、フィールド、アクションを含む
+- プラグインマネージャー：機能要件の拡張
+- 設定センター：有効化されたプラグインが提供する設定機能
 
-## 3. 进一步了解插件管理器的使用
+## 3. プラグインマネージャーの使用をさらに理解する
 
-**相关文档：<a href="/development" target="_blank">插件开发</a>**
+**関連文書：<a href="/development" target="_blank">プラグイン開発</a>**
 
-NocoBase 提供了简易的插件管理器界面，但是在界面上只能处理本地插件的 enable、disable 和 remove，完整的操作需要通过 CLI
+NocoBaseは簡単なプラグインマネージャーインターフェースを提供していますが、インターフェースではローカルプラグインの有効化、無効化、削除のみを処理でき、完全な操作はCLIを通じて行う必要があります。
 
 ```bash
-# 创建插件
+# プラグイン作成
 yarn pm create hello
-# 注册插件
+# プラグイン登録
 yarn pm add hello
-# 激活插件
+# プラグイン有効化
 yarn pm enable hello
-# 禁用插件
+# プラグイン無効化
 yarn pm disable hello
-# 删除插件
+# プラグイン削除
 yarn pm remove hello
 ```
 
-更多插件示例，查看 packages/samples，通过 samples 插件能够了解插件的基本用法，就可以进一步开发插件了。
+さらに多くのプラグインの例は、`packages/samples`を確認してください。samplesプラグインを通じて基本的なプラグインの使用法を理解することで、プラグインの開発を進めることができます。
 
-## 4. 开发新插件，了解模块分布
+## 4. 新しいプラグインを開発し、モジュールの分布を理解する
 
-**相关文档：<a href="/development/guide" target="_blank">扩展指南</a>**
+**関連文書：<a href="/development/guide" target="_blank">拡張ガイド</a>**
 
-[编写第一个插件](/development/your-fisrt-plugin) 章节，虽然简单的讲述了插件的主要开发流程，但是为了更快速的介入插件细节，你可能需要进一步了解 NocoBase 框架的模块分布：
+[最初のプラグインを書く](/development/your-first-plugin)章では、プラグインの主要な開発プロセスについて簡単に説明されていますが、プラグインの詳細に迅速に関与するためには、NocoBaseフレームワークのモジュール分布をさらに理解する必要があります：
 
-- Server
-  - Collections & Fields：主要用于系统表配置，业务表建议在「配置中心 - 数据表配置」里配置
-  - Resources & Actions：主要用于扩展 Action API
-  - Middleware：中间件
-  - Events：事件
-  - I18n：服务端国际化
-- Client
-  - UI Schema Designer：页面设计器
-  - UI Router：有自定义页面需求时
-  - Plugin Settings Manager：为插件提供配置页面
-  - I18n：客户端国际化
-- Devtools
-  - Commands：自定义命令行
-  - Migrations：迁移脚本
+- サーバー
+  - コレクション＆フィールド：主にシステムテーブルの設定に使用され、業務テーブルは「設定センター - データテーブルの設定」で設定することを推奨します。
+  - リソース＆アクション：主にアクションAPIの拡張に使用。
+  - ミドルウェア：ミドルウェア。
+  - イベント：イベント。
+  - I18n：サーバーサイドの国際化。
+- クライアント
+  - UIスキーマデザイナー：ページデザイナー。
+  - UIルーター：カスタムページが必要な場合。
+  - プラグイン設定マネージャー：プラグインに設定ページを提供。
+  - I18n：クライアントサイドの国際化。
+- 開発ツール
+  - コマンド：カスタムコマンドライン。
+  - マイグレーション：マイグレーションスクリプト。
 
-## 5. 查阅各模块主要 API
+## 5. 各モジュールの主要APIを参照する
 
-**相关文档：<a href="/api" target="_blank">API 参考</a>**
+**関連文書：<a href="/api" target="_blank">APIリファレンス</a>**
 
-查看各模块的 packages/samples，进一步了解模块主要 API 的用法
+各モジュールの`packages/samples`を確認し、主要APIの使用法をさらに理解してください。
 
-- Server
-  - Collections & Fields
+- サーバー
+  - コレクション＆フィールド
     - db.collection
     - db.import
-  - Resources & Actions
+  - リソース＆アクション
     - app.resourcer.define
     - app.resourcer.registerActions
-  - Middleware
+  - ミドルウェア
     - app.use
     - app.acl.use
     - app.resourcer.use
-  - Events
+  - イベント
     - app.on
     - app.db.on
   - I18n
     - app.i18n
     - ctx.i18n
-- Client
-  - UI Schema Designer
+- クライアント
+  - UIスキーマデザイナー
     - SchemaComponent
     - SchemaInitializer
     - SchemaSettings
-  - UI Router
+  - UIルーター
     - RouteSwitchProvider
     - RouteSwitch
   - I18n
     - app.i18n
     - useTranslation
-- Devtools
-  - Commands
+- 開発ツール
+  - コマンド
     - app.command
     - app.findCommand
-  - Migrations
+  - マイグレーション
     - app.db.addMigration
     - app.db.addMigrations
+

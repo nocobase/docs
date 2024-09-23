@@ -1,26 +1,26 @@
-# 生命周期
+# ライフサイクル
 
-## 后端应用的生命周期
+## バックエンドアプリケーションのライフサイクル
 
-<img alt="后端应用的生命周期" src="./server/image-1.png" style="width: 700px;" />
+<img alt="バックエンドアプリケーションのライフサイクル" src="./server/image-1.png" style="width: 700px;" />
 
-通过 `app.on()` 触发，详情用法参考 [服务端 - 事件](/development/server/events) 章节
+`app.on()` を使用してトリガーされます。詳細な使い方については、[サーバーサイド - イベント](/development/server/events) セクションを参照してください。
 
 ```ts
 class PluginSampleHelloServer extends Plugin {
   async beforeLoad() {
     this.app.on('beforeInstall', async () => {
-      // coding...
+      // コーディング...
     });
   }
 }
 ```
 
-## 后端插件的生命周期
+## バックエンドプラグインのライフサイクル
 
-<img alt="后端插件的生命周期" src="./server/image.png" style="width: 450px;" />
+<img alt="バックエンドプラグインのライフサイクル" src="./server/image.png" style="width: 450px;" />
 
-写在插件类里，详情用法参考 [服务端 - 概述](/development/server) 章节
+プラグインクラス内で記述します。詳細な使い方については、[サーバーサイド - 概要](/development/server) セクションを参照してください。
 
 ```ts
 class PluginSampleHelloServer extends Plugin {
@@ -28,8 +28,9 @@ class PluginSampleHelloServer extends Plugin {
 }
 ```
 
-## 前端插件的生命周期
+## フロントエンドプラグインのライフサイクル
 
-<img alt="前端插件的生命周期" src="./client/image.png" style="width: 550px;" />
+<img alt="フロントエンドプラグインのライフサイクル" src="./client/image.png" style="width: 550px;" />
 
-写在插件类里，详情用法参考 [客户端 - 概述](/development/client) 章节
+プラグインクラス内で記述します。詳細な使い方については、[クライアントサイド - 概要](/development/client) セクションを参照してください。
+

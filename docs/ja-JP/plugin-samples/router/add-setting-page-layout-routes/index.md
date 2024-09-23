@@ -1,24 +1,24 @@
-# 新增插件配置页面（不同 layout）
+# プラグイン設定ページの追加（異なるレイアウト）
 
-## 场景说明
+## シナリオ説明
 
-插件需要多个配置页面，并且有的页面不在 [AdminSettingsLayout](/development/client/router#已有页面路由) 下面，一般是详情页面，例如 `@nocobase/plugin-mobile-client` 插件或者 `@nocobase/plugin-workflow`。
+プラグインは複数の設定ページを必要とし、いくつかのページは [AdminSettingsLayout](/development/client/router#既存ページルーティング) の下にありません。一般的には詳細ページです。例えば、`@nocobase/plugin-mobile-client` や `@nocobase/plugin-workflow` などがあります。
 
-## 示例说明
+## サンプル説明
 
-本示例会有一个配置页面，然后配置页面里面有一个详情链接，点击详情链接会跳转到一个新的页面。
+本サンプルでは、1つの設定ページがあり、その中に詳細リンクがあります。詳細リンクをクリックすると、新しいページに遷移します。
 
-本篇内容不会对内容过多开发，仅用于演示如何新增一个插件配置页面，具体的配置页面内容和逻辑可参考 [Plugin Settings 插件示例](/plugin-samples/plugin-settings) 文档。
+この内容は、コンテンツの詳細な開発には触れず、プラグイン設定ページの追加方法を示すためだけに使用されます。具体的な設定ページの内容やロジックについては、[Plugin Settings プラグインサンプル](/plugin-samples/plugin-settings) ドキュメントを参照してください。
 
-本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-add-setting-page-layout-routes) 中查看。
+この文書の完全なサンプルコードは [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-add-setting-page-layout-routes) で確認できます。
 
 <video width="100%" controls>
   <source src="https://static-docs.nocobase.com/10.mp4" type="video/mp4">
 </video>
 
-## 初始化插件
+## プラグインの初期化
 
-我们按照 [编写第一个插件](/development/your-fisrt-plugin) 文档说明，如果没有一个项目，可以先创建一个项目，如果已经有了或者是 clone 的源码，则跳过这一步。
+[最初のプラグインを書く](/development/your-fisrt-plugin) ドキュメントに従い、プロジェクトがない場合は新しく作成します。すでにプロジェクトがある場合やソースコードをクローンしている場合は、このステップをスキップしてください。
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d sqlite
@@ -27,26 +27,26 @@ yarn install
 yarn nocobase install
 ```
 
-然后初始化一个插件，并添加到系统中：
+次に、プラグインを初期化してシステムに追加します：
 
 ```bash
 yarn pm create @nocobase-sample/plugin-add-setting-page-layout-routes
 yarn pm enable @nocobase-sample/plugin-add-setting-page-layout-routes
 ```
 
-然后启动项目即可：
+プロジェクトを起動します：
 
 ```bash
 yarn dev
 ```
 
-然后登录后访问 [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) 就可以看到插件已经安装并启用了。
+ログイン後、[http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) にアクセスすると、プラグインがインストールされ、有効になっていることが確認できます。
 
-## 实现功能
+## 機能の実装
 
-### 1. 注册插件配置页
+### 1. プラグイン設定ページの登録
 
-按照插件开发教程中 [插件设置页扩展](/development/client/router#插件设置页扩展)，我们需要修改插件的 `packages/plugins/@nocobase-sample/plugin-add-setting-page-layout-routes/src/client/index.tsx`：
+プラグイン開発チュートリアルの [プラグイン設定ページの拡張](/development/client/router#プラグイン設定ページの拡張) に従い、プラグインの `packages/plugins/@nocobase-sample/plugin-add-setting-page-layout-routes/src/client/index.tsx` を修正します：
 
 ```tsx | pure
 import React from 'react';
@@ -56,13 +56,13 @@ import { Plugin } from '@nocobase/client';
 import { name } from '../../package.json';
 
 const PluginSettingPage = () => <div>
-  details
+  詳細
 </div>
 
 export class PluginAddSettingPageLayoutRoutesClient extends Plugin {
   async load() {
     this.app.pluginSettingsManager.add(name, {
-      title: 'Different Layout',
+      title: '異なるレイアウト',
       icon: 'ApiOutlined',
       Component: PluginSettingPage,
     });
@@ -72,19 +72,18 @@ export class PluginAddSettingPageLayoutRoutesClient extends Plugin {
 export default PluginAddSettingPageLayoutRoutesClient;
 ```
 
-然后我们就可以访问 [http://localhost:13000/admin/settings/@nocobase-sample/plugin-add-setting-page-layout-routes](http://localhost:13000/admin/settings/@nocobase-sample/plugin-add-setting-page-layout-routes) 来查看插件配置页面了。
+次に、[http://localhost:13000/admin/settings/@nocobase-sample/plugin-add-setting-page-layout-routes](http://localhost:13000/admin/settings/@nocobase-sample/plugin-add-setting-page-layout-routes) にアクセスしてプラグイン設定ページを確認します。
 
+### 2. 詳細ページの追加
 
-### 2. 新增详情页面
-
-我们准备在 `AdminLayout` 下面新增一个详情页面，我们继续修改 `packages/plugins/@nocobase-sample/plugin-add-setting-page-layout-routes/src/client/index.tsx`：
+`AdminLayout` の下に新しい詳細ページを追加します。引き続き `packages/plugins/@nocobase-sample/plugin-add-setting-page-layout-routes/src/client/index.tsx` を修正します：
 
 ```diff
 + import { Link } from 'react-router-dom'
 
 const PluginSettingPage = () => <div>
-- details
-+ <Link path={`/admin/${name}-detail`}>details</Link>
+- 詳細
++ <Link to={`/admin/${name}-detail`}>詳細</Link>
 </div>
 
 export class PluginAddSettingPageLayoutRoutesClient extends Plugin {
@@ -92,40 +91,41 @@ export class PluginAddSettingPageLayoutRoutesClient extends Plugin {
     // ...
 +   this.app.router.add(`admin.${name}-details`, {
 +     path: `/admin/${name}-detail`,
-+     Component: () => <div>detail</div>,
++     Component: () => <div>詳細</div>,
 +   });
   }
 }
 ```
 
-当我们点击 `details` 链接时，会跳转到 `/admin/@nocobase-sample/plugin-add-setting-page-layout-routes-detail` 页面。
+`詳細` リンクをクリックすると、`/admin/@nocobase-sample/plugin-add-setting-page-layout-routes-detail` ページに遷移します。
 
 <video width="100%" controls>
   <source src="https://static-docs.nocobase.com/10.mp4" type="video/mp4">
 </video>
 
-## 权限配置
+## 権限設定
 
-默认情况下，插件配置页面是没有权限的，任何人都可以访问和配置，需要在插件配置中配置权限。
+デフォルトでは、プラグイン設定ページには権限がなく、誰でもアクセスおよび設定が可能です。プラグイン設定内で権限を設定する必要があります。
 
-我们访问 [http://localhost:13000/admin/settings/users-permissions/roles](http://localhost:13000/admin/settings/users-permissions/roles) 就可以看到所有的角色了，我们可以在插件配置中配置权限。
+[http://localhost:13000/admin/settings/users-permissions/roles](http://localhost:13000/admin/settings/users-permissions/roles) にアクセスすると、すべての役割が表示されます。プラグイン設定で権限を構成することができます。
 
 ![20240512201624](https://static-docs.nocobase.com/20240512201624.png)
 
-## 打包和上传到生产环境
+## パッケージングと本番環境へのアップロード
 
-按照 [构建并打包插件](/development/your-fisrt-plugin#构建并打包插件) 文档说明，我们可以打包插件并上传到生产环境。
+[プラグインのビルドとパッケージング](/development/your-fisrt-plugin#プラグインのビルドとパッケージング) の指示に従って、プラグインをパッケージングし、本番環境にアップロードします。
 
-如果是 clone 的源码，需要先执行一次全量 build，将插件的依赖也构建好。
+クローンしたソースコードの場合、最初にフルビルドを実行して、プラグインの依存関係もビルドする必要があります。
 
 ```bash
 yarn build
 ```
 
-如果是使用的 `create-nocobase-app` 创建的项目，可以直接执行：
+`create-nocobase-app` を使用して作成したプロジェクトの場合、次のコマンドを直接実行できます：
 
 ```bash
 yarn build @nocobase-sample/plugin-add-setting-page-layout-routes --tar
 ```
 
-这样就可以看到 `storage/tar/@nocobase-sample/plugin-add-setting-page-layout-routes.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
+これにより、`storage/tar/@nocobase-sample/plugin-add-setting-page-layout-routes.tar.gz` ファイルが生成されます。その後、[アップロードの方法](/welcome/getting-started/plugin)に従ってインストールしてください。
+

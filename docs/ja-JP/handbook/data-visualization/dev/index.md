@@ -1,12 +1,12 @@
-# 扩展图表类型
+# 拡張チャートタイプ
 
-## 概述
+## 概要
 
-NocoBase 使用 <a href="https://g2plot.antv.antgroup.com/" target="_blank">Ant Design Charts</a> 作为默认的图表库，内置了常用的图表类型。除了内置的图表类型，NocoBase 还支持自己扩展接入其他图表类型，也可以接入其他图表库，比如: ECharts. 这一部分主要介绍如何扩展一个新的图表类型。
+NocoBaseは、<a href="https://g2plot.antv.antgroup.com/" target="_blank">Ant Design Charts</a>をデフォルトのチャートライブラリとして使用し、一般的なチャートタイプを内蔵しています。内蔵のチャートタイプに加え、NocoBaseでは独自に他のチャートタイプを拡張したり、EChartsなどの他のチャートライブラリと接続したりすることもサポートしています。このセクションでは、新しいチャートタイプを拡張する方法について説明します。
 
-## 定义图表
+## チャートの定義
 
-在可视化插件中，每个图表类型都用一个类来定义，这个类需要按照 [ChartType](#charttype) 接口的定义进行实现。为了方便理解和开发，我们提供了 [Chart](#chart) 基类，对 `ChartType` 做了部分实现。大多数情况下，扩展的图表类型只需要继承 `Chart` 类，并补充相应的方法即可。
+可視化プラグインでは、各チャートタイプはクラスで定義されており、このクラスは[ChartType](#charttype)インターフェースの定義に従って実装する必要があります。理解と開発を容易にするために、[Chart](#chart)基底クラスが提供されており、`ChartType`の一部を実装しています。ほとんどの場合、拡張されたチャートタイプは`Chart`クラスを継承し、必要なメソッドを追加するだけで済みます。
 
 ```ts
 class CustomChart extends Chart {
@@ -34,38 +34,38 @@ class CustomChart extends Chart {
 }
 ```
 
-### 图表信息
+### チャート情報
 
-一个图表类型的基本信息包括：
+チャートタイプの基本情報には、以下が含まれます：
 
-| 参数        | 说明               |
-| ----------- | ------------------ |
-| `name`      | 标识               |
-| `title`     | 展示标题           |
-| `Component` | 渲染图表使用的组件 |
-| `config`    | 基础可视化配置表单 |
+| パラメータ   | 説明                            |
+| ------------ | ------------------------------- |
+| `name`       | アイデンティファイ             |
+| `title`      | 表示タイトル                    |
+| `Component`  | グラフ描画に使用するコンポーネント |
+| `config`     | 基本的な可視化設定フォーム     |
 
 <img src="https://static-docs.nocobase.com/202404192352571.png"/>
 
-示例：
+例：
 
 ```ts
 new CustomChart({
   name: 'custom',
-  title: 'Custom Chart',
+  title: 'カスタムチャート',
   Component: CustomChart,
   config: ['xField', 'yField', 'seriesField'],
 });
 ```
 
-具体的用法参考 [Chart](#chart)
+具体的な使い方は [Chart](#chart) を参照してください。
 
-### 图表配置初始化
+### チャート設定の初期化
 
-当用户选择了一个图表时，我们可能希望根据用户的数据查询配置，对图表的配置项做初始化处理，减少用户的手动配置操作。  
-每次用户选择一个图表后，插件内部会尝试调用图表类的 `init()` 的方法，并传递当前数据表的所有字段配置和当前的度量和纬度配置，`init()` 方法可以根据参数执行初始化图表配置的逻辑。
-`Chart` 类内部实现了 `infer()` 方法，可以用于简单推导 x 轴字段、y 轴字段和分类字段的初始配置。  
-示例：
+ユーザーがチャートを選択した際、ユーザーのデータクエリ設定に基づいてチャートの設定項目を初期化し、手動での設定操作を減らすことを目指します。  
+チャートを選択するたびに、プラグイン内部でチャートクラスの `init()` メソッドが呼び出され、現在のデータテーブルにおけるすべてのフィールド設定と、現在のメジャーおよびディメンション設定が渡されます。`init()` メソッドは、引数に基づいてチャート設定の初期化ロジックを実行します。  
+`Chart` クラス内部には `infer()` メソッドが実装されており、x軸フィールド、y軸フィールド、カテゴリフィールドの初期設定を簡単に推測するために使用します。  
+例：
 
 ```ts
 init(
@@ -86,11 +86,11 @@ init(
 }
 ```
 
-### 获取图表组件属性
+### グラフコンポーネントの属性を取得
 
-在得到用户配置的图表配置信息以后，我们可能还需要进一步处理，才能作为相应的属性传递给渲染图表的组件。`getProps()` 方法接收图表数据、图表配置和有关的字段信息作为参数，我们可以将这些参数进一步处理，并返回最终传递给图表组件的属性。
+ユーザーが設定したグラフの構成情報を取得した後、適切な属性としてレンダリンググラフコンポーネントに渡すために、さらに処理を行う必要があります。`getProps()` メソッドは、グラフデータ、グラフ構成、および関連するフィールド情報をパラメータとして受け取り、これらのパラメータをさらに処理して、最終的にグラフコンポーネントに渡す属性を返します。
 
-以「统计」图表为例：
+「統計」グラフの例：
 
 ```ts
 getProps({ data, fieldProps, general, advanced }: RenderProps) {
@@ -106,9 +106,9 @@ getProps({ data, fieldProps, general, advanced }: RenderProps) {
 }
 ```
 
-### 获取图表组件参考信息
+### グラフコンポーネントの参考情報を取得
 
-`getReference()` 方法主要是获取当前图表类型的参考文档信息。
+`getReference()` メソッドは、現在のグラフタイプに関する参考文書情報を取得するためのものです。
 
 ```ts
 getReference() {
@@ -119,13 +119,13 @@ getReference() {
 }
 ```
 
-## 添加图表
+## グラフの追加
 
-定义好图表类以后，我们还需要将类实例添加到数据可视化插件中。在选择图表的时候，图表分组展示，默认图表分组为「内置」(Built-in).
+グラフクラスを定義した後、クラスのインスタンスをデータ可視化プラグインに追加する必要があります。グラフを選択する際、グラフはグループ表示され、デフォルトのグラフグループは「内蔵」（Built-in）です。
 
 <img src="https://static-docs.nocobase.com/202404201042045.png"/>
 
-我们可以添加一组图表，也可以像已有分组添加图表。
+一組のグラフを追加することも、既存のグループにグラフを追加することもできます。
 
 ```typescript
 import DataVisualization from '@nocobase/plugin-data-visualization'
@@ -134,15 +134,15 @@ class CustomChartsPlugin extends Plugin {
   async load() {
     const plugin = this.app.pm.get(DataVisualization);
 
-    // Add a group of charts
+    // 一組のグラフを追加
     plugin.charts.addGroup('custom', [...]);
 
-    // Set a group of charts,
-    // can be used for overriding an exist group
+    // グラフのグループを設定。 
+    // 既存のグループを上書きするために使用可能
     plugin.charts.setGroup('custom', [...]);
 
-    // Append a chart to an exist group
-    // The name of the chart is required to be unique in a group
+    // 既存のグループにグラフを追加
+    // グラフの名前はグループ内で一意である必要があります
     plugin.charts.add('Built-in', new CustomChart({
       // ...
     }));
@@ -152,13 +152,13 @@ class CustomChartsPlugin extends Plugin {
 
 参考 [ChartGroup](#chartgroup)
 
-## 示例
+## 例
 
 - [src/client/chart/g2plot](https://github.com/nocobase/nocobase/tree/main/packages/plugins/%40nocobase/plugin-data-visualization/src/client/chart/g2plot)
 
 - [src/client/chart/antd](https://github.com/nocobase/nocobase/tree/main/packages/plugins/%40nocobase/plugin-data-visualization/src/client/chart/antd)
 
-- [ECharts 集成示例](../step-by-step/index.md)
+- [ECharts 統合例](../step-by-step/index.md)
 
 ## API
 
@@ -166,7 +166,7 @@ class CustomChartsPlugin extends Plugin {
 
 #### `addGroup()`
 
-添加一组图表。
+グラフのグループを追加します。
 
 ```typescript
 import DataVisualization from '@nocobase/plugin-data-visualization'
@@ -175,26 +175,26 @@ class CustomChartsPlugin extends Plugin {
   async load() {
     const plugin = this.app.pm.get(DataVisualization);
 
-    // Add a group of charts
+    // グラフのグループを追加する
     plugin.charts.addGroup('custom', [...]);
   }
 }
 ```
 
-**签名**
+**シグネチャ**
 
 - `addGroup(name: string, charts: ChartType[])`
 
-**详细信息**
+**詳細情報**
 
-| 参数     | 类型          | 说明             |
-| -------- | ------------- | ---------------- |
-| `name`   | `string`      | 图表分组唯一标识 |
-| `charts` | `ChartType[]` | 图表数组         |
+| パラメータ | 型            | 説明                       |
+| ---------- | ------------- | -------------------------- |
+| `name`     | `string`      | グラフグループのユニーク識別子 |
+| `charts`   | `ChartType[]` | グラフの配列               |
 
 #### `add()`
 
-向已有分组添加图表。
+既存のグループにグラフを追加します。
 
 ```typescript
 import DataVisualization from '@nocobase/plugin-data-visualization';
@@ -204,7 +204,7 @@ class CustomChartsPlugin extends Plugin {
     const plugin = this.app.pm.get(DataVisualization);
 
     plugin.charts.add(
-      'Built-in',
+      '組み込み',
       new CustomChart({
         // ...
       }),
@@ -213,20 +213,20 @@ class CustomChartsPlugin extends Plugin {
 }
 ```
 
-**签名**
+**シグネチャ**
 
 - `add(group: string, chart: ChartType)`
 
-**详细信息**
+**詳細情報**
 
-| 参数    | 类型        | 说明             |
-| ------- | ----------- | ---------------- |
-| `group` | `string`    | 图表分组唯一标识 |
-| `chart` | `ChartType` | 图表             |
+| パラメータ | タイプ      | 説明                     |
+| ---------- | ----------- | ------------------------ |
+| `group`    | `string`    | チャートグループの一意識別子 |
+| `chart`    | `ChartType` | チャート                 |
 
 #### `setGroup()`
 
-设置一组图表，覆盖原有图表。
+チャートのグループを設定し、既存のチャートを上書きします。
 
 ```typescript
 import DataVisualization from '@nocobase/plugin-data-visualization'
@@ -234,35 +234,35 @@ import DataVisualization from '@nocobase/plugin-data-visualization'
 class CustomChartsPlugin extends Plugin {
   async load() {
     const plugin = this.app.pm.get(DataVisualization);
-    // Set a group of charts,
-    // can be used for overriding an exist group
+    // チャートのグループを設定します。
+    // 既存のグループを上書きするために使用できます。
     plugin.charts.setGroup('custom', [...]);
   }
 }
 ```
 
-**签名**
+**シグネチャ**
 
 - `setGroup(name: string, charts: ChartType[])`
 
-**详细信息**
+**詳細情報**
 
-| 参数     | 类型          | 说明             |
-| -------- | ------------- | ---------------- |
-| `name`   | `string`      | 图表分组唯一标识 |
-| `charts` | `ChartType[]` | 图表数组         |
+| パラメータ | タイプ          | 説明                     |
+| ---------- | --------------- | ------------------------ |
+| `name`     | `string`        | チャートグループの一意識別子 |
+| `charts`   | `ChartType[]`   | チャートの配列           |
 
-### Chart
+### チャート
 
 #### `constructor()`
 
-构造函数，新建一个 `Chart` 实例。
+コンストラクタで、新しい `Chart` インスタンスを作成します。
 
-**签名**
+**シグネチャ**
 
 - `constructor({ name, title, Component, config }: ChartProps)`
 
-**类型**
+**型**
 
 ```ts
 export type ChartProps = {
@@ -289,20 +289,20 @@ export type Config =
   | string;
 ```
 
-**详细信息**
+**詳細情報**
 
-| 属性        | 类型                  | 说明                     |
-| ----------- | --------------------- | ------------------------ |
-| `name`      | `string`              | 图表类型标识             |
-| `title`     | `string`              | 图表展示标题             |
-| `Component` | `React.FC<any>`       | 图表渲染组件             |
-| `config`    | [`Config[]`](#config) | 可选。图表可视化配置表单 |
+| 属性        | 型                  | 説明                     |
+| ----------- | ------------------- | ------------------------ |
+| `name`      | `string`            | グラフタイプの識別子      |
+| `title`     | `string`            | グラフ表示タイトル        |
+| `Component` | `React.FC<any>`     | グラフ描画コンポーネント   |
+| `config`    | [`Config[]`](#config) | 任意。グラフ可視化設定フォーム |
 
 ##### Config
 
-`config` 支持以下几种写法，可以混合使用：
+`config` は以下のいくつかの記法をサポートしており、混在して使用できます：
 
-1. UI Schema 字段配置, 在 UI Schema 中如果想使用在「数据配置」部分已经配置好的字段，可以使用 `x-reactions': '{{ useChartFields }}'`.
+1. UI スキーマフィールド配置では、UI スキーマ内の「データ設定」部分ですでに設定されたフィールドを使用したい場合、`'x-reactions': '{{ useChartFields }}'`を使用できます。
 
 ```ts
 {
@@ -317,11 +317,11 @@ export type Config =
 }
 ```
 
-2. 使用预定义好的 UI Schema.
+2. 予め定義された UI スキーマを使用します。
 
-例如: `config: ['field']`
+例えば: `config: ['field']`
 
-对应生成
+対応する生成物は
 
 ```typescript
 {
@@ -336,7 +336,7 @@ export type Config =
 }
 ```
 
-3. 使用预定义的 UI Schema, 但是替换部分属性值，其中 `property` 为预定义 UI Schema 的标识.
+3. 予め定義された UI スキーマを使用しますが、一部の属性値を置き換えます。このとき、`property`は予め定義された UI スキーマの識別子です。
 
 ```typescript
 config: [
@@ -349,7 +349,7 @@ config: [
 ];
 ```
 
-对应生成
+対応する生成物は
 
 ```typescript
 {
@@ -365,15 +365,15 @@ config: [
 }
 ```
 
-所有预定义的 UI Schema 可以参考 <a href="https://github.com/nocobase/nocobase/blob/main/packages/plugins/%40nocobase/plugin-data-visualization/src/client/chart/configs.ts" target="_blank">`/src/client/chart/config.ts`</a>.  
-也可以通过 [`addConfigs()`](#addconfigs) 方法增加新的预定义 UI Schema.
+すべての予定義UIスキーマは、<a href="https://github.com/nocobase/nocobase/blob/main/packages/plugins/%40nocobase/plugin-data-visualization/src/client/chart/configs.ts" target="_blank">`/src/client/chart/config.ts`</a>を参照できます。  
+新しい予定義UIスキーマは、[`addConfigs()`](#addconfigs)メソッドを使用して追加することも可能です。
 
 #### `addConfigs()`
 
-添加预定义的图表可视化配置表单的 UI Schema.
+予定義のグラフ可視化設定フォームのUIスキーマを追加します。
 
 ```ts
-// Add
+// 追加
 const booleanField = ({
   name,
   title,
@@ -391,25 +391,25 @@ const booleanField = ({
 };
 chart.addConfigs({ booleanField });
 
-// Usage
+// 使用例
 new Chart({
   config: [
     'booleanField',
     {
       property: 'booleanField',
       name: 'customBooleanField',
-      title: 'Custom Boolean Field',
+      title: 'カスタムブールフィールド',
       defaultValue: true,
     },
   ],
 });
 ```
 
-**签名**
+**署名**
 
 - `addConfigs(configs: { [key: string]: (props: FieldConfigProps) => AnySchemaProperties })`
 
-**类型**
+**タイプ**
 
 ```ts
 export type FieldConfigProps = Partial<{
@@ -420,24 +420,24 @@ export type FieldConfigProps = Partial<{
 }>;
 ```
 
-**详细信息**
+**詳細情報**
 
-`addConfigs()` 接收一个对象，`key` 为配置的唯一标识，值为获取预定义 UI Schema 的方法。该方法接收可被替换的参数，并返回相应的 UI Schema 字段配置.
+`addConfigs()` はオブジェクトを受け取り、`key` は設定の一意の識別子であり、値は事前に定義された UI スキーマを取得するメソッドです。このメソッドは置き換え可能なパラメータを受け取り、対応する UI スキーマフィールド設定を返します。
 
 ##### FieldProps
 
-| 属性           | 类型      | 说明     |
-| -------------- | --------- | -------- |
-| `name`         | `string`  | 字段名   |
-| `title`        | `string`  | 字段标题 |
-| `required`     | `boolean` | 是否必填 |
-| `defaultValue` | `any`     | 默认值   |
+| 属性           | 型      | 説明     |
+| -------------- | ------- | -------- |
+| `name`         | `string`| フィールド名   |
+| `title`        | `string`| フィールドタイトル |
+| `required`     | `boolean`| 必須かどうか |
+| `defaultValue` | `any`   | デフォルト値   |
 
 #### `init()`
 
-选择图表时初始化图表配置。
+グラフを選択する際にグラフ設定を初期化します。
 
-**签名**
+**シグネチャ**
 
 ```ts
 init?: (
@@ -452,7 +452,7 @@ init?: (
 };
 ```
 
-**类型**
+**型**
 
 ```ts
 export type FieldOption = {
@@ -481,20 +481,20 @@ export type DimensionProps = {
 };
 ```
 
-**详细信息**
+**詳細情報**
 
-| 参数               | 类型             | 说明                     |
+| パラメータ          | 型               | 説明                     |
 | ------------------ | ---------------- | ------------------------ |
-| `fields`           | `FieldOption[]`  | 当前数据表字段的相关属性 |
-| `query.measures`   | `MeasureProps[]` | 度量字段配置             |
-| `query.dimensions` | `DimensionProps` | 维度字段配置             |
+| `fields`           | `FieldOption[]`  | 現在のデータテーブルフィールドの関連属性 |
+| `query.measures`   | `MeasureProps[]` | メジャーフィールドの構成     |
+| `query.dimensions` | `DimensionProps` | ディメンションフィールドの構成 |
 
 #### `infer()`
 
-图表初始配置推导。
+グラフの初期設定を推論します。
 
 ```ts
-// pie chart
+// 円グラフ
 init(fields, { measures, dimensions }) {
   const { xField, yField } = this.infer(fields, { measures, dimensions });
   return {
@@ -506,7 +506,7 @@ init(fields, { measures, dimensions }) {
 };
 ```
 
-**签名**
+**シグネチャ**
 
 ```ts
 infer: (fields: FieldOption[], query: {
@@ -521,25 +521,25 @@ infer: (fields: FieldOption[], query: {
 }
 ```
 
-**详细信息**
+**詳細情報**
 
-| 属性          | 类型            | 说明          |
+| 属性          | タイプ            | 説明          |
 | ------------- | --------------- | ------------- |
-| `xField`      | `FieldOption`   | x 轴字段      |
-| `yField`      | `FieldOption`   | y 轴字段      |
-| `seriesField` | `FieldOption`   | 分类字段      |
-| `colorField`  | `FieldOption`   | 颜色字段      |
-| `yFields`     | `FieldOption[]` | 多个 y 轴字段 |
+| `xField`      | `FieldOption`   | x 軸フィールド |
+| `yField`      | `FieldOption`   | y 軸フィールド |
+| `seriesField` | `FieldOption`   | カテゴリフィールド |
+| `colorField`  | `FieldOption`   | 色フィールド   |
+| `yFields`     | `FieldOption[]` | 複数の y 軸フィールド |
 
 #### `getProps()`
 
-将图表数据、图表配置元数据处理转换成图表渲染组件需要的属性。
+チャートデータとチャート設定メタデータを処理し、チャートレンダリングコンポーネントに必要な属性に変換します。
 
-**签名**
+**サイン**
 
 - `getProps({ data, general, advanced, fieldProps }: RenderProps)`
 
-**类型**
+**タイプ**
 
 ```ts
 export type RenderProps = {
@@ -556,24 +556,24 @@ export type RenderProps = {
 };
 ```
 
-| 属性         | 类型                              | 说明                                 |
+| 属性         | 型                                | 説明                                 |
 | ------------ | --------------------------------- | ------------------------------------ |
-| `data`       | `Record<string, any>[]`           | 图表原始数据                         |
-| `general`    | `any`                             | 图表可视化表单配置                   |
-| `advanced`   | `any`                             | 图表 JSON 配置                       |
-| `fieldProps` | `{ [field: string]: FieldProps }` | 数据表字段的信息，可用于处理图形显示 |
+| `data`       | `Record<string, any>[]`           | グラフの生データ                     |
+| `general`    | `any`                             | グラフの可視化フォーム設定            |
+| `advanced`   | `any`                             | グラフのJSON設定                      |
+| `fieldProps` | `{ [field: string]: FieldProps }` | データテーブルのフィールド情報、グラフ表示の処理に使用可能 |
 
 ##### FieldProps
 
-| 属性          | 类型          | 说明               |
-| ------------- | ------------- | ------------------ |
-| `label`       | `string`      | 字段名展示标签     |
-| `transformer` | `Transformer` | 字段值数据转换函数 |
-| `interface`   | `string`      | 字段 interface     |
+| 属性          | 型             | 説明               |
+| ------------- | -------------- | ------------------ |
+| `label`       | `string`       | フィールド名表示ラベル     |
+| `transformer` | `Transformer`  | フィールド値データ変換関数 |
+| `interface`   | `string`       | フィールドインターフェース     |
 
 #### `getReference()`
 
-获取图表组件的参考文档信息。
+グラフコンポーネントの参考資料情報を取得します。
 
 ```ts
 getReference() {
@@ -584,7 +584,7 @@ getReference() {
 }
 ```
 
-**签名**
+**サイン**
 
 ```ts
 getReference?: () => {
@@ -597,25 +597,25 @@ getReference?: () => {
 
 #### `name`
 
-- `string`. 图表类型标识。
+- `string`. グラフタイプの識別子です。
 
 #### `title`
 
-- `string`. 图表展示标题。
+- `string`. グラフの表示タイトルです。
 
 #### `Component`
 
-- `React.FC<any>`. 图表渲染组件。
+- `React.FC<any>`. グラフ描画に使用するコンポーネントです。
 
 #### `schema`
 
-- `ISchema`. 图表可视化配置 UI Schema.
+- `ISchema`. グラフ視覚化設定のUIスキーマです。
 
 #### `init()`
 
-图表配置初始化方法。
+グラフ設定の初期化メソッドです。
 
-**签名**
+**署名**
 
 ```ts
 init?: (
@@ -632,17 +632,17 @@ init?: (
 
 #### `getProps()`
 
-图表组件属性处理和获取。
+グラフコンポーネントのプロパティを処理し、取得します。
 
-**签名**
+**署名**
 
 - `getProps(props: RenderProps): any`
 
 #### `getReference()`
 
-获取图表组件参考文档信息。
+グラフコンポーネントの参考文献情報を取得します。
 
-**签名**
+**署名**
 
 ```ts
 getReference?: () => {
@@ -650,3 +650,4 @@ getReference?: () => {
   link: string;
 };
 ```
+

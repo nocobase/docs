@@ -1,34 +1,32 @@
-# 扩展认证类型
+# 認証タイプの拡張
 
-## 概述
+## 概要
 
-NocoBase 支持按需要扩展用户认证类型。用户认证一般有两种类型，一种是在 NocoBase 应用 内完成用户身份判断，如密码登录，短信登录等；另一种是由第三方服务判断用户身份，并将结果通过回调通知 NocoBase 应用，如 OIDC, SAML 等认证方式。两种不同类型的认证方式在 NocoBase 中的认证流程基本如下：
+NocoBaseは、必要に応じてユーザー認証タイプを拡張できます。ユーザー認証には一般的に2種類のタイプがあります。一つはNocoBaseアプリ内でユーザーの身分を確認する方法（パスワードログイン、SMSログインなど）、もう一つは第三者サービスがユーザーの身分を確認し、その結果をコールバックでNocoBaseアプリに通知する方法（OIDC、SAMLなどの認証方式）です。NocoBaseにおけるこれら2つの異なる認証方式のフローは基本的に以下の通りです。
 
-### 不依赖第三方回调
+### 第三者コールバックに依存しない場合
 
-1. 客户端使用 NocoBase SDK 调用登录接口 `api.auth.signIn()`，请求登录接口 `auth:signIn`，同时将当前使用的认证器标识通过请求头 `X-Authenticator` 携带给后端。
-2. `auth:signIn` 接口根据请求头中的认证器标识，转发到认证器对应的认证类型，由该认证类型注册的认证类中的 `validate` 方法进行相应的逻辑处理。
-3. 客户端从 `auth:signIn` 接口响应中拿到用户信息和认证 `token`, 将 `token` 保存到 Local Storage, 完成登录。这一步由 SDK 内部自动完成处理。
+1. クライアントはNocoBase SDKを使用してログインインターフェース `api.auth.signIn()` を呼び出し、ログインインターフェース `auth:signIn` にリクエストを送信します。同時に、現在使用している認証器の識別子をリクエストヘッダー `X-Authenticator` でバックエンドに送信します。
+2. `auth:signIn` インターフェースは、リクエストヘッダーの認証器識別子に基づいて該当する認証タイプに転送し、その認証タイプに登録された認証クラスの `validate` メソッドで適切なロジック処理を行います。
+3. クライアントは `auth:signIn` インターフェースのレスポンスからユーザー情報と認証 `token` を取得し、`token` をローカルストレージに保存してログインを完了します。このステップはSDK内部で自動的に処理されます。
 
 <img src="https://static-docs.nocobase.com/202404211852848.png"/>
 
-### 依赖第三方回调
+### 第三者コールバックに依存する場合
 
-1. 客户端通过自己注册的接口（比如 `auth:getAuthUrl`) 获取第三方登录 URL, 并按协议携带应用名称、认证器标识等信息。
-2. 跳转到第三方 URL 完成登录，第三方服务调用 NocoBase 应用的回调接口 (需要自己注册，比如 `auth:redirect`), 返回认证结果，同时返回应用名称、认证器标识等信息。
-3. 回调接口方法，解析参数获得认证器标识，通过 `AuthManager` 获取对应的认证类，主动调用 `auth.signIn()` 方法。`auth.signIn()` 方法会调用 `validate()` 方法处理鉴权逻辑。
-4. 回调方法拿到认证 `token`, 再 302 跳转回前端页面，并在 URL 参数带上 `token` 和认证器标识，`?authenticator=xxx&token=yyy`.
+1. クライアントは自分が登録したインターフェース（例えば `auth:getAuthUrl`）を通じて第三者ログインURLを取得し、プロトコルに従ってアプリの名称や認証器識別子などの情報を携帯します。
+2. 第三者URLにリダイレクトしてログインを完了し、第三者サービスがNocoBaseアプリのコールバックインターフェース（自分で登録が必要、例えば `auth:redirect`）を呼び出し、認証結果を返します。同時にアプリ名称や認証器識別子などの情報も返します。
+3. コールバックインターフェースのメソッドでパラメータを解析し認証器識別子を取得、`AuthManager`を通じて該当する認証クラスを取得し、`auth.signIn()` メソッドを呼び出します。`auth.signIn()` メソッドは `validate()` メソッドを呼び出して認証ロジックを処理します。
+4. コールバックメソッドは認証 `token` を取得し、302リダイレクトでフロントエンドページに戻ります。URLパラメータに `token` と認証器識別子を持たせます。`?authenticator=xxx&token=yyy`。
 
-<img src="https://static-docs.nocobase.com/202404211852377.png"/>
+以下にサーバーインターフェースとクライアントユーザーインターフェースの登録方法について説明します。
 
-下面介绍如何注册服务端接口和客户端用户界面。
+## サーバーサイド
 
-## 服务端
+### 認証インターフェース
 
-### 认证接口
-
-NocoBase 内核提供了扩展认证类型的注册和管理。扩展登录插件的核心逻辑处理，需要继承内核的 `Auth` 抽象类，并对相应的标准接口进行实现。  
-完整 API 参考 [Auth](../../../api/auth/auth.md).
+NocoBase コアは、拡張認証タイプの登録と管理を提供します。拡張ログインプラグインのコアロジック処理には、コアの `Auth` 抽象クラスを継承し、対応する標準インターフェースを実装する必要があります。  
+完全な API 参照は [Auth](../../../api/auth/auth.md) をご覧ください。
 
 ```typescript
 import { Auth } from '@nocobase/auth';
@@ -42,54 +40,54 @@ class CustomAuth extends Auth {
 }
 ```
 
-内核也注册了用户认证相关的基本资源操作。
+コアは、ユーザー認証に関連する基本的なリソース操作も登録しています。
 
-| API            | 说明             |
-| -------------- | ---------------- |
-| `auth:check`   | 判断用户是否登录 |
-| `auth:signIn`  | 登录             |
-| `auth:signUp`  | 注册             |
-| `auth:signOut` | 注销登录         |
+| API            | 説明                           |
+| -------------- | ------------------------------ |
+| `auth:check`   | ユーザーがログインしているかを判断 |
+| `auth:signIn`  | ログイン                        |
+| `auth:signUp`  | 登録                           |
+| `auth:signOut` | ログアウト                     |
 
-多数情况下，扩展的用户认证类型也可以沿用现有的 JWT 鉴权逻辑来生成用户访问 API 的凭证。内核的 `BaseAuth` 类对 `Auth` 抽象类做了基础实现，参考 [BaseAuth](../../../api/auth/base-auth.md). 插件可以直接继承 `BaseAuth` 类以便复用部分逻辑代码，降低开发成本。
+ほとんどの場合、拡張されたユーザー認証タイプは、既存の JWT 認証ロジックを利用してユーザーが API へアクセスするための証明書を生成できます。コアの `BaseAuth` クラスは `Auth` 抽象クラスの基本実装を提供しており、詳細は [BaseAuth](../../../api/auth/base-auth.md) をご覧ください。プラグインは `BaseAuth` クラスを直接継承することで、一部のロジックコードを再利用し、開発コストを低減できます。
 
 ```javascript
 import { BaseAuth } from '@nocobase/auth';
 
 class CustomAuth extends BaseAuth {
   constructor(config: AuthConfig) {
-    // 设置用户数据表
+    // ユーザーデータテーブルを設定
     const userCollection = config.ctx.db.getCollection('users');
     super({ ...config, userCollection });
   }
 
-  // 实现用户认证逻辑
+  // ユーザー認証ロジックを実装
   async validate() {}
 }
 ```
 
-### 用户数据
+### ユーザーデータ
 
-在实现用户认证逻辑时，通常涉及用户数据处理。在 NocoBase 应用中，默认情况下相关的表定义为：
+ユーザー認証ロジックを実装する際には、通常、ユーザーデータの処理が関与します。NocoBase アプリケーションでは、デフォルトで関連するテーブルが以下のように定義されています：
 
-| 数据表                | 作用                                               | 插件                                                        |
-| --------------------- | -------------------------------------------------- | ----------------------------------------------------------- |
-| `users`               | 存储用户信息，邮箱、昵称和密码等                   | [用户插件 (`@nocobase/plugin-users`)](../../users/index.md) |
-| `authenticators`      | 存储认证器（认证类型实体）信息，对应认证类型和配置 | 用户认证插件 (`@nocobase/plugin-auth`)                      |
-| `usersAuthenticators` | 关联用户和认证器，保存用户在对应认证器下的信息     | 用户认证插件 (`@nocobase/plugin-auth`)                      |
+| データテーブル         | 目的                                               | プラグイン                                                      |
+| --------------------- | -------------------------------------------------- | ------------------------------------------------------------- |
+| `users`               | ユーザー情報（メール、ニックネーム、パスワードなど）を保存する | [ユーザープラグイン (`@nocobase/plugin-users`)](../../users/index.md) |
+| `authenticators`      | 認証器（認証タイプエンティティ）情報を保存し、対応する認証タイプと設定を保持する | [ユーザー認証プラグイン (`@nocobase/plugin-auth`)](../../auth/index.md)                |
+| `usersAuthenticators` | ユーザーと認証器を関連付け、ユーザーが対応する認証器に基づく情報を保存する | [ユーザー認証プラグイン (`@nocobase/plugin-auth`)](../../auth/index.md)                |
 
-通常情况下，扩展登录方式用 `users` 和 `usersAuthenticators` 来存储相应的用户数据即可，特殊情况下才需要自己新增 Collection.
+通常、拡張ログイン方式では、`users` と `usersAuthenticators` を使用して対応するユーザーデータを保存します。特別な場合にのみ、自分でコレクションを追加する必要があります。
 
-`usersAuthenticators` 的主要字段为
+`usersAuthenticators` の主なフィールドは次のとおりです。
 
-| 字段            | 说明                                                 |
-| --------------- | ---------------------------------------------------- |
-| `uuid`          | 该种认证方式的用户唯一标识，如手机号、微信 openid 等 |
-| `meta`          | JSON 字段，其他需要保存的信息                        |
-| `userId`        | 用户 ID                                              |
-| `authenticator` | 认证器名字（唯一标识）                               |
+| フィールド       | 説明                                               |
+| --------------- | -------------------------------------------------- |
+| `uuid`          | この認証方式のユーザーのユニーク識別子（例：電話番号、WeChat openid など） |
+| `meta`          | JSON フィールドで、他に保存する必要がある情報      |
+| `userId`        | ユーザー ID                                       |
+| `authenticator` | 認証器の名前（ユニーク識別子）                    |
 
-对于用户查询和创建操作，`authenticators` 的数据模型 `AuthModel` 也封装了几个方法，可以在 `CustomAuth` 类中通过 `this.authenticator[方法名]` 使用。完整 API 参考 [AuthModel](../dev/api.md#authmodel).
+ユーザーの検索および作成操作に関して、`authenticators` のデータモデル `AuthModel` にはいくつかのメソッドが封装されており、`CustomAuth` クラス内で `this.authenticator[メソッド名]` を通じて使用できます。完全な API 参照は [AuthModel](../dev/api.md#authmodel) をご覧ください。
 
 ```ts
 import { AuthModel } from '@nocobase/plugin-auth';
@@ -98,17 +96,17 @@ class CustomAuth extends BaseAuth {
   async validate() {
     // ...
     const authenticator = this.authenticator as AuthModel;
-    this.authenticator.findUser(); // 查询用户
-    this.authenticator.newUser(); // 创建新用户
-    this.authenticator.findOrCreateUser(); // 查询或创建新用户
+    this.authenticator.findUser(); // ユーザーを検索
+    this.authenticator.newUser(); // 新規ユーザーを作成
+    this.authenticator.findOrCreateUser(); // ユーザーを検索または作成
     // ...
   }
 }
 ```
 
-### 认证类型注册
+### 認証タイプ登録
 
-扩展的认证方式需要向认证管理模块注册。
+拡張された認証方式は、認証管理モジュールに登録する必要があります。
 
 ```javascript
 class CustomAuthPlugin extends Plugin {
@@ -120,9 +118,9 @@ class CustomAuthPlugin extends Plugin {
 }
 ```
 
-## 客户端
+## クライアント
 
-客户端用户界面通过用户认证插件客户端提供的接口 `registerType` 进行注册：
+クライアントユーザーインターフェースは、ユーザー認証プラグインクライアントが提供するインターフェース `registerType` を使用して登録します：
 
 ```ts
 import AuthPlugin from '@nocobase/plugin-auth/client';
@@ -132,52 +130,53 @@ class CustomAuthPlugin extends Plugin {
     const auth = this.app.pm.get(AuthPlugin);
     auth.registerType('custom-auth-type', {
       components: {
-        SignInForm, // 登录表单
-        SignInButton, // 登录（第三方）按钮，可以和登录表单二选一
-        SignUpForm, // 注册表单
-        AdminSettingsForm, // 后台管理表单
+        SignInForm, // サインインフォーム
+        SignInButton, // サインイン（サードパーティ）ボタン、サインインフォームと選択可能
+        SignUpForm, // サインアップフォーム
+        AdminSettingsForm, // 管理者設定フォーム
       },
     });
   }
 }
 ```
 
-### 登录表单
+### サインインフォーム
 
 ![](https://static-docs.nocobase.com/33afe18f229c3db45c7a1921c2c050b7.png)
 
-如果有多个认证器对应的认证类型都注册了登录表单，会以 Tab 的形式展示。Tab 标题为后台配置的认证器标题。
+複数の認証器に対応する認証タイプがログインフォームに登録されている場合、タブ形式で表示されます。タブのタイトルはバックエンドで設定された認証器の名称です。
 
 ![](https://static-docs.nocobase.com/ada6d7add744be0c812359c23bf4c7fc.png)
 
-### 登录按钮
+### ログインボタン
 
 ![](https://static-docs.nocobase.com/e706f7785782adc77b0f4ee4faadfab8.png)
 
-通常为第三方登录按钮，实际上可以是任意组件。
+通常はサードパーティのログインボタンが使用されますが、実際には任意のコンポーネントに変更することも可能です。
 
-### 注册表单
+### 登録フォーム
 
 ![](https://static-docs.nocobase.com/f95c53431bf21ec312fcfd51923f0b42.png)
 
-如果需要从登录页跳转到注册页，需要在登录组件中自己处理。
+ログインページから登録ページに移動する必要がある場合、ログインコンポーネント内で処理を行う必要があります。
 
-### 后台管理表单
+### バックエンド管理フォーム
 
 ![](https://static-docs.nocobase.com/f4b544b5b0f5afee5621ad4abf66b24f.png)
 
-上方为通用的认证器配置，下方为可注册的自定义配置表单部分。
+上部には一般的な認証器の設定があり、下部には登録可能なカスタム設定フォームがあります。
 
-### 请求接口
+### リクエストインターフェース
 
-在客户端发起用户认证相关的接口请求，可以使用 NocoBase 提供的 SDK.
+クライアント側でユーザー認証に関連するインターフェースリクエストを発行するには、NocoBaseが提供するSDKを使用することができます。
 
 ```ts
 import { useAPIClient } from '@nocobase/client';
 
-// use in component
+// コンポーネント内で使用する
 const api = useAPIClient();
 api.auth.signIn(data, authenticator);
 ```
 
-详细 API 参考 [@nocobase/sdk - Auth](../../../api/sdk/auth.md).
+詳細なAPIについては [@nocobase/sdk - Auth](../../../api/sdk/auth.md) を参照してください。
+

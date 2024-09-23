@@ -1,15 +1,15 @@
-# SchemaToolbar 工具栏
+# SchemaToolbar ツールバー
 
-激活 UI 配置之后，鼠标移动到指定区块、字段、操作上方时，会显示对应的 Schema 的工具栏。
+UI 設定が有効化されると、マウスを指定されたブロック、フィールド、アクションの上に移動すると、対応する Schema のツールバーが表示されます。
 
 ![Alt text](https://static-docs.nocobase.com/e6d327da8e85d6548529e1051d06c31a.png)
 
-工具栏的组成部分包括：
+ツールバーの構成要素は以下の通りです：
 
-- 标题，默认为空
-- 拖拽控件，用于提供拖拽能力，默认可拖拽
-- 初始化器，默认为空
-- 设置器，默认为空
+- タイトル（デフォルトは空）
+- ドラッグ可能なコントロール（ドラッグ機能を提供し、デフォルトでドラッグ可能）
+- イニシャライザー（デフォルトは空）
+- セッター（デフォルトは空）
 
 ```tsx | pure
 <SchemaToolbar
@@ -20,42 +20,43 @@
 />
 ```
 
-## 用法
+## 使用法
 
-SchemaToolbar 组件用于 `x-toolbar` 中，如：
+SchemaToolbar コンポーネントは `x-toolbar` の中で使用されます。例：
 
 ```ts
-// 使用内置的 SchemaToolbar
+// 組み込みの SchemaToolbar を使用
 {
   'x-toolbar': 'SchemaToolbar',
   'x-toolbar-props': {},
 }
-// 自定义 SchemaToolbar
+// カスタム SchemaToolbar
 {
   'x-toolbar': 'MySchemaToolbar',
   'x-toolbar-props': {},
 }
 ```
 
-## 支持 `x-toolbar` 的 Schema 组件有
+## `x-toolbar` をサポートする Schema コンポーネント
 
-- `BlockItem`（包装器组件，一般用在 `x-decorator` 中）
-- `CardItem`（包装器组件，一般用在 `x-decorator` 中）
-- `FormItem`（包装器组件，一般用在 `x-decorator` 中）
-- `Action`（操作按钮组件，用在 `x-component` 中）
+- `BlockItem`（ラッパーコンポーネント、一般的に `x-decorator` に使用）
+- `CardItem`（ラッパーコンポーネント、一般的に `x-decorator` に使用）
+- `FormItem`（ラッパーコンポーネント、一般的に `x-decorator` に使用）
+- `Action`（アクションボタンコンポーネント、`x-component` に使用）
 
-如果 schema 的 `x-component` 或 `x-decorator` 使用了以上组件，又配置了 `x-settings`，`x-toolbar` 可以缺失，默认使用内置的 `SchemaToolbar` 渲染
+もし schema の `x-component` または `x-decorator` が上記のコンポーネントを使用し、かつ `x-settings` が設定されている場合、`x-toolbar` は省略可能で、デフォルトで組み込みの `SchemaToolbar` がレンダリングされます。
 
 <code src="./demos/schema-toolbar-basic/index.tsx"></code>
 
-也可以自定义工具栏组件
+ツールバーコンポーネントをカスタマイズすることも可能です。
 
 <code src="./demos/schema-toolbar-basic/custom.tsx"></code>
 
-用在 Grid 布局内，行列内的 schema 将继承 Grid 的 `x-initializer`
+Grid レイアウト内で使用される場合、行内の schema は Grid の `x-initializer` を継承します。
 
 <code src="./demos/schema-toolbar-basic/grid.tsx"></code>
 
-## 为自定义组件支持 `x-toolbar`
+## カスタムコンポーネントに `x-toolbar` をサポート
 
 <code src="./demos/schema-toolbar-basic/button.tsx"></code>
+

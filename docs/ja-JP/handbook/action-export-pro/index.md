@@ -1,9 +1,10 @@
-# 导出 Pro
+# エクスポート Pro
 
 <PluginInfo commercial="true" name="action-export-pro"></PluginInfo>
 
-## 介绍
+## イントロダクション
 
 :::warning
-插件正在开发中。
+プラグインは現在開発中です。
 :::
+

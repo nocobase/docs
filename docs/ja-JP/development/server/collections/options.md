@@ -1,12 +1,12 @@
-# Collection 协议
+# コレクションプロトコル
 
-Collection 是 NocoBase 的中枢，是一种用于描述数据结构（数据表和字段）的协议，和关系型数据库的概念非常接近，但不仅限于关系型数据库，也可以是 NoSQL 数据库、HTTP API 等数据源。
+コレクションは NocoBase の中核を成す概念であり、データ構造（データテーブルおよびフィールド）を定義するためのプロトコルです。リレーショナルデータベースの概念に非常に近いですが、リレーショナルデータベースに限らず、NoSQL データベースや HTTP API などのデータソースも含まれます。
 
 <img src="./schema.svg" style="max-width: 800px;" >
 
-现阶段基于 Collection 协议实现了关系型数据库的对接（db.collections），NoSQL 数据库、HTTP API 等数据源在未来也会逐步实现。
+現段階では、コレクションプロトコルに基づいてリレーショナルデータベースとの接続（db.collections）が実現されており、将来的には NoSQL データベースや HTTP API などのデータソースも徐々に実装される予定です。
 
-Collection 协议主要包括 CollectionOptions 和 FieldOptions 两部分，因为 Field 是可扩展的，所以 FieldOptions 的参数非常灵活。
+コレクションプロトコルは主に CollectionOptions と FieldOptions の二つの部分から成り立っており、Field は拡張可能であるため、FieldOptions のパラメータは非常に柔軟です。
 
 ## CollectionOptions
 
@@ -14,13 +14,13 @@ Collection 协议主要包括 CollectionOptions 和 FieldOptions 两部分，因
 interface CollectionOptions {
   name: string;
   title?: string;
-  // 树结构表，TreeRepository
+  // ツリーストラクチャーテーブル、TreeRepository
   tree?:
     | 'adjacency-list'
     | 'closure-table'
     | 'materialized-path'
     | 'nested-set';
-  // 父子继承
+  // 親子継承
   inherits?: string | string[];
   fields?: FieldOptions[];
   timestamps?: boolean;
@@ -39,7 +39,7 @@ type CollectionSortable =
 
 ## FieldOptions
 
-通用的字段参数
+汎用フィールドパラメータ
 
 ```ts
 interface FieldOptions {
@@ -51,11 +51,11 @@ interface FieldOptions {
   uiSchema?: ISchema;
 ```
 
-[UI Schema 的介绍点此查看](/development/client/ui-schema-designer/what-is-ui-schema)
+[UI スキーマの紹介はこちらをご覧ください](/development/client/ui-schema-designer/what-is-ui-schema)
 
-### Field Type
+### フィールドタイプ
 
-Field Type 包括 Attribute Type 和 Association Type 两类：
+フィールドタイプは Attribute Type と Association Type の二種類があります：
 
 **Attribute Type**
 
@@ -87,9 +87,9 @@ Field Type 包括 Attribute Type 和 Association Type 两类：
 - 'hasMany'
 - 'belongsToMany'
 
-### Field Interface
+### フィールドインターフェース
 
-**Basic**
+**基本**
 
 - input
 - textarea
@@ -101,7 +101,7 @@ Field Type 包括 Attribute Type 和 Association Type 两类：
 - password
 - icon
 
-**Choices**
+**選択肢**
 
 - checkbox
 - select
@@ -110,18 +110,18 @@ Field Type 包括 Attribute Type 和 Association Type 两类：
 - checkboxGroup
 - chinaRegion
 
-**Media**
+**メディア**
 
 - attachment
 - markdown
 - richText
 
-**Date & Time**
+**日付と時間**
 
 - datetime
 - time
 
-**Relation**
+**関係**
 
 - linkTo - `type: 'belongsToMany'`
 - oho - `type: 'hasOne'`
@@ -130,15 +130,16 @@ Field Type 包括 Attribute Type 和 Association Type 两类：
 - m2o - `type: 'belongsTo'`
 - m2m - `type: 'belongsToMany'`
 
-**Advanced**
+**高度な機能**
 
 - formula
 - sequence
 
-**System info**
+**システム情報**
 
 - id
 - createdAt
 - createdBy
 - updatedAt
 - updatedBy
+

@@ -1,23 +1,23 @@
-# SchemaInitializer 初始化器
+# SchemaInitializer 初期化器
 
-当激活 UI 配置之后，界面上直观可见的各种橙色按钮就是 Schema 初始化器，用于向界面内添加各种区块、字段、操作等。
+UI 設定がアクティブ化されると、インターフェース上に直感的に見える様々なオレンジ色のボタンが Schema 初期化器となり、インターフェース内に様々なブロック、フィールド、操作などを追加するために使用されます。
 
 <img src="./image-5.png" style="width: 960px;">
 
-## 内置的初始化器
+## 内蔵の初期化器
 
 <img src="./image-3.png" style="width: 960px;"/>
 
-## 向已有的初始化器里添加项
+## 既存の初期化器に項目を追加する
 
-推荐使用 [`schemaInitializerManager.addItem()`](#) 方法添加项，item 的详细配置参考 [SchemaInitializer Item API](#)
+項目を追加するには、[`schemaInitializerManager.addItem()`](#) メソッドの使用を推奨します。項目の詳細な設定については [SchemaInitializer Item API](#) を参照してください。
 
 ```ts
 class PluginDemoAddSchemaInitializerItem extends Plugin {
   async load() {
     this.schemaInitializerManager.addItem(
-      'myInitializer', // 示例，已存在的 schema initializer
-      'otherBlocks.custom', // 向 otherBlocks 分组内添加 custom
+      'myInitializer', // 例：既存の schema initializer
+      'otherBlocks.custom', // otherBlocks グループに custom を追加
       {
         type: 'item',
         useComponentProps() {},
@@ -27,22 +27,20 @@ class PluginDemoAddSchemaInitializerItem extends Plugin {
 }
 ```
 
-<!-- <code src="./demos/schema-initializer-manager-add-item/index.tsx"></code> -->
+## 新しい初期化器を追加する
 
-## 添加新的初始化器
-
-SchemaInitializer 的详细参数参考 [SchemaInitializerOptions API](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer#new-schemainitializeroptions)
+SchemaInitializer の詳細なパラメータについては [SchemaInitializerOptions API](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer#new-schemainitializeroptions) を参照してください。
 
 ```ts
 const myInitializer = new SchemaInitializer({
-  // 初始化器标识，全局唯一
+  // 初期化器識別子、グローバルにユニーク
   name: 'myInitializer',
-  title: 'Add Block',
-  // 包装，例如插入到 Grid 里，需要用 Grid.wrap 处理（添加行列标签）
+  title: 'ブロックを追加',
+  // ラップ、例えば Grid に挿入する場合は Grid.wrap を使用（行列ラベルを追加）
   wrap: Grid.wrap,
-  // 插入位置，默认为 beforeEnd，支持 'beforeBegin' | 'afterBegin' | 'beforeEnd' | 'afterEnd'
+  // 挿入位置、デフォルトは beforeEnd、'beforeBegin' | 'afterBegin' | 'beforeEnd' | 'afterEnd' がサポート
   insertPosition: 'beforeEnd',
-  // 下拉菜单项
+  // ドロップダウンメニュー項目
   items: [
     {
       name: 'a',
@@ -53,16 +51,16 @@ const myInitializer = new SchemaInitializer({
 });
 ```
 
-### 在插件的 load 方法中注册
+### プラグインの load メソッド内で登録する
 
-推荐使用 `schemaInitializerManager.add()` 将新增的初始化器添加到应用里
+新しい初期化器をアプリに追加するには `schemaInitializerManager.add()` の使用を推奨します。
 
 ```ts
 class PluginDemoAddSchemaInitializer extends Plugin {
   async load() {
     const myInitializer = new SchemaInitializer({
       name: 'myInitializer',
-      title: 'Add block',
+      title: 'ブロックを追加',
       wrap: Grid.wrap,
       items: [
         {
@@ -71,13 +69,13 @@ class PluginDemoAddSchemaInitializer extends Plugin {
           useComponentProps() {
             const { insert } = useSchemaInitializer();
             return {
-              title: 'Hello',
+              title: 'こんにちは',
               onClick: () => {
                 insert({
                   type: 'void',
                   'x-decorator': 'CardItem',
                   'x-component': 'h1',
-                  'x-content': 'Hello, world!',
+                  'x-content': 'こんにちは、世界！',
                 });
               },
             };
@@ -90,13 +88,13 @@ class PluginDemoAddSchemaInitializer extends Plugin {
 }
 ```
 
-### 如何使用新添加的初始化器
+### 追加した初期化器の使用方法
 
-SchemaInitializer 用于 Schema 的 `x-initializer` 参数中。
+SchemaInitializer は Schema の `x-initializer` パラメータで使用されます。
 
-#### 现有支持 `x-initializer` 的 Schema 组件
+#### 既存の `x-initializer` をサポートする Schema コンポーネント
 
-通用的支持 `x-initializer` 的 Schema 组件有 Grid、ActionBar、Tabs，例如：
+一般的に `x-initializer` をサポートする Schema コンポーネントには Grid、ActionBar、Tabs があります。例えば：
 
 ```ts
 {
@@ -106,15 +104,12 @@ SchemaInitializer 用于 Schema 的 `x-initializer` 参数中。
 }
 ```
 
-<code src="./demos/schema-initializer-manager-add/index.tsx"></code>
+#### カスタムコンポーネントが `x-initializer` パラメータをサポートする方法
 
-#### 自定义组件如何支持 `x-initializer` 参数
-
-如果 Grid、ActionBar、Tabs 这类组件并不满足需求，自定义的组件中，也可以使用 [useSchemaInitializerRender()](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer#useschemainitializerrender) 处理 `x-initializer` 的渲染。
-
-<code src="./demos/use-schema-initializer-render/index.tsx"></code>
+Grid、ActionBar、Tabs などのコンポーネントがニーズを満たさない場合でも、カスタムコンポーネント内で [useSchemaInitializerRender()](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer#useschemainitializerrender) を使用して `x-initializer` のレンダリングを処理できます。
 
 ## API 参考
 
 - [SchemaInitializerManager](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer-manager)
 - [SchemaInitializer](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer)
+

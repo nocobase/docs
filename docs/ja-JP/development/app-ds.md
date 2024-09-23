@@ -1,19 +1,19 @@
-# 项目目录结构
+# プロジェクトディレクトリ構造
 
-无论是 [Git 源码](/welcome/getting-started/installation/git-clone) 还是 [create-nocobase-app](/welcome/getting-started/installation/create-nocobase-app) 创建的 NocoBase 应用，目录结构都是一样的，结构如下：
+[Git ソースコード](/welcome/getting-started/installation/git-clone) または [create-nocobase-app](/welcome/getting-started/installation/create-nocobase-app) で作成された NocoBase アプリケーションのディレクトリ構造は同じで、以下のようになります：
 
 ```bash
 ├── my-nocobase-app
-  ├── packages        # 开发中的包
-    ├── plugins       # 开发中的插件
-  ├── storage         # 用于存放数据库文件、附件、缓存等
-    ├── backups       # 备份文件目录
-    ├── plugins       # 即插即用的插件（已编译）
-    ├── tar           # yarn build --tar 存放的位置
-    ├── uploads       # 本地存储目录
-  ├── .env            # 环境变量
-  ├── .env.e2e        # e2e 测试的环境变量 yarn e2e test
-  ├── .env.test       # 单元测试的环境变量 yarn test
+  ├── packages        # 開発中のパッケージ
+    ├── plugins       # 開発中のプラグイン
+  ├── storage         # データベースファイル、添付ファイル、キャッシュなどを保存
+    ├── backups       # バックアップファイルのディレクトリ
+    ├── plugins       # プラグイン（コンパイル済み）
+    ├── tar           # yarn build --tar の保存先
+    ├── uploads       # ローカルストレージのディレクトリ
+  ├── .env            # 環境変数
+  ├── .env.e2e        # e2e テスト用の環境変数
+  ├── .env.test       # 単体テスト用の環境変数
   ├── lerna.json
   ├── package.json
   ├── playwright.config.ts
@@ -22,9 +22,9 @@
   ├── vitest.config.mts
 ```
 
-## 插件所在目录
+## プラグインの所在ディレクトリ
 
-开发中的插件存放在 `packages/plugins` 目录下，以 npm packages 的方式组织，示例如下：
+開発中のプラグインは `packages/plugins` ディレクトリに保存され、npm パッケージ形式で構成されています。例は以下の通りです：
 
 ```bash
 |- /packages/
@@ -36,7 +36,7 @@
     |- /my-nocobase-plugin-hello2/
 ```
 
-通过界面添加的插件存放在 `storage/plugins` 目录下，以 npm packages 的方式组织，示例如下：
+インターフェースから追加されたプラグインは `storage/plugins` ディレクトリに保存され、npm パッケージ形式で構成されています。例は以下の通りです：
 
 ```bash
 |- /storage/
@@ -48,7 +48,7 @@
     |- /my-nocobase-plugin-hello2/
 ```
 
-内置的插件或者在 `package.json` 的 `dependencies` 里声明的插件都会在 `node_modules` 里，示例如下：
+内蔵のプラグインや `package.json` の `dependencies` に宣言されているプラグインは `node_modules` にあります。例は以下の通りです：
 
 ```bash
 |- /node_modules/
@@ -57,30 +57,30 @@
     |- /plugin-auth/
 ```
 
-## 插件目录结构
+## プラグインのディレクトリ構造
 
-可以通过 `yarn pm create @my-project/plugin-hello` 快速创建一个空插件，目录结构如下：
+`yarn pm create @my-project/plugin-hello` を使用して空のプラグインを迅速に作成できます。ディレクトリ構造は以下の通りです：
 
 ```bash
 |- /packages/plugins/@my-project/plugin-hello
-|- /dist             # build 产物
-  |- /src              # 插件源码
-    |- /client
-      |- plugin.ts     # 插件类
-      |- index.ts      # 客户端入口
-    |- /locale         # 约定式目录，前后端共享的多语言文件目录
-    |- /swagger        # 约定式目录，swagger 文档
+  |- /dist             # ビルド成果物
+  |- /src
+    |- /client         # プラグインのクライアントコード
+      |- plugin.ts     # プラグインクラス
+      |- index.ts      # クライアントエントリ
+    |- /locale         # 規約ディレクトリ、フロントエンドとバックエンドで共有する多言語ファイルのディレクトリ
+    |- /swagger        # 規約ディレクトリ、Swagger ドキュメント
     |- /server
-      |- collections   # 约定式目录，插件的数据表配置
-      |- commands      # 约定式目录，自定义命令
-      |- migrations    # 约定式目录，迁移文件
-      |- plugin.ts     # 插件类
-      |- index.ts      # 服务端入口
+      |- collections    # 規約ディレクトリ、プラグインのデータベース設定
+      |- commands       # 規約ディレクトリ、カスタムコマンド
+      |- migrations     # 規約ディレクトリ、マイグレーションファイル
+      |- plugin.ts      # プラグインクラス
+      |- index.ts       # サーバーエントリ
     |- index.ts
-  |-.npmignore         # 发布插件包时哪些文件或目录应该被忽略
+  |-.npmignore          # プラグインパッケージを公開する際に無視すべきファイルやディレクトリ
   |- client.d.ts
   |- client.js
-  |- package.json
+  |- package.json       # プラグインパッケージの情報
   |- server.d.ts
   |- server.js
 ```
