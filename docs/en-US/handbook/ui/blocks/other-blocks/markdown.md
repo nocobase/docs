@@ -106,13 +106,13 @@ Return the result when both conditions are true, suitable for multi-condition ev
 {{/if}}
 ```
 
-#### `upperCase / lowerCase`
+#### `uppercase / lowercase`
 
 Convert the string to either all uppercase or all lowercase
 
 ```javascript
-<p>{{lowerCase $user.nickname }}</p>
-<p>{{upperCase $user.nickname }}</p>
+<p>{{lowercase $user.nickname }}</p>
+<p>{{uppercase $user.nickname }}</p>
 
 ```
 
