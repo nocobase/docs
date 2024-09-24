@@ -40,7 +40,7 @@ Handlebars 是一个 JavaScript 模板引擎，支持条件判断（{{#if}}）�
 
 ### 常用helper
 
-More advanced capabilities are implemented through helpers. Below are some commonly used built-in helpers. For more built-in helpers, please refer to
+更多高阶能力通过 helper 实现，以下列举了部分内置的常用 helper， 更多内置 helper 可参考
 <a href="https://www.npmjs.com/package/@budibase/handlebars-helpers#helpers" target="_blank"> Handlebars helpers</a>
 
 #### `dateFormat`
@@ -101,7 +101,7 @@ Date format: {{dateFormat $nDate.now "YYYY-MM-DD HH:mm:ss" "UTC"}}
 返回两个条件都为真时的结果，适合多条件判断。
 
 ```javascript
-{{#if (and condition1 condition2)}}
+{{#if (and $user.email $user.phone)}}
   <p>Both conditions are true</p>
 {{/if}}
 ```
