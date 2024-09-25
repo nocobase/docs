@@ -1071,6 +1071,27 @@ export default [
         link: '/handbook/ui/variables',
       },
       {
+        title: 'Template engines',
+        'title.zh-CN': '模板引擎',
+        children: [
+          {
+            title: 'JSON template',
+            'title.zh-CN': 'JSON 模板',
+            link: '/handbook/template-json',
+          },
+          {
+            title: 'String template',
+            'title.zh-CN': '字符串模板',
+            link: '/handbook/template-string',
+          },
+          {
+            title: 'Handlebars',
+            'title.zh-CN': 'Handlebars',
+            link: '/handbook/template-handlebars',
+          },
+        ],
+      },
+      {
         title: 'Mobile',
         'title.zh-CN': '移动端',
         link: '/handbook/mobile',

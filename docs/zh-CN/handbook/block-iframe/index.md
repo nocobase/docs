@@ -27,23 +27,7 @@ Iframe 区块允许将外部网页或内容嵌入到当前页面中。
 
 ![20240811205239](https://static-docs.nocobase.com/20240811205239.png)
 
-常用方法
-
-| Category       | Description                          |
-|------------|-------------------------------|
-| [Core](/api/handlebars-helpers/core)        | Handlebars 内置的方法        |
-| [Array](/api/handlebars-helpers/array)      | 处理数组相关操作和方法        |
-| [Comparison](/api/handlebars-helpers/comparison) | 比较操作符和相关方法          |
-| [Date](/api/handlebars-helpers/date)       | 与日期和时间处理相关的操作和方法 |
-| [HTML](/api/handlebars-helpers/html)       | 与 HTML 文档和元素操作相关的内容 |
-| [I18n](/api/handlebars-helpers/i18n)       | 国际化支持和多语言处理        |
-| [Math](/api/handlebars-helpers/math)       | 数学函数和计算相关的操作      |
-| [Number](/api/handlebars-helpers/number)   | 数字处理和格式化相关的内容    |
-| [Object](/api/handlebars-helpers/object)   | 对象操作和属性相关的方法      |
-| [Path](/api/handlebars-helpers/path)       | 路径操作和文件系统相关的内容  |
-| [Regex](/api/handlebars-helpers/regex)     | 正则表达式及其使用            |
-| [String](/api/handlebars-helpers/string)   | 字符串处理和操作相关的方法    |
-| [URL](/api/handlebars-helpers/url)         | URL解析和构建相关的内容       |
+更多内容参考 [Handlebars 模板引擎](/handbook/template-handlebars)
 
 ## 传入变量
 
