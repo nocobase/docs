@@ -17,81 +17,33 @@ Iframe 区块允许将外部网页或内容嵌入到当前页面中。
 
 ![20240408220322](https://static-docs.nocobase.com/20240408220322.png)
 
-## 字符串模板
+## 模板引擎
+
+### 字符串模板
 
 默认的模板引擎
-## Handlebars
 
-Handlebars 是一个 JavaScript 模板引擎，支持条件判断（{{#if}}）和循环（{{#each}}）,内置了大量常用 helper 供用户使用（`dateFormat`等），目前暂不支持扩展自定义helper。
-
+### Handlebars
 
 ![20240811205239](https://static-docs.nocobase.com/20240811205239.png)
 
-<a href="https://handlebarsjs.com/guide/builtin-helpers" target="_blank"> Handlebars 语法参考</a>
+常用方法
 
-### 常用helper
-
-#### `dateFormat`
-
-将时间字段格式化（支持时区处理）
-
-```javascript
-{{$nDate.now }}
-Date format: {{dateFormat $nDate.now "YYYY-MM-DD HH:mm:ss"}}
-Date format: {{dateFormat $nDate.now "YYYY-MM-DD HH:mm:ss" "Asia/Tokyo"}}
-Date format: {{dateFormat $nDate.now "YYYY-MM-DD HH:mm:ss" "UTC"}}
-```
-
-#### `isEmpty`
-
-检查给定的数组、对象或字符串是否为空。
-
-```javascript
-{{#isEmpty someArray}}
-  <p>The array is empty</p>
-{{else}}
-  <p>The array is not empty</p>
-{{/isEmpty}}
-```
-
-#### `contains`
-
-检查数组中是否包含指定的元素，用于判断列表中是否有特定值。
-
-#### `gt / lt / gte / lte`
-
-用于比较大小，gt (大于), lt (小于), gte (大于等于), lte (小于等于) 是常用的逻辑比较。
-
-```javascript
-{{#if (gt value1 value2)}}
-  <p>Value1 is greater than Value2</p>
-{{/if}}
-
-{{#if (lt value1 value2)}}
-  <p>Value1 is less than Value2</p>
-{{/if}}
-```
-
-#### `and`
-
-返回两个条件都为真时的结果，适合多条件判断。
-
-```javascript
-{{#if (and condition1 condition2)}}
-  <p>Both conditions are true</p>
-{{/if}}
-```
-
-#### `upperCase / lowerCase`
-
-将字符串转换为全大写或全小写。
-
-```javascript
-<p>{{lowerCase $user.nickname }}</p>
-<p>{{upperCase $user.nickname }}</p>
-
-```
-更多内置 helper 可参考<a href="hhttps://www.npmjs.com/package/@budibase/handlebars-helpers#helpers" target="_blank"> Handlebars helpers</a>
+| Category       | Description                          |
+|------------|-------------------------------|
+| [Core](/api/handlebars-helpers/core)        | Handlebars 内置的方法        |
+| [Array](/api/handlebars-helpers/array)      | 处理数组相关操作和方法        |
+| [Comparison](/api/handlebars-helpers/comparison) | 比较操作符和相关方法          |
+| [Date](/api/handlebars-helpers/date)       | 与日期和时间处理相关的操作和方法 |
+| [HTML](/api/handlebars-helpers/html)       | 与 HTML 文档和元素操作相关的内容 |
+| [I18n](/api/handlebars-helpers/i18n)       | 国际化支持和多语言处理        |
+| [Math](/api/handlebars-helpers/math)       | 数学函数和计算相关的操作      |
+| [Number](/api/handlebars-helpers/number)   | 数字处理和格式化相关的内容    |
+| [Object](/api/handlebars-helpers/object)   | 对象操作和属性相关的方法      |
+| [Path](/api/handlebars-helpers/path)       | 路径操作和文件系统相关的内容  |
+| [Regex](/api/handlebars-helpers/regex)     | 正则表达式及其使用            |
+| [String](/api/handlebars-helpers/string)   | 字符串处理和操作相关的方法    |
+| [URL](/api/handlebars-helpers/url)         | URL解析和构建相关的内容       |
 
 ## 传入变量
 

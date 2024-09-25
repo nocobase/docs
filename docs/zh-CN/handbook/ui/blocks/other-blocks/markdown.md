@@ -14,109 +14,45 @@ Markdown 区块无需绑定数据源使用，使用 Markdown 语法定义文本�
 
 ![20240612205215](https://static-docs.nocobase.com/20240612205215.png)
 
-## 字符串模板
+## 模板引擎
+
+### 字符串模板
 
 ![20240817175031](https://static-docs.nocobase.com/20240817175031.png)
 
-## Handlebars
-
-Handlebars 是一个 JavaScript 模板引擎，支持条件判断（{{#if}}）和循环（{{#each}}）,内置了大量常用 helper 供用户使用（`dateFormat`等），目前暂不支持扩展自定义helper。
+### Handlebars
 
 ![20240817175355](https://static-docs.nocobase.com/20240817175355.png)
 
 ![20240817175501](https://static-docs.nocobase.com/20240817175501.png)
 
-```javascript
-<h3>current role is : {{$nRole}}</h3>
- role list is
-<ul>
- {{#each $user.roles}}
-   <li>{{this.name}}</li>
-  {{/each}}
- </ul>
-```
+常用方法
 
-<a href="https://handlebarsjs.com/guide/builtin-helpers" target="_blank"> Handlebars 语法参考</a>
+| Category       | Description                          |
+|------------|-------------------------------|
+| [Core](/api/handlebars-helpers/core)        | Handlebars 内置的方法        |
+| [Array](/api/handlebars-helpers/array)      | 处理数组相关操作和方法        |
+| [Comparison](/api/handlebars-helpers/comparison) | 比较操作符和相关方法          |
+| [Date](/api/handlebars-helpers/date)       | 与日期和时间处理相关的操作和方法 |
+| [HTML](/api/handlebars-helpers/html)       | 与 HTML 文档和元素操作相关的内容 |
+| [I18n](/api/handlebars-helpers/i18n)       | 国际化支持和多语言处理        |
+| [Math](/api/handlebars-helpers/math)       | 数学函数和计算相关的操作      |
+| [Number](/api/handlebars-helpers/number)   | 数字处理和格式化相关的内容    |
+| [Object](/api/handlebars-helpers/object)   | 对象操作和属性相关的方法      |
+| [Path](/api/handlebars-helpers/path)       | 路径操作和文件系统相关的内容  |
+| [Regex](/api/handlebars-helpers/regex)     | 正则表达式及其使用            |
+| [String](/api/handlebars-helpers/string)   | 字符串处理和操作相关的方法    |
+| [URL](/api/handlebars-helpers/url)         | URL解析和构建相关的内容       |
 
-### 常用helper
+## 使用变量
 
-更多高阶能力通过 helper 实现，以下列举了部分内置的常用 helper， 更多内置 helper 可参考
-<a href="https://www.npmjs.com/package/@budibase/handlebars-helpers#helpers" target="_blank"> Handlebars helpers</a>
+Markdown 的文本里也支持使用变量
 
-#### `dateFormat`
+![20240612205857](https://static-docs.nocobase.com/20240612205857.png)
 
-将时间字段格式化（支持时区处理）
+区块内联的 Markdown 也支持变量
 
-![20240914125432](https://static-docs.nocobase.com/20240914125432.png)
-
-```javascript
-{{$nDate.now }}
-Date format: {{dateFormat $nDate.now "YYYY-MM-DD HH:mm:ss"}}
-Date format: {{dateFormat $nDate.now "YYYY-MM-DD HH:mm:ss" "Asia/Tokyo"}}
-Date format: {{dateFormat $nDate.now "YYYY-MM-DD HH:mm:ss" "UTC"}}
-```
-
-#### `isEmpty`
-
-检查给定的数组、对象或字符串是否为空。
-
-![20240914132524](https://static-docs.nocobase.com/20240914132524.png)
-
-```javascript
-{{#isEmpty $user.roles}}
-  <p>The roles is empty</p>
-{{else}}
-  <p>The roles is not empty</p>
-{{/isEmpty}}
-```
-
-#### `contains`
-
-检查数组中是否包含指定的元素，用于判断列表中是否有特定值。
-
-```javascript
-{{#contains $user.username  "nocobase" }}
-  This is message for nocobase 
-{{else}}
-  This is message for other
-{{/contains}}
-```
-
-#### `gt / lt / gte / lte`
-
-用于比较大小，gt (大于), lt (小于), gte (大于等于), lte (小于等于) 是常用的逻辑比较。
-
-```javascript
-{{#if (gt $user.number1 $user.number2)}}
-  <p>number1 is greater than number2</p>
-{{/if}}
-
-{{#if (lt $user.number1 $user.number2)}}
-  <p>number1 is less than number2</p>
-{{/if}}
-```
-
-#### `and`
-
-返回两个条件都为真时的结果，适合多条件判断。
-
-```javascript
-{{#if (and $user.email $user.phone)}}
-  <p>Both conditions are true</p>
-{{/if}}
-```
-
-#### `uppercase / lowercase`
-
-将字符串转换为全大写或全小写。
-
-```javascript
-<p>{{lowercase $user.nickname }}</p>
-<p>{{uppercase $user.nickname }}</p>
-
-```
-
-### 补充说明
+![20240612210333](https://static-docs.nocobase.com/20240612210333.png)
 
 变量中使用关系对多的关系数据时，由于不同模板支持语法不同,在使用数组型数据变量时需要区分不同的写法。
 如用户/角色（一对多）
@@ -138,16 +74,6 @@ Date format: {{dateFormat $nDate.now "YYYY-MM-DD HH:mm:ss" "UTC"}}
 ![20240909155720](https://static-docs.nocobase.com/20240909155720.png)
 
 更多变量的介绍查看 [配置界面 / 变量](/handbook/ui/variables) 章节
-
-## 使用变量
-
-Markdown 的文本里也支持使用变量
-
-![20240612205857](https://static-docs.nocobase.com/20240612205857.png)
-
-区块内联的 Markdown 也支持变量
-
-![20240612210333](https://static-docs.nocobase.com/20240612210333.png)
 
 ## 二维码
 

@@ -1,4 +1,3 @@
-
 # Comparison
 
 ## {{and}}
@@ -122,6 +121,28 @@ If an inverse block is specified it will be rendered when falsy.
 * `pattern` **{any}**: The pattern to check for.
 * `options` **{Object}**: Handlebars provided options object
 * `returns` **{String}**
+
+## {{isEmpty}}
+
+Inline, subexpression, or block helper that returns true (or the block) if the given collection is empty, or false (or the inverse block, if supplied) if the colleciton is not empty.
+
+**Params**
+
+* `collection` **{Object}**
+* `options` **{Object}**
+* `returns` **{String}**
+
+**Example**
+
+```handlebars
+<!-- array: [] -->
+{{#isEmpty array}}AAA{{else}}BBB{{/isEmpty}}
+<!-- results in: 'AAA' -->
+
+<!-- array: [] -->
+{{isEmpty array}}
+<!-- results in: true -->
+```
 
 ## {{isFalsey}}
 

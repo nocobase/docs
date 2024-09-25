@@ -2,6 +2,8 @@
 
 ## {{dateFormat}}
 
+The "dateFormat" helper in Handlebars is used to format a date using the day.js library. It takes two required arguments and an optional third argument for the timezone.
+
 **Params**
 
 * `datetime` **{String}**

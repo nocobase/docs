@@ -1,9 +1,11 @@
 # Handlebars Helpers
 
-| Helpers       | Description                          |
+| Category       | Description                          |
 |------------|-------------------------------|
+| [Core](./core.md)      | Handlebars 内置的方法        |
 | [Array](./array.md)      | 处理数组相关操作和方法        |
 | [Comparison](./comparison.md) | 比较操作符和相关方法          |
+| [Date](./date.md)       | 与日期和时间处理相关的操作和方法 |
 | [HTML](./html.md)       | 与 HTML 文档和元素操作相关的内容 |
 | [I18n](./i18n.md)       | 国际化支持和多语言处理        |
 | [Math](./math.md)       | 数学函数和计算相关的操作      |

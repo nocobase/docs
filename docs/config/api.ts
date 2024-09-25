@@ -74,6 +74,7 @@ export default [
         'title.zh-CN': '概述',
         link: '/api/handlebars-helpers',
       },
+      '/api/handlebars-helpers/core',
       '/api/handlebars-helpers/array',
       '/api/handlebars-helpers/comparison',
       '/api/handlebars-helpers/date',

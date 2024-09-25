@@ -2,8 +2,10 @@
 
 | Category       | Description                         |
 |-------------|-------------------------------------|
+| [Core](./core.md)      | Built-in helpers        |
 | [Array](./array.md)       | Operations and methods related to arrays       |
 | [Comparison](./comparison.md) | Comparison operators and related methods       |
+| [Date](./date.md)        | Operations and methods related to date and time handling |
 | [HTML](./html.md)        | Content related to HTML documents and elements  |
 | [I18n](./i18n.md)        | Support for internationalization and multilingual handling |
 | [Math](./math.md)        | Mathematical functions and calculations       |
