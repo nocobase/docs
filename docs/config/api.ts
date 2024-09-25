@@ -66,6 +66,28 @@ export default [
     ],
   },
   {
+    title: '@nocobase/handlebars-helpers',
+    link: '/api/handlebars-helpers',
+    children: [
+      {
+        title: 'Overview',
+        'title.zh-CN': '概述',
+        link: '/api/handlebars-helpers',
+      },
+      '/api/handlebars-helpers/array',
+      '/api/handlebars-helpers/comparison',
+      '/api/handlebars-helpers/date',
+      '/api/handlebars-helpers/i18n',
+      '/api/handlebars-helpers/math',
+      '/api/handlebars-helpers/number',
+      '/api/handlebars-helpers/object',
+      '/api/handlebars-helpers/path',
+      '/api/handlebars-helpers/regex',
+      '/api/handlebars-helpers/string',
+      '/api/handlebars-helpers/url',
+    ],
+  },
+  {
     title: '@nocobase/logger',
     link: '/api/logger',
   },
