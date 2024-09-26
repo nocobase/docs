@@ -82,8 +82,8 @@ const context = {
 你可以在模板中执行简单的数学运算：
 
 ```handlebars
-{{math 4 "+" 5}}  <!-- 输出: 9 -->
-{{math 10 "-" 3}} <!-- 输出: 7 -->
+{{add 4 5}}  <!-- 输出: 9 -->
+{{minus 10 3}} <!-- 输出: 7 -->
 ```
 
 更多内容参考
@@ -92,8 +92,10 @@ const context = {
 ### 字符串处理
 
 ```handlebars
-<p>{{upper "hello world"}}</p>  <!-- 输出: HELLO WORLD -->
-<p>{{concat "Hello," " " "World!"}}</p>  <!-- 输出: Hello, World! -->
+{{uppercase "hello world"}}
+<!-- results in:  HELLO WORLD -->
+{{ellipsis "foo bar baz", 7}}
+<!-- results in:  'foo bar…' -->
 ```
 
 更多内容参考
