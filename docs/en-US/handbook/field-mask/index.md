@@ -44,8 +44,8 @@ Custom rules follow these conventions:
 
 Examples:
 - `a*a*a*` will mask `123456` as  `1*3*5*`
-- `a****a` will mask `123456789` as `1**9`
-- `33***333` will mask `asdfghjkl` as `as***kl`
+- `a****a` will mask `123456789` as `1****9`
+- `ab***abc` will mask `asdfghjkl` as `as***jkl`
 
 ## Example
 
