@@ -425,6 +425,11 @@ export default [
                 'title.zh-CN': '加密',
                 link: '/handbook/field-encryption',
               },
+              {
+                title: 'Mask',
+                'title.zh-CN': '掩码',
+                link: '/handbook/field-mask',
+              },
             ],
           },
           {
