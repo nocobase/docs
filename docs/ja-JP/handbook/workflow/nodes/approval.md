@@ -1,9 +1,10 @@
-# 审批
+# 承認
 
 <PluginInfo commercial="true" name="workflow-approval" link="/handbook/workflow-approval"></PluginInfo>
 
 <embed src="../../workflow-approval/node.md#L3-L999"></embed>
 
-## 相关内容
+## 関連情報
 
-除节点配置外，审批还有一些相关的内容可以通过 [插件文档](../../workflow-approval/index.md) 进一步了解。
+ノード設定に加え、承認に関する関連情報については、[プラグインドキュメント](../../workflow-approval/index.md)をご参照ください。
+

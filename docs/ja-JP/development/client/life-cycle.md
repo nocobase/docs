@@ -1,8 +1,8 @@
-# 插件的生命周期
+# プラグインのライフサイクル
 
-## 生命周期
+## ライフサイクル
 
-以下是 `Plugin` 类的定义，我们看到它提供了三个生命周期方法 `afterAdd`、`beforeLoad`、`load`。
+以下は `Plugin` クラスの定義であり、3つのライフサイクルメソッド `afterAdd`、`beforeLoad`、`load` を提供しています。
 
 ```typescript
 export class Plugin<T = <em>any</em>> {
@@ -21,16 +21,16 @@ export class Plugin<T = <em>any</em>> {
 
 ### `afterAdd`
 
-- 调用时机：插件被添加并实例化后立即调用
-- 作用：用于加载其他插件
+- **呼び出しタイミング**：プラグインが追加され、インスタンス化された後に即座に呼び出されます。
+- **役割**：他のプラグインをロードするために使用されます。
 
 ```typescript
 class Demo1Plugin extends Plugin {}
 class Demo2Plugin extends Plugin {}
 
 class MyPlugin extends Plugin {
-  async afterrAdd() {
-    // 加载其他插件
+  async afterAdd() {
+    // 他のプラグインをロードする
     this.app.pluginManager.add(Demo1Plugin);
     this.app.pluginManager.add(Demo2Plugin);
   }
@@ -41,24 +41,24 @@ export default MyPlugin;
 
 ### `beforeLoad`
 
-- 调用时机：在全部插件被添加后，但执行 load 前
-- 用于：用于处理在之前 `load` 之前的一些特殊逻辑
+- **呼び出しタイミング**：すべてのプラグインが追加された後、`load` を実行する前に呼び出されます。
+- **用途**：`load` の前に特定のロジックを処理するために使用されます。
 
 ### `load`
 
-- 调用时机：全部插件执行完 `beforeLoad` 后
-- 作用：大多数对 app 实例的操作和方法的调用都应在此声明周期内
+- **呼び出しタイミング**：すべてのプラグインが `beforeLoad` を実行した後に呼び出されます。
+- **役割**：アプリインスタンスに対するほとんどの操作やメソッドの呼び出しは、このライフサイクル内で宣言されるべきです。
 
 ```typescript
 class MyPlugin extends Plugin {
   async load() {
-    // 添加路由
+    // ルーティングの追加
     this.app.router.add();
 
-    // 添加全局组件
+    // グローバルコンポーネントの追加
     this.app.addComponents({});
 
-    //  添加插件配置页
+    // プラグイン設定ページの追加
     this.app.pluginSettingsManager({});
 
     // ...
@@ -68,62 +68,63 @@ class MyPlugin extends Plugin {
 export default MyPlugin;
 ```
 
-整体执行流程为：
+全体の実行フローは以下の通りです：
 
-`app.mount()/app.getRootComponent()` -> `pluginList.forEach(plugin.afterAdd)`-> `pluginList.forEach(plugin.beforeLoad)`-> `pluginList.forEach(plugin.load)`
+`app.mount()/app.getRootComponent()` -> `pluginList.forEach(plugin.afterAdd)` -> `pluginList.forEach(plugin.beforeLoad)` -> `pluginList.forEach(plugin.load)`
 
-同一个类型的生命周期，插件列表的执行并无先后顺序。
+同じタイプのライフサイクルでは、プラグインリストの実行において先後の順序はありません。
 
-## 插件管理器
+## プラグインマネージャー
 
-- 作用：对插件进行增删改查
-- 场景：当插件有拆分和聚合需求时
-- 实例方法：app.pluginManager
-- API 详细介绍：[插件管理](https://www.baidu.com)
+- **役割**：プラグインの追加、削除、変更、検索を行います。
+- **シナリオ**：プラグインの分割や統合が必要な場合。
+- **インスタンスメソッド**：app.pluginManager
+- **API 詳細紹介**：[プラグイン管理](https://www.baidu.com)
 
-### 获取插件
+### プラグインの取得
 
-我们可以通过 `app.pluginManager.get` 获取对应插件的实例，并修改插件实例属性或者调用实例上的方法。
+`app.pluginManager.get` を使用して、対応するプラグインのインスタンスを取得し、プラグインインスタンスの属性を変更したり、インスタンスのメソッドを呼び出すことができます。
 
 ```typescript
 import { DemoPlugin } from 'my-demo-plugin';
 
 class MyPlugin extends Plugin {
   async load() {
-    // 通过 Class 类获取实例
+    // クラスからインスタンスを取得
     const demoPluginInstance = this.pm.get(DemoPlugin);
 
-    // 如果 add 时传递了 name，则可以通过 name 字符串获取
-    const demoPluginInstance = this.pm.get('DemoPlugin');
+    // add 時に name を渡した場合、name 文字列から取得可能
+    const demoPluginInstanceByName = this.pm.get('DemoPlugin');
 
-    // 对实例进行处理 ...
+    // インスタンスを処理 ...
   }
 }
 ```
 
-如果需要在组件内获取，可以使用 `usePlugin()` 获取。
+コンポーネント内で取得する必要がある場合は、`usePlugin()` を使用して取得できます。
 
 ```typescript
 import { usePlugin } from '@nocobase/client';
 const Demo = () => {
-  const myPlugin = usePlugin(MyPlugin); // 通过 Class 类获取实例
+  const myPlugin = usePlugin(MyPlugin); // クラスからインスタンスを取得
 
-  const myPlugin = usePlugin('MyPlugin'); // 通过 name 获取实例
+  const myPluginByName = usePlugin('MyPlugin'); // name からインスタンスを取得
 };
 ```
 
-### 添加插件
+### プラグインの追加
 
-添加插件，我们可以直接添加，也可以传递第二个参数，`name` 方面其他插件获取。
+プラグインを追加する際、直接追加することも、2番目の引数として `name` を渡して他のプラグインが取得できるようにすることも可能です。
 
-大部分情况下是不需要了解这个能力的，除非要进行将一个插件拆成几个。
+大部分の場合、この機能を理解する必要はありませんが、プラグインをいくつかに分割する場合を除きます。
 
 ```typescript
 class MyPlugin extends Plugin {
-  // 注意要在 afterrAdd 生命周期内
-  async afterrAdd() {
+  // 注意：afterAdd ライフサイクル内で実行する必要があります
+  async afterAdd() {
     this.app.pluginManager.add(DemoPlugin);
     this.app.pluginManager.add(DemoPlugin, { name: 'DemoPlugin' });
   }
 }
 ```
+

@@ -1,14 +1,14 @@
-# 测试
+# テスト
 
-测试基于 [Jest](https://jestjs.io/) 测试框架。为了方便的编写测试，提供了 `mockDatabase()` 和 `mockServer()` 用于数据库和服务端应用的测试。
+テストは [Jest](https://jestjs.io/) テストフレームワークに基づいています。テストを簡単に作成するために、`mockDatabase()` と `mockServer()` を提供して、データベースとサーバーアプリケーションのテストを行います。
 
 :::warning
-测试的环境变量在 `.env.test` 文件里配置，建议使用独立的测试数据库进行测试。
+テストの環境変数は `.env.test` ファイルに設定されており、独立したテストデータベースの使用をお勧めします。
 :::
 
 ## `mockDatabase()`
 
-默认提供一种完全隔离的 db 测试环境
+完全に隔離されたデータベーステスト環境をデフォルトで提供します。
 
 ```ts
 import { mockDatabase } from '@nocobase/test';
@@ -49,12 +49,12 @@ describe('my db suite', () => {
 
 ## `mockServer()`
 
-提供模拟的服务端应用实例，对应的 app.db 为 `mockDatabase()` 实例，同时还提供了便捷的 `app.agent()` 用于测试 HTTP API，针对 NocoBase 的 Resource Action 还封装了 `app.agent().resource()` 用于测试资源的 Action。
+モックサーバーアプリケーションのインスタンスを提供し、対応する `app.db` は `mockDatabase()` インスタンスであり、HTTP API テスト用の便利な `app.agent()` も提供されます。NocoBase のリソースアクションに対しては、リソースのアクションをテストするために `app.agent().resource()` がラップされています。
 
 ```ts
 import { MockServer, mockServer } from '@nocobase/test';
 
-// 每个插件的 app 最小化安装的插件都不一样，需要插件根据自己的情况添加必备插件
+// 各プラグインの最小限のインストールに必要なプラグインは異なるため、プラグインは自身の状況に応じて必須プラグインを追加してください。
 async function createApp(options: any = {}) {
   const app = mockServer({
     ...options,
@@ -65,17 +65,17 @@ async function createApp(options: any = {}) {
       'error-handler',
       ...options.plugins,
     ],
-    // 还会有些其他参数配置
+    // その他の設定パラメータも存在します。
   });
-  // 这里可以补充一些需要特殊处理的逻辑，比如导入测试需要的数据表
+  // 特別な処理が必要なロジックを追加できます。例えば、テストに必要なデータテーブルをインポートするなど。
   return app;
 }
 
-// 大部分的测试都需要启动应用，所以也可以提供一个通用的启动方法
+// 大半のテストではアプリを起動する必要があるため、一般的な起動方法を提供することもできます。
 async function startApp() {
-  const app = createApp();
+  const app = await createApp();
   await app.quickstart({
-    // 运行测试前，清空数据库
+    // テスト実行前にデータベースをクリアします。
     clean: true,
   });
   return app;
@@ -89,32 +89,32 @@ describe('test example', () => {
   });
 
   afterEach(async () => {
-    // 运行测试后，清空数据库
+    // テスト実行後にデータベースをクリアします。
     await app.destroy();
-    // 只停止不清空数据库
+    // 停止するだけでデータベースはクリアしません。
     await app.stop();
   });
 
   test('case1', async () => {
-    // coding...
+    // コーディング...
   });
 });
 ```
 
-## 常用的应用流程
+## よく使うアプリの流れ
 
-如果需要测试不同流程的情况，可以根据以下示例执行相关命令。
+異なるフローをテストする必要がある場合は、以下の例に従って関連コマンドを実行できます。
 
-### 先安装再启动
+### 先にインストールしてから起動
 
-终端命令行
+ターミナルコマンド
 
 ```bash
 yarn nocobase install
 yarn start
 ```
 
-前置的测试流程
+前提となるテストフロー
 
 ```ts
 const app = mockServer();
@@ -122,17 +122,17 @@ await app.runCommand('install');
 await app.runCommand('start');
 ```
 
-### 先启动再安装
+### 先に起動してからインストール
 
-终端命令行
+ターミナルコマンド
 
 ```bash
-yarn start # 常驻内存
-# 另一个终端里执行
+yarn start # メモリに常駐
+# 別のターミナルで実行
 yarn nocobase install
 ```
 
-前置的测试流程
+前提となるテストフロー
 
 ```ts
 const app = mockServer();
@@ -140,32 +140,32 @@ await app.runCommand('start');
 await app.runCommand('install');
 ```
 
-### 快速启动（自动安装或升级）
+### クイックスタート（自動インストールまたはアップグレード）
 
-终端命令行
+ターミナルコマンド
 
 ```bash
 yarn start --quickstart
 ```
 
-前置的测试流程
+前提となるテストフロー
 
 ```ts
 const app = mockServer();
 await app.runCommand('start', '--quickstart');
 ```
 
-### 对已安装启动的应用进行重装
+### 既にインストールされたアプリを再インストール
 
-终端命令行
+ターミナルコマンド
 
 ```bash
 yarn start --quickstart
-# 另一个终端里执行
+# 別のターミナルで実行
 yarn nocobase install -f
 ```
 
-前置的测试流程
+前提となるテストフロー
 
 ```ts
 const app = mockServer();
@@ -173,16 +173,16 @@ await app.runCommand('start', '--quickstart');
 await app.runCommand('install', '-f');
 ```
 
-### 升级应用（启动前）
+### アプリをアップグレード（起動前）
 
-终端命令行
+ターミナルコマンド
 
 ```bash
 yarn nocobase upgrade
 yarn start
 ```
 
-前置的测试流程
+前提となるテストフロー
 
 ```ts
 const app = mockServer();
@@ -190,15 +190,15 @@ await app.runCommand('upgrade', '-f');
 await app.runCommand('start', '--quickstart');
 ```
 
-### 升级应用（启动后）
+### アプリをアップグレード（起動後）
 
 ```bash
-yarn start # 常驻内存
-# 另一个终端里执行
+yarn start # メモリに常駐
+# 別のターミナルで実行
 yarn nocobase upgrade
 ```
 
-前置的测试流程
+前提となるテストフロー
 
 ```ts
 const app = mockServer();
@@ -206,16 +206,16 @@ await app.runCommand('start', '--quickstart');
 await app.runCommand('upgrade', '-f');
 ```
 
-### 激活插件
+### プラグインの有効化
 
-终端命令行
+ターミナルコマンドライン
 
 ```bash
 yarn start --quickstart
 yarn pm enable @my-project/plugin-hello
 ```
 
-前置的测试流程
+前提となるテストフロー
 
 ```ts
 const app = mockServer();
@@ -223,19 +223,20 @@ await app.runCommand('start', '--quickstart');
 await app.runCommand('pm', 'enable', '@my-project/plugin-hello');
 ```
 
-### 禁用插件
+### プラグインの無効化
 
-终端命令行
+ターミナルコマンドライン
 
 ```bash
 yarn start --quickstart
 yarn pm disable @my-project/plugin-hello
 ```
 
-前置的测试流程
+前提となるテストフロー
 
 ```ts
 const app = mockServer();
 await app.runCommand('start', '--quickstart');
 await app.runCommand('pm', 'disable', '@my-project/plugin-hello');
 ```
+

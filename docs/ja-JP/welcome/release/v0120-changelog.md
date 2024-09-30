@@ -1,39 +1,39 @@
 # v0.12：2023-08-02
 
-## 新特性
+## 新機能
 
-- 全新的插件构建工具。构建好的插件将可以直接在生产环境上使用，无需二次构建。
+- 完全に新しいプラグインビルドツールが追加されました。ビルドされたプラグインは、二次ビルドなしで直接本番環境で使用可能です。
 
-## 应用升级
+## アプリのアップグレード
 
-### Docker 安装的升级
+### Docker インストールのアップグレード
 
-无变化，升级参考 [Docker 镜像升级指南](/welcome/getting-started/upgrading/docker-compose)
+変更はありません。アップグレードの詳細については、[Docker イメージアップグレードガイド](/welcome/getting-started/upgrading/docker-compose)をご参照ください。
 
-### 源码安装的升级
+### ソースコードインストールのアップグレード
 
-插件构建工具已全新升级，在拉取新源码之后，需要清除缓存。
+プラグインビルドツールが全面的にアップグレードされました。新しいソースコードを取得した後は、キャッシュをクリアする必要があります。
 
 ```bash
-git pull # 拉取新源码
-yarn clean # 清除缓存
+git pull # 新しいソースコードを取得
+yarn clean # キャッシュをクリア
 ```
 
-更多详情参考 [Git 源码升级指南](/welcome/getting-started/upgrading/git-clone)
+詳細については、[Git ソースコードアップグレードガイド](/welcome/getting-started/upgrading/git-clone)をご参照ください。
 
-### create-nocobase-app 安装的升级
+### create-nocobase-app インストールのアップグレード
 
-通过 `yarn create` 重新下载新版本，再更新 .env 配置，更多详情参考 [大版本升级指南](/welcome/getting-started/upgrading/create-nocobase-app#大版本升级)
+`yarn create` を使用して新しいバージョンを再ダウンロードし、.env 設定を更新してください。詳細については、[メジャーバージョンアップグレードガイド](/welcome/getting-started/upgrading/create-nocobase-app#大版本升级)をご参照ください。
 
-## 不兼容的变化
+## 非互換の変更
 
-### @nocobase/app-client 和 @nocobase/app-server 合并为 @nocobase-app
+### @nocobase/app-client と @nocobase/app-server の @nocobase-app への統合
 
-通过 create-nocobase-app 安装的应用不再有 packages/app 目录了，在 packages/app 里自定义的代码，需要移至自定义插件中。
+create-nocobase-app でインストールされたアプリには、もはや packages/app ディレクトリは存在しません。packages/app 内でカスタマイズされたコードは、カスタムプラグインに移行する必要があります。
 
-### app 的 dist/client 路径变更
+### app の dist/client パス変更
 
-如果是自己配置的 nginx，需要做类似调整
+自分で設定した nginx がある場合、以下のように調整してください。
 
 ```diff
 server {
@@ -53,13 +53,13 @@ server {
 }
 ```
 
-### 第三方插件需要重新构建
+### サードパーティプラグインの再構築が必要です
 
-参考下文的第三方插件升级指南
+以下のサードパーティプラグインのアップグレードガイドをご参照ください。
 
-## 第三方插件升级指南
+## サードパーティプラグインアップグレードガイド
 
-### 插件目录必须同时有 `src/client` 和 `src/server` 目录
+### プラグインディレクトリには `src/client` と `src/server` ディレクトリが必要です
 
 ```js
 // src/client/index.ts
@@ -87,18 +87,18 @@ class MyPlugin extends Plugin {
 export default MyPlugin;
 ```
 
-具体 Demo 代码可以参考：[sample-hello](https://github.com/nocobase/nocobase/tree/main/packages/samples/hello)
+具体的なデモコードについては、[sample-hello](https://github.com/nocobase/nocobase/tree/main/packages/samples/hello)をご参照ください。
 
-### 插件的多语言放置 `src/locale` 目录
+### プラグインの多言語配置は `src/locale` ディレクトリに
 
-无论前后端，多语言翻译文件都统一放在 `src/locale` 目录，插件无需自己加载多语言包。
+フロントエンドとバックエンドの両方の多言語翻訳ファイルは、統一して `src/locale` ディレクトリに配置してください。プラグインは自分で多言語パッケージをロードする必要はありません。
 
-### 插件依赖的调整
+### プラグイン依存関係の調整
 
-插件的依赖分为自身的依赖和全局依赖，全局依赖直接使用全局，不会打包到插件产物中，自身的依赖会被打包到产物中。插件构建之后，生产环境即插即用，无需再安装依赖或二次构建。插件依赖的调整包括：
+プラグインの依存関係は、自身の依存関係とグローバル依存関係に分かれます。グローバル依存関係は直接使用され、プラグインの成果物にはパッケージされません。一方、自身の依存関係は成果物にパッケージされます。プラグインが構築された後、プロダクション環境では即座に使用でき、依存関係の再インストールや二次構築は不要です。プラグイン依存関係の調整は以下の通りです。
 
-- 将 `@nocobase/*` 相关包放到 `peerDependencies` 里，并指定版本号为 `0.x`；
-- 其他依赖放到 `devDependencies` 里，不要放 `dependencies` 里，因为插件打包之后会将生产环境所需依赖全部提取了。
+- `@nocobase/*` 関連のパッケージを `peerDependencies` に配置し、バージョン番号を `0.x` に指定します。
+- その他の依存関係は `devDependencies` に配置し、`dependencies` には含めないでください。プラグインがパッケージされた後、プロダクション環境に必要な依存関係はすべて抽出されます。
 
 ```diff
 {
@@ -125,26 +125,26 @@ export default MyPlugin;
 }
 ```
 
-### 插件的构建产物从 `lib` 目录变更为 `dist` 目录
+### プラグインの構築成果物は `lib` ディレクトリから `dist` ディレクトリに変更されます
 
-dist 目录介绍
+dist ディレクトリの構成は以下の通りです。
 
 ```bash
 |- dist
-  |- client       # 前端，umd 规范
+  |- client       # フロントエンド、UMD 規格
     |- index.js
     |- index.d.ts
-  |- server       # 后端，cjs 规范
+  |- server       # バックエンド、CJS 規格
     |- index.js
     |- index.d.ts
-    |- 其他文件
-  |- locale       # 多语言目录
-  |- node_modules # 后端依赖
+    |- その他のファイル
+  |- locale       # 多言語ディレクトリ
+  |- node_modules # バックエンド依存
 ```
 
-其他相关调整包括：
+他の関連調整には以下が含まれます：
 
-package.json 的 main 参数调整
+package.json の main パラメータの調整
 
 ```diff
 {
@@ -178,3 +178,4 @@ server.js
 ```js
 module.exports = require('./dist/server/index.js');
 ```
+

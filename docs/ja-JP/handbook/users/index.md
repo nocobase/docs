@@ -1,41 +1,42 @@
-# 用户
+# ユーザー
 
 <PluginInfo name="users"></PluginInfo>
 
-## 介绍
+## 概要
 
-用户插件提供了基础的用户模型和用户管理界面。
+ユーザープラグインは、基本的なユーザーモデルとユーザー管理インターフェースを提供します。
 
-## 安装
+## インストール
 
-内置插件，无需单独安装。
+内蔵プラグインのため、個別にインストールする必要はありません。
 
-## 使用说明
+## 使用方法
 
-### 用户管理
+### ユーザー管理
 
-该插件在配置中心里提供了一个用户管理界面。应用初始化以后会添加一个不可删除的超级管理员账号, 管理员拥有 Root 权限，可以访问所有资源。
+このプラグインは、設定センターにユーザー管理インターフェースを提供します。アプリケーションが初期化されると、削除できないスーパー管理者アカウントが追加され、管理者はRoot権限を持ち、すべてのリソースにアクセスできます。
 
 ![](https://static-docs.nocobase.com/44bf40f56b45d4dd96c424fb08082cf6.png)
 
-除此之外，也可以在页面中使用用户表添加各种不同的区块来管理用户，比如表格区块：
+さらに、ページ内ではユーザーテーブルを使用して、さまざまなブロックを追加し、ユーザーを管理することができます。例えば、テーブルブロック：
 
 ![](https://static-docs.nocobase.com/76b5a4652f869541a9e8f18a4568a7c9.png)
 
-### 添加用户
+### ユーザーの追加
 
 ![](https://static-docs.nocobase.com/4f8ef9ffc1c17f275b62b462f6385b19.png)
 
 ![](https://static-docs.nocobase.com/437828173950bd7c21b40a6243ffe150.png)
 
-### 修改用户资料
+### ユーザー情報の変更
 
 ![](https://static-docs.nocobase.com/d25e06872bd1d48ed8c1139728fa5ff3.png)
 
 ![](https://static-docs.nocobase.com/c140bcaab240385b9b5aca32a2ec2801.png)
 
-### 修改用户密码
+### ユーザーパスワードの変更
 
 ![](https://static-docs.nocobase.com/26c24c4cebda3d144dc4e9b728c2ede5.png)
 
 ![](https://static-docs.nocobase.com/23a2b2223cb5b387b3699cc6143302e8.png)
+

@@ -1,16 +1,16 @@
 # v0.14：2023-09-12
 
-v0.14 实现了生产环境下插件的即插即用，可以直接通过界面添加插件，支持从 npm registry（可以是私有的）下载、本地上传、URL 下载。
+v0.14では、製品環境でのプラグインの即挿即用を実現し、インターフェースを通じて直接プラグインを追加できるようになりました。npmレジストリ（プライベートも可能）からのダウンロード、ローカルアップロード、URLからのダウンロードがサポートされています。
 
-## 新特性
+## 新機能
 
-### 全新的插件管理器界面
+### 新しいプラグイン管理画面
 
 <img src="./6de7c906518b6c6643570292523b06c8.png" />
 
-### 上传的插件位于 storage/plugins 目录
+### アップロードされたプラグインは storage/plugins ディレクトリに配置
 
-提供 storage/plugins 目录用于上传即插即用的插件，目录以 npm packages 的方式组织
+即挿即用のプラグインをアップロードするための storage/plugins ディレクトリが提供され、このディレクトリは npm パッケージ形式で整理されています。
 
 ```bash
 |- /storage/
@@ -22,19 +22,19 @@ v0.14 实现了生产环境下插件的即插即用，可以直接通过界面�
     |- /my-nocobase-plugin-hello2/
 ```
 
-### 插件的更新
+### プラグインの更新
 
-目前仅 storage/plugins 下的插件才有更新操作，如图：
+現在、更新操作は storage/plugins 内のプラグインにのみ適用されます。以下のようになります。
 
 <img src="./703809b8cd74cc95e1ab2ab766980817.gif" />
 
-备注：为了便于维护和升级，避免因为升级导致 storage 插件不可用，也可以直接将新插件放到 storage/plugins 目录下，再执行升级操作
+備考：メンテナンスとアップグレードを容易にするため、アップグレードによって storage プラグインが使用不可になるのを避けるために、新しいプラグインを storage/plugins ディレクトリに直接配置した後、アップグレード操作を実行することも可能です。
 
-## 不兼容的变化
+## 非互換な変更
 
-### 插件目录变更
+### プラグインディレクトリの変更
 
-开发中的插件统一都放到 packages/plugins 目录下，以 npm packages 的方式组织
+開発中のプラグインはすべて packages/plugins ディレクトリに統一して配置され、npm パッケージ形式で整理されています。
 
 ```diff
 |- /packages/
@@ -44,10 +44,10 @@ v0.14 实现了生产环境下插件的即插即用，可以直接通过界面�
 + |- /plugins/@nocobase/plugin-sample-hello/
 ```
 
-全新的目录结构为
+新しいディレクトリ構造は次の通りです。
 
 ```bash
-# 开发中的插件
+# 開発中のプラグイン
 |- /packages/
   |- /plugins/
     |- /@nocobase/
@@ -56,7 +56,7 @@ v0.14 实现了生产环境下插件的即插即用，可以直接通过界面�
     |- /my-nocobase-plugin-hello1/
     |- /my-nocobase-plugin-hello2/
 
-# 通过界面添加的插件
+# インターフェースから追加されたプラグイン
 |- /storage/
   |- /plugins/
     |- /@nocobase/
@@ -66,39 +66,39 @@ v0.14 实现了生产环境下插件的即插即用，可以直接通过界面�
     |- /my-nocobase-plugin-hello2/
 ```
 
-### 插件名的变化
+### プラグイン名の変更
 
-- 不再提供 PLUGIN_PACKAGE_PREFIX 环境变量
-- 插件名和包名统一，旧的插件名仍然可以以别名的形式存在
+- PLUGIN_PACKAGE_PREFIX 環境変数は提供されなくなります。
+- プラグイン名とパッケージ名が統一され、古いプラグイン名はエイリアスとして残ります。
 
-### pm add 的改进
+### pm add の改善
 
-变更情况
+変更内容
 
 ```diff
 - pm add sample-hello
 + pm add @nocobase/plugin-sample-hello
 ```
 
-pm add 参数说明
+pm add パラメータ説明
 
 ```bash
-# 用 packageName 代替 pluginName，从本地查找，找不到报错
+# pluginName の代わりに packageName を使用し、ローカルで検索します。見つからない場合はエラーになります。
 pm add packageName
 
-# 只有提供了 registry 时，才从远程下载，也可以指定版本
+# registry を指定した場合のみ、リモートからダウンロードします。バージョンも指定可能です。
 pm add packageName --registry=xx --auth-token=yy --version=zz
 
-# 也可以提供本地压缩包，多次 add 用最后的替换
+# ローカルの圧縮ファイルを提供することもでき、複数回 add した場合は最後のものが置き換えられます。
 pm add /a/plugin.zip
 
-# 远程压缩包，同名直接替换
+# リモートの圧縮ファイルは、同名の場合は直接置き換えられます。
 pm add http://url/plugin.zip
 ```
 
-### Nginx 配置的变化
+### Nginx 設定の変更
 
-新增 `/static/plugins/` location
+新しい `/static/plugins/` ロケーションが追加されました。
 
 ```conf
 server {
@@ -117,8 +117,9 @@ server {
 }
 ```
 
-更多查看完整版的 [nocobase.conf](https://github.com/nocobase/nocobase/blob/main/docker/nocobase/nocobase.conf)
+さらに完全版の [nocobase.conf](https://github.com/nocobase/nocobase/blob/main/docker/nocobase/nocobase.conf) をご覧ください。
 
-## 插件开发指南
+## プラグイン開発ガイド
 
-[编写第一个插件](/development/your-fisrt-plugin)
+[最初のプラグインを作成する](/development/your-first-plugin)
+

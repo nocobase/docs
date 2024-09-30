@@ -1,70 +1,71 @@
-# 连接外部数据表（FDW）
+# 外部データ表に接続する（FDW）
 
 <PluginInfo name="collection-fdw"></PluginInfo>
 
-## 介绍
+## イントロダクション
 
-基于数据库的 foreign data wrapper 实现的连接远程数据表的功能插件。目前支持 MySQL 和 PostgreSQL 数据库。
+データベースに基づいたフェデレーテッドデータラッパー（Foreign Data Wrapper）を用いて、リモートデータ表に接続する機能プラグインです。現在、MySQLおよびPostgreSQLデータベースをサポートしています。
 
-:::info{title="连接数据源 vs 连接外部数据表"}
-- **连接数据源** 指的是与特定数据库或 API 服务建立连接，可以完整的使用数据库的特性或 API 提供的服务；
-- **连接外部数据表** 指的是从外部获取数据并映射到本地使用，在数据库里叫 FDW（Foreign Data Wrapper），是一种数据库技术，侧重于将远程表当做本地表使用，只能一张一张表的连接。因为是远程访问，所以在使用时会有各种约束和局限。
+:::info{title="データソースに接続する vs 外部データ表に接続する"}
+- **データソースに接続する** とは、特定のデータベースまたはAPIサービスと接続を確立し、データベースの機能やAPIが提供するサービスをフルに利用することを指します。
+- **外部データ表に接続する** とは、外部からデータを取得し、ローカルで使用するためにマッピングすることを指します。データベースではFDW（Foreign Data Wrapper）と呼ばれ、リモートテーブルをローカルテーブルのように使用することに重点を置いたデータベース技術であり、個別にテーブルを接続することができます。リモートアクセスに基づくため、使用時にはさまざまな制約や限界が存在します。
 
-二者也可以配合使用，前者用于建立与数据源的连接，后者用于跨数据源访问。例如，连接了某个 PostgreSQL 数据源，这个数据源里有某个表是基于 FDW 创建的外部数据表。
+両者は併用可能であり、前者はデータソースとの接続を確立するために、後者はデータソース間のアクセスを可能にします。たとえば、あるPostgreSQLデータソースに接続した場合、そのデータソース内にFDWを使用して作成された外部データ表が存在することがあります。
 :::
 
 ### MySQL
 
-MySQL 通过 `federated` 引擎，需要激活，支持连接远程 MySQL 及其协议兼容数据库，如 MariaDB。详情文档参考 [Federated Storage Engine](https://dev.mysql.com/doc/refman/8.0/en/federated-storage-engine.html)。
+MySQLでは、`federated`エンジンを通じてリモートMySQLおよびそのプロトコル互換データベース（MariaDBなど）に接続することができます。詳細な情報は [Federated Storage Engine](https://dev.mysql.com/doc/refman/8.0/en/federated-storage-engine.html)を参照してください。
 
 ### PostgreSQL
 
-在 PostgreSQL 中，可通过不同类型的 `fdw` 扩展来支持不同的远程数据类型，目前支持的扩展有：
+PostgreSQLでは、さまざまなタイプの`fdw`拡張を使用して異なるリモートデータタイプをサポートします。現在サポートされている拡張は：
 
-- [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html)：在 PostgreSQL 中连接远程 PostgreSQL 数据库。
-- [mysql_fdw(开发中)](https://github.com/EnterpriseDB/mysql_fdw)：在 PostgreSQL 中连接远程 MySQL 数据库。
-- 其余类型的 fdw 扩展，可参考 [PostgreSQL Foreign Data Wrappers](https://wiki.postgresql.org/wiki/Foreign_data_wrappers)，接入 NocoBase 需要在代码中实现相应的适配接口。
+- [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html)：PostgreSQLでリモートのPostgreSQLデータベースに接続します。
+- [mysql_fdw(開発中)](https://github.com/EnterpriseDB/mysql_fdw)：PostgreSQLでリモートのMySQLデータベースに接続します。
+- その他のタイプのFDW拡張については、[PostgreSQL Foreign Data Wrappers](https://wiki.postgresql.org/wiki/Foreign_data_wrappers)を参照してください。NocoBaseに接続するには、コード内で対応するインターフェースを実装する必要があります。
 
-## 安装
+## インストール
 
-前提条件
+### 前提条件
 
-- 如果 NocoBase 的主数据库是 MySQL，则需要激活 `federated`，参考 [MySQL 如何启用 federated 引擎](./enable-federated.md)
+- NocoBaseの主データベースがMySQLである場合、`federated`を有効にする必要があります。詳細は[MySQLでのfederatedエンジンの有効化](./enable-federated.md)を参照してください。
 
-然后通过插件管理器安装并激活插件
+次に、プラグインマネージャーを通じてプラグインをインストールし、有効にします。
 
-![安装并激活插件](https://static-docs.nocobase.com/f84276c5712851fb3ff33af3f1ff0f59.png)
+![プラグインのインストールと有効化](https://static-docs.nocobase.com/f84276c5712851fb3ff33af3f1ff0f59.png)
 
-## 使用手册
+## 使用マニュアル
 
-在「数据表管理 > 创建数据表」 下拉中，选择「连接外部数据」
+「データテーブル管理 > データテーブルの作成」ドロップダウンから「外部データに接続」を選択します。
 
-![连接外部数据](https://static-docs.nocobase.com/029d946a6d067d1c35a39755219d623c.png)
+![外部データに接続](https://static-docs.nocobase.com/029d946a6d067d1c35a39755219d623c.png)
 
-在「数据库服务」下拉选项中，选择已存在的数据库服务，或者「创建数据库服务」
+「データベースサービス」のドロップダウンオプションから、既存のデータベースサービスを選択するか、「データベースサービスを作成」を選択します。
 
-![数据库服务](https://static-docs.nocobase.com/766271708a911950a5599d60d6be4a4d.png)
+![データベースサービス](https://static-docs.nocobase.com/766271708a911950a5599d60d6be4a4d.png)
 
-创建数据库服务
+データベースサービスを作成します。
 
-![创建数据库服务](https://static-docs.nocobase.com/1e357216e04cc4f200bd6212827281c8.png)
+![データベースサービスの作成](https://static-docs.nocobase.com/1e357216e04cc4f200bd6212827281c8.png)
 
-选择数据库服务之后， 在「远程表」的下拉选项中，选择需要连接的数据表。
+データベースサービスを選択した後、「リモートテーブル」のドロップダウンオプションから接続するデータテーブルを選択します。
 
-![选择需要连接的数据表](https://static-docs.nocobase.com/e91fd6152b52b4fc01b3808053cc8dc4.png)
+![接続するデータテーブルを選択](https://static-docs.nocobase.com/e91fd6152b52b4fc01b3808053cc8dc4.png)
 
-配置字段信息
+フィールド情報の設定
 
-![配置字段信息](https://static-docs.nocobase.com/e618fecc5fe327f6a495e61405e5f040.png)
+![フィールド情報の設定](https://static-docs.nocobase.com/e618fecc5fe327f6a495e61405e5f040.png)
 
-如果远程表有结构变化，也可以「从远程表同步」
+リモートテーブルに構造の変更があった場合は、「リモートテーブルから同期」を行うことができます。
 
-![从远程表同步](https://static-docs.nocobase.com/3751a9a39f933889fb3fcc4d85a6f4ad.png)
+![リモートテーブルから同期](https://static-docs.nocobase.com/3751a9a39f933889fb3fcc4d85a6f4ad.png)
 
-远程表同步
+リモートテーブルの同期
 
-![远程表同步](https://static-docs.nocobase.com/13f18200e31ea223fdd8dadaff1e9d28.png)
+![リモートテーブルの同期](https://static-docs.nocobase.com/13f18200e31ea223fdd8dadaff1e9d28.png)
 
-最后，在界面里显示
+最後に、インターフェースに表示されます。
 
-![在界面里显示](https://static-docs.nocobase.com/368fca27a99277d9360ca81350949357.png)
+![インターフェースに表示](https://static-docs.nocobase.com/368fca27a99277d9360ca81350949357.png)
+

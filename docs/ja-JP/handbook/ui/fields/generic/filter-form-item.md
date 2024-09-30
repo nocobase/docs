@@ -1,21 +1,20 @@
-# 筛选表单字段
+# フィルターフォームフィールド
 
-## 介绍
+## イントロダクション
 
-筛选表单支持选择本表字段和关系表字段（关系的关系字段）作为筛选字段。
+フィルターフォームでは、本表のフィールドと関連表のフィールド（関連関係のフィールド）をフィルターフィールドとして選択できます。
 
 ![20240409100014](https://static-docs.nocobase.com/20240409100014.png)
 
-
-示例：以关系表的字段作为筛选字段，订单表和客户表是多对一的关系，配置客户表的名称和手机号为筛选字段用于筛选订单。
+**例：** 関連表のフィールドをフィルターフィールドとして使用する場合、注文表と顧客表は多対一の関係にあります。この場合、顧客表の名前と電話番号をフィルターフィールドとして設定し、注文を絞り込むことができます。
 
 ![20240422151626](https://static-docs.nocobase.com/20240422151626.png)
 
-## 字段配置项
+## フィールド設定項目
 
-### 运算符
+### 演算子
 
-根据字段类型选择合适的运算符进行筛选，以提高筛选的准确性和效率，对于字符串类型字段默认为模糊匹配。
+フィールドタイプに応じて適切な演算子を選択することが、フィルタリングの精度と効率を向上させるために重要です。文字列型フィールドの場合、デフォルトではあいまい検索が有効です。
 
 ![20240412112748](https://static-docs.nocobase.com/20240412112748.png)
 
@@ -23,7 +22,8 @@
 
 ![20240422151953](https://static-docs.nocobase.com/20240422151953.png)
 
-- [编辑字段标题](/handbook/ui/fields/field-settings/edit-title)
-- [显示标题](/handbook/ui/fields/field-settings/display-title)
-- [编辑字段描述](/handbook/ui/fields/field-settings/edit-description)
-- [编辑字段提示信息](/handbook/ui/fields/field-settings/edit-tooltip)
+- [フィールドタイトルを編集](/handbook/ui/fields/field-settings/edit-title)
+- [タイトルを表示](/handbook/ui/fields/field-settings/display-title)
+- [フィールド説明を編集](/handbook/ui/fields/field-settings/edit-description)
+- [フィールドヒント情報を編集](/handbook/ui/fields/field-settings/edit-tooltip)
+

@@ -1,13 +1,14 @@
-# 自动编码
+# シーケンス
 
 <PluginInfo name="field-sequence"></PluginInfo>
 
-## 介绍
+## イントロダクション
 
-## 字段配置
+## フィールド設定
 
 ![20240512173752](https://static-docs.nocobase.com/20240512173752.png)
 
-## 示例
+## サンプル
 
-待补充
+追加予定です。
+

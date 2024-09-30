@@ -1,13 +1,14 @@
-# 区块
+# ブロック
 
-NocoBase 支持多种类型的区块。
+NocoBaseは、さまざまなタイプのブロックをサポートしています。
 
 ![20240603155329](https://static-docs.nocobase.com/20240603155329.png)
 
-但是目前已有的区块不一定满足需求，我们可以扩展区块。
+ただし、現在存在するブロックが必ずしもニーズを満たすわけではないため、ブロックを拡張することが可能です。
 
-根据区块类型和复杂度，我们提供了如下示例：
+ブロックのタイプと複雑さに応じて、以下の例を提供します：
 
-- [`Carousel` 区块](/plugin-samples/block/block-carousel)
-- [`Form` 区块](/plugin-samples/block/block-form)
-- [`Table` 区块](/plugin-samples/block/block-table)
+- [`カルーセル` ブロック](/plugin-samples/block/block-carousel)
+- [`フォーム` ブロック](/plugin-samples/block/block-form)
+- [`テーブル` ブロック](/plugin-samples/block/block-table)
+

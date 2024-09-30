@@ -1,40 +1,40 @@
 # v0.19：2024-01-08
 
-## 新特性
+## 新機能
 
-### 遥测
+### テレメトリ
 
-- 开发文档：https://docs-cn.nocobase.com/development/server/telemetry
-- 内核 API：https://docs-cn.nocobase.com/api/telemetry/telemetry
-- Prometheus 插件：https://docs-cn.nocobase.com/plugins/telemetry-prometheus
+- 開発ドキュメント：[テレメトリ開発ドキュメント](https://docs-cn.nocobase.com/development/server/telemetry)
+- コアAPI：[テレメトリAPI](https://docs-cn.nocobase.com/api/telemetry/telemetry)
+- Prometheusプラグイン：[Prometheusプラグイン](https://docs-cn.nocobase.com/plugins/telemetry-prometheus)
 
-### 应用的备份和还原
+### アプリのバックアップとリストア
 
-- 插件文档：https://docs-cn.nocobase.com/plugins/backup-restore
+- プラグインドキュメント：[バックアップとリストアプラグイン](https://docs-cn.nocobase.com/plugins/backup-restore)
 
-## 内核优化
+## コア最適化
 
-### 命令行的优化
+### コマンドラインの最適化
 
-NocoBase 0.19 及以上版本，插件自定义的命令必须放在插件的 `src/server/commands/*.ts` 目录下，内容如下：
+NocoBase 0.19以降、プラグインカスタムコマンドはプラグインの `src/server/commands/*.ts` ディレクトリに配置する必要があります。内容は以下の通りです：
 
 ```typescript
-export default function (app) {
+export default function(app) {
   app.command('custom1').action();
 }
 ```
 
-命令行的执行流程：
+コマンドラインの実行フロー：
 
 ![20240115141900](https://static-docs.nocobase.com/20240115141900.png)
 
-Command 的特殊配置
+#### Commandの特別な設定
 
-- `ipc()` 当 app 运行时，命令行通过 ipc 发送指令，操作正在运行的 app 实例，未配置 ipc() 时，会新建一个应用实例，再执行操作（不会干扰正在运行的 app 实例）
-- `auth()` 进行数据库检验，如果数据库配置不正确，不会执行该命令
-- `preload()` 是否预先加载应用配置，也就是执行 app.load()
+- `ipc()`：アプリが実行中のとき、コマンドラインはipcを通じて指令を送信し、実行中のアプリインスタンスを操作します。`ipc()`が設定されていない場合は、新しいアプリインスタンスが作成され、操作が実行されます（実行中のアプリインスタンスには干渉しません）。
+- `auth()`：データベースの検証を行います。データベース設定が正しくない場合、このコマンドは実行されません。
+- `preload()`：アプリ設定を事前に読み込むかどうか、つまり`app.load()`を実行するかどうかを指定します。
 
-可以根据命令的实际用途进行配置，例子如下：
+コマンドの実際の用途に応じて設定可能です。例は以下の通りです：
 
 ```typescript
 app.command('a').ipc().action();
@@ -42,50 +42,50 @@ app.command('a').auth().action();
 app.command('a').preload().action();
 ```
 
-### 安装流程优化
+### インストールプロセスの最適化
 
 ![20240115141914](https://static-docs.nocobase.com/20240115141914.png)
 
-### 启动流程优化
+### スタートプロセスの最適化
 
 ![20240115141922](https://static-docs.nocobase.com/20240115141922.png)
 
-### 升级流程优化
+### アップグレードプロセスの最適化
 
 ![20240115141933](https://static-docs.nocobase.com/20240115141933.png)
 
-升级的 migrations 有 beforeLoad、afterSync 和 afterLoad 之分：
+アップグレードのマイグレーションには、`beforeLoad`、`afterSync`、`afterLoad`の3つの段階があります：
 
-- beforeLoad：在各模块加载前执行，分为三个阶段：
+- **beforeLoad**：各モジュールの読み込み前に実行され、以下の3つの段階に分かれます：
 
-  - 内核模块加载前
-  - preset 插件加载前
-  - 其他插件加载前
+  - コアモジュールの読み込み前
+  - プリセットプラグインの読み込み前
+  - その他のプラグインの読み込み前
 
-- afterSync：在数据表配置与数据库同步之后，分为三个阶段：
+- **afterSync**：データテーブルの設定とデータベースの同期後に実行され、以下の3つの段階に分かれます：
 
-  - 内核表与数据库同步之后
-  - preset 插件的表与数据库同步之后
-  - 其他插件的表与数据库同步后
+  - コアテーブルとデータベースの同期後
+  - プリセットプラグインのテーブルとデータベースの同期後
+  - その他のプラグインのテーブルとデータベースの同期後
 
-- afterLoad：应用全部加载之后才执行
+- **afterLoad**：アプリケーションがすべて読み込まれた後に実行されます。
 
 ```typescript
 export default class extends Migration {
-  // 运行的时机
+  // 実行のタイミング
   on = 'beforeLoad';
-  // 满足以下应用版本号时才执行
+  // 以下のアプリバージョン番号を満たす場合にのみ実行
   appVersion = '<=0.13.0-alpha.5';
-  // 满足以下插件版本号时才执行
+  // 以下のプラグインバージョン番号を満たす場合にのみ実行
   pluginVersion = '<=0.13.0-alpha.5';
-  // 升级脚本
+  // アップグレードスクリプト
   async up() {}
 }
 ```
 
-### 新增 create-migration 命令
+### 新しい create-migration コマンドの追加
 
-创建 migration 文件
+マイグレーションファイルを作成します。
 
 ```bash
 yarn nocobase create-migration -h
@@ -93,22 +93,22 @@ yarn nocobase create-migration -h
 Usage: nocobase create-migration [options] <name>
 
 Options:
-  --pkg <pkg>  package name
-  --on [on]    Options include beforeLoad, afterSync and afterLoad
-  -h, --help   display help for command
+  --pkg <pkg>  パッケージ名
+  --on [on]    オプションには beforeLoad、afterSync、afterLoad が含まれます
+  -h, --help   コマンドのヘルプを表示
 ```
 
-示例
+例
 
 ```bash
 $ yarn nocobase create-migration update-ui --pkg=@nocobase/plugin-client
 
-2024-01-07 17:33:13 [info ] add app main into supervisor
-2024-01-07 17:33:13 [info ] migration file in /nocobase/packages/plugins/@nocobase/plugin-client/src/server/migrations/20240107173313-update-ui.ts
-✨  Done in 5.02s.
+2024-01-07 17:33:13 [info ] スーパーバイザーにアプリのメインを追加
+2024-01-07 17:33:13 [info ] マイグレーションファイルは /nocobase/packages/plugins/@nocobase/plugin-client/src/server/migrations/20240107173313-update-ui.ts にあります
+✨  5.02秒で完了しました。
 ```
 
-将在插件包 `@nocobase/plugin-client` 的 `src/server/migrations` 里生成一个 migration 文件，名为 `20240107173313-update-ui.ts`，初始内容如下：
+プラグインパッケージ `@nocobase/plugin-client` の `src/server/migrations` ディレクトリに、`20240107173313-update-ui.ts` という名前のマイグレーションファイルが生成されます。初期内容は以下の通りです：
 
 ```typescript
 import { Migration } from '@nocobase/server';
@@ -118,28 +118,28 @@ export default class extends Migration {
   appVersion = '<0.18.0-alpha.10';
 
   async up() {
-    // coding
+    // コーディング
   }
 }
 ```
 
-### 插件的约定式目录
+### プラグインの規約ディレクトリ
 
-```bash
+```
 |- /plugin-sample-hello
-  |- /dist             # 插件编译之后的目录
-  |- /src              # 插件源码
+  |- /dist             # プラグインコンパイル後のディレクトリ
+  |- /src              # プラグインソースコード
     |- /client
       |- plugin.ts
-      |- index.ts      # 客户端入口
-    |- /locale         # 约定式目录，前后端共享的多语言文件目录
-    |- /swagger        # 约定式目录，swagger 文档
+      |- index.ts      # クライアントエントリ
+    |- /locale         # 規約ディレクトリ、フロントエンドとバックエンドで共有される多言語ファイルのディレクトリ
+    |- /swagger        # 規約ディレクトリ、Swaggerドキュメント
     |- /server
-      |- collections   # 约定式目录，插件的数据表配置
-      |- commands      # 约定式目录，自定义命令
-      |- migrations    # 约定式目录，迁移文件
-      |- plugin.ts     # 插件类
-      |- index.ts      # 服务端入口
+      |- collections   # 規約ディレクトリ、プラグインのデータテーブル設定
+      |- commands      # 規約ディレクトリ、カスタムコマンド
+      |- migrations    # 規約ディレクトリ、マイグレーションファイル
+      |- plugin.ts     # プラグインクラス
+      |- index.ts      # サーバーエントリ
     |- index.ts
   |-.npmignore
   |- client.d.ts
@@ -149,17 +149,17 @@ export default class extends Migration {
   |- server.js
 ```
 
-### 测试流程优化
+### テストフローの最適化
 
-提供了更易用的 createMockServer、startMockServer 方法用于编写测试用例
+より使いやすい `createMockServer` および `startMockServer` メソッドを提供し、テストケースの作成を容易にしました。
 
-- `createMockServer()` 快速创建并启动一个应用
-- `startMockServer()` 快速启动一个应用（不会重新安装）
+- `createMockServer()` アプリケーションを迅速に作成して起動します。
+- `startMockServer()` アプリケーションを迅速に起動します（再インストールは行いません）。
 
 ```typescript
 import { createMockServer } from '@nocobase/server';
 
-describe('test example', () => {
+describe('テスト例', () => {
   let app: MockServer;
 
   beforeEach(async () => {
@@ -173,16 +173,16 @@ describe('test example', () => {
   });
 
   test('case1', async () => {
-    // coding...
+    // コーディング...
   });
 });
 ```
 
-## 不兼容的变化
+## 互換性のない変更
 
-### collections、commands、migrations 配置变更为约定式目录
+### collections、commands、migrationsの設定が規約型ディレクトリに変更されました
 
-示例一：通过 importCollections 加载的 collections，代码直接删掉，collections 配置文件必须放在 `src/server/collections` 目录下
+例1：`importCollections`を通じて読み込まれるcollectionsは、コードを直接削除し、collections設定ファイルは`src/server/collections`ディレクトリに配置する必要があります。
 
 ```diff
 export class AuthPlugin extends Plugin {
@@ -192,7 +192,7 @@ export class AuthPlugin extends Plugin {
 }
 ```
 
-示例二：通过 this.db.import 加载的 collections，代码直接删掉，collections 配置文件必须放在 `src/server/collections` 目录下
+例2：`this.db.import`を通じて読み込まれるcollectionsは、コードを直接削除し、collections設定ファイルは`src/server/collections`ディレクトリに配置する必要があります。
 
 ```diff
 export class AuthPlugin extends Plugin {
@@ -204,7 +204,7 @@ export class AuthPlugin extends Plugin {
 }
 ```
 
-示例三：通过 db.collection() 定义的 collection，建议放到 `src/server/collections` 目录下
+例3：`db.collection()`を通じて定義されるcollectionは、`src/server/collections`ディレクトリに配置することを推奨します。
 
 ```diff
 export class AuthPlugin extends Plugin {
@@ -216,7 +216,7 @@ export class AuthPlugin extends Plugin {
 }
 ```
 
-新增 `src/server/collections/examples.ts` 文件，内容如下：
+新たに`src/server/collections/examples.ts`ファイルを作成し、内容は以下の通りです。
 
 ```typescript
 import { defineCollection } from '@nocobase/database';
@@ -226,7 +226,7 @@ export default defineCollection({
 });
 ```
 
-示例四：移除 db.addMigrations()，migration 文件放置 `src/server/migrations` 目录下
+例4：`db.addMigrations()`を削除し、マイグレーションファイルを`src/server/migrations`ディレクトリに配置します。
 
 ```diff
 export class AuthPlugin extends Plugin {
@@ -242,7 +242,7 @@ export class AuthPlugin extends Plugin {
 }
 ```
 
-示例五：自定义命令行
+例5：カスタムコマンドライン
 
 ```diff
 export class MyPlugin extends Plugin {
@@ -260,18 +260,19 @@ export class MyPlugin extends Plugin {
 }
 ```
 
-新增 `src/server/collections/echo.ts` 文件，内容如下：
+新たに`src/server/collections/echo.ts`ファイルを作成し、内容は以下の通りです。
 
 ```typescript
 export default function(app) {
   app
     .command('echo')
-    .option('-v, --version');
+    .option('-v, --version')
     .action(async ([options]) => {
-      console.log('Hello World!');
+      console.log('こんにちは、世界！');
       if (options.version) {
-        console.log('Current version:', await app.version.get());
+        console.log('現在のバージョン:', await app.version.get());
       }
     });
 }
 ```
+

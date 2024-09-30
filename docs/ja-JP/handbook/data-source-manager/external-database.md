@@ -1,47 +1,47 @@
-# 外部数据库
+# 外部データベース
 
-## 介绍
+## 概要
 
-使用外部已有的数据库作为数据源，目前已支持的外部数据库有 MySQL、MariaDB、PostgreSQL。
+外部に存在するデータベースをデータソースとして使用します。現在サポートされている外部データベースは、MySQL、MariaDB、PostgreSQLです。
 
-## 使用说明
+## 使用説明
 
-### 添加外部数据库
+### 外部データベースの追加
 
-激活插件之后，才可以在数据源管理的 Add new 下拉菜单中选择并添加。
+プラグインを有効化した後、データソース管理の「新規追加」ドロップダウンメニューから選択して追加できます。
 
 ![20240507204316](https://static-docs.nocobase.com/20240507204316.png)
 
-填写需要接入的数据库信息
+接続するデータベースの情報を入力します。
 
 ![20240507204820](https://static-docs.nocobase.com/20240507204820.png)
 
-### 数据表同步
+### データテーブルの同期
 
-外部数据库建立连接之后，会直接读取数据源里的所有数据表。外部数据库不支持直接添加数据表或修改表结构，如果需要修改，可以通过数据库客户端进行操作，再在界面上点击「刷新」按钮来同步。
+外部データベースとの接続が確立されると、データソース内のすべてのデータテーブルが直接読み込まれます。外部データベースでは、データテーブルを直接追加したり、テーブル構造を変更することはできません。変更が必要な場合は、データベースクライアントを使用して操作し、インターフェース上で「更新」ボタンをクリックして同期します。
 
 ![20240507204725](https://static-docs.nocobase.com/20240507204725.png)
 
-### 配置字段
+### フィールドの設定
 
-外部数据库会自动读取已有数据表的字段，并展示出来。可以快速查看并配置字段的标题、数据类型（Field type）和 UI 类型（Field interface），也可以点击「编辑」按钮，修改更多配置。
+外部データベースは、既存のデータテーブルのフィールドを自動的に読み取り、表示します。フィールドのタイトル、データタイプ（フィールドタイプ）、UIタイプ（フィールドインターフェース）を迅速に確認し、設定できます。また、「編集」ボタンをクリックすることで、さらに多くの設定を変更できます。
 
 ![20240507210537](https://static-docs.nocobase.com/20240507210537.png)
 
-因为外部数据库不支持修改表结构，所以新增字段时，可选的类型只有关系字段。关系字段并不是真实的字段，而是用于建立表和表之间的连接。
+外部データベースではテーブル構造の変更がサポートされていないため、新しいフィールドを追加する際には、選択可能なタイプはリレーションフィールドのみです。リレーションフィールドは実際のフィールドではなく、テーブル間の接続を確立するために使用されます。
 
 ![20240507220140](https://static-docs.nocobase.com/20240507220140.png)
 
-更多内容 [数据表字段/概述](/handbook/data-modeling/collection-fields) 章节。
+詳細については、[データテーブルフィールド/概要](/handbook/data-modeling/collection-fields)の章を参照してください。
 
-### 字段类型映射
+### フィールドタイプのマッピング
 
-NocoBase 会自动为外部数据库的字段类型，映射相对应的数据类型（Field type）和 UI 类型（Field Interface）。
+NocoBaseは、外部データベースのフィールドタイプに対して、対応するデータタイプ（フィールドタイプ）とUIタイプ（フィールドインターフェース）を自動的にマッピングします。
 
-- 数据类型（Field type）：用于定义字段可以存储的数据的种类、格式和结构；
-- UI 类型（Field interface）：是指在用户界面中用于显示和输入字段值的控件类型。
+- データタイプ（Field type）：フィールドが格納できるデータの種類、形式、および構造を定義するために使用されます。
+- フィールドインターフェース（Field interface）：ユーザーインターフェースでフィールド値を表示および入力するために使用されるコントロールの種類を指します。
 
-| PostgreSQL | MySQL/MariaDB | NocoBase Data Type | NocoBase Interface Type |
+| PostgreSQL | MySQL/MariaDB | NocoBase データ型 | NocoBase インターフェース型 |
 | - | - | - | - |
 | BOOLEAN | BOOLEAN<br/>TINYINT(1) | boolean | checkbox <br/> switch |
 | SMALLINT<br/>INTEGER<br/>SERIAL<br/>SMALLSERIAL | TINYINT<br/>SMALLINT<br/>MEDIUMINT<br/>INTEGER | integer<br/>boolean<br/>sort | integer<br/>sort<br/>checkbox<br/>switch<br/>select<br/>radioGroup |
@@ -57,30 +57,31 @@ NocoBase 会自动为外部数据库的字段类型，映射相对应的数据�
 | DATE | DATE | dateOnly | datetime |
 | TIME | TIME | time | time |
 | - | YEAR |  | datetime |
-| CIRCEL |  | circle | json<br/>circle |
-| PATH<br/>GEOMETRY(LINESTRING) | LINESTRING | lineString | Json<br/>lineString |
+| CIRCLE |  | circle | json<br/>circle |
+| PATH<br/>GEOMETRY(LINESTRING) | LINESTRING | lineString | json<br/>lineString |
 | POINT<br/>GEOMETRY(POINT) | POINT | point | json<br/>point |
 | POLYGON<br/>GEOMETRY(POLYGON) | POLYGON | polygon | json<br/>polygon |
-| GEOMETRY | GEOMETRY |  -  |  -  |
-| BLOB | BLOB | blob |  -  |
+| GEOMETRY | GEOMETRY | - | - |
+| BLOB | BLOB | blob | - |
 | ENUM | ENUM | enum | select<br/>radioGroup |
-| ARRAY |  -  | array | multipleSelect<br/>checkboxGroup |
+| ARRAY | - | array | multipleSelect<br/>checkboxGroup |
 | BIT | BIT | - | - |
 | SET | SET | set | multipleSelect<br/>checkboxGroup |
 | RANGE | - | - | - |
 
-### 不支持的字段类型
+### サポートされていないフィールドタイプ
 
-不支持的字段类型会单独展示出来，这些字段需要开发适配之后才能使用。
+サポートされていないフィールドタイプは別途表示されます。これらのフィールドは、開発者による適応が必要です。
 
 ![20240507221854](https://static-docs.nocobase.com/20240507221854.png)
 
-### 筛选目标键
+### フィルター対象キーの設定
 
-作为区块展示的数据表必须配置了筛选目标键（Filter target key），筛选目标键指的是根据特定字段筛选数据，字段值必须具备唯一性。筛选目标键默认为数据表主键字段，如果是视图或者无主键数据表、联合主键的数据表，需要自定义筛选目标键。
+ブロックとして表示されるデータテーブルには、フィルター対象キーを設定する必要があります。フィルター対象キーとは、特定のフィールドに基づいてデータをフィルタリングするためのもので、フィールドの値は一意である必要があります。フィルター対象キーはデータテーブルの主キーフィールドがデフォルトですが、ビューや主キーのないデータテーブル、複合主キーのデータテーブルの場合は、カスタムフィルター対象キーを設定する必要があります。
 
 ![20240507210230](https://static-docs.nocobase.com/20240507210230.png)
 
-设置了筛选目标键的数据表才可以在页面里添加
+フィルター対象キーが設定されたデータテーブルのみがページに追加できます。
 
 ![20240507222827](https://static-docs.nocobase.com/20240507222827.png)
+

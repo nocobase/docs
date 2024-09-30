@@ -1,23 +1,23 @@
 # 0.18.0-alpha.1
 
 :::warning
-本篇文章只介绍与插件开发相关的不兼容变化
+本記事ではプラグイン開発に関連する互換性のない変更のみを紹介します。
 :::
 
-## 测试框架由 jest 更换为 vitest
+## テストフレームワークが jest から vitest に変更
 
-- [服务端 - 测试](/development/server/test)
-- [客户端 - 测试](/development/client/test)
+- [サーバー - テスト](/development/server/test)
+- [クライアント - テスト](/development/client/test)
 
-## 用户认证客户端 API 的变更
+## ユーザー認証クライアント API の変更
 
 ### 背景
 
-之前在扩展用户认证方式时，客户端是基于 React `Context`, 使用 `Provider` 的方式扩展自定义的登录、注册、配置界面，如：
+以前は、ユーザー認証方法を拡張する際、クライアントは React の `Context` を基に、`Provider` を使用してカスタムのログイン、登録、設定インターフェースを拡張していました。例えば：
 
 ```html
 <OptionsComponentProvider authType="Email/Password" component={Options}>
-  <SigninPageProvider authType="EmailPassword" tabTitle={t('Sign in via password')} component={SignInPage}>
+  <SigninPageProvider authType="EmailPassword" tabTitle={t('パスワードでサインイン')} component={SignInPage}>
     <SignupPageProvider authType="Email/Password" component={SignUpPage}>
       {props.children}
     </SignupPageProvider>
@@ -25,11 +25,11 @@
 </OptionsComponentProvider>
 ```
 
-扩展一个认证方式时需要经过多个 `Provider` 嵌套，代码不够简洁直观。
+認証方法を拡張するには、複数の `Provider` をネストする必要があり、コードがあまり簡潔で直感的ではありませんでした。
 
-### 变更
+### 変更
 
-现在扩展用户认证方式的自定义界面，通过 [用户认证插件 `@nocobase/plugin-auth`](../plugins/auth/index.md) 提供的接口 `registerType` 进行注册。
+現在、ユーザー認証方法のカスタムインターフェースは、[ユーザー認証プラグイン `@nocobase/plugin-auth`](../plugins/auth/index.md) が提供するインターフェース `registerType` を使用して登録します。
 
 ```ts
 export type AuthOptions = {
@@ -46,9 +46,9 @@ export class AuthPlugin extends Plugin {
 }
 ```
 
-### 示例
+### 例
 
-#### 扩展登录表单 + 注册表单 + 后台配置表单
+#### ログインフォーム + 登録フォーム + 管理設定フォームを拡張
 
 ```diff
 - import { OptionsComponentProvider, SigninPageProvider, SignupPageProvider } from '@nocobase/client';
@@ -61,7 +61,7 @@ export class AuthPlugin extends Plugin {
 - export const BasicAuthPluginProvider: FC = (props) => {
 -   return (
 -     <OptionsComponentProvider authType="EmailPassword" component={Options}>
--       <SigninPageProvider authType="Email/Password" tabTitle="Sign in via password" component={SignInForm}>
+-       <SigninPageProvider authType="Email/Password" tabTitle="パスワードでサインイン" component={SignInForm}>
 -         <SignupPageProvider authType="EmailPassword" component={SignUpForm}>
 -           {props.children}
 -         </SignupPageProvider>
@@ -85,7 +85,7 @@ export class AuthPlugin extends Plugin {
  }
 ```
 
-#### 扩展第三方登录按钮 + 后台配置表单
+#### サードパーティのログインボタン + 管理設定フォームを拡張
 
 ```diff
 - import { OptionsComponentProvider, SigninPageExtensionProvider } from '@nocobase/client';
@@ -104,8 +104,8 @@ export class AuthPlugin extends Plugin {
 -   );
 - };
 
-  export class OidcPlugin extends Plugin {
-    async load() {
+export class OidcPlugin extends Plugin {
+  async load() {
 -     const auth = this.app.pm.get(AuthPlugin);
 +     auth.registerType("OIDC", {
 +       components: {
@@ -113,17 +113,17 @@ export class AuthPlugin extends Plugin {
 +         AdminSettingsForm: Options,
 +       },
 +     });
-    }
-  }
-```
+   }
+}
 
-完整用法可以参考文档: [用户认证 - 开发指南](../plugins/auth/dev/guide.md)
+完全な使い方はドキュメントを参照してください: [ユーザー認証 - 開発ガイド](../plugins/auth/dev/guide.md)
 
-### 移除
+### 削除
 
-原来的 `Provider` 已被移除：
+元の `Provider` は削除されました：
 
 - `SigninPageProvider`
 - `SignupPageProvider`
 - `OptionsComponentProvider`
 - `SigninExtensionProvider`
+

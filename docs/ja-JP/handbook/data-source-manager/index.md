@@ -1,30 +1,31 @@
-# 数据源管理
+# データソース管理
 
 <PluginInfo name="data-source-manager"></PluginInfo>
 
-## 介绍
+## 概要
 
-NocoBase 提供了数据源管理插件，用于管理数据源及其数据表。数据源管理插件只是提供所有数据源的管理界面，并不提供接入数据源的能力，它需要和各种数据源插件搭配使用。目前支持接入的数据源包括：
+NocoBaseは、データソースおよびそのデータテーブルを管理するためのデータソース管理プラグインを提供します。このプラグインは、すべてのデータソースを管理するためのインターフェースを提供しますが、データソースへの接続機能は持っていません。さまざまなデータソースプラグインと組み合わせて使用する必要があります。現在サポートされている接続可能なデータソースは以下の通りです：
 
-- [Main Database](/handbook/data-source-main)：NocoBase 主数据库，支持 MySQL、PostgreSQL、SQLite 等关系型数据库。
-- [External MySQL](/handbook/data-source-external-mysql)：使用外部的 MySQL 数据库作为数据源。
-- [External MariaDB](/handbook/data-source-external-mariadb)：使用外部的 MariaDB 数据库作为数据源。
-- [External PostgreSQL](/handbook/data-source-external-postgres)：使用外部的 PostgreSQL 数据库作为数据源。
+- [メインデータベース](/handbook/data-source-main)：NocoBaseの主データベースで、MySQL、PostgreSQL、SQLiteなどのリレーショナルデータベースをサポートしています。
+- [外部MySQL](/handbook/data-source-external-mysql)：外部のMySQLデータベースをデータソースとして使用します。
+- [外部MariaDB](/handbook/data-source-external-mariadb)：外部のMariaDBデータベースをデータソースとして使用します。
+- [外部PostgreSQL](/handbook/data-source-external-postgres)：外部のPostgreSQLデータベースをデータソースとして使用します。
 
-除此之外，可以通过插件扩展更多类型，可以是常见的各类数据库，也可以是提供 API（SDK）的平台。
+さらに、さまざまなタイプをプラグインで拡張することができ、一般的なデータベースやAPI（SDK）を提供するプラットフォームなども含まれます。
 
-## 安装
+## インストール
 
-内置插件，无需单独安装。
+内蔵プラグインのため、別途インストールする必要はありません。
 
-## 使用说明
+## 使用説明
 
-应用初始化安装时，会默认提供一个用于存储 NocoBase 数据的数据源，称之为主数据库。更多内容查看 [主数据库](/handbook/data-source-main) 文档。
+アプリケーションの初期インストール時には、NocoBaseデータを保存するためのデータソースがデフォルトで提供され、これを主データベースと呼びます。詳細については、[主データベース](/handbook/data-source-main)のドキュメントを参照してください。
 
 ![20240322220423](https://static-docs.nocobase.com/20240322220423.png)
 
-同时，也支持外部数据库作为数据源。更多内容查看 [外部数据库 / 介绍](/handbook/data-source-manager/external-database) 文档。
+また、外部データベースをデータソースとして使用することもサポートされています。詳細については、[外部データベース / 概要](/handbook/data-source-manager/external-database)のドキュメントを参照してください。
 
 ![20240507204316](https://static-docs.nocobase.com/20240507204316.png)
 
-也可以接入 HTTP API 来源的数据，更多内容查看 [HTTP API 数据源](/handbook/data-source-http-api) 文档。
+HTTP APIソースのデータに接続することも可能です。詳細については、[HTTP API データソース](/handbook/data-source-http-api)のドキュメントをご覧ください。
+

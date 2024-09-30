@@ -1,28 +1,24 @@
-# SchemaSettings 设置器
+# SchemaSettings 設定器
 
-激活 UI 配置之后，鼠标移动到指定区块、字段、操作上方时，会显示对应的 Schema 工具栏，工具栏的设置按钮就是当前 Schema 的设置器。
+UI構成を有効にすると、指定されたブロック、フィールド、アクションの上にマウスを移動させた際に、対応するSchemaツールバーが表示されます。ツールバーの設定ボタンが現在のSchemaの設定器です。
 
-![Alt text](https://static-docs.nocobase.com/3f37519ddd9ba1a99f1fdbfe32b4a454.png)
+## SchemaSettingsの役割
 
-## SchemaSettings 的作用
+`SchemaSettings`は、[FieldSchema](https://client.docs.nocobase.com/core/ui-schema/designable#usefieldschema)または[Field](https://client.docs.nocobase.com/core/ui-schema/designable#usefield)の属性を変更することで、コンポーネントがこれらの属性を読み込み、ブロック、フィールド、アクションなどの構成を実現します。
 
-`SchemaSettings` 通过修改 [FieldSchema](https://client.docs.nocobase.com/core/ui-schema/designable#usefieldschema) 或者 [Field](https://client.docs.nocobase.com/core/ui-schema/designable#usefield) 的属性，组件读取这些属性来实现对区块、字段、操作等的配置。
+`Field`は`FieldSchema`のインスタンスであり、`Field`を変更してもSchema構造はデータベースに保存されません。現在のインスタンスの属性を変更するだけで、ページをリフレッシュすると失われます。データベースに保存する必要がある場合は、`FieldSchema`を変更する必要があります。
 
-`Field` 是 `FieldSchema` 的实例，如果是修改 `Field` 不会将 Schema 结构保存到数据库，只是修改当前实例的属性，刷新页面后会丢失。如果你需要保存到数据库，需要修改 `FieldSchema`。
+## ビルトインの設定器
 
-## 内置的设置器
+## 既存の設定器に設定項目を追加する
 
-<img src="./image-4.png" />
-
-## 向已有的设置器里添加设置项
-
-推荐使用 `schemaSettingsManager.addItem()` 方法添加设置项，item 的详细配置参考 [SchemaSettings Item API](https://client.docs.nocobase.com/core/ui-schema/schema-settings-manager#schemasettingsmanageradditem)
+`schemaSettingsManager.addItem()`メソッドを使用して設定項目を追加することをお勧めします。itemの詳細な設定は[SchemaSettings Item API](https://client.docs.nocobase.com/core/ui-schema/schema-settings-manager#schemasettingsmanageradditem)を参照してください。
 
 ```ts
 class PluginDemoAddSchemaSettingsItem extends Plugin {
   async load() {
     this.schemaSettingsManager.addItem(
-      'mySettings', // 示例，已存在的 schema settings
+      'mySettings', // 例、既存のschema settings
       'customItem',
       {
         type: 'item',
@@ -33,17 +29,15 @@ class PluginDemoAddSchemaSettingsItem extends Plugin {
 }
 ```
 
-<code src="./demos/schema-settings-manager-add-item/index.tsx"></code>
+## 新しい設定器を追加する
 
-## 添加新的设置器
-
-SchemaSettings 的详细参数参考 [SchemaSettingsOptions API](https://client.docs-cn.nocobase.com/core/ui-schema/schema-settings#new-schemasettingsoptions)
+SchemaSettingsの詳細なパラメータは[SchemaSettingsOptions API](https://client.docs-cn.nocobase.com/core/ui-schema/schema-settings#new-schemasettingsoptions)を参照してください。
 
 ```ts
 const mySettings = new SchemaSettings({
-  // 必须是唯一标识
+  // 一意の識別子でなければならない
   name: 'mySettings',
-  // 下拉菜单项
+  // ドロップダウンメニュー項目
   items: [
     {
       name: 'edit',
@@ -54,14 +48,14 @@ const mySettings = new SchemaSettings({
 });
 ```
 
-### 在插件的 load 方法中添加
+### プラグインのloadメソッドで追加する
 
-推荐使用 `schemaSettingsManager.add()` 将新增的设置器添加到应用里
+新しく追加した設定器をアプリに追加するために、`schemaSettingsManager.add()`を使用することをお勧めします。
 
 ```ts
 class PluginDemoAddSchemaSettings extends Plugin {
   async load() {
-    // 注册全局组件
+    // グローバルコンポーネントを登録する
     this.app.addComponents({ CardItem, HomePage });
     const mySettings = new SchemaSettings({
       name: 'mySettings',
@@ -70,7 +64,7 @@ class PluginDemoAddSchemaSettings extends Plugin {
           type: 'item',
           name: 'edit',
           useComponentProps() {
-            // TODO: 补充相关设置逻辑
+            // TODO: 関連設定ロジックを補完する
             return {
               title: 'Edit',
               onClick() {
@@ -86,13 +80,13 @@ class PluginDemoAddSchemaSettings extends Plugin {
 }
 ```
 
-### 如何使用新添加的设置器
+### 新しく追加した設定器の使用方法
 
-添加进来的 SchemaSettings，可以用于 Schema 的 `x-settings` 参数中，并不是所有的组件都支持 `x-settings`，通常需要和 BlockItem、FormItem、CardItem 这类包装器组件结合使用。自定义的组件中，也可以使用 `useSchemaSettingsRender()` 自主处理 `x-settings` 的渲染。
+追加したSchemaSettingsは、Schemaの`x-settings`パラメータに使用できます。ただし、すべてのコンポーネントが`x-settings`をサポートしているわけではなく、通常はBlockItem、FormItem、CardItemなどのラッパーコンポーネントと組み合わせて使用する必要があります。カスタムコンポーネントでも`useSchemaSettingsRender()`を使用して`x-settings`のレンダリングを処理できます。
 
-#### 现有支持 `x-settings` 的 Schema 组件
+#### 既存の`x-settings`をサポートしているSchemaコンポーネント
 
-大部分场景 `x-settings` 需要和 BlockItem、FormItem、CardItem 这类包装器组件结合使用。例如：
+ほとんどのシーンで`x-settings`はBlockItem、FormItem、CardItemなどのラッパーコンポーネントと組み合わせて使用する必要があります。例えば：
 
 ```ts
 {
@@ -103,21 +97,15 @@ class PluginDemoAddSchemaSettings extends Plugin {
 }
 ```
 
-<code src="./demos/schema-settings-manager-add/index.tsx"></code>
+#### カスタムコンポーネントが`x-settings`パラメータをサポートする方法
 
-#### 自定义组件如何支持 `x-settings` 参数
+BlockItem、FormItem、CardItemなどのラッパーコンポーネントがニーズに合わない場合は、`useSchemaSettingsRender()`を使用して`x-settings`のレンダリングを処理できます。
 
-如果 BlockItem、FormItem、CardItem 这类包装器组件并不满足需求时，也可以使用 `useSchemaSettingsRender()` 处理 `x-settings` 的渲染。
+ほとんどのシーンで設定はSchemaToolbarに配置されているため、カスタムコンポーネントが`x-toolbar`をサポートすることによって、間接的に`x-settings`をサポートすることも可能です。詳細な使用法は[Schemaツールバー](/development/client/ui-schema/toolbar)を参照してください。
 
-<code src="./demos/use-schema-settings-render/index.tsx"></code>
+## スキーマ設定の実装方法は？
 
-大部分场景 settings 都是放在 SchemaToolbar 上的，所以为自定义组件支持 `x-toolbar`，也可以变相的支持 `x-settings`，更多用法参考 [Schema 工具栏](/development/client/ui-schema/toolbar)
-
-<code src="./demos/schema-toolbar-basic/button.tsx"></code>
-
-## 如何实现 Schema 的设置？
-
-通过 `useSchemaSettings()` 获取当前 Schema 的 `Designable`，通过 `Designable` 来操作 Schema，常用 api 有
+`useSchemaSettings()`を使用して現在のスキーマの`Designable`を取得し、`Designable`を介してスキーマを操作します。よく使用されるAPIは以下の通りです。
 
 - `dn.insertAdjacent()`
 - `dn.getSchemaAttribute()`
@@ -126,17 +114,15 @@ class PluginDemoAddSchemaSettings extends Plugin {
 - `dn.findOne()`
 - `dn.find()`
 - `dn.remove()`
-- `dn.remove()`
 
-更多细节参考
+詳細については、以下を参照してください。
 
-- [Designable 设计器](/development/client/ui-schema/designable)
+- [Designable デザイナー](/development/client/ui-schema/designable)
 - [Designable API](https://client.docs-cn.nocobase.com/core/ui-schema/designable)
-
-<code src="./demos/schema-settings-basic/index.tsx"></code>
 
 ## API 参考
 
-- [SchemaSettingsManager](https://client.docs-cn.nocobase.com/core/ui-schema/schema-settings-manager)
-- [SchemaSettings](https://client.docs-cn.nocobase.com/core/ui-schema/schema-settings)
-- [Designable](https://client.docs-cn.nocobase.com/core/ui-schema/designable)
+- [SchemaSettingsManager](https://client.docs-nocobase.com/core/ui-schema/schema-settings-manager)
+- [SchemaSettings](https://client.docs-nocobase.com/core/ui-schema/schema-settings)
+- [Designable](https://client.docs-nocobase.com/core/ui-schema/designable)
+

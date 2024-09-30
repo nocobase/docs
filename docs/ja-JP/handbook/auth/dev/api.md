@@ -1,20 +1,20 @@
 # API 参考
 
-## 服务端
+## サーバー
 
-### Auth
+### 認証
 
-内核 API，参考: [Auth](../../../api/auth/auth.md)
+コアAPI、参照: [Auth](../../../api/auth/auth.md)
 
 ### BaseAuth
 
-内核 API, 参考: [BaseAuth](../../../api/auth/base-auth.md)
+コアAPI、参照: [BaseAuth](../../../api/auth/base-auth.md)
 
 ### AuthModel
 
-#### 概览
+#### 概要
 
-`AuthModel` 是 NocoBase 应用中使用的认证器 (`Authenticator`, 参考: [AuthManager - setStorer](../../../api/auth/auth-manager.md#setstorer) 和 [Auth - constructor](../../../api/auth/auth.md#constructor)) 数据模型，提供了一些和用户数据表交互的方法。除此之外，也可以使用 Sequelize Model 提供的方法。
+`AuthModel` は NocoBase アプリケーションで使用される認証器（`Authenticator`、参照: [AuthManager - setStorer](../../../api/auth/auth-manager.md#setstorer) および [Auth - constructor](../../../api/auth/auth.md#constructor)）のデータモデルで、ユーザーデータテーブルと対話するためのいくつかのメソッドを提供します。さらに、Sequelize Model によって提供されるメソッドも利用可能です。
 
 ```ts
 import { AuthModel } from '@nocobase/plugin-auth';
@@ -31,26 +31,26 @@ class CustomAuth extends BaseAuth {
 }
 ```
 
-#### 类方法
+#### クラスメソッド
 
-- `findUser(uuid: string): UserModel` - 通过 `uuid` 查询用户。
+- `findUser(uuid: string): UserModel` - `uuid` を使用してユーザーを検索します。
 
-  - `uuid` - 来自当前认证类型的用户唯一标识
+  - `uuid` - 現在の認証タイプからのユーザーの一意の識別子
 
-- `newUser(uuid: string, userValues?: any): UserModel` - 创建新用户，通过 `uuid` 将用户和当前认证器绑定。
+- `newUser(uuid: string, userValues?: any): UserModel` - 新しいユーザーを作成し、`uuid` によりユーザーを現在の認証器にバインドします。
 
-  - `uuid` - 来自当前认证类型的用户唯一标识
-  - `userValues` - 可选。用户其他信息。不传递时将 `uuid` 作为用户昵称。
+  - `uuid` - 現在の認証タイプからのユーザーの一意の識別子
+  - `userValues` - 任意。ユーザーのその他の情報。指定しない場合、`uuid` がユーザーのニックネームとして使用されます。
 
-- `findOrCreateUser(uuid: string, userValues?: any): UserModel` - 查找或创建新用户，创建规则同上。
-  - `uuid` - 来自当前认证类型的用户唯一标识
-  - `userValues` - 可选。用户其他信息。
+- `findOrCreateUser(uuid: string, userValues?: any): UserModel` - ユーザーを検索または新しいユーザーを作成します。作成ルールは同様です。
+  - `uuid` - 現在の認証タイプからのユーザーの一意の識別子
+  - `userValues` - オプション。ユーザーのその他の情報。
 
-## 客户端
+## クライアント
 
 ### `plugin.registerType()`
 
-注册认证类型的客户端。
+認証タイプのクライアントを登録します。
 
 ```ts
 import AuthPlugin from '@nocobase/plugin-auth/client';
@@ -70,11 +70,11 @@ class CustomAuthPlugin extends Plugin {
 }
 ```
 
-#### 签名
+#### メソッド
 
 - `registerType(authType: string, options: AuthOptions)`
 
-#### 类型
+#### 型
 
 ```ts
 export type AuthOptions = {
@@ -87,28 +87,29 @@ export type AuthOptions = {
 };
 ```
 
-#### 详细信息
+#### 詳細情報
 
-- `SignInForm` - 登录表单
-- `SignInButton` - 登录（第三方）按钮，可以和登录表单二选一
-- `SignUpForm` - 注册表单
-- `AdminSettingsForm` - 后台配置表单
+- `SignInForm` - サインインフォーム
+- `SignInButton` - サインイン（サードパーティ）ボタン。サインインフォームのいずれかを選択できます。
+- `SignUpForm` - サインアップフォーム
+- `AdminSettingsForm` - 管理者設定フォーム
 
-### Route
+### ルート
 
-auth 插件注册前端路由如下：
+authプラグインのフロントエンドルートは以下の通りです：
 
-- Auth 布局
-  - name: `auth`
-  - path: `-`
-  - component: `AuthLayout`
+- Authレイアウト
+  - 名前: `auth`
+  - パス: `-`
+  - コンポーネント: `AuthLayout`
 
-- 登录页
-  - name: `auth.signin`
-  - path: `/signin`
-  - component: `SignInPage`
+- サインインページ
+  - 名前: `auth.signin`
+  - パス: `/signin`
+  - コンポーネント: `SignInPage`
 
-- 注册页
-  - name: `auth.signup`
-  - path: `/signup`
-  - component: `SignUpPage`
+- サインアップページ
+  - 名前: `auth.signup`
+  - パス: `/signup`
+  - コンポーネント: `SignUpPage`
+

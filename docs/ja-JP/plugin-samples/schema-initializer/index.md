@@ -1,24 +1,25 @@
-# SchemaInitializer
+# スキーマイニシャライザー
 
-[SchemaInitializer](/development/client/ui-schema/initializer) 用于向界面内添加各种区块、字段、操作等。
+[スキーマイニシャライザー](/development/client/ui-schema/initializer)は、インターフェースにさまざまなブロック、フィールド、操作などを追加するために使用されます。
 
-根据需求不同可能有以下扩展场景：
+ニーズに応じて、以下のような拡張シナリオがあります：
 
-- 向已有的 Initializer 中添加子项
-- 创建新的 Initializer
+- 既存のイニシャライザーに子項目を追加する
+- 新しいイニシャライザーを作成する
 
-根据以上场景，我们提供了如下示例：
+上記のシナリオに基づいて、以下の例を示します：
 
-**向已有的 Initializer 中添加子项**
+**既存のイニシャライザーに子項目を追加する**
 
-- [添加简单区块 Simple Block](/plugin-samples/schema-initializer/block-simple)
-- [添加数据区块 Data Block](/plugin-samples/schema-initializer/data-block)
-- [添加带弹窗的数据区块 Data Block Modal](/plugin-samples/schema-initializer/data-block-modal)
-- [添加简单 Action](/plugin-samples/schema-initializer/action-simple)
-- [添加弹窗 Action](/plugin-samples/schema-initializer/action-modal)
+- [シンプルブロックを追加する](/plugin-samples/schema-initializer/block-simple)
+- [データブロックを追加する](/plugin-samples/schema-initializer/data-block)
+- [モーダルデータブロックを追加する](/plugin-samples/schema-initializer/data-block-modal)
+- [シンプルアクションを追加する](/plugin-samples/schema-initializer/action-simple)
+- [モーダルアクションを追加する](/plugin-samples/schema-initializer/action-modal)
 
-**创建新的 Initializer**
+**新しいイニシャライザーを作成する**
 
-- [区块内嵌的 Initializer - 配置字段](/plugin-samples/schema-initializer/configure-fields)
-- [区块内嵌的 Initializer - 配置操作](/plugin-samples/schema-initializer/configure-actions)
-<!-- - [区块内嵌的 Initializer - 其他自定义](/plugin-samples/schema-initializer/configure-custom) -->
+- [ブロック内に埋め込まれたイニシャライザー - フィールドの設定](/plugin-samples/schema-initializer/configure-fields)
+- [ブロック内に埋め込まれたイニシャライザー - 操作の設定](/plugin-samples/schema-initializer/configure-actions)
+<!-- - [ブロック内に埋め込まれたイニシャライザー - その他のカスタマイズ](/plugin-samples/schema-initializer/configure-custom) -->
+

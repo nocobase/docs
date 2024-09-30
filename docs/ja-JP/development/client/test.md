@@ -1,27 +1,28 @@
-# 测试
+# テスト
 
-## 单元测试
+## ユニットテスト
 
-基于 [Vitest](https://vitest.dev/) 测试框架。
+[Vitest](https://vitest.dev/) テストフレームワークを基にしています。
 
 ```ts
-describe('my suite', () => {
+describe('私のスイート', () => {
   beforeEach(async () => {});
 
   afterEach(async () => {});
 
-  test('my case', async () => {});
+  test('私のケース', async () => {});
 });
 ```
 
-## E2E 测试
+## E2E テスト
 
-基于 [Playwright](https://playwright.dev/) 测试框架。
+[Playwright](https://playwright.dev/) テストフレームワークを基にしています。
 
 ```ts
 import { expect, test } from '@nocobase/test/e2e';
 
-test.describe('my suite', () => {
-  test('my case', async ({ page, mockPage }) => {});
+test.describe('私のスイート', () => {
+  test('私のケース', async ({ page, mockPage }) => {});
 });
 ```
+

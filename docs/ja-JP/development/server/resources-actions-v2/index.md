@@ -1,37 +1,37 @@
-# 核心概念
+# コア概念
 
-## 资源 Resource
+## リソース Resource
 
-在 NocoBase 里，资源（resource）有两种表达方式：
+NocoBase では、リソース（resource）には二つの表現方法があります：
 
 - `<collection>`
 - `<collection>.<association>`
 
 <Alert>
 
-- collection 是所有抽象数据的集合
-- association 为 collection 的关联数据
+- collection はすべての抽象データの集合です。
+- association は collection の関連データです。
 
 </Alert>
 
-示例
+例
 
 - `posts` 文章
-- `posts.user` 文章用户
-- `posts.tags` 文章标签
+- `posts.user` 文章ユーザー
+- `posts.tags` 文章タグ
 
-配置
+設定
 
 ```js
 // 文章
 {
   name: 'posts',
 }
-// 文章用户
+// 文章ユーザー
 {
   name: 'posts.user',
 }
-// 文章标签
+// 文章タグ
 {
   name: 'posts.tags',
 }
@@ -39,21 +39,21 @@
 
 ## 操作 Action
 
-以 `:<action>` 的方式表示资源操作
+リソース操作は `:<action>` の形式で表現します。
 
 - `<collection>:<action>`
 - `<collection>.<association>:<action>`
 
-**示例**
+**例**
 
-- `posts:create` 创建文章
-- `posts.user:get` 查看文章用户
-- `posts.tags:add` 附加文章标签（将现有的标签与文章关联）
+- `posts:create` 文章を作成
+- `posts.user:get` 文章ユーザーを取得
+- `posts.tags:add` 文章タグを追加（既存のタグを文章に関連付ける）
 
-配置
+設定
 
 ```js
-// 文章资源的增删改查配置
+// 文章リソースの増減改修設定
 {
   name: 'posts',
   actions: {
@@ -65,7 +65,19 @@
   },
 }
 
-// 文章用户
+// 文章ユーザー
+{
+  name: 'posts.user',
+  actions: {
+    create: async (ctx, next) => {},
+    get: async (ctx, next) => {},
+    list: async (ctx, next) => {},
+    update: async (ctx, next) => {},
+    destroy: async (ctx, next) => {},
+  },
+}
+
+// 文章タグ
 {
   name: 'posts.tags',
   actions: {
@@ -80,7 +92,7 @@
 }
 ```
 
-## 如何请求资源
+## リソースのリクエスト方法
 
 ```bash
 <GET|POST>   /api/<collection>:<action>
@@ -89,9 +101,9 @@
 <GET|POST>   /api/<collection>/<sourceId>/<association>:<action>/<filterByTk>
 ```
 
-**示例**
+**例**
 
-posts 资源
+posts リソース
 
 ```bash
 POST  /api/posts:create
@@ -101,7 +113,7 @@ POST  /api/posts:update/1
 POST  /api/posts:destroy/1
 ```
 
-posts.comments 资源
+posts.comments リソース
 
 ```bash
 POST  /api/posts/1/comments:create
@@ -111,7 +123,7 @@ POST  /api/posts/1/comments:update/1
 POST  /api/posts/1/comments:destroy/1
 ```
 
-posts.tags 资源
+posts.tags リソース
 
 ```bash
 POST  /api/posts/1/tags:create
@@ -123,18 +135,19 @@ POST  /api/posts/1/tags:add
 GET   /api/posts/1/tags:remove
 ```
 
-## 资源定位
+## リソースの特定
 
-所有资源都通过 `filterByTk` 定位
+すべてのリソースは `filterByTk` によって特定されます。
 
-- collection 资源，`filterByTk` 必须是唯一的
-- association 资源，`filterByTk` 可能并不是唯一的，需要同时提供 `sourceId` 来定位。
+- collection リソースでは、`filterByTk` はユニークである必要があります。
+- association リソースでは、`filterByTk` はユニークでない可能性があり、`sourceId` を同時に提供する必要があります。
 
-例如 `tables.fields` 表示数据表的字段
+例えば `tables.fields` はデータテーブルのフィールドを示します。
 
 ```bash
 GET   /api/tables/table1/fields/title
 GET   /api/tables/table2/fields/title
 ```
 
-table1 和 table2 都有 title 字段，title 在 table1 里是唯一的，但是其他表也可能有 title 字段
+table1 と table2 の両方に title フィールドがあり、title は table1 ではユニークですが、他のテーブルにも title フィールドが存在する可能性があります。
+

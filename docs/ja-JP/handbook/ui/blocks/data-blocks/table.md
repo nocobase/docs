@@ -1,99 +1,100 @@
-# 表格区块
+# テーブルブロック
 
-## 介绍
+## イントロダクション
 
-表格区块是 NocoBase 内置的核心数据区块之一，以表格形式展示和管理结构化数据。它具备灵活的配置选项，可定制表格列、列宽、排序规则、数据范围等，同时内置了多种操作供配置：筛选、新建、复制、编辑、删除等。
+テーブルブロックは、NocoBaseに内蔵されたコアデータブロックの一つで、構造化データをテーブル形式で表示および管理します。柔軟な設定オプションを備えており、テーブルの列、列幅、ソートルール、データ範囲などをカスタマイズできるほか、フィルタリング、新規作成、コピー、編集、削除などの多様な操作が組み込まれています。
 
-## 添加区块
+## ブロックの追加
 
- <video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240415215027.mp4" type="video/mp4">
+<video width="100%" height="440" controls>
+    <source src="https://static-docs.nocobase.com/20240415215027.mp4" type="video/mp4">
 </video>
 
-## 区块配置项
+## ブロック設定項目
 
 ![20240415215319](https://static-docs.nocobase.com/20240415215319.png)
 
-### 设置数据范围
+### データ範囲の設定
 
-示例：默认筛选「状态」为已发货的单据。
+例：デフォルトで「状態」を発送済みにフィルタリングします。
 
 ![20240415215404](https://static-docs.nocobase.com/20240415215404.png)
 
-更多内容参考 [设置数据范围](/handbook/ui/blocks/block-settings/data-scope)
+詳細については [データ範囲の設定](/handbook/ui/blocks/block-settings/data-scope) を参照してください。
 
-### 设置排序规则
+### ソートルールの設定
 
-示例：将单据按发货日期倒序显示。
+例：注文を発送日で降順に表示します。
 
 ![20240415215509](https://static-docs.nocobase.com/20240415215509.png)
 
-更多内容参考 [设置排序规则](/handbook/ui/blocks/block-settings/sorting-rule)
+詳細については [ソートルールの設定](/handbook/ui/blocks/block-settings/sorting-rule) を参照してください。
 
-### 连接数据区块
+### データブロックの接続
 
-示例：订单表格区块和订单详情区块连接，实现筛选联动。
+例：注文テーブルブロックと注文詳細ブロックを接続し、フィルタリングを連動させます。
 
-  <video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240415221426.mp4" type="video/mp4">
+<video width="100%" height="440" controls>
+    <source src="https://static-docs.nocobase.com/20240415221426.mp4" type="video/mp4">
 </video>
 
-更多内容参考 [连接数据区块](/handbook/ui/blocks/block-settings/connect-block)
+詳細については [データブロックの接続](/handbook/ui/blocks/block-settings/connect-block) を参照してください。
 
-### 设置区块高度
+### ブロックの高さの設定
 
-示例：设置订单表格区块高度为「全高」模式。
+例：注文テーブルブロックの高さを「全高」モードに設定します。
 
 ![20240604225958](https://static-docs.nocobase.com/20240604225958.gif)
 
-更多内容参考 [区块高度](/handbook/ui/blocks/block-settings/block-height)
+詳細については、[ブロックの高さ](/handbook/ui/blocks/block-settings/block-height)を参照してください。
 
-- [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
-- [设置数据加载方式](/handbook/ui/blocks/block-settings/loading-mode)
-- [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
+- [ブロックタイトルの編集](/handbook/ui/blocks/block-settings/block-title)
+- [データ読み込み方法の設定](/handbook/ui/blocks/block-settings/loading-mode)
+- [ブロックテンプレートとして保存](/handbook/ui/blocks/block-settings/block-template)
 
-## 配置字段
+## フィールドの設定
 
-### 本表字段
+### 本表フィールド
 
 ![20240415223714](https://static-docs.nocobase.com/20240415223714.png)
 
-### 关系表字段
+### 関係表フィールド
 
 ![20240415223746](https://static-docs.nocobase.com/20240415223746.png)
 
-### 显示继承表字段（父表字段）
+### 表示継承表フィールド（親表フィールド）
 
-示例：租赁订单表继承订单表。
+例：リース注文表は注文表を継承します。
 
 ![20240415224242](https://static-docs.nocobase.com/20240415224242.png)
 
-表格列字段配置项可参考 [表格列字段](/handbook/ui/fields/generic/table-column)
+表の列フィールド設定項目については、[表の列フィールド](/handbook/ui/fields/generic/table-column)を参照してください。
 
-## 配置操作
+## 操作の設定
 
-### 全局操作
+### グローバル操作
 
 ![20240415225525](https://static-docs.nocobase.com/20240415225525.png)
 
-- [筛选](/handbook/ui/actions/types/filter)
-- [添加](/handbook/ui/actions/types/add-new)
-- [删除](/handbook/ui/actions/types/delete)
-- [刷新](/handbook/ui/actions/types/refresh)
-- [导入](/handbook/action-import)
-- [导出](/handbook/action-export)
-- [添加数据](/handbook/action-add-record)
-- [批量更新](/handbook/action-bulk-update)
-- [批量编辑](/handbook/action-bulk-edit)
+- [フィルタ](/handbook/ui/actions/types/filter)
+- [追加](/handbook/ui/actions/types/add-new)
+- [削除](/handbook/ui/actions/types/delete)
+- [更新](/handbook/ui/actions/types/refresh)
+- [インポート](/handbook/action-import)
+- [エクスポート](/handbook/action-export)
+- [データ追加](/handbook/action-add-record)
+- [一括更新](/handbook/action-bulk-update)
+- [一括編集](/handbook/action-bulk-edit)
 
 ### 行操作
 
 ![20240415225657](https://static-docs.nocobase.com/20240415225657.png)
 
-- [查看](/handbook/ui/actions/types/view)
-- [编辑](/handbook/ui/actions/types/edit)
-- [复制](/handbook/action-duplicate)
-- [删除](/handbook/ui/actions/types/delete)
-- [弹窗](/handbook/ui/actions/types/pop-up)
-- [更新记录](/handbook/ui/actions/types/update-record)
-- [自定义请求](/handbook/action-custom-request)
+- [表示](/handbook/ui/actions/types/view)
+- [編集](/handbook/ui/actions/types/edit)
+- [コピー](/handbook/action-duplicate)
+- [削除](/handbook/ui/actions/types/delete)
+- [ポップアップ](/handbook/ui/actions/types/pop-up)
+- [レコード更新](/handbook/ui/actions/types/update-record)
+- [カスタムリクエスト](/handbook/action-custom-request)
+

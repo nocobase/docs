@@ -1,25 +1,25 @@
-# 通知：电子邮件
+# Notification: email
 
 <PluginInfo name="notification-email"></PluginInfo>
 
-## 介绍
+## Introduction
 
-通过电子邮件渠道发送通知，目前只支持 SMTP 传输方式。
+Send notifications through the email channel, currently supporting only the SMTP transmission method.
 
-## 安装
+## Installation
 
-预置插件，需要先激活才能使用。
+This is a built-in plugin that must be activated before use.
 
 ![20240928192940](https://static-docs.nocobase.com/20240928192940.png)
 
-## 使用手册
+## User Manual
 
-### 电子邮件渠道配置
+### Email Channel Configuration
 
-目前只支持 SMTP 传输方式
+Currently, only the SMTP transmission method is supported.
 
 ![20240928191819](https://static-docs.nocobase.com/20240928191819.png)
 
-### 工作流通知配置
+### Workflow Notification Configuration
 
 ![20240928191935](https://static-docs.nocobase.com/20240928191935.png)

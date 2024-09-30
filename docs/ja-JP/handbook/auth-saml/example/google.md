@@ -1,38 +1,39 @@
 # Google Workspace
 
-## 将 Google 设置为 IdP
+## GoogleをIdPとして設定する
 
-[Google管理控制](https://admin.google.com/) - 应用 - Web应用和移动应用
+[Google管理コンソール](https://admin.google.com/) - アプリ - ウェブアプリとモバイルアプリ
 
 ![](https://static-docs.nocobase.com/0812780b990a97a63c14ea8991959827.png)
 
-进行应用设置之后，复制 **SSO网址**、**实体ID** 和**证书**。
+アプリ設定が完了したら、**SSO URL**、**エンティティID**、**証明書**をコピーします。
 
 ![](https://static-docs.nocobase.com/aafd20a794730e85411c0c8f368637e0.png)
 
-## 在 NocoBase 上新增认证器
+## NocoBaseに認証器を追加する
 
-插件设置 - 用户认证 - 添加 - SAML
+プラグイン設定 - ユーザー認証 - 追加 - SAML
 
 ![](https://static-docs.nocobase.com/5bc18c7952b8f15828e26bb07251a335.png)
 
-将刚才复制的信息依次进行填写
+先ほどコピーした情報を順に入力します。
 
-- SSO URL: SSO网址
-- Public Certificate: 证书
-- idP Issuer: Entity ID (实体id)
-- http: 如果是在本地http测试，勾选
+- SSO URL: SSO URL
+- 公開証明書: 証明書
+- IdP発行者: エンティティID
+- HTTP: ローカルでHTTPテストを行う場合はチェックを入れる
 
-之后复制 Usage 中的 SP Issuer/EntityID 和 ACS URL.
+その後、UsageからSP発行者/エンティティIDとACS URLをコピーします。
 
-## 在 Google 上填写 SP 信息
+## GoogleでSP情報を入力する
 
-回到Google控制台，在**服务提供商详细信息**页面，输入刚才复制的 ACS 网址和实体 ID，并勾选**已签署响应**。
+Googleコンソールに戻り、**サービスプロバイダの詳細情報**ページで、先ほどコピーしたACS URLとエンティティIDを入力し、**署名された応答**にチェックを入れます。
 
 ![](https://static-docs.nocobase.com/1536268bf8df4a5ebc72384317172191.png)
 
 ![](https://static-docs.nocobase.com/c7de1f8b84c1335de110e5a7c96255c4.png)
 
-在**属性映射**位置，添加映射，可以映射对应属性。
+**属性マッピング**のセクションで、マッピングを追加し、対応する属性を設定します。
 
 ![](https://static-docs.nocobase.com/27180f2f46480c3fee3016df86d6fdb8.png)
+

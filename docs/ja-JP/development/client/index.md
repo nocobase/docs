@@ -1,21 +1,21 @@
-# 概述
+# 概要
 
-## 目录结构
+## ディレクトリ構造
 
-初始化的空插件，客户端相关目录结构如下：
+初期化された空のプラグインおよびクライアント関連のディレクトリ構造は以下の通りです：
 
 ```bash
 |- /plugin-sample-hello
   |- /src
-    |- /client      # 插件客户端代码
-      |- index.tsx   # 客户端入口文件
+    |- /client      # プラグインクライアントコード
+      |- index.tsx   # クライアントエントリーファイル
   |- client.d.ts
   |- client.js
 ```
 
-## Plugin Class
+## プラグインクラス
 
-插件类提供了插件生命周期的各种方法。
+プラグインクラスは、プラグインのライフサイクルに関するさまざまなメソッドを提供します。
 
 ```ts
 import { Plugin } from '@nocobase/client';
@@ -31,34 +31,35 @@ export class PluginSampleHelloClient extends Plugin {
 export default PluginSampleHelloClient;
 ```
 
-## 插件的生命周期
+## プラグインのライフサイクル
 
-<img alt="插件的生命周期" src="./image.png" style="width: 600px;" />
+<img alt="プラグインのライフサイクル" src="./image.png" style="width: 600px;" />
 
-- 在插件初始化之后，触发 `afterAdd`。需要注意的是，插件的添加是无序的，所以不要在 `afterAdd` 里获取其他插件的实例，如果需要获取其他插件的实例，可以在 `beforeLoad` 或者 `load` 里获取
-- 在 `beforeLoad` 里所有已激活的插件都实例化了，此时可以通过 [app.pluginManager.get()](https://client.docs.nocobase.com/core/application/plugin-settings-manager) 获取到实例
-- 在 `load` 里，所有插件的 `beforeLoad` 方法都已执行
+- プラグインが初期化された後、`afterAdd`がトリガーされます。プラグインの追加は無秩序であるため、`afterAdd`内で他のプラグインのインスタンスを取得しないでください。他のプラグインのインスタンスを取得する必要がある場合は、`beforeLoad`または`load`内で取得できます。
+- `beforeLoad`内では、すべてのアクティブなプラグインがインスタンス化されています。この時点で、[app.pluginManager.get()](https://client.docs.nocobase.com/core/application/plugin-settings-manager)を通じてインスタンスを取得できます。
+- `load`内では、すべてのプラグインの`beforeLoad`メソッドが実行されています。
 
-## 插件类里常用的属性及方法
+## プラグインクラスでよく使われるプロパティとメソッド
 
-| API                          | 教程                                                                           |
-| ---------------------------- | ------------------------------------------------------------------------------ |
-| app.i18n                     | [国际化](/development/client/i18n)                                             |
-| app.apiClient                | [API 客户端](/development/client/api-client)                                   |
-| app.pluginManager            | [插件管理器](https://client.docs.nocobase.com/core/application/plugin-manager) |
-| app.router                   | [路由管理](/development/client/router)                                         |
-| app.pluginSettingsManager    | [插件配置页](/development/client/router#插件设置页扩展)                        |
-| app.schemaInitializerManager | [Schema Initializer 配置](/development/client/ui-schema/initializer)           |
-| app.schemaSettingsManager    | [Schema Settings 配置](/development/client/ui-schema/settings)                 |
-| app.addProviders             | [Provider 组件](/development/client/providers)                                 |
-| app.addComponents            | [Schema 渲染](/development/client/ui-schema/rendering)                         |
-| app.addScopes                | [Schema 渲染](/development/client/ui-schema/rendering)                         |
+| API                          | チュートリアル                                                                     |
+| ---------------------------- | --------------------------------------------------------------------------------- |
+| app.i18n                     | [国際化](/development/client/i18n)                                                |
+| app.apiClient                | [API クライアント](/development/client/api-client)                                |
+| app.pluginManager            | [プラグイン管理者](https://client.docs.nocobase.com/core/application/plugin-manager) |
+| app.router                   | [ルーティング管理](/development/client/router)                                     |
+| app.pluginSettingsManager    | [プラグイン設定ページ](/development/client/router#プラグイン設定ページ拡張)         |
+| app.schemaInitializerManager  | [Schema Initializer 設定](/development/client/ui-schema/initializer)              |
+| app.schemaSettingsManager     | [Schema Settings 設定](/development/client/ui-schema/settings)                    |
+| app.addProviders             | [Provider コンポーネント](/development/client/providers)                          |
+| app.addComponents            | [Schema レンダリング](/development/client/ui-schema/rendering)                     |
+| app.addScopes                | [Schema レンダリング](/development/client/ui-schema/rendering)                     |
 
-## 组件里常用的 React **hooks**
+## コンポーネントでよく使われる React **hooks**
 
-| API            | 教程                                                                                          |
-| -------------- | --------------------------------------------------------------------------------------------- |
-| useApp()       | [useApp() API](https://client.docs.nocobase.com/core/application/application#useapp)          |
-| usePlugin()    | [usePlugin() API](https://client.docs.nocobase.com/core/application/plugin-manager#useplugin) |
-| useAPIClient() | [API 客户端](/development/client/api-client)                                                  |
-| useRequest()   | [API 客户端](/development/client/api-client)                                                  |
+| API            | チュートリアル                                                                                         |
+| -------------- | ------------------------------------------------------------------------------------------------------ |
+| useApp()       | [useApp() API](https://client.docs.nocobase.com/core/application/application#useapp)                   |
+| usePlugin()    | [usePlugin() API](https://client.docs.nocobase.com/core/application/plugin-manager#useplugin)         |
+| useAPIClient() | [API クライアント](/development/client/api-client)                                                     |
+| useRequest()   | [API クライアント](/development/client/api-client)                                                     |
+

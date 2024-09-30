@@ -1,37 +1,37 @@
-# 日志
+# ログ
 
-## 介绍
+## 概要
 
-日志是帮助我们定位系统问题的重要手段。NocoBase 的服务端日志主要包括接口请求日志和系统运行日志，支持日志级别、滚动策略、大小、打印格式等配置。本篇文档主要介绍 NocoBase 服务端日志的相关内容，以及如何使用日志插件提供的服务端日志打包和下载的功能。
+ログはシステムの問題を特定するための重要な手段です。NocoBaseのサーバーログは主にインターフェースリクエストログとシステム実行ログで構成されており、ログレベル、ロールオーバー戦略、サイズ、印刷形式などの設定をサポートしています。本ドキュメントでは、NocoBaseサーバーログに関する内容と、ログプラグインが提供するサーバーログのパッケージおよびダウンロード機能の使用方法について説明します。
 
-## 日志配置
+## ログ設定
 
-可以通过 [环境变量](../../welcome/getting-started/env.md#logger_transport) 配置日志级别、输出方式、打印格式等的日志相关参数。
+[環境変数](../../welcome/getting-started/env.md#logger_transport)を使用して、ログレベル、出力方法、印刷形式などのログ関連パラメータを設定できます。
 
-## 日志格式
+## ログ形式
 
-NocoBase 支持配置4种不同的日志格式。
+NocoBaseでは、4種類の異なるログ形式を設定することができます。
 
 ### `console`
 
-开发环境默认格式，消息以高亮颜色显示。
+開発環境のデフォルト形式で、メッセージはハイライトカラーで表示されます。
 
 ```
-2023-12-30 22:40:06 [info ] response                                     method=GET path=/api/uiSchemas:getJsonSchema/nocobase-admin-menu res={"status":200} action={"actionName":"getJsonSchema","resourceName":"uiSchemas","params":{"filterByTk":"nocobase-admin-menu","resourceName":"uiSchemas","resourceIndex":"nocobase-admin-menu","actionName":"getJsonSchema"}} userId=1 status=200 cost=5 app=main reqId=ccf4e3bd-beb0-4350-af6e-b1fc1d9b6c3f
-2023-12-30 22:43:12 [debug] Database dialect: mysql                      module=application method=install app=main reqId=31ffa8b5-f377-456b-a295-0c8a28938228
-2023-12-30 22:43:12 [warn ] app is installed                             module=application method=install app=main reqId=31ffa8b5-f377-456b-a295-0c8a28938228
+2023-12-30 22:40:06 [情報] 応答                                     メソッド=GET パス=/api/uiSchemas:getJsonSchema/nocobase-admin-menu res={"status":200} アクション={"actionName":"getJsonSchema","resourceName":"uiSchemas","params":{"filterByTk":"nocobase-admin-menu","resourceName":"uiSchemas","resourceIndex":"nocobase-admin-menu","actionName":"getJsonSchema"}} ユーザーID=1 ステータス=200 コスト=5 アプリ=main reqId=ccf4e3bd-beb0-4350-af6e-b1fc1d9b6c3f
+2023-12-30 22:43:12 [デバッグ] データベース方言: mysql                      モジュール=application メソッド=install アプリ=main reqId=31ffa8b5-f377-456b-a295-0c8a28938228
+2023-12-30 22:43:12 [警告] アプリはすでにインストールされています                             モジュール=application メソッド=install アプリ=main reqId=31ffa8b5-f377-456b-a295-0c8a28938228
 ```
 
 ### `json`
 
-生产环境默认格式。
+生産環境のデフォルト形式です。
 
 ```json
 {
   "level": "info",
   "timestamp": "2023-12-26 22:04:56",
   "reqId": "7612ef42-58e8-4c35-bac2-2e6c9d8ec96e",
-  "message": "response",
+  "message": "レスポンス",
   "method": "POST",
   "path": "/api/authenticators:publicList",
   "res": { "status": 200 },
@@ -47,102 +47,103 @@ NocoBase 支持配置4种不同的日志格式。
 
 ### `logfmt`
 
-> https://brandur.org/logfmt.
+詳細は https://brandur.org/logfmt をご覧ください。
 
 ```
 level=info timestamp=2023-12-21 14:18:02 reqId=8b59a40d-68ee-4c97-8001-71a47a92805a
-message=response method=POST path=/api/authenticators:publicList res={"status":200}
+message=レスポンス method=POST path=/api/authenticators:publicList res={"status":200}
 action={"actionName":"publicList","resourceName":"authenticators","params":{"resourceName":"authenticators","actionName":"publicList"}}
-userId=undefined status=200 cost=14
+userId=未定 status=200 cost=14
 ```
 
 ### `delimiter`
 
-分隔符 `|` 分割。
+区切り文字 `|` で分割されます。
 
 ```
-info|2023-12-26 22:07:09|13cd16f0-1568-418d-ac37-6771ee650e14|response|POST|/api/authenticators:publicList|{"status":200}|{"actionName":"publicList","resourceName":"authenticators","params":{"resourceName":"authenticators","actionName":"publicList"}}||200|25
+info|2023-12-26 22:07:09|13cd16f0-1568-418d-ac37-6771ee650e14|レスポンス|POST|/api/authenticators:publicList|{"status":200}|{"actionName":"publicList","resourceName":"authenticators","params":{"resourceName":"authenticators","actionName":"publicList"}}||200|25
 ```
 
-## 日志目录
+## ログディレクトリ
 
-NocoBase 日志文件的主要目录结构为：
+NocoBaseのログファイルの主なディレクトリ構造は以下の通りです：
 
-- `storage/logs` - 日志输出目录
-  - `main` - 主应用名称
-    - `request_YYYY-MM-DD.log` - 请求日志
-    - `system_YYYY-MM-DD.log` - 系统日志
-    - `system_error_YYYY-MM-DD.log` - 系统错误日志
-    - `sql_YYYY-MM-DD.log` - SQL 执行日志
+- `storage/logs` - ログ出力ディレクトリ
+  - `main` - 主アプリケーション名
+    - `request_YYYY-MM-DD.log` - リクエストログ
+    - `system_YYYY-MM-DD.log` - システムログ
+    - `system_error_YYYY-MM-DD.log` - システムエラーログ
+    - `sql_YYYY-MM-DD.log` - SQL実行ログ
     - ...
-  - `sub-app` - 子应用名称
+  - `sub-app` - サブアプリケーション名
     - `request_YYYY-MM-DD.log`
     - ...
 
-## 日志文件
+## ログファイル
 
-### 请求日志
+### リクエストログ
 
-`request_YYYY-MM-DD.log`, 接口请求和响应日志。
+`request_YYYY-MM-DD.log` - インターフェースのリクエストとレスポンスのログ。
 
-| 字段          | 说明                               |
-| ------------- | ---------------------------------- |
-| `level`       | 日志级别                           |
-| `timestamp`   | 日志打印时间 `YYYY-MM-DD hh:mm:ss` |
-| `message`     | `request` 或 `response`            |
-| `userId`      | `response` 中才有                  |
-| `method`      | 请求方法                           |
-| `path`        | 请求路径                           |
-| `req` / `res` | 请求/响应内容                      |
-| `action`      | 请求资源和参数                     |
-| `status`      | 响应状态码                         |
-| `cost`        | 请求耗时                           |
-| `app`         | 当前应用名称                       |
-| `reqId`       | 请求 ID                            |
+| フィールド      | 説明                               |
+| --------------- | ---------------------------------- |
+| `level`        | ログレベル                         |
+| `timestamp`    | ログ出力時間 `YYYY-MM-DD hh:mm:ss` |
+| `message`      | `request` または `response`       |
+| `userId`       | `response` のみ存在               |
+| `method`       | リクエストメソッド                 |
+| `path`         | リクエストパス                     |
+| `req` / `res`  | リクエスト/レスポンス内容         |
+| `action`       | リクエストリソースおよびパラメータ |
+| `status`       | レスポンスステータスコード         |
+| `cost`         | リクエスト処理にかかる時間         |
+| `app`          | 現在のアプリケーション名           |
+| `reqId`        | リクエスト ID                      |
 
-:::info{title=提示}
-`reqId` 会通过 `X-Request-Id` 响应头携带给前端。
+:::info{title=ヒント}
+`reqId` は `X-Request-Id` レスポンスヘッダーを通じてフロントエンドに送信されます。
 :::
 
-### 系统日志
+### システムログ
 
-`system_YYYY-MM-DD.log`, 应用、中间件、插件等系统运行日志，`error` 级别日志会单独打印到 `system_error_YYYY-MM-DD.log`
+`system_YYYY-MM-DD.log` はアプリケーション、中間ウェア、プラグインなどのシステム実行ログであり、`error` レベルのログは別途 `system_error_YYYY-MM-DD.log` に出力されます。
 
-| 字段        | 说明                               |
-| ----------- | ---------------------------------- |
-| `level`     | 日志级别                           |
-| `timestamp` | 日志打印时间 `YYYY-MM-DD hh:mm:ss` |
-| `message`   | 日志消息                           |
-| `module`    | 模块                               |
-| `submodule` | 子模块                             |
-| `method`    | 调用方法                           |
-| `meta`      | 其他相关信息, JSON 格式            |
-| `app`       | 当前应用名称                       |
-| `reqId`     | 请求 ID                            |
+| フィールド    | 説明                                 |
+| ------------- | ------------------------------------ |
+| `level`       | ログレベル                           |
+| `timestamp`   | ログ出力時間 `YYYY-MM-DD hh:mm:ss`  |
+| `message`     | ログメッセージ                       |
+| `module`      | モジュール                           |
+| `submodule`   | サブモジュール                       |
+| `method`      | 呼び出しメソッド                     |
+| `meta`        | その他関連情報（JSON形式）          |
+| `app`         | 現在のアプリケーション名             |
+| `reqId`       | リクエストID                        |
 
-### SQL 执行日志
+### SQL 実行ログ
 
-`sql_YYYY-MM-DD.log`, 数据库 SQL 执行日志。其中 `INSERT INTO` 语句仅保留前 2000 个字符。
+`sql_YYYY-MM-DD.log`は、データベースのSQL実行ログです。`INSERT INTO`文は最初の2000文字のみ保持されます。
 
-| 字段        | 说明                               |
-| ----------- | ---------------------------------- |
-| `level`     | 日志级别                           |
-| `timestamp` | 日志打印时间 `YYYY-MM-DD hh:mm:ss` |
-| `sql`       | SQL 语句                           |
-| `app`       | 当前应用名称                       |
-| `reqId`     | 请求 ID                            |
+| フィールド    | 説明                                 |
+| ------------- | ------------------------------------ |
+| `level`       | ログレベル                           |
+| `timestamp`   | ログ出力時間 `YYYY-MM-DD hh:mm:ss`  |
+| `sql`         | SQL文                               |
+| `app`         | 現在のアプリケーション名             |
+| `reqId`       | リクエストID                        |
 
-## 日志打包下载
+## ログパッケージのダウンロード
 
 <PluginInfo name="logger"></PluginInfo>
 
-1. 进入日志管理页面。
-2. 选择想要下载的日志文件。
-3. 点击下载 (Download) 按钮。
+1. ログ管理ページにアクセスします。
+2. ダウンロードしたいログファイルを選択します。
+3. ダウンロード (Download) ボタンをクリックします。
 
 ![2024-04-10_10-50-50](https://static-docs.nocobase.com/2024-04-10_10-50-50.png)
 
-## 相关文档
+## 関連文書
 
-- [插件开发 - 服务端 - 日志](../../development/server/logger)
-- [API参考 - @nocobase/logger](../../api/logger)
+- [プラグイン開発 - サーバー - ログ](../../development/server/logger)
+- [APIリファレンス - @nocobase/logger](../../api/logger)
+

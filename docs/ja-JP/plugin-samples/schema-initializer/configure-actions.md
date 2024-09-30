@@ -1,24 +1,24 @@
-# 区块内嵌的 Initializer - 配置操作
+# ブロック内蔵のイニシャライザー - 設定操作
 
-## 场景说明
+## シナリオ説明
 
-如果新创建的区块是一个复杂的数据区块，那么它内部可能包含多个动态添加的部分，其中 `Configure actions` 对应的 initializer 主要是负责动态添加一些按钮实现各种操作。例如 `Details` 区块，我们可以通过 `Configure actions` 添加 `Edit`、`Print` 等按钮。
+新しく作成されたブロックが複雑なデータブロックである場合、その内部には動的に追加される複数の部分が含まれる可能性があります。その中で、`Configure actions` に対応するイニシャライザーは、さまざまな操作を実現するためにいくつかのボタンを動的に追加する役割を担います。たとえば、`Details` ブロックでは、`Configure actions` を通じて `Edit` や `Print` などのボタンを追加できます。
 
 ![img_v3_02b4_9b80a4a0-6d9b-4e53-a544-f92c17d81d2g](https://static-docs.nocobase.com/img_v3_02b4_9b80a4a0-6d9b-4e53-a544-f92c17d81d2g.jpg)
 
-## 示例说明
+## サンプル説明
 
-本实例会在 [添加数据区块 Data Block](/plugin-samples/schema-initializer/data-block) 基础上继续实现类似 `Details` 区块的效果，通过 `Configure actions` 来配置按钮。
+この例では、[データブロックの追加](/plugin-samples/schema-initializer/data-block) を基に、`Details` ブロックに類似した効果を実現します。`Configure actions` を使用してボタンを設定します。
 
-本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-initializer-configure-actions) 中查看。
+この文書の完全なサンプルコードは、[plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-initializer-configure-actions) で確認できます。
 
 <video width="100%" controls="">
   <source src="https://static-docs.nocobase.com/20240522-191602.mp4" type="video/mp4" />
 </video>
 
-## 初始化插件
+## プラグインの初期化
 
-我们按照 [编写第一个插件](/development/your-fisrt-plugin) 文档说明，如果没有一个项目，可以先创建一个项目，如果已经有了或者是 clone 的源码，则跳过这一步。
+[最初のプラグインを作成する](/development/your-fisrt-plugin) 文書に従い、プロジェクトがない場合は新規にプロジェクトを作成します。すでにプロジェクトがある場合やソースコードをクローンした場合は、このステップをスキップしてください。
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d sqlite
@@ -27,35 +27,35 @@ yarn install
 yarn nocobase install
 ```
 
-然后初始化一个插件，并添加到系统中：
+次に、プラグインを初期化し、システムに追加します：
 
 ```bash
 yarn pm create @nocobase-sample/plugin-initializer-configure-actions
 yarn pm enable @nocobase-sample/plugin-initializer-configure-actions
 ```
 
-然后启动项目即可：
+その後、プロジェクトを起動します：
 
 ```bash
 yarn dev
 ```
 
-然后登录后访问 [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) 就可以看到插件已经安装并启用了。
+ログイン後、[http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) にアクセスすると、プラグインがインストールされ、有効化されていることが確認できます。
 
-## 功能实现
+## 機能の実現
 
-在实现本示例之前，我们需要先了解一些基础知识：
+このサンプルを実現する前に、いくつかの基本知識を理解する必要があります：
 
-- [SchemaInitializer 教程](/development/client/ui-schema/initializer)：用于向界面内添加各种区块、字段、操作等
-- [SchemaInitializer API](https://client.docs.nocobase.com/core/ui-schema/schema-initializer)：用于向界面内添加各种区块、字段、操作等
-- [UI Schema](/development/client/ui-schema/what-is-ui-schema)：用于定义界面的结构和样式
-- [Designable 设计器](/development/client/ui-schema/designable)：用于修改 Schema
+- [SchemaInitializer チュートリアル](/development/client/ui-schema/initializer)：インターフェースにさまざまなブロック、フィールド、操作を追加するためのものです。
+- [SchemaInitializer API](https://client.docs.nocobase.com/core/ui-schema/schema-initializer)：インターフェースにさまざまなブロック、フィールド、操作を追加するためのものです。
+- [UI Schema](/development/client/ui-schema/what-is-ui-schema)：インターフェースの構造とスタイルを定義するためのものです。
+- [Designable デザイナー](/development/client/ui-schema/designable)：スキーマを変更するためのものです。
 
-### 1. 创建区块
+### 1. ブロックの作成
 
-前面已经说明本示例会在 [添加数据区块 Data Block](/plugin-samples/schema-initializer/data-block) 基础上继续实现，所以我们可以复制 `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client` 目录覆盖 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client`。
+このサンプルは、[データブロックの追加](/plugin-samples/schema-initializer/data-block) を基に続行しますので、`packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client` ディレクトリをコピーして `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client` に上書きします。
 
-然后修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/index.tsx`：
+次に、`packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/index.tsx` を修正します：
 
 ```diff
 import { Plugin } from '@nocobase/client';
@@ -75,18 +75,18 @@ import { Plugin } from '@nocobase/client';
 + export default PluginInitializerConfigureActionsClient;
 ```
 
-然后修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/constants.ts`：
+次に、`packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/constants.ts` を修正します：
 
 ```ts
 export const BlockName = 'InfoV2';
 export const BlockNameLowercase = 'info-v2';
 ```
 
-### 2. 实现 initializer
+### 2. イニシャライザーの実装
 
-#### 2.1 定义 initializer
+#### 2.1 イニシャライザーの定義
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/configureActionsInitializer.ts` 文件：
+新たに `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/configureActionsInitializer.ts` ファイルを作成します：
 
 ```tsx | pure
 import { SchemaInitializer } from "@nocobase/client";
@@ -95,7 +95,7 @@ import { BlockNameLowercase } from "../../constants";
 export const configureActionsInitializer = new SchemaInitializer({
   name: `${BlockNameLowercase}:configureActions`,
   icon: 'SettingOutlined',
-  title: 'Configure actions',
+  title: 'アクションの設定',
   style: {
     marginLeft: 8,
   },
@@ -105,33 +105,33 @@ export const configureActionsInitializer = new SchemaInitializer({
 });
 ```
 
-我们通过上述代码定义了一个新的 `SchemaInitializer`，其子项暂时为空。
+上記のコードを使用して、新しい `SchemaInitializer` を定義しましたが、そのサブアイテムは一時的に空です。
 
-- [SchemaInitializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer)：用于创建一个 Schema Initializer 实例
-- `icon`：图标，更多图标可参考 Ant Design [Icons](https://ant.design/components/icon/)
-- `title`：按钮标题
-- [items](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types)：按钮下的子项
+- [SchemaInitializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer)：Schema Initializer インスタンスを作成するために使用します。
+- `icon`：アイコン。他のアイコンは Ant Design [Icons](https://ant.design/components/icon/) を参照してください。
+- `title`：ボタンのタイトル。
+- [items](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types)：ボタンの下にあるサブアイテム。
 
-然后将其在 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/index.ts` 中导出：
+次に、これを `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/index.ts` でエクスポートします：
 
 ```tsx | pure
 export * from './configureActionsInitializer';
 ```
 
-并且修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/index.tsx` 将 `configureActions` 导出：
+そして `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/index.tsx` を修正して、`configureActions` をエクスポートします：
 
 ```diff
 import React from 'react';
-import { SchemaInitializerItemType, useSchemaInitializer } from '@nocobase/client'
+import { SchemaInitializerItemType, useSchemaInitializer } from '@nocobase/client';
 import { CodeOutlined } from '@ant-design/icons';
 
-+ export * from './configureActions'
++ export * from './configureActions';
 // ...
 ```
 
-#### 2.2 注册 initializer
+#### 2.2 初期化子の登録
 
-然后修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/index.tsx` 文件，导入并注册这个 initializer：
+次に、`packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/index.tsx` ファイルを修正して、この初期化子をインポートし、登録します：
 
 ```tsx | pure
 // ...
@@ -139,16 +139,16 @@ import { infoInitializerItem, configureActionsInitializer } from './initializer'
 
 export class PluginInitializerConfigureActionsClient extends Plugin {
   async load() {
-    this.app.schemaInitializerManager.add(configureActionsInitializer)
+    this.app.schemaInitializerManager.add(configureActionsInitializer);
 
     // ...
   }
 }
 ```
 
-#### 2.3 使用 initializer
+#### 2.3 初期化子の使用
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/schema/index.ts` 文件，新增 `actions` 子节点：
+`packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/schema/index.ts` ファイルを修正し、`actions` サブノードを追加します：
 
 ```diff
 // ...
@@ -167,30 +167,29 @@ function getInfoBlockSchema({ dataSource, collection }) {
 +           'x-component': 'ActionBar',
 +           'x-component-props': {
 +             layout: 'two-column',
-+             style: { marginBottom: 20 }
++             style: { marginBottom: 20 },
 +           },
 +           'x-initializer': configureActionsInitializer.name,
-+         }
-+       }
-      }
-    }
-  }
++         },
++       },
+      },
+    },
+  };
 }
 ```
 
-`configure actions` 一般与 [ActionBar](https://client.docs.nocobase.com/components/action#actionbar) 组件搭配使用。
+`アクションの設定` は一般的に [ActionBar](https://client.docs.nocobase.com/components/action#actionbar) コンポーネントと組み合わせて使用されます。
 
+`Info` のサブノードに `actions` フィールドを追加しました：
 
-我们在 `Info` 的子节点中添加了一个 `actions` 字段：
+- `type: 'void'`：タイプが `void` の場合、これはコンテナを示します。
+- `x-component: 'ActionBar'`：ボタンを表示するために [ActionBar](https://client.docs.nocobase.com/components/action#actionbar) コンポーネントを使用します。
+- `x-initializer: configureActionsInitializer.name`：作成したスキーマイニシャライザーを使用します。
+- `x-component-props.layout: 'two-column'`：左右のレイアウトです。具体的な例については [ActionBar two-column](https://client.docs.nocobase.com/components/action#two-column) を参照してください。
 
-- `type: 'void'`：类型为 `void`，表示这是一个容器
-- `x-component: 'ActionBar'`：使用 [ActionBar](https://client.docs.nocobase.com/components/action#actionbar) 组件，用于展示按钮
-- `x-initializer: configureActionsInitializer.name`：使用我们刚创建的 Schema Initializer
-- `x-component-props.layout: 'two-column'`：左右布局，具体示例可参考 [ActionBar two-column](https://client.docs.nocobase.com/components/action#two-column)
+#### 2.4 ブロックのレンダリングサブノード
 
-#### 2.4 区块渲染子节点
-
-我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/component/Info.tsx` 文件，将 `Info` 组件修改为：
+`packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/component/Info.tsx` ファイルを修正し、`Info` コンポーネントを以下のように変更します：
 
 ```diff
 import React, { FC } from 'react';
@@ -213,55 +212,55 @@ export const InfoV2: FC<InfoV2Props> = withDynamicSchemaProps(({ children, colle
 }, { displayName: BlockName })
 ```
 
-- `children`： `properties` 的内容会被传入到 `InfoV2` 组件的 `children` 中，所以我们直接将 `children` 渲染出来即可。
+- `children`：`properties` の内容は `InfoV2` コンポーネントの `children` に渡されるため、直接 `children` をレンダリングします。
 
 ![img_v3_02b4_4c6cb675-789e-48d5-99ce-072984dcfc9g](https://static-docs.nocobase.com/img_v3_02b4_4c6cb675-789e-48d5-99ce-072984dcfc9g.jpg)
 
-### 3. 实现 initializer items
+### 3. イニシャライザーアイテムの実装
 
-#### 3.1 复用：`Custom request` Action
+#### 3.1 再利用：`Custom request` アクション
 
-我们继续修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/configureActionsInitializer.ts` 文件：
+`packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/configureActionsInitializer.ts` ファイルをさらに修正します：
 
 ```diff
 export const configureActions = new SchemaInitializer({
   name: 'info:configureActions',
-  title: 'Configure actions',
+  title: 'アクションの設定',
   icon: 'SettingOutlined',
   items: [
 +   {
 +     name: 'customRequest',
-+     title: '{{t("Custom request")}}',
++     title: '{{t("カスタムリクエスト")}}',
 +     Component: 'CustomRequestInitializer',
 +   },
   ]
 });
 ```
 
-因为 `Custom request` 我们这里直接复用了 `CustomRequestInitializer` 组件，更多可复用的 Initializer Item 可参考 *TODO*。
+`Custom request` は、ここで `CustomRequestInitializer` コンポーネントを直接再利用しています。再利用可能なイニシャライザーアイテムについては *TODO* を参照してください。
 
 ![img_v3_02b4_0d439087-cfe1-4681-bfab-4e4bc3e34cbg](https://static-docs.nocobase.com/img_v3_02b4_0d439087-cfe1-4681-bfab-4e4bc3e34cbg.jpg)
 
-#### 3.2 自定义：`Custom Refresh` Action
+#### 3.2 カスタマイズ：`Custom Refresh` アクション
 
-除了复用已有的 Initializer Item，我们也可以自定义 Action。关于自定义 Action 的详细步骤可以参考 [添加简单 Action](/plugin-samples/schema-initializer/action-simple) 和 [添加弹窗 Action](/plugin-samples/schema-initializer/action-modal)。
+既存のイニシャライザーアイテムを再利用するだけでなく、アクションをカスタマイズすることもできます。カスタムアクションの詳細な手順については [簡単なアクションの追加](/plugin-samples/schema-initializer/action-simple) と [ポップアップアクションの追加](/plugin-samples/schema-initializer/action-modal) を参照してください。
 
-这里我们实现一个 `Custom Refresh` Action。
+ここでは、`Custom Refresh` アクションを実装します。
 
-#### 3.2.1 定义名称
+#### 3.2.1 名前の定義
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/items/customRefresh/constants.ts`：
+`packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/items/customRefresh/constants.ts` を新規作成します：
 
 ```ts
-export const ActionName = 'Custom Request';
+export const ActionName = 'カスタムリクエスト';
 export const ActionNameLowercase = 'customRequest';
 ```
 
-#### 3.2.2 定义 Schema
+#### 3.2.2 スキーマの定義
 
-##### 3.2.2.1 定义 Schema
+##### 3.2.2.1 スキーマの定義
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/items/customRefresh/schema.ts` 文件：
+`packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/items/customRefresh/schema.ts` ファイルを新規作成します：
 
 ```ts
 import { ActionProps, useDataBlockRequest, ISchema } from "@nocobase/client";
@@ -272,7 +271,7 @@ export const useCustomRefreshActionProps = (): ActionProps => {
   const t = useT();
   return {
     type: 'primary',
-    title: t('Custom Refresh'),
+    title: t('カスタムリフレッシュ'),
     async onClick() {
       await runAsync();
     },
@@ -287,37 +286,37 @@ export const customRefreshActionSchema: ISchema = {
 }
 ```
 
-我们定义了 `customRefreshActionSchema` 以及动态属性 `useCustomRefreshActionProps`。
+`customRefreshActionSchema` と動的属性 `useCustomRefreshActionProps` を定義しました。
 
 `customRefreshActionSchema`：
-  - `type: 'void'`：类型为 `void`，表示普通 UI，不包含数据
-  - `x-component: 'Action'`：使用 [Action](https://client.docs.nocobase.com/components/action) 组件，用于展示按钮
-  - `title: 'Custom Refresh'`：按钮标题
-  - `x-use-component-props: 'useCustomRefreshActionProps'`：使用 `useCustomRefreshActionProps` 这个 Hooks 返回的属性。因为 Schema 会保存到服务器，所以这里需要使用字符串的方式。
-  - `'x-toolbar': 'ActionSchemaToolbar'`：一般于 `Action` 组件搭配使用，与默认的 ToolBar 不同的是，其将 Action 右上角的 `Initializer` 隐藏，仅保留 Drag 和 Settings。
+- `type: 'void'`：タイプは `void` で、通常のUIではデータを含まないことを示します。
+- `x-component: 'Action'`：ボタンを表示するために [Action](https://client.docs.nocobase.com/components/action) コンポーネントを使用します。
+- `title: 'カスタムリフレッシュ'`：ボタンのタイトルです。
+- `x-use-component-props: 'useCustomRefreshActionProps'`：`useCustomRefreshActionProps` フックが返す属性を使用します。スキーマはサーバーに保存されるため、ここでは文字列として使用する必要があります。
+- `'x-toolbar': 'ActionSchemaToolbar'`：通常、`Action` コンポーネントと組み合わせて使用され、デフォルトの ToolBar とは異なり、Action の右上隅にある `Initializer` を隠し、Drag と Settings のみを保持します。
 
-`useCustomRefreshActionProps`：这个是 React Hooks，需要返回 Action 组件的属性。
-  - [useDataBlockRequest()](https://client.docs.nocobase.com/core/data-block/data-block-request-provider)：数据区块的请求对象，由 `DataBlockProvider` 内部提供，用于自动获取数据区块的数据
-    - `runAsync`：一个异步请求方法，用于刷新数据区块的数据
-  - `type: 'primary'`：按钮类型为 `primary`
-  - `onClick`：点击事件。
+`useCustomRefreshActionProps`：これは React Hooks で、Action コンポーネントの属性を返す必要があります。
+- [useDataBlockRequest()](https://client.docs.nocobase.com/core/data-block/data-block-request-provider)：データブロックのリクエストオブジェクトで、`DataBlockProvider` 内部から提供され、データブロックのデータを自動的に取得します。
+  - `runAsync`：データブロックのデータを更新するための非同期リクエストメソッドです。
+- `type: 'primary'`：ボタンのタイプは `primary` です。
+- `onClick`：クリックイベントです。
 
-然后将其在 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/items/customRefresh/index.ts` 中导出：
+次に、`packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/items/customRefresh/index.ts` でこれをエクスポートします：
 
 ```ts
 export * from './schema';
 ```
 
-并修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/index.ts` 将 `customRefresh` 导出：
+そして、`packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/index.ts` を修正して `customRefresh` をエクスポートします：
 
 ```diff
 export * from './configureActionsInitializer';
 + export * from './items/customRefresh';
 ```
 
-##### 3.2.2.2 注册上下文
+##### 3.2.2.2 コンテキストの登録
 
-我们还需要将 `useCustomRefreshActionProps` 注册到上下文中。我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/index.tsx` 文件：
+`useCustomRefreshActionProps` をコンテキストに登録する必要があります。`packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/index.tsx` ファイルを修正します：
 
 ```diff
 // ...
@@ -333,13 +332,13 @@ export class PluginInitializerConfigureActionsClient extends Plugin {
 }
 ```
 
-关于 `SchemaComponentOptions` 的使用可以参考 [SchemaComponentOptions](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponentoptions) 文档以及 [全局注册 Component 和 Scope](/plugin-samples/component-and-scope/global)。
+`SchemaComponentOptions` の使用については [SchemaComponentOptions](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponentoptions) ドキュメントや [グローバル登録 Component と Scope](/plugin-samples/component-and-scope/global) を参照してください。
 
-#### 3.3.2 实现 settings
+#### 3.3.2 settings の実装
 
-##### 3.3.2.1 定义 settings
+##### 3.3.2.1 settings の定義
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/items/customRefresh/settings.ts`
+`packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/items/customRefresh/settings.ts` を新しく作成します：
 
 ```tsx | pure
 import { SchemaSettings } from "@nocobase/client";
@@ -353,21 +352,20 @@ export const customRefreshActionSettings = new SchemaSettings({
       type: 'remove',
     }
   ]
-})
+});
 ```
 
-`customRefreshActionSettings`：这里只简单定义了一个 `remove` 操作，更多关于 Schema Settings 的定义可以参考 [Schema Settings](https://client.docs.nocobase.com/core/ui-schema/schema-settings) 文档。
+`customRefreshActionSettings`：ここでは簡単に `remove` 操作を定義しています。Schema Settings の詳細については [Schema Settings](https://client.docs.nocobase.com/core/ui-schema/schema-settings) ドキュメントをご参照ください。
 
-
-修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/items/customRefresh/index.ts` 将其导出：
+`packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/items/customRefresh/index.ts` を修正してエクスポートします：
 
 ```tsx | pure
 export * from './settings';
 ```
 
-##### 3.3.2.2 注册 settings
+##### 3.3.2.2 settingsの登録
 
-然后将 `customRefreshActionSettings` 注册到系统中。我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/index.tsx` 文件：
+次に、`customRefreshActionSettings` をシステムに登録します。`packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/index.tsx` ファイルを修正します：
 
 ```diff
 - import { infoInitializerItem, useCustomRefreshActionProps } from './initializer';
@@ -380,9 +378,9 @@ export class PluginInitializerConfigureActionsClient extends Plugin {
 }
 ```
 
-##### 3.3.2.2 使用 settings
+##### 3.3.2.2 settingsの使用
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/items/customRefresh/schema.ts` 文件的 `customRefreshActionSchema` 方法，将 `x-settings` 设置为 `customRefreshActionSettings.name`。
+`packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/items/customRefresh/schema.ts` ファイルの `customRefreshActionSchema` メソッドを修正し、`x-settings` を `customRefreshActionSettings.name` に設定します。
 
 ```diff
 + import { customRefreshActionSettings } from "./settings";
@@ -391,16 +389,16 @@ export const customRefreshActionSchema: ISchema = {
   type: 'void',
   'x-component': 'Action',
 + "x-settings": customRefreshActionSettings.name,
-  title: 'Custom Refresh',
+  title: 'カスタムリフレッシュ',
   'x-use-component-props': 'useCustomRefreshActionProps'
 }
 ```
 
-##### 3.3.3 定义 SchemaInitializer item
+##### 3.3.3 SchemaInitializer itemの定義
 
-###### 3.3.3.1 定义 SchemaInitializer item
+###### 3.3.3.1 SchemaInitializer itemの定義
 
-我们继续修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/items/customRefresh/initializer.ts` 文件：
+`packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/items/customRefresh/initializer.ts` ファイルをさらに修正します：
 
 ```tsx | pure
 import { SchemaInitializerItemType, useSchemaInitializer } from "@nocobase/client";
@@ -424,22 +422,21 @@ export const customRefreshActionInitializerItem: SchemaInitializerItemType = {
 };
 ```
 
-- `type: 'item'`：类型为 `item`，表示文本，当点击后会触发 `onClick` 事件
-- `name: 'custom refresh'`：唯一标识符，用于区分不同的 Schema Item 和增删改查操作
-- `title: 'Custom Refresh'`：按钮标题
+- `type: 'item'`：タイプは `item` で、テキストを示し、クリックすると `onClick` イベントがトリガーされます。
+- `name: 'カスタムリフレッシュ'`：ユニークな識別子で、異なる Schema Item と CRUD 操作を区別するために使用されます。
+- `title: 'カスタムリフレッシュ'`：ボタンのタイトルです。
 
-更多关于 Schema Item 的定义可以参考 [Schema Initializer Item](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types) 文档。
+Schema Item の詳細については [Schema Initializer Item](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types) ドキュメントをご参照ください。
 
-
-然后修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/index.ts` 将其导出：
+次に、`packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/index.ts` を修正してエクスポートします：
 
 ```tsx | pure
 export * from './initializer';
 ```
 
-###### 3.3.3.2 使用 SchemaInitializer item
+###### 3.3.3.2 スキーマイニシャライザーアイテムの使用
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/configureActionsInitializer.ts` 文件，将 `customRefreshActionInitializerItem` 添加到 `items` 中：
+`packages/plugins/@nocobase-sample/plugin-initializer-configure-actions/src/client/initializer/configureActions/configureActionsInitializer.ts` ファイルを修正し、`items` に `customRefreshActionInitializerItem` を追加します：
 
 ```diff
 import { SchemaInitializer } from "@nocobase/client";
@@ -447,7 +444,7 @@ import { SchemaInitializer } from "@nocobase/client";
 
 export const configureActionsInitializer = new SchemaInitializer({
   name: 'info:configureActions',
-  title: 'Configure actions',
+  title: 'アクションの設定',
   icon: 'SettingOutlined',
   style: {
     marginLeft: 8,
@@ -455,7 +452,7 @@ export const configureActionsInitializer = new SchemaInitializer({
   items: [
     {
       name: 'customRequest',
-      title: '{{t("Custom request")}}',
+      title: '{{t("カスタムリクエスト")}}',
       Component: 'CustomRequestInitializer',
       'x-align': 'right',
     },
@@ -468,23 +465,23 @@ export const configureActionsInitializer = new SchemaInitializer({
   <source src="https://static-docs.nocobase.com/20240522-191602.mp4" type="video/mp4" />
 </video>
 
-你可以根据需要实现更多的 `Action`。
+必要に応じて、さらに多くの `Action` を実装できます。
 
-## 打包和上传到生产环境
+## パッケージ化と本番環境へのアップロード
 
-按照 [构建并打包插件](/development/your-fisrt-plugin#构建并打包插件) 文档说明，我们可以打包插件并上传到生产环境。
+[プラグインのビルドとパッケージ化](/development/your-fisrt-plugin#构建并打包插件) ドキュメントに従い、プラグインをパッケージ化し、本番環境へアップロードします。
 
-如果是 clone 的源码，需要先执行一次全量 build，将插件的依赖也构建好。
+クローンしたソースコードの場合、最初に全量ビルドを実行し、プラグインの依存関係もビルドする必要があります。
 
 ```bash
 yarn build
 ```
 
-如果是使用的 `create-nocobase-app` 创建的项目，可以直接执行：
+`create-nocobase-app` を使用して作成したプロジェクトの場合、直接以下を実行できます：
 
 ```bash
 yarn build @nocobase-sample/plugin-initializer-configure-actions --tar
 ```
 
-这样就可以看到 `storage/tar/@nocobase-sample/plugin-initializer-configure-actions.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
+これで `storage/tar/@nocobase-sample/plugin-initializer-configure-actions.tar.gz` ファイルが作成され、[アップロードの方法](/welcome/getting-started/plugin) でインストールできます。
 

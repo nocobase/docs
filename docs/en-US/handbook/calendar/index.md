@@ -16,9 +16,9 @@ This plugin comes pre-installed, so no additional setup is required.
       <source src="https://static-docs.nocobase.com/20240419201640.mp4" type="video/mp4">
 </video>
 
-1. **Title Field:** Displays key information directly on the calendar bars.
-2. **Start Time:** Indicates when the task begins.
-3. **End Time:** Marks when the task ends.
+1. Title Field: Displays key information directly on the calendar bars.
+2. Start Time: Indicates when the task begins.
+3. End Time: Marks when the task ends.
 
 Clicking on a task bar highlights the selection and opens a detailed pop-up window.
 

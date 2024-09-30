@@ -1,20 +1,20 @@
-# 遥测 - Prometheus
+# 遥測 - Prometheus
 
 <PluginInfo name="telemetry-prometheus" commercial="true"></PluginInfo>
 
-## 介绍
+## イントロダクション
 
-本插件用于将 <a href="https://opentelemetry.io/docs/specs/otlp/" target="_blank">OpenTelemetry</a> 协议 (OTLP) 数据转换成 Prometheus 格式，并暴露接口供 Prometheus 抓取指标 (Metric) 数据。
+このプラグインは、<a href="https://opentelemetry.io/docs/specs/otlp/" target="_blank">OpenTelemetry</a> プロトコル (OTLP) データを Prometheus 形式に変換し、Prometheus がメトリック (Metric) データを取得できるインターフェースを提供します。
 
-## 使用手册
+## 使用マニュアル
 
-### 环境变量
+### 環境変数
 
-启动 NocoBase 前，需要先配置好环境变量。
+NocoBase を起動する前に、環境変数を設定する必要があります。
 
 #### TELEMETRY_ENABLED
 
-配置为 `on`.
+`on` に設定します。
 
 ```bash
 TELEMETRY_ENABLED=on
@@ -22,7 +22,7 @@ TELEMETRY_ENABLED=on
 
 #### TELEMETRY_METRIC_READER
 
-添加 `prometheus`.
+`prometheus` を追加します。
 
 ```bash
 TELEMETRY_METRIC_READER=prometheus
@@ -30,22 +30,22 @@ TELEMETRY_METRIC_READER=prometheus
 
 #### TELEMETRY_PROMETHEUS_SERVER
 
-是否启动单独的服务。
+独立したサービスを起動するかどうかを設定します。
 
-- `off`. 抓取接口为 `/api/prometheus:metrics`.
-- `on`. 抓取接口为 `:port/metrics`.
+- `off`：取得インターフェースは `/api/prometheus/metrics`。
+- `on`：取得インターフェースは `:port/metrics`。
 
 #### TELEMETRY_PROMETHEUS_PORT
 
-启动单独服务时的服务端口。默认 `9464`.
+独立したサービスを起動する際のポート番号。デフォルトは `9464` です。
 
-#### 相关文档
+#### 関連ドキュメント
 
-- [环境变量](../../welcome/getting-started/env.md#telemetry_enabled)
+- [環境変数](../../welcome/getting-started/env.md#telemetry_enabled)
 
-### Prometheus 配置
+### Prometheus 設定
 
-单独 server
+独立したサーバーの場合の設定例：
 
 ```yaml
 scrape_configs:
@@ -54,12 +54,13 @@ scrape_configs:
       - targets: ['localhost:9464']
 ```
 
-内部 API
+内部 API の設定例：
 
 ```yaml
 scrape_configs:
   - job_name: 'nocobase'
-    metrics_path: '/api/prometheus:metrics'
+    metrics_path: '/api/prometheus/metrics'
     static_configs:
       - targets: ['localhost:13001']
 ```
+

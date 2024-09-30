@@ -1,52 +1,52 @@
-# 日志
+# ログ
 
-NocoBase 日志基于 <a href="https://github.com/winstonjs/winston" target="_blank">Winston</a> 封装。默认情况下，NocoBase 将日志分为接口请求日志、系统运行日志和 SQL 执行日志，其中接口请求日志和 SQL 执行日志由应用内部打印，插件开发者通常只需要打印插件相关的系统运行日志。
+NocoBaseのログは、<a href="https://github.com/winstonjs/winston" target="_blank">Winston</a>を基にしています。デフォルトでは、NocoBaseはログをインターフェースリクエストログ、システム実行ログ、SQL実行ログの3種類に分類します。インターフェースリクエストログおよびSQL実行ログはアプリ内で出力され、プラグイン開発者は通常、プラグインに関連するシステム実行ログのみを出力します。
 
-本文档主要介绍在开发插件的时候，如何创建和打印日志。日志的更多介绍可以参考：[日志插件](../../handbook/logger/index.md)。
+この文書では、プラグイン開発時にログを作成し出力する方法について説明します。ログに関する詳細は、[ログプラグイン](../../handbook/logger/index.md)を参照してください。
 
-## 默认打印方法
+## デフォルトの出力方法
 
-NocoBase 提供了系统运行日志的打印方法，日志按照规定字段打印，同时输出到指定文件。 参考：[日志插件 - 系统日志](../../handbook/logger/index.md#系统日志)。
+NocoBaseはシステム実行ログの出力方法を提供しており、ログは定義されたフィールドに従って出力され、指定されたファイルにも書き込まれます。参照：[ログプラグイン - システムログ](../../handbook/logger/index.md#システムログ)。
 
 ```ts
-// 默认打印方法
-app.log.info("message");
+// デフォルトの出力方法
+app.log.info("メッセージ");
 
-// 在中间件中使用
+// ミドルウェアでの使用
 async function (ctx, next) {
-  ctx.log.info("message");
+  ctx.log.info("メッセージ");
 }
 
-// 在插件中使用
+// プラグインでの使用
 class CustomPlugin extends Plugin {
   async load() {
-    this.log.info("message");
+    this.log.info("メッセージ");
   }
 }
 ```
 
-以上方法都遵循下面的用法：
+上記の方法は以下の使用法に従います：
 
-第一个参数为日志消息，第二个参数为可选 metadata 对象，可以是任意键值对，其中 `module`, `submodule`, `method` 会被提取为单独字段，其余字段则放到 `meta` 字段中。
+最初のパラメータはログメッセージで、2番目のパラメータはオプションのメタデータオブジェクトです。任意のキーと値のペアを指定でき、`module`, `submodule`, `method`は個別のフィールドとして抽出され、その他のフィールドは`meta`フィールドに格納されます。
 
 ```ts
-app.log.info('message', {
-  module: 'module',
-  submodule: 'submodule',
-  method: 'method',
-  key1: 'value1',
-  key2: 'value2',
+app.log.info('メッセージ', {
+  module: 'モジュール',
+  submodule: 'サブモジュール',
+  method: 'メソッド',
+  key1: '値1',
+  key2: '値2',
 });
-// => level=info timestamp=2023-12-27 10:30:23 message=message module=module submodule=submodule method=method meta={"key1": "value1", "key2": "value2"}
+// => level=info timestamp=2023-12-27 10:30:23 message=メッセージ module=モジュール submodule=サブモジュール method=メソッド meta={"key1": "値1", "key2": "値2"}
 
 app.log.debug();
 app.log.warn();
 app.log.error();
 ```
 
-## 输出到其他文件
+## 他のファイルへの出力
 
-如果想沿用系统默认的打印方法，但是不想输出到默认的文件中，可以使用 `createSystemLogger` 创建一个自定义的系统日志实例。
+システムのデフォルトの出力方法を使用したいが、デフォルトのファイルに出力したくない場合は、`createSystemLogger`を使用してカスタムシステムログインスタンスを作成できます。
 
 ```ts
 import { createSystemLogger } from '@nocobase/logger';
@@ -54,13 +54,13 @@ import { createSystemLogger } from '@nocobase/logger';
 const logger = createSystemLogger({
   dirname: '/pathto/',
   filename: 'xxx',
-  seperateError: true, // 是否将 error 级别日志单独输出到 'xxx_error.log'
+  separateError: true, // エラーレベルのログを 'xxx_error.log' に別々に出力するかどうか
 });
 ```
 
-## 自定义日志
+## カスタムログ
 
-如果不想使用系统提供的打印方法，想使用 Winston 原生的方法，可以通过以下方法创建日志。
+システム提供の出力方法を使用したくない場合、Winstonのネイティブな方法を使用してログを作成できます。
 
 ### `createLogger`
 
@@ -68,35 +68,35 @@ const logger = createSystemLogger({
 import { createLogger } from '@nocobase/logger';
 
 const logger = createLogger({
-  // options
+  // オプション
 });
 ```
 
-`options` 在原来 `winston.LoggerOptions` 的基础上进行了扩展。
+`options`は元の`winston.LoggerOptions`に基づいて拡張されています。
 
-- `transports` - 可以使用 `'console' | 'file' | 'dailyRotateFile'` 应用预置的输出方式。
-- `format` - 可以使用 `'logfmt' | 'json' | 'delimiter'` 应用预置的打印格式。
+- `transports` - `'console' | 'file' | 'dailyRotateFile'`のプリセット出力方法を使用できます。
+- `format` - `'logfmt' | 'json' | 'delimiter'`のプリセット出力フォーマットを使用できます。
 
 ### `app.createLogger`
 
-在多应用的场景下，有时候我们希望自定义的输出目录和文件，可以输出到当前应用名称的目录下。参考：[日志插件 - 日志目录](../../handbook/logger/index.md#日志目录)。
+複数アプリケーションのシナリオでは、カスタムの出力ディレクトリとファイルを設定して、現在のアプリ名のディレクトリに出力することがあります。参照：[ログプラグイン - ログディレクトリ](../../handbook/logger/index.md#ログディレクトリ)。
 
 ```ts
 app.createLogger({
   dirname: '',
-  filename: 'custom', // 输出到 /storage/logs/main/custom.log
+  filename: 'custom', // /storage/logs/main/custom.log に出力
 });
 ```
 
 ### `plugin.createLogger`
 
-使用场景和用法同 `app.createLogger`.
+使用シナリオと使用法は`app.createLogger`と同様です。
 
 ```ts
 class CustomPlugin extends Plugin {
   async load() {
     const logger = this.createLogger({
-      // 输出到 /storage/logs/main/custom-plugin/YYYY-MM-DD.log
+      // /storage/logs/main/custom-plugin/YYYY-MM-DD.log に出力
       dirname: 'custom-plugin',
       filename: '%DATE%.log',
       transports: ['dailyRotateFile'],
@@ -105,7 +105,8 @@ class CustomPlugin extends Plugin {
 }
 ```
 
-## 相关文档
+## 関連文書
 
-- [日志插件](../../plugins/logger/index.md)
-- [API参考](../../api/logger.md)
+- [ログプラグイン](../../plugins/logger/index.md)
+- [APIリファレンス](../../api/logger.md)
+

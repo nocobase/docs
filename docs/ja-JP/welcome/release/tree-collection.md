@@ -1,6 +1,6 @@
-# Tree collection
+# ツリーコレクション
 
-## Collection options
+## コレクションオプション
 
 ```ts
 {
@@ -23,22 +23,23 @@
 
 ## UI
 
-### Create tree collection
+### ツリーコレクションの作成
 
 <img src="./tree-collection/tree-collection.jpg">
 
-### Default fields
+### デフォルトフィールド
 
 <img src="./tree-collection/init.jpg">
 
-### Table block
+### テーブルブロック
 
 <img src="./tree-collection/tree-table.jpg">
 
-### Add child
+### 子アイテムの追加
 
 <img src="./tree-collection/add-child.jpg">
 
-### Expend/Collapse
+### 展開/折りたたみ
 
 <img src="./tree-collection/expend-collapse.jpg">
+

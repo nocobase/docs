@@ -1,18 +1,18 @@
-# 创建新的 SchemaSettings
+# 新しい SchemaSettings の作成
 
-## 场景说明
+## シナリオ説明
 
-当我们新增一个区块、字段或者操作时，我们可能需要新增一些配置项，用于其展示、行为等，这时我们就需要新增一个 `SchemaSettings`。
+新しいブロック、フィールド、または操作を追加する際に、その表示や動作のために新たな設定項目を追加する必要がある場合があります。この時、新しい `SchemaSettings` を追加する必要があります。
 
-## 示例说明
+## 例の説明
 
-本示例会在 [简单区块](/plugin-samples/schema-initializer/block-simple) 例子的基础上完善，当时只是创建了一个只有 `remove` 的 SchemaSettings，本示例会增加如下配置项：
+この例は [シンプルブロック](/plugin-samples/schema-initializer/block-simple) を基にしています。当初は `remove` のみを持つ SchemaSettings を作成しましたが、今回の例では以下の設定項目を追加します：
 
-- `Edit block title`：编辑区块标题
-- `Edit Image`：编辑图片
-- `Edit height`：编辑图片的高度
-- `objectFit`：选择 img 的 `object-fit` 属性
-- `Lazy`：是否懒加载
+- `Edit block title`：ブロックタイトルの編集
+- `Edit Image`：画像の編集
+- `Edit height`：画像の高さの編集
+- `objectFit`：img の `object-fit` 属性の選択
+- `Lazy`：遅延読み込みの有無
 
 <br />
 
@@ -20,14 +20,13 @@
   <source src="https://static-docs.nocobase.com/20240602112410_rec_.mp4" type="video/mp4" />
 </video>
 
-本实例主要为了演示 initializer 的使用，更多关于区块扩展可以查看 [区块扩展](/plugin-samples/block) 文档。
+本例は初期化子の使用を示すためのものであり、ブロックの拡張に関しては [ブロック拡張](/plugin-samples/block) のドキュメントを参照してください。
 
-本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-schema-settings-new) 中查看。
+このドキュメントの完全な例のコードは [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-schema-settings-new) で確認できます。
 
+## プラグインの初期化
 
-## 初始化插件
-
-我们按照 [编写第一个插件](/development/your-fisrt-plugin) 文档说明，如果没有一个项目，可以先创建一个项目，如果已经有了或者是 clone 的源码，则跳过这一步。
+[最初のプラグインを書く](/development/your-fisrt-plugin) ドキュメントに従い、プロジェクトがない場合は新規プロジェクトを作成し、すでにある場合やクローンしたソースがある場合はこのステップをスキップしてください。
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d sqlite
@@ -36,28 +35,28 @@ yarn install
 yarn nocobase install
 ```
 
-然后初始化一个插件，并添加到系统中：
+次にプラグインを初期化し、システムに追加します：
 
 ```bash
 yarn pm create @nocobase-sample/plugin-schema-settings-new
 yarn pm enable @nocobase-sample/plugin-schema-settings-new
 ```
 
-然后启动项目即可：
+その後、プロジェクトを起動します：
 
 ```bash
 yarn dev
 ```
 
-然后登录后访问 [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) 就可以看到插件已经安装并启用了。
+ログイン後、[http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) にアクセスすると、プラグインがインストールされ、有効になっていることを確認できます。
 
-## 功能实现
+## 機能の実装
 
-### 1. 创建区块/字段/操作
+### 1. ブロック/フィールド/操作の作成
 
-前面已经说明本示例会在 [简单区块](/plugin-samples/schema-initializer/simple-block) 基础上继续实现，所以我们可以复制 `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client` 目录覆盖 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client`。
+前述の通り、本例は [シンプルブロック](/plugin-samples/schema-initializer/simple-block) を基に実装を続けるため、`packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client` ディレクトリをコピーして `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client` に上書きします。
 
-然后修改 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/index.tsx`：
+次に `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/index.tsx` を修正します：
 
 ```diff
 // ...
@@ -77,27 +76,27 @@ yarn dev
 + export default PluginSchemaSettingsNewClient;
 ```
 
-然后修改 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/component/Image.tsx` 的 `Image` 组件：
+次に `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/component/Image.tsx` の `Image` コンポーネントを修正します：
 
 ```diff
 - export const Image: FC<{ height?: number }> = withDynamicSchemaProps(({ height = 500 }) => {
 + export const ImageV2: FC<{ height?: number }> = withDynamicSchemaProps(({ height = 500 }) => {
 ```
 
-然后修改 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/constants.ts`：
+次に `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/constants.ts` を修正します：
 
 ```ts
 export const BlockName = 'ImageV2';
 export const BlockNameLowercase = 'image-v2';
 ```
 
-### 2. 组件属性
+### 2. コンポーネントの属性
 
-#### 2.1 实现组件
+#### 2.1 コンポーネントの実装
 
-我们需要先让组件支持需求中的属性。
+まず、コンポーネントが必要な属性をサポートするようにします。
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/component/Image.tsx` 文件：
+`packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/component/Image.tsx` ファイルを修正します：
 
 ```tsx | pure
 import React, { FC } from 'react';
@@ -135,14 +134,14 @@ export const ImageV2: FC<ImageV2Props> = withDynamicSchemaProps((props) => {
 }, { displayName: BlockName })
 ```
 
-#### 2.2 验证组件
+#### 2.2 コンポーネントの検証
 
-组件验证方式有 2 种：
+コンポーネントの検証方法は2種類あります：
 
-- 临时页面验证：我们可以临时建一个页面，然后渲染 `ImageV2` 组件，查看是否符合需求
-- 文档示例验证：可以启动文档 `yarn doc plugins/@@nocobase-sample/plugin-schema-settings-new`，通过写文档示例的方式验证是否符合需求（TODO）
+- 一時ページ検証：一時的にページを作成し、`ImageV2`コンポーネントをレンダリングして、要件に合致しているか確認します。
+- ドキュメント例検証：ドキュメントを起動し、`yarn doc plugins/@@nocobase-sample/plugin-schema-settings-new`を実行することで、ドキュメント例を通じて要件に合致しているか検証できます（TODO）。
 
-我们以 `临时页面验证` 为例，我们新建一个页面，根据属性参数添加一个或者多个 `Image` 组件，查看是否符合需求。
+ここでは、一時ページ検証の例を示します。新しいページを作成し、属性パラメータに基づいて1つまたは複数の`Image`コンポーネントを追加して、要件に合致しているか確認します。
 
 ```tsx | pure
 // ...
@@ -175,19 +174,19 @@ export class PluginSchemaSettingsNewClient extends Plugin {
 }
 ```
 
-我们访问 [http://localhost:3000/admin/image-component](http://localhost:3000/admin/image-component)，查看是否符合需求。
+[http://localhost:3000/admin/image-component](http://localhost:3000/admin/image-component)にアクセスして、要件に合致しているか確認します。
 
 <video width="100%" controls="">
   <source src="https://static-docs.nocobase.com/20240601171433_rec_.mp4" type="video/mp4" />
 </video>
 
-验证完毕后需要删除测试页面。
+検証が完了したら、テストページを削除する必要があります。
 
-### 3. 实现 Schema
+### 3. スキーマの実装
 
-#### 3.1 定义 Schema
+#### 3.1 スキーマの定義
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/schema/index.ts`：
+`packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/schema/index.ts`を修正します：
 
 ```diff
 import { ISchema } from "@nocobase/client";
@@ -218,13 +217,13 @@ export const imageSchema: ISchema = {
 };
 ```
 
-我们将 `Image` 的属性存储在 `x-decorator-props` 的 `image`  属性中，然后通过 `x-use-component-props` 来获取。
+`Image` の属性は `x-decorator-props` の `image` 属性に保存され、その後 `x-use-component-props` を使用して取得します。
 
-`useImageV2Props()`：返回 `Image` 组件对应的属性
+`useImageV2Props()`：`Image` コンポーネントに対応する属性を返します。
 
-- `useFieldSchema()`：获取当前字段的 schema，并通过 `parent` 获取父级 schema。如果是数据区块则可以通过 [useDataBlockProps](https://client.docs.nocobase.com/core/data-block/data-block-provider#usedatablockprops) 获取属性。
+- `useFieldSchema()`：現在のフィールドのスキーマを取得し、`parent` を通じて親のスキーマを取得します。データブロックの場合は、[useDataBlockProps](https://client.docs.nocobase.com/core/data-block/data-block-provider#usedatablockprops) を使用して属性を取得できます。
 
-#### 3.2 验证 Schema
+#### 3.2 スキーマの検証
 
 ```tsx | pure
 // ...
@@ -282,25 +281,25 @@ export class PluginSchemaSettingsNewClient extends Plugin {
 }
 ```
 
-我们访问 [http://localhost:3000/admin/image-component](http://localhost:3000/admin/image-component)，查看是否符合需求。
+[http://localhost:3000/admin/image-component](http://localhost:3000/admin/image-component) にアクセスし、要件を満たしているか確認します。
 
 <video width="100%" controls="">
   <source src="https://static-docs.nocobase.com/20240601171433_rec_.mp4" type="video/mp4" />
 </video>
 
-验证完毕后需要删除测试页面。
+検証が完了したら、テストページを削除してください。
 
-### 4. 实现 SchemaSettings
+### 4. SchemaSettingsの実装
 
-[简单区块文档](/plugin-samples/schema-initializer/block-simple#4-实现-schema-settings) 中已经说明了如何实现 `SchemaSettings`。
+[簡単区画文書](/plugin-samples/schema-initializer/block-simple#4-実装-schema-settings) では、`SchemaSettings` の実装方法について説明されています。
 
-### 5. 实现 SchemaSettings items
+### 5. SchemaSettings itemsの実装
 
-#### 5.1 实现 Edit block title
+#### 5.1 編集ブロックタイトルの実装
 
-因为编辑区块标题是一个通用的逻辑，所以 NocoBase 提供了 SchemaSettingsBlockTitleItem（文档 TODO） 组件，我们可以直接使用。
+編集ブロックタイトルは一般的なロジックであるため、NocoBaseは `SchemaSettingsBlockTitleItem`（文書TODO）コンポーネントを提供しており、直接使用できます。
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/InfoBlock.tsx`：
+`packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/InfoBlock.tsx` を修正します：
 
 ```diff
 - import { SchemaSettingsBlockTitleItem } from "@nocobase/client";
@@ -331,16 +330,16 @@ export const imageSettings = new SchemaSettings({
   <source src="https://static-docs.nocobase.com/20240602105024_rec_.mp4" type="video/mp4" />
 </video>
 
-更多可以复用的 SchemaSettings items 可以查看 TODO。
+再利用可能なSchemaSettingsのアイテムについてはTODOを参照してください。
 
-#### 5.2 实现 Edit Image
+#### 5.2 画像編集の実装
 
-##### 5.2.1 实现 SchemaSettings Item
+##### 5.2.1 SchemaSettingsアイテムの実装
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/settings/items/image.ts` 文件：
+新たに `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/settings/items/image.ts` ファイルを作成します：
 
 ```ts
-import { SchemaSettingsItemType, useDesignable, } from "@nocobase/client";
+import { SchemaSettingsItemType, useDesignable } from "@nocobase/client";
 import { useFieldSchema } from '@formily/react';
 import { useT } from "../../locale";
 import { BlockNameLowercase } from "../../constants";
@@ -354,13 +353,13 @@ export const imageSchemaSettingsItem: SchemaSettingsItemType = {
     const t = useT();
 
     return {
-      title: t('Edit Image'),
+      title: t('画像編集'),
       schema: {
         type: 'object',
-        title: t('Edit Image'),
+        title: t('画像編集'),
         properties: {
           src: {
-            title: t('Image'),
+            title: t('画像'),
             type: 'string',
             default: filedSchema['x-decorator-props']?.[BlockNameLowercase]?.src,
             'x-decorator': 'FormItem',
@@ -381,37 +380,37 @@ export const imageSchemaSettingsItem: SchemaSettingsItemType = {
               src: image.src,
             },
           },
-        })
+        });
       }
     };
   },
 };
 ```
 
-关于 SchemaSettings Item 的定义可以查看 [SchemaSettingsItem](https://client.docs.nocobase.com/core/ui-schema/schema-settings#optionsitems)。
+SchemaSettingsアイテムの定義については[SchemaSettingsItem](https://client.docs.nocobase.com/core/ui-schema/schema-settings#optionsitems)を参照してください。
 
-- `type`：内置类型。[actionModal](https://client.docs.nocobase.com/core/ui-schema/schema-settings#schemasettingsactionmodalitem) 为弹窗类型
-- `name`：唯一标识，用于增删改查
-- `useComponentProps`：返回 `actionModal` 对应组件 `SchemaSettingsActionModalItem` 的属性
+- `type`：ビルトインタイプ。[actionModal](https://client.docs.nocobase.com/core/ui-schema/schema-settings#schemasettingsactionmodalitem)はダイアログタイプです。
+- `name`：一意の識別子で、CRUD操作に使用されます。
+- `useComponentProps`：`actionModal`に対応するコンポーネント`SchemaSettingsActionModalItem`のプロパティを返します。
 
 `useComponentProps`：
 
-- Hooks
-  - `useFieldSchema`：获取当前节点 schema
-  - `useDesignable`：获取当前 Designable 实例，deepMerge 用于合并 schema
-    - `x-uid`：当前节点的唯一标识
-    - `x-decorator-props`：当前节点的属性，存储了 `image` 的属性
+- フックス
+  - `useFieldSchema`：現在のノードのスキーマを取得します。
+  - `useDesignable`：現在のDesignableインスタンスを取得し、deepMergeはスキーマをマージします。
+    - `x-uid`：現在のノードの一意の識別子。
+    - `x-decorator-props`：現在のノードのプロパティで、`image`のプロパティを保存します。
 
-- Props
-  - `title`：弹窗标题
-  - `schema`：弹窗表单 schema
-    - [Upload.Attachment](https://client.docs.nocobase.com/components/upload)：上传组件
-    - [FormItem](https://client.docs.nocobase.com/components/form-item)：表单项
-  - `onSubmit`：表单提交事件
+- プロップス
+  - `title`：ダイアログのタイトル。
+  - `schema`：ダイアログのフォームスキーマ。
+    - [Upload.Attachment](https://client.docs.nocobase.com/components/upload)：アップロードコンポーネント。
+    - [FormItem](https://client.docs.nocobase.com/components/form-item)：フォーム項目。
+  - `onSubmit`：フォーム送信イベント。
 
-##### 5.2.2 使用 SchemaSettings Item
+##### 5.2.2 SchemaSettingsアイテムの使用
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/settings/index.ts`：
+`packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/settings/index.ts` を修正します：
 
 ```diff
 // ...
@@ -443,16 +442,16 @@ export const imageSettings = new SchemaSettings({
   <source src="https://static-docs.nocobase.com/20240611173015_rec_.mp4" type="video/mp4" />
 </video>
 
-#### 5.3 实现 Edit Height
+#### 5.3 高さの編集を実現する
 
-##### 5.3.1 实现 SchemaSettings Item
+##### 5.3.1 SchemaSettings Itemを実装する
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/settings/items/height.ts` 文件：
+`packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/settings/items/height.ts` ファイルを新規作成します：
 
 ```ts
-import { SchemaSettingsItemType, useDesignable, } from "@nocobase/client";
+import { SchemaSettingsItemType, useDesignable } from "@nocobase/client";
 import { useFieldSchema } from '@formily/react';
-import { useT } from '../../locale'
+import { useT } from '../../locale';
 import { BlockNameLowercase } from "../../constants";
 
 export const heightSchemaSettingsItem: SchemaSettingsItemType = {
@@ -464,13 +463,13 @@ export const heightSchemaSettingsItem: SchemaSettingsItemType = {
     const t = useT();
 
     return {
-      title: t('Edit height'),
+      title: t('高さを編集'),
       schema: {
         type: 'object',
-        title: t('Edit height'),
+        title: t('高さを編集'),
         properties: {
           height: {
-            title: t('Height'),
+            title: t('高さ'),
             type: 'number',
             default: filedSchema['x-decorator-props']?.[BlockNameLowercase]?.height,
             'x-decorator': 'FormItem',
@@ -488,37 +487,37 @@ export const heightSchemaSettingsItem: SchemaSettingsItemType = {
               height,
             },
           },
-        })
+        });
       }
     };
   },
 };
 ```
 
-关于 SchemaSettings Item 的定义可以查看 [SchemaSettingsItem](https://client.docs.nocobase.com/core/ui-schema/schema-settings#optionsitems)。
+SchemaSettings Itemの定義に関しては、[SchemaSettingsItem](https://client.docs.nocobase.com/core/ui-schema/schema-settings#optionsitems)を参照してください。
 
-- `type`：内置类型。[actionModal](https://client.docs.nocobase.com/core/ui-schema/schema-settings#schemasettingsactionmodalitem) 为弹窗类型
-- `name`：唯一标识，用于增删改查
-- `useComponentProps`：返回 `actionModal` 对应组件 `SchemaSettingsActionModalItem` 的属性
+- `type`：組み込み型。[actionModal](https://client.docs.nocobase.com/core/ui-schema/schema-settings#schemasettingsactionmodalitem) はポップアップ形式です。
+- `name`：一意の識別子で、CRUD操作に使用されます。
+- `useComponentProps`：`actionModal` に対応するコンポーネント `SchemaSettingsActionModalItem` の属性を返します。
 
 `useComponentProps`：
 
 - Hooks
-  - `useFieldSchema`：获取当前节点 schema
-  - `useDesignable`：获取当前 Designable 实例，deepMerge 用于合并 schema
-    - `x-uid`：当前节点的唯一标识
-    - `x-decorator-props`：当前节点的属性，存储了 `image` 的属性
+  - `useFieldSchema`：現在のノードのスキーマを取得します。
+  - `useDesignable`：現在のDesignableインスタンスを取得し、deepMergeを使用してスキーマをマージします。
+    - `x-uid`：現在のノードの一意の識別子。
+    - `x-decorator-props`：現在のノードの属性で、`image`の属性を保存します。
 
 - Props
-  - `title`：弹窗标题
-  - `schema`：弹窗表单 schema
-    - [InputNumber](https://client.docs.nocobase.com/components/input-number)：数字输入框
-    - [FormItem](https://client.docs.nocobase.com/components/form-item)：表单项
-  - `onSubmit`：表单提交事件
+  - `title`：ポップアップのタイトル。
+  - `schema`：ポップアップのフォームスキーマ。
+    - [InputNumber](https://client.docs.nocobase.com/components/input-number)：数字入力ボックス。
+    - [FormItem](https://client.docs.nocobase.com/components/form-item)：フォーム項目。
+  - `onSubmit`：フォームの送信イベント。
 
-##### 5.3.2 使用 SchemaSettings Item
+##### 5.3.2 SchemaSettings Itemを使用する
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/settings/index.ts`：
+`packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/settings/index.ts` を修正します：
 
 ```diff
 // ...
@@ -551,15 +550,14 @@ export const imageSettings = new SchemaSettings({
   <source src="https://static-docs.nocobase.com/20240602110936_rec_.mp4" type="video/mp4" />
 </video>
 
+#### 5.4 ObjectFitの実装
 
-#### 5.4 实现 ObjectFit
+##### 5.4.1 SchemaSettings Itemの実装
 
-##### 5.4.1 实现 SchemaSettings Item
-
-我们新建 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/items/objectFit.ts` 文件：
+`packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/items/objectFit.ts` ファイルを新規作成します：
 
 ```ts
-import { SchemaSettingsItemType, useDesignable, } from "@nocobase/client";
+import { SchemaSettingsItemType, useDesignable } from "@nocobase/client";
 import { useFieldSchema } from '@formily/react';
 import { useT } from "../../locale";
 import { BlockNameLowercase } from "../../constants";
@@ -592,37 +590,36 @@ export const objectFitSchemaSettingsItem: SchemaSettingsItemType = {
               objectFit: v,
             },
           },
-        })
+        });
       },
     };
   },
 };
 ```
 
-关于 SchemaSettings Item 的定义可以查看 [SchemaSettingsItem](https://client.docs.nocobase.com/core/ui-schema/schema-settings#optionsitems)。
+SchemaSettings Itemの定義については [SchemaSettingsItem](https://client.docs.nocobase.com/core/ui-schema/schema-settings#optionsitems) を参照してください。
 
-- `type`：内置类型。[select](https://client.docs.nocobase.com/core/ui-schema/schema-settings#schemasettingsselectitem) 为选择类型
-- `name`：唯一标识，用于增删改查
-- `useComponentProps`：返回 `select` 对应组件 `SchemaSettingsSelectItem` 的属性
+- `type`：組み込みタイプ。[select](https://client.docs.nocobase.com/core/ui-schema/schema-settings#schemasettingsselectitem) は選択タイプです。
+- `name`：一意の識別子で、CRUD操作に使用します。
+- `useComponentProps`：`select` に対応するコンポーネント `SchemaSettingsSelectItem` のプロパティを返します。
 
 `useComponentProps`：
 
 - Hooks
-  - `useFieldSchema`：获取当前节点 schema
-  - `useDesignable`：获取当前 Designable 实例，deepMerge 用于合并 schema
-    - `x-uid`：当前节点的唯一标识
-    - `x-decorator-props`：当前节点的属性，存储了 `image` 的属性
+  - `useFieldSchema`：現在のノードのスキーマを取得します。
+  - `useDesignable`：現在のDesignableインスタンスを取得し、deepMergeを使用してスキーマをマージします。
+    - `x-uid`：現在のノードの一意の識別子です。
+    - `x-decorator-props`：現在のノードの属性で、`image` の属性を保存します。
 
 - Props
-  - `title`：弹窗标题
-  - `options`：选择项
-  - `value`：默认值
-  - `onChange`：选择事件
+  - `title`：ポップアップのタイトルです。
+  - `options`：選択肢です。
+  - `value`：デフォルト値です。
+  - `onChange`：選択イベントです。
 
+##### 5.4.2 SchemaSettings Itemの使用
 
-##### 5.4.2 使用 SchemaSettings Item
-
-我们修改 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/settings/index.ts`：
+`packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/settings/index.ts` を修正します：
 
 ```diff
 // ...
@@ -656,14 +653,14 @@ export const imageSettings = new SchemaSettings({
   <source src="https://static-docs.nocobase.com/20240602111256_rec_.mp4" type="video/mp4" />
 </video>
 
-#### 5.5 实现 Lazy
+#### 5.5 Lazyの実装
 
-##### 5.5.1 实现 SchemaSettings Item
+##### 5.5.1 SchemaSettings Itemの実装
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/items/lazy.ts` 文件：
+新しく `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/items/lazy.ts` ファイルを作成します：
 
 ```ts
-import { SchemaSettingsItemType, useDesignable, } from "@nocobase/client";
+import { SchemaSettingsItemType, useDesignable } from "@nocobase/client";
 import { useFieldSchema } from '@formily/react';
 import { useT } from "../../locale";
 import { BlockNameLowercase } from "../../constants";
@@ -689,36 +686,35 @@ export const lazySchemaSettingsItem: SchemaSettingsItemType = {
               lazy: v,
             },
           },
-        })
+        });
       },
     };
   },
 };
 ```
 
-关于 SchemaSettings Item 的定义可以查看 [SchemaSettingsItem](https://client.docs.nocobase.com/core/ui-schema/schema-settings#optionsitems)。
+SchemaSettings Itemの定義については [SchemaSettingsItem](https://client.docs.nocobase.com/core/ui-schema/schema-settings#optionsitems) を参照してください。
 
-- `type`：内置类型。[switch](https://client.docs.nocobase.com/core/ui-schema/schema-settings#schemasettingsswitchitem) 为开关类型
-- `name`：唯一标识，用于增删改查
-- `useComponentProps`：返回 `switch` 对应组件 `SchemaSettingsSwitchItem` 的属性
+- `type`：組み込みタイプ。[switch](https://client.docs.nocobase.com/core/ui-schema/schema-settings#schemasettingsswitchitem) はスイッチタイプです。
+- `name`：ユニークな識別子で、CRUD操作に使用されます。
+- `useComponentProps`：`switch` に対応するコンポーネント `SchemaSettingsSwitchItem` のプロパティを返します。
 
 `useComponentProps`：
 
 - Hooks
-  - `useFieldSchema`：获取当前节点 schema
-  - `useDesignable`：获取当前 Designable 实例，deepMerge 用于合并 schema
-    - `x-uid`：当前节点的唯一标识
-    - `x-decorator-props`：当前节点的属性，存储了 `image` 的属性
+  - `useFieldSchema`：現在のノードスキーマを取得します。
+  - `useDesignable`：現在のDesignableインスタンスを取得し、deepMergeはスキーマをマージするために使用されます。
+    - `x-uid`：現在のノードのユニークな識別子。
+    - `x-decorator-props`：現在のノードの属性で、`image` の属性を保持します。
 
 - Props
-  - `title`：弹窗标题
-  - `checked`：默认值
-  - `onChange`：开关事件
+  - `title`：ポップアップのタイトル。
+  - `checked`：デフォルト値。
+  - `onChange`：スイッチイベント。
 
+##### 5.5.2 SchemaSettings Itemの使用
 
-##### 5.5.2 使用 SchemaSettings Item
-
-我们修改 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/settings/index.ts`：
+`packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/settings/index.ts` を修正します：
 
 ```diff
 // ...
@@ -753,11 +749,11 @@ export const imageSettings = new SchemaSettings({
   <source src="https://static-docs.nocobase.com/20240602111748_rec_.mp4" type="video/mp4" />
 </video>
 
-#### 5.6 增加 divider
+#### 5.6 Dividerの追加
 
-`editBlockTitle` 和 `remove` 是一个通用的逻辑，而 `src`、`height`、`objectFit`、`lazy` 是针对 `Image` 的配置，我们可以通过 `divider` 来区分。
+`editBlockTitle` と `remove` は一般的なロジックであり、`src`、`height`、`objectFit`、`lazy` は `Image` に特化した設定です。これらを区別するために `divider` を使用します。
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/settings/index.ts`：
+`packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/settings/index.ts` を修正します：
 
 ```diff
 // ...
@@ -796,16 +792,15 @@ export const imageSettings = new SchemaSettings({
 
 ![20240602112229](https://static-docs.nocobase.com/20240602112229.png)
 
-
-### 6. 多语言
+### 6. 多言語対応
 
 :::warning
-多语言文件变更后，需要重启服务才能生效
+多言語ファイルの変更後は、サービスを再起動する必要があります。
 :::
 
-#### 6.1 英文
+#### 6.1 英語
 
-我们编辑 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/locale/en-US.json` 文件：
+`packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/locale/en-US.json` ファイルを編集します：
 
 ```json
 {
@@ -819,9 +814,9 @@ export const imageSettings = new SchemaSettings({
 }
 ```
 
-#### 6.2 中文
+#### 6.2 中国語
 
-我们编辑 `packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/locale/zh-CN.json` 文件：
+`packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/locale/zh-CN.json` ファイルを編集します：
 
 ```json
 {
@@ -833,22 +828,123 @@ export const imageSettings = new SchemaSettings({
   "Lazy": "懒加载"
 }
 ```
-如果需要更多的多语言支持，可以继续添加。
 
-## 打包和上传到生产环境
+さらに多言語のサポートが必要な場合は、追加で作成できます。
 
-按照 [构建并打包插件](/development/your-fisrt-plugin#构建并打包插件) 文档说明，我们可以打包插件并上传到生产环境。
+## パッケージングと本番環境へのアップロード
 
-如果是 clone 的源码，需要先执行一次全量 build，将插件的依赖也构建好。
+[プラグインの構築とパッケージング](/development/your-fisrt-plugin#构建并打包插件) ドキュメントに従って、プラグインをパッケージングして本番環境にアップロードできます。
+
+クローンしたソースの場合は、依存関係も構築するために全体をビルドする必要があります。
 
 ```bash
 yarn build
 ```
 
-如果是使用的 `create-nocobase-app` 创建的项目，可以直接执行：
+`create-nocobase-app` を使用して作成したプロジェクトの場合は、次のように直接実行できます：
 
 ```bash
 yarn build @nocobase-sample/plugin-schema-settings-new --tar
 ```
 
-这样就可以看到 `storage/tar/@nocobase-sample/plugin-schema-settings-new.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
+これにより、`storage/tar/@nocobase-sample/plugin-schema-settings-new.tar.gz` ファイルが生成され、その後 [アップロードの方法](/welcome/getting-started/plugin) に従ってインストールします。
+
+#### 5.6 ディバイダーの追加
+
+`editBlockTitle` と `remove` は一般的なロジックであり、`src`、`height`、`objectFit`、`lazy` は `Image` に特化した設定です。これらを区別するために `divider` を使用します。
+
+`packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/client/settings/index.ts` を次のように変更します：
+
+```diff
+// ...
+export const imageSettings = new SchemaSettings({
+  name: 'blockSettings:image',
+  items: [
+    {
+      name: 'editBlockTitle',
+      Component: SchemaSettingsBlockTitleItem,
+    },
++   {
++     name: 'divider1',
++     type: 'divider'
++   },
+    imageSchemaSettingsItem,
+    heightSchemaSettingsItem,
+    objectFitSchemaSettingsItem,
+    lazySchemaSettingsItem,
++   {
++     name: 'divider2',
++     type: 'divider'
++   },
+    {
+      type: 'remove',
+      name: 'remove',
+      componentProps: {
+        removeParentsIfNoChildren: true,
+        breakRemoveOn: {
+          'x-component': 'Grid',
+        },
+      }
+    }
+  ]
+});
+```
+
+![20240602112229](https://static-docs.nocobase.com/20240602112229.png)
+
+### 6. 多言語対応
+
+:::warning
+多言語ファイルの変更後、サービスを再起動する必要があります。
+:::
+
+#### 6.1 英語
+
+`packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/locale/en-US.json` ファイルを編集します：
+
+```json
+{
+  "Image": "Image",
+  "Edit Image": "Edit Image",
+  "Images": "Images",
+  "Autoplay": "Autoplay",
+  "Edit height": "Edit Height",
+  "Height": "Height",
+  "Lazy": "Lazy"
+}
+```
+
+#### 6.2 中国語
+
+`packages/plugins/@nocobase-sample/plugin-schema-settings-new/src/locale/zh-CN.json` ファイルを編集します：
+
+```json
+{
+  "Image": "图片",
+  "Edit Image": "编辑图片",
+  "Images": "图片",
+  "Edit height": "编辑高度",
+  "Height": "高度",
+  "Lazy": "懒加载"
+}
+```
+さらに多くの多言語サポートが必要な場合は、追加できます。
+
+## パッケージを作成して本番環境にアップロード
+
+[プラグインのビルドとパッケージ化](/development/your-fisrt-plugin#構建並打包插件) の説明に従って、プラグインをパッケージ化し、本番環境にアップロードできます。
+
+クローンしたソースコードの場合は、最初に全体ビルドを実行し、プラグインの依存関係を構築する必要があります。
+
+```bash
+yarn build
+```
+
+`create-nocobase-app` を使用して作成したプロジェクトの場合は、次のコマンドを直接実行できます：
+
+```bash
+yarn build @nocobase-sample/plugin-schema-settings-new --tar
+```
+
+これにより、`storage/tar/@nocobase-sample/plugin-schema-settings-new.tar.gz` ファイルが生成され、[アップロードの方法](/welcome/getting-started/plugin)でインストールできます。
+

@@ -1,18 +1,18 @@
 # v0.15：2023-11-13
 
-## 新特性
+## 新機能
 
-![Plugin settings manager](https://static-docs.nocobase.com/20240115140600.png)
+![プラグイン設定マネージャー](https://static-docs.nocobase.com/20240115140600.png)
 
-## 不兼容的变化
+## 非互換の変更
 
-### 插件配置页面注册方式
+### プラグイン設定ページの登録方法
 
-以前使用 `SettingsCenterProvider` 注册插件配置页面，现在需要通过插件化注册。
+以前は `SettingsCenterProvider` を使用してプラグイン設定ページを登録していましたが、現在はプラグインとして登録する必要があります。
 
-- 案例 1：原页面仅有一个 Tab 的情况
+- ケース 1：ページにタブが1つだけの場合
 
-当页面仅有一个 Tab 时，新版本的 Tab 会删掉，仅保留页面的标题和图标。
+ページにタブが1つだけの場合、新しいバージョンではタブが削除され、ページのタイトルとアイコンのみが保持されます。
 
 ```tsx | pure
 const HelloProvider = React.memo((props) => {
@@ -24,7 +24,7 @@ const HelloProvider = React.memo((props) => {
           icon: 'ApiOutlined',
           tabs: {
             tab1: {
-              title: 'Hello tab',
+              title: 'Helloタブ',
               component: HelloPluginSettingPage,
             },
           },
@@ -37,33 +37,33 @@ const HelloProvider = React.memo((props) => {
 });
 ```
 
-现在需要改为：
+これを以下のように変更する必要があります：
 
 ```tsx | pure
 class HelloPlugin extends Plugin {
   async load() {
     this.app.pluginSettingsManager.add('hello', {
-      title: 'Hello', // 原 title
-      icon: 'ApiOutlined', // 原 icon
-      Component: HelloPluginSettingPage, // 原 tab component
-      aclSnippet: 'pm.hello.tab1', // 权限片段，保证权限的 code 和之前的一致，如果是新插件，不需要传这个参数
+      title: 'Hello', // 元のタイトル
+      icon: 'ApiOutlined', // 元のアイコン
+      Component: HelloPluginSettingPage, // 元のタブコンポーネント
+      aclSnippet: 'pm.hello.tab1', // 新しいプラグインの場合はこのパラメータを渡す必要はありません
     });
   }
 }
 ```
 
-也就是删除了 `tab1` 的 `Hello Tab`。
+`tab1` の `Helloタブ` を削除しました。
 
-其中参数 `aclSnippet` 的 `pm.hello.tab1` 对应原来的 `settings` 对象的 key：
+ここでのパラメータ `aclSnippet` の `pm.hello.tab1` は、元の `settings` オブジェクトのキーに対応します：
 
 ```tsx | pure
 <SettingsCenterProvider
   settings={{
     hello: {
-      // 这里的 hello 对应 `pm.hello.tab1` 中的 `hello`
+      // ここでの hello は `pm.hello.tab1` の `hello` に対応します
       tabs: {
         tab1: {
-          // 这里的 tab1 对应 `pm.hello.tab1` 中的 tab1
+          // ここでの tab1 は `pm.hello.tab1` の tab1 に対応します
         },
       },
     },
@@ -71,7 +71,7 @@ class HelloPlugin extends Plugin {
 ></SettingsCenterProvider>
 ```
 
-- 案例 2：原页面有多个 Tab 的情况
+- ケース 2：元のページに複数のタブが存在する場合
 
 ```tsx | pure
 const HelloProvider = React.memo((props) => {
@@ -83,11 +83,11 @@ const HelloProvider = React.memo((props) => {
           icon: 'ApiOutlined',
           tabs: {
             tab1: {
-              title: 'Hello tab1',
+              title: 'Helloタブ1',
               component: HelloPluginSettingPage1,
             },
             tab2: {
-              title: 'Hello tab2',
+              title: 'Helloタブ2',
               component: HelloPluginSettingPage2,
             },
           },
@@ -100,7 +100,7 @@ const HelloProvider = React.memo((props) => {
 });
 ```
 
-现在需要改为：
+これを以下のように変更する必要があります：
 
 ```tsx | pure
 import { Outlet } from 'react-router-dom';
@@ -108,25 +108,25 @@ import { Outlet } from 'react-router-dom';
 class HelloPlugin extends Plugin {
   async load() {
     this.app.pluginSettingsManager.add('hello', {
-      title: 'Hello', // 原 title
-      icon: 'ApiOutlined', // 原 icon
+      title: 'Hello', // 元のタイトル
+      icon: 'ApiOutlined', // 元のアイコン
       Component: Outlet,
     });
 
     this.app.pluginSettingsManager.add('hello.tab1', {
-      title: 'Hello tab1', // 原 tab1 title
-      Component: HelloPluginSettingPage1, // 原 tab1 component
+      title: 'Helloタブ1', // 元のタブ1のタイトル
+      Component: HelloPluginSettingPage1, // 元のタブ1のコンポーネント
     });
 
     this.app.pluginSettingsManager.add('hello.tab2', {
-      title: 'Hello tab2', // 原 tab2 title
-      Component: HelloPluginSettingPage1, // 原 tab2 component
+      title: 'Helloタブ2', // 元のタブ2のタイトル
+      Component: HelloPluginSettingPage2, // 元のタブ2のコンポーネント
     });
   }
 }
 ```
 
-获取 pluginSettingsManager 对应的路由信息
+プラグイン設定マネージャーに対応するルート情報を取得します：
 
 ```tsx | pure
 const baseName = app.pluginSettingsManager.getRouteName('hello');
@@ -135,20 +135,21 @@ const basePath = app.pluginSettingsManager.getRoutePath('hello');
 // /admin/settings/hello
 ```
 
-如果插件配置页面内部有链接跳转的话，需要进行相应的更改，例如：
+プラグイン設定ページ内にリンクがある場合は、適切な変更を行う必要があります。例えば：
 
 ```tsx | pure
 navigate('/admin/settings/hello/1');
 navigate('/admin/settings/hello/2');
 
-// 可以更改为
+// 次のように変更できます
 const basePath = app.pluginSettingsManager.getRoutePath('hello');
 navigate(`${basePath}/1`);
 navigate(`${basePath}/2`);
 ```
 
-更多信息，请参考 [插件配置页面](https://docs-cn.nocobase.com/development/client/plugin-settings)。
+詳細については、[プラグイン設定ページ](https://docs-cn.nocobase.com/development/client/plugin-settings)をご参照ください。
 
-## 更新记录
+## 更新履歴
 
-完整的更新记录，请参考 [更新记录](https://github.com/nocobase/nocobase/blob/main/CHANGELOG.md)。
+完全な更新履歴については、[更新履歴](https://github.com/nocobase/nocobase/blob/main/CHANGELOG.md)をご覧ください。
+

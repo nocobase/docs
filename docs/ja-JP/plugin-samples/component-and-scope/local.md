@@ -1,14 +1,14 @@
-# 局部注册 Component 和 Scope
+# 部分登録コンポーネントとスコープ
 
-## 示例说明
+## サンプル説明
 
-需要实现的功能和 [全局注册 Component 和 Scope](/plugin-samples/component-and-scope/global) 示例一样，只是这次我们将组件和 scope 注册到插件内部，而不是全局注册。
+実現する機能は[グローバル登録コンポーネントとスコープ](/plugin-samples/component-and-scope/global)のサンプルと同じですが、今回はコンポーネントとスコープをプラグイン内部に登録します。
 
-本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-component-and-scope-local) 中查看。
+この文書の完全なサンプルコードは、[plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-component-and-scope-local)で確認できます。
 
-## 初始化插件
+## プラグインの初期化
 
-我们按照 [编写第一个插件](/development/your-fisrt-plugin) 文档说明，如果没有一个项目，可以先创建一个项目，如果已经有了或者是 clone 的源码，则跳过这一步。
+私たちは[最初のプラグインを作成する](/development/your-fisrt-plugin)文書に従います。プロジェクトがまだない場合は、最初にプロジェクトを作成してください。すでにある場合やクローンしたソースコードがある場合は、このステップをスキップしてください。
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d sqlite
@@ -17,88 +17,88 @@ yarn install
 yarn nocobase install
 ```
 
-然后初始化一个插件，并添加到系统中：
+次に、プラグインを初期化し、システムに追加します：
 
 ```bash
 yarn pm create @nocobase-sample/plugin-component-and-scope-local
 yarn pm enable @nocobase-sample/plugin-component-and-scope-local
 ```
 
-然后启动项目即可：
+プロジェクトを起動します：
 
 ```bash
 yarn dev
 ```
 
-然后登录后访问 [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) 就可以看到插件已经安装并启用了。
+ログイン後、[http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/)にアクセスすると、プラグインがインストールされ、有効になっていることが確認できます。
 
-## 功能实现
+## 機能実装
 
-### 1. 创建自定义页面
+### 1. カスタムページの作成
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-component-and-scope-local/src/client/CustomPage.tsx` 文件，内容如下：
+新しく`packages/plugins/@nocobase-sample/plugin-component-and-scope-local/src/client/CustomPage.tsx`ファイルを作成し、内容は以下の通りです：
 
 ```tsx | pure
-import React from "react"
+import React from "react";
 
 export const SamplesCustomPage = () => {
-  return <div>TODO</div>
-}
+  return <div>TODO</div>;
+};
 ```
 
-### 2. 直接使用 `Component` 渲染内容
+### 2. `Component`を直接使用して内容をレンダリング
 
-关于自定义页面的创建，可以参考 [新增页面](/plugin-samples/router/add-page) 文档。
+カスタムページの作成については、[ページの追加](/plugin-samples/router/add-page)文書を参照してください。
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-component-and-scope-local/src/index.ts` 文件，内容如下：
+`packages/plugins/@nocobase-sample/plugin-component-and-scope-local/src/index.ts`ファイルを修正し、内容は以下の通りです：
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
-import { SamplesCustomPage } from './CustomPage'
+import { SamplesCustomPage } from './CustomPage';
 
 export class PluginComponentAndScopeLocalClient extends Plugin {
   async load() {
     this.app.router.add('admin.custom-page2', {
       path: '/admin/custom-page2',
       Component: SamplesCustomPage,
-    })
+    });
   }
 }
 
 export default PluginComponentAndScopeLocalClient;
 ```
 
-与全局注册不同的是，这里直接使用了 `Component: SamplesCustomPage` 组件，而不是字符串类型。
+グローバル登録とは異なり、ここでは直接`Component: SamplesCustomPage`コンポーネントを使用しています。
 
-然后我们访问 [http://localhost:13000/admin/custom-page2](http://localhost:13000/admin/custom-page2) 就可以看到 `SamplesCustomPage` 组件的内容了。
+その後、[http://localhost:13000/admin/custom-page2](http://localhost:13000/admin/custom-page2)にアクセスすると、`SamplesCustomPage`コンポーネントの内容が表示されます。
 
 ![img_v3_02av_46e020ae-41d2-4bc3-a047-e28d97c20bdg](https://static-docs.nocobase.com/img_v3_02av_46e020ae-41d2-4bc3-a047-e28d97c20bdg.jpg)
 
-### 3. 使用 `SchemaComponent` 渲染内容
+### 3. `SchemaComponent`を使用して内容をレンダリング
 
-我们需要先了解以下知识：
+以下の知識を理解する必要があります：
 
-- [Schema 协议](/development/client/ui-schema/what-is-ui-schema)
+- [Schema プロトコル](/development/client/ui-schema/what-is-ui-schema)
 - [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponent-1)
-- [withDynamicSchemaProps](/development/client/ui-schema/what-is-ui-schema#x-component-props-和-x-use-component-props)
+- [withDynamicSchemaProps](/development/client/ui-schema/what-is-ui-schema#x-component-props-と-x-use-component-props)
 - [useFieldSchema()](https://client.docs.nocobase.com/core/ui-schema/designable#usefieldschema)
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-component-and-scope-local/src/client/CustomPage.tsx` 文件，内容如下：
+`packages/plugins/@nocobase-sample/plugin-component-and-scope-local/src/client/CustomPage.tsx`ファイルを修正し、内容は以下の通りです：
 
 ```tsx | pure
-import { ISchema, SchemaComponent, withDynamicSchemaProps } from "@nocobase/client"
-import { uid } from '@formily/shared'
-import { useFieldSchema } from '@formily/react'
-import React, { FC } from "react"
+import { ISchema, SchemaComponent, withDynamicSchemaProps } from "@nocobase/client";
+import { uid } from '@formily/shared';
+import { useFieldSchema } from '@formily/react';
+import React, { FC } from "react";
 
 const SamplesHello: FC<{ name: string }> = withDynamicSchemaProps(({ name }) => {
-  return <div>hello {name}</div>
-})
+  return <div>hello {name}</div>;
+});
 
 const useSamplesHelloProps = () => {
   const schema = useFieldSchema();
-  return { name: schema.name }
-}
+  return { name: schema.name };
+};
 
 const schema: ISchema = {
   type: 'void',
@@ -136,28 +136,29 @@ export const SamplesCustomPage = () => {
 }
 ```
 
-- 我们定义了 `SamplesHello` 和 `useSamplesHelloProps` 组件
-- 然后定义了一个 `schema` 对象，`demo1` 和 `demo2` 字段使用对应的组件和 scope，而 `demo3` 和 `demo4` 字段使用字符串类型的组件和 scope
-- 最后我们使用 `SchemaComponent` 的 `components` 和 `scope` 属性局部注册 `SamplesHello` 和 `useSamplesHelloProps`
+- `SamplesHello` と `useSamplesHelloProps` コンポーネントを定義しました。
+- 次に、`schema` オブジェクトを定義し、`demo1` と `demo2` フィールドはそれぞれのコンポーネントとスコープを使用し、`demo3` と `demo4` フィールドは文字列型のコンポーネントとスコープを使用します。
+- 最後に、`SchemaComponent` の `components` と `scope` プロパティを使用して、`SamplesHello` と `useSamplesHelloProps` をローカルに登録します。
 
-然后我们访问 [http://localhost:13000/admin/custom-page2](http://localhost:13000/admin/custom-page2) 就可以看到 `CustomPage` 组件的内容了。
+その後、[http://localhost:13000/admin/custom-page2](http://localhost:13000/admin/custom-page2) にアクセスすると、`CustomPage` コンポーネントの内容を確認できます。
 
 ![img_v3_02av_e8d4d0c7-7a59-4f9e-a120-a2551e719ebg](https://static-docs.nocobase.com/img_v3_02av_e8d4d0c7-7a59-4f9e-a120-a2551e719ebg.jpg)
 
-## 打包和上传到生产环境
+## パッケージ化と本番環境へのアップロード
 
-按照 [构建并打包插件](/development/your-fisrt-plugin#构建并打包插件) 文档说明，我们可以打包插件并上传到生产环境。
+[プラグインの構築とパッケージ化](/development/your-fisrt-plugin#構築とパッケージ化) ドキュメントに従って、プラグインをパッケージ化し、本番環境にアップロードできます。
 
-如果是 clone 的源码，需要先执行一次全量 build，将插件的依赖也构建好。
+クローンしたソースコードの場合、最初にフルビルドを実行し、プラグインの依存関係も構築する必要があります。
 
 ```bash
 yarn build
 ```
 
-如果是使用的 `create-nocobase-app` 创建的项目，可以直接执行：
+`create-nocobase-app` を使用して作成したプロジェクトの場合、次のコマンドを直接実行できます：
 
 ```bash
 yarn build @nocobase-sample/plugin-component-and-scope-local --tar
 ```
 
-这样就可以看到 `storage/tar/@nocobase-sample/plugin-component-and-scope-local.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
+これにより、`storage/tar/@nocobase-sample/plugin-component-and-scope-local.tar.gz` ファイルが生成され、その後[アップロードの方法](/welcome/getting-started/plugin)でインストールします。
+

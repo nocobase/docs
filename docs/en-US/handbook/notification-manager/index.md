@@ -1,34 +1,34 @@
-# 通知管理
+# Notification Manager
 
 <PluginInfo name="notification-manager"></PluginInfo>
 
-## 介绍
+## Introduction
 
-通知管理是一个集成多渠道通知方式的中心化服务，提供统一的渠道配置、发送管理和日志记录，支持灵活扩展。
+The Notification Manager is a centralized service that integrates various notification channels, offering a unified interface for channel configuration, management of notifications, and log recording. It’s also designed to be highly flexible, allowing for the expansion of additional channels.
 
 ![20240928112556](https://static-docs.nocobase.com/20240928112556.png)
 
-- 紫色部分：通知管理，提供统一的管理服务，涵盖渠道配置、日志记录等功能，通知渠道可扩展；
-- 绿色部分：站内信（In-App Message），内置的渠道，支持用户在应用内接收消息通知；
-- 红色部分：电子邮件（Email），扩展的渠道，支持用户通过电子邮件接收通知。
+- **Purple section**: The Notification Manager provides a comprehensive service that includes channel configuration and log recording, with the option to expand to other notification channels.
+- **Green section**: In-App Messaging, a built-in channel, enables users to receive notifications directly within the application.
+- **Red section**: Email, an extendable channel, allows users to receive notifications through email.
 
-## 渠道管理
+## Channel Management
 
 ![20240928181752](https://static-docs.nocobase.com/20240928181752.png)
 
-目前已支持的渠道有：
+The currently supported channels include:
 
-- [站内信](/handbook/notification-in-app-message)（开发中）
-- [电子邮件](/handbook/notification-email)（内置 SMTP 传输方式）
+- [In-App Message](/handbook/notification-in-app-message) (under development)
+- [Email](/handbook/notification-email) (built-in SMTP protocol)
 
-也可以扩展更多渠道通知，参考[渠道扩展](./extension)文档
+For additional channels, refer to the [Channel Expansion](./extension) documentation.
 
-## 通知日志
+## Notification Logs
 
-详细记录每条通知的发送详情和状态，便于分析和故障排查。
+The system logs each notification's details and status, offering a valuable tool for both analysis and troubleshooting.
 
 ![20240928181649](https://static-docs.nocobase.com/20240928181649.png)
 
-## 工作流通知节点
+## Workflow Notification Node
 
 ![20240928181726](https://static-docs.nocobase.com/20240928181726.png)

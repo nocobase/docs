@@ -1,70 +1,70 @@
-# Action API
+# アクション API
 
-## Common
+## 共通
 
 ---
 
-Collection 和 Association 资源通用。
+コレクションおよびアソシエーションリソースの共通部分です。
 
 ### `create`
 
 ```bash
 POST  /api/users:create?whitelist=a,b&blacklist=c,d
 
-{} # Request Body
+{} # リクエストボディ
 ```
 
-- Parameters
-  - whitelist 白名单
-  - blacklist 黑名单
-- Request body: 待插入的 JSON 数据
-- Response body data: 已创建的数据 JSON
+- パラメータ
+  - whitelist: ホワイトリスト
+  - blacklist: ブラックリスト
+- リクエストボディ: 挿入する JSON データ
+- レスポンスボディ: 作成されたデータの JSON
 
-#### 新增用户
+#### ユーザーの追加
 
 ```bash
 POST  /api/users:create
 
-Request Body
+リクエストボディ
 {
   "email": "demo@nocobase.com",
   "name": "Admin"
 }
 
-Response 200 (application/json)
-{
-  "data": {},
-}
-```
-
-#### 新增用户文章
-
-```bash
-POST  /api/users/1/posts:create
-
-Request Body
-{
-  "title": "My first post"
-}
-
-Response 200 (application/json)
+レスポンス 200 (application/json)
 {
   "data": {}
 }
 ```
 
-#### Request Body 里的 association
+#### ユーザー記事の追加
+
+```bash
+POST  /api/users/1/posts:create
+
+リクエストボディ
+{
+  "title": "My first post"
+}
+
+レスポンス 200 (application/json)
+{
+  "data": {}
+}
+```
+
+#### リクエストボディ内のアソシエーション
 
 ```bash
 POST  /api/posts:create
 
-Request Body
+リクエストボディ
 {
   "title": "My first post",
   "user": 1
 }
 
-Response 200 (application/json)
+レスポンス 200 (application/json)
 {
   "data": {
     "id": 1,
@@ -82,28 +82,28 @@ Response 200 (application/json)
 ```bash
 POST  /api/users:create?filterByTk=1&whitelist=a,b&blacklist=c,d
 
-{} # Request Body
+{} # リクエストボディ
 ```
 
-- Parameters
-  - whitelist 白名单
-  - blacklist 黑名单
-  - filterByTk 根据 tk 字段过滤，默认情况 tk 为数据表的主键
-  - filter 过滤，支持 json string
-- Request body: 待更新的 JSON 数据
+- パラメータ
+  - whitelist: ホワイトリスト
+  - blacklist: ブラックリスト
+  - filterByTk: tk フィールドでのフィルタリング。デフォルトでは tk はデータテーブルの主キーです。
+  - filter: フィルタリング。JSON 文字列をサポートします。
+- リクエストボディ: 更新する JSON データ
 
-#### Request Body 里的 association
+#### リクエストボディ内のアソシエーション
 
 ```bash
 POST  /api/posts:update/1
 
-Request Body
+リクエストボディ
 {
   "title": "My first post 2",
   "user": 2
 }
 
-Response 200 (application/json)
+レスポンス 200 (application/json)
 {
   "data": [
     {
@@ -126,7 +126,7 @@ Response 200 (application/json)
 
 ### `move`
 
-## Association
+## アソシエーション
 
 ---
 
@@ -137,3 +137,4 @@ Response 200 (application/json)
 ### `remove`
 
 ### `toggle`
+

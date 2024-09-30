@@ -1,65 +1,63 @@
-# 地图区块
+# 地図区ブロック
 
 <PluginInfo name="block-map"></PluginInfo>
 
-## 介绍
+## イントロダクション
 
-地图区块用于展示和管理地图字段，扩展了四种地图字段，包括点、线、圆和多边形。
+地図区ブロックは、地図フィールドを表示および管理するための重要なツールであり、ポイント、ライン、円、およびポリゴンの4種類の地図フィールドをサポートしています。
 
-## 安装
+## インストール
 
-预置插件，需要先激活才能使用。
+このプラグインはプリセットされていますが、使用する前に有効化する必要があります。
 
 ![20240421120958](https://static-docs.nocobase.com/20240421120958.png)
 
-启用插件后需配置地图认证信息。
+プラグインを有効化した後、地図の認証情報を設定する必要があります。
 
 ![20240421121032](https://static-docs.nocobase.com/20240421121032.png)
 
-数据表中可以添加地图字段。
+設定が完了すると、データテーブルに地図フィールドを追加できます。
 
 ![20240426171356](https://static-docs.nocobase.com/20240426171356.png)
 
-## 添加区块
+## ブロックの追加
 
-仅数据表中有地图字段的区块支持添加地图区块。
+地図フィールドが含まれているデータテーブルにのみ、地図区ブロックを追加できます。
 
 ![20240408194209](https://static-docs.nocobase.com/20240408194209.png)
 
 ![20240408194420](https://static-docs.nocobase.com/20240408194420.png)
 
-1. 地图字段: 地图元素类型（点、线、多边形）。
-2. 标记字段: 地图标注（仅点类型支持）。
+1. **地図フィールド：** 地図要素の種類（ポイント、ライン、ポリゴン）。
+2. **マーカーフィールド：** 地図ラベル（ポイントタイプのみ対応）。
 
-### 点
+### ポイント
 
-应用场景：零售店网点分布。
+**適用シナリオ：** 小売店の拠点分布を可視化するのに最適です。
 
 ![20240408195630](https://static-docs.nocobase.com/20240408195630.png)
 
-### 线
+### ライン
 
-线是由一组地图点组成，如下显示运单轨迹。
+ラインは一連の地図ポイントで構成され、運送履歴などのパスを示すのに使用されます。
 
 ![20240408201608](https://static-docs.nocobase.com/20240408201608.png)
 
-### 圆
+### 円
 
 ![20240408201939](https://static-docs.nocobase.com/20240408201939.png)
 
-### 多边形
+### ポリゴン
 
-应用场景：适用片区规划。
+**適用シナリオ：** エリア計画やゾーニングに最適です。
 
-![多边形](https://static-docs.nocobase.com/20240408200546.png)
+![ポリゴン](https://static-docs.nocobase.com/20240408200546.png)
 
-## 区块配置项
+## ブロック設定項目
 
-![20240421121949](https://static-docs.nocobase.com/20240421121949.png)
+### 接続順序フィールド
 
-### 连接顺序字段
-
-将点按顺序字段依次连接。
+順序フィールドに基づいてポイントを順次接続します。
 
 ![20240408202645](https://static-docs.nocobase.com/20240408202645.png)
 
@@ -67,42 +65,43 @@
 
 ![20240422101027](https://static-docs.nocobase.com/20240422101027.png)
 
-### 地图默认缩放级别
+### マップのデフォルトズームレベル
 
-默认值为13。
+デフォルトのズームレベルは13ですが、必要に応じて調整できます。
 
 ![20240408202854](https://static-docs.nocobase.com/20240408202854.png)
 
-### 设置数据范围
+### データ範囲の設定
 
-示例：筛选订单状态为已发货的运单（通过关系字段筛选），符合数据范围内的运单记录才会打点。
+**例：** 発送済みの運送状をフィルタリング（関係フィールドを使用）し、指定されたデータ範囲内に該当する運送記録のみを表示します。
 
 ![20240422101250](https://static-docs.nocobase.com/20240422101250.png)
 
-更多内容参考 [设置数据范围](/handbook/ui/blocks/block-settings/data-scope)
+詳細については、[データ範囲の設定](/handbook/ui/blocks/block-settings/data-scope)をご参照ください。
 
-### 设置区块高度
+### ブロックの高さを設定
 
-示例：调整地图区块高度。
+**例：** マップブロックの高さを調整してレイアウトに合わせます。
 
 ![20240605221111](https://static-docs.nocobase.com/20240605221111.gif)
 
-更多内容参考 [区块高度](/handbook/ui/blocks/block-settings/block-height)
+詳細については、[ブロックの高さ](/handbook/ui/blocks/block-settings/block-height)をご参照ください。
 
-- [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
-- [连接数据区块](/handbook/ui/blocks/block-settings/connect-block)
-- [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
+- [ブロックタイトルの編集](/handbook/ui/blocks/block-settings/block-title)
+- [データブロックの接続](/handbook/ui/blocks/block-settings/connect-block)
+- [ブロックテンプレートとして保存](/handbook/ui/blocks/block-settings/block-template)
 
-## 配置操作
+## 設定操作
 
 ![20240421122020](https://static-docs.nocobase.com/20240421122020.png)
 
-### 批量选中点。
+### 一括選択ポイント
 
 ![20240422102334](https://static-docs.nocobase.com/20240422102334.gif)
 
-- [筛选](/handbook/ui/actions/types/filter)
-- [添加](/handbook/ui/actions/types/add-new)
-- [刷新](/handbook/ui/actions/types/refresh)
-- [批量更新](/handbook/action-bulk-update)
-- [批量编辑](/handbook/action-bulk-edit)
+- [フィルタ](/handbook/ui/actions/types/filter)
+- [追加](/handbook/ui/actions/types/add-new)
+- [更新](/handbook/ui/actions/types/refresh)
+- [一括更新](/handbook/action-bulk-update)
+- [一括編集](/handbook/action-bulk-edit)
+

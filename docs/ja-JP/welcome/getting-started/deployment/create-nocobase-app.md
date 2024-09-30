@@ -1,59 +1,60 @@
-# create-nocobase-app 部署
+# create-nocobase-app デプロイ
 
-其他流程与 [create-nocobase-app 安装](/welcome/getting-started/installation/create-nocobase-app) 无异。
+他のプロセスは [create-nocobase-app インストール](/welcome/getting-started/installation/create-nocobase-app) と同様です。
 
 <embed src="./env-note.md"></embed>
-- 生产环境部署时，为了减少体积，可以只安装必要的依赖 `yarn install --production`
+- 本番環境にデプロイする際は、サイズを減らすために必要な依存関係のみをインストールします。`yarn install --production`
 
 <br />
 
-[>>> 更多内容，查看完整的「环境变量」列表 <<<](/welcome/getting-started/env)
+[>>> 詳細については、完全な「環境変数」リストを確認してください <<<](/welcome/getting-started/env)
 
-## 管理应用进程
+## アプリケーションプロセスの管理
 
-NocoBase 已经内置了 [PM2](https://pm2.keymetrics.io/)，用于管理应用进程，生产环境直接 `yarn start` 就可以了。如果需要后台运行，加上 `-d` 参数即可，例如：
+NocoBase は [PM2](https://pm2.keymetrics.io/) を内蔵しており、アプリケーションプロセスを管理します。本番環境では、直接 `yarn start` を実行できます。バックグラウンドで実行する場合は `-d` オプションを追加します。例えば：
 
 ```bash
-# 后台运行
+# バックグラウンドで実行
 yarn start -d
 ```
 
-重启
+再起動するには：
 
 ```bash
 yarn nocobase pm2-restart
 ```
 
-停止
+停止するには：
 
 ```bash
 yarn nocobase pm2-stop
 ```
 
-更多 PM2 命令
+その他の PM2 コマンドは以下の通りです：
 
 ```bash
 yarn nocobase pm2 -h
 ```
 
-## 配置 Nginx
+## Nginx の設定
 
-生产环境，可以考虑将静态文件交由 Nginx 代理，NocoBase 提供了 `create-nginx-conf` 命令用于生成 Nginx 配置文件。
+本番環境では、静的ファイルを Nginx に代理させることを検討できます。NocoBase は Nginx 設定ファイルを生成するための `create-nginx-conf` コマンドを提供しています。
 
 ```bash
 yarn nocobase create-nginx-conf
 ```
 
-文件路径在 `./storage/nocobase.conf`，根据实际情况进一步调整，最后将它加入 `/etc/nginx/sites-enabled`，例如：
+生成されたファイルのパスは `./storage/nocobase.conf` で、実際の状況に応じて調整し、最終的に `/etc/nginx/sites-enabled` に追加します。例えば：
 
 ```bash
 ln -s /app/nocobase/storage/nocobase.conf /etc/nginx/sites-enabled/nocobase.conf
 ```
 
-**备注**
+**備考**
 
-- 部署到子路径，需要配置 `APP_PUBLIC_PATH` 环境变量。配置完之后，需要重新执行 `create-nginx-conf` 命令；
-- 根据实际情况修改生成的 `nocobase.conf`，如配置域名等；
-- `/app/nocobase/` 为示例应用所在目录，需要根据实际情况进行调整；
-- `/etc/nginx/sites-enabled` 为默认 Nginx 的配置路径，实际情况可能有差异，可以通过 `nginx -V` 查看；
-- 如果使用的不是 Nginx，可以参考 Nginx 的配置做一些调整。
+- サブパスにデプロイする場合は、`APP_PUBLIC_PATH` 環境変数を設定する必要があります。設定後、`create-nginx-conf` コマンドを再実行してください。
+- 実際の状況に応じて生成された `nocobase.conf` ファイルを修正してください。例えば、ドメイン名の設定などが含まれます。
+- `/app/nocobase/` はサンプルアプリケーションのディレクトリであり、実際の状況に応じて調整が必要です。
+- `/etc/nginx/sites-enabled` はデフォルトの Nginx 設定パスであり、実際の環境によって異なる場合があります。`nginx -V` コマンドで確認できます。
+- Nginx を使用していない場合は、Nginx の設定を参考にして調整を行ってください。
+
