@@ -26,9 +26,22 @@ Handlebars 是一个 JavaScript 模板引擎，支持条件判断（{{#if}}）�
 
 ![20240817175501](https://static-docs.nocobase.com/20240817175501.png)
 
+```javascript
+<h3>current role is : {{$nRole}}</h3>
+ role list is
+<ul>
+ {{#each $user.roles}}
+   <li>{{this.name}}</li>
+  {{/each}}
+ </ul>
+```
+
 <a href="https://handlebarsjs.com/guide/builtin-helpers" target="_blank"> Handlebars 语法参考</a>
 
 ### 常用helper
+
+更多高阶能力通过 helper 实现，以下列举了部分内置的常用 helper， 更多内置 helper 可参考
+<a href="https://www.npmjs.com/package/@budibase/handlebars-helpers#helpers" target="_blank"> Handlebars helpers</a>
 
 #### `dateFormat`
 
@@ -50,10 +63,10 @@ Date format: {{dateFormat $nDate.now "YYYY-MM-DD HH:mm:ss" "UTC"}}
 ![20240914132524](https://static-docs.nocobase.com/20240914132524.png)
 
 ```javascript
-{{#isEmpty someArray}}
-  <p>The array is empty</p>
+{{#isEmpty $user.roles}}
+  <p>The roles is empty</p>
 {{else}}
-  <p>The array is not empty</p>
+  <p>The roles is not empty</p>
 {{/isEmpty}}
 ```
 
@@ -61,17 +74,25 @@ Date format: {{dateFormat $nDate.now "YYYY-MM-DD HH:mm:ss" "UTC"}}
 
 检查数组中是否包含指定的元素，用于判断列表中是否有特定值。
 
+```javascript
+{{#contains $user.username  "nocobase" }}
+  This is message for nocobase 
+{{else}}
+  This is message for other
+{{/contains}}
+```
+
 #### `gt / lt / gte / lte`
 
 用于比较大小，gt (大于), lt (小于), gte (大于等于), lte (小于等于) 是常用的逻辑比较。
 
 ```javascript
-{{#if (gt value1 value2)}}
-  <p>Value1 is greater than Value2</p>
+{{#if (gt $user.number1 $user.number2)}}
+  <p>number1 is greater than number2</p>
 {{/if}}
 
-{{#if (lt value1 value2)}}
-  <p>Value1 is less than Value2</p>
+{{#if (lt $user.number1 $user.number2)}}
+  <p>number1 is less than number2</p>
 {{/if}}
 ```
 
@@ -80,33 +101,20 @@ Date format: {{dateFormat $nDate.now "YYYY-MM-DD HH:mm:ss" "UTC"}}
 返回两个条件都为真时的结果，适合多条件判断。
 
 ```javascript
-{{#if (and condition1 condition2)}}
+{{#if (and $user.email $user.phone)}}
   <p>Both conditions are true</p>
 {{/if}}
 ```
 
-#### `upperCase / lowerCase`
+#### `uppercase / lowercase`
 
 将字符串转换为全大写或全小写。
 
 ```javascript
-<p>{{lowerCase $user.nickname }}</p>
-<p>{{upperCase $user.nickname }}</p>
+<p>{{lowercase $user.nickname }}</p>
+<p>{{uppercase $user.nickname }}</p>
 
 ```
-
-更多内置 helper 可参考
-<a href="https://www.npmjs.com/package/@budibase/handlebars-helpers#helpers" target="_blank"> Handlebars helpers</a>
-
-## 使用变量
-
-Markdown 的文本里也支持使用变量
-
-![20240612205857](https://static-docs.nocobase.com/20240612205857.png)
-
-区块内联的 Markdown 也支持变量
-
-![20240612210333](https://static-docs.nocobase.com/20240612210333.png)
 
 ### 补充说明
 
@@ -130,6 +138,16 @@ Markdown 的文本里也支持使用变量
 ![20240909155720](https://static-docs.nocobase.com/20240909155720.png)
 
 更多变量的介绍查看 [配置界面 / 变量](/handbook/ui/variables) 章节
+
+## 使用变量
+
+Markdown 的文本里也支持使用变量
+
+![20240612205857](https://static-docs.nocobase.com/20240612205857.png)
+
+区块内联的 Markdown 也支持变量
+
+![20240612210333](https://static-docs.nocobase.com/20240612210333.png)
 
 ## 二维码
 

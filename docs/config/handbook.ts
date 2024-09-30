@@ -1227,6 +1227,32 @@ export default [
         ],
       },
       {
+        title: 'Notification',
+        'title.zh-CN': '通知',
+        children: [
+          {
+            title: 'Notification manager',
+            'title.zh-CN': '通知管理',
+            link: '/handbook/notification-manager',
+          },
+          {
+            title: 'Notification: In-app message',
+            'title.zh-CN': '通知：站内信',
+            link: '/handbook/notification-in-app-message',
+          },
+          {
+            title: 'Notification: Email',
+            'title.zh-CN': '通知：电子邮件',
+            link: '/handbook/notification-email',
+          },
+          {
+            title: 'Notification extension',
+            'title.zh-CN': '通知扩展',
+            link: '/handbook/notification-manager/extension',
+          },
+        ],
+      },
+      {
         title: 'File manager',
         'title.zh-CN': '文件管理器',
         children: [
@@ -1357,15 +1383,6 @@ export default [
         // subTitle: '@nocobase/plugin-api-doc',
         link: '/handbook/multi-app-manager',
         // children: ['/plugins/api-doc'],
-      },
-      {
-        title: 'Notification',
-        'title.zh-CN': '通知',
-        children: [
-          '/handbook/notification/overview',
-          '/handbook/notification/handbook',
-          '/handbook/notification/development',
-        ],
       },
     ],
   },
