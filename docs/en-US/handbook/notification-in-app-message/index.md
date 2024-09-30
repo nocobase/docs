@@ -1,11 +1,11 @@
-# 通知：站内信
+# Notification: in app message
 
 <PluginInfo name="notification-in-app-message"></PluginInfo>
 
-## 介绍
+## Introduction
 
-支持用户在应用内接收消息通知。
+Support users in receiving message notifications within the application.
 
 :::warning
-插件正在开发中，尚未发布。
+The plugin is currently under development and has not yet been released.
 :::

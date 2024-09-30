@@ -1,6 +1,6 @@
-# 通知渠道扩展
+# Notification Channel Extension
 
-## 扩展 API
+## Extension API
 
 ### `PluginNotificationManagerServer`
 #### `PluginNotificationManagerServer.registerChannelType()`
@@ -10,6 +10,6 @@
 ### `BaseNotificationChannel`
 #### `BaseNotificationChannel.send()`
 
-## 完整示例
+## Complete Example
 
 TODO
