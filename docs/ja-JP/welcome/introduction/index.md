@@ -6,23 +6,23 @@
 
 ## NocoBaseとは
 
-NocoBaseは、非常に拡張性の高いオープンソースのノーコード開発プラットフォームです。  
-数年の時間や数百万の資金を投資することなく、数分でNocoBaseを展開し、すぐにプライベートで制御可能な、極めて拡張性の高いノーコード開発プラットフォームを手に入れることができます。
+NocoBaseは、優れた拡張性を持つオープンソースのノーコード開発プラットフォームです。
+数年の時間や莫大な資金を費やすことなく、数分でNocoBaseを展開し、すぐにプライベートで管理可能な、極めて拡張性の高いノーコード開発プラットフォームを手に入れることができます。
 
-公式中国語サイト：  
-https://www.nocobase.com/cn/
+公式サイト 
+https://www.nocobase.com/
 
-オンラインデモ：  
-https://demo-cn.nocobase.com/new
+オンライン体験：  
+https://demo.nocobase.com/new
 
 ドキュメント：  
-https://docs-cn.nocobase.com/
+https://docs.nocobase.com/
 
 商業ライセンスおよび商業プラグイン：  
-https://www.nocobase.com/cn/commercial
+https://www.nocobase.com/en/commercial
 
 ライセンス契約：  
-https://www.nocobase.com/cn/agreement
+https://www.nocobase.com/en/agreement
 
 ## お問い合わせ  
 
