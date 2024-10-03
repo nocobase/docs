@@ -1,12 +1,14 @@
-# 扩展前端文件类型
+# 扩展开发
+
+## 扩展前端文件类型
 
 对于已上传完成的文件，在前端界面上可以基于不同文件类型展示不同预览内容。文件管理器的附件字段内置了基于浏览器（内嵌于 iframe）的文件预览，这种方式支持大部分文件格式（图片、视频、音频和 PDF 等）直接在浏览器中进行预览。当文件格式不支持浏览器预览，或者有特殊的预览交互需要时，可以通过扩展基于文件类型的预览组件来实现。
 
-## 示例
+### 示例
 
 例如希望对图片类型的文件扩展一个轮播切换组件，可以通过以下代码方式：
 
-```tsx
+```ts
 import match from 'mime-match';
 import { Plugin, attachmentFileTypes } from '@nocobase/client';
 
@@ -62,7 +64,7 @@ class MyPlugin extends Plugin {
 
 在类型描述对象上的 `Previewer` 属性即为用于预览的组件，当文件类型匹配时，将渲染该组件进行预览。通常建议使用弹窗类型的组件作为基础容器（如 `<Modal />` 等），再将预览和需要交互的内容放入该组件，实现预览功能。
 
-## API
+### API
 
 ```ts
 export interface FileModel {
@@ -92,7 +94,7 @@ export class AttachmentFileTypes {
 }
 ```
 
-### `attachmentFileTypes`
+#### `attachmentFileTypes`
 
 `attachmentFileTypes` 是一个全局实例，通过 `@nocobase/client` 导入：
 
@@ -100,13 +102,13 @@ export class AttachmentFileTypes {
 import { attachmentFileTypes } from '@nocobase/client';
 ```
 
-### `attachmentFileTypes.add()`
+#### `attachmentFileTypes.add()`
 
 向文件类型注册中心注册新的文件类型描述对象。描述对象的类型为 `AttachmentFileType`。
 
-### `AttachmentFileType`
+#### `AttachmentFileType`
 
-#### `match()`
+##### `match()`
 
 文件格式匹配方法。
 
@@ -119,7 +121,7 @@ import { attachmentFileTypes } from '@nocobase/client';
 
 返回值为 `boolean` 类型，表示是否匹配的结果。
 
-#### `Previewer`
+##### `Previewer`
 
 用于预览文件的 React 组件。
 
