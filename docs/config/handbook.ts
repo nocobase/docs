@@ -1890,6 +1890,12 @@ export default [
             link: '/handbook/workflow-response-message',
           },
           {
+            title: 'Script',
+            'title.zh-CN': '脚本',
+            subTitle: '@nocobase/plugin-workflow-script',
+            link: '/handbook/workflow-script',
+          },
+          {
             title: 'SQL action',
             'title.zh-CN': 'SQL 操作',
             'title.ja-JP': 'SQLアクション',
