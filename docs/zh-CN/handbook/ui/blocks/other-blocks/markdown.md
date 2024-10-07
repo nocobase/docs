@@ -137,8 +137,6 @@ Date format: {{dateFormat $nDate.now "YYYY-MM-DD HH:mm:ss" "UTC"}}
 
 ![20240909155720](https://static-docs.nocobase.com/20240909155720.png)
 
-更多变量的介绍查看 [配置界面 / 变量](/handbook/ui/variables) 章节
-
 ## 使用变量
 
 Markdown 的文本里也支持使用变量
@@ -148,6 +146,8 @@ Markdown 的文本里也支持使用变量
 区块内联的 Markdown 也支持变量
 
 ![20240612210333](https://static-docs.nocobase.com/20240612210333.png)
+
+更多变量的介绍查看 [配置界面 / 变量](/handbook/ui/variables) 章节
 
 ## 二维码
 
