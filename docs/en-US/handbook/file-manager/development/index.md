@@ -6,8 +6,6 @@ For uploaded files, the client UI can display different previews based on file t
 
 ### Example
 
-For example, when a 
-
 For example, if you want to extend a carousel component for image files, you can use the following code:
 
 ```ts
