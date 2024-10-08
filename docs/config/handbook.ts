@@ -1528,6 +1528,11 @@ export default [
               },
             ],
           },
+          {
+            title: 'Development',
+            'title.zh-CN': '扩展开发',
+            link: '/handbook/file-manager/development',
+          },
         ],
       },
       {
