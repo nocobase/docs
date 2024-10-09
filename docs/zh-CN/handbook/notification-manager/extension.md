@@ -2,19 +2,6 @@
 
 NocoBase支持按需要扩展通知渠道类型，默认内置一个通知管理内核插件，负责提供了扩展通知类型的注册和管理。
 
-## 服务端
-
-服务端扩展插件需要继承抽象类`NotificationServerBase`并实现`send`方法。
-
-```ts
-import a from './a';
-import { NotificationServerBase } from '@nocobase/plugin-notification-manager';
-
-export class ExtendedServer extends NotificationServerBase {
-  send({ channel, message }) {}
-}
-```
-
 ## 扩展 API
 
 ### `PluginNotificationManagerServer`
@@ -44,14 +31,14 @@ export class ExtendedServer extends NotificationServerBase {
 
 ##### 签名
 
-`({name, server}) => void`
+`({type, Channel}) => void`
 
 ##### 详细信息
 
 | 属性         | 类型         |  描述      |
 | ------------ | ------------ | ------------ |
 | `name`    | `string` | 渠道标识 |
-| `server`   | `NotificationServerBase`   | 服务端扩展类 |
+| `server`   | `BaseNotificationChannel`   | 服务端扩展类 |
 
 ## 客户端
 
@@ -70,7 +57,7 @@ export class ExtendedServer extends NotificationServerBase {
 ```ts
 type ChannelType = {
   title: string; // 渠道显示标题
-  name: string;  // 渠道标识
+  type: string;  // 渠道标识
   components: {
     ChannelConfigForm: ComponentType // 渠道配置表单;
     MessageConfigForm?: ComponentType<{ variableOptions: any }> // 消息配置表单;
@@ -265,7 +252,7 @@ export default PluginNotificationExampleClient;
 
 ### 服务端开发
 
-服务端开发的核心是需要继承抽象类`NotificationServerBase`并实现`send`方法，`send`方法内部是扩展插件发送通知的业务逻辑，这里因为是示例，就简单把接收的参数打印出来。在`src/server`目录下新增文件`example-server.ts`文件，文件内容如下：
+服务端开发的核心是需要继承抽象类`BaseNotificationChannel`并实现`send`方法，`send`方法内部是扩展插件发送通知的业务逻辑，这里因为是示例，就简单把接收的参数打印出来。在`src/server`目录下新增文件`example-server.ts`文件，文件内容如下：
 
 ```ts
 import { BaseNotificationChannel } from '@nocobase/plugin-notification-manager';
