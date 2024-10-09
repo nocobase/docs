@@ -31,7 +31,7 @@ NocoBase支持按需要扩展通知渠道类型，默认内置一个通知管理
 
 ##### 签名
 
-`({name, server}) => void`
+`({type, Channel}) => void`
 
 ##### 详细信息
 
@@ -57,7 +57,7 @@ NocoBase支持按需要扩展通知渠道类型，默认内置一个通知管理
 ```ts
 type ChannelType = {
   title: string; // 渠道显示标题
-  name: string;  // 渠道标识
+  type: string;  // 渠道标识
   components: {
     ChannelConfigForm: ComponentType // 渠道配置表单;
     MessageConfigForm?: ComponentType<{ variableOptions: any }> // 消息配置表单;
