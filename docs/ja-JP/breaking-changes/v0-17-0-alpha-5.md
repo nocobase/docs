@@ -1,82 +1,83 @@
 # 0.17.0-alpha.5
 
-## 服务端 `ctx.state.currentUser`
+## サーバー側 `ctx.state.currentUser`
 
 ### 背景
 
-新版本对 `ctx.state.currentUser` 中保存的用户信息进行了缓存。
+新しいバージョンでは、`ctx.state.currentUser` に保存されているユーザー情報がキャッシュされます。
 
-之前 `ctx.state.currentUser` 保存的是 Sequelize 的 UserModel 对象：
+以前は、`ctx.state.currentUser` は Sequelize の UserModel オブジェクトを保持していました：
 
 ```json
 {
   "dataValues": {
     "username": "nocobase"
-    // 其他用户信息
+    // その他のユーザー情報
   }
-  // 其他 Model 属性
+  // その他のモデル属性
 }
 ```
 
-用户信息实际上在 `dataValues` 中, 可以通过 `getter` 访问器获取对应属性，也可以使用 Model 提供的 `get`, `setDataValues`, `toJSON` 等方法。
+ユーザー情報は実際には `dataValues` にあり、`getter` アクセサを通じて対応する属性にアクセスできます。また、モデルが提供する `get`, `setDataValues`, `toJSON` などのメソッドを使用することも可能です。
 
-增加缓存以后，如果用户使用的缓存方式不是内存缓存，从缓存中取出来的结果会变成一个普通的对象，代码中使用的 Model 的相关方法将会抛出异常。
+キャッシュを追加した後、ユーザーが使用するキャッシュ方法がメモリキャッシュでない場合、キャッシュから取得した結果は通常のオブジェクトになります。そのため、コード内で使用しているモデルの関連メソッドは例外をスローします。
 
-### 变更
+### 変更
 
-`ctx.state.currentUser` 现在直接使用包含用户信息的普通对象，即原 Model 中 `dataValues` 的内容。
+`ctx.state.currentUser` は現在、ユーザー情報を含む通常のオブジェクトを直接使用します。つまり、元のモデルの `dataValues` の内容です。
 
 ```json
 {
   "username": "nocobase"
-  // 其他用户信息
+  // その他のユーザー情報
 }
 ```
 
-Model 相关方法不再对 `ctx.state.currentUser` 适用。
+モデル関連のメソッドはもはや `ctx.state.currentUser` に対して適用されません。
 
-#### 获取用户属性
+#### ユーザー属性の取得
 
-原来
+以前は
 
 ```ts
 ctx.state.currentUser.get('id');
-// 或
+// または
 ctx.state.currentUser.id;
 ```
 
-现在
+現在は
 
 ```ts
-// 只能使用
+// これだけを使用できます
 ctx.state.currentUser.id;
 ```
 
-#### 修改用户属性
+#### ユーザー属性の変更
 
-原来
+以前は
 
 ```ts
 ctx.state.currentUser.setDataValues('roles', roles);
-// 或
+// または
 ctx.state.currentUser.roles = roles;
 ```
 
-现在
+現在は
 
 ```ts
-// 只能使用
+// これだけを使用できます
 ctx.state.currentUser.roles = roles;
 ```
 
-#### 获取用户信息对象
+#### ユーザー情報オブジェクトの取得
 
-原来
+以前は
 
 ```ts
 ctx.state.currentUser.toJSON();
 ```
 
-现在
+現在は
 
-废弃。`ctx.state.currentUser` 本身就是 UserModel `toJSON` 后的结果。
+廃止されました。`ctx.state.currentUser` 自体が UserModel の `toJSON` の結果です。
+

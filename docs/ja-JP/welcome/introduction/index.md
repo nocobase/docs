@@ -1,33 +1,34 @@
-# 介绍
+# イントロダクション
 
 <video width="100%" controls>
       <source src="https://static-docs.nocobase.com/NocoBase0510-cn.mp4" type="video/mp4">
 </video>
 
-## NocoBase 是什么
+## NocoBaseとは
 
-NocoBase 是一个极易扩展的开源无代码开发平台。
-不必投入几年时间、数百万资金研发，花几分钟时间部署 NocoBase，马上拥有一个私有、可控、极易扩展的无代码开发平台。
+NocoBaseは、非常に拡張性の高いオープンソースのノーコード開発プラットフォームです。  
+数年の時間や数百万の資金を投資することなく、数分でNocoBaseを展開し、すぐにプライベートで制御可能な、極めて拡張性の高いノーコード開発プラットフォームを手に入れることができます。
 
-中文官网：  
+公式中国語サイト：  
 https://www.nocobase.com/cn/
 
-在线体验：  
+オンラインデモ：  
 https://demo-cn.nocobase.com/new
 
-文档：  
+ドキュメント：  
 https://docs-cn.nocobase.com/
 
-商业授权和商业插件：  
+商業ライセンスおよび商業プラグイン：  
 https://www.nocobase.com/cn/commercial
 
-许可协议：  
+ライセンス契約：  
 https://www.nocobase.com/cn/agreement
 
-## 联系我们  
+## お問い合わせ  
 
-邮件：  
+メール：  
 hello@nocobase.com
 
-微信：  
+WeChat：  
 ![wechat](https://static-docs.nocobase.com/wechat.png)
+

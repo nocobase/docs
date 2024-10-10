@@ -1,6 +1,6 @@
-# 关系字段配置
+# 関係フィールド設定
 
-在关系数据库里，标准的建表关系的方式是添加一个外键字段，然后再加一个外键约束。例如 Knex 建表的例子：
+リレーショナルデータベースにおける標準的なテーブル作成方法は、外部キーフィールドを追加し、その後外部キー制約を設定することです。以下は、Knexを使用したテーブル作成の例です：
 
 ```ts
 knex.schema.table('posts', function (table) {
@@ -9,7 +9,7 @@ knex.schema.table('posts', function (table) {
 });
 ```
 
-这个过程会在 posts 表里创建一个 userId 字段，并且设置上外键约束 posts.userId 引用 users.id。而在 NocoBase 的 Collection 中，是通过配置关系字段来建立上这样一种关系约束，如：
+このプロセスにより、postsテーブルにuserIdフィールドが作成され、posts.userIdがusers.idを参照する外部キー制約が設定されます。NocoBaseのコレクションでは、関係フィールドを設定することでこのような関係制約を確立します。以下のように設定します：
 
 ```ts
 {
@@ -25,7 +25,7 @@ knex.schema.table('posts', function (table) {
 }
 ```
 
-## 关系参数说明
+## 関係パラメータの説明
 
 ### BelongsTo
 
@@ -33,24 +33,24 @@ knex.schema.table('posts', function (table) {
 interface BelongsTo {
   type: 'belongsTo';
   name: string;
-  // 默认值为 name 复数
+  // デフォルト値は name の複数形
   target?: string;
-  // 默认值为 target model 的主键，一般为 'id'
+  // デフォルト値は target model の主キー、一般的には 'id'
   targetKey?: any;
-  // 默认值为 target + 'Id'
+  // デフォルト値は target + 'Id'
   foreignKey?: any;
 }
 
-// authors 表主键 id 和 books 表外键 authorId 相连
+// authorsテーブルの主キーidとbooksテーブルの外部キーauthorIdが接続される
 {
-  name:  'books',
+  name: 'books',
   fields: [
     {
       type: 'belongsTo',
       name: 'author',
       target: 'authors',
-      targetKey: 'id',         // authors 表主键
-      foreignKey: 'authorId',  // 外键在 books 表
+      targetKey: 'id',         // authorsテーブルの主キー
+      foreignKey: 'authorId',  // 外部キーはbooksテーブル
     }
   ],
 }
@@ -62,24 +62,24 @@ interface BelongsTo {
 interface HasOne {
   type: 'hasOne';
   name: string;
-  // 默认值为 name 复数
+  // デフォルト値は name の複数形
   target?: string;
-  // 默认值为 source model 的主键，一般为 'id'
+  // デフォルト値は source model の主キー、一般的には 'id'
   sourceKey?: string;
-  // 默认值为 source collection name 的单数形态 + 'Id'
+  // デフォルト値は source collection name の単数形 + 'Id'
   foreignKey?: string;
 }
 
-// users 表主键 id 和 profiles 外键 userId 相连
+// usersテーブルの主キーidとprofilesテーブルの外部キーuserIdが接続される
 {
-  name:  'users',
+  name: 'users',
   fields: [
     {
       type: 'hasOne',
       name: 'profile',
       target: 'profiles',
-      sourceKey: 'id',      // users 表主键
-      foreignKey: 'userId', // 外键在 profiles 表
+      sourceKey: 'id',      // usersテーブルの主キー
+      foreignKey: 'userId', // 外部キーはprofilesテーブル
     }
   ],
 }
@@ -91,24 +91,24 @@ interface HasOne {
 interface HasMany {
   type: 'hasMany';
   name: string;
-  // 默认值为 name
+  // デフォルト値は name
   target?: string;
-  // 默认值为 source model 的主键，一般为 'id'
+  // デフォルト値は source model の主キー、一般的には 'id'
   sourceKey?: string;
-  // 默认值为 source collection name 的单数形态 + 'Id'
+  // デフォルト値は source collection name の単数形 + 'Id'
   foreignKey?: string;
 }
 
-// posts 表主键 id 和 comments 表 postId 相连
+// postsテーブルの主キーidとcommentsテーブルの外部キーpostIdが接続される
 {
-  name:  'posts',
+  name: 'posts',
   fields: [
     {
       type: 'hasMany',
       name: 'comments',
       target: 'comments',
-      sourceKey: 'id',          // posts 表主键
-      foreignKey: 'postId',     // 外键在 comments 表
+      sourceKey: 'id',          // postsテーブルの主キー
+      foreignKey: 'postId',     // 外部キーはcommentsテーブル
     }
   ],
 }
@@ -120,21 +120,21 @@ interface HasMany {
 interface BelongsToMany {
   type: 'belongsToMany';
   name: string;
-  // 默认值为 name
+  // デフォルト値は name
   target?: string;
-  // 默认值为 source collection name 和 target 的首字母自然顺序拼接的字符串
+  // デフォルト値は source collection name と target の先頭文字を自然順に結合した文字列
   through?: string;
-  //默认值为 source collection name 的单数形态 + 'Id'
+  // デフォルト値は source collection name の単数形 + 'Id'
   foreignKey?: string;
-  // 默认值为 source model 的主键，一般为 id
+  // デフォルト値は source model の主キー、一般的には id
   sourceKey?: string;
-  //默认值为 target 的单数形态 + 'Id'
+  // デフォルト値は target の単数形 + 'Id'
   otherKey?: string;
-  // 默认值为 target model 的主键，一般为 id
+  // デフォルト値は target model の主キー、一般的には id
   targetKey?: string;
 }
 
-// tags 表主键、posts 表主键和 posts_tags 两个外键相连
+// tagsテーブルの主キー、postsテーブルの主キーとposts_tagsの2つの外部キーが接続される
 {
   name: 'posts',
   fields: [
@@ -142,12 +142,13 @@ interface BelongsToMany {
       type: 'belongsToMany',
       name: 'tags',
       target: 'tags',
-      through: 'posts_tags', // 中间表
-      foreignKey: 'tagId',   // 外键1，在 posts_tags 表里
-      otherKey: 'postId',    // 外键2，在 posts_tags 表里
-      targetKey: 'id',       // tags 表主键
-      sourceKey: 'id',       // posts 表主键
+      through: 'posts_tags', // 中間テーブル
+      foreignKey: 'tagId',   // 外部キー1、posts_tagsテーブルにある
+      otherKey: 'postId',    // 外部キー2、posts_tagsテーブルにある
+      targetKey: 'id',       // tagsテーブルの主キー
+      sourceKey: 'id',       // postsテーブルの主キー
     }
   ],
 }
 ```
+

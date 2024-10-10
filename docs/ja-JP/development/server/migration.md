@@ -1,24 +1,24 @@
-# 升级脚本
+# アップグレードスクリプト
 
-插件在更新迭代过程中，可能会出现某些不兼容的改动，这些不兼容的升级脚本可以通过编写 migration 文件来处理，由 `nocobase upgrade` 命令触发，相关流程如下：
+プラグインの更新過程で互換性のない変更が発生することがあります。これらの互換性のないアップグレードスクリプトは、migrationファイルを作成することで処理できます。`nocobase upgrade`コマンドによってトリガーされる関連プロセスは以下の通りです。
 
 <img src="./image-2.png" style="max-width: 800px; width: 800px;">
 
-升级的 migrations 有 beforeLoad、afterSync 和 afterLoad 之分：
+アップグレードのmigrationsには、`beforeLoad`、`afterSync`、`afterLoad`の三種類があります：
 
-- beforeLoad：在各模块加载前执行，分为三个阶段：
-  - 内核模块加载前
-  - preset 插件加载前
-  - 其他插件加载前
-- afterSync：在数据表配置与数据库同步之后，分为三个阶段：
-  - 内核表与数据库同步之后
-  - preset 插件的表与数据库同步之后
-  - 其他插件的表与数据库同步后
-- afterLoad：应用全部加载之后才执行
+- **beforeLoad**：各モジュールの読み込み前に実行され、三つの段階に分かれます：
+  - コアモジュールの読み込み前
+  - presetプラグインの読み込み前
+  - その他のプラグインの読み込み前
+- **afterSync**：データテーブルの設定とデータベースの同期後に実行され、三つの段階に分かれます：
+  - コアテーブルとデータベースの同期後
+  - presetプラグインのテーブルとデータベースの同期後
+  - その他のプラグインのテーブルとデータベースの同期後
+- **afterLoad**：アプリケーションの全てが読み込まれた後に実行されます
 
-## 创建 migration 文件
+## migrationファイルの作成
 
-通过 create-migration 命令创建 migration 文件
+`create-migration`コマンドを使用してmigrationファイルを作成します。
 
 ```bash
 yarn nocobase create-migration -h
@@ -26,22 +26,22 @@ yarn nocobase create-migration -h
 Usage: nocobase create-migration [options] <name>
 
 Options:
-  --pkg <pkg>  package name
-  --on [on]    Options include beforeLoad, afterSync and afterLoad
-  -h, --help   display help for command
+  --pkg <pkg>  パッケージ名
+  --on [on]    オプションにはbeforeLoad、afterSync、afterLoadが含まれます
+  -h, --help   コマンドのヘルプを表示
 ```
 
-示例
+### 例
 
 ```bash
 $ yarn nocobase create-migration update-ui --pkg=@nocobase/plugin-client
 
-2024-01-07 17:33:13 [info ] add app main into supervisor     
-2024-01-07 17:33:13 [info ] migration file in /nocobase/packages/plugins/@nocobase/plugin-client/src/server/migrations/20240107173313-update-ui.ts
-✨  Done in 5.02s.
+2024-01-07 17:33:13 [info] supervisorにアプリメインを追加     
+2024-01-07 17:33:13 [info] migrationファイルは/nocobase/packages/plugins/@nocobase/plugin-client/src/server/migrations/20240107173313-update-ui.tsに生成されました
+✨  5.02秒で完了しました。
 ```
 
-将在插件包 @nocobase/plugin-client 的 src/server/migrations 里生成一个 migration 文件，名为 20240107173313-update-ui.ts，初始内容如下：
+プラグインパッケージ`@nocobase/plugin-client`の`src/server/migrations`に、`20240107173313-update-ui.ts`という名前のmigrationファイルが生成され、初期内容は以下の通りです：
 
 ```ts
 import { Migration } from '@nocobase/server';
@@ -51,31 +51,31 @@ export default class extends Migration {
   appVersion = '<0.19.0-alpha.3';
 
   async up() {
-    // coding
+    // コーディング
   }
 }
 ```
 
-## 触发 migration
+## migrationのトリガー
 
-通过 `nocobase upgrade` 命令触发
+`nocobase upgrade`コマンドを使用してトリガーします。
 
 ```bash
 $ yarn nocobase upgrade
 ```
 
-## 测试 migration
+## migrationのテスト
 
 ```ts
 import { createMockServer, MockServer } from '@nocobase/test';
 
-describe('test example', () => {
+describe('テスト例', () => {
   let app: MockServer;
 
   beforeEach(async () => {
     app = await createMockServer({
-      plugins: ['my-plugin'], // 插件
-      version: '0.18.0-alpha.5', // 升级前的版本
+      plugins: ['my-plugin'], // プラグイン
+      version: '0.18.0-alpha.5', // アップグレード前のバージョン
     });
   });
 
@@ -83,9 +83,10 @@ describe('test example', () => {
     await app.destroy();
   });
 
-  test('case1', async () => {
+  test('ケース1', async () => {
     await app.runCommand('upgrade');
-    // coding...
+    // コーディング...
   });
 });
 ```
+

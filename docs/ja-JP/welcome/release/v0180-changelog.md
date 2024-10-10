@@ -1,36 +1,33 @@
 # v0.18：2023-12-21
 
-## 新特性
+## 新機能
 
-为了让 NocoBase 变得更加稳健，第四季度我们一直在补充 E2E 测试，与此同时，也完善了整个测试体系
+NocoBaseをより堅牢にするために、第四四半期にはE2Eテストを追加し、全体のテスト体系を整備しました。
 
 ### @nocobase/test
 
-NocoBase 测试包，包括：
+NocoBaseテストパッケージには以下が含まれます：
 
-- `@nocobase/test/server` 服务端测试
+- `@nocobase/test/server` サーバーサイドテスト
+  - インターフェーステスト用に`supertest`と統合
+  - `mockDatabase`と`mockServer`が内蔵されています
 
-  - 集成了 `supertest` 用于接口测试
-  - 内置了 `mockDatabase` 和 `mockServer`
+- `@nocobase/test/client` クライアントサイドテスト
+  - `@testing-library/react`と`@testing-library/user-event`が統合されています
 
-- `@nocobase/test/client` 客户端测试
+- `@nocobase/test/e2e` E2Eテスト
+  - `@playwright/test`と統合
+  - よく使われるモックメソッドが内蔵されています
 
-  - 集成了 `@testing-library/react` 和 `@testing-library/user-event`
+### テストフレームワーク
 
-- `@nocobase/test/e2e` E2E 测试
+- バックエンドテストにはVitestフレームワークを使用
+- フロントエンドテストにはVitestフレームワークを使用
+- E2EテストにはPlaywrightフレームワークを使用
 
-  - 集成了 `@playwright/test`
-  - 内置了常用的 mock 方法
+### テストの作成
 
-### 测试框架
-
-- 后端测试，使用 Vitest 框架
-- 前端测试，使用 Vitest 框架
-- E2E 测试，使用 Playwright 框架
-
-### 编写测试
-
-#### 后端测试
+#### バックエンドテスト
 
 ```typescript
 import { mockDatabase } from '@nocobase/test/server';
@@ -56,127 +53,128 @@ describe('my db suite', () => {
     await db.close();
   });
 
-  test('my case', async () => {
+  test('私のケース', async () => {
     const repository = db.getRepository('posts');
     const post = await repository.create({
       values: {
-        title: 'hello',
+        title: 'こんにちは',
       },
     });
 
-    expect(post.get('title')).toEqual('hello');
+    expect(post.get('title')).toEqual('こんにちは');
   });
 });
 ```
 
-#### 前端测试
+#### フロントエンドテスト
 
 ```typescript
 import { render, screen, userEvent, waitFor } from '@nocobase/test/client';
 
-it('should display the value of user input', async () => {
+it('ユーザー入力の値が表示される必要があります', async () => {
   const { container } = render(<App1 />);
   const input = container.querySelector('input');
-  await userEvent.type(input, 'Hello World');
+  await userEvent.type(input, 'こんにちは世界');
   await waitFor(() => {
-    expect(screen.getByText('Hello World')).toBeInTheDocument();
+    expect(screen.getByText('こんにちは世界')).toBeInTheDocument();
   });
 });
 ```
 
-#### E2E 测试
+#### E2Eテスト
 
 ```typescript
 import { test } from '@nocobase/test/e2e';
 
-test('sign in', async ({ page }) => {
+test('サインイン', async ({ page }) => {
   await page.goto('/');
-  await page.getByPlaceholder('Username/Email').click();
-  await page.getByPlaceholder('Username/Email').fill('admin@nocobase.com');
-  await page.getByPlaceholder('Password').click();
-  await page.getByPlaceholder('Password').fill('admin123');
-  await page.getByRole('button', { name: 'Sign in' }).click();
+  await page.getByPlaceholder('ユーザー名/メール').click();
+  await page.getByPlaceholder('ユーザー名/メール').fill('admin@nocobase.com');
+  await page.getByPlaceholder('パスワード').click();
+  await page.getByPlaceholder('パスワード').fill('admin123');
+  await page.getByRole('button', { name: 'サインイン' }).click();
   await expect(
-    page.getByTestId('user-center-button').getByText('Super Admin'),
+    page.getByTestId('user-center-button').getByText('スーパ管理者'),
   ).toBeVisible();
 });
 ```
 
-### 运行 Vitest 测试
+### Vitest テストの実行
 
 ```bash
-# 运行全部测试，前后端并行两个 vitest 进程
+# すべてのテストを実行し、フロントエンドとバックエンドの2つの Vitest プロセスを並行して実行
 yarn test
 
-# 运行 client 相关测试用例
+# クライアント関連のテストケースを実行
 yarn test --client
-# 等价于
+# 同義
 yarn cross-env TEST_ENV=client-side vitest
 
-# 运行 server 相关测试用例
+# サーバー関連のテストケースを実行
 yarn test --server
-# 等价于
+# 同義
 yarn cross-env TEST_ENV=server-side vitest
 
-# 指定目录或文件
+# ディレクトリまたはファイルを指定
 yarn test your/path/src/__tests__/test-file.test.ts
-# 前端文件必须包含 /client/
+# フロントエンドファイルは /client/ を含む必要があります
 yarn test your/path/client/src/__tests__/test-file.test.ts
 ```
 
-📢 和直接运行 vitest 的区别
+📢 Vitest を直接実行することとの違い
 
-- 指定路径时，可以自动识别前后端，前端的必须包含 `/client/`
-- 后端测试默认为 `--single-thread`，如果要关掉可以加上 `--single-thread=false`
-- 默认为 `--run` 测试运行完退出进程，如果需要监听，加上 `--watch`
+- パスを指定すると、フロントエンドとバックエンドを自動的に識別できます。フロントエンドには `/client/` を含める必要があります。
+- バックエンドのテストはデフォルトで `--single-thread` ですが、無効にする場合は `--single-thread=false` を追加してください。
+- デフォルトでは `--run` オプションを使用してテストが終了するとプロセスも終了します。リッスンが必要な場合は `--watch` オプションを追加してください。
 
-### 运行 Playwright 测试
+### Playwright テストの実行
 
 ```bash
-# 安装依赖
+# 依存関係のインストール
 yarn e2e install-deps
 
-# 运行测试
+# テストの実行
 yarn e2e test
 
-# UI 模式
+# UIモード
 yarn e2e test --ui
 
-# 已运行的应用 URL
+# 実行中のアプリのURL
 yarn e2e test --url=http://localhost:20000
 
-# Start an app. It reinstalls every time.
+# アプリを起動します。毎回再インストールされます。
 yarn e2e start-app
 ```
 
-## 其他变化
+## その他の変更
 
-### 用户认证扩展的优化
+### ユーザー認証拡張の最適化
 
-- 用户认证扩展开发指南 [https://docs-cn.nocobase.com/plugins/auth/dev/guide](https://docs-cn.nocobase.com/plugins/auth/dev/guide)
-- 用户认证扩展相关不兼容变化 [https://docs-cn.nocobase.com/breaking-changes/v0-18-0-alpha-1](https://docs-cn.nocobase.com/breaking-changes/v0-18-0-alpha-1)
+- ユーザー認証拡張の開発ガイド [https://docs-cn.nocobase.com/plugins/auth/dev/guide](https://docs-cn.nocobase.com/plugins/auth/dev/guide)
+- ユーザー認証拡張に関する非互換性の変更 [https://docs-cn.nocobase.com/breaking-changes/v0-18-0-alpha-1](https://docs-cn.nocobase.com/breaking-changes/v0-18-0-alpha-1)
 
-### 插件化拆分
+### プラグイン化の分割
 
-为了让内核变得更加精炼，某些功能做了插件化的拆分，近期已完成拆分的插件有：
+カーネルをより洗練させるために、特定の機能がプラグイン化されて分割されました。最近完了した分割プラグインは以下の通りです：
 
-| 插件名                         | 包名                                          |
-| ------------------------------ | --------------------------------------------- |
-| 操作 - 批量编辑                | @nocobase/plugin-action-bulk-edit             |
-| 操作 - 批量更新                | @nocobase/plugin-action-bulk-update           |
-| 操作 - 复制                    | @nocobase/plugin-action-duplicate             |
-| 看板区块                       | @nocobase/plugin-kanban                       |
-| 甘特图区块                     | @nocobase/plugin-gantt                        |
-| Workflow - Aggregate           | @nocobase/plugin-workflow-aggregate           |
-| Workflow - Approval            | @nocobase/plugin-workflow-approval            |
-| Workflow - Delay               | @nocobase/plugin-workflow-delay               |
-| Workflow - Dynamic calculation | @nocobase/plugin-workflow-dynamic-calculation |
-| Workflow - Form trigger        | @nocobase/plugin-workflow-form-trigger        |
-| Workflow - JSON query          | @nocobase/plugin-workflow-json-query          |
-| Workflow - Loop                | @nocobase/plugin-workflow-loop                |
-| Workflow - Manual              | @nocobase/plugin-workflow-manual              |
-| Workflow - Parallel            | @nocobase/plugin-workflow-parallel            |
-| Workflow - Request             | @nocobase/plugin-workflow-request             |
-| Workflow - SQL                 | @nocobase/plugin-workflow-sql                 |
+| プラグイン名                      | パッケージ名                                      |
+| --------------------------------- | ------------------------------------------------ |
+| 操作 - 一括編集                  | @nocobase/plugin-action-bulk-edit                |
+| 操作 - 一括更新                  | @nocobase/plugin-action-bulk-update              |
+| 操作 - コピー                    | @nocobase/plugin-action-duplicate                |
+| カンバンブロック                 | @nocobase/plugin-kanban                          |
+| ガントチャートブロック           | @nocobase/plugin-gantt                           |
+| ワークフロー - 集計              | @nocobase/plugin-workflow-aggregate              |
+| ワークフロー - 承認              | @nocobase/plugin-workflow-approval               |
+| ワークフロー - 遅延              | @nocobase/plugin-workflow-delay                  |
+| ワークフロー - 動的計算          | @nocobase/plugin-workflow-dynamic-calculation    |
+| ワークフロー - フォームトリガー  | @nocobase/plugin-workflow-form-trigger           |
+| ワークフロー - JSONクエリ        | @nocobase/plugin-workflow-json-query             |
+| ワークフロー - ループ            | @nocobase/plugin-workflow-loop                   |
+| ワークフロー - 手動              | @nocobase/plugin-workflow-manual                 |
+| ワークフロー - 並列              | @nocobase/plugin-workflow-parallel               |
+| ワークフロー - リクエスト        | @nocobase/plugin-workflow-request                |
+| ワークフロー - SQL               | @nocobase/plugin-workflow-sql                    |
 
-详情查看 [完整的插件列表](https://docs-cn.nocobase.com/plugins)，需要注意的是，文档正在建设中，部分内容可能缺失或缺少翻译，你可以关注 [nocobase/docs](https://github.com/nocobase/docs) 了解最新动态。
+詳細については[完全なプラグインリスト](https://docs-cn.nocobase.com/plugins)をご覧ください。文書は現在作成中であり、一部の内容が欠落しているか、翻訳が不完全な場合があります。最新の情報については[nocobase/docs](https://github.com/nocobase/docs)をご確認ください。
+

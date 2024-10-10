@@ -1,38 +1,39 @@
-# 折叠面板筛选区块
+# 折りたたみパネルフィルターブロック
 
-## 介绍
+## イントロダクション
 
-Collapse 筛选区块需要连接数据区块使用，为数据区块提供筛选能力，它支持选择关系字段和选项字段作为筛选字段，并以折叠面板效果展示。
+折りたたみパネルフィルターブロックは、データブロックと接続して使用する必要があります。このブロックはデータブロックにフィルタリング機能を提供し、関連フィールドやオプションフィールドをフィルターフィールドとして選択できます。折りたたみパネルの効果で表示されます。
 
-## 添加区块
+## ブロックの追加
 
 ![20240408212222](https://static-docs.nocobase.com/20240408212222.png)
 
-示例：配置订单折叠面板区块与订单表格区块实现筛选联动。
+例：注文の折りたたみパネルブロックと注文テーブルブロックを構成して、フィルタリングの連動を実現します。
 
-  <video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240408212817.mp4" type="video/mp4">
-    </video>
+<video width="100%" height="440" controls>
+    <source src="https://static-docs.nocobase.com/20240408212817.mp4" type="video/mp4">
+</video>
 
-## 区块配置项
+## ブロック設定項目
 
 ![20240421173427](https://static-docs.nocobase.com/20240421173427.png)
 
-### 连接数据区块
+### データブロックの接続
 
-示例：连接弹窗内同数据表区块实现筛选联动。
+例：ポップアップ内の同じデータテーブルブロックを接続して、フィルタリングの連動を実現します。
 
-  <video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240408214743.mp4" type="video/mp4">
-    </video>
+<video width="100%" height="440" controls>
+    <source src="https://static-docs.nocobase.com/20240408214743.mp4" type="video/mp4">
+</video>
 
-更多内容参考 [连接数据区块](/handbook/ui/blocks/block-settings/connect-block)
+詳細は[データブロックの接続](/handbook/ui/blocks/block-settings/connect-block)を参照してください。
 
-- [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
-- [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
+- [ブロックタイトルの編集](/handbook/ui/blocks/block-settings/block-title)
+- [ブロックテンプレートとして保存](/handbook/ui/blocks/block-settings/block-template)
 
-## 配置字段
+## フィールドの設定
 
-仅支持关系字段和选项字段为筛选字段。
+関連フィールドとオプションフィールドのみがフィルターフィールドとしてサポートされます。
 
 ![20240408212301](https://static-docs.nocobase.com/20240408212301.png)
+

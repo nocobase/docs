@@ -1,8 +1,8 @@
-# 外部调用
+# 外部呼び出し
 
-审批事件不仅限于用户界面的操作发起，也可以通过 HTTP API 调用触发。
+承認イベントは、ユーザーインターフェースの操作だけでなく、HTTP APIを通じてトリガーすることも可能です。
 
-针对从数据区块和审批中心区块发起的审批，都可以这样调用（以 `posts` 表创建按钮举例）：
+データブロックおよび承認センターブロックから発起された承認は、以下のように呼び出すことができます（`posts` テーブルにボタンを作成する例）：
 
 ```bash
 curl -X POST -H 'Authorization: Bearer <your token>' -H 'X-Role: <roleName>' -d \
@@ -13,17 +13,17 @@ curl -X POST -H 'Authorization: Bearer <your token>' -H 'X-Role: <roleName>' -d 
   "http://localhost:3000/api/posts:create?triggerWorkflows=workflowKey"
 ```
 
-其中 URL 参数 `triggerWorkflows` 为工作流的 key，多个工作流用逗号分隔。该 key 可在工作流画布顶部工作流名称处鼠标悬浮后获得：
+ここで、URLパラメーター `triggerWorkflows` はワークフローのキーであり、複数のワークフローはカンマで区切ります。このキーはワークフローキャンバスの上部にあるワークフロー名にマウスをホバーすることで取得できます：
 
-![工作流_key_查看方式](https://static-docs.nocobase.com/20240426135108.png)
+![ワークフローキーの確認方法](https://static-docs.nocobase.com/20240426135108.png)
 
-调用成功后，将触发对应 `posts` 表的审批工作流。
+呼び出しが成功すると、対応する `posts` テーブルの承認ワークフローがトリガーされます。
 
-:::info{title="提示"}
-因为外部调用也需要基于用户身份，所以通过 HTTP API 调用时，和普通界面发送的请求一致，都需要提供认证信息，包括 `Authorization` 请求头或 `token` 参数（登录获得的 token），以及 `X-Role` 请求头（用户当前角色名）。
+:::info{title="ヒント"}
+外部呼び出しもユーザーの身分に基づく必要があるため、HTTP APIを通じて呼び出す際は、通常のインターフェースから送信されるリクエストと同様に、認証情報を提供する必要があります。これには `Authorization` リクエストヘッダーまたは `token` パラメーター（ログイン時に取得したトークン）、および `X-Role` リクエストヘッダー（ユーザーの現在の役割名）が含まれます。
 :::
 
-如果需要触发该操作中对一关系数据（对多暂不支持）的事件，可以在参数中使用 `!` 来指定关系字段的触发数据：
+この操作内でリレーションデータ（多対多は未サポート）に対するイベントをトリガーする必要がある場合、パラメーター内で `!` を使用してリレーションフィールドのトリガーデータを指定できます：
 
 ```bash
 curl -X POST -H 'Authorization: Bearer <your token>' -H 'X-Role: <roleName>' -d \
@@ -31,14 +31,15 @@ curl -X POST -H 'Authorization: Bearer <your token>' -H 'X-Role: <roleName>' -d 
     "title": "Hello, world!",
     "content": "This is a test post.",
     "category": {
-      "title": "Test category"
+      "title": "テストカテゴリー"
     }
   }'
   "http://localhost:3000/api/posts:create?triggerWorkflows=workflowKey!category"
 ```
 
-以上调用成功后，将触发对应 `categories` 表的审批事件。
+この呼び出しが成功した後、対応する `categories` テーブルの承認イベントがトリガーされます。
 
-:::info{title="提示"}
-通过 HTTP API 调用触发操作后事件时，也需要注意工作流的启用状态，以及数据表配置是否匹配，否则可能不会调用成功，或出现错误。
+:::info{title="ヒント"}
+HTTP API呼び出しで操作をトリガーする際は、ワークフローの有効状態やデータテーブルの設定が一致していることを確認してください。そうでないと、呼び出しが成功しないか、エラーが発生する可能性があります。
 :::
+

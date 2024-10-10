@@ -25,3 +25,7 @@ Attachment fields are specific relational fields related to the file collection,
 The file storage engine is used to save files to specific services, including local storage (saving to the server's hard drive), cloud storage, etc.
 
 [More usage information can be found in the file storage introduction document](./storage/index.md)
+
+### Development
+
+* [Extend client file type](./development/client-file-type.md)

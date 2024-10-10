@@ -1,14 +1,14 @@
-# Docker 安装的升级
+# Dockerインストールのアップグレード
 
-## 0. 升级前的准备
+## 0. アップグレード前の準備
 
 :::warning
-升级前一定要先备份数据库！！！
+アップグレード前に必ずデータベースのバックアップを取ってください！！！
 :::
 
-## 1. 切换到 `docker-compose.yml` 所在的目录
+## 1. `docker-compose.yml` があるディレクトリに移動
 
-例如
+例えば：
 
 ```bash
 # MacOS, Linux...
@@ -17,44 +17,45 @@ cd /your/path/my-project/
 cd C:\your\path\my-project
 ```
 
-## 2. 更新 image 版本号
+## 2. イメージのバージョン番号を更新
 
-- `latest` 截止目前最稳定的版本，推荐安装此版本；
-- `next` 内测版，包含一些未发布的新特性，这个版本可能还不完全稳定，适用于开发者或测试人员，用于提前体验新功能或进行兼容性测试；
-- `1.2.4-alpha` 指定版本号升级，最新版本情况，查看[已发布版本列表](https://hub.docker.com/r/nocobase/nocobase/tags)
+- `latest` または `main`：現在最も安定したバージョンで、推奨されるインストールバージョンです。
+- `next`：アルファ版で、未公開の新機能が含まれています。このバージョンは完全に安定していない可能性があり、開発者やテスター向けに新機能を体験したり、互換性テストを行ったりするために使用されます。
+- `1.2.4-alpha`：特定のバージョンにアップグレードします。最新のバージョン情報は[公開バージョンリスト](https://hub.docker.com/r/nocobase/nocobase/tags)を参照してください。
 
 :::warning
-镜像只能升级不能降级，不能将 next 降级为 latest
+イメージはアップグレードのみ可能で、ダウングレードはできません。`next` を `latest` にダウングレードすることはできません。
 :::
 
 ```yml
 # ...
 services:
   app:
-    # 阿里云 main 版本（只支持 AMD64 架构）
+    # アリババクラウドのメインバージョン（AMD64アーキテクチャのみサポート）
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:main
-    # 阿里云 latest 版本
+    # アリババクラウドのlatestバージョン
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
-    # 阿里云指定版本
+    # アリババクラウドの指定バージョン
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:1.2.4-alpha
-    # Docker Hub 镜像，可能会下载不了
+    # Docker Hubのイメージ、ダウンロードできない可能性があります
     image: nocobase/nocobase:main
     image: nocobase/nocobase:latest
     image: nocobase/nocobase:1.2.4-alpha
 # ...
 ```
 
-## 3. 重启容器
+## 3. コンテナを再起動
 
 ```bash
-# 拉取最新镜像
+# 最新のイメージを取得します
 docker-compose pull
-# 启动
+# アプリケーションを起動します
 docker-compose up -d app
-# 查看 app 进程的情况
+# app プロセスの状況を確認します
 docker-compose logs app
 ```
 
-## 4. 独立插件的升级
+## 4. 独立プラグインのアップグレード
 
-NocoBase 升级之后，通过界面安装的独立插件可能也需要升级，参考文档 [独立插件的安装与升级](/welcome/getting-started/plugin)
+NocoBaseのアップグレード後、インターフェースからインストールされた独立プラグインもアップグレードが必要な場合があります。詳細については、ドキュメントの[独立プラグインのインストールとアップグレード](/welcome/getting-started/plugin)を参照してください。
+

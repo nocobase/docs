@@ -1,66 +1,81 @@
-# 日历区块
+# カレンダーブロック
 
 <PluginInfo name="calendar"></PluginInfo>
 
-## 介绍
+## イントロダクション
 
-日历区块以日历视图显示事件和日期相关的数据，适用于会议安排、活动计划等场景。
+カレンダーブロックは、カレンダー表示でイベントや日付に関連するデータを表示し、会議のスケジュールやイベントの計画に最適です。
 
-## 安装
+## インストール
 
-内置插件，无需安装。
+ビルトインプラグインのため、インストールは不要です。
 
-## 添加区块
+## ブロックの追加
 
 <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240419201640.mp4" type="video/mp4">
 </video>
 
-1. 标题字段: 用于显示在日历条形上的信息；
-2. 开始时间: 任务的开始时间；
-3. 结束时间: 任务的结束时间；
+1. タイトルフィールド: カレンダーのバーに表示される情報
+2. 開始時間: タスクの開始時間
+3. 終了時間: タスクの終了時間
 
-点击任务条,同一任务条高亮，并弹出弹窗。
+タスクバーをクリックすると、選択したタスクバーがハイライトされ、詳細なポップアップウィンドウが表示されます。
 
 ![20240408171928](https://static-docs.nocobase.com/20240408171928.png)
 
-## 区块配置项
+## ブロック設定項目
 
 ![20240419203321](https://static-docs.nocobase.com/20240419203321.png)
 
-### 展示农历
+### 農暦の表示
 
 ![20240419203603](https://static-docs.nocobase.com/20240419203603.png)
 
-- [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
-- [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
+- [ブロックタイトルを編集](/handbook/ui/blocks/block-settings/block-title)
+- [ブロックテンプレートとして保存](/handbook/ui/blocks/block-settings/block-template)
 
-### 设置数据范围
+### データ範囲の設定
 
 ![20240419203751](https://static-docs.nocobase.com/20240419203751.png)
 
-更多内容参考 [设置数据范围](/handbook/ui/blocks/block-settings/data-scope)
+詳細は [データ範囲の設定](/handbook/ui/blocks/block-settings/data-scope) を参照してください。
 
-### 设置区块高度
+### ブロックの高さ設定
 
-示例：调整订单日历区块高度,日历区块内部不会出现滚动条。
+例: 注文カレンダーブロックの高さを調整し、カレンダーブロック内にスクロールバーが表示されないようにします。
 
 ![20240605215742](https://static-docs.nocobase.com/20240605215742.gif)
 
-更多内容参考 [区块高度](/handbook/ui/blocks/block-settings/block-height)
+より多くの内容は [ブロックの高さ](/handbook/ui/blocks/block-settings/block-height) を参照してください。
 
-## 配置操作
+### 背景色フィールド
+
+:::info{title=ヒント}
+必要なNocoBaseのバージョンはv1.4.0-beta以上です。
+:::
+
+このオプションはカレンダーイベントの背景色を設定するために使用できます。使い方は以下の通りです：
+
+1. カレンダーデータテーブルには**ドロップダウン単一選択（Single select）**または**ラジオボタン（Radio group）**タイプのフィールドが必要で、そのフィールドに色を設定します。
+2. 次に、カレンダーブロックの設定画面に戻り、**背景色フィールド**で先ほど設定したフィールドを選択します。
+3. 最後に、カレンダーイベントで色を選択し、送信ボタンをクリックすると、色が反映されるのを確認できます。
+
+![20240914192017_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240914192017_rec_.gif)
+
+## 設定操作
 
 ![20240419203424](https://static-docs.nocobase.com/20240419203424.png)
 
-### 今天
+### 今日
 
-日历区块的"今天"按钮提供了便捷的导航功能，允许用户在翻页到其他日期后快速返回到当前日期所在的日历页。
+カレンダーブロックの「今日」ボタンは便利なナビゲーション機能を提供し、ユーザーが他の日付にページをめくった後、現在の日付のカレンダーページに迅速に戻ることができます。
 
 ![20240419203514](https://static-docs.nocobase.com/20240419203514.png)
 
-### 切换视图
+### ビュー切替
 
-默认是月
+デフォルトは月表示です。
 
 ![20240419203349](https://static-docs.nocobase.com/20240419203349.png)
+

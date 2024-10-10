@@ -1,86 +1,87 @@
 # v0.17：2023-12-04
 
-v0.17 提供全新的 SchemaInitializer 和 SchemaSettings。
+v0.17では、全く新しいSchemaInitializerとSchemaSettingsを提供します。
 
-## 新特性
+## 新機能
 
-为了降低开发学习成本，提供更好的前端开发体验，在过去的几个月里，我们分阶段的对前端内核进行了重构，其中包括：
+開発の学習コストを低減し、より良いフロントエンド開発体験を提供するために、過去数ヶ月間にわたりフロントエンドコアを段階的に再構築しました。これには以下が含まれます：
 
 ![20240115141058](https://static-docs.nocobase.com/20240115141058.png)
 
-这一次 v0.17 重构了 UI Schema 设计器相关的 SchemaInitializer 和 SchemaSettings
+今回のv0.17では、UI Schemaデザイナーに関連するSchemaInitializerとSchemaSettingsを再構築しました。
 
 ![20240115141118](https://static-docs.nocobase.com/20240115141118.png)
 
 ![20240115141129](https://static-docs.nocobase.com/20240115141129.png)
 
-为了解决用户上手难的问题，我们也重新梳理了各部分文档
+ユーザーがすぐに使えるよう、各部分の文書も見直しました。
 
-- [插件开发](https://docs-cn.nocobase.com/development)（全面改版，已发布）
-- [API 参考 / 客户端](https://client.docs-cn.nocobase.com/core/application/application)（新版块，已发布）
-- 使用手册（全面改版，将在未来一两周内发布）
-- 插件列表（新版块，包括所有已有插件的介绍、使用、扩展开发的说明，将在未来一两周内发布）
+- [プラグイン開発](https://docs-cn.nocobase.com/development)（全面改訂、公開済み）
+- [APIリファレンス / クライアント](https://client.docs-nocobase.com/core/application/application)（新セクション、公開済み）
+- 使用マニュアル（全面改訂、今後1、2週間以内に公開予定）
+- プラグイン一覧（新セクション、すべての既存プラグインの紹介、使用および拡張開発に関する説明を含む、今後1、2週間以内に公開予定）
 
-## 不兼容的变化
+## 非互換の変更
 
-### SchemaInitializer 的变化
+### SchemaInitializerの変更
 
-- 新增 `SchemaInitializerManager`，用于注册 `SchemaInitializer`
-- 新增 `useSchemaInitializerRender()` 代替原来的 `useSchemaInitializer()` 的 `render()`
-- 新增 `useSchemaInitializerItem()`，用于获取当前初始化项的上下文
-- 新增 `SchemaInitializerItemGroup` 组件，用作 `type: 'itemGroup'` 的默认组件
-- 新增 `SchemaInitializerSubMenu` 组件，用作 `type: 'subMenu'` 的默认组件
-- 新增 `SchemaInitializerDivider` 组件，用作 `type: 'divider'` 的默认组件
-- 新增 `SchemaInitializerChildren` 组件，用于自定义渲染多个列表项
-- 新增 `SchemaInitializerChild` 组件，用于自定义渲染单个列表项
-- 更改 `SchemaInitializerContext` 职责变更，用于存放当前初始化器的上下文
-- 更改 `useSchemaInitializer()` 职责变更，用于获取当前初始化器的上下文
-- 更改 `function SchemaInitializer` 变更为 `class SchemaInitializer`，用于定义初始化器
-- 更改 `SchemaInitializer` 参数变更
-  - 新增 `name` 必填参数，用于 `x-initializer` 的值。
-  - 新增 `Component` 参数，用于定制化渲染的按钮。默认为 `SchemaInitializerButton`。
-  - 新增 `componentProps`、`style` 用于配置 `Component` 的属性和样式。
-  - 新增 `ItemsComponent` 参数，用于定制化渲染的列表。默认为 `SchemaInitializerItems`。
-  - 新增 `itemsComponentProps`、`itemsComponentStyle` 用于配置 `ItemsComponent` 的属性和样式。
-  - 新增 `popover` 参数，用于配置是否显示 `popover` 效果。
-  - 新增 `useInsert` 参数，用于当 `insert` 函数需要使用 hooks 时。
-  - 更改 将 `dropdown` 参数改为了 `popoverProps`，使用 `Popover` 代替了 `Dropdown`。
-- 更改 `SchemaInitializer` 的 `items` 参数变更
-  - 新增 `useChildren` 函数，用于动态控制子项。
-  - 新增 `componentProps` 函数，用于组件自身的属性。
-  - 新增 `useComponentProps` 函数，用于动态处理组件的 props
-  - 更改 将 `key` 参数改为了 `name`，用于列表项的唯一标识。
-  - 更改 将 `visible` 参数改为了 `useVisible` 函数，用于动态控制是否显示。
-  - 更改 将 `component` 参数改为了 `Component`，用于列表项的渲染。
-- 更改 `SchemaInitializer.Button` 变更为 `SchemaInitializerButton`，是 SchemaInitializer 的 Component 参数的默认值；
-- 更改 `SchemaInitializer.Item` 变更为 `SchemaInitializerItem`，参数不变；
-- 更改 `SchemaInitializer.ActionModal` 变更为 `SchemaInitializerActionModal`，参数不变；
-- 更改 `SchemaInitializer.SwitchItem` 变更为 `SchemaInitializer.Switch`，参数不变。
-- 删除 `SchemaInitializerProvider`，用 `SchemaInitializerManager` 代替
-- 删除 `SchemaInitializer.itemWrap`，不需要再包裹 `item` 组件了；
+- `SchemaInitializerManager`を新規追加し、`SchemaInitializer`を登録します。
+- 元の`useSchemaInitializer()`の`render()`を置き換えるために、`useSchemaInitializerRender()`を新規追加します。
+- 現在の初期化項目のコンテキストを取得するために、`useSchemaInitializerItem()`を新規追加します。
+- `type: 'itemGroup'`のデフォルトコンポーネントとして、`SchemaInitializerItemGroup`コンポーネントを新規追加します。
+- `type: 'subMenu'`のデフォルトコンポーネントとして、`SchemaInitializerSubMenu`コンポーネントを新規追加します。
+- `type: 'divider'`のデフォルトコンポーネントとして、`SchemaInitializerDivider`コンポーネントを新規追加します。
+- 複数のリスト項目をカスタムレンダリングするために、`SchemaInitializerChildren`コンポーネントを新規追加します。
+- 単一のリスト項目をカスタムレンダリングするために、`SchemaInitializerChild`コンポーネントを新規追加します。
+- `SchemaInitializerContext`の責任を変更し、現在の初期化器のコンテキストを保存します。
+- `useSchemaInitializer()`の責任を変更し、現在の初期化器のコンテキストを取得します。
+- `function SchemaInitializer`を`class SchemaInitializer`に変更し、初期化器を定義します。
+- `SchemaInitializer`のパラメータを変更します。
+  - `x-initializer`の値として必須の`name`パラメータを新規追加します。
+  - カスタムレンダリングボタン用の`Component`パラメータを新規追加し、デフォルトは`SchemaInitializerButton`です。
+  - `Component`の属性とスタイルを設定するための`componentProps`および`style`を新規追加します。
+  - カスタムレンダリングリスト用の`ItemsComponent`パラメータを新規追加し、デフォルトは`SchemaInitializerItems`です。
+  - `ItemsComponent`の属性とスタイルを設定するための`itemsComponentProps`および`itemsComponentStyle`を新規追加します。
+  - `popover`効果を表示するかどうかを設定するための`popover`パラメータを新規追加します。
+  - `insert`関数がhooksを使用する必要がある場合のために、`useInsert`パラメータを新規追加します。
+  - `dropdown`パラメータを`popoverProps`に変更し、`Dropdown`の代わりに`Popover`を使用します。
+- `SchemaInitializer`の`items`パラメータを変更します。
+  - 子項目を動的に制御するための`useChildren`関数を新規追加します。
+  - コンポーネント自身の属性用の`componentProps`関数を新規追加します。
+  - コンポーネントのpropsを動的に処理するための`useComponentProps`関数を新規追加します。
+  - リスト項目の一意の識別子として`key`パラメータを`name`に変更します。
+  - 表示を動的に制御するために、`visible`パラメータを`useVisible`関数に変更します。
+  - リスト項目のレンダリング用に、`component`パラメータを`Component`に変更します。
+- `SchemaInitializer.Button`を`SchemaInitializerButton`に変更し、`SchemaInitializer`のComponentパラメータのデフォルト値とします。
+- `SchemaInitializer.Item`を`SchemaInitializerItem`に変更し、パラメータはそのままです。
+- `SchemaInitializer.ActionModal`を`SchemaInitializerActionModal`に変更し、パラメータはそのままです。
+- `SchemaInitializer.SwitchItem`を`SchemaInitializer.Switch`に変更し、パラメータはそのままです。
+- `SchemaInitializerProvider`を削除し、`SchemaInitializerManager`に置き換えます。
+- `SchemaInitializer.itemWrap`を削除し、`item`コンポーネントを包む必要はなくなります。
 
-### SchemaSettings 的变化
+### SchemaSettingsの変更
 
-- 新增 `SchemaSettingsManager` 用于注册 `SchemaSettings`
-- 新增 `useSchemaSettingsItem()`
-- 新增 `useSchemaSettingsRender()`
-- 新增 `x-settings` 参数，用于配置 schema 的设置器
-- 新增 `x-toolbar` 参数，用于配置 schema 的工具栏
-- 新增 `SchemaToolbar` 组件，用于自定义 schema 的工具栏
-- 新增 `useSchemaToolbarRender()`，代替原来的 `useDesigner()`
-- 更改 `function SchemaSettings` 变更为 `class SchemaSettings`，用于定义设置器
-- 更改 原 `SchemaSettings` 变更为 `SchemaSettingsDropdown`
-- 更改 `SchemaSettings.Item` 变更为 `SchemaSettingsItem`
-- 更改 `SchemaSettings.ItemGroup` 变更为 `SchemaSettingsItemGroup`
-- 更改 `SchemaSettings.SubMenu` 变更为 `SchemaSettingsSubMenu`
-- 更改 `SchemaSettings.Divider` 变更为 `SchemaSettingsDivider`
-- 更改 `SchemaSettings.Remove` 变更为 `SchemaSettingsRemove`
-- 更改 `SchemaSettings.SelectItem` 变更为 `SchemaSettingsSelectItem`
-- 更改 `SchemaSettings.CascaderItem` 变更为 `SchemaSettingsCascaderItem`
-- 更改 `SchemaSettings.SwitchItem` 变更为 `SchemaSettingsSwitchItem`
-- 更改 `SchemaSettings.ModalItem` 变更为 `SchemaSettingsModalItem`
-- 更改 `SchemaSettings.ActionModalItem` 变更为 `SchemaSettingsActionModalItem`
-- 删除 `x-designer` 参数已废弃，将来会删除，使用 `x-toolbar` 代替，
-- 删除 `useDesigner()` 已废弃，将来会删除，使用 `useSchemaToolbarRender()` 代替
+- `SchemaSettingsManager`を追加し、`SchemaSettings`を登録するために使用します。
+- `useSchemaSettingsItem()`を追加しました。
+- `useSchemaSettingsRender()`を追加しました。
+- スキーマの設定を構成するための`x-settings`パラメータを追加しました。
+- スキーマのツールバーを構成するための`x-toolbar`パラメータを追加しました。
+- スキーマのツールバーをカスタマイズするための`SchemaToolbar`コンポーネントを追加しました。
+- 以前の`useDesigner()`の代わりに`useSchemaToolbarRender()`を追加しました。
+- `function SchemaSettings`を`class SchemaSettings`に変更し、設定器を定義します。
+- 以前の`SchemaSettings`を`SchemaSettingsDropdown`に変更しました。
+- `SchemaSettings.Item`を`SchemaSettingsItem`に変更しました。
+- `SchemaSettings.ItemGroup`を`SchemaSettingsItemGroup`に変更しました。
+- `SchemaSettings.SubMenu`を`SchemaSettingsSubMenu`に変更しました。
+- `SchemaSettings.Divider`を`SchemaSettingsDivider`に変更しました。
+- `SchemaSettings.Remove`を`SchemaSettingsRemove`に変更しました。
+- `SchemaSettings.SelectItem`を`SchemaSettingsSelectItem`に変更しました。
+- `SchemaSettings.CascaderItem`を`SchemaSettingsCascaderItem`に変更しました。
+- `SchemaSettings.SwitchItem`を`SchemaSettingsSwitchItem`に変更しました。
+- `SchemaSettings.ModalItem`を`SchemaSettingsModalItem`に変更しました。
+- `SchemaSettings.ActionModalItem`を`SchemaSettingsActionModalItem`に変更しました。
+- `x-designer`パラメータは廃止され、将来的には削除される予定ですので、`x-toolbar`を代わりに使用してください。
+- `useDesigner()`は廃止され、今後削除される予定ですので、`useSchemaToolbarRender()`を代わりに使用してください。
 
-更多详情查看 [NocoBase 0.17 的不兼容变化](https://docs-cn.nocobase.com/welcome/release/upgrade-to/v017)
+詳細については、[NocoBase 0.17 の非互換性の変更](https://docs-cn.nocobase.com/welcome/release/upgrade-to/v017)をご覧ください。
+

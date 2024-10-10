@@ -1,31 +1,32 @@
-# 阿里云 OSS
+# Aliyun OSS
 
-基于阿里云 OSS 的存储引擎，使用前需要准备相关账号和权限。
+Aliyun OSSを基にしたストレージエンジンを使用する前に、関連アカウントと権限を準備する必要があります。
 
-## 配置参数
+## 設定パラメータ
 
-![阿里云 OSS 存储引擎配置示例](https://static-docs.nocobase.com/20240712220011.png)
+![Aliyun OSSストレージエンジン設定例](https://static-docs.nocobase.com/20240712220011.png)
 
-:::info{title=提示}
-仅介绍阿里云 OSS 存储引擎的专用参数，通用参数请参考[引擎通用参数](./index.md#引擎通用参数)。
+:::info{title=ヒント}
+Aliyun OSSストレージエンジン専用のパラメータについてのみ説明します。一般的なパラメータについては[エンジン共通パラメータ](./index.md#エンジン共通パラメータ)を参照してください。
 :::
 
-### 区域
+### リージョン
 
-填写 OSS 存储的区域，例如：`oss-cn-hangzhou`。
+OSSストレージのリージョンを入力してください。例：`oss-cn-hangzhou`。
 
-:::info{title=提示}
-可以在[阿里云 OSS 控制台](https://oss.console.aliyun.com/)中查看存储空间的区域信息，且只需截取区域前缀部分即可（无需完整域名）。
+:::info{title=ヒント}
+[Aliyun OSSコンソール](https://oss.console.aliyun.com/)でストレージバケットのリージョン情報を確認でき、リージョンのプレフィックス部分だけを切り取ればよいです（完全なドメイン名は不要です）。
 :::
 
 ### AccessKey ID
 
-填写阿里云授权访问密钥的 ID。
+Aliyunの認可されたアクセスキーのIDを入力してください。
 
 ### AccessKey Secret
 
-填写阿里云授权访问密钥的 Secret。
+Aliyunの認可されたアクセスキーのSecretを入力してください。
 
-### 存储桶
+### バケット
 
-填写 OSS 存储的存储桶名称。
+OSSストレージのバケット名を入力してください。
+

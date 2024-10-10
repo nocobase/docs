@@ -1,14 +1,14 @@
 # v0.16：2023-11-20
 
-## 新特性
+## 新機能
 
-之前版本的 cache 可用性较差（仅支持 memory 缓存），v0.16 版本进行了重构，内置了 memory 和 redis 两种 store（缓存存储方式），也支持自定义存储方式，具体的使用方法请参考 [API 文档](https://docs-cn.nocobase.com/api/cache/cache-manager)。
+以前のバージョンではキャッシュの可用性が低く（メモリキャッシュのみサポート）、v0.16バージョンでは再構築され、メモリとRedisの2種類のストレージ（キャッシュ保存方法）が内蔵され、カスタムストレージもサポートされます。具体的な使用方法については[APIドキュメント](https://docs.nocobase.com/api/cache/cache-manager)を参照してください。
 
-## 不兼容的变化
+## 非互換の変更
 
-### Node 最低版本更改为 18
+### Nodeの最低バージョンが18に変更
 
-Node v16 已经停止维护了，最低版本更改为 v18
+Node v16はメンテナンスが終了したため、最低バージョンをv18に変更しました。
 
 ```json
 {
@@ -18,9 +18,9 @@ Node v16 已经停止维护了，最低版本更改为 v18
 }
 ```
 
-### 创建缓存方法变更
+### キャッシュ作成方法の変更
 
-以前创建缓存通过 `createCache` 方法创建，该方法已废弃。
+以前は`createCache`メソッドを使用してキャッシュを作成していましたが、このメソッドは廃止されました。
 
 ```ts
 import { createCache } from '@nocobase/cache';
@@ -28,44 +28,45 @@ import { createCache } from '@nocobase/cache';
 const cache = createCache();
 ```
 
-新的缓存由 `CacheManager` 统一管理，通过 `app.cacheManager` 创建。
+新しいキャッシュは`CacheManager`によって一元管理され、`app.cacheManager`を通じて作成されます。
 
 ```ts
 const cache = await app.cacheManager.createCache({
-  name: 'memory', // 缓存唯一标识
-  store: 'memory', // 缓存方式
-  // 其他缓存配置
+  name: 'memory', // キャッシュのユニーク識別子
+  store: 'memory', // キャッシュ方式
+  // その他のキャッシュ設定
   max: 2000,
   ttl: 60 * 1000,
 });
 ```
 
-### 环境变量变更
+### 環境変数の変更
 
-以前的缓存环境变量配置需要配置一个 JSON 字符串作为配置参数。
+以前のキャッシュ環境変数設定では、設定パラメータとしてJSON文字列を指定する必要がありました。
 
 ```bash
 CACHE_CONFIG={"storePackage":"cache-manager-fs-hash","ttl":86400,"max":1000}
 ```
 
-新的环境变量：
+新しい環境変数：
 
 ```bash
-# 默认缓存方式，值为缓存方式的唯一标识
+# デフォルトのキャッシュ方式、値はキャッシュ方式のユニーク識別子
 CACHE_DEFAULT_STORE=memory
-# 内存缓存项目最大数量
+# メモリキャッシュ項目の最大数
 CACHE_MEMORY_MAX=2000
-# Redis，可选
+# Redis（オプション）
 CACHE_REDIS_URL=redis://localhost:6379
 ```
 
-## 完整更新记录
+## 完全な更新記録
 
-- refactor(cache): improve cache [`#3004`](https://github.com/nocobase/nocobase/pull/3004)
-- fix: local storage base url [`#3063`](https://github.com/nocobase/nocobase/pull/3063)
-- feat: show table definition [`#3061`](https://github.com/nocobase/nocobase/pull/3061)
-- feat: mariadb support [`#3052`](https://github.com/nocobase/nocobase/pull/3052)
-- fix(plugin-workflow): client minor fixes [`#3062`](https://github.com/nocobase/nocobase/pull/3062)
-- chore: view inference [`#3060`](https://github.com/nocobase/nocobase/pull/3060)
-- fix: sort by association collection [`#3058`](https://github.com/nocobase/nocobase/pull/3058)
-- feat: node &gt;= 18 [`#3066`](https://github.com/nocobase/nocobase/pull/3066)
+- リファクタリング（キャッシュ）：キャッシュの改善 [`#3004`](https://github.com/nocobase/nocobase/pull/3004)
+- 修正：ローカルストレージのベースURLの修正 [`#3063`](https://github.com/nocobase/nocobase/pull/3063)
+- 機能追加：テーブル定義の表示機能 [`#3061`](https://github.com/nocobase/nocobase/pull/3061)
+- 機能追加：MariaDBのサポート [`#3052`](https://github.com/nocobase/nocobase/pull/3052)
+- 修正（プラグインワークフロー）：クライアントのマイナー修正 [`#3062`](https://github.com/nocobase/nocobase/pull/3062)
+- 変更：ビュー推論の改善 [`#3060`](https://github.com/nocobase/nocobase/pull/3060)
+- 修正：関連コレクションによるソートの修正 [`#3058`](https://github.com/nocobase/nocobase/pull/3058)
+- 機能追加：Node.js バージョン >= 18 のサポート [`#3066`](https://github.com/nocobase/nocobase/pull/3066)
+

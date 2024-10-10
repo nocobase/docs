@@ -1,24 +1,24 @@
-# v0.9.0: Collection 模板
+# v0.9.0: コレクション テンプレート
 
 <img src="./v08-1-collection-templates/v08-1-collection-templates.jpg">
 
-## 为什么需要 Collection 模板？
+## なぜコレクション テンプレートが必要なのか？
 
-待补充
+待補充
 
-## 配置参数说明
+## 設定パラメータの説明
 
 ```ts
 interface ICollectionTemplate {
   name: string;
   title?: string;
-  /** 排序 */
+  /** ソート順 */
   order?: number;
-  /** 默认配置 */
+  /** デフォルト設定 */
   default?: CollectionOptions;
-  /** UI 可配置的 CollectionOptions 参数（添加或编辑的 Collection 表单的字段） */
+  /** UIで設定可能なCollectionOptionsパラメータ（追加または編集のコレクションフォームのフィールド） */
   configurableProperties?: Record<string, ISchema>;
-  /** 当前模板可用的字段类型 */
+  /** 現在のテンプレートで使用可能なフィールドタイプ */
   availableFieldInterfaces?:
     | AvailableFieldInterfacesInclude
     | AvailableFieldInterfacesExclude;
@@ -34,34 +34,34 @@ interface AvailableFieldInterfacesExclude {
 
 interface CollectionOptions {
   /**
-   * 自动生成 id
+   * IDの自動生成
    * @default true
    * */
   autoGenId?: boolean;
-  /** 创建人 */
+  /** 作成者 */
   createdBy?: boolean;
-  /** 最后更新人 */
+  /** 最終更新者 */
   updatedBy?: boolean;
-  /** 创建日期 */
+  /** 作成日 */
   createdAt?: boolean;
-  /** 更新日期 */
+  /** 更新日 */
   updatedAt?: boolean;
-  /** 可排序 */
+  /** ソート可能 */
   sortable?: boolean;
-  /* 树结构 */
+  /** ツリー構造 */
   tree?: string;
-  /* 日志 */
+  /** ログ */
   logging?: boolean;
-  /** 继承 */
+  /** 継承 */
   inherits: string | string[];
-  /* 字段列表 */
+  /** フィールドリスト */
   fields?: FieldOptions[];
 }
 ```
 
-## 示例
+## 例
 
-创建时都不需要 autoGenId，并且只提供 title 和 name 配置项
+作成時に autoGenId は不要で、title と name の設定項目のみを提供します。
 
 ```ts
 import { collectionConfigurableProperties } from '@nocobase/client';
@@ -77,4 +77,5 @@ import { collectionConfigurableProperties } from '@nocobase/client';
 }
 ```
 
-完整插件示例参考：[samples/custom-collection-template](https://github.com/nocobase/nocobase/tree/feat/collection-templates/packages/samples/custom-collection-template)
+完全なプラグインの例については、[samples/custom-collection-template](https://github.com/nocobase/nocobase/tree/feat/collection-templates/packages/samples/custom-collection-template)をご覧ください。
+

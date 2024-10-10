@@ -1,24 +1,24 @@
-# 添加子项到已有的 SchemaSettings
+# 既存のSchemaSettingsに子項目を追加する
 
-## 场景说明
+## シナリオ説明
 
-在实际开发中，我们区块、操作、字段都需要配置一些属性，但是已有的配置不一定满足我们的需求，我们就需要根据需求添加一些新的配置项。
+実際の開発において、ブロック、操作、フィールドにはいくつかの属性を設定する必要がありますが、既存の設定が必ずしもニーズを満たすわけではありません。そのため、ニーズに応じて新しい設定項目を追加する必要があります。
 
-## 示例说明
+## 例の説明
 
-目前 Table 区块的配置项中没有 `showIndex` 属性，我们需要添加一个 `showIndex` 属性，用于控制是否显示序号。
+現在、Tableブロックの設定項目には `showIndex` 属性が存在しないため、序号の表示を制御するために `showIndex` 属性を追加する必要があります。
 
-本实例主要为了演示 SchemaSettings 的使用，更多关于区块扩展可以查看 [区块扩展](/plugin-samples/block) 文档。
+本例は主にSchemaSettingsの使用方法を示すものであり、ブロックの拡張については[ブロック拡張](/plugin-samples/block)のドキュメントを参照してください。
 
-本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-schema-settings-add-item) 中查看。
+この文書の完全なサンプルコードは[plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-schema-settings-add-item)で確認できます。
 
 <video width="100%" controls="">
   <source src="https://static-docs.nocobase.com/20240601161535_rec_.mp4" type="video/mp4" />
 </video>
 
-## 初始化插件
+## プラグインの初期化
 
-我们按照 [编写第一个插件](/development/your-fisrt-plugin) 文档说明，如果没有一个项目，可以先创建一个项目，如果已经有了或者是 clone 的源码，则跳过这一步。
+[最初のプラグインの作成](/development/your-fisrt-plugin)のドキュメントに従い、プロジェクトがない場合はまずプロジェクトを作成します。すでにあるか、クローンしたコードがある場合はこの手順をスキップしてください。
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d sqlite
@@ -27,46 +27,46 @@ yarn install
 yarn nocobase install
 ```
 
-然后初始化一个插件，并添加到系统中：
+次に、プラグインを初期化し、システムに追加します：
 
 ```bash
 yarn pm create @nocobase-sample/plugin-schema-settings-add-item
 yarn pm enable @nocobase-sample/plugin-schema-settings-add-item
 ```
 
-然后启动项目即可：
+その後、プロジェクトを起動します：
 
 ```bash
 yarn dev
 ```
 
-然后登录后访问 [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) 就可以看到插件已经安装并启用了。
+ログイン後、[http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/)にアクセスすると、プラグインがインストールされ、有効になっていることが確認できます。
 
-## 功能实现
+## 機能の実現
 
-在实现本示例之前，我们需要先了解一些基础知识：
+この例を実現する前に、いくつかの基本知識を理解しておく必要があります：
 
-- [SchemaSettings 教程](/development/client/ui-schema/settings)：用于配置区块、字段、操作等的属性
-- [SchemaSettings API](https://client.docs.nocobase.com/core/ui-schema/schema-settings)：用于配置区块、字段、操作等的属性
-- [UI Schema 协议](/development/client/ui-schema/what-is-ui-schema)：详细介绍 Schema 的结构和每个属性的作用
-- [Designable 设计器](/development/client/ui-schema/designable)：用于修改 Schema
-- [TableV2](https://client.docs.nocobase.com/components/table-v2)：Table 区块的文档
+- [SchemaSettings チュートリアル](/development/client/ui-schema/settings)：ブロック、フィールド、操作などの属性を設定するために使用します。
+- [SchemaSettings API](https://client.docs.nocobase.com/core/ui-schema/schema-settings)：ブロック、フィールド、操作などの属性を設定するために使用します。
+- [UI Schema プロトコル](/development/client/ui-schema/what-is-ui-schema)：Schemaの構造と各属性の役割について詳しく説明しています。
+- [Designable デザイナー](/development/client/ui-schema/designable)：Schemaを変更するために使用します。
+- [TableV2](https://client.docs.nocobase.com/components/table-v2)：Tableブロックのドキュメントです。
 
-想要实现向已有的区块、字段、操作等添加新的配置项，需要有 3 个前提：
+既存のブロック、フィールド、操作などに新しい設定項目を追加するには、次の3つの前提条件があります：
 
-- 组件需要支持新的配置
-- 需要正确设置 Schema
-- Schema 的属性需要到传递到组件中
+- コンポーネントが新しい設定をサポートする必要があります。
+- Schemaを正しく設定する必要があります。
+- Schemaの属性がコンポーネントに渡される必要があります。
 
-以本示例为例，我们需要在 Table 区块中添加 `showIndex` 属性，用于控制是否显示序号。
+本例では、Tableブロックに `showIndex` 属性を追加し、序号の表示を制御します。
 
-- 首先需要确认 [TableV2](https://client.docs.nocobase.com/components/table-v2) 区块是否支持 `showIndex` 属性：我们通过 [文档](https://client.docs.nocobase.com/components/table-v2) 可以得知 Table 区块支持 `showIndex` 属性
-- 然后需要确认 [Table Block Schema](https://client.docs.nocobase.com/ui-schema/blocks/data/table) 中 `TableV2` 组件的属性存储位置： 我们通过 [文档](https://client.docs.nocobase.com/ui-schema/blocks/data/table) 在 `x-decorator-props` 中
-- 最后需要确认 `showIndex` 属性的值是否传递到 `TableV2` 组件中：我们通过 [文档](https://client.docs.nocobase.com/ui-schema/blocks/data/table) 可以得知 `showIndex` 属性是通过 `useTableBlockProps` 传递到 `TableV2` 组件中
+- まず、[TableV2](https://client.docs.nocobase.com/components/table-v2)ブロックが `showIndex` 属性をサポートしているかを確認します。文書を通じて、Tableブロックが `showIndex` 属性をサポートしていることがわかります。
+- 次に、[Table Block Schema](https://client.docs.nocobase.com/ui-schema/blocks/data/table)内の`TableV2`コンポーネントの属性の格納位置を確認します。文書によれば、`x-decorator-props`に格納されています。
+- 最後に、`showIndex` 属性の値が `TableV2` コンポーネントに渡されるかを確認します。文書によれば、`showIndex` 属性は `useTableBlockProps`を介して `TableV2` コンポーネントに渡されます。
 
-### 1. 定义 SchemaSettingsItem
+### 1. SchemaSettingsItemの定義
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-schema-settings-add-item/src/client/tableShowIndexSettingsItem.tsx` 文件：
+`packages/plugins/@nocobase-sample/plugin-schema-settings-add-item/src/client/tableShowIndexSettingsItem.tsx` ファイルを新規作成します：
 
 ```ts
 import { SchemaSettingsItemType, useDesignable } from '@nocobase/client';
@@ -81,13 +81,13 @@ export const tableShowIndexSettingsItem: SchemaSettingsItemType = {
 };
 ```
 
-我们定义了一个 `showIndex` 的配置项，类型为 `switch`。
+`showIndex` の設定項目を定義し、タイプを `switch` としました。
 
-- `name`：配置项的名称，用于增删改查
-- `type`：配置项的类型，用于渲染不同的组件，更多类型可以查看 [SchemaSettings API](https://client.docs.nocobase.com/core/ui-schema/schema-settings#built-in-components-and-types)
-- `useComponentProps`：用于配置组件的属性
+- `name`：設定項目の名前で、CRUD操作に使用されます。
+- `type`：設定項目のタイプで、異なるコンポーネントをレンダリングします。その他のタイプについては、[SchemaSettings API](https://client.docs.nocobase.com/core/ui-schema/schema-settings#built-in-components-and-types)を参照してください。
+- `useComponentProps`：コンポーネントの属性を設定するために使用します。
 
-### 2. 修改 Schema
+### 2. Schemaの変更
 
 ```diff
 import { SchemaSettingsItemType, useDesignable } from '@nocobase/client';
@@ -100,7 +100,7 @@ export const tableShowIndexSettingsItem: SchemaSettingsItemType = {
 +   const fieldSchema = useFieldSchema();
 +   const dn = useDesignable();
 +   return {
-+     title: 'Show Index',
++     title: 'インデックスを表示',
 +     checked: !!fieldSchema['x-decorator-props'].showIndex,
 +     onChange(v: boolean) {
 +       dn.deepMerge({
@@ -118,23 +118,23 @@ export const tableShowIndexSettingsItem: SchemaSettingsItemType = {
 
 Hooks：
 
-- [useFieldSchema](https://client.docs.nocobase.com/core/ui-schema/designable#usefieldschema)：用于获取当前字段的 Schema
-- [useDesignable](https://client.docs.nocobase.com/core/ui-schema/designable#usedesignable)：用于修改 Schema
+- [useFieldSchema](https://client.docs.nocobase.com/core/ui-schema/designable#usefieldschema)：現在のフィールドのスキーマを取得するために使用します。
+- [useDesignable](https://client.docs.nocobase.com/core/ui-schema/designable#usedesignable)：スキーマを変更するために使用します。
 
 Props：
 
-- `title`：Switch 组件的标题
-- `checked`：Switch 组件的选中状态，通过 `fieldSchema['x-decorator-props'].showIndex` 获取，具体可以查看 [Table Block Schema](https://client.docs.nocobase.com/ui-schema/blocks/data/table)
-- `onChange`：Switch 组件的值改变事件，通过 `dn.deepMerge` 修改 Schema
+- `title`：スイッチコンポーネントのタイトル
+- `checked`：スイッチコンポーネントの選択状態。`fieldSchema['x-decorator-props'].showIndex`を通じて取得します。具体的には、[テーブルブロックスキーマ](https://client.docs.nocobase.com/ui-schema/blocks/data/table)を参照してください。
+- `onChange`：スイッチコンポーネントの値変更イベント。`dn.deepMerge`を使用してスキーマを変更します。
 
-`dn.deepMerge`：用于修改 Schema
+`dn.deepMerge`：スキーマを変更するために使用します。
 
-- `x-uid`：字段的唯一标识，用于服务端的查询和修改
-- `x-decorator-props`：字段的属性，用于配置组件的属性
+- `x-uid`：フィールドの一意の識別子。サーバー側のクエリと変更に使用されます。
+- `x-decorator-props`：フィールドの属性。コンポーネントの属性を設定するために使用されます。
 
-### 3. 注册 SchemaSettingsItem
+### 3. スキーマ設定アイテムの登録
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-schema-settings-add-item/src/client/index.ts` 文件：
+`packages/plugins/@nocobase-sample/plugin-schema-settings-add-item/src/client/index.ts`ファイルを修正します：
 
 ```ts
 import { Plugin } from '@nocobase/client';
@@ -149,26 +149,27 @@ export class PluginSchemaSettingsAddItemClient extends Plugin {
 export default PluginSchemaSettingsAddItemClient;
 ```
 
-然后我们就可以看到 Table 区块的配置项中多了一个 `Show Index` 的配置项。
+これで、テーブルブロックの設定項目に`インデックスを表示`の設定項目が追加されていることが確認できます。
 
 <video width="100%" controls="">
   <source src="https://static-docs.nocobase.com/20240601161535_rec_.mp4" type="video/mp4" />
 </video>
 
-## 打包和上传到生产环境
+## パッケージ化と本番環境へのアップロード
 
-按照 [构建并打包插件](/development/your-fisrt-plugin#构建并打包插件) 文档说明，我们可以打包插件并上传到生产环境。
+[プラグインのビルドとパッケージ化](/development/your-fisrt-plugin#構建並打包插件)に従って、プラグインをパッケージ化して本番環境にアップロードできます。
 
-如果是 clone 的源码，需要先执行一次全量 build，将插件的依赖也构建好。
+ソースコードをクローンした場合は、依存関係もビルドするためにフルビルドを一度実行する必要があります。
 
 ```bash
 yarn build
 ```
 
-如果是使用的 `create-nocobase-app` 创建的项目，可以直接执行：
+`create-nocobase-app`で作成したプロジェクトの場合は、直接実行できます：
 
 ```bash
 yarn build nocobase-sample/plugin-schema-settings-add-item --tar
 ```
 
-这样就可以看到 `storage/tar/nocobase-sample/plugin-schema-settings-add-item.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
+これで、`storage/tar/nocobase-sample/plugin-schema-settings-add-item.tar.gz`ファイルが生成され、[アップロードの方法](/welcome/getting-started/plugin)でインストールできます。
+

@@ -1,6 +1,6 @@
-# 致谢
+# 感謝
 
-NocoBase 使用了优秀的、成熟的开源产品，向他们表示诚挚的谢意：
+NocoBaseは、優れた成熟したオープンソースプロダクトを利用しており、ここに心から感謝の意を表します。
 
 - [Ant Design](https://ant.design/)
 - [Dnd Kit](https://dndkit.com/)
@@ -10,3 +10,4 @@ NocoBase 使用了优秀的、成熟的开源产品，向他们表示诚挚的�
 - [React](https://reactjs.org/)
 - [Sequelize](https://sequelize.org/)
 - [UmiJS](https://umijs.org/)
+

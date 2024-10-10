@@ -1,35 +1,36 @@
-# 前端路由示例概述
+# フロントエンドルーティングの概要
 
-NocoBase 的前端页面目前内置了以下[页面路由](/development/client/router#已有页面路由)：
+NocoBaseのフロントエンドページには、現在以下の[ページルーティング](/development/client/router#既存のページルーティング)が組み込まれています：
 
-| 名称           | 路径               | 组件                | 说明 |
+| 名称           | パス               | コンポーネント        | 説明 |
 | -------------- | ------------------ | ------------------- |---------|
-| admin          | /admin/\*          | AdminLayout         | 后台管理页面  |
-| admin.page     | /admin/:name       | AdminDynamicPage    | 动态创建的页面 |
-| admin.settings | /admin/settings/\* | AdminSettingsLayout | 插件配置页面  |
-| admin.pm.list  | /admin/pm/list/\* | PluginManager       | 插件管理页面  |
+| admin          | /admin/\*          | AdminLayout         | バックエンド管理ページ  |
+| admin.page     | /admin/:name       | AdminDynamicPage    | 動的に作成されたページ |
+| admin.settings | /admin/settings/\* | AdminSettingsLayout | プラグイン設定ページ  |
+| admin.pm.list  | /admin/pm/list/\* | PluginManager       | プラグイン管理ページ  |
 
-但这些页面并不一定满足所有的需求，例如：
+これらのページがすべての要件を満たすわけではありません。例えば：
 
-**新增场景**
+**追加シナリオ**
 
-- 新增一个仅用于前端展示页面，比如 `/about`，展示一些关于网站的信息
-- 需要在 `/admin/*` 下扩展一个新的页面，此页面需要登录后才能访问
-- 新增了一个插件，其需要增加配置页面
+- フロントエンドの表示専用ページを追加します。例えば、`/about`でウェブサイトに関する情報を表示します。
+- `/admin/*`の下に新しいページを追加します。このページはログイン後にアクセス可能でなければなりません。
+- 新しいプラグインを追加し、その設定ページを作成する必要があります。
 
-**修改场景**
+**変更シナリオ**
 
-- 完全替换已有页面：例如完全自定义登录页面，而不是使用默认的登录页
-- 修改已有页面的布局：例如修改 `/admin/*` 的布局，不需要顶部的菜单栏
+- 既存のページを完全に置き換えます。例えば、デフォルトのログインページではなく、カスタムログインページを作成します。
+- 既存ページのレイアウトを変更します。例えば、`/admin/*`のレイアウトを変更し、上部のメニューバーを不要にします。
 
-**删除场景**
+**削除シナリオ**
 
-- 例如我们不需要某个已经注册的页面，可以删除改页面
+- 例えば、すでに登録されているページが不要な場合、そのページを削除できます。
 
-针对以上场景，我们可以通过 NocoBase 提供的前端路由扩展功能来实现，我们提供了如下示例：
+上記のシナリオに対処するために、NocoBaseが提供するフロントエンドルーティングの拡張機能を利用して実現できます。以下のサンプルを提供します：
 
-- [新增页面](/plugin-samples/router/add-page)
-- [修改页面](/plugin-samples/router/replace-page)
-- [插件配置页面（单个路由）](/plugin-samples/router/add-setting-page-single-route)
-- [插件配置页面（Tabs 路由）](/plugin-samples/router/add-setting-page-tabs-routes)
-- [插件配置页面（不同布局）](/plugin-samples/router/add-setting-page-layout-routes)
+- [ページの追加](/plugin-samples/router/add-page)
+- [ページの変更](/plugin-samples/router/replace-page)
+- [プラグイン設定ページ（単一ルート）](/plugin-samples/router/add-setting-page-single-route)
+- [プラグイン設定ページ（タブルート）](/plugin-samples/router/add-setting-page-tabs-routes)
+- [プラグイン設定ページ（異なるレイアウト）](/plugin-samples/router/add-setting-page-layout-routes)
+

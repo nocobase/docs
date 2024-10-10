@@ -1,25 +1,25 @@
-# Designable 设计器
+# デザイン可能なデザイナー
 
-NocoBase 通过 `createDesignable()` 方法为 Schema 提供设计能力
+NocoBaseは`createDesignable()`メソッドを使用して、Schemaにデザイン機能を提供します。
 
 ```ts
 import React from 'react';
 import { Schema } from '@formily/json-schema';
 import { createDesignable } from '@nocobase/client';
 
-// 创建一个 schema 示例
+// Schemaの例を作成
 const current = new Schema({
   name: 'root',
   type: 'void',
   'x-component': 'Page',
 });
 
-// 为当前 schema 创建 designable
+// 現在のSchemaにデザイン可能を作成
 const dn = createDesignable({
   current,
 });
 
-// 在 schema 节点内部新增一个 hello 节点
+// Schemaノード内にhelloノードを追加
 dn.insertAfterBegin({
   name: 'hello',
   type: 'void',
@@ -42,7 +42,7 @@ console.log(current.toJSON());
 }
 ```
 
-在 Schema 组件中，可以直接使用 `useDesignable()` 来处理当前 Schema 节点
+Schemaコンポーネント内で、`useDesignable()`を直接使用して現在のSchemaノードを処理できます。
 
 ```tsx
 import React from 'react';
@@ -53,7 +53,7 @@ import {
   useDesignable,
 } from '@nocobase/client';
 
-const Hello = () => <h1>Hello, world!</h1>;
+const Hello = () => <h1>こんにちは、世界！</h1>;
 
 const Page = (props) => {
   const dn = useDesignable();
@@ -67,7 +67,7 @@ const Page = (props) => {
           });
         }}
       >
-        点此新增子节点
+        子ノードを追加するにはここをクリック
       </Button>
       {props.children}
     </div>
@@ -89,70 +89,70 @@ export default () => {
 };
 ```
 
-## createDesignable vs useDesignable
+## createDesignableとuseDesignableの違い
 
-- createDesignable 需要传 current 参数，useDesignable 直接用于当前节点，不需要传 current
-- createDesignable 可以用在事件中，useDesignable 是 react hook 方法，必须先执行
-- createDesignable 的 current 可以是任意 schema，useDesignable 只能是当前 schema
+- `createDesignable`は`current`パラメータを必要とし、`useDesignable`は現在のノードに直接使用でき、`current`を渡す必要はありません。
+- `createDesignable`はイベント内で使用でき、`useDesignable`はReactフックメソッドであり、最初に実行する必要があります。
+- `createDesignable`の`current`は任意のSchemaであり、`useDesignable`は現在のSchemaのみです。
 
-使用场景
+### 使用シーン
 
-- 如果明确就是当前节点操作，直接用 useDesignable 更加便捷
-- 如果操作的不是当前节点，用 createDesignable 更合适
-- 如果是事件触发，如拖拽移动等，用 createDesignable 更合适
+- 明確に現在のノードを操作する場合は、`useDesignable`を使用する方が便利です。
+- 現在のノードでない操作を行う場合は`createDesignable`がより適切です。
+- ドラッグ＆ドロップなどのイベントトリガーの場合は`createDesignable`がより適切です。
 
-## designable 的设计能力
+## designableのデザイン機能
 
-designable 为 schema 提供的设计能力体现在
+designableがSchemaに提供するデザイン機能は以下の通りです。
 
-- 增：当前节点相邻位置插入
-- 查：查找子节点
-- 改：通过 patch 修改 schema 参数
-- 删：删除当前节点或者某个子节点
-- 移：节点间的移动
+- 増：現在のノードの隣接位置に挿入
+- 查：子ノードを検索
+- 改：patchを通じてSchemaパラメータを変更
+- 删：現在のノードまたは特定の子ノードを削除
+- 移：ノード間の移動
 
-### 增：当前节点相邻位置插入
+### 増：現在のノードの隣接位置に挿入
 
-与 DOM 的 [insert adjacent](https://dom.spec.whatwg.org/#insert-adjacent) 概念相似，Schema 也提供了 `insertAdjacent()` 方法用于解决邻近位置的插入问题。
+DOMの[insert adjacent](https://dom.spec.whatwg.org/#insert-adjacent)の概念に似て、Schemaも`insertAdjacent()`メソッドを提供して隣接位置の挿入問題を解決します。
 
-四个邻近位置
+4つの隣接位置
 
 ```html
 <!-- root -->
 <div>
-  <!-- beforeBegin 在当前节点的前面插入 -->
+  <!-- beforeBegin：現在のノードの前に挿入 -->
   <p>
-    <!-- afterBegin 在当前节点的第一个子节点前面插入 -->
+    <!-- afterBegin：現在のノードの最初の子ノードの前に挿入 -->
     ...
-    <!-- beforeEnd 在当前节点的最后一个子节点后面 -->
+    <!-- beforeEnd：現在のノードの最後の子ノードの後に挿入 -->
   </p>
-  <!-- afterEnd 在当前节点的后面 -->
+  <!-- afterEnd：現在のノードの後に挿入 -->
 </div>
 ```
 
-Schema 的写法如下
+Schemaの書き方は以下の通りです。
 
 ```ts
 {
   type: 'void',
   'x-component': 'div',
   properties: {
-    // beforeBegin 在当前节点的前面插入
+    // beforeBegin：現在のノードの前に挿入
     node1: {
       type: 'void',
       'x-component': 'p',
       properties: {
-        // afterBegin 在当前节点的第一个子节点前面插入
+        // afterBegin：現在のノードの最初の子ノードの前に挿入
         // ...
-        // beforeEnd 在当前节点的最后一个子节点后面
+        // beforeEnd：現在のノードの最後の子ノードの後に挿入
       },
     },
-    // afterEnd 在当前节点的后面
+    // afterEnd：現在のノードの後に挿入
   },
 }
 ```
 
-使用 `useDesignable()` 在当前 schema 相邻位置插入
+`useDesignable()`を使用して現在のSchemaの隣接位置に挿入します。
 
 ```tsx
 import React from 'react';
@@ -246,7 +246,7 @@ export default () => {
 };
 ```
 
-使用 `createDesignable()` 在指定 schema 相邻位置插入
+`createDesignable()`を使用して、指定されたSchemaの隣接位置に挿入します。
 
 ```tsx
 import React from 'react';
@@ -288,7 +288,7 @@ const Page = (props) => {
           });
         }}
       >
-        在 Title2 后面添加
+        Title2の後に追加
       </Button>
       {props.children}
     </div>
@@ -327,23 +327,23 @@ export default () => {
 };
 ```
 
-### 查：查找子节点
+### 子ノードの検索
 
-formily 的 json-schema 提供了 `reduceProperties` 遍历查找节点，但是太难用了，为此 Designable 提供了更易用的 `findProperties` 和 `findProperty` 方法来查找子节点
+formilyのjson-schemaは`reduceProperties`を使用してノードを走査し検索しますが、使いにくいため、Designableはより使いやすい`findProperties`および`findProperty`メソッドを提供します。
 
 #### `findProperties`
 
-查找满足条件的全部子节点，返回一个数组
+条件を満たすすべての子ノードを検索し、配列を返します。
 
 ```ts
 interface FindOptions {
-  // 过滤条件
+  // フィルター条件
   filter: any;
-  // 跳过查找的元素
+  // 検索をスキップする要素
   skipOn?: (s: Schema) => boolean;
-  // 当查到什么元素时退出
+  // 検索した要素が見つかったら終了
   breakOn?: (s: Schema) => boolean;
-  // 递归查找
+  // 再帰的に検索
   recursive?: boolean;
 }
 
@@ -352,7 +352,7 @@ class Designable {
 }
 ```
 
-示例查找满足条件的所有节点
+条件を満たすすべてのノードを検索する例
 
 ```ts
 const items = dn.findProperties({
@@ -378,17 +378,17 @@ console.log(items.map((s) => schema.toJSON()));
 
 #### `findProperty`
 
-查找满足条件的第一个子节点
+条件を満たす最初の子ノードを検索します。
 
 ```ts
 interface FindOptions {
-  // 过滤条件
+  // フィルター条件
   filter: any;
-  // 跳过查找的元素
+  // 検索をスキップする要素
   skipOn?: (s: Schema) => boolean;
-  // 当查到什么元素时退出
+  // 検索した要素が見つかったら終了
   breakOn?: (s: Schema) => boolean;
-  // 递归查找
+  // 再帰的に検索
   recursive?: boolean;
 }
 
@@ -397,7 +397,7 @@ class Designable {
 }
 ```
 
-示例
+例
 
 ```ts
 const current = new Schema({
@@ -432,7 +432,7 @@ console.log(schema.toJSON());
 }
 ```
 
-### 改：修改 schema 参数
+### schemaパラメータの変更
 
 ```ts
 const current = new Schema({
@@ -454,7 +454,7 @@ dn.shallowMerge({
 });
 ```
 
-### 删：删除当前节点或者某个子节点
+### 削除：現在のノードまたは特定の子ノードを削除
 
 ```ts
 const current = new Schema({
@@ -478,9 +478,9 @@ dn.remove({
 });
 ```
 
-### 移：节点间的移动
+### 移動：ノード間の移動
 
-insertAdjacent 等方法也可用于节点的拖拽移动
+`insertAdjacent`などのメソッドもノードのドラッグ移動に使用できます。
 
 ```tsx
 import React from 'react';
@@ -567,9 +567,9 @@ const Block = observer((props) => {
   return (
     <Droppable id={field.address.toString()} data={{ schema: fieldSchema }}>
       <div style={{ marginBottom: 20, padding: '20px', background: '#f1f1f1' }}>
-        Block {fieldSchema.name}{' '}
+        ブロック {fieldSchema.name}{' '}
         <Draggable id={field.address.toString()} data={{ schema: fieldSchema }}>
-          Drag
+          ドラッグ
         </Draggable>
       </div>
     </Droppable>
@@ -601,3 +601,4 @@ export default function App() {
   );
 }
 ```
+

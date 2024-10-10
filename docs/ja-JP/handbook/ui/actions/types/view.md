@@ -1,18 +1,17 @@
+# 表示
 
-# 查看
+## 概要
 
-## 介绍
-
-查看操作属于行按钮，有当前记录作为上下文，以弹窗形式呈现，用户可以在弹窗中自定义配置区块。
+表示操作は行ボタンに属し、現在のレコードをコンテキストとして使用し、ポップアップ形式で表示されます。ユーザーはポップアップ内で構成ブロックをカスタマイズすることができ、インターフェースの柔軟性を高めます。
 
 ![20240412115458](https://static-docs.nocobase.com/20240412115458.png)
 
-
-### 操作配置项
+### 操作設定項目
 
 ![20240413104839](https://static-docs.nocobase.com/20240413104839.png)
 
-- [编辑按钮](/handbook/ui/actions/action-settings/edit-button)
-- [联动规则](/handbook/ui/actions/action-settings/linkage-rule)
-- [打开模式](/handbook/ui/actions/action-settings/open-mode)
-- [弹窗尺寸](/handbook/ui/actions/action-settings/popup-size)
+- [編集ボタン](/handbook/ui/actions/action-settings/edit-button)
+- [連動ルール](/handbook/ui/actions/action-settings/linkage-rule)
+- [オープンモード](/handbook/ui/actions/action-settings/open-mode)
+- [ポップアップサイズ](/handbook/ui/actions/action-settings/popup-size)
+

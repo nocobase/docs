@@ -1,87 +1,88 @@
-# 列表区块
+# リストブロック
 
-## 介绍
+## 概要
 
-列表区块以列表形式展示数据，适用于任务列表、新闻资讯、产品信息等数据展示场景。
+リストブロックはデータをリスト形式で表示し、タスクリスト、ニュース、製品情報などのデータ表示シーンに適しています。
 
-## 添加区块
+## ブロックの追加
 
- <video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240417224417.mp4" type="video/mp4">
+<video width="100%" height="440" controls>
+    <source src="https://static-docs.nocobase.com/20240417224417.mp4" type="video/mp4">
 </video>
 
-## 区块配置项
+## ブロック設定項目
 
 ![20240417224539](https://static-docs.nocobase.com/20240417224539.png)
 
-### 设置数据范围
+### データ範囲の設定
 
-如图：默认筛选订单状态为退款的单据
+図の通り、デフォルトで返金された注文ステータスをフィルタリングした注文を表示します。
 
 ![20240417224701](https://static-docs.nocobase.com/20240417224701.png)
 
-更多内容参考 [设置数据范围](/handbook/ui/blocks/block-settings/data-scope)
+詳細は [データ範囲の設定](/handbook/ui/blocks/block-settings/data-scope) をご参照ください。
 
-### 设置排序规则
+### 並び替えルールの設定
 
-如图：按订单金额大小倒序排序
+図の通り、注文金額の大きさを基準に逆順に並び替えます。
 
 ![20240417225302](https://static-docs.nocobase.com/20240417225302.png)
 
-更多内容参考 [设置排序规则](/handbook/ui/blocks/block-settings/sorting-rule)
+詳細は [並び替えルールの設定](/handbook/ui/blocks/block-settings/sorting-rule) をご参照ください。
 
-### 设置数据加载方式
+### データロード方式の設定
 
-通常与筛选区块搭配使用，实现筛选时才加载数据
+通常、フィルターブロックと組み合わせて使用し、フィルタリング時にのみデータをロードします。
 
- <video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240417225539.mp4" type="video/mp4">
+<video width="100%" height="440" controls>
+    <source src="https://static-docs.nocobase.com/20240417225539.mp4" type="video/mp4">
 </video>
 
-更多内容参考 [设置数据加载方式](/handbook/ui/blocks/block-settings/loading-mode)
+詳細は [データロード方式の設定](/handbook/ui/blocks/block-settings/loading-mode) をご参照ください。
 
-### 设置区块高度
+### ブロックの高さの設定
 
-示例：设置订单列表区块高度为「全高」模式。
+例として、注文リストブロックの高さを「全高」モードに設定します。
 
 ![20240604233102](https://static-docs.nocobase.com/20240604233102.gif)
 
-更多内容参考 [区块高度](/handbook/ui/blocks/block-settings/block-height)
+詳細は [ブロックの高さ](/handbook/ui/blocks/block-settings/block-height) をご参照ください。
 
-- [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
-- [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
+- [ブロックタイトルの編集](/handbook/ui/blocks/block-settings/block-title)
+- [ブロックテンプレートとして保存](/handbook/ui/blocks/block-settings/block-template)
 
-## 配置字段
+## フィールドの設定
 
-### 本表字段
+### 本表のフィールド
 
 ![20240417230027](https://static-docs.nocobase.com/20240417230027.png)
 
-### 关系表字段
+### 関係表のフィールド
 
 ![20240417230115](https://static-docs.nocobase.com/20240417230115.png)
 
-列表字段配置项可参考 [详情字段](/handbook/ui/fields/generic/detail-form-item)
+リストフィールドの設定項目については、[詳細フィールド](/handbook/ui/fields/generic/detail-form-item) をご参照ください。
 
-## 配置操作
+## 操作の設定
 
-### 全局操作
+### グローバル操作
 
 ![20240421115811](https://static-docs.nocobase.com/20240421115811.png)
 
-- [筛选](/handbook/ui/actions/types/filter)
-- [添加](/handbook/ui/actions/types/add-new)
-- [刷新](/handbook/ui/actions/types/refresh)
-- [导入](/handbook/action-import)
-- [导出](/handbook/action-export)
+- [フィルタ](/handbook/ui/actions/types/filter)
+- [追加](/handbook/ui/actions/types/add-new)
+- [リフレッシュ](/handbook/ui/actions/types/refresh)
+- [インポート](/handbook/action-import)
+- [エクスポート](/handbook/action-export)
 
 ### 行操作
 
 ![20240418114424](https://static-docs.nocobase.com/20240418114424.png)
 
-- [查看](/handbook/ui/actions/types/view)
-- [编辑](/handbook/ui/actions/types/edit)
-- [删除](/handbook/ui/actions/types/delete)
-- [弹窗](/handbook/ui/actions/types/pop-up)
-- [更新记录](/handbook/ui/actions/types/update-record)
-- [自定义请求](/handbook/action-custom-request)
+- [表示](/handbook/ui/actions/types/view)
+- [編集](/handbook/ui/actions/types/edit)
+- [削除](/handbook/ui/actions/types/delete)
+- [ポップアップ](/handbook/ui/actions/types/pop-up)
+- [更新履歴](/handbook/ui/actions/types/update-record)
+- [カスタムリクエスト](/handbook/action-custom-request)
+

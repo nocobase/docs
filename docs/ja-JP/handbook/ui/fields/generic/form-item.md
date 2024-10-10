@@ -1,59 +1,60 @@
-# 表单字段
+# フォームフィールド
 
-## 介绍
+## イントロダクション
 
-表单中不同类型的字段有不同的配置项，支持用户通过插件扩展字段的配置项满足更多个性化需求。
+フォーム内の異なる種類のフィールドにはそれぞれ異なる設定項目があり、ユーザーはプラグインを利用してフィールドの設定を拡張し、個別のニーズに応じたカスタマイズが可能です。
 
 ![20240408221914](https://static-docs.nocobase.com/20240408221914.png)
 
-显示关联表的字段（一对一或多对一的关系字段），显示为只读。
+関連テーブルのフィールド（1対1または多対1の関係フィールド）は、読み取り専用として表示されます。
 
 ![20240413222636](https://static-docs.nocobase.com/20240413222636.png)
 
-   <video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240413223027.mp4" type="video/mp4">
-    </video>
+<video width="100%" height="440" controls>
+  <source src="https://static-docs.nocobase.com/20240413223027.mp4" type="video/mp4">
+</video>
 
-## 字段配置项
+## フィールド設定項目
 
-### 默认值
+### デフォルト値
 
-支持为字段配置常量/变量作为默认值。
+フィールドに定数または変数をデフォルト値として設定できます。
 
 ![20240417094124](https://static-docs.nocobase.com/20240417094124.png)
 
-更多内容参考 [设置默认值](/handbook/ui/fields/field-settings/default-value)
+詳細については、[デフォルト値を設定する](/handbook/ui/fields/field-settings/default-value)をご覧ください。
 
-### 设置验证规则
+### バリデーションルールの設定
 
 ![20240417095037](https://static-docs.nocobase.com/20240417095037.png)
 
-更多内容参考 [设置验证规则](/handbook/ui/fields/field-settings/validation-rules)
+詳細については、[バリデーションルールを設定する](/handbook/ui/fields/field-settings/validation-rules)をご覧ください。
 
-### 必填
+### 必須項目
 
 ![20240417111850](https://static-docs.nocobase.com/20240417111850.png)
 
-更多内容参考 [必填](/handbook/ui/fields/field-settings/required)
+詳細については、[必須項目](/handbook/ui/fields/field-settings/required)をご覧ください。
 
-- [编辑字段标题](/handbook/ui/fields/field-settings/edit-title)
-- [显示标题](/handbook/ui/fields/field-settings/display-title)
-- [编辑字段描述](/handbook/ui/fields/field-settings/edit-description)
-- [编辑字段提示信息](/handbook/ui/fields/field-settings/edit-tooltip)
-- [模式](/handbook/ui/fields/field-settings/pattern)
+- [フィールドタイトルの編集](/handbook/ui/fields/field-settings/edit-title)
+- [タイトルの表示](/handbook/ui/fields/field-settings/display-title)
+- [フィールド説明の編集](/handbook/ui/fields/field-settings/edit-description)
+- [フィールドツールチップの編集](/handbook/ui/fields/field-settings/edit-tooltip)
+- [パターン](/handbook/ui/fields/field-settings/pattern)
 
-### 字段组件
+### フィールドコンポーネント
 
-部分字段支持切换为其他组件，例如：`URL` 组件可以切换为 `Preview` 组件。
+一部のフィールドは他のコンポーネントに切り替えることができます。たとえば、`URL` コンポーネントは `Preview` コンポーネントに切り替えることが可能です。
 
 ![20240806164801](https://static-docs.nocobase.com/20240806164801.png)
 
-如果你需要扩展更多的组件，可以参考 [扩展有值字段组件组件](/plugin-samples/field/value)。
+さらに多くのコンポーネントを拡張する必要がある場合は、[値のあるフィールドコンポーネントの拡張](/plugin-samples/field/value)を参照してください。
 
-### 样式
+### スタイル
 
-表单在阅读模式下可以设置样式
+フォームは読み取りモードでスタイルを設定できます。
 
-![2024-06-26-15-16-09-表单风格入口](https://static-docs.nocobase.com/2024-06-26-15-16-09-表单风格入口.png)
-![2024-06-26-15-21-31-样式配置](https://static-docs.nocobase.com/2024-06-26-15-21-31-样式配置.png)
-![2024-06-26-15-22-42-表单-最终效果](https://static-docs.nocobase.com/2024-06-26-15-22-42-表单-最终效果.png)
+![2024-06-26-15-16-09-フォームスタイルの入口](https://static-docs.nocobase.com/2024-06-26-15-16-09-フォームスタイルの入口.png)
+![2024-06-26-15-21-31-スタイル設定](https://static-docs.nocobase.com/2024-06-26-15-21-31-スタイル設定.png)
+![2024-06-26-15-22-42-フォーム-最終効果](https://static-docs.nocobase.com/2024-06-26-15-22-42-フォーム-最終効果.png)
+

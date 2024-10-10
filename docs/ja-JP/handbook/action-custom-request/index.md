@@ -1,49 +1,53 @@
-# 自定义请求
+# カスタムリクエスト
 <PluginInfo name="action-custom-request"></PluginInfo>
 
-## 介绍
+## 概要
 
-## 安装
+## インストール
 
-内置插件，无需单独安装
+ビルトインプラグインのため、個別のインストールは不要です。
 
-## 使用说明
+## 使用方法
 
 ![20240426120014](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426120014.png)
 
-### 配置权限
+### 権限設定
 
-当勾选了允许配置界面时，可以配置自定义请求。
+「設定画面を許可する」にチェックを入れると、カスタムリクエストの設定が可能になります。
 
 ![20240426114957](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426114957.png)
 
-customRequests 表是系统级的，通过 acl.registerSnippet 配置权限。
+`customRequests` テーブルはシステムレベルであり、`acl.registerSnippet` を通じて権限を設定します。
 
 ```typescript
 this.app.acl.registerSnippet({
-  name: 'ui.customRequests', // ui.* 对应的允许配置界面权限
+  name: 'ui.customRequests', // ui.* に対応する設定画面の権限
   actions: ['customRequests:*'],
 });
 ```
-### 变量
 
-支持在 URL 和请求体中配置变量。
+### 変数
 
-- 当前记录
-- 当前用户
-- 当前时间
+URL とリクエストボディ内で変数を設定することがサポートされています。
+
+- 現在のレコード
+- 現在のユーザー
+- 現在の時間
+- APIトークン（v1.3.22-beta 以上のバージョンでサポート）
 
 ![20240426120953](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426120953.png)
 
 ![20240426121051](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426121051.png)
-## 操作配置项
 
-### 请求设置
+## 操作設定項目
+
+### リクエスト設定
 
 ![20240426120131](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426120131.png)
 
-### 权限控制
+### 権限管理
 
-每个自定义请求操作支持自定义角色权限，默认拥有权限。
+各カスタムリクエスト操作はカスタムロール権限をサポートしており、デフォルトで全ユーザーに権限が付与されています。
 
 ![20240426120451](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426120451.png)
+

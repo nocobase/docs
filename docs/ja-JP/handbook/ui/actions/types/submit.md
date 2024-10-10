@@ -1,35 +1,35 @@
 # 提交
 
-## 介绍
+## イントロダクション
 
-提交操作用于保存表单数据（表单区块特有），还可以结合工作流，实现数据自动化流程。
+提出操作はフォームデータを保存するために使用されます（フォームブロック特有）。また、ワークフローと組み合わせることでデータ自動化プロセスを実現できます。
 
 ![20240413093210](https://static-docs.nocobase.com/20240413093210.png)
 
-## 操作配置项
+## 操作設定項目
 
 ![20240413095124](https://static-docs.nocobase.com/20240413095124.png)
 
-### 保存模式
+### 保存モード
 
-仅新增数据的表单区块的提交操作支持配置保存方式。
+新しいデータのみを追加するフォームブロックの提出操作では、保存方法の設定をサポートしています。
 
 ![20240413101209](https://static-docs.nocobase.com/20240413101209.png)
 
 ![20240413100531](https://static-docs.nocobase.com/20240413100531.png)
 
-1. 直接插入新建；
-2. 不存在时插入（需要配置用于判断记录是否存在的字段）；
-3. 不存在时插入，否则更新（需要配置用于判断记录是否存在的字段）；
+1. 直接挿入；
+2. 存在しない場合にのみ挿入（レコードの存在を判断するためのフィールド設定が必要）；
+3. 存在しない場合に挿入、そうでなければ更新（レコードの存在を判断するためのフィールド設定が必要）；
 
-### 绑定工作流
+### ワークフローのバインディング
 
-只有在数据提交成功后才会触发绑定的工作流。
+データの提出が成功した後にのみ、バインディングされたワークフローがトリガーされます。
 
 ![20240417120149](https://static-docs.nocobase.com/20240417120149.png)
 
-更多内容可参考 [绑定工作流](/handbook/ui/actions/action-settings/bind-workflow)
+詳細については、[ワークフローのバインディング](/handbook/ui/actions/action-settings/bind-workflow)をご覧ください。
 
+- [編集ボタン](/handbook/ui/actions/action-settings/edit-button)
+- [二次確認](/handbook/ui/actions/action-settings/double-check)
 
-- [编辑按钮](/handbook/ui/actions/action-settings/edit-button)
-- [二次确认](/handbook/ui/actions/action-settings/double-check)

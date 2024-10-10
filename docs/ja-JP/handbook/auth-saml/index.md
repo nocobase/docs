@@ -1,56 +1,55 @@
-# 认证：SAML 2.0
+# 認証：SAML 2.0
 
 <PluginInfo commercial="true" name="auth-saml"></PluginInfo>
 
-## 介绍
+## 概要
 
-认证：SAML 2.0 插件遵循 SAML 2.0 (Security Assertion Markup Language 2.0) 协议标准，实现用户使用第三方身份认证服务商 (IdP) 提供的账号登录 NocoBase.
+認証：SAML 2.0 プラグインは、SAML 2.0 (Security Assertion Markup Language 2.0) プロトコル標準に従い、ユーザーが第三者のアイデンティティ認証サービスプロバイダー (IdP) によって提供されるアカウントを使用して NocoBase にログインできるようにします。
 
-## 激活插件
+## プラグインの有効化
 
 ![](https://static-docs.nocobase.com/6a12f3d8073c47532a4f8aac900e4296.png)
 
-## 添加 SAML 认证
+## SAML 認証の追加
 
-进入用户认证插件管理页面。
+ユーザー認証プラグイン管理ページに移動します。
 
 ![](../auth-oidc/static/2023-12-03-18-19-33.png)
 
-添加 - SAML
+追加 - SAML
 
 ![](https://static-docs.nocobase.com/5076fe56086b7799be308bbaf7c4425d.png)
 
-## 配置
+## 設定
 
 ![](https://static-docs.nocobase.com/976b66e589973c322d81dcddd22c6146.png)
 
-- SSO URL - 由 IdP 提供，用于单点登录的网址
-- 公钥 (Public Certificate) - 由 IdP 提供
-- 实体ID (IdP Issuer) - 可选，由 IdP 提供
-- http - 如果你的 NocoBase 应用是 http 协议的，请勾选
-- Use this field to bind the user - 用于和已有用户匹配绑定的字段，可选择邮箱或用户名，默认为邮箱。需要 IdP 携带的用户信息包含 `email` 或 `username` 字段。
-- Sign up automatically when the user does not exist - 当找不到可匹配绑定的已有用户时，是否自动创建新用户。
-- 使用 (Usage) - `SP Issuer / EntityID` 和 `ACS URL` 用于复制并填写到 IdP 相应配置中。
+- SSO URL - IdP によって提供されるシングルサインオン用の URL
+- 公開鍵 (Public Certificate) - IdP によって提供されます
+- エンティティ ID (IdP Issuer) - オプションで、IdP によって提供されます
+- HTTP - NocoBase アプリが HTTP プロトコルの場合はチェックを入れてください
+- ユーザーをバインドするためにこのフィールドを使用 - 既存のユーザーとマッチングするためのフィールドで、メールアドレスまたはユーザー名を選択可能。デフォルトはメールアドレスです。IdP が持っているユーザー情報には `email` または `username` フィールドが含まれている必要があります。
+- ユーザーが存在しない場合に自動的にサインアップ - マッチングする既存ユーザーが見つからない場合に新しいユーザーを自動的に作成するかどうか。
+- 使用 (Usage) - `SP Issuer / EntityID` および `ACS URL` は IdP の対応する設定にコピーして入力するために使用されます。
 
-## 字段映射
+## フィールドマッピング
 
-字段映射需要在IdP的配置平台上进行配置，可参考[示例](../auth-saml/example/google.md)。
+フィールドマッピングは、IdP の設定プラットフォームで行う必要があります。詳しくは[こちらの例](../auth-saml/example/google.md)をご参照ください。
 
-NocoBase可供映射的字段有：
+NocoBase でマッピング可能なフィールドは以下の通りです：
 
-- email（必填）
-- phone (仅对 scope 支持 `phone` 的平台生效，如阿里云，飞书)
+- email（必須）
+- phone（`phone` をサポートするプラットフォームのみ有効。例：アリババクラウド、Feishu）
 - nickname
 - username
 - firstName
 - lastName
 
-`nameID` 为 SAML 协议携带，无需映射，将作为用户唯一标识保存。
-新用户昵称使用规则优先级: `nickname` > `firstName lastName` > `username` > `nameID`
-暂时不支持映射用户组织、角色。
+`nameID` は SAML プロトコルに含まれており、マッピングの必要はなく、ユーザーの一意の識別子として保存されます。新しいユーザーのニックネーム使用ルールの優先順位は次の通りです：`nickname` > `firstName lastName` > `username` > `nameID`。ユーザーの組織や役割のマッピングは現在サポートされていません。
 
-## 登录
+## ログイン
 
-访问登录页面，点击登录表单下方按钮发起第三方登录。
+ログインページにアクセスし、ログインフォームの下にあるボタンをクリックして、サードパーティログインを開始します。
 
 ![](https://static-docs.nocobase.com/74963865c9d36a294948e6adeb5b24bc.png)
+

@@ -10,6 +10,8 @@ yarn install
 yarn dev
 # or run en-US document
 yarn dev:en
+# または、日本語のドキュメントを実行する
+yarn dev:ja
 ```
 
 Note: `yarn dev` and `yarn dev:en` cannot be run at the same time

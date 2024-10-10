@@ -1,22 +1,22 @@
-# 插件的组织方式
+# プラグインの整理方法
 
-NocoBase 提供了三种方式组织插件，所有插件包最终都会汇聚到项目根目录下的 `node_modules` 里：
+NocoBaseはプラグインを整理するための3つの方法を提供しており、すべてのプラグインパッケージは最終的にプロジェクトのルートディレクトリにある `node_modules` に集約されます：
 
 ![20240424112928](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240424112928.png)
 
 :::warning
-三种方式组织的插件最终都需要执行 `yarn install`，如果需要在应用的插件管理器页面里显示，还需要通过 `pm add` 添加到应用里。
+3つの方法で整理されたプラグインは、最終的に `yarn install` を実行する必要があります。アプリのプラグイン管理ページに表示する必要がある場合は、`pm add` を通じてアプリに追加してください。
 :::
 
 ## storages/plugins
 
-用于存放已经编译好的插件，无需下载额外依赖的插件，即插即用。通过界面添加的插件就是放在这个目录，例如将 @nocobase/plugin-data-source-external-mysql 插件解压到 storage/plugins 目录：
+このディレクトリは、コンパイル済みのプラグインを保存するためのもので、追加の依存関係をダウンロードする必要がないプラグイン、つまり即時に使用可能です。インターフェースから追加したプラグインはこのディレクトリに配置されます。例えば、@nocobase/plugin-data-source-external-mysqlプラグインをstorage/pluginsディレクトリに解凍する場合は、以下のようにします：
 
 ```bash
 tar -xvzf /downloads/plugin-data-source-external-mysql-0.21.0-alpha.10.tgz -C /my-nocobase-app/storage/plugins/@nocobase/plugin-data-source-external-mysql --strip-components=1
 ```
 
-目录结构如下：
+ディレクトリ構造は以下の通りです：
 
 ```bash
 |- /storage/
@@ -27,7 +27,7 @@ tar -xvzf /downloads/plugin-data-source-external-mysql-0.21.0-alpha.10.tgz -C /m
 
 ## packages/plugins
 
-开发中的插件，通过 yarn workspace 维护，yarn install 会下载所有插件的依赖，有源码，生产环境需要编译之后才能使用。插件包和 npm packages 的组织方式一致，目录结构如下：
+このディレクトリは、開発中のプラグインを管理するためのもので、Yarn workspaceを通じて管理されます。`yarn install` により、すべてのプラグインの依存関係がダウンロードされ、ソースコードが含まれているため、製品環境ではコンパイル後に使用可能です。プラグインパッケージとnpmパッケージの整理方法は一致しており、ディレクトリ構造は以下の通りです：
 
 ```bash
 |- /packages/
@@ -41,9 +41,9 @@ tar -xvzf /downloads/plugin-data-source-external-mysql-0.21.0-alpha.10.tgz -C /m
 
 ## package.json + dependencies
 
-例如 NocoBase 的 preset 插件，将插件写在了 dependencies 里，yarn install 时，就会将声明的插件全部下载下来
+例えば、NocoBaseのpresetプラグインは、プラグインをdependenciesに記述しており、`yarn install` 時に宣言されたプラグインがすべてダウンロードされます。
 
-```js
+```json
 {
   "name": "@nocobase/preset-nocobase",
   "version": "0.21.0-alpha.15",
@@ -108,3 +108,4 @@ tar -xvzf /downloads/plugin-data-source-external-mysql-0.21.0-alpha.10.tgz -C /m
   }
 }
 ```
+

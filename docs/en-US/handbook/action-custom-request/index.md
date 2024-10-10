@@ -25,14 +25,14 @@ this.app.acl.registerSnippet({
   actions: ['customRequests:*'],
 });
 ```
-
 ### Variables
 
-You can configure variables within both the URL and request body, including:
+You can configure variables within both the URL and request body.
 
 - Current record
 - Current user
 - Current time
+- API token (supported by v1.3.22-beta and above)
 
 ![20240426120953](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426120953.png)
 

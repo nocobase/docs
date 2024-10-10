@@ -1,12 +1,12 @@
-# `create-nocobase-app` 安装的升级
+# `create-nocobase-app` インストールのアップグレード
 
-## 0. 升级前的准备
+## 0. アップグレード前の準備
 
 :::warning
-升级前一定要先备份数据库！！！
+アップグレード前に必ずデータベースのバックアップを取ってください！！
 :::
 
-由于国内网络环境的原因，强烈建议你更换国内镜像。
+国内のネットワーク環境に配慮し、国内ミラーへの切り替えを強く推奨します。
 
 ```bash
 $ yarn config set disable-self-update-check true
@@ -14,21 +14,22 @@ $ yarn config set registry https://registry.npmmirror.com/
 $ yarn config set sqlite3_binary_host_mirror https://npmmirror.com/mirrors/sqlite3/
 ```
 
-## 1. 升级
+## 1. アップグレード
 
-直接执行 `yarn nocobase upgrade` 升级命令即可
+`yarn nocobase upgrade` アップグレードコマンドを実行してください。
 
 ```bash
-# 切换到对应的目录
+# 対応するディレクトリに移動
 cd my-nocobase-app
-# 执行更新命令
+# アップデートコマンドを実行
 yarn nocobase upgrade
-# 启动
+# アプリケーションを起動
 yarn dev
 ```
 
-如果升级存在问题，也可以[重新创建新应用](/welcome/getting-started/installation/create-nocobase-app)，并参考旧版本的 .env 修改环境变量。数据库信息需要配置正确，使用 SQLite 数据库时，需要将数据库文件复制到 `./storage/db/` 目录。最后再执行 `yarn nocobase upgrade` 进行升级。
+アップグレードに問題が発生した場合は、[新しいアプリを再作成](/welcome/getting-started/installation/create-nocobase-app)し、古いバージョンの .env を参照して環境変数を修正してください。データベース情報は正しく設定する必要があります。SQLite データベースを使用する場合は、データベースファイルを `./storage/db/` ディレクトリにコピーしてください。最後に `yarn nocobase upgrade` を再度実行してアップグレードを完了してください。
 
-## 独立插件升级
+## 独立プラグインのアップグレード
 
-NocoBase 升级之后，通过界面安装的独立插件可能也需要升级，参考文档 [独立插件的安装与升级](/welcome/getting-started/plugin)
+NocoBase がアップグレードされた後、インターフェースからインストールされた独立プラグインもアップグレードが必要になる場合があります。詳細については、ドキュメント [独立プラグインのインストールとアップグレード](/welcome/getting-started/plugin) を参照してください。
+

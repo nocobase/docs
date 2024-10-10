@@ -1,26 +1,26 @@
-# 新增页面
+# ページの追加
 
-## 场景说明
+## シナリオ説明
 
-新增一些页面，用于个性化的展示。
+いくつかのページを追加し、個性を表現した表示を行います。
 
-## 示例说明
+## 例の説明
 
-本示例会新增 4 个页面，分别为：
+この例では、次の4つのページを追加します：
 
-- `/about`：关于页面，用于展示系统的相关信息，不需要登录即可访问
-- `/admin/data-view`：数据大屏页面，需要登录后才能访问
-- `/admin/material-manage`：素材管理中心，包含图片和视频管理，是一个父路由页面
-  - `/admin/material-manage/image`：图片管理
-  - `/admin/material-manage/video`：视频管理
+- `/about`：システムに関する情報を表示する「About」ページで、ログインせずにアクセスできます。
+- `/admin/data-view`：データ表示ページで、ログイン後にアクセス可能です。
+- `/admin/material-manage`：画像や動画を管理する素材管理センターで、親ルートページです。
+  - `/admin/material-manage/image`：画像管理
+  - `/admin/material-manage/video`：動画管理
 
-但不会对内容过多开发，仅用于演示如何新增页面。
+内容の過剰な開発は行わず、ページの追加方法を示すためのデモです。
 
-本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-add-page) 中查看。
+この文書の完全なサンプルコードは [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-add-page) で確認できます。
 
-## 初始化插件
+## プラグインの初期化
 
-我们按照 [编写第一个插件](/development/your-fisrt-plugin) 文档说明，如果没有一个项目，可以先创建一个项目，如果已经有了或者是 clone 的源码，则跳过这一步。
+[最初のプラグインの作成](/development/your-first-plugin) ドキュメントに従い、プロジェクトがない場合は新しく作成します。すでにプロジェクトがある場合や、ソースコードをクローンした場合はこのステップをスキップしてください。
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d sqlite
@@ -29,27 +29,26 @@ yarn install
 yarn nocobase install
 ```
 
-然后初始化一个插件，并添加到系统中：
+次に、プラグインを初期化し、システムに追加します：
 
 ```bash
 yarn pm create @nocobase-sample/plugin-add-page
 yarn pm enable @nocobase-sample/plugin-add-page
 ```
 
-然后启动项目即可：
+その後、プロジェクトを起動します：
 
 ```bash
 yarn dev
 ```
 
-然后登录后访问 [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) 就可以看到插件已经安装并启用了。
+ログイン後、[http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) にアクセスすると、プラグインがインストールされ、有効化されていることが確認できます。
 
+## 機能の実装
 
-## 实现功能
+### 1. `/about` ページの追加
 
-### 1. 新增 `/about` 页面
-
-按照插件开发教程中 [页面路由及扩展](/development/client/router)，我们需要修改插件的 `packages/plugins/@nocobase-sample/plugin-add-page/src/client/index.tsx`：
+プラグイン開発チュートリアルの [ページルーティングと拡張](/development/client/router) に従い、プラグインの `packages/plugins/@nocobase-sample/plugin-add-page/src/client/index.tsx` を修正します：
 
 ```ts
 import React, { useEffect } from 'react';
@@ -77,17 +76,17 @@ export class PluginAddPageClient extends Plugin {
 export default PluginAddPageClient;
 ```
 
-其中 `router.add()` 第一个参数是页面的名称，仅用于增删改查和层级嵌套，第二个参数是页面的配置，其中 `path` 是页面的路径，`Component` 是页面的组件。
+ここで `router.add()` の第1引数はページの名前で、CRUDや階層構造のために使用されます。第2引数はページの設定で、`path` はページのパス、`Component` はページのコンポーネントです。
 
-`useDocumentTitle()` 用于修改页面的标题。
+`useDocumentTitle()` はページのタイトルを変更するために使用されます。
 
-然后我们访问 [http://localhost:13000/about](http://localhost:13000/about) 就可以看到页面上已经显示了 `About Page` 了。
+その後、[http://localhost:13000/about](http://localhost:13000/about) にアクセスすると、ページに `About Page` が表示されていることが確認できます。
 
 ![20240512200508](https://static-docs.nocobase.com/20240512200508.png)
 
-### 2. 新增 `/admin/data-view` 页面
+### 2. `/admin/data-view` ページの追加
 
-根据 [已有页面路由](/development/client/router#已有页面路由) 文档得知，`/admin/*` 对应的 `name` 为 `admin`，如果我们需要再其下面新增一个页面，可以使用 `admin.` 前缀，例如 `admin.dataView`。
+[既存のページルーティング](/development/client/router#existing-page-routes) ドキュメントによれば、`/admin/*` に対応する `name` は `admin` です。その下に新しいページを追加する場合は、`admin.` プレフィックスを使用します。たとえば `admin.dataView` です。
 
 ```tsx | pure
 // ...
@@ -103,7 +102,6 @@ const DataViewPage = () => {
 
 export class PluginAddPageClient extends Plugin {
   async load() {
-    // ...
     this.app.router.add('admin.dataView', {
       path: '/admin/data-view',
       Component: DataViewPage,
@@ -114,13 +112,13 @@ export class PluginAddPageClient extends Plugin {
 export default PluginAddPageClient;
 ```
 
-然后我们访问 [http://localhost:13000/admin/data-view](http://localhost:13000/admin/data-view) 就可以看到页面上已经显示了 `DataView` 了，并且如果退出登录后再访问，会跳转到登录页。
+その後、[http://localhost:13000/admin/data-view](http://localhost:13000/admin/data-view) にアクセスすると、ページに `DataView` が表示されていることが確認でき、ログアウトした後にアクセスするとログインページにリダイレクトされます。
 
 ![20240512200555](https://static-docs.nocobase.com/20240512200555.png)
 
-### 3. 新增 `/admin/material-manage` 以及其子页面
+### 3. `/admin/material-manage` およびその子ページの追加
 
-我们可以新建 `packages/plugins/@nocobase-sample/plugin-add-page/src/client/MaterialPage.tsx` 文件，其内容如下：
+新しく `packages/plugins/@nocobase-sample/plugin-add-page/src/client/MaterialPage.tsx` ファイルを作成し、その内容は以下の通りです：
 
 ```tsx | pure
 import React, { useEffect } from 'react';
@@ -129,13 +127,13 @@ import { useDocumentTitle } from '@nocobase/client';
 
 export const MaterialPage = () => {
   return <div>
-    <h1>Material Page</h1>
+    <h1>マテリアルページ</h1>
     <ul>
       <li>
-        <Link to="video">Video</Link>
+        <Link to="video">ビデオ</Link>
       </li>
       <li>
-        <Link to="img">Img</Link>
+        <Link to="img">画像</Link>
       </li>
     </ul>
     <Outlet />
@@ -146,23 +144,23 @@ export const MaterialVideo = () => {
   const { setTitle } = useDocumentTitle();
 
   useEffect(() => {
-    setTitle('Material Video');
+    setTitle('マテリアルビデオ');
   }, [])
 
-  return <div>Material Video</div>
+  return <div>マテリアルビデオ</div>
 }
 export const MaterialImg = () => {
   const { setTitle } = useDocumentTitle();
 
   useEffect(() => {
-    setTitle('Material Img');
+    setTitle('マテリアル画像');
   }, [])
 
-  return <div>Material Img</div>;
+  return <div>マテリアル画像</div>;
 }
 ```
 
-然后在 `packages/plugins/@nocobase-sample/plugin-add-page/src/client/index.tsx` 中引入并使用：
+その後、`packages/plugins/@nocobase-sample/plugin-add-page/src/client/index.tsx` にインポートして使用します：
 
 ```ts
 // ...
@@ -170,8 +168,6 @@ import { MaterialImg, MaterialPage, MaterialVideo } from './MaterialPage';
 
 export class PluginAddPageClient extends Plugin {
   async load() {
-    // ...
-
     this.app.router.add('admin.material', {
       path: '/admin/material',
       Component: MaterialPage,
@@ -190,7 +186,7 @@ export class PluginAddPageClient extends Plugin {
 }
 ```
 
-如果 `MaterialPage` 作为父级页面不需要自定义布局，则可以省略 `Component` 属性。
+`MaterialPage` が親ページとしてカスタムレイアウトを必要としない場合、`Component` プロパティは省略できます。
 
 ```ts
 this.app.router.add('admin.material', {
@@ -198,26 +194,27 @@ this.app.router.add('admin.material', {
 })
 ```
 
-然后我们访问 [http://localhost:13000/admin/material](http://localhost:13000/admin/material) 就可以看到页面上已经显示了 `Material Page` 了，并且点击 `Video` 和 `Img` 链接可以切换到对应的页面。
+次に、[http://localhost:13000/admin/material](http://localhost:13000/admin/material) にアクセスすると、ページ上に `マテリアルページ` が表示され、`ビデオ` および `画像` リンクをクリックすると、それぞれのページに切り替わります。
 
 <video width="100%" controls>
       <source src="https://static-docs.nocobase.com/3.mp4" type="video/mp4">
 </video>
 
-## 打包和上传到生产环境
+## パッケージ化と本番環境へのアップロード
 
-按照 [构建并打包插件](/development/your-fisrt-plugin#构建并打包插件) 文档说明，我们可以打包插件并上传到生产环境。
+[プラグインのビルドとパッケージ化](/development/your-first-plugin#building-and-packaging-plugins) に従って、プラグインをパッケージ化し、本番環境にアップロードします。
 
-如果是 clone 的源码，需要先执行一次全量 build，将插件的依赖也构建好。
+クローンしたソースコードの場合、最初にフルビルドを実行し、プラグインの依存関係も構築する必要があります。
 
 ```bash
 yarn build
 ```
 
-如果是使用的 `create-nocobase-app` 创建的项目，可以直接执行：
+`create-nocobase-app` を使用して作成したプロジェクトの場合、次のコマンドを直接実行できます：
 
 ```bash
 yarn build @nocobase-sample/plugin-add-page --tar
 ```
 
-这样就可以看到 `storage/tar/@nocobase-sample/plugin-add-page.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
+これで `storage/tar/@nocobase-sample/plugin-add-page.tar.gz` ファイルが生成され、その後[アップロード方法](/welcome/getting-started/plugin)でインストールできます。
+

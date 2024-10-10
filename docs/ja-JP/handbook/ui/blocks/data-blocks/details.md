@@ -1,73 +1,74 @@
-# 详情区块
+# 詳細ブロック
 
-## 介绍
+## イントロダクション
 
-详情区块用于详细展示每条数据的每个字段的值。它支持灵活的字段布局，并内置了多种数据操作。
+詳細ブロックは、各データ項目のフィールド値を詳細に表示するために使用されます。柔軟なフィールドレイアウトをサポートし、さまざまなデータ操作が組み込まれています。
 
-## 添加区块
+## ブロックの追加
 
 <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240417122622.mp4" type="video/mp4">
 </video>
 
-## 区块配置项
+## ブロック設定項目
 
 ![20240511114328](https://static-docs.nocobase.com/20240511114328.png)
 
-### 设置数据范围
+### データ範囲の設定
 
-示例：只显示已发货的订单
+例：出荷済みの注文のみを表示
 
 ![20240417122910](https://static-docs.nocobase.com/20240417122910.png)
 
-更多内容参考 [设置数据范围](/handbook/ui/blocks/block-settings/data-scope)
+詳細は [データ範囲の設定](/handbook/ui/blocks/block-settings/data-scope) をご覧ください。
 
-### 设置排序规则
+### ソートルールの設定
 
 ![20240417123300](https://static-docs.nocobase.com/20240417123300.png)
 
-更多内容参考 [排序规则](/handbook/ui/blocks/block-settings/sorting-rule)
+詳細は [ソートルール](/handbook/ui/blocks/block-settings/sorting-rule) をご覧ください。
 
-- [设置数据加载方式](/handbook/ui/blocks/block-settings/loading-mode)
-- [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
+- [データ読み込み方法の設定](/handbook/ui/blocks/block-settings/loading-mode)
+- [ブロックテンプレートとして保存](/handbook/ui/blocks/block-settings/block-template)
 
-### 联动规则
+### 連動ルール
 
-详情区块中的联动规则支持动态设置字段 显示/隐藏。
+詳細ブロック内の連動ルールは、フィールドの表示/非表示を動的に設定することをサポートしています。
 
-示例：收货日期早于发货日期时隐藏发货日期。
+例：受取日が出荷日より早い場合、出荷日を非表示にします。
 
 ![20240511115156](https://static-docs.nocobase.com/20240511115156.png)
 
-更多内容参考 [联动规则](/handbook/ui/blocks/block-settings/linkage-rule)
+詳細は [連動ルール](/handbook/ui/blocks/block-settings/linkage-rule) をご覧ください。
 
-### 设置区块高度
+### ブロックの高さの設定
 
-示例：设置订单详情区块高度为「全高」模式。
+例：注文詳細ブロックの高さを「全高」モードに設定します。
 
 ![20240604232307](https://static-docs.nocobase.com/20240604232307.gif)
 
-更多内容参考 [区块高度](/handbook/ui/blocks/block-settings/block-height)
+詳細は [ブロックの高さ](/handbook/ui/blocks/block-settings/block-height) をご覧ください。
 
-## 配置字段
+## フィールドの設定
 
-### 本表字段
+### 現在のコレクションのフィールド
 
 ![20240417213735](https://static-docs.nocobase.com/20240417213735.png)
 
-### 关系表字段
+### 関連テーブルのフィールド
 
 ![20240417214006](https://static-docs.nocobase.com/20240417214006.png)
 
-详情字段配置项可参考 [详情字段](/handbook/ui/fields/generic/detail-form-item)
+詳細フィールドの設定項目については、[詳細フィールド](/handbook/ui/fields/generic/detail-form-item) をご覧ください。
 
-## 配置操作
+## 操作の設定
 
 ![20240417214433](https://static-docs.nocobase.com/20240417214433.png)
 
-- [编辑](/handbook/ui/actions/types/edit)
-- [删除](/handbook/ui/actions/types/delete)
-- [弹窗](/handbook/ui/actions/types/pop-up)
-- [更新记录](/handbook/ui/actions/types/update-record)
-- [自定义请求](/handbook/action-custom-request)
-- [触发工作流](/handbook/workflow/manual/triggers/custom-action)
+- [編集](/handbook/ui/actions/types/edit)
+- [削除](/handbook/ui/actions/types/delete)
+- [ポップアップ](/handbook/ui/actions/types/pop-up)
+- [レコードの更新](/handbook/ui/actions/types/update-record)
+- [カスタムリクエスト](/handbook/action-custom-request)
+- [ワークフローのトリガー](/handbook/workflow/manual/triggers/custom-action)
+

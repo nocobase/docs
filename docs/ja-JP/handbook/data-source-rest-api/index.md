@@ -1,30 +1,30 @@
-# REST API 数据源
+# REST API データソース
 
 <PluginInfo commercial="true" name="data-source-rest-api"></PluginInfo>
 
-## 介绍
+## イントロダクション
 
-用于接入 REST API 来源的数据。
+REST API ソースに接続するためのデータです。
 
-## 安装
+## インストール
 
-该插件为商业插件，需要通过插件管理器上传并激活插件
+このプラグインは商用プラグインであり、プラグインマネージャーを通じてアップロードし、アクティブにする必要があります。
 
 ![20240323162741](https://static-docs.nocobase.com/20240323162741.png)
 
-## 添加 REST API 源
+## REST API ソースの追加
 
-激活插件之后，在数据源管理的 Add new 下拉菜单中选择 REST API。
+プラグインをアクティブにした後、データソース管理の「新規追加」ドロップダウンメニューから「REST API」を選択します。
 
 ![20240721171420](https://static-docs.nocobase.com/20240721171420.png)
 
-配置 REST API 源
+REST API ソースを設定します。
 
 ![20240721171507](https://static-docs.nocobase.com/20240721171507.png)
 
-## 添加 Collection
+## コレクションの追加
 
-RESTful 的资源就是 NocoBase 的 Collection，例如 Users 资源
+RESTful リソースは NocoBase のコレクションです。例えば、Users リソース：
 
 ```bash
 GET /users
@@ -34,7 +34,7 @@ PUT /users/1
 DELETE /users/1
 ```
 
-映射到 NocoBase API 里的配置为
+これは NocoBase API における設定として次のようにマッピングされます。
 
 ```bash
 GET /users:list
@@ -44,154 +44,153 @@ POST /users:update?filterByTk=1
 POST /users:destroy?filterByTk=1
 ```
 
-完整的 NocoBase API 设计规范参考 API 文档
+完全な NocoBase API 設計規範については API ドキュメントを参照してください。
 
 ![20240716213344](https://static-docs.nocobase.com/20240716213344.png)
 
-查看「NocoBase API - Core」章节
+「NocoBase API - Core」セクションを確認してください。
 
 ![20240716213258](https://static-docs.nocobase.com/20240716213258.png)
 
-REST API 数据源的 Collection 配置如下
+REST API データソースのコレクション設定は以下の通りです。
 
-### List
+### リスト
 
-配置查看资源列表的接口映射
+リソースリストのインターフェースマッピングを設定します。
 
 ![20240716211351](https://static-docs.nocobase.com/20240716211351.png)
 
 ### Get
 
-配置查看资源详情的接口映射
+リソースの詳細を表示するためのインターフェースマッピングを設定します。
 
 ![20240716211532](https://static-docs.nocobase.com/20240716211532.png)
 
 ### Create
 
-配置创建资源的接口映射
+リソースを作成するためのインターフェースマッピングを設定します。
 
 ![20240716211634](https://static-docs.nocobase.com/20240716211634.png)
 
 ### Update
 
-配置更新资源的接口映射
+リソースを更新するためのインターフェースマッピングを設定します。
 
 ![20240716211733](https://static-docs.nocobase.com/20240716211733.png)
 
 ### Destroy
 
-配置删除资源的接口映射
+リソースを削除するためのインターフェースマッピングを設定します。
 
 ![20240716211808](https://static-docs.nocobase.com/20240716211808.png)
 
-## 调试 API
+## API デバッグ
 
-可以点击 Try it out 进行调试
+「Try it out」をクリックしてデバッグを行います。
 
 ![20240716212722](https://static-docs.nocobase.com/20240716212722.png)
 
-调试流程说明
+デバッグフローの説明
 
 ![20240717110051](https://static-docs.nocobase.com/20240717110051.png)
 
-## 变量
+## 変数
 
-REST API 数据源提供了三类变量用于接口的对接
+REST API データソースは、インターフェース接続のために 3 種類の変数を提供します。
 
-- 数据源自定义变量
-- NocoBase 请求
-- 第三方响应
+- データソースカスタム変数
+- NocoBase リクエスト
+- サードパーティレスポンス
 
-### 数据源自定义变量
+### データソースカスタム変数
 
 ![20240716221937](https://static-docs.nocobase.com/20240716221937.png)
 
 ![20240716221858](https://static-docs.nocobase.com/20240716221858.png)
 
-### NocoBase 请求
+### NocoBase リクエスト
 
-- Params：URL 查询参数（Search Params），各个接口的 Params 有所不同；
-- Headers：请求体，主要提供了一些 NocoBase 自定义的 X- 信息；
-- Body：请求的 Body；
-- Token：当前 NocoBase 请求的 API token。
+- **パラメータ**：URL 検索パラメータ（Search Params）。各インターフェースのパラメータは異なります。
+- **ヘッダー**：リクエストボディ。主に NocoBase のカスタム X- 情報を提供します。
+- **ボディ**：リクエストのボディです。
+- **トークン**：現在の NocoBase リクエストの API トークンです。
 
 ![20240716222042](https://static-docs.nocobase.com/20240716222042.png)
 
-### 第三方响应
+### サードパーティの応答
 
-目前提供的只有响应的 Body
+現在提供されているのは応答のボディのみです。
 
-![20240716222303](https://static-docs.nocobase.com/20240716222303.png)
+各インターフェースで利用可能な変数は以下の通りです：
 
-各个接口对接时可用变量如下：
+### リスト
 
-### List
-
-| 参数 | 说明 |
+| パラメータ | 説明 |
 | -- | -- |
-| request.params.page | 分页参数 |
-| request.params.pageSize | 每页显示数量 |
-| request.params.filter | 条件过滤 |
-| request.params.sort | 排序 |
-| request.params.appends | 按需加载的字段，一般用于关系字段的按需加载 |
-| request.params.fields | 接口只输出哪些字段（白名单） |
-| request.params.except | 排除哪些字段（黑名单） |
+| request.params.page | ページングパラメータ |
+| request.params.pageSize | 1ページあたりの表示数量 |
+| request.params.filter | 条件フィルタリング |
+| request.params.sort | ソート |
+| request.params.appends | 必要に応じてロードするフィールド（一般的にリレーションフィールドのロードに使用） |
+| request.params.fields | インターフェースが出力するフィールド（ホワイトリスト） |
+| request.params.except | 除外するフィールド（ブラックリスト） |
 
-### Get
+### 取得
 
-| 参数 | 说明 |
+| パラメータ | 説明 |
 | -- | -- |
-| request.params.filterByTk | 每页显示数量 |
-| request.params.filter | 条件过滤 |
-| request.params.appends | 按需加载的字段，一般用于关系字段的按需加载 |
-| request.params.fields | 接口只输出哪些字段（白名单） |
-| request.params.except | 排除哪些字段（黑名单） |
+| request.params.filterByTk | フィルタリング用のキー |
+| request.params.filter | 条件フィルタリング |
+| request.params.appends | 必要に応じてロードするフィールド（一般的にリレーションフィールドのロードに使用） |
+| request.params.fields | インターフェースが出力するフィールド（ホワイトリスト） |
+| request.params.except | 除外するフィールド（ブラックリスト） |
 
-### Create
+### 作成
 
-| 参数 | 说明 |
+| パラメータ | 説明 |
 | -- | -- |
-| request.params.whiteList | 白名单 |
-| request.params.blacklist | 黑名单 |
-| request.body | 创建的初始化数据 |
+| request.params.whiteList | ホワイトリスト |
+| request.params.blacklist | ブラックリスト |
+| request.body | 作成された初期データ |
 
-### Update
+### 更新
 
-| 参数 | 说明 |
+| パラメータ | 説明 |
 | -- | -- |
-| request.params.filterByTk | 每页显示数量 |
-| request.params.filter | 条件过滤 |
-| request.params.whiteList | 白名单 |
-| request.params.blacklist | 黑名单 |
-| request.body | 更新的数据 |
+| request.params.filterByTk | フィルタリング用のキー |
+| request.params.filter | 条件フィルタリング |
+| request.params.whiteList | ホワイトリスト |
+| request.params.blacklist | ブラックリスト |
+| request.body | 更新されたデータ |
 
-### Destroy
+### 削除
 
-| 参数 | 说明 |
+| パラメータ | 説明 |
 | -- | -- |
-| request.params.filterByTk | 每页显示数量 |
-| request.params.filter | 条件过滤 |
+| request.params.filterByTk | フィルタリング用のキー |
+| request.params.filter | 条件フィルタリング |
 
-## 配置字段
+## フィールドの設定
 
-从适配的资源的 CRUD 接口的数据中，提取字段的元数据（Fields）作为 collection 的字段
+適用するリソースの CRUD インターフェースからフィールドのメタデータを抽出し、コレクションのフィールドとして使用します。
 
 ![20240716223636](https://static-docs.nocobase.com/20240716223636.png)
 
-提取字段元数据
+フィールドメタデータの抽出
 
 ![20240716224010](https://static-docs.nocobase.com/20240716224010.png)
 
-字段及预览
+フィールドとプレビュー
 
 ![20240716224403](https://static-docs.nocobase.com/20240716224403.png)
 
-编辑字段（和其他数据源的方式类似）
+フィールドの編集（他のデータソースと同様の手法で）
 
 ![20240716224704](https://static-docs.nocobase.com/20240716224704.png)
 
-## 添加 REST API 数据源区块
+## REST API データソースブロックの追加
 
-Collection 配置好了之后，就可以去界面添加区块了
+コレクションの設定が完了したら、インターフェースにブロックを追加します。
 
 ![20240716225120](https://static-docs.nocobase.com/20240716225120.png)
+

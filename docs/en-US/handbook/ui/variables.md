@@ -3,6 +3,8 @@
 ## Introduction
 Variables are a set of tokens used to identify a value in the current context. They can be used in scenarios such as configuration block data scope, field default values, linkage rules, workflows, etc.
 
+![2024-09-25_20-08-38-2024-09-25-20-11-51](https://static-docs.nocobase.com/2024-09-25_20-08-38-2024-09-25-20-11-51.png)
+
 ## Currently Supported Variables
 
 ### Current user

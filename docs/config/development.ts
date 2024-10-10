@@ -2,6 +2,7 @@ export default [
   {
     title: 'Getting started',
     'title.zh-CN': '快速开始',
+    'title.ja-JP': 'はじめに',
     type: 'group',
     children: [
       '/development',
@@ -15,12 +16,14 @@ export default [
   {
     title: 'Server',
     'title.zh-CN': '服务端',
+    'title.ja-JP': 'サーバー',
     type: 'group',
     children: [
       '/development/server',
       {
         title: 'Collections & Fields',
         'title.zh-CN': '数据表和字段',
+        'title.ja-JP': 'コレクションとフィールド',
         children: [
           '/development/server/collections',
           '/development/server/collections/options',
@@ -33,6 +36,7 @@ export default [
       // {
       //   title: 'Resources & Actions',
       //   'title.zh-CN': '资源和操作',
+      //   'title.ja-JP': 'リソースとアクション',
       //   children: [
       //     '/development/server/resources-actions',
       //     '/development/server/resources-actions/configuration',
@@ -55,6 +59,7 @@ export default [
   {
     title: 'Client',
     'title.zh-CN': '客户端',
+    'title.ja-JP': 'クライアント',
     type: 'group',
     children: [
       '/development/client',
@@ -66,6 +71,7 @@ export default [
       {
         title: 'UI Schema',
         'title.zh-CN': 'UI Schema',
+        'title.ja-JP': 'UIスキーマ',
         children: [
           '/development/client/ui-schema/quick-start',
           '/development/client/ui-schema/what-is-ui-schema',
@@ -85,6 +91,7 @@ export default [
   {
     title: 'Others',
     'title.zh-CN': '其他',
+    'title.ja-JP': 'その他',
     type: 'group',
     children: [
       '/development/others/build',

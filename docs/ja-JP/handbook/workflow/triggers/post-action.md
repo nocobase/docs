@@ -1,9 +1,10 @@
-# 操作后事件
+# 操作後のイベント
 
 <PluginInfo name="workflow-action-trigger" link="/handbook/workflow-action-trigger"></PluginInfo>
 
 <embed src="../../workflow-action-trigger/trigger.md#L3-L999"></embed>
 
-## 相关内容
+## 関連情報
 
-除触发器配置外，操作后事件还有一些相关的内容可以通过 [插件文档](../../workflow-action-trigger/index.md) 进一步了解。
+トリガーの設定に加え、操作後のイベントに関する関連情報を [プラグインドキュメント](../../workflow-action-trigger/index.md) でさらに確認できます。
+

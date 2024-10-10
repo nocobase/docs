@@ -1,20 +1,20 @@
 # 0.17.0-alpha.3
 
-## 本地化管理
+## ローカリゼーション管理
 
 ### 背景
 
-参考 <a target="_blank" href="https://blog-cn.nocobase.com/posts/organize-text-namespaces-by-modules-in-localization-management/">更新（多语言管理）：按照模块划分翻译文本的命名空间</a>
+参考 <a target="_blank" href="https://blog-cn.nocobase.com/posts/organize-text-namespaces-by-modules-in-localization-management/">更新（多言語管理）：モジュールごとの翻訳テキストのネームスペースを整理する</a>
 
-### 翻译文本不去重
+### 翻訳テキストの重複排除について
 
-不同模块重复的文本不再只保留一个，需要分别添加对应的翻译
+異なるモジュールで重複するテキストは一つだけを残さず、それぞれに対応する翻訳を追加する必要があります。
 
 ![](https://static-docs.nocobase.com/1c5fd02f1348787e1833bd3ece36c9aa.png)
 
-### `i18n` 实例移除 `fallbackNS` 选项
+### `i18n` インスタンスから `fallbackNS` オプションの削除
 
-客户端 `i18n` 实例化不再配置 `fallbackNS: "client"`. 对于插件开发者，如果插件的多语言文件中省略了部分内核客户端中已有的文本，需要进行补充。如果还是想复用 `packages/core/client/src/locale` 中已有的内容，需要在使用的时候传递参数，例如：
+クライアントの `i18n` インスタンスでは、もはや `fallbackNS: "client"` を設定しません。プラグイン開発者は、プラグインの多言語ファイルにおいて、コアクライアントに既存のテキストの一部が省略されている場合、それを補充する必要があります。もし `packages/core/client/src/locale` に既存の内容を再利用したい場合は、使用時に適切なパラメータを渡す必要があります。例えば：
 
 ```ts
 import { useTranslation } from 'react-i18next';
@@ -25,3 +25,4 @@ export const useLocalTranslation = () => {
   return useTranslation([NAMESPACE, 'client'], { nsMode: 'fallback' });
 };
 ```
+

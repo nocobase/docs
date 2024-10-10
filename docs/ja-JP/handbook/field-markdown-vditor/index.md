@@ -1,11 +1,12 @@
-# Markdown(Vditor)
+# Markdown (Vditor)
 
-## 介绍
+## イントロダクション
 
-## 字段配置
+## フィールド設定
 
 ![20240512180647](https://static-docs.nocobase.com/20240512180647.png)
 
-## 示例
+## サンプル
 
-待补充
+近日公開予定です。
+

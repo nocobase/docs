@@ -1,24 +1,24 @@
-# 如何配置数据表？
+# データテーブルの設定方法
 
-NocoBase 有三种方式配置数据表：
+NocoBase では、データテーブルを設定する方法が3つあります：
 
 <img src="./cm.svg" style="max-width: 800px;" />
 
-## 通过界面配置数据表
+## インターフェースを通じてデータテーブルを設定する
 
-业务数据一般建议使用界面配置，NocoBase 平台提供了两种界面配置数据表
+ビジネスデータは一般的にインターフェースを通じて設定することをお勧めします。NocoBase プラットフォームでは、データテーブルを設定するための2つのインターフェースが用意されています。
 
-### 常规的表格界面
+### 一般的な表形式インターフェース
 
 <img src="./table.jpg" style="max-width: 800px;" />
 
-### 图形化配置界面
+### グラフィカル設定インターフェース
 
 <img src="./graph.jpg" style="max-width: 800px;" />
 
-## 在插件代码里定义
+## プラグインコード内で定義する
 
-在插件里，自定义的数据表必须放在插件的 `src/server/collections/*.ts` 目录下，内容如下：
+プラグイン内でカスタムデータテーブルを定義するには、プラグインの `src/server/collections/*.ts` ディレクトリに配置し、内容は以下のようになります：
 
 ```ts
 import { defineCollection } from '@nocobase/database';
@@ -28,7 +28,7 @@ export default defineCollection({
 });
 ```
 
-扩展已有 collection 的配置，使用 `extendCollection()`
+既存のコレクションの設定を拡張するには、`extendCollection()` を使用します。
 
 ```ts
 import { extendCollection } from '@nocobase/database';
@@ -38,20 +38,20 @@ export default extendCollection({
 });
 ```
 
-相关 API 参考
+関連APIの参考
 
 - [defineCollection()](/api/database#definecollection)
 - [extendCollection()](/api/database#extendcollection)
 
-:::info{title="提示"}
-在插件里配置的 collection，插件激活时自动与数据库同步，生成相对应的数据表和字段。如果插件已经激活，需要通过升级命令 `yarn nocobase upgrade` 来处理数据表的同步问题。
+:::info{title="ヒント"}
+プラグイン内で設定されたコレクションは、プラグインが有効化されると自動的にデータベースと同期され、対応するデータテーブルとフィールドが生成されます。プラグインが既に有効化されている場合は、データテーブルの同期問題を解決するために、アップグレードコマンド `yarn nocobase upgrade` を使用する必要があります。
 :::
 
-## 通过 REST API 管理数据表
+## REST API を通じてデータテーブルを管理する
 
-第三方还可以通过 HTTP 接口管理数据表（需要开放权限）
+第三者は、HTTP インターフェースを通じてデータテーブルを管理することも可能です（権限の設定が必要です）。
 
-### Collections
+### コレクション
 
 ```bash
 GET     /api/collections
@@ -61,7 +61,7 @@ PUT     /api/collections/<collectionName>
 DELETE  /api/collections/<collectionName>
 ```
 
-### Collection fields
+### コレクションフィールド
 
 ```bash
 GET     /api/collections/<collectionName>/fields
@@ -70,3 +70,4 @@ GET     /api/collections/<collectionName>/fields/<fieldName>
 PUT     /api/collections/<collectionName>/fields/<fieldName>
 DELETE  /api/collections/<collectionName>/fields/<fieldName>
 ```
+

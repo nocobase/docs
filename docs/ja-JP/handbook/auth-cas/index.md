@@ -1,35 +1,36 @@
-# 认证：CAS
+# 認証：CAS
 
 <PluginInfo commercial="true" name="auth-cas"></PluginInfo>
 
-## 介绍
+## 概要
 
-认证：CAS 插件遵循 CAS (Central Authentication Service) 协议标准，实现用户使用第三方身份认证服务商 (IdP) 提供的账号登录NocoBase.
+認証：CASプラグインは、CAS（Central Authentication Service）プロトコル標準に従い、ユーザーが第三者の認証サービスプロバイダー（IdP）によって提供されたアカウントを使用してNocoBaseにログインできるようにします。
 
-## 安装
+## インストール
 
-## 使用手册
+## 取扱説明書
 
-### 激活插件
+### プラグインの有効化
 
 ![](https://static-docs.nocobase.com/469c48d9f2e8d41a088092c34ddb41f5.png)
 
-### 添加 CAS 认证
+### CAS認証の追加
 
-访问用户认证管理页面
+ユーザー認証管理ページにアクセスします。
 
 http://localhost:13000/admin/settings/auth/authenticators
 
-添加 CAS 认证方式
+CAS認証方式を追加します。
 
 ![](https://static-docs.nocobase.com/a268500c5008d3b90e57ff1e2ea41aca.png)
 
-配置 CAS 并激活
+CASを設定し、有効化します。
 
 ![](https://static-docs.nocobase.com/2518b3fcc80d8a41391f3b629a510a02.png)
 
-### 访问登录页
+### ログインページにアクセス
 
 http://localhost:13000/signin
 
 ![](https://static-docs.nocobase.com/49116aafbb2ed7218306f929ac8af967.png)
+

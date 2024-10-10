@@ -1,8 +1,8 @@
-# 页面路由及扩展
+# ページルーティングと拡張
 
-## 简介
+## 概要
 
-NocoBase 客户端通过 [app.router.add()](https://client.docs.nocobase.com/core/application/router-manager) 和 [app.pluginSettingsManager.add()](https://client.docs.nocobase.com/core/application/plugin-settings-manager) 扩展页面，例如：
+NocoBase クライアントは [app.router.add()](https://client.docs.nocobase.com/core/application/router-manager) および [app.pluginSettingsManager.add()](https://client.docs.nocobase.com/core/application/plugin-settings-manager) を使用してページを拡張します。例えば：
 
 ```tsx | pure
 import { Application, Plugin } from '@nocobase/client';
@@ -16,15 +16,15 @@ class PluginHello extends Plugin {
     });
 
     this.app.pluginSettingsManager.add('hello', {
-      title: 'Hello',
+      title: 'こんにちは',
       icon: 'ApiOutlined',
-      Component: () => <div>Hello Setting page</div>,
+      Component: () => <div>こんにちは設定ページ</div>,
     });
   }
 }
 ```
 
-可以通过 `app.router.getRoutes()` 方法，查看所有已经注册的页面
+`app.router.getRoutes()` メソッドを使って、登録済みのすべてのページを確認できます。
 
 ```tsx | pure
 import { Application, Plugin } from '@nocobase/client';
@@ -37,16 +37,16 @@ class PluginHello extends Plugin {
 }
 ```
 
-## 已有页面路由
+## 既存のページルーティング
 
-初始安装的 NocoBase，已注册的页面路由有：
+初期インストールの NocoBase には、以下のページルーティングがすでに登録されています：
 
-| 名称           | 路径               | 组件                | 说明 |
+| 名称           | パス               | コンポーネント        | 説明 |
 | -------------- | ------------------ | ------------------- |---------|
-| admin          | /admin/\*          | AdminLayout         | 后台管理页面  |
-| admin.page     | /admin/:name       | AdminDynamicPage    | 动态创建的页面 |
-| admin.settings | /admin/settings/\* | AdminSettingsLayout | 插件配置页面  |
-| admin.pm.list  | /admin/pm/list/\* | PluginManager       | 插件管理页面  |
+| admin          | /admin/\*          | AdminLayout         | バックエンド管理ページ  |
+| admin.page     | /admin/:name       | AdminDynamicPage    | 動的作成ページ |
+| admin.settings | /admin/settings/\* | AdminSettingsLayout | プラグイン設定ページ  |
+| admin.pm.list  | /admin/pm/list/\* | PluginManager       | プラグイン管理ページ  |
 
 ### AdminLayout
 
@@ -66,7 +66,7 @@ router.add('admin.page', {
 });
 ```
 
-由菜单管理动态页面，通过添加菜单项 -> 页面添加
+メニュー管理による動的ページは、メニュー項目を追加することで作成できます。
 
 ![](https://static-docs.nocobase.com/9204957c39f644cfbf23eef3cbdc7eca.png)
 
@@ -79,39 +79,39 @@ router.add('admin.settings', {
 });
 ```
 
-插件配置页
+プラグイン設定ページ。
 
 ![](https://static-docs.nocobase.com/ea22826eba4fd38d68a5a52fd68e7719.png)
 
-插件配置页的菜单及标签页通过 `app.pluginSettingsManager` 注册。
+プラグイン設定ページのメニューやタブは `app.pluginSettingsManager` を使用して登録します。
 
-## 页面扩展
+## ページ拡張
 
-- 动态 Schema 页面，通过 `添加菜单项` -> `页面` 添加
-- 常规页面通过 [app.router.add()](https://client.docs.nocobase.com/core/application/router-manager) 添加
-- 插件设置页通过 [app.pluginSettingsManager.add()](https://client.docs.nocobase.com/core/application/plugin-settings-manager) 添加
+- 動的スキーマページは、`メニュー項目の追加` -> `ページ` で追加します。
+- 通常のページは [app.router.add()](https://client.docs.nocobase.com/core/application/router-manager) を使用して追加します。
+- プラグイン設定ページは [app.pluginSettingsManager.add()](https://client.docs.nocobase.com/core/application/plugin-settings-manager) を使用して追加します。
 
-### 动态 Schema 页面
+### 動的スキーマページ
 
-通过 `添加菜单项` -> `页面` 添加
+`メニュー項目の追加` -> `ページ` で追加します。
 
-### 常规页面扩展
+### 通常ページの拡張
 
-通过 [app.router.add()](https://client.docs.nocobase.com/core/application/router-manager) 扩展页面路由
+[app.router.add()](https://client.docs.nocobase.com/core/application/router-manager) を使用してページルーティングを拡張します。
 
 ```typescript
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { Application, Plugin } from '@nocobase/client';
 
-const Home = () => <h1>Home</h1>;
-const About = () => <h1>About</h1>;
+const Home = () => <h1>ホーム</h1>;
+const About = () => <h1>アバウト</h1>;
 
 const Layout = () => {
   return (
     <div>
       <div>
-        <Link to={'/'}>Home</Link>, <Link to={'/about'}>About</Link>
+        <Link to={'/'}>ホーム</Link>, <Link to={'/about'}>アバウト</Link>
       </div>
       <Outlet />
     </div>
@@ -119,21 +119,21 @@ const Layout = () => {
 };
 
 class MyPlugin extends Plugin {
-    async load() {
-        this.app.router.add('root', {
-          element: <Layout />,
-        });
+  async load() {
+    this.app.router.add('root', {
+      element: <Layout />,
+    });
 
-        this.app.router.add('root.home', {
-          path: '/',
-          element: <Home />,
-        });
+    this.app.router.add('root.home', {
+      path: '/',
+      element: <Home />,
+    });
 
-        this.app.router.add('root.about', {
-          path: '/about',
-          element: <About />,
-        });
-    }
+    this.app.router.add('root.about', {
+      path: '/about',
+      element: <About />,
+    });
+  }
 }
 
 const app = new Application({
@@ -144,32 +144,31 @@ const app = new Application({
   plugins: [MyPlugin]
 });
 
-
 export default app.getRootComponent();
 ```
 
-### 插件设置页扩展
+### プラグイン設定ページの拡張
 
-插件设置页通过 [app.pluginSettingsManager.add()](https://client.docs.nocobase.com/core/application/plugin-settings-manager) 添加。
+プラグイン設定ページは [app.pluginSettingsManager.add()](https://client.docs.nocobase.com/core/application/plugin-settings-manager) を使用して追加します。
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
 import React from 'react';
 
-const HelloSettingPage = () => <div>Hello Setting page</div>;
+const HelloSettingPage = () => <div>こんにちは設定ページ</div>;
 
 export class HelloPlugin extends Plugin {
   async load() {
     this.app.pluginSettingsManager.add('hello', {
-      title: 'Hello', // 设置页面的标题和菜单名称
-      icon: 'ApiOutlined', // 设置页面菜单图标
+      title: 'こんにちは', // 設定ページのタイトルとメニュー名
+      icon: 'ApiOutlined', // 設定ページメニューアイコン
       Component: HelloSettingPage,
     });
   }
 }
 ```
 
-多级路由用法
+多階層ルーティングの使い方
 
 ```tsx | pure
 import { Outlet } from 'react-router-dom';
@@ -181,18 +180,19 @@ class HelloPlugin extends Plugin {
     this.app.pluginSettingsManager.add(pluginName, {
       title: 'HelloWorld',
       icon: '',
-      Component: Outlet, // 可以不传，默认为  `Outlet` 组件
+      Component: Outlet, // 省略可能、デフォルトは `Outlet` コンポーネント
     });
 
     this.app.pluginSettingsManager.add(`${pluginName}.demo1`, {
-      title: 'Demo1 Page',
-      Component: () => <div>Demo1 Page Content</div>,
+      title: 'デモ1ページ',
+      Component: () => <div>デモ1ページの内容</div>,
     });
 
     this.app.pluginSettingsManager.add(`${pluginName}.demo2`, {
-      title: 'Demo2 Page',
-      Component: () => <div>Demo2 Page Content</div>,
+      title: 'デモ2ページ',
+      Component: () => <div>デモ2ページの内容</div>,
     });
   }
 }
 ```
+

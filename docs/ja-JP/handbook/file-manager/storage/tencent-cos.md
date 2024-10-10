@@ -1,31 +1,32 @@
-# 腾讯云 COS
+# Tencent COS
 
-基于腾讯云 COS 的存储引擎，使用前需要准备相关账号和权限。
+Tencent COS を基にしたストレージエンジンで、使用する前に関連するアカウントと権限を準備する必要があります。
 
-## 配置参数
+## 設定パラメータ
 
-![腾讯 COS 存储引擎配置示例](https://static-docs.nocobase.com/20240712222125.png)
+![Tencent COS ストレージエンジン設定例](https://static-docs.nocobase.com/20240712222125.png)
 
-:::info{title=提示}
-仅介绍腾讯云 COS 存储引擎的专用参数，通用参数请参考[引擎通用参数](./index.md#引擎通用参数)。
+:::info{title=ヒント}
+Tencent COS ストレージエンジン専用のパラメータについてのみ説明します。一般的なパラメータについては[エンジン一般パラメータ](./index.md#エンジン一般パラメータ)を参照してください。
 :::
 
-### 区域
+### リージョン
 
-填写 COS 存储的区域，例如：`ap-chengdu`。
+COS ストレージのリージョンを入力します。例：`ap-chengdu`。
 
-:::info{title=提示}
-可以在[腾讯云 COS 控制台](https://console.cloud.tencent.com/cos)中查看存储空间的区域信息，且只需截取区域前缀部分即可（无需完整域名）。
+:::info{title=ヒント}
+[Tencent COS コンソール](https://console.cloud.tencent.com/cos)でストレージバケットのリージョン情報を確認でき、リージョンのプレフィックス部分だけを切り取ることで使用できます（完全なドメイン名は不要です）。
 :::
 
 ### SecretId
 
-填写腾讯云授权访问密钥的 ID。
+Tencent Cloud の認可アクセスキーの ID を入力します。
 
 ### SecretKey
 
-填写腾讯云授权访问密钥的 Secret。
+Tencent Cloud の認可アクセスキーの Secret を入力します。
 
-### 存储桶
+### バケット
 
-填写 COS 存储的存储桶名称，例如：`qing-cdn-1234189398`。
+COS ストレージのバケット名を入力します。例：`qing-cdn-1234189398`。
+

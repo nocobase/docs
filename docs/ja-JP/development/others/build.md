@@ -1,34 +1,35 @@
-# 构建
+# ビルド
 
-## 自定义打包配置
+## カスタムビルド設定
 
-如果你想要自定义打包配置，可以在插件根目录下创建 `build.config.ts` 文件，内容如下：
+カスタムビルド設定を行うには、プラグインのルートディレクトリに `build.config.ts` ファイルを作成し、以下の内容を記述してください：
 
 ```js
 import { defineConfig } from '@nocobase/build';
 
 export default defineConfig({
   modifyViteConfig: (config) => {
-    // vite 是用来打包 `src/client` 端代码的
+    // Vite は `src/client` 側のコードをビルドするために使用されます。
 
-    // 修改 Vite 配置，具体可参考：https://vitejs.dev/guide/
-    return config
+    // Vite 設定を変更します。詳細は以下を参照してください：https://vitejs.dev/guide/
+    return config;
   },
   modifyTsupConfig: (config) => {
-    // tsup 是用来打包 `src/server` 端代码的
+    // Tsup は `src/server` 側のコードをビルドするために使用されます。
 
-    // 修改 tsup 配置，具体可参考：https://tsup.egoist.dev/#using-custom-configuration
-    return config
+    // Tsup 設定を変更します。詳細は以下を参照してください：https://tsup.egoist.dev/#using-custom-configuration
+    return config;
   },
   beforeBuild: (log) => {
-    // 构建开始前的回调函数，可以在构建开始前做一些操作
+    // ビルド開始前のコールバック関数です。ビルド開始前にいくつかの操作を行うことができます。
   },
   afterBuild: (log: PkgLog) => {
-    // 构建完成后的回调函数，可以在构建完成后做一些操作
-  };
+    // ビルド完了後のコールバック関数です。ビルド完了後にいくつかの操作を行うことができます。
+  }
 });
 ```
 
-## 插件示例
+## プラグインの例
 
 - [@nocobase/plugin-sample-custom-build](#)
+

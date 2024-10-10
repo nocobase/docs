@@ -1,8 +1,8 @@
-# 总览
+# 概要
 
-- 编写第一个插件
+- 最初のプラグインの作成
   - @my-project/plugin-hello
-- 数据表及字段相关
+- データテーブルおよびフィールド関連
   - sample-collection-define
   - sample-collection-extend
   - sample-collection-model
@@ -10,73 +10,74 @@
   - sample-collection-template
   - sample-collection-field-type
   - sample-collection-field-interface
-- 资源和操作相关
+- リソースおよび操作関連
   - sample-resource-manager-register-action-handlers
   - sample-resource-manager-define
-  - sample-resourcer-manager-actions
-- db 用法
+  - sample-resource-manager-actions
+- データベースの使用法
   - sample-db-registerFieldTypes
   - sample-db-registerModels
   - sample-db-registerRepositories
   - sample-db-registerOperators
   - sample-db-repository
-- 自定义命令行
+- カスタムコマンドライン
   - sample-cli-create-command
-- 迁移脚本
+- マイグレーションスクリプト
   - sample-migration-create-migration
-- 缓存
+- キャッシュ
   - sample-cache-register-store
   - sample-cache-create-cache
-- 服务端中间件
+- サーバーサイドミドルウェア
   - sample-middleware-ratelimit
-- 数据源扩展
+- データソース拡張
   - sample-data-source-nocobase-api
-- 图表扩展
+- グラフ拡張
   - sample-dv-echarts
-- 国际化
+- 国際化
   - sample-i18n-zh-cn
-- 前端路由扩展
-  - 新增页面
-  - 替换页面
-  - 插件配置页面（单个路由）
-  - 插件配置页面（Tabs 路由）
-  - 插件配置页面（不同布局）
-- 插件配置页面
-  - 表单配置页面
-  - 表格配置页面
-  - 多态表格配置页面
-- Provider 组件
-  - 全局公告栏
-- 扩展 Component
-- Schema Initailizer
-  - 向已有的 Add block 里添加初始化项
-  - 向已有的 Configure actions 里添加初始化项
-  - 向已有的 Configure fields 里添加初始化项
-  - 复用现成 SchemaInitailizerItem
-    - 直接添加区块
-      - 弹窗配置后添加（类似日历）
-  - 创建新的初始化器
-    - 纯按钮和有下拉菜单
-- Schema Settings
-  - 向已有的 Settings 里添加初始化项
-  - 复用现成 SchemaSettingsItem
-  - 创建新的设置器
-- 区块扩展
-  - 简单的区块示例 - Gallery 图片轮转浏览区块
-    - 区块组件开发
-    - Initaizer item
-    - Block Settings
-  - 区块内嵌的初始化器
-    - 配置操作
-    - 配置字段
-    - 自定义的初始化器
-- 操作扩展
-  - 指令类型的操作
-  - 弹窗类型的操作
-- 字段扩展
-  - 自定义字段 interface 类型
-  - 自定义字段数据类型
-  - 字段组件开发
+- フロントエンドルーティング拡張
+  - ページの追加
+  - ページの置き換え
+  - プラグイン設定ページ（単一ルート）
+  - プラグイン設定ページ（タブ型レイアウト）
+  - プラグイン設定ページ（異なるレイアウト）
+- プラグイン設定ページ
+  - フォーム設定ページ
+  - テーブル設定ページ
+  - 多態性テーブル設定ページ
+- プロバイダーコンポーネント
+  - グローバル通知バー
+- コンポーネントの拡張
+- スキーマイニシャライザー
+  - 既存の Add block に初期項目を追加
+  - 既存の Configure actions に初期項目を追加
+  - 既存の Configure fields に初期項目を追加
+  - 既存の SchemaInitializerItem を再利用
+    - 直接ブロックを追加
+      - ポップアップ設定後に追加（カレンダーのように）
+  - 新しいイニシャライザーを作成
+    - ボタンおよびドロップダウンメニュー
+- スキーマ設定
+  - 既存の Settings に初期項目を追加
+  - 既存の SchemaSettingsItem を再利用
+  - 新しい設定器を作成
+- ブロック拡張
+  - シンプルなブロック例 - ギャラリー画像カルーセルブロック
+    - ブロックコンポーネント開発
+    - イニシャライザーアイテム
+    - ブロック設定
+  - ブロック内埋め込みのイニシャライザー
+    - 操作の設定
+    - フィールドの設定
+    - カスタムイニシャライザー
+- 操作拡張
+  - コマンド型操作
+  - ポップアップ型操作
+- フィールド拡張
+  - カスタムフィールドインターフェースタイプ
+  - カスタムフィールドデータタイプ
+  - フィールドコンポーネントの開発
     - connect + mapReadPretty
     - observer + mapReadPretty
-  - 为字段提供设置器
+  - フィールドに設定器を提供
+

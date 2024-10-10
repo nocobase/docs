@@ -1,39 +1,39 @@
-# Git 源码安装
+# Git ソースコードのインストール
 
-## 0. 先决条件
+## 0. 前提条件
 
-请确保你已经：
+以下の項目を確認してください：
 
-- 安装了 Git、Node.js 18+、Yarn 1.22.x
-- 配置并启动了所需数据库 MySQL 8.0.17+、MariaDB 10.9+、PostgreSQL 10+ 任选其一
+- Git、Node.js 18+、Yarn 1.22.x がインストールされていること
+- 必要なデータベース（MySQL 8.0.17+、MariaDB 10.9+、PostgreSQL 10+）のいずれかが設定され、起動していること
 
-## 1. 将 NocoBase 下载到本地
+## 1. NocoBase をローカルにダウンロード
 
-### latest 版本
+### 最新バージョン
 
-截止目前最稳定的版本，推荐下载此版本。
+現時点で最も安定したバージョンであり、このバージョンのダウンロードを推奨します。
 
 ```bash
 git clone https://github.com/nocobase/nocobase.git -b main --depth=1 my-nocobase
 ```
 
-### next 版本
+### 次期バージョン
 
-内测版，包含一些未发布的新特性，这个版本可能还不完全稳定，适用于开发者或测试人员，用于提前体验新功能或进行兼容性测试。
+内部テスト版で、いくつかの未公開の新機能が含まれています。このバージョンは完全に安定していない可能性があり、開発者やテスター向けに新機能を早期に体験したり、互換性テストを行ったりするために適しています。
 
 ```bash
 git clone https://github.com/nocobase/nocobase.git -b next --depth=1 my-nocobase
 ```
 
-## 2. 切换目录
+## 2. ディレクトリの切り替え
 
 ```bash
 cd my-nocobase
 ```
 
-## 3. 安装依赖
+## 3. 依存関係のインストール
 
-由于国内网络环境的原因，强烈建议你更换国内镜像。
+国内のネットワーク環境の影響により、国内ミラーに切り替えることを強く推奨します。
 
 ```bash
 $ yarn config set disable-self-update-check true
@@ -41,15 +41,15 @@ $ yarn config set registry https://registry.npmmirror.com/
 $ yarn config set sqlite3_binary_host_mirror https://npmmirror.com/mirrors/sqlite3/
 ```
 
-📢 由于网络环境、系统配置等因素影响，接下来这一步骤可能需要十几分钟时间。
+📢 ネットワーク環境やシステム設定などの要因により、次のステップには十数分かかる場合があります。
 
 ```bash
 yarn install --frozen-lockfile
 ```
 
-## 4. 设置环境变量
+## 4. 環境変数の設定
 
-NocoBase 所需的环境变量储存在根目录 `.env` 文件里，根据实际情况修改环境变量，如果你不知道怎么改，[点此查看环境变量说明](../env.md)，也可以保持默认。
+NocoBase に必要な環境変数は、ルートディレクトリの `.env` ファイルに保存されています。実際の状況に応じて環境変数を変更してください。変更方法がわからない場合は、[こちらをクリックして環境変数の説明を確認](../env.md)するか、デフォルトのままにしておいても構いません。
 
 ```bash
 TZ=Asia/Shanghai
@@ -62,34 +62,35 @@ DB_PASSWORD=nocobase
 ```
 
 :::warning
-- `TZ` 用于设置应用的时区，默认为操作系统时区；
-- `APP_KEY` 是应用的密钥，用于生成用户 token 等（如果 APP_KEY 修改了，旧的 token 也会随之失效）。它可以是任意随机字符串。请修改为自己的秘钥，并确保不对外泄露；
-- `DB_*` 为数据库相关，如果不是例子默认的数据库服务，请根据实际情况修改。
+- `TZ` はアプリケーションのタイムゾーンを設定するために使用され、デフォルトではオペレーティングシステムのタイムゾーンが適用されます。
+- `APP_KEY` はアプリケーションの秘密鍵で、ユーザートークンの生成などに使用されます（`APP_KEY` を変更すると古いトークンは無効になります）。任意のランダムな文字列に設定できるため、必ず自分の秘密鍵に変更し、外部に漏れないようにしてください。
+- `DB_*` はデータベース関連の設定であり、デフォルトのデータベースサービスを使用しない場合は、実際の状況に応じて適宜変更してください。
 :::
 
-## 5. 安装 NocoBase
+## 5. NocoBase のインストール
 
 ```bash
 yarn nocobase install --lang=zh-CN
 ```
 
-## 6. 启动 NocoBase
+## 6. NocoBase の起動
 
-开发环境
+### 開発環境
 
 ```bash
 yarn dev
 ```
 
-生产环境
+### 本番環境
 
 ```bash
-# 编译（请确保已执行 `yarn install --frozen-lockfile`）
+# コンパイル（`yarn install --frozen-lockfile` を実行済みであることを確認してください）
 yarn build
-# 启动
+# 起動
 yarn start
 ```
 
-## 7. 登录 NocoBase
+## 7. NocoBase にログイン
 
-使用浏览器打开 http://localhost:13000/ 初始化账号和密码是 `admin@nocobase.com` 和 `admin123`。
+ブラウザを使用して [http://localhost:13000](http://localhost:13000) を開き、初期アカウントとパスワードは `admin@nocobase.com` および `admin123` です。
+

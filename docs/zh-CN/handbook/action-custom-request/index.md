@@ -37,6 +37,7 @@ this.app.acl.registerSnippet({
 ![20240426120953](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426120953.png)
 
 ![20240426121051](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426121051.png)
+
 ## 操作配置项
 
 ### 请求设置

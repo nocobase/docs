@@ -1,173 +1,171 @@
 # v0.20：2024-03-03
 
-## 新特性
+## 新機能
 
-### 支持多数据源
+### 複数データソースのサポート
 
-新增「[数据源管理](/handbook/data-source-manager)」插件，用于管理所有数据源的数据表和字段，数据源管理插件只是提供中心化的数据源管理界面，并不提供接入数据源的能力，需要和各种数据源插件搭配使用，目前支持的数据源包括：
+新たに「[データソース管理](/handbook/data-source-manager)」プラグインが追加され、すべてのデータソースのデータテーブルやフィールドを管理できます。データソース管理プラグインは中心化されたデータソース管理インターフェースを提供しますが、データソースへの接続機能はありません。各種データソースプラグインと組み合わせて使用する必要があります。現在サポートされているデータソースは以下の通りです：
 
-- [主数据库 Main](/handbook/data-source-main)：NocoBase 主数据库，支持 MySQL、PostgreSQL、SQLite 等关系型数据库。
-- [外部 MySQL 数据源](/handbook/data-source-external-mysql)：接入已有的 MySQL 数据库作为数据源。
-- [外部 MariaDB 数据源](/handbook/data-source-external-mariadb)：接入已有的 MariaDB 数据库作为数据源。
-- [外部 PostgreSQL 数据源](/handbook/data-source-external-postgres)：接入已有的 PostgreSQL 数据库作为数据源。
+- [主データベース Main](/handbook/data-source-main)：NocoBaseの主データベースで、MySQL、PostgreSQL、SQLiteなどのリレーショナルデータベースをサポートしています。
+- [外部 MySQL データソース](/handbook/data-source-external-mysql)：既存のMySQLデータベースをデータソースとして接続します。
+- [外部 MariaDB データソース](/handbook/data-source-external-mariadb)：既存のMariaDBデータベースをデータソースとして接続します。
+- [外部 PostgreSQL データソース](/handbook/data-source-external-postgres)：既存のPostgreSQLデータベースをデータソースとして接続します。
 
-除此之外，也可以扩展更多数据源，可以是常见的各类数据库，也可以是提供 API（SDK）的平台。
+さらに、一般的なデータベースやAPI（SDK）を提供するプラットフォームなど、より多くのデータソースを拡張することも可能です。
 
-![数据源管理](https://static-docs.nocobase.com/fe8ecdaf640097eeb310c94a997b9090.png)
+![データソース管理](https://static-docs.nocobase.com/fe8ecdaf640097eeb310c94a997b9090.png)
 
-### 调整数据表的管理方式
+### データテーブルの管理方法の調整
 
-将原来的「数据表管理」移至「数据源 > 主数据库 > 配置」
+従来の「データテーブル管理」を「データソース > 主データベース > 設定」に移動しました。
 
-![Main 数据库配置](https://static-docs.nocobase.com/b5ad882a131e447f78b0c22a92ec9df6.gif)
+![Main データベース設定](https://static-docs.nocobase.com/b5ad882a131e447f78b0c22a92ec9df6.gif)
 
-### 支持非 ID 字段作为主键和关系约束
+### 非IDフィールドを主キーおよびリレーション制約としてサポート
 
-建表时，可以不选择创建 ID 字段
+テーブル作成時にIDフィールドを作成する必要はありません。
 
-![预置字段](https://static-docs.nocobase.com/87dc4101a884f97cbfce00f1891f7cf6.png)
+![プレセットフィールド](https://static-docs.nocobase.com/87dc4101a884f97cbfce00f1891f7cf6.png)
 
-整数字段可以作为主键
+整数フィールドは主キーとして使用できます。
 
-![整数字段可以作为主键](https://static-docs.nocobase.com/cce37d7d8e9feaa66970da0c643a2d9d.png)
+![整数フィールドは主キーとして使用可能](https://static-docs.nocobase.com/cce37d7d8e9feaa66970da0c643a2d9d.png)
 
-单行文本字段也可以作为主键
+単行テキストフィールドは主キーとして使用できます。
 
-![单行文本字段也可以作为主键](https://static-docs.nocobase.com/b2c797f52bedfcfa06936a244dd9be4b.png)
+![単行テキストフィールドは主キーとして使用できます。](https://static-docs.nocobase.com/b2c797f52bedfcfa06936a244dd9be4b.png)
 
-关系约束支持选择其他设置了 Unique 索引的非主键字段
+関係制約は、ユニークインデックスが設定された他の非主キーフィールドの選択をサポートします。
 
 ![](https://static-docs.nocobase.com/e5515e58426c5be08ba982b0bb311410.png)
 
-### 调整拖拽排序
+### ドラッグアンドドロップによる並べ替えの調整
 
-新增「排序」类型字段，建表时不再自动生成排序字段，需要自己手动创建
+「並べ替え」タイプのフィールドを新たに追加し、テーブル作成時に自動生成される並べ替えフィールドを手動で作成する必要があります。
 
 ![](https://static-docs.nocobase.com/470891c7bb34c506328c1f3824a6cf20.png)
 
-当选了某个字段作为分组时，将先分组再排序
+特定のフィールドをグループ化として選択した場合、最初にグループ化を行い、その後に並べ替えが実施されます。
 
 ![](https://static-docs.nocobase.com/0794d0a9c0dc288a8fc924a3542bb86e.png)
 
-表格拖拽排序时，需要选择排序字段
+テーブルのドラッグアンドドロップによる並べ替え時には、並べ替えフィールドを選択する必要があります。
 
 ![](https://static-docs.nocobase.com/20cf12fd7ca3d8c0aa1917a95c0a7e7c.png)
 
-创建看板区块时，需要选择排序字段
+ボードブロックを作成する際にも、並べ替えフィールドを選択する必要があります。
 
 ![](https://static-docs.nocobase.com/b810265790d6a1ec099e3d88d1361271.png)
 
-### 调整用户和权限界面
+### ユーザーと権限インターフェースの調整
 
-新增用户管理界面，并将用户、角色的管理统一到一个菜单内
+ユーザー管理インターフェースを新たに追加し、ユーザーとロールの管理を一つのメニューに統合しました。
 
 ![](https://static-docs.nocobase.com/7be26746652098f07ce105dbae373522.png)
 
-调整角色管理的界面，便于管理角色关联的用户、权限、部门等数据
+ロール管理のインターフェースを調整し、ロールに関連するユーザー、権限、部門などのデータを管理しやすくしました。
 
 ![](https://static-docs.nocobase.com/4ec942af764dfcec1ddc9a244816a6ee.png)
 
-将原来的「操作权限」移至「数据源」标签页
+元の「操作権限」を「データソース」タブに移動しました。
 
 ![](https://static-docs.nocobase.com/461ab881fe94a33f9a122e9734b85f4d.gif)
 
-### 部门插件
+### 部門プラグイン
 
-![](https://static-docs.nocobase.com/093473d9c23a789d41899df9bcaf3389.png)
+ユーザーを部門ごとに組織し、上下関係を設定し、役割をバインドして権限を制御し、ワークフローや式で変数として利用できるようにします。
 
-以部门来组织用户，设定上下级关系，绑定角色控制权限，并支持作为变量用于工作流和表达式。
+### ワークフロー：承認
 
-### 工作流：审批
+承認プラグインは、専用のワークフロータイプ（トリガー）「承認を開始」と、特にこのプロセスに特化した「承認」ノードを提供します。NocoBase特有のカスタムデータテーブルとカスタムブロックを組み合わせることで、さまざまな承認シナリオを迅速かつ柔軟に作成・管理できます。
 
-审批插件提供了专用的工作流类型（触发器）“发起审批”和专用于该流程的“审批”节点，结合 NocoBase 特有的自定义数据表和自定义区块，可以快速且灵活地创建与管理各类审批场景。
+承認設定
 
-审批配置
+![承認設定](https://static-docs.nocobase.com/21acc5615ecc03aeeb44671ab945baea.png)
 
-![审批配置](https://static-docs.nocobase.com/21acc5615ecc03aeeb44671ab945baea.png)
+承認処理
 
-审批处理
+![承認処理](https://static-docs.nocobase.com/6a879641bd15de0648cd4602779ef9fa.png)
 
-![审批处理](https://static-docs.nocobase.com/6a879641bd15de0648cd4602779ef9fa.png)
+詳細については、ドキュメントをご覧ください：[ワークフロー：承認](/handbook/workflow-approval)
 
-进一步可通过文档了解：[工作流：审批](/handbook/workflow-approval)
+### ワークフロー：終了プロセスノード
 
-### 工作流：结束流程节点
-
-该节点执行时将立即结束当前执行的工作流，并以节点配置的状态结束。通常用于特定逻辑的流程控制，在满足某些逻辑条件后，跳出当前工作流，不再继续执行后续流程的处理。可类比编程语言中的 return 指令，用于退出当前执行的函数。
+このノードが実行されると、現在実行中のワークフローが直ちに終了し、ノード設定の状態で完了します。特定のロジックに基づくプロセス制御に一般的に使用され、特定の論理条件が満たされた後に現在のワークフローを終了し、その後のプロセス処理を続行しません。プログラミング言語の return 命令に似ており、現在実行中の関数を終了します。
 
 ![](https://static-docs.nocobase.com/38d6352211d791fd4233f5cd4bdb34f2.png)
 
-进一步可通过文档了解：[工作流：结束流程节点](/handbook/workflow/manual/nodes/end)
+詳細については、ドキュメントをご覧ください：[ワークフロー：終了プロセスノード](/handbook/workflow/manual/nodes/end)
 
-### 工作流：自定义变量节点
+### ワークフロー：カスタム変数ノード
 
-可在流程中声明变量，或为已声明的变量赋值，通常用于在流程中保存一些临时数据。适用于一些需要在分支内将计算结果储存到分支外使用的场景（如循环、并行等）。
+プロセス内で変数を宣言するか、既に宣言された変数に値を割り当てることができ、通常はプロセス内で一時的なデータを保存するために使用されます。分岐内で計算結果を保存し、分岐外で使用する必要があるシナリオ（例えば、ループや並列処理など）に適しています。
 
 ![](https://static-docs.nocobase.com/c19913f99968d987a52aaa53578a7318.png)
 
-进一步可通过文档了解：[工作流：自定义变量节点](/handbook/workflow-variable)
+詳細については、ドキュメントをご覧ください：[ワークフロー：カスタム変数ノード](/handbook/workflow-variable)
 
-### 工作流：请求拦截器
+### ワークフロー：リクエストインターセプター
 
-请求拦截器插件提供了一种可以对表单的操作请求进行拦截的机制，拦截事件会在对应的表单操作提交后且被处理之前触发。如果在触发后的流程中有“结束流程”节点被执行，或者其他节点执行失败（出错或其他未能执行完成的情况），则该表单操作将被拦截，否则预定操作将被正常执行。
-搭配使用“响应消息”节点可以为该流程配置返回客户端的响应消息，以对客户端给出相应的提示信息。
-请求拦截器可用于进行业务验证或逻辑检查，以通过或拦截客户端提交的创建、更新和删除等操作请求。
+リクエストインターセプタープラグインは、フォームの操作リクエストをインターセプトするメカニズムを提供します。インターセプトイベントは、対応するフォーム操作が送信された後、処理される前にトリガーされます。トリガー後のプロセスで「プロセス終了」ノードが実行されるか、他のノードが失敗した場合（エラーや他の未完了の状況）、そのフォーム操作はインターセプトされます。それ以外の場合、予定された操作は正常に実行されます。
+
+「レスポンスメッセージ」ノードを併用することで、このプロセスにクライアントへのレスポンスメッセージを返す設定が可能となり、クライアントに適切な提示情報を提供します。リクエストインターセプターは、ビジネス検証やロジックチェックを行うために、クライアントが提出した作成、更新、削除などの操作リクエストを通過またはインターセプトするために使用できます。
 
 ![](https://static-docs.nocobase.com/3f3991aaf9d73b8c2f7c179e7702d16b.png)
 
-进一步可通过文档了解：[工作流：请求拦截器](/handbook/workflow-request-interceptor)
+さらに詳細は文書で確認できます：[ワークフロー：リクエストインターセプター](/handbook/workflow-request-interceptor)
 
-### 工作流：响应消息节点
+### ワークフロー：レスポンスメッセージノード
 
-响应消息节点用于在特定类型的流程中（如请求拦截和表单事件）向提交操作的客户端反馈流程中自定义的消息。
+レスポンスメッセージノードは、特定のタイプのプロセス（リクエストインターセプトやフォームイベントなど）において、操作を提出したクライアントにプロセス内でカスタマイズされたメッセージをフィードバックするために使用されます。
 
-节点配置
+ノード設定
 
 ![](https://static-docs.nocobase.com/4376843af541ef6a08696e074cb6cd07.png)
 
-提示信息
+ヒントメッセージ
 
 ![](https://static-docs.nocobase.com/051f12855bd0ce74b22de191b8b87cf5.png)
 
-进一步可通过文档了解：[工作流：响应消息节点](/handbook/workflow-response-message)
+さらに詳細は文書で確認できます：[ワークフロー：レスポンスメッセージノード](/handbook/workflow-response-message)
 
-## 不兼容的变化
+## 非互換の変更
 
-### 命名相同但有冲突的 API
+### 同名だが衝突するAPI
 
-这一次的内核变更，有些新版 API 与旧版命名存在冲突，这些有冲突的旧版 API 在这一版里还会保留，但是会统一加上 `_deprecated ` 后缀。
+今回のカーネル変更により、一部の新しいAPIが従来の命名と衝突しています。これらの衝突する従来のAPIはこのバージョンでも保持されますが、統一して `_deprecated` サフィックスが付加されます。
 
-| 原来的 API           | 废弃的 API                      | 新 API                                                                                                                 |
-| -------------------- | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| CollectionProvider   | CollectionProvider_deprecated   | [CollectionProvider](https://client.docs-cn.nocobase.com/core/data-source/collection-provider)                 |
-| useCollection        | useCollection_deprecated        | [useCollection](https://client.docs-cn.nocobase.com/core/data-source/collection-provider#hooks)                |
-| useCollectionField   | useCollectionField_deprecated   | [useCollectionField](https://client.docs-cn.nocobase.com/core/data-source/collection-field#hooks)              |
-| useCollectionManager | useCollectionManager_deprecated | [useCollectionManager](https://client.docs-cn.nocobase.com/core/data-source/collection-manager-provider#hooks) |
-| useContext(CollectionManagerContext) | useCollectionManager_deprecated | [useCollectionManager](https://client.docs-cn.nocobase.com/core/data-source/collection-manager-provider#hooks) |
+| 元のAPI                      | 廃止されたAPI                           | 新API                                                                                                                  |
+| --------------------------- | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------- |
+| CollectionProvider          | CollectionProvider_deprecated        | [CollectionProvider](https://client.docs-cn.nocobase.com/core/data-source/collection-provider)                     |
+| useCollection               | useCollection_deprecated             | [useCollection](https://client.docs-cn.nocobase.com/core/data-source/collection-provider#hooks)                   |
+| useCollectionField          | useCollectionField_deprecated        | [useCollectionField](https://client.docs-cn.nocobase.com/core/data-source/collection-field#hooks)                 |
+| useCollectionManager        | useCollectionManager_deprecated      | [useCollectionManager](https://client.docs-cn.nocobase.com/core/data-source/collection-manager-provider#hooks)    |
+| useContext(CollectionManagerContext) | useCollectionManager_deprecated | [useCollectionManager](https://client.docs-cn.nocobase.com/core/data-source/collection-manager-provider#hooks)    |
 
-如果用到以上相关 API，你可以有两种更改方式：
+関連するAPIを使用する場合、変更方法は2種類あります：
 
-- 简单替换：将原来的 API 替换为带 `_deprecated`，例如将 `useCollection()` 替换为 `useRecord_deprecated()`
-- 按照新文档使用新 API：虽然新 API 的名称和老 API 相同，但是参数和返回值存在差异，需要参考新文档调整相应代码
+- 簡単な置き換え：元のAPIを`_deprecated`が付いたものに置き換えます。例えば、`useCollection()`を`useRecord_deprecated()`に置き換えます。
+- 新しいドキュメントに従って新しいAPIを使用する：新しいAPIの名称は旧APIと同じですが、パラメータと戻り値に違いがあるため、新しいドキュメントを参照してコードを調整する必要があります。
 
-### 其他需要调整的 API
+### その他調整が必要なAPI
 
-- `registerTemplate()` 变更为 `app.dataSourceManager.addCollectionTemplates()`
-- `registerField()` 变更为 `app.dataSourceManager.addFieldInterfaces()`
-- `registerGroup()` 变更为 `app.dataSourceManager.addFieldInterfaceGroups()`
-- `useContext(CollectionManagerContext)` 变更为 `useCollectionManager_deprecated()`
-- 使用 `ExtendCollectionsProvider` 扩展 collections
-- `RecordProvider` 需要 parent 参数时，必须显式传入
+- `registerTemplate()`は`app.dataSourceManager.addCollectionTemplates()`に変更します。
+- `registerField()`は`app.dataSourceManager.addFieldInterfaces()`に変更します。
+- `registerGroup()`は`app.dataSourceManager.addFieldInterfaceGroups()`に変更します。
+- `useContext(CollectionManagerContext)`は`useCollectionManager_deprecated()`に変更します。
+- `ExtendCollectionsProvider`を使用してコレクションを拡張します。
+- `RecordProvider`が親パラメータを必要とする場合は、明示的に渡す必要があります。
 
-## 变更示例说明
+## 変更例の説明
 
-### Collection Template 扩展
+### コレクションテンプレートの拡張
 
-#### 定义
+#### 定義
 
-之前是对象定义的方式，现在需要改为类的方式。 例如：
+以前はオブジェクト定義の方式でしたが、現在はクラスの方式に変更する必要があります。例えば：
 
-之前
+以前
 
 ```typescript
 import { ICollectionTemplate } from '@nocobase/client';
@@ -181,7 +179,7 @@ const calendar: ICollectionTemplate = {
 }
 ```
 
-现在
+現在
 
 ```typescript
 import { CollectionTemplate } from '@nocobase/client';
@@ -194,26 +192,26 @@ class CalendarCollectionTemplate extends CollectionTemplate {
 }
 ```
 
-原来的对象属性变为类的成员。
+元のオブジェクト属性はクラスのメンバーになります。
 
-#### 注册
+#### 登録
 
-之前是通过 `registerTemplate` 注册的，现在需要通过插件的 `dataSourceManager.addCollectionTemplates` 注册。例如：
+以前は `registerTemplate` を使用して登録していましたが、現在はプラグインの `dataSourceManager.addCollectionTemplates` を使用して登録する必要があります。例えば：
 
-之前
+以前
 
 ```typescript
 import { registerTemplate } from '@nocobase/client';
-import { calendar } from './calendar'
+import { calendar } from './calendar';
 
 registerTemplate('calendar', calendar);
 ```
 
-现在
+現在
 
 ```typescript
 import { Plugin } from '@nocobase/client';
-import { CalendarCollectionTemplate } from './calendar'
+import { CalendarCollectionTemplate } from './calendar';
 
 export class CalendarPluginClient extends Plugin {
   async load() {
@@ -222,13 +220,13 @@ export class CalendarPluginClient extends Plugin {
 }
 ```
 
-### Field Interface 扩展
+### フィールドインターフェースの拡張
 
-#### 定义
+#### 定義
 
-之前是对象定义的方式，现在需要改为类的方式。 例如：
+以前はオブジェクト定義の方式でしたが、現在はクラスの方式に変更する必要があります。例えば：
 
-之前
+以前
 
 ```typescript
 import { IField } from '@nocobase/client';
@@ -237,12 +235,12 @@ const attachment: IField = {
   name: 'attachment',
   type: 'object',
   group: 'media',
-  title: 'Attachment',
+  title: '添付ファイル',
   // ...
 }
 ```
 
-现在
+現在
 
 ```typescript
 import { CollectionFieldInterface } from '@nocobase/client';
@@ -251,22 +249,22 @@ class AttachmentFieldInterface extends CollectionFieldInterface {
   name = 'attachment';
   type = 'object';
   group = 'media';
-  title = 'Attachment';
+  title = '添付ファイル';
   // ...
 }
 ```
 
-原来的对象属性变为类的成员。
+元のオブジェクトプロパティはクラスのメンバーになります。
 
-#### 注册
+#### 登録
 
-之前是通过 `registerField` 注册的，现在需要通过插件的 `dataSourceManager.addFieldInterfaces` 注册，并且不需要 `CollectionManagerProvider` 再次传递。例如：
+以前は `registerField` を使用して登録していましたが、現在はプラグインの `dataSourceManager.addFieldInterfaces` を使用して登録する必要があります。また、`CollectionManagerProvider` を再度渡す必要はありません。例えば：
 
-之前
+以前のコード
 
 ```diff
 import { registerField } from '@nocobase/client';
-import { attachment } from './attachment'
+import { attachment } from './attachment';
 
 - registerField(attachment.group, 'attachment', attachment);
 
@@ -281,11 +279,11 @@ export const FileManagerProvider: FC = (props) => {
 };
 ```
 
-现在
+現在のコード
 
 ```typescript
 import { Plugin } from '@nocobase/client';
-import { AttachmentFieldInterface } from './attachment'
+import { AttachmentFieldInterface } from './attachment';
 
 export class FilPlugin extends Plugin {
   async load() {
@@ -294,24 +292,24 @@ export class FilPlugin extends Plugin {
 }
 ```
 
-### Field Interface Group 扩展
+### フィールドインターフェースグループの拡張
 
-之前是通过 `registerGroup` 注册的，现在需要通过插件的 `dataSourceManager.addFieldInterfaceGroups` 注册。例如：
+以前は `registerGroup` を使用して登録されていましたが、現在はプラグインの `dataSourceManager.addFieldInterfaceGroups` を使用して登録する必要があります。例えば：
 
 ```diff
 - import { registerGroup, Plugin } from '@nocobase/client';
 + import { Plugin } from '@nocobase/client';
 
 - registerGroup('map', {
--        label: 'Map-based geometry',
+-        label: '地図ベースの幾何学図形',
 -        order: 10
-- })
+- });
 
 export class MapPlugin extends Plugin {
   async load() {
 +    this.app.dataSourceManager.addFieldInterfaceGroups({
 +      map: {
-+        label: generateNTemplate('Map-based geometry'),
++        label: generateNTemplate('地図ベースの幾何学図形'),
 +        order: 51,
 +      },
 +    });
@@ -319,14 +317,14 @@ export class MapPlugin extends Plugin {
 }
 ```
 
-### `useContext(CollectionManagerContext)` 改为 `useCollectionManager_deprecated()`
+### `useContext(CollectionManagerContext)` を `useCollectionManager_deprecated()` に変更
 
 ```diff
 - const ctx = useContext(CollectionManagerContext);
 + const ctx = useCollectionManager_deprecated();
 ```
 
-### 扩展 collections，使用 `ExtendCollectionsProvider` 代替 `CollectionManagerProvider`
+### コレクションの拡張、`CollectionManagerProvider` の代わりに `ExtendCollectionsProvider` を使用
 
 ```diff
 const Demo = () => {
@@ -338,9 +336,9 @@ const Demo = () => {
 }
 ```
 
-### RecordProvider 的变更
+### RecordProvider の変更
 
-之前在不传入 parent 属性的时候，会自动获取上一级的 RecordProvider 的值作为 parent。现在则需要显式的传入 parent，当不传 parent 的时候，parent 的值将是 undefined。
+以前は、parent 属性を指定しない場合、自動的に上位の RecordProvider の値が parent として取得されていました。現在は、明示的に parent を指定する必要があります。parent を指定しない場合、parent の値は undefined になります。
 
 ```diff
 - <RecordProvider record={recordData}>
@@ -349,7 +347,7 @@ const Demo = () => {
 </RecordProvider>
 ```
 
-如果没有历史包袱，也可以直接使用 CollectionRecordProvider 替换
+歴史的な制約がない場合は、CollectionRecordProvider を直接使用して置き換えることも可能です。
 
 ```diff
 - <RecordProvider record={recordData}>
@@ -359,7 +357,8 @@ const Demo = () => {
 + </CollectionRecordProvider>
 ```
 
-:::warning{title="RecordProvider 和 CollectionRecordProvider 的区别"}
-- RecordProvider 已废弃，未来会被移除
-- RecordProvider 带了旧的 RecordContext，CollectionRecordProvider 没有
+:::warning{title="RecordProvider と CollectionRecordProvider の違い"}
+- RecordProvider は廃止され、将来的には削除される予定です。
+- RecordProvider には古い RecordContext が含まれていますが、CollectionRecordProvider には含まれていません。
 :::
+
