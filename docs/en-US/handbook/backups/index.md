@@ -11,12 +11,13 @@ The NocoBase backup manager plugin provides features for fully backing up of the
 This plugin is built into the NocoBase Professional Edition and does not require manual installation. Please refer to the <a target="_blank" href="https://www.nocobase.com/en/commercial">commercial version</a> for more details.
 
 :::warning{title="Attention"}
+
 - This plugin is based on the native database client. Before using it, the corresponding database client must be installed in the NocoBase server environment.
   - [PostgreSQL client installation](./installation/postgres.md)
   - [MySQL client installation](./installation/mysql.md)
   - [MariaDB client installation](./installation/mariadb.md)
 - During the restore operation, the version of the target database should not be lower than the version of the database that created the backup.
-:::
+  :::
 
 ## Instructions
 
@@ -31,6 +32,7 @@ Click the "New backup" button to create a new backup based on the backup configu
 
 Supports restoring backups from the backup list or uploading local backup files to restore backups.
 Restore operations are not allowed in the following scenarios:
+
 - When the current NocoBase version is lower than the NocoBase version in the backup file.
 - When the current NocoBase database is inconsistent with the following configurations in the backup file:
   - dialect
@@ -44,7 +46,9 @@ Restore operations are not allowed in the following scenarios:
 #### Restore from the backup list
 
 Click the "Restore" button of the backup item in the backup list, enter the backup file encryption password in the pop-up window, and click "Confirm" to restore the backup.
+
 > Leave password empty for unencrypted backup.
+
 > If you need to restore the backup to a lower version of the database, you need to enable the tolerant mode.
 
 ![Restore Backup](./static/restore-backup.png)
@@ -52,7 +56,9 @@ Click the "Restore" button of the backup item in the backup list, enter the back
 #### Restore from local backup file
 
 Click the "Restore from local backup" button, select the local backup file in the pop-up window, enter the backup file encryption password, and click "Confirm" to restore the backup.
+
 > Leave password empty for unencrypted backup.
+
 > If you need to restore the backup to a lower version of the database, you need to enable the tolerant mode.
 
 ![Restore from Local Backup](./static/restore-from-local.png)
