@@ -1607,23 +1607,30 @@ export default [
               {
                 title: 'Ant design charts',
                 type: 'group',
-                children: [],
+                children: [
+                  '/handbook/data-visualization/antd-charts/overview',
+                  '/handbook/data-visualization/antd-charts/line',
+                  '/handbook/data-visualization/antd-charts/column',
+                  '/handbook/data-visualization/antd-charts/bar',
+                  '/handbook/data-visualization/antd-charts/pie',
+                  '/handbook/data-visualization/antd-charts/dual-axes',
+                  '/handbook/data-visualization/antd-charts/scatter',
+                ],
               },
               {
                 title: 'Ant design',
                 type: 'group',
-                children: [],
+                children: [
+                  '/handbook/data-visualization/antd/overview',
+                  '/handbook/data-visualization/antd/table',
+                  '/handbook/data-visualization/antd/statistic',
+                ],
               },
               {
                 title: 'ECharts',
                 type: 'group',
                 children: [
-                  {
-                    title: 'Overview',
-                    'title.zh-CN': '概述',
-                    'title.ja-JP': '概要',
-                    link: '/handbook/data-visualization/echarts/',
-                  },
+                  '/handbook/data-visualization/echarts/overview',
                   '/handbook/data-visualization/echarts/line',
                   '/handbook/data-visualization/echarts/column',
                   '/handbook/data-visualization/echarts/bar',
