@@ -37,6 +37,7 @@ Restore operations are not allowed in the following scenarios:
   - underscored
   - table prefix
   - schema
+- When the `Tolerant mode` is not enabled, and the database version when creating the backup is higher than the current application database version.
 
 > **Restore is a full database operation. It is recommended to back up the current database before restoring a backup.**
 
@@ -44,6 +45,7 @@ Restore operations are not allowed in the following scenarios:
 
 Click the "Restore" button of the backup item in the backup list, enter the backup file encryption password in the pop-up window, and click "Confirm" to restore the backup.
 > Leave password empty for unencrypted backup.
+> If you need to restore the backup to a lower version of the database, you need to enable the tolerant mode.
 
 ![Restore Backup](./static/restore-backup.png)
 
@@ -51,6 +53,7 @@ Click the "Restore" button of the backup item in the backup list, enter the back
 
 Click the "Restore from local backup" button, select the local backup file in the pop-up window, enter the backup file encryption password, and click "Confirm" to restore the backup.
 > Leave password empty for unencrypted backup.
+> If you need to restore the backup to a lower version of the database, you need to enable the tolerant mode.
 
 ![Restore from Local Backup](./static/restore-from-local.png)
 
