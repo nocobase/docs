@@ -1,65 +1,65 @@
-# 多段階フォーム
+# 分步表单
 
-## 導入
-ステップバイステップ フォームは、フォーム ブロックの機能に加えてステップバイステップの構成をサポートするデータ入力および編集インターフェイスを構築するためのブロックです。
+## 介绍
+分步表单是用于构建数据输入和编辑界面的区块，在表单区块的能力之上支持分步配置。
 
-## ブロックの追加
+## 添加区块
 
 <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/202410101614107.mp4" type="video/mp4">
 </video>
 
-## ブロック設定項目
+## 区块配置项
 
 ![](https://static-docs.nocobase.com/202410101717319.png)
 
 
-### 連携ルール
+### 联动规则
 
-リンクルールを通じてフォームフィールドの動作を制御します。
+通过联动规则控制表单字段行为。
 
 ![](https://static-docs.nocobase.com/202410101717884.png)
 
-その他のコンテンツのリファレンス [連携ルール](/handbook/ui/blocks/block-settings/linkage-rule)
+更多内容参考 [联动规则](/handbook/ui/blocks/block-settings/linkage-rule)
 
 
-### ブロックの高さを設定する
+### 设置区块高度
 
-例：ブロック高さを「高さ指定」モードに設定します。
+示例：设置区块高度为「指定高度」模式。
 
 <video width="100%" height="440" controls>
   <source src="https://static-docs.nocobase.com/202410101623290.mp4" type="video/mp4">
 </video>
 
-その他のコンテンツのリファレンス [ブロックの高さ](/handbook/ui/blocks/block-settings/block-height)
+更多内容参考 [区块高度](/handbook/ui/blocks/block-settings/block-height)
 
-## 段階的な構成
+## 分步配置
 
-### 新しいステップを追加
+### 添加新的步骤
 
 ![](https://static-docs.nocobase.com/202410101718482.png)
 
-### ステップ名の編集
+### 编辑步骤名称
 
 ![](https://static-docs.nocobase.com/202410101718755.png)
 
 ![](https://static-docs.nocobase.com/202410101718413.png)
 
-### ステップの順序を調整する
+### 调整步骤顺序
 
 <video width="100%" height="440" controls>
   <source src="https://static-docs.nocobase.com/202410101633487.mp4" type="video/mp4">
 </video>
 
-## 設定フィールド
+## 配置字段
 
-フィールド設定項目が参照可能 [フォーム設定フィールド](/handbook/ui/blocks/data-blocks/form)
+字段配置项可参考 [表单配置字段](/handbook/ui/blocks/data-blocks/form#配置字段)
 
-## 設定操作
+## 配置操作
 
 ![](https://static-docs.nocobase.com/202410101719893.png)
 
-- 前のステップ: 前のフォームに戻る
-- 次のステップ: 次のフォームに切り替えます
-- [提出する](/handbook/ui/actions/types/submit)
-- [カスタムリクエスト](/handbook/action-custom-request)
+- 上一步：返回上一个表单
+- 下一步：切换到下一个表单
+- [提交](/handbook/ui/actions/types/submit)
+- [自定义请求](/handbook/action-custom-request)
