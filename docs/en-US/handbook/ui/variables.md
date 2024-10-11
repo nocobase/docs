@@ -104,6 +104,12 @@ The blocks in the popup can use the "Current popup record" variable, with the fo
 
 ![20240416224014_rec_](https://static-docs.nocobase.com/20240416224014_rec_.gif)
 
+### Table Select Record
+
+Default values for form fields that are currently only used for the Add record action for a table block
+
+#### The default value of the form field for the Add record action
+
 ### Parent record (Deprecated)
 
 Only used in association blocks, representing the source record of the association data.

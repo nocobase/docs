@@ -10,7 +10,7 @@ The File Manager plugin provides a file collection, attachment field, and file s
 
 ### File Collection
 
-An `attachments` collection is built-in to store all files associated with attachment fields. Additionally, new file collections can be created to store specific files.
+An attachments collection is built-in to store all files associated with attachment fields. Additionally, new file collections can be created to store specific files.
 
 [More usage information can be found in the file table introduction document](/handbook/file-manager/file-collection)
 

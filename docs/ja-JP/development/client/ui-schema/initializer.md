@@ -10,7 +10,7 @@ UI 設定がアクティブ化されると、インターフェース上に直�
 
 ## 既存の初期化器に項目を追加する
 
-項目を追加するには、[`schemaInitializerManager.addItem()`](#) メソッドの使用を推奨します。項目の詳細な設定については [SchemaInitializer Item API](#) を参照してください。
+項目を追加するには、[`schemaInitializerManager.addItem()`](#) メソッドの使用をお勧めします。項目の詳細な設定については [SchemaInitializer Item API](#) を参照してください。
 
 ```ts
 class PluginDemoAddSchemaInitializerItem extends Plugin {
@@ -53,7 +53,7 @@ const myInitializer = new SchemaInitializer({
 
 ### プラグインの load メソッド内で登録する
 
-新しい初期化器をアプリに追加するには `schemaInitializerManager.add()` の使用を推奨します。
+新しい初期化器をアプリに追加するには `schemaInitializerManager.add()` の使用をお勧めします。
 
 ```ts
 class PluginDemoAddSchemaInitializer extends Plugin {

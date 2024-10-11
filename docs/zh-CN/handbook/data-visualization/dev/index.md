@@ -305,9 +305,7 @@ export type Config = string | ConfigType;
 
 2. 使用预定义好的 UI Schema.
 
-例如: `config: ['field']`
-
-对应生成
+例如: `config: ['field']` 对应生成
 
 ```typescript
 {
