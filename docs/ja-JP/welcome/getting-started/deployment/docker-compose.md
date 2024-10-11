@@ -6,7 +6,7 @@
 
 <br />
 
-[>>> 詳細については、「環境変数」の完全リストを参照してください <<<](/welcome/getting-started/env)
+[>>> 詳細については、「環境変数」の完全なリストを参照してください <<<](/welcome/getting-started/env)
 
 ## ドメインのバインディング
 
@@ -15,7 +15,7 @@ nginxを例に、http://127.0.0.1:13000/をnginxでプロキシします。
 ```bash
 server {
     listen 80;
-    server_name your_domain.com;  # your_domain.comをあなたのドメインに置き換えてください
+    server_name your_domain.com;  # your_domain.comをドメインに置き換えてください
 
     location / {
         proxy_pass http://127.0.0.1:13000/;
@@ -44,7 +44,7 @@ services:
 ```bash
 server {
     listen 80;
-    server_name your_domain.com;  # your_domain.comをあなたのドメインに置き換えてください
+    server_name your_domain.com;  # your_domain.comをドメインに置き換えてください
 
     location /nocobase/ {
         proxy_pass http://127.0.0.1:13000/nocobase/;
@@ -56,5 +56,5 @@ server {
 }
 ```
 
-最終的には、http://your_domain.com/nocobase/ にアクセスできるようになります。
+そして、http://your_domain.com/nocobase/ にアクセスできるようになります。
 
