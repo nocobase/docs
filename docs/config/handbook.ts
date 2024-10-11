@@ -1450,25 +1450,30 @@ export default [
       {
         title: 'Notification',
         'title.zh-CN': '通知',
+        'title.ja-JP': '通知',
         children: [
           {
             title: 'Notification manager',
             'title.zh-CN': '通知管理',
+            'title.ja-JP': '通知管理',
             link: '/handbook/notification-manager',
           },
           {
             title: 'Notification: In-app message',
             'title.zh-CN': '通知：站内信',
+            'title.ja-JP': '通知：アプリ内メッセージ',
             link: '/handbook/notification-in-app-message',
           },
           {
             title: 'Notification: Email',
             'title.zh-CN': '通知：电子邮件',
+            'title.ja-JP': '通知：メール',
             link: '/handbook/notification-email',
           },
           {
             title: 'Notification extension',
             'title.zh-CN': '通知扩展',
+            'title.ja-JP': '通知拡張',
             link: '/handbook/notification-manager/extension',
           },
         ],
@@ -1582,6 +1587,7 @@ export default [
               {
                 title: 'Basic usage',
                 'title.zh-CN': '基本使用',
+                'title.ja-JP': '基本的な使い方',
                 type: 'group',
                 children: [
                   {

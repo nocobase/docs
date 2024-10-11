@@ -7,10 +7,10 @@
 ## 1. 新しい `docker-compose.yml` の作成
 
 ```bash
-# NocoBase によって生成されたシステムファイルを保存するための my-project（他の名前でも可）という名前のフォルダを作成
+# NocoBase によって生成されたシステムファイルを保存するための my-project（他の名前でもいい）という名前のフォルダを作成する。
 mkdir my-project && cd my-project
 
-# 空の docker-compose.yml ファイルを作成
+# 空の docker-compose.yml ファイルを作成する。
 touch docker-compose.yml
 ```
 
@@ -37,8 +37,8 @@ services:
     depends_on:
       - postgres
     environment:
-      # アプリケーションの秘匿キー。ユーザーのトークン生成などに使用されます。
-      # APP_KEYを変更すると、古いトークンが無効になります。
+      # アプリケーションの秘密キー。ユーザーのトークン生成などに使用されます。
+      # APP_KEYを変更すると、元のトークンが無効になります。
       # 任意のランダムな文字列を使用し、外部に漏れないようにしてください。
       - APP_KEY=your-secret-key
       # データベースの種類。postgres、mysql、mariadb、sqliteをサポートしています。
@@ -59,7 +59,7 @@ services:
       - "13000:80"
     # init: true
 
-  # 既存のデータベースサービスを使用する場合、Postgresを起動する必要はありません。
+  # 既存のデータベースサービスを使用する場合、Postgresを起動しなくても構いません。
   postgres:
     image: registry.cn-shanghai.aliyuncs.com/nocobase/postgres:16
     restart: always
@@ -93,8 +93,8 @@ services:
     depends_on:
       - mysql
     environment:
-      # アプリケーションの秘匿キー。ユーザーのトークン生成などに使用されます。
-      # APP_KEYを変更すると、古いトークンが無効になります。
+      # アプリケーションの秘密キー。ユーザーのトークン生成などに使用されます。
+      # APP_KEYを変更すると、元のトークンが無効になります。
       # 任意のランダムな文字列を使用し、外部に漏れないようにしてください。
       - APP_KEY=your-secret-key
       # データベースの種類。postgres、mysql、mariadb、sqliteをサポートしています。
@@ -151,8 +151,8 @@ services:
     depends_on:
       - mariadb
     environment:
-      # アプリケーションの秘匿キー。ユーザーのトークン生成などに使用されます。
-      # APP_KEYを変更すると、古いトークンが無効になります。
+      # アプリケーションの秘密キー。ユーザーのトークン生成などに使用されます。
+      # APP_KEYを変更すると、元のトークンが無効になります。
       # 任意のランダムな文字列を使用し、外部に漏れないようにしてください。
       - APP_KEY=your-secret-key
       # データベースの種類。postgres、mysql、mariadb、sqliteをサポートしています。
@@ -195,8 +195,8 @@ services:
 
 適切な NocoBase のバージョンを選択してください。
 
-- `latest` または `main`：現時点で最も安定したバージョンであり、このバージョンのインストールを推奨します。
-- `next`：ベータ版で、新機能が含まれています。このバージョンは完全には安定していない可能性があり、開発者やテスター向けに新機能を事前に体験したり、互換性テストを行うために使用されます。
+- `latest` または `main`：現時点で最も安定したバージョンであり、このバージョンのインストールをお勧めします。
+- `next`：内部テスト版では、新機能が含まれています。このバージョンは完全には安定していない可能性があり、開発者やテスター向けに新機能を早期に体験したり、互換性テストを行うために使用されます。
 - `1.2.4-alpha`：指定されたバージョン番号。最新のバージョンは[リリースバージョン一覧](https://hub.docker.com/r/nocobase/nocobase/tags)でご確認ください。
 
 例
@@ -219,18 +219,18 @@ services:
 
 ## 3. NocoBase のインストールと起動
 
-インストールプロセスには数分かかります。
+インストールのプロセスには数分かかります。
 
 ```bash
-# 最新のイメージを取得
+# 最新のイメージを取得する
 $ docker-compose pull
-# バックグラウンドで実行
+# バックグラウンドで実行する
 $ docker-compose up -d
-# app プロセスの状況を確認
+# app プロセスの状況を確認する
 $ docker-compose logs app
 ```
 
-## 4. NocoBase にログイン
+## 4. NocoBase のログイン
 
-ブラウザで http://localhost:13000/ を開きます。初期のアカウントは `admin@nocobase.com`、パスワードは `admin123` です。
+ブラウザで http://localhost:13000/ を開いてください。初期のアカウントは `admin@nocobase.com`、パスワードは `admin123` です。
 
