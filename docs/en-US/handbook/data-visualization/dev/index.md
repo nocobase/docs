@@ -150,7 +150,7 @@ class CustomChartsPlugin extends Plugin {
 }
 ```
 
-Refer to [ChartGroup](#chartgroup) for more details.
+Refer to [ChartGroup](#chartgroup) for more details
 
 ## Examples
 
@@ -176,7 +176,11 @@ class CustomChartsPlugin extends Plugin {
     const plugin = this.app.pm.get(DataVisualization);
 
     // Add a group of charts
-    plugin.charts.addGroup('custom', [...]);
+    plugin.charts.addGroup('custom', {
+      title: 'Custom',
+      charts: [...],
+      sort: 1
+    });
   }
 }
 ```
@@ -185,12 +189,23 @@ class CustomChartsPlugin extends Plugin {
 
 - `addGroup(name: string, charts: ChartType[])`
 
+**Types**
+
+```ts
+interface Group {
+  title: string;
+  charts: ChartType[];
+  sort?: number;
+}
+```
+
 **Details**
 
 | Parameter | Type          | Description             |
 | --------- | ------------- | ----------------------- |
-| `name`    | `string`      | Unique identifier for the chart group |
+| `name`    | `string`      | Grouped Chart Title     |
 | `charts`  | `ChartType[]` | Array of charts         |
+| `sort`    | `number`      | Optional, Grouped Chart Sorting|
 
 #### `add()`
 
@@ -224,34 +239,6 @@ class CustomChartsPlugin extends Plugin {
 | `group`    | `string`    | Unique identifier for the chart group |
 | `chart`    | `ChartType` | Chart to add            |
 
-#### `setGroup()`
-
-Set a group of charts, overriding the original set.
-
-```typescript
-import DataVisualization from '@nocobase/plugin-data-visualization'
-
-class CustomChartsPlugin extends Plugin {
-  async load() {
-    const plugin = this.app.pm.get(DataVisualization);
-    // Set a group of charts,
-    // can be used for overriding an exist group
-    plugin.charts.setGroup('custom', [...]);
-  }
-}
-```
-
-**Signature**
-
-- `setGroup(name: string, charts: ChartType[])`
-
-**Details**
-
-| Parameter | Type          | Description             |
-| --------- | ------------- | ----------------------- |
-| `name`    | `string`      | Unique identifier for the chart group |
-| `charts`  | `ChartType[]` | Array of charts         |
-
 ### Chart
 
 #### `constructor()`
@@ -262,7 +249,7 @@ Constructor to create a new `Chart` instance.
 
 - `constructor({ name, title, Component, config }: ChartProps)`
 
-**Type Definitions**
+**Types**
 
 ```ts
 export type ChartProps = {
@@ -277,18 +264,15 @@ export type FieldConfigProps = Partial<{
   title: string;
   required: boolean;
   defaultValue: any;
+  description: string;
+  options: { label: string; value: any }[];
+  componentProps: Record<string, any>;
 }>;
-
-export type ConfigProps =
-  | FieldConfigProps
-  | AnySchemaProperties
-  | (() => AnySchemaProperties);
-
-export type Config =
-  | (ConfigProps & {
-      property?: string;
-    })
-  | string;
+export type ConfigType =
+  | (FieldConfigProps & { configType?: string })
+  | ((props?: FieldConfigProps) => AnySchemaProperties)
+  | AnySchemaProperties;
+export type Config = string | ConfigType;
 ```
 
 **Details**
@@ -368,20 +352,16 @@ This corresponds to:
 You can find all predefined UI Schema options in the <a href="https://github.com/nocobase/nocobase/blob/main/packages/plugins/%40nocobase/plugin-data-visualization/src/client/chart/configs.ts" target="_blank">`/src/client/chart/config.ts`</a> file.  
 Additionally, you can add new predefined UI Schema options using the [`addConfigs()`](#addconfigs) method.
 
-#### `addConfigs()`
+#### `addConfigTypes()`
 
 Adds predefined UI Schema for the chart's visualization configuration form.
 
 ```ts
 // Add
-const booleanField = ({
-  name,
-  title,
-  defaultValue = false,
-}: FieldConfigProps) => {
+const boolean = ({ name, title, defaultValue = false }: FieldConfigProps) => {
   return {
-    [name || 'field']: {
-      'x-content': lang(title || 'Field'),
+    [name]: {
+      'x-content': lang(title),
       type: 'boolean',
       'x-decorator': 'FormItem',
       'x-component': 'Checkbox',
@@ -389,14 +369,14 @@ const booleanField = ({
     },
   };
 };
-chart.addConfigs({ booleanField });
+chart.addConfigTypes({ booleanField });
 
 // Usage
 new Chart({
   config: [
-    'booleanField',
+    'boolean',
     {
-      property: 'booleanField',
+      configType: 'boolean',
       name: 'customBooleanField',
       title: 'Custom Boolean Field',
       defaultValue: true,
@@ -407,35 +387,24 @@ new Chart({
 
 **Signature**
 
-- `addConfigs(configs: { [key: string]: (props: FieldConfigProps) => AnySchemaProperties })`
+- `addConfigTypes(configs: { [key: string]: ConfigType })`
 
-**Type Definitions**
+**Types**
 
 ```ts
-export type FieldConfigProps = Partial<{
-  name: string;
-  title: string;
-  required: boolean;
-  defaultValue: any;
-}>;
+export type ConfigType =
+  | (FieldConfigProps & { configType?: string })
+  | ((props?: FieldConfigProps) => AnySchemaProperties)
+  | AnySchemaProperties;
 ```
 
 **Details**
 
-The `addConfigs()` method accepts an object where the `key` is the unique identifier for the configuration, and the value is a function that returns a predefined UI Schema. This function takes customizable parameters and returns the corresponding UI Schema field configuration.
-
-##### FieldProps
-
-| Property       | Type      | Description        |
-| -------------- | --------- | ------------------ |
-| `name`         | `string`  | Field name         |
-| `title`        | `string`  | Field title        |
-| `required`     | `boolean` | Whether it's required |
-| `defaultValue` | `any`     | Default value      |
+`addConfigTypes()` accepts an object, where the `key` is the unique identifier of the configuration, and the value is a method that retrieves a predefined UI Schema. This method takes parameters that can be replaced and returns the corresponding UI Schema field configuration.
 
 #### `init()`
 
-Initialization of chart configuration when a chart is selected.
+This function initializes the chart configuration when a chart is selected. It defines the initial settings for the chart’s properties.
 
 **Signature**
 
@@ -452,7 +421,7 @@ init?: (
 };
 ```
 
-**Type Definitions**
+**Types**
 
 ```ts
 export type FieldOption = {
@@ -483,18 +452,18 @@ export type DimensionProps = {
 
 **Details**
 
-| Parameter          | Type             | Description                      |
-| ------------------ | ---------------- | -------------------------------- |
-| `fields`           | `FieldOption[]`  | Properties of the current data table fields |
-| `query.measures`   | `MeasureProps[]` | Configuration of measure fields  |
-| `query.dimensions` | `DimensionProps` | Configuration of dimension fields |
+| Parameter            | Type              | Description                                      |
+| -------------------- | ----------------- | ------------------------------------------------ |
+| `fields`             | `FieldOption[]`   | Contains key attributes of the fields in the current data table. |
+| `query.measures`     | `MeasureProps[]`  | Configuration details for the measure fields.    |
+| `query.dimensions`   | `DimensionProps[]`| Configuration details for the dimension fields.  |
 
 #### `infer()`
 
-Inference of initial chart configuration.
+Deriving the Initial Configuration of Charts.
 
 ```ts
-// pie chart
+// Example for a pie chart
 init(fields, { measures, dimensions }) {
   const { xField, yField } = this.infer(fields, { measures, dimensions });
   return {
@@ -523,23 +492,23 @@ infer: (fields: FieldOption[], query: {
 
 **Details**
 
-| Property        | Type               | Description        |
-| --------------- | ------------------ | ------------------ |
-| `xField`        | `FieldOption`       | Field for the x-axis |
-| `yField`        | `FieldOption`       | Field for the y-axis |
-| `seriesField`   | `FieldOption`       | Category field      |
-| `colorField`    | `FieldOption`       | Color field         |
-| `yFields`       | `FieldOption[]`     | Multiple y-axis fields |
+| Property       | Type            | Description       |
+| -------------- | --------------- | ----------------- |
+| `xField`       | `FieldOption`   | The field to be used on the x-axis. |
+| `yField`       | `FieldOption`   | The field to be used on the y-axis. |
+| `seriesField`  | `FieldOption`   | The field representing categories or series. |
+| `colorField`   | `FieldOption`   | The field used to define the color in the chart. |
+| `yFields`      | `FieldOption[]` | Multiple fields for the y-axis (used in complex charts). |
 
 #### `getProps()`
 
-Processes the chart data and chart configuration metadata into the properties needed for the chart rendering component.
+This function processes the raw chart data and chart configuration metadata and transforms them into properties required by the rendering component.
 
-**Signature**
+**signature**
 
 - `getProps({ data, general, advanced, fieldProps }: RenderProps)`
 
-**Type**
+**Types**
 
 ```ts
 export type RenderProps = {
@@ -556,24 +525,24 @@ export type RenderProps = {
 };
 ```
 
-| Property       | Type                              | Description                           |
-| -------------- | --------------------------------- | ------------------------------------- |
-| `data`         | `Record<string, any>[]`           | Raw chart data                        |
-| `general`      | `any`                             | Chart visualization form configuration |
-| `advanced`     | `any`                             | JSON configuration for the chart      |
-| `fieldProps`   | `{ [field: string]: FieldProps }` | Information on data table fields for rendering |
+| Property       | Type                              | Description                             |
+| -------------- | --------------------------------- | --------------------------------------- |
+| `data`         | `Record<string, any>[]`           | The raw data to be displayed in the chart. |
+| `general`      | `any`                             | The configuration options from the chart’s visualization form. |
+| `advanced`     | `any`                             | The advanced JSON-based configuration for the chart. |
+| `fieldProps`   | `{ [field: string]: FieldProps }` | Metadata about the fields from the data table, used for display purposes. |
 
 ##### FieldProps
 
-| Property       | Type          | Description           |
-| -------------- | ------------- | --------------------- |
-| `label`        | `string`      | Field label display    |
-| `transformer`  | `Transformer` | Data transformation function for the field |
-| `interface`    | `string`      | Field interface        |
+| Property       | Type          | Description             |
+| -------------- | ------------- | ----------------------- |
+| `label`        | `string`      | The label displayed for the field. |
+| `transformer`  | `Transformer` | A function for transforming field values. |
+| `interface`    | `string`      | The interface type of the field. |
 
 #### `getReference()`
 
-Fetches the reference information for the chart component.
+Retrieves reference documentation for the chart component, including the title and a direct link to the documentation.
 
 ```ts
 getReference() {
@@ -601,19 +570,19 @@ getReference?: () => {
 
 #### `title`
 
-- `string`. Display title for the chart.
+- `string`. The display title of the chart.
 
 #### `Component`
 
-- `React.FC<any>`. Rendering component for the chart.
+- `React.FC<any>`. The React component used to render the chart.
 
 #### `schema`
 
-- `ISchema`. UI Schema for chart visualization configuration.
+- `ISchema`. The UI Schema for the chart’s visualization configuration.
 
 #### `init()`
 
-Initialization method for chart configuration.
+This function initializes the chart configuration.
 
 **Signature**
 
@@ -632,7 +601,7 @@ init?: (
 
 #### `getProps()`
 
-Handles and retrieves properties for the chart component.
+Handles the processing and retrieval of properties for the chart component.
 
 **Signature**
 
@@ -640,7 +609,7 @@ Handles and retrieves properties for the chart component.
 
 #### `getReference()`
 
-Fetches reference document information for the chart component.
+Retrieves reference documentation for the chart component.
 
 **Signature**
 
