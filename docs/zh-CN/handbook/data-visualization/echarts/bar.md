@@ -4,13 +4,13 @@
 
 ### 1或多个度量，1个维度
 
-![](https://static-docs.nocobase.com/202410091114926.png)
+![1 or more measures, 1 dimension](https://static-docs.nocobase.com/202410091114926.png)
 
 ### 1个度量，1个轴维度，一个分类维度
 
 配置1个度量，2个维度。其中1个维度作为 Y 轴字段 (Y field), 另一个作为分类字段 (Series field).
 
-![](https://static-docs.nocobase.com/202410091117000.png)
+![1 measure, 1 axis dimension, one category dimension](https://static-docs.nocobase.com/202410091117000.png)
 
 ## 配置项
 

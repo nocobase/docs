@@ -6,7 +6,7 @@
 
 配置2个度量，1个维度。其中一个度量作为左侧 X 轴字段，另一个作为右侧 X 轴字段，
 
-![](https://static-docs.nocobase.com/202410091121686.png)
+![2 Metrics, 1 Dimension](https://static-docs.nocobase.com/202410091121686.png)
 
 ## 配置项
 

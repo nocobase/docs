@@ -1,26 +1,26 @@
-# 对比条形图
+# Diverging-bar Chart
 
-## 数据配置
+## Data Configuration
 
-### 2个度量，1个维度
+### 2 Metrics, 1 Dimension
 
-配置2个度量，1个维度。其中一个度量作为左侧 X 轴字段，另一个作为右侧 X 轴字段，
+Configure 2 metrics and 1 dimension. One metric will be assigned as the left-side X-axis field, and the other as the right-side X-axis field.
 
-![](https://static-docs.nocobase.com/202410091121686.png)
+![2 Metrics, 1 Dimension](https://static-docs.nocobase.com/202410091121686.png)
 
-## 配置项
+## Configuration Options
 
-| 配置项        | 说明                                                        |
-| ------------- | ----------------------------------------------------------- |
-| 左侧 X 轴字段 | 左侧 X 轴度量字段                                           |
-| 右侧 X 轴字段 | 右侧 X 轴度量字段                                           |
-| Y 轴字段      | 维度字段                                                    |
-| 尺寸          | 设置图表的大小，固定宽高比或者固定高度                      |
-| 浅色模式主题  | 需要在系统为浅色模式时选择才能预览                          |
-| 深色模式主题  | 需要在系统为深色模式时选择才能预览                          |
-| 显示图例      | 控制是否显示图例                                            |
-| 标签类型      | 控制标签是否显示以及显示类型                                |
-| 颜色          | 精细控制每个分类的颜色                                      |
-| Y 轴标签旋转  | 控制 Y 轴标签旋转角度，在标签比较密集时使用可以展示更多标签 |
-| 内边距        | 调整图形内边距                                              |
-| 网格线        | 控制网格线是否显示和样式                                    |
+| Option            | Description                                                                 |
+| ----------------- | --------------------------------------------------------------------------- |
+| Left X-axis Field  | Metric field for the left-side X-axis                                       |
+| Right X-axis Field | Metric field for the right-side X-axis                                      |
+| Y-axis Field       | Dimension field                                                            |
+| Size              | Set the size of the chart, either with a fixed aspect ratio or fixed height  |
+| Light Mode Theme   | Select this option to preview in the system's light mode                    |
+| Dark Mode Theme    | Select this option to preview in the system's dark mode                     |
+| Show Legend        | Controls whether to display the legend                                      |
+| Label Type         | Controls whether to show labels and their display types                     |
+| Color              | Allows fine control of the color for each category                          |
+| Y-axis Label Rotation | Controls the rotation angle of Y-axis labels, useful when labels are dense |
+| Padding            | Adjust the padding within the chart                                         |
+| Grid Lines         | Controls whether to display grid lines and their styles                     |

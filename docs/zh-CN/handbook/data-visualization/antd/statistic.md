@@ -4,7 +4,7 @@
 
 ### 1个度量
 
-![](https://static-docs.nocobase.com/202410101147166.png)
+![1 Metric](https://static-docs.nocobase.com/202410101147166.png)
 
 ## 配置项
 

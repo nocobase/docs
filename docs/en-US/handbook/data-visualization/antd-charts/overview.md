@@ -1,3 +1,4 @@
-# 概述
+# Overview
 
-使用 <a href="https://ant-design-charts.antgroup.com/" target="_blank">Ant Design Charts</a> 2.x 实现数据可视化，支持常见的基础图表类型。
+Use <a href="https://ant-design-charts.antgroup.com/" target="_blank">Ant Design Charts</a> 2.x for data visualization, supporting common basic chart types.
+

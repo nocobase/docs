@@ -1,23 +1,25 @@
-# 折线图
+# Line Chart
 
-## 数据配置
+## Data Configuration
 
-### 1个度量，1个维度
+### 1 Measure, 1 Dimension
 
-![](https://static-docs.nocobase.com/202410101109866.png)
+The line chart can be configured with one measure and one dimension, as illustrated below:
 
-### 1个度量，1个轴维度，一个分类维度
+![1 Measure, 1 Dimension](https://static-docs.nocobase.com/202410101109866.png)
 
-配置1个度量，2个维度。其中1个维度作为 X 轴字段 (X field), 另一个作为分类字段 (Series field).
+### 1 Measure, 1 Axis Dimension, One Category Dimension
 
-![](https://static-docs.nocobase.com/202410101113944.png)
+Configure one metric and two dimensions. One of the dimensions is the X-axis field (X field) and the other is the Series field (Series field).
 
-## 配置项
+![1 Measure, 1 Axis Dimension, One Category Dimension](https://static-docs.nocobase.com/202410101113944.png)
 
-| 配置项   | 说明                                   |
-| -------- | -------------------------------------- |
-| X 轴字段 | X 轴维度字段                           |
-| 分类字段 | 分类维度字段                           |
-| 尺寸     | 设置图表的大小，固定宽高比或者固定高度 |
-| 平滑曲线 | 是否平滑曲线                           |
-| 是否堆叠 | 是否叠加数据值                         |
+## Configuration Options
+
+| Configuration Option | Description                                         |
+| -------------------- | --------------------------------------------------- |
+| X-axis Field         | The dimension field that defines the X-axis         |
+| Series Field         | The dimension field that defines the categories     |
+| Size                 | Set the size of the chart, either fixed aspect ratio or fixed height |
+| Smooth Curves        | Enable or disable smooth curve rendering            |
+| Stack Data           | Whether to stack the data values on top of each other |
