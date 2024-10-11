@@ -11,8 +11,9 @@ NocoBase 备份管理器插件，提供了 NocoBase 数据库及用户上传文�
 该插件为 NocoBase 专业版内置插件，无需单独安装。请查看 <a target="_blank" href="https://www.nocobase.com/cn/commercial">商业版本</a> 了解详情。
 
 :::warning{title=注意}
+
 - 本插件是基于数据库原生客户端实现的，使用前需要在 NocoBase 服务器运行环境中安装对应数据库的客户端。
-  - [Postgres 数据库客户端安装](./installation/postgres.md)
+  - [PostgreSQL 数据库客户端安装](./installation/postgres.md)
   - [MySQL 数据库客户端安装](./installation/mysql.md)
   - [MariaDB 数据库客户端安装](./installation/mariadb.md)
 - 还原操作时，目标数据库版本应当不低于创建该备份的数据库版本。
@@ -31,6 +32,7 @@ NocoBase 备份管理器插件，提供了 NocoBase 数据库及用户上传文�
 
 支持从备份列表中还原备份、上传本地备份文件还原备份。
 以下场景下不允许执行还原操作：
+
 - 当前 NocoBase 版本低于备份文件中的 NocoBase 版本时。
 - 当前 NocoBase 数据库与备份文件中的以下配置不一致时：
   - dialect 数据库类型
@@ -44,6 +46,7 @@ NocoBase 备份管理器插件，提供了 NocoBase 数据库及用户上传文�
 #### 从备份列表中还原
 
 点击备份列表中备份项的`还原`按钮，在弹出窗口中输入备份文件加密密码，点击确认还原备份。
+
 > 未加密备份文件无需输入密码。
 
 > 若需要将备份文件还原至低版本数据库，需要开启容错模式。
@@ -53,6 +56,7 @@ NocoBase 备份管理器插件，提供了 NocoBase 数据库及用户上传文�
 #### 上传本地备份文件还原
 
 点击`从本地备份还原`按钮，在弹出窗口中选择本地备份文件，输入备份文件加密密码，点击确认还原备份。
+
 > 未加密备份文件无需输入密码。
 
 > 若需要将备份文件还原至低版本数据库，需要开启容错模式。

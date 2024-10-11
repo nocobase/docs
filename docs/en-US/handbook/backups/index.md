@@ -1,4 +1,4 @@
-# Backup manager
+# Backups Manager
 
 <PluginInfo name="backups"></PluginInfo>
 
@@ -19,7 +19,7 @@ This plugin is built into the NocoBase Professional Edition and does not require
 - During the restore operation, the version of the target database should not be lower than the version of the database that created the backup.
   :::
 
-## Instructions
+## Usage Instructions
 
 ![Main Interface](./static/main-screen.png)
 
@@ -55,7 +55,7 @@ Click the "Restore" button of the backup item in the backup list, enter the back
 
 #### Restore from local backup file
 
-Click the "Restore from local backup" button, select the local backup file in the pop-up window, enter the backup file encryption password, and click "Confirm" to restore the backup.
+Click the `Restore from local backup` button, select the local backup file in the pop-up window, enter the backup file encryption password, and click "Confirm" to restore the backup.
 
 > Leave password empty for unencrypted backup.
 
