@@ -34,7 +34,7 @@ NocoBase、MySQL、およびPostgreSQLの対照表：
 | 時間（タイムゾーン含む）   | -                         | -                  | TIME WITH TIME ZONE           |
 
 備考：
-- MySQLのTIMESTAMPデータ範囲はUTC時間 `1970-01-01 00:00:01` から `2038-01-19 03:14:07` までです。この範囲を超える場合は、DATETIMEまたはBIGINTでUnixタイムスタンプを保存することを推奨します。
+- MySQLのTIMESTAMPデータ範囲はUTC時間 `1970-01-01 00:00:01` から `2038-01-19 03:14:07` までです。この範囲を超える場合は、DATETIMEまたはBIGINTでUnixタイムスタンプを保存することをお勧めします。
 
 ## 日時ストレージの処理フロー
 

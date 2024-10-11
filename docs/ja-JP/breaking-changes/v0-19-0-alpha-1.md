@@ -28,7 +28,7 @@ export class AuthPlugin extends Plugin {
 }
 ```
 
-例3：`db.collection()`で定義されたcollectionは、`src/server/collections`ディレクトリに配置することを推奨します。
+例3：`db.collection()`で定義されたcollectionは、`src/server/collections`ディレクトリに配置することをお勧めします。
 
 ```diff
 export class AuthPlugin extends Plugin {

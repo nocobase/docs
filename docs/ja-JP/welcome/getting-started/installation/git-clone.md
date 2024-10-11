@@ -11,7 +11,7 @@
 
 ### 最新バージョン
 
-現時点で最も安定したバージョンであり、このバージョンのダウンロードを推奨します。
+現時点で最も安定したバージョンであり、このバージョンのダウンロードをお勧めします。
 
 ```bash
 git clone https://github.com/nocobase/nocobase.git -b main --depth=1 my-nocobase
