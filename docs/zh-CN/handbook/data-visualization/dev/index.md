@@ -121,7 +121,7 @@ getReference() {
 
 ## 添加图表
 
-定义好图表类以后，我们还需要将类实例添加到数据可视化插件中。在选择图表的时候，图表分组展示，默认图表分组为「内置」(Built-in).
+定义好图表类以后，我们还需要将类实例添加到数据可视化插件中。在选择图表的时候，图表分组展示。
 
 <img src="https://static-docs.nocobase.com/202404201042045.png"/>
 
@@ -135,11 +135,11 @@ class CustomChartsPlugin extends Plugin {
     const plugin = this.app.pm.get(DataVisualization);
 
     // Add a group of charts
-    plugin.charts.addGroup('custom', [...]);
-
-    // Set a group of charts,
-    // can be used for overriding an exist group
-    plugin.charts.setGroup('custom', [...]);
+    plugin.charts.addGroup('custom', {
+      title: 'Custom',
+      charts: [...],
+      sort: 1
+    });
 
     // Append a chart to an exist group
     // The name of the chart is required to be unique in a group
@@ -176,21 +176,36 @@ class CustomChartsPlugin extends Plugin {
     const plugin = this.app.pm.get(DataVisualization);
 
     // Add a group of charts
-    plugin.charts.addGroup('custom', [...]);
+    plugin.charts.addGroup('custom', {
+      title: 'Custom',
+      charts: [...],
+      sort: 1
+    });
   }
 }
 ```
 
 **签名**
 
-- `addGroup(name: string, charts: ChartType[])`
+- `addGroup(name: string, group: Group)`
+
+**类型**
+
+```ts
+interface Group {
+  title: string;
+  charts: ChartType[];
+  sort?: number;
+}
+```
 
 **详细信息**
 
-| 参数     | 类型          | 说明             |
-| -------- | ------------- | ---------------- |
-| `name`   | `string`      | 图表分组唯一标识 |
-| `charts` | `ChartType[]` | 图表数组         |
+| 属性     | 类型          | 说明               |
+| -------- | ------------- | ------------------ |
+| `title`  | `string`      | 图表分组标题       |
+| `charts` | `ChartType[]` | 图表数组           |
+| `sort`   | `number`      | 可选，图表分组排序 |
 
 #### `add()`
 
@@ -224,34 +239,6 @@ class CustomChartsPlugin extends Plugin {
 | `group` | `string`    | 图表分组唯一标识 |
 | `chart` | `ChartType` | 图表             |
 
-#### `setGroup()`
-
-设置一组图表，覆盖原有图表。
-
-```typescript
-import DataVisualization from '@nocobase/plugin-data-visualization'
-
-class CustomChartsPlugin extends Plugin {
-  async load() {
-    const plugin = this.app.pm.get(DataVisualization);
-    // Set a group of charts,
-    // can be used for overriding an exist group
-    plugin.charts.setGroup('custom', [...]);
-  }
-}
-```
-
-**签名**
-
-- `setGroup(name: string, charts: ChartType[])`
-
-**详细信息**
-
-| 参数     | 类型          | 说明             |
-| -------- | ------------- | ---------------- |
-| `name`   | `string`      | 图表分组唯一标识 |
-| `charts` | `ChartType[]` | 图表数组         |
-
 ### Chart
 
 #### `constructor()`
@@ -277,16 +264,15 @@ export type FieldConfigProps = Partial<{
   title: string;
   required: boolean;
   defaultValue: any;
+  description: string;
+  options: { label: string; value: any }[];
+  componentProps: Record<string, any>;
 }>;
-export type ConfigProps =
-  | FieldConfigProps
-  | AnySchemaProperties
-  | (() => AnySchemaProperties);
-export type Config =
-  | (ConfigProps & {
-      property?: string;
-    })
-  | string;
+export type ConfigType =
+  | (FieldConfigProps & { configType?: string })
+  | ((props?: FieldConfigProps) => AnySchemaProperties)
+  | AnySchemaProperties;
+export type Config = string | ConfigType;
 ```
 
 **详细信息**
@@ -336,12 +322,12 @@ export type Config =
 }
 ```
 
-3. 使用预定义的 UI Schema, 但是替换部分属性值，其中 `property` 为预定义 UI Schema 的标识.
+3. 使用预定义的 UI Schema, 但是替换部分属性值，其中 `configType` 为预定义 UI Schema 的标识.
 
 ```typescript
 config: [
   {
-    property: 'field',
+    configType: 'field',
     name: 'angleField',
     title: 'angleField',
     defaultValue: 'default',
@@ -366,22 +352,18 @@ config: [
 ```
 
 所有预定义的 UI Schema 可以参考 <a href="https://github.com/nocobase/nocobase/blob/main/packages/plugins/%40nocobase/plugin-data-visualization/src/client/chart/configs.ts" target="_blank">`/src/client/chart/config.ts`</a>.  
-也可以通过 [`addConfigs()`](#addconfigs) 方法增加新的预定义 UI Schema.
+也可以通过 [`addConfigTypes()`](#addconfigtypes) 方法增加新的预定义 UI Schema.
 
-#### `addConfigs()`
+#### `addConfigTypes()`
 
 添加预定义的图表可视化配置表单的 UI Schema.
 
 ```ts
 // Add
-const booleanField = ({
-  name,
-  title,
-  defaultValue = false,
-}: FieldConfigProps) => {
+const boolean = ({ name, title, defaultValue = false }: FieldConfigProps) => {
   return {
-    [name || 'field']: {
-      'x-content': lang(title || 'Field'),
+    [name]: {
+      'x-content': lang(title),
       type: 'boolean',
       'x-decorator': 'FormItem',
       'x-component': 'Checkbox',
@@ -389,14 +371,14 @@ const booleanField = ({
     },
   };
 };
-chart.addConfigs({ booleanField });
+chart.addConfigTypes({ booleanField });
 
 // Usage
 new Chart({
   config: [
-    'booleanField',
+    'boolean',
     {
-      property: 'booleanField',
+      configType: 'boolean',
       name: 'customBooleanField',
       title: 'Custom Boolean Field',
       defaultValue: true,
@@ -407,31 +389,20 @@ new Chart({
 
 **签名**
 
-- `addConfigs(configs: { [key: string]: (props: FieldConfigProps) => AnySchemaProperties })`
+- `addConfigTypes(configs: { [key: string]: ConfigType })`
 
 **类型**
 
 ```ts
-export type FieldConfigProps = Partial<{
-  name: string;
-  title: string;
-  required: boolean;
-  defaultValue: any;
-}>;
+export type ConfigType =
+  | (FieldConfigProps & { configType?: string })
+  | ((props?: FieldConfigProps) => AnySchemaProperties)
+  | AnySchemaProperties;
 ```
 
 **详细信息**
 
-`addConfigs()` 接收一个对象，`key` 为配置的唯一标识，值为获取预定义 UI Schema 的方法。该方法接收可被替换的参数，并返回相应的 UI Schema 字段配置.
-
-##### FieldProps
-
-| 属性           | 类型      | 说明     |
-| -------------- | --------- | -------- |
-| `name`         | `string`  | 字段名   |
-| `title`        | `string`  | 字段标题 |
-| `required`     | `boolean` | 是否必填 |
-| `defaultValue` | `any`     | 默认值   |
+`addConfigTypes()` 接收一个对象，`key` 为配置的唯一标识，值为获取预定义 UI Schema 的方法。该方法接收可被替换的参数，并返回相应的 UI Schema 字段配置.
 
 #### `init()`
 
