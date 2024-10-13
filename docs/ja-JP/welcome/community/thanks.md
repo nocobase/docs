@@ -1,6 +1,6 @@
 # 感謝
 
-NocoBaseは、優れた成熟したオープンソースプロダクトを利用しており、ここに心から感謝の意を表します。
+NocoBaseは、優秀で実績のあるオープンソース製品を使用しており、彼らに心から感謝している。
 
 - [Ant Design](https://ant.design/)
 - [Dnd Kit](https://dndkit.com/)

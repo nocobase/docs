@@ -1,14 +1,14 @@
-# シーケンス
+# 自動エンコード
 
 <PluginInfo name="field-sequence"></PluginInfo>
 
-## イントロダクション
+## 紹介
 
 ## フィールド設定
 
 ![20240512173752](https://static-docs.nocobase.com/20240512173752.png)
 
-## サンプル
+## 実例
 
 追加予定です。
 

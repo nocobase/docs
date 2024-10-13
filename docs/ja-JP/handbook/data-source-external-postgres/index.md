@@ -2,7 +2,7 @@
 
 <PluginInfo commercial="true" name="data-source-external-postgres"></PluginInfo>
 
-## イントロダクション
+## 紹介
 
 外部の PostgreSQL データベースをデータソースとして使用します。
 

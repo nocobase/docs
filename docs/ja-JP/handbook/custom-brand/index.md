@@ -2,7 +2,7 @@
 
 <PluginInfo commercial="true" name="custom-brand"></PluginInfo>
 
-## イントロダクション
+## 紹介
 
 デフォルトのブランド名は「NocoBase」で、主に以下の3箇所に表示されます：
 

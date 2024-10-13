@@ -2,7 +2,7 @@
 
 > 現在のテーマ機能は antd 5.x バージョンに基づいて実装されていますので、この記事を読む前に [テーマのカスタマイズ](https://ant.design/docs/react/customize-theme-ja#%E8%87%AA%E5%AE%9A%E4%B9%89%E3%83%86%E3%83%BC%E3%83%9E) に関する概念を先にお読みになることをお勧めします。
 
-## イントロダクション
+## 紹介
 
 このプラグインは、全体のフロントエンドページのスタイルを変更するために使用されます。現在、グローバル範囲の [SeedToken](https://ant.design/docs/react/customize-theme-ja#seedtoken)、[MapToken](https://ant.design/docs/react/customize-theme-ja#maptoken)、[AliasToken](https://ant.design/docs/react/customize-theme-ja#aliastoken) の編集をサポートしており、`ダークモード` と `コンパクトモード` への [切り替え](https://ant.design/docs/react/customize-theme-ja#%E4%BD%BF%E7%94%A8%E9%A2%84%E8%AE%BE%E7%AE%97%E6%B3%95) も可能です。今後、[コンポーネントレベル](https://ant.design/docs/react/customize-theme-ja#%E4%BF%AE%E6%94%B9%E7%BB%84%E4%BB%B6%E5%8F%98%E9%87%8F-component-token) のテーマカスタマイズがサポートされる可能性もあります。
 
