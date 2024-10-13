@@ -78,10 +78,10 @@ Switch to the "Settings" tab, modify the backup settings, and click `Save` to ta
 
 ### Backup Settings Description
 
-- `Scheduled backup`: When enabled, you can set automatic backups at specified times.
+- `Automatic backup`: When enable `Run automatic backup on the cron schedule`, you can set automatic backups at specified times.
 - `Maximum number of backups`: Set the maximum number of locally saved backup files. After exceeding the number, the earliest backup files will be automatically deleted.
 - `Sync backup to cloud storage`: Set the cloud storage location where the backup files are automatically uploaded after successful backup, only support cloud storage.
-- `Backup uploaded files in local storage`: Whether to include files uploaded by users to the server's local storage (storage/uploads) in the backup.
-- `Enable encryption`: Whether to enable backup file encryption and set the encryption password.
+- `Backup local storage files`: Whether to include files uploaded by users to the server's local storage (storage/uploads) in the backup.
+- `Restore password`: If a restore password is set, it must be entered when restoring the backup.
 
-> **Please keep the backup file encryption password safe. Forgetting the password will make it impossible to restore the backup file.**
+> **Please keep the restore password safe. Forgetting the password will make it impossible to restore the backup file.**
