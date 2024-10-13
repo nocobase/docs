@@ -26,11 +26,11 @@ NocoBase、MySQL、およびPostgreSQLの対照表：
 
 | **フィールドタイプ**       | **NocoBase**               | **MySQL**          | **PostgreSQL**                |
 |------------------|-----------------------------|--------------------|-------------------------------|
-| 日時（タイムゾーン含む）   | タイムゾーン付き日時      | TIMESTAMP<br/> DATETIME | TIMESTAMP WITH TIME ZONE      |
-| 日時（タイムゾーンなし）   | タイムゾーンなし日時      | DATETIME           | TIMESTAMP WITHOUT TIME ZONE   |
-| 日付（時間なし）          | 日付                      | DATE                 | DATE                          |
-| 時間                      | 時間                     | TIME                 | TIME WITHOUT TIME ZONE        |
-| Unix タイムスタンプ       | Unix タイムスタンプ       | INTEGER<br/>BIGINT   | INTEGER<br/>BIGINT              |
+| 日時（タイムゾーン含む）   | Datetime with timezone      | TIMESTAMP<br/> DATETIME | TIMESTAMP WITH TIME ZONE      |
+| 日時（タイムゾーンなし）   | Datetime without timezone      | DATETIME           | TIMESTAMP WITHOUT TIME ZONE   |
+| 日付（時間なし）          | Date                      | DATE                 | DATE                          |
+| 時間                      | Time                     | TIME                 | TIME WITHOUT TIME ZONE        |
+| Unix タイムスタンプ       | Unix timestamp       | INTEGER<br/>BIGINT   | INTEGER<br/>BIGINT              |
 | 時間（タイムゾーン含む）   | -                         | -                  | TIME WITH TIME ZONE           |
 
 備考：

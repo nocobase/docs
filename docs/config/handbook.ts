@@ -476,7 +476,7 @@ export default [
               {
                 title: 'Sequence',
                 'title.zh-CN': '自动编码',
-                'title.ja-JP': 'シーケンス',
+                'title.ja-JP': '自動エンコード',
                 link: '/handbook/field-sequence',
               },
               {

@@ -2,7 +2,7 @@
 
 <PluginInfo commercial="true" name="action-export-pro"></PluginInfo>
 
-## イントロダクション
+## 紹介
 
 :::warning
 プラグインは現在開発中です。

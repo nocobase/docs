@@ -1,35 +1,81 @@
-# 面积图
+# Area Chart
 
-## 数据配置
+## Data Configuration
 
-### 1或多个度量，1个维度
+### 1 or more measures, 1 dimension
 
-![](https://static-docs.nocobase.com/202410091149684.png)
+![1 or more measures, 1 dimension](https://static-docs.nocobase.com/202410091149684.png)
 
-### 1个度量，1个轴维度，一个分类维度
+### 1 measure, 1 axis dimension, 1 category dimension
 
-配置1个度量，2个维度。其中1个维度作为 X 轴字段 (X field), 另一个作为分类字段 (Series field).
+Configure 1 measure and 2 dimensions. One dimension will serve as the X-axis field, and the other will be used as the series (category) field.
 
-![](https://static-docs.nocobase.com/202410091153441.png)
+![1 measure, 1 axis dimension, 1 category dimension](https://static-docs.nocobase.com/202410091153441.png)
 
-## 配置项
+## Configuration Options
 
-| 配置项                     | 说明                                                        |
-| -------------------------- | ----------------------------------------------------------- |
-| X 轴字段                   | X 轴维度字段                                                |
-| 分类字段                   | 分类维度字段                                                |
-| 尺寸                       | 设置图表的大小，固定宽高比或者固定高度                      |
-| 浅色模式主题               | 需要在系统为浅色模式时选择才能预览                          |
-| 深色模式主题               | 需要在系统为深色模式时选择才能预览                          |
-| 显示图例                   | 控制是否显示图例                                            |
-| 图例方向                   | 控制图例显示方向，水平或垂直                                |
-| 图例位置（左，下，右，上） | 控制图例相对位置                                            |
-| 标签类型                   | 控制标签是否显示以及显示类型                                |
-| 平滑曲线                   | 是否平滑曲线                                                |
-| 是否堆叠                   | 是否叠加数据值                                              |
-| X 轴标题                   | 控制 X 轴标题显示位置                                       |
-| Y 轴标题                   | 控制 Y 轴标题显示位置                                       |
-| X 轴标签旋转               | 控制 X 轴标签旋转角度，在标签比较密集时使用可以展示更多标签 |
-| 内边距                     | 调整图形内边距                                              |
-| 网格线                     | 控制网格线是否显示和样式                                    |
-| 标记线                     | 添加标记线，设置标题、值和颜色                              |
+| Option                          | Description                                                                 |
+| ------------------------------- | --------------------------------------------------------------------------- |
+| X-axis Field                    | The dimension field for the X-axis                                           |
+| Category Field                  | The dimension field used for categorization                                  |
+| Size                            | Define the chart size, either by fixed aspect ratio or fixed height          |
+| Light Mode Theme                | Select this option to preview when the system is in light mode               |
+| Dark Mode Theme                 | Select this option to preview when the system is in dark mode                |
+| Show Legend                     | Toggle the display of the legend                                             |
+| Legend Direction                | Choose the direction of the legend display, either horizontal or vertical    |
+| Legend Position (Left, Bottom, Right, Top) | Define the relative position of the legend                          |
+| Label Type                      | Control the visibility and type of labels                                    |
+| Smooth Curve                    | Enable or disable the smoothing of curves                                    |
+| Stack Data                      | Enable or disable data stacking                                              |
+| X-axis Title                    | Control the display position of the X-axis title                             |
+| Y-axis Title                    | Control the display position of the Y-axis title                             |
+| X-axis Label Rotation           | Set the rotation angle of X-axis labels, helpful for displaying more labels when they are dense |
+| Padding                         | Adjust the internal padding of the chart                                     |
+| Grid Lines                      | Configure the display and style of grid lines                                |
+| Marker Line                     | Add marker lines with custom title, value, and color                         |
+
+---
+
+Now, I will move on to the final refinement stage.
+
+### Refinement Stage (Refinement Expert)
+
+For this final pass, I've refined the text to enhance readability and ensure clarity, while keeping it professional and technically accurate.
+
+---
+
+### Area Chart
+
+#### Data Configuration
+
+##### 1 or More Measures, 1 Dimension
+
+![Image](https://static-docs.nocobase.com/202410091149684.png)
+
+##### 1 Measure, 1 Axis Dimension, 1 Category Dimension
+
+This setup includes 1 measure and 2 dimensions. One dimension acts as the X-axis field, while the other is used as the series (category) field.
+
+![Image](https://static-docs.nocobase.com/202410091153441.png)
+
+#### Configuration Options
+
+| Option                          | Description                                                                 |
+| ------------------------------- | --------------------------------------------------------------------------- |
+| X-axis Field                    | Field used to define the X-axis dimension                                    |
+| Category Field                  | Field used to categorize data                                                |
+| Size                            | Specify chart size, either by fixed aspect ratio or fixed height             |
+| Light Mode Theme                | Select for preview in light mode                                             |
+| Dark Mode Theme                 | Select for preview in dark mode                                              |
+| Show Legend                     | Toggle the visibility of the legend                                          |
+| Legend Direction                | Set legend direction (horizontal or vertical)                                |
+| Legend Position (Left, Bottom, Right, Top) | Set the position of the legend relative to the chart             |
+| Label Type                      | Manage the visibility and format of the labels                               |
+| Smooth Curve                    | Enable smoothing of the curve for a more polished look                       |
+| Stack Data                      | Option to stack values for cumulative data visualization                     |
+| X-axis Title                    | Adjust the visibility and position of the X-axis title                       |
+| Y-axis Title                    | Adjust the visibility and position of the Y-axis title                       |
+| X-axis Label Rotation           | Rotate X-axis labels to optimize space, useful when labels are densely packed |
+| Padding                         | Customize the inner padding of the chart                                     |
+| Grid Lines                      | Define the visibility and style of grid lines                                |
+| Marker Line                     | Add marker lines, and set their title, value, and color                      |

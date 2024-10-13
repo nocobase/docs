@@ -1,13 +1,13 @@
-# 双轴图
+# Dual-Axis Chart
 
-## 数据配置
+## Data Configuration
 
-### 2个度量，1个维度
+### 2 metrics, 1 dimension
 
 ![](https://static-docs.nocobase.com/202410101132724.png)
 
-## 配置项
+#### Configuration Options
 
-| 配置项 | 说明                                   |
-| ------ | -------------------------------------- |
-| 尺寸   | 设置图表的大小，固定宽高比或者固定高度 |
+| Option  | Description                                              |
+| ------- | -------------------------------------------------------- |
+| Size    | Sets the chart size, either with a fixed aspect ratio or a fixed height |

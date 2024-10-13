@@ -6,7 +6,7 @@
 
 ![img_v3_02b4_9b80a4a0-6d9b-4e53-a544-f92c17d81d2g](https://static-docs.nocobase.com/img_v3_02b4_9b80a4a0-6d9b-4e53-a544-f92c17d81d2g.jpg)
 
-## サンプル説明
+## 実例
 
 この例では、[データブロックの追加](/plugin-samples/schema-initializer/data-block) を基に、`Details` ブロックに類似した効果を実現します。`Configure actions` を使用してボタンを設定します。
 

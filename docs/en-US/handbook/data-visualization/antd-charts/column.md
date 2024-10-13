@@ -1,24 +1,24 @@
-# 柱状图
+# Column Chart
 
-## 数据配置
+## Data Configuration
 
-### 1个度量，1个维度
+### 1 Measure, 1 Dimension
 
-![](https://static-docs.nocobase.com/202410101121827.png)
+![Bar Chart Example](https://static-docs.nocobase.com/202410101121827.png)
 
-### 1个度量，1个轴维度，一个分类维度
+### 1 Measure, 1 Axis Dimension, 1 Category Dimension
 
-配置1个度量，2个维度。其中1个维度作为 X 轴字段 (X field), 另一个作为分类字段 (Series field). X 轴字段和分类字段可以相同。
+Configure 1 measure and 2 dimensions, where one dimension is used as the X-axis field (X field) and the other as the category field (Series field). The X-axis field and the category field can be the same.
 
-![](https://static-docs.nocobase.com/202410101122347.png)
+![Bar Chart with Category](https://static-docs.nocobase.com/202410101122347.png)
 
-## 配置项
+## Configuration Options
 
-| 配置项     | 说明                                                                          |
-| ---------- | ----------------------------------------------------------------------------- |
-| X 轴字段   | X 轴维度字段                                                                  |
-| 分类字段   | 分类维度字段                                                                  |
-| 尺寸       | 设置图表的大小，固定宽高比或者固定高度                                        |
-| 是否分组   | 是否分组显示<br />![](https://static-docs.nocobase.com/202410101125056.png)   |
-| 是否堆叠   | 是否堆叠显示<br />![](https://static-docs.nocobase.com/202410101125891.png)   |
-| 是否百分比 | 是否百分比显示<br />![](https://static-docs.nocobase.com/202410101126148.png) |
+| Option           | Description                                                                 |
+| ---------------- | --------------------------------------------------------------------------- |
+| X-axis Field     | The dimension field for the X-axis                                          |
+| Category Field   | The dimension field for categorization                                      |
+| Size             | Set the size of the chart, either with a fixed aspect ratio or fixed height |
+| Grouped Display  | Toggle grouped display<br />![Grouped Display](https://static-docs.nocobase.com/202410101125056.png) |
+| Stacked Display  | Toggle stacked display<br />![Stacked Display](https://static-docs.nocobase.com/202410101125891.png) |
+| Percentage Display | Toggle percentage display<br />![Percentage Display](https://static-docs.nocobase.com/202410101126148.png) |

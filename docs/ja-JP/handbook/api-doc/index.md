@@ -2,7 +2,7 @@
 
 <PluginInfo name="api-doc"></PluginInfo>
 
-## イントロダクション
+## 紹介
 
 Swaggerに基づいてNocoBase HTTP APIドキュメントを生成します。
 

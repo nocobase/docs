@@ -1,24 +1,24 @@
-# 条形图
+# Bar Chart
 
-## 数据配置
+## Data Configuration
 
-### 1个度量，1个维度
+### 1 Metric, 1 Dimension
 
-![](https://static-docs.nocobase.com/202410101129463.png)
+![1 Metric, 1 Dimension](https://static-docs.nocobase.com/202410101129463.png)
 
-### 1个度量，1个轴维度，一个分类维度
+### 1 Metric, 1 Axis Dimension, 1 Category Dimension
 
-配置1个度量，2个维度。其中1个维度作为 X 轴字段 (X field), 另一个作为分类字段 (Series field). X 轴字段和分类字段可以相同。
+In this setup, configure one metric and two dimensions. One dimension serves as the X-axis field (X field), while the other acts as the category field (Series field). The X-axis field and the category field can be the same.
 
-![](https://static-docs.nocobase.com/202410101130607.png)
+![1 Metric, 1 Axis Dimension, 1 Category Dimension](https://static-docs.nocobase.com/202410101130607.png)
 
-## 配置项
+#### Configuration Options
 
-| 配置项     | 说明                                   |
-| ---------- | -------------------------------------- |
-| X 轴字段   | X 轴维度字段                           |
-| 分类字段   | 分类维度字段                           |
-| 尺寸       | 设置图表的大小，固定宽高比或者固定高度 |
-| 是否分组   | 是否分组显示                           |
-| 是否堆叠   | 是否堆叠显示                           |
-| 是否百分比 | 是否百分比显示                         |
+| Option           | Description                                              |
+| ---------------- | -------------------------------------------------------- |
+| X-axis Field     | The field used for the X-axis dimension                 |
+| Category Field   | The field used for the category dimension               |
+| Size             | Sets the chart size, either fixed aspect ratio or height|
+| Grouping         | Specifies whether to display grouped bars               |
+| Stacking         | Specifies whether to stack the bars                     |
+| Percentage View  | Specifies whether percentage display             |

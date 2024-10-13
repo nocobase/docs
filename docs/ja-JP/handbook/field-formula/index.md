@@ -2,7 +2,7 @@
 
 <PluginInfo name="field-formula"></PluginInfo>
 
-## イントロダクション
+## 紹介
 
 ## フィールド設定
 

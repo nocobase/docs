@@ -23,7 +23,7 @@ NocoBaseは[データソース管理プラグイン](/handbook/data-source-manag
 
 ![20240512090751](https://static-docs.nocobase.com/20240512090751.png)
 
-**ER図に似た可視化インターフェース**：ユーザーとビジネスニーズに基づいてエンティティとその関係を抽出するためのツールです。データモデルを説明するための直感的で理解しやすい方法を提供します。ER図を通じて、システム内の主要なデータエンティティとそれらの関係をより明確に理解できます。
+**ERライクなダイアグラムのための視覚化インターフェイス**：ユーザーとビジネスニーズに基づいてエンティティとその関係を抽出するためのツールです。直感的で理解しやすいデータモデルの記述方法を提供します。ER図を通じて、システム内の主要なデータエンティティとそれらの関係をより明確に理解できます。
 
 ![20240512091042](https://static-docs.nocobase.com/20240410075906.png)
 
@@ -31,15 +31,15 @@ NocoBaseは[データソース管理プラグイン](/handbook/data-source-manag
 
 | データテーブル | 説明 |
 | - | - |
-| [一般テーブル](/handbook/data-source-main/general-collection) | 一般的なシステムフィールドを内蔵しています。 |
-| [継承テーブル](/handbook/data-source-main/inheritance-collection) | 親テーブルを作成し、その親テーブルから子テーブルを派生させます。子テーブルは親テーブルのフィールドを継承し、独自のフィールドを定義することも可能です。 |
-| [ツリーテーブル](/handbook/collection-tree) | ツリー構造のテーブルで、現在は隣接リストデザインのみをサポートしています。 |
-| [カレンダーテーブル](/handbook/calendar/calendar-collection) | カレンダー関連のイベントテーブルを作成するために使用します。 |
-| [ファイルテーブル](/handbook/file-manager/file-collection) | ファイルストレージの管理に使用します。 |
+| [一般コレクション](/handbook/data-source-main/general-collection) | 一般的なシステムフィールドを内蔵しています。 |
+| [継承コレクション](/handbook/data-source-main/inheritance-collection) | 親テーブルを作成し、その親テーブルから子テーブルを派生させます。子テーブルは親テーブルのフィールドを継承し、独自のフィールドを定義することも可能です。 |
+| [ツリーコレクション](/handbook/collection-tree) | ツリー構造のテーブルで、現在は隣接リストデザインのみをサポートしています。 |
+| [カレンダーコレクション](/handbook/calendar/calendar-collection) | カレンダー関連のイベントテーブルを作成するために使用します。 |
+| [ファイルコレクション](/handbook/file-manager/file-collection) | ファイルストレージの管理に使用します。 |
 | [コメントテーブル](/handbook/comments/comment-collection) | データに対するコメントやフィードバックを保存するために使用します。 |
-| [式テーブル](/handbook/workflow-dynamic-calculation/expression) | ワークフローの動的式シナリオに使用します。 |
-| [SQLテーブル](/handbook/collection-sql) | 実際のデータベーステーブルではなく、SQLクエリを迅速に構造化して表示します。 |
-| [ビューテーブル](/handbook/collection-view) | 既存のデータベースビューを接続します。 |
+| [式コレクション](/handbook/workflow-dynamic-calculation/expression) | ワークフローの動的式シナリオに使用します。 |
+| [SQLコレクション](/handbook/collection-sql) | 実際のデータベーステーブルではなく、SQLクエリを迅速に構造化して表示します。 |
+| [ビューコレクション](/handbook/collection-view) | 既存のデータベースビューを接続します。 |
 | [外部データテーブル（FDW）](/handbook/collection-fdw) | データベースのFDW技術を基にしてリモートデータテーブルを接続します。 |
 
 より詳しい内容は「[データ表 / 概要](/handbook/data-modeling/collection)」の章をご覧ください。
@@ -48,5 +48,5 @@ NocoBaseは[データソース管理プラグイン](/handbook/data-source-manag
 
 ![20240512110352](https://static-docs.nocobase.com/20240512110352.png)
 
-詳細については「[コレクションフィールド / 概要](/handbook/data-modeling/collection-fields)」の章をご覧ください。
+詳細については「[データテーブルのフィールド／概要](/handbook/data-modeling/collection-fields)」の章をご覧ください。
 

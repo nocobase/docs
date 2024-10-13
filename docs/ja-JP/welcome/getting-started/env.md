@@ -25,14 +25,6 @@ https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 APP_ENV=production
 ```
 
-### APP_HOST
-
-アプリケーションホストの設定です。デフォルト値は `0.0.0.0` です。
-
-```bash
-APP_HOST=192.168.3.154
-```
-
 ### APP_PORT
 
 アプリケーションポートの設定です。デフォルト値は `13000` です。
@@ -46,7 +38,7 @@ APP_PORT=13000
 アプリケーションのキーで、ユーザートークンの生成に使用されます。自分のアプリケーションのキーに変更し、外部に漏れないようにしてください。
 
 :::warning
-APP_KEYを変更すると、古いトークンも無効になります。
+`APP_KEY` を変更すると、元のトークンも無効になります。
 :::
 
 ```bash
@@ -415,7 +407,7 @@ yarn cross-env \
   INIT_APP_LANG=zh-CN \
   INIT_ROOT_EMAIL=demo@nocobase.com \
   INIT_ROOT_PASSWORD=admin123 \
-  INIT_ROOT_NICKNAME="スーパ管理者" \
+  INIT_ROOT_NICKNAME="Super Admin" \
   nocobase install
 ```
 

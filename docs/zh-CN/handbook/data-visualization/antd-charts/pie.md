@@ -4,7 +4,7 @@
 
 ### 1个度量，1个维度
 
-![](https://static-docs.nocobase.com/202410101131823.png)
+![1 Metric, 1 Dimension](https://static-docs.nocobase.com/202410101131823.png)
 
 ## 配置项
 

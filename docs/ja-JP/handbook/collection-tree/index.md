@@ -1,4 +1,4 @@
-# ツリーテーブル
+# ツリーコレクション
 
 <PluginInfo name="collection-tree"></PluginInfo>
 

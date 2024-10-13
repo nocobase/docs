@@ -2,7 +2,7 @@
 
 <PluginInfo name="system-settings"></PluginInfo>
 
-## イントロダクション
+## 紹介
 システムのグローバル情報を設定します。例えば、システム名、メインLOGO、使用する言語などを指定できます。
 
 ## 使用マニュアル

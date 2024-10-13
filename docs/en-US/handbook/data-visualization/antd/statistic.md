@@ -1,13 +1,13 @@
-# 统计数值
+# Statistical Values
 
-## 数据配置
+## Data Configuration
 
-### 1个度量
+### 1 Metric
 
-![](https://static-docs.nocobase.com/202410101147166.png)
+![1 Metric](https://static-docs.nocobase.com/202410101147166.png)
 
-## 配置项
+## Configuration Options
 
-| 配置项 | 说明                 |
-| ------ | -------------------- |
-| 链接   | 固定链接，点击可跳转 |
+| Configuration Item | Description                      |
+| ------------------ | -------------------------------- |
+| Link               | Fixed link, clickable for redirection | 

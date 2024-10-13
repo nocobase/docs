@@ -1,14 +1,14 @@
-# 中国地域
+# 中国の行政区
 
 <PluginInfo name="field-china-region"></PluginInfo>
 
-## イントロダクション
+## 紹介
 
 ## フィールド設定
 
 ![20240512180305](https://static-docs.nocobase.com/20240512180305.png)
 
-## サンプル
+## 実例
 
 追加予定です。
 
