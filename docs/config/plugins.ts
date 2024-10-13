@@ -75,7 +75,7 @@ export default [
           {
             title: 'China region',
             'title.zh-CN': '中国行政区',
-            'title.ja-JP': '中国地域',
+            'title.ja-JP': '中国の行政区',
             subTitle: '@nocobase/plugin-china-region',
             link: '/plugins/china-region',
           },
@@ -89,7 +89,7 @@ export default [
           {
             title: 'Sequence field',
             'title.zh-CN': '自动编码',
-            'title.ja-JP': 'シーケンスフィールド',
+            'title.ja-JP': '自動エンコード',
             subTitle: '@nocobase/plugin-sequence-field',
             link: '/plugins/sequence-field',
           },

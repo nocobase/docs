@@ -2,7 +2,7 @@
 
 <PluginInfo name="graph-collection-manager"></PluginInfo>
 
-## イントロダクション
+## 紹介
 
 ER図に似たツールで、現在は主データベースのみをサポートしています。
 

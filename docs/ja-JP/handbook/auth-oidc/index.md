@@ -2,7 +2,7 @@
 
 <PluginInfo commercial="true" name="auth-oidc"></PluginInfo>
 
-## イントロダクション
+## 紹介
 
 認証：OIDCプラグインは、OIDC (OpenID Connect)プロトコル標準に従い、認可コードフロー (Authorization Code Flow)を使用して、ユーザーが第三者のアイデンティティプロバイダー (IdP)が提供するアカウントでNocoBaseにログインできるようにします。
 

@@ -2,7 +2,7 @@
 
 <PluginInfo name="block-iframe"></PluginInfo>
 
-## イントロダクション
+## 紹介
 Iframe ブロックは、外部のウェブページやコンテンツを現在のページに埋め込むことを可能にします。
 
 ## インストール

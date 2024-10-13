@@ -2,7 +2,7 @@
 
 <PluginInfo commercial="true" name="app-switching"></PluginInfo>
 
-## イントロダクション
+## 紹介
 
 :::warning
 アプリ切り替えプラグインは現在開発中で、まだリリースされていません。

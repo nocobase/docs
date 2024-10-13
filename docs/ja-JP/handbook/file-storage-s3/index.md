@@ -2,7 +2,7 @@
 
 <PluginInfo name="file-storage-s3"></PluginInfo>
 
-## イントロダクション
+## 紹介
 
 ## ハンドブック
 

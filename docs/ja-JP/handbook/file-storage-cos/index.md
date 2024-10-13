@@ -2,7 +2,7 @@
 
 <PluginInfo name="file-storage-cos"></PluginInfo>
 
-## イントロダクション
+## 紹介
 
 ## ユーザーマニュアル
 
