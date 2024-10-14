@@ -14,7 +14,7 @@
 interface CollectionOptions {
   name: string;
   title?: string;
-  // ツリーストラクチャーテーブル、TreeRepository
+  // 木構造テーブル、TreeRepository
   tree?:
     | 'adjacency-list'
     | 'closure-table'

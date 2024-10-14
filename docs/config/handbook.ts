@@ -176,7 +176,7 @@ export default [
           {
             title: 'Tree collection',
             'title.zh-CN': '树表',
-            'title.ja-JP': 'ツリーコレクション',
+            'title.ja-JP': '木構造コレクション',
             link: '/handbook/collection-tree',
           },
           {
@@ -711,7 +711,7 @@ export default [
               {
                 title: 'Tree',
                 'title.zh-CN': '树',
-                'title.ja-JP': 'ツリー',
+                'title.ja-JP': '木構造',
                 link: '/handbook/block-tree',
               },
             ],
