@@ -48,7 +48,7 @@ interface CollectionOptions {
   updatedAt?: boolean;
   /** ソート可能 */
   sortable?: boolean;
-  /** ツリー構造 */
+  /** 木構造 */
   tree?: string;
   /** ログ */
   logging?: boolean;

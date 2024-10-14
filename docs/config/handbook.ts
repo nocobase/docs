@@ -176,7 +176,7 @@ export default [
           {
             title: 'Tree collection',
             'title.zh-CN': '树表',
-            'title.ja-JP': 'ツリーコレクション',
+            'title.ja-JP': '木構造コレクション',
             link: '/handbook/collection-tree',
           },
           {
@@ -189,7 +189,7 @@ export default [
             title: 'Expression collection',
             'title.zh-CN': '表达式表',
             'title.ja-JP': '式コレクション',
-            link: '/handbook/workflow-dynamic-calculation/collection',
+            link: '/handbook/collection-expression/collection',
           },
           {
             title: 'SQL collection',
@@ -366,7 +366,7 @@ export default [
                 title: 'Attachment',
                 'title.zh-CN': '附件',
                 'title.ja-JP': '添付ファイル',
-                link: '/handbook/file-manager/field-attachment',
+                link: '/handbook/data-modeling/collection-fields/media/field-attachment',
               },
             ],
           },
@@ -711,7 +711,7 @@ export default [
               {
                 title: 'Tree',
                 'title.zh-CN': '树',
-                'title.ja-JP': 'ツリー',
+                'title.ja-JP': '木構造',
                 link: '/handbook/block-tree',
               },
             ],
