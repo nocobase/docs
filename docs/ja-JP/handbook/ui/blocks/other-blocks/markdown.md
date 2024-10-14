@@ -26,9 +26,21 @@ Handlebars は JavaScript テンプレートエンジンで、条件判断（{{#
 
 ![20240817175501](https://static-docs.nocobase.com/20240817175501.png)
 
+```javascript
+<h3>current role is : {{$nRole}}</h3>
+ role list is
+<ul>
+ {{#each $user.roles}}
+   <li>{{this.name}}</li>
+  {{/each}}
+ </ul>
+```
+
 <a href="https://handlebarsjs.com/guide/builtin-helpers" target="_blank">Handlebars 構文リファレンス</a>
 
 ### 一般的なヘルパー
+
+より高度な機能はヘルパーを通して利用可能であり、以下はビルトインされた一般的なヘルパーのリストです。より多くの組み込みヘルパーは、<a href="https://www.npmjs.com/package/@budibase/handlebars-helpers#helpers" target="_blank">Handlebars ヘルパー</a>に参考してください。
 
 #### `dateFormat`
 
@@ -93,9 +105,6 @@ Handlebars は JavaScript テンプレートエンジンで、条件判断（{{#
 <p>{{lowerCase $user.nickname }}</p>
 <p>{{upperCase $user.nickname }}</p>
 ```
-
-より多くの組み込みヘルパーについては
-<a href="https://www.npmjs.com/package/@budibase/handlebars-helpers#helpers" target="_blank">Handlebars ヘルパー</a>を参照してください。
 
 ## 変数の使用
 
