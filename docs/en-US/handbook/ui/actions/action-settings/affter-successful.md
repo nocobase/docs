@@ -8,6 +8,6 @@ The After successful submission enables customization of the response behavior u
 
 ![20241012125623](https://static-docs.nocobase.com/20241012125623.png)
 
-- Stay on the current popup or page
-- Return to the previous popup or page（default）
-- Redirect to
+- Stay on the current popup or page: After the operation is successful, the pop-up window or route is not closed
+- Return to the previous popup or page(default): Close the popup window after the operation is successful
+- Redirect to: After the operation succeeds, the route is switched to the specified route
