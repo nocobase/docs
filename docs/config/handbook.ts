@@ -1739,6 +1739,7 @@ export default [
               '/handbook/workflow/nodes/end',
               '/handbook/workflow/nodes/loop',
               '/handbook/workflow/nodes/parallel',
+              '/handbook/workflow/nodes/variable',
             ],
           },
           {
@@ -1782,11 +1783,10 @@ export default [
             'title.ja-JP': '拡張タイプ',
             type: 'group',
             children: [
-              '/handbook/workflow/nodes/request',
-              '/handbook/workflow/nodes/dynamic-calculation',
               '/handbook/workflow/nodes/json-query',
+              '/handbook/workflow/nodes/script',
+              '/handbook/workflow/nodes/request',
               '/handbook/workflow/nodes/response-message',
-              '/handbook/workflow/nodes/variable',
             ],
           },
         ],
@@ -1941,6 +1941,12 @@ export default [
             'title.ja-JP': 'レスポンスメッセージ',
             subTitle: '@nocobase/plugin-workflow-response-message',
             link: '/handbook/workflow-response-message',
+          },
+          {
+            title: 'Script',
+            'title.zh-CN': '脚本',
+            subTitle: '@nocobase/plugin-workflow-script',
+            link: '/handbook/workflow-script',
           },
           {
             title: 'SQL action',
