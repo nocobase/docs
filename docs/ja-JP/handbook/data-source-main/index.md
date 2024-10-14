@@ -18,7 +18,7 @@ NocoBase のマスターデータベースは、システムテーブルのデ�
 
 - [一般コレクション](/handbook/data-source-main/general-collection)：よく使われるシステムフィールドが内蔵されています。
 - [継承コレクション](/handbook/data-source-main/inheritance-collection)：親テーブルを作成し、その親テーブルから子テーブルを派生させることが可能です。子テーブルは親テーブルの構造を継承し、自分の列を定義できます。
-- [ツリーコレクション](/handbook/collection-tree)：ツリー構造のテーブルで、現在は隣接リスト設計のみをサポートしています。
+- [木構造コレクション](/handbook/collection-tree)：木構造のテーブルで、現在は隣接リスト設計のみをサポートしています。
 - [カレンダーコレクション](/handbook/calendar/calendar-collection)：カレンダー関連のイベントテーブルを作成するために使用します。
 - [ファイルコレクション](/handbook/file-manager/file-collection)：ファイルストレージの管理に使用されます。
 - [式コレクション](/handbook/workflow-dynamic-calculation/expression)：ワークフローの動的式シナリオに利用されます。
