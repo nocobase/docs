@@ -4,13 +4,13 @@
 
 ### テレメトリ
 
-- 開発ドキュメント：[テレメトリ開発ドキュメント](https://docs-cn.nocobase.com/development/server/telemetry)
-- コアAPI：[テレメトリAPI](https://docs-cn.nocobase.com/api/telemetry/telemetry)
-- Prometheusプラグイン：[Prometheusプラグイン](https://docs-cn.nocobase.com/plugins/telemetry-prometheus)
+- 開発ドキュメント：[テレメトリ開発ドキュメント](https://docs-jp.nocobase.com/development/server/telemetry)
+- コアAPI：[テレメトリAPI](https://docs-jp.nocobase.com/api/telemetry/telemetry)
+- Prometheusプラグイン：[Prometheusプラグイン](https://docs-jp.nocobase.com/plugins/telemetry-prometheus)
 
 ### アプリのバックアップとリストア
 
-- プラグインドキュメント：[バックアップとリストアプラグイン](https://docs-cn.nocobase.com/plugins/backup-restore)
+- プラグインドキュメント：[バックアップとリストアプラグイン](https://docs-jp.nocobase.com/plugins/backup-restore)
 
 ## コア最適化
 

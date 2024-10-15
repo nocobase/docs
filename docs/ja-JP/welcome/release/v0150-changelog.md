@@ -147,7 +147,7 @@ navigate(`${basePath}/1`);
 navigate(`${basePath}/2`);
 ```
 
-詳細については、[プラグイン設定ページ](https://docs-cn.nocobase.com/development/client/plugin-settings)をご参照ください。
+詳細については、[プラグイン設定ページ](https://docs-jp.nocobase.com/development/client/plugin-settings)をご参照ください。
 
 ## 更新履歴
 

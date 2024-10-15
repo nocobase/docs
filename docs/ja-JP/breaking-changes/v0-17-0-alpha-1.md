@@ -43,7 +43,7 @@
 関連文書の参照
 
 - [プラグイン開発 / Schema 初期化器](/development/client/ui-schema/initializer)
-- [API 文書 / SchemaInitializer](https://client.docs-cn.nocobase.com/core/ui-schema/schema-component)
+- [API 文書 / SchemaInitializer](https://client.docs-jp.nocobase.com/core/ui-schema/schema-component)
 
 ### 既存の初期化器に項目を追加する
 
@@ -90,7 +90,7 @@ class MyPlugin extends Plugin {
 詳細なドキュメントは以下を参照してください。
 
 - [プラグイン開発 / スキーマ初期化子 / 既存の初期化子に項目を追加する](/development/client/ui-schema/initializer)
-- [API ドキュメント / SchemaInitializer / 組み込みコンポーネントとタイプ](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer)
+- [API ドキュメント / SchemaInitializer / 組み込みコンポーネントとタイプ](https://client.docs.nocobase.com/core/ui-schema/schema-initializer)
 
 ### 新しい初期化子をアプリに追加する
 
@@ -119,7 +119,7 @@ class MyPlugin extends Plugin {
 詳細なドキュメントは以下を参照してください。
 
 - [プラグイン開発 / スキーマ初期化子 / 新しい初期化子を追加する](/development/client/ui-schema/initializer)
-- [API ドキュメント / SchemaInitializerManager / schemaInitializerManager.addItem()](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer-manager)
+- [API ドキュメント / SchemaInitializerManager / schemaInitializerManager.addItem()](https://client.docs.nocobase.com/core/ui-schema/schema-initializer-manager)
 
 ### 新しい初期化子を追加する
 
@@ -233,7 +233,7 @@ const bulkEditFormItemInitializers = new SchemaInitializer({
 詳細なドキュメントは以下を参照してください。
 
 - [プラグイン開発 / スキーマ初期化器 / 新しい初期化子を追加する](/development/client/ui-schema/initializer)
-- [API ドキュメント / SchemaInitializer / new SchemaInitializer(options)](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer)
+- [API ドキュメント / SchemaInitializer / new SchemaInitializer(options)](https://client.docs.nocobase.com/core/ui-schema/schema-initializer)
 
 ### Item の定義と実装
 
@@ -274,7 +274,7 @@ const XXXSchemaInitializerItem = (props) => {
 
 詳細なドキュメントを参照してください。
 
-- [API ドキュメント / SchemaInitializer / 組み込みコンポーネントとタイプ](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer)
+- [API ドキュメント / SchemaInitializer / 組み込みコンポーネントとタイプ](https://client.docs.nocobase.com/core/ui-schema/schema-initializer)
 
 ## SchemaSettings の変更点
 
@@ -304,9 +304,9 @@ const XXXSchemaInitializerItem = (props) => {
 
 - [プラグイン開発 / SchemaSettings 設定器](/development/client/ui-schema/initializer)
 - [プラグイン開発 / SchemaToolbar ツールバー](/development/client/ui-schema/initializer)
-- [API 文書 / SchemaSettings](https://client.docs-cn.nocobase.com/core/ui-schema/schema-component)
-- [API 文書 / SchemaSettingsManager](https://client.docs-cn.nocobase.com/core/ui-schema/schema-component)
-- [API 文書 / SchemaToolbar](https://client.docs-cn.nocobase.com/core/ui-schema/schema-component)
+- [API 文書 / SchemaSettings](https://client.docs.nocobase.com/core/ui-schema/schema-component)
+- [API 文書 / SchemaSettingsManager](https://client.docs.nocobase.com/core/ui-schema/schema-component)
+- [API 文書 / SchemaToolbar](https://client.docs.nocobase.com/core/ui-schema/schema-component)
 
 ### 設定器の定義と実装
 
@@ -435,8 +435,8 @@ function EditBlockTitle(props) {
 
 - [プラグイン開発 / SchemaSettings セッター / Schemaの設定を実現する方法](/development/client/ui-schema/settings)
 - [プラグイン開発 / Designable デザイナー](/development/client/ui-schema/designable)
-- [API 参照 / SchemaSettings / 内蔵コンポーネントとタイプ](https://client.docs-cn.nocobase.com/core/ui-schema/schema-settings)
-- [API 参照 / Designable](https://client.docs-cn.nocobase.com/core/ui-schema/designable)
+- [API 参照 / SchemaSettings / 内蔵コンポーネントとタイプ](https://client.docs.nocobase.com/core/ui-schema/schema-settings)
+- [API 参照 / Designable](https://client.docs.nocobase.com/core/ui-schema/designable)
 
 ## その他
 

@@ -137,11 +137,11 @@
 
 | 元のAPI                      | 廃止されたAPI                           | 新API                                                                                                                  |
 | --------------------------- | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------- |
-| CollectionProvider          | CollectionProvider_deprecated        | [CollectionProvider](https://client.docs-cn.nocobase.com/core/data-source/collection-provider)                     |
-| useCollection               | useCollection_deprecated             | [useCollection](https://client.docs-cn.nocobase.com/core/data-source/collection-provider#hooks)                   |
-| useCollectionField          | useCollectionField_deprecated        | [useCollectionField](https://client.docs-cn.nocobase.com/core/data-source/collection-field#hooks)                 |
-| useCollectionManager        | useCollectionManager_deprecated      | [useCollectionManager](https://client.docs-cn.nocobase.com/core/data-source/collection-manager-provider#hooks)    |
-| useContext(CollectionManagerContext) | useCollectionManager_deprecated | [useCollectionManager](https://client.docs-cn.nocobase.com/core/data-source/collection-manager-provider#hooks)    |
+| CollectionProvider          | CollectionProvider_deprecated        | [CollectionProvider](https://client.docs-jp.nocobase.com/core/data-source/collection-provider)                     |
+| useCollection               | useCollection_deprecated             | [useCollection](https://client.docs-jp.nocobase.com/core/data-source/collection-provider#hooks)                   |
+| useCollectionField          | useCollectionField_deprecated        | [useCollectionField](https://client.docs-jp.nocobase.com/core/data-source/collection-field#hooks)                 |
+| useCollectionManager        | useCollectionManager_deprecated      | [useCollectionManager](https://client.docs-jp.nocobase.com/core/data-source/collection-manager-provider#hooks)    |
+| useContext(CollectionManagerContext) | useCollectionManager_deprecated | [useCollectionManager](https://client.docs-jp.nocobase.com/core/data-source/collection-manager-provider#hooks)    |
 
 関連するAPIを使用する場合、変更方法は2種類あります：
 
