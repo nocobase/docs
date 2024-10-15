@@ -1,6 +1,6 @@
 # スタイルとテーマ
 
-NocoBaseの動的テーマ機能を利用するために、プラグイン内で[antd-style](https://ant-design.github.io/antd-style/zh-CN/guide)を使用してスタイルを作成することをお勧めします。また、既存の[テーマトークン](https://ant.design/docs/react/customize-theme-cn#seedtoken)を活用して、テーマの動的機能を管理します。さらに、NocoBaseは[テーマエディタープラグイン](#)も提供しており、スタイルを簡単に調整できます。
+NocoBaseの動的テーマ機能を利用するために、プラグイン内で[antd-style](https://ant-design.github.io/antd-style/ja-JP/guide)を使用してスタイルを作成することをお勧めします。また、既存の[テーマトークン](https://ant.design/docs/react/customize-theme-cn#seedtoken)を活用して、テーマの動的機能を管理します。さらに、NocoBaseは[テーマエディタープラグイン](#)も提供しており、スタイルを簡単に調整できます。
 
 ## スタイルの作成
 

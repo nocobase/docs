@@ -29,7 +29,7 @@ class PluginDemoAddSchemaInitializerItem extends Plugin {
 
 ## 新しい初期化器を追加する
 
-SchemaInitializer の詳細なパラメータについては [SchemaInitializerOptions API](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer#new-schemainitializeroptions) を参照してください。
+SchemaInitializer の詳細なパラメータについては [SchemaInitializerOptions API](https://client.docs-jp.nocobase.com/core/ui-schema/schema-initializer#new-schemainitializeroptions) を参照してください。
 
 ```ts
 const myInitializer = new SchemaInitializer({
@@ -106,10 +106,10 @@ SchemaInitializer は Schema の `x-initializer` パラメータで使用され�
 
 #### カスタムコンポーネントが `x-initializer` パラメータをサポートする方法
 
-Grid、ActionBar、Tabs などのコンポーネントがニーズを満たさない場合でも、カスタムコンポーネント内で [useSchemaInitializerRender()](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer#useschemainitializerrender) を使用して `x-initializer` のレンダリングを処理できます。
+Grid、ActionBar、Tabs などのコンポーネントがニーズを満たさない場合でも、カスタムコンポーネント内で [useSchemaInitializerRender()](https://client.docs-jp.nocobase.com/core/ui-schema/schema-initializer#useschemainitializerrender) を使用して `x-initializer` のレンダリングを処理できます。
 
 ## API 参考
 
-- [SchemaInitializerManager](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer-manager)
-- [SchemaInitializer](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer)
+- [SchemaInitializerManager](https://client.docs-jp.nocobase.com/core/ui-schema/schema-initializer-manager)
+- [SchemaInitializer](https://client.docs-jp.nocobase.com/core/ui-schema/schema-initializer)
 

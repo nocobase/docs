@@ -150,8 +150,8 @@ yarn e2e start-app
 
 ### ユーザー認証拡張の最適化
 
-- ユーザー認証拡張の開発ガイド [https://docs-cn.nocobase.com/plugins/auth/dev/guide](https://docs-cn.nocobase.com/plugins/auth/dev/guide)
-- ユーザー認証拡張に関する非互換性の変更 [https://docs-cn.nocobase.com/breaking-changes/v0-18-0-alpha-1](https://docs-cn.nocobase.com/breaking-changes/v0-18-0-alpha-1)
+- ユーザー認証拡張の開発ガイド [https://docs-jp.nocobase.com/plugins/auth/dev/guide](https://docs-jp.nocobase.com/plugins/auth/dev/guide)
+- ユーザー認証拡張に関する非互換性の変更 [https://docs-jp.nocobase.com/breaking-changes/v0-18-0-alpha-1](https://docs-jp.nocobase.com/breaking-changes/v0-18-0-alpha-1)
 
 ### プラグイン化の分割
 
@@ -176,5 +176,5 @@ yarn e2e start-app
 | ワークフロー - リクエスト        | @nocobase/plugin-workflow-request                |
 | ワークフロー - SQL               | @nocobase/plugin-workflow-sql                    |
 
-詳細については[完全なプラグインリスト](https://docs-cn.nocobase.com/plugins)をご覧ください。文書は現在作成中であり、一部の内容が欠落しているか、翻訳が不完全な場合があります。最新の情報については[nocobase/docs](https://github.com/nocobase/docs)をご確認ください。
+詳細については[完全なプラグインリスト](https://docs-jp.nocobase.com/plugins)をご覧ください。文書は現在作成中であり、一部の内容が欠落しているか、翻訳が不完全な場合があります。最新の情報については[nocobase/docs](https://github.com/nocobase/docs)をご確認ください。
 

@@ -45,5 +45,5 @@ yarn doc --lang=en-US
 
 ## その他
 
-さらなるコマンドの使用説明は [NocoBase CLI セクション](https://docs-cn.nocobase.com/api/cli)を参照してください。
+さらなるコマンドの使用説明は [NocoBase CLI セクション](https://docs-jp.nocobase.com/api/cli)を参照してください。
 
