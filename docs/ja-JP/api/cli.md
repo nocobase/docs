@@ -169,11 +169,11 @@ Options:
 
 ```bash
 # 初始安装
-yarn nocobase install -l zh-CN -e admin@nocobase.com -p admin123
+yarn nocobase install -l ja-JP -e admin@nocobase.com -p admin123
 # 删除 NocoBase 的所有数据表，并重新安装
-yarn nocobase install -f -l zh-CN -e admin@nocobase.com -p admin123
+yarn nocobase install -f -l ja-JP -e admin@nocobase.com -p admin123
 # 清空数据库，并重新安装
-yarn nocobase install -c -l zh-CN -e admin@nocobase.com -p admin123
+yarn nocobase install -c -l ja-JP -e admin@nocobase.com -p admin123
 ```
 
 <Alert>
@@ -258,11 +258,11 @@ yarn rimraf -rf packages/*/*/{lib,esm,es,dist}
 
 ```bash
 # 启动文档
-yarn doc  --lang=zh-CN # 等同于 yarn doc dev
+yarn doc  --lang=ja-JP # 等同于 yarn doc dev
 # 构建文档，默认输出到 ./docs/dist/ 目录下
 yarn doc build
 # 查看 dist 输出的文档最终效果
-yarn doc serve --lang=zh-CN
+yarn doc serve --lang=ja-JP
 ```
 
 ### `db:auth`
