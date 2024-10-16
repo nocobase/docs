@@ -24,6 +24,8 @@ Once you create the loop node, an internal branch specifically for the loop is g
 
 ### Node Configuration
 
+![20241016135326](https://static-docs.nocobase.com/20241016135326.png)
+
 #### Loop Object
 
 The loop node can handle various data types for the loop object, each in a different way:
