@@ -14,7 +14,6 @@
 
 ## 使用说明
 
-### 基本使用
 `this.app.auditManager.registerAction` 单个注册
 `this.app.auditManager.registerActions` 批量注册
 
