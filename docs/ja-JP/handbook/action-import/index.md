@@ -2,7 +2,7 @@
 
 <PluginInfo name="action-import"></PluginInfo>
 
-## イントロダクション
+## 紹介
 
 ## インストール
 

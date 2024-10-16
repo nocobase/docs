@@ -2,7 +2,7 @@
 
 <PluginInfo commercial="true" name="embed"></PluginInfo>
 
-## イントロダクション
+## 紹介
 
 このプラグインは、NocoBaseのページを他のウェブサイトやアプリケーションに埋め込むためのものです。
 

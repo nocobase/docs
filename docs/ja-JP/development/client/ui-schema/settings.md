@@ -31,7 +31,7 @@ class PluginDemoAddSchemaSettingsItem extends Plugin {
 
 ## 新しい設定器を追加する
 
-SchemaSettingsの詳細なパラメータは[SchemaSettingsOptions API](https://client.docs-cn.nocobase.com/core/ui-schema/schema-settings#new-schemasettingsoptions)を参照してください。
+SchemaSettingsの詳細なパラメータは[SchemaSettingsOptions API](https://client.docs-jp.nocobase.com/core/ui-schema/schema-settings#new-schemasettingsoptions)を参照してください。
 
 ```ts
 const mySettings = new SchemaSettings({
@@ -118,7 +118,7 @@ BlockItem、FormItem、CardItemなどのラッパーコンポーネントがニ�
 詳細については、以下を参照してください。
 
 - [Designable デザイナー](/development/client/ui-schema/designable)
-- [Designable API](https://client.docs-cn.nocobase.com/core/ui-schema/designable)
+- [Designable API](https://client.docs-jp.nocobase.com/core/ui-schema/designable)
 
 ## API 参考
 

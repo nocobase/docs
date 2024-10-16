@@ -2,7 +2,7 @@
 
 <PluginInfo name="plugin-manager"></PluginInfo>
 
-## イントロダクション
+## 紹介
 
 NocoBaseアプリのバックアップと復元プラグインは、アプリのコピー、移行、アップグレードなどのシナリオで使用できます。
 

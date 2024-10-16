@@ -1,13 +1,13 @@
-# 饼图
+# Pie Chart
 
-## 数据配置
+## Data Configuration
 
-### 1个度量，1个维度
+### 1 Metric, 1 Dimension
 
-![](https://static-docs.nocobase.com/202410101131823.png)
+![1 Metric, 1 Dimension](https://static-docs.nocobase.com/202410101131823.png)
 
-## 配置项
+## Configuration Options
 
-| 配置项 | 说明                                   |
-| ------ | -------------------------------------- |
-| 尺寸   | 设置图表的大小，固定宽高比或者固定高度 |
+| Option   | Description                                                       |
+| -------- | ----------------------------------------------------------------- |
+| Size     | Adjust the chart size, either by maintaining a fixed aspect ratio or setting a fixed height. |

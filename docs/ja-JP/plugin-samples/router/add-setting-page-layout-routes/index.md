@@ -4,7 +4,7 @@
 
 プラグインは複数の設定ページを必要とし、いくつかのページは [AdminSettingsLayout](/development/client/router#既存ページルーティング) の下にありません。一般的には詳細ページです。例えば、`@nocobase/plugin-mobile-client` や `@nocobase/plugin-workflow` などがあります。
 
-## サンプル説明
+## 実例
 
 本サンプルでは、1つの設定ページがあり、その中に詳細リンクがあります。詳細リンクをクリックすると、新しいページに遷移します。
 

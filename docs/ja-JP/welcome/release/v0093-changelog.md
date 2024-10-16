@@ -110,7 +110,7 @@
 - 修正 (Calendar): 新しいグリッドイニシャライザーを取得する際の問題を修正 [`#1425`](https://github.com/nocobase/nocobase/pull/1425）
 - 機能追加 (markdown): mermaidをサポートし、スタイルを改善 [`#1583`](https://github.com/nocobase/nocobase/pull/1583）
 - 修正 (plugin-map): マップブロックが繰り返される問題を修正 [`#1582`](https://github.com/nocobase/nocobase/pull/1582）
-- 機能追加: ツリーコレクション [`#1561`](https://github.com/nocobase/nocobase/pull/1561）
+- 機能追加: 木構造コレクション [`#1561`](https://github.com/nocobase/nocobase/pull/1561）
 - 機能追加 (plugin-map): マップブロックを追加 [`#1486`](https://github.com/nocobase/nocobase/pull/1486）
 - チューニング: 共有コレクション内のサブアプリを遅延読み込み [`#1569`](https://github.com/nocobase/nocobase/pull/1569）
 - 修正 (record-picker): サブコレクションレコードの追加をサポート [`#1573`](https://github.com/nocobase/nocobase/pull/1573）

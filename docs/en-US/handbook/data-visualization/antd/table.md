@@ -1,14 +1,14 @@
-# 表格
+# Table
 
-## 数据配置
+## Data Configuration
 
-### 多个度量，多个维度
+### Multiple Metrics, Multiple Dimensions
 
-![](https://static-docs.nocobase.com/202410101142369.png)
+![Multiple Metrics, Multiple Dimensions](https://static-docs.nocobase.com/202410101142369.png)
 
-## 常用 JSON 配置
+## Common JSON Configuration
 
-### 调整列顺序
+### Adjusting Column Order
 
 ```json
 {

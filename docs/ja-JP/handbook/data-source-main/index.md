@@ -2,9 +2,9 @@
 
 <PluginInfo name="data-source-main"></PluginInfo>
 
-## イントロダクション
+## 紹介
 
-NocoBaseの主データベースは、ビジネスデータの保存だけでなく、アプリケーションのメタデータ（システムテーブルデータやカスタムテーブルデータなど）の保存にも利用されます。主データベースは、MySQL、PostgreSQL、SQLiteなどのリレーショナルデータベースをサポートしています。NocoBaseアプリケーションをインストールする際には、主データベースも同時にインストールされ、削除することはできません。
+NocoBase のマスターデータベースは、システムテーブルのデータやカスタムテーブルのデータなど、ビジネスデータとアプリケーションのメタデータの両方を保存するために使用できます。主データベースは、MySQL、PostgreSQL、SQLiteなどのリレーショナルデータベースをサポートしています。NocoBaseアプリケーションをインストールする際には、主データベースも同時にインストールされ、削除することはできません。
 
 ## インストール
 
@@ -16,15 +16,15 @@ NocoBaseの主データベースは、ビジネスデータの保存だけでな
 
 ### 様々なデータテーブルの作成をサポート
 
-- [一般テーブル](/handbook/data-source-main/general-collection)：よく使われるシステムフィールドが内蔵されています。
-- [継承テーブル](/handbook/data-source-main/inheritance-collection)：親テーブルを作成し、その親テーブルから子テーブルを派生させることが可能です。子テーブルは親テーブルの構造を継承し、自分の列を定義できます。
-- [ツリーテーブル](/handbook/collection-tree)：ツリー構造のテーブルで、現在は隣接リスト設計のみをサポートしています。
-- [カレンダーテーブル](/handbook/calendar/calendar-collection)：カレンダー関連のイベントテーブルを作成するために使用します。
-- [ファイルテーブル](/handbook/file-manager/file-collection)：ファイルストレージの管理に使用されます。
-- [式テーブル](/handbook/workflow-dynamic-calculation/expression)：ワークフローの動的式シナリオに利用されます。
-- [SQLテーブル](/handbook/collection-sql)：実際のデータベーステーブルではなく、SQLクエリを迅速に構造化して表示するためのものです。
-- [ビューテーブル](/handbook/collection-view)：既存のデータベースビューに接続します。
-- [外部テーブル](/handbook/collection-fdw)：データベースシステムが外部データソース内のデータに直接アクセスし、クエリを実行できるようにします。FDW技術に基づいています。
+- [一般コレクション](/handbook/data-source-main/general-collection)：よく使われるシステムフィールドが内蔵されています。
+- [継承コレクション](/handbook/data-source-main/inheritance-collection)：親テーブルを作成し、その親テーブルから子テーブルを派生させることが可能です。子テーブルは親テーブルの構造を継承し、自分の列を定義できます。
+- [木構造コレクション](/handbook/collection-tree)：木構造のテーブルで、現在は隣接リスト設計のみをサポートしています。
+- [カレンダーコレクション](/handbook/calendar/calendar-collection)：カレンダー関連のイベントテーブルを作成するために使用します。
+- [ファイルコレクション](/handbook/file-manager/file-collection)：ファイルストレージの管理に使用されます。
+- [式コレクション](/handbook/workflow-dynamic-calculation/expression)：ワークフローの動的式シナリオに利用されます。
+- [SQLコレクション](/handbook/collection-sql)：実際のデータベーステーブルではなく、SQLクエリを迅速に構造化して表示するためのものです。
+- [ビューコレクション](/handbook/collection-view)：既存のデータベースビューに接続します。
+- [外部コレクション](/handbook/collection-fdw)：データベースシステムが外部データソース内のデータに直接アクセスし、クエリを実行できるようにします。FDW技術に基づいています。
 
 ### データテーブルの分類管理をサポート
 

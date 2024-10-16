@@ -2,13 +2,13 @@
 
 <PluginInfo name="users"></PluginInfo>
 
-## イントロダクション
+## 紹介
 
 ## フィールド設定
 
 ![20240512174625](https://static-docs.nocobase.com/20240512174625.png)
 
-## サンプル
+## 実例
 
 追加予定です。
 

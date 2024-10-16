@@ -212,8 +212,7 @@ const MessageConfigForm = ({ variableOptions }) => {
   );
 };
 
-export default MessageConfigForm;
-
+export default MessageConfigForm
 ```
 
 #### 客户端组件注册
@@ -263,7 +262,6 @@ export class ExampleSever extends BaseNotificationChannel {
     return { status: 'success', message: args.message };
   }
 }
-
 ```
 
 下面需要调用通知服务端内核的`registerChannelType`方法注册服务端扩展插件，编辑后的`src/clinet/plugin.ts`文件内容如下：
@@ -299,5 +297,5 @@ export default PluginNotificationExampleServer;
 新增一个工作流并配置通知节点
 ![20241009172737-2024-10-09-17-27-38](https://static-docs.nocobase.com/20241009172737-2024-10-09-17-27-38.png)
 
-触发工作流执行，可以看到控制台输出如下信息：
+触发工作流执行，可以看到控制台输出如下信息
 ![20241009181617-2024-10-09-18-16-18](https://static-docs.nocobase.com/20241009181617-2024-10-09-18-16-18.png)

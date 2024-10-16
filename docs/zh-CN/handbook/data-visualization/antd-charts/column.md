@@ -4,13 +4,13 @@
 
 ### 1个度量，1个维度
 
-![](https://static-docs.nocobase.com/202410101121827.png)
+![Bar Chart Example](https://static-docs.nocobase.com/202410101121827.png)
 
 ### 1个度量，1个轴维度，一个分类维度
 
 配置1个度量，2个维度。其中1个维度作为 X 轴字段 (X field), 另一个作为分类字段 (Series field). X 轴字段和分类字段可以相同。
 
-![](https://static-docs.nocobase.com/202410101122347.png)
+![Bar Chart with Category](https://static-docs.nocobase.com/202410101122347.png)
 
 ## 配置项
 

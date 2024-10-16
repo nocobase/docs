@@ -4,7 +4,7 @@
 
 ### 多个度量，多个维度
 
-![](https://static-docs.nocobase.com/202410101142369.png)
+![Multiple Metrics, Multiple Dimensions](https://static-docs.nocobase.com/202410101142369.png)
 
 ## 常用 JSON 配置
 

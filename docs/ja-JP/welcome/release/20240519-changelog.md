@@ -73,7 +73,7 @@
 
 - グラフは、日付フィールドを次元として集計データを照会する際に、クライアントのタイムゾーンに変換されません。<a href="https://github.com/nocobase/nocobase/pull/4366" target="_blank">fix(data-vi): 日付をフォーマットする際にローカルタイムゾーンを使用する必要があります #4366</a>
 - ビューの更新が不十分で、データベースビューを同期した後は、再度ログアウトしてログインしないと更新されません。<a href="https://github.com/nocobase/nocobase/pull/4224" target="_blank">fix: コレクションフィールドはデータベースからの同期後に更新されるべきです #4224</a>
-- ツリーテーブルブロックで子ノードを追加するとき、すべてのノードが折りたたまれません。<a href="https://github.com/nocobase/nocobase/pull/4289" target="_blank">fix: ツリーテーブルブロックで子ノードを追加する際にすべてのノードを折りたたまない #4289</a>
+- 木構造コレクションブロックで子ノードを追加するとき、すべてのノードが折りたたまれません。<a href="https://github.com/nocobase/nocobase/pull/4289" target="_blank">fix: 木構造コレクションブロックで子ノードを追加する際にすべてのノードを折りたたまない #4289</a>
 - データテーブルのタイトルフィールド設定が無効です。<a href="https://github.com/nocobase/nocobase/pull/4358" target="_blank">fix: コレクションタイトルフィールドの設定が無効です #4358</a>
 - bigintフィールドの読み取り状態で数値精度が失われます。<a href="https://github.com/nocobase/nocobase/pull/4360" target="_blank">fix: bigintフィールドが読み取りモードで精度を失います #4360</a>
 - サブアプリケーションが停止した後、開いているログファイルが閉じられません。<a href="https://github.com/nocobase/nocobase/pull/4380" target="_blank">fix(logger): アプリを破棄した後にログストリームを閉じるべきです #4380</a>

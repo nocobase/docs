@@ -184,5 +184,5 @@ Gridコンポーネントも分散処理をサポートしています。
 }
 ```
 
-`x-use-decorator-props` に関する詳細は、こちらを参照してください：[静的属性と動的属性](https://client.docs-cn.nocobase.com/core/data-block/data-block-provider#%E9%9D%99%E6%80%81%E5%B1%9E%E6%80%A7%E5%92%8C%E5%8A%A8%E6%80%81%E5%B1%9E%E6%80%A7)。
+`x-use-decorator-props` に関する詳細は、こちらを参照してください：[静的属性と動的属性](https://client.docs-jp.nocobase.com/core/data-block/data-block-provider#%E9%9D%99%E6%80%81%E5%B1%9E%E6%80%A7%E5%92%8C%E5%8A%A8%E6%80%81%E5%B1%9E%E6%80%A7)。
 

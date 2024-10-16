@@ -176,7 +176,7 @@ export default [
           {
             title: 'Tree collection',
             'title.zh-CN': '树表',
-            'title.ja-JP': 'ツリーコレクション',
+            'title.ja-JP': '木構造コレクション',
             link: '/handbook/collection-tree',
           },
           {
@@ -189,7 +189,7 @@ export default [
             title: 'Expression collection',
             'title.zh-CN': '表达式表',
             'title.ja-JP': '式コレクション',
-            link: '/handbook/workflow-dynamic-calculation/collection',
+            link: '/handbook/collection-expression/collection',
           },
           {
             title: 'SQL collection',
@@ -366,7 +366,7 @@ export default [
                 title: 'Attachment',
                 'title.zh-CN': '附件',
                 'title.ja-JP': '添付ファイル',
-                link: '/handbook/file-manager/field-attachment',
+                link: '/handbook/data-modeling/collection-fields/media/field-attachment',
               },
             ],
           },
@@ -476,7 +476,7 @@ export default [
               {
                 title: 'Sequence',
                 'title.zh-CN': '自动编码',
-                'title.ja-JP': 'シーケンス',
+                'title.ja-JP': '自動エンコード',
                 link: '/handbook/field-sequence',
               },
               {
@@ -711,7 +711,7 @@ export default [
               {
                 title: 'Tree',
                 'title.zh-CN': '树',
-                'title.ja-JP': 'ツリー',
+                'title.ja-JP': '木構造',
                 link: '/handbook/block-tree',
               },
             ],
@@ -1471,25 +1471,30 @@ export default [
       {
         title: 'Notification',
         'title.zh-CN': '通知',
+        'title.ja-JP': '通知',
         children: [
           {
             title: 'Notification manager',
             'title.zh-CN': '通知管理',
+            'title.ja-JP': '通知管理',
             link: '/handbook/notification-manager',
           },
           {
             title: 'Notification: In-app message',
             'title.zh-CN': '通知：站内信',
+            'title.ja-JP': '通知：アプリ内メッセージ',
             link: '/handbook/notification-in-app-message',
           },
           {
             title: 'Notification: Email',
             'title.zh-CN': '通知：电子邮件',
+            'title.ja-JP': '通知：メール',
             link: '/handbook/notification-email',
           },
           {
             title: 'Notification extension',
             'title.zh-CN': '通知扩展',
+            'title.ja-JP': '通知拡張',
             link: '/handbook/notification-manager/extension',
           },
         ],
@@ -1603,6 +1608,7 @@ export default [
               {
                 title: 'Basic usage',
                 'title.zh-CN': '基本使用',
+                'title.ja-JP': '基本的な使い方',
                 type: 'group',
                 children: [
                   {

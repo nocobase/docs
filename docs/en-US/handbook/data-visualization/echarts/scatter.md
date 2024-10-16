@@ -1,33 +1,33 @@
-# 散点图
+# Scatter Chart
 
-## 数据配置
+## Data Configuration
 
-### 1或多个度量，1个维度
+### 1 or Multiple Metrics, 1 Dimension
 
-![](https://static-docs.nocobase.com/202410091202766.png)
+![1 or Multiple Metrics, 1 Dimension](https://static-docs.nocobase.com/202410091202766.png)
 
-### 1个度量，1个轴维度，一个分类维度
+### 1 Metric, 1 Axis Dimension, One Category Dimension
 
-配置1个度量，2个维度。其中1个维度作为 X 轴字段 (X field), 另一个作为分类字段 (Series field).
+Configure one metric and two dimensions. One of the dimensions will serve as the X-axis field (X field), while the other will act as the series field.
 
-![](https://static-docs.nocobase.com/202410091202268.png)
+![1 Metric, 1 Axis Dimension, One Category Dimension](https://static-docs.nocobase.com/202410091202268.png)
 
-## 配置项
+## Configuration Options
 
-| 配置项                     | 说明                                                        |
+| Configuration Option       | Description                                                 |
 | -------------------------- | ----------------------------------------------------------- |
-| X 轴字段                   | X 轴维度字段                                                |
-| 分类字段                   | 分类维度字段                                                |
-| 尺寸                       | 设置图表的大小，固定宽高比或者固定高度                      |
-| 浅色模式主题               | 需要在系统为浅色模式时选择才能预览                          |
-| 深色模式主题               | 需要在系统为深色模式时选择才能预览                          |
-| 显示图例                   | 控制是否显示图例                                            |
-| 图例方向                   | 控制图例显示方向，水平或垂直                                |
-| 图例位置（左，下，右，上） | 控制图例相对位置                                            |
-| 标签类型                   | 控制标签是否显示以及显示类型                                |
-| X 轴标题                   | 控制 X 轴标题显示位置                                       |
-| Y 轴标题                   | 控制 Y 轴标题显示位置                                       |
-| X 轴标签旋转               | 控制 X 轴标签旋转角度，在标签比较密集时使用可以展示更多标签 |
-| 内边距                     | 调整图形内边距                                              |
-| 网格线                     | 控制网格线是否显示和样式                                    |
-| 标记线                     | 添加标记线，设置标题、值和颜色                              |
+| X-axis Field               | Dimension field for the X-axis                               |
+| Series Field               | Dimension field for categorization                           |
+| Size                       | Set the chart size, either fixed aspect ratio or fixed height |
+| Light Mode Theme           | Preview available when the system is in light mode           |
+| Dark Mode Theme            | Preview available when the system is in dark mode            |
+| Show Legend                | Toggle the visibility of the legend                          |
+| Legend Orientation         | Control the orientation of the legend, either horizontal or vertical |
+| Legend Position (Left, Bottom, Right, Top) | Control the relative position of the legend                    |
+| Label Type                 | Control whether labels are shown and the type of labels      |
+| X-axis Title               | Control the display position of the X-axis title             |
+| Y-axis Title               | Control the display position of the Y-axis title             |
+| X-axis Label Rotation      | Adjust the rotation angle of the X-axis labels; useful when there are dense labels to display more effectively |
+| Padding                    | Adjust the internal padding of the chart                    |
+| Gridlines                  | Control the visibility and style of gridlines               |
+| Reference Line             | Add reference lines, set their title, value, and color      |

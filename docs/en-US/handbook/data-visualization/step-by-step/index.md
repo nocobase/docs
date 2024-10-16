@@ -212,8 +212,6 @@ new ECharts({
 
 You can also extend some visualization configurations as needed.
 
-Line Chart:
-
 ```typescript
 new ECharts({
   name: 'line',
@@ -355,75 +353,17 @@ export class PluginSampleAddCustomChartClient extends Plugin {
 
   async beforeLoad() {
     const plugin = this.app.pm.get(DataVisualizationPlugin);
-    plugin.charts.addGroup('ECharts', [
-      new ECharts(),
-      // ...
-      // ...
-    ]);
+    plugin.charts.addGroup('echarts', {
+      title: 'ECharts',
+      charts: [
+        new ECharts(),
+        // ...
+        // ...
+      ],
+    });
   }
 
   // You can get and modify the app instance here
   async load() {}
 }
 ```
-
-
-
-
-
-
-
-
-
-
-# Extended Tutorial
-
-> Using the addition of ECharts charts as an example, the complete code is available in the `@nocobase/plugin-sample-add-custom-charts` plugin.
-
-## Creating a New Plugin
-
-Follow the steps in the [Plugin Development Guide](https://docs.nocobase.com/development/your-first-plugin) to create a new plugin. Be sure to include the dependencies `echarts`, `echarts-for-react`, and `@nocobase/plugin-data-visualization`, placing these external dependencies in the `devDependencies` section of the `package.json` file.
-
-## ECharts React Component
-
-Unlike G2Plot, where each chart type is a distinct component, ECharts utilizes a single component that can render various charts by passing different parameters. Since the component provided by `echarts-for-react` is a `PureComponent`, we need to wrap it into a `FunctionComponent`.
-
-The `echarts-for-react` component does not execute a `resize` operation on its initial render. As the NocoBase visualization plugin might need to determine whether to display the component based on the current configuration while setting up charts, this could result in the component not displaying correctly. Therefore, we manually execute `resize` each time to ensure proper rendering.
-
-## Extending the `Chart` Class
-
-> Before proceeding, please refer to the [Development Guide](../dev/index.md) to familiarize yourself with the relevant APIs.
-
-### Step 1
-
-Since ECharts serves as a comprehensive charting library, we may need to add multiple chart types simultaneously. To facilitate this, we start by extending the basic `Chart` class to create an `ECharts` class that implements some foundational methods.
-
-ECharts primarily configures different types of charts via the `series` parameter. Therefore, when constructing the base class, we add a `series` parameter and pass in the previously defined `ReactECharts` component. The `config` parameter is preset with default values for `xField`, `yField`, and `seriesField`, enabling our default visualization configuration to produce results similar to those shown in the example.
-
-### Step 2
-
-Since most commonly used chart types require configurations for the x-axis, y-axis, and classification fields, we first implement a general `init` interface to initialize the chart’s default configuration. If a chart requires additional configuration items upon initialization, this method can be overridden in derived classes. In the implementation, we can leverage the `infer` method from the `Chart` class to determine default field configurations based on the provided measures and dimensions.
-
-### Step 3
-
-Next, we implement the `getProps` method, which primarily retrieves chart-related configurations and converts them into properties corresponding to the ECharts component. This method can also set default properties that we prefer not to expose in the configuration options. The following code implementation serves as a general guide.
-
-This logic primarily involves processing raw data, chart configurations, field metadata, and data transformation settings into the format required for component rendering. In ECharts, data processing can be managed by registering `transform` functions, as detailed in the ECharts documentation.
-
-### Step 4
-
-Finally, we implement a method to retrieve reference documentation via `getReference`. ECharts consolidates all chart parameters on a single page, so we define this method straightforwardly.
-
-## Defining Charts
-
-With the `ECharts` class established, defining charts becomes a straightforward process. For most common 2D charts, the general logic is already encapsulated within the `ECharts` class, eliminating the need for additional extensions.
-
-You can also extend some visualization configurations as needed.
-
-For certain charts, the general methods may not suffice, requiring further customization.
-
-### Adding Charts
-
----
-
-The translation has now been refined for enhanced readability, stylistic consistency, and clarity. The final version is ready for use. If you have any further adjustments or additional tasks, feel free to let me know!

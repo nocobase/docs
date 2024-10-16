@@ -34,7 +34,7 @@
 
 ![](https://static-docs.nocobase.com/b488f3013532a246df59b89c0688a58f.png)
 
-シンプルなブロックのすべての設定項目は「ブロックパラメータ設定」に集中しており、たとえばMarkdownの設定が含まれます。
+シンプルなブロックのすべての設定項目は「ブロックパラメータ設定」に集中しております。例えば、Markdown。
 
 ![](https://static-docs.nocobase.com/f37e277863068b2661f66d4020af806a.png)
 

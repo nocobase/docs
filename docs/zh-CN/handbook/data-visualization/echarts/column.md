@@ -4,7 +4,7 @@
 
 ### 1或多个度量，1个维度
 
-![](https://static-docs.nocobase.com/202410091058207.png)
+![1 or More Measures, 1 Dimension](https://static-docs.nocobase.com/202410091058207.png)
 
 ### 1个度量，1个轴维度，一个分类维度
 

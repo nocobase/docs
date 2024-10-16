@@ -15,7 +15,7 @@
 - データの可視化インタラクションが改善されました。
 - モバイル端末でのチャートブロック追加をサポートします。
 - チャートフィルターブロックでフィールドデータ範囲の設定をサポートします。
-- より多くの変数を追加しました。[詳細を見る](https://docs-cn.nocobase.com/handbook/ui/variables)
+- より多くの変数を追加しました。[詳細を見る](https://docs-jp.nocobase.com/handbook/ui/variables)
 - ポップアップ内で任意のデータテーブルのブロックを追加できるようになりました。
 - ワークフロー機能として、「操作後イベント」が関係ブロック内のボタンをトリガーとしてサポートします。
 - ポップアップ内のデータが変更された場合、ポップアップを閉じると自動的に上位コンテナのデータが更新されます。
@@ -123,7 +123,7 @@ Auth: CAS、Auth: OIDC、Auth: SAMLの3つのSSOプラグインがオープン�
 
 ### SSOプラグインを使用していない場合
 
-[一般的な方法](https://docs-cn.nocobase.com/welcome/getting-started/upgrading)に従って、通常通りアップグレードしてください。
+[一般的な方法](https://docs-jp.nocobase.com/welcome/getting-started/upgrading)に従って、通常通りアップグレードしてください。
 
 ### SSOプラグインを使用している場合
 

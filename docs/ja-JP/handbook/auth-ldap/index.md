@@ -2,7 +2,7 @@
 
 <PluginInfo commercial="true" name="auth-ldap"></PluginInfo>
 
-## イントロダクション
+## 紹介
 
 認証：LDAPプラグインは、LDAP（Lightweight Directory Access Protocol）プロトコル標準に従い、ユーザーがLDAPサーバーのアカウントとパスワードを使用してNocoBaseにログインできるようにします。
 

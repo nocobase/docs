@@ -431,7 +431,7 @@ export default () => {
 };
 ```
 
-#### ツリー構造データ
+#### 木構造データ
 
 ```tsx
 import { ArrayField } from '@formily/core';

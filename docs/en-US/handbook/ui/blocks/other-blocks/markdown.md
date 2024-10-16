@@ -39,7 +39,8 @@ Inline Markdown within blocks also supports variables.
 ![20240612210333](https://static-docs.nocobase.com/20240612210333.png)
 
 
-When using association data in variables, particularly for to-many relationships, different template engines support different syntaxes. Therefore, when working with array-type data variables, it's necessary to distinguish between the various syntaxes. The following example uses the User/Role (one-to-many) variable
+When using association data in variables, particularly for to-many relationships, different template engines support different syntaxes. Therefore, when working with array-type data variables, it's necessary to distinguish between the various syntaxes. 
+The following example uses the User/Role (one-to-many) variable
 
 string template:
 

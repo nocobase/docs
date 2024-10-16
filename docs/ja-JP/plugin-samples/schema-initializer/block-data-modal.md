@@ -13,7 +13,7 @@
   <source src="https://static-docs.nocobase.com/20240529223753_rec_.mp4" type="video/mp4" />
 </video>
 
-## サンプル説明
+## 実例
 
 このサンプルは、ant-designの [Timeline コンポーネント](https://ant.design/components/timeline) を基に `Timeline` ブロックを作成し、ブロック作成前に `Time Field` と `Title Field` を選択します。
 
