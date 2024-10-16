@@ -25,7 +25,11 @@ Workflow is a built-in plugin in NocoBase and does not require additional instal
 ## Learn More
 
 - [Quick start](./quick-start.md)
-- [Advanced](./advance.md)
+- Advanced understanding
+  - [Executions](./advanced/executions.md)
+  - [Advanced Options](./advanced/options.md)
+  - [Variables](./advanced/variables.md)
+  - [Revisions](./advanced/revisions.md)
 - [Triggers](./triggers/index.md)
 - [Nodes](./nodes/index.md)
 - [Development Guide](./development/index.md)
