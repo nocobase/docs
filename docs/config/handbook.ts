@@ -503,6 +503,11 @@ export default [
                 'title.ja-JP': '暗号化',
                 link: '/handbook/field-encryption',
               },
+              {
+                title: 'Mask',
+                'title.zh-CN': '掩码',
+                link: '/handbook/field-mask',
+              },
             ],
           },
           {
