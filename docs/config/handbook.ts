@@ -958,6 +958,12 @@ export default [
                 'title.ja-JP': 'ファイルマネージャー',
                 link: '/handbook/ui/fields/specific/file-manager',
               },
+              {
+                title: 'Mask',
+                'title.zh-CN': '掩码',
+                'title.ja-JP': '掩码',
+                link: '/handbook/ui/fields/specific/mask',
+              },
             ],
           },
           {
