@@ -24,6 +24,8 @@ Once you create the loop node, an internal branch specifically for the loop is g
 
 ### Node Configuration
 
+![20241016135326](https://static-docs.nocobase.com/20241016135326.png)
+
 #### Loop Object
 
 The loop node can handle various data types for the loop object, each in a different way:
@@ -37,6 +39,32 @@ The loop node can handle various data types for the loop object, each in a diffe
 4. **Others**: Other data types (including objects) are treated as a single loop object, resulting in just one iteration—typically not requiring a loop.
 
 You can also input constants directly when working with numbers and strings. For instance, inputting `5` (number type) will cause the loop to run 5 times, while inputting `abc` (string type) will result in 3 iterations, processing `a`, `b`, and `c` individually. The variable selection tool allows you to choose the type of constant you want to use.
+
+#### Loop condition
+
+From version `v1.4.0-beta` on, loop condition options are added, and could be enabled in node configuration.
+
+**Condition**
+
+Similar to the configuration in a condition node, combination of conditions can be configured, and variables from the current loop, such as the loop item and loop index, can also be used.
+
+**Checkpoint**
+
+Similar to `while` and `do/while` in programming languages, conditions can be configured to be evaluated either before each loop iteration or after it ends. Post-condition evaluation can execute other nodes in the loop body first before performing the condition check.
+
+**When condition is not met**
+
+Similar to `break` and `continue` clause in programming languages, could be use to determine whether to break or continue the loop.
+
+#### Error handling of internal nodes in loop
+
+From version `v1.4.0-beta` on, when an internal node in a loop fails to execute (due to unmet conditions, errors, etc.), the next step can be determined through this configuration. Three handling methods are supported:
+
+* Exit the process (default)
+* Exit the loop and continue the process
+* Continue to the next loop item
+
+You can choose the appropriate method as needed.
 
 ### Example
 

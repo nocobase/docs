@@ -28,6 +28,10 @@ jobs:
       env:
         DOC_LANG: zh-CN
       run: yarn build
+    - name: Build ja-JP
+      env:
+        DOC_LANG: ja-JP
+      run: yarn build
     - name: Set tags
       id: set-tags
       run: |

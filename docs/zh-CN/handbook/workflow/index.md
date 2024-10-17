@@ -25,7 +25,11 @@
 ## 开始
 
 - [快速开始](./quick-start.md)
-- [进阶使用](./advance.md)
+- 深入理解
+  - [执行计划](./advanced/executions.md)
+  - [高级配置](./advanced/options.md)
+  - [变量使用](./advanced/variables.md)
+  - [版本管理](./advanced/revisions.md)
 - [触发器](./triggers/index.md)
 - [节点](./nodes/index.md)
 - [开发指南](./development/index.md)
