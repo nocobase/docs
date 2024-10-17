@@ -2,5 +2,4 @@
 
 <PluginInfo commercial="true" name="data-visualization-echarts"></PluginInfo>
 
-Use the < a href = "https://echarts.apache.org/" target = "_blank" > ECharts < / a > to realize data visualization, support funnel chart and radar map more chart types, and provide more friendly visual configuration.
-
+The use of <a href = "https://echarts.apache.org/" target ="_blank"> ECharts </a> enables data visualization, supporting more chart types such as funnel charts, radar charts, and provides a more user-friendly visualization configuration.
