@@ -962,7 +962,7 @@ export default [
                 title: 'Mask',
                 'title.zh-CN': '掩码',
                 'title.ja-JP': '掩码',
-                link: '/handbook/ui/fields/specific/mask',
+                link: '/handbook/field-component-mask',
               },
             ],
           },
