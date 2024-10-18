@@ -4,7 +4,7 @@
 
 ### `BaseNotificationChannel`
 
-`BaseNotificationChannel`是用户渠道类型的抽象类，定义了通知渠道需要的接口，扩展新的通知渠道类型需要继承此类，并实现其中的方法
+是用户渠道类型的抽象类，定义了通知渠道需要的接口，扩展新的通知渠道类型需要继承此类，并实现其中的方法
 
 ```ts
 export abstract class BaseNotificationChannel<Message = any> {
@@ -18,7 +18,7 @@ export abstract class BaseNotificationChannel<Message = any> {
 
 ### `PluginNotificationManagerServer`
 
-`PluginNotificationManagerServer`是通知管理服务端插件，提供通知渠道类型注册方法和通知下发方法。
+通知管理服务端插件，提供通知渠道类型注册方法和通知下发方法。
 
 #### `registerChannelType()`
 

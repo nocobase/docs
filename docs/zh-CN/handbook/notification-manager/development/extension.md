@@ -1,51 +1,40 @@
-# 通知渠道扩展
+# 扩展通知渠道类型
 
-NocoBase支持按需要扩展通知渠道类型，默认内置一个通知管理内核插件，负责提供了扩展通知类型的注册和管理。
-
-## 扩展 API
-
-### `PluginNotificationManagerServer`
-
-通知管理服务端类
-
-#### `PluginNotificationManagerServer.send()`
-
-发送通知的核心方法，通过调用此方法，可以下发通知
-
-##### 签名
-
-`({channelName, message, triggerFrom}) => Promise<Result>`
-
-##### 详细信息
-
-| 属性         | 类型         |  描述      |
-| ------------ | ------------ | ------------ |
-| `channelName`    | `string` | 渠道标识 |
-| `message`   | `object`   | 消息对象 |
-| `triggerFrom`     | `string`     | 触发来源 |
-
-#### `PluginNotificationManagerServer.registerChannelType()`
-
-本方法可以注册一个新的服务端渠道类型
-
-##### 签名
-
-`({type, Channel}) => void`
-
-##### 详细信息
-
-| 属性         | 类型         |  描述      |
-| ------------ | ------------ | ------------ |
-| `name`    | `string` | 渠道标识 |
-| `server`   | `BaseNotificationChannel`   | 服务端扩展类 |
+NocoBase支持按需扩展通知渠道类型，如短信通知，app推送等。使用新的类型
 
 ## 客户端
 
-客户端扩展插件需要实现渠道配置表单和消息配置表单
+客户端渠道配置和消息配置界面通过通知管理插件客户端提供的接口`registerChannelType`进行注册：
+
+```ts
+import PluginNotificationManagerClient from '@nocobase/plugin-notification-manager/client';
+
+class PluginNotificationExampleClient extends Plugin {
+  async afterAdd() {}
+
+  async beforeLoad() {}
+
+  async load() {
+    const notification = this.pm.get(PluginNotificationManagerClient);
+    notification.registerChannelType({
+      title: 'Example SMS', // 渠道类型名称
+      type: 'example-sms', // 渠道类型标识
+      components: {
+        ChannelConfigForm, //渠道配置表单
+        MessageConfigForm, //消息配置表单
+      },
+    });
+  }
+}
+
+export default PluginNotificationExampleClient;
+```
+
+
 
 ### `PluginNotificationManagerClient`
 
-通知管理内核服务端类
+通知管理内核类
 
 #### `PluginNotificationManagerClient.registerChannelType()`
 
