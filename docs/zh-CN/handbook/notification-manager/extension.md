@@ -23,7 +23,6 @@ NocoBase支持按需要扩展通知渠道类型，默认内置一个通知管理
 | `channelName`    | `string` | 渠道标识 |
 | `message`   | `object`   | 消息对象 |
 | `triggerFrom`     | `string`     | 触发来源 |
-| `transports` | 日志输出方式 |日志输出目录 |
 
 #### `PluginNotificationManagerServer.registerChannelType()`
 
@@ -278,7 +277,6 @@ export class PluginNotificationExampleServer extends Plugin {
 }
 
 export default PluginNotificationExampleServer;
-
 ```
 
 ### 插件注册启动
