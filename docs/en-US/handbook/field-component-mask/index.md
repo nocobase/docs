@@ -1,8 +1,14 @@
 # 掩码
 
+<PluginInfo commercial="true" name="field-component-mask"></PluginInfo>
+
 ## 介绍
 
 掩码字段组件允许您以掩码格式显示字段值。这对于显示包含敏感信息的字段值特别有用，例如密码、信用卡号等。
+
+## 安装
+
+该插件为商业插件。
 
 ## 字段配置项
 
