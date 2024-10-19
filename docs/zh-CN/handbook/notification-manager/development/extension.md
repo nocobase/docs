@@ -1,8 +1,10 @@
 # 扩展通知渠道类型
 
-NocoBase支持按需扩展通知渠道类型，如短信通知，app推送等。使用新的类型
+NocoBase支持按需扩展通知渠道类型，如短信通知，app推送等。
 
 ## 客户端
+
+### 渠道类型注册
 
 客户端渠道配置和消息配置界面通过通知管理插件客户端提供的接口`registerChannelType`进行注册：
 
@@ -30,46 +32,39 @@ class PluginNotificationExampleClient extends Plugin {
 export default PluginNotificationExampleClient;
 ```
 
+## 服务端
 
+### 继承抽象类
 
-### `PluginNotificationManagerClient`
-
-通知管理内核类
-
-#### `PluginNotificationManagerClient.registerChannelType()`
-
-客户端注册渠道类型
-
-##### 签名
+服务端开发的核心是需要继承抽象类`BaseNotificationChannel`并实现`send`方法，`send`方法内部是扩展插件发送通知的业务逻辑
 
 ```ts
-type ChannelType = {
-  title: string; // 渠道显示标题
-  type: string;  // 渠道标识
-  components: {
-    ChannelConfigForm: ComponentType // 渠道配置表单;
-    MessageConfigForm?: ComponentType<{ variableOptions: any }> // 消息配置表单;
-  };
-  meta?: { // 渠道配置元信息
-    createable?: boolean //是否支持新增渠道;
-    eidtable?: boolean  //渠道配置信息是否可编辑;
-    deletable?: boolean //渠道配置信息是否可删除;
-  };
-};
+import { BaseNotificationChannel } from '@nocobase/plugin-notification-manager';
 
-type RegisterChannelType = (params: ChannelType) => void
+export class ExampleSever extends BaseNotificationChannel {
+  async send(args): Promise<any> {
+    console.log('ExampleSever send', args);
+    return { status: 'success', message: args.message };
+  }
+}
 ```
 
-#### `PluginNotificationManagerClient.channelTypes`
+### 服务端注册
 
-已注册渠道类型库
-
-##### 签名
+下面需要调用通知服务端内核的`registerChannelType`方法，将开发好的服务端实现类注册进内核中：
 
 ```ts
-import { Registry } from '@nocobase/utils/client';
+import PluginNotificationManagerServer from '@nocobase/plugin-notification-manager';
+import { Plugin } from '@nocobase/server';
+import { ExampleSever } from './example-server';
+export class PluginNotificationExampleServer extends Plugin {
+  async load() {
+    const notificationServer = this.pm.get(PluginNotificationManagerServer) as PluginNotificationManagerServer;
+    notificationServer.registerChannelType({ type: 'example-sms', Channel: ExampleSever });
+  }
+}
 
-type ChannelTypes = Registry<ChannelType>
+export default PluginNotificationExampleServer;
 ```
 
 ## 完整示例

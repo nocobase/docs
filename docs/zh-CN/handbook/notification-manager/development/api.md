@@ -46,6 +46,26 @@ export default PluginNotificationExampleServer;
 
 通知下发方法，调用此方法可下发通知
 
+```ts
+send('in-app-message', 
+  message:[
+    receivers: [1,2,3],
+    receiverType: 'userId',
+    content: '站内信测试',
+    title: '站内信测试标题'
+  ],
+  triggerFrom: 'workflow')
+
+  send('email', 
+  message:[
+    receivers: ['a@163.com', 'b@163.com'],
+    receiverType: 'email',
+    content: '邮箱测试',
+    title: '邮箱测试标题'
+  ],
+  triggerFrom: 'workflow')
+```
+
 ##### 签名
 
 `send(sendConfig: {channelName:stirng, message: Object, triggerFrom: string})`
