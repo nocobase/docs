@@ -1,12 +1,23 @@
-# 导出数据
+# Export
 
-:::warning
-文档待补充
-:::
+<PluginInfo name="action-export"></PluginInfo>
 
-<!--
-## 介绍
+## Introduction
 
-## 安装
+![20240426162728](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426162728.png)
 
-## 使用说明 -->
+## Installation
+
+This plugin comes pre-installed, so no additional installation steps are required.
+
+## Operation Configuration Items
+
+![20240426163008](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426163008.png)
+
+### Exportable Fields
+
+- First Level: Displays all fields of the current collection.
+- Second Level: If the field is a relational type, you'll need to select fields from the related table.
+- Third Level: Only up to three levels of relationships are supported. Fields in the final relational level won't be shown.
+
+![20240426163433](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426163433.png)

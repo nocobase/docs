@@ -9,7 +9,7 @@ The Iframe block allows you to embed external web pages or content into the curr
 
 It's a built-in plugin, no installation is required.
 
-## Adding a Block
+## Adding Blocks
 
 ![20240408220259](https://static-docs.nocobase.com/20240408220259.png)
 
@@ -19,18 +19,15 @@ Configure the URL or Html to directly embed the external application.
 
 ## Template engine
 
-![20240811205327](https://static-docs.nocobase.com/20240811205327.png)
-
 ### string template
+
 The default rendering engine supports variables
+
 ### Handlebars
-
-Handlebars is a JavaScript templating engine that supports conditionals ({{#if}}) and loops ({{#each}}), but currently does not support custom helpers.
-
 
 ![20240811205239](https://static-docs.nocobase.com/20240811205239.png)
 
-<a href="https://handlebarsjs.com/guide/builtin-helpers" target="_blank"> Handlebars Syntax reference</a>
+For more information, refer to [Handlebars template](/handbook/template-handlebars)
 
 ## Passing Variables
 

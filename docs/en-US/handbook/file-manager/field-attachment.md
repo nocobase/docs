@@ -4,12 +4,12 @@
 
 ## Introduction
 
-The attachment field is a specific relational field associated with the file collection.
+The attachment field is a specialized relational field that connects directly to the file collection.
 
-## 字段配置
+## Field Configuration
 
 ![20240512180916](https://static-docs.nocobase.com/20240512180916.png)
 
-## 示例
+## Example
 
-待补充
+(Example to be added)

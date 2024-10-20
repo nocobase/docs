@@ -1,7 +1,7 @@
-# 阿里云 OSS
+# Alibaba Cloud OSS
 
 <PluginInfo name="file-storage-oss"></PluginInfo>
 
-## 介绍
+## Introduction
 
-## 使用手册
+## Hand book

@@ -28,7 +28,7 @@ git clone https://github.com/nocobase/nocobase.git -b next --depth=1 my-nocobase
 ## 2. 切换目录
 
 ```bash
-cd my-nocobase-app
+cd my-nocobase
 ```
 
 ## 3. 安装依赖
@@ -52,6 +52,8 @@ yarn install --frozen-lockfile
 NocoBase 所需的环境变量储存在根目录 `.env` 文件里，根据实际情况修改环境变量，如果你不知道怎么改，[点此查看环境变量说明](../env.md)，也可以保持默认。
 
 ```bash
+TZ=Asia/Shanghai
+APP_KEY=your-secret-key
 DB_HOST=localhost
 DB_PORT=5432
 DB_DATABASE=postgres
@@ -60,9 +62,9 @@ DB_PASSWORD=nocobase
 ```
 
 :::warning
-- `APP_KEY` 是应用的密钥，用于生成用户 token 等（如果 APP_KEY 修改了，旧的 token 也会随之失效）。它可以是任意随机字符串。请修改为自己的秘钥，并确保不对外泄露。
-- `DB_*` 为数据库相关，如果不是例子默认的数据库服务，请根据实际情况修改
-- 使用 MySQL（或 MariaDB）时，需要配置 DB_TIMEZONE 环境变量，如 `DB_TIMEZONE=+08:00`
+- `TZ` 用于设置应用的时区，默认为操作系统时区；
+- `APP_KEY` 是应用的密钥，用于生成用户 token 等（如果 APP_KEY 修改了，旧的 token 也会随之失效）。它可以是任意随机字符串。请修改为自己的秘钥，并确保不对外泄露；
+- `DB_*` 为数据库相关，如果不是例子默认的数据库服务，请根据实际情况修改。
 :::
 
 ## 5. 安装 NocoBase

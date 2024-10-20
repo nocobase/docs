@@ -1,41 +1,40 @@
-# 链接
+# Link
 
-## 介绍
+## Introduction
 
-链接操作以路由跳转的形式，支持传入变量，目标页面可根据传入的数据动态调整内容，支持在数据区块中配置使用。
+The link operation, which functions via route navigation, supports the passing of variables. The target page can dynamically adjust its content based on the provided data, making it configurable for use within data blocks.
 
 ![20240603150755](https://static-docs.nocobase.com/20240603150755.png)
 
-## 操作配置项
+## Operation Configuration
 
 ![20240603150823](https://static-docs.nocobase.com/20240603150823.png)
 
-### 编辑链接
+### Edit Link
 
 ![20240603150944](https://static-docs.nocobase.com/20240603150944.png)
 
 ![20240603224322](https://static-docs.nocobase.com/20240603224322.png)
 
-### 使用场景
+### Usage Scenarios
 
-示例：作者表和文章表是一对多的关系，在作者表格的中配置「查看作者文章」的链接操作。点击该链接后，将作者的 ID 作为参数传递给文章表格。目标页面的文章表格根据传入的作者 ID 过滤文章列表。
+Example: The author and article tables have a one-to-many relationship. In the author table, you can configure the "View posts" link operation. By clicking this link, the author's ID is passed as a parameter to the article table, allowing the target page to filter the articles based on the specified author's ID.
 
 ![20240603151934](https://static-docs.nocobase.com/20240603151934.png)
 
 ### Open in New Window
 
-When "Open in new window" is checked, the link will open in a new window.
+When the "Open in new window" option is selected, the link will open in a new window.
 
 ![20240718160541](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240718160541.png)
 
-完整配置示例如下：
+Here is a complete configuration example:
 
 <video width="100%" height="440" controls>
 
- <source src="https://static-docs.nocobase.com/20240603224044.mp4" type="video/mp4">
+<source src="https://static-docs.nocobase.com/20240603224044.mp4" type="video/mp4">
 
 </video>
 
-
-- [编辑按钮](/handbook/ui/actions/action-settings/edit-button)：编辑按钮的标题、颜色、图标；
-- [联动规则](/handbook/ui/actions/action-settings/linkage-rule)：动态控制按钮状态；
+- [Edit Button](/handbook/ui/actions/action-settings/edit-button): Customize the button's title, color, and icon.
+- [Linkage Rule](/handbook/ui/actions/action-settings/linkage-rule): Dynamically control the button's state.

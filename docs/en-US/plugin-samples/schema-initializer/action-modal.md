@@ -1,24 +1,24 @@
-# 添加弹窗 Action
+# Adding a Popup Action
 
-## 场景说明
+## Scenario Description
 
-NocoBase 中有很多 `Configure actions` 用于向界面添加操作按钮。
+In NocoBase, there are many `Configure actions` used to add operation buttons to the interface.
 
 ![img_v3_02b4_51f4918f-d344-43b2-b19e-48dca709467g](https://static-docs.nocobase.com/img_v3_02b4_51f4918f-d344-43b2-b19e-48dca709467g.jpg)
 
-如果目前已有的操作按钮不一定满足我们的需求，我们需要向已有的 `Configure actions` 里添加子项用于创建新的操作按钮。
+If the existing action buttons do not fully meet our needs, we can add sub-items to the current `Configure actions` to create new action buttons.
 
-## 示例说明
+## Example Description
 
-本实例会创建一个按钮，点击后打开弹窗，弹窗的内容为 iframe 嵌套的区块的文档，并将这个按钮添加到 `Table`、`Details` 以及 `Form` 区块中的 `Configure actions` 中。
+In this example, we will create a button that, when clicked, opens a popup. The popup contains a document embedded in an iframe. This button will be added to the `Table`, `Details`, and `Form` blocks within the `Configure actions`.
 
-本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-initializer-action-modal) 中查看。
+The complete example code can be found in [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-initializer-action-modal).
 
 <video controls width='100%' src="https://static-docs.nocobase.com/20240526172851_rec_.mp4"></video>
 
-## 初始化插件
+## Initializing the Plugin
 
-我们按照 [编写第一个插件](/development/your-fisrt-plugin) 文档说明，如果没有一个项目，可以先创建一个项目，如果已经有了或者是 clone 的源码，则跳过这一步。
+Follow the instructions in [Creating Your First Plugin](/development/your-fisrt-plugin). If you don’t already have a project, you can create one. If you already have one or have cloned the source code, you can skip this step.
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d sqlite
@@ -27,69 +27,69 @@ yarn install
 yarn nocobase install
 ```
 
-然后初始化一个插件，并添加到系统中：
+Next, initialize a plugin and add it to the system:
 
 ```bash
 yarn pm create @nocobase-sample/plugin-initializer-action-modal
 yarn pm enable @nocobase-sample/plugin-initializer-action-modal
 ```
 
-然后启动项目即可：
+Then, start the project:
 
 ```bash
 yarn dev
 ```
 
-然后登录后访问 [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) 就可以看到插件已经安装并启用了。
+After logging in, visit [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) to verify that the plugin is installed and enabled.
 
-## 功能实现
+## Functionality Implementation
 
-在实现本示例之前，我们需要先了解一些基础知识：
+Before implementing this example, we need to understand some foundational knowledge:
 
-- [Action 组件](https://client.docs.nocobase.com/components/action)
-- [SchemaInitializer 教程](/development/client/ui-schema/initializer)：用于向界面内添加各种区块、字段、操作等
-- [SchemaInitializer API](https://client.docs.nocobase.com/core/ui-schema/schema-initializer)：用于向界面内添加各种区块、字段、操作等
-- [UI Schema](/development/client/ui-schema/what-is-ui-schema)：用于定义界面的结构和样式
-- [Designable 设计器](/development/client/ui-schema/designable)：用于修改 Schema
+- [Action Component](https://client.docs.nocobase.com/components/action)
+- [SchemaInitializer Tutorial](/development/client/ui-schema/initializer): Used to add blocks, fields, actions, etc., to the interface
+- [SchemaInitializer API](https://client.docs.nocobase.com/core/ui-schema/schema-initializer): Also for adding blocks, fields, actions, etc., to the interface
+- [UI Schema](/development/client/ui-schema/what-is-ui-schema): Defines the structure and style of the interface
+- [Designable Designer](/development/client/ui-schema/designable): Used to modify the schema
 
 ```bash
 .
-├── client # 客户端插件
-│   ├── initializer # 初始化器
-│   ├── index.tsx # 客户端插件入口
-│   ├── locale.ts # 多语言工具函数
-│   ├── constants.ts # 常量
+├── client # Client-side plugin
+│   ├── initializer # Initializer
+│   ├── index.tsx # Client-side plugin entry point
+│   ├── locale.ts # Localization utility functions
+│   ├── constants.ts # Constants
 │   ├── schema # Schema
 │   └── settings # Schema Settings
-├── locale # 多语言文件
-│   ├── en-US.json # 英语
-│   └── zh-CN.json # 中文
-├── index.ts # 服务端插件入口
-└── server # 服务端插件
+├── locale # Localization files
+│   ├── en-US.json # English
+│   └── zh-CN.json # Chinese
+├── index.ts # Server-side plugin entry point
+└── server # Server-side plugin
 ```
 
-### 1. 定义名称
+## 1. Define the Name
 
-我们首先需要定义操作名称，它将会使用在各个地方。
+First, we need to define the action name, which will be used in several places.
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/constants.ts`：
+Create the file `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/constants.ts`:
 
 ```ts
 export const ActionName = 'Open Document';
 export const ActionNameLowercase = 'open-document';
 ```
 
-### 2. 定义 Schema
+## 2. Define the Schema
 
-#### 2.1 定义 Schema
+### 2.1 Define the Schema
 
-NocoBase 的动态页面都是通过 Schema 来渲染，所以我们需要定义一个 Schema，后续用于在界面中添加。在实现本小节之前，我们需要先了解一些基础知识：
+NocoBase’s dynamic pages are rendered using schemas, so we need to define a schema for later use to add elements to the interface. Before proceeding, we need to understand the following concepts:
 
-- [Action 组件](https://client.docs.nocobase.com/components/action)
-- [Action.Drawer 组件](https://client.docs.nocobase.com/components/action#actiondrawer)
-- [UI Schema 协议](/development/client/ui-schema/what-is-ui-schema)：详细介绍 Schema 的结构和每个属性的作用
+- [Action Component](https://client.docs.nocobase.com/components/action)
+- [Action.Drawer Component](https://client.docs.nocobase.com/components/action#actiondrawer)
+- [UI Schema Protocol](/development/client/ui-schema/what-is-ui-schema): This document explains the structure of the schema and the purpose of each attribute
 
-我们新增 `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/schema/index.ts` 文件，内容为：
+We will create a new file, `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/schema/index.ts`, with the following content:
 
 ```ts
 import { ISchema } from "@nocobase/client"
@@ -131,25 +131,25 @@ export const createDocumentActionModalSchema = (blockComponent: string): ISchema
 }
 ```
 
-`createDocumentActionModalSchema` 组件接收一个 `blockComponent` 参数，返回一个 Schema，这个 Schema 用于在界面中添加一个按钮，点击后打开弹窗，弹窗的内容是一个 iframe，其 src 是区块的文档。
+The `createDocumentActionModalSchema` component accepts a `blockComponent` parameter and returns a schema. This schema adds a button to the interface that, when clicked, opens a popup. The popup contains an iframe with the block's document as its source.
 
-`createDocumentActionModalSchema`：
-- `type`：类型，这里是 `void`，表示纯 UI 组件
-- `x-component: 'Action'`：[Action 组件](https://client.docs.nocobase.com/components/action) 用于生成一个按钮
-- `title: 'Open Document'`：按钮的标题
-- `properties`：子节点
-  - ['x-component': 'Action.Drawer'](https://client.docs.nocobase.com/components/action#actiondrawer)：Action.Drawer 组件
+`createDocumentActionModalSchema`:
+- `type`: Specifies the type of component. Here, it’s `void`, meaning it’s a purely UI component
+- `x-component: 'Action'`: [Action Component](https://client.docs.nocobase.com/components/action), used to generate a button
+- `title: 'Open Document'`: The title of the button
+- `properties`: Child nodes
+  - ['x-component': 'Action.Drawer'](https://client.docs.nocobase.com/components/action#actiondrawer): Refers to the Action.Drawer component
 
-更多关于 Schema 的说明请查看 [UI Schema](/development/client/ui-schema/what-is-ui-schema) 文档。
+For more details on the schema, refer to the [UI Schema](/development/client/ui-schema/what-is-ui-schema) documentation.
 
-#### 2.2 验证 Schema
+### 2.2 Validate the Schema
 
-验证 Schema 方式有 2 种：
+There are two methods for validating the schema:
 
-- 临时页面验证：我们可以临时建一个页面，然后渲染 Schema，查看是否符合需求
-- 文档示例验证：可以启动文档 `yarn doc plugins/@nocobase-sample/plugin-initializer-action-modal`，通过写文档示例的方式验证是否符合需求（TODO）
+- Temporary page validation: You can create a temporary page, render the schema, and check if it meets the requirements
+- Documentation example validation: Start the documentation by running `yarn doc plugins/@nocobase-sample/plugin-initializer-action-modal`, and validate by creating a documentation example (TODO)
 
-我们以 `临时页面验证` 为例，我们新建一个页面，根据属性参数添加一个或者多个示例，查看是否符合需求。
+We’ll use the `Temporary Page Validation` method. Create a new page, add one or more examples based on the attribute parameters, and check if they meet the requirements.
 
 ```tsx | pure
 import React from 'react';
@@ -177,17 +177,17 @@ export class PluginInitializerActionModalClient extends Plugin {
 export default PluginInitializerActionModalClient;
 ```
 
-然后我们访问 [http://localhost:13000//admin/open-document-schema](http://localhost:13000/admin/open-document-schema) 就可以看到我们添加的临时页面了。
+Afterward, visit [http://localhost:13000/admin/open-document-schema](http://localhost:13000/admin/open-document-schema) to view the temporary page we’ve added.
 
-关于 `SchemaComponent` 的详细说明可以查看 [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponent-1) 文档。
+For detailed information on `SchemaComponent`, refer to the [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponent-1) documentation.
 
 <video controls width='100%' src="https://static-docs.nocobase.com/20240526171945_rec_.mp4"></video>
 
-验证完毕后需要删除测试页面。
+Once validation is complete, be sure to remove the test page.
 
-### 3. 定义 Schema Initializer Item
+# 3. Define Schema Initializer Item
 
-我们新增 `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/initializer/index.ts` 文件：
+We will add a new file `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/initializer/index.ts`:
 
 ```ts
 import { SchemaInitializerItemType, useSchemaInitializer } from "@nocobase/client"
@@ -213,22 +213,22 @@ export const createDocumentActionModalInitializerItem = (blockComponent: string)
 })
 ```
 
-因为我们需要根据不同的 `blockComponent` 生成不同的 `DocumentActionModal`，所以我们定义了一个 `createDocumentActionModalInitializerItem` 函数，用于生成对应的 Schema Initializer Item。
+Since we need to generate different `DocumentActionModal` instances based on various `blockComponent` values, we define the `createDocumentActionModalInitializerItem` function to generate the corresponding Schema Initializer Item.
 
-- `type`：类型，这里是 `item`，表示是一个文本，其有点击事件，点击后可以插入一个新的 Schema
-- `name`：唯一标识符，用于区分不同的 Schema Item 和增删改查操作
-- `useComponentProps`：返回一个对象，包含 `title` 和 `onClick` 两个属性，`title` 是显示的文本，`onClick` 是点击后的回调函数
-- [useSchemaInitializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#useschemainitializer)：用于获取 `SchemaInitializerContext` 上下文，包含了一些操作方法
+- `type`: This is set as `item`, indicating a text element that triggers an event upon clicking, inserting a new Schema.
+- `name`: A unique identifier that helps distinguish between different Schema Items and operations, such as creating, reading, updating, and deleting.
+- `useComponentProps`: Returns an object that includes the `title` and `onClick` properties. The `title` is the displayed text, and `onClick` is the callback function executed when clicked.
+- [useSchemaInitializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#useschemainitializer): Retrieves the `SchemaInitializerContext`, which provides methods for operational tasks.
 
-更多关于 Schema Item 的定义可以参考 [Schema Initializer Item](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types) 文档。
+For further details on defining Schema Items, refer to the [Schema Initializer Item](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types) documentation.
 
-### 4. 实现 Schema Settings
+# 4. Implement Schema Settings
 
-#### 4.1 定义 Schema Settings
+## 4.1 Define Schema Settings
 
-目前我们通过 `createDocumentActionInitializerItem()` 添加后不能删除，我们可以使用 [Schema Settings](https://client.docs.nocobase.com/core/ui-schema/schema-settings) 来设置。
+At the moment, once added via `createDocumentActionInitializerItem()`, items cannot be removed. We can address this by using [Schema Settings](https://client.docs.nocobase.com/core/ui-schema/schema-settings).
 
-我们新增 `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/settings/index.ts` 文件：
+We will add a new file: `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/settings/index.ts`:
 
 ```ts
 import { SchemaSettings } from "@nocobase/client";
@@ -245,7 +245,7 @@ export const documentActionModalSettings = new SchemaSettings({
 });
 ```
 
-#### 4.2 注册 Schema Settings
+## 4.2 Register Schema Settings
 
 ```ts
 import { Plugin } from '@nocobase/client';
@@ -260,9 +260,9 @@ export class PluginInitializerActionModalClient extends Plugin {
 export default PluginInitializerActionModalClient;
 ```
 
-#### 4.3 使用 Schema Settings
+## 4.3 Use Schema Settings
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/schema/index.ts` 文件中的 `createDocumentActionModalSchema` 函数，将 `documentActionModalSettings` 添加到 `x-settings` 中。
+We will modify the `createDocumentActionModalSchema` function in `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/schema/index.ts`, adding `documentActionModalSettings` to `x-settings`.
 
 ```diff
 export const createDocumentActionModalSchema = (blockComponent: string): ISchema => {
@@ -275,15 +275,15 @@ export const createDocumentActionModalSchema = (blockComponent: string): ISchema
 }
 ```
 
-### 5. 添加到页面 Configure actions 中
+# 5. Add to Configure Actions in the Page
 
-系统中有很多个 `Configure actions` 按钮，但他们的 **name 是不同的**，我们根据需要将其添加到 `Table`、`Details` 以及 `Form` 区块中的 `Configure actions` 中。
+There are several `Configure actions` buttons in the system, but their **names differ**. We will add the necessary items to the `Table`, `Details`, and `Form` sections' `Configure actions`.
 
-首先我们先找到对应的 name：
+First, we will identify the appropriate names:
 
 TODO
 
-然后我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/index.tsx` 文件：
+Then, modify the `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/index.tsx` file:
 
 ```diff
 import { Plugin } from '@nocobase/client';
@@ -304,15 +304,15 @@ export default PluginInitializerActionModalClient;
 
 <video controls width='100%' src="https://static-docs.nocobase.com/20240526172851_rec_.mp4"></video>
 
-### 6. 多语言
+# 6. Multi-language Support
 
 :::warning
-多语言文件变更后，需要重启服务才能生效
+Changes to the language files will take effect only after restarting the service.
 :::
 
-##### 6.1 英语
+### 6.1 English
 
-我们编辑 `packages/plugins/@nocobase-sample/plugin-initializer-action-simple/src/locale/en-US.json` 内容为：
+We will edit the file `packages/plugins/@nocobase-sample/plugin-initializer-action-simple/src/locale/en-US.json`:
 
 ```json
 {
@@ -320,9 +320,9 @@ export default PluginInitializerActionModalClient;
 }
 ```
 
-##### 6.2 中文
+### 6.2 Chinese
 
-我们编辑 `packages/plugins/@nocobase-sample/plugin-initializer-action-simple/src/locale/zh-CN.json` 内容为：
+We will edit the file `packages/plugins/@nocobase-sample/plugin-initializer-action-simple/src/locale/zh-CN.json`:
 
 ```json
 {
@@ -330,27 +330,27 @@ export default PluginInitializerActionModalClient;
 }
 ```
 
-如果需要更多的多语言支持，可以继续添加。
+If additional language support is required, more languages can be added.
 
-我们可以通过 [http://localhost:13000/admin/settings/system-settings](http://localhost:13000/admin/settings/system-settings) 添加多个语言，并且在右上角切换语言。
+You can manage multiple languages and switch between them through the UI at [http://localhost:13000/admin/settings/system-settings](http://localhost:13000/admin/settings/system-settings).
 
 ![20240611113758](https://static-docs.nocobase.com/20240611113758.png)
 
-## 打包和上传到生产环境
+## Packaging and Uploading to Production
 
-按照 [构建并打包插件](/development/your-fisrt-plugin#构建并打包插件) 文档说明，我们可以打包插件并上传到生产环境。
+Following the guidelines outlined in the [Build and Package Plugins](/development/your-fisrt-plugin#build-and-package-plugins) documentation, we can package the plugin and deploy it to the production environment.
 
-如果是 clone 的源码，需要先执行一次全量 build，将插件的依赖也构建好。
+For cloned source code, ensure a full build is executed first to compile plugin dependencies:
 
 ```bash
 yarn build
 ```
 
-如果是使用的 `create-nocobase-app` 创建的项目，可以直接执行：
+For projects created using `create-nocobase-app`, execute the following:
 
 ```bash
 yarn build @nocobase-sample/plugin-initializer-action-modal --tar
 ```
 
-这样就可以看到 `storage/tar/@nocobase-sample/plugin-initializer-action-modal.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
+This will generate the file `storage/tar/@nocobase-sample/plugin-initializer-action-modal.tar.gz`, which can then be installed by following the [upload process](/welcome/getting-started/plugin).
 

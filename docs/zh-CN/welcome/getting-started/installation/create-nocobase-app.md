@@ -47,7 +47,8 @@ yarn create nocobase-app my-nocobase-app -d postgres \
    -e DB_PORT=5432 \
    -e DB_DATABASE=nocobase \
    -e DB_USER=nocobase \
-   -e DB_PASSWORD=nocobase
+   -e DB_PASSWORD=nocobase \
+   -e TZ=Asia/Shanghai
 ```
 
 </div>
@@ -61,7 +62,7 @@ yarn create nocobase-app my-nocobase-app -d mysql \
    -e DB_DATABASE=nocobase \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
-   -e DB_TIMEZONE=+08:00
+   -e TZ=Asia/Shanghai
 ```
 
 </div>
@@ -75,7 +76,7 @@ yarn create nocobase-app my-nocobase-app -d mariadb \
    -e DB_DATABASE=nocobase \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
-   -e DB_TIMEZONE=+08:00
+   -e TZ=Asia/Shanghai
 ```
 
 </div>
@@ -94,7 +95,8 @@ npx create-nocobase-app@next my-nocobase-app -d postgres \
    -e DB_PORT=5432 \
    -e DB_DATABASE=nocobase \
    -e DB_USER=nocobase \
-   -e DB_PASSWORD=nocobase
+   -e DB_PASSWORD=nocobase \
+   -e TZ=Asia/Shanghai
 ```
 
 </div>
@@ -108,7 +110,7 @@ npx create-nocobase-app@next my-nocobase-app -d mysql \
    -e DB_DATABASE=nocobase \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
-   -e DB_TIMEZONE=+08:00
+   -e TZ=Asia/Shanghai
 ```
 
 </div>
@@ -122,16 +124,16 @@ npx create-nocobase-app@next my-nocobase-app -d mariadb \
    -e DB_DATABASE=nocobase \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
-   -e DB_TIMEZONE=+08:00
+   -e TZ=Asia/Shanghai
 ```
 
 </div>
 </Tabs>
 
 :::warning
-- `APP_KEY` 是应用的密钥，用于生成用户 token 等（如果 APP_KEY 修改了，旧的 token 也会随之失效）。它可以是任意随机字符串。请修改为自己的秘钥，并确保不对外泄露。
-- `DB_*` 为数据库相关，如果不是例子默认的数据库服务，请根据实际情况修改
-- 使用 MySQL（或 MariaDB）时，需要配置 DB_TIMEZONE 环境变量，如 `DB_TIMEZONE=+08:00`
+- `TZ` 用于设置应用的时区，默认为操作系统时区；
+- `APP_KEY` 是应用的密钥，用于生成用户 token 等（如果 APP_KEY 修改了，旧的 token 也会随之失效）。它可以是任意随机字符串。请修改为自己的秘钥，并确保不对外泄露；
+- `DB_*` 为数据库相关，如果不是例子默认的数据库服务，请根据实际情况修改。
 :::
 
 ## 2. 切换目录

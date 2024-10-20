@@ -17,7 +17,6 @@
 </video>
 
 ## 初始化插件
-
 我们按照 [编写第一个插件](/development/your-fisrt-plugin) 文档说明，如果没有一个项目，可以先创建一个项目，如果已经有了或者是 clone 的源码，则跳过这一步。
 
 ```bash

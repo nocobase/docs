@@ -1,8 +1,8 @@
 # API Reference
 
-## 服务端
+## Server-Side
 
-服务端包结构可用的 API 如以下代码所示：
+The API available in the server-side package is shown in the following code:
 
 ```ts
 import PluginWorkflowServer, {
@@ -15,26 +15,26 @@ import PluginWorkflowServer, {
 
 ### `PluginWorkflowServer`
 
-工作流插件类。
+The Workflow Plugin class.
 
-通常在应用的运行时，任意可以获取应用实例 `app` 的地方调用 `app.pm.get<PluginWorkflowServer>(PluginWorkflowServer)` 以获取工作流插件实例（下文以 `plugin` 指代）。
+Typically, during an application's runtime, the Workflow Plugin instance can be retrieved by calling `app.pm.get<PluginWorkflowServer>(PluginWorkflowServer)` from any location where the application instance `app` is accessible (hereinafter referred to as `plugin`).
 
-#### `registerTrigger()`
+### `registerTrigger()`
 
-扩展注册新的触发器类型。
+Registers a new trigger type.
 
-**签名**
+**Signature**
 
-`registerTrigger(type: string, trigger: typeof Trigger | Trigger })`
+`registerTrigger(type: string, trigger: typeof Trigger | Trigger)`
 
-**参数**
+**Parameters**
 
-| 参数      | 类型                        | 描述             |
-| --------- | --------------------------- | ---------------- |
-| `type`    | `string`                    | 触发器类型标识符 |
-| `trigger` | `typeof Trigger \| Trigger` | 触发器类型或实例 |
+| Parameter   | Type                        | Description             |
+| ----------- | --------------------------- | ----------------------- |
+| `type`      | `string`                    | Trigger type identifier |
+| `trigger`   | `typeof Trigger \| Trigger` | Trigger type or instance|
 
-**示例**
+**Example**
 
 ```ts
 import PluginWorkflowServer, { Trigger } from '@nocobase/plugin-workflow';
@@ -48,7 +48,7 @@ class MyTrigger extends Trigger {
   messageHandlers: Map<number, WorkflowModel> = new Map();
   on(workflow: WorkflowModel) {
     const messageHandler = handler.bind(this, workflow);
-    // listen some event to trigger workflow
+    // listen for some event to trigger workflow
     process.on(
       'message',
       this.messageHandlers.set(workflow.id, messageHandler),
@@ -74,22 +74,22 @@ export default class MyPlugin extends Plugin {
 }
 ```
 
-#### `registerInstruction()`
+### `registerInstruction()`
 
-扩展注册新的节点类型。
+Registers a new node type.
 
-**签名**
+**Signature**
 
-`registerInstruction(type: string, instruction: typeof Instruction | Instruction })`
+`registerInstruction(type: string, instruction: typeof Instruction | Instruction)`
 
-**参数**
+**Parameters**
 
-| 参数          | 类型                                | 描述           |
-| ------------- | ----------------------------------- | -------------- |
-| `type`        | `string`                            | 指令类型标识符 |
-| `instruction` | `typeof Instruction \| Instruction` | 指令类型或实例 |
+| Parameter      | Type                                | Description                |
+| -------------- | ----------------------------------- | -------------------------- |
+| `type`         | `string`                            | Instruction type identifier|
+| `instruction`  | `typeof Instruction \| Instruction` | Instruction type or instance|
 
-**示例**
+**Example**
 
 ```ts
 import PluginWorkflowServer, { Instruction, JOB_STATUS } from '@nocobase/plugin-workflow';
@@ -98,9 +98,9 @@ class LogInstruction extends Instruction {
   run(node, input, processor) {
     console.log('my instruction runs!');
     return {
-      status: JOB_STATUS.RESOVLED,
+      status: JOB_STATUS.RESOLVED,
     };
-  },
+  }
 };
 
 export default class MyPlugin extends Plugin {
@@ -114,25 +114,26 @@ export default class MyPlugin extends Plugin {
 }
 ```
 
-#### `trigger()`
+### `trigger()`
 
-触发特定的工作流。主要用于在自定义触发器中，当监听到特定自定义事件时触发对应的工作流。
+Triggers a specific workflow. This is mainly used within custom triggers to activate the corresponding workflow when a specific custom event is detected.
 
-**签名**
+**Signature**
 
 `trigger(workflow: Workflow, context: any)`
 
-**参数**
-| 参数 | 类型 | 描述 |
-| --- | --- | --- |
-| `workflow` | `WorkflowModel` | 要触发的工作流对象 |
-| `context` | `object` | 触发时提供的上下文数据 |
+**Parameters**
 
-:::info{title=提示}
-`context` 目前是必填项，不提供的话该工作流不会触发。
+| Parameter | Type           | Description                          |
+| --------- | -------------- | ------------------------------------ |
+| `workflow`| `WorkflowModel`| The workflow object to be triggered  |
+| `context` | `object`       | The context data provided when triggering |
+
+:::info{title=Tip}
+`context` is currently a required parameter; the workflow will not trigger without it.
 :::
 
-**示例**
+**Example**
 
 ```ts
 import { Trigger } from '@nocobase/plugin-workflow';
@@ -150,55 +151,55 @@ class MyTrigger extends Trigger {
 }
 ```
 
-#### `resume()`
+### `resume()`
 
-以特定的节点任务将停等的工作流恢复执行。
+Resumes the execution of a paused workflow at a specific node task.
 
-- 只有处在停等状态（`EXECUTION_STATUS.STARTED`）的工作流才能被恢复执行。
-- 只有处在停等状态（`JOB_STATUS.PENDING`）的节点任务才能被恢复执行。
+- Only workflows in the `EXECUTION_STATUS.STARTED` state can be resumed.
+- Only node tasks in the `JOB_STATUS.PENDING` state can be resumed.
 
-**签名**
+**Signature**
 
 `resume(job: JobModel)`
 
-**参数**
+**Parameters**
 
-| 参数  | 类型       | 描述             |
-| ----- | ---------- | ---------------- |
-| `job` | `JobModel` | 更新后的任务对象 |
+| Parameter | Type       | Description                |
+| --------- | ---------- | -------------------------- |
+| `job`     | `JobModel` | The updated task object     |
 
-:::info{title=提示}
-传入的任务对象一般是更新后的对象，且通常会将 `status` 更新为非 `JOB_STATUS.PENDING` 的值，否则将继续停等。
+:::info{title=Tip}
+The task object passed in is usually the updated object and typically has the `status` updated to a value other than `JOB_STATUS.PENDING`; otherwise, it will remain paused.
 :::
 
-**示例**
+**Example**
 
-详见[源码](https://github.com/nocobase/nocobase/blob/main/packages/plugins/%40nocobase/plugin-workflow-manual/src/server/actions.ts#L99)。
+See [source code](https://github.com/nocobase/nocobase/blob/main/packages/plugins/%40nocobase/plugin-workflow-manual/src/server/actions.ts#L99).
 
-### `Trigger`
+## `Trigger`
 
-触发器基类，用于扩展自定义触发器类型。
+Base class for triggers, used to extend custom trigger types.
 
-| 参数          | 类型                                                        | 说明                   |
-| ------------- | ----------------------------------------------------------- | ---------------------- |
-| `constructor` | `(public readonly workflow: PluginWorkflowServer): Trigger` | 构造函数               |
-| `on?`         | `(workflow: WorkflowModel): void`                           | 开启工作流后的事件处理 |
-| `off?`        | `(workflow: WorkflowModel): void`                           | 停用工作流后的事件处理 |
+| Parameter         | Type                                                        | Description                   |
+| ----------------- | ----------------------------------------------------------- | ----------------------------- |
+| `constructor`     | `(public readonly workflow: PluginWorkflowServer): Trigger` | Constructor                   |
+| `on?`             | `(workflow: WorkflowModel): void`                           | Event handler when workflow is started |
+| `off?`            | `(workflow: WorkflowModel): void`                           | Event handler when workflow is stopped |
 
-`on`/`off` 用于在工作流启用/停用时进行事件监听的注册/注销，传入的参数是对应触发器的工作流实例，可根据对应配置进行处理。部分触发器类型如果是已经在全局监听了事件的，也可以不用实现这两个方法。例如在定时触发器中，可以在 `on` 中注册定时器，`off` 中注销定时器。
+`on`/`off` are used to register/unregister event listeners when the workflow is enabled/disabled. The passed parameter is the workflow instance corresponding to the trigger, which can be processed according to the configuration. For certain trigger types that already listen to events globally, these methods may not need to be implemented. For example, in a timed trigger, a timer can be registered in `on` and unregistered in `off`.
 
-### `Instruction`
+## `Instruction`
 
-指令类型基类，用于扩展自定义指令类型。
+Base class for instruction types, used to extend custom instruction types.
 
-| 参数          | 类型                                                            | 说明                               |
-| ------------- | --------------------------------------------------------------- | ---------------------------------- |
-| `constructor` | `(public readonly workflow: PluginWorkflowServer): Instruction` | 构造函数                           |
-| `run`         | `Runner`                                                        | 首次进入节点的执行逻辑             |
-| `resume?`     | `Runner`                                                        | 在中断恢复执行后进入节点的执行逻辑 |
-| `getScope?`   | `(node: FlowNodeModel, data: any, processor: Processor): any`   | 提供对应节点产生分支的局域变量内容 |
+| Parameter         | Type                                                            | Description                         |
+| ----------------- | --------------------------------------------------------------- | ----------------------------------- |
+| `constructor`     | `(public readonly workflow: PluginWorkflowServer): Instruction` | Constructor                         |
+| `run`             | `Runner`                                                        | Execution logic when entering the node for the first time |
+| `resume?`         | `Runner`                                                        | Execution logic when resuming after an interruption |
+| `getScope?`       | `(node: FlowNodeModel, data: any, processor: Processor): any`   | Provides local variables generated by the branch node |
 
-**相关类型**
+**Related Types**
 
 ```ts
 export type Job =
@@ -224,115 +225,117 @@ export class Instruction {
 }
 ```
 
-`getScope` 可以参考[循环节点的实现](https://github.com/nocobase/nocobase/blob/main/packages/plugins/%40nocobase/plugin-workflow-loop/src/server/LoopInstruction.ts#L83)，用于提供分支的局域变量内容。
+`getScope` can be referred to in the [loop node implementation](https://github.com/nocobase/nocobase/blob/main/packages/plugins/%40nocobase/plugin-workflow-loop/src/server/LoopInstruction.ts#L83), which is used to provide local variables for the branch.
 
-### `EXECUTION_STATUS`
+## `EXECUTION_STATUS`
 
-工作流执行计划状态的常量表，用于标识对应执行计划的当前状态。
+A table of constants representing the status of workflow execution plans, used to indicate the current status of the execution plan.
 
-| 常量名                          | 含义                 |
-| ------------------------------- | -------------------- |
-| `EXECUTION_STATUS.QUEUEING`     | 排队中               |
-| `EXECUTION_STATUS.STARTED`      | 执行中               |
-| `EXECUTION_STATUS.RESOLVED`     | 成功完成             |
-| `EXECUTION_STATUS.FAILED`       | 失败                 |
-| `EXECUTION_STATUS.ERROR`        | 执行错误             |
-| `EXECUTION_STATUS.ABORTED`      | 已中断               |
-| `EXECUTION_STATUS.CANCELED`     | 已取消               |
-| `EXECUTION_STATUS.REJECTED`     | 已拒绝               |
-| `EXECUTION_STATUS.RETRY_NEEDED` | 未成功执行，需要重试 |
+| Constant Name                   | Meaning              |
+| --------------------------------| ---------------------|
+| `EXECUTION_STATUS.QUEUEING`     | Queueing             |
+| `EXECUTION_STATUS.STARTED`      | In Progress          |
+| `EXECUTION_STATUS.RESOLVED`     | Successfully Completed |
+| `EXECUTION_STATUS.FAILED`       | Failed               |
+| `EXECUTION_STATUS.ERROR`        | Execution Error      |
+| `EXECUTION_STATUS.ABORTED`      | Aborted              |
+| `EXECUTION_STATUS.CANCELED`     | Canceled             |
+| `EXECUTION_STATUS.REJECTED`     | Rejected             |
+| `EXECUTION_STATUS.RETRY_NEEDED` | Retry Needed         |
 
-除了前三种以外，其他都代表失败状态，但可以用于表述不同的失败原因。
+Apart from the first three, all other statuses represent failure states, but they can indicate different reasons for failure.
 
-### `JOB_STATUS`
+## `JOB_STATUS`
 
-工作流节点任务状态的常量表，用于标识对应节点任务的当前状态，节点产生的状态同时也会影响整个执行计划的状态。
+A table of constants representing the status of workflow node tasks, used to indicate the current status of the node task. The status generated by the node also affects the status of the entire execution plan.
 
-| 常量名                    | 含义                                     |
-| ------------------------- | ---------------------------------------- |
-| `JOB_STATUS.PENDING`      | 停等：已执行到该节点，但指令要求挂起等待 |
-| `JOB_STATUS.RESOLVED`     | 成功完成                                 |
-| `JOB_STATUS.FAILED`       | 失败：该节点执行未能满足配置条件         |
-| `JOB_STATUS.ERROR`        | 错误：该节点执行过程中发生未捕获的错误   |
-| `JOB_STATUS.ABORTED`      | 终止：该节点在停等后被其他逻辑终止执行   |
-| `JOB_STATUS.CANCELED`     | 取消：该节点在停等后被人为取消执行       |
-| `JOB_STATUS.REJECTED`     | 拒绝：该节点在停等后被人为拒绝继续       |
-| `JOB_STATUS.RETRY_NEEDED` | 未成功执行，需要重试                     |
+| Constant Name                | Meaning                                     |
+| ---------------------------- | ------------------------------------------ |
+| `JOB_STATUS.PENDING`         | Pending: The node has been reached, but the instruction requires suspension |
+| `JOB_STATUS.RESOLVED`        | Successfully Completed                     |
+| `JOB_STATUS.FAILED`          | Failed: The node execution did not meet the configured conditions |
+| `JOB_STATUS.ERROR`           | Error: An uncaught error occurred during node execution |
+| `JOB_STATUS.ABORTED`         | Aborted: The node was terminated by other logic after suspension |
+| `JOB_STATUS.CANCELED`        | Canceled: The node was manually canceled after suspension |
+| `JOB_STATUS.REJECTED`        | Rejected: The node was manually rejected after suspension |
+| `JOB_STATUS.RETRY_NEEDED`    | Retry Needed                               |
 
-## 客户端
+## Client-Side
 
-客户端包结构可用的 API 如以下代码所示：
+The API available in the client-side package is shown in the following code:
 
 ```ts
 import PluginWorkflowClient, {
   Trigger,
   Instruction,
 } from '@nocobase/plugin-workflow/client';
+
+
 ```
 
 ### `PluginWorkflowClient`
 
-#### `registerTrigger()`
+### `registerTrigger()`
 
-注册触发器类型对应的配置面板。
+Registers the configuration panel corresponding to the trigger type.
 
-**签名**
+**Signature**
 
 `registerTrigger(type: string, trigger: typeof Trigger | Trigger): void`
 
-**参数**
+**Parameters**
 
-| 参数      | 类型                        | 说明                                 |
-| --------- | --------------------------- | ------------------------------------ |
-| `type`    | `string`                    | 触发器类型标识，与注册使用的标识一致 |
-| `trigger` | `typeof Trigger \| Trigger` | 触发器类型或实例                     |
+| Parameter   | Type                        | Description                             |
+| ----------- | --------------------------- | --------------------------------------- |
+| `type`      | `string`                    | Trigger type identifier, consistent with the identifier used during registration |
+| `trigger`   | `typeof Trigger \| Trigger` | Trigger type or instance                |
 
-#### `registerInstruction()`
+### `registerInstruction()`
 
-注册节点类型对应的配置面板。
+Registers the configuration panel corresponding to the node type.
 
-**签名**
+**Signature**
 
 `registerInstruction(type: string, instruction: typeof Instruction | Instruction): void`
 
-**参数**
+**Parameters**
 
-| 参数          | 类型                                | 说明                               |
-| ------------- | ----------------------------------- | ---------------------------------- |
-| `type`        | `string`                            | 节点类型标识，与注册使用的标识一致 |
-| `instruction` | `typeof Instruction \| Instruction` | 节点类型或实例                     |
+| Parameter      | Type                                | Description                             |
+| -------------- | ----------------------------------- | --------------------------------------- |
+| `type`         | `string`                            | Node type identifier, consistent with the identifier used during registration |
+| `instruction`  | `typeof Instruction \| Instruction` | Node type or instance                   |
 
-### `Trigger`
+## `Trigger`
 
-触发器基类，用于扩展自定义触发器类型。
+Base class for triggers, used to extend custom trigger types.
 
-| 参数            | 类型                                                             | 说明                               |
-| --------------- | ---------------------------------------------------------------- | ---------------------------------- |
-| `title`         | `string`                                                         | 触发器类型名称                     |
-| `fieldset`      | `{ [key: string]: ISchema }`                                     | 触发器配置项集合                   |
-| `scope?`        | `{ [key: string]: any }`                                         | 配置项 Schema 中可能用到的对象集合 |
-| `components?`   | `{ [key: string]: React.FC }`                                    | 配置项 Schema 中可能用到的组件集合 |
-| `useVariables?` | `(config: any, options: UseVariableOptions ) => VariableOptions` | 触发上下文数据的值获取器           |
+| Parameter            | Type                                                             | Description                             |
+| -------------------- | ---------------------------------------------------------------- | --------------------------------------- |
+| `title`              | `string`                                                         | Trigger type name                       |
+| `fieldset`           | `{ [key: string]: ISchema }`                                     | Set of trigger configuration options    |
+| `scope?`             | `{ [key: string]: any }`                                         | Object set that may be used in the configuration schema |
+| `components?`        | `{ [key: string]: React.FC }`                                    | Component set that may be used in the configuration schema |
+| `useVariables?`      | `(config: any, options: UseVariableOptions) => VariableOptions`  | Value getter for trigger context data   |
 
-- `useVariables` 如果没有设置，则代表该类型触发器不提供取值功能，在流程的节点中无法选取触发器的上下文数据。
+- If `useVariables` is not set, it means that this type of trigger does not provide a value-fetching function, and the trigger's context data cannot be selected in the flow node.
 
-### `Instruction`
+## `Instruction`
 
-指令基类，用于扩展自定义节点类型。
+Base class for instructions, used to extend custom node types.
 
-| 参数                 | 类型                                                    | 说明                                                                           |
-| -------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| `group`              | `string`                                                | 节点类型分组标识，目前可选：`'control'`/`'collection'`/`'manual'`/`'extended'` |
-| `fieldset`           | `Record<string, ISchema>`                               | 节点配置项集合                                                                 |
-| `scope?`             | `Record<string, Function>`                              | 配置项 Schema 中可能用到的对象集合                                             |
-| `components?`        | `Record<string, React.FC>`                              | 配置项 Schema 中可能用到的组件集合                                             |
-| `Component?`         | `React.FC`                                              | 节点自定义渲染组件                                                             |
-| `useVariables?`      | `(node, options: UseVariableOptions) => VariableOption` | 节点提供节点变量选项的方法                                                     |
-| `useScopeVariables?` | `(node, options?) => VariableOptions`                   | 节点提供分支局域变量选项的方法                                                 |
-| `useInitializers?`   | `(node) => SchemaInitializerItemType`                   | 节点提供初始化器选项的方法                                                     |
-| `isAvailable?`       | `(ctx: NodeAvailableContext) => boolean`                | 节点是否可用的判断方法                                                         |
+| Parameter                 | Type                                                    | Description                                                                           |
+| ------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `group`                   | `string`                                                | Node type group identifier, currently optional: `'control'`/`'collection'`/`'manual'`/`'extended'` |
+| `fieldset`                | `Record<string, ISchema>`                               | Set of node configuration options                                                     |
+| `scope?`                  | `Record<string, Function>`                              | Object set that may be used in the configuration schema                               |
+| `components?`             | `Record<string, React.FC>`                              | Component set that may be used in the configuration schema                            |
+| `Component?`              | `React.FC`                                              | Custom rendering component for the node                                               |
+| `useVariables?`           | `(node, options: UseVariableOptions) => VariableOption` | Method for providing node variable options                                            |
+| `useScopeVariables?`      | `(node, options?) => VariableOptions`                   | Method for providing local variable options for the branch                            |
+| `useInitializers?`        | `(node) => SchemaInitializerItemType`                   | Method for providing initializer options for the node                                 |
+| `isAvailable?`            | `(ctx: NodeAvailableContext) => boolean`                | Method for determining whether the node is available in the current environment       |
 
-**相关类型**
+**Related Types**
 
 ```ts
 export type NodeAvailableContext = {
@@ -342,7 +345,7 @@ export type NodeAvailableContext = {
 };
 ```
 
-- `useVariables` 如果没有设置，则代表该节点类型不提供取值功能，在流程的节点中无法选该类型节点的结果数据。如果结果值是单一的（不可选），则返回一个可以表达对应信息的静态内容即可（参考：[运算节点源码](https://github.com/nocobase/nocobase/blob/main/packages/plugins/@nocobase/plugin-workflow/src/client/nodes/calculation.tsx#L68)）。如果需要可选（如一个 Object 中的某个属性），则可以自定义对应的选择组件输出（参考：[新增数据节点源码](https://github.com/nocobase/nocobase/blob/main/packages/plugins/@nocobase/plugin-workflow/src/client/nodes/create.tsx#L41)）。
-- `Component` 节点自定义渲染组件，当默认节点渲染不满足时可以完全覆盖替代使用，进行自定义节点视图渲染。例如要针对分支类型的开始节点提供更多操作按钮或其他交互，则需要使用该方法（参考：[并行分支源码](https://github.com/nocobase/nocobase/blob/main/packages/plugins/@nocobase/plugin-workflow-parallel/src/client/ParallelInstruction.tsx)）。
-- `useInitializers` 用于提供初始化区块的方法，例如在人工节点中可以根据上游节点初始化相关用户区块。如果提供了该方法，则会在人工节点界面配置中初始化区块时可用（参考：[新增数据节点源码](https://github.com/nocobase/nocobase/blob/main/packages/plugins/@nocobase/plugin-workflow/src/client/nodes/create.tsx#L71)）。
-- `isAvailable` 主要用于判断节点是否可以在当前环境中可以被使用（添加）。当前环境包括当前工作流、上游节点和当前分支索引等。
+- If `useVariables` is not set, it means that this node type does not provide a value-fetching function, and the result data of this node type cannot be selected in the flow. If the result value is singular (non-selectable), a static content that expresses the corresponding information can be returned (refer to the [calculation node source code](https://github.com/nocobase/nocobase/blob/main/packages/plugins/@nocobase/plugin-workflow/src/client/nodes/calculation.tsx#L68)). If selection is required (e.g., a property in an Object), a custom selection component output can be provided (refer to the [Create Data Node source code](https://github.com/nocobase/nocobase/blob/main/packages/plugins/@nocobase/plugin-workflow/src/client/nodes/create.tsx#L41)).
+- `Component`: Custom rendering component for the node, used when the default node rendering is not sufficient, allowing for complete customization of the node view. For example, to provide more operation buttons or other interactive elements for the start node of a branch type, this method should be used (refer to the [Parallel Branch source code](https://github.com/nocobase/nocobase/blob/main/packages/plugins/@nocobase/plugin-workflow-parallel/src/client/ParallelInstruction.tsx)).
+- `useInitializers`: Used to provide methods for initialization blocks, for example, in a manual node, it can initialize relevant user blocks based on the upstream node. If this method is provided, it will be available during the initialization block in the manual node configuration interface (refer to the [Create Data Node source code](https://github.com/nocobase/nocobase/blob/main/packages/plugins/@nocobase/plugin-workflow/src/client/nodes/create.tsx#L71)).
+- `isAvailable`: Mainly used to determine whether the node can be used (added) in the current environment. The current environment includes the current workflow, upstream nodes, and the current branch index.

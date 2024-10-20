@@ -1,0 +1,60 @@
+# v0.7.5：2022-10-16
+
+## 統合された内容
+
+- chore(versions): 😊 v0.7.5-alpha.1を公開しました [`#920`](https://github.com/nocobase/nocobase/pull/920)
+- feat: プラグインワークフローコレクションフィールドを追加 [`#919`](https://github.com/nocobase/nocobase/pull/919)
+- feat: 値の配列を作成 [`#912`](https://github.com/nocobase/nocobase/pull/912)
+- fix: エラー発生時のバインド解除を修正 [`#914`](https://github.com/nocobase/nocobase/pull/914)
+- fix: マージの追加で主キーを使用するようになりました [`#911`](https://github.com/nocobase/nocobase/pull/911)
+- feat: データベース識別子に制限を追加 [`#908`](https://github.com/nocobase/nocobase/pull/908)
+- fix: コレクションフィールドのデフォルト値を同期 [`#907`](https://github.com/nocobase/nocobase/pull/907)
+- fix: マージの追加に含まれる部分を修正 [`#905`](https://github.com/nocobase/nocobase/pull/905)
+- fix: シングルリレーションリポジトリの追加クエリの問題を修正 [`#901`](https://github.com/nocobase/nocobase/pull/901)
+- feat(plugin-workflow): 連結計算機を追加 [`#894`](https://github.com/nocobase/nocobase/pull/894)
+- fix(client/record-picker): レコードピッカーの表示形式DataPickerをサポート [`#888`](https://github.com/nocobase/nocobase/pull/888)
+- fix(client/block-select-collection): コレクションメニュー表示エラーを修正 [`#889`](https://github.com/nocobase/nocobase/pull/889)
+- fix: ファイルアップロード中にフォーム送信ができない問題を修正 [`#892`](https://github.com/nocobase/nocobase/pull/892)
+- fix: Jestによるテスト実行を修正 [`#891`](https://github.com/nocobase/nocobase/pull/891)
+- feat(collection-manager): 逆フィールドの設定が可能になりました [`#883`](https://github.com/nocobase/nocobase/pull/883)
+- fix(formula): 整数をサポートし、NaNエラーを修正 [`#879`](https://github.com/nocobase/nocobase/pull/879)
+- fix: ソートパラメータが欠如している問題を修正 [`#849`](https://github.com/nocobase/nocobase/pull/849)
+- fix: リポジトリのfindメソッドにおける追加フィールドによる遅延結合クエリの問題を修正 [`#845`](https://github.com/nocobase/nocobase/pull/845)
+- feat(core/cache): キャッシュをサポート [`#876`](https://github.com/nocobase/nocobase/pull/876)
+- feat: 更新オプションにはフィルタまたはfilterByTkが必要です [`#847`](https://github.com/nocobase/nocobase/pull/847)
+- ロシア語翻訳を追加 [`#840`](https://github.com/nocobase/nocobase/pull/840)
+- feat(database): シーケンスフィールドタイプを追加 [`#779`](https://github.com/nocobase/nocobase/pull/779)
+- fix: URLを介して無許可のページにアクセスできない問題を修正 [`#826`](https://github.com/nocobase/nocobase/pull/826)
+- refactor(resourcer): ミドルウェアクラスを統合 [`#825`](https://github.com/nocobase/nocobase/pull/825)
+- refactor(database): 一部のフィールドとタイプを修正 [`#820`](https://github.com/nocobase/nocobase/pull/820)
+- feat(locale): 日本語翻訳を追加 [`#813`](https://github.com/nocobase/nocobase/pull/813)
+- fix(plugin-workflow): DatePickerの値タイプをmomentに修正 [`#819`](https://github.com/nocobase/nocobase/pull/819)
+- refactor(plugin-workflow): クライアント計算機レジストリをエクスポート [`#816`](https://github.com/nocobase/nocobase/pull/816)
+- fix: 数値ストレージタイプをdoubleに変更 [`#810`](https://github.com/nocobase/nocobase/pull/810)
+- refactor(server) [`#795`](https://github.com/nocobase/nocobase/pull/795)
+- fix(plugin-verification): プロバイダーのレートリミットエラーを429に変更 [`#788`](https://github.com/nocobase/nocobase/pull/788)
+- fix(plugin-cm): 更新に失敗した後のフィールドの消失を修正 [`#773`](https://github.com/nocobase/nocobase/pull/773)
+- fix: uiSchemaが未定義である問題を修正 [`#770`](https://github.com/nocobase/nocobase/pull/770)
+- fix(plugin-cm): 更新時のユニークオプションのデフォルト値を修正 [`#768`](https://github.com/nocobase/nocobase/pull/768)
+- fix(plugin-users): プロフィール更新時の500エラーを修正 [`#767`](https://github.com/nocobase/nocobase/pull/767)
+- fix: MySQLのWHERE句におけるカラムが曖昧である問題を修正 [`#756`](https://github.com/nocobase/nocobase/pull/756)
+- feat(plugin-cm): 基本フィールド用のユニークオプションを追加 [`#745`](https://github.com/nocobase/nocobase/pull/745)
+- feat(plugin-verification): ユーザーのためにプラグイン検証と電話を追加 [`#722`](https://github.com/nocobase/nocobase/pull/722)
+- feat: ドラッグ＆ドロップでグリッド列をサイズ変更 [`#748`](https://github.com/nocobase/nocobase/pull/748)
+- refactor(client): スキーマ初期化プログラムを複数のファイルに分割 [`#744`](https://github.com/nocobase/nocobase/pull/744)
+- refactor(plugin-workflow): ファイルモードを644に変更 [`#755`](https://github.com/nocobase/nocobase/pull/755)
+- fix: データベースバージョンチェックを修正 [`#749`](https://github.com/nocobase/nocobase/pull/749)
+- feat: 例を追加 [`#718`](https://github.com/nocobase/nocobase/pull/718)
+
+## 修正
+
+- fix(plugin-workflow): DatePickerの値のタイプをmomentに修正 (#815) (#819) [`#815`](https://github.com/nocobase/nocobase/issues/815)
+- fix(plugin-users): プロフィール更新時の500エラーを修正 (#766) (#767) [`#766`](https://github.com/nocobase/nocobase/issues/766)
+- fix: データベースバージョンチェックを修正 (#749) [`#742`](https://github.com/nocobase/nocobase/issues/742)
+
+## コミット
+
+- fix(client): 作成フォームブロックのタブペイン初期化プログラムを修正 [`7efc4bc`](https://github.com/nocobase/nocobase/commit/7efc4bca0e3c5f2e1c5cd9e1365e77a005f3e108)
+- fix: トランザクションが状態rollbackで終了したため、ロールバックできません [`6dacec4`](https://github.com/nocobase/nocobase/commit/6dacec4158103fd165ec2865ea87ed9d3d4ceaa4)
+- fix(database): インデックス名が長すぎるエラーを修正 [`7bfe6b8`](https://github.com/nocobase/nocobase/commit/7bfe6b8c46bef0183c4703683175561c7fc91aee)
+

@@ -3,6 +3,8 @@
 ## Introduction
 Variables are a set of tokens used to identify a value in the current context. They can be used in scenarios such as configuration block data scope, field default values, linkage rules, workflows, etc.
 
+![2024-09-25_20-08-38-2024-09-25-20-11-51](https://static-docs.nocobase.com/2024-09-25_20-08-38-2024-09-25-20-11-51.png)
+
 ## Currently Supported Variables
 
 ### Current user
@@ -101,6 +103,12 @@ The blocks in the popup can use the "Current popup record" variable, with the fo
 #### Assign field values configuration for form submit actions
 
 ![20240416224014_rec_](https://static-docs.nocobase.com/20240416224014_rec_.gif)
+
+### Table Select Record
+
+Default values for form fields that are currently only used for the Add record action for a table block
+
+#### The default value of the form field for the Add record action
 
 ### Parent record (Deprecated)
 

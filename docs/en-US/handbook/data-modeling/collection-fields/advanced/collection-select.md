@@ -1,10 +1,10 @@
-# 数据表选择器
+# Collection Select
 
-## 介绍
+## Introduction
 
-## 字段配置
+## Field configuration
 
 ![20240512174047](https://static-docs.nocobase.com/20240512174047.png)
 
-## 示例
+## Instructions
 

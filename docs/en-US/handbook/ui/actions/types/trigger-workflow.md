@@ -1,5 +1,5 @@
-# 触发工作流
+# Trigger Workflow
 
-<PluginInfo name="workflow-custom-action-trigger" link="/handbook/workflow/plugins/custom-action-trigger" commercial="true"></PluginInfo>
+<PluginInfo name="workflow-custom-action-trigger" link="/handbook/workflow-custom-action-trigger" commercial="true"></PluginInfo>
 
-<embed src="../../../workflow/plugins/custom-action-trigger/action.md#L3-L999"></embed>
+<embed src="../../../workflow-custom-action-trigger/action.md#L3-L999"></embed>

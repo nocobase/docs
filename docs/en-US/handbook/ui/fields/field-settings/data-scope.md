@@ -1,32 +1,32 @@
-# 设置数据范围
+# Set The Data Scope
 
-## 介绍
+## Introduction
 
-关系字段的数据范围设置类似于区块的数据范围设置，为关系数据设定默认的筛选条件。
+The data scope for relationship fields is similar to the data scope setting for blocks, allowing you to set default filtering criteria for relational data.
 
-## 使用说明
+## Instructions
 
 ![20240422153711](https://static-docs.nocobase.com/20240422153711.png)
 
-### 静态值
+### Static Value
 
-示例：仅在售商品可以选择关联。
+Example: Only products currently for sale can be selected as related items.
 
 ![20240422155953](https://static-docs.nocobase.com/20240422155953.png)
 
-### 变量值
+### Variable Value
 
-示例：仅商品生产日期早于上个月的商品可以选择关联。
+Example: Only products with a production date earlier than last month can be selected as related items.
 
 ![20240422163640](https://static-docs.nocobase.com/20240422163640.png)
 
-更多关于变量内容参考 [变量](/handbook/ui/variables)
+For more information on variables, refer to [Variables](/handbook/ui/variables).
 
-### 关系字段联动
+### Relationship Field Linkage
 
-关系字段之间通过设置数据范围实现联动。
+Relationship fields can be linked by setting the data scope.
 
-示例：订单表中有多对多关系字段「商品」和多对一关系字段「客户」， 商品表有多对多关系字段 「客户」，在订单表单区块中，商品的可选数据为当前表单中所选客户关联的商品。
+Example: In the order form, there are many-to-many relationship fields "Products" and a many-to-one relationship field "Customers." The product table has a many-to-many relationship field "Customers." In the order form block, the selectable products are those associated with the customer selected in the current form.
 
 ![20240422154145](https://static-docs.nocobase.com/20240422154145.png)
 

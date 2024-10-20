@@ -1,48 +1,72 @@
-# 表格字段
+# Table Fields
 
-## 介绍
+## Introduction
 
-表格字段除了支持对字段调整列宽、字段标题、排序等，对于特定字段（如日期字段、关系字段、数值字段）还支持更多个性化的展示配置。
+Table fields offer a robust set of features beyond basic column width adjustment, field titles, and sorting. They provide enhanced display configurations for specialized fields such as date fields, relationship fields, and numerical fields, allowing for a more tailored and informative data presentation.
 
 ![20240511140644](https://static-docs.nocobase.com/20240511140644.png)
-## 字段配置项
 
-### 日期字段格式化
+## Field Configuration Options
+
+### Date Field Formatting
 
 ![20240417114116](https://static-docs.nocobase.com/20240417114116.png)
 
-更多内容参考 [日期格式化](/handbook/ui/fields/specific/date-picker)
+For comprehensive information on date formatting options, consult the [Date Formatting](/handbook/ui/fields/specific/date-picker) guide.
 
-### 数值字段格式化
+### Numerical Field Formatting
 
 ![20240417215229](https://static-docs.nocobase.com/20240417215229.png)
 
-支持简单的单位换算，千分位分隔符，前后缀，精确度，科学记数法。
+The numerical field formatting feature offers versatile options including:
+- Simple unit conversion
+- Thousands separators
+- Prefixes and suffixes
+- Precision control
+- Scientific notation
 
 ![20240417215425](https://static-docs.nocobase.com/20240417215425.png)
 
-更多内容参考 [数值格式化](/handbook/ui/fields/field-settings/number-format)
+For an in-depth exploration of numerical formatting capabilities, refer to the [Number Formatting](/handbook/ui/fields/field-settings/number-format) documentation.
 
-### 排序
+### Sorting
 
-只支持同时对一列进行排序,针对当前页数据排序，暂不支持以关系字段排序。
+The current sorting functionality allows for single-column sorting within the current page data. Note that sorting by relationship fields is not supported in this version.
 
 ![20240422115501](https://static-docs.nocobase.com/20240422115501.png)
 
-### 固定列
+### Fixed Columns
 
 ![20240511140524](https://static-docs.nocobase.com/20240511140524.png)
 
-### 字段组件
+### Field Components
 
-部分字段支持切换为其他组件，例如：`URL` 组件可以切换为 `Preview` 组件。
+Certain fields offer the flexibility to switch between different component types. For instance, the `URL` component can be toggled to function as a `Preview` component.
 
 ![20240806165152](https://static-docs.nocobase.com/20240806165152.png)
 
-如果你需要扩展更多的组件，可以参考 [扩展有值字段组件组件](/plugin-samples/field/value)。
+For developers looking to expand the range of available components, the [Extending Value Field Components](/plugin-samples/field/value) guide provides valuable insights.
 
-### 风格
-支持按条件配置列的颜色和背景颜色
-![风格入口](https://static-docs.nocobase.com/风格入口.png)
-![2024-06-26-14-06-07-样式配置](https://static-docs.nocobase.com/2024-06-26-14-06-07-样式配置.png)
-![2024-06-26-14-06-17-最终效果](https://static-docs.nocobase.com/2024-06-26-14-06-17-最终效果.png)
+### Styles
+
+The styling feature enables dynamic configuration of column colors and background colors based on specified conditions. To illustrate this powerful functionality, let's walk through an example using a bank transaction details table:
+
+Scenario: We want to visually differentiate between income (positive amounts) and expenses (negative amounts) in the transaction amount column.
+
+Step-by-step guide:
+
+1. Access the field settings for the transaction amount column and navigate to the Style option.
+![style-menu-2024-08-08-18-23-13](https://static-docs.nocobase.com/style-menu-2024-08-08-18-23-13.png)
+
+2. Create the first conditional rule: For positive transactions (income), set the field color to green.
+   - Click "Add Linkage Rule"
+   - Configure: When transaction amount > 0, apply green color
+![style-green-2024-08-08-18-33-34](https://static-docs.nocobase.com/style-green-2024-08-08-18-33-34.png)
+
+3. Establish the second conditional rule: For negative transactions (expenses), set the field color to red.
+   - Click "Add Linkage Rule" again
+   - Configure: When transaction amount < 0, apply red color
+![style-red-2024-08-08-18-35-01](https://static-docs.nocobase.com/style-red-2024-08-08-18-35-01.png)
+
+The result is a visually intuitive representation of financial data:
+![result-2024-08-08-18-38-05](https://static-docs.nocobase.com/result-2024-08-08-18-38-05.png)

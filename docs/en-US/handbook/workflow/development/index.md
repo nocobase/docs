@@ -1,12 +1,12 @@
 # Overview
 
-工作流的内置的功能不可能覆盖所有场景，比如内置的节点类型无法穷举所有业务场景中的每一种操作，所以我们还提供了对工作流进行扩展的设计，包括扩展触发器与节点类型等方面，在内置功能无法满足的业务场景，可以通过低代码的方式扩展解决。
+While the built-in features of workflows are robust, they may not cover every possible scenario. For instance, the default node types might not accommodate all the operations required in diverse business contexts. To address these gaps, we offer an extension framework for workflows, enabling you to expand trigger types and node functionalities. When the built-in features fall short, these extensions allow you to customize solutions using low-code techniques.
 
-扩展主要分为两部分内容：
+These extensions are categorized into two main areas:
 
-- [扩展触发器类型](./trigger.md)
-- [扩展节点类型](./instruction.md)
+- [Extend Trigger Types](./trigger.md)
+- [Extend Node Types](./instruction.md)
 
-## 其他内容
+## Additional Resources
 
-- [API 参考](./api.md)
+- [API Reference](./api.md)

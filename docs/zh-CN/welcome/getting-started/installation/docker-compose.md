@@ -51,6 +51,8 @@ services:
       - DB_USER=nocobase
       # 数据库密码
       - DB_PASSWORD=nocobase
+      # 时区
+      - TZ=Asia/Shanghai
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
@@ -105,10 +107,10 @@ services:
       - DB_USER=root
       # 数据库密码
       - DB_PASSWORD=nocobase
-      # 仅 MySQL（或 MariaDB）有效
-      - DB_TIMEZONE=+08:00
       # 数据库表名、字段名是否转为 snake case 风格
       - DB_UNDERSCORED=true
+      # 时区
+      - TZ=Asia/Shanghai
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
@@ -163,10 +165,10 @@ services:
       - DB_USER=root
       # 数据库密码
       - DB_PASSWORD=nocobase
-      # 仅 MySQL（或 MariaDB）有效
-      - DB_TIMEZONE=+08:00
       # 数据库表名、字段名是否转为 snake case 风格
       - DB_UNDERSCORED=true
+      # 时区
+      - TZ=Asia/Shanghai
     volumes:
       - ./storage:/app/nocobase/storage
     ports:

@@ -1,55 +1,55 @@
-# 认证：钉钉
+# Auth: DingTalk
 
 <PluginInfo commercial="true" name="auth-dingtalk"></PluginInfo>
 
-## 介绍
+## Introduction
 
-认证：钉钉 插件支持用户使用钉钉账号登录 NocoBase.
+The **Auth: DingTalk** plugin enables users to log in to NocoBase using their DingTalk accounts, streamlining the login process.
 
-## 激活插件
+## Activating the Plugin
 
 ![](https://static-docs.nocobase.com/202406120929356.png)
 
-## 在钉钉开发者后台申请接口权限
+## Applying for API Permissions in the DingTalk Developer Console
 
-参考 <a href="https://open.dingtalk.com/document/orgapp/tutorial-obtaining-user-personal-information" target="_blank">钉钉开放平台 - 实现登录第三方网站</a>，创建一个应用。
+Follow the steps outlined in the <a href="https://open.dingtalk.com/document/orgapp/tutorial-obtaining-user-personal-information" target="_blank">DingTalk Open Platform - Implement Login for Third-Party Websites</a> guide to create your application.
 
-进入应用管理后台，开通“个人手机号信息”和“通讯录个人信息读权限”。
+Once in the application management console, ensure you enable both "Personal Mobile Number Information" and "Address Book Personal Information Read Permissions."
 
 ![](https://static-docs.nocobase.com/202406120006620.png)
 
-## 从钉钉开发者后台获取密钥
+## Obtaining the Client Secret from the DingTalk Developer Console
 
-复制 Client ID 和 Client Secret.
+Copy your **Client ID** and **Client Secret** from the console.
 
 ![](https://static-docs.nocobase.com/202406120000595.png)
 
-## 在 NocoBase 上添加钉钉认证
+## Adding DingTalk Authentication to NocoBase
 
-进入用户认证插件管理页面。
+Navigate to the **Authentication** plugin management page.
 
 ![](https://static-docs.nocobase.com/202406112348051.png)
 
-添加 - 钉钉
+Select **Add new - DingTalk**
 
 ![](https://static-docs.nocobase.com/202406112349664.png)
 
-### 配置
+### Configuration
 
 ![](https://static-docs.nocobase.com/202406120016896.png)
 
-- Sign up automatically when the user does not exist - 当使用手机号匹配不到已有用户时，是否自动创建新用户。
-- Client ID 和 Client Secret - 填写上一步复制的信息。
-- Redirect URL - 回调 URL，复制并进入下一步。
+- **Sign up automatically when the user does not exist** - When the phone number does not match an existing user, a new user is automatically created.
+- **Client ID and Client Secret** - Enter the information you copied earlier.
+- **Redirect URL** - Enter the callback URL, copy it, and proceed to the next step.
 
-## 在钉钉开发者后台配置回调 URL
+## Configuring the Callback URL in the DingTalk Developer Console
 
-将复制的回调 URL 填写到钉钉开发者后台。
+Paste the copied **Callback URL** into the appropriate field in the DingTalk Developer Console.
 
 ![](https://static-docs.nocobase.com/202406120012221.png)
 
-## 登录
+## Login
 
-访问登录页面，点击登录表单下方按钮发起第三方登录。
+Go to the login page and click the button below the login form to initiate third-party login through DingTalk.
 
 ![](https://static-docs.nocobase.com/202406120014539.png)

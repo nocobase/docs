@@ -1,11 +1,11 @@
-# 点
+# Point
 
-## 介绍
+## Introduction
 
-## 字段配置
+## Field configuration
 
 ![20240512181420](https://static-docs.nocobase.com/20240512181420.png)
 
-## 示例
+## Instructions
 
-待补充
+to be added.

@@ -2,25 +2,30 @@ export default [
   {
     title: 'Overview',
     'title.zh-CN': '插件总览',
+    'title.ja-JP': '概要',
     link: '/plugins',
   },
   {
     title: 'Plugins',
     'title.zh-CN': '插件列表',
+    'title.ja-JP': 'プラグイン',
     type: 'group',
     children: [
       {
         title: 'Data modeling',
         'title.zh-CN': '数据建模',
+        'title.ja-JP': 'データモデリング',
         children: [
           {
             title: 'Collection manager',
             'title.zh-CN': '数据表管理',
+            'title.ja-JP': 'コレクションマネージャー',
             subTitle: '@nocobase/plugin-collection-manager',
             children: [
               {
                 title: 'Overview',
                 'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
                 link: '/plugins/collection-manager',
               },
             ],
@@ -28,66 +33,77 @@ export default [
           {
             title: 'Graph collection manager',
             'title.zh-CN': '可视化数据表管理',
+            'title.ja-JP': 'グラフコレクションマネージャー',
             subTitle: '@nocobase/plugin-graph-collection-manager',
             link: '/plugins/graph-collection-manager',
           },
           {
             title: 'Connect to foreign data（FDW）',
             'title.zh-CN': '连接外部数据（FDW）',
+            'title.ja-JP': '外部データに接続（FDW）',
             subTitle: '@nocobase/plugin-collection-fdw',
             link: '/plugins/collection-fdw',
           },
           {
             title: 'Data source manager',
             'title.zh-CN': '数据源管理',
+            'title.ja-JP': 'データソースマネージャー',
             subTitle: '@nocobase/plugin-data-source-manager',
             link: '/plugins/data-source-manager',
           },
           {
             title: 'Data source - MariaDB',
             'title.zh-CN': '数据源 - MariaDB',
+            'title.ja-JP': 'データソース - MariaDB',
             subTitle: '@nocobase/plugin-data-source-mariadb',
             link: '/plugins/data-source-mariadb',
           },
           {
             title: 'Data source - MySQL',
             'title.zh-CN': '数据源 - MySQL',
+            'title.ja-JP': 'データソース - MySQL',
             subTitle: '@nocobase/plugin-data-source-mysql',
             link: '/plugins/data-source-mysql',
           },
           {
             title: 'Data source - PostgreSQL',
             'title.zh-CN': '数据源 - PostgreSQL',
+            'title.ja-JP': 'データソース - PostgreSQL',
             subTitle: '@nocobase/plugin-data-source-postgres',
             link: '/plugins/data-source-postgres',
           },
           {
             title: 'China region',
             'title.zh-CN': '中国行政区',
+            'title.ja-JP': '中国の行政区',
             subTitle: '@nocobase/plugin-china-region',
             link: '/plugins/china-region',
           },
           {
             title: 'Formula field',
             'title.zh-CN': '计算公式字段',
+            'title.ja-JP': '計算式フィールド',
             subTitle: '@nocobase/plugin-formula-field',
             link: '/plugins/formula-field',
           },
           {
             title: 'Sequence field',
             'title.zh-CN': '自动编码',
+            'title.ja-JP': '自動エンコード',
             subTitle: '@nocobase/plugin-sequence-field',
             link: '/plugins/sequence-field',
           },
           {
             title: 'Snapshot field',
             'title.zh-CN': '快照字段',
+            'title.ja-JP': 'スナップショットフィールド',
             subTitle: '@nocobase/plugin-snapshot-field',
             link: '/plugins/snapshot-field',
           },
           {
             title: 'File manager',
             'title.zh-CN': '文件管理器',
+            'title.ja-JP': 'ファイルマネージャー',
             subTitle: '@nocobase/plugin-file-manager',
             link: '/plugins/file-manager',
             // children: ['/plugins/file-manager', '/plugins/file-manager/user'],
@@ -97,38 +113,45 @@ export default [
       {
         title: 'UI editor',
         'title.zh-CN': 'UI 配置',
+        'title.ja-JP': 'UI エディタ',
         children: [
           {
             title: 'UI schema storage',
             'title.zh-CN': 'UI schema 存储',
+            'title.ja-JP': 'UI スキーマストレージ',
             subTitle: '@nocobase/plugin-ui-schema-storage',
             link: '/plugins/ui-schema-storage',
           },
           {
             title: 'Web client',
             'title.zh-CN': 'WEB 客户端',
+            'title.ja-JP': 'Web クライアント',
             subTitle: '@nocobase/plugin-client',
             link: '/plugins/client',
           },
           {
             title: 'Mobile client',
             'title.zh-CN': 'Mobile 客户端',
+            'title.ja-JP': 'モバイルクライアント',
             subTitle: '@nocobase/plugin-mobile-client',
             link: '/plugins/mobile-client',
           },
           {
             title: 'Data visualization',
             'title.zh-CN': '数据可视化',
+            'title.ja-JP': 'データビジュアライゼーション',
             subTitle: '@nocobase/plugin-data-visualization',
             children: [
               {
                 title: 'Overview',
                 'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
                 link: '/plugins/data-visualization',
               },
               {
                 title: 'User manual',
                 'title.zh-CN': '使用手册',
+                'title.ja-JP': 'ユーザーマニュアル',
                 children: [
                   '/plugins/data-visualization/user/chart-block',
                   '/plugins/data-visualization/user/configure',
@@ -138,6 +161,7 @@ export default [
               {
                 title: 'Development',
                 'title.zh-CN': '开发指南',
+                'title.ja-JP': '開発ガイド',
                 children: [
                   '/plugins/data-visualization/dev',
                   '/plugins/data-visualization/step-by-step',
@@ -148,6 +172,7 @@ export default [
           {
             title: 'Gantt block',
             'title.zh-CN': '甘特图区块',
+            'title.ja-JP': 'ガントブロック',
             subTitle: '@nocobase/plugin-gantt',
             link: '/plugins/gantt',
             // children: ['/plugins/gantt-block', '/plugins/gantt-block/user'],
@@ -155,60 +180,70 @@ export default [
           {
             title: 'Iframe block',
             'title.zh-CN': 'Iframe 区块',
+            'title.ja-JP': 'Iframe ブロック',
             subTitle: '@nocobase/plugin-iframe-block',
             link: '/plugins/iframe-block',
           },
           {
             title: 'Kanban block',
             'title.zh-CN': '看板区块',
+            'title.ja-JP': 'カンバンブロック',
             subTitle: '@nocobase/plugin-kanban',
             link: '/plugins/kanban',
           },
           {
             title: 'Map',
             'title.zh-CN': '地图',
+            'title.ja-JP': '地図',
             subTitle: '@nocobase/plugin-map',
             link: '/plugins/map',
           },
           {
             title: 'Action - Bulk edit ',
             'title.zh-CN': '操作 - 批量编辑',
+            'title.ja-JP': 'アクション - 一括編集',
             subTitle: '@nocobase/plugin-action-bulk-edit',
             link: '/plugins/action-bulk-edit',
           },
           {
             title: 'Action - Bulk update',
             'title.zh-CN': '操作 - 批量更新',
+            'title.ja-JP': 'アクション - 一括更新',
             subTitle: '@nocobase/plugin-action-bulk-update',
             link: '/plugins/action-bulk-update',
           },
           {
             title: 'Action - Custom request',
             'title.zh-CN': '操作 - 自定义请求',
+            'title.ja-JP': 'アクション - カスタムリクエスト',
             subTitle: '@nocobase/plugin-custom-request',
             link: '/plugins/custom-request',
           },
           {
             title: 'Action - Duplicate',
             'title.zh-CN': '操作 - 复制',
+            'title.ja-JP': 'アクション - 複製',
             subTitle: '@nocobase/plugin-action-duplicate',
             link: '/plugins/action-duplicate',
           },
           {
             title: 'Action - Export',
             'title.zh-CN': '操作 - 导出',
+            'title.ja-JP': 'アクション - エクスポート',
             subTitle: '@nocobase/plugin-export',
             link: '/plugins/export',
           },
           {
             title: 'Action - Import',
             'title.zh-CN': '操作 - 导入',
+            'title.ja-JP': 'アクション - インポート',
             subTitle: '@nocobase/plugin-import',
             link: '/plugins/import',
           },
           {
             title: 'Action - Print',
             'title.zh-CN': '操作 - 打印',
+            'title.ja-JP': 'アクション - 印刷',
             subTitle: '@nocobase/plugin-action-print',
             link: '/plugins/action-print',
           },
@@ -217,25 +252,30 @@ export default [
       {
         title: 'Users authentication',
         'title.zh-CN': '用户认证',
+        'title.ja-JP': 'ユーザー認証',
         children: [
           {
             title: 'Authentication',
             'title.zh-CN': '用户认证',
+            'title.ja-JP': '認証',
             subTitle: '@nocobase/plugin-auth',
             children: [
               {
                 title: 'Overview',
                 'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
                 link: '/plugins/auth',
               },
               {
                 title: 'User manual',
                 'title.zh-CN': '使用手册',
+                'title.ja-JP': 'ユーザーマニュアル',
                 link: '/plugins/auth/user',
               },
               {
                 title: 'Development',
                 'title.zh-CN': '开发指南',
+                'title.ja-JP': '開発ガイド',
                 children: ['/plugins/auth/dev/guide', '/plugins/auth/dev/api'],
               },
             ],
@@ -243,22 +283,26 @@ export default [
           {
             title: 'Authentication - CAS',
             'title.zh-CN': '用户认证 - CAS',
+            'title.ja-JP': '認証 - CAS',
             subTitle: '@nocobase/plugin-cas',
             link: '/plugins/cas',
           },
           {
             title: 'Authentication - OIDC',
             'title.zh-CN': '用户认证 - OIDC',
+            'title.ja-JP': '認証 - OIDC',
             subTitle: '@nocobase/plugin-oidc',
             children: [
               {
                 title: 'User manual',
                 'title.zh-CN': '使用手册',
+                'title.ja-JP': 'ユーザーマニュアル',
                 link: '/plugins/oidc',
               },
               {
                 title: 'Example',
                 'title.zh-CN': '示例',
+                'title.ja-JP': '例',
                 children: ['/plugins/oidc/example/google'],
               },
             ],
@@ -266,16 +310,19 @@ export default [
           {
             title: 'Authentication - SAML',
             'title.zh-CN': '用户认证 - SAML',
+            'title.ja-JP': '認証 - SAML',
             subTitle: '@nocobase/plugin-saml',
             children: [
               {
                 title: 'User manual',
                 'title.zh-CN': '使用手册',
+                'title.ja-JP': 'ユーザーマニュアル',
                 link: '/plugins/saml',
               },
               {
                 title: 'Example',
                 'title.zh-CN': '示例',
+                'title.ja-JP': '例',
                 children: ['/plugins/saml/example/google'],
               },
             ],
@@ -283,12 +330,14 @@ export default [
           {
             title: 'Authentication - SMS',
             'title.zh-CN': '用户认证 - 短信',
+            'title.ja-JP': '認証 - SMS',
             subTitle: '@nocobase/plugin-sms-auth',
             link: '/plugins/sms-auth',
           },
           {
             title: 'Verification',
             'title.zh-CN': '验证码',
+            'title.ja-JP': '検証',
             subTitle: '@nocobase/plugin-verification',
             link: '/plugins/verification',
           },
@@ -297,21 +346,25 @@ export default [
       {
         title: 'Users & permissions',
         'title.zh-CN': '用户和权限',
+        'title.ja-JP': 'ユーザーと権限',
         children: [
           {
             title: 'Users',
             'title.zh-CN': '用户',
+            'title.ja-JP': 'ユーザー',
             subTitle: '@nocobase/plugin-users',
             link: '/plugins/users',
           },
           {
             title: 'ACL',
             'title.zh-CN': '权限控制',
+            'title.ja-JP': 'ACL',
             subTitle: '@nocobase/plugin-acl',
             children: [
               {
                 title: 'Overview',
                 'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
                 link: '/plugins/acl',
               },
               '/plugins/acl/user',
@@ -322,26 +375,31 @@ export default [
       {
         title: 'Workflow',
         'title.zh-CN': '工作流',
+        'title.ja-JP': 'ワークフロー',
         children: [
           {
             title: 'Workflow',
             'title.zh-CN': '工作流',
+            'title.ja-JP': 'ワークフロー',
             subTitle: '@nocobase/plugin-workflow',
             children: [
               {
                 title: 'Overview',
                 'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
                 link: '/plugins/workflow',
               },
               {
                 title: 'User manual',
                 'title.zh-CN': '使用手册',
+                'title.ja-JP': 'ユーザーマニュアル',
                 children: [
                   '/plugins/workflow/manual',
                   '/plugins/workflow/manual/advanced',
                   {
                     title: 'Triggers',
                     'title.zh-CN': '触发器',
+                    'title.ja-JP': 'トリガー',
                     children: [
                       '/plugins/workflow/manual/triggers',
                       '/plugins/workflow/manual/triggers/collection',
@@ -351,6 +409,7 @@ export default [
                   {
                     title: 'Nodes',
                     'title.zh-CN': '节点',
+                    'title.ja-JP': 'ノード',
                     children: [
                       '/plugins/workflow/manual/nodes',
                       '/plugins/workflow/manual/nodes/condition',
@@ -367,6 +426,7 @@ export default [
               {
                 title: 'Development',
                 'title.zh-CN': '开发指南',
+                'title.ja-JP': '開発ガイド',
                 children: [
                   '/plugins/workflow/development',
                   '/plugins/workflow/development/trigger',
@@ -379,84 +439,98 @@ export default [
           {
             title: 'Workflow - Aggregate',
             'title.zh-CN': '工作流 - 聚合节点',
+            'title.ja-JP': 'ワークフロー - 集約ノード',
             subTitle: '@nocobase/plugin-workflow-aggregate',
             link: '/plugins/workflow-aggregate',
           },
           {
             title: 'Workflow - Approval',
             'title.zh-CN': '工作流 - 审批',
+            'title.ja-JP': 'ワークフロー - 承認',
             subTitle: '@nocobase/plugin-workflow-approval',
             link: '/plugins/workflow-approval',
           },
           {
             title: 'Workflow - Delay',
             'title.zh-CN': '工作流 - 延时节点',
+            'title.ja-JP': 'ワークフロー - 遅延ノード',
             subTitle: '@nocobase/plugin-workflow-delay',
             link: '/plugins/workflow-delay',
           },
           {
             title: 'Workflow - Dynamic calculation',
             'title.zh-CN': '工作流 - 动态表达式计算',
+            'title.ja-JP': 'ワークフロー - 動的計算',
             subTitle: '@nocobase/plugin-workflow-dynamic-calculation',
             link: '/plugins/workflow-dynamic-calculation',
           },
           {
             title: 'Workflow - Form trigger',
             'title.zh-CN': '工作流 - 表单事件',
+            'title.ja-JP': 'ワークフロー - フォームトリガー',
             subTitle: '@nocobase/plugin-workflow-form-trigger',
             link: '/plugins/workflow-form-trigger',
           },
           {
             title: 'Workflow - JSON query',
             'title.zh-CN': '工作流 - JSON 解析节点',
+            'title.ja-JP': 'ワークフロー - JSON クエリノード',
             subTitle: '@nocobase/plugin-workflow-json-query',
             link: '/plugins/workflow-json-query',
           },
           {
             title: 'Workflow - Loop',
             'title.zh-CN': '工作流 - 循环节点',
+            'title.ja-JP': 'ワークフロー - ループノード',
             subTitle: '@nocobase/plugin-workflow-loop',
             link: '/plugins/workflow-loop',
           },
           {
             title: 'Workflow - Manual',
             'title.zh-CN': '工作流 - 人工节点',
+            'title.ja-JP': 'ワークフロー - 手動ノード',
             subTitle: '@nocobase/plugin-workflow-manual',
             link: '/plugins/workflow-manual',
           },
           {
             title: 'Workflow - Parallel',
             'title.zh-CN': '工作流 - 并行分支节点',
+            'title.ja-JP': 'ワークフロー - 並行分岐ノード',
             subTitle: '@nocobase/plugin-workflow-parallel',
             link: '/plugins/workflow-parallel',
           },
           {
             title: 'Workflow - Request',
             'title.zh-CN': '工作流 - HTTP 请求节点',
+            'title.ja-JP': 'ワークフロー - HTTP リクエストノード',
             subTitle: '@nocobase/plugin-workflow-request',
             link: '/plugins/workflow-request',
           },
           {
             title: 'Workflow - Request interceptor',
             'title.zh-CN': '工作流 - 请求拦截器',
+            'title.ja-JP': 'ワークフロー - リクエストインターセプター',
             subTitle: '@nocobase/plugin-workflow-request-interceptor',
             link: '/plugins/workflow-request-interceptor',
           },
           {
             title: 'Workflow - Response message',
             'title.zh-CN': '工作流 - 响应消息',
+            'title.ja-JP': 'ワークフロー - レスポンスメッセージ',
             subTitle: '@nocobase/plugin-workflow-response-message',
             link: '/plugins/workflow-response-message',
           },
           {
             title: 'Workflow - SQL',
             'title.zh-CN': '工作流 - SQL 操作节点',
+            'title.ja-JP': 'ワークフロー - SQL ノード',
             subTitle: '@nocobase/plugin-workflow-sql',
             link: '/plugins/workflow-sql',
           },
           {
-            title: 'Workflow - Varaible',
+            title: 'Workflow - Variable',
             'title.zh-CN': '工作流 - 变量节点',
+            'title.ja-JP': 'ワークフロー - 変数ノード',
             subTitle: '@nocobase/plugin-workflow-variable',
             link: '/plugins/workflow-variable',
           },
@@ -465,10 +539,12 @@ export default [
       {
         title: 'Others',
         'title.zh-CN': '其他',
+        'title.ja-JP': 'その他',
         children: [
           {
             title: 'API doc',
             'title.zh-CN': 'API 文档',
+            'title.ja-JP': 'API ドキュメント',
             subTitle: '@nocobase/plugin-api-doc',
             link: '/plugins/api-doc',
             // children: ['/plugins/api-doc'],
@@ -476,6 +552,7 @@ export default [
           {
             title: 'API keys',
             'title.zh-CN': 'API 密钥',
+            'title.ja-JP': 'API キー',
             subTitle: '@nocobase/plugin-api-keys',
             link: '/plugins/api-keys',
             // children: ['/plugins/api-keys'],
@@ -483,30 +560,35 @@ export default [
           {
             title: 'Backup & Restore',
             'title.zh-CN': '备份和还原',
+            'title.ja-JP': 'バックアップと復元',
             subTitle: '@nocobase/plugin-backup-restore',
             link: '/plugins/backup-restore',
           },
           {
             title: 'Localization management',
             'title.zh-CN': '本地化管理',
+            'title.ja-JP': 'ローカリゼーション管理',
             subTitle: '@nocobase/plugin-localization-management',
             link: '/plugins/localization-management',
           },
           {
             title: 'Multi-app manager',
             'title.zh-CN': '多应用管理',
+            'title.ja-JP': 'マルチアプリ管理',
             subTitle: '@nocobase/plugin-multi-app-manager',
             link: '/plugins/multi-app-manager',
           },
           {
             title: 'System settings',
             'title.zh-CN': '系统设置',
+            'title.ja-JP': 'システム設定',
             subTitle: '@nocobase/plugin-system-settings',
             link: '/plugins/system-settings',
           },
           {
             title: 'Theme editor',
             'title.zh-CN': '主题编辑器',
+            'title.ja-JP': 'テーマエディタ',
             subTitle: '@nocobase/plugin-theme-editor',
             link: '/plugins/theme-editor',
           },

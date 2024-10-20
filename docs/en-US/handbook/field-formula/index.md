@@ -1,13 +1,13 @@
-# 计算公式
+# Formula
 
 <PluginInfo name="field-formula"></PluginInfo>
 
-## 介绍
+## Introduction
 
-## 字段配置
+## Field Configuration
 
 ![20240512173541](https://static-docs.nocobase.com/20240512173541.png)
 
-## 示例
+## Instructions
 
-待补充
+To be added.

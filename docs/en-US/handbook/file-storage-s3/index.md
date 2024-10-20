@@ -1,7 +1,7 @@
-# 亚马逊 S3
+# Amazon S3
 
 <PluginInfo name="file-storage-s3"></PluginInfo>
 
-## 介绍
+## Introduction
 
-## 使用手册
+## Hand book

@@ -1,38 +1,53 @@
-# 子表格
+# Sub table
 
-## 介绍
+## Introduction
 
-子表格适用于处理对多的关系字段，支持批量新建目标表数据后关联或从已有数据选择关联。
+Sub table are ideal for managing many-to-many relationship fields. They support bulk creation of target table data with associations, or selecting from existing data for association.
 
-## 使用说明
+## Instructions for Use
 
 ![20240410151306](https://static-docs.nocobase.com/20240410151306.png)
 
-子表格中不同类型的字段显示不同字段组件，大字段（富文本，Json,多行文本等字段）则通过悬浮弹窗编辑。
+Different field types in the sub table display distinct field components. Larger fields (such as rich text, JSON, and multi-line text) are edited via a floating pop-up window.
 
 ![20240410154316](https://static-docs.nocobase.com/20240410154316.png)
 
-子表格中的关系字段。
+Relationship fields in the sub table:
 
-订单 （一对多）> 商品（一对多） > 库存。
+Order (one-to-many) > Product (one-to-many) > Inventory.
 
 ![20240410152232](https://static-docs.nocobase.com/20240410152232.png)
 
-关系字段组件默认是下拉选择器（支持数据选择器/子表单（弹窗））。
+By default, relationship field components are dropdown selectors (supporting data selectors or subforms via pop-up windows).
 
 ![20240410152847](https://static-docs.nocobase.com/20240410152847.png)
 
-支持拖拽排序。
+Supports drag-and-drop sorting.
 
 ![20240422215629](https://static-docs.nocobase.com/20240422215629.gif)
-## 字段配置项
+## Field Configuration Options
 
-### 允许选择已有数据（默认不开启）
+### Allow Selecting Existing Data (disabled by default)
 
-支持从已有数据选择关联。
+Supports associating data from existing records.
 
 ![20240410160432](https://static-docs.nocobase.com/20240410160432.png)
 
 ![20240410160714](https://static-docs.nocobase.com/20240410160714.png)
 
-- [字段组件](/handbook/ui/fields/association-field)；
+![20240410160432](https://static-docs.nocobase.com/20240410160432.png)
+
+![20240410160714](https://static-docs.nocobase.com/20240410160714.png)
+
+### Field Component
+
+[Field Component](/handbook/ui/fields/association-field): Switch to other relationship field components, such as dropdown select, data selector, etc.
+
+### Linkage Rules
+:::info{title=Tip}
+The version of NocoBase needs to be v1.3.17-beta or above.
+:::
+
+![20240906084911_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240906084911_rec_.gif)
+
+For more information, refer to [Linkage Rules](/handbook/ui/blocks/block-settings/linkage-rule)

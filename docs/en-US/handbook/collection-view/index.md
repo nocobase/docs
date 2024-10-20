@@ -1,9 +1,9 @@
-# 数据库视图
+# Database view
 
 <PluginInfo name="collection-view"></PluginInfo>
 
-## 介绍
+## Introduction
 
-## 使用手册
+## Manu book
 
 ![20240324145718](https://static-docs.nocobase.com/20240324145718.png)

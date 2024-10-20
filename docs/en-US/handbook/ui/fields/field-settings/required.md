@@ -1,20 +1,20 @@
-# 必填
+# Required Fields
 
-## 介绍
+## Introduction
 
-必填是表单验证的常用规则，可以直接在字段配置项中开启必填，也可以通过表单的联动规则动态设置字段必填。
+"Required" is a fundamental rule in form validation. You can enable it directly within the field settings or dynamically configure it through form linkage rules.
 
-## 静态设置
+## Static Setting
 
-直接设置字段为必填项，适用于那些始终需要用户填写的字段，如用户名、密码等。
+You can directly designate a field as required, which is ideal for fields that must always be completed by users, such as username and password.
 
 ![20240411114641](https://static-docs.nocobase.com/20240411114641.png)
 
-## 动态设置(条件必填)
+## Dynamic Setting (Conditional Required)
 
-通过表单区块的联动规则按条件设置必填。
+Required fields can be set conditionally using the form block's linkage rules.
 
-示例：当订单状态为已发货时发货日期字段必填。
+Example: The shipping date field becomes required when the order status is marked as "shipped."
 
 ![20240412110939](https://static-docs.nocobase.com/20240412110939.png)
 

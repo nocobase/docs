@@ -1,25 +1,33 @@
-# 字段
+# Fields
 
-在 UI 里，字段即字段组件，是单元数据的载体，不同类型数据以不同字段组件呈现。字段只能附属于区块，不能独立使用。
+In the UI, fields refer to components that serve as carriers for individual data units. Various types of data are represented through different field components. Fields must be attached to blocks and cannot function independently.
 
-## 区块里的字段
+## Fields within Blocks
 
-字段一般不单独使用，而是作为数据类型区块的子元素存在。数据类型的区块通常都有「配置字段」，字段列表由当前数据表提供。
+Fields are typically not used in isolation but rather as sub-elements within data-type blocks. These blocks generally include "configured columns," with the list of fields provided by the current data table.
 
 ![](https://static-docs.nocobase.com/c5ea18ad1847332fe78075413f23de46.png)
 
-## 字段的设计器（工具栏）
+## Field Designer (Toolbar)
 
-和区块一样，字段组件的右上角也有三个图标，分别为：
+Like blocks, field components feature three icons in the upper right corner:
 
-- 拖拽布局
-- 快捷添加字段
-- 字段参数配置
+- Drag and Drop Layout
+- Quick Add Field
+- Field Parameter Configuration
 
 ![](https://static-docs.nocobase.com/30cc5fcaeeb171862f79449a72a7fcf9.png)
 
-## 字段的布局
+## Field Layout
 
-通过拖拽移动可以自定义调整字段在区块中的布局。
+You can customize the layout of fields within a block by dragging and rearranging them as needed.
 
 ![](https://static-docs.nocobase.com/0825ea8c014c9073f505e74f707ded66.gif)
+
+## Field Components
+
+Certain fields support switching between different components. For example, the `URL` component can be switched to the `Preview` component.
+
+![20240806164801](https://static-docs.nocobase.com/20240806164801.png)
+
+If you need to add more components, refer to [Extending Value Field Components](/plugin-samples/field/value).

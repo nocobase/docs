@@ -32,7 +32,15 @@
 
 ![20240422202542](https://static-docs.nocobase.com/20240422202542.png)
 
+### 字段组件
 
-- [字段组件](/handbook/ui/fields/association-field)：支持切换为其他关系字段组件；
+[字段组件](/handbook/ui/fields/association-field)：切换为其他关系字段组件，如下拉选择、数据选择器等；
 
+### 联动规则
+:::info{title=提示}
+需要 NocoBase v1.3.17-beta 及以上版本。
+:::
 
+![20240906085955_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240906085955_rec_.gif)
+
+更多内容参考 [联动规则](/handbook/ui/blocks/block-settings/linkage-rule)

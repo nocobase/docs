@@ -1,16 +1,16 @@
 # Styles & Themes
 
-为了更好的适应 NocoBase 动态主题的能力，在插件里，推荐使用 [antd-style](https://ant-design.github.io/antd-style/zh-CN/guide) 来编写样式。再结合现有的 [theme token](https://ant.design/docs/react/customize-theme-cn#seedtoken) 处理主题的动态能力。同时 NocoBase 也提供了[主题编辑器插件](#)，可用于便捷的调整样式。
+To better accommodate NocoBase's dynamic theme capabilities, it is recommended to use [antd-style](https://ant-design.github.io/antd-style/zh-CN/guide) when writing styles in the plugin. By combining it with the existing [theme tokens](https://ant.design/docs/react/customize-theme-cn#seedtoken), you can efficiently manage the dynamic aspects of themes. Additionally, NocoBase provides a [theme editor plugin](#) that allows for easy style adjustments.
 
-## 编写样式
+## Writing Styles
 
-### 使用 createStyles 编写样式（推荐）
+### Writing Styles with `createStyles` (Recommended)
 
 ```tsx
 import { createStyles } from 'antd-style';
 
 const useStyles = createStyles(({ token, css }) => ({
-  // 支持 css object 的写法
+  // Supports CSS object syntax
   container: {
     backgroundColor: token.colorBgLayout,
     borderRadius: token.borderRadiusLG,
@@ -24,7 +24,7 @@ const useStyles = createStyles(({ token, css }) => ({
     marginLeft: 'auto',
     marginRight: 'auto',
   },
-  // 也支持通过 css 字符串模板获得和 普通 css 一致的书写体验
+  // Also supports CSS string templates for a familiar CSS writing experience
   card: css`
     color: ${token.colorTextTertiary};
     box-shadow: ${token.boxShadow};
@@ -44,25 +44,25 @@ const useStyles = createStyles(({ token, css }) => ({
 }));
 
 export default () => {
-  // styles 对象在 useStyles 方法中默认会被缓存，所以不用担心 re-render 问题
+  // The styles object is cached by default in the useStyles method, so re-rendering is not a concern
   const { styles, cx, theme } = useStyles();
 
   return (
-    // 使用 cx 可以组织 className
+    // Use cx to organize classNames
     <div
       className={cx('a-simple-create-style-demo-classname', styles.container)}
     >
       <div className={styles.card}>createStyles Demo</div>
-      {/* theme 对象包含了所有的 token 与主题等信息 */}
-      <div>当前主题模式：{theme.appearance}</div>
+      {/* The theme object contains all tokens and theme-related information */}
+      <div>Current theme mode: {theme.appearance}</div>
     </div>
   );
 };
 ```
 
-详细用法参考 [createStyles API](https://ant-design.github.io/antd-style/zh-CN/api/create-styles)
+For detailed usage, refer to the [createStyles API](https://ant-design.github.io/antd-style/zh-CN/api/create-styles).
 
-### 使用 createStylish 创建一个可以被复用的样式
+### Creating Reusable Styles with `createStylish`
 
 ```tsx
 import { createStyles, createStylish, css } from 'antd-style';
@@ -119,7 +119,7 @@ const useStylish = createStylish(({ token, css }) => {
 });
 
 const useStyles = createStyles({
-  // 支持 css object 的写法
+  // Supports CSS object syntax
   container: {
     backgroundColor: '#f5f5f5',
     maxWidth: 400,
@@ -129,7 +129,7 @@ const useStyles = createStyles({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  // 也支持通过 css 字符串模板获得和 普通 css 一致的书写体验
+  // Also supports CSS string templates for a familiar CSS writing experience
   btn: css`
     padding: 24px;
   `,
@@ -142,16 +142,16 @@ export default () => {
   return (
     <div className={styles.container}>
       <div className={cx(styles.btn, stylish.defaultButton)}>
-        stylish Button
+        Stylish Button
       </div>
     </div>
   );
 };
 ```
 
-详细用法参考 [createStylish API](https://ant-design.github.io/antd-style/zh-CN/api/create-stylish)
+For detailed usage, refer to the [createStylish API](https://ant-design.github.io/antd-style/zh-CN/api/create-stylish).
 
-### 使用 createGlobalStyle 注入全局样式
+### Injecting Global Styles with `createGlobalStyle`
 
 ```tsx
 import { createGlobalStyle } from 'antd-style';
@@ -166,19 +166,19 @@ export default () => {
   return (
     <div>
       <Global />
-      <div className="some-class">猛男最喜欢的颜色</div>
+      <div className="some-class">Favorite color of macho men</div>
     </div>
   );
 };
 ```
 
-详细用法参考 [createGlobalStyle API](https://ant-design.github.io/antd-style/zh-CN/api/global-styles)
+For detailed usage, refer to the [createGlobalStyle API](https://ant-design.github.io/antd-style/zh-CN/api/global-styles).
 
-## 定制主题
+## Customizing Themes
 
-### 使用 antd 的 theme token
+### Using `antd`'s Theme Tokens
 
-createStyles 示例
+#### `createStyles` Example
 
 ```tsx
 import { SmileOutlined } from '@ant-design/icons';
@@ -218,11 +218,11 @@ const App = () => {
     <div className={styles.container}>
       <Space direction={'vertical'} style={{ width: '100%' }} size={16}>
         <Space>
-          <Button title={'功能按钮的说明'} icon={<SmileOutlined />} />
-          操作按钮
+          <Button title={'Feature button description'} icon={<SmileOutlined />} />
+          Action button
         </Space>
-        <div className={styles.defaultCard}>普通卡片</div>
-        <div className={styles.primaryCard}>主要卡片</div>
+        <div className={styles.defaultCard}>Default Card</div>
+        <div className={styles.primaryCard}>Primary Card</div>
       </Space>
     </div>
   );
@@ -231,7 +231,7 @@ const App = () => {
 export default App;
 ```
 
-createGlobalStyle 示例
+#### `createGlobalStyle` Example
 
 ```tsx
 import { createGlobalStyle, ThemeProvider } from 'antd-style';
@@ -263,14 +263,14 @@ export default () => {
   return (
     <ThemeProvider>
       <Global />
-      <button className="ant-custom-button">antd 中不存在的按钮</button>
+      <button className="ant-custom-button">Button not available in antd</button>
     </ThemeProvider>
   );
 };
 ```
 
-## 调试主题
+## Debugging Themes
 
-### 使用主题编辑器插件
+### Using the Theme Editor Plugin
 
-![主题编辑器](https://static-docs.nocobase.com/440f844d056a485f9f0dc64a8ca1b4f4.png)
+![Theme Editor](https://static-docs.nocobase.com/440f844d056a485f9f0dc64a8ca1b4f4.png)

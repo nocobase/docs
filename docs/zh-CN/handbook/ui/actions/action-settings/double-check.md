@@ -4,6 +4,12 @@
 
 二次确认配置用于确认操作是否执行，在操作点击时弹出确认框，删除按钮默认开启二次确认，以防止误操作导致数据丢失或不可逆的结果。
 
-![20240413094528](https://static-docs.nocobase.com/20240413094528.png)
+![20240919164638](https://static-docs.nocobase.com/20240919164638.png)
 
-![20240413094645](https://static-docs.nocobase.com/20240413094645.png)
+支持自定义二次确认内容和标题
+
+![20240919164704](https://static-docs.nocobase.com/20240919164704.png)
+
+![20240919164800](https://static-docs.nocobase.com/20240919164800.png)
+
+

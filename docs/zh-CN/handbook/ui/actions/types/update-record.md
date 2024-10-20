@@ -24,7 +24,7 @@
 
 ![20240423210506](https://static-docs.nocobase.com/20240423210506.png)
 
-更多内容参考 [字段赋值](handbook/ui/actions/action-settings/assign-values)。
+更多内容参考 [字段赋值](/handbook/ui/actions/action-settings/assign-values)。
 
 - [编辑按钮](/handbook/ui/actions/action-settings/edit-button)
 - [二次确认](/handbook/ui/actions/action-settings/double-check)

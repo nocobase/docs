@@ -1,56 +1,56 @@
-# SQL 表
+# SQL Collection
 
 <PluginInfo name="collection-sql"></PluginInfo>
 
-## 介绍
+## Introduction
 
-SQL collection 提供了一种通过 SQL 语句获取数据的方法。通过 SQL 语句获取数据字段，配置字段元数据之后，用户可以像使用普通表一样，给表格、图表、工作流等使用，适用于关联查询、统计等场景。
+The SQL collection provides a powerful method for retrieving data using SQL queries. By extracting data fields through SQL queries and configuring the associated field metadata, users can utilize these fields as though they were working with a standard table. This feature is particularly beneficial for scenarios involving complex join queries, statistical analysis, and more.
 
-## 使用手册
+## User Manual
 
-### 新建
+### Creating a New SQL Collection
 
 <img src="https://static-docs.nocobase.com/202405191452918.png"/>
 
-<p>1. 在 SQL 输入框输入 SQL 语句后，点击执行 (Execute) 后，系统将会尝试解析 SQL 使用了哪些表和字段，从来源表中解析出字段元数据。</p>
+1. Enter your SQL query in the provided input box and click Execute. The system will analyze the query to determine the tables and fields involved, automatically extracting the relevant field metadata from the source tables.
 
 <img src="https://static-docs.nocobase.com/202405191453556.png"/>
 
-<p>2. 如果系统自动分析的来源表和字段不对，可以手动选择对应的表和字段，来使用对应字段的元数据。需要先选择来源表，才能在下方的字段来源中选择该表的字段。</p>
+2. If the system's analysis of the source tables and fields is incorrect, you can manually select the appropriate tables and fields to ensure the correct metadata is used. Start by selecting the source table, then choose the corresponding fields in the field source section below.
 
 <img src="https://static-docs.nocobase.com/202405191453579.png"/>
 
-<p>3. 如果字段没有对应的来源字段，系统会根据数据类型推断字段类型，如果推断结果不对，可以手动选择字段类型。</p>
+3. For fields that do not have a direct source, the system will infer the field type based on the data type. If this inference is incorrect, you can manually select the proper field type.
 
 <img src="https://static-docs.nocobase.com/202405191454703.png"/>
 
-<p>4. 在配置字段的同时可以在预览区域看到对应的展示效果。</p>
+4. As you configure each field, you can preview its display in the preview area, allowing you to see the immediate impact of your settings.
 
 <img src="https://static-docs.nocobase.com/202405191455439.png"/>
 
-<p>5. 配置完成，确认无误之后，需要点击 SQL 输入框下方的确认 (Confirm) 按钮才能进行最后的提交。</p>
+5. After you have completed the configuration and confirmed that everything is correct, click the Confirm button below the SQL input box to finalize the submission.
 
 <img src="https://static-docs.nocobase.com/202405191455302.png"/>
 
-### 编辑
+### Editing
 
-1. SQL 语句有变化时，可以点击修改 (Edit) 按钮，直接修改 SQL 语句，重新配置字段。
+1. If you need to modify the SQL query, click the Edit button to directly alter the SQL statement and reconfigure the fields as needed.
 
-2. 需要修改字段元数据时，可以通过配置字段 (Configure fields), 像普通表一样修改字段相关配置。
+2. To adjust the field metadata, use the Configure Fields option, which allows you to update the field settings just as you would for a regular table.
 
-### 同步
+### Synchronization
 
-SQL 语句无变化，但数据库表结构有变化时，可以通过点击配置字段 (Configure fields) - 从数据库同步 (Sync from database) 对字段进行同步和配置。
+If the SQL query remains unchanged but the underlying database table structure has been modified, you can synchronize and reconfigure the fields by selecting Configure Fields - Sync from Database.
 
 <img src="https://static-docs.nocobase.com/202405191456216.png"/>
 
-### SQL 表对比连接数据库视图
+### Comparison Between SQL collection and Linked Database Views
 
-| 模板类型       | 适用场景                                                                               | 实现原理   | 增删改支持 |
-| -------------- | -------------------------------------------------------------------------------------- | ---------- | ---------- |
-| SQL            | 模型比较简单，较轻量场景<br />不方便操作数据库<br />不想维护视图<br />想完全通过UI操作 | SQL 子查询 | 不支持     |
-| 连接数据库视图 | 模型比较复杂<br />需要和数据库交互<br />需要修改数据<br />需要更良好和稳定的数据库支持 | 数据库视图 | 部分支持   |
+| Template Type            | Best Suited For                                                                         | Implementation Method | Support for CRUD Operations |
+|--------------------------| -------------------------------------------------------------------------------------------- | ---------------------- | ---------------------------- |
+| SQL                      | Simple models, lightweight use cases<br />Limited interaction with the database<br />Avoiding maintenance of views<br />Prefer UI-driven operations | SQL subquery           | Not Supported                |
+| Connect to database view | Complex models<br />Requires database interaction<br />Data modification needed<br />Requires stronger and more stable database support | Database view          | Partially Supported          |
 
 :::warning
-使用 SQL 表时请选取在 NocoBase 中可管理的数据表，如果是同一个数据库下，未接入 NocoBase 的其他表，可能导致 SQL 语句解析不准确。如果有此类需求可以考虑通过建立视图并连接。
+When using SQL collection, be sure to select tables that are manageable within NocoBase. Using tables from the same database that are not connected to NocoBase may lead to inaccurate SQL query parsing. If this is a concern, consider creating and linking to a view.
 :::

@@ -4,6 +4,16 @@
 
 保存在 `.env` 文件里
 
+### TZ
+
+用于设置应用的时区，默认为操作系统时区。
+
+https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+
+:::warning
+与时间相关的操作会依据该时区进行处理，修改 TZ 可能会影响数据库里的日期值，详情查看「[日期 & 时间概述](/handbook/data-modeling/collection-fields/datetime)」
+:::
+
 ### APP_ENV
 
 应用环境，默认值 `development`，可选项包括：
@@ -56,7 +66,7 @@ API_BASE_PATH=/api/
 默认值为空，代表不开启。
 
 :::warning{title="注意"}
-该模式需要配合集群模式相关的插件使用，如 `@nocobase/plugin-sync-adapter-redis` 等。否则应用的功能可能出现异常。
+该模式需要配合集群模式相关的插件使用，否则应用的功能可能出现异常。
 :::
 
 ### PLUGIN_PACKAGE_PREFIX
@@ -160,14 +170,6 @@ DB_TABLE_PREFIX=nocobase_
 
 :::warning
 当 `DB_UNDERSCORED=true` 时，数据库实际的表名和字段名与界面所见的并不一致，如 `orderDetails` 数据库里的是 `order_details`
-:::
-
-### DB_TIMEZONE
-
-仅 MySQL（或 MariaDB）有效，MySQL 数据库的 timestamp 日期字段支持时区，但是只支持 1970 ~ 2038 区间，所以日期字段改为 datetime 适配，但 datetime 本身并不支持时区，需要通过环境变量 DB_TIMEZONE 来转换。
-
-:::warning
-如果 DB_TIMEZONE 有改动，已经生成的日期数据不会根据时区变化。
 :::
 
 ### DB_LOGGING

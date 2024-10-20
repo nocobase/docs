@@ -44,7 +44,7 @@ yarn pm add @my-project/plugin-hello
 在插件里新建 collection 文件，如 `./src/server/collections/hello.ts`，内容如下：
 
 ```ts
-import { defineCollection } '@nocobase/database';
+import { defineCollection } from '@nocobase/database';
 
 export default defineCollection({
   name: 'hello',

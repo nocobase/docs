@@ -1,23 +1,23 @@
-# 使用手册
+# User Manual
 
-内置核心插件之一，为 NocoBase 提供客户端界面。客户端内置一套 AdminLayout 布局，布局的主要组成部分包括：
+This plugin is one of the core components built into NocoBase, providing the client interface. The client features an AdminLayout design, with the following key elements:
 
-## 插件管理器
+## Plugin Manager
 
-管理插件，包括：添加、激活、禁用、删除
+Manage your plugins with options to add, activate, disable, or delete them.
 
 ![](https://static-docs.nocobase.com/23ee6d074e2829617c4b766282c16627.png)
 
-## 插件管理中心
+## Plugin Management Center
 
-各个插件的配置页面
+Access the configuration pages for each plugin.
 
 ![](https://static-docs.nocobase.com/f0236b3cf5b65c39fa723c66a182d214.png)
 
-## 用户个人中心
+## User Profile Center
 
 ![](https://static-docs.nocobase.com/58ff74ebe37542180e7fd2629f940a79.png)
 
-## 界面设计器
+## UI Editor
 
 ![](https://static-docs.nocobase.com/8dc5d2b1e4487622e40e8a6510e3e492.png)

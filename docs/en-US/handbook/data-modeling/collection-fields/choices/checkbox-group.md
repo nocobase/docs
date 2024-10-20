@@ -1,9 +1,9 @@
-# 复选框
+# Checkbox-group
 
-## 介绍
+## Introduction
 
-## 字段配置
+## Field configuration
 
-## 示例
+## Instructions
 
-待补充
+to be added.

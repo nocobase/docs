@@ -1,9 +1,9 @@
-# 提交至工作流
+# Submit to Workflow
 
-提交至工作流操作由插件扩展
+The Submit to Workflow operation is implemented via plugin extensions.
 
-1. 新增、更新表单中支持提交至工作流的配置和触发。
-2. 可在一个按钮点击时触发多个工作流，各自选定不同的工作流和数据上下文（不限制数据，用户自行保证）。
-3. 表单按钮触发仅支持新的工作流类型“表单事件”。
+1. Addition and update forms support the configuration and triggering of submission to workflows.
+2. Multiple workflows can be triggered with one button click, each selecting a different workflow and data context (data is not restricted, and users are responsible for ensuring this).
+3. Form button triggers only support the new workflow type "Form Event."
 
-详情可查看插件文档
+For more details, refer to the Plugin Documentation.

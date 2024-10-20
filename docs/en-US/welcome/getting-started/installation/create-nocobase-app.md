@@ -39,7 +39,8 @@ yarn create nocobase-app my-nocobase-app -d postgres \
    -e DB_PORT=5432 \
    -e DB_DATABASE=nocobase \
    -e DB_USER=nocobase \
-   -e DB_PASSWORD=nocobase
+   -e DB_PASSWORD=nocobase \
+   -e TZ=Asia/Shanghai
 ```
 
 </div>
@@ -53,7 +54,7 @@ yarn create nocobase-app my-nocobase-app -d mysql \
    -e DB_DATABASE=nocobase \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
-   -e DB_TIMEZONE=+08:00
+   -e TZ=Asia/Shanghai
 ```
 
 </div>
@@ -67,7 +68,7 @@ yarn create nocobase-app my-nocobase-app -d mariadb \
    -e DB_DATABASE=nocobase \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
-   -e DB_TIMEZONE=+08:00
+   -e TZ=Asia/Shanghai
 ```
 
 </div>
@@ -86,7 +87,8 @@ npx create-nocobase-app@next my-nocobase-app -d postgres \
    -e DB_PORT=5432 \
    -e DB_DATABASE=nocobase \
    -e DB_USER=nocobase \
-   -e DB_PASSWORD=nocobase
+   -e DB_PASSWORD=nocobase \
+   -e TZ=Asia/Shanghai
 ```
 
 </div>
@@ -100,7 +102,7 @@ npx create-nocobase-app@next my-nocobase-app -d mysql \
    -e DB_DATABASE=nocobase \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
-   -e DB_TIMEZONE=+08:00
+   -e TZ=Asia/Shanghai
 ```
 
 </div>
@@ -114,16 +116,16 @@ npx create-nocobase-app@next my-nocobase-app -d mariadb \
    -e DB_DATABASE=nocobase \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
-   -e DB_TIMEZONE=+08:00
+   -e TZ=Asia/Shanghai
 ```
 
 </div>
 </Tabs>
 
 :::warning
+- `TZ` is used to set the application's time zone, with the default being the system's time zone;
 - `APP_KEY` is the application's secret key, used for generating user tokens and so on (if APP_KEY is changed, the old tokens will also become invalid). It can be any random string. Please change it to your own secret key and ensure it is not disclosed to the public.
 - `DB_*` is related to the database. If it is not the default database service in the example, please modify it according to the actual situation.
-- When using MySQL (or MariaDB), you need to configure the DB_TIMEZONE environment variable, such as `DB_TIMEZONE=+08:00`
 :::
 
 ## 2. Switch to the project directory

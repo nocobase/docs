@@ -1,15 +1,15 @@
-# 打开模式
+# Open Mode
 
-## 介绍
+## Introduction
 
-弹窗打开方式有抽屉和对话框，默认是抽屉。抽屉适合大量信息和复杂操作，对话框适合简单内容或快速操作。点击蒙层可关闭弹窗。
+There are two ways to open a popup: using a drawer or dialog, with the drawer being the default. Drawers are ideal for managing large amounts of information and complex operations, while dialog boxes are better suited for straightforward content or quick actions. The popup can be closed by clicking on the overlay.
 
 ![20240413102507](https://static-docs.nocobase.com/20240413102507.png)
 
-- 抽屉
+- drawer
 
 ![20240423120702](https://static-docs.nocobase.com/20240423120702.png)
 
-- 对话框
+- dialog
 
 ![20240423120721](https://static-docs.nocobase.com/20240423120721.png)

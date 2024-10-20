@@ -1,25 +1,33 @@
-# 数据可视化
+# Data Visualization
 
 <PluginInfo name="data-visualization"></PluginInfo>
 
-## 介绍
+## Introduction
 
-NocoBase 的数据可视化插件提供了可视化的数据检索功能和丰富的图表组件，基于系统Collection数据，用户可以快速建立可视化面板，灵活组织图表，进行业务数据分析。
+The NocoBase data visualization plugin provides robust data retrieval features and a rich variety of chart components. Based on system Collection data, users can quickly build visual dashboards, organize charts with flexibility, and conduct insightful business data analysis.
 
 ![](https://static-docs.nocobase.com/51be43d5400d6294f6c20d11009f23c4.png)
 
-## 安装
+## Installation
+
+This is a built-in plugin, so no additional installation is required.
+
+## Related Documentation
+
+- User Manual
+  - [Chart Block](./user/chart-block.md)
+  - [Configuring Charts](./user/configure.md)
+  - [Filter Block](./user/filter.md)
+- Developer Guide
+  - [API Reference](./dev/index.md)
+  - [Step-by-Step Tutorial](./step-by-step/index.md)
+- [FAQ](./faq.md)
 
 ## RoadMap
 
-- 计划或进行中
-  - 对单个图表进行数据下钻，与表格联动
-  - 与SQL Collection更好结合
-  - 图表交互配置，如链接跳转
-- 在其他区块中添加图表
-- 更方便的数据处理和转换
-- 支持Having
-- 在图表区块中添加其他区块，比如Markdown
-- 在一个图表中组合多个Query
-- 权限控制优化
-- ...
+- Simplified data processing and transformation
+- Ability to add charts in pop-up windows
+- Embed other blocks (e.g., Markdown) in chart blocks
+- Save configurations as templates
+- Enable data drill-down
+- Improved permissions control

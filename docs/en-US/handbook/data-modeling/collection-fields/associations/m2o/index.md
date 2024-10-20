@@ -1,39 +1,38 @@
+# Many-to-One
 
-# 多对一
+In a library database, there are two entities: books and authors. An author can write multiple books, but each book usually has only one author. In this case, the relationship between authors and books is many-to-one. Multiple books can be associated with the same author, but each book can have only one author.
 
-一个图书馆数据库，其中有两个实体：图书和作者。一个作者可以写多本书，但每本书只有一个作者（多数情况下）。这种情况下，作者和书之间就是多对一的关系。多本书可以关联到同一个作者，但每本书只能有一个作者。
-
-ER 关系如下
+ER Diagram:
 
 ![alt text](https://static-docs.nocobase.com/eaeeac974844db05c75cf0deeedf3652.png)
 
-字段配置
+Field Configuration:
 
 ![alt text](https://static-docs.nocobase.com/3b4484ebb98d82f832f3dbf752bd84c9.png)
 
-## 参数说明
+## Parameter Description
 
-### Source collection
+### Source Collection
 
-源表，也就是当前字段所在表。
+The source collection, which is the collection where the current field resides.
 
-### Target collection
+### Target Collection
 
-目标表，与哪个表关联。
+The target collection, which is the collection to be associated with.
 
-### Foreign key
+### Foreign Key
 
-源表的字段，用于建立两个表之间的关联。
+The field in the source collection that is used to establish the association between the two collections.
 
-### Target key
+### Target Key
 
-外键约束引用的字段，必须具备唯一性。
+The field in the target collection that is referenced by the foreign key. It must be unique.
 
 ### ON DELETE
 
-ON DELETE 是指在删除父表中的记录时对相关子表中的外键引用的操作规则，它是用于定义外键约束时的一个选项。常见的 ON DELETE 选项包括：
+ON DELETE refers to the rules applied to foreign key references in related child collections when records in the parent collection are deleted. It is an option used when defining a foreign key constraint. Common ON DELETE options include:
 
-- CASCADE：当删除父表中的记录时，自动删除子表中与之关联的所有记录。
-- SET NULL：当删除父表中的记录时，将子表中与之关联的外键值设为 NULL。
-- RESTRICT：默认选项，当试图删除父表中的记录时，如果存在与之关联的子表记录，则拒绝删除父表记录。
-- NO ACTION：与 RESTRICT 类似，如果存在与之关联的子表记录，则拒绝删除父表记录。
+- **CASCADE**: When a record in the parent collection is deleted, all related records in the child collection are automatically deleted.
+- **SET NULL**: When a record in the parent collection is deleted, the foreign key values in the related child collection records are set to NULL.
+- **RESTRICT**: The default option, it prevents the deletion of a parent collection record if there are related records in the child collection.
+- **NO ACTION**: Similar to RESTRICT, it prevents the deletion of a parent collection record if there are related records in the child collection.

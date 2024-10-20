@@ -1,7 +1,7 @@
-# 删除区块
+# Delete Block
 
-## 介绍
+## Introduction
 
-删除区块将区块从当前页面中移除是不可逆操作。
+Deleting a block from the current page is an irreversible action.
 
 ![20240407175143](https://static-docs.nocobase.com/20240407175143.png)

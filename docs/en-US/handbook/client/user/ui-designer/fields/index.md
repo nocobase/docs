@@ -1,59 +1,59 @@
-# 字段
+### Fields
 
-在 UI 里，字段即字段组件，是单元数据的载体，不同类型数据以不同字段组件呈现。字段只能附属于区块，不能独立使用。
+In the UI, fields are field components that carry unit data, with different types of data presented by different field components. Fields can only be attached to blocks and cannot be used independently.
 
-## 区块里的字段
+#### Fields in Blocks
 
-字段一般不单独使用，而是作为数据类型区块的子元素存在。数据类型的区块通常都有「配置字段」，字段列表由当前数据表提供。
+Fields are generally not used alone but exist as sub-elements of data-type blocks. Data-type blocks typically have a "configure fields" option, and the field list is provided by the current data table.
 
 ![](https://static-docs.nocobase.com/c5ea18ad1847332fe78075413f23de46.png)
 
-## 字段的设计器（工具栏）
+#### Field Designer (Toolbar)
 
-和区块一样，字段组件的右上角也有三个图标，分别为：
+Like blocks, field components also have three icons in the upper right corner:
 
-- 拖拽布局
-- 快捷添加字段
-- 字段参数配置
+- Drag to layout
+- Quick add field
+- Configure field parameters
 
 ![](https://static-docs.nocobase.com/30cc5fcaeeb171862f79449a72a7fcf9.png)
 
-## 字段的布局
+#### Field Layout
 
-通过拖拽移动可以自定义调整字段在区块中的布局
+The layout of fields within a block can be customized by dragging to move them.
 
 ![](https://static-docs.nocobase.com/0825ea8c014c9073f505e74f707ded66.gif)
 
-## 通用的参数配置
+#### General Parameter Configuration
 
-- 编辑字段标题
-- 显示标题
-- 编辑描述
-- 必填
-- 验证规则
-- 默认值
-- 显示模式
+- Edit field title
+- Display title
+- Edit description
+- Required
+- Validation rules
+- Set Default value
+- Pattern
 
 ![](https://static-docs.nocobase.com/cbb838c9e167f51636d6a0ad3b287b59.png)
 
-重要参数配置说明：
+**Important Parameter Configuration:**
 
-### 验证规则
+##### Validation Rules
 
-待补充
+(to be added)
 
-### 默认值
+##### Default Value
 
-待补充
+(to be added)
 
-### 显示模式
+##### Pattern
 
-和区块不同的是字段组件有三种显示模式：
+Unlike blocks, field components have three display modes:
 
-- 可编辑 - editable
-- 只读（不可编辑）- readonly
-- 只读（阅读模式）- read friendly
+- Editable
+- Readonly (non-editable)
+- Easy-reading (read mode)
 
-## 字段的类型
+#### Field Types
 
-区块的字段由数据表提供，更多字段类型的配置参考 [数据表字段类型](https://nocobase.feishu.cn/wiki/BJKYw1xpHiVxFHkmgT3cKrKznkd)
+The fields in a block are provided by the data table. For more field type configurations, refer to [Data Table Field Types](https://nocobase.feishu.cn/wiki/BJKYw1xpHiVxFHkmgT3cKrKznkd).

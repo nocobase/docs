@@ -1,11 +1,11 @@
-# 时间
+# time
 
-## 介绍
+## Introduction
 
-## 字段配置
+## Field configuration
 
 ![20240512181216](https://static-docs.nocobase.com/20240512181216.png)
 
-## 示例
+## Instructions
 
-待补充
+to be added.

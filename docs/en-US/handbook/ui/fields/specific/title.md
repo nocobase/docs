@@ -1,18 +1,17 @@
-# 标题
+# Title
 
-## 介绍
+## Introduction
 
-阅读状态下关系字段的默认组件均为标题组件，通过显示标题字段值来标记当前关联记录。
+In reading mode, the default component for relationship fields is the title component, which marks the current associated record by displaying the value of the title field.
 
-## 字段配置项
+## Field Configuration Options
 
 ![20240429223353](https://static-docs.nocobase.com/20240429223353.png)
 
+### Enable Link (Enabled by default)
 
-### 启用链接（默认开启）
-
-点击弹出弹窗可自定义配置区块进行数据管理。
+Clicking will open a pop-up window, allowing you to customize the configuration block for data management.
 
 ![20240429223831](https://static-docs.nocobase.com/20240429223831.png)
 
-更多内容参考 [字段组件](/handbook/ui/fields/association-field)；
+For more details, see [Field Components](/handbook/ui/fields/association-field).

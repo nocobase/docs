@@ -1,49 +1,49 @@
-# 菜单
+### Menu
 
-## 菜单项类型
+#### Menu Item Types
 
-内置三种菜项类型：
+There are three built-in menu item types:
 
-- 分组
-- 页面
-- 链接
+- Group
+- Page
+- Link
 
 ![](https://static-docs.nocobase.com/ccf6f42d3cc2677d440f9e33b9488d1c.png)
 
-### 分组
+##### Group
 
-使用分组时，左侧会多出一个子菜单
+When using a group, a submenu will appear on the left side.
 
 ![](https://static-docs.nocobase.com/e59b2088fd68666cd240a26566616a3e.png)
 
-### 页面
+##### Page
 
-页面可以用于添加各种区块
+A page can be used to add various blocks.
 
 ![](https://static-docs.nocobase.com/4cd259f6b79f6792df72ccc291da2af9.png)
 
-### 链接
+##### Link
 
-用于 URL 跳转
+Used for URL redirection.
 
 ![](https://static-docs.nocobase.com/80a6e6a875c565425224d9325332a1ad.png)
 
-## 菜单项设计器
+#### Menu Item Designer
 
-在菜单项的右上角有两个图标，分别是：
+In the upper right corner of each menu item, there are two icons:
 
-- 拖拽移动
-- 菜单项配置
+- Drag to move
+- Configure menu item
 
 ![](https://static-docs.nocobase.com/963ba10e36d04fd258fea0e996231f68.png)
 
-### 菜单项配置
+##### Menu Item Configuration
 
 ![](https://static-docs.nocobase.com/0a9a05bd88d8bad9d711102a730f351d.png)
 
-- 编辑：包括菜单项的标题、图标等
-- 移动到：除了拖拽移动以外，也可以通过「移动到」快速的移动菜单项
-- 在前面插入
-- 在后面插入
-- 在里面插入（仅限于分组类型）
-- 删除
+- **Edit:** Modify the menu item title, icon, etc.
+- **Move to:** Besides dragging to move, you can also use the "Move to" option to quickly relocate the menu item.
+- **Insert before**
+- **Insert after**
+- **Insert inside** (only for group type)
+- **Delete**

@@ -1,13 +1,13 @@
-# 数据加载方式
+# Data Loading Mode
 
-## 介绍
+## Introduction
 
-默认的数据加载方式是“筛选条件为空时加载全部数据”，这里的“筛选条件”指的是「筛选区块」中的值。另一个可选项是“筛选条件为空时不加载数据”。
+The default data loading method is "Load all data when filter criteria are empty." The "filter criteria" refers to the values in the **Filter Block**. Another option is "Do not load data when filter criteria are empty."
 
-### 筛选条件为空时加载全部数据
+### Load all data when filter is empty
 
 ![![20240407170234](httpsstatic-docs.nocobase.com20240407170234.png)](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/![20240407170234](httpsstatic-docs.nocobase.com20240407170234.png).gif)
 
-### 筛选条件为空时不加载数据
+### Do not load data when filter is empty
 
 ![20240721160327_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240721160327_rec_.gif)

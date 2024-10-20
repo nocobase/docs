@@ -1,9 +1,8 @@
-#  显示标题
+#  Display Title
 
-## 介绍
+## Introduction
 
-用于控制字段标题是否显示，默认开启，允许在不同布局需求下关闭，隐藏标题显示。
-
+This option controls whether field titles are displayed. It is enabled by default but allows you to disable it based on different layout requirements, hiding the title display when necessary.
 
 ![20240411113316](https://static-docs.nocobase.com/20240411113316.png)
 

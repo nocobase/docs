@@ -1,31 +1,40 @@
-# 子表单
+# Nester
 
-## 介绍
+## Introduction
 
-子表单适用于先新建关系数据后关联数据的场景，多层级的关系数据以嵌套表单的形式清晰展示，与数据选择器和下拉选择器相比，子表单在当前页面区块上直接维护关系表字段，且关系数据随主表一起提交。
+Sub-form offer an elegant solution for scenarios where relational data needs to be created before association. They present multi-level relational data in a clear, nested structure. Unlike data selectors and dropdown menus, subforms allow direct management of relational table fields within the current page block. Moreover, they ensure that relational data is submitted seamlessly alongside the main form.
 
-## 使用说明
+## Usage Guide
 
-### 对多的关系字段子表单
+### Subforms for Many-to-Many Relationships
 
 ![20240409213911](https://static-docs.nocobase.com/20240409213911.png)
 
-支持多层关系字段的嵌套显示，商品/库存。
+Effortlessly display nested multi-level relationship fields, such as products and their associated inventory.
 
 ![20240422172545](https://static-docs.nocobase.com/20240422172545.png)
 
+### Subforms for One-to-One Relationships
 
-### 对一关系字段子表单
+![20240409214419](https://static-docs.nocobase.com/20240422172545.png)
 
-![20240409214419](https://static-docs.nocobase.com/20240409214419.png)
+## Field Configuration
 
-## 字段配置项
-#### 允许添加/关联多条(默认开启)
+### Multiple Record Addition/Association (Enabled by Default)
 
-开启时通过点击 + 号添加多条记录。
+When activated, this feature allows users to add multiple records with a simple click of the + icon.
 
 ![20240422172237](https://static-docs.nocobase.com/20240422172237.png)
 
+### Field Component
 
+[Field Component](/handbook/ui/fields/association-field): Switch to other relationship field components, such as dropdown select, data selector, etc.
 
-- [字段组件](/handbook/ui/fields/association-field)：切换为其他关系字段组件，如下拉选择、数据选择器等；
+### Linkage Rules
+:::info{title=Tip}
+The version of NocoBase needs to be v1.3.17-beta or above.
+:::
+
+![20240906083737_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240906083737_rec_.gif)
+
+For more information, refer to [Linkage Rules](/handbook/ui/blocks/block-settings/linkage-rule)

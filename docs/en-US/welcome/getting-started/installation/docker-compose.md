@@ -51,6 +51,8 @@ services:
       - DB_USER=nocobase
       # Database password
       - DB_PASSWORD=nocobase
+      # Timezone
+      - TZ=Asia/Shanghai
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
@@ -105,10 +107,10 @@ services:
       - DB_USER=root
       # Database password
       - DB_PASSWORD=nocobase
-      # Only applicable to MySQL (or MariaDB)
-      - DB_TIMEZONE=+08:00
       # Whether to convert table and field names to snake case
       - DB_UNDERSCORED=true
+      # Timezone
+      - TZ=Asia/Shanghai
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
@@ -163,10 +165,10 @@ services:
       - DB_USER=root
       # Database password
       - DB_PASSWORD=nocobase
-      # Only applicable to MySQL (or MariaDB)
-      - DB_TIMEZONE=+08:00
       # Whether to convert table and field names to snake case
       - DB_UNDERSCORED=true
+      # Timezone
+      - TZ=Asia/Shanghai
     volumes:
       - ./storage:/app/nocobase/storage
     ports:

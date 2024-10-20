@@ -1,8 +1,8 @@
-# 编辑字段标题
+# Edit field title
 
-## 介绍
+## Introduction
 
-字段标题是指字段定义的名称或标签，可以根据不同区块的需求进行个性化设置。
+The field title refers to the name or label defined by the field, which can be personalized according to the needs of different blocks.
 
 ![20240411110825](https://static-docs.nocobase.com/20240411110825.png)
 

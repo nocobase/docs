@@ -5,7 +5,7 @@
 Make sure you have:
 
 - Git, Node.js 18+, Yarn 1.22.x installed
-- Configured and started the required database MySQL 8.x, MariaDB 10.9+, PostgreSQL 10+ choose one
+- Configured and started the required database &mdash; MySQL 8.x, MariaDB 10.9+, PostgreSQL 10+ &mdash; choose any one.
 
 ## 1. Download with Git
 
@@ -28,7 +28,7 @@ git clone https://github.com/nocobase/nocobase.git -b next --depth=1 my-nocobase
 ## 2. Switch to the project directory
 
 ```bash
-cd my-nocobase-app
+cd my-nocobase
 ```
 
 ## 3. Install dependencies
@@ -52,9 +52,9 @@ DB_PASSWORD=nocobase
 ```
 
 :::warning
+- `TZ` is used to set the application's time zone, with the default being the system's time zone;
 - `APP_KEY` is the application's secret key, used for generating user tokens and so on (if APP_KEY is changed, the old tokens will also become invalid). It can be any random string. Please change it to your own secret key and ensure it is not disclosed to the public.
 - `DB_*` is related to the database. If it is not the default database service in the example, please modify it according to the actual situation.
-- When using MySQL (or MariaDB), you need to configure the DB_TIMEZONE environment variable, such as `DB_TIMEZONE=+08:00`
 :::
 
 ## 5. Install NocoBase

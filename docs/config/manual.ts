@@ -2,6 +2,7 @@ export default [
   {
     title: 'Quick Start',
     'title.zh-CN': '快速上手',
+    'title.ja-JP': 'クイックスタート',
     type: 'group',
     children: [
       '/manual/quick-start/the-first-app',
@@ -12,39 +13,47 @@ export default [
   {
     title: '功能导航',
     'title.zh-CN': '功能导航',
+    'title.ja-JP': '機能ナビゲーション',
     type: 'group',
     children: [
       {
         title: 'Data modeling',
         'title.zh-CN': '数据建模',
+        'title.ja-JP': 'データモデリング',
         children: [
           {
             title: 'Overview',
             'title.zh-CN': '概述',
+            'title.ja-JP': '概要',
             link: '/manual/data-modeling',
           },
           {
             title: 'Collection management',
             'title.zh-CN': '数据表管理',
+            'title.ja-JP': 'コレクション管理',
             link: '/manual/collection/management',
           },
           {
             title: '字段类型',
             'title.zh-CN': '字段类型',
+            'title.ja-JP': 'フィールドタイプ',
             children: [
               {
                 title: '概述',
                 'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
                 link: '/manual/data-modeling/fields',
               },
               {
                 title: 'Field data type',
                 'title.zh-CN': '字段数据类型',
+                'title.ja-JP': 'フィールドデータタイプ',
                 children: [],
               },
               {
                 title: 'Field interface',
                 'title.zh-CN': '字段 UI 类型',
+                'title.ja-JP': 'フィールドUIタイプ',
                 children: [
                   '/manual/collection/fields',
                   '/manual/collection/fields/basic',
@@ -62,6 +71,7 @@ export default [
           {
             title: 'Collection templates',
             'title.zh-CN': '数据表模板',
+            'title.ja-JP': 'コレクションテンプレート',
             children: [
               '/manual/collection/collection-templates',
               '/manual/collection/collection-templates/general',
@@ -75,11 +85,13 @@ export default [
           {
             title: '连接数据库视图',
             'title.zh-CN': '连接数据库视图',
+            'title.ja-JP': 'データベースビューの接続',
             link: '/manual/collection/collection-templates/view',
           },
           {
             title: 'Connect to foreign data',
             'title.zh-CN': '连接外部数据',
+            'title.ja-JP': '外部データへの接続',
             children: [
               '/manual/collection/collection-fdw',
               '/manual/collection/collection-fdw/enable-federated',
@@ -89,10 +101,12 @@ export default [
           {
             title: 'Multiple data sources',
             'title.zh-CN': '多数据源',
+            'title.ja-JP': '複数のデータソース',
             children: [
               {
                 title: 'Overview',
                 'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
                 link: '#',
               },
             ],
@@ -102,83 +116,100 @@ export default [
       {
         title: 'UI Editor',
         'title.zh-CN': 'UI 配置',
+        'title.ja-JP': 'UIエディタ',
         children: [
           {
             title: 'Overview',
             'title.zh-CN': '概述',
+            'title.ja-JP': '概要',
             link: '/manual/ui',
           },
           {
             title: 'Menu',
             'title.zh-CN': '菜单',
+            'title.ja-JP': 'メニュー',
             link: '/manual/ui/menus',
           },
           {
             title: 'Page & Popup',
             'title.zh-CN': '页面和弹窗',
+            'title.ja-JP': 'ページとポップアップ',
             link: '/manual/ui/pages',
           },
           {
             title: 'Block',
             'title.zh-CN': '区块',
+            'title.ja-JP': 'ブロック',
             children: [
               {
                 title: 'Overview',
                 'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
                 link: '/manual/ui/blocks',
               },
               {
                 title: 'Block types',
                 'title.zh-CN': '区块类型',
+                'title.ja-JP': 'ブロックタイプ',
                 link: '#',
               },
               {
                 title: 'Data blocks',
                 'title.zh-CN': '数据区块',
+                'title.ja-JP': 'データブロック',
                 children: [
                   {
                     title: 'Table',
                     'title.zh-CN': '表格',
+                    'title.ja-JP': 'テーブル',
                     link: '#',
                   },
                   {
                     title: 'Form',
                     'title.zh-CN': '表单',
+                    'title.ja-JP': 'フォーム',
                     link: '#',
                   },
                   {
                     title: 'Details',
                     'title.zh-CN': '详情',
+                    'title.ja-JP': '詳細',
                     link: '#',
                   },
                   {
                     title: 'List',
                     'title.zh-CN': '列表',
+                    'title.ja-JP': 'リスト',
                     link: '#',
                   },
                   {
                     title: 'Grid Card',
                     'title.zh-CN': '卡片',
+                    'title.ja-JP': 'グリッドカード',
                     link: '#',
                   },
                   {
                     title: 'Calendar',
                     'title.zh-CN': '日历',
+                    'title.ja-JP': 'カレンダー',
                     link: '#',
                   },
                   {
                     title: 'kanban',
                     'title.zh-CN': '看板',
+                    'title.ja-JP': 'カンバン',
                     link: '#',
                   },
                   {
                     title: 'Map',
                     'title.zh-CN': '地图',
+                    'title.ja-JP': '地図',
                     link: '#',
                   },
                   {
                     title: 'Charts',
                     'title.zh-CN': '图表',
+                    'title.ja-JP': 'チャート',
                     link: '#',
                   },
                 ],
@@ -186,15 +217,18 @@ export default [
               {
                 title: 'Association blocks',
                 'title.zh-CN': '关系区块',
+                'title.ja-JP': '関連ブロック',
                 children: [
                   {
                     title: '一对一 & 多对一',
                     'title.zh-CN': '一对一 & 多对一',
+                    'title.ja-JP': '1対1 & 多対1',
                     link: '#',
                   },
                   {
                     title: '一对多 & 多对多',
                     'title.zh-CN': '一对多 & 多对多',
+                    'title.ja-JP': '1対多 & 多対多',
                     link: '#',
                   },
                 ],
@@ -202,15 +236,18 @@ export default [
               {
                 title: 'Filter blocks',
                 'title.zh-CN': '筛选区块',
+                'title.ja-JP': 'フィルターブロック',
                 children: [
                   {
                     title: '表单',
                     'title.zh-CN': '表单',
+                    'title.ja-JP': 'フォーム',
                     link: '#',
                   },
                   {
                     title: '折叠面板',
                     'title.zh-CN': '折叠面板',
+                    'title.ja-JP': '折りたたみパネル',
                     link: '#',
                   },
                 ],
@@ -218,20 +255,24 @@ export default [
               {
                 title: 'Other blocks',
                 'title.zh-CN': '其他区块',
+                'title.ja-JP': 'その他のブロック',
                 children: [
                   {
                     title: 'Markdown',
                     'title.zh-CN': 'Markdown',
+                    'title.ja-JP': 'Markdown',
                     link: '#',
                   },
                   {
                     title: 'Iframe',
                     'title.zh-CN': 'Iframe',
+                    'title.ja-JP': 'Iframe',
                     link: '#',
                   },
                   {
                     title: '工作流待办',
                     'title.zh-CN': '工作流待办',
+                    'title.ja-JP': 'ワークフローのタスク',
                     link: '#',
                   },
                 ],
@@ -239,6 +280,7 @@ export default [
               {
                 title: 'Block template',
                 'title.zh-CN': '区块模板',
+                'title.ja-JP': 'ブロックテンプレート',
                 link: '#',
               },
             ],
@@ -246,10 +288,12 @@ export default [
           {
             title: 'Actions',
             'title.zh-CN': '操作',
+            'title.ja-JP': 'アクション',
             children: [
               {
                 title: 'Overview',
                 'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
                 link: '/manual/ui/actions',
               },
               '/manual/ui/actions/add-new',
@@ -274,15 +318,18 @@ export default [
           {
             title: 'Fields',
             'title.zh-CN': '字段',
+            'title.ja-JP': 'フィールド',
             children: [
               {
                 title: 'Fields',
                 'title.zh-CN': '字段',
+                'title.ja-JP': 'フィールド',
                 link: '/manual/ui/fields',
               },
               {
                 title: 'Association field components',
                 'title.zh-CN': '关系字段组件',
+                'title.ja-JP': '関連フィールドコンポーネント',
                 children: [
                   '/manual/ui/fields/association-components',
                   '/manual/ui/fields/association-components/record-picker',
@@ -302,11 +349,13 @@ export default [
           {
             title: 'Linkage rules',
             'title.zh-CN': '联动规则',
+            'title.ja-JP': '連動ルール',
             link: '/manual/ui/linkage',
           },
           {
             title: 'Inherit collection\'s UI',
             'title.zh-CN': '继承表的 UI',
+            'title.ja-JP': 'コレクションのUIを継承',
             link: '/manual/ui/inherit',
           }
         ],
@@ -314,49 +363,59 @@ export default [
       {
         title: 'Users',
         'title.zh-CN': '用户',
+        'title.ja-JP': 'ユーザー',
         children: [
           {
             title: 'Overview',
             'title.zh-CN': '概述',
+            'title.ja-JP': '概要',
             link: '#',
           },
           {
             title: 'User center',
             'title.zh-CN': '个人中心',
+            'title.ja-JP': 'ユーザーセンター',
             link: '/manual/user/user-center',
           },
           {
             title: 'Auth types',
             'title.zh-CN': '认证方式',
+            'title.ja-JP': '認証タイプ',
             children: [
               {
                 title: 'Overview',
                 'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
                 link: '#',
               },
               {
                 title: 'Password',
                 'title.zh-CN': '密码',
+                'title.ja-JP': 'パスワード',
                 link: '#',
               },
               {
                 title: 'SMS',
                 'title.zh-CN': '短信',
+                'title.ja-JP': 'SMS',
                 link: '#',
               },
               {
                 title: 'SAML',
                 'title.zh-CN': 'SAML',
+                'title.ja-JP': 'SAML',
                 link: '#',
               },
               {
                 title: 'OIDC',
                 'title.zh-CN': 'OIDC',
+                'title.ja-JP': 'OIDC',
                 link: '#',
               },
               {
                 title: 'CAS',
                 'title.zh-CN': 'CAS',
+                'title.ja-JP': 'CAS',
                 link: '#',
               },
             ],
@@ -366,34 +425,41 @@ export default [
       {
         title: 'Access Control',
         'title.zh-CN': '访问控制',
+        'title.ja-JP': 'アクセス制御',
         children: [
           {
             title: 'Role',
             'title.zh-CN': '角色',
+            'title.ja-JP': 'ロール',
             link: '#',
           },
           {
             title: 'Permission',
             'title.zh-CN': '权限',
+            'title.ja-JP': '権限',
             children: [
               {
                 title: 'General permissions',
                 'title.zh-CN': '通用配置',
+                'title.ja-JP': '一般的な権限',
                 link: '#',
               },
               {
                 title: 'Action permissions',
                 'title.zh-CN': '数据表操作权限',
+                'title.ja-JP': 'アクション権限',
                 link: '#',
               },
               {
                 title: 'Menu permissions',
                 'title.zh-CN': '菜单访问权限',
+                'title.ja-JP': 'メニュー権限',
                 link: '#',
               },
               {
                 title: 'Plugin settings permissions',
                 'title.zh-CN': '插件配置权限',
+                'title.ja-JP': 'プラグイン設定権限',
                 link: '#',
               },
             ],
@@ -403,25 +469,30 @@ export default [
       {
         title: 'Workflow',
         'title.zh-CN': '工作流',
+        'title.ja-JP': 'ワークフロー',
         children: [
           {
             title: 'Overview',
             'title.zh-CN': '概述',
+            'title.ja-JP': '概要',
             link: '/manual/workflow',
           },
           {
             title: 'Quick start',
             'title.zh-CN': '快速入门',
+            'title.ja-JP': 'クイックスタート',
             link: '/manual/workflow/start',
           },
           {
             title: 'Advanced usage',
             'title.zh-CN': '进阶使用',
+            'title.ja-JP': '高度な使用',
             link: '/manual/workflow/advanced',
           },
           {
             title: 'Triggers',
             'title.zh-CN': '触发器',
+            'title.ja-JP': 'トリガー',
             children: [
               '/manual/workflow/triggers',
               '/manual/workflow/triggers/collection',
@@ -432,6 +503,7 @@ export default [
           {
             title: 'Nodes',
             'title.zh-CN': '节点',
+            'title.ja-JP': 'ノード',
             children: [
               '/manual/workflow/nodes',
               '/manual/workflow/nodes/condition',
@@ -455,6 +527,7 @@ export default [
       {
         title: 'Data visualization',
         'title.zh-CN': '数据可视化',
+        'title.ja-JP': 'データビジュアライゼーション',
         children: [
           '/manual/data-visualization',
           '/manual/data-visualization/chart-block',
@@ -465,15 +538,18 @@ export default [
       {
         title: 'Files management',
         'title.zh-CN': '文件存储',
+        'title.ja-JP': 'ファイル管理',
         children: [
           {
             title: 'Overview',
             'title.zh-CN': '概述',
+            'title.ja-JP': '概要',
             link: '/manual/file-manager',
           },
           {
             title: 'Storage types',
             'title.zh-CN': '存储类型',
+            'title.ja-JP': 'ストレージタイプ',
             children: [
               '/manual/file-manager/local',
               '/manual/file-manager/aliyun-oss',
@@ -486,40 +562,48 @@ export default [
       {
         title: 'Backup & restore',
         'title.zh-CN': '备份和还原',
+        'title.ja-JP': 'バックアップと復元',
         link: '/manual/backup-restore',
       },
       {
         title: 'Localization management',
         'title.zh-CN': '多语言管理',
+        'title.ja-JP': 'ローカリゼーション管理',
         link: '/manual/localization-management',
       },
       {
         title: 'Theme editor',
         'title.zh-CN': '主题配置',
+        'title.ja-JP': 'テーマエディタ',
         link: '/manual/theme-editor',
       },
       {
         title: 'Mobile client',
         'title.zh-CN': '移动端',
+        'title.ja-JP': 'モバイルクライアント',
         link: '/manual/mobile-client',
       },
       {
         title: 'System settings',
         'title.zh-CN': '系统设置',
+        'title.ja-JP': 'システム設定',
         link: '/manual/system-settings',
       },
       {
         title: 'Plugins',
         'title.zh-CN': '插件管理和配置',
+        'title.ja-JP': 'プラグイン管理と設定',
         children: [
           {
             title: 'Plugin management',
             'title.zh-CN': '插件管理器',
+            'title.ja-JP': 'プラグイン管理',
             link: '/manual/plugin-manager/plugin-manager',
           },
           {
             title: 'Plugin settings center',
             'title.zh-CN': '插件设置中心',
+            'title.ja-JP': 'プラグイン設定センター',
             link: '/manual/plugin-manager/plugin-settings',
           },
         ],
@@ -527,6 +611,7 @@ export default [
       {
         title: 'See plugin list for more features',
         'title.zh-CN': '更多特性见插件列表',
+        'title.ja-JP': '詳細な機能はプラグインリストを参照してください',
         link: '/plugins',
       },
     ],

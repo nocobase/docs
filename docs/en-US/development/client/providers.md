@@ -1,30 +1,30 @@
-# Provider component
+# **Provider component**
 
-在 NocoBase 客户端应用里，Provider 组件在外层定义，核心结构如下：
+In the NocoBase client application, the `Provider` component is defined in the outer layer, with the core structure as follows:
 
 ```tsx | pure
 <Router>
   {' '}
-  {/* 路由的 Context Provider */}
+  {/* Context Provider for routes */}
   <ProviderA>
     <ProviderB>
-      {/* 其他自定义 Provider 组件 - 开始标签 */}
+      {/* Custom Provider components - Opening tag */}
       <Routes />
-      {/* 其他自定义 Provider 组件 - 结束标签 */}
+      {/* Custom Provider components - Closing tag */}
     </ProviderB>
   </ProviderA>
 </Router>
 ```
 
-因为定义在外层，所以 Provider 组件的用处有：
+Since it is defined at the outer layer, the `Provider` component serves the following purposes:
 
-- 提供全局共享的上下文（Context），需要渲染 `props.children`
-- 提供全局内容展示，需要渲染 `props.children`
-- 拦截作用，根据条件渲染 `props.children`
+- Provides globally shared context, rendering `props.children` when needed.
+- Displays global content by rendering `props.children`.
+- Acts as an interceptor, conditionally rendering `props.children`.
 
-## 提供全局共享的上下文
+## Providing a globally shared context
 
-使用 `createContext` 定义上下文，`useContext` 获取定义的上下文
+Use `createContext` to define a context and `useContext` to retrieve the defined context:
 
 ```tsx
 import { Plugin, Application } from '@nocobase/client';
@@ -33,9 +33,9 @@ import { createContext, useContext } from 'react';
 const MyContext = createContext({ color: null });
 
 const HomePage = () => {
-  // 读取 context 值
+  // Access the context value
   const { color } = useContext(MyContext);
-  return <div>color is : {color}</div>;
+  return <div>Color is: {color}</div>;
 };
 
 class PluginSampleProvider extends Plugin {
@@ -59,17 +59,17 @@ const app = new Application({
 export default app.getRootComponent();
 ```
 
-## 提供全局内容展示
+## Providing global content display
 
 ```tsx
 import { Plugin, Application } from '@nocobase/client';
 
-// 创建一个组件，注意对 children 的渲染
+// Create a component and ensure children are rendered
 const MyProvider = (props) => {
   const { children, name } = props;
   return (
     <div>
-      <div>全局内容展示 - {name}</div>
+      <div>Global content display - {name}</div>
       {children}
     </div>
   );
@@ -97,27 +97,27 @@ const app = new Application({
 export default app.getRootComponent();
 ```
 
-## 拦截作用
+## Intercepting functionality
 
 ```tsx
 import { Plugin, Application } from '@nocobase/client';
 import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 
-// 创建一个组件，注意对 children 的渲染
+// Create a component and ensure children are rendered
 const MyProvider = (props) => {
   const { children, name } = props;
   const location = useLocation();
   if (location.pathname === '/about') {
     return (
       <div>
-        内容被拦截了，返回 <Link to={'/'}>Home</Link>
+        Content intercepted. Return to <Link to={'/'}>Home</Link>
       </div>
     );
   }
   return (
     <div>
-      <div>Hello {name}</div>
+      <div>Hello, {name}</div>
       <Link to={'/'}>Home</Link>, <Link to={'/about'}>About</Link>
       {children}
     </div>

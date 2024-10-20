@@ -10,7 +10,7 @@ The Form filter block can be connected with the data block. Once connected, it c
       <source src="https://static-docs.nocobase.com/20240426172722.mp4" type="video/mp4">
     </video>
 
-## Block Configuration Options
+## Block Settings
 
 ![20240421172115](https://static-docs.nocobase.com/20240421172115.png)
 
@@ -35,6 +35,7 @@ For more content, refer to [Connect to Data Block](/handbook/ui/blocks/block-set
 ![20240421171135](https://static-docs.nocobase.com/20240421171135.png)
 
 ### Fields in Related Collections
+> In version v1.3.14-beta and above, it supports configuring "many-to-many" and "one-to-many" relationship fields.
 
 Supports using the fields of the related collections as filtering conditions
 

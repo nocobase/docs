@@ -1,9 +1,13 @@
-# 提交成功后
+# After Successful Submission
 
-## 介绍
+## Introduction
 
-提交成功后的配置允许用户定制操作完成后的响应行为，包括自定义成功提示信息、选择自动或手动关闭提示，以及根据需求选择停留在当前页或跳转到指定路由。
+The After successful submission enables customization of the response behavior upon completion. It supports defining custom success messages, selecting automatic or manual dismissal of success notifications, and choosing whether to remain on the current page, return to the previous popup or page, or redirect to a specified route, depending on the requirements.
 
 ![20240413213519](https://static-docs.nocobase.com/20240413213519.png)
 
-![20240413213605](https://static-docs.nocobase.com/20240413213605.png)
+![20241012125623](https://static-docs.nocobase.com/20241012125623.png)
+
+- Stay on the current popup or page: After the operation is successful, the pop-up window or route is not closed
+- Return to the previous popup or page(default): Close the popup window after the operation is successful
+- Redirect to: After the operation succeeds, the route is switched to the specified route

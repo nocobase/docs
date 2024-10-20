@@ -1,61 +1,62 @@
-# 联动规则
+# Linkage Rules
 
-## 介绍
+## Introduction
 
-区块的联动规则允许根据用户的行为动态调整表单，表单区块的联动规则支持动态控制字段状态或为字段赋值，而详情区块的联动规则支持动态控制字段的显示/隐藏。
+Linkage rules allow dynamic adjustment of form field states based on user behavior, such as Visible/Hidden, Required/Not Required, and value assignment. Currently, the following components support configuring linkage rules: [Form Blocks](https://docs.nocobase.com/handbook/ui/blocks/data-blocks/form#linkage-rules), [Details Blocks](https://docs.nocobase.com/handbook/ui/blocks/data-blocks/details#linkage-rules), [Action Buttons](https://docs.nocobase.com/handbook/ui/actions/action-settings/linkage-rule), [Sub Forms](https://docs.nocobase.com/handbook/ui/fields/specific/nester) (requires v1.3.17-beta or above), and [Sub Tables](https://docs.nocobase.com/handbook/ui/fields/specific/sub-table) (requires v1.3.17-beta or above).
+
 
 ![20240408100711](https://static-docs.nocobase.com/20240408100711.png)
 
 ![20240408100757](https://static-docs.nocobase.com/20240408100757.png)
 
-## 使用说明
+## Usage Guidelines
 
-1. 配置表单字段：所有在规则中使用的表单字段都需要配置出来，以确保规则的有效性和准确性。
+1. Field Configuration: Ensure all form fields utilized in the rules are properly configured to guarantee rule effectiveness and accuracy.
 
-2. 条件触发：当规则中的条件满足时（非必填），会自动执行下方的属性修改操作。
+2. Conditional Activation: When rule conditions are satisfied (optional), the system automatically executes the specified property modifications.
 
-3. 支持多个规则：可以为一个表单配置多个联动规则，当同时符合多个规则条件时，系统会按照规则的先后顺序从前往后执行结果。
+3. Multi-Rule Support: Forms can accommodate multiple linkage rules. When several rule conditions are simultaneously met, the system executes the results sequentially, following the order of rule definition.
 
-4. 规则管理：支持自定义命名、排序、删除、启用、禁用和复制规则。
+4. Rule Management: Enjoy comprehensive control with features for custom naming, sorting, deleting, enabling, disabling, and duplicating rules.
 
-5. 支持常量/变量：在字段赋值和条件配置中支持使用常量或变量，关于变量内容可参考 [变量](/handbook/ui/variables)。
+5. Constant and Variable Integration: Leverage constants or variables in field assignments and condition configurations. For detailed information on variables, consult the [Variables](/handbook/ui/variables) section.
 
-### 赋值
+### Value Assignment
 
-示例：根据预计年采购额自动评估并设置客户的级别（例如：A+ 级、A 级、 A- 级)。
+Illustration: Automatically evaluate and designate customer levels (e.g., A+, A, A-) based on projected annual purchase amounts.
 
-- 年采购额 大于 20000 客户级别为 A+。
+- Estimated annual purchase exceeding 20,000: Customer classified as A+.
 
 ![20240408102241](https://static-docs.nocobase.com/20240408102241.png)
 
-- 年采购额 大于 10000 客户级别小于等于20000为 A。
+- Estimated annual purchase between 10,000 and 20,000 (inclusive): Customer classified as A.
 
 ![20240408102303](https://static-docs.nocobase.com/20240408102303.png)
 
-- 年采购额 小于 10000 客户级别为 A-。
+- Estimated annual purchase below 10,000: Customer classified as A-.
 
 ![20240408102324](https://static-docs.nocobase.com/20240408102324.png)
 
-### 必填
+### Field Requirement
 
-示例: 根据是否促销控制商品促销价格是否必填。
+Illustration: Dynamically adjust the requirement status of the product's promotional price based on its promotion status.
 
-- 是否促销为 true ,促销价格必填。
+- When "IsPromotion" is active, promotional price becomes mandatory.
 
 ![20240408105031](https://static-docs.nocobase.com/20240408105031.png)
 
-- 是否促销为 false ,促销价格非必填。
+- When "IsPromotion" is inactive, promotional price becomes optional.
 
 ![20240408105115](https://static-docs.nocobase.com/20240408105115.png)
 
-### 显示/隐藏
+### Visibility Control
 
-示例: 根据是否促销控制促销价格输入框是否显示。
+Illustration: Manage the visibility of the promotional price input field based on the product's promotion status.
 
-- 是否促销为 true,促销价格显示且必填。
+- When "IsPromotion" is true, the promotional price field is displayed and required.
 
 ![20240408115240](https://static-docs.nocobase.com/20240408115240.png)
 
-- 是否促销为 false,促销价格隐藏且非必填。
+- When "IsPromotion" is false, the promotional price field is hidden and not required.
 
 ![20240408115338](https://static-docs.nocobase.com/20240408115338.png)

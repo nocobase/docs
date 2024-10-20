@@ -1,36 +1,36 @@
-# 操作的联动规则
+# Linkage Rule
 
-## 介绍
+## Introduction
 
-操作的联动规则基于上下文数据配置条件和执行结果。通过配置操作的联动规则，控制操作的状态（显示、隐藏、启用、禁用）。
+The linkage rules for actions are configured based on contextual data conditions and execution results. By configuring these linkage rules, you can control the status of actions (Visible, Hidden, Enabled, Disabled).
 
 ![20240423113057](https://static-docs.nocobase.com/20240423113057.png)
 
-## 使用说明
+## Usage Instructions
 
 ![20240413102150](https://static-docs.nocobase.com/20240413102150.png)
 
-满足条件时（无条件默认通过），触发执行，支持在条件判断中使用常量/变量。
+When conditions are met (by default, they pass without conditions), the action is triggered. Constants and variables can be used in the condition evaluation.
 
-### 哪些按钮可以配置联动规则
+### Applicable Buttons for Linkage Rules
 
-目前仅支持有数据上下文的的按钮配置联动规则。
+Currently, only buttons with data context support configuring linkage rules.
 
-表格、甘特图等区块的行按钮；
+Row buttons in blocks such as tables and Gantt charts;
 
-详情区块的按钮；
+Buttons in detail blocks;
 
 
-### 常量
+### Constants
 
-示例：已取消的订单隐藏复制按钮。
+Example: Hide the copy button for orders that have been canceled.
 
 ![20240423113212](https://static-docs.nocobase.com/20240423113212.png)
 
-### 变量
+### Variables
 
-示例：收货日期晚于今天的订单删除按钮禁用。
+Example: Disable the delete button for orders with a delivery date later than today.
 
 ![20240423113504](https://static-docs.nocobase.com/20240423113504.png)
 
-更多关于变量内容参考 [变量](/handbook/ui/variables)。
+For further details on using variables, see the [Variables](/handbook/ui/variables) section.

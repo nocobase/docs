@@ -1,12 +1,12 @@
 ## Provider
 
-根据 [Provider 教程](/development/client/providers) 文档，其主要作用有以下三点：
+According to the [Provider Tutorial](/development/client/providers), the Provider has three main functions:
 
-- 提供全局共享的上下文
-- 提供全局内容展示
-- 拦截作用，根据条件渲染
+- Providing a globally shared context
+- Displaying global content
+- Intercepting and rendering based on conditions
 
-针对以上三点，我们提供了如下示例：
+For these functions, we offer the following examples:
 
-- [全局内容展示](/plugin-samples/provider/content)
-- [全局上下文](/plugin-samples/provider/context)
+- [Global Content Display](/plugin-samples/provider/content)
+- [Global Context](/plugin-samples/provider/context)

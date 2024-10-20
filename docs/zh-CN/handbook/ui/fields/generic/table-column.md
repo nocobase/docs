@@ -41,9 +41,18 @@
 
 如果你需要扩展更多的组件，可以参考 [扩展有值字段组件组件](/plugin-samples/field/value)。
 
-### 风格
+### 样式
 
-支持按条件配置列的颜色和背景颜色
-![风格入口](https://static-docs.nocobase.com/风格入口.png)
-![2024-06-26-14-06-07-样式配置](https://static-docs.nocobase.com/2024-06-26-14-06-07-样式配置.png)
-![2024-06-26-14-06-17-最终效果](https://static-docs.nocobase.com/2024-06-26-14-06-17-最终效果.png)
+支持按条件配置列的颜色和背景颜色。假设我们有一张银行交易明细表，有一列是交易金额，我们要把正数（收入）设置为绿色，负数（支出）设置为红色，以下是具体的操作步骤：
+
+1. 首先，打开交易金额的字段设置菜单，点击风格。
+![style-menu-2024-08-08-18-23-13](https://static-docs.nocobase.com/style-menu-2024-08-08-18-23-13.png)
+
+1. 点击添加联动规则，设置第一个规则，当交易金额大于0时字段的颜色设置为绿色。
+![style-green-2024-08-08-18-33-34](https://static-docs.nocobase.com/style-green-2024-08-08-18-33-34.png)
+
+1. 再次点击添加联动规则，设置第二个规则，当交易金额小于0时字段的颜色设置为红色。
+![style-red-2024-08-08-18-35-01](https://static-docs.nocobase.com/style-red-2024-08-08-18-35-01.png)
+
+最终的效果如下
+![result-2024-08-08-18-38-05](https://static-docs.nocobase.com/result-2024-08-08-18-38-05.png)

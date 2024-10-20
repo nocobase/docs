@@ -1,50 +1,50 @@
-# 多对多
+# Many-to-Many
 
-在选课系统中，有学生和课程两个实体，一个学生可以选修多门课程，一门课程也可以有多个学生选修，这就构成了多对多的关系。在关系数据库中，为了表示学生和课程之间的多对多关系，通常会使用一个中间表，比如选课表。这个表可以记录每个学生选择了哪些课程，每门课程被哪些学生选修。这样的设计可以很好地表示学生和课程之间的多对多关系。
+In a course enrollment system, there are two entities: students and courses. A student can enroll in multiple courses, and a course can have multiple students enrolled, constituting a many-to-many relationship. In a relational database, to represent the many-to-many relationship between students and courses, an intermediary collection, such as an enrollment collection, is usually used. This collection can record which courses each student has chosen and which students have enrolled in each course. This design effectively represents the many-to-many relationship between students and courses.
 
-ER 关系如下
+ER Diagram:
 
 ![alt text](https://static-docs.nocobase.com/0e9921228e1ee375dc639431bb89782c.png)
 
-字段配置
+Field Configuration:
 
 ![alt text](https://static-docs.nocobase.com/8e2739ac5d44fb46f30e2da42ca87a82.png)
 
-## 参数说明
+## Parameter Description
 
-### Source collection
+### Source Collection
 
-源表，也就是当前字段所在表。
+The source collection, which is the collection where the current field resides.
 
-### Target collection
+### Target Collection
 
-目标表，与哪个表关联。
+The target collection, which is the collection to be associated with.
 
-### Through collection
+### Through Collection
 
-中间表，当两个实体之间存在多对多的关系时，需要使用中间表来存储这种关系。中间表有两个外键，用于保存两个实体之间的关联。
+The intermediary collection, used when a many-to-many relationship exists between two entities. The intermediary collection has two foreign keys that are used to maintain the association between the two entities.
 
-### Source key
+### Source Key
 
-外键约束引用的字段，必须具备唯一性。
+The field in the source collection that is referenced by the foreign key. It must be unique.
 
-### Foreign key 1
+### Foreign Key 1
 
-中间表的字段，用于建立与源表之间的关联。
+The field in the intermediary collection that establishes the association with the source collection.
 
-### Foreign key 2
+### Foreign Key 2
 
-中间表的字段，用于建立与目标表之间的关联。
+The field in the intermediary collection that establishes the association with the target collection.
 
-### Target key
+### Target Key
 
-外键约束引用的字段，必须具备唯一性。
+The field in the target collection that is referenced by the foreign key. It must be unique.
 
 ### ON DELETE
 
-ON DELETE 是指在删除父表中的记录时对相关子表中的外键引用的操作规则，它是用于定义外键约束时的一个选项。常见的 ON DELETE 选项包括：
+ON DELETE refers to the rules applied to foreign key references in related child collections when records in the parent collection are deleted. It is an option used when defining a foreign key constraint. Common ON DELETE options include:
 
-- CASCADE：当删除父表中的记录时，自动删除子表中与之关联的所有记录。
-- SET NULL：当删除父表中的记录时，将子表中与之关联的外键值设为 NULL。
-- RESTRICT：默认选项，当试图删除父表中的记录时，如果存在与之关联的子表记录，则拒绝删除父表记录。
-- NO ACTION：与 RESTRICT 类似，如果存在与之关联的子表记录，则拒绝删除父表记录。
+- **CASCADE**: When a record in the parent collection is deleted, all related records in the child collection are automatically deleted.
+- **SET NULL**: When a record in the parent collection is deleted, the foreign key values in the related child collection records are set to NULL.
+- **RESTRICT**: The default option, it prevents the deletion of a parent collection record if there are related records in the child collection.
+- **NO ACTION**: Similar to RESTRICT, it prevents the deletion of a parent collection record if there are related records in the child collection.

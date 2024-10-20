@@ -1,3 +1,3 @@
-# 快照字段
+# snapshot field
 
 <PluginInfo name="field-snapshot"></PluginInfo>

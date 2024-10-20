@@ -1,34 +1,78 @@
-# 看板区块
+# Kanban Block
 
 <PluginInfo name="block-kanban"></PluginInfo>
 
-## 介绍
+## Introduction
 
-Kanban （看板）是一种敏捷项目管理工具，旨在实现工作可视化、限制进行中的工作数量并最大限度地提高工作效率，看板区块是任务管理的理想选择，它以看板视图展示数据，支持直接拖拽调整数据状态。
+The Kanban block presents data in a Kanban view, enabling drag-and-drop functionality to update the status of items.
 
-## 安装
+## Installation
 
-## 使用手册
+This is a built-in plugin, so no installation is needed.
 
-### 配置看板区块
+## Adding a Block
 
-![](https://static-docs.nocobase.com/8771d39e07c157d60d3b839c6bf45f8d.png)
+<video width="100%" height="440" controls>
+      <source src="https://static-docs.nocobase.com/20240419214551.mp4" type="video/mp4">
+</video>
 
-![](https://static-docs.nocobase.com/b1bdffc5ebd9c5b6342383d7d92260d1.png)
+![20240419214751](https://static-docs.nocobase.com/20240419214751.png)
 
-### 分组字段
+### Grouping Field
 
-在创建或配置看板区块时，需要选择单选字段作为分组字段，以便根据选定的单选字段值来对数据进行分组和展示
+Used to organize data into specific groups. When creating or configuring a Kanban block, you must select a single-choice field as the grouping field.
 
-### 数据范围
+### Sorting Field
 
-数据范围配置项允许用户定义区块所显示的数据的默认筛选条件，支持设置变量/静态值
+Used to arrange data within each group. Only fields tied to the grouping field can be selected for sorting. You can also quickly create a sorting field while setting up the Kanban block.
 
-### 应用场景
+![20240426170628](https://static-docs.nocobase.com/20240426170628.png)
 
-- 订单处理看板：追踪和管理订单的生命周期。 显示当前订单状态、待处理订单、已发货订单等信息，以便团队可以迅速识别和处理订单流程中的问题
-- 库存管理看板： 实时监控和管理库存水平，可视化展示各种商品的库存量，低库存或过剩库存，支持快速的库存调整和补货决策
+## Managing Kanban Data
 
-如图示例配置库存管理看板
+### Clicking a Card
 
-![](https://static-docs.nocobase.com/c6954acf2033d56c49e4a076284052b2.gif)
+Clicking on a card opens a pop-up window where you can configure data blocks as needed, such as setting up an edit form to modify the current card's record.
+
+![20240419220115](https://static-docs.nocobase.com/20240419220115.png)
+
+You can also configure how the pop-up window opens and its size.
+
+![20240419220159](https://static-docs.nocobase.com/20240419220159.png)
+
+### Dragging a Card
+
+Example: Adjust the status of a product by dragging the card. Once dragging is complete, the data will be saved automatically.
+
+<video width="100%" height="440" controls>
+      <source src="https://static-docs.nocobase.com/20240419221247.mp4" type="video/mp4">
+</video>
+
+## Block Configuration Options
+
+### Setting Data Range
+
+Example: Default filtering for promotional products.
+
+![20240422095659](https://static-docs.nocobase.com/20240422095659.png)
+
+For more details, refer to [Setting Data Range](/handbook/ui/blocks/block-settings/data-scope).
+
+### Setting Block Height
+
+Example: Adjust the height of the order Kanban block, with the scrollbar appearing within the columns.
+
+![20240605220635](https://static-docs.nocobase.com/20240605220635.gif)
+
+For more details, refer to [Block Height](/handbook/ui/blocks/block-settings/block-height).
+
+## Configuring Fields
+
+![20240419215909](https://static-docs.nocobase.com/20240419215909.png)
+
+## Configuring Actions
+
+![20240419220903](https://static-docs.nocobase.com/20240419220903.png)
+
+- [Filter](/handbook/ui/actions/types/filter)
+- [Add New](/handbook/ui/actions/types/add-new)
