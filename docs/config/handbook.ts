@@ -363,10 +363,16 @@ export default [
                 link: '/handbook/data-modeling/collection-fields/media/rich-text',
               },
               {
-                title: 'Attachment',
-                'title.zh-CN': '附件',
-                'title.ja-JP': '添付ファイル',
-                link: '/handbook/data-modeling/collection-fields/media/field-attachment',
+                title: 'Attachment(Assocation)',
+                'title.zh-CN': '附件（关系）',
+                'title.ja-JP': '添付ファイル（Assocation）',
+                link: '/handbook/file-manager/field-attachment',
+              },
+              {
+                title: 'Attachment(URL)',
+                'title.zh-CN': '附件（URL）',
+                'title.ja-JP': '添付ファイル（URL）',
+                link: '/handbook/field-attachment-url',
               },
             ],
           },
@@ -952,6 +958,12 @@ export default [
                 'title.ja-JP': 'ファイルマネージャー',
                 link: '/handbook/ui/fields/specific/file-manager',
               },
+              {
+                title: 'Mask',
+                'title.zh-CN': '掩码',
+                'title.ja-JP': '掩码',
+                link: '/handbook/field-component-mask',
+              },
             ],
           },
           {
@@ -1263,6 +1275,27 @@ export default [
         'title.zh-CN': '变量',
         'title.ja-JP': '変数',
         link: '/handbook/ui/variables',
+      },
+      {
+        title: 'Template engines',
+        'title.zh-CN': '模板引擎',
+        children: [
+          {
+            title: 'JSON template',
+            'title.zh-CN': 'JSON 模板',
+            link: '/handbook/template-json',
+          },
+          {
+            title: 'String template',
+            'title.zh-CN': '字符串模板',
+            link: '/handbook/template-string',
+          },
+          {
+            title: 'Handlebars',
+            'title.zh-CN': 'Handlebars',
+            link: '/handbook/template-handlebars',
+          },
+        ],
       },
       {
         title: 'Mobile',
