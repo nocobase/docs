@@ -63,7 +63,7 @@ Currently only used for field configuration in subforms and subtables of form bl
 
 ### Parent object
 
-Similar to the "Current object", it represents the parent object of the current object.
+Similar to the "Current object", it represents the parent object of the current object. Supported in NocoBase v1.3.34-beta and above.
 
 ### Current record
 
