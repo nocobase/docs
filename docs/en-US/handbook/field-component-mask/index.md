@@ -1,4 +1,4 @@
-# Mask Field Component
+# Mask
 
 <PluginInfo commercial="true" name="field-component-mask"></PluginInfo>
 
