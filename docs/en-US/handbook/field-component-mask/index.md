@@ -32,9 +32,10 @@ This is a commercial plugin.
 
 #### Custom Mask Rules
 
-If the predefined mask rules don't meet your needs, you can select `Custom` to define your own mask rules. The syntax for custom mask rules is as follows:
+If the predefined mask rules don't meet your needs, you can select `Custom` to define your own mask rules. 
+The syntax for custom mask rules is as follows:
 
-- `*` represents a placeholder, and the mask will display a specified number of asterisks.
+- `*` represents a placeholder, and the mask will display a specified number of `*`.
 - All other characters will display as they appear in the original data.
 
 **Examples:**
@@ -47,6 +48,6 @@ If the predefined mask rules don't meet your needs, you can select `Custom` to d
 
 You can specify which user roles are permitted to view the original, unmasked field values. By default, only the root user has this permission.
 
-:::info{title="Note"}
+:::info{title="INFO"}
 When the field is in edit mode, the original value is always visible, regardless of role settings.
 :::
