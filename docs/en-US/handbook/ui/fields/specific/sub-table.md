@@ -48,6 +48,16 @@ Supports associating data from existing records.
 The version of NocoBase needs to be v1.3.17-beta or above.
 :::
 
-![20240906084911_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240906084911_rec_.gif)
+![20240906084911_rec_](https://static-docs.nocobase.com/20240906084911_rec_.gif)
 
 For more information, refer to [Linkage Rules](/handbook/ui/blocks/block-settings/linkage-rule)
+
+### Allow disassociation
+
+:::info{title=Tip}
+The version of NocoBase needs to be v1.3.34-beta or above.
+:::
+
+![20241021210710](https://static-docs.nocobase.com/20241021210710.png)
+
+![20241021211909](https://static-docs.nocobase.com/20241021211909.png)

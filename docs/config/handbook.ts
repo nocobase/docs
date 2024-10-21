@@ -824,6 +824,12 @@ export default [
                 link: '/handbook/ui/blocks/block-settings/block-height',
               },
               {
+                title: 'Layout',
+                'title.zh-CN': '布局',
+                'title.ja-JP': 'レイアウト',
+                link: '/handbook/ui/blocks/block-settings/block-layout',
+              },
+              {
                 title: 'Delete',
                 'title.zh-CN': '删除区块',
                 'title.ja-JP': 'ブロックを削除',

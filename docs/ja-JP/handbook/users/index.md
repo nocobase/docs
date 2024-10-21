@@ -40,3 +40,14 @@
 
 ![](https://static-docs.nocobase.com/23a2b2223cb5b387b3699cc6143302e8.png)
 
+### 设置
+
+:::info{title=提示}
+需要 NocoBase v1.3.34-beta 及以上版本。
+:::
+
+ユーザー資料の変更、ユーザーパスワードの変更を許可するかどうかを設定します（すべてのユーザーが有効）
+
+![20241021212438](https://static-docs.nocobase.com/20241021212438.png)
+
+![20241021212659](https://static-docs.nocobase.com/20241021212659.png)
