@@ -11,6 +11,6 @@
 | Option             | Description                                        |
 | ------------------ | -------------------------------------------------- |
 | Size               | Set the size of the chart, either with a fixed aspect ratio or fixed height |
-| Light Mode Theme   | Must be selected for preview when the system is in light mode |
-| Dark Mode Theme    | Must be selected for preview when the system is in dark mode  |
-| Label Type         | Controls whether labels are displayed and the type of display | 
+| Light mode theme   | Must be selected for preview when the system is in light mode |
+| Dark mode theme    | Must be selected for preview when the system is in dark mode  |
+| Label type         | Controls whether labels are displayed and the type of display | 

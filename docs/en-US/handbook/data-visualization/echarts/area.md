@@ -16,23 +16,23 @@ Configure 1 measure and 2 dimensions. One dimension will serve as the X-axis fie
 
 | Option                          | Description                                                                 |
 | ------------------------------- | --------------------------------------------------------------------------- |
-| X-axis Field                    | The dimension field for the X-axis                                           |
-| Category Field                  | The dimension field used for categorization                                  |
+| XField                          | The dimension field for the X-axis                                           |
+| seriesField                     | The dimension field used for categorization                                  |
 | Size                            | Define the chart size, either by fixed aspect ratio or fixed height          |
-| Light Mode Theme                | Select this option to preview when the system is in light mode               |
-| Dark Mode Theme                 | Select this option to preview when the system is in dark mode                |
-| Show Legend                     | Toggle the display of the legend                                             |
-| Legend Direction                | Choose the direction of the legend display, either horizontal or vertical    |
-| Legend Position (Left, Bottom, Right, Top) | Define the relative position of the legend                          |
-| Label Type                      | Control the visibility and type of labels                                    |
-| Smooth Curve                    | Enable or disable the smoothing of curves                                    |
-| Stack Data                      | Enable or disable data stacking                                              |
-| X-axis Title                    | Control the display position of the X-axis title                             |
-| Y-axis Title                    | Control the display position of the Y-axis title                             |
-| X-axis Label Rotation           | Set the rotation angle of X-axis labels, helpful for displaying more labels when they are dense |
+| Light mode theme                | Select this option to preview when the system is in light mode               |
+| Dark mode theme                 | Select this option to preview when the system is in dark mode                |
+| Show legend                     | Toggle the display of the legend                                             |
+| Legend orient                   | Choose the direction of the legend display, either horizontal or vertical    |
+| Legend position (left, bottom, right, top) | Define the relative position of the legend                          |
+| Label type                      | Control the visibility and type of labels                                    |
+| Smooth curve                    | Enable or disable the smoothing of curves                                    |
+| Whether stack                   | Enable or disable data stacking                                              |
+| X-Axis title                    | Control the display position of the X-axis title                             |
+| Y-Axis title                    | Control the display position of the Y-axis title                             |
+| X-Axis label rotate             | Set the rotation angle of X-axis labels, helpful for displaying more labels when they are dense |
 | Padding                         | Adjust the internal padding of the chart                                     |
-| Grid Lines                      | Configure the display and style of grid lines                                |
-| Marker Line                     | Add marker lines with custom title, value, and color                         |
+| Split line                      | Configure the display and style of grid lines                                |
+| Mark line                       | Add marker lines with custom title, value, and color                         |
 
 ---
 

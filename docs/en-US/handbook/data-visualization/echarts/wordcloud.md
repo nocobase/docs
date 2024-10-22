@@ -11,6 +11,6 @@
 | Option             | Description                                      |
 | ------------------ | ------------------------------------------------ |
 | Size               | Sets the size of the chart, with either a fixed aspect ratio or fixed height |
-| Light Mode Theme   | Select this option to preview when the system is in light mode |
-| Dark Mode Theme    | Select this option to preview when the system is in dark mode |
+| Light mode theme   | Select this option to preview when the system is in light mode |
+| Dark mode theme    | Select this option to preview when the system is in dark mode |
 | Shape              | Controls the shape of the chart                 |
