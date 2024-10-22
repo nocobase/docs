@@ -25,15 +25,12 @@ By default, relationship field components are dropdown selectors (supporting dat
 Supports drag-and-drop sorting.
 
 ![20240422215629](https://static-docs.nocobase.com/20240422215629.gif)
+
 ## Field Configuration Options
 
 ### Allow Selecting Existing Data (disabled by default)
 
 Supports associating data from existing records.
-
-![20240410160432](https://static-docs.nocobase.com/20240410160432.png)
-
-![20240410160714](https://static-docs.nocobase.com/20240410160714.png)
 
 ![20240410160432](https://static-docs.nocobase.com/20240410160432.png)
 

@@ -45,6 +45,7 @@ In addition, you can also add various different blocks of the https://static-doc
 :::info{title=Tip}
 The version of NocoBase needs to be v1.3.34-beta or above.
 :::
+
 Configure whether to allow editing user profiles and changing user passwords (applies to all users).
 
 ![20241021212438](https://static-docs.nocobase.com/20241021212438.png)

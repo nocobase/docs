@@ -12,14 +12,14 @@ This is a commercial plugin.
 
 ## Field Configuration Options
 
-![Field Configuration Options](https://static-docs.nocobase.com/Snipaste_2024-10-17_21-46-06.png)
+![Field Configuration Options](https://static-docs.nocobase.com/Solution/202410222334271729611267.png)
 
 - [Field Component](/handbook/ui/fields/field-settings/field-component): Switch between the default field component and the mask field component.
 - Mask Settings: Configure mask rules and set permissions for the field.
 
 ## Mask Settings
 
-![Mask Settings](https://static-docs.nocobase.com/20241017215148.png)
+![Mask Settings](https://static-docs.nocobase.com/Solution/202410222340521729611652.png)
 
 ### Mask Rules
 
@@ -38,7 +38,7 @@ The syntax for custom mask rules is as follows:
 - `*` represents a placeholder, and the mask will display a specified number of `*`.
 - All other characters will display as they appear in the original data.
 
-**Examples:**
+Examples:
 
 - `a*a*a*`: Masks the original data `123456` as `1*3*5*`.
 - `a****a`: Masks the original data `123456789` as `1****9`.
