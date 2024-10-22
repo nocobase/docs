@@ -8,7 +8,7 @@ Support users in receiving message notifications within the application.
 
 ## User Manual
 
-**Example: Sending In-app Activity Notifications**
+Example: Sending In-app Activity Notifications
 
 1. First, configure an in-app message channel in the notification channel management.
    ![20241017075823-2024-10-17-07-58-27](https://static-docs.nocobase.com/20241017075823-2024-10-17-07-58-27.png)
