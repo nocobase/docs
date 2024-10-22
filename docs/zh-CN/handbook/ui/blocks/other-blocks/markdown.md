@@ -53,7 +53,7 @@ Markdown 的文本里也支持使用变量
 
 ![20240909155651](https://static-docs.nocobase.com/20240909155651.png)
 
-遍历数组 使用 `#each`
+遍历数组 使用 `#each`:
 
 ![20240909155720](https://static-docs.nocobase.com/20240909155720.png)
 

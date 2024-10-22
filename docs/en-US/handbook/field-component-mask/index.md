@@ -1,53 +1,53 @@
-# 掩码
+# Mask
 
 <PluginInfo commercial="true" name="field-component-mask"></PluginInfo>
 
-## 介绍
+## Overview
 
-掩码字段组件允许您以掩码格式显示字段值。这对于显示包含敏感信息的字段值特别有用，例如密码、信用卡号等。
+The Mask Field Component allows you to display field values in a masked format, which is particularly useful for handling sensitive information like passwords or credit card numbers.
 
-## 安装
+## Installation
 
-该插件为商业插件。
+This is a commercial plugin.
 
-## 字段配置项
+## Field Configuration Options
 
-![字段配置项](https://static-docs.nocobase.com/Snipaste_2024-10-17_21-46-06.png)
+![Field Configuration Options](https://static-docs.nocobase.com/Snipaste_2024-10-17_21-46-06.png)
 
-- [字段组件](/handbook/ui/fields/field-settings/field-component): 在默认字段组件和掩码字段组件之间切换。
-- 掩码设置: 配置字段的掩码规则和权限。
+- [Field Component](/handbook/ui/fields/field-settings/field-component): Switch between the default field component and the mask field component.
+- Mask Settings: Configure mask rules and set permissions for the field.
 
-## 掩码设置
+## Mask Settings
 
-![掩码设置](https://static-docs.nocobase.com/20241017215148.png)
+![Mask Settings](https://static-docs.nocobase.com/20241017215148.png)
 
-### 掩码规则
+### Mask Rules
 
-#### 预定义掩码规则
+#### Predefined Mask Rules
 
-- `******`：数据被掩码为六个星号。
-- `***abc`：数据被掩码为三个星号加上后三位原始数据。
-- `**ab**`：数据被掩码为前后两个星号加上中间的两位原始数据。
-- `abc***`：数据被掩码为前三位原始数据加上三个星号。
+- `******`: Masks the data entirely with six asterisks.
+- `***abc`: Masks the data with three asterisks followed by the last three characters of the original data.
+- `**ab**`: Masks the data with two asterisks at both the beginning and end, revealing the middle two characters of the original data.
+- `abc***`: Masks the data by showing the first three characters followed by three asterisks.
 
-#### 自定义掩码规则
+#### Custom Mask Rules
 
-当预定义的掩码规则无法满足需求时，可以选择 `Custom` 自定义掩码规则。
-自定义掩码规则写法如下：
+If the predefined mask rules don't meet your needs, you can select `Custom` to define your own mask rules. 
+The syntax for custom mask rules is as follows:
 
-- `*` 代表占位符，掩码后会输出指定位数的 `*`。
-- 其它字符均为原始数据显示。
+- `*` represents a placeholder, and the mask will display a specified number of `*`.
+- All other characters will display as they appear in the original data.
 
-例如：
+**Examples:**
 
-- `a*a*a*` 会将原始数据 `123456` 掩码为 `1*3*5*`。
-- `a****a` 会将原始数据 `123456789` 掩码为 `1****9`。
-- `ab***abc` 会将原始数据 `asdfghjkl` 掩码为 `as***jkl`。
+- `a*a*a*`: Masks the original data `123456` as `1*3*5*`.
+- `a****a`: Masks the original data `123456789` as `1****9`.
+- `ab***abc`: Masks the original data `asdfghjkl` as `as***jkl`.
 
-### 可以查看原始值的用户角色
+### Roles Authorized to View Original Values
 
-设置哪些角色可以查看字段的原始值。默认情况下，只有 root 用户可以查看原始值。
+You can specify which user roles are permitted to view the original, unmasked field values. By default, only the root user has this permission.
 
 :::info{title="INFO"}
-当字段处于编辑模式时，无论角色设置如何，原始值始终可见。
+When the field is in edit mode, the original value is always visible, regardless of role settings.
 :::
