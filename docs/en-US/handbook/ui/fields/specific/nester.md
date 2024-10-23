@@ -18,7 +18,7 @@ Effortlessly display nested multi-level relationship fields, such as products an
 
 ![20240409214419](https://static-docs.nocobase.com/20240422172545.png)
 
-## Field Configuration
+## Field Configuration Options
 
 ### Multiple Record Addition/Association (Enabled by Default)
 
