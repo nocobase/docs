@@ -4,7 +4,7 @@
 
 ## Introduction
 
-Use an external MSSQL database as a data source. Currently supported versions: SQL Server 2014-2018
+Use an external MSSQL database as a data source. Currently supported versions: SQL Server 2014-2019
 
 ## Installation
 
