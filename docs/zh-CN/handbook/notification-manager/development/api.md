@@ -68,7 +68,15 @@ send('in-app-message',
 
 ##### 签名
 
-`send(sendConfig: {channelName:stirng, message: Object, triggerFrom: string})`
+`send(sendConfig: {channelName:stirng, message: Object, receivers: ReceiversType, triggerFrom: string })`
+
+接收人`receivers`目前只支持两种格式：nocobase站内用户ID`userId`和渠道特定配置`channel-self-defined`
+
+```ts
+type ReceiversType = 
+  | { value: number[]; type: 'userId' }
+  | { value: any; type: 'channel-self-defined'; channelType: string };
+```
 
 ##### 详细信息
 
@@ -78,6 +86,7 @@ sendConfig
 | ------------ | ------------ | --------- |
 | `channelName`    | `string` | 渠道标识   |
 | `message`   | `object`   | 消息对象      |
+| `receivers`     | `ReceiversType`  | 接收人 |
 | `triggerFrom`     | `string`  | 触发来源 |
 
 ## 客户端
@@ -109,6 +118,7 @@ type registerTypeOptions = {
   components: {
     ChannelConfigForm?: ComponentType // 渠道配置表单组件;
     MessageConfigForm?: ComponentType<{ variableOptions: any }> // 消息配置表单组件;
+    ContentConfigForm?: ComponentType<{ variableOptions: any }> // 内容配置表单组件（只是消息内容，不包括接收人的配置）;
   };
   meta?: { // 渠道配置元信息
     createable?: boolean //是否支持新增渠道;
