@@ -4,7 +4,7 @@
 
 ## Introduction
 
-Use an external MariaDB database as a data source.
+Use an external MariaDB database as a data source. Currently supported versions: MariaDB >= 10.3
 
 ## Installation
 
