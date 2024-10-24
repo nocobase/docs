@@ -2,7 +2,7 @@ import { Link, useSiteData } from 'dumi';
 import React from 'react';
 
 const PluginInfo = (props) => {
-  const { name, link, commercial } = props;
+  const { name, link, commercial, licenseBundled } = props;
   const { themeConfig } = useSiteData();
   const zhCN = themeConfig.lang === 'zh-CN';
   const jaJP = themeConfig.lang === 'ja-JP';
@@ -14,21 +14,41 @@ const PluginInfo = (props) => {
         <h4>
           {zhCN ? '提示' : jaJP ? '注意' : 'INFO'}
         </h4>
-        <section>
-          {zhCN ? (
-            <p>
-              该功能由{commercial ? '商业' : ''}插件 <Link to={link ?? `/handbook/${name}`}>plugin-{name}</Link> 提供{commercial && <>，请查看 <a target="_blank" href="https://www.nocobase.com/cn/plugins">商业授权</a> 了解详情</>}.
-            </p>
-          ) : jaJP ? (
-            <p>
-              この機能は{commercial ? '商用' : ''}プラグイン <Link to={link ?? `/handbook/${name}`}>plugin-{name}</Link> によって提供されます。{commercial && <> 詳細については、<a target="_blank" href="https://www.nocobase.com/ja/plugins">商用ライセンス</a> をご覧ください。</>}
-            </p>
+        {
+          licenseBundled ? (
+            <section>
+              {zhCN ? (
+                <p>
+                  该功能由商业插件 <Link to={link ?? `/handbook/${name}`}>plugin-{name}</Link> 提供，包含在 <a target="_blank" href="https://www.nocobase.com/cn/commercial">商业版本</a> 中，无需单独购买。
+                </p>
+              ) : jaJP ? (
+                <p>
+                  この機能は商用プラグイン <Link to={link ?? `/handbook/${name}`}>plugin-{name}</Link> によって提供されます，包含在 <a target="_blank" href="https://www.nocobase.com/jp/commercial">商业版本</a> 中，无需单独购买。
+                </p>
+              ) : (
+                <p>
+                  This feature is provided by the commercial plugin <Link to={link ?? `/handbook/${name}`}>plugin-{name}</Link>, included in the <a target="_blank" href="https://www.nocobase.com/en/commercial">commercial edition</a>, with no additional purchase required.
+                </p>
+              )}
+            </section>
           ) : (
-            <p>
-              This feature is provided by the {commercial ? 'commercial ' : ''}plugin <Link to={link ?? `/handbook/${name}`}>plugin-{name}</Link>. {commercial && <><br /> Please refer to the <a target="_blank" href="https://www.nocobase.com/en/plugins">commercial license</a> for details.</>}
-            </p>
-          )}
-        </section>
+            <section>
+              {zhCN ? (
+                <p>
+                  该功能由{commercial ? '商业' : ''}插件 <Link to={link ?? `/handbook/${name}`}>plugin-{name}</Link> 提供{commercial && <>，请查看 <a target="_blank" href="https://www.nocobase.com/cn/plugins">商业授权</a> 了解详情</>}.
+                </p>
+              ) : jaJP ? (
+                <p>
+                  この機能は{commercial ? '商用' : ''}プラグイン <Link to={link ?? `/handbook/${name}`}>plugin-{name}</Link> によって提供されます。{commercial && <> 詳細については、<a target="_blank" href="https://www.nocobase.com/jp/plugins">商用ライセンス</a> をご覧ください。</>}
+                </p>
+              ) : (
+                <p>
+                  This feature is provided by the {commercial ? 'commercial ' : ''}plugin <Link to={link ?? `/handbook/${name}`}>plugin-{name}</Link>. {commercial && <><br /> Please refer to the <a target="_blank" href="https://www.nocobase.com/en/plugins">commercial license</a> for details.</>}
+                </p>
+              )}
+            </section>
+          )
+        }
       </div>
     </div>
   );

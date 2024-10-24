@@ -1,6 +1,6 @@
 # 数据源 - 人大金仓（KingbaseES）
 
-<PluginInfo commercial="true" name="data-source-kingbase"></PluginInfo>
+<PluginInfo licenseBundled="true" name="data-source-kingbase"></PluginInfo>
 
 ## 介绍
 
