@@ -77,11 +77,17 @@ export default [
             ],
           },
           {
-            title: 'REST API Data source',
+            title: 'REST API data source',
             'title.zh-CN': 'REST API 数据源',
             'title.ja-JP': 'REST API データソース',
             // subTitle: '@nocobase/plugin-data-source-external-postgres',
             link: '/handbook/data-source-rest-api',
+          },
+          {
+            title: 'Kingbase data source',
+            'title.zh-CN': '人大金仓（Kingbase）数据源',
+            'title.ja-JP': '人大金仓（Kingbase）データソース',
+            link: '/handbook/data-source-kingbase',
           },
           {
             title: 'ER diagram-like tool',
