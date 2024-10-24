@@ -84,9 +84,9 @@ export default [
             link: '/handbook/data-source-rest-api',
           },
           {
-            title: 'Kingbase data source',
-            'title.zh-CN': '人大金仓（Kingbase）数据源',
-            'title.ja-JP': '人大金仓（Kingbase）データソース',
+            title: 'KingbaseES data source',
+            'title.zh-CN': '人大金仓（KingbaseES）数据源',
+            'title.ja-JP': '人大金仓（KingbaseES）データソース',
             link: '/handbook/data-source-kingbase',
           },
           {

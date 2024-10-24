@@ -1,13 +1,13 @@
-# 数据源 - 人大金仓（Kingbase）
+# 数据源 - 人大金仓（KingbaseES）
 
 <PluginInfo commercial="true" name="data-source-kingbase"></PluginInfo>
 
 ## 介绍
 
-使用 人大金仓（Kingbase）数据库作为数据源，可以作为主数据库，也可以作为外部数据库使用。
+使用 人大金仓（KingbaseES）数据库作为数据源，可以作为主数据库，也可以作为外部数据库使用。
 
 :::warning
-目前只支持 pg 模式运行的人大金仓（Kingbase）数据库。
+目前只支持 pg 模式运行的人大金仓（KingbaseES）数据库。
 :::
 
 ## 安装
