@@ -5,4 +5,5 @@ NocoBaseは3つのインストール方法をサポートしており、デプ�
 - [Docker](./docker-compose.md)
 - [create-nocobase-app](./create-nocobase-app.md)
 - [Gitソースコード](./git-clone.md)
+- [クラウドプロバイダー](./deploy-through-cloud-providers.md)
 
