@@ -2,7 +2,7 @@
 
 ## 概要
 
-リンクルールは、ユーザーの行動に基づいてフォームフィールドの状態を動的に調整することを可能にします。例えば、表示/非表示、必須/任意、値の設定などが挙げられます。現在、リンクルールの設定がサポートされているのは、[フォームブロック](https://docs-cn.nocobase.com/handbook/ui/blocks/data-blocks/form#%E8%81%94%E5%8A%A8%E8%A7%84%E5%88%99)、[詳細ブロック](https://docs-cn.nocobase.com/handbook/ui/blocks/data-blocks/details#%E8%81%94%E5%8A%A8%E8%A7%84%E5%88%99)、[操作ボタン](https://docs-cn.nocobase.com/handbook/ui/actions/action-settings/linkage-rule)、[サブフォーム](https://docs-cn.nocobase.com/handbook/ui/fields/specific/nester)（v1.3.17-beta以上が必要）、[サブテーブル](https://docs-cn.nocobase.com/handbook/ui/fields/specific/sub-table)（v1.3.17-beta以上が必要）です。
+リンクルールは、ユーザーの行動に基づいてフォームフィールドの状態を動的に調整することを可能にします。例えば、表示/非表示、必須/任意、値の設定などが挙げられます。現在、リンクルールの設定がサポートされているのは、[フォームブロック](https://docs-jp.nocobase.com/handbook/ui/blocks/data-blocks/form#%E8%81%94%E5%8A%A8%E8%A7%84%E5%88%99)、[詳細ブロック](https://docs-jp.nocobase.com/handbook/ui/blocks/data-blocks/details#%E8%81%94%E5%8A%A8%E8%A7%84%E5%88%99)、[操作ボタン](https://docs-jp.nocobase.com/handbook/ui/actions/action-settings/linkage-rule)、[サブフォーム](https://docs-jp.nocobase.com/handbook/ui/fields/specific/nester)（v1.3.17-beta以上が必要）、[サブテーブル](https://docs-jp.nocobase.com/handbook/ui/fields/specific/sub-table)（v1.3.17-beta以上が必要）です。
 
 ![20240408100711](https://static-docs.nocobase.com/20240408100711.png)
 

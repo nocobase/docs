@@ -61,6 +61,10 @@ Currently only used for field configuration in subforms and subtables of form bl
 
 ![20240416173043_rec_](https://static-docs.nocobase.com/20240416173043_rec_.gif)
 
+### Parent object
+
+Similar to the "Current object", it represents the parent object of the current object. Supported in NocoBase v1.3.34-beta and above.
+
 ### Current record
 
 A record refers to a row in a collection, with each row representing a record. The "Current record" variable is used in the "Row Action Linkage Rules" of display blocks.
@@ -103,6 +107,12 @@ The blocks in the popup can use the "Current popup record" variable, with the fo
 #### Assign field values configuration for form submit actions
 
 ![20240416224014_rec_](https://static-docs.nocobase.com/20240416224014_rec_.gif)
+
+### Table Select Record
+
+Default values for form fields that are currently only used for the Add record action for a table block
+
+#### The default value of the form field for the Add record action
 
 ### Parent record (Deprecated)
 

@@ -2,7 +2,7 @@
 
 <PluginInfo commercial="true" name="data-source-external-mssql"></PluginInfo>
 
-## イントロダクション
+## 紹介
 
 外部のMSSQLデータベースをデータソースとして使用します。
 

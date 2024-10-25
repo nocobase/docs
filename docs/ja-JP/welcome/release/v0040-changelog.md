@@ -7,7 +7,7 @@
 - 作業（バージョン）: パッケージを公開 0.4.0-alpha.2 c2f1876
 - 修正: 小さな問題 [`#72`](https://github.com/nocobase/nocobase/pull/72)
 - 開発 [`#68`](https://github.com/nocobase/nocobase/pull/68)
-- 機能: プラグイン - 中国地域 [`#66`](https://github.com/nocobase/nocobase/pull/66)
+- 機能: プラグイン - 中国の行政区 [`#66`](https://github.com/nocobase/nocobase/pull/66)
 - 機能: linkToフィールドのフィルター [`#64`](https://github.com/nocobase/nocobase/pull/64)
 - 修正: デフォルトのビュー/タブが破棄できないようにする [`#63`](https://github.com/nocobase/nocobase/pull/63)
 - 機能/プラグイン自動化 [`#65`](https://github.com/nocobase/nocobase/pull/65)

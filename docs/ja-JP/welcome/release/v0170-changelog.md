@@ -16,7 +16,7 @@ v0.17では、全く新しいSchemaInitializerとSchemaSettingsを提供しま�
 
 ユーザーがすぐに使えるよう、各部分の文書も見直しました。
 
-- [プラグイン開発](https://docs-cn.nocobase.com/development)（全面改訂、公開済み）
+- [プラグイン開発](https://docs-jp.nocobase.com/development)（全面改訂、公開済み）
 - [APIリファレンス / クライアント](https://client.docs-nocobase.com/core/application/application)（新セクション、公開済み）
 - 使用マニュアル（全面改訂、今後1、2週間以内に公開予定）
 - プラグイン一覧（新セクション、すべての既存プラグインの紹介、使用および拡張開発に関する説明を含む、今後1、2週間以内に公開予定）
@@ -83,5 +83,5 @@ v0.17では、全く新しいSchemaInitializerとSchemaSettingsを提供しま�
 - `x-designer`パラメータは廃止され、将来的には削除される予定ですので、`x-toolbar`を代わりに使用してください。
 - `useDesigner()`は廃止され、今後削除される予定ですので、`useSchemaToolbarRender()`を代わりに使用してください。
 
-詳細については、[NocoBase 0.17 の非互換性の変更](https://docs-cn.nocobase.com/welcome/release/upgrade-to/v017)をご覧ください。
+詳細については、[NocoBase 0.17 の非互換性の変更](https://docs-jp.nocobase.com/welcome/release/upgrade-to/v017)をご覧ください。
 

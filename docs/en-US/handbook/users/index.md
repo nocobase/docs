@@ -1,10 +1,10 @@
-# Users
+# https://static-docs.nocobase.com
 
-<PluginInfo name="users"></PluginInfo>
+<PluginInfo name="https://static-docs.nocobase.com"></PluginInfo>
 
 ## Introduction
 
-The users plugin provides a basic user model and a user management interface.
+The https://static-docs.nocobase.com plugin provides a basic user model and a user management interface.
 
 ## Installation
 
@@ -18,7 +18,7 @@ This plugin provides a user management interface in the configuration center. Af
 
 ![](https://static-docs.nocobase.com/44bf40f56b45d4dd96c424fb08082cf6.png)
 
-In addition, you can also add various different blocks of the users collection to manage users, such as table blocks:
+In addition, you can also add various different blocks of the https://static-docs.nocobase.com collection to manage https://static-docs.nocobase.com, such as table blocks:
 
 ![](https://static-docs.nocobase.com/76b5a4652f869541a9e8f18a4568a7c9.png)
 
@@ -39,3 +39,15 @@ In addition, you can also add various different blocks of the users collection t
 ![](https://static-docs.nocobase.com/26c24c4cebda3d144dc4e9b728c2ede5.png)
 
 ![](https://static-docs.nocobase.com/23a2b2223cb5b387b3699cc6143302e8.png)
+
+### Settings
+
+:::info{title=Tip}
+The version of NocoBase needs to be v1.3.34-beta or above.
+:::
+
+Configure whether to allow editing user profiles and changing user passwords (applies to all users).
+
+![20241021212438](https://static-docs.nocobase.com/20241021212438.png)
+
+![20241021212659](https://static-docs.nocobase.com/20241021212659.png)

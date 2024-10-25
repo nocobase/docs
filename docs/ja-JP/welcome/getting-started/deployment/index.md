@@ -1,6 +1,6 @@
 # デプロイ概要
 
-NocoBaseは、三つの異なるインストール方法をサポートしており、各方法に若干異なるデプロイ手順があります。
+NocoBaseは3つのインストール方法をサポートしており、デプロイ方法は若干異なります。
 
 - [Docker](./docker-compose.md)
 - [create-nocobase-app](./create-nocobase-app.md)

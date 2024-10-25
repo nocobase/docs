@@ -219,7 +219,7 @@ new ECharts({
   series: { type: 'line' },
   config: [
     {
-      property: 'booleanField',
+      configType: 'boolean',
       name: 'smooth',
       title: 'isSmooth',
     },
@@ -241,11 +241,11 @@ export class Bar extends ECharts {
     });
     this.config = [
       {
-        property: 'yField',
+        configType: 'field',
         title: 'xField',
       },
       {
-        property: 'xField',
+        configType: 'field',
         title: 'yField',
       },
       'seriesField',
@@ -285,13 +285,13 @@ export class Pie extends ECharts {
     });
     this.config = [
       {
-        property: 'field',
+        configType: 'field',
         name: 'angleField',
         title: 'angleField',
         required: true,
       },
       {
-        property: 'field',
+        configType: 'field',
         name: 'colorField',
         title: 'colorField',
         required: true,
@@ -353,11 +353,14 @@ export class PluginSampleAddCustomChartClient extends Plugin {
 
   async beforeLoad() {
     const plugin = this.app.pm.get(DataVisualizationPlugin);
-    plugin.charts.addGroup('ECharts', [
-      new ECharts(),
-      // ...
-      // ...
-    ]);
+    plugin.charts.addGroup('echarts', {
+      title: 'ECharts',
+      charts: [
+        new ECharts(),
+        // ...
+        // ...
+      ],
+    });
   }
 
   // You can get and modify the app instance here

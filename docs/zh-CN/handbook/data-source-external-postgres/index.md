@@ -4,7 +4,7 @@
 
 ## 介绍
 
-使用外部的 PostgreSQL 数据库作为数据源。
+使用外部的 PostgreSQL 数据库作为数据源。目前支持的版本：PostgreSQL >= 9.5
 
 ## 安装
 

@@ -39,3 +39,16 @@
 ![](https://static-docs.nocobase.com/26c24c4cebda3d144dc4e9b728c2ede5.png)
 
 ![](https://static-docs.nocobase.com/23a2b2223cb5b387b3699cc6143302e8.png)
+
+### 设置
+
+:::info{title=提示}
+需要 NocoBase v1.3.34-beta 及以上版本。
+:::
+
+设置是否允许修改用户资料、修改用户密码（所有用户生效）
+
+![20241021212438](https://static-docs.nocobase.com/20241021212438.png)
+
+
+![20241021212659](https://static-docs.nocobase.com/20241021212659.png)

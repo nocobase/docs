@@ -36,12 +36,12 @@
 
 ### フィールドタイプのマッピング
 
-NocoBaseは、外部データベースのフィールドタイプに対して、対応するデータタイプ（フィールドタイプ）とUIタイプ（フィールドインターフェース）を自動的にマッピングします。
+NocoBase は、外部データベースのフィールドタイプに対応するフィールドタイプと UI タイプを自動的にマッピングします。
 
 - データタイプ（Field type）：フィールドが格納できるデータの種類、形式、および構造を定義するために使用されます。
-- フィールドインターフェース（Field interface）：ユーザーインターフェースでフィールド値を表示および入力するために使用されるコントロールの種類を指します。
+- フィールドインターフェース（Field interface）：ユーザーインターフェースでフィールド値の表示と入力に使用されるコントロールのタイプであり。
 
-| PostgreSQL | MySQL/MariaDB | NocoBase データ型 | NocoBase インターフェース型 |
+| PostgreSQL | MySQL/MariaDB | NocoBase Data Type | NocoBase Interface Type |
 | - | - | - | - |
 | BOOLEAN | BOOLEAN<br/>TINYINT(1) | boolean | checkbox <br/> switch |
 | SMALLINT<br/>INTEGER<br/>SERIAL<br/>SMALLSERIAL | TINYINT<br/>SMALLINT<br/>MEDIUMINT<br/>INTEGER | integer<br/>boolean<br/>sort | integer<br/>sort<br/>checkbox<br/>switch<br/>select<br/>radioGroup |
@@ -71,7 +71,7 @@ NocoBaseは、外部データベースのフィールドタイプに対して、
 
 ### サポートされていないフィールドタイプ
 
-サポートされていないフィールドタイプは別途表示されます。これらのフィールドは、開発者による適応が必要です。
+サポートされていないフィールドタイプは別に表示されており、これらのフィールドを使用するには、開発によって適合させる必要がある。
 
 ![20240507221854](https://static-docs.nocobase.com/20240507221854.png)
 

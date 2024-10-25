@@ -431,7 +431,7 @@ export default [
           {
             title: 'Tree collection',
             'title.zh-CN': '树表',
-            'title.ja-JP': 'ツリーコレクション',
+            'title.ja-JP': '木構造コレクション',
             link: '/manual/modules/collection-templates/tree',
           },
           {

@@ -2,7 +2,7 @@
 
 <PluginInfo name="collection-view"></PluginInfo>
 
-## イントロダクション
+## 紹介
 
 ## マニュアル
 

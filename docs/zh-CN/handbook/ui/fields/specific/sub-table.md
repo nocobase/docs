@@ -25,6 +25,7 @@
 支持拖拽排序。
 
 ![20240422215629](https://static-docs.nocobase.com/20240422215629.gif)
+
 ## 字段配置项
 
 ### 允许选择已有数据（默认不开启）
@@ -44,6 +45,16 @@
 需要 NocoBase v1.3.17-beta 及以上版本。
 :::
 
-![20240906084911_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240906084911_rec_.gif)
+![20240906084911_rec_](https://static-docs.nocobase.com/20240906084911_rec_.gif)
 
 更多内容参考 [联动规则](/handbook/ui/blocks/block-settings/linkage-rule)
+
+### 允许解除已有数据关联
+
+:::info{title=提示}
+需要 NocoBase v1.3.34-beta 及以上版本。
+:::
+
+![20241021210710](https://static-docs.nocobase.com/20241021210710.png)
+
+![20241021211909](https://static-docs.nocobase.com/20241021211909.png)

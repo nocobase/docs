@@ -2,7 +2,7 @@
 
 <PluginInfo name="telemetry-prometheus" commercial="true"></PluginInfo>
 
-## イントロダクション
+## 紹介
 
 このプラグインは、<a href="https://opentelemetry.io/docs/specs/otlp/" target="_blank">OpenTelemetry</a> プロトコル (OTLP) データを Prometheus 形式に変換し、Prometheus がメトリック (Metric) データを取得できるインターフェースを提供します。
 

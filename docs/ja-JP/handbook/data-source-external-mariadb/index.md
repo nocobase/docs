@@ -2,7 +2,7 @@
 
 <PluginInfo commercial="true" name="data-source-external-mariadb"></PluginInfo>
 
-## イントロダクション
+## 紹介
 
 外部の MariaDB データベースをデータソースとして利用します。
 

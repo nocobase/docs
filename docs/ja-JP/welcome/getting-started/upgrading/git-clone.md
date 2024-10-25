@@ -18,7 +18,7 @@ cd my-nocobase-app
 git pull
 ```
 
-## 3. キャッシュと旧依存関係を削除する（任意）
+## 3. キャッシュと旧依存関係を削除する（必須ではありません）
 
 通常のアップグレードプロセスが失敗した場合は、キャッシュと依存関係をクリアして再ダウンロードを試みてください。
 
@@ -31,7 +31,7 @@ yarn rimraf -rf node_modules
 
 ## 4. 依存関係を更新する
 
-国内のネットワーク環境に合わせて、国内ミラーに切り替えることを強くお勧めします。
+国内のネットワーク環境のため、国内のミラーを変更することを強くお勧めします。
 
 ```bash
 $ yarn config set disable-self-update-check true
@@ -39,7 +39,7 @@ $ yarn config set registry https://registry.npmmirror.com/
 $ yarn config set sqlite3_binary_host_mirror https://npmmirror.com/mirrors/sqlite3/
 ```
 
-📢 ネットワーク環境やシステム設定によっては、次のステップに数分かかる場合があります。
+📢 ネットワーク環境やシステム設定などの要因により、次のステップには十数分かかる場合があります。
 
 ```bash
 yarn install
@@ -70,5 +70,5 @@ yarn start
 
 ## 7. 独立プラグインのアップグレード
 
-NocoBaseがアップグレードされた後、インターフェースからインストールされた独立プラグインもアップグレードが必要になる場合があります。詳細は[独立プラグインのインストールとアップグレード](/welcome/getting-started/plugin)を参照してください。
+NocoBaseがアップグレードされた後、インターフェイスを通してインストールされた独立プラグインもアップグレードする必要があります。詳細については、ドキュメントの[独立プラグインのインストールとアップグレード](/welcome/getting-started/plugin)を参照してください。
 

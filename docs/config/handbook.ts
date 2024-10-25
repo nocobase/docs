@@ -176,7 +176,7 @@ export default [
           {
             title: 'Tree collection',
             'title.zh-CN': '树表',
-            'title.ja-JP': 'ツリーコレクション',
+            'title.ja-JP': '木構造コレクション',
             link: '/handbook/collection-tree',
           },
           {
@@ -189,7 +189,7 @@ export default [
             title: 'Expression collection',
             'title.zh-CN': '表达式表',
             'title.ja-JP': '式コレクション',
-            link: '/handbook/workflow-dynamic-calculation/collection',
+            link: '/handbook/collection-expression/collection',
           },
           {
             title: 'SQL collection',
@@ -363,10 +363,16 @@ export default [
                 link: '/handbook/data-modeling/collection-fields/media/rich-text',
               },
               {
-                title: 'Attachment',
-                'title.zh-CN': '附件',
-                'title.ja-JP': '添付ファイル',
+                title: 'Attachment(Assocation)',
+                'title.zh-CN': '附件（关系）',
+                'title.ja-JP': '添付ファイル（Assocation）',
                 link: '/handbook/file-manager/field-attachment',
+              },
+              {
+                title: 'Attachment(URL)',
+                'title.zh-CN': '附件（URL）',
+                'title.ja-JP': '添付ファイル（URL）',
+                link: '/handbook/field-attachment-url',
               },
             ],
           },
@@ -476,7 +482,7 @@ export default [
               {
                 title: 'Sequence',
                 'title.zh-CN': '自动编码',
-                'title.ja-JP': 'シーケンス',
+                'title.ja-JP': '自動エンコード',
                 link: '/handbook/field-sequence',
               },
               {
@@ -717,7 +723,7 @@ export default [
               {
                 title: 'Tree',
                 'title.zh-CN': '树',
-                'title.ja-JP': 'ツリー',
+                'title.ja-JP': '木構造',
                 link: '/handbook/block-tree',
               },
             ],
@@ -822,6 +828,12 @@ export default [
                 'title.zh-CN': '设置区块高度',
                 'title.ja-JP': 'ブロックの高さを設定',
                 link: '/handbook/ui/blocks/block-settings/block-height',
+              },
+              {
+                title: 'Layout',
+                'title.zh-CN': '布局',
+                'title.ja-JP': 'レイアウト',
+                link: '/handbook/ui/blocks/block-settings/block-layout',
               },
               {
                 title: 'Delete',
@@ -957,6 +969,12 @@ export default [
                 'title.zh-CN': '文件管理器',
                 'title.ja-JP': 'ファイルマネージャー',
                 link: '/handbook/ui/fields/specific/file-manager',
+              },
+              {
+                title: 'Mask',
+                'title.zh-CN': '掩码',
+                'title.ja-JP': '掩码',
+                link: '/handbook/field-component-mask',
               },
             ],
           },
@@ -1271,6 +1289,27 @@ export default [
         link: '/handbook/ui/variables',
       },
       {
+        title: 'Template engines',
+        'title.zh-CN': '模板引擎',
+        children: [
+          {
+            title: 'JSON template',
+            'title.zh-CN': 'JSON 模板',
+            link: '/handbook/template-json',
+          },
+          {
+            title: 'String template',
+            'title.zh-CN': '字符串模板',
+            link: '/handbook/template-string',
+          },
+          {
+            title: 'Handlebars',
+            'title.zh-CN': 'Handlebars',
+            link: '/handbook/template-handlebars',
+          },
+        ],
+      },
+      {
         title: 'Mobile',
         'title.zh-CN': '移动端',
         'title.ja-JP': 'モバイル',
@@ -1456,25 +1495,30 @@ export default [
       {
         title: 'Notification',
         'title.zh-CN': '通知',
+        'title.ja-JP': '通知',
         children: [
           {
             title: 'Notification manager',
             'title.zh-CN': '通知管理',
+            'title.ja-JP': '通知管理',
             link: '/handbook/notification-manager',
           },
           {
             title: 'Notification: In-app message',
             'title.zh-CN': '通知：站内信',
+            'title.ja-JP': '通知：アプリ内メッセージ',
             link: '/handbook/notification-in-app-message',
           },
           {
             title: 'Notification: Email',
             'title.zh-CN': '通知：电子邮件',
+            'title.ja-JP': '通知：メール',
             link: '/handbook/notification-email',
           },
           {
             title: 'Notification extension',
             'title.zh-CN': '通知扩展',
+            'title.ja-JP': '通知拡張',
             link: '/handbook/notification-manager/extension',
           },
         ],
@@ -1586,22 +1630,70 @@ export default [
             'title.ja-JP': 'ユーザーマニュアル',
             children: [
               {
-                title: 'Chart block',
-                'title.zh-CN': '图表区块',
-                'title.ja-JP': 'チャートブロック',
-                link: '/handbook/data-visualization/user/chart-block',
+                title: 'Basic usage',
+                'title.zh-CN': '基本使用',
+                'title.ja-JP': '基本的な使い方',
+                type: 'group',
+                children: [
+                  {
+                    title: 'Chart block',
+                    'title.zh-CN': '图表区块',
+                    'title.ja-JP': 'チャートブロック',
+                    link: '/handbook/data-visualization/user/chart-block',
+                  },
+                  {
+                    title: 'Configure chart',
+                    'title.zh-CN': '配置图表',
+                    'title.ja-JP': 'チャートを設定',
+                    link: '/handbook/data-visualization/user/Configure',
+                  },
+                  {
+                    title: 'Filter block',
+                    'title.zh-CN': '筛选区块',
+                    'title.ja-JP': 'フィルターブロック',
+                    link: '/handbook/data-visualization/user/filter',
+                  },
+                ],
               },
               {
-                title: 'Configure chart',
-                'title.zh-CN': '配置图表',
-                'title.ja-JP': 'チャートを設定',
-                link: '/handbook/data-visualization/user/Configure',
+                title: 'Ant design charts',
+                type: 'group',
+                children: [
+                  '/handbook/data-visualization/antd-charts/overview',
+                  '/handbook/data-visualization/antd-charts/line',
+                  '/handbook/data-visualization/antd-charts/column',
+                  '/handbook/data-visualization/antd-charts/bar',
+                  '/handbook/data-visualization/antd-charts/pie',
+                  '/handbook/data-visualization/antd-charts/dual-axes',
+                  '/handbook/data-visualization/antd-charts/scatter',
+                ],
               },
               {
-                title: 'Filter block',
-                'title.zh-CN': '筛选区块',
-                'title.ja-JP': 'フィルターブロック',
-                link: '/handbook/data-visualization/user/filter',
+                title: 'Ant design',
+                type: 'group',
+                children: [
+                  '/handbook/data-visualization/antd/overview',
+                  '/handbook/data-visualization/antd/table',
+                  '/handbook/data-visualization/antd/statistic',
+                ],
+              },
+              {
+                title: 'ECharts',
+                type: 'group',
+                children: [
+                  '/handbook/data-visualization/echarts/overview',
+                  '/handbook/data-visualization/echarts/line',
+                  '/handbook/data-visualization/echarts/column',
+                  '/handbook/data-visualization/echarts/bar',
+                  '/handbook/data-visualization/echarts/diverging-bar',
+                  '/handbook/data-visualization/echarts/pie',
+                  '/handbook/data-visualization/echarts/area',
+                  '/handbook/data-visualization/echarts/scatter',
+                  '/handbook/data-visualization/echarts/funnel',
+                  '/handbook/data-visualization/echarts/radar',
+                  '/handbook/data-visualization/echarts/treemap',
+                  '/handbook/data-visualization/echarts/wordcloud',
+                ],
               },
             ],
           },

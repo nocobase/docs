@@ -10,7 +10,7 @@ UI 設定がアクティブ化されると、インターフェース上に直�
 
 ## 既存の初期化器に項目を追加する
 
-項目を追加するには、[`schemaInitializerManager.addItem()`](#) メソッドの使用を推奨します。項目の詳細な設定については [SchemaInitializer Item API](#) を参照してください。
+項目を追加するには、[`schemaInitializerManager.addItem()`](#) メソッドの使用をお勧めします。項目の詳細な設定については [SchemaInitializer Item API](#) を参照してください。
 
 ```ts
 class PluginDemoAddSchemaInitializerItem extends Plugin {
@@ -29,7 +29,7 @@ class PluginDemoAddSchemaInitializerItem extends Plugin {
 
 ## 新しい初期化器を追加する
 
-SchemaInitializer の詳細なパラメータについては [SchemaInitializerOptions API](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer#new-schemainitializeroptions) を参照してください。
+SchemaInitializer の詳細なパラメータについては [SchemaInitializerOptions API](https://client.docs-jp.nocobase.com/core/ui-schema/schema-initializer#new-schemainitializeroptions) を参照してください。
 
 ```ts
 const myInitializer = new SchemaInitializer({
@@ -53,7 +53,7 @@ const myInitializer = new SchemaInitializer({
 
 ### プラグインの load メソッド内で登録する
 
-新しい初期化器をアプリに追加するには `schemaInitializerManager.add()` の使用を推奨します。
+新しい初期化器をアプリに追加するには `schemaInitializerManager.add()` の使用をお勧めします。
 
 ```ts
 class PluginDemoAddSchemaInitializer extends Plugin {
@@ -106,10 +106,10 @@ SchemaInitializer は Schema の `x-initializer` パラメータで使用され�
 
 #### カスタムコンポーネントが `x-initializer` パラメータをサポートする方法
 
-Grid、ActionBar、Tabs などのコンポーネントがニーズを満たさない場合でも、カスタムコンポーネント内で [useSchemaInitializerRender()](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer#useschemainitializerrender) を使用して `x-initializer` のレンダリングを処理できます。
+Grid、ActionBar、Tabs などのコンポーネントがニーズを満たさない場合でも、カスタムコンポーネント内で [useSchemaInitializerRender()](https://client.docs-jp.nocobase.com/core/ui-schema/schema-initializer#useschemainitializerrender) を使用して `x-initializer` のレンダリングを処理できます。
 
 ## API 参考
 
-- [SchemaInitializerManager](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer-manager)
-- [SchemaInitializer](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer)
+- [SchemaInitializerManager](https://client.docs-jp.nocobase.com/core/ui-schema/schema-initializer-manager)
+- [SchemaInitializer](https://client.docs-jp.nocobase.com/core/ui-schema/schema-initializer)
 
