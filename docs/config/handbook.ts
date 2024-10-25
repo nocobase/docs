@@ -699,7 +699,7 @@ export default [
                 title: 'Multi-step form',
                 'title.zh-CN': '分步表单',
                 'title.ja-JP': '多段階フォーム',
-                link: '/handbook/block-steps-from',
+                link: '/handbook/block-multi-step-from',
               },
             ],
           },
