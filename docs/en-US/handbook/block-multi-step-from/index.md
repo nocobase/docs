@@ -1,5 +1,7 @@
 # Multi-step form
 
+<PluginInfo commercial="true" name="block-multi-step-from"></PluginInfo>
+
 ## Introduction
 Multi-step form is a block used to build a data entry and editing interface that supports step-by-step configuration on top of the capabilities of the form block.
 

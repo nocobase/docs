@@ -1,5 +1,7 @@
 # 分步表单
 
+<PluginInfo commercial="true" name="block-multi-step-from"></PluginInfo>
+
 ## 介绍
 分步表单是用于构建数据输入和编辑界面的区块，在表单区块的能力之上支持分步配置。
 
