@@ -10,9 +10,9 @@ Handlebars is a popular templating engine that allows us to dynamically embed da
 
 In Handlebars, the basic syntax includes:
 
-- **Interpolation expression** `{{variable}}` to output data.
-- **Conditional expression** `{{#if condition}}...{{/if}}` for logical conditions.
-- **Looping** `{{#each array}}...{{/each}}` to iterate over arrays.
+- Interpolation expression `{{variable}}` to output data.
+- Conditional expression `{{#if condition}}...{{/if}}` for logical conditions.
+- Looping `{{#each array}}...{{/each}}` to iterate over arrays.
 
 For example, given the following data:
 
@@ -45,8 +45,7 @@ The generated HTML will be:
 </ul>
 ```
 
-For more content, refer to
-
+For more content refer to
 - [Core](/api/handlebars-helpers/core)
 
 ### Comparison Operations
@@ -88,7 +87,7 @@ You can perform simple mathematical operations in templates:
 {{minus 10 3}} <!-- Output: 7 -->
 ```
 
-For more content, refer to
+For more content refer to
 
 - [Math](/api/handlebars-helpers/math)
 
@@ -111,8 +110,7 @@ For more content, refer to
 <p>{{dateFormat "2024-09-25" "YYYY"}}</p>  <!-- Output: 2024-09-25 -->
 ```
 
-For more content, refer to
-
+For more content refer to
 - [Date](/api/handlebars-helpers/date)
 
 ### Array and Object Operations
