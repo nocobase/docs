@@ -498,7 +498,7 @@ export default [
                 link: '/handbook/data-modeling/collection-fields/advanced/json',
               },
               {
-                title: 'Collection 选择器',
+                title: 'Collection select',
                 'title.zh-CN': '数据表选择器',
                 'title.ja-JP': 'コレクションセレクター',
                 link: '/handbook/data-modeling/collection-fields/advanced/collection-select',
