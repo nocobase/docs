@@ -1518,12 +1518,6 @@ export default [
             'title.ja-JP': '通知：メール',
             link: '/handbook/notification-email',
           },
-          {
-            title: 'Notification extension',
-            'title.zh-CN': '通知扩展',
-            'title.ja-JP': '通知拡張',
-            link: '/handbook/notification-manager/extension',
-          },
         ],
       },
       {
