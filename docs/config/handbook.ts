@@ -2086,6 +2086,12 @@ export default [
         'title.ja-JP': 'カスタムブランド',
         link: '/handbook/custom-brand',
       },
+      {
+        title: 'Public forms',
+        'title.zh-CN': '公开表单',
+        'title.ja-JP': '公开表单',
+        link: '/handbook/public-forms',
+      },
     ],
   },
 ];
