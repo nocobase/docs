@@ -4,7 +4,7 @@
 
 Sub-form offer an elegant solution for scenarios where relational data needs to be created before association. They present multi-level relational data in a clear, nested structure. Unlike data selectors and dropdown menus, subforms allow direct management of relational table fields within the current page block. Moreover, they ensure that relational data is submitted seamlessly alongside the main form.
 
-## Usage Guide
+## Usage Instructions
 
 ### Subforms for Many-to-Many Relationships
 

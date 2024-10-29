@@ -1,25 +1,25 @@
-# 数据表字段：附件（URL）
+# Data Field: Attachment (URL)
 
 <PluginInfo commercial="true" name="field-attachment-url"></PluginInfo>
 
-## 介绍
+## Introduction
 
-支持 URL 格式的附件。
+Supports attachments in URL format.
 
-## 安装
+## Installation
 
-该插件为商业插件。
+This plugin is a commercial plugin.
 
-## 使用手册
+## User Manual
 
-### 字段配置
+### Field Configuration
 
 ![20241017092323](https://static-docs.nocobase.com/20241017092323.png)
 
-### 外部数据源
+### External Data Source
 
 ![20241017092456](https://static-docs.nocobase.com/20241017092456.png)
 
-### 界面
+### Interface
 
 ![20241017092759](https://static-docs.nocobase.com/20241017092759.png)

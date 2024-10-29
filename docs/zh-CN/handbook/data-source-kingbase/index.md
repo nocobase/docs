@@ -4,7 +4,7 @@
 
 ## 介绍
 
-使用 人大金仓（KingbaseES）数据库作为数据源，可以作为主数据库，也可以作为外部数据库使用。
+使用人大金仓（KingbaseES）数据库作为数据源，可以作为主数据库，也可以作为外部数据库使用。
 
 :::warning
 目前只支持 pg 模式运行的人大金仓（KingbaseES）数据库。
@@ -35,7 +35,7 @@ DB_USER=nocobase
 DB_PASSWORD=nocobase
 ```
 
-#### Docker 版本
+#### Docker 安装
 
 ```yml
 version: "3"

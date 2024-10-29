@@ -1,12 +1,12 @@
-# JSON 模板
+# JSON Template
 
-## 介绍
+## Introduction
 
-在 JSON 模板中，变量是字符串格式的，因此需要像字符串一样用双引号包裹 {{xxxx}}。在变量解析时，变量的值会根据其实际内容转换为相应的类型。换句话说，虽然变量本身是字符串格式，但其解析后的值不一定是字符串类型。
+In a JSON template, variables are represented in string format and must be enclosed in double quotes, such as {{xxxx}}. During the parsing process, each variable's value is converted to its appropriate type based on its actual content. Thus, while the variable itself is a string, the resulting parsed value may not necessarily remain a string.
 
-## 示例
+## Example
 
-JSON 模板为
+The JSON template is as follows
 
 ```json
 {
@@ -18,14 +18,14 @@ JSON 模板为
   "key6": "{{current.key6}}",
   "key7": {
     "key1": "{{current.key1}}",
-    "key2": "{{current.key2}}",
+    "key2": "{{current.key2}}"
   },
   "key8": ["{{current.key1}}", "{{current.key3}}"],
-  "key9": "{{current.key1}} - \"{{current.key3}}\" - {{current.key3}} - val9",
+  "key9": "{{current.key1}} - \"{{current.key3}}\" - {{current.key3}} - val9"
 }
 ```
 
-current 的变量为
+The current variables are as follows
 
 ```json
 {
@@ -33,12 +33,12 @@ current 的变量为
   "key2": null,
   "key3": 3,
   "key4": {"k": "v"},
-  "key5": [1,2,3],
+  "key5": [1, 2, 3],
   "key6": undefined
 }
 ```
 
-解析的结果为
+The parsed result will be
 
 ```json
 {
@@ -46,12 +46,12 @@ current 的变量为
   "key2": null,
   "key3": 3,
   "key4": {"k": "v"},
-  "key5": [1,2,3],
+  "key5": [1, 2, 3],
   "key7": {
     "key1": "val1",
-    "key2": null,
+    "key2": null
   },
   "key8": ["val1", 3],
-  "key9": "val1 - \"3\" - 3 - val9",
+  "key9": "val1 - \"3\" - 3 - val9"
 }
 ```
