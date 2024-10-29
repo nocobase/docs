@@ -1,32 +1,32 @@
-# 数据源 - 人大金仓（KingbaseES）
+# Data Source - KingbaseES Database
 
 <PluginInfo licenseBundled="true" name="data-source-kingbase"></PluginInfo>
 
-## 介绍
+## Introduction
 
-使用 人大金仓（KingbaseES）数据库作为数据源，可以作为主数据库，也可以作为外部数据库使用。
+KingbaseES can be used as a data source, either as the primary database or an external database.
 
 :::warning
-目前只支持 pg 模式运行的人大金仓（KingbaseES）数据库。
+Currently, only KingbaseES databases running in pg mode are supported.
 :::
 
-## 安装
+## Installation
 
-### 作为主数据库使用
+### Using as the Primary Database
 
-安装流程参考 [安装概述](/welcome/getting-started/installation)，区别主要在于环境变量。
+Refer to the [Installation Overview](/welcome/getting-started/installation) for the setup procedures, the difference is mainly due to the environment variables.
 
-#### 环境变量
+#### Environment Variables
 
-修改 .env 文件添加或修改以下相关环境变量配置
+Edit the .env file to add or modify the following environment variable configurations:
 
 ```bash
-# 用于获取商业插件
+# For accessing commercial plugins
 NOCOBASE_PKG_URL=https://pkg.nocobase.com/
-NOCOBASE_PKG_USERNAME=your-username   # service platform username
-NOCOBASE_PKG_PASSWORD=your-password   # service platform password
+NOCOBASE_PKG_USERNAME=your-username   # Service platform username
+NOCOBASE_PKG_PASSWORD=your-password   # Service platform password
 
-# 根据实际情况调整 DB 相关参数
+# Adjust DB parameters as needed
 DB_DIALECT=kingbase
 DB_HOST=localhost
 DB_PORT=54321
@@ -35,7 +35,7 @@ DB_USER=nocobase
 DB_PASSWORD=nocobase
 ```
 
-#### Docker 版本
+#### Docker Installation
 
 ```yml
 version: "3"
@@ -51,32 +51,32 @@ networks:
     depends_on:
       - postgres
     environment:
-      # 用于获取商业插件
+      # For accessing commercial plugins
       - NOCOBASE_PKG_URL=https://pkg.nocobase.com/
-      - NOCOBASE_PKG_USERNAME=your-username   # service platform username
-      - NOCOBASE_PKG_PASSWORD=your-password   # service platform password
-      # 应用的密钥，用于生成用户 token 等
-      # 如果 APP_KEY 修改了，旧的 token 也会随之失效
-      # 可以是任意随机字符串，并确保不对外泄露
+      - NOCOBASE_PKG_USERNAME=your-username   # Service platform username
+      - NOCOBASE_PKG_PASSWORD=your-password   # Service platform password
+      # Application key for generating user tokens, etc.
+      # Changing APP_KEY invalidates old tokens
+      # Use a random string and keep it confidential
       - APP_KEY=your-secret-key
-      # 数据库类型
+      # Database type
       - DB_DIALECT=kingbase
-      # 数据库主机，可以替换为已有的数据库服务器 IP
+      # Database host, replace with existing database server IP if needed
       - DB_HOST=kingbase
-      # 数据库名
+      # Database name
       - DB_DATABASE=kingbase
-      # 数据库用户
+      # Database user
       - DB_USER=nocobase
-      # 数据库密码
+      # Database password
       - DB_PASSWORD=nocobase
-      # 时区
+      # Timezone
       - TZ=Asia/Shanghai
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
       - "13000:80"
 
-  # 仅用于测试的 kingbase 服务
+  # Kingbase service for testing purposes only
   kingbase:
     image: registry.cn-shanghai.aliyuncs.com/nocobase/kingbase:v009r001c001b0030_single_x86
     platform: linux/amd64
@@ -87,15 +87,15 @@ networks:
     volumes:
       - ./storage/db/kingbase:/home/kingbase/userdata
     environment:
-      ENABLE_CI: no # 必须用是 no
+      ENABLE_CI: no # Must be set to no
       DB_USER: nocobase
       DB_PASSWORD: nocobase
-      DB_MODE: pg  # 仅限于 pg
+      DB_MODE: pg  # pg only
       NEED_START: yes
     command: ["/usr/sbin/init"]
 ```
 
-#### 使用 create-nocobase-app 安装
+#### Installation Using create-nocobase-app
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d kingbase \
@@ -107,18 +107,18 @@ yarn create nocobase-app my-nocobase-app -d kingbase \
    -e TZ=Asia/Shanghai
 ```
 
-### 作为外部数据库使用
+### Using as an External Database
 
-修改 .env 文件，添加获取商业插件相关的环境变量
+Edit the .env file to add environment variables for accessing commercial plugins:
 
 ```bash
-# 用于获取商业插件
+# For accessing commercial plugins
 NOCOBASE_PKG_URL=https://pkg.nocobase.com/
-NOCOBASE_PKG_USERNAME=your-username   # service platform username
-NOCOBASE_PKG_PASSWORD=your-password   # service platform password
+NOCOBASE_PKG_USERNAME=your-username   # Service platform username
+NOCOBASE_PKG_PASSWORD=your-password   # Service platform password
 ```
 
-执行安装或升级命令
+Execute the installation or upgrade command
 
 ```bash
 yarn nocobase install
@@ -126,11 +126,11 @@ yarn nocobase install
 yarn nocobase upgrade
 ```
 
-激活插件
+Activate the Plugin
 
 ![20241024121815](https://static-docs.nocobase.com/20241024121815.png)
 
-## 使用手册
+## User Guide
 
-- 主数据库：查阅 [使用手册](/handbook)
-- 外部数据库：查阅 [数据源 / 外部数据库](/handbook/data-source-manager/external-database) 
+- Primary Database: Refer to the [handbook](/handbook)
+- External Database: See [Data Source / External Database](/handbook/data-source-manager/external-database)

@@ -6,7 +6,7 @@
 
 The plugin is essentially a tool for modifying the style of the entire front-end page. It currently supports editing global [SeedToken](https://ant.design/docs/react/customize-theme#seedtoken), [MapToken](https://ant.design/docs/react/customize-theme#maptoken), and [AliasToken](https://ant.design/docs/react/customize-theme#aliastoken), as well as enabling a [switch](https://ant.design/docs/react/customize-theme#%E4%BD%BF%E7%94%A8%E9%A2%84%E8%AE%BE%E7%AE%97%E6%B3%95) to Dark Mode and Compact Mode. In the future, it may support [component-level](https://ant.design/docs/react/customize-theme#%E4%BF%AE%E6%94%B9%E7%BB%84%E4%BB%B6%E5%8F%98%E9%87%8F-component-token) theme customization.
 
-## User Guide
+## Usage Instructions
 
 ### Enabling The Theme Plugin
 
