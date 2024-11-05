@@ -55,6 +55,7 @@ API_BASE_PATH=/api/
 
 ### API_BASE_URL
 
+<!-- will be open in 1.5
 ### CLUSTER_MODE
 
 多核（集群）启动模式，如配置了该变量，会透传至 `pm2 start` 命令中作为 `-i <instances>` 的参数。可选项与 pm2 `-i` 参数一致（参考 [PM2: Cluster Mode](https://pm2.keymetrics.io/docs/usage/cluster-mode/)），包括：
@@ -68,6 +69,7 @@ API_BASE_PATH=/api/
 :::warning{title="注意"}
 该模式需要配合集群模式相关的插件使用，否则应用的功能可能出现异常。
 :::
+-->
 
 ### PLUGIN_PACKAGE_PREFIX
 

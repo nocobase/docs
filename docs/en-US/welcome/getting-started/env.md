@@ -57,6 +57,7 @@ NocoBase API address prefix, default is `/api/`
 API_BASE_PATH=/api/
 ```
 
+<!-- will be open in 1.5
 ### CLUSTER_MODE
 
 The multi-core (cluster) mode for starting app. If this variable is configured, will be passed to the pm2 start command as the `-i <instances>` parameter. The options are consistent with the pm2 `-i` parameter (refer to [PM2: Cluster Mode](https://pm2.keymetrics.io/docs/usage/cluster-mode/)), including:
@@ -70,6 +71,7 @@ The default value is empty, meaning it is not enabled.
 :::warning{title="Attention"}
 This mode requires the use of plugins related to cluster mode, such as `@nocobase/plugin-sync-adapter-redis`. Otherwise, the functionality of applicaiton may encounter unexpected issues.
 :::
+-->
 
 ### PLUGIN_PACKAGE_PREFIX
 
