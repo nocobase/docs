@@ -55,6 +55,7 @@ API_BASE_PATH=/api/
 
 ### API_BASE_URL
 
+<!-- will be open in 1.5
 ### CLUSTER_MODE
 
 マルチコア（クラスター）起動モードです。この変数が設定されている場合、`pm2 start` コマンドに `-i <instances>` の引数として透過的に渡されます。選択肢は pm2 の `-i` パラメータと一致します（参考：[PM2: クラスター モード](https://pm2.keymetrics.io/docs/usage/cluster-mode/)）：
@@ -68,6 +69,7 @@ API_BASE_PATH=/api/
 :::warning{title="注意"}
 このモードはクラスター モード関連のプラグインと併せて使用する必要があります。そうしないと、アプリケーションの機能に異常が生じる可能性があります。
 :::
+-->
 
 ### PLUGIN_PACKAGE_PREFIX
 

@@ -1501,7 +1501,22 @@ export default [
             title: 'Notification manager',
             'title.zh-CN': '通知管理',
             'title.ja-JP': '通知管理',
-            link: '/handbook/notification-manager',
+            children: [
+              {
+                title: 'Overview',
+                'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
+                link: '/handbook/notification-manager',
+              },
+              {
+                title: 'Development',
+                'title.zh-CN': '开发指南',
+                children: [
+                  '/handbook/notification-manager/development/extension',
+                  '/handbook/notification-manager/development/api',
+                ],
+              },
+            ],
           },
           {
             title: 'Notification: In-app message',
@@ -1514,12 +1529,6 @@ export default [
             'title.zh-CN': '通知：电子邮件',
             'title.ja-JP': '通知：メール',
             link: '/handbook/notification-email',
-          },
-          {
-            title: 'Notification extension',
-            'title.zh-CN': '通知扩展',
-            'title.ja-JP': '通知拡張',
-            link: '/handbook/notification-manager/extension',
           },
         ],
       },
