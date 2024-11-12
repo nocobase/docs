@@ -8,13 +8,13 @@
 
 ## プラグインの有効化
 
-![](https://static-docs.nocobase.com/a494476c352a949a276d64e96e6ac587.png)
+![](https://static-docs.nocobase.com/202411122358790.png)
 
 ## OIDC認証の追加
 
 ユーザー認証プラグイン管理ページにアクセスします。
 
-![](https://static-docs.nocobase.com/4e598e7df963d7d23188afe3576456d6.png)
+![](https://static-docs.nocobase.com/202411130004459.png)
 
 追加 - OIDC
 
@@ -24,7 +24,7 @@
 
 ### 基本設定
 
-![](https://static-docs.nocobase.com/d80715319639e1681a28a97ad3131f21.png)
+![](https://static-docs.nocobase.com/202411130006341.png)
 
 - ユーザーが存在しない場合は自動的にサインアップ - 一致する既存のユーザーが見つからない場合、新しいユーザーを自動的に作成するかどうかを選択します。
 - 発行者 - 発行者はIdPによって提供され、通常は `/.well-known/openid-configuration`で終わります。
@@ -42,7 +42,7 @@
 
 ### 高度な設定
 
-![](https://static-docs.nocobase.com/d9e8040118e8e2ecdc3c847f72bbb5a9.png)
+![](https://static-docs.nocobase.com/202411130013306.png)
 
 - HTTP - NocoBaseのコールバックアドレスがHTTPプロトコルかどうか。デフォルトは `https`です。
 - ポート - NocoBaseのコールバックアドレスのポート。デフォルトは `443/80`です。
@@ -56,7 +56,7 @@
 
 ### 使用
 
-![](https://static-docs.nocobase.com/2edbea211232cea6d38c79630132418c.png)
+![](https://static-docs.nocobase.com/202411130019570.png)
 
 - 使用 (Usage) - コールバックURL (Redirect URL) はコピーしてIdPの該当設定に記入するために使用します。
 
@@ -69,4 +69,3 @@
 ログインページにアクセスし、ログインフォームの下にあるボタンをクリックして、サードパーティログインを開始します。
 
 ![](https://static-docs.nocobase.com/e493d156254c2ac0b6f6e1002e6a2e6b.png)
-
