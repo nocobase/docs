@@ -32,7 +32,7 @@ NocoBaseが現在サポートしているユーザー認証タイプは以下の
 
 ### 設定画面
 
-![](https://static-docs.nocobase.com/403529f12669495fe6f3afef4405d45e.png)
+![](https://static-docs.nocobase.com/202411131505095.png)
 
 ### 登録を許可
 
@@ -51,4 +51,3 @@ NocoBaseが現在サポートしているユーザー認証タイプは以下の
 登録が許可されていない場合、登録ページにはアクセスできません。
 
 ![](https://static-docs.nocobase.com/09325c4b07e09f88f80a14dff8430556.png)
-
