@@ -1,24 +1,45 @@
-# Notification: in app message
+# Notification: In-App Message
 
 <PluginInfo name="notification-in-app-message"></PluginInfo>
 
 ## Introduction
 
-Support users in receiving message notifications within the application.
+Enables users to receive real-time message notifications directly within the NocoBase application.
 
-## User Manual
+## Installation
 
-Example: Sending In-app Activity Notifications
+This plugin is pre-installed, so no additional setup is required.
 
-1. First, configure an in-app message channel in the notification channel management.
-   ![20241017075823-2024-10-17-07-58-27](https://static-docs.nocobase.com/20241017075823-2024-10-17-07-58-27.png)
-   ![20241017080112-2024-10-17-08-01-16](https://static-docs.nocobase.com/20241017080112-2024-10-17-08-01-16.png)
+## Adding an In-App Message Channel
 
-2. Configure a workflow, add a notification node, and select the channel created in the previous step for configuration.
-   ![20241017081301-2024-10-17-08-13-05](https://static-docs.nocobase.com/20241017081301-2024-10-17-08-13-05.png)
+Go to the notification management section, click adding button and select In-app message.
+![2024-11-08-08-33-26-20241108083326](https://static-docs.nocobase.com/2024-11-08-08-33-26-20241108083326.png)
 
-3. Trigger the workflow execution, and you will receive notifications in real-time.
-   ![20241017082030-2024-10-17-08-20-34](https://static-docs.nocobase.com/20241017082030-2024-10-17-08-20-34.png)
+Fill in the channel name and description, then click submit.
+![2024-11-08-08-34-32-20241108083431](https://static-docs.nocobase.com/2024-11-08-08-34-32-20241108083431.png)
 
-4. In-app messages will be grouped by the name of the sending channel. Based on the read/unread status of the messages, you can filter by all, unread, or read message groups. Clicking the “View” button will redirect you to the configured link page.
-   ![20241017082305-2024-10-17-08-23-10](https://static-docs.nocobase.com/20241017082305-2024-10-17-08-23-10.png)
+The new channel will now appear in the list.
+
+![2024-11-08-08-34-52-20241108083452](https://static-docs.nocobase.com/2024-11-08-08-34-52-20241108083452.png)
+
+## Example Usage Scenario
+
+To clarify the use of In-app message, here’s an example for "Marketing Lead Follow-Up".
+
+Imagine your team is running a major marketing campaign aimed at tracking responses and needs from potential clients. Using in-app messages, you can:
+
+**Set Up a Notification Channel:** Begin by creating a channel called "Marketing Clue" in notification management, making it easy for team members to identify its purpose.
+
+![2024-11-08-08-34-32-20241108083431](https://static-docs.nocobase.com/2024-11-08-08-34-32-20241108083431.png)
+
+**Configure a Workflow:** Create a workflow that automatically triggers notifications whenever a new lead is generated. Add a notification node to this workflow, select the "Marketing Clue" channel, and customize the message content according to campaign needs. For example:
+
+![image-1-2024-10-27-14-07-17](https://static-docs.nocobase.com/image-1-2024-10-27-14-07-17.png)
+
+**Receive Notifications in Real-Time:** Once the workflow triggers, all relevant team members will receive notifications instantly, allowing for quick responses.
+
+![image-2-2024-10-27-14-07-22](https://static-docs.nocobase.com/image-2-2024-10-27-14-07-22.png)
+
+**Message Management and Tracking:** In-app messages are grouped by channel name, and you can filter messages by read or unread status to prioritize important information. Clicking "View" redirects you to a configured link, allowing you to manage tasks seamlessly.
+
+![20241027140648-2024-10-27-14-06-51-2024-10-29-13-26-41](https://static-docs.nocobase.com/20241027140648-2024-10-27-14-06-51-2024-10-29-13-26-41.png)

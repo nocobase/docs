@@ -68,9 +68,9 @@ send('in-app-message',
 
 ##### 签名
 
-`send(sendConfig: {channelName:stirng, message: Object, receivers: ReceiversType, triggerFrom: string })`
+`send(sendConfig: {channelName:String, message: Object, receivers: ReceiversType, triggerFrom: String })`
 
-接收人`receivers`目前只支持两种格式：nocobase站内用户ID`userId`和渠道特定配置`channel-self-defined`
+接收人`receivers`目前只支持两种格式：NocoBase站内用户ID`userId`和渠道特定配置`channel-self-defined`
 
 ```ts
 type ReceiversType = 
@@ -122,7 +122,7 @@ type registerTypeOptions = {
   };
   meta?: { // 渠道配置元信息
     createable?: boolean //是否支持新增渠道;
-    eidtable?: boolean  //渠道配置信息是否可编辑;
+    editable?: boolean  //渠道配置信息是否可编辑;
     deletable?: boolean //渠道配置信息是否可删除;
   };
 };
