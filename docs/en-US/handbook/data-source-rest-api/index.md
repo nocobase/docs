@@ -210,7 +210,7 @@ Field metadata (Fields) is extracted from the CRUD interface data of the adapted
 
 Field metadata extraction.
 
-![20240716224010](https://static-docs.nocobase.com/20240716224010.png)
+![20241121230436](https://static-docs.nocobase.com/20241121230436.png)
 
 Field and preview.
 

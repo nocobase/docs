@@ -207,7 +207,7 @@ REST API 数据源提供了三类变量用于接口的对接
 
 提取字段元数据
 
-![20240716224010](https://static-docs.nocobase.com/20240716224010.png)
+![20241121230436](https://static-docs.nocobase.com/20241121230436.png)
 
 字段及预览
 
