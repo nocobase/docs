@@ -19,28 +19,32 @@ cd C:\your\path\my-project
 
 ## 2. 更新 image 版本号
 
-- `latest` 截止目前最稳定的版本，推荐安装此版本；
-- `next` 内测版，包含一些未发布的新特性，这个版本可能还不完全稳定，适用于开发者或测试人员，用于提前体验新功能或进行兼容性测试；
-- `1.2.4-alpha` 指定版本号升级，最新版本情况，查看[已发布版本列表](https://hub.docker.com/r/nocobase/nocobase/tags)
+- `latest`：功能稳定，测试较为完善的版本，仅做缺陷修复。推荐安装此版本。
+- `beta`: 包含即将发布的新功能，经过初步测试的版本，可能存在部分已知或未知问题。
+- `alpha`: 开发中的版本，包含最新的功能代码，可能尚未完成或存在较多不稳定因素，主要用于内部开发和快速迭代。
+- `1.3.51`：指定版本号，最新版本查看 [已发布版本列表](https://hub.docker.com/r/nocobase/nocobase/tags)
 
 :::warning
-镜像只能升级不能降级，不能将 next 降级为 latest
+镜像只能升级不能降级，不能将 alpha 降级为 beta, latest, 或将 beta 降为 latest
 :::
 
 ```yml
 # ...
 services:
   app:
-    # 阿里云 main 版本（只支持 AMD64 架构）
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:main
     # 阿里云 latest 版本
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
+    # 阿里云 beta 版本
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:beta
+    # 阿里云 alpha 版本
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:alpha
     # 阿里云指定版本
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:1.2.4-alpha
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:1.3.51
     # Docker Hub 镜像，可能会下载不了
-    image: nocobase/nocobase:main
     image: nocobase/nocobase:latest
-    image: nocobase/nocobase:1.2.4-alpha
+    image: nocobase/nocobase:beta
+    image: nocobase/nocobase:alpha
+    image: nocobase/nocobase:1.3.51
 # ...
 ```
 
