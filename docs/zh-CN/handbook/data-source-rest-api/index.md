@@ -99,7 +99,7 @@ REST API 数据源的 Collection 配置如下
 | page                  | {{request.params.page}}     |
 | limit                 | {{request.params.pageSize}} |
 
-可以点击 Try it out 进行调试，查看响应结果
+可以点击 Try it out 进行调试，查看响应结果。
 
 ![20241121210320](https://static-docs.nocobase.com/20241121210320.png)
 
@@ -113,7 +113,7 @@ REST API 数据源的 Collection 配置如下
 
 ![20241121214638](https://static-docs.nocobase.com/20241121214638.png)
 
-根据第三方 API 的响应格式调整转换规则，使其输出符合 NocoBase 标准。
+根据第三方 API 的响应格式调整转换规则，使其符合 NocoBase 输出标准。
 
 ![20241121215100](https://static-docs.nocobase.com/20241121215100.png)
 
