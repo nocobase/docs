@@ -58,37 +58,35 @@ REST API 数据源的 Collection 配置如下
 
 配置查看资源列表的接口映射
 
-![20241121174911](https://static-docs.nocobase.com/20241121174911.png)
+![20240716211351](https://static-docs.nocobase.com/20240716211351.png)
 
 ### Get
 
 配置查看资源详情的接口映射
 
-![20241121175305](https://static-docs.nocobase.com/20241121175305.png)
+![20240716211532](https://static-docs.nocobase.com/20240716211532.png)
 
 ### Create
 
 配置创建资源的接口映射
 
-![20241121200956](https://static-docs.nocobase.com/20241121200956.png)
+![20240716211634](https://static-docs.nocobase.com/20240716211634.png)
 
 ### Update
 
 配置更新资源的接口映射
-
-![20241121201200](https://static-docs.nocobase.com/20241121201200.png)
+![20240716211733](https://static-docs.nocobase.com/20240716211733.png)
 
 ### Destroy
 
 配置删除资源的接口映射
 
-![20241121201307](https://static-docs.nocobase.com/20241121201307.png)
+![20240716211808](https://static-docs.nocobase.com/20240716211808.png)
 
+其中 List 和 Get 是 必须配置的两个接口。
 ## 调试 API
 
 ### 请求参数对接
-
-在 params 中配置需要对接的参数。
 
 示例: 为 List 接口配置分页参数（如果第三方 API 本身不支持分页，则以取到的列表数据来分页）。
 
@@ -115,7 +113,7 @@ REST API 数据源的 Collection 配置如下
 
 ![20241121214638](https://static-docs.nocobase.com/20241121214638.png)
 
-根据第三方 API 的响应格式调整转换关系,使其输出符合 NocoBase 标准。
+根据第三方 API 的响应格式调整转换规则，使其输出符合 NocoBase 标准。
 
 ![20241121215100](https://static-docs.nocobase.com/20241121215100.png)
 
