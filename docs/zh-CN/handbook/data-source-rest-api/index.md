@@ -58,37 +58,66 @@ REST API 数据源的 Collection 配置如下
 
 配置查看资源列表的接口映射
 
-![20240716211351](https://static-docs.nocobase.com/20240716211351.png)
+![20241121174911](https://static-docs.nocobase.com/20241121174911.png)
 
 ### Get
 
 配置查看资源详情的接口映射
 
-![20240716211532](https://static-docs.nocobase.com/20240716211532.png)
+![20241121175305](https://static-docs.nocobase.com/20241121175305.png)
 
 ### Create
 
 配置创建资源的接口映射
 
-![20240716211634](https://static-docs.nocobase.com/20240716211634.png)
+![20241121200956](https://static-docs.nocobase.com/20241121200956.png)
 
 ### Update
 
 配置更新资源的接口映射
 
-![20240716211733](https://static-docs.nocobase.com/20240716211733.png)
+![20241121201200](https://static-docs.nocobase.com/20241121201200.png)
 
 ### Destroy
 
 配置删除资源的接口映射
 
-![20240716211808](https://static-docs.nocobase.com/20240716211808.png)
+![20241121201307](https://static-docs.nocobase.com/20241121201307.png)
 
 ## 调试 API
 
-可以点击 Try it out 进行调试
+### 请求参数对接
 
-![20240716212722](https://static-docs.nocobase.com/20240716212722.png)
+在 params 中配置需要对接的参数。
+
+示例: 为 List 接口配置分页参数（如果第三方 API 本身不支持分页，则以取到的列表数据来分页）。
+
+![20241121205229](https://static-docs.nocobase.com/20241121205229.png)
+
+请注意，只有在接口中已添加的变量才会生效。
+
+| 第三方 API 接入参数名 | NocoBase 参数               |
+| --------------------- | --------------------------- |
+| page                  | {{request.params.page}}     |
+| limit                 | {{request.params.pageSize}} |
+
+可以点击 Try it out 进行调试，查看响应结果
+
+![20241121210320](https://static-docs.nocobase.com/20241121210320.png)
+
+<video width="100%" height="440" controls>
+      <source src="https://static-docs.nocobase.com/20241121211034.mp4" type="video/mp4">
+</video>
+
+### 响应格式转换
+
+第三方 API 的响应格式可能并不是 NocoBase 标准，需要转换之后才能正确的在前端显示。
+
+![20241121214638](https://static-docs.nocobase.com/20241121214638.png)
+
+根据第三方 API 的响应格式调整转换关系,使其输出符合 NocoBase 标准。
+
+![20241121215100](https://static-docs.nocobase.com/20241121215100.png)
 
 调试流程说明
 
@@ -127,50 +156,50 @@ REST API 数据源提供了三类变量用于接口的对接
 
 ### List
 
-| 参数 | 说明 |
-| -- | -- |
-| request.params.page | 分页参数 |
-| request.params.pageSize | 每页显示数量 |
-| request.params.filter | 条件过滤 |
-| request.params.sort | 排序 |
-| request.params.appends | 按需加载的字段，一般用于关系字段的按需加载 |
-| request.params.fields | 接口只输出哪些字段（白名单） |
-| request.params.except | 排除哪些字段（黑名单） |
+| 参数                    | 说明                                         |
+| ----------------------- | -------------------------------------------- |
+| request.params.page     | 当前页数                                     |
+| request.params.pageSize | 每页数量                                     |
+| request.params.filter   | 过滤条件（需要符合 NocoBase 的 Filter 格式） |
+| request.params.sort     | 排序规则（需要符合 NocoBase 的 Sort 格式）   |
+| request.params.appends  | 按需加载的字段，一般用于关系字段的按需加载   |
+| request.params.fields   | 接口只输出哪些字段（白名单）                 |
+| request.params.except   | 排除哪些字段（黑名单）                       |
 
 ### Get
 
-| 参数 | 说明 |
-| -- | -- |
-| request.params.filterByTk | 每页显示数量 |
-| request.params.filter | 条件过滤 |
-| request.params.appends | 按需加载的字段，一般用于关系字段的按需加载 |
-| request.params.fields | 接口只输出哪些字段（白名单） |
-| request.params.except | 排除哪些字段（黑名单） |
+| 参数                      | 说明                                         |
+| ------------------------- | -------------------------------------------- |
+| request.params.filterByTk | 必填，一般为当前数据的 ID                    |
+| request.params.filter     | 过滤条件（需要符合 NocoBase 的 Filter 格式） |
+| request.params.appends    | 按需加载的字段，一般用于关系字段的按需加载   |
+| request.params.fields     | 接口只输出哪些字段（白名单）                 |
+| request.params.except     | 排除哪些字段（黑名单）                       |
 
 ### Create
 
-| 参数 | 说明 |
-| -- | -- |
-| request.params.whiteList | 白名单 |
-| request.params.blacklist | 黑名单 |
-| request.body | 创建的初始化数据 |
+| 参数                     | 说明             |
+| ------------------------ | ---------------- |
+| request.params.whiteList | 白名单           |
+| request.params.blacklist | 黑名单           |
+| request.body             | 创建的初始化数据 |
 
 ### Update
 
-| 参数 | 说明 |
-| -- | -- |
-| request.params.filterByTk | 每页显示数量 |
-| request.params.filter | 条件过滤 |
-| request.params.whiteList | 白名单 |
-| request.params.blacklist | 黑名单 |
-| request.body | 更新的数据 |
+| 参数                      | 说明                                         |
+| ------------------------- | -------------------------------------------- |
+| request.params.filterByTk | 必填，一般为当前数据的 ID                    |
+| request.params.filter     | 过滤条件（需要符合 NocoBase 的 Filter 格式） |
+| request.params.whiteList  | 白名单                                       |
+| request.params.blacklist  | 黑名单                                       |
+| request.body              | 更新的数据                                   |
 
 ### Destroy
 
-| 参数 | 说明 |
-| -- | -- |
-| request.params.filterByTk | 每页显示数量 |
-| request.params.filter | 条件过滤 |
+| 参数                      | 说明                                         |
+| ------------------------- | -------------------------------------------- |
+| request.params.filterByTk | 必填，一般为当前数据的 ID                    |
+| request.params.filter     | 过滤条件（需要符合 NocoBase 的 Filter 格式） |
 
 ## 配置字段
 
