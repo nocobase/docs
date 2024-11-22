@@ -84,11 +84,41 @@ Map the interface for deleting a resource.
 
 ![20240716211808](https://static-docs.nocobase.com/20240716211808.png)
 
+Both the List and Get interfaces are required to be configured.
 ## Debugging the API
+
+### Request parameter integration
+
+example: configure pagination parameters for the List API.
+
+if the third-party api does not support pagination natively, implement pagination will based on the retrieved list data.
+
+![20241121205229](https://static-docs.nocobase.com/20241121205229.png)
+
+Note: Only variables added to the API will work.
+
+| Third-party API params name | NocoBase params             |
+| --------------------------- | --------------------------- |
+| page                        | {{request.params.page}}     |
+| limit                       | {{request.params.pageSize}} |
 
 You can easily debug the API by clicking **Try it out**.
 
-![20240716212722](https://static-docs.nocobase.com/20240716212722.png)
+![20241121210320](https://static-docs.nocobase.com/20241121210320.png)
+
+<video width="100%" height="440" controls>
+      <source src="https://static-docs.nocobase.com/20241121211034.mp4" type="video/mp4">
+</video>
+
+### Response format transformation
+
+The response format of the third-party API may not be in NocoBase standard, and it needs to be transformed before it can be correctly displayed on the front end.
+
+![20241121214638](https://static-docs.nocobase.com/20241121214638.png)
+
+Adjust the conversion rules based on the response format of the third-party API to ensure the output conforms to the NocoBase standard.
+
+![20241121215100](https://static-docs.nocobase.com/20241121215100.png)
 
 ### Debugging Process Overview
 
@@ -127,50 +157,50 @@ Below are the variables available for each interface:
 
 ### List
 
-| Parameter               | Description                                           |
-| ----------------------- | ----------------------------------------------------- |
-| request.params.page      | Pagination parameter                                  |
-| request.params.pageSize  | Number of items per page                              |
-| request.params.filter    | Filtering conditions                                  |
-| request.params.sort      | Sorting options                                       |
-| request.params.appends   | Additional fields to load as needed, typically for on-demand loading of relational fields |
-| request.params.fields    | Specifies which fields to output (whitelist)          |
-| request.params.except    | Specifies which fields to exclude (blacklist)         |
+| Parameter               | Description                                                |
+| ----------------------- | ---------------------------------------------------------- |
+| request.params.page     | Current page                                               |
+| request.params.pageSize | Number of items per page                                   |
+| request.params.filter   | Filter criteria (must meet NocoBase Filter format)         |
+| request.params.sort     | Sorting criteria (must meet NocoBase Sort format)          |
+| request.params.appends  | Fields to load on demand, typically for association fields |
+| request.params.fields   | Fields to include (whitelist)                              |
+| request.params.except   | Fields to exclude (blacklist)                              |
 
 ### Get
 
-| Parameter               | Description                                           |
-| ----------------------- | ----------------------------------------------------- |
-| request.params.filterByTk | Key for filtering                                    |
-| request.params.filter    | Filtering conditions                                  |
-| request.params.appends   | Additional fields to load as needed, typically for on-demand loading of relational fields |
-| request.params.fields    | Specifies which fields to output (whitelist)          |
-| request.params.except    | Specifies which fields to exclude (blacklist)         |
+| Parameter                 | Description                                                |
+| ------------------------- | ---------------------------------------------------------- |
+| request.params.filterByTk | Required, typically the current record ID                  |
+| request.params.filter     | Filter criteria (must meet NocoBase Filter format)         |
+| request.params.appends    | Fields to load on demand, typically for association fields |
+| request.params.fields     | Fields to include (whitelist)                              |
+| request.params.except     | Fields to exclude (blacklist)                              |
 
 ### Create
 
-| Parameter               | Description                                           |
-| ----------------------- | ----------------------------------------------------- |
-| request.params.whiteList | Whitelist                                             |
-| request.params.blacklist | Blacklist                                             |
-| request.body             | Initial data for creation                             |
+| Parameter                | Description               |
+| ------------------------ | ------------------------- |
+| request.params.whiteList | Whitelist                 |
+| request.params.blacklist | Blacklist                 |
+| request.body             | Initial data for creation |
 
 ### Update
 
-| Parameter               | Description                                           |
-| ----------------------- | ----------------------------------------------------- |
-| request.params.filterByTk | Key for filtering                                    |
-| request.params.filter    | Filtering conditions                                  |
-| request.params.whiteList | Whitelist                                             |
-| request.params.blacklist | Blacklist                                             |
-| request.body             | Data for update                                       |
+| Parameter                 | Description                                        |
+| ------------------------- | -------------------------------------------------- |
+| request.params.filterByTk | Required, typically the current record ID          |
+| request.params.filter     | Filter criteria (must meet NocoBase Filter format) |
+| request.params.whiteList  | Whitelist                                          |
+| request.params.blacklist  | Blacklist                                          |
+| request.body              | Data for update                                    |
 
 ### Destroy
 
-| Parameter               | Description                                           |
-| ----------------------- | ----------------------------------------------------- |
-| request.params.filterByTk | Key for filtering                                    |
-| request.params.filter    | Filtering conditions                                  |
+| Parameter                 | Description                               |
+| ------------------------- | ----------------------------------------- |
+| request.params.filterByTk | Required, typically the current record ID |
+| request.params.filter     | Filtering conditions                      |
 
 ## Field Configuration
 
@@ -180,7 +210,7 @@ Field metadata (Fields) is extracted from the CRUD interface data of the adapted
 
 Field metadata extraction.
 
-![20240716224010](https://static-docs.nocobase.com/20240716224010.png)
+![20241121230436](https://static-docs.nocobase.com/20241121230436.png)
 
 Field and preview.
 
