@@ -8,13 +8,13 @@ The Auth: OIDC plugin follows the OIDC (Open ConnectID) protocol standard, using
 
 ## Activate Plugin
 
-![](https://static-docs.nocobase.com/a494476c352a949a276d64e96e6ac587.png)
+![](https://static-docs.nocobase.com/202411122358790.png)
 
 ## Add OIDC Authentication
 
 Enter the user authentication plugin management page.
 
-![](https://static-docs.nocobase.com/4e598e7df963d7d23188afe3576456d6.png)
+![](https://static-docs.nocobase.com/202411130004459.png)
 
 Add - OIDC
 
@@ -24,7 +24,7 @@ Add - OIDC
 
 ### Basic Configuration
 
-![](https://static-docs.nocobase.com/d80715319639e1681a28a97ad3131f21.png)
+![](https://static-docs.nocobase.com/202411130006341.png)
 
 - Sign up automatically when the user does not exist - Whether to automatically create a new user when no matching existing user is found.
 - Issuer - The issuer is provided by the IdP, usually ending with `/.well-known/openid-configuration`
@@ -42,7 +42,7 @@ Add - OIDC
 
 ### Advanced Configuration
 
-![](https://static-docs.nocobase.com/d9e8040118e8e2ecdc3c847f72bbb5a9.png)
+![](https://static-docs.nocobase.com/202411130013306.png)
 
 - HTTP - Whether the NocoBase callback address is http protocol, default is `https`.
 - Port - The port of the NocoBase callback address, default is `443/80`
@@ -56,7 +56,7 @@ Add - OIDC
 
 ### Usage
 
-![](https://static-docs.nocobase.com/2edbea211232cea6d38c79630132418c.png)
+![](https://static-docs.nocobase.com/202411130019570.png)
 
 - Usage - The callback URL (Redirect URL) is used to copy and fill in the corresponding configuration in the IdP.
 

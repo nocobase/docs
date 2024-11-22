@@ -32,7 +32,7 @@ In addition, you can also expand user authentication by yourself, refer to the [
 
 ### Configuration Interface
 
-![](https://static-docs.nocobase.com/403529f12669495fe6f3afef4405d45e.png)
+![](https://static-docs.nocobase.com/202411131505095.png)
 
 ### Allow Registration
 

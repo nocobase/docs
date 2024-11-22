@@ -23,7 +23,7 @@ The configuration parameters vary slightly depending on the database. Choose the
 <div label="PostgreSQL" name="postgres">
 
 ```yml
-version: "3"
+version: '3'
 
 networks:
   nocobase:
@@ -56,7 +56,7 @@ services:
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
-      - "13000:80"
+      - '13000:80'
     # init: true
 
   # If using an existing database server, postgres service can be omitted
@@ -79,7 +79,7 @@ services:
 <div label="MySQL" name="mysql">
 
 ```yml
-version: "3"
+version: '3'
 
 networks:
   nocobase:
@@ -114,7 +114,7 @@ services:
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
-      - "13000:80"
+      - '13000:80'
     # init: true
 
   # If using an existing database server, mysql service can be omitted
@@ -137,7 +137,7 @@ services:
 <div label="MariaDB" name="mariadb">
 
 ```yml
-version: "3"
+version: '3'
 
 networks:
   nocobase:
@@ -172,7 +172,7 @@ services:
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
-      - "13000:80"
+      - '13000:80'
     # init: true
 
   # If using an existing database server, mariadb service can be omitted
@@ -193,11 +193,12 @@ services:
 </div>
 </Tabs>
 
-Choose the appropriate NocoBase version:
+Choose the appropriate NocoBase version, refer to [versions](./index.md#which-version-to-install)
 
-- `latest` or `main`：The most stable version to date, recommended for installation;
-- `next`：Alpha version, including some unreleased new features. This version may not be completely stable and is suitable for developers or testers to experience new features in advance or conduct compatibility testing;
-- `1.2.4-alpha`: Specify the version number. To check the latest version, see the [list of released versions](https://hub.docker.com/r/nocobase/nocobase/tags).
+- `latest`: Stable and well-tested version and only bug fixed will be made. This version is recommended.
+- `beta`: This version includes new features that are about to be released and it has been preliminarily tested, but still have known or unknown issues.
+- `alpha`: A development version containing the latest features, which may be incomplete or unstable.
+- `1.3.51`: Specify the version number. To check the latest version, see the [list of released versions](https://hub.docker.com/r/nocobase/nocobase/tags).
 
 Example:
 
@@ -206,8 +207,9 @@ Example:
 services:
   app:
     image: nocobase/nocobase:latest
-    image: nocobase/nocobase:next
-    image: nocobase/nocobase:1.2.4-alpha
+    image: nocobase/nocobase:beta
+    image: nocobase/nocobase:alpha
+    image: nocobase/nocobase:1.3.51
 # ...
 ```
 
