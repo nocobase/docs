@@ -246,4 +246,4 @@ app-postgres-app-1  | 🚀 NocoBase server running at: http://localhost:13000/
 
 ## 4. 登录 NocoBase
 
-使用浏览器打开 http://localhost:13000/ 初始化账号和密码是 `admin@nocobase.com` 和 `admin123`。
+使用浏览器打开 [http://localhost:13000](http://localhost:13000) 初始化账号和密码是 `admin@nocobase.com` 和 `admin123`。

@@ -265,7 +265,7 @@ export default PluginNotificationExampleServer;
 
 ### 插件注册启动
 
-1. 执行注册命令`yarn pm add @nocobase/plugin-notification-example`
+1. 执行注册命令`yarn p add @nocobase/plugin-notification-example`
 2. 执行启用命令`yarn pm enable @nocobase/plugin-notification-example`
 
 ### 渠道配置

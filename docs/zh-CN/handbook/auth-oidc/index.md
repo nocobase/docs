@@ -65,8 +65,8 @@
 
 | 配置                     | 说明                                                                         |
 | ------------------------ | ---------------------------------------------------------------------------- |
-| Redirect URL             | 用于填写 IdP 的回调 URL 配置                                                 |
-| Post logout redirect URL | 在启用 RP-initiated logout 时，用于填写 IdP 的 Post logout redirect URL 配置 |
+| Redirect URL             | 用于填写 IdP 的回调 URL 配置。                                                 |
+| Post logout redirect URL | 在启用 RP-initiated logout 时，用于填写 IdP 的 Post logout redirect URL 配置。 |
 
 :::info
 本地测试时，URL请使用 `127.0.0.1` 而不是 `localhost`，因为 OIDC 登录方式需要向客户端 cookie 写入 state 用于安全校验。如果登录时出现窗口一闪而过，但是没有登录成功，请检查服务端是否有 state 不匹配的日志以及请求 cookie 中是否包含了 state 参数，这种情况通常是由于客户端 cookie 中的 state 和请求中携带的 state 不匹配。

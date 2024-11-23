@@ -1,4 +1,4 @@
-# User Guide
+# User Manual
 
 ## User Authentication Management
 
@@ -51,3 +51,17 @@ When registration is not allowed, the login page will not display the link to cr
 When registration is not allowed, the registration page cannot be accessed
 
 ![](https://static-docs.nocobase.com/09325c4b07e09f88f80a14dff8430556.png)
+
+### Sign up form Settings
+
+:::info
+'v1.4.0-alpha.9' and later versions supported.
+: : :
+
+You can set whether the user name and email fields of the registration form are displayed or required. At least one field needs to be set to display and required.
+
+! [](https://static-docs.nocobase.com/202411131510066.png)
+
+Registration page
+
+! [](https://static-docs.nocobase.com/202411131509011.png)

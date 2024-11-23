@@ -203,15 +203,22 @@ Choose the appropriate NocoBase version, refer to [versions](./index.md#which-ve
 Example:
 
 ```yml
-# ...
+#...
 services:
   app:
+    # Domestic users suggest using Ali Cloud image
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:beta
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:alpha
+    Image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:1.3.51
+
+    # Docker Hub image (Domestic users cannot download) 
     image: nocobase/nocobase:latest
     image: nocobase/nocobase:beta
     image: nocobase/nocobase:alpha
     image: nocobase/nocobase:1.3.51
 # ...
-```
+` ` `
 
 ## 3. Install and start NocoBase
 
@@ -222,7 +229,7 @@ It may take a few minutes
 $ docker-compose pull
 # run in the background
 $ docker-compose up -d
-# view app logs
+# view app process
 $ docker-compose logs app
 
 app-postgres-app-1  | nginx started
