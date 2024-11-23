@@ -29,12 +29,12 @@ Add - OIDC
 | Configuration                                       | Description                                                                                                                | Version         |
 | --------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | --------------- |
 | Sign up automatically when the user does not exist | Whether to automatically create a new user if no matching existing user is found.                                        | -               |
-| Issuer                                             | The issuer provided by the IdP, usually ending with `/.well-known/openid-configuration`                                   | -               |
-| Client ID                                          | The Client ID.                                                                                                             | -               |
+| Issuer                                             | The issuer provided by the IdP, usually ending with `/.well-known/openid-configuration`.                                   | -               |
+| Client ID                                          | The Client ID                                                                                                             | -               |
 | Client Secret                                      | The Client Secret                                                                                                    | -               |
 | scope                                              | Optional, defaults to `openid email profile`.                                                                              | -               |
 | id_token signed response algorithm                 | The signing algorithm for `id_token`, defaults to `RS256`.                                                                | -               |
-| Enable RP-initiated logout                         | Enables RP-initiated logout. Logs out the IdP session when the user logs out. The IdP logout callback should use the Post logout redirect URL provided in [Usage](#usage) | `v1.3.44-beta` |
+| Enable RP-initiated logout                         | Enables RP-initiated logout. Logs out the IdP session when the user logs out. The IdP logout callback should use the Post logout redirect URL provided in [Usage](#usage). | `v1.3.44-beta` |
 
 ### Field Mapping
 
@@ -49,8 +49,8 @@ Add - OIDC
 
 | Configuration                                                  | Description                                                                                                                                                               | Version         |
 | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
-| HTTP                                                          | Whether the NocoBase callback URL uses HTTP protocol, default is `https`                                                                                               | -               |
-| Port                                                          | Port for the NocoBase callback URL, defaults to `443/80`                                                                                                                | -               |
+| HTTP                                                          | Whether the NocoBase callback URL uses HTTP protocol, default is `https`.                                                                                               | -               |
+| Port                                                          | Port for the NocoBase callback URL, defaults to `443/80`.                                                                                                                | -               |
 | State token                                                   | Used to verify the request source and prevent CSRF attacks. You can provide a fixed value, but **leaving it blank to generate random values by default is strongly recommended. If you use a fixed value, carefully evaluate your environment and security risks.** | -               |
 | Pass parameters in the authorization code grant exchange      | Some IdPs may require passing Client ID or Client Secret as parameters when exchanging a code for a token. You can select this option and specify the corresponding parameter names. | -               |
 | Method to call the user info endpoint                         | The HTTP method used when requesting the user info API.                                                                                                                 | -               |
