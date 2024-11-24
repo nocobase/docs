@@ -62,21 +62,40 @@
 
 ![](https://static-docs.nocobase.com/202406272115805.png)
 
-### 配置
+## 配置
 
-![](https://static-docs.nocobase.com/202406272116978.png)
+![](./static/screenshot-wecom-config1.png)
+![](./static/screenshot-wecom-config2.png)
+
 
 - When a phone number does not match an existing user, should a new user be created automatically - 当使用手机号匹配不到已有用户时，是否自动创建新用户。
 - Company ID, AgentId 和 Secret - 填写上一步复制的密钥信息。
+- Origin - 当前应用的域名。
+- Automatic login. After enabling this option, open the application links in the WeCom chat dialog will automatically log in, and the application links can also be configured on the home page of the workbench application, and only one WeCom authenticator can enable this option - 自动登录。启用此选项后，企微聊天对话框中打开系统链接会自动登录，同时工作台应用主页上可配置系统链接，只有一个企微认证器可开启该选项。
 - Workbench application homepage link - 工作台应用主页链接，复制并进入下一步。
 
 ## 配置企业微信应用首页
 
-进入企业微信管理员后台，将复制的工作台应用主页链接填写到对应应用的应用主页地址栏。
+进入企业微信管理员后台，将复制的工作台应用主页链接填写到对应应用的应用主页地址栏。若开启的自动登录选项，则可以直接配置系统指定页面链接。
 
 ![](https://static-docs.nocobase.com/202406272123631.png)
 
 ![](https://static-docs.nocobase.com/202406272123048.png)
+
+## 配置企业微信移动端首页
+
+### 方法一
+
+打开企微登录配置，将工作台应用跳转链接配置为移动端页面路径，并复制工作台应用主页链接，将该链接配置到企微应用
+
+![](./static/screenshot-wecom-config3.png)
+
+### 方法二
+
+打开企微登录配置，启用自动登录，并且在企微应用中配置系统的移动端链接
+
+![](./static/screenshot-wecom-config4.png)
+![](./static/screenshot-wecom-config5.png)
 
 ## 登录
 
