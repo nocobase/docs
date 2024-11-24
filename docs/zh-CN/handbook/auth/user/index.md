@@ -32,9 +32,9 @@ NocoBase 目前支持的用户认证类型有：
 
 ### 配置界面
 
-![](https://static-docs.nocobase.com/403529f12669495fe6f3afef4405d45e.png)
+![](https://static-docs.nocobase.com/202411131505095.png)
 
-### 允许注册
+### 是否允许注册
 
 允许注册时，登录页会显示创建账号的连接，并可以跳转至注册页
 
@@ -51,3 +51,17 @@ NocoBase 目前支持的用户认证类型有：
 不允许注册时，无法访问注册页面
 
 ![](https://static-docs.nocobase.com/09325c4b07e09f88f80a14dff8430556.png)
+
+### 注册表单设置
+
+:::info
+`v1.4.0-alpha.9` 以上版本支持。
+:::
+
+支持设置注册表单的用户名和邮箱字段是否显示、是否必填。至少需要设置一个字段为显示和必填。
+
+![](https://static-docs.nocobase.com/202411131510066.png)
+
+注册页
+
+![](https://static-docs.nocobase.com/202411131509011.png)

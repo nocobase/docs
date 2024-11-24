@@ -12,14 +12,14 @@
 
 ## 字段配置项
 
-![字段配置项](https://static-docs.nocobase.com/Snipaste_2024-10-17_21-46-06.png)
+![字段配置项](https://static-docs.nocobase.com/Solution/202410222334271729611267.png)
 
 - [字段组件](/handbook/ui/fields/field-settings/field-component): 在默认字段组件和掩码字段组件之间切换。
 - 掩码设置: 配置字段的掩码规则和权限。
 
 ## 掩码设置
 
-![掩码设置](https://static-docs.nocobase.com/20241017215148.png)
+![掩码设置](https://static-docs.nocobase.com/Solution/202410222340521729611652.png)
 
 ### 掩码规则
 

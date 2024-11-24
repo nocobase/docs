@@ -49,3 +49,13 @@ NocoBase v1.3.17-beta 以上が必要です。
 
 詳細については、[連動規則](/handbook/ui/blocks/block-settings/linkage-rule)をご参照ください。
 
+### 允许解除已有数据关联
+
+:::info{title=提示}
+需要 NocoBase v1.3.34-beta 及以上版本。
+:::
+
+![20241021210710](https://static-docs.nocobase.com/20241021210710.png)
+
+![20241021211909](https://static-docs.nocobase.com/20241021211909.png)
+

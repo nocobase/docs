@@ -8,9 +8,9 @@ The Notification Manager is a centralized service that integrates various notifi
 
 ![20240928112556](https://static-docs.nocobase.com/20240928112556.png)
 
-- **Purple section**: The Notification Manager provides a comprehensive service that includes channel configuration and log recording, with the option to expand to other notification channels.
-- **Green section**: In-App Messaging, a built-in channel, enables users to receive notifications directly within the application.
-- **Red section**: Email, an extendable channel, allows users to receive notifications through email.
+- Purple section: The Notification Manager provides a comprehensive service that includes channel configuration and log recording, with the option to expand to other notification channels.
+- Green section: In-App Message, a built-in channel, enables users to receive notifications directly within the application.
+- Red section: Email, an extendable channel, allows users to receive notifications through email.
 
 ## Channel Management
 

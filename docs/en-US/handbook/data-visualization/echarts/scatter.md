@@ -16,18 +16,18 @@ Configure one metric and two dimensions. One of the dimensions will serve as the
 
 | Configuration Option       | Description                                                 |
 | -------------------------- | ----------------------------------------------------------- |
-| X-axis Field               | Dimension field for the X-axis                               |
-| Series Field               | Dimension field for categorization                           |
+| xField                     | Dimension field for the X-axis                               |
+| seriesField                | Dimension field for categorization                           |
 | Size                       | Set the chart size, either fixed aspect ratio or fixed height |
-| Light Mode Theme           | Preview available when the system is in light mode           |
-| Dark Mode Theme            | Preview available when the system is in dark mode            |
-| Show Legend                | Toggle the visibility of the legend                          |
-| Legend Orientation         | Control the orientation of the legend, either horizontal or vertical |
-| Legend Position (Left, Bottom, Right, Top) | Control the relative position of the legend                    |
-| Label Type                 | Control whether labels are shown and the type of labels      |
-| X-axis Title               | Control the display position of the X-axis title             |
-| Y-axis Title               | Control the display position of the Y-axis title             |
-| X-axis Label Rotation      | Adjust the rotation angle of the X-axis labels; useful when there are dense labels to display more effectively |
+| Light mode theme           | Preview available when the system is in light mode           |
+| Dark mode theme            | Preview available when the system is in dark mode            |
+| Show legend                | Toggle the visibility of the legend                          |
+| Legend orient              | Control the orientation of the legend, either horizontal or vertical |
+| Legend position (left, bottom, right, top) | Control the relative position of the legend                    |
+| Label type                 | Control whether labels are shown and the type of labels      |
+| X-Axis title               | Control the display position of the X-axis title             |
+| Y-Axis title               | Control the display position of the Y-axis title             |
+| X-Axis label rotate        | Adjust the rotation angle of the X-axis labels; useful when there are dense labels to display more effectively |
 | Padding                    | Adjust the internal padding of the chart                    |
-| Gridlines                  | Control the visibility and style of gridlines               |
-| Reference Line             | Add reference lines, set their title, value, and color      |
+| Split line                 | Control whether the grid lines are displayed and their style           |
+| Mark line                  | Add reference lines, set their title, value, and color      |

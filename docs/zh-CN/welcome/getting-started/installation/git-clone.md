@@ -4,25 +4,33 @@
 
 请确保你已经：
 
-- 安装了 Git、Node.js 18+、Yarn 1.22.x
+- 安装了 Git、Node.js 20+、Yarn 1.22.x
 - 配置并启动了所需数据库 MySQL 8.0.17+、MariaDB 10.9+、PostgreSQL 10+ 任选其一
 
 ## 1. 将 NocoBase 下载到本地
 
-### latest 版本
+### latest 版本 (`main`)
 
-截止目前最稳定的版本，推荐下载此版本。
+功能稳定，测试较为完善的版本，仅做缺陷修复。推荐安装此版本。
 
 ```bash
 git clone https://github.com/nocobase/nocobase.git -b main --depth=1 my-nocobase
 ```
 
-### next 版本
+### beta 版本 (`next`)
 
-内测版，包含一些未发布的新特性，这个版本可能还不完全稳定，适用于开发者或测试人员，用于提前体验新功能或进行兼容性测试。
+包含即将发布的新功能，经过初步测试的版本，可能存在部分已知或未知问题。
 
 ```bash
 git clone https://github.com/nocobase/nocobase.git -b next --depth=1 my-nocobase
+```
+
+### alpha 版本 (`develop`)
+
+包含即将发布的新功能，经过初步测试的版本，可能存在部分已知或未知问题。
+
+```bash
+git clone https://github.com/nocobase/nocobase.git -b develop --depth=1 my-nocobase
 ```
 
 ## 2. 切换目录
@@ -62,10 +70,11 @@ DB_PASSWORD=nocobase
 ```
 
 :::warning
+
 - `TZ` 用于设置应用的时区，默认为操作系统时区；
 - `APP_KEY` 是应用的密钥，用于生成用户 token 等（如果 APP_KEY 修改了，旧的 token 也会随之失效）。它可以是任意随机字符串。请修改为自己的秘钥，并确保不对外泄露；
 - `DB_*` 为数据库相关，如果不是例子默认的数据库服务，请根据实际情况修改。
-:::
+  :::
 
 ## 5. 安装 NocoBase
 

@@ -23,7 +23,7 @@ vi docker-compose.yml
 <div label="PostgreSQL" name="postgres">
 
 ```yml
-version: "3"
+version: '3'
 
 networks:
   nocobase:
@@ -56,7 +56,7 @@ services:
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
-      - "13000:80"
+      - '13000:80'
     # init: true
 
   # 如果使用已有数据库服务，可以不启动 postgres
@@ -79,7 +79,7 @@ services:
 <div label="MySQL" name="mysql">
 
 ```yml
-version: "3"
+version: '3'
 
 networks:
   nocobase:
@@ -114,7 +114,7 @@ services:
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
-      - "13000:80"
+      - '13000:80'
     # init: true
 
   # 如果使用已有数据库服务，可以不启动 mysql
@@ -137,7 +137,7 @@ services:
 <div label="MariaDB" name="mariadb">
 
 ```yml
-version: "3"
+version: '3'
 
 networks:
   nocobase:
@@ -172,7 +172,7 @@ services:
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
-      - "13000:80"
+      - '13000:80'
     # init: true
 
   # 如果使用已有数据库服务，可以不启动 mariadb
@@ -193,11 +193,12 @@ services:
 </div>
 </Tabs>
 
-选择合适的 NocoBase 版本
+选择合适的 NocoBase 版本, 参考 [版本选择](./index.md#安装哪个版本)
 
-- `latest` 或 `main`：截止目前最稳定的版本，推荐安装此版本；
-- `next`：内测版，包含一些未发布的新特性，这个版本可能还不完全稳定，适用于开发者或测试人员，用于提前体验新功能或进行兼容性测试；
-- `1.2.4-alpha`：指定版本号，最新版本查看 [已发布版本列表](https://hub.docker.com/r/nocobase/nocobase/tags)
+- `latest`：功能稳定，测试较为完善的版本，仅做缺陷修复。推荐安装此版本。
+- `beta`: 包含即将发布的新功能，经过初步测试的版本，可能存在部分已知或未知问题。
+- `alpha`: 开发中的版本，包含最新的功能代码，可能尚未完成或存在较多不稳定因素，主要用于内部开发和快速迭代。
+- `1.3.51`：指定版本号，最新版本查看 [已发布版本列表](https://hub.docker.com/r/nocobase/nocobase/tags)
 
 示例
 
@@ -207,13 +208,15 @@ services:
   app:
     # 国内用户建议使用阿里云镜像
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:next
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:1.2.4-alpha
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:beta
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:alpha
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:1.3.51
 
     # Docker Hub 镜像（国内用户无法下载）
     image: nocobase/nocobase:latest
-    image: nocobase/nocobase:next
-    image: nocobase/nocobase:1.2.4-alpha
+    image: nocobase/nocobase:beta
+    image: nocobase/nocobase:alpha
+    image: nocobase/nocobase:1.3.51
 # ...
 ```
 

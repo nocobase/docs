@@ -4,7 +4,7 @@
 
 Make sure you have:
 
-- Installed Node.js 18+, Yarn 1.22.x
+- Installed Node.js 20+, Yarn 1.22.x
 - Configured and started one of the required database MySQL 8.x, MariaDB 10.9+, PostgreSQL 10+
 
 You can download and install the latest LTS version from the official website. It is recommended to use nvm (or nvm-windows for Win systems) to manage Node.js versions if you plan to work with Node.js for a long time.
@@ -12,7 +12,7 @@ You can download and install the latest LTS version from the official website. I
 ```bash
 $ node -v
 
-v18.19.0
+v20.10.0
 ```
 
 Install yarn package manager
@@ -28,7 +28,7 @@ $ yarn -v
 
 ### Latest version
 
-The most stable version to date, recommended for installation.
+Stable and well-tested version and only bug fixed will be made. This version is recommended.
 
 <Tabs>
 <div label="PostgreSQL" name="postgres">
@@ -74,15 +74,15 @@ yarn create nocobase-app my-nocobase-app -d mariadb \
 </div>
 </Tabs>
 
-### Next version
+### Beta version
 
-Alpha version, including some unreleased new features. This version may not be completely stable and is suitable for developers or testers to experience new features in advance or conduct compatibility testing.
+This version includes new features that are about to be released and it has been preliminarily tested, but still have known or unknown issues.
 
 <Tabs>
 <div label="PostgreSQL" name="postgres">
 
 ```bash
-npx create-nocobase-app@next my-nocobase-app -d postgres \
+npx create-nocobase-app@beta my-nocobase-app -d postgres \
    -e DB_HOST=localhost \
    -e DB_PORT=5432 \
    -e DB_DATABASE=nocobase \
@@ -96,7 +96,7 @@ npx create-nocobase-app@next my-nocobase-app -d postgres \
 <div label="MySQL" name="mysql">
 
 ```bash
-npx create-nocobase-app@next my-nocobase-app -d mysql \
+npx create-nocobase-app@beta my-nocobase-app -d mysql \
    -e DB_HOST=localhost \
    -e DB_PORT=3306 \
    -e DB_DATABASE=nocobase \
@@ -110,7 +110,55 @@ npx create-nocobase-app@next my-nocobase-app -d mysql \
 <div label="MariaDB" name="mariadb">
 
 ```bash
-npx create-nocobase-app@next my-nocobase-app -d mariadb \
+npx create-nocobase-app@beta my-nocobase-app -d mariadb \
+   -e DB_HOST=localhost \
+   -e DB_PORT=3306 \
+   -e DB_DATABASE=nocobase \
+   -e DB_USER=nocobase \
+   -e DB_PASSWORD=nocobase \
+   -e TZ=Asia/Shanghai
+```
+
+</div>
+</Tabs>
+
+### Alpha version
+
+A development version containing the latest features, which may be incomplete or unstable.
+
+<Tabs>
+<div label="PostgreSQL" name="postgres">
+
+```bash
+npx create-nocobase-app@alpha my-nocobase-app -d postgres \
+   -e DB_HOST=localhost \
+   -e DB_PORT=5432 \
+   -e DB_DATABASE=nocobase \
+   -e DB_USER=nocobase \
+   -e DB_PASSWORD=nocobase \
+   -e TZ=Asia/Shanghai
+```
+
+</div>
+
+<div label="MySQL" name="mysql">
+
+```bash
+npx create-nocobase-app@alpha my-nocobase-app -d mysql \
+   -e DB_HOST=localhost \
+   -e DB_PORT=3306 \
+   -e DB_DATABASE=nocobase \
+   -e DB_USER=nocobase \
+   -e DB_PASSWORD=nocobase \
+   -e TZ=Asia/Shanghai
+```
+
+</div>
+
+<div label="MariaDB" name="mariadb">
+
+```bash
+npx create-nocobase-app@alpha my-nocobase-app -d mariadb \
    -e DB_HOST=localhost \
    -e DB_PORT=3306 \
    -e DB_DATABASE=nocobase \
@@ -123,10 +171,11 @@ npx create-nocobase-app@next my-nocobase-app -d mariadb \
 </Tabs>
 
 :::warning
+
 - `TZ` is used to set the application's time zone, with the default being the system's time zone;
 - `APP_KEY` is the application's secret key, used for generating user tokens and so on (if APP_KEY is changed, the old tokens will also become invalid). It can be any random string. Please change it to your own secret key and ensure it is not disclosed to the public.
 - `DB_*` is related to the database. If it is not the default database service in the example, please modify it according to the actual situation.
-:::
+  :::
 
 ## 2. Switch to the project directory
 

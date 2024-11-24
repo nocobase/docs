@@ -61,6 +61,10 @@ Currently only used for field configuration in subforms and subtables of form bl
 
 ![20240416173043_rec_](https://static-docs.nocobase.com/20240416173043_rec_.gif)
 
+### Parent object
+
+Similar to the "Current object", it represents the parent object of the current object. Supported in NocoBase v1.3.34-beta and above.
+
 ### Current record
 
 A record refers to a row in a collection, with each row representing a record. The "Current record" variable is used in the "Row Action Linkage Rules" of display blocks.

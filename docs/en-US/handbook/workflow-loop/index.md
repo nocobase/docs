@@ -1,7 +1,3 @@
-### Refinement Stage
-
----
-
 ## Loop
 
 <PluginInfo name="workflow-loop" link="/handbook/workflow-loop"></PluginInfo>
@@ -14,7 +10,7 @@ This plugin comes pre-installed, so no additional setup is necessary.
 
 ## User Manual
 
-### Creating a Node
+### Creating Node
 
 In the workflow configuration interface, you can add a "Loop" node by clicking the plus sign ("+") in the process:
 
@@ -74,12 +70,12 @@ Consider the following scenario: when placing an order, you need to check the in
 
 | Field Name     | Field Type        |
 | -------------- | ----------------- |
-| Order Details | One-to-Many (Details) |
+| Order Details | Many-to-One (Details) |
 | Total Price | Number            |
 
 | Field Name | Field Type        |
 | ---------- | ----------------- |
-| Product    | Many-to-One (Product) |
+| Product    | One-to-Many (Product) |
 | Quantity   | Number            |
 
 | Field Name  | Field Type  |

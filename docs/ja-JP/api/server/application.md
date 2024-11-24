@@ -143,9 +143,11 @@ export interface ApplicationOptions {
 
 缓存管理。参考 [CacheManager](../cache/cache-manager.md).
 
+<!--
 ### `syncManager`
 
 同步信号管理器。参考 [SyncManager](./sync-manager.md).
+-->
 
 ### `authManager`
 

@@ -9,7 +9,7 @@ Linkage rules allow dynamic adjustment of form field states based on user behavi
 
 ![20240408100757](https://static-docs.nocobase.com/20240408100757.png)
 
-## Usage Guidelines
+## Usage Instructions
 
 1. Field Configuration: Ensure all form fields utilized in the rules are properly configured to guarantee rule effectiveness and accuracy.
 

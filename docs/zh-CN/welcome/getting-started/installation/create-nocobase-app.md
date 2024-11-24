@@ -4,7 +4,7 @@
 
 请确保你已经：
 
-- 安装了 Node.js 18+、Yarn 1.22.x
+- 安装了 Node.js 20+、Yarn 1.22.x
 - 配置并启动了所需数据库 MySQL 8.0.17+、MariaDB 10.9+、PostgreSQL 10+ 任选其一
 
 如果你没有安装 Node.js 可以从官网下载并安装最新的 LTS 版本。如果你打算长期与 Node.js 打交道，推荐使用 nvm（Win 系统可以使用 nvm-windows ）来管理 Node.js 版本。
@@ -12,7 +12,7 @@
 ```bash
 $ node -v
 
-v18.19.0
+v20.10.0
 ```
 
 推荐使用 yarn 包管理器。
@@ -36,7 +36,7 @@ $ yarn config set sqlite3_binary_host_mirror https://npmmirror.com/mirrors/sqlit
 
 ### latest 版本
 
-截止目前最稳定的版本，推荐安装此版本。
+功能稳定，测试较为完善的版本，仅做缺陷修复。推荐安装此版本。
 
 <Tabs>
 <div label="PostgreSQL" name="postgres">
@@ -82,15 +82,15 @@ yarn create nocobase-app my-nocobase-app -d mariadb \
 </div>
 </Tabs>
 
-### next 版本
+### beta 版本
 
-内测版，包含一些未发布的新特性，这个版本可能还不完全稳定，适用于开发者或测试人员，用于提前体验新功能或进行兼容性测试。
+包含即将发布的新功能，经过初步测试的版本，可能存在部分已知或未知问题。
 
 <Tabs>
 <div label="PostgreSQL" name="postgres">
 
 ```bash
-npx create-nocobase-app@next my-nocobase-app -d postgres \
+npx create-nocobase-app@beta my-nocobase-app -d postgres \
    -e DB_HOST=localhost \
    -e DB_PORT=5432 \
    -e DB_DATABASE=nocobase \
@@ -104,7 +104,7 @@ npx create-nocobase-app@next my-nocobase-app -d postgres \
 <div label="MySQL" name="mysql">
 
 ```bash
-npx create-nocobase-app@next my-nocobase-app -d mysql \
+npx create-nocobase-app@beta my-nocobase-app -d mysql \
    -e DB_HOST=localhost \
    -e DB_PORT=3306 \
    -e DB_DATABASE=nocobase \
@@ -118,7 +118,55 @@ npx create-nocobase-app@next my-nocobase-app -d mysql \
 <div label="MariaDB" name="mariadb">
 
 ```bash
-npx create-nocobase-app@next my-nocobase-app -d mariadb \
+npx create-nocobase-app@beta my-nocobase-app -d mariadb \
+   -e DB_HOST=localhost \
+   -e DB_PORT=3306 \
+   -e DB_DATABASE=nocobase \
+   -e DB_USER=nocobase \
+   -e DB_PASSWORD=nocobase \
+   -e TZ=Asia/Shanghai
+```
+
+</div>
+</Tabs>
+
+### alpha 版本
+
+开发中的版本，包含最新的功能代码，可能尚未完成或存在较多不稳定因素，主要用于内部开发和快速迭代。
+
+<Tabs>
+<div label="PostgreSQL" name="postgres">
+
+```bash
+npx create-nocobase-app@alpha my-nocobase-app -d postgres \
+   -e DB_HOST=localhost \
+   -e DB_PORT=5432 \
+   -e DB_DATABASE=nocobase \
+   -e DB_USER=nocobase \
+   -e DB_PASSWORD=nocobase \
+   -e TZ=Asia/Shanghai
+```
+
+</div>
+
+<div label="MySQL" name="mysql">
+
+```bash
+npx create-nocobase-app@alpha my-nocobase-app -d mysql \
+   -e DB_HOST=localhost \
+   -e DB_PORT=3306 \
+   -e DB_DATABASE=nocobase \
+   -e DB_USER=nocobase \
+   -e DB_PASSWORD=nocobase \
+   -e TZ=Asia/Shanghai
+```
+
+</div>
+
+<div label="MariaDB" name="mariadb">
+
+```bash
+npx create-nocobase-app@alpha my-nocobase-app -d mariadb \
    -e DB_HOST=localhost \
    -e DB_PORT=3306 \
    -e DB_DATABASE=nocobase \
@@ -131,10 +179,11 @@ npx create-nocobase-app@next my-nocobase-app -d mariadb \
 </Tabs>
 
 :::warning
+
 - `TZ` 用于设置应用的时区，默认为操作系统时区；
 - `APP_KEY` 是应用的密钥，用于生成用户 token 等（如果 APP_KEY 修改了，旧的 token 也会随之失效）。它可以是任意随机字符串。请修改为自己的秘钥，并确保不对外泄露；
 - `DB_*` 为数据库相关，如果不是例子默认的数据库服务，请根据实际情况修改。
-:::
+  :::
 
 ## 2. 切换目录
 

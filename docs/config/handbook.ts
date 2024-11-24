@@ -77,11 +77,17 @@ export default [
             ],
           },
           {
-            title: 'REST API Data source',
+            title: 'REST API data source',
             'title.zh-CN': 'REST API 数据源',
             'title.ja-JP': 'REST API データソース',
             // subTitle: '@nocobase/plugin-data-source-external-postgres',
             link: '/handbook/data-source-rest-api',
+          },
+          {
+            title: 'KingbaseES data source',
+            'title.zh-CN': '人大金仓（KingbaseES）数据源',
+            'title.ja-JP': '人大金仓（KingbaseES）データソース',
+            link: '/handbook/data-source-kingbase',
           },
           {
             title: 'ER diagram-like tool',
@@ -492,7 +498,7 @@ export default [
                 link: '/handbook/data-modeling/collection-fields/advanced/json',
               },
               {
-                title: 'Collection 选择器',
+                title: 'Collection select',
                 'title.zh-CN': '数据表选择器',
                 'title.ja-JP': 'コレクションセレクター',
                 link: '/handbook/data-modeling/collection-fields/advanced/collection-select',
@@ -822,6 +828,12 @@ export default [
                 'title.zh-CN': '设置区块高度',
                 'title.ja-JP': 'ブロックの高さを設定',
                 link: '/handbook/ui/blocks/block-settings/block-height',
+              },
+              {
+                title: 'Layout',
+                'title.zh-CN': '布局',
+                'title.ja-JP': 'レイアウト',
+                link: '/handbook/ui/blocks/block-settings/block-layout',
               },
               {
                 title: 'Delete',
@@ -1512,7 +1524,22 @@ export default [
             title: 'Notification manager',
             'title.zh-CN': '通知管理',
             'title.ja-JP': '通知管理',
-            link: '/handbook/notification-manager',
+            children: [
+              {
+                title: 'Overview',
+                'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
+                link: '/handbook/notification-manager',
+              },
+              {
+                title: 'Development',
+                'title.zh-CN': '开发指南',
+                children: [
+                  '/handbook/notification-manager/development/extension',
+                  '/handbook/notification-manager/development/api',
+                ],
+              },
+            ],
           },
           {
             title: 'Notification: In-app message',
@@ -1525,12 +1552,6 @@ export default [
             'title.zh-CN': '通知：电子邮件',
             'title.ja-JP': '通知：メール',
             link: '/handbook/notification-email',
-          },
-          {
-            title: 'Notification extension',
-            'title.zh-CN': '通知扩展',
-            'title.ja-JP': '通知拡張',
-            link: '/handbook/notification-manager/extension',
           },
         ],
       },
@@ -2096,6 +2117,12 @@ export default [
         'title.zh-CN': '自定义品牌',
         'title.ja-JP': 'カスタムブランド',
         link: '/handbook/custom-brand',
+      },
+      {
+        title: 'Public forms',
+        'title.zh-CN': '公开表单',
+        'title.ja-JP': '公开表单',
+        link: '/handbook/public-forms',
       },
     ],
   },

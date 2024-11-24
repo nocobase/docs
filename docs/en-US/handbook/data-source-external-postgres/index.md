@@ -4,7 +4,7 @@
 
 ## Introduction
 
-Use an external PostgreSQL database as a data source.
+Use an external PostgreSQL database as a data source. Currently supported versions: PostgreSQL >= 9.5
 
 ## Installation
 
