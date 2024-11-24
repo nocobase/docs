@@ -65,13 +65,14 @@
 ## 配置
 
 ![](./static/screenshot-wecom-config1.png)
+
 ![](./static/screenshot-wecom-config2.png)
 
 
 - When a phone number does not match an existing user, should a new user be created automatically - 当使用手机号匹配不到已有用户时，是否自动创建新用户。
 - Company ID, AgentId 和 Secret - 填写上一步复制的密钥信息。
 - Origin - 当前应用的域名。
-- Automatic login. After enabling this option, open the application links in the WeCom chat dialog will automatically log in, and the application links can also be configured on the home page of the workbench application, and only one WeCom authenticator can enable this option - 自动登录。启用此选项后，企微聊天对话框中打开系统链接会自动登录，同时工作台应用主页上可配置系统链接，只有一个企微认证器可开启该选项。
+- Automatic login - 自动登录。启用此选项后，企微聊天对话框中打开系统链接会自动登录，同时工作台应用主页上可配置系统链接，只有一个企微认证器可开启该选项。
 - Workbench application homepage link - 工作台应用主页链接，复制并进入下一步。
 
 ## 配置企业微信应用首页

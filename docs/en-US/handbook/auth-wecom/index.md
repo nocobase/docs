@@ -64,10 +64,13 @@ Click on "Add new" and select "WeCom" from the list.
 
 ### Configuration Steps
 
-![](https://static-docs.nocobase.com/202406272116978.png)
+![](./static/screenshot-wecom-config1.png)
+
+![](./static/screenshot-wecom-config2.png)
 
 - When a phone number does not match an existing user, should a new user be created automatically - When the phone number does not match an existing user, a new user is automatically created.
 - "Company ID, "AgentId" And "Secret" - Enter the key information copied in the previous step.
+- Automatic login - After enabling this option, open the application links in the WeCom chat dialog will automatically log in, and the application links can also be configured on the home page of the workbench application, and only one WeCom authenticator can enable this option.
 - Workbench application homepage link - Enter the Workbench application homepage link, then copy and proceed to the next step.
 
 ## Configuring the WeCom Application Homepage
@@ -77,6 +80,21 @@ In the WeCom admin console, paste the previously copied Workbench application ho
 ![](https://static-docs.nocobase.com/202406272123631.png)
 
 ![](https://static-docs.nocobase.com/202406272123048.png)
+
+## Configure the home page of the WeCom mobile client.
+
+### Method one
+
+Open the WeCom login configuration, set the Workbench app redirect link to the mobile page path, and copy the Workbench app home page link, then configure this link into the WeCom app.
+
+![](./static/screenshot-wecom-config3.png)
+
+### Method two
+
+Open the WeCom login configuration, enable automatic login, and configure the system's mobile link within the WeCom app.
+
+![](./static/screenshot-wecom-config4.png)
+![](./static/screenshot-wecom-config5.png)
 
 ## Logging In
 
