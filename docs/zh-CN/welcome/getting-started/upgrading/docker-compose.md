@@ -22,7 +22,7 @@ cd C:\your\path\my-project
 - `latest`：功能稳定，测试较为完善的版本，仅做缺陷修复。推荐安装此版本。
 - `beta`: 包含即将发布的新功能，经过初步测试的版本，可能存在部分已知或未知问题。
 - `alpha`: 开发中的版本，包含最新的功能代码，可能尚未完成或存在较多不稳定因素，主要用于内部开发和快速迭代。
-- `1.3.51`：指定版本号，最新版本查看 [已发布版本列表](https://hub.docker.com/r/nocobase/nocobase/tags)
+- `1.3.51`：指定版本号，最新版本查看 [已发布版本列表](https://hub.docker.com/r/nocobase/nocobase/tags)。
 
 :::warning
 镜像只能升级不能降级，不能将 alpha 降级为 beta, latest, 或将 beta 降为 latest
