@@ -1,4 +1,4 @@
-# `create-nocobase-app` 安装
+# create-nocobase-app 安装
 
 ## 0. 先决条件
 
@@ -225,4 +225,4 @@ yarn start
 
 ## 6. 登录 NocoBase
 
-使用浏览器打开 http://localhost:13000/ 初始化账号和密码是 `admin@nocobase.com` 和 `admin123`。
+使用浏览器打开 [http://localhost:13000](http://localhost:13000) 初始化账号和密码是 `admin@nocobase.com` 和 `admin123`。

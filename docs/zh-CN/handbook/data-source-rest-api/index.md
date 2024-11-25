@@ -201,24 +201,24 @@ REST API 数据源提供了三类变量用于接口的对接
 
 ## 配置字段
 
-从适配的资源的 CRUD 接口的数据中，提取字段的元数据（Fields）作为 collection 的字段
+从适配的资源的 CRUD 接口的数据中，提取字段的元数据（Fields）作为 collection 的字段。
 
 ![20240716223636](https://static-docs.nocobase.com/20240716223636.png)
 
-提取字段元数据
+提取字段元数据。
 
 ![20241121230436](https://static-docs.nocobase.com/20241121230436.png)
 
-字段及预览
+字段及预览。
 
 ![20240716224403](https://static-docs.nocobase.com/20240716224403.png)
 
-编辑字段（和其他数据源的方式类似）
+编辑字段（和其他数据源的方式类似）。
 
 ![20240716224704](https://static-docs.nocobase.com/20240716224704.png)
 
 ## 添加 REST API 数据源区块
 
-Collection 配置好了之后，就可以去界面添加区块了
+Collection 配置好了之后，就可以去界面添加区块了。
 
 ![20240716225120](https://static-docs.nocobase.com/20240716225120.png)

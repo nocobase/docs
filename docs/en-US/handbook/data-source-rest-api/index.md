@@ -102,7 +102,7 @@ Note: Only variables added to the API will work.
 | page                        | {{request.params.page}}     |
 | limit                       | {{request.params.pageSize}} |
 
-You can easily debug the API by clicking **Try it out**.
+You can easily debug the API by clicking Try it out.
 
 ![20241121210320](https://static-docs.nocobase.com/20241121210320.png)
 
@@ -140,10 +140,10 @@ The REST API data source supports three types of variables for API integration:
 
 ### NocoBase Request
 
-- **Params:** URL query parameters (Search Params), which vary depending on the interface.
-- **Headers:** Custom request headers, primarily providing specific X- information from NocoBase.
-- **Body:** The request body.
-- **Token:** The API token for the current NocoBase request.
+- Params: URL query parameters (Search Params), which vary depending on the interface.
+- Headers: Custom request headers, primarily providing specific X- information from NocoBase.
+- Body: The request body.
+- Token: The API token for the current NocoBase request.
 
 ![20240716222042](https://static-docs.nocobase.com/20240716222042.png)
 
@@ -216,7 +216,7 @@ Field and preview.
 
 ![20240716224403](https://static-docs.nocobase.com/20240716224403.png)
 
-Field editing is similar to other data sources.
+Edit fields (similar to other data sources).
 
 ![20240716224704](https://static-docs.nocobase.com/20240716224704.png)
 
