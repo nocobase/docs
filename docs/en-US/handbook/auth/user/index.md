@@ -34,34 +34,34 @@ In addition, you can also expand user authentication by yourself, refer to the [
 
 ![](https://static-docs.nocobase.com/202411131505095.png)
 
-### Allow Registration
+### Allow sign up
 
-When registration is allowed, the login page will display the link to create an account, and you can go to the registration page
+When sign up is allowed, the login page will display the link to create an account, and you can go to the sign up page
 
 ![](https://static-docs.nocobase.com/78903930d4b47aaf75cf94c55dd3596e.png)
 
-Registration page
+Sign up page
 
 ![](https://static-docs.nocobase.com/ac3c3ab42df28cb7c6dc70b24e99e7f7.png)
 
-When registration is not allowed, the login page will not display the link to create an account
+When sign up is not allowed, the login page will not display the link to create an account
 
 ![](https://static-docs.nocobase.com/8d5e3b6df9991bfc1c2e095a93745121.png)
 
-When registration is not allowed, the registration page cannot be accessed
+When sign up is not allowed, the sign up page cannot be accessed
 
 ![](https://static-docs.nocobase.com/09325c4b07e09f88f80a14dff8430556.png)
 
 ### Sign up form Settings
 
 :::info
-'v1.4.0-alpha.9' and later versions supported.
+'v1.4.0-beta.7' and later versions supported.
 : : :
 
-You can set whether the user name and email fields of the registration form are displayed or required. At least one field needs to be set to display and required.
+You can set which fields in the user collection need to be displayed in the sign up form and whether they are required or not. At least one of username or email fields needs to be set to display and required.
 
-! [](https://static-docs.nocobase.com/202411131510066.png)
+![](https://static-docs.nocobase.com/202411262133669.png)
 
-Registration page
+Sign up page
 
-! [](https://static-docs.nocobase.com/202411131509011.png)
+![](https://static-docs.nocobase.com/202411262135801.png)
