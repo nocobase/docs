@@ -56,7 +56,7 @@ When sign up is not allowed, the sign up page cannot be accessed
 
 :::info
 'v1.4.0-beta.7' and later versions supported.
-: : :
+:::
 
 You can set which fields in the user collection need to be displayed in the sign up form and whether they are required or not. At least one of username or email fields needs to be set to display and required.
 
