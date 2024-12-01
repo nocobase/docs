@@ -48,9 +48,10 @@
 
 ```json
 {
-  "employees": [
-    {"firstname": "mike"},
-    {"firstname": "john"}
+  "staffs": [
+    { "firstname": "James", "lastname": "Anderson" },
+    { "firstname": "Emily", "lastname": "Roberts" },
+    { "firstname": "Michael", "lastname": "Johnson" }
   ]
 }
 ```
@@ -58,12 +59,12 @@
 模版:
 
 ```
-第一个员工姓名是 {d.employees[i=0].firstname}，或 {d.employees[0].firstname}
+第一个员工姓是 {d.employees[i=0].lastname}，名是 {d.employees[0].firstname}
 ```
 
 渲染结果：
 ```
-第一个员工姓名是 mike
+第一个员工姓是 Anderson，名是 James
 ```
 
 ### 重复
