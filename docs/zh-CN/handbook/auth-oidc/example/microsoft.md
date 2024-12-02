@@ -1,4 +1,4 @@
-# MicroSoft Entra ID
+# Microsoft Entra ID
 
 > https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app  
 > https://learn.microsoft.com/en-us/entra/identity-platform/v2-protocols-oidc
@@ -13,7 +13,7 @@
 
 ## 注册应用程序
 
-打开 MicroSoft Entra 管理中心，注册一个新的应用程序。
+打开 Microsoft Entra 管理中心，注册一个新的应用程序。
 
 ![](https://static-docs.nocobase.com/202412021506837.png)
 
@@ -33,7 +33,7 @@
 
 以上信息和 NocoBase 认证器配置的对应关系如下：
 
-| MicroSoft Entra 信息    | NocoBase 认证器配置                                                                                                                              |
+| Microsoft Entra 信息    | NocoBase 认证器配置                                                                                                                              |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Application (client) ID | Client ID                                                                                                                                        |
 | Client secrets - Value  | Client secret                                                                                                                                    |
