@@ -19,17 +19,17 @@
 
 此处填入刚才复制的回调 URL.
 
-![](https://static-docs.nocobase.com/202412021506380.png)
+![](https://static-docs.nocobase.com/202412021520696.png)
 
 ## 获取并填写相应的信息
 
 点击进入刚才注册的应用程序，在首页复制 **Application (client) ID** 和 **Directory (tenant) ID**.
 
-![](https://static-docs.nocobase.com/202412021509602.png)
+![](https://static-docs.nocobase.com/202412021522063.png)
 
 点击 Certificates & secrets, 创建一个新的客户端密钥 (Client secrets)，并复制 **Value**.
 
-![](https://static-docs.nocobase.com/202412021512616.png)
+![](https://static-docs.nocobase.com/202412021522846.png)
 
 以上信息和 NocoBase 认证器配置的对应关系如下：
 
