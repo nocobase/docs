@@ -1,4 +1,4 @@
-# 脚本
+# JavaScript
 
 <PluginInfo name="workflow-script" link="/handbook/workflow-script" commercial="true"></PluginInfo>
 

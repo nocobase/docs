@@ -1730,8 +1730,8 @@ export default [
             'title.ja-JP': '拡張タイプ',
             type: 'group',
             children: [
+              '/handbook/workflow/nodes/javascript',
               '/handbook/workflow/nodes/json-query',
-              '/handbook/workflow/nodes/script',
               '/handbook/workflow/nodes/request',
               '/handbook/workflow/nodes/response-message',
             ],
@@ -1828,6 +1828,12 @@ export default [
             ],
           },
           {
+            title: 'JavaScript',
+            'title.zh-CN': 'JavaScript 脚本',
+            subTitle: '@nocobase/plugin-workflow-javascript',
+            link: '/handbook/workflow-javascript',
+          },
+          {
             title: 'JSON query',
             'title.zh-CN': 'JSON 解析',
             'title.ja-JP': 'JSONクエリ',
@@ -1888,12 +1894,6 @@ export default [
             'title.ja-JP': 'レスポンスメッセージ',
             subTitle: '@nocobase/plugin-workflow-response-message',
             link: '/handbook/workflow-response-message',
-          },
-          {
-            title: 'Script',
-            'title.zh-CN': '脚本',
-            subTitle: '@nocobase/plugin-workflow-script',
-            link: '/handbook/workflow-script',
           },
           {
             title: 'SQL action',

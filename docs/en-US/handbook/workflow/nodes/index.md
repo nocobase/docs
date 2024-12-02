@@ -32,5 +32,5 @@ From a functional perspective, the nodes implemented so far are in four categori
 - Other Extensions
   - [HTTP Request](./request.md) (provided by plugin @nocobase/plugin-workflow-request)
   - [Response Message](./response-message.md) (provided by plugin @nocobase/plugin-workflow-response-message)
+  - [JavaScript](./javascript.md) (provided by plugin @nocobase/plugin-workflow-javascript)
   - [JSON query](./json-query.md) (provided by plugin @nocobase/plugin-workflow-json-query)
-  - [Script](./script.md) (provided by plugin @nocobase/plugin-workflow-script)
