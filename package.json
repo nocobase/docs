@@ -37,7 +37,7 @@
     "sucrase": "^3.0.0",
     "@nocobase/client": "^0.21.0-alpha.6",
     "axios-mock-adapter": "1.22.0",
-    "dumi-theme-nocobase": "^0.2.28"
+    "dumi-theme-nocobase": "^0.2.29"
   },
   "volta": {
     "node": "20.14.0",
