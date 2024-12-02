@@ -1,22 +1,22 @@
-# 脚本
+# JavaScript 脚本
 
-<PluginInfo name="workflow-script" link="/handbook/workflow-script" commercial="true"></PluginInfo>
+<PluginInfo name="workflow-javascript" link="/handbook/workflow-javascript" commercial="true"></PluginInfo>
 
-脚本节点允许用户在工作流中执行一段自定义的 Node.js 脚本。脚本中可以使用流程上游的变量作为参数，并且可以将脚本的返回值提供给下游节点使用。
+脚本节点允许用户在工作流中执行一段自定义的服务端 JavaScript 脚本。脚本中可以使用流程上游的变量作为参数，并且可以将脚本的返回值提供给下游节点使用。
 
-脚本支持 Node.js 的大部分特性，但与原生的执行环境仍有部分差异，详见 [特性列表](#特性列表)。
+脚本会在 NocoBase 应用的服务端开启一个工作线程执行，并支持 Node.js 的大部分特性，但与原生的执行环境仍有部分差异，详见 [特性列表](#特性列表)。
 
 ## 使用手册
 
 ### 创建节点
 
-在工作流配置界面中，点击流程中的加号（“+”）按钮，添加“脚本”节点：
+在工作流配置界面中，点击流程中的加号（“+”）按钮，添加“JavaScript”节点：
 
-![20241007122632](https://static-docs.nocobase.com/20241007122632.png)
+![20241202203457](https://static-docs.nocobase.com/20241202203457.png)
 
 ### 节点配置
 
-![20241007122825](https://static-docs.nocobase.com/20241007122825.png)
+![20241202203655](https://static-docs.nocobase.com/20241202203655.png)
 
 #### 参数
 
@@ -28,7 +28,7 @@
 
 编写代码后可以通过编辑框下方的测试按钮，打开测试执行的对话框，用静态值填入参数进行模拟执行。执行后可以在对话框中看到返回值和输出（日志）的内容。
 
-![20241007153631](https://static-docs.nocobase.com/20241007153631.png)
+![20241202203833](https://static-docs.nocobase.com/20241202203833.png)
 
 #### 超时设置
 
