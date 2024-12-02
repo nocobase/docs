@@ -1799,6 +1799,7 @@ export default [
               '/handbook/workflow/nodes/end',
               '/handbook/workflow/nodes/loop',
               '/handbook/workflow/nodes/parallel',
+              '/handbook/workflow/nodes/variable',
             ],
           },
           {
@@ -1842,11 +1843,10 @@ export default [
             'title.ja-JP': '拡張タイプ',
             type: 'group',
             children: [
-              '/handbook/workflow/nodes/request',
-              '/handbook/workflow/nodes/dynamic-calculation',
+              '/handbook/workflow/nodes/javascript',
               '/handbook/workflow/nodes/json-query',
+              '/handbook/workflow/nodes/request',
               '/handbook/workflow/nodes/response-message',
-              '/handbook/workflow/nodes/variable',
             ],
           },
         ],
@@ -1939,6 +1939,12 @@ export default [
               '/handbook/workflow-dynamic-calculation/collection',
               '/handbook/workflow-dynamic-calculation/node',
             ],
+          },
+          {
+            title: 'JavaScript',
+            'title.zh-CN': 'JavaScript 脚本',
+            subTitle: '@nocobase/plugin-workflow-javascript',
+            link: '/handbook/workflow-javascript',
           },
           {
             title: 'JSON query',
