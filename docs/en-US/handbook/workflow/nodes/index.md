@@ -6,7 +6,7 @@ Nodes are the basic units of logical arrangement in a workflow. A workflow can c
 Workflow triggers are not considered to be nodes but are displayed in the workflow diagram as entry nodes. They are different concepts from nodes. For details, please refer to the [Triggers](../triggers/index.md) section.
 :::
 
-From a functional perspective, the nodes implemented so far are in four categories (a total of 18 types of nodes):
+From a functional perspective, the nodes implemented so far are in four categories (a total of 21 types of nodes):
 
 - Flow Control
   - [Condition](./condition.md)
@@ -32,3 +32,5 @@ From a functional perspective, the nodes implemented so far are in four categori
 - Other Extensions
   - [HTTP Request](./request.md) (provided by plugin @nocobase/plugin-workflow-request)
   - [Response Message](./response-message.md) (provided by plugin @nocobase/plugin-workflow-response-message)
+  - [JavaScript](./javascript.md) (provided by plugin @nocobase/plugin-workflow-javascript)
+  - [JSON query](./json-query.md) (provided by plugin @nocobase/plugin-workflow-json-query)
