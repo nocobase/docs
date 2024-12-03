@@ -2,39 +2,22 @@
 
 ## 通过界面安装与更新插件
 
-这个办法非常简单，但需要一个一个添加、激活、更新。
-
-:::warning{title="注意"}
-通过界面安装与升级的方式不适合共享代码的多应用场景。
-:::
-
 ### 1. 获取插件包
 
-- 如果是 NocoBase 提供的商业插件，请前往商业用户服务平台下载；
+- 如果是 NocoBase 提供的商业插件，**v1.4及以上版本**通过设置环境变量 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) 和 [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password)，即可在安装或升级应用时自动下载商业插件；
 - 如果是自制插件，参考 [编写第一个插件](/development/your-fisrt-plugin) 流程，构建并打包插件。
 
-### 2. 添加插件
+### 2. 添加或更新插件
 
-将插件包上传并添加
+上传插件包
 
-![20240424221258_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240424221258_rec_.gif)
+![20241204000127](https://static-docs.nocobase.com/20241204000127.png)
 
 ### 3. 激活插件
 
 激活上传的插件
 
-![20240424220854](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240424220854.png)
-
-### 4. 更新插件
-
-将待更新的插件包上传并提交更新
-
-:::warning
-- 预置的插件会随主应用一起升级，没有「更新」的操作
-- 点击插件的「更新」操作来升级，不要通过先删除，再添加的方式升级插件。
-:::
-
-![20240424221119_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240424221119_rec_.gif)
+![20241204000230](https://static-docs.nocobase.com/20241204000230.png)
 
 ## 通过命令行安装与更新插件
 
@@ -54,13 +37,11 @@ docker-compose exec app bash
 npm login --registry=https://pkg.nocobase.com/
 ```
 
-### 2. 添加插件
+### 2. 添加或更新插件
 
 ```bash
 yarn pm add @nocobase/plugin-data-source-external-mysql @nocobase/plugin-embed --registry=https://pkg.nocobase.com/
 ```
-
-更多用法参考 [`pm add`](#)
 
 ### 3. 激活插件
 
@@ -68,14 +49,61 @@ yarn pm add @nocobase/plugin-data-source-external-mysql @nocobase/plugin-embed -
 yarn pm enable @nocobase/plugin-data-source-external-mysql @nocobase/plugin-embed
 ```
 
-### 4. 更新插件
+## 手动解压插件包
 
-:::warning
-如果你需要同时升级应用与插件，请参考 [NocoBase 升级概述](/welcome/getting-started/upgrading)，先将 NocoBase 升级到最新版之后，再执行 `pm update` 命令。
-:::
+### 添加或更新插件
+
+直接将插件包解压到 `./storage/plugins/`，插件管理器界面也会自动读取。例如：
 
 ```bash
-yarn pm update @nocobase/plugin-data-source-external-mysql @nocobase/plugin-embed --registry=https://pkg.nocobase.com/
+mkdir -p /my-nocobase/storage/plugins/@nocobase/plugin-auth-cas && \
+  tar -xvzf /downloads/plugin-auth-cas-1.4.0.tgz \
+  -C /my-nocobase/storage/plugins/@nocobase/plugin-auth-cas \
+  --strip-components=1
 ```
 
-更多用法参考 [`pm update`](#)
+这个命令确保插件解压到 `/my-nocobase/storage/plugins/@nocobase/plugin-auth-cas`，并且不会包含 `package` 目录，正确的目录结构如下：
+
+```bash
+./plugin-auth-cas/dist/server/migrations/20240425200816-change-locale-module.js
+./plugin-auth-cas/dist/server/auth.js
+./plugin-auth-cas/client.js
+./plugin-auth-cas/dist/constants.js
+./plugin-auth-cas/dist/externalVersion.js
+./plugin-auth-cas/dist/client/index.js
+./plugin-auth-cas/dist/index.js
+./plugin-auth-cas/dist/server/index.js
+./plugin-auth-cas/dist/server/actions/login.js
+./plugin-auth-cas/dist/server/plugin.js
+./plugin-auth-cas/server.js
+./plugin-auth-cas/dist/server/actions/service.js
+./plugin-auth-cas/dist/locale/en-US.json
+./plugin-auth-cas/dist/locale/ko_KR.json
+./plugin-auth-cas/package.json
+./plugin-auth-cas/dist/locale/zh-CN.json
+./plugin-auth-cas/README.md
+./plugin-auth-cas/README.zh-CN.md
+./plugin-auth-cas/dist/server/migrations/20240425200816-change-locale-module.d.ts
+./plugin-auth-cas/dist/server/auth.d.ts
+./plugin-auth-cas/client.d.ts
+./plugin-auth-cas/dist/constants.d.ts
+./plugin-auth-cas/dist/client/index.d.ts
+./plugin-auth-cas/dist/client/locale/index.d.ts
+./plugin-auth-cas/dist/index.d.ts
+./plugin-auth-cas/dist/server/index.d.ts
+./plugin-auth-cas/dist/server/actions/login.d.ts
+./plugin-auth-cas/dist/client/Options.d.ts
+./plugin-auth-cas/dist/server/plugin.d.ts
+./plugin-auth-cas/server.d.ts
+./plugin-auth-cas/dist/server/actions/service.d.ts
+./plugin-auth-cas/dist/client/SigninPage.d.ts
+./plugin-auth-cas/LICENSE.txt
+```
+
+### 执行更新命令
+
+如果通过手动解压更新了插件，需要执行 `nocobase upgrade` 命令
+
+```bash
+yarn nocobase upgrade
+```
