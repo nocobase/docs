@@ -19,17 +19,6 @@ Activate the uploaded plugin.
 
 ![20241204000230](https://static-docs.nocobase.com/20241204000230.png)
 
-### 4. Update the Plugin
-
-Upload the downloaded plugin and submit the update.
-
-:::warning
-- Pre-installed plugins will be upgraded along with the main application without a separate "update" operation.
-- Click on the "update" operation of the plugin to upgrade it; do not upgrade the plugin by deleting and then adding it again.
-:::
-
-![20240424221119_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240424221119_rec_.gif)
-
 ## Installing and Updating Plugins via Command Line
 
 Supports batch processing. If an application update renders a plugin incompatible and unable to start, you can also use the command line to handle it.
