@@ -1,29 +1,29 @@
-# Docker インストール
+# Docker のインストール
 
 ## 0. 前提条件
 
-⚡⚡ すでに [Docker](https://docs.docker.com/get-docker/) がインストールされていることを確認してください。
+⚡⚡ Docker が [インストールされていること](https://docs.docker.com/get-docker/) を確認してください。
 
-## 1. 新しい `docker-compose.yml` の作成
+## 1. 新しい `docker-compose.yml` ファイルの作成
 
 ```bash
-# NocoBase によって生成されたシステムファイルを保存するための my-project（他の名前でもいい）という名前のフォルダを作成する。
+# NocoBase が生成したシステムファイルを保存するために、my-project（または他の名前）という名前のフォルダーを作成します
 mkdir my-project && cd my-project
 
-# 空の docker-compose.yml ファイルを作成する。
-touch docker-compose.yml
+# 空の docker-compose.yml ファイルを作成します
+vi docker-compose.yml
 ```
 
 ## 2. `docker-compose.yml` の設定
 
-データベースによって構成パラメータが異なるため、適切なデータベース設定を選択し、`docker-compose.yml` にコピーしてください。
+データベースによって設定パラメーターは若干異なります。適切なデータベースの設定を選択し、`docker-compose.yml` にコピーします。
 
 <Tabs>
 
 <div label="PostgreSQL" name="postgres">
 
 ```yml
-version: "3"
+version: '3'
 
 networks:
   nocobase:
@@ -37,13 +37,13 @@ services:
     depends_on:
       - postgres
     environment:
-      # アプリケーションの秘密キー。ユーザーのトークン生成などに使用されます。
-      # APP_KEYを変更すると、元のトークンが無効になります。
-      # 任意のランダムな文字列を使用し、外部に漏れないようにしてください。
+      # アプリケーションのシークレットキー、ユーザートークンなどを生成するのに使用します
+      # APP_KEY が変更されると、古いトークンも無効になります
+      # 任意のランダム文字列にし、外部に漏らさないようにしてください
       - APP_KEY=your-secret-key
-      # データベースの種類。postgres、mysql、mariadb、sqliteをサポートしています。
+      # データベースタイプ、postgres、mysql、mariadb に対応
       - DB_DIALECT=postgres
-      # データベースホスト。既存のデータベースサーバーのIPに置き換え可能です。
+      # データベースホスト、既存のデータベースサーバーの IP に置き換えることができます
       - DB_HOST=postgres
       # データベース名
       - DB_DATABASE=nocobase
@@ -53,13 +53,17 @@ services:
       - DB_PASSWORD=nocobase
       # タイムゾーン
       - TZ=Asia/Shanghai
+      # 商用プラグインのためのサービスプラットフォームのユーザー名とパスワード
+      - NOCOBASE_PKG_USERNAME=
+      - NOCOBASE_PKG_PASSWORD=
+
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
-      - "13000:80"
+      - '13000:80'
     # init: true
 
-  # 既存のデータベースサービスを使用する場合、Postgresを起動しなくても構いません。
+  # 既存のデータベースサービスを使用する場合、postgres を起動する必要はありません
   postgres:
     image: registry.cn-shanghai.aliyuncs.com/nocobase/postgres:16
     restart: always
@@ -79,7 +83,7 @@ services:
 <div label="MySQL" name="mysql">
 
 ```yml
-version: "3"
+version: '3'
 
 networks:
   nocobase:
@@ -93,13 +97,13 @@ services:
     depends_on:
       - mysql
     environment:
-      # アプリケーションの秘密キー。ユーザーのトークン生成などに使用されます。
-      # APP_KEYを変更すると、元のトークンが無効になります。
-      # 任意のランダムな文字列を使用し、外部に漏れないようにしてください。
+      # アプリケーションのシークレットキー、ユーザートークンなどを生成するのに使用します
+      # APP_KEY が変更されると、古いトークンも無効になります
+      # 任意のランダム文字列にし、外部に漏らさないようにしてください
       - APP_KEY=your-secret-key
-      # データベースの種類。postgres、mysql、mariadb、sqliteをサポートしています。
+      # データベースタイプ、postgres、mysql、mariadb に対応
       - DB_DIALECT=mysql
-      # データベースホスト。既存のデータベースサーバーのIPに置き換え可能です。
+      # データベースホスト、既存のデータベースサーバーの IP に置き換えることができます
       - DB_HOST=mysql
       # データベース名
       - DB_DATABASE=nocobase
@@ -107,17 +111,21 @@ services:
       - DB_USER=root
       # データベースパスワード
       - DB_PASSWORD=nocobase
-      # データベースのテーブル名およびフィールド名をスネークケースにするかどうか。
+      # データベーステーブル名、フィールド名をスネークケーススタイルに変換するかどうか
       - DB_UNDERSCORED=true
       # タイムゾーン
       - TZ=Asia/Shanghai
+      # 商用プラグインのためのサービスプラットフォームのユーザー名とパスワード
+      - NOCOBASE_PKG_USERNAME=
+      - NOCOBASE_PKG_PASSWORD=
+
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
-      - "13000:80"
+      - '13000:80'
     # init: true
 
-  # 既存のデータベースサービスを使用する場合、MySQLを起動する必要はありません。
+  # 既存のデータベースサービスを使用する場合、mysql を起動する必要はありません
   mysql:
     image: registry.cn-shanghai.aliyuncs.com/nocobase/mysql:8
     environment:
@@ -137,7 +145,7 @@ services:
 <div label="MariaDB" name="mariadb">
 
 ```yml
-version: "3"
+version: '3'
 
 networks:
   nocobase:
@@ -151,13 +159,13 @@ services:
     depends_on:
       - mariadb
     environment:
-      # アプリケーションの秘密キー。ユーザーのトークン生成などに使用されます。
-      # APP_KEYを変更すると、元のトークンが無効になります。
-      # 任意のランダムな文字列を使用し、外部に漏れないようにしてください。
+      # アプリケーションのシークレットキー、ユーザートークンなどを生成するのに使用します
+      # APP_KEY が変更されると、古いトークンも無効になります
+      # 任意のランダム文字列にし、外部に漏らさないようにしてください
       - APP_KEY=your-secret-key
-      # データベースの種類。postgres、mysql、mariadb、sqliteをサポートしています。
+      # データベースタイプ、postgres、mysql、mariadb に対応
       - DB_DIALECT=mariadb
-      # データベースホスト。既存のデータベースサーバーのIPに置き換え可能です。
+      # データベースホスト、既存のデータベースサーバーの IP に置き換えることができます
       - DB_HOST=mariadb
       # データベース名
       - DB_DATABASE=nocobase
@@ -165,17 +173,21 @@ services:
       - DB_USER=root
       # データベースパスワード
       - DB_PASSWORD=nocobase
-      # データベースのテーブル名およびフィールド名をスネークケースにするかどうか。
+      # データベーステーブル名、フィールド名をスネークケーススタイルに変換するかどうか
       - DB_UNDERSCORED=true
       # タイムゾーン
       - TZ=Asia/Shanghai
+      # 商用プラグインのためのサービスプラットフォームのユーザー名とパスワード
+      - NOCOBASE_PKG_USERNAME=
+      - NOCOBASE_PKG_PASSWORD=
+
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
-      - "13000:80"
+      - '13000:80'
     # init: true
 
-  # 既存のデータベースサービスを使用する場合、MariaDBを起動する必要はありません。
+  # 既存のデータベースサービスを使用する場合、mariadb を起動する必要はありません
   mariadb:
     image: registry.cn-shanghai.aliyuncs.com/nocobase/mariadb:11
     environment:
@@ -193,44 +205,61 @@ services:
 </div>
 </Tabs>
 
-適切な NocoBase のバージョンを選択してください。
+適切な NocoBase バージョンを選択してください。詳細は [バージョン選択](./index.md#インストールするバージョン) を参照してください。
 
-- `latest` または `main`：現時点で最も安定したバージョンであり、このバージョンのインストールをお勧めします。
-- `next`：内部テスト版では、新機能が含まれています。このバージョンは完全には安定していない可能性があり、開発者やテスター向けに新機能を早期に体験したり、互換性テストを行うために使用されます。
-- `1.2.4-alpha`：指定されたバージョン番号。最新のバージョンは[リリースバージョン一覧](https://hub.docker.com/r/nocobase/nocobase/tags)でご確認ください。
+- `latest`: 機能が安定しており、テストも十分に行われたバージョンで、欠陥修正のみが行われます。このバージョンが推奨されます。
+- `beta`: 新機能が含まれており、初期テストが行われたバージョンですが、既知または未知の問題が存在する可能性があります。
+- `alpha`: 開発中のバージョンで、最新の機能コードが含まれており、未完成または不安定な場合があります。主に内部開発や迅速なイテレーションに使用されます。
+- `1.3.51`: バージョン番号を指定します。最新バージョンの確認は [リリースバージョン一覧](https://hub.docker.com/r/nocobase/nocobase/tags) を参照してください。
 
-例
+:::warning
+**v1.4 以降のバージョン**では、環境変数 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) と [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password) を設定することで、アプリケーションのインストールまたはアップグレード時に商用プラグインを自動的にダウンロードできます。
+:::
+
+例:
 
 ```yml
 # ...
 services:
   app:
-    # 国内ユーザーは阿里云のイメージを使用することをお勧めします
+    # 国内ユーザーはアリババクラウドのイメージを使用することを推奨します
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:next
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:1.2.4-alpha
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:beta
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:alpha
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:1.3.51
 
-    # Docker Hub イメージ（国内ユーザーはダウンロードできません）
+    # Docker Hub のイメージ（国内ユーザーはダウンロードできません）
     image: nocobase/nocobase:latest
-    image: nocobase/nocobase:next
-    image: nocobase/nocobase:1.2.4-alpha
+    image: nocobase/nocobase:beta
+    image: nocobase/nocobase:alpha
+    image: nocobase/nocobase:1.3.51
 # ...
 ```
 
 ## 3. NocoBase のインストールと起動
 
-インストールのプロセスには数分かかります。
+インストールには数分かかる場合があります。
 
 ```bash
-# 最新のイメージを取得する
+# 最新のイメージを取得
 $ docker-compose pull
-# バックグラウンドで実行する
+# バックグラウンドで実行
 $ docker-compose up -d
-# app プロセスの状況を確認する
+# app プロセスの状態を確認
 $ docker-compose logs app
+
+app-postgres-app-1  | nginx started
+app-postgres-app-1  | yarn run v1.22.15
+app-postgres-app-1  | $ cross-env DOTENV_CONFIG_PATH=.env node -r dotenv/config packages/app/server/lib/index.js install -s
+app-postgres-app-1  | Done in 2.72s.
+app-postgres-app-1  | yarn run v1.22.15
+app-postgres-app-1  | $ pm2-runtime start --node-args="-r dotenv/config" packages/app/server/lib/index.js -- start
+app-postgres-app-1  | 2022-04-28T15:45:38: PM2 log: Launching in no daemon mode
+app-postgres-app-1  | 2022-04-28T15:45:38: PM2 log: App [index:0] starting in -fork mode-
+app-postgres-app-1  | 2022-04-28T15:45:38: PM2 log: App [index:0] online
+app-postgres-app-1  | 🚀 NocoBase サーバーが次のアドレスで稼働中: http://localhost:13000/
 ```
 
-## 4. NocoBase のログイン
+## 4. NocoBase にログイン
 
-ブラウザで http://localhost:13000/ を開いてください。初期のアカウントは `admin@nocobase.com`、パスワードは `admin123` です。
-
+ウェブブラウザで [http://localhost:13000](http://localhost:13000) を開きます。初期アカウントとパスワードは `admin@nocobase.com` と `admin123` です。

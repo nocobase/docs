@@ -1,9 +1,10 @@
-# Gitソースコードインストールのアップグレード
+# Git ソースコードのアップグレード
 
 ## 0. アップグレード前の準備
 
 :::warning
-アップグレード前に必ずデータベースのバックアップを行ってください！！！
+- アップグレード前に必ずデータベースのバックアップを取ってください！！！
+- **バージョン 1.4 以上**: 環境変数 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) と [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password) を設定することで、アプリケーションのインストールまたはアップグレード時に商用プラグインを自動的にダウンロードできます。
 :::
 
 ## 1. NocoBaseプロジェクトディレクトリに切り替える
@@ -31,16 +32,6 @@ yarn rimraf -rf node_modules
 
 ## 4. 依存関係を更新する
 
-国内のネットワーク環境のため、国内のミラーを変更することを強くお勧めします。
-
-```bash
-$ yarn config set disable-self-update-check true
-$ yarn config set registry https://registry.npmmirror.com/
-$ yarn config set sqlite3_binary_host_mirror https://npmmirror.com/mirrors/sqlite3/
-```
-
-📢 ネットワーク環境やシステム設定などの要因により、次のステップには十数分かかる場合があります。
-
 ```bash
 yarn install
 ```
@@ -53,17 +44,18 @@ yarn nocobase upgrade
 
 ## 6. NocoBaseを起動する
 
-### 開発環境
+開発環境
 
 ```bash
 yarn dev
 ```
 
-### 本番環境
+本番環境
 
 ```bash
 # コンパイル
 yarn build
+
 # 起動
 yarn start
 ```

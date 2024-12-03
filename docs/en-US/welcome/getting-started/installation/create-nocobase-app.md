@@ -24,14 +24,6 @@ $ yarn -v
 1.22.21
 ```
 
-Due to the domestic network environment, it is strongly recommended that you replace the domestic mirror.
-
-```bash
-$ yarn config set disable-self-update-check true
-$ yarn config set registry https://registry.npmmirror.com/
-$ yarn config set sqlite3_binary_host_mirror https://npmmirror.com/mirrors/sqlite3/
-` ` `
-
 ## 1. Create a NocoBase project
 
 ### Latest version

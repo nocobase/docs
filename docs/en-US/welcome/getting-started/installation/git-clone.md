@@ -41,19 +41,9 @@ cd my-nocobase
 
 ## 3. Install dependencies
 
-Due to the domestic network environment, it is strongly recommended that you replace the domestic mirror.
-
-```bash
-$ yarn config set disable-self-update-check true
-$ yarn config set registry https://registry.npmmirror.com/
-$ yarn config set sqlite3_binary_host_mirror https://npmmirror.com/mirrors/sqlite3/
-` ` `
-
-📢 This step may take about 10 minutes due to network environment and system configuration.
-
 ```bash
 yarn install --frozen-lockfile
-` ` `
+```
 
 ## 4. Set environment variables
 

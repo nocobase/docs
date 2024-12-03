@@ -1,9 +1,10 @@
-# Dockerインストールのアップグレード
+# Dockerのインストールのアップグレード
 
 ## 0. アップグレード前の準備
 
 :::warning
-アップグレード前に必ずデータベースのバックアップを取ってください！！！
+- アップグレード前に必ずデータベースをバックアップしてください！！！
+- **バージョン1.4以上**: 環境変数 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) と [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password) を設定することで、アプリケーションのインストールまたはアップグレード時に商用プラグインを自動的にダウンロードできます。
 :::
 
 ## 1. `docker-compose.yml` があるディレクトリに移動する
@@ -19,39 +20,29 @@ cd C:\your\path\my-project
 
 ## 2. イメージのバージョン番号を更新
 
-- `latest` または `main`：現在最も安定しているバージョンで、こちらのインストールをお勧めします。
-- `next`：内部テスト版で、未公開の新機能が含まれています。このバージョンは完全に安定していない可能性があり、開発者やテスター向けに新機能を体験したり、互換性テストを行ったりするために使用されます。
-- `1.2.4-alpha`：特定のバージョンにアップグレードします。最新のバージョン情報は[公開バージョンリスト](https://hub.docker.com/r/nocobase/nocobase/tags)を参照してください。
-
-:::warning
-イメージはアップグレードのみ可能で、ダウングレードができません。`next` を `latest` にダウングレードすることはできません。
-:::
+- `latest`: 機能が安定しており、テストが比較的完璧なバージョンで、バグ修正のみを行います。このバージョンのインストールを推奨します。
+- `beta`: 発表予定の新機能を含む、初期テストが行われたバージョンで、既知または未知の問題が存在する可能性があります。
+- `alpha`: 開発中のバージョンで、最新の機能コードを含み、未完成または不安定な要素が多い可能性があり、主に内部開発と迅速な反復に使用されます。
+- `1.3.51`: 指定されたバージョン番号、最新バージョンは [リリースバージョンリスト](https://hub.docker.com/r/nocobase/nocobase/tags) を参照してください。
 
 ```yml
 # ...
 services:
   app:
-    # アリババクラウドのメインバージョン（AMD64アーキテクチャのみサポート）
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:main
-    # アリババクラウドのlatestバージョン
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
-    # アリババクラウドの指定バージョン
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:1.2.4-alpha
-    # Docker Hubのイメージ、ダウンロードできない可能性があります
     image: nocobase/nocobase:main
     image: nocobase/nocobase:latest
     image: nocobase/nocobase:1.2.4-alpha
 # ...
 ```
 
-## 3. コンテナを再起動する
+## 3. コンテナを再起動
 
 ```bash
-# 最新のイメージを取得します
+# 最新のイメージを取得
 docker-compose pull
-# アプリケーションを起動します
+# 起動
 docker-compose up -d app
-# app プロセスの状況を確認します
+# app プロセスの状況を確認
 docker-compose logs app
 ```
 
