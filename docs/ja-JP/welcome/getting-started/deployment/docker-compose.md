@@ -10,12 +10,12 @@
 
 ## ドメインのバインディング
 
-nginxを例に、http://127.0.0.1:13000/をnginxでプロキシします。
+nginxを例にとると、nginxを介して http://127.0.0.1:13000/ をプロキシします。
 
 ```bash
 server {
     listen 80;
-    server_name your_domain.com;  # your_domain.comをドメインに置き換えてください
+    server_name your_domain.com;  # your_domain.comをあなたのドメインに置き換えてください
 
     location / {
         proxy_pass http://127.0.0.1:13000/;

@@ -3,16 +3,10 @@
 ## 0. アップグレード前の準備
 
 :::warning
-アップグレード前に必ずデータベースのバックアップを取ってください！！
+- アップグレードの前に必ずデータベースのバックアップを取ってください！！！
+- **バージョン1.4以上**: 環境変数 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) と [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password) を設定することで、アプリのインストールやアップグレード中に商用プラグインを自動的にダウンロードできます。
 :::
 
-国内のネットワーク環境に配慮し、国内ミラーへの切り替えを強くお勧めします。
-
-```bash
-$ yarn config set disable-self-update-check true
-$ yarn config set registry https://registry.npmmirror.com/
-$ yarn config set sqlite3_binary_host_mirror https://npmmirror.com/mirrors/sqlite3/
-```
 
 ## 1. アップグレード
 

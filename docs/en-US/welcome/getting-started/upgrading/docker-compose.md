@@ -48,7 +48,7 @@ docker-compose pull
 docker-compose up -d app
 # View the app process
 docker-compose logs app
-` ` `
+```
 
 ## 4. Upgrading independent plugins
 
