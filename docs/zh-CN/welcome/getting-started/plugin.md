@@ -1,21 +1,20 @@
 # 独立插件的安装与升级
 
+:::warning
+**v1.4及以上版本**通过设置环境变量 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) 和 [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password)，即可在安装或升级应用时自动下载商业插件；
+:::
+
 ## 通过界面安装与更新插件
 
 ### 1. 获取插件包
 
-- 如果是 NocoBase 提供的商业插件，**v1.4及以上版本**通过设置环境变量 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) 和 [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password)，即可在安装或升级应用时自动下载商业插件；
 - 如果是自制插件，参考 [编写第一个插件](/development/your-fisrt-plugin) 流程，构建并打包插件。
 
 ### 2. 添加或更新插件
 
-上传插件包
-
 ![20241204000127](https://static-docs.nocobase.com/20241204000127.png)
 
 ### 3. 激活插件
-
-激活上传的插件
 
 ![20241204000230](https://static-docs.nocobase.com/20241204000230.png)
 

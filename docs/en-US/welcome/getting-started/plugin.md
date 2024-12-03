@@ -1,21 +1,20 @@
 # Installation and Upgrade of Plugins
 
+:::warning
+**Version 1.4 and above**: By setting the environment variables [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) and [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password), you can automatically download commercial plugins during application installation or upgrade.
+:::
+
 ## Installing and Updating Plugins via Interface
 
 ### 1. Get the Plugin Package
 
-- If it's a commercial plugin provided by NocoBase, by setting the environment variables [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) and [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password), you can automatically download commercial plugins during application installation or upgrade；
 - If it's a custom-developed plugin, refer to the process of [Writing Your First Plugin](/development/your-fisrt-plugin), build and package the plugin.
 
 ### 2. Add the Plugin
 
-Upload and add the plugin package.
-
 ![20241204000127](https://static-docs.nocobase.com/20241204000127.png)
 
 ### 3. Activate the Plugin
-
-Activate the uploaded plugin.
 
 ![20241204000230](https://static-docs.nocobase.com/20241204000230.png)
 
