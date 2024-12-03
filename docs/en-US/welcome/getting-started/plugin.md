@@ -60,11 +60,11 @@ yarn pm add @nocobase/plugin-data-source-external-mysql @nocobase/plugin-embed -
 yarn pm enable @nocobase/plugin-data-source-external-mysql @nocobase/plugin-embed
 ```
 
-## 手动解压插件包
+## Manually extract plugin packages
 
-### 添加或更新插件
+### Add or update plugins
 
-直接将插件包解压到 `./storage/plugins/`，插件管理器界面也会自动读取。例如：
+To add or update a plugin, simply extract the plugin package to `./storage/plugins/`, and the plugin manager interface will automatically read it. For example:
 
 ```bash
 mkdir -p /my-nocobase/storage/plugins/@nocobase/plugin-auth-cas && \
@@ -73,7 +73,7 @@ mkdir -p /my-nocobase/storage/plugins/@nocobase/plugin-auth-cas && \
   --strip-components=1
 ```
 
-这个命令确保插件解压到 `/my-nocobase/storage/plugins/@nocobase/plugin-auth-cas`，并且不会包含 `package` 目录，正确的目录结构如下：
+This command ensures that the plugin is extracted to `/my-nocobase/storage/plugins/@nocobase/plugin-auth-cas` without the `package` directory, and the correct directory structure should be as follows:
 
 ```bash
 ./plugin-auth-cas/dist/server/migrations/20240425200816-change-locale-module.js
@@ -111,9 +111,9 @@ mkdir -p /my-nocobase/storage/plugins/@nocobase/plugin-auth-cas && \
 ./plugin-auth-cas/LICENSE.txt
 ```
 
-### 执行更新命令
+### Run the upgrade command
 
-如果通过手动解压更新了插件，需要执行 `nocobase upgrade` 命令
+If the plugin is manually updated by extraction, you need to run the `nocobase upgrade` command:
 
 ```bash
 yarn nocobase upgrade
