@@ -178,6 +178,14 @@ Database log switch, default is `off`, options include
 DB_LOGGING=on
 ```
 
+### NOCOBASE_PKG_USERNAME
+
+Service platform username, used for automatically downloading and updating plugins.
+
+### NOCOBASE_PKG_PASSWORD
+
+Service platform password, used for automatically downloading and updating plugins.
+
 ### LOGGER_TRANSPORT
 
 日志输出方式，多个用 `,` 分隔。开发环境默认值 `console`, 生产环境默认值 `console,dailyRotateFile`.

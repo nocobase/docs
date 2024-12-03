@@ -53,6 +53,10 @@ services:
       - DB_PASSWORD=nocobase
       # Timezone
       - TZ=Asia/Shanghai
+      # Service platform username and password,
+      # used for automatically downloading and updating plugins.
+      - NOCOBASE_PKG_USERNAME=
+      - NOCOBASE_PKG_PASSWORD=
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
@@ -111,6 +115,10 @@ services:
       - DB_UNDERSCORED=true
       # Timezone
       - TZ=Asia/Shanghai
+      # Service platform username and password,
+      # used for automatically downloading and updating plugins.
+      - NOCOBASE_PKG_USERNAME=
+      - NOCOBASE_PKG_PASSWORD=
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
@@ -169,6 +177,10 @@ services:
       - DB_UNDERSCORED=true
       # Timezone
       - TZ=Asia/Shanghai
+      # Service platform username and password,
+      # used for automatically downloading and updating plugins.
+      - NOCOBASE_PKG_USERNAME=
+      - NOCOBASE_PKG_PASSWORD=
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
@@ -199,6 +211,10 @@ Choose the appropriate NocoBase version, refer to [versions](./index.md#which-ve
 - `beta`: This version includes new features that are about to be released and it has been preliminarily tested, but still have known or unknown issues.
 - `alpha`: A development version containing the latest features, which may be incomplete or unstable.
 - `1.3.51`: Specify the version number. To check the latest version, see the [list of released versions](https://hub.docker.com/r/nocobase/nocobase/tags).
+
+:::warning
+**Version 1.4 and above**: By setting the environment variables [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) and [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password), you can automatically download commercial plugins during application installation or upgrade.
+:::
 
 Example:
 
