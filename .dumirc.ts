@@ -25,16 +25,14 @@ if (lang !== 'en-US') {
 
 export default defineConfig({
   hash: true,
-  alias: {
-  },
-  // ssr: {},
+  alias: {},
   exportStatic: {
-    ignorePreRenderError: true
+    ignorePreRenderError: true,
   },
   cacheDirectoryPath: `node_modules/.docs-${lang}-cache`,
   outputPath: `./dist/${lang}`,
   resolve: {
-    docDirs: [`./docs/${lang}`]
+    docDirs: [`./docs/${lang}`],
   },
   locales: [
     { id: 'en-US', name: 'English' },
@@ -45,15 +43,22 @@ export default defineConfig({
     title: 'NocoBase',
     lang,
     logo: 'https://www.nocobase.com/images/logo.png',
-    nav: nav.map((item) => ({ ...item, title: (item?.[`title.${lang}`] || item.title) })),
+    nav: nav.map((item) => ({
+      ...item,
+      title: item[`title.${lang}`] || item.title,
+      link: item[`link.${lang}`] || item.link,
+    })),
     sidebarEnhance: sidebar as any,
     github: 'https://github.com/nocobase/nocobase',
     footer: '© 2020-2024 NocoBase. All rights reserved.',
-    alert: lang === 'zh-CN' ? '文档正在建设中，部分内容可能缺失或缺少翻译，详情查看 <a target="_blank" href="https://github.com/nocobase/docs/commits/main/">文档更新日志</a>' : 'The document is currently under construction, with some content possibly missing or awaiting translation. For details, please refer to the <a target="_blank" href="https://github.com/nocobase/docs/commits/main/">changelog</a>',
+    alert:
+      lang === 'zh-CN'
+        ? '文档正在建设中，部分内容可能缺失或缺少翻译，详情查看 <a target="_blank" href="https://github.com/nocobase/docs/commits/main/">文档更新日志</a>'
+        : 'The document is currently under construction, with some content possibly missing or awaiting translation. For details, please refer to the <a target="_blank" href="https://github.com/nocobase/docs/commits/main/">changelog</a>',
     localesEnhance: [
       { id: 'zh-CN', switchPrefix: '中', hostname: 'docs-cn.nocobase.com' },
       { id: 'en-US', switchPrefix: 'en', hostname: 'docs.nocobase.com' },
-      { id: 'ja-JP', switchPrefix: 'ja', hostname: 'docs-ja.nocobase.com' }
+      { id: 'ja-JP', switchPrefix: 'ja', hostname: 'docs-ja.nocobase.com' },
     ],
   }),
   favicons: [
@@ -61,5 +66,4 @@ export default defineConfig({
     '/favicon-32x32.png',
     '/favicon-16x16.png',
   ],
-  // mfsu: true, // 报错
 });

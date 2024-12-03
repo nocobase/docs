@@ -41,17 +41,27 @@ cd my-nocobase
 
 ## 3. Install dependencies
 
+Due to the domestic network environment, it is strongly recommended that you replace the domestic mirror.
+
+```bash
+$ yarn config set disable-self-update-check true
+$ yarn config set registry https://registry.npmmirror.com/
+$ yarn config set sqlite3_binary_host_mirror https://npmmirror.com/mirrors/sqlite3/
+` ` `
+
+📢 This step may take about 10 minutes due to network environment and system configuration.
+
 ```bash
 yarn install --frozen-lockfile
-# If you are deploying in a production environment, you can install only the necessary dependencies to reduce the size
-yarn install --frozen-lockfile --production
-```
+` ` `
 
 ## 4. Set environment variables
 
 The environment variables required by NocoBase are stored in the root `.env` file, modify the environment variables according to the actual situation, if you don't know how to change them, [click here for environment variables description](../env.md), or you can leave it as default.
 
 ```bash
+TZ=Asia/Shanghai
+APP_KEY=your-secret-key
 DB_HOST=localhost
 DB_PORT=5432
 DB_DATABASE=postgres

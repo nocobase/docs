@@ -55,13 +55,13 @@ NocoBase 目前支持的用户认证类型有：
 ### 注册表单设置
 
 :::info
-`v1.4.0-alpha.9` 以上版本支持。
+`v1.4.0-beta.7` 以上版本支持。
 :::
 
-支持设置注册表单的用户名和邮箱字段是否显示、是否必填。至少需要设置一个字段为显示和必填。
+支持设置用户表中的哪些字段在注册表单中显示以及是否必填。至少需要设置用户名或邮箱中一个字段为显示和必填。
 
-![](https://static-docs.nocobase.com/202411131510066.png)
+![](https://static-docs.nocobase.com/202411262133669.png)
 
 注册页
 
-![](https://static-docs.nocobase.com/202411131509011.png)
+![](https://static-docs.nocobase.com/202411262135801.png)

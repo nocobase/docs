@@ -8,7 +8,7 @@ NocoBase supports three installation methods.
 - [create-nocobase-app](./create-nocobase-app.md)
 - [Git source code](./git-clone.md)
 
-## How to choose
+## How to choose the Installation method?
 
 ### Docker (recommended)
 

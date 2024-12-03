@@ -64,7 +64,8 @@ export default [
     'title.zh-CN': 'NocoBase 首页',
     'title.ja-JP': 'NocoBase ホーム',
     link: 'https://www.nocobase.com',
-    'link.zh-CN': 'https://cn.nocobase.com',
+    'link.zh-CN': 'https://www.nocobase.com/cn/',
+    'link.ja-JP': 'https://www.nocobase.com/ja/',
   },
   // {
   //   title: 'Schema components',
