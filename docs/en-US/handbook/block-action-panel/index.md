@@ -1,4 +1,4 @@
-# Workbench Block
+# Block: Action Panel
 
 ## Introduction
 
@@ -13,7 +13,7 @@ It is used for placing various quick actions. Currently, it supports
 
 ## Action Types
 
-The workbench supports the following action types:
+The action panel supports the following action types:
 
 ### Link
 

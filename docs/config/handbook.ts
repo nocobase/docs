@@ -755,7 +755,7 @@ export default [
                 title: 'Action panel',
                 'title.zh-CN': '操作面板',
                 'title.ja-JP': 'アクションパネル',
-                link: '/handbook/block-workbench',
+                link: '/handbook/block-action-panel',
               },
               {
                 title: 'Workflow: Manual todos',
