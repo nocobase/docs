@@ -74,6 +74,13 @@ export default [
                 // subTitle: '@nocobase/plugin-data-source-external-mysql',
                 link: '/handbook/data-source-external-mssql',
               },
+              {
+                title: 'External Oracle',
+                'title.zh-CN': '外部 Oracle',
+                'title.ja-JP': '外部 Oracle',
+                // subTitle: '@nocobase/plugin-data-source-external-mysql',
+                link: '/handbook/data-source-external-oracle',
+              },
             ],
           },
           {
@@ -755,7 +762,7 @@ export default [
                 title: 'Action panel',
                 'title.zh-CN': '操作面板',
                 'title.ja-JP': 'アクションパネル',
-                link: '/handbook/block-workbench',
+                link: '/handbook/block-action-panel',
               },
               {
                 title: 'Workflow: Manual todos',
@@ -1366,6 +1373,40 @@ export default [
               },
             ],
           },
+          {
+            title: 'Synchronization',
+            'title.zh-CN': '同步',
+            children: [
+              {
+                title: 'Synchronization management',
+                'title.zh-CN': '同步管理',
+                link: '/handbook/user-data-sync',
+              },
+              {
+                title: 'Data sources',
+                'title.zh-CN': '数据源',
+                children: [
+                  {
+                    title: 'HTTP API',
+                    link: '/handbook/user-data-sync/sources/api',
+                  },
+                  {
+                    title: 'WeCom',
+                    'title.zh-CN': '企业微信',
+                    link: '/handbook/wecom/user-data-sync',
+                  },
+                ],
+              },
+              {
+                title: 'Development',
+                'title.zh-CN': '开发指南',
+                children: [
+                  '/handbook/user-data-sync/dev/source',
+                  '/handbook/user-data-sync/dev/resource',
+                ],
+              },
+            ],
+          },
         ],
       },
       {
@@ -1483,7 +1524,7 @@ export default [
             title: 'Authentication - WeCom',
             'title.zh-CN': '用户认证 - 企业微信',
             'title.ja-JP': 'ユーザー認証 - WeCom',
-            link: '/handbook/auth-wecom',
+            link: '/handbook/wecom/auth',
           },
           {
             title: 'Verification',
@@ -1538,6 +1579,11 @@ export default [
             'title.zh-CN': '通知：电子邮件',
             'title.ja-JP': '通知：メール',
             link: '/handbook/notification-email',
+          },
+          {
+            title: 'Notification: WeCom',
+            'title.zh-CN': '通知：企业微信',
+            link: '/handbook/wecom/notification',
           },
         ],
       },

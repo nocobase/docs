@@ -1,26 +1,65 @@
-# 独立插件的安装与升级
+# 插件的安装与升级
 
-:::warning
-**v1.4及以上版本**通过设置环境变量 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) 和 [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password)，即可在安装或升级应用时自动下载商业插件；
-:::
+## 商业插件的安装与升级（v1.4及以上版本）
+
+### 配置环境变量
+
+通过设置环境变量 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) 和 [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password)，即可在安装或升级应用时自动下载商业插件。
+
+```bash
+NOCOBASE_PKG_USERNAME=your-username
+NOCOBASE_PKG_PASSWORD=your-password
+```
+
+### 执行应用的安装或升级命令
+
+安装或升级应用之后，即可在插件管理器中看到已授权的所有商业插件，插件会自动下载并更新。
+
+```bash
+# 安装应用
+yarn nocobase install
+
+# 重装应用（会清空数据库）
+yarn nocobase install -f
+
+# 升级应用
+yarn nocobase upgrade
+```
+
+### 激活插件
+
+在插件管理器中选择需要激活的插件即可。
+
+![20241204000230](https://static-docs.nocobase.com/20241204000230.png)
 
 ## 通过界面安装与更新插件
 
-### 1. 获取插件包
+:::warning
+插件添加或更新时会重启应用。如果需要批量添加或更新插件，建议采用其他方式处理。
+:::
 
-- 如果是自制插件，参考 [编写第一个插件](/development/your-fisrt-plugin) 流程，构建并打包插件。
+### 通过插件管理器上传插件包
 
-### 2. 添加或更新插件
+无论是商业插件还是第三方插件，都可以通过界面直接上传插件包。
 
 ![20241204000127](https://static-docs.nocobase.com/20241204000127.png)
 
-### 3. 激活插件
+备注：
+
+- 插件包的制作流程请参考 [编写第一个插件](/development/your-fisrt-plugin) ，以便正确构建并打包插件。
+
+### 激活插件
+
+在插件管理器中选择需要激活的插件即可。
 
 ![20241204000230](https://static-docs.nocobase.com/20241204000230.png)
 
 ## 通过命令行安装与更新插件
 
-支持批量处理，如果应用更新导致插件不兼容并无法启动时，也可以使用命令行的方式处理
+:::warning
+- 支持批处理
+- 如果因应用更新导致插件不兼容并无法启动，可以采用这种方式来更新不兼容的插件
+:::
 
 ### 0. Docker 版本需要先进入容器
 
@@ -30,7 +69,7 @@ docker-compose exec app bash
 
 ### 1. 登录插件所在 npm registry
 
-命令的方式，推荐以 npm registry 的方式添加、更新插件，例如 NocoBase 商业插件的 npm registry 是 https://pkg.nocobase.com/
+registry 需要根据实际情况来配置。
 
 ```bash
 npm login --registry=https://pkg.nocobase.com/
@@ -48,11 +87,17 @@ yarn pm add @nocobase/plugin-data-source-external-mysql @nocobase/plugin-embed -
 yarn pm enable @nocobase/plugin-data-source-external-mysql @nocobase/plugin-embed
 ```
 
-## 手动解压插件包
+## 将插件上传到插件目录来安装与升级
+
+:::warning
+- 支持批处理，移植方便
+- 支持内网服务器
+- 如果因应用更新导致插件不兼容并无法启动，可以采用这种方式来更新不兼容的插件
+:::
 
 ### 添加或更新插件
 
-直接将插件包解压到 `./storage/plugins/`，插件管理器界面也会自动读取。例如：
+商业插件和第三方插件都存放在 `./storage/plugins/` 目录。可以先在开发环境中下载插件，再上传到服务器的 `./storage/plugins/` 目录进行添加或更新，或者直接将插件包解压到该目录中。例如：
 
 ```bash
 mkdir -p /my-nocobase/storage/plugins/@nocobase/plugin-auth-cas && \
@@ -99,9 +144,9 @@ mkdir -p /my-nocobase/storage/plugins/@nocobase/plugin-auth-cas && \
 ./plugin-auth-cas/LICENSE.txt
 ```
 
-### 执行更新命令
+### 执行升级命令来更新插件
 
-如果通过手动解压更新了插件，需要执行 `nocobase upgrade` 命令
+将插件上传到插件目录之后，需要执行 `nocobase upgrade` 命令来更新插件。
 
 ```bash
 yarn nocobase upgrade
