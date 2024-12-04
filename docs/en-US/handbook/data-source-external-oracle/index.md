@@ -19,7 +19,7 @@ Linux 的示例：
 ```bash
 apt-get update
 apt-get install -y unzip wget
-wget --no-check-certificate https://download.oracle.com/otn_software/linux/instantclient/1925000/instantclient-basic-linux.x64-19.25.0.0.0dbru.zip
+wget https://download.oracle.com/otn_software/linux/instantclient/1925000/instantclient-basic-linux.x64-19.25.0.0.0dbru.zip
 unzip instantclient-basic-linux.x64-19.25.0.0.0dbru.zip -d /opt/
 echo /opt/instantclient_19_25 > /etc/ld.so.conf.d/oracle-instantclient.conf
 ldconfig
