@@ -1,20 +1,21 @@
 # プラグインのインストールとアップグレード
 
-:::warning
-**バージョン1.4以上**: 環境変数 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) と [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password) を設定することで、アプリのインストールやアップグレード中に商用プラグインを自動的にダウンロードできます。
-:::
-
 ## インターフェースを通じてプラグインをインストールおよび更新する
 
 ### 1. プラグインパッケージを取得する
 
+- NocoBaseが提供する商用プラグインの場合、環境変数[`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username)と[`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password)を設定することで、アプリケーションのインストールまたはアップグレード時に商用プラグインを自動的にダウンロードできます。
 - 自作のプラグインの場合は、[最初のプラグインを作成する](/development/your-fisrt-plugin)の手順を参考にして、プラグインを構築およびパッケージ化してください。
 
 ### 2. プラグインを追加する
 
+プラグインパッケージをアップロードして追加します。
+
 ![20241204000127](https://static-docs.nocobase.com/20241204000127.png)
 
 ### 3. プラグインを有効化する
+
+アップロードしたプラグインを有効化します。
 
 ![20241204000230](https://static-docs.nocobase.com/20241204000230.png)
 
