@@ -29,6 +29,4 @@ https://www.nocobase.com/en/agreement
 メール：  
 hello@nocobase.com
 
-WeChat：  
-![wechat](https://static-docs.nocobase.com/wechat.png)
 
