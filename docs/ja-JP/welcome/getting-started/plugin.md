@@ -1,58 +1,109 @@
 # プラグインのインストールとアップグレード
 
+## 商用プラグインのインストールとアップグレード（v1.4以降）
+
+### 環境変数の設定
+
+環境変数 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) と [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password) を設定することで、アプリケーションのインストールやアップグレード時に商用プラグインを自動的にダウンロードできます。
+
+```bash
+NOCOBASE_PKG_USERNAME=your-username
+NOCOBASE_PKG_PASSWORD=your-password
+```
+
+### アプリケーションのインストールまたはアップグレードコマンドの実行
+
+アプリケーションのインストールまたはアップグレードを実行すると、すべての認証済み商用プラグインがプラグインマネージャーに表示され、プラグインが自動的にダウンロードおよび更新されます。
+
+```bash
+# アプリケーションをインストール
+yarn nocobase install
+
+# アプリケーションを再インストール（データベースがクリアされます）
+yarn nocobase install -f
+
+# アプリケーションをアップグレード
+yarn nocobase upgrade
+```
+
+### プラグインの有効化
+
+プラグインマネージャーで有効化したいプラグインを選択してください。
+
+![プラグインの有効化](https://static-docs.nocobase.com/20241204000230.png)
+
+---
+
+## インターフェースを利用したプラグインのインストールと更新
+
 :::warning
-**バージョン1.4以上**: 環境変数 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) と [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password) を設定することで、アプリのインストールやアップグレード中に商用プラグインを自動的にダウンロードできます。
+インターフェースを通じてプラグインを追加または更新する場合、アプリケーションが再起動されます。複数のプラグインをまとめて操作する場合は、他の方法をお勧めします。
 :::
 
-## インターフェースを通じてプラグインをインストールおよび更新する
+### プラグインマネージャーでプラグインパッケージをアップロード
 
-### 1. プラグインパッケージを取得する
+商用プラグインやサードパーティプラグインは、インターフェースを使用して直接アップロードできます。
 
-- 自作のプラグインの場合は、[最初のプラグインを作成する](/development/your-fisrt-plugin)の手順を参考にして、プラグインを構築およびパッケージ化してください。
+![プラグインのアップロード](https://static-docs.nocobase.com/20241204000127.png)
 
-### 2. プラグインを追加する
+補足：
 
-![20241204000127](https://static-docs.nocobase.com/20241204000127.png)
+- プラグインパッケージの作成方法については、[最初のプラグインを作成する](/development/your-first-plugin) を参考にして、正しくビルドとパッケージングを行ってください。
 
-### 3. プラグインを有効化する
+### プラグインの有効化
 
-![20241204000230](https://static-docs.nocobase.com/20241204000230.png)
+プラグインマネージャーで有効化したいプラグインを選択してください。
 
-## コマンドラインを介してプラグインをインストールおよび更新する
+![プラグインの有効化](https://static-docs.nocobase.com/20241204000230.png)
 
-バッチ処理をサポートしています。アプリケーションの更新によりプラグインが非互換となり起動できない場合も、コマンドラインを使用して処理できます。
+---
 
-### 0. Docker版は最初にコンテナに入る
+## コマンドラインを利用したプラグインのインストールと更新
+
+:::warning
+- バッチ処理に対応しています。
+- アプリケーションの更新によりプラグインが非互換になった場合や起動できなくなった場合、この方法を使用して更新できます。
+  :::
+
+### 0. Dockerバージョンの場合、まずコンテナに入る
 
 ```bash
 docker-compose exec app bash
 ```
 
-### 1. プラグインが存在するnpmレジストリにログインする
+### 1. プラグインがあるnpmレジストリにログイン
 
-コマンドラインモードでは、npmレジストリを介してプラグインを追加および更新することをお勧めします。例えば、NocoBase商用プラグインのnpmレジストリはhttps://pkg.nocobase.com/です。
+レジストリの設定は実際の環境に応じて行ってください。
 
 ```bash
 npm login --registry=https://pkg.nocobase.com/
 ```
 
-### 2. プラグインを追加または更新する
+### 2. プラグインの追加または更新
 
 ```bash
 yarn pm add @nocobase/plugin-data-source-external-mysql @nocobase/plugin-embed --registry=https://pkg.nocobase.com/
 ```
 
-### 3. プラグインを有効化する
+### 3. プラグインの有効化
 
 ```bash
 yarn pm enable @nocobase/plugin-data-source-external-mysql @nocobase/plugin-embed
 ```
 
-## プラグインパッケージを手動で解凍する
+---
 
-### プラグインを追加または更新する
+## プラグインディレクトリにプラグインをアップロードしてインストールと更新を実行
 
-プラグインを追加または更新するには、プラグインパッケージを`./storage/plugins/`に解凍するだけで、プラグインマネージャーのインターフェースが自動的に読み取ります。例えば：
+:::warning
+- バッチ処理に対応しており、移行も簡単です。
+- 内部ネットワークのサーバーでも利用可能です。
+- アプリケーションの更新によってプラグインが非互換になった場合、この方法で更新を実行できます。
+  :::
+
+### プラグインの追加または更新
+
+商用プラグインやサードパーティプラグインは、`./storage/plugins/` ディレクトリに保存されます。開発環境でプラグインをダウンロードしてから、サーバーの `./storage/plugins/` ディレクトリにアップロードするか、直接プラグインパッケージをそのディレクトリに解凍します。例：
 
 ```bash
 mkdir -p /my-nocobase/storage/plugins/@nocobase/plugin-auth-cas && \
@@ -61,9 +112,9 @@ mkdir -p /my-nocobase/storage/plugins/@nocobase/plugin-auth-cas && \
   --strip-components=1
 ```
 
-このコマンドは、プラグインが`/my-nocobase/storage/plugins/@nocobase/plugin-auth-cas`に解凍され、`package`ディレクトリを含まないようにし、次のように正しいディレクトリ構造になります：
+このコマンドにより、`/my-nocobase/storage/plugins/@nocobase/plugin-auth-cas` にプラグインが `package` ディレクトリなしで解凍されます。正しいディレクトリ構造は以下のようになります：
 
-```bash
+```plaintext
 ./plugin-auth-cas/dist/server/migrations/20240425200816-change-locale-module.js
 ./plugin-auth-cas/dist/server/auth.js
 ./plugin-auth-cas/client.js
@@ -99,9 +150,9 @@ mkdir -p /my-nocobase/storage/plugins/@nocobase/plugin-auth-cas && \
 ./plugin-auth-cas/LICENSE.txt
 ```
 
-### アップグレードコマンドを実行する
+### アップグレードコマンドの実行
 
-手動で解凍してプラグインを更新した場合は、`nocobase upgrade`コマンドを実行する必要があります。
+プラグインをプラグインディレクトリにアップロードした後、`nocobase upgrade` コマンドを実行して更新を完了してください。
 
 ```bash
 yarn nocobase upgrade

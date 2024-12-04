@@ -1,14 +1,14 @@
-# 扩展同步数据源
+# 拡張された同期データソース
 
-## 概述
+## 概要
 
-NocoBase 支持按需要扩展用户数据同步数据源类型。
+NocoBase では、ユーザーのデータ同期ソースタイプを必要に応じて拡張することができます。
 
-## 服务端
+## サーバーサイド
 
-### 数据源接口
+### データソースインターフェース
 
-内置的用户数据同步插件提供了数据源类型的注册和管理。扩展数据源类型，需要继承插件提供的 `SyncSource` 抽象类，并对相应的标准接口进行实现。
+組み込みのユーザーデータ同期プラグインは、データソースタイプの登録と管理を提供します。データソースタイプを拡張するには、プラグインが提供する `SyncSource` 抽象クラスを継承し、対応する標準インターフェースを実装します。
 
 ```ts
 import { SyncSource, UserData } from '@nocobase/plugin-user-data-sync';
@@ -20,7 +20,7 @@ class CustomSyncSource extends SyncSource {
 }
 ```
 
-`SyncSource` 提供了options属性，用于获取数据源的自定义配置。
+`SyncSource` クラスには、データソースのカスタム設定を取得するための `options` プロパティが含まれています。
 
 ```ts
 import { SyncSource, UserData } from '@nocobase/plugin-user-data-sync';
@@ -35,34 +35,35 @@ class CustomSyncSource extends SyncSource {
 }
 ```
 
-### UserData字段说明
+### `UserData` フィールドの説明
 
-| 字段         | 说明                                      |
-| ------------ | ----------------------------------------- |
-| `dataType`   | 数据类型, 可选值为 `user` 和 `department` |
-| `uniqueKey`  | 唯一标识字段                              |
-| `records`    | 数据记录                                  |
-| `sourceName` | 数据源名称                                |
+| フィールド    | 説明                                 |
+| ------------- | ------------------------------------ |
+| `dataType`   | データタイプ、選択肢は `user` と `department` |
+| `uniqueKey`  | 一意な識別子フィールド               |
+| `records`    | データレコード                       |
+| `sourceName` | データソースの名前                   |
 
-若dataType为 `user`，则records包含以下字段：
+`dataType` が `user` の場合、`records` には次のフィールドが含まれます：
 
-| 字段          | 说明           |
-| ------------- | -------------- |
-| `id`          | 用户 ID        |
-| `nickname`    | 用户昵称       |
-| `avatar`      | 用户头像       |
-| `email`       | 邮箱           |
-| `phone`       | 手机号         |
-| `departments` | 所属部门ID数组 |
+| フィールド    | 説明              |
+| ------------- | ----------------- |
+| `id`          | ユーザーID        |
+| `nickname`    | ユーザーのニックネーム |
+| `avatar`      | ユーザーのアバター |
+| `email`       | メールアドレス     |
+| `phone`       | 電話番号           |
+| `departments` | 所属部署IDの配列   |
 
-若dataType为 `department`，则records包含以下字段：
-| 字段 | 说明 |
-| -------- | ---------------------- |
-| `id` | 部门 ID |
-| `name` | 部门名称 |
-| `parentId` | 父级部门 ID |
+`dataType` が `department` の場合、`records` には次のフィールドが含まれます：
 
-### 数据源接口实现示例
+| フィールド   | 説明                  |
+| ------------ | --------------------- |
+| `id`         | 部門ID                |
+| `name`       | 部門名                |
+| `parentId`   | 親部門ID              |
+
+### データソースインターフェースの実装例
 
 ```ts
 import { SyncSource, UserData } from '@nocobase/plugin-user-data-sync';
@@ -95,9 +96,9 @@ class CustomSyncSource extends SyncSource {
 }
 ```
 
-### 数据源类型注册
+### データソースタイプの登録
 
-扩展的数据源需要向数据管理模块注册。
+拡張したデータソースは、データ管理モジュールに登録する必要があります。
 
 ```ts
 import UserDataSyncPlugin from '@nocobase/plugin-user-data-sync';
@@ -108,7 +109,7 @@ class CustomSourcePlugin extends Plugin {
       UserDataSyncPlugin,
     ) as UserDataSyncPlugin;
     if (syncPlugin) {
-      syncPlugin.sourceManager.reigsterType('custom-source-type', {
+      syncPlugin.sourceManager.registerType('custom-source-type', {
         syncSource: CustomSyncSource,
         title: 'Custom Source',
       });
@@ -117,9 +118,11 @@ class CustomSourcePlugin extends Plugin {
 }
 ```
 
-## 客户端
+---
 
-客户端用户界面通过用户数据同步插件客户端提供的接口 `registerType` 进行注册：
+## クライアントサイド
+
+クライアントユーザーインターフェースは、ユーザーデータ同期プラグインのクライアント提供インターフェースである `registerType` メソッドを使ってデータソースタイプを登録します：
 
 ```ts
 import SyncPlugin from '@nocobase/plugin-user-data-sync/client';
@@ -129,15 +132,15 @@ class CustomSourcePlugin extends Plugin {
     const sync = this.app.pm.get(SyncPlugin);
     sync.registerType(authType, {
       components: {
-        AdminSettingsForm, // 后台管理表单
+        AdminSettingsForm, // 管理者向けの設定フォーム
       },
     });
   }
 }
 ```
 
-### 后台管理表单
+### 管理者向けフォーム
 
-![](https://static-docs.nocobase.com/202412041429835.png)
+![管理者向けフォーム](https://static-docs.nocobase.com/202412041429835.png)
 
-上方为通用的数据源配置，下方为可注册的自定义配置表单部分。
+上部は一般的なデータソースの設定を提供し、下部はカスタム設定フォームを登録できる部分です。

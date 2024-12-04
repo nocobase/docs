@@ -1,14 +1,14 @@
-# 扩展同步目标资源
+# Extending Sync Target Resources
 
-## 概述
+## Overview
 
-NocoBase 默认支持将用户数据同步至**用户**和**部门**表，也支持按照需要扩展数据同步的目标资源，实现将数据写入其他表或其他自定义处理。
+NocoBase natively supports syncing user data to the **User** and **Department** tables. It also allows for extending the target resources for data synchronization to write data to other tables or perform custom processing as needed.
 
-:::warning{title=实验性}
-完整文档待补充
+:::warning{title=Experimental}
+Full documentation is pending.
 :::
 
-## 目标资源处理接口
+## Target Resource Handler Interface
 
 ```ts
 export abstract class UserDataResource {
@@ -42,7 +42,7 @@ export abstract class UserDataResource {
 }
 ```
 
-## 注册目标资源
+## Registering Target Resources
 
 `registerResource(resource: UserDataResource, options?: ToposortOptions)`
 
@@ -54,7 +54,7 @@ class CustomUserResourcePluginServer extends Plugin {
   async load() {
     const userDataSyncPlugin = this.app.pm.get(PluginUserDataSyncServer);
     if (userDataSyncPlugin && userDataSyncPlugin.enabled) {
-      userDataSyncPlugin.resourceManager.registerResource(new CustomDataSyncResource(this.db, this.app.logger)
+      userDataSyncPlugin.resourceManager.registerResource(new CustomDataSyncResource(this.db, this.app.logger));
     }
   }
 }
