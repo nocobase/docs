@@ -74,6 +74,13 @@ export default [
                 // subTitle: '@nocobase/plugin-data-source-external-mysql',
                 link: '/handbook/data-source-external-mssql',
               },
+              {
+                title: 'External Oracle',
+                'title.zh-CN': '外部 Oracle',
+                'title.ja-JP': '外部 Oracle',
+                // subTitle: '@nocobase/plugin-data-source-external-mysql',
+                link: '/handbook/data-source-external-oracle',
+              },
             ],
           },
           {
