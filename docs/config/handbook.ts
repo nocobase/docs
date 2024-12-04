@@ -1367,28 +1367,39 @@ export default [
             ],
           },
           {
-            title: 'Synchronize',
+            title: 'Synchronization',
             'title.zh-CN': '同步',
             children: [
               {
-                title: 'Overview',
-                'title.zh-CN': '概述',
+                title: 'Synchronization management',
+                'title.zh-CN': '同步管理',
                 link: '/handbook/user-data-sync',
               },
               {
-                title: 'User manual',
-                'title.zh-CN': '使用手册',
-                link: '/handbook/user-data-sync/manual',
+                title: 'Data sources',
+                'title.zh-CN': '数据源',
+                children: [
+                  {
+                    title: 'HTTP API',
+                    link: '/handbook/user-data-sync/sources/api',
+                  },
+                  {
+                    title: 'WeCom',
+                    'title.zh-CN': '企业微信',
+                    link: '/handbook/wecom/user-data-sync',
+                  },
+                ],
               },
               {
                 title: 'Development',
                 'title.zh-CN': '开发指南',
                 children: [
-                  '/handbook/user-data-sync/dev/guide',
+                  '/handbook/user-data-sync/dev/source',
+                  '/handbook/user-data-sync/dev/resource',
                 ],
               },
             ],
-          }
+          },
         ],
       },
       {
@@ -1506,7 +1517,7 @@ export default [
             title: 'Authentication - WeCom',
             'title.zh-CN': '用户认证 - 企业微信',
             'title.ja-JP': 'ユーザー認証 - WeCom',
-            link: '/handbook/auth-wecom',
+            link: '/handbook/wecom/auth',
           },
           {
             title: 'Verification',
@@ -1561,6 +1572,11 @@ export default [
             'title.zh-CN': '通知：电子邮件',
             'title.ja-JP': '通知：メール',
             link: '/handbook/notification-email',
+          },
+          {
+            title: 'Notification: WeCom',
+            'title.zh-CN': '通知：企业微信',
+            link: '/handbook/wecom/notification',
           },
         ],
       },
