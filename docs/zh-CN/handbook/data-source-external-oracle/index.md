@@ -8,7 +8,11 @@
 
 ## 安装
 
-### 前提条件：安装 Oracle 客户端
+### 安装 Oracle 客户端
+
+Oracle 服务端版本小于 12.1，需要安装 Oracle 客户端
+
+![20241204164359](https://static-docs.nocobase.com/20241204164359.png)
 
 Linux 的示例：
 
@@ -21,7 +25,9 @@ echo /opt/instantclient_19_25 > /etc/ld.so.conf.d/oracle-instantclient.conf
 ldconfig
 ```
 
-后续插件的安装与激活参考 [商业插件的安装与升级](/welcome/getting-started/plugin)
+### 安装插件
+
+参考 [商业插件的安装与升级](/welcome/getting-started/plugin)
 
 ## 使用说明
 
