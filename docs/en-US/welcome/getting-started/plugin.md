@@ -1,58 +1,109 @@
 # Installation and Upgrade of Plugins
 
-:::warning
-**Version 1.4 and above**: By setting the environment variables [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) and [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password), you can automatically download commercial plugins during application installation or upgrade.
-:::
+## Installation and Upgrade of Commercial Plugins (v1.4 and Above)
+
+### Configure Environment Variables
+
+Set the environment variables [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) and [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password) to automatically download commercial plugins during application installation or upgrade.
+
+```bash
+NOCOBASE_PKG_USERNAME=your-username
+NOCOBASE_PKG_PASSWORD=your-password
+```
+
+### Execute Application Installation or Upgrade Commands
+
+Once the application is installed or upgraded, all authorized commercial plugins will appear in the plugin manager. Plugins will be automatically downloaded and updated.
+
+```bash
+# Install the application
+yarn nocobase install
+
+# Reinstall the application (this will clear the database)
+yarn nocobase install -f
+
+# Upgrade the application
+yarn nocobase upgrade
+```
+
+### Activate Plugins
+
+Select the plugins you want to activate in the plugin manager.
+
+![Plugin Activation](https://static-docs.nocobase.com/20241204000230.png)
+
+---
 
 ## Installing and Updating Plugins via Interface
 
-### 1. Get the Plugin Package
+:::warning
+Adding or updating plugins through the interface will restart the application. For batch operations, consider alternative methods.
+:::
 
-- If it's a custom-developed plugin, refer to the process of [Writing Your First Plugin](/development/your-fisrt-plugin), build and package the plugin.
+### Upload Plugin Packages via Plugin Manager
 
-### 2. Add the Plugin
+Both commercial and third-party plugins can be directly uploaded via the interface.
 
-![20241204000127](https://static-docs.nocobase.com/20241204000127.png)
+![Upload Plugins](https://static-docs.nocobase.com/20241204000127.png)
 
-### 3. Activate the Plugin
+Notes:
 
-![20241204000230](https://static-docs.nocobase.com/20241204000230.png)
+- For creating plugin packages, refer to [Writing Your First Plugin](/development/your-first-plugin) to ensure proper building and packaging.
+
+### Activate Plugins
+
+Select the plugins you want to activate in the plugin manager.
+
+![Plugin Activation](https://static-docs.nocobase.com/20241204000230.png)
+
+---
 
 ## Installing and Updating Plugins via Command Line
 
-Supports batch processing. If an application update renders a plugin incompatible and unable to start, you can also use the command line to handle it.
+:::warning
+- Supports batch operations.
+- This method is recommended if application updates cause plugin incompatibility or failure to start.
+  :::
 
-### 0. Enter the Docker container for Docker versions first
+### 0. For Docker Versions, Enter the Container
 
 ```bash
 docker-compose exec app bash
 ```
 
-### 1. Log in to the npm registry where the plugin is located
+### 1. Log in to the NPM Registry
 
-In command-line mode, it's recommended to add and update plugins via npm registry. For example, the npm registry for NocoBase commercial plugins is https://pkg.nocobase.com/
+Configure the registry based on your setup.
 
 ```bash
 npm login --registry=https://pkg.nocobase.com/
 ```
 
-### 2. Add or update the Plugin
+### 2. Add or Update Plugins
 
 ```bash
 yarn pm add @nocobase/plugin-data-source-external-mysql @nocobase/plugin-embed --registry=https://pkg.nocobase.com/
 ```
 
-### 3. Activate the Plugin
+### 3. Activate Plugins
 
 ```bash
 yarn pm enable @nocobase/plugin-data-source-external-mysql @nocobase/plugin-embed
 ```
 
-## Manually extract plugin packages
+---
 
-### Add or update plugins
+## Installing and Updating Plugins via Plugin Directory Upload
 
-To add or update a plugin, simply extract the plugin package to `./storage/plugins/`, and the plugin manager interface will automatically read it. For example:
+:::warning
+- Supports batch operations and is convenient for migration.
+- Suitable for servers in an intranet environment.
+- Recommended for updating incompatible plugins caused by application updates.
+  :::
+
+### Add or Update Plugins
+
+Store commercial and third-party plugins in the `./storage/plugins/` directory. You can download plugins in a development environment and upload them to the `./storage/plugins/` directory on the server. Alternatively, directly extract the plugin package into the directory. For example:
 
 ```bash
 mkdir -p /my-nocobase/storage/plugins/@nocobase/plugin-auth-cas && \
@@ -61,9 +112,9 @@ mkdir -p /my-nocobase/storage/plugins/@nocobase/plugin-auth-cas && \
   --strip-components=1
 ```
 
-This command ensures that the plugin is extracted to `/my-nocobase/storage/plugins/@nocobase/plugin-auth-cas` without the `package` directory, and the correct directory structure should be as follows:
+This command ensures the plugin is extracted to `/my-nocobase/storage/plugins/@nocobase/plugin-auth-cas` without the `package` directory. The correct directory structure is as follows:
 
-```bash
+```plaintext
 ./plugin-auth-cas/dist/server/migrations/20240425200816-change-locale-module.js
 ./plugin-auth-cas/dist/server/auth.js
 ./plugin-auth-cas/client.js
@@ -99,9 +150,9 @@ This command ensures that the plugin is extracted to `/my-nocobase/storage/plugi
 ./plugin-auth-cas/LICENSE.txt
 ```
 
-### Run the upgrade command
+### Run the Upgrade Command to Update Plugins
 
-If the plugin is manually updated by extraction, you need to run the `nocobase upgrade` command:
+After uploading plugins to the plugin directory, execute the `nocobase upgrade` command to complete the update.
 
 ```bash
 yarn nocobase upgrade

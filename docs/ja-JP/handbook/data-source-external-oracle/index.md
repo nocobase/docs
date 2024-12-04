@@ -1,20 +1,20 @@
-# 外部数据源 - Oracle
+# 外部データソース - Oracle
 
 <PluginInfo commercial="true" name="data-source-external-oracle"></PluginInfo>
 
-## 介绍
+## 紹介
 
-使用外部的 Oracle 数据库作为数据源。目前支持的版本 Oracle >= 11g
+このプラグインを使用すると、外部の Oracle データベースをデータソースとして利用できます。対応バージョンは Oracle >= 11g です。
 
-## 安装
+## インストール
 
-### 安装 Oracle 客户端
+### Oracle クライアントのインストール
 
-Oracle 服务端版本小于 12.1，需要安装 Oracle 客户端
+Oracle サーバーのバージョンが 12.1 未満の場合、Oracle クライアントをインストールする必要があります。
 
-![20241204164359](https://static-docs.nocobase.com/20241204164359.png)
+![Oracle クライアントのインストール](https://static-docs.nocobase.com/20241204164359.png)
 
-Linux 的示例：
+Linux の例:
 
 ```bash
 apt-get update
@@ -25,14 +25,14 @@ echo /opt/instantclient_19_25 > /etc/ld.so.conf.d/oracle-instantclient.conf
 ldconfig
 ```
 
-如果不是按照上述方式安装的客户端，需要提供客户端所在路径（更多内容参考 [node-oracledb](https://node-oracledb.readthedocs.io/en/latest/user_guide/initialization.html) 文档）
+上記以外の方法でクライアントをインストールした場合は、クライアントのパスを指定する必要があります（詳細は [node-oracledb ドキュメント](https://node-oracledb.readthedocs.io/en/latest/user_guide/initialization.html) を参照してください）。
 
-![20241204165940](https://static-docs.nocobase.com/20241204165940.png)
+![Oracle クライアントのパス設定](https://static-docs.nocobase.com/20241204165940.png)
 
-### 安装插件
+### プラグインのインストール
 
-参考 [商业插件的安装与升级](/welcome/getting-started/plugin)
+[商用プラグインのインストールとアップグレード](/welcome/getting-started/plugin) の手順をご参照ください。
 
-## 使用说明
+## 使用方法
 
-查看 [数据源 / 外部数据库](/handbook/data-source-manager/external-database) 章节
+詳細な使用方法については、[データソース / 外部データベース](/handbook/data-source-manager/external-database) セクションをご覧ください。

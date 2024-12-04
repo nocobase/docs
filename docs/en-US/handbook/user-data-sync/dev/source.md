@@ -1,14 +1,14 @@
-# 扩展同步数据源
+# Extending Synchronized Data Sources
 
-## 概述
+## Overview
 
-NocoBase 支持按需要扩展用户数据同步数据源类型。
+NocoBase allows users to extend data source types for user data synchronization as needed.
 
-## 服务端
+## Server Side
 
-### 数据源接口
+### Data Source Interface
 
-内置的用户数据同步插件提供了数据源类型的注册和管理。扩展数据源类型，需要继承插件提供的 `SyncSource` 抽象类，并对相应的标准接口进行实现。
+The built-in user data synchronization plugin provides registration and management for data source types. To extend a data source type, inherit the `SyncSource` abstract class provided by the plugin and implement the relevant standard interfaces.
 
 ```ts
 import { SyncSource, UserData } from '@nocobase/plugin-user-data-sync';
@@ -20,7 +20,7 @@ class CustomSyncSource extends SyncSource {
 }
 ```
 
-`SyncSource` 提供了options属性，用于获取数据源的自定义配置。
+The `SyncSource` class includes an `options` property to retrieve custom configurations for the data source.
 
 ```ts
 import { SyncSource, UserData } from '@nocobase/plugin-user-data-sync';
@@ -35,34 +35,35 @@ class CustomSyncSource extends SyncSource {
 }
 ```
 
-### UserData字段说明
+### Description of `UserData` Fields
 
-| 字段         | 说明                                      |
+| Field        | Description                               |
 | ------------ | ----------------------------------------- |
-| `dataType`   | 数据类型, 可选值为 `user` 和 `department` |
-| `uniqueKey`  | 唯一标识字段                              |
-| `records`    | 数据记录                                  |
-| `sourceName` | 数据源名称                                |
+| `dataType`   | Data type, options are `user` and `department` |
+| `uniqueKey`  | Unique identifier field                  |
+| `records`    | Data records                             |
+| `sourceName` | Data source name                         |
 
-若dataType为 `user`，则records包含以下字段：
+If `dataType` is `user`, the `records` field contains the following fields:
 
-| 字段          | 说明           |
-| ------------- | -------------- |
-| `id`          | 用户 ID        |
-| `nickname`    | 用户昵称       |
-| `avatar`      | 用户头像       |
-| `email`       | 邮箱           |
-| `phone`       | 手机号         |
-| `departments` | 所属部门ID数组 |
+| Field         | Description      |
+| ------------- | ---------------- |
+| `id`          | User ID          |
+| `nickname`    | User nickname    |
+| `avatar`      | User avatar      |
+| `email`       | Email            |
+| `phone`       | Phone number     |
+| `departments` | Array of department IDs |
 
-若dataType为 `department`，则records包含以下字段：
-| 字段 | 说明 |
-| -------- | ---------------------- |
-| `id` | 部门 ID |
-| `name` | 部门名称 |
-| `parentId` | 父级部门 ID |
+If `dataType` is `department`, the `records` field contains the following fields:
 
-### 数据源接口实现示例
+| Field     | Description          |
+| --------- | -------------------- |
+| `id`      | Department ID        |
+| `name`    | Department name      |
+| `parentId`| Parent department ID |
+
+### Example Implementation of the Data Source Interface
 
 ```ts
 import { SyncSource, UserData } from '@nocobase/plugin-user-data-sync';
@@ -95,9 +96,9 @@ class CustomSyncSource extends SyncSource {
 }
 ```
 
-### 数据源类型注册
+### Registering a Data Source Type
 
-扩展的数据源需要向数据管理模块注册。
+The extended data source must be registered with the data management module.
 
 ```ts
 import UserDataSyncPlugin from '@nocobase/plugin-user-data-sync';
@@ -108,7 +109,7 @@ class CustomSourcePlugin extends Plugin {
       UserDataSyncPlugin,
     ) as UserDataSyncPlugin;
     if (syncPlugin) {
-      syncPlugin.sourceManager.reigsterType('custom-source-type', {
+      syncPlugin.sourceManager.registerType('custom-source-type', {
         syncSource: CustomSyncSource,
         title: 'Custom Source',
       });
@@ -117,9 +118,11 @@ class CustomSourcePlugin extends Plugin {
 }
 ```
 
-## 客户端
+---
 
-客户端用户界面通过用户数据同步插件客户端提供的接口 `registerType` 进行注册：
+## Client Side
+
+The client user interface registers data source types using the `registerType` method provided by the user data synchronization plugin's client interface:
 
 ```ts
 import SyncPlugin from '@nocobase/plugin-user-data-sync/client';
@@ -129,15 +132,15 @@ class CustomSourcePlugin extends Plugin {
     const sync = this.app.pm.get(SyncPlugin);
     sync.registerType(authType, {
       components: {
-        AdminSettingsForm, // 后台管理表单
+        AdminSettingsForm, // Backend management form
       },
     });
   }
 }
 ```
 
-### 后台管理表单
+### Backend Management Form
 
-![](https://static-docs.nocobase.com/202412041429835.png)
+![Backend Management Form](https://static-docs.nocobase.com/202412041429835.png)
 
-上方为通用的数据源配置，下方为可注册的自定义配置表单部分。
+The top section provides general data source configuration, while the bottom section allows for registration of custom configuration forms.

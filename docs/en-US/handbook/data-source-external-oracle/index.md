@@ -1,20 +1,20 @@
-# 外部数据源 - Oracle
+# External Data Source - Oracle
 
 <PluginInfo commercial="true" name="data-source-external-oracle"></PluginInfo>
 
-## 介绍
+## Introduction
 
-使用外部的 Oracle 数据库作为数据源。目前支持的版本 Oracle >= 11g
+This plugin allows you to use an external Oracle database as a data source. It supports Oracle versions >= 11g.
 
-## 安装
+## Installation
 
-### 安装 Oracle 客户端
+### Install Oracle Client
 
-Oracle 服务端版本小于 12.1，需要安装 Oracle 客户端
+For Oracle server versions earlier than 12.1, you need to install the Oracle client.
 
-![20241204164359](https://static-docs.nocobase.com/20241204164359.png)
+![Oracle Client Installation](https://static-docs.nocobase.com/20241204164359.png)
 
-Linux 的示例：
+Example for Linux:
 
 ```bash
 apt-get update
@@ -25,14 +25,14 @@ echo /opt/instantclient_19_25 > /etc/ld.so.conf.d/oracle-instantclient.conf
 ldconfig
 ```
 
-如果不是按照上述方式安装的客户端，需要提供客户端所在路径（更多内容参考 [node-oracledb](https://node-oracledb.readthedocs.io/en/latest/user_guide/initialization.html) 文档）
+If the client is not installed as described above, you will need to specify the path to the client (for more details, refer to the [node-oracledb documentation](https://node-oracledb.readthedocs.io/en/latest/user_guide/initialization.html)).
 
-![20241204165940](https://static-docs.nocobase.com/20241204165940.png)
+![Oracle Client Path Configuration](https://static-docs.nocobase.com/20241204165940.png)
 
-### 安装插件
+### Install the Plugin
 
-参考 [商业插件的安装与升级](/welcome/getting-started/plugin)
+Follow the instructions in [Installing and Upgrading Commercial Plugins](/welcome/getting-started/plugin).
 
-## 使用说明
+## Use Cases
 
-查看 [数据源 / 外部数据库](/handbook/data-source-manager/external-database) 章节
+For detailed instructions, refer to the [Data Source / External Database](/handbook/data-source-manager/external-database) section.

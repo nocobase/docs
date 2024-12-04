@@ -1,17 +1,17 @@
-# 通过 HTTP API 同步用户数据
+# Synchronizing User Data via HTTP API
 
-## 获取 API 密钥
+## Obtain an API Key
 
-参考 [API 密钥](../api-keys), 需要确保 API 密钥设置的角色具有用户数据同步权限。
+Refer to [API Keys](../api-keys). Ensure that the role associated with the API key has the necessary permissions to sync user data.
 
-## API 说明
+## API Overview
 
-### 示例
+### Example
 
 ```bash
 curl 'https://localhost:13000/api/userData:push' \
   -H 'Authorization: Bearer <token>' \
-  --data-raw '{"dataType":"user","records":[]}' # 请求体见下文详细说明
+  --data-raw '{"dataType":"user","records":[]}' # See details of the request body below
 ```
 
 ### Endpoint
@@ -20,55 +20,56 @@ curl 'https://localhost:13000/api/userData:push' \
 POST /api/userData:push
 ```
 
-### 用户数据格式
+### User Data Format
 
 #### UserData
 
-| 参数名     | 类型                               | 说明                                                                     |
-| ---------- | ---------------------------------- | ------------------------------------------------------------------------ |
-| `dataType` | `'user' \| 'department'`           | 必填，推送的数据类型，推送用户数据填 `user`                              |
-| `matchKey` | `'username' \| 'email' \| 'phone'` | 选填，会根据提供字段和推送数据中对应的字段值去查询系统已有用户，进行匹配 |
-| `records`  | `UserRecord[]`                     | 必填，用户数据记录数组                                                   |
+| Parameter    | Type                               | Description                                                                 |
+|--------------|------------------------------------|-----------------------------------------------------------------------------|
+| `dataType`   | `'user' \| 'department'`           | Required. Type of data being pushed. Use `user` for pushing user data.      |
+| `matchKey`   | `'username' \| 'email' \| 'phone'` | Optional. Used to match existing system users based on the specified field. |
+| `records`    | `UserRecord[]`                     | Required. Array of user data records.                                       |
 
 #### UserRecord
 
-| 参数名        | 类型       | 说明                                                                                 |
-| ------------- | ---------- | ------------------------------------------------------------------------------------ |
-| `uid`         | `string`   | 必填，来源用户数据的唯一标识，用于关联来源原始数据和系统用户。对于同一个用户不可变。 |
-| `nickname`    | `string`   | 可选，用户昵称                                                                       |
-| `username`    | `string`   | 可选，用户名                                                                         |
-| `email`       | `string`   | 可选，用户邮箱                                                                       |
-| `phone`       | `string`   | 可选，手机号                                                                         |
-| `departments` | `string[]` | 可选，用户所属部门 uid 数组                                                          |
-| `isDeleted`   | `boolean`  | 可选，记录是否删除                                                                   |
-| `<field>`     | `any`      | 可选，其他用户表中的自建字段数据                                                     |
+| Parameter      | Type       | Description                                                                 |
+|----------------|------------|-----------------------------------------------------------------------------|
+| `uid`          | `string`   | Required. Unique identifier for the source user data. Immutable for a user. |
+| `nickname`     | `string`   | Optional. User's nickname.                                                  |
+| `username`     | `string`   | Optional. Username.                                                        |
+| `email`        | `string`   | Optional. User's email address.                                            |
+| `phone`        | `string`   | Optional. User's phone number.                                             |
+| `departments`  | `string[]` | Optional. Array of department UIDs the user belongs to.                    |
+| `isDeleted`    | `boolean`  | Optional. Indicates whether the record is deleted.                         |
+| `<field>`      | `any`      | Optional. Custom fields in the user table.                                 |
 
-### 部门数据格式
+### Department Data Format
 
 :::info
-推送部门数据的前提是安装并开启[部门](../../departments)插件。
+Pushing department data requires the [Departments](../../departments) plugin to be installed and enabled.
 :::
 
 #### DepartmentData
 
-| 参数名     | 类型                     | 说明                                              |
-| ---------- | ------------------------ | ------------------------------------------------- |
-| `dataType` | `'user' \| 'department'` | 必填，推送的数据类型，推送部门数据填 `department` |
-| `records`  | `DepartmentRecord[]`     | 必填，部门数据记录数组                            |
+| Parameter    | Type                     | Description                                                             |
+|--------------|--------------------------|-------------------------------------------------------------------------|
+| `dataType`   | `'user' \| 'department'` | Required. Type of data being pushed. Use `department` for department data. |
+| `records`    | `DepartmentRecord[]`     | Required. Array of department data records.                             |
 
 #### DepartmentRecord
 
-| 参数名      | 类型      | 说明                                                                                 |
-| ----------- | --------- | ------------------------------------------------------------------------------------ |
-| `uid`       | `string`  | 必填，来源部门数据的唯一标识，用于关联来源原始数据和系统部门。对于同一个部门不可变。 |
-| `title`     | `string`  | 必填，部门标题                                                                       |
-| `parentUid` | `string`  | 可选，上级部门 uid                                                                   |
-| `isDeleted` | `boolean` | 可选，记录是否删除                                                                   |
-| `<field>`   | `any`     | 可选，其他部门表中的自建字段数据                                                     |
+| Parameter      | Type      | Description                                                                 |
+|----------------|-----------|-----------------------------------------------------------------------------|
+| `uid`          | `string`  | Required. Unique identifier for the source department data. Immutable.      |
+| `title`        | `string`  | Required. Department title.                                                 |
+| `parentUid`    | `string`  | Optional. UID of the parent department.                                     |
+| `isDeleted`    | `boolean` | Optional. Indicates whether the record is deleted.                         |
+| `<field>`      | `any`     | Optional. Custom fields in the department table.                           |
 
 :::info
 
-1. 数据多次推送幂等。
-2. 如果推送部门时，父部门还未创建，则无法关联上，可再次推送数据。
-3. 如果推送用户时，部门还未创建，则无法关联上所属部门，可在推送部门数据后，再次推送用户数据。
-   :::
+1. Data pushing is idempotent, ensuring consistent results with multiple pushes.
+2. If a parent department is not yet created when pushing department data, it cannot be associated. Re-push the data after creating the parent department.
+3. Similarly, if a department is not yet created when pushing user data, it cannot associate users with their departments. Push the department data first, then re-push the user data.
+
+:::
