@@ -1,32 +1,32 @@
-# 数据源 - 人大金仓（KingbaseES）
+### データソース - 金仓（KingbaseES）
 
 <PluginInfo licenseBundled="true" name="data-source-kingbase"></PluginInfo>
 
-## 介绍
+## 紹介
 
-使用 人大金仓（KingbaseES）数据库作为数据源，可以作为主数据库，也可以作为外部数据库使用。
+金仓（KingbaseES）データベースをデータソースとして使用することができます。これにより、主データベースとして、または外部データベースとしての利用が可能です。
 
 :::warning
-目前只支持 pg 模式运行的人大金仓（KingbaseES）数据库。
+現在、pgモードで動作する金仓（KingbaseES）データベースのみサポートされています。
 :::
 
-## 安装
+## インストール
 
-### 作为主数据库使用
+### 主データベースとして使用する場合
 
-安装流程参考 [安装概述](/welcome/getting-started/installation)，区别主要在于环境变量。
+インストールの手順は [インストール概要](/welcome/getting-started/installation) を参照してください。主な違いは環境変数の設定です。
 
-#### 环境变量
+#### 環境変数
 
-修改 .env 文件添加或修改以下相关环境变量配置
+`.env` ファイルを編集し、以下の関連する環境変数を追加または変更します。
 
 ```bash
-# 用于获取商业插件
+# 商用プラグイン取得用
 NOCOBASE_PKG_URL=https://pkg.nocobase.com/
-NOCOBASE_PKG_USERNAME=your-username   # service platform username
-NOCOBASE_PKG_PASSWORD=your-password   # service platform password
+NOCOBASE_PKG_USERNAME=your-username   # サービスプラットフォームのユーザー名
+NOCOBASE_PKG_PASSWORD=your-password   # サービスプラットフォームのパスワード
 
-# 根据实际情况调整 DB 相关参数
+# 実際の環境に合わせてDB関連パラメータを調整
 DB_DIALECT=kingbase
 DB_HOST=localhost
 DB_PORT=54321
@@ -35,7 +35,7 @@ DB_USER=nocobase
 DB_PASSWORD=nocobase
 ```
 
-#### Docker 版本
+#### Docker版の設定
 
 ```yml
 version: "3"
@@ -51,32 +51,31 @@ networks:
     depends_on:
       - postgres
     environment:
-      # 用于获取商业插件
+      # 商用プラグイン取得用
       - NOCOBASE_PKG_URL=https://pkg.nocobase.com/
-      - NOCOBASE_PKG_USERNAME=your-username   # service platform username
-      - NOCOBASE_PKG_PASSWORD=your-password   # service platform password
-      # 应用的密钥，用于生成用户 token 等
-      # 如果 APP_KEY 修改了，旧的 token 也会随之失效
-      # 可以是任意随机字符串，并确保不对外泄露
+      - NOCOBASE_PKG_USERNAME=your-username   # サービスプラットフォームのユーザー名
+      - NOCOBASE_PKG_PASSWORD=your-password   # サービスプラットフォームのパスワード
+      # アプリケーションキー（ユーザーのトークン生成等に使用）
+      # APP_KEYを変更すると、旧トークンは無効になります。
       - APP_KEY=your-secret-key
-      # 数据库类型
+      # データベースの種類
       - DB_DIALECT=kingbase
-      # 数据库主机，可以替换为已有的数据库服务器 IP
+      # データベースホスト（既存のデータベースサーバーのIPに置き換え可能）
       - DB_HOST=kingbase
-      # 数据库名
+      # データベース名
       - DB_DATABASE=kingbase
-      # 数据库用户
+      # データベースユーザー
       - DB_USER=nocobase
-      # 数据库密码
+      # データベースパスワード
       - DB_PASSWORD=nocobase
-      # 时区
+      # タイムゾーン
       - TZ=Asia/Shanghai
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
       - "13000:80"
 
-  # 仅用于测试的 kingbase 服务
+  # テスト用のkingbaseサービス
   kingbase:
     image: registry.cn-shanghai.aliyuncs.com/nocobase/kingbase:v009r001c001b0030_single_x86
     platform: linux/amd64
@@ -87,15 +86,15 @@ networks:
     volumes:
       - ./storage/db/kingbase:/home/kingbase/userdata
     environment:
-      ENABLE_CI: no # 必须用是 no
+      ENABLE_CI: no # 必ずnoに設定
       DB_USER: nocobase
       DB_PASSWORD: nocobase
-      DB_MODE: pg  # 仅限于 pg
+      DB_MODE: pg  # pgモードのみ対応
       NEED_START: yes
     command: ["/usr/sbin/init"]
 ```
 
-#### 使用 create-nocobase-app 安装
+#### `create-nocobase-app` を使用したインストール
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d kingbase \
@@ -107,30 +106,30 @@ yarn create nocobase-app my-nocobase-app -d kingbase \
    -e TZ=Asia/Shanghai
 ```
 
-### 作为外部数据库使用
+### 外部データベースとして使用する場合
 
-修改 .env 文件，添加获取商业插件相关的环境变量
+`.env` ファイルを編集し、商用プラグイン取得用の環境変数を追加します。
 
 ```bash
-# 用于获取商业插件
+# 商用プラグイン取得用
 NOCOBASE_PKG_URL=https://pkg.nocobase.com/
-NOCOBASE_PKG_USERNAME=your-username   # service platform username
-NOCOBASE_PKG_PASSWORD=your-password   # service platform password
+NOCOBASE_PKG_USERNAME=your-username   # サービスプラットフォームのユーザー名
+NOCOBASE_PKG_PASSWORD=your-password   # サービスプラットフォームのパスワード
 ```
 
-执行安装或升级命令
+インストールまたはアップグレードコマンドを実行します。
 
 ```bash
 yarn nocobase install
-# or
+# または
 yarn nocobase upgrade
 ```
 
-激活插件
+プラグインを有効化します。
 
 ![20241024121815](https://static-docs.nocobase.com/20241024121815.png)
 
-## 使用手册
+## 使用マニュアル
 
-- 主数据库：查阅 [使用手册](/handbook)
-- 外部数据库：查阅 [数据源 / 外部数据库](/handbook/data-source-manager/external-database) 
+- 主データベースの場合：[使用マニュアル](/handbook) を参照
+- 外部データベースの場合：[データソース / 外部データベース](/handbook/data-source-manager/external-database) を参照

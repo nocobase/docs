@@ -1,16 +1,16 @@
-# 词云图
+# Word Cloud Chart
 
-## 数据配置
+## Data Configuration
 
-### 1个度量，1个维度
+### 1 Measure, 1 Dimension
 
-![](https://static-docs.nocobase.com/202410091936018.png)
+![1 Measure, 1 Dimension](https://static-docs.nocobase.com/202410091936018.png)
 
-## 配置项
+## Configuration Options
 
-| 配置项       | 说明                                   |
-| ------------ | -------------------------------------- |
-| 尺寸         | 设置图表的大小，固定宽高比或者固定高度 |
-| 浅色模式主题 | 需要在系统为浅色模式时选择才能预览     |
-| 深色模式主题 | 需要在系统为深色模式时选择才能预览     |
-| 形状         | 控制图形形状                           |
+| Option             | Description                                      |
+| ------------------ | ------------------------------------------------ |
+| Size               | Sets the size of the chart, with either a fixed aspect ratio or fixed height |
+| Light mode theme   | Select this option to preview when the system is in light mode |
+| Dark mode theme    | Select this option to preview when the system is in dark mode |
+| Shape              | Controls the shape of the chart                 |

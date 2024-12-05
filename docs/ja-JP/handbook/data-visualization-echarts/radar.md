@@ -1,32 +1,32 @@
-# 雷达图
+# Radar Chart
 
-## 数据配置
+## Data Configuration
 
-### 1个或多个度量，1个维度
+### 1 or More Measures, 1 Dimension
 
-#### 使用维度作为变量
+#### Using Dimensions as Variables
 
-维度字段的每个值作为一个变量，每个度量形成一个雷达面。
+Each value of the dimension field acts as a variable, with each measure forming one radar area.
 
 ![](https://static-docs.nocobase.com/202410091924155.png)
 
-#### 使用度量作为变量
+#### Using Measures as Variables
 
-每个度量作为一个变量，维度字段的每个值形成一个雷达面。
+Each measure acts as a variable, with each value of the dimension field forming one radar area.
 
 ![](https://static-docs.nocobase.com/202410091927959.png)
 
-## 配置项
+## Configuration Options
 
-| 配置项                     | 说明                                                                        |
-| -------------------------- | --------------------------------------------------------------------------- |
-| 尺寸                       | 设置图表的大小，固定宽高比或者固定高度                                      |
-| 浅色模式主题               | 需要在系统为浅色模式时选择才能预览                                          |
-| 深色模式主题               | 需要在系统为深色模式时选择才能预览                                          |
-| 显示图例                   | 控制是否显示图例                                                            |
-| 图例方向                   | 控制图例显示方向，水平或垂直                                                |
-| 图例位置（左，下，右，上） | 控制图例相对位置                                                            |
-| 形状                       | 多边形或圆形<br />![](https://static-docs.nocobase.com/202410091929018.png) |
-| 范围                       | 控制变量值的最小值和最大值                                                  |
-| 半径                       | 调整图形的半径                                                              |
-| 中心坐标                   | 控制图形的位置，可以是固定数值，也可以是百分比                              |
+| Option                      | Description                                                                 |
+| ---------------------------- | --------------------------------------------------------------------------- |
+| Size                         | Set the size of the chart, either by fixing the aspect ratio or a fixed height |
+| Light mode theme             | Preview requires selection when the system is in light mode                  |
+| Dark mode theme              | Preview requires selection when the system is in dark mode                   |
+| Show legend                  | Controls whether the legend is displayed                                     |
+| Legend orient                | Controls the direction of the legend, either horizontal or vertical          |
+| Legend position (left, bottom, right, top) | Controls the relative position of the legend                                  |
+| Shape                        | Polygon or circle<br />![](https://static-docs.nocobase.com/202410091929018.png) |
+| Range                        | Controls the minimum and maximum values of the variables                     |
+| Radius                       | Adjusts the radius of the chart                                              |
+| Center coordinate            | Controls the position of the chart, can be fixed values or percentages        |

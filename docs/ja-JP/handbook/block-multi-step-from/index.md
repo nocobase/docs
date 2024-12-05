@@ -1,67 +1,65 @@
-# 分步表单
+# ステップ式フォーム
 
 <PluginInfo commercial="true" name="block-multi-step-from"></PluginInfo>
 
-## 介绍
-分步表单是用于构建数据输入和编辑界面的区块，在表单区块的能力之上支持分步配置。
+## はじめに
+ステップ式フォームは、データ入力および編集のインターフェースを構築するためのブロックであり、フォームブロックの機能を基にステップ構成をサポートします。
 
-## 添加区块
+## ブロックの追加
 
 <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/202410281422209.mp4" type="video/mp4">
 </video>
 
-## 区块配置项
+## ブロックの設定項目
 
 ![](https://static-docs.nocobase.com/202410101717319.png)
 
+### リンクルール
 
-### 联动规则
-
-通过联动规则控制表单字段行为。
+リンクルールを通じて、フォームフィールドの動作を制御します。
 
 ![](https://static-docs.nocobase.com/202410101717884.png)
 
-更多内容参考 [联动规则](/handbook/ui/blocks/block-settings/linkage-rule)
+詳細は[リンクルール](/handbook/ui/blocks/block-settings/linkage-rule)をご参照ください。
 
+### ブロックの高さを設定する
 
-### 设置区块高度
-
-示例：设置区块高度为「指定高度」模式。
+例: ブロックの高さを「指定高さ」モードに設定します。
 
 <video width="100%" height="440" controls>
   <source src="https://static-docs.nocobase.com/202410101623290.mp4" type="video/mp4">
 </video>
 
-更多内容参考 [区块高度](/handbook/ui/blocks/block-settings/block-height)
+詳細は[ブロックの高さ](/handbook/ui/blocks/block-settings/block-height)をご参照ください。
 
-## 分步配置
+## ステップ構成
 
-### 添加新的步骤
+### 新しいステップを追加
 
 ![](https://static-docs.nocobase.com/202410101718482.png)
 
-### 编辑步骤名称
+### ステップ名を編集
 
 ![](https://static-docs.nocobase.com/202410101718755.png)
 
 ![](https://static-docs.nocobase.com/202410101718413.png)
 
-### 调整步骤顺序
+### ステップ順序を調整
 
 <video width="100%" height="440" controls>
   <source src="https://static-docs.nocobase.com/202410101633487.mp4" type="video/mp4">
 </video>
 
-## 配置字段
+## フィールドの設定
 
-字段配置项可参考 [表单配置字段](/handbook/ui/blocks/data-blocks/form#配置字段)
+フィールド設定項目については、[フォームフィールドの設定](/handbook/ui/blocks/data-blocks/form#配置字段)をご参照ください。
 
-## 配置操作
+## 操作の設定
 
 ![](https://static-docs.nocobase.com/202410101719893.png)
 
-- 上一步：返回上一个表单
-- 下一步：切换到下一个表单
-- [提交](/handbook/ui/actions/types/submit)
-- [自定义请求](/handbook/action-custom-request)
+- 前のステップ：前のフォームに戻る
+- 次のステップ：次のフォームに切り替える
+- [送信](/handbook/ui/actions/types/submit)
+- [カスタムリクエスト](/handbook/action-custom-request)

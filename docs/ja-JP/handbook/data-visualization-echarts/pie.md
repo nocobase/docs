@@ -1,25 +1,25 @@
-# 饼图
+# Pie Chart
 
-## 数据配置
+## Data Configuration
 
-### 1个度量，1个维度
+### 1 Metric, 1 Dimension
 
-![](https://static-docs.nocobase.com/202410091138527.png)
+![1 Metric, 1 Dimension](https://static-docs.nocobase.com/202410091138527.png)
 
-## 配置项
+## Configuration Options
 
-| 配置项                     | 说明                                                                                                    |
-| -------------------------- | ------------------------------------------------------------------------------------------------------- |
-| 尺寸                       | 设置图表的大小，固定宽高比或者固定高度                                                                  |
-| 浅色模式主题               | 需要在系统为浅色模式时选择才能预览                                                                      |
-| 深色模式主题               | 需要在系统为深色模式时选择才能预览                                                                      |
-| 显示图例                   | 控制是否显示图例                                                                                        |
-| 图例方向                   | 控制图例显示方向，水平或垂直                                                                            |
-| 图例位置（左，下，右，上） | 控制图例相对位置                                                                                        |
-| 标签类型                   | 控制标签是否显示以及显示类型                                                                            |
-| 是否显示标签线             | 控制是否显示标签线，标签在外部时才有效                                                                  |
-| 标签位置                   | 控制标签显示位置，内部、外部或中间。当显示位置在中间时，只有鼠标经过标签对应的图形时才会显示            |
-| 外半径                     | 调整图形的外半径                                                                                        |
-| 内半径                     | 调整图形的内半径。可以将图形调整成环形图<br />![](https://static-docs.nocobase.com/202410091144473.png) |
-| 中心坐标                   | 控制图形的位置，可以是固定数值，也可以是百分比                                                          |
-| 颜色                       | 精细控制每个分类的颜色                                                                                  |
+| Option                       | Description                                                                                              |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Size                         | Sets the chart's size, with a fixed aspect ratio or fixed height                                          |
+| Light mode theme             | Must be selected to preview when the system is in light mode                                              |
+| Dark mode theme              | Must be selected to preview when the system is in dark mode                                               |
+| Show legend                  | Controls whether the legend is displayed                                                                 |
+| Legend orient                | Controls the orientation of the legend, either horizontal or vertical                                     |
+| Legend position (left, bottom, right, top) | Controls the relative position of the legend                                                 |
+| Label type                   | Controls whether labels are displayed and their type                                                      |
+| Show label line              | Controls whether label lines are displayed, effective only when the labels are outside the pie             |
+| Label position               | Controls the position of the labels: inside, outside, or middle. When in the middle, the label only appears when hovering over the corresponding part of the chart |
+| Outter radius                | Adjusts the outer radius of the chart                                                                     |
+| Inner radius                 | Adjusts the inner radius of the chart. Can be used to create a donut chart<br />![](https://static-docs.nocobase.com/202410091144473.png) |
+| Center coordinates           | Controls the position of the chart, which can be set with fixed values or percentages                     |
+| Colors                       | Fine-tunes the color for each category                                                                    |
