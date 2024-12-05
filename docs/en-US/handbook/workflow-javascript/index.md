@@ -2,99 +2,99 @@
 
 <PluginInfo name="workflow-script" link="/handbook/workflow-script" commercial="true"></PluginInfo>
 
-脚本节点允许用户在工作流中执行一段自定义的 Node.js 脚本。脚本中可以使用流程上游的变量作为参数，并且可以将脚本的返回值提供给下游节点使用。
+The Script node allows users to execute custom Node.js scripts within a workflow. These scripts can utilize upstream workflow variables as parameters and return values that subsequent nodes can use.
 
-脚本支持 Node.js 的大部分特性，但与原生的执行环境仍有部分差异，详见 [特性列表](#特性列表)。
+The script supports most Node.js features but has certain differences from the native execution environment. See the [Feature List](#feature-list) for details.
 
-## 使用手册
+## User Manual
 
-### 创建节点
+### Creating a Node
 
-在工作流配置界面中，点击流程中的加号（“+”）按钮，添加“脚本”节点：
+In the workflow configuration interface, click the plus (“+”) button in the workflow to add a “Script” node:
 
 ![20241007122632](https://static-docs.nocobase.com/20241007122632.png)
 
-### 节点配置
+### Node Configuration
 
 ![20241007122825](https://static-docs.nocobase.com/20241007122825.png)
 
-#### 参数
+#### Parameters
 
-用于向脚本中传入流程上下文的变量或静态值，以供脚本中的代码逻辑使用。其中 `name` 为参数名，传入脚本后即作为变量名。`value` 为参数值，可以选择变量或输入常量。
+Use parameters to pass variables or static values from the workflow context into the script, making them accessible in the script logic. `name` represents the parameter name, which will serve as the variable name in the script. `value` represents the parameter value, which can be a workflow variable or a constant.
 
-#### 脚本内容
+#### Script Content
 
-脚本内容可以看做一个函数，可以编写任意符合 Node.js 环境中支持的 JavaScript 代码，且可以使用 `return` 语句返回一个值作为节点的运行结果，以供后续节点作为变量使用。
+The script content functions as a single function where you can write any JavaScript code supported by the Node.js environment. Use the `return` statement to provide a value as the node's output, making it available as a variable for downstream nodes.
 
-编写代码后可以通过编辑框下方的测试按钮，打开测试执行的对话框，用静态值填入参数进行模拟执行。执行后可以在对话框中看到返回值和输出（日志）的内容。
+After writing the script, use the test button below the editor to open a test execution dialog. Populate parameters with static values for simulation. The dialog displays the return value and output (logs) after execution.
 
 ![20241007153631](https://static-docs.nocobase.com/20241007153631.png)
 
-#### 超时设置
+#### Timeout Setting
 
-单位以毫秒计算，当设置为 `0` 时表示不设置超时。
+Set the timeout in milliseconds. A value of `0` means no timeout.
 
-#### 脚本出错后继续流程
+#### Continue Workflow on Script Error
 
-勾选后，脚本出错或者超时出错时仍然会执行后续的节点。
+If enabled, the workflow will continue even if the script encounters an error or timeout.
 
-:::info{title="提示"}
-脚本出错后将没有返回值，节点的结果会以错误信息填充。如后续节点中使用了脚本节点的结果变量，需要谨慎处理。
+:::info{title="Note"}
+When a script fails, it will not return a value, and the node's output will contain the error message. If subsequent nodes use the result variable from this script node, handle it carefully.
 :::
 
-## 特性列表
+## Feature List
 
-### Node.js 版本
+### Node.js Version
 
-与主应用运行的 Node.js 版本一致。
+The Node.js version matches the version used by the main application.
 
-### 模块支持
+### Module Support
 
-在脚本中可以有限制的使用模块，与 CommonJS 一致，代码中使用 `require()` 指令引入模块。
+The script allows restricted use of modules, adhering to the CommonJS standard. Use the `require()` directive to import modules in your code.
 
-支持 Node.js 原生模块，和 `node_modules` 中已安装的模块（含 NocoBase 已使用的依赖包）。要提供给脚本节点使用的模块需在应用环境变量 `WORKFLOW_SCRIPT_MODULES` 中声明，多个包名以半角逗号分隔，例如：
+It supports Node.js native modules and modules installed in `node_modules` (including dependencies used by NocoBase). To make modules available for script nodes, declare them in the application environment variable `WORKFLOW_SCRIPT_MODULES`. Separate multiple module names with commas, e.g.:
 
 ```ini
 WORKFLOW_SCRIPT_MODULES=crypto,timers,lodash,dayjs
 ```
 
-:::info{title="提示"}
-在环境变量 `WORKFLOW_SCRIPT_MODULES` 中未声明的模块，即使是 Node.js 原生的或 `node_modules` 中已安装的，也**不能**在脚本中使用。该策略可以用于在运维层管控用户可使用的模块列表，在一些场景下避免脚本权限过高。
+:::info{title="Note"}
+Modules not declared in `WORKFLOW_SCRIPT_MODULES`, including native Node.js modules or installed `node_modules`, **cannot** be used in scripts. This strategy allows administrators to control the modules accessible to users, reducing the risk of excessive script permissions.
 :::
 
-### 全局变量
+### Global Variables
 
-**不支持** `global`、`process`、`__dirname` 和 `__filename` 等全局变量。
+Global variables such as `global`, `process`, `__dirname`, and `__filename` are **not supported**.
 
 ```js
 console.log(global); // will throw error: "global is not defined"
 ```
 
-### 传入参数
+### Input Parameters
 
-节点中配置的参数会作为脚本中的全局变量，可以直接使用。传入脚本的参数仅支持基本类型，如 `boolean`、`number`、`string`、`number`、`object` 和数组。`Date` 对象传入后会被转换为基于 ISO 格式的字符串。其他复杂类型无法直接传递，如自定义类的实例等。
+Parameters configured in the node are treated as global variables in the script and can be used directly. Only basic types such as `boolean`, `number`, `string`, `object`, and arrays are supported. `Date` objects are converted to ISO-formatted strings when passed. Other complex types, such as custom class instances, cannot be directly passed.
 
-### 返回值
+### Return Values
 
-通过 `return` 语句可以返回基本类型的数据（同参数规则）回到节点作为结果。如代码中没有调用 `return` 语句，则节点执行没有返回值。
+Use the `return` statement to return data of basic types (same as parameter rules) to the node as its output. If the code does not contain a `return` statement, the node will have no output value.
 
 ```js
 return 123;
 ```
 
-### 输出（日志）
+### Output (Logs)
 
-**支持**使用 `console` 输出日志。
+**Supports** logging via `console`.
 
 ```js
 console.log('hello world!');
 ```
 
-工作流执行时，脚本节点的输出也会记录到对应工作流的日志文件中。
+The script node’s output will also be recorded in the corresponding workflow’s log files.
 
-### 异步
+### Asynchronous Operations
 
-**支持**使用 `async` 定义异步函数，以及 `await` 调用异步函数。**支持**使用 `Promise` 全局对象。
+**Supports** asynchronous functions using `async` and `await`. It also supports the global `Promise` object.
 
 ```js
 async function test() {
@@ -105,9 +105,9 @@ const value = await test();
 return value;
 ```
 
-### 计时器
+### Timers
 
-如需使用 `setTimeout`、`setInterval` 或 `setImmediate` 等方法，需要通过 Node.js 的 `timers` 包引入。
+To use methods like `setTimeout`, `setInterval`, or `setImmediate`, import them from the Node.js `timers` package.
 
 ```js
 const { setTimeout, setInterval, setImmediate, clearTimeout, clearInterval, clearImmediate } = require('timers');
