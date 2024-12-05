@@ -1,39 +1,39 @@
-# 条形图
+# Bar Chart
 
-## 数据配置
+## Data Configuration
 
-### 1或多个度量，1个维度
+### 1 or more measures, 1 dimension
 
-![](https://static-docs.nocobase.com/202410091114926.png)
+![1 or more measures, 1 dimension](https://static-docs.nocobase.com/202410091114926.png)
 
-### 1个度量，1个轴维度，一个分类维度
+### 1 measure, 1 axis dimension, one category dimension
 
-配置1个度量，2个维度。其中1个维度作为 Y 轴字段 (Y field), 另一个作为分类字段 (Series field).
+Configure 1 measure and 2 dimensions. 1 dimension is used as the Y-axis field, and the other as the series field.
 
-![](https://static-docs.nocobase.com/202410091117000.png)
+![1 measure, 1 axis dimension, one category dimension](https://static-docs.nocobase.com/202410091117000.png)
 
-## 配置项
+## Configuration Options
 
-| 配置项                     | 说明                                                                                                      |
-| -------------------------- | --------------------------------------------------------------------------------------------------------- |
-| Y 轴字段                   | Y 轴维度字段                                                                                              |
-| 分类字段                   | 分类维度字段                                                                                              |
-| 尺寸                       | 设置图表的大小，固定宽高比或者固定高度                                                                    |
-| 浅色模式主题               | 需要在系统为浅色模式时选择才能预览                                                                        |
-| 深色模式主题               | 需要在系统为深色模式时选择才能预览                                                                        |
-| 显示图例                   | 控制是否显示图例                                                                                          |
-| 图例方向                   | 控制图例显示方向，水平或垂直                                                                              |
-| 图例位置（左，下，右，上） | 控制图例相对位置                                                                                          |
-| 标签类型                   | 控制标签是否显示以及显示类型                                                                              |
-| 标签位置                   | 控制标签显示位置，顶部、内部或内部顶部                                                                    |
-| 堆叠                       | 控制图形是否堆叠，不堆叠、堆叠或百分比堆叠<br />![](https://static-docs.nocobase.com/202410091108049.png) |
-| 柱子宽度（最大值，最小值） | 控制柱子宽度，可以为固定数值，也可以是百分比，可以是负数                                                  |
-| 柱子间距                   | 柱子间距，值为柱子宽度的百分比                                                                            |
-| 柱子分类间距               | 不同类别的间距，值为柱子宽度的百分比                                                                      |
-| 颜色按                     | 柱子颜色按分类、或数据区分                                                                                |
-| 颜色                       | 精细控制每个分类的颜色                                                                                    |
-| X 轴标题                   | 控制 X 轴标题显示位置                                                                                     |
-| Y 轴标题                   | 控制 Y 轴标题显示位置                                                                                     |
-| Y 轴标签旋转               | 控制 Y 轴标签旋转角度，在标签比较密集时使用可以展示更多标签                                               |
-| 内边距                     | 调整图形内边距                                                                                            |
-| 网格线                     | 控制网格线是否显示和样式                                                                                  |
+| Option                        | Description                                                                                                 |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| yField                        | The dimension field for the Y-axis                                                                           |
+| seriesField                   | The dimension field for categorization                                                                       |
+| Size                          | Set the size of the chart, either with a fixed aspect ratio or a fixed height                                |
+| Light mode theme              | Choose this option to preview the chart when the system is in light mode                                     |
+| Dark mode theme               | Choose this option to preview the chart when the system is in dark mode                                      |
+| Show legend                   | Control whether the legend is displayed                                                                      |
+| Legend orient                 | Control the direction of the legend, either horizontal or vertical                                           |
+| Legend position (left, bottom, right, top) | Control the relative position of the legend                                                       |
+| Label type                    | Control whether the labels are displayed and the type of labels shown                                        |
+| Label position                | Control the position of the labels, such as top, inside, or inside top                                       |
+| Stack                         | Control whether the bars are stacked: not stacked, stacked, or percentage stacked<br />![](https://static-docs.nocobase.com/202410091108049.png) |
+| Bar width (min, max)          | Control the width of the bars, which can be a fixed value or percentage, and can even be negative            |
+| Bar gap                       | Spacing between bars, as a percentage of the bar width                                                       |
+| Bar category gap              | Spacing between different categories, as a percentage of the bar width                                       |
+| Color by                      | Control whether the bar colors are distinguished by category or data                                         |
+| Colors                        | Precisely control the color for each category                                                                |
+| X-Axis title                  | Control the position of the X-axis title                                                                     |
+| Y-Axis title                  | Control the position of the Y-axis title                                                                     |
+| Y-Axis label rotate           | Control the rotation angle of the Y-axis labels, useful for displaying more labels when space is tight        |
+| Padding                       | Adjust the padding inside the chart                                                                          |
+| Split line                    | Control whether the grid lines are displayed and their style                                                 |
