@@ -1,6 +1,6 @@
 # 备份管理器
 
-<PluginInfo name="backups"></PluginInfo>
+<PluginInfo licenseBundled="true" name="backups"></PluginInfo>
 
 ## 介绍
 
