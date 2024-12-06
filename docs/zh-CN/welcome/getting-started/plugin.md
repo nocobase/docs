@@ -4,12 +4,9 @@
 
 ### 配置环境变量
 
-通过设置环境变量 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) 和 [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password)，即可在安装或升级应用时自动下载商业插件。
+通过设置环境变量 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) 和 [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password)（NocoBase 服务平台的用户名和密码），即可在安装或升级应用时自动下载商业插件。
 
-```bash
-NOCOBASE_PKG_USERNAME=your-username
-NOCOBASE_PKG_PASSWORD=your-password
-```
+[如何设置环境变量？](/welcome/getting-started/env)
 
 ### 执行应用的安装或升级命令
 
