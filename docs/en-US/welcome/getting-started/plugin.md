@@ -4,27 +4,30 @@
 
 ### Configure Environment Variables
 
-Set the environment variables [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) and [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password) to automatically download commercial plugins during application installation or upgrade.
+Set the environment variables [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) and [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password)(NocoBase Service Platform Username and Password) to automatically download commercial plugins during application installation or upgrade.
 
 ```bash
 NOCOBASE_PKG_USERNAME=your-username
 NOCOBASE_PKG_PASSWORD=your-password
 ```
 
+[How to set environment variables?](/welcome/getting-started/env)
+
 ### Execute Application Installation or Upgrade Commands
 
 Once the application is installed or upgraded, all authorized commercial plugins will appear in the plugin manager. Plugins will be automatically downloaded and updated.
 
-```bash
-# Install the application
-yarn nocobase install
+#### Installation
 
-# Reinstall the application (this will clear the database)
-yarn nocobase install -f
+- [Docker (recommended)](./installation/docker-compose.md)
+- [create-nocobase-app](./installation/create-nocobase-app.md)
+- [Git source code](./installation/git-clone.md)
 
-# Upgrade the application
-yarn nocobase upgrade
-```
+#### Upgrading
+
+- [Upgrading for Docker compose](./upgrading/docker-compose.md)
+- [Upgrading for create-nocobase-app](./upgrading/create-nocobase-app.md)
+- [Upgrading for Git source code](./upgrading/git-clone.md)
 
 ### Activate Plugins
 

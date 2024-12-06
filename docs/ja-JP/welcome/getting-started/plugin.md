@@ -4,27 +4,30 @@
 
 ### 環境変数の設定
 
-環境変数 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) と [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password) を設定することで、アプリケーションのインストールやアップグレード時に商用プラグインを自動的にダウンロードできます。
+環境変数 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) と [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password)(NocoBase Service Platform Username and Password) を設定することで、アプリケーションのインストールやアップグレード時に商用プラグインを自動的にダウンロードできます。
 
 ```bash
 NOCOBASE_PKG_USERNAME=your-username
 NOCOBASE_PKG_PASSWORD=your-password
 ```
 
+[How to set environment variables?](/welcome/getting-started/env)
+
 ### アプリケーションのインストールまたはアップグレードコマンドの実行
 
 アプリケーションのインストールまたはアップグレードを実行すると、すべての認証済み商用プラグインがプラグインマネージャーに表示され、プラグインが自動的にダウンロードおよび更新されます。
 
-```bash
-# アプリケーションをインストール
-yarn nocobase install
+#### インストール
 
-# アプリケーションを再インストール（データベースがクリアされます）
-yarn nocobase install -f
+- [Dockerインストール（推奨）](./installation/docker-compose.md)
+- [create-nocobase-appインストール](./installation/create-nocobase-app.md)
+- [Gitソースコードインストール](./installation/git-clone.md)
 
-# アプリケーションをアップグレード
-yarn nocobase upgrade
-```
+#### アップグレード
+
+- [Docker Composeでのアップグレード](./upgrading/docker-compose.md)
+- [create-nocobase-appでのアップグレード](./upgrading/create-nocobase-app.md)
+- [Gitソースコードでのアップグレード](./upgrading/git-clone.md)
 
 ### プラグインの有効化
 

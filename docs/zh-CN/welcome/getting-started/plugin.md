@@ -4,27 +4,30 @@
 
 ### 配置环境变量
 
-通过设置环境变量 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) 和 [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password)，即可在安装或升级应用时自动下载商业插件。
+通过设置环境变量 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) 和 [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password)（NocoBase 服务平台的用户名和密码），即可在安装或升级应用时自动下载商业插件。
 
 ```bash
 NOCOBASE_PKG_USERNAME=your-username
 NOCOBASE_PKG_PASSWORD=your-password
 ```
 
+[如何设置环境变量？](/welcome/getting-started/env)
+
 ### 执行应用的安装或升级命令
 
 安装或升级应用之后，即可在插件管理器中看到已授权的所有商业插件，插件会自动下载并更新。
 
-```bash
-# 安装应用
-yarn nocobase install
+#### 安装应用
 
-# 重装应用（会清空数据库）
-yarn nocobase install -f
+- [Docker 安装（推荐）](./installation/docker-compose.md)
+- [create-nocobase-app 安装](./installation/create-nocobase-app.md)
+- [Git 源码安装](./installation/git-clone.md)
 
-# 升级应用
-yarn nocobase upgrade
-```
+#### 升级应用
+
+- [Docker 安装的升级](./upgrading/docker-compose.md)
+- [create-nocobase-app 安装的升级](./upgrading/create-nocobase-app.md)
+- [Git 源码安装的升级](./upgrading/git-clone.md)
 
 ### 激活插件
 

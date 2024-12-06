@@ -1,5 +1,38 @@
 # Environment Variables
 
+## 如何设置环境变量？
+
+### Git 源码或 create-nocobase-app 安装方式
+
+在项目根目录下的 `.env` 文件里设置环境变量，修改环境变量之后需要 kill 应用进程，重新启动。
+
+### Docker 安装方式
+
+修改 `docker-compose.yml` 配置，在 `enviroment` 参数里设置环境变量。示例：
+
+```yml
+services:
+  app:
+    image: nocobase/nocobase:latest
+    environment:
+      - APP_ENV=production
+```
+
+也可以使用 `env_file`, 即可在 `.env` 文件中设置环境变量。示例：
+
+```yml
+services:
+  app:
+    image: nocobase/nocobase:latest
+    env_file: .env
+```
+
+修改环境变量之后，需要重建 app 容器。
+
+```yml
+docker-compose up -d app
+```
+
 ## Global Environment Variables
 
 Saved in the `.env` file
