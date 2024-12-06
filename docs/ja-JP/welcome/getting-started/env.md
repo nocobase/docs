@@ -1,14 +1,14 @@
 # 環境変数
 
-## 如何设置环境变量？
+## 環境変数を設定する方法
 
-### Git 源码或 create-nocobase-app 安装方式
+### Git ソースコードまたは create-nocobase-app のインストール方法
 
-在项目根目录下的 `.env` 文件里设置环境变量，修改环境变量之后需要 kill 应用进程，重新启动。
+プロジェクトのルートディレクトリにある `.env` ファイルに環境変数を設定します。環境変数を変更した後、アプリケーションプロセスを終了（kill）し、再起動する必要があります。
 
-### Docker 安装方式
+### Docker のインストール方法
 
-修改 `docker-compose.yml` 配置，在 `enviroment` 参数里设置环境变量。示例：
+`docker-compose.yml` の設定を変更し、`environment` パラメータに環境変数を設定します。例：
 
 ```yml
 services:
@@ -18,7 +18,7 @@ services:
       - APP_ENV=production
 ```
 
-也可以使用 `env_file`, 即可在 `.env` 文件中设置环境变量。示例：
+また、`env_file` を使用して `.env` ファイル内で環境変数を設定することも可能です。例：
 
 ```yml
 services:
@@ -27,7 +27,7 @@ services:
     env_file: .env
 ```
 
-修改环境变量之后，需要重建 app 容器。
+環境変数を変更した後、アプリケーションコンテナを再構築する必要があります。
 
 ```yml
 docker-compose up -d app

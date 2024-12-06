@@ -4,14 +4,14 @@
 
 ### 環境変数の設定
 
-環境変数 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) と [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password)(NocoBase Service Platform Username and Password) を設定することで、アプリケーションのインストールやアップグレード時に商用プラグインを自動的にダウンロードできます。
+環境変数 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) と [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password)(NocoBase サービスプラットフォームのユーザー名とパスワード) を設定することで、アプリケーションのインストールやアップグレード時に商用プラグインを自動的にダウンロードできます。
 
 ```bash
 NOCOBASE_PKG_USERNAME=your-username
 NOCOBASE_PKG_PASSWORD=your-password
 ```
 
-[How to set environment variables?](/welcome/getting-started/env)
+[環境変数を設定する方法](/welcome/getting-started/env)
 
 ### アプリケーションのインストールまたはアップグレードコマンドの実行
 
