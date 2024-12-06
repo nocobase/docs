@@ -17,16 +17,17 @@ NOCOBASE_PKG_PASSWORD=your-password
 
 アプリケーションのインストールまたはアップグレードを実行すると、すべての認証済み商用プラグインがプラグインマネージャーに表示され、プラグインが自動的にダウンロードおよび更新されます。
 
-```bash
-# アプリケーションをインストール
-yarn nocobase install
+#### インストール
 
-# アプリケーションを再インストール（データベースがクリアされます）
-yarn nocobase install -f
+- [Dockerインストール（推奨）](./installation/docker-compose.md)
+- [create-nocobase-appインストール](./installation/create-nocobase-app.md)
+- [Gitソースコードインストール](./installation/git-clone.md)
 
-# アプリケーションをアップグレード
-yarn nocobase upgrade
-```
+#### アップグレード
+
+- [Docker Composeでのアップグレード](./upgrading/docker-compose.md)
+- [create-nocobase-appでのアップグレード](./upgrading/create-nocobase-app.md)
+- [Gitソースコードでのアップグレード](./upgrading/git-clone.md)
 
 ### プラグインの有効化
 

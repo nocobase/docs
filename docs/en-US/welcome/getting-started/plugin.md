@@ -17,15 +17,27 @@ NOCOBASE_PKG_PASSWORD=your-password
 
 Once the application is installed or upgraded, all authorized commercial plugins will appear in the plugin manager. Plugins will be automatically downloaded and updated.
 
-```bash
-# Install the application
-yarn nocobase install
+#### Installation
 
-# Reinstall the application (this will clear the database)
-yarn nocobase install -f
+- [Docker (recommended)](./installation/docker-compose.md)
+- [create-nocobase-app](./installation/create-nocobase-app.md)
+- [Git source code](./installation/git-clone.md)
 
-# Upgrade the application
-yarn nocobase upgrade
+#### Upgrading
+
+- [Upgrading for Docker compose](./upgrading/docker-compose.md)
+- [Upgrading for create-nocobase-app](./upgrading/create-nocobase-app.md)
+- [Upgrading for Git source code](./upgrading/git-clone.md)
+
+#### Docker 安装方式
+
+Docker 应用会自动安装或更新，只需要重建 app 容器即可。
+
+```yml
+# 更新镜像（如果是 1.4.0 之前的版本请先更新镜像）
+docker-compose pull app
+# 重建容器
+docker-compose up -d app
 ```
 
 ### Activate Plugins

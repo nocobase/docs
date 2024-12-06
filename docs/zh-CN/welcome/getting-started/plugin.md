@@ -17,16 +17,17 @@ NOCOBASE_PKG_PASSWORD=your-password
 
 安装或升级应用之后，即可在插件管理器中看到已授权的所有商业插件，插件会自动下载并更新。
 
-```bash
-# 安装应用
-yarn nocobase install
+#### 安装应用
 
-# 重装应用（会清空数据库）
-yarn nocobase install -f
+- [Docker 安装（推荐）](./installation/docker-compose.md)
+- [create-nocobase-app 安装](./installation/create-nocobase-app.md)
+- [Git 源码安装](./installation/git-clone.md)
 
-# 升级应用
-yarn nocobase upgrade
-```
+#### 升级应用
+
+- [Docker 安装的升级](./upgrading/docker-compose.md)
+- [create-nocobase-app 安装的升级](./upgrading/create-nocobase-app.md)
+- [Git 源码安装的升级](./upgrading/git-clone.md)
 
 ### 激活插件
 
