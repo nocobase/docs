@@ -66,7 +66,7 @@
 模版:
 
 ```
-第一个员工姓是 {d.employees[i=0].lastname}，名是 {d.employees[0].firstname}
+第一个员工姓是 {d.employees[i=0].lastname}，名是 {d.employees[0].lastname}
 ```
 
 渲染结果：
