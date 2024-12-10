@@ -1,9 +1,5 @@
 # Environment Variables
 
-已经修剪多余部分，仅保留了必要翻译内容：
-
----
-
 ## How to Set Environment Variables?
 
 ### Git Source Code or `create-nocobase-app` Installation Method
