@@ -58,14 +58,6 @@ Application environment, default is `development`, options include
 APP_ENV=production
 ```
 
-### APP_HOST
-
-Application host, default is `0.0.0.0`
-
-```bash
-APP_HOST=192.168.3.154
-```
-
 ### APP_PORT
 
 Application port, default is `13000`
