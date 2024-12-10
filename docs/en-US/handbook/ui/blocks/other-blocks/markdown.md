@@ -66,9 +66,11 @@ After configuring the 'Shipment' association field in the order table block, the
 
 ### Syntax rules
 
-When using variables that contain a one-to-many relationship, the retrieved data is usually an array. Since different templates support different syntax, it's important to handle array-type data according to the specific syntax requirements of the template being used.
+In addition to the difference in association data preloading, there are also syntax rule differences between the two templates. For example, when using variables with a to-many association, the retrieved data is usually an array. The two templates handle array-type data differently.
 
 For example, order/product (many-to-many)
+
+Use the 'current popup record' variable in the detail operation popup's Markdown block to display the names of the products associated with the current order (multiple items).
 
 #### String templates display arrays by separating the elements with commas (',')
 
@@ -78,7 +80,7 @@ For example, order/product (many-to-many)
 
 #### Handlebars templates use #each to iterate over array data
 
-![20240909155651](https://static-docs.nocobase.com/20240909155651.png)
+![20241210205357](https://static-docs.nocobase.com/20241210205357.png)
 
 The related data to be used must be configured in the data block
 
@@ -102,3 +104,8 @@ Markdown also supports the configuration of QR codes, which can be used in combi
 ```html
 <qr-code value="https://www.nocobase.com/" type="svg"></qr-code>
 ```
+
+## RoadMap
+
+- Planned or in progress
+  - Handlebars supports association data preloading.
