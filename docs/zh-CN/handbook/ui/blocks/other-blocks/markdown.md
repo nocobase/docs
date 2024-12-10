@@ -18,9 +18,13 @@ Markdown 区块无需绑定数据源使用，使用 Markdown 语法定义文本�
 
 ### 字符串模板
 
+使用 `{{xxx}}` 来进行插值
+
 ![20240817175031](https://static-docs.nocobase.com/20240817175031.png)
 
-### Handlebars
+### Handlebars 模板
+
+支持使用条件、循环等丰富的语法动态生成 HTML 内容。
 
 ![20240817175355](https://static-docs.nocobase.com/20240817175355.png)
 
@@ -30,32 +34,67 @@ Markdown 区块无需绑定数据源使用，使用 Markdown 语法定义文本�
 
 ## 使用变量
 
-Markdown 的文本里也支持使用变量
+不同的位置的 Markdown 支持的变量不同。
+
+在页面中的 Markdown 支持通用的系统变量（如当前用户、当前角色、日期等）。
 
 ![20240612205857](https://static-docs.nocobase.com/20240612205857.png)
 
-区块内联的 Markdown 也支持变量
+而在区块行操作弹窗（或子页面）中的 Markdown，则支持更多的数据上下文变量（如当前记录、当前弹窗记录等）。
 
 ![20240612210333](https://static-docs.nocobase.com/20240612210333.png)
 
-变量中使用关系对多的关系数据时，由于不同模板支持语法不同,在使用数组型数据变量时需要区分不同的写法。
-如用户/角色（一对多）
+### 变量中的关系数据
 
-使用字符串模板:
+以订单/发货单（一对一）为例:
 
-![20240909154424](https://static-docs.nocobase.com/20240909154424.png)
+使用「当前弹窗记录」变量在详情操作弹窗的 Markdown 区块中展示当前订单的发货号。
 
-字符串模板中将数组自动用","分割显示。
+#### 字符串模板会自动处理关系数据（自动加载所需的关系数据）
 
-![20240909154449](https://static-docs.nocobase.com/20240909154449.png)
+![20241210165519](https://static-docs.nocobase.com/20241210165519.png)
 
-使用 Handlebars 模板:
+效果如下:
+
+![20241210165541](https://static-docs.nocobase.com/20241210165541.png)
+
+#### Handlebars 目前不支持关系数据的预加载，用户需要在数据区块中显式配置相应的关系字段，以便在渲染时获取相关数据。
+
+![20241210165625](https://static-docs.nocobase.com/20241210165625.png)
+
+在订单表格区块中配置「发货单」关系字段后，详情操作中的 Markdown 区块（使用 Handlebars）才能获取到该关系数据并进行渲染。
+
+![20241210165655](https://static-docs.nocobase.com/20241210165655.png)
+
+### 语法规则
+
+在使用包含对多关系的变量时，获取到的数据通常是一个数组。由于不同的模板支持不同的语法，因此在处理数组类型数据时需要根据具体模板的语法要求进行区分。
+
+以订单/商品（多对多）为例
+
+#### 字符串模板将数组用","分割显示。
+
+![20241210170508](https://static-docs.nocobase.com/20241210170508.png)
+
+效果如下:
+![20241210170545](https://static-docs.nocobase.com/20241210170545.png)
+
+#### Handlebars 模板遍历数组数据需要使用 `#each`
 
 ![20240909155651](https://static-docs.nocobase.com/20240909155651.png)
 
-遍历数组 使用 `#each`:
+同时需要将用到的关系数据在数据区块中配置出来。
 
-![20240909155720](https://static-docs.nocobase.com/20240909155720.png)
+![20241210170814](https://static-docs.nocobase.com/20241210170814.png)
+
+```javascript
+
+<ul>
+  {{#each   $nPopupRecord.products }}
+    <li>{{this.product_name}}</li>
+  {{/each}}
+</ul>
+```
 
 更多变量的介绍查看 [配置界面 / 变量](/handbook/ui/variables) 章节
 

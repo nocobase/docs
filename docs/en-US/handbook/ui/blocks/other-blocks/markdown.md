@@ -18,9 +18,13 @@ Inline Markdown blocks can also be added within form blocks and details blocks.
 
 ### string template
 
+Use {{xxx}} for interpolation.
+
 ![20240817175031](https://static-docs.nocobase.com/20240817175031.png)
 
 ### Handlebars
+
+Support using rich syntax such as conditions and loops to dynamically generate HTML content.
 
 ![20240817175355](https://static-docs.nocobase.com/20240817175355.png)
 
@@ -30,33 +34,64 @@ For more information, refer to [Handlebars template](/handbook/template-handleba
 
 ## Using Variables
 
-Markdown also supports variables.
+Variables supported in Markdown vary depending on the location.
+
+Markdown on the page supports common system variables, such as the current user, current role, date variables, etc.
 
 ![20240612205857](https://static-docs.nocobase.com/20240612205857.png)
 
-Inline Markdown within blocks also supports variables.
+Markdown in block row operation popups (or subpages) supports more data context variables, such as the current record, current popup record, etc.
 
 ![20240612210333](https://static-docs.nocobase.com/20240612210333.png)
 
+### Association data in variables
 
-When using association data in variables, particularly for to-many relationships, different template engines support different syntaxes. Therefore, when working with array-type data variables, it's necessary to distinguish between the various syntaxes. 
-The following example uses the User/Role (one-to-many) variable
+For example, order/shipment (one-to-one).
 
-The use of string template:
+Use the 'current popup record' variable in the detail operation popup's Markdown block to display the shipping number of the current order.
 
-![20240909154424](https://static-docs.nocobase.com/20240909154424.png)
+#### String templates will automatically handle association data (by automatically loading the required association data)
 
-Automatically display an array in a string template with elements separated by commas.
+![20241210165519](https://static-docs.nocobase.com/20241210165519.png)
 
-![20240909154449](https://static-docs.nocobase.com/20240909154449.png)
+![20241210165541](https://static-docs.nocobase.com/20241210165541.png)
 
-The use of Handlebars：
+#### Currently, Handlebars does not support preloading association data. Users need to explicitly configure the corresponding association fields in the data block to retrieve the relevant data during rendering.
+
+![20241210165625](https://static-docs.nocobase.com/20241210165625.png)
+
+After configuring the 'Shipment' association field in the order table block, the Markdown block in the detail operation (using Handlebars) will be able to access and render the association data.
+
+![20241210165655](https://static-docs.nocobase.com/20241210165655.png)
+
+### Syntax rules
+
+When using variables that contain a one-to-many relationship, the retrieved data is usually an array. Since different templates support different syntax, it's important to handle array-type data according to the specific syntax requirements of the template being used.
+
+For example, order/product (many-to-many)
+
+#### String templates display arrays by separating the elements with commas (',')
+
+![20241210170508](https://static-docs.nocobase.com/20241210170508.png)
+
+![20241210170545](https://static-docs.nocobase.com/20241210170545.png)
+
+#### Handlebars templates use #each to iterate over array data
 
 ![20240909155651](https://static-docs.nocobase.com/20240909155651.png)
 
-Iterate over an array using `#each`:
+The related data to be used must be configured in the data block
 
-![20240909155720](https://static-docs.nocobase.com/20240909155720.png)
+![20241210170814](https://static-docs.nocobase.com/20241210170814.png)
+
+```javascript
+
+<ul>
+  {{#each   $nPopupRecord.products }}
+    <li>{{this.product_name}}</li>
+  {{/each}}
+</ul>
+```
 
 For more introductions to variables, check out the [Edit UI / Variables](/handbook/ui/variables) section.
 
