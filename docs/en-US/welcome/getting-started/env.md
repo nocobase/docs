@@ -58,20 +58,20 @@ Application environment, default is `development`, options include
 APP_ENV=production
 ```
 
-### APP_PORT
-
-Application port, default is `13000`
-
-```bash
-APP_PORT=13000
-```
-
 ### APP_KEY
 
 Secret key, for scenarios such as jwt
 
 ```bash
 APP_KEY=app-key-test
+```
+
+### APP_PORT
+
+Application port, default is `13000`
+
+```bash
+APP_PORT=13000
 ```
 
 ### API_BASE_PATH
