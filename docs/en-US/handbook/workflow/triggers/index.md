@@ -8,6 +8,7 @@ Triggers are the entry points for workflow execution. When an event that meets t
 - [Custom Action Events](./custom-action.md) (provided by plugin @nocobase/plugin-workflow-custom-action-trigger)
 - [Post-Action Events](./post-action.md) (provided by plugin @nocobase/plugin-workflow-action-trigger)
 - [Approval](./approval.md) (provided by plugin @nocobase/plugin-workflow-approval)
+- [Webhook](./webhook.md) (provided by plugin @nocobase/plugin-workflow-webhook)
 
 The timing of each event trigger type is shown in the following diagram:
 
