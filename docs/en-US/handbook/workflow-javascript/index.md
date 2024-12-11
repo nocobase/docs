@@ -94,7 +94,7 @@ The script nodeâ€™s output will also be recorded in the corresponding workflowâ€
 
 ### Asynchronous Operations
 
-**Supports** asynchronous functions using `async` and `await`. It also supports the global `Promise` object.
+**Supports** asynchronous functions using `async` and `await`. It also **supports** the global `Promise` object.
 
 ```js
 async function test() {
