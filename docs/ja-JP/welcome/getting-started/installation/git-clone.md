@@ -4,52 +4,50 @@
 
 以下のことを確認してください：
 
-- Git、Node.js 18+、Yarn 1.22.x がインストールされていること
-- 必要なデータベース（MySQL 8.0.17+、MariaDB 10.9+、PostgreSQL 10+）のいずれかが設定され、起動していること
+- Git、Node.js 20+、Yarn 1.22.x がインストールされていること
+- 必要なデータベース（MySQL 8.x、MariaDB 10.9+、PostgreSQL 10+ のいずれか）が設定され、起動されていること
 
 ## 1. NocoBase をローカルにダウンロードする
 
-### latest バージョン
+### 最新版 (`main`)
 
-現時点で最も安定したバージョンであり、このバージョンのダウンロードをお勧めします。
+安定しており、テストが十分に行われたバージョンで、バグ修正のみが行われます。このバージョンを推奨します。
 
 ```bash
 git clone https://github.com/nocobase/nocobase.git -b main --depth=1 my-nocobase
 ```
 
-### next バージョン
+### ベータ版 (`next`)
 
-内部テスト版で、いくつかの未公開の新機能が含まれています。このバージョンは完全に安定していない可能性があり、開発者やテスター向けに新機能を早期に体験したり、互換性テストを行ったりするために適しています。
+リリース予定の新機能を含む、初期テストが行われたバージョンで、既知または未知の問題が存在する可能性があります。
 
 ```bash
 git clone https://github.com/nocobase/nocobase.git -b next --depth=1 my-nocobase
 ```
 
-## 2. ディレクトリの切り替え
+### アルファ版 (`develop`)
+
+最新の機能を含む開発版で、未完成または不安定な可能性があります。
+
+```bash
+git clone https://github.com/nocobase/nocobase.git -b develop --depth=1 my-nocobase
+```
+
+## 2. ディレクトリを切り替える
 
 ```bash
 cd my-nocobase
 ```
 
-## 3. 依存関係のインストールする
-
-国内のネットワーク環境のため、国内のミラーサイトを変更することを強くお勧めします。
-
-```bash
-$ yarn config set disable-self-update-check true
-$ yarn config set registry https://registry.npmmirror.com/
-$ yarn config set sqlite3_binary_host_mirror https://npmmirror.com/mirrors/sqlite3/
-```
-
-📢 ネットワーク環境やシステム設定などの要因により、次のステップには十数分かかる場合があります。
+## 3. 依存関係をインストール
 
 ```bash
 yarn install --frozen-lockfile
 ```
 
-## 4. 環境変数の設定
+## 4. 環境変数を設定
 
-NocoBase に必要な環境変数は、ルートディレクトリの `.env` ファイルに保存されています。実際の状況に応じて環境変数を変更してください。変更方法がわからない場合は、[こちらをクリックして環境変数の説明を確認](../env.md)するか、デフォルトのままにしておいても構いません。
+NocoBase に必要な環境変数はルートディレクトリの `.env` ファイルに保存されています。実際の状況に応じて環境変数を変更してください。変更方法がわからない場合は、[こちらをクリックして環境変数の説明を確認](../env.md)するか、デフォルトのままにしておくこともできます。
 
 ```bash
 TZ=Asia/Shanghai
@@ -59,32 +57,36 @@ DB_PORT=5432
 DB_DATABASE=postgres
 DB_USER=nocobase
 DB_PASSWORD=nocobase
+NOCOBASE_PKG_USERNAME=your-username
+NOCOBASE_PKG_PASSWORD=your-password
 ```
 
 :::warning
-- `TZ` はアプリケーションのタイムゾーンを設定するために使用され、デフォルトではオペレーティングシステムのタイムゾーンが適用されます。
-- `APP_KEY` はアプリケーションの秘密鍵で、ユーザートークンの生成などに使用されます（`APP_KEY` を変更すると、元のトークンも無効になります）。任意のランダムな文字列に設定できるため、必ず自分の秘密鍵に変更し、外部に漏れないようにしてください。
-- `DB_*` はデータベース関連の設定であり、デフォルトのデータベースサービスを使用しない場合は、実際の状況に応じて適宜変更してください。
-:::
 
-## 5. NocoBase のインストール
+- **v1.4 以上のバージョン**では、環境変数 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) と [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password) を設定することで、アプリケーションのインストールやアップグレード時に商用プラグインを自動的にダウンロードできます；
+- `TZ` はアプリケーションのタイムゾーンを設定するために使用され、デフォルトはオペレーティングシステムのタイムゾーンです；
+- `APP_KEY` はアプリケーションの秘密鍵で、ユーザートークンなどを生成するために使用されます（APP_KEY を変更すると、古いトークンも無効になります）。任意のランダムな文字列に変更してください。自分の秘密鍵に変更し、外部に漏れないようにしてください；
+- `DB_*` はデータベースに関連しており、例のデフォルトのデータベースサービスでない場合は、実際の状況に応じて変更してください。
+  :::
+
+## 5. NocoBase をインストール
 
 ```bash
-yarn nocobase install --lang=zh-CN
+yarn nocobase install --lang=ja-JP
 ```
 
-## 6. NocoBase の起動
+## 6. NocoBase を起動
 
-### 開発環境
+開発環境
 
 ```bash
 yarn dev
 ```
 
-### 本番環境
+本番環境
 
 ```bash
-# コンパイル（`yarn install --frozen-lockfile` を実行済みであることを確認してください）
+# ビルド（`yarn install --frozen-lockfile` を実行したことを確認してください）
 yarn build
 # 起動
 yarn start
@@ -92,5 +94,4 @@ yarn start
 
 ## 7. NocoBase にログイン
 
-ブラウザを使用して [http://localhost:13000](http://localhost:13000) を開き、初期アカウントとパスワードは `admin@nocobase.com` および `admin123` です。
-
+ブラウザで [http://localhost:13000](http://localhost:13000) を開きます。初期アカウントとパスワードは `admin@nocobase.com` と `admin123` です。

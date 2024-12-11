@@ -7,8 +7,8 @@
 
 ## What is NocoBase
 
-NocoBase is a scalability-first, open-source no-code development platform.  
-Instead of investing years of time and millions of dollars in research and development, deploy NocoBase in a few minutes and you'll have a private, controllable, and extremely scalable no-code development platform!
+NocoBase is a extensibility-first, open-source no-code development platform.  
+Instead of investing years of time and millions of dollars in research and development, deploy NocoBase in a few minutes and you'll have a private, controllable, and extremely extensible no-code development platform!
 
 Homepage:  
 https://www.nocobase.com/

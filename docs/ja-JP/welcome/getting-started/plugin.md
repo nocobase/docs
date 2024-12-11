@@ -1,82 +1,162 @@
-# 独立プラグインのインストールとアップグレード
+# プラグインのインストールとアップグレード
 
-## インターフェースを通じてプラグインをインストールおよび更新する
+## 商用プラグインのインストールとアップグレード（v1.4以降）
 
-この方法は非常に簡単ですが、一つずつ追加、アクティブ化、更新する必要があります。
+### 環境変数の設定
 
-:::warning{title="注意"}
-インターフェースを通じたインストールとアップグレードの方法は、共有コードの多アプリケーションシーンには適していません。
-:::
+環境変数 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) と [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password)(NocoBase サービスプラットフォームのユーザー名とパスワード) を設定することで、アプリケーションのインストールやアップグレード時に商用プラグインを自動的にダウンロードできます。
 
-### 1. プラグインパッケージを取得する
+```bash
+NOCOBASE_PKG_USERNAME=your-username
+NOCOBASE_PKG_PASSWORD=your-password
+```
 
-- NocoBaseが提供する商業プラグインの場合は、商業ユーザーサービスプラットフォームからダウンロードしてください。
-- 自作プラグインの場合は、[最初のプラグインを書く](/development/your-first-plugin)の手順を参考にして、プラグインを構築しパッケージ化します。
+[環境変数を設定する方法](/welcome/getting-started/env)
 
-### 2. プラグインを追加する
+### アプリケーションのインストールまたはアップグレードコマンドの実行
 
-プラグインパッケージをアップロードして追加します。
+アプリケーションのインストールまたはアップグレードを実行すると、すべての認証済み商用プラグインがプラグインマネージャーに表示され、プラグインが自動的にダウンロードおよび更新されます。
 
-![20240424221258_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240424221258_rec_.gif)
+#### インストール
 
-### 3. プラグインをアクティブ化する
+- [Dockerインストール（推奨）](./installation/docker-compose.md)
+- [create-nocobase-appインストール](./installation/create-nocobase-app.md)
+- [Gitソースコードインストール](./installation/git-clone.md)
 
-アップロードしたプラグインをアクティブ化します。
+#### アップグレード
 
-![20240424220854](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240424220854.png)
+- [Docker Composeでのアップグレード](./upgrading/docker-compose.md)
+- [create-nocobase-appでのアップグレード](./upgrading/create-nocobase-app.md)
+- [Gitソースコードでのアップグレード](./upgrading/git-clone.md)
 
-### 4. プラグインを更新する
+### プラグインの有効化
 
-更新するプラグインパッケージをアップロードして更新を提出します。
+プラグインマネージャーで有効化したいプラグインを選択してください。
+
+![プラグインの有効化](https://static-docs.nocobase.com/20241204000230.png)
+
+---
+
+## インターフェースを利用したプラグインのインストールと更新
 
 :::warning
-- プリセットのプラグインは、メインアプリケーションとともにアップグレードされ、「更新」の操作はありません。
-- プラグインをアップグレードするには、プラグインの「更新」アクションをクリックします。プラグインを削除してから追加してアップグレードしないでください。
+インターフェースを通じてプラグインを追加または更新する場合、アプリケーションが再起動されます。複数のプラグインをまとめて操作する場合は、他の方法をお勧めします。
 :::
 
-![20240424221119_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240424221119_rec_.gif)
+### プラグインマネージャーでプラグインパッケージをアップロード
 
-## コマンドラインを通じてプラグインをインストールおよび更新する
+商用プラグインやサードパーティプラグインは、インターフェースを使用して直接アップロードできます。
 
-バッチ処理をサポートしており、アプリケーションの更新によってプラグインが互換性がなくなり起動できない場合でも、コマンドラインの方法で処理できます。
+![プラグインのアップロード](https://static-docs.nocobase.com/20241204000127.png)
 
-### 0. Dockerバージョンは、まずコンテナに入る必要があります。
+補足：
+
+- プラグインパッケージの作成方法については、[最初のプラグインを作成する](/development/your-first-plugin) を参考にして、正しくビルドとパッケージングを行ってください。
+
+### プラグインの有効化
+
+プラグインマネージャーで有効化したいプラグインを選択してください。
+
+![プラグインの有効化](https://static-docs.nocobase.com/20241204000230.png)
+
+---
+
+## コマンドラインを利用したプラグインのインストールと更新
+
+:::warning
+- バッチ処理に対応しています。
+- アプリケーションの更新によりプラグインが非互換になった場合や起動できなくなった場合、この方法を使用して更新できます。
+  :::
+
+### 0. Dockerバージョンの場合、まずコンテナに入る
 
 ```bash
 docker-compose exec app bash
 ```
 
-### 1. プラグインがあるnpmレジストリにログインする
+### 1. プラグインがあるnpmレジストリにログイン
 
-コマンドラインでnpmレジストリを使用してプラグインを追加・更新することをお勧めします。例えば、NocoBase商業プラグインのnpmレジストリは https://pkg.nocobase.com/ です。
+レジストリの設定は実際の環境に応じて行ってください。
 
 ```bash
 npm login --registry=https://pkg.nocobase.com/
 ```
 
-### 2. プラグインを追加する
+### 2. プラグインの追加または更新
 
 ```bash
 yarn pm add @nocobase/plugin-data-source-external-mysql @nocobase/plugin-embed --registry=https://pkg.nocobase.com/
 ```
 
-より多くの使用法については [`pm add`](#) を参照してください。
-
-### 3. プラグインを有効化する
+### 3. プラグインの有効化
 
 ```bash
 yarn pm enable @nocobase/plugin-data-source-external-mysql @nocobase/plugin-embed
 ```
 
-### 4. プラグインを更新する
+---
+
+## プラグインディレクトリにプラグインをアップロードしてインストールと更新を実行
 
 :::warning
-アプリケーションとプラグインを同時にアップグレードする必要がある場合は、[NocoBase アップグレード概要](/welcome/getting-started/upgrading) を参照し、まず NocoBase を最新バージョンにアップグレードしてから `pm update` コマンドを実行してください。
-:::
+- バッチ処理に対応しており、移行も簡単です。
+- 内部ネットワークのサーバーでも利用可能です。
+- アプリケーションの更新によってプラグインが非互換になった場合、この方法で更新を実行できます。
+  :::
+
+### プラグインの追加または更新
+
+商用プラグインやサードパーティプラグインは、`./storage/plugins/` ディレクトリに保存されます。開発環境でプラグインをダウンロードしてから、サーバーの `./storage/plugins/` ディレクトリにアップロードするか、直接プラグインパッケージをそのディレクトリに解凍します。例：
 
 ```bash
-yarn pm update @nocobase/plugin-data-source-external-mysql @nocobase/plugin-embed --registry=https://pkg.nocobase.com/
+mkdir -p /my-nocobase/storage/plugins/@nocobase/plugin-auth-cas && \
+  tar -xvzf /downloads/plugin-auth-cas-1.4.0.tgz \
+  -C /my-nocobase/storage/plugins/@nocobase/plugin-auth-cas \
+  --strip-components=1
 ```
 
-より多くの使用法については [`pm update`](#) を参照してください。
+このコマンドにより、`/my-nocobase/storage/plugins/@nocobase/plugin-auth-cas` にプラグインが `package` ディレクトリなしで解凍されます。正しいディレクトリ構造は以下のようになります：
 
+```plaintext
+./plugin-auth-cas/dist/server/migrations/20240425200816-change-locale-module.js
+./plugin-auth-cas/dist/server/auth.js
+./plugin-auth-cas/client.js
+./plugin-auth-cas/dist/constants.js
+./plugin-auth-cas/dist/externalVersion.js
+./plugin-auth-cas/dist/client/index.js
+./plugin-auth-cas/dist/index.js
+./plugin-auth-cas/dist/server/index.js
+./plugin-auth-cas/dist/server/actions/login.js
+./plugin-auth-cas/dist/server/plugin.js
+./plugin-auth-cas/server.js
+./plugin-auth-cas/dist/server/actions/service.js
+./plugin-auth-cas/dist/locale/en-US.json
+./plugin-auth-cas/dist/locale/ko_KR.json
+./plugin-auth-cas/package.json
+./plugin-auth-cas/dist/locale/zh-CN.json
+./plugin-auth-cas/README.md
+./plugin-auth-cas/README.zh-CN.md
+./plugin-auth-cas/dist/server/migrations/20240425200816-change-locale-module.d.ts
+./plugin-auth-cas/dist/server/auth.d.ts
+./plugin-auth-cas/client.d.ts
+./plugin-auth-cas/dist/constants.d.ts
+./plugin-auth-cas/dist/client/index.d.ts
+./plugin-auth-cas/dist/client/locale/index.d.ts
+./plugin-auth-cas/dist/index.d.ts
+./plugin-auth-cas/dist/server/index.d.ts
+./plugin-auth-cas/dist/server/actions/login.d.ts
+./plugin-auth-cas/dist/client/Options.d.ts
+./plugin-auth-cas/dist/server/plugin.d.ts
+./plugin-auth-cas/server.d.ts
+./plugin-auth-cas/dist/server/actions/service.d.ts
+./plugin-auth-cas/dist/client/SigninPage.d.ts
+./plugin-auth-cas/LICENSE.txt
+```
+
+### アップグレードコマンドの実行
+
+プラグインをプラグインディレクトリにアップロードした後、`nocobase upgrade` コマンドを実行して更新を完了してください。
+
+```bash
+yarn nocobase upgrade
+```

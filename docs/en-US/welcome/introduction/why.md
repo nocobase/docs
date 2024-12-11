@@ -8,7 +8,7 @@ NocoBase is open source under the AGPL-3.0 license, and can be used free of char
 
 NocoBase has three core concepts: collection, block, and action. By defining the data collections, to abstract the business; through the block to present the data; through the action to send the user's instructions to the server to complete the data interaction or change.
 
-## High scalability
+## High extensibility
 
 In the actual business, the ideal situation is to use no-code to meet 80% of the needs, the rest usually need to extend the development. NocoBase adopts the microkernel architecture, with a sound plugin system, all kinds of functions are extended in the form of plugins. NocoBase is based on Node.js and uses mainstream frameworks and technologies, including Koa, Sequelize, React and so on, which makes it extremely easy to expand.
 

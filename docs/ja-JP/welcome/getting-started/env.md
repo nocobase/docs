@@ -1,5 +1,38 @@
 # 環境変数
 
+## 環境変数を設定する方法
+
+### Git ソースコードまたは create-nocobase-app のインストール方法
+
+プロジェクトのルートディレクトリにある `.env` ファイルに環境変数を設定します。環境変数を変更した後、アプリケーションプロセスを終了（kill）し、再起動する必要があります。
+
+### Docker のインストール方法
+
+`docker-compose.yml` の設定を変更し、`environment` パラメータに環境変数を設定します。例：
+
+```yml
+services:
+  app:
+    image: nocobase/nocobase:latest
+    environment:
+      - APP_ENV=production
+```
+
+また、`env_file` を使用して `.env` ファイル内で環境変数を設定することも可能です。例：
+
+```yml
+services:
+  app:
+    image: nocobase/nocobase:latest
+    env_file: .env
+```
+
+環境変数を変更した後、アプリケーションコンテナを再構築する必要があります。
+
+```yml
+docker-compose up -d app
+```
+
 ## グローバル環境変数
 
 `.env` ファイルに保存されます。
@@ -184,6 +217,14 @@ DB_TABLE_PREFIX=nocobase_
 ```bash
 DB_LOGGING=on
 ```
+
+### NOCOBASE_PKG_USERNAME
+
+サービスプラットフォームのユーザー名、自動的にプラグインをダウンロードおよび更新するために使用されます。
+
+### NOCOBASE_PKG_PASSWORD
+
+サービスプラットフォームのパスワード、自動的にプラグインをダウンロードおよび更新するために使用されます。
 
 ### LOGGER_TRANSPORT
 

@@ -1,6 +1,6 @@
 # バックアップマネージャー
 
-<PluginInfo name="backups"></PluginInfo>
+<PluginInfo licenseBundled="true" name="backups"></PluginInfo>
 
 ## 概要
 

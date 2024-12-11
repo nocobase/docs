@@ -1,5 +1,38 @@
 # Environment Variables
 
+## How to Set Environment Variables?
+
+### Git Source Code or `create-nocobase-app` Installation Method
+
+Set environment variables in the `.env` file in the project's root directory. After modifying the environment variables, kill the application process and restart it.
+
+### Docker Installation Method
+
+Modify the `docker-compose.yml` configuration and set the environment variables in the `environment` parameter. Example:
+
+```yml
+services:
+  app:
+    image: nocobase/nocobase:latest
+    environment:
+      - APP_ENV=production
+```
+
+You can also use `env_file` to set environment variables in the `.env` file. Example:
+
+```yml
+services:
+  app:
+    image: nocobase/nocobase:latest
+    env_file: .env
+```
+
+After modifying the environment variables, rebuild the app container:
+
+```yml
+docker-compose up -d app
+```
+
 ## Global Environment Variables
 
 Saved in the `.env` file
@@ -25,12 +58,12 @@ Application environment, default is `development`, options include
 APP_ENV=production
 ```
 
-### APP_HOST
+### APP_KEY
 
-Application host, default is `0.0.0.0`
+Secret key, for scenarios such as jwt
 
 ```bash
-APP_HOST=192.168.3.154
+APP_KEY=app-key-test
 ```
 
 ### APP_PORT
@@ -39,14 +72,6 @@ Application port, default is `13000`
 
 ```bash
 APP_PORT=13000
-```
-
-### APP_KEY
-
-Secret key, for scenarios such as jwt
-
-```bash
-APP_KEY=app-key-test
 ```
 
 ### API_BASE_PATH
@@ -177,6 +202,14 @@ Database log switch, default is `off`, options include
 ```bash
 DB_LOGGING=on
 ```
+
+### NOCOBASE_PKG_USERNAME
+
+Service platform username, used for automatically downloading and updating plugins.
+
+### NOCOBASE_PKG_PASSWORD
+
+Service platform password, used for automatically downloading and updating plugins.
 
 ### LOGGER_TRANSPORT
 

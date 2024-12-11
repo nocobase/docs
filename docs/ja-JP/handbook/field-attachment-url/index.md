@@ -1,25 +1,25 @@
-# 数据表字段：附件（URL）
+# データテーブルフィールド：添付ファイル（URL）
 
 <PluginInfo commercial="true" name="field-attachment-url"></PluginInfo>
 
-## 介绍
+## 紹介
 
-支持 URL 格式的附件。
+URL形式の添付ファイルをサポートします。
 
-## 安装
+## インストール
 
-该插件为商业插件。
+このプラグインは商用プラグインです。
 
-## 使用手册
+## 使用方法
 
-### 字段配置
+### フィールド設定
 
 ![20241017092323](https://static-docs.nocobase.com/20241017092323.png)
 
-### 外部数据源
+### 外部データソース
 
 ![20241017092456](https://static-docs.nocobase.com/20241017092456.png)
 
-### 界面
+### インターフェース
 
 ![20241017092759](https://static-docs.nocobase.com/20241017092759.png)

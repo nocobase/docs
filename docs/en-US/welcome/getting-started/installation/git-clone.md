@@ -41,19 +41,9 @@ cd my-nocobase
 
 ## 3. Install dependencies
 
-Due to the domestic network environment, it is strongly recommended that you replace the domestic mirror.
-
-```bash
-$ yarn config set disable-self-update-check true
-$ yarn config set registry https://registry.npmmirror.com/
-$ yarn config set sqlite3_binary_host_mirror https://npmmirror.com/mirrors/sqlite3/
-` ` `
-
-📢 This step may take about 10 minutes due to network environment and system configuration.
-
 ```bash
 yarn install --frozen-lockfile
-` ` `
+```
 
 ## 4. Set environment variables
 
@@ -67,10 +57,13 @@ DB_PORT=5432
 DB_DATABASE=postgres
 DB_USER=nocobase
 DB_PASSWORD=nocobase
+NOCOBASE_PKG_USERNAME=your-username
+NOCOBASE_PKG_PASSWORD=your-password
 ```
 
 :::warning
 
+- **Version 1.4 and above**: By setting the environment variables [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) and [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password), you can automatically download commercial plugins during application installation or upgrade;
 - `TZ` is used to set the application's time zone, with the default being the system's time zone;
 - `APP_KEY` is the application's secret key, used for generating user tokens and so on (if APP_KEY is changed, the old tokens will also become invalid). It can be any random string. Please change it to your own secret key and ensure it is not disclosed to the public.
 - `DB_*` is related to the database. If it is not the default database service in the example, please modify it according to the actual situation.

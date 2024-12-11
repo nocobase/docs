@@ -6,7 +6,7 @@
 工作流的触发器不属于节点，只是以入口节点的形式展示在流程图中，但与节点是不同的概念，详情请参考[触发器](../triggers/index.md)的内容。
 :::
 
-从功能角度，目前已实现的节点可以分为四大类（共 18 种节点）：
+从功能角度，目前已实现的节点可以分为四大类（共 21 种节点）：
 
 - 流程控制类
   - [条件判断](./condition.md)
@@ -32,3 +32,5 @@
 - 其他扩展
   - [HTTP 请求](./request.md)（插件 @nocobase/plugin-workflow-request 提供）
   - [响应消息](./response-message.md)（插件 @nocobase/plugin-workflow-response-message 提供）
+  - [JavaScript](./javascript.md)（插件 @nocobase/plugin-workflow-javascript 提供）
+  - [JSON 解析](./json-query.md)（插件 @nocobase/plugin-workflow-json-query 提供）

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The QR code scanning action can be added in the workbench block to facilitate navigation within the system.
+The QR code scanning action can be added in the action panel block to facilitate navigation within the system.
 
 ## Example
 
@@ -28,4 +28,4 @@ The QR code scanning action can be added in the workbench block to facilitate na
 - The QR code scanning action only supports internal system relative links and must start with `/page/`.
 - External page links are not supported at this time.
 
-For further details, check the [Action Panel Block](/handbook/block-workbench) documentation.
+For further details, check the [Action Panel Block](/handbook/block-action-panel) documentation.

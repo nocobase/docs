@@ -53,6 +53,10 @@ services:
       - DB_PASSWORD=nocobase
       # 时区
       - TZ=Asia/Shanghai
+      # 商业插件，使用 service platform 的账号信息
+      - NOCOBASE_PKG_USERNAME=
+      - NOCOBASE_PKG_PASSWORD=
+
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
@@ -111,6 +115,9 @@ services:
       - DB_UNDERSCORED=true
       # 时区
       - TZ=Asia/Shanghai
+      # 商业插件，使用 service platform 的账号信息
+      - NOCOBASE_PKG_USERNAME=
+      - NOCOBASE_PKG_PASSWORD=
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
@@ -169,6 +176,9 @@ services:
       - DB_UNDERSCORED=true
       # 时区
       - TZ=Asia/Shanghai
+      # 商业插件，使用 service platform 的账号信息
+      - NOCOBASE_PKG_USERNAME=
+      - NOCOBASE_PKG_PASSWORD=
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
@@ -199,6 +209,10 @@ services:
 - `beta`: 包含即将发布的新功能，经过初步测试的版本，可能存在部分已知或未知问题。
 - `alpha`: 开发中的版本，包含最新的功能代码，可能尚未完成或存在较多不稳定因素，主要用于内部开发和快速迭代。
 - `1.3.51`：指定版本号，最新版本查看 [已发布版本列表](https://hub.docker.com/r/nocobase/nocobase/tags)
+
+:::warning
+**v1.4及以上版本**通过设置环境变量 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) 和 [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password)，即可在安装或升级应用时自动下载商业插件。
+:::
 
 示例
 
