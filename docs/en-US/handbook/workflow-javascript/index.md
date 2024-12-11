@@ -2,9 +2,9 @@
 
 <PluginInfo name="workflow-script" link="/handbook/workflow-script" commercial="true"></PluginInfo>
 
-The Script node allows users to execute custom Node.js scripts within a workflow. These scripts can utilize upstream workflow variables as parameters and return values that subsequent nodes can use.
+The JavaScript node allows users to execute custom Node.js scripts within a workflow. These scripts can utilize upstream workflow variables as parameters and return values that subsequent nodes can use.
 
-The script supports most Node.js features but has certain differences from the native execution environment. See the [Feature List](#feature-list) for details.
+The script supports most Node.js features but has some differences from the native execution environment. See the [Feature List](#feature-list) for details.
 
 ## User Manual
 
@@ -34,7 +34,7 @@ After writing the script, use the test button below the editor to open a test ex
 
 Set the timeout in milliseconds. A value of `0` means no timeout.
 
-#### Continue Workflow on Script Error
+#### Continue Workflow on Error
 
 If enabled, the workflow will continue even if the script encounters an error or timeout.
 
@@ -52,7 +52,7 @@ The Node.js version matches the version used by the main application.
 
 The script allows restricted use of modules, adhering to the CommonJS standard. Use the `require()` directive to import modules in your code.
 
-It supports Node.js native modules and modules installed in `node_modules` (including dependencies used by NocoBase). To make modules available for script nodes, declare them in the application environment variable `WORKFLOW_SCRIPT_MODULES`. Separate multiple module names with commas, e.g.:
+It supports Node.js native modules and modules installed in `node_modules` (including dependencies used by NocoBase). To make modules available in the code, declare them in the application environment variable `WORKFLOW_SCRIPT_MODULES`. Separate multiple module names with commas, e.g.:
 
 ```ini
 WORKFLOW_SCRIPT_MODULES=crypto,timers,lodash,dayjs

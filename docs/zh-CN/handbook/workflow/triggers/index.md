@@ -8,6 +8,7 @@
 - [自定义操作事件](./custom-action.md)（插件 @nocobase/plugin-workflow-custom-action-trigger 提供）
 - [操作后事件](./post-action.md)（插件 @nocobase/plugin-workflow-action-trigger 提供）
 - [审批](./approval.md)（插件 @nocobase/plugin-workflow-approval 提供）
+- [Webhook](./webhook.md)（插件 @nocobase/plugin-workflow-webhook 提供）
 
 各个事件的触发时机如下图所示：
 
