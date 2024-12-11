@@ -1252,7 +1252,7 @@ export default [
               },
               {
                 title: 'Template print',
-                'title.zh-CN': '模版打印',
+                'title.zh-CN': '模板打印',
                 'title.ja-JP': '印刷',
                 link: '/handbook/action-template-print',
               },
