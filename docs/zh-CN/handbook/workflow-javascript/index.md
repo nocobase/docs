@@ -2,7 +2,7 @@
 
 <PluginInfo name="workflow-javascript" link="/handbook/workflow-javascript" commercial="true"></PluginInfo>
 
-脚本节点允许用户在工作流中执行一段自定义的服务端 JavaScript 脚本。脚本中可以使用流程上游的变量作为参数，并且可以将脚本的返回值提供给下游节点使用。
+JavaScript 脚本节点允许用户在工作流中执行一段自定义的服务端 JavaScript 脚本。脚本中可以使用流程上游的变量作为参数，并且可以将脚本的返回值提供给下游节点使用。
 
 脚本会在 NocoBase 应用的服务端开启一个工作线程执行，并支持 Node.js 的大部分特性，但与原生的执行环境仍有部分差异，详见 [特性列表](#特性列表)。
 
@@ -34,7 +34,7 @@
 
 单位以毫秒计算，当设置为 `0` 时表示不设置超时。
 
-#### 脚本出错后继续流程
+#### 出错后继续流程
 
 勾选后，脚本出错或者超时出错时仍然会执行后续的节点。
 
@@ -52,7 +52,7 @@
 
 在脚本中可以有限制的使用模块，与 CommonJS 一致，代码中使用 `require()` 指令引入模块。
 
-支持 Node.js 原生模块，和 `node_modules` 中已安装的模块（含 NocoBase 已使用的依赖包）。要提供给脚本节点使用的模块需在应用环境变量 `WORKFLOW_SCRIPT_MODULES` 中声明，多个包名以半角逗号分隔，例如：
+支持 Node.js 原生模块，和 `node_modules` 中已安装的模块（含 NocoBase 已使用的依赖包）。要提供给代码使用的模块需在应用环境变量 `WORKFLOW_SCRIPT_MODULES` 中声明，多个包名以半角逗号分隔，例如：
 
 ```ini
 WORKFLOW_SCRIPT_MODULES=crypto,timers,lodash,dayjs
