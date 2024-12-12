@@ -1,9 +1,13 @@
-# 介绍
+# 使用手册
+
+## 介绍
 邮件插件允许将对谷歌、微软邮件账户接入到NocoBase中，进行邮件的收发、查看、管理等操作。也可以将邮件消息区块到任意页面中
 
-# 使用说明
+
 ## 关联邮件账号
-#### 关联账户
+
+### 关联账户
+
 在邮件插件开启后，点击右上方邮件消息图标，可以进入到邮件消息管理页面
 
 ![](https://static-docs.nocobase.com/mail-1733816161753.png)
@@ -28,14 +32,16 @@
 
 ![](https://static-docs.nocobase.com/mail-1733816163503.png)
 
-#### 删除账户
+### 删除账户
 可以点击 "Delete"，将删除账户和关联的邮件
 
 ![](https://static-docs.nocobase.com/mail-1733816163758.png)
 
-#### 已授权的账户取消授权
+### 取消授权
+
 如果您已经授权给NocoBase，但是想删除或者重新查看授权信息，可以按如下操作
-**谷歌**
+
+#### 谷歌
 1. 打开 https://myaccount.google.com/u/0/connections 并登录
 
 ![](https://static-docs.nocobase.com/mail-1733816164047.png)
@@ -46,7 +52,7 @@
 
 ![](https://static-docs.nocobase.com/mail-1733816164754.png)
 
-**微软**
+#### 微软
 1. 打开 https://account.microsoft.com/ 并登录
 2. 点击 "Apps and services that can access your data" 按钮
 
@@ -58,7 +64,7 @@
 
 ## 邮件管理
 
-#### 邮件筛选
+### 邮件筛选
 
 邮件管理页面，左侧为筛选区，右侧为邮件列表区，进入页面时默认为收件箱
 
@@ -73,19 +79,19 @@
 
 ![](https://static-docs.nocobase.com/mail-1733816166067.png)
 
-#### 手动同步邮件
+### 手动同步邮件
 
 当前邮件的同步间隔为5分钟，如果想强制同步邮件，可以点击 "Refresh" 按钮
 
 ![](https://static-docs.nocobase.com/mail-1733816166364.png)
 
-#### 已读状态变更
+### 已读状态变更
 
 "Mark as read"，"Mark as unread" 按钮可以批量操作邮件已读状态
 
 ![](https://static-docs.nocobase.com/mail-1733816166621.png)
 
-#### 发送邮件
+### 发送邮件
 
 点击顶部 "Write email" 按钮可以打开发件面板
 
@@ -95,7 +101,7 @@
 
 ![](https://static-docs.nocobase.com/mail-1733816167214.png)
 
-#### 查看邮件
+### 查看邮件
 
 点击行上 "View" 按钮，可以查看邮件详情，目前有两种形式，一种是单一邮件的，可以直接看到邮件详细信息
 
@@ -107,13 +113,13 @@
 
 邮件点击查看详情后，默认会将邮件状态置为已读，可以点击右侧 "..." 按钮内 Mark as unread 操作，置为未读
 
-#### 回复邮件
+### 回复邮件
 
 进入邮件详情后，底部有 "Replay" 按钮，可以进行回复操作，如果涉及到多人，可以点击 Replay all 回复所有人
 
 ![](https://static-docs.nocobase.com/mail-1733816167998.png)
 
-#### 转发邮件
+### 转发邮件
 
 可以点击底部 Forward 按钮，将邮件转发给别人
 
@@ -121,19 +127,19 @@
 
 ## 邮件消息区块
 
-#### 添加区块
+### 添加区块
 
 在配置页面，可以点击 Add block 按钮，选择 Mail messages区块进行添加
 
 ![](https://static-docs.nocobase.com/mail-1733816168487.png)
 
-#### 字段配置
+### 字段配置
 
 点击区块 Configure columns 按钮，可以选择需要显示的字段，详细操作可以参照表格字段配置
 
 ![](https://static-docs.nocobase.com/mail-1733816168737.png)
 
-#### 顶部操作配置
+### 顶部操作配置
 
 点击区块 Configure actions 按钮，可以配置顶部按钮，按钮最终的执行效果可以参照邮件管理
 
@@ -145,7 +151,7 @@
 
 ![](https://static-docs.nocobase.com/mail-1733816169515.png)
 
-#### 数据筛选配置
+### 数据筛选配置
 
 点击表格右侧配置，选择 "Set the data scope"，可以设置筛选的邮件数据
 
