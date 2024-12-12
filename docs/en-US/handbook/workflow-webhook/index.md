@@ -1,93 +1,93 @@
-# Webhook event
+# Webhook Event
 
 <PluginInfo name="workflow-webhook" link="/handbook/workflow-webhook" commercial="true"></PluginInfo>
 
-Webhook 触发器用于提供一个可被第三方系统通过 HTTP 请求调用的 URL，第三方事件发生时向该 URL 发送 HTTP 请求并触发流程执行。适用于外部系统发起通知，如支付回调、消息等。
+The Webhook trigger provides a system-generated URL for third-party systems to call via HTTP POST requests. This URL triggers workflow execution when specific events occur, such as payment callbacks or notifications.
 
-## 使用手册
+## User Guide
 
-### 创建触发器
+### Creating a Trigger
 
-创建工作流时，类型选择“Webhook 事件”：
+Create a workflow, select "Webhook Event" as the workflow type:
 
 ![20241210105049](https://static-docs.nocobase.com/20241210105049.png)
 
-:::info{title="提示"}
-其中“同步”和“异步”工作流的区别在于，同步工作流会等待工作流执行完毕后再返回响应，而异步工作流则会直接返回触发器配置中已配置的响应，并在后台排队执行。
+:::info{title="Tip"}
+The key difference between "Synchronous" and "Asynchronous" workflows lies in their response behavior. Synchronous workflows wait until the workflow execution is complete before returning a response. In contrast, asynchronous workflows immediately return a pre-configured response, then execute the workflow in the background.
 :::
 
-### 触发器配置
+### Trigger Configuration
 
 ![20241210105441](https://static-docs.nocobase.com/20241210105441.png)
 
 #### Webhook URL
 
-Webhook 触发器的 URL 为系统自动生成，并绑定该工作流，可以点击右侧的按钮复制，并粘贴到第三方系统中。
+The URL is automatically generated and tied to the workflow. Use the copy button to paste the URL into the third-party system.  
 
-其中 HTTP 方法仅支持 POST，其他方法会返回 `405` 错误。
+HTTP requests must use the POST method. Other methods return a `405` error.  
 
-#### 安全
+#### Security
 
-目前支持 HTTP 基本认证，可以通过开启该选项并设置用户名和密码，在第三方系统的 Webhook URL 中包含用户名和密码部分，以实现对 Webhook 的安全认证（标准详见：[MDN: HTTP authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#basic_authentication_scheme)）。
+Basic HTTP authentication is supported. By enabling this option and setting a username and password, you can secure the Webhook. The third-party system must include the username and password in the Webhook URL for authentication (Criteria Detail: [MDN: HTTP authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#basic_authentication_scheme)).
 
-当设置了用户名和密码时，系统会校验请求中的用户名和密码是否匹配，未提供或不匹配时会返回 `401` 错误。
+When the user name and password are set, the system checks whether the user name and password in the request match, and returns a `401` error when no match is provided or no match is provided.
 
-#### 解析请求数据
+#### Parsing Request Data
 
-第三方调用 Webhook 时，请求中携带的数据需要解析后才能在工作流中使用。解析后会作为触发器变量，在后续节点中可以引用。
+Data in HTTP requests must be parsed to make it usable in Workflow. Parsed data is available as variables in subsequent nodes.
 
-对 HTTP 请求的解析分为三部分：
+Parsing an HTTP request is divided into three parts:
 
-1.  请求头
+1. Request Headers
 
-    请求头通常都是简单的字符串类型的键值对，需要使用到的请求头字段可以直接配置。如 `Date`、`X-Request-Id` 等。
+   Headers are simple key-value pairs in string format. Specify the fields you need, such as `Date` , `X-Request-Id`, etc.
 
-2.  请求参数
+2. Request Parameters
 
-    请求参数即 URL 中的查询参数部分，如 `http://localhost:13000/api/webhook:trigger/1hfmkioou0d?query=1` 中的 `query` 参数。可以通过粘贴完整 URL 样例或者仅查询参数部分的样例，点击解析按钮来自动解析其中的键值对。
+  Request parameter is the URL of query parameters, such as `http://localhost:13000/api/webhook:trigger/1hfmkioou0d? query=1`  'query' parameter. Paste the complete URL sample or query only the parameter part of the sample and click the parse button to automatically parse the key-value pairs.
+  
+  ! [20241210111155](https://static-docs.nocobase.com/20241210111155.png)
+  
+  Automatic parsing converts the parameter portion of the URL into a JSON structure, and generates a path based on the parameter hierarchy such as `query[0]`, `query[0].a`, etc. The path name can be manually modified if it does not meet the requirements, but usually does not need to be modified. Aliases are optional for displaying the name of a variable when used as a variable. At the same time, all parameter tables in the sample are generated. If there are unnecessary parameters, you can delete them.
+  
+3. Request Body
 
-    ![20241210111155](https://static-docs.nocobase.com/20241210111155.png)
+  The request Body is the body of the HTTP request. Currently, only the request body in Content-Type format application/json is supported. You can directly configure the path to be parsed, or enter a JSON example and click the parse button for automatic parsing.
 
-    自动解析会将 URL 中的参数部分转换为一个 JSON 结构，并根据参数层级生成 `query[0]`、`query[0].a` 等路径，该路径名称在不满足需求时可以手动修改，但通常无需修改。别名为在作为变量使用是的变量展示名称，为可选项。同时解析会生成样例中全量的参数表，如有不需要使用的参数，可以将其删除。
+  ! [20241210112529](https://static-docs.nocobase.com/20241210112529.png)
 
-3.  请求体
+  Automatic parsing JSON structure will be the key/value pair into paths, such as `{" a ": 1," b ": {" c" : 2}}` generates `a`, `b`, `b.c` path, etc. Aliases are optional for displaying the name of a variable when used as a variable. At the same time, all parameter tables in the sample are generated. If there are unnecessary parameters, you can delete them.
 
-    请求体即 HTTP 请求的 Body 部分，目前仅支持 `Content-Type` 格式为 `application/json` 的请求体。可以直接配置需要解析的路径，也可以输入 JSON 样例，点击解析按钮进行自动解析。
+#### Response Settings
 
-    ![20241210112529](https://static-docs.nocobase.com/20241210112529.png)
+The response part of Webhook is configured differently in synchronous and asynchronous workflows. The asynchronous workflows are directly configured in the trigger. After receiving the Webhook request, the response configuration in the trigger is immediately returned to the third-party system before the workflow is executed. Synchronous workflows need to be handled in the process by adding response nodes as required by the business (Detail: [Response nodes](#response nodes)).
 
-    自动解析会将 JSON 结构中的键值对转换为路径，如 `{"a": 1, "b": {"c": 2}}` 会生成 `a`、`b`、`b.c` 等路径。别名为在作为变量使用是的变量展示名称，为可选项。同时解析会生成样例中全量的参数表，如有不需要使用的参数，可以将其删除。
+Typically, the response to an asynchronously triggered Webhook event has a status code of `200` and a response body of `ok`. You can also customize the status code, response header, and response body of the response.
 
-#### 响应设置
+! [20241210114312](https://static-docs.nocobase.com/20241210114312.png)
 
-Webhook 的响应部分在同步和异步的工作流中的配置方式有所不同，异步工作流直接在触发器中配置，在接收到 Webhook 请求后，会立即以触发器中的响应配置返回给第三方系统，再执行工作流；而同步的工作流则需要在流程中按业务需求通过添加响应节点来处理（详见：[响应节点](#响应节点)）。
+### Response node
 
-通常情况异步触发的 Webhook 事件的响应的状态码为 `200`，响应体为 `ok`。也可以根据情况自定义响应的状态码、响应头和响应体。
+It is only supported for use in synchronous mode Webhook workflows for responses returned to third-party systems. For example, if there is an unexpected result (such as an error or failure) during the processing of a payment callback, the response node can return an error response to the third-party system so that some third-party systems can retry later according to the status.
 
-![20241210114312](https://static-docs.nocobase.com/20241210114312.png)
+In addition, the execution of the response node terminates the execution of the workflow, and subsequent nodes do not execute. If the entire workflow is not configured with a response node, the system will automatically respond according to the state of the process execution, returning `200` for successful execution and `500` for failed execution.
 
-### 响应节点
+#### Creating a response node
 
-仅支持在同步模式的 Webhook 工作流中使用，用于返回给第三方系统的响应。例如在支付回调的处理过程中，如果业务处理存在非预期的结果（如错误、失败等情况），可以通过响应节点给第三方系统返回表达错误的响应，以便一些第三方系统可以根据状态在稍后重试。
+In the workflow configuration interface, click the plus sign ("+") button in the process to add the "Response" node:
 
-另外，响应节点的执行会终止工作流的执行，后续节点不会再执行。如果整个工作流未配置响应节点，系统会根据流程执行的状态进行自动响应，执行成功返回 `200`，执行失败返回 `500`。
+! [20241210115120](https://static-docs.nocobase.com/20241210115120.png)
 
-#### 创建响应节点
+#### Response configuration
 
-在工作流配置界面中，点击流程中的加号（“+”）按钮，添加“响应”节点：
+! [20241210115500](https://static-docs.nocobase.com/20241210115500.png)
 
-![20241210115120](https://static-docs.nocobase.com/20241210115120.png)
+Variables in the workflow context can be used in the response body.
 
-#### 响应配置
+#### Example
 
-![20241210115500](https://static-docs.nocobase.com/20241210115500.png)
+In the Webhook workflow in synchronous mode, different responses can be returned according to different business conditions, as shown in the figure below:
 
-响应体中可以使用工作流上下文中的变量。
+! [20241210120655](https://static-docs.nocobase.com/20241210120655.png)
 
-#### 示例
-
-在同步模式的 Webhook 工作流中，可以根据业务条件不同返回不同的响应，如下图：
-
-![20241210120655](https://static-docs.nocobase.com/20241210120655.png)
-
-通过条件分支节点，判断某个业务状态是否满足，如果满足则返回成功，否则返回失败。
+Check whether a service status is satisfied through the conditional branch node. If yes, a success message is displayed. Otherwise, a failure message is displayed.
