@@ -4,7 +4,7 @@
 
 ## 介绍
 
-模板打印插件支持通过 Word、Excel 和 PowerPoint 编辑模板（支持 .docx、.xlsx、.pptx 格式），并在模板中设置占位符（Placeholders）与逻辑结构。用户可以基于这些模板动态生成预定格式的文件，包括 .docx、.xlsx、.pptx 和 PDF 文件。
+模板打印插件支持通过 Word、Excel 和 PowerPoint 编辑模板（支持 .docx、.xlsx、.pptx 格式），并在模板中设置占位符（placeholders）与逻辑结构。用户可以基于这些模板动态生成预定格式的文件，包括 .docx、.xlsx、.pptx 和 PDF 文件。
 
 用户可以通过该功能：
 
