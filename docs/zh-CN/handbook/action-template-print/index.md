@@ -1,6 +1,6 @@
 # 模板打印
 
-<PluginInfo commercial="true" name="template-print"></PluginInfo>
+<PluginInfo commercial="true" name="action-template-print"></PluginInfo>
 
 ## 介绍
 
