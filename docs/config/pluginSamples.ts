@@ -120,13 +120,13 @@ export default [
         link: '/plugin-samples/component-and-scope',
       },
       {
-        title: 'Global Content',
+        title: 'Global Registration of Component and Scope',
         'title.zh-CN': '全局注册和使用',
         'title.ja-JP': 'グローバル登録と使用',
         link: '/plugin-samples/component-and-scope/global',
       },
       {
-        title: 'Global Context',
+        title: 'Local Registration of Component and Scope',
         'title.zh-CN': '局部注册和使用',
         'title.ja-JP': 'ローカル登録と使用',
         link: '/plugin-samples/component-and-scope/local',
