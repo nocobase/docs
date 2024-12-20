@@ -23,6 +23,7 @@ server {
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "Upgrade";
         proxy_set_header Host $host;
+        proxy_buffering off;
     }
 }
 ```
