@@ -1264,6 +1264,12 @@ export default [
                 link: '/handbook/action-print',
               },
               {
+                title: 'Template print',
+                'title.zh-CN': '模板打印',
+                link: '/handbook/action-template-print',
+              },
+
+              {
                 title: 'Import',
                 'title.zh-CN': '导入',
                 'title.ja-JP': 'インポート',
