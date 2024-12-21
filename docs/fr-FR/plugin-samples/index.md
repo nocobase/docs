@@ -1,0 +1,82 @@
+# Overview
+
+- **Creating the First Plugin**
+  - @my-project/plugin-hello
+- **Tables and Fields**
+  - sample-collection-define
+  - sample-collection-extend
+  - sample-collection-model
+  - sample-collection-repository
+  - sample-collection-template
+  - sample-collection-field-type
+  - sample-collection-field-interface
+- **Resources and Actions**
+  - sample-resource-manager-register-action-handlers
+  - sample-resource-manager-define
+  - sample-resource-manager-actions
+- **Database Usage**
+  - sample-db-registerFieldTypes
+  - sample-db-registerModels
+  - sample-db-registerRepositories
+  - sample-db-registerOperators
+  - sample-db-repository
+- **Custom Command Line**
+  - sample-cli-create-command
+- **Migration Scripts**
+  - sample-migration-create-migration
+- **Caching**
+  - sample-cache-register-store
+  - sample-cache-create-cache
+- **Server Middleware**
+  - sample-middleware-ratelimit
+- **Data Source Extensions**
+  - sample-data-source-nocobase-api
+- **Chart Extensions**
+  - sample-dv-echarts
+- **Internationalization**
+  - sample-i18n-zh-cn
+- **Frontend Routing Extensions**
+  - Add a New Page
+  - Replace an Existing Page
+  - Plugin Configuration Page (Single Route)
+  - Plugin Configuration Page (Tabbed Layout)
+  - Plugin Configuration Page (Different Layouts)
+- **Plugin Configuration Pages**
+  - Form Configuration Page
+  - Table Configuration Page
+  - Polymorphic Table Configuration Page
+- **Provider Components**
+  - Global Announcement Bar
+- **Component Extensions**
+- **Schema Initializer**
+  - Add initialization items to existing Add blocks
+  - Add initialization items to existing Configure actions
+  - Add initialization items to existing Configure fields
+  - Reuse existing SchemaInitializerItem
+    - Directly add a block
+      - Add after configuring a pop-up (such as a calendar)
+  - Create new initializers
+    - Simple button and dropdown menu
+- **Schema Settings**
+  - Add initialization items to existing Settings
+  - Reuse existing SchemaSettingsItem
+  - Create new settings
+- **Block Extensions**
+  - Simple Block Example - Gallery Image Carousel Block
+    - Block component development
+    - Initializer item
+    - Block Settings
+  - Embedded Block Initializer
+    - Configure operations
+    - Configure fields
+    - Custom initializer
+- **Operation Extensions**
+  - Command-based operations
+  - Pop-up-based operations
+- **Field Extensions**
+  - Custom Field Interface Type
+  - Custom Field Data Type
+  - Field Component Development
+    - connect + mapReadPretty
+    - observer + mapReadPretty
+  - Provide Setters for Fields

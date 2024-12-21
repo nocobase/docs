@@ -10,6 +10,8 @@ yarn install
 yarn dev
 # or run en-US document
 yarn dev:en
+# ou lancer fr-FR document
+yarn dev:fr
 # または、日本語のドキュメントを実行する
 yarn dev:ja
 ```

@@ -1,0 +1,11 @@
+# Handbook Guide
+
+1. If you are first exposed to NocoBase, it is recommended that you start with "[Data Modeling - Overview](/handbook/data-modeling)". In this chapter, you can understand the features of NocoBase data modeling;
+2. Going further, you can add "[Pages](/handbook/ui/pages)" and "[Blocks](/handbook/ui/blocks)" in the interface. You can choose suitable blocks to display the data in the data source;
+3. Next, "[Configure Fields](/handbook/ui/fields)" and "[Configure Actions](/handbook/ui/actions)" for the data blocks. By this step, simple data processing procedures can be done;
+4. If you want to orchestrate actions, you can check the "[Workflow](/handbook/workflow)" chapter. The workflow provides various triggers and action nodes, which can satisfy your unlimited imagination for orchestrating operations;
+5. Permissions need to be configured for actions. You can check "[Users and Permissions](/handbook/acl)". In addition to understanding how to configure action permissions, this chapter can also further understand the concept of "[Departments](/handbook/departments)", which includes the management of users, roles, and departments.
+6. If you already have a ready-made IdP (Identity Provider), refer to the "[User Authentication](/handbook/auth)" chapter, which can help you understand how to access third-party user service providers;
+7. You can enable multiple languages in "[System Settings](/handbook/system-settings)". If the translation of the language you use is incomplete, you can use "[Localization Management](/handbook/localization-management)" to translate, and you are also welcome to contribute translations to NocoBase;
+8. "[Logs and Monitoring](/handbook/logger)" is an important tool for managing and maintaining NocoBase. It can help developers discover and solve problems in time, optimize system performance, ensure system security and stability, and improve system reliability and availability;
+9. You can view all added plugins in the "[Plugin Manager](/handbook/plugin-manager)". Plugins need to be activated before they can be used. If the existing plugins cannot meet your needs, you can also "[Develop Plugins](/development)" by yourself and then add them through the plugin manager.
