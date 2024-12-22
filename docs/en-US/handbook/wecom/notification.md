@@ -1,27 +1,27 @@
-# 通知：企业微信
+# Notification: WeCom
 
 <PluginInfo commercial="true" name="wecom"></PluginInfo>
 
-## 介绍
+## Introduction
 
-**企业微信**插件支持应用向企业微信用户发送通知消息。
+The **WeCom** plugin enables applications to send notification messages to WeCom users.
 
-## 添加和配置企业微信认证器
+## Adding and Configuring the WeCom Authenticator
 
-首先需要在 NocoBase 上添加和配置一个企业微信认证器，参考 [用户认证 - 企业微信](./auth)，只有经过企业微信登录的系统用户，才可以通过企业微信接收系统通知。
+First, you need to add and configure a WeCom authenticator in NocoBase. Refer to [User Authentication - WeCom](./auth). Only system users who have logged in via WeCom can receive system notifications through it.
 
-## 添加企业微信通知渠道
+## Adding the WeCom Notification Channel
 
 ![](https://static-docs.nocobase.com/202412041522365.png)
 
-## 配置企业微信通知渠道
+## Configuring the WeCom Notification Channel
 
-选择刚才配置的认证器。
+Select the authenticator you just configured.
 
 ![](https://static-docs.nocobase.com/202412041525284.png)
 
-## 工作流通知节点配置
+## Workflow Notification Node Configuration
 
-选择配置好的企业微信通知渠道，支持三种消息类型：文本卡片，Markdown, 模版卡片。
+Select the configured WeCom notification channel. Three message types are supported: Text Card, Markdown, and Template Card.
 
 ![](https://static-docs.nocobase.com/202412041529319.png)
