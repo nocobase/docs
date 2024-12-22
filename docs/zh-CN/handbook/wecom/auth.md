@@ -68,14 +68,14 @@
 
 | 配置项                                                                                                | 说明                                                                                                 | 版本要求 |
 | ----------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | -------- |
-| When a phone number does not match an existing user, <br />should a new user be created automatically | 当使用手机号匹配不到已有用户时，是否自动创建新用户                                                   | -        |
-| Company ID                                                                                            | 企业 ID, 从企业微信管理后台获取                                                                      | -        |
-| AgentId                                                                                               | 从企业微信管理后台自建应用配置获取                                                                   | -        |
-| Secret                                                                                                | 从企业微信管理后台自建应用配置获取                                                                   | -        |
-| Origin                                                                                                | 当前应用域名                                                                                         | -        |
-| Workbench application redirect link                                                                   | 成功登录后跳转的应用路径                                                                             | `v1.4.0` |
+| When a phone number does not match an existing user, <br />should a new user be created automatically | 当使用手机号匹配不到已有用户时，是否自动创建新用户。                                                   | -        |
+| Company ID                                                                                            | 企业 ID, 从企业微信管理后台获取。                                                                      | -        |
+| AgentId                                                                                               | 从企业微信管理后台自建应用配置获取。                                                                   | -        |
+| Secret                                                                                                | 从企业微信管理后台自建应用配置获取。                                                                   | -        |
+| Origin                                                                                                | 当前应用域名。                                                                                         | -        |
+| Workbench application redirect link                                                                   | 成功登录后跳转的应用路径。                                                                             | `v1.4.0` |
 | Automatic login                                                                                       | 在企业微信浏览器里打开应用链接时，自动登录。当配置有多个企业微信认证器的时候，只有一个能开启该选项。 | `v1.4.0` |
-| Workbench application homepage link                                                                   | 工作台应用主页链接                                                                                   | -        |
+| Workbench application homepage link                                                                   | 工作台应用主页链接。                                                                                   | -        |
 
 ## 配置企业微信应用首页
 

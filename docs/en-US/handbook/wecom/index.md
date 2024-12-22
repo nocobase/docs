@@ -1,13 +1,13 @@
-# 企业微信
+# WeCom
 
 <PluginInfo commercial="true" name="wecom"></PluginInfo>
 
-## 介绍
+## Introduction
 
-**企业微信**插件提供企业微信集成的能力，包括认证方式、通知渠道和用户数据同步来源。
+The **WeCom** plugin offers integration capabilities for Enterprise WeChat, including authentication methods, notification channels, and user data synchronization sources.
 
-参考：
+References:
 
-- [认证：企业微信](./auth.md)
-- [通知：企业微信](./notification.md)
-- [同步来源：企业微信](./user-data-sync.md)
+- [Authentication: WeCom](./auth.md)
+- [Notification: WeCom](./notification.md)
+- [Synchronization Source: WeCom](./user-data-sync.md)
