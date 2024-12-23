@@ -1,18 +1,30 @@
-/* docs/index.css */
+/* ------------------------------
+ * 通用及整体布局样式
+ * ------------------------------ */
 
-/* 公式输入框容器 */
+/* 页面主要容器，增加边距保证整体视觉更舒适 */
+.page-container {
+  margin: 20px auto;
+  max-width: 1200px; /* 适度限制最大宽度，避免在超大屏幕下过于分散 */
+  padding: 0 15px;   /* 左右留些内边距 */
+  box-sizing: border-box;
+}
+
+/* ------------------------------
+ * 公式输入框容器（置顶固定）
+ * ------------------------------ */
 #formula-container {
-  position: sticky; /* 保持在视口顶部 */
+  position: sticky;         /* 保持在视口顶部 */
   top: 0;
   width: 100%;
   background-color: #ffffff; /* 纯白背景 */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 轻微阴影 */
-  z-index: 1000; /* 确保位于其他内容之上 */
-  padding: 20px 15px; /* 内边距增加 */
+  z-index: 1000;           /* 确保位于其他内容之上 */
+  padding: 20px 15px;       /* 内边距增加 */
   border-bottom: 1px solid #ddd; /* 底部边框分隔 */
 }
 
-/* 公式输入区域的行 */
+/* 公式输入区域的行：使用 flex 布局，支持换行 */
 #formula-container .row {
   display: flex;
   flex-wrap: wrap;
@@ -25,6 +37,7 @@
   display: flex;
   align-items: center;
   gap: 10px; /* 标签与输入框之间的间距 */
+  flex: 1;   /* 优先占用可用空间 */
 }
 
 /* Formula 标签样式 */
@@ -37,6 +50,7 @@
   padding: 10px 15px;
   min-width: 80px; /* 保证标签最小宽度 */
   text-align: center;
+  white-space: nowrap; /* 避免文字换行 */
 }
 
 /* 输入框样式 */
@@ -65,10 +79,11 @@
   font-size: 1.1rem;
   text-align: center;
   min-width: 150px; /* 保证结果显示区域最小宽度 */
-  height: 100%; /* 保持高度一致 */
+  height: 100%;     /* 保持高度一致 */
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 0 0 auto;
 }
 
 /* 适配移动设备的样式调整 */
@@ -93,35 +108,57 @@
     font-size: 1rem;
     padding: 8px 12px;
     min-width: 120px;
+    margin-top: 8px;
   }
 }
 
-/* 其他全局样式保持不变 */
+/* ------------------------------
+ * 表格及其容器样式
+ * ------------------------------ */
 
-/* 输入和结果的样式 */
-.input-group-text, .form-control {
-  font-size: 1.2rem; /* 增大字体 */
-}
-
-/* 表格样式保持不变 */
-table {
-  font-size: 1.1rem;
+/* 不再强制滚动，允许内容在小屏时自动换行 */
+.table-responsive {
   width: 100%;
-}
-
-.table-bordered {
+  overflow-x: visible; /* 取消横向滚动条 */
+  margin-bottom: 1.5rem;
   border: 1px solid #dee2e6;
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 10px;
 }
 
+/* 使表格在任何屏幕上都固定宽度并自动换行 */
+table {
+  table-layout: fixed;  /* 固定表格布局 */
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+/* 表格的边框样式 */
+.table-bordered {
+  border: none; /* 外层 .table-responsive 已有边框，这里不重复 */
+}
+
+/* 表头、表格单元格 */
 .table-bordered th,
 .table-bordered td {
   border: 1px solid #dee2e6;
+  padding: 12px 10px;
+  vertical-align: top;
+  text-align: left;
+  /* 关键：自动换行、避免溢出 */
+  white-space: normal;
+  word-break: break-word;
 }
 
+/* 表头背景 & 粗体 */
 .table th {
   background-color: #f8f9fa;
+  font-weight: 600;
 }
 
+/* 函数名称着重显示 */
 .function-name {
   font-weight: bold;
 }
@@ -130,6 +167,8 @@ table {
 .clickable {
   cursor: pointer;
   color: #007bff;
+  text-decoration: underline;
+  transition: background-color 0.2s ease;
 }
 
 .clickable:hover {
@@ -137,12 +176,7 @@ table {
   color: #0056b3;
 }
 
-/* 表格响应式调整 */
-.table-responsive {
-  overflow-x: auto;
-}
-
-/* 响应式调整：移动端时的字体等 */
+/* 在小屏幕时，字体适当缩小以便完整显示 */
 @media (max-width: 768px) {
   .input-group-text, .form-control {
     font-size: 1rem;
@@ -151,4 +185,22 @@ table {
   table {
     font-size: 1rem;
   }
+
+  .table-bordered th,
+  .table-bordered td {
+    padding: 8px;
+  }
+}
+
+.table-responsive::-webkit-scrollbar {
+  height: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+  background: #f8f9fa;
 }

@@ -69,7 +69,10 @@ export default [
     title: '@nocobase/evaluatos',
     type: 'subMenu',
     children: [
-      '/api/evaluators/Formula',
+      {
+        title: 'Formula',
+        link: '/api/evaluators/Formula'
+      },
     ],
   },
   {
