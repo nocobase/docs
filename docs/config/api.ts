@@ -66,6 +66,16 @@ export default [
     ],
   },
   {
+    title: '@nocobase/evaluatos',
+    type: 'subMenu',
+    children: [
+      {
+        title: 'Formula',
+        link: '/api/evaluators/Formula'
+      },
+    ],
+  },
+  {
     title: '@nocobase/handlebars-helpers',
     link: '/api/handlebars-helpers',
     children: [

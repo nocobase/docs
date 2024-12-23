@@ -1614,6 +1614,14 @@
     bessel "^1.0.2"
     jstat "^1.9.6"
 
+"@formulajs/formulajs@^4.4.9":
+  version "4.4.9"
+  resolved "https://registry.yarnpkg.com/@formulajs/formulajs/-/formulajs-4.4.9.tgz#34a4f1c8eae6351330e367a874e45a8ded7cb33e"
+  integrity sha512-11kIRYGI7YtKz9gMLgQgqs3yBC6ciT2SZRmAsLUt3CLdGfH5w9UW+Ie2Oc/MfzjobwwoJ7DcbeW+ccnHEjaGvQ==
+  dependencies:
+    bessel "^1.0.2"
+    jstat "^1.9.6"
+
 "@hapi/hoek@^11.0.2":
   version "11.0.2"
   resolved "https://registry.npmjs.org/@hapi/hoek/-/hoek-11.0.2.tgz#cb3ea547daac7de5c9cf1d960c3f35c34f065427"
