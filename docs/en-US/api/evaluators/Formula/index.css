@@ -1,0 +1,154 @@
+/* docs/index.css */
+
+/* 公式输入框容器 */
+#formula-container {
+  position: sticky; /* 保持在视口顶部 */
+  top: 0;
+  width: 100%;
+  background-color: #ffffff; /* 纯白背景 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 轻微阴影 */
+  z-index: 1000; /* 确保位于其他内容之上 */
+  padding: 20px 15px; /* 内边距增加 */
+  border-bottom: 1px solid #ddd; /* 底部边框分隔 */
+}
+
+/* 公式输入区域的行 */
+#formula-container .row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px; /* 行间距 */
+}
+
+/* 左侧：Formula 标签与输入框 */
+#formula-container .col-md-8 {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* 标签与输入框之间的间距 */
+}
+
+/* Formula 标签样式 */
+#formula-container .input-group-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  background-color: #f8f9fa;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 10px 15px;
+  min-width: 80px; /* 保证标签最小宽度 */
+  text-align: center;
+}
+
+/* 输入框样式 */
+#formula-container .form-control {
+  flex: 1;
+  padding: 10px 15px;
+  font-size: 1.1rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#formula-container .form-control:focus {
+  border-color: #80bdff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(128, 189, 255, 0.5);
+}
+
+/* 右侧：Result 显示区域 */
+#formula-container #result {
+  background-color: #e9ecef;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 10px 15px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: center;
+  min-width: 150px; /* 保证结果显示区域最小宽度 */
+  height: 100%; /* 保持高度一致 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 适配移动设备的样式调整 */
+@media (max-width: 768px) {
+  #formula-container .col-md-8,
+  #formula-container .col-md-4 {
+    flex: 0 0 100%;
+  }
+
+  #formula-container .input-group-text {
+    min-width: 70px;
+    font-size: 1rem;
+    padding: 8px 12px;
+  }
+
+  #formula-container .form-control {
+    font-size: 1rem;
+    padding: 8px 12px;
+  }
+
+  #formula-container #result {
+    font-size: 1rem;
+    padding: 8px 12px;
+    min-width: 120px;
+  }
+}
+
+/* 其他全局样式保持不变 */
+
+/* 输入和结果的样式 */
+.input-group-text, .form-control {
+  font-size: 1.2rem; /* 增大字体 */
+}
+
+/* 表格样式保持不变 */
+table {
+  font-size: 1.1rem;
+  width: 100%;
+}
+
+.table-bordered {
+  border: 1px solid #dee2e6;
+}
+
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid #dee2e6;
+}
+
+.table th {
+  background-color: #f8f9fa;
+}
+
+.function-name {
+  font-weight: bold;
+}
+
+/* 可点击的函数调用样式 */
+.clickable {
+  cursor: pointer;
+  color: #007bff;
+}
+
+.clickable:hover {
+  background-color: #f0f0f0;
+  color: #0056b3;
+}
+
+/* 表格响应式调整 */
+.table-responsive {
+  overflow-x: auto;
+}
+
+/* 响应式调整：移动端时的字体等 */
+@media (max-width: 768px) {
+  .input-group-text, .form-control {
+    font-size: 1rem;
+  }
+
+  table {
+    font-size: 1rem;
+  }
+}
