@@ -6,6 +6,17 @@
   1. 去除 .page-container 的 max-width 等限制
   2. 保持宽度占满屏幕 (或 iFrame)
 */
+.dumi-default-previewer {
+  border: none;
+}
+.css-20hmss-articleWrapper{
+  max-width: 90%;
+}
+.dumi-default-previewer-demo {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 .page-container {
   width: 100%;
   margin: 0;
