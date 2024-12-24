@@ -2,12 +2,16 @@
  * 通用及整体布局样式
  * ------------------------------ */
 
-/* 页面主要容器，增加边距保证整体视觉更舒适 */
+/*
+  1. 去除 .page-container 的 max-width 等限制
+  2. 保持宽度占满屏幕 (或 iFrame)
+*/
 .page-container {
-  margin: 20px auto;
-  max-width: 1200px; /* 适度限制最大宽度，避免在超大屏幕下过于分散 */
-  padding: 0 15px;   /* 左右留些内边距 */
+  width: 100%;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
+  background-color: #fff;
 }
 
 /* ------------------------------
@@ -116,54 +120,56 @@
  * 表格及其容器样式
  * ------------------------------ */
 
-/* 不再强制滚动，允许内容在小屏时自动换行 */
+/*
+  1. 移除原先的 overflow-x: auto;，并确保表格宽度 100%
+  2. 采用 table-layout: fixed + 自动换行，避免内容超出屏幕
+*/
 .table-responsive {
   width: 100%;
-  overflow-x: visible; /* 取消横向滚动条 */
-  margin-bottom: 1.5rem;
+  overflow-x: visible;   /* 不再出现横向滚动条 */
+  margin-top: 20px;      /* 与上方内容分隔 */
   border: 1px solid #dee2e6;
   border-radius: 4px;
   background-color: #fff;
   padding: 10px;
 }
 
-/* 使表格在任何屏幕上都固定宽度并自动换行 */
+/* 使表格在任何屏幕/容器下都固定宽度并自动换行 */
 table {
-  table-layout: fixed;  /* 固定表格布局 */
+  table-layout: fixed;   /* 固定表格布局，避免随内容过度伸展 */
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
 }
 
-/* 表格的边框样式 */
+/* 表格边框 */
 .table-bordered {
-  border: none; /* 外层 .table-responsive 已有边框，这里不重复 */
+  border: none; /* 外层容器已有边框 */
 }
 
-/* 表头、表格单元格 */
 .table-bordered th,
 .table-bordered td {
   border: 1px solid #dee2e6;
   padding: 12px 10px;
   vertical-align: top;
   text-align: left;
-  /* 关键：自动换行、避免溢出 */
+  /* 关键：自动换行，避免溢出 */
   white-space: normal;
   word-break: break-word;
 }
 
-/* 表头背景 & 粗体 */
+/* 表头样式 */
 .table th {
   background-color: #f8f9fa;
   font-weight: 600;
 }
 
-/* 函数名称着重显示 */
+/* 函数名加粗 */
 .function-name {
   font-weight: bold;
 }
 
-/* 可点击的函数调用样式 */
+/* 函数调用可点击 */
 .clickable {
   cursor: pointer;
   color: #007bff;
@@ -176,12 +182,8 @@ table {
   color: #0056b3;
 }
 
-/* 在小屏幕时，字体适当缩小以便完整显示 */
+/* 在小屏幕时，字体适当缩小 */
 @media (max-width: 768px) {
-  .input-group-text, .form-control {
-    font-size: 1rem;
-  }
-
   table {
     font-size: 1rem;
   }
@@ -192,15 +194,15 @@ table {
   }
 }
 
+/* 可选：如果还有滚动元素，需要美化滚动条可添加：
 .table-responsive::-webkit-scrollbar {
   height: 8px;
 }
-
 .table-responsive::-webkit-scrollbar-thumb {
   background: #ccc;
   border-radius: 4px;
 }
-
 .table-responsive::-webkit-scrollbar-track {
   background: #f8f9fa;
 }
+*/
