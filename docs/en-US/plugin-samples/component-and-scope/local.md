@@ -52,7 +52,7 @@ For details on creating custom pages, refer to [Adding a New Page](/plugin-sampl
 
 Modify the file `packages/plugins/@nocobase-sample/plugin-component-and-scope-local/src/index.ts` with the following content:
 
-```tsx
+```tsx | pure
 import { Plugin } from '@nocobase/client';
 import { SamplesCustomPage } from './CustomPage';
 
