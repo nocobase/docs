@@ -1,3 +1,8 @@
 # Formula.js Functions
 
-<code src="./index.jsx"></code>
+<style>
+.css-20hmss-articleWrapper{
+  max-width: 90%;
+}
+</style>
+<FormulaFunctions />

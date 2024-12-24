@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import './index.css';
+import { useSiteData } from 'dumi';
 import * as formulajs from '@formulajs/formulajs';
+import { Row, Col, Input, Typography, Table, Card } from 'antd';
+const { Title, Text } = Typography;
 
 
+/**
+ * 你的函数分类与示例数据
+ */
 const functionsData = [
   {
     category: 'DATE',
@@ -11,15 +16,31 @@ const functionsData = [
         title: 'DATE',
         call: 'DATE(2008, 7, 8)',
         result: 'Tue Jul 08 2008 00:00:00 GMT-0700 (PDT)',
-        definition: "根据给定的年、月和日创建日期。",
-        parameterDefinitions: "年份（整数），月份（1-12），日期（1-31）。"
+        definition: {
+          en: 'Create a date by given year, month, day.',
+          zh: '根据给定的年、月和日创建日期。',
+          ja: '指定された年、月、日から日付を作成します。',
+        },
+        parameterDefinitions:{
+          en: 'year (integer), month (1-12), date (1-31)',
+          zh: '年份（整数），月份（1-12），日期（1-31）。',
+          ja: '年（整数）、月（1-12）、日（1-31）',
+        }
       },
       {
         title: 'DATEVALUE',
         call: "DATEVALUE('8/22/2011')",
         result: 'Mon Aug 22 2011 00:00:00 GMT-0700 (PDT)',
-        definition: "将文本格式的日期转换为日期序列号。",
-        parameterDefinitions: "文本字符串，表示日期。"
+        definition: {
+          en: 'Converts a date in text format to a serial number.',
+          zh: '将文本格式的日期转换为日期序列号。',
+          ja: 'テキスト形式の日付をシリアル番号に変換します。',
+        },
+        parameterDefinitions: {
+          en: 'text string representing a date',
+          zh: '表示日期的文本字符串',
+          ja: '日付を表す文字列',
+        },
       },
       {
         title: 'DAY',
@@ -2028,133 +2049,188 @@ const functionsData = [
     ]
   }
 ];
+/**
+ * 公式函数组件
+ */
+const FormulaFunctions: React.FC = () => {
+  const { themeConfig } = useSiteData();
+  const zhCN = themeConfig.lang === 'zh-CN';
+  const jaJP = themeConfig.lang === 'ja-JP';
 
-const FormulaFunctions = () => {
   const [formula, setFormula] = useState('');
   const [result, setResult] = useState('');
 
+  /**
+   * 将全部 formula.js 的函数挂到 window，以便在公式里调用
+   */
   useEffect(() => {
-    // 将 Formula.js 的函数添加到全局
     const formulaKeys = Object.keys(formulajs);
     formulaKeys.forEach((key) => {
-      window[key] = formulajs[key];
+      (window as any)[key] = (formulajs as any)[key];
     });
   }, []);
 
-  const executeFormula = (formulaStr) => {
+  /**
+   * 执行公式
+   */
+  const executeFormula = (formulaStr: string) => {
     try {
       if (!formulaStr.trim()) {
         setResult('');
         return;
       }
-      // 1. 评估公式
+      // 这里用 Function 动态执行
       let evaluatedResult = Function('"use strict"; return (' + formulaStr + ')')();
-
-      // 2. 转字符串，避免 [object Date] 报错
       if (evaluatedResult instanceof Date) {
         evaluatedResult = evaluatedResult.toString();
-      } else if (
-        typeof evaluatedResult === 'object' &&
-        evaluatedResult !== null
-      ) {
+      } else if (typeof evaluatedResult === 'object' && evaluatedResult !== null) {
         evaluatedResult = JSON.stringify(evaluatedResult);
       } else {
         evaluatedResult = String(evaluatedResult);
       }
-
       setResult(evaluatedResult);
-    } catch (error) {
+    } catch (error: any) {
       setResult(`Error: ${error.message}`);
     }
   };
 
-  const handleFunctionClick = (funcCall) => {
+  /**
+   * 点某个示例时，直接填入公式并执行
+   */
+  const handleFunctionClick = (funcCall: string) => {
     setFormula(funcCall);
     executeFormula(funcCall);
   };
 
-  const handleInputChange = (e) => {
+  /**
+   * 输入框变动
+   */
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newFormula = e.target.value;
     setFormula(newFormula);
     executeFormula(newFormula);
   };
 
+  /**
+   * 获取本地化文案的小工具
+   */
+  const getLocalizedText = (obj?: { en?: string; zh?: string; ja?: string }): string => {
+    if (!obj) return '';
+    if (zhCN && obj.zh) return obj.zh;
+    if (jaJP && obj.ja) return obj.ja;
+    // 默认英文
+    return obj.en || '';
+  };
+
+  /**
+   * antd 表格列定义
+   */
+  const columns = [
+    {
+      title: 'Function',
+      dataIndex: 'title',
+      key: 'title',
+      width: '10%',
+      render: (text: string) => <Text strong>{text}</Text>,
+    },
+    {
+      title: 'Definition',
+      dataIndex: 'definition', // definition 里是 { en, zh, ja }
+      key: 'definition',
+      width: '25%',
+      render: (definition: { en?: string; zh?: string; ja?: string }) => {
+        return getLocalizedText(definition);
+      },
+    },
+    {
+      title: 'Example call',
+      dataIndex: 'call',
+      key: 'call',
+      width: '20%',
+      render: (call: string) => (
+        <Text
+          style={{ color: '#1677ff', cursor: 'pointer' }}
+          onClick={() => handleFunctionClick(call)}
+        >
+          {call}
+        </Text>
+      ),
+    },
+    {
+      title: 'Parameters',
+      dataIndex: 'parameterDefinitions', // parameterDefinitions 里是 { en, zh, ja }
+      key: 'parameterDefinitions',
+      width: '20%',
+      render: (params: { en?: string; zh?: string; ja?: string }) => {
+        return getLocalizedText(params);
+      },
+    },
+    {
+      title: 'Expected result',
+      dataIndex: 'result',
+      key: 'result',
+      width: '25%',
+    },
+  ];
+
   return (
-    <div className="page-container">
-      {/* 输入与结果区域 */}
-      <div className="container" id="formula-container">
-        <div className="row gx-2 gy-2 align-items-center">
-          {/* 左侧：Formula label & input */}
-          <div className="col-12 col-md-8 d-flex">
-            <span className="input-group-text">Formula: </span>
-            <input
-              type="text"
-              id="in"
-              className="form-control"
-              placeholder="Enter formula here"
-              value={formula}
-              onChange={handleInputChange}
+    <div>
+      <section>
+        {/* 表单区域 */}
+        <div style={{ marginBottom: 24 }}>
+          <Card style={{ marginBottom: 16 }}>
+            <Row gutter={[16, 16]} align="middle">
+              {/* 输入框 */}
+              <Col xs={24} sm={24} md={16} lg={16} xl={16}>
+                <Row gutter={8} align="middle">
+                  <Col flex="70px">
+                    <Text strong>Formula:</Text>
+                  </Col>
+                  <Col flex="auto">
+                    <Input
+                      placeholder="Enter formula here"
+                      value={formula}
+                      onChange={handleInputChange}
+                    />
+                  </Col>
+                </Row>
+              </Col>
+
+              {/* 结果展示 */}
+              <Col xs={24} sm={24} md={8} lg={8} xl={8}>
+                <Text strong style={{ marginRight: 8 }}>
+                  Result:
+                </Text>
+                <Text>{result}</Text>
+              </Col>
+            </Row>
+          </Card>
+
+          {/* 提示文案 */}
+          <Text>
+            {zhCN
+              ? '点击下面表格中某函数的 Example call，可将示例自动填入上方输入框并执行。'
+              : jaJP
+                ? '下のテーブルの Example call をクリックすると、上の入力欄に自動的に入力して実行します。'
+                : 'Click an Example call below to populate and execute in the input above.'}
+          </Text>
+        </div>
+
+        {/* 函数分类表格 */}
+        {functionsData.map((category) => (
+          <Card key={category.category} style={{ marginTop: 24 }}>
+            <Title level={3}>{category.category}</Title>
+            <Table
+              dataSource={category.functions}
+              columns={columns}
+              rowKey="title"
+              pagination={false}
             />
-          </div>
-          {/* 右侧：Result */}
-          <div className="col-12 col-md-4">
-            <div className="input-group-text" id="result">
-              {result}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="container my-5">
-        <p></p>
-        <p>点击函数的 <strong>Example call</strong> 将示例加载到上方的输入框中并执行。</p>
-
-        {/* 按类别分组的函数表格 */}
-        <div id="function-tables">
-          {functionsData.map((categoryData) => (
-            <div key={categoryData.category}>
-              <h2>{categoryData.category}</h2>
-              <div className="table-responsive mb-4">
-                <table className="table table-bordered">
-                  <thead>
-                  <tr>
-                    <th>Function</th>
-                    <th>Definition</th>
-                    <th>Example call</th>
-                    <th>Parameters</th>
-                    <th>Expected result</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  {categoryData.functions.map((func) => (
-                    <tr key={func.title} className="function">
-                      <td>
-                        <code className="function-name">{func.title}</code>
-                      </td>
-                      <td>{func.definition}</td>
-                      <td>
-                        <div
-                          className="clickable"
-                          role="button"
-                          onClick={() => handleFunctionClick(func.call)}
-                        >
-                          <code className="function-call">{func.call}</code>
-                        </div>
-                      </td>
-                      <td>{func.parameterDefinitions}</td>
-                      <td>{func.result}</td>
-                    </tr>
-                  ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+          </Card>
+        ))}
+      </section>
     </div>
   );
 };
 
 export default FormulaFunctions;
-
