@@ -1,8 +1,8 @@
 # Formula.js Functions
 
 <style>
-.css-20hmss-articleWrapper{
-  max-width: 90%;
+article{
+  max-width: 90% !important;
 }
 </style>
 <FormulaFunctions />
