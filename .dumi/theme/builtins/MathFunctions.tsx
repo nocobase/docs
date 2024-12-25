@@ -7,8 +7,8 @@ const functionsData = [
       "category": "Expression functions",
       "functions": [
         {
-          "title": "math.compile",
-          "call": "math.compile(expr)",
+          "title": "compile",
+          "call": "compile(expr)",
           "result": "Parsed and compiled expression",
           "definition": {
             "en": "Parse and compile an expression.",
@@ -22,8 +22,8 @@ const functionsData = [
           }
         },
         {
-          "title": "math.evaluate",
-          "call": "math.evaluate(expr [, scope])",
+          "title": "evaluate",
+          "call": "evaluate(expr [, scope])",
           "result": "Evaluated result of the expression",
           "definition": {
             "en": "Evaluate an expression.",
@@ -37,8 +37,8 @@ const functionsData = [
           }
         },
         {
-          "title": "math.help",
-          "call": "math.help(search)",
+          "title": "help",
+          "call": "help(search)",
           "result": "Help information about the function or data type",
           "definition": {
             "en": "Retrieve help on a function or data type.",
@@ -52,8 +52,8 @@ const functionsData = [
           }
         },
         {
-          "title": "math.parser",
-          "call": "math.parser()",
+          "title": "parser",
+          "call": "parser()",
           "result": "Created parser instance",
           "definition": {
             "en": "Create a parser.",
