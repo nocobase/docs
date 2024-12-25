@@ -71,7 +71,11 @@ export default [
     children: [
       {
         title: 'Formula',
-        link: '/api/evaluators/Formula'
+        link: '/api/evaluators/formula'
+      },
+      {
+        title: 'Mathjs',
+        link: '/api/evaluators/mathjs'
       },
     ],
   },
