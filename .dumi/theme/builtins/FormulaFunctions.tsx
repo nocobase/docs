@@ -5,10 +5,6 @@ import { Row, Col, Input, Typography, Table, Card } from 'antd';
 
 const { Title, Text } = Typography;
 
-
-/**
- * 你的函数分类与示例数据
- */
 const functionsData = [
   {
     category: 'DATE',
