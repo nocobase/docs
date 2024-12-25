@@ -2,8 +2,7 @@ import React, { useEffect } from 'react';
 import * as math from 'mathjs'; // 只挂载 mathjs
 import generateFunctionsComponent from './generator/generateFunctionsComponent';
 
-const functionsData = {
-  "functionsData": [
+const functionsData = [
     {
       "category": "Expression functions",
       "functions": [
@@ -69,8 +68,7 @@ const functionsData = {
         }
       ]
     }
-  ]
-};
+  ];
 
 const CommonComponent = generateFunctionsComponent({ data: functionsData });
 
