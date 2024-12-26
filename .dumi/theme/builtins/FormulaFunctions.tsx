@@ -1,9 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { useSiteData } from 'dumi';
+import React, { useEffect } from 'react';
 import * as formulajs from '@formulajs/formulajs';
-import { Row, Col, Input, Typography, Table, Card } from 'antd';
-
-const { Title, Text } = Typography;
+import generateFunctionsComponent from './generator/generateFunctionsComponent';
 
 const functionsData = [
   {
@@ -4302,191 +4299,21 @@ const functionsData = [
     ]
   }
 ];
-/**
- * 公式函数组件
- */
-const FormulaFunctions: React.FC = () => {
-  const { themeConfig } = useSiteData();
-  const zhCN = themeConfig.lang === 'zh-CN';
-  const jaJP = themeConfig.lang === 'ja-JP';
 
-  const [formula, setFormula] = useState('');
-  const [result, setResult] = useState('');
+const CommonComponent = generateFunctionsComponent({ data: functionsData });
 
-  /**
-   * 将全部 formula.js 的函数挂到 window，以便在公式里调用
-   */
+const FormulajsFunctions: React.FC = () => {
+  console.log(Object.keys(formulajs));
+
+  // 在此挂载 formula.js
   useEffect(() => {
-    const formulaKeys = Object.keys(formulajs);
-    formulaKeys.forEach((key) => {
+    Object.keys(formulajs).forEach((key) => {
       (window as any)[key] = (formulajs as any)[key];
     });
   }, []);
 
-  /**
-   * 执行公式
-   */
-  const executeFormula = (formulaStr: string) => {
-    try {
-      if (!formulaStr.trim()) {
-        setResult('');
-        return;
-      }
-      // 这里用 Function 动态执行
-      let evaluatedResult = Function('"use strict"; return (' + formulaStr + ')')();
-      if (evaluatedResult instanceof Date) {
-        evaluatedResult = evaluatedResult.toString();
-      } else if (typeof evaluatedResult === 'object' && evaluatedResult !== null) {
-        evaluatedResult = JSON.stringify(evaluatedResult);
-      } else {
-        evaluatedResult = String(evaluatedResult);
-      }
-      setResult(evaluatedResult);
-    } catch (error: any) {
-      setResult(`Error: ${error.message}`);
-    }
-  };
-
-  /**
-   * 点某个示例时，直接填入公式并执行
-   */
-  const handleFunctionClick = (funcCall: string) => {
-    setFormula(funcCall);
-    executeFormula(funcCall);
-  };
-
-  /**
-   * 输入框变动
-   */
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newFormula = e.target.value;
-    setFormula(newFormula);
-    executeFormula(newFormula);
-  };
-
-  /**
-   * 获取本地化文案的小工具
-   */
-  /**
-   * 获取本地化文案的小工具
-   */
-  const getLocalizedText = (obj?: { en?: string; cn?: string; ja?: string }): string => {
-    if (!obj) return '';
-    if (zhCN && obj.cn) return obj.cn;
-    if (jaJP && obj.ja) return obj.ja;
-    // 默认英文
-    return obj.en || '';
-  };
-
-  /**
-   * antd 表格列定义
-   */
-  const columns = [
-    {
-      title: 'Function',
-      dataIndex: 'title',
-      key: 'title',
-      width: '10%',
-      render: (text: string) => <Text strong>{text}</Text>,
-    },
-    {
-      title: 'Definition',
-      dataIndex: 'definition', // definition 里是 { en, cn, ja }
-      key: 'definition',
-      width: '25%',
-      render: (definition: { en?: string; cn?: string; ja?: string }) => {
-        return getLocalizedText(definition);
-      },
-    },
-    {
-      title: 'Example call',
-      dataIndex: 'call',
-      key: 'call',
-      width: '20%',
-      render: (call: string) => (
-        <Text
-          style={{ color: '#1677ff', cursor: 'pointer' }}
-          onClick={() => handleFunctionClick(call)}
-        >
-          {call}
-        </Text>
-      ),
-    },
-    {
-      title: 'Parameters',
-      dataIndex: 'parameterDefinitions', // parameterDefinitions 里是 { en, cn, ja }
-      key: 'parameterDefinitions',
-      width: '20%',
-      render: (params: { en?: string; cn?: string; ja?: string }) => {
-        return getLocalizedText(params);
-      },
-    },
-    {
-      title: 'Expected result',
-      dataIndex: 'result',
-      key: 'result',
-      width: '25%',
-    },
-  ];
-
-  return (
-    <div>
-      <section>
-        {/* 表单区域 */}
-        <div style={{ marginBottom: 24 }}>
-          <Card style={{ marginBottom: 16 }}>
-            <Row gutter={[16, 16]} align="middle">
-              {/* 输入框 */}
-              <Col xs={24} sm={24} md={16} lg={16} xl={16}>
-                <Row gutter={8} align="middle">
-                  <Col flex="70px">
-                    <Text strong>Formula:</Text>
-                  </Col>
-                  <Col flex="auto">
-                    <Input
-                      placeholder="Enter formula here"
-                      value={formula}
-                      onChange={handleInputChange}
-                    />
-                  </Col>
-                </Row>
-              </Col>
-
-              {/* 结果展示 */}
-              <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-                <Text strong style={{ marginRight: 8 }}>
-                  Result:
-                </Text>
-                <Text>{result}</Text>
-              </Col>
-            </Row>
-          </Card>
-
-          {/* 提示文案 */}
-          <Text>
-            {zhCN
-              ? '点击下面表格中某函数的 Example call，可将示例自动填入上方输入框并执行。'
-              : jaJP
-                ? '下のテーブルの Example call をクリックすると、上の入力欄に自動的に入力して実行します。'
-                : 'Click an Example call below to populate and execute in the input above.'}
-          </Text>
-        </div>
-
-        {/* 函数分类表格 */}
-        {functionsData.map((category) => (
-          <Card key={category.category} style={{ marginTop: 24 }}>
-            <Title level={3}>{category.category}</Title>
-            <Table
-              dataSource={category.functions}
-              columns={columns}
-              rowKey="title"
-              pagination={false}
-            />
-          </Card>
-        ))}
-      </section>
-    </div>
-  );
+  return <CommonComponent />;
 };
 
-export default FormulaFunctions;
+export default FormulajsFunctions;
+
