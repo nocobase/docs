@@ -80,6 +80,16 @@ export default [
     ],
   },
   {
+    title: '@nocobase/field',
+    type: 'subMenu',
+    children: [
+      {
+        title: 'markdown-vditor',
+        link: '/api/field/markdown-vditor'
+      },
+    ],
+  },
+  {
     title: '@nocobase/handlebars-helpers',
     link: '/api/handlebars-helpers',
     children: [
