@@ -38,7 +38,8 @@
     "@nocobase/client": "^0.21.0-alpha.6",
     "axios-mock-adapter": "1.22.0",
     "dumi-theme-nocobase": "^0.2.30",
-    "sucrase": "^3.0.0"
+    "sucrase": "^3.0.0",
+    "vditor": "^3.10.8"
   },
   "volta": {
     "node": "20.14.0",
