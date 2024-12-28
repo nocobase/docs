@@ -31,69 +31,174 @@ This is a tutorial on how to use the Markdown Editor.
   },
   {
     en: `
-## Features
+## Markdown Syntax Basics
 
-- **Bold** and *italic* text
-- Create [links](https://www.example.com)
-- Lists:
-  - Unordered
-  - Ordered
-- Insert images
-- Code blocks
+### Headers
+Use # for headers. For example:
+- # Header 1
+- ## Header 2
+- ### Header 3
+
+### Emphasis
+- **Bold** will render as Bold.
+- *Italic* will render as Italic.
+- ~~Strikethrough~~ will render as Strikethrough.
+
+### Links
+[NocoBase](https://www.nocobase.com/) creates a hyperlink.
+
+### Images
+![Alt text](https://static-docs.nocobase.com/logo-nocobase.png)
+
+### Blockquotes
+> This is a blockquote. Use the ">" symbol at the beginning of a line to create one.
+
+### Code Blocks
+Use triple backticks (\`\`\`) for code blocks. Here's an example with JavaScript:
+
+\`\`\`js
+function greet() {
+  console.log('Hello, Markdown!');
+}
+greet();
+\`\`\`
+
+### Math Blocks
+For math equations, you would typically use double dollar signs for block equations and single dollar signs for inline equations. Here are examples:
+$$ E = mc^2 $$
+Inline equation: $E = mc^2$
+
+### Tables
+Tables are created with pipes (|) and dashes (-):
+| Column 1 | Column 2 | Column 3 |
+| --- | --- | --- |
+| Row 1 Data 1 | Row 1 Data 2 | Row 1 Data 3 |
+| Row 2 Data 1 | Row 2 Data 2 | Row 2 Data 3 |
+
+### Emoji
+You can add emojis like :smile: which renders as 😄.
+
+### Lists
+- Unordered lists use - or *.
+  - Example: - Item 1
+
+### Task Lists
+- [x] Completed task
+- [ ] Incomplete task
 `,
     zh: `
-## 功能
+## Markdown 基本语法
 
-- **加粗** 和 *斜体* 文本
-- 创建 [链接](https://www.example.com)
-- 列表：
-  - 无序列表
-  - 有序列表
-- 插入图片
-- 代码块
+### 标题
+使用 # 表示标题。例如：
+- # 一级标题
+- ## 二级标题
+- ### 三级标题
+
+### 强调
+- **加粗** 会显示为 加粗。
+- *斜体* 会显示为 斜体。
+- ~~删除线~~ 会显示为 删除线。
+
+### 链接
+[NocoBase](https://www.nocobase.com/) 创建超链接。
+
+### 图片
+![替代文字](https://static-docs.nocobase.com/logo-nocobase.png)
+
+### 引用
+> 这是一个引用。在行首使用 “>” 符号来创建。
+
+### 代码块
+使用三个反引号（\`\`\`）表示代码块。这里是一个 JavaScript 代码的例子：
+
+\`\`\`js
+function greet() {
+  console.log('你好，Markdown！');
+}
+greet();
+\`\`\`
+
+### 公式块
+对于数学公式，通常使用双美元符号表示行间公式，单美元符号表示行内公式。这里有一些例子：
+$$ E = mc^2 $$
+行内公式: $E = mc^2$
+
+### 表格
+表格通过竖线（|）和短横线（-）创建：
+| 列1 | 列2 | 列3 |
+| --- | --- | --- |
+| 第1行数据1 | 第1行数据2 | 第1行数据3 |
+| 第2行数据1 | 第2行数据2 | 第2行数据3 |
+
+### 表情符号 Emoji
+你可以添加类似 :smile: 的表情符号，它会显示为 😄。
+
+### 列表
+- 无序列表使用 - 或 *。
+  - 示例：- 项目 1
+
+### 任务列表
+- [x] 已完成的任务
+- [ ] 未完成的任务
 `,
     ja: `
-## 機能
+## Markdown 基本文法
 
-- **太字** と *斜体* テキスト
-- [リンク](https://www.example.com) の作成
-- リスト：
-  - 箇条書き
-  - 番号付きリスト
-- 画像の挿入
-- コードブロック
+### 見出し
+# を使って見出しを作成します。例えば：
+- # 見出し1
+- ## 見出し2
+- ### 見出し3
+
+### 強調
+- **太字** は 太字 になります。
+- *斜体* は 斜体 になります。
+- ~~取り消し線~~ は 取り消し線 になります。
+
+### リンク
+[NocoBase](https://www.nocobase.com/) はハイパーリンクを作成します。
+
+### 画像
+![代替テキスト](https://static-docs.nocobase.com/logo-nocobase.png)
+
+### 引用
+> これは引用です。行の最初に ">", シンボルを使用して作成します。
+
+### コードブロック
+コードブロックは3つのバッククォート（\`\`\`）を使用します。以下がJavaScriptの例です：
+
+\`\`\`js
+function greet() {
+  console.log('こんにちは、Markdown！');
+}
+greet();
+\`\`\`
+
+### 数式ブロック
+数式は通常、ダブルドル記号を使って行間数式を作成し、シングルドル記号を使って行内数式を作ります。以下がその例です：
+$$ E = mc^2 $$
+行内数式: $E = mc^2$
+
+### テーブル
+テーブルはパイプ（|）とダッシュ（-）を使用して作成します：
+| 列1 | 列2 | 列3 |
+| --- | --- | --- |
+| 行1データ1 | 行1データ2 | 行1データ3 |
+| 行2データ1 | 行2データ2 | 行2データ3 |
+
+### 絵文字 Emoji
+:smile: のような絵文字を追加できます。それは 😄 として表示されます。
+
+### リスト
+- 箇条書きは - または * を使用します。
+  - 例: - アイテム1
+
+### タスクリスト
+- [x] 完了したタスク
+- [ ] 未完了のタスク
 `,
   },
-  {
-    en: `
-## Getting Started
-
-1. **Edit** the markdown text on the left.
-2. **Preview** the rendered content on the right.
-3. **Save** your work regularly.
-
-Happy writing!
-`,
-    zh: `
-## 快速开始
-
-1. **编辑** 左侧的 Markdown 文本。
-2. **预览** 右侧渲染后的内容。
-3. **定期保存** 您的工作。
-
-祝您写作愉快！
-`,
-    ja: `
-## 始め方
-
-1. 左側の Markdown テキストを**編集**します。
-2. 右側にレンダリングされた内容を**プレビュー**します。
-3. 定期的に**保存**します。
-
-楽しい執筆を！
-`,
-  },
-  // 可以在此处添加更多教程步骤
 ];
 
 const MarkdownEditor: React.FC = () => {
@@ -101,7 +206,6 @@ const MarkdownEditor: React.FC = () => {
   const { themeConfig } = useSiteData();
   // 提取语言代码，如 'en', 'zh', 'ja'
   const language = themeConfig.lang.slice(0, 2);
-
 
   // 根据当前语言拼接教程内容
   const assembleContent = (lang: string): string => {
