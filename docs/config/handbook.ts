@@ -1329,6 +1329,27 @@ export default [
         ],
       },
       {
+        title: 'Calculation engines',
+        'title.zh-CN': '计算引擎',
+        children: [
+          {
+            title: 'Overview',
+            'title.zh-CN': '概述',
+            link: '/handbook/calculation-engines',
+          },
+          {
+            title: 'Formula',
+            'title.zh-CN': 'Formula',
+            link: '/handbook/calculation-engines/formula',
+          },
+          {
+            title: 'Mathjs',
+            'title.zh-CN': 'Mathjs',
+            link: '/handbook/calculation-engines/mathjs',
+          },
+        ],
+      },
+      {
         title: 'Mobile',
         'title.zh-CN': '移动端',
         'title.ja-JP': 'モバイル',
