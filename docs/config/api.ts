@@ -66,7 +66,7 @@ export default [
     ],
   },
   {
-    title: '@nocobase/evaluatos',
+    title: '@nocobase/evaluators',
     type: 'subMenu',
     children: [
       {
