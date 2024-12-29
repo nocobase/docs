@@ -66,20 +66,6 @@ export default [
     ],
   },
   {
-    title: '@nocobase/evaluatos',
-    type: 'subMenu',
-    children: [
-      {
-        title: 'Formula',
-        link: '/api/evaluators/formula'
-      },
-      {
-        title: 'Mathjs',
-        link: '/api/evaluators/mathjs'
-      },
-    ],
-  },
-  {
     title: '@nocobase/field',
     type: 'subMenu',
     children: [
