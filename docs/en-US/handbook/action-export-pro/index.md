@@ -21,7 +21,7 @@ This plugin depends on the async task management plugin. Please enable the async
 
 After initiating an export, the export process will be executed in a separate background thread without requiring manual user configuration. In the user interface, after executing the export operation, the current export task will be displayed in the upper right corner, showing real-time task progress.
 
-![index-2024-12-30-09-35-34](https://static-docs.nocobase.com/index-2024-12-30-09-35-34.png)
+![index-2024-12-30-09-21-05](https://static-docs.nocobase.com/index-2024-12-30-09-21-05.png)
 
 After the export is complete, you can download the exported file from the export task.
 
@@ -31,7 +31,7 @@ Attachment export supports exporting attachment-related fields as compressed pac
 
 #### Attachment Export Configuration
 
-![index-2024-12-30-09-37-09](https://static-docs.nocobase.com/index-2024-12-30-09-37-09.png)
+![index-2024-12-30-09-16-55](https://static-docs.nocobase.com/index-2024-12-30-09-16-55.png)
 
 - Configure the attachment fields to be exported, multiple selections supported.
 - You can choose whether to generate a folder for each record.
