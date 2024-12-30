@@ -1856,6 +1856,8 @@ export default [
               '/handbook/workflow/nodes/loop',
               '/handbook/workflow/nodes/parallel',
               '/handbook/workflow/nodes/variable',
+              '/handbook/workflow/nodes/subflow',
+              '/handbook/workflow/nodes/output',
             ],
           },
           {

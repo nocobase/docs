@@ -15,6 +15,8 @@
   - [ループ](./loop.md)（プラグイン @nocobase/plugin-workflow-loop 提供）  
   - [並列分岐](./parallel.md)（プラグイン @nocobase/plugin-workflow-parallel 提供）  
   - [カスタム変数](./variable.md)（プラグイン @nocobase/plugin-workflow-variable 提供）  
+  - [Call Workflow](./subflow.md) (provided by plugin @nocobase/plugin-workflow-subflow)
+  - [Output](./output.md) (provided by plugin @nocobase/plugin-workflow-subflow)
 
 - 計算クラス  
   - [演算](./calculation.md)  
