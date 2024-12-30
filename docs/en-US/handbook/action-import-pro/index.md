@@ -43,6 +43,6 @@ You can choose whether to identify duplicate records during import. When this op
 - Update Duplicate: Check for existing records using the data in the "Identifying Field". If a record exists, update it; otherwise, import it as a new record.
 - Update Duplicate Only: Check for existing records using the data in the "Identifying Field". If a record exists, update it; otherwise, skip it.
 
-#### Reference Fields
+#### Identifying Fields
 
 The system identifies whether a row is a duplicate record based on the value of this field.
