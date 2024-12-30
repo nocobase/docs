@@ -2173,9 +2173,14 @@ export default [
     type: 'group',
     children: [
       {
-        title: 'Password policy and user lockout',
-        'title.zh-CN': '密码策略和用户锁定',
+        title: 'Password policy',
+        'title.zh-CN': '密码策略',
         link: '/handbook/password-policy',
+      },
+      {
+        title: 'User lockout',
+        'title.zh-CN': '用户锁定',
+        link: '/handbook/password-policy/user-lockout',
       },
     ],
   },
