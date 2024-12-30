@@ -1275,11 +1275,11 @@ export default [
                 'title.ja-JP': 'インポート',
                 link: '/handbook/action-import',
               },
-              // {
-              //   title: 'Import Pro',
-              //   'title.zh-CN': '导入 Pro',
-              //   link: '/handbook/action-import-pro',
-              // },
+              {
+                title: 'Import Pro',
+                'title.zh-CN': '导入 Pro',
+                link: '/handbook/action-import-pro',
+              },
               {
                 title: 'Export',
                 'title.zh-CN': '导出',
@@ -1287,16 +1287,16 @@ export default [
                 link: '/handbook/action-export',
               },
               {
+                title: 'Export Pro',
+                'title.zh-CN': '导出 Pro',
+                link: '/handbook/action-export-pro',
+              },
+              {
                 title: 'Scan QR code',
                 'title.zh-CN': '扫二维码',
                 'title.ja-JP': 'QRコードをスキャン',
                 link: '/handbook/action-qr-scan',
               },
-              // {
-              //   title: 'Export Pro',
-              //   'title.zh-CN': '导出 Pro',
-              //   link: '/handbook/action-export-pro',
-              // },
             ],
           },
         ],
