@@ -71,7 +71,7 @@ server {
 | 功能 | 插件 |
 | --- | --- |
 | 缓存 | 内置 |
-| 同步消息 | @nocobase/plugin-sync-adapter-redis |
+| 同步消息 | @nocobase/plugin-pubsub-adapter-redis |
 | 分布式锁 | @nocobase/plugin-lock-adapter-redis |
 
 :::info{title=提示}
