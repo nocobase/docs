@@ -2076,6 +2076,13 @@ export default [
             link: '/handbook/workflow-sql',
           },
           {
+            title: 'Sub-flow',
+            'title.zh-CN': '子流程',
+            'title.ja-JP': '子流程',
+            subTitle: '@nocobase/plugin-workflow-subflow',
+            link: '/handbook/workflow-subflow',
+          },
+          {
             title: 'Custom variable',
             'title.zh-CN': '自定义变量',
             'title.ja-JP': 'カスタム変数',
