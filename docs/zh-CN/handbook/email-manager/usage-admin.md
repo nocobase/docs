@@ -1,34 +1,46 @@
 # 管理员配置
 
-## 概述
+<PluginInfo name="email-manager"></PluginInfo>
 
-开启邮件插件后，需要管理员进行一些配置后，普通用户才可以将邮箱接入到NocoBase中。
-这些配置主要获取邮件提供商相关配置，供后续API调用鉴权，主要业务流程如下：
+## 介绍
+邮件管理插件是一款高效、便捷的工具，支持 Gmail 和 Outlook 邮箱授权接入，帮助用户将邮件管理、邮件收发等能力集成到各区块和页面中。通过简单的授权配置，用户即可实现多账户统一管理，享受无缝的邮件通信体验。
 
-#### 业务流程
+## 配置流程
 
-**管理员**
-1. 前往服务商对应的平台页面，创建应用 
-2. 配置应用相关信息 
-3. 开启 Mail 相关API权限，开启OAuth
-4. 获取到相关信息后填写到NocoBase
-    
-**NocoBase**
-1. 获取到应用参数后，可以调用服务商 Mail 相关API
-2. 用户授权登录时获取到邮箱信息
-3. 提供邮件相关功能
-    
-**普通用户**
-1. 在NocoBase上将邮箱授权给应用  
+开启邮件插件后，管理员需先完成相关配置，普通用户才能将邮箱账号接入到 NocoBase 中（当前仅支持 Outlook 邮箱账户和 Gmail 邮箱账户的授权登录，暂不支持微软账户和谷歌账户的直接接入）。
 
+配置的核心在于邮件服务提供商 API 调用的鉴权设置。管理员需完成以下步骤以确保插件功能正常运行：
 
+1. **从服务商获取鉴权信息**  
+   - 登录邮件服务提供商的开发者控制台（如 Google Cloud Console 或 Microsoft Azure Portal）。  
+   - 创建新的应用或项目，启用 Gmail 或 Outlook 邮箱 API 服务。  
+   - 获取对应的客户端 ID（Client ID）和客户端密钥（Client Secret）。  
+   - 配置重定向 URI，确保与 NocoBase 的插件回调地址一致。  
+
+2. **邮件服务提供商配置**  
+   - 进入邮件插件的配置页面。  
+   - 提供所需的 API 鉴权信息，包括客户端 ID（Client ID）、客户端密钥（Client Secret）等，确保与邮件服务提供商的授权对接正常。
+
+3. **授权登录**  
+   - 用户通过 OAuth 协议登录邮箱账户。  
+   - 插件会自动生成并存储用户的授权令牌，用于后续的 API 调用和邮件操作。
+
+4. **邮箱接入**  
+   - 用户成功授权后，其邮箱账户将被接入到 NocoBase 中。  
+   - 插件会同步用户的邮件数据并提供管理、收发邮件的功能。
+
+5. **邮件功能使用**  
+   - 用户可在平台内直接查看邮件、管理邮件、发送邮件等。  
+   - 所有操作通过邮件服务提供商的 API 调用完成，确保实时同步和高效传输。  
+
+通过上述流程，NocoBase 的邮件插件可为用户提供高效、安全的邮件管理服务。如果在配置过程中遇到问题，请参阅相关文档或联系技术支持团队获取帮助。
 
 ## 插件配置
 
 ### 邮件插件开启
 
 1. 进入插件管理页面 
-2. 开启插件
+2. 找到 "Email manager" 插件，并开启
 
 ### 邮件服务商配置
 
@@ -77,7 +89,6 @@
 ### 开启 Gmail API
 
 1. 点击 "APIs & Services" 按钮
-    
 
 ![](https://static-docs.nocobase.com/mail-1733818619230.png)
 
@@ -177,13 +188,65 @@
 
 ![](https://static-docs.nocobase.com/mail-1733818625124.png)
 
-2. 点击 "PUBLISH APP" 按钮
+2. 点击 "EDIT APP" 按钮，随后点击底部 "SAVE AND CONTINUE" 按钮
 
-![](https://static-docs.nocobase.com/mail-1733818625336.png)
+![](https://static-docs.nocobase.com/mail-1735633686380.png)
 
-3. 确认并发布
+![](https://static-docs.nocobase.com/mail-1735633686750.png)
 
-![](https://static-docs.nocobase.com/mail-1733818625591.png)
+3. 点击 "ADD OR REMOVE SCOPES" 按钮，进行用户权限范围勾选 
+
+![](https://static-docs.nocobase.com/mail-1735633687054.png)
+
+4. 输入 "Gmail API" 进行搜索，然后勾选 "Gmail API"（确认Scope值为 "https://mail.google.com/"的 Gmail API）
+
+![](https://static-docs.nocobase.com/mail-1735633687283.png)
+
+5. 点击底部 "UPDATE" 按钮进行保存
+
+![](https://static-docs.nocobase.com/mail-1735633687536.png)
+
+6. 点击每个页面底部 "SAVE AND CONTINUE" 按钮，最后点击 "BACK TO DASHBOARD" 按钮返回控制面板页面
+
+![](https://static-docs.nocobase.com/mail-1735633687744.png)
+
+![](https://static-docs.nocobase.com/mail-1735633687912.png)
+
+![](https://static-docs.nocobase.com/mail-1735633688075.png)
+
+7. 点击 "PUBLISH APP" 按钮后出现发布确认页面，罗列了发布需要提供的相关内容。随后点击 "CONFIRM" 按钮
+
+![](https://static-docs.nocobase.com/mail-1735633688257.png)
+
+8. 再次回到控制台页面，可以看到发布状态为 "In production"
+
+![](https://static-docs.nocobase.com/mail-1735633688425.png)
+
+9. 点击 "PREPARE FOR VERIFICATION" 按钮，填写必填的相关信息，点击 "SAVE AND CONTINUE" 按钮（图内数据仅为示例）
+
+![](https://static-docs.nocobase.com/mail-1735633688634.png)
+
+![](https://static-docs.nocobase.com/mail-1735633688827.png)
+
+10. 继续填写相关必要信息（图内数据仅为示例）
+
+![](https://static-docs.nocobase.com/mail-1735633688993.png)
+
+11. 点击 "SAVE AND CONTINUE" 按钮
+
+![](https://static-docs.nocobase.com/mail-1735633689159.png)
+
+12. 点击 "SUBMIT FOR VERIFICATION" 按钮，提交 Verification
+
+![](https://static-docs.nocobase.com/mail-1735633689318.png)
+
+13. 等待审批结果
+
+![](https://static-docs.nocobase.com/mail-1735633689494.png)
+
+14. 在审批尚未通过的情况下，用户可以点击 unsafe 链接进行授权登录
+
+![](https://static-docs.nocobase.com/mail-1735633689645.png)
   
 ## 微软配置
 
@@ -243,7 +306,6 @@
 ![](https://static-docs.nocobase.com/mail-1733818628178.png)
 
 2. 点击 "Add a permisson" 按钮
-    
 
 ![](https://static-docs.nocobase.com/mail-1733818628448.png)
 
@@ -286,8 +348,11 @@
 
 ![](https://static-docs.nocobase.com/mail-1733818630710.png)
 
+
 ## 常见问题
 
 Q: 微软账户授权登录后，邮件无法正常接收
 
-A: 目前只支持Outlook邮箱账户和Gmail邮箱账户登录，微软和谷歌账户暂不支持，可参考：[answers.microsoft.com](https://answers.microsoft.com/zh-hans/outlook_com/forum/all/%E7%8E%B0%E6%9C%89%E5%BE%AE%E8%BD%AF%E8%B4%A6/dba12dda-a7c7-4346-8263-53f4a6d9dc68)
+A:  目前只支持Outlook邮箱账户和Gmail邮箱账户授权登录，微软账户和谷歌账户暂不支持，可参考：[answers.microsoft.com](https://answers.microsoft.com/zh-hans/outlook_com/forum/all/%E7%8E%B0%E6%9C%89%E5%BE%AE%E8%BD%AF%E8%B4%A6/dba12dda-a7c7-4346-8263-53f4a6d9dc68)
+
+**小提示**：如果你并不确定自己是不是「真正的 Outlook.com 邮箱」或者「Gmail 邮箱」，可以尝试用网页方式访问 Outlook.com 或 Gmail.com，看看能否直接登录、正常发邮件到别处。如果不行，那就说明你可能并不拥有对应的邮箱服务，需要先开通或改用别的邮箱。

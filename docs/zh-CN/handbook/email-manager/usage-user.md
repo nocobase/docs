@@ -1,7 +1,9 @@
 # 使用手册
 
+<PluginInfo name="email-manager"></PluginInfo>
+
 ## 介绍
-邮件插件允许将对谷歌、微软邮件账户接入到NocoBase中，进行邮件的收发、查看、管理等操作。也可以将邮件消息区块到任意页面中
+邮件插件允许将对谷歌、微软邮件账户接入到NocoBase中，进行邮件的收发、查看、管理等操作。也可以将邮件集成到任意页面和区块中
 
 
 ## 关联邮件账号
@@ -37,30 +39,6 @@
 
 ![](https://static-docs.nocobase.com/mail-1733816163758.png)
 
-### 取消授权
-
-如果您已经授权给NocoBase，但是想删除或者重新查看授权信息，可以按如下操作
-
-#### 谷歌
-1. 打开 https://myaccount.google.com/u/0/connections 并登录
-
-![](https://static-docs.nocobase.com/mail-1733816164047.png)
-
-2. 点击对应应用，然后点击删除
-
-![](https://static-docs.nocobase.com/mail-1733816164469.png)
-
-![](https://static-docs.nocobase.com/mail-1733816164754.png)
-
-#### 微软
-1. 打开 https://account.microsoft.com/ 并登录
-2. 点击 "Apps and services that can access your data" 按钮
-
-![](https://static-docs.nocobase.com/mail-1733816165019.png)
-
-3. 点击编辑并移除
-
-![](https://static-docs.nocobase.com/mail-1733816165260.png)
 
 ## 邮件管理
 
@@ -156,3 +134,61 @@
 点击表格右侧配置，选择 "Set the data scope"，可以设置筛选的邮件数据
 
 ![](https://static-docs.nocobase.com/mail-1733816169764.png)
+
+
+## 邮件发送
+
+#### 创建邮件发送按钮
+
+1. 在表格操作栏添加 "Write email" 按钮
+
+![](https://static-docs.nocobase.com/mail-1735634129950.png)
+
+2. 进入按钮配置菜单，可以编辑按钮名称
+
+![](https://static-docs.nocobase.com/mail-1735634130387.png)
+
+#### 配置邮件默认发送内容
+
+1. 进入按钮配置菜单，选择 "Mail default value"
+
+![](https://static-docs.nocobase.com/mail-1735634130581.png)
+
+2. 配置默认收件人为当前行数据的email
+
+![](https://static-docs.nocobase.com/mail-1735634130773.png)
+
+![](https://static-docs.nocobase.com/mail-1735634130997.png)
+
+3. 点击 "Write email 按钮"，可以看到默认收件人已经填入
+
+![](https://static-docs.nocobase.com/mail-1735634131163.png)
+
+
+## 取消授权
+
+如果您的邮箱账户已经授权，但是想删除或者重新授权，可以按如下操作
+
+#### **谷歌邮箱**
+
+1. 打开 https://myaccount.google.com/u/0/connections 并登录
+
+![](https://static-docs.nocobase.com/mail-1735634131347.png)
+
+2. 点击对应应用，然后点击删除
+
+![](https://static-docs.nocobase.com/mail-1735634131518.png)
+
+![](https://static-docs.nocobase.com/mail-1735634131697.png)
+
+#### **微软邮箱**
+
+1. 打开 https://account.microsoft.com/ 并登录
+    
+2. 点击 "Apps and services that can access your data" 按钮
+
+![](https://static-docs.nocobase.com/mail-1735634131870.png)
+
+3. 点击编辑并移除
+
+![](https://static-docs.nocobase.com/mail-1735634132052.png)

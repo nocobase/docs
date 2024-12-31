@@ -1,160 +1,189 @@
-# User Guide
+# User Manual
+
+<PluginInfo name="email-manager"></PluginInfo>
 
 ## Introduction
-
-The Email Plugin enables the integration of Google and Microsoft email accounts into NocoBase for email sending, receiving, viewing, and management. Emails can also be embedded as blocks into any page.
+The email plugin allows integration of Google and Microsoft email accounts into NocoBase for sending, receiving, viewing, managing emails, and more. Emails can also be integrated into any page or block.
 
 ## Linking Email Accounts
 
-### Linking an Account
+### Link Account
 
-Once the email plugin is enabled, click the email icon in the top right corner to access the email management page.
+After enabling the email plugin, click on the email icon at the top right to enter the email management page.
 
-![Email Icon](https://static-docs.nocobase.com/mail-1733816161753.png)
+![](https://static-docs.nocobase.com/mail-1733816161753.png)
 
-Click the **"Account setting"** button, then click **"Link account"** in the modal. Choose the type of email account to link.
+Click the "Account setting" button, open the overlay, and then click the "Link account" button to select the email account type you wish to link.
 
-![Account Settings](https://static-docs.nocobase.com/mail-1733816162279.png)
+![](https://static-docs.nocobase.com/mail-1733816162279.png)
 
-The browser will automatically open the corresponding email login page. Log in and grant the required permissions.
+The browser will automatically open the corresponding email login page. Log in to your account and grant the necessary permissions.
 
-![Email Login](https://static-docs.nocobase.com/mail-1733816162534.png)
+![](https://static-docs.nocobase.com/mail-1733816162534.png)
 
-After granting permissions, you will be redirected back to the NocoBase page for account linking and data synchronization (the initial sync may take some time).
+Once the authorization is complete, the page will redirect back to the NocoBase website to link the account and sync data (the first sync may take some time, so please wait).
 
-![Data Synchronization](https://static-docs.nocobase.com/mail-1733816162794.png)
+![](https://static-docs.nocobase.com/mail-1733816162794.png)
 
-Once synchronization is complete, the current window will close automatically, and you will return to the email management page where the linked account is visible.
+Once data sync is complete, the current page will automatically close and return to the original email page. You will see the account has been linked.
 
-![Linked Account](https://static-docs.nocobase.com/mail-1733816163177.png)
+![](https://static-docs.nocobase.com/mail-1733816163177.png)
 
-Close the modal, and you will see the email list.
+Click the overlay area to close the popup and see the email list.
 
-![Email List](https://static-docs.nocobase.com/mail-1733816163503.png)
+![](https://static-docs.nocobase.com/mail-1733816163503.png)
 
-### Deleting an Account
+### Delete Account
+Click "Delete" to remove the account and the linked email.
 
-You can click **"Delete"** to remove the account and associated emails.
-
-![Delete Account](https://static-docs.nocobase.com/mail-1733816163758.png)
-
-### Revoking Authorization
-
-If you’ve already authorized NocoBase but want to revoke or recheck authorization, follow these steps:
-
-#### Google
-1. Open [Google Account Connections](https://myaccount.google.com/u/0/connections) and log in.
-
-   ![Google Connections](https://static-docs.nocobase.com/mail-1733816164047.png)
-
-2. Select the relevant application and click **"Remove"**.
-
-   ![Remove Google App](https://static-docs.nocobase.com/mail-1733816164469.png)
-
-   ![Google App Removed](https://static-docs.nocobase.com/mail-1733816164754.png)
-
-#### Microsoft
-1. Open [Microsoft Account](https://account.microsoft.com/) and log in.
-2. Click the **"Apps and services that can access your data"** button.
-
-   ![Microsoft Data Access](https://static-docs.nocobase.com/mail-1733816165019.png)
-
-3. Click **"Edit"** and remove the authorization.
-
-   ![Remove Microsoft App](https://static-docs.nocobase.com/mail-1733816165260.png)
+![](https://static-docs.nocobase.com/mail-1733816163758.png)
 
 ## Email Management
 
-### Filtering Emails
+### Email Filtering
 
-The email management page includes a filter section on the left and an email list on the right. By default, it displays the inbox.
+On the email management page, the left side is for filtering, and the right side displays the email list. By default, the inbox is shown when entering the page.
 
-![Filter Section](https://static-docs.nocobase.com/mail-1733816165536.png)
+![](https://static-docs.nocobase.com/mail-1733816165536.png)
 
-Emails with the same subject are grouped together, showing the total number of emails in the thread. If some emails in the thread match the filter criteria, the root email of the thread will also be displayed, with an icon indicating the type of the root email.
+Emails with the same subject are grouped, and the number of related emails will be shown after the subject field. When some emails with the same subject meet the filtering criteria, the root email of the subject will be displayed, and the type of the root email will be marked next to the subject.
 
-![Grouped Emails](https://static-docs.nocobase.com/mail-1733816165797.png)
+![](https://static-docs.nocobase.com/mail-1733816165797.png)
 
-Unread emails are displayed with bold titles, and the email icon at the top shows the count of unread emails.
+Unread email titles will be displayed in bold, and the unread email count will be marked next to the email icon at the top.
 
-![Unread Emails](https://static-docs.nocobase.com/mail-1733816166067.png)
+![](https://static-docs.nocobase.com/mail-1733816166067.png)
 
-### Manual Email Sync
+### Manually Sync Emails
 
-Emails are synchronized every 5 minutes. To force a sync, click the **"Refresh"** button.
+The current email sync interval is 5 minutes. To force sync, click the "Refresh" button.
 
-![Refresh Button](https://static-docs.nocobase.com/mail-1733816166364.png)
+![](https://static-docs.nocobase.com/mail-1733816166364.png)
 
-### Changing Read Status
+### Change Read Status
 
-The **"Mark as read"** and **"Mark as unread"** buttons allow you to batch change the read status of emails.
+The "Mark as read" and "Mark as unread" buttons allow you to batch update the read status of emails.
 
-![Mark as Read/Unread](https://static-docs.nocobase.com/mail-1733816166621.png)
+![](https://static-docs.nocobase.com/mail-1733816166621.png)
 
-### Sending Emails
+### Send Email
 
-Click the **"Write email"** button at the top to open the email composition panel.
+Click the "Write email" button at the top to open the email composition panel.
 
-![Write Email](https://static-docs.nocobase.com/mail-1733816166970.png)
+![](https://static-docs.nocobase.com/mail-1733816166970.png)
 
-Fill in the required information and send the email. Currently, attachments are limited to 3MB.
+After filling in the required information, you can send the email. Attachments are supported up to 3MB.
 
-![Send Email](https://static-docs.nocobase.com/mail-1733816167214.png)
+![](https://static-docs.nocobase.com/mail-1733816167214.png)
 
-### Viewing Emails
+### View Email
 
-Click the **"View"** button in a row to see email details. There are two views available:
+Click the "View" button on the row to view the email details. There are two formats: one is a single email where you can directly see the detailed information.
 
-1. **Single email** view, showing detailed information.
+![](https://static-docs.nocobase.com/mail-1733816167456.png)
 
-   ![Single Email View](https://static-docs.nocobase.com/mail-1733816167456.png)
+The other is multiple emails with the same subject, which are displayed as a list by default. You can click to expand or collapse.
 
-2. **Threaded emails** view, showing a collapsible list of emails with the same subject.
+![](https://static-docs.nocobase.com/mail-1733816167750.png)
 
-   ![Threaded Emails View](https://static-docs.nocobase.com/mail-1733816167750.png)
+When you click to view the email details, the email status will be marked as read by default. You can click the "..." button on the right and select "Mark as unread" to revert it to unread.
 
-Viewing email details marks the email as read by default. You can revert this by clicking **"..."** and selecting **"Mark as unread"**.
+### Reply to Email
 
-### Replying to Emails
+After entering the email details, click the "Reply" button at the bottom to reply to the email. If there are multiple recipients, you can click "Reply all" to reply to everyone.
 
-At the bottom of the email details, use the **"Reply"** button to respond. To reply to all recipients, use **"Reply all"**.
+![](https://static-docs.nocobase.com/mail-1733816167998.png)
 
-![Reply Email](https://static-docs.nocobase.com/mail-1733816167998.png)
+### Forward Email
 
-### Forwarding Emails
+Click the "Forward" button at the bottom to forward the email to others.
 
-Click the **"Forward"** button at the bottom to forward the email to another recipient.
+![](https://static-docs.nocobase.com/mail-1733816168241.png)
 
-![Forward Email](https://static-docs.nocobase.com/mail-1733816168241.png)
+## Email Message Block
 
-## Email Message Blocks
+### Add Block
 
-### Adding Blocks
+In the configuration page, click the "Add block" button and select the "Mail messages" block to add.
 
-On the configuration page, click **"Add block"**, and select the **Mail messages** block to add it.
+![](https://static-docs.nocobase.com/mail-1733816168487.png)
 
-![Add Block](https://static-docs.nocobase.com/mail-1733816168487.png)
+### Field Configuration
 
-### Configuring Fields
+Click the "Configure columns" button on the block to choose which fields to display. For detailed instructions, refer to the table field configuration.
 
-Click **"Configure columns"** on the block to select the fields to display. For detailed instructions, refer to the table field configuration guide.
+![](https://static-docs.nocobase.com/mail-1733816168737.png)
 
-![Configure Columns](https://static-docs.nocobase.com/mail-1733816168737.png)
+### Top Action Configuration
 
-### Configuring Top Actions
+Click the "Configure actions" button on the block to configure the top buttons. The final action will correspond to the email management actions.
 
-Click **"Configure actions"** on the block to customize the top buttons. Button actions follow the email management functionalities.
+![](https://static-docs.nocobase.com/mail-1733816168977.png)
 
-![Configure Actions](https://static-docs.nocobase.com/mail-1733816168977.png)
+The "Send email" button can be configured with default content.
 
-The **Send email** button can be pre-configured with default content.
+![](https://static-docs.nocobase.com/mail-1733816169243.png)
 
-![Send Email Config](https://static-docs.nocobase.com/mail-1733816169243.png)
+![](https://static-docs.nocobase.com/mail-1733816169515.png)
 
-![Email Content Config](https://static-docs.nocobase.com/mail-1733816169515.png)
+### Data Filter Configuration
 
-### Configuring Data Filters
+Click the configuration on the right side of the table, select "Set the data scope," and configure the email data filter.
 
-Click the settings icon on the right of the table and select **"Set the data scope"** to filter the displayed email data.
+![](https://static-docs.nocobase.com/mail-1733816169764.png)
 
-![Set Data Scope](https://static-docs.nocobase.com/mail-1733816169764.png)
+## Send Email
+
+#### Create the Send Email Button
+
+1. Add the "Write email" button in the table action bar.
+
+![](https://static-docs.nocobase.com/mail-1735634129950.png)
+
+2. Enter the button configuration menu to edit the button name.
+
+![](https://static-docs.nocobase.com/mail-1735634130387.png)
+
+#### Configure Default Send Content
+
+1. Enter the button configuration menu, then select "Mail default value."
+
+![](https://static-docs.nocobase.com/mail-1735634130581.png)
+
+2. Set the default recipient as the email from the current row data.
+
+![](https://static-docs.nocobase.com/mail-1735634130773.png)
+
+![](https://static-docs.nocobase.com/mail-1735634130997.png)
+
+3. Click the "Write email" button to see that the default recipient has already been filled in.
+
+![](https://static-docs.nocobase.com/mail-1735634131163.png)
+
+## Revoke Authorization
+
+If your email account has been authorized but you want to delete or reauthorize it, follow the steps below:
+
+#### **Google Email**
+
+1. Open https://myaccount.google.com/u/0/connections and log in.
+
+![](https://static-docs.nocobase.com/mail-1735634131347.png)
+
+2. Click the corresponding app, then click "Remove."
+
+![](https://static-docs.nocobase.com/mail-1735634131518.png)
+
+![](https://static-docs.nocobase.com/mail-1735634131697.png)
+
+#### **Microsoft Email**
+
+1. Open https://account.microsoft.com/ and log in.
+
+2. Click the "Apps and services that can access your data" button.
+
+![](https://static-docs.nocobase.com/mail-1735634131870.png)
+
+3. Click "Edit" and remove it.
+
+![](https://static-docs.nocobase.com/mail-1735634132052.png)

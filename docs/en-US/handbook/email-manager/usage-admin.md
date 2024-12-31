@@ -1,281 +1,325 @@
-# Administrator Configuration
+# Admin Configuration
 
-## Overview
+<PluginInfo name="email-manager"></PluginInfo>
 
-After enabling the email plugin, administrators need to complete some configurations before regular users can connect their email accounts to NocoBase.
+## Introduction
+The Email Manager Plugin is an efficient and convenient tool supporting Gmail and Outlook email authorization. It integrates email management and sending capabilities into various blocks and pages. By simply configuring authorization, users can achieve unified multi-account management and enjoy seamless email communication.
 
-These configurations primarily involve obtaining settings from the email provider for API authentication. The main business flow is as follows:
+## Configuration Process
 
-#### Business Flow
+After enabling the email plugin, administrators must complete the configuration before regular users can connect their email accounts to NocoBase. Currently, only Outlook and Gmail accounts are supported via authorized login. Direct integration with Microsoft and Google accounts is not available.
 
-**Administrator**  
-1. Visit the provider's platform and create an application.  
-2. Configure application-related information.  
-3. Enable Mail API permissions and OAuth.  
-4. Enter the obtained information into NocoBase.
+The core of the configuration involves setting up API authentication with the email service providers. Administrators need to follow these steps to ensure proper plugin functionality:
 
-**NocoBase**  
-1. Use the application parameters to call the provider's Mail API.  
-2. Retrieve email information when users authorize login.  
-3. Provide email-related features.
+1. **Obtain Authentication Information from Providers**  
+   - Log into the developer console of the email service provider (e.g., Google Cloud Console or Microsoft Azure Portal).  
+   - Create a new app or project, enabling Gmail or Outlook email API services.  
+   - Retrieve the Client ID and Client Secret.  
+   - Configure the redirect URI to match the plugin's callback address in NocoBase.  
 
-**Regular Users**  
-1. Authorize their email accounts in NocoBase.  
+2. **Service Provider Configuration**  
+   - Navigate to the plugin's configuration page.  
+   - Enter the required API authentication details, including Client ID and Client Secret, ensuring proper integration with the email service provider.  
+
+3. **Authorization Login**  
+   - Users log in to their email accounts through the OAuth protocol.  
+   - The plugin automatically generates and stores the user's authorization tokens for subsequent API calls and email operations.  
+
+4. **Email Integration**  
+   - Upon successful authorization, users' email accounts are integrated into NocoBase.  
+   - The plugin synchronizes email data and provides management and sending capabilities.  
+
+5. **Using Email Features**  
+   - Users can view, manage, and send emails directly within the platform.  
+   - All operations are completed via API calls to the email service provider, ensuring real-time synchronization and efficient communication.  
+
+By following the above process, the NocoBase email plugin offers efficient and secure email management. If you encounter issues during configuration, consult the relevant documentation or contact the technical support team for assistance.
 
 ## Plugin Configuration
 
 ### Enabling the Email Plugin
 
-1. Navigate to the Plugin Management page.  
-2. Enable the plugin.  
+1. Navigate to the plugin management page.  
+2. Locate the "Email Manager" plugin and enable it.  
 
-### Email Provider Configuration
+### Configuring the Email Provider
 
-After enabling the email plugin, you can configure the email provider settings. Currently, both Google and Microsoft emails are supported. Go to **"Settings" -> "Email Settings"** to access the configuration page.
+Once the email plugin is enabled, proceed to configure the email provider. Currently, Google and Microsoft email services are supported. Click on "Settings" -> "Email Settings" to access the configuration page.
 
-![Settings](https://static-docs.nocobase.com/mail-1733818617187.png)
+![Screenshot](https://static-docs.nocobase.com/mail-1733818617187.png)  
+![Screenshot](https://static-docs.nocobase.com/mail-1733818617514.png)
 
-![Configuration](https://static-docs.nocobase.com/mail-1733818617514.png)
-
-Each provider requires **Client ID** and **Client Secret**. Below are detailed steps to obtain these parameters.
+Each provider requires the Client ID and Client Secret. The following sections detail how to obtain these parameters.
 
 ## Google Configuration
 
 ### Prerequisites
-1. Ensure NocoBase is deployed on a server that can access Google services. The backend will call the Google API.
 
-### Account Registration
-1. Visit [Google Cloud Console](https://console.cloud.google.com/welcome).  
-2. Agree to the terms on the first visit.  
-
-![Agree to Terms](https://static-docs.nocobase.com/mail-1733818617807.png)
-
-### Creating an App
-1. Click **"Select a project"** at the top.  
-
-![Select Project](https://static-docs.nocobase.com/mail-1733818618126.png)
-
-2. In the pop-up, click **"NEW PROJECT"**.  
-
-![New Project](https://static-docs.nocobase.com/mail-1733818618329.png)
-
-3. Enter project details.  
-
-![Project Info](https://static-docs.nocobase.com/mail-1733818618510.png)
-
-4. Once created, select the project.  
-
-![Select Project](https://static-docs.nocobase.com/mail-1733818618828.png)
-
-![Control Panel](https://static-docs.nocobase.com/mail-1733818619044.png)
-
-### Enabling Gmail API
-1. Click **"APIs & Services"**.  
-
-![APIs & Services](https://static-docs.nocobase.com/mail-1733818619230.png)
-
-2. Go to the **APIs & Services** panel.  
-
-![Panel](https://static-docs.nocobase.com/mail-1733818619419.png)
-
-3. Search for **"mail"**.  
-
-![Search Mail](https://static-docs.nocobase.com/mail-1733818619810.png)
-
-![Mail API](https://static-docs.nocobase.com/mail-1733818620020.png)
-
-4. Click **"ENABLE"** to activate Gmail API.  
-
-![Enable API](https://static-docs.nocobase.com/mail-1733818620589.png)
-
-![API Enabled](https://static-docs.nocobase.com/mail-1733818620885.png)
-
-### Configuring OAuth Consent Screen
-1. Click **"OAuth consent screen"** in the left menu.  
-
-![OAuth Consent](https://static-docs.nocobase.com/mail-1733818621104.png)
-
-2. Choose **"External"**.  
-
-![External](https://static-docs.nocobase.com/mail-1733818621322.png)
-
-3. Enter project information for the authorization screen and save.  
-
-![Project Info](https://static-docs.nocobase.com/mail-1733818621538.png)
-
-4. Fill in the **Developer contact information** and proceed.  
-
-![Developer Info](https://static-docs.nocobase.com/mail-1733818621749.png)
-
-5. Continue through the prompts.  
-
-![Continue](https://static-docs.nocobase.com/mail-1733818622121.png)
-
-6. Add test users for pre-release testing.  
-
-![Add Users](https://static-docs.nocobase.com/mail-1733818622332.png)
-
-![User List](https://static-docs.nocobase.com/mail-1733818622537.png)
-
-7. click to continue
-
-![](https://static-docs.nocobase.com/mail-1733818622753.png)
-
-8. Review the overview and return to the control panel.  
-
-![Overview](https://static-docs.nocobase.com/mail-1733818622984.png)
-
-### Creating Credentials
-1. Click **"Credentials"** in the left menu.  
-
-![Credentials Menu](https://static-docs.nocobase.com/mail-1733818623168.png)
-
-2. Click **"CREATE CREDENTIALS"** and choose **"OAuth client ID"**.  
-
-![Create Credentials](https://static-docs.nocobase.com/mail-1733818623386.png)
-
-3. Choose **"Web application"**.  
-
-![Web Application](https://static-docs.nocobase.com/mail-1733818623758.png)
-
-4. Enter application details.  
-
-![App Details](https://static-docs.nocobase.com/mail-1733818623992.png)
-
-5. Provide the final deployment domain (e.g., a test address for NocoBase).  
-
-![Domain](https://static-docs.nocobase.com/mail-1733818624188.png)
-
-6. Add the authorized callback URL as `domain + "/admin/settings/mail/oauth2"`. Example: `https://pr-1-mail.test.nocobase.com/admin/settings/mail/oauth2`.  
-
-![Callback URL](https://static-docs.nocobase.com/mail-1733818624449.png)
-
-7. Create and view OAuth details.  
-
-![OAuth Info](https://static-docs.nocobase.com/mail-1733818624701.png)
-
-8. Copy **Client ID** and **Client Secret** and paste them into the email configuration page.  
-
-![Copy Credentials](https://static-docs.nocobase.com/mail-1733818624923.png)
-
-9. Save to complete the configuration.  
-
-### Publishing the App
-1. Go to **"OAuth consent screen"**.  
-
-![OAuth Menu](https://static-docs.nocobase.com/mail-1733818625124.png)
-
-2. Click **"PUBLISH APP"**.  
-
-![Publish App](https://static-docs.nocobase.com/mail-1733818625336.png)
-
-3. Confirm and publish.  
-
-![Confirm Publish](https://static-docs.nocobase.com/mail-1733818625591.png)
-
-## Microsoft Configuration
+1. To allow users to connect Gmail accounts to NocoBase, deploy NocoBase on a server that supports access to Google services, as the backend will call the Google API.
 
 ### Register an Account
 
-1. Visit https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account.
+1. Open [Google Cloud Console](https://console.cloud.google.com/welcome).  
+2. Agree to the terms upon first access.  
 
-2. Log in to your Microsoft account.
+![Screenshot](https://static-docs.nocobase.com/mail-1733818617807.png)  
+
+### Create an App
+
+1. Click "Select a project" at the top.  
+![Screenshot](https://static-docs.nocobase.com/mail-1733818618126.png)  
+
+2. Click "NEW PROJECT" in the modal.  
+![Screenshot](https://static-docs.nocobase.com/mail-1733818618329.png)  
+
+3. Fill in project details.  
+![Screenshot](https://static-docs.nocobase.com/mail-1733818618510.png)  
+
+4. Select the created project.  
+![Screenshot](https://static-docs.nocobase.com/mail-1733818618828.png)  
+
+### Enable Gmail API
+
+1. Click "APIs & Services."  
+![Screenshot](https://static-docs.nocobase.com/mail-1733818619230.png)  
+
+2. Enter the "APIs & Services" panel.  
+![Screenshot](https://static-docs.nocobase.com/mail-1733818619419.png)  
+
+3. Search for "mail."  
+![Screenshot](https://static-docs.nocobase.com/mail-1733818619810.png)  
+![Screenshot](https://static-docs.nocobase.com/mail-1733818620020.png)  
+
+4. Click "ENABLE" to activate Gmail API.  
+![Screenshot](https://static-docs.nocobase.com/mail-1733818620589.png)  
+![Screenshot](https://static-docs.nocobase.com/mail-1733818620885.png)  
+
+### Configure OAuth Consent Screen
+
+1. Click "OAuth consent screen" on the left.  
+![Screenshot](https://static-docs.nocobase.com/mail-1733818621104.png)  
+
+2. Choose "External."  
+![Screenshot](https://static-docs.nocobase.com/mail-1733818621322.png)  
+
+3. Fill in project information (displayed on the authorization page) and save.  
+![Screenshot](https://static-docs.nocobase.com/mail-1733818621538.png)  
+
+4. Enter Developer Contact Information and click "Continue."  
+![Screenshot](https://static-docs.nocobase.com/mail-1733818621749.png)  
+
+5. Click "Continue."  
+![Screenshot](https://static-docs.nocobase.com/mail-1733818622121.png)  
+
+6. Add test users for pre-release testing.  
+![Screenshot](https://static-docs.nocobase.com/mail-1733818622332.png)  
+![Screenshot](https://static-docs.nocobase.com/mail-1733818622537.png)  
+
+7. Click "Continue."  
+![Screenshot](https://static-docs.nocobase.com/mail-1733818622753.png)  
+
+8. Review summary information and return to the control panel.  
+![Screenshot](https://static-docs.nocobase.com/mail-1733818622984.png)  
+
+### Create Credentials
+
+1. Click "Credentials" on the left.  
+![Screenshot](https://static-docs.nocobase.com/mail-1733818623168.png)  
+
+2. Click "CREATE CREDENTIALS" and select "OAuth client ID."  
+![Screenshot](https://static-docs.nocobase.com/mail-1733818623386.png)  
+
+3. Select "Web application."  
+![Screenshot](https://static-docs.nocobase.com/mail-1733818623758.png)  
+
+4. Enter application details.  
+![Screenshot](https://static-docs.nocobase.com/mail-1733818623992.png)  
+
+5. Enter the domain of the final deployment (e.g., the NocoBase test address).  
+![Screenshot](https://static-docs.nocobase.com/mail-1733818624188.png)  
+
+6. Add the authorized callback URI: `domain + "/admin/settings/mail/oauth2"`. Example: `https://pr-1-mail.test.nocobase.com/admin/settings/mail/oauth2`.  
+![Screenshot](https://static-docs.nocobase.com/mail-1733818624449.png)  
+
+7. Click "Create" to view the OAuth details.  
+![Screenshot](https://static-docs.nocobase.com/mail-1733818624701.png)  
+
+8. Copy the Client ID and Client Secret to the Email Configuration page.  
+![Screenshot](https://static-docs.nocobase.com/mail-1733818624923.png)  
+
+9. Click "Save" to complete the configuration.  
+
+### Publish the App
+
+After completing the setup and testing, proceed with app publishing by verifying user permissions and submitting the app for verification.
+
+1. Click the "OAuth consent screen" menu
+
+![](https://static-docs.nocobase.com/mail-1733818625124.png)
+
+2. Click the "EDIT APP" button, then click the "SAVE AND CONTINUE" button at the bottom
+
+![](https://static-docs.nocobase.com/mail-1735633686380.png)
+
+![](https://static-docs.nocobase.com/mail-1735633686750.png)
+
+3. Click the "ADD OR REMOVE SCOPES" button to select user permissions
+
+![](https://static-docs.nocobase.com/mail-1735633687054.png)
+
+4. Enter "Gmail API" in the search field, then check the "Gmail API" (ensure the Scope value is "https://mail.google.com/")
+
+![](https://static-docs.nocobase.com/mail-1735633687283.png)
+
+5. Click the "UPDATE" button at the bottom to save
+
+![](https://static-docs.nocobase.com/mail-1735633687536.png)
+
+6. Click the "SAVE AND CONTINUE" button at the bottom of each page, then click the "BACK TO DASHBOARD" button to return to the control panel page
+
+![](https://static-docs.nocobase.com/mail-1735633687744.png)
+
+![](https://static-docs.nocobase.com/mail-1735633687912.png)
+
+![](https://static-docs.nocobase.com/mail-1735633688075.png)
+
+7. After clicking the "PUBLISH APP" button, a confirmation page will appear listing the content required for publishing. Then click the "CONFIRM" button
+
+![](https://static-docs.nocobase.com/mail-1735633688257.png)
+
+8. Back on the console page, you will see that the publication status is "In production"
+
+![](https://static-docs.nocobase.com/mail-1735633688425.png)
+
+9. Click the "PREPARE FOR VERIFICATION" button, fill in the required information, and click the "SAVE AND CONTINUE" button (the data in the image is for reference only)
+
+![](https://static-docs.nocobase.com/mail-1735633688634.png)
+
+![](https://static-docs.nocobase.com/mail-1735633688827.png)
+
+10. Continue filling in the required information (the data in the image is for reference only)
+
+![](https://static-docs.nocobase.com/mail-1735633688993.png)
+
+11. Click the "SAVE AND CONTINUE" button
+
+![](https://static-docs.nocobase.com/mail-1735633689159.png)
+
+12. Click the "SUBMIT FOR VERIFICATION" button to submit for verification
+
+![](https://static-docs.nocobase.com/mail-1735633689318.png)
+
+13. Wait for approval results
+
+![](https://static-docs.nocobase.com/mail-1735633689494.png)
+
+14. If approval has not been granted, users can click the unsafe link to authorize login
+
+![](https://static-docs.nocobase.com/mail-1735633689645.png)
+
+## Microsoft Configuration
+
+### Register Account
+
+1. Go to https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account
+
+2. Log in to your Microsoft account
 
 ![](https://static-docs.nocobase.com/mail-1733818625779.png)
 
-### Create a Tenant
+### Create Tenant
 
-1. Visit https://azure.microsoft.com/zh-cn/pricing/purchase-options/azure-account?icid=azurefreeaccount and log in to your account.
+1. Go to https://azure.microsoft.com/zh-cn/pricing/purchase-options/azure-account?icid=azurefreeaccount and log in to your account
 
-2. Fill in the basic information and complete the verification.
+2. Fill in basic information and get a verification code
 
 ![](https://static-docs.nocobase.com/mail-1733818625984.png)
 
-3. Provide additional information and proceed.
+3. Fill in additional information and continue
 
 ![](https://static-docs.nocobase.com/mail-1733818626352.png)
 
-4. Fill in credit card details (optional at this stage).
+4. Fill in credit card information (you can skip this step for now)
 
 ![](https://static-docs.nocobase.com/mail-1733818626622.png)
 
-### Obtain the Client ID
+### Get Client ID
 
-1. From the top menu, select **"Microsoft Entra ID"**.
+1. Click the top menu and select "Microsoft Entra ID"
 
 ![](https://static-docs.nocobase.com/mail-1733818626871.png)
 
-2. On the left sidebar, click **"App registrations"**.
+2. Select "App registrations" on the left
 
 ![](https://static-docs.nocobase.com/mail-1733818627097.png)
 
-3. Click **"New registration"** at the top.
+3. Click "New registration" at the top
 
 ![](https://static-docs.nocobase.com/mail-1733818627309.png)
 
-4. Enter the required details and submit.
+4. Fill in the information and submit
 
-   - You can choose any name.
-   - Select account types as shown in the example below.
-   - The **Redirect URI** field can be left empty for now.
+You can choose any name, refer to the options shown in the image for account types, and leave the Redirect URI blank for now
 
 ![](https://static-docs.nocobase.com/mail-1733818627555.png)
 
-5. Retrieve the **Client ID**.
+5. Get the Client ID
 
 ![](https://static-docs.nocobase.com/mail-1733818627797.png)
 
 ### API Authorization
 
-1. Open the **"API permissions"** menu on the right sidebar.
+1. Open the "API permissions" menu on the right
 
 ![](https://static-docs.nocobase.com/mail-1733818628178.png)
 
-2. Click **"Add a permission"**.
+2. Click the "Add a permission" button
 
 ![](https://static-docs.nocobase.com/mail-1733818628448.png)
 
-3. Select **"Microsoft Graph"**.
+3. Click "Microsoft Graph"
 
 ![](https://static-docs.nocobase.com/mail-1733818628725.png)
 
 ![](https://static-docs.nocobase.com/mail-1733818628927.png)
 
-4. Search for and add the following permissions. The final configuration should include:
+4. Search and add the following permissions, the final result should look like this
 
-   1. `"email"`
-   2. `"offline_access"`
-   3. `"IMAP.AccessAsUser.All"`
-   4. `"SMTP.Send"`
-   5. `"offline_access"`
-   6. `"User.Read"` (default)
+    1. `"email"`
+    2. `"offline_access"`
+    3. `"IMAP.AccessAsUser.All"`
+    4. `"SMTP.Send"`
+    5. `"offline_access"`
+    6. `"User.Read"` (By default)
 
 ![](https://static-docs.nocobase.com/mail-1733818629130.png)
 
-### Obtain a Secret Key
+### Get Secret
 
-1. Open the **"Certificates & secrets"** menu on the left.
+1. Click "Certificates & secrets" on the left
 
 ![](https://static-docs.nocobase.com/mail-1733818629369.png)
 
-2. Click the **"New client secret"** button.
+2. Click the "New client secret" button
 
 ![](https://static-docs.nocobase.com/mail-1733818629554.png)
 
-3. Provide a description and set an expiration date, then create the secret.
+3. Fill in the description and expiration time, then click add
 
 ![](https://static-docs.nocobase.com/mail-1733818630292.png)
 
-4. Retrieve the **Secret ID**.
+4. Get the Secret ID
 
 ![](https://static-docs.nocobase.com/mail-1733818630535.png)
 
-5. Copy both the **Client ID** and **Client Secret**, then fill them in on the email configuration page.
+5. Copy both the Client ID and Client Secret and fill them in the mail configuration page
 
 ![](https://static-docs.nocobase.com/mail-1733818630710.png)
 
-
 ## FAQ
 
-**Q:** Why can’t emails be received after logging in with a Microsoft account?  
-**A:** Currently, only Outlook and Gmail accounts are supported. Microsoft and Google accounts are not yet supported. For more details, refer to [this discussion](https://answers.microsoft.com/zh-hans/outlook_com/forum/all/%E7%8E%B0%E6%9C%89%E5%BE%AE%E8%BD%AF%E8%B4%A6/dba12dda-a7c7-4346-8263-53f4a6d9dc68).
+Q: After Microsoft account authorization login, emails cannot be received normally.
+
+A: Currently, only Outlook and Gmail accounts are supported for authorized login. Microsoft and Google accounts are not supported. For more information, please refer to: [answers.microsoft.com](https://answers.microsoft.com/zh-hans/outlook_com/forum/all/%E7%8E%B0%E6%9C%89%E5%BE%AE%E8%BD%AF%E8%B4%A6/dba12dda-a7c7-4346-8263-53f4a6d9dc68)
+
+**Tip**: If you are unsure whether you have a "true" Outlook.com or Gmail account, try accessing Outlook.com or Gmail.com through the web to see if you can log in and send emails. If not, it means you may not have the corresponding email service, and you need to either sign up for it or use another email service.
