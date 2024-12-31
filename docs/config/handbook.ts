@@ -1654,8 +1654,8 @@ export default [
             link: '/handbook/file-manager/development',
           },
           {
-            title: 'S3 Pro plugin',
-            'title.zh-CN': 'S3 Pro 插件',
+            title: 'S3(Pro)',
+            'title.zh-CN': 'S3（Pro）',
             link: '/handbook/file-storage-s3-pro',
           },
         ],
