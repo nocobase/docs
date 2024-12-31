@@ -1877,6 +1877,8 @@ export default [
               '/handbook/workflow/nodes/loop',
               '/handbook/workflow/nodes/parallel',
               '/handbook/workflow/nodes/variable',
+              '/handbook/workflow/nodes/subflow',
+              '/handbook/workflow/nodes/output',
             ],
           },
           {
@@ -2093,6 +2095,13 @@ export default [
             'title.ja-JP': 'SQLアクション',
             subTitle: '@nocobase/plugin-workflow-sql',
             link: '/handbook/workflow-sql',
+          },
+          {
+            title: 'Sub-flow',
+            'title.zh-CN': '子流程',
+            'title.ja-JP': '子流程',
+            subTitle: '@nocobase/plugin-workflow-subflow',
+            link: '/handbook/workflow-subflow',
           },
           {
             title: 'Custom variable',
