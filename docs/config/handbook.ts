@@ -1275,11 +1275,11 @@ export default [
                 'title.ja-JP': 'インポート',
                 link: '/handbook/action-import',
               },
-              // {
-              //   title: 'Import Pro',
-              //   'title.zh-CN': '导入 Pro',
-              //   link: '/handbook/action-import-pro',
-              // },
+              {
+                title: 'Import Pro',
+                'title.zh-CN': '导入 Pro',
+                link: '/handbook/action-import-pro',
+              },
               {
                 title: 'Export',
                 'title.zh-CN': '导出',
@@ -1287,16 +1287,16 @@ export default [
                 link: '/handbook/action-export',
               },
               {
+                title: 'Export Pro',
+                'title.zh-CN': '导出 Pro',
+                link: '/handbook/action-export-pro',
+              },
+              {
                 title: 'Scan QR code',
                 'title.zh-CN': '扫二维码',
                 'title.ja-JP': 'QRコードをスキャン',
                 link: '/handbook/action-qr-scan',
               },
-              // {
-              //   title: 'Export Pro',
-              //   'title.zh-CN': '导出 Pro',
-              //   link: '/handbook/action-export-pro',
-              // },
             ],
           },
         ],
@@ -2143,6 +2143,8 @@ export default [
                 'title.ja-JP': '変数',
                 link: '/handbook/workflow/nodes/variable',
               },
+              '/handbook/workflow/nodes/subflow',
+              '/handbook/workflow/nodes/output',
             ],
           },
           {
@@ -2617,7 +2619,14 @@ export default [
             link: '/handbook/workflow-sql',
           },
           {
-            title: 'Custom Variable',
+            title: 'Sub-flow',
+            'title.zh-CN': '子流程',
+            'title.ja-JP': '子流程',
+            subTitle: '@nocobase/plugin-workflow-subflow',
+            link: '/handbook/workflow-subflow',
+          },
+          {
+            title: 'Custom variable',
             'title.zh-CN': '自定义变量',
             'title.ja-JP': 'カスタム変数',
             subTitle: '@nocobase/plugin-workflow-variable',
