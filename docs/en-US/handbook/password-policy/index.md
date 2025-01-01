@@ -1,96 +1,96 @@
-# 密码策略
+# Password Policy
 
 <PluginInfo licenseBundled="true" name="password-policy"></PluginInfo>
 
-## 介绍
+## Introduction
 
-为所有用户设置密码规则，密码有效期和密码登录安全策略，管理锁定用户。
+Set password rules, password expiration, and password login security policies for all users, and manage locked users.
 
-## 密码规则
+## Password Rules
 
 ![](https://static-docs.nocobase.com/202412281329313.png)
 
-### 最小密码长度
+### Minimum Password Length
 
-设置密码的最小长度要求，最大长度为 64.
+Set the minimum length requirement for passwords, with a maximum length of 64.
 
-### 密码复杂度要求
+### Password Complexity Requirements
 
-支持以下选项：
+The following options are supported:
 
-- 必须包含字母和数字
-- 必须包含字母，数字和符号
-- 必须包含数字，大写和小写字母
-- 必须包含数字，大写和小写字母，符号
-- 必须包含以下字符的其中 3 种：数字、大写字母、小写字母和特殊字符
-- 不限制
+- Must contain letters and numbers
+- Must contain letters, numbers, and symbols
+- Must contain numbers, uppercase and lowercase letters
+- Must contain numbers, uppercase and lowercase letters, and symbols
+- Must contain at least 3 of the following: numbers, uppercase letters, lowercase letters, and special characters
+- No restrictions
 
 ![](https://static-docs.nocobase.com/202412281331649.png)
 
-### 密码不能包含用户名
+### Password Cannot Contain Username
 
-设置密码是否能包含当前用户的用户名。
+Set whether the password can contain the current user's username.
 
-### 密码历史数量
+### Password History Count
 
-记住用户最近使用的密码个数，用户修改密码时不能重复使用。0 代表不限制，最大数量为 24.
+Remember the number of recently used passwords by the user. Users cannot reuse these passwords when changing their password. 0 means no restriction, with a maximum count of 24.
 
-## 密码过期配置
+## Password Expiration Configuration
 
 ![](https://static-docs.nocobase.com/202412281335588.png)
 
-### 密码有效期
+### Password Validity Period
 
-用户密码的有效期，密码过期后，需要管理员重新设置密码，用户才可以使用密码登录。如果有配置其他的登录方式，用户可以使用其他方式登录。
+The validity period of the user's password. After the password expires, the administrator must reset the password before the user can log in using it. If other login methods are configured, the user can log in using those methods.
 
-### 密码过期提示通知渠道
+### Password Expiration Notification Channel
 
-用户密码到期的 10 天内，用户每次登录时，发送提醒。默认发送到“密码过期提醒”的站内信渠道，可以在通知管理中管理渠道。
+Within 10 days of the user's password expiration, a reminder is sent each time the user logs in. By default, the reminder is sent via the "Password Expiration Reminder" internal message channel, which can be managed in the notification management section.
 
-### 配置建议
+### Configuration Recommendations
 
-由于密码过期可能导致账号无法登录，包括管理员账号，请及时修改密码，并在系统中设置多个可以修改用户密码的账号。
+Since password expiration may result in the inability to log in, including for administrator accounts, it is recommended to change passwords promptly and set up multiple accounts in the system that have the authority to modify user passwords.
 
-## 密码登录安全
+## Password Login Security
 
-设置无效密码登录尝试限制。
+Set limits on invalid password login attempts.
 
 ![](https://static-docs.nocobase.com/202412281339724.png)
 
-### 最大无效密码登录尝试次数
+### Maximum Invalid Password Login Attempts
 
-设置用户在规定时间间隔内最多可以尝试登录次数。
+Set the maximum number of login attempts a user can make within a specified time interval.
 
-### 最大无效密码登录时间间隔（秒）
+### Maximum Invalid Password Login Time Interval (Seconds)
 
-设置计算用户最大无效登录次数的时间间隔，单位为秒。
+Set the time interval (in seconds) for calculating the maximum number of invalid login attempts by a user.
 
-### 锁定时间（秒）
+### Lockout Duration (Seconds)
 
-设置用户超过无效密码登录限制以后，锁定用户的时间（0 代表不限制）。用户被锁定期间，将禁止以任何认证方式访问系统，包括 API keys. 如果需要主动解锁用户，可以参考 [用户锁定](./user-lockout.md)。
+Set the duration for which a user is locked out after exceeding the invalid password login limit (0 means no restriction). During the lockout period, the user is prohibited from accessing the system through any authentication method, including API keys. If manual unlocking is required, refer to [User Lockout](./user-lockout.md).
 
-### 场景
+### Scenarios
 
-#### 不限制
+#### No Restrictions
 
-不限制用户无效密码尝试次数。
+No restrictions on the number of invalid password attempts by users.
 
 ![](https://static-docs.nocobase.com/202412281343226.png)
 
-#### 限制尝试频率，不锁定用户
+#### Limit Attempt Frequency, Do Not Lock User
 
-例：用户每 5 分钟可以最多尝试登录 5 次。
+Example: A user can attempt to log in up to 5 times every 5 minutes.
 
 ![](https://static-docs.nocobase.com/202412281344412.png)
 
-#### 超过限制后锁定用户
+#### Lock User After Exceeding Limit
 
-例：用户 5 分钟内连续 5 次无效密码登录，锁定用户 2 小时。
+Example: If a user makes 5 consecutive invalid password login attempts within 5 minutes, the user is locked out for 2 hours.
 
 ![](https://static-docs.nocobase.com/202412281344952.png)
 
-### 配置建议
+### Configuration Recommendations
 
-- 无效密码登录次数和时间间隔配置通常用于限制短时间内高频的密码登录尝试，防止暴力破解。
-- 超过限制是否锁定用户需要结合实际的使用场景考虑。锁定时间设置可能被恶意利用，攻击者可能针对目标账号故意多次输入错误密码，迫使账号被锁定，无法正常使用。可以结合 IP 限制，API 频率限制等手段来防范这类攻击。
-- 由于账号锁定将无法进入系统，包括管理员账号，可以在系统中设置多个有权限解锁用户的账号。
+- The number of invalid password login attempts and the time interval configuration are typically used to limit high-frequency password login attempts within a short period, preventing brute-force attacks.
+- Whether to lock the user after exceeding the limit should be considered based on actual usage scenarios. The lockout duration setting may be maliciously exploited, as attackers could intentionally enter incorrect passwords multiple times for a target account, forcing the account to be locked and rendering it unusable. This can be mitigated by combining IP restrictions, API rate limits, and other measures.
+- Since account lockout prevents access to the system, including administrator accounts, it is advisable to set up multiple accounts in the system that have the authority to unlock users.

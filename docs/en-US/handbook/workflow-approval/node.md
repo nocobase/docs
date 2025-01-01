@@ -77,16 +77,34 @@ In this configuration window, you can add blocks such as approval submission det
 
 ![Add Block in Interface Configuration](https://static-docs.nocobase.com/9f8f11926e935ad8f8fbeec368edebfe.png)
 
+### Details Block
+
 The approval content details block includes the data submitted by the initiator. Similar to a standard data block, you can freely add field components from the data table and arrange them to organize the content that the approver needs to review:
 
 ![Details Block in Interface Configuration](https://static-docs.nocobase.com/1140ec13caeea1b364d12e057720a29c.png)
 
-The operation bar can include buttons supported by this node, such as "Approve," "Reject," and "Return":
+### Form Block
 
-![Operation Bar in Interface Configuration](https://static-docs.nocobase.com/1bb090ed123f62ba8a524a3e9e7da328.png)
+The operation form block can include buttons supported by this node, such as "Approve," "Reject," "Return," "Reassign," and "Add Approver":
 
-Additionally, the operation bar can include fields for approvers to fill out, such as a "Comment" field.
+![Operation Form Block in Interface Configuration](https://static-docs.nocobase.com/20241226232013.png)
+
+### "Approve," "Reject," and "Return"
+
+Among the approval operation buttons, "Approve," "Reject," and "Return" are decisive actions. Once submitted, the approver's task at this node is completed. Additional fields to be filled out during submission, such as "Comments," can be added in the "Processing Configuration" pop-up for each button.
+
+![Operation Form Processing Configuration](https://static-docs.nocobase.com/20241226232225.png)
+
+### "Reassign" and "Add Approver"
+
+"Reassign" and "Add Approver" are non-decisive operations used to dynamically adjust the approvers in the approval workflow. "Reassign" transfers the current user's approval task to another user, while "Add Approver" inserts an additional approver before or after the current approver, allowing the new approver to continue the approval process.
+
+After enabling the "Reassign" or "Add Approver" operation buttons, you need to set the "Assignable User Range" in the button's configuration menu to define the scope of users who can be assigned as new approvers:
+
+![Operation Form Assignable User Range](https://static-docs.nocobase.com/20241226232321.png)
+
+Similar to the node's original approver configuration, the assignable user range can be directly selected approvers or based on query conditions from the user table. The final result will be a merged collection, excluding users already in the approver collection.
 
 :::warning{title=Important}
-If you enable or disable a button in the operation bar, be sure to save the node configuration after closing the interface configuration window. Otherwise, the changes will not take effect.
+If you enable or disable an operation button, or modify the assignable user range, ensure to save the node configuration after closing the interface configuration window. Otherwise, the changes to the operation button will not take effect.
 :::
