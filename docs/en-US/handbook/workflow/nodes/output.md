@@ -1,3 +1,3 @@
 # Output
 
-参考 [子流程插件：流程输出](../../workflow-subflow/index.md#流程输出节点)。
+Refer to [Subprocess Plugin: Process Output](../../workflow-subflow/index.md#process-output-node).

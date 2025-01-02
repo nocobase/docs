@@ -1,131 +1,131 @@
-# 集群模式
+# Cluster Mode
 
-NocoBase 自 v1.6.0 版本开始支持以集群模式运行应用。应用以集群模式运行时，可以通过多个实例和使用多核模式来提高应用的对并发访问处理的性能。
+Starting from version v1.6.0, NocoBase supports running applications in cluster mode. When an application runs in cluster mode, its performance in handling concurrent accesses can be improved through multiple instances and using a multi-core mode.
 
-## 系统架构
+## System Architecture
 
 ![20241231010814](https://static-docs.nocobase.com/20241231010814.png)
 
-### 架构组件
+### Architectural Components
 
-目前的集群模式仅针对应用实例，分布式架构中的其他系统组件根据不同团队的运维需求，在符合当前约束的条件下，由团队的运维人员自行选用。
+The current cluster mode is focused solely on application instances. Other system components in the distributed architecture can be selected by the operations personnel of different teams according to their operational requirements, as long as they comply with the current constraints.
 
-#### 应用集群
+#### Application Cluster
 
-应用集群是 NocoBase 应用的实例集合，每个实例可以是一个独立的节点，或是在单机上以多核模式运行的多个应用进程，也可以两者混合使用。
+The application cluster is a collection of instances of NocoBase applications, where each instance can be an independent node or multiple application processes running on a single machine in multi-core mode, or a combination of both.
 
-#### 数据库
+#### Database
 
-由于目前的集群模式只针对应用实例，数据库暂时只支持单节点，如有主从等数据库架构，需要自行通过中间件实现，并保证对 NocoBase 应用透明。
+Since the current cluster mode only targets application instances, the database currently only supports a single node. For setups such as master-slave databases, it must be implemented through middleware independently, ensuring transparency to the NocoBase application.
 
-#### 缓存、同步消息和分布式锁
+#### Caching, Synchronization Messages, and Distributed Locks
 
-NocoBase 集群模式需要依赖缓存、同步消息和分布式锁等中间件来实现集群间的通信和协调，目前初步支持使用 Redis 作为相应功能的中间件。
+The NocoBase cluster mode relies on middleware such as caching, synchronization messages, and distributed locks to achieve communication and coordination between clusters. Currently, Redis is preliminarily supported as middleware for these functionalities.
 
-#### 负载均衡
+#### Load Balancing
 
-NocoBase 集群模式需要通过负载均衡器来实现请求的分发，以及应用实例的健康检查和故障转移。该部分根据团队运维需求自行选择和配置。
+The NocoBase cluster mode requires a load balancer to distribute requests and perform health checks and failover for application instances. This part should be selected and configured according to the operations needs of the team.
 
-## 部署步骤
+## Deployment Steps
 
-### 基础设施准备
+### Infrastructure Preparation
 
-#### 负载均衡
+#### Load Balancer
 
-以自建 Nginx 为例，在配置文件中增加以下内容：
+Taking a self-built Nginx as an example, add the following content to the configuration file:
 
 ```
 upstream myapp {
-    # ip_hash; # 可用于会话保持,开启后来自同一客户端的请求总是发送到同一个后端服务器。
-    server 172.31.0.1:13000; # 内网节点1
-    server 172.31.0.2:13000; # 内网节点2
-    server 172.31.0.3:13000; # 内网节点3
+    # ip_hash; # Can be used for session persistence, once enabled, requests from the same client will always be sent to the same backend server.
+    server 172.31.0.1:13000; # Internal node 1
+    server 172.31.0.2:13000; # Internal node 2
+    server 172.31.0.3:13000; # Internal node 3
 }
 
 server {
     listen 80;
 
     location / {
-        # 使用定义的 upstream 进行负载均衡
+        # Use the defined upstream for load balancing
         proxy_pass http://myapp;
-        # ... 其他配置
+        # ... other configurations
     }
 }
 ```
 
-意为将请求反代分发到不同的服务器节点进行处理。
-其他云服务商提供的负载均衡中间件可参考具体服务商提供的配置文档。
+This means that requests are reverse proxied and distributed to different server nodes for processing. The configurations for load balancing middleware provided by other cloud service providers can be referenced in the specific configuration documentation provided by them.
 
-#### Redis 服务
+#### Redis Service
 
-在集群内网（或 k8s）中，启动一个 Redis 服务。或根据不同功能（缓存、同步消息和分布式锁）各自启用一个 Redis 服务。
+Start a Redis service within the cluster's internal network (or k8s). Alternatively, enable separate Redis services based on different functionalities (caching, synchronization messages, and distributed locks).
 
-#### 本地存储（按需）
+#### Local Storage (Optional)
 
-如使用了本地存储，在多节点模式下应通过挂载云盘作为本地存储目录，以支持多节点共享访问。否则本地存储不会自动同步，将无法正常使用。
+If local storage is used, in a multi-node mode, it should be mounted as a local storage directory to support shared access across multiple nodes. Otherwise, local storage will not automatically synchronize and cannot be used properly.
 
-如不使用本地存储，在应用启动后，需要将基于云服务的文件存储空间设置为默认文件存储空间，并将应用的 Logo（或其他文件）迁移到云存储空间。
+If not using local storage, after the application starts, the cloud service-based file storage space must be set as the default file storage space, and the application’s logo (or other files) should be migrated to the cloud storage space.
 
-### 相关插件准备
+### Related Plugin Preparation
 
-| 功能 | 插件 |
+| Function | Plugin |
 | --- | --- |
-| 缓存 | 内置 |
-| 同步消息 | @nocobase/plugin-pubsub-adapter-redis |
-| 分布式锁 | @nocobase/plugin-lock-adapter-redis |
+| Caching | Built-in |
+| Synchronization Messages | @nocobase/plugin-pubsub-adapter-redis |
+| Distributed Lock | @nocobase/plugin-lock-adapter-redis |
 
-:::info{title=提示}
-与单节点模式的应用一样，只要配置了商业插件服务平台相关的环境变量，应用启动后会自动下载相应的插件。
+:::info{title=Tip}
+Just like applications in single-node mode, as long as the respective environment variables for the commercial plugin service platform are configured, the application will automatically download the corresponding plugins after startup.
 :::
 
-### 环境变量配置
+### Environment Variable Configuration
 
-除基本的环境变量外，以下环境变量所有节点均需配置，且需要保持一致。
+In addition to the basic environment variables, the following environment variables must be configured consistently across all nodes.
 
-#### 应用密钥
+#### Application Key
 
-用于用户登录时创建 JWT Token 的密钥，建议使用随机字符串。
+The key used for creating JWT Tokens during user login; it is recommended to use a random string.
 
 ```ini
 APP_KEY=
 ```
 
-#### 多核模式
+#### Multi-core Mode
 
 ```ini
-# 开启 PM2 多核模式
-# CLUSTER_MODE=max # 默认不开启，需要手动配置
+# Enable PM2 multi-core mode
+# CLUSTER_MODE=max # Default is disabled and needs to be manually configured
 ```
 
-#### 缓存
+#### Caching
 
 ```ini
-# 缓存适配器，集群模式下需要填写为 redis（默认不填为内存）
+# Cache adapter; must be set to redis in cluster mode (default is memory if not set)
 CACHE_DEFAULT_STORE=redis
 
-# Redis 缓存适配器连接地址，需要主动填写
+# Redis cache adapter connection address; must be actively set
 CACHE_REDIS_URL=
 ```
 
-#### 同步消息
+#### Synchronization Messages
 
 ```ini
-# Redis 同步适配器连接地址，默认不填为 redis://localhost:6379/0
+# Redis synchronization adapter connection address; default is redis://localhost:6379/0 if not set
 PUBSUB_ADAPTER_REDIS_URL=
 ```
 
-#### 分布式锁
+#### Distributed Lock
 
 ```ini
-# 锁适配器，集群模式下需要填写为 redis（默认不填为内存本地锁）
+# Lock adapter; must be set to redis in cluster mode (default is memory local lock if not set)
 LOCK_ADAPTER_DEFAULT=redis
 
-# Redis 锁适配器连接地址，默认不填为 redis://localhost:6379/0
+# Redis lock adapter connection address; default is redis://localhost:6379/0 if not set
 LOCK_ADAPTER_REDIS_URL=
 ```
 
-:::info{title=提示}
-通常情况，相关的适配器可以都使用同一个 Redis 实例，但最好区分使用不同的数据库，以避免可能存在的键冲突问题，例如：
+:::info{title=Tip}
+Generally, the related adapters can all use the same Redis instance, but it’s best to distinguish by using different databases to avoid potential key conflict issues.
+Here is the translated Markdown document:
 
 ```ini
 CACHE_REDIS_URL=redis://localhost:6379/0
@@ -134,43 +134,45 @@ LOCK_ADAPTER_REDIS_URL=redis://localhost:6379/2
 ```
 :::
 
-#### 内置插件启用
+#### Enable Built-in Plugins
 
 ```ini
-# 内置要开启的插件
+# Built-in plugins to be enabled
 APPEND_PRESET_BUILT_IN_PLUGINS=lock-adapter-redis,pubsub-adapter-redis
 ```
 
-### 启动应用
+### Start the Application
 
-首次启动应用时，应先启动其中一个节点，等待插件安装完毕并启用后，再启动其他节点。
+When starting the application for the first time, you should first start one of the nodes and wait for the plugins to be installed and enabled before starting the other nodes.
 
-## 升级或维护
+## Upgrade or Maintenance
 
-当需要升级 NocoBase 版本或启用/禁用插件时，参考此流程处理。
+When it is necessary to upgrade the NocoBase version or enable/disable plugins, refer to this process.
 
-:::warning{title=注意}
-在集群生产环境需要谨慎或禁止使用插件管理和版本升级等功能。
+:::warning{title=Note}
+In a cluster production environment, caution or prohibition is advised when using features such as plugin management and version upgrades.
 
-NocoBase 暂时未实现集群版本的在线升级，为确保数据一致性，在升级过程中需要暂停服务。
+NocoBase has not yet implemented online upgrades for the cluster version. To ensure data consistency, services need to be paused during the upgrade process.
 :::
 
-### 停止当前服务
+### Stop Current Services
 
-停止所有 NocoBase 应用实例，Redis 等中间件，并将负载均衡的流量转发至 503 状态页面。
+Stop all NocoBase application instances, middleware such as Redis, and redirect load-balanced traffic to a 503 status page.
 
-### 备份数据
+### Backup Data
 
-在升级前，强烈建议备份数据库数据，以防止升级过程中出现异常。
+Before upgrading, it is strongly recommended to back up database data to prevent issues during the upgrade process.
 
-### 更新版本
+### Update Version
 
-参考 [Docker 升级](../upgrading/docker-compose.md) 更新 NocoBase 应用镜像的版本。
+Refer to [Docker Upgrade](../upgrading/docker-compose.md) to update the version of the NocoBase application image.
 
-### 启动服务
+### Start Services
 
-1. 重新依赖的中间件（Redis）
-2. 启动集群中的一个节点，等待更新完毕并启动成功
-3. 验证功能正确，如有异常且排查无法解决，可回滚至上一个版本
-4. 启动其他节点
-5. 转移负载均衡的流量至应用集群
+1. Restart the dependent middleware (Redis)
+2. Start one node in the cluster and wait for the update to complete and start successfully
+3. Verify functionality; if there are exceptions that cannot be resolved, you may roll back to the previous version
+4. Start the other nodes
+5. Redirect load-balanced traffic to the application cluster
+
+The translated document retains the Markdown format.
