@@ -2690,11 +2690,25 @@ export default [
       //   link: '/handbook/backup-restore',
       // }, // replace by backups manager
       {
-        title: 'Backups Manager',
+        title: 'Backup manager',
         'title.zh-CN': '备份管理器',
         'title.ja-JP': 'バックアップマネージャー',
         // subTitle: '@nocobase/plugin-backups',
         link: '/handbook/backups',
+      },
+      {
+        title: 'Environment variables',
+        'title.zh-CN': '环境变量',
+        'title.ja-JP': '环境变量',
+        // subTitle: '@nocobase/plugin-backups',
+        link: '/handbook/environment-variables',
+      },
+      {
+        title: 'Migration manager',
+        'title.zh-CN': '迁移管理',
+        'title.ja-JP': '迁移管理',
+        // subTitle: '@nocobase/plugin-backups',
+        link: '/handbook/migration-manager',
       },
     ],
   },
