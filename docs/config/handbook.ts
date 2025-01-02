@@ -1984,6 +1984,25 @@ export default [
         link: '/handbook/multi-app-manager',
         // children: ['/plugins/api-doc'],
       },
+      {
+        title: 'Email manager',
+        'title.zh-CN': '邮件管理',
+        'title.ja-JP': '邮件管理',
+        children: [
+          {
+            title: 'Administrator configuration',
+            'title.zh-CN': '管理员配置',
+            'title.ja-JP': '管理者設定',
+            link: '/handbook/email-manager/usage-admin',
+          },
+          {
+            title: 'User manual',
+            'title.zh-CN': '使用手册',
+            'title.ja-JP': 'ユーザーマニュアル',
+            link: '/handbook/email-manager/usage-user',
+          },
+        ]
+      }
     ],
   },
   {
