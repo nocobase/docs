@@ -2,219 +2,238 @@
 
 <PluginInfo commercial="true" name="email-manager"></PluginInfo>
 
-## はじめに
-Email Manager Pluginは、GmailおよびOutlookのメール認証をサポートする効率的で便利なツールです。メール管理と送信機能をさまざまなブロックやページに統合しています。ユーザーは認証を簡単に設定することで、統一されたマルチアカウント管理を実現し、シームレスなメールコミュニケーションを楽しむことができます。
+## イントロダクション
+メール管理プラグインは、高効率で便利なツールであり、GmailとOutlookのメールアカウント認証接続をサポートし、ユーザーがメールの管理や送受信などの機能を各ブロックやページに統合できるようにします。簡単な認証設定を通じて、ユーザーは複数のアカウントを一元管理し、シームレスなメール通信体験を享受できます。
 
 ## 設定プロセス
 
-メールプラグインを有効化した後、管理者は通常のユーザーがNocoBaseにメールアカウントを接続できるように設定を完了する必要があります。現在、認証ログインを通じてのみOutlookとGmailアカウントがサポートされています。MicrosoftおよびGoogleアカウントとの直接統合は利用できません。
+メールプラグインを有効にした後、管理者は関連設定を完了する必要があります。そうしないと、一般ユーザーはNocoBaseにメールアカウントを接続できません（現在、OutlookメールアカウントとGmailメールアカウントの認証ログインのみがサポートされており、MicrosoftアカウントやGoogleアカウントの直接接続には対応していません）。
 
-設定の核心は、メールサービスプロバイダーとのAPI認証を設定することです。管理者は、プラグインの機能を適切に確保するために以下のステップに従う必要があります：
+設定の核心は、メールサービスプロバイダーのAPI呼び出しの認証設定です。管理者は以下の手順を完了し、プラグイン機能が正常に動作することを確認する必要があります。
 
-1. **プロバイダーから認証情報を取得**  
-   - メールサービスプロバイダーの開発者コンソール（例：Google Cloud ConsoleまたはMicrosoft Azure Portal）にログインします。  
+1. **サービスプロバイダーから認証情報を取得する**  
+   - メールサービスプロバイダーの開発者コンソールにログインします（例：Google Cloud ConsoleまたはMicrosoft Azure Portal）。  
    - 新しいアプリまたはプロジェクトを作成し、GmailまたはOutlookメールAPIサービスを有効にします。  
-   - クライアントIDとクライアントシークレットを取得します。  
-   - リダイレクトURIをNocoBase内のプラグインのコールバックアドレスに一致させるよう設定します。  
+   - 対応するクライアントID（Client ID）とクライアントシークレット（Client Secret）を取得します。  
+   - リダイレクトURIを設定し、NocoBaseのプラグインコールバックアドレスと一致することを確認します。
 
-2. **サービスプロバイダーの設定**  
-   - プラグインの設定ページに移動します。  
-   - クライアントIDおよびクライアントシークレットを含む必要なAPI認証詳細を入力し、メールサービスプロバイダーとの適切な統合を確保します。  
+2. **メールサービスプロバイダーの設定**  
+   - メールプラグインの設定ページにアクセスします。  
+   - クライアントID（Client ID）、クライアントシークレット（Client Secret）など、必要なAPI認証情報を提供し、メールサービスプロバイダーの認証と正常に接続することを確認します。
 
 3. **認証ログイン**  
    - ユーザーはOAuthプロトコルを通じてメールアカウントにログインします。  
-   - プラグインは自動的にユーザーの認証トークンを生成し、後続のAPI呼び出しおよびメール操作のために保存します。  
+   - プラグインは自動的にユーザーの認証トークンを生成し、保存し、以降のAPI呼び出しやメール操作に使用します。
 
-4. **メール統合**  
-   - 認証が成功すると、ユーザーのメールアカウントがNocoBaseに統合されます。
-以下是将文档从中文翻译成日文后的内容，保持了 Markdown 格式：
+4. **メール接続**  
+   - ユーザーが成功裏に認証した後、そのメールアカウントはNocoBaseに接続されます。  
+   - プラグインはユーザーのメールデータを同期し、管理やメールの送受信機能を提供します。
 
-```markdown
-- プラグインはメールデータを同期し、管理および送信機能を提供します。
+5. **メール機能の使用**  
+   - ユーザーはプラットフォーム内で直接メールを確認、管理、送信することができます。  
+   - すべての操作はメールサービスプロバイダーのAPI呼び出しを通じて行われ、リアルタイムの同期と効率的な転送が確保されます。
 
-5. **メール機能の使用**
-   - ユーザーはプラットフォーム内で直接メールを表示、管理、送信できます。
-   - すべての操作は、メールサービスプロバイダーへのAPI呼び出しによって完了し、リアルタイムでの同期と効率的なコミュニケーションを確保します。
+上記のプロセスを通じて、NocoBaseのメールプラグインはユーザーに効率的で安全なメール管理サービスを提供します。設定中に問題が発生した場合は、関連文書を参照するか、技術サポートチームに問い合わせてサポートを受けてください。
 
-上記のプロセスに従うことで、NocoBaseメールプラグインは効率的かつ安全なメール管理を提供します。設定中に問題が発生した場合は、関連するドキュメントを参照するか、技術サポートチームに連絡して支援を受けてください。
-
-## プラグインの設定
+## プラグイン設定
 
 ### メールプラグインの有効化
 
-1. プラグイン管理ページに移動します。
-2. 「メールマネージャ」プラグインを見つけて有効にします。
+1. プラグイン管理ページにアクセス 
+2. "Email manager" プラグインを見つけて、有効にします
 
-### メールプロバイダーの設定
+### メールサービスプロバイダーの設定
 
-メールプラグインが有効になったら、メールプロバイダーを設定します。現在、GoogleとMicrosoftのメールサービスがサポートされています。「設定」->「メール設定」をクリックして、設定ページにアクセスします。
+メールプラグインを有効化した後、メールサービスプロバイダーの設定を行うことができます。現在、GoogleとMicrosoftの2種類のメールがサポートされており、上部の "設定" -> "メール設定" をクリックして設定ページに入ります。
 
-![スクリーンショット](https://static-docs.nocobase.com/mail-1733818617187.png)  
-![スクリーンショット](https://static-docs.nocobase.com/mail-1733818617514.png)
+![](https://static-docs.nocobase.com/mail-1733818617187.png)
 
-各プロバイダーにはクライアントIDとクライアントシークレットが必要です。以下のセクションでは、これらのパラメータを取得する方法を詳述します。
+![](https://static-docs.nocobase.com/mail-1733818617514.png)
 
-## Googleの設定
+各サービスプロバイダー内でクライアントIDとクライアントシークレットを記入する必要があります。以下にこれらの2つのパラメータを取得する方法を詳しく説明します。
+
+## Google設定
 
 ### 前提条件
 
-1. ユーザーがGmailアカウントをNocoBaseに接続できるようにするには、バックエンドがGoogle APIを呼び出すため、GoogleサービスへのアクセスをサポートするサーバーにNocoBaseをデプロイする必要があります。
+1. 後にユーザーがGoogleメールをNocoBaseに接続できるようにするためには、Googleサービスにアクセスできるサーバーにデプロイする必要があります。バックエンドでGoogle APIが呼び出されます。
+    
+### アカウント登録
 
-### アカウントの登録
+1. https://console.cloud.google.com/welcome を開いてGoogle Cloudに入ります。  
+2. 初回訪問時には関連条項に同意する必要があります。
 
-1. [Google Cloud Console](https://console.cloud.google.com/welcome)を開きます。
-2. 初回アクセス時に利用規約に同意します。
-
-![スクリーンショット](https://static-docs.nocobase.com/mail-1733818617807.png)
+![](https://static-docs.nocobase.com/mail-1733818617807.png)
 
 ### アプリの作成
 
-1. 上部の「プロジェクトを選択」をクリックします。  
-![スクリーンショット](https://static-docs.nocobase.com/mail-1733818618126.png)  
+1. 上部の "プロジェクトを選択" をクリックします。
 
-2. モーダルで「新しいプロジェクト」をクリックします。  
-![スクリーンショット](https://static-docs.nocobase.com/mail-1733818618329.png)  
+![](https://static-docs.nocobase.com/mail-1733818618126.png)
 
-3. プロジェクトの詳細を入力します。  
-![スクリーンショット](https://static-docs.nocobase.com/mail-1733818618510.png)  
-```
+2. ポップアップ内の "新しいプロジェクト" ボタンをクリックします。
 
-以上が翻訳された文書です。
-以下是翻译后的 Markdown 文档内容：
+![](https://static-docs.nocobase.com/mail-1733818618329.png)
 
-4. 作成したプロジェクトを選択します。  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818618828.png)  
+3. プロジェクト情報を記入します。
 
-### Gmail APIを有効にする
+![](https://static-docs.nocobase.com/mail-1733818618510.png)
 
-1. 「APIとサービス」をクリックします。  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818619230.png)  
+4. プロジェクト作成が完了後、プロジェクトを選択します。
 
-2. 「APIとサービス」パネルに入ります。  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818619419.png)  
+![](https://static-docs.nocobase.com/mail-1733818618828.png)
 
-3. 「mail」を検索します。  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818619810.png)  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818620020.png)  
+![](https://static-docs.nocobase.com/mail-1733818619044.png)
 
-4. 「有効にする」をクリックしてGmail APIをアクティブにします。  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818620589.png)  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818620885.png)  
+### Gmail APIの有効化
 
-### OAuth同意画面を設定する
+1. "APIとサービス" ボタンをクリックします。
+![](https://static-docs.nocobase.com/mail-1733818619230.png)
 
-1. 左側の「OAuth同意画面」をクリックします。  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818621104.png)  
+2. APIs & Services パネルに移動
 
-2. 「外部」を選択します。  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818621322.png)  
+![](https://static-docs.nocobase.com/mail-1733818619419.png)
 
-3. プロジェクト情報（認証ページに表示される）を入力し、保存します。  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818621538.png)  
+3. "mail" を検索
 
-4. 開発者連絡先情報を入力し、「続行」をクリックします。  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818621749.png)  
+![](https://static-docs.nocobase.com/mail-1733818619810.png)
 
-5. 「続行」をクリックします。  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818622121.png)  
+![](https://static-docs.nocobase.com/mail-1733818620020.png)
 
-6. プレリリーステスト用のテストユーザーを追加します。  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818622332.png)  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818622537.png)  
+4. "ENABLE" ボタンをクリックして、Gmail API を有効にする
 
-7. 「続行」をクリックします。  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818622753.png)  
+![](https://static-docs.nocobase.com/mail-1733818620589.png)
 
-8. 概要情報を確認し、コントロールパネルに戻ります。  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818622984.png)  
+![](https://static-docs.nocobase.com/mail-1733818620885.png)
 
-### 資格情報を作成する
+### OAuth 同意画面の設定
 
-1. 左側の「資格情報」をクリックします。  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818623168.png)  
+1. 左側の "OAuth consent screen" メニューをクリック
 
-2. 「資格情報を作成」をクリックし、「OAuthクライアントID」を選択します。  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818623386.png)
-以下是翻译后的文档内容：
+![](https://static-docs.nocobase.com/mail-1733818621104.png)
 
-3. **Web アプリケーションを選択します。**  
-![スクリーンショット](https://static-docs.nocobase.com/mail-1733818623758.png)  
+2. "External" を選択
 
-4. アプリケーションの詳細を入力します。  
-![スクリーンショット](https://static-docs.nocobase.com/mail-1733818623992.png)  
+![](https://static-docs.nocobase.com/mail-1733818621322.png)
 
-5. 最終的なデプロイメントのドメインを入力します (例: NocoBase テストアドレス)。  
-![スクリーンショット](https://static-docs.nocobase.com/mail-1733818624188.png)  
+3. プロジェクト情報を入力（後の承認ページに表示されます）して保存をクリック
 
-6. 認可されたコールバック URI を追加します: `ドメイン + "/admin/settings/mail/oauth2"`。例: `https://pr-1-mail.test.nocobase.com/admin/settings/mail/oauth2`。  
-![スクリーンショット](https://static-docs.nocobase.com/mail-1733818624449.png)  
+![](https://static-docs.nocobase.com/mail-1733818621538.png)
 
-7. "Create" をクリックして OAuth の詳細を表示します。  
-![スクリーンショット](https://static-docs.nocobase.com/mail-1733818624701.png)  
+4. 開発者連絡先情報を入力し、続行をクリック
 
-8. メール設定ページにクライアント ID とクライアント シークレットをコピーします。  
-![スクリーンショット](https://static-docs.nocobase.com/mail-1733818624923.png)  
+![](https://static-docs.nocobase.com/mail-1733818621749.png)
 
-9. 設定を完了するには "Save" をクリックします。
+5. 続行をクリック
 
-### アプリの公開
+![](https://static-docs.nocobase.com/mail-1733818622121.png)
 
-設定とテストを完了したら、ユーザーのパーミッションを確認し、アプリを検証に提出します。
+6. テストユーザーを追加して、アプリの公開前にテストを行う
 
-1. "OAuth コンセント スクリーン" メニューをクリックします
+![](https://static-docs.nocobase.com/mail-1733818622332.png)
+
+![](https://static-docs.nocobase.com/mail-1733818622537.png)
+
+7. 続行をクリック
+
+![](https://static-docs.nocobase.com/mail-1733818622753.png)
+
+8. 概要情報を確認し、コントロールパネルに戻る
+
+![](https://static-docs.nocobase.com/mail-1733818622984.png)
+
+### クレデンシャルの作成
+
+1. 左側の "Credentials" メニューをクリック
+
+![](https://static-docs.nocobase.com/mail-1733818623168.png)
+
+2. "CREATE CREDENTIALS" ボタンをクリックし、"OAuth client ID" を選択
+
+![](https://static-docs.nocobase.com/mail-1733818623386.png)
+
+3. "Web application" を選択
+
+![](https://static-docs.nocobase.com/mail-1733818623758.png)
+
+4. アプリ情報を入力
+
+![](https://static-docs.nocobase.com/mail-1733818623992.png)
+
+5. プロジェクトの最終的なデプロイ先のドメイン名を入力（ここではNocoBaseのテストアドレスの例）
+
+![](https://static-docs.nocobase.com/mail-1733818624188.png)
+
+6. 認可コールバックURLを追加します。必ず `ドメイン名 + "/admin/settings/mail/oauth2"` にする必要があります。例：`https://pr-1-mail.test.nocobase.com/admin/settings/mail/oauth2`
+
+![](https://static-docs.nocobase.com/mail-1733818624449.png)
+
+7. 作成をクリックし、OAuth情報を確認できる
+
+![](https://static-docs.nocobase.com/mail-1733818624701.png)
+
+8. Client ID と Client secret の内容をそれぞれコピーしてメール設定ページに貼り付ける
+
+![](https://static-docs.nocobase.com/mail-1733818624923.png)
+
+9. 保存をクリックして、設定が完了
+### アプリケーションの公開
+
+上記のプロセスが完了し、テストユーザーの認可ログインやメール送信などの機能テストが完了した後に公開を行います。
+
+1. "OAuth同意画面" メニューをクリックします。
 
 ![](https://static-docs.nocobase.com/mail-1733818625124.png)
 
-2. 「EDIT APP」ボタンをクリックし、下部の「SAVE AND CONTINUE」ボタンをクリックします
+2. "EDIT APP" ボタンをクリックし、その後下部の "SAVE AND CONTINUE" ボタンをクリックします。
 
 ![](https://static-docs.nocobase.com/mail-1735633686380.png)
 
 ![](https://static-docs.nocobase.com/mail-1735633686750.png)
 
-3. ユーザーのパーミッションを選択するには「ADD OR REMOVE SCOPES」ボタンをクリックします
+3. "ADD OR REMOVE SCOPES" ボタンをクリックして、ユーザー権限の範囲を選択します。
 
 ![](https://static-docs.nocobase.com/mail-1735633687054.png)
 
-4.検索フィールドに「Gmail API」を入力し、「Gmail API」をチェックし、スコープ値が「https://mail.google.com/」であることを確認します。
+4. "Gmail API" と入力して検索し、"Gmail API" にチェックを入れます（Scope値が "https://mail.google.com/" の Gmail APIであることを確認してください）。
 
 ![](https://static-docs.nocobase.com/mail-1735633687283.png)
 
-5. 下部の「UPDATE」ボタンをクリックして保存します
+5. 下部の "UPDATE" ボタンをクリックして保存します。
 
 ![](https://static-docs.nocobase.com/mail-1735633687536.png)
 
-6. 各ページの下部の「SAVE AND CONTINUE」ボタンをクリックし、コントロールパネルページに戻るには「BACK TO DASHBOARD」ボタンをクリックします
+6. 各ページの下部にある "SAVE AND CONTINUE" ボタンをクリックし、最後に "BACK TO DASHBOARD" ボタンをクリックしてダッシュボードページに戻ります。
 
 ![](https://static-docs.nocobase.com/mail-1735633687744.png)
-以下是翻译后的文档内容，保持了 Markdown 格式：
 
 ![](https://static-docs.nocobase.com/mail-1735633687912.png)
 
 ![](https://static-docs.nocobase.com/mail-1735633688075.png)
 
-7. 「アプリを公開」ボタンをクリックすると、公開に必要な内容の確認ページが表示されます。その後、「確認」ボタンをクリックします。
+7. "PUBLISH APP" ボタンをクリックすると、公開確認ページが表示され、公開に必要な関連内容がリストされます。その後、"CONFIRM" ボタンをクリックします。
 
 ![](https://static-docs.nocobase.com/mail-1735633688257.png)
 
-8. コンソールページに戻ると、公開ステータスが「製作中」と表示されます。
+8. 再度コントロールパネルページに戻ると、公開状態が "In production" であることが確認できます。
 
 ![](https://static-docs.nocobase.com/mail-1735633688425.png)
 
-9. 「検証の準備」ボタンをクリックし、必要な情報を入力し、「保存して続ける」ボタンをクリックします（画像内のデータは参考用です）。
+9. "PREPARE FOR VERIFICATION" ボタンをクリックして、必須の関連情報を入力し、"SAVE AND CONTINUE" ボタンをクリックします（画像内のデータは例示のみです）。
 
 ![](https://static-docs.nocobase.com/mail-1735633688634.png)
 
 ![](https://static-docs.nocobase.com/mail-1735633688827.png)
 
-10. 必要な情報を引き続き入力します（画像内のデータは参考用です）。
+10. 引き続き関連する必要な情報を入力します（画像内のデータは例示のみです）。
 
 ![](https://static-docs.nocobase.com/mail-1735633688993.png)
 
-11. 「保存して続ける」ボタンをクリックします。
+11. "SAVE AND CONTINUE" ボタンをクリックします。
 
 ![](https://static-docs.nocobase.com/mail-1735633689159.png)
 
-12. 「検証のために提出」ボタンをクリックして検証の提出を行います。
+12. "SUBMIT FOR VERIFICATION" ボタンをクリックして、Verification を提出します。
 
 ![](https://static-docs.nocobase.com/mail-1735633689318.png)
 
@@ -222,119 +241,113 @@ Email Manager Pluginは、GmailおよびOutlookのメール認証をサポート
 
 ![](https://static-docs.nocobase.com/mail-1735633689494.png)
 
-14. 承認が得られなかった場合、ユーザーは安全でないリンクをクリックしてログインを許可できます。
+14. 承認がまだ通らない場合、ユーザーは unsafe リンクをクリックして認可ログインを行うことができます。
 
 ![](https://static-docs.nocobase.com/mail-1735633689645.png)
 
-## Microsoft 設定
+## マイクロソフトの設定
 
-### アカウントを登録
+### アカウントの登録
 
-1. https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account にアクセスします。
-
-2. Microsoft アカウントにログインします。
+1. https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account を開きます。
+    
+2. マイクロソフトアカウントにログインします。
 
 ![](https://static-docs.nocobase.com/mail-1733818625779.png)
 
-### テナントを作成
+### テナントの作成
 
-1. https://azure.microsoft.com/zh-cn/pricing/purchase-options/azure-account?icid=azurefreeaccount にアクセスし、アカウントにログインします。
+1. https://azure.microsoft.com/ja-jp/pricing/purchase-options/azure-account?icid=azurefreeaccount を開き、アカウントにログインします。
 
-2. 基本情報を入力し、検証コードを取得します。
+2. 基本情報を記入し、認証コードを取得します。
 
 ![](https://static-docs.nocobase.com/mail-1733818625984.png)
 
-3. 追加情報を入力し、続行します。
+3. その他の情報を記入し、続行します。
 
 ![](https://static-docs.nocobase.com/mail-1733818626352.png)
-以下是将您的 Markdown 文档从中文翻译成日文的结果：
 
-```markdown
-4. クレジットカード情報を入力します（今はこのステップをスキップできます）
+4. クレジットカード関連情報を記入します（作成は後でも可能です）。
 
 ![](https://static-docs.nocobase.com/mail-1733818626622.png)
 
-### クライアントIDを取得する
+### Client IDの取得
 
-1. 上部メニューをクリックし、「Microsoft Entra ID」を選択します
+1. 画面上部のメニューをクリックし、"Microsoft Entra ID" を選択します。
 
 ![](https://static-docs.nocobase.com/mail-1733818626871.png)
 
-2. 左側の「アプリ登録」を選択します
+2. 左側の "App registrations" を選択します。
 
 ![](https://static-docs.nocobase.com/mail-1733818627097.png)
 
-3. 上部の「新しい登録」をクリックします
+3. 上部の "New registration" をクリックします。
 
 ![](https://static-docs.nocobase.com/mail-1733818627309.png)
 
-4. 情報を入力して送信します
+4. 情報を記入し、送信します。
 
-好きな名前を選ぶことができ、アカウントタイプのオプションは画像を参照し、リダイレクトURIは今のところ空白のままにします
+名前は自由に設定できます。account typesは下図を参照して選択し、Redirect URIは未記入のままで大丈夫です。
 
 ![](https://static-docs.nocobase.com/mail-1733818627555.png)
 
-5. クライアントIDを取得します
+5. Client IDを取得します。
 
 ![](https://static-docs.nocobase.com/mail-1733818627797.png)
 
-### API認証
+### APIの許可
 
-1. 右側の「API権限」メニューを開きます
+1. 右側の "API permissions" メニューを開きます。
 
 ![](https://static-docs.nocobase.com/mail-1733818628178.png)
 
-2. 「権限の追加」ボタンをクリックします
+2. "Add a permission" ボタンをクリックします。
 
 ![](https://static-docs.nocobase.com/mail-1733818628448.png)
 
-3. 「Microsoft Graph」をクリックします
+3. "Microsoft Graph" をクリックします。
 
 ![](https://static-docs.nocobase.com/mail-1733818628725.png)
 
 ![](https://static-docs.nocobase.com/mail-1733818628927.png)
 
-4. 次の権限を検索して追加します。最終的な結果は次のようになります
-
+4. 以下の権限を検索して追加します。最終結果は以下の図の通りです。
+    
     1. `"email"`
     2. `"offline_access"`
     3. `"IMAP.AccessAsUser.All"`
     4. `"SMTP.Send"`
     5. `"offline_access"`
-    6. `"User.Read"`（デフォルト）
+    6. `"User.Read"` (デフォルトとして)
 
 ![](https://static-docs.nocobase.com/mail-1733818629130.png)
 
-### シークレットを取得する
+### 秘密鍵の取得
 
-1. 左側の「証明書とシークレット」をクリックします
+1. 左側の "Certificates & secrets" をクリックします。
 
 ![](https://static-docs.nocobase.com/mail-1733818629369.png)
 
-2. 「新しいクライアントシークレット」ボタンをクリックします
+2. "New client secret" ボタンをクリックします。
 
 ![](https://static-docs.nocobase.com/mail-1733818629554.png)
 
-3. 説明と有効期限を入力し、次に追加をクリックします
+3. 説明と有効期限を記入し、追加します。
 
 ![](https://static-docs.nocobase.com/mail-1733818630292.png)
 
-4. シークレットIDを取得します
+4. Secret IDを取得します。
 
 ![](https://static-docs.nocobase.com/mail-1733818630535.png)
 
-5. クライアントIDとクライアントシークレットの両方をコピーしてメール設定ページに入力します
+5. Client IDとClient secretの情報をコピーし、メール設定ページに記入します。
 
 ![](https://static-docs.nocobase.com/mail-1733818630710.png)
 
 ## よくある質問
-```
 
-请随时告诉我是否需要进一步的帮助！
-```markdown
-Q: Microsoftアカウント認証ログイン後、メールが正常に受信できません。
+Q: マイクロソフトアカウントで認証ログイン後、メールが正常に受信できません。
 
-A: 現在、認証ログインにはOutlookおよびGmailアカウントのみがサポートされています。MicrosoftおよびGoogleアカウントはサポートされていません。詳細については、以下を参照してください： [answers.microsoft.com](https://answers.microsoft.com/zh-hans/outlook_com/forum/all/%E7%8E%B0%E6%9C%89%E5%BE%AE%E8%BD%AF%E8%B4%A6/dba12dda-a7c7-4346-8263-53f4a6d9dc68)
+A: 現在はOutlookメールアカウントとGmailメールアカウントの認証ログインのみをサポートしています。MicrosoftアカウントとGoogleアカウントはまだサポートされていません。詳細については、[answers.microsoft.com](https://answers.microsoft.com/zh-hans/outlook_com/forum/all/%E7%8E%B0%E6%9C%89%E5%BE%AE%E8%BD%AF%E8%B4%A6/dba12dda-a7c7-4346-8263-53f4a6d9dc68)を参照してください。
 
-**ヒント**: "本物"のOutlook.comまたはGmailアカウントがあるかどうかわからない場合は、ウェブを通じてOutlook.comまたはGmail.comにアクセスして、ログインおよびメールの送信ができるかどうかを確認してください。できない場合は、対応するメールサービスを持っていない可能性があり、その場合はサービスにサインアップするか、別のメールサービスを利用する必要があります。
-```
+**小ヒント**：自分が「本物の Outlook.com メール」または「Gmail メール」であるかどうかが不確かな場合、Outlook.com または Gmail.com にブラウザでアクセスしてみて、直接ログインできるか、正常に他の人にメールを送れるかを確認してみてください。そうでない場合は、対応するメールサービスを持っていない可能性があるため、先に開設するか別のメールを使用する必要があります。

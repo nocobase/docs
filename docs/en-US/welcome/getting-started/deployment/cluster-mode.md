@@ -125,7 +125,6 @@ LOCK_ADAPTER_REDIS_URL=
 
 :::info{title=Tip}
 Generally, the related adapters can all use the same Redis instance, but it’s best to distinguish by using different databases to avoid potential key conflict issues.
-Here is the translated Markdown document:
 
 ```ini
 CACHE_REDIS_URL=redis://localhost:6379/0
@@ -174,5 +173,3 @@ Refer to [Docker Upgrade](../upgrading/docker-compose.md) to update the version 
 3. Verify functionality; if there are exceptions that cannot be resolved, you may roll back to the previous version
 4. Start the other nodes
 5. Redirect load-balanced traffic to the application cluster
-
-The translated document retains the Markdown format.
