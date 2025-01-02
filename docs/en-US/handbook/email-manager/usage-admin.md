@@ -1,6 +1,6 @@
 # Admin Configuration
 
-<PluginInfo name="email-manager"></PluginInfo>
+<PluginInfo commercial="true" name="email-manager"></PluginInfo>
 
 ## Introduction
 The Email Manager Plugin is an efficient and convenient tool supporting Gmail and Outlook email authorization. It integrates email management and sending capabilities into various blocks and pages. By simply configuring authorization, users can achieve unified multi-account management and enjoy seamless email communication.

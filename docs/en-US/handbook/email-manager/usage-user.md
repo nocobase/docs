@@ -1,6 +1,6 @@
 # User Manual
 
-<PluginInfo name="email-manager"></PluginInfo>
+<PluginInfo commercial="true" name="email-manager"></PluginInfo>
 
 ## Introduction
 The email plugin allows integration of Google and Microsoft email accounts into NocoBase for sending, receiving, viewing, managing emails, and more. Emails can also be integrated into any page or block.
