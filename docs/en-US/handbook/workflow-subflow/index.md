@@ -1,75 +1,75 @@
-# 子流程
+# Subflow
 
 <PluginInfo name="workflow-subflow" link="/handbook/workflow-subflow" commercial="true"></PluginInfo>
 
-用于在一个工作流中调用其他的流程，可以使用当前流程的变量作为子流程的输入，并使用子流程的输出作为当前流程的变量在后续节点中使用。
+Used to call other processes within a workflow, allowing the current process variables to serve as inputs for the subflow, and using the outputs of the subflow as variables in subsequent nodes of the current process.
 
-调用子流程的处理过程如下图所示：
+The process of calling a subflow is illustrated in the diagram below:
 
 ![20241230134634](https://static-docs.nocobase.com/20241230134634.png)
 
-通过子流程可以复用一些通用的流程逻辑，例如发送邮件、短信等，或者将一个复杂的流程拆分为多个子流程，便于管理和维护。
+Subflows can be used to reuse some common process logic, such as sending emails or SMS, or to break a complex process into multiple subflows for easier management and maintenance.
 
-## 使用手册
+## User Manual
 
-本质上工作流不区分一个流程是否是子流程，任意一个工作流都可以作为子流程被其他流程调用，也可以调用其他流程。所有工作流都是平等的，只存在调用和被调用的关系。
+Essentially, workflows do not distinguish whether a process is a subflow or not; any workflow can be called by other processes and can call other processes. All workflows are equal, existing only in a caller and callee relationship.
 
-同样的，子流程的使用分处于两个位置：
+Similarly, the use of subflows occurs in two locations:
 
-1. 主流程中：作为调用方，通过“调用工作流”节点，调用其他的工作流。
-2. 子流程中：作为被调用方，通过“流程输出”节点，保存当前流程中需要输出的变量，可在调用当前流程的工作流中被后续节点使用。
+1. In the main process: as the caller, invoking other workflows through the "Call Workflow" node.
+2. In the subflow: as the callee, saving the variables that need to be output in the current process through the "Process Output" node, which can then be utilized by subsequent nodes in the workflow that calls the current process.
 
-### 调用工作流节点
+### Call Workflow Node
 
-#### 创建节点
+#### Create Node
 
-在工作流配置界面中，点击流程中的加号（“+”）按钮，添加“调用工作流”节点：
+In the workflow configuration interface, click the plus ("+") button within the process to add a "Call Workflow" node:
 
-![添加调用工作流节点](https://static-docs.nocobase.com/20241230001323.png)
+![Add Call Workflow Node](https://static-docs.nocobase.com/20241230001323.png)
 
-#### 配置节点
+#### Configure Node
 
-##### 选择工作流
+##### Select Workflow
 
-选择要调用的工作流，可以通过搜索框快速查找：
+Select the workflow to be called, which can be quickly found using the search box:
 
-![选择工作流](https://static-docs.nocobase.com/20241230001534.png)
+![Select Workflow](https://static-docs.nocobase.com/20241230001534.png)
 
-:::info{title=提示}
-* 未启用的工作流也可以作为子流程被调用。
-* 当前工作流为同步模式时，也只能调用同步模式的子流程。
+:::info{title=Tip}
+* Workflows that are not enabled can still be called as subflows.
+* When the current workflow is in synchronous mode, only synchronous subflows can be called.
 :::
 
-##### 配置工作流的触发器变量
+##### Configure Trigger Variables for the Workflow
 
-选定工作流后，还需要配置触发器的变量，作为触发子流程的输入数据。可以直接选择静态的数据，也可以选择当前流程中的变量：
+After selecting the workflow, you also need to configure the trigger variables as input data for the subflow. You can choose static data directly or select variables from the current process:
 
-![配置触发器变量](https://static-docs.nocobase.com/20241230162722.png)
+![Configure Trigger Variables](https://static-docs.nocobase.com/20241230162722.png)
 
-不同类型的触发器所需的变量不同，可以根据需要在表单上完成配置。
+Different types of triggers require different variables, which can be configured on the form as needed.
 
-### 流程输出节点
+### Process Output Node
 
-#### 创建节点
+#### Create Node
 
-在被调用的工作流中，添加“流程输出”节点：
+In the called workflow, add a "Process Output" node:
 
 ![20241231002033](https://static-docs.nocobase.com/20241231002033.png)
 
-#### 配置节点
+#### Configure Node
 
-##### 输出值
+##### Output Value
 
-输入或选择变量作为输出值，输出值可以是任意类型，可以是常量，如字符串、数字、逻辑值、日期或自定义 JSON 等，也可以是流程中的其他变量。
+Input or select variables as output values. Output values can be of any type, including constants such as strings, numbers, boolean values, dates, or custom JSON. They can also be other variables within the process.
 
 ![20241231003059](https://static-docs.nocobase.com/20241231003059.png)
 
-:::info{title=提示}
-如果在被调用的工作流中添加了多个“流程输出”节点，那么在调用该工作流时，会按最后一个执行的“流程输出”节点的值输出。
+:::info{title=Tip}
+If multiple "Process Output" nodes are added in the called workflow, the value will be output according to the last executed "Process Output" node when calling that workflow.
 :::
 
-### 使用流程输出
+### Using Process Output
 
-回到主流程中，在调用工作流下方的其他节点，要使用子流程的输出值时，可以选择调用工作流节点的结果。如果子流程输出的是一个简单值，如字符串、数字、逻辑值、日期（日期为 UTC 格式的字符串）等，可以直接使用；如果是一个复杂对象（如数据表中的对象），需要先通过 JSON 解析节点进行映射后，才能使用其中的属性，否则只能按整个对象使用。
+Returning to the main process, to use the subflow's output values in other nodes below the call workflow, the result of the call workflow node can be selected. If the subflow outputs a simple value, such as a string, number, boolean value, or date (date in UTC string format), it can be used directly. If it is a complex object (such as an object in a Collection), it must first be mapped through a JSON parsing node before its properties can be used; otherwise, it can only be used as the entire object.
 
-如果子流程没有配置流程输出节点，或者没有输出值，那么在主流程中使用调用工作流节点的结果时，只能获得一个空值（`null`）。
+If the subflow does not configure a process output node or does not output any value, then when using the result of the call workflow node in the main process, only a null value (`null`) will be obtained.

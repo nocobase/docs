@@ -1,212 +1,209 @@
-# 管理员配置
+# 管理者設定
 
 <PluginInfo commercial="true" name="email-manager"></PluginInfo>
 
-## 介绍
-邮件管理插件是一款高效、便捷的工具，支持 Gmail 和 Outlook 邮箱授权接入，帮助用户将邮件管理、邮件收发等能力集成到各区块和页面中。通过简单的授权配置，用户即可实现多账户统一管理，享受无缝的邮件通信体验。
+## イントロダクション
+メール管理プラグインは、高効率で便利なツールであり、GmailとOutlookのメールアカウント認証接続をサポートし、ユーザーがメールの管理や送受信などの機能を各ブロックやページに統合できるようにします。簡単な認証設定を通じて、ユーザーは複数のアカウントを一元管理し、シームレスなメール通信体験を享受できます。
 
-## 配置流程
+## 設定プロセス
 
-开启邮件插件后，管理员需先完成相关配置，普通用户才能将邮箱账号接入到 NocoBase 中（当前仅支持 Outlook 邮箱账户和 Gmail 邮箱账户的授权登录，暂不支持微软账户和谷歌账户的直接接入）。
+メールプラグインを有効にした後、管理者は関連設定を完了する必要があります。そうしないと、一般ユーザーはNocoBaseにメールアカウントを接続できません（現在、OutlookメールアカウントとGmailメールアカウントの認証ログインのみがサポートされており、MicrosoftアカウントやGoogleアカウントの直接接続には対応していません）。
 
-配置的核心在于邮件服务提供商 API 调用的鉴权设置。管理员需完成以下步骤以确保插件功能正常运行：
+設定の核心は、メールサービスプロバイダーのAPI呼び出しの認証設定です。管理者は以下の手順を完了し、プラグイン機能が正常に動作することを確認する必要があります。
 
-1. **从服务商获取鉴权信息**  
-   - 登录邮件服务提供商的开发者控制台（如 Google Cloud Console 或 Microsoft Azure Portal）。  
-   - 创建新的应用或项目，启用 Gmail 或 Outlook 邮箱 API 服务。  
-   - 获取对应的客户端 ID（Client ID）和客户端密钥（Client Secret）。  
-   - 配置重定向 URI，确保与 NocoBase 的插件回调地址一致。  
+1. **サービスプロバイダーから認証情報を取得する**  
+   - メールサービスプロバイダーの開発者コンソールにログインします（例：Google Cloud ConsoleまたはMicrosoft Azure Portal）。  
+   - 新しいアプリまたはプロジェクトを作成し、GmailまたはOutlookメールAPIサービスを有効にします。  
+   - 対応するクライアントID（Client ID）とクライアントシークレット（Client Secret）を取得します。  
+   - リダイレクトURIを設定し、NocoBaseのプラグインコールバックアドレスと一致することを確認します。
 
-2. **邮件服务提供商配置**  
-   - 进入邮件插件的配置页面。  
-   - 提供所需的 API 鉴权信息，包括客户端 ID（Client ID）、客户端密钥（Client Secret）等，确保与邮件服务提供商的授权对接正常。
+2. **メールサービスプロバイダーの設定**  
+   - メールプラグインの設定ページにアクセスします。  
+   - クライアントID（Client ID）、クライアントシークレット（Client Secret）など、必要なAPI認証情報を提供し、メールサービスプロバイダーの認証と正常に接続することを確認します。
 
-3. **授权登录**  
-   - 用户通过 OAuth 协议登录邮箱账户。  
-   - 插件会自动生成并存储用户的授权令牌，用于后续的 API 调用和邮件操作。
+3. **認証ログイン**  
+   - ユーザーはOAuthプロトコルを通じてメールアカウントにログインします。  
+   - プラグインは自動的にユーザーの認証トークンを生成し、保存し、以降のAPI呼び出しやメール操作に使用します。
 
-4. **邮箱接入**  
-   - 用户成功授权后，其邮箱账户将被接入到 NocoBase 中。  
-   - 插件会同步用户的邮件数据并提供管理、收发邮件的功能。
+4. **メール接続**  
+   - ユーザーが成功裏に認証した後、そのメールアカウントはNocoBaseに接続されます。  
+   - プラグインはユーザーのメールデータを同期し、管理やメールの送受信機能を提供します。
 
-5. **邮件功能使用**  
-   - 用户可在平台内直接查看邮件、管理邮件、发送邮件等。  
-   - 所有操作通过邮件服务提供商的 API 调用完成，确保实时同步和高效传输。  
+5. **メール機能の使用**  
+   - ユーザーはプラットフォーム内で直接メールを確認、管理、送信することができます。  
+   - すべての操作はメールサービスプロバイダーのAPI呼び出しを通じて行われ、リアルタイムの同期と効率的な転送が確保されます。
 
-通过上述流程，NocoBase 的邮件插件可为用户提供高效、安全的邮件管理服务。如果在配置过程中遇到问题，请参阅相关文档或联系技术支持团队获取帮助。
+上記のプロセスを通じて、NocoBaseのメールプラグインはユーザーに効率的で安全なメール管理サービスを提供します。設定中に問題が発生した場合は、関連文書を参照するか、技術サポートチームに問い合わせてサポートを受けてください。
 
-## 插件配置
+## プラグイン設定
 
-### 邮件插件开启
+### メールプラグインの有効化
 
-1. 进入插件管理页面 
-2. 找到 "Email manager" 插件，并开启
+1. プラグイン管理ページにアクセス 
+2. "Email manager" プラグインを見つけて、有効にします
 
-### 邮件服务商配置
+### メールサービスプロバイダーの設定
 
-邮件插件开启后可以进行邮件服务商配置，目前支持谷歌和微软两种邮件，点击顶部 "设置" -> "邮件设置"，进入设置页面
+メールプラグインを有効化した後、メールサービスプロバイダーの設定を行うことができます。現在、GoogleとMicrosoftの2種類のメールがサポートされており、上部の "設定" -> "メール設定" をクリックして設定ページに入ります。
 
 ![](https://static-docs.nocobase.com/mail-1733818617187.png)
 
 ![](https://static-docs.nocobase.com/mail-1733818617514.png)
 
-每个服务商内都需要填写 Client Id 和 Client Secret，下面详细介绍如何获取这两个参数
+各サービスプロバイダー内でクライアントIDとクライアントシークレットを記入する必要があります。以下にこれらの2つのパラメータを取得する方法を詳しく説明します。
 
-## 谷歌配置
+## Google設定
 
-### 前置条件
+### 前提条件
 
-1. 想要后续用户能够将谷歌邮箱接入到NocoBase，必须部署在支持访问谷歌服务的服务器上，后台将会调用Google API
+1. 後にユーザーがGoogleメールをNocoBaseに接続できるようにするためには、Googleサービスにアクセスできるサーバーにデプロイする必要があります。バックエンドでGoogle APIが呼び出されます。
     
-### 注册账户
+### アカウント登録
 
-1. 打开 https://console.cloud.google.com/welcome 进入Google Cloud  
-2. 首次进入需要同意相关条款
-    
+1. https://console.cloud.google.com/welcome を開いてGoogle Cloudに入ります。  
+2. 初回訪問時には関連条項に同意する必要があります。
 
 ![](https://static-docs.nocobase.com/mail-1733818617807.png)
 
-### 创建App
+### アプリの作成
 
-1. 点击顶部 "Select a project"
-    
+1. 上部の "プロジェクトを選択" をクリックします。
+
 ![](https://static-docs.nocobase.com/mail-1733818618126.png)
 
-2. 点击浮层内 "NEW PROJECT" 按钮
+2. ポップアップ内の "新しいプロジェクト" ボタンをクリックします。
 
 ![](https://static-docs.nocobase.com/mail-1733818618329.png)
 
-3. 填写项目信息
-    
+3. プロジェクト情報を記入します。
+
 ![](https://static-docs.nocobase.com/mail-1733818618510.png)
 
-4. 项目创建完成后选中项目
+4. プロジェクト作成が完了後、プロジェクトを選択します。
 
 ![](https://static-docs.nocobase.com/mail-1733818618828.png)
 
 ![](https://static-docs.nocobase.com/mail-1733818619044.png)
 
-### 开启 Gmail API
+### Gmail APIの有効化
 
-1. 点击 "APIs & Services" 按钮
-
+1. "APIとサービス" ボタンをクリックします。
 ![](https://static-docs.nocobase.com/mail-1733818619230.png)
 
-2. 进入 APIs & Services 面板
+2. APIs & Services パネルに移動
 
 ![](https://static-docs.nocobase.com/mail-1733818619419.png)
 
-3. 搜索 "mail"
+3. "mail" を検索
 
 ![](https://static-docs.nocobase.com/mail-1733818619810.png)
 
 ![](https://static-docs.nocobase.com/mail-1733818620020.png)
 
-4. 点击 "ENABLE" 按钮，开启 Gmail API
+4. "ENABLE" ボタンをクリックして、Gmail API を有効にする
 
 ![](https://static-docs.nocobase.com/mail-1733818620589.png)
 
 ![](https://static-docs.nocobase.com/mail-1733818620885.png)
 
-### 配置 OAuth consent screen
+### OAuth 同意画面の設定
 
-1. 点击左侧 "OAuth consent screen" 菜单
+1. 左側の "OAuth consent screen" メニューをクリック
 
 ![](https://static-docs.nocobase.com/mail-1733818621104.png)
 
-2. 选择 "External"
+2. "External" を選択
 
 ![](https://static-docs.nocobase.com/mail-1733818621322.png)
 
-3. 填写项目信息（用于后续授权页面显示）点击保存
+3. プロジェクト情報を入力（後の承認ページに表示されます）して保存をクリック
 
 ![](https://static-docs.nocobase.com/mail-1733818621538.png)
 
-4. 填写 Developer contact information，点击继续
+4. 開発者連絡先情報を入力し、続行をクリック
 
 ![](https://static-docs.nocobase.com/mail-1733818621749.png)
 
-5. 点击继续
+5. 続行をクリック
 
 ![](https://static-docs.nocobase.com/mail-1733818622121.png)
 
-6. 添加测试用户，用于App发布前测试
+6. テストユーザーを追加して、アプリの公開前にテストを行う
 
 ![](https://static-docs.nocobase.com/mail-1733818622332.png)
 
 ![](https://static-docs.nocobase.com/mail-1733818622537.png)
 
-7. 点击继续
+7. 続行をクリック
 
 ![](https://static-docs.nocobase.com/mail-1733818622753.png)
 
-8. 查看概览信息，返回控制面板
+8. 概要情報を確認し、コントロールパネルに戻る
 
 ![](https://static-docs.nocobase.com/mail-1733818622984.png)
 
-### 创建凭证 Credentials
+### クレデンシャルの作成
 
-1. 点击左侧 "Credentials" 菜单
+1. 左側の "Credentials" メニューをクリック
 
 ![](https://static-docs.nocobase.com/mail-1733818623168.png)
 
-2. 点击 "CREATE CREDENTIALS" 按钮，选择 "OAuth client ID"
+2. "CREATE CREDENTIALS" ボタンをクリックし、"OAuth client ID" を選択
 
 ![](https://static-docs.nocobase.com/mail-1733818623386.png)
 
-3. 选择 "Web application"
+3. "Web application" を選択
 
 ![](https://static-docs.nocobase.com/mail-1733818623758.png)
 
-4. 填写应用信息
+4. アプリ情報を入力
 
 ![](https://static-docs.nocobase.com/mail-1733818623992.png)
 
-5. 填写项目最终部署的域名（此处示例为NocoBase的测试地址）
+5. プロジェクトの最終的なデプロイ先のドメイン名を入力（ここではNocoBaseのテストアドレスの例）
 
 ![](https://static-docs.nocobase.com/mail-1733818624188.png)
 
-6. 添加授权回调地址，必须为 `域名 + "/admin/settings/mail/oauth2"`，示例：`https://pr-1-mail.test.nocobase.com/admin/settings/mail/oauth2`
+6. 認可コールバックURLを追加します。必ず `ドメイン名 + "/admin/settings/mail/oauth2"` にする必要があります。例：`https://pr-1-mail.test.nocobase.com/admin/settings/mail/oauth2`
 
 ![](https://static-docs.nocobase.com/mail-1733818624449.png)
 
-7. 点击创建，可以查看OAuth信息
+7. 作成をクリックし、OAuth情報を確認できる
 
 ![](https://static-docs.nocobase.com/mail-1733818624701.png)
 
-8. 分别拷贝 Client ID 和 Client serret 内容填写到 邮件配置页面中
+8. Client ID と Client secret の内容をそれぞれコピーしてメール設定ページに貼り付ける
 
 ![](https://static-docs.nocobase.com/mail-1733818624923.png)
 
-9. 点击保存，配置完成  
+9. 保存をクリックして、設定が完了
+### アプリケーションの公開
 
-### 应用发布
+上記のプロセスが完了し、テストユーザーの認可ログインやメール送信などの機能テストが完了した後に公開を行います。
 
-当上述流程完成，以及测试用户授权登录，邮件发送等功能测试完成后进行发布
-
-1. 点击 "OAuth consent screen" 菜单
+1. "OAuth同意画面" メニューをクリックします。
 
 ![](https://static-docs.nocobase.com/mail-1733818625124.png)
 
-2. 点击 "EDIT APP" 按钮，随后点击底部 "SAVE AND CONTINUE" 按钮
+2. "EDIT APP" ボタンをクリックし、その後下部の "SAVE AND CONTINUE" ボタンをクリックします。
 
 ![](https://static-docs.nocobase.com/mail-1735633686380.png)
 
 ![](https://static-docs.nocobase.com/mail-1735633686750.png)
 
-3. 点击 "ADD OR REMOVE SCOPES" 按钮，进行用户权限范围勾选 
+3. "ADD OR REMOVE SCOPES" ボタンをクリックして、ユーザー権限の範囲を選択します。
 
 ![](https://static-docs.nocobase.com/mail-1735633687054.png)
 
-4. 输入 "Gmail API" 进行搜索，然后勾选 "Gmail API"（确认Scope值为 "https://mail.google.com/"的 Gmail API）
+4. "Gmail API" と入力して検索し、"Gmail API" にチェックを入れます（Scope値が "https://mail.google.com/" の Gmail APIであることを確認してください）。
 
 ![](https://static-docs.nocobase.com/mail-1735633687283.png)
 
-5. 点击底部 "UPDATE" 按钮进行保存
+5. 下部の "UPDATE" ボタンをクリックして保存します。
 
 ![](https://static-docs.nocobase.com/mail-1735633687536.png)
 
-6. 点击每个页面底部 "SAVE AND CONTINUE" 按钮，最后点击 "BACK TO DASHBOARD" 按钮返回控制面板页面
+6. 各ページの下部にある "SAVE AND CONTINUE" ボタンをクリックし、最後に "BACK TO DASHBOARD" ボタンをクリックしてダッシュボードページに戻ります。
 
 ![](https://static-docs.nocobase.com/mail-1735633687744.png)
 
@@ -214,145 +211,143 @@
 
 ![](https://static-docs.nocobase.com/mail-1735633688075.png)
 
-7. 点击 "PUBLISH APP" 按钮后出现发布确认页面，罗列了发布需要提供的相关内容。随后点击 "CONFIRM" 按钮
+7. "PUBLISH APP" ボタンをクリックすると、公開確認ページが表示され、公開に必要な関連内容がリストされます。その後、"CONFIRM" ボタンをクリックします。
 
 ![](https://static-docs.nocobase.com/mail-1735633688257.png)
 
-8. 再次回到控制台页面，可以看到发布状态为 "In production"
+8. 再度コントロールパネルページに戻ると、公開状態が "In production" であることが確認できます。
 
 ![](https://static-docs.nocobase.com/mail-1735633688425.png)
 
-9. 点击 "PREPARE FOR VERIFICATION" 按钮，填写必填的相关信息，点击 "SAVE AND CONTINUE" 按钮（图内数据仅为示例）
+9. "PREPARE FOR VERIFICATION" ボタンをクリックして、必須の関連情報を入力し、"SAVE AND CONTINUE" ボタンをクリックします（画像内のデータは例示のみです）。
 
 ![](https://static-docs.nocobase.com/mail-1735633688634.png)
 
 ![](https://static-docs.nocobase.com/mail-1735633688827.png)
 
-10. 继续填写相关必要信息（图内数据仅为示例）
+10. 引き続き関連する必要な情報を入力します（画像内のデータは例示のみです）。
 
 ![](https://static-docs.nocobase.com/mail-1735633688993.png)
 
-11. 点击 "SAVE AND CONTINUE" 按钮
+11. "SAVE AND CONTINUE" ボタンをクリックします。
 
 ![](https://static-docs.nocobase.com/mail-1735633689159.png)
 
-12. 点击 "SUBMIT FOR VERIFICATION" 按钮，提交 Verification
+12. "SUBMIT FOR VERIFICATION" ボタンをクリックして、Verification を提出します。
 
 ![](https://static-docs.nocobase.com/mail-1735633689318.png)
 
-13. 等待审批结果
+13. 承認結果を待ちます。
 
 ![](https://static-docs.nocobase.com/mail-1735633689494.png)
 
-14. 在审批尚未通过的情况下，用户可以点击 unsafe 链接进行授权登录
+14. 承認がまだ通らない場合、ユーザーは unsafe リンクをクリックして認可ログインを行うことができます。
 
 ![](https://static-docs.nocobase.com/mail-1735633689645.png)
-  
-## 微软配置
 
-### 注册账户
+## マイクロソフトの設定
 
-1. 打开 https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account
+### アカウントの登録
+
+1. https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account を開きます。
     
-2. 登录微软账户
-    
+2. マイクロソフトアカウントにログインします。
 
 ![](https://static-docs.nocobase.com/mail-1733818625779.png)
 
-### 创建租户
+### テナントの作成
 
-1. 打开 https://azure.microsoft.com/zh-cn/pricing/purchase-options/azure-account?icid=azurefreeaccount，并登录账户
-    
-2. 填写基本信息，并获取验证码
+1. https://azure.microsoft.com/ja-jp/pricing/purchase-options/azure-account?icid=azurefreeaccount を開き、アカウントにログインします。
+
+2. 基本情報を記入し、認証コードを取得します。
 
 ![](https://static-docs.nocobase.com/mail-1733818625984.png)
 
-3. 填写其他信息并继续
+3. その他の情報を記入し、続行します。
 
 ![](https://static-docs.nocobase.com/mail-1733818626352.png)
 
-4. 填写信用卡相关信息（可以先不创建）
+4. クレジットカード関連情報を記入します（作成は後でも可能です）。
 
 ![](https://static-docs.nocobase.com/mail-1733818626622.png)
 
-### 获取 Client ID
+### Client IDの取得
 
-1. 点击顶部菜单，选择 "Microsoft Entra ID"
+1. 画面上部のメニューをクリックし、"Microsoft Entra ID" を選択します。
 
 ![](https://static-docs.nocobase.com/mail-1733818626871.png)
 
-2. 选择左侧 "App registrations"
+2. 左側の "App registrations" を選択します。
 
 ![](https://static-docs.nocobase.com/mail-1733818627097.png)
 
-3. 点击顶部 "New registration"
+3. 上部の "New registration" をクリックします。
 
 ![](https://static-docs.nocobase.com/mail-1733818627309.png)
 
-4. 填写信息并提交
+4. 情報を記入し、送信します。
 
-名称可以随意，account types参照下图中选择，Redirect URI可以先不填
+名前は自由に設定できます。account typesは下図を参照して選択し、Redirect URIは未記入のままで大丈夫です。
 
 ![](https://static-docs.nocobase.com/mail-1733818627555.png)
 
-5. 获取到 Client ID
+5. Client IDを取得します。
 
 ![](https://static-docs.nocobase.com/mail-1733818627797.png)
 
-### API 授权
+### APIの許可
 
-1. 打开右侧 "API permissions" 菜单
+1. 右側の "API permissions" メニューを開きます。
 
 ![](https://static-docs.nocobase.com/mail-1733818628178.png)
 
-2. 点击 "Add a permisson" 按钮
+2. "Add a permission" ボタンをクリックします。
 
 ![](https://static-docs.nocobase.com/mail-1733818628448.png)
 
-3. 点击 "Microsoft Graph"
+3. "Microsoft Graph" をクリックします。
 
 ![](https://static-docs.nocobase.com/mail-1733818628725.png)
 
 ![](https://static-docs.nocobase.com/mail-1733818628927.png)
 
-4. 搜索并添加如下权限，最终结果如下图
+4. 以下の権限を検索して追加します。最終結果は以下の図の通りです。
     
     1. `"email"`
     2. `"offline_access"`
     3. `"IMAP.AccessAsUser.All"`
     4. `"SMTP.Send"`
     5. `"offline_access"`
-    6. `"User.Read"` (By default)
+    6. `"User.Read"` (デフォルトとして)
 
 ![](https://static-docs.nocobase.com/mail-1733818629130.png)
 
-### 获取秘钥
+### 秘密鍵の取得
 
-1. 点击左侧 "Certificates & secrets"
+1. 左側の "Certificates & secrets" をクリックします。
 
 ![](https://static-docs.nocobase.com/mail-1733818629369.png)
 
-2. 点击 "New client secret" 按钮
+2. "New client secret" ボタンをクリックします。
 
 ![](https://static-docs.nocobase.com/mail-1733818629554.png)
 
-3. 填写描述和过期时间，并添加
+3. 説明と有効期限を記入し、追加します。
 
 ![](https://static-docs.nocobase.com/mail-1733818630292.png)
 
-4. 获取到 Secret ID
+4. Secret IDを取得します。
 
 ![](https://static-docs.nocobase.com/mail-1733818630535.png)
 
-5. 分别拷贝 Client ID 和 Client serret 信息填写到 邮件配置页面中
+5. Client IDとClient secretの情報をコピーし、メール設定ページに記入します。
 
 ![](https://static-docs.nocobase.com/mail-1733818630710.png)
 
+## よくある質問
 
-## 常见问题
+Q: マイクロソフトアカウントで認証ログイン後、メールが正常に受信できません。
 
-Q: 微软账户授权登录后，邮件无法正常接收
+A: 現在はOutlookメールアカウントとGmailメールアカウントの認証ログインのみをサポートしています。MicrosoftアカウントとGoogleアカウントはまだサポートされていません。詳細については、[answers.microsoft.com](https://answers.microsoft.com/zh-hans/outlook_com/forum/all/%E7%8E%B0%E6%9C%89%E5%BE%AE%E8%BD%AF%E8%B4%A6/dba12dda-a7c7-4346-8263-53f4a6d9dc68)を参照してください。
 
-A:  目前只支持Outlook邮箱账户和Gmail邮箱账户授权登录，微软账户和谷歌账户暂不支持，可参考：[answers.microsoft.com](https://answers.microsoft.com/zh-hans/outlook_com/forum/all/%E7%8E%B0%E6%9C%89%E5%BE%AE%E8%BD%AF%E8%B4%A6/dba12dda-a7c7-4346-8263-53f4a6d9dc68)
-
-**小提示**：如果你并不确定自己是不是「真正的 Outlook.com 邮箱」或者「Gmail 邮箱」，可以尝试用网页方式访问 Outlook.com 或 Gmail.com，看看能否直接登录、正常发邮件到别处。如果不行，那就说明你可能并不拥有对应的邮箱服务，需要先开通或改用别的邮箱。
+**小ヒント**：自分が「本物の Outlook.com メール」または「Gmail メール」であるかどうかが不確かな場合、Outlook.com または Gmail.com にブラウザでアクセスしてみて、直接ログインできるか、正常に他の人にメールを送れるかを確認してみてください。そうでない場合は、対応するメールサービスを持っていない可能性があるため、先に開設するか別のメールを使用する必要があります。
