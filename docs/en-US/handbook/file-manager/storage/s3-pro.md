@@ -1,6 +1,6 @@
 # File Storage: S3 (Pro)
 
-<PluginInfo name="file-storage-s3-pro"></PluginInfo>
+<PluginInfo commercial="true" name="file-storage-s3-pro"></PluginInfo>
 
 ## Introduction
 
@@ -8,7 +8,7 @@ Building on the file management plugin, this version adds support for file stora
 
 ## Features
 
-1. **Direct Upload:** Files are uploaded directly to the storage service without passing through the NocoBase server, enabling a more efficient and faster upload experience.
+1. **Client Upload:** Files are uploaded directly to the storage service without passing through the NocoBase server, enabling a more efficient and faster upload experience.
 
 2. **Private Access:** All file URLs are signed temporary authorization addresses, ensuring secure and time-limited access to files.
 
@@ -24,13 +24,13 @@ Building on the file management plugin, this version adds support for file stora
 
 2. Navigate to "Setting -> FileManager" to access the file management settings.
 
-3. Click the "Add new" button and select "S3 Pro storage."
+3. Click the "Add new" button and select "S3 Pro".
 
-![Add Storage](https://static-docs.nocobase.com/file-storage-s3-pro-1735355969140.png)
+![](https://static-docs.nocobase.com/20250102160704938.png)
 
 4. In the pop-up window, you will see a detailed form to fill out. Refer to the following documentation to obtain the relevant parameters for your file service and correctly input them into the form.
 
-![Configuration Form](https://static-docs.nocobase.com/file-storage-s3-pro-1735355969293.png)
+![](https://static-docs.nocobase.com/20250102160811093.png)
 
 ## Service Provider Configuration
 

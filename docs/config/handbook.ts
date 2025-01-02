@@ -1646,17 +1646,18 @@ export default [
                 'title.ja-JP': 'ファイルストレージ：COS',
                 link: '/handbook/file-manager/storage/tencent-cos',
               },
+              {
+                title: 'File storage: S3(Pro)',
+                'title.zh-CN': '文件存储：S3（Pro）',
+                'title.ja-JP': 'ファイルストレージ：S3(Pro)',
+                link: '/handbook/file-manager/storage/s3-pro',
+              },
             ],
           },
           {
             title: 'Development',
             'title.zh-CN': '扩展开发',
             link: '/handbook/file-manager/development',
-          },
-          {
-            title: 'S3(Pro)',
-            'title.zh-CN': 'S3（Pro）',
-            link: '/handbook/file-storage-s3-pro',
           },
         ],
       },

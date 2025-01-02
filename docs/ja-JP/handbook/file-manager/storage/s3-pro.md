@@ -1,6 +1,6 @@
 # 文件存储：S3 (Pro)
 
-<PluginInfo name="file-storage-s3-pro"></PluginInfo>
+<PluginInfo commercial="true" name="file-storage-s3-pro"></PluginInfo>
 
 ## 介绍
 
@@ -8,7 +8,7 @@
 
 ## 功能特点
 
-1. 直连上传：文件上传过程无需经过 NocoBase 服务器，直接对接文件存储服务，实现更加高效、快速的上传体验。
+1. 客户端上传：文件上传过程无需经过 NocoBase 服务器，直接对接文件存储服务，实现更加高效、快速的上传体验。
     
 2. 私有访问：访问文件时，所有的 URL 均为经过签名的临时授权地址，确保文件访问的安全性和时效性。
 
@@ -26,13 +26,13 @@
     
 2. 点击 "Setting-> FileManager" 进入文件管理设置
 
-3. 点击 "Add new" 按钮，选择 "S3 Pro storage"
+3. 点击 "Add new" 按钮，选择 "S3 Pro"
 
-![](https://static-docs.nocobase.com/file-storage-s3-pro-1735355969140.png)
+![](https://static-docs.nocobase.com/20250102160704938.png)
 
 4. 在弹出浮层后，您将看到需要填写的表单内容较多。可以参考后续文档，获取对应文件服务的相关参数信息，并将其正确填写到表单中。
 
-![](https://static-docs.nocobase.com/file-storage-s3-pro-1735355969293.png)
+![](https://static-docs.nocobase.com/20250102160811093.png)
 
 
 ## 服务商配置
