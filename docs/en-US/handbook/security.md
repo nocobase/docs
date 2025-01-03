@@ -1,241 +1,241 @@
-# NocoBase 安全指南
+# NocoBase Security Guide
 
-NocoBase 从功能设计到系统实现都注重数据和应用的安全性。平台内置了用户认证、访问控制、数据加密等多项安全功能，同时允许根据实际需求灵活配置安全策略。无论是保护用户数据、管理访问权限，还是隔离开发和生产环境，NocoBase 都提供了实用的工具和方案。本指南旨在为安全地使用 NocoBase 提供指导，帮助用户保护数据、应用和环境的安全，确保用户安全的前提下高效使用系统功能。
+NocoBase prioritizes data and application security from functional design to system implementation. The platform incorporates multiple security features such as user authentication, access control, and data encryption, while allowing flexible configuration of security policies based on actual needs. Whether it's protecting user data, managing access permissions, or isolating development and production environments, NocoBase provides practical tools and solutions. This guide aims to provide instructions for securely using NocoBase, helping users protect data, applications, and environments, ensuring efficient use of system functions while maintaining user security.
 
-## 用户认证
+## User Authentication
 
-用户认证用于识别用户身份，防止用户在未授权的情况下进入系统，并确保用户身份不被滥用。
+User authentication is used to identify user identities, prevent unauthorized access to the system, and ensure that user identities are not misused.
 
-### Token 策略
+### Token Strategy
 
-默认情况下，NocoBase 使用 JWT (JSON Web Token) 对服务端 API 进行鉴权，并支持设置以下 Token 策略：
+By default, NocoBase uses JWT (JSON Web Token) for server API authentication and supports the following Token strategies:
 
-| 配置项              | 说明                                                                                                                                                                                  |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 会话有效期          | 用户每次登录的最长有效时间，在会话有效期内，Token 会自动更新，超时后要求用户重新登录。                                                                                                |
-| Token 有效期        | 每次签发的 API Token 的有效期。Token 过期后，如果处于会话有效期内，并且没有超过刷新时限，服务端将自动签发新 Token 以保持用户会话，否则要求用户重新登录。（每个 Token 只能被刷新一次） |
-| 过期 Token 刷新时限 | Token 过期后允许刷新的最大时限                                                                                                                                                        |
+| Configuration Item              | Description                                                                                                                                                                                  |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Session Validity                | The maximum valid time for each user login. Within the session validity period, the Token is automatically renewed. After the timeout, the user is required to log in again.                 |
+| Token Validity                  | The validity period of each issued API Token. After the Token expires, if it is within the session validity period and has not exceeded the refresh time limit, the server will automatically issue a new Token to maintain the user session; otherwise, the user is required to log in again. (Each Token can only be refreshed once.) |
+| Expired Token Refresh Time Limit | The maximum time limit allowed for refreshing an expired Token                                                                                                                                 |
 
-通常情况下，我们建议管理员：
+Typically, we recommend administrators:
 
-- 设置一个较短的 Token 有效期来限制 Token 的暴露时间。
-- 设置一个合理的会话有效期，比 Token 有效期长但不宜过长，以平衡用户体验和安全性。利用 Token 自动刷新的机制保证活跃用户会话不中断的同时，减少长期会话被滥用的风险。
-- 设置一个合理的过期 Token 刷新时限，使用户长时间不活跃的情况下 Token 自然过期而不签发新的 Token, 降低用户闲置会话被滥用的风险。
+- Set a short Token validity period to limit Token exposure time.
+- Set a reasonable session validity period, longer than the Token validity period but not excessively long, to balance user experience and security. Utilize the Token auto-refresh mechanism to ensure active user sessions are not interrupted while reducing the risk of long-term session misuse.
+- Set a reasonable expired Token refresh time limit, so that Tokens naturally expire without issuing new Tokens when users are inactive for a long time, reducing the risk of misuse of idle user sessions.
 
 ![](https://static-docs.nocobase.com/202501031613500.png)
 
-### Token 客户端存储
+### Token Client Storage
 
-默认情况下，用户 Token 存储在浏览器的 LocalStorage 中。关闭浏览器页面后再次打开，如果 Token 还在有效期内，用户不需要重新登录。
+By default, user Tokens are stored in the browser's LocalStorage. If the Token is still valid when the browser page is reopened, the user does not need to log in again.
 
-如果你希望用户每次进入页面都需要重新登录，可以设置环境变量 `API_CLIENT_STORAGE_TYPE=sessionStorage`, 将用户 Token 保存到浏览器的 SessionStorage 中，以达到用户每次打开页面重新登录的目的。
+If you want users to log in again every time they enter the page, you can set the environment variable `API_CLIENT_STORAGE_TYPE=sessionStorage` to save the user Token in the browser's SessionStorage, achieving the goal of requiring users to log in again each time they open the page.
 
-### 密码策略
+### Password Policy
 
-> 专业版及以上
+> Professional Edition and above
 
-NocoBase 支持为所有用户设置密码规则和密码登录尝试锁定策略，来增强启用了密码登录的 NocoBase 应用的安全性。你可以参考[密码策略](./password-policy/index.md)了解每一个配置项。
+NocoBase supports setting password rules and password login attempt lockout policies for all users to enhance the security of NocoBase applications that have password login enabled. You can refer to [Password Policy](./password-policy/index.md) to understand each configuration item.
 
-#### 密码规则
+#### Password Rules
 
-| 配置项                     | 说明                                                     |
-| -------------------------- | -------------------------------------------------------- |
-| **密码长度**               | 密码的最小长度要求，最大长度为 64。                      |
-| **密码复杂度**             | 设置密码的复杂度要求，必须包含的字符种类。               |
-| **不能在密码中包含用户名** | 设置密码是否能包含当前用户的用户名。                     |
-| **记住密码历史**           | 记住用户最近使用的密码个数，用户修改密码时不能重复使用。 |
+| Configuration Item                     | Description                                                     |
+| -------------------------------------- | -------------------------------------------------------------- |
+| **Password Length**                    | The minimum length requirement for passwords, with a maximum length of 64. |
+| **Password Complexity**                | Set the complexity requirements for passwords, including the types of characters that must be included. |
+| **Username Cannot Be Included in Password** | Set whether the password can include the current user's username. |
+| **Remember Password History**          | Remember the number of recently used passwords. Users cannot reuse these passwords when changing their password. |
 
-#### 密码过期配置
+#### Password Expiration Configuration
 
-| 配置项                   | 说明                                                                                                                                   |
-| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
-| **密码有效期**           | 用户密码的有效期，密码过期后，需要管理员重新设置密码，用户才可以使用密码登录。<br>如果有配置其他的登录方式，用户可以使用其他方式登录。 |
-| **密码过期提示通知渠道** | 用户密码到期的 10 天内，用户每次登录时，发送提醒。                                                                                     |
+| Configuration Item                   | Description                                                                                                                                   |
+| ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Password Validity Period**         | The validity period of the user's password. After the password expires, the administrator needs to reset the password before the user can log in using the password.<br>If other login methods are configured, users can use those methods to log in. |
+| **Password Expiration Notification Channel** | Within 10 days of the user's password expiration, a reminder is sent each time the user logs in.                                                                                     |
 
-#### 密码登录安全
+#### Password Login Security
 
-| 配置项                             | 说明                                                                                                                                |
-| ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **最大无效密码登录尝试次数**       | 设置用户在规定时间间隔内最多可以尝试登录次数。                                                                                      |
-| **最大无效密码登录时间间隔（秒）** | 设置计算用户最大无效登录次数的时间间隔，单位为秒。                                                                                  |
-| **锁定时间（秒）**                 | 设置用户超过无效密码登录限制以后，锁定用户的时间（0 代表不限制）。<br>用户被锁定期间，将禁止以任何认证方式访问系统，包括 API keys。 |
+| Configuration Item                             | Description                                                                                                                                |
+| ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| **Maximum Invalid Password Login Attempts**    | Set the maximum number of login attempts a user can make within a specified time interval.                                                |
+| **Maximum Invalid Password Login Time Interval (seconds)** | Set the time interval for calculating the maximum number of invalid login attempts, in seconds.                                           |
+| **Lockout Time (seconds)**                     | Set the time the user is locked out after exceeding the invalid password login limit (0 means no limit).<br>During the lockout period, the user is prohibited from accessing the system using any authentication method, including API keys. |
 
-通常情况下，我们建议：
+Typically, we recommend:
 
-- 设置强度较高的密码规则，以降低密码被关联性猜测、暴力破解的风险。
-- 设置合理的密码有效期，以强制用户定期更换密码。
-- 结合无效密码登录次数和时间配置，限制短时间内高频的密码登录尝试，防止暴力破解密码的行为。
-- 如果在安全要求比较严格的场景下，可以设置一个合理的超过登录限制锁定用户的时间。但需要注意的是，锁定时间设置可能被恶意利用，攻击者可能针对目标账号故意多次输入错误密码，迫使账号被锁定，无法正常使用。实际使用过程中，可以结合 IP 限制，API 频率限制等手段来防范这类攻击。
-- 另外，由于密码过期或账号锁定都将无法进入系统，包括管理员账号，建议在系统中设置多个有权限重置密码、解锁用户的账号。
+- Set strong password rules to reduce the risk of password guessing and brute-force attacks.
+- Set a reasonable password validity period to force users to change their passwords regularly.
+- Combine invalid password login attempts and time configurations to limit high-frequency password login attempts in a short period, preventing brute-force password cracking.
+- In scenarios with strict security requirements, set a reasonable lockout time for users who exceed login limits. However, note that lockout time settings may be maliciously exploited, as attackers may intentionally enter incorrect passwords multiple times to lock out the target account, preventing normal use. In practice, IP restrictions and API rate limits can be used to prevent such attacks.
+- Additionally, since password expiration or account lockout will prevent access to the system, including administrator accounts, it is recommended to set up multiple accounts with permissions to reset passwords and unlock users in the system.
 
 ![](https://static-docs.nocobase.com/202501031618900.png)
 
-### 用户锁定
+### User Lockout
 
-> 专业版及以上，包含在密码策略插件中
+> Professional Edition and above, included in the Password Policy plugin
 
-管理因为超过无效密码登录限制而被锁定的用户，可以主动解锁，也可以主动将异常用户添加到锁定列表。用户被锁定后，将禁止以任何认证方式访问系统，包括 API keys.
+Manage users locked out due to exceeding invalid password login limits. You can actively unlock them or add abnormal users to the lockout list. Once locked, users are prohibited from accessing the system using any authentication method, including API keys.
 
 ![](https://static-docs.nocobase.com/202501031618399.png)
 
-### 单点登录 (Single Sign-On)
+### Single Sign-On (SSO)
 
-> 商业插件
+> Commercial Plugin
 
-NocoBase 提供了丰富的 SSO 认证插件，支持 OIDC, SAML 2.0, LDAP, CAS 等多种主流协议。同时，NocoBase 也有完备的认证方式扩展接口，可以支持快速开发和接入其他认证类型。用户可以简单地将已有 IdP 和 NocoBase 对接，在 IdP 上集中管理用户身份，提高安全性。
+NocoBase provides a rich set of SSO authentication plugins, supporting mainstream protocols such as OIDC, SAML 2.0, LDAP, and CAS. Additionally, NocoBase has a comprehensive authentication method extension interface, allowing rapid development and integration of other authentication types. Users can easily integrate existing IdPs with NocoBase, centrally managing user identities on the IdP to enhance security.
 ![](https://static-docs.nocobase.com/202501031619427.png)
 
-### 双因素身份认证 (Two-factor authentication)
+### Two-Factor Authentication (2FA)
 
-> 企业版
+> Enterprise Edition
 
-双因素身份认证要求用户在使用密码登录的时候，提供第二种证明身份的有效信息，例如通过向用户的可信设备发送一次性动态验证码，以验证用户身份，确保用户身份不被滥用，降低密码泄露产生的风险。
+Two-factor authentication requires users to provide a second form of identity verification when logging in with a password, such as sending a one-time dynamic verification code to the user's trusted device to verify their identity, ensuring user identity is not misused and reducing the risk of password leakage.
 
-### IP 访问控制
+### IP Access Control
 
-> 企业版
+> Enterprise Edition
 
-NocoBase 支持对用户访问 IP 设置黑名单或白名单。
+NocoBase supports setting IP blacklists or whitelists for user access.
 
-- 在安全要求严格的环境中，可以设置 IP 白名单，仅允许特定 IP 或 IP 段访问系统，以限制未授权的外部网络连接，从源头降低安全风险。
-- 在公开的网络访问条件下，如果管理员发现访问异常，可以设置 IP 黑名单，阻止已知的恶意 IP 地址，或可疑来源的访问，减少恶意扫描、暴力破解等安全威胁。
-- 对被拒绝的访问请求，保留日志记录。
+- In environments with strict security requirements, you can set an IP whitelist to allow only specific IPs or IP ranges to access the system, limiting unauthorized external network connections and reducing security risks at the source.
+- In open network access conditions, if administrators detect abnormal access, they can set an IP blacklist to block known malicious IP addresses or suspicious sources, reducing security threats such as malicious scanning and brute-force attacks.
+- Log records are retained for denied access requests.
 
-## 权限控制
+## Permission Control
 
-通过在系统中设置不同的角色，以及对角色设置相应的权限，可以精细化地控制用户访问资源的权限。管理员需要结合实际场景需要，合理配置，以降低系统资源泄漏的风险。
+By setting different roles in the system and configuring corresponding permissions for these roles, you can finely control user access to resources. Administrators need to configure reasonably based on actual scenario needs to reduce the risk of system resource leakage.
 
-### 角色和权限
+### Roles and Permissions
 
-NocoBase 通过在系统中设置角色，对不同角色授权，并将用户绑定到对应的角色上来控制用户访问资源的权限。每个用户可以拥有多个角色，用户可以通过切换角色，以不同的视角来操作资源。如果安装了部门插件，还可以将角色和部门绑定，用户就可以拥有所属部门上绑定的角色。
+NocoBase controls user access to resources by setting roles in the system, authorizing different roles, and binding users to corresponding roles. Each user can have multiple roles, and users can switch roles to operate resources from different perspectives. If the department plugin is installed, roles can also be bound to departments, allowing users to have roles bound to their department.
 
 ![](https://static-docs.nocobase.com/202501031620965.png)
 
-### 系统配置权限
+### System Configuration Permissions
 
-系统配置权限包含了以下设置：
+System configuration permissions include the following settings:
 
-- 是否允许配置界面
-- 是否允许安装、启用、禁用插件
-- 是否允许配置插件
-- 是否允许清除缓存、重启应用
-- 各个插件的配置权限
+- Whether to allow configuration interface
+- Whether to allow installing, enabling, and disabling plugins
+- Whether to allow configuring plugins
+- Whether to allow clearing cache and restarting the application
+- Configuration permissions for each plugin
 
-### 菜单权限
+### Menu Permissions
 
-菜单权限用于控制用户进入不同菜单页面的权限，包括桌面端和移动端。
+Menu permissions control user access to different menu pages, including desktop and mobile.
 ![](https://static-docs.nocobase.com/202501031620717.png)
 
-### 数据权限
+### Data Permissions
 
-NocoBase 为用户访问系统内数据的权限提供了精细化的控制，确保不同用户只能访问与其职责相关的数据，防止越权和数据泄露。
+NocoBase provides fine-grained control over user access to system data, ensuring that different users can only access data relevant to their responsibilities, preventing overreach and data leakage.
 
-#### 全局控制
+#### Global Control
 
 ![](https://static-docs.nocobase.com/202501031620866.png)
 
-#### 表级别、字段级别控制
+#### Table-Level and Field-Level Control
 
 ![](https://static-docs.nocobase.com/202501031621047.png)
 
-#### 数据范围控制
+#### Data Range Control
 
-设置用户可操作的数据范围。注意此处的数据范围和区块中配置的数据范围不同，区块中配置的数据范围通常仅做前端过滤数据使用，如果需要严格控制用户访问数据资源的权限，需要在此处配置，由服务端控制。
+Set the data range that users can operate. Note that the data range configured here is different from the data range configured in blocks. The data range configured in blocks is usually only used for front-end data filtering. If strict control over user access to data resources is required, it needs to be configured here, controlled by the server.
 
 ![](https://static-docs.nocobase.com/202501031621712.png)
 
-## 数据安全
+## Data Security
 
-在数据存储、备份的过程中，NocoBase 提供了有效的机制，来确保数据安全。
+NocoBase provides effective mechanisms to ensure data security during data storage and backup.
 
-### 密码存储
+### Password Storage
 
-NocoBase 的用户密码使用 scrypt 算法加密后存储，可以有效对抗大规模的硬件攻击。
+NocoBase uses the scrypt algorithm to encrypt and store user passwords, effectively resisting large-scale hardware attacks.
 
-### 环境变量和密钥
+### Environment Variables and Keys
 
-在 NocoBase 中使用第三方服务的时候，我们推荐你将第三方的密钥信息配置到环境变量中，加密存储。既方便在不同的地方配置使用，又增强了的安全性。你可以查看文档了解详细的使用方法。
+When using third-party services in NocoBase, we recommend configuring third-party key information into environment variables and storing them encrypted. This not only facilitates configuration in different places but also enhances security. You can refer to the documentation for detailed usage methods.
 
 :::warning
-默认情况下，密钥采用 AES-256-CBC 算法加密，NocoBase 会自动生成 32 位加密密钥并保存到 storage/.data/environment/aes_key.dat. 用户应该妥善保管密钥文件，防止密钥文件被窃取。如果需要迁移数据，密钥文件需要一并迁移。
+By default, keys are encrypted using the AES-256-CBC algorithm. NocoBase automatically generates a 32-bit encryption key and saves it to storage/.data/environment/aes_key.dat. Users should properly keep the key file to prevent it from being stolen. If data migration is needed, the key file must be migrated together.
 :::
 
 ![](https://static-docs.nocobase.com/202501031622612.png)
 
-### 文件存储
+### File Storage
 
-如果有存储敏感文件的需要，建议使用兼容 S3 协议的云存储服务，并配合商业版插件 File storage: S3 (Pro) ，实现文件的私有读写。如果需要在内网环境使用，建议使用 MinIO 等支持私有化部署、兼容 S3 协议的存储应用。
+If there is a need to store sensitive files, it is recommended to use cloud storage services compatible with the S3 protocol and use the commercial plugin File storage: S3 (Pro) to achieve private file read and write. If used in an intranet environment, it is recommended to use MinIO or other storage applications that support private deployment and are compatible with the S3 protocol.
 
 ![](https://static-docs.nocobase.com/202501031623549.png)
 
-### 应用备份
+### Application Backup
 
-为了确保应用数据安全，避免数据丢失，我们建议你定期备份数据库。
+To ensure application data security and avoid data loss, we recommend regularly backing up the database.
 
-开源版用户可以参考 https://www.nocobase.com/en/blog/nocobase-backup-restore 利用数据库工具进行备份，同时我们建议你妥善保管好备份文件，防止数据泄漏。
+Open Source Edition users can refer to https://www.nocobase.com/en/blog/nocobase-backup-restore to use database tools for backup. We also recommend properly keeping backup files to prevent data leakage.
 
-专业版及以上用户可以使用备份管理器进行备份，备份管理器提供了以下特性：
+Professional Edition and above users can use the Backup Manager for backup. The Backup Manager provides the following features:
 
-- 定时自动备份：周期性自动备份，节省时间和人工操作，数据安全更有保障。
-- 将备份文件同步到云存储：将备份文件和应用服务本身隔离，防止因服务器故障导致服务不可用的同时备份文件丢失。
-- 备份文件加密：给备份文件设置密码，降低备份文件泄漏导致数据泄漏的风险。
+- Scheduled automatic backup: Periodic automatic backups save time and manual operations, ensuring data security.
+- Sync backup files to cloud storage: Isolate backup files from the application service itself, preventing backup file loss due to server failure.
+- Backup file encryption: Set passwords for backup files to reduce the risk of data leakage due to backup file leakage.
 
 ![](https://static-docs.nocobase.com/202501031623107.png)
 
-## 运行环境安全
+## Runtime Environment Security
 
-正确部署 NocoBase 并保障运行环境安全，是确保 NocoBase 应用安全的关键之一。
+Properly deploying NocoBase and ensuring runtime environment security is one of the keys to ensuring NocoBase application security.
 
-### HTTPS 部署
+### HTTPS Deployment
 
-为了防止中间人攻击，我们建议你为 NocoBase 应用站点添加 SSL/TLS 证书，以保障数据在网络传输过程中的安全。
+To prevent man-in-the-middle attacks, we recommend adding SSL/TLS certificates to NocoBase application sites to ensure data security during network transmission.
 
-### API 传输加密
+### API Transmission Encryption
 
-> 企业版
+> Enterprise Edition
 
-在数据安全要求更为严格的环境中，NocoBase 支持启用 API 传输加密，为 API 的请求和响应内容加密，避免明文传输，提高数据破解的门槛。
+In environments with stricter data security requirements, NocoBase supports enabling API transmission encryption, encrypting API request and response content to avoid plaintext transmission and increase the difficulty of data cracking.
 
-### 私有化部署
+### Private Deployment
 
-默认情况下，NocoBase 不需要与第三方服务通信，NocoBase 团队不会收集用户的一切信息。只有在执行以下两种操作时需要连接 NocoBase 服务器：
+By default, NocoBase does not need to communicate with third-party services, and the NocoBase team does not collect any user information. Connection to the NocoBase server is only required when performing the following two operations:
 
-1. 通过 NocoBase Service 平台自动下载商业插件。
-2. 商业版用户在线验证身份和激活应用。
+1. Automatically downloading commercial plugins through the NocoBase Service platform.
+2. Online identity verification and application activation for commercial edition users.
 
-如果你愿意牺牲一定的便利性，这两种操作也都支持离线完成，不需要直接连接 NocoBase 服务器。
+If you are willing to sacrifice some convenience, both operations can be completed offline without directly connecting to the NocoBase server.
 
-NocoBase 支持完全内网部署，参考
+NocoBase supports complete intranet deployment. Refer to:
 
 - https://www.nocobase.com/en/blog/load-docker-image
-- [将插件上传到插件目录来安装与升级](../welcome/getting-started/plugin.md#将插件上传到插件目录来安装与升级)
+- [Uploading Plugins to the Plugin Directory for Installation and Upgrade](../welcome/getting-started/plugin.md#uploading-plugins-to-the-plugin-directory-for-installation-and-upgrade)
 
-### 多环境隔离
+### Multi-Environment Isolation
 
-在实际的使用实践中，我们推荐企业用户将测试和生产环境隔离，以确保生产环境下的应用数据和运行环境安全。利用迁移管理插件，可以实现应用数据在不同环境之间迁移。
+In practical use, we recommend enterprise users isolate testing and production environments to ensure the security of application data and runtime environments in production. Using the migration management plugin, application data can be migrated between different environments.
 
 ![](https://static-docs.nocobase.com/202501031627729.png)
 
-## 审计和监控
+## Auditing and Monitoring
 
-### 审计日志
+### Audit Logs
 
-> 企业版
+> Enterprise Edition
 
-NocoBase 的审计日志功能记录了系统内用户的活动记录。通过记录用户的关键操作和访问行为，管理员可以：
+NocoBase's audit log feature records user activity within the system. By recording key user operations and access behaviors, administrators can:
 
-- 检查用户访问的 IP, 设备等信息，以及操作时间，及时发现异常行为。
-- 追溯系统内数据资源的操作历史。
+- Check user access IPs, devices, and operation times to promptly detect abnormal behaviors.
+- Trace the operation history of data resources within the system.
 
 ![](https://static-docs.nocobase.com/202501031627719.png)
 
 ![](https://static-docs.nocobase.com/202501031627922.png)
 
-### 应用日志
+### Application Logs
 
-NocoBase 提供多种日志类型，帮助用户了解系统运行状况和行为记录，及时发现和定位系统问题，从不同维度保障系统的安全性和可控性。主要日志类型包括：
+NocoBase provides various log types to help users understand system operation status and behavior records, promptly detect and locate system issues, and ensure system security and controllability from different dimensions. Main log types include:
 
-- 请求日志：API 请求日志，包括访问的 URL、HTTP 方法、请求参数、响应时间和状态码等信息。
-- 系统日志：记录应用运行事件，包括服务启动、配置变更、错误信息和关键操作等。
-- SQL 日志：记录数据库操作语句及其执行时间，涵盖查询、更新、插入和删除等行为。
-- 工作流日志：工作流的执行日志，包括执行时间、运行信息、错误信息等。
+- Request Logs: API request logs, including accessed URLs, HTTP methods, request parameters, response times, and status codes.
+- System Logs: Record application runtime events, including service startup, configuration changes, error messages, and key operations.
+- SQL Logs: Record database operation statements and their execution times, covering queries, updates, inserts, and deletions.
+- Workflow Logs: Workflow execution logs, including execution times, runtime information, and error messages.
