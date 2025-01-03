@@ -1475,17 +1475,17 @@ export default [
                 'title.ja-JP': '開発ガイド',
                 children: [
                   {
-                    title:'Extend Authentication Type',
-                    'title.zh-CN':'扩展认证类型',
-                    'title.ja-JP':'認証タイプの拡張',
+                    title: 'Extend Authentication Type',
+                    'title.zh-CN': '扩展认证类型',
+                    'title.ja-JP': '認証タイプの拡張',
                     link: '/handbook/auth/dev/guide',
                   },
                   {
-                    title:'API Reference',
-                    'title.zh-CN':'API 参考',
-                    'title.ja-JP':'API 参考',
+                    title: 'API Reference',
+                    'title.zh-CN': 'API 参考',
+                    'title.ja-JP': 'API 参考',
                     link: '/handbook/auth/dev/api',
-                  }
+                  },
                 ],
               },
             ],
@@ -1521,18 +1521,17 @@ export default [
                 'title.zh-CN': '示例',
                 'title.ja-JP': '例',
                 children: [
-
                   {
-                    title:'Sign in with Google',
-                    'title.zh-CN':'谷歌登录',
-                    'title.ja-JP':'Googleでサインイン',
-                    link: '/handbook/auth-oidc/example/google'
+                    title: 'Sign in with Google',
+                    'title.zh-CN': '谷歌登录',
+                    'title.ja-JP': 'Googleでサインイン',
+                    link: '/handbook/auth-oidc/example/google',
                   },
                   {
-                    title:'Microsoft Entra ID',
-                    'title.zh-CN':'微软登录',
-                    'title.ja-JP':'MicroSoft Entra ID',
-                    link: '/handbook/auth-oidc/example/microsoft'
+                    title: 'Microsoft Entra ID',
+                    'title.zh-CN': '微软登录',
+                    'title.ja-JP': 'MicroSoft Entra ID',
+                    link: '/handbook/auth-oidc/example/microsoft',
                   },
                 ],
               },
@@ -1555,13 +1554,13 @@ export default [
                 'title.zh-CN': '示例',
                 'title.ja-JP': '例',
                 children: [
-                    {
-                      title:'Sign in with Google',
-                      'title.zh-CN':'谷歌登录',
-                      'title.ja-JP':'Googleでサインイン',
-                      link: '/handbook/auth-saml/example/google'
-                    }
-                  ],
+                  {
+                    title: 'Sign in with Google',
+                    'title.zh-CN': '谷歌登录',
+                    'title.ja-JP': 'Googleでサインイン',
+                    link: '/handbook/auth-saml/example/google',
+                  },
+                ],
               },
             ],
           },
@@ -1628,15 +1627,15 @@ export default [
                 'title.zh-CN': '开发指南',
                 children: [
                   {
-                    title:'Notification Extension',
-                    'title.zh-CN':'扩展通知渠道类型',
-                    link: '/handbook/notification-manager/development/extension'
+                    title: 'Notification Extension',
+                    'title.zh-CN': '扩展通知渠道类型',
+                    link: '/handbook/notification-manager/development/extension',
                   },
                   {
-                    title:'Notification API',
-                    'title.zh-CN':'扩展通知API',
-                    link: '/handbook/notification-manager/development/api'
-                  }
+                    title: 'Notification API',
+                    'title.zh-CN': '扩展通知API',
+                    link: '/handbook/notification-manager/development/api',
+                  },
                 ],
               },
             ],
@@ -2007,8 +2006,8 @@ export default [
             'title.ja-JP': 'ユーザーマニュアル',
             link: '/handbook/email-manager/usage-user',
           },
-        ]
-      }
+        ],
+      },
     ],
   },
   {
@@ -2728,6 +2727,11 @@ export default [
     'title.zh-CN': '安全性',
     type: 'group',
     children: [
+      {
+        title: 'Security guide',
+        'title.zh-CN': '安全指南',
+        link: '/handbook/security',
+      },
       {
         title: 'Password policy',
         'title.zh-CN': '密码策略',
