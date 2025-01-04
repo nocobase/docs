@@ -214,16 +214,23 @@ services:
 
 </Tabs>
 
+然后，拉取最新镜像并重建容器
+
+```bash
+docker compose pull app
+docker compose up -d
+```
+
 ### 安装数据库客户端
 
-备份还原和迁移管理插件需要安装数据库客户端，docker 版本，可以直接在 `./storage/scripts` 目录下，编写一段脚本
+备份还原和迁移管理插件需要安装数据库客户端，Docker 版本，可以直接在 `./storage/scripts` 目录下，编写一段脚本
 
 ```bash
 mkdir ./storage/scripts
-vim install-db-client.sh
+vim install-database-client.sh
 ```
 
-`install-db-client.sh` 的内容如下：
+`install-database-client.sh` 的内容如下：
 
 <Tabs>
 
@@ -238,14 +245,14 @@ if [ ! -f /usr/bin/pg_dump ]; then
 
     # Configure Aliyun mirrors
     tee /etc/apt/sources.list > /dev/null <<EOF
-deb http://mirrors.aliyun.com/debian/ bullseye main contrib non-free
-deb-src http://mirrors.aliyun.com/debian/ bullseye main contrib non-free
-deb http://mirrors.aliyun.com/debian-security/ bullseye-security main contrib non-free
-deb-src http://mirrors.aliyun.com/debian-security/ bullseye-security main contrib non-free
-deb http://mirrors.aliyun.com/debian/ bullseye-updates main contrib non-free
-deb-src http://mirrors.aliyun.com/debian/ bullseye-updates main contrib non-free
-deb http://mirrors.aliyun.com/debian/ bullseye-backports main contrib non-free
-deb-src http://mirrors.aliyun.com/debian/ bullseye-backports main contrib non-free
+deb http://mirrors.aliyun.com/debian/ bookworm main contrib non-free
+deb-src http://mirrors.aliyun.com/debian/ bookworm main contrib non-free
+deb http://mirrors.aliyun.com/debian-security/ bookworm-security main contrib non-free
+deb-src http://mirrors.aliyun.com/debian-security/ bookworm-security main contrib non-free
+deb http://mirrors.aliyun.com/debian/ bookworm-updates main contrib non-free
+deb-src http://mirrors.aliyun.com/debian/ bookworm-updates main contrib non-free
+deb http://mirrors.aliyun.com/debian/ bookworm-backports main contrib non-free
+deb-src http://mirrors.aliyun.com/debian/ bookworm-backports main contrib non-free
 EOF
 
     # Install necessary tools and clean cache
@@ -253,7 +260,7 @@ EOF
       && rm -rf /var/lib/apt/lists/*
 
     # Configure PostgreSQL source
-    echo "deb [signed-by=/usr/share/keyrings/pgdg.asc] http://mirrors.aliyun.com/postgresql/repos/apt bullseye-pgdg main" > /etc/apt/sources.list.d/pgdg.list
+    echo "deb [signed-by=/usr/share/keyrings/pgdg.asc] http://mirrors.aliyun.com/postgresql/repos/apt bookworm-pgdg main" > /etc/apt/sources.list.d/pgdg.list
     wget --quiet -O /usr/share/keyrings/pgdg.asc http://mirrors.aliyun.com/postgresql/repos/apt/ACCC4CF8.asc
 
     # Install PostgreSQL client
@@ -272,22 +279,36 @@ fi
 ```bash
 #!/bin/bash
 
-tee /etc/apt/sources.list > /dev/null <<EOF
-deb http://mirrors.aliyun.com/debian/ bullseye main contrib non-free
-deb-src http://mirrors.aliyun.com/debian/ bullseye main contrib non-free
-deb http://mirrors.aliyun.com/debian-security/ bullseye-security main contrib non-free
-deb-src http://mirrors.aliyun.com/debian-security/ bullseye-security main contrib non-free
-deb http://mirrors.aliyun.com/debian/ bullseye-updates main contrib non-free
-deb-src http://mirrors.aliyun.com/debian/ bullseye-updates main contrib non-free
-deb http://mirrors.aliyun.com/debian/ bullseye-backports main contrib non-free
-deb-src http://mirrors.aliyun.com/debian/ bullseye-backports main contrib non-free
+# 检查 mysql 客户端是否已安装
+if [ ! -f /usr/bin/mysql ]; then
+    echo "MySQL client is not installed, starting MySQL client installation..."
+
+    # 配置 Aliyun 镜像源
+    tee /etc/apt/sources.list > /dev/null <<EOF
+deb http://mirrors.aliyun.com/debian/ bookworm main contrib non-free
+deb-src http://mirrors.aliyun.com/debian/ bookworm main contrib non-free
+deb http://mirrors.aliyun.com/debian-security/ bookworm-security main contrib non-free
+deb-src http://mirrors.aliyun.com/debian-security/ bookworm-security main contrib non-free
+deb http://mirrors.aliyun.com/debian/ bookworm-updates main contrib non-free
+deb-src http://mirrors.aliyun.com/debian/ bookworm-updates main contrib non-free
+deb http://mirrors.aliyun.com/debian/ bookworm-backports main contrib non-free
+deb-src http://mirrors.aliyun.com/debian/ bookworm-backports main contrib non-free
 EOF
 
-apt-get update && apt-get install -y wget && \
-  wget --no-check-certificate https://downloads.mysql.com/archives/get/p/23/file/mysql-community-client-core_8.1.0-1debian11_amd64.deb && \
-  dpkg -x mysql-community-client-core_8.1.0-1debian11_amd64.deb /tmp/mysql-client && \
-  cp /tmp/mysql-client/usr/bin/mysqldump /usr/bin/ &&\
-  cp /tmp/mysql-client/usr/bin/mysql /usr/bin/
+    # 更新包列表并安装必要的工具
+    echo "Updating package list and installing necessary tools..."
+    apt-get update && apt-get install -y --no-install-recommends wget gnupg \
+        && rm -rf /var/lib/apt/lists/*
+
+    wget --no-check-certificate https://downloads.mysql.com/archives/get/p/23/file/mysql-community-client-core_8.0.39-1debian12_amd64.deb && \
+        dpkg -x mysql-community-client-core_8.0.39-1debian12_amd64.deb /tmp/mysql-client && \
+        cp /tmp/mysql-client/usr/bin/mysqldump /usr/bin/ && \
+        cp /tmp/mysql-client/usr/bin/mysql /usr/bin/
+
+    echo "MySQL client installation completed."
+else
+    echo "MySQL client is already installed, skipping installation."
+fi
 ```
 
 </div>
@@ -302,7 +323,7 @@ docker compose restart app
 docker compose logs app
 ```
 
-查看数据库客户端版本号
+查看数据库客户端版本号，必须与数据库服务端的版本号一致
 
 <Tabs>
 <div label="PostgreSQL" name="PostgreSQL">
@@ -370,12 +391,12 @@ MINIO_ENDPOINT=http://minio:9000
 ![20250103172005](https://static-docs.nocobase.com/20250103172005.png)
 
 :::info
-这一步，我们配置了一个简单的文件表，并使用了 minio 存储服务，接下来我们开始尝试将开发环境的应用迁移到测试环境。
+这一步，我们配置了一个简单的文件表，并使用了 minio 存储服务，接下来我们开始尝试将开发环境的应用迁移到预发布环境进行测试。
 :::
 
 ## 3. 通过迁移管理插件，确保应用配置在多个环境间顺利迁移
 
-只能在开发环境配置应用，通过迁移将应用配置导入到预发布环境，然后再从预发布环境导入生产环境，预发布环境和生产环境不允许配置应用。
+建议只能在开发环境配置应用，通过迁移将应用配置导入到预发布环境，然后再从预发布环境导入生产环境，预发布环境和生产环境不允许配置应用。
 
 ### 流程图
 
@@ -417,17 +438,19 @@ sequenceDiagram
 
 ### 新建迁移文件
 
+新建迁移，并把迁移文件下载下来备用。
+
 ![20250103181154](https://static-docs.nocobase.com/20250103181154.png)
 
 ### 执行迁移
 
-测试环境应用里，将开发环境的迁移文件 V1 下载下来，并上传到测试环境应用并执行迁移
+打开预发布环境的迁移管理，上传迁移文件并执行
 
 ![20250103181229](https://static-docs.nocobase.com/20250103181229.png)
 
 ### 设置环境变量
 
-填写测试环境的 minio 配置，并继续
+这一步会提醒用户填写缺失的环境变量，我们将预发布环境的 minio 配置填写上来，并继续
 
 ```bash
 MINIO_BASE_URL=http://localhost:9100/dev-bucket
