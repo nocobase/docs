@@ -1,16 +1,16 @@
-# Treemap Chart
+# ツリーマップチャート
 
-## Data Configuration
+## データ設定
 
-### 1 Measure, 1 Dimension
+### 1 メジャー、1 ディメンション
 
-![1 Measure, 1 Dimension](https://static-docs.nocobase.com/202410091933526.png)
+![1 メジャー、1 ディメンション](https://static-docs.nocobase.com/202410091933526.png)
 
-## Configuration Options
+## 設定オプション
 
-| Option             | Description                                        |
+| オプション             | 説明                                        |
 | ------------------ | -------------------------------------------------- |
-| Size               | Set the size of the chart, either with a fixed aspect ratio or fixed height |
-| Light mode theme   | Must be selected for preview when the system is in light mode |
-| Dark mode theme    | Must be selected for preview when the system is in dark mode  |
-| Label type         | Controls whether labels are displayed and the type of display | 
+| サイズ               | チャートのサイズを設定します。固定のアスペクト比または固定の高さで設定可能です |
+| ライトモードテーマ   | システムがライトモードの時にプレビューするために選択する必要があります |
+| ダークモードテーマ    | システムがダークモードの時にプレビューするために選択する必要があります  |
+| ラベルタイプ         | ラベルを表示するかどうか、および表示タイプを制御します |
