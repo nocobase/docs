@@ -22,8 +22,6 @@ Usually, we recommend administrators:
 - Set a reasonable session validity period, which is longer than the Token validity period but should not be too long, to balance user experience and security. Use the automatic Token refresh mechanism to ensure that active user sessions are not interrupted while reducing the risk of long-term sessions being abused.
 - Set a reasonable expired Token refresh limit so that the Token naturally expires when the user is inactive for a long time without issuing a new Token, reducing the risk of abuse of idle user sessions.
 
-![](https://static-docs.nocobase.com/202501031613500.png)
-
 ### Token Client Storage
 
 By default, user Tokens are stored in the browser's LocalStorage. After closing the browser page and opening it again, if the Token is still valid, the user does not need to log in again.
