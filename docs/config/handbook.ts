@@ -2725,21 +2725,25 @@ export default [
   {
     title: 'Security',
     'title.zh-CN': '安全性',
+    'title.ja-JP': 'あんぜんせい',
     type: 'group',
     children: [
       {
         title: 'Security guide',
         'title.zh-CN': '安全指南',
+        'title.ja-JP': 'あんぜんガイドライン',
         link: '/handbook/security',
       },
       {
         title: 'Password policy',
         'title.zh-CN': '密码策略',
+        'title.ja-JP': 'パスワードポリシー',
         link: '/handbook/password-policy',
       },
       {
         title: 'User lockout',
         'title.zh-CN': '用户锁定',
+        'title.ja-JP': 'ユーザーロック',
         link: '/handbook/password-policy/user-lockout',
       },
     ],
