@@ -1,6 +1,6 @@
 # Token 安全策略
 
-<PluginInfo name="plugin-auth"></PluginInfo>
+<PluginInfo name="auth"></PluginInfo>
 
 ## 介绍
 
