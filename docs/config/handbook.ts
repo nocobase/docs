@@ -1992,7 +1992,7 @@ export default [
       {
         title: 'Email manager',
         'title.zh-CN': '邮件管理',
-        'title.ja-JP': '邮件管理',
+        'title.ja-JP': 'メール管理',
         children: [
           {
             title: 'Administrator configuration',

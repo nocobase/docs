@@ -1,4 +1,4 @@
-# 管理者設定
+# メール: 管理者設定
 
 <PluginInfo commercial="true" name="email-manager"></PluginInfo>
 
