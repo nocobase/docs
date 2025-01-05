@@ -1,8 +1,14 @@
 # 迁移管理
 
+<PluginInfo licenseBundled="true" name="migration-manager"></PluginInfo>
+
 ## 介绍
 
 用于将应用配置从一个应用环境迁移到另一个应用环境。迁移管理更侧重「应用配置」的迁移，如果需要全量的迁移，建议使用「[备份管理器](/handbook/backups)」的备份还原。
+
+## 安装
+
+<embed src="../backups/install.md"></embed>
 
 ## 流程与原理
 
