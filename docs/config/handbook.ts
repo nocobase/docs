@@ -2735,6 +2735,11 @@ export default [
         link: '/handbook/security',
       },
       {
+        title: 'Token policy',
+        'title.zh-CN': '密码策略',
+        link: '/handbook/token-policy',
+      },
+      {
         title: 'Password policy',
         'title.zh-CN': '密码策略',
         'title.ja-JP': 'パスワードポリシー',
