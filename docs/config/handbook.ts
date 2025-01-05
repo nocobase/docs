@@ -2736,7 +2736,7 @@ export default [
       },
       {
         title: 'Token policy',
-        'title.zh-CN': '密码策略',
+        'title.zh-CN': 'Token 策略',
         link: '/handbook/token-policy',
       },
       {
