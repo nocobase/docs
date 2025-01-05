@@ -2737,6 +2737,7 @@ export default [
       {
         title: 'Token policy',
         'title.zh-CN': 'Token 策略',
+        'title.ja-JP': 'トークンポリシー',
         link: '/handbook/token-policy',
       },
       {
