@@ -8,7 +8,7 @@ NocoBase 从功能设计到系统实现都注重数据和应用的安全性。�
 
 ### Token 密钥
 
-默认情况下，NocoBase 使用 JWT (JSON Web Token) 对服务端 API 进行鉴权。用户可以通过系统环境变量 `APP_KEY` 设置 Token 的密钥，请妥善管理应用的 Token 密钥，防止对外泄漏。需要注意的是，如果 APP_KEY 修改了，旧的 Token 也会随之失效。
+默认情况下，NocoBase 使用 JWT (JSON Web Token) 对服务端 API 进行鉴权。用户可以通过系统环境变量 `APP_KEY` 设置 Token 的密钥，请妥善管理应用的 Token 密钥，防止对外泄漏。需要注意的是，如果 `APP_KEY` 修改了，旧的 Token 也会随之失效。
 
 ### Token 策略
 
