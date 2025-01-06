@@ -1,26 +1,26 @@
 # HasManyRepository
 
-`HasManyRepository` 是用于处理 `HasMany` 关系的 `Relation Repository`。
+`HasManyRepository` は、`HasMany` 関係を処理するための `Relation Repository` です。
 
-## 类方法
+## クラスメソッド
 
 ### `find()`
 
-查找关联对象
+関連オブジェクトを検索します。
 
-**签名**
+**シグネチャ**
 
 - `async find(options?: FindOptions): Promise<M[]>`
 
-**详细信息**
+**詳細**
 
-查询参数与 [`Repository.find()`](../repository.md#find) 一致。
+クエリパラメータは [`Repository.find()`](../repository.md#find) と一致します。
 
 ### `findOne()`
 
-查找关联对象，仅返回一条记录
+関連オブジェクトを検索し、1つのレコードのみを返します。
 
-**签名**
+**シグネチャ**
 
 - `async findOne(options?: FindOneOptions): Promise<M>`
 
@@ -28,13 +28,13 @@
 
 ### `count()`
 
-返回符合查询条件的记录数
+指定されたクエリ条件に一致するレコード数を返します。
 
-**签名**
+**シグネチャ**
 
 - `async count(options?: CountOptions)`
 
-**类型**
+**タイプ**
 
 ```typescript
 interface CountOptions
@@ -46,13 +46,13 @@ interface CountOptions
 
 ### `findAndCount()`
 
-从数据库查询特定条件的数据集和结果数。
+データベースから特定の条件に一致するデータセットと結果数をクエリします。
 
-**签名**
+**シグネチャ**
 
 - `async findAndCount(options?: FindAndCountOptions): Promise<[any[], number]>`
 
-**类型**
+**タイプ**
 
 ```typescript
 type FindAndCountOptions = CommonFindOptions;
@@ -60,9 +60,9 @@ type FindAndCountOptions = CommonFindOptions;
 
 ### `create()`
 
-创建关联对象
+関連オブジェクトを作成します。
 
-**签名**
+**シグネチャ**
 
 - `async create(options?: CreateOptions): Promise<M>`
 
@@ -70,9 +70,9 @@ type FindAndCountOptions = CommonFindOptions;
 
 ### `update()`
 
-更新符合条件的关联对象
+指定された条件に一致する関連オブジェクトを更新します。
 
-**签名**
+**シグネチャ**
 
 - `async update(options?: UpdateOptions): Promise<M>`
 
@@ -80,9 +80,9 @@ type FindAndCountOptions = CommonFindOptions;
 
 ### `destroy()`
 
-删除符合条件的关联对象
+指定された条件に一致する関連オブジェクトを削除します。
 
-**签名**
+**シグネチャ**
 
 - `async destroy(options?: TK | DestroyOptions): Promise<M>`
 
@@ -90,13 +90,13 @@ type FindAndCountOptions = CommonFindOptions;
 
 ### `add()`
 
-添加对象关联关系
+オブジェクトの関連関係を追加します。
 
-**签名**
+**シグネチャ**
 
 - `async add(options: TargetKey | TargetKey[] | AssociatedOptions)`
 
-**类型**
+**タイプ**
 
 ```typescript
 interface AssociatedOptions extends Transactionable {
@@ -104,31 +104,31 @@ interface AssociatedOptions extends Transactionable {
 }
 ```
 
-**详细信息**
+**詳細**
 
-- `tk` - 关联对象的 targetKey 值，可以是单个值，也可以是数组。
+- `tk` - 関連オブジェクトの targetKey 値。単一の値または配列を指定できます。
   <embed src="../shared/transaction.md"></embed>
 
 ### `remove()`
 
-移除与给定对象之间的关联关系
+指定されたオブジェクトとの関連関係を削除します。
 
-**签名**
+**シグネチャ**
 
 - `async remove(options: TargetKey | TargetKey[] | AssociatedOptions)`
 
-**详细信息**
+**詳細**
 
-参数同 [`add()`](#add) 方法。
+パラメータは [`add()`](#add) メソッドと同じです。
 
 ### `set()`
 
-设置当前关系的关联对象
+現在の関係の関連オブジェクトを設定します。
 
-**签名**
+**シグネチャ**
 
 - `async set(options: TargetKey | TargetKey[] | AssociatedOptions)`
 
-**详细信息**
+**詳細**
 
-参数同 [`add()`](#add) 方法。
+パラメータは [`add()`](#add) メソッドと同じです。

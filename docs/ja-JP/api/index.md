@@ -1,17 +1,17 @@
-# 概览
+# 概要
 
-| 模块                                                                                                    | 包名                  | 描述                |
+| モジュール                                                                                                    | パッケージ名              | 説明                |
 |-------------------------------------------------------------------------------------------------------| --------------------- | ------------------- |
-| [Server](/api/server/application)                                                                     | `@nocobase/server`    | 服务端应用          |
-| [Database](/api/database)                                                                             | `@nocobase/database`  | 数据库访问层        |
-| [Resourcer](/api/resourcer/resource-manager)                                                          | `@nocobase/resourcer` | 资源与路由映射      |
-| [ACL](/api/acl/acl)                                                                                   | `@nocobase/acl`       | 访问控制            |
-| [Auth](/api/auth/auth-manager)                                                                        | `@nocobase/auth`      | 用户认证            |
-| <a href="https://client.docs-jp.nocobase.com/core/application/application" target="_blank">Client</a> | `@nocobase/client`    | 客户端应用          |
-| [Cache](/api/cache/cache-manager)                                                                     | `@nocobase/cache`     | 服务端缓存          |
-| [Logger](/api/logger)                                                                                 | `@nocobase/logger`    | 服务端日志          |
-| [Telemetry](/api/telemetry/telemetry)                                                                 | `@nocobase/telemetry` | 服务端遥测          |
-| [CLI](/api/cli)                                                                                       | `@nocobase/cli`       | NocoBase 命令行工具 |
+| [Server](/api/server/application)                                                                     | `@nocobase/server`    | サーバーアプリケーション          |
+| [Database](/api/database)                                                                             | `@nocobase/database`  | データベースアクセス層        |
+| [Resourcer](/api/resourcer/resource-manager)                                                          | `@nocobase/resourcer` | リソースとルーティングマッピング      |
+| [ACL](/api/acl/acl)                                                                                   | `@nocobase/acl`       | アクセス制御            |
+| [Auth](/api/auth/auth-manager)                                                                        | `@nocobase/auth`      | ユーザー認証            |
+| <a href="https://client.docs-jp.nocobase.com/core/application/application" target="_blank">Client</a> | `@nocobase/client`    | クライアントアプリケーション          |
+| [Cache](/api/cache/cache-manager)                                                                     | `@nocobase/cache`     | サーバーキャッシュ          |
+| [Logger](/api/logger)                                                                                 | `@nocobase/logger`    | サーバーログ          |
+| [Telemetry](/api/telemetry/telemetry)                                                                 | `@nocobase/telemetry` | サーバーテレメトリー          |
+| [CLI](/api/cli)                                                                                       | `@nocobase/cli`       | NocoBase コマンドラインツール |
 | [SDK](/api/sdk)                                                                                       | `@nocobase/sdk`       | NocoBase SDK        |
-| [Actions](/api/actions)                                                                               | `@nocobase/actions`   | 内置常用资源操作    |
-| [Test](/api/test/server)                                                                              | `@nocobase/test`      | 自动化测试          |
+| [Actions](/api/actions)                                                                               | `@nocobase/actions`   | 組み込みリソース操作    |
+| [Test](/api/test/server)                                                                              | `@nocobase/test`      | 自動テスト          |

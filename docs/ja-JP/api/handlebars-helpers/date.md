@@ -1,17 +1,17 @@
-# Date
+# 日付
 
 ## {{dateFormat}}
 
-The "dateFormat" helper in Handlebars is used to format a date using the day.js library. It takes two required arguments and an optional third argument for the timezone.
+Handlebarsの「dateFormat」ヘルパーは、day.jsライブラリを使用して日付をフォーマットするために使用されます。2つの必須引数と、タイムゾーンのためのオプションの第3引数を取ります。
 
-**Params**
+**パラメータ**
 
 * `datetime` **{String}**
 * `format` **{String}**
 * `timezone` **{String}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{dateFormat now "YYYY-MM-DD HH:mm:ss"}}

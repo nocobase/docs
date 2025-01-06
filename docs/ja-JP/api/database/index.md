@@ -1,29 +1,29 @@
 # Database
 
-## 概览
+## 概要
 
-Database 是 Nocobase 提供的数据库交互工具，为无代码、低代码应用提供了非常方便的数据库交互功能。目前支持的数据库为：
+Database は Nocobase が提供するデータベース操作ツールで、ノーコードおよびローコードアプリケーションに非常に便利なデータベース操作機能を提供します。現在サポートされているデータベースは以下の通りです：
 
 - SQLite 3.8.8+
 - MySQL 8.0.17+
 - PostgreSQL 10.0+
 
-### 连接数据库
+### データベース接続
 
-在 `Database` 构造函数中，可以通过传入 `options` 参数来配置数据库连接。
+`Database` コンストラクタでは、`options` パラメータを渡すことでデータベース接続を設定できます。
 
 ```javascript
 const { Database } = require('@nocobase/database');
 
-// SQLite 数据库配置参数
+// SQLite データベース設定パラメータ
 const database = new Database({
   dialect: 'sqlite',
   storage: 'path/to/database.sqlite'
 })
 
-// MySQL \ PostgreSQL 数据库配置参数
+// MySQL \ PostgreSQL データベース設定パラメータ
 const database = new Database({
-  dialect: /* 'postgres' 或者 'mysql' */,
+  dialect: /* 'postgres' または 'mysql' */,
   database: 'database',
   username: 'username',
   password: 'password',
@@ -33,14 +33,14 @@ const database = new Database({
 
 ```
 
-详细的配置参数请参考 [构造函数](#构造函数)。
+詳細な設定パラメータについては、[コンストラクタ](#コンストラクタ) を参照してください。
 
-### 数据模型定义
+### データモデル定義
 
-`Database` 通过 `Collection` 定义数据库结构，一个 `Collection` 对象代表了数据库中的一张表。
+`Database` は `Collection` を使用してデータベース構造を定義し、`Collection` オブジェクトはデータベース内のテーブルを表します。
 
 ```javascript
-// 定义 Collection
+// Collection を定義
 const UserCollection = database.collection({
   name: 'users',
   fields: [
@@ -56,92 +56,92 @@ const UserCollection = database.collection({
 });
 ```
 
-数据库结构定义完成之后，可使用 `sync()` 方法来同步数据库结构。
+データベース構造定義が完了したら、`sync()` メソッドを使用してデータベース構造を同期できます。
 
 ```javascript
 await database.sync();
 ```
 
-更加详细的 `Collection` 使用方法请参考 [Collection](/api/database/collection.md)。
+`Collection` の詳細な使用方法については、[Collection](/api/database/collection) を参照してください。
 
-### 数据读写
+### データの読み書き
 
-`Database` 通过 `Repository` 对数据进行操作。
+`Database` は `Repository` を使用してデータを操作します。
 
 ```javascript
 const UserRepository = UserCollection.repository();
 
-// 创建
+// 作成
 await UserRepository.create({
   name: '张三',
   age: 18,
 });
 
-// 查询
+// 検索
 const user = await UserRepository.findOne({
   filter: {
     name: '张三',
   },
 });
 
-// 修改
+// 更新
 await UserRepository.update({
   values: {
     age: 20,
   },
 });
 
-// 删除
+// 削除
 await UserRepository.destroy(user.id);
 ```
 
-更加详细的数据 CRUD 使用方法请参考 [Repository](/api/database/repository.md)。
+データの CRUD 操作の詳細な使用方法については、[Repository](/api/database/repository) を参照してください。
 
-## 构造函数
+## コンストラクタ
 
-**签名**
+**シグネチャ**
 
 - `constructor(options: DatabaseOptions)`
 
-创建一个数据库实例。
+データベースインスタンスを作成します。
 
-**参数**
+**パラメータ**
 
-| 参数名                 | 类型           | 默认值        | 描述                                                                                                                |
+| パラメータ名                 | タイプ           | デフォルト値        | 説明                                                                                                                |
 | ---------------------- | -------------- | ------------- | ------------------------------------------------------------------------------------------------------------------- |
-| `options.host`         | `string`       | `'localhost'` | 数据库主机                                                                                                          |
-| `options.port`         | `number`       | -             | 数据库服务端口，根据使用的数据库有对应默认端口                                                                      |
-| `options.username`     | `string`       | -             | 数据库用户名                                                                                                        |
-| `options.password`     | `string`       | -             | 数据库密码                                                                                                          |
-| `options.database`     | `string`       | -             | 数据库名称                                                                                                          |
-| `options.dialect`      | `string`       | `'mysql'`     | 数据库类型                                                                                                          |
-| `options.storage?`     | `string`       | `':memory:'`  | SQLite 的存储模式                                                                                                   |
-| `options.logging?`     | `boolean`      | `false`       | 是否开启日志                                                                                                        |
-| `options.define?`      | `Object`       | `{}`          | 默认的表定义参数                                                                                                    |
-| `options.tablePrefix?` | `string`       | `''`          | NocoBase 扩展，表名前缀                                                                                             |
-| `options.migrator?`    | `UmzugOptions` | `{}`          | NocoBase 扩展，迁移管理器相关参数，参考 [Umzug](https://github.com/sequelize/umzug/blob/main/src/types.ts#L15) 实现 |
+| `options.host`         | `string`       | `'localhost'` | データベースホスト                                                                                                          |
+| `options.port`         | `number`       | -             | データベースサービスポート、使用するデータベースに対応するデフォルトポートがあります                                                                      |
+| `options.username`     | `string`       | -             | データベースユーザー名                                                                                                        |
+| `options.password`     | `string`       | -             | データベースパスワード                                                                                                          |
+| `options.database`     | `string`       | -             | データベース名                                                                                                          |
+| `options.dialect`      | `string`       | `'mysql'`     | データベースタイプ                                                                                                          |
+| `options.storage?`     | `string`       | `':memory:'`  | SQLite のストレージモード                                                                                                   |
+| `options.logging?`     | `boolean`      | `false`       | ログを有効にするかどうか                                                                                                        |
+| `options.define?`      | `Object`       | `{}`          | デフォルトのテーブル定義パラメータ                                                                                                    |
+| `options.tablePrefix?` | `string`       | `''`          | NocoBase 拡張、テーブル名プレフィックス                                                                                             |
+| `options.migrator?`    | `UmzugOptions` | `{}`          | NocoBase 拡張、マイグレーションマネージャー関連パラメータ、[Umzug](https://github.com/sequelize/umzug/blob/main/src/types.ts#L15) 実装を参照 |
 
-## 迁移相关方法
+## マイグレーション関連メソッド
 
 ### `addMigration()`
 
-添加单个迁移文件。
+単一のマイグレーションファイルを追加します。
 
-**签名**
+**シグネチャ**
 
 - `addMigration(options: MigrationItem)`
 
-**参数**
+**パラメータ**
 
-| 参数名               | 类型               | 默认值 | 描述                   |
+| パラメータ名               | タイプ               | デフォルト値 | 説明                   |
 | -------------------- | ------------------ | ------ | ---------------------- |
-| `options.name`       | `string`           | -      | 迁移文件名称           |
-| `options.context?`   | `string`           | -      | 迁移文件的上下文       |
-| `options.migration?` | `typeof Migration` | -      | 迁移文件的自定义类     |
-| `options.up`         | `Function`         | -      | 迁移文件的 `up` 方法   |
-| `options.down`       | `Function`         | -      | 迁移文件的 `down` 方法 |
+| `options.name`       | `string`           | -      | マイグレーションファイル名           |
+| `options.context?`   | `string`           | -      | マイグレーションファイルのコンテキスト       |
+| `options.migration?` | `typeof Migration` | -      | マイグレーションファイルのカスタムクラス     |
+| `options.up`         | `Function`         | -      | マイグレーションファイルの `up` メソッド   |
+| `options.down`       | `Function`         | -      | マイグレーションファイルの `down` メソッド |
 
-**示例**
+**例**
 
 ```ts
 db.addMigration({
@@ -155,22 +155,22 @@ db.addMigration({
 
 ### `addMigrations()`
 
-添加指定目录下的迁移文件。
+指定されたディレクトリ内のマイグレーションファイルを追加します。
 
-**签名**
+**シグネチャ**
 
 - `addMigrations(options: AddMigrationsOptions): void`
 
-**参数**
+**パラメータ**
 
-| 参数名               | 类型       | 默认值         | 描述             |
+| パラメータ名               | タイプ       | デフォルト値         | 説明             |
 | -------------------- | ---------- | -------------- | ---------------- |
-| `options.directory`  | `string`   | `''`           | 迁移文件所在目录 |
-| `options.extensions` | `string[]` | `['js', 'ts']` | 文件扩展名       |
-| `options.namespace?` | `string`   | `''`           | 命名空间         |
-| `options.context?`   | `Object`   | `{ db }`       | 迁移文件的上下文 |
+| `options.directory`  | `string`   | `''`           | マイグレーションファイルが存在するディレクトリ |
+| `options.extensions` | `string[]` | `['js', 'ts']` | ファイル拡張子       |
+| `options.namespace?` | `string`   | `''`           | 名前空間         |
+| `options.context?`   | `Object`   | `{ db }`       | マイグレーションファイルのコンテキスト |
 
-**示例**
+**例**
 
 ```ts
 db.addMigrations({
@@ -179,50 +179,50 @@ db.addMigrations({
 });
 ```
 
-## 工具方法
+## ユーティリティメソッド
 
 ### `inDialect()`
 
-判断当前数据库类型是否为指定类型。
+現在のデータベースタイプが指定されたタイプであるかどうかを判断します。
 
-**签名**
+**シグネチャ**
 
 - `inDialect(dialect: string[]): boolean`
 
-**参数**
+**パラメータ**
 
-| 参数名    | 类型       | 默认值 | 描述                                             |
+| パラメータ名    | タイプ       | デフォルト値 | 説明                                             |
 | --------- | ---------- | ------ | ------------------------------------------------ |
-| `dialect` | `string[]` | -      | 数据库类型，可选值为 `mysql`/`postgres`/`sqlite` |
+| `dialect` | `string[]` | -      | データベースタイプ、オプションは `mysql`/`postgres`/`sqlite` |
 
 ### `getTablePrefix()`
 
-获取配置中的表名前缀。
+設定されているテーブル名プレフィックスを取得します。
 
-**签名**
+**シグネチャ**
 
 - `getTablePrefix(): string`
 
-## 数据表配置
+## データテーブル設定
 
 ### `collection()`
 
-定义一个数据表。该调用类似与 Sequelize 的 `define` 方法，只在内存中创建表结构，如需持久化到数据库，需要调用 `sync` 方法。
+データテーブルを定義します。この呼び出しは Sequelize の `define` メソッドに似ており、メモリ内にテーブル構造を作成します。データベースに永続化するには、`sync` メソッドを呼び出す必要があります。
 
-**签名**
+**シグネチャ**
 
 - `collection(options: CollectionOptions): Collection`
 
-**参数**
+**パラメータ**
 
-`options` 所有配置参数与 `Collection` 类的构造函数一致，参考 [Collection](/api/server/database/collection#构造函数)。
+`options` のすべての設定パラメータは `Collection` クラスのコンストラクタと一致し、[Collection](/api/database/collection#コンストラクタ) を参照してください。
 
-**事件**
+**イベント**
 
-- `'beforeDefineCollection'`：在定义表之前触发。
-- `'afterDefineCollection'`：在定义表之后触发。
+- `'beforeDefineCollection'`：テーブル定義前にトリガーされます。
+- `'afterDefineCollection'`：テーブル定義後にトリガーされます。
 
-**示例**
+**例**
 
 ```ts
 db.collection({
@@ -239,25 +239,25 @@ db.collection({
   ],
 });
 
-// sync collection as table to db
+// コレクションをデータベースに同期
 await db.sync();
 ```
 
 ### `getCollection()`
 
-获取已定义的数据表。
+定義済みのデータテーブルを取得します。
 
-**签名**
+**シグネチャ**
 
 - `getCollection(name: string): Collection`
 
-**参数**
+**パラメータ**
 
-| 参数名 | 类型     | 默认值 | 描述 |
+| パラメータ名 | タイプ     | デフォルト値 | 説明 |
 | ------ | -------- | ------ | ---- |
-| `name` | `string` | -      | 表名 |
+| `name` | `string` | -      | テーブル名 |
 
-**示例**
+**例**
 
 ```ts
 const collection = db.getCollection('books');
@@ -265,19 +265,19 @@ const collection = db.getCollection('books');
 
 ### `hasCollection()`
 
-判断是否已定义指定的数据表。
+指定されたデータテーブルが定義されているかどうかを判断します。
 
-**签名**
+**シグネチャ**
 
 - `hasCollection(name: string): boolean`
 
-**参数**
+**パラメータ**
 
-| 参数名 | 类型     | 默认值 | 描述 |
+| パラメータ名 | タイプ     | デフォルト値 | 説明 |
 | ------ | -------- | ------ | ---- |
-| `name` | `string` | -      | 表名 |
+| `name` | `string` | -      | テーブル名 |
 
-**示例**
+**例**
 
 ```ts
 db.collection({ name: 'books' });
@@ -289,24 +289,24 @@ db.hasCollection('authors'); // false
 
 ### `removeCollection()`
 
-移除已定义的数据表。仅在内存中移除，如需持久化，需要调用 `sync` 方法。
+定義済みのデータテーブルを削除します。メモリ内でのみ削除され、永続化するには `sync` メソッドを呼び出す必要があります。
 
-**签名**
+**シグネチャ**
 
 - `removeCollection(name: string): void`
 
-**参数**
+**パラメータ**
 
-| 参数名 | 类型     | 默认值 | 描述 |
+| パラメータ名 | タイプ     | デフォルト値 | 説明 |
 | ------ | -------- | ------ | ---- |
-| `name` | `string` | -      | 表名 |
+| `name` | `string` | -      | テーブル名 |
 
-**事件**
+**イベント**
 
-- `'beforeRemoveCollection'`：在移除表之前触发。
-- `'afterRemoveCollection'`：在移除表之后触发。
+- `'beforeRemoveCollection'`：テーブル削除前にトリガーされます。
+- `'afterRemoveCollection'`：テーブル削除後にトリガーされます。
 
-**示例**
+**例**
 
 ```ts
 db.collection({ name: 'books' });
@@ -316,22 +316,22 @@ db.removeCollection('books');
 
 ### `import()`
 
-导入文件目录下所有文件作为 collection 配置载入内存。
+ファイルディレクトリ内のすべてのファイルをコレクション設定としてメモリにロードします。
 
-**签名**
+**シグネチャ**
 
 - `async import(options: { directory: string; extensions?: ImportFileExtension[] }): Promise<Map<string, Collection>>`
 
-**参数**
+**パラメータ**
 
-| 参数名               | 类型       | 默认值         | 描述             |
+| パラメータ名               | タイプ       | デフォルト値         | 説明             |
 | -------------------- | ---------- | -------------- | ---------------- |
-| `options.directory`  | `string`   | -              | 要导入的目录路径 |
-| `options.extensions` | `string[]` | `['ts', 'js']` | 扫描特定后缀     |
+| `options.directory`  | `string`   | -              | インポートするディレクトリパス |
+| `options.extensions` | `string[]` | `['ts', 'js']` | 特定の拡張子をスキャン     |
 
-**示例**
+**例**
 
-`./collections/books.ts` 文件定义的 collection 如下：
+`./collections/books.ts` ファイルで定義されたコレクションは以下の通りです：
 
 ```ts
 export default {
@@ -345,7 +345,7 @@ export default {
 };
 ```
 
-在插件加载时导入相关配置：
+プラグインロード時に関連設定をインポートします：
 
 ```ts
 class Plugin {
@@ -357,29 +357,28 @@ class Plugin {
 }
 ```
 
-## 扩展注册与获取
+## 拡張登録と取得
 
 ### `registerFieldTypes()`
 
-注册自定义字段类型。
+カスタムフィールドタイプを登録します。
 
-**签名**
+**シグネチャ**
 
 - `registerFieldTypes(fieldTypes: MapOf<typeof Field>): void`
 
-**参数**
+**パラメータ**
 
-`fieldTypes` 是一个键值对，键为字段类型名称，值为字段类型类。
+`fieldTypes` はキーと値のペアで、キーはフィールドタイプ名、値はフィールドタイプクラスです。
 
-**示例**
+**例**
 
 ```ts
 import { Field } from '@nocobase/database';
 
 class MyField extends Field {
-  // ...
-}
-
+```
+```typescript
 db.registerFieldTypes({
   myField: MyField,
 });
@@ -387,19 +386,19 @@ db.registerFieldTypes({
 
 ### `registerModels()`
 
-注册自定义数据模型类。
+カスタムデータモデルクラスを登録します。
 
-**签名**
+**シグネチャ**
 
 - `registerModels(models: MapOf<ModelStatic<any>>): void`
 
-**参数**
+**パラメータ**
 
-`models` 是一个键值对，键为数据模型名称，值为数据模型类。
+`models` はキーと値のペアで、キーはデータモデル名、値はデータモデルクラスです。
 
-**示例**
+**例**
 
-```ts
+```typescript
 import { Model } from '@nocobase/database';
 
 class MyModel extends Model {
@@ -418,19 +417,19 @@ db.collection({
 
 ### `registerRepositories()`
 
-注册自定义数据仓库类。
+カスタムデータリポジトリクラスを登録します。
 
-**签名**
+**シグネチャ**
 
 - `registerRepositories(repositories: MapOf<RepositoryType>): void`
 
-**参数**
+**パラメータ**
 
-`repositories` 是一个键值对，键为数据仓库名称，值为数据仓库类。
+`repositories` はキーと値のペアで、キーはデータリポジトリ名、値はデータリポジトリクラスです。
 
-**示例**
+**例**
 
-```ts
+```typescript
 import { Repository } from '@nocobase/database';
 
 class MyRepository extends Repository {
@@ -449,19 +448,19 @@ db.collection({
 
 ### `registerOperators()`
 
-注册自定义数据查询操作符。
+カスタムデータクエリ演算子を登録します。
 
-**签名**
+**シグネチャ**
 
 - `registerOperators(operators: MapOf<OperatorFunc>)`
 
-**参数**
+**パラメータ**
 
-`operators` 是一个键值对，键为操作符名称，值为操作符比较语句生成函数。
+`operators` はキーと値のペアで、キーは演算子名、値は演算子比較文生成関数です。
 
-**示例**
+**例**
 
-```ts
+```typescript
 db.registerOperators({
   $dateOn(value) {
     return {
@@ -476,7 +475,7 @@ db.registerOperators({
 db.getRepository('books').count({
   filter: {
     createdAt: {
-      // registered operator
+      // 登録された演算子
       $dateOn: '2020-01-01',
     },
   },
@@ -485,21 +484,21 @@ db.getRepository('books').count({
 
 ### `getModel()`
 
-获取已定义的数据模型类。如果没有在之前注册自定义模型类，将返回 Sequelize 默认的模型类。默认名称与 collection 定义的名称相同。
+定義済みのデータモデルクラスを取得します。以前にカスタムモデルクラスを登録していない場合、Sequelizeのデフォルトのモデルクラスが返されます。デフォルトの名前はcollectionで定義された名前と同じです。
 
-**签名**
+**シグネチャ**
 
 - `getModel(name: string): Model`
 
-**参数**
+**パラメータ**
 
-| 参数名 | 类型     | 默认值 | 描述           |
-| ------ | -------- | ------ | -------------- |
-| `name` | `string` | -      | 已注册的模型名 |
+| パラメータ名 | タイプ     | デフォルト値 | 説明           |
+| ------------ | ---------- | ------------ | -------------- |
+| `name`       | `string`   | -            | 登録済みのモデル名 |
 
-**示例**
+**例**
 
-```ts
+```typescript
 db.registerModels({
   books: class MyModel extends Model {},
 });
@@ -509,33 +508,33 @@ const ModelClass = db.getModel('books');
 console.log(ModelClass.prototype instanceof MyModel); // true
 ```
 
-注：从 collection 中获取的模型类并不与注册时的模型类严格相等，而是继承自注册时的模型类。由于 Sequelize 的模型类在初始化过程中属性会被修改，所以 NocoBase 自动处理了这个继承关系。除类不相等以外，其他所有定义都可以正常使用。
+注：collectionから取得したモデルクラスは、登録時のモデルクラスと厳密には等しくありませんが、登録時のモデルクラスから継承されています。Sequelizeのモデルクラスは初期化プロセス中に属性が変更されるため、NocoBaseがこの継承関係を自動的に処理します。クラスが等しくない以外は、他のすべての定義が正常に使用できます。
 
 ### `getRepository()`
 
-获取自定义的数据仓库类。如果没有在之前注册自定义数据仓库类，将返回 NocoBase 默认的数据仓库类。默认名称与 collection 定义的名称相同。
+カスタムデータリポジトリクラスを取得します。以前にカスタムデータリポジトリクラスを登録していない場合、NocoBaseのデフォルトのデータリポジトリクラスが返されます。デフォルトの名前はcollectionで定義された名前と同じです。
 
-数据仓库类主要用于基于数据模型的增删改查等操作，参考 [数据仓库](/api/server/database/repository)。
+データリポジトリクラスは主にデータモデルに基づくCRUD操作に使用されます。詳細は[データリポジトリ](/api/server/database/repository)を参照してください。
 
-**签名**
+**シグネチャ**
 
 - `getRepository(name: string): Repository`
 - `getRepository(name: string, relationId?: string | number): Repository`
 
-**参数**
+**パラメータ**
 
-| 参数名       | 类型                 | 默认值 | 描述               |
-| ------------ | -------------------- | ------ | ------------------ |
-| `name`       | `string`             | -      | 已注册的数据仓库名 |
-| `relationId` | `string` \| `number` | -      | 关系数据的外键值   |
+| パラメータ名       | タイプ                 | デフォルト値 | 説明               |
+| ------------------ | ---------------------- | ------------ | ------------------ |
+| `name`             | `string`               | -            | 登録済みのデータリポジトリ名 |
+| `relationId`       | `string` \| `number`   | -            | リレーションデータの外部キー値 |
 
-当名称是形如 `'tables.relactions'` 的带关联的名称时，将返回关联的数据仓库类。如果提供了第二个参数，数据仓库在使用时（查询、修改等）会基于关系数据的外键值。
+名前が`'tables.relactions'`のような関連名の場合、関連するデータリポジトリクラスが返されます。第二引数が提供された場合、データリポジトリは使用時（クエリ、変更など）にリレーションデータの外部キー値に基づいて動作します。
 
-**示例**
+**例**
 
-假设有两张数据表*文章*与*作者*，并且文章表中有一个外键指向作者表：
+*articles*と*authors*の2つのデータシートがあり、articlesテーブルにauthorsテーブルを指す外部キーがあるとします：
 
-```ts
+```typescript
 const AuthorsRepo = db.getRepository('authors');
 const author1 = AuthorsRepo.create({ name: 'author1' });
 
@@ -544,45 +543,45 @@ const post1 = AuthorsRepo.create({ title: 'post1' });
 asset(post1.authorId === author1.id); // true
 ```
 
-## 数据库事件
+## データベースイベント
 
 ### `on()`
 
-监听数据库事件。
+データベースイベントを監視します。
 
-**签名**
+**シグネチャ**
 
 - `on(event: string, listener: (...args: any[]) => void | Promise<void>): void`
 
-**参数**
+**パラメータ**
 
-| 参数名   | 类型     | 默认值 | 描述       |
-| -------- | -------- | ------ | ---------- |
-| event    | string   | -      | 事件名称   |
-| listener | Function | -      | 事件监听器 |
+| パラメータ名   | タイプ     | デフォルト値 | 説明       |
+| -------------- | ---------- | ------------ | ---------- |
+| event          | string     | -            | イベント名 |
+| listener       | Function   | -            | イベントリスナー |
 
-事件名称默认支持 Sequelize 的 Model 事件。针对全局事件，通过 `<sequelize_model_global_event>` 的名称方式监听，针对单 Model 事件，通过 `<model_name>.<sequelize_model_event>` 的名称方式监听。
+イベント名はデフォルトでSequelizeのModelイベントをサポートします。グローバルイベントは`<sequelize_model_global_event>`の名前で、単一Modelイベントは`<model_name>.<sequelize_model_event>`の名前で監視します。
 
-所有内置的事件类型的参数说明和详细示例参考 [内置事件](#内置事件) 部分内容。
+すべての組み込みイベントタイプのパラメータ説明と詳細な例は[組み込みイベント](#組み込みイベント)セクションを参照してください。
 
 ### `off()`
 
-移除事件监听函数。
+イベントリスナー関数を削除します。
 
-**签名**
+**シグネチャ**
 
 - `off(name: string, listener: Function)`
 
-**参数**
+**パラメータ**
 
-| 参数名   | 类型     | 默认值 | 描述       |
-| -------- | -------- | ------ | ---------- |
-| name     | string   | -      | 事件名称   |
-| listener | Function | -      | 事件监听器 |
+| パラメータ名   | タイプ     | デフォルト値 | 説明       |
+| -------------- | ---------- | ------------ | ---------- |
+| name           | string     | -            | イベント名 |
+| listener       | Function   | -            | イベントリスナー |
 
-**示例**
+**例**
 
-```ts
+```typescript
 const listener = async (model, options) => {
   console.log(model);
 };
@@ -592,105 +591,105 @@ db.on('afterCreate', listener);
 db.off('afterCreate', listener);
 ```
 
-## 数据库操作
+## データベース操作
 
 ### `auth()`
 
-数据库连接验证。可以用于确保应用与数据已建立连接。
+データベース接続を検証します。アプリケーションとデータが接続されていることを確認するために使用できます。
 
-**签名**
+**シグネチャ**
 
 - `auth(options: QueryOptions & { retry?: number } = {}): Promise<boolean>`
 
-**参数**
+**パラメータ**
 
-| 参数名                 | 类型                  | 默认值  | 描述               |
-| ---------------------- | --------------------- | ------- | ------------------ |
-| `options?`             | `Object`              | -       | 验证选项           |
-| `options.retry?`       | `number`              | `10`    | 验证失败时重试次数 |
-| `options.transaction?` | `Transaction`         | -       | 事务对象           |
-| `options.logging?`     | `boolean \| Function` | `false` | 是否打印日志       |
+| パラメータ名                 | タイプ                  | デフォルト値 | 説明               |
+| ---------------------------- | ----------------------- | ------------ | ------------------ |
+| `options?`                   | `Object`                | -            | 検証オプション     |
+| `options.retry?`             | `number`                | `10`         | 検証失敗時の再試行回数 |
+| `options.transaction?`       | `Transaction`           | -            | トランザクションオブジェクト |
+| `options.logging?`           | `boolean \| Function`   | `false`      | ログを出力するかどうか |
 
-**示例**
+**例**
 
-```ts
+```typescript
 await db.auth();
 ```
 
 ### `reconnect()`
 
-重新连接数据库。
+データベースを再接続します。
 
-**示例**
+**例**
 
-```ts
+```typescript
 await db.reconnect();
 ```
 
 ### `closed()`
 
-判断数据库是否已关闭连接。
+データベース接続が閉じられているかどうかを判断します。
 
-**签名**
+**シグネチャ**
 
 - `closed(): boolean`
 
 ### `close()`
 
-关闭数据库连接。等同于 `sequelize.close()`。
+データベース接続を閉じます。`sequelize.close()`と同じです。
 
 ### `sync()`
 
-同步数据库表结构。等同于 `sequelize.sync()`，参数参考 [Sequelize 文档](https://sequelize.org/api/v6/class/src/sequelize.js~sequelize#instance-method-sync)。
+データベーステーブル構造を同期します。`sequelize.sync()`と同じで、パラメータは[Sequelizeドキュメント](https://sequelize.org/api/v6/class/src/sequelize.js~sequelize#instance-method-sync)を参照してください。
 
 ### `clean()`
 
-清空数据库，将删除所有数据表。
+データベースをクリアし、すべてのデータシートを削除します。
 
-**签名**
+**シグネチャ**
 
 - `clean(options: CleanOptions): Promise<void>`
 
-**参数**
+**パラメータ**
 
-| 参数名                | 类型          | 默认值  | 描述               |
-| --------------------- | ------------- | ------- | ------------------ |
-| `options.drop`        | `boolean`     | `false` | 是否移除所有数据表 |
-| `options.skip`        | `string[]`    | -       | 跳过的表名配置     |
-| `options.transaction` | `Transaction` | -       | 事务对象           |
+| パラメータ名                | タイプ          | デフォルト値 | 説明               |
+| --------------------------- | --------------- | ------------ | ------------------ |
+| `options.drop`              | `boolean`       | `false`      | すべてのデータシートを削除するかどうか |
+| `options.skip`              | `string[]`      | -            | スキップするテーブル名設定 |
+| `options.transaction`       | `Transaction`   | -            | トランザクションオブジェクト |
 
-**示例**
+**例**
 
-移除除 `users` 表以外的所有表。
+`users`テーブル以外のすべてのテーブルを削除します。
 
-```ts
+```typescript
 await db.clean({
   drop: true,
   skip: ['users'],
 });
 ```
 
-## 包级导出
+## パッケージエクスポート
 
 ### `defineCollection()`
 
-创建一个数据表的配置内容。
+データシートの設定内容を作成します。
 
-**签名**
+**シグネチャ**
 
 - `defineCollection(name: string, config: CollectionOptions): CollectionOptions`
 
-**参数**
+**パラメータ**
 
-| 参数名              | 类型                | 默认值 | 描述                                |
-| ------------------- | ------------------- | ------ | ----------------------------------- |
-| `collectionOptions` | `CollectionOptions` | -      | 与所有 `db.collection()` 的参数相同 |
+| パラメータ名              | タイプ                | デフォルト値 | 説明                                |
+| ------------------------- | --------------------- | ------------ | ----------------------------------- |
+| `collectionOptions`       | `CollectionOptions`   | -            | すべての`db.collection()`のパラメータと同じ |
 
-**示例**
+**例**
 
-对于要被 `db.import()` 导入的数据表配置文件：
+`db.import()`でインポートされるデータシート設定ファイルの場合：
 
-```ts
+```typescript
 import { defineCollection } from '@nocobase/database';
 
 export default defineCollection({
@@ -706,82 +705,82 @@ export default defineCollection({
 
 ### `extendCollection()`
 
-扩展已在内存中的表结构配置内容，主要用于 `import()` 方法导入的文件内容。该方法是 `@nocobase/database` 包导出的顶级方法，不通过 db 实例调用。也可以使用 `extend` 别名。
+メモリ内のテーブル構造設定内容を拡張します。主に`import()`メソッドでインポートされたファイル内容に使用されます。このメソッドは`@nocobase/database`パッケージのトップレベルメソッドで、dbインスタンスを介して呼び出されません。`extend`エイリアスも使用できます。
 
-**签名**
+**シグネチャ**
 
 - `extendCollection(collectionOptions: CollectionOptions, mergeOptions?: MergeOptions): ExtendedCollectionOptions`
 
-**参数**
+**パラメータ**
 
-| 参数名              | 类型                | 默认值 | 描述                                                           |
-| ------------------- | ------------------- | ------ | -------------------------------------------------------------- |
-| `collectionOptions` | `CollectionOptions` | -      | 与所有 `db.collection()` 的参数相同                            |
-| `mergeOptions?`     | `MergeOptions`      | -      | npm 包 [deepmerge](https://npmjs.com/package/deepmerge) 的参数 |
+| パラメータ名              | タイプ                | デフォルト値 | 説明                                                           |
+| ------------------------- | --------------------- | ------------ | -------------------------------------------------------------- |
+| `collectionOptions`       | `CollectionOptions`   | -            | すべての`db.collection()`のパラメータと同じ                    |
+| `mergeOptions?`           | `MergeOptions`        | -            | npmパッケージ[deepmerge](https://npmjs.com/package/deepmerge)のパラメータ |
 
-**示例**
+**例**
 
-原始 books 表定义（books.ts）：
+元のbooksテーブル定義（books.ts）：
 
-```ts
+```typescript
 export default {
   name: 'books',
   fields: [{ name: 'title', type: 'string' }],
 };
 ```
 
-扩展 books 表定义（books.extend.ts）：
+拡張booksテーブル定義（books.extend.ts）：
 
-```ts
+```typescript
 import { extend } from '@nocobase/database';
 
-// 再次扩展
+// 再度拡張
 export default extend({
   name: 'books',
   fields: [{ name: 'price', type: 'number' }],
 });
 ```
 
-以上两个文件如在调用 `import()` 时导入，通过 `extend()` 再次扩展以后，books 表将拥有 `title` 和 `price` 两个字段。
+上記の2つのファイルを`import()`でインポートすると、`extend()`で再度拡張された後、booksテーブルは`title`と`price`の2つのフィールドを持つことになります。
 
-此方法在扩展已有插件已定义的表结构时非常有用。
+このメソッドは、既存のプラグインで定義されたテーブル構造を拡張する際に非常に有用です。
 
-## 内置事件
+## 組み込みイベント
 
-数据库会在相应的生命周期触发以下对应的事件，通过 `on()` 方法订阅后进行特定的处理可满足一些业务需要。
+データベースは対応するライフサイクルで以下のイベントをトリガーし、`on()`メソッドでサブスクライブして特定の処理を行うことで、いくつかのビジネスニーズを満たすことができます。
 
 ### `'beforeSync'` / `'afterSync'`
 
-当新的表结构配置（字段、索引等）被同步到数据库前后触发，通常在执行 `collection.sync()`（内部调用）时会触发，一般用于一些特殊的字段扩展的逻辑处理。
+新しいテーブル構造設定（フィールド、インデックスなど）がデータベースに同期される前後にトリガーされます。通常、`collection.sync()`（内部呼び出し）を実行するとトリガーされ、特別なフィールド拡張のロジック処理に使用されます。
 
-**签名**
+**シグネチャ**
 
-```ts
+```typescript
 on(eventName: `${string}.beforeSync` | 'beforeSync' | `${string}.afterSync` | 'afterSync', listener: SyncListener): this
 ```
 
-**类型**
+**タイプ**
 
-```ts
+```typescript
 import type { SyncOptions, HookReturn } from 'sequelize/types';
 
 type SyncListener = (options?: SyncOptions) => HookReturn;
 ```
 
-**示例**
+**例**
 
-```ts
+```typescript
 const users = db.collection({
   name: 'users',
   fields: [{ type: 'string', name: 'username' }],
 });
 
 db.on('beforeSync', async (options) => {
-  // do something
+  // 何か処理を行う
 });
 
 db.on('users.afterSync', async (options) => {
-  // do something
+  // 何か処理を行う
 });
 
 await users.sync();
@@ -789,17 +788,17 @@ await users.sync();
 
 ### `'beforeValidate'` / `'afterValidate'`
 
-创建或更新数据前会有基于 collection 定义的规则对数据的验证过程，在验证前后会触发对应事件。当调用 `repository.create()` 或 `repository.update()` 时会触发。
+データを作成または更新する前に、collectionで定義されたルールに基づいてデータの検証が行われ、検証の前後にそれぞれ対応するイベントがトリガーされます。`repository.create()`または`repository.update()`を呼び出すとトリガーされます。
 
-**签名**
+**シグネチャ**
 
-```ts
+```typescript
 on(eventName: `${string}.beforeValidate` | 'beforeValidate' | `${string}.afterValidate` | 'afterValidate', listener: ValidateListener): this
 ```
 
-**类型**
+**タイプ**
 
-```ts
+```typescript
 import type { ValidationOptions } from 'sequelize/types/lib/instance-validator';
 import type { HookReturn } from 'sequelize/types';
 import type { Model } from '@nocobase/database';
@@ -810,7 +809,7 @@ type ValidateListener = (
 ) => HookReturn;
 ```
 
-**示例**
+**例**
 
 ```ts
 db.collection({
@@ -826,50 +825,50 @@ db.collection({
   ],
 });
 
-// all models
+// すべてのモデル
 db.on('beforeValidate', async (model, options) => {
-  // do something
+  // 何かを行う
 });
-// tests model
+// tests モデル
 db.on('tests.beforeValidate', async (model, options) => {
-  // do something
+  // 何かを行う
 });
 
-// all models
+// すべてのモデル
 db.on('afterValidate', async (model, options) => {
-  // do something
+  // 何かを行う
 });
-// tests model
+// tests モデル
 db.on('tests.afterValidate', async (model, options) => {
-  // do something
+  // 何かを行う
 });
 
 const repository = db.getRepository('tests');
 await repository.create({
   values: {
-    email: 'abc', // checks for email format
+    email: 'abc', // メール形式をチェック
   },
 });
-// or
+// または
 await repository.update({
   filterByTk: 1,
   values: {
-    email: 'abc', // checks for email format
+    email: 'abc', // メール形式をチェック
   },
 });
 ```
 
 ### `'beforeCreate'` / `'afterCreate'`
 
-创建一条数据前后会触发对应事件，当调用 `repository.create()` 时会触发。
+データを作成する前後にイベントがトリガーされます。`repository.create()` を呼び出すとトリガーされます。
 
-**签名**
+**シグネチャ**
 
 ```ts
 on(eventName: `${string}.beforeCreate` | 'beforeCreate' | `${string}.afterCreate` | 'afterCreate', listener: CreateListener): this
 ```
 
-**类型**
+**タイプ**
 
 ```ts
 import type { CreateOptions, HookReturn } from 'sequelize/types';
@@ -881,11 +880,11 @@ export type CreateListener = (
 ) => HookReturn;
 ```
 
-**示例**
+**例**
 
 ```ts
 db.on('beforeCreate', async (model, options) => {
-  // do something
+  // 何かを行う
 });
 
 db.on('books.afterCreate', async (model, options) => {
@@ -899,15 +898,15 @@ db.on('books.afterCreate', async (model, options) => {
 
 ### `'beforeUpdate'` / `'afterUpdate'`
 
-更新一条数据前后会触发对应事件，当调用 `repository.update()` 时会触发。
+データを更新する前後にイベントがトリガーされます。`repository.update()` を呼び出すとトリガーされます。
 
-**签名**
+**シグネチャ**
 
 ```ts
 on(eventName: `${string}.beforeUpdate` | 'beforeUpdate' | `${string}.afterUpdate` | 'afterUpdate', listener: UpdateListener): this
 ```
 
-**类型**
+**タイプ**
 
 ```ts
 import type { UpdateOptions, HookReturn } from 'sequelize/types';
@@ -919,29 +918,29 @@ export type UpdateListener = (
 ) => HookReturn;
 ```
 
-**示例**
+**例**
 
 ```ts
 db.on('beforeUpdate', async (model, options) => {
-  // do something
+  // 何かを行う
 });
 
 db.on('books.afterUpdate', async (model, options) => {
-  // do something
+  // 何かを行う
 });
 ```
 
 ### `'beforeSave'` / `'afterSave'`
 
-创建或更新一条数据前后会触发对应事件，当调用 `repository.create()` 或 `repository.update()` 时会触发。
+データを作成または更新する前後にイベントがトリガーされます。`repository.create()` または `repository.update()` を呼び出すとトリガーされます。
 
-**签名**
+**シグネチャ**
 
 ```ts
 on(eventName: `${string}.beforeSave` | 'beforeSave' | `${string}.afterSave` | 'afterSave', listener: SaveListener): this
 ```
 
-**类型**
+**タイプ**
 
 ```ts
 import type { SaveOptions, HookReturn } from 'sequelize/types';
@@ -950,29 +949,29 @@ import type { Model } from '@nocobase/database';
 export type SaveListener = (model: Model, options?: SaveOptions) => HookReturn;
 ```
 
-**示例**
+**例**
 
 ```ts
 db.on('beforeSave', async (model, options) => {
-  // do something
+  // 何かを行う
 });
 
 db.on('books.afterSave', async (model, options) => {
-  // do something
+  // 何かを行う
 });
 ```
 
 ### `'beforeDestroy'` / `'afterDestroy'`
 
-删除一条数据前后会触发对应事件，当调用 `repository.destroy()` 时会触发。
+データを削除する前後にイベントがトリガーされます。`repository.destroy()` を呼び出すとトリガーされます。
 
-**签名**
+**シグネチャ**
 
 ```ts
-on(eventName: `${string}.beforeDestroy` | 'beforeDestroy' | `${string}.afterDestroy` | 'afterDestroy', listener: DestroyListener): this
+on(eventName: `${string}.beforeDestroy` | 'beforeDestroy' | `${string}.afterDestroy' | 'afterDestroy', listener: DestroyListener): this
 ```
 
-**类型**
+**タイプ**
 
 ```ts
 import type { DestroyOptions, HookReturn } from 'sequelize/types';
@@ -984,29 +983,29 @@ export type DestroyListener = (
 ) => HookReturn;
 ```
 
-**示例**
+**例**
 
 ```ts
 db.on('beforeDestroy', async (model, options) => {
-  // do something
+  // 何かを行う
 });
 
 db.on('books.afterDestroy', async (model, options) => {
-  // do something
+  // 何かを行う
 });
 ```
 
 ### `'afterCreateWithAssociations'`
 
-创建一条携带层级关系数据的数据之后会触发对应事件，当调用 `repository.create()` 时会触发。
+階層関係を持つデータを作成した後にイベントがトリガーされます。`repository.create()` を呼び出すとトリガーされます。
 
-**签名**
+**シグネチャ**
 
 ```ts
 on(eventName: `${string}.afterCreateWithAssociations` | 'afterCreateWithAssociations', listener: CreateWithAssociationsListener): this
 ```
 
-**类型**
+**タイプ**
 
 ```ts
 import type { CreateOptions, HookReturn } from 'sequelize/types';
@@ -1018,29 +1017,29 @@ export type CreateWithAssociationsListener = (
 ) => HookReturn;
 ```
 
-**示例**
+**例**
 
 ```ts
 db.on('afterCreateWithAssociations', async (model, options) => {
-  // do something
+  // 何かを行う
 });
 
 db.on('books.afterCreateWithAssociations', async (model, options) => {
-  // do something
+  // 何かを行う
 });
 ```
 
 ### `'afterUpdateWithAssociations'`
 
-更新一条携带层级关系数据的数据之后会触发对应事件，当调用 `repository.update()` 时会触发。
+階層関係を持つデータを更新した後にイベントがトリガーされます。`repository.update()` を呼び出すとトリガーされます。
 
-**签名**
+**シグネチャ**
 
 ```ts
 on(eventName: `${string}.afterUpdateWithAssociations` | 'afterUpdateWithAssociations', listener: CreateWithAssociationsListener): this
 ```
 
-**类型**
+**タイプ**
 
 ```ts
 import type { UpdateOptions, HookReturn } from 'sequelize/types';
@@ -1052,29 +1051,29 @@ export type UpdateWithAssociationsListener = (
 ) => HookReturn;
 ```
 
-**示例**
+**例**
 
 ```ts
 db.on('afterUpdateWithAssociations', async (model, options) => {
-  // do something
+  // 何かを行う
 });
 
 db.on('books.afterUpdateWithAssociations', async (model, options) => {
-  // do something
+  // 何かを行う
 });
 ```
 
 ### `'afterSaveWithAssociations'`
 
-创建或更新一条携带层级关系数据的数据之后会触发对应事件，当调用 `repository.create()` 或 `repository.update()` 时会触发。
+階層関係を持つデータを作成または更新した後にイベントがトリガーされます。`repository.create()` または `repository.update()` を呼び出すとトリガーされます。
 
-**签名**
+**シグネチャ**
 
 ```ts
 on(eventName: `${string}.afterSaveWithAssociations` | 'afterSaveWithAssociations', listener: SaveWithAssociationsListener): this
 ```
 
-**类型**
+**タイプ**
 
 ```ts
 import type { SaveOptions, HookReturn } from 'sequelize/types';
@@ -1086,31 +1085,31 @@ export type SaveWithAssociationsListener = (
 ) => HookReturn;
 ```
 
-**示例**
+**例**
 
 ```ts
 db.on('afterSaveWithAssociations', async (model, options) => {
-  // do something
+  // 何かを行う
 });
 
 db.on('books.afterSaveWithAssociations', async (model, options) => {
-  // do something
+  // 何かを行う
 });
 ```
 
 ### `'beforeDefineCollection'`
 
-当定义一个数据表之前触发，如调用 `db.collection()` 时。
+データシートを定義する前にトリガーされます。例えば `db.collection()` を呼び出すとき。
 
-注：该事件是同步事件。
+注：このイベントは同期イベントです。
 
-**签名**
+**シグネチャ**
 
 ```ts
 on(eventName: 'beforeDefineCollection', listener: BeforeDefineCollectionListener): this
 ```
 
-**类型**
+**タイプ**
 
 ```ts
 import type { CollectionOptions } from '@nocobase/database';
@@ -1120,27 +1119,27 @@ export type BeforeDefineCollectionListener = (
 ) => void;
 ```
 
-**示例**
+**例**
 
 ```ts
 db.on('beforeDefineCollection', (options) => {
-  // do something
+  // 何かを行う
 });
 ```
 
 ### `'afterDefineCollection'`
 
-当定义一个数据表之后触发，如调用 `db.collection()` 时。
+データシートを定義した後にトリガーされます。例えば `db.collection()` を呼び出すとき。
 
-注：该事件是同步事件。
+注：このイベントは同期イベントです。
 
-**签名**
+**シグネチャ**
 
 ```ts
 on(eventName: 'afterDefineCollection', listener: AfterDefineCollectionListener): this
 ```
 
-**类型**
+**タイプ**
 
 ```ts
 import type { Collection } from '@nocobase/database';
@@ -1148,27 +1147,27 @@ import type { Collection } from '@nocobase/database';
 export type AfterDefineCollectionListener = (options: Collection) => void;
 ```
 
-**示例**
+**例**
 
 ```ts
 db.on('afterDefineCollection', (collection) => {
-  // do something
+  // 何かを行う
 });
 ```
 
 ### `'beforeRemoveCollection'` / `'afterRemoveCollection'`
 
-当从内存中移除一个数据表前后触发，如调用 `db.removeCollection()` 时。
+メモリからデータシートを削除する前後にトリガーされます。例えば `db.removeCollection()` を呼び出すとき。
 
-注：该事件是同步事件。
+注：このイベントは同期イベントです。
 
-**签名**
+**シグネチャ**
 
 ```ts
 on(eventName: 'beforeRemoveCollection' | 'afterRemoveCollection', listener: RemoveCollectionListener): this
 ```
 
-**类型**
+**タイプ**
 
 ```ts
 import type { Collection } from '@nocobase/database';
@@ -1176,14 +1175,14 @@ import type { Collection } from '@nocobase/database';
 export type RemoveCollectionListener = (options: Collection) => void;
 ```
 
-**示例**
+**例**
 
 ```ts
 db.on('beforeRemoveCollection', (collection) => {
-  // do something
+  // 何かを行う
 });
 
 db.on('afterRemoveCollection', (collection) => {
-  // do something
+  // 何かを行う
 });
 ```

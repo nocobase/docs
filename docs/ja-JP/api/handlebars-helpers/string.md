@@ -1,77 +1,77 @@
 
-# String
+# 文字列
 
 ## {{append}}
 
-Append the specified `suffix` to the given string.
+指定された `suffix` を指定された文字列に追加します。
 
-**Params**
+**パラメータ**
 
 * `str` **{String}**
 * `suffix` **{String}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
-<!-- given that "item.stem" is "foo" -->
+<!-- "item.stem" が "foo" の場合 -->
 {{append item.stem ".html"}}
-<!-- results in:  'foo.html' -->
+<!-- 結果:  'foo.html' -->
 ```
 
 ## {{camelcase}}
 
-camelCase the characters in the given `string`.
+指定された `string` の文字をキャメルケースに変換します。
 
-**Params**
+**パラメータ**
 
-* `string` **{String}**: The string to camelcase.
+* `string` **{String}**: キャメルケースに変換する文字列。
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{camelcase "foo bar baz"}};
-<!-- results in:  'fooBarBaz' -->
+<!-- 結果:  'fooBarBaz' -->
 ```
 
 ## {{capitalize}}
 
-Capitalize the first word in a sentence.
+文の最初の単語を大文字にします。
 
-**Params**
+**パラメータ**
 
 * `str` **{String}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{capitalize "foo bar baz"}}
-<!-- results in:  "Foo bar baz" -->
+<!-- 結果:  "Foo bar baz" -->
 ```
 
 ## {{capitalizeAll}}
 
-Capitalize all words in a string.
+文字列内のすべての単語を大文字にします。
 
-**Params**
+**パラメータ**
 
 * `str` **{String}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{capitalizeAll "foo bar baz"}}
-<!-- results in:  "Foo Bar Baz" -->
+<!-- 結果:  "Foo Bar Baz" -->
 ```
 
 ## {{center}}
 
-Center a string using non-breaking spaces
+非改行スペースを使用して文字列を中央揃えします。
 
-**Params**
+**パラメータ**
 
 * `str` **{String}**
 * `spaces` **{String}**
@@ -79,388 +79,388 @@ Center a string using non-breaking spaces
 
 ## {{chop}}
 
-Like trim, but removes both extraneous whitespace **and non-word characters** from the beginning and end of a string.
+trimと同様ですが、文字列の先頭と末尾から余分な空白と非単語文字を削除します。
 
-**Params**
+**パラメータ**
 
-* `string` **{String}**: The string to chop.
+* `string` **{String}**: トリミングする文字列。
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{chop "_ABC_"}}
-<!-- results in:  'ABC' -->
+<!-- 結果:  'ABC' -->
 
 {{chop "-ABC-"}}
-<!-- results in:  'ABC' -->
+<!-- 結果:  'ABC' -->
 
 {{chop " ABC "}}
-<!-- results in:  'ABC' -->
+<!-- 結果:  'ABC' -->
 ```
 
 ## {{dashcase}}
 
-dash-case the characters in `string`. Replaces non-word characters and periods with hyphens.
+`string` の文字をダッシュケースに変換します。非単語文字とピリオドをハイフンに置き換えます。
 
-**Params**
+**パラメータ**
 
 * `string` **{String}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{dashcase "a-b-c d_e"}}
-<!-- results in:  'a-b-c-d-e' -->
+<!-- 結果:  'a-b-c-d-e' -->
 ```
 
 ## {{dotcase}}
 
-dot.case the characters in `string`.
+`string` の文字をドットケースに変換します。
 
-**Params**
+**パラメータ**
 
 * `string` **{String}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{dotcase "a-b-c d_e"}}
-<!-- results in:  'a.b.c.d.e' -->
+<!-- 結果:  'a.b.c.d.e' -->
 ```
 
 ## {{downcase}}
 
-Lowercase all of the characters in the given string. Alias for [lowercase](#lowercase).
+指定された文字列のすべての文字を小文字に変換します。[lowercase](#lowercase) のエイリアスです。
 
-**Params**
+**パラメータ**
 
 * `string` **{String}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{downcase "aBcDeF"}}
-<!-- results in:  'abcdef' -->
+<!-- 結果:  'abcdef' -->
 ```
 
 ## {{ellipsis}}
 
-Truncates a string to the specified `length`, and appends it with an elipsis, `…`.
+文字列を指定された `length` に切り詰め、省略記号 `…` を追加します。
 
-**Params**
+**パラメータ**
 
 * `str` **{String}**
-* `length` **{Number}**: The desired length of the returned string.
-* `returns` **{String}**: The truncated string.
+* `length` **{Number}**: 返される文字列の希望の長さ。
+* `returns` **{String}**: 切り詰められた文字列。
 
-**Example**
+**例**
 
 ```handlebars
 {{ellipsis (sanitize "<span>foo bar baz</span>"), 7}}
-<!-- results in:  'foo bar…' -->
+<!-- 結果:  'foo bar…' -->
 {{ellipsis "foo bar baz", 7}}
-<!-- results in:  'foo bar…' -->
+<!-- 結果:  'foo bar…' -->
 ```
 
 ## {{hyphenate}}
 
-Replace spaces in a string with hyphens.
+文字列内のスペースをハイフンに置き換えます。
 
-**Params**
+**パラメータ**
 
 * `str` **{String}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{hyphenate "foo bar baz qux"}}
-<!-- results in:  "foo-bar-baz-qux" -->
+<!-- 結果:  "foo-bar-baz-qux" -->
 ```
 
 ## {{isString}}
 
-Return true if `value` is a string.
+`value` が文字列の場合、true を返します。
 
-**Params**
+**パラメータ**
 
 * `value` **{String}**
 * `returns` **{Boolean}**
 
-**Example**
+**例**
 
 ```handlebars
 {{isString "foo"}}
-<!-- results in:  'true' -->
+<!-- 結果:  'true' -->
 ```
 
 ## {{lowercase}}
 
-Lowercase all characters in the given string.
+指定された文字列のすべての文字を小文字に変換します。
 
-**Params**
+**パラメータ**
 
 * `str` **{String}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{lowercase "Foo BAR baZ"}}
-<!-- results in:  'foo bar baz' -->
+<!-- 結果:  'foo bar baz' -->
 ```
 
 ## {{occurrences}}
 
-Return the number of occurrences of `substring` within the given `string`.
+指定された `string` 内の `substring` の出現回数を返します。
 
-**Params**
+**パラメータ**
 
 * `str` **{String}**
 * `substring` **{String}**
-* `returns` **{Number}**: Number of occurrences
+* `returns` **{Number}**: 出現回数
 
-**Example**
+**例**
 
 ```handlebars
 {{occurrences "foo bar foo bar baz" "foo"}}
-<!-- results in:  2 -->
+<!-- 結果:  2 -->
 ```
 
 ## {{pascalcase}}
 
-PascalCase the characters in `string`.
+`string` の文字をパスカルケースに変換します。
 
-**Params**
+**パラメータ**
 
 * `string` **{String}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{pascalcase "foo bar baz"}}
-<!-- results in:  'FooBarBaz' -->
+<!-- 結果:  'FooBarBaz' -->
 ```
 
 ## {{pathcase}}
 
-path/case the characters in `string`.
+`string` の文字をパスケースに変換します。
 
-**Params**
+**パラメータ**
 
 * `string` **{String}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{pathcase "a-b-c d_e"}}
-<!-- results in:  'a/b/c/d/e' -->
+<!-- 結果:  'a/b/c/d/e' -->
 ```
 
 ## {{plusify}}
 
-Replace spaces in the given string with pluses.
+指定された文字列内のスペースをプラス記号に置き換えます。
 
-**Params**
+**パラメータ**
 
-* `str` **{String}**: The input string
-* `returns` **{String}**: Input string with spaces replaced by plus signs
+* `str` **{String}**: 入力文字列
+* `returns` **{String}**: スペースがプラス記号に置き換えられた入力文字列
 
-**Example**
+**例**
 
 ```handlebars
 {{plusify "foo bar baz"}}
-<!-- results in:  'foo+bar+baz' -->
+<!-- 結果:  'foo+bar+baz' -->
 ```
 
 ## {{prepend}}
 
-Prepends the given `string` with the specified `prefix`.
+指定された `string` に指定された `prefix` を前置します。
 
-**Params**
+**パラメータ**
 
 * `str` **{String}**
 * `prefix` **{String}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
-<!-- given that "val" is "bar" -->
+<!-- "val" が "bar" の場合 -->
 {{prepend val "foo-"}}
-<!-- results in:  'foo-bar' -->
+<!-- 結果:  'foo-bar' -->
 ```
 
 ## {{raw}}
 
-Render a block without processing mustache templates inside the block.
+ブロック内のMustacheテンプレートを処理せずにブロックをレンダリングします。
 
-**Params**
+**パラメータ**
 
 * `options` **{Object}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{{{#raw}}}}
 {{foo}}
 {{{{/raw}}}}
-<!-- results in:  '{{foo}}' -->
+<!-- 結果:  '{{foo}}' -->
 ```
 
 ## {{remove}}
 
-Remove all occurrences of `substring` from the given `str`.
+指定された `str` から `substring` のすべての出現を削除します。
 
-**Params**
+**パラメータ**
 
 * `str` **{String}**
 * `substring` **{String}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{remove "a b a b a b" "a "}}
-<!-- results in:  'b b b' -->
+<!-- 結果:  'b b b' -->
 ```
 
 ## {{removeFirst}}
 
-Remove the first occurrence of `substring` from the given `str`.
+指定された `str` から `substring` の最初の出現を削除します。
 
-**Params**
+**パラメータ**
 
 * `str` **{String}**
 * `substring` **{String}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{remove "a b a b a b" "a"}}
-<!-- results in:  ' b a b a b' -->
+<!-- 結果:  ' b a b a b' -->
 ```
 
 ## {{replace}}
 
-Replace all occurrences of substring `a` with substring `b`.
+`substring` `a` のすべての出現を `substring` `b` に置き換えます。
 
-**Params**
+**パラメータ**
 
 * `str` **{String}**
 * `a` **{String}**
 * `b` **{String}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{replace "a b a b a b" "a" "z"}}
-<!-- results in:  'z b z b z b' -->
+<!-- 結果:  'z b z b z b' -->
 ```
 
 ## {{replaceFirst}}
 
-Replace the first occurrence of substring `a` with substring `b`.
+`substring` `a` の最初の出現を `substring` `b` に置き換えます。
 
-**Params**
+**パラメータ**
 
 * `str` **{String}**
 * `a` **{String}**
 * `b` **{String}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{replace "a b a b a b" "a" "z"}}
-<!-- results in:  'z b a b a b' -->
+<!-- 結果:  'z b a b a b' -->
 ```
 
 ## {{reverse}}
 
-Reverse a string.
+文字列を逆順にします。
 
-**Params**
+**パラメータ**
 
 * `str` **{String}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{reverse "abcde"}}
-<!-- results in:  'edcba' -->
+<!-- 結果:  'edcba' -->
 ```
 
 ## {{sentence}}
 
-Sentence case the given string
+指定された文字列をセンテンスケースに変換します。
 
-**Params**
+**パラメータ**
 
 * `str` **{String}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{sentence "hello world. goodbye world."}}
-<!-- results in:  'Hello world. Goodbye world.' -->
+<!-- 結果:  'Hello world. Goodbye world.' -->
 ```
 
 ## {{snakecase}}
 
-snake_case the characters in the given `string`.
+指定された `string` の文字をスネークケースに変換します。
 
-**Params**
+**パラメータ**
 
 * `string` **{String}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{snakecase "a-b-c d_e"}}
-<!-- results in:  'a_b_c_d_e' -->
+<!-- 結果:  'a_b_c_d_e' -->
 ```
 
 ## {{split}}
 
-Split `string` by the given `character`.
+指定された `character` で `string` を分割します。
 
-**Params**
+**パラメータ**
 
-* `string` **{String}**: The string to split.
-* `returns` **{String}** `character`: Default is an empty string.
+* `string` **{String}**: 分割する文字列。
+* `returns` **{String}** `character`: デフォルトは空の文字列です。
 
-**Example**
+**例**
 
 ```handlebars
 {{split "a,b,c" ","}}
-<!-- results in:  ['a', 'b', 'c'] -->
+<!-- 結果:  ['a', 'b', 'c'] -->
 ```
 
 ## {{startsWith}}
 
-Tests whether a string begins with the given prefix.
+文字列が指定された接頭辞で始まるかどうかをテストします。
 
-**Params**
+**パラメータ**
 
 * `prefix` **{String}**
 * `testString` **{String}**
 * `options` **{String}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{#startsWith "Goodbye" "Hello, world!"}}
@@ -472,139 +472,139 @@ Tests whether a string begins with the given prefix.
 
 ## {{titleize}}
 
-Title case the given string.
+指定された文字列をタイトルケースに変換します。
 
-**Params**
+**パラメータ**
 
 * `str` **{String}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{titleize "this is title case"}}
-<!-- results in:  'This Is Title Case' -->
+<!-- 結果:  'This Is Title Case' -->
 ```
 
 ## {{trim}}
 
-Removes extraneous whitespace from the beginning and end of a string.
+文字列の先頭と末尾から余分な空白を削除します。
 
-**Params**
+**パラメータ**
 
-* `string` **{String}**: The string to trim.
+* `string` **{String}**: トリミングする文字列。
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{trim " ABC "}}
-<!-- results in:  'ABC' -->
+<!-- 結果:  'ABC' -->
 ```
 
 ## {{trimLeft}}
 
-Removes extraneous whitespace from the beginning of a string.
+文字列の先頭から余分な空白を削除します。
 
-**Params**
+**パラメータ**
 
-* `string` **{String}**: The string to trim.
+* `string` **{String}**: トリミングする文字列。
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{trim " ABC "}}
-<!-- results in:  'ABC ' -->
+<!-- 結果:  'ABC ' -->
 ```
 
 ## {{trimRight}}
 
-Removes extraneous whitespace from the end of a string.
+文字列の末尾から余分な空白を削除します。
 
-**Params**
+**パラメータ**
 
-* `string` **{String}**: The string to trim.
+* `string` **{String}**: トリミングする文字列。
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{trimRight " ABC "}}
-<!-- results in:  ' ABC' -->
+<!-- 結果:  ' ABC' -->
 ```
 
 ## {{truncate}}
 
-Truncate a string to the specified `length`. Also see [ellipsis](#ellipsis).
+文字列を指定された `length` に切り詰めます。[ellipsis](#ellipsis) も参照してください。
 
-**Params**
+**パラメータ**
 
 * `str` **{String}**
-* `limit` **{Number}**: The desired length of the returned string.
-* `suffix` **{String}**: Optionally supply a string to use as a suffix to denote when the string has been truncated. Otherwise an ellipsis (`…`) will be used.
-* `returns` **{String}**: The truncated string.
+* `limit` **{Number}**: 返される文字列の希望の長さ。
+* `suffix` **{String}**: 切り詰められたことを示すために使用する文字列をオプションで指定します。指定しない場合、省略記号 (`…`) が使用されます。
+* `returns` **{String}**: 切り詰められた文字列。
 
-**Example**
+**例**
 
 ```handlebars
 truncate("foo bar baz", 7);
-<!-- results in:  'foo bar' -->
+<!-- 結果:  'foo bar' -->
 truncate(sanitize("<span>foo bar baz</span>", 7));
-<!-- results in:  'foo bar' -->
+<!-- 結果:  'foo bar' -->
 ```
 
 ## {{truncateWords}}
 
-Truncate a string to have the specified number of words. Also see [truncate](#truncate).
+指定された単語数に文字列を切り詰めます。詳細は[truncate](#truncate)を参照してください。
 
-**Params**
+**パラメータ**
 
 * `str` **{String}**
-* `limit` **{Number}**: The desired length of the returned string.
-* `suffix` **{String}**: Optionally supply a string to use as a suffix to denote when the string has been truncated.
-* `returns` **{String}**: The truncated string.
+* `limit` **{Number}**: 返される文字列の希望する長さ。
+* `suffix` **{String}**: 任意で、文字列が切り詰められたことを示すために使用する接尾辞を指定します。
+* `returns` **{String}**: 切り詰められた文字列。
 
-**Example**
+**例**
 
 ```handlebars
 truncateWords("foo bar baz", 1);
-<!-- results in:  'foo…' -->
+<!-- 結果:  'foo…' -->
 truncateWords("foo bar baz", 2);
-<!-- results in:  'foo bar…' -->
+<!-- 結果:  'foo bar…' -->
 truncateWords("foo bar baz", 3);
-<!-- results in:  'foo bar baz' -->
+<!-- 結果:  'foo bar baz' -->
 ```
 
 ## {{upcase}}
 
-Uppercase all of the characters in the given string. Alias for [uppercase](#uppercase).
+指定された文字列のすべての文字を大文字に変換します。[uppercase](#uppercase)のエイリアスです。
 
-**Params**
+**パラメータ**
 
 * `string` **{String}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{upcase "aBcDeF"}}
-<!-- results in:  'ABCDEF' -->
+<!-- 結果:  'ABCDEF' -->
 ```
 
 ## {{uppercase}}
 
-Uppercase all of the characters in the given string. If used as a block helper it will uppercase the entire block. This helper does not support inverse blocks.
+指定された文字列のすべての文字を大文字に変換します。ブロックヘルパーとして使用すると、ブロック全体を大文字に変換します。このヘルパーは逆ブロックをサポートしていません。
 
-**Params**
+**パラメータ**
 
-* `str` **{String}**: The string to uppercase
-* `options` **{Object}**: Handlebars options object
+* `str` **{String}**: 大文字に変換する文字列
+* `options` **{Object}**: Handlebarsのオプションオブジェクト
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{uppercase "aBcDeF"}}
-<!-- results in:  'ABCDEF' -->
+<!-- 結果:  'ABCDEF' -->
 ```

@@ -1,8 +1,8 @@
 # APIClient
 
-## 概览
+## 概要
 
-`APIClient` 基于 <a href="https://axios-http.com/" target="_blank">`axios`</a> 封装，用于在客户端通过 HTTP， 请求 NocoBase 的资源操作。
+`APIClient` は <a href="https://axios-http.com/" target="_blank">`axios`</a> を基にラップされており、クライアント側で HTTP を通じて NocoBase のリソース操作をリクエストするために使用されます。
 
 ### 基本使用
 
@@ -16,31 +16,31 @@ class PluginSampleAPIClient extends Plugin {
 }
 ```
 
-## 实例属性
+## インスタンスプロパティ
 
 ### `axios`
 
-`axios` 实例，可以访问 `axios` API, 比如 `apiClient.axios.interceptors`.
+`axios` インスタンス。`apiClient.axios.interceptors` のように `axios` API にアクセスできます。
 
 ### `auth`
 
-客户端鉴权类，参考 [Auth](./auth.md).
+クライアント認証クラス。[Auth](./auth.md) を参照してください。
 
 ### `storage`
 
-客户端存储类，参考 [Storage](./storage.md).
+クライアントストレージクラス。[Storage](./storage.md) を参照してください。
 
-## 类方法
+## クラスメソッド
 
 ### `constructor()`
 
-构造函数，创建一个 `APIClient` 实例。
+コンストラクタ。`APIClient` インスタンスを作成します。
 
-#### 签名
+#### シグネチャ
 
 - `constructor(instance?: APIClientOptions)`
 
-#### 类型
+#### タイプ
 
 ```ts
 interface ExtendedOptions {
@@ -55,13 +55,13 @@ export type APIClientOptions =
 
 ### `request()`
 
-发起 HTTP 请求。
+HTTP リクエストを発行します。
 
-#### 签名
+#### シグネチャ
 
 - `request<T = any, R = AxiosResponse<T>, D = any>(config: AxiosRequestConfig<D> | ResourceActionOptions): Promise<R>`
 
-#### 类型
+#### タイプ
 
 ```ts
 type ResourceActionOptions<P = any> = {
@@ -72,11 +72,11 @@ type ResourceActionOptions<P = any> = {
 };
 ```
 
-#### 详细信息
+#### 詳細
 
 ##### AxiosRequestConfig
 
-通用的 axios 请求参数。参考 <a href="https://axios-http.com/docs/req_config" target="_blank">Request Config</a>.
+一般的な axios リクエストパラメータ。<a href="https://axios-http.com/docs/req_config" target="_blank">Request Config</a> を参照してください。
 
 ```ts
 const res = await apiClient.request({ url: '' });
@@ -84,7 +84,7 @@ const res = await apiClient.request({ url: '' });
 
 ##### ResourceActionOptions
 
-NocoBase 资源操作请求参数。
+NocoBase リソース操作リクエストパラメータ。
 
 ```ts
 const res = await apiClient.request({
@@ -96,17 +96,17 @@ const res = await apiClient.request({
 });
 ```
 
-| 属性            | 类型     | 描述                                                                                 |
-| --------------- | -------- | ------------------------------------------------------------------------------------ |
-| `resource`      | `string` | 1. 资源名称，比如 `a`<br />2. 资源的关联对象名称，比如 `a.b`                         |
-| `resourceOf`    | `any`    | 当 `resource` 为资源的关联对象名称时，资源的主键值。比如 `a.b` 时，代表 `a` 的主键值 |
-| `action`        | `string` | 操作名称                                                                             |
-| `params`        | `any`    | 请求参数对象，主要是 URL 参数，请求体放到 `params.values` 中                         |
-| `params.values` | `any`    | 请求体对象                                                                           |
+| プロパティ        | タイプ     | 説明                                                                                 |
+| ----------------- | ---------- | ------------------------------------------------------------------------------------ |
+| `resource`        | `string`   | 1. リソース名、例: `a`<br />2. リソースの関連オブジェクト名、例: `a.b`               |
+| `resourceOf`      | `any`      | `resource` がリソースの関連オブジェクト名の場合、リソースの主キー値。例: `a.b` の場合、`a` の主キー値 |
+| `action`          | `string`   | 操作名                                                                               |
+| `params`          | `any`      | リクエストパラメータオブジェクト、主に URL パラメータ、リクエストボディは `params.values` に配置 |
+| `params.values`   | `any`      | リクエストボディオブジェクト                                                         |
 
 ### `resource()`
 
-获取 NocoBase 资源操作方法对象。
+NocoBase リソース操作方法オブジェクトを取得します。
 
 ```ts
 const resource = apiClient.resource('users');
@@ -123,11 +123,11 @@ const res = await resource.list({
 });
 ```
 
-#### 签名
+#### シグネチャ
 
 - `resource(name: string, of?: any, headers?: AxiosRequestHeaders): IResource`
 
-#### 类型
+#### タイプ
 
 ```ts
 export interface ActionParams {
@@ -142,10 +142,10 @@ export type IResource = {
 };
 ```
 
-#### 详细信息
+#### 詳細
 
-| 参数名    | 类型                  | 描述                                                                                 |
-| --------- | --------------------- | ------------------------------------------------------------------------------------ |
-| `name`    | `string`              | 1. 资源名称，比如 `a`<br />2. 资源的关联对象名称，比如 `a.b`                         |
-| `of`      | `any`                 | 当 `resource` 为资源的关联对象名称时，资源的主键值。比如 `a.b` 时，代表 `a` 的主键值 |
-| `headers` | `AxiosRequestHeaders` | 后续要发起资源操作请求时，携带的 HTTP 请求头                                         |
+| パラメータ名 | タイプ                  | 説明                                                                                 |
+| ------------ | ----------------------- | ------------------------------------------------------------------------------------ |
+| `name`       | `string`                | 1. リソース名、例: `a`<br />2. リソースの関連オブジェクト名、例: `a.b`               |
+| `of`         | `any`                   | `resource` がリソースの関連オブジェクト名の場合、リソースの主キー値。例: `a.b` の場合、`a` の主キー値 |
+| `headers`    | `AxiosRequestHeaders`   | 後続のリソース操作リクエスト時に付与する HTTP リクエストヘッダー                     |

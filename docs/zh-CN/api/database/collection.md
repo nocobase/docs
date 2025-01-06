@@ -31,7 +31,7 @@ db.collection({
 });
 ```
 
-更多字段类型请参考 [Fields](/api/database/field.md)。
+更多字段类型请参考 [Fields](/api/database/field)。
 
 ## 构造函数
 

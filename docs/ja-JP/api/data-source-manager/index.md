@@ -1,29 +1,29 @@
 # DataSourceManager
 
-`DataSourceManager` 是多 `dataSource` 实例的管理类。
+`DataSourceManager` は複数の `dataSource` インスタンスを管理するクラスです。
 
 ## API
 
 ### add()
-添加一个 `dataSource` 实例。
+`dataSource` インスタンスを追加します。
 
-#### 签名
+#### シグネチャ
 
 - `add(dataSource: DataSource, options: any = {}): Promise<void>`
 
 ### use()
 
-给 `dataSource` 实例添加全局中间件。
+`dataSource` インスタンスにグローバルミドルウェアを追加します。
 
 ### middleware()
 
-获取当前 `dataSourceManager` 实例的中间件，可用于响应 http 请求。
+現在の `dataSourceManager` インスタンスのミドルウェアを取得します。HTTPリクエストのレスポンスに使用できます。
 
 ### afterAddDataSource()
 
-新增`dataSource` 添加后的钩子函数。
+`dataSource` 追加後のフック関数を追加します。
 
-#### 签名
+#### シグネチャ
 
 - `afterAddDataSource(hook: DataSourceHook)`
 
@@ -33,24 +33,24 @@ type DataSourceHook = (dataSource: DataSource) => void;
 
 ### registerDataSourceType()
 
-注册数据源类型及其类。
+データソースタイプとそのクラスを登録します。
 
-#### 签名
+#### シグネチャ
 
 - `registerDataSourceType(type: string, dataSourceClass: typeof DataSource)`
 
 ### getDataSourceType()
 
-获取数据源类。
+データソースクラスを取得します。
 
-#### 签名
+#### シグネチャ
 
 - `getDataSourceType(type: string): typeof DataSource`
 
 ### buildDataSourceByType()
 
-根据注册的数据源类型和实例参数，创建数据源实例。
+登録されたデータソースタイプとインスタンスパラメータに基づいて、データソースインスタンスを作成します。
 
-#### 签名
+#### シグネチャ
 
 - `buildDataSourceByType(type: string, options: any): DataSource`

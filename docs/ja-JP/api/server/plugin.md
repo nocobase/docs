@@ -1,10 +1,10 @@
 # Plugin
 
-## 概览
+## 概要
 
-`Plugin` 为 NocoBase 服务端的插件类，提供了插件服务端相关的配置属性和生命周期方法。
+`Plugin` は NocoBase サーバーサイドのプラグインクラスで、プラグインのサーバーサイドに関連する設定プロパティとライフサイクルメソッドを提供します。
 
-### 基本使用
+### 基本的な使い方
 
 ```ts
 import { Plugin } from '@nocobase/server';
@@ -14,111 +14,111 @@ export class PluginDemoServer extends Plugin {}
 export default PluginDemoServer;
 ```
 
-## 实例属性
+## インスタンスプロパティ
 
 ### `options`
 
-插件的配置。
+プラグインの設定。
 
 ### `name`
 
-`string` - 插件名字。
+`string` - プラグインの名前。
 
 ### `enabled`
 
-`boolean` - 插件是否启用。
+`boolean` - プラグインが有効かどうか。
 
 ### `installed`
 
-`boolean` - 插件是否安装。
+`boolean` - プラグインがインストールされているかどうか。
 
 ### `log`
 
-系统日志实例，将日志信息中的 `module` 默认输出为插件名字。参考 [Logger](../logger.md).
+システムログのインスタンスで、ログ情報の `module` をデフォルトでプラグイン名として出力します。詳細は [Logger](../logger.md) を参照してください。
 
 ### `app`
 
-当前应用的 `Application` 实例。参考 [Application](./application.md).
+現在のアプリケーションの `Application` インスタンス。詳細は [Application](./application.md) を参照してください。
 
 ### `pm`
 
-当前应用的 `PluginManager` 实例。参考 [PluginManager](./plugin-manager.md).
+現在のアプリケーションの `PluginManager` インスタンス。詳細は [PluginManager](./plugin-manager.md) を参照してください。
 
 ### `db`
 
-当前应用的 `DataBase` 实例。参考 [DataBase](../database/index.md).
+現在のアプリケーションの `DataBase` インスタンス。詳細は [DataBase](../database/index.md) を参照してください。
 
-## 生命周期方法
+## ライフサイクルメソッド
 
 ### `afterAdd()`
 
-在插件添加之后，即 [`pm.add()`](./plugin-manager.md#add) 之后执行。
+プラグインが追加された後、つまり [`pm.add()`](./plugin-manager.md#add) の後に実行されます。
 
 ### `beforeLoad()`
 
-在 [`pm.load()`](./plugin-manager.md#load) 期间执行。用于在插件加载前, 注册事件、初始化类或执行其他预处理逻辑。在此阶段可以访问内核 API, 不能访问其他插件 API.
+[`pm.load()`](./plugin-manager.md#load) の間に実行されます。プラグインがロードされる前に、イベントを登録したり、クラスを初期化したり、他の前処理ロジックを実行するために使用されます。この段階では、カーネル API にアクセスできますが、他のプラグイン API にはアクセスできません。
 
 ### `load()`
 
-加载插件和相关配置。在 [`pm.load()`](./plugin-manager.md#load) 期间，所有插件 [`beforeLoad()`](#beforeload) 方法执行结束之后执行。在此阶段可以访问其他插件 API.
+プラグインと関連する設定をロードします。[`pm.load()`](./plugin-manager.md#load) の間に、すべてのプラグインの [`beforeLoad()`](#beforeload) メソッドが実行された後に実行されます。この段階では、他のプラグイン API にアクセスできます。
 
 ### `install()`
 
-插件的安装逻辑，在应用安装、升级期间或插件首次启用时执行。通常可以执行数据表预置数据插入等逻辑。
+プラグインのインストールロジックで、アプリケーションのインストール、アップグレード中、またはプラグインが初めて有効になった時に実行されます。通常、データシートのプリセットデータ挿入などのロジックを実行できます。
 
 ### `beforeEnable()`
 
-插件启用前执行。
+プラグインが有効になる前に実行されます。
 
 ### `afterEnable()`
 
-插件启用后执行。
+プラグインが有効になった後に実行されます。
 
 ### `beforeDisable()`
 
-插件禁用前执行。
+プラグインが無効になる前に実行されます。
 
 ### `afterDisable()`
 
-插件禁用后执行。
+プラグインが無効になった後に実行されます。
 
 ### `beforeRemove()`
 
-插件移除前执行。
+プラグインが削除される前に実行されます。
 
 ### `afterRemove()`
 
-插件移除后执行。
+プラグインが削除された後に実行されます。
 
-## 其他方法
+## その他のメソッド
 
 ### `t()`
 
-国际化方法。
+国際化メソッド。
 
 ### `createLogger()`
 
-创建日志。参考 [Logger](../logger.md).
+ログを作成します。詳細は [Logger](../logger.md) を参照してください。
 
 ### `toJSON()`
 
-实现性方法。输出插件相关配置信息。
+実装メソッド。プラグインに関連する設定情報を出力します。
 
 ### `sendSyncMessage()`
 
-发布同步消息。使用该方法发送的同步消息只会被其他节点的同一个插件接收，与其他插件无关。
+同期メッセージを送信します。このメソッドを使用して送信された同期メッセージは、他のノードの同じプラグインによってのみ受信され、他のプラグインとは無関係です。
 
-#### 签名
+#### シグネチャ
 
 ```ts
 sendSyncMessage(message: any): Promise<void>
 ```
 
-#### 参数
+#### パラメータ
 
-- `data`：同步消息数据。键值对的形式。
+- `data`：同期メッセージのデータ。キーと値のペアの形式。
 
-#### 示例
+#### 例
 
 ```ts
 await this.sendSyncMessage({
@@ -128,19 +128,19 @@ await this.sendSyncMessage({
 
 ### `handleSyncMessage()`
 
-在分布式环境中，处理来自其他节点当前插件发布的同步事件。在插件使用了内存状态时，需要覆盖实现该事件的处理逻辑，以保证与其他节点的状态同步。
+分散環境で、他のノードの現在のプラグインから送信された同期イベントを処理します。プラグインがメモリ状態を使用している場合、他のノードとの状態同期を保証するために、このイベントの処理ロジックをオーバーライドする必要があります。
 
-#### 签名
+#### シグネチャ
 
 ```
 handleSyncMessage(message: any): void | Promise<void>
 ```
 
-#### 参数
+#### パラメータ
 
-- `message` 同步消息。其他节点发送的消息内容。
+- `message` 同期メッセージ。他のノードから送信されたメッセージの内容。
 
-#### 示例
+#### 例
 
 ```ts
 handleSyncMessage(message) {

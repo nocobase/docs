@@ -62,7 +62,7 @@ const UserCollection = database.collection({
 await database.sync();
 ```
 
-更加详细的 `Collection` 使用方法请参考 [Collection](/api/database/collection.md)。
+更加详细的 `Collection` 使用方法请参考 [Collection](/api/database/collection)。
 
 ### 数据读写
 
@@ -95,7 +95,7 @@ await UserRepository.update({
 await UserRepository.destroy(user.id);
 ```
 
-更加详细的数据 CRUD 使用方法请参考 [Repository](/api/database/repository.md)。
+更加详细的数据 CRUD 使用方法请参考 [Repository](/api/database/repository)。
 
 ## 构造函数
 
@@ -215,7 +215,7 @@ db.addMigrations({
 
 **参数**
 
-`options` 所有配置参数与 `Collection` 类的构造函数一致，参考 [Collection](/api/server/database/collection#构造函数)。
+`options` 所有配置参数与 `Collection` 类的构造函数一致，参考 [Collection](/api/database/collection#构造函数)。
 
 **事件**
 
@@ -515,7 +515,7 @@ console.log(ModelClass.prototype instanceof MyModel); // true
 
 获取自定义的数据仓库类。如果没有在之前注册自定义数据仓库类，将返回 NocoBase 默认的数据仓库类。默认名称与 collection 定义的名称相同。
 
-数据仓库类主要用于基于数据模型的增删改查等操作，参考 [数据仓库](/api/server/database/repository)。
+数据仓库类主要用于基于数据模型的增删改查等操作，参考 [数据仓库](/api/database/repository)。
 
 **签名**
 

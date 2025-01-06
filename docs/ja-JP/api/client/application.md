@@ -1,16 +1,16 @@
-# Application
+# アプリケーション
 
-## 构造函数
+## コンストラクタ
 
 ### `constructor()`
 
-创建一个应用实例。
+アプリケーションインスタンスを作成します。
 
-**签名**
+**シグネチャ**
 
 - `constructor(options: ApplicationOptions)`
 
-**示例**
+**例**
 
 ```ts
 const app = new Application({
@@ -23,11 +23,11 @@ const app = new Application({
 });
 ```
 
-## 方法
+## メソッド
 
 ### use()
 
-添加 Providers，内置 Providers 有：
+プロバイダを追加します。組み込みのプロバイダには以下があります：
 
 - APIClientProvider
 - I18nextProvider
@@ -43,7 +43,7 @@ const app = new Application({
 
 ### render()
 
-渲染 App 组件
+Appコンポーネントをレンダリングします。
 
 ```ts
 import { Application } from '@nocobase/client';
