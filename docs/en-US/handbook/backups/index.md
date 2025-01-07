@@ -8,16 +8,7 @@ The NocoBase backup manager plugin provides features for fully backing up of the
 
 ## Installation
 
-This plugin is built into the NocoBase Professional Edition and does not require manual installation. Please refer to the <a target="_blank" href="https://www.nocobase.com/en/commercial">commercial version</a> for more details.
-
-:::warning{title="Attention"}
-
-- This plugin is based on the native database client. Before using it, the corresponding database client must be installed in the NocoBase server environment.
-  - [PostgreSQL client installation](./installation/postgres.md)
-  - [MySQL client installation](./installation/mysql.md)
-  - [MariaDB client installation](./installation/mariadb.md)
-- During the restore operation, the version of the target database should not be lower than the version of the database that created the backup.
-  :::
+<embed src="./install.md"></embed>
 
 ## Usage Instructions
 

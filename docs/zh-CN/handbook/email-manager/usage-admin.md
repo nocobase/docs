@@ -1,4 +1,4 @@
-# 管理员配置
+# 邮件：管理员配置
 
 <PluginInfo commercial="true" name="email-manager"></PluginInfo>
 

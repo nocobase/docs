@@ -1,4 +1,4 @@
-# Admin Configuration
+# Email Manager: Admin Configuration
 
 <PluginInfo commercial="true" name="email-manager"></PluginInfo>
 

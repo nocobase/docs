@@ -1,4 +1,4 @@
-# 使用手冊
+# メール: 使用手冊
 
 <PluginInfo commercial="true" name="email-manager"></PluginInfo>
 
