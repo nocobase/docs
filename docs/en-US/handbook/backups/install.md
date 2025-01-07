@@ -1,18 +1,18 @@
-### 安装数据库客户端
+### Install Database Client
 
-前往官网下载与所使用的数据库版本匹配的客户端：
+Visit the official website to download the client that matches the version of the database you are using:
 
-- MySQL：https://dev.mysql.com/downloads/
-- PostgreSQL：https://www.postgresql.org/download/
+- MySQL: https://dev.mysql.com/downloads/
+- PostgreSQL: https://www.postgresql.org/download/
 
-Docker 版本，可以直接在 `./storage/scripts` 目录下，编写一段脚本
+For Docker versions, you can directly write a script in the `./storage/scripts` directory
 
 ```bash
 mkdir ./storage/scripts
 vim install-database-client.sh
 ```
 
-`install-database-client.sh` 的内容如下：
+The content of `install-database-client.sh` is as follows:
 
 <Tabs>
 
@@ -94,15 +94,15 @@ fi
 
 </Tabs>
 
-然后重启 app 容器
+Then restart the app container
 
 ```bash
 docker compose restart app
-# 查看日志
+# View logs
 docker compose logs app
 ```
 
-查看数据库客户端版本号，必须与数据库服务端的版本号一致
+Check the database client version number, which must match the database server version number
 
 <Tabs>
 <div label="PostgreSQL" name="PostgreSQL">
@@ -120,6 +120,6 @@ docker compose exec app bash -c "mysql -V"
 </div>
 </Tabs>
 
-### 安装插件
+### Install Plugins
 
-参考 [商业插件的安装与升级](/welcome/getting-started/plugin)
+Refer to [Installation and Upgrade of Commercial Plugins](/welcome/getting-started/plugin)

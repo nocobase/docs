@@ -1,97 +1,97 @@
-# 环境变量
+# Environment Variables
 
 <PluginInfo name="environment-variables"></PluginInfo>
 
-## 介绍
+## Introduction
 
-集中配置和管理环境变量和密钥，用于敏感数据存储、配置数据重用、环境配置隔离等。
+Centralized configuration and management of environment variables and secrets for sensitive data storage, configuration data reuse, and environment configuration isolation.
 
-## 与 `.env` 的区别
+## Differences from `.env`
 
-| **特性**                | **`.env` 文件**                 | **动态配置的环境变量**                              |
+| **Feature**                | **`.env` File**                 | **Dynamic Configuration Environment Variables**                              |
 |-----------------------|--------------------------------|-------------------------------------|
-| **存储位置**             | 存储在项目根目录的 `.env` 文件中   | 存储在数据库 `environmentVariables` 表里 |
-| **加载方式**             | 通过 `dotenv` 等工具在应用启动时加载到 `process.env` 中  | 动态读取，在应用启动时加载到 `app.environment` 中  |
-| **修改方式**             | 需要直接编辑文件，修改后需要重启应用才能生效              | 支持在运行时修改，修改后直接重载应用配置即可     |
-| **环境隔离**             | 每个环境（开发、测试、生产）需要单独维护 `.env` 文件      | 每个环境（开发、测试、生产）需要单独维护 `environmentVariables` 表的数据  |
-| **适用场景**             | 适合固定的静态配置，如应用主数据库信息                   | 适合需要频繁调整或与业务逻辑绑定的动态配置，如外部数据库、文件存储等信息    |
+| **Storage Location**             | Stored in the `.env` file in the project root directory   | Stored in the `environmentVariables` table in the database |
+| **Loading Method**             | Loaded into `process.env` using tools like `dotenv` during application startup  | Dynamically read and loaded into `app.environment` during application startup  |
+| **Modification Method**             | Requires direct file editing, and the application needs to be restarted for changes to take effect              | Supports runtime modification, changes take effect immediately after reloading the application configuration     |
+| **Environment Isolation**             | Each environment (development, testing, production) requires separate maintenance of `.env` files      | Each environment (development, testing, production) requires separate maintenance of data in the `environmentVariables` table  |
+| **Applicable Scenarios**             | Suitable for fixed static configurations, such as main database information for the application                   | Suitable for dynamic configurations that require frequent adjustments or are tied to business logic, such as external databases, file storage information, etc.    |
 
-## 安装
+## Installation
 
-内置插件，无需单独安装。
+Built-in plugin, no separate installation required.
 
-## 用途
+## Usage
 
-### 配置数据重用
+### Configuration Data Reuse
 
-例如工作流多个地方需要邮件节点，都需要配置 SMTP，就可以将通用的 SMTP 配置存到环境变量里。
+For example, if multiple places in the workflow require email nodes and SMTP configuration, the common SMTP configuration can be stored in environment variables.
 
 ![20250102181045](https://static-docs.nocobase.com/20250102181045.png)
 
-### 敏感数据存储
+### Sensitive Data Storage
 
-各种外部数据库的数据库配置信息、云文件存储密钥等数据的存储等。
+Storage of various external database configuration information, cloud file storage keys, etc.
 
 ![20250102103513](https://static-docs.nocobase.com/20250102103513.png)
 
-### 环境配置隔离
+### Environment Configuration Isolation
 
-在软件开发、测试和生产等不同环境中，使用独立的配置管理策略来确保每个环境的配置和数据互不干扰。每个环境有各自独立的设置、变量和资源，这样可以避免开发、测试和生产环境之间的冲突，同时确保系统在每个环境中都能按预期运行。
+In different environments such as development, testing, and production, independent configuration management strategies are used to ensure that the configurations and data of each environment do not interfere with each other. Each environment has its own independent settings, variables, and resources, which avoids conflicts between development, testing, and production environments and ensures that the system runs as expected in each environment.
 
-例如，文件存储服务，开发环境和生产环境的配置可能不同，如下：
+For example, the configuration for file storage services may differ between development and production environments, as shown below:
 
-开发环境
+Development Environment
 
 ```bash
 FILE_STORAGE_OSS_BASE_URL=dev-storage.nocobase.com
 FILE_STORAGE_OSS_BUCKET=dev-storage
 ```
 
-生产环境
+Production Environment
 
 ```bash
 FILE_STORAGE_OSS_BASE_URL=prod-storage.nocobase.com
 FILE_STORAGE_OSS_BUCKET=prod-storage
 ```
 
-## 环境变量管理
+## Environment Variable Management
 
 ![20250102155314](https://static-docs.nocobase.com/20250102155314.png)
 
-### 添加环境变量
+### Adding Environment Variables
 
-- 支持单个和批量添加
-- 支持明文和加密
+- Supports single and batch addition
+- Supports plaintext and encrypted storage
 
 ![20250102155509](https://static-docs.nocobase.com/20250102155509.png)
 
-单个添加
+Single Addition
 
 ![20250102155731](https://static-docs.nocobase.com/20250102155731.png)
 
-批量添加
+Batch Addition
 
 ![20250102155258](https://static-docs.nocobase.com/20250102155258.png)
 
-## 注意事项
+## Notes
 
-### 重启应用
+### Restarting the Application
 
-修改或删除环境变量之后，顶部会出现重启应用的提示，重启之后变更的环境变量才会生效。
+After modifying or deleting environment variables, a prompt to restart the application will appear at the top. Changes to environment variables will only take effect after the application is restarted.
 
 ![20250102155007](https://static-docs.nocobase.com/20250102155007.png)
 
-### 加密存储
+### Encrypted Storage
 
-环境变量的加密数据使用 AES 对称加密，加解密的 PRIVATE KEY 存储在 storage 里，请妥善保管，丢失或重写，加密的数据将无法解密。
+Encrypted data for environment variables uses AES symmetric encryption. The PRIVATE KEY for encryption and decryption is stored in the storage directory. Please keep it safe; if lost or overwritten, the encrypted data cannot be decrypted.
 
 ```bash
 ./storage/environment-variables/<app-name>/aes_key.dat
 ```
 
-## 目前支持环境变量的插件
+## Currently Supported Plugins for Environment Variables
 
-### Action: Custom request
+### Action: Custom Request
 
 ![20250102180751](https://static-docs.nocobase.com/20250102180751.png)
 
@@ -119,53 +119,53 @@ FILE_STORAGE_OSS_BUCKET=prod-storage
 
 ![20250102160758](https://static-docs.nocobase.com/20250102160758.png)
 
-### Data source: External MariaDB
+### Data Source: External MariaDB
 
 ![20250102160935](https://static-docs.nocobase.com/20250102160935.png)
 
-### Data source: External MySQL
+### Data Source: External MySQL
 
 ![20250102173602](https://static-docs.nocobase.com/20250102173602.png)
 
-### Data source: External Oracle
+### Data Source: External Oracle
 
 ![20250102174153](https://static-docs.nocobase.com/20250102174153.png)
 
-### Data source: External PostgreSQL
+### Data Source: External PostgreSQL
 
 ![20250102175630](https://static-docs.nocobase.com/20250102175630.png)
 
-### Data source: External SQL Server
+### Data Source: External SQL Server
 
 ![20250102175814](https://static-docs.nocobase.com/20250102175814.png)
 
-### Data source: KingbaseES
+### Data Source: KingbaseES
 
 ![20250102175951](https://static-docs.nocobase.com/20250102175951.png)
 
-### Data source: REST API
+### Data Source: REST API
 
 ![20250102180109](https://static-docs.nocobase.com/20250102180109.png)
 
-### File storage: Local
+### File Storage: Local
 
 ![20250102161114](https://static-docs.nocobase.com/20250102161114.png)
 
-### File storage: Aliyun OSS
+### File Storage: Aliyun OSS
 
 ![20250102161404](https://static-docs.nocobase.com/20250102161404.png)
 
-### File storage: Amazon S3
+### File Storage: Amazon S3
 
 ![20250102163730](https://static-docs.nocobase.com/20250102163730.png)
 
-### File storage: Tencent COS
+### File Storage: Tencent COS
 
 ![20250102173109](https://static-docs.nocobase.com/20250102173109.png)
 
-### File storage: S3 Pro
+### File Storage: S3 Pro
 
-未适配
+Not adapted
 
 ### Map: AMap
 
@@ -175,19 +175,19 @@ FILE_STORAGE_OSS_BUCKET=prod-storage
 
 ![20250102171524](https://static-docs.nocobase.com/20250102171524.png)
 
-### Email settings
+### Email Settings
 
-未适配
+Not adapted
 
 ### Notification: Email
 
 ![20250102164059](https://static-docs.nocobase.com/20250102164059.png)
 
-### Public forms
+### Public Forms
 
 ![20250102163849](https://static-docs.nocobase.com/20250102163849.png)
 
-### System settings
+### System Settings
 
 ![20250102164139](https://static-docs.nocobase.com/20250102164139.png)
 
