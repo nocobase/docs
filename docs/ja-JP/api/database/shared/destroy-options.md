@@ -1,4 +1,4 @@
-**类型**
+**タイプ**
 
 ```typescript
 interface DestroyOptions extends SequelizeDestroyOptions {
@@ -9,9 +9,9 @@ interface DestroyOptions extends SequelizeDestroyOptions {
 }
 ```
 
-**详细信息**
+**詳細情報**
 
-- `filter`：指定要删除的记录的过滤条件。Filter 详细用法可参考 [`find()`](#find) 方法。
-- `filterByTk`：按 TargetKey 指定要删除的记录的过滤条件。
-- `truncate`: 是否清空表数据，在没有传入 `filter` 或 `filterByTk` 参数时有效。
-- `transaction`: 事务对象。如果没有传入事务参数，该方法会自动创建一个内部事务。
+- `filter`：削除するレコードのフィルタ条件を指定します。Filter の詳細な使用方法は [`find()`](#find) メソッドを参照してください。
+- `filterByTk`：TargetKey に基づいて削除するレコードのフィルタ条件を指定します。
+- `truncate`: テーブルデータをクリアするかどうかを指定します。`filter` または `filterByTk` パラメータが渡されていない場合に有効です。
+- `transaction`: トランザクションオブジェクト。トランザクションパラメータが渡されていない場合、このメソッドは自動的に内部トランザクションを作成します。

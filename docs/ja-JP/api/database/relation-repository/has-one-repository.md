@@ -1,8 +1,8 @@
 # HasOneRepository
 
-## 概览
+## 概要
 
-`HasOneRepository` 为 `HasOne` 类型的关联 Repository。
+`HasOneRepository` は `HasOne` タイプの関連 Repository です。
 
 ```typescript
 const User = db.collection({
@@ -22,26 +22,26 @@ const user = await User.repository.create({
   values: { name: 'u1' },
 });
 
-// 获取到关联 Repository
+// 関連 Repository を取得
 const userProfileRepository = User.repository
   .relation('profile')
   .of(user.get('id'));
 
-// 也可直接初始化
+// 直接初期化も可能
 new HasOneRepository(User, 'profile', user.get('id'));
 ```
 
-## 类方法
+## クラスメソッド
 
 ### `find()`
 
-查找关联对象
+関連オブジェクトを検索します。
 
-**签名**
+**シグネチャ**
 
 - `async find(options?: SingleRelationFindOption): Promise<Model<any> | null>`
 
-**类型**
+**タイプ**
 
 ```typescript
 interface SingleRelationFindOption extends Transactionable {
@@ -52,28 +52,28 @@ interface SingleRelationFindOption extends Transactionable {
 }
 ```
 
-**详细信息**
+**詳細**
 
-查询参数与 [`Repository.find()`](../repository.md#find) 一致。
+クエリパラメータは [`Repository.find()`](../repository.md#find) と一致します。
 
-**示例**
+**例**
 
 ```typescript
 const profile = await UserProfileRepository.find();
-// 关联对象不存在时，返回 null
+// 関連オブジェクトが存在しない場合、null を返します
 ```
 
 ### `create()`
 
-创建关联对象
+関連オブジェクトを作成します。
 
-**签名**
+**シグネチャ**
 
 - `async create(options?: CreateOptions): Promise<Model>`
 
 <embed src="../shared/create-options.md"></embed>
 
-**示例**
+**例**
 
 ```typescript
 const profile = await UserProfileRepository.create({
@@ -94,15 +94,15 @@ console.log(profile.toJSON());
 
 ### `update()`
 
-更新关联对象
+関連オブジェクトを更新します。
 
-**签名**
+**シグネチャ**
 
 - `async update(options: UpdateOptions): Promise<Model>`
 
 <embed src="../shared/update-options.md"></embed>
 
-**示例**
+**例**
 
 ```typescript
 const profile = await UserProfileRepository.update({
@@ -114,17 +114,17 @@ profile.get('avatar'); // 'avatar2'
 
 ### `remove()`
 
-移除关联对象，仅解除关联关系，不删除关联对象
+関連オブジェクトを削除せずに関連関係を解除します。
 
-**签名**
+**シグネチャ**
 
 - `async remove(options?: Transactionable): Promise<void>`
 
-**详细信息**
+**詳細**
 
-- `transaction`: 事务对象。如果没有传入事务参数，该方法会自动创建一个内部事务。
+- `transaction`: トランザクションオブジェクト。トランザクションパラメータが渡されない場合、このメソッドは内部でトランザクションを作成します。
 
-**示例**
+**例**
 
 ```typescript
 await UserProfileRepository.remove();
@@ -135,17 +135,17 @@ await UserProfileRepository.remove();
 
 ### `destroy()`
 
-删除关联对象
+関連オブジェクトを削除します。
 
-**签名**
+**シグネチャ**
 
 - `async destroy(options?: Transactionable): Promise<Boolean>`
 
-**详细信息**
+**詳細**
 
-- `transaction`: 事务对象。如果没有传入事务参数，该方法会自动创建一个内部事务。
+- `transaction`: トランザクションオブジェクト。トランザクションパラメータが渡されない場合、このメソッドは内部でトランザクションを作成します。
 
-**示例**
+**例**
 
 ```typescript
 await UserProfileRepository.destroy();
@@ -155,13 +155,13 @@ await UserProfileRepository.destroy();
 
 ### `set()`
 
-设置关联对象
+関連オブジェクトを設定します。
 
-**签名**
+**シグネチャ**
 
 - `async set(options: TargetKey | SetOption): Promise<void>`
 
-**类型**
+**タイプ**
 
 ```typescript
 interface SetOption extends Transactionable {
@@ -169,12 +169,12 @@ interface SetOption extends Transactionable {
 }
 ```
 
-**详细信息**
+**詳細**
 
-- tk: 设置关联对象的 targetKey
-- transaction: 事务对象。如果没有传入事务参数，该方法会自动创建一个内部事务。
+- tk: 関連オブジェクトの targetKey を設定します
+- transaction: トランザクションオブジェクト。トランザクションパラメータが渡されない場合、このメソッドは内部でトランザクションを作成します。
 
-**示例**
+**例**
 
 ```typescript
 const newProfile = await Profile.repository.create({

@@ -1,6 +1,6 @@
 # ACL
 
-## Components
+## コンポーネント
 
 ### `<ACLProvider />`
 
@@ -14,7 +14,7 @@
 
 ### `<ACLMenuItemProvider />`
 
-## Hooks
+## フック
 
 ### `useACLContext()`
 

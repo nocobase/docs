@@ -1,62 +1,61 @@
 # IRepository
 
-`Repository` 接口定义了一系列的模型操作方法，用于适配数据源的增删改查操作。
+The `Repository` interface defines a series of model operation methods for adapting CRUD (Create, Read, Update, Delete) operations on data sources.
 
-## API 
+## API
 
 ### find()
 
-根据查询参数，给出符合条件的模型列表
+Returns a list of models that match the query parameters.
 
-#### 签名
+#### Signature
 
 - `find(options?: any): Promise<IModel[]>`
 
 ### findOne()
 
-根据查询参数，给出符合条件的模型，如果有多个符合条件的模型，只返回第一个
+Returns the first model that matches the query parameters. If multiple models match, only the first one is returned.
 
-#### 签名 
+#### Signature
 
 - `findOne(options?: any): Promise<IModel>`
 
-
 ### count()
 
-根据查询参数，给出符合条件的模型数量
+Returns the number of models that match the query parameters.
 
-#### 签名
+#### Signature
 
 - `count(options?: any): Promise<Number>`
 
 ### findAndCount()
 
-根据查询参数，给出符合条件的模型列表和数量
+Returns both the list of models and the count of models that match the query parameters.
 
-#### 签名
+#### Signature
 
 - `findAndCount(options?: any): Promise<[IModel[], Number]>`
 
 ### create()
 
-创建一个模型数据对象
+Creates a model data object.
 
-#### 签名
+#### Signature
 
 - `create(options: any): void`
 
 ### update()
 
-根据查询条件，更新模型数据对象
+Updates the model data object based on the query conditions.
 
-#### 签名
+#### Signature
 
 - `update(options: any): void`
 
 ### destroy()
 
-根据查询条件，删除模型数据对象
+Deletes the model data object based on the query conditions.
 
-#### 签名
+#### Signature
 
 - `destroy(options: any): void`

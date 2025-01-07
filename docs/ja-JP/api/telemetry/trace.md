@@ -1,16 +1,16 @@
 # Trace
 
-## 类方法
+## クラスメソッド
 
 ### `constructor()`
 
-构造函数，创建一个 `Trace` 实例。
+コンストラクタ、`Trace` インスタンスを作成します。
 
-#### 签名
+#### シグネチャ
 
 - `constructor(options?: TraceOptions)`
 
-#### 类型
+#### タイプ
 
 ```ts
 export type TraceOptions = {
@@ -20,31 +20,31 @@ export type TraceOptions = {
 };
 ```
 
-#### 详细信息
+#### 詳細
 
-| 属性            | 类型                   | 描述                                    | 默认值              |
-| --------------- | ---------------------- | --------------------------------------- | ------------------- |
-| `traceName`     | `string`               | trace 标识                              | `nocobase-trace`    |
-| `version`       | `string`               |                                         | NocoBase 当前版本号 |
-| `processorName` | `string` \| `string[]` | 想启用的已注册的 `SpanProcessor` 的标识 |                     |
+| プロパティ         | タイプ                   | 説明                                    | デフォルト値        |
+| ------------------ | ------------------------ | --------------------------------------- | ------------------- |
+| `traceName`        | `string`                | トレース識別子                          | `nocobase-trace`    |
+| `version`          | `string`                |                                         | NocoBase 現在のバージョン番号 |
+| `processorName`    | `string` \| `string[]`  | 有効化したい登録済みの `SpanProcessor` の識別子 |                     |
 
 ### `init()`
 
-初始化 `NodeTracerProvider`.
+`NodeTracerProvider` を初期化します。
 
-#### 签名
+#### シグネチャ
 
 - `init(): void`
 
 ### `registerProcessor()`
 
-注册 `SpanProcessor`
+`SpanProcessor` を登録します。
 
-#### 签名
+#### シグネチャ
 
 - `registerProcessor(name: string, processor: GetSpanProcessor)`
 
-#### 类型
+#### タイプ
 
 ```ts
 import { SpanProcessor } from '@opentelemetry/sdk-trace-base';
@@ -52,40 +52,40 @@ import { SpanProcessor } from '@opentelemetry/sdk-trace-base';
 type GetSpanProcessor = () => SpanProcessor;
 ```
 
-#### 详细信息
+#### 詳細
 
-| 参数        | 类型                  | 描述                        |
-| ----------- | --------------------- | --------------------------- |
-| `name`      | `string`              | `SpanProcessor` 唯一标识    |
-| `processor` | `() => SpanProcessor` | 获取 `SpanProcessor` 的方法 |
+| パラメータ      | タイプ                  | 説明                        |
+| --------------- | ----------------------- | --------------------------- |
+| `name`          | `string`               | `SpanProcessor` の一意の識別子 |
+| `processor`     | `() => SpanProcessor`  | `SpanProcessor` を取得する方法 |
 
 ### `getTracer()`
 
-获取 `Tracer`.
+`Tracer` を取得します。
 
-#### 签名
+#### シグネチャ
 
 - `getTracer(name?: string, version?: string)`
 
-#### 详细信息
+#### 詳細
 
-| 参数      | 类型     | 描述       | 默认值              |
-| --------- | -------- | ---------- | ------------------- |
-| `name`    | `string` | trace 标识 | `nocobase-trace`    |
-| `version` | `string` |            | NocoBase 当前版本号 |
+| パラメータ    | タイプ     | 説明       | デフォルト値        |
+| ------------- | ---------- | ---------- | ------------------- |
+| `name`        | `string`   | トレース識別子 | `nocobase-trace`    |
+| `version`     | `string`   |            | NocoBase 現在のバージョン番号 |
 
 ### `start()`
 
-启动 `SpanProcessor`.
+`SpanProcessor` を起動します。
 
-#### 签名
+#### シグネチャ
 
 - `start(): void`
 
 ### `shutdown()`
 
-停止 `SpanProcessor`.
+`SpanProcessor` を停止します。
 
-#### 签名
+#### シグネチャ
 
 - `shutdown(): Promise<void>`

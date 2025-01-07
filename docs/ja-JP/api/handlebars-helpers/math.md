@@ -1,166 +1,165 @@
-
-# Math
+# 数学
 
 ## {{abs}}
 
-Return the magnitude of `a`.
+`a` の絶対値を返します。
 
-**Params**
+**パラメータ**
 
-* `a` **{Number}**
-* `returns` **{Number}**
+* `a` **{数値}**
+* `returns` **{数値}**
 
 ## {{add}}
 
-Return the sum of `a` plus `b`.
+`a` と `b` の合計を返します。
 
-**Params**
+**パラメータ**
 
-* `a` **{Number}**
-* `b` **{Number}**
-* `returns` **{Number}**
+* `a` **{数値}**
+* `b` **{数値}**
+* `returns` **{数値}**
 
 ## {{avg}}
 
-Returns the average of all numbers in the given array.
+指定された配列内のすべての数値の平均値を返します。
 
-**Params**
+**パラメータ**
 
-* `array` **{Array}**: Array of numbers to add up.
-* `returns` **{Number}**
+* `array` **{配列}**: 合計する数値の配列。
+* `returns` **{数値}**
 
-**Example**
+**例**
 
 ```handlebars
 {{avg "[1, 2, 3, 4, 5]"}}
-<!-- results in: '3' -->
+<!-- 結果: '3' -->
 ```
 
 ## {{ceil}}
 
-Get the `Math.ceil()` of the given value.
+指定された値の `Math.ceil()` を取得します。
 
-**Params**
+**パラメータ**
 
-* `value` **{Number}**
-* `returns` **{Number}**
+* `value` **{数値}**
+* `returns` **{数値}**
 
 ## {{divide}}
 
-Divide `a` by `b`
+`a` を `b` で割ります。
 
-**Params**
+**パラメータ**
 
-* `a` **{Number}**: numerator
-* `b` **{Number}**: denominator
+* `a` **{数値}**: 分子
+* `b` **{数値}**: 分母
 
 ## {{floor}}
 
-Get the `Math.floor()` of the given value.
+指定された値の `Math.floor()` を取得します。
 
-**Params**
+**パラメータ**
 
-* `value` **{Number}**
-* `returns` **{Number}**
+* `value` **{数値}**
+* `returns` **{数値}**
 
 ## {{minus}}
 
-Return the difference of `a` minus `b`.
+`a` から `b` を引いた差を返します。
 
-**Params**
+**パラメータ**
 
-* `a` **{Number}**
-* `b` **{Number}**
+* `a` **{数値}**
+* `b` **{数値}**
 
 ## {{modulo}}
 
-Get the remainder of a division operation.
+除算操作の余りを取得します。
 
-**Params**
+**パラメータ**
 
-* `a` **{Number}**
-* `b` **{Number}**
-* `returns` **{Number}**
+* `a` **{数値}**
+* `b` **{数値}**
+* `returns` **{数値}**
 
 ## {{multiply}}
 
-Return the product of `a` times `b`.
+`a` と `b` の積を返します。
 
-**Params**
+**パラメータ**
 
-* `a` **{Number}**: factor
-* `b` **{Number}**: multiplier
-* `returns` **{Number}**
+* `a` **{数値}**: 因数
+* `b` **{数値}**: 乗数
+* `returns` **{数値}**
 
 ## {{plus}}
 
-Add `a` by `b`.
+`a` に `b` を加えます。
 
-**Params**
+**パラメータ**
 
-* `a` **{Number}**: factor
-* `b` **{Number}**: multiplier
+* `a` **{数値}**: 因数
+* `b` **{数値}**: 乗数
 
 ## {{random}}
 
-Generate a random number between two values
+2つの値の間のランダムな数値を生成します。
 
-**Params**
+**パラメータ**
 
-* `min` **{Number}**
-* `max` **{Number}**
-* `returns` **{String}**
+* `min` **{数値}**
+* `max` **{数値}**
+* `returns` **{文字列}**
 
 ## {{remainder}}
 
-Get the remainder when `a` is divided by `b`.
+`a` を `b` で割ったときの余りを取得します。
 
-**Params**
+**パラメータ**
 
-* `a` **{Number}**: a
-* `b` **{Number}**: b
+* `a` **{数値}**: a
+* `b` **{数値}**: b
 
 ## {{round}}
 
-Round the given number.
+指定された数値を丸めます。
 
-**Params**
+**パラメータ**
 
-* `number` **{Number}**
-* `returns` **{Number}**
+* `number` **{数値}**
+* `returns` **{数値}**
 
 ## {{subtract}}
 
-Return the product of `a` minus `b`.
+`a` から `b` を引いた結果を返します。
 
-**Params**
+**パラメータ**
 
-* `a` **{Number}**
-* `b` **{Number}**
-* `returns` **{Number}**
+* `a` **{数値}**
+* `b` **{数値}**
+* `returns` **{数値}**
 
 ## {{sum}}
 
-Returns the sum of all numbers in the given array.
+指定された配列内のすべての数値の合計を返します。
 
-**Params**
+**パラメータ**
 
-* `array` **{Array}**: Array of numbers to add up.
-* `returns` **{Number}**
+* `array` **{配列}**: 合計する数値の配列。
+* `returns` **{数値}**
 
-**Example**
+**例**
 
 ```handlebars
 {{sum "[1, 2, 3, 4, 5]"}}
-<!-- results in: '15' -->
+<!-- 結果: '15' -->
 ```
 
 ## {{times}}
 
-Multiply number `a` by number `b`.
+数値 `a` と数値 `b` を掛けます。
 
-**Params**
+**パラメータ**
 
-* `a` **{Number}**: factor
-* `b` **{Number}**: multiplier
-* `returns` **{Number}**
+* `a` **{数値}**: 因数
+* `b` **{数値}**: 乗数
+* `returns` **{数値}**

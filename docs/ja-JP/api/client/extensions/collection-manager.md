@@ -1,6 +1,6 @@
 # CollectionManager
 
-## Components
+## コンポーネント
 
 ### CollectionManagerProvider
 
@@ -31,7 +31,7 @@ const collection = {
 <CollectionProvider collection={collection}></CollectionProvider>;
 ```
 
-如果没有传 collection 参数，从 CollectionManagerProvider 里取对应 name 的 collection。
+collection パラメータが渡されない場合、CollectionManagerProvider から対応する name の collection を取得します。
 
 ```jsx | pure
 const collections = [
@@ -70,7 +70,7 @@ const field = {
 <CollectionFieldProvider field={field}></CollectionFieldProvider>;
 ```
 
-如果没有传 field 参数，从 CollectionProvider 里取对应 name 的 field。
+field パラメータが渡されない場合、CollectionProvider から対応する name の field を取得します。
 
 ```jsx | pure
 const collection = {
@@ -94,7 +94,7 @@ const collection = {
 
 ### CollectionField
 
-万能字段组件，需要与 `<CollectionProvider/>` 搭配使用，仅限于在 Schema 场景使用。从 CollectionProvider 里取对应 name 的 field schema。可通过 CollectionField 所在的 schema 扩展配置。
+万能フィールドコンポーネントで、`<CollectionProvider/>` と組み合わせて使用する必要があります。Schema シナリオでのみ使用可能です。CollectionProvider から対応する name の field schema を取得します。CollectionField が存在する schema の拡張設定を通じて設定可能です。
 
 ```ts
 {
@@ -111,7 +111,7 @@ const collection = {
 
 ### useCollectionManager()
 
-与 `<CollectionManagerProvider/>` 搭配使用
+`<CollectionManagerProvider/>` と組み合わせて使用します。
 
 ```jsx | pure
 const { collections, get } = useCollectionManager();
@@ -119,7 +119,7 @@ const { collections, get } = useCollectionManager();
 
 ### useCollection()
 
-与 `<CollectionProvider/>` 搭配使用
+`<CollectionProvider/>` と組み合わせて使用します。
 
 ```jsx | pure
 const { name, fields, getField, findField, resource } = useCollection();
@@ -127,147 +127,10 @@ const { name, fields, getField, findField, resource } = useCollection();
 
 ### useCollectionField()
 
-与 `<CollectionFieldProvider/>` 搭配使用
+`<CollectionFieldProvider/>` と組み合わせて使用します。
 
 ```jsx | pure
 const { name, uiSchema, resource } = useCollectionField();
 ```
 
-resource 需要与 `<RecordProvider/>` 搭配使用，用于提供当前数据表行记录的上下文。如：
-
-# CollectionManager
-
-## Components
-
-### CollectionManagerProvider
-
-```jsx | pure
-<CollectionManagerProvider
-  interfaces={{}}
-  collections={[]}
-></CollectionManagerProvider>
-```
-
-### CollectionProvider
-
-```jsx | pure
-const collection = {
-  name: 'tests',
-  fields: [
-    {
-      type: 'string',
-      name: 'title',
-      interface: 'input',
-      uiSchema: {
-        type: 'string',
-        'x-component': 'Input',
-      },
-    },
-  ],
-};
-<CollectionProvider collection={collection}></CollectionProvider>;
-```
-
-如果没有传 collection 参数，从 CollectionManagerProvider 里取对应 name 的 collection。
-
-```jsx | pure
-const collections = [
-  {
-    name: 'tests',
-    fields: [
-      {
-        type: 'string',
-        name: 'title',
-        interface: 'input',
-        uiSchema: {
-          type: 'string',
-          'x-component': 'Input',
-        },
-      },
-    ],
-  },
-];
-<CollectionManagerProvider collections={collections}>
-  <CollectionProvider name={'tests'}></CollectionProvider>
-</CollectionManagerProvider>;
-```
-
-### CollectionFieldProvider
-
-```jsx | pure
-const field = {
-  type: 'string',
-  name: 'title',
-  interface: 'input',
-  uiSchema: {
-    type: 'string',
-    'x-component': 'Input',
-  },
-};
-<CollectionFieldProvider field={field}></CollectionFieldProvider>;
-```
-
-如果没有传 field 参数，从 CollectionProvider 里取对应 name 的 field。
-
-```jsx | pure
-const collection = {
-  name: 'tests',
-  fields: [
-    {
-      type: 'string',
-      name: 'title',
-      interface: 'input',
-      uiSchema: {
-        type: 'string',
-        'x-component': 'Input',
-      },
-    },
-  ],
-};
-<CollectionProvider collection={collection}>
-  <CollectionFieldProvider name={'title'}></CollectionFieldProvider>
-</CollectionProvider>;
-```
-
-### CollectionField
-
-万能字段组件，需要与 `<CollectionProvider/>` 搭配使用，仅限于在 Schema 场景使用。从 CollectionProvider 里取对应 name 的 field schema。可通过 CollectionField 所在的 schema 扩展配置。
-
-```ts
-{
-  name: 'title',
-  'x-decorator': 'FormItem',
-  'x-decorator-props': {},
-  'x-component': 'CollectionField',
-  'x-component-props': {},
-  properties: {},
-}
-```
-
-## Hooks
-
-### useCollectionManager()
-
-与 `<CollectionManagerProvider/>` 搭配使用
-
-```jsx | pure
-const { collections, get } = useCollectionManager();
-```
-
-### useCollection()
-
-与 `<CollectionProvider/>` 搭配使用
-
-```jsx | pure
-const { name, fields, getField, findField, resource } = useCollection();
-```
-
-### useCollectionField()
-
-与 `<CollectionFieldProvider/>` 搭配使用
-
-```jsx | pure
-const { name, uiSchema, resource } = useCollectionField();
-```
-
-resource 需要与 `<RecordProvider/>` 搭配使用，用于提供当前数据表行记录的上下文。
+resource は `<RecordProvider/>` と組み合わせて使用し、現在のデータシート行レコードのコンテキストを提供します。

@@ -1,6 +1,6 @@
 # IField
 
-`IField` 定义了字段需要实现的接口。
+`IField` は、フィールドが実装する必要があるインターフェースを定義します。
 
 ```typescript
 export type FieldOptions = {
@@ -26,9 +26,8 @@ export interface IField {
 ```
 
 
-## 属性
+## プロパティ
 
 ### options
 
-- **类型**：`FieldOptions`
-
+- **タイプ**：`FieldOptions`

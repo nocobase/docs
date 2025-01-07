@@ -1,38 +1,37 @@
-
-# Regex
+# 正規表現 (Regex)
 
 ## {{toRegex}}
 
-Convert the given string to a regular expression.
+指定された文字列を正規表現に変換します。
 
-**Params**
+**パラメータ**
 
 * `str` **{String}**
 * `returns` **{RegExp}**
 
-**Example**
+**例**
 
 ```handlebars
 {{toRegex "foo"}}
-<!-- results in: /foo/ -->
+<!-- 結果: /foo/ -->
 ```
 
 ## {{test}}
 
-Returns true if the given `str` matches the given regex. A regex can be passed on the context, or using the [toRegex](#toregex) helper as a subexpression.
+指定された `str` が指定された正規表現に一致する場合に true を返します。正規表現はコンテキストで渡すか、サブ式として [toRegex](#toregex) ヘルパーを使用して渡すことができます。
 
-**Params**
+**パラメータ**
 
 * `str` **{String}**
 * `returns` **{RegExp}**
 
-**Example**
+**例**
 
 ```handlebars
 {{test "bar" (toRegex "foo")}}
-<!-- results in: false -->
+<!-- 結果: false -->
 {{test "foobar" (toRegex "foo")}}
-<!-- results in: true -->
+<!-- 結果: true -->
 {{test "foobar" (toRegex "^foo$")}}
-<!-- results in: false -->
+<!-- 結果: false -->
 ```

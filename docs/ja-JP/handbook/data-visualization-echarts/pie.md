@@ -1,25 +1,25 @@
-# Pie Chart
+# 円グラフ
 
-## Data Configuration
+## データ設定
 
-### 1 Metric, 1 Dimension
+### 1メトリック、1ディメンション
 
-![1 Metric, 1 Dimension](https://static-docs.nocobase.com/202410091138527.png)
+![1メトリック、1ディメンション](https://static-docs.nocobase.com/202410091138527.png)
 
-## Configuration Options
+## 設定オプション
 
-| Option                       | Description                                                                                              |
+| オプション                       | 説明                                                                                              |
 | ---------------------------- | -------------------------------------------------------------------------------------------------------- |
-| Size                         | Sets the chart's size, with a fixed aspect ratio or fixed height                                          |
-| Light mode theme             | Must be selected to preview when the system is in light mode                                              |
-| Dark mode theme              | Must be selected to preview when the system is in dark mode                                               |
-| Show legend                  | Controls whether the legend is displayed                                                                 |
-| Legend orient                | Controls the orientation of the legend, either horizontal or vertical                                     |
-| Legend position (left, bottom, right, top) | Controls the relative position of the legend                                                 |
-| Label type                   | Controls whether labels are displayed and their type                                                      |
-| Show label line              | Controls whether label lines are displayed, effective only when the labels are outside the pie             |
-| Label position               | Controls the position of the labels: inside, outside, or middle. When in the middle, the label only appears when hovering over the corresponding part of the chart |
-| Outter radius                | Adjusts the outer radius of the chart                                                                     |
-| Inner radius                 | Adjusts the inner radius of the chart. Can be used to create a donut chart<br />![](https://static-docs.nocobase.com/202410091144473.png) |
-| Center coordinates           | Controls the position of the chart, which can be set with fixed values or percentages                     |
-| Colors                       | Fine-tunes the color for each category                                                                    |
+| サイズ                         | チャートのサイズを設定します。固定アスペクト比または固定高さを指定できます                                          |
+| ライトモードテーマ             | システムがライトモードの場合、プレビューするために選択する必要があります                                              |
+| ダークモードテーマ              | システムがダークモードの場合、プレビューするために選択する必要があります                                               |
+| 凡例を表示                   | 凡例を表示するかどうかを制御します                                                                 |
+| 凡例の向き                | 凡例の向きを制御します。水平または垂直を選択できます                                     |
+| 凡例の位置 (左、下、右、上) | 凡例の相対的な位置を制御します                                                 |
+| ラベルタイプ                   | ラベルを表示するかどうかとそのタイプを制御します                                                      |
+| ラベルラインを表示              | ラベルラインを表示するかどうかを制御します。ラベルが円グラフの外側にある場合にのみ有効です             |
+| ラベルの位置               | ラベルの位置を制御します：内側、外側、または中間。中間の場合、対応するチャート部分にカーソルを合わせたときにのみラベルが表示されます |
+| 外側の半径                | チャートの外側の半径を調整します                                                                     |
+| 内側の半径                 | チャートの内側の半径を調整します。ドーナツグラフを作成するために使用できます<br />![](https://static-docs.nocobase.com/202410091144473.png) |
+| 中心座標           | チャートの位置を制御します。固定値またはパーセンテージで設定できます                     |
+| 色                       | 各カテゴリーの色を微調整します                                                                    |

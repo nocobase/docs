@@ -1,81 +1,81 @@
-# Area Chart
+# エリアチャート
 
-## Data Configuration
+## データ構成
 
-### 1 or more measures, 1 dimension
+### 1つ以上のメジャー、1つのディメンション
 
-![1 or more measures, 1 dimension](https://static-docs.nocobase.com/202410091149684.png)
+![1つ以上のメジャー、1つのディメンション](https://static-docs.nocobase.com/202410091149684.png)
 
-### 1 measure, 1 axis dimension, 1 category dimension
+### 1つのメジャー、1つの軸ディメンション、1つのカテゴリディメンション
 
-Configure 1 measure and 2 dimensions. One dimension will serve as the X-axis field, and the other will be used as the series (category) field.
+1つのメジャーと2つのディメンションを構成します。1つのディメンションはX軸フィールドとして機能し、もう1つは系列（カテゴリ）フィールドとして使用されます。
 
-![1 measure, 1 axis dimension, 1 category dimension](https://static-docs.nocobase.com/202410091153441.png)
+![1つのメジャー、1つの軸ディメンション、1つのカテゴリディメンション](https://static-docs.nocobase.com/202410091153441.png)
 
-## Configuration Options
+## 構成オプション
 
-| Option                          | Description                                                                 |
+| オプション                          | 説明                                                                 |
 | ------------------------------- | --------------------------------------------------------------------------- |
-| XField                          | The dimension field for the X-axis                                           |
-| seriesField                     | The dimension field used for categorization                                  |
-| Size                            | Define the chart size, either by fixed aspect ratio or fixed height          |
-| Light mode theme                | Select this option to preview when the system is in light mode               |
-| Dark mode theme                 | Select this option to preview when the system is in dark mode                |
-| Show legend                     | Toggle the display of the legend                                             |
-| Legend orient                   | Choose the direction of the legend display, either horizontal or vertical    |
-| Legend position (left, bottom, right, top) | Define the relative position of the legend                          |
-| Label type                      | Control the visibility and type of labels                                    |
-| Smooth curve                    | Enable or disable the smoothing of curves                                    |
-| Whether stack                   | Enable or disable data stacking                                              |
-| X-Axis title                    | Control the display position of the X-axis title                             |
-| Y-Axis title                    | Control the display position of the Y-axis title                             |
-| X-Axis label rotate             | Set the rotation angle of X-axis labels, helpful for displaying more labels when they are dense |
-| Padding                         | Adjust the internal padding of the chart                                     |
-| Split line                      | Configure the display and style of grid lines                                |
-| Mark line                       | Add marker lines with custom title, value, and color                         |
+| X軸フィールド                    | X軸のディメンションフィールドを定義するために使用されるフィールド           |
+| カテゴリフィールド                | データをカテゴリ化するために使用されるフィールド                             |
+| サイズ                            | 固定アスペクト比または固定高さでチャートのサイズを指定する                   |
+| ライトモードテーマ                | ライトモードでのプレビューに選択する                                         |
+| ダークモードテーマ                | ダークモードでのプレビューに選択する                                         |
+| 凡例を表示                        | 凡例の表示を切り替える                                                       |
+| 凡例の方向                        | 凡例の表示方向を設定する（水平または垂直）                                     |
+| 凡例の位置（左、下、右、上）      | チャートに対する凡例の相対位置を設定する                                       |
+| ラベルタイプ                      | ラベルの表示と形式を管理する                                                   |
+| スムーズカーブ                    | 曲線のスムージングを有効にして、より洗練された外観にする                       |
+| データを積み上げ                  | 累積データの視覚化のために値を積み上げるオプション                             |
+| X軸タイトル                      | X軸タイトルの表示と位置を調整する                                               |
+| Y軸タイトル                      | Y軸タイトルの表示と位置を調整する                                               |
+| X軸ラベルの回転                  | X軸ラベルを回転させてスペースを最適化し、ラベルが密集している場合に便利         |
+| パディング                        | チャートの内部パディングをカスタマイズする                                       |
+| グリッドライン                    | グリッドラインの表示とスタイルを定義する                                         |
+| マーカーライン                    | マーカーラインを追加し、そのタイトル、値、色を設定する                           |
 
 ---
 
-Now, I will move on to the final refinement stage.
+これで、最終的な調整段階に進みます。
 
-### Refinement Stage (Refinement Expert)
+### 調整段階（調整専門家）
 
-For this final pass, I've refined the text to enhance readability and ensure clarity, while keeping it professional and technically accurate.
+この最終的なパスでは、読みやすさを向上させ、明確さを確保するためにテキストを調整し、専門的かつ技術的に正確なままにしました。
 
 ---
 
-### Area Chart
+### エリアチャート
 
-#### Data Configuration
+#### データ構成
 
-##### 1 or More Measures, 1 Dimension
+##### 1つ以上のメジャー、1つのディメンション
 
-![Image](https://static-docs.nocobase.com/202410091149684.png)
+![画像](https://static-docs.nocobase.com/202410091149684.png)
 
-##### 1 Measure, 1 Axis Dimension, 1 Category Dimension
+##### 1つのメジャー、1つの軸ディメンション、1つのカテゴリディメンション
 
-This setup includes 1 measure and 2 dimensions. One dimension acts as the X-axis field, while the other is used as the series (category) field.
+この設定には1つのメジャーと2つのディメンションが含まれます。1つのディメンションはX軸フィールドとして機能し、もう1つは系列（カテゴリ）フィールドとして使用されます。
 
-![Image](https://static-docs.nocobase.com/202410091153441.png)
+![画像](https://static-docs.nocobase.com/202410091153441.png)
 
-#### Configuration Options
+#### 構成オプション
 
-| Option                          | Description                                                                 |
+| オプション                          | 説明                                                                 |
 | ------------------------------- | --------------------------------------------------------------------------- |
-| X-axis Field                    | Field used to define the X-axis dimension                                    |
-| Category Field                  | Field used to categorize data                                                |
-| Size                            | Specify chart size, either by fixed aspect ratio or fixed height             |
-| Light Mode Theme                | Select for preview in light mode                                             |
-| Dark Mode Theme                 | Select for preview in dark mode                                              |
-| Show Legend                     | Toggle the visibility of the legend                                          |
-| Legend Direction                | Set legend direction (horizontal or vertical)                                |
-| Legend Position (Left, Bottom, Right, Top) | Set the position of the legend relative to the chart             |
-| Label Type                      | Manage the visibility and format of the labels                               |
-| Smooth Curve                    | Enable smoothing of the curve for a more polished look                       |
-| Stack Data                      | Option to stack values for cumulative data visualization                     |
-| X-axis Title                    | Adjust the visibility and position of the X-axis title                       |
-| Y-axis Title                    | Adjust the visibility and position of the Y-axis title                       |
-| X-axis Label Rotation           | Rotate X-axis labels to optimize space, useful when labels are densely packed |
-| Padding                         | Customize the inner padding of the chart                                     |
-| Grid Lines                      | Define the visibility and style of grid lines                                |
-| Marker Line                     | Add marker lines, and set their title, value, and color                      |
+| X軸フィールド                    | X軸のディメンションフィールドを定義するために使用されるフィールド           |
+| カテゴリフィールド                | データをカテゴリ化するために使用されるフィールド                             |
+| サイズ                            | 固定アスペクト比または固定高さでチャートのサイズを指定する                   |
+| ライトモードテーマ                | ライトモードでのプレビューに選択する                                         |
+| ダークモードテーマ                | ダークモードでのプレビューに選択する                                         |
+| 凡例を表示                        | 凡例の表示を切り替える                                                       |
+| 凡例の方向                        | 凡例の表示方向を設定する（水平または垂直）                                     |
+| 凡例の位置（左、下、右、上）      | チャートに対する凡例の相対位置を設定する                                       |
+| ラベルタイプ                      | ラベルの表示と形式を管理する                                                   |
+| スムーズカーブ                    | 曲線のスムージングを有効にして、より洗練された外観にする                       |
+| データを積み上げ                  | 累積データの視覚化のために値を積み上げるオプション                             |
+| X軸タイトル                      | X軸タイトルの表示と位置を調整する                                               |
+| Y軸タイトル                      | Y軸タイトルの表示と位置を調整する                                               |
+| X軸ラベルの回転                  | X軸ラベルを回転させてスペースを最適化し、ラベルが密集している場合に便利         |
+| パディング                        | チャートの内部パディングをカスタマイズする                                       |
+| グリッドライン                    | グリッドラインの表示とスタイルを定義する                                         |
+| マーカーライン                    | マーカーラインを追加し、そのタイトル、値、色を設定する                           |

@@ -1,8 +1,8 @@
 # ctx.action
 
-## 概览
+## 概要
 
-资源操作请求经过 [`resourceManager.middleware()`](./resource-manager#middleware) 解析之后，一些重要的请求参数会被保存到 `ctx.action` 中，供后续的中间件使用。
+リソース操作リクエストは [`resourceManager.middleware()`](./resource-manager#middleware) によって解析された後、いくつかの重要なリクエストパラメータが `ctx.action` に保存され、後続のミドルウェアで使用されます。
 
 ## API
 
@@ -10,38 +10,38 @@
 
 `ctx.action.resourceName`
 
-资源名称，有两种形式：
+リソース名。以下の2つの形式があります：
 
-- `a` - 对资源 `a` 操作。
-- `a.b` - 对资源 `a` 的关联对象 `b` 操作。
+- `a` - リソース `a` に対する操作。
+- `a.b` - リソース `a` の関連オブジェクト `b` に対する操作。
 
 ### actionName
 
 `ctx.action.actionName`
 
-操作名称。
+操作名。
 
 ### sourceId
 
 `ctx.action.sourceId`
 
-当操作对象为资源的关联对象时，对应资源的主键值。比如： `resourceName` 为 `a.b` 时，`sourceId` 代表 `a` 的主键值。
+操作対象がリソースの関連オブジェクトである場合、対応するリソースの主キー値。例えば、`resourceName` が `a.b` の場合、`sourceId` は `a` の主キー値を表します。
 
 ### params
 
-请求参数。
+リクエストパラメータ。
 
-- URL 参数可以直接从 `ctx.action.params` 中获取。
+- URL パラメータは `ctx.action.params` から直接取得できます。
 
 ```ts
 const { filterByTk } = ctx.action.params;
 ```
 
-- 请求体可以通过 `ctx.action.params.values` 获取。
+- リクエストボディは `ctx.action.params.values` から取得できます。
 
 ### mergeParams()
 
-提供参数内容，和请求参数进行合并。
+パラメータの内容を提供し、リクエストパラメータとマージします。
 
 ```ts
 ctx.action.mergeParams(
@@ -81,11 +81,11 @@ ctx.action.mergeParams(
 );
 ```
 
-#### 签名
+#### シグネチャ
 
 - `mergeParams(params: ActionParams, strategies: MergeStrategies = {})`
 
-#### 类型
+#### タイプ
 
 ```ts
 export interface ActionParams {
@@ -118,14 +118,14 @@ export interface MergeStrategies {
 }
 ```
 
-#### 详细信息
+#### 詳細
 
-| 参数名       | 类型                                                     | 描述                               |
-| ------------ | -------------------------------------------------------- | ---------------------------------- |
-| `params`     | [`ActionParams`](#actionparams)                          | 操作请求参数                       |
-| `strategies` | [`{ [key: string]: MergeStrategies }`](#mergestrategies) | 针对请求参数中的各个字段的合并策略 |
+| パラメータ名   | 型                                                       | 説明                               |
+| -------------- | -------------------------------------------------------- | ---------------------------------- |
+| `params`       | [`ActionParams`](#actionparams)                          | 操作リクエストパラメータ           |
+| `strategies`   | [`{ [key: string]: MergeStrategies }`](#mergestrategies) | リクエストパラメータの各フィールドに対するマージ戦略 |
 
-默认 `strategies`：
+デフォルトの `strategies`：
 
 ```ts
 {
@@ -141,33 +141,33 @@ export interface MergeStrategies {
 
 ##### ActionParams
 
-| 参数名          | 类型       | 描述                                                    |
-| --------------- | ---------- | ------------------------------------------------------- |
-| `filterByTk`    | `any`      | 操作资源主键值                                          |
-| `filter`        | `Filter`   | 过滤参数，参考 [Filter Operators](./database/operators) |
-| `fields`        | `string[]` | 要获取的字段                                            |
-| `except`        | `string[]` | 要排除的字段                                            |
-| `appends`       | `string[]` | 要附加的关系字段                                        |
-| `whitelist`     | `string[]` | 字段白名单                                              |
-| `blacklist`     | `string[]` | 字段黑名单                                              |
-| `sort`          | `string[]` | 排序参数                                                |
-| `page`          | `number`   | 当前页                                                  |
-| `pageSize`      | `number`   | 每页数据条数                                            |
-| `values`        | `any`      | 请求体                                                  |
-| `[key: string]` | `any`      | 其他扩展配置                                            |
+| パラメータ名      | 型         | 説明                                                    |
+| ----------------- | ---------- | ------------------------------------------------------- |
+| `filterByTk`      | `any`      | 操作リソースの主キー値                                  |
+| `filter`          | `Filter`   | フィルタパラメータ、[Filter Operators](./database/operators) を参照 |
+| `fields`          | `string[]` | 取得するフィールド                                      |
+| `except`          | `string[]` | 除外するフィールド                                      |
+| `appends`         | `string[]` | 追加するリレーションフィールド                          |
+| `whitelist`       | `string[]` | フィールドホワイトリスト                                |
+| `blacklist`       | `string[]` | フィールドブラックリスト                                |
+| `sort`            | `string[]` | ソートパラメータ                                        |
+| `page`            | `number`   | 現在のページ                                            |
+| `pageSize`        | `number`   | ページあたりのデータ数                                  |
+| `values`          | `any`      | リクエストボディ                                        |
+| `[key: string]`   | `any`      | その他の拡張設定                                        |
 
 ##### MergeStrategies
 
-预置的合并策略或自定义的合并函数。
+プリセットのマージ戦略またはカスタムマージ関数。
 
-预置的合并策略：
+プリセットのマージ戦略：
 
-| 策略名      | 描述                           |
+| 戦略名      | 説明                           |
 | ----------- | ------------------------------ |
 | `merge`     | `Object.assign`                |
-| `deepMerge` | 深层遍历合并                   |
-| `overwrite` | 覆盖                           |
-| `andMerge`  | 使用 `$and` 运算符合并过滤参数 |
-| `orMerge`   | 使用 `$or` 运算符合并过滤参数  |
-| `intersect` | 交集                           |
-| `union`     | 并集                           |
+| `deepMerge` | 深層トラバースマージ           |
+| `overwrite` | 上書き                         |
+| `andMerge`  | `$and` 演算子を使用してフィルタパラメータをマージ |
+| `orMerge`   | `$or` 演算子を使用してフィルタパラメータをマージ  |
+| `intersect` | 交差                           |
+| `union`     | 和集合                         |

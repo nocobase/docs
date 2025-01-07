@@ -1,19 +1,19 @@
 # REST API
 
-NocoBase 的 HTTP API 是 REST API 的超集，标准的 CRUD API 也支持 RESTful 风格。
+NocoBase の HTTP API は REST API のスーパーセットであり、標準の CRUD API も RESTful スタイルをサポートしています。
 
-## Collection 资源
+## Collection リソース
 
 ---
 
-### 创建 collection
+### Collection の作成
 
 HTTP API
 
 ```bash
 POST  /api/<collection>:create
 
-{} # JSON body
+{} # JSON ボディ
 ```
 
 REST API
@@ -21,10 +21,10 @@ REST API
 ```bash
 POST  /api/<collection>
 
-{} # JSON body
+{} # JSON ボディ
 ```
 
-### 查看 collection 列表
+### Collection リストの表示
 
 HTTP API
 
@@ -38,7 +38,7 @@ REST API
 GET   /api/<collection>
 ```
 
-### 查看 collection 详情
+### Collection 詳細の表示
 
 HTTP API
 
@@ -53,19 +53,19 @@ REST API
 GET   /api/<collection>/<collectionIndex>
 ```
 
-### 更新 collection
+### Collection の更新
 
 HTTP API
 
 ```bash
 POST   /api/<collection>:update?filterByTk=<collectionIndex>
 
-{} # JSON body
+{} # JSON ボディ
 
-# 或者
+# または
 POST   /api/<collection>:update/<collectionIndex>
 
-{} # JSON body
+{} # JSON ボディ
 ```
 
 REST API
@@ -73,16 +73,16 @@ REST API
 ```bash
 PUT    /api/<collection>/<collectionIndex>
 
-{} # JSON body
+{} # JSON ボディ
 ```
 
-### 删除 collection
+### Collection の削除
 
 HTTP API
 
 ```bash
 POST      /api/<collection>:destroy?filterByTk=<collectionIndex>
-# 或者
+# または
 POST      /api/<collection>:destroy/<collectionIndex>
 ```
 
@@ -92,18 +92,18 @@ REST API
 DELETE    /api/<collection>/<collectionIndex>
 ```
 
-## Association 资源
+## Association リソース
 
 ---
 
-### 创建 Association
+### Association の作成
 
 HTTP API
 
 ```bash
 POST    /api/<collection>/<collectionIndex>/<association>:create
 
-{} # JSON body
+{} # JSON ボディ
 ```
 
 REST API
@@ -111,10 +111,10 @@ REST API
 ```bash
 POST    /api/<collection>/<collectionIndex>/<association>
 
-{} # JSON body
+{} # JSON ボディ
 ```
 
-### 查看 Association 列表
+### Association リストの表示
 
 HTTP API
 
@@ -128,13 +128,13 @@ REST API
 GET   /api/<collection>/<collectionIndex>/<association>
 ```
 
-### 查看 Association 详情
+### Association 詳細の表示
 
 HTTP API
 
 ```bash
 GET   /api/<collection>/<collectionIndex>/<association>:get?filterByTk=<associationIndex>
-# 或者
+# または
 GET   /api/<collection>/<collectionIndex>/<association>:get/<associationIndex>
 ```
 
@@ -144,19 +144,19 @@ REST API
 GET   /api/<collection>/<collectionIndex>/<association>:get/<associationIndex>
 ```
 
-### 更新 Association
+### Association の更新
 
 HTTP API
 
 ```bash
 POST   /api/<collection>/<collectionIndex>/<association>:update?filterByTk=<associationIndex>
 
-{} # JSON body
+{} # JSON ボディ
 
-# 或者
+# または
 POST   /api/<collection>/<collectionIndex>/<association>:update/<associationIndex>
 
-{} # JSON body
+{} # JSON ボディ
 ```
 
 REST API
@@ -164,16 +164,16 @@ REST API
 ```bash
 PUT    /api/<collection>/<collectionIndex>/<association>:update/<associationIndex>
 
-{} # JSON 数据
+{} # JSON データ
 ```
 
-### 删除 Association
+### Association の削除
 
 HTTP API
 
 ```bash
 POST    /api/<collection>/<collectionIndex>/<association>:destroy?filterByTk=<associationIndex>
-# 或者
+# または
 POST    /api/<collection>/<collectionIndex>/<association>:destroy/<associationIndex>
 ```
 

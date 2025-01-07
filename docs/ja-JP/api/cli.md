@@ -1,17 +1,17 @@
 # @nocobase/cli
 
-NocoBase CLI 旨在帮助你开发、构建和部署 NocoBase 应用。
+NocoBase CLI は、NocoBase アプリケーションの開発、ビルド、およびデプロイを支援することを目的としています。
 
 <Alert>
 
-NocoBase CLI 支持 ts-node 和 node 两种运行模式
+NocoBase CLI は、ts-node と node の2つの実行モードをサポートしています。
 
-- ts-node 模式（默认）：用于开发环境，支持实时编译，但是响应较慢
-- node 模式：用于生产环境，响应迅速，但需要先执行 `yarn nocobase build` 将全部源码进行编译
+- ts-node モード（デフォルト）：開発環境用で、リアルタイムコンパイルをサポートしますが、応答が遅いです。
+- node モード：本番環境用で、応答が速いですが、`yarn nocobase build` を実行してすべてのソースコードをコンパイルする必要があります。
 
 </Alert>
 
-## 使用说明
+## 使用説明
 
 ```bash
 $ yarn nocobase -h
@@ -23,25 +23,25 @@ Options:
 
 Commands:
   console
-  db:auth               校验数据库是否连接成功
-  db:sync               通过 collections 配置生成相关数据表和字段
-  install               安装
-  start                 生产环境启动应用
-  build                 编译打包
-  clean                 删除编译之后的文件
-  dev                   启动应用，用于开发环境，支持实时编译
-  doc                   文档开发
-  test                  测试
+  db:auth               データベース接続の検証
+  db:sync               collections 設定に基づいて関連するデータシートとフィールドを生成
+  install               インストール
+  start                 本番環境でのアプリケーション起動
+  build                 コンパイルとパッケージング
+  clean                 コンパイル後のファイルを削除
+  dev                   開発環境でのアプリケーション起動、リアルタイムコンパイルをサポート
+  doc                   ドキュメント開発
+  test                  テスト
   umi
-  upgrade               升级
-  migrator              数据迁移
-  pm                    插件管理器
+  upgrade               アップグレード
+  migrator              データ移行
+  pm                    プラグインマネージャー
   help
 ```
 
-## 在脚手架里应用
+## スキャフォールドでの適用
 
-应用脚手架 `package.json` 里的 `scripts` 如下：
+スキャフォールドの `package.json` 内の `scripts` を以下のように設定します：
 
 ```json
 {
@@ -57,9 +57,9 @@ Commands:
 }
 ```
 
-## 命令行扩展
+## コマンドライン拡張
 
-NocoBase CLI 基于 [commander](https://github.com/tj/commander.js) 构建，你可以自由扩展命令，扩展的 command 可以写在 `app/server/index.ts` 里：
+NocoBase CLI は [commander](https://github.com/tj/commander.js) に基づいて構築されており、自由にコマンドを拡張できます。拡張コマンドは `app/server/index.ts` に記述できます：
 
 ```ts
 const app = new Application(config);
@@ -67,7 +67,7 @@ const app = new Application(config);
 app.command('hello').action(() => {});
 ```
 
-或者，写在插件里：
+または、プラグイン内に記述することもできます：
 
 ```ts
 class MyPlugin extends Plugin {
@@ -77,22 +77,22 @@ class MyPlugin extends Plugin {
 }
 ```
 
-终端运行
+ターミナルで実行
 
 ```bash
 $ yarn nocobase hello
 ```
 
-## 内置命令行
+## 組み込みコマンドライン
 
-按使用频率排序
+使用頻度順
 
 ### `dev`
 
-开发环境下，启动应用，代码实时编译。
+開発環境でアプリケーションを起動し、コードをリアルタイムでコンパイルします。
 
 <Alert>
-NocoBase 未安装时，会自动安装（参考 install 命令）
+NocoBase がインストールされていない場合、自動的にインストールされます（install コマンドを参照）
 </Alert>
 
 ```bash
@@ -105,25 +105,25 @@ Options:
   -h, --help
 ```
 
-示例
+例
 
 ```bash
-# 启动应用，用于开发环境，实时编译
+# 開発環境でアプリケーションを起動し、リアルタイムコンパイル
 yarn nocobase dev
-# 只启动服务端
+# サーバーのみ起動
 yarn nocobase dev --server
-# 只启动客户端
+# クライアントのみ起動
 yarn nocobase dev --client
 ```
 
 ### `start`
 
-生产环境下，启动应用，代码需要 yarn build。
+本番環境でアプリケーションを起動します。コードは yarn build が必要です。
 
 <Alert>
 
-- NocoBase 未安装时，会自动安装（参考 install 命令）
-- 源码有修改时，需要重新打包（参考 build 命令）
+- NocoBase がインストールされていない場合、自動的にインストールされます（install コマンドを参照）
+- ソースコードが変更された場合、再パッケージが必要です（build コマンドを参照）
 
 </Alert>
 
@@ -138,16 +138,16 @@ Options:
   -h, --help
 ```
 
-示例
+例
 
 ```bash
-# 启动应用，用于生产环境，
+# 本番環境でアプリケーションを起動
 yarn nocobase start
 ```
 
 ### `install`
 
-安装
+インストール
 
 ```bash
 $ yarn nocobase install -h
@@ -165,29 +165,29 @@ Options:
   -h, --help
 ```
 
-示例
+例
 
 ```bash
-# 初始安装
+# 初期インストール
 yarn nocobase install -l ja-JP -e admin@nocobase.com -p admin123
-# 删除 NocoBase 的所有数据表，并重新安装
+# NocoBase のすべてのデータシートを削除し、再インストール
 yarn nocobase install -f -l ja-JP -e admin@nocobase.com -p admin123
-# 清空数据库，并重新安装
+# データベースをクリアし、再インストール
 yarn nocobase install -c -l ja-JP -e admin@nocobase.com -p admin123
 ```
 
 <Alert>
 
-`-f/--force` 和 `-c/--clean` 的区别
+`-f/--force` と `-c/--clean` の違い
 
-- `-f/--force` 删除 NocoBase 的数据表
-- `-c/--clean` 清空数据库，所有数据表都会被删除
+- `-f/--force` NocoBase のデータシートを削除します
+- `-c/--clean` データベースをクリアし、すべてのデータシートが削除されます
 
 </Alert>
 
 ### `upgrade`
 
-升级
+アップグレード
 
 ```bash
 yarn nocobase upgrade
@@ -195,11 +195,11 @@ yarn nocobase upgrade
 
 ### `test`
 
-测试，用法与 vitest 一致，和直接运行 vitest 的区别：
+テスト、vitest と同様の使用方法、直接 vitest を実行する場合との違い：
 
-- 指定路径时，可以自动识别前后端，前端的必须包含 `/client/`
-- 后端测试默认为 `--single-thread`，如果要关掉可以加上 `--single-thread=false`
-- 默认为 `--run`，测试运行完退出进程，如果需要监听，加上 `--watch`
+- パスを指定する場合、自動的にフロントエンドとバックエンドを識別し、フロントエンドの場合は `/client/` を含める必要があります
+- バックエンドテストはデフォルトで `--single-thread` です。無効にする場合は `--single-thread=false` を追加します
+- デフォルトで `--run` です。テストが完了するとプロセスが終了します。監視が必要な場合は `--watch` を追加します
 
 ```bash
 $ nocobase test -h
@@ -209,65 +209,65 @@ Usage:
   $ vitest [...filters]
 ```
 
-示例
+例
 
 ```bash
-# 运行全部测试，前后端并行两个 vitest 进程
+# すべてのテストを実行し、フロントエンドとバックエンドで2つの vitest プロセスを並行実行
 yarn test
 
-# 运行 client 相关测试用例
+# client 関連のテストケースを実行
 yarn test --client
-# 等价于
+# 以下と同等
 yarn cross-env TEST_ENV=client-side vitest
 
-# 运行 server 相关测试用例
+# server 関連のテストケースを実行
 yarn test --server
-# 等价于
+# 以下と同等
 yarn cross-env TEST_ENV=server-side vitest
 
-# 指定目录或文件
+# ディレクトリまたはファイルを指定
 yarn test your/path/src/__tests__/test-file.test.ts
-# 前端文件必须包含 /client/
+# フロントエンドファイルは /client/ を含める必要があります
 yarn test your/path/client/src/__tests__/test-file.test.ts
 ```
 
 ### `build`
 
-代码部署到生产环境前，需要将源码编译打包，如果代码有修改，也需要重新构建。
+コードを本番環境にデプロイする前に、ソースコードをコンパイルしてパッケージ化する必要があります。コードが変更された場合も再ビルドが必要です。
 
 ```bash
-# 所有包
+# すべてのパッケージ
 yarn nocobase build
-# 指定包
+# 特定のパッケージ
 yarn nocobase build app/server app/client
 ```
 
 ### `clean`
 
-删除编译之后的文件
+コンパイル後のファイルを削除
 
 ```bash
 yarn clean
-# 等同于
+# 以下と同等
 yarn rimraf -rf packages/*/*/{lib,esm,es,dist}
 ```
 
 ### `doc`
 
-文档开发
+ドキュメント開発
 
 ```bash
-# 启动文档
-yarn doc  --lang=ja-JP # 等同于 yarn doc dev
-# 构建文档，默认输出到 ./docs/dist/ 目录下
+# ドキュメントを起動
+yarn doc  --lang=ja-JP # yarn doc dev と同等
+# ドキュメントをビルドし、デフォルトで ./docs/dist/ ディレクトリに出力
 yarn doc build
-# 查看 dist 输出的文档最终效果
+# dist 出力のドキュメントの最終的な効果を確認
 yarn doc serve --lang=ja-JP
 ```
 
 ### `db:auth`
 
-校验数据库是否连接成功
+データベース接続の検証
 
 ```bash
 $ yarn nocobase db:auth -h
@@ -275,13 +275,13 @@ $ yarn nocobase db:auth -h
 Usage: nocobase db:auth [options]
 
 Options:
-  -r, --retry [retry]   重试次数
+  -r, --retry [retry]   リトライ回数
   -h, --help
 ```
 
 ### `db:sync`
 
-通过 collections 配置生成数据表和字段
+collections 設定に基づいてデータシートとフィールドを生成
 
 ```bash
 $ yarn nocobase db:sync -h
@@ -295,66 +295,66 @@ Options:
 
 ### `migrator`
 
-数据迁移
+データ移行
 
 ```bash
 $ yarn nocobase migrator
 
 Positional arguments:
   <command>
-    up        Applies pending migrations
-    down      Revert migrations
-    pending   Lists pending migrations
-    executed  Lists executed migrations
-    create    Create a migration file
+    up        保留中のマイグレーションを適用
+    down      マイグレーションを元に戻す
+    pending   保留中のマイグレーションをリスト
+    executed  実行済みのマイグレーションをリスト
+    create    マイグレーションファイルを作成
 ```
 
 ### `pm`
 
-插件管理器
+プラグインマネージャー
 
 ```bash
-# 创建插件
+# プラグインを作成
 yarn pm create hello
-# 注册插件
+# プラグインを登録
 yarn pm add hello
-# 激活插件
+# プラグインを有効化
 yarn pm enable hello
-# 禁用插件
+# プラグインを無効化
 yarn pm disable hello
-# 删除插件
+# プラグインを削除
 yarn pm remove hello
 ```
 
-未实现
+未実装
 
 ```bash
-# 升级插件
+# プラグインをアップグレード
 yarn pm upgrade hello
-# 发布插件
+# プラグインを公開
 yarn pm publish hello
 ```
 
 ### `umi`
 
-`app/client` 基于 [umi](https://umijs.org/) 构建，可以通过 `nocobase umi` 来执行其他相关命令。
+`app/client` は [umi](https://umijs.org/) に基づいて構築されており、`nocobase umi` を介して他の関連コマンドを実行できます。
 
 ```bash
-# 生成开发环境所需的 .umi 缓存
+# 開発環境に必要な .umi キャッシュを生成
 yarn nocobase umi generate tmp
 ```
 
 ### `help`
 
-帮助命令，也可以用 option 参数，`-h` 和 `--help`
+ヘルプコマンド、オプションパラメータ `-h` と `--help` も使用可能
 
 ```bash
-# 查看所有 cli
+# すべての cli を表示
 yarn nocobase help
-# 也可以用 -h
+# -h も使用可能
 yarn nocobase -h
-# 或者 --help
+# または --help
 yarn nocobase --help
-# 查看 db:sync 命令的 option
+# db:sync コマンドのオプションを表示
 yarn nocobase db:sync -h
 ```

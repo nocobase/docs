@@ -1,26 +1,26 @@
-# Diverging-bar Chart
+# 分岐棒グラフ
 
-## Data Configuration
+## データ設定
 
-### 2 Metrics, 1 Dimension
+### 2つの指標、1つのディメンション
 
-Configure 2 metrics and 1 dimension. One metric will be assigned as the left-side X-axis field, and the other as the right-side X-axis field.
+2つの指標と1つのディメンションを設定します。1つの指標は左側のX軸フィールドとして割り当てられ、もう1つは右側のX軸フィールドとして割り当てられます。
 
-![2 Metrics, 1 Dimension](https://static-docs.nocobase.com/202410091121686.png)
+![2つの指標、1つのディメンション](https://static-docs.nocobase.com/202410091121686.png)
 
-## Configuration Options
+## 設定オプション
 
-| Option            | Description                                                                 |
-| ----------------- | --------------------------------------------------------------------------- |
-| Left X field      | Metric field for the left-side X-axis                                       |
-| Right X field     | Metric field for the right-side X-axis                                      |
-| yField            | Dimension field                                                            |
-| Size              | Set the size of the chart, either with a fixed aspect ratio or fixed height  |
-| Light mode theme   | Select this option to preview in the system's light mode                    |
-| Dark mode theme    | Select this option to preview in the system's dark mode                     |
-| Show legend        | Controls whether to display the legend                                      |
-| Label type         | Controls whether to show labels and their display types                     |
-| Colors             | Allows fine control of the color for each category                          |
-| Y-Axis label rotate | Controls the rotation angle of Y-axis labels, useful when labels are dense |
-| Padding            | Adjust the padding within the chart                                         |
-| Split line         | Controls whether to display grid lines and their styles                     |
+| オプション            | 説明                                                                 |
+| --------------------- | -------------------------------------------------------------------- |
+| 左Xフィールド          | 左側のX軸の指標フィールド                                             |
+| 右Xフィールド          | 右側のX軸の指標フィールド                                             |
+| yField                | ディメンションフィールド                                              |
+| サイズ                | グラフのサイズを設定します。固定アスペクト比または固定高さのいずれか   |
+| ライトモードテーマ     | システムのライトモードでプレビューするためにこのオプションを選択します |
+| ダークモードテーマ     | システムのダークモードでプレビューするためにこのオプションを選択します |
+| 凡例を表示            | 凡例を表示するかどうかを制御します                                     |
+| ラベルタイプ           | ラベルを表示するかどうかとその表示タイプを制御します                   |
+| 色                    | 各カテゴリの色を細かく制御します                                       |
+| Y軸ラベルの回転        | Y軸ラベルの回転角度を制御します。ラベルが密集している場合に便利です     |
+| パディング             | グラフ内のパディングを調整します                                       |
+| 分割線                | グリッド線を表示するかどうかとそのスタイルを制御します                 |

@@ -1,23 +1,23 @@
-# Funnel Chart
+# ファネルチャート
 
-## Data Configuration
+## データ設定
 
-### 1 Metric, 1 Dimension
+### 1メトリック, 1ディメンション
 
-![1 Metric, 1 Dimension](https://static-docs.nocobase.com/202410091916090.png)
+![1メトリック, 1ディメンション](https://static-docs.nocobase.com/202410091916090.png)
 
-## Configuration Options
+## 設定オプション
 
-| Option                        | Description                                                                                                               |
+| オプション                        | 説明                                                                                                               |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Size                          | Set the chart size, choosing either a fixed aspect ratio or a fixed height.                                                |
-| Light mode theme              | Required for previewing the chart in light mode.                                                                           |
-| Dark mode theme               | Required for previewing the chart in dark mode.                                                                            |
-| Show legend                   | Toggles the visibility of the chart legend.                                                                                |
-| Legend orient                 | Sets the orientation of the legend, either horizontally or vertically.                                                     |
-| Legend position (left, bottom, right, top) | Adjusts the position of the legend relative to the chart, offering flexibility in placement.                                |
-| Label type                    | Controls whether labels are shown and specifies the label format.                                                          |
-| Show label line               | Determines whether the label line is displayed, applicable only when labels are positioned outside the funnel.              |
-| Label position                | Sets the label position, either inside or outside of the funnel.                                                           |
-| Funnel size (min, max)        | Adjusts the size of the funnel chart. Modifying the minimum value controls whether the funnel ends in a pointed or flat base.<br />![](https://static-docs.nocobase.com/202410091919565.png) |
-| Padding                       | Adjusts the internal padding around the chart.                                                                             |
+| サイズ                          | チャートのサイズを設定し、固定アスペクト比または固定高さを選択します。                                                |
+| ライトモードテーマ              | ライトモードでチャートをプレビューするために必要です。                                                                           |
+| ダークモードテーマ               | ダークモードでチャートをプレビューするために必要です。                                                                            |
+| 凡例を表示                   | チャートの凡例の表示を切り替えます。                                                                                |
+| 凡例の向き                 | 凡例の向きを水平または垂直に設定します。                                                     |
+| 凡例の位置 (左、下、右、上) | チャートに対する凡例の位置を調整し、配置の柔軟性を提供します。                                |
+| ラベルタイプ                    | ラベルを表示するかどうかを制御し、ラベルの形式を指定します。                                                          |
+| ラベルラインを表示               | ラベルラインを表示するかどうかを決定し、ラベルがファネルの外側に配置されている場合にのみ適用されます。              |
+| ラベル位置                | ラベルの位置を設定し、ファネルの内側または外側に配置します。                                                           |
+| ファネルサイズ (最小、最大)        | ファネルチャートのサイズを調整します。最小値を変更することで、ファネルの先端が尖っているか平らなベースで終わるかを制御します。<br />![](https://static-docs.nocobase.com/202410091919565.png) |
+| パディング                       | チャートの内部パディングを調整します。                                                                             |

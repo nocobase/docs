@@ -1,46 +1,45 @@
 
-# Number
+# 数値
 
 ## {{bytes}}
 
-Format a number to it's equivalent in bytes. If a string is passed, it's length will be formatted and returned.
+数値をバイト単位にフォーマットします。文字列が渡された場合、その長さがフォーマットされて返されます。
 
-**Examples:**
+**例:**
 
 * `'foo' => 3 B`
 * `13661855 => 13.66 MB`
 * `825399 => 825.39 kB`
 * `1396 => 1.4 kB`
 
-**Params**
+**パラメータ**
 
 * `number` **{Number|String}**
 * `returns` **{String}**
 
 ## {{addCommas}}
 
-Add commas to numbers
+数値にカンマを追加します。
 
-**Params**
+**パラメータ**
 
 * `num` **{Number}**
 * `returns` **{Number}**
 
 ## {{phoneNumber}}
 
-Convert a string or number to a formatted phone number.
+文字列または数値をフォーマットされた電話番号に変換します。
 
-**Params**
+**パラメータ**
 
-* `num` **{Number|String}**: The phone number to format, e.g. `8005551212`
-* `returns` **{Number}**: Formatted phone number: `(800) 555-1212`
+* `num` **{Number|String}**: フォーマットする電話番号、例: `8005551212`
+* `returns` **{Number}**: フォーマットされた電話番号: `(800) 555-1212`
 
 ## {{toAbbr}}
 
-Abbreviate numbers to the given number of `precision`. This is for
-general numbers, not size in bytes.
+数値を指定された`precision`の桁数に省略します。これはバイト単位のサイズではなく、一般的な数値のためのものです。
 
-**Params**
+**パラメータ**
 
 * `number` **{Number}**
 * `precision` **{Number}**
@@ -48,15 +47,15 @@ general numbers, not size in bytes.
 
 ## {{toExponential}}
 
-Returns a string representing the given number in exponential notation.
+与えられた数値を指数表記で表す文字列を返します。
 
-**Params**
+**パラメータ**
 
 * `number` **{Number}**
-* `fractionDigits` **{Number}**: Optional. An integer specifying the number of digits to use after the decimal point. Defaults to as many digits as necessary to specify the number.
+* `fractionDigits` **{Number}**: オプション。小数点以下の桁数を指定する整数。デフォルトは数値を指定するために必要な桁数です。
 * `returns` **{Number}**
 
-**Example**
+**例**
 
 ```handlebars
 {{toExponential number digits}};
@@ -64,15 +63,15 @@ Returns a string representing the given number in exponential notation.
 
 ## {{toFixed}}
 
-Formats the given number using fixed-point notation.
+与えられた数値を固定小数点表記でフォーマットします。
 
-**Params**
+**パラメータ**
 
 * `number` **{Number}**
-* `digits` **{Number}**: (Optional) The number of digits to appear after the decimal point; this may be a value between 0 and 20. If this argument is omitted, it is treated as 0.
-* `returns` **{String}**: A string representing the given number using fixed-point notation.
+* `digits` **{Number}**: (オプション) 小数点以下の桁数。0から20までの値です。この引数が省略された場合、0として扱われます。
+* `returns` **{String}**: 固定小数点表記で表された数値の文字列。
 
-**Example**
+**例**
 
 ```handlebars
 {{toFixed "1.1234" 2}}
@@ -81,29 +80,29 @@ Formats the given number using fixed-point notation.
 
 ## {{toFloat}}
 
-**Params**
+**パラメータ**
 
 * `number` **{Number}**
 * `returns` **{Number}**
 
 ## {{toInt}}
 
-**Params**
+**パラメータ**
 
 * `number` **{Number}**
 * `returns` **{Number}**
 
 ## {{toPrecision}}
 
-Returns a string representing the `Number` object to the specified precision.
+指定された精度で`Number`オブジェクトを表す文字列を返します。
 
-**Params**
+**パラメータ**
 
 * `number` **{Number}**
-* `precision` **{Number}**: (Optional) An integer specifying the number of significant digits. If precison is not between 1 and 100 (inclusive), it will be coerced to `0`.
-* `returns` **{String}**: A string representing a Number object in fixed-point or exponential notation rounded to precision significant digits.
+* `precision` **{Number}**: (オプション) 有効桁数を指定する整数。精度が1から100の間でない場合、`0`に強制されます。
+* `returns` **{String}**: 固定小数点表記または指数表記で表された数値の文字列で、指定された有効桁数に丸められます。
 
-**Example**
+**例**
 
 ```handlebars
 {{toPrecision "1.1234" 2}}

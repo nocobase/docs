@@ -1,36 +1,36 @@
-# Line Chart
+# 折れ線グラフ
 
-## Data Configuration
+## データ設定
 
-### 1 or More Measures, 1 Dimension
+### 1つ以上のメジャー、1つのディメンション
 
-![1 or More Measures, 1 Dimension](https://static-docs.nocobase.com/202410091022965.png)
+![1つ以上のメジャー、1つのディメンション](https://static-docs.nocobase.com/202410091022965.png)
 
-### 1 Measure, 1 Axis Dimension, one Classification Dimension
+### 1つのメジャー、1つの軸ディメンション、1つの分類ディメンション
 
-Configure 1 measure and 2 dimensions. 1 dimension serves as the X-axis field, and the other as the series field.
+1つのメジャーと2つのディメンションを設定します。1つのディメンションはX軸フィールドとして、もう1つは系列フィールドとして機能します。
 
-![1 Measure, 1 Axis Dimension, one Classification Dimension](https://static-docs.nocobase.com/202410091029410.png)
+![1つのメジャー、1つの軸ディメンション、1つの分類ディメンション](https://static-docs.nocobase.com/202410091029410.png)
 
-## Configuration Options
+## 設定オプション
 
-| Configuration Option       | Description                                                                                   |
-| -------------------------- | --------------------------------------------------------------------------------------------- |
-| xField                     | The dimension field for the X-axis                                                             |
-| seriesField                | The dimension field for classification                                                         |
-| Size                       | Set the chart size, either with a fixed aspect ratio or a fixed height                         |
-| Light mode theme           | Select to preview in light mode in systems with light mode enabled                             |
-| Dark mode theme            | Select to preview in dark mode in systems with dark mode enabled                               |
-| Show legend                | Control whether to display the legend                                                         |
-| Legend orient              | Control the direction of the legend, either horizontal or vertical<br />![](https://static-docs.nocobase.com/202410091050074.png) |
-| Legend position (left, bottom, right, top) | Control the position of the legend relative to the chart                       |
-| Label type                 | Control whether and how labels are displayed, only visible when marker points are displayed    |
-| Smooth curve               | Enable or disable smooth curves in the line chart                                              |
-| Whether stack              | Enable or disable stacked data values                                                          |
-| Symbol                     | Control whether to display marker points and their styles                                      |
-| X-Axis title               | Control the position of the X-axis title                                                       |
-| Y-Axis title               | Control the position of the Y-axis title                                                       |
-| X-Axis label rotate        | Control the rotation angle of X-axis labels, useful for displaying more labels in dense data   |
-| Padding                    | Adjust the chart’s internal padding                                                            |
-| Split line                 | Control the visibility and style of grid lines                                                 |
-| Mark line                  | Add marker lines and set title, value, and color<br />![](https://static-docs.nocobase.com/202410091051511.png) |
+| 設定オプション       | 説明                                                                                   |
+| ------------------- | -------------------------------------------------------------------------------------- |
+| xField              | X軸のディメンションフィールド                                                           |
+| seriesField         | 分類のディメンションフィールド                                                           |
+| Size                | チャートのサイズを設定します。固定アスペクト比または固定高さで設定可能です。               |
+| Light mode theme    | ライトモードが有効なシステムでライトモードでプレビューするために選択します。               |
+| Dark mode theme     | ダークモードが有効なシステムでダークモードでプレビューするために選択します。               |
+| Show legend         | 凡例を表示するかどうかを制御します。                                                     |
+| Legend orient       | 凡例の方向を制御します。水平または垂直に設定可能です。<br />![](https://static-docs.nocobase.com/202410091050074.png) |
+| Legend position (left, bottom, right, top) | チャートに対する凡例の位置を制御します。                       |
+| Label type          | ラベルを表示するかどうか、および表示方法を制御します。マーカーポイントが表示されている場合にのみ表示されます。 |
+| Smooth curve        | 折れ線グラフのスムーズカーブを有効または無効にします。                                     |
+| Whether stack       | データ値の積み上げを有効または無効にします。                                               |
+| Symbol              | マーカーポイントを表示するかどうか、およびそのスタイルを制御します。                         |
+| X-Axis title        | X軸のタイトルの位置を制御します。                                                         |
+| Y-Axis title        | Y軸のタイトルの位置を制御します。                                                         |
+| X-Axis label rotate | X軸ラベルの回転角度を制御します。密集したデータでより多くのラベルを表示するのに便利です。     |
+| Padding             | チャートの内部パディングを調整します。                                                     |
+| Split line          | グリッド線の表示とスタイルを制御します。                                                   |
+| Mark line           | マーカーラインを追加し、タイトル、値、色を設定します。<br />![](https://static-docs.nocobase.com/202410091051511.png) |

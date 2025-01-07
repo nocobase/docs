@@ -1,138 +1,138 @@
 # PluginManager
 
-`PluginManager` 是 NocoBase 的插件管理器。
+`PluginManager` は NocoBase のプラグインマネージャーです。
 
-## 实例属性
+## インスタンス属性
 
 ### `repository`
 
-插件数据表的 `Repository` 实例。API 参考 [DataBase - Repository](../database/repository.md).
+プラグインデータシートの `Repository` インスタンス。API リファレンスは [DataBase - Repository](../database/repository.md) を参照してください。
 
-## 实例方法
+## インスタンスメソッド
 
 ### `addPreset()`
 
-添加系统内置插件，内置插件默认开启，不会出现在客户端插件管理器列表中。
+システム組み込みのプラグインを追加します。組み込みプラグインはデフォルトで有効化されており、クライアントのプラグインマネージャーリストには表示されません。
 
-#### 签名
+#### シグネチャ
 
 - `addPreset(plugin: string | typeof Plugin, options: any = {})`
 
-#### 详细信息
+#### 詳細
 
-| 参数名    | 类型                        | 描述             |
-| --------- | --------------------------- | ---------------- |
-| `plugin`  | `string` \| `typeof Plugin` | 插件名或插件实例 |
-| `options` | `any`                       | 插件配置项       |
+| パラメータ名 | タイプ                        | 説明             |
+| ------------ | ----------------------------- | ---------------- |
+| `plugin`     | `string` \| `typeof Plugin` | プラグイン名またはプラグインインスタンス |
+| `options`    | `any`                       | プラグイン設定項目       |
 
 ### `getPlugins()`
 
-获取当前应用的所有插件实例。
+現在のアプリケーションのすべてのプラグインインスタンスを取得します。
 
-#### 签名
+#### シグネチャ
 
 - `getPlugins(): Map<typeof Plugin, Plugin<any>>`
 
 ### `getAliases()`
 
-获取所有插件名字。
+すべてのプラグイン名を取得します。
 
-#### 签名
+#### シグネチャ
 
 - `getAliases(): IterableIterator<string>`
 
 ### `get()`
 
-获取某个插件。
+特定のプラグインを取得します。
 
-#### 签名
+#### シグネチャ
 
 - `get(name: string | typeof Plugin): Plugin<any>`
 
 ### `has()`
 
-检查某个插件是否存在。
+特定のプラグインが存在するかどうかを確認します。
 
-#### 签名
+#### シグネチャ
 
 - `has(name: string | typeof Plugin): boolean`
 
 ### `create()`
 
-创建插件，生成插件目录。
+プラグインを作成し、プラグインディレクトリを生成します。
 
-#### 签名
+#### シグネチャ
 
 - `create(pluginName: string, options?: { forceRecreate?: boolean }): Promise<void>`
 
-#### 详细信息
+#### 詳細
 
-| 参数名                  | 类型      | 描述                           | 默认值  |
-| ----------------------- | --------- | ------------------------------ | ------- |
-| `pluginName`            | `string`  | 插件名字                       | -       |
-| `options.forceRecreate` | `boolean` | 是否移除原有插件目录，重新生成 | `false` |
+| パラメータ名                  | タイプ      | 説明                           | デフォルト値  |
+| ----------------------------- | ----------- | ------------------------------ | ------------- |
+| `pluginName`                  | `string`  | プラグイン名                       | -             |
+| `options.forceRecreate`       | `boolean` | 既存のプラグインディレクトリを削除して再生成するかどうか | `false`       |
 
 ### `add()`
 
-添加或升级插件。
+プラグインを追加またはアップグレードします。
 
-#### 签名
+#### シグネチャ
 
 - `add(plugin?: any, options: any = {}, insert = false, isUpgrade = false): Promise<void>`
 
-#### 详细信息
+#### 詳細
 
-| 参数名      | 类型                        | 描述                   | 默认值  |
-| ----------- | --------------------------- | ---------------------- | ------- |
-| `plugin`    | `string` \| `typeof Plugin` | 插件名字或插件实例     | -       |
-| `options`   | `any`                       | 插件配置               | -       |
-| `insert`    | `boolean`                   | 是否添加插件数据表记录 | `false` |
-| `isUpgrade` | `boolean`                   | 是否为插件升级         | `false` |
+| パラメータ名      | タイプ                        | 説明                   | デフォルト値  |
+| ----------------- | ----------------------------- | ---------------------- | ------------- |
+| `plugin`          | `string` \| `typeof Plugin` | プラグイン名またはプラグインインスタンス     | -             |
+| `options`         | `any`                       | プラグイン設定               | -             |
+| `insert`          | `boolean`                   | プラグインデータシートレコードを追加するかどうか | `false`       |
+| `isUpgrade`       | `boolean`                   | プラグインのアップグレードかどうか         | `false`       |
 
 ### `load()`
 
-加载所有已启用插件。
+すべての有効化されたプラグインをロードします。
 
-#### 签名
+#### シグネチャ
 
 - `load(): Promise<void>`
 
 ### `install()`
 
-安装所有已启用且尚未安装的插件。
+有効化されているがまだインストールされていないすべてのプラグインをインストールします。
 
-#### 签名
+#### シグネチャ
 
 - `install(): Promise<void>`
 
 ### `enable()`
 
-启用一个或多个未启用的插件。
+一つまたは複数の無効化されているプラグインを有効化します。
 
-#### 签名
+#### シグネチャ
 
 - `enable(name: string | string[]): Promise<void>`
 
 ### `disable()`
 
-禁用一个或多个已启用的插件。
+一つまたは複数の有効化されているプラグインを無効化します。
 
-#### 签名
+#### シグネチャ
 
 - `disable(name: string | string[]): Promise<void>`
 
 ### `remove()`
 
-移除一个或多个插件。
+一つまたは複数のプラグインを削除します。
 
-#### 签名
+#### シグネチャ
 
 - `remove(name: string | string[], options?: { removeDir?: boolean; force?: boolean })`
 
-#### 详细信息
+#### 詳細
 
-| 参数名              | 类型                   | 描述                                                            | 默认值  |
-| ------------------- | ---------------------- | --------------------------------------------------------------- | ------- |
-| `name`              | `string` \| `string[]` | 插件名字                                                        | -       |
-| `options.removeDir` | `boolean`              | 是否移除插件目录                                                | `false` |
-| `options.force`     | `boolean`              | 是否直接删除数据库记录，跳过插件 `beforeRemove` / `afterRemove` | `false` |
+| パラメータ名              | タイプ                   | 説明                                                            | デフォルト値  |
+| ------------------------- | ------------------------ | --------------------------------------------------------------- | ------------- |
+| `name`                    | `string` \| `string[]` | プラグイン名                                                        | -             |
+| `options.removeDir`       | `boolean`              | プラグインディレクトリを削除するかどうか                                                | `false`       |
+| `options.force`           | `boolean`              | プラグインの `beforeRemove` / `afterRemove` をスキップして直接データベースレコードを削除するかどうか | `false`       |

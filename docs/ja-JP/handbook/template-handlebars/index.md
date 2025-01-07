@@ -1,29 +1,29 @@
-# Handlebars 模板
+# Handlebars テンプレート
 
-## 简介
+## イントロダクション
 
-Handlebars 是一个流行的模板引擎，它让我们能够使用简单的模板语法将数据动态嵌入 HTML 中。
+Handlebars は、シンプルなテンプレート構文を使用してデータをHTMLに動的に埋め込むことができる人気のあるテンプレートエンジンです。
 
-## 用法
+## 使用方法
 
-### 模板语法基础
+### テンプレート構文の基礎
 
-在 Handlebars 中，模板的基本语法包括：
+Handlebars では、テンプレートの基本構文は以下の通りです：
 
-- 插值表达式 `{{variable}}` 用于输出数据。
-- 条件表达式 `{{#if condition}}...{{/if}}` 用于逻辑判断。
-- 循环 `{{#each array}}...{{/each}}` 用于遍历数组。
+- データを出力するための補間式 `{{variable}}`。
+- 論理判断を行うための条件式 `{{#if condition}}...{{/if}}`。
+- 配列を反復処理するためのループ `{{#each array}}...{{/each}}`。
 
-例如，假设有以下数据：
+例えば、以下のデータがあるとします：
 
 ```javascript
 const context = {
-  title: "Handlebars 模板示例",
-  items: ["苹果", "香蕉", "橙子"]
+  title: "Handlebars テンプレート例",
+  items: ["りんご", "バナナ", "オレンジ"]
 };
 ```
 
-配合以下模板：
+以下のテンプレートと組み合わせると：
 
 ```handlebars
 <h1>{{title}}</h1>
@@ -34,106 +34,106 @@ const context = {
 </ul>
 ```
 
-生成的 HTML 将会是：
+生成されるHTMLは以下のようになります：
 
 ```html
-<h1>Handlebars 模板示例</h1>
+<h1>Handlebars テンプレート例</h1>
 <ul>
-  <li>苹果</li>
-  <li>香蕉</li>
-  <li>橙子</li>
+  <li>りんご</li>
+  <li>バナナ</li>
+  <li>オレンジ</li>
 </ul>
 ```
 
-更多内容参考
+詳細は以下を参照してください：
 - [Core](/api/handlebars-helpers/core)
 
-### 比较操作
+### 比較操作
 
-你可以使用比较操作符进行条件判断，支持的比较函数包括 `eq`（等于）、`ne`（不等于）、`gt`（大于）、`lt`（小于）等。
+比較演算子を使用して条件判断を行うことができます。サポートされている比較関数には `eq`（等しい）、`ne`（等しくない）、`gt`（より大きい）、`lt`（より小さい）などがあります。
 
 ```handlebars
 {{#if (eq 10 10)}}
-  <p>相等</p>
+  <p>等しい</p>
 {{else}}
-  <p>不相等</p>
+  <p>等しくない</p>
 {{/if}}
 ```
 
-也可以是逻辑运算符 `and`、`or`、`not` 等：
+また、論理演算子 `and`、`or`、`not` なども使用できます：
 
 ```handlebars
 {{#if (and true true)}}
-  <p>Both are true!</p>
+  <p>両方とも真です！</p>
 {{/if}}
 ```
 
 ```handlebars
 {{#if (or false true)}}
-  <p>One of them is true!</p>
+  <p>どちらかが真です！</p>
 {{/if}}
 ```
 
-更多内容参考
+詳細は以下を参照してください：
 - [Comparison](/api/handlebars-helpers/comparison)
 
-### 数学运算
+### 数学演算
 
-你可以在模板中执行简单的数学运算：
+テンプレート内で簡単な数学演算を実行できます：
 
 ```handlebars
-{{math 4 "+" 5}}  <!-- 输出: 9 -->
-{{math 10 "-" 3}} <!-- 输出: 7 -->
+{{math 4 "+" 5}}  <!-- 出力: 9 -->
+{{math 10 "-" 3}} <!-- 出力: 7 -->
 ```
 
-更多内容参考
+詳細は以下を参照してください：
 - [Math](/api/handlebars-helpers/math)
 
-### 字符串处理
+### 文字列処理
 
 ```handlebars
-<p>{{upper "hello world"}}</p>  <!-- 输出: HELLO WORLD -->
-<p>{{concat "Hello," " " "World!"}}</p>  <!-- 输出: Hello, World! -->
+<p>{{upper "hello world"}}</p>  <!-- 出力: HELLO WORLD -->
+<p>{{concat "Hello," " " "World!"}}</p>  <!-- 出力: Hello, World! -->
 ```
 
-更多内容参考
+詳細は以下を参照してください：
 - [String](/api/handlebars-helpers/string)
 
-### 日期处理
+### 日付処理
 
 ```handlebars
-<p>{{dateFormat "2024-09-25" "YYYY"}}</p>  <!-- 输出: 2024-09-25 -->
+<p>{{dateFormat "2024-09-25" "YYYY"}}</p>  <!-- 出力: 2024-09-25 -->
 ```
 
-更多内容参考
+詳細は以下を参照してください：
 - [Date](/api/handlebars-helpers/date)
 
-### 数组与对象操作
+### 配列とオブジェクト操作
 
 ```handlebars
-<p>第一个元素: {{first items}}</p>  <!-- 输出: 第一个元素: 苹果 -->
-<p>最后一个元素: {{last items}}</p>  <!-- 输出: 最后一个元素: 橙子 -->
+<p>最初の要素: {{first items}}</p>  <!-- 出力: 最初の要素: りんご -->
+<p>最後の要素: {{last items}}</p>  <!-- 出力: 最後の要素: オレンジ -->
 ```
 
-更多内容参考
+詳細は以下を参照してください：
 
 - [Array](/api/handlebars-helpers/array)
 - [Object](/api/handlebars-helpers/object)
 
-### 更多 Helpers
+### その他のHelpers
 
-| Category       | Description                          |
+| カテゴリ       | 説明                          |
 |------------|-------------------------------|
-| [Core](/api/handlebars-helpers/core)        | Handlebars 内置的方法        |
-| [Array](/api/handlebars-helpers/array)      | 处理数组相关操作和方法        |
-| [Comparison](/api/handlebars-helpers/comparison) | 比较操作符和相关方法          |
-| [Date](/api/handlebars-helpers/date)       | 与日期和时间处理相关的操作和方法 |
-| [HTML](/api/handlebars-helpers/html)       | 与 HTML 文档和元素操作相关的内容 |
-| [I18n](/api/handlebars-helpers/i18n)       | 国际化支持和多语言处理        |
-| [Math](/api/handlebars-helpers/math)       | 数学函数和计算相关的操作      |
-| [Number](/api/handlebars-helpers/number)   | 数字处理和格式化相关的内容    |
-| [Object](/api/handlebars-helpers/object)   | 对象操作和属性相关的方法      |
-| [Path](/api/handlebars-helpers/path)       | 路径操作和文件系统相关的内容  |
-| [Regex](/api/handlebars-helpers/regex)     | 正则表达式及其使用            |
-| [String](/api/handlebars-helpers/string)   | 字符串处理和操作相关的方法    |
-| [URL](/api/handlebars-helpers/url)         | URL解析和构建相关的内容       |
+| [Core](/api/handlebars-helpers/core)        | Handlebars の組み込みメソッド        |
+| [Array](/api/handlebars-helpers/array)      | 配列関連の操作とメソッド        |
+| [Comparison](/api/handlebars-helpers/comparison) | 比較演算子と関連メソッド          |
+| [Date](/api/handlebars-helpers/date)       | 日付と時刻処理関連の操作とメソッド |
+| [HTML](/api/handlebars-helpers/html)       | HTMLドキュメントと要素操作関連の内容 |
+| [I18n](/api/handlebars-helpers/i18n)       | 国際化サポートと多言語処理        |
+| [Math](/api/handlebars-helpers/math)       | 数学関数と計算関連の操作      |
+| [Number](/api/handlebars-helpers/number)   | 数値処理とフォーマット関連の内容    |
+| [Object](/api/handlebars-helpers/object)   | オブジェクト操作とプロパティ関連のメソッド      |
+| [Path](/api/handlebars-helpers/path)       | パス操作とファイルシステム関連の内容  |
+| [Regex](/api/handlebars-helpers/regex)     | 正規表現とその使用            |
+| [String](/api/handlebars-helpers/string)   | 文字列処理と操作関連のメソッド    |
+| [URL](/api/handlebars-helpers/url)         | URL解析と構築関連の内容       |

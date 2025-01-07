@@ -1,33 +1,33 @@
-# Scatter Chart
+# 散布図
 
-## Data Configuration
+## データ設定
 
-### 1 or Multiple Metrics, 1 Dimension
+### 1つまたは複数のメトリクス、1つのディメンション
 
-![1 or Multiple Metrics, 1 Dimension](https://static-docs.nocobase.com/202410091202766.png)
+![1つまたは複数のメトリクス、1つのディメンション](https://static-docs.nocobase.com/202410091202766.png)
 
-### 1 Metric, 1 Axis Dimension, One Category Dimension
+### 1つのメトリクス、1つの軸ディメンション、1つのカテゴリディメンション
 
-Configure one metric and two dimensions. One of the dimensions will serve as the X-axis field (X field), while the other will act as the series field.
+1つのメトリクスと2つのディメンションを設定します。1つのディメンションはX軸フィールド（Xフィールド）として機能し、もう1つはシリーズフィールドとして機能します。
 
-![1 Metric, 1 Axis Dimension, One Category Dimension](https://static-docs.nocobase.com/202410091202268.png)
+![1つのメトリクス、1つの軸ディメンション、1つのカテゴリディメンション](https://static-docs.nocobase.com/202410091202268.png)
 
-## Configuration Options
+## 設定オプション
 
-| Configuration Option       | Description                                                 |
-| -------------------------- | ----------------------------------------------------------- |
-| xField                     | Dimension field for the X-axis                               |
-| seriesField                | Dimension field for categorization                           |
-| Size                       | Set the chart size, either fixed aspect ratio or fixed height |
-| Light mode theme           | Preview available when the system is in light mode           |
-| Dark mode theme            | Preview available when the system is in dark mode            |
-| Show legend                | Toggle the visibility of the legend                          |
-| Legend orient              | Control the orientation of the legend, either horizontal or vertical |
-| Legend position (left, bottom, right, top) | Control the relative position of the legend                    |
-| Label type                 | Control whether labels are shown and the type of labels      |
-| X-Axis title               | Control the display position of the X-axis title             |
-| Y-Axis title               | Control the display position of the Y-axis title             |
-| X-Axis label rotate        | Adjust the rotation angle of the X-axis labels; useful when there are dense labels to display more effectively |
-| Padding                    | Adjust the internal padding of the chart                    |
-| Split line                 | Control whether the grid lines are displayed and their style           |
-| Mark line                  | Add reference lines, set their title, value, and color      |
+| 設定オプション       | 説明                                                 |
+| -------------------- | ---------------------------------------------------- |
+| xField               | X軸のディメンションフィールド                         |
+| seriesField          | カテゴリ分類のディメンションフィールド                 |
+| Size                 | チャートのサイズを設定、固定アスペクト比または固定高さ   |
+| Light mode theme     | システムがライトモードの時にプレビュー可能             |
+| Dark mode theme      | システムがダークモードの時にプレビュー可能             |
+| Show legend          | 凡例の表示/非表示を切り替え                           |
+| Legend orient        | 凡例の向きを制御、水平または垂直                       |
+| Legend position (left, bottom, right, top) | 凡例の相対位置を制御                     |
+| Label type           | ラベルの表示とラベルの種類を制御                       |
+| X-Axis title         | X軸タイトルの表示位置を制御                           |
+| Y-Axis title         | Y軸タイトルの表示位置を制御                           |
+| X-Axis label rotate  | X軸ラベルの回転角度を調整、密集したラベルを効果的に表示する場合に有用 |
+| Padding              | チャートの内部パディングを調整                         |
+| Split line           | グリッド線の表示とそのスタイルを制御                   |
+| Mark line            | 参照線を追加し、そのタイトル、値、色を設定             |

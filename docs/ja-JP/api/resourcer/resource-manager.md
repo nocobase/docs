@@ -1,14 +1,14 @@
 # ResourceManager
 
-## 概览
+## 概要
 
-`ResourceManager` 是 NocoBase 的资源管理模块，用于定义资源和给资源注册操作方法。
+`ResourceManager` は NocoBase のリソース管理モジュールで、リソースを定義し、リソースに操作メソッドを登録するために使用されます。
 
-## 类方法
+## クラスメソッド
 
 ### `define()`
 
-定义资源。
+リソースを定義します。
 
 ```ts
 app.resourceManager.define({
@@ -22,11 +22,11 @@ app.resourceManager.define({
 });
 ```
 
-#### 签名
+#### シグネチャ
 
 - `define(options: ResourceOptions): Resource`
 
-#### 类型
+#### タイプ
 
 ```ts
 export interface ResourceOptions {
@@ -72,27 +72,27 @@ export interface ActionOptions {
 }
 ```
 
-#### 详细信息
+#### 詳細
 
 ##### ResourceOptions
 
-| 属性          | 类型                                           | 描述             | 默认值   |
-| ------------- | ---------------------------------------------- | ---------------- | -------- |
-| `name`        | `string`                                       | 资源名称         | -        |
-| `type`        | `ResourceType`                                 | 资源类型         | `single` |
-| `actions`     | [`{ [key: string]: ActionType }`](#actiontype) | 操作             | -        |
-| `only`        | `ActionName[]`                                 | `actions` 白名单 | -        |
-| `except`      | `ActionName[]`                                 | `actions` 黑名单 | -        |
-| `middleware`  | `MiddlewareType`                               | 中间件           | -        |
-| `middlewares` | `MiddlewareType`                               | 中间件           | -        |
+| 属性          | 型                                           | 説明             | デフォルト値 |
+| ------------- | -------------------------------------------- | ---------------- | ------------ |
+| `name`        | `string`                                     | リソース名       | -            |
+| `type`        | `ResourceType`                               | リソースタイプ   | `single`     |
+| `actions`     | [`{ [key: string]: ActionType }`](#actiontype) | 操作             | -            |
+| `only`        | `ActionName[]`                               | `actions` ホワイトリスト | -            |
+| `except`      | `ActionName[]`                               | `actions` ブラックリスト | -            |
+| `middleware`  | `MiddlewareType`                             | ミドルウェア     | -            |
+| `middlewares` | `MiddlewareType`                             | ミドルウェア     | -            |
 
 ##### ActionType
 
-操作方法有两种类型：
+操作メソッドには2つのタイプがあります：
 
 - `HandlerType`
 
-这种类型是通过中间件的方式直接定义操作方法。示例：
+このタイプはミドルウェアの方法で直接操作メソッドを定義します。例：
 
 ```ts
 app.resourceManager.define({
@@ -108,7 +108,7 @@ app.resourceManager.define({
 
 - `ActionOptions`
 
-这种类型主要用于覆盖某个已有操作的请求参数。示例：
+このタイプは主に既存の操作のリクエストパラメータを上書きするために使用されます。例：
 
 ```ts
 app.resourceManager.define({
@@ -123,33 +123,33 @@ app.resourceManager.define({
 });
 ```
 
-| 参数名          | 类型             | 描述                                                     |
-| --------------- | ---------------- | -------------------------------------------------------- |
-| `values`        | `any`            | 操作请求默认值                                           |
-| `filter`        | `Filter`         | 过滤参数，参考 [Filter Operators](../database/operators) |
-| `fields`        | `string[]`       | 要获取的字段                                             |
-| `except`        | `string[]`       | 要排除的字段                                             |
-| `appends`       | `string[]`       | 要附加的关系字段                                         |
-| `whitelist`     | `string[]`       | 字段白名单                                               |
-| `blacklist`     | `string[]`       | 字段黑名单                                               |
-| `sort`          | `string[]`       | 排序参数                                                 |
-| `page`          | `number`         | 当前页                                                   |
-| `pageSize`      | `number`         | 每页数据条数                                             |
-| `maxPageSize`   | `number`         | 最大数据条数                                             |
-| `middleware`    | `MiddlewareType` | 中间件                                                   |
-| `middlewares`   | `MiddlewareType` | 中间件                                                   |
-| `handler`       | `HandlerType`    | 当前操作执行的方法                                       |
-| `[key: string]` | `any`            | 其他扩展配置                                             |
+| パラメータ名      | 型             | 説明                                                     |
+| ----------------- | -------------- | -------------------------------------------------------- |
+| `values`          | `any`          | 操作リクエストのデフォルト値                             |
+| `filter`          | `Filter`       | フィルタパラメータ、[フィルタオペレータ](../database/operators)を参照 |
+| `fields`          | `string[]`     | 取得するフィールド                                       |
+| `except`          | `string[]`     | 除外するフィールド                                       |
+| `appends`         | `string[]`     | 追加するリレーションフィールド                           |
+| `whitelist`       | `string[]`     | フィールドホワイトリスト                                 |
+| `blacklist`       | `string[]`     | フィールドブラックリスト                                 |
+| `sort`            | `string[]`     | ソートパラメータ                                         |
+| `page`            | `number`       | 現在のページ                                             |
+| `pageSize`        | `number`       | ページあたりのデータ数                                   |
+| `maxPageSize`     | `number`       | 最大データ数                                             |
+| `middleware`      | `MiddlewareType` | ミドルウェア                                             |
+| `middlewares`     | `MiddlewareType` | ミドルウェア                                             |
+| `handler`         | `HandlerType`  | 現在の操作を実行するメソッド                             |
+| `[key: string]`   | `any`          | その他の拡張設定                                         |
 
 ### `registerActionHandlers()`
 
-注册操作方法。
+操作メソッドを登録します。
 
-#### 签名
+#### シグネチャ
 
 - `registerActionHandler(name: ActionName, handler: HandlerType)`
 
-#### 类型
+#### タイプ
 
 ```ts
 export type DefaultActionType =
@@ -169,30 +169,30 @@ export type HandlerType = (
 ) => any;
 ```
 
-#### 详细信息
+#### 詳細
 
-| 参数名    | 类型          | 描述                                                                                                          |
-| --------- | ------------- | ------------------------------------------------------------------------------------------------------------- |
-| `name`    | `ActionName`  | 操作名称。<br />1. 普通字符串形式，给所有资源注册操作。<br /> 2. `<resource>:<action>` 形式给特定资源注册操作 |
-| `handler` | `HandlerType` | 操作中间件                                                                                                    |
+| パラメータ名 | 型          | 説明                                                                                                          |
+| ------------ | ----------- | ------------------------------------------------------------------------------------------------------------- |
+| `name`       | `ActionName` | 操作名。<br />1. 通常の文字列形式で、すべてのリソースに操作を登録します。<br /> 2. `<resource>:<action>` 形式で特定のリソースに操作を登録します |
+| `handler`    | `HandlerType` | 操作ミドルウェア                                                                                              |
 
 ### `isDefined()`
 
-检查资源是否定义过。
+リソースが定義されているかどうかを確認します。
 
-#### 签名
+#### シグネチャ
 
 - `isDefined(name: string)`
 
-#### 详细信息
+#### 詳細
 
-| 参数名 | 类型     | 描述     |
-| ------ | -------- | -------- |
-| `name` | `string` | 资源名称 |
+| パラメータ名 | 型     | 説明     |
+| ------------ | ------ | -------- |
+| `name`       | `string` | リソース名 |
 
 ### `import()`
 
-载入指定目录下的资源配置。
+指定されたディレクトリのリソース設定を読み込みます。
 
 ```ts
 // ./resources/demo.ts
@@ -212,11 +212,11 @@ await resourceManager.import({
 });
 ```
 
-#### 签名
+#### シグネチャ
 
 - `import(options: ImportOptions): Promise<Map<string, Resource>>`
 
-#### 类型
+#### タイプ
 
 ```ts
 export interface ImportOptions {
@@ -225,16 +225,16 @@ export interface ImportOptions {
 }
 ```
 
-#### 详细信息
+#### 詳細
 
-| 属性         | 类型       | 描述             | 默认值                 |
-| ------------ | ---------- | ---------------- | ---------------------- |
-| `directory`  | `string`   | 配置目录路径     | -                      |
-| `extensions` | `string[]` | 可选，文件扩展名 | `['js', 'ts', 'json']` |
+| 属性         | 型       | 説明             | デフォルト値                 |
+| ------------ | -------- | ---------------- | ---------------------------- |
+| `directory`  | `string` | 設定ディレクトリのパス | -                            |
+| `extensions` | `string[]` | オプション、ファイル拡張子 | `['js', 'ts', 'json']`       |
 
 ### `use()`
 
-添加 `ResourceMangaer` 中间件。
+`ResourceMangaer` ミドルウェアを追加します。
 
 ```ts
 resourceManager.use(async () => {
@@ -245,14 +245,14 @@ resourceManager.use(async () => {
 });
 ```
 
-#### 签名
+#### シグネチャ
 
 - `use(middlewares: HandlerType | HandlerType[], options: ToposortOptions = {})`
 
-#### 详细信息
+#### 詳細
 
-参考[中间件](../../development/server/middleware)
+[ミドルウェア](../../development/server/middleware)を参照してください。
 
 ### `middleware()`
 
-`ResourceManager` 中间件，解析请求参数 (参考 [ctx.action](./action.md))，执行操作方法。
+`ResourceManager` ミドルウェア、リクエストパラメータを解析し（[ctx.action](./action.md)を参照）、操作メソッドを実行します。

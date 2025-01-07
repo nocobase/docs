@@ -1,12 +1,12 @@
-# Migration
+# マイグレーション
 
-`Migration` 是 NocoBase 的升级脚本类，通常用于同步数据库相关变更。
+`Migration` は NocoBase のアップグレードスクリプトクラスで、通常データベース関連の変更を同期するために使用されます。
 
-## 实例属性
+## インスタンスプロパティ
 
 ### `appVersion`
 
-当前应用版本号。符合版本号才会执行脚本。
+現在のアプリケーションバージョン番号。このバージョン番号に一致する場合にのみスクリプトが実行されます。
 
 ```ts
 export default class extends Migration {
@@ -17,7 +17,7 @@ export default class extends Migration {
 
 ### `on`
 
-升级脚本执行的触发时机，值为 `Application` 的生命周期事件，默认 `afterLoad`。参考 [Application - 事件](./application.md#事件)。
+アップグレードスクリプトが実行されるトリガーとなるタイミングで、値は `Application` のライフサイクルイベントです。デフォルトは `afterLoad` です。詳細は [Application - イベント](./application.md#イベント) を参照してください。
 
 ```ts
 export default class extends Migration {
@@ -28,34 +28,34 @@ export default class extends Migration {
 
 ### `app`
 
-当前应用的 `Application` 实例。参考 [Application](./application.md).
+現在のアプリケーションの `Application` インスタンス。詳細は [Application](./application.md) を参照してください。
 
 ### `pm`
 
-当前应用的 `PluginManager` 实例。参考 [PluginManager](./plugin-manager.md).
+現在のアプリケーションの `PluginManager` インスタンス。詳細は [PluginManager](./plugin-manager.md) を参照してください。
 
 ### `plugin`
 
-当前插件的 `Plugin` 实例。参考 [Plugin](./plugin.md).
+現在のプラグインの `Plugin` インスタンス。詳細は [Plugin](./plugin.md) を参照してください。
 
 ### `db`
 
-当前应用的 `DataBase` 实例。参考 [DataBase](../database/index.md).
+現在のアプリケーションの `DataBase` インスタンス。詳細は [DataBase](../database/index.md) を参照してください。
 
 ### `sequelize`
 
-`Sequelize` 实例。参考 <a href="https://sequelize.org/" target="_blank">Sequelize</a>.
+`Sequelize` インスタンス。詳細は <a href="https://sequelize.org/" target="_blank">Sequelize</a> を参照してください。
 
 ### `queryInterface`
 
-参考 <a href="https://sequelize.org/docs/v6/other-topics/query-interface/" target="_blank">Sequelize - Query Interface</a>.
+詳細は <a href="https://sequelize.org/docs/v6/other-topics/query-interface/" target="_blank">Sequelize - Query Interface</a> を参照してください。
 
-### 实例方法
+### インスタンスメソッド
 
 ### `up()`
 
-升级执行方法。
+アップグレード実行メソッド。
 
 ### `down()`
 
-降级执行方法。
+ダウングレード実行メソッド。

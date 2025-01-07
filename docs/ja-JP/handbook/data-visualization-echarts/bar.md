@@ -1,39 +1,39 @@
-# Bar Chart
+# バーチャート
 
-## Data Configuration
+## データ設定
 
-### 1 or more measures, 1 dimension
+### 1つ以上のメジャー、1つのディメンション
 
-![1 or more measures, 1 dimension](https://static-docs.nocobase.com/202410091114926.png)
+![1つ以上のメジャー、1つのディメンション](https://static-docs.nocobase.com/202410091114926.png)
 
-### 1 measure, 1 axis dimension, one category dimension
+### 1つのメジャー、1つの軸ディメンション、1つのカテゴリディメンション
 
-Configure 1 measure and 2 dimensions. 1 dimension is used as the Y-axis field, and the other as the series field.
+1つのメジャーと2つのディメンションを設定します。1つのディメンションはY軸フィールドとして使用され、もう1つはシリーズフィールドとして使用されます。
 
-![1 measure, 1 axis dimension, one category dimension](https://static-docs.nocobase.com/202410091117000.png)
+![1つのメジャー、1つの軸ディメンション、1つのカテゴリディメンション](https://static-docs.nocobase.com/202410091117000.png)
 
-## Configuration Options
+## 設定オプション
 
-| Option                        | Description                                                                                                 |
+| オプション                        | 説明                                                                                                 |
 | ----------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| yField                        | The dimension field for the Y-axis                                                                           |
-| seriesField                   | The dimension field for categorization                                                                       |
-| Size                          | Set the size of the chart, either with a fixed aspect ratio or a fixed height                                |
-| Light mode theme              | Choose this option to preview the chart when the system is in light mode                                     |
-| Dark mode theme               | Choose this option to preview the chart when the system is in dark mode                                      |
-| Show legend                   | Control whether the legend is displayed                                                                      |
-| Legend orient                 | Control the direction of the legend, either horizontal or vertical                                           |
-| Legend position (left, bottom, right, top) | Control the relative position of the legend                                                       |
-| Label type                    | Control whether the labels are displayed and the type of labels shown                                        |
-| Label position                | Control the position of the labels, such as top, inside, or inside top                                       |
-| Stack                         | Control whether the bars are stacked: not stacked, stacked, or percentage stacked<br />![](https://static-docs.nocobase.com/202410091108049.png) |
-| Bar width (min, max)          | Control the width of the bars, which can be a fixed value or percentage, and can even be negative            |
-| Bar gap                       | Spacing between bars, as a percentage of the bar width                                                       |
-| Bar category gap              | Spacing between different categories, as a percentage of the bar width                                       |
-| Color by                      | Control whether the bar colors are distinguished by category or data                                         |
-| Colors                        | Precisely control the color for each category                                                                |
-| X-Axis title                  | Control the position of the X-axis title                                                                     |
-| Y-Axis title                  | Control the position of the Y-axis title                                                                     |
-| Y-Axis label rotate           | Control the rotation angle of the Y-axis labels, useful for displaying more labels when space is tight        |
-| Padding                       | Adjust the padding inside the chart                                                                          |
-| Split line                    | Control whether the grid lines are displayed and their style                                                 |
+| yField                        | Y軸のディメンションフィールド                                                                           |
+| seriesField                   | カテゴリ化のためのディメンションフィールド                                                                       |
+| Size                          | チャートのサイズを設定します。固定アスペクト比または固定高さのいずれかで設定します                                |
+| Light mode theme              | システムがライトモードのときにチャートをプレビューするためにこのオプションを選択します                                     |
+| Dark mode theme               | システムがダークモードのときにチャートをプレビューするためにこのオプションを選択します                                      |
+| Show legend                   | 凡例を表示するかどうかを制御します                                                                      |
+| Legend orient                 | 凡例の方向を制御します。水平または垂直のいずれかで設定します                                           |
+| Legend position (left, bottom, right, top) | 凡例の相対的な位置を制御します                                                       |
+| Label type                    | ラベルを表示するかどうかと表示するラベルのタイプを制御します                                        |
+| Label position                | ラベルの位置を制御します。例えば、上、内部、または内部上部など                                       |
+| Stack                         | バーを積み重ねるかどうかを制御します。積み重ねない、積み重ねる、またはパーセント積み重ねる<br />![](https://static-docs.nocobase.com/202410091108049.png) |
+| Bar width (min, max)          | バーの幅を制御します。固定値またはパーセンテージで設定でき、負の値も設定可能です            |
+| Bar gap                       | バー間の間隔を設定します。バーの幅のパーセンテージで設定します                                                       |
+| Bar category gap              | 異なるカテゴリ間の間隔を設定します。バーの幅のパーセンテージで設定します                                       |
+| Color by                      | バーの色をカテゴリまたはデータで区別するかどうかを制御します                                         |
+| Colors                        | 各カテゴリの色を正確に制御します                                                                |
+| X-Axis title                  | X軸のタイトルの位置を制御します                                                                     |
+| Y-Axis title                  | Y軸のタイトルの位置を制御します                                                                     |
+| Y-Axis label rotate           | Y軸ラベルの回転角度を制御します。スペースが限られている場合に多くのラベルを表示するのに役立ちます        |
+| Padding                       | チャート内のパディングを調整します                                                                          |
+| Split line                    | グリッドラインを表示するかどうかとそのスタイルを制御します                                                 |
