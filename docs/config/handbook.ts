@@ -1741,6 +1741,12 @@ export default [
         link: '/handbook/multi-app-manager',
         // children: ['/plugins/api-doc'],
       },
+      {
+        title: 'Routes',
+        'title.zh-CN': '路由',
+        'title.ja-JP': 'ルート',
+        link: '/handbook/routes',
+      },
     ],
   },
   {
