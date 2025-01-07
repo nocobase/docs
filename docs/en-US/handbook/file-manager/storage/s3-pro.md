@@ -4,7 +4,7 @@
 
 ## Introduction
 
-Building on the file management plugin, this version adds support for file storage types compatible with the S3 protocol. Any object storage service supporting the S3 protocol can be seamlessly integrated, such as Amazon S3, Alibaba Cloud OSS, Tencent Cloud COS, MinIO, Cloudflare R2, etc., enhancing the compatibility and flexibility of storage services.
+Building on the file management plugin, this plugin adds support for file storage types compatible with the S3 protocol. Any object storage service supporting the S3 protocol can be seamlessly integrated, such as Amazon S3, Alibaba Cloud OSS, Tencent Cloud COS, MinIO, Cloudflare R2, etc., enhancing the compatibility and flexibility of storage services.
 
 ## Features
 
@@ -193,23 +193,63 @@ For public file access, configure as follows:
 
 ![Endpoint Configuration](https://static-docs.nocobase.com/file-storage-s3-pro-1735355975715.png)
 
+
+### MinIO
+
+#### Bucket Creation
+
+1. Click on the **Buckets** menu on the left -> Click **Create Bucket** to open the creation page.
+
+2. Enter the Bucket name, then click the **Save** button.
+
+![Bucket Creation](https://static-docs.nocobase.com/20250106111325326.png)
+
+#### AccessKey and SecretAccessKey Retrieval
+
+1. Navigate to **Access Keys** -> Click the **Create access key** button to open the creation page.
+
+![Create Access Key](https://static-docs.nocobase.com/20250106111922957.png)
+
+2. Click the **Save** button.
+
+![Save Access Key](https://static-docs.nocobase.com/20250106111850639.png)
+
+3. Save the **Access Key** and **Secret Key** from the popup window for future configuration.
+
+![Access Key Details](https://static-docs.nocobase.com/20250106112831483.png)
+
+#### Parameter Configuration
+
+1. Go to the **File Manager** page in NocoBase.
+
+![File Manager Page](https://static-docs.nocobase.com/20250106112404523.png)
+
+2. Click the **Add new** button and select **S3 Pro**.
+
+![Add New Storage](https://static-docs.nocobase.com/20250106112454091.png)
+
+3. Configure the form as follows:
+   - **AccessKey ID** and **AccessKey Secret**: Use the values saved from the previous step.
+   - **Region**: For private deployments of MinIO, the concept of a region does not apply. Set it to `"auto"`.
+   - **Endpoint**: Enter the domain name or IP address of your deployed service.
+   - Set **Force path style** to **Path-Style**. The final file URL will be in the format:  
+     `https://{Endpoint}/{bucket-name}/{fileKey}`.
+
+Here is an example of the final form:
+
+![Form Example](https://static-docs.nocobase.com/20250106113609538.png)
+
+![Configuration Example](https://static-docs.nocobase.com/20250106113621611.png)
+
+
 ### Tencent COS
 
 Refer to the configurations above. The process is largely similar.
 
-### MinIO
-
-For MinIO, note the following:
-
-1. MinIO deployments lack the `Region` concept. Set this to "auto."
-
-2. Use the deployment's domain or IP address for the `Endpoint`.
-
-3. Ensure `Force path style` is set to `Path-Style`, resulting in file URLs like `https://serverAddress/bucket-name/fileKey`.
 
 ### Cloudflare R2
 
-Refer to the configurations above.
+Refer to the configurations above. The process is largely similar.
 
 ## User Guide
 

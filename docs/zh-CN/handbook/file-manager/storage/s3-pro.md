@@ -30,7 +30,7 @@
 
 ![](https://static-docs.nocobase.com/20250102160704938.png)
 
-4. 在弹出浮层后，您将看到需要填写的表单内容较多。可以参考后续文档，获取对应文件服务的相关参数信息，并将其正确填写到表单中。
+4. 在弹出浮层后，您将看到需要填写表单，内容较多可以参考后续文档，获取对应文件服务相关参数信息，并将其正确填写到表单中。
 
 ![](https://static-docs.nocobase.com/20250102160811093.png)
 
@@ -47,7 +47,7 @@
 
 ![](https://static-docs.nocobase.com/file-storage-s3-pro-1735355969452.png)
 
-2. 填写 Bucket Name（存储桶名称），其他字段可保持默认设置，向下滚动至页面底部，点击 **"**Create**"** 按钮完成创建。
+2. 填写 Bucket Name（存储桶名称），其他字段可保持默认设置，向下滚动至页面底部，点击 "Create" 按钮完成创建。
 
 ![](https://static-docs.nocobase.com/file-storage-s3-pro-1735355969622.png)
 
@@ -116,21 +116,22 @@
 
 ![](https://static-docs.nocobase.com/file-storage-s3-pro-1735355971345.png)
 
-#### 公开访问
+#### 公开访问（可选）
 
 此为非必要配置，当你需要将上传文件完全公开时，进行配置
 
-1. 进入Permissions 面板，向下滚动到Object Ownership，点击编辑，开启 ACLs
+1. 进入Permissions 面板，向下滚动到 "Object Ownership"，点击编辑，开启 ACLs
 
 ![](https://static-docs.nocobase.com/file-storage-s3-pro-1735355971508.png)
 
-2. 滚动到Block public access，点击编辑，设置成允许ACLs控制
+2. 滚动到 "Block public access"，点击编辑，设置成允许ACLs控制
 
 ![](https://static-docs.nocobase.com/file-storage-s3-pro-1735355971668.png)
 
-3. 在NocoBase中勾选 Public access
+3. 在NocoBase中勾选 "Public access"
 
 ![](https://static-docs.nocobase.com/file-storage-s3-pro-1735355971823.png)
+
 
 ### 阿里云OSS
 
@@ -176,13 +177,11 @@
 
 ![](https://static-docs.nocobase.com/file-storage-s3-pro-1735355973884.png)
 
-2. 此处为了方便演示，使用主账户进行创建AccessKey，正式使用场景建议使 RAM 去创建，可以参考 https://help.aliyun.com/zh/ram/user-guide/create-an-accesskey-pair-1?spm=5176.28366559.0.0.1b5c3c2fUI9Ql8#section-rjh-18m-7kp
-    
-3. 点击 "Create AccessKey" 按钮 
+2. 点击 "Create AccessKey" 按钮, 此处为了方便演示，使用主账户进行创建AccessKey，正式使用场景建议使 RAM 去创建，可以参考 https://help.aliyun.com/zh/ram/user-guide/create-an-accesskey-pair-1?spm=5176.28366559.0.0.1b5c3c2fUI9Ql8#section-rjh-18m-7kp
 
 ![](https://static-docs.nocobase.com/file-storage-s3-pro-1735355974171.png)
 
-4. 进行账户验证
+3. 进行账户验证
 
 ![](https://static-docs.nocobase.com/file-storage-s3-pro-1735355974509.png)
 
@@ -191,7 +190,7 @@
 ![](https://static-docs.nocobase.com/file-storage-s3-pro-1735355974781.png)
 
 
-#### 参数获取与配置（待完善，等插件测试完成后截图）
+#### 参数获取与配置
 
 1. AccessKey ID 和 AccessKey Secret 为上一操作中获取到的值
     
@@ -203,30 +202,66 @@
 
 ![](https://static-docs.nocobase.com/file-storage-s3-pro-1735355975437.png)
 
-4. 获取到 endpoint 地址，填入NocoBase的时候需要添加 https:// 前缀
+4. 获取到 endpoint 地址，后续填入时需添加 "https://" 前缀
 
 ![](https://static-docs.nocobase.com/file-storage-s3-pro-1735355975715.png)
 
 
-### 腾讯COS
-
-可以参考上述的文件服务进行配置，主要逻辑都相似
-
-
 ### MinIO
 
-可以参考上述的文件服务进行配置，需要注意的点如下
+#### Bucket 创建
 
-1. 私有部署的MinIO没有Region概念，可以配置成 "auto"
-    
-2. Endpoint 填写部署服务的域名或者ip地址
-    
-3. 需将Force path style设置为 Path-Style，最终文件地址为https://serverAddress/bucket-name/fileKey
-    
+1. 点击左侧 Buckets 菜单 -> 点击 Create Bucket，进入创建页面
+
+2. 填写Bucket名称后，点击保存按钮
+
+![](https://static-docs.nocobase.com/20250106111325326.png)
+
+#### AccessKey、SecretAccessKey 获取
+
+1. 进入 Access Keys -> 点击 Create access key 按钮，进入创建页面
+
+![](https://static-docs.nocobase.com/20250106111922957.png)
+
+2. 点击保存按钮
+
+![](https://static-docs.nocobase.com/20250106111850639.png)
+
+1. 保存弹窗内的 Access Key 和 Secret Key，后续配置使用
+
+![](https://static-docs.nocobase.com/20250106112831483.png)
+
+#### 参数配置
+
+1. 进入到 NocoBase -> File manager 页面
+
+![](https://static-docs.nocobase.com/20250106112404523.png)
+
+2. 点击 Add new 按钮，选择 S3 Pro
+
+![](https://static-docs.nocobase.com/20250106112454091.png)
+
+3. 填写表单
+   - **AccessKey ID** 和 **AccessKey Secret** 为上一步保存的文本
+   - **Region**：私有部署的MinIO没有Region概念，可以配置成 "auto"
+   - **Endpoint**：填写部署的服务域名或者ip地址
+   - 需将Force path style设置为 Path-Style，最终文件地址为https://{Endpoint}/{bucket-name}/{fileKey}，
+
+最终表单示例如下
+
+![](https://static-docs.nocobase.com/20250106113609538.png)
+
+![](https://static-docs.nocobase.com/20250106113621611.png)
+
+
+### 腾讯COS
+
+可以参考上述的文件服务进行配置，逻辑相似
+
 
 ### Cloudflare R2
 
-可以参考上述的文件服务进行配置
+可以参考上述的文件服务进行配置，逻辑相似
 
 
 ## 用户使用
