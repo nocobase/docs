@@ -2692,7 +2692,7 @@ export default [
       },
       {
         title: 'Backup manager',
-        'title.zh-CN': '备份管理器',
+        'title.zh-CN': '备份管理',
         'title.ja-JP': 'バックアップマネージャー',
         // subTitle: '@nocobase/plugin-backups',
         link: '/handbook/backups',

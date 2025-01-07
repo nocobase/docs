@@ -1,4 +1,4 @@
-# 备份管理器
+# 备份管理
 
 <PluginInfo licenseBundled="true" name="backups"></PluginInfo>
 

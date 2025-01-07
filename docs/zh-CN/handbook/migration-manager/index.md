@@ -8,7 +8,7 @@
 
 ## 安装
 
-<embed src="../backups/install.md"></embed>
+依赖 [备份管理](/handbook/backups) 插件，请确保已经安装并激活。更多详情参考 [商业插件的安装与升级](/welcome/getting-started/plugin)。
 
 ## 流程与原理
 
@@ -40,7 +40,17 @@
 
 ### 配置界面
 
+配置迁移规则
+
 ![20250102205450](https://static-docs.nocobase.com/20250102205450.png)
+
+启用独立规则
+
+![20250107105005](https://static-docs.nocobase.com/20250107105005.png)
+
+选择独立规则以及按当前独立规则处理的数据表
+
+![20250107104644](https://static-docs.nocobase.com/20250107104644.png)
 
 ## 迁移文件
 
@@ -68,6 +78,6 @@
 
 ## 回滚
 
-如果迁移失败或结果不符合预期，可通过备份功能进行回滚恢复。
+执行迁移前，会自动对当前应用进行备份。如果迁移失败或结果不符合预期，可通过 [备份管理器](/handbook/backups) 进行回滚恢复。
 
 ![20250105195029](https://static-docs.nocobase.com/20250105195029.png)
