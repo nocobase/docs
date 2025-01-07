@@ -1,123 +1,123 @@
-# テンプレート印刷
+# Template Printing
 
 <PluginInfo commercial="true" name="action-template-print"></PluginInfo>
 
-## 紹介
+## Introduction
 
-テンプレート印刷プラグインは、Word、Excel、PowerPointのテンプレートファイル（`.docx`、`.xlsx`、`.pptx`形式をサポート）を編集し、テンプレート内にプレースホルダーと論理構造を設定することで、動的に所定の形式のファイル（`.docx`、`.xlsx`、`.pptx`、PDFファイル）を生成する強力なツールです。このプラグインは、見積書、請求書、契約書などのビジネス文書の生成に広く使用されており、文書生成の効率と正確性を大幅に向上させます。
+The Template Printing plugin is a powerful tool that allows you to edit template files in Word, Excel, and PowerPoint (supporting `.docx`, `.xlsx`, `.pptx` formats), set placeholders and logical structures within the templates, and dynamically generate pre-formatted files such as `.docx`, `.xlsx`, `.pptx`, and PDF files. This plugin is widely used for generating various business documents, such as quotations, invoices, contracts, etc., significantly improving the efficiency and accuracy of document generation.
 
-### 主な機能
+### Key Features
 
-- **多形式対応**：Word、Excel、PowerPointテンプレートに対応し、さまざまな文書生成ニーズを満たします。
-- **動的データ入力**：プレースホルダーと論理構造を使用して、文書内容を自動的に入力および生成します。
-- **柔軟なテンプレート管理**：テンプレートの追加、編集、削除、分類管理をサポートし、メンテナンスと使用を容易にします。
-- **豊富なテンプレート構文**：基本的な置換、配列アクセス、ループ、条件出力など、複雑な文書生成ニーズに対応するさまざまなテンプレート構文をサポートします。
-- **フォーマッター対応**：条件出力、日付フォーマット、数字フォーマットなどの機能を提供し、文書の可読性と専門性を向上させます。
-- **効率的な出力形式**：PDFファイルの直接生成をサポートし、共有と印刷を容易にします。
+- **Multi-format Support**: Compatible with Word, Excel, and PowerPoint templates to meet different document generation needs.
+- **Dynamic Data Filling**: Automatically fills and generates document content through placeholders and logical structures.
+- **Flexible Template Management**: Supports adding, editing, deleting, and categorizing templates for easy maintenance and use.
+- **Rich Template Syntax**: Supports basic replacement, array access, loops, conditional output, and other template syntax to meet complex document generation needs.
+- **Formatter Support**: Provides conditional output, date formatting, number formatting, and other functions to enhance the readability and professionalism of documents.
+- **Efficient Output Formats**: Supports direct generation of PDF files for easy sharing and printing.
 
-## 設定説明
+## Configuration Instructions
 
-### テンプレート印刷機能の有効化
+### Activating Template Printing
 
-1. **詳細ブロックを開く**：
-  - アプリケーション内で、テンプレート印刷機能を使用する詳細ブロックに移動します。
+1. **Open the Detail Block**:
+   - Navigate to the detail block in the application where you need to use the template printing feature.
 
-2. **設定操作メニューに入る**：
-  - 画面上部の「設定操作」メニューをクリックします。
+2. **Access the Configuration Operation Menu**:
+   - Click the "Configuration Operation" menu at the top of the interface.
 
-3. **「テンプレート印刷」を選択**：
-  - ドロップダウンメニューで「テンプレート印刷」オプションをクリックしてプラグイン機能を有効にします。
+3. **Select "Template Printing"**:
+   - Click the "Template Printing" option in the dropdown menu to activate the plugin.
 
-   ![テンプレート印刷の有効化](https://static-docs.nocobase.com/20241212150539-2024-12-12-15-05-43.png)
+   ![Activate Template Printing](https://static-docs.nocobase.com/20241212150539-2024-12-12-15-05-43.png)
 
-### テンプレートの設定
+### Configuring Templates
 
-1. **テンプレート設定ページに入る**：
-  - 「テンプレート印刷」ボタンの設定メニューで、「テンプレート設定」オプションを選択します。
+1. **Access the Template Configuration Page**:
+   - In the configuration menu of the "Template Printing" button, select the "Template Configuration" option.
 
-   ![テンプレート設定オプション](https://static-docs.nocobase.com/20241212151858-2024-12-12-15-19-01.png)
+   ![Template Configuration Option](https://static-docs.nocobase.com/20241212151858-2024-12-12-15-19-01.png)
 
-2. **新しいテンプレートを追加**：
-  - 「テンプレート追加」ボタンをクリックして、テンプレート追加ページに移動します。
+2. **Add a New Template**:
+   - Click the "Add Template" button to enter the template addition page.
 
-   ![テンプレート追加ボタン](https://static-docs.nocobase.com/20241212151243-2024-12-12-15-12-46.png)
+   ![Add Template Button](https://static-docs.nocobase.com/20241212151243-2024-12-12-15-12-46.png)
 
-3. **テンプレート情報を入力**：
-  - テンプレートフォームで、テンプレート名を入力し、テンプレートタイプ（Word、Excel、PowerPoint）を選択します。
-  - 対応するテンプレートファイル（`.docx`、`.xlsx`、`.pptx`形式をサポート）をアップロードします。
+3. **Fill in Template Information**:
+   - In the template form, fill in the template name and select the template type (Word, Excel, PowerPoint).
+   - Upload the corresponding template file (supports `.docx`, `.xlsx`, `.pptx` formats).
 
-   ![テンプレート名とファイルの設定](https://static-docs.nocobase.com/20241212151518-2024-12-12-15-15-21.png)
+   ![Configure Template Name and File](https://static-docs.nocobase.com/20241212151518-2024-12-12-15-15-21.png)
 
-4. **テンプレートの編集と保存**：
-  - 「フィールドリスト」ページに移動し、フィールドをコピーしてテンプレートに入力します。
-    ![フィールドリスト](https://static-docs.nocobase.com/20250107141010.png)
+4. **Edit and Save the Template**:
+   - Go to the "Field List" page, copy fields, and fill them into the template.
+    ![Field List](https://static-docs.nocobase.com/20250107141010.png)
     ![20241212152743-2024-12-12-15-27-45](https://static-docs.nocobase.com/20241212152743-2024-12-12-15-27-45.png)
-  - 入力が完了したら、「保存」ボタンをクリックしてテンプレートの追加を完了します。
+   - After filling in the details, click the "Save" button to complete the template addition.
 
-5. **テンプレート管理**：
-  - テンプレートリストの右側にある「使用」ボタンをクリックすると、テンプレートを有効にできます。
-  - 「編集」ボタンをクリックすると、テンプレート名を変更したり、テンプレートファイルを置き換えたりできます。
-  - 「ダウンロード」ボタンをクリックすると、設定済みのテンプレートファイルをダウンロードできます。
-  - 「削除」ボタンをクリックすると、不要なテンプレートを削除できます。誤って削除しないように、システムが確認を求めます。
-  ![テンプレート管理](https://static-docs.nocobase.com/20250107140436.png)
+5. **Template Management**:
+   - Click the "Use" button on the right side of the template list to activate the template.
+   - Click the "Edit" button to modify the template name or replace the template file.
+   - Click the "Download" button to download the configured template file.
+   - Click the "Delete" button to remove unnecessary templates. The system will prompt for confirmation to avoid accidental deletion.
+   ![Template Management](https://static-docs.nocobase.com/20250107140436.png)
 
-## テンプレート構文
+## Template Syntax
 
-テンプレート印刷プラグインは、テンプレート内に動的データと論理構造を柔軟に挿入するためのさまざまな構文を提供します。以下に詳細な構文説明と使用例を示します。
+The Template Printing plugin provides various syntaxes to flexibly insert dynamic data and logical structures into templates. Below are detailed syntax explanations and usage examples.
 
-### 基本的な置換
+### Basic Replacement
 
-`{d.xxx}`形式のプレースホルダーを使用してデータを置換します。例：
+Use placeholders in the format `{d.xxx}` for data replacement. For example:
 
-- `{d.title}`：データセット内の`title`フィールドを読み取ります。
-- `{d.date}`：データセット内の`date`フィールドを読み取ります。
+- `{d.title}`: Reads the `title` field from the dataset.
+- `{d.date}`: Reads the `date` field from the dataset.
 
-**例**：
+**Example**:
 
-テンプレート内容：
+Template Content:
 ```
-お客様へ
+Dear Customer,
 
-当社製品をご購入いただきありがとうございます：{d.productName}。
-注文番号：{d.orderId}
-注文日：{d.orderDate}
+Thank you for purchasing our product: {d.productName}.
+Order ID: {d.orderId}
+Order Date: {d.orderDate}
 
-ご利用いただきありがとうございます！
+Wish you a pleasant experience!
 ```
 
-データセット：
+Dataset:
 ```json
 {
-  "productName": "スマートウォッチ",
+  "productName": "Smart Watch",
   "orderId": "A123456789",
   "orderDate": "2025-01-01"
 }
 ```
 
-レンダリング結果：
+Rendered Result:
 ```
-お客様へ
+Dear Customer,
 
-当社製品をご購入いただきありがとうございます：スマートウォッチ。
-注文番号：A123456789
-注文日：2025-01-01
+Thank you for purchasing our product: Smart Watch.
+Order ID: A123456789
+Order Date: 2025-01-01
 
-ご利用いただきありがとうございます！
+Wish you a pleasant experience!
 ```
 
-### 子オブジェクトへのアクセス
+### Accessing Sub-objects
 
-データセットに子オブジェクトが含まれている場合、ドット記法を使用して子オブジェクトのプロパティにアクセスできます。
+If the dataset contains sub-objects, you can access the properties of the sub-objects using dot notation.
 
-**構文**：`{d.parent.child}`
+**Syntax**: `{d.parent.child}`
 
-**例**：
+**Example**:
 
-データセット：
+Dataset:
 ```json
 {
   "customer": {
-    "name": "李雷",
+    "name": "Li Lei",
     "contact": {
       "email": "lilei@example.com",
       "phone": "13800138000"
@@ -126,29 +126,29 @@
 }
 ```
 
-テンプレート内容：
+Template Content:
 ```
-顧客名：{d.customer.name}
-メールアドレス：{d.customer.contact.email}
-電話番号：{d.customer.contact.phone}
-```
-
-レンダリング結果：
-```
-顧客名：李雷
-メールアドレス：lilei@example.com
-電話番号：13800138000
+Customer Name: {d.customer.name}
+Email Address: {d.customer.contact.email}
+Phone Number: {d.customer.contact.phone}
 ```
 
-### 配列へのアクセス
+Rendered Result:
+```
+Customer Name: Li Lei
+Email Address: lilei@example.com
+Phone Number: 13800138000
+```
 
-データセットに配列が含まれている場合、予約キーワード`i`を使用して配列内の要素にアクセスできます。
+### Accessing Arrays
 
-**構文**：`{d.arrayName[i].field}`
+If the dataset contains arrays, you can use the reserved keyword `i` to access elements in the array.
 
-**例**：
+**Syntax**: `{d.arrayName[i].field}`
 
-データセット：
+**Example**:
+
+Dataset:
 ```json
 {
   "staffs": [
@@ -159,25 +159,25 @@
 }
 ```
 
-テンプレート内容：
+Template Content:
 ```
-最初の従業員の姓は {d.staffs[i=0].lastname}、名は {d.staffs[i=0].firstname}
-```
-
-レンダリング結果：
-```
-最初の従業員の姓は Anderson、名は James
+The first employee's last name is {d.staffs[i=0].lastname}, and the first name is {d.staffs[i=0].firstname}
 ```
 
-### ループ出力
+Rendered Result:
+```
+The first employee's last name is Anderson, and the first name is James
+```
 
-テンプレート印刷プラグインは、配列内のデータをループ出力することをサポートしており、ループの開始と終了位置を明示的に指定する必要はありません。テンプレート内で予約キーワード`i`と`i+1`を使用するだけで、プラグインが自動的にループ部分を認識して処理します。
+### Loop Output
 
-#### 単純な配列ループ
+The Template Printing plugin supports looping through arrays to output data. There is no need to explicitly mark the start and end of the loop; simply use the reserved keywords `i` and `i+1` in the template. The plugin will automatically recognize and process the loop section.
 
-**例**：会社の従業員データテーブルを生成
+#### Simple Array Loop
 
-**データセット**：
+**Example**: Generating a table of company employee data
+
+**Dataset**:
 ```json
 {
   "staffs": [
@@ -188,30 +188,30 @@
 }
 ```
 
-**テンプレート**：
+**Template**:
 
-| 従業員名 | 従業員姓 |
+| First Name | Last Name |
 |---|---|
 | {d.staffs[i].firstname} | {d.staffs[i].lastname} |
 | {d.staffs[i+1]} |  |
 
-**レンダリング結果**：
+**Rendered Result**:
 
-| 従業員名  | 従業員姓   |
+| First Name  | Last Name   |
 |---|---|
 | James | Anderson |
 | Emily | Roberts |
 | Michael | Johnson |
 
-**説明**：テンプレート内の`{d.staffs[i].firstname}`と`{d.staffs[i].lastname}`を使用して、各従業員の名と姓をループして入力します。`{d.staffs[i+1]}`は次の行のループ開始を示します。
+**Explanation**: The template uses `{d.staffs[i].firstname}` and `{d.staffs[i].lastname}` to loop through and fill in the first and last names of each employee. `{d.staffs[i+1]}` marks the start of the next row in the loop.
 
-#### ネストされた配列ループ
+#### Nested Array Loop
 
-テンプレート印刷プラグインは、ネストされた配列を処理することをサポートしており、無限レベルのループネストが可能で、複雑なデータ構造の表示に適しています。
+The Template Printing plugin supports processing nested arrays, allowing for infinite levels of nested loops, suitable for displaying complex data structures.
 
-**例**：自動車ブランドとそのモデルを表示
+**Example**: Displaying car brands and their models
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "cars": [
@@ -227,11 +227,11 @@
 }
 ```
 
-**テンプレート**：
+**Template**:
 
 ```
-ブランド：{d.cars[i].brand}
-モデル：
+Brand: {d.cars[i].brand}
+Models:
 {d.cars[i].models[j].size}
 {d.cars[i].models[j+1].size}
 
@@ -239,31 +239,31 @@
 ```
 ![20241203152028-2024-12-03-15-20-29](https://static-docs.nocobase.com/20241203152028-2024-12-03-15-20-29.png)
 
-**レンダリング結果**：
+**Rendered Result**:
 ```
-ブランド：Toyota
-モデル：
+Brand: Toyota
+Models:
 Prius 2
 Prius 3
 
 ---
-ブランド：Tesla
-モデル：
+Brand: Tesla
+Models:
 S
 X
 
 ---
 ```
     
-**説明**：外側のループで`i`を使用して各ブランドを巡回し、内側のループで`j`を使用して各ブランドのモデルを巡回します。`{d.cars[i].models[j].size}`と`{d.cars[i].models[j+1].size}`は、現在と次のモデルを入力するために使用されます。この方法で、複雑なデータ構造に適応するために無限レベルでループをネストできます。
+**Explanation**: The outer loop uses `i` to iterate through each brand, while the inner loop uses `j` to iterate through each model under the brand. `{d.cars[i].models[j].size}` and `{d.cars[i].models[j+1].size}` are used to fill in the current and next models, respectively. This allows for infinite levels of nested loops to accommodate complex data structures.
 
-### ソート機能
+### Sorting Function
 
-テンプレート印刷プラグインは、イテレータ`i`だけでなく、オブジェクトのプロパティに基づいて配列をソートすることを許可します。現在、指定されたプロパティで昇順にソートすることができ、降順ソートはまだサポートされていません。
+The Template Printing plugin allows sorting arrays based on object properties, not limited to using the iterator `i`. Currently, it supports ascending order by a specified property but does not support descending order.
 
-**例**：「power」プロパティで自動車を昇順にソート
+**Example**: Sorting cars by "power" in ascending order
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "cars" : [
@@ -274,513 +274,680 @@ X
 }
 ```
 
-**テンプレート**：
+**Template**:
 ```
 {d.cars:sort(power)}
-ブランド：{d.cars[i].brand}
-パワー：{d.cars[i].power} kW
+Brand: {d.cars[i].brand}
+Power: {d.cars[i].power} kW
 
 ---
 ```
 
-**レンダリング結果**：
+**Rendered Result**:
 ```
-ブランド：Tesla
-パワー：1 kW
+Brand: Tesla
+Power: 1 kW
 
 ---
-ブランド：Toyota
-パワー：2 kW
+Brand: Toyota
+Power: 2 kW
 
 ---
-ブランド：Lumeneo
-パワー：3 kW
+Brand: Lumeneo
+Power: 3 kW
 
 ---
 ```
 
-**説明**：`:sort(power)`を使用して`cars`配列を`power`プロパティで昇順にソートし、各車のブランドとパワーを順にレンダリングします。
+**Explanation**: The `:sort(power)` function sorts the `cars` array by the `power` property in ascending order, and then renders each car's brand and power.
 
-## フォーマッター
+## Formatters
 
-フォーマッターは、データを特定の形式に変換または条件判断を行うために使用され、テンプレートの柔軟性と表現力を向上させます。
+Formatters are used to convert data into specific formats or perform conditional checks, enhancing the flexibility and expressiveness of templates.
 
-### 条件出力
+### Conditional Output
 
-`showBegin`と`showEnd`を使用して特定の内容の表示と非表示を制御します。
+Control the display and hiding of specific content using `showBegin` and `showEnd`.
 
-**構文**：
+**Syntax**:
 ```
 {d.field:condition:showBegin}
-内容
+Content
 {d.field:showEnd}
 ```
 
-**例**：契約テンプレートで、顧客タイプに基づいて特別条項を表示
+**Example**: Displaying special terms in a contract template based on customer type
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "customerType": "VIP"
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
 {d.customerType:ifEQ('VIP'):showBegin}
-特別条項：
-当社のVIP顧客として、追加の特典と専用サービスを享受できます。無料アップグレード、優先サポートなどが含まれます。
+Special Terms:
+As our VIP customer, you will enjoy additional benefits and exclusive services, including free upgrades, priority support, etc.
 {d.customerType:showEnd}
 ```
 
-**レンダリング結果**（`customerType`が"VIP"の場合）：
+**Rendered Result** (when `customerType` is "VIP"):
 ```
-特別条項：
-当社のVIP顧客として、追加の特典と専用サービスを享受できます。無料アップグレード、優先サポートなどが含まれます。
+Special Terms:
+As our VIP customer, you will enjoy additional benefits and exclusive services, including free upgrades, priority support, etc.
 ```
 
-**説明**：`customerType`フィールドの値が"VIP"の場合、`showBegin`と`showEnd`の間の内容がレンダリングされ、それ以外の場合は非表示になります。
+**Explanation**: When the value of the `customerType` field is "VIP", the content between `showBegin` and `showEnd` will be rendered; otherwise, it will be hidden.
 
-### 日付フォーマット
+### Date Formatting
 
-フォーマッターを使用して日付フィールドをフォーマット変換し、日付の可読性を向上させます。
+Use formatters to convert date fields into more readable formats.
 
-**構文**：
+**Syntax**:
 ```
 {d.dateField:format(YYYY年MM月DD日)}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "orderDate": "2025-01-03T10:30:00Z"
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-注文日：{d.orderDate:format(YYYY年MM月DD日)}
-```
-
-**レンダリング結果**：
-```
-注文日：2025年01月03日
+Order Date: {d.orderDate:format(YYYY年MM月DD日)}
 ```
 
-**説明**：`format`フォーマッターを使用して、ISO形式の日付をより読みやすい形式に変換します。
+**Rendered Result**:
+```
+Order Date: 2025年01月03日
+```
 
-### 数字フォーマット
+**Explanation**: The `format` formatter converts the ISO-formatted date into a more readable format.
 
-フォーマッターを使用して数字をフォーマットし、千単位の区切りや小数点の桁数制御を行います。
+### Number Formatting
 
-**構文**：
+Use formatters to format numbers, such as adding thousand separators or controlling decimal places.
+
+**Syntax**:
 ```
 {d.numberField:format(0,0.00)}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "totalAmount": 1234567.89
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-総額：{d.totalAmount:format('0,0.00')} 元
-```
-
-**レンダリング結果**：
-```
-総額：1,234,567.89 元
+Total Amount: {d.totalAmount:format('0,0.00')} yuan
 ```
 
-**説明**：`format`フォーマッターを使用して、数字を千単位で区切り、小数点以下2桁を保持します。
+**Rendered Result**:
+```
+Total Amount: 1,234,567.89 yuan
+```
 
+**Explanation**: The `format` formatter adds thousand separators and retains two decimal places for the number.
 
-## 文字列フォーマッターの例
+## String Formatter Examples
 
 ### 1. lowerCase( )
 
-**構文**：
+**Syntax**:
 ```
 {d.someField:lowerCase()}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "title": "My Car"
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-車名：{d.title:lowerCase()}
-```
-
-**レンダリング結果**：
-```
-車名：my car
+Vehicle Name: {d.title:lowerCase()}
 ```
 
-**説明**：すべての英字を小文字に変換します。値が文字列でない場合（数字、nullなど）、そのまま出力します。
+**Rendered Result**:
+```
+Vehicle Name: my car
+```
+
+**Explanation**: Converts all English letters to lowercase. If the value is not a string (e.g., a number, null, etc.), it is output as is.
 
 ---
 
 ### 2. upperCase( )
 
-**構文**：
+**Syntax**:
 ```
 {d.someField:upperCase()}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "title": "my car"
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-車名：{d.title:upperCase()}
-```
-
-**レンダリング結果**：
-```
-車名：MY CAR
+Vehicle Name: {d.title:upperCase()}
 ```
 
-**説明**：すべての英字を大文字に変換します。値が文字列でない場合、そのまま出力します。
+**Rendered Result**:
+```
+Vehicle Name: MY CAR
+```
+
+**Explanation**: Converts all English letters to uppercase. If the value is not a string, it is output as is.
 
 ---
 
 ### 3. ucFirst( )
 
-**構文**：
+**Syntax**:
 ```
 {d.someField:ucFirst()}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "note": "hello world"
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-備考：{d.note:ucFirst()}
-```
-
-**レンダリング結果**：
-```
-備考：Hello world
+Note: {d.note:ucFirst()}
 ```
 
-**説明**：最初の文字のみを大文字に変換し、他の文字はそのままにします。値がnullまたはundefinedの場合、nullまたはundefinedを返します。
+**Rendered Result**:
+```
+Note: Hello world
+```
+
+**Explanation**: Converts only the first letter to uppercase, leaving the rest of the letters unchanged. If the value is null or undefined, it returns null or undefined.
 
 ---
 
 ### 4. ucWords( )
 
-**構文**：
+**Syntax**:
 ```
 {d.someField:ucWords()}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "description": "my cAR"
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-説明：{d.description:ucWords()}
-**レンダリング結果**（DOCX シーン）：
+Description: {d.description:ucWords()}
 ```
-変換後内容：
-複数行テキスト：
-1行目
-2行目
-3行目
-```
-> 実際のXMLには `<w:br/>` などの改行タグが挿入されます。
 
-**説明**：`\n` または `\r\n` をドキュメントの正しい改行タグに変換し、最終ファイルで複数行テキストを正確に表示します。
+**Rendered Result**:
+```
+Description: My CAR
+```
+
+**Explanation**: Converts the first letter of each word in the string to uppercase. The rest of the letters remain unchanged.
+
+---
+
+### 5. print( message )
+
+**Syntax**:
+```
+{d.someField:print('Fixed Output')}
+```
+
+**Example**:
+
+**Dataset**:
+```json
+{
+  "unusedField": "whatever"
+}
+```
+
+**Template Content**:
+```
+Prompt: {d.unusedField:print('This will always display a fixed prompt')}
+```
+
+**Rendered Result**:
+```
+Prompt: This will always display a fixed prompt
+```
+
+**Explanation**: Regardless of the original data, the specified `message` string will be output, effectively "forcing" the output.
+
+---
+
+### 6. printJSON( )
+
+**Syntax**:
+```
+{d.someField:printJSON()}
+```
+
+**Example**:
+
+**Dataset**:
+```json
+{
+  "items": [
+    { "id": 2, "name": "homer" },
+    { "id": 3, "name": "bart" }
+  ]
+}
+```
+
+**Template Content**:
+```
+Raw Data: {d.items:printJSON()}
+```
+
+**Rendered Result**:
+```
+Raw Data: [{"id":2,"name":"homer"},{"id":3,"name":"bart"}]
+```
+
+**Explanation**: Serializes an object or array into a JSON-formatted string for direct output in the template.
+
+---
+
+### 7. convEnum( type )
+
+**Syntax**:
+```
+{d.someField:convEnum('ENUM_NAME')}
+```
+
+**Example**:
+
+**Dataset**:
+```json
+{
+  "orderStatus": 1
+}
+```
+Assume the following configuration in `carbone.render(data, options)`'s `options.enum`:
+```json
+{
+  "enum": {
+    "ORDER_STATUS": [
+      "pending",     // 0
+      "sent",        // 1
+      "delivered"    // 2
+    ]
+  }
+}
+```
+
+**Template Content**:
+```
+Order Status: {d.orderStatus:convEnum('ORDER_STATUS')}
+```
+
+**Rendered Result**:
+```
+Order Status: sent
+```
+
+**Explanation**: Converts a number or defined enum value into readable text; if the value is not defined in the enum, it is output as is.
+
+---
+
+### 8. unaccent( )
+
+**Syntax**:
+```
+{d.someField:unaccent()}
+```
+
+**Example**:
+
+**Dataset**:
+```json
+{
+  "food": "crème brûlée"
+}
+```
+
+**Template Content**:
+```
+Food Name: {d.food:unaccent()}
+```
+
+**Rendered Result**:
+```
+Food Name: creme brulee
+```
+
+**Explanation**: Removes accent marks, commonly used for processing text with special characters in French, Spanish, etc.
+
+---
+
+### 9. convCRLF( )
+
+**Syntax**:
+```
+{d.someField:convCRLF()}
+```
+> **Note**: Applicable to DOCX, PDF, ODT, ODS (ODS functionality is experimental).
+
+**Example**:
+
+**Dataset**:
+```json
+{
+  "content": "Multi-line text:\nFirst line\nSecond line\r\nThird line"
+}
+```
+
+**Template Content**:
+```
+Converted Content:
+{d.content:convCRLF()}
+```
+**Rendering Result** (DOCX Scenario):
+```
+Converted Content:
+Multi-line Text:
+First Line
+Second Line
+Third Line
+```
+> The actual XML will insert line break tags such as `<w:br/>`.
+
+**Note**: Convert `\n` or `\r\n` to the correct line break tags in the document to accurately display multi-line text in the final file.
 
 ---
 
 ### 10. substr( begin, end, wordMode )
 
-**構文**：
+**Syntax**:
 ```
 {d.someField:substr(begin, end, wordMode)}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "text": "abcdefg hijklmnop"
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-切り取り内容（インデックス0から5）：{d.text:substr(0, 5)}
-切り取り内容（インデックス6から末尾）：{d.text:substr(6)}
-```
-
-**レンダリング結果**：
-```
-切り取り内容（インデックス0から5）：abcde
-切り取り内容（インデックス6から末尾）：fg hijklmnop
+Substring (from index 0 to 5): {d.text:substr(0, 5)}
+Substring (from index 6 to end): {d.text:substr(6)}
 ```
 
-**説明**：
-- `begin` は開始インデックス、`end` は終了インデックス（含まれない）。
-- `wordMode=true` の場合、単語を分割しないようにする。`wordMode='last'` の場合、`begin` から文字列の最後まで切り取る。
+**Rendering Result**:
+```
+Substring (from index 0 to 5): abcde
+Substring (from index 6 to end): fg hijklmnop
+```
+
+**Note**:
+- `begin` is the starting index, `end` is the ending index (exclusive).
+- If `wordMode=true`, it tries not to split words; if `wordMode='last'`, it extracts from `begin` to the end of the string.
 
 ---
 
 ### 11. split( delimiter )
 
-**構文**：
+**Syntax**:
 ```
 {d.someField:split(delimiter)}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "path": "ab/cd/ef"
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-分割後の配列：{d.path:split('/')}
-```
-
-**レンダリング結果**：
-```
-分割後の配列：["ab","cd","ef"]
+Split Array: {d.path:split('/')}
 ```
 
-**説明**：指定された `delimiter` を使用して文字列を配列に分割します。`arrayJoin` やインデックスアクセスなどの他の配列操作と組み合わせて使用できます。
+**Rendering Result**:
+```
+Split Array: ["ab","cd","ef"]
+```
+
+**Note**: Use the specified `delimiter` to split the string into an array. Can be used with other array operations such as `arrayJoin`, index access, etc.
 
 ---
 
 ### 12. padl( targetLength, padString )
 
-**構文**：
+**Syntax**:
 ```
 {d.someField:padl(targetLength, padString)}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "code": "abc"
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-左側埋め（長さ8、文字'0'）：{d.code:padl(8, '0')}
-```
-
-**レンダリング結果**：
-```
-左側埋め（長さ8、文字'0'）：00000abc
+Left Padding (length 8, character '0'): {d.code:padl(8, '0')}
 ```
 
-**説明**：`targetLength` が元の文字列の長さより短い場合、元の文字列をそのまま返します。デフォルトの埋め文字はスペースです。
+**Rendering Result**:
+```
+Left Padding (length 8, character '0'): 00000abc
+```
+
+**Note**: If `targetLength` is less than the original string length, the original string is returned; the default padding character is a space.
 
 ---
 
 ### 13. padr( targetLength, padString )
 
-**構文**：
+**Syntax**:
 ```
 {d.someField:padr(targetLength, padString)}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "code": "abc"
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-右側埋め（長さ10、文字'#'）：{d.code:padr(10, '#')}
-```
-
-**レンダリング結果**：
-```
-右側埋め（長さ10、文字'#'）：abc#######
+Right Padding (length 10, character '#'): {d.code:padr(10, '#')}
 ```
 
-**説明**：`padl` とは逆に、文字列の末尾を埋めます。デフォルトの埋め文字はスペースです。
+**Rendering Result**:
+```
+Right Padding (length 10, character '#'): abc#######
+```
+
+**Note**: Opposite of `padl`, padding is done at the end of the string. The default padding character is a space.
 
 ---
 
 ### 14. ellipsis( maximum )
 
-**構文**：
+**Syntax**:
 ```
 {d.someField:ellipsis(maximum)}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "articleTitle": "Carbone Report Extended Version"
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-記事タイトル（最大5文字）：{d.articleTitle:ellipsis(5)}
-```
-
-**レンダリング結果**：
-```
-記事タイトル（最大5文字）：Carbo...
+Article Title (max 5 characters): {d.articleTitle:ellipsis(5)}
 ```
 
-**説明**：文字列の長さが `maximum` を超える場合、切り詰めて `...` を追加します。
+**Rendering Result**:
+```
+Article Title (max 5 characters): Carbo...
+```
+
+**Note**: When the string length exceeds `maximum`, it truncates and adds `...`.
 
 ---
 
 ### 15. prepend( textToPrepend )
 
-**構文**：
+**Syntax**:
 ```
 {d.someField:prepend(textToPrepend)}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "username": "john"
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-ユーザー名：{d.username:prepend('Mr. ')}
-```
-
-**レンダリング結果**：
-```
-ユーザー名：Mr. john
+Username: {d.username:prepend('Mr. ')}
 ```
 
-**説明**：元の文字列の前に指定されたテキストを追加します。プレフィックスを追加する際に使用されます。
+**Rendering Result**:
+```
+Username: Mr. john
+```
+
+**Note**: Appends specified text before the original string, commonly used for prefixes.
 
 ---
 
 ### 16. append( textToAppend )
 
-**構文**：
+**Syntax**:
 ```
 {d.someField:append(textToAppend)}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "filename": "document"
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-ファイル名：{d.filename:append('.pdf')}
-```
-
-**レンダリング結果**：
-```
-ファイル名：document.pdf
+Filename: {d.filename:append('.pdf')}
 ```
 
-**説明**：元の文字列の後に指定されたテキストを追加します。サフィックスを追加する際に使用されます。
+**Rendering Result**:
+```
+Filename: document.pdf
+```
+
+**Note**: Appends specified text after the original string, commonly used for suffixes.
 
 ---
 
 ### 17. replace( oldText, newText )
 
-**構文**：
+**Syntax**:
 ```
 {d.someField:replace(oldText, newText)}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "sentence": "abcdef abcde"
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-置換結果：{d.sentence:replace('cd', 'OK')}
-```
-
-**レンダリング結果**：
-```
-置換結果：abOKef abOKe
+Replacement Result: {d.sentence:replace('cd', 'OK')}
 ```
 
-**説明**：`oldText` に一致する部分をすべて `newText` に置き換えます。`newText` が指定されていないか `null` の場合、一致部分を削除します。
+**Rendering Result**:
+```
+Replacement Result: abOKef abOKe
+```
+
+**Note**: Replaces all occurrences of `oldText` with `newText`; if `newText` is not specified or is `null`, the matched parts are deleted.
 
 ---
 
 ### 18. len( )
 
-**構文**：
+**Syntax**:
 ```
 {d.someField:len()}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "greeting": "Hello World",
@@ -788,106 +955,107 @@ X
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-テキストの長さ：{d.greeting:len()}
-配列の長さ：{d.numbers:len()}
-```
-
-**レンダリング結果**：
-```
-テキストの長さ：11
-配列の長さ：5
+Text Length: {d.greeting:len()}
+Array Length: {d.numbers:len()}
 ```
 
-**説明**：文字列や配列の長さや要素数を返します。
+**Rendering Result**:
+```
+Text Length: 11
+Array Length: 5
+```
+
+**Note**: Can be used for both strings and arrays, returning their length or number of elements.
 
 ---
 
 ### 19. t( )
 
-**構文**：
+**Syntax**:
 ```
 {d.someField:t()}
 ```
 
-**例**：
+**Example**:
 
-Carbone 設定で翻訳辞書を定義し、テキスト `"Submit"` を `"提出"` に翻訳するとします。
+Assume you have defined a translation dictionary in Carbone configuration, translating the text `"Submit"` to `"提交"`.
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "buttonLabel": "Submit"
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-ボタン：{d.buttonLabel:t()}
-```
-
-**レンダリング結果**：
-```
-ボタン：提出
+Button: {d.buttonLabel:t()}
 ```
 
-**説明**：翻訳辞書に基づいて文字列を翻訳します。レンダリング時に適切な翻訳マッピングを提供する必要があります。
+**Rendering Result**:
+```
+Button: 提交
+```
+
+**Note**: Translates the string based on the translation dictionary. Requires providing the corresponding translation mapping during rendering.
 
 ---
 
 ### 20. preserveCharRef( )
 
-**構文**：
+**Syntax**:
 ```
 {d.someField:preserveCharRef()}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "legalSymbol": "&#xa7;" 
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-記号：{d.legalSymbol:preserveCharRef()}
-```
-
-**レンダリング結果**：
-```
-記号：&#xa7;
+Symbol: {d.legalSymbol:preserveCharRef()}
 ```
 
-**説明**：`&#xxx;` または `&#xXXXX;` 形式の文字参照を保持し、XML でエスケープや置換されないようにします。特定の文字セットや特殊記号を生成する際に有用です。
+**Rendering Result**:
+```
+Symbol: &#xa7;
+```
+
+**Note**: Preserves character references in the form of `&#xxx;` or `&#xXXXX;`, preventing them from being escaped or replaced in XML. This is useful for generating specific character sets or special symbols.
 
 ---
-以下の例は、前述のドキュメントスタイルに従って記述されており、**数値操作**に関連するフォーマッタを理解し活用するのに役立ちます。例には**構文**、**例**（「データセット」「テンプレート内容」「レンダリング結果」を含む）、および簡単な**説明**が含まれます。一部の例では、出力に影響を与えるオプションのレンダリング設定（`options`）についても言及しています。
+The following examples follow the document style described above to help you better understand and apply **number operation** formatters. Examples will include **syntax**, **examples** (including "dataset", "template content", "rendering result"), and brief **notes**. Some examples will also mention optional rendering configurations (`options`) to demonstrate how they affect the output.
 
 ---
 
-## 数値操作フォーマッタの例
+
+## Number Operation Formatter Examples
 
 ### 1. convCurr( target, source )
 
-**構文**：
+**Syntax**:
 ```
 {d.numberField:convCurr(target, source)}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "amount": 1000
 }
 ```
 
-> `Carbone.render(data, options)` 時に、`options` が以下のように設定されているとします：
+> Assume the following settings in `Carbone.render(data, options)`:
 > ```json
 > {
 >   "currency": {
@@ -901,39 +1069,39 @@ Carbone 設定で翻訳辞書を定義し、テキスト `"Submit"` を `"提出
 > }
 > ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-EUR から USD にデフォルトで変換：{d.amount:convCurr()}
-直接 USD を指定：{d.amount:convCurr('USD')}
-直接 EUR を指定：{d.amount:convCurr('EUR')}
-EUR->USD を経由し、強制的に USD->USD：{d.amount:convCurr('USD','USD')}
-```
-
-**レンダリング結果**：
-```
-EUR から USD にデフォルトで変換：2000
-直接 USD を指定：2000
-直接 EUR を指定：1000
-EUR->USD を経由し、強制的に USD->USD：1000
+Default conversion from EUR to USD: {d.amount:convCurr()}
+Directly specify target as USD: {d.amount:convCurr('USD')}
+Directly specify target as EUR: {d.amount:convCurr('EUR')}
+EUR->USD, then force USD->USD: {d.amount:convCurr('USD','USD')}
 ```
 
-**説明**：
-- `target` が指定されていない場合、デフォルトで `options.currencyTarget`（例では "USD"）が使用されます。
-- `source` が指定されていない場合、デフォルトで `options.currencySource`（例では "EUR"）が使用されます。
-- `options.currencySource` が定義されていない場合、変換は行われず、元の値が出力されます。
+**Rendering Result**:
+```
+Default conversion from EUR to USD: 2000
+Directly specify target as USD: 2000
+Directly specify target as EUR: 1000
+EUR->USD, then force USD->USD: 1000
+```
+
+**Note**:
+- If `target` is not specified, it defaults to `options.currencyTarget` ("USD" in the example).
+- If `source` is not specified, it defaults to `options.currencySource` ("EUR" in the example).
+- If `options.currencySource` is not defined, no conversion is performed, and the original value is output.
 
 ---
 
 ### 2. round( precision )
 
-**構文**：
+**Syntax**:
 ```
 {d.numberField:round(precision)}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "price": 10.05123,
@@ -941,76 +1109,76 @@ EUR->USD を経由し、強制的に USD->USD：1000
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-価格を小数点以下2桁に丸める：{d.price:round(2)}
-割引を小数点以下1桁に丸める：{d.discount:round(1)}
-```
-
-**レンダリング結果**：
-```
-価格を小数点以下2桁に丸める：10.05
-割引を小数点以下1桁に丸める：1.1
+Price rounded to 2 decimal places: {d.price:round(2)}
+Discount rounded to 1 decimal place: {d.discount:round(1)}
 ```
 
-**説明**：  
-`toFixed()` とは異なり、`round()` は正しい四捨五入方式で小数を処理します。例えば、`1.05` を小数点以下1桁に丸めると `1.1` になります。
+**Rendering Result**:
+```
+Price rounded to 2 decimal places: 10.05
+Discount rounded to 1 decimal place: 1.1
+```
+
+**Note**:  
+Unlike `toFixed()`, `round()` uses correct rounding for decimals, e.g., `1.05` rounded to one decimal place becomes `1.1`.
 
 ---
 
 ### 3. formatN( precision )
 
-**構文**：
+**Syntax**:
 ```
 {d.numberField:formatN(precision)}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "total": 1000.456
 }
 ```
 
-> `Carbone.render(data, options)` 時に、`options.lang` が `en-us` で、ドキュメントタイプが ODS/XLSX 以外（DOCX、PDF など）であるとします。
+> Assume in `Carbone.render(data, options)`, `options.lang` is `en-us`, and the document type is not ODS/XLSX (e.g., DOCX, PDF, etc.).
 
-**テンプレート内容**：
+**Template Content**:
 ```
-数値フォーマット：{d.total:formatN()}
-数値フォーマット（小数点以下2桁）：{d.total:formatN(2)}
-```
-
-**レンダリング結果**：
-```
-数値フォーマット：1,000.456
-数値フォーマット（小数点以下2桁）：1,000.46
+Number Formatting: {d.total:formatN()}
+Number Formatting (2 decimal places): {d.total:formatN(2)}
 ```
 
-**説明**：
-- `formatN()` は `options.lang` 設定に基づいて数値をローカライズ表示します（千の位区切り、小数点またはカンマの使用など）。
-- ODS/XLSX ファイルの場合、数値の精度は主にセルのフォーマット設定に依存します。
+**Rendering Result**:
+```
+Number Formatting: 1,000.456
+Number Formatting (2 decimal places): 1,000.46
+```
+
+**Note**:
+- `formatN()` localizes numbers based on `options.lang` (thousands separator, decimal point, etc.).
+- For ODS/XLSX files, number precision mainly depends on the cell format settings in the spreadsheet.
 
 ---
 
 ### 4. formatC( precisionOrFormat, targetCurrencyCode )
 
-**構文**：
+**Syntax**:
 ```
 {d.numberField:formatC(precisionOrFormat, targetCurrencyCode)}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "amount": 1000.456
 }
 ```
 
-> `Carbone.render(data, options)` 時に、以下のように設定されているとします：
+> Assume the following settings in `Carbone.render(data, options)`:
 > ```json
 > {
 >   "lang": "en-us",
@@ -1025,160 +1193,160 @@ EUR->USD を経由し、強制的に USD->USD：1000
 > }
 > ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-デフォルトで変換し、通貨記号を表示：{d.amount:formatC()}
-通貨名のみ表示（M）：{d.amount:formatC('M')}
-通貨名のみ表示（単数形）：{1:formatC('M')}
-数値+記号（L）：{d.amount:formatC('L')}
-数値+通貨名（LL）：{d.amount:formatC('LL')}
-```
-
-**レンダリング結果**：
-```
-デフォルトで変換し、通貨記号を表示：$2,000.91
-通貨名のみ表示（M）：dollars
-通貨名のみ表示（単数形）：dollar
-数値+記号（L）：$2,000.00
-数値+通貨名（LL）：2,000.00 dollars
+Default conversion with currency symbol: {d.amount:formatC()}
+Only output currency name (M): {d.amount:formatC('M')}
+Only output currency name, singular case: {1:formatC('M')}
+Number + symbol (L): {d.amount:formatC('L')}
+Number + currency name (LL): {d.amount:formatC('LL')}
 ```
 
-**説明**：
-- `precisionOrFormat` は数値（小数点以下の桁数を指定）または文字列（"M"、"L"、"LL"）を指定できます。
-- 他の通貨に切り替える場合は、`targetCurrencyCode` を指定できます。例：`formatC('L', 'EUR')`。
+**Rendering Result**:
+```
+Default conversion with currency symbol: $2,000.91
+Only output currency name (M): dollars
+Only output currency name, singular case: dollar
+Number + symbol (L): $2,000.00
+Number + currency name (LL): 2,000.00 dollars
+```
+
+**Note**:
+- `precisionOrFormat` can be a number (specifying decimal places) or a string ("M", "L", "LL").
+- To switch to another currency, pass `targetCurrencyCode`, e.g., `formatC('L', 'EUR')`.
 
 ---
 
 ### 5. add( )
 
-**構文**：
+**Syntax**:
 ```
 {d.numberField:add(value)}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "base": 1000.4
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-数値に2を加算：{d.base:add(2)}
-```
-
-**レンダリング結果**：
-```
-数値に2を加算：1002.4
+Add 2 to the value: {d.base:add(2)}
 ```
 
-**説明**：`d.base` に指定された値を加算します。文字列形式の数値または純粋な数値に対応します。
+**Rendering Result**:
+```
+Add 2 to the value: 1002.4
+```
+
+**Note**: Adds the parameter to `d.base`, supports string numbers or pure numbers.
 
 ---
 
 ### 6. sub( )
 
-**構文**：
+**Syntax**:
 ```
 {d.numberField:sub(value)}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "base": 1000.4
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-数値から2を減算：{d.base:sub(2)}
-```
-
-**レンダリング結果**：
-```
-数値から2を減算：998.4
+Subtract 2 from the value: {d.base:sub(2)}
 ```
 
-**説明**：`d.base` から指定された値を減算します。
+**Rendering Result**:
+```
+Subtract 2 from the value: 998.4
+```
+
+**Note**: Subtracts the parameter from `d.base`.
 
 ---
 
 ### 7. mul( )
 
-**構文**：
+**Syntax**:
 ```
 {d.numberField:mul(value)}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "base": 1000.4
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-数値に2を乗算：{d.base:mul(2)}
-```
-
-**レンダリング結果**：
-```
-数値に2を乗算：2000.8
+Multiply the value by 2: {d.base:mul(2)}
 ```
 
-**説明**：`d.base` に指定された値を乗算します。
+**Rendering Result**:
+```
+Multiply the value by 2: 2000.8
+```
+
+**Note**: Multiplies `d.base` by the parameter.
 
 ---
 
 ### 8. div( )
 
-**構文**：
+**Syntax**:
 ```
 {d.numberField:div(value)}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "base": 1000.4
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-数値を2で除算：{d.base:div(2)}
-```
-
-**レンダリング結果**：
-```
-数値を2で除算：500.2
+Divide the value by 2: {d.base:div(2)}
 ```
 
-**説明**：`d.base` を指定された値で除算します。
+**Rendering Result**:
+```
+Divide the value by 2: 500.2
+```
+
+**Note**: Divides `d.base` by the parameter.
 
 ---
 
 ### 9. mod( value )
 
-**構文**：
+**Syntax**:
 ```
 {d.numberField:mod(value)}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "num1": 4,
@@ -1186,32 +1354,32 @@ EUR->USD を経由し、強制的に USD->USD：1000
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-4 mod 2：{d.num1:mod(2)}
-3 mod 2：{d.num2:mod(2)}
-```
-
-**レンダリング結果**：
-```
-4 mod 2：0
-3 mod 2：1
+4 mod 2: {d.num1:mod(2)}
+3 mod 2: {d.num2:mod(2)}
 ```
 
-**説明**：`num1 % 2` および `num2 % 2` の結果を計算し、剰余演算を行います。
+**Rendering Result**:
+```
+4 mod 2: 0
+3 mod 2: 1
+```
+
+**Note**: Calculates `num1 % 2` and `num2 % 2`, used for modulo operations.
 
 ---
 
 ### 10. abs( )
 
-**構文**：
+**Syntax**:
 ```
 {d.numberField:abs()}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "value1": -10,
@@ -1219,32 +1387,32 @@ EUR->USD を経由し、強制的に USD->USD：1000
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-絶対値1：{d.value1:abs()}
-絶対値2：{d.value2:abs()}
-```
-
-**レンダリング結果**：
-```
-絶対値1：10
-絶対値2：10.54
+Absolute Value 1: {d.value1:abs()}
+Absolute Value 2: {d.value2:abs()}
 ```
 
-**説明**：数値の絶対値を返します。文字列形式の負数も処理できます。
+**Rendering Result**:
+```
+Absolute Value 1: 10
+Absolute Value 2: 10.54
+```
+
+**Note**: Returns the absolute value of the number, can also handle negative numbers in string format.
 
 ---
 
 ### 11. ceil( )
 
-**構文**：
+**Syntax**:
 ```
 {d.numberField:ceil()}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "dataA": 10.05123,
@@ -1253,56 +1421,141 @@ EUR->USD を経由し、強制的に USD->USD：1000
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-ceil(10.05123)：{d.dataA:ceil()}
-ceil(1.05)：{d.dataB:ceil()}
-ceil(-1.05)：{d.dataC:ceil()}
+ceil(10.05123): {d.dataA:ceil()}
+ceil(1.05): {d.dataB:ceil()}
+ceil(-1.05): {d.dataC:ceil()}
 ```
 
-**レンダリング結果**：
+**Rendering Result**:
 ```
-ceil(10.05123)：11
-ceil(1
-以下是将给定中文文本翻译成日语的版本，保留了原文的意思，并使用了正确的语法和用法。所有Markdown语法（例如，标题、列表、表格、代码块和图片引用）保持不变。
+ceil(10.05123): 11
+ceil(1.05): 2
+ceil(-1.05): -1
+```
+
+**Note**: Rounds the number up to the nearest greater (or equal) integer.
 
 ---
 
-> **構文**：
+### 12. floor( )
+
+**Syntax**:
+```
+{d.numberField:floor()}
+```
+
+**Example**:
+
+**Dataset**:
+```json
+{
+  "dataA": 10.05123,
+  "dataB": 1.05,
+  "dataC": -1.05
+}
+```
+
+**Template Content**:
+```
+floor(10.05123): {d.dataA:floor()}
+floor(1.05): {d.dataB:floor()}
+floor(-1.05): {d.dataC:floor()}
+```
+
+**Rendering Result**:
+```
+floor(10.05123): 10
+floor(1.05): 1
+floor(-1.05): -2
+```
+
+**Note**: Rounds the number down to the nearest smaller (or equal) integer.
+
+---
+
+### 13. int( )
+
+> **Note**: **Not recommended**.  
+> **Syntax**:
+```
+{d.numberField:int()}
+```
+
+**Example**:
+
+**Dataset**:
+```json
+{
+  "price": 12.34
+}
+```
+
+**Template Content**:
+```
+Result: {d.price:int()}
+```
+
+**Rendering Result**:
+```
+Result: 12
+```
+
+**Note**: Converts the number to an integer by removing the decimal part; the official documentation recommends using more accurate `round()` or `floor()`/`ceil()` instead.
+
+---
+
+### 14. toEN( )
+
+> **Note**: **Not recommended**.  
+> **Syntax**:
+```
+{d.numberField:toEN()}
+```
+
+**Note**: Converts numbers to English format with decimal point `.` separation, without localization. It is generally recommended to use `formatN()` for multi-language scenarios.
+
+---
+
+### 15. toFixed( )
+
+> **Note**: **Not recommended**.
+> **Syntax**:
 ```
 {d.numberField:toFixed(decimalCount)}
 ```
 
-**説明**：数値を文字列に変換し、指定された小数桁数を保持しますが、不正確な丸めが発生する可能性があります。`round()` または `formatN()` の使用を推奨します。
+**Description**: Converts a number to a string and retains the specified number of decimal places, but there may be inaccuracies in rounding. It is recommended to use `round()` or `formatN()` instead.
 
 ---
 
 ### 16. toFR( )
 
-> **注意**：**非推奨**。  
-> **構文**：
+> **Note**: **Not recommended for use**.  
+> **Syntax**:
 ```
 {d.numberField:toFR()}
 ```
 
-**説明**：数値をフランス語形式の小数点 `,` で区切って変換しますが、それ以上のローカライズ処理は行いません。多言語や通貨のシナリオでより柔軟に対応するため、`formatN()` または `formatC()` の使用を推奨します。
+**Description**: Converts a number to a format suitable for French locale with a comma `,` as the decimal separator, but does not perform further localization. It is recommended to use `formatN()` or `formatC()` for more flexibility in multilingual and currency scenarios.
 
 ---
 
-## 配列操作（Array manipulation）
+## Array Manipulation
 
 ### 1. aggStr( separator )
-> **バージョン**：ENTERPRISE FEATURE，NEWv4.17.0+  
-> **機能**：配列内の値を1つの文字列に結合し、オプションの区切り文字 `separator` で連結します。区切り文字が指定されない場合、デフォルトは `,` です。
+> **Version**: ENTERPRISE FEATURE, NEWv4.17.0+  
+> **Function**: Merges values in an array into a single string, concatenated with an optional `separator`. If no separator is provided, it defaults to `,`.
 
-**構文**：
+**Syntax**:
 ```
 {d.arrayField[].someAttr:aggStr(separator)}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "cars": [
@@ -1316,48 +1569,48 @@ ceil(1
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-すべてのブランド（デフォルトのカンマ区切り）：
+All brands (default comma separator):
 {d.cars[].brand:aggStr}
 
-すべてのブランド（ハイフン区切りを指定）：
+All brands (specified hyphen separator):
 {d.cars[].brand:aggStr(' - ')}
 
-qty が 3 より大きいブランドをフィルタリング：
+Filtered brands with qty greater than 3:
 {d.cars[.qty > 3].brand:aggStr()}
 ```
 
-**レンダリング結果**：
+**Rendered Result**:
 ```
-すべてのブランド（デフォルトのカンマ区切り）：
+All brands (default comma separator):
 Tesla, Ford, Jeep, GMC, Rivian, Chevrolet
 
-すべてのブランド（ハイフン区切りを指定）：
+All brands (specified hyphen separator):
 Tesla - Ford - Jeep - GMC - Rivian - Chevrolet
 
-qty が 3 より大きいブランドをフィルタリング：
+Filtered brands with qty greater than 3:
 Ford, Chevrolet
 ```
 
-**説明**：
-- `:aggStr` を使用して配列内のフィールドを抽出し結合します。フィルタ条件（例：`[.qty > 3]`）と組み合わせることで、より柔軟な出力が可能です。
-- `separator` パラメータは省略可能で、デフォルトはカンマ + スペース（`, `）です。
+**Description**:
+- Use `:aggStr` to extract and merge fields in an array, which can be combined with filtering conditions (e.g., `[.qty > 3]`) for more flexible output.
+- The `separator` parameter can be omitted, defaulting to a comma followed by a space (`, `).
 
 ---
 
 ### 2. arrayJoin( separator, index, count )
-> **バージョン**：NEWv4.12.0+  
-> **機能**：配列要素（`String` または `Number`）を1つの文字列に結合します。配列のどの部分から結合を開始するかを指定することもできます。
+> **Version**: NEWv4.12.0+  
+> **Function**: Merges array elements (`String` or `Number`) into a single string; optionally specifies which segment of the array to start merging from.
 
-**構文**：
+**Syntax**:
 ```
 {d.arrayField:arrayJoin(separator, index, count)}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "names": ["homer", "bart", "lisa"],
@@ -1366,49 +1619,49 @@ Ford, Chevrolet
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-デフォルトのカンマ区切り：{d.names:arrayJoin()}
-" | " 区切りを使用：{d.names:arrayJoin(' | ')}
-空文字区切りを使用：{d.names:arrayJoin('')}
-2番目以降のすべてを結合：{d.names:arrayJoin('', 1)}
-2番目から1つの要素を結合：{d.names:arrayJoin('', 1, 1)}
-1番目から最後の1つ前の要素を結合：{d.names:arrayJoin('', 0, -1)}
+Default comma separator: {d.names:arrayJoin()}
+Using " | " separator: {d.names:arrayJoin(' | ')}
+Using empty string separator: {d.names:arrayJoin('')}
+Merging all elements starting from the second item: {d.names:arrayJoin('', 1)}
+Merging 1 element starting from the second item: {d.names:arrayJoin('', 1, 1)}
+Merging from the first item to the second last item: {d.names:arrayJoin('', 0, -1)}
 
-空の配列：{d.emptyArray:arrayJoin()}
-配列でないデータ：{d.notArray:arrayJoin()}
-```
-
-**レンダリング結果**：
-```
-デフォルトのカンマ区切り：homer, bart, lisa
-" | " 区切りを使用：homer | bart | lisa
-空文字区切りを使用：homerbartlisa
-2番目以降のすべてを結合：bartlisa
-2番目から1つの要素を結合：bart
-1番目から最後の1つ前の要素を結合：homerbart
-
-空の配列：
-配列でないデータ：20
+Empty array: {d.emptyArray:arrayJoin()}
+Non-array data: {d.notArray:arrayJoin()}
 ```
 
-**説明**：
-- `separator` のデフォルトはカンマ + スペース（`, `）です。
-- `index` と `count` は配列の一部を切り取るために使用されます。`count` は負の値を指定することで末尾から逆方向に要素を取得できます。
-- 配列でないデータ（`null`、`undefined`、オブジェクト、数字など）の場合、そのまま出力されます。
+**Rendered Result**:
+```
+Default comma separator: homer, bart, lisa
+Using " | " separator: homer | bart | lisa
+Using empty string separator: homerbartlisa
+Merging all elements starting from the second item: bartlisa
+Merging 1 element starting from the second item: bart
+Merging from the first item to the second last item: homerbart
+
+Empty array:
+Non-array data: 20
+```
+
+**Description**:
+- `separator` defaults to a comma followed by a space (`, `).
+- `index` and `count` are used to extract a portion of the array; `count` can be negative to indicate counting from the end.
+- If the data is not of array type (`null`, `undefined`, object, or number), it will be output as is.
 
 ---
 
 ### 3. arrayMap( objSeparator, attributeSeparator, attributes )
-> **バージョン**：v0.12.5+  
-> **機能**：オブジェクト配列を文字列にマッピングします。オブジェクト間の区切り文字、属性間の区切り文字、および出力する属性を指定できます。
+> **Version**: v0.12.5+  
+> **Function**: Maps an array of objects into a string. Allows specifying separators between objects and attributes, as well as which attributes to output.
 
-**構文**：
+**Syntax**:
 ```
 {d.arrayField:arrayMap(objSeparator, attributeSeparator, attributes)}
 ```
 
-**例**：
+**Example**:
 
 ```json
 {
@@ -1422,73 +1675,73 @@ Ford, Chevrolet
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-デフォルトのマッピング（カンマ+スペースをオブジェクト区切り、コロンを属性区切りとして使用）：
+Default mapping (using comma+space as object separator, colon as attribute separator):
 {d.people:arrayMap()}
 
-オブジェクト間で " - " 区切りを使用：
+Using " - " as object separator:
 {d.people:arrayMap(' - ')}
 
-オブジェクト属性で " | " 区切りを使用：
+Using " | " as attribute separator:
 {d.people:arrayMap(' ; ', '|')}
 
-id のみをマッピング：
+Mapping only id:
 {d.people:arrayMap(' ; ', '|', 'id')}
 
-数字の配列：
+Numeric array:
 {d.numbers:arrayMap()}
 
-空の配列：
+Empty array:
 {d.emptyArray:arrayMap()}
 
-配列でないデータ：
+Non-array data:
 {d.mixed:arrayMap()}
 ```
 
-**レンダリング結果**：
+**Rendered Result**:
 ```
-デフォルトのマッピング：
+Default mapping:
 2:homer, 3:bart
 
-オブジェクト間で " - " 区切りを使用：
+Using " - " as object separator:
 2:homer - 3:bart
 
-オブジェクト属性で " | " 区切りを使用：
+Using " | " as attribute separator:
 2|homer ; 3|bart
 
-id のみをマッピング：
+Mapping only id:
 2 ; 3
 
-数字の配列：
+Numeric array:
 10, 50
 
-空の配列：
+Empty array:
 
-配列でないデータ：
+Non-array data:
 { "id": 2, "name": "homer" }
 ```
 
-**説明**：
-- オブジェクト配列の場合、デフォルトで**すべて**の利用可能な1次属性が `属性名:属性値` の形式で出力されます。
-- `objSeparator` は異なるオブジェクトの出力を区切るために使用され、デフォルトはカンマ + スペースです。`attributeSeparator` は属性を区切るために使用され、デフォルトはコロン `:` です。`attributes` はオブジェクトの一部の属性のみを出力するために指定できます。
-- 配列でないデータが渡された場合、そのまま出力されます。
+**Description**:
+- If it is an array of objects, all available first-level attributes are output by default, concatenated in the form `attributeName:attributeValue`.
+- `objSeparator` is used to separate different objects, defaulting to a comma followed by a space; `attributeSeparator` separates attributes, defaulting to a colon `:`; `attributes` can specify which attributes to output.
+- If the input data is not an array, it is output as is.
 
 ---
 
 ### 4. count( start )
-> **バージョン**：v1.1.0+  
-> **機能**：ループ（例：`{d.array[i].xx}`）内で**行番号**または**シーケンス番号**を表示します。デフォルトでは1から始まります。  
-> **注意**：v4.0.0 以降、この機能は内部的に `:cumCount` に置き換えられました。
+> **Version**: v1.1.0+  
+> **Function**: Prints a **line number** or **sequence number** in a loop (e.g., `{d.array[i].xx}`), starting from 1 by default.  
+> **Note**: Starting from v4.0.0, this function has been internally replaced by `:cumCount`.
 
-**構文**：
+**Syntax**:
 ```
 {d.array[i].someField:count(start)}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "employees": [
@@ -1499,133 +1752,133 @@ id のみをマッピング：
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-従業員リスト：
-番号 | 名前
+Employee List:
+No. | Name
 {d.employees[i].name:count()}. {d.employees[i].name}
 {d.employees[i+1]}
 ```
 
-**レンダリング結果**：
+**Rendered Result**:
 ```
-従業員リスト：
-番号 | 名前
+Employee List:
+No. | Name
 1. James
 2. Emily
 3. Michael
 ```
 
-**説明**：
-- ループ（例：`{d.array[i].xx}` などのシナリオ）内でのみ有効で、現在の行インデックスのカウントを表示します。
-- `start` を指定することで、特定の数からカウントを開始できます。例えば、`:count(5)` の場合、最初の行は5から始まります。
-- Carbone 4.0+ では、より柔軟な `:cumCount` の使用を推奨します。
+**Description**:
+- Only valid in loops (including scenarios like `{d.array[i].xx}`), used to print the current line index count.
+- `start` can specify a starting number, e.g., `:count(5)` will start counting from 5.
+- Carbone 4.0+ recommends using `:cumCount` for more flexibility.
 
 ---
 
-# 条件付き出力（Conditioned output）
+# Conditioned Output
 
-Carbone は、テンプレート内で特定の条件に基づいてコンテンツを**非表示**または**表示**するための一連の条件付き出力フォーマッタを提供します。ビジネス要件に応じて、**`drop`/`keep`**（簡潔な使用法）または**`showBegin`/`showEnd`**、**`hideBegin`/`hideEnd`**（大規模なコンテンツに適した）などを選択できます。
+Carbone provides a series of condition-based output formatters to **hide** or **display** specified content in templates based on specific conditions. Depending on business needs, you can choose **`drop`/`keep`** (concise usage) or **`showBegin`/`showEnd`**, **`hideBegin`/`hideEnd`** (suitable for large sections of content).
 
 ### 1. drop(element)
-> **バージョン**：ENTERPRISE FEATURE，UPDATEDv4.22.10+  
-> **機能**：条件が真の場合、ドキュメント内の特定の要素（段落、テーブル行、画像、チャートなど）を**削除**します。
+> **Version**: ENTERPRISE FEATURE, UPDATEDv4.22.10+  
+> **Function**: If the condition is true, **deletes** an element or several elements in the document, such as paragraphs, table rows, images, charts, etc.
 
-**構文**：
+**Syntax**:
 ```
 {d.data:ifEM():drop(element, nbrToDrop)}
 ```
-- `element`：`p`（段落）、`row`（テーブル行）、`img`（画像）、`table`（テーブル全体）、`chart`（チャート）、`shape`（形状）、`slide`（スライド、ODPのみ）、`item`（リスト項目、ODP/ODTのみ）などを指定できます。
-- `nbrToDrop`：オプション、整数、現在の要素とそれ以降の削除する要素数を指定します。
+- `element`: Can be `p` (paragraph), `row` (table row), `img` (image), `table` (entire table), `chart` (chart), `shape` (shape), `slide` (slide, ODP only), or `item` (list item, ODP/ODT only).
+- `nbrToDrop`: Optional, an integer indicating how many elements to delete starting from the current one.
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "imgUrl": null
 }
 ```
 
-**テンプレート内容**（DOCX シナリオ、簡略化された例）：
+**Template Content** (DOCX scenario, simplified example):
 ```
-ここに画像があります：{d.imgUrl:ifEM:drop(img)}
+Here is an image: {d.imgUrl:ifEM:drop(img)}
 ```
 
-- Word テンプレートで、このプレースホルダーを画像のタイトルまたは説明に配置します。
+- In the Word template, place this placeholder in the image's title or description.
 
-**レンダリング結果**：
+**Rendered Result**:
 ```
-ここに画像があります：
+Here is an image:
 ```
-> `imgUrl` が空の場合（`ifEM` が真）、画像が削除されます。
+> The image is deleted because `imgUrl` is empty (`ifEM` is true).
 
-**説明**：
-- `ifEM` 条件が成立すると、`drop(img)` が実行され、画像とその段落内容が削除されます。
-- `drop` は DOCX/ODT/ODS/ODP/PPTX/PDF/HTML のみをサポートします。`drop` が実行されると、それ以降のフォーマッタは実行されません。
+**Description**:
+- If the `ifEM` condition is met, `drop(img)` is executed, deleting the image and its associated paragraph content.
+- `drop` is only supported in DOCX/ODT/ODS/ODP/PPTX/PDF/HTML; once `drop` is executed, no other formatters are executed.
 
 ---
 
 ### 2. keep(element)
-> **バージョン**：ENTERPRISE FEATURE，NEWv4.17.0+  
-> **機能**：条件が真の場合、ドキュメント内の特定の要素を**保持/表示**し、それ以外の場合は表示しません。
+> **Version**: ENTERPRISE FEATURE, NEWv4.17.0+  
+> **Function**: If the condition is true, **retains/displays** an element or several elements in the document; otherwise, it does not display them.
 
-**構文**：
+**Syntax**:
 ```
 {d.data:ifNEM:keep(element, nbrToKeep)}
 ```
-- `element`：`drop` と同様に、`p`、`row`、`img`、`table`、`chart`、`shape`、`slide`、`item` などを指定できます。
-- `nbrToKeep`：オプション、整数、現在の要素とそれ以降の保持する要素数を指定します。
+- `element`: Same as `drop`, can be `p`, `row`, `img`, `table`, `chart`, `shape`, `slide`, `item`, etc.
+- `nbrToKeep`: Optional, an integer indicating how many elements to retain starting from the current one.
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "tableData": []
 }
 ```
 
-**テンプレート内容**（DOCX シナリオ、簡略化された例）：
+**Template Content** (DOCX scenario, simplified example):
 ```
 {d.tableData:ifNEM:keep(table)}
 ```
 
-- Word テンプレートで、このプレースホルダーをテーブル内のセルに配置します。
+- In the Word template, place this placeholder in a cell within the table.
 
-**レンダリング結果**：
+**Rendered Result**:
 ```
-（空白）
+(Blank)
 ```
-> `tableData` が空の場合、`ifNEM` が偽（not empty 失敗）となり、テーブルが保持されず、テーブル全体が削除されます。
+> Since `tableData` is empty, `ifNEM` is false (not empty fails), so the table is not retained, and the entire table is deleted.
 
-**説明**：
-- 条件が成立すると、対応する要素が保持されます。それ以外の場合、要素とその内容が削除されます。
-- `drop` とは逆に、`keep` は条件が満たされない場合に要素を削除します。
+**Description**:
+- If the condition is met, the corresponding element is retained; otherwise, the element and all its content are deleted.
+- Opposite to `drop`, `keep` deletes the element when the condition is not met.
 
 ---
 
 ### 3. showBegin()/showEnd()
-> **バージョン**：COMMUNITY FEATURE，v2.0.0+  
-> **機能**：`showBegin` と `showEnd` の間のコンテンツ（複数のテキスト、テーブル、画像など）を表示します。条件が真の場合、この部分が保持され、偽の場合、削除されます。
+> **Version**: COMMUNITY FEATURE, v2.0.0+  
+> **Function**: Displays the content between `showBegin` and `showEnd` (which can include multiple paragraphs, tables, images, etc.), retaining this section if the condition is true, otherwise deleting it.
 
-**構文**：
+**Syntax**:
 ```
 {d.someData:ifEQ(someValue):showBegin}
-...表示するコンテンツ...
+...Content to display...
 {d.someData:showEnd}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "toBuy": true
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
 Banana{d.toBuy:ifEQ(true):showBegin}
 Apple
@@ -1633,42 +1886,42 @@ Pineapple
 {d.toBuy:showEnd}grapes
 ```
 
-**レンダリング結果**：
+**Rendered Result**:
 ```
 Banana
 Apple
 Pineapple
 grapes
 ```
-> `toBuy` が `true` の場合、`showBegin` と `showEnd` の間のすべてのコンテンツが表示されます。
+> When `toBuy` is `true`, all content between `showBegin` and `showEnd` is displayed.
 
-**説明**：
-- **複数行または複数ページ**のコンテンツの表示と非表示に適しています。1行のみの場合は、より簡潔な `keep`/`drop` の使用を検討してください。
-- `showBegin` と `showEnd` の間では、**改行（Shift+Enter）**のみを使用することを推奨します。
+**Description**:
+- Suitable for **multi-line or multi-page** content hiding and displaying; if it's just a single line, consider using `keep`/`drop` for a more concise approach.
+- It is recommended to use only **line breaks (Shift+Enter)** between `showBegin` and `showEnd` to ensure proper rendering.
 
 ---
 
 ### 4. hideBegin()/hideEnd()
-> **バージョン**：COMMUNITY FEATURE，v2.0.0+  
-> **機能**：`hideBegin` と `hideEnd` の間のコンテンツを非表示にします。条件が真の場合、この部分が削除され、偽の場合、保持されます。
+> **Version**: COMMUNITY FEATURE, v2.0.0+  
+> **Function**: Hides the content between `hideBegin` and `hideEnd`, deleting this section if the condition is true, otherwise retaining it.
 
-**構文**：
+**Syntax**:
 ```
 {d.someData:ifEQ(someValue):hideBegin}
-...非表示にするコンテンツ...
+...Content to hide...
 {d.someData:hideEnd}
 ```
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "toBuy": true
 }
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
 Banana{d.toBuy:ifEQ(true):hideBegin}
 Apple
@@ -1676,282 +1929,116 @@ Pineapple
 {d.toBuy:hideEnd}grapes
 ```
 
-**レンダリング結果**：
+**Rendered Result**:
 ```
 Banana
 grapes
 ```
-> `toBuy` が `true` の場合、`hideBegin` と `hideEnd` の間の Apple と Pineapple のコンテンツが非表示になります。
+> When `toBuy` is `true`, the content between `hideBegin` and `hideEnd` (Apple, Pineapple) is hidden.
 
-**説明**：
-- `showBegin()/showEnd()` とは逆に、複数のテキスト、テーブル、画像などを非表示にするために使用されます。
-- 同様に、`hideBegin` と `hideEnd` の間では**改行（Shift+Enter）**のみを使用することを推奨します。
+**Description**:
+- Opposite to `showBegin()/showEnd()`, used to hide multiple paragraphs, tables, images, etc.
+- Similarly, it is recommended to use only **line breaks (Shift+Enter)** between `hideBegin` and `hideEnd`.
 
 ---
 
-## 日付と時刻の操作フォーマッタの例
+## Date and Time Operation Formatter Examples
 
-> **注意**：v3.0.0 以降、Carbone は日付処理に [Day.js](https://day.js.org/docs/en/display/format) を使用しています。Moment.js に関連するほとんどの形式は Day.js でも使用可能ですが、基盤となるライブラリは Day.js に置き換えられました。
+> **Note**: Starting from v3.0.0, Carbone uses [Day.js](https://day.js.org/docs/en/display/format) for date processing. Most formats related to Moment.js are still available in Day.js, but the underlying library has been replaced with Day.js.
 
-### 1. {c.now} の使用
+### 1. Usage of {c.now}
 
-テンプレート内で `{c.now}` を使用して現在の UTC 時間（`now`）を取得できます。ただし、`options.complement` を通じてカスタムデータが渡されていない場合に限ります。例：
+In templates, you can use `{c.now}` to get the current UTC time (`now`), provided that no custom data is passed through `options.complement` to override it during rendering. Example:
 
-**データセット**（空または `c` フィールドを含まない）：
+**Dataset** (can be empty or without `c` field):
 ```json
 {}
 ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-現在の時刻：{c.now:formatD('YYYY-MM-DD HH:mm:ss')}
-```
-
-**レンダリング結果**（例）：
-```
-現在の時刻：2025-01-07 10:05:30
+Current time: {c.now:formatD('YYYY-MM-DD HH:mm:ss')}
 ```
 
-**説明**：
-- `{c.now}` は予約タグで、システムの現在の UTC 時間を自動的に挿入します。
-- `:formatD()` などのフォーマッタと組み合わせて指定された形式で出力します。
-
----
+**Rendered Result** (example):
 ```
-2000 ミリ秒を秒に変換：{d.intervalMs:formatI('second')}
-3600000 ミリ秒を分に変換：{d.longIntervalMs:formatI('minute')}
-3600000 ミリ秒を時間に変換：{d.longIntervalMs:formatI('hour')}
+Current time: 2025-01-07 10:05:30
 ```
 
-**レンダリング結果**：
-```
-2000 ミリ秒を秒に変換：2
-3600000 ミリ秒を分に変換：60
-3600000 ミリ秒を時間に変換：1
-```
-
-**説明**：
-- 時間間隔の単位変換を行い、人間が読みやすい形式（例：`human`/`human+`）で「何秒前」や「何分後」を表示することも可能です。
-- 正負の値の処理において、`human+` は「...ago」または「in a few ...」を出力し、`human` は方向性のない「a few seconds」などを出力します。
+**Description**:
+- `{c.now}` is a reserved tag that automatically inserts the system's current UTC time.
+- Use with `:formatD()` and other formatters to output in the specified format.
 
 ---
 
-### 4. addD( amount, unit, patternIn )
+### 2. formatD( patternOut, patternIn )
 
-**構文**：
+**Syntax**:
 ```
-{d.dateField:addD(amount, unit, patternIn)}
+{d.dateField:formatD(patternOut, patternIn)}
 ```
 
-- `amount`：数値または文字列で、追加する量を指定します。
-- `unit`：`day`、`week`、`month`、`year`、`hour`、`minute`、`second`、`millisecond` などを使用できます（大文字小文字を区別せず、複数形や省略形もサポート）。
-- `patternIn`：オプションで、入力日付のフォーマットを指定します。デフォルトは ISO8601 です。
+- `patternOut`: The output date format, conforming to Day.js format specifications or localized formats (e.g., `L`, `LL`, `LLLL`, etc.).
+- `patternIn`: The input date format, defaulting to ISO 8601, can specify formats like `YYYYMMDD`, `X` (Unix timestamp), etc.
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
-  "startDate": "2017-05-10T15:57:23.769561+03:00"
+  "eventDate": "20160131"
 }
 ```
 
-> `Carbone.render(data, options)` の際に以下の設定を想定：
+> Assume during `Carbone.render(data, options)`:
 > ```json
 > {
->   "lang": "fr",
+>   "lang": "en", 
 >   "timezone": "Europe/Paris"
 > }
 > ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-startDate に3日を追加：{d.startDate:addD('3', 'day')}
-startDate に3ヶ月を追加：{d.startDate:addD('3', 'month')}
-```
-
-**レンダリング結果**：
-```
-startDate に3日を追加：2017-05-13T12:57:23.769Z
-startDate に3ヶ月を追加：2017-08-10T12:57:23.769Z
+Date (short format): {d.eventDate:formatD('L')} 
+Date (full English): {d.eventDate:formatD('LLLL')} 
+Day of the week: {d.eventDate:formatD('dddd')}
 ```
 
-**説明**：
-- 結果はUTC時間で表示されます。ローカライズされた出力が必要な場合は、`formatD('YYYY-MM-DD HH:mm')` などのフォーマッタを併用してください。
-- 入力日付が `20160131` のような形式で `patternIn` が明示されていない場合、Day.js が自動的に認識する場合もありますが、正確性を確保するために `{d.field:addD('...', '...', 'YYYYMMDD')}` を使用することが推奨されます。
+**Rendered Result**:
+```
+Date (short format): 01/31/2016
+Date (full English): Sunday, January 31, 2016 12:00 AM
+Day of the week: Sunday
+```
+
+**Description**:
+- If `patternIn` is not specified, it defaults to ISO 8601, but here `20160131` can also be automatically recognized. To explicitly specify, use `{d.eventDate:formatD('L', 'YYYYMMDD')}`.
+- `options.lang` and `options.timezone` affect the output language and timezone conversion.
 
 ---
 
-### 5. subD( amount, unit, patternIn )
+### 3. formatI( patternOut, patternIn )
 
-**構文**：
+**Syntax**:
 ```
-{d.dateField:subD(amount, unit, patternIn)}
+{d.durationField:formatI(patternOut, patternIn)}
 ```
 
-- 使用方法は `addD()` と同様ですが、時間を過去に遡ります。
+- `patternOut`: The output format, can be `human`, `human+`, `milliseconds/ms`, `seconds/s`, `minutes/m`, `hours/h`, `days/d`, `weeks/w`, `months/M`, `years/y`, etc.
+- `patternIn`: Optional, the input unit defaults to milliseconds, can also specify `seconds`, `minutes`, `hours`, `days`, etc.
 
-**例**：
+**Example**:
 
-**データセット**：
+**Dataset**:
 ```json
 {
-  "myDate": "2017-05-10T15:57:23.769561+03:00"
+  "intervalMs": 2000,
+  "longIntervalMs": 3600000
 }
 ```
 
-**テンプレート内容**：
-```
-myDate から3日を減算：{d.myDate:subD('3', 'day')}
-myDate から3ヶ月を減算：{d.myDate:subD('3', 'month')}
-```
-
-**レンダリング結果**：
-```
-myDate から3日を減算：2017-05-07T12:57:23.769Z
-myDate から3ヶ月を減算：2017-02-10T12:57:23.769Z
-```
-
-**説明**：
-- `addD` とは逆に、`subD` は日付を過去に移動させます。
-- 同じ単位とフォーマット設定がサポートされています。
-
----
-
-### 6. startOfD( unit, patternIn )
-
-**構文**：
-```
-{d.dateField:startOfD(unit, patternIn)}
-```
-
-- `unit`：`day`、`month`、`year`、`week` などを指定し、日付をその単位の開始時刻に設定します（例：`day`=午前0時、`month`=1日 00:00:00 など）。
-- `patternIn`：オプションで、入力日付のフォーマットを指定します。
-
-**例**：
-
-**データセット**：
-```json
-{
-  "someDate": "2017-05-10T15:57:23.769561+03:00"
-}
-```
-
-**テンプレート内容**：
-```
-someDate を当日の開始時刻に設定：{d.someDate:startOfD('day')}
-someDate を当月の開始時刻に設定：{d.someDate:startOfD('month')}
-```
-
-**レンダリング結果**：
-```
-someDate を当日の開始時刻に設定：2017-05-10T00:00:00.000Z
-someDate を当月の開始時刻に設定：2017-05-01T00:00:00.000Z
-```
-
-**説明**：
-- レポートの統計や特定の時間粒度への整列など、よく使用されます。
-
----
-
-### 7. endOfD( unit, patternIn )
-
-**構文**：
-```
-{d.dateField:endOfD(unit, patternIn)}
-```
-
-- `unit`：`day`、`month`、`year` などを指定し、日付をその単位の終了時刻に設定します（例：`day`=23:59:59.999、`month`=最終日 23:59:59.999 など）。
-- `patternIn`：オプションで、入力日付のフォーマットを指定します。
-
-**例**：
-
-**データセット**：
-```json
-{
-  "someDate": "2017-05-10T15:57:23.769561+03:00"
-}
-```
-
-**テンプレート内容**：
-```
-someDate を当日の終了時刻に設定：{d.someDate:endOfD('day')}
-someDate を当月の終了時刻に設定：{d.someDate:endOfD('month')}
-```
-
-**レンダリング結果**：
-```
-someDate を当日の終了時刻に設定：2017-05-10T23:59:59.999Z
-someDate を当月の終了時刻に設定：2017-05-31T23:59:59.999Z
-```
-
-**説明**：
-- `startOfD` と対応し、日付をその日、月、年の最終時刻に「押し上げ」ます。
-
----
-
-### 8. diffD( toDate, unit, patternFromDate, patternToDate )
-
-**構文**：
-```
-{d.fromDate:diffD(toDate, unit, patternFromDate, patternToDate)}
-```
-
-- `toDate`：比較対象の日付で、文字列または数値（Unix タイムスタンプ）を指定できます。
-- `unit`：オプションで、`day/d`、`week/w`、`month/M`、`year/y`、`hour/h`、`minute/m`、`second/s`、`millisecond/ms` をサポートし、デフォルトはミリ秒です。
-- `patternFromDate` / `patternToDate`：オプションで、入力日付のフォーマットを指定します。
-
-**例**：
-
-**データセット**：
-```json
-{
-  "start": "20101001"
-}
-```
-**テンプレート内容**：
-```
-デフォルトのミリ秒間隔：{d.start:diffD('20101201')}
-秒単位で表示：{d.start:diffD('20101201', 'second')}
-日単位で表示：{d.start:diffD('20101201', 'days')}
-```
-
-**レンダリング結果**：
-```
-デフォルトのミリ秒間隔：5270400000
-秒単位で表示：5270400
-日単位で表示：61
-```
-
-**説明**：
-- 元の日付フォーマットと対象日付フォーマットが異なる場合、`patternFromDate` と `patternToDate` をそれぞれ指定できます。
-- 差が正の場合は `toDate` が `fromDate` より後または大きいことを示し、負の場合は `toDate` が `fromDate` より前または小さいことを示します。
-
----
-
-### 9. convDate( patternIn, patternOut )
-
-> **注意**：**非推奨**  
-> v3.0.0 以降、公式では `formatD(patternOut, patternIn)` の使用を推奨しており、より柔軟な機能と Day.js との互換性を提供します。
-
-**構文**：
-```
-{d.dateField:convDate(patternIn, patternOut)}
-```
-
-- `patternIn`：入力日付のフォーマット。
-- `patternOut`：出力日付のフォーマット。
-
-**例**：
-
-**データセット**：
-```json
-{
-  "myDate": "20160131"
-}
-```
-
-> `Carbone.render(data, options)` の際に以下の設定を想定：
+> Assume during `Carbone.render(data, options)`:
 > ```json
 > {
 >   "lang": "en",
@@ -1959,112 +2046,501 @@ someDate を当月の終了時刻に設定：2017-05-31T23:59:59.999Z
 > }
 > ```
 
-**テンプレート内容**：
+**Template Content**:
 ```
-短い日付形式：{d.myDate:convDate('YYYYMMDD', 'L')}
-完全な日付形式：{d.myDate:convDate('YYYYMMDD', 'LLLL')}
-```
-
-**レンダリング結果**：
-```
-短い日付形式：01/31/2016
-完全な日付形式：Sunday, January 31, 2016 12:00 AM
+2000 milliseconds to seconds: {d.intervalMs:formatI('second')}
+3600000 milliseconds to minutes: {d.longIntervalMs:formatI('minute')}
+3600000 milliseconds to hours: {d.longIntervalMs:formatI('hour')}
 ```
 
-**説明**：
-- `formatD` と同様の使用方法ですが、**非推奨**（UNRECOMMENDED）とされています。
-- 新規プロジェクトでは `formatD` を統一して使用することを推奨します。
+**Rendering Result**:
+```
+2000 milliseconds to seconds: 2
+3600000 milliseconds to minutes: 60
+3600000 milliseconds to hours: 1
+```
+
+**Explanation**:
+- Convert time intervals between units, or output human-readable time (e.g., `human`/`human+`) to display "a few seconds ago" or "in a few minutes."
+- For handling positive and negative values, `human+` will output "...ago" or "in a few ...", while `human` only outputs expressions like "a few seconds" without direction.
 
 ---
 
-### Day.js 日付フォーマット早見表
+### 4. addD( amount, unit, patternIn )
 
-`patternOut` では以下の一般的なフォーマットを使用できます（一部の例）：
+**Syntax**:
+```
+{d.dateField:addD(amount, unit, patternIn)}
+```
 
-| フォーマット  | サンプル出力                 | 説明                                             |
-|:----  |:------------------------ |:------------------------------------------------ |
-| `X`   | `1360013296`            | Unix タイムスタンプ（秒単位）                    |
-| `x`   | `1360013296123`         | Unix ミリ秒タイムスタンプ                        |
-| `YYYY`| `2025`                  | 4桁の年                                          |
-| `MM`  | `01-12`                 | 2桁の月                                          |
-| `DD`  | `01-31`                 | 2桁の日                                          |
-| `HH`  | `00-23`                 | 24時間制の2桁の時間                              |
-| `mm`  | `00-59`                 | 2桁の分                                          |
-| `ss`  | `00-59`                 | 2桁の秒                                          |
-| `dddd`| `Sunday-Saturday`       | 曜日の完全名                                     |
-| `ddd` | `Sun-Sat`               | 曜日の略称                                       |
-| `A`   | `AM` / `PM`             | 午前/午後（大文字）                              |
-| `a`   | `am` / `pm`             | 午前/午後（小文字）                              |
-| `L`   | `MM/DD/YYYY`            | ローカライズされた短い日付形式                   |
-| `LL`  | `MMMM D, YYYY`          | ローカライズされた日付（月の完全名付き）         |
-| `LLL` | `MMMM D, YYYY h:mm A`   | ローカライズされた日付（時間と月の完全名付き）   |
-| `LLLL`| `dddd, MMMM D, YYYY h:mm A` | ローカライズされた完全な日付（曜日付き）   |
+- `amount`: A number or string indicating the quantity to add.
+- `unit`: Available units include `day`, `week`, `month`, `year`, `hour`, `minute`, `second`, `millisecond` (case-insensitive, and supports plural and abbreviations).
+- `patternIn`: Optional, specifies the input date format, defaults to ISO8601.
 
-その他のフォーマットは [Day.js 公式ドキュメント](https://day.js.org/docs/en/display/format) または上記のリストを参照してください。
+**Example**:
+
+**Dataset**:
+```json
+{
+  "startDate": "2017-05-10T15:57:23.769561+03:00"
+}
+```
+
+> Assuming during `Carbone.render(data, options)`:
+> ```json
+> {
+>   "lang": "fr",
+>   "timezone": "Europe/Paris"
+> }
+> ```
+
+**Template Content**:
+```
+Add 3 days to startDate: {d.startDate:addD('3', 'day')}
+Add 3 months to startDate: {d.startDate:addD('3', 'month')}
+```
+
+**Rendering Result**:
+```
+Add 3 days to startDate: 2017-05-13T12:57:23.769Z
+Add 3 months to startDate: 2017-08-10T12:57:23.769Z
+```
+
+**Explanation**:
+- The result is displayed in UTC time. To localize the output, use formatters like `formatD('YYYY-MM-DD HH:mm')`.
+- If the input date is in a format like `20160131` and `patternIn` is not explicitly specified, Day.js may automatically recognize it. However, it is recommended to use `{d.field:addD('...', '...', 'YYYYMMDD')}` for accuracy.
 
 ---
-| {d.staffs[i].name} | {d.staffs[i].department} | {d.staffs[i].position} |
-| {d.staffs[i+1].name} | {d.staffs[i+1].department} | {d.staffs[i+1].position} |
 
-*「部門」列でセルを結合すると、レンダリングに異常が発生する可能性があります。*
+### 5. subD( amount, unit, patternIn )
 
-**正しい例**：
+**Syntax**:
+```
+{d.dateField:subD(amount, unit, patternIn)}
+```
 
-| 名前 | 部門 | 役職 |
+- Similar to `addD()`, but moves the date backward.
+
+**Example**:
+
+**Dataset**:
+```json
+{
+  "myDate": "2017-05-10T15:57:23.769561+03:00"
+}
+```
+
+**Template Content**:
+```
+Subtract 3 days from myDate: {d.myDate:subD('3', 'day')}
+Subtract 3 months from myDate: {d.myDate:subD('3', 'month')}
+```
+
+**Rendering Result**:
+```
+Subtract 3 days from myDate: 2017-05-07T12:57:23.769Z
+Subtract 3 months from myDate: 2017-02-10T12:57:23.769Z
+```
+
+**Explanation**:
+- Opposite to `addD`, `subD` moves the date in the past direction.
+- Supports the same units and format configurations.
+
+---
+
+### 6. startOfD( unit, patternIn )
+
+**Syntax**:
+```
+{d.dateField:startOfD(unit, patternIn)}
+```
+
+- `unit`: `day`, `month`, `year`, `week`, etc., sets the date to the start of the unit (e.g., `day`=midnight, `month`=1st 00:00:00, etc.).
+- `patternIn`: Optional, specifies the input date format.
+
+**Example**:
+
+**Dataset**:
+```json
+{
+  "someDate": "2017-05-10T15:57:23.769561+03:00"
+}
+```
+
+**Template Content**:
+```
+Set someDate to the start of the day: {d.someDate:startOfD('day')}
+Set someDate to the start of the month: {d.someDate:startOfD('month')}
+```
+
+**Rendering Result**:
+```
+Set someDate to the start of the day: 2017-05-10T00:00:00.000Z
+Set someDate to the start of the month: 2017-05-01T00:00:00.000Z
+```
+
+**Explanation**:
+- Commonly used in scenarios like report statistics or aligning to a specific time granularity.
+
+---
+
+### 7. endOfD( unit, patternIn )
+
+**Syntax**:
+```
+{d.dateField:endOfD(unit, patternIn)}
+```
+
+- `unit`: `day`, `month`, `year`, etc., sets the date to the end of the unit (e.g., `day`=23:59:59.999, `month`=last day 23:59:59.999, etc.).
+- `patternIn`: Optional, specifies the input date format.
+
+**Example**:
+
+**Dataset**:
+```json
+{
+  "someDate": "2017-05-10T15:57:23.769561+03:00"
+}
+```
+
+**Template Content**:
+```
+Set someDate to the end of the day: {d.someDate:endOfD('day')}
+Set someDate to the end of the month: {d.someDate:endOfD('month')}
+```
+
+**Rendering Result**:
+```
+Set someDate to the end of the day: 2017-05-10T23:59:59.999Z
+Set someDate to the end of the month: 2017-05-31T23:59:59.999Z
+```
+
+**Explanation**:
+- Corresponds to `startOfD`, pushing the date to the last moment of the day, month, or year.
+
+---
+
+### 8. diffD( toDate, unit, patternFromDate, patternToDate )
+
+**Syntax**:
+```
+{d.fromDate:diffD(toDate, unit, patternFromDate, patternToDate)}
+```
+
+- `toDate`: The target date for comparison, which can be a string or number (Unix timestamp).
+- `unit`: Optional, supports `day/d`, `week/w`, `month/M`, `year/y`, `hour/h`, `minute/m`, `second/s`, `millisecond/ms`, defaults to milliseconds.
+- `patternFromDate` / `patternToDate`: Optional, specifies the input date format.
+
+**Example**:
+
+**Dataset**:
+```json
+{
+  "start": "20101001"
+}
+```
+
+**Template Content**:
+```
+Default millisecond interval: {d.start:diffD('20101201')}
+In seconds: {d.start:diffD('20101201', 'second')}
+In days: {d.start:diffD('20101201', 'days')}
+```
+
+**Rendering Result**:
+```
+Default millisecond interval: 5270400000
+In seconds: 5270400
+In days: 61
+```
+
+**Explanation**:
+- If the original date format differs from the target date format, specify them using `patternFromDate` and `patternToDate`.
+- A positive difference indicates that `toDate` is later or larger than `fromDate`; a negative difference indicates the opposite.
+
+---
+
+### 9. convDate( patternIn, patternOut )
+
+> **Note**: **Not Recommended**  
+> Starting from v3.0.0, it is officially recommended to use `formatD(patternOut, patternIn)`, which offers more flexibility and better compatibility with Day.js.
+
+**Syntax**:
+```
+{d.dateField:convDate(patternIn, patternOut)}
+```
+
+- `patternIn`: Input date format.
+- `patternOut`: Output date format.
+
+**Example**:
+
+**Dataset**:
+```json
+{
+  "myDate": "20160131"
+}
+```
+
+> Assuming during `Carbone.render(data, options)`:
+> ```json
+> {
+>   "lang": "en",
+>   "timezone": "Europe/Paris"
+> }
+> ```
+
+**Template Content**:
+```
+Short date: {d.myDate:convDate('YYYYMMDD', 'L')}
+Full date: {d.myDate:convDate('YYYYMMDD', 'LLLL')}
+```
+
+**Rendering Result**:
+```
+Short date: 01/31/2016
+Full date: Sunday, January 31, 2016 12:00 AM
+```
+
+**Explanation**:
+- Similar to `formatD`, but marked as **Not Recommended** (UNRECOMMENDED).
+- It is recommended to use `formatD` in new projects.
+
+---
+
+### Day.js Date Format Cheatsheet
+
+The following common formats can be used in `patternOut` (partial examples):
+
+| Format | Example Output           | Description                                      |
+|:----   |:------------------------ |:------------------------------------------------ |
+| `X`    | `1360013296`             | Unix timestamp (in seconds)                      |
+| `x`    | `1360013296123`          | Unix timestamp in milliseconds                   |
+| `YYYY` | `2025`                   | Four-digit year                                  |
+| `MM`   | `01-12`                  | Two-digit month                                  |
+| `DD`   | `01-31`                  | Two-digit day                                    |
+| `HH`   | `00-23`                  | Two-digit hour in 24-hour format                 |
+| `mm`   | `00-59`                  | Two-digit minutes                                |
+| `ss`   | `00-59`                  | Two-digit seconds                                |
+| `dddd` | `Sunday-Saturday`        | Full name of the day of the week                 |
+| `ddd`  | `Sun-Sat`                | Abbreviated name of the day of the week          |
+| `A`    | `AM` / `PM`              | Uppercase AM/PM                                  |
+| `a`    | `am` / `pm`              | Lowercase am/pm                                  |
+| `L`    | `MM/DD/YYYY`             | Localized short date format                      |
+| `LL`   | `MMMM D, YYYY`           | Localized date with full month name              |
+| `LLL`  | `MMMM D, YYYY h:mm A`    | Localized date with time and full month name     |
+| `LLLL` | `dddd, MMMM D, YYYY h:mm A` | Full localized date with day of the week     |
+
+For more formats, refer to the [Day.js official documentation](https://day.js.org/docs/en/display/format) or the list above.
+
+---
+
+## Other Condition Controllers
+
+Carbone provides various **conditionals** (`ifEQ`, `ifNE`, `ifGT`, `ifGTE`, `ifLT`, `ifLTE`, `ifIN`, `ifNIN`, `ifEM`, `ifNEM`, `ifTE`, etc.), as well as **logical combinations** (`and()`, `or()`) and **branch outputs** (`show(message)`, `elseShow(message)`). These can be combined to implement flexible conditional logic in templates. Below are some common examples; for more details, refer to the official documentation:
+
+- **ifEM()**: Checks if the value is empty (`null`, `undefined`, `[]`, `{}`, `""`, etc.).
+- **ifNEM()**: Checks if the value is not empty.
+- **ifEQ(value)** / **ifNE(value)** / **ifGT(value)** / **ifGTE(value)** / **ifLT(value)** / **ifLTE(value)**: Standard comparison operations.
+- **ifIN(value)** / **ifNIN(value)**: Checks if a string or array contains the specified content.
+- **ifTE(type)**: Checks the data type (string, number, array, object, boolean, binary, etc.).
+- **and(value)** / **or(value)**: Changes the default logical connection method.
+- **show(message)** / **elseShow(message)**: Outputs the corresponding message string when the condition is true or false.
+
+**Example**:
+
+**Dataset**:
+```json
+{
+  "status1": 1,
+  "status2": 2,
+  "status3": 3
+}
+```
+
+**Template Content**:
+```
+one = { d.status1:ifEQ(2):show(two):or(.status1):ifEQ(1):show(one):elseShow(unknown) }
+
+two = { d.status2:ifEQ(2):show(two):or(.status2):ifEQ(1):show(one):elseShow(unknown) }
+
+three = { d.status3:ifEQ(2):show(two):or(.status3):ifEQ(1):show(one):elseShow(unknown) }
+```
+
+**Rendering Result**:
+```
+one = "one"
+two = "two"
+three = "unknown"
+```
+
+**Explanation**:
+- `:ifEQ(2):show(two)` means if the value equals 2, output "two"; otherwise, proceed to the next condition (`or(.status1):ifEQ(1):show(one)`).
+- `or()` and `and()` are used to configure logical operators.
+- `elseShow('unknown')` outputs "unknown" when all preceding conditions are false.
+
+---
+
+Through **array operations** and **conditional output** examples, you can:
+1. **Flexibly handle arrays**: Use `:aggStr`, `:arrayJoin`, `:arrayMap`, `:count`, etc., to achieve **merging, concatenation, mapping**, and **counting**.
+2. **Precisely control content display**: Use `drop` / `keep` or `showBegin` / `showEnd` / `hideBegin` / `hideEnd` to decide whether to retain **specific elements** or **large sections of content** in the document based on conditions (`ifEQ`, `ifGT`, etc.).
+3. **Combine multiple conditions**: Work with number and string-related formatters (e.g., `ifNEM`, `ifIN`, etc.) to implement more complex business logic control.
+---
+
+The following examples continue the previous documentation style, demonstrating the usage of **date and time operation** related formatters. To better understand the purpose of each formatter, the examples include **syntax**, **examples** (with "dataset," "template content," and "rendering result"), and necessary **explanations**. Some formatters can be used in conjunction with rendering configuration (`options`) such as timezone (`timezone`) and language (`lang`) for more flexible date and time handling.
+
+---
+
+## Common Issues and Solutions
+
+### 1. Empty Columns and Cells in Excel Templates Disappear in Rendering Results
+
+**Issue Description**: In Excel templates, if a cell has no content or style, it may be removed during rendering, causing the cell to be missing in the final document.
+
+**Solution**:
+
+- **Fill Background Color**: Fill the background color of the target empty cells to ensure they remain visible during rendering.
+- **Insert Space**: Insert a space character in empty cells to maintain the cell structure even if there is no actual content.
+- **Set Borders**: Add border styles to the table to enhance the cell boundaries and prevent cells from disappearing during rendering.
+
+**Example**:
+
+In the Excel template, set a light gray background for all target cells and insert a space in empty cells.
+
+### 2. Merged Cells Are Invalid in Output
+
+**Issue Description**: When using loop functions to output tables, if the template contains merged cells, it may cause rendering anomalies, such as loss of merging effects or data misalignment.
+
+**Solution**:
+
+- **Avoid Merged Cells**: Avoid using merged cells in loop-output tables to ensure correct data rendering.
+- **Use Center Across Selection**: If you need text to be centered across multiple cells horizontally, use the "Center Across Selection" feature instead of merging cells.
+- **Limit Merged Cell Locations**: If merged cells are necessary, only merge cells at the top or right side of the table to prevent loss of merging effects during rendering.
+
+**Example**:
+
+**Incorrect Example**:
+
+| Name | Department | Position |
 |---|---|---|
 | {d.staffs[i].name} | {d.staffs[i].department} | {d.staffs[i].position} |
 | {d.staffs[i+1].name} | {d.staffs[i+1].department} | {d.staffs[i+1].position} |
 
-*各セルを独立させ、セルの結合を避けてください。*
+*Merging cells in the "Department" column may cause rendering anomalies.*
 
-### 3. テンプレートレンダリング中にエラーメッセージが表示される
+**Correct Example**:
 
-**問題の説明**：テンプレートレンダリング中にシステムがエラーメッセージを表示し、レンダリングが失敗する。
+| Name | Department | Position |
+|---|---|---|
+| {d.staffs[i].name} | {d.staffs[i].department} | {d.staffs[i].position} |
+| {d.staffs[i+1].name} | {d.staffs[i+1].department} | {d.staffs[i+1].position} |
 
-**考えられる原因**：
+*Keep each cell independent and avoid merging cells.*
 
-- **プレースホルダーエラー**：プレースホルダー名がデータセットのフィールドと一致しないか、構文エラーがある。
-- **データの欠落**：データセットにテンプレートで参照されているフィールドが欠落している。
-- **フォーマッタの不適切な使用**：フォーマッタのパラメータが誤っているか、サポートされていないフォーマットタイプを使用している。
+### 3. Error Messages During Template Rendering
 
-**解決方法**：
+**Issue Description**: During the template rendering process, the system displays an error message, causing the rendering to fail.
 
-- **プレースホルダーの確認**：テンプレート内のプレースホルダー名がデータセットのフィールド名と一致し、構文が正しいことを確認する。
-- **データセットの検証**：データセットにテンプレートで参照されているすべてのフィールドが含まれていること、およびデータ形式が要件に合っていることを確認する。
-- **フォーマッタの調整**：フォーマッタの使用方法を確認し、パラメータが正しいこと、およびサポートされているフォーマットタイプを使用していることを確認する。
+**Possible Causes**:
 
-**例**：
+- **Placeholder Error**: The placeholder name does not match the dataset field or there is a syntax error.
+- **Missing Data**: The dataset lacks fields referenced in the template.
+- **Improper Use of Formatters**: Incorrect formatter parameters or unsupported formatting types.
 
-**エラーテンプレート**：
+**Solutions**:
+
+- **Check Placeholders**: Ensure that the placeholder names in the template match the field names in the dataset and that the syntax is correct.
+- **Validate Dataset**: Confirm that the dataset includes all fields referenced in the template and that the data format meets the requirements.
+- **Adjust Formatters**: Check the usage of formatters, ensure the parameters are correct, and use supported formatting types.
+
+**Example**:
+
+**Faulty Template**:
 ```
-注文番号：{d.orderId}
-注文日：{d.orderDate:format('YYYY/MM/DD')}
-総金額：{d.totalAmount:format('0.00')}
+Order ID: {d.orderId}
+Order Date: {d.orderDate:format('YYYY/MM/DD')}
+Total Amount: {d.totalAmount:format('0.00')}
 ```
 
-**データセット**：
+**Dataset**:
 ```json
 {
   "orderId": "A123456789",
   "orderDate": "2025-01-01T10:00:00Z"
-  // totalAmount フィールドが欠落
+  // Missing totalAmount field
 }
 ```
 
-**解決方法**：データセットに `totalAmount` フィールドを追加するか、テンプレートから `totalAmount` の参照を削除する。
+**Solution**: Add the `totalAmount` field to the dataset or remove the reference to `totalAmount` from the template.
 
-### 4. テンプレートファイルのアップロードが失敗する
+### 4. Template File Upload Failure
 
-**問題の説明**：テンプレート設定ページでテンプレートファイルをアップロードする際、アップロードが失敗する。
+**Issue Description**: When uploading a template file on the template configuration page, the upload fails.
 
-**考えられる原因**：
+**Possible Causes**:
 
-- **サポートされていないファイル形式**：アップロードされたファイル形式がサポートされていない（`.docx`、`.xlsx`、`.pptx` のみサポート）。
-- **ファイルサイズが大きすぎる**：テンプレートファイルが大きすぎて、システムが許可するアップロードサイズ制限を超えている。
-- **ネットワークの問題**：ネットワーク接続が不安定で、アップロードが中断または失敗する。
+- **Unsupported File Format**: The uploaded file format is not supported (only `.docx`, `.xlsx`, and `.pptx` are supported).
+- **File Size Too Large**: The template file is too large, exceeding the system's upload size limit.
+- **Network Issues**: Unstable network connection causing the upload to be interrupted or fail.
 
-**解決方法**：
+**Solutions**:
 
-- **ファイル形式の確認**：アップロードするテンプレートファイルが `.docx`、`.xlsx`、`.pptx` 形式であることを確認する。
-- **ファイルサイズの圧縮**：ファイルが大きすぎる場合は、テンプレートファイルを圧縮するか、テンプレート内容を最適化してファイルサイズを削減する。
-- **ネットワーク接続の安定化**：ネットワーク接続が安定していることを確認し、再度アップロードを試みる。
+- **Check File Format**: Ensure the uploaded template file is in `.docx`, `.xlsx`, or `.pptx` format.
+- **Compress File Size**: If the file is too large, try compressing the template file or optimizing the template content to reduce the file size.
+- **Stabilize Network Connection**: Ensure a stable network connection and try the upload operation again.
+
+## Summary
+
+The template printing plugin offers powerful features, supporting template editing and dynamic data filling for various file formats. By configuring and using rich template syntax effectively, customized documents can be generated efficiently to meet different business needs, enhancing work efficiency and document quality.
+
+**Key Advantages**:
+
+- **Efficiency**: Automated data filling reduces manual operations and improves work efficiency.
+- **Flexibility**: Supports multiple template formats and complex data structures, adapting to diverse document needs.
+- **Professionalism**: Formatters and conditional output functions enhance the professionalism and readability of documents.
+
+## Frequently Asked Questions
+
+### 1. Empty Columns and Cells Disappear in Excel Template Rendering
+
+**Issue Description**: In an Excel template, if a cell has no content or style, it might be removed during rendering, causing the cell to be missing in the final document.
+
+**Solutions**:
+
+- **Fill Background Color**: Fill the background color for empty cells in the target area to ensure the cells remain visible during rendering.
+- **Insert Space**: Insert a space character in empty cells to maintain the cell structure even if there is no actual content.
+- **Set Borders**: Add border styles to the table to enhance the boundary of cells and prevent them from disappearing during rendering.
+
+**Example**:
+
+In the Excel template, set a light gray background for all target cells and insert a space in empty cells.
+
+### 2. Merged Cells Are Ineffective in Output
+
+**Issue Description**: When using loop functions to output tables, if merged cells exist in the template, it may cause rendering anomalies such as loss of merging effects or data misalignment.
+
+**Solutions**:
+
+- **Avoid Using Merged Cells**: Try to avoid using merged cells in tables output by loops to ensure correct data rendering.
+- **Use Center Across Columns**: If text needs to be centered across multiple cells, use the "Center Across Columns" function instead of merging cells.
+- **Limit Merged Cell Locations**: If merged cells must be used, merge cells only at the top or right side of the table to prevent loss of merging effects during rendering.
+
+**Example**:
+
+**Incorrect Example**:
+
+| Name | Department | Position |
+|---|---|---|
+| {d.staffs[i].name} | {d.staffs[i].department} | {d.staffs[i].position} |
+| {d.staffs[i+1].name} | {d.staffs[i+1].department} | {d.staffs[i+1].position} |
+
+*Merging cells in the "Department" column may cause rendering anomalies.*
+
+**Correct Example**:
+
+| Name | Department | Position |
+|---|---|---|
+| {d.staffs[i].name} | {d.staffs[i].department} | {d.staffs[i].position} |
+| {d.staffs[i+1].name} | {d.staffs[i+1].department} | {d.staffs[i+1].position} |
+
+*Keep each cell independent and avoid merging cells.*
