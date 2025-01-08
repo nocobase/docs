@@ -20,46 +20,46 @@ The Template Printing plugin is a powerful tool that allows you to edit template
 ### Activating Template Printing
 
 1. **Open the Detail Block**:
-   - Navigate to the detail block in the application where you need to use the template printing feature.
+  - Navigate to the detail block in the application where you need to use the template printing feature.
 
 2. **Access the Configuration Operation Menu**:
-   - Click the "Configuration Operation" menu at the top of the interface.
+  - Click the "Configuration Operation" menu at the top of the interface.
 
 3. **Select "Template Printing"**:
-   - Click the "Template Printing" option in the dropdown menu to activate the plugin.
+  - Click the "Template Printing" option in the dropdown menu to activate the plugin.
 
    ![Activate Template Printing](https://static-docs.nocobase.com/20241212150539-2024-12-12-15-05-43.png)
 
 ### Configuring Templates
 
 1. **Access the Template Configuration Page**:
-   - In the configuration menu of the "Template Printing" button, select the "Template Configuration" option.
+  - In the configuration menu of the "Template Printing" button, select the "Template Configuration" option.
 
    ![Template Configuration Option](https://static-docs.nocobase.com/20241212151858-2024-12-12-15-19-01.png)
 
 2. **Add a New Template**:
-   - Click the "Add Template" button to enter the template addition page.
+  - Click the "Add Template" button to enter the template addition page.
 
    ![Add Template Button](https://static-docs.nocobase.com/20241212151243-2024-12-12-15-12-46.png)
 
 3. **Fill in Template Information**:
-   - In the template form, fill in the template name and select the template type (Word, Excel, PowerPoint).
-   - Upload the corresponding template file (supports `.docx`, `.xlsx`, `.pptx` formats).
+  - In the template form, fill in the template name and select the template type (Word, Excel, PowerPoint).
+  - Upload the corresponding template file (supports `.docx`, `.xlsx`, `.pptx` formats).
 
    ![Configure Template Name and File](https://static-docs.nocobase.com/20241212151518-2024-12-12-15-15-21.png)
 
 4. **Edit and Save the Template**:
-   - Go to the "Field List" page, copy fields, and fill them into the template.
+  - Go to the "Field List" page, copy fields, and fill them into the template.
     ![Field List](https://static-docs.nocobase.com/20250107141010.png)
     ![20241212152743-2024-12-12-15-27-45](https://static-docs.nocobase.com/20241212152743-2024-12-12-15-27-45.png)
-   - After filling in the details, click the "Save" button to complete the template addition.
+  - After filling in the details, click the "Save" button to complete the template addition.
 
 5. **Template Management**:
-   - Click the "Use" button on the right side of the template list to activate the template.
-   - Click the "Edit" button to modify the template name or replace the template file.
-   - Click the "Download" button to download the configured template file.
-   - Click the "Delete" button to remove unnecessary templates. The system will prompt for confirmation to avoid accidental deletion.
-   ![Template Management](https://static-docs.nocobase.com/20250107140436.png)
+  - Click the "Use" button on the right side of the template list to activate the template.
+  - Click the "Edit" button to modify the template name or replace the template file.
+  - Click the "Download" button to download the configured template file.
+  - Click the "Delete" button to remove unnecessary templates. The system will prompt for confirmation to avoid accidental deletion.
+    ![Template Management](https://static-docs.nocobase.com/20250107140436.png)
 
 ## Template Syntax
 
@@ -254,7 +254,7 @@ X
 
 ---
 ```
-    
+
 **Explanation**: The outer loop uses `i` to iterate through each brand, while the inner loop uses `j` to iterate through each model under the brand. `{d.cars[i].models[j].size}` and `{d.cars[i].models[j+1].size}` are used to fill in the current and next models, respectively. This allows for infinite levels of nested loops to accommodate complex data structures.
 
 ### Sorting Function
@@ -2391,6 +2391,7 @@ The following examples continue the previous documentation style, demonstrating 
 
 ---
 
+
 ## Common Issues and Solutions
 
 ### 1. Empty Columns and Cells in Excel Templates Disappear in Rendering Results
@@ -2488,59 +2489,3 @@ Total Amount: {d.totalAmount:format('0.00')}
 - **Check File Format**: Ensure the uploaded template file is in `.docx`, `.xlsx`, or `.pptx` format.
 - **Compress File Size**: If the file is too large, try compressing the template file or optimizing the template content to reduce the file size.
 - **Stabilize Network Connection**: Ensure a stable network connection and try the upload operation again.
-
-## Summary
-
-The template printing plugin offers powerful features, supporting template editing and dynamic data filling for various file formats. By configuring and using rich template syntax effectively, customized documents can be generated efficiently to meet different business needs, enhancing work efficiency and document quality.
-
-**Key Advantages**:
-
-- **Efficiency**: Automated data filling reduces manual operations and improves work efficiency.
-- **Flexibility**: Supports multiple template formats and complex data structures, adapting to diverse document needs.
-- **Professionalism**: Formatters and conditional output functions enhance the professionalism and readability of documents.
-
-## Frequently Asked Questions
-
-### 1. Empty Columns and Cells Disappear in Excel Template Rendering
-
-**Issue Description**: In an Excel template, if a cell has no content or style, it might be removed during rendering, causing the cell to be missing in the final document.
-
-**Solutions**:
-
-- **Fill Background Color**: Fill the background color for empty cells in the target area to ensure the cells remain visible during rendering.
-- **Insert Space**: Insert a space character in empty cells to maintain the cell structure even if there is no actual content.
-- **Set Borders**: Add border styles to the table to enhance the boundary of cells and prevent them from disappearing during rendering.
-
-**Example**:
-
-In the Excel template, set a light gray background for all target cells and insert a space in empty cells.
-
-### 2. Merged Cells Are Ineffective in Output
-
-**Issue Description**: When using loop functions to output tables, if merged cells exist in the template, it may cause rendering anomalies such as loss of merging effects or data misalignment.
-
-**Solutions**:
-
-- **Avoid Using Merged Cells**: Try to avoid using merged cells in tables output by loops to ensure correct data rendering.
-- **Use Center Across Columns**: If text needs to be centered across multiple cells, use the "Center Across Columns" function instead of merging cells.
-- **Limit Merged Cell Locations**: If merged cells must be used, merge cells only at the top or right side of the table to prevent loss of merging effects during rendering.
-
-**Example**:
-
-**Incorrect Example**:
-
-| Name | Department | Position |
-|---|---|---|
-| {d.staffs[i].name} | {d.staffs[i].department} | {d.staffs[i].position} |
-| {d.staffs[i+1].name} | {d.staffs[i+1].department} | {d.staffs[i+1].position} |
-
-*Merging cells in the "Department" column may cause rendering anomalies.*
-
-**Correct Example**:
-
-| Name | Department | Position |
-|---|---|---|
-| {d.staffs[i].name} | {d.staffs[i].department} | {d.staffs[i].position} |
-| {d.staffs[i+1].name} | {d.staffs[i+1].department} | {d.staffs[i+1].position} |
-
-*Keep each cell independent and avoid merging cells.*
