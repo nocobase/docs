@@ -2391,7 +2391,6 @@ The following examples continue the previous documentation style, demonstrating 
 
 ---
 
-
 ## Common Issues and Solutions
 
 ### 1. Empty Columns and Cells in Excel Templates Disappear in Rendering Results
@@ -2489,3 +2488,59 @@ Total Amount: {d.totalAmount:format('0.00')}
 - **Check File Format**: Ensure the uploaded template file is in `.docx`, `.xlsx`, or `.pptx` format.
 - **Compress File Size**: If the file is too large, try compressing the template file or optimizing the template content to reduce the file size.
 - **Stabilize Network Connection**: Ensure a stable network connection and try the upload operation again.
+
+## Summary
+
+The template printing plugin offers powerful features, supporting template editing and dynamic data filling for various file formats. By configuring and using rich template syntax effectively, customized documents can be generated efficiently to meet different business needs, enhancing work efficiency and document quality.
+
+**Key Advantages**:
+
+- **Efficiency**: Automated data filling reduces manual operations and improves work efficiency.
+- **Flexibility**: Supports multiple template formats and complex data structures, adapting to diverse document needs.
+- **Professionalism**: Formatters and conditional output functions enhance the professionalism and readability of documents.
+
+## Frequently Asked Questions
+
+### 1. Empty Columns and Cells Disappear in Excel Template Rendering
+
+**Issue Description**: In an Excel template, if a cell has no content or style, it might be removed during rendering, causing the cell to be missing in the final document.
+
+**Solutions**:
+
+- **Fill Background Color**: Fill the background color for empty cells in the target area to ensure the cells remain visible during rendering.
+- **Insert Space**: Insert a space character in empty cells to maintain the cell structure even if there is no actual content.
+- **Set Borders**: Add border styles to the table to enhance the boundary of cells and prevent them from disappearing during rendering.
+
+**Example**:
+
+In the Excel template, set a light gray background for all target cells and insert a space in empty cells.
+
+### 2. Merged Cells Are Ineffective in Output
+
+**Issue Description**: When using loop functions to output tables, if merged cells exist in the template, it may cause rendering anomalies such as loss of merging effects or data misalignment.
+
+**Solutions**:
+
+- **Avoid Using Merged Cells**: Try to avoid using merged cells in tables output by loops to ensure correct data rendering.
+- **Use Center Across Columns**: If text needs to be centered across multiple cells, use the "Center Across Columns" function instead of merging cells.
+- **Limit Merged Cell Locations**: If merged cells must be used, merge cells only at the top or right side of the table to prevent loss of merging effects during rendering.
+
+**Example**:
+
+**Incorrect Example**:
+
+| Name | Department | Position |
+|---|---|---|
+| {d.staffs[i].name} | {d.staffs[i].department} | {d.staffs[i].position} |
+| {d.staffs[i+1].name} | {d.staffs[i+1].department} | {d.staffs[i+1].position} |
+
+*Merging cells in the "Department" column may cause rendering anomalies.*
+
+**Correct Example**:
+
+| Name | Department | Position |
+|---|---|---|
+| {d.staffs[i].name} | {d.staffs[i].department} | {d.staffs[i].position} |
+| {d.staffs[i+1].name} | {d.staffs[i+1].department} | {d.staffs[i+1].position} |
+
+*Keep each cell independent and avoid merging cells.*
