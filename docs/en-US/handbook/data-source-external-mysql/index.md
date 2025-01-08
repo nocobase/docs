@@ -4,7 +4,7 @@
 
 ## Introduction
 
-Use an external MySQL database as a data source. Currently supported versions: MySQL ^5.7, ^8.0
+Use an external MySQL database as a data source. Currently supported versions: MySQL >= 5.7
 
 ## Installation
 
