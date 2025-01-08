@@ -2387,11 +2387,6 @@ Through **array operations** and **conditional output** examples, you can:
 3. **Combine multiple conditions**: Work with number and string-related formatters (e.g., `ifNEM`, `ifIN`, etc.) to implement more complex business logic control.
 ---
 
-The following examples continue the previous documentation style, demonstrating the usage of **date and time operation** related formatters. To better understand the purpose of each formatter, the examples include **syntax**, **examples** (with "dataset," "template content," and "rendering result"), and necessary **explanations**. Some formatters can be used in conjunction with rendering configuration (`options`) such as timezone (`timezone`) and language (`lang`) for more flexible date and time handling.
-
----
-
-
 ## Common Issues and Solutions
 
 ### 1. Empty Columns and Cells in Excel Templates Disappear in Rendering Results
