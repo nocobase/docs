@@ -1,4 +1,4 @@
-# Email Manager: Admin Configuration
+# Email Manager: Administrator Configuration
 
 <PluginInfo commercial="true" name="email-manager"></PluginInfo>
 
@@ -46,8 +46,9 @@ By following the above process, the NocoBase email plugin offers efficient and s
 
 Once the email plugin is enabled, proceed to configure the email provider. Currently, Google and Microsoft email services are supported. Click on "Settings" -> "Email Settings" to access the configuration page.
 
-![Screenshot](https://static-docs.nocobase.com/mail-1733818617187.png)  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818617514.png)
+![](https://static-docs.nocobase.com/mail-1733818617187.png)  
+
+![](https://static-docs.nocobase.com/mail-1733818617514.png)
 
 Each provider requires the Client ID and Client Secret. The following sections detail how to obtain these parameters.
 
@@ -62,92 +63,121 @@ Each provider requires the Client ID and Client Secret. The following sections d
 1. Open [Google Cloud Console](https://console.cloud.google.com/welcome).  
 2. Agree to the terms upon first access.  
 
-![Screenshot](https://static-docs.nocobase.com/mail-1733818617807.png)  
+![](https://static-docs.nocobase.com/mail-1733818617807.png)  
 
 ### Create an App
 
-1. Click "Select a project" at the top.  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818618126.png)  
+1. Click "Select a project" at the top
 
-2. Click "NEW PROJECT" in the modal.  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818618329.png)  
+![](https://static-docs.nocobase.com/mail-1733818618126.png)  
 
-3. Fill in project details.  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818618510.png)  
+2. Click "NEW PROJECT" in the modal  
 
-4. Select the created project.  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818618828.png)  
+![](https://static-docs.nocobase.com/mail-1733818618329.png)  
+
+3. Fill in project details
+
+![](https://static-docs.nocobase.com/mail-1733818618510.png)  
+
+4. Select the created project
+
+![](https://static-docs.nocobase.com/mail-1733818618828.png)  
+
+![](https://static-docs.nocobase.com/mail-1733818619044.png)
 
 ### Enable Gmail API
 
-1. Click "APIs & Services."  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818619230.png)  
+1. Click "APIs & Services" button
 
-2. Enter the "APIs & Services" panel.  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818619419.png)  
+![](https://static-docs.nocobase.com/mail-1733818619230.png)  
 
-3. Search for "mail."  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818619810.png)  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818620020.png)  
+2. Enter the "APIs & Services" panel
 
-4. Click "ENABLE" to activate Gmail API.  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818620589.png)  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818620885.png)  
+![](https://static-docs.nocobase.com/mail-1733818619419.png)  
+
+3. Search for "mail" 
+
+![](https://static-docs.nocobase.com/mail-1733818619810.png)  
+
+![](https://static-docs.nocobase.com/mail-1733818620020.png)  
+
+4. Click "ENABLE" to activate Gmail API
+
+![](https://static-docs.nocobase.com/mail-1733818620589.png)  
+
+![](https://static-docs.nocobase.com/mail-1733818620885.png)  
 
 ### Configure OAuth Consent Screen
 
-1. Click "OAuth consent screen" on the left.  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818621104.png)  
+1. Click "OAuth consent screen" on the left
 
-2. Choose "External."  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818621322.png)  
+![](https://static-docs.nocobase.com/mail-1733818621104.png)  
 
-3. Fill in project information (displayed on the authorization page) and save.  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818621538.png)  
+2. Choose "External"
+  
+![](https://static-docs.nocobase.com/mail-1733818621322.png)  
 
-4. Enter Developer Contact Information and click "Continue."  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818621749.png)  
+3. Fill in project information (displayed on the authorization page) and save
 
-5. Click "Continue."  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818622121.png)  
+![](https://static-docs.nocobase.com/mail-1733818621538.png)  
 
-6. Add test users for pre-release testing.  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818622332.png)  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818622537.png)  
+4. Enter Developer Contact Information and click "Continue"  
 
-7. Click "Continue."  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818622753.png)  
+![](https://static-docs.nocobase.com/mail-1733818621749.png)  
 
-8. Review summary information and return to the control panel.  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818622984.png)  
+5. Click "Continue"  
+
+![](https://static-docs.nocobase.com/mail-1733818622121.png)  
+
+6. Add test users for pre-release testing 
+
+![](https://static-docs.nocobase.com/mail-1733818622332.png)  
+
+![](https://static-docs.nocobase.com/mail-1733818622537.png)  
+
+7. Click "Continue" 
+ 
+![](https://static-docs.nocobase.com/mail-1733818622753.png)  
+
+8. Review summary information and return to the control panel
+ 
+![](https://static-docs.nocobase.com/mail-1733818622984.png)  
 
 ### Create Credentials
 
-1. Click "Credentials" on the left.  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818623168.png)  
+1. Click "Credentials" on the left
+  
+![](https://static-docs.nocobase.com/mail-1733818623168.png)  
 
-2. Click "CREATE CREDENTIALS" and select "OAuth client ID."  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818623386.png)  
+2. Click "CREATE CREDENTIALS" and select "OAuth client ID"  
 
-3. Select "Web application."  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818623758.png)  
+![](https://static-docs.nocobase.com/mail-1733818623386.png)  
 
-4. Enter application details.  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818623992.png)  
+3. Select "Web application"  
 
-5. Enter the domain of the final deployment (e.g., the NocoBase test address).  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818624188.png)  
+![](https://static-docs.nocobase.com/mail-1733818623758.png)  
 
-6. Add the authorized callback URI: `domain + "/admin/settings/mail/oauth2"`. Example: `https://pr-1-mail.test.nocobase.com/admin/settings/mail/oauth2`.  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818624449.png)  
+4. Enter application details
 
-7. Click "Create" to view the OAuth details.  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818624701.png)  
+![](https://static-docs.nocobase.com/mail-1733818623992.png)  
 
-8. Copy the Client ID and Client Secret to the Email Configuration page.  
-![Screenshot](https://static-docs.nocobase.com/mail-1733818624923.png)  
+5. Enter the domain of the final deployment (e.g., the NocoBase test address)
 
-9. Click "Save" to complete the configuration.  
+![](https://static-docs.nocobase.com/mail-1733818624188.png)  
+
+6. Add the authorized callback URI: `domain + "/admin/settings/mail/oauth2"`. Example: `https://pr-1-mail.test.nocobase.com/admin/settings/mail/oauth2`
+
+![](https://static-docs.nocobase.com/mail-1733818624449.png)  
+
+7. Click "Create" to view the OAuth details
+
+![](https://static-docs.nocobase.com/mail-1733818624701.png)  
+
+8. Copy the Client ID and Client Secret to the Email Configuration page
+
+![](https://static-docs.nocobase.com/mail-1733818624923.png)  
+
+9. Click "Save" to complete the configuration  
 
 ### Publish the App
 

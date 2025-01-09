@@ -44,7 +44,7 @@
 
 ### 邮件服务商配置
 
-邮件插件开启后可以进行邮件服务商配置，目前支持谷歌和微软两种邮件，点击顶部 "设置" -> "邮件设置"，进入设置页面
+邮件插件开启后可以进行邮件服务商配置，目前支持谷歌和微软两种邮件，点击顶部 "设置" -> "邮件设置"，进入设置页面。
 
 ![](https://static-docs.nocobase.com/mail-1733818617187.png)
 
@@ -63,7 +63,6 @@
 1. 打开 https://console.cloud.google.com/welcome 进入Google Cloud  
 2. 首次进入需要同意相关条款
     
-
 ![](https://static-docs.nocobase.com/mail-1733818617807.png)
 
 ### 创建App
@@ -256,7 +255,6 @@
     
 2. 登录微软账户
     
-
 ![](https://static-docs.nocobase.com/mail-1733818625779.png)
 
 ### 创建租户
@@ -347,7 +345,6 @@
 5. 分别拷贝 Client ID 和 Client serret 信息填写到 邮件配置页面中
 
 ![](https://static-docs.nocobase.com/mail-1733818630710.png)
-
 
 ## 常见问题
 

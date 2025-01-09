@@ -1,4 +1,4 @@
-# **Calculation Engines Overview**
+# Calculation Engines Overview
 
 In NocoBase, calculation engines are integral to formula fields, linkage rules, and workflows, providing users with versatile computational tools.
 
