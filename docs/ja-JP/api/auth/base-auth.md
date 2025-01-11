@@ -1,19 +1,19 @@
 # BaseAuth
 
-## 概览
+## 概要
 
-`BaseAuth` 继承自 [Auth](./auth.md) 抽象类，是用户认证类型的基础实现，用 JWT 作为鉴权方式。大多数情况下，扩展用户认证类型可以继承 `BaseAuth` 进行扩展，没有必要直接继承 `Auth` 抽象类。
+`BaseAuth` は [Auth](./auth.md) 抽象クラスを継承し、ユーザー認証タイプの基本実装であり、JWT を認証方式として使用します。ほとんどの場合、ユーザー認証タイプを拡張するには `BaseAuth` を継承して拡張することができ、直接 `Auth` 抽象クラスを継承する必要はありません。
 
 ```ts
 class BasicAuth extends BaseAuth {
   constructor(config: AuthConfig) {
-    // 设置用户数据表
+    // ユーザーデータシートを設定
     const userCollection = config.ctx.db.getCollection('users');
     super({ ...config, userCollection });
   }
 
-  // 用户认证逻辑，由 `auth.signIn` 调用
-  // 返回用户数据
+  // ユーザー認証ロジック、`auth.signIn` によって呼び出される
+  // ユーザーデータを返す
   async validate() {
     const ctx = this.ctx;
     const { values } = ctx.action.params;
@@ -23,48 +23,48 @@ class BasicAuth extends BaseAuth {
 }
 ```
 
-## 类方法
+## クラスメソッド
 
 ### `constructor()`
 
-构造函数，创建一个 `BaseAuth` 实例。
+コンストラクタ、`BaseAuth` インスタンスを作成します。
 
-#### 签名
+#### シグネチャ
 
 - `constructor(config: AuthConfig & { userCollection: Collection })`
 
-#### 详细信息
+#### 詳細
 
-| 参数             | 类型         | 描述                                                                                                |
-| ---------------- | ------------ | --------------------------------------------------------------------------------------------------- |
-| `config`         | `AuthConfig` | 参考 [Auth - AuthConfig](./auth.md#authconfig)                                                      |
-| `userCollection` | `Collection` | 用户数据表, 比如: `db.getCollection('users')`，参考 [DataBase - Collection](../database/collection) |
+| パラメータ         | タイプ         | 説明                                                                                                |
+| ------------------ | -------------- | --------------------------------------------------------------------------------------------------- |
+| `config`           | `AuthConfig`   | [Auth - AuthConfig](./auth.md#authconfig) を参照                                                    |
+| `userCollection`   | `Collection`   | ユーザーデータシート, 例: `db.getCollection('users')`，[DataBase - Collection](../database/collection) を参照 |
 
 ### `user()`
 
-访问器，设置和获取用户信息，默认使用 `ctx.state.currentUser` 对象存取。
+アクセサ、ユーザー情報を設定および取得します。デフォルトでは `ctx.state.currentUser` オブジェクトを使用してアクセスします。
 
-#### 签名
+#### シグネチャ
 
 - `set user()`
 - `get user()`
 
 ### `check()`
 
-通过请求 token 鉴权，返回用户信息。
+リクエストトークンによる認証を行い、ユーザー情報を返します。
 
 ### `signIn()`
 
-用户登录，生成 token.
+ユーザーログイン、トークンを生成します。
 
 ### `signUp()`
 
-用户注册。
+ユーザー登録。
 
 ### `signOut()`
 
-用户注销登录，token 过期。
+ユーザーログアウト、トークンを無効にします。
 
 ### `validate()` \*
 
-鉴权核心逻辑，由 `signIn` 接口调用，判断用户是否能成功登录。
+認証のコアロジック、`signIn` インターフェースによって呼び出され、ユーザーが正常にログインできるかどうかを判断します。

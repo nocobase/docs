@@ -1,13 +1,13 @@
 # Auth
 
-## 概览
+## 概要
 
-`Auth` 是用户认证类型的抽象类，定义了完成用户认证需要的接口，扩展新的用户认证类型需要继承 `Auth` 类，并实现其中的方法。基础实现可以参考: [BaseAuth](./base-auth.md).
+`Auth` はユーザー認証タイプの抽象クラスで、ユーザー認証を完了するために必要なインターフェースを定義しています。新しいユーザー認証タイプを拡張するには、`Auth` クラスを継承し、その中のメソッドを実装する必要があります。基本的な実装は以下を参照してください: [BaseAuth](./base-auth.md).
 
 ```ts
 interface IAuth {
   user: Model;
-  // Check the authenticaiton status and return the current user.
+  // 認証ステータスを確認し、現在のユーザーを返します。
   check(): Promise<Model>;
   signIn(): Promise<any>;
   signUp(): Promise<any>;
@@ -21,34 +21,34 @@ export abstract class Auth implements IAuth {
 }
 
 class CustomAuth extends Auth {
-  // check: 鉴权
+  // check: 認証
   async check() {
     // ...
   }
 }
 ```
 
-## 实例属性
+## インスタンスプロパティ
 
 ### `user`
 
-认证用户信息。
+認証ユーザー情報。
 
-#### 签名
+#### シグネチャ
 
 - `abstract user: Model`
 
-## 类方法
+## クラスメソッド
 
 ### `constructor()`
 
-构造函数，创建一个 `Auth` 实例。
+コンストラクタ、`Auth` インスタンスを作成します。
 
-#### 签名
+#### シグネチャ
 
 - `constructor(config: AuthConfig)`
 
-#### 类型
+#### タイプ
 
 ```ts
 export type AuthConfig = {
@@ -60,44 +60,44 @@ export type AuthConfig = {
 };
 ```
 
-#### 详细信息
+#### 詳細
 
 ##### AuthConfig
 
-| 属性            | 类型                                            | 描述                                                                                                 |
-| --------------- | ----------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `authenticator` | [`Authenticator`](./auth-manager#authenticator) | 认证器数据模型，在 NocoBase 应用中的实际类型是 [AuthModel](../../handbook/auth/dev/api.md#authmodel) |
-| `options`       | `Record<string, any>`                           | 认证器相关配置                                                                                       |
-| `ctx`           | `Context`                                       | 请求上下文                                                                                           |
+| プロパティ       | タイプ                                            | 説明                                                                                                 |
+| ---------------- | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `authenticator`  | [`Authenticator`](./auth-manager#authenticator)   | 認証器データモデル、NocoBase アプリケーションでの実際のタイプは [AuthModel](../../handbook/auth/dev/api.md#authmodel) |
+| `options`        | `Record<string, any>`                             | 認証器関連設定                                                                                       |
+| `ctx`            | `Context`                                         | リクエストコンテキスト                                                                               |
 
 ### `check()`
 
-用户鉴权，返回用户信息，所有认证类型都必须实现的抽象方法。
+ユーザー認証、ユーザー情報を返します。すべての認証タイプで実装する必要がある抽象メソッドです。
 
-#### 签名
+#### シグネチャ
 
 - `abstract check(): Promise<Model>`
 
 ### `signIn()`
 
-用户登录。
+ユーザーログイン。
 
-#### 签名
+#### シグネチャ
 
 - `signIn(): Promise<any>`
 
 ### `signUp()`
 
-用户注册。
+ユーザー登録。
 
-#### 签名
+#### シグネチャ
 
 - `signUp(): Promise<any>`
 
 ### `signOut()`
 
-用户注销登录。
+ユーザーログアウト。
 
-#### 签名
+#### シグネチャ
 
 - `signOut(): Promise<any>`

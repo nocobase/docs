@@ -24,8 +24,8 @@ Input values can be either variables or date constants. Variables might include 
 
 The input value type determines how the input will be processed and is categorized into two types:
 
-* **Date Type:** This includes any input that can be converted into a date-time format, such as numeric timestamps or strings representing time.
-* **Number Type:** The input value type influences the selection of time calculation steps, so it’s crucial to choose the correct type.
+* Date Type: This includes any input that can be converted into a date-time format, such as numeric timestamps or strings representing time.
+* Number Type: The input value type influences the selection of time calculation steps, so it’s crucial to choose the correct type.
 
 #### Calculation Steps
 
@@ -37,32 +37,32 @@ The output type after each step is fixed, which in turn determines the functions
 
 #### Add a range
 
-- **Accepted Input Value Type:** Date
-- **Parameters:**
+- Accepted Input Value Type: Date
+- Parameters:
   - The amount to add, which can be a numeric value or a variable from within the node.
   - The time unit (e.g., days, hours).
-- **Output Value Type:** Date
-- **Example:** If the input value is `2024-7-15 00:00:00`, the amount is `1`, and the unit is "days," the output will be `2024-7-16 00:00:00`.
+- Output Value Type: Date
+- Example: If the input value is `2024-7-15 00:00:00`, the amount is `1`, and the unit is "days," the output will be `2024-7-16 00:00:00`.
 
 #### Subtract a range
 
-- **Accepted Input Value Type:** Date
-- **Parameters:**
+- Accepted Input Value Type: Date
+- Parameters:
   - The amount to subtract, which can be a numeric value or a variable from within the node.
   - The time unit (e.g., days, hours).
-- **Output Value Type:** Date
-- **Example:** If the input value is `2024-7-15 00:00:00`, the amount is `1`, and the unit is "days," the output will be `2024-7-14 00:00:00`.
+- Output Value Type: Date
+- Example: If the input value is `2024-7-15 00:00:00`, the amount is `1`, and the unit is "days," the output will be `2024-7-14 00:00:00`.
 
 #### Get difference with another data value
 
-- **Accepted Input Value Type:** Date
-- **Parameters:**
+- Accepted Input Value Type: Date
+- Parameters:
   - The date for comparison, which can be a constant or a variable in the workflow context.
   - The time unit (e.g., days, hours).
   - Whether to take the absolute value.
   - Rounding options: retain decimals, round off, round up, or round down.
-- **Output Value Type:** Numeric
-- **Example:** If the input value is `2024-7-15 00:00:00`, and you compare it with `2024-7-16 06:00:00`, using "days" as the unit, without taking the absolute value and retaining decimals, the output will be `-1.25`.
+- Output Value Type: Numeric
+- Example: If the input value is `2024-7-15 00:00:00`, and you compare it with `2024-7-16 06:00:00`, using "days" as the unit, without taking the absolute value and retaining decimals, the output will be `-1.25`.
 
 :::info{title=Note}
 If both absolute value and rounding are selected, the absolute value is applied first, followed by rounding.
@@ -70,52 +70,52 @@ If both absolute value and rounding are selected, the absolute value is applied 
 
 #### Get value on specific unit of input date
 
-- **Accepted Input Value Type:** Date
-- **Parameters:**
+- Accepted Input Value Type: Date
+- Parameters:
   - The time unit (e.g., days, hours).
-- **Output Value Type:** Numeric
-- **Example:** If the input value is `2024-7-15 00:00:00` and the unit is "days," the output will be `15`.
+- Output Value Type: Numeric
+- Example: If the input value is `2024-7-15 00:00:00` and the unit is "days," the output will be `15`.
 
 #### Set to time of unit start
 
-- **Accepted Input Value Type:** Date
-- **Parameters:**
+- Accepted Input Value Type: Date
+- Parameters:
   - The time unit (e.g., days, hours).
-- **Output Value Type:** Date
-- **Example:** If the input value is `2024-7-15 14:26:30` and the unit is "days," the output will be `2024-7-15 00:00:00`.
+- Output Value Type: Date
+- Example: If the input value is `2024-7-15 14:26:30` and the unit is "days," the output will be `2024-7-15 00:00:00`.
 
 #### Set to time of unit end
 
-- **Accepted Input Value Type:** Date
-- **Parameters:**
+- Accepted Input Value Type: Date
+- Parameters:
   - The time unit (e.g., days, hours).
-- **Output Value Type:** Date
-- **Example:** If the input value is `2024-7-15 14:26:30` and the unit is "days," the output will be `2024-7-15 23:59:59`.
+- Output Value Type: Date
+- Example: If the input value is `2024-7-15 14:26:30` and the unit is "days," the output will be `2024-7-15 23:59:59`.
 
 #### Is leap year
 
-- **Accepted Input Value Type:** Date
-- **Parameters:** None
-- **Output Value Type:** Boolean
-- **Example:** If the input value is `2024-7-15 14:26:30`, the output will be `true`.
+- Accepted Input Value Type: Date
+- Parameters: None
+- Output Value Type: Boolean
+- Example: If the input value is `2024-7-15 14:26:30`, the output will be `true`.
 
 #### Format to String
 
-- **Accepted Input Value Type:** Date
-- **Parameters:**
+- Accepted Input Value Type: Date
+- Parameters:
   - The format, as specified in [Day.js: Format](https://day.js.org/docs/zh-CN/display/format).
-- **Output Value Type:** String
-- **Example:** If the input value is `2024-7-15 14:26:30` and the format is `the time is YYYY/MM/DD HH:mm:ss`, the output will be `the time is 2024/07/15 14:26:30`.
+- Output Value Type: String
+- Example: If the input value is `2024-7-15 14:26:30` and the format is `the time is YYYY/MM/DD HH:mm:ss`, the output will be `the time is 2024/07/15 14:26:30`.
 
 #### Convert unit
 
-- **Accepted Input Value Type:** Numeric
-- **Parameters:**
+- Accepted Input Value Type: Numeric
+- Parameters:
   - The original time unit.
   - The target time unit.
   - Rounding options: retain decimals, round off, round up, or round down.
-- **Output Value Type:** Numeric
-- **Example:** If the input value is `2`, the original unit is "weeks," the target unit is "days," and no decimals are retained, the output will be `14`.
+- Output Value Type: Numeric
+- Example: If the input value is `2`, the original unit is "weeks," the target unit is "days," and no decimals are retained, the output will be `14`.
 
 ### Example
 

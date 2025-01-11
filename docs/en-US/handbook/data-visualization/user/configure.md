@@ -21,7 +21,7 @@ Measure fields contain the key data that the chart will display. These fields ca
 
 ![Dimensions Image](https://static-docs.nocobase.com/202404192025717.png)
 
-Dimension fields determine how the data is grouped within the chart. For date-type fields, various formatting options are available, as shown in the image. Formatting is handled by database functions (e.g., `date_format` in MySQL). For other data types, refer to the [Data Transformation](#数据转换) section.
+Dimension fields determine how the data is grouped within the chart. For date-type fields, various formatting options are available, as shown in the image. Formatting is handled by database functions (e.g., `date_format` in MySQL). For other data types, refer to the [Data Transformation](#Data Transformation) section.
 
 :::info
 **Dimension Formatting VS Data Transformation**

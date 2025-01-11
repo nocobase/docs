@@ -1,6 +1,6 @@
 # IModel
 
-`IModel` 接口定义了模型对象的基本属性和方法。
+`IModel` インターフェースは、モデルオブジェクトの基本的なプロパティとメソッドを定義します。
 
 ```typescript
 export interface IModel {
@@ -12,4 +12,4 @@ export interface IModel {
 
 ### toJSON()
 
-将模型对象转换为 JSON 格式
+モデルオブジェクトをJSON形式に変換します。

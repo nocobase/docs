@@ -1,29 +1,29 @@
 # DataSourceManager
 
-`DataSourceManager` 是多 `dataSource` 实例的管理类。
+`DataSourceManager` is a management class for multiple `dataSource` instances.
 
 ## API
 
 ### add()
-添加一个 `dataSource` 实例。
+Adds a `dataSource` instance.
 
-#### 签名
+#### Signature
 
 - `add(dataSource: DataSource, options: any = {}): Promise<void>`
 
 ### use()
 
-给 `dataSource` 实例添加全局中间件。
+Adds a global middleware to the `dataSource` instance.
 
 ### middleware()
 
-获取当前 `dataSourceManager` 实例的中间件，可用于响应 http 请求。
+Retrieves the middleware of the current `dataSourceManager` instance, which can be used to respond to HTTP requests.
 
 ### afterAddDataSource()
 
-新增`dataSource` 添加后的钩子函数。
+A hook function that is triggered after a new `dataSource` is added.
 
-#### 签名
+#### Signature
 
 - `afterAddDataSource(hook: DataSourceHook)`
 
@@ -33,24 +33,24 @@ type DataSourceHook = (dataSource: DataSource) => void;
 
 ### registerDataSourceType()
 
-注册数据源类型及其类。
+Registers the data source type and its class.
 
-#### 签名
+#### Signature
 
 - `registerDataSourceType(type: string, dataSourceClass: typeof DataSource)`
 
 ### getDataSourceType()
 
-获取数据源类。
+Retrieves the data source class.
 
-#### 签名
+#### Signature
 
 - `getDataSourceType(type: string): typeof DataSource`
 
 ### buildDataSourceByType()
 
-根据注册的数据源类型和实例参数，创建数据源实例。
+Creates a data source instance based on the registered data source type and instance parameters.
 
-#### 签名
+#### Signature
 
 - `buildDataSourceByType(type: string, options: any): DataSource`

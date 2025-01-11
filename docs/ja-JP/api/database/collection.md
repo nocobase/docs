@@ -1,28 +1,28 @@
 # Collection
 
-## 概览
+## 概要
 
-`Collection` 用于定义系统中的数据模型，如模型名称、字段、索引、关联等信息。
-一般通过 `Database` 实例的 `collection` 方法作为代理入口调用。
+`Collection` は、システム内のデータモデルを定義するために使用されます。モデル名、フィールド、インデックス、関連情報などを定義します。
+通常、`Database` インスタンスの `collection` メソッドをプロキシエントリとして呼び出します。
 
 ```javascript
 const { Database } = require('@nocobase/database')
 
-// 创建数据库实例
+// データベースインスタンスを作成
 const db = new Database({...});
 
-// 定义数据模型
+// データモデルを定義
 db.collection({
   name: 'users',
-  // 定义模型字段
+  // モデルフィールドを定義
   fields: [
-    // 标量字段
+    // スカラーフィールド
     {
       name: 'name',
       type: 'string',
     },
 
-    // 关联字段
+    // 関連フィールド
     {
       name: 'profile',
       type: 'hasOne' // 'hasMany', 'belongsTo', 'belongsToMany'
@@ -31,30 +31,30 @@ db.collection({
 });
 ```
 
-更多字段类型请参考 [Fields](/api/database/field.md)。
+その他のフィールドタイプについては、[Fields](/api/database/field) を参照してください。
 
-## 构造函数
+## コンストラクタ
 
-**签名**
+**シグネチャ**
 
 - `constructor(options: CollectionOptions, context: CollectionContext)`
 
-**参数**
+**パラメータ**
 
-| 参数名                | 类型                                                        | 默认值 | 描述                                                                                   |
+| パラメータ名                | タイプ                                                        | デフォルト値 | 説明                                                                                   |
 | --------------------- | ----------------------------------------------------------- | ------ | -------------------------------------------------------------------------------------- |
-| `options.name`        | `string`                                                    | -      | collection 标识                                                                        |
-| `options.tableName?`  | `string`                                                    | -      | 数据库表名，如不传则使用 `options.name` 的值                                           |
-| `options.fields?`     | `FieldOptions[]`                                            | -      | 字段定义，详见 [Field](./field)                                                        |
-| `options.model?`      | `string \| ModelStatic<Model>`                              | -      | Sequelize 的 Model 类型，如果使用的是 `string`，则需要调用之前在 db 上注册过该模型名称 |
-| `options.repository?` | `string \| RepositoryType`                                  | -      | 数据仓库类型，如果使用 `string`，则需要调用之前在 db 上注册过该仓库类型                |
-| `options.sortable?`   | `string \| boolean \| { name?: string; scopeKey?: string }` | -      | 数据可排序字段配置，默认不排序                                                         |
-| `options.autoGenId?`  | `boolean`                                                   | `true` | 是否自动生成唯一主键，默认为 `true`                                                    |
-| `context.database`    | `Database`                                                  | -      | 所在的上下文环境数据库                                                                 |
+| `options.name`        | `string`                                                    | -      | collection 識別子                                                                        |
+| `options.tableName?`  | `string`                                                    | -      | データベーステーブル名、指定されない場合は `options.name` の値を使用                                           |
+| `options.fields?`     | `FieldOptions[]`                                            | -      | フィールド定義、詳細は [Field](./field) を参照                                                        |
+| `options.model?`      | `string \| ModelStatic<Model>`                              | -      | Sequelize の Model タイプ、`string` を使用する場合、事前に db に登録されている必要があります |
+| `options.repository?` | `string \| RepositoryType`                                  | -      | データリポジトリタイプ、`string` を使用する場合、事前に db に登録されている必要があります                |
+| `options.sortable?`   | `string \| boolean \| { name?: string; scopeKey?: string }` | -      | データのソート可能フィールド設定、デフォルトではソートされません                                                         |
+| `options.autoGenId?`  | `boolean`                                                   | `true` | 一意の主キーを自動生成するかどうか、デフォルトは `true`                                                    |
+| `context.database`    | `Database`                                                  | -      | コンテキスト環境のデータベース                                                                 |
 
-**示例**
+**例**
 
-创建一张文章表：
+記事テーブルを作成：
 
 ```ts
 const posts = new Collection(
@@ -72,63 +72,63 @@ const posts = new Collection(
     ],
   },
   {
-    // 已存在的数据库实例
+    // 既存のデータベースインスタンス
     database: db,
   },
 );
 ```
 
-## 实例成员
+## インスタンスメンバー
 
 ### `options`
 
-数据表配置初始参数。与构造函数的 `options` 参数一致。
+データシートの初期設定パラメータ。コンストラクタの `options` パラメータと同じです。
 
 ### `context`
 
-当前数据表所属的上下文环境，目前主要是数据库实例。
+現在のデータシートが属するコンテキスト環境、主にデータベースインスタンスです。
 
 ### `name`
 
-数据表名称。
+データシート名。
 
 ### `db`
 
-所属数据库实例。
+所属するデータベースインスタンス。
 
 ### `filterTargetKey`
 
-作为主键的字段名。
+主キーとして使用されるフィールド名。
 
 ### `isThrough`
 
-是否为中间表。
+中間テーブルかどうか。
 
 ### `model`
 
-匹配 Sequelize 的 Model 类型。
+Sequelize の Model タイプにマッチします。
 
 ### `repository`
 
-数据仓库实例。
+データリポジトリインスタンス。
 
-## 字段配置方法
+## フィールド設定メソッド
 
 ### `getField()`
 
-获取数据表已定义对应名称的字段对象。
+データシートに定義されている対応する名前のフィールドオブジェクトを取得します。
 
-**签名**
+**シグネチャ**
 
 - `getField(name: string): Field`
 
-**参数**
+**パラメータ**
 
-| 参数名 | 类型     | 默认值 | 描述     |
+| パラメータ名 | タイプ     | デフォルト値 | 説明     |
 | ------ | -------- | ------ | -------- |
-| `name` | `string` | -      | 字段名称 |
+| `name` | `string` | -      | フィールド名 |
 
-**示例**
+**例**
 
 ```ts
 const posts = db.collection({
@@ -146,20 +146,20 @@ const field = posts.getField('title');
 
 ### `setField()`
 
-对数据表设置字段。
+データシートにフィールドを設定します。
 
-**签名**
+**シグネチャ**
 
 - `setField(name: string, options: FieldOptions): Field`
 
-**参数**
+**パラメータ**
 
-| 参数名    | 类型           | 默认值 | 描述                            |
+| パラメータ名    | タイプ           | デフォルト値 | 説明                            |
 | --------- | -------------- | ------ | ------------------------------- |
-| `name`    | `string`       | -      | 字段名称                        |
-| `options` | `FieldOptions` | -      | 字段配置，详见 [Field](./field) |
+| `name`    | `string`       | -      | フィールド名                        |
+| `options` | `FieldOptions` | -      | フィールド設定、詳細は [Field](./field) を参照 |
 
-**示例**
+**例**
 
 ```ts
 const posts = db.collection({ name: 'posts' });
@@ -169,20 +169,20 @@ posts.setField('title', { type: 'string' });
 
 ### `setFields()`
 
-对数据表批量设置多个字段。
+データシートに複数のフィールドを一括設定します。
 
-**签名**
+**シグネチャ**
 
 - `setFields(fields: FieldOptions[], resetFields = true): Field[]`
 
-**参数**
+**パラメータ**
 
-| 参数名        | 类型             | 默认值 | 描述                            |
+| パラメータ名        | タイプ             | デフォルト値 | 説明                            |
 | ------------- | ---------------- | ------ | ------------------------------- |
-| `fields`      | `FieldOptions[]` | -      | 字段配置，详见 [Field](./field) |
-| `resetFields` | `boolean`        | `true` | 是否重置已存在的字段            |
+| `fields`      | `FieldOptions[]` | -      | フィールド設定、詳細は [Field](./field) を参照 |
+| `resetFields` | `boolean`        | `true` | 既存のフィールドをリセットするかどうか            |
 
-**示例**
+**例**
 
 ```ts
 const posts = db.collection({ name: 'posts' });
@@ -195,19 +195,19 @@ posts.setFields([
 
 ### `removeField()`
 
-移除数据表已定义对应名称的字段对象。
+データシートに定義されている対応する名前のフィールドオブジェクトを削除します。
 
-**签名**
+**シグネチャ**
 
 - `removeField(name: string): void | Field`
 
-**参数**
+**パラメータ**
 
-| 参数名 | 类型     | 默认值 | 描述     |
+| パラメータ名 | タイプ     | デフォルト値 | 説明     |
 | ------ | -------- | ------ | -------- |
-| `name` | `string` | -      | 字段名称 |
+| `name` | `string` | -      | フィールド名 |
 
-**示例**
+**例**
 
 ```ts
 const posts = db.collection({
@@ -225,13 +225,13 @@ posts.removeField('title');
 
 ### `resetFields()`
 
-重置（清空）数据表的字段。
+データシートのフィールドをリセット（クリア）します。
 
-**签名**
+**シグネチャ**
 
 - `resetFields(): void`
 
-**示例**
+**例**
 
 ```ts
 const posts = db.collection({
@@ -249,19 +249,19 @@ posts.resetFields();
 
 ### `hasField()`
 
-判断数据表是否已定义对应名称的字段对象。
+データシートに定義されている対応する名前のフィールドオブジェクトが存在するかどうかを判断します。
 
-**签名**
+**シグネチャ**
 
 - `hasField(name: string): boolean`
 
-**参数**
+**パラメータ**
 
-| 参数名 | 类型     | 默认值 | 描述     |
+| パラメータ名 | タイプ     | デフォルト値 | 説明     |
 | ------ | -------- | ------ | -------- |
-| `name` | `string` | -      | 字段名称 |
+| `name` | `string` | -      | フィールド名 |
 
-**示例**
+**例**
 
 ```ts
 const posts = db.collection({
@@ -279,19 +279,19 @@ posts.hasField('title'); // true
 
 ### `findField()`
 
-查找数据表中符合条件的字段对象。
+データシート内で条件に合致するフィールドオブジェクトを検索します。
 
-**签名**
+**シグネチャ**
 
 - `findField(predicate: (field: Field) => boolean): Field | undefined`
 
-**参数**
+**パラメータ**
 
-| 参数名      | 类型                        | 默认值 | 描述     |
+| パラメータ名      | タイプ                        | デフォルト値 | 説明     |
 | ----------- | --------------------------- | ------ | -------- |
-| `predicate` | `(field: Field) => boolean` | -      | 查找条件 |
+| `predicate` | `(field: Field) => boolean` | -      | 検索条件 |
 
-**示例**
+**例**
 
 ```ts
 const posts = db.collection({
@@ -309,19 +309,19 @@ posts.findField((field) => field.name === 'title');
 
 ### `forEachField()`
 
-遍历数据表中的字段对象。
+データシート内のフィールドオブジェクトを走査します。
 
-**签名**
+**シグネチャ**
 
 - `forEachField(callback: (field: Field) => void): void`
 
-**参数**
+**パラメータ**
 
-| 参数名     | 类型                     | 默认值 | 描述     |
+| パラメータ名     | タイプ                     | デフォルト値 | 説明     |
 | ---------- | ------------------------ | ------ | -------- |
-| `callback` | `(field: Field) => void` | -      | 回调函数 |
+| `callback` | `(field: Field) => void` | -      | コールバック関数 |
 
-**示例**
+**例**
 
 ```ts
 const posts = db.collection({
@@ -337,24 +337,24 @@ const posts = db.collection({
 posts.forEachField((field) => console.log(field.name));
 ```
 
-## 索引配置方法
+## インデックス設定メソッド
 
 ### `addIndex()`
 
-添加数据表索引。
+データシートにインデックスを追加します。
 
-**签名**
+**シグネチャ**
 
 - `addIndex(index: string | string[] | { fields: string[], unique?: boolean,[key: string]: any })`
 
-**参数**
+**パラメータ**
 
-| 参数名  | 类型                                                         | 默认值 | 描述                 |
+| パラメータ名  | タイプ                                                         | デフォルト値 | 説明                 |
 | ------- | ------------------------------------------------------------ | ------ | -------------------- |
-| `index` | `string \| string[]`                                         | -      | 需要配置索引的字段名 |
-| `index` | `{ fields: string[], unique?: boolean, [key: string]: any }` | -      | 完整配置             |
+| `index` | `string \| string[]`                                         | -      | インデックスを設定するフィールド名 |
+| `index` | `{ fields: string[], unique?: boolean, [key: string]: any }` | -      | 完全設定             |
 
-**示例**
+**例**
 
 ```ts
 const posts = db.collection({
@@ -375,19 +375,19 @@ posts.addIndex({
 
 ### `removeIndex()`
 
-移除数据表索引。
+データシートからインデックスを削除します。
 
-**签名**
+**シグネチャ**
 
 - `removeIndex(fields: string[])`
 
-**参数**
+**パラメータ**
 
-| 参数名   | 类型       | 默认值 | 描述                     |
+| パラメータ名   | タイプ       | デフォルト値 | 説明                     |
 | -------- | ---------- | ------ | ------------------------ |
-| `fields` | `string[]` | -      | 需要移除索引的字段名组合 |
+| `fields` | `string[]` | -      | インデックスを削除するフィールド名の組み合わせ |
 
-**示例**
+**例**
 
 ```ts
 const posts = db.collection({
@@ -409,17 +409,17 @@ const posts = db.collection({
 posts.removeIndex(['title']);
 ```
 
-## 表配置方法
+## テーブル設定メソッド
 
 ### `remove()`
 
-删除数据表。
+データシートを削除します。
 
-**签名**
+**シグネチャ**
 
 - `remove(): void`
 
-**示例**
+**例**
 
 ```ts
 const posts = db.collection({
@@ -435,17 +435,17 @@ const posts = db.collection({
 posts.remove();
 ```
 
-## 数据库操作方法
+## データベース操作メソッド
 
 ### `sync()`
 
-同步数据表定义到数据库。除了 Sequelize 中默认的 `Model.sync` 的逻辑，还会一并处理关系字段对应的数据表。
+データシートの定義をデータベースに同期します。Sequelize のデフォルトの `Model.sync` ロジックに加えて、関連フィールドに対応するデータシートも処理します。
 
-**签名**
+**シグネチャ**
 
 - `sync(): Promise<void>`
 
-**示例**
+**例**
 
 ```ts
 const posts = db.collection({
@@ -463,29 +463,29 @@ await posts.sync();
 
 ### `existsInDb()`
 
-判断数据表是否存在于数据库中。
+データシートがデータベースに存在するかどうかを判断します。
 
-**签名**
+**シグネチャ**
 
 - `existsInDb(options?: Transactionable): Promise<boolean>`
 
-**参数**
+**パラメータ**
 
-| 参数名                 | 类型          | 默认值 | 描述     |
+| パラメータ名                 | タイプ          | デフォルト値 | 説明     |
 | ---------------------- | ------------- | ------ | -------- |
-| `options?.transaction` | `Transaction` | -      | 事务实例 |
+| `options?.transaction` | `Transaction` | -      | トランザクションインスタンス |
 
-**示例**
+**例**
 
 ```ts
 const posts = db.collection({
-  name: 'posts',
-  fields: [
-    {
-      type: 'string',
-      name: 'title',
-    },
-  ],
+name: 'posts',
+fields: [
+  {
+    type: 'string',
+    name: 'title',
+  },
+],
 });
 
 const existed = await posts.existsInDb();
@@ -495,20 +495,20 @@ console.log(existed); // false
 
 ### `removeFromDb()`
 
-**签名**
+**シグネチャ**
 
 - `removeFromDb(): Promise<void>`
 
-**示例**
+**例**
 
 ```ts
 const books = db.collection({
   name: 'books',
 });
 
-// 同步书籍表到数据库
+// データベースに書籍テーブルを同期
 await db.sync();
 
-// 删除数据库中的书籍表
+// データベースから書籍テーブルを削除
 await books.removeFromDb();
 ```

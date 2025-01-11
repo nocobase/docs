@@ -55,6 +55,7 @@ export default [
           '/welcome/getting-started/deployment/docker-compose',
           '/welcome/getting-started/deployment/create-nocobase-app',
           '/welcome/getting-started/deployment/git-clone',
+          '/welcome/getting-started/deployment/cluster-mode',
         ],
       },
       '/welcome/getting-started/env',

@@ -1,40 +1,40 @@
-# Built-in Helpers
+# 組み込みヘルパー
 
 https://handlebarsjs.com/guide/builtin-helpers.html
 
 ## {{if}}
 
-Renders a block if the given condition is truthy.
+指定された条件が真の場合にブロックをレンダリングします。
 
-**Params**
+**パラメータ**
 
-- `condition` **{Any}**: The condition to evaluate.
+- `condition` **{Any}**: 評価する条件。
 
-**Returns**: The content inside the block if the condition is truthy, otherwise returns nothing.
+**戻り値**: 条件が真の場合、ブロック内のコンテンツを返します。それ以外の場合は何も返しません。
 
-**Example**
+**例**
 
 ```handlebars
 {{#if condition}}
-  This will be displayed if the condition is true.
+  この内容は、条件が真の場合に表示されます。
 {{/if}}
 ```
 
 ## {{unless}}
 
-Renders a block if the given condition is falsy. This is the opposite of `if`.
+指定された条件が偽の場合にブロックをレンダリングします。これは `if` の逆です。
 
-**Params**
+**パラメータ**
 
-- `condition` **{Any}**: The condition to evaluate.
+- `condition` **{Any}**: 評価する条件。
 
-**Returns**: The content inside the block if the condition is falsy, otherwise returns nothing.
+**戻り値**: 条件が偽の場合、ブロック内のコンテンツを返します。それ以外の場合は何も返しません。
 
-**Example**
+**例**
 
 ```handlebars
 {{#unless condition}}
-  This will be displayed if the condition is false.
+  この内容は、条件が偽の場合に表示されます。
 {{/unless}}
 ```
 
@@ -42,15 +42,15 @@ Renders a block if the given condition is falsy. This is the opposite of `if`.
 
 ## {{each}}
 
-Iterates over an array or object and renders a block for each item.
+配列またはオブジェクトを反復処理し、各アイテムに対してブロックをレンダリングします。
 
-**Params**
+**パラメータ**
 
-- `collection` **{Array|Object}**: The array or object to iterate over.
+- `データシート` **{Array|Object}**: 反復処理する配列またはオブジェクト。
 
-**Returns**: Renders the block for each item in the collection.
+**戻り値**: コレクション内の各アイテムに対してブロックをレンダリングします。
 
-**Example**
+**例**
 
 ```handlebars
 {{#each items}}
@@ -60,37 +60,37 @@ Iterates over an array or object and renders a block for each item.
 
 ## {{with}}
 
-Renders a block with a given context. It allows you to specify a context for the block, simplifying access to deeply nested properties.
+指定されたコンテキストでブロックをレンダリングします。これにより、ブロック内で深くネストされたプロパティへのアクセスが簡素化されます。
 
-**Params**
+**パラメータ**
 
-- `context` **{Any}**: The context to use within the block.
+- `context` **{Any}**: ブロック内で使用するコンテキスト。
 
-**Returns**: Renders the block with the provided context.
+**戻り値**: 提供されたコンテキストでブロックをレンダリングします。
 
-**Example**
+**例**
 
 ```handlebars
 {{#with person}}
-  <p>Name: {{name}}</p>
-  <p>Age: {{age}}</p>
+  <p>名前: {{name}}</p>
+  <p>年齢: {{age}}</p>
 {{/with}}
 ```
 
 ## {{lookup}}
 
-Looks up the value of a specified key in an object. This helper is useful for accessing dynamic keys.
+指定されたキーの値をオブジェクト内で検索します。このヘルパーは、動的なキーにアクセスする場合に便利です。
 
-**Params**
+**パラメータ**
 
-- `context` **{Object}**: The object to look up the key from.
-- `key` **{String|Number}**: The key to look up.
+- `context` **{Object}**: キーを検索するオブジェクト。
+- `key` **{String|Number}**: 検索するキー。
 
-**Returns**: The value of the specified key in the object.
+**戻り値**: オブジェクト内の指定されたキーの値。
 
-**Example**
+**例**
 
 ```handlebars
 {{lookup person "name"}}
-<!-- If person is { name: "Alice", age: 30 }, it results in: "Alice" -->
+<!-- person が { name: "Alice", age: 30 } の場合、結果は "Alice" になります -->
 ```
