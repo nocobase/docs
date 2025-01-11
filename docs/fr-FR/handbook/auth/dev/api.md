@@ -1,20 +1,20 @@
-# API Reference
+# Référence API
 
-## Server Side
+## Côté Serveur
 
 ### Auth
 
-Kernel API, reference: [Auth](../../../api/auth/auth.md)
+API du noyau, référence : [Auth](../../../api/auth/auth.md)
 
 ### BaseAuth
 
-Kernel API, reference: [BaseAuth](../../../api/auth/base-auth.md)
+API du noyau, référence : [BaseAuth](../../../api/auth/base-auth.md)
 
 ### AuthModel
 
-#### Overview
+#### Vue d'ensemble
 
-`AuthModel` is the authenticator used in NocoBase applications (`Authenticator`, reference: [AuthManager - setStorer](../../../api/auth/auth-manager.md#setstorer) and [Auth - constructor](../../../api/auth/auth.md#constructor)) data model, providing some methods for interacting with the user data collection. In addition, methods provided by Sequelize Model can also be used.
+`AuthModel` est l'authentificateur utilisé dans les applications NocoBase (`Authenticator`, référence : [AuthManager - setStorer](../../../api/auth/auth-manager.md#setstorer) et [Auth - constructeur](../../../api/auth/auth.md#constructor)), fournissant des méthodes pour interagir avec la collection de données utilisateur. En outre, les méthodes fournies par le modèle Sequelize peuvent également être utilisées.
 
 ```ts
 import { AuthModel } from '@nocobase/plugin-auth';
@@ -31,26 +31,26 @@ class CustomAuth extends BaseAuth {
 }
 ```
 
-#### Class Methods
+#### Méthodes de classe
 
-- `findUser(uuid: string): UserModel` - Query user by `uuid`.
+- `findUser(uuid: string): UserModel` - Rechercher un utilisateur par `uuid`.
 
-  - `uuid` - User unique identifier from the current authentication type
+  - `uuid` - Identifiant unique de l'utilisateur pour le type d'authentification actuel.
 
-- `newUser(uuid: string, userValues?: any): UserModel` - Create a new user, bind the user to the current authenticator through `uuid`.
+- `newUser(uuid: string, userValues?: any): UserModel` - Créer un nouvel utilisateur, lier l'utilisateur à l'authentificateur actuel via `uuid`.
 
-  - `uuid` - User unique identifier from the current authentication type
-  - `userValues` - Optional. Other user information. When not passed, `uuid` will be used as the user's nickname.
+  - `uuid` - Identifiant unique de l'utilisateur pour le type d'authentification actuel.
+  - `userValues` - Optionnel. Autres informations sur l'utilisateur. Si non fourni, `uuid` sera utilisé comme pseudonyme de l'utilisateur.
 
-- `findOrCreateUser(uuid: string, userValues?: any): UserModel` - Find or create a new user, the creation rule is the same as above.
-  - `uuid` - User unique identifier from the current authentication type
-  - `userValues` - Optional. Other user information.
+- `findOrCreateUser(uuid: string, userValues?: any): UserModel` - Rechercher ou créer un nouvel utilisateur, la règle de création est la même que ci-dessus.
+  - `uuid` - Identifiant unique de l'utilisateur pour le type d'authentification actuel.
+  - `userValues` - Optionnel. Autres informations sur l'utilisateur.
 
-## Client Side
+## Côté Client
 
 ### `plugin.registerType()`
 
-Register the client of the authentication type.
+Enregistrer le client du type d'authentification.
 
 ```ts
 import AuthPlugin from '@nocobase/plugin-auth/client';
@@ -87,28 +87,28 @@ export type AuthOptions = {
 };
 ```
 
-#### Details
+#### Détails
 
-- `SignInForm` - Sign in form
-- `SignInButton` - Sign in (third-party) button, can be used as an alternative to the sign-in form
-- `SignUpForm` - Sign up form
-- `AdminSettingsForm` - Admin configuration form
+- `SignInForm` - Formulaire de connexion
+- `SignInButton` - Bouton de connexion (tiers), peut être utilisé comme alternative au formulaire de connexion
+- `SignUpForm` - Formulaire d'inscription
+- `AdminSettingsForm` - Formulaire de configuration de l'administrateur
 
 ### Route
 
-The frontend routes for registering the auth plugin are as follows:
+Les routes frontend pour l'enregistrement du plugin d'authentification sont les suivantes :
 
-- Auth Layout
-  - name: `auth`
-  - path: `-`
-  - component: `AuthLayout`
+- Mise en page d'authentification
+  - nom : `auth`
+  - chemin : `-`
+  - composant : `AuthLayout`
 
-- SignIn Page
-  - name: `auth.signin`
-  - path: `/signin`
-  - component: `SignInPage`
+- Page de connexion
+  - nom : `auth.signin`
+  - chemin : `/signin`
+  - composant : `SignInPage`
 
-- SignUp Page
-  - name: `auth.signup`
-  - path: `/signup`
-  - component: `SignUpPage`
+- Page d'inscription
+  - nom : `auth.signup`
+  - chemin : `/signup`
+  - composant : `SignUpPage`

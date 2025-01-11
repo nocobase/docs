@@ -5,5 +5,5 @@
 ## Introduction
 
 :::warning
-The App Switching plugin is currently under development and has yet to be released.
+Le plugin App Switching est en cours de développement.
 :::

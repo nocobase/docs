@@ -5,5 +5,5 @@
 ## Introduction
 
 :::warning
-The plugin is currently under development.
+Ce plugin est en cours de développement.
 :::
