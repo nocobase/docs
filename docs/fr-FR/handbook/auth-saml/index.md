@@ -4,19 +4,19 @@
 
 ## Introduction
 
-The Auth: SAML 2.0 plugin follows the SAML 2.0 (Security Assertion Markup Language 2.0) protocol standard, allowing users to sign in to NocoBase using accounts provided by third-party identity authentication service providers (IdP).
+Le plugin **Auth: SAML 2.0** suit la norme de protocole SAML 2.0 (Security Assertion Markup Language 2.0), permettant aux utilisateurs de se connecter à NocoBase en utilisant les comptes fournis par des fournisseurs de services d'authentification d'identité tiers (IdP).
 
-## Activate Plugin
+## Activer le Plugin
 
 ![](https://static-docs.nocobase.com/6a12f3d8073c47532a4f8aac900e4296.png)
 
-## Add SAML Authentication
+## Ajouter l'Authentification SAML
 
-Enter the user authentication plugin management page.
+Allez dans la page de gestion du plugin d'authentification des utilisateurs.
 
 ![](../auth-oidc/static/2023-12-03-18-19-33.png)
 
-Add - SAML
+Ajoutez - SAML
 
 ![](https://static-docs.nocobase.com/5076fe56086b7799be308bbaf7c4425d.png)
 
@@ -24,33 +24,33 @@ Add - SAML
 
 ![](https://static-docs.nocobase.com/976b66e589973c322d81dcddd22c6146.png)
 
-- SSO URL - Provided by IdP, used for single sign-on
-- Public Certificate - Provided by IdP
-- Entity ID (IdP Issuer) - Optional, provided by IdP
-- http - If your NocoBase application is http protocol, please check
-- Use this field to bind the user - The field used to match and bind with existing users, can choose email or username, default is email. The user information carried by IdP needs to contain the `email` or `username` field.
-- Sign up automatically when the user does not exist - Whether to automatically create a new user when no matching existing user is found.
-- Usage - `SP Issuer / EntityID` and `ACS URL` are used to copy and fill in the corresponding configuration in the IdP.
+- **SSO URL** : Fournie par l'IdP, utilisée pour la connexion unique (SSO).
+- **Certificat Public** : Fournie par l'IdP.
+- **Entity ID (IdP Issuer)** : Optionnel, fourni par l'IdP.
+- **http** : Si votre application NocoBase utilise le protocole http, cochez cette option.
+- **Utiliser ce champ pour lier l'utilisateur** : Le champ utilisé pour faire correspondre et lier les utilisateurs existants, peut être l'email ou le nom d'utilisateur, par défaut c'est l'email. Les informations utilisateur fournies par l'IdP doivent contenir le champ `email` ou `username`.
+- **Inscription automatique lorsque l'utilisateur n'existe pas** : Si un utilisateur correspondant n'est pas trouvé, un nouvel utilisateur sera créé automatiquement.
+- **Utilisation** : Les configurations `SP Issuer / EntityID` et `ACS URL` doivent être copiées et remplies dans la configuration correspondante dans l'IdP.
 
-## Field Mapping
+## Mapping des Champs
 
-Field mapping needs to be configured on the IdP's configuration platform, you can refer to the [example](../auth-saml/example/google.md).
+Le mapping des champs doit être configuré sur la plateforme de configuration de l'IdP. Vous pouvez vous référer à [cet exemple](../auth-saml/example/google.md).
 
-The fields available for mapping in NocoBase are:
+Les champs disponibles pour le mapping dans NocoBase sont :
 
-- email (required)
-- phone (only effective for platforms that support `phone` in scope, such as Alibaba Cloud, Lark)
+- email (obligatoire)
+- téléphone (uniquement efficace pour les plateformes qui supportent `phone` dans le scope, comme Alibaba Cloud, Lark)
 - nickname
 - username
 - firstName
 - lastName
 
-`nameID` is carried by the SAML protocol and does not need to be mapped, it will be saved as a unique user identifier.
-The priority of the new user nickname use rule is: `nickname` > `firstName lastName` > `username` > `nameID`
-Currently, user organization and role mapping are not supported.
+Le champ `nameID` est porté par le protocole SAML et n'a pas besoin d'être mappé, il sera enregistré comme un identifiant unique de l'utilisateur.  
+La règle de priorité pour l'attribution du pseudonyme à un nouvel utilisateur est : `nickname` > `firstName lastName` > `username` > `nameID`.  
+Actuellement, le mapping des organisations et des rôles des utilisateurs n'est pas supporté.
 
-## Sign In
+## Connexion
 
-Visit the sign in page and click the button under the sign in form to initiate third-party login.
+Allez sur la page de connexion et cliquez sur le bouton sous le formulaire de connexion pour initier la connexion via un fournisseur tiers.
 
 ![](https://static-docs.nocobase.com/74963865c9d36a294948e6adeb5b24bc.png)

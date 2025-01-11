@@ -4,33 +4,35 @@
 
 ## Introduction
 
-The **Auth: DingTalk** plugin enables users to log in to NocoBase using their DingTalk accounts, streamlining the login process.
+Le plugin **Auth: DingTalk** permet aux utilisateurs de se connecter à NocoBase en utilisant leurs comptes DingTalk, simplifiant ainsi le processus de connexion.
 
-## Activating the Plugin
+## Activer le plugin
 
 ![](https://static-docs.nocobase.com/202406120929356.png)
 
-## Applying for API Permissions in the DingTalk Developer Console
+## Demander les autorisations API dans la console développeur DingTalk
 
-Follow the steps outlined in the <a href="https://open.dingtalk.com/document/orgapp/tutorial-obtaining-user-personal-information" target="_blank">DingTalk Open Platform - Implement Login for Third-Party Websites</a> guide to create your application.
+Suivez les étapes décrites dans le guide de la [DingTalk Open Platform - Implémenter la connexion pour les sites tiers](https://open.dingtalk.com/document/orgapp/tutorial-obtaining-user-personal-information) pour créer votre application.
 
-Once in the application management console, ensure you enable both "Personal Mobile Number Information" and "Address Book Personal Information Read Permissions."
+Une fois dans la console de gestion de l'application, assurez-vous d'activer les autorisations suivantes :
+- "Informations sur le numéro de téléphone mobile personnel"
+- "Lecture des informations du carnet d'adresses personnel".
 
 ![](https://static-docs.nocobase.com/202406120006620.png)
 
-## Obtaining the Client Secret from the DingTalk Developer Console
+## Obtenir le Client Secret depuis la console développeur DingTalk
 
-Copy your **Client ID** and **Client Secret** from the console.
+Copiez votre **Client ID** et **Client Secret** depuis la console.
 
 ![](https://static-docs.nocobase.com/202406120000595.png)
 
-## Adding DingTalk Authentication to NocoBase
+## Ajouter l'authentification DingTalk à NocoBase
 
-Navigate to the **Authentication** plugin management page.
+Accédez à la page de gestion du plugin **Authentification**.
 
 ![](https://static-docs.nocobase.com/202406112348051.png)
 
-Select **Add new - DingTalk**
+Sélectionnez **Ajouter nouveau - DingTalk**.
 
 ![](https://static-docs.nocobase.com/202406112349664.png)
 
@@ -38,18 +40,18 @@ Select **Add new - DingTalk**
 
 ![](https://static-docs.nocobase.com/202406120016896.png)
 
-- **Sign up automatically when the user does not exist** - When the phone number does not match an existing user, a new user is automatically created.
-- **Client ID and Client Secret** - Enter the information you copied earlier.
-- **Redirect URL** - Enter the callback URL, copy it, and proceed to the next step.
+- **Inscription automatique lorsque l'utilisateur n'existe pas** : Si le numéro de téléphone ne correspond à aucun utilisateur existant, un nouvel utilisateur est créé automatiquement.
+- **Client ID et Client Secret** : Entrez les informations que vous avez copiées plus tôt.
+- **URL de redirection** : Entrez l'URL de rappel, copiez-la et passez à l'étape suivante.
 
-## Configuring the Callback URL in the DingTalk Developer Console
+## Configurer l'URL de redirection dans la console développeur DingTalk
 
-Paste the copied **Callback URL** into the appropriate field in the DingTalk Developer Console.
+Collez l'URL de redirection copiée dans le champ approprié dans la console développeur DingTalk.
 
 ![](https://static-docs.nocobase.com/202406120012221.png)
 
-## Login
+## Connexion
 
-Go to the login page and click the button below the login form to initiate third-party login through DingTalk.
+Accédez à la page de connexion et cliquez sur le bouton sous le formulaire de connexion pour lancer la connexion tierce via DingTalk.
 
 ![](https://static-docs.nocobase.com/202406120014539.png)
