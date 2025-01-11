@@ -1,17 +1,17 @@
-# Submit
+# Soumettre
 
-The Submit operation is used to save form data (specific to form blocks).
+L'opération **Soumettre** est utilisée pour enregistrer les données d'un formulaire (spécifique aux blocs de formulaire).
 
-![Submit Operation](https://static-docs.nocobase.com/a8dd8cb5a0110c35a1197eb5800a099f.png)
+![Opération Soumettre](https://static-docs.nocobase.com/a8dd8cb5a0110c35a1197eb5800a099f.png)
 
-### Parameter Configuration
+### Configuration des paramètres
 
-- Save Method: Only supports configuring save methods in **new** operations for form blocks.
+- **Méthode de sauvegarde** : Ne prend en charge que la configuration des méthodes de sauvegarde dans les opérations **nouvelles** pour les blocs de formulaire.
 
-![Save Method Configuration](https://static-docs.nocobase.com/25fc9b88760248e7015673b29b9487f4.png)
+![Configuration de la méthode de sauvegarde](https://static-docs.nocobase.com/25fc9b88760248e7015673b29b9487f4.png)
 
-- Bind Workflow: Supports binding with workflows, automatically triggering workflows after submission. By defining trigger data contexts, advanced automation tasks can be achieved, improving data processing efficiency and business process control.
+- **Associer un flux de travail** : Prend en charge l'association avec des flux de travail, déclenchant automatiquement des flux de travail après la soumission. En définissant des contextes de données de déclenchement, des tâches d'automatisation avancées peuvent être réalisées, améliorant l'efficacité du traitement des données et le contrôle des processus métiers.
 
-![Bind Workflow](https://static-docs.nocobase.com/a77bdff33353fb155b0c919db76e0474.png)
+![Associer un flux de travail](https://static-docs.nocobase.com/a77bdff33353fb155b0c919db76e0474.png)
 
-For more details, refer to the Workflow Documentation.
+Pour plus de détails, consultez la documentation sur les flux de travail.

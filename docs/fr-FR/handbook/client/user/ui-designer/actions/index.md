@@ -1,45 +1,45 @@
 # Actions
 
-In the UI, actions are buttons designed to trigger specific commands. These buttons can be placed directly on the page, within dialogs or drawers, and can also be used in combination with blocks. Currently, dynamic configurations of actions are primarily used in combination with blocks.
+Dans l'interface utilisateur, les actions sont des boutons conçus pour déclencher des commandes spécifiques. Ces boutons peuvent être placés directement sur la page, dans des boîtes de dialogue ou tiroirs, et peuvent également être utilisés en combinaison avec des blocs. Actuellement, les configurations dynamiques des actions sont principalement utilisées en combinaison avec des blocs.
 
-## Actions in Blocks
+## Actions dans les Blocs
 
-![Actions in Blocks](https://static-docs.nocobase.com/3e69f1f2991842ecad640705bc9feda4.png)
+![Actions dans les Blocs](https://static-docs.nocobase.com/3e69f1f2991842ecad640705bc9feda4.png)
 
-## Action Designer (Toolbar)
+## Concepteur d'Actions (Barre d'outils)
 
-Unlike blocks and fields, the action designer only features two icons:
+Contrairement aux blocs et aux champs, le concepteur d'actions comporte seulement deux icônes :
 
-- Drag
-- Parameter Configuration
+- Glisser
+- Configuration des paramètres
 
-![Action Designer](https://static-docs.nocobase.com/007422d42678c54f79668dfafe69b60e.png)
+![Concepteur d'Actions](https://static-docs.nocobase.com/007422d42678c54f79668dfafe69b60e.png)
 
-## Action Drag Sorting
+## Tri des Actions par Glisser-déposer
 
-By holding down the "Drag" icon in the button designer, you can reorder the buttons.
+En maintenant l'icône "Glisser" dans le concepteur de boutons, vous pouvez réorganiser les boutons.
 
 ```bash
-A gif is missing
+Un gif est manquant
 ```
 
-## General Parameter Configuration
+## Configuration générale des paramètres
 
-- Edit Button
-- Open Mode: Drawer, Dialog
-- Popup Size: Large, Medium, Small
-- Delete
+- Modifier le bouton
+- Mode d'ouverture : Tiroir, Boîte de dialogue
+- Taille de la fenêtre contextuelle : Grande, Moyenne, Petite
+- Supprimer
 
-![General Parameter Configuration](https://static-docs.nocobase.com/e99916932f6c4d58bcad4d892b5daf15.png)
+![Configuration générale des paramètres](https://static-docs.nocobase.com/e99916932f6c4d58bcad4d892b5daf15.png)
 
-## Action Linkage Rules
+## Règles de Liaison des Actions
 
-Actions with contextual data can also be configured with "Linkage Rules."
+Les actions avec des données contextuelles peuvent également être configurées avec des **"Règles de Liaison"**.
 
-![Action Linkage Rules](https://static-docs.nocobase.com/c431434a285278ea00bedf9e4dac4d45.png)
+![Règles de Liaison des Actions](https://static-docs.nocobase.com/c431434a285278ea00bedf9e4dac4d45.png)
 
-Linkage Rules Configuration
+Configuration des règles de liaison
 
-![Linkage Rules Configuration](https://static-docs.nocobase.com/149c049bb0c0ce931c6c0333e12b0610.png)
+![Configuration des règles de liaison](https://static-docs.nocobase.com/149c049bb0c0ce931c6c0333e12b0610.png)
 
-Multiple rules can be added, with conditions similar to those used in filtering. These rules can control whether buttons are displayed, hidden, enabled, or disabled.
+Plusieurs règles peuvent être ajoutées, avec des conditions similaires à celles utilisées dans le filtrage. Ces règles peuvent contrôler si les boutons sont affichés, masqués, activés ou désactivés.

@@ -1,49 +1,49 @@
 ### Menu
 
-#### Menu Item Types
+#### Types d'éléments de menu
 
-There are three built-in menu item types:
+Il existe trois types d'éléments de menu intégrés :
 
-- Group
-- Page
-- Link
+- **Groupe**
+- **Page**
+- **Lien**
 
 ![](https://static-docs.nocobase.com/ccf6f42d3cc2677d440f9e33b9488d1c.png)
 
-##### Group
+##### Groupe
 
-When using a group, a submenu will appear on the left side.
+Lorsqu'un groupe est utilisé, un sous-menu apparaîtra sur le côté gauche.
 
 ![](https://static-docs.nocobase.com/e59b2088fd68666cd240a26566616a3e.png)
 
 ##### Page
 
-A page can be used to add various blocks.
+Une page peut être utilisée pour ajouter divers blocs.
 
 ![](https://static-docs.nocobase.com/4cd259f6b79f6792df72ccc291da2af9.png)
 
-##### Link
+##### Lien
 
-Used for URL redirection.
+Utilisé pour la redirection vers une URL.
 
 ![](https://static-docs.nocobase.com/80a6e6a875c565425224d9325332a1ad.png)
 
-#### Menu Item Designer
+#### Concepteur d'éléments de menu
 
-In the upper right corner of each menu item, there are two icons:
+Dans le coin supérieur droit de chaque élément de menu, il y a deux icônes :
 
-- Drag to move
-- Configure menu item
+- **Glisser pour déplacer**
+- **Configurer l'élément du menu**
 
 ![](https://static-docs.nocobase.com/963ba10e36d04fd258fea0e996231f68.png)
 
-##### Menu Item Configuration
+##### Configuration de l'élément du menu
 
 ![](https://static-docs.nocobase.com/0a9a05bd88d8bad9d711102a730f351d.png)
 
-- **Edit:** Modify the menu item title, icon, etc.
-- **Move to:** Besides dragging to move, you can also use the "Move to" option to quickly relocate the menu item.
-- **Insert before**
-- **Insert after**
-- **Insert inside** (only for group type)
-- **Delete**
+- **Éditer :** Modifier le titre, l'icône, etc., de l'élément du menu.
+- **Déplacer vers :** En plus du glisser-déplacer, vous pouvez également utiliser l'option "Déplacer vers" pour déplacer rapidement l'élément du menu.
+- **Insérer avant**
+- **Insérer après**
+- **Insérer à l'intérieur** (uniquement pour le type groupe)
+- **Supprimer**
