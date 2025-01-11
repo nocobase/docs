@@ -1,14 +1,14 @@
-# MariaDB Client Installation
+# Installation du Client MariaDB
 
-## Docker Installation
+## Installation via Docker
 
-### Enter the directory where the NocoBase Dockerfile is located and create a Dockerfile file
+### Entrez dans le répertoire où se trouve le fichier Dockerfile de NocoBase et créez un fichier Dockerfile
 
 ```Dockerfile
-# Based on the next version
+# Basé sur la version suivante
 FROM registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:next
 
-# run installation script, choose the latest version of mysql
+# Exécuter le script d'installation, choisir la dernière version de mysql
 RUN apt-get update && apt-get install -y wget && \
  wget https://downloads.mysql.com/archives/get/p/23/file/mysql-community-client-core_8.1.0-1debian11_amd64.deb && \
  dpkg -x mysql-community-client-core_8.1.0-1debian11_amd64.deb /tmp/mysql-client && \
@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y wget && \
  cp /tmp/mysql-client/usr/bin/mysql /usr/bin/
  ```
 
-### Modify the docker-compose.yml file of NocoBase
+### Modifiez le fichier docker-compose.yml de NocoBase
 
 ```diff
 version: "3"
@@ -35,23 +35,23 @@ services:
     depends_on:
       - mariadb
     environment:
-      # The application's secret key, used to generate user tokens, etc.
-      # If APP_KEY is changed, old tokens will also become invalid.
-      # It can be any random string, and make sure it is not exposed.
+      # La clé secrète de l'application, utilisée pour générer des jetons utilisateurs, etc.
+      # Si APP_KEY est modifiée, les anciens jetons deviendront invalides.
+      # Elle peut être n'importe quelle chaîne aléatoire et il est important de ne pas la rendre publique.
       - APP_KEY=your-secret-key
-      # Database type, supports postgres, mysql, mariadb
+      # Type de base de données, prend en charge postgres, mysql, mariadb
       - DB_DIALECT=mariadb
-      # Database host, can be replaced with the IP of an existing database server
+      # Hôte de la base de données, peut être remplacé par l'IP d'un serveur de base de données existant
       - DB_HOST=mariadb
-      # Database name
+      # Nom de la base de données
       - DB_DATABASE=nocobase
-      # Database user
+      # Utilisateur de la base de données
       - DB_USER=root
-      # Database password
+      # Mot de passe de la base de données
       - DB_PASSWORD=nocobase
-      # Whether to convert table and field names to snake case
+      # Si les noms de tables et de champs doivent être convertis en casse de type snake_case
       - DB_UNDERSCORED=true
-      # Timezone
+      # Fuseau horaire
       - TZ=Asia/Shanghai
     volumes:
       - ./storage:/app/nocobase/storage
@@ -59,7 +59,7 @@ services:
       - "13000:80"
     # init: true
 
-  # If using an existing database server, mariadb service can be omitted
+  # Si un serveur de base de données existant est utilisé, le service mariadb peut être omis
   mariadb:
     image: mariadb:11
     environment:
@@ -74,21 +74,22 @@ services:
       - nocobase
 ```
 
-### Upgrade
+### Mise à jour
 
-Previously, you would pull a new image for each update. Now, you need to build a new image for each update.
+Auparavant, vous deviez tirer une nouvelle image pour chaque mise à jour. Désormais, vous devez reconstruire une nouvelle image pour chaque mise à jour.
 
 ```diff
-# Pull the latest image
+# Tirer la dernière image
 - docker-compose pull app
-# Rebuild the app container
+# Reconstruire le conteneur de l'application
 + docker-compose build app --pull
-# Start the app
+# Démarrer l'application
 docker-compose up -d app
-# Check app logs
+# Vérifier les logs de l'application
 docker-compose logs app
 ```
 
-## Other Installation Methods
-If your NocoBase was installed with [create-nocobase-app](/welcome/getting-started/installation/create-nocobase-app) or [Git source code](/welcome/getting-started/installation/git-clone), please check the below MySQL official release page, and follow the official installation guide.
-- Last versions: https://dev.mysql.com/downloads/mysql/
+## Autres Méthodes d'Installation
+
+Si votre NocoBase a été installé avec [create-nocobase-app](/welcome/getting-started/installation/create-nocobase-app) ou [le code source Git](/welcome/getting-started/installation/git-clone), veuillez consulter la page de publication officielle de MySQL ci-dessous et suivre le guide d'installation officiel.
+- Dernières versions : https://dev.mysql.com/downloads/mysql/

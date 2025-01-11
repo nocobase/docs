@@ -1,51 +1,51 @@
-# Backup and Restore
+# Sauvegarde et Restauration
 
 <PluginInfo name="backup-restore"></PluginInfo>
 
 ## Introduction
 
-The backup and restore plugin can be used for scenarios such as application replication, migration, and upgrade.
+Le plugin de sauvegarde et de restauration peut être utilisé pour des scénarios tels que la réplication d'application, la migration et la mise à niveau.
 
 ## Installation
 
-This plugin is built-in and does not require manual installation or activation.
+Ce plugin est intégré et ne nécessite pas d'installation ou d'activation manuelle.
 
-## User Instructions
+## Instructions d'utilisation
 
-![Backup and Restore List Page](https://static-docs.nocobase.com/071b969c4db9bdc6d2c359e1b6bef5da.png)
+![Page de liste de sauvegarde et de restauration](https://static-docs.nocobase.com/071b969c4db9bdc6d2c359e1b6bef5da.png)
 
-### Creating a Backup
+### Créer une sauvegarde
 
-![Creating Backup](https://static-docs.nocobase.com/0e3d9410e6b1cfbda38044033f0b4053.png)
+![Création de la sauvegarde](https://static-docs.nocobase.com/0e3d9410e6b1cfbda38044033f0b4053.png)
 
-### Restore Backup
+### Restaurer une sauvegarde
 
-You can choose to upload a backup from your local device or click on a backup file to restore.
+Vous pouvez choisir de télécharger une sauvegarde depuis votre appareil local ou de cliquer sur un fichier de sauvegarde pour le restaurer.
 
-![Restore Backup](https://static-docs.nocobase.com/e4b95a4376260fd516de7828fd9f1056.png)
+![Restaurer la sauvegarde](https://static-docs.nocobase.com/e4b95a4376260fd516de7828fd9f1056.png)
 
-Select the data you need to restore, the selected data will completely overwrite the corresponding data table of the target application.
+Sélectionnez les données à restaurer, les données sélectionnées écraseront complètement les tables de données correspondantes de l'application cible.
 
-![Restore Backup](https://static-docs.nocobase.com/9c7cb78b51c8f949e417b5a1e0180ae2.png)
+![Restaurer la sauvegarde](https://static-docs.nocobase.com/9c7cb78b51c8f949e417b5a1e0180ae2.png)
 
-### Backup Instructions 
+### Instructions de sauvegarde
 
-Click on "Learn more" to view the backup instructions.
+Cliquez sur "En savoir plus" pour consulter les instructions de sauvegarde.
 
-![Backup and Restore Instructions](https://static-docs.nocobase.com/4f54eba0fde2d6481274665cb184a79e.png)
+![Instructions de sauvegarde et de restauration](https://static-docs.nocobase.com/4f54eba0fde2d6481274665cb184a79e.png)
 
-Backup Instructions
+Instructions de sauvegarde
 
-![Backup and Restore Instructions](https://static-docs.nocobase.com/bd5c68cf7e35d04e525f9b13e48e32d9.png)
+![Instructions de sauvegarde et de restauration](https://static-docs.nocobase.com/bd5c68cf7e35d04e525f9b13e48e32d9.png)
 
-Backup Groups
+Groupes de sauvegarde
 
-- Required Data: Essential data for system operation.
-- Skipped Data: Data skipped and not backed up.
-- User Data: Data related to users.
-- Log Data: Data used to record some actions log.
-- Third-party Service Information: Generally information about various service providers, such as file storage services, map services, and SMS service provider configuration information, etc.
-- Custom Collection Data: Data of collections added through the collection manager.
-- Unknown Data: Data without configured backup rules.
+- **Données requises** : Données essentielles pour le fonctionnement du système.
+- **Données ignorées** : Données ignorées et non sauvegardées.
+- **Données utilisateur** : Données liées aux utilisateurs.
+- **Données de log** : Données utilisées pour enregistrer certains logs d'actions.
+- **Informations sur les services tiers** : Généralement des informations sur les divers fournisseurs de services, tels que les services de stockage de fichiers, les services de cartographie, la configuration des fournisseurs de services SMS, etc.
+- **Données de collections personnalisées** : Données des collections ajoutées via le gestionnaire de collections.
+- **Données inconnues** : Données sans règles de sauvegarde configurées.
 
-Note: You can choose the data you want to back up or restore by group. The selected data will completely overwrite when restoring.
+Note : Vous pouvez choisir les données que vous souhaitez sauvegarder ou restaurer par groupe. Les données sélectionnées seront complètement écrasées lors de la restauration.

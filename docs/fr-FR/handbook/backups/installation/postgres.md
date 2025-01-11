@@ -1,23 +1,23 @@
-# Postgres Client Installation
+# Installation du Client PostgreSQL
 
-## Docker Installation
+## Installation via Docker
 
-### Enter the directory where the NocoBase Dockerfile is located and create a Dockerfile file
+### Entrez dans le répertoire où se trouve le fichier Dockerfile de NocoBase et créez un fichier Dockerfile
 
 ```Dockerfile
-# Based on the next version
+# Basé sur la version suivante
 FROM registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:next
 
-# Specify the desired PostgreSQL version, here we use version 16 as an example
+# Spécifiez la version PostgreSQL souhaitée, ici nous utilisons la version 16 à titre d'exemple
 ARG PG_VERSION=16
 
-# Run installation script
+# Exécuter le script d'installation
 RUN apt update && apt install -y postgresql-common gnupg \
   && /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y \
   && apt install -y postgresql-client-${PG_VERSION}
 ```
 
-### Modify the docker-compose.yml file of NocoBase
+### Modifiez le fichier docker-compose.yml de NocoBase
 
 ```diff
 version: "3"
@@ -36,21 +36,21 @@ services:
     depends_on:
       - postgres
     environment:
-      # The application's secret key, used to generate user tokens, etc.
-      # If APP_KEY is changed, old tokens will also become invalid.
-      # It can be any random string, and make sure it is not exposed.
+      # La clé secrète de l'application, utilisée pour générer des jetons utilisateurs, etc.
+      # Si APP_KEY est modifiée, les anciens jetons deviendront invalides.
+      # Elle peut être n'importe quelle chaîne aléatoire et il est important de ne pas la rendre publique.
       - APP_KEY=your-secret-key
-      # Database type, supports postgres, mysql, mariadb
+      # Type de base de données, prend en charge postgres, mysql, mariadb
       - DB_DIALECT=postgres
-      # Database host, can be replaced with the IP of an existing database server
+      # Hôte de la base de données, peut être remplacé par l'IP d'un serveur de base de données existant
       - DB_HOST=postgres
-      # Database name
+      # Nom de la base de données
       - DB_DATABASE=nocobase
-      # Database user
+      # Utilisateur de la base de données
       - DB_USER=nocobase
-      # Database password
+      # Mot de passe de la base de données
       - DB_PASSWORD=nocobase
-      # Timezone
+      # Fuseau horaire
       - TZ=Asia/Shanghai
     volumes:
       - ./storage:/app/nocobase/storage
@@ -58,7 +58,7 @@ services:
       - "13000:80"
     # init: true
 
-  # If using an existing database server, postgres service can be omitted
+  # Si un serveur de base de données existant est utilisé, le service postgres peut être omis
   postgres:
     image: postgres:16
     restart: always
@@ -73,20 +73,21 @@ services:
       - nocobase
 ```
 
-### Upgrade
+### Mise à jour
 
-Previously, you would pull a new image for each update. Now, you need to build a new image for each update.
+Auparavant, vous deviez tirer une nouvelle image pour chaque mise à jour. Désormais, vous devez reconstruire une nouvelle image pour chaque mise à jour.
 
 ```diff
-# Pull the latest image
+# Tirer la dernière image
 - docker-compose pull app
-# Rebuild the app container
+# Reconstruire le conteneur de l'application
 + docker-compose build app --pull
-# Start the app
+# Démarrer l'application
 docker-compose up -d app
-# Check app logs
+# Vérifier les logs de l'application
 docker-compose logs app
 ```
 
-## Other Installation Methods
-If your NocoBase was installed with [create-nocobase-app](/welcome/getting-started/installation/create-nocobase-app) or [Git source code](/welcome/getting-started/installation/git-clone), please check https://www.postgresql.org/download/, choose the appropriate PostgreSQL version, and follow the official installation guide.
+## Autres Méthodes d'Installation
+
+Si votre NocoBase a été installé avec [create-nocobase-app](/welcome/getting-started/installation/create-nocobase-app) ou [le code source Git](/welcome/getting-started/installation/git-clone), veuillez consulter [le site de téléchargement de PostgreSQL](https://www.postgresql.org/download/), choisir la version PostgreSQL appropriée et suivre le guide d'installation officiel.
