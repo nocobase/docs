@@ -15,6 +15,10 @@ The Template Printing plugin is a powerful tool that allows you to edit template
 - **Formatter Support**: Provides conditional output, date formatting, number formatting, and other functions to enhance the readability and professionalism of documents.
 - **Efficient Output Formats**: Supports direct generation of PDF files for easy sharing and printing.
 
+## インストール
+
+<embed src="./install.md"></embed>
+
 ## Configuration Instructions
 
 ### Activating Template Printing
@@ -1776,7 +1780,7 @@ No. | Name
 
 ---
 
-# Conditioned Output
+## Conditioned Output
 
 Carbone provides a series of condition-based output formatters to **hide** or **display** specified content in templates based on specific conditions. Depending on business needs, you can choose **`drop`/`keep`** (concise usage) or **`showBegin`/`showEnd`**, **`hideBegin`/`hideEnd`** (suitable for large sections of content).
 

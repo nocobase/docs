@@ -15,6 +15,10 @@
 - **格式化器支持**：提供条件输出、日期格式化、数字格式化等功能，提升文档的可读性和专业性。
 - **高效的输出格式**：支持直接生成 PDF 文件，方便分享和打印。
 
+## 安装
+
+<embed src="./install.md"></embed>
+
 ## 配置说明
 
 ### 激活模板打印功能
@@ -1778,7 +1782,7 @@ Ford, Chevrolet
 
 ---
 
-# 条件输出（Conditioned output）
+## 条件输出（Conditioned output）
 
 Carbone 提供了一系列条件输出的格式化器，用于在模板中根据特定条件**隐藏**或**显示**指定内容。可根据业务需求选择**`drop`/`keep`**（简洁用法）或者**`showBegin`/`showEnd`**、**`hideBegin`/`hideEnd`**（适用于大段内容）等。
 
