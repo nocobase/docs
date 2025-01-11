@@ -1,65 +1,65 @@
-# Block Map
+# Bloc Carte
 
 <PluginInfo name="block-map"></PluginInfo>
 
-## Overview
+## Aperçu
 
-The Block Map is an essential tool for displaying and managing map-related data, offering support for four types of map fields: points, lines, circles, and polygons.
+Le Bloc Carte est un outil essentiel pour afficher et gérer des données liées aux cartes, offrant la prise en charge de quatre types de champs cartographiques : points, lignes, cercles et polygones.
 
 ## Installation
 
-This plugin comes pre-installed but must be activated before use.
+Ce plugin est préinstallé mais doit être activé avant utilisation.
 
 ![20240421120958](https://static-docs.nocobase.com/20240421120958.png)
 
-After activation, map authentication details need to be configured.
+Après activation, les informations d'authentification de la carte doivent être configurées.
 
 ![20240421121032](https://static-docs.nocobase.com/20240421121032.png)
 
-Once configured, map fields can be integrated into your data tables.
+Une fois configuré, les champs cartographiques peuvent être intégrés dans vos tables de données.
 
 ![20240426171356](https://static-docs.nocobase.com/20240426171356.png)
 
-## Adding Map Blocks
+## Ajouter des Blocs Carte
 
-Map blocks can only be added if the associated data table includes map fields.
+Les blocs carte ne peuvent être ajoutés que si la table de données associée comprend des champs cartographiques.
 
 ![20240408194209](https://static-docs.nocobase.com/20240408194209.png)
 
 ![20240408194420](https://static-docs.nocobase.com/20240408194420.png)
 
-1. **Map Field:** Defines the type of map element (point, line, polygon).
-2. **Marker Field:** Specifies map markers (applicable only for point types).
+1. **Champ Carte :** Définit le type d'élément cartographique (point, ligne, polygone).
+2. **Champ Marqueur :** Spécifie les marqueurs de carte (applicable uniquement pour les types de points).
 
 ## Points
 
-**Use Case:** Ideal for visualizing the distribution of retail store locations.
+**Cas d'utilisation :** Idéal pour visualiser la répartition des emplacements des magasins de détail.
 
 ![20240408195630](https://static-docs.nocobase.com/20240408195630.png)
 
-## Lines
+## Lignes
 
-Lines are constructed from a sequence of map points, commonly used to illustrate paths, such as delivery routes.
+Les lignes sont construites à partir d'une séquence de points cartographiques, souvent utilisées pour illustrer des chemins, tels que des itinéraires de livraison.
 
 ![20240408201608](https://static-docs.nocobase.com/20240408201608.png)
 
-## Circles
+## Cercles
 
 ![20240408201939](https://static-docs.nocobase.com/20240408201939.png)
 
-## Polygons
+## Polygones
 
-**Use Case:** Perfect for area planning and zoning applications.
+**Cas d'utilisation :** Parfait pour la planification des zones et des applications de zonage.
 
 ![Polygon](https://static-docs.nocobase.com/20240408200546.png)
 
-## Block Settings
+## Paramètres du Bloc
 
 ![20240421121949](https://static-docs.nocobase.com/20240421121949.png)
 
-## Sequential Field Connections
+## Connexions de Champs Séquentiels
 
-Connect points according to the order defined by sequential fields.
+Connectez les points selon l'ordre défini par les champs séquentiels.
 
 ![20240408202645](https://static-docs.nocobase.com/20240408202645.png)
 
@@ -67,42 +67,42 @@ Connect points according to the order defined by sequential fields.
 
 ![20240422101027](https://static-docs.nocobase.com/20240422101027.png)
 
-## Default Map Zoom Level
+## Niveau de Zoom par Défaut
 
-The zoom level defaults to 13 but can be adjusted as needed.
+Le niveau de zoom par défaut est 13, mais il peut être ajusté selon les besoins.
 
 ![20240408202854](https://static-docs.nocobase.com/20240408202854.png)
 
-## Defining Data Scope
+## Définir la Plage de Données
 
-**Example:** Filter for waybills marked as "shipped" (using relational fields). Only waybills within the specified data scope will be displayed.
+**Exemple :** Filtrage des bons de livraison marqués comme "expédiés" (en utilisant des champs relationnels). Seuls les bons de livraison dans la plage de données spécifiée seront affichés.
 
 ![20240422101250](https://static-docs.nocobase.com/20240422101250.png)
 
-For further details, refer to [Setting Data Scope](/handbook/ui/blocks/block-settings/data-scope).
+Pour plus de détails, consultez [Définir la Plage de Données](/handbook/ui/blocks/block-settings/data-scope).
 
-## Adjusting Block Height
+## Ajuster la Hauteur du Bloc
 
-**Example:** Modify the height of the map block to suit your layout.
+**Exemple :** Modifiez la hauteur du bloc carte pour l'adapter à votre mise en page.
 
 ![20240605221111](https://static-docs.nocobase.com/20240605221111.gif)
 
-For more information, see [Block Height](/handbook/ui/blocks/block-settings/block-height).
+Pour plus d'informations, consultez [Hauteur du Bloc](/handbook/ui/blocks/block-settings/block-height).
 
-- [Edit Block Title](/handbook/ui/blocks/block-settings/block-title)
-- [Connect Data Block](/handbook/ui/blocks/block-settings/connect-block)
-- [Save as Block Template](/handbook/ui/blocks/block-settings/block-template)
+- [Modifier le Titre du Bloc](/handbook/ui/blocks/block-settings/block-title)
+- [Connecter un Bloc de Données](/handbook/ui/blocks/block-settings/connect-block)
+- [Enregistrer comme Modèle de Bloc](/handbook/ui/blocks/block-settings/block-template)
 
-## Configuration Operations
+## Opérations de Configuration
 
 ![20240421122020](https://static-docs.nocobase.com/20240421122020.png)
 
-## Batch Point Selection
+## Sélection par Lot de Points
 
 ![20240422102334](https://static-docs.nocobase.com/20240422102334.gif)
 
-- [Filter](/handbook/ui/actions/types/filter)
-- [Add](/handbook/ui/actions/types/add-new)
-- [Refresh](/handbook/ui/actions/types/refresh)
-- [Bulk Update](/handbook/action-bulk-update)
-- [Bulk Edit](/handbook/action-bulk-edit)
+- [Filtrer](/handbook/ui/actions/types/filter)
+- [Ajouter](/handbook/ui/actions/types/add-new)
+- [Rafraîchir](/handbook/ui/actions/types/refresh)
+- [Mise à jour par lot](/handbook/action-bulk-update)
+- [Édition par lot](/handbook/action-bulk-edit)

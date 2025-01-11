@@ -1,44 +1,44 @@
-# Iframe Block
+# Bloc Iframe
 
 <PluginInfo name="block-iframe"></PluginInfo>
 
 ## Introduction
-The Iframe block allows you to embed external web pages or content into the current page.
+Le bloc Iframe vous permet d'intégrer des pages web externes ou du contenu dans la page actuelle.
 
 ## Installation
 
-It's a built-in plugin, no installation is required.
+Il s'agit d'un plugin intégré, aucune installation n'est requise.
 
-## Adding Blocks
+## Ajouter des blocs
 
 ![20240408220259](https://static-docs.nocobase.com/20240408220259.png)
 
-Configure the URL or Html to directly embed the external application.
+Configurez l'URL ou le code HTML pour intégrer directement l'application externe.
 
 ![20240408220322](https://static-docs.nocobase.com/20240408220322.png)
 
-## Template engine
+## Moteur de template
 
-### string template
+### Template de chaîne
 
-The default rendering engine supports variables
+Le moteur de rendu par défaut prend en charge les variables.
 
 ### Handlebars
 
 ![20240811205239](https://static-docs.nocobase.com/20240811205239.png)
 
-For more information, refer to [Handlebars template](/handbook/template-handlebars)
+Pour plus d'informations, consultez [Template Handlebars](/handbook/template-handlebars)
 
-## Passing Variables
+## Passage de variables
 
-### Html supports variable resolution
+### Le HTML prend en charge la résolution des variables
 
 ![20240603120321](https://static-docs.nocobase.com/20240603120321.png)
 
 ![20240603120629](https://static-docs.nocobase.com/20240603120629.gif)
 
-### Url supports variables
+### L'URL prend en charge les variables
 
 ![20240603142219](https://static-docs.nocobase.com/20240603142219.png)
 
-For more information on variables, refer to [Variables](/handbook/ui/variables)
+Pour plus d'informations sur les variables, consultez [Variables](/handbook/ui/variables)
