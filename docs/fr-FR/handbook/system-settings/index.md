@@ -1,10 +1,10 @@
-# System Settings
+# Paramètres Système
 
 <PluginInfo name="system-settings"></PluginInfo>
 
 ## Introduction
-To set the global information of the system, such as system name, main LOGO, enabled language, etc.
+Permet de définir les informations globales du système, telles que le nom du système, le logo principal, la langue activée, etc.
 
-## User Manual
+## Manuel de l'Utilisateur
 
 ![20240324191444](https://static-docs.nocobase.com/20240324191444.png)
