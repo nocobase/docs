@@ -1,56 +1,56 @@
-# SQL Collection
+# Collection SQL
 
 <PluginInfo name="collection-sql"></PluginInfo>
 
 ## Introduction
 
-The SQL collection provides a powerful method for retrieving data using SQL queries. By extracting data fields through SQL queries and configuring the associated field metadata, users can utilize these fields as though they were working with a standard table. This feature is particularly beneficial for scenarios involving complex join queries, statistical analysis, and more.
+La collection SQL fournit une méthode puissante pour récupérer des données en utilisant des requêtes SQL. En extrayant des champs de données via des requêtes SQL et en configurant les métadonnées associées aux champs, les utilisateurs peuvent utiliser ces champs comme s'ils travaillaient avec une table standard. Cette fonctionnalité est particulièrement utile dans des scénarios impliquant des requêtes complexes de jointure, des analyses statistiques, et plus encore.
 
-## User Manual
+## Manuel de l'utilisateur
 
-### Creating a New SQL Collection
+### Créer une nouvelle collection SQL
 
 <img src="https://static-docs.nocobase.com/202405191452918.png"/>
 
-1. Enter your SQL query in the provided input box and click Execute. The system will analyze the query to determine the tables and fields involved, automatically extracting the relevant field metadata from the source tables.
+1. Saisissez votre requête SQL dans la boîte de saisie fournie et cliquez sur Exécuter. Le système analysera la requête pour déterminer les tables et les champs impliqués, extrayant automatiquement les métadonnées des champs des tables sources.
 
 <img src="https://static-docs.nocobase.com/202405191453556.png"/>
 
-2. If the system's analysis of the source tables and fields is incorrect, you can manually select the appropriate tables and fields to ensure the correct metadata is used. Start by selecting the source table, then choose the corresponding fields in the field source section below.
+2. Si l'analyse des tables et des champs source par le système est incorrecte, vous pouvez sélectionner manuellement les tables et les champs appropriés pour vous assurer que les bonnes métadonnées sont utilisées. Commencez par sélectionner la table source, puis choisissez les champs correspondants dans la section "Source des champs" ci-dessous.
 
 <img src="https://static-docs.nocobase.com/202405191453579.png"/>
 
-3. For fields that do not have a direct source, the system will infer the field type based on the data type. If this inference is incorrect, you can manually select the proper field type.
+3. Pour les champs qui n'ont pas de source directe, le système déduira le type de champ en fonction du type de donnée. Si cette déduction est incorrecte, vous pouvez manuellement sélectionner le type de champ approprié.
 
 <img src="https://static-docs.nocobase.com/202405191454703.png"/>
 
-4. As you configure each field, you can preview its display in the preview area, allowing you to see the immediate impact of your settings.
+4. Au fur et à mesure que vous configurez chaque champ, vous pouvez prévisualiser son affichage dans la zone de prévisualisation, vous permettant de voir l'impact immédiat de vos réglages.
 
 <img src="https://static-docs.nocobase.com/202405191455439.png"/>
 
-5. After you have completed the configuration and confirmed that everything is correct, click the Confirm button below the SQL input box to finalize the submission.
+5. Une fois la configuration terminée et après avoir confirmé que tout est correct, cliquez sur le bouton Confirmer sous la boîte de saisie SQL pour finaliser la soumission.
 
 <img src="https://static-docs.nocobase.com/202405191455302.png"/>
 
-### Editing
+### Édition
 
-1. If you need to modify the SQL query, click the Edit button to directly alter the SQL statement and reconfigure the fields as needed.
+1. Si vous avez besoin de modifier la requête SQL, cliquez sur le bouton Modifier pour modifier directement l'instruction SQL et reconfigurer les champs si nécessaire.
 
-2. To adjust the field metadata, use the Configure Fields option, which allows you to update the field settings just as you would for a regular table.
+2. Pour ajuster les métadonnées des champs, utilisez l'option Configurer les champs, qui vous permet de mettre à jour les paramètres des champs comme vous le feriez pour une table régulière.
 
-### Synchronization
+### Synchronisation
 
-If the SQL query remains unchanged but the underlying database table structure has been modified, you can synchronize and reconfigure the fields by selecting Configure Fields - Sync from Database.
+Si la requête SQL reste inchangée mais que la structure de la table de la base de données sous-jacente a été modifiée, vous pouvez synchroniser et reconfigurer les champs en sélectionnant Configurer les champs - Synchroniser depuis la base de données.
 
 <img src="https://static-docs.nocobase.com/202405191456216.png"/>
 
-### Comparison Between SQL collection and Linked Database Views
+### Comparaison entre la collection SQL et les vues de base de données liées
 
-| Template Type            | Best Suited For                                                                         | Implementation Method | Support for CRUD Operations |
-|--------------------------| -------------------------------------------------------------------------------------------- | ---------------------- | ---------------------------- |
-| SQL                      | Simple models, lightweight use cases<br />Limited interaction with the database<br />Avoiding maintenance of views<br />Prefer UI-driven operations | SQL subquery           | Not Supported                |
-| Connect to database view | Complex models<br />Requires database interaction<br />Data modification needed<br />Requires stronger and more stable database support | Database view          | Partially Supported          |
+| Type de modèle            | Idéal pour                                                                                   | Méthode de mise en œuvre | Support des opérations CRUD |
+|---------------------------| -------------------------------------------------------------------------------------------- | ------------------------ | ---------------------------- |
+| SQL                       | Modèles simples, cas d'utilisation légers<br />Interaction limitée avec la base de données<br />Éviter la maintenance des vues<br />Préférer les opérations basées sur l'interface utilisateur | Sous-requête SQL         | Non supporté                |
+| Se connecter à une vue de base de données | Modèles complexes<br />Interaction nécessaire avec la base de données<br />Modification des données requise<br />Nécessite un support de base de données plus robuste et stable | Vue de base de données   | Partiellement supporté      |
 
 :::warning
-When using SQL collection, be sure to select tables that are manageable within NocoBase. Using tables from the same database that are not connected to NocoBase may lead to inaccurate SQL query parsing. If this is a concern, consider creating and linking to a view.
+Lors de l'utilisation de la collection SQL, veillez à sélectionner des tables gérables au sein de NocoBase. L'utilisation de tables provenant de la même base de données mais non connectées à NocoBase peut entraîner une analyse incorrecte des requêtes SQL. Si cela vous préoccupe, envisagez de créer et de vous connecter à une vue.
 :::

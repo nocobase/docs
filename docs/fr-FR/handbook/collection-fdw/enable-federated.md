@@ -1,6 +1,6 @@
-# How to Enable the Federated Engine in MySQL
+# Comment activer le moteur fédéré dans MySQL
 
-The MySQL database does not enable the federated module by default. You need to modify the my.cnf configuration. If you are using the Docker version, you can handle the extension situation through volumes:
+La base de données MySQL n'active pas le module fédéré par défaut. Vous devez modifier la configuration du fichier `my.cnf`. Si vous utilisez la version Docker, vous pouvez gérer la situation de l'extension via les volumes :
 
 ```yml
 mysql:
@@ -17,20 +17,20 @@ mysql:
     - nocobase
 ```
 
-Create a new `./storage/mysql-conf/federated.cnf` file
+Créez un nouveau fichier `./storage/mysql-conf/federated.cnf`
 
 ```conf
 [mysqld]
 federated
 ```
 
-Restart MySQL
+Redémarrez MySQL
 
 ```bash
 docker compose up -d mysql
 ```
 
-Check if federated is activated
+Vérifiez si le moteur fédéré est activé
 
 ```sql
 show engines
