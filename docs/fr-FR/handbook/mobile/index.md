@@ -4,68 +4,68 @@
 
 ## Introduction
 
-This plugin facilitates the configuration of mobile pages, leveraging a core framework built on Ant Design Mobile. It offers a variety of extension points and supports the integration of specific desktop blocks.
+Ce plugin facilite la configuration des pages mobiles, en tirant parti d'un framework central basé sur Ant Design Mobile. Il propose divers points d'extension et prend en charge l'intégration de blocs spécifiques aux versions desktop.
 
 :::warning
-The older `plugin-mobile-client` has been deprecated. Starting from version v1.3, it is recommended to transition to `plugin-mobile`. These two plugins are incompatible, so the new version will necessitate a complete reconfiguration of mobile settings.
+L'ancien `plugin-mobile-client` a été abandonné. À partir de la version v1.3, il est recommandé de passer à `plugin-mobile`. Ces deux plugins sont incompatibles, donc la nouvelle version nécessitera une reconfiguration complète des paramètres mobiles.
 :::
 
 ## Installation
 
-This plugin comes pre-installed but requires activation to function.
+Ce plugin est préinstallé mais nécessite d'être activé pour fonctionner.
 
 ![20240712113500](https://static-docs.nocobase.com/20240712113500.png)
 
-## User Manual
+## Manuel de l'utilisateur
 
-### UI Configuration Interface
+### Interface de configuration UI
 
-NocoBase provides a specialized UI configuration interface tailored for mobile use.
+NocoBase propose une interface de configuration UI spécialisée pour une utilisation mobile.
 
 ![20240828220321](https://static-docs.nocobase.com/20240828220321.png)
 
-### Tab Bar
+### Barre de navigation (Tab Bar)
 
-Supports the addition of two types: links and pages.
+La barre de navigation prend en charge l'ajout de deux types : liens et pages.
 
 ![20240828223244](https://static-docs.nocobase.com/20240828223244.png)
 
-### Adding Blocks
+### Ajouter des blocs
 
-The following desktop blocks can currently be added:
+Les blocs desktop suivants peuvent être ajoutés :
 
 ![20240828223454](https://static-docs.nocobase.com/20240828223454.png)
 
-### Page Configuration
+### Configuration des pages
 
 ![20240828221452](https://static-docs.nocobase.com/20240828221452.png)
 
-### Page Tabs
+### Onglets des pages
 
 ![20240828222225](https://static-docs.nocobase.com/20240828222225.png)
 
-### Sub-Pages
+### Sous-pages
 
-On mobile devices, pop-up actions open as sub-pages with swipe-back functionality.
+Sur les appareils mobiles, les actions contextuelles s'ouvrent sous forme de sous-pages avec une fonctionnalité de retour par balayage.
 
 <video width="100%" controls>
   <source src="https://static-docs.nocobase.com/20240828222736_rec_.mp4" type="video/mp4">
 </video>
 
-### Filtering
+### Filtrage
 
-Filtering utilizes a [Popup](https://mobile.ant.design/components/popup) interaction method.
+Le filtrage utilise une méthode d'interaction basée sur [Popup](https://mobile.ant.design/components/popup).
 
 ![20240828230549](https://static-docs.nocobase.com/20240828230549.png)
 
-### Configure menu access permissions
+### Configurer les permissions d'accès au menu
 
-You can configure menu access permissions just like on the desktop side, as shown below (the mobile plugin must be enabled first):
+Vous pouvez configurer les permissions d'accès au menu de la même manière que sur la version desktop, comme indiqué ci-dessous (le plugin mobile doit être activé au préalable) :
 
 ![20240903221327_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240903221327_rec_.gif)
 
-## Development Guide
+## Guide de développement
 
-Currently supported extension points include:
+Les points d'extension actuellement pris en charge incluent :
 
 ![20240712115610](https://static-docs.nocobase.com/20240712115610.png)
