@@ -1,78 +1,78 @@
-# Custom Variables
+# Variables Personnalisées
 
 <PluginInfo name="workflow-variable" link="/handbook/workflow-variable" commercial="true"></PluginInfo>
 
-In workflows, variables can be declared or assigned values to existing ones, typically to store temporary data during the process.
+Dans les flux de travail, des variables peuvent être déclarées ou des valeurs peuvent être attribuées à des variables existantes, généralement pour stocker des données temporaires pendant le processus.
 
-## User Manual
+## Manuel de l'utilisateur
 
-### Creating Nodes
+### Création de Nœuds
 
-To add a "Variable" node in the workflow configuration interface, click the plus (“+”) button in the process:
+Pour ajouter un nœud "Variable" dans l'interface de configuration du flux de travail, cliquez sur le signe plus (“+”) dans le processus :
 
-![Add Variable Node](https://static-docs.nocobase.com/53b1e48e777bfff7f2a08271526ef3ee.png)
+![Ajouter un Nœud Variable](https://static-docs.nocobase.com/53b1e48e777bfff7f2a08271526ef3ee.png)
 
-### Configuring Nodes
+### Configuration des Nœuds
 
 #### Mode
 
-Like programming variables, a variable node must first be declared before it can be used or assigned a value. When creating a variable node, you must choose its mode. There are two options:
+Comme pour les variables de programmation, un nœud de variable doit d'abord être déclaré avant de pouvoir être utilisé ou attribué une valeur. Lors de la création d'un nœud de variable, vous devez choisir son mode. Il existe deux options :
 
-![Select Mode](https://static-docs.nocobase.com/49d8b7b501de6faef6f303262aa14550.png)
+![Sélectionner le Mode](https://static-docs.nocobase.com/49d8b7b501de6faef6f303262aa14550.png)
 
-- Declare a new variable: This creates a new variable.
-- Assign value to an existing variable: This assigns a value to a previously declared variable, effectively updating its value.
+- **Déclarer une nouvelle variable** : Cela crée une nouvelle variable.
+- **Attribuer une valeur à une variable existante** : Cela attribue une valeur à une variable déjà déclarée, mettant ainsi à jour sa valeur.
 
-If the node being created is the first variable node in the process, only the declare mode is available, as there are no pre-existing variables to assign values to.
+Si le nœud créé est le premier nœud de variable dans le processus, seul le mode de déclaration est disponible, car il n'y a pas encore de variables existantes auxquelles attribuer des valeurs.
 
-When assigning a value to an existing variable, you’ll need to select the target variable, which is the node where the variable was originally declared:
+Lors de l'attribution d'une valeur à une variable existante, vous devrez sélectionner la variable cible, c'est-à-dire le nœud où la variable a été initialement déclarée :
 
-![Select the Variable to Assign](https://static-docs.nocobase.com/1ce8911548d7347e693d8cc8ac1953eb.png)
+![Sélectionner la Variable à Attribuer](https://static-docs.nocobase.com/1ce8911548d7347e693d8cc8ac1953eb.png)
 
-#### Value
+#### Valeur
 
-The value of a variable can be of any type—such as a constant (e.g., strings, numbers, booleans, dates) or another variable within the workflow.
+La valeur d'une variable peut être de n'importe quel type, comme une constante (par exemple, des chaînes de caractères, des nombres, des booléens, des dates) ou une autre variable dans le flux de travail.
 
-In declare mode, setting a variable value is equivalent to assigning it an initial value.
+En mode déclaration, définir une valeur de variable revient à lui attribuer une valeur initiale.
 
-![Declare Initial Value](https://static-docs.nocobase.com/4ce2c508986565ad537343013758c6a4.png)
+![Déclarer une Valeur Initiale](https://static-docs.nocobase.com/4ce2c508986565ad537343013758c6a4.png)
 
-In assign mode, setting a variable value modifies the value of the target variable to the new value, which will be used in subsequent steps.
+En mode attribution, définir une valeur de variable modifie la valeur de la variable cible, qui sera utilisée dans les étapes suivantes.
 
-![Assign Trigger Variable Value to Declared Variable](https://static-docs.nocobase.com/858bae180712ad279ae6a964a77a7659.png)
+![Attribuer la Valeur d'une Variable de Déclencheur à la Variable Déclarée](https://static-docs.nocobase.com/858bae180712ad279ae6a964a77a7659.png)
 
-### Using Variable Values
+### Utilisation des Valeurs des Variables
 
-In nodes following the variable node, you can use the value of the variable by selecting it from the "Node result" group. For example, in a query node, the value of a variable can be used as a query condition:
+Dans les nœuds suivant le nœud de variable, vous pouvez utiliser la valeur de la variable en la sélectionnant dans le groupe "Résultat du Nœud". Par exemple, dans un nœud de requête, la valeur d'une variable peut être utilisée comme condition de filtrage dans la requête :
 
-![Use Variable Value as Query Filter Condition](https://static-docs.nocobase.com/1ca91c295254ff85999a1751499f14bc.png)
+![Utiliser la Valeur d'une Variable comme Condition de Filtrage de Requête](https://static-docs.nocobase.com/1ca91c295254ff85999a1751499f14bc.png)
 
-### Example
+### Exemple
 
-Variable nodes are particularly useful in branches where new values need to be calculated or combined with existing values (similar to `reduce` or `concat` in programming). These values can then be used after the branch ends. The following example demonstrates how to create a concatenated recipient string using loop and variable nodes.
+Les nœuds de variables sont particulièrement utiles dans les branches où de nouvelles valeurs doivent être calculées ou combinées avec des valeurs existantes (similaire à `reduce` ou `concat` en programmation). Ces valeurs peuvent ensuite être utilisées après la fin de la branche. L'exemple suivant montre comment créer une chaîne de destinataires concaténée en utilisant des nœuds de boucle et de variables.
 
-Start by creating a workflow triggered by a data table update. This workflow will be activated when "Article" data is updated, and it preloads the related "Authors" relational data (used to get recipients):
+Commencez par créer un flux de travail déclenché par une mise à jour de table de données. Ce flux de travail sera activé lorsque les données de l'**Article** sont mises à jour et précharge les données relationnelles associées aux **Auteurs** (utilisées pour obtenir les destinataires) :
 
-![Configure Trigger](https://static-docs.nocobase.com/93327530a93c695c637d74cdfdcd5cde.png)
+![Configurer le Déclencheur](https://static-docs.nocobase.com/93327530a93c695c637d74cdfdcd5cde.png)
 
-Next, create a variable node to store the recipient string:
+Ensuite, créez un nœud de variable pour stocker la chaîne des destinataires :
 
-![Recipient Variable Node](https://static-docs.nocobase.com/d26fa4a7e7ee4f34e0d8392a51c6666e.png)
+![Nœud de Variable des Destinataires](https://static-docs.nocobase.com/d26fa4a7e7ee4f34e0d8392a51c6666e.png)
 
-Then, create a loop branch node to iterate over the authors of the article and concatenate their details into the recipient variable:
+Puis, créez un nœud de branchement de boucle pour itérer sur les auteurs de l'article et concaténer leurs informations dans la variable des destinataires :
 
-![Loop through Authors of the Article](https://static-docs.nocobase.com/083fe62c943c17a643dc47ec2872e07c.png)
+![Boucle à Travers les Auteurs de l'Article](https://static-docs.nocobase.com/083fe62c943c17a643dc47ec2872e07c.png)
 
-Within the loop branch, first create a Operator node to concatenate the current author with the stored author string:
+Dans la branche de boucle, créez d'abord un nœud **Opérateur** pour concaténer l'auteur actuel avec la chaîne des auteurs stockée :
 
-![Concatenate Recipient String](https://static-docs.nocobase.com/5d21a990162f32cb8818d27b16fd1bcd.png)
+![Concaténer la Chaîne des Destinataires](https://static-docs.nocobase.com/5d21a990162f32cb8818d27b16fd1bcd.png)
 
-After the Operator node, create another variable node in assign mode. Select the recipient variable node as the target, and set its value to the result of the Operator node:
+Après le nœud Opérateur, créez un autre nœud de variable en mode attribution. Sélectionnez le nœud de variable des destinataires comme cible, et attribuez-lui la valeur du résultat du nœud Opérateur :
 
-![Assign Concatenated Recipient String to Recipient Node](https://static-docs.nocobase.com/fc40ed95dd9b61d924b7ca11b23f9482.png)
+![Attribuer la Chaîne de Destinataires Concaténée au Nœud des Destinataires](https://static-docs.nocobase.com/fc40ed95dd9b61d924b7ca11b23f9482.png)
 
-When the loop branch ends, the recipient variable will store the concatenated recipient string of all the article's authors. You can then use an HTTP request node after the loop to call the email-sending interface, passing the recipient variable’s value as the recipient parameter:
+Lorsque la branche de boucle se termine, la variable des destinataires contiendra la chaîne des destinataires concaténée de tous les auteurs de l'article. Vous pouvez ensuite utiliser un nœud de requête HTTP après la boucle pour appeler l'interface d'envoi d'e-mail, en passant la valeur de la variable des destinataires comme paramètre destinataire :
 
-![Send Email to Recipient through Request Node](https://static-docs.nocobase.com/37f71aa1a63e172bcb2dce10a250947e.png)
+![Envoyer un E-mail au Destinataire via un Nœud de Requête](https://static-docs.nocobase.com/37f71aa1a63e172bcb2dce10a250947e.png)
 
-In this way, a simple bulk email function is implemented using loop and variable nodes.
+De cette manière, une fonction simple d'envoi d'e-mails en masse est implémentée en utilisant des nœuds de boucle et de variables.

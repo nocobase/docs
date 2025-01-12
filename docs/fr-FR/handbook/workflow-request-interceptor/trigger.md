@@ -1,21 +1,21 @@
-# Trigger Configuration
+# Configuration du Déclencheur
 
-## Creating a Trigger
+## Création d'un Déclencheur
 
-When setting up a workflow, select "Pre-action event" as the event type:
+Lors de la configuration d'un flux de travail, sélectionnez "Événement pré-opération" comme type d'événement :
 
-![Pre-action event](https://static-docs.nocobase.com/2add03f2bdb0a836baae5fe9864fc4b6.png)
+![Événement pré-opération](https://static-docs.nocobase.com/2add03f2bdb0a836baae5fe9864fc4b6.png)
 
-## Selecting the Data Table
+## Sélection du Tableau de Données
 
-The first step in configuring a trigger for intercepting workflows is to select the data table associated with the action:
+La première étape pour configurer un déclencheur afin d'intercepter les flux de travail consiste à sélectionner le tableau de données associé à l'action :
 
-![Intercept Event Configuration_Data Table](https://static-docs.nocobase.com/8f7122caca8159d334cf776f838d53d6.png)
+![Configuration de l'événement d'interception_Tableau de Données](https://static-docs.nocobase.com/8f7122caca8159d334cf776f838d53d6.png)
 
-Next, choose the intercept mode. You can either intercept only the action buttons linked to this workflow or intercept all selected actions for the data table (regardless of the form the action originates from and without needing to bind the corresponding workflow):
+Ensuite, choisissez le mode d'interception. Vous pouvez soit intercepter uniquement les boutons d'action liés à ce flux de travail, soit intercepter toutes les actions sélectionnées pour le tableau de données (indépendamment du formulaire d'origine de l'action et sans avoir besoin de lier le flux de travail correspondant) :
 
-## Intercept Mode
+## Mode d'Interception
 
-![Intercept Event Configuration_Intercept Mode](https://static-docs.nocobase.com/145a7f7c3ba440bb6ca93a5ee84f16e2.png)
+![Configuration de l'événement d'interception_Mode d'Interception](https://static-docs.nocobase.com/145a7f7c3ba440bb6ca93a5ee84f16e2.png)
 
-Currently, the supported action types include "Create," "Update," and "Delete." You can select multiple action types simultaneously.
+Actuellement, les types d'action pris en charge incluent "Créer", "Mettre à jour" et "Supprimer". Vous pouvez sélectionner plusieurs types d'actions simultanément.

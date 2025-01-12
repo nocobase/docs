@@ -1,9 +1,9 @@
-# Manual Process
+# Traitement Manuel
 
 <PluginInfo name="workflow-manual" link="/handbook/workflow-manual"></PluginInfo>
 
 <embed src="../../workflow-manual/node.md#L3-L999"></embed>
 
-## Related Content
+## Contenu Associé
 
-Except for node configuration, there are also some related contents about manual process that can be further understood through the [plugin documentation](../../workflow-manual/index.md).
+En plus de la configuration des nœuds, il existe également certains contenus associés au traitement manuel qui peuvent être mieux compris grâce à la [documentation du plugin](../../workflow-manual/index.md).

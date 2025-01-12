@@ -1,23 +1,23 @@
-# End Process
+# Fin du processus
 
-When executed, this node will immediately end the current workflow execution and end it with the status as configured in the node. It is typically used for specific logic flow control, to exit the current workflow after meeting certain logical conditions, and not continue with subsequent processing. It can be compared to the `return` instruction in programming languages, used to exit the currently executing function.
+Lors de son exécution, ce nœud mettra immédiatement fin à l'exécution du workflow actuel et le terminera avec le statut configuré dans le nœud. Il est généralement utilisé pour un contrôle spécifique du flux logique, afin de quitter le workflow actuel après avoir satisfait certaines conditions logiques, sans continuer le traitement suivant. Il peut être comparé à l'instruction `return` dans les langages de programmation, utilisée pour quitter la fonction en cours d'exécution.
 
-## Creating a Node
+## Création d'un Nœud
 
-In the workflow configuration UI, click the plus ("+") button in the flow to add an "End Process" node:
+Dans l'interface de configuration du workflow, cliquez sur le bouton plus ("+") dans le flux pour ajouter un nœud "Fin du processus" :
 
-![Add End Process](https://static-docs.nocobase.com/672186ab4c8f7313dd3cf9c880b524b8.png)
+![Ajouter Fin du Processus](https://static-docs.nocobase.com/672186ab4c8f7313dd3cf9c880b524b8.png)
 
-## Node Configuration
+## Configuration du Nœud
 
-![End Process Node Configuration](https://static-docs.nocobase.com/bb6a597f25e9afb72836a14a0fe0683e.png)
+![Configuration du Nœud Fin du Processus](https://static-docs.nocobase.com/bb6a597f25e9afb72836a14a0fe0683e.png)
 
-### End Status
+### Statut de Fin
 
-The end status will affect the final status of the execution plan of the workflow. It can be configured as "Success" or "Failure". When the workflow reaches this node, it will immediately exit with the configured status.
+Le statut de fin affectera le statut final de l'exécution du plan du workflow. Il peut être configuré comme "Succès" ou "Échec". Lorsque le workflow atteint ce nœud, il quittera immédiatement avec le statut configuré.
 
 :::info{title=Note}
-When used in workflows of the "Pre-action" type, it will intercept the action requests. For more details, please refer to the ["Pre-action" usage instructions](../triggers/pre-action).
+Lorsqu'il est utilisé dans des workflows du type "Pré-action", il interceptera les demandes d'action. Pour plus de détails, veuillez consulter les [instructions d'utilisation de la "Pré-action"](../triggers/pre-action).
 
-Besides intercepting the action requests, the configuration of the end status will also affect the status of the feedback information in the "Response Message" in this type of workflow.
+Outre l'interception des demandes d'action, la configuration du statut de fin affectera également le statut des informations de retour dans le "Message de réponse" dans ce type de workflow.
 :::

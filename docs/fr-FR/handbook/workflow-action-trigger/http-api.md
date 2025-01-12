@@ -1,48 +1,48 @@
 # HTTP API
 
-Post-action events can be triggered not only through user interface interactions but also via HTTP API calls, providing a flexible way to initiate workflows programmatically.
+Les événements post-opération peuvent être déclenchés non seulement par des interactions avec l'interface utilisateur, mais également via des appels API HTTP, offrant ainsi une méthode flexible pour initier des flux de travail de manière programmatique.
 
 :::info{title="Note"}
-When triggering post-operation events through HTTP API calls, it's essential to ensure that the workflow is active and the data table configuration is correctly matched. If these conditions aren't met, the call may fail or produce errors.
+Lors du déclenchement d'événements post-opération via des appels API HTTP, il est essentiel de s'assurer que le flux de travail est actif et que la configuration de la table de données est correctement associée. Si ces conditions ne sont pas remplies, l'appel peut échouer ou produire des erreurs.
 :::
 
-For workflows associated with specific operation buttons, you can trigger them using the following method (illustrated here with the `posts` table creation button):
+Pour les flux de travail associés à des boutons d'opération spécifiques, vous pouvez les déclencher en utilisant la méthode suivante (illustrée ici avec le bouton de création de la table `posts`) :
 
 ```bash
-curl -X POST -H 'Authorization: Bearer <your token>' -H 'X-Role: <roleName>' -d \
+curl -X POST -H 'Authorization: Bearer <votre token>' -H 'X-Role: <nomDuRôle>' -d \
   '{
-    "title": "Hello, world!",
-    "content": "This is a test post."
+    "title": "Bonjour, le monde!",
+    "content": "Ceci est un message de test."
   }'
-  "http://localhost:3000/api/posts:create?triggerWorkflows=workflowKey"
+  "http://localhost:3000/api/posts:create?triggerWorkflows=cléDuFluxDeTravail"
 ```
 
-In this example, the URL parameter `triggerWorkflows` specifies the workflow key, with multiple workflows separated by commas if needed. You can obtain this key by hovering over the workflow name at the top of the workflow canvas:
+Dans cet exemple, le paramètre URL `triggerWorkflows` spécifie la clé du flux de travail, avec plusieurs flux de travail séparés par des virgules si nécessaire. Vous pouvez obtenir cette clé en survolant le nom du flux de travail en haut du canevas du flux de travail :
 
-![Method to View Workflow Key](https://static-docs.nocobase.com/20240426135108.png)
+![Méthode pour voir la clé du flux de travail](https://static-docs.nocobase.com/20240426135108.png)
 
-Upon successful execution, this call will trigger the appropriate post-operation event for the `posts` table.
+Une fois l'exécution réussie, cet appel déclenchera l'événement post-opération approprié pour la table `posts`.
 
 :::info{title="Note"}
-Since external API calls require user authentication, the same credentials used for standard interface requests must be provided in HTTP API calls. This includes the `Authorization` request header or `token` parameter (obtained during login), and the `X-Role` request header, which specifies the current user's role.
+Étant donné que les appels API externes nécessitent une authentification utilisateur, les mêmes identifiants utilisés pour les demandes de l'interface standard doivent être fournis dans les appels API HTTP. Cela inclut l'en-tête `Authorization` ou le paramètre `token` (obtenu lors de la connexion), ainsi que l'en-tête `X-Role`, qui spécifie le rôle de l'utilisateur actuel.
 :::
 
-If you need to trigger an event related to a one-to-one relationship (currently unsupported for many-to-one relationships), you can use the `!` symbol in the parameters to indicate the relationship field's trigger data:
+Si vous devez déclencher un événement lié à une relation un-à-un (actuellement non pris en charge pour les relations plusieurs-à-un), vous pouvez utiliser le symbole `!` dans les paramètres pour indiquer les données du champ de la relation :
 
 ```bash
-curl -X POST -H 'Authorization: Bearer <your token>' -H 'X-Role: <roleName>' -d \
+curl -X POST -H 'Authorization: Bearer <votre token>' -H 'X-Role: <nomDuRôle>' -d \
   '{
-    "title": "Hello, world!",
-    "content": "This is a test post.",
+    "title": "Bonjour, le monde!",
+    "content": "Ceci est un message de test.",
     "category": {
-      "title": "Test category"
+      "title": "Catégorie de test"
     }
   }'
-  "http://localhost:3000/api/posts:create?triggerWorkflows=workflowKey!category"
+  "http://localhost:3000/api/posts:create?triggerWorkflows=cléDuFluxDeTravail!category"
 ```
 
-Upon successful execution, this will trigger the corresponding post-operation event for the `categories` table.
+Une fois l'exécution réussie, cela déclenchera l'événement post-opération correspondant pour la table `categories`.
 
 :::info{title="Note"}
-If the event is set up in global mode, there's no need to specify the workflow using the `triggerWorkflows` URL parameter. Simply triggering the relevant data table operation will automatically initiate the associated workflow.
+Si l'événement est configuré en mode global, il n'est pas nécessaire de spécifier le flux de travail à l'aide du paramètre URL `triggerWorkflows`. Il suffit de déclencher l'opération de table de données concernée pour initier automatiquement le flux de travail associé.
 :::

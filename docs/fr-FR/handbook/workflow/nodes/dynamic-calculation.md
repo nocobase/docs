@@ -1,7 +1,8 @@
-# Dynamic Calculation
+# Calcul Dynamique
 
 <embed src="../../workflow-dynamic-calculation/node.md#L3-L999"></embed>
 
-## Related Content
+## Contenu Associé
 
-Except for node configuration, there are also some related contents about dynamic calculation that can be further understood through the [plugin documentation](../../workflow-dynamic-calculation/index.md).
+En plus de la configuration du nœud, il existe également d'autres contenus associés au calcul dynamique qui peuvent être mieux compris grâce à la [documentation du plugin](../../workflow-dynamic-calculation/index.md).
+

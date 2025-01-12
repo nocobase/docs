@@ -1,23 +1,23 @@
-# Expression Collection
+# Collection d'Expressions
 
-## Creating an “Expression collection” Template
+## Création d'un Modèle de "Collection d'Expressions"
 
-Before utilizing dynamic expression operation nodes within a workflow, it's essential to first create an “Expression” template table using the data table management tool. This table serves as a repository for various expressions:
+Avant d'utiliser les nœuds d'opération d'expressions dynamiques dans un workflow, il est essentiel de créer d'abord une table modèle d'“Expression” en utilisant l'outil de gestion de tables de données. Cette table sert de référentiel pour diverses expressions :
 
-![Creating an Expression Template Table](https://static-docs.nocobase.com/33afe3369a1ea7943f12a04d9d4443ce.png)
+![Création de la Table Modèle d'Expression](https://static-docs.nocobase.com/33afe3369a1ea7943f12a04d9d4443ce.png)
 
-## Entering Expression Data
+## Saisie des Données d'Expression
 
-Following this, you can set up a table block and input several formula entries into the template table. Each row in the “Expression” template table can be viewed as a calculation rule designed for a specific data model within the table. You can utilize different fields from the data models of various tables as variables, crafting unique expressions as calculation rules. Moreover, you can leverage different calculation engines as needed.
+Ensuite, vous pouvez configurer un bloc de table et saisir plusieurs entrées de formules dans la table modèle. Chaque ligne de la table modèle d'“Expression” peut être vue comme une règle de calcul conçue pour un modèle de données spécifique dans la table. Vous pouvez utiliser différents champs des modèles de données de diverses tables comme variables, créant ainsi des expressions uniques en tant que règles de calcul. De plus, vous pouvez exploiter différents moteurs de calcul selon vos besoins.
 
-![Entering Expression Data](https://static-docs.nocobase.com/761047f8daabacccbc6a924a73564093.png)
+![Saisie des Données d'Expression](https://static-docs.nocobase.com/761047f8daabacccbc6a924a73564093.png)
 
-:::info{title=Tip}
-Once the formulas are established, they need to be linked to the business data. Directly associating each row of business data with formula data can be tedious, so a common approach is to use a metadata table, similar to a classification table, to create a many-to-one (or one-to-one) relationship with the formula table. Then, the business data is associated with the classified metadata in a many-to-one relationship. This approach allows you to simply specify the relevant classified metadata when creating business data, making it easy to locate and utilize the corresponding formula data through the established association path.
+:::info{title=Astuce}
+Une fois les formules établies, elles doivent être liées aux données commerciales. Associer directement chaque ligne de données commerciales avec les données de formule peut être fastidieux. Une approche courante consiste à utiliser une table de métadonnées, similaire à une table de classification, pour créer une relation plusieurs-à-un (ou un-à-un) avec la table des formules. Ensuite, les données commerciales sont associées aux métadonnées classées dans une relation plusieurs-à-un. Cette approche vous permet de spécifier facilement les métadonnées classées pertinentes lors de la création des données commerciales, ce qui facilite la recherche et l'utilisation des données de formule correspondantes via le chemin d'association établi.
 :::
 
-## Loading Relevant Data into the Process
+## Chargement des Données Pertinentes dans le Processus
 
-As an example, consider creating a workflow triggered by a data table event. When an order is created, the trigger should preload the associated product data along with the product-related expression data:
+Par exemple, considérons la création d'un workflow déclenché par un événement de table de données. Lorsqu'une commande est créée, le déclencheur doit précharger les données associées au produit ainsi que les données d'expression liées au produit :
 
-![Data Table Event_Trigger Configuration](https://static-docs.nocobase.com/f181f75b10007afd5de068f3458d2e04.png)
+![Événement Table de Données_Configuration du Déclencheur](https://static-docs.nocobase.com/f181f75b10007afd5de068f3458d2e04.png)

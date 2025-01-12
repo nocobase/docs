@@ -1,35 +1,35 @@
-# Delete Record
+# Supprimer un Enregistrement
 
-Used to delete data from a specific collection that meets certain conditions.
+Utilisé pour supprimer des données d'une collection spécifique qui répond à certaines conditions.
 
-The basic usage of the delete node is similar to the update node, except that the delete node does not require field assignments, only the selection of the collection and filter conditions are needed. The result of the delete node will return the number of rows deleted successfully, which can only be viewed in the execution history and cannot be used as a variable in subsequent nodes.
+L'utilisation de base du nœud de suppression est similaire à celle du nœud de mise à jour, à l'exception du fait que le nœud de suppression ne nécessite pas d'attribution de champs, mais seulement la sélection de la collection et des conditions de filtrage. Le résultat du nœud de suppression renverra le nombre de lignes supprimées avec succès, ce qui ne peut être consulté que dans l'historique d'exécution et ne peut pas être utilisé comme variable dans les nœuds suivants.
 
 :::info{title=Note}
-Currently, the delete node does not support deleting one by one, all deletions are performed in batches, so other events triggered by each data deletion will not be triggered.
+Actuellement, le nœud de suppression ne prend pas en charge la suppression un par un, toutes les suppressions sont effectuées par lots, de sorte que d'autres événements déclenchés par chaque suppression de données ne seront pas activés.
 :::
 
-## Creating a Node
+## Création d'un Nœud
 
-In the workflow configuration interface, click the plus ("+") button in the flow to add a "Delete Record" node:
+Dans l'interface de configuration du flux de travail, cliquez sur le bouton plus ("+") dans le flux pour ajouter un nœud "Supprimer un enregistrement" :
 
-![Creating a Delete Record Node](https://static-docs.nocobase.com/e1d6b8728251fcdbed6c7f50e5570da2.png)
+![Création d'un Nœud de Suppression d'Enregistrement](https://static-docs.nocobase.com/e1d6b8728251fcdbed6c7f50e5570da2.png)
 
-## Node Configuration
+## Configuration du Nœud
 
-![Delete Node Node Configuration](https://static-docs.nocobase.com/580600c2b13ef4e01dfa48b23539648e.png)
+![Configuration du Nœud de Suppression](https://static-docs.nocobase.com/580600c2b13ef4e01dfa48b23539648e.png)
 
 ### Collection
 
-Select the collection from which data will be deleted.
+Sélectionnez la collection à partir de laquelle les données seront supprimées.
 
-### Filter Conditions
+### Conditions de Filtrage
 
-Similar to the filter conditions used in regular collection queries, variables from the workflow context can be used.
+Similaire aux conditions de filtrage utilisées dans les requêtes de collection classiques, des variables provenant du contexte du flux de travail peuvent être utilisées.
 
-## Example
+## Exemple
 
-For example, to regularly clean up invalid historical order data that has been canceled, you can use a delete node:
+Par exemple, pour nettoyer régulièrement les données d'ordres historiques invalides qui ont été annulées, vous pouvez utiliser un nœud de suppression :
 
-![Delete Node Example Node Configuration](https://static-docs.nocobase.com/b94b75077a17252f8523c3f13ce5f320.png)
+![Exemple de Configuration du Nœud de Suppression](https://static-docs.nocobase.com/b94b75077a17252f8523c3f13ce5f320.png)
 
-The workflow will be triggered periodically and execute to delete all invalid historical order data that has been canceled.
+Le flux de travail sera déclenché périodiquement et exécutera la suppression de toutes les données d'ordres historiques invalides qui ont été annulées.

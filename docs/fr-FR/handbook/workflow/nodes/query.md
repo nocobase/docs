@@ -1,42 +1,42 @@
-# Query Record
+# Requête de Données
 
-Used to query and retrieve data records that meet certain conditions from a collection.
+Utilisé pour interroger et récupérer les enregistrements de données qui répondent à certaines conditions dans une collection.
 
-It can be configured to query single or multiple data records, and the query result can be used as a variable in subsequent nodes. When querying multiple data records, the query result is an array. When the query result is empty, you can choose whether to continue executing subsequent nodes.
+Il peut être configuré pour interroger un ou plusieurs enregistrements de données, et le résultat de la requête peut être utilisé comme variable dans les nœuds suivants. Lorsque plusieurs enregistrements sont récupérés, le résultat est un tableau. Si le résultat de la requête est vide, vous pouvez choisir de continuer ou non l'exécution des nœuds suivants.
 
-## Creating a Node
+## Création d'un Nœud
 
-In the workflow configuration UI, click the plus ("+") button in the workflow and add a "Query Record" node:
+Dans l'interface de configuration du workflow, cliquez sur le bouton plus ("+") dans le flux pour ajouter un nœud "Requête de données" :
 
-![Query Record_Add](https://static-docs.nocobase.com/c1ef2b851b437806faf7a39c6ab9d33a.png)
+![Requête de Données_Ajouter](https://static-docs.nocobase.com/c1ef2b851b437806faf7a39c6ab9d33a.png)
 
-## Node Configuration
+## Configuration du Nœud
 
-![Query Node_Node Configuration](https://static-docs.nocobase.com/20240520131324.png)
+![Configuration du Nœud de Requête](https://static-docs.nocobase.com/20240520131324.png)
 
 ### Collection
 
-Select the collection to query record from.
+Sélectionnez la collection depuis laquelle interroger les enregistrements de données.
 
-### Result type
+### Type de Résultat
 
-There are two result types: "Single Data" and "Multiple record":
+Il existe deux types de résultats : "Données uniques" et "Plusieurs enregistrements" :
 
-- Single record: The result will be an object of the first matching record only, or null if no matched record.
-- Multiple records: The result will be an array containing matched records, or an empty one if no matching records. This can be used to be processed in a loop node.
+- Donnée unique : Le résultat sera un objet du premier enregistrement correspondant uniquement, ou null si aucun enregistrement ne correspond.
+- Plusieurs enregistrements : Le résultat sera un tableau contenant les enregistrements correspondants, ou un tableau vide si aucun enregistrement ne correspond. Cela peut être utilisé pour être traité dans un nœud de boucle.
 
-### Filter Conditions
+### Conditions de Filtrage
 
-Similar to the filter conditions when querying a normal collection, you can use context variables of the workflow.
+Similaire aux conditions de filtrage lors de la requête d'une collection normale, vous pouvez utiliser des variables de contexte du workflow.
 
-### Sorting
+### Tri
 
-When querying one or more data records, sorting rules can be used to control the desired results. For example, to query the latest data record, you can sort by the "Created at" field in descending order.
+Lorsque vous interrogez un ou plusieurs enregistrements de données, des règles de tri peuvent être utilisées pour contrôler les résultats souhaités. Par exemple, pour interroger l'enregistrement de données le plus récent, vous pouvez trier par le champ "Créé à" dans l'ordre décroissant.
 
 ### Pagination
 
-When the result set may be large, pagination can be used to control the number of query results. For example, to query the latest 10 data records, you can sort by the "Creation Time" field in descending order and then set pagination to 1 page with 10 data records.
+Lorsque le jeu de résultats peut être volumineux, la pagination peut être utilisée pour contrôler le nombre de résultats de la requête. Par exemple, pour interroger les 10 derniers enregistrements de données, vous pouvez trier par le champ "Heure de création" dans l'ordre décroissant et définir la pagination sur 1 page avec 10 enregistrements.
 
-### Handling Empty Results
+### Gestion des Résultats Vides
 
-In single result mode, if there are no data records that meet the conditions, the query result will be `null`; in multiple result mode, it will be an empty array (`[]`). You can choose whether to check "Exit the workflow if the query result is empty". After checked, if the query result is empty, subsequent nodes will not be executed, and the workflow will exit prematurely with a failed status.
+En mode résultat unique, s'il n'y a aucun enregistrement qui répond aux conditions, le résultat de la requête sera `null` ; en mode plusieurs résultats, ce sera un tableau vide (`[]`). Vous pouvez choisir de cocher "Quitter le workflow si le résultat de la requête est vide". Si cette option est activée, si le résultat de la requête est vide, les nœuds suivants ne seront pas exécutés, et le workflow quittera prématurément avec un statut d'échec.

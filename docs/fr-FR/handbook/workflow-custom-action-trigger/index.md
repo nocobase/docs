@@ -2,19 +2,19 @@
 
 <PluginInfo name="workflow-custom-action-trigger" link="/handbook/workflow-custom-action-trigger" commercial="true"></PluginInfo>
 
-NocoBase provides built-in standard data operations like create, read, update, and delete. However, when these operations aren't sufficient to meet complex business requirements, custom action events within workflows can be utilized. These events can be linked to the "Trigger Workflow" button on page blocks, enabling you to perform custom data operations tailored to specific needs.
+NocoBase offre des opérations de données standard intégrées, telles que la création, la lecture, la mise à jour et la suppression. Cependant, lorsque ces opérations ne suffisent pas à répondre à des besoins commerciaux complexes, des événements d'action personnalisée au sein des workflows peuvent être utilisés. Ces événements peuvent être associés au bouton "Déclencher le Workflow" sur les blocs de page, vous permettant d'effectuer des opérations de données personnalisées adaptées à des besoins spécifiques.
 
 :::info{title=Note}
-The "Custom Action Event" evolved from the "Submit to Workflow" mode found in the "Post-Action Event" feature. As of version `v1.0.0-alpha.7`, it has been separated into its own event and renamed as "Custom Action Event."
+L'événement "Action Personnalisée" a évolué à partir du mode "Soumettre au Workflow" trouvé dans la fonctionnalité "Post-Action Event". À partir de la version `v1.0.0-alpha.7`, il a été séparé en son propre événement et renommé "Événement d'Action Personnalisée."
 :::
 
-## User Manual
+## Manuel de l'utilisateur
 
-Custom action events are used in several key areas:
+Les événements d'action personnalisée sont utilisés dans plusieurs domaines clés :
 
-- [Trigger Configuration](./trigger.md)
-- [Action Configuration](./action.md)
+- [Configuration du déclencheur](./trigger.md)
+- [Configuration de l'action](./action.md)
 
-For practical examples of how to use these events, refer to the [Examples](./example.md) section.
+Pour des exemples pratiques sur la façon d'utiliser ces événements, consultez la section [Exemples](./example.md).
 
-If integration with an external system is needed, consult the [Http Api](./http-api.md) guide.
+Si une intégration avec un système externe est nécessaire, consultez le guide [Http Api](./http-api.md).

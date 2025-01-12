@@ -1,12 +1,12 @@
-# Overview
+# Vue d'ensemble
 
-While the built-in features of workflows are robust, they may not cover every possible scenario. For instance, the default node types might not accommodate all the operations required in diverse business contexts. To address these gaps, we offer an extension framework for workflows, enabling you to expand trigger types and node functionalities. When the built-in features fall short, these extensions allow you to customize solutions using low-code techniques.
+Bien que les fonctionnalités intégrées des workflows soient robustes, elles ne couvrent peut-être pas tous les scénarios possibles. Par exemple, les types de nœuds par défaut peuvent ne pas répondre à toutes les opérations requises dans des contextes commerciaux divers. Pour combler ces lacunes, nous proposons un cadre d'extension pour les workflows, vous permettant d'élargir les types de déclencheurs et les fonctionnalités des nœuds. Lorsque les fonctionnalités intégrées ne suffisent pas, ces extensions vous permettent de personnaliser des solutions en utilisant des techniques de développement à faible code.
 
-These extensions are categorized into two main areas:
+Ces extensions sont regroupées en deux grandes catégories :
 
-- [Extend Trigger Types](./trigger.md)
-- [Extend Node Types](./instruction.md)
+- [Étendre les types de déclencheurs](./trigger.md)
+- [Étendre les types de nœuds](./instruction.md)
 
-## Additional Resources
+## Ressources supplémentaires
 
-- [API Reference](./api.md)
+- [Référence API](./api.md)

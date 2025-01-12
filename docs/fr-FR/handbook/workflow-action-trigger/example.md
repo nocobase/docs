@@ -1,34 +1,34 @@
-# Example
+# Exemple
 
-**Output:** Final Polished Translation
+**Sortie :** Traduction finale polie
 
 ---
 
-Here, we will walk through the process by adding a new operation.
+Ici, nous allons passer en revue le processus en ajoutant une nouvelle opération.
 
-Imagine a scenario involving a "Expenses applications." After an employee submits an expense reimbursement, the system needs to perform an automatic review of the amount and, if necessary, trigger a manual review for amounts exceeding a set limit. Only requests that pass these reviews will be approved and subsequently forwarded to the finance department for processing.
+Imaginons un scénario impliquant des "Demandes de frais". Après qu'un employé soumet une demande de remboursement de frais, le système doit effectuer une révision automatique du montant et, si nécessaire, déclencher une révision manuelle pour les montants dépassant une limite définie. Seules les demandes qui réussissent ces révisions seront approuvées et ensuite transmises au département financier pour traitement.
 
-To start, we can create a "Expenses" collection with the following fields:
+Pour commencer, nous pouvons créer une collection "Frais" avec les champs suivants :
 
-- **Project Name:** Single-line Text
-- **Applicant:** Many-to-One (User)
-- **Amount:** Numeric
-- **Status:** Single Choice (Options: "Approved", "Processed")
+- **Nom du projet** : Texte sur une ligne
+- **Demandeur** : Plusieurs à un (Utilisateur)
+- **Montant** : Numérique
+- **Statut** : Choix unique (Options : "Approuvé", "Traitée")
 
-Next, we'll create a workflow categorized as a "Post-action Event" and configure the trigger's data table model to point to the "Expenses" collection:
+Ensuite, nous créerons un flux de travail classé comme "Événement Post-action" et configurerons le modèle de table de données du déclencheur pour pointer vers la collection "Frais" :
 
-![Example_Trigger Configuration_Select Data Table](https://static-docs.nocobase.com/6e1abb5c3e1198038676115943714f07.png)
+![Exemple_Configuration du Déclencheur_Sélectionner la Table de Données](https://static-docs.nocobase.com/6e1abb5c3e1198038676115943714f07.png)
 
-Once the workflow is enabled, we can proceed with configuring the specific processing nodes.
+Une fois le flux de travail activé, nous pouvons procéder à la configuration des nœuds de traitement spécifiques.
 
-Then, on the user interface, create a table block for the "Expenses" data table and add an "Add" button to the toolbar, ensuring the corresponding form fields are properly configured. In the settings for the form's "Submit" button, open the "Bind Workflow" configuration dialog, select the entire form's data as the context, and link it to the workflow we previously created:
+Ensuite, dans l'interface utilisateur, créez un bloc de table pour la table de données "Frais" et ajoutez un bouton "Ajouter" à la barre d'outils, en vous assurant que les champs de formulaire correspondants sont correctement configurés. Dans les paramètres du bouton "Soumettre" du formulaire, ouvrez la fenêtre de configuration "Lier le Flux de Travail", sélectionnez les données du formulaire complet comme contexte et liez-les au flux de travail que nous avons précédemment créé :
 
-![Example_Form Button Configuration_Bind Workflow](https://static-docs.nocobase.com/fc00bdcdb975bb8850e5cab235f854f3.png)
+![Exemple_Configuration du Bouton de Formulaire_Lier le Flux de Travail](https://static-docs.nocobase.com/fc00bdcdb975bb8850e5cab235f854f3.png)
 
-Once the form configuration is complete, return to the workflow to arrange the logic. For instance, if the reimbursement amount exceeds 500, the system will require an administrator's manual review; otherwise, it will automatically approve the request. Upon approval, a expenses record is generated and forwarded to finance for further processing (details omitted).
+Une fois la configuration du formulaire terminée, revenez au flux de travail pour organiser la logique. Par exemple, si le montant du remboursement dépasse 500, le système nécessitera une révision manuelle par un administrateur ; sinon, il approuvera automatiquement la demande. Lors de l'approbation, un enregistrement de frais est généré et envoyé aux finances pour traitement ultérieur (les détails sont omis).
 
-![Example_Process Flow](https://static-docs.nocobase.com/059e8e3d5ffb34cc2da6880fa3dc490b.png)
+![Exemple_Circuit de Processus](https://static-docs.nocobase.com/059e8e3d5ffb34cc2da6880fa3dc490b.png)
 
-Setting aside the subsequent financial processing, this completes the configuration of the expenses application process. When an employee fills out and submits a expenses request, the system triggers the corresponding workflow. If the amount is under 500, a record is automatically created and awaits further action by finance. If the amount exceeds this threshold, the request undergoes a supervisor's review. Upon approval, the record is created and handed over to finance for processing.
+Mis à part le traitement financier ultérieur, cela complète la configuration du processus de demande de frais. Lorsqu'un employé remplit et soumet une demande de frais, le système déclenche le flux de travail correspondant. Si le montant est inférieur à 500, un enregistrement est automatiquement créé et attend l'action suivante des finances. Si le montant dépasse ce seuil, la demande subit une révision par un superviseur. Après approbation, l'enregistrement est créé et remis aux finances pour traitement.
 
-This example workflow can also be applied to a standard "Submit" button, depending on whether the business scenario requires a record to be created before moving on to subsequent steps.
+Ce flux de travail exemple peut également être appliqué à un bouton "Soumettre" standard, en fonction de la manière dont le scénario commercial exige qu'un enregistrement soit créé avant de passer aux étapes suivantes.

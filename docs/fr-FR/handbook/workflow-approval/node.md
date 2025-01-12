@@ -1,92 +1,92 @@
-# Approval Node Configuration
+# Configuration du Nœud d'Approbation
 
-In an approval workflow, a dedicated "Approval" node is required to configure the logic for approvers to handle (approve, reject, or return) the initiated approval request. This "Approval" node is exclusively used within approval workflows.
+Dans un workflow d'approbation, un nœud "Approbation" dédié est nécessaire pour configurer la logique permettant aux approbateurs de traiter (approuver, rejeter ou retourner) la demande d'approbation initiée. Ce nœud "Approbation" est exclusivement utilisé dans les workflows d'approbation.
 
-:::info{title=Tip}
-**Difference from the general "Manual" node:** The general "Manual" node is versatile and can be used across various workflows for manual data input, decision-making on process continuation, and other scenarios. In contrast, the "Approval" Node is specialized for approval workflows and is not applicable in other types of workflows.
+:::info{title=Astuce}
+**Différence avec le nœud "Manuel" général :** Le nœud "Manuel" général est polyvalent et peut être utilisé dans divers workflows pour l'entrée manuelle de données, la prise de décision sur la poursuite du processus et d'autres scénarios. En revanche, le nœud "Approbation" est spécialisé pour les workflows d'approbation et n'est pas applicable dans d'autres types de workflows.
 :::
 
-## Creating a Node
+## Création d'un Nœud
 
-To create an "Approval" node, click the plus sign ("+") in the workflow. Then, select one of the available pass modes to configure the approval node:
+Pour créer un nœud "Approbation", cliquez sur le signe plus ("+") dans le workflow. Ensuite, sélectionnez l'un des modes de passage disponibles pour configurer le nœud d'approbation :
 
-![Approval Node Creation](https://static-docs.nocobase.com/f15d61208a3918d005cd2031fc9b6ce7.png)
+![Création du Nœud d'Approbation](https://static-docs.nocobase.com/f15d61208a3918d005cd2031fc9b6ce7.png)
 
-## Pass Modes
+## Modes de Passage
 
-There are two pass modes available:
+Il existe deux modes de passage disponibles :
 
-1.  Direct Pass Mode: This mode is ideal for simpler workflows, where the outcome at the approval node determines whether the process ends. If the request is not approved, the process exits immediately.
+1. **Mode de Passage Direct :** Ce mode est idéal pour des workflows simples, où le résultat au nœud d'approbation détermine si le processus se termine. Si la demande n'est pas approuvée, le processus se termine immédiatement.
 
-    ![Approval Node Pass Mode - Direct Pass Mode](https://static-docs.nocobase.com/a9d446a186f61c546607cf1c2534b287.png)
+    ![Mode de Passage du Nœud d'Approbation - Mode Direct](https://static-docs.nocobase.com/a9d446a186f61c546607cf1c2534b287.png)
 
-2.  Branching Mode: This mode is typically used for more complex workflows. After the approval node produces a result, subsequent nodes can execute within the resulting branches.
+2. **Mode de Ramification :** Ce mode est généralement utilisé pour des workflows plus complexes. Après que le nœud d'approbation produise un résultat, les nœuds suivants peuvent être exécutés dans les branches résultantes.
 
-    ![Approval Node Pass Mode - Branching Mode](https://static-docs.nocobase.com/57dc6a8907f3bb02fb28c354c241e4e5.png)
+    ![Mode de Passage du Nœud d'Approbation - Mode de Ramification](https://static-docs.nocobase.com/57dc6a8907f3bb02fb28c354c241e4e5.png)
 
-    If the node is configured with a "Return" operation, a "Return" branch will be created, and the process will forcibly exit after the return branch is completed.
+    Si le nœud est configuré avec une opération "Retour", une branche "Retour" sera créée, et le processus sortira de manière forcée après que la branche de retour soit terminée.
 
-    Once this node is "approved," the process continues through both the pass branch and the subsequent workflow. Following a "reject" operation, the default setting allows the process to continue through the subsequent workflow, although you can configure the node to end the process after executing the rejection branch.
+    Une fois ce nœud "approuvé", le processus continue à travers la branche de passage et le workflow suivant. Après une opération "rejeter", le paramètre par défaut permet au processus de continuer à travers le workflow suivant, bien que vous puissiez configurer le nœud pour terminer le processus après l'exécution de la branche de rejet.
 
-:::info{title=Tip}
-The pass mode cannot be modified once the node is created.
+:::info{title=Astuce}
+Le mode de passage ne peut pas être modifié une fois le nœud créé.
 :::
 
-## Approvers
+## Approveurs
 
-Approvers are the users responsible for the approval actions at the node. They can consist of one or more users, selected from a static list or a dynamic value specified by a variable.
+Les approbateurs sont les utilisateurs responsables des actions d'approbation au nœud. Ils peuvent être composés d'un ou plusieurs utilisateurs, sélectionnés à partir d'une liste statique ou d'une valeur dynamique spécifiée par une variable.
 
-![Approval Node_Approvers](https://static-docs.nocobase.com/29c64297d577b9ca9457b1d7ac62287d.png)
+![Nœud d'Approbation_Approbeurs](https://static-docs.nocobase.com/29c64297d577b9ca9457b1d7ac62287d.png)
 
-When using a variable, only primary keys or foreign keys from user data in the context and node results can be selected. If the selected variable is an array (in cases of many-to-many relationships), each user in the array will be merged into the overall approver collection.
+Lors de l'utilisation d'une variable, seuls les clés primaires ou les clés étrangères provenant des données utilisateur dans le contexte et les résultats du nœud peuvent être sélectionnées. Si la variable sélectionnée est un tableau (dans les cas de relations plusieurs-à-plusieurs), chaque utilisateur du tableau sera intégré à la collection d'approbateurs globale.
 
-## Negotiation Modes
+## Modes de Négociation
 
-If there is only one approver (including cases where multiple variables are deduplicated), the approval will be handled solely by that user, regardless of the negotiation mode chosen.
+S'il n'y a qu'un seul approbateur (y compris dans les cas où plusieurs variables sont dédupliquées), l'approbation sera gérée uniquement par cet utilisateur, quel que soit le mode de négociation choisi.
 
-For multiple approvers, the selected negotiation mode determines the handling method:
+Pour plusieurs approbateurs, le mode de négociation sélectionné détermine la méthode de gestion :
 
-1. Or: The node passes with the approval of any one person; all must reject for the node to be rejected.
-2. And: The node passes only if all approvers approve; a single rejection results in rejection.
-3. Voting: The node passes if a majority (as specified) of approvers approve; otherwise, the node is rejected.
+1. **Ou** : Le nœud passe avec l'approbation de n'importe quel approbateur ; tous doivent rejeter pour que le nœud soit rejeté.
+2. **Et** : Le nœud passe uniquement si tous les approbateurs approuvent ; un seul rejet entraîne le rejet du nœud.
+3. **Vote** : Le nœud passe si une majorité (comme spécifiée) des approbateurs approuvent ; sinon, le nœud est rejeté.
 
-For the return operation, if any user in the approver collection opts for a return, the node will directly exit the workflow.
+Pour l'opération de retour, si un utilisateur de la collection d'approbateurs choisit un retour, le nœud quittera directement le workflow.
 
-## Processing Order
+## Ordre de Traitement
 
-For multiple approvers, the processing order dictates the sequence of actions:
+Pour plusieurs approbateurs, l'ordre de traitement dicte la séquence des actions :
 
-1. Parallelly: All approvers can act in any order, with no sequence required.
-2. Sequentially: Approvers act in the order defined in the approver collection, where each subsequent user can only proceed after the previous one has submitted their decision.
+1. **Parallèlement** : Tous les approbateurs peuvent agir dans n'importe quel ordre, sans séquence requise.
+2. **Séquentiellement** : Les approbateurs agissent dans l'ordre défini dans la collection d'approbateurs, où chaque utilisateur suivant ne peut continuer qu'après que le précédent ait soumis sa décision.
 
-Regardless of whether "Sequentially" processing is set, the results generated will follow the rules outlined in the "Negotiation Modes" section, with the node completing execution once the conditions are met.
+Peu importe que le traitement "Séquentiellement" soit activé ou non, les résultats générés suivront les règles décrites dans la section "Modes de Négociation", le nœud terminant son exécution une fois que les conditions sont remplies.
 
-## Exit Workflow After Rejection Branch Completion
+## Quitter le Workflow Après la Fin de la Branche de Rejet
 
-When "Branch Mode" is set for "Pass Mode," you can opt to exit the workflow after the rejection branch is completed. If selected, a "✗" symbol will appear at the end of the rejection branch, indicating that no further nodes will be executed after this branch concludes:
+Lorsque le "Mode de Ramification" est sélectionné pour le "Mode de Passage", vous pouvez choisir de quitter le workflow après la fin de la branche de rejet. Si sélectionné, un symbole "✗" apparaîtra à la fin de la branche de rejet, indiquant qu'aucun autre nœud ne sera exécuté après cette branche :
 
-![Exit After Rejection](https://static-docs.nocobase.com/1e740df93c128fb6fe54bf85a740e683.png)
+![Quitter Après Rejet](https://static-docs.nocobase.com/1e740df93c128fb6fe54bf85a740e683.png)
 
-## Approver Interface Configuration
+## Configuration de l'Interface de l'Approbateur
 
-The approver interface configuration provides the interface for approvers when the workflow reaches this node. Click the configuration button to open the settings window:
+La configuration de l'interface de l'approbateur fournit l'interface pour les approbateurs lorsque le workflow atteint ce nœud. Cliquez sur le bouton de configuration pour ouvrir la fenêtre des paramètres :
 
-![Approver Interface Configuration Pop-up](https://static-docs.nocobase.com/2c321ae164b436f1c572305ff27cc9dd.png)
+![Fenêtre Contextuelle de Configuration de l'Interface de l'Approbateur](https://static-docs.nocobase.com/2c321ae164b436f1c572305ff27cc9dd.png)
 
-In this configuration window, you can add blocks such as approval submission details, operation bars, and custom prompt text:
+Dans cette fenêtre de configuration, vous pouvez ajouter des blocs tels que les détails de la soumission d'approbation, les barres d'opération, et des textes d'invite personnalisés :
 
-![Add Block in Interface Configuration](https://static-docs.nocobase.com/9f8f11926e935ad8f8fbeec368edebfe.png)
+![Ajouter un Bloc dans la Configuration de l'Interface](https://static-docs.nocobase.com/9f8f11926e935ad8f8fbeec368edebfe.png)
 
-The approval content details block includes the data submitted by the initiator. Similar to a standard data block, you can freely add field components from the data table and arrange them to organize the content that the approver needs to review:
+Le bloc des détails de l'approbation comprend les données soumises par l'initiateur. Semblable à un bloc de données standard, vous pouvez librement ajouter des composants de champ de la table de données et les organiser pour organiser le contenu que l'approbateur doit examiner :
 
-![Details Block in Interface Configuration](https://static-docs.nocobase.com/1140ec13caeea1b364d12e057720a29c.png)
+![Bloc des Détails dans la Configuration de l'Interface](https://static-docs.nocobase.com/1140ec13caeea1b364d12e057720a29c.png)
 
-The operation bar can include buttons supported by this node, such as "Approve," "Reject," and "Return":
+La barre d'opération peut inclure des boutons pris en charge par ce nœud, tels que "Approuver", "Rejeter", et "Retourner" :
 
-![Operation Bar in Interface Configuration](https://static-docs.nocobase.com/1bb090ed123f62ba8a524a3e9e7da328.png)
+![Barre d'Opération dans la Configuration de l'Interface](https://static-docs.nocobase.com/1bb090ed123f62ba8a524a3e9e7da328.png)
 
-Additionally, the operation bar can include fields for approvers to fill out, such as a "Comment" field.
+De plus, la barre d'opération peut inclure des champs pour que les approbateurs les remplissent, tels qu'un champ "Commentaire".
 
 :::warning{title=Important}
-If you enable or disable a button in the operation bar, be sure to save the node configuration after closing the interface configuration window. Otherwise, the changes will not take effect.
+Si vous activez ou désactivez un bouton dans la barre d'opération, assurez-vous de sauvegarder la configuration du nœud après avoir fermé la fenêtre de configuration de l'interface. Sinon, les modifications ne prendront pas effet.
 :::
