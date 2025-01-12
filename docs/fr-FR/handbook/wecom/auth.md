@@ -1,108 +1,108 @@
-# 认证：企业微信
+# Authentification : WeCom (Entreprise WeChat)
 
 <PluginInfo commercial="true" name="wecom"></PluginInfo>
 
-## 介绍
+## Introduction
 
-**企业微信**插件支持用户使用企业微信账号登录 NocoBase.
+Le plugin **WeCom (Entreprise WeChat)** permet aux utilisateurs de se connecter à NocoBase en utilisant leur compte WeCom.
 
-## 激活插件
+## Activation du plugin
 
 ![](https://static-docs.nocobase.com/202406272056962.png)
 
-## 创建和配置企业微信自建应用
+## Créer et configurer une application WeCom personnalisée
 
-进入企业微信管理后台，创建企业微信自建应用。
+Accédez à l'interface de gestion de WeCom et créez une application WeCom personnalisée.
 
 ![](https://static-docs.nocobase.com/202406272101321.png)
 
 ![](https://static-docs.nocobase.com/202406272102087.png)
 
-点击应用进入详情页，下拉页面，点击「企业微信授权登录」。
+Cliquez sur l'application pour entrer dans la page de détails, faites défiler la page et cliquez sur "Authentification WeCom".
 
 ![](https://static-docs.nocobase.com/202406272104655.png)
 
-设置授权回调域为 NocoBase 应用域名。
+Définissez le domaine de rappel de l'autorisation sur le nom de domaine de l'application NocoBase.
 
 ![](https://static-docs.nocobase.com/202406272105662.png)
 
-回到应用详情页，点击「网页授权及 JS-SDK」。
+Retournez à la page des détails de l'application, puis cliquez sur "Autorisation Web et JS-SDK".
 
 ![](https://static-docs.nocobase.com/202406272107063.png)
 
-设置并验证可作为应用 OAuth2.0 网页授权功能的回调域名。
+Configurez et vérifiez le domaine de rappel autorisé pour la fonctionnalité d'autorisation Web OAuth2.0 de l'application.
 
 ![](https://static-docs.nocobase.com/202406272107899.png)
 
-在应用详情页，点击「企业可信 IP」。
+Dans la page des détails de l'application, cliquez sur "IP de confiance de l'entreprise".
 
 ![](https://static-docs.nocobase.com/202406272108834.png)
 
-配置 NocoBase 应用 IP.
+Configurez l'IP de l'application NocoBase.
 
 ![](https://static-docs.nocobase.com/202406272109805.png)
 
-## 从企业微信管理后台获取密钥
+## Obtenir les clés depuis le panneau de gestion WeCom
 
-在企业微信管理后台 - 我的企业，复制「企业 ID」.
+Dans le panneau de gestion WeCom - Mon entreprise, copiez l'**ID de l'entreprise**.
 
 ![](https://static-docs.nocobase.com/202406272111637.png)
 
-在企业微信管理后台 - 应用管理，进入上一步创建的应用的详情页，复制 AgentId 和 Secret
+Dans le panneau de gestion WeCom - Gestion des applications, accédez à la page des détails de l'application que vous avez créée précédemment, puis copiez l'**AgentId** et le **Secret**.
 
 ![](https://static-docs.nocobase.com/202406272122322.png)
 
-## 在 NocoBase 上添加企业微信认证
+## Ajouter l'authentification WeCom dans NocoBase
 
-进入用户认证插件管理页面。
+Accédez à la page de gestion du plugin d'authentification utilisateur.
 
 ![](https://static-docs.nocobase.com/202406272115044.png)
 
-添加 - 企业微信
+Ajoutez - **WeCom**
 
 ![](https://static-docs.nocobase.com/202406272115805.png)
 
-### 配置
+### Configuration
 
 ![](https://static-docs.nocobase.com/202412041459250.png)
 
-| 配置项                                                                                                | 说明                                                                                                 | 版本要求 |
-| ----------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | -------- |
-| When a phone number does not match an existing user, <br />should a new user be created automatically | 当使用手机号匹配不到已有用户时，是否自动创建新用户                                                   | -        |
-| Company ID                                                                                            | 企业 ID, 从企业微信管理后台获取                                                                      | -        |
-| AgentId                                                                                               | 从企业微信管理后台自建应用配置获取                                                                   | -        |
-| Secret                                                                                                | 从企业微信管理后台自建应用配置获取                                                                   | -        |
-| Origin                                                                                                | 当前应用域名                                                                                         | -        |
-| Workbench application redirect link                                                                   | 成功登录后跳转的应用路径                                                                             | `v1.4.0` |
-| Automatic login                                                                                       | 在企业微信浏览器里打开应用链接时，自动登录。当配置有多个企业微信认证器的时候，只有一个能开启该选项。 | `v1.4.0` |
-| Workbench application homepage link                                                                   | 工作台应用主页链接                                                                                   | -        |
+| Paramètre                                                                                       | Description                                                                                           | Version requise |
+| ------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- | ---------------- |
+| Lorsque le numéro de téléphone ne correspond à aucun utilisateur existant, <br />faut-il créer un nouvel utilisateur automatiquement ? | Si le numéro de téléphone ne correspond à aucun utilisateur, doit-on créer automatiquement un nouvel utilisateur ? | -                |
+| **ID de l'entreprise**                                                                          | ID de l'entreprise, obtenu depuis le panneau de gestion WeCom                                          | -                |
+| **AgentId**                                                                                     | À obtenir depuis les configurations de l'application WeCom                                            | -                |
+| **Secret**                                                                                       | À obtenir depuis les configurations de l'application WeCom                                            | -                |
+| **Origine**                                                                                      | Le domaine actuel de l'application NocoBase                                                           | -                |
+| **Lien de redirection de l'application du tableau de bord**                                      | Lien vers l'application après une connexion réussie                                                   | `v1.4.0`         |
+| **Connexion automatique**                                                                        | Lors de l'ouverture du lien dans le navigateur WeCom, la connexion se fait automatiquement. Lors de la configuration de plusieurs authenticateurs WeCom, cette option ne peut être activée que pour un seul. | `v1.4.0`         |
+| **Lien de la page d'accueil de l'application du tableau de bord**                               | Lien vers la page d'accueil de l'application du tableau de bord                                       | -                |
 
-## 配置企业微信应用首页
+## Configurer la page d'accueil de l'application WeCom
 
 :::info
-`v1.4.0` 以上版本，在启用「自动登录」选项的情况下，应用主页链接可以简化为: `https://<url>/<path>`，例如 `https://example.nocobase.com/admin`.
+Dans les versions **v1.4.0** et supérieures, lorsque l'option **Connexion automatique** est activée, le lien vers la page d'accueil de l'application peut être simplifié : `https://<url>/<path>`, par exemple `https://example.nocobase.com/admin`.
 
-也可以将分别配置手机和电脑端，例如 `https://example.nocobase.com/m` 和 `https://example.nocobase.com/admin`.
+Il est également possible de configurer des liens distincts pour les versions mobile et bureau, par exemple `https://example.nocobase.com/m` et `https://example.nocobase.com/admin`.
 :::
 
-进入企业微信管理员后台，将复制的工作台应用主页链接填写到对应应用的应用主页地址栏。
+Accédez à l'interface de gestion de l'administrateur WeCom et remplissez le lien de la page d'accueil de l'application dans la barre d'adresse de l'application.
 
 ![](https://static-docs.nocobase.com/202406272123631.png)
 
 ![](https://static-docs.nocobase.com/202406272123048.png)
 
-## 登录
+## Connexion
 
-访问登录页面，点击登录表单下方按钮发起第三方登录。
+Accédez à la page de connexion, puis cliquez sur le bouton sous le formulaire de connexion pour lancer l'authentification via un tiers.
 
 ![](https://static-docs.nocobase.com/202406272124608.png)
 
 :::warning
-由于企业微信对于手机号等敏感信息的权限限制，只能在企业微信客户端内完成授权。第一次使用企业微信登录时，请参考以下步骤在企业微信客户端内完成首次登录授权。
+En raison des restrictions d'autorisation de WeCom sur les informations sensibles comme le numéro de téléphone, l'autorisation ne peut être complétée que dans le client WeCom. Lors de la première utilisation de la connexion WeCom, veuillez suivre les étapes ci-dessous pour effectuer l'autorisation dans le client WeCom.
 :::
 
-## 初次登录
+## Première connexion
 
-从企业微信客户端进入工作台，下拉至底部，点击应用进入前面填写的应用主页，即可完成首次授权登录，之后就可以在 NocoBase 应用内使用企业微信登录。
+Depuis le client WeCom, accédez à l'application et faites défiler jusqu'en bas. Cliquez sur l'application pour accéder à la page d'accueil de l'application que vous avez remplie précédemment, cela permettra de compléter l'autorisation initiale. Après cela, vous pourrez vous connecter à NocoBase en utilisant WeCom.
 
 <img src="https://static-docs.nocobase.com/202406272131113.png" width="400" />
