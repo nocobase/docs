@@ -1,16 +1,15 @@
-# Plugin Management
+# Gestion des Plugins
 
 <PluginInfo name="plugin-manager"></PluginInfo>
 
+## Gestionnaire de Plugins
 
-## Plugin Manager 
-
-By clicking the plugin manager icon in the top right corner, you can access the plugin manager page. Here, you can view, install, enable, and disable plugins.
+En cliquant sur l'icône du gestionnaire de plugins dans le coin supérieur droit, vous pouvez accéder à la page de gestion des plugins. Ici, vous pouvez voir, installer, activer et désactiver les plugins.
 
 ![2024-04-10_08-47-45](https://static-docs.nocobase.com/2024-04-10_08-47-45.png)
 
-## Plugin Settings Center
+## Centre des Paramètres des Plugins
 
-Plugins usually come with their own settings page. By clicking on the settings icon in the top right corner, you can see the menu of all plugin settings pages. By clicking on the relevant menu, you can set the corresponding plugin.
+Les plugins sont généralement accompagnés de leur propre page de paramètres. En cliquant sur l'icône des paramètres dans le coin supérieur droit, vous pouvez voir le menu de toutes les pages de paramètres des plugins. En cliquant sur le menu correspondant, vous pouvez configurer le plugin associé.
 
 ![2024-04-10_08-52-41](https://static-docs.nocobase.com/2024-04-10_08-52-41.png)
