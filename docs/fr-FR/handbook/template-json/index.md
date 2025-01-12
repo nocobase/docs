@@ -1,12 +1,12 @@
-# JSON Template
+# Modèle JSON
 
 ## Introduction
 
-In a JSON template, variables are represented in string format and must be enclosed in double quotes, such as {{xxxx}}. During the parsing process, each variable's value is converted to its appropriate type based on its actual content. Thus, while the variable itself is a string, the resulting parsed value may not necessarily remain a string.
+Dans un modèle JSON, les variables sont représentées sous forme de chaîne de caractères et doivent être entourées de guillemets doubles, comme {{xxxx}}. Lors du processus de parsing, la valeur de chaque variable est convertie en son type approprié en fonction de son contenu réel. Ainsi, bien que la variable elle-même soit une chaîne, la valeur résultante après le parsing ne sera pas nécessairement une chaîne.
 
-## Example
+## Exemple
 
-The JSON template is as follows
+Le modèle JSON est le suivant :
 
 ```json
 {
@@ -25,7 +25,7 @@ The JSON template is as follows
 }
 ```
 
-The current variables are as follows
+Les variables actuelles sont les suivantes :
 
 ```json
 {
@@ -38,7 +38,7 @@ The current variables are as follows
 }
 ```
 
-The parsed result will be
+Le résultat après parsing sera :
 
 ```json
 {
