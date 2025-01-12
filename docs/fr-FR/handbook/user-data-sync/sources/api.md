@@ -1,75 +1,75 @@
-# Synchronizing User Data via HTTP API
+# Synchronisation des Données Utilisateur via l'API HTTP
 
-## Obtain an API Key
+## Obtenir une Clé API
 
-Refer to [API Keys](../api-keys). Ensure that the role associated with the API key has the necessary permissions to sync user data.
+Référez-vous à [Clés API](../api-keys). Assurez-vous que le rôle associé à la clé API dispose des autorisations nécessaires pour synchroniser les données utilisateur.
 
-## API Overview
+## Vue d'Ensemble de l'API
 
-### Example
+### Exemple
 
 ```bash
 curl 'https://localhost:13000/api/userData:push' \
   -H 'Authorization: Bearer <token>' \
-  --data-raw '{"dataType":"user","records":[]}' # See details of the request body below
+  --data-raw '{"dataType":"user","records":[]}' # Voir les détails du corps de la requête ci-dessous
 ```
 
-### Endpoint
+### Point d'Entrée
 
 ```bash
 POST /api/userData:push
 ```
 
-### User Data Format
+### Format des Données Utilisateur
 
 #### UserData
 
-| Parameter    | Type                               | Description                                                                 |
+| Paramètre    | Type                               | Description                                                                 |
 |--------------|------------------------------------|-----------------------------------------------------------------------------|
-| `dataType`   | `'user' \| 'department'`           | Required. Type of data being pushed. Use `user` for pushing user data.      |
-| `matchKey`   | `'username' \| 'email' \| 'phone'` | Optional. Used to match existing system users based on the specified field. |
-| `records`    | `UserRecord[]`                     | Required. Array of user data records.                                       |
+| `dataType`   | `'user' \| 'department'`           | Obligatoire. Type de données envoyées. Utilisez `user` pour envoyer des données utilisateur. |
+| `matchKey`   | `'username' \| 'email' \| 'phone'` | Facultatif. Utilisé pour associer les utilisateurs existants en fonction du champ spécifié. |
+| `records`    | `UserRecord[]`                     | Obligatoire. Tableau des enregistrements de données utilisateur.                                       |
 
 #### UserRecord
 
-| Parameter      | Type       | Description                                                                 |
+| Paramètre      | Type       | Description                                                                 |
 |----------------|------------|-----------------------------------------------------------------------------|
-| `uid`          | `string`   | Required. Unique identifier for the source user data. Immutable for a user. |
-| `nickname`     | `string`   | Optional. User's nickname.                                                  |
-| `username`     | `string`   | Optional. Username.                                                        |
-| `email`        | `string`   | Optional. User's email address.                                            |
-| `phone`        | `string`   | Optional. User's phone number.                                             |
-| `departments`  | `string[]` | Optional. Array of department UIDs the user belongs to.                    |
-| `isDeleted`    | `boolean`  | Optional. Indicates whether the record is deleted.                         |
-| `<field>`      | `any`      | Optional. Custom fields in the user table.                                 |
+| `uid`          | `string`   | Obligatoire. Identifiant unique pour les données utilisateur source. Inaltérable pour un utilisateur. |
+| `nickname`     | `string`   | Facultatif. Surnom de l'utilisateur.                                         |
+| `username`     | `string`   | Facultatif. Nom d'utilisateur.                                               |
+| `email`        | `string`   | Facultatif. Adresse email de l'utilisateur.                                  |
+| `phone`        | `string`   | Facultatif. Numéro de téléphone de l'utilisateur.                            |
+| `departments`  | `string[]` | Facultatif. Tableau des identifiants des départements auxquels l'utilisateur appartient. |
+| `isDeleted`    | `boolean`  | Facultatif. Indique si l'enregistrement est supprimé.                       |
+| `<field>`      | `any`      | Facultatif. Champs personnalisés dans la table utilisateur.                 |
 
-### Department Data Format
+### Format des Données de Département
 
 :::info
-Pushing department data requires the [Departments](../../departments) plugin to be installed and enabled.
+L'envoi des données de département nécessite l'installation et l'activation du plugin [Départements](../../departments).
 :::
 
 #### DepartmentData
 
-| Parameter    | Type                     | Description                                                             |
+| Paramètre    | Type                     | Description                                                             |
 |--------------|--------------------------|-------------------------------------------------------------------------|
-| `dataType`   | `'user' \| 'department'` | Required. Type of data being pushed. Use `department` for department data. |
-| `records`    | `DepartmentRecord[]`     | Required. Array of department data records.                             |
+| `dataType`   | `'user' \| 'department'` | Obligatoire. Type de données envoyées. Utilisez `department` pour envoyer des données de département. |
+| `records`    | `DepartmentRecord[]`     | Obligatoire. Tableau des enregistrements de données de département.     |
 
 #### DepartmentRecord
 
-| Parameter      | Type      | Description                                                                 |
+| Paramètre      | Type      | Description                                                                 |
 |----------------|-----------|-----------------------------------------------------------------------------|
-| `uid`          | `string`  | Required. Unique identifier for the source department data. Immutable.      |
-| `title`        | `string`  | Required. Department title.                                                 |
-| `parentUid`    | `string`  | Optional. UID of the parent department.                                     |
-| `isDeleted`    | `boolean` | Optional. Indicates whether the record is deleted.                         |
-| `<field>`      | `any`     | Optional. Custom fields in the department table.                           |
+| `uid`          | `string`  | Obligatoire. Identifiant unique pour les données de département source. Inaltérable. |
+| `title`        | `string`  | Obligatoire. Titre du département.                                           |
+| `parentUid`    | `string`  | Facultatif. Identifiant du département parent.                              |
+| `isDeleted`    | `boolean` | Facultatif. Indique si l'enregistrement est supprimé.                       |
+| `<field>`      | `any`     | Facultatif. Champs personnalisés dans la table département.                |
 
 :::info
 
-1. Data pushing is idempotent, ensuring consistent results with multiple pushes.
-2. If a parent department is not yet created when pushing department data, it cannot be associated. Re-push the data after creating the parent department.
-3. Similarly, if a department is not yet created when pushing user data, it cannot associate users with their departments. Push the department data first, then re-push the user data.
+1. L'envoi des données est idempotent, garantissant des résultats cohérents lors de plusieurs envois.
+2. Si un département parent n'est pas encore créé lors de l'envoi des données de département, il ne peut pas être associé. Il faudra renvoyer les données après avoir créé le département parent.
+3. De même, si un département n'est pas encore créé lors de l'envoi des données utilisateur, il ne peut pas associer les utilisateurs à leurs départements. Il faut d'abord envoyer les données de département, puis renvoyer les données utilisateur.
 
 :::

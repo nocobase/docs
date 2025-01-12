@@ -1,45 +1,45 @@
-# User Data Synchronization
+# Synchronisation des Données Utilisateur
 
 <PluginInfo name="user-data-sync"></PluginInfo>
 
 ## Introduction
 
-This feature allows you to register and manage user data synchronization sources. By default, an HTTP API is provided, but additional data sources can be supported through plugins. It supports syncing data to the **Users** and **Departments** tables by default, with the possibility to extend synchronization to other target resources using plugins.
+Cette fonctionnalité permet d'enregistrer et de gérer les sources de synchronisation des données utilisateur. Par défaut, une API HTTP est fournie, mais d'autres sources de données peuvent être prises en charge via des plugins. Elle permet de synchroniser les données avec les tables **Utilisateurs** et **Départements** par défaut, avec la possibilité d'étendre la synchronisation à d'autres ressources cibles via des plugins.
 
 ## Installation
 
-This is a built-in plugin and does not require separate installation.
+Il s'agit d'un plugin intégré qui ne nécessite pas d'installation séparée.
 
-## Data Source Management and Synchronization
+## Gestion des Sources de Données et Synchronisation
 
 ![](https://static-docs.nocobase.com/202412041043465.png)
 
 :::info
-If no plugins providing user data synchronization sources are installed, user data can be synchronized using the HTTP API. Refer to [Data Source - HTTP API](./sources/api).
+Si aucun plugin fournissant des sources de synchronisation des données utilisateur n'est installé, les données utilisateur peuvent être synchronisées via l'API HTTP. Consultez la documentation de [Source de Données - API HTTP](./sources/api).
 :::
 
-## Adding a Data Source
+## Ajouter une Source de Données
 
-Once you install a plugin that provides a user data synchronization source, you can add the corresponding data source. Only enabled data sources will display the "Sync" and "Task" buttons.
+Une fois qu'un plugin fournissant une source de synchronisation des données utilisateur est installé, vous pouvez ajouter la source de données correspondante. Seules les sources de données activées afficheront les boutons "Synchroniser" et "Tâche".
 
-> Example: WeCom (Enterprise WeChat)
+> Exemple : WeCom (WeChat Entreprise)
 
 ![](https://static-docs.nocobase.com/202412041053785.png)
 
-## Synchronizing Data
+## Synchroniser les Données
 
-Click the **Sync** button to start synchronizing data.
+Cliquez sur le bouton **Synchroniser** pour commencer la synchronisation des données.
 
 ![](https://static-docs.nocobase.com/202412041055022.png)
 
-Click the **Task** button to view the synchronization status. After successful synchronization, you can view the data in the Users and Departments lists.
+Cliquez sur le bouton **Tâche** pour afficher l'état de la synchronisation. Après une synchronisation réussie, vous pourrez voir les données dans les listes Utilisateurs et Départements.
 
 ![](https://static-docs.nocobase.com/202412041202337.png)
 
-For failed synchronization tasks, you can click **Retry**.
+Pour les tâches de synchronisation échouées, vous pouvez cliquer sur **Réessayer**.
 
 ![](https://static-docs.nocobase.com/202412041058337.png)
 
-In case of synchronization failures, you can troubleshoot the issue through system logs. Additionally, raw synchronization records are stored in the `user-data-sync` directory under the application logs folder.
+En cas d'échec de synchronisation, vous pouvez résoudre le problème via les journaux système. De plus, les enregistrements bruts de la synchronisation sont stockés dans le répertoire `user-data-sync` sous le dossier des journaux de l'application.
 
 ![](https://static-docs.nocobase.com/202412041205655.png)
