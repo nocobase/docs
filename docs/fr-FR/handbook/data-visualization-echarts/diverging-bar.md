@@ -1,26 +1,26 @@
-# Diverging-bar Chart
+# Diagramme à barres divergentes
 
-## Data Configuration
+## Configuration des données
 
-### 2 Metrics, 1 Dimension
+### 2 métriques, 1 dimension
 
-Configure 2 metrics and 1 dimension. One metric will be assigned as the left-side X-axis field, and the other as the right-side X-axis field.
+Configurez 2 métriques et 1 dimension. Une métrique sera affectée au champ de l'axe X du côté gauche, et l'autre au champ de l'axe X du côté droit.
 
-![2 Metrics, 1 Dimension](https://static-docs.nocobase.com/202410091121686.png)
+![2 métriques, 1 dimension](https://static-docs.nocobase.com/202410091121686.png)
 
-## Configuration Options
+## Options de configuration
 
-| Option            | Description                                                                 |
-| ----------------- | --------------------------------------------------------------------------- |
-| Left X field      | Metric field for the left-side X-axis                                       |
-| Right X field     | Metric field for the right-side X-axis                                      |
-| yField            | Dimension field                                                            |
-| Size              | Set the size of the chart, either with a fixed aspect ratio or fixed height  |
-| Light mode theme   | Select this option to preview in the system's light mode                    |
-| Dark mode theme    | Select this option to preview in the system's dark mode                     |
-| Show legend        | Controls whether to display the legend                                      |
-| Label type         | Controls whether to show labels and their display types                     |
-| Colors             | Allows fine control of the color for each category                          |
-| Y-Axis label rotate | Controls the rotation angle of Y-axis labels, useful when labels are dense |
-| Padding            | Adjust the padding within the chart                                         |
-| Split line         | Controls whether to display grid lines and their styles                     |
+| Option               | Description                                                                 |
+| -------------------- | --------------------------------------------------------------------------- |
+| Champ X gauche       | Champ de la métrique pour l'axe X du côté gauche                            |
+| Champ X droit        | Champ de la métrique pour l'axe X du côté droit                             |
+| yField               | Champ de la dimension                                                        |
+| Taille               | Définissez la taille du graphique, soit avec un ratio d'aspect fixe, soit avec une hauteur fixe |
+| Thème mode clair     | Sélectionnez cette option pour prévisualiser en mode clair du système       |
+| Thème mode sombre    | Sélectionnez cette option pour prévisualiser en mode sombre du système      |
+| Afficher la légende  | Contrôle si la légende est affichée                                          |
+| Type d'étiquette     | Contrôle si les étiquettes sont affichées et leur type d'affichage          |
+| Couleurs             | Permet de contrôler finement la couleur de chaque catégorie                 |
+| Rotation des étiquettes de l'axe Y | Contrôle l'angle de rotation des étiquettes de l'axe Y, utile lorsque les étiquettes sont nombreuses |
+| Marges               | Ajustez les marges internes du graphique                                     |
+| Ligne de séparation  | Contrôle si les lignes de la grille sont affichées et leur style           |

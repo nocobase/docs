@@ -1,12 +1,12 @@
-# Relationship Fields
+# Champs de Relation
 
-In NocoBase, relationship fields are not actual fields but are used to establish connections between collections. This concept is equivalent to relationships in relational databases.
+Dans NocoBase, les champs de relation ne sont pas des champs réels, mais sont utilisés pour établir des connexions entre les collections. Ce concept est équivalent aux relations dans les bases de données relationnelles.
 
-In relational databases, the most common types of relationships include the following:
+Dans les bases de données relationnelles, les types de relations les plus courants incluent les suivants :
 
-- [One-to-One](./o2o/index.md): Each entity in two collections corresponds to only one entity in the other collection. This type of relationship is usually used to store different aspects of an entity in separate collections to reduce redundancy and improve data consistency.
-- [One-to-Many](./o2m/index.md): Each entity in one collection can be associated with multiple entities in another collection. This is one of the most common relationship types. For example, one author can write multiple articles, but each article can have only one author.
-- [Many-to-One](./m2o/index.md): Multiple entities in one collection can be associated with one entity in another collection. This type of relationship is also common in data modeling. For instance, multiple students can belong to the same class.
-- [Many-to-Many](./m2m/index.md): Multiple entities in two collections can be associated with each other. This type of relationship typically requires an intermediary collection to record the associations between the entities. For example, the relationship between students and courses—a student can enroll in multiple courses, and a course can have multiple students.
+- [Un-à-Un](./o2o/index.md) : Chaque entité dans deux collections correspond à une seule entité dans l'autre collection. Ce type de relation est généralement utilisé pour stocker différents aspects d'une entité dans des collections séparées afin de réduire la redondance et d'améliorer la cohérence des données.
+- [Un-à-Plusieurs](./o2m/index.md) : Chaque entité dans une collection peut être associée à plusieurs entités dans une autre collection. Il s'agit de l'un des types de relation les plus courants. Par exemple, un auteur peut écrire plusieurs articles, mais chaque article ne peut avoir qu'un seul auteur.
+- [Plusieurs-à-Un](./m2o/index.md) : Plusieurs entités dans une collection peuvent être associées à une seule entité dans une autre collection. Ce type de relation est également courant dans la modélisation des données. Par exemple, plusieurs étudiants peuvent appartenir à la même classe.
+- [Plusieurs-à-Plusieurs](./m2m/index.md) : Plusieurs entités dans deux collections peuvent être associées les unes aux autres. Ce type de relation nécessite généralement une collection intermédiaire pour enregistrer les associations entre les entités. Par exemple, la relation entre les étudiants et les cours : un étudiant peut s'inscrire à plusieurs cours, et un cours peut avoir plusieurs étudiants.
 
-These types of relationships play an important role in database design and data modeling, helping to describe complex real-world relationships and data structures.
+Ces types de relations jouent un rôle important dans la conception de bases de données et la modélisation des données, aidant à décrire des relations et structures de données complexes du monde réel.

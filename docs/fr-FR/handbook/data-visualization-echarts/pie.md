@@ -1,25 +1,25 @@
-# Pie Chart
+# Graphique en secteurs
 
-## Data Configuration
+## Configuration des données
 
-### 1 Metric, 1 Dimension
+### 1 métrique, 1 dimension
 
-![1 Metric, 1 Dimension](https://static-docs.nocobase.com/202410091138527.png)
+![1 métrique, 1 dimension](https://static-docs.nocobase.com/202410091138527.png)
 
-## Configuration Options
+## Options de configuration
 
 | Option                       | Description                                                                                              |
 | ---------------------------- | -------------------------------------------------------------------------------------------------------- |
-| Size                         | Sets the chart's size, with a fixed aspect ratio or fixed height                                          |
-| Light mode theme             | Must be selected to preview when the system is in light mode                                              |
-| Dark mode theme              | Must be selected to preview when the system is in dark mode                                               |
-| Show legend                  | Controls whether the legend is displayed                                                                 |
-| Legend orient                | Controls the orientation of the legend, either horizontal or vertical                                     |
-| Legend position (left, bottom, right, top) | Controls the relative position of the legend                                                 |
-| Label type                   | Controls whether labels are displayed and their type                                                      |
-| Show label line              | Controls whether label lines are displayed, effective only when the labels are outside the pie             |
-| Label position               | Controls the position of the labels: inside, outside, or middle. When in the middle, the label only appears when hovering over the corresponding part of the chart |
-| Outter radius                | Adjusts the outer radius of the chart                                                                     |
-| Inner radius                 | Adjusts the inner radius of the chart. Can be used to create a donut chart<br />![](https://static-docs.nocobase.com/202410091144473.png) |
-| Center coordinates           | Controls the position of the chart, which can be set with fixed values or percentages                     |
-| Colors                       | Fine-tunes the color for each category                                                                    |
+| Taille                        | Définissez la taille du graphique, soit avec un ratio d'aspect fixe, soit avec une hauteur fixe           |
+| Thème mode clair             | Doit être sélectionné pour prévisualiser lorsque le système est en mode clair                             |
+| Thème mode sombre            | Doit être sélectionné pour prévisualiser lorsque le système est en mode sombre                            |
+| Afficher la légende          | Contrôle si la légende est affichée                                                                     |
+| Orientation de la légende    | Contrôle l'orientation de la légende, soit horizontale, soit verticale                                    |
+| Position de la légende (gauche, bas, droite, haut) | Contrôle la position relative de la légende                                                        |
+| Type d'étiquette             | Contrôle si les étiquettes sont affichées et leur type                                                  |
+| Afficher la ligne d'étiquette| Contrôle si les lignes des étiquettes sont affichées, efficace uniquement lorsque les étiquettes sont à l'extérieur du graphique |
+| Position des étiquettes      | Contrôle la position des étiquettes : à l'intérieur, à l'extérieur, ou au centre. Lorsque la position est au centre, l'étiquette n'apparaît que lorsque vous survolez la partie correspondante du graphique |
+| Rayon extérieur              | Ajuste le rayon extérieur du graphique                                                                   |
+| Rayon intérieur              | Ajuste le rayon intérieur du graphique. Peut être utilisé pour créer un graphique en anneau<br />![](https://static-docs.nocobase.com/202410091144473.png) |
+| Coordonnées du centre        | Contrôle la position du graphique, qui peut être définie avec des valeurs fixes ou des pourcentages       |
+| Couleurs                     | Affinez la couleur de chaque catégorie                                                                   |

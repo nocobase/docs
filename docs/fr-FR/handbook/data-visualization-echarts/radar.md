@@ -1,32 +1,32 @@
-# Radar Chart
+# Graphique radar
 
-## Data Configuration
+## Configuration des données
 
-### 1 or More Measures, 1 Dimension
+### 1 ou plusieurs mesures, 1 dimension
 
-#### Using Dimensions as Variables
+#### Utilisation des dimensions comme variables
 
-Each value of the dimension field acts as a variable, with each measure forming one radar area.
+Chaque valeur du champ de dimension agit comme une variable, chaque mesure formant une zone radar.
 
 ![](https://static-docs.nocobase.com/202410091924155.png)
 
-#### Using Measures as Variables
+#### Utilisation des mesures comme variables
 
-Each measure acts as a variable, with each value of the dimension field forming one radar area.
+Chaque mesure agit comme une variable, chaque valeur du champ de dimension formant une zone radar.
 
 ![](https://static-docs.nocobase.com/202410091927959.png)
 
-## Configuration Options
+## Options de configuration
 
-| Option                      | Description                                                                 |
-| ---------------------------- | --------------------------------------------------------------------------- |
-| Size                         | Set the size of the chart, either by fixing the aspect ratio or a fixed height |
-| Light mode theme             | Preview requires selection when the system is in light mode                  |
-| Dark mode theme              | Preview requires selection when the system is in dark mode                   |
-| Show legend                  | Controls whether the legend is displayed                                     |
-| Legend orient                | Controls the direction of the legend, either horizontal or vertical          |
-| Legend position (left, bottom, right, top) | Controls the relative position of the legend                                  |
-| Shape                        | Polygon or circle<br />![](https://static-docs.nocobase.com/202410091929018.png) |
-| Range                        | Controls the minimum and maximum values of the variables                     |
-| Radius                       | Adjusts the radius of the chart                                              |
-| Center coordinate            | Controls the position of the chart, can be fixed values or percentages        |
+| Option                        | Description                                                                 |
+| ----------------------------- | --------------------------------------------------------------------------- |
+| Taille                         | Définissez la taille du graphique, soit en fixant le ratio d'aspect, soit une hauteur fixe |
+| Thème mode clair               | La prévisualisation nécessite cette option lorsque le système est en mode clair |
+| Thème mode sombre              | La prévisualisation nécessite cette option lorsque le système est en mode sombre |
+| Afficher la légende            | Contrôle si la légende est affichée                                           |
+| Orientation de la légende      | Contrôle la direction de la légende, soit horizontale, soit verticale        |
+| Position de la légende (gauche, bas, droite, haut) | Contrôle la position relative de la légende |
+| Forme                          | Polygone ou cercle<br />![](https://static-docs.nocobase.com/202410091929018.png) |
+| Plage                          | Contrôle les valeurs minimales et maximales des variables                    |
+| Rayon                          | Ajuste le rayon du graphique                                                 |
+| Coordonnée du centre          | Contrôle la position du graphique, peut être définie avec des valeurs fixes ou des pourcentages |

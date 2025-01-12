@@ -1,10 +1,10 @@
-# General Collection
+# Collection générale
 
 <PluginInfo name="data-source-main"></PluginInfo>
 
 ## Introduction
-It is used in most scenarios. A general collection can be used unless a special collection template is needed.
+Elle est utilisée dans la plupart des scénarios. Une collection générale peut être utilisée, sauf si un modèle de collection spécifique est nécessaire.
 
-## User Manual
+## Manuel utilisateur
 
 ![20240324085739](https://static-docs.nocobase.com/20240324085739.png)

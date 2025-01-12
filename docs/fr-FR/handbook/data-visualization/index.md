@@ -1,33 +1,33 @@
-# Data Visualization
+# Visualisation des données
 
 <PluginInfo name="data-visualization"></PluginInfo>
 
 ## Introduction
 
-The NocoBase data visualization plugin provides robust data retrieval features and a rich variety of chart components. Based on system Collection data, users can quickly build visual dashboards, organize charts with flexibility, and conduct insightful business data analysis.
+Le plugin de visualisation des données NocoBase offre des fonctionnalités robustes de récupération de données et une grande variété de composants de graphiques. En se basant sur les données des Collections du système, les utilisateurs peuvent rapidement créer des tableaux de bord visuels, organiser les graphiques de manière flexible et réaliser des analyses approfondies des données commerciales.
 
 ![](https://static-docs.nocobase.com/51be43d5400d6294f6c20d11009f23c4.png)
 
 ## Installation
 
-This is a built-in plugin, so no additional installation is required.
+Il s'agit d'un plugin intégré, donc aucune installation supplémentaire n'est requise.
 
-## Related Documentation
+## Documentation associée
 
-- User Manual
-  - [Chart Block](./user/chart-block.md)
-  - [Configuring Charts](./user/configure.md)
-  - [Filter Block](./user/filter.md)
-- Developer Guide
-  - [API Reference](./dev/index.md)
-  - [Step-by-Step Tutorial](./step-by-step/index.md)
+- Manuel utilisateur
+  - [Bloc de graphique](./user/chart-block.md)
+  - [Configurer les graphiques](./user/configure.md)
+  - [Bloc de filtre](./user/filter.md)
+- Guide du développeur
+  - [Référence API](./dev/index.md)
+  - [Tutoriel étape par étape](./step-by-step/index.md)
 - [FAQ](./faq.md)
 
 ## RoadMap
 
-- Simplified data processing and transformation
-- Ability to add charts in pop-up windows
-- Embed other blocks (e.g., Markdown) in chart blocks
-- Save configurations as templates
-- Enable data drill-down
-- Improved permissions control
+- Traitement et transformation des données simplifiés
+- Possibilité d'ajouter des graphiques dans des fenêtres pop-up
+- Intégration d'autres blocs (par exemple, Markdown) dans les blocs de graphiques
+- Enregistrement des configurations sous forme de modèles
+- Activation de l'exploration des données (drill-down)
+- Amélioration du contrôle des permissions

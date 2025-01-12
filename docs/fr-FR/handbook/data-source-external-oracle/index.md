@@ -1,20 +1,20 @@
-# External Data Source - Oracle
+# Source de données externe - Oracle
 
 <PluginInfo commercial="true" name="data-source-external-oracle"></PluginInfo>
 
 ## Introduction
 
-This plugin allows you to use an external Oracle database as a data source. It supports Oracle versions >= 11g.
+Ce plugin vous permet d'utiliser une base de données Oracle externe comme source de données. Il prend en charge les versions d'Oracle >= 11g.
 
 ## Installation
 
-### Install Oracle Client
+### Installer le client Oracle
 
-For Oracle server versions earlier than 12.1, you need to install the Oracle client.
+Pour les versions de serveur Oracle antérieures à 12.1, vous devez installer le client Oracle.
 
-![Oracle Client Installation](https://static-docs.nocobase.com/20241204164359.png)
+![Installation du client Oracle](https://static-docs.nocobase.com/20241204164359.png)
 
-Example for Linux:
+Exemple pour Linux :
 
 ```bash
 apt-get update
@@ -25,14 +25,14 @@ echo /opt/instantclient_19_25 > /etc/ld.so.conf.d/oracle-instantclient.conf
 ldconfig
 ```
 
-If the client is not installed as described above, you will need to specify the path to the client (for more details, refer to the [node-oracledb documentation](https://node-oracledb.readthedocs.io/en/latest/user_guide/initialization.html)).
+Si le client n'est pas installé comme décrit ci-dessus, vous devrez spécifier le chemin vers le client (pour plus de détails, consultez la [documentation de node-oracledb](https://node-oracledb.readthedocs.io/en/latest/user_guide/initialization.html)).
 
-![Oracle Client Path Configuration](https://static-docs.nocobase.com/20241204165940.png)
+![Configuration du chemin du client Oracle](https://static-docs.nocobase.com/20241204165940.png)
 
-### Install the Plugin
+### Installer le plugin
 
-Follow the instructions in [Installing and Upgrading Commercial Plugins](/welcome/getting-started/plugin).
+Suivez les instructions de [Installation et mise à jour des plugins commerciaux](/welcome/getting-started/plugin).
 
-## Use Cases
+## Cas d'utilisation
 
-For detailed instructions, refer to the [Data Source / External Database](/handbook/data-source-manager/external-database) section.
+Pour des instructions détaillées, consultez la section [Source de données / Base de données externe](/handbook/data-source-manager/external-database).

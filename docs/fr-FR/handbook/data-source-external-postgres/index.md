@@ -1,17 +1,17 @@
-# External Data Source - PostgreSQL
+# Source de données externe - PostgreSQL
 
 <PluginInfo commercial="true" name="data-source-external-postgres"></PluginInfo>
 
 ## Introduction
 
-Use an external PostgreSQL database as a data source. Currently supported versions: PostgreSQL >= 9.5
+Utilisez une base de données PostgreSQL externe comme source de données. Les versions actuellement prises en charge : PostgreSQL >= 9.5
 
 ## Installation
 
-This plugin is a commercial plugin, which needs to be uploaded and activated through the plugin manager.
+Ce plugin est un plugin commercial, qui doit être téléchargé et activé via le gestionnaire de plugins.
 
 ![20240323162741](https://static-docs.nocobase.com/20240323162741.png)
 
-## Usage Instructions
+## Instructions d'utilisation
 
-Refer to the [Data Source / External Database](/handbook/data-source-manager/external-database) section.
+Référez-vous à la section [Source de données / Base de données externe](/handbook/data-source-manager/external-database).

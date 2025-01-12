@@ -1,62 +1,62 @@
-# One-to-One
+# Un-à-Un
 
-In the relationship between employees and personal profiles, each employee can only have one personal profile record, and each personal profile record can only correspond to one employee. In this case, the relationship between the employee and the personal profile is one-to-one.
+Dans la relation entre les employés et leurs profils personnels, chaque employé ne peut avoir qu'un seul profil personnel, et chaque profil personnel ne peut correspondre qu'à un seul employé. Dans ce cas, la relation entre l'employé et le profil personnel est un-à-un.
 
-The foreign key in a one-to-one relationship can be placed in either the source collection or the target collection. If it represents "having one," the foreign key is more appropriately placed in the target collection; if it represents "belonging to," then the foreign key is better placed in the source collection.
+La clé étrangère dans une relation un-à-un peut être placée soit dans la collection source, soit dans la collection cible. Si elle représente « avoir un », la clé étrangère est plus appropriée dans la collection cible ; si elle représente « appartenir à », alors la clé étrangère est mieux placée dans la collection source.
 
-For example, in the case mentioned above, where an employee has only one personal profile and the personal profile belongs to the employee, it is appropriate to place the foreign key in the personal profile collection.
+Par exemple, dans le cas mentionné ci-dessus, où un employé a seulement un profil personnel et le profil personnel appartient à l'employé, il est approprié de placer la clé étrangère dans la collection du profil personnel.
 
-## One-to-One (Having One)
+## Un-à-Un (Avoir un)
 
-This indicates that an employee has a personal profile record.
+Cela signifie qu'un employé possède un enregistrement de profil personnel.
 
-ER Relationship
+Relation ER
 
 ![alt text](https://static-docs.nocobase.com/4359e128936bbd7c9ff51bcff1d646dd.png)
 
-Field Configuration
+Configuration des champs
 
 ![alt text](https://static-docs.nocobase.com/7665a87e094b4fb50c9426a108f87105.png)
 
-## One-to-One (Belonging Relationship)
+## Un-à-Un (Relation d'Appartenance)
 
-This indicates that a personal profile belongs to a specific employee.
+Cela signifie qu'un profil personnel appartient à un employé spécifique.
 
-ER Relationship
+Relation ER
 
 ![](https://static-docs.nocobase.com/31e7cc3e630220cf1e98753ca24ac72d.png)
 
-Field Configuration
+Configuration des champs
 
 ![alt text](https://static-docs.nocobase.com/4f09eeb3c7717d61a349842da43c187c.png)
 
-## Parameter Descriptions
+## Description des paramètres
 
-### Source Collection
+### Collection source
 
-The source collection, which is the collection where the current field is located.
+La collection source, dans laquelle le champ actuel se trouve.
 
-### Target Collection
+### Collection cible
 
-The target collection, the collection that is being related.
+La collection cible, celle qui est liée.
 
-### Foreign Key
+### Clé étrangère
 
-Used to establish a relationship between two collections. In a one-to-one relationship, the foreign key can be placed in either the source collection or the target collection. If it represents "having one," the foreign key is more appropriately placed in the target collection; if it represents "belonging to," then the foreign key is better placed in the source collection.
+Utilisée pour établir une relation entre deux collections. Dans une relation un-à-un, la clé étrangère peut être placée soit dans la collection source, soit dans la collection cible. Si elle représente « avoir un », la clé étrangère est mieux placée dans la collection cible ; si elle représente « appartenir à », la clé étrangère est mieux placée dans la collection source.
 
-### Source Key <- Foreign Key (Foreign Key in the Target collection)
+### Clé source <- Clé étrangère (Clé étrangère dans la collection cible)
 
-The field referenced by the foreign key constraint must be unique. When the foreign key is placed in the target collection, it indicates "having one."
+Le champ référencé par la contrainte de clé étrangère doit être unique. Lorsque la clé étrangère est placée dans la collection cible, cela indique « avoir un ».
 
-### Target Key <- Foreign Key (Foreign Key in the Source collection)
+### Clé cible <- Clé étrangère (Clé étrangère dans la collection source)
 
-The field referenced by the foreign key constraint must be unique. When the foreign key is placed in the source collection, it indicates a "belonging relationship."
+Le champ référencé par la contrainte de clé étrangère doit être unique. Lorsque la clé étrangère est placée dans la collection source, cela indique une relation d'appartenance.
 
 ### ON DELETE
 
-ON DELETE refers to the action rules for the foreign key reference in the related child collection when deleting records from the parent collection. It is an option defined when establishing a foreign key constraint. Common ON DELETE options include:
+ON DELETE fait référence aux règles d'action pour la référence de clé étrangère dans la collection enfant liée lorsqu'on supprime des enregistrements dans la collection parent. C'est une option définie lors de l'établissement d'une contrainte de clé étrangère. Les options courantes ON DELETE incluent :
 
-- CASCADE: When a record in the parent collection is deleted, automatically delete all related records in the child collection.
-- SET NULL: When a record in the parent collection is deleted, set the foreign key value in the related child collection to NULL.
-- RESTRICT: The default option, where deletion of a parent collection record is refused if there are related records in the child collection.
-- NO ACTION: Similar to RESTRICT, deletion of a parent collection record is refused if there are related records in the child collection.
+- **CASCADE** : Lorsqu'un enregistrement de la collection parent est supprimé, tous les enregistrements associés dans la collection enfant sont automatiquement supprimés.
+- **SET NULL** : Lorsqu'un enregistrement de la collection parent est supprimé, la valeur de clé étrangère dans la collection enfant associée est définie sur NULL.
+- **RESTRICT** : L'option par défaut, où la suppression d'un enregistrement dans la collection parent est refusée s'il y a des enregistrements associés dans la collection enfant.
+- **NO ACTION** : Semblable à RESTRICT, la suppression d'un enregistrement dans la collection parent est refusée s'il y a des enregistrements associés dans la collection enfant.

@@ -1,13 +1,13 @@
-# Dual-Axis Chart
+# Graphique à axes doubles
 
-## Data Configuration
+## Configuration des données
 
-### 2 metrics, 1 dimension
+### 2 mesures, 1 dimension
 
 ![](https://static-docs.nocobase.com/202410101132724.png)
 
-#### Configuration Options
+#### Options de configuration
 
 | Option  | Description                                              |
 | ------- | -------------------------------------------------------- |
-| Size    | Sets the chart size, either with a fixed aspect ratio or a fixed height |
+| Taille  | Définit la taille du graphique, soit avec un rapport d'aspect fixe ou une hauteur fixe |

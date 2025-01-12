@@ -1,25 +1,25 @@
-# Line Chart
+# Graphique en ligne
 
-## Data Configuration
+## Configuration des données
 
-### 1 Measure, 1 Dimension
+### 1 Mesure, 1 Dimension
 
-The line chart can be configured with one measure and one dimension, as illustrated below:
+Le graphique en ligne peut être configuré avec une mesure et une dimension, comme illustré ci-dessous :
 
-![1 Measure, 1 Dimension](https://static-docs.nocobase.com/202410101109866.png)
+![1 Mesure, 1 Dimension](https://static-docs.nocobase.com/202410101109866.png)
 
-### 1 Measure, 1 Axis Dimension, One Category Dimension
+### 1 Mesure, 1 Dimension d'axe, 1 Dimension de catégorie
 
-Configure one metric and two dimensions. One of the dimensions is the X-axis field (X field) and the other is the Series field (Series field).
+Configurez une mesure et deux dimensions. L'une des dimensions est le champ de l'axe X (champ X) et l'autre est le champ de série (champ Série).
 
-![1 Measure, 1 Axis Dimension, One Category Dimension](https://static-docs.nocobase.com/202410101113944.png)
+![1 Mesure, 1 Dimension d'axe, 1 Dimension de catégorie](https://static-docs.nocobase.com/202410101113944.png)
 
-## Configuration Options
+## Options de configuration
 
-| Configuration Option | Description                                         |
-| -------------------- | --------------------------------------------------- |
-| X-axis Field         | The dimension field that defines the X-axis         |
-| Series Field         | The dimension field that defines the categories     |
-| Size                 | Set the size of the chart, either fixed aspect ratio or fixed height |
-| Smooth Curves        | Enable or disable smooth curve rendering            |
-| Stack Data           | Whether to stack the data values on top of each other |
+| Option de configuration | Description                                        |
+| ----------------------- | -------------------------------------------------- |
+| Champ de l'axe X        | Le champ de dimension qui définit l'axe X         |
+| Champ de série          | Le champ de dimension qui définit les catégories  |
+| Taille                  | Définissez la taille du graphique, soit avec un rapport d'aspect fixe ou une hauteur fixe |
+| Courbes lissées         | Activez ou désactivez le rendu des courbes lissées |
+| Empiler les données     | Détermine si les valeurs de données doivent être empilées les unes sur les autres |

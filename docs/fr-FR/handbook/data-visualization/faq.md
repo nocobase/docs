@@ -1,20 +1,20 @@
 # FAQ
 
-## How should JSON configuration be used?
+## Comment utiliser la configuration JSON ?
 
-Refer to the documentation or use a demo to understand the properties supported by different components through the chart component reference link. Configuration is done using JSON key-value pairs.
+Référez-vous à la documentation ou utilisez une démo pour comprendre les propriétés prises en charge par les différents composants via le lien de référence du composant graphique. La configuration se fait à l'aide de paires clé-valeur en JSON.
 
 <img src="https://static-docs.nocobase.com/202404212046877.png"/><br />
 
 <img src="https://static-docs.nocobase.com/202404212047075.png"/>
 
-### Example: Changing the Order of Table Columns
+### Exemple : Changer l'ordre des colonnes du tableau
 
-The table component used is Antd's table component. Open the reference link <a href="https://ant.design/components/table/" target="_blank">Table</a>. The API section corresponds to all the configurable properties supported by the component.
+Le composant de tableau utilisé est le composant de tableau d'Antd. Ouvrez le lien de référence <a href="https://ant.design/components/table/" target="_blank">Table</a>. La section API correspond à toutes les propriétés configurables prises en charge par le composant.
 
 <img src="https://static-docs.nocobase.com/202404212052108.png"/>
 
-To adjust the order of table columns, modify the `columns` configuration. Example:
+Pour ajuster l'ordre des colonnes du tableau, modifiez la configuration `columns`. Exemple :
 
 ```ts
 {
@@ -25,9 +25,9 @@ To adjust the order of table columns, modify the `columns` configuration. Exampl
 }
 ```
 
-## Can JSON configuration support the use of functions?
+## La configuration JSON peut-elle prendre en charge l'utilisation de fonctions ?
 
-JavaScript expressions can be wrapped in `{{}}`. Example:
+Les expressions JavaScript peuvent être enveloppées dans `{{}}`. Exemple :
 
 ```json
 {
@@ -38,6 +38,6 @@ JavaScript expressions can be wrapped in `{{}}`. Example:
 }
 ```
 
-## What is the primary use case for custom fields in chart filter blocks?
+## Quel est l'usage principal des champs personnalisés dans les blocs de filtres de graphiques ?
 
-When there are charts from different data tables within a chart block and the same filter field is needed to filter these charts, [custom fields](./user/filter.md#custom-fields) can be used. For example, you might want to filter data within a specific time period.
+Lorsqu'il y a plusieurs graphiques issus de différentes tables de données dans un bloc graphique et qu'un même champ de filtre est nécessaire pour filtrer ces graphiques, [les champs personnalisés](./user/filter.md#custom-fields) peuvent être utilisés. Par exemple, vous pourriez vouloir filtrer les données sur une période de temps spécifique.

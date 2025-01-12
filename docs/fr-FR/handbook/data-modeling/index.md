@@ -1,50 +1,50 @@
-# Overview
+# Vue d'ensemble
 
-Data modeling is a key step in designing databases, involving a deep analysis and abstraction process of various data and their relationships in the real world. In this process, we try to reveal the intrinsic connections between data and formalize them into data models, laying the foundation for the database structure of the information system. NocoBase is a data model-driven platform with the following features:
+La modélisation des données est une étape clé dans la conception des bases de données, impliquant un processus d'analyse approfondie et d'abstraction des différentes données et de leurs relations dans le monde réel. Dans ce processus, nous tentons de révéler les connexions intrinsèques entre les données et de les formaliser en modèles de données, posant ainsi les bases de la structure de la base de données du système d'information. NocoBase est une plateforme axée sur la modélisation des données avec les fonctionnalités suivantes :
 
-## Supports Access to Data from Various Sources
+## Prise en charge de l'accès aux données provenant de diverses sources
 
-The data source of NocoBase can be common databases, API (SDK) platforms, and files.
+La source de données de NocoBase peut être des bases de données communes, des plateformes API (SDK) et des fichiers.
 
 ![20240512085558](https://static-docs.nocobase.com/20240512085558.png)
 
-NocoBase provides a [data source manager](/handbook/data-source-manager) for managing various data sources and their data tables. The data source manager plugin only provides a management interface for all data sources and does not provide the ability to access data sources. It needs to be used in conjunction with various data source plugins. The currently supported data sources include:
+NocoBase fournit un [gestionnaire de sources de données](/handbook/data-source-manager) pour gérer différentes sources de données et leurs tables de données. Le plugin du gestionnaire de sources de données ne fournit qu'une interface de gestion pour toutes les sources de données et ne permet pas d'accéder aux sources de données. Il doit être utilisé en conjonction avec les divers plugins de sources de données. Les sources de données actuellement prises en charge incluent :
 
-- [Main Database](/handbook/data-source-main): NocoBase's main database, supporting relational databases such as MySQL, PostgreSQL, SQLite, etc.
-- [External MySQL](/handbook/data-source-external-mysql): Use an external MySQL database as a data source.
-- [External MariaDB](/handbook/data-source-external-mariadb): Use an external MariaDB database as a data source.
-- [External PostgreSQL](/handbook/data-source-external-postgres): Use an external PostgreSQL database as a data source.
+- [Base de données principale](/handbook/data-source-main) : La base de données principale de NocoBase, prenant en charge les bases de données relationnelles telles que MySQL, PostgreSQL, SQLite, etc.
+- [MySQL externe](/handbook/data-source-external-mysql) : Utilisation d'une base de données MySQL externe comme source de données.
+- [MariaDB externe](/handbook/data-source-external-mariadb) : Utilisation d'une base de données MariaDB externe comme source de données.
+- [PostgreSQL externe](/handbook/data-source-external-postgres) : Utilisation d'une base de données PostgreSQL externe comme source de données.
 
 ![20240512083651](https://static-docs.nocobase.com/20240512083651.png)
 
-## Provides a Variety of Data Modeling Tools
+## Fournit une variété d'outils de modélisation de données
 
-**Simple data table management interface**: Used to create various models (data tables) or connect to existing models (data tables).
+**Interface simple de gestion des tables de données** : Utilisée pour créer divers modèles (tables de données) ou se connecter à des modèles (tables de données) existants.
 
 ![20240512090751](https://static-docs.nocobase.com/20240512090751.png)
 
-**Visual interface similar to ER diagrams**: Used to extract entities and their relationships from user and business requirements. It provides an intuitive and easy-to-understand way to describe data models. Through ER diagrams, you can more clearly understand the main data entities in the system and their relationships.
+**Interface visuelle similaire aux diagrammes ER** : Permet d'extraire des entités et leurs relations des exigences utilisateur et métier. Elle offre un moyen intuitif et facile à comprendre de décrire les modèles de données. Grâce aux diagrammes ER, vous pouvez mieux comprendre les principales entités de données du système et leurs relations.
 
 ![20240512091042](https://static-docs.nocobase.com/20240410075906.png)
 
-## Supports Various Types of  Data Tables
+## Prend en charge différents types de tables de données
 
-- [General collection](/handbook/data-source-main/general-collection): Built-in common system fields;
-- [Inheritance collection](/handbook/data-source-main/inheritance-collection): You can create a parent collection and then derive a child collection from the parent collection. The child collection will inherit the structure of the parent collection and can also define its own columns.
-- [Tree collection](/handbook/collection-tree): Tree structure collection, currently only supports adjacency collection design;
-- [Calendar Tabcollectionle](/handbook/calendar/calendar-collection): Used to create calendar-related event collections;
-- [File collection](/handbook/file-manager/file-collection): Used for file storage management;
-- [Expression collection](/handbook/workflow-dynamic-calculation/expression): Used for dynamic expression scenarios in workflows;
-- [SQL collection](/handbook/collection-sql): Not an actual database collection, but quickly presents SQL queries in a structured manner;
-- [Connect to database view](/handbook/collection-view): Connects to existing database views;
-- [Connect to foreign data](/handbook/collection-fdw): Allows the database system to directly access and query data in external data sources, based on FDW technology.
+- [Collection générale](/handbook/data-source-main/general-collection) : Champs système courants intégrés ;
+- [Collection d'héritage](/handbook/data-source-main/inheritance-collection) : Vous pouvez créer une collection parente puis dériver une collection enfant de la collection parente. La collection enfant héritera de la structure de la collection parente et pourra aussi définir ses propres colonnes.
+- [Collection arbre](/handbook/collection-tree) : Collection à structure arborescente, actuellement prenant en charge uniquement la conception de collection adjacente ;
+- [Tableau de calendrier](/handbook/calendar/calendar-collection) : Utilisée pour créer des collections d'événements liés au calendrier ;
+- [Collection de fichiers](/handbook/file-manager/file-collection) : Utilisée pour la gestion du stockage des fichiers ;
+- [Collection d'expressions](/handbook/workflow-dynamic-calculation/expression) : Utilisée pour des scénarios d'expressions dynamiques dans les workflows ;
+- [Collection SQL](/handbook/collection-sql) : Pas une véritable collection de base de données, mais permet de présenter rapidement les requêtes SQL de manière structurée ;
+- [Connexion à la vue de base de données](/handbook/collection-view) : Se connecte aux vues de base de données existantes ;
+- [Connexion aux données externes](/handbook/collection-fdw) : Permet au système de base de données d'accéder directement aux données de sources de données externes, basé sur la technologie FDW.
 
 ![20240512102212](https://static-docs.nocobase.com/20240512102212.png)
 
-For more content, see the "[Collection / Overview](/handbook/data-modeling/collection)" section.
+Pour plus de contenu, consultez la section "[Collection / Vue d'ensemble](/handbook/data-modeling/collection)".
 
-## Provides a Rich Variety of Field Types
+## Fournit une large variété de types de champs
 
 ![20240512110352](https://static-docs.nocobase.com/20240512110352.png)
 
-For more content, see the "[Collection Fields / Overview](/handbook/data-modeling/collection-fields)" section.
+Pour plus de contenu, consultez la section "[Champs de collection / Vue d'ensemble](/handbook/data-modeling/collection-fields)".
