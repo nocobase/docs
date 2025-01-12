@@ -1,12 +1,12 @@
-# Development
+# Développement
 
-## Extend client file type
+## Étendre le type de fichier client
 
-For uploaded files, the client UI can display different previews based on file types. The attachment field of file-manager uses a built-in browser-based (iframe) file preview capacity, supporting most file types (such as images, videos, audio, and PDFs) for direct preview in the browser. When a file type is not supported for browser preview or requires special interaction, additional preview components can be extended based on the file type.
+Pour les fichiers téléchargés, l'interface utilisateur du client peut afficher des aperçus différents en fonction des types de fichiers. Le champ de pièce jointe du gestionnaire de fichiers utilise une capacité d'aperçu de fichiers intégrée basée sur le navigateur (iframe), prenant en charge la plupart des types de fichiers (tels que les images, vidéos, audio et PDF) pour un aperçu direct dans le navigateur. Lorsqu'un type de fichier n'est pas pris en charge pour un aperçu dans le navigateur ou nécessite une interaction spéciale, des composants d'aperçu supplémentaires peuvent être étendus en fonction du type de fichier.
 
-### Example
+### Exemple
 
-For example, if you want to extend a carousel component for image files, you can use the following code:
+Par exemple, si vous souhaitez étendre un composant de carrousel pour les fichiers image, vous pouvez utiliser le code suivant :
 
 ```ts
 import match from 'mime-match';
@@ -42,8 +42,8 @@ class MyPlugin extends Plugin {
                 key={'preview-img'}
                 style={{ fontSize: 22, background: 'none', lineHeight: 1 }}
                 type="button"
-                aria-label="Download"
-                title="Download"
+                aria-label="Télécharger"
+                title="Télécharger"
                 className="ril-zoom-in ril__toolbarItemChild ril__builtinButton"
                 onClick={onDownload}
               >
@@ -58,11 +58,11 @@ class MyPlugin extends Plugin {
 }
 ```
 
-The `attachmentFileTypes` is an entry object provided by the `@nocobase/client` package for extending file types. You can use its `add` method to extend a file type descriptor.
+`attachmentFileTypes` est un objet d'entrée fourni par le paquet `@nocobase/client` pour étendre les types de fichiers. Vous pouvez utiliser sa méthode `add` pour ajouter un descripteur de type de fichier.
 
-Each file type must implement a `match()` method to check if the file type meets the requirements. In the example, the `mime-match` package is used to check the file's `mimetype` attribute. If it matches `image/*`, it is considered a file type that needs processing. If it does not match, it will fall back to the built-in type.
+Chaque type de fichier doit implémenter une méthode `match()` pour vérifier si le type de fichier répond aux exigences. Dans l'exemple, le paquet `mime-match` est utilisé pour vérifier l'attribut `mimetype` du fichier. S'il correspond à `image/*`, il est considéré comme un type de fichier nécessitant un traitement. S'il ne correspond pas, il reviendra au type intégré.
 
-The `Previewer` property on the type descriptor is the component used for previewing. When the file type matches, this component will be rendered for preview. It is generally recommended to use a modal component (like `<Modal />`) as the base container and place the preview and interactive content within that component to implement the preview functionality.
+La propriété `Previewer` du descripteur de type est le composant utilisé pour l'aperçu. Lorsque le type de fichier correspond, ce composant sera rendu pour l'aperçu. Il est généralement recommandé d'utiliser un composant modal (comme `<Modal />`) comme conteneur de base et de placer l'aperçu et le contenu interactif dans ce composant pour implémenter la fonctionnalité d'aperçu.
 
 ### API
 
@@ -96,7 +96,7 @@ export class AttachmentFileTypes {
 
 #### `attachmentFileTypes`
 
-`attachmentFileTypes` is a global instance which could be imported from `@nocobase/client` package:
+`attachmentFileTypes` est une instance globale qui peut être importée depuis le paquet `@nocobase/client` :
 
 ```ts
 import { attachmentFileTypes } from '@nocobase/client';
@@ -104,34 +104,34 @@ import { attachmentFileTypes } from '@nocobase/client';
 
 #### `attachmentFileTypes.add()`
 
-Register file type descriptor to the file type registry. The type of the descriptor is `AttachmentFileType`.
+Enregistre un descripteur de type dans le registre des types de fichiers. Le type du descripteur est `AttachmentFileType`.
 
 #### `AttachmentFileType`
 
 ##### `match()`
 
-The match method of file type.
+La méthode `match` du type de fichier.
 
-The argument `file` is the uploaded file data object, including some properties could be used to check types.
+L'argument `file` est l'objet de données du fichier téléchargé, incluant plusieurs propriétés pouvant être utilisées pour vérifier les types.
 
-* `mimetype`: Mimetype
-* `extname`: Extension name of file, including "."
-* `path`: Relative path of the file storing
-* `url`: File URL
+* `mimetype` : Type MIME
+* `extname` : Extension du fichier, y compris le "."
+* `path` : Chemin relatif du fichier
+* `url` : URL du fichier
 
-The return value type is `boolean`, means matched or not.
+La valeur de retour est de type `boolean`, indiquant si le fichier correspond ou non.
 
 ##### `Previewer`
 
-Component used to preview file.
+Composant utilisé pour prévisualiser le fichier.
 
-Props:
+Propriétés :
 
-* `index`: Index value in attachemnts list
-* `list`: Attachemnt list
-* `onSwitchIndex`: Method to switch preview index
+* `index` : Valeur de l'index dans la liste des pièces jointes
+* `list` : Liste des pièces jointes
+* `onSwitchIndex` : Méthode pour changer l'index de prévisualisation
 
-For `onSwitchIndex`, any index value in the list could be used, to switch to other file. If `null` is used as argument, the preview component will be closed.
+Pour `onSwitchIndex`, n'importe quelle valeur d'index dans la liste peut être utilisée pour passer à un autre fichier. Si `null` est utilisé comme argument, le composant d'aperçu sera fermé.
 
 ```ts
 onSwitchIndex(null);

@@ -1,31 +1,31 @@
-# File Manager
+# Gestionnaire de fichiers
 
 <PluginInfo name="file-manager"></PluginInfo>
 
 ## Introduction
 
-The File Manager plugin provides a file collection, attachment field, and file storage services for effectively managing files. Files are structured data table records known as file collection, which store file metadata and can be managed through the File Manager. Attachment fields are specific relational fields associated with the file collection. The plugin supports multiple storage methods, including local storage, Alibaba Cloud OSS, Amazon S3, and Tencent Cloud COS.
+Le plugin Gestionnaire de fichiers offre une collection de fichiers, un champ de pièce jointe et des services de stockage de fichiers pour gérer efficacement les fichiers. Les fichiers sont des enregistrements de données structurées connus sous le nom de collection de fichiers, qui stockent les métadonnées des fichiers et peuvent être gérés via le Gestionnaire de fichiers. Les champs de pièces jointes sont des champs relationnels spécifiques associés à la collection de fichiers. Le plugin prend en charge plusieurs méthodes de stockage, y compris le stockage local, Alibaba Cloud OSS, Amazon S3 et Tencent Cloud COS.
 
-## User Manual
+## Manuel de l'utilisateur
 
-### File Collection
+### Collection de fichiers
 
-An attachments collection is built-in to store all files associated with attachment fields. Additionally, new file collections can be created to store specific files.
+Une collection de pièces jointes est intégrée pour stocker tous les fichiers associés aux champs de pièces jointes. De plus, de nouvelles collections de fichiers peuvent être créées pour stocker des fichiers spécifiques.
 
-[More usage information can be found in the file table introduction document](/handbook/file-manager/file-collection)
+[Plus d'informations sur l'utilisation peuvent être trouvées dans le document d'introduction à la table des fichiers](/handbook/file-manager/file-collection)
 
-### Attachment Field
+### Champ de pièce jointe
 
-Attachment fields are specific relational fields related to the file collection, which can be created through "Attachment field" or configured through "Association field".
+Les champs de pièces jointes sont des champs relationnels spécifiques liés à la collection de fichiers, qui peuvent être créés via "Champ de pièce jointe" ou configurés via "Champ d'association".
 
-[More usage information can be found in the attachment field introduction document](/handbook/file-manager/field-attachment)
+[Plus d'informations sur l'utilisation peuvent être trouvées dans le document d'introduction aux champs de pièces jointes](/handbook/file-manager/field-attachment)
 
-### File Storage
+### Stockage des fichiers
 
-The file storage engine is used to save files to specific services, including local storage (saving to the server's hard drive), cloud storage, etc.
+Le moteur de stockage de fichiers est utilisé pour sauvegarder les fichiers sur des services spécifiques, y compris le stockage local (sauvegarde sur le disque dur du serveur), le stockage en nuage, etc.
 
-[More usage information can be found in the file storage introduction document](./storage/index.md)
+[Plus d'informations sur l'utilisation peuvent être trouvées dans le document d'introduction au stockage de fichiers](./storage/index.md)
 
-### Development
+### Développement
 
-* [Extend client file type](./development/client-file-type.md)
+* [Étendre le type de fichier client](./development/client-file-type.md)

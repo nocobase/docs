@@ -1,31 +1,31 @@
 # Tencent COS
 
-The storage engine based on Tencent Cloud COS, you need to prepare relevant accounts and permissions in advance.
+Le moteur de stockage basé sur Tencent Cloud COS, vous devez préparer les comptes et les autorisations nécessaires à l'avance.
 
 ## Options
 
-![Example of Tencent COS options](https://static-docs.nocobase.com/20240712222125.png)
+![Exemple des options de Tencent COS](https://static-docs.nocobase.com/20240712222125.png)
 
-:::info{title=Hint}
-This section only covers the specific options for the Tencent Cloud COS storage engine. For common parameters, please refer to [Common Engine Parameters](./index.md#common-engine-parameters).
+:::info{title=Astuce}
+Cette section couvre uniquement les options spécifiques au moteur de stockage Tencent Cloud COS. Pour les paramètres communs, veuillez consulter les [Paramètres généraux du moteur](./index.md#common-engine-parameters).
 :::
 
-### Region
+### Région
 
-Fill in the region of the COS storage, for example: `ap-chengdu`.
+Indiquez la région du stockage COS, par exemple : `ap-chengdu`.
 
-:::info{title=Hint}
-You can view the region information of the storage bucket in the [Tencent Cloud COS Console](https://console.cloud.tencent.com/cos), and only need to take the prefix part of the region (without the complete domain name).
+:::info{title=Astuce}
+Vous pouvez consulter les informations de la région du seau de stockage dans le [console Tencent Cloud COS](https://console.cloud.tencent.com/cos), et vous n'avez besoin de prendre que la partie préfixe de la région (sans le nom de domaine complet).
 :::
 
 ### SecretId
 
-Fill in the ID of the Tencent Cloud authorized access key.
+Indiquez l'ID de la clé d'accès autorisée de Tencent Cloud.
 
 ### SecretKey
 
-Fill in the secret of the Tencent Cloud authorized access key.
+Indiquez le secret de la clé d'accès autorisée de Tencent Cloud.
 
 ### Bucket
 
-Fill in the name of the COS bucket, for example: `qing-cdn-1234189398`.
+Indiquez le nom du seau COS, par exemple : `qing-cdn-1234189398`.

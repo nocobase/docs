@@ -1,10 +1,11 @@
 # Amazon S3
 
 :::warning
-Documentation Pending
+Documentation en attente
 :::
 
 <!--
 ## Introduction
 
-## Handbook -->
+## Manuel d'utilisation
+-->

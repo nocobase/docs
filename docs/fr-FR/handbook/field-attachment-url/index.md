@@ -1,22 +1,22 @@
-# Data Field: Attachment (URL)
+# Champ de données : Pièce jointe (URL)
 
 <PluginInfo commercial="true" name="field-attachment-url"></PluginInfo>
 
 ## Introduction
 
-Supports attachments in URL format.
+Ce plugin permet de gérer des pièces jointes au format URL.
 
 ## Installation
 
-This plugin is a commercial plugin.
+Ce plugin est un plugin commercial.
 
-## User Manual
+## Manuel de l'utilisateur
 
-### Field Configuration
+### Configuration du champ
 
 ![20241017092323](https://static-docs.nocobase.com/20241017092323.png)
 
-### External Data Source
+### Source de données externe
 
 ![20241017092456](https://static-docs.nocobase.com/20241017092456.png)
 

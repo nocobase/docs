@@ -1,31 +1,31 @@
 # Aliyun OSS
 
-Storage engine based on Aliyun OSS, you need to prepare relevant accounts and permissions in advance.
+Moteur de stockage basé sur Aliyun OSS. Vous devez préparer à l'avance les comptes et autorisations nécessaires.
 
 ## Options
 
-![Example of Aliyun OSS options](https://static-docs.nocobase.com/20240712220011.png)
+![Exemple des options d'Aliyun OSS](https://static-docs.nocobase.com/20240712220011.png)
 
-:::info{title=Hint}
-Only the special parameters of the Aliyun OSS storage engine are introduced here. For common parameters, please refer to the [Common Engine Parameters](./index.md#common-engine-parameters).
+:::info{title=Conseil}
+Seuls les paramètres spécifiques du moteur de stockage Aliyun OSS sont présentés ici. Pour les paramètres communs, veuillez consulter les [Paramètres du moteur communs](./index.md#common-engine-parameters).
 :::
 
-### Region
+### Région
 
-Specify the region of the OSS storage, for example: `oss-cn-hangzhou`.
+Spécifiez la région du stockage OSS, par exemple : `oss-cn-hangzhou`.
 
-:::info{title=Hint}
-You can view the region information of the storage bucket in the [Aliyun OSS console](https://oss.console.aliyun.com/), and only need to take the prefix part of the region (without the complete domain name).
+:::info{title=Conseil}
+Vous pouvez consulter les informations de la région du bucket de stockage dans la [console Aliyun OSS](https://oss.console.aliyun.com/), et n'avez besoin de prendre que la partie préfixe de la région (sans le nom de domaine complet).
 :::
 
 ### AccessKey ID
 
-Fill in the ID of the Alibaba Cloud authorized access key.
+Remplissez l'ID de la clé d'accès autorisée Alibaba Cloud.
 
 ### AccessKey Secret
 
-Fill in the secret of the Alibaba Cloud authorized access key.
+Remplissez le secret de la clé d'accès autorisée Alibaba Cloud.
 
 ### Bucket
 
-Fill in the name of the OSS bucket.
+Remplissez le nom du bucket OSS.
