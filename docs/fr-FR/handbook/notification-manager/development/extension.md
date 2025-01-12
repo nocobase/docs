@@ -1,12 +1,12 @@
 ## Extension
 
-NocoBase supports the expansion of notification channel types, such as SMS notifications and app push notifications,etc.
+NocoBase permet l'extension des types de canaux de notification, tels que les notifications par SMS, les notifications push d'applications, etc.
 
-## Client
+## Côté Client
 
-### Channel Type Registration
+### Enregistrement des Types de Canaux
 
-The client channel configuration and message configuration interface are registered through the `registerChannelType` method provided by the notification management plugin client:
+La configuration du canal client et l'interface de configuration du message sont enregistrées via la méthode `registerChannelType` fournie par le plugin de gestion des notifications côté client :
 
 ```ts
 import PluginNotificationManagerClient from '@nocobase/plugin-notification-manager/client';
@@ -19,11 +19,11 @@ class PluginNotificationExampleClient extends Plugin {
   async load() {
     const notification = this.pm.get(PluginNotificationManagerClient);
     notification.registerChannelType({
-      title: 'Example SMS', // Channel type name
-      type: 'example-sms',  // Channel type identifier
+      title: 'Exemple SMS', // Nom du type de canal
+      type: 'example-sms',  // Identifiant du type de canal
       components: {
-        ChannelConfigForm,   // Channel configuration form
-        MessageConfigForm,   // Message configuration form
+        ChannelConfigForm,   // Formulaire de configuration du canal
+        MessageConfigForm,   // Formulaire de configuration du message
       },
     });
   }
@@ -32,11 +32,11 @@ class PluginNotificationExampleClient extends Plugin {
 export default PluginNotificationExampleClient;
 ```
 
-## Server
+## Côté Serveur
 
-### Extending Abstract Class
+### Extension de la Classe Abstraite
 
-The core of server development involves extending the `BaseNotificationChannel` abstract class and implementing the `send` method, which contains the business logic for sending notifications through the extended plugin.
+Le cœur du développement serveur consiste à étendre la classe abstraite `BaseNotificationChannel` et à implémenter la méthode `send`, qui contient la logique métier pour l'envoi de notifications via le plugin étendu.
 
 ```ts
 import { BaseNotificationChannel } from '@nocobase/plugin-notification-manager';
@@ -49,9 +49,9 @@ export class ExampleServer extends BaseNotificationChannel {
 }
 ```
 
-### Server Registration
+### Enregistrement Serveur
 
-The `registerChannelType` method of the notification server core should be called to register the server implementation class in the core:
+La méthode `registerChannelType` du noyau du serveur de notifications doit être appelée pour enregistrer la classe d'implémentation du serveur dans le noyau :
 
 ```ts
 import PluginNotificationManagerServer from '@nocobase/plugin-notification-manager';
@@ -67,22 +67,21 @@ export class PluginNotificationExampleServer extends Plugin {
 export default PluginNotificationExampleServer;
 ```
 
-## Full Example
+## Exemple Complet
 
-Here is a sample notification extension to describe in detail how to develop an extension.
-Suppose we want to add SMS notification to NocoBase using a platform's SMS gateway.
+Voici un exemple d'extension de notification pour décrire en détail comment développer une extension. Supposons que nous souhaitons ajouter la notification par SMS à NocoBase en utilisant la passerelle SMS d'une plateforme.
 
-### Plugin Creation
+### Création du Plugin
 
-1. Run the command to create the plugin `yarn pm add @nocobase/plugin-notification-example`
+1. Exécutez la commande pour créer le plugin : `yarn pm add @nocobase/plugin-notification-example`
 
-### Client Development
+### Développement Côté Client
 
-For the client, develop two form components: `ChannelConfigForm` (Channel Configuration Form) and `MessageConfigForm` (Message Configuration Form).
+Pour le client, développez deux composants de formulaire : `ChannelConfigForm` (Formulaire de configuration du canal) et `MessageConfigForm` (Formulaire de configuration du message).
 
 #### ChannelConfigForm
 
-To send SMS messages, an API key and secret are required. Create a new file named `ChannelConfigForm.tsx` in the `src/client` directory:
+Pour envoyer des messages SMS, une clé API et un secret sont nécessaires. Créez un nouveau fichier nommé `ChannelConfigForm.tsx` dans le répertoire `src/client` :
 
 ```ts
 import React from 'react';
@@ -120,7 +119,7 @@ export default ChannelConfigForm;
 
 #### MessageConfigForm
 
-The message configuration form mainly includes the configuration for recipients (`receivers`) and message content (`content`). Create a new file named `MessageConfigForm.tsx` in the `src/client` directory:
+Le formulaire de configuration du message comprend principalement la configuration des destinataires (`receivers`) et du contenu du message (`content`). Créez un nouveau fichier nommé `MessageConfigForm.tsx` dans le répertoire `src/client` :
 
 ```ts
 import React from 'react';
@@ -195,12 +194,12 @@ const MessageConfigForm = ({ variableOptions }) => {
   );
 };
 
-export default MessageConfigForm
+export default MessageConfigForm;
 ```
 
-#### Client Component Registration
+#### Enregistrement des Composants Client
 
-After developing the form configuration components, register them in the notification management core. Assume the platform name is "Example." Edit `src/client/index.tsx` as follows:
+Après avoir développé les composants de configuration de formulaire, enregistrez-les dans le noyau de gestion des notifications. Supposez que le nom de la plateforme est "Example". Modifiez `src/client/index.tsx` comme suit :
 
 ```ts
 import { Plugin } from '@nocobase/client';
@@ -217,7 +216,7 @@ class PluginNotificationExampleClient extends Plugin {
   async load() {
     const notification = this.pm.get(PluginNotificationManagerClient);
     notification.registerChannelType({
-      title: tval('Example SMS', { ns: '@nocobase/plugin-notification-example' }),
+      title: tval('Exemple SMS', { ns: '@nocobase/plugin-notification-example' }),
       type: 'example-sms',
       components: {
         ChannelConfigForm,
@@ -230,11 +229,9 @@ class PluginNotificationExampleClient extends Plugin {
 export default PluginNotificationExampleClient;
 ```
 
-At this point, the development of the client is complete
+### Développement Serveur
 
-### Server Development
-
-The core of server development involves extending the `BaseNotificationChannel` abstract class and implementing the `send` method. In the `src/server` directory, add a file named `example-server.ts`:
+Le cœur du développement serveur consiste à étendre la classe abstraite `BaseNotificationChannel` et à implémenter la méthode `send`. Dans le répertoire `src/server`, ajoutez un fichier nommé `example-server.ts` :
 
 ```ts
 import { BaseNotificationChannel } from '@nocobase/plugin-notification-manager';
@@ -247,7 +244,7 @@ export class ExampleServer extends BaseNotificationChannel {
 }
 ```
 
-Next, register the server extension plugin by editing `src/server/plugin.ts`:
+Ensuite, enregistrez l'extension serveur du plugin en modifiant `src/server/plugin.ts` :
 
 ```ts
 import PluginNotificationManagerServer from '@nocobase/plugin-notification-manager';
@@ -263,21 +260,21 @@ export class PluginNotificationExampleServer extends Plugin {
 export default PluginNotificationExampleServer;
 ```
 
-### Plugin Registration and Launch
+### Enregistrement et Lancement du Plugin
 
-1. Run the registration command: `yarn pm add @nocobase/plugin-notification-example`
-2. Run the enable command: `yarn pm enable @nocobase/plugin-notification-example`
+1. Exécutez la commande d'enregistrement : `yarn pm add @nocobase/plugin-notification-example`
+2. Exécutez la commande d'activation : `yarn pm enable @nocobase/plugin-notification-example`
 
-### Channel Configuration
+### Configuration du Canal
 
-Upon visiting the Notification management channel page, you can see that the `Example SMS` channel has been enabled.
+Lors de la visite de la page de gestion des canaux de notifications, vous pouvez voir que le canal `Exemple SMS` a été activé.
 ![20241009164207-2024-10-09-16-42-08](https://static-docs.nocobase.com/20241009164207-2024-10-09-16-42-08.png)
 
-Add a sample channel.
+Ajoutez un canal exemple.
 ![20241009164519-2024-10-09-16-45-20](https://static-docs.nocobase.com/20241009164519-2024-10-09-16-45-20.png)
 
-Create a new workflow and configure the notification node.
+Créez un nouveau flux de travail et configurez le nœud de notification.
 ![20241009172737-2024-10-09-17-27-38](https://static-docs.nocobase.com/20241009172737-2024-10-09-17-27-38.png)
 
-Trigger the workflow execution to view the following information output in the console.
+Déclenchez l'exécution du flux de travail pour afficher les informations suivantes dans la console.
 ![20241009181617-2024-10-09-18-16-18](https://static-docs.nocobase.com/20241009181617-2024-10-09-18-16-18.png)
