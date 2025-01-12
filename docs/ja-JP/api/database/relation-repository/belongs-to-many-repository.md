@@ -1,29 +1,29 @@
 # BelongsToManyRepository
 
-`BelongsToManyRepository` 是用于处理 `BelongsToMany` 关系的 `Relation Repository`。
+`BelongsToManyRepository` は、`BelongsToMany` 関係を処理するための `Relation Repository` です。
 
-不同于其他关系类型，`BelongsToMany` 类型的关系需要通过中间表来记录。
-在 NocoBase 中定义关联关系，可自动创建中间表，也可以明确指定中间表。
+他の関係タイプとは異なり、`BelongsToMany` タイプの関係は中間テーブルを介して記録する必要があります。
+NocoBase で関連関係を定義すると、中間テーブルが自動的に作成されるか、中間テーブルを明示的に指定することができます。
 
-## 类方法
+## クラスメソッド
 
 ### `find()`
 
-查找关联对象
+関連オブジェクトを検索します。
 
-**签名**
+**シグネチャ**
 
 - `async find(options?: FindOptions): Promise<M[]>`
 
-**详细信息**
+**詳細**
 
-查询参数与 [`Repository.find()`](../repository.md#find) 一致。
+クエリパラメータは [`Repository.find()`](../repository.md#find) と一致します。
 
 ### `findOne()`
 
-查找关联对象，仅返回一条记录
+関連オブジェクトを検索し、1つのレコードのみを返します。
 
-**签名**
+**シグネチャ**
 
 - `async findOne(options?: FindOneOptions): Promise<M>`
 
@@ -31,13 +31,13 @@
 
 ### `count()`
 
-返回符合查询条件的记录数
+クエリ条件に一致するレコード数を返します。
 
-**签名**
+**シグネチャ**
 
 - `async count(options?: CountOptions)`
 
-**类型**
+**タイプ**
 
 ```typescript
 interface CountOptions
@@ -49,13 +49,13 @@ interface CountOptions
 
 ### `findAndCount()`
 
-从数据库查询特定条件的数据集和结果数。
+データベースから特定の条件に一致するデータセットと結果数をクエリします。
 
-**签名**
+**シグネチャ**
 
 - `async findAndCount(options?: FindAndCountOptions): Promise<[any[], number]>`
 
-**类型**
+**タイプ**
 
 ```typescript
 type FindAndCountOptions = CommonFindOptions;
@@ -63,9 +63,9 @@ type FindAndCountOptions = CommonFindOptions;
 
 ### `create()`
 
-创建关联对象
+関連オブジェクトを作成します。
 
-**签名**
+**シグネチャ**
 
 - `async create(options?: CreateOptions): Promise<M>`
 
@@ -73,9 +73,9 @@ type FindAndCountOptions = CommonFindOptions;
 
 ### `update()`
 
-更新符合条件的关联对象
+条件に一致する関連オブジェクトを更新します。
 
-**签名**
+**シグネチャ**
 
 - `async update(options?: UpdateOptions): Promise<M>`
 
@@ -83,9 +83,9 @@ type FindAndCountOptions = CommonFindOptions;
 
 ### `destroy()`
 
-删除符合条件的关联对象
+条件に一致する関連オブジェクトを削除します。
 
-**签名**
+**シグネチャ**
 
 - `async destroy(options?: TargetKey | TargetKey[] | DestroyOptions): Promise<Boolean>`
 
@@ -93,15 +93,15 @@ type FindAndCountOptions = CommonFindOptions;
 
 ### `add()`
 
-添加新的关联对象
+新しい関連オブジェクトを追加します。
 
-**签名**
+**シグネチャ**
 
 - `async add(
 options: TargetKey | TargetKey[] | PrimaryKeyWithThroughValues | PrimaryKeyWithThroughValues[] | AssociatedOptions
 ): Promise<void>`
 
-**类型**
+**タイプ**
 
 ```typescript
 type PrimaryKeyWithThroughValues = [TargetKey, Values];
@@ -115,11 +115,11 @@ interface AssociatedOptions extends Transactionable {
 }
 ```
 
-**详细信息**
+**詳細**
 
-可以直接传入关联对象的 `targetKey`，也可将 `targetKey` 与中间表的字段值一并传入。
+関連オブジェクトの `targetKey` を直接渡すか、`targetKey` と中間テーブルのフィールド値を一緒に渡すことができます。
 
-**示例**
+**例**
 
 ```typescript
 const t1 = await Tag.repository.create({
@@ -136,10 +136,10 @@ const p1 = await Post.repository.create({
 
 const PostTagRepository = new BelongsToManyRepository(Post, 'tags', p1.id);
 
-// 传入 targetKey
+// targetKey を渡す
 PostTagRepository.add([t1.id, t2.id]);
 
-// 传入中间表字段
+// 中間テーブルのフィールドを渡す
 PostTagRepository.add([
   [t1.id, { tagged_at: '123' }],
   [t2.id, { tagged_at: '456' }],
@@ -148,27 +148,27 @@ PostTagRepository.add([
 
 ### `set()`
 
-设置关联对象
+関連オブジェクトを設定します。
 
-**签名**
+**シグネチャ**
 
 - async set(
   options: TargetKey | TargetKey[] | PrimaryKeyWithThroughValues | PrimaryKeyWithThroughValues[] | AssociatedOptions,
   ): Promise<void>
 
-**详细信息**
+**詳細**
 
-参数同 [add()](#add)
+パラメータは [add()](#add) と同じです。
 
 ### `remove()`
 
-移除与给定对象之间的关联关系
+指定されたオブジェクトとの関連関係を削除します。
 
-**签名**
+**シグネチャ**
 
 - `async remove(options: TargetKey | TargetKey[] | AssociatedOptions)`
 
-**类型**
+**タイプ**
 
 ```typescript
 interface AssociatedOptions extends Transactionable {
@@ -178,14 +178,14 @@ interface AssociatedOptions extends Transactionable {
 
 ### `toggle()`
 
-切换关联对象。
+関連オブジェクトを切り替えます。
 
-在一些业务场景中，经常需要切换关联对象，比如用户收藏商品，用户可以取消收藏，也可以再次收藏。使用 `toggle` 方法可以快速实现类似功能。
+一部のビジネスシナリオでは、関連オブジェクトを頻繁に切り替える必要があります。例えば、ユーザーが商品をお気に入りに追加したり、お気に入りから削除したりすることができます。`toggle` メソッドを使用すると、このような機能を簡単に実装できます。
 
-**签名**
+**シグネチャ**
 
 - `async toggle(options: TargetKey | { tk?: TargetKey; transaction?: Transaction }): Promise<void>`
 
-**详细信息**
+**詳細**
 
-`toggle` 方法会自动判断关联对象是否已经存在，如果存在则移除，如果不存在则添加。
+`toggle` メソッドは、関連オブジェクトが既に存在するかどうかを自動的に判断し、存在する場合は削除し、存在しない場合は追加します。

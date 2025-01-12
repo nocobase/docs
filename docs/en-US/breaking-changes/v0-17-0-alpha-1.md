@@ -210,13 +210,13 @@ const bulkEditFormItemInitializers = new SchemaInitializer({
   'data-testid': 'configure-fields-button-of-bulk-edit-form-item',
   wrap: gridRowColWrap,
   icon: 'SettingOutlined',
-  // 原 insertPosition 和 component 是透传的，这里不用管，也是透传的
+  // The original insertPosition and component are transparently passed
   items: [
     {
       type: 'itemGroup',
       title: t('Display fields'),
-      name: 'displayFields', // 记得加上 name
-      useChildren: useCustomBulkEditFormItemInitializerFields, // 使用到了 useChildren
+      name: 'displayFields', // remember to add name
+      useChildren: useCustomBulkEditFormItemInitializerFields, // useChildren is used
     },
     {
       type: 'divider',
@@ -224,7 +224,7 @@ const bulkEditFormItemInitializers = new SchemaInitializer({
     {
       title: t('Add text'),
       name: 'addText',
-      Component: BlockItemInitializer, // component 替换为 Component
+      Component: BlockItemInitializer, // component replace with Component
     },
   ],
 });
@@ -349,7 +349,7 @@ const mySettings = new SchemaSettings({
       name: 'xxx',
       type: 'modal',
       useComponentProps() {
-        // useSchemaDesigner() 会传入 props
+        // useSchemaDesigner() passes props
         const { onSubmit } = useSchemaDesigner();
         return {
           title: 'xxx',
@@ -368,7 +368,7 @@ Changes in the schema
 {
   type: 'void',
 - 'x-designer': 'CustomButton.Designer'
-+ 'x-toolbar': 'CustomButtonToolbar',  // 非必须
++ 'x-toolbar': 'CustomButtonToolbar',  // optional
 + 'x-settings': 'CustomButtonSettings',
   'x-component': 'CustomButton',
   'x-content': 'Hello2',
@@ -397,7 +397,7 @@ function EditBlockTitle(props) {
             title: {
               title: 'Block title',
               type: 'string',
-              // 获取 schema 的默认值
+              // obtain schema default value
 -             default: fieldSchema?.['x-decorator-props']?.title,
 +             default: dn.getSchemaAttribute('x-decorator-props.title'),
               'x-decorator': 'FormItem',

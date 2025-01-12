@@ -1,32 +1,32 @@
 # CacheManager
 
-## 概览
+## 概要
 
-CacheManager 基于 <a href="https://github.com/node-cache-manager/node-cache-manager" target="_blank">node-cache-manager</a>, 为 NocoBase 提供 Cache 模块管理功能。内置的 Cache 类型为
+CacheManager は <a href="https://github.com/node-cache-manager/node-cache-manager" target="_blank">node-cache-manager</a> をベースにしており、NocoBase に Cache モジュール管理機能を提供します。組み込みの Cache タイプは以下の通りです。
 
-- memory - 由 node-cache-manager 默认提供的 lru-cache
-- redis - 由 node-cache-manager-redis-yet 支持相关功能
+- memory - node-cache-manager がデフォルトで提供する lru-cache
+- redis - node-cache-manager-redis-yet がサポートする関連機能
 
-更多类型可通过 API 进行扩展注册。
+その他のタイプは API を通じて拡張登録が可能です。
 
-### 概念解释
+### 概念の説明
 
-- **Store**: 定义一种缓存方式，包含创建缓存的工厂方法，和其他相关配置。每种缓存方式都有一个唯一标识，在注册的时候提供。
-  内置的两种缓存方式对应的唯一标识即 `memory` 和 `redis`.
+- **Store**: キャッシュ方法を定義し、キャッシュを作成するファクトリメソッドやその他の関連設定を含みます。各キャッシュ方法には一意の識別子があり、登録時に提供されます。
+  組み込みの2つのキャッシュ方法の一意の識別子はそれぞれ `memory` と `redis` です。
 
-- **Store 工厂方法**：由 `node-cache-manager` 和相关扩展包提供，用于创建缓存的的方法。如 `node-cache-manager` 默认提供的 `'memory'`, `node-cache-manager-redis-yet` 提供的 `redisStore` 等。即 `node-cache-manager` 的 `caching` 方法的第一个参数。
+- **Store ファクトリメソッド**: `node-cache-manager` および関連拡張パッケージが提供する、キャッシュを作成するためのメソッドです。例えば、`node-cache-manager` がデフォルトで提供する `'memory'`、`node-cache-manager-redis-yet` が提供する `redisStore` などです。つまり、`node-cache-manager` の `caching` メソッドの最初のパラメータです。
 
-- **Cache**: NocoBase 封装的类，提供了使用缓存的相关方法。实际使用缓存时操作的是 `Cache` 的实例，每个 `Cache` 实例有唯一的标识，可作为区分不同模块的命名空间。
+- **Cache**: NocoBase がカプセル化したクラスで、キャッシュを使用するための関連メソッドを提供します。実際にキャッシュを使用する際に操作するのは `Cache` のインスタンスで、各 `Cache` インスタンスには一意の識別子があり、異なるモジュールの名前空間として区別することができます。
 
-## 类方法
+## クラスメソッド
 
 ### `constructor()`
 
-#### 签名
+#### シグネチャ
 
 - `constructor(options?: CacheManagerOptions)`
 
-#### 类型
+#### タイプ
 
 ```ts
 export type CacheManagerOptions = Partial<{
@@ -39,29 +39,29 @@ export type CacheManagerOptions = Partial<{
 type StoreOptions = {
   store?: 'memory' | FactoryStore<Store, any>;
   close?: (store: Store) => Promise<void>;
-  // global config
+  // グローバル設定
   [key: string]: any;
 };
 ```
 
-#### 详细信息
+#### 詳細
 
 ##### CacheManagerOptions
 
-| 属性           | 类型                           | 描述                                                                                                                                                                                                                                  |
-| -------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `defaultStore` | `string`                       | 默认 Cache 类型的唯一标识                                                                                                                                                                                                             |
-| `stores`       | `Record<string, StoreOptions>` | 注册 Cache 类型，key为 Cache 类型的唯一标识，值为包含 Cache 类型的注册方法和全局配置的对象。<br />在 `node-cache-manager` 中，创建缓存的方法为 `await caching(store, config)`. 而在这里要提供的对象为 [`StoreOptions`](#storeoptions) |
+| プロパティ      | タイプ                           | 説明                                                                                                                                                                                                                                  |
+| --------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `defaultStore`  | `string`                       | デフォルトの Cache タイプの一意の識別子                                                                                                                                                                                               |
+| `stores`        | `Record<string, StoreOptions>` | Cache タイプを登録し、key は Cache タイプの一意の識別子、値は Cache タイプの登録方法とグローバル設定を含むオブジェクトです。<br />`node-cache-manager` では、キャッシュを作成するメソッドは `await caching(store, config)` です。ここで提供するオブジェクトは [`StoreOptions`](#storeoptions) です |
 
 ##### StoreOptions
 
-| 属性            | 类型                                   | 描述                                                                                                     |
-| --------------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `store`         | `memory` \| `FactoryStore<Store, any>` | store工厂方法, 对应 caching 第一个参数                                                                   |
-| `close`         | `(store: Store) => Promise<void>`      | 可选。如果是 Redis 等需要建立连接的中间件，需要提供一个关闭连接的回调方法，入参为store工厂方法返回的对象 |
-| `[key: string]` | `any`                                  | 其他 store 全局配置，对应 caching 第二个参数                                                             |
+| プロパティ      | タイプ                                   | 説明                                                                                                     |
+| --------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `store`         | `memory` \| `FactoryStore<Store, any>` | store ファクトリメソッド, caching の最初のパラメータに対応します                                                                 |
+| `close`         | `(store: Store) => Promise<void>`      | オプション。Redis などの接続が必要なミドルウェアの場合、接続を閉じるコールバックメソッドを提供する必要があります。パラメータは store ファクトリメソッドが返すオブジェクトです |
+| `[key: string]` | `any`                                  | その他の store グローバル設定、caching の2番目のパラメータに対応します                                                             |
 
-#### 默认 `options`
+#### デフォルト `options`
 
 ```ts
 import { redisStore, RedisStore } from 'cache-manager-redis-yet';
@@ -71,7 +71,7 @@ const defaultOptions: CacheManagerOptions = {
   stores: {
     memory: {
       store: 'memory',
-      // 全局配置
+      // グローバル設定
       max: 2000,
     },
     redis: {
@@ -84,14 +84,14 @@ const defaultOptions: CacheManagerOptions = {
 };
 ```
 
-`options` 参数会和默认 options 合并，默认 options 参数已有内容可以缺省，例如：
+`options` パラメータはデフォルトの options とマージされます。デフォルトの options パラメータに既に含まれている内容は省略できます。例えば：
 
 ```ts
 const cacheManager = new CacheManager({
   stores: {
     defaultStore: 'redis',
     redis: {
-      // redisStore已经在默认options中提供，只需要提供redisStore配置即可。
+      // redisStore はデフォルトの options で既に提供されているため、redisStore の設定のみを提供します。
       url: 'redis://localhost:6379',
     },
   },
@@ -100,86 +100,86 @@ const cacheManager = new CacheManager({
 
 ### `registerStore()`
 
-注册新的缓存方式，参考
+新しいキャッシュ方法を登録します。参考：
 
 ```ts
 import { redisStore } from 'cache-manager-redis-yet';
 
 cacheManager.registerStore({
-  // store唯一标识
+  // store の一意の識別子
   name: 'redis',
-  // 创建store的工厂方法
+  // store を作成するファクトリメソッド
   store: redisStore,
-  // 关闭store连接
+  // store 接続を閉じる
   close: async (redis: RedisStore) => {
     await redis.client.quit();
   },
-  // 全局配置
+  // グローバル設定
   url: 'xxx',
 });
 ```
 
-#### 签名
+#### シグネチャ
 
 - `registerStore(options: { name: string } & StoreOptions)`
 
 ### `createCache()`
 
-创建缓存，参考
+キャッシュを作成します。参考：
 
 ```ts
 await cacheManager.createCache({
-  name: 'default', // cache唯一标识
-  store: 'memory', // store唯一标识
-  prefix: 'mycache', // 自动给缓存key加上'mycache:'前缀，可选
-  // 其他store配置, 自定义配置，会和store全局配置合并
+  name: 'default', // cache の一意の識別子
+  store: 'memory', // store の一意の識別子
+  prefix: 'mycache', // キャッシュ key に自動的に 'mycache:' プレフィックスを追加します。オプション
+  // その他の store 設定, カスタム設定は store のグローバル設定とマージされます
   max: 2000,
 });
 ```
 
-#### 签名
+#### シグネチャ
 
 - `createCache(options: { name: string; prefix?: string; store?: string; [key: string]: any }): Promise<Cache>`
 
-#### 详细信息
+#### 詳細
 
 ##### options
 
-| 属性            | 类型     | 描述                          |
-| --------------- | -------- | ----------------------------- |
-| `name`          | `string` | cache 唯一标识                |
-| `store`         | `string` | store 唯一标识                |
-| `prefix`        | `string` | 可选，缓存 key 前缀           |
-| `[key: string]` | `any`    | 其他 store 相关的自定义配置项 |
+| プロパティ      | タイプ     | 説明                          |
+| --------------- | ---------- | ----------------------------- |
+| `name`          | `string` | cache の一意の識別子                |
+| `store`         | `string` | store の一意の識別子                |
+| `prefix`        | `string` | オプション、キャッシュ key のプレフィックス           |
+| `[key: string]` | `any`    | その他の store 関連のカスタム設定項 |
 
-`store` 省略时，将使用 `defaultStore` , 此时缓存方式会跟随系统默认缓存方式改变而改变。
+`store` を省略すると、`defaultStore` が使用されます。この場合、キャッシュ方法はシステムのデフォルトのキャッシュ方法に従って変更されます。
 
-没有自定义配置时，会返回由全局配置创建，当前缓存方式共享的默认缓存空间，推荐加上 prefix 避免 key 冲突。
+カスタム設定がない場合、グローバル設定によって作成され、現在のキャッシュ方法で共有されるデフォルトのキャッシュスペースが返されます。key の衝突を避けるために prefix を追加することを推奨します。
 
 ```ts
-// 使用默认缓存，使用全局配置
+// デフォルトのキャッシュを使用し、グローバル設定を使用します
 await cacheManager.createCache({ name: 'default', prefix: 'mycache' });
 ```
 
 ##### Cache
 
-参考 [Cache](./cache.md)
+詳細は [Cache](./cache.md) を参照してください。
 
 ### `getCache()`
 
-获取对应的缓存
+対応するキャッシュを取得します
 
 ```ts
 cacheManager.getCache('default');
 ```
 
-#### 签名
+#### シグネチャ
 
 - `getCache(name: string): Cache`
 
 ### `flushAll()`
 
-重置所有缓存
+すべてのキャッシュをリセットします
 
 ```ts
 await cacheManager.flushAll();
@@ -187,7 +187,7 @@ await cacheManager.flushAll();
 
 ### `close()`
 
-关闭所有缓存中间件连接
+すべてのキャッシュミドルウェアの接続を閉じます
 
 ```ts
 await cacheManager.close();

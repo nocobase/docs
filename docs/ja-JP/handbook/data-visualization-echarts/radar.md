@@ -1,32 +1,32 @@
-# Radar Chart
+# レーダーチャート
 
-## Data Configuration
+## データ設定
 
-### 1 or More Measures, 1 Dimension
+### 1つ以上のメジャー、1つのディメンション
 
-#### Using Dimensions as Variables
+#### ディメンションを変数として使用
 
-Each value of the dimension field acts as a variable, with each measure forming one radar area.
+ディメンションフィールドの各値は変数として機能し、各メジャーが1つのレーダーエリアを形成します。
 
 ![](https://static-docs.nocobase.com/202410091924155.png)
 
-#### Using Measures as Variables
+#### メジャーを変数として使用
 
-Each measure acts as a variable, with each value of the dimension field forming one radar area.
+各メジャーは変数として機能し、ディメンションフィールドの各値が1つのレーダーエリアを形成します。
 
 ![](https://static-docs.nocobase.com/202410091927959.png)
 
-## Configuration Options
+## 設定オプション
 
-| Option                      | Description                                                                 |
+| オプション                      | 説明                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------- |
-| Size                         | Set the size of the chart, either by fixing the aspect ratio or a fixed height |
-| Light mode theme             | Preview requires selection when the system is in light mode                  |
-| Dark mode theme              | Preview requires selection when the system is in dark mode                   |
-| Show legend                  | Controls whether the legend is displayed                                     |
-| Legend orient                | Controls the direction of the legend, either horizontal or vertical          |
-| Legend position (left, bottom, right, top) | Controls the relative position of the legend                                  |
-| Shape                        | Polygon or circle<br />![](https://static-docs.nocobase.com/202410091929018.png) |
-| Range                        | Controls the minimum and maximum values of the variables                     |
-| Radius                       | Adjusts the radius of the chart                                              |
-| Center coordinate            | Controls the position of the chart, can be fixed values or percentages        |
+| サイズ                         | チャートのサイズを設定します。アスペクト比を固定するか、固定の高さを指定します |
+| ライトモードテーマ             | システムがライトモードの場合に選択が必要なプレビュー                      |
+| ダークモードテーマ              | システムがダークモードの場合に選択が必要なプレビュー                      |
+| 凡例を表示                   | 凡例を表示するかどうかを制御します                                     |
+| 凡例の向き                   | 凡例の方向を制御します。水平または垂直                                  |
+| 凡例の位置 (左、下、右、上) | 凡例の相対位置を制御します                                  |
+| 形状                        | ポリゴンまたは円<br />![](https://static-docs.nocobase.com/202410091929018.png) |
+| 範囲                        | 変数の最小値と最大値を制御します                     |
+| 半径                       | チャートの半径を調整します                                              |
+| 中心座標            | チャートの位置を制御します。固定値またはパーセンテージで指定できます        |

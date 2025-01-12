@@ -15,6 +15,8 @@
   - [循环](./loop.md)（插件 @nocobase/plugin-workflow-loop 提供）
   - [并行分支](./parallel.md)（插件 @nocobase/plugin-workflow-parallel 提供）
   - [自定义变量](./variable.md)（插件 @nocobase/plugin-workflow-variable 提供）
+  - [调用工作流](./subflow.md)（插件 @nocobase/plugin-workflow-subflow 提供）
+  - [流程输出](./output.md)（插件 @nocobase/plugin-workflow-subflow 提供）
 - 计算类
   - [运算](./calculation.md)
   - [动态表达式运算](./dynamic-calculation.md)（插件 @nocobase/plugin-workflow-dynamic-calculation 提供）

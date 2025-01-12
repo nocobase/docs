@@ -1,16 +1,16 @@
-# Word Cloud Chart
+# ワードクラウドチャート
 
-## Data Configuration
+## データ設定
 
-### 1 Measure, 1 Dimension
+### 1 メジャー, 1 ディメンション
 
-![1 Measure, 1 Dimension](https://static-docs.nocobase.com/202410091936018.png)
+![1 メジャー, 1 ディメンション](https://static-docs.nocobase.com/202410091936018.png)
 
-## Configuration Options
+## 設定オプション
 
-| Option             | Description                                      |
+| オプション             | 説明                                      |
 | ------------------ | ------------------------------------------------ |
-| Size               | Sets the size of the chart, with either a fixed aspect ratio or fixed height |
-| Light mode theme   | Select this option to preview when the system is in light mode |
-| Dark mode theme    | Select this option to preview when the system is in dark mode |
-| Shape              | Controls the shape of the chart                 |
+| サイズ               | チャートのサイズを設定します。固定アスペクト比または固定高さを選択できます |
+| ライトモードテーマ   | システムがライトモードの場合にプレビューするためにこのオプションを選択します |
+| ダークモードテーマ    | システムがダークモードの場合にプレビューするためにこのオプションを選択します |
+| 形状              | チャートの形状を制御します                 |

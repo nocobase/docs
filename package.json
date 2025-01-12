@@ -36,13 +36,16 @@
     "prettier": "^3.0.3"
   },
   "dependencies": {
-    "sucrase": "^3.0.0",
+    "@formulajs/formulajs": "^4.4.9",
     "@nocobase/client": "^0.21.0-alpha.6",
     "axios-mock-adapter": "1.22.0",
-    "dumi-theme-nocobase": "^0.2.30"
+    "dumi-theme-nocobase": "^0.2.30",
+    "sucrase": "^3.0.0",
+    "vditor": "^3.10.8"
   },
   "volta": {
     "node": "20.14.0",
     "yarn": "1.22.19"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

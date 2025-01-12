@@ -1,112 +1,109 @@
 # ICollectionManager
 
-`ICollectionManager` 接口，用于管理数据源的 `Collection` 实例。
+The `ICollectionManager` interface is used to manage `Collection` instances of data sources.
 
 ## API
 
 ### registerFieldTypes()
 
-注册 `Collection` 中的字段类型。
+Registers the field types in a `Collection`.
 
-#### 签名
+#### Signature
 
 - `registerFieldTypes(types: Record<string, any>): void`
 
 ### registerFieldInterfaces()
 
-注册 `Collection` 的 `Interface` 。
+Registers the `Interface` for a `Collection`.
 
-#### 签名
+#### Signature
 
 - `registerFieldInterfaces(interfaces: Record<string, any>): void`
 
 ### registerCollectionTemplates()
 
-注册 `Collection Template`。
+Registers `Collection Templates`.
 
-#### 签名
+#### Signature
 
 - `registerCollectionTemplates(templates: Record<string, any>): void`
 
 ### registerModels()
 
-注册 `Model`。
+Registers `Models`.
 
-#### 签名
+#### Signature
 
 - `registerModels(models: Record<string, any>): void`
 
 ### registerRepositories()
 
-注册 `Repository`。
+Registers `Repositories`.
 
-#### 签名
+#### Signature
 
 - `registerRepositories(repositories: Record<string, any>): void`
 
 ### getRegisteredRepository()
 
-获取已注册的仓库实例。
+Retrieves an instance of a registered repository.
 
-#### 签名
+#### Signature
 
 - `getRegisteredRepository(key: string): IRepository`
 
 ### defineCollection()
 
-定义一个 `Collection`。
+Defines a `Collection`.
 
-#### 签名
+#### Signature
 
 - `defineCollection(options: CollectionOptions): ICollection`
 
 ### extendCollection()
 
-修改一个已存在的 `Collection` 属性。
+Modifies an existing `Collection` property.
 
-#### 签名
+#### Signature
 
 - `extendCollection(collectionOptions: CollectionOptions, mergeOptions?: MergeOptions): ICollection`
 
 ### hasCollection()
 
-判断 `Collection` 是否存在。
+Determines if a `Collection` exists.
 
-#### 签名
-
+#### Signature
 
 - `hasCollection(name: string): boolean`
 
 ### getCollection()
 
-获取 `Collection` 实例。
+Retrieves an instance of a `Collection`.
 
-#### 签名
+#### Signature
 
 - `getCollection(name: string): ICollection`
 
 ### getCollections()
 
-获取所有的 `Collection` 实例。
+Retrieves all instances of `Collection`.
 
-#### 签名
+#### Signature
 
 - `getCollections(): Array<ICollection>`
 
 ### getRepository()
 
-获取 `Repository` 实例。
+Retrieves an instance of a `Repository`.
 
-#### 签名
+#### Signature
 
 - `getRepository(name: string, sourceId?: string | number): IRepository`
 
 ### sync()
 
-同步数据源，逻辑由子类实现。
+Synchronizes the data source, with the logic implemented by subclasses.
 
-#### 签名
+#### Signature
 
 - `sync(): Promise<void>`
-
-

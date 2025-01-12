@@ -1614,6 +1614,14 @@
     bessel "^1.0.2"
     jstat "^1.9.6"
 
+"@formulajs/formulajs@^4.4.9":
+  version "4.4.9"
+  resolved "https://registry.yarnpkg.com/@formulajs/formulajs/-/formulajs-4.4.9.tgz#34a4f1c8eae6351330e367a874e45a8ded7cb33e"
+  integrity sha512-11kIRYGI7YtKz9gMLgQgqs3yBC6ciT2SZRmAsLUt3CLdGfH5w9UW+Ie2Oc/MfzjobwwoJ7DcbeW+ccnHEjaGvQ==
+  dependencies:
+    bessel "^1.0.2"
+    jstat "^1.9.6"
+
 "@hapi/hoek@^11.0.2":
   version "11.0.2"
   resolved "https://registry.npmjs.org/@hapi/hoek/-/hoek-11.0.2.tgz#cb3ea547daac7de5c9cf1d960c3f35c34f065427"
@@ -5487,6 +5495,11 @@ detect-node@^2.0.4:
   version "2.1.0"
   resolved "https://registry.npmjs.org/detect-node/-/detect-node-2.1.0.tgz#c9c70775a49c3d03bc2c06d9a73be550f978f8b1"
   integrity sha512-T0NIuQpnTvFDATNuHN5roPwSBG83rFsuO+MXXH9/3N1eFbn4wcPjttvjMLEPWJ0RGUYgQE7cGgS3tNxbqCGM7g==
+
+diff-match-patch@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/diff-match-patch/-/diff-match-patch-1.0.5.tgz#abb584d5f10cd1196dfc55aa03701592ae3f7b37"
+  integrity sha512-IayShXAgj/QMXgB0IWmKx+rOPuGMhqm5w6jvFxmVenXKIzRqTAAsbBPT3kWQeGANj3jGgvcvv4yK6SxqYmikgw==
 
 diff@^5.0.0:
   version "5.1.0"
@@ -13762,6 +13775,13 @@ vary@^1:
   version "1.1.2"
   resolved "https://registry.npmjs.org/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
+
+vditor@^3.10.8:
+  version "3.10.8"
+  resolved "https://registry.yarnpkg.com/vditor/-/vditor-3.10.8.tgz#b7fa16c20bdc79f712786d7a200bcea006c6d192"
+  integrity sha512-u9npjvMuGJVk0QGbpqiGAmvgiR4QvMVpNQYrvFYZ/yWDtTFLZrHmLxuUbtswotR6KY10u5kVuaoSEoBGGWQGjQ==
+  dependencies:
+    diff-match-patch "^1.0.5"
 
 vfile-location@^4.0.0:
   version "4.1.0"

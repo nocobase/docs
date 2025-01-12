@@ -1,51 +1,51 @@
 # AuthManager
 
-## 概览
+## 概要
 
-`AuthManager` 是 NocoBase 中的用户认证管理模块，用于注册不同的用户认证类型。
+`AuthManager` は NocoBase のユーザー認証管理モジュールであり、異なるユーザー認証タイプを登録するために使用されます。
 
-### 基本使用
+### 基本的な使用法
 
 ```ts
 const authManager = new AuthManager({
-  // 用于从请求头中获取当前认证器标识
+  // リクエストヘッダーから現在の認証器識別子を取得するために使用
   authKey: 'X-Authenticator',
 });
 
-// 设置 AuthManager 的存储和获取认证器的方法
+// AuthManager の認証器の保存および取得方法を設定
 authManager.setStorer({
   get: async (name: string) => {
     return db.getRepository('authenticators').find({ filter: { name } });
   },
 });
 
-// 注册一种认证类型
+// 認証タイプを登録
 authManager.registerTypes('basic', {
   auth: BasicAuth,
-  title: 'Password',
+  title: 'パスワード',
 });
 
-// 使用鉴权中间件
+// 認証ミドルウェアを使用
 app.resourceManager.use(authManager.middleware());
 ```
 
-### 概念解释
+### 概念の説明
 
-- **认证类型 (`AuthType`)**: 不同的用户认证方式，比如：密码、短信、OIDC, SAML 等。
-- **认证器 (`Authenticator`)**: 认证方式实体，实际存储到数据表中，对应某种认证类型 (`AuthType`) 的配置记录。一种认证方式可以有多个认证器，对应多个配置，提供不同的用户认证方法。
-- **认证器标识 (`Authenticator name`)**: 认证器的唯一标识，用来确定当前请求使用的认证方式。
+- **認証タイプ (`AuthType`)**: 異なるユーザー認証方法、例えば：パスワード、SMS、OIDC, SAML など。
+- **認証器 (`Authenticator`)**: 認証方法の実体で、実際にデータシートに保存され、特定の認証タイプ (`AuthType`) の設定レコードに対応します。一つの認証方法は複数の認証器を持つことができ、複数の設定に対応し、異なるユーザー認証方法を提供します。
+- **認証器識別子 (`Authenticator name`)**: 認証器の一意の識別子で、現在のリクエストで使用される認証方法を決定するために使用されます。
 
-## 类方法
+## クラスメソッド
 
 ### `constructor()`
 
-构造函数，创建一个 `AuthManager` 实例。
+コンストラクタ、`AuthManager` インスタンスを作成します。
 
-#### 签名
+#### シグネチャ
 
 - `constructor(options: AuthManagerOptions)`
 
-#### 类型
+#### タイプ
 
 ```ts
 export interface JwtOptions {
@@ -60,32 +60,32 @@ export type AuthManagerOptions = {
 };
 ```
 
-#### 详细信息
+#### 詳細
 
 ##### AuthManagerOptions
 
-| 属性      | 类型                        | 描述                                  | 默认值            |
-| --------- | --------------------------- | ------------------------------------- | ----------------- |
-| `authKey` | `string`                    | 可选，请求头中保存当前认证器标识的key | `X-Authenticator` |
-| `default` | `string`                    | 可选, 默认认证器标识                  | `basic`           |
-| `jwt`     | [`JwtOptions`](#jwtoptions) | 可选，如果采用 JWT 做鉴权，可以配置   | -                 |
+| プロパティ  | タイプ                      | 説明                                  | デフォルト値      |
+| ----------- | --------------------------- | ------------------------------------- | ----------------- |
+| `authKey`   | `string`                    | オプション、リクエストヘッダーに保存される現在の認証器識別子のキー | `X-Authenticator` |
+| `default`   | `string`                    | オプション、デフォルトの認証器識別子  | `basic`           |
+| `jwt`       | [`JwtOptions`](#jwtoptions) | オプション、JWT を使用して認証する場合に設定可能 | -                 |
 
 ##### JwtOptions
 
-| 属性        | 类型     | 描述               | 默认值            |
-| ----------- | -------- | ------------------ | ----------------- |
-| `secret`    | `string` | token 密钥         | `X-Authenticator` |
-| `expiresIn` | `string` | 可选, token 有效期 | `7d`              |
+| プロパティ    | タイプ     | 説明               | デフォルト値      |
+| ------------- | ---------- | ------------------ | ----------------- |
+| `secret`      | `string`   | token の秘密鍵     | `X-Authenticator` |
+| `expiresIn`   | `string`   | オプション、token の有効期限 | `7d`              |
 
 ### `setStorer()`
 
-设置认证器数据的存储和获取方法。
+認証器データの保存および取得方法を設定します。
 
-#### 签名
+#### シグネチャ
 
 - `setStorer(storer: Storer)`
 
-#### 类型
+#### タイプ
 
 ```ts
 export interface Authenticator = {
@@ -99,77 +99,77 @@ export interface Storer {
 }
 ```
 
-#### 详细信息
+#### 詳細
 
 ##### Authenticator
 
-| 属性       | 类型                  | 描述           |
-| ---------- | --------------------- | -------------- |
-| `authType` | `string`              | 认证类型       |
-| `options`  | `Record<string, any>` | 认证器相关配置 |
+| プロパティ    | タイプ                  | 説明           |
+| ------------- | ----------------------- | -------------- |
+| `authType`    | `string`                | 認証タイプ     |
+| `options`     | `Record<string, any>`   | 認証器関連の設定 |
 
 ##### Storer
 
-`Storer` 是认证器存储的接口，包含一个方法。
+`Storer` は認証器ストレージのインターフェースで、一つのメソッドを含みます。
 
-- `get(name: string): Promise<Authenticator>` - 通过认证器标识获取认证器。在 NocoBase 中实际返回的类型是 [AuthModel](../../handbook/auth/dev/api#authmodel).
+- `get(name: string): Promise<Authenticator>` - 認証器識別子を通じて認証器を取得します。NocoBase で実際に返されるタイプは [AuthModel](../../handbook/auth/dev/api#authmodel) です。
 
 ### `registerTypes()`
 
-注册认证类型。
+認証タイプを登録します。
 
-#### 签名
+#### シグネチャ
 
 - `registerTypes(authType: string, authConfig: AuthConfig)`
 
-#### 类型
+#### タイプ
 
 ```ts
 export type AuthExtend<T extends Auth> = new (config: Config) => T;
 
 type AuthConfig = {
-  auth: AuthExtend<Auth>; // The authentication class.
-  title?: string; // The display name of the authentication type.
+  auth: AuthExtend<Auth>; // 認証クラス。
+  title?: string; // 認証タイプの表示名。
 };
 ```
 
-#### 详细信息
+#### 詳細
 
-| 属性    | 类型               | 描述                                 |
-| ------- | ------------------ | ------------------------------------ |
-| `auth`  | `AuthExtend<Auth>` | 认证类型实现, 参考 [Auth](./auth.md) |
-| `title` | `string`           | 可选。该认证类型在前端展示的标题     |
+| プロパティ  | タイプ               | 説明                                 |
+| ----------- | -------------------- | ------------------------------------ |
+| `auth`      | `AuthExtend<Auth>`   | 認証タイプの実装、[Auth](./auth.md) を参照 |
+| `title`     | `string`             | オプション。この認証タイプのフロントエンド表示タイトル |
 
 ### `listTypes()`
 
-获取已注册的认证类型列表。
+登録済みの認証タイプリストを取得します。
 
-#### 签名
+#### シグネチャ
 
 - `listTypes(): { name: string; title: string }[]`
 
-#### 详细信息
+#### 詳細
 
-| 属性    | 类型     | 描述         |
-| ------- | -------- | ------------ |
-| `name`  | `string` | 认证类型标识 |
-| `title` | `string` | 认证类型标题 |
+| プロパティ  | タイプ     | 説明         |
+| ----------- | ---------- | ------------ |
+| `name`      | `string`   | 認証タイプ識別子 |
+| `title`     | `string`   | 認証タイプのタイトル |
 
 ### `get()`
 
-获取认证器。
+認証器を取得します。
 
-#### 签名
+#### シグネチャ
 
 - `get(name: string, ctx: Context)`
 
-#### 详细信息
+#### 詳細
 
-| 属性   | 类型      | 描述       |
-| ------ | --------- | ---------- |
-| `name` | `string`  | 认证器标识 |
-| `ctx`  | `Context` | 请求上下文 |
+| プロパティ  | タイプ      | 説明       |
+| ----------- | ----------- | ---------- |
+| `name`      | `string`    | 認証器識別子 |
+| `ctx`       | `Context`   | リクエストコンテキスト |
 
 ### `middleware()`
 
-鉴权中间件。获取当前认证器，进行用户认证。
+認証ミドルウェア。現在の認証器を取得し、ユーザー認証を行います。

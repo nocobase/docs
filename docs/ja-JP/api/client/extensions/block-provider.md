@@ -1,12 +1,12 @@
 # BlockProvider
 
-## 内核方法
+## カーネルメソッド
 
 ### `<BlockProvider />`
 
 ### `useBlockRequestContext()`
 
-## 内置 BlockProvider 组件
+## 組み込みBlockProviderコンポーネント
 
 ### `<CalendarBlockProvider />`
 

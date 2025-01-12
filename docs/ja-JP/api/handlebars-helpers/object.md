@@ -1,21 +1,21 @@
-# Object
+# オブジェクト
 
 ## {{extend}}
 
-Extend the context with the properties of other objects.
-A shallow merge is performed to avoid mutating the context.
+他のオブジェクトのプロパティでコンテキストを拡張します。
+コンテキストの変更を避けるために、浅いマージが実行されます。
 
-**Params**
+**パラメータ**
 
-* `objects` **{Object}**: One or more objects to extend.
+* `objects` **{Object}**: 拡張する1つ以上のオブジェクト。
 * `returns` **{Object}**
 
 ## {{forIn}}
 
-Block helper that iterates over the properties of
-an object, exposing each key and value on the context.
+オブジェクトのプロパティを反復処理するブロックヘルパーで、
+各キーと値をコンテキストに公開します。
 
-**Params**
+**パラメータ**
 
 * `context` **{Object}**
 * `options` **{Object}**
@@ -23,61 +23,59 @@ an object, exposing each key and value on the context.
 
 ## {{forOwn}}
 
-Block helper that iterates over the **own** properties of
-an object, exposing each key and value on the context.
+オブジェクトの**独自**プロパティを反復処理するブロックヘルパーで、
+各キーと値をコンテキストに公開します。
 
-**Params**
+**パラメータ**
 
-* `obj` **{Object}**: The object to iterate over.
+* `obj` **{Object}**: 反復処理するオブジェクト。
 * `options` **{Object}**
 * `returns` **{String}**
 
 ## {{toPath}}
 
-Take arguments and, if they are string or number, convert them to a dot-delineated object property path.
+引数を受け取り、それらが文字列または数値の場合、ドット区切りのオブジェクトプロパティパスに変換します。
 
-**Params**
+**パラメータ**
 
-* `prop` **{String|Number}**: The property segments to assemble (can be multiple).
+* `prop` **{String|Number}**: 組み立てるプロパティセグメント（複数可）。
 * `returns` **{String}**
 
 ## {{get}}
 
-Use property paths (`a.b.c`) to get a value or nested value from
-the context. Works as a regular helper or block helper.
+プロパティパス（`a.b.c`）を使用して、コンテキストから値またはネストされた値を取得します。
+通常のヘルパーまたはブロックヘルパーとして機能します。
 
-**Params**
+**パラメータ**
 
-* `prop` **{String}**: The property to get, optionally using dot notation for nested properties.
-* `context` **{Object}**: The context object
-* `options` **{Object}**: The handlebars options object, if used as a block helper.
+* `prop` **{String}**: 取得するプロパティ。ネストされたプロパティの場合はドット記法を使用できます。
+* `context` **{Object}**: コンテキストオブジェクト
+* `options` **{Object}**: ブロックヘルパーとして使用する場合のHandlebarsオプションオブジェクト。
 * `returns` **{String}**
 
 ## {{getObject}}
 
-Use property paths (`a.b.c`) to get an object from
-the context. Differs from the `get` helper in that this
-helper will return the actual object, including the
-given property key. Also, this helper does not work as a
-block helper.
+プロパティパス（`a.b.c`）を使用して、コンテキストからオブジェクトを取得します。
+`get`ヘルパーとは異なり、このヘルパーは実際のオブジェクトを返し、
+指定されたプロパティキーを含みます。また、このヘルパーはブロックヘルパーとして機能しません。
 
-**Params**
+**パラメータ**
 
-* `prop` **{String}**: The property to get, optionally using dot notation for nested properties.
-* `context` **{Object}**: The context object
+* `prop` **{String}**: 取得するプロパティ。ネストされたプロパティの場合はドット記法を使用できます。
+* `context` **{Object}**: コンテキストオブジェクト
 * `returns` **{String}**
 
 ## {{hasOwn}}
 
-Return true if `key` is an own, enumerable property of the given `context` object.
+`key`が指定された`context`オブジェクトの独自の列挙可能なプロパティである場合、trueを返します。
 
-**Params**
+**パラメータ**
 
 * `key` **{String}**
-* `context` **{Object}**: The context object.
+* `context` **{Object}**: コンテキストオブジェクト。
 * `returns` **{Boolean}**
 
-**Example**
+**例**
 
 ```handlebars
 {{hasOwn context key}}
@@ -85,14 +83,14 @@ Return true if `key` is an own, enumerable property of the given `context` objec
 
 ## {{isObject}}
 
-Return true if `value` is an object.
+`value`がオブジェクトである場合、trueを返します。
 
-**Params**
+**パラメータ**
 
 * `value` **{String}**
 * `returns` **{Boolean}**
 
-**Example**
+**例**
 
 ```handlebars
 {{isObject "foo"}}
@@ -101,55 +99,54 @@ Return true if `value` is an object.
 
 ## {{JSONparse}}
 
-Parses the given string using `JSON.parse`.
+`JSON.parse`を使用して、指定された文字列を解析します。
 
-**Params**
+**パラメータ**
 
-* `string` **{String}**: The string to parse
+* `string` **{String}**: 解析する文字列
 
-**Example**
+**例**
 
 ```handlebars
 <!-- string: '{"foo": "bar"}' -->
 {{JSONparse string}}
-<!-- results in: { foo: 'bar' } -->
+<!-- 結果: { foo: 'bar' } -->
 ```
 
 ## {{JSONstringify}}
 
-Stringify an object using `JSON.stringify`.
+`JSON.stringify`を使用してオブジェクトを文字列化します。
 
-**Params**
+**パラメータ**
 
-* `obj` **{Object}**: Object to stringify
+* `obj` **{Object}**: 文字列化するオブジェクト
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 <!-- object: { foo: 'bar' } -->
 {{JSONstringify object}}
-<!-- results in: '{"foo": "bar"}' -->
+<!-- 結果: '{"foo": "bar"}' -->
 ```
 
 ## {{merge}}
 
-Deeply merge the properties of the given `objects` with the
-context object.
+指定された`objects`のプロパティをコンテキストオブジェクトと深くマージします。
 
-**Params**
+**パラメータ**
 
-* `object` **{Object}**: The target object. Pass an empty object to shallow clone.
+* `object` **{Object}**: ターゲットオブジェクト。浅いクローンを作成する場合は空のオブジェクトを渡します。
 * `objects` **{Object}**
 * `returns` **{Object}**
 
 ## {{pick}}
 
-Pick properties from the context object.
+コンテキストオブジェクトからプロパティを選択します。
 
-**Params**
+**パラメータ**
 
-* `properties` **{Array|String}**: One or more properties to pick.
+* `properties` **{Array|String}**: 選択する1つ以上のプロパティ。
 * `context` **{Object}**
-* `options` **{Object}**: Handlebars options object.
-* `returns` **{Object}**: Returns an object with the picked values. If used as a block helper, the values are passed as context to the inner block. If no values are found, the context is passed to the inverse block.
+* `options` **{Object}**: Handlebarsオプションオブジェクト。
+* `returns` **{Object}**: 選択された値を持つオブジェクトを返します。ブロックヘルパーとして使用する場合、値は内部ブロックにコンテキストとして渡されます。値が見つからない場合、コンテキストは逆ブロックに渡されます。

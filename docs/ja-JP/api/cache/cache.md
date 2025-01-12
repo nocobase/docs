@@ -1,8 +1,8 @@
-# Cache
+# キャッシュ
 
-## 基本方法
+## 基本メソッド
 
-可参考 <a href="https://github.com/node-cache-manager/node-cache-manager" target="_blank">node-cache-manager</a> 文档。
+<a href="https://github.com/node-cache-manager/node-cache-manager" target="_blank">node-cache-manager</a> のドキュメントを参照してください。
 
 - `get()`
 - `set()`
@@ -15,20 +15,20 @@
 - `keys()`
 - `ttl()`
 
-## 其他方法
+## その他のメソッド
 
 ### `wrapWithCondition()`
 
-功能和 wrap() 类似，但是可以通过条件决定要不要使用缓存。
+`wrap()` と同様の機能ですが、条件に基づいてキャッシュを使用するかどうかを決定できます。
 
 ```ts
 async wrapWithCondition<T>(
   key: string,
   fn: () => T | Promise<T>,
   options?: {
-    // 外部参数控制是否使用缓存结果
+    // 外部パラメータでキャッシュ結果を使用するかどうかを制御
     useCache?: boolean;
-    // 通过数据结果决定是否缓存
+    // データ結果に基づいてキャッシュするかどうかを決定
     isCacheable?: (val: unknown) => boolean | Promise<boolean>;
     ttl?: Milliseconds;
   },
@@ -37,7 +37,7 @@ async wrapWithCondition<T>(
 
 ### `setValueInObject()`
 
-当缓存内容是对象时，改变某个key的value.
+キャッシュ内容がオブジェクトの場合、特定のキーの値を変更します。
 
 ```ts
 async setValueInObject(key: string, objectKey: string, value: unknown)
@@ -45,7 +45,7 @@ async setValueInObject(key: string, objectKey: string, value: unknown)
 
 ### `getValueInObject()`
 
-当缓存内容是对象时，获取某个key的value.
+キャッシュ内容がオブジェクトの場合、特定のキーの値を取得します。
 
 ```ts
 async getValueInObject(key: string, objectKey: string)
@@ -53,7 +53,7 @@ async getValueInObject(key: string, objectKey: string)
 
 ### `delValueInObject()`
 
-当缓存内容是对象时，删除某个key.
+キャッシュ内容がオブジェクトの場合、特定のキーを削除します。
 
 ```ts
 async delValueInObject(key: string, objectKey: string)

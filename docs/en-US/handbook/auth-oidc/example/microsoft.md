@@ -1,40 +1,41 @@
-# MicroSoft Entra ID
+# Microsoft Entra ID
 
 > https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app  
 > https://learn.microsoft.com/en-us/entra/identity-platform/v2-protocols-oidc
 
-## 在 NocoBase 上新增认证器
+## Adding an Authenticator in NocoBase
 
-首先在 NocoBase 上新增一个认证器：插件设置 - 用户认证 - 添加 - OIDC.
+First, add a new authenticator to NocoBase: Plug-in Settings - User authentication - Add - OIDC.
 
-复制回调 URL.
+Copy the callback URL.
 
 ![](https://static-docs.nocobase.com/202412021504114.png)
 
-## 注册应用程序
+## Register the app
 
-打开 MicroSoft Entra 管理中心，注册一个新的应用程序。
+Open the Microsoft Entra administration Center and register a new application.
 
-![](https://static-docs.nocobase.com/202412021506837.png)
+! [](https://static-docs.nocobase.com/202412021506837.png)
 
-此处填入刚才复制的回调 URL.
+Fill in the callback URL you just copied here.
 
-![](https://static-docs.nocobase.com/202412021506380.png)
+! [](https://static-docs.nocobase.com/202412021520696.png)
 
-## 获取并填写相应的信息
+## Obtain and fill in the appropriate information
 
-点击进入刚才注册的应用程序，在首页复制 **Application (client) ID** 和 **Directory (tenant) ID**.
+Click on the Application you just registered and copy the **Application (client) ID** and **Directory (tenant) ID** on the home page.
 
-![](https://static-docs.nocobase.com/202412021509602.png)
+! [](https://static-docs.nocobase.com/202412021522063.png)
 
-点击 Certificates & secrets, 创建一个新的客户端密钥 (Client secrets)，并复制 **Value**.
+Click Certificates & secrets to create a new Client secret and copy the **Value**.
 
-![](https://static-docs.nocobase.com/202412021512616.png)
+! [](https://static-docs.nocobase.com/202412021522846.png)
 
-以上信息和 NocoBase 认证器配置的对应关系如下：
+The mapping between the preceding information and the NocoBase authenticator configuration is as follows:
 
-| MicroSoft Entra 信息    | NocoBase 认证器配置                                                                                                                              |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Application (client) ID | Client ID                                                                                                                                        |
-| Client secrets - Value  | Client secret                                                                                                                                    |
-| Directory (tenant) ID   | Issuer:<br />https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration, `{tenant}` 需要替换成相应的 Directory (tenant) ID |
+| Microsoft Entra Information   | NocoBase Authenticator Field                                                                                                               |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| Application (client) ID       | Client ID                                                                                                                                  |
+| Client Secrets - Value        | Client Secret                                                                                                                             |
+| Directory (tenant) ID         | Issuer:<br />https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration, replace `{tenant}` with the Directory(tenant)  ID    |
+
