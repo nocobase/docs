@@ -1,20 +1,20 @@
-# Logging
+# Journalisation
 
 ## Introduction
 
-Logs are an important tool for us to locate system issues. NocoBase's server logs mainly include interface request logs and system operation logs, supporting configuration of log level, rolling strategy, size, printing format, and more. This document mainly introduces the related content of NocoBase server logs, as well as how to use the logging plugin to package and download server logs.
+Les journaux sont un outil important pour nous aider à localiser les problèmes du système. Les journaux du serveur NocoBase incluent principalement les journaux de requêtes d'interface et les journaux d'opérations système, et prennent en charge la configuration du niveau de journalisation, de la stratégie de rotation, de la taille, du format d'impression, etc. Ce document présente principalement les éléments relatifs aux journaux du serveur NocoBase, ainsi que la façon d'utiliser le plugin de journalisation pour empaqueter et télécharger les journaux du serveur.
 
-## Log Configuration
+## Configuration des journaux
 
-Log-related parameters such as log level, output method, and printing format can be configured through [environment variables](../../welcome/getting-started/env.md#logger_transport).
+Les paramètres liés aux journaux tels que le niveau de journalisation, la méthode de sortie et le format d'impression peuvent être configurés via les [variables d'environnement](../../welcome/getting-started/env.md#logger_transport).
 
-## Log Formats
+## Formats de journaux
 
-NocoBase supports configuring four different log formats.
+NocoBase prend en charge la configuration de quatre formats de journaux différents.
 
 ### `console`
 
-The default format in development environment, messages are highlighted in color.
+Le format par défaut dans l'environnement de développement, les messages sont mis en évidence par des couleurs.
 
 ```
 2023-12-30 22:40:06 [info ] response                                     method=GET path=/api/uiSchemas:getJsonSchema/nocobase-admin-menu res={"status":200} action={"actionName":"getJsonSchema","resourceName":"uiSchemas","params":{"filterByTk":"nocobase-admin-menu","resourceName":"uiSchemas","resourceIndex":"nocobase-admin-menu","actionName":"getJsonSchema"}} userId=1 status=200 cost=5 app=main reqId=ccf4e3bd-beb0-4350-af6e-b1fc1d9b6c3f
@@ -24,7 +24,7 @@ The default format in development environment, messages are highlighted in color
 
 ### `json`
 
-The default format in production environment.
+Le format par défaut dans l'environnement de production.
 
 ```json
 {
@@ -47,7 +47,7 @@ The default format in production environment.
 
 ### `logfmt`
 
-Check out https://brandur.org/logfmt for more information.
+Consultez https://brandur.org/logfmt pour plus d'informations.
 
 ```
 level=info timestamp=2023-12-21 14:18:02 reqId=8b59a40d-68ee-4c97-8001-71a47a92805a
@@ -58,91 +58,91 @@ userId=undefined status=200 cost=14
 
 ### `delimiter`
 
-Separated by delimiter `|`.
+Séparé par le délimiteur `|`.
 
 ```
 info|2023-12-26 22:07:09|13cd16f0-1568-418d-ac37-6771ee650e14|response|POST|/api/authenticators:publicList|{"status":200}|{"actionName":"publicList","resourceName":"authenticators","params":{"resourceName":"authenticators","actionName":"publicList"}}||200|25
 ```
 
-## Log Directory
+## Répertoire des journaux
 
-The main directory structure of NocoBase log files is:
+La structure principale du répertoire des fichiers de journaux de NocoBase est :
 
-- `storage/logs` - Log output directory
-  - `main` - Main application name
-    - `request_YYYY-MM-DD.log` - Request log
-    - `system_YYYY-MM-DD.log` - System log
-    - `system_error_YYYY-MM-DD.log` - System error log
-    - `sql_YYYY-MM-DD.log` - SQL execution log
+- `storage/logs` - Répertoire de sortie des journaux
+  - `main` - Nom de l'application principale
+    - `request_YYYY-MM-DD.log` - Journal des requêtes
+    - `system_YYYY-MM-DD.log` - Journal système
+    - `system_error_YYYY-MM-DD.log` - Journal des erreurs système
+    - `sql_YYYY-MM-DD.log` - Journal d'exécution SQL
     - ...
-  - `sub-app` - Sub-application name
+  - `sub-app` - Nom de l'application secondaire
     - `request_YYYY-MM-DD.log`
     - ...
 
-## Log Files
+## Fichiers de journaux
 
-### Request Log
+### Journal des requêtes
 
-`request_YYYY-MM-DD.log`, interface request and response logs.
+`request_YYYY-MM-DD.log`, journaux des requêtes et réponses d'interface.
 
-| Field         | Description                          |
+| Champ         | Description                          |
 | ------------- | ------------------------------------ |
-| `level`       | Log level                            |
-| `timestamp`   | Log print time `YYYY-MM-DD hh:mm:ss` |
-| `message`     | `request` or `response`              |
-| `userId`      | Only in `response`                   |
-| `method`      | Request method                       |
-| `path`        | Request path                         |
-| `req` / `res` | Request/Response content             |
-| `action`      | Requested resources and parameters   |
-| `status`      | Response status code                 |
-| `cost`        | Request time                         |
-| `app`         | Current application name             |
-| `reqId`       | Request ID                           |
+| `level`       | Niveau du journal                    |
+| `timestamp`   | Heure d'impression du journal `YYYY-MM-DD hh:mm:ss` |
+| `message`     | `request` ou `response`              |
+| `userId`      | Seulement dans `response`           |
+| `method`      | Méthode de la requête               |
+| `path`        | Chemin de la requête                 |
+| `req` / `res` | Contenu de la requête/réponse       |
+| `action`      | Ressources et paramètres demandés    |
+| `status`      | Code de statut de la réponse        |
+| `cost`        | Temps de la requête                 |
+| `app`         | Nom de l'application en cours       |
+| `reqId`       | ID de la requête                    |
 
 :::info{title=Note}
-`reqId` will be carried to the front end via the `X-Request-Id` response header.
+Le `reqId` sera transmis au front-end via l'en-tête de réponse `X-Request-Id`.
 :::
 
-### System Log
+### Journal système
 
-`system_YYYY-MM-DD.log`, application, middleware, plugins, and other system operation logs, `error` level logs will be printed separately to `system_error_YYYY-MM-DD.log`.
+`system_YYYY-MM-DD.log`, journaux des opérations système, y compris des applications, des middleware, des plugins et d'autres logs d'opérations système. Les logs de niveau `error` seront imprimés séparément dans `system_error_YYYY-MM-DD.log`.
 
-| Field       | Description                            |
+| Champ       | Description                            |
 | ----------- | -------------------------------------- |
-| `level`     | Log level                              |
-| `timestamp` | Log print time `YYYY-MM-DD hh:mm:ss`   |
-| `message`   | Log message                            |
+| `level`     | Niveau du journal                      |
+| `timestamp` | Heure d'impression du journal `YYYY-MM-DD hh:mm:ss` |
+| `message`   | Message du journal                     |
 | `module`    | Module                                 |
-| `submodule` | Submodule                              |
-| `method`    | Called method                          |
-| `meta`      | Other related information, JSON format |
-| `app`       | Current application name               |
-| `reqId`     | Request ID                             |
+| `submodule` | Sous-module                            |
+| `method`    | Méthode appelée                        |
+| `meta`      | Autres informations liées, format JSON |
+| `app`       | Nom de l'application en cours         |
+| `reqId`     | ID de la requête                       |
 
-### SQL Execution Log
+### Journal d'exécution SQL
 
-`sql_YYYY-MM-DD.log`, database SQL execution logs. `INSERT INTO` statements are limited to the first 2000 characters.
+`sql_YYYY-MM-DD.log`, journaux d'exécution des requêtes SQL. Les instructions `INSERT INTO` sont limitées aux 2000 premiers caractères.
 
-| Field       | Description                          |
+| Champ       | Description                          |
 | ----------- | ------------------------------------ |
-| `level`     | Log level                            |
-| `timestamp` | Log print time `YYYY-MM-DD hh:mm:ss` |
-| `sql`       | SQL statement                        |
-| `app`       | Current application name             |
-| `reqId`     | Request ID                           |
+| `level`     | Niveau du journal                    |
+| `timestamp` | Heure d'impression du journal `YYYY-MM-DD hh:mm:ss` |
+| `sql`       | Instruction SQL                      |
+| `app`       | Nom de l'application en cours       |
+| `reqId`     | ID de la requête                    |
 
-## Log Packaging and Downloading
+## Emballage et téléchargement des journaux
 
 <PluginInfo name="logger"></PluginInfo>
 
-1. Navigate to the log management page.
-2. Select the log files you wish to download.
-3. Click the download button.
+1. Accédez à la page de gestion des journaux.
+2. Sélectionnez les fichiers journaux que vous souhaitez télécharger.
+3. Cliquez sur le bouton de téléchargement.
 
 ![2024-04-10_10-50-50](https://static-docs.nocobase.com/2024-04-10_10-50-50.png)
 
-## Related Documents
+## Documents associés
 
-- [Plugin Development - Server - Logging](../../development/server/logger)
-- [API Reference - @nocobase/logger](../../api/logger)
+- [Développement de plugins - Serveur - Journalisation](../../development/server/logger)
+- [Référence API - @nocobase/logger](../../api/logger)
