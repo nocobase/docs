@@ -1,16 +1,16 @@
-# Departments
+# Départements
 
 <PluginInfo commercial="true" name="departments"></PluginInfo>
 
 ## Introduction
 
-The departments plugin supports organizing users in the form of departments in NocoBase, setting up superior-subordinate relationships. You can control a group of users' permissions by binding roles to departments. It supports using department information as variables for workflows and expressions and other places that support setting variables.
+Le plugin départements permet d'organiser les utilisateurs sous forme de départements dans NocoBase, en établissant des relations hiérarchiques de supérieurs et subordonnés. Vous pouvez contrôler les permissions d'un groupe d'utilisateurs en associant des rôles aux départements. Il prend en charge l'utilisation des informations de départements comme variables pour les flux de travail, les expressions et autres endroits où il est possible de définir des variables.
 
 ![](https://static-docs.nocobase.com/a6eb94a5cc85a6c7b310f33173a5259d.png)
 
 ## Installation
 
-This plugin is a commercial plugin, which needs to be uploaded and activated through the plugin manager.
+Ce plugin est un plugin commercial, qui doit être téléchargé et activé via le gestionnaire de plugins.
 
 ![](https://static-docs.nocobase.com/907d85bc27f90eaa91b17d568f6dbbd7.png)
 

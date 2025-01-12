@@ -1,89 +1,89 @@
-# User Manual
+# Manuel utilisateur
 
-## Department Management
+## Gestion des départements
 
 ![](https://static-docs.nocobase.com/a6eb94a5cc85a6c7b310f33173a5259d.png)
 
-### Create a New Department
+### Créer un nouveau département
 
 ![](https://static-docs.nocobase.com/4857910991ae374b63251cee99511e93.png)
 
 ![](https://static-docs.nocobase.com/0cd13d99dcd21ced0bb1683557f0b76b.png)
 
-### Create a Sub-Department
+### Créer un sous-département
 
 ![](https://static-docs.nocobase.com/0be8c7db8d12c23f6fe137e7ce23688a.png)
 
 ![](https://static-docs.nocobase.com/2db2fc2037ed383edd60117a46fc9dd0.png)
 
-### Edit Department
+### Modifier un département
 
 ![](https://static-docs.nocobase.com/a147319577e5cc36b5862c1e511f6722.png)
 
 ![](https://static-docs.nocobase.com/f206f866753cf30ac78aadf4f76bad32.png)
 
-### Change Superior Department
+### Changer le département supérieur
 
-Modify the superior department field in the department editing form. The current department and its sub-departments are not selectable.
+Modifiez le champ du département supérieur dans le formulaire de modification du département. Le département actuel et ses sous-départements ne sont pas sélectionnables.
 
 ![](https://static-docs.nocobase.com/9d80ddf42f32c77186566ed8ada70128.png)
 
-## Department Member Management
+## Gestion des membres du département
 
-### View Department Member List
+### Voir la liste des membres du département
 
 ![](https://static-docs.nocobase.com/2aaf4d9bf55da105b5fca4e9f7e23ca7.png)
 
-### Add Members to the Department
+### Ajouter des membres au département
 
-A user can join multiple departments at the same time. The first department they join is the default main department. A user only has one main department.
+Un utilisateur peut rejoindre plusieurs départements en même temps. Le premier département auquel il rejoint devient son département principal. Un utilisateur n'a qu'un seul département principal.
 
 ![](https://static-docs.nocobase.com/60afd282f33b555e6fe0662b9da544cc.png)
 
-Users who are already department members will not appear in the user selection list.
+Les utilisateurs déjà membres du département n'apparaîtront pas dans la liste de sélection des utilisateurs.
 
 ![](https://static-docs.nocobase.com/6bcd93173c169973f970de35d2657993.png)
 
-### Set Department Head
+### Définir le responsable du département
 
-Click on the owners field in the department editing form to select a department member as the owner. Multiple selections are supported. Members who are already department owner will not appear in the member selection list.
+Cliquez sur le champ des propriétaires dans le formulaire de modification du département pour sélectionner un membre du département comme propriétaire. Plusieurs sélections sont possibles. Les membres qui sont déjà propriétaires du département ne figureront pas dans la liste de sélection des membres.
 
 ![](https://static-docs.nocobase.com/92970546cbd0aeb5a8b6a36da87583bd.png)
 
-### Configure Departments for Users
+### Configurer les départements pour les utilisateurs
 
-In addition to adding members to the department, you can also configure departments for users from the user's perspective.
+En plus d'ajouter des membres au département, vous pouvez également configurer les départements pour les utilisateurs du point de vue de l'utilisateur.
 
 ![](https://static-docs.nocobase.com/ca82a802012572e225570e8be93a4094.png)
 
-Departments that have already been joined are not selectable.
+Les départements déjà rejoints ne sont pas sélectionnables.
 
 ![](https://static-docs.nocobase.com/70e16d17ee9c4b5d43f8a5e1c633b177.png)
 
-### Change Main Department
+### Changer le département principal
 
 ![](https://static-docs.nocobase.com/da92dd1e10268adcd35445e9f1dac771.png)
 
-## Department Role Management
+## Gestion des rôles des départements
 
-By associating one or more roles with a department, members of the current department can have these roles.
+En associant un ou plusieurs rôles à un département, les membres du département actuel peuvent avoir ces rôles.
 
-There are two ways to associate roles with a department.
+Il existe deux façons d'associer des rôles à un département.
 
-The first is to select a role in the role field of the department editing form.
+La première consiste à sélectionner un rôle dans le champ des rôles du formulaire de modification du département.
 
 ![](https://static-docs.nocobase.com/70f77bb89aa1fb415c152a51a51cc23b.png)
 
-The second is to add departments to the corresponding role in role management.
+La seconde consiste à ajouter des départements au rôle correspondant dans la gestion des rôles.
 
 ![](https://static-docs.nocobase.com/f2a7bec937cf2f179ce868a92b98416d.png)
 
-Departments that already have this role are not selectable.
+Les départements qui ont déjà ce rôle ne sont pas sélectionnables.
 
 ![](https://static-docs.nocobase.com/be10299893581e1f97a4e01ddd5c7e59.png)
 
-## Search for Users and Departments
+## Recherche des utilisateurs et des départements
 
-Search for users by nickname, username, phone, email, and search for departments by department name.
+Recherchez des utilisateurs par pseudonyme, nom d'utilisateur, téléphone, email, et recherchez des départements par nom de département.
 
 ![](https://static-docs.nocobase.com/2d71346a5400205b22436b4db331a9b8.png)
