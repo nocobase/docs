@@ -1,20 +1,20 @@
-# Required Fields
+# Champs obligatoires
 
 ## Introduction
 
-"Required" is a fundamental rule in form validation. You can enable it directly within the field settings or dynamically configure it through form linkage rules.
+"Obligatoire" est une règle fondamentale dans la validation des formulaires. Vous pouvez l'activer directement dans les paramètres du champ ou la configurer dynamiquement via des règles de liaison de formulaire.
 
-## Static Setting
+## Paramétrage statique
 
-You can directly designate a field as required, which is ideal for fields that must always be completed by users, such as username and password.
+Vous pouvez désigner directement un champ comme obligatoire, ce qui est idéal pour les champs qui doivent toujours être remplis par les utilisateurs, comme le nom d'utilisateur et le mot de passe.
 
 ![20240411114641](https://static-docs.nocobase.com/20240411114641.png)
 
-## Dynamic Setting (Conditional Required)
+## Paramétrage dynamique (obligatoire conditionnel)
 
-Required fields can be set conditionally using the form block's linkage rules.
+Les champs obligatoires peuvent être définis conditionnellement en utilisant les règles de liaison du bloc de formulaire.
 
-Example: The shipping date field becomes required when the order status is marked as "shipped."
+Exemple : Le champ de la date d'expédition devient obligatoire lorsque le statut de la commande est marqué comme "expédié".
 
 ![20240412110939](https://static-docs.nocobase.com/20240412110939.png)
 

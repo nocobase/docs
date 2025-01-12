@@ -1,88 +1,88 @@
-# Form Block
+# Bloc de Formulaire
 
 ## Introduction
 
-The form block is an essential block for building data input and editing interfaces. It is highly customizable and uses corresponding components based on the data model to display the required fields. Through linkage rules, the form block can dynamically display fields. Additionally, it can be combined with workflows to achieve automated process triggering and data processing, further enhancing work efficiency or implementing logical orchestration.
+Le bloc de formulaire est un bloc essentiel pour construire des interfaces d'entrée et d'édition de données. Il est hautement personnalisable et utilise les composants correspondants en fonction du modèle de données pour afficher les champs requis. Grâce aux règles de liaison, le bloc de formulaire peut afficher dynamiquement des champs. De plus, il peut être combiné avec des flux de travail pour déclencher des processus automatisés et traiter des données, ce qui améliore l'efficacité du travail ou met en œuvre une orchestration logique.
 
-## Adding Blocks
+## Ajouter des Blocs
 
 <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240416215917.mp4" type="video/mp4">
 </video>
 
-## Block Settings
+## Paramètres du Bloc
 
 ![20240416220148](https://static-docs.nocobase.com/20240416220148.png)
 
-### Linkage Rules
+### Règles de Liaison
 
-Control form field behavior through linkage rules.
+Contrôlez le comportement des champs du formulaire à l'aide des règles de liaison.
 
 ![20240416220254](https://static-docs.nocobase.com/20240416220254.png)
 
-For more information, refer to [Linkage Rules](/handbook/ui/blocks/block-settings/linkage-rule).
+Pour plus d'informations, consultez [Règles de Liaison](/handbook/ui/blocks/block-settings/linkage-rule).
 
-### Form Data Templates (Supports Form for Adding New Data Only)
+### Modèles de Données de Formulaire (Prend en charge uniquement les formulaires pour l'ajout de nouvelles données)
 
-The purpose of the form data templates is to simplify the data entry process and improve efficiency. By filtering out a single piece or a group of records as a template from the data range, the selected target data template will be populated as the default values in the form.
+Les modèles de données de formulaire simplifient le processus d'entrée de données et améliorent l'efficacité. En filtrant un ou plusieurs enregistrements comme modèle à partir de la plage de données, le modèle de données cible sélectionné sera peuplé en tant que valeurs par défaut dans le formulaire.
 
 ![20240408143719](https://static-docs.nocobase.com/20240408143719.png)
 
 ![20240424143911](https://static-docs.nocobase.com/20240424143911.png)
 
-1. Filter out a single piece or a group of records as template data.
-2. Select the title field to identify the template data.
-3. Check the template fields, and the selected fields will be automatically populated into the form.
+1. Filtrer un ou plusieurs enregistrements comme données de modèle.
+2. Sélectionner le champ titre pour identifier les données du modèle.
+3. Cocher les champs du modèle, et les champs sélectionnés seront automatiquement peuplés dans le formulaire.
 
-#### Synchronize From Form Fields
+#### Synchroniser à partir des Champs du Formulaire
 
-- Automatically parse the configured fields in the current form block as template fields.
-- If there are subsequent modifications to the form block fields (such as adjustments to association field components), you can reopen the template configuration and click the sync form button to ensure consistency between the form and the template.
+- Analyser automatiquement les champs configurés dans le bloc de formulaire actuel comme champs de modèle.
+- Si des modifications ultérieures sont apportées aux champs du bloc de formulaire (comme des ajustements des composants de champ d'association), vous pouvez rouvrir la configuration du modèle et cliquer sur le bouton de synchronisation pour garantir la cohérence entre le formulaire et le modèle.
 
-#### The following fields' data will be filtered out for the selected data template record:
-- Primary Key
-- Foreign Key
-- Fields disallowing duplicates
-- Sort fields
-- Sequence fields
-- Password
-- Created by
-- Created at
-- Last updated by
-- Last updated at
+#### Les champs de données suivants seront filtrés pour l'enregistrement de modèle de données sélectionné :
+- Clé primaire
+- Clé étrangère
+- Champs interdisant les doublons
+- Champs de tri
+- Champs de séquence
+- Mot de passe
+- Créé par
+- Créé à
+- Dernière mise à jour par
+- Dernière mise à jour à
 
-#### For Association Fields
-- Regular fields and hasOne and hasMany relationship fields are copied.
-- belongsTo and belongsToMany relationship fields are referenced, and references may become copies. For example, after changing from select to sub-form, the relationship changes from reference to copy (after becoming a copy, all fields are optional).
+#### Pour les Champs d'Association
+- Les champs réguliers et les champs de relation hasOne et hasMany sont copiés.
+- Les champs belongsTo et belongsToMany sont référencés, et les références peuvent devenir des copies. Par exemple, après un changement de sélection à un sous-formulaire, la relation change de référence à copie (après devenir une copie, tous les champs sont optionnels).
 
-#### Example Scenarios
+#### Scénarios d'Exemples
 
-Scenario Description: An e-commerce platform needs to frequently add new products, and these new products are similar or identical to existing products in many attributes.
+**Description du scénario :** Une plateforme de commerce électronique a besoin d'ajouter fréquemment de nouveaux produits, et ces nouveaux produits sont similaires ou identiques à de nombreux attributs de produits existants.
 
-Solution: Select an existing product as a template and use its attribute information as the form data template. When creating a new product, users can choose to apply this template, thus quickly copying the attribute information of the template product to the new product, improving the efficiency of entering new products.
+**Solution :** Sélectionner un produit existant comme modèle et utiliser ses informations d'attributs comme modèle de données de formulaire. Lors de la création d'un nouveau produit, les utilisateurs peuvent choisir d'appliquer ce modèle, ce qui permet de copier rapidement les informations d'attribut du produit modèle vers le nouveau produit, améliorant ainsi l'efficacité de l'entrée des nouveaux produits.
 
-- Create a product promotion template
+- Créer un modèle de promotion de produit
 
 ![20240408145855](https://static-docs.nocobase.com/20240408145855.png)
 
-- Create promotional products quickly
+- Créer rapidement des produits promotionnels
 
 <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240408150250.mp4" type="video/mp4">
 </video>
 
-- [Edit Block Title](/handbook/ui/blocks/block-settings/block-title)
-- [Save as Block Template](/handbook/ui/blocks/block-settings/block-template)
+- [Modifier le Titre du Bloc](/handbook/ui/blocks/block-settings/block-title)
+- [Enregistrer comme Modèle de Bloc](/handbook/ui/blocks/block-settings/block-template)
 
-## Configure Fields
+## Configurer les Champs
 
-### Fields in Current Collection
+### Champs dans la Collection Actuelle
 
 ![20240416230739](https://static-docs.nocobase.com/20240416230739.png)
 
-### Fields in Related Collections
+### Champs dans les Collections Associées
 
-Fields in related tables are read-only in the form and are typically used in conjunction with relationship fields to display multiple field values of related data.
+Les champs dans les tables associées sont en lecture seule dans le formulaire et sont généralement utilisés en conjonction avec les champs de relation pour afficher plusieurs valeurs de champs de données associées.
 
 ![20240416230811](https://static-docs.nocobase.com/20240416230811.png)
 
@@ -90,13 +90,13 @@ Fields in related tables are read-only in the form and are typically used in con
       <source src="https://static-docs.nocobase.com/20240416231152.mp4" type="video/mp4">
 </video>
 
-Form field configuration options can be found in [Form Fields](/handbook/ui/fields/generic/form-item).
+Les options de configuration des champs de formulaire sont disponibles dans [Champs de Formulaire](/handbook/ui/fields/generic/form-item).
 
-## Configure Actions
+## Configurer les Actions
 
 ![20240417115249](https://static-docs.nocobase.com/20240417115249.png)
 
-- [Submit](/handbook/ui/actions/types/submit)
-- [Save Data](/handbook/ui/actions/types/save-record)
-- [Custom Request](/handbook/action-custom-request)
-- [Trigger workflow](/handbook/workflow/manual/triggers/cutom-action-trigger)
+- [Soumettre](/handbook/ui/actions/types/submit)
+- [Sauvegarder les Données](/handbook/ui/actions/types/save-record)
+- [Demande Personnalisée](/handbook/action-custom-request)
+- [Déclencher un flux de travail](/handbook/workflow/manual/triggers/cutom-action-trigger)

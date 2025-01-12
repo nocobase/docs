@@ -1,4 +1,4 @@
-# Trigger Workflow
+# Workflow déclencheur
 
 <PluginInfo name="workflow-custom-action-trigger" link="/handbook/workflow-custom-action-trigger" commercial="true"></PluginInfo>
 

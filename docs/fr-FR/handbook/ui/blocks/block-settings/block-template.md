@@ -1,24 +1,24 @@
-# Save as template
+# Enregistrer comme modèle
 <PluginInfo name="ui-schema-storage"></PluginInfo>
 
 ## Introduction
 
-Saving a block as a template allows you to save both the block and its associated data tables. These templates can be centrally managed on the template management page. When adding a block, you can choose to reference or copy a template to quickly create a new block.
+Enregistrer un bloc comme modèle vous permet de sauvegarder à la fois le bloc et ses tables de données associées. Ces modèles peuvent être gérés de manière centralisée sur la page de gestion des modèles. Lors de l'ajout d'un bloc, vous pouvez choisir de référencer ou de copier un modèle pour créer rapidement un nouveau bloc.
 
-## User Guide
+## Guide de l'utilisateur
 
 ![20240407175846](https://static-docs.nocobase.com/20240407175846.png)
 
-You can customize the name of the block template.
+Vous pouvez personnaliser le nom du modèle de bloc.
 
 ![20240407153407](https://static-docs.nocobase.com/20240407153407.png)
 
-All block templates can be centrally managed on the block template management page.
+Tous les modèles de blocs peuvent être gérés de manière centralisée sur la page de gestion des modèles de blocs.
 
 ![20240407153550](https://static-docs.nocobase.com/20240407153550.png)
 
-When adding a block, you can either reference or copy a template to create the block quickly.
+Lors de l'ajout d'un bloc, vous pouvez soit référencer, soit copier un modèle pour créer rapidement le bloc.
 
 ![20240422095346](https://static-docs.nocobase.com/20240422095346.png)
 
-For more information about block templates, refer to [Block Templates](/handbook/ui/blocks/block-templates).
+Pour plus d'informations sur les modèles de blocs, consultez [Modèles de Blocs](/handbook/ui/blocks/block-templates).

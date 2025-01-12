@@ -1,40 +1,40 @@
-# Block Height
+# Hauteur du Bloc
 
 ## Introduction
 
-Block height settings in NocoBase accommodate three scenarios: default height, specified height, and full height. This feature is supported by most blocks, with the exception of Gantt chart blocks. For chart blocks, height is controlled through specific parameters.
+Les paramètres de hauteur des blocs dans NocoBase couvrent trois scénarios : hauteur par défaut, hauteur spécifiée et hauteur totale. Cette fonctionnalité est prise en charge par la plupart des blocs, à l'exception des blocs de diagramme de Gantt. Pour les blocs de diagrammes, la hauteur est contrôlée par des paramètres spécifiques.
 
 ![20240602194552](https://static-docs.nocobase.com/20240602194552.png)
 
 ![20240602194609](https://static-docs.nocobase.com/20240602194609.png)
 
-### Default Height
+### Hauteur Par Défaut
 
-Each block type handles default height uniquely. For instance, table and form blocks dynamically adjust their height to fit the content, while kanban blocks default to 70% of the viewport height.
+Chaque type de bloc gère la hauteur par défaut de manière unique. Par exemple, les blocs de table et de formulaire ajustent dynamiquement leur hauteur pour s'adapter au contenu, tandis que les blocs Kanban ont une hauteur par défaut de 70 % de la hauteur de la fenêtre.
 
-### Specified Height
+### Hauteur Spécifiée
 
-Users have the flexibility to define the overall height of a block's outer frame. The block's internal components then automatically calculate and distribute the available space.
+Les utilisateurs peuvent définir la hauteur totale du cadre extérieur d'un bloc. Les composants internes du bloc calculent et distribuent automatiquement l'espace disponible.
 
 ![20240604172359](https://static-docs.nocobase.com/20240604172359.gif)
 
-### Full Height
+### Hauteur Totale
 
-The full height mode, akin to specified height, automatically determines and allocates block height based on the window's visible area. This approach eliminates page-level scrollbars, confining them to the interior of individual blocks.
+Le mode de hauteur totale, semblable à la hauteur spécifiée, détermine et attribue automatiquement la hauteur du bloc en fonction de la zone visible de la fenêtre. Cette approche élimine les barres de défilement au niveau de la page, les confinant à l'intérieur des blocs individuels.
 
-Height handling varies subtly across different block types:
+La gestion de la hauteur varie légèrement selon les types de blocs :
 
-- Tables: Scrolling occurs within the tbody;
-- Forms/Details: The Grid area scrolls, excluding the operations section;
-- Lists/Grid Cards: The Grid area scrolls, excluding operations and pagination;
-- Kanban: Each column scrolls independently;
-- Maps and Calendars: Adapt to full height without scrollbars;
-- Iframes/Markdown: The block's outer frame height is fixed, with scrolling inside the block.
+- **Tables** : Le défilement se produit dans le `tbody` ;
+- **Formulaires/Détails** : La zone de grille défile, à l'exception de la section des opérations ;
+- **Listes/Cards en Grille** : La zone de grille défile, à l'exception des opérations et de la pagination ;
+- **Kanban** : Chaque colonne défile indépendamment ;
+- **Cartes et Calendriers** : S'adaptent à la hauteur totale sans barres de défilement ;
+- **Iframes/Markdown** : La hauteur du cadre extérieur du bloc est fixe, avec un défilement à l'intérieur du bloc.
 
-#### Full Height Table Example
+#### Exemple de Table en Hauteur Totale
 
 ![20240604172439](https://static-docs.nocobase.com/20240604172439.gif)
 
-#### Full Height Form Example
+#### Exemple de Formulaire en Hauteur Totale
 
 ![20240604222711](https://static-docs.nocobase.com/20240604222711.gif)

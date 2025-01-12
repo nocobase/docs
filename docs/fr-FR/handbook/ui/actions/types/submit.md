@@ -1,34 +1,34 @@
-# Submit
+# Soumettre
 
 ## Introduction
 
-The submission function is designed to save form data (unique to form blocks) and can be integrated with workflows to streamline data automation.
+La fonction de soumission est conçue pour enregistrer les données du formulaire (unique aux blocs de formulaire) et peut être intégrée avec des flux de travail pour simplifier l'automatisation des données.
 
 ![20240413093210](https://static-docs.nocobase.com/20240413093210.png)
 
-## Operation Configuration Items
+## Éléments de Configuration de l'Opération
 
 ![20240413095124](https://static-docs.nocobase.com/20240413095124.png)
 
-### Save Mode
+### Mode de Sauvegarde
 
-The submission operation for form blocks that only add new data supports configuring the save method.
+L'opération de soumission pour les blocs de formulaire qui ajoutent uniquement de nouvelles données prend en charge la configuration de la méthode de sauvegarde.
 
 ![20240413101209](https://static-docs.nocobase.com/20240413101209.png)
 
 ![20240413100531](https://static-docs.nocobase.com/20240413100531.png)
 
-1. Insert and create new records directly;
-2. Insert only if the record doesn't exist (requires fields to determine the record’s existence);
-3. Insert if the record doesn't exist, otherwise update (requires fields to check for existing records).
+1. Insérer et créer de nouveaux enregistrements directement ;
+2. Insérer uniquement si l'enregistrement n'existe pas (nécessite des champs pour déterminer l'existence de l'enregistrement) ;
+3. Insérer si l'enregistrement n'existe pas, sinon mettre à jour (nécessite des champs pour vérifier l'existence des enregistrements).
 
-### Bind Workflows
+### Associer des Flux de Travail
 
-The bound workflow will only be triggered once the data has been successfully submitted.
+Le flux de travail lié sera déclenché uniquement une fois les données soumises avec succès.
 
 ![20240417120149](https://static-docs.nocobase.com/20240417120149.png)
 
-For further details, see [Bind Workflows](/handbook/ui/actions/action-settings/bind-workflow).
+Pour plus de détails, consultez [Associer des Flux de Travail](/handbook/ui/actions/action-settings/bind-workflow).
 
-- [Edit Button](/handbook/ui/actions/action-settings/edit-button)
-- [Secondary Confirmation](/handbook/ui/actions/action-settings/double-check)
+- [Bouton de Modification](/handbook/ui/actions/action-settings/edit-button)
+- [Confirmation Secondaire](/handbook/ui/actions/action-settings/double-check)

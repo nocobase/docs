@@ -1,8 +1,10 @@
-# Edit tooltip
+# Modifier l'info-bulle
 
 ## Introduction
 
-When a user hovers over a field, a tooltip with additional information or guidance appears. This tooltip typically provides details such as the field's purpose, input format, and any restrictions, helping users to better understand and utilize the field.![20240412112137](https://static-docs.nocobase.com/20240412112137.png)
+Lorsqu'un utilisateur survole un champ, une info-bulle avec des informations supplémentaires ou des conseils apparaît. Cette info-bulle fournit généralement des détails tels que l'objectif du champ, le format de saisie et toutes les restrictions, aidant ainsi les utilisateurs à mieux comprendre et utiliser le champ.
+
+![20240412112137](https://static-docs.nocobase.com/20240412112137.png)
 
 ![20240412112218](https://static-docs.nocobase.com/20240412112218.png)
 

@@ -1,38 +1,38 @@
-# Collapse Filter Block
+# Bloc de Filtrage Collapsible
 
 ## Introduction
 
-The Collapse filtering block needs to be used in connection with the data block to provide filtering capabilities for the data block. It supports selecting association fields and option fields as filtering fields, and displays them in a collapsible panel effect.
+Le bloc de filtrage collapsible (rétractable) doit être utilisé en combinaison avec un bloc de données pour offrir des capacités de filtrage pour ce dernier. Il prend en charge la sélection de champs de relation et de champs d'option comme champs de filtrage, et les affiche dans un panneau repliable.
 
-## Adding Block
+## Ajouter un Bloc
 
 ![20240408212222](https://static-docs.nocobase.com/20240408212222.png)
 
-Example: Configure the order collapse block and order table block to achieve filter linkage.
+Exemple : Configurez le bloc de filtrage des commandes et le bloc de table des commandes pour réaliser une liaison de filtrage.
 
-  <video width="100%" height="440" controls>
+<video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240408212817.mp4" type="video/mp4">
-    </video>
+</video>
 
-## Block Settings
+## Paramètres du Bloc
 
 ![20240421173427](https://static-docs.nocobase.com/20240421173427.png)
 
-### Connecting Data Blocks
+### Connexion des Blocs de Données
 
-Example: Connect the same data table block in the pop-up window to achieve filter linkage.
+Exemple : Connectez le même bloc de table de données dans la fenêtre pop-up pour établir une liaison de filtrage.
 
-  <video width="100%" height="440" controls>
+<video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240408214743.mp4" type="video/mp4">
-    </video>
+</video>
 
-For more content, refer to [Connecting Data Blocks](/handbook/ui/blocks/block-settings/connect-block)
+Pour plus de contenu, consultez [Connecter les Blocs de Données](/handbook/ui/blocks/block-settings/connect-block).
 
-- [Edit Block Title](/handbook/ui/blocks/block-settings/block-title)
-- [Save as Block Template](/handbook/ui/blocks/block-settings/block-template)
+- [Modifier le Titre du Bloc](/handbook/ui/blocks/block-settings/block-title)
+- [Enregistrer comme Modèle de Bloc](/handbook/ui/blocks/block-settings/block-template)
 
-## Configuring Fields
+## Configuration des Champs
 
-Only relational fields and option fields are supported as filter fields.
+Seuls les champs de relation et les champs d'option sont pris en charge comme champs de filtrage.
 
 ![20240408212301](https://static-docs.nocobase.com/20240408212301.png)

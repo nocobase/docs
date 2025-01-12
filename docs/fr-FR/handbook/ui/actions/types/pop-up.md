@@ -1,20 +1,20 @@
-# Custom Pop-up
+# Fenêtre Contextuelle Personnalisée
 
 ## Introduction
 
-The custom pop-up feature functions much like the view and edit actions. It's part of the table's row buttons and uses the current record as its context. Users can set up multiple pop-up actions within the row operations of a table.
+La fonctionnalité de fenêtre contextuelle personnalisée fonctionne de manière similaire aux actions de vue et de modification. Elle fait partie des boutons de ligne d'un tableau et utilise l'enregistrement actuel comme contexte. Les utilisateurs peuvent configurer plusieurs actions de fenêtre contextuelle dans les opérations de ligne d'un tableau.
 
 ![20240413104530](https://static-docs.nocobase.com/20240413104530.png)
 
-Configure blocks as needed in the pop-up window.
+Configurez les blocs selon les besoins dans la fenêtre contextuelle.
 
 ![20240426161322](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426161322.png)
 
-## Operation Configuration Items
+## Éléments de Configuration de l'Opération
 
 ![20240413104602](https://static-docs.nocobase.com/20240413104602.png)
 
-- [Edit Button](/handbook/ui/actions/action-settings/edit-button): Customize the title, color, and icon of the edit button
-- [Linkage Rule](/handbook/ui/actions/action-settings/linkage-rule): Dynamically control the button’s state (Visible/Disabled)
-- [Open Mode](/handbook/ui/actions/action-settings/open-mode): Pop-up/Drawer
-- [Pop-up Size](/handbook/ui/actions/action-settings/popup-size): The default size is Middle(Large/Middle/Small)
+- [Bouton de Modification](/handbook/ui/actions/action-settings/edit-button) : Personnalisez le titre, la couleur et l'icône du bouton de modification.
+- [Règle de Liaison](/handbook/ui/actions/action-settings/linkage-rule) : Contrôlez dynamiquement l'état du bouton (Visible/Désactivé).
+- [Mode d'Ouverture](/handbook/ui/actions/action-settings/open-mode) : Fenêtre contextuelle/Tiroir.
+- [Taille de la Fenêtre Contextuelle](/handbook/ui/actions/action-settings/popup-size) : La taille par défaut est Moyenne (Grande/Moyenne/Petite).

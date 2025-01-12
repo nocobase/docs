@@ -1,39 +1,39 @@
-# Data scope
+# Portée des Données
 
 ## Introduction
 
-Data scope is a powerful feature that allows users to define default filtering conditions for data blocks. This functionality enables users to dynamically adjust the scope of displayed data, tailoring it to their specific needs and enhancing the overall user experience.
+La portée des données est une fonctionnalité puissante qui permet aux utilisateurs de définir des conditions de filtrage par défaut pour les blocs de données. Cette fonctionnalité permet d'ajuster dynamiquement la portée des données affichées, en l'adaptant aux besoins spécifiques des utilisateurs et en améliorant l'expérience globale.
 
-## User Manual
+## Manuel de l'utilisateur
 
 ![20240407180322](https://static-docs.nocobase.com/20240407180322.png)
 
-Filter fields support selecting fields from the current table, as well as from related tables (up to three levels of relationships).
+Les champs de filtrage permettent de sélectionner des champs à partir de la table actuelle, ainsi que des tables liées (jusqu'à trois niveaux de relations).
 
 ![20240422113637](https://static-docs.nocobase.com/20240422113637.png)
 
-### Operators
+### Opérateurs
 
-Different field types support various operators. For instance, text fields support operators such as "equals," "not equals," and "contains." Numeric fields allow for operators like "greater than" and "less than," while date fields offer options such as "within a range" or "before a specific date."
+Les différents types de champs supportent divers opérateurs. Par exemple, les champs de texte supportent des opérateurs tels que "égal à", "différent de", et "contient". Les champs numériques permettent des opérateurs comme "plus grand que" et "plus petit que", tandis que les champs de date offrent des options telles que "dans une plage" ou "avant une date spécifique".
 
 ![20240424154003](https://static-docs.nocobase.com/20240424154003.png)
 
-### Static Values
+### Valeurs Statique
 
-Example: Setting an Order "Status" to "Shipped".
+Exemple : Définir le "Statut" d'une commande sur "Expédiée".
 
- <video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240415204206.mp4" type="video/mp4">
+<video width="100%" height="440" controls>
+    <source src="https://static-docs.nocobase.com/20240415204206.mp4" type="video/mp4">
 </video>
 
-### Variable Values
+### Valeurs Variables
 
-Example: "Delivery Date" is earlier than "yesterday."
+Exemple : "Date de Livraison" est antérieure à "hier".
 
 ![20240422090134](https://static-docs.nocobase.com/20240422090134.png)
 
 <video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240415214709.mp4" type="video/mp4">
+    <source src="https://static-docs.nocobase.com/20240415214709.mp4" type="video/mp4">
 </video>
 
-For more information about variables, refer to [Variables](/handbook/ui/variables).
+Pour plus d'informations sur les variables, consultez [Variables](/handbook/ui/variables).

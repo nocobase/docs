@@ -1,51 +1,51 @@
 # Menu
 
-Menus are used to organize pages and external links. In the default page layout template of NocoBase, the menu is located at the top and on the left side. Among them, the top is the primary menu, and the left side is for secondary and infinitely nested sub-menus.
+Les menus sont utilisés pour organiser les pages et les liens externes. Dans le modèle de mise en page par défaut de NocoBase, le menu se trouve en haut et sur le côté gauche. Parmi eux, le menu supérieur est le menu principal, et le côté gauche est réservé aux sous-menus secondaires et infinis.
 
-## Types of Menu Items
+## Types d'Éléments de Menu
 
-NocoBase has three built-in types of menu items:
+NocoBase propose trois types d'éléments de menu intégrés :
 
-- Group
+- Groupe
 - Page
-- Link
+- Lien
 
 ![](https://static-docs.nocobase.com/ccf6f42d3cc2677d440f9e33b9488d1c.png)
 
-### Group
+### Groupe
 
-"Group" is used to group menu items, which can be located at the top or on the left side. Within a group, you can continue to create sub-groups, meaning the menu can have an infinite hierarchy.
+Le "Groupe" est utilisé pour regrouper des éléments de menu, qui peuvent être situés en haut ou sur le côté gauche. Dans un groupe, vous pouvez continuer à créer des sous-groupes, ce qui permet au menu d'avoir une hiérarchie infinie.
 
 ![](https://static-docs.nocobase.com/e59b2088fd68666cd240a26566616a3e.png)
 
 ### Page
 
-A page can serve as a container for blocks, housing a variety of blocks. (See [Pages](./pages/index.md))
+Une page peut servir de conteneur pour des blocs, hébergeant une variété de blocs. (Voir [Pages](./pages/index.md))
 
 ![](https://static-docs.nocobase.com/4cd259f6b79f6792df72ccc291da2af9.png)
 
-### Link
+### Lien
 
-Links can redirect to third-party URLs. You can use variables in the URL and Search params.
+Les liens peuvent rediriger vers des URL de tiers. Vous pouvez utiliser des variables dans l'URL et les paramètres de recherche.
 
 ![20240709231114](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240709231114.png)
 
-## Configuring the Menu
+## Configuration du Menu
 
-After entering the interface configuration mode, there are two icons in the upper right corner of the menu item:
+Après être entré en mode de configuration de l'interface, deux icônes apparaissent dans le coin supérieur droit de l'élément du menu :
 
-- Drag to move
-- Menu item configuration
+- Glisser pour déplacer
+- Configuration de l'élément du menu
 
 ![](https://static-docs.nocobase.com/963ba10e36d04fd258fea0e996231f68.png)
 
-### Menu Item Configuration
+### Configuration de l'Élément du Menu
 
 ![](https://static-docs.nocobase.com/0a9a05bd88d8bad9d711102a730f351d.png)
 
-- Edit: Includes the menu item's title, icon, etc.
-- Move to: In addition to dragging to move, you can also quickly move a menu item via "Move to", allowing you to move a menu item to the front, back, or inside of another menu item.
-- Insert before
-- Insert after
-- Insert inner (Only for group types)
-- Delete
+- Modifier : Inclut le titre de l'élément du menu, l'icône, etc.
+- Déplacer vers : En plus de déplacer par glisser-déposer, vous pouvez également déplacer rapidement un élément de menu via "Déplacer vers", ce qui permet de déplacer un élément de menu vers l'avant, l'arrière ou à l'intérieur d'un autre élément de menu.
+- Insérer avant
+- Insérer après
+- Insérer à l'intérieur (Uniquement pour les types de groupe)
+- Supprimer

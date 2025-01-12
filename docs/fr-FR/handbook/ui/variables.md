@@ -1,173 +1,173 @@
 # Variables
 
 ## Introduction
-Variables are a set of tokens used to identify a value in the current context. They can be used in scenarios such as configuration block data scope, field default values, linkage rules, workflows, etc.
+Les variables sont un ensemble de jetons utilisés pour identifier une valeur dans le contexte actuel. Elles peuvent être utilisées dans des scénarios tels que la configuration de la portée des données des blocs, les valeurs par défaut des champs, les règles de liaison, les flux de travail, etc.
 
 ![2024-09-25_20-08-38-2024-09-25-20-11-51](https://static-docs.nocobase.com/2024-09-25_20-08-38-2024-09-25-20-11-51.png)
 
-## Currently Supported Variables
+## Variables actuellement prises en charge
 
-### Current user
+### Utilisateur actuel
 
-Represents the data of the currently logged-in user.
+Représente les données de l'utilisateur actuellement connecté.
 
 ![20240416154950](https://static-docs.nocobase.com/20240416154950.png)
 
-### Current Role
+### Rôle actuel
 
-Represents the role identifier (role name) of the currently logged-in user.
+Représente l'identifiant du rôle (nom du rôle) de l'utilisateur actuellement connecté.
 
 ![20240416155100](https://static-docs.nocobase.com/20240416155100.png)
 
-### Current form
+### Formulaire actuel
 
-The value of the current form, only used in form blocks. It is used in the following scenarios:
+La valeur du formulaire actuel, utilisée uniquement dans les blocs de formulaire. Elle est utilisée dans les scénarios suivants :
 
-- Linkage rules of the current form
-- Default values for form fields (only valid when adding new data)
-- Data scope settings for association fields
-- Assign field values configuration for submit actions
+- Règles de liaison du formulaire actuel
+- Valeurs par défaut pour les champs de formulaire (uniquement valides lors de l'ajout de nouvelles données)
+- Paramètres de la portée des données pour les champs de relation
+- Configuration des valeurs des champs pour les actions de soumission
 
-#### Linkage rules of the current form
+#### Règles de liaison du formulaire actuel
 
 ![20240416170732_rec_](https://static-docs.nocobase.com/20240416170732_rec_.gif)
 
-#### Default values for form fields (only valid when adding new data)
+#### Valeurs par défaut pour les champs de formulaire (uniquement valides lors de l'ajout de nouvelles données)
 
 ![20240416171129_rec_](https://static-docs.nocobase.com/20240416171129_rec_.gif)
 
-#### Data scope settings for association fields
+#### Paramètres de la portée des données pour les champs de relation
 
-Used to handle linkages between relationships, for example:
+Utilisé pour gérer les liens entre les relations, par exemple :
 
 ![20240416171743_rec_](https://static-docs.nocobase.com/20240416171743_rec_.gif)
 
-#### Assign field values configuration for submit actions
+#### Configuration des valeurs des champs pour les actions de soumission
 
 ![20240416171215_rec_](https://static-docs.nocobase.com/20240416171215_rec_.gif)
 
-### Current object
+### Objet actuel
 
-Currently only used for field configuration in subforms and subtables of form blocks, representing the value of each item:
+Utilisé actuellement uniquement pour la configuration des champs dans les sous-formulaires et sous-tableaux des blocs de formulaire, représentant la valeur de chaque élément :
 
-- Default values for subfields
-- Data scope for sub-association fields
+- Valeurs par défaut pour les sous-champs
+- Portée des données pour les sous-champs de relation
 
-#### Default values for subfields
+#### Valeurs par défaut pour les sous-champs
 
 ![20240416172933_rec_](https://static-docs.nocobase.com/20240416172933_rec_.gif)
 
-#### Data scope for sub-association fields
+#### Portée des données pour les sous-champs de relation
 
 ![20240416173043_rec_](https://static-docs.nocobase.com/20240416173043_rec_.gif)
 
-### Parent object
+### Objet parent
 
-Similar to the "Current object", it represents the parent object of the current object. Supported in NocoBase v1.3.34-beta and above.
+Semblable à "Objet actuel", il représente l'objet parent de l'objet actuel. Prise en charge dans NocoBase v1.3.34-beta et versions supérieures.
 
-### Current record
+### Enregistrement actuel
 
-A record refers to a row in a collection, with each row representing a record. The "Current record" variable is used in the "Row Action Linkage Rules" of display blocks.
+Un enregistrement fait référence à une ligne dans une collection, chaque ligne représentant un enregistrement. La variable "Enregistrement actuel" est utilisée dans les "Règles de liaison d'action de ligne" des blocs d'affichage.
 
-#### Row Action Linkage Rules
+#### Règles de liaison d'action de ligne
 
 ![20240416174813_rec_](https://static-docs.nocobase.com/20240416174813_rec_.gif)
 
-### Current popup record
+### Enregistrement actuel du popup
 
-Popup actions play a very important role in the NocoBase interface configuration.
+Les actions de popup jouent un rôle très important dans la configuration de l'interface NocoBase.
 
-- Row action popup: Each popup has a "Current popup record" variable, representing the current row record.
-- Association field popup: Each popup has a "Current popup record" variable, representing the clicked relationship record.
+- Popup d'action de ligne : Chaque popup a une variable "Enregistrement actuel du popup", représentant l'enregistrement actuel de la ligne.
+- Popup de champ de relation : Chaque popup a une variable "Enregistrement actuel du popup", représentant l'enregistrement de relation cliqué.
 
-The blocks in the popup can use the "Current popup record" variable, with the following use cases:
+Les blocs dans le popup peuvent utiliser la variable "Enregistrement actuel du popup", avec les cas d'utilisation suivants :
 
-- Configuring data scope for blocks
-- Configuring data scope for association fields
-- Configuring default values for fields (form for adding data)
-- Configuring linkage rules for actions
-- Assign field values configuration for form submit actions
+- Configuration de la portée des données pour les blocs
+- Configuration de la portée des données pour les champs de relation
+- Configuration des valeurs par défaut pour les champs (formulaire pour ajouter des données)
+- Configuration des règles de liaison pour les actions
+- Configuration des valeurs des champs pour les actions de soumission de formulaire
 
-#### Configuring data scope for blocks
+#### Configuration de la portée des données pour les blocs
 
 ![20240416224307_rec_](https://static-docs.nocobase.com/20240416224307_rec_.gif)
 
-#### Configuring data scope for association fields
+#### Configuration de la portée des données pour les champs de relation
 
 ![20240416224641_rec_](https://static-docs.nocobase.com/20240416224641_rec_.gif)
 
-#### Configuring default values for fields (form for adding data)
+#### Configuration des valeurs par défaut pour les champs (formulaire pour ajouter des données)
 
 ![20240416223846_rec_](https://static-docs.nocobase.com/20240416223846_rec_.gif)
 
-#### Configuring linkage rules for actions
+#### Configuration des règles de liaison pour les actions
 
 ![20240416223101_rec_](https://static-docs.nocobase.com/20240416223101_rec_.gif)
 
-#### Assign field values configuration for form submit actions
+#### Configuration des valeurs des champs pour les actions de soumission de formulaire
 
 ![20240416224014_rec_](https://static-docs.nocobase.com/20240416224014_rec_.gif)
 
-### Table Select Record
+### Enregistrement sélectionné dans le tableau
 
-Default values for form fields that are currently only used for the Add record action for a table block
+Valeurs par défaut des champs de formulaire utilisées actuellement uniquement pour l'action Ajouter un enregistrement pour un bloc de tableau
 
-#### The default value of the form field for the Add record action
+#### Valeur par défaut du champ de formulaire pour l'action Ajouter un enregistrement
 
-### Parent record (Deprecated)
+### Enregistrement parent (obsolète)
 
-Only used in association blocks, representing the source record of the association data.
+Utilisé uniquement dans les blocs de relation, représentant l'enregistrement source des données de relation.
 
 :::warning
-"Parent record" is deprecated, it is recommended to use the equivalent "Current popup record" instead.
+"L'enregistrement parent" est obsolète, il est recommandé d'utiliser l'équivalent "Enregistrement actuel du popup" à la place.
 :::
 
-### Date variables
+### Variables de date
 
-Related variables include:
+Les variables associées incluent :
 
-- Current time
-- Yesterday
-- Today
-- Tomorrow
-- Last week
-- This week
-- Next week
-- Last month
-- This month
-- Next month
-- Last quarter
-- This quarter
-- Next quarter
-- Last year
-- This year
-- Next year
-- Last 7 days
-- Next 7 days
-- Last 30 days
-- Next 30 days
-- Last 90 days
-- Next 90 days
+- Heure actuelle
+- Hier
+- Aujourd'hui
+- Demain
+- La semaine dernière
+- Cette semaine
+- La semaine prochaine
+- Le mois dernier
+- Ce mois-ci
+- Le mois prochain
+- Le trimestre dernier
+- Ce trimestre
+- Le trimestre prochain
+- L'année dernière
+- Cette année
+- L'année prochaine
+- Les 7 derniers jours
+- Les 7 prochains jours
+- Les 30 derniers jours
+- Les 30 prochains jours
+- Les 90 derniers jours
+- Les 90 prochains jours
 
 <br />
 
 :::warning
-Except for the Current time which is a moment (string), other date variables are time periods (arrays). Currently, time periods can only be used in data scope and cannot be used in field default values.
+À l'exception de l'Heure actuelle, qui est un moment (chaîne), les autres variables de date sont des périodes de temps (tableaux). Actuellement, les périodes de temps ne peuvent être utilisées que dans la portée des données et ne peuvent pas être utilisées pour les valeurs par défaut des champs.
 :::
 
-Related use cases include:
+Les cas d'utilisation associés incluent :
 
-- Date field condition settings for block data scope
-- Date field condition settings for association field data scopes
-- Date field condition settings for action linkage rules
-- Date field default value settings
+- Paramètres de condition de champ de date pour la portée des données du bloc
+- Paramètres de condition de champ de date pour la portée des données des champs de relation
+- Paramètres de condition de champ de date pour les règles de liaison d'action
+- Paramètres de valeur par défaut de champ de date
 
-### URL search params
+### Paramètres de recherche de l'URL
 
-This variable represents the search parameters in the current page URL. This variable is only available when there is a query string in the page URL. It is more convenient to use it together with [Link](/handbook/ui/actions/types/link).
+Cette variable représente les paramètres de recherche dans l'URL de la page actuelle. Cette variable n'est disponible que lorsqu'il y a une chaîne de requête dans l'URL de la page. Il est plus pratique de l'utiliser avec [Lien](/handbook/ui/actions/types/link).
 
 ![20240603200410](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240603200410.gif)
 
-### API token
+### Jeton API
 
-This variable's value is a string that serves as a credential for accessing the NocoBase API. It can be used to authenticate the user's identity.
+La valeur de cette variable est une chaîne qui sert d'identifiant pour accéder à l'API NocoBase. Elle peut être utilisée pour authentifier l'identité de l'utilisateur.

@@ -1,126 +1,126 @@
-# Default Value
+# Valeur par Défaut
 
 ## Introduction
 
-Default values are the initial values for fields in a new state. You can set default values when configuring fields in a data table, or you can specify default values for fields in a new form block. These values can be constants or variables.
+Les valeurs par défaut sont les valeurs initiales des champs dans un nouvel état. Vous pouvez définir des valeurs par défaut lors de la configuration des champs dans une table de données, ou spécifier des valeurs par défaut pour les champs dans un nouveau bloc de formulaire. Ces valeurs peuvent être des constantes ou des variables.
 
-## Where Can Default Values Be Configured?
+## Où les Valeurs par Défaut Peuvent-elles être Configurées ?
 
-### Data Table Fields
+### Champs dans une Table de Données
 
 ![20240411095933](https://static-docs.nocobase.com/20240411095933.png)
 
-### Fields in New Forms
+### Champs dans de Nouveaux Formulaires
 
-Most fields in new forms support setting default values.
+La plupart des champs dans de nouveaux formulaires permettent de définir des valeurs par défaut.
 
 ![20240411100030](https://static-docs.nocobase.com/20240411100030.png)
 
-### Adding Subforms
+### Ajout de Sous-formulaires
 
-Whether adding subforms in new or edit forms, the added sub-data will have default values.
+Que ce soit dans de nouveaux formulaires ou lors de l'édition de formulaires, les sous-données ajoutées auront des valeurs par défaut.
 
-Subform "Add new"
+Sous-formulaire "Ajouter nouveau"
 
 ![20240411100341](https://static-docs.nocobase.com/20240411100341.png)
 
-Subtable "Add new"
+Sous-table "Ajouter nouveau"
 
 ![20240411100424](https://static-docs.nocobase.com/20240411100424.png)
 
 ![20240411100634](https://static-docs.nocobase.com/20240411100634.png)
 
-When editing existing data, if the data is empty, it will not be filled with default values; only newly added data will be filled with default values and will not be saved.
+Lors de l'édition de données existantes, si les données sont vides, elles ne seront pas remplies avec des valeurs par défaut ; seules les nouvelles données ajoutées seront remplies avec des valeurs par défaut et ne seront pas enregistrées.
 
 ![20240411100729](https://static-docs.nocobase.com/20240411100729.png)
 
-### Default Values for Relationship Data
+### Valeurs par Défaut pour les Données Relationnelles
 
-Default values are only available for "many-to-one" and "many-to-many" relationship types when using selector components (Select, RecordPicker).
+Les valeurs par défaut sont uniquement disponibles pour les types de relation "plusieurs-à-un" et "plusieurs-à-plusieurs" lorsqu'on utilise des composants sélecteurs (Select, RecordPicker).
 
 ![20240411101025](https://static-docs.nocobase.com/20240411101025.png)
 
-## Default Value Variables
+## Variables des Valeurs par Défaut
 
-### What Variables Are Available?
+### Quelles Variables Sont Disponibles ?
 
-- Date variables;
-- Current user;
-- Current record (the concept only applies to existing data);
-- Current form (ideally, only fields in the form are listed);
-- Current object (concept for each row of data in a subform);
-- Form selected records (currently limited to the "Table Block + Add Record Form" combination);
+- Variables de date ;
+- Utilisateur actuel ;
+- Enregistrement actuel (le concept s'applique uniquement aux données existantes) ;
+- Formulaire actuel (idéalement, seuls les champs du formulaire sont listés) ;
+- Objet actuel (concept pour chaque ligne de données dans un sous-formulaire) ;
+- Enregistrements sélectionnés dans le formulaire (actuellement limité à la combinaison "Table Block + Formulaire Ajouter un enregistrement") ;
 
-For more information on variables, refer to [Variables](/handbook/ui/variables).
+Pour plus d'informations sur les variables, consultez [Variables](/handbook/ui/variables).
 
-### Field Default Value Variables
+### Variables de Valeurs par Défaut des Champs
 
-There are two types: non-relational field variables and relational field variables.
+Il existe deux types : variables de champs non relationnels et variables de champs relationnels.
 
-#### Relational Field Default Value Variables
+#### Variables de Valeurs par Défaut pour les Champs Relationnels
 
-- The variable object must be a collection record;
-- It must be from a table on the inheritance path, either the current table or a parent-child table;
-- The "Form selected records" variable is only available for "many-to-many" and "one-to-many/many-to-one" relationship fields;
-- **For multiple levels, flatten and deduplicate the data**
+- L'objet variable doit être un enregistrement de collection ;
+- Il doit provenir d'une table sur le chemin d'héritage, soit de la table actuelle, soit d'une table parente-enfant ;
+- La variable "Enregistrements sélectionnés dans le formulaire" est uniquement disponible pour les champs de relation "plusieurs-à-plusieurs" et "plusieurs-à-un/un-à-plusieurs" ;
+- **Pour plusieurs niveaux, aplatir et dédupliquer les données**
 
 ```typescript
-// Table selected records:
+// Enregistrements sélectionnés dans la table :
 [{id:1},{id:2},{id:3},{id:4}]
 
-// Table selected records/one-to-one:
-[{one-to-one: {id:2}}, {one-to-one: {id:3}}, {one-to-one: {id:3}}]
-// Flatten and deduplicate
+// Enregistrements sélectionnés dans la table/ un-à-un :
+[{un-à-un: {id:2}}, {un-à-un: {id:3}}, {un-à-un: {id:3}}]
+// Aplatir et dédupliquer
 [{id: 2}, {id: 3}]
 
-// Table selected records/many-to-many:
-[{many-to-many: [{id: 1}, {id:2}]}, {many-to-many: {[id:3}, {id:4}]}]
-// Flatten
+// Enregistrements sélectionnés dans la table/ plusieurs-à-plusieurs :
+[{plusieurs-à-plusieurs: [{id: 1}, {id:2}]}, {plusieurs-à-plusieurs: {[id:3}, {id:4}]}]
+// Aplatir
 [{id:1},{id:2},{id:3},{id:4}]
 ```
 
-#### Non-relational Default Value Variables
+#### Variables de Valeurs par Défaut Non Relationnelles
 
-- The type must be consistent or compatible, such as strings being compatible with numbers, and all objects that provide a toString method;
-- JSON fields are special and can store any type of data;
+- Le type doit être cohérent ou compatible, comme des chaînes de caractères étant compatibles avec des nombres, et tous les objets qui fournissent une méthode toString ;
+- Les champs JSON sont spéciaux et peuvent stocker tout type de données ;
 
-### Field Hierarchy (Optional Fields)
+### Hiérarchie des Champs (Champs Optionnels)
 
 ![20240411101157](https://static-docs.nocobase.com/20240411101157.png)
 
-- Non-relational default value variables
+- Variables de valeurs par défaut non relationnelles
 
-  - When selecting fields with multiple levels, only one-to-one relationships are supported; many-to-many relationships are not supported;
-  - JSON fields are special and may have fewer restrictions;
+  - Lors de la sélection de champs à plusieurs niveaux, seules les relations un-à-un sont prises en charge ; les relations plusieurs-à-plusieurs ne sont pas prises en charge ;
+  - Les champs JSON sont spéciaux et peuvent avoir moins de restrictions ;
 
-- Relational default value variables
+- Variables de valeurs par défaut relationnelles
 
-  - hasOne: only supports one-to-one relationships;
-  - hasMany: supports both one-to-one (internally converted) and many-to-many relationships;
-  - belongsToMany: supports both one-to-one (internally converted) and many-to-many relationships;
-  - belongsTo: generally for one-to-one relationships, but when the parent relationship is hasMany, it also supports many-to-many (as hasMany/belongsTo is essentially a many-to-many relationship);
+  - hasOne : prend en charge uniquement les relations un-à-un ;
+  - hasMany : prend en charge à la fois les relations un-à-un (converties en interne) et les relations plusieurs-à-plusieurs ;
+  - belongsToMany : prend en charge à la fois les relations un-à-un (converties en interne) et les relations plusieurs-à-plusieurs ;
+  - belongsTo : généralement pour les relations un-à-un, mais lorsque la relation parente est hasMany, elle prend également en charge les relations plusieurs-à-plusieurs (car hasMany/belongsTo est essentiellement une relation plusieurs-à-plusieurs) ;
 
-## Special Cases
+## Cas Particuliers
 
-### "Many-to-many" is equivalent to a "one-to-many/many-to-one" combination
+### "Plusieurs-à-plusieurs" équivaut à une combinaison "un-à-plusieurs/plusieurs-à-un"
 
-Model
+Modèle
 
 ![20240411101558](https://static-docs.nocobase.com/20240411101558.png)
 
-When setting default value variables for a many-to-many relationship, if the variable has multiple records, the selected data will have multiple records, as shown below:
-When the data table in the table block and the relationship field data table are the same.
+Lors de la définition des variables de valeur par défaut pour une relation plusieurs-à-plusieurs, si la variable contient plusieurs enregistrements, les données sélectionnées auront plusieurs enregistrements, comme indiqué ci-dessous :
+Lorsque le tableau de données dans le bloc de tableau et le tableau de données de relation sont identiques.
 
 ![20240411103021](https://static-docs.nocobase.com/20240411103021.png)
 
-### Why Don't One-to-one and One-to-many Relationships Have Default Values?
+### Pourquoi les Relations Un-à-un et Un-à-plusieurs N'ont-elles Pas de Valeurs par Défaut ?
 
-For example, in an A.B relationship, if b1 is associated with a1, it cannot be associated with a2. If b1 is associated with a2, it will disassociate from a1. In this case, the data is not shared, while default values operate on a shared mechanism (both can be associated), so one-to-one and one-to-many cannot have default values.
+Par exemple, dans une relation A.B, si b1 est associé à a1, il ne peut pas être associé à a2. Si b1 est associé à a2, il se dissociera de a1. Dans ce cas, les données ne sont pas partagées, tandis que les valeurs par défaut fonctionnent sur un mécanisme partagé (les deux peuvent être associés), donc les relations un-à-un et un-à-plusieurs ne peuvent pas avoir de valeurs par défaut.
 
-### Why Can't Subforms or Subtables with Many-to-one and Many-to-many Relationships Have Default Values?
+### Pourquoi les Sous-formulaires ou Sous-tableaux avec des Relations Plusieurs-à-un et Plusieurs-à-plusieurs N'ont-ils Pas de Valeurs par Défaut ?
 
-Because subforms and subtables focus on directly editing relationship data (including adding or removing), and relationship default values work on a shared mechanism where both can be associated but cannot modify the relationship data. Therefore, it is not suitable to provide default values in this scenario.
+Parce que les sous-formulaires et les sous-tableaux se concentrent sur l'édition directe des données relationnelles (y compris l'ajout ou la suppression), et les valeurs par défaut des relations fonctionnent sur un mécanisme partagé où les deux peuvent être associés mais ne peuvent pas modifier les données de relation. Par conséquent, il n'est pas approprié de fournir des valeurs par défaut dans ce scénario.
 
-Additionally, subforms or subtables have subfields, so it would be unclear whether the default value is for rows or columns.
+De plus, les sous-formulaires ou sous-tableaux possèdent des sous-champs, il serait donc difficile de déterminer si la valeur par défaut s'applique aux lignes ou aux colonnes.
 
-Considering this, it is more appropriate not to allow setting default values for any type of subform or subtable relationship.
+Compte tenu de cela, il est plus approprié de ne pas autoriser la définition de valeurs par défaut pour tout type de relation dans un sous-formulaire ou sous-tableau.

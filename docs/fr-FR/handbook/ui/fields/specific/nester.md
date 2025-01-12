@@ -2,39 +2,39 @@
 
 ## Introduction
 
-Sub-form offer an elegant solution for scenarios where relational data needs to be created before association. They present multi-level relational data in a clear, nested structure. Unlike data selectors and dropdown menus, subforms allow direct management of relational table fields within the current page block. Moreover, they ensure that relational data is submitted seamlessly alongside the main form.
+Les sous-formulaires offrent une solution élégante pour les scénarios où des données relationnelles doivent être créées avant l'association. Ils présentent des données relationnelles multi-niveaux dans une structure claire et imbriquée. Contrairement aux sélecteurs de données et aux menus déroulants, les sous-formulaires permettent de gérer directement les champs de tables relationnelles au sein du bloc de la page actuelle. De plus, ils garantissent que les données relationnelles sont soumises de manière fluide avec le formulaire principal.
 
-## Usage Instructions
+## Instructions d'Utilisation
 
-### Subforms for Many-to-Many Relationships
+### Sous-formulaires pour Relations Plusieurs-à-Plusieurs
 
 ![20240409213911](https://static-docs.nocobase.com/20240409213911.png)
 
-Effortlessly display nested multi-level relationship fields, such as products and their associated inventory.
+Affichez facilement des champs de relations imbriquées multi-niveaux, comme les produits et leur inventaire associé.
 
 ![20240422172545](https://static-docs.nocobase.com/20240422172545.png)
 
-### Subforms for One-to-One Relationships
+### Sous-formulaires pour Relations Un-à-Un
 
 ![20240409214419](https://static-docs.nocobase.com/20240422172545.png)
 
-## Field Configuration Options
+## Options de Configuration des Champs
 
-### Multiple Record Addition/Association (Enabled by Default)
+### Ajout/Association de Plusieurs Enregistrements (Activé par Défaut)
 
-When activated, this feature allows users to add multiple records with a simple click of the + icon.
+Lorsqu'activée, cette fonctionnalité permet aux utilisateurs d'ajouter plusieurs enregistrements d'un simple clic sur l'icône +.
 
 ![20240422172237](https://static-docs.nocobase.com/20240422172237.png)
 
-### Field Component
+### Composant de Champ
 
-[Field Component](/handbook/ui/fields/association-field): Switch to other relationship field components, such as dropdown select, data selector, etc.
+[Composant de Champ](/handbook/ui/fields/association-field) : Passez à d'autres composants de champ relationnels, tels que les sélecteurs déroulants, les sélecteurs de données, etc.
 
-### Linkage Rules
-:::info{title=Tip}
-The version of NocoBase needs to be v1.3.17-beta or above.
+### Règles de Lien
+:::info{title=Astuce}
+La version de NocoBase doit être v1.3.17-beta ou supérieure.
 :::
 
 ![20240906083737_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240906083737_rec_.gif)
 
-For more information, refer to [Linkage Rules](/handbook/ui/blocks/block-settings/linkage-rule)
+Pour plus d'informations, consultez [Règles de Lien](/handbook/ui/blocks/block-settings/linkage-rule).

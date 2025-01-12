@@ -1,8 +1,8 @@
-# Block Title
+# Titre du Bloc
 
 ## Introduction
 
-Custom block title.
+Titre personnalisé du bloc.
 
 ![20240407175754](https://static-docs.nocobase.com/20240407175754.png)
 

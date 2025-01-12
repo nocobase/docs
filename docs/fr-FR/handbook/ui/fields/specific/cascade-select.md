@@ -1,21 +1,21 @@
-# Cascading Select
+# Sélecteur Cascadé
 
 ## Introduction
 
-The cascading selector is tailored for relational fields where the target table follows a tree structure. It allows users to select data according to the hierarchical levels of the tree, with support for fuzzy search to streamline the selection process.
+Le sélecteur cascadé est conçu pour les champs relationnels où la table cible suit une structure hiérarchique. Il permet aux utilisateurs de sélectionner des données selon les niveaux hiérarchiques de l'arbre, avec une prise en charge de la recherche floue pour simplifier le processus de sélection.
 
 ## Instructions
 
-- For one-to-one relationships, the cascading selector is configured for single selection.
+- Pour les relations un-à-un, le sélecteur cascadé est configuré pour une sélection unique.
 
 ![20240409205542](https://static-docs.nocobase.com/20240409205542.png)
 
-- For one-to-many relationships, the cascading selector enables multi-selection and supports drag-and-drop sorting for more intuitive organization.
+- Pour les relations un-à-plusieurs, le sélecteur cascadé permet une sélection multiple et prend en charge le tri par glisser-déposer pour une organisation plus intuitive.
 
 ![20240409210705](https://static-docs.nocobase.com/20240409210705.png)
 
-## Field Configuration Options
+## Options de Configuration des Champs
 
-- [Title Field](/handbook/ui/fields/field-settings/title-field): Defines the content displayed by the cascading component (title field) for easier identification.
+- [Champ Titre](/handbook/ui/fields/field-settings/title-field) : Définit le contenu affiché par le composant cascadé (champ titre) pour une identification facilitée.
 
-- [Field Component](/handbook/ui/fields/association-field): Offers the flexibility to switch to other relational field components, such as dropdown selectors, data pickers, and more.
+- [Composant de Champ](/handbook/ui/fields/association-field) : Offre la possibilité de passer à d'autres composants de champs relationnels, tels que les sélecteurs déroulants, les sélecteurs de dates, et bien plus encore.

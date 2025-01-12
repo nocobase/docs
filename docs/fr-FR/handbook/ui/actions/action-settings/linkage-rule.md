@@ -1,36 +1,34 @@
-# Linkage Rule
+# Règle de Liaison
 
 ## Introduction
 
-The linkage rules for actions are configured based on contextual data conditions and execution results. By configuring these linkage rules, you can control the status of actions (Visible, Hidden, Enabled, Disabled).
+Les règles de liaison pour les actions sont configurées en fonction des conditions de données contextuelles et des résultats d'exécution. En configurant ces règles de liaison, vous pouvez contrôler l'état des actions (Visible, Caché, Activé, Désactivé).
 
 ![20240423113057](https://static-docs.nocobase.com/20240423113057.png)
 
-## Usage Instructions
+## Instructions d'utilisation
 
 ![20240413102150](https://static-docs.nocobase.com/20240413102150.png)
 
-When conditions are met (by default, they pass without conditions), the action is triggered. Constants and variables can be used in the condition evaluation.
+Lorsque les conditions sont remplies (par défaut, elles sont considérées comme passant sans conditions), l'action est déclenchée. Les constantes et les variables peuvent être utilisées dans l'évaluation des conditions.
 
-### Applicable Buttons for Linkage Rules
+### Boutons Applicables aux Règles de Liaison
 
-Currently, only buttons with data context support configuring linkage rules.
+Actuellement, seules les actions avec un contexte de données prennent en charge la configuration des règles de liaison.
 
-Row buttons in blocks such as tables and Gantt charts;
+- Boutons de ligne dans des blocs tels que les tableaux et les diagrammes de Gantt ;
+- Boutons dans les blocs de détails ;
 
-Buttons in detail blocks;
+### Constantes
 
-
-### Constants
-
-Example: Hide the copy button for orders that have been canceled.
+Exemple : Masquer le bouton de copie pour les commandes annulées.
 
 ![20240423113212](https://static-docs.nocobase.com/20240423113212.png)
 
 ### Variables
 
-Example: Disable the delete button for orders with a delivery date later than today.
+Exemple : Désactiver le bouton de suppression pour les commandes dont la date de livraison est postérieure à aujourd'hui.
 
 ![20240423113504](https://static-docs.nocobase.com/20240423113504.png)
 
-For further details on using variables, see the [Variables](/handbook/ui/variables) section.
+Pour plus de détails sur l'utilisation des variables, consultez la section [Variables](/handbook/ui/variables).

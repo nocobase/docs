@@ -1,58 +1,58 @@
-# Sub table
+# Sous-tableau
 
 ## Introduction
 
-Sub table are ideal for managing many-to-many relationship fields. They support bulk creation of target table data with associations, or selecting from existing data for association.
+Les sous-tableaux sont idéaux pour gérer des champs de relations plusieurs-à-plusieurs. Ils permettent la création en masse de données de la table cible avec des associations, ou la sélection de données existantes pour association.
 
-## Instructions for Use
+## Instructions d'utilisation
 
 ![20240410151306](https://static-docs.nocobase.com/20240410151306.png)
 
-Different field types in the sub table display distinct field components. Larger fields (such as rich text, JSON, and multi-line text) are edited via a floating pop-up window.
+Les différents types de champs dans le sous-tableau affichent des composants de champ distincts. Les champs plus grands (tels que le texte enrichi, JSON, et le texte multi-lignes) sont édités via une fenêtre contextuelle flottante.
 
 ![20240410154316](https://static-docs.nocobase.com/20240410154316.png)
 
-Relationship fields in the sub table:
+Champs de relation dans le sous-tableau :
 
-Order (one-to-many) > Product (one-to-many) > Inventory.
+Commande (un-à-plusieurs) > Produit (un-à-plusieurs) > Inventaire.
 
 ![20240410152232](https://static-docs.nocobase.com/20240410152232.png)
 
-By default, relationship field components are dropdown selectors (supporting data selectors or subforms via pop-up windows).
+Par défaut, les composants de champ de relation sont des sélecteurs déroulants (qui supportent les sélecteurs de données ou les sous-formulaires via des fenêtres pop-up).
 
 ![20240410152847](https://static-docs.nocobase.com/20240410152847.png)
 
-Supports drag-and-drop sorting.
+Supporte le tri par glisser-déposer.
 
 ![20240422215629](https://static-docs.nocobase.com/20240422215629.gif)
 
-## Field Configuration Options
+## Options de Configuration des Champs
 
-### Allow Selecting Existing Data (disabled by default)
+### Autoriser la Sélection de Données Existantes (désactivé par défaut)
 
-Supports associating data from existing records.
+Permet d'associer des données provenant d'enregistrements existants.
 
 ![20240410160432](https://static-docs.nocobase.com/20240410160432.png)
 
 ![20240410160714](https://static-docs.nocobase.com/20240410160714.png)
 
-### Field Component
+### Composant de Champ
 
-[Field Component](/handbook/ui/fields/association-field): Switch to other relationship field components, such as dropdown select, data selector, etc.
+[Composant de Champ](/handbook/ui/fields/association-field) : Passez à d'autres composants de champs relationnels, tels que les sélecteurs déroulants, les sélecteurs de données, etc.
 
-### Linkage Rules
-:::info{title=Tip}
-The version of NocoBase needs to be v1.3.17-beta or above.
+### Règles de Lien
+:::info{title=Astuce}
+La version de NocoBase doit être v1.3.17-beta ou supérieure.
 :::
 
 ![20240906084911_rec_](https://static-docs.nocobase.com/20240906084911_rec_.gif)
 
-For more information, refer to [Linkage Rules](/handbook/ui/blocks/block-settings/linkage-rule)
+Pour plus d'informations, consultez [Règles de Lien](/handbook/ui/blocks/block-settings/linkage-rule)
 
-### Allow disassociation
+### Autoriser la dissociation
 
-:::info{title=Tip}
-The version of NocoBase needs to be v1.3.34-beta or above.
+:::info{title=Astuce}
+La version de NocoBase doit être v1.3.34-beta ou supérieure.
 :::
 
 ![20241021210710](https://static-docs.nocobase.com/20241021210710.png)

@@ -1,55 +1,55 @@
 # Page
 
-NocoBase's pages can act as containers for blocks. They are like a canvas where you can freely place a variety of blocks.
+Les pages de NocoBase peuvent servir de conteneurs pour des blocs. Elles sont comme un canevas où vous pouvez placer librement une variété de blocs.
 
-## Page Structure
+## Structure de la Page
 
-After creating a page through the [menu](/handbook/ui/menus), you can see that an empty page consists of the following two parts:
+Après avoir créé une page via le [menu](/handbook/ui/menus), vous pouvez voir qu'une page vide se compose des deux parties suivantes :
 
-1. Header
-   1. Page title
-   2. Tabs
-2. Block container
+1. En-tête
+   1. Titre de la page
+   2. Onglets
+2. Conteneur de blocs
 
 ![2024-01-20_08-23-10](https://static-docs.nocobase.com/2024-01-20_08-23-10.jpg)
 
-## Page Settings
+## Paramètres de la Page
 
-Hovering the mouse over the configuration icon at the top right of the page, you can see the page configuration options:
+En survolant l'icône de configuration en haut à droite de la page, vous pouvez voir les options de configuration de la page :
 
 ![2024-01-20_08-24-27](https://static-docs.nocobase.com/2024-01-20_08-24-27.jpg)
 
-Configurable items include:
+Les éléments configurables incluent :
 
-- Enable page header: Controls whether to display the header;
-- Display page title: Whether to display the page title in the header;
-- Edit page title: The default page title is the menu item title, which can be customized;
-- Enable tabs: Off by default, enabling this option allows adding multiple tabs.
+- **Activer l'en-tête de la page** : Contrôle l'affichage de l'en-tête ;
+- **Afficher le titre de la page** : Affiche ou non le titre de la page dans l'en-tête ;
+- **Modifier le titre de la page** : Le titre de la page par défaut est le titre de l'élément du menu, mais il peut être personnalisé ;
+- **Activer les onglets** : Par défaut désactivé, activer cette option permet d'ajouter plusieurs onglets.
 
-### Enable Header
+### Activer l'En-tête
 
-Typically, we need to enable the header area to display the page title and tabs. However, there are situations where we might not want to enable it, for instance, when creating a Dashboard page where a top-level menu can effectively reflect the content of the page. In this case, we can disable the header and only display the blocks within the page.
+Typiquement, nous devons activer la zone d'en-tête pour afficher le titre de la page et les onglets. Cependant, il y a des situations où nous ne voulons pas l'activer, par exemple lors de la création d'une page de tableau de bord où un menu de niveau supérieur peut efficacement refléter le contenu de la page. Dans ce cas, nous pouvons désactiver l'en-tête et afficher uniquement les blocs à l'intérieur de la page.
 
 ![20240120084618](https://static-docs.nocobase.com/20240120084618.png)
 
-### Page Title
+### Titre de la Page
 
-The default page title is the name of the menu item. By clicking "Edit Page Title," it can be modified. Just like with the header, sometimes we don't need to display the page title and only need to show the tabs, in which case you can disable the title.
+Le titre de la page par défaut est le nom de l'élément du menu. En cliquant sur "Modifier le titre de la page", vous pouvez le modifier. Comme avec l'en-tête, il arrive parfois que nous n'ayons pas besoin d'afficher le titre de la page et que nous voulions uniquement montrer les onglets. Dans ce cas, vous pouvez désactiver le titre.
 
 ![2024-01-20_08-28-43](https://static-docs.nocobase.com/2024-01-20_08-28-43.jpg)
 
-### Enable Tabs
+### Activer les Onglets
 
-When the content of a page is too much, or it is appropriate to divide it into several independent parts, we can enable tabs. Each tab is an independent block container. As shown below, we added 3 tabs to the orders page to display all orders, completed orders, and refunded orders. By moving the mouse to the tab title, you can see the sort and configuration buttons at the top right corner.
+Lorsque le contenu d'une page est trop important ou lorsqu'il est préférable de diviser la page en plusieurs parties indépendantes, vous pouvez activer les onglets. Chaque onglet est un conteneur de blocs indépendant. Comme illustré ci-dessous, nous avons ajouté 3 onglets à la page des commandes pour afficher toutes les commandes, les commandes complétées et les commandes remboursées. En survolant le titre d'un onglet, vous pouvez voir les boutons de tri et de configuration dans le coin supérieur droit.
 
 ![2024-01-20_08-47-15](https://static-docs.nocobase.com/2024-01-20_08-47-15.jpg)
 
-## Adding Blocks
+## Ajouter des Blocs
 
-Click "Add block" to add an unlimited number of blocks to the page (see the introduction of [Blocks](./blocks/index.md)).
+Cliquez sur "Ajouter un bloc" pour ajouter un nombre illimité de blocs à la page (voir l'introduction des [Blocs](./blocks/index.md)).
 
 ![2024-01-20_08-48-36](https://static-docs.nocobase.com/2024-01-20_08-48-36.jpg)
 
-After adding several blocks, you can use the move button at the top right corner of each block to drag and arrange them freely, adjusting the layout to achieve the most suitable effect.
+Après avoir ajouté plusieurs blocs, vous pouvez utiliser le bouton de déplacement en haut à droite de chaque bloc pour les faire glisser et les réorganiser librement, ajustant la disposition pour obtenir l'effet le plus adapté.
 
 ![page-block](https://static-docs.nocobase.com/page-block.gif)

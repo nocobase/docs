@@ -1,13 +1,13 @@
-# Data Loading Mode
+# Mode de Chargement des Données
 
 ## Introduction
 
-The default data loading method is "Load all data when filter criteria are empty." The "filter criteria" refers to the values in the **Filter Block**. Another option is "Do not load data when filter criteria are empty."
+La méthode de chargement des données par défaut est "Charger toutes les données lorsque les critères de filtrage sont vides." Les "critères de filtrage" font référence aux valeurs présentes dans le **Bloc de Filtrage**. Une autre option est "Ne pas charger de données lorsque les critères de filtrage sont vides."
 
-### Load all data when filter is empty
+### Charger toutes les données lorsque le filtrage est vide
 
-![![20240407170234](httpsstatic-docs.nocobase.com20240407170234.png)](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/![20240407170234](httpsstatic-docs.nocobase.com20240407170234.png).gif)
+![20240407170234](https://static-docs.nocobase.com/20240407170234.png)
 
-### Do not load data when filter is empty
+### Ne pas charger de données lorsque le filtrage est vide
 
 ![20240721160327_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240721160327_rec_.gif)

@@ -1,20 +1,20 @@
-# Filter blocks - Form Fields
+# Blocs de Filtre - Champs de Formulaire
 
 ## Introduction
 
-The filter form allows you to select fields from both the current table and related tables (including fields from associated relationships) to serve as filter criteria.
+Le formulaire de filtre vous permet de sélectionner des champs à la fois à partir de la table actuelle et des tables liées (y compris les champs des relations associées) pour servir de critères de filtre.
 
 ![20240409100014](https://static-docs.nocobase.com/20240409100014.png)
 
-**Example:** Suppose you want to filter orders using fields from a related table. The order table and the customer table have a one-to-many relationship. In this case, you can configure the customer's name and phone number fields from the customer table as filter criteria to help narrow down the orders.
+**Exemple :** Supposons que vous souhaitiez filtrer les commandes à l'aide de champs d'une table liée. La table des commandes et la table des clients ont une relation un-à-plusieurs. Dans ce cas, vous pouvez configurer les champs du nom et du numéro de téléphone du client dans la table des clients comme critères de filtre pour affiner les commandes.
 
 ![20240422151626](https://static-docs.nocobase.com/20240422151626.png)
 
-## Field Configuration Options
+## Options de Configuration des Champs
 
-### Operators
+### Opérateurs
 
-Selecting the right operators for filtering is crucial to enhance accuracy and efficiency. For string-type fields, fuzzy matching is enabled by default.
+Le choix des bons opérateurs pour le filtrage est crucial pour améliorer la précision et l'efficacité. Pour les champs de type chaîne de caractères, la correspondance floue est activée par défaut.
 
 ![20240412112748](https://static-docs.nocobase.com/20240412112748.png)
 
@@ -22,7 +22,7 @@ Selecting the right operators for filtering is crucial to enhance accuracy and e
 
 ![20240422151953](https://static-docs.nocobase.com/20240422151953.png)
 
-- [Edit Field Title](/handbook/ui/fields/field-settings/edit-title)
-- [Display Title](/handbook/ui/fields/field-settings/display-title)
-- [Edit Field Description](/handbook/ui/fields/field-settings/edit-description)
-- [Edit Field Tooltip](/handbook/ui/fields/field-settings/edit-tooltip)
+- [Modifier le titre du champ](/handbook/ui/fields/field-settings/edit-title)
+- [Afficher le titre](/handbook/ui/fields/field-settings/display-title)
+- [Modifier la description du champ](/handbook/ui/fields/field-settings/edit-description)
+- [Modifier l'info-bulle du champ](/handbook/ui/fields/field-settings/edit-tooltip)

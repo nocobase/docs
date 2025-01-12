@@ -1,8 +1,8 @@
-# Field Component
+# Composant de champ
 
 ## Introduction
 
-Certain fields support multiple components, allowing us to select the most appropriate one to display the field’s value. For instance, the `URL` component can be switched to a `Preview` component.
+Certains champs prennent en charge plusieurs composants, ce qui nous permet de sélectionner le plus approprié pour afficher la valeur du champ. Par exemple, le composant `URL` peut être changé pour un composant `Aperçu`.
 
 ![20240807092556](https://static-docs.nocobase.com/20240807092556.png)
 
@@ -10,4 +10,4 @@ Certain fields support multiple components, allowing us to select the most appro
 
 ![20240807092859](https://static-docs.nocobase.com/20240807092859.png)
 
-If you need to expand more components, referring to [Expand Value Field Components](/plugin-samples/field/value)。
+Si vous avez besoin d'étendre davantage les composants, consultez [Développer les composants de champ de valeur](/plugin-samples/field/value).

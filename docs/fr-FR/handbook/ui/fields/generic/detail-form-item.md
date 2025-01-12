@@ -1,41 +1,41 @@
-# Details Fields
+# Champs de Détail
 
 ## Introduction
 
-In detail blocks, list blocks, and grid blocks, the field configuration remains largely consistent, primarily focusing on how fields are presented in a reading view.
+Dans les blocs de détails, les blocs de liste et les blocs de grille, la configuration des champs reste largement cohérente, se concentrant principalement sur la manière dont les champs sont présentés en mode lecture.
 
 ![20240409131155](https://static-docs.nocobase.com/20240409131155.png)
 
-## Field Configuration Options
+## Options de Configuration des Champs
 
-### Date Field Formatting
+### Formatage des Champs de Date
 
 ![20240417223807](https://static-docs.nocobase.com/20240417223807.png)
 
-For more information, see [Date Formatting](/handbook/ui/fields/specific/date-picker).
+Pour plus d'informations, consultez [Formatage des Dates](/handbook/ui/fields/specific/date-picker).
 
-### Numeric Field Formatting
+### Formatage des Champs Numériques
 
 ![20240417223608](https://static-docs.nocobase.com/20240417223608.png)
 
-This feature supports basic unit conversions, thousand separators, prefix and suffix customization, precision settings, and scientific notation.
+Cette fonctionnalité prend en charge les conversions d'unités de base, les séparateurs de milliers, la personnalisation des préfixes et suffixes, les paramètres de précision et la notation scientifique.
 
 ![20240417223709](https://static-docs.nocobase.com/20240417223709.png)
 
-For more details, see [Number Formatting](/handbook/ui/fields/field-settings/number-format).
+Pour plus de détails, consultez [Formatage des Nombres](/handbook/ui/fields/field-settings/number-format).
 
-- [Edit Field Title](/handbook/ui/fields/field-settings/edit-title)
-- [Display Title](/handbook/ui/fields/field-settings/display-title)
-- [Edit Field Description](/handbook/ui/fields/field-settings/edit-description)
-- [Edit Field Tooltip](/handbook/ui/fields/field-settings/edit-tooltip)
+- [Modifier le Titre du Champ](/handbook/ui/fields/field-settings/edit-title)
+- [Afficher le Titre](/handbook/ui/fields/field-settings/display-title)
+- [Modifier la Description du Champ](/handbook/ui/fields/field-settings/edit-description)
+- [Modifier l'Astuce du Champ](/handbook/ui/fields/field-settings/edit-tooltip)
 
-### Field Component
+### Composant de Champ
 
-Certain fields allow for switching to different components. For instance, the `URL` component can be changed to a `Preview` component.
+Certains champs permettent de passer à différents composants. Par exemple, le composant `URL` peut être changé en un composant `Aperçu`.
 
 ![20240806165321](https://static-docs.nocobase.com/20240806165321.png)
 
-If you need to add more components, refer to [Extending Field Value Components](/plugin-samples/field/value).
+Si vous avez besoin d'ajouter plus de composants, consultez [Extension des Composants de Valeur des Champs](/plugin-samples/field/value).
 
 ### Style
 
