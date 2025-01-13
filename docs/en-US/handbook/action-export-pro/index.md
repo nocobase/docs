@@ -19,11 +19,13 @@ This plugin depends on the async task management plugin. Please enable the async
 
 ### Export Mode Configuration
 
+![index-2025-01-13-20-58-39](https://static-docs.nocobase.com/index-2025-01-13-20-58-39.png)
+
 You can configure the export mode on the export button, with three available export modes:
 
-- Automatic: Determines the export mode based on the amount of data at export time. If the data volume is less than 1000 records (100 records for attachment export), synchronous export is used; if the data volume exceeds 1000 records (100 records for attachment export), asynchronous export is used.
-- Synchronous: Uses synchronous export, which runs in the main thread and is suitable for small-scale data. Using synchronous mode for large-scale data exports may cause system blocking, lag, and inability to process other user requests.
-- Asynchronous: Uses asynchronous export, which runs in a separate background thread and won't block the current page.
+- Auto: Determines the export mode based on the amount of data at export time. If the data volume is less than 1000 records (100 records for attachment export), synchronous export is used; if the data volume exceeds 1000 records (100 records for attachment export), asynchronous export is used.
+- Sync: Uses synchronous export, which runs in the main thread and is suitable for small-scale data. Using synchronous mode for large-scale data exports may cause system blocking, lag, and inability to process other user requests.
+- Async: Uses asynchronous export, which runs in a separate background thread and won't block the current page.
 
 ### Asynchronous Export
 
