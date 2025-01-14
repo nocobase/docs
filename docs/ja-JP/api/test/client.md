@@ -1,14 +1,14 @@
 # Client
 
-## 概览
+## 概要
 
-NocoBase 基于 <a href="https://vitest.dev/" target="_blank">Vitest</a> 进行客户端测试。`@nocobase/test/client` 为编写客户端测试用例提供了一些便捷的方法。
+NocoBaseは、<a href="https://vitest.dev/" target="_blank">Vitest</a>を使用してクライアントテストを行います。`@nocobase/test/client`は、クライアントテストケースを作成するための便利なメソッドを提供します。
 
 ## API
 
 ### `defineConfig()`
 
-获取 vitest 配置。
+Vitestの設定を取得します。
 
 ```ts
 import { defineConfig } from '@nocobase/test/vitest.mjs';
@@ -18,29 +18,29 @@ const config = defineConfig();
 
 ### `sleep()`
 
-延迟一段时间执行。
+一定時間待機します。
 
 ```ts
 sleep(5000);
 ```
 
-#### 签名
+#### シグネチャ
 
 - `sleep: (timeout?: number) => Promise<unknown>`
 
-#### 详细信息
+#### 詳細
 
-| 参数名    | 类型     | 描述            |
-| --------- | -------- | --------------- |
-| `timeout` | `number` | `延迟时间 (ms)` |
+| パラメータ名 | タイプ   | 説明            |
+| ------------ | -------- | --------------- |
+| `timeout`    | `number` | `待機時間 (ms)` |
 
 ### @testing-library/react
 
-用于 React 组件测试。参考 <a href="https://testing-library.com/docs/react-testing-library/intro" target="_blank">React Testing Library</a>.
+Reactコンポーネントのテストに使用します。詳細は<a href="https://testing-library.com/docs/react-testing-library/intro" target="_blank">React Testing Library</a>を参照してください。
 
 ### @testing-library/user-event
 
-用于模拟用户行为。参考 <a href="https://testing-library.com/docs/user-event/intro/" target="_blank">User Interactions</a>.
+ユーザーの行動をシミュレートするために使用します。詳細は<a href="https://testing-library.com/docs/user-event/intro/" target="_blank">User Interactions</a>を参照してください。
 
 ```ts
 import { userEvent } from '@nocobase/test/client';

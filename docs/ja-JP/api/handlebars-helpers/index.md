@@ -1,17 +1,17 @@
-# Handlebars Helpers
+# Handlebars ヘルパー
 
-| Category       | Description                          |
+| カテゴリ       | 説明                          |
 |------------|-------------------------------|
-| [Core](./core.md)      | Handlebars 内置的方法        |
-| [Array](./array.md)      | 处理数组相关操作和方法        |
-| [Comparison](./comparison.md) | 比较操作符和相关方法          |
-| [Date](./date.md)       | 与日期和时间处理相关的操作和方法 |
-| [HTML](./html.md)       | 与 HTML 文档和元素操作相关的内容 |
-| [I18n](./i18n.md)       | 国际化支持和多语言处理        |
-| [Math](./math.md)       | 数学函数和计算相关的操作      |
-| [Number](./number.md)   | 数字处理和格式化相关的内容    |
-| [Object](./object.md)   | 对象操作和属性相关的方法      |
-| [Path](./path.md)       | 路径操作和文件系统相关的内容  |
-| [Regex](./regex.md)     | 正则表达式及其使用            |
-| [String](./string.md)   | 字符串处理和操作相关的方法    |
-| [URL](./url.md)         | URL解析和构建相关的内容       |
+| [コア](./core.md)      | Handlebars の組み込みメソッド        |
+| [配列](./array.md)      | 配列関連の操作とメソッド        |
+| [比較](./comparison.md) | 比較演算子と関連メソッド          |
+| [日付](./date.md)       | 日付と時刻の処理に関する操作とメソッド |
+| [HTML](./html.md)       | HTML ドキュメントと要素の操作に関する内容 |
+| [国際化](./i18n.md)       | 国際化サポートと多言語処理        |
+| [数学](./math.md)       | 数学関数と計算に関する操作      |
+| [数値](./number.md)   | 数値処理とフォーマットに関する内容    |
+| [オブジェクト](./object.md)   | オブジェクト操作と属性関連のメソッド      |
+| [パス](./path.md)       | パス操作とファイルシステム関連の内容  |
+| [正規表現](./regex.md)     | 正規表現とその使用            |
+| [文字列](./string.md)   | 文字列処理と操作に関するメソッド    |
+| [URL](./url.md)         | URL解析と構築に関する内容       |

@@ -62,7 +62,7 @@ After the database structure is defined, use `sync()` method to synchronize the 
 await database.sync();
 ```
 
-Refer to [Collection](/api/database/collection.md) for detailed usage of `Collection`.
+Refer to [Collection](/api/database/collection) for detailed usage of `Collection`.
 
 ### CRUD Data
 
@@ -95,7 +95,7 @@ await UserRepository.update({
 await UserRepository.destroy(user.id);
 ```
 
-Refer to [Repository](/api/database/repository.md) for details of data CRUD.
+Refer to [Repository](/api/database/repository) for details of data CRUD.
 
 ## Constructor
 
@@ -215,7 +215,7 @@ Define a data table. This is like the `define` method of Sequelize, which only c
 
 **Parameter**
 
-All configuration parameters of `options` is consistent with the constructor of the `Collection` class, refer to [Collection](/api/server/database/collection#Constructor).
+All configuration parameters of `options` is consistent with the constructor of the `Collection` class, refer to [Collection](/api/database/collection#Constructor).
 
 **Event**
 
@@ -515,7 +515,7 @@ Note: The model class retrieved from collection is not strictly equivalent to th
 
 Get the defined data repository class. If no custom data repository class has been registered before, the default data repository class of NocoBase will be returned. The default name is the same as the name defined by collection.
 
-Data repository class is mainly used for the CRUD operations based on data model, refer to [Repository](/api/server/database/repository).
+Data repository class is mainly used for the CRUD operations based on data model, refer to [Repository](/api/database/repository).
 
 **Signature**
 

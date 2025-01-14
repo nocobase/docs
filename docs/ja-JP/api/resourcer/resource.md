@@ -1,40 +1,40 @@
-# Resource
+# リソース
 
-Resource 用于定义资源实例。被 Resourcer 管理的资源实例都可以通过 HTTP 请求访问。
+リソースは、リソースインスタンスを定義するために使用されます。Resourcerによって管理されるリソースインスタンスは、HTTPリクエストを通じてアクセスできます。
 
-## 构造函数
+## コンストラクタ
 
-用于创建 Resource 实例。通常由 Resourcer 管理器的 `define()` 接口调用替代，不需要直接使用。
+リソースインスタンスを作成するために使用されます。通常、Resourcerマネージャの`define()`インターフェース呼び出しによって置き換えられ、直接使用する必要はありません。
 
-**签名**
+**シグネチャ**
 
 - `constructor(options: ResourceOptions, resourcer: Resourcer)`
 
-**参数**
+**パラメータ**
 
-| 参数名                | 类型                                 | 默认值     | 描述                                                                                           |
-| --------------------- | ------------------------------------ | ---------- | ---------------------------------------------------------------------------------------------- |
-| `options.name`        | `string`                             | -          | 资源名称，对应 URL 路由中的资源地址部分。                                                      |
-| `options.type`        | `string`                             | `'single'` | 资源类型，可选项为 `'single'`、`'hasOne'`、`'hasMany'`、`'belongsTo'`、`'belongsToMany'`。     |
-| `options.actions`     | `Object`                             | -          | 对资源可进行的操作列表，详见示例部分。                                                         |
-| `options.middlewares` | `MiddlewareType \| MiddlewareType[]` | -          | 对当前定义资源进行任意操作访问时的中间件列表，详见示例部分。                                   |
-| `options.only`        | `ActionName[]`                       | `[]`       | 针对全局操作的白名单列表，当数组中有值时（`length > 0`），只有数组中的操作可被访问。           |
-| `options.except`      | `ActionName[]`                       | `[]`       | 针对全局操作的黑名单列表，当数组中有值时（`length > 0`），除数组中的操作外，其他操作可被访问。 |
-| `resourcer`           | `Resourcer`                          | -          | 所属资源管理器实例。                                                                           |
+| パラメータ名             | タイプ                                 | デフォルト値 | 説明                                                                                           |
+| ------------------------ | -------------------------------------- | ------------ | ---------------------------------------------------------------------------------------------- |
+| `options.name`           | `string`                              | -            | リソース名、URLルートのリソースアドレス部分に対応します。                                        |
+| `options.type`           | `string`                              | `'single'`   | リソースタイプ、オプションは`'single'`、`'hasOne'`、`'hasMany'`、`'belongsTo'`、`'belongsToMany'`です。 |
+| `options.actions`        | `Object`                              | -            | リソースに対して実行可能な操作のリスト、詳細は例を参照してください。                             |
+| `options.middlewares`    | `MiddlewareType \| MiddlewareType[]`   | -            | 現在定義されているリソースに対する任意の操作アクセス時のミドルウェアリスト、詳細は例を参照してください。 |
+| `options.only`           | `ActionName[]`                        | `[]`         | グローバル操作に対するホワイトリスト、配列に値がある場合（`length > 0`）、配列内の操作のみがアクセス可能です。 |
+| `options.except`         | `ActionName[]`                        | `[]`         | グローバル操作に対するブラックリスト、配列に値がある場合（`length > 0`）、配列内の操作を除く他の操作がアクセス可能です。 |
+| `resourcer`              | `Resourcer`                           | -            | 所属するリソースマネージャインスタンス。                                                         |
 
-**示例**
+**例**
 
 ```ts
 app.resourcer.define({
   name: 'books',
   actions: {
-    // 扩展的 action
+    // 拡張されたアクション
     publish(ctx, next) {
       ctx.body = 'ok';
     },
   },
   middleware: [
-    // 扩展的中间件
+    // 拡張されたミドルウェア
     async (ctx, next) => {
       await next();
     },
@@ -42,39 +42,39 @@ app.resourcer.define({
 });
 ```
 
-## 实例成员
+## インスタンスメンバ
 
 ### `options`
 
-当前资源的配置项。
+現在のリソースの設定項目。
 
 ### `resourcer`
 
-所属的资源管理器实例。
+所属するリソースマネージャインスタンス。
 
 ### `middlewares`
 
-已注册的中间件列表。
+登録済みのミドルウェアリスト。
 
 ### `actions`
 
-已注册的操作映射表。
+登録済みの操作マップ。
 
 ### `except`
 
-操作排除的名单列表。
+操作除外のリスト。
 
-## 实例方法
+## インスタンスメソッド
 
 ### `getName()`
 
-获取当前资源的名称。
+現在のリソースの名前を取得します。
 
-**签名**
+**シグネチャ**
 
 - `getName(): string`
 
-**示例**
+**例**
 
 ```ts
 const resource = app.resourcer.define({
@@ -86,19 +86,19 @@ resource.getName(); // 'books'
 
 ### `getAction()`
 
-根据名称获取当前资源的操作。
+名前を基に現在のリソースの操作を取得します。
 
-**签名**
+**シグネチャ**
 
 - `getAction(name: string): Action`
 
-**参数**
+**パラメータ**
 
-| 参数名 | 类型     | 默认值 | 描述       |
-| ------ | -------- | ------ | ---------- |
-| `name` | `string` | -      | 操作名称。 |
+| パラメータ名 | タイプ     | デフォルト値 | 説明       |
+| ------------ | ---------- | ------------ | ---------- |
+| `name`       | `string`   | -            | 操作名。   |
 
-**示例**
+**例**
 
 ```ts
 const resource = app.resourcer.define({

@@ -1,16 +1,16 @@
 # @nocobase/logger
 
-## 创建日志
+## ログの作成
 
 ### `createLogger()`
 
-创建自定义日志。
+カスタムログを作成します。
 
-#### 签名
+#### シグネチャ
 
 - `createLogger(options: LoggerOptions)`
 
-#### 类型
+#### タイプ
 
 ```ts
 interface LoggerOptions
@@ -22,50 +22,50 @@ interface LoggerOptions
 }
 ```
 
-#### 详细信息
+#### 詳細
 
-| 属性         | 描述         |
-| ------------ | ------------ |
-| `dirname`    | 日志输出目录 |
-| `filename`   | 日志文件名   |
-| `format`     | 日志格式     |
-| `transports` | 日志输出方式 |
+| プロパティ     | 説明           |
+| -------------- | -------------- |
+| `dirname`      | ログ出力ディレクトリ |
+| `filename`     | ログファイル名   |
+| `format`       | ログフォーマット   |
+| `transports`   | ログ出力方法     |
 
 ### `createSystemLogger()`
 
-创建以规定方式打印的系统运行日志。参考 [日志 - 系统日志](../handbook/logger/index.md#系统日志)
+規定の方法で出力するシステムログを作成します。参照 [ログ - システムログ](../handbook/logger/index.md#システムログ)
 
-#### 签名
+#### シグネチャ
 
 - `createSystemLogger(options: SystemLoggerOptions)`
 
-#### 类型
+#### タイプ
 
 ```ts
 export interface SystemLoggerOptions extends LoggerOptions {
-  seperateError?: boolean; // print error seperately, default true
+  seperateError?: boolean; // エラーログを別途出力するかどうか、デフォルトは true
 }
 ```
 
-#### 详细信息
+#### 詳細
 
-| 属性            | 描述                            |
-| --------------- | ------------------------------- |
-| `seperateError` | 是否将 `error` 级别日志单独输出 |
+| プロパティ        | 説明                            |
+| ----------------- | ------------------------------- |
+| `seperateError`   | `error` レベルのログを別途出力するかどうか |
 
 ### `requestLogger()`
 
-接口请求和响应日志中间件。
+APIリクエストとレスポンスのログミドルウェア。
 
 ```ts
 app.use(requestLogger(app.name));
 ```
 
-#### 签名
+#### シグネチャ
 
 - `requestLogger(appName: string, options?: RequestLoggerOptions): MiddewareType`
 
-#### 类型
+#### タイプ
 
 ```ts
 export interface RequestLoggerOptions extends LoggerOptions {
@@ -75,17 +75,17 @@ export interface RequestLoggerOptions extends LoggerOptions {
 }
 ```
 
-#### 详细信息
+#### 詳細
 
-| 属性                | 类型                              | 描述                           | 默认值                                                                                                                                                  |
-| ------------------- | --------------------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `skip`              | `(ctx?: any) => Promise<boolean>` | 根据请求上下文跳过某些请求日志 | -                                                                                                                                                       |
-| `requestWhitelist`  | `string[]`                        | 日志打印的请求信息白名单       | `[ 'action', 'header.x-role', 'header.x-hostname', 'header.x-timezone', 'header.x-locale','header.x-authenticator', 'header.x-data-source', 'referer']` |
-| `responseWhitelist` | `string[]`                        | 日志打印的响应信息白名单       | `['status']`                                                                                                                                            |
+| プロパティ            | タイプ                              | 説明                           | デフォルト値                                                                                                                                                  |
+| --------------------- | ----------------------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `skip`                | `(ctx?: any) => Promise<boolean>` | リクエストコンテキストに基づいて特定のリクエストログをスキップする | -                                                                                                                                                       |
+| `requestWhitelist`    | `string[]`                        | ログに出力するリクエスト情報のホワイトリスト | `[ 'action', 'header.x-role', 'header.x-hostname', 'header.x-timezone', 'header.x-locale','header.x-authenticator', 'header.x-data-source', 'referer']` |
+| `responseWhitelist`   | `string[]`                        | ログに出力するレスポンス情報のホワイトリスト | `['status']`                                                                                                                                            |
 
 ### app.createLogger()
 
-#### 定义
+#### 定義
 
 ```ts
 class Application {
@@ -99,13 +99,13 @@ class Application {
 }
 ```
 
-`dirname` 为相对路径时，输出日志文件到当前应用名称的目录下。
+`dirname` が相対パスの場合、現在のアプリケーション名のディレクトリにログファイルを出力します。
 
 ### plugin.createLogger()
 
-用法同 `app.createLogger()`
+`app.createLogger()` と同じ使用方法です。
 
-#### 定义
+#### 定義
 
 ```ts
 class Plugin {
@@ -115,37 +115,37 @@ class Plugin {
 }
 ```
 
-## 日志配置
+## ログ設定
 
 ### getLoggerLevel()
 
 `getLoggerLevel(): 'debug' | 'info' | 'warn' | 'error'`
 
-获取当前系统配置的日志级别。
+現在のシステム設定のログレベルを取得します。
 
 ### getLoggerFilePath()
 
 `getLoggerFilePath(...paths: string[]): string`
 
-以当前系统配置的日志目录为基础，拼接目录路径。
+現在のシステム設定のログディレクトリを基準に、ディレクトリパスを結合します。
 
 ### getLoggerTransports()
 
 `getLoggerTransports(): ('console' | 'file' | 'dailyRotateFile')[]`
 
-获取当前系统配置的日志输出方式。
+現在のシステム設定のログ出力方法を取得します。
 
 ### getLoggerFormat()
 
 `getLoggerFormat(): 'logfmt' | 'json' | 'delimiter' | 'console'`
 
-获取当前系统配置的日志格式。
+現在のシステム設定のログフォーマットを取得します。
 
-## 日志输出
+## ログ出力
 
 ### Transports
 
-预置的输出方式。
+プリセットの出力方法。
 
 - `Transports.console`
 - `Transports.file`
@@ -159,7 +159,7 @@ const transport = Transports.console({
 });
 ```
 
-## 相关文档
+## 関連ドキュメント
 
-- [开发指南 - 日志](../development/server/logger.md)
-- [日志](../handbook/logger/index.md)
+- [開発ガイド - ログ](../development/server/logger.md)
+- [ログ](../handbook/logger/index.md)

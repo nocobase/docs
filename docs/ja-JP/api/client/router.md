@@ -1,17 +1,17 @@
-# Router
+# ルーター
 
 ## API
 
-### 初始化
+### 初期化
 
 ```tsx | pure
 const app = new Application({
   router: {
-    type: 'browser', // type 的默认值就是 `browser`
+    type: 'browser', // type のデフォルト値は `browser`
   },
 });
 
-// or
+// または
 const app = new Application({
   router: {
     type: 'memory',
@@ -20,9 +20,9 @@ const app = new Application({
 });
 ```
 
-### 添加路由
+### ルートの追加
 
-#### 基础用法
+#### 基本の使い方
 
 ```tsx | pure
 import { RouteObject } from 'react-router-dom';
@@ -32,7 +32,7 @@ const Hello = () => {
   return <div>Hello</div>;
 };
 
-// 第一个参数是名称, 第二个参数是 `RouteObject`
+// 最初のパラメータは名前、2番目のパラメータは `RouteObject`
 app.router.add('root', {
   path: '/',
   element: <Hello />,
@@ -44,22 +44,22 @@ app.router.add('root', {
 });
 ```
 
-#### 支持 Component 是字符串
+#### Component が文字列の場合
 
 ```tsx | pure
-// register Hello
+// Hello を登録
 app.addComponents({
   Hello,
 });
 
-// Component is `Hello` string
+// Component は `Hello` 文字列
 app.router.add('root', {
   path: '/',
   Component: 'Hello',
 });
 ```
 
-#### 嵌套路由
+#### ネストされたルート
 
 ```tsx | pure
 import { Outlet } from 'react-router-dom';
@@ -96,7 +96,7 @@ app.router.add('root.about', {
 });
 ```
 
-它将会被渲染为如下形式:
+以下のようにレンダリングされます:
 
 ```tsx | pure
 {
@@ -114,32 +114,32 @@ app.router.add('root.about', {
 }
 ```
 
-### 删除路由
+### ルートの削除
 
 ```tsx | pure
-// 传递 name 即可删除
+// 名前を渡すだけで削除
 app.router.remove('root.home');
 app.router.remove('hello');
 ```
 
-#### 插件中修改路由
+#### プラグインでルートを変更
 
 ```tsx | pure
 class MyPlugin extends Plugin {
   async load() {
-    // add route
+    // ルートを追加
     this.app.router.add('hello', {
       path: '/hello',
       element: <div>hello</div>,
     });
 
-    // remove route
+    // ルートを削除
     this.app.router.remove('world');
   }
 }
 ```
 
-## 示例
+## サンプル
 
 ```tsx
 /**

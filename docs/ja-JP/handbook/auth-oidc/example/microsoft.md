@@ -3,38 +3,38 @@
 > https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app  
 > https://learn.microsoft.com/en-us/entra/identity-platform/v2-protocols-oidc
 
-## 在 NocoBase 上新增认证器
+## NocoBase に新しい認証器を追加
 
-首先在 NocoBase 上新增一个认证器：插件设置 - 用户认证 - 添加 - OIDC.
+まず、NocoBase に新しい認証器を追加します：プラグイン設定 - ユーザー認証 - 追加 - OIDC.
 
-复制回调 URL.
+コールバック URL をコピーします。
 
 ![](https://static-docs.nocobase.com/202412021504114.png)
 
-## 注册应用程序
+## アプリケーションを登録
 
-打开 MicroSoft Entra 管理中心，注册一个新的应用程序。
+MicroSoft Entra 管理センターを開き、新しいアプリケーションを登録します。
 
 ![](https://static-docs.nocobase.com/202412021506837.png)
 
-此处填入刚才复制的回调 URL.
+ここに先ほどコピーしたコールバック URL を入力します。
 
 ![](https://static-docs.nocobase.com/202412021506380.png)
 
-## 获取并填写相应的信息
+## 情報を取得して入力
 
-点击进入刚才注册的应用程序，在首页复制 **Application (client) ID** 和 **Directory (tenant) ID**.
+登録したアプリケーションをクリックし、ホームページから **Application (client) ID** と **Directory (tenant) ID** をコピーします。
 
 ![](https://static-docs.nocobase.com/202412021509602.png)
 
-点击 Certificates & secrets, 创建一个新的客户端密钥 (Client secrets)，并复制 **Value**.
+Certificates & secrets をクリックし、新しいクライアントシークレット (Client secrets) を作成し、**Value** をコピーします。
 
 ![](https://static-docs.nocobase.com/202412021512616.png)
 
-以上信息和 NocoBase 认证器配置的对应关系如下：
+上記の情報と NocoBase 認証器設定の対応関係は以下の通りです：
 
-| MicroSoft Entra 信息    | NocoBase 认证器配置                                                                                                                              |
+| MicroSoft Entra 情報    | NocoBase 認証器設定                                                                                                                              |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Application (client) ID | Client ID                                                                                                                                        |
 | Client secrets - Value  | Client secret                                                                                                                                    |
-| Directory (tenant) ID   | Issuer:<br />https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration, `{tenant}` 需要替换成相应的 Directory (tenant) ID |
+| Directory (tenant) ID   | Issuer:<br />https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration, `{tenant}` を対応する Directory (tenant) ID に置き換える |

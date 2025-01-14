@@ -1,10 +1,10 @@
 # @nocobase/actions
 
-## 概览
+## 概要
 
-`@nocobase/actions` 封装了 CRUD 相关的常用方法，通过 [ResourceManager](./resourcer/resource-manager) 简单注册，即可给系统资源全局添加 CRUD 操作接口。
+`@nocobase/actions` は、CRUD関連の一般的なメソッドをカプセル化しており、[ResourceManager](./resourcer/resource-manager) を通じて簡単に登録することで、システムリソースにグローバルなCRUD操作インターフェースを追加できます。
 
-### 基本使用
+### 基本的な使用法
 
 ```ts
 import * as actions from `@nocobase/actions`;
@@ -20,7 +20,7 @@ resourceManager.registerActionHandlers(actions);
 
 ### create
 
-创建资源。 `POST /api/<resource>:create`.
+リソースを作成します。 `POST /api/<resource>:create`.
 
 ```shell
 curl "http://localhost:13000/api/users:create" \
@@ -29,54 +29,54 @@ curl "http://localhost:13000/api/users:create" \
   -d '{"username": "admin"}'
 ```
 
-#### 请求体
+#### リクエストボディ
 
-| 参数名          | 类型  | 描述                 |
-| --------------- | ----- | -------------------- |
-| `[key: string]` | `any` | 资源包含的字段键值对 |
+| パラメータ名      | タイプ | 説明                     |
+| ----------------- | ------ | ------------------------ |
+| `[key: string]`   | `any`  | リソースに含まれるフィールドのキーと値のペア |
 
 ### list
 
-获取资源列表。`GET /api/<resource>:list`.
+リソースのリストを取得します。`GET /api/<resource>:list`.
 
 ```shell
 curl -X GET http://localhost:13000/api/users:list
 ```
 
-#### 参数
+#### パラメータ
 
-| 参数名     | 类型       | 描述                                                    | 默认值 |
-| ---------- | ---------- | ------------------------------------------------------- | ------ |
-| `filter`   | `Filter`   | 过滤参数，参考 [Filter Operators](./database/operators) | -      |
-| `fields`   | `string[]` | 要获取的字段                                            | -      |
-| `except`   | `string[]` | 要排除的字段                                            | -      |
-| `appends`  | `string[]` | 要附加的关系字段                                        | -      |
-| `sort`     | `string[]` | 排序参数                                                | -      |
-| `pagniate` | `boolean`  | 是否分页                                                | `true` |
-| `page`     | `number`   | 当前页                                                  | `1`    |
-| `pageSize` | `number`   | 每页数据条数                                            | `20`   |
+| パラメータ名 | タイプ       | 説明                                                    | デフォルト値 |
+| ------------ | ------------ | ------------------------------------------------------- | ------------ |
+| `filter`     | `Filter`     | フィルタパラメータ、[Filter Operators](./database/operators) を参照 | -            |
+| `fields`     | `string[]`   | 取得するフィールド                                      | -            |
+| `except`     | `string[]`   | 除外するフィールド                                      | -            |
+| `appends`    | `string[]`   | 追加するリレーションフィールド                          | -            |
+| `sort`       | `string[]`   | ソートパラメータ                                        | -            |
+| `pagniate`   | `boolean`    | ページネーションを行うかどうか                          | `true`       |
+| `page`       | `number`     | 現在のページ                                            | `1`          |
+| `pageSize`   | `number`     | 1ページあたりのデータ数                                 | `20`         |
 
 ### get
 
-获取某个资源。`GET /api/<resource>:get`.
+特定のリソースを取得します。`GET /api/<resource>:get`.
 
 ```shell
 curl -X GET http://localhost:13000/api/users:get?filterByTk=1
 ```
 
-#### 参数
+#### パラメータ
 
-| 参数名       | 类型               | 描述                                                    | 默认值 |
-| ------------ | ------------------ | ------------------------------------------------------- | ------ |
-| `filterByTk` | `number \| string` | 过滤主键值                                              | -      |
-| `filter`     | `Filter`           | 过滤参数，参考 [Filter Operators](./database/operators) | -      |
-| `fields`     | `string[]`         | 要获取的字段                                            | -      |
-| `except`     | `string[]`         | 要排除的字段                                            | -      |
-| `appends`    | `string[]`         | 要附加的关系字段                                        | -      |
+| パラメータ名   | タイプ               | 説明                                                    | デフォルト値 |
+| -------------- | -------------------- | ------------------------------------------------------- | ------------ |
+| `filterByTk`   | `number \| string`   | 主キー値でフィルタ                                      | -            |
+| `filter`       | `Filter`             | フィルタパラメータ、[Filter Operators](./database/operators) を参照 | -            |
+| `fields`       | `string[]`           | 取得するフィールド                                      | -            |
+| `except`       | `string[]`           | 除外するフィールド                                      | -            |
+| `appends`      | `string[]`           | 追加するリレーションフィールド                          | -            |
 
 ### update
 
-更新一个或多个资源。`PUT /api/<resource>:update`.
+1つまたは複数のリソースを更新します。`PUT /api/<resource>:update`.
 
 ```shell
 curl "http://localhost:13000/api/users:update?filterByTk=1" \
@@ -85,41 +85,41 @@ curl "http://localhost:13000/api/users:update?filterByTk=1" \
   -d '{"username": "admin"}'
 ```
 
-#### 参数
+#### パラメータ
 
-| 参数名       | 类型               | 描述                                                    |
-| ------------ | ------------------ | ------------------------------------------------------- |
-| `filter`     | `Filter`           | 过滤参数，参考 [Filter Operators](./database/operators) |
-| `filterByTk` | `number \| string` | 过滤主键值                                              |
+| パラメータ名   | タイプ               | 説明                                                    |
+| -------------- | -------------------- | ------------------------------------------------------- |
+| `filter`       | `Filter`             | フィルタパラメータ、[Filter Operators](./database/operators) を参照 |
+| `filterByTk`   | `number \| string`   | 主キー値でフィルタ                                      |
 
-注：参数中的 `filter` 和 `filterByTk` 至少提供一项。
+注：パラメータの `filter` と `filterByTk` の少なくとも1つを指定する必要があります。
 
-#### 请求体
+#### リクエストボディ
 
-| 参数名          | 类型  | 描述                 |
-| --------------- | ----- | -------------------- |
-| `[key: string]` | `any` | 资源包含的字段键值对 |
+| パラメータ名      | タイプ | 説明                     |
+| ----------------- | ------ | ------------------------ |
+| `[key: string]`   | `any`  | リソースに含まれるフィールドのキーと値のペア |
 
 ### destroy
 
-删除一个或多个资源。`DELETE /api/<resource>:destroy`
+1つまたは複数のリソースを削除します。`DELETE /api/<resource>:destroy`
 
 ```shell
 curl -X DELETE http://localhost:13000/api/users:destory?filterByTk=1
 ```
 
-#### 参数
+#### パラメータ
 
-| 参数名       | 类型               | 描述                                                    |
-| ------------ | ------------------ | ------------------------------------------------------- |
-| `filter`     | `Filter`           | 过滤参数，参考 [Filter Operators](./database/operators) |
-| `filterByTk` | `number \| string` | 过滤主键值                                              |
+| パラメータ名   | タイプ               | 説明                                                    |
+| -------------- | -------------------- | ------------------------------------------------------- |
+| `filter`       | `Filter`             | フィルタパラメータ、[Filter Operators](./database/operators) を参照 |
+| `filterByTk`   | `number \| string`   | 主キー値でフィルタ                                      |
 
-注：参数中的 `filter` 和 `filterByTk` 至少提供一项。
+注：パラメータの `filter` と `filterByTk` の少なくとも1つを指定する必要があります。
 
 ### firstOrCreate
 
-获取或创建一个资源。`POST /api/<resource>:firstOrCreate`.
+リソースを取得または作成します。`POST /api/<resource>:firstOrCreate`.
 
 ```shell
 curl "http://localhost:13000/api/users:firstOrCreate?filterKeys[]=username" \
@@ -128,21 +128,21 @@ curl "http://localhost:13000/api/users:firstOrCreate?filterKeys[]=username" \
   -d '{"username": "admin", "nickname": "Admin"}'
 ```
 
-#### 参数
+#### パラメータ
 
-| 参数名       | 类型       | 描述                           |
-| ------------ | ---------- | ------------------------------ |
-| `filterKeys` | `string[]` | 请求体中用来查找已有资源的字段 |
+| パラメータ名   | タイプ       | 説明                           |
+| -------------- | ------------ | ------------------------------ |
+| `filterKeys`   | `string[]`   | リクエストボディで既存リソースを検索するためのフィールド |
 
-#### 请求体
+#### リクエストボディ
 
-| 参数名          | 类型  | 描述                 |
-| --------------- | ----- | -------------------- |
-| `[key: string]` | `any` | 资源包含的字段键值对 |
+| パラメータ名      | タイプ | 説明                     |
+| ----------------- | ------ | ------------------------ |
+| `[key: string]`   | `any`  | リソースに含まれるフィールドのキーと値のペア |
 
 ### updateOrCreate
 
-更新或创建一个资源。`POST /api/<resource>:updateOrCreate`.
+リソースを更新または作成します。`POST /api/<resource>:updateOrCreate`.
 
 ```shell
 curl "http://localhost:13000/api/users:updateOrCreate?filterKeys[]=username" \
@@ -151,40 +151,40 @@ curl "http://localhost:13000/api/users:updateOrCreate?filterKeys[]=username" \
   -d '{"username": "admin", "nickname": "Admin"}'
 ```
 
-#### 参数
+#### パラメータ
 
-| 参数名       | 类型       | 描述                           |
-| ------------ | ---------- | ------------------------------ |
-| `filterKeys` | `string[]` | 请求体中用来查找已有资源的字段 |
+| パラメータ名   | タイプ       | 説明                           |
+| -------------- | ------------ | ------------------------------ |
+| `filterKeys`   | `string[]`   | リクエストボディで既存リソースを検索するためのフィールド |
 
-#### 请求体
+#### リクエストボディ
 
-| 参数名          | 类型  | 描述                 |
-| --------------- | ----- | -------------------- |
-| `[key: string]` | `any` | 资源包含的字段键值对 |
+| パラメータ名      | タイプ | 説明                     |
+| ----------------- | ------ | ------------------------ |
+| `[key: string]`   | `any`  | リソースに含まれるフィールドのキーと値のペア |
 
 ### move
 
-移动资源，调整排序。通常用于页面中实现拖拽排序。`POST /api/<resource>:move`.
+リソースを移動し、順序を調整します。通常、ページ内でドラッグアンドドロップによるソートを実装するために使用されます。`POST /api/<resource>:move`.
 
 ```shell
 curl -X POST "http://localhost:13000/api/users:move?sourceId=1&targetId=2"
 ```
 
-#### 参数
+#### パラメータ
 
-| 参数名        | 类型                       | 描述                                                 | 默认值 |
-| ------------- | -------------------------- | ---------------------------------------------------- | ------ |
-| `sourceId`    | `targetKey`                | 移动的元素ID                                         | -      |
-| `targetId`    | `targetKey`                | 与移动元素交换位置的元素ID                           | -      |
-| `sortField`   | `string`                   | 排序存储的字段名                                     | `sort` |
-| `targetScope` | `string`                   | 排序的scope，一个 resource 可以按照不同的 scope 排序 | -      |
-| `sticky`      | `boolean`                  | 是否置顶移动的元素                                   | -      |
-| `method`      | `insertAfter` \| `prepend` | 插入类型，插入目标元素之前还是之后                   | -      |
+| パラメータ名    | タイプ                       | 説明                                                 | デフォルト値 |
+| --------------- | ---------------------------- | ---------------------------------------------------- | ------------ |
+| `sourceId`      | `targetKey`                  | 移動する要素のID                                     | -            |
+| `targetId`      | `targetKey`                  | 移動する要素と位置を交換する要素のID                 | -            |
+| `sortField`     | `string`                     | ソートを保存するフィールド名                         | `sort`       |
+| `targetScope`   | `string`                     | ソートのスコープ、リソースは異なるスコープでソート可能 | -            |
+| `sticky`        | `boolean`                    | 移動する要素を先頭に固定するかどうか                 | -            |
+| `method`        | `insertAfter` \| `prepend`   | 挿入タイプ、ターゲット要素の前後に挿入               | -            |
 
 ### set
 
-设置资源的关联对象。`POST /api/<resource>/<resourceKey>/<association>:set`.
+リソースの関連オブジェクトを設定します。`POST /api/<resource>/<resourceKey>/<association>:set`.
 
 ```shell
 curl "http://localhost:13000/api/users/1/roles:set" \
@@ -193,13 +193,13 @@ curl "http://localhost:13000/api/users/1/roles:set" \
   -d '["admin", "member"]'
 ```
 
-#### 请求体
+#### リクエストボディ
 
-- `TargetKey | TargetKey[]` - 关联对象主键值数组。
+- `TargetKey | TargetKey[]` - 関連オブジェクトの主キー値の配列。
 
 ### add
 
-添加资源的关联对象。`POST /api/<resource>/<resourceKey>/<association>:add`.
+リソースの関連オブジェクトを追加します。`POST /api/<resource>/<resourceKey>/<association>:add`.
 
 ```shell
 curl "http://localhost:13000/api/users/1/roles:add" \
@@ -208,13 +208,13 @@ curl "http://localhost:13000/api/users/1/roles:add" \
   -d '["admin"]'
 ```
 
-#### 请求体
+#### リクエストボディ
 
-- `TargetKey | TargetKey[]` - 关联对象主键值数组。
+- `TargetKey | TargetKey[]` - 関連オブジェクトの主キー値の配列。
 
 ### remove
 
-移除资源的关联对象。`POST /api/<resource>/<resourceKey>/<association>:remove`.
+リソースの関連オブジェクトを削除します。`POST /api/<resource>/<resourceKey>/<association>:remove`.
 
 ```shell
 curl "http://localhost:13000/api/users/1/roles:remove" \
@@ -223,13 +223,13 @@ curl "http://localhost:13000/api/users/1/roles:remove" \
   -d '["admin"]'
 ```
 
-#### 请求体
+#### リクエストボディ
 
-- `TargetKey | TargetKey[]` - 关联对象主键值数组。
+- `TargetKey | TargetKey[]` - 関連オブジェクトの主キー値の配列。
 
 ### toggle
 
-切换资源的关联对象，存在的移除，不存在的添加。`POST /api/<resource>/<resourceKey>/<association>:toggle`.
+リソースの関連オブジェクトを切り替えます。存在する場合は削除し、存在しない場合は追加します。`POST /api/<resource>/<resourceKey>/<association>:toggle`.
 
 ```shell
 curl "http://localhost:13000/api/users/1/roles:toggle" \
@@ -238,6 +238,6 @@ curl "http://localhost:13000/api/users/1/roles:toggle" \
   -d '["admin", "member"]'
 ```
 
-#### 请求体
+#### リクエストボディ
 
-- `TargetKey | TargetKey[]` - 关联对象主键值数组。
+- `TargetKey | TargetKey[]` - 関連オブジェクトの主キー値の配列。

@@ -3,49 +3,44 @@
 
 ## {{encodeURI}}
 
-Encodes a Uniform Resource Identifier (URI) component
-by replacing each instance of certain characters by
-one, two, three, or four escape sequences representing
-the UTF-8 encoding of the character.
+URI（Uniform Resource Identifier）コンポーネントをエンコードします。特定の文字の各インスタンスを、その文字のUTF-8エンコーディングを表す1つ、2つ、3つ、または4つのエスケープシーケンスに置き換えます。
 
-**Params**
+**パラメータ**
 
-* `str` **{String}**: The un-encoded string
-* `returns` **{String}**: The endcoded string
+* `str` **{String}**: エンコードされていない文字列
+* `returns` **{String}**: エンコードされた文字列
 
 ## {{escape}}
 
-Escape the given string by replacing characters with escape sequences.
-Useful for allowing the string to be used in a URL, etc.
+与えられた文字列をエスケープシーケンスに置き換えてエスケープします。URLなどで文字列を使用できるようにするのに便利です。
 
-**Params**
+**パラメータ**
 
 * `str` **{String}**
-* `returns` **{String}**: Escaped string.
+* `returns` **{String}**: エスケープされた文字列
 
 ## {{decodeURI}}
 
-Decode a Uniform Resource Identifier (URI) component.
+URI（Uniform Resource Identifier）コンポーネントをデコードします。
 
-**Params**
+**パラメータ**
 
 * `str` **{String}**
 * `returns` **{String}**
 
 ## {{url_encode}}
 
-Alias for [encodeURI](#encodeuri).
+[encodeURI](#encodeuri)のエイリアスです。
 
 ## {{url_decode}}
 
-Alias for [decodeURI](#decodeuri).
+[decodeURI](#decodeuri)のエイリアスです。
 
 ## {{urlResolve}}
 
-Take a base URL, and a href URL, and resolve them as a
-browser would for an anchor tag.
+ベースURLとhref URLを取り、アンカータグとしてブラウザが解決するようにそれらを解決します。
 
-**Params**
+**パラメータ**
 
 * `base` **{String}**
 * `href` **{String}**
@@ -53,35 +48,35 @@ browser would for an anchor tag.
 
 ## {{urlParse}}
 
-Parses a `url` string into an object.
+`url`文字列をオブジェクトに解析します。
 
-**Params**
+**パラメータ**
 
-* `str` **{String}**: URL string
-* `returns` **{String}**: Returns stringified JSON
+* `str` **{String}**: URL文字列
+* `returns` **{String}**: 文字列化されたJSONを返します
 
 ## {{stripQuerystring}}
 
-Strip the query string from the given `url`.
+与えられた`url`からクエリ文字列を取り除きます。
 
-**Params**
+**パラメータ**
 
 * `url` **{String}**
-* `returns` **{String}**: the url without the queryString
+* `returns` **{String}**: クエリ文字列のないURL
 
 ## {{stripProtocol}}
 
-Strip protocol from a `url`. Useful for displaying media that may have an 'http' protocol on secure connections.
+`url`からプロトコルを取り除きます。セキュアな接続で'http'プロトコルを持つ可能性のあるメディアを表示するのに便利です。
 
-**Params**
+**パラメータ**
 
 * `str` **{String}**
-* `returns` **{String}**: the url with http protocol stripped
+* `returns` **{String}**: httpプロトコルが取り除かれたURL
 
-**Example**
+**例**
 
 ```handlebars
 <!-- url = 'http://foo.bar' -->
 {{stripProtocol url}}
-<!-- results in: '//foo.bar' -->
+<!-- 結果: '//foo.bar' -->
 ```

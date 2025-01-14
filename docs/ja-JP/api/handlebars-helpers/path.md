@@ -1,49 +1,49 @@
 
-# Path
+# パス
 
 ## {{absolute}}
 
-Get the directory path segment from the given `filepath`.
+指定された `filepath` からディレクトリパスのセグメントを取得します。
 
-**Params**
+**パラメータ**
 
 * `ext` **{String}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{absolute "docs/toc.md"}}
-<!-- results in: 'docs' -->
+<!-- 結果: 'docs' -->
 ```
 
 ## {{dirname}}
 
-Get the directory path segment from the given `filepath`.
+指定された `filepath` からディレクトリパスのセグメントを取得します。
 
-**Params**
+**パラメータ**
 
 * `ext` **{String}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{dirname "docs/toc.md"}}
-<!-- results in: 'docs' -->
+<!-- 結果: 'docs' -->
 ```
 
 ## {{relative}}
 
-Get the relative filepath from `a` to `b`.
+`a` から `b` への相対ファイルパスを取得します。
 
-**Params**
+**パラメータ**
 
 * `a` **{String}**
 * `b` **{String}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{relative a b}}
@@ -51,86 +51,86 @@ Get the relative filepath from `a` to `b`.
 
 ## {{basename}}
 
-Get the file extension from the given `filepath`.
+指定された `filepath` からファイル名を取得します。
 
-**Params**
+**パラメータ**
 
 * `ext` **{String}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{basename "docs/toc.md"}}
-<!-- results in: 'toc.md' -->
+<!-- 結果: 'toc.md' -->
 ```
 
 ## {{stem}}
 
-Get the "stem" from the given `filepath`.
+指定された `filepath` から「ステム」を取得します。
 
-**Params**
+**パラメータ**
 
 * `filepath` **{String}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{stem "docs/toc.md"}}
-<!-- results in: 'toc' -->
+<!-- 結果: 'toc' -->
 ```
 
 ## {{extname}}
 
-Get the file extension from the given `filepath`.
+指定された `filepath` からファイル拡張子を取得します。
 
-**Params**
+**パラメータ**
 
 * `filepath` **{String}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{extname "docs/toc.md"}}
-<!-- results in: '.md' -->
+<!-- 結果: '.md' -->
 ```
 
 ## {{resolve}}
 
-Resolve an absolute path from the given `filepath`.
+指定された `filepath` から絶対パスを解決します。
 
-**Params**
+**パラメータ**
 
 * `filepath` **{String}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 {{resolve "docs/toc.md"}}
-<!-- results in: '/User/dev/docs/toc.md' -->
+<!-- 結果: '/User/dev/docs/toc.md' -->
 ```
 
 ## {{segments}}
 
-Get specific (joined) segments of a file path by passing a range of array indices.
+配列インデックスの範囲を渡すことで、ファイルパスの特定の（結合された）セグメントを取得します。
 
-**Params**
+**パラメータ**
 
-* `filepath` **{String}**: The file path to split into segments.
-* `returns` **{String}**: Returns a single, joined file path.
+* `filepath` **{String}**: セグメントに分割するファイルパス。
+* `returns` **{String}**: 結合された単一のファイルパスを返します。
 
-**Example**
+**例**
 
 ```handlebars
 {{segments "a/b/c/d" "2" "3"}}
-<!-- results in: 'c/d' -->
+<!-- 結果: 'c/d' -->
 
 {{segments "a/b/c/d" "1" "3"}}
-<!-- results in: 'b/c/d' -->
+<!-- 結果: 'b/c/d' -->
 
 {{segments "a/b/c/d" "1" "2"}}
-<!-- results in: 'b/c' -->
+<!-- 結果: 'b/c' -->
 ```

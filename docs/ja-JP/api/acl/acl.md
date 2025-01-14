@@ -1,27 +1,27 @@
 # ACL
 
-## 概览
+## 概要
 
-`ACL` 是 NocoBase 用的权限管理模块，负责用户角色管理、权限注册和授权、权限策略判断和访问控制。
+`ACL` は NocoBase で使用される権限管理モジュールで、ユーザーロール管理、権限登録と承認、権限ポリシーの判断およびアクセス制御を担当します。
 
-### 概念解释
+### 概念の説明
 
-- **资源** (`Resource`): 数据表，也可以注册自定义的资源，参考 [`@nocobase/resourcer`](../resourcer/resource-manager.md).
-- **操作** (`Action`): 某个资源的操作接口，如创建、查看、更新、删除或其他自定义操作。参考 [`@nocobase/actions`](../actions).
-- **策略** (`Strategy`): 配置角色的全局权限，如创建、查看、更新、删除、导入和导出等资源操作权限，以及配置用户界面等系统权限。
-- **片段** (`Snippet`): 定义一组操作的集合，实现一组操作权限的统一管理。片段标识可以按照 <a href="https://github.com/isaacs/minimatch" target="_blank">minimatch</a> 规则模糊匹配。
+- **リソース** (`Resource`): データシート、またはカスタムリソースを登録することもできます。詳細は [`@nocobase/resourcer`](../resourcer/resource-manager.md) を参照してください。
+- **操作** (`Action`): 特定のリソースに対する操作インターフェースで、作成、表示、更新、削除、またはその他のカスタム操作が含まれます。詳細は [`@nocobase/actions`](../actions) を参照してください。
+- **ポリシー** (`Strategy`): ロールのグローバル権限を設定します。リソース操作権限（作成、表示、更新、削除、インポート、エクスポートなど）やシステム権限（ユーザーインターフェースの設定など）を含みます。
+- **スニペット** (`Snippet`): 一連の操作を定義し、一連の操作権限を統一管理します。スニペット識別子は <a href="https://github.com/isaacs/minimatch" target="_blank">minimatch</a> ルールに従って曖昧一致させることができます。
 
-## 类方法
+## クラスメソッド
 
 ### `define()`
 
-定义一个角色。
+ロールを定義します。
 
-#### 签名
+#### シグネチャ
 
 - `define(options: DefineOptions): ACLRole`
 
-#### 类型
+#### タイプ
 
 ```ts
 export interface DefineOptions {
@@ -51,45 +51,45 @@ export interface RoleActionParams {
 }
 ```
 
-#### 详细信息
+#### 詳細
 
 ##### DefineOptions
 
-| 属性       | 类型                                                                | 描述                                                   |
+| プロパティ       | タイプ                                                                | 説明                                                   |
 | ---------- | ------------------------------------------------------------------- | ------------------------------------------------------ |
-| `role`     | `string`                                                            | 角色唯一标识                                           |
-| `strategy` | `string` \| [`AvailableStrategyOptions`](#availablestrategyoptions) | 可选，角色的全局访问策略, 可以是策略标识或者策略配置。 |
-| `actions`  | [`{ [actionName: string]: RoleActionParams; }`](#roleactionparams)  | 可选，针对动作的权限配置                               |
-| `snippets` | `string[]`                                                          | 可选，定义角色有权限的片段                             |
+| `role`     | `string`                                                            | ロールの一意識別子                                           |
+| `strategy` | `string` \| [`AvailableStrategyOptions`](#availablestrategyoptions) | オプション、ロールのグローバルアクセスポリシー、ポリシー識別子またはポリシー設定。 |
+| `actions`  | [`{ [actionName: string]: RoleActionParams; }`](#roleactionparams)  | オプション、操作に対する権限設定                               |
+| `snippets` | `string[]`                                                          | オプション、ロールが権限を持つスニペットを定義                             |
 
 ##### AvailableStrategyOptions
 
-| 属性             | 类型                              | 描述                       |
+| プロパティ             | タイプ                              | 説明                       |
 | ---------------- | --------------------------------- | -------------------------- |
-| `displayName`    | `string`                          | 可选，策略展示标题         |
-| `action`         | `false` \| `string` \| `string[]` | 可选, 操作接口             |
-| `allowConfigure` | `boolean`                         | 可选，是否允许配置用户界面 |
-| `resource`       | `*`                               | 表示对所有资源生效         |
+| `displayName`    | `string`                          | オプション、ポリシーの表示タイトル         |
+| `action`         | `false` \| `string` \| `string[]` | オプション, 操作インターフェース             |
+| `allowConfigure` | `boolean`                         | オプション、ユーザーインターフェースの設定を許可するかどうか |
+| `resource`       | `*`                               | すべてのリソースに適用         |
 
 ##### RoleActionParams
 
-| 属性        | 类型       | 描述                                                   |
+| プロパティ        | タイプ       | 説明                                                   |
 | ----------- | ---------- | ------------------------------------------------------ |
-| `fields`    | `string[]` | 可选，需要操作的数据表字段                             |
-| `filter`    | `any`      | 可选, 需要满足的过滤参数，只能对符合条件的记录执行操作 |
-| `own`       | `boolean`  | 可选，是否只能操作自己创建的记录                       |
-| `whitelist` | `string[]` | 可选，字段白名单，在名单中的字段才可以访问             |
-| `blacklist` | `string[]` | 可选，字段黑名单，在名单中的字段不能访问               |
+| `fields`    | `string[]` | オプション、操作するデータシートのフィールド                             |
+| `filter`    | `any`      | オプション, 操作を実行するために満たす必要のあるフィルタパラメータ、条件に合致するレコードのみ操作可能 |
+| `own`       | `boolean`  | オプション、自分が作成したレコードのみ操作可能                       |
+| `whitelist` | `string[]` | オプション、フィールドのホワイトリスト、リスト内のフィールドのみアクセス可能             |
+| `blacklist` | `string[]` | オプション、フィールドのブラックリスト、リスト内のフィールドはアクセス不可               |
 
 ### `can()`
 
-判断操作执行权限，并返回最终的操作参数。返回 `null` 时表示无权限。
+操作の実行権限を判断し、最終的な操作パラメータを返します。`null` を返す場合は権限がないことを示します。
 
-#### 签名
+#### シグネチャ
 
 - `can(options: CanArgs): CanResult | null`
 
-#### 类型
+#### タイプ
 
 ```ts
 interface CanArgs {
@@ -107,35 +107,35 @@ interface CanResult {
 }
 ```
 
-#### 详细信息
+#### 詳細
 
 ##### CanArgs
 
-| 属性       | 类型     | 描述             |
+| プロパティ       | タイプ     | 説明             |
 | ---------- | -------- | ---------------- |
-| `role`     | `string` | 角色标识         |
-| `resource` | `string` | 资源标识         |
-| `action`   | `string` | 操作标识         |
-| `ctx`      | `any`    | 可选，请求上下文 |
+| `role`     | `string` | ロール識別子         |
+| `resource` | `string` | リソース識別子         |
+| `action`   | `string` | 操作識別子         |
+| `ctx`      | `any`    | オプション、リクエストコンテキスト |
 
 ##### CanResult
 
-| 属性       | 类型     | 描述           |
+| プロパティ       | タイプ     | 説明           |
 | ---------- | -------- | -------------- |
-| `role`     | `string` | 角色标识       |
-| `resource` | `string` | 资源标识       |
-| `action`   | `string` | 操作标识       |
-| `params`   | `any`    | 可选，操作参数 |
+| `role`     | `string` | ロール識別子       |
+| `resource` | `string` | リソース識別子       |
+| `action`   | `string` | 操作識別子       |
+| `params`   | `any`    | オプション、操作パラメータ |
 
 ### `registerSnippet()`
 
-注册片段。
+スニペットを登録します。
 
-#### 签名
+#### シグネチャ
 
 - `registerSnippet(snippet: SnippetOptions)`
 
-#### 类型
+#### タイプ
 
 ```ts
 export type SnippetOptions = {
@@ -144,18 +144,18 @@ export type SnippetOptions = {
 };
 ```
 
-#### 详细信息
+#### 詳細
 
-| 属性      | 类型       | 描述                                                                                                                                       |
+| プロパティ      | タイプ       | 説明                                                                                                                                       |
 | --------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| `name`    | `string`   | 片段标识，可以按照 <a href="https://github.com/isaacs/minimatch" target="_blank">minimatch</a> 规则进行匹配。如 `auth.auth` 匹配 `auth.*`. |
-| `actions` | `string[]` | 片段包含的资源操作, 以 `resource:action` 的格式。如 `users:list`.                                                                          |
+| `name`    | `string`   | スニペット識別子、<a href="https://github.com/isaacs/minimatch" target="_blank">minimatch</a> ルールに従って一致させることができます。例: `auth.auth` は `auth.*` に一致。 |
+| `actions` | `string[]` | スニペットに含まれるリソース操作, `resource:action` の形式。例: `users:list`.                                                                          |
 
 ### `setAvailableAction()`
 
-设定允许的操作。
+許可される操作を設定します。
 
-#### 签名
+#### シグネチャ
 
 - `setAvailableAction(name: string, options: AvailableActionOptions = {})`
 
@@ -164,68 +164,68 @@ export interface AvailableActionOptions {
   displayName?: string;
   aliases?: string[] | string;
   resource?: string;
-  // 对新数据进行操作
+  // 新規データに対する操作
   onNewRecord?: boolean;
-  // 允许配置字段
+  // フィールドの設定を許可
   allowConfigureFields?: boolean;
 }
 ```
 
-#### 详细信息
+#### 詳細
 
-| 属性                   | 类型                   | 描述                                                  |
+| プロパティ                   | タイプ                   | 説明                                                  |
 | ---------------------- | ---------------------- | ----------------------------------------------------- |
-| `displayName`          | `string`               | 可选，操作展示标题                                    |
-| `aliases`              | `string` \| `string[]` | 可选，操作别名。如 `get`, `list` 操作别名都为 `view`. |
-| `resource`             | `string`               | 可选, 资源                                            |
-| `onNewRecord`          | `boolean`              | 可选，操作是否针对新数据。如创建操作。                |
-| `allowConfigureFields` | `boolean`              | 可选，是否允许配置字段                                |
+| `displayName`          | `string`               | オプション、操作の表示タイトル                                    |
+| `aliases`              | `string` \| `string[]` | オプション、操作の別名。例: `get`, `list` 操作の別名は `view`. |
+| `resource`             | `string`               | オプション, リソース                                            |
+| `onNewRecord`          | `boolean`              | オプション、操作が新規データに対するものかどうか。例: 作成操作。                |
+| `allowConfigureFields` | `boolean`              | オプション、フィールドの設定を許可するかどうか                                |
 
 ### `setAvailableStrategy()`
 
-设定允许操作的策略
+許可される操作のポリシーを設定します。
 
-#### 签名
+#### シグネチャ
 
 - `setAvailableStrategy(name: string, options: AvailableStrategyOptions)`
 
-参考 [AvailableStrategyOptions](#availablestrategyoptions)
+詳細は [AvailableStrategyOptions](#availablestrategyoptions) を参照してください。
 
 ### `allow()`
 
-设定允许操作的条件。
+許可される操作の条件を設定します。
 
 ```ts
 acl.allow('plugins', '*', 'public');
 ```
 
-#### 签名
+#### シグネチャ
 
 - `allow(resourceName: string, actionNames: string[] | string, condition?: string | ConditionFunc)`
 
-#### 类型
+#### タイプ
 
 ```ts
 export type ConditionFunc = (ctx: any) => Promise<boolean> | boolean;
 ```
 
-#### 详细信息
+#### 詳細
 
-| 参数           | 类型                        | 描述                                 | 默认值   |
+| パラメータ           | タイプ                        | 説明                                 | デフォルト値   |
 | -------------- | --------------------------- | ------------------------------------ | -------- |
-| `resourceName` | `string`                    | 资源                                 | -        |
+| `resourceName` | `string`                    | リソース                                 | -        |
 | `actionNames`  | `string` \| `string[]`      | 操作                                 | -        |
-| `condition`    | `string` \| `ConditionFunc` | 可选, 预置的条件标识，或条件判断函数 | `public` |
+| `condition`    | `string` \| `ConditionFunc` | オプション, 事前定義された条件識別子、または条件判断関数 | `public` |
 
-预置的条件标识：
+事前定義された条件識別子：
 
-- `public`: 公开接口。
-- `loggedIn`: 用户已登录时允许。
-- `allowConfigure`: 当前用户角色有配置用户界面权限时允许。
+- `public`: 公開インターフェース。
+- `loggedIn`: ユーザーがログインしている場合に許可。
+- `allowConfigure`: 現在のユーザーロールがユーザーインターフェースの設定権限を持っている場合に許可。
 
 ### `addFixedParams()`
 
-给操作添加固定参数，和当前请求参数合并。
+操作に固定パラメータを追加し、現在のリクエストパラメータと結合します。
 
 ```ts
 acl.addFixedParams('users', 'list', () => {
@@ -239,27 +239,27 @@ acl.addFixedParams('users', 'list', () => {
 });
 ```
 
-#### 签名
+#### シグネチャ
 
 - `addFixedParams(resource: string, action: string, merger: Merger)`
 
-#### 类型
+#### タイプ
 
 ```ts
 export type Merger = () => object;
 ```
 
-#### 详细信息
+#### 詳細
 
-| 参数       | 类型     | 描述                           |
+| パラメータ       | タイプ     | 説明                           |
 | ---------- | -------- | ------------------------------ |
-| `resource` | `string` | 资源                           |
+| `resource` | `string` | リソース                           |
 | `action`   | `string` | 操作                           |
-| `merger`   | `Merger` | 函数，返回要添加的固定参数对象 |
+| `merger`   | `Merger` | 関数、追加する固定パラメータオブジェクトを返す |
 
 ### `use()`
 
-添加 `ACL` 中间件。
+`ACL` ミドルウェアを追加します。
 
 ```ts
 acl.use(async () => {
@@ -270,14 +270,14 @@ acl.use(async () => {
 });
 ```
 
-#### 签名
+#### シグネチャ
 
 - `use(fn: any, options?: ToposortOptions)`
 
-#### 详细信息
+#### 詳細
 
-参考[中间件](../../development/server/middleware)。
+詳細は[ミドルウェア](../../development/server/middleware)を参照してください。
 
 ### `middleware()`
 
-NocoBase 访问控制中间件。
+NocoBase のアクセス制御ミドルウェア。

@@ -1,66 +1,63 @@
-# Comparison
+# 比較
 
 ## {{and}}
 
-Helper that renders the block if **both** of the given values are truthy. If an inverse block is specified it will be rendered when falsy. Works as a block helper, inline helper or subexpression.
+与えられた値の**両方**が真である場合にブロックをレンダリングするヘルパー。逆ブロックが指定されている場合、偽の場合にレンダリングされます。ブロックヘルパー、インラインヘルパー、またはサブエクスプレッションとして機能します。
 
-**Params**
+**パラメータ**
 
 * `a` **{any}**
 * `b` **{any}**
-* `options` **{Object}**: Handlebars provided options object
+* `options` **{Object}**: Handlebarsが提供するオプションオブジェクト
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 <!-- {great: true, magnificent: true} -->
 {{#and great magnificent}}A{{else}}B{{/and}}
-<!-- results in: 'A' -->
+<!-- 結果: 'A' -->
 ```
 
 ## {{compare}}
 
-Render a block when a comparison of the first and third
-arguments returns true. The second argument is
-the [arithemetic operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators) to use. You may also
-optionally specify an inverse block to render when falsy.
+最初と3番目の引数の比較がtrueを返す場合にブロックをレンダリングします。2番目の引数は使用する[算術演算子](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators)です。また、偽の場合にレンダリングする逆ブロックをオプションで指定できます。
 
-**Params**
+**パラメータ**
 
 * `a` **{}**
-* `operator` **{}**: The operator to use. Operators must be enclosed in quotes: `">"`, `"="`, `"<="`, and so on.
+* `operator` **{}**: 使用する演算子。演算子は引用符で囲む必要があります: `">"`, `"="`, `"<="`など。
 * `b` **{}**
-* `options` **{Object}**: Handlebars provided options object
-* `returns` **{String}**: Block, or if specified the inverse block is rendered if falsey.
+* `options` **{Object}**: Handlebarsが提供するオプションオブジェクト
+* `returns` **{String}**: ブロック、または指定されている場合は逆ブロックが偽の場合にレンダリングされます。
 
 ## {{contains}}
 
-Block helper that renders the block if `collection` has the given `value`, using strict equality (`===`) for comparison, otherwise the inverse block is rendered (if specified). If a `startIndex` is specified and is negative, it is used as the offset from the end of the collection.
+`データシート`に指定された`value`が含まれている場合にブロックをレンダリングするブロックヘルパー。比較には厳密な等価性（`===`）が使用されます。逆ブロックが指定されている場合、含まれていない場合にレンダリングされます。`startIndex`が指定されていて負の値の場合、データシートの末尾からのオフセットとして使用されます。
 
-**Params**
+**パラメータ**
 
-* `collection` **{Array|Object|String}**: The collection to iterate over.
-* `value` **{any}**: The value to check for.
-* `[startIndex=0]` **{Number}**: Optionally define the starting index.
-* `options` **{Object}**: Handlebars provided options object.
+* `collection` **{Array|Object|String}**: イテレートするデータシート。
+* `value` **{any}**: チェックする値。
+* `[startIndex=0]` **{Number}**: オプションで開始インデックスを定義します。
+* `options` **{Object}**: Handlebarsが提供するオプションオブジェクト。
 
-**Example**
+**例**
 
 ```handlebars
 <!-- array = ['a', 'b', 'c'] -->
 {{#contains array "d"}}
-  This will not be rendered.
+  これはレンダリングされません。
 {{else}}
-  This will be rendered.
+  これはレンダリングされます。
 {{/contains}}
 ```
 
 ## {{default}}
 
-Returns the first value that is not undefined, otherwise the "default" value is returned.
+未定義でない最初の値を返し、それ以外の場合は「デフォルト」値を返します。
 
-**Params**
+**パラメータ**
 
 * `value` **{any}**
 * `defaultValue` **{any}**
@@ -68,89 +65,79 @@ Returns the first value that is not undefined, otherwise the "default" value is 
 
 ## {{eq}}
 
-Block helper that renders a block if `a` is **equal to** `b`.
-If an inverse block is specified it will be rendered when falsy.
-You may optionally use the `compare=""` hash argument for the
-second value.
+`a`が`b`と**等しい**場合にブロックをレンダリングするブロックヘルパー。逆ブロックが指定されている場合、偽の場合にレンダリングされます。2番目の値に対して`compare=""`ハッシュ引数をオプションで使用できます。
 
-**Params**
+**パラメータ**
 
 * `a` **{String}**
 * `b` **{String}**
-* `options` **{Object}**: Handlebars provided options object
-* `returns` **{String}**: Block, or inverse block if specified and falsey.
+* `options` **{Object}**: Handlebarsが提供するオプションオブジェクト
+* `returns` **{String}**: ブロック、または指定されている場合は逆ブロックが偽の場合にレンダリングされます。
 
 ## {{gt}}
 
-Block helper that renders a block if `a` is **greater than** `b`.
+`a`が`b`より**大きい**場合にブロックをレンダリングするブロックヘルパー。
 
-If an inverse block is specified it will be rendered when falsy.
-You may optionally use the `compare=""` hash argument for the
-second value.
+逆ブロックが指定されている場合、偽の場合にレンダリングされます。2番目の値に対して`compare=""`ハッシュ引数をオプションで使用できます。
 
-**Params**
+**パラメータ**
 
 * `a` **{String}**
 * `b` **{String}**
-* `options` **{Object}**: Handlebars provided options object
-* `returns` **{String}**: Block, or inverse block if specified and falsey.
+* `options` **{Object}**: Handlebarsが提供するオプションオブジェクト
+* `returns` **{String}**: ブロック、または指定されている場合は逆ブロックが偽の場合にレンダリングされます。
 
 ## {{gte}}
 
-Block helper that renders a block if `a` is **greater than or equal to** `b`.
+`a`が`b`以上の場合にブロックをレンダリングするブロックヘルパー。
 
-If an inverse block is specified it will be rendered when falsy.
-You may optionally use the `compare=""` hash argument for the
-second value.
+逆ブロックが指定されている場合、偽の場合にレンダリングされます。2番目の値に対して`compare=""`ハッシュ引数をオプションで使用できます。
 
-**Params**
+**パラメータ**
 
 * `a` **{String}**
 * `b` **{String}**
-* `options` **{Object}**: Handlebars provided options object
-* `returns` **{String}**: Block, or inverse block if specified and falsey.
+* `options` **{Object}**: Handlebarsが提供するオプションオブジェクト
+* `returns` **{String}**: ブロック、または指定されている場合は逆ブロックが偽の場合にレンダリングされます。
 
 ## {{has}}
 
-Block helper that renders a block if `value` has `pattern`.
-If an inverse block is specified it will be rendered when falsy.
+`value`が`pattern`を持っている場合にブロックをレンダリングするブロックヘルパー。逆ブロックが指定されている場合、偽の場合にレンダリングされます。
 
-**Params**
+**パラメータ**
 
-* `val` **{any}**: The value to check.
-* `pattern` **{any}**: The pattern to check for.
-* `options` **{Object}**: Handlebars provided options object
+* `val` **{any}**: チェックする値。
+* `pattern` **{any}**: チェックするパターン。
+* `options` **{Object}**: Handlebarsが提供するオプションオブジェクト
 * `returns` **{String}**
 
 ## {{isEmpty}}
 
-Inline, subexpression, or block helper that returns true (or the block) if the given collection is empty, or false (or the inverse block, if supplied) if the colleciton is not empty.
+与えられたデータシートが空の場合にtrue（またはブロック）を返し、データシートが空でない場合にfalse（または指定されている場合は逆ブロック）を返すインライン、サブエクスプレッション、またはブロックヘルパー。
 
-**Params**
+**パラメータ**
 
 * `collection` **{Object}**
 * `options` **{Object}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 <!-- array: [] -->
 {{#isEmpty array}}AAA{{else}}BBB{{/isEmpty}}
-<!-- results in: 'AAA' -->
+<!-- 結果: 'AAA' -->
 
 <!-- array: [] -->
 {{isEmpty array}}
-<!-- results in: true -->
+<!-- 結果: true -->
 ```
 
 ## {{isFalsey}}
 
-Returns true if the given `value` is falsey. Uses the [falsey](https://github.com/jonschlinkert/falsey)
-library for comparisons. Please see that library for more information
-or to report bugs with this helper.
+与えられた`value`が偽である場合にtrueを返します。比較には[falsey](https://github.com/jonschlinkert/falsey)ライブラリを使用します。詳細やこのヘルパーのバグ報告については、そのライブラリを参照してください。
 
-**Params**
+**パラメータ**
 
 * `val` **{any}**
 * `options` **{Options}**
@@ -158,11 +145,9 @@ or to report bugs with this helper.
 
 ## {{isTruthy}}
 
-Returns true if the given `value` is truthy. Uses the [falsey](https://github.com/jonschlinkert/falsey)
-library for comparisons. Please see that library for more information
-or to report bugs with this helper.
+与えられた`value`が真である場合にtrueを返します。比較には[falsey](https://github.com/jonschlinkert/falsey)ライブラリを使用します。詳細やこのヘルパーのバグ報告については、そのライブラリを参照してください。
 
-**Params**
+**パラメータ**
 
 * `val` **{any}**
 * `options` **{Options}**
@@ -170,210 +155,191 @@ or to report bugs with this helper.
 
 ## {{ifEven}}
 
-Return true if the given value is an even number.
+与えられた値が偶数の場合にtrueを返します。
 
-**Params**
+**パラメータ**
 
 * `number` **{Number}**
-* `options` **{Object}**: Handlebars provided options object
-* `returns` **{String}**: Block, or inverse block if specified and falsey.
+* `options` **{Object}**: Handlebarsが提供するオプションオブジェクト
+* `returns` **{String}**: ブロック、または指定されている場合は逆ブロックが偽の場合にレンダリングされます。
 
-**Example**
+**例**
 
 ```handlebars
 {{#ifEven value}}
-  render A
+  Aをレンダリング
 {{else}}
-  render B
+  Bをレンダリング
 {{/ifEven}}
 ```
 
 ## {{ifNth}}
 
-Conditionally renders a block if the remainder is zero when
-`a` operand is divided by `b`. If an inverse block is specified
-it will be rendered when the remainder is **not zero**.
+`a`オペランドを`b`で割った余りがゼロの場合にブロックを条件付きでレンダリングします。逆ブロックが指定されている場合、余りが**ゼロでない**場合にレンダリングされます。
 
-**Params**
+**パラメータ**
 
 * **{}**: {Number}
 * **{}**: {Number}
-* `options` **{Object}**: Handlebars provided options object
-* `returns` **{String}**: Block, or inverse block if specified and falsey.
+* `options` **{Object}**: Handlebarsが提供するオプションオブジェクト
+* `returns` **{String}**: ブロック、または指定されている場合は逆ブロックが偽の場合にレンダリングされます。
 
 ## {{ifOdd}}
 
-Block helper that renders a block if `value` is **an odd number**. If an inverse block is specified it will be rendered when falsy.
+`value`が**奇数**である場合にブロックをレンダリングするブロックヘルパー。逆ブロックが指定されている場合、偽の場合にレンダリングされます。
 
-**Params**
+**パラメータ**
 
 * `value` **{Object}**
-* `options` **{Object}**: Handlebars provided options object
-* `returns` **{String}**: Block, or inverse block if specified and falsey.
+* `options` **{Object}**: Handlebarsが提供するオプションオブジェクト
+* `returns` **{String}**: ブロック、または指定されている場合は逆ブロックが偽の場合にレンダリングされます。
 
-**Example**
+**例**
 
 ```handlebars
 {{#ifOdd value}}
-  render A
+  Aをレンダリング
 {{else}}
-  render B
+  Bをレンダリング
 {{/ifOdd}}
 ```
 
 ## {{is}}
 
-Block helper that renders a block if `a` is **equal to** `b`.
-If an inverse block is specified it will be rendered when falsy.
-Similar to [eq](#eq) but does not do strict equality.
+`a`が`b`と**等しい**場合にブロックをレンダリングするブロックヘルパー。逆ブロックが指定されている場合、偽の場合にレンダリングされます。[eq](#eq)と似ていますが、厳密な等価性を使用しません。
 
-**Params**
+**パラメータ**
 
 * `a` **{any}**
 * `b` **{any}**
-* `options` **{Object}**: Handlebars provided options object
+* `options` **{Object}**: Handlebarsが提供するオプションオブジェクト
 * `returns` **{String}**
 
 ## {{isnt}}
 
-Block helper that renders a block if `a` is **not equal to** `b`.
-If an inverse block is specified it will be rendered when falsy.
-Similar to [unlessEq](#unlesseq) but does not use strict equality for
-comparisons.
+`a`が`b`と**等しくない**場合にブロックをレンダリングするブロックヘルパー。逆ブロックが指定されている場合、偽の場合にレンダリングされます。[unlessEq](#unlesseq)と似ていますが、比較に厳密な等価性を使用しません。
 
-**Params**
+**パラメータ**
 
 * `a` **{String}**
 * `b` **{String}**
-* `options` **{Object}**: Handlebars provided options object
+* `options` **{Object}**: Handlebarsが提供するオプションオブジェクト
 * `returns` **{String}**
 
 ## {{lt}}
 
-Block helper that renders a block if `a` is **less than** `b`.
+`a`が`b`より**小さい**場合にブロックをレンダリングするブロックヘルパー。
 
-If an inverse block is specified it will be rendered when falsy.
-You may optionally use the `compare=""` hash argument for the
-second value.
+逆ブロックが指定されている場合、偽の場合にレンダリングされます。2番目の値に対して`compare=""`ハッシュ引数をオプションで使用できます。
 
-**Params**
+**パラメータ**
 
 * `context` **{Object}**
-* `options` **{Object}**: Handlebars provided options object
-* `returns` **{String}**: Block, or inverse block if specified and falsey.
+* `options` **{Object}**: Handlebarsが提供するオプションオブジェクト
+* `returns` **{String}**: ブロック、または指定されている場合は逆ブロックが偽の場合にレンダリングされます。
 
 ## {{lte}}
 
-Block helper that renders a block if `a` is **less than or equal to** `b`.
+`a`が`b`以下である場合にブロックをレンダリングするブロックヘルパー。
 
-If an inverse block is specified it will be rendered when falsy.
-You may optionally use the `compare=""` hash argument for the
-second value.
+逆ブロックが指定されている場合、偽の場合にレンダリングされます。2番目の値に対して`compare=""`ハッシュ引数をオプションで使用できます。
 
-**Params**
+**パラメータ**
 
 * `a` **{Sring}**
 * `b` **{Sring}**
-* `options` **{Object}**: Handlebars provided options object
-* `returns` **{String}**: Block, or inverse block if specified and falsey.
+* `options` **{Object}**: Handlebarsが提供するオプションオブジェクト
+* `returns` **{String}**: ブロック、または指定されている場合は逆ブロックが偽の場合にレンダリングされます。
 
 ## {{neither}}
 
-Block helper that renders a block if **neither of** the given values
-are truthy. If an inverse block is specified it will be rendered
-when falsy.
+与えられた値の**どちらも**真でない場合にブロックをレンダリングするブロックヘルパー。逆ブロックが指定されている場合、偽の場合にレンダリングされます。
 
-**Params**
+**パラメータ**
 
 * `a` **{any}**
 * `b` **{any}**
-* `options` **{}**: Handlebars options object
-* `returns` **{String}**: Block, or inverse block if specified and falsey.
+* `options` **{}**: Handlebarsオプションオブジェクト
+* `returns` **{String}**: ブロック、または指定されている場合は逆ブロックが偽の場合にレンダリングされます。
 
 ## {{not}}
 
-Returns true if `val` is falsey. Works as a block or inline helper.
+`val`が偽である場合にtrueを返します。ブロックまたはインラインヘルパーとして機能します。
 
-**Params**
+**パラメータ**
 
 * `val` **{String}**
-* `options` **{Object}**: Handlebars provided options object
+* `options` **{Object}**: Handlebarsが提供するオプションオブジェクト
 * `returns` **{String}**
 
 ## {{or}}
 
-Block helper that renders a block if **any of** the given values is truthy. If an inverse block is specified it will be rendered when falsy.
+与えられた値の**いずれか**が真である場合にブロックをレンダリングするブロックヘルパー。逆ブロックが指定されている場合、偽の場合にレンダリングされます。
 
-**Params**
+**パラメータ**
 
-* `arguments` **{...any}**: Variable number of arguments
-* `options` **{Object}**: Handlebars options object
-* `returns` **{String}**: Block, or inverse block if specified and falsey.
+* `arguments` **{...any}**: 可変数の引数
+* `options` **{Object}**: Handlebarsオプションオブジェクト
+* `returns` **{String}**: ブロック、または指定されている場合は逆ブロックが偽の場合にレンダリングされます。
 
-**Example**
+**例**
 
 ```handlebars
 {{#or a b c}}
-  If any value is true this will be rendered.
+  いずれかの値が真の場合、これがレンダリングされます。
 {{/or}}
 ```
 
 ## {{unlessEq}}
+`a` が `b` と等しくない限り、常に逆ブロックをレンダリングするブロックヘルパーです。
 
-Block helper that always renders the inverse block **unless `a` is
-is equal to `b`**.
-
-**Params**
+**パラメータ**
 
 * `a` **{String}**
 * `b` **{String}**
-* `options` **{Object}**: Handlebars provided options object
-* `returns` **{String}**: Inverse block by default, or block if falsey.
+* `options` **{Object}**: Handlebarsが提供するオプションオブジェクト
+* `returns` **{String}**: デフォルトでは逆ブロック、falseyの場合はブロック。
 
 ## {{unlessGt}}
 
-Block helper that always renders the inverse block **unless `a` is
-is greater than `b`**.
+`a` が `b` より大きくない限り、常に逆ブロックをレンダリングするブロックヘルパーです。
 
-**Params**
+**パラメータ**
 
-* `a` **{Object}**: The default value
-* `b` **{Object}**: The value to compare
-* `options` **{Object}**: Handlebars provided options object
-* `returns` **{String}**: Inverse block by default, or block if falsey.
+* `a` **{Object}**: デフォルト値
+* `b` **{Object}**: 比較する値
+* `options` **{Object}**: Handlebarsが提供するオプションオブジェクト
+* `returns` **{String}**: デフォルトでは逆ブロック、falseyの場合はブロック。
 
 ## {{unlessLt}}
 
-Block helper that always renders the inverse block **unless `a` is
-is less than `b`**.
+`a` が `b` より小さくない限り、常に逆ブロックをレンダリングするブロックヘルパーです。
 
-**Params**
+**パラメータ**
 
-* `a` **{Object}**: The default value
-* `b` **{Object}**: The value to compare
-* `options` **{Object}**: Handlebars provided options object
-* `returns` **{String}**: Block, or inverse block if specified and falsey.
+* `a` **{Object}**: デフォルト値
+* `b` **{Object}**: 比較する値
+* `options` **{Object}**: Handlebarsが提供するオプションオブジェクト
+* `returns` **{String}**: ブロック、または指定されていてfalseyの場合は逆ブロック。
 
 ## {{unlessGteq}}
 
-Block helper that always renders the inverse block **unless `a` is
-is greater than or equal to `b`**.
+`a` が `b` 以上でない限り、常に逆ブロックをレンダリングするブロックヘルパーです。
 
-**Params**
+**パラメータ**
 
 * `a` **{any}**
 * `b` **{any}**
-* `options` **{Object}**: Handlebars provided options object
-* `returns` **{String}**: Block, or inverse block if specified and falsey.
+* `options` **{Object}**: Handlebarsが提供するオプションオブジェクト
+* `returns` **{String}**: ブロック、または指定されていてfalseyの場合は逆ブロック。
 
 ## {{unlessLteq}}
 
-Block helper that always renders the inverse block **unless `a` is
-is less than or equal to `b`**.
+`a` が `b` 以下でない限り、常に逆ブロックをレンダリングするブロックヘルパーです。
 
-**Params**
+**パラメータ**
 
 * `a` **{any}**
 * `b` **{any}**
-* `options` **{Object}**: Handlebars provided options object
-* `returns` **{String}**: Block, or inverse block if specified and falsey.
+* `options` **{Object}**: Handlebarsが提供するオプションオブジェクト
+* `returns` **{String}**: ブロック、または指定されていてfalseyの場合は逆ブロック。

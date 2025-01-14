@@ -4,7 +4,7 @@
 
 Data table field management class (abstract class). It is also the base class for all field types, and any other field types are implemented by inheriting from this class.
 
-Refer to [Extended Field Types](/development/guide/collections-fields#extended-field-types) to see how to customize fields.
+Refer to [Extended Field Types](/development/server/collections-fields#extended-field-types) to see how to customize fields.
 
 ## Constructor
 
