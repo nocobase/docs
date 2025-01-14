@@ -2752,6 +2752,12 @@ export default [
         'title.ja-JP': 'ユーザーロック',
         link: '/handbook/password-policy/user-lockout',
       },
+      {
+        title: 'IP restriction',
+        'title.zh-CN': 'IP 限制',
+        'title.ja-JP': 'IP restriction',
+        link: '/handbook/IP-restriction',
+      },
     ],
   },
   {
