@@ -39,6 +39,36 @@ export default defineConfig({
   exportStatic: {
     ignorePreRenderError: true,
   },
+  ssr: process.env.NODE_ENV === 'production' ? { builder: 'webpack' } : false,
+  sitemap: process.env.NODE_ENV === 'production' ? {
+    hostname: site_url,
+  } : false,
+  // metas: [
+  //   { name: 'keywords', content: 'nocobase,nocobase doc,low-code,no-code,self-hosted,open source,open-source,no-code development,low-code development,workflow management software,business process management,collaboration software,enterprise process management,enterprise management system,no-code system,no-code platform,free no-code development platform' },
+  //   { name: 'description', content: "NocoBase is a lightweight, extremely scalable open source no-code and low-code development platform. Instead of investing years of time and millions of dollars in research and development, deploy NocoBase in a few minutes and you'll have a private, controllable, and extremely scalable no- code development platform!" },
+  // ],
+  headScripts: process.env.NODE_ENV === 'production' ? [
+    `    function hiddenBody() {
+      const body = document.body;
+      if (body) {
+        body.setAttribute('hidden', true);
+      } else {
+        requestAnimationFrame(hiddenBody);
+      }
+    }
+    hiddenBody();
+    function visibleBody() {
+      const loading = document.querySelector('.dumi-default-loading-skeleton');
+      const headerMenu = document.querySelector('header .ant-menu');
+      const antdIsLoaded = headerMenu ? window.getComputedStyle(headerMenu).listStyle === 'outside none none' : false;
+      if (antdIsLoaded) {
+        document.body.removeAttribute('hidden');
+      } else {
+        requestAnimationFrame(visibleBody);
+      }
+    }
+    visibleBody();`
+  ] : [],
   cacheDirectoryPath: `node_modules/.docs-${lang}-cache`,
   outputPath: `./dist/${lang}`,
   resolve: {
@@ -81,7 +111,4 @@ export default defineConfig({
     '/favicon-32x32.png',
     '/favicon-16x16.png',
   ],
-  sitemap: {
-    hostname: site_url,
-  },
 });
