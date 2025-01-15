@@ -26,18 +26,6 @@ if [ -d "$INSTALL_DIR" ]; then
     exit 0
 fi
 
-# Update APT sources
-tee /etc/apt/sources.list > /dev/null <<EOF
-deb http://mirrors.aliyun.com/debian/ bookworm main contrib non-free
-deb-src http://mirrors.aliyun.com/debian/ bookworm main contrib non-free
-deb http://mirrors.aliyun.com/debian-security/ bookworm-security main contrib non-free
-deb-src http://mirrors.aliyun.com/debian-security/ bookworm-security main contrib non-free
-deb http://mirrors.aliyun.com/debian/ bookworm-updates main contrib non-free
-deb-src http://mirrors.aliyun.com/debian/ bookworm-updates main contrib non-free
-deb http://mirrors.aliyun.com/debian/ bookworm-backports main contrib non-free
-deb-src http://mirrors.aliyun.com/debian/ bookworm-backports main contrib non-free
-EOF
-
 # Update APT and install dependencies
 apt-get update
 

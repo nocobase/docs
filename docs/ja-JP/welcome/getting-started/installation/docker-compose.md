@@ -31,7 +31,7 @@ networks:
 
 services:
   app:
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
+    image: nocobase/nocobase:latest
     networks:
       - nocobase
     depends_on:
@@ -52,7 +52,7 @@ services:
       # データベースパスワード
       - DB_PASSWORD=nocobase
       # タイムゾーン
-      - TZ=Asia/Shanghai
+      - TZ=Asia/Tokyo
       # 商用プラグインのためのサービスプラットフォームのユーザー名とパスワード
       - NOCOBASE_PKG_USERNAME=
       - NOCOBASE_PKG_PASSWORD=
@@ -65,7 +65,7 @@ services:
 
   # 既存のデータベースサービスを使用する場合、postgres を起動する必要はありません
   postgres:
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/postgres:16
+    image: postgres:16
     restart: always
     command: postgres -c wal_level=logical
     environment:
@@ -91,7 +91,7 @@ networks:
 
 services:
   app:
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
+    image: nocobase/nocobase:latest
     networks:
       - nocobase
     depends_on:
@@ -114,7 +114,7 @@ services:
       # データベーステーブル名、フィールド名をスネークケーススタイルに変換するかどうか
       - DB_UNDERSCORED=true
       # タイムゾーン
-      - TZ=Asia/Shanghai
+      - TZ=Asia/Tokyo
       # 商用プラグインのためのサービスプラットフォームのユーザー名とパスワード
       - NOCOBASE_PKG_USERNAME=
       - NOCOBASE_PKG_PASSWORD=
@@ -127,7 +127,7 @@ services:
 
   # 既存のデータベースサービスを使用する場合、mysql を起動する必要はありません
   mysql:
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/mysql:8
+    image: mysql:8
     environment:
       MYSQL_DATABASE: nocobase
       MYSQL_USER: nocobase
@@ -153,7 +153,7 @@ networks:
 
 services:
   app:
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
+    image: nocobase/nocobase:latest
     networks:
       - nocobase
     depends_on:
@@ -176,7 +176,7 @@ services:
       # データベーステーブル名、フィールド名をスネークケーススタイルに変換するかどうか
       - DB_UNDERSCORED=true
       # タイムゾーン
-      - TZ=Asia/Shanghai
+      - TZ=Asia/Tokyo
       # 商用プラグインのためのサービスプラットフォームのユーザー名とパスワード
       - NOCOBASE_PKG_USERNAME=
       - NOCOBASE_PKG_PASSWORD=
@@ -189,7 +189,7 @@ services:
 
   # 既存のデータベースサービスを使用する場合、mariadb を起動する必要はありません
   mariadb:
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/mariadb:11
+    image: mariadb:11
     environment:
       MYSQL_DATABASE: nocobase
       MYSQL_USER: nocobase
@@ -222,13 +222,7 @@ services:
 # ...
 services:
   app:
-    # 国内ユーザーはアリババクラウドのイメージを使用することを推奨します
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:beta
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:alpha
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:1.3.51
-
-    # Docker Hub のイメージ（国内ユーザーはダウンロードできません）
+    # Docker Hub
     image: nocobase/nocobase:latest
     image: nocobase/nocobase:beta
     image: nocobase/nocobase:alpha
