@@ -69,7 +69,7 @@ networks:
       # データベースパスワード
       - DB_PASSWORD=nocobase
       # タイムゾーン
-      - TZ=Asia/Shanghai
+      - TZ=Asia/Tokyo
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
@@ -103,7 +103,7 @@ yarn create nocobase-app my-nocobase-app -d kingbase \
    -e DB_DATABASE=kingbase \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
-   -e TZ=Asia/Shanghai
+   -e TZ=Asia/Tokyo
 ```
 
 ### 外部データベースとして使用する場合
