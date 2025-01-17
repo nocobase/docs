@@ -1,14 +1,14 @@
 # IP 限制
 
-<PluginInfo commercial="true" name="ip-restriction"></PluginInfo>
+<PluginInfo licenseBundled="true" name="ip-restriction"></PluginInfo>
 
 ## 介绍
 
 NocoBase 支持对用户访问 IP 设置白名单或黑名单，以限制未授权的外部网络连接或阻止已知的恶意 IP 地址，降低安全风险。同时支持查询访问拒绝日志，识别风险 IP。
 
-## 配置规则  
+## 配置规则
 
-![2025-01-14-12-03-24-20250114120324](https://static-docs.nocobase.com/2025-01-14-12-03-24-20250114120324.png)
+![2025-01-17-13-36-59-20250117133659](https://static-docs.nocobase.com/2025-01-17-13-36-59-20250117133659.png)
 
 ### IP 过滤模式
 
@@ -23,12 +23,11 @@ NocoBase 支持对用户访问 IP 设置白名单或黑名单，以限制未授�
 
 用户被拒绝访问后，访问 IP 会写入到系统日志中，可下载对应的日志文件进行分析。
 
-![2025-01-14-14-35-50-20250114143550](https://static-docs.nocobase.com/2025-01-14-14-35-50-20250114143550.png)
+![2025-01-17-13-33-51-20250117133351](https://static-docs.nocobase.com/2025-01-17-13-33-51-20250117133351.png)
 
 日志示例：
 
 ![2025-01-14-14-42-06-20250114144205](https://static-docs.nocobase.com/2025-01-14-14-42-06-20250114144205.png)
-
 
 ## 配置建议
 
