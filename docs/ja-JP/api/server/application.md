@@ -51,35 +51,35 @@ export interface ApplicationOptions {
 
 ##### ApplicationOptions
 
-| プロパティ           | タイプ                                    | 説明                                                                                                   |
-| -------------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| `name`               | `string`                                 | アプリケーション識別子                                                                                 |
-| `database`           | `IDatabaseOptions` \| `DataBase`         | `DataBase` インスタンスの設定または `DataBase` インスタンス、参照 [DataBase](../database/index.md)     |
-| `cacheManager`       | `CacheManagerOptions`                    | `CacheManager` インスタンスの設定、参照 [CacheManager](../cache/cache-manager.md)                      |
-| `resourceManager`    | [`ResourcerOptions`](#resourceroptions)  | リソース管理設定                                                                                       |
-| `authManager`        | `AuthManagerOptions`                     | ユーザー認証管理設定、参照 [AuthManager](../auth/auth-manager.md)                                      |
-| `bodyParser`         | `bodyParser.Options`                     | <a href="https://github.com/koajs/bodyparser" target="_blank">@koa/bodyparser</a> ミドルウェアに渡すパラメータ |
-| `bodyParser`         | `any`                                    | <a href="https://github.com/koajs/cors" target="_blank">@koa/cors</a> ミドルウェアに渡すパラメータ             |
-| `dataWrapping`       | `boolean`                                | レスポンスデータをフォーマットするかどうか                                                             |
-| `registerActions`    | `boolean`                                | データシートリソースにデフォルトの CRUD 操作インターフェースを登録するかどうか                         |
-| `i18n`               | `i18n` \| `InitOptions`                  | `i18n` 実装または初期化設定                                                                            |
-| `plugins`            | `PluginConfiguration[]`                  | 組み込みインストールのプラグイン名またはインスタンスの配列                                             |
-| `acl`                | `boolean`                                | アクセス制御を有効にするかどうか                                                                       |
-| `logger`             | [`AppLoggerOptions`](#apploggeroptions)  | アプリケーションログ設定                                                                               |
-| `telemetry`          | `AppTelemetryOptions`                    | テレメトリモジュール設定、参照 [Telemetry](../telemetry/telemetry.md) <br />`telemetry.enabled` - テレメトリモジュールを有効にするかどうか |
+| プロパティ        | タイプ                                  | 説明                                                                                                                                       |
+| ----------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `name`            | `string`                                | アプリケーション識別子                                                                                                                     |
+| `database`        | `IDatabaseOptions` \| `DataBase`        | `DataBase` インスタンスの設定または `DataBase` インスタンス、参照 [DataBase](../database/index.md)                                         |
+| `cacheManager`    | `CacheManagerOptions`                   | `CacheManager` インスタンスの設定、参照 [CacheManager](../cache/cache-manager.md)                                                          |
+| `resourceManager` | [`ResourcerOptions`](#resourceroptions) | リソース管理設定                                                                                                                           |
+| `authManager`     | `AuthManagerOptions`                    | ユーザー認証管理設定、参照 [AuthManager](../auth/auth-manager.md)                                                                          |
+| `bodyParser`      | `bodyParser.Options`                    | <a href="https://github.com/koajs/bodyparser" target="_blank">@koa/bodyparser</a> ミドルウェアに渡すパラメータ                             |
+| `bodyParser`      | `any`                                   | <a href="https://github.com/koajs/cors" target="_blank">@koa/cors</a> ミドルウェアに渡すパラメータ                                         |
+| `dataWrapping`    | `boolean`                               | レスポンスデータをフォーマットするかどうか                                                                                                 |
+| `registerActions` | `boolean`                               | データシートリソースにデフォルトの CRUD 操作インターフェースを登録するかどうか                                                             |
+| `i18n`            | `i18n` \| `InitOptions`                 | `i18n` 実装または初期化設定                                                                                                                |
+| `plugins`         | `PluginConfiguration[]`                 | 組み込みインストールのプラグイン名またはインスタンスの配列                                                                                 |
+| `acl`             | `boolean`                               | アクセス制御を有効にするかどうか                                                                                                           |
+| `logger`          | [`AppLoggerOptions`](#apploggeroptions) | アプリケーションログ設定                                                                                                                   |
+| `telemetry`       | `AppTelemetryOptions`                   | テレメトリモジュール設定、参照 [Telemetry](../telemetry/telemetry.md) <br />`telemetry.enabled` - テレメトリモジュールを有効にするかどうか |
 
 ##### ResourcerOptions
 
-| プロパティ | タイプ     | 説明             |
-| ---------- | ---------- | ---------------- |
-| `prefix`   | `string`   | リソース管理インターフェースのプレフィックス |
+| プロパティ | タイプ   | 説明                                         |
+| ---------- | -------- | -------------------------------------------- |
+| `prefix`   | `string` | リソース管理インターフェースのプレフィックス |
 
 ##### AppLoggerOptions
 
-| プロパティ   | タイプ                   | 説明                                                                  |
-| ------------ | ------------------------ | --------------------------------------------------------------------- |
-| `request`    | `RequestLoggerOptions`   | 参照 [Logger - requestLogger()](../logger.md#requestlogger)           |
-| `system`     | `SystemLoggerOptions`    | 参照 [Logger - createSystemLogger()](../logger.md#createsystemlogger) |
+| プロパティ | タイプ                 | 説明                                                                  |
+| ---------- | ---------------------- | --------------------------------------------------------------------- |
+| `request`  | `RequestLoggerOptions` | 参照 [Logger - requestLogger()](../logger.md#requestlogger)           |
+| `system`   | `SystemLoggerOptions`  | 参照 [Logger - createSystemLogger()](../logger.md#createsystemlogger) |
 
 ## インスタンスプロパティ
 
@@ -153,6 +153,10 @@ export interface ApplicationOptions {
 
 ユーザー認証管理。参照 [AuthManager](../auth/auth-manager.md).
 
+### `auditManager`
+
+Resource audit management. Refer to [AuditManager](./audit-manager).
+
 ### `cronJobManager`
 
 アプリケーションの定期タスク管理。
@@ -184,12 +188,12 @@ interface LoadOptions {
 
 #### 詳細
 
-| プロパティ            | タイプ      | 説明                                      | デフォルト値  |
-| --------------------- | ----------- | ----------------------------------------- | ------------- |
-| `reload`              | `boolean`   | 再ロードかどうか                          | `false`       |
-| `hooks`               | `boolean`   | `beforeLoad` / `afterLoad` hooks をトリガーするかどうか | `true`        |
-| `sync`                | `boolean`   | データシート設定の変更を同期するかどうか  | `false`       |
-| `[key: string]`       | `any`       | 他の設定、hooks に渡される               | -             |
+| プロパティ      | タイプ    | 説明                                                    | デフォルト値 |
+| --------------- | --------- | ------------------------------------------------------- | ------------ |
+| `reload`        | `boolean` | 再ロードかどうか                                        | `false`      |
+| `hooks`         | `boolean` | `beforeLoad` / `afterLoad` hooks をトリガーするかどうか | `true`       |
+| `sync`          | `boolean` | データシート設定の変更を同期するかどうか                | `false`      |
+| `[key: string]` | `any`     | 他の設定、hooks に渡される                              | -            |
 
 ### `reload()`
 
@@ -217,9 +221,9 @@ interface StartOptions {
 
 #### 詳細
 
-| プロパティ           | タイプ      | 説明               | デフォルト値  |
-| -------------------- | ----------- | ------------------ | ------------- |
-| `checkInstall`       | `boolean`   | アプリケーションがインストールされているかどうかをチェック | `false`       |
+| プロパティ     | タイプ    | 説明                                                       | デフォルト値 |
+| -------------- | --------- | ---------------------------------------------------------- | ------------ |
+| `checkInstall` | `boolean` | アプリケーションがインストールされているかどうかをチェック | `false`      |
 
 ### `restart()`
 
@@ -245,9 +249,9 @@ export interface InstallOptions {
 }
 ```
 
-| プロパティ    | タイプ      | 説明                       | デフォルト値  |
-| ------------- | ----------- | -------------------------- | ------------- |
-| `force`       | `boolean`   | アプリケーションが既にインストールされている場合、強制的に再インストールするかどうか | `false`       |
+| プロパティ | タイプ    | 説明                                                                                 | デフォルト値 |
+| ---------- | --------- | ------------------------------------------------------------------------------------ | ------------ |
+| `force`    | `boolean` | アプリケーションが既にインストールされている場合、強制的に再インストールするかどうか | `false`      |
 
 ### `upgrade()`
 
@@ -319,11 +323,11 @@ export interface InstallOptions {
 
 #### 詳細
 
-| パラメータ名 | タイプ             | 説明                                                                                         |
-| ------------ | ------------------ | -------------------------------------------------------------------------------------------- |
-| `name` | `string`         | コマンド                                                                                     |
-| `desc` | `string`         | コマンドの説明                                                                               |
-| `opts` | `CommandOptions` | コマンド設定、<a href="https://github.com/tj/commander.js" target="_blank">Commander.js</a> を参照 |
+| パラメータ名 | タイプ           | 説明                                                                                               |
+| ------------ | ---------------- | -------------------------------------------------------------------------------------------------- |
+| `name`       | `string`         | コマンド                                                                                           |
+| `desc`       | `string`         | コマンドの説明                                                                                     |
+| `opts`       | `CommandOptions` | コマンド設定、<a href="https://github.com/tj/commander.js" target="_blank">Commander.js</a> を参照 |
 
 ### `runCommand()`
 
