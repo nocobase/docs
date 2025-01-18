@@ -2767,6 +2767,12 @@ export default [
         'title.ja-JP': 'ユーザーロック',
         link: '/handbook/password-policy/user-lockout',
       },
+      {
+        title: 'Audit logs',
+        'title.zh-CN': '审计日志',
+        'title.ja-JP': '审计日志',
+        link: '/handbook/audit-logger',
+      },
     ],
   },
   {
