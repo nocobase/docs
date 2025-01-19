@@ -253,7 +253,7 @@ export default [
       },
       {
         title: 'Collection fields',
-        'title.fr-FR': 'Collection de champs'',
+        'title.fr-FR': 'Collection de champs',
         'title.zh-CN': '数据表字段',
         'title.ja-JP': 'コレクションフィールド',
         children: [
