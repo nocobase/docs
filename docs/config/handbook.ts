@@ -2773,6 +2773,12 @@ export default [
         'title.ja-JP': 'IP restriction',
         link: '/handbook/IP-restriction',
       },
+      {
+        title: 'Audit logs',
+        'title.zh-CN': '审计日志',
+        'title.ja-JP': '审计日志',
+        link: '/handbook/audit-logger',
+      },
     ],
   },
   {

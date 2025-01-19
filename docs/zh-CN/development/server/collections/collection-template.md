@@ -1,9 +1,5 @@
 # Collection 模板
 
-<Alert>
-📢 Collection 模板计划在 2022 年第四季度提供。
-</Alert>
-
 在实际的业务场景中，不同的 collection 可能有自己的初始化规则和业务逻辑，NocoBase 通过提供 Collection 模板来解决这类问题。
 
 ## 常规表
