@@ -1,8 +1,8 @@
-# Backup-Restore
+# Backup and Restore
 
 ## Introduction
 
-The backup-restore and restore plugin for the NocoBase application is used in scenarios such as application replication, migration, and upgrades.
+The backup and restore plugin for the NocoBase application is used in scenarios such as application replication, migration, and upgrades.
 
 ## Installation
 
@@ -10,7 +10,7 @@ The built-in plugin does not require manual installation or activation.
 
 ## Usage Instructions
 
-![Backup-Restore List Page](https://static-docs.nocobase.com/071b969c4db9bdc6d2c359e1b6bef5da.png)
+![Backup and Restore List Page](https://static-docs.nocobase.com/071b969c4db9bdc6d2c359e1b6bef5da.png)
 
 ### Create Backup
 
@@ -30,11 +30,11 @@ Select the data to be restored, and the selected data will completely overwrite 
 
 Click "Learn more" to view the backup information.
 
-![Backup-Restore Information](https://static-docs.nocobase.com/4f54eba0fde2d6481274665cb184a79e.png)
+![Backup and Restore Information](https://static-docs.nocobase.com/4f54eba0fde2d6481274665cb184a79e.png)
 
 Backup Information
 
-![Backup-Restore Information](https://static-docs.nocobase.com/bd5c68cf7e35d04e525f9b13e48e32d9.png)
+![Backup and Restore Information](https://static-docs.nocobase.com/bd5c68cf7e35d04e525f9b13e48e32d9.png)
 
 Backup Groups
 
