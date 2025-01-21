@@ -1,4 +1,4 @@
-# 备份管理器
+# 备份管理
 
 <PluginInfo licenseBundled="true" name="backups"></PluginInfo>
 
@@ -8,16 +8,7 @@ NocoBase 备份管理器插件，提供了 NocoBase 数据库及用户上传文�
 
 ## 安装
 
-该插件为 NocoBase 专业版内置插件，无需单独安装。请查看 <a target="_blank" href="https://www.nocobase.com/cn/commercial">商业版本</a> 了解详情。
-
-:::warning{title=注意}
-
-- 本插件是基于数据库原生客户端实现的，使用前需要在 NocoBase 服务器运行环境中安装对应数据库的客户端。
-  - [PostgreSQL 数据库客户端安装](./installation/postgres.md)
-  - [MySQL 数据库客户端安装](./installation/mysql.md)
-  - [MariaDB 数据库客户端安装](./installation/mariadb.md)
-- 还原操作时，目标数据库版本应当不低于创建该备份的数据库版本。
-:::
+<embed src="./install.md"></embed>
 
 ## 使用说明
 

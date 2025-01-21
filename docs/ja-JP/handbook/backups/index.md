@@ -8,15 +8,7 @@ NocoBaseバックアップマネージャープラグインは、NocoBaseデー�
 
 ## インストール
 
-このプラグインはNocoBaseプロフェッショナル版に組み込まれており、別途インストールする必要はありません。詳細については<a target="_blank" href="https://www.nocobase.com/cn/commercial">商用版</a>をご覧ください。
-
-:::warning{title=注意}
-- 本プラグインはデータベースのネイティブクライアントに基づいて実装されており、使用前にNocoBaseサーバーの実行環境に対応するデータベースクライアントをインストールする必要があります。
-  - [Postgresデータベースクライアントのインストール](./installation/postgres.md)
-  - [MySQLデータベースクライアントのインストール](./installation/mysql.md)
-  - [MariaDBデータベースクライアントのインストール](./installation/mariadb.md)
-- 復元操作を行う際、対象データベースのバージョンはバックアップを作成したデータベースのバージョン以上である必要があります。
-:::
+<embed src="./install.md"></embed>
 
 ## 使用説明書
 

@@ -1,80 +1,78 @@
 # DataSource (abstract)
 
-`DataSource` 抽象类，用于表示一种类型的数据源，可以是数据库、API等。
+The `DataSource` abstract class is used to represent a type of data source, which can be a database, API, etc.
 
-## 成员
+## Members
 
 ### collectionManager
 
-数据源的 CollectionManager 实例，需实现 [`ICollectionManager`](/api/data-source-manager/i-collection-manager) 接口。
+The CollectionManager instance of the data source, which needs to implement the [`ICollectionManager`](/api/data-source-manager/i-collection-manager) interface.
 
 ### resourceManager
 
-数据源的 resourceManager 实例，详见：[`resourceManager`](/api/resourcer/resource-manager)
+The resourceManager instance of the data source, see: [`resourceManager`](/api/resourcer/resource-manager)
 
 ### acl
 
-数据源的 ACL 实例，详见： [`ACL`](/api/acl/acl)
+The ACL instance of the data source, see: [`ACL`](/api/acl/acl)
 
 ## API
 
 ### constructor()
 
-构造函数，创建一个 `DataSource` 实例。
+Constructor, creates a `DataSource` instance.
 
-#### 签名
+#### Signature
 
 - `constructor(options: DataSourceOptions)`
 
-### init() 
+### init()
 
-初始化函数，在 `constructor` 之后既被调用。
+Initialization function, called immediately after `constructor`.
 
-#### 签名
+#### Signature
 
 - `init(options: DataSourceOptions)`
 
-
 ### name
 
-#### 签名
+#### Signature
 
 - `get name()`
 
-响应数据源的实例名称
+Returns the instance name of the data source.
 
 ### middleware()
 
-获得 DataSource 的中间件，用于挂载到 Server 中接收请求。
+Gets the middleware of the DataSource, used to mount to the Server to receive requests.
 
 ### testConnection()
 
-静态方法，在测试连接操作时调用，可用于参数校验，具体逻辑由子类实现。
+Static method, called during the test connection operation, can be used for parameter validation, specific logic is implemented by subclasses.
 
-#### 签名
+#### Signature
 
 - `static testConnection(options?: any): Promise<boolean>`
 
 ### load()
 
-#### 签名
+#### Signature
 
 - `async load(options: any = {})`
 
-数据源的加载操作，逻辑由子类实现。
+The loading operation of the data source, logic is implemented by subclasses.
 
 ### createCollectionManager()
 
-#### 签名
+#### Signature
 - `abstract createCollectionManager(options?: any): ICollectionManager`
 
-创建数据源的 CollectionManager 实例，逻辑由子类实现。
+Creates a CollectionManager instance for the data source, logic is implemented by subclasses.
 
 ### createResourceManager()
 
-创建数据源的 ResourceManager 实例，字类可覆盖实现，默认创建 `@nocobase/resourcer` 中的 `ResourceManager`。
+Creates a ResourceManager instance for the data source, subclasses can override the implementation, by default creates `ResourceManager` from `@nocobase/resourcer`.
 
 ### createACL()
 
-- 创建 DataSource 的 ACL 实例，字类可覆盖实现，默认创建 `@nocobase/acl` 中的 `ACL`。
-
+- Creates an ACL instance for the DataSource, subclasses can override the implementation, by default creates `ACL` from `@nocobase/acl`.

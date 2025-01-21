@@ -1,8 +1,8 @@
 # Server
 
-## 概览
+## 概要
 
-NocoBase 基于 <a href="https://vitest.dev/" target="_blank">Vitest</a> 进行服务端测试。 `@nocobase/test` 为服务端测试提供了一些便捷的方法用于 Mock 服务和数据库。
+NocoBaseは<a href="https://vitest.dev/" target="_blank">Vitest</a>を使用してサーバーサイドのテストを行います。`@nocobase/test`は、サーバーサイドのテストのために、サービスとデータベースのMockを行うための便利なメソッドを提供します。
 
 ### 基本使用
 
@@ -30,7 +30,7 @@ describe('actions', () => {
 
 ### `defineConfig()`
 
-获取 vitest 配置。
+Vitestの設定を取得します。
 
 ```ts
 import { defineConfig } from '@nocobase/test/vitest.mjs';
@@ -40,37 +40,37 @@ const config = defineConfig();
 
 ### `mockDatabase()`
 
-创建一个用于测试的 `MockDataBase` 实例。
+テスト用の`MockDataBase`インスタンスを作成します。
 
-#### 签名
+#### シグネチャ
 
 - `mockDatabase(options: IDatabaseOptions = {}): MockDatabase`
 
-#### 详细信息
+#### 詳細
 
-| 参数名    | 类型               | 描述                                  |
-| --------- | ------------------ | ------------------------------------- |
-| `options` | `IDatabaseOptions` | 参考 [DataBase](../database/index.md) |
+| パラメータ名 | タイプ               | 説明                                  |
+| ------------ | -------------------- | ------------------------------------- |
+| `options`    | `IDatabaseOptions` | [DataBase](../database/index.md)を参照 |
 
 ### `mockServer()`
 
-创建一个 `MockServer` 实例。
+`MockServer`インスタンスを作成します。
 
-#### 签名
+#### シグネチャ
 
 - `mockServer(options?: ApplicationOptions): MockServer`
 
-#### 详细信息
+#### 詳細
 
-| 参数名    | 类型                 | 描述                                         |
-| --------- | -------------------- | -------------------------------------------- |
-| `options` | `ApplicationOptions` | 参考 [Application](../server/application.md) |
+| パラメータ名 | タイプ                 | 説明                                         |
+| ------------ | ---------------------- | -------------------------------------------- |
+| `options`    | `ApplicationOptions` | [Application](../server/application.md)を参照 |
 
 ### `createMockServer()`
 
-创建一个 `MockServer` 实例，执行强制安装并启动。
+`MockServer`インスタンスを作成し、強制インストールと起動を行います。
 
-#### 签名
+#### シグネチャ
 
 ```ts
 createMockServer(options?: ApplicationOptions & {
@@ -81,47 +81,47 @@ createMockServer(options?: ApplicationOptions & {
 }): Promise<MockServer>
 ```
 
-#### 详细信息
+#### 詳細
 
-| 参数名                  | 类型                 | 描述                                         |
-| ----------------------- | -------------------- | -------------------------------------------- |
-| `options`               | `ApplicationOptions` | 参考 [Application](../server/application.md) |
-| `options.version`       | `string`             | 应用版本号                                   |
-| `options.beforeInstall` | `BeforeInstallFn`    | 安装前执行函数                               |
-| `options.skipInstall`   | `boolean`            | 是否跳过强制安装                             |
-| `options.skipStart`     | `boolean`            | 是否跳过应用启动                             |
+| パラメータ名                  | タイプ                 | 説明                                         |
+| ----------------------------- | ---------------------- | -------------------------------------------- |
+| `options`                     | `ApplicationOptions` | [Application](../server/application.md)を参照 |
+| `options.version`             | `string`             | アプリケーションのバージョン番号             |
+| `options.beforeInstall`       | `BeforeInstallFn`    | インストール前に実行する関数                 |
+| `options.skipInstall`         | `boolean`            | 強制インストールをスキップするかどうか       |
+| `options.skipStart`           | `boolean`            | アプリケーションの起動をスキップするかどうか |
 
 ### `MockServer`
 
-`MockServer` 继承自 `Application` ，是用于测试的服务端应用类。
+`MockServer`は`Application`を継承し、テスト用のサーバーアプリケーションクラスです。
 
-#### 类方法
+#### クラスメソッド
 
 ##### `loadAndInstall()`
 
-加载并安装应用。
+アプリケーションをロードしてインストールします。
 
 ##### `cleanDb()`
 
-清空数据库。
+データベースをクリアします。
 
 ##### `quickstart()`
 
-执行 `nocobase start --quickstart`.
+`nocobase start --quickstart`を実行します。
 
 ##### `destroy()`
 
-销毁应用。
+アプリケーションを破棄します。
 
 ##### `agent()`
 
-用于在测试用例中发起接口请求。
+テストケースでAPIリクエストを送信するために使用します。
 
-**签名**
+**シグネチャ**
 
 - `agent(): ExtendedAgent`
 
-**类型**
+**タイプ**
 
 ```ts
 interface ExtendedAgent extends SuperAgentTest {
@@ -131,27 +131,27 @@ interface ExtendedAgent extends SuperAgentTest {
 }
 ```
 
-**详细信息**
+**詳細**
 
 - `SuperAgentTest`
 
-参考 <a href="https://github.com/ladjs/superagent" target="_blank">superagent</a>.
+<a href="https://github.com/ladjs/superagent" target="_blank">superagent</a>を参照。
 
 - `login()`
 
-使用某个用户 Model 登录。
+指定されたユーザーModelでログインします。
 
 - `loginUsingId()`
 
-使用某个用户 ID 登录。
+指定されたユーザーIDでログインします。
 
 - `resource()`
 
-获取某个资源。
+指定されたリソースを取得します。
 
-| 参数名       | 类型     | 描述                                                                                 |
-| ------------ | -------- | ------------------------------------------------------------------------------------ |
-| `name`       | `string` | 1. 资源名称，比如 `a` <br /> 2. 资源的关联对象名称，比如 `a.b`                       |
-| `resourceOf` | `any`    | 当 `resource` 为资源的关联对象名称时，资源的主键值。比如 `a.b` 时，代表 `a` 的主键值 |
+| パラメータ名       | タイプ     | 説明                                                                                 |
+| ------------------ | ---------- | ------------------------------------------------------------------------------------ |
+| `name`             | `string` | 1. リソース名、例: `a` <br /> 2. リソースの関連オブジェクト名、例: `a.b`                       |
+| `resourceOf`       | `any`    | `resource`がリソースの関連オブジェクト名の場合、リソースの主キー値。例: `a.b`の場合、`a`の主キー値 |
 
 ### sleep

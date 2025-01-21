@@ -1,3 +1,3 @@
-# 概述
+# 概説します
 
-使用 <a href="https://ant.design/" target="_blank">Ant Design</a> 提供表格和统计数值展示。
+<a href="https://ant.design/" target="_blank">Ant Design</a>を使用して、テーブルと統計数値の表示を提供します。

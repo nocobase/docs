@@ -30,7 +30,7 @@ db.collection({
 });
 ```
 
-Refer to [Fields](/api/database/field.md) for more field types.
+Refer to [Fields](/api/database/field) for more field types.
 
 ## Constructor
 

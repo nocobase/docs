@@ -1,48 +1,48 @@
 # RelationRepository
 
-`RelationRepository` 是关系类型的 `Repository` 对象，`RelationRepository` 可以实现在不加载关联的情况下对关联数据进行操作。基于 `RelationRepository`，每种关联都派生出对应的实现，分别为
+`RelationRepository` はリレーションタイプの `Repository` オブジェクトです。`RelationRepository` を使用すると、関連データをロードせずに操作することができます。`RelationRepository` に基づいて、各関連は対応する実装を派生させます。それぞれ以下の通りです。
 
 - [`HasOneRepository`](#has-one-repository)
 - `HasManyRepository`
 - `BelongsToRepository`
 - `BelongsToManyRepository`
 
-## 构造函数
+## コンストラクタ
 
-**签名**
+**シグネチャ**
 
 - `constructor(sourceCollection: Collection, association: string, sourceKeyValue: string | number)`
 
-**参数**
+**パラメータ**
 
-| 参数名             | 类型               | 默认值 | 描述                                                      |
-| ------------------ | ------------------ | ------ | --------------------------------------------------------- |
-| `sourceCollection` | `Collection`       | -      | 关联中的参照关系（referencing relation）对应的 Collection |
-| `association`      | `string`           | -      | 关联名称                                                  |
-| `sourceKeyValue`   | `string \| number` | -      | 参照关系中对应的 key 值                                   |
+| パラメータ名         | タイプ               | デフォルト値 | 説明                                                      |
+| -------------------- | -------------------- | ------------ | --------------------------------------------------------- |
+| `sourceCollection`   | `Collection`         | -            | 関連中の参照関係（referencing relation）に対応する Collection |
+| `association`        | `string`             | -            | 関連名                                                    |
+| `sourceKeyValue`     | `string \| number`   | -            | 参照関係中の対応する key 値                               |
 
-## 基类属性
+## 基底クラスのプロパティ
 
 ### `db: Database`
 
-数据库对象
+データベースオブジェクト
 
 ### `sourceCollection`
 
-关联中的参照关系（referencing relation）对应的 Collection
+関連中の参照関係（referencing relation）に対応する Collection
 
 ### `targetCollection`
 
-关联中被参照关系（referenced relation）对应的 Collection
+関連中の被参照関係（referenced relation）に対応する Collection
 
 ### `association`
 
-sequelize 中的与当前关联对应的 association 对象
+sequelize 中の現在の関連に対応する association オブジェクト
 
 ### `associationField`
 
-collection 中的与当前关联对应的字段
+collection 中の現在の関連に対応するフィールド
 
 ### `sourceKeyValue`
 
-参照关系中对应的 key 值
+参照関係中の対応する key 値

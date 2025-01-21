@@ -1,8 +1,8 @@
 # Repository
 
-## 概览
+## 概要
 
-在一个给定的 `Collection` 对象上，可以获取到它的 `Repository` 对象来对数据表进行读写操作。
+特定の `Collection` オブジェクト上で、その `Repository` オブジェクトを取得し、データシートに対する読み書き操作を行うことができます。
 
 ```javascript
 const { UserCollection } = require('./collections');
@@ -19,11 +19,11 @@ user.name = 'new name';
 await user.save();
 ```
 
-### 查询
+### クエリ
 
-#### 基础查询
+#### 基本クエリ
 
-在 `Repository` 对象上，调用 `find*` 相关方法，可执行查询操作，查询方法都支持传入 `filter` 参数，用于过滤数据。
+`Repository` オブジェクト上で、`find*` 関連メソッドを呼び出すことで、クエリ操作を実行できます。クエリメソッドはすべて `filter` パラメータをサポートしており、データをフィルタリングするために使用されます。
 
 ```javascript
 // SELECT * FROM users WHERE id = 1
@@ -34,9 +34,9 @@ userRepository.find({
 });
 ```
 
-#### 操作符
+#### 演算子
 
-`Repository` 中的 `filter` 参数，还提供了多种操作符，执行更加多样的查询操作。
+`Repository` の `filter` パラメータは、さらに多様なクエリ操作を実行するための複数の演算子を提供します。
 
 ```javascript
 // SELECT * FROM users WHERE age > 18
@@ -56,39 +56,39 @@ userRepository.find({
 });
 ```
 
-操作符的更多详细信息请参考 [Filter Operators](/api/database/operators)。
+演算子の詳細については、[Filter Operators](/api/database/operators) を参照してください。
 
-#### 字段控制
+#### フィールド制御
 
-在查询操作时，通过 `fields`, `except`, `appends` 参数可以控制输出字段。
+クエリ操作時に、`fields`、`except`、`appends` パラメータを使用して出力フィールドを制御できます。
 
-- `fields`: 指定输出字段
-- `except`: 排除输出字段
-- `appends`: 追加输出关联字段
+- `fields`: 出力フィールドを指定
+- `except`: 出力フィールドを除外
+- `appends`: 関連フィールドを追加
 
 ```javascript
-// 获取的结果只包含 id 和 name 字段
+// 結果に id と name フィールドのみ含める
 userRepository.find({
   fields: ['id', 'name'],
 });
 
-// 获取的结果不包含 password 字段
+// 結果から password フィールドを除外
 userRepository.find({
   except: ['password'],
 });
 
-// 获取的结果会包含关联对象 posts 的数据
+// 結果に関連オブジェクト posts のデータを含める
 userRepository.find({
   appends: ['posts'],
 });
 ```
 
-#### 关联字段查询
+#### 関連フィールドクエリ
 
-`filter` 参数支持按关联字段进行过滤，例如：
+`filter` パラメータは、関連フィールドによるフィルタリングをサポートしています。例えば：
 
 ```javascript
-// 查询 user 对象，其所关联的 posts 存在 title 为 'post title' 的对象
+// user オブジェクトをクエリし、関連する posts に title が 'post title' のオブジェクトが存在する場合
 userRepository.find({
   filter: {
     'posts.title': 'post title',
@@ -96,10 +96,10 @@ userRepository.find({
 });
 ```
 
-关联字段也可进行嵌套
+関連フィールドはネストすることもできます。
 
 ```javascript
-// 查询 user 对象，查询结果满足其 posts 的 comments 包含 keywords
+// user オブジェクトをクエリし、その posts の comments が keywords を含む場合
 await userRepository.find({
   filter: {
     'posts.comments.content': {
@@ -109,9 +109,9 @@ await userRepository.find({
 });
 ```
 
-#### 排序
+#### ソート
 
-通过 `sort` 参数，可以对查询结果进行排序。
+`sort` パラメータを使用して、クエリ結果をソートできます。
 
 ```javascript
 // SELECT * FROM users ORDER BY age
@@ -130,7 +130,7 @@ await userRepository.find({
 });
 ```
 
-也可按照关联对象的字段进行排序
+関連オブジェクトのフィールドでソートすることもできます。
 
 ```javascript
 await userRepository.find({
@@ -138,11 +138,11 @@ await userRepository.find({
 });
 ```
 
-### 创建
+### 作成
 
-#### 基础创建
+#### 基本作成
 
-通过 `Repository` 创建新的数据对象。
+`Repository` を使用して新しいデータオブジェクトを作成します。
 
 ```javascript
 await userRepository.create({
@@ -151,7 +151,7 @@ await userRepository.create({
 });
 // INSERT INTO users (name, age) VALUES ('张三', 18)
 
-// 支持批量创建
+// バッチ作成をサポート
 await userRepository.create([
   {
     name: '张三',
@@ -164,9 +164,9 @@ await userRepository.create([
 ]);
 ```
 
-#### 创建关联
+#### 関連作成
 
-创建时可以同时创建关联对象，和查询类似，也支持关联对象的嵌套使用，例如：
+作成時に同時に関連オブジェクトを作成できます。クエリと同様に、関連オブジェクトのネストもサポートされています。例えば：
 
 ```javascript
 await userRepository.create({
@@ -187,10 +187,10 @@ await userRepository.create({
     },
   ],
 });
-// 创建用户的同时，创建 post 与用户关联，创建 tags 与 post 相关联。
+// ユーザーを作成すると同時に、post とユーザーを関連付け、tags を post に関連付ける。
 ```
 
-若关联对象已在数据库中，可传入其ID，创建时会建立与关联对象的关联关系。
+関連オブジェクトがすでにデータベースに存在する場合、そのIDを渡すことで、作成時に関連オブジェクトとの関連関係を確立できます。
 
 ```javascript
 const tag1 = await tagRepository.findOne({
@@ -208,7 +208,7 @@ await userRepository.create({
       content: 'post content',
       tags: [
         {
-          id: tag1.id, // 建立与已存在关联对象的关联关系
+          id: tag1.id, // 既存の関連オブジェクトとの関連関係を確立
         },
         {
           name: 'tag2',
@@ -221,9 +221,9 @@ await userRepository.create({
 
 ### 更新
 
-#### 基础更新
+#### 基本更新
 
-获取到数据对象后，可直接在数据对象(`Model`)上修改属性，然后调用 `save` 方法保存修改。
+データオブジェクトを取得した後、データオブジェクト(`Model`)上で直接属性を変更し、`save` メソッドを呼び出して変更を保存できます。
 
 ```javascript
 const user = await userRepository.findOne({
@@ -236,12 +236,12 @@ user.age = 20;
 await user.save();
 ```
 
-数据对象 `Model` 继承自 Sequelize Model，对 `Model` 的操作可参考 [Sequelize Model](https://sequelize.org/master/manual/model-basics.html)。
+データオブジェクト `Model` は Sequelize Model を継承しており、`Model` の操作については [Sequelize Model](https://sequelize.org/master/manual/model-basics.html) を参照してください。
 
-也可通过 `Repository` 更新数据：
+`Repository` を使用してデータを更新することもできます。
 
 ```javascript
-// 修改满足筛选条件的数据记录
+// フィルタ条件に一致するデータレコードを更新
 await userRepository.update({
   filter: {
     name: '张三',
@@ -252,7 +252,7 @@ await userRepository.update({
 });
 ```
 
-更新时，可以通过 `whitelist` 、`blacklist` 参数控制更新字段，例如：
+更新時、`whitelist`、`blacklist` パラメータを使用して更新フィールドを制御できます。例えば：
 
 ```javascript
 await userRepository.update({
@@ -263,13 +263,13 @@ await userRepository.update({
     age: 20,
     name: '李四',
   },
-  whitelist: ['age'], // 仅更新 age 字段
+  whitelist: ['age'], // age フィールドのみ更新
 });
 ```
 
-#### 更新关联字段
+#### 関連フィールドの更新
 
-在更新时，可以设置关联对象，例如：
+更新時に、関連オブジェクトを設定できます。例えば：
 
 ```javascript
 const tag1 = tagRepository.findOne({
@@ -286,10 +286,10 @@ await postRepository.update({
     title: 'new post title',
     tags: [
       {
-        id: tag1.id, // 与 tag1 建立关联
+        id: tag1.id, // tag1 と関連を確立
       },
       {
-        name: 'tag2', // 创建新的 tag 并建立关联
+        name: 'tag2', // 新しい tag を作成し、関連を確立
       },
     ],
   },
@@ -300,14 +300,14 @@ await postRepository.update({
     id: 1,
   },
   values: {
-    tags: null, // 解除 post 与 tags 的关联
+    tags: null, // post と tags の関連を解除
   },
 });
 ```
 
-### 删除
+### 削除
 
-可调用 `Repository` 中的 `destroy()`方法进行删除操作。删除时需指定筛选条件：
+`Repository` の `destroy()` メソッドを呼び出して削除操作を実行できます。削除時にはフィルタ条件を指定する必要があります。
 
 ```javascript
 await userRepository.destroy({
@@ -317,15 +317,15 @@ await userRepository.destroy({
 });
 ```
 
-## 构造函数
+## コンストラクタ
 
-通常不会直接由开发者调用，主要通过 `db.registerRepositories()` 注册类型以后，在 `db.colletion()` 的参数中指定对应已注册的仓库类型，并完成实例化。
+通常、開発者が直接呼び出すことはなく、主に `db.registerRepositories()` でタイプを登録した後、`db.colletion()` のパラメータで登録済みのリポジトリタイプを指定し、インスタンス化します。
 
-**签名**
+**シグネチャ**
 
 - `constructor(collection: Collection)`
 
-**示例**
+**例**
 
 ```ts
 import { Repository } from '@nocobase/database';
@@ -342,7 +342,7 @@ db.registerRepositories({
 
 db.collection({
   name: 'books',
-  // here link to the registered repository
+  // ここで登録済みのリポジトリにリンク
   repository: 'books',
 });
 
@@ -352,31 +352,31 @@ const books = db.getRepository('books') as MyRepository;
 await books.myQuery('SELECT * FROM books;');
 ```
 
-## 实例成员
+## インスタンスメンバ
 
 ### `database`
 
-上下文所在的数据库管理实例。
+コンテキストが属するデータベース管理インスタンス。
 
 ### `collection`
 
-对应的数据表管理实例。
+対応するデータシート管理インスタンス。
 
 ### `model`
 
-对应的数据模型类。
+対応するデータモデルクラス。
 
-## 实例方法
+## インスタンスメソッド
 
 ### `find()`
 
-从数据库查询数据集，可指定筛选条件、排序等。
+データベースからデータセットをクエリし、フィルタ条件やソートなどを指定できます。
 
-**签名**
+**シグネチャ**
 
 - `async find(options?: FindOptions): Promise<Model[]>`
 
-**类型**
+**タイプ**
 
 ```typescript
 type Filter = FilterWithOperator | FilterWithValue | FilterAnd | FilterOr;
@@ -405,15 +405,14 @@ interface CommonFindOptions extends Transactionable {
 type FindOptions = SequelizeFindOptions & CommonFindOptions & FilterByTk;
 ```
 
-**详细信息**
+**詳細**
 
 #### `filter: Filter`
 
-查询条件，用于过滤数据结果。传入的查询参数中，`key` 为查询的字段名，`value` 可传要查询的值，
-也可配合使用操作符进行其他条件的数据筛选。
+クエリ条件で、データ結果をフィルタリングします。クエリパラメータの `key` はクエリするフィールド名、`value` はクエリする値、または演算子を使用して他の条件でデータをフィルタリングできます。
 
 ```typescript
-// 查询 name 为 foo，并且 age 大于 18 的记录
+// name が foo で、かつ age が 18 より大きいレコードをクエリ
 repository.find({
   filter: {
     name: 'foo',
@@ -424,15 +423,14 @@ repository.find({
 });
 ```
 
-更多操作符请参考 [查询操作符](./operators.md)。
+その他の演算子については、[クエリ演算子](./operators.md) を参照してください。
 
 #### `filterByTk: TargetKey`
 
-通过 `TargetKey` 查询数据，为 `filter` 参数的便捷方法。`TargetKey` 具体是哪一个字段，
-可在 `Collection` 中进行[配置](./collection.md#filtertargetkey)，默认为 `primaryKey`。
+`TargetKey` を使用してデータをクエリします。`filter` パラメータの簡易メソッドです。`TargetKey` がどのフィールドであるかは、`Collection` で[設定](./collection.md#filtertargetkey)でき、デフォルトは `primaryKey` です。
 
 ```typescript
-// 默认情况下，查找 id 为 1 的记录
+// デフォルトでは、id が 1 のレコードを検索
 repository.find({
   filterByTk: 1,
 });
@@ -440,30 +438,29 @@ repository.find({
 
 #### `fields: string[]`
 
-查询列，用于控制数据字段结果。传入此参数之后，只会返回指定的字段。
+クエリ列で、データフィールド結果を制御します。このパラメータを渡すと、指定されたフィールドのみが返されます。
 
 #### `except: string[]`
 
-排除列，用于控制数据字段结果。传入此参数之后，传入的字段将不会输出。
+除外列で、データフィールド結果を制御します。このパラメータを渡すと、指定されたフィールドは出力されません。
 
 #### `appends: string[]`
 
-追加列，用于加载关联数据。传入此参数之后，指定的关联字段将一并输出。
+追加列で、関連データをロードします。このパラメータを渡すと、指定された関連フィールドが出力に含まれます。
 
 #### `sort: string[] | string`
 
-指定查询结果排序方式，传入参数为字段名称，默认按照升序 `asc` 排序，若需按降序 `desc` 排序，
-可在字段名称前加上 `-` 符号，如：`['-id', 'name']`，表示按 `id desc, name asc` 排序。
+クエリ結果のソート方法を指定します。パラメータはフィールド名で、デフォルトは昇順 `asc` でソートされます。降順 `desc` でソートする場合は、フィールド名の前に `-` 記号を付けます。例：`['-id', 'name']` は、`id desc, name asc` でソートされます。
 
 #### `limit: number`
 
-限制结果数量，同 `SQL` 中的 `limit`
+結果数を制限します。`SQL` の `limit` と同じです。
 
 #### `offset: number`
 
-查询偏移量，同 `SQL` 中的 `offset`
+クエリオフセットで、`SQL` の `offset` と同じです。
 
-**示例**
+**例**
 
 ```ts
 const posts = db.getRepository('posts');
@@ -481,15 +478,15 @@ const results = await posts.find({
 
 ### `findOne()`
 
-从数据库查询特定条件的单条数据。相当于 Sequelize 中的 `Model.findOne()`。
+データベースから特定条件の単一データをクエリします。Sequelize の `Model.findOne()` に相当します。
 
-**签名**
+**シグネチャ**
 
 - `async findOne(options?: FindOneOptions): Promise<Model | null>`
 
 <embed src="./shared/find-one.md"></embed>
 
-**示例**
+**例**
 
 ```ts
 const posts = db.getRepository('posts');
@@ -501,13 +498,13 @@ const result = await posts.findOne({
 
 ### `count()`
 
-从数据库查询特定条件的数据总数。相当于 Sequelize 中的 `Model.count()`。
+データベースから特定条件のデータ総数をクエリします。Sequelize の `Model.count()` に相当します。
 
-**签名**
+**シグネチャ**
 
 - `count(options?: CountOptions): Promise<number>`
 
-**类型**
+**タイプ**
 
 ```typescript
 interface CountOptions
@@ -517,7 +514,7 @@ interface CountOptions
 }
 ```
 
-**示例**
+**例**
 
 ```ts
 const books = db.getRepository('books');
@@ -531,13 +528,13 @@ const count = await books.count({
 
 ### `findAndCount()`
 
-从数据库查询特定条件的数据集和结果数。相当于 Sequelize 中的 `Model.findAndCountAll()`。
+データベースから特定条件のデータセットと結果数をクエリします。Sequelize の `Model.findAndCountAll()` に相当します。
 
-**签名**
+**シグネチャ**
 
 - `async findAndCount(options?: FindAndCountOptions): Promise<[Model[], number]>`
 
-**类型**
+**タイプ**
 
 ```typescript
 type FindAndCountOptions = Omit<
@@ -547,32 +544,32 @@ type FindAndCountOptions = Omit<
   CommonFindOptions;
 ```
 
-**详细信息**
+**詳細**
 
-查询参数与 `find()` 相同。返回值为一个数组，第一个元素为查询结果，第二个元素为结果总数。
+クエリパラメータは `find()` と同じです。戻り値は配列で、最初の要素がクエリ結果、2番目の要素が結果の総数です。
 
 ### `create()`
 
-向数据表插入一条新创建的数据。相当于 Sequelize 中的 `Model.create()`。当要创建的数据对象携带关系字段的信息时，会一并创建或更新相应的关系数据记录。
+データシートに新しく作成されたデータを挿入します。Sequelize の `Model.create()` に相当します。作成するデータオブジェクトに関連フィールドの情報が含まれている場合、関連データレコードも作成または更新されます。
 
-**签名**
+**シグネチャ**
 
 - `async create<M extends Model>(options: CreateOptions): Promise<M>`
 
 <embed src="./shared/create-options.md"></embed>
 
-**示例**
+**例**
 
 ```ts
 const posts = db.getRepository('posts');
 
 const result = await posts.create({
   values: {
-    title: 'NocoBase 1.0 发布日志',
+    title: 'NocoBase 1.0 リリースノート',
     tags: [
-      // 有关系表主键值时为更新该条数据
+      // 関連テーブルの主キー値がある場合はそのデータを更新
       { id: 1 },
-      // 没有主键值时为创建新数据
+      // 主キー値がない場合は新しいデータを作成
       { name: 'NocoBase' },
     ],
   },
@@ -581,13 +578,13 @@ const result = await posts.create({
 
 ### `createMany()`
 
-向数据表插入多条新创建的数据。相当于多次调用 `create()` 方法。
+データシートに複数の新規データを挿入します。`create()` メソッドを複数回呼び出すのと同等です。
 
-**签名**
+**シグネチャ**
 
 - `createMany(options: CreateManyOptions): Promise<Model[]>`
 
-**类型**
+**タイプ**
 
 ```typescript
 interface CreateManyOptions extends BulkCreateOptions {
@@ -595,12 +592,12 @@ interface CreateManyOptions extends BulkCreateOptions {
 }
 ```
 
-**详细信息**
+**詳細**
 
-- `records`：要创建的记录的数据对象数组。
-- `transaction`: 事务对象。如果没有传入事务参数，该方法会自动创建一个内部事务。
+- `records`：作成するレコードのデータオブジェクトの配列。
+- `transaction`: トランザクションオブジェクト。トランザクションパラメータが渡されない場合、このメソッドは内部でトランザクションを自動的に作成します。
 
-**示例**
+**例**
 
 ```ts
 const posts = db.getRepository('posts');
@@ -608,16 +605,16 @@ const posts = db.getRepository('posts');
 const results = await posts.createMany({
   records: [
     {
-      title: 'NocoBase 1.0 发布日志',
+      title: 'NocoBase 1.0 リリースノート',
       tags: [
-        // 有关系表主键值时为更新该条数据
+        // 関連テーブルの主キー値がある場合はそのデータを更新
         { id: 1 },
-        // 没有主键值时为创建新数据
+        // 主キー値がない場合は新しいデータを作成
         { name: 'NocoBase' },
       ],
     },
     {
-      title: 'NocoBase 1.1 发布日志',
+      title: 'NocoBase 1.1 リリースノート',
       tags: [{ id: 1 }],
     },
   ],
@@ -626,15 +623,15 @@ const results = await posts.createMany({
 
 ### `update()`
 
-更新数据表中的数据。相当于 Sequelize 中的 `Model.update()`。当要更新的数据对象携带关系字段的信息时，会一并创建或更新相应的关系数据记录。
+データシートのデータを更新します。Sequelize の `Model.update()` と同等です。更新するデータオブジェクトに関連フィールドの情報が含まれている場合、関連するデータレコードも作成または更新されます。
 
-**签名**
+**シグネチャ**
 
 - `async update<M extends Model>(options: UpdateOptions): Promise<M>`
 
 <embed src="./shared/update-options.md"></embed>
 
-**示例**
+**例**
 
 ```ts
 const posts = db.getRepository('posts');
@@ -642,11 +639,11 @@ const posts = db.getRepository('posts');
 const result = await posts.update({
   filterByTk: 1,
   values: {
-    title: 'NocoBase 1.0 发布日志',
+    title: 'NocoBase 1.0 リリースノート',
     tags: [
-      // 有关系表主键值时为更新该条数据
+      // 関連テーブルの主キー値がある場合はそのデータを更新
       { id: 1 },
-      // 没有主键值时为创建新数据
+      // 主キー値がない場合は新しいデータを作成
       { name: 'NocoBase' },
     ],
   },
@@ -655,13 +652,13 @@ const result = await posts.update({
 
 ### `destroy()`
 
-删除数据表中的数据。相当于 Sequelize 中的 `Model.destroy()`。
+データシートのデータを削除します。Sequelize の `Model.destroy()` と同等です。
 
-**签名**
+**シグネチャ**
 
 - `async destory(options?: TargetKey | TargetKey[] | DestoryOptions): Promise<number>`
 
-**类型**
+**タイプ**
 
 ```typescript
 interface DestroyOptions extends SequelizeDestroyOptions {
@@ -672,9 +669,9 @@ interface DestroyOptions extends SequelizeDestroyOptions {
 }
 ```
 
-**详细信息**
+**詳細**
 
-- `filter`：指定要删除的记录的过滤条件。Filter 详细用法可参考 [`find()`](#find) 方法。
-- `filterByTk`：按 TargetKey 指定要删除的记录的过滤条件。
-- `truncate`: 是否清空表数据，在没有传入 `filter` 或 `filterByTk` 参数时有效。
-- `transaction`: 事务对象。如果没有传入事务参数，该方法会自动创建一个内部事务。
+- `filter`：削除するレコードのフィルタ条件を指定します。Filter の詳細な使用方法は [`find()`](#find) メソッドを参照してください。
+- `filterByTk`：TargetKey を使用して削除するレコードのフィルタ条件を指定します。
+- `truncate`: テーブルデータをクリアするかどうか。`filter` または `filterByTk` パラメータが渡されない場合に有効です。
+- `transaction`: トランザクションオブジェクト。トランザクションパラメータが渡されない場合、このメソッドは内部でトランザクションを自動的に作成します。

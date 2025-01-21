@@ -1,4 +1,4 @@
-# 适配的 Schema 组件
+# 対応する Schema コンポーネント
 
 ## Common
 

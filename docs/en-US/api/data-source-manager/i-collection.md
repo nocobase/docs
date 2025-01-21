@@ -1,6 +1,6 @@
 # ICollection
 
-`ICollection` 是数据模型的接口，其中包含了模型的名称、字段、关联等信息。
+`ICollection` is an interface for data models, which includes information such as the model's name, fields, associations, etc.
 
 ```typescript
 export interface ICollection {
@@ -20,50 +20,50 @@ export interface ICollection {
 }
 ```
 
-## 成员
+## Members
 
 ### repository
 
-`ICollection` 所属的 `Repository` 实例
+The `Repository` instance to which `ICollection` belongs.
 
 ## API
 
 ### updateOptions()
 
-更新 `Collection` 的属性
+Updates the properties of the `Collection`.
 
-#### 签名
+#### Signature
 
 - `updateOptions(options: any): void`
 
 ### setField()
 
-设置 `Collection` 的字段
+Sets a field of the `Collection`.
 
-#### 签名
+#### Signature
 
 - `setField(name: string, options: any): IField`
 
 ### removeField()
 
-移除 `Collection` 的字段
+Removes a field from the `Collection`.
 
-#### 签名
+#### Signature
 
 - `removeField(name: string): void`
 
 ### getFields()
 
-获取 `Collection` 的所有字段
+Retrieves all fields of the `Collection`.
 
-#### 签名
+#### Signature
 
 - `getFields(): Array<IField>`
 
 ### getField()
 
-根据名称获取 `Collection` 的字段
+Retrieves a field of the `Collection` by name.
 
-#### 签名
+#### Signature
 
 - `getField(name: string): IField`

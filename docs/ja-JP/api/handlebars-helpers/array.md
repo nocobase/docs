@@ -1,66 +1,66 @@
-# Array
+# 配列
 
 ## {{after}}
 
-Returns all of the items in an array after the specified index. Opposite of [before](#before).
+指定されたインデックスの後にある配列内のすべてのアイテムを返します。[before](#before)の反対です。
 
-**Params**
+**パラメータ**
 
-* `array` **{Array}**: Collection
-* `n` **{Number}**: Starting index (number of items to exclude)
-* `returns` **{Array}**: Array exluding `n` items.
+* `array` **{Array}**: データシート
+* `n` **{Number}**: 開始インデックス（除外するアイテムの数）
+* `returns` **{Array}**: `n` 個のアイテムを除外した配列
 
-**Example**
+**例**
 
 ```handlebars
 <!-- array: ['a', 'b', 'c'] -->
 {{after array 1}}
-<!-- results in: '["c"]' -->
+<!-- 結果: '["c"]' -->
 ```
 
 ## {{arrayify}}
 
-Cast the given `value` to an array.
+与えられた`value`を配列にキャストします。
 
-**Params**
+**パラメータ**
 
 * `value` **{any}**
 * `returns` **{Array}**
 
-**Example**
+**例**
 
 ```handlebars
 {{arrayify "foo"}}
-<!-- results in: [ "foo" ] -->
+<!-- 結果: [ "foo" ] -->
 ```
 
 ## {{before}}
 
-Return all of the items in the collection before the specified count. Opposite of [after](#after).
+指定された数の前にあるコレクション内のすべてのアイテムを返します。[after](#after)の反対です。
 
-**Params**
+**パラメータ**
 
 * `array` **{Array}**
 * `n` **{Number}**
-* `returns` **{Array}**: Array excluding items after the given number.
+* `returns` **{Array}**: 指定された数の後のアイテムを除外した配列
 
-**Example**
+**例**
 
 ```handlebars
 <!-- array: ['a', 'b', 'c'] -->
 {{before array 2}}
-<!-- results in: '["a", "b"]' -->
+<!-- 結果: '["a", "b"]' -->
 ```
 
 ## {{eachIndex}}
 
-**Params**
+**パラメータ**
 
 * `array` **{Array}**
 * `options` **{Object}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 <!-- array: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'] -->
@@ -71,57 +71,56 @@ Return all of the items in the collection before the specified count. Opposite o
 
 ## {{filter}}
 
-Block helper that filters the given array and renders the block for values that evaluate to `true`, otherwise the inverse block is returned.
+与えられた配列をフィルタリングし、`true`と評価される値に対してブロックをレンダリングするブロックヘルパーです。それ以外の場合は逆ブロックが返されます。
 
-**Params**
+**パラメータ**
 
 * `array` **{Array}**
 * `value` **{any}**
 * `options` **{Object}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 <!-- array: ['a', 'b', 'c'] -->
 {{#filter array "foo"}}AAA{{else}}BBB{{/filter}}
-<!-- results in: 'BBB' -->
+<!-- 結果: 'BBB' -->
 ```
 
 ## {{first}}
 
-Returns the first item, or first `n` items of an array.
+配列の最初のアイテム、または最初の`n`個のアイテムを返します。
 
-**Params**
+**パラメータ**
 
 * `array` **{Array}**
-* `n` **{Number}**: Number of items to return, starting at `0`.
+* `n` **{Number}**: 返すアイテムの数、`0`から開始
 * `returns` **{Array}**
 
-**Example**
+**例**
 
 ```handlebars
 {{first "['a', 'b', 'c', 'd', 'e']" 2}}
-<!-- results in: '["a", "b"]' -->
+<!-- 結果: '["a", "b"]' -->
 ```
 
 ## {{forEach}}
 
-Iterates over each item in an array and exposes the current item in the array as context to the inner block. In addition to the current array item, the helper exposes the following variables to the inner block:
+配列内の各アイテムを反復処理し、現在の配列アイテムを内部ブロックのコンテキストとして公開します。現在の配列アイテムに加えて、ヘルパーは内部ブロックに以下の変数を公開します：
 
 * `index`
 * `total`
 * `isFirst`
 * `isLast`
-Also, `@index` is exposed as a private variable, and additional
-private variables may be defined as hash arguments.
+また、`@index`はプライベート変数として公開され、追加のプライベート変数はハッシュ引数として定義される場合があります。
 
-**Params**
+**パラメータ**
 
 * `array` **{Array}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 <!-- accounts = [
@@ -139,16 +138,16 @@ private variables may be defined as hash arguments.
 
 ## {{inArray}}
 
-Block helper that renders the block if an array has the given `value`. Optionally specify an inverse block to render when the array does not have the given value.
+配列に指定された`value`がある場合にブロックをレンダリングするブロックヘルパーです。オプションで、配列に指定された値がない場合にレンダリングする逆ブロックを指定できます。
 
-**Params**
+**パラメータ**
 
 * `array` **{Array}**
 * `value` **{any}**
 * `options` **{Object}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 <!-- array: ['a', 'b', 'c'] -->
@@ -157,74 +156,73 @@ Block helper that renders the block if an array has the given `value`. Optionall
 {{else}}
   bar
 {{/inArray}}
-<!-- results in: 'bar' -->
+<!-- 結果: 'bar' -->
 ```
 
 ## {{isArray}}
 
-Returns true if `value` is an es5 array.
+`value`がes5配列の場合にtrueを返します。
 
-**Params**
+**パラメータ**
 
-* `value` **{any}**: The value to test.
+* `value` **{any}**: テストする値
 * `returns` **{Boolean}**
 
-**Example**
+**例**
 
 ```handlebars
 {{isArray "abc"}}
-<!-- results in: false -->
+<!-- 結果: false -->
 
 <!-- array: [1, 2, 3] -->
 {{isArray array}}
-<!-- results in: true -->
+<!-- 結果: true -->
 ```
 
 ## {{itemAt}}
 
-Returns the item from `array` at index `idx`.
+`array`内のインデックス`idx`にあるアイテムを返します。
 
-**Params**
+**パラメータ**
 
 * `array` **{Array}**
 * `idx` **{Number}**
 * `returns` **{any}** `value`
 
-**Example**
+**例**
 
 ```handlebars
 <!-- array: ['a', 'b', 'c'] -->
 {{itemAt array 1}}
-<!-- results in: 'b' -->
+<!-- 結果: 'b' -->
 ```
 
 ## {{join}}
 
-Join all elements of array into a string, optionally using a given separator.
+配列のすべての要素を文字列に結合します。オプションで指定されたセパレータを使用します。
 
-**Params**
+**パラメータ**
 
 * `array` **{Array}**
-* `separator` **{String}**: The separator to use. Defaults to `,`.
+* `separator` **{String}**: 使用するセパレータ。デフォルトは`,`です。
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 <!-- array: ['a', 'b', 'c'] -->
 {{join array}}
-<!-- results in: 'a, b, c' -->
+<!-- 結果: 'a, b, c' -->
 
 {{join array '-'}}
-<!-- results in: 'a-b-c' -->
+<!-- 結果: 'a-b-c' -->
 ```
 
 ## {{equalsLength}}
 
-Returns true if the the length of the given `value` is equal
-to the given `length`. Can be used as a block or inline helper.
+与えられた`value`の長さが指定された`length`と等しい場合にtrueを返します。ブロックまたはインラインヘルパーとして使用できます。
 
-**Params**
+**パラメータ**
 
 * `value` **{Array|String}**
 * `length` **{Number}**
@@ -233,125 +231,125 @@ to the given `length`. Can be used as a block or inline helper.
 
 ## {{last}}
 
-Returns the last item, or last `n` items of an array or string. Opposite of [first](#first).
+配列または文字列の最後のアイテム、または最後の`n`個のアイテムを返します。[first](#first)の反対です。
 
-**Params**
+**パラメータ**
 
-* `value` **{Array|String}**: Array or string.
-* `n` **{Number}**: Number of items to return from the end of the array.
+* `value` **{Array|String}**: 配列または文字列
+* `n` **{Number}**: 配列の末尾から返すアイテムの数
 * `returns` **{Array}**
 
-**Example**
+**例**
 
 ```handlebars
 <!-- var value = ['a', 'b', 'c', 'd', 'e'] -->
 
 {{last value}}
-<!-- results in: ['e'] -->
+<!-- 結果: ['e'] -->
 
 {{last value 2}}
-<!-- results in: ['d', 'e'] -->
+<!-- 結果: ['d', 'e'] -->
 
 {{last value 3}}
-<!-- results in: ['c', 'd', 'e'] -->
+<!-- 結果: ['c', 'd', 'e'] -->
 ```
 
 ## {{length}}
 
-Returns the length of the given string or array.
+与えられた文字列または配列の長さを返します。
 
-**Params**
+**パラメータ**
 
 * `value` **{Array|Object|String}**
-* `returns` **{Number}**: The length of the value.
+* `returns` **{Number}**: 値の長さ
 
-**Example**
+**例**
 
 ```handlebars
 {{length '["a", "b", "c"]'}}
-<!-- results in: 3 -->
+<!-- 結果: 3 -->
 
-<!-- results in: myArray = ['a', 'b', 'c', 'd', 'e']; -->
+<!-- 結果: myArray = ['a', 'b', 'c', 'd', 'e']; -->
 {{length myArray}}
-<!-- results in: 5 -->
+<!-- 結果: 5 -->
 
-<!-- results in: myObject = {'a': 'a', 'b': 'b'}; -->
+<!-- 結果: myObject = {'a': 'a', 'b': 'b'}; -->
 {{length myObject}}
-<!-- results in: 2 -->
+<!-- 結果: 2 -->
 ```
 
 ## {{lengthEqual}}
 
-Alias for [equalsLength](#equalsLength)
+[equalsLength](#equalsLength)のエイリアス
 
 ## {{map}}
 
-Returns a new array, created by calling `function` on each element of the given `array`. For example,
+与えられた`array`の各要素に対して`function`を呼び出して作成された新しい配列を返します。
 
-**Params**
+**パラメータ**
 
 * `array` **{Array}**
 * `fn` **{Function}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 <!-- array: ['a', 'b', 'c'], and "double" is a
 fictitious function that duplicates letters -->
 {{map array double}}
-<!-- results in: '["aa", "bb", "cc"]' -->
+<!-- 結果: '["aa", "bb", "cc"]' -->
 ```
 
 ## {{pluck}}
 
-Map over the given object or array or objects and create an array of values from the given `prop`. Dot-notation may be used (as a string) to get nested properties.
+与えられたオブジェクトまたはオブジェクトの配列をマッピングし、指定された`prop`から値の配列を作成します。ドット表記（文字列として）を使用してネストされたプロパティを取得できます。
 
-**Params**
+**パラメータ**
 
-* `collection` **{Array|Object}**
+* `データシート` **{Array|Object}**
 * `prop` **{Function}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 // {{pluck items "data.title"}}
-<!-- results in: '["aa", "bb", "cc"]' -->
+<!-- 結果: '["aa", "bb", "cc"]' -->
 ```
 
 ## {{reverse}}
 
-Reverse the elements in an array, or the characters in a string.
+配列内の要素、または文字列内の文字を逆順にします。
 
-**Params**
+**パラメータ**
 
 * `value` **{Array|String}**
-* `returns` **{Array|String}**: Returns the reversed string or array.
+* `returns` **{Array|String}**: 逆順にされた文字列または配列を返します。
 
-**Example**
+**例**
 
 ```handlebars
 <!-- value: 'abcd' -->
 {{reverse value}}
-<!-- results in: 'dcba' -->
+<!-- 結果: 'dcba' -->
 <!-- value: ['a', 'b', 'c', 'd'] -->
 {{reverse value}}
-<!-- results in: ['d', 'c', 'b', 'a'] -->
+<!-- 結果: ['d', 'c', 'b', 'a'] -->
 ```
 
 ## {{some}}
 
-Block helper that returns the block if the callback returns true for some value in the given array.
+与えられた配列内の値に対してコールバックがtrueを返す場合にブロックを返すブロックヘルパーです。
 
-**Params**
+**パラメータ**
 
 * `array` **{Array}**
-* `iter` **{Function}**: Iteratee
-* **{Options}**: Handlebars provided options object
+* `iter` **{Function}**: イテレータ
+* **{Options}**: Handlebarsが提供するオプションオブジェクト
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 <!-- array: [1, 'b', 3] -->
@@ -360,118 +358,117 @@ Block helper that returns the block if the callback returns true for some value 
 {{else}}
   Render me if it doesn't.
 {{/some}}
-<!-- results in: 'Render me if the array has a string.' -->
+<!-- 結果: 'Render me if the array has a string.' -->
 ```
 
 ## {{sort}}
 
-Sort the given `array`. If an array of objects is passed, you may optionally pass a `key` to sort on as the second argument. You may alternatively pass a sorting function as the second argument.
+与えられた`array`をソートします。オブジェクトの配列が渡された場合、オプションでソートするための`key`を第二引数として渡すことができます。また、ソート関数を第二引数として渡すこともできます。
 
-**Params**
+**パラメータ**
 
-* `array` **{Array}**: the array to sort.
-* `key` **{String|Function}**: The object key to sort by, or sorting function.
+* `array` **{Array}**: ソートする配列
+* `key` **{String|Function}**: ソートするオブジェクトのキー、またはソート関数
 
-**Example**
+**例**
 
 ```handlebars
 <!-- array: ['b', 'a', 'c'] -->
 {{sort array}}
-<!-- results in: '["a", "b", "c"]' -->
+<!-- 結果: '["a", "b", "c"]' -->
 ```
 
 ## {{sortBy}}
 
-Sort an `array`. If an array of objects is passed, you may optionally pass a `key` to sort on as the second argument. You may alternatively pass a sorting function as the second argument.
+`array`をソートします。オブジェクトの配列が渡された場合、オプションでソートするための`key`を第二引数として渡すことができます。また、ソート関数を第二引数として渡すこともできます。
 
-**Params**
+**パラメータ**
 
-* `array` **{Array}**: the array to sort.
-* `props` **{String|Function}**: One or more properties to sort by, or sorting functions to use.
+* `array` **{Array}**: ソートする配列
+* `props` **{String|Function}**: ソートするための1つ以上のプロパティ、または使用するソート関数
 
-**Example**
+**例**
 
 ```handlebars
 <!-- array: [{a: 'zzz'}, {a: 'aaa'}] -->
 {{sortBy array "a"}}
-<!-- results in: '[{"a":"aaa"}, {"a":"zzz"}]' -->
+<!-- 結果: '[{"a":"aaa"}, {"a":"zzz"}]' -->
 ```
 
 ## {{withAfter}}
 
-Use the items in the array _after_ the specified index as context inside a block. Opposite of [withBefore](#withBefore).
+指定されたインデックスの後の配列内のアイテムをブロック内のコンテキストとして使用します。[withBefore](#withBefore)の反対です。
 
-**Params**
+**パラメータ**
 
 * `array` **{Array}**
 * `idx` **{Number}**
 * `options` **{Object}**
 * `returns` **{Array}**
 
-**Example**
+**例**
 
 ```handlebars
 <!-- array: ['a', 'b', 'c', 'd', 'e'] -->
 {{#withAfter array 3}}
   {{this}}
 {{/withAfter}}
-<!-- results in: "de" -->
+<!-- 結果: "de" -->
 ```
 
 ## {{withBefore}}
+指定されたインデックスの前にある配列の項目をブロック内のコンテキストとして使用します。[withAfter](#withAfter)の逆です。
 
-Use the items in the array _before_ the specified index as context inside a block. Opposite of [withAfter](#withAfter).
-
-**Params**
+**パラメータ**
 
 * `array` **{Array}**
 * `idx` **{Number}**
 * `options` **{Object}**
 * `returns` **{Array}**
 
-**Example**
+**例**
 
 ```handlebars
 <!-- array: ['a', 'b', 'c', 'd', 'e'] -->
 {{#withBefore array 3}}
   {{this}}
 {{/withBefore}}
-<!-- results in: 'ab' -->
+<!-- 結果: 'ab' -->
 ```
 
 ## {{withFirst}}
 
-Use the first item in a collection inside a handlebars block expression. Opposite of [withLast](#withLast).
+ハンドルバーズブロック式内でコレクションの最初の項目を使用します。[withLast](#withLast)の逆です。
 
-**Params**
+**パラメータ**
 
 * `array` **{Array}**
 * `idx` **{Number}**
 * `options` **{Object}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 <!-- array: ['a', 'b', 'c'] -->
 {{#withFirst array}}
   {{this}}
 {{/withFirst}}
-<!-- results in: 'a' -->
+<!-- 結果: 'a' -->
 ```
 
 ## {{withGroup}}
 
-Block helper that groups array elements by given group `size`.
+指定されたグループ`size`で配列要素をグループ化するブロックヘルパーです。
 
-**Params**
+**パラメータ**
 
-* `array` **{Array}**: The array to iterate over
-* `size` **{Number}**: The desired length of each array "group"
-* `options` **{Object}**: Handlebars options
+* `array` **{Array}**: イテレートする配列
+* `size` **{Number}**: 各配列「グループ」の希望する長さ
+* `options` **{Object}**: ハンドルバーズオプション
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 <!-- array: ['a','b','c','d','e','f','g','h'] -->
@@ -481,65 +478,65 @@ Block helper that groups array elements by given group `size`.
   {{each}}
   <br>
 {{/withGroup}}
-<!-- results in: -->
+<!-- 結果: -->
 <!-- 'a','b','c','d'<br> -->
 <!-- 'e','f','g','h'<br> -->
 ```
 
 ## {{withLast}}
 
-Use the last item or `n` items in an array as context inside a block. Opposite of [withFirst](#withFirst).
+配列の最後の項目または`n`個の項目をブロック内のコンテキストとして使用します。[withFirst](#withFirst)の逆です。
 
-**Params**
+**パラメータ**
 
 * `array` **{Array}**
-* `idx` **{Number}**: The starting index.
+* `idx` **{Number}**: 開始インデックス
 * `options` **{Object}**
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 <!-- array: ['a', 'b', 'c'] -->
 {{#withLast array}}
   {{this}}
 {{/withLast}}
-<!-- results in: 'c' -->
+<!-- 結果: 'c' -->
 ```
 
 ## {{withSort}}
 
-Block helper that sorts a collection and exposes the sorted collection as context inside the block.
+コレクションをソートし、ソートされたコレクションをブロック内のコンテキストとして公開するブロックヘルパーです。
 
-**Params**
+**パラメータ**
 
 * `array` **{Array}**
 * `prop` **{String}**
-* `options` **{Object}**: Specify `reverse="true"` to reverse the array.
+* `options` **{Object}**: `reverse="true"`を指定して配列を逆順にします。
 * `returns` **{String}**
 
-**Example**
+**例**
 
 ```handlebars
 <!-- array: ['b', 'a', 'c'] -->
 {{#withSort array}}{{this}}{{/withSort}}
-<!-- results in: 'abc' -->
+<!-- 結果: 'abc' -->
 ```
 
 ## {{unique}}
 
-Block helper that return an array with all duplicate values removed. Best used along with a [each](#each) helper.
+すべての重複する値を削除した配列を返すブロックヘルパーです。[each](#each)ヘルパーと一緒に使用するのが最適です。
 
-**Params**
+**パラメータ**
 
 * `array` **{Array}**
 * `options` **{Object}**
 * `returns` **{Array}**
 
-**Example**
+**例**
 
 ```handlebars
 <!-- array: ['a', 'a', 'c', 'b', 'e', 'e'] -->
 {{#each (unique array)}}{{.}}{{/each}}
-<!-- results in: 'acbe' -->
+<!-- 結果: 'acbe' -->
 ```

@@ -71,7 +71,7 @@ export default [
     children: [
       {
         title: 'markdown-vditor',
-        link: '/api/field/markdown-vditor'
+        link: '/api/field/markdown-vditor',
       },
     ],
   },
@@ -124,6 +124,7 @@ export default [
       '/api/server/plugin-manager',
       '/api/server/plugin',
       '/api/server/migration',
+      '/api/server/audit-manager',
       // '/api/server/sync-manager',
     ],
   },

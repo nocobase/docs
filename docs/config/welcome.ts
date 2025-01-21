@@ -1,6 +1,7 @@
 export default [
   {
     title: 'Welcome',
+    'title.fr-FR': 'Bienvenue',
     'title.zh-CN': '欢迎',
     'title.ja-JP': 'ようこそ',
     type: 'group',
@@ -14,12 +15,14 @@ export default [
   },
   {
     title: 'Getting started',
+    'title.fr-FR': 'Démarrer',
     'title.zh-CN': '快速开始',
     'title.ja-JP': '始めに',
     type: 'group',
     children: [
       {
         title: 'Installation',
+    	'title.fr-FR': 'Installation',
         'title.zh-CN': '安装',
         'title.ja-JP': 'インストール',
         children: [
@@ -32,6 +35,7 @@ export default [
       },
       {
         title: 'Upgrading',
+    	'title.fr-FR': 'Upgrading',
         'title.zh-CN': '升级',
         'title.ja-JP': 'アップグレード',
         children: [
@@ -43,6 +47,7 @@ export default [
       },
       {
         title: 'Deployment',
+   	'title.fr-FR': 'Déploiement',
         'title.zh-CN': '部署',
         'title.ja-JP': 'デプロイ',
         children: [
@@ -50,6 +55,7 @@ export default [
           '/welcome/getting-started/deployment/docker-compose',
           '/welcome/getting-started/deployment/create-nocobase-app',
           '/welcome/getting-started/deployment/git-clone',
+          '/welcome/getting-started/deployment/cluster-mode',
         ],
       },
       '/welcome/getting-started/env',
@@ -109,6 +115,7 @@ export default [
   // },
   {
     title: 'Community',
+    'title.fr-FR': 'Communauté',
     'title.zh-CN': '社区',
     'title.ja-JP': 'コミュニティ',
     type: 'group',
