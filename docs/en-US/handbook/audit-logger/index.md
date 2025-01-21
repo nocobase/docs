@@ -1,95 +1,95 @@
-# 审计日志
+# Audit Log
 
 <PluginInfo licenseBundled="true" name="audit-logger"></PluginInfo>
 
-## 介绍
+## Introduction
 
-审计日志用于记录和追踪系统内的用户活动和资源操作历史。
+The audit log is used to record and track user activities and resource operation history within the system.
 
 ![](https://static-docs.nocobase.com/202501031627719.png)
 
 ![](https://static-docs.nocobase.com/202501031627922.png)
 
-## 参数说明
+## Parameter Description
 
-| 参数                  | 说明                                                             |
-| --------------------- | ---------------------------------------------------------------- |
-| **Resource**          | 操作的目标资源类型                                               |
-| **Action**            | 执行操作类型                                                     |
-| **User**              | 操作用户                                                         |
-| **Role**              | 用户操作时角色                                                   |
-| **Data source**       | 数据源                                                           |
-| **Target collection** | 目标数据表                                                       |
-| **Target record UK**  | 目标数据表唯一标识                                               |
-| **Source collection** | 关系字段源数据表                                                 |
-| **Source record UK**  | 关系字段源数据表唯一标识                                         |
-| **Status**            | 操作请求响应的 HTTP 状态码                                       |
-| **Created at**        | 操作时间                                                         |
-| **UUID**              | 操作的唯一标识，和操作请求的 Request ID 一致，可用于检索应用日志 |
-| **IP**                | 用户的 IP 地址                                                   |
-| **UA**                | 用户 UA 信息                                                     |
-| **Metadata**          | 操作请求的参数、请求体和响应内容等元数据                         |
+| Parameter               | Description                                                             |
+| ----------------------- | ------------------------------------------------------------------------ |
+| **Resource**            | The target resource type of the operation                               |
+| **Action**              | The type of operation performed                                         |
+| **User**                | The user performing the operation                                       |
+| **Role**                | The role of the user during the operation                               |
+| **Data source**         | The data source                                                         |
+| **Target collection**   | The target collection                                                   |
+| **Target record UK**    | The unique identifier of the target collection                          |
+| **Source collection**   | The source collection of the relation field                             |
+| **Source record UK**    | The unique identifier of the source collection                          |
+| **Status**              | The HTTP status code of the operation request response                 |
+| **Created at**          | The time of the operation                                               |
+| **UUID**                | The unique identifier of the operation, consistent with the Request ID of the operation request, can be used to retrieve application logs |
+| **IP**                  | The IP address of the user                                              |
+| **UA**                  | The UA information of the user                                          |
+| **Metadata**            | Metadata such as parameters, request body, and response content of the operation request |
 
-## 审计资源说明
+## Audit Resource Description
 
-目前有以下资源操作会被记录到审计日志中：
+Currently, the following resource operations will be recorded in the audit log:
 
-### 主应用
+### Main Application
 
-| 操作             | 说明         |
-| ---------------- | ------------ |
-| `app:resart`     | 应用重启     |
-| `app:clearCache` | 清除应用缓存 |
+| Operation             | Description         |
+| --------------------- | ------------------- |
+| `app:resart`          | Application restart |
+| `app:clearCache`      | Clear application cache |
 
-### 插件管理器
+### Plugin Manager
 
-| 操作         | 说明     |
-| ------------ | -------- |
-| `pm:add`     | 添加插件 |
-| `pm:update`  | 更新插件 |
-| `pm:enable`  | 启用插件 |
-| `pm:disable` | 禁用插件 |
-| `pm:remove`  | 移除插件 |
+| Operation             | Description         |
+| --------------------- | ------------------- |
+| `pm:add`              | Add plugin          |
+| `pm:update`           | Update plugin       |
+| `pm:enable`           | Enable plugin       |
+| `pm:disable`          | Disable plugin      |
+| `pm:remove`           | Remove plugin       |
 
-### 用户认证
+### User Authentication
 
-| 操作                  | 说明     |
-| --------------------- | -------- |
-| `auth:signIn`         | 登录     |
-| `auth:signUp`         | 注册     |
-| `auth:signOut`        | 注销     |
-| `auth:changePassword` | 修改密码 |
+| Operation                  | Description         |
+| -------------------------- | ------------------- |
+| `auth:signIn`              | Sign in             |
+| `auth:signUp`              | Sign up             |
+| `auth:signOut`             | Sign out            |
+| `auth:changePassword`      | Change password     |
 
-### 用户
+### User
 
-| 操作                  | 说明         |
-| --------------------- | ------------ |
-| `users:updateProfile` | 修改个人资料 |
+| Operation                  | Description         |
+| -------------------------- | ------------------- |
+| `users:updateProfile`      | Update profile      |
 
-### UI 配置
+### UI Configuration
 
-| 操作                       | 说明           |
-| -------------------------- | -------------- |
-| `uiSchemas:insertAdjacent` | 插入 UI Schema |
-| `uiSchemas:patch`          | 修改 UI Schema |
-| `uiSchemas:remove`         | 移除 UI Schema |
+| Operation                       | Description           |
+| ------------------------------ | --------------------- |
+| `uiSchemas:insertAdjacent`      | Insert UI Schema      |
+| `uiSchemas:patch`               | Modify UI Schema      |
+| `uiSchemas:remove`              | Remove UI Schema      |
 
-### 数据表操作
+### Collection Operations
 
-| 操作             | 说明             |
-| ---------------- | ---------------- |
-| `create`         | 创建记录         |
-| `update`         | 更新记录         |
-| `destroy`        | 删除记录         |
-| `updateOrCreate` | 更新或创建记录   |
-| `firstOrCreate`  | 查询或创建记录   |
-| `move`           | 移动记录         |
-| `set`            | 设置关系字段记录 |
-| `add`            | 添加关系字段记录 |
-| `remove`         | 移除关系字段记录 |
-| `export`         | 导出记录         |
-| `import`         | 导入记录         |
+| Operation             | Description             |
+| --------------------- | ----------------------- |
+| `create`              | Create record           |
+| `update`              | Update record           |
+| `destroy`             | Delete record           |
+| `updateOrCreate`      | Update or create record |
+| `firstOrCreate`       | Query or create record  |
+| `move`                | Move record             |
+| `set`                 | Set relation field record |
+| `add`                 | Add relation field record |
+| `remove`              | Remove relation field record |
+| `export`              | Export record           |
+| `import`              | Import record           |
 
-## 添加其他审计资源
+## Adding Other Audit Resources
 
-如果你通过插件扩展了其他资源操作，并希望将这些资源操作行为记录到审计日志中，可以参考 [API](../../api/server/audit-manager.md).
+If you have extended other resource operations through plugins and wish to record these resource operation behaviors in the audit log, please refer to [API](../../api/server/audit-manager.md).
