@@ -1,64 +1,63 @@
-# Token 安全策略
+# Token Policy
 
 <PluginInfo name="auth"></PluginInfo>
 
-## 介绍
+## Introduction
 
-Token 安全策略是一种用于保护系统安全和体验的功能配置。它包括了三个主要配置项：“会话有效期”、“Token 有效周期” 和 “过期 Token 刷新时限” 。
+The Token Security Policy is a functional configuration designed to protect system security and enhance user experience. It includes three main configuration items: "Session Validity Period", "Token Validity Period", and "Expired Token Refresh Time Limit".
 
-## 配置入口
+## Configuration Entry
 
-配置入口在 插件设置 - 安全性 - Token 策略：
+The configuration entry is located under Plugin Settings - Security - Token Policy:
 
 ![20250105111821-2025-01-05-11-18-24](https://static-docs.nocobase.com/20250105111821-2025-01-05-11-18-24.png)
 
+## Session Validity Period
 
-## 会话有效期
+**Definition:**
 
-**定义：**
+The Session Validity Period refers to the maximum duration that the system allows a user to maintain an active session after logging in.
 
-会话有效期是指用户登录后，系统允许该用户保持会话活动的最长时间。
+**Function:**
 
-**作用：**
+Once the Session Validity Period is exceeded, the user will receive a 401 error response upon subsequent access to the system, and will then be redirected to the login page for re-authentication.
+Example:
+If the Session Validity Period is set to 8 hours, the session will expire 8 hours after the user logs in, assuming no additional interactions.
 
-超过会话有效期后，用户再次访问系统时将会收到 401 错误响应，随后系统会将用户重定向到登录页面重新验证身份。
-示例：
-如果会话有效期被设置为 8 小时，用户从登录开始计时，在没有额外交互的情况下，8 小时后会话将失效。
+**Recommended Settings:**
 
-**建议设置：**
+- Short-term operation scenarios: Recommended 1-2 hours to enhance security.
+- Long-term work scenarios: Can be set to 8 hours to accommodate business needs.
 
-- 短期操作场景： 推荐 1-2 小时，以提高安全性。
-- 长时间工作场景： 可设置为 8 小时以适应业务需求。
+## Token Validity Period
 
-## Token 有效期
+**Definition:**
 
-**定义：**
+The Token Validity Period refers to the lifecycle of each Token issued by the system during the user's active session.
 
-Token有效期是指系统在用户的活跃会话中签发的每个 Token 的生命周期。
+**Function:**
 
-**作用：**
+When a Token expires, the system will automatically issue a new Token to maintain the session activity.
+Each expired Token is only allowed to be refreshed once.
 
-当 Token 到期时，系统将自动签发新的 Token 以维持会话活动。
-每个已过期的 Token 仅允许刷新一次。
+**Recommended Settings:**
 
-**建议设置：**
+For security reasons, it is recommended to set it between 15 to 30 minutes.
+Adjustments can be made based on scenario requirements. For example:
+High-security scenarios: The Token Validity Period can be shortened to 10 minutes or less.
+Low-risk scenarios: The Token Validity Period can be appropriately extended to 1 hour.
 
-出于安全性考虑，推荐设置在 15 到 30 分钟之间。
-根据场景需要可调整。例如：
-高安全场景： Token 有效期可缩短至 10 分钟或更低。
-低风险场景： Token 有效期可适当延长至 1 小时。
+## Expired Token Refresh Time Limit
 
-## 过期 Token 刷新时限
+**Definition:**
 
-**定义：**
+The Expired Token Refresh Time Limit refers to the maximum time window allowed for a user to obtain a new Token through a refresh operation after the Token has expired.
 
-过期 Token 刷新时限是指 Token 过期后，允许用户通过刷新操作重新获取新 Token 的最长时间窗口。
+**Characteristics:**
 
-**特点：**
+If the refresh time limit is exceeded, the user must log in again to obtain a new Token.
+The refresh operation does not extend the Session Validity Period, it only regenerates the Token.
 
-如果超过刷新时限，用户必须重新登录才能获取新的 Token 。
-刷新操作不会延长会话有效期，只会重新生成 Token 。
+**Recommended Settings:**
 
-**建议设置：**
-
-出于安全性考虑，推荐设置在 5 到 10 分钟之间。
+For security reasons, it is recommended to set it between 5 to 10 minutes.
