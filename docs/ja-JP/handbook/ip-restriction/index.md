@@ -1,48 +1,48 @@
-# IP 限制
+# IP Restrictions
 
 <PluginInfo licenseBundled="true" name="ip-restriction"></PluginInfo>
 
-## 介绍
+## Introduction
 
-NocoBase 支持管理员对用户访问 IP 设置白名单或黑名单，以限制未授权的外部网络连接或阻止已知的恶意 IP 地址，降低安全风险。同时支持管理员查询访问拒绝日志，识别风险 IP。
+NocoBase allows administrators to set up whitelists or blacklists for user access IPs to restrict unauthorized external network connections or block known malicious IP addresses, thereby reducing security risks. It also supports administrators in querying access denial logs to identify risky IPs.
 
-## 配置规则
+## Configuration Rules
 
 ![2025-01-17-13-36-59-20250117133659](https://static-docs.nocobase.com/2025-01-17-13-36-59-20250117133659.png)
 
-### IP 过滤模式
+### IP Filtering Modes
 
-- 黑名单：当用户访问 IP 与列表中的 IP 匹配时，系统将**拒绝**访问；未匹配的 IP 则默认**允许**访问。
-- 白名单：当用户访问 IP 与列表中的 IP 匹配时，系统将**允许**访问；未匹配的 IP 则默认**禁止**访问。
+- **Blacklist**: When a user's access IP matches an IP in the list, the system will **deny** access; unmatched IPs are **allowed** by default.
+- **Whitelist**: When a user's access IP matches an IP in the list, the system will **allow** access; unmatched IPs are **denied** by default.
 
-### IP 列表
+### IP List
 
-用于定义允许或禁止访问系统的 IP 地址。其具体作用取决于 IP 过滤模式的选择结果。支持输入 IP 地址或 CIDR 网段地址，多个地址使用逗号或者换行符分隔。
+Used to define IP addresses that are allowed or denied access to the system. Its specific function depends on the selected IP filtering mode. Supports input of IP addresses or CIDR network segments, with multiple addresses separated by commas or line breaks.
 
-## 查询日志
+## Query Logs
 
-用户被拒绝访问后，访问 IP 会写入到系统日志中，可下载对应的日志文件进行分析。
+After a user is denied access, the access IP is written to the system logs, and the corresponding log file can be downloaded for analysis.
 
 ![2025-01-17-13-33-51-20250117133351](https://static-docs.nocobase.com/2025-01-17-13-33-51-20250117133351.png)
 
-日志示例：
+Log Example:
 
 ![2025-01-14-14-42-06-20250114144205](https://static-docs.nocobase.com/2025-01-14-14-42-06-20250114144205.png)
 
-## 配置建议
+## Configuration Recommendations
 
-### 黑名单模式建议
+### Blacklist Mode Recommendations
 
-添加已知的恶意 IP 地址，防止潜在的网络攻击。
-定期检查并更新黑名单，移除无效或不再需要屏蔽的IP地址。
+- Add known malicious IP addresses to prevent potential network attacks.
+- Regularly check and update the blacklist, removing invalid or no longer needed IP addresses.
 
-### 白名单模式建议
+### Whitelist Mode Recommendations
 
-添加可信任的内部网络 IP 地址（如办公网段），确保核心系统安全访问。
-避免在白名单中包含动态分配的 IP 地址，以防访问中断。
+- Add trusted internal network IP addresses (such as office network segments) to ensure secure access to core systems.
+- Avoid including dynamically assigned IP addresses in the whitelist to prevent access interruptions.
 
-### 通用建议
+### General Recommendations
 
-使用 CIDR 网段简化配置，例如将 192.168.0.0/24 代替逐个添加的 IP 地址。
-定期备份 IP 列表配置，以便在误操作或系统故障时快速恢复。
-定期监控访问日志，识别异常 IP 并及时调整黑白名单。
+- Use CIDR network segments to simplify configuration, such as using 192.168.0.0/24 instead of adding individual IP addresses.
+- Regularly back up IP list configurations to quickly recover from misoperations or system failures.
+- Regularly monitor access logs to identify abnormal IPs and adjust the blacklist or whitelist promptly.
