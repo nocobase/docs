@@ -8,7 +8,7 @@ NocoBase allows administrators to set up whitelists or blacklists for user acces
 
 ## Configuration Rules
 
-![2025-01-17-13-36-59-20250117133659](https://static-docs.nocobase.com/2025-01-17-13-36-59-20250117133659.png)
+![2025-01-23-10-07-34-20250123100733](https://static-docs.nocobase.com/2025-01-23-10-07-34-20250123100733.png)
 
 ### IP Filtering Modes
 
