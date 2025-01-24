@@ -1,23 +1,28 @@
+//Seems not used yet or anymore
 export default [
   {
     title: 'Overview',
+    'title.fr-FR': 'Vue d\'ensemble',
     'title.zh-CN': '插件总览',
     'title.ja-JP': '概要',
     link: '/plugins',
   },
   {
     title: 'Plugins',
+    'title.fr-FR': 'Plugins',
     'title.zh-CN': '插件列表',
     'title.ja-JP': 'プラグイン',
     type: 'group',
     children: [
       {
         title: 'Data modeling',
+    	'title.fr-FR': 'Modélisation de données',
         'title.zh-CN': '数据建模',
         'title.ja-JP': 'データモデリング',
         children: [
           {
             title: 'Collection manager',
+    		'title.fr-FR': 'Gestionnaire de collections',
             'title.zh-CN': '数据表管理',
             'title.ja-JP': 'コレクションマネージャー',
             subTitle: '@nocobase/plugin-collection-manager',

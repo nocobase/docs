@@ -1,7 +1,7 @@
 # Introduction
 
 <video width="100%" controls>
-      <source src="https://static-docs.nocobase.com/NocoBase0510.mp4" type="video/mp4">
+      <source src="https://static-docs.nocobase.com/EN-NocoBase-V1203-202501151021.mp4" type="video/mp4">
 </video>
 
 
