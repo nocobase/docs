@@ -35,9 +35,10 @@
 2. 填写路由标题（Title）
 3. 选择路由图标（Icon）
 4. 设置是否在菜单中显示（Show in menu）
-5. 对于页面类型，系统会自动生成唯一的路由路径（Path）
+5. 设置是否开启 Tab 页（Enable page tabs）
+6. 对于页面类型，系统会自动生成唯一的路由路径（Path）
 
-![20250107115902](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250107115902.png)
+![20250124131803](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250124131803.png)
 
 ### 路由操作
 
@@ -45,7 +46,7 @@
 
 - Add child：添加子路由
 - Edit：编辑路由配置
-- Access：访问路由
+- View：查看路由页面
 - Delete：删除路由
 
 ### 批量操作
