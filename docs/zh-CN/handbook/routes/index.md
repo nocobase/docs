@@ -1,6 +1,6 @@
 # 路由管理器
 
-<PluginInfo name="route-manager"></PluginInfo>
+<PluginInfo name="client"></PluginInfo>
 
 ## 介绍
 
