@@ -2280,6 +2280,12 @@ export default [
           },
         ],
       },
+      {
+        title: 'Routes',
+        'title.zh-CN': '路由',
+        'title.ja-JP': 'ルート',
+        link: '/handbook/routes',
+      },
     ],
   },
   {
