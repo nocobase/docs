@@ -22,7 +22,7 @@ export default [
       },
       {
         title: 'Data sources',
-        'title.zh-CN': 'Sources de données',
+        'title.fr-FR': 'Sources de données',
         'title.zh-CN': '数据源',
         'title.ja-JP': 'データソース',
         children: [
@@ -56,7 +56,7 @@ export default [
               },
               {
                 title: 'External MySQL',
-                'title.fr-FR': 'Source de données MySQL',
+                'title.fr-FR': 'Source de données externe MySQL',
                 'title.zh-CN': '外部 MySQL',
                 'title.ja-JP': '外部 MySQL',
                 // subTitle: '@nocobase/plugin-data-source-external-mysql',
@@ -64,7 +64,7 @@ export default [
               },
               {
                 title: 'External MariaDB',
-                'title.fr-FR': 'Source de données MariaDB',
+                'title.fr-FR': 'Source de données externe MariaDB',
                 'title.zh-CN': '外部 MariaDB',
                 'title.ja-JP': '外部 MariaDB',
                 // subTitle: '@nocobase/plugin-data-source-external-mariadb',
@@ -72,7 +72,7 @@ export default [
               },
               {
                 title: 'External PostgreSQL',
-                'title.fr-FR': 'Source de données PostgreSQL',
+                'title.fr-FR': 'Source de données externe PostgreSQL',
                 'title.zh-CN': '外部 PostgreSQL',
                 'title.ja-JP': '外部 PostgreSQL',
                 // subTitle: '@nocobase/plugin-data-source-external-postgres',
@@ -80,7 +80,7 @@ export default [
               },
               {
                 title: 'External MSSQL',
-                'title.fr-FR': 'Source de données MSSQL',
+                'title.fr-FR': 'Source de données externe MSSQL',
                 'title.zh-CN': '外部 MSSQL',
                 'title.ja-JP': '外部 MSSQL',
                 // subTitle: '@nocobase/plugin-data-source-external-mysql',
@@ -88,7 +88,7 @@ export default [
               },
               {
                 title: 'External Oracle',
-                'title.fr-FR': 'Source de données Oracle',
+                'title.fr-FR': 'Source de données externe Oracle',
                 'title.zh-CN': '外部 Oracle',
                 'title.ja-JP': '外部 Oracle',
                 // subTitle: '@nocobase/plugin-data-source-external-mysql',
@@ -301,7 +301,7 @@ export default [
               },
               {
                 title: 'URL',
-                'title.fr-FR': URL',
+                'title.fr-FR': 'URL',
                 'title.zh-CN': 'URL',
                 'title.ja-JP': 'URL',
                 link: '/handbook/data-modeling/collection-fields/basic/url',
@@ -352,7 +352,7 @@ export default [
           },
           {
             title: 'Choices',
-            'title.fr-FR': 'Selection',
+            'title.fr-FR': 'Sélection',
             'title.zh-CN': '选择类型',
             'title.ja-JP': '選択タイプ',
             children: [
@@ -365,14 +365,14 @@ export default [
               },
               {
                 title: 'Single select',	
-                'title.fr-FR': 'Selection simple',
+                'title.fr-FR': 'Sélection simple',
                 'title.zh-CN': '下拉菜单（单选）',
                 'title.ja-JP': '単一選択',
                 link: '/handbook/data-modeling/collection-fields/choices/select',
               },
               {
                 title: 'Multiple select',	
-                'title.fr-FR': 'Selection multiple',
+                'title.fr-FR': 'Sélection multiple',
                 'title.zh-CN': '下拉菜单（多选）',
                 'title.ja-JP': '複数選択',
                 link: '/handbook/data-modeling/collection-fields/choices/multiple-select',
@@ -393,7 +393,7 @@ export default [
               },
               {
                 title: 'China region',	
-                'title.fr-FR': 'China region',
+                'title.fr-FR': 'Région de Chine',
                 'title.zh-CN': '中国行政区',
                 'title.ja-JP': '中国の行政区',
                 link: '/handbook/field-china-region',
@@ -428,15 +428,15 @@ export default [
                 link: '/handbook/data-modeling/collection-fields/media/rich-text',
               },
               {
-                title: 'Attachment(Assocation)',
-                'title.fr-FR': 'Attachment(Assocation)',
+                title: 'Attachment (Association)',
+                'title.fr-FR': 'Fichier joint (Association)',
                 'title.zh-CN': '附件（关系）',
                 'title.ja-JP': '添付ファイル（Assocation）',
                 link: '/handbook/file-manager/field-attachment',
               },
               {
                 title: 'Attachment(URL)',
-                'title.fr-FR': 'Attachment（URL）',
+                'title.fr-FR': 'Fichier joint（URL）',
                 'title.zh-CN': '附件（URL）',
                 'title.ja-JP': '添付ファイル（URL）',
                 link: '/handbook/field-attachment-url',
@@ -445,7 +445,7 @@ export default [
           },
           {
             title: 'Date & Time',
-            'title.fr-FR': 'Date et heure',
+            'title.fr-FR': 'Date et Heure',
             'title.zh-CN': '日期 & 时间',
             'title.ja-JP': '日付と時間',
             children: [
@@ -465,7 +465,7 @@ export default [
               },
               {
                 title: 'Datetime(without time zone)',
-                'title.fr-FR': 'Date et heure(sans time zone)',
+                'title.fr-FR': 'Date et Heure(sans fuseau horraire)',
                 'title.zh-CN': '日期时间（不含时区）',
                 'title.ja-JP': '日付と時間（タイムゾーンなし）',
                 link: '/handbook/data-modeling/collection-fields/datetime/datetime-without-tz',
@@ -479,7 +479,7 @@ export default [
               },
               {
                 title: 'Date(without time)',
-                'title.fr-FR': 'Date(sans heure)',
+                'title.fr-FR': 'Date (sans heure)',
                 'title.zh-CN': '日期（不含时间）',
                 'title.ja-JP': '日付（時間なし）',
                 link: '/handbook/data-modeling/collection-fields/datetime/date',
@@ -551,7 +551,7 @@ export default [
               },
               {
                 title: 'Sort',
-                'title.fr-FR': 'Sort',
+                'title.fr-FR': 'Tri',
                 'title.zh-CN': '排序',
                 'title.ja-JP': 'ソート',
                 link: '/handbook/field-sort',
@@ -578,8 +578,8 @@ export default [
                 link: '/handbook/data-modeling/collection-fields/advanced/json',
               },
               {
-                title: 'Collection select'
-                'title.fr-FR': 'Collection select',
+                title: 'Collection select',
+                'title.fr-FR': 'Sélection de Collection',
                 'title.zh-CN': '数据表选择器',
                 'title.ja-JP': 'コレクションセレクター',
                 link: '/handbook/data-modeling/collection-fields/advanced/collection-select',
@@ -595,7 +595,7 @@ export default [
           },
           {
             title: 'System info',
-            'title.fr-FR': 'Système info',
+            'title.fr-FR': 'Info Système',
             'title.zh-CN': '系统信息',
             'title.ja-JP': 'システム情報',
             children: [
@@ -753,7 +753,7 @@ export default [
               },
               {
                 title: 'Form',
-                'title.fr-FR': 'Form',
+                'title.fr-FR': 'Formulaire',
                 'title.zh-CN': '表单',
                 'title.ja-JP': 'フォーム',
                 link: '/handbook/ui/blocks/data-blocks/form',
@@ -781,7 +781,7 @@ export default [
               },
               {
                 title: 'Calendar',
-                'title.fr-FR': 'Calendar',
+                'title.fr-FR': 'Calendrier',
                 'title.zh-CN': '日历',
                 'title.ja-JP': 'カレンダー',
                 link: '/handbook/calendar',
@@ -874,7 +874,7 @@ export default [
               },
               {
                 title: 'Action panel',
-                'title.fr-FR': 'Action panel',
+                'title.fr-FR': 'Panneau d\'actions',
                 'title.zh-CN': '操作面板',
                 'title.ja-JP': 'アクションパネル',
                 link: '/handbook/block-action-panel',
@@ -909,7 +909,7 @@ export default [
           },
           {
             title: 'Block settings',
-            'title.fr-FR': 'Paramètre de blocs',
+            'title.fr-FR': 'Paramètres de blocs',
             'title.zh-CN': '区块设置项',
             'title.ja-JP': 'ブロック設定',
             children: [
