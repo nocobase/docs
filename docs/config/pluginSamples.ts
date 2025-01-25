@@ -140,14 +140,14 @@ export default [
       },
       {
         title: 'Global Registration of Component and Scope',
-    	  'title.fr-FR': 'Enregistrement global de composant et de portée',
+    	  'title.fr-FR': 'Enregistrement global du composant et de la portée',
         'title.zh-CN': '全局注册和使用',
         'title.ja-JP': 'グローバル登録と使用',
         link: '/plugin-samples/component-and-scope/global',
       },
       {
         title: 'Local Registration of Component and Scope',
-    	  'title.fr-FR': 'Enregistrement local de composant et de portée',
+      	'title.fr-FR': 'Enregistrement local du composant et de la portée',
         'title.zh-CN': '局部注册和使用',
         'title.ja-JP': 'ローカル登録と使用',
         link: '/plugin-samples/component-and-scope/local',
