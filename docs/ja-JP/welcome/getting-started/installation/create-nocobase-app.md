@@ -40,7 +40,7 @@ yarn create nocobase-app my-nocobase-app -d postgres \
    -e DB_DATABASE=nocobase \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
-   -e TZ=Asia/Shanghai \
+   -e TZ=Asia/Tokyo \
    -e NOCOBASE_PKG_USERNAME= \
    -e NOCOBASE_PKG_PASSWORD=
 ```
@@ -56,7 +56,7 @@ yarn create nocobase-app my-nocobase-app -d mysql \
    -e DB_DATABASE=nocobase \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
-   -e TZ=Asia/Shanghai \
+   -e TZ=Asia/Tokyo \
    -e NOCOBASE_PKG_USERNAME= \
    -e NOCOBASE_PKG_PASSWORD=
 ```
@@ -72,7 +72,7 @@ yarn create nocobase-app my-nocobase-app -d mariadb \
    -e DB_DATABASE=nocobase \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
-   -e TZ=Asia/Shanghai \
+   -e TZ=Asia/Tokyo \
    -e NOCOBASE_PKG_USERNAME= \
    -e NOCOBASE_PKG_PASSWORD=
 ```
@@ -94,7 +94,7 @@ npx create-nocobase-app@beta my-nocobase-app -d postgres \
    -e DB_DATABASE=nocobase \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
-   -e TZ=Asia/Shanghai \
+   -e TZ=Asia/Tokyo \
    -e NOCOBASE_PKG_USERNAME= \
    -e NOCOBASE_PKG_PASSWORD=
 ```
@@ -110,7 +110,7 @@ npx create-nocobase-app@beta my-nocobase-app -d mysql \
    -e DB_DATABASE=nocobase \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
-   -e TZ=Asia/Shanghai \
+   -e TZ=Asia/Tokyo \
    -e NOCOBASE_PKG_USERNAME= \
    -e NOCOBASE_PKG_PASSWORD=
 ```
@@ -126,7 +126,7 @@ npx create-nocobase-app@beta my-nocobase-app -d mariadb \
    -e DB_DATABASE=nocobase \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
-   -e TZ=Asia/Shanghai \
+   -e TZ=Asia/Tokyo \
    -e NOCOBASE_PKG_USERNAME= \
    -e NOCOBASE_PKG_PASSWORD=
 ```
@@ -148,7 +148,7 @@ npx create-nocobase-app@alpha my-nocobase-app -d postgres \
    -e DB_DATABASE=nocobase \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
-   -e TZ=Asia/Shanghai \
+   -e TZ=Asia/Tokyo \
    -e NOCOBASE_PKG_USERNAME= \
    -e NOCOBASE_PKG_PASSWORD=
 ```
@@ -164,7 +164,7 @@ npx create-nocobase-app@alpha my-nocobase-app -d mysql \
    -e DB_DATABASE=nocobase \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
-   -e TZ=Asia/Shanghai \
+   -e TZ=Asia/Tokyo \
    -e NOCOBASE_PKG_USERNAME= \
    -e NOCOBASE_PKG_PASSWORD=
 ```
@@ -180,7 +180,7 @@ npx create-nocobase-app@alpha my-nocobase-app -d mariadb \
    -e DB_DATABASE=nocobase \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
-   -e TZ=Asia/Shanghai \
+   -e TZ=Asia/Tokyo \
    -e NOCOBASE_PKG_USERNAME= \
    -e NOCOBASE_PKG_PASSWORD=
 ```

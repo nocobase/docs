@@ -1,11 +1,11 @@
-# Initiate Approval Configuration
+# Configuration de l'Initiation d'Approbation
 
-After configuring and activating an approval workflow, you can link it to the submit button of the relevant data table form. This setup allows users to automatically initiate the approval process when they submit the form:
+Après avoir configuré et activé un workflow d'approbation, vous pouvez le lier au bouton de soumission du formulaire de la table de données concernée. Cette configuration permet aux utilisateurs d'initier automatiquement le processus d'approbation lorsqu'ils soumettent le formulaire :
 
-![Initiate Approval_Bind Workflow](https://static-docs.nocobase.com/2872ff108c61d7bf6d0bfb19886774c6.png)
+![Lier Workflow d'Approbation](https://static-docs.nocobase.com/2872ff108c61d7bf6d0bfb19886774c6.png)
 
-Once the workflow is linked, users will trigger the approval process upon submitting the form.
+Une fois le workflow lié, les utilisateurs déclencheront le processus d'approbation lors de la soumission du formulaire.
 
-:::info{title=Tip}
-The approval initiation button currently only supports the "Submit" (or "Save") button in "Add" or "Update" forms. It does not support the "Submit to Workflow" button (which can only be linked to "Post-action event").
+:::info{title=Conseil}
+Le bouton d'initiation d'approbation prend en charge uniquement le bouton "Soumettre" (ou "Sauvegarder") dans les formulaires "Ajouter" ou "Mettre à jour". Il ne prend pas en charge le bouton "Soumettre au Workflow" (qui peut uniquement être lié à un "Événement post-action").
 :::

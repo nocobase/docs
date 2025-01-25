@@ -1,9 +1,21 @@
-# Export
+# **Opération d'Exportation**
 
-The export operation is facilitated through plugin extensions, allowing you to batch export all data from the tables associated with a block. This feature also supports configuring the titles of the export fields.
+L'opération d'exportation vous permet d'exporter efficacement en lot des données depuis des tables liées à un bloc, facilitant ainsi l'extraction et le partage des informations. Cette opération est améliorée grâce aux extensions de plugins qui offrent des options de personnalisation pour les champs exportés.
 
-![Export Configuration](https://static-docs.nocobase.com/c074c4eb9d67a8408d98ff6299715157.png)
+### Fonctionnalités clés :
 
-- Configuring Exportable Fields
+1. **Exportation par lot** : Exportez tous les enregistrements de données des tables sélectionnées associées à un bloc en une seule opération.
+2. **Champs d'exportation configurables** : Personnalisez les champs à inclure dans l'exportation selon des besoins spécifiques.
+3. **Titres des champs** : Vous pouvez configurer les titres des champs exportés pour rendre les données plus conviviales et plus faciles à comprendre.
 
-![Export Fields Configuration](https://static-docs.nocobase.com/903b4c12bcd1b8e59e133d2f9822eb56.png)
+### Étapes pour configurer les champs exportables :
+
+- **Sélectionner les champs à exporter** : Choisissez les champs de vos tables de données à inclure dans l'exportation.
+- **Personnaliser les titres des champs** : Modifiez les titres des champs pour les adapter à la présentation souhaitée dans le fichier exporté.
+- **Exécuter l'exportation** : Une fois les champs configurés, lancez l'opération d'exportation pour générer le fichier de sortie souhaité (par exemple, CSV, Excel).
+
+### Exemple : Configuration des champs à exporter
+
+Vous pouvez configurer vos champs à exporter de manière à ce qu'ils correspondent à vos besoins de reporting ou de partage. Cela peut inclure le renommage des colonnes, le filtrage des données non nécessaires, ou l'ajustement de l'ordre des champs dans l'exportation.
+
+Grâce à ces fonctionnalités, l'opération d'exportation offre une grande flexibilité pour gérer et distribuer les données en dehors du système.

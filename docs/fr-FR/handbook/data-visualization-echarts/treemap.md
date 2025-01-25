@@ -1,16 +1,16 @@
-# Treemap Chart
+# Graphique en arborescence
 
-## Data Configuration
+## Configuration des données
 
-### 1 Measure, 1 Dimension
+### 1 mesure, 1 dimension
 
-![1 Measure, 1 Dimension](https://static-docs.nocobase.com/202410091933526.png)
+![1 mesure, 1 dimension](https://static-docs.nocobase.com/202410091933526.png)
 
-## Configuration Options
+## Options de configuration
 
-| Option             | Description                                        |
-| ------------------ | -------------------------------------------------- |
-| Size               | Set the size of the chart, either with a fixed aspect ratio or fixed height |
-| Light mode theme   | Must be selected for preview when the system is in light mode |
-| Dark mode theme    | Must be selected for preview when the system is in dark mode  |
-| Label type         | Controls whether labels are displayed and the type of display | 
+| Option               | Description                                                                                  |
+| -------------------- | -------------------------------------------------------------------------------------------- |
+| Taille               | Définissez la taille du graphique, soit avec un ratio d'aspect fixe, soit avec une hauteur fixe |
+| Thème mode clair     | Doit être sélectionné pour la prévisualisation lorsque le système est en mode clair            |
+| Thème mode sombre    | Doit être sélectionné pour la prévisualisation lorsque le système est en mode sombre           |
+| Type d'étiquette     | Contrôle si les étiquettes sont affichées et le type d'affichage des étiquettes               |

@@ -1,19 +1,17 @@
+### Install Plugins
 
-### 安装插件
+Refer to [Installing and Upgrading Commercial Plugins](/welcome/getting-started/plugin)
 
-参考 [商业插件的安装与升级](/welcome/getting-started/plugin)
+### Install LibreOffice (Optional)
 
-### 安装 LibreOffice（可选）
-
-生成 PDF 必须安装 LibreOffice，[请前往官网下载](
-https://www.libreoffice.org/download/download-libreoffice)。Docker 版本，可以直接在 `./storage/scripts` 目录下，编写一段脚本。
+Generating PDFs requires installing LibreOffice. [Please download it from the official website](https://www.libreoffice.org/download/download-libreoffice). For the Docker version, you can create a script directly in the `./storage/scripts` directory.
 
 ```bash
 mkdir ./storage/scripts
 vim install-libreoffice.sh
 ```
 
-`install-libreoffice.sh` 的内容如下：
+The content of `install-libreoffice.sh` is as follows:
 
 ```sh
 #!/bin/bash
@@ -27,18 +25,6 @@ if [ -d "$INSTALL_DIR" ]; then
     echo "LibreOffice is already installed, skipping installation."
     exit 0
 fi
-
-# Update APT sources
-tee /etc/apt/sources.list > /dev/null <<EOF
-deb http://mirrors.aliyun.com/debian/ bookworm main contrib non-free
-deb-src http://mirrors.aliyun.com/debian/ bookworm main contrib non-free
-deb http://mirrors.aliyun.com/debian-security/ bookworm-security main contrib non-free
-deb-src http://mirrors.aliyun.com/debian-security/ bookworm-security main contrib non-free
-deb http://mirrors.aliyun.com/debian/ bookworm-updates main contrib non-free
-deb-src http://mirrors.aliyun.com/debian/ bookworm-updates main contrib non-free
-deb http://mirrors.aliyun.com/debian/ bookworm-backports main contrib non-free
-deb-src http://mirrors.aliyun.com/debian/ bookworm-backports main contrib non-free
-EOF
 
 # Update APT and install dependencies
 apt-get update
@@ -92,15 +78,15 @@ fi
 echo "LibreOffice installation completed successfully."
 ```
 
-重启 app 容器
+Restart the `app` container:
 
 ```bash
 docker compose restart app
-# 查看日志
+# View logs
 docker compose logs app
 ```
 
-检测是否安装成功
+Verify the installation was successful:
 
 ```bash
 $ docker compose exec app bash -c "libreoffice --version"

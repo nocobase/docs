@@ -1,29 +1,29 @@
-# Handlebars Template
+# Modèle Handlebars
 
 ## Introduction
 
-Handlebars is a popular templating engine that allows us to dynamically embed data into HTML using a simple template syntax.
+Handlebars est un moteur de templating populaire qui permet d'intégrer dynamiquement des données dans du HTML à l'aide d'une syntaxe de modèle simple.
 
-## Usage
+## Utilisation
 
-### Basic Template Syntax
+### Syntaxe de Base du Modèle
 
-In Handlebars, the basic syntax includes:
+Dans Handlebars, la syntaxe de base comprend :
 
-- Interpolation expression `{{variable}}` to output data.
-- Conditional expression `{{#if condition}}...{{/if}}` for logical conditions.
-- Looping `{{#each array}}...{{/each}}` to iterate over arrays.
+- Expression d'interpolation `{{variable}}` pour afficher des données.
+- Expression conditionnelle `{{#if condition}}...{{/if}}` pour les conditions logiques.
+- Boucle `{{#each array}}...{{/each}}` pour itérer sur des tableaux.
 
-For example, given the following data:
+Par exemple, avec les données suivantes :
 
 ```javascript
 const context = {
-  title: "Handlebars Template Example",
-  items: ["Apple", "Banana", "Orange"]
+  title: "Exemple de modèle Handlebars",
+  items: ["Pomme", "Banane", "Orange"]
 };
 ```
 
-With the following template:
+Avec le modèle suivant :
 
 ```handlebars
 <h1>{{title}}</h1>
@@ -34,112 +34,107 @@ With the following template:
 </ul>
 ```
 
-The generated HTML will be:
+Le HTML généré sera :
 
 ```html
-<h1>Handlebars Template Example</h1>
+<h1>Exemple de modèle Handlebars</h1>
 <ul>
-  <li>Apple</li>
-  <li>Banana</li>
+  <li>Pomme</li>
+  <li>Banane</li>
   <li>Orange</li>
 </ul>
 ```
 
-For more content refer to
+Pour plus de contenu, consultez
 - [Core](/api/handlebars-helpers/core)
 
-### Comparison Operations
+### Opérations de Comparaison
 
-You can use comparison operators for conditional statements. Supported comparison functions include `eq` (equals), `ne` (not equals), `gt` (greater than), `lt` (less than), etc.
+Vous pouvez utiliser des opérateurs de comparaison dans les instructions conditionnelles. Les fonctions de comparaison supportées incluent `eq` (égal), `ne` (différent), `gt` (supérieur à), `lt` (inférieur à), etc.
 
 ```handlebars
 {{#if (eq 10 10)}}
-  <p>Equal</p>
+  <p>Égal</p>
 {{else}}
-  <p>Not equal</p>
+  <p>Non égal</p>
 {{/if}}
 ```
 
-Logical operators like `and`, `or`, `not` can also be used:
+Les opérateurs logiques comme `and`, `or`, `not` peuvent également être utilisés :
 
 ```handlebars
 {{#if (and true true)}}
-  <p>Both are true!</p>
+  <p>Les deux sont vrais !</p>
 {{/if}}
 ```
 
 ```handlebars
 {{#if (or false true)}}
-  <p>One of them is true!</p>
+  <p>Un des deux est vrai !</p>
 {{/if}}
 ```
 
-For more content, refer to
-
+Pour plus de contenu, consultez
 - [Comparison](/api/handlebars-helpers/comparison)
 
-### Mathematical Operations
+### Opérations Mathématiques
 
-You can perform simple mathematical operations in templates:
+Vous pouvez effectuer des opérations mathématiques simples dans les modèles :
 
 ```handlebars
-{{add 4 5}}  <!-- Output: 9 -->
-{{minus 10 3}} <!-- Output: 7 -->
+{{add 4 5}}  <!-- Résultat : 9 -->
+{{minus 10 3}} <!-- Résultat : 7 -->
 ```
 
-For more content refer to
-
+Pour plus de contenu, consultez
 - [Math](/api/handlebars-helpers/math)
 
-### String Handling
+### Gestion des Chaînes de Caractères
 
 ```handlebars
-{{uppercase "hello world"}}
-<!-- results in:  HELLO WORLD -->
+{{uppercase "bonjour le monde"}}
+<!-- Résultat :  BONJOUR LE MONDE -->
 {{ellipsis "foo bar baz", 7}}
-<!-- results in:  'foo bar…' -->
+<!-- Résultat :  'foo bar…' -->
 ```
 
-For more content, refer to
-
+Pour plus de contenu, consultez
 - [String](/api/handlebars-helpers/string)
 
-### Date Handling
+### Gestion des Dates
 
 ```handlebars
-<p>{{dateFormat "2024-09-25" "YYYY"}}</p>  <!-- Output: 2024-09-25 -->
+<p>{{dateFormat "2024-09-25" "YYYY"}}</p>  <!-- Résultat : 2024-09-25 -->
 ```
 
-For more content refer to
+Pour plus de contenu, consultez
 - [Date](/api/handlebars-helpers/date)
 
-### Array and Object Operations
+### Opérations sur les Tableaux et Objets
 
 ```handlebars
-<p>First element: {{first items}}</p>  <!-- Output: First element: Apple -->
-<p>Last element: {{last items}}</p>  <!-- Output: Last element: Orange -->
+<p>Premier élément : {{first items}}</p>  <!-- Résultat : Premier élément : Pomme -->
+<p>Dernier élément : {{last items}}</p>  <!-- Résultat : Dernier élément : Orange -->
 ```
 
-For more content, refer to
-
+Pour plus de contenu, consultez
 - [Array](/api/handlebars-helpers/array)
 - [Object](/api/handlebars-helpers/object)
 
-### More Helpers
+### Autres Helpers
 
-
-| Category                                         | Description                        |
-| ------------------------------------------------ | ---------------------------------- |
-| [Core](/api/handlebars-helpers/core)             | Built-in Handlebars methods        |
-| [Array](/api/handlebars-helpers/array)           | Methods for handling arrays        |
-| [Comparison](/api/handlebars-helpers/comparison) | Comparison operators and methods   |
-| [Date](/api/handlebars-helpers/date)             | Methods for date and time          |
-| [HTML](/api/handlebars-helpers/html)             | Methods for HTML document handling |
-| [I18n](/api/handlebars-helpers/i18n)             | Internationalization support       |
-| [Math](/api/handlebars-helpers/math)             | Mathematical functions             |
-| [Number](/api/handlebars-helpers/number)         | Number formatting and handling     |
-| [Object](/api/handlebars-helpers/object)         | Methods for object handling        |
-| [Path](/api/handlebars-helpers/path)             | Methods for path and filesystem    |
-| [Regex](/api/handlebars-helpers/regex)           | Regular expression methods         |
-| [String](/api/handlebars-helpers/string)         | String manipulation methods        |
-| [URL](/api/handlebars-helpers/url)               | URL parsing and building methods   |
+| Catégorie                                      | Description                        |
+| ---------------------------------------------- | ---------------------------------- |
+| [Core](/api/handlebars-helpers/core)           | Méthodes intégrées de Handlebars   |
+| [Array](/api/handlebars-helpers/array)         | Méthodes pour gérer les tableaux   |
+| [Comparison](/api/handlebars-helpers/comparison) | Opérateurs et méthodes de comparaison |
+| [Date](/api/handlebars-helpers/date)           | Méthodes pour la gestion des dates |
+| [HTML](/api/handlebars-helpers/html)           | Méthodes pour gérer les documents HTML |
+| [I18n](/api/handlebars-helpers/i18n)           | Support pour l'internationalisation |
+| [Math](/api/handlebars-helpers/math)           | Fonctions mathématiques            |
+| [Number](/api/handlebars-helpers/number)       | Formatage et gestion des nombres   |
+| [Object](/api/handlebars-helpers/object)       | Méthodes pour gérer les objets     |
+| [Path](/api/handlebars-helpers/path)           | Méthodes pour les chemins et systèmes de fichiers |
+| [Regex](/api/handlebars-helpers/regex)         | Méthodes pour les expressions régulières |
+| [String](/api/handlebars-helpers/string)       | Méthodes de manipulation de chaînes |
+| [URL](/api/handlebars-helpers/url)             | Méthodes pour l'analyse et la création d'URL |

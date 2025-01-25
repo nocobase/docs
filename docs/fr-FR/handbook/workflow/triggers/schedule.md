@@ -1,73 +1,73 @@
-# Schedule event
+# Événement planifié
 
-Scheduled tasks are events triggered based on time conditions, including two modes:
+Les tâches planifiées sont des événements déclenchés en fonction de conditions temporelles, incluant deux modes :
 
-- Custom Time: Regularly scheduled triggers similar to cron based on system time.
-- Time field of collection: Triggered according to the value of the time field in the collection.
+- **Heure personnalisée** : Déclencheurs programmés régulièrement similaires à un cron basé sur l'heure du système.
+- **Champ temporel de la collection** : Déclenché en fonction de la valeur du champ temporel dans la collection.
 
-When the system reaches the time (accurate to seconds) that meets the configured trigger conditions, the corresponding workflow will be triggered.
+Lorsque le système atteint l'heure (à la seconde près) qui satisfait les conditions du déclencheur configuré, le workflow correspondant sera déclenché.
 
-## Basic Usage
+## Utilisation de base
 
-### Creating Schedule event
+### Création d'un événement planifié
 
-Select the "Schedule event" type when creating a workflow in the workflow list:
+Sélectionnez le type "Événement planifié" lors de la création d'un workflow dans la liste des workflows :
 
-![Create Scheduled event](https://static-docs.nocobase.com/e09b6c9065167875b2ca7de5f5a799a7.png)
+![Créer un événement planifié](https://static-docs.nocobase.com/e09b6c9065167875b2ca7de5f5a799a7.png)
 
-### Custom Time Mode
+### Mode Heure personnalisée
 
-For the regular mode, start by configuring the start time to any point in time (accurate to seconds). The start time can be set to a future time or a past time. When set to a past time, it will check whether it is time based on the configured repeat condition. If no repeat condition is configured, the workflow will not be triggered if the start time is in the past.
+Pour le mode régulier, commencez par configurer l'heure de début à n'importe quel moment dans le futur ou dans le passé (précis à la seconde). Lorsqu'elle est configurée pour un moment passé, le système vérifiera si l'heure est atteinte en fonction de la condition de répétition configurée. Si aucune condition de répétition n'est configurée, le workflow ne sera pas déclenché si l'heure de début est dans le passé.
 
-There are two ways to configure repeat rules:
+Il existe deux façons de configurer les règles de répétition :
 
-- Interval Time: Trigger every fixed interval after the start time, such as every hour, every 30 minutes, etc.
-- Advanced Mode: Using cron rules, it can be configured to occur at fixed rule of dates and times.
+- **Temps d'intervalle** : Déclenchement à intervalles fixes après l'heure de début, par exemple, toutes les heures, toutes les 30 minutes, etc.
+- **Mode avancé** : Utilisation des règles cron, permettant de configurer des déclenchements à des moments fixes basés sur des règles de dates et heures.
 
-After configuring the repeat rule, you can also configure the end condition, which can end at a fixed point in time or by the number of times executed.
+Après avoir configuré la règle de répétition, vous pouvez également configurer la condition de fin, qui peut être un point fixe dans le temps ou un nombre d'exécutions.
 
-### Time Field of Collection Mode
+### Mode Champ temporel de la collection
 
-Using the time field of the collection to determine the start time is a trigger mode that combines ordinary scheduled tasks with the collection time field. Using this mode can simplify some nodes in specific processes and make the configuration more intuitive. For example, to change the status of orders that have not been paid for more than 30 minutes to canceled, you can simply configure a scheduled task in the collection time field mode, select the start time as 30 minutes after the order created time field.
+L'utilisation du champ temporel de la collection pour déterminer l'heure de début est un mode de déclenchement qui combine des tâches planifiées ordinaires avec le champ temporel de la collection. Ce mode peut simplifier certains nœuds dans des processus spécifiques et rendre la configuration plus intuitive. Par exemple, pour changer le statut des commandes non payées depuis plus de 30 minutes en "Annulée", vous pouvez simplement configurer une tâche planifiée dans le mode champ temporel de la collection, en sélectionnant l'heure de début comme étant 30 minutes après le champ de l'heure de création de la commande.
 
-## Related Tips
+## Conseils associés
 
-### Scheduled Tasks in Application Not Started
+### Les tâches planifiées lorsque l'application n'est pas démarrée
 
-If the configured time conditions are met but the entire NocoBase application service is in a stopped or shutdown state, the scheduled tasks that should be triggered at the corresponding time point will be missed, and after the service restarts, missed tasks will not be triggered again. So, it may be necessary to consider handling corresponding situations or backup measures when using it.
+Si les conditions temporelles configurées sont remplies mais que le service complet de l'application NocoBase est arrêté ou en mode hors ligne, les tâches planifiées qui devraient être déclenchées au moment correspondant seront manquées. Après le redémarrage du service, ces tâches manquées ne seront pas déclenchées à nouveau. Il peut donc être nécessaire de prévoir des mesures ou des solutions de secours dans ce cas.
 
-### Repeat Count
+### Compte de répétition
 
-When the repeat count is configured in the end condition, it calculates the total number of executions of the same workflow including all versions. For example, if a scheduled task has been executed 10 times in version 1, and the repeat count is also set to 10 times, the workflow will no longer be triggered. Even if it is copied to a new version, it will not be triggered unless the repeat count is modified to a number greater than 10. However, if it is duplicated to a new workflow, the number of executions will be recalculated from 0. Without modifying the relevant configuration, the new workflow can be triggered 10 more times.
+Lorsque le nombre de répétitions est configuré dans la condition de fin, il calcule le nombre total d'exécutions du même workflow, y compris toutes les versions. Par exemple, si une tâche planifiée a été exécutée 10 fois dans la version 1, et que le nombre de répétitions est aussi configuré sur 10, le workflow ne sera plus déclenché. Même si cette tâche est copiée dans une nouvelle version, elle ne sera pas déclenchée, sauf si le nombre de répétitions est modifié à un nombre supérieur à 10. Toutefois, si elle est dupliquée dans un nouveau workflow, le nombre d'exécutions sera recalculé à partir de 0. Le nouveau workflow pourra être déclenché 10 fois supplémentaires.
 
-### Difference Between Interval Time and Advanced Mode in Repeat Rules
+### Différence entre le temps d'intervalle et le mode avancé dans les règles de répétition
 
-The interval time in the repeat rule is relative to the time point of the previous trigger (start time), while the advanced mode triggers at fixed time points. For example, if it is configured to trigger every 30 minutes, and the last trigger is at 2021-09-01 12:01:23, the next trigger time will be 2021-09-01 12:31:23. The advanced mode, same as cron, configures rules to trigger at fixed time points, for example, it can be configured to trigger at 01 and 31 minutes past every hour.
+Le temps d'intervalle dans la règle de répétition est relatif au moment du dernier déclenchement (l'heure de début), tandis que le mode avancé déclenche à des points horaires fixes. Par exemple, si il est configuré pour déclencher toutes les 30 minutes et que le dernier déclenchement a eu lieu à 2021-09-01 12:01:23, le prochain déclenchement aura lieu à 2021-09-01 12:31:23. Le mode avancé, comme cron, permet de configurer des règles pour déclencher à des moments fixes, par exemple, il peut être configuré pour se déclencher à 01 et 31 minutes après chaque heure.
 
-## Example
+## Exemple
 
-Suppose we want to check orders that have not been paid for more than 30 minutes every minute and automatically change their status to canceled. We'll implement it using both modes.
+Supposons que nous voulons vérifier les commandes non payées depuis plus de 30 minutes toutes les minutes et automatiquement changer leur statut en "Annulé". Nous allons l'implémenter en utilisant les deux modes.
 
-### Custom Time Mode
+### Mode Heure personnalisée
 
-Create a workflow based on a scheduled task, select the "Custom Time" mode in the trigger configuration, choose any time point not later than the current time as the start time, select "Every Minute" for the repeat rule, and leave the end condition blank:
+Créez un workflow basé sur une tâche planifiée, sélectionnez le mode "Heure personnalisée" dans la configuration du déclencheur, choisissez un moment n'importe quand avant l'heure actuelle comme heure de début, sélectionnez "Chaque minute" pour la règle de répétition, et laissez la condition de fin vide :
 
-![Scheduled Task_Trigger Configuration_Custom Time Mode](https://static-docs.nocobase.com/71131e3f2034263f883062389b356cbd.png)
+![Configuration du déclencheur Tâche planifiée Mode Heure personnalisée](https://static-docs.nocobase.com/71131e3f2034263f883062389b356cbd.png)
 
-Then, configure other nodes according to the logic of the workflow, calculating a time 30 minutes before current system time, and updating the status to canceled if unpaid which created before then:
+Ensuite, configurez les autres nœuds selon la logique du workflow, en calculant une heure 30 minutes avant l'heure système actuelle, et en mettant à jour le statut en "Annulé" pour les commandes non payées créées avant ce moment :
 
-![Scheduled Task_Trigger Configuration_Custom Time Mode](https://static-docs.nocobase.com/188bc5287ffa1fb24a4e7baa1de6eb29.png)
+![Configuration du nœud de mise à jour du statut dans le mode Heure personnalisée](https://static-docs.nocobase.com/188bc5287ffa1fb24a4e7baa1de6eb29.png)
 
-After enabling the workflow, it will trigger every minute from the start time, calculate 30 minutes before now, and update the status of orders created before that time to canceled.
+Après avoir activé le workflow, il sera déclenché toutes les minutes à partir de l'heure de début, calculera 30 minutes avant l'heure actuelle, et mettra à jour le statut des commandes créées avant ce moment pour les annuler.
 
-### Time Field of Collection Mode
+### Mode Champ temporel de la collection
 
-Create a workflow based on a scheduled task, select the "Collection Time Field" mode in the trigger configuration, choose the "Orders" collection, select 30 minutes after the order created time as the start time, and choose "No Repeat" for the repeat rule:
+Créez un workflow basé sur une tâche planifiée, sélectionnez le mode "Champ temporel de la collection" dans la configuration du déclencheur, choisissez la collection "Commandes", sélectionnez 30 minutes après l'heure de création de la commande comme heure de début, et choisissez "Pas de répétition" pour la règle de répétition :
 
-![Scheduled Task_Trigger Configuration_Collection Time Field Mode_Trigger](https://static-docs.nocobase.com/d40d5aef57f42799d31cc5882dd94246.png)
+![Configuration du déclencheur de la tâche planifiée Mode Champ temporel de la collection](https://static-docs.nocobase.com/d40d5aef57f42799d31cc5882dd94246.png)
 
-Then, configure other nodes according to the logic of the workflow, update orders with the ID of the triggered data and the status "Unpaid" to canceled:
+Ensuite, configurez les autres nœuds selon la logique du workflow, en mettant à jour les commandes dont l'ID a été déclenché et ayant le statut "Non payé" pour les annuler :
 
-![Scheduled Task_Trigger Configuration_Collection Time Field Mode_Update Node](https://static-docs.nocobase.com/491dde9df8f773f5b14a4fd8ceac9d3e.png)
+![Configuration du nœud de mise à jour dans le mode Champ temporel de la collection](https://static-docs.nocobase.com/491dde9df8f773f5b14a4fd8ceac9d3e.png)
 
-Unlike the custom time mode, there is no need to calculate 30 minutes before, because the triggered data context in the workflow contains the corresponding data record that meet the time conditions, so you can directly update the status of the corresponding orders.
+Contrairement au mode Heure personnalisée, il n'est pas nécessaire de calculer 30 minutes avant, car le contexte des données déclenchées dans le workflow contient déjà l'enregistrement de données correspondant aux conditions temporelles, vous pouvez donc directement mettre à jour le statut des commandes concernées.

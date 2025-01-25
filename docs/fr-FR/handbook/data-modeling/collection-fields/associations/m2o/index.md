@@ -1,38 +1,38 @@
-# Many-to-One
+# Plusieurs-à-Un
 
-In a library database, there are two entities: books and authors. An author can write multiple books, but each book usually has only one author. In this case, the relationship between authors and books is many-to-one. Multiple books can be associated with the same author, but each book can have only one author.
+Dans une base de données de bibliothèque, il y a deux entités : les livres et les auteurs. Un auteur peut écrire plusieurs livres, mais chaque livre a généralement un seul auteur. Dans ce cas, la relation entre les auteurs et les livres est de type plusieurs-à-un. Plusieurs livres peuvent être associés au même auteur, mais chaque livre ne peut avoir qu'un seul auteur.
 
-ER Diagram:
+Diagramme ER :
 
 ![alt text](https://static-docs.nocobase.com/eaeeac974844db05c75cf0deeedf3652.png)
 
-Field Configuration:
+Configuration des champs :
 
 ![alt text](https://static-docs.nocobase.com/3b4484ebb98d82f832f3dbf752bd84c9.png)
 
-## Parameter Description
+## Description des paramètres
 
-### Source Collection
+### Collection source
 
-The source collection, which is the collection where the current field resides.
+La collection source, dans laquelle le champ actuel réside.
 
-### Target Collection
+### Collection cible
 
-The target collection, which is the collection to be associated with.
+La collection cible, qui sera associée à la collection source.
 
-### Foreign Key
+### Clé étrangère
 
-The field in the source collection that is used to establish the association between the two collections.
+Le champ dans la collection source qui est utilisé pour établir l'association entre les deux collections.
 
-### Target Key
+### Clé cible
 
-The field in the target collection that is referenced by the foreign key. It must be unique.
+Le champ dans la collection cible qui est référencé par la clé étrangère. Il doit être unique.
 
 ### ON DELETE
 
-ON DELETE refers to the rules applied to foreign key references in related child collections when records in the parent collection are deleted. It is an option used when defining a foreign key constraint. Common ON DELETE options include:
+ON DELETE fait référence aux règles appliquées aux références de clés étrangères dans les collections enfant associées lorsque des enregistrements de la collection parent sont supprimés. Il s'agit d'une option utilisée lors de la définition d'une contrainte de clé étrangère. Les options courantes ON DELETE comprennent :
 
-- **CASCADE**: When a record in the parent collection is deleted, all related records in the child collection are automatically deleted.
-- **SET NULL**: When a record in the parent collection is deleted, the foreign key values in the related child collection records are set to NULL.
-- **RESTRICT**: The default option, it prevents the deletion of a parent collection record if there are related records in the child collection.
-- **NO ACTION**: Similar to RESTRICT, it prevents the deletion of a parent collection record if there are related records in the child collection.
+- **CASCADE** : Lorsque l'enregistrement dans la collection parent est supprimé, tous les enregistrements associés dans la collection enfant sont automatiquement supprimés.
+- **SET NULL** : Lorsque l'enregistrement dans la collection parent est supprimé, les valeurs de clé étrangère dans les enregistrements associés de la collection enfant sont définies sur NULL.
+- **RESTRICT** : L'option par défaut, elle empêche la suppression d'un enregistrement dans la collection parent s'il y a des enregistrements associés dans la collection enfant.
+- **NO ACTION** : Similaire à RESTRICT, elle empêche la suppression d'un enregistrement dans la collection parent s'il y a des enregistrements associés dans la collection enfant.

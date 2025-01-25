@@ -1,36 +1,36 @@
-# Overview
+# Aperçu
 
-Nodes are the basic units of logical arrangement in a workflow. A workflow can contains any number of nodes, and each node type represents an instruction that determines the behavior of the node. The configuration of a node corresponds to the parameters of the instruction, which determining the operation data object or other content of its behavior.
+Les nœuds sont les unités de base de l'organisation logique dans un flux de travail. Un flux de travail peut contenir n'importe quel nombre de nœuds, et chaque type de nœud représente une instruction qui détermine le comportement du nœud. La configuration d'un nœud correspond aux paramètres de l'instruction, qui déterminent l'objet de données ou d'autres contenus associés à son comportement.
 
 :::info{title=Note}
-Workflow triggers are not considered to be nodes but are displayed in the workflow diagram as entry nodes. They are different concepts from nodes. For details, please refer to the [Triggers](../triggers/index.md) section.
+Les déclencheurs de flux de travail ne sont pas considérés comme des nœuds, mais sont affichés dans le diagramme de flux de travail en tant que nœuds d'entrée. Ce sont des concepts différents des nœuds. Pour plus de détails, veuillez consulter la section [Déclencheurs](../triggers/index.md).
 :::
 
-From a functional perspective, the nodes implemented so far are in four categories (a total of 21 types of nodes):
+D'un point de vue fonctionnel, les nœuds implémentés jusqu'à présent se répartissent en quatre catégories (un total de 21 types de nœuds) :
 
-- Flow Control
+- **Contrôle de Flux**
   - [Condition](./condition.md)
-  - [Delay](./delay.md) (provided by plugin @nocobase/plugin-workflow-deley)
-  - [End Process](./end.md)
-  - [Loop](./loop.md) (provided by plugin @nocobase/plugin-workflow-loop)
-  - [Parallel Branch](./parallel.md) (provided by plugin @nocobase/plugin-workflow-parallel)
-  - [Custom Variable](./variable.md) (provided by plugin @nocobase/plugin-workflow-variable)
-- Calculation
-  - [Calculation](./calculation.md)
-  - [Dynamic Expression Calculation](./dynamic-calculation.md) (provided by plugin @nocobase/plugin-workflow-dynamic-calculation)
-  - [Date Calculation](./date-calculation.md) (provided by plugin @nocobase/plugin-workflow-date-calculation)
-- Data Table Operations
-  - [Create record](./create.md)
-  - [Update record](./update.md)
-  - [Delete record](./destroy.md)
-  - [Query record](./query.md)
-  - [Aggregate Query](./aggregate.md) (provided by plugin @nocobase/plugin-workflow-aggregate)
-  - [SQL Operation](./sql.md) (provided by plugin @nocobase/plugin-workflow-sql)
-- Manual Processing
-  - [Manual Processing](./manual.md) (provided by plugin @nocobase/plugin-workflow-manual)
-  - [Approval](./approval.md) (provided by plugin @nocobase/plugin-workflow-approval)
-- Other Extensions
-  - [HTTP Request](./request.md) (provided by plugin @nocobase/plugin-workflow-request)
-  - [Response Message](./response-message.md) (provided by plugin @nocobase/plugin-workflow-response-message)
-  - [JavaScript](./javascript.md) (provided by plugin @nocobase/plugin-workflow-javascript)
-  - [JSON query](./json-query.md) (provided by plugin @nocobase/plugin-workflow-json-query)
+  - [Délai](./delay.md) (fourni par le plugin @nocobase/plugin-workflow-delay)
+  - [Fin du Processus](./end.md)
+  - [Boucle](./loop.md) (fourni par le plugin @nocobase/plugin-workflow-loop)
+  - [Branche parallèle](./parallel.md) (fourni par le plugin @nocobase/plugin-workflow-parallel)
+  - [Variable personnalisée](./variable.md) (fourni par le plugin @nocobase/plugin-workflow-variable)
+- **Calcul**
+  - [Calcul](./calculation.md)
+  - [Calcul d'expressions dynamiques](./dynamic-calculation.md) (fourni par le plugin @nocobase/plugin-workflow-dynamic-calculation)
+  - [Calcul de date](./date-calculation.md) (fourni par le plugin @nocobase/plugin-workflow-date-calculation)
+- **Opérations sur Tableaux de Données**
+  - [Créer un enregistrement](./create.md)
+  - [Mettre à jour un enregistrement](./update.md)
+  - [Supprimer un enregistrement](./destroy.md)
+  - [Requête d'enregistrement](./query.md)
+  - [Requête agrégée](./aggregate.md) (fourni par le plugin @nocobase/plugin-workflow-aggregate)
+  - [Opération SQL](./sql.md) (fourni par le plugin @nocobase/plugin-workflow-sql)
+- **Traitement Manuel**
+  - [Traitement manuel](./manual.md) (fourni par le plugin @nocobase/plugin-workflow-manual)
+  - [Approbation](./approval.md) (fourni par le plugin @nocobase/plugin-workflow-approval)
+- **Autres Extensions**
+  - [Requête HTTP](./request.md) (fourni par le plugin @nocobase/plugin-workflow-request)
+  - [Message de réponse](./response-message.md) (fourni par le plugin @nocobase/plugin-workflow-response-message)
+  - [JavaScript](./javascript.md) (fourni par le plugin @nocobase/plugin-workflow-javascript)
+  - [Requête JSON](./json-query.md) (fourni par le plugin @nocobase/plugin-workflow-json-query)

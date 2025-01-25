@@ -4,14 +4,14 @@
 
 ## Introduction
 
-Provides the capability to configure mobile pages.
+Ce plugin permet de configurer des pages mobiles.
 
 ## Installation
 
-It's a pre-installed plugin that needs to be activated before use.
+Il s'agit d'un plugin préinstallé qui doit être activé avant d'être utilisé.
 
 ![20240324171718](https://static-docs.nocobase.com/20240324171718.png)
 
-## Usage
+## Utilisation
 
 ![20240324171605](https://static-docs.nocobase.com/20240324171605.png)

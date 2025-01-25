@@ -1,4 +1,4 @@
-# Block Charts
+# Graphiques de bloc
 
 <PluginInfo name="data-visualization"></PluginInfo>
 

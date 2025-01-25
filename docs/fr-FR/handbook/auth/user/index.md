@@ -1,67 +1,67 @@
-# User Manual
+# Manuel de l'utilisateur
 
-## User Authentication Management
+## Gestion de l'authentification des utilisateurs
 
-When the user authentication plugin is installed, it will initialize an authentication method of `password`, based on the user's username and email.
+Lorsque le plugin d'authentification des utilisateurs est installé, il initialise une méthode d'authentification de type `mot de passe`, basée sur le nom d'utilisateur et l'email de l'utilisateur.
 
 ![](https://static-docs.nocobase.com/66eaa9d5421c9cb713b117366bd8a5d5.png)
 
-## Activate Authentication Type
+## Activer le type d'authentification
 
 ![](https://static-docs.nocobase.com/7f1fb8f8ca5de67ffc68eff0a65848f5.png)
 
-Only activated authentication types will be displayed on the login page
+Seuls les types d'authentification activés seront affichés sur la page de connexion.
 
 ![](https://static-docs.nocobase.com/8375a36ef98417af0f0977f1e07345dd.png)
 
-## User Authentication Types
+## Types d'authentification des utilisateurs
 
 ![](https://static-docs.nocobase.com/da4250c0cea343ebe470cbf7be4b12e4.png)
 
-The user authentication types currently supported by NocoBase are:
+Les types d'authentification des utilisateurs actuellement supportés par NocoBase sont :
 
-- Password (Password), built-in user authentication plugin
-- SMS (SMS), expanded by [sms-auth plugin](../../auth-sms/index.md)
-- CAS, expanded by [cas-auth plugin](../../auth-cas/index.md)
-- SAML, expanded by [saml-auth plugin](../../auth-saml/index.md)
-- OIDC, expanded by [oidc-auth plugin](../../auth-oidc/index.md)
+- **Mot de passe (Password)**, plugin d'authentification utilisateur intégré
+- **SMS (SMS)**, étendu par le plugin [sms-auth](../../auth-sms/index.md)
+- **CAS**, étendu par le plugin [cas-auth](../../auth-cas/index.md)
+- **SAML**, étendu par le plugin [saml-auth](../../auth-saml/index.md)
+- **OIDC**, étendu par le plugin [oidc-auth](../../auth-oidc/index.md)
 
-In addition, you can also expand user authentication by yourself, refer to the [Developer's Guide](../dev/guide.md).
+De plus, vous pouvez également étendre l'authentification des utilisateurs par vous-même, consultez le [Guide du développeur](../dev/guide.md).
 
-## Password Authentication
+## Authentification par mot de passe
 
-### Configuration Interface
+### Interface de configuration
 
 ![](https://static-docs.nocobase.com/202411131505095.png)
 
-### Allow sign up
+### Autoriser l'inscription
 
-When sign up is allowed, the login page will display the link to create an account, and you can go to the sign up page
+Lorsque l'inscription est autorisée, la page de connexion affichera le lien pour créer un compte et vous pourrez accéder à la page d'inscription.
 
 ![](https://static-docs.nocobase.com/78903930d4b47aaf75cf94c55dd3596e.png)
 
-Sign up page
+Page d'inscription
 
 ![](https://static-docs.nocobase.com/ac3c3ab42df28cb7c6dc70b24e99e7f7.png)
 
-When sign up is not allowed, the login page will not display the link to create an account
+Lorsque l'inscription n'est pas autorisée, la page de connexion ne montrera pas le lien pour créer un compte.
 
 ![](https://static-docs.nocobase.com/8d5e3b6df9991bfc1c2e095a93745121.png)
 
-When sign up is not allowed, the sign up page cannot be accessed
+Lorsque l'inscription n'est pas autorisée, la page d'inscription ne pourra pas être accédée.
 
 ![](https://static-docs.nocobase.com/09325c4b07e09f88f80a14dff8430556.png)
 
-### Sign up form Settings
+### Paramètres du formulaire d'inscription
 
 :::info
-`v1.4.0-beta.7` and later versions supported.
+Les versions `v1.4.0-beta.7` et ultérieures prennent en charge cette fonctionnalité.
 :::
 
-You can set which fields in the user collection need to be displayed in the sign up form and whether they are required or not. At least one of username or email fields needs to be set to display and required.
+Vous pouvez définir les champs de la collection des utilisateurs à afficher dans le formulaire d'inscription et s'ils sont requis ou non. Au moins un des champs `nom d'utilisateur` ou `email` doit être défini pour s'afficher et être requis.
 
 ![](https://static-docs.nocobase.com/202411262133669.png)
 
-Sign up page
+Page d'inscription
 
 ![](https://static-docs.nocobase.com/202411262135801.png)

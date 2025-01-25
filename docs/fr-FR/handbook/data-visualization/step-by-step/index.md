@@ -1,10 +1,10 @@
-# Extended Tutorial
+# Tutoriel Étendu
 
-> Using the addition of ECharts charts as an example, the complete code is available in the `@nocobase/plugin-sample-add-custom-charts` plugin.
+> En utilisant l'ajout des graphiques ECharts comme exemple, le code complet est disponible dans le plugin `@nocobase/plugin-sample-add-custom-charts`.
 
-## Creating a New Plugin
+## Création d'un Nouveau Plugin
 
-Follow the steps in the [Plugin Development Guide](https://docs.nocobase.com/development/your-first-plugin) to create a new plugin. Be sure to include the dependencies `echarts`, `echarts-for-react`, and `@nocobase/plugin-data-visualization`, placing these external dependencies in the `devDependencies` section of the `package.json` file.
+Suivez les étapes du [Guide de Développement de Plugin](https://docs.nocobase.com/development/your-first-plugin) pour créer un nouveau plugin. Assurez-vous d'inclure les dépendances `echarts`, `echarts-for-react` et `@nocobase/plugin-data-visualization`, et placez ces dépendances externes dans la section `devDependencies` du fichier `package.json`.
 
 ```bash
 yarn pm create @nocobase/plugin-sample-add-custom-charts
@@ -32,9 +32,9 @@ npx lerna add echarts-for-react --scope=@nocobase/plugin-sample-add-custom-chart
 }
 ```
 
-## ECharts React Component
+## Composant React ECharts
 
-Unlike G2Plot, where each chart type is a distinct component, ECharts utilizes a single component that can render various charts by passing different parameters. Since the component provided by `echarts-for-react` is a `PureComponent`, we need to wrap it into a `FunctionComponent`.
+Contrairement à G2Plot, où chaque type de graphique est un composant distinct, ECharts utilise un seul composant capable de rendre différents graphiques en fonction des paramètres passés. Étant donné que le composant fourni par `echarts-for-react` est un `PureComponent`, nous devons l'envelopper dans un `FunctionComponent`.
 
 ```typescript
 // client/echarts/react-echarts.tsx
@@ -51,15 +51,15 @@ export const ReactECharts = (props: EChartsReactProps['option']) => {
 };
 ```
 
-The `echarts-for-react` component does not execute a `resize` operation on its initial render. As the NocoBase visualization plugin might need to determine whether to display the component based on the current configuration while setting up charts, this could result in the component not displaying correctly. Therefore, we manually execute `resize` each time to ensure proper rendering.
+Le composant `echarts-for-react` n'exécute pas l'opération `resize` lors de son premier rendu. Comme le plugin de visualisation de NocoBase peut nécessiter de déterminer si le composant doit être affiché en fonction de la configuration actuelle lors de la configuration des graphiques, cela pourrait entraîner une mauvaise représentation du composant. Par conséquent, nous exécutons manuellement `resize` à chaque fois pour assurer un rendu correct.
 
-## Extending the `Chart` Class
+## Extension de la Classe `Chart`
 
-> Before proceeding, please refer to the [Development Guide](../dev/index.md) to familiarize yourself with the relevant APIs.
+> Avant de continuer, veuillez consulter le [Guide de Développement](../dev/index.md) pour vous familiariser avec les API pertinentes.
 
-### Step 1
+### Étape 1
 
-Since ECharts serves as a comprehensive charting library, we may need to add multiple chart types simultaneously. To facilitate this, we start by extending the basic `Chart` class to create an `ECharts` class that implements some foundational methods.
+Étant donné qu'ECharts est une bibliothèque de graphiques complète, nous pourrions avoir besoin d'ajouter plusieurs types de graphiques simultanément. Pour faciliter cela, nous commençons par étendre la classe de base `Chart` pour créer une classe `ECharts` qui implémente certaines méthodes de base.
 
 ```typescript
 // client/echarts/echarts.ts
@@ -89,13 +89,13 @@ export class ECharts extends Chart {
 }
 ```
 
-ECharts primarily configures different types of charts via the `series` parameter. Therefore, when constructing the base class, we add a `series` parameter and pass in the previously defined `ReactECharts` component. The `config` parameter is preset with default values for `xField`, `yField`, and `seriesField`, enabling our default visualization configuration to produce results similar to those shown in the example.
+ECharts configure principalement différents types de graphiques via le paramètre `series`. Par conséquent, lors de la construction de la classe de base, nous ajoutons un paramètre `series` et passons le composant `ReactECharts` défini précédemment. Le paramètre `config` est prédéfini avec des valeurs par défaut pour `xField`, `yField` et `seriesField`, ce qui permet à notre configuration par défaut de produire des résultats similaires à ceux montrés dans l'exemple.
 
 ![](https://static-docs.nocobase.com/9a1ff5ff7c9f409978292f0d771b4358.png)
 
-### Step 2
+### Étape 2
 
-Since most commonly used chart types require configurations for the x-axis, y-axis, and classification fields, we first implement a general `init` interface to initialize the chart’s default configuration. If a chart requires additional configuration items upon initialization, this method can be overridden in derived classes. In the implementation, we can leverage the `infer` method from the `Chart` class to determine default field configurations based on the provided measures and dimensions.
+Puisque la plupart des types de graphiques couramment utilisés nécessitent des configurations pour l'axe des x, l'axe des y et les champs de classification, nous commençons par implémenter une interface `init` générale pour initialiser la configuration par défaut du graphique. Si un graphique nécessite des éléments de configuration supplémentaires lors de l'initialisation, cette méthode peut être remplacée dans les classes dérivées. Dans l'implémentation, nous pouvons exploiter la méthode `infer` de la classe `Chart` pour déterminer les configurations de champs par défaut en fonction des mesures et des dimensions fournies.
 
 ```typescript
 init: ChartType['init'] = (fields, { measures, dimensions }) => {
@@ -113,9 +113,9 @@ init: ChartType['init'] = (fields, { measures, dimensions }) => {
 };
 ```
 
-### Step 3
+### Étape 3
 
-Next, we implement the `getProps` method, which primarily retrieves chart-related configurations and converts them into properties corresponding to the ECharts component. This method can also set default properties that we prefer not to expose in the configuration options. The following code implementation serves as a general guide.
+Ensuite, nous implémentons la méthode `getProps`, qui récupère principalement les configurations liées aux graphiques et les transforme en propriétés correspondantes pour le composant ECharts. Cette méthode peut également définir des propriétés par défaut que nous préférons ne pas exposer dans les options de configuration. L'implémentation suivante sert de guide général.
 
 ```typescript
 getProps({ data, general, advanced, fieldProps }: RenderProps) {
@@ -171,11 +171,11 @@ getProps({ data, general, advanced, fieldProps }: RenderProps) {
   }
 ```
 
-This logic primarily involves processing raw data, chart configurations, field metadata, and data transformation settings into the format required for component rendering. In ECharts, data processing can be managed by registering `transform` functions, as detailed in the ECharts documentation.
+Cette logique consiste principalement à traiter les données brutes, les configurations des graphiques, les métadonnées des champs et les paramètres de transformation des données pour les convertir dans le format requis pour le rendu du composant. Dans ECharts, le traitement des données peut être géré en enregistrant des fonctions `transform`, comme expliqué dans la documentation d'ECharts.
 
-### Step 4
+### Étape 4
 
-Finally, we implement a method to retrieve reference documentation via `getReference`. ECharts consolidates all chart parameters on a single page, so we define this method straightforwardly.
+Enfin, nous implémentons une méthode pour récupérer la documentation de référence via `getReference`. ECharts regroupe tous les paramètres de graphique sur une seule page, nous définissons donc cette méthode de manière simple.
 
 ```typescript
 getReference() {
@@ -186,36 +186,36 @@ getReference() {
   }
 ```
 
-## Defining Charts
+## Définir les Graphiques
 
-With the `ECharts` class established, defining charts becomes a straightforward process. For most common 2D charts, the general logic is already encapsulated within the `ECharts` class, eliminating the need for additional extensions.
+Avec la classe `ECharts` établie, définir des graphiques devient un processus simple. Pour la plupart des graphiques 2D courants, la logique générale est déjà encapsulée dans la classe `ECharts`, ce qui élimine le besoin d'extensions supplémentaires.
 
 ```typescript
 new ECharts({
   name: 'line',
-  title: 'Line Chart',
+  title: 'Graphique en ligne',
   series: { type: 'line' },
 });
 
 new ECharts({
   name: 'column',
-  title: 'Column Chart',
+  title: 'Graphique en colonnes',
   series: { type: 'bar' },
 });
 
 new ECharts({
   name: 'area',
-  title: 'Area Chart',
+  title: 'Graphique en aires',
   series: { type: 'line', areaStyle: {} },
 });
 ```
 
-You can also extend some visualization configurations as needed.
+Vous pouvez également étendre certaines configurations de visualisation si nécessaire.
 
 ```typescript
 new ECharts({
   name: 'line',
-  title: 'Line Chart',
+  title: 'Graphique en ligne',
   series: { type: 'line' },
   config: [
     {
@@ -227,16 +227,20 @@ new ECharts({
 });
 ```
 
-For certain charts, the general methods may not suffice, requiring further customization.
+Pour certains graphiques, les méthodes générales peuvent ne pas suffire, nécessitant une personnalisation supplémentaire.
 
-Bar Chart：
+## Graphique à Barres
+
+Le graphique à barres est l'un des types de graphiques les plus courants pour la visualisation de données. Voici comment vous pouvez l'implémenter dans le plugin de visualisation de données de NocoBase en utilisant la bibliothèque ECharts. 
+
+### Code de la classe `Bar`
 
 ```typescript
 export class Bar extends ECharts {
   constructor() {
     super({
       name: 'bar',
-      title: 'Bar Chart',
+      title: 'Graphique à barres',
       series: { type: 'bar' },
     });
     this.config = [
@@ -256,6 +260,7 @@ export class Bar extends ECharts {
     const props = super.getProps({ data, general, advanced, fieldProps });
     const xLabel = fieldProps[general.xField]?.label;
     const yLabel = fieldProps[general.yField]?.label;
+   
     props.xAxis = {
       ...props.xAxis,
       type: 'value',
@@ -273,14 +278,28 @@ export class Bar extends ECharts {
 new Bar();
 ```
 
-Pie Chart：
+### Explication
+
+- **Constructor (`constructor`)** : 
+  Le constructeur configure le graphique en barres en utilisant la classe `ECharts`. Ici, nous définissons le type de graphique comme `bar` (barres). La configuration de base pour les axes est définie dans le tableau `config` pour indiquer que les champs `xField` et `yField` doivent être échangés.
+
+- **Méthode `getProps`** :
+  Cette méthode ajuste les propriétés du graphique. Elle modifie les axes en fonction des champs `xField` et `yField`. Dans ce cas, l'axe des x sera de type `value` (pour les valeurs numériques) et l'axe des y sera de type `category` (pour les catégories de données). Le code ajuste également les étiquettes des axes en fonction des métadonnées des champs (`fieldProps`).
+
+---
+
+## Graphique en Secteurs (Pie Chart)
+
+Le graphique en secteurs est souvent utilisé pour afficher des proportions relatives. Voici un exemple de classe `Pie` qui étend la classe `ECharts`.
+
+### Code de la classe `Pie`
 
 ```typescript
 export class Pie extends ECharts {
   constructor() {
     super({
       name: 'pie',
-      title: 'Pie Chart',
+      title: 'Graphique en Secteurs',
       series: { type: 'pie' },
     });
     this.config = [
@@ -340,7 +359,24 @@ export class Pie extends ECharts {
 new Pie();
 ```
 
-## Adding Charts
+### Explication
+
+- **Constructor (`constructor`)** : 
+  Le graphique en secteurs est configuré en définissant `type: 'pie'` dans la propriété `series`. La configuration spécifie que les champs `angleField` et `colorField` sont obligatoires pour le graphique en secteurs.
+
+- **Méthode `init`** :
+  Cette méthode initialise le graphique en extrayant les champs nécessaires (par exemple, `xField` pour la couleur et `yField` pour l'angle) à partir des dimensions et des mesures. Elle retourne une configuration initiale pour le graphique.
+
+- **Méthode `getProps`** :
+  Elle construit les propriétés nécessaires pour ECharts en fusionnant les configurations et en appliquant des transformations aux données (par exemple, en créant les séries et les légendes pour le graphique en secteurs).
+
+---
+
+## Ajouter des Graphiques à votre Plugin
+
+Après avoir créé vos graphiques, vous devez les ajouter à votre application pour qu'ils soient utilisés. Cela se fait dans la méthode `beforeLoad` d'un plugin client.
+
+### Code d'ajout des graphiques
 
 ```typescript
 // client/index.ts
@@ -348,7 +384,7 @@ import DataVisualizationPlugin from '@nocobase/plugin-data-visualization/client'
 
 export class PluginSampleAddCustomChartClient extends Plugin {
   async afterAdd() {
-    // await this.app.pm.add()
+    // Cette méthode peut être utilisée pour effectuer des actions après l'ajout du plugin
   }
 
   async beforeLoad() {
@@ -357,13 +393,20 @@ export class PluginSampleAddCustomChartClient extends Plugin {
       title: 'ECharts',
       charts: [
         new ECharts(),
-        // ...
-        // ...
+        new Bar(),   // Ajout du graphique à barres
+        new Pie(),   // Ajout du graphique en secteurs
+        // Vous pouvez ajouter d'autres graphiques ici
       ],
     });
   }
 
-  // You can get and modify the app instance here
+  // Vous pouvez obtenir et modifier l'instance de l'application ici
   async load() {}
 }
 ```
+
+### Explication
+
+- Dans la méthode `beforeLoad`, nous récupérons le plugin de visualisation de données (`DataVisualizationPlugin`).
+- Nous ajoutons un groupe de graphiques ECharts avec le titre `'ECharts'`, et nous y insérons nos graphiques définis (par exemple, `ECharts`, `Bar`, `Pie`).
+- Cela permet de rendre ces graphiques disponibles pour une utilisation dans l'interface utilisateur de l'application.

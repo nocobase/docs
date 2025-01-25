@@ -1,31 +1,31 @@
-# Scan QR Code
+# Scanner le code QR
 
 ## Introduction
 
-The QR code scanning action can be added in the action panel block to facilitate navigation within the system.
+L'action de numérisation de code QR peut être ajoutée dans le bloc du panneau d'action pour faciliter la navigation dans le système.
 
-## Example
+## Exemple
 
 <video width="100%" controls>
   <source src="https://static-docs.nocobase.com/20240612214013_rec_.mp4" type="video/mp4">
 </video>
 
-## User Guide
+## Guide de l'utilisateur
 
-### Generate a QR Code
+### Générer un code QR
 
-1. Suppose the page link to redirect to is: `https://localhost:13000/m/page/vyoiwa25jig`.
-2. Extract the relative link starting from `/page/` from the mobile page URL, and use it to generate a QR code.
-3. Create a new Markdown block and use the following code:
+1. Supposons que le lien de la page vers lequel vous souhaitez rediriger soit : `https://localhost:13000/m/page/vyoiwa25jig`.
+2. Extrait le lien relatif à partir de `/page/` dans l'URL de la page mobile, puis utilisez-le pour générer un code QR.
+3. Créez un nouveau bloc Markdown et utilisez le code suivant :
 
 ```markdown
 <qr-code value="/page/tr8r70ajpko" type="svg"></qr-code>
 ```
 
-4. Add a "Scan QR Code" action to scan and navigate to the corresponding page.
+4. Ajoutez une action "Scanner le code QR" pour scanner et naviguer vers la page correspondante.
 
-**Note**:
-- The QR code scanning action only supports internal system relative links and must start with `/page/`.
-- External page links are not supported at this time.
+**Remarque** :
+- L'action de numérisation de code QR ne prend en charge que les liens relatifs du système interne et doit commencer par `/page/`.
+- Les liens vers des pages externes ne sont pas actuellement pris en charge.
 
-For further details, check the [Action Panel Block](/handbook/block-action-panel) documentation.
+Pour plus de détails, consultez la documentation du [Bloc du panneau d'action](/handbook/block-action-panel).

@@ -1,93 +1,92 @@
-# Markdown Block
+# Bloc Markdown
 
 ## Introduction
 
-Markdown blocks can be used without binding to a data source. They are defined using Markdown syntax and are suitable for displaying formatted text content.
+Les blocs Markdown peuvent être utilisés sans être liés à une source de données. Ils sont définis à l'aide de la syntaxe Markdown et conviennent à l'affichage de contenu texte formaté.
 
-## Adding Blocks
+## Ajouter des Blocs
 
-Markdown blocks can be added within pages or pop-ups.
+Les blocs Markdown peuvent être ajoutés dans des pages ou des pop-ups.
 
 ![20240612205004](https://static-docs.nocobase.com/20240612205004.png)
 
-Inline Markdown blocks can also be added within form blocks and details blocks.
+Des blocs Markdown en ligne peuvent également être ajoutés dans des blocs de formulaire et des blocs de détails.
 
 ![20240612205215](https://static-docs.nocobase.com/20240612205215.png)
 
-## Template engine
+## Moteur de Template
 
-### string template
+### Template de chaîne
 
-Use {{xxx}} for interpolation.
+Utilisez `{{xxx}}` pour l'interpolation.
 
 ![20240817175031](https://static-docs.nocobase.com/20240817175031.png)
 
 ### Handlebars
 
-Support using rich syntax such as conditions and loops to dynamically generate HTML content.
+Supporte l'utilisation de syntaxes riches comme les conditions et les boucles pour générer dynamiquement du contenu HTML.
 
 ![20240817175355](https://static-docs.nocobase.com/20240817175355.png)
 
 ![20240817175501](https://static-docs.nocobase.com/20240817175501.png)
 
-For more information, refer to [Handlebars template](/handbook/template-handlebars)
+Pour plus d'informations, consultez [Template Handlebars](/handbook/template-handlebars)
 
-## Using Variables
+## Utilisation des Variables
 
-Variables supported in Markdown vary depending on the location.
+Les variables supportées dans Markdown varient en fonction de l'emplacement.
 
-Markdown on the page supports common system variables, such as the current user, current role, date variables, etc.
+Le Markdown dans la page supporte des variables système communes, telles que l'utilisateur actuel, le rôle actuel, les variables de date, etc.
 
 ![20240612205857](https://static-docs.nocobase.com/20240612205857.png)
 
-Markdown in block row operation popups (or subpages) supports more data context variables, such as the current record, current popup record, etc.
+Le Markdown dans les fenêtres de ligne d'opérations de bloc (ou sous-pages) supporte davantage de variables de contexte de données, telles que l'enregistrement actuel, l'enregistrement popup actuel, etc.
 
 ![20240612210333](https://static-docs.nocobase.com/20240612210333.png)
 
-### Association data in variables
+### Données associées dans les variables
 
-For example, order/shipment (one-to-one).
+Par exemple, commande/expédition (un à un).
 
-Use the 'current popup record' variable in the detail operation popup's Markdown block to display the shipping number of the current order.
+Utilisez la variable 'current popup record' dans le bloc Markdown de la fenêtre d'opération de détail pour afficher le numéro d'expédition de la commande actuelle.
 
-#### String templates will automatically handle association data (by automatically loading the required association data)
+#### Les templates de chaînes gèrent automatiquement les données associées (en chargeant automatiquement les données d'association requises)
 
 ![20241210165519](https://static-docs.nocobase.com/20241210165519.png)
 
 ![20241210165541](https://static-docs.nocobase.com/20241210165541.png)
 
-#### Currently, Handlebars does not support preloading association data. Users need to explicitly configure the corresponding association fields in the data block to retrieve the relevant data during rendering.
+#### Actuellement, Handlebars ne supporte pas le préchargement des données associées. Les utilisateurs doivent configurer explicitement les champs d'association correspondants dans le bloc de données pour récupérer les données pertinentes lors du rendu.
 
 ![20241210165625](https://static-docs.nocobase.com/20241210165625.png)
 
-After configuring the 'Shipment' association field in the order table block, the Markdown block in the detail operation (using Handlebars) will be able to access and render the association data.
+Après avoir configuré le champ d'association 'Shipment' dans le bloc de table des commandes, le bloc Markdown dans l'opération de détail (en utilisant Handlebars) pourra accéder et rendre les données d'association.
 
 ![20241210165655](https://static-docs.nocobase.com/20241210165655.png)
 
-### Syntax rules
+### Règles de Syntaxe
 
-In addition to the difference in association data preloading, there are also syntax rule differences between the two templates. For example, when using variables with a to-many association, the retrieved data is usually an array. The two templates handle array-type data differently.
+En plus de la différence dans le préchargement des données associées, il existe aussi des différences dans les règles de syntaxe entre les deux templates. Par exemple, lors de l'utilisation de variables avec une association "un-à-plusieurs", les données récupérées sont généralement un tableau. Les deux templates gèrent les données de type tableau différemment.
 
-For example, order/product (many-to-many)
+Par exemple, commande/produit (plusieurs à plusieurs)
 
-Use the 'current popup record' variable in the detail operation popup's Markdown block to display the names of the products associated with the current order (multiple items).
+Utilisez la variable 'current popup record' dans le bloc Markdown de la fenêtre d'opération de détail pour afficher les noms des produits associés à la commande actuelle (plusieurs éléments).
 
-#### String templates display arrays by separating the elements with commas (',')
+#### Les templates de chaînes affichent les tableaux en séparant les éléments par des virgules (',')
 
 ![20241210170508](https://static-docs.nocobase.com/20241210170508.png)
 
 ![20241210170545](https://static-docs.nocobase.com/20241210170545.png)
 
-#### Handlebars templates use #each to iterate over array data
+#### Les templates Handlebars utilisent `#each` pour itérer sur les données de type tableau
 
 ![20241210205357](https://static-docs.nocobase.com/20241210205357.png)
 
-The related data to be used must be configured in the data block
+Les données associées à utiliser doivent être configurées dans le bloc de données.
 
 ![20241210170814](https://static-docs.nocobase.com/20241210170814.png)
 
 ```javascript
-
 <ul>
   {{#each   $nPopupRecord.products }}
     <li>{{this.product_name}}</li>
@@ -95,11 +94,11 @@ The related data to be used must be configured in the data block
 </ul>
 ```
 
-For more introductions to variables, check out the [Edit UI / Variables](/handbook/ui/variables) section.
+Pour plus d'informations sur les variables, consultez la section [Édition UI / Variables](/handbook/ui/variables).
 
 ## QR Codes
 
-Markdown also supports the configuration of QR codes, which can be used in combination with variables.
+Le Markdown prend également en charge la configuration des QR codes, qui peuvent être utilisés en combinaison avec des variables.
 
 ```html
 <qr-code value="https://www.nocobase.com/" type="svg"></qr-code>
@@ -107,5 +106,5 @@ Markdown also supports the configuration of QR codes, which can be used in combi
 
 ## RoadMap
 
-- Planned or in progress
-  - Handlebars supports association data preloading.
+- Prévu ou en cours
+  - Handlebars supporte le préchargement des données associées.

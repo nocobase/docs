@@ -1,23 +1,23 @@
-# Sorting Rules
+# Règles de Tri
 
 ## Introduction
 
-Configuring sort rules allows you to define default sorting criteria for data blocks, ensuring that the information within each block is presented in a specific, predetermined order.
+La configuration des règles de tri permet de définir des critères de tri par défaut pour les blocs de données, garantissant ainsi que l'information au sein de chaque bloc soit présentée dans un ordre spécifique et prédéterminé.
 
-## User Guide
+## Guide Utilisateur
 
 ![20240407192159](https://static-docs.nocobase.com/20240407192159.png)
 
 ![20240421115056](https://static-docs.nocobase.com/20240421115056.png)
 
-At present, the system only supports sorting based on fields within the current table.
+Actuellement, le système ne supporte que le tri basé sur les champs de la table actuelle.
 
-### Single Sort Rule
+### Règle de Tri Simple
 
 ![20240407192248](https://static-docs.nocobase.com/20240407192248.png)
 
-### Multiple Sort Rules
+### Règles de Tri Multiples
 
-This feature is ideal for complex sorting scenarios. For instance, you might want to first organize data by order status, and then arrange items within each status category according to their delivery time.
+Cette fonctionnalité est idéale pour des scénarios de tri complexes. Par exemple, vous pouvez d'abord organiser les données par statut de commande, puis trier les éléments au sein de chaque catégorie de statut en fonction de leur date de livraison.
 
 ![20240407193837](https://static-docs.nocobase.com/20240407193837.png)

@@ -1,13 +1,13 @@
-# Sequence
+# Séquence
 
 <PluginInfo name="field-sequence"></PluginInfo>
 
 ## Introduction
 
-## Field Configuration
+## Configuration du Champ
 
-![20240512173752](https://static-docs.nocobase.com/20240512173752.png)
+![Configuration du champ de séquence](https://static-docs.nocobase.com/20240512173752.png)
 
-## Example
+## Exemple
 
-To be added
+À venir

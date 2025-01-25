@@ -1,81 +1,73 @@
-# Area Chart
+# Graphique de Surface
 
-## Data Configuration
+## Configuration des Données
 
-### 1 or more measures, 1 dimension
+### 1 ou Plusieurs Mesures, 1 Dimension
 
-![1 or more measures, 1 dimension](https://static-docs.nocobase.com/202410091149684.png)
+![1 ou plusieurs mesures, 1 dimension](https://static-docs.nocobase.com/202410091149684.png)
 
-### 1 measure, 1 axis dimension, 1 category dimension
+### 1 Mesure, 1 Dimension d'Axe, 1 Dimension de Catégorie
 
-Configure 1 measure and 2 dimensions. One dimension will serve as the X-axis field, and the other will be used as the series (category) field.
+Cette configuration comprend 1 mesure et 2 dimensions. Une dimension sert de champ pour l'axe des X, tandis que l'autre est utilisée comme champ de série (catégorie).
 
-![1 measure, 1 axis dimension, 1 category dimension](https://static-docs.nocobase.com/202410091153441.png)
+![1 mesure, 1 dimension d'axe, 1 dimension de catégorie](https://static-docs.nocobase.com/202410091153441.png)
 
-## Configuration Options
+## Options de Configuration
 
-| Option                          | Description                                                                 |
-| ------------------------------- | --------------------------------------------------------------------------- |
-| XField                          | The dimension field for the X-axis                                           |
-| seriesField                     | The dimension field used for categorization                                  |
-| Size                            | Define the chart size, either by fixed aspect ratio or fixed height          |
-| Light mode theme                | Select this option to preview when the system is in light mode               |
-| Dark mode theme                 | Select this option to preview when the system is in dark mode                |
-| Show legend                     | Toggle the display of the legend                                             |
-| Legend orient                   | Choose the direction of the legend display, either horizontal or vertical    |
-| Legend position (left, bottom, right, top) | Define the relative position of the legend                          |
-| Label type                      | Control the visibility and type of labels                                    |
-| Smooth curve                    | Enable or disable the smoothing of curves                                    |
-| Whether stack                   | Enable or disable data stacking                                              |
-| X-Axis title                    | Control the display position of the X-axis title                             |
-| Y-Axis title                    | Control the display position of the Y-axis title                             |
-| X-Axis label rotate             | Set the rotation angle of X-axis labels, helpful for displaying more labels when they are dense |
-| Padding                         | Adjust the internal padding of the chart                                     |
-| Split line                      | Configure the display and style of grid lines                                |
-| Mark line                       | Add marker lines with custom title, value, and color                         |
-
----
-
-Now, I will move on to the final refinement stage.
-
-### Refinement Stage (Refinement Expert)
-
-For this final pass, I've refined the text to enhance readability and ensure clarity, while keeping it professional and technically accurate.
+| Option                            | Description                                                               |
+| ---------------------------------- | ------------------------------------------------------------------------- |
+| Champ de l'Axe des X              | Champ utilisé pour définir la dimension de l'axe des X                    |
+| Champ de Catégorie                | Champ utilisé pour catégoriser les données                                |
+| Taille                            | Spécifiez la taille du graphique, soit par un ratio fixe soit par une hauteur fixe |
+| Thème Mode Clair                  | Sélectionnez pour l'aperçu en mode clair                                  |
+| Thème Mode Sombre                 | Sélectionnez pour l'aperçu en mode sombre                                 |
+| Afficher la Légende               | Activer ou désactiver l'affichage de la légende                           |
+| Direction de la Légende           | Définir la direction de la légende (horizontale ou verticale)            |
+| Position de la Légende (Gauche, Bas, Droite, Haut) | Définir la position de la légende par rapport au graphique |
+| Type d'Étiquette                  | Gérer la visibilité et le format des étiquettes                           |
+| Courbe Lissée                     | Activer ou désactiver lissage de la courbe pour un rendu plus fluide     |
+| Empiler les Données              | Activer ou désactiver l'empilement des données pour une visualisation cumulative |
+| Titre de l'Axe des X              | Ajuster la visibilité et la position du titre de l'axe des X             |
+| Titre de l'Axe des Y              | Ajuster la visibilité et la position du titre de l'axe des Y             |
+| Rotation des Étiquettes de l'Axe des X | Faire pivoter les étiquettes de l'axe des X pour optimiser l'espace, utile lorsque les étiquettes sont denses |
+| Padding                           | Personnaliser le padding interne du graphique                             |
+| Lignes de Grille                  | Définir la visibilité et le style des lignes de grille                    |
+| Ligne de Marque                   | Ajouter des lignes de marque avec un titre, une valeur et une couleur définis | 
 
 ---
 
-### Area Chart
+### Graphique de Surface
 
-#### Data Configuration
+#### Configuration des Données
 
-##### 1 or More Measures, 1 Dimension
+##### 1 ou Plusieurs Mesures, 1 Dimension
 
 ![Image](https://static-docs.nocobase.com/202410091149684.png)
 
-##### 1 Measure, 1 Axis Dimension, 1 Category Dimension
+##### 1 Mesure, 1 Dimension d'Axe, 1 Dimension de Catégorie
 
-This setup includes 1 measure and 2 dimensions. One dimension acts as the X-axis field, while the other is used as the series (category) field.
+Cette configuration comprend 1 mesure et 2 dimensions. Une dimension agit comme champ pour l'axe des X, tandis que l'autre est utilisée comme champ de série (catégorie).
 
 ![Image](https://static-docs.nocobase.com/202410091153441.png)
 
-#### Configuration Options
+#### Options de Configuration
 
-| Option                          | Description                                                                 |
-| ------------------------------- | --------------------------------------------------------------------------- |
-| X-axis Field                    | Field used to define the X-axis dimension                                    |
-| Category Field                  | Field used to categorize data                                                |
-| Size                            | Specify chart size, either by fixed aspect ratio or fixed height             |
-| Light Mode Theme                | Select for preview in light mode                                             |
-| Dark Mode Theme                 | Select for preview in dark mode                                              |
-| Show Legend                     | Toggle the visibility of the legend                                          |
-| Legend Direction                | Set legend direction (horizontal or vertical)                                |
-| Legend Position (Left, Bottom, Right, Top) | Set the position of the legend relative to the chart             |
-| Label Type                      | Manage the visibility and format of the labels                               |
-| Smooth Curve                    | Enable smoothing of the curve for a more polished look                       |
-| Stack Data                      | Option to stack values for cumulative data visualization                     |
-| X-axis Title                    | Adjust the visibility and position of the X-axis title                       |
-| Y-axis Title                    | Adjust the visibility and position of the Y-axis title                       |
-| X-axis Label Rotation           | Rotate X-axis labels to optimize space, useful when labels are densely packed |
-| Padding                         | Customize the inner padding of the chart                                     |
-| Grid Lines                      | Define the visibility and style of grid lines                                |
-| Marker Line                     | Add marker lines, and set their title, value, and color                      |
+| Option                            | Description                                                               |
+| ---------------------------------- | ------------------------------------------------------------------------- |
+| Champ de l'Axe des X              | Champ utilisé pour définir la dimension de l'axe des X                    |
+| Champ de Catégorie                | Champ utilisé pour catégoriser les données                                |
+| Taille                            | Spécifiez la taille du graphique, soit par un ratio fixe soit par une hauteur fixe |
+| Thème Mode Clair                  | Sélectionnez pour l'aperçu en mode clair                                  |
+| Thème Mode Sombre                 | Sélectionnez pour l'aperçu en mode sombre                                 |
+| Afficher la Légende               | Activer ou désactiver l'affichage de la légende                           |
+| Direction de la Légende           | Définir la direction de la légende (horizontale ou verticale)            |
+| Position de la Légende (Gauche, Bas, Droite, Haut) | Définir la position de la légende par rapport au graphique |
+| Type d'Étiquette                  | Gérer la visibilité et le format des étiquettes                           |
+| Courbe Lissée                     | Activer lissage de la courbe pour un effet plus fluide                    |
+| Empiler les Données              | Option pour empiler les valeurs pour une visualisation cumulative des données |
+| Titre de l'Axe des X              | Ajuster la visibilité et la position du titre de l'axe des X             |
+| Titre de l'Axe des Y              | Ajuster la visibilité et la position du titre de l'axe des Y             |
+| Rotation des Étiquettes de l'Axe des X | Faire pivoter les étiquettes de l'axe des X pour un meilleur agencement quand les étiquettes sont nombreuses |
+| Padding                           | Personnaliser l'espace interne du graphique                               |
+| Lignes de Grille                  | Définir la visibilité et le style des lignes de grille                    |
+| Ligne de Marque                   | Ajouter des lignes de marque avec un titre, une valeur et une couleur personnalisée |

@@ -1,98 +1,99 @@
-# Copy
+# **Copier**
 
 <PluginInfo name="action-duplicate"></PluginInfo>
 
-## Overview
+## Aperçu
 
-The copy feature allows users to create new data entries based on existing records. It supports two modes: direct copy and copy to a form for further editing.
+La fonctionnalité de copie permet aux utilisateurs de créer de nouvelles entrées de données basées sur des enregistrements existants. Elle prend en charge deux modes : copie directe et copie dans un formulaire pour une modification ultérieure.
 
 ## Installation
 
-This is a built-in plugin, so no additional installation is needed.
+Ce plugin est intégré, donc aucune installation supplémentaire n'est requise.
 
-## Copy Modes
+## Modes de copie
 
-### Direct Duplicate
+### Copie directe
 
-![](https://static-docs.nocobase.com/2c0ac5d1a539de4b72b49b7d966d8c09.png)
+![Copie directe](https://static-docs.nocobase.com/2c0ac5d1a539de4b72b49b7d966d8c09.png)
 
-- By default, data is copied using the direct copy mode;
-- Target collection: Specifies where the copied data will be stored(For inherited tables, the data can be copied to a sub-table. Direct copy is limited to the current table);
-- Data fields: Defines which fields to include in the copy. You can select all or specific fields, required.
+- Par défaut, les données sont copiées en utilisant le mode de copie directe ;
+- Collection cible : spécifie où les données copiées seront stockées (pour les tables héritées, les données peuvent être copiées dans une sous-table. La copie directe est limitée à la table actuelle) ;
+- Champs de données : définit les champs à inclure dans la copie. Vous pouvez sélectionner tous les champs ou des champs spécifiques, selon les besoins.
 
-Once configured, simply click the button to copy the data.
+Une fois la configuration terminée, il suffit de cliquer sur le bouton pour copier les données.
 
-### Copy Into the Form and Continue to Fill in
+### Copier dans le formulaire et continuer à remplir
 
-The fields defined in the template will be pre-filled as default values in a form, allowing you to modify them before submitting to complete the copy.
+Les champs définis dans le modèle seront pré-remplis comme valeurs par défaut dans un formulaire, vous permettant de les modifier avant de soumettre pour finaliser la copie.
 
-You can choose to copy the data to the current table or a sub-table (in inherited cases).
+Vous pouvez choisir de copier les données dans la table actuelle ou une sous-table (dans le cas des héritages).
 
-![](https://static-docs.nocobase.com/a072aa572fd0a0fe643eadf95471da2a.png)
+![Copie dans un formulaire](https://static-docs.nocobase.com/a072aa572fd0a0fe643eadf95471da2a.png)
 
-Template Field Configuration: Only the selected fields will be pre-filled in the form as default values.
+Configuration des champs du modèle : seuls les champs sélectionnés seront pré-remplis dans le formulaire en tant que valeurs par défaut.
 
-![](https://static-docs.nocobase.com/8032fa2025180ade275da55b97774b4d.png)
+![Champs pré-remplis](https://static-docs.nocobase.com/8032fa2025180ade275da55b97774b4d.png)
 
-The "Waybill" (o2m) relationship is copied, and its field components are set as a sub-form. The fields within the sub-form are configurable.
+Le champ "Waybill" (o2m) est copié, et ses composants de champ sont définis comme un sous-formulaire. Les champs à l'intérieur du sous-formulaire sont configurables.
 
-![](https://static-docs.nocobase.com/b13c9287bae8601646727a2e78b81be7.png)
+![Composants du sous-formulaire](https://static-docs.nocobase.com/b13c9287bae8601646727a2e78b81be7.png)
 
-#### Sync From Form Fields
+#### Synchronisation depuis les champs du formulaire
 
-- The system will automatically interpret the fields already configured in the current form block as template fields;
-- After modifying the form block fields (e.g., adjusting relationship components), you can reopen the template configuration and click the "Sync Form" button to ensure consistency between the form and the template.
+- Le système interprétera automatiquement les champs déjà configurés dans le bloc de formulaire actuel comme des champs de modèle ;
+- Après avoir modifié les champs du formulaire (par exemple, en ajustant les composants de relation), vous pouvez rouvrir la configuration du modèle et cliquer sur le bouton "Synchroniser le formulaire" pour garantir la cohérence entre le formulaire et le modèle.
 
-![](https://static-docs.nocobase.com/156b6d8d741521e63d12e49092414d58.png)
+![Synchronisation du formulaire](https://static-docs.nocobase.com/156b6d8d741521e63d12e49092414d58.png)
 
-Template data will populate the form with default values, allowing you to adjust them and submit to complete the copy operation.
+Les données du modèle rempliront le formulaire avec les valeurs par défaut, vous permettant de les ajuster et de soumettre pour terminer l'opération de copie.
 
-![](https://static-docs.nocobase.com/1c0a0ae0c59971f48b2282a68831d44b.png)
+![Exécution de la copie](https://static-docs.nocobase.com/1c0a0ae0c59971f48b2282a68831d44b.png)
 
-Below is an example of setting up the copy function for an order list.
+Voici un exemple de configuration de la fonction de copie pour une liste de commandes.
 
-![](https://static-docs.nocobase.com/fa8a89abf0ba136df04b6d0d838eae4e.gif)
+![Exemple de configuration](https://static-docs.nocobase.com/fa8a89abf0ba136df04b6d0d838eae4e.gif)
 
-### Additional Information
+### Informations supplémentaires
 
-#### Copying, Referencing, and Preloading
+#### Copier, Référencer et Précharger
 
-Different field types (with different relationships) require different handling logic, such as copying, referencing, or preloading. Modifications to relationship field components can also affect this logic (Select and Record picker components handle references, while Sub-form and Sub-table components handle copies).
+Les différents types de champs (avec différentes relations) nécessitent une logique de traitement différente, telle que copier, référencer ou précharger. Les modifications apportées aux composants de champ de relation peuvent également affecter cette logique (les composants Sélectionner et Sélecteur d'enregistrement gèrent les références, tandis que les composants Sous-formulaire et Sous-tableau gèrent les copies).
 
-- Copying:
+- **Copier** :
 
-  - Standard fields are copied;
-  - For hasOne and hasMany relationships, fields can only be copied (i.e., these types of relationships cannot use Select or Record picker as components but must use Sub-form, Sub-table, etc.);
-    - Adjusting hasOne or hasMany field components won’t change the copying logic;
-    - All sub-fields of copied relationships can be selected.
+  - Les champs standards sont copiés ;
+  - Pour les relations hasOne et hasMany, les champs peuvent uniquement être copiés (c'est-à-dire que ces types de relations ne peuvent pas utiliser Sélectionner ou Sélecteur d'enregistrement comme composants, mais doivent utiliser Sous-formulaire, Sous-tableau, etc.) ;
+    - L'ajustement des composants de champ hasOne ou hasMany ne modifiera pas la logique de copie ;
+    - Tous les sous-champs des relations copiées peuvent être sélectionnés.
 
-- Referencing
+- **Référencer** :
 
-  - belongsTo and belongsToMany relationships are handled as references;
-  - **References can transform into copies. For example, if the field component changes from select to sub-form, the relationship turns from a reference to a copy. After this, all subfields become selectable.**
+  - Les relations belongsTo et belongsToMany sont traitées comme des références ;
+  - **Les références peuvent se transformer en copies. Par exemple, si le composant de champ change de sélection à sous-formulaire, la relation passe de référence à copie. Après cela, tous les sous-champs deviennent sélectionnables.**
 
-- Preloading: Refers to relationship fields within referenced fields.
+- **Précharger** : Désigne les champs de relation dans les champs référencés.
 
-  - Fields within referenced relationships are preloaded;
-  - Adjustments to preloaded relationship fields can cause them to switch to a reference or copy logic.
+  - Les champs au sein des relations référencées sont préchargés ;
+  - Les ajustements apportés aux champs de relation préchargés peuvent les faire passer à une logique de référence ou de copie.
 
-#### Select All
+#### Sélectionner tout
 
-- All copy and reference fields are selected by default.
+- Tous les champs de copie et de référence sont sélectionnés par défaut.
 
-#### Fields Excluded When Selected as Data Templates:
-- Primary keys of copied relationships are filtered out, but primary keys of references and preloaded data are not
-- Foreign keys
-- Fields that must remain unique
-- Sorting fields
-- Auto-generated fields
-- Password field
-- Creator
-- Creation date
-- Last updated by
-- Last update date
+#### Champs exclus lors de la sélection comme modèles de données :
 
-#### Sync From Form Fields
+- Les clés primaires des relations copiées sont filtrées, mais les clés primaires des références et des données préchargées ne le sont pas ;
+- Les clés étrangères ;
+- Les champs devant rester uniques ;
+- Les champs de tri ;
+- Les champs générés automatiquement ;
+- Le champ mot de passe ;
+- Créateur ;
+- Date de création ;
+- Dernière mise à jour par ;
+- Date de dernière mise à jour.
 
-- The fields already configured in the form block will be automatically parsed as template fields.
-- After modifying the form block (e.g., adjusting relationship field components), reopen the template configuration and click the "Sync Form" button to ensure the form aligns with the template.
+#### Synchronisation depuis les champs du formulaire
+
+- Les champs déjà configurés dans le bloc de formulaire seront automatiquement analysés comme des champs de modèle.
+- Après avoir modifié le bloc de formulaire (par exemple, en ajustant les composants de champ de relation), rouvrir la configuration du modèle et cliquer sur le bouton "Synchroniser le formulaire" pour garantir que le formulaire est bien synchronisé avec le modèle.

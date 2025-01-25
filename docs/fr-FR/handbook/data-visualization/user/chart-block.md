@@ -1,69 +1,73 @@
-# Chart Block
+## Chart Block: Gestion et Configuration des Graphiques
 
-The chart block is a panel used for organizing multiple charts.
+Le *Chart Block* (bloc de graphiques) est un outil essentiel pour organiser plusieurs graphiques dans une interface NocoBase. Ce panneau vous permet d'ajouter et de configurer des graphiques à partir de diverses collections de données.
 
-## Add Block
+### 1. Ajouter un Bloc de Graphiques
 
-Click "Add Block" - "Charts" to create an empty chart block.
+Pour ajouter un bloc de graphiques :
+
+1. Cliquez sur **Ajouter un bloc** → **Graphiques** pour créer un bloc de graphiques vide.
+2. À l'intérieur de ce bloc de graphiques, cliquez sur **Ajouter un bloc** → **Graphique** pour sélectionner la collection de données souhaitée et créer un graphique.
+
+> Note : Seules les collections que l'utilisateur est autorisé à voir seront visibles dans la liste des options.
+
+Voici l'interface visuelle pour l'ajout d'un bloc de graphiques :
 
 ![](https://static-docs.nocobase.com/790faf0a126e4ffcc3ff976818325cfd.png)
 
-Inside the chart block, click "Add Block" - "Chart" and select the corresponding data Collection to create and configure charts. Only tables that the user has permission to view can be used for chart configuration, otherwise, they will be hidden from the options.
+### 2. Paramètres du Bloc
 
-![](https://static-docs.nocobase.com/93ed2fada2478fba1b243d8705717a34.png)
+Le bloc de graphiques possède plusieurs paramètres de personnalisation pour améliorer l'apparence et la fonctionnalité.
 
-## Block Settings
+#### Modifier le Titre du Bloc
+Vous pouvez définir un titre pour le bloc qui regroupera plusieurs graphiques.
+
+#### Afficher l'Arrière-plan
+Cette option permet de définir si le bloc doit afficher un arrière-plan ou non.
+
+#### Afficher les Marges
+Vous pouvez décider si vous voulez que les marges du bloc de graphiques soient visibles. Cela est particulièrement utile sur les appareils mobiles ou si le bloc contient un seul graphique, pour une apparence plus agréable.
+
+Voici un exemple de l'apparence de ces options :
 
 ![](https://static-docs.nocobase.com/202409022042315.png)
 
-- Edit Block Title - Allows setting a title for multiple charts in the block.
-- Show Background - Determines whether to display the background color of the chart block.
-- Show Padding - Determines whether to display the padding of the chart block.
+Lorsqu'il n'y a qu'un seul graphique dans le bloc, ou lorsqu'il est visualisé sur mobile, les réglages d'arrière-plan et de marges rendent l'interface plus fluide.
 
-The background and padding settings are particularly useful when there is only one chart in the block or when viewing on mobile devices, helping the style appear more comfortable.
+### 3. Opérations de Configuration du Bloc
 
-<img src="https://static-docs.nocobase.com/202404192011039.png"/>
+Les graphiques à l'intérieur du bloc peuvent être réorganisés librement, comme dans n'importe quel autre bloc :
 
-The charts within a chart block can be freely dragged and organized like regular blocks.
+- **Configurer** : Cliquez sur ce bouton pour modifier les paramètres du graphique actuel.
+- **Dupliquer** : Ce bouton vous permet de créer une copie rapide du graphique.
+- **Supprimer** : Cliquez ici pour supprimer un graphique du bloc.
 
-- Click the "Configure" button to modify the settings of the current chart.
-- Click the "Duplicate" button to quickly copy the current chart.
-- Click the "Delete" button to remove the current chart.
+#### Rafraîchir et Auto-Rafraîchissement
 
-## Configure Block Operations
+Le bloc de graphiques prend en charge la configuration d'un bouton de rafraîchissement. En cliquant dessus, tous les graphiques du bloc sont mis à jour. En mode de configuration, vous pouvez définir un intervalle de rafraîchissement automatique qui sera appliqué à tous les graphiques du bloc.
 
-:::warning{title=Note}
-The configuration operation feature applies to chart blocks added in version `v1.4.0-alpha` and later.
-:::
+Voici les options visuelles liées à cette fonction :
 
-### Refresh and Auto-Refresh
+- **Rafraîchir** : Clique pour forcer un rafraîchissement.
+- **Intervalle Auto-Rafraîchissement** : Vous pouvez définir un intervalle de mise à jour automatique.
 
-Chart blocks support configuring a refresh button. Clicking it refreshes all the charts within the block.
+Le bouton de rafraîchissement configuré dans le bloc peut être également utilisé pour ajuster cet intervalle, et ce paramètre s'applique à tous les utilisateurs accédant à la page par défaut.
 
-![](https://static-docs.nocobase.com/202409022051107.png)
+### 4. Configuration des Opérations pour le Graphique Individuel
 
-In configuration mode, you can set the refresh button to configure the auto-refresh interval, which will apply to all charts in the block. The auto-refresh interval configured here will apply to all users who access the page by default.
+Chaque graphique a ses propres options de configuration, similaires à celles du bloc de graphiques, mais ces paramètres affecteront uniquement le graphique individuel.
 
-![](https://static-docs.nocobase.com/202409022054189.png)
+- **Rafraîchissement et Auto-Rafraîchissement** : Les graphiques individuels peuvent également avoir un bouton de rafraîchissement. Si ce bouton est configuré, il rafraîchira uniquement ce graphique spécifique.
 
-Users can also modify the auto-refresh interval using the button on the right, but this adjustment is only effective temporarily and will reset after the page is refreshed.
+### Notes Importantes
 
-![](https://static-docs.nocobase.com/202409022056097.png)
+- Si à la fois le bloc de graphiques et un graphique individuel sont configurés avec des intervalles de rafraîchissement automatique, l'intervalle du graphique individuel prendra priorité.
+- Si le bloc de graphiques a un intervalle de rafraîchissement, mais qu'un graphique individuel a l'auto-rafraîchissement désactivé ou n'a pas de bouton de rafraîchissement, l'intervalle du bloc de graphiques sera appliqué à ce graphique.
 
-## Configure Chart Operations
-
-:::info{title=Note}
-The operation buttons configured for individual charts will only appear when the mouse hovers over the chart and will automatically hide when the mouse leaves.
-:::
-
-### Refresh and Auto-Refresh
-
-Individual charts also support configuring a refresh button, functioning the same way as the block's refresh button, but only affecting the current chart.
+### Exemple visuel des options de rafraîchissement pour un graphique individuel :
 
 ![](https://static-docs.nocobase.com/202409022101033.png)
 
-:::info{title=Note}
+---
 
-- If both the chart block and an individual chart are configured with auto-refresh intervals, the interval configured for the individual chart takes precedence.
-- If the chart block is configured with an auto-refresh interval, and an individual chart either has auto-refresh disabled or has no refresh button configured, the auto-refresh interval of the chart block will apply.
-:::
+En résumé, le *Chart Block* vous permet d'organiser et de personnaliser plusieurs graphiques avec une grande flexibilité. Vous pouvez ajuster l'apparence, les paramètres de rafraîchissement, et interagir facilement avec les graphiques, soit au niveau du bloc, soit au niveau de chaque graphique individuel. Cela rend la visualisation des données plus dynamique et personnalisée dans NocoBase.

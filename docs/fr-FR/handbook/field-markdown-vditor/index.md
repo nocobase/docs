@@ -2,10 +2,12 @@
 
 ## Introduction
 
-## Field Configuration
+Le champ Markdown (Vditor) vous permet d'entrer et d'afficher du contenu en utilisant la syntaxe Markdown. Vditor est un éditeur puissant qui permet un formatage de texte riche tout en restant compatible avec le format léger Markdown.
 
-![20240512180647](https://static-docs.nocobase.com/20240512180647.png)
+## Configuration du Champ
 
-## Example
+![Configuration du champ Markdown](https://static-docs.nocobase.com/20240512180647.png)
 
-Coming soon.
+## Exemple
+
+À venir.

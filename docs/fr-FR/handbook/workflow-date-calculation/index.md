@@ -1,129 +1,129 @@
-# Date Calculation
+# Calcul des Dates
 
 <PluginInfo name="workflow-date-calculation" link="/handbook/workflow-date-calculation" commercial="true"></PluginInfo>
 
-The Date Calculation node offers a set of nine powerful functions, enabling operations such as adding or subtracting time periods, formatting time strings, and converting duration units. Each function is designed with specific input and output value types, and can seamlessly integrate the results from other nodes as parameter variables. By chaining these functions through a calculation pipeline, you can achieve the desired output with precision.
+Le nœud de **Calcul de Date** offre un ensemble de neuf fonctions puissantes, permettant des opérations comme l'ajout ou la soustraction de périodes de temps, le formatage de chaînes de temps, et la conversion des unités de durée. Chaque fonction est conçue avec des types d'entrée et de sortie spécifiques, et peut intégrer de manière fluide les résultats des autres nœuds comme des variables de paramètres. En chaînant ces fonctions à travers un pipeline de calcul, vous pouvez obtenir le résultat souhaité avec précision.
 
-## User Manual
+## Manuel Utilisateur
 
-### Creating a Node
+### Création d'un Nœud
 
-To add a "Date Calculation" node in the workflow configuration interface, simply click the plus (“+”) button within the process:
+Pour ajouter un nœud **Calcul de Date** dans l'interface de configuration du workflow, il suffit de cliquer sur le bouton plus ("+") dans le processus :
 
-![Create Node for Date Calculation](https://static-docs.nocobase.com/[图片].png)
+![Créer un Nœud pour le Calcul de Date](https://static-docs.nocobase.com/[图片].png)
 
-### Node Configuration
+### Configuration du Nœud
 
-![Node Configuration for Date Calculation](https://static-docs.nocobase.com/20240817184423.png)
+![Configuration du Nœud pour le Calcul de Date](https://static-docs.nocobase.com/20240817184423.png)
 
-#### Input Value
+#### Valeur d'Entrée
 
-Input values can be either variables or date constants. Variables might include data that triggers the workflow or results from upstream nodes. Constants can be any selected date.
+Les valeurs d'entrée peuvent être des variables ou des constantes de date. Les variables peuvent inclure des données qui déclenchent le workflow ou des résultats provenant des nœuds en amont. Les constantes peuvent être n'importe quelle date sélectionnée.
 
-#### Input Value Type
+#### Type de Valeur d'Entrée
 
-The input value type determines how the input will be processed and is categorized into two types:
+Le type de valeur d'entrée détermine la manière dont l'entrée sera traitée et est classé en deux types :
 
-* **Date Type:** This includes any input that can be converted into a date-time format, such as numeric timestamps or strings representing time.
-* **Number Type:** The input value type influences the selection of time calculation steps, so it’s crucial to choose the correct type.
+* **Type Date :** Cela inclut toute entrée qui peut être convertie en un format de date-heure, comme des horodatages numériques ou des chaînes représentant le temps.
+* **Type Numérique :** Le type de valeur d'entrée influence le choix des étapes de calcul du temps, il est donc crucial de choisir le bon type.
 
-#### Calculation Steps
+#### Étapes de Calcul
 
-Each calculation step consists of a specific function and its parameter configuration. The pipeline design allows the output of one function to feed directly into the next, enabling a sequence of time calculations and conversions.
+Chaque étape de calcul consiste en une fonction spécifique et sa configuration de paramètres. Le design du pipeline permet à la sortie d'une fonction d'entrer directement dans la suivante, permettant une séquence de calculs et de conversions temporelles.
 
-The output type after each step is fixed, which in turn determines the functions available for the next step. If the types are compatible, the calculation continues; if not, the result of the current step becomes the final output of the node.
+Le type de sortie après chaque étape est fixe, ce qui détermine les fonctions disponibles pour l'étape suivante. Si les types sont compatibles, le calcul continue ; sinon, le résultat de l'étape en cours devient la sortie finale du nœud.
 
-### Calculation Functions
+### Fonctions de Calcul
 
-#### Add a range
+#### Ajouter une plage
 
-- **Accepted Input Value Type:** Date
-- **Parameters:**
-  - The amount to add, which can be a numeric value or a variable from within the node.
-  - The time unit (e.g., days, hours).
-- **Output Value Type:** Date
-- **Example:** If the input value is `2024-7-15 00:00:00`, the amount is `1`, and the unit is "days," the output will be `2024-7-16 00:00:00`.
+- **Type de Valeur d'Entrée Accepté :** Date
+- **Paramètres :**
+  - La quantité à ajouter, qui peut être une valeur numérique ou une variable du nœud.
+  - L'unité de temps (par exemple, jours, heures).
+- **Type de Valeur de Sortie :** Date
+- **Exemple :** Si la valeur d'entrée est `2024-7-15 00:00:00`, la quantité est `1`, et l'unité est "jours", la sortie sera `2024-7-16 00:00:00`.
 
-#### Subtract a range
+#### Soustraire une plage
 
-- **Accepted Input Value Type:** Date
-- **Parameters:**
-  - The amount to subtract, which can be a numeric value or a variable from within the node.
-  - The time unit (e.g., days, hours).
-- **Output Value Type:** Date
-- **Example:** If the input value is `2024-7-15 00:00:00`, the amount is `1`, and the unit is "days," the output will be `2024-7-14 00:00:00`.
+- **Type de Valeur d'Entrée Accepté :** Date
+- **Paramètres :**
+  - La quantité à soustraire, qui peut être une valeur numérique ou une variable du nœud.
+  - L'unité de temps (par exemple, jours, heures).
+- **Type de Valeur de Sortie :** Date
+- **Exemple :** Si la valeur d'entrée est `2024-7-15 00:00:00`, la quantité est `1`, et l'unité est "jours", la sortie sera `2024-7-14 00:00:00`.
 
-#### Get difference with another data value
+#### Obtenir la différence avec une autre valeur de données
 
-- **Accepted Input Value Type:** Date
-- **Parameters:**
-  - The date for comparison, which can be a constant or a variable in the workflow context.
-  - The time unit (e.g., days, hours).
-  - Whether to take the absolute value.
-  - Rounding options: retain decimals, round off, round up, or round down.
-- **Output Value Type:** Numeric
-- **Example:** If the input value is `2024-7-15 00:00:00`, and you compare it with `2024-7-16 06:00:00`, using "days" as the unit, without taking the absolute value and retaining decimals, the output will be `-1.25`.
+- **Type de Valeur d'Entrée Accepté :** Date
+- **Paramètres :**
+  - La date pour la comparaison, qui peut être une constante ou une variable dans le contexte du workflow.
+  - L'unité de temps (par exemple, jours, heures).
+  - S'il faut prendre la valeur absolue.
+  - Options d'arrondi : conserver les décimales, arrondir, arrondir vers le haut ou arrondir vers le bas.
+- **Type de Valeur de Sortie :** Numérique
+- **Exemple :** Si la valeur d'entrée est `2024-7-15 00:00:00`, et que vous la comparez avec `2024-7-16 06:00:00`, en utilisant "jours" comme unité, sans prendre la valeur absolue et en conservant les décimales, la sortie sera `-1.25`.
 
-:::info{title=Note}
-If both absolute value and rounding are selected, the absolute value is applied first, followed by rounding.
+:::info{title="Note"}
+Si à la fois la valeur absolue et l'arrondi sont sélectionnés, la valeur absolue est d'abord appliquée, puis l'arrondi.
 :::
 
-#### Get value on specific unit of input date
+#### Obtenir la valeur sur une unité spécifique de la date d'entrée
 
-- **Accepted Input Value Type:** Date
-- **Parameters:**
-  - The time unit (e.g., days, hours).
-- **Output Value Type:** Numeric
-- **Example:** If the input value is `2024-7-15 00:00:00` and the unit is "days," the output will be `15`.
+- **Type de Valeur d'Entrée Accepté :** Date
+- **Paramètres :**
+  - L'unité de temps (par exemple, jours, heures).
+- **Type de Valeur de Sortie :** Numérique
+- **Exemple :** Si la valeur d'entrée est `2024-7-15 00:00:00` et que l'unité est "jours", la sortie sera `15`.
 
-#### Set to time of unit start
+#### Définir l'heure de début de l'unité
 
-- **Accepted Input Value Type:** Date
-- **Parameters:**
-  - The time unit (e.g., days, hours).
-- **Output Value Type:** Date
-- **Example:** If the input value is `2024-7-15 14:26:30` and the unit is "days," the output will be `2024-7-15 00:00:00`.
+- **Type de Valeur d'Entrée Accepté :** Date
+- **Paramètres :**
+  - L'unité de temps (par exemple, jours, heures).
+- **Type de Valeur de Sortie :** Date
+- **Exemple :** Si la valeur d'entrée est `2024-7-15 14:26:30` et que l'unité est "jours", la sortie sera `2024-7-15 00:00:00`.
 
-#### Set to time of unit end
+#### Définir l'heure de fin de l'unité
 
-- **Accepted Input Value Type:** Date
-- **Parameters:**
-  - The time unit (e.g., days, hours).
-- **Output Value Type:** Date
-- **Example:** If the input value is `2024-7-15 14:26:30` and the unit is "days," the output will be `2024-7-15 23:59:59`.
+- **Type de Valeur d'Entrée Accepté :** Date
+- **Paramètres :**
+  - L'unité de temps (par exemple, jours, heures).
+- **Type de Valeur de Sortie :** Date
+- **Exemple :** Si la valeur d'entrée est `2024-7-15 14:26:30` et que l'unité est "jours", la sortie sera `2024-7-15 23:59:59`.
 
-#### Is leap year
+#### Est-ce une année bissextile ?
 
-- **Accepted Input Value Type:** Date
-- **Parameters:** None
-- **Output Value Type:** Boolean
-- **Example:** If the input value is `2024-7-15 14:26:30`, the output will be `true`.
+- **Type de Valeur d'Entrée Accepté :** Date
+- **Paramètres :** Aucun
+- **Type de Valeur de Sortie :** Booléen
+- **Exemple :** Si la valeur d'entrée est `2024-7-15 14:26:30`, la sortie sera `true`.
 
-#### Format to String
+#### Format en chaîne
 
-- **Accepted Input Value Type:** Date
-- **Parameters:**
-  - The format, as specified in [Day.js: Format](https://day.js.org/docs/zh-CN/display/format).
-- **Output Value Type:** String
-- **Example:** If the input value is `2024-7-15 14:26:30` and the format is `the time is YYYY/MM/DD HH:mm:ss`, the output will be `the time is 2024/07/15 14:26:30`.
+- **Type de Valeur d'Entrée Accepté :** Date
+- **Paramètres :**
+  - Le format, tel que spécifié dans [Day.js : Format](https://day.js.org/docs/zh-CN/display/format).
+- **Type de Valeur de Sortie :** Chaîne
+- **Exemple :** Si la valeur d'entrée est `2024-7-15 14:26:30` et que le format est `le temps est YYYY/MM/DD HH:mm:ss`, la sortie sera `le temps est 2024/07/15 14:26:30`.
 
-#### Convert unit
+#### Convertir l'unité
 
-- **Accepted Input Value Type:** Numeric
-- **Parameters:**
-  - The original time unit.
-  - The target time unit.
-  - Rounding options: retain decimals, round off, round up, or round down.
-- **Output Value Type:** Numeric
-- **Example:** If the input value is `2`, the original unit is "weeks," the target unit is "days," and no decimals are retained, the output will be `14`.
+- **Type de Valeur d'Entrée Accepté :** Numérique
+- **Paramètres :**
+  - L'unité de temps d'origine.
+  - L'unité de temps cible.
+  - Options d'arrondi : conserver les décimales, arrondir, arrondir vers le haut ou arrondir vers le bas.
+- **Type de Valeur de Sortie :** Numérique
+- **Exemple :** Si la valeur d'entrée est `2`, l'unité d'origine est "semaines", l'unité cible est "jours", et sans décimales, la sortie sera `14`.
 
-### Example
+### Exemple
 
-![Example of Date Calculation Node](https://static-docs.nocobase.com/20240817184137.png)
+![Exemple du Nœud de Calcul de Date](https://static-docs.nocobase.com/20240817184137.png)
 
-Imagine a promotional activity where you want to automatically set an end time for the promotion when a product is created. This end time would be the last day of the following week at 23:59:59. To achieve this, you can create two time functions and link them in a pipeline:
+Imaginons une activité promotionnelle où vous souhaitez automatiquement définir une heure de fin pour la promotion lorsqu'un produit est créé. Cette heure de fin serait le dernier jour de la semaine suivante à 23:59:59. Pour ce faire, vous pouvez créer deux fonctions de temps et les lier dans un pipeline :
 
-1. Calculate the date for the following week.
-2. Adjust the date to the last day of that week at 23:59:59.
+1. Calculer la date pour la semaine suivante.
+2. Ajuster la date pour le dernier jour de cette semaine à 23:59:59.
 
-By doing this, you'll generate the desired time value, which can then be passed to the next node, such as a data table modification node, to set the promotion end time in the database.
+En faisant cela, vous générerez la valeur temporelle souhaitée, qui pourra ensuite être transmise au nœud suivant, comme un nœud de modification de table de données, pour définir l'heure de fin de la promotion dans la base de données.

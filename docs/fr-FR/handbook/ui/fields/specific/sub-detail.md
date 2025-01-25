@@ -1,42 +1,42 @@
-# Sub detail
+# Détail des Sous-Formulaires
 
 ## Introduction
 
-Sub-details serve as the dedicated components for sub-forms in reading mode. Unlike label and title components, sub-details provide the ability to display more extensive data from the current table and enable the configuration of related table data. This allows multi-level relational data to be presented clearly in a nested format.
+Les sous-détails servent de composants dédiés aux sous-formulaires en mode lecture. Contrairement aux composants de type label et titre, les sous-détails permettent d'afficher des données plus étendues de la table actuelle et d'activer la configuration des données des tables liées. Cela permet de présenter les données relationnelles multi-niveaux de manière claire dans un format imbriqué.
 
 ## Instructions
 
-### Sub-details for Many-to-Many Relationship Fields
+### Sous-détails pour Champs de Relations Plusieurs-à-Plusieurs
 
 ![20240822225058](https://static-docs.nocobase.com/20240822225058.png)
 
-This feature supports the nested display of multi-level relationship fields, such as Orders/Products/Inventory or Orders/Products/Suppliers.
+Cette fonctionnalité prend en charge l'affichage imbriqué des champs de relation multi-niveaux, tels que Commandes/Produits/Inventaire ou Commandes/Produits/Fournisseurs.
 
 ![20240822225231](https://static-docs.nocobase.com/20240822225231.png)
 
-### Sub-details for One-to-One Relationship Fields
+### Sous-détails pour Champs de Relations Un-à-Un
 
 ![20240822230215](https://static-docs.nocobase.com/20240822230215.png)
 
-## Field Configuration Options
+## Options de Configuration des Champs
 
-#### Setting Sorting Rules
+#### Définir les Règles de Tri
 
-You can adjust the display order for many-to-many relational data.
+Vous pouvez ajuster l'ordre d'affichage des données relationnelles plusieurs-à-plusieurs.
 
 ![20240822230359](https://static-docs.nocobase.com/20240822230359.png)
 
 ![20240822230422](https://static-docs.nocobase.com/20240822230422.png)
 
-### Field Component
+### Composant de Champ
 
-[Field Component](/handbook/ui/fields/association-field): Switch to other relationship field components, such as dropdown select, data selector, etc.
+[Composant de Champ](/handbook/ui/fields/association-field) : Passez à d'autres composants de champs relationnels, tels que les sélecteurs déroulants, les sélecteurs de données, etc.
 
-### Linkage Rules
-:::info{title=Tip}
-The version of NocoBase needs to be v1.3.17-beta or above.
+### Règles de Lien
+:::info{title=Astuce}
+La version de NocoBase doit être v1.3.17-beta ou supérieure.
 :::
 
 ![20240906090603_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240906090603_rec_.gif)
 
-For more information, refer to [Linkage Rules](/handbook/ui/blocks/block-settings/linkage-rule)
+Pour plus d'informations, consultez [Règles de Lien](/handbook/ui/blocks/block-settings/linkage-rule).

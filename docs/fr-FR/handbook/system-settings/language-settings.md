@@ -1,15 +1,15 @@
-# Language Settings
+# Paramètres de Langue
 
 <PluginInfo name="system-settings"></PluginInfo>
 
-In "System Settings" by setting "Enabled Languages," you can adjust the global language environment of the system, with the first language being the default.
+Dans les "Paramètres Système", en définissant les "Langues Activées", vous pouvez ajuster l'environnement linguistique global du système, la première langue étant celle par défaut.
 
 ![20240324192005](https://static-docs.nocobase.com/20240324192005.png)
 
-When multiple languages are enabled, users can set their language preferences in the user's personal center (top right corner).
+Lorsque plusieurs langues sont activées, les utilisateurs peuvent définir leurs préférences linguistiques dans leur centre personnel (coin supérieur droit).
 
 ![20240324192509](https://static-docs.nocobase.com/20240324192509.png)
 
-If the language environment you are using is not translated, you can use the "[Localization Management](/handbook/localization-management)" plugin to perform translations.
+Si l'environnement linguistique que vous utilisez n'est pas traduit, vous pouvez utiliser le plugin "[Gestion de la Localisation](/handbook/localization-management)" pour effectuer les traductions.
 
 ![20240324193055](https://static-docs.nocobase.com/20240324193055.png)

@@ -1,24 +1,24 @@
-# Column Chart
+# Graphique en colonnes
 
-## Data Configuration
+## Configuration des données
 
-### 1 Measure, 1 Dimension
+### 1 mesure, 1 dimension
 
-![Bar Chart Example](https://static-docs.nocobase.com/202410101121827.png)
+![Exemple de graphique à barres](https://static-docs.nocobase.com/202410101121827.png)
 
-### 1 Measure, 1 Axis Dimension, 1 Category Dimension
+### 1 mesure, 1 dimension d'axe, 1 dimension de catégorie
 
-Configure 1 measure and 2 dimensions, where one dimension is used as the X-axis field (X field) and the other as the category field (Series field). The X-axis field and the category field can be the same.
+Configurez 1 mesure et 2 dimensions, où une dimension est utilisée comme champ pour l'axe des X (champ X) et l'autre comme champ de catégorie (champ des séries). Le champ de l'axe X et le champ de catégorie peuvent être identiques.
 
-![Bar Chart with Category](https://static-docs.nocobase.com/202410101122347.png)
+![Graphique en colonnes avec catégorie](https://static-docs.nocobase.com/202410101122347.png)
 
-## Configuration Options
+## Options de configuration
 
-| Option           | Description                                                                 |
-| ---------------- | --------------------------------------------------------------------------- |
-| X-axis Field     | The dimension field for the X-axis                                          |
-| Category Field   | The dimension field for categorization                                      |
-| Size             | Set the size of the chart, either with a fixed aspect ratio or fixed height |
-| Grouped Display  | Toggle grouped display<br />![Grouped Display](https://static-docs.nocobase.com/202410101125056.png) |
-| Stacked Display  | Toggle stacked display<br />![Stacked Display](https://static-docs.nocobase.com/202410101125891.png) |
-| Percentage Display | Toggle percentage display<br />![Percentage Display](https://static-docs.nocobase.com/202410101126148.png) |
+| Option            | Description                                                                 |
+| ----------------- | --------------------------------------------------------------------------- |
+| Champ de l'axe X  | Le champ de dimension pour l'axe des X                                      |
+| Champ de catégorie| Le champ de dimension pour la catégorisation                                |
+| Taille            | Définissez la taille du graphique, soit avec un rapport d'aspect fixe ou une hauteur fixe |
+| Affichage groupé  | Basculez l'affichage en mode groupé<br />![Affichage groupé](https://static-docs.nocobase.com/202410101125056.png) |
+| Affichage empilé  | Basculez l'affichage en mode empilé<br />![Affichage empilé](https://static-docs.nocobase.com/202410101125891.png) |
+| Affichage en pourcentage | Basculez l'affichage en pourcentage<br />![Affichage en pourcentage](https://static-docs.nocobase.com/202410101126148.png) |

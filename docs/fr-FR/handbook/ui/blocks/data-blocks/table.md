@@ -1,91 +1,91 @@
-# Table Block
+# Bloc Table
 
 ## Introduction
 
-The table block is one of the core data blocks built into NocoBase, displaying and managing structured data in table form. It features flexible configuration options for customizing table columns, column widths, sorting rules, data scope, and includes various built-in actions for configuration: filter, add new, duplicate, edit, delete, etc.
+Le bloc Table est l'un des blocs de données principaux intégrés dans NocoBase, permettant d'afficher et de gérer des données structurées sous forme de tableau. Il propose des options de configuration flexibles pour personnaliser les colonnes du tableau, la largeur des colonnes, les règles de tri, la portée des données, et comprend diverses actions intégrées telles que filtrer, ajouter, dupliquer, éditer, supprimer, etc.
 
-## Adding Blocks
+## Ajouter des Blocs
 
- <video width="100%" height="440" controls>
+<video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240415215027.mp4" type="video/mp4">
 </video>
 
-## Block Settings
+## Paramètres du Bloc
 
 ![20240415215319](https://static-docs.nocobase.com/20240415215319.png)
 
-### Data Scope
+### Portée des Données
 
-Example: Default filter for invoices with the "Shipped" status.
+Exemple : Filtre par défaut pour les factures avec le statut "Expédié".
 
 ![20240415215404](https://static-docs.nocobase.com/20240415215404.png)
 
-For more information, refer to [Setting Data Scope](/handbook/ui/blocks/block-settings/data-scope).
+Pour plus d'informations, consultez [Définir la Portée des Données](/handbook/ui/blocks/block-settings/data-scope).
 
-### Setting Sorting Rule
+### Définir les Règles de Tri
 
-Example: Display invoices in reverse order by shipping date.
+Exemple : Affichage des factures dans l'ordre inverse de la date d'expédition.
 
 ![20240415215509](https://static-docs.nocobase.com/20240415215509.png)
 
-For more information, refer to [Setting Sorting Rule](/handbook/ui/blocks/block-settings/sorting-rule).
+Pour plus d'informations, consultez [Définir les Règles de Tri](/handbook/ui/blocks/block-settings/sorting-rule).
 
-### Connecting Data Blocks
+### Connexion des Blocs de Données
 
-Example: Connect the order table block with the order details block to achieve filter linkage.
+Exemple : Connectez le bloc de la table des commandes avec le bloc des détails de commande pour activer la liaison de filtrage.
 
-  <video width="100%" height="440" controls>
+<video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240415221426.mp4" type="video/mp4">
 </video>
 
-For more information, refer to [Connecting Data Blocks](/handbook/ui/blocks/block-settings/connect-block).
+Pour plus d'informations, consultez [Connecter les Blocs de Données](/handbook/ui/blocks/block-settings/connect-block).
 
-- [Edit Block Title](/handbook/ui/blocks/block-settings/block-title)
-- [Set Data Loading Mode](/handbook/ui/blocks/block-settings/loading-mode)
-- [Save as Block Template](/handbook/ui/blocks/block-settings/block-template)
+- [Modifier le Titre du Bloc](/handbook/ui/blocks/block-settings/block-title)
+- [Définir la Méthode de Chargement des Données](/handbook/ui/blocks/block-settings/loading-mode)
+- [Enregistrer comme Modèle de Bloc](/handbook/ui/blocks/block-settings/block-template)
 
-## Configure Fields
+## Configurer les Champs
 
-### Fields in Current Collection
+### Champs de la Collection Actuelle
 
 ![20240415223714](https://static-docs.nocobase.com/20240415223714.png)
 
-### Fields in Related Collections
+### Champs des Collections Associées
 
 ![20240415223746](https://static-docs.nocobase.com/20240415223746.png)
 
-### Display Inherited Table Fields (Parent Table Fields)
+### Afficher les Champs de Table Hérités (Champs de Table Parente)
 
-Example: Lease order table inherits from the order table.
+Exemple : La table des commandes de location hérite de la table des commandes.
 
 ![20240415224242](https://static-docs.nocobase.com/20240415224242.png)
 
-Configuration options for table column fields can be found in [Table Column Fields](/handbook/ui/fields/generic/table-column).
+Les options de configuration pour les colonnes de table peuvent être trouvées dans [Colonnes de Table](/handbook/ui/fields/generic/table-column).
 
-## Configure Actions
+## Configurer les Actions
 
-### Global Actions
+### Actions Globales
 
 ![20240415225525](https://static-docs.nocobase.com/20240415225525.png)
 
-- [Filter](/handbook/ui/actions/types/filter)
-- [Add](/handbook/ui/actions/types/add-new)
-- [Delete](/handbook/ui/actions/types/delete)
-- [Refresh](/handbook/ui/actions/types/refresh)
-- [Import](/handbook/action-import)
-- [Export](/handbook/action-export)
-- [Add record](/handbook/action-add-record)
-- [Bulk Update](/handbook/action-bulk-update)
-- [Bulk Edit](/handbook/action-bulk-edit)
+- [Filtrer](/handbook/ui/actions/types/filter)
+- [Ajouter](/handbook/ui/actions/types/add-new)
+- [Supprimer](/handbook/ui/actions/types/delete)
+- [Actualiser](/handbook/ui/actions/types/refresh)
+- [Importer](/handbook/action-import)
+- [Exporter](/handbook/action-export)
+- [Ajouter un enregistrement](/handbook/action-add-record)
+- [Mise à jour en masse](/handbook/action-bulk-update)
+- [Édition en masse](/handbook/action-bulk-edit)
 
-### Row Actions
+### Actions sur les Lignes
 
 ![20240415225657](https://static-docs.nocobase.com/20240415225657.png)
 
-- [View](/handbook/ui/actions/types/view)
-- [Edit](/handbook/ui/actions/types/edit)
-- [Duplicate](/handbook/action-duplicate)
-- [Delete](/handbook/ui/actions/types/delete)
-- [Popup](/handbook/ui/actions/types/pop-up)
-- [Update Record](/handbook/ui/actions/types/update-record)
-- [Custom Request](/handbook/action-custom-request)
+- [Voir](/handbook/ui/actions/types/view)
+- [Éditer](/handbook/ui/actions/types/edit)
+- [Dupliquer](/handbook/action-duplicate)
+- [Supprimer](/handbook/ui/actions/types/delete)
+- [Pop-up](/handbook/ui/actions/types/pop-up)
+- [Mettre à jour l'enregistrement](/handbook/ui/actions/types/update-record)
+- [Demande personnalisée](/handbook/action-custom-request)

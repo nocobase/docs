@@ -1,8 +1,8 @@
-# Edit description
+# Modifier la description
 
 ## Introduction
 
-Field descriptions are short descriptive text displayed in light gray below the field component, which can be used to help users understand the purpose of the field and the input requirements.
+Les descriptions de champs sont de courts textes descriptifs affichés en gris clair sous le composant du champ. Elles peuvent être utilisées pour aider les utilisateurs à comprendre l'objectif du champ et les exigences de saisie.
 
 ![20240411114048](https://static-docs.nocobase.com/20240411114048.png)
 

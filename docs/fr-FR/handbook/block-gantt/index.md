@@ -1,72 +1,73 @@
-# Block Gantt
+# Bloc Gantt
 
 <PluginInfo name="block-gantt"></PluginInfo>
 
 ## Introduction
 
-The Gantt chart block displays data in the form of a timeline, making it ideal for project management, event planning, engineering schedules, and task scheduling.
+Le bloc du diagramme de Gantt affiche les données sous la forme d'une ligne du temps, ce qui le rend idéal pour la gestion de projets, la planification d'événements, les plannings d'ingénierie et la planification des tâches.
 
 ## Installation
 
-It's a built-in plugin, no installation is required.
+Il s'agit d'un plugin intégré, aucune installation n'est requise.
 
-## Adding a Block
+## Ajouter un Bloc
 
 ![](https://static-docs.nocobase.com/f064f8fadf52947c990f5dad97736f98.png)
 
 ![](https://static-docs.nocobase.com/858112f44bc543973b6e5b03856a6360.png)
 
-- **Title Field**: Displays the information directly on the Gantt chart bars
-- **Time Scale**: Sets the time scale, with the default level being days
-- **Start Date Field**: Defines the start date for each task (required)
-- **End Date Field**: Defines the end date for each task (required)
-- **Progress Field**: Indicates the progress of a task (optional percentage field)
-## Usage Instructions
+- **Champ de titre** : Affiche les informations directement sur les barres du diagramme de Gantt
+- **Échelle de temps** : Définit l'échelle de temps, le niveau par défaut étant les jours
+- **Champ de date de début** : Définit la date de début de chaque tâche (obligatoire)
+- **Champ de date de fin** : Définit la date de fin de chaque tâche (obligatoire)
+- **Champ de progression** : Indique la progression d'une tâche (champ de pourcentage facultatif)
+
+## Instructions d'utilisation
 
 ![](https://static-docs.nocobase.com/fff6fe1e1fe0a88d20f80b3bb7233608.gif)
 
-- Hover over a task to see a floating card that displays task duration and progress.
-- Drag the task to adjust the start and end dates.
-- Drag the progress bar to adjust task progress.
+- Survolez une tâche pour voir une carte flottante affichant la durée de la tâche et la progression.
+- Faites glisser la tâche pour ajuster les dates de début et de fin.
+- Faites glisser la barre de progression pour ajuster l'avancement de la tâche.
 
-## Block Configuration Options
+## Options de configuration du bloc
 
 ![20240419211301](https://static-docs.nocobase.com/20240419211301.png)
 
-### Set Data Range
+### Définir la plage de données
 
 ![20240419211033](https://static-docs.nocobase.com/20240419211033.png)
 
-For more details, refer to [Setting Data Range](/handbook/ui/blocks/block-settings/data-scope).
+Pour plus de détails, consultez [Définir la plage de données](/handbook/ui/blocks/block-settings/data-scope).
 
-- [Save as Block Template](/handbook/ui/blocks/block-settings/block-template)
-- [Set Data Loading Mode](/handbook/ui/blocks/block-settings/loading-mode)
+- [Enregistrer en tant que modèle de bloc](/handbook/ui/blocks/block-settings/block-template)
+- [Définir le mode de chargement des données](/handbook/ui/blocks/block-settings/loading-mode)
 
-## Action Configuration
+## Configuration des actions
 
-### Global Actions
+### Actions globales
 
 ![20240419213653](https://static-docs.nocobase.com/20240419213653.png)
 
-- [Filter](/handbook/ui/actions/types/filter)
-- [Add New](/handbook/ui/actions/types/add-new)
-- [Delete](/handbook/ui/actions/types/delete)
-- [Refresh](/handbook/ui/actions/types/refresh)
-- [Import](/handbook/action-import)
-- [Export](/handbook/action-export)
-- [Add Record](/handbook/action-add-record)
-- [Bulk Update](/handbook/action-bulk-update)
-- [Bulk Edit](/handbook/action-bulk-edit)
+- [Filtrer](/handbook/ui/actions/types/filter)
+- [Ajouter un nouvel élément](/handbook/ui/actions/types/add-new)
+- [Supprimer](/handbook/ui/actions/types/delete)
+- [Actualiser](/handbook/ui/actions/types/refresh)
+- [Importer](/handbook/action-import)
+- [Exporter](/handbook/action-export)
+- [Ajouter un enregistrement](/handbook/action-add-record)
+- [Mise à jour en masse](/handbook/action-bulk-update)
+- [Modifier en masse](/handbook/action-bulk-edit)
 
-### Row Actions
+### Actions sur les lignes
 
 ![20240419213823](https://static-docs.nocobase.com/20240419213823.png)
 
-- [View](/handbook/ui/actions/types/view)
-- [Edit](/handbook/ui/actions/types/edit)
-- [Duplicate](/handbook/action-duplicate)
-- [Delete](/handbook/ui/actions/types/delete)
+- [Voir](/handbook/ui/actions/types/view)
+- [Modifier](/handbook/ui/actions/types/edit)
+- [Dupliquer](/handbook/action-duplicate)
+- [Supprimer](/handbook/ui/actions/types/delete)
 - [Pop-Up](/handbook/ui/actions/types/pop-up)
-- [Update Record](/handbook/ui/actions/types/update-record)
-- [Custom Request](/handbook/action-custom-request)
-- [Trigger Workflow](/handbook/workflow/manual/triggers/custom-action)
+- [Mettre à jour l'enregistrement](/handbook/ui/actions/types/update-record)
+- [Requête personnalisée](/handbook/action-custom-request)
+- [Déclencher un flux de travail](/handbook/workflow/manual/triggers/custom-action)

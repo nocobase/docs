@@ -1,58 +1,58 @@
-# SQL Actions
+# Actions SQL
 
-In certain scenarios where the standard data table operation nodes fall short for more complex tasks, you can directly employ the SQL Action node to execute sophisticated SQL queries within the database.
+Dans certains scénarios où les nœuds d'opération sur les tables de données standard ne sont pas suffisants pour des tâches plus complexes, vous pouvez utiliser directement le nœud **Action SQL** pour exécuter des requêtes SQL sophistiquées dans la base de données.
 
-Unlike executing SQL operations by connecting to the database externally, within the workflow, you can leverage variables from the workflow context as parameters within your SQL statements.
+Contrairement à l'exécution des opérations SQL en se connectant directement à la base de données, au sein du flux de travail, vous pouvez utiliser des variables provenant du contexte du flux de travail comme paramètres dans vos instructions SQL.
 
 ## FAQ
 
-### How can the results of an SQL Action node be utilized?
+### Comment les résultats d'un nœud d'Action SQL peuvent-ils être utilisés ?
 
-When using a `SELECT` statement, the query results are stored in the node in Sequelize's JSON format. You can parse and utilize these results through the [JSON-query](/handbook/workflow-json-query) plugin.
+Lorsque vous utilisez une instruction `SELECT`, les résultats de la requête sont stockés dans le nœud au format JSON de Sequelize. Vous pouvez analyser et utiliser ces résultats via le plugin [JSON-query](/handbook/workflow-json-query).
 
-### Will SQL actions trigger table events?
+### Les actions SQL déclenchent-elles des événements de table ?
 
-**No**. SQL actions directly execute SQL commands on the database. Actions such as `CREATE` / `UPDATE` / `DELETE` occur in the database, while table events are managed at the Node.js application layer (ORM processing). As a result, these operations do not trigger table events.
+**Non**. Les actions SQL exécutent directement des commandes SQL sur la base de données. Des actions telles que `CREATE` / `UPDATE` / `DELETE` se produisent dans la base de données, tandis que les événements de table sont gérés au niveau de l'application Node.js (traitement ORM). En conséquence, ces opérations ne déclenchent pas d'événements de table.
 
 ## Installation
 
-This plugin is built-in, so no installation is necessary.
+Ce plugin est intégré, donc aucune installation n'est nécessaire.
 
-## User Guide
+## Manuel de l'utilisateur
 
-### Creating a Node
+### Création d'un Nœud
 
-In the workflow configuration interface, click the plus sign (“+”) within the flow to add an "SQL Action" node:
+Dans l'interface de configuration du flux de travail, cliquez sur le signe plus (“+”) dans le flux pour ajouter un nœud "Action SQL" :
 
-![Adding SQL Actions](https://static-docs.nocobase.com/0ce40a226d7a5bf3717813e27da40e62.png)
+![Ajout d'Actions SQL](https://static-docs.nocobase.com/0ce40a226d7a5bf3717813e27da40e62.png)
 
-### Configuring the Node
+### Configuration du Nœud
 
-![SQL Node Configuration](https://static-docs.nocobase.com/98611dc13bcda04348bd0856561a7b04.png)
+![Configuration du Nœud SQL](https://static-docs.nocobase.com/98611dc13bcda04348bd0856561a7b04.png)
 
-#### Data Source
+#### Source de données
 
-Select the data source for executing the SQL.
+Sélectionnez la source de données pour exécuter la requête SQL.
 
-The data source must be of a database type, such as the main data source, PostgreSQL type, or any other data source compatible with Sequelize.
+La source de données doit être de type base de données, comme la source de données principale, de type PostgreSQL, ou toute autre source compatible avec Sequelize.
 
-#### SQL Content
+#### Contenu SQL
 
-Edit the SQL statement. Currently, only one SQL statement is supported.
+Modifiez l'instruction SQL. Actuellement, seule une instruction SQL est prise en charge.
 
-You can insert required variables by clicking the variable button in the upper right corner of the editor. Before execution, the variables will be replaced with their corresponding values in the text, and the final SQL statement will be sent to the database for querying.
+Vous pouvez insérer les variables nécessaires en cliquant sur le bouton de variables en haut à droite de l'éditeur. Avant l'exécution, les variables seront remplacées par leurs valeurs correspondantes dans le texte, et l'instruction SQL finale sera envoyée à la base de données pour interrogation.
 
-### Node Execution Results
+### Résultats d'exécution du Nœud
 
-Starting from `v1.3.15-beta`, the result of the SQL node execution is an array consisting purely of data. Prior to this version, the result was a Sequelize native structure that included query metadata (for more details, see: [`sequelize.query()`](https://sequelize.org/api/v6/class/src/sequelize.js~sequelize#instance-method-query)).
+À partir de la version `v1.3.15-beta`, le résultat de l'exécution du nœud SQL est un tableau composé uniquement de données. Avant cette version, le résultat était une structure native de Sequelize incluant des métadonnées de requête (pour plus de détails, consultez : [`sequelize.query()`](https://sequelize.org/api/v6/class/src/sequelize.js~sequelize#instance-method-query)).
 
-For example, the following query:
+Par exemple, la requête suivante :
 
 ```sql
 select count(id) from posts;
 ```
 
-Result before `v1.3.15-beta`:
+Résultat avant `v1.3.15-beta` :
 
 ```json
 [
@@ -60,12 +60,12 @@ Result before `v1.3.15-beta`:
         { "count": 1 }
     ],
     {
-        // meta
+        // méta-informations
     }
 ]
 ```
 
-Result after `v1.3.15-beta`:
+Résultat après `v1.3.15-beta` :
 
 ```json
 [

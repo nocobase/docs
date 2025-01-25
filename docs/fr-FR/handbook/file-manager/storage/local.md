@@ -1,18 +1,18 @@
-# Local storage
+# Stockage local
 
-The uploaded files will be saved in a local directory on the server. Suitable for scenarios small scale or experimental usage, which the quantity of files is finite.
+Les fichiers téléchargés seront enregistrés dans un répertoire local sur le serveur. Ce mode est adapté pour des scénarios à petite échelle ou pour des usages expérimentaux, où le nombre de fichiers est limité.
 
 ## Options
 
-![Example of file storage engine options](https://static-docs.nocobase.com/20240529115151.png)
+![Exemple des options du moteur de stockage de fichiers](https://static-docs.nocobase.com/20240529115151.png)
 
-:::info{title=Hint}
-This section only covers the specific options for the local storage engine. For common parameters, please refer to the [General Engine Parameters](./index.md#general-engine-parameters).
+:::info{title=Astuce}
+Cette section couvre uniquement les options spécifiques au moteur de stockage local. Pour les paramètres communs, veuillez consulter les [Paramètres généraux du moteur](./index.md#general-engine-parameters).
 :::
 
-### Path
+### Chemin
 
-The path represents both the relative path of the file stored on the server and the URL access path. For example, "`user/avatar`" (without the leading and trailing "`/`") represents:
+Le chemin représente à la fois le chemin relatif du fichier stocké sur le serveur et le chemin d'accès URL. Par exemple, "`user/avatar`" (sans les barres obliques initiale et finale) représente :
 
-1. The relative path of the uploaded file stored on the server: `/path/to/nocobase-app/storage/uploads/user/avatar`.
-2. The URL prefix for accessing the file: `http://localhost:13000/storage/uploads/user/avatar`.
+1. Le chemin relatif du fichier téléchargé stocké sur le serveur : `/path/to/nocobase-app/storage/uploads/user/avatar`.
+2. Le préfixe d'URL pour accéder au fichier : `http://localhost:13000/storage/uploads/user/avatar`.

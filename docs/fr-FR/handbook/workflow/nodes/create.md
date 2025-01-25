@@ -1,41 +1,41 @@
-# Create record
+# Créer un enregistrement
 
-Used to add a new row of data to a specific collection.
+Utilisé pour ajouter une nouvelle ligne de données dans une collection spécifique.
 
-The field values ​​of the new record can use variables from the workflow context. Assigning values to association fields can directly reference the corresponding data variables in the context, which can be objects or foreign key values. If variables are not used, you need to manually enter the values ​​of the foreign keys, and for multiple association fields, multiple foreign key values ​​need to be separated by commas.
+Les valeurs des champs du nouvel enregistrement peuvent utiliser des variables provenant du contexte du flux de travail. L'attribution de valeurs aux champs d'association peut directement référencer les variables de données correspondantes dans le contexte, qui peuvent être des objets ou des valeurs de clé étrangère. Si aucune variable n'est utilisée, vous devez saisir manuellement les valeurs des clés étrangères, et pour plusieurs champs d'association, les valeurs de clé étrangère doivent être séparées par des virgules.
 
-## Creating a Node
+## Création d'un Nœud
 
-In the workflow configuration UI, click the plus ("+") button in the flow to add a "Create record" node:
+Dans l'interface de configuration du flux de travail, cliquez sur le bouton plus ("+") dans le flux pour ajouter un nœud "Créer un enregistrement" :
 
-![Creating a create record node](https://static-docs.nocobase.com/386c8c01c89b1eeab848510e77f4841a.png)
+![Création d'un nœud de création d'enregistrement](https://static-docs.nocobase.com/386c8c01c89b1eeab848510e77f4841a.png)
 
-## Node Configuration
+## Configuration du Nœud
 
-![New Node Example Node Configuration](https://static-docs.nocobase.com/5f7b97a51b64a1741cf82a4d4455b610.png)
+![Exemple de configuration de nœud d'enregistrement](https://static-docs.nocobase.com/5f7b97a51b64a1741cf82a4d4455b610.png)
 
 ### Collection
 
-Select the collection to which the new record will be added.
+Sélectionnez la collection dans laquelle le nouvel enregistrement sera ajouté.
 
-### Field Values
+### Valeurs des Champs
 
-Assign values ​​to the fields of the collection. Variables from the workflow context can be used, or static values ​​can be manually entered.
+Attribuez des valeurs aux champs de la collection. Les variables du contexte du flux de travail peuvent être utilisées, ou des valeurs statiques peuvent être saisies manuellement.
 
 :::info{title="Note"}
-Record added by the create node in the workflow will not automatically handle fields such as "Creator" and "Last Modifier", and you need to configure the values ​​of these two fields according to the situation.
+L'enregistrement ajouté par le nœud de création dans le flux de travail ne traitera pas automatiquement des champs tels que "Créateur" et "Dernière modification", vous devez configurer les valeurs de ces deux champs en fonction de la situation.
 :::
 
-### Preload Related Data
+### Préchargement des Données Associées
 
-If the fields of the new record include association fields, and you want to use the corresponding related data in subsequent workflows, you can check the corresponding association fields in the preload configuration. In this way, after adding the new record, the corresponding association data will be automatically loaded and stored together in the result data of the node.
+Si les champs du nouvel enregistrement incluent des champs d'association, et que vous souhaitez utiliser les données associées correspondantes dans les flux de travail suivants, vous pouvez cocher les champs d'association correspondants dans la configuration de préchargement. Ainsi, après l'ajout du nouvel enregistrement, les données associées correspondantes seront automatiquement chargées et stockées ensemble dans les données de résultat du nœud.
 
-## Example
+## Exemple
 
-For example, when a record is added or updated in the "Posts" collection, it is required to automatically add a "Post Versions" row to record the change history of the post. This can be achieved using the create node:
+Par exemple, lorsqu'un enregistrement est ajouté ou mis à jour dans la collection "Posts", il est nécessaire d'ajouter automatiquement une ligne "Post Versions" pour enregistrer l'historique des changements du post. Cela peut être réalisé en utilisant le nœud de création :
 
-![New Node Example Flow Configuration](https://static-docs.nocobase.com/dfd4820d49c145fa331883fc09c9161f.png)
+![Exemple de configuration du flux de travail avec nœud de création](https://static-docs.nocobase.com/dfd4820d49c145fa331883fc09c9161f.png)
 
-![New Node Example Node Configuration](https://static-docs.nocobase.com/1a0992e66170be12a068da6503298868.png)
+![Exemple de configuration de nœud d'enregistrement](https://static-docs.nocobase.com/1a0992e66170be12a068da6503298868.png)
 
-With this configuration enabled, when data changes in the "Posts" collection, a "Post Version" row will be automatically added to record the change history of the article.
+Avec cette configuration activée, lorsque des données changent dans la collection "Posts", une ligne "Post Version" sera automatiquement ajoutée pour enregistrer l'historique des changements de l'article.

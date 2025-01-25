@@ -1,15 +1,15 @@
-# Attachment Field
+# Champ de pièce jointe
 
 <PluginInfo name="file-manager"></PluginInfo>
 
 ## Introduction
 
-The attachment field is a specialized relational field that connects directly to the file collection.
+Le champ de pièce jointe est un champ relationnel spécialisé qui se connecte directement à la collection de fichiers.
 
-## Field Configuration
+## Configuration du champ
 
 ![20240512180916](https://static-docs.nocobase.com/20240512180916.png)
 
-## Example
+## Exemple
 
-(Example to be added)
+(L'exemple sera ajouté bientôt)

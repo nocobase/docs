@@ -1,50 +1,50 @@
-# Overview
+# Vue d'ensemble
 
 <PluginInfo name="workflow-action-trigger" link="/handbook/workflow-action-trigger"></PluginInfo>
 
-In the system, all user-generated data changes are typically carried out through some form of operation, usually by clicking a button. This button could be a submit button on a form or an action button within a data block. Post-action events are designed to bind specific workflows to these button actions, ensuring that a particular process is triggered upon successful user interaction.
+Dans le système, toutes les modifications de données générées par l'utilisateur sont généralement effectuées par le biais d'une action, souvent en cliquant sur un bouton. Ce bouton peut être un bouton de soumission dans un formulaire ou un bouton d'action dans un bloc de données. Les événements post-action sont conçus pour lier des workflows spécifiques à ces actions de bouton, garantissant qu'un processus particulier est déclenché après une interaction utilisateur réussie.
 
-For instance, when adding or updating data, users can configure the "Bind Workflows" option on a button. Once the action is completed, the bound workflow will be triggered automatically.
+Par exemple, lorsqu'une donnée est ajoutée ou mise à jour, les utilisateurs peuvent configurer l'option "Lier des Workflows" sur un bouton. Une fois l'action effectuée, le workflow lié sera automatiquement déclenché.
 
-From an implementation standpoint, since Post-action event processing occurs at the middleware level (using Koa middleware), even making an HTTP API call to NocoBase can trigger defined Post-action events.
+D'un point de vue implémentation, puisque le traitement des événements post-action se produit au niveau du middleware (en utilisant le middleware Koa), même un appel API HTTP à NocoBase peut déclencher les événements post-action définis.
 
 :::info{title="Note"}
-The Post-action event was initially called "Form Event." In earlier versions, this feature was limited to form buttons. However, starting from version `v0.20`, it has also become available for operation buttons within more data blocks, leading to its renaming as "Post-action event."
+L'événement post-action était initialement appelé "Événement de formulaire". Dans les versions antérieures, cette fonctionnalité était limitée aux boutons de formulaire. Cependant, à partir de la version `v0.20`, elle est également disponible pour les boutons d'action dans d'autres blocs de données, ce qui a conduit à son changement de nom en "Événement post-action".
 :::
 
 ## FAQ
 
-### Difference Between Post-action and Pre-action Events
+### Différence entre les événements Post-action et Pre-action
 
-The distinction between Post-action and Pre-action events lies in the timing of their triggers during the operation request and response cycle. One is triggered before the operation is processed, while the other is triggered afterward, as illustrated below:
+La distinction entre les événements Post-action et Pre-action réside dans le moment où ils sont déclenchés pendant le cycle de la requête et de la réponse de l'opération. L'un est déclenché avant que l'opération ne soit traitée, tandis que l'autre est déclenché après, comme illustré ci-dessous :
 
-![Operation Sequence](https://static-docs.nocobase.com/Handbook/20240916013804.png)
+![Séquence d'opération](https://static-docs.nocobase.com/Handbook/20240916013804.png)
 
-Pre-action events are triggered before the operation is executed, meaning they occur before the request is processed. These events can be utilized to validate or manipulate the request data, and if the request is blocked, the operation will not proceed.
+Les événements Pre-action sont déclenchés avant l'exécution de l'opération, ce qui signifie qu'ils se produisent avant le traitement de la requête. Ces événements peuvent être utilisés pour valider ou manipuler les données de la requête, et si la requête est bloquée, l'opération ne sera pas exécutée.
 
-Conversely, Post-action events are triggered after the user's action has been successfully completed. At this stage, the data has already been submitted successfully, and the related processes can proceed based on the successful outcome.
+En revanche, les événements Post-action sont déclenchés après que l'action de l'utilisateur a été réussie. À ce moment-là, les données ont déjà été soumises avec succès, et les processus associés peuvent se poursuivre en fonction de ce résultat.
 
-### Difference Between Post-action and Table Events
+### Différence entre les événements Post-action et les événements de table
 
-Post-action events and table events have similarities in that both are triggered after data changes occur. However, their implementations differ. Post-action events are focused on the API level, whereas table events are concerned with changes in data within tables.
+Les événements Post-action et les événements de table se ressemblent dans la mesure où les deux sont déclenchés après des modifications de données. Cependant, leurs implémentations diffèrent. Les événements Post-action sont centrés sur le niveau API, tandis que les événements de table sont concernés par les modifications de données dans les tables.
 
-Table events are closer to the system's core. In some instances, a single event may trigger data changes that lead to another event, creating a chain reaction. This is particularly true when related table data is altered during operations on the current table, which can trigger events in associated tables.
+Les événements de table sont plus proches du cœur du système. Dans certains cas, un seul événement peut entraîner des modifications de données qui déclenchent un autre événement, créant ainsi une réaction en chaîne. Cela est particulièrement vrai lorsque des données de table liées sont modifiées lors d'opérations sur la table actuelle, ce qui peut déclencher des événements dans les tables associées.
 
-Table events do not contain user-related information. In contrast, Post-action events are more closely linked to the user end, reflecting the results of user actions. The context of these processes will include user-related information, making them suitable for handling workflows resulting from user actions. In NocoBase's future design, more Post-action events may be added to expand the triggers available, so it is **recommended to use Post-action events** for managing workflows stemming from data changes caused by user actions.
+Les événements de table ne contiennent pas d'informations relatives à l'utilisateur. En revanche, les événements Post-action sont plus étroitement liés à l'utilisateur, car ils reflètent les résultats des actions de l'utilisateur. Le contexte de ces processus inclura des informations liées à l'utilisateur, ce qui les rend adaptés à la gestion des workflows résultant des actions de l'utilisateur. Dans la conception future de NocoBase, davantage d'événements Post-action pourraient être ajoutés pour étendre les déclencheurs disponibles, il est donc **recommandé d'utiliser les événements Post-action** pour gérer les workflows générés par des changements de données dus à des actions de l'utilisateur.
 
-Another key difference is that Post-action events can be selectively bound to specific forms. If there are multiple forms, some can trigger the event upon submission, while others do not. On the other hand, table events are tied to data changes across the entire table and cannot be selectively bound.
+Une autre différence clé est que les événements Post-action peuvent être liés sélectivement à des formulaires spécifiques. S'il y a plusieurs formulaires, certains peuvent déclencher l'événement lors de leur soumission, tandis que d'autres ne le feront pas. En revanche, les événements de table sont liés aux modifications de données de toute la table et ne peuvent pas être liés de manière sélective.
 
 ## Installation
 
-This plugin is built-in and does not require installation.
+Ce plugin est intégré et ne nécessite pas d'installation.
 
-## User Manual
+## Manuel de l'utilisateur
 
-The use of Post-action events is divided into several parts:
+L'utilisation des événements Post-action est divisée en plusieurs parties :
 
-- [Trigger Configuration](./trigger.md)
-- [Action Configuration](./action.md)
+- [Configuration du déclencheur](./trigger.md)
+- [Configuration de l'action](./action.md)
 
-You can also refer to [Examples](./example.md) to understand their application in real-world scenarios.
+Vous pouvez également vous référer à [Exemples](./example.md) pour comprendre leur application dans des scénarios réels.
 
-If external system calls are necessary, please refer to [External Calls](./http-api.md).
+Si des appels externes au système sont nécessaires, veuillez consulter [Appels externes](./http-api.md).

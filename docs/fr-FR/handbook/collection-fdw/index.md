@@ -1,70 +1,70 @@
-# Connect Foreign Data Tables(FDW)
+# Connecter des tables de données étrangères (FDW)
 
 <PluginInfo name="collection-fdw"></PluginInfo>
 
 ## Introduction
 
-This is a plugin that connects to remote data tables based on the foreign data wrapper of the database. Currently, it supports MySQL and PostgreSQL databases.
+Il s'agit d'un plugin qui permet de se connecter à des tables de données distantes basées sur le wrapper de données étrangères (FDW) d'une base de données. Actuellement, il prend en charge les bases de données MySQL et PostgreSQL.
 
-:::info{title="Connecting Data Sources vs Connecting External Data Tables"}
-- **Connecting data sources** refers to establishing a connection with a specific database or API service, and you can fully use the features of the database or the services provided by the API;
-- **Connecting external data tables** refers to obtaining data from the outside and mapping it for local use. In the database, it is called FDW (Foreign Data Wrapper), which is a database technology that focuses on using remote tables as local tables and can only connect one by one. Because it is remote access, there will be various constraints and limitations when using it.
+:::info{title="Connexion aux sources de données vs Connexion aux tables de données externes"}
+- **Connexion aux sources de données** fait référence à l'établissement d'une connexion avec une base de données ou un service API spécifique, et vous pouvez utiliser pleinement les fonctionnalités de la base de données ou les services fournis par l'API ;
+- **Connexion aux tables de données externes** fait référence à l'obtention de données provenant de l'extérieur et à leur mappage pour une utilisation locale. Dans le contexte des bases de données, cela s'appelle FDW (Foreign Data Wrapper), une technologie de base de données qui permet d'utiliser des tables distantes comme des tables locales, mais chaque connexion est faite individuellement. Étant donné qu'il s'agit d'un accès distant, il existe diverses contraintes et limitations lors de son utilisation.
 - 
-The two can also be used in combination. The former is used to establish a connection with the data source, and the latter is used for cross data-source access. For example, a certain PostgreSQL data source is connected, and a certain table in this data source is an external data table created based on FDW.
+Les deux peuvent également être utilisés en combinaison. La première est utilisée pour établir une connexion avec la source de données, et la seconde pour accéder à des données provenant de sources multiples. Par exemple, une source de données PostgreSQL est connectée, et une table spécifique dans cette source de données est une table de données externe créée à partir de FDW.
 :::
 
 ### MySQL
 
-MySQL uses the `federated` engine, which needs to be activated, and supports connecting to remote MySQL and protocol-compatible databases, such as MariaDB. For more details, refer to the [Federated Storage Engine](https://dev.mysql.com/doc/refman/8.0/en/federated-storage-engine.html) documentation.
+MySQL utilise le moteur `federated`, qui doit être activé, et prend en charge la connexion à des bases de données MySQL distantes et à des bases de données compatibles avec le protocole, telles que MariaDB. Pour plus de détails, consultez la documentation sur le [moteur de stockage fédéré](https://dev.mysql.com/doc/refman/8.0/en/federated-storage-engine.html).
 
 ### PostgreSQL
 
-In PostgreSQL, different types of `fdw` extensions can be used to support different types of remote data. The currently supported extensions include:
+Dans PostgreSQL, différents types d'extensions `fdw` peuvent être utilisés pour prendre en charge différents types de données distantes. Les extensions actuellement prises en charge incluent :
 
-- [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html): Connect to a remote PostgreSQL database in PostgreSQL.
-- [mysql_fdw(under development)](https://github.com/EnterpriseDB/mysql_fdw): Connect to a remote MySQL database in PostgreSQL.
-- For other types of fdw extensions, refer to [PostgreSQL Foreign Data Wrappers](https://wiki.postgresql.org/wiki/Foreign_data_wrappers). You need to implement the corresponding adaptation interface in the code.
+- [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) : Se connecter à une base de données PostgreSQL distante dans PostgreSQL.
+- [mysql_fdw (en développement)](https://github.com/EnterpriseDB/mysql_fdw) : Se connecter à une base de données MySQL distante dans PostgreSQL.
+- Pour d'autres types d'extensions fdw, consultez [PostgreSQL Foreign Data Wrappers](https://wiki.postgresql.org/wiki/Foreign_data_wrappers). Vous devez implémenter l'interface d'adaptation correspondante dans le code.
 
 ## Installation
 
-Prerequisites
+Prérequis
 
-- If the Main database of NocoBase is MySQL, it needs to activate `federated`. Refer to [How to enable the federated engine in MySQL](./enable-federated.md)
+- Si la base de données principale de NocoBase est MySQL, il est nécessaire d'activer `federated`. Consultez [Comment activer le moteur fédéré dans MySQL](./enable-federated.md).
 
-Then install and activate the plugin through the plugin manager
+Ensuite, installez et activez le plugin via le gestionnaire de plugins.
 
-![Install and activate the plugin](https://static-docs.nocobase.com/f84276c5712851fb3ff33af3f1ff0f59.png)
+![Installer et activer le plugin](https://static-docs.nocobase.com/f84276c5712851fb3ff33af3f1ff0f59.png)
 
-## User Manual
+## Manuel de l'utilisateur
 
-Under "Collection manager > Create collection", select "Connect to foreign data"
+Sous "Gestionnaire de collections > Créer une collection", sélectionnez "Se connecter aux données externes".
 
-![Connect External Data](https://static-docs.nocobase.com/029d946a6d067d1c35a39755219d623c.png)
+![Connecter des données externes](https://static-docs.nocobase.com/029d946a6d067d1c35a39755219d623c.png)
 
-In the "Database Server" dropdown, select an existing database service, or "Create Database Server"
+Dans le menu déroulant "Serveur de base de données", sélectionnez un service de base de données existant, ou cliquez sur "Créer un serveur de base de données".
 
-![Database Service](https://static-docs.nocobase.com/766271708a911950a5599d60d6be4a4d.png)
+![Service de base de données](https://static-docs.nocobase.com/766271708a911950a5599d60d6be4a4d.png)
 
-Create a database server
+Créer un serveur de base de données
 
-![Create Database Service](https://static-docs.nocobase.com/1e357216e04cc4f200bd6212827281c8.png)
+![Créer un service de base de données](https://static-docs.nocobase.com/1e357216e04cc4f200bd6212827281c8.png)
 
-After selecting the database server, in the "Remote table" dropdown, select the data table you need to connect.
+Après avoir sélectionné le serveur de base de données, dans le menu déroulant "Table distante", sélectionnez la table de données à laquelle vous devez vous connecter.
 
-![Select the data table you need to connect](https://static-docs.nocobase.com/e91fd6152b52b4fc01b3808053cc8dc4.png)
+![Sélectionner la table de données à connecter](https://static-docs.nocobase.com/e91fd6152b52b4fc01b3808053cc8dc4.png)
 
-Configure field information
+Configurer les informations de champ
 
-![Configure field information](https://static-docs.nocobase.com/e618fecc5fe327f6a495e61405e5f040.png)
+![Configurer les informations de champ](https://static-docs.nocobase.com/e618fecc5fe327f6a495e61405e5f040.png)
 
-If the remote table has structural changes, you can also "Sync from remote table"
+Si la table distante subit des modifications structurelles, vous pouvez également "Synchroniser depuis la table distante".
 
-![Sync from Remote Table](https://static-docs.nocobase.com/3751a9a39f933889fb3fcc4d85a6f4ad.png)
+![Synchroniser depuis la table distante](https://static-docs.nocobase.com/3751a9a39f933889fb3fcc4d85a6f4ad.png)
 
-Remote table sync
+Synchronisation de la table distante
 
-![Remote table sync](https://static-docs.nocobase.com/13f18200e31ea223fdd8dadaff1e9d28.png)
+![Synchronisation de la table distante](https://static-docs.nocobase.com/13f18200e31ea223fdd8dadaff1e9d28.png)
 
-Finally, display it on the interface
+Enfin, afficher sur l'interface
 
-![Display on the interface](https://static-docs.nocobase.com/368fca27a99277d9360ca81350949357.png)
+![Afficher sur l'interface](https://static-docs.nocobase.com/368fca27a99277d9360ca81350949357.png)

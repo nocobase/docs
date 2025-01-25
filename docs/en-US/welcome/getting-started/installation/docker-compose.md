@@ -52,7 +52,7 @@ services:
       # Database password
       - DB_PASSWORD=nocobase
       # Timezone
-      - TZ=Asia/Shanghai
+      - TZ=UTC
       # Service platform username and password,
       # used for automatically downloading and updating plugins.
       - NOCOBASE_PKG_USERNAME=
@@ -114,7 +114,7 @@ services:
       # Whether to convert table and field names to snake case
       - DB_UNDERSCORED=true
       # Timezone
-      - TZ=Asia/Shanghai
+      - TZ=UTC
       # Service platform username and password,
       # used for automatically downloading and updating plugins.
       - NOCOBASE_PKG_USERNAME=
@@ -176,7 +176,7 @@ services:
       # Whether to convert table and field names to snake case
       - DB_UNDERSCORED=true
       # Timezone
-      - TZ=Asia/Shanghai
+      - TZ=UTC
       # Service platform username and password,
       # used for automatically downloading and updating plugins.
       - NOCOBASE_PKG_USERNAME=
@@ -222,13 +222,7 @@ Example:
 #...
 services:
   app:
-    # Domestic users suggest using Ali Cloud image
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:beta
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:alpha
-    Image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:1.3.51
-
-    # Docker Hub image (Domestic users cannot download) 
+    # Docker Hub image
     image: nocobase/nocobase:latest
     image: nocobase/nocobase:beta
     image: nocobase/nocobase:alpha

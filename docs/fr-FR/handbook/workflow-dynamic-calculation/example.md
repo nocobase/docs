@@ -1,65 +1,65 @@
-# Example
+# Exemple
 
-Following the configuration steps outlined above, let's illustrate how to calculate the final price for different products by applying various Price Rules during the order placement process.
+Suite aux étapes de configuration décrites ci-dessus, illustrons comment calculer le prix final pour différents produits en appliquant diverses règles de prix pendant le processus de création de commande.
 
-1. Set Up the Product Collection:
+1. **Configurer la Collection de Produits :**
 
-   | Field Name     | Type                   |
-       | -------------- | ---------------------- |
-   | Product Name   | Text                   |
-   | Price | Number                 |
-   | Price Rule  | `belongsTo` (Price Rule Collection) |
+   | Nom du Champ     | Type                     |
+   | ---------------- | ------------------------ |
+   | Nom du Produit   | Texte                    |
+   | Prix             | Nombre                   |
+   | Règle de Prix    | `appartient à` (Collection Règles de Prix) |
 
-2. Set Up the Price Rule Collection (using the expression Collection template):
+2. **Configurer la Collection des Règles de Prix** (en utilisant le modèle de Collection d'Expressions) :
 
-   | Field Name      | Type                        |
-       | --------------- | --------------------------- |
-   | Rule Name       | Text                        |
-   | Collection      | Single Select (Data Collection)   |
-   | Calculation Engine | Single Select (mathjs/formulajs) |
-   | Expression      | Text                        |
+   | Nom du Champ        | Type                                  |
+   | ------------------- | ------------------------------------- |
+   | Nom de la Règle     | Texte                                 |
+   | Collection          | Sélection unique (Collection de Données)  |
+   | Moteur de Calcul    | Sélection unique (mathjs/formulajs)    |
+   | Expression          | Texte                                 |
 
-3. Input Price Rules:
+3. **Saisir les Règles de Prix :**
 
-   | ID  | Name    | Collection | Calculation Engine | Expression                |
-       | --- |---------| ---------- | ------------------ | ------------------------- |
-   | 1   | 80% off | Product    | formula.js         | `{{Product.Price}} * 0.8` |
-   | 2   | 90% off | Product    | formula.js         | `{{Product.Price}} * 0.9` |
+   | ID  | Nom    | Collection | Moteur de Calcul | Expression                  |
+   | --- | ------- | ---------- | ---------------- | --------------------------- |
+   | 1   | 80% off | Produit    | formula.js       | `{{Product.Price}} * 0.8`    |
+   | 2   | 90% off | Produit    | formula.js       | `{{Product.Price}} * 0.9`    |
 
-4. Create Products and Assign Price Rules:
+4. **Créer les Produits et Assigner les Règles de Prix :**
 
-   | ID  | Product Name  | Price | Price Rule |
-       | --- | ------------- | ----- | ------------- |
-   | 1   | iPhone 14 Pro | 7999  | 2             |
-   | 2   | iPhone 13 Pro | 6999  | 1             |
+   | ID  | Nom du Produit   | Prix  | Règle de Prix |
+   | --- | ---------------- | ----- | ------------- |
+   | 1   | iPhone 14 Pro    | 7999  | 2             |
+   | 2   | iPhone 13 Pro    | 6999  | 1             |
 
-5. Set Up a Workflow Triggered by Order Creation:
+5. **Configurer un Workflow Déclenché par la Création de Commande :**
 
-   ![Trigger_CreateOrder](https://static-docs.nocobase.com/f181f75b10007afd5de068f3458d2e04.png)
+   ![Déclencheur_CréationCommande](https://static-docs.nocobase.com/f181f75b10007afd5de068f3458d2e04.png)
 
-6. Create a Dynamic Expression Calculation Node and Configure it Using Trigger Data/Product/Price Rule:
+6. **Créer un Nœud de Calcul d'Expression Dynamique et le Configurer avec les Données du Déclencheur/Produit/Règle de Prix :**
 
-   ![SelectDynamicExpressionData](https://static-docs.nocobase.com/21ccc63e604dd90b7d26c3c33c12d671.png)
+   ![SélectionnerDonnéesExpressionDynamique](https://static-docs.nocobase.com/21ccc63e604dd90b7d26c3c33c12d671.png)
 
-   Set the variable data source to the product in the trigger data:
+   Définir la source de données variable sur le produit dans les données du déclencheur :
 
-   ![SelectVariableDataSource](https://static-docs.nocobase.com/afbffe9661539d26e4b175ae8a4b28f7.png)
+   ![SélectionnerSourceDonnéesVariable](https://static-docs.nocobase.com/afbffe9661539d26e4b175ae8a4b28f7.png)
 
-7. Add a Data Update Node to Update the Order Total Price with the Result from the Calculation Node:
+7. **Ajouter un Nœud de Mise à Jour des Données pour Mettre à Jour le Prix Total de la Commande avec le Résultat du Nœud de Calcul :**
 
-   ![UpdateOrderData](https://static-docs.nocobase.com/5cc7ffb113c8d6a2fd3b1b34abe06dcc.png)
+   ![MettreÀJourDonnéesCommande](https://static-docs.nocobase.com/5cc7ffb113c8d6a2fd3b1b34abe06dcc.png)
 
-8. Trigger the Workflow Upon Order Creation and Verify the Prices in the Order List:
+8. **Déclencher le Workflow Lors de la Création de la Commande et Vérifier les Prix dans la Liste des Commandes :**
 
-   | Order Product    | Price | Price Rule     | Total Price          |
-       | ---------------- | -------------- |----------------|----------------------|
-   | iPhone 14 Pro    | 7999           | Rule1: 90% off | 7999 \* 0.9 = 7199.1 |
-   | iPhone 13 Pro    | 6999           | Rule2: 80% off | 6999 \* 0.8 = 5599.2 |
+   | Produit de la Commande  | Prix | Règle de Prix     | Prix Total             |
+   | ----------------------- | ---- | ----------------- | ---------------------- |
+   | iPhone 14 Pro           | 7999 | Règle1 : 90% off  | 7999 * 0.9 = 7199.1    |
+   | iPhone 13 Pro           | 6999 | Règle2 : 80% off  | 6999 * 0.8 = 5599.2    |
 
-   The final price displayed in the image below should match the calculated price in the Collection above:
+   Le prix final affiché dans l'image ci-dessous devrait correspondre au prix calculé dans la collection ci-dessus :
 
-   ![OrderTotalPrice_AfterCreation](https://static-docs.nocobase.com/a5610aca292e79c4841c97457bd3cc7c.png)
+   ![PrixTotalCommande_AprèsCréation](https://static-docs.nocobase.com/a5610aca292e79c4841c97457bd3cc7c.png)
 
-   :::info{title=Tip}
-   Since the workflow operates asynchronously, the total price might not be immediately reflected in the Collection after the order is created. You may need to wait a moment before refreshing the page to see the updated total price.
+   :::info{title=Astuce}
+   Puisque le workflow fonctionne de manière asynchrone, le prix total pourrait ne pas être immédiatement reflété dans la collection après la création de la commande. Vous devrez peut-être attendre un instant avant de rafraîchir la page pour voir le prix total mis à jour.
    :::

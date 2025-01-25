@@ -1,13 +1,13 @@
-# Action Configuration
+### Configuration d'Action
 
-If you set the trigger configuration to "Triggered only when a form bound to this workflow is submitted", you must return to the form interface and bind the workflow to the appropriate action button:
+Si vous définissez la configuration du déclencheur sur **"Déclenché uniquement lorsque le formulaire lié à ce workflow est soumis"**, vous devrez revenir à l'interface du formulaire et lier le workflow au bouton d'action approprié :
 
-![Binding Workflow to New Order](https://static-docs.nocobase.com/bae3931e60f9bcc51bbc222e40e891e5.png)
+![Lier le Workflow à une Nouvelle Commande](https://static-docs.nocobase.com/bae3931e60f9bcc51bbc222e40e891e5.png)
 
-In the workflow binding configuration, select the relevant workflow. Typically, choosing "Entire Form Data" as the context for triggering data is sufficient:
+Dans la configuration de liaison du workflow, sélectionnez le workflow pertinent. En règle générale, choisir **"Entire Form Data"** comme contexte pour les données de déclenchement suffit :
 
-![Select Workflow to Bind](https://static-docs.nocobase.com/78e2f023029bd570c91ee4cd19b7a0a7.png)
+![Sélectionner le Workflow à Lier](https://static-docs.nocobase.com/78e2f023029bd570c91ee4cd19b7a0a7.png)
 
 :::info{title=Note}
-Currently, buttons bound to pre-action events only support the "Submit" (or "Save"), "Update records," and "Delete" buttons in forms for new entries or updates. The "Trigger Workflow" button is not supported (this button can only be bound to post-action events).
+Actuellement, les boutons liés aux événements pré-action ne prennent en charge que les boutons **"Soumettre"** (ou **"Sauvegarder"**), **"Mettre à jour les enregistrements"**, et **"Supprimer"** dans les formulaires pour les nouvelles entrées ou mises à jour. Le bouton **"Déclencher Workflow"** n'est pas pris en charge (ce bouton peut seulement être lié aux événements post-action).
 :::

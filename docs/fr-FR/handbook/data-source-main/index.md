@@ -1,37 +1,37 @@
-# Main DataBase
+# Base de données principale
 
 <PluginInfo name="data-source-main"></PluginInfo>
 
 ## Introduction
 
-NocoBase's main database can be used to store both business data and the metadata of the application, including system table data and custom table data. The main database supports relational databases such as MySQL, PostgreSQL, SQLite, etc. During the installation of the NocoBase application, the main database must be installed synchronously and cannot be deleted.
+La base de données principale de NocoBase peut être utilisée pour stocker à la fois les données métiers et les métadonnées de l'application, y compris les données des tables système et des tables personnalisées. La base de données principale prend en charge des bases de données relationnelles telles que MySQL, PostgreSQL, SQLite, etc. Lors de l'installation de l'application NocoBase, la base de données principale doit être installée simultanément et ne peut pas être supprimée.
 
 ## Installation
 
-This is a built-in plugin, no separate installation is required.
+Il s'agit d'un plugin intégré, aucune installation séparée n'est requise.
 
-## User Manual
+## Manuel utilisateur
 
 ![20240322230134](https://static-docs.nocobase.com/20240322230134.png)
 
-### Supporting the creation of various data tables
+### Prise en charge de la création de diverses tables de données
 
-- [General collection](/handbook/data-source-main/general-collection): built-in commonly used system fields;
-- [Inheritance collection](/handbook/data-source-main/inheritance-collection): allows the creation of a parent table, from which child tables can be derived. Child tables will inherit the structure of the parent table, and can also define their own columns.
-- [Tree collection](/handbook/collection-tree): tree-structured table, currently only supports adjacent table design;
-- [Calendar collection](/handbook/calendar/calendar-collection): for creating calendar-related event tables;
-- [File collection](/handbook/file-manager/file-collection): for managing file storage;
-- [Expression Collection](/handbook/workflow-dynamic-calculation/expression): for dynamic expression scenarios in workflows;
-- [SQL Collection](/handbook/collection-sql): Not an actual database table, but quickly presenting the SQL query in a structured manner;
-- [Database View collection](/handbook/collection-view): connects to an existing database view;
-- [FDW collection](/handbook/collection-fdw): allows the database system to directly access and query data in external data sources, based on FDW technology;
+- [Collection générale](/handbook/data-source-main/general-collection): champs système couramment utilisés intégrés ;
+- [Collection d'héritage](/handbook/data-source-main/inheritance-collection): permet la création d'une table parent à partir de laquelle des tables enfants peuvent être dérivées. Les tables enfants hériteront de la structure de la table parent, et pourront également définir leurs propres colonnes.
+- [Collection arborescente](/handbook/collection-tree): table de structure arborescente, prend actuellement en charge uniquement la conception de table adjacente ;
+- [Collection de calendrier](/handbook/calendar/calendar-collection): pour créer des tables d'événements liées au calendrier ;
+- [Collection de fichiers](/handbook/file-manager/file-collection): pour la gestion du stockage de fichiers ;
+- [Collection d'expressions](/handbook/workflow-dynamic-calculation/expression): pour les scénarios d'expressions dynamiques dans les flux de travail ;
+- [Collection SQL](/handbook/collection-sql): Pas une table de base de données réelle, mais pour présenter rapidement la requête SQL de manière structurée ;
+- [Collection de vues de base de données](/handbook/collection-view): se connecte à une vue de base de données existante ;
+- [Collection FDW](/handbook/collection-fdw): permet au système de base de données d'accéder directement et d'interroger les données dans des sources de données externes, sur la base de la technologie FDW ;
 
-### Supporting classification management of collections
+### Prise en charge de la gestion par classification des collections
 
 ![20240322231520](https://static-docs.nocobase.com/20240322231520.png)
 
-### Offering a wide range of field types
+### Offre une large gamme de types de champs
 
 ![20240322230950](https://static-docs.nocobase.com/20240322230950.png)
 
-See more in the [Data Table Fields / Overview](/handbook/data-modeling/collection-fields) section.
+Voir plus dans la section [Champs de table de données / Vue d'ensemble](/handbook/data-modeling/collection-fields).

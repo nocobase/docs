@@ -1,20 +1,17 @@
-# Bind Workflows
+# Lier des Workflows
 
 ## Introduction
 
-Binding a workflow is a powerful way to automate data processing. By linking an operation to a workflow, you ensure that data flows seamlessly through business processes. It’s important to note that workflows are triggered only after a successful data submission; if the operation fails, the workflow will not be activated.
+Lier un workflow est une méthode puissante pour automatiser le traitement des données. En associant une opération à un workflow, vous assurez un flux de données fluide à travers les processus métier. Il est important de noter que les workflows ne sont déclenchés qu'après une soumission de données réussie ; si l'opération échoue, le workflow ne sera pas activé.
 
 ![20240413095247](https://static-docs.nocobase.com/20240413095247.png)
 
 ![20240413095309](https://static-docs.nocobase.com/20240413095309.png)
 
-The following operation buttons currently support workflow binding:
+Les boutons d'opération suivants prennent actuellement en charge l'association avec un workflow :
 
-"Submit" and "Save" buttons for new forms.
+- Boutons "Soumettre" et "Enregistrer" pour les nouveaux formulaires.
+- Boutons "Soumettre" et "Enregistrer" pour les formulaires de mise à jour.
+- Bouton "Mettre à jour les données" dans les lignes de données (y compris les tableaux, les listes, les kanbans, etc.).
 
-"Submit" and "Save" buttons for update forms.
-
-"Update Data" button in data rows (including tables, lists, kanban, etc.).
-
-For more details, see [Post-Action Events](/handbook/workflow-action-trigger) in the workflow documentation.
-
+Pour plus de détails, consultez la section [Événements après action](/handbook/workflow-action-trigger) dans la documentation des workflows.

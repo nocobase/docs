@@ -1,79 +1,79 @@
-# Manual Node
+### Nœud Manuel
 
-## Creating a Node
+## Création d'un Nœud
 
-In the workflow configuration interface, click the plus (“+”) button within the process to add a "Manual" node:
+Dans l'interface de configuration du workflow, cliquez sur le bouton plus ("+") dans le processus pour ajouter un nœud "Manuel" :
 
-![Create Manual Node](https://static-docs.nocobase.com/4dd259f1aceeaf9b825abb4b257df909.png)
+![Créer un Nœud Manuel](https://static-docs.nocobase.com/4dd259f1aceeaf9b825abb4b257df909.png)
 
-## Configuring the Node
+## Configuration du Nœud
 
 ### Assignees
 
-A manual node requires assigning a user who will be responsible for executing the pending task. You can add a list of pending tasks when setting up blocks on the page. Additionally, the content of each node's task pop-up window needs to be configured within the node’s interface.
+Un nœud manuel nécessite d'assigner un utilisateur qui sera responsable de l'exécution de la tâche en attente. Vous pouvez ajouter une liste de tâches en attente lors de la configuration des blocs sur la page. De plus, le contenu de la fenêtre contextuelle de chaque tâche doit être configuré dans l'interface du nœud.
 
-You can either select a specific user or use variables to choose the primary or foreign key of user data from the context.
+Vous pouvez soit sélectionner un utilisateur spécifique, soit utiliser des variables pour choisir la clé primaire ou étrangère des données utilisateur dans le contexte.
 
-![Manual Node Configuration - Assignee Variable Selection](https://static-docs.nocobase.com/22fbca3b8e21fda3a831019037001445.png)
-
-:::info{title=Note}
-At present, the assignee option for manual nodes does not support multi-user processing, though this feature is planned for future versions.
-:::
-
-### Configuring the User Interface
-
-The interface setup for the to-do list is central to configuring the manual node. By clicking the “Configure” button, you can open a separate pop-up window for configuration. This interface works like a regular page, allowing you to design it using a WYSIWYG (What You See Is What You Get) editor:
-
-![Manual Node Configuration - User Interface Configuration](https://static-docs.nocobase.com/fd360168c879743cf22d57440cd2590f.png)
-
-#### Tabs
-
-Tabs can be utilized to differentiate between various content types. For example, one tab might be used for approved form submissions, another for rejected submissions, or you might use them to display details of related data. These tabs can be configured freely according to your needs.
-
-#### Blocks
-
-The blocks you can use primarily fall into two categories: Data Blocks and Form Blocks. In addition, Markdown blocks are available for informational prompts and other static content.
-
-##### Data Blocks
-
-Data blocks allow you to display information from triggers or the results of any node processing, providing necessary context for the task assignee. For example, if the workflow is triggered by a form event, a data block can be created to show the details of the triggered data. This setup is similar to configuring details on a regular page, where you can select any fields from the triggered data for display:
-
-![Manual Node Configuration - Data Block - Trigger](https://static-docs.nocobase.com/675c3e58a1a4f45db310a72c2d0a404c.png)
-
-Similarly, node data blocks can be configured to display data results from upstream nodes as reference information for the task assignee. For example, if an upstream calculation node generates results, these can be displayed as contextual data:
-
-![Manual Node Configuration - Data Block - Node Data](https://static-docs.nocobase.com/a583e26e508e954b47e5ddff80d998c4.png)
+![Configuration du Nœud Manuel - Sélection de Variables d'Assignation](https://static-docs.nocobase.com/22fbca3b8e21fda3a831019037001445.png)
 
 :::info{title=Note}
-Since the workflow is in a non-executing state during interface configuration, data blocks won’t display specific data. The relevant data will only appear in the to-do pop-up interface once the workflow is triggered and executed.
+Actuellement, l'option d'assignation pour les nœuds manuels ne prend pas en charge le traitement multi-utilisateurs, bien que cette fonctionnalité soit prévue pour les futures versions.
 :::
 
-##### Form Blocks
+### Configuration de l'Interface Utilisateur
 
-Form blocks are crucial in the to-do interface, as they determine whether the workflow continues. Failing to configure a form block will cause the workflow to halt. There are three types of form blocks available:
+La configuration de l'interface de la liste des tâches est essentielle pour la configuration du nœud manuel. En cliquant sur le bouton "Configurer", vous pouvez ouvrir une fenêtre contextuelle séparée pour la configuration. Cette interface fonctionne comme une page régulière, vous permettant de la concevoir en utilisant un éditeur WYSIWYG (What You See Is What You Get) :
 
-- Custom Form
-- Create record form
-- Update record form
+![Configuration du Nœud Manuel - Configuration de l'Interface Utilisateur](https://static-docs.nocobase.com/fd360168c879743cf22d57440cd2590f.png)
 
-![Manual Node Configuration - Form Block Types](https://static-docs.nocobase.com/2d068f3012ab07e32a265405492104a8.png)
+#### Onglets
 
-For Create record forms and Update record forms, you'll need to select the data table they are based on. When the assignee submits the form, the values entered will be used to add or update data in the selected table. The Custom Form allows you to create a temporary form not linked to any data table, with the submitted values available for use in subsequent nodes.
+Les onglets peuvent être utilisés pour différencier les types de contenu. Par exemple, un onglet peut être utilisé pour les soumissions de formulaires approuvées, un autre pour les soumissions rejetées, ou vous pouvez les utiliser pour afficher les détails des données connexes. Ces onglets peuvent être configurés librement en fonction de vos besoins.
 
-You can configure the form submission button with one of three options:
+#### Blocs
 
-- Continue the process
-- Terminate the process
-- Save temporarily
+Les blocs que vous pouvez utiliser se divisent principalement en deux catégories : les blocs de données et les blocs de formulaires. En outre, des blocs Markdown sont disponibles pour les invites d'information et d'autres contenus statiques.
 
-![Manual Node Configuration - Form Button Types](https://static-docs.nocobase.com/6b45995b14152e85a821dff6f6e3189a.png)
+##### Blocs de Données
 
-These three button options correspond to different node states in the workflow: "Complete," "Reject," or "Waiting." At least one of the first two options must be configured to determine how the workflow proceeds.
+Les blocs de données permettent d'afficher des informations provenant des déclencheurs ou des résultats du traitement de n'importe quel nœud, fournissant ainsi le contexte nécessaire pour l'assignee. Par exemple, si le workflow est déclenché par un événement de formulaire, un bloc de données peut être créé pour afficher les détails des données déclenchées. Cette configuration est similaire à la configuration des détails sur une page régulière, où vous pouvez sélectionner tous les champs des données déclenchées à afficher :
 
-On the "Continue the process" button, you can configure specific values for form fields:
+![Configuration du Nœud Manuel - Bloc de Données - Déclencheur](https://static-docs.nocobase.com/675c3e58a1a4f45db310a72c2d0a404c.png)
 
-![Manual Node Configuration - Set Form Values](https://static-docs.nocobase.com/2cec2d4e2957f068877e616dec3b56dd.png)
+De même, les blocs de données des nœuds peuvent être configurés pour afficher les résultats des données des nœuds en amont en tant que référence pour l'assignee. Par exemple, si un nœud de calcul en amont génère des résultats, ceux-ci peuvent être affichés comme données contextuelles :
 
-![Manual Node Configuration - Set Form Values Pop-up](https://static-docs.nocobase.com/5ff51b60c76cdb76e6f1cc95dc3d8640.png)
+![Configuration du Nœud Manuel - Bloc de Données - Données de Nœud](https://static-docs.nocobase.com/a583e26e508e954b47e5ddff80d998c4.png)
 
-In the pop-up window, you can assign values to any field in the form. Once the form is submitted, these values will be used as the final values for those fields. This feature is particularly useful when reviewing data. You can configure multiple "Continue the process" buttons in the form, each setting different enumeration values for similar fields, allowing the workflow to continue with varying outcomes based on these values.
+:::info{title=Note}
+Puisque le workflow est dans un état non-exécutif pendant la configuration de l'interface, les blocs de données n'afficheront pas de données spécifiques. Les données pertinentes n'apparaîtront dans l'interface contextuelle des tâches que lorsque le workflow sera déclenché et exécuté.
+:::
+
+##### Blocs de Formulaires
+
+Les blocs de formulaires sont essentiels dans l'interface des tâches, car ils déterminent si le workflow continue ou non. Ne pas configurer un bloc de formulaire entraînera l'arrêt du workflow. Il existe trois types de blocs de formulaires disponibles :
+
+- Formulaire personnalisé
+- Formulaire de création de record
+- Formulaire de mise à jour de record
+
+![Configuration du Nœud Manuel - Types de Blocs de Formulaires](https://static-docs.nocobase.com/2d068f3012ab07e32a265405492104a8.png)
+
+Pour les formulaires de création et de mise à jour de records, vous devrez sélectionner la table de données sur laquelle ils sont basés. Lorsque l'assignee soumet le formulaire, les valeurs saisies seront utilisées pour ajouter ou mettre à jour les données dans la table sélectionnée. Le formulaire personnalisé permet de créer un formulaire temporaire non lié à une table de données, avec les valeurs soumises disponibles pour être utilisées dans les nœuds suivants.
+
+Vous pouvez configurer le bouton de soumission du formulaire avec l'une des trois options suivantes :
+
+- Continuer le processus
+- Terminer le processus
+- Sauvegarder temporairement
+
+![Configuration du Nœud Manuel - Types de Boutons de Formulaire](https://static-docs.nocobase.com/6b45995b14152e85a821dff6f6e3189a.png)
+
+Ces trois options de boutons correspondent à différents états de nœud dans le workflow : "Compléter", "Rejeter", ou "En attente". Au moins une des deux premières options doit être configurée pour déterminer comment le workflow continue.
+
+Sur le bouton "Continuer le processus", vous pouvez configurer des valeurs spécifiques pour les champs du formulaire :
+
+![Configuration du Nœud Manuel - Définir les Valeurs des Formulaires](https://static-docs.nocobase.com/2cec2d4e2957f068877e616dec3b56dd.png)
+
+![Configuration du Nœud Manuel - Fenêtre Pop-up pour Définir les Valeurs des Formulaires](https://static-docs.nocobase.com/5ff51b60c76cdb76e6f1cc95dc3d8640.png)
+
+Dans la fenêtre pop-up, vous pouvez attribuer des valeurs à n'importe quel champ du formulaire. Une fois le formulaire soumis, ces valeurs seront utilisées comme valeurs finales pour ces champs. Cette fonctionnalité est particulièrement utile lors de la révision des données. Vous pouvez configurer plusieurs boutons "Continuer le processus" dans le formulaire, chacun définissant des valeurs d'énumération différentes pour des champs similaires, permettant ainsi au workflow de continuer avec des résultats variés en fonction de ces valeurs.

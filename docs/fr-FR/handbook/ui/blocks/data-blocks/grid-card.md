@@ -1,88 +1,88 @@
-# Grid Cards
+# Cartes en Grille
 
 ## Introduction
 
-The Grid Card block offers a concise and visually appealing way to display summary information of data records. Designed for flexibility, it allows you to configure the number of columns based on screen size, ensuring a seamless user experience across all devices.
+Le bloc Cartes en Grille offre un moyen concis et visuellement attrayant d'afficher les informations résumées des enregistrements de données. Conçu pour être flexible, il vous permet de configurer le nombre de colonnes en fonction de la taille de l'écran, garantissant une expérience utilisateur fluide sur tous les appareils.
 
-## Adding Blocks
+## Ajouter des Blocs
 
 <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240418120045.mp4" type="video/mp4">
 </video>
 
-## Block Settings
+## Paramètres du Bloc
 
 ![20240419220708](https://static-docs.nocobase.com/20240419220708.png)
 
-### Data Scope
+### Portée des Données
 
 <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240419173617.mp4" type="video/mp4">
 </video>
 
-For a detailed guide, see [Setting the Data Scope](/handbook/ui/blocks/block-settings/data-scope).
+Pour un guide détaillé, consultez [Définir la Portée des Données](/handbook/ui/blocks/block-settings/data-scope).
 
-### Configuring the Number of Columns per Row
+### Configurer le Nombre de Colonnes par Ligne
 
 ![20240408160228](https://static-docs.nocobase.com/20240408160228.png)
 
-You can adjust the number of columns to fit different screen sizes, ensuring optimal display.
+Vous pouvez ajuster le nombre de colonnes pour s'adapter aux différentes tailles d'écran, assurant ainsi un affichage optimal.
 
 ![20240408160844](https://static-docs.nocobase.com/20240408160844.png)
 
-### Configuring the Data Loading Method
+### Configurer la Méthode de Chargement des Données
 
-Example: Connecting data blocks and setting the appropriate data loading method.
+Exemple : Connexion de blocs de données et configuration de la méthode de chargement des données appropriée.
 
-The Orders table and Products table have a many-to-many relationship. The Orders Table block and Products Grid Card block can be linked to enable data filtering. In this setup, the grid block’s data loading method is configured to load "After Filtering Data."
+La table des Commandes et la table des Produits ont une relation de plusieurs à plusieurs. Le bloc de la table des Commandes et le bloc Cartes en Grille des Produits peuvent être liés pour permettre le filtrage des données. Dans cette configuration, la méthode de chargement des données du bloc en grille est configurée pour charger les "Données après Filtrage".
 
 <video width="100%" height="440" controls>
 <source src="https://static-docs.nocobase.com/20240419175643.mp4" type="video/mp4">
 </video>
 
-### Setting Block Height
+### Définir la Hauteur du Bloc
 
-Example: Configure the Orders Grid Card block to display in "Full Height" mode for an expansive view.
+Exemple : Configurez le bloc Cartes en Grille des Commandes pour s'afficher en mode "Hauteur Complète" pour une vue plus expansive.
 
 ![20240604232619](https://static-docs.nocobase.com/20240604232619.gif)
 
-For more details, refer to [Block Height](/handbook/ui/blocks/block-settings/block-height).
+Pour plus de détails, consultez [Hauteur du Bloc](/handbook/ui/blocks/block-settings/block-height).
 
-- [Setting Sorting Rules](/handbook/ui/blocks/block-settings/sorting-rule)
-- [Saving as a Block Template](/handbook/ui/blocks/block-settings/block-template)
+- [Définir les Règles de Tri](/handbook/ui/blocks/block-settings/sorting-rule)
+- [Enregistrer comme Modèle de Bloc](/handbook/ui/blocks/block-settings/block-template)
 
-## Configuring Fields
+## Configurer les Champs
 
-### Fields of the Current Table
+### Champs de la Table Actuelle
 
 ![20240418123118](https://static-docs.nocobase.com/20240418123118.png)
 
-### Fields of Related Tables
+### Champs des Tables Associées
 
 ![20240418123147](https://static-docs.nocobase.com/20240418123147.png)
 
-For a comprehensive guide to field configuration options for the Grid Card block, see [Detail Fields](/handbook/ui/fields/generic/detail-form-item).
+Pour un guide complet des options de configuration des champs pour le bloc Cartes en Grille, consultez [Champs de Détail](/handbook/ui/fields/generic/detail-form-item).
 
-## Configuring Actions
+## Configurer les Actions
 
-### Global Actions
+### Actions Globales
 
 ![20240418122905](https://static-docs.nocobase.com/20240418122905.png)
 
-- [Filter](/handbook/ui/actions/types/filter)
-- [Add](/handbook/ui/actions/types/add-new)
-- [Delete](/handbook/ui/actions/types/delete)
-- [Refresh](/handbook/ui/actions/types/refresh)
-- [Import](/handbook/action-import)
-- [Export](/handbook/action-export)
+- [Filtrer](/handbook/ui/actions/types/filter)
+- [Ajouter](/handbook/ui/actions/types/add-new)
+- [Supprimer](/handbook/ui/actions/types/delete)
+- [Actualiser](/handbook/ui/actions/types/refresh)
+- [Importer](/handbook/action-import)
+- [Exporter](/handbook/action-export)
 
-### Row Actions
+### Actions sur les Lignes
 
 ![20240419222251](https://static-docs.nocobase.com/20240419222251.png)
 
-- [Edit](/handbook/ui/actions/types/edit)
-- [Delete](/handbook/ui/actions/types/delete)
+- [Éditer](/handbook/ui/actions/types/edit)
+- [Supprimer](/handbook/ui/actions/types/delete)
 - [Pop-up](/handbook/ui/actions/types/pop-up)
-- [Update Record](/handbook/ui/actions/types/update-record)
-- [Custom Request](/handbook/action-custom-request)
-- [Trigger Workflow](/handbook/workflow/manual/triggers/custom-action)
+- [Mettre à jour l'enregistrement](/handbook/ui/actions/types/update-record)
+- [Demande Personnalisée](/handbook/action-custom-request)
+- [Déclencher un Flux de Travail](/handbook/workflow/manual/triggers/custom-action)

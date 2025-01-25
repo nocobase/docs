@@ -1,60 +1,61 @@
-# Form Filter Block
+# Bloc de Filtrage de Formulaire
 
 ## Introduction
 
-The Form filter block can be connected with the data block. Once connected, it can provide filtering capabilities.
+Le bloc de filtrage de formulaire peut être connecté avec un bloc de données. Une fois connecté, il fournit des capacités de filtrage pour le bloc de données, permettant une recherche plus ciblée selon les critères spécifiés.
 
-## Adding Block
+## Ajouter un Bloc
 
-  <video width="100%" height="440" controls>
+<video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240426172722.mp4" type="video/mp4">
-    </video>
+</video>
 
-## Block Settings
+## Paramètres du Bloc
 
 ![20240421172115](https://static-docs.nocobase.com/20240421172115.png)
 
-### Connect to Data Block
+### Connexion au Bloc de Données
 
-Example: The Form filter block connects to the details data block to implement linkage.
+Exemple : Le bloc de filtrage de formulaire se connecte au bloc de données de détails pour réaliser une liaison.
 
-  <video width="100%" height="440" controls>
+<video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240421170947.mp4" type="video/mp4">
-    </video>
+</video>
 
-For more content, refer to [Connect to Data Block](/handbook/ui/blocks/block-settings/connect-block)
+Pour plus de contenu, consultez [Connexion au Bloc de Données](/handbook/ui/blocks/block-settings/connect-block).
 
-- [Edit Block Title](/handbook/ui/blocks/block-settings/block-title)
-- [Linkage Rules](/handbook/ui/blocks/block-settings/linkage-rule)
-- [Save as Block Template](/handbook/ui/blocks/block-settings/block-template)
+- [Modifier le Titre du Bloc](/handbook/ui/blocks/block-settings/block-title)
+- [Règles de Liaison](/handbook/ui/blocks/block-settings/linkage-rule)
+- [Enregistrer comme Modèle de Bloc](/handbook/ui/blocks/block-settings/block-template)
 
-## Field Configuration
+## Configuration des Champs
 
-### Fields in This Collection
+### Champs dans Cette Collection
 
 ![20240421171135](https://static-docs.nocobase.com/20240421171135.png)
 
-### Fields in Related Collections
-> In version v1.3.14-beta and above, it supports configuring "many-to-many" and "one-to-many" relationship fields.
+### Champs dans les Collections Associées
 
-Supports using the fields of the related collections as filtering conditions
+> Dans la version v1.3.14-beta et supérieure, il est possible de configurer des champs de relations "beaucoup-à-beaucoup" et "un-à-beaucoup".
 
-Example: The order collection has a many-to-one relationship field "Customer", filter the orders by customer name and phone number as filtering conditions
+Cela permet d'utiliser les champs des collections associées comme conditions de filtrage.
+
+Exemple : La collection des commandes possède un champ de relation "Client" en relation "beaucoup-à-un", filtrez les commandes par le nom et le numéro de téléphone du client comme conditions de filtrage.
 
 <video width="100%" height="440" controls>
 <source src="https://static-docs.nocobase.com/20240421171437.mp4" type="video/mp4">
 </video>
 
-### Setting Default Values for Fields
+### Définir des Valeurs Par Défaut pour les Champs
 
-Like a normal [Form Block](/handbook/ui/blocks/data-blocks/form), you can set default values for normal fields and relationship fields. **When a field has a default value, a filtering operation will be automatically triggered at the first rendering of the page, so that the data block connected with it can display the matching data.**
+Comme un bloc de formulaire classique, vous pouvez définir des valeurs par défaut pour les champs normaux et les champs de relation. **Lorsque un champ a une valeur par défaut, une opération de filtrage sera automatiquement déclenchée lors du premier rendu de la page, afin que le bloc de données connecté affiche les données correspondantes.**
 
-## Configuration Operations
+## Opérations de Configuration
 
-![Filter Operations](https://static-docs.nocobase.com/20240421171839.png)
+![Opérations de Filtrage](https://static-docs.nocobase.com/20240421171839.png)
 
-### Reset button
+### Bouton Réinitialiser
 
-By default, clicking the "Reset" button will preserve the default values of the fields. If you want to clear the default values of the fields, you can open the configuration options and enable the "Clear Default Values" option.
+Par défaut, en cliquant sur le bouton "Réinitialiser", les valeurs par défaut des champs sont conservées. Si vous souhaitez supprimer les valeurs par défaut des champs, vous pouvez ouvrir les options de configuration et activer l'option "Effacer les Valeurs Par Défaut".
 
 ![20240716183611](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240716183611.png)

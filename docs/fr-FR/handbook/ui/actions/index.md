@@ -1,21 +1,21 @@
 # Actions
 
-In the UI, Actions are represented by buttons that trigger specific commands. These buttons can be directly placed on pages, within dialogs, or inside drawers, and they can also be combined with blocks. The current dynamic configuration options for Actions are primarily used when combined with blocks.
+Dans l'interface utilisateur, les actions sont représentées par des boutons qui déclenchent des commandes spécifiques. Ces boutons peuvent être placés directement sur des pages, dans des dialogues, ou à l'intérieur de tiroirs, et peuvent également être combinés avec des blocs. Les options de configuration dynamiques actuelles pour les actions sont principalement utilisées lorsqu'elles sont combinées avec des blocs.
 
-#### Actions within Blocks
+#### Actions dans les Blocs
 
 ![20240412113815](https://static-docs.nocobase.com/20240412113815.png)
 
-#### Operation Designer (Toolbar)
+#### Concepteur d'Opérations (Barre d'Outils)
 
-Unlike blocks and fields, the operation designer features only two icons:
-- Drag
-- Configuration actions
+Contrairement aux blocs et aux champs, le concepteur d'opérations ne dispose que de deux icônes :
+- Glisser
+- Configuration des actions
 
 ![20240412113855](https://static-docs.nocobase.com/20240412113855.png)
 
-#### Operation Drag-and-Drop Sorting
+#### Tri par Glisser-Déposer des Opérations
 
-To reorder buttons, simply hold down the "Drag" icon in the button designer and rearrange the buttons as needed.
+Pour réorganiser les boutons, maintenez simplement l'icône "Glisser" dans le concepteur de boutons et réarrangez les boutons selon vos besoins.
 
 ![20240412114236](https://static-docs.nocobase.com/20240412114236.gif)

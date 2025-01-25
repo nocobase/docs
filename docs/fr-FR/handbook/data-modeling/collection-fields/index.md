@@ -1,29 +1,29 @@
-# Overview
+# Aperçu
 
-## Interface Types of Fields
+## Types d'interface des champs
 
-NocoBase classifies fields into the following categories from the Interface perspective:
+NocoBase classe les champs en plusieurs catégories selon l'interface utilisée pour interagir avec les données. Voici un aperçu des différents types d'interface disponibles pour les champs dans NocoBase :
 
-![20240512110352](https://static-docs.nocobase.com/20240512110352.png)
+![Types d'interface des champs](https://static-docs.nocobase.com/20240512110352.png)
 
-## Field Data Types
+## Types de données des champs
 
-Each Field Interface has a default data type. For instance, for fields with the Interface as a Number, the default data type is double, but it can also be float, decimal, etc. The data types currently supported are:
+Chaque interface de champ a un type de données par défaut. Par exemple, pour les champs ayant l'interface de type Nombre, le type de données par défaut est `double`, mais il peut également être configuré en `float`, `decimal`, etc. Les types de données actuellement supportés sont les suivants :
 
-![20240512103733](https://static-docs.nocobase.com/20240512103733.png)
+![Types de données des champs](https://static-docs.nocobase.com/20240512103733.png)
 
-## Field Type Mapping
+## Mappage des types de champs
 
-The process for adding new fields to the main database is as follows:
+Le processus d'ajout de nouveaux champs à la base de données principale est le suivant :
 
-1. Select the Interface type
-2. Configure the optional data type for the current Interface
+1. Sélectionner le type d'interface du champ.
+2. Configurer le type de données optionnel pour l'interface du champ actuel.
 
-![20240512172416](https://static-docs.nocobase.com/20240512172416.png)
+![Mappage des types de champs](https://static-docs.nocobase.com/20240512172416.png)
 
-The process for field mapping from external data sources is:
+Le processus de mappage des champs provenant de sources de données externes est le suivant :
 
-1. Automatically map the corresponding data type (Field type) and UI type (Field Interface) based on the field type of the external database.
-2. Modify to a more suitable data type and Interface type as needed
+1. Le type de données (type de champ) et le type d'interface (interface de champ) sont mappés automatiquement en fonction du type de champ de la base de données externe.
+2. Modifiez ces paramètres pour les adapter à un type de données et une interface plus appropriés si nécessaire.
 
-![20240512172759](https://static-docs.nocobase.com/20240512172759.png)
+![Mappage des champs externes](https://static-docs.nocobase.com/20240512172759.png)

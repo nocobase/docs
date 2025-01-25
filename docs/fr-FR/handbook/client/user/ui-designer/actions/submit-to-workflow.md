@@ -1,9 +1,9 @@
-# Submit to Workflow
+# Soumettre au flux de travail
 
-The Submit to Workflow operation is implemented via plugin extensions.
+L'opération **Soumettre au flux de travail** est implémentée via des extensions de plugins.
 
-1. Addition and update forms support the configuration and triggering of submission to workflows.
-2. Multiple workflows can be triggered with one button click, each selecting a different workflow and data context (data is not restricted, and users are responsible for ensuring this).
-3. Form button triggers only support the new workflow type "Form Event."
+1. Les formulaires d'ajout et de mise à jour permettent la configuration et le déclenchement de la soumission vers des flux de travail.
+2. Plusieurs flux de travail peuvent être déclenchés par un seul clic de bouton, chacun sélectionnant un flux de travail et un contexte de données différents (les données ne sont pas restreintes, et les utilisateurs sont responsables de s'assurer de cela).
+3. Les boutons de formulaire ne prennent en charge que le nouveau type de flux de travail **"Événement de formulaire"**.
 
-For more details, refer to the Plugin Documentation.
+Pour plus de détails, consultez la documentation du plugin.

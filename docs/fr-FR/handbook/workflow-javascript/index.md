@@ -1,100 +1,92 @@
-# JavaScript
+# Nœud JavaScript pour les flux de travail
 
-<PluginInfo name="workflow-script" link="/handbook/workflow-script" commercial="true"></PluginInfo>
+Le **nœud JavaScript** dans les flux de travail permet aux utilisateurs d'exécuter des scripts Node.js personnalisés, offrant ainsi la flexibilité d'exécuter des logiques spécifiques au sein du flux de travail. Ces scripts peuvent recevoir des entrées du flux de travail et renvoyer des sorties qui peuvent être utilisées par les nœuds suivants.
 
-The JavaScript node allows users to execute custom Node.js scripts within a workflow. These scripts can utilize upstream workflow variables as parameters and return values that subsequent nodes can use.
+## Étapes de Configuration
 
-The script supports most Node.js features but has some differences from the native execution environment. See the [Feature List](#feature-list) for details.
+### Création d'un Nœud
 
-## User Manual
+Pour créer un nœud JavaScript, cliquez sur le bouton **plus (“+”)** dans l'interface de configuration du flux de travail :
 
-### Creating a Node
+![Ajouter un nœud de script](https://static-docs.nocobase.com/20241007122632.png)
 
-In the workflow configuration interface, click the plus (“+”) button in the workflow to add a “Script” node:
+### Configuration du Nœud
 
-![20241007122632](https://static-docs.nocobase.com/20241007122632.png)
+Une fois le nœud créé, configurez-le comme suit :
 
-### Node Configuration
+![Configuration du nœud](https://static-docs.nocobase.com/20241007122825.png)
 
-![20241007122825](https://static-docs.nocobase.com/20241007122825.png)
+#### Paramètres
 
-#### Parameters
+Vous pouvez transmettre des variables ou des valeurs statiques dans le script via des **paramètres**. Les paramètres permettent de rendre les variables du flux de travail accessibles dans le script. Ici, `name` est le nom de la variable du paramètre et `value` est la valeur correspondante de ce paramètre provenant du contexte du flux de travail.
 
-Use parameters to pass variables or static values from the workflow context into the script, making them accessible in the script logic. `name` represents the parameter name, which will serve as the variable name in the script. `value` represents the parameter value, which can be a workflow variable or a constant.
+#### Contenu du Script
 
-#### Script Content
+Le contenu du script représente une fonction qui contient votre code JavaScript personnalisé. Utilisez `return` pour fournir une sortie qui pourra être utilisée par les nœuds suivants. Vous pouvez utiliser la plupart des fonctionnalités de Node.js, mais certaines restrictions s'appliquent.
 
-The script content functions as a single function where you can write any JavaScript code supported by the Node.js environment. Use the `return` statement to provide a value as the node's output, making it available as a variable for downstream nodes.
+Testez votre script en utilisant le bouton **Test** situé sous l'éditeur de script. Cela ouvrira une boîte de dialogue de test pour simuler l'exécution et afficher les journaux ou les erreurs.
 
-After writing the script, use the test button below the editor to open a test execution dialog. Populate parameters with static values for simulation. The dialog displays the return value and output (logs) after execution.
+![Boîte de dialogue de test](https://static-docs.nocobase.com/20241007153631.png)
 
-![20241007153631](https://static-docs.nocobase.com/20241007153631.png)
+#### Paramètre de délai d'attente
 
-#### Timeout Setting
+Définissez un délai d'attente pour le script en millisecondes. Une valeur de `0` signifie qu'il n'y a pas de délai d'attente, ce qui permet au script de s'exécuter indéfiniment.
 
-Set the timeout in milliseconds. A value of `0` means no timeout.
+#### Continuer le flux de travail en cas d'erreur
 
-#### Continue Workflow on Error
+Si activé, le flux de travail continuera même si le script rencontre une erreur ou un délai d'attente.
 
-If enabled, the workflow will continue even if the script encounters an error or timeout.
+> **Remarque** : Lorsque le script échoue, il ne renverra pas de valeur et la sortie du nœud contiendra le message d'erreur. Si les nœuds suivants dépendent du résultat, traitez l'erreur avec soin.
 
-:::info{title="Note"}
-When a script fails, it will not return a value, and the node's output will contain the error message. If subsequent nodes use the result variable from this script node, handle it carefully.
-:::
+## Fonctionnalités du Nœud JavaScript
 
-## Feature List
+### Version de Node.js
 
-### Node.js Version
+Le nœud JavaScript utilise la même version de Node.js que l'application principale.
 
-The Node.js version matches the version used by the main application.
+### Prise en charge des modules
 
-### Module Support
-
-The script allows restricted use of modules, adhering to the CommonJS standard. Use the `require()` directive to import modules in your code.
-
-It supports Node.js native modules and modules installed in `node_modules` (including dependencies used by NocoBase). To make modules available in the code, declare them in the application environment variable `WORKFLOW_SCRIPT_MODULES`. Separate multiple module names with commas, e.g.:
+Les modules disponibles dans le flux de travail peuvent être utilisés dans le script, y compris ceux installés dans `node_modules`. Les modules doivent être déclarés dans la variable d'environnement `WORKFLOW_SCRIPT_MODULES`. Par exemple :
 
 ```ini
 WORKFLOW_SCRIPT_MODULES=crypto,timers,lodash,dayjs
 ```
 
-:::info{title="Note"}
-Modules not declared in `WORKFLOW_SCRIPT_MODULES`, including native Node.js modules or installed `node_modules`, **cannot** be used in scripts. This strategy allows administrators to control the modules accessible to users, reducing the risk of excessive script permissions.
-:::
+> **Remarque** : Les modules non déclarés dans `WORKFLOW_SCRIPT_MODULES` ne peuvent pas être utilisés. Cela permet aux administrateurs de contrôler les modules accessibles, réduisant ainsi le risque de permissions excessives.
 
-### Global Variables
+### Variables globales
 
-Global variables such as `global`, `process`, `__dirname`, and `__filename` are **not supported**.
+Certaines variables globales comme `global`, `process`, `__dirname` et `__filename` ne sont **pas prises en charge** dans l'environnement du script.
 
 ```js
-console.log(global); // will throw error: "global is not defined"
+console.log(global); // Erreur : "global is not defined"
 ```
 
-### Input Parameters
+### Paramètres d'entrée
 
-Parameters configured in the node are treated as global variables in the script and can be used directly. Only basic types such as `boolean`, `number`, `string`, `object`, and arrays are supported. `Date` objects are converted to ISO-formatted strings when passed. Other complex types, such as custom class instances, cannot be directly passed.
+Les paramètres configurés dans le flux de travail sont accessibles en tant que variables globales dans le script. Seuls les types de base (booléen, nombre, chaîne, objet, tableau) peuvent être passés comme paramètres. Les types complexes, comme les instances de classes personnalisées, ne sont pas pris en charge.
 
-### Return Values
+### Valeurs de retour
 
-Use the `return` statement to return data of basic types (same as parameter rules) to the node as its output. If the code does not contain a `return` statement, the node will have no output value.
+Pour renvoyer des sorties depuis le script, utilisez l'instruction `return` :
 
 ```js
 return 123;
 ```
 
-### Output (Logs)
+Si aucune instruction `return` n'est présente, le nœud n'aura pas de sortie.
 
-**Supports** logging via `console`.
+### Sortie (Journaux)
+
+Vous pouvez enregistrer des messages dans le script en utilisant `console.log()`. Ces journaux seront enregistrés dans les fichiers de journaux du flux de travail.
 
 ```js
-console.log('hello world!');
+console.log('Le flux de travail est en cours d\'exécution');
 ```
 
-The script node’s output will also be recorded in the corresponding workflow’s log files.
+### Opérations asynchrones
 
-### Asynchronous Operations
-
-**Supports** asynchronous functions using `async` and `await`. It also **supports** the global `Promise` object.
+Le nœud JavaScript prend en charge les opérations asynchrones en utilisant `async`/`await` et l'objet `Promise`.
 
 ```js
 async function test() {
@@ -105,18 +97,19 @@ const value = await test();
 return value;
 ```
 
-### Timers
+### Minuteurs
 
-To use methods like `setTimeout`, `setInterval`, or `setImmediate`, import them from the Node.js `timers` package.
+Utilisez `setTimeout`, `setInterval` et `setImmediate` du package `timers` de Node.js pour gérer des opérations chronométrées.
 
 ```js
-const { setTimeout, setInterval, setImmediate, clearTimeout, clearInterval, clearImmediate } = require('timers');
+const { setTimeout, setInterval, setImmediate } = require('timers');
 
 async function sleep(time) {
-  return new Promise((resolve) => setTimeout(resolve, time));
+  return new Promise(resolve => setTimeout(resolve, time));
 }
 
 await sleep(1000);
-
 return 123;
 ```
+
+Ces fonctionnalités permettent de créer des flux de travail complexes capables d'exécuter des logiques personnalisées selon les besoins de chaque scénario.

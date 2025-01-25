@@ -1,87 +1,90 @@
-# Backups Manager
+# Gestionnaire de sauvegardes
 
 <PluginInfo licenseBundled="true" name="backups"></PluginInfo>
 
 ## Introduction
 
-The NocoBase backup manager plugin provides features for fully backing up of the NocoBase database and user uploaded files, including backup's scheduling, downloading, deleting, and restoring operation.
+Le plugin de gestion des sauvegardes NocoBase offre des fonctionnalités pour la sauvegarde complète de la base de données NocoBase et des fichiers téléchargés par les utilisateurs, y compris la planification des sauvegardes, leur téléchargement, leur suppression et leur restauration.
 
 ## Installation
 
-This plugin is built into the NocoBase Professional Edition and does not require manual installation. Please refer to the <a target="_blank" href="https://www.nocobase.com/en/commercial">commercial version</a> for more details.
+Ce plugin est intégré à la version professionnelle de NocoBase et ne nécessite pas d'installation manuelle. Veuillez consulter la [version commerciale](https://www.nocobase.com/en/commercial) pour plus de détails.
 
 :::warning{title="Attention"}
 
-- This plugin is based on the native database client. Before using it, the corresponding database client must be installed in the NocoBase server environment.
-  - [PostgreSQL client installation](./installation/postgres.md)
-  - [MySQL client installation](./installation/mysql.md)
-  - [MariaDB client installation](./installation/mariadb.md)
-- During the restore operation, the version of the target database should not be lower than the version of the database that created the backup.
+- Ce plugin repose sur le client de base de données natif. Avant de l'utiliser, le client de base de données correspondant doit être installé dans l'environnement serveur de NocoBase.
+  - [Installation du client PostgreSQL](./installation/postgres.md)
+  - [Installation du client MySQL](./installation/mysql.md)
+  - [Installation du client MariaDB](./installation/mariadb.md)
+- Lors de la restauration, la version de la base de données cible ne doit pas être inférieure à la version de la base de données qui a créé la sauvegarde.
   :::
 
-## Usage Instructions
+## Instructions d'utilisation
 
-![Main Interface](./static/main-screen.png)
+![Interface principale](./static/main-screen.png)
 
-### Create New Backup
+### Créer une nouvelle sauvegarde
 
-Click the "New backup" button to create a new backup based on the backup configuration and display the backup status in the backup list.
-![Create New Backup](./static/new-backup.png)
+Cliquez sur le bouton "Nouvelle sauvegarde" pour créer une nouvelle sauvegarde en fonction de la configuration de la sauvegarde et afficher le statut de la sauvegarde dans la liste des sauvegardes.
 
-### Restore Backup
+![Créer une nouvelle sauvegarde](./static/new-backup.png)
 
-Supports restoring backups from the backup list or uploading local backup files to restore backups.
-Restore operations are not allowed in the following scenarios:
+### Restaurer une sauvegarde
 
-- When the current NocoBase version is lower than the NocoBase version in the backup file.
-- When the current NocoBase database is inconsistent with the following configurations in the backup file:
-  - dialect
-  - underscored
-  - table prefix
-  - schema
-- When the `Tolerant mode` is not enabled, and the database version when creating the backup is higher than the current application database version.
+La restauration est possible depuis la liste des sauvegardes ou en téléchargeant un fichier de sauvegarde local pour restaurer la sauvegarde.
 
-> **Restore is a full database operation. It is recommended to back up the current database before restoring a backup.**
+Les opérations de restauration ne sont pas autorisées dans les scénarios suivants :
 
-#### Restore from the backup list
+- Lorsque la version actuelle de NocoBase est inférieure à la version de NocoBase dans le fichier de sauvegarde.
+- Lorsque la base de données actuelle de NocoBase est incohérente avec les configurations suivantes dans le fichier de sauvegarde :
+  - dialecte
+  - souligné
+  - préfixe de table
+  - schéma
+- Lorsque le mode `Tolérant` n'est pas activé, et que la version de la base de données lors de la création de la sauvegarde est plus récente que la version actuelle de la base de données de l'application.
 
-Click the "Restore" button of the backup item in the backup list, enter the backup file encryption password in the pop-up window, and click "Confirm" to restore the backup.
+> **La restauration est une opération complète de base de données. Il est recommandé de sauvegarder la base de données actuelle avant de restaurer une sauvegarde.**
 
-> Leave password empty for unencrypted backup.
+#### Restaurer depuis la liste des sauvegardes
 
-> If you need to restore the backup to a lower version of the database, you need to enable the tolerant mode.
+Cliquez sur le bouton "Restaurer" de l'élément de sauvegarde dans la liste des sauvegardes, entrez le mot de passe de chiffrement du fichier de sauvegarde dans la fenêtre contextuelle, puis cliquez sur "Confirmer" pour restaurer la sauvegarde.
 
-![Restore Backup](./static/restore-backup.png)
+> Laissez le mot de passe vide pour une sauvegarde non chiffrée.
 
-#### Restore from local backup file
+> Si vous avez besoin de restaurer la sauvegarde sur une version inférieure de la base de données, vous devez activer le mode tolérant.
 
-Click the `Restore from local backup` button, select the local backup file in the pop-up window, enter the backup file encryption password, and click "Confirm" to restore the backup.
+![Restaurer la sauvegarde](./static/restore-backup.png)
 
-> Leave password empty for unencrypted backup.
+#### Restaurer depuis un fichier de sauvegarde local
 
-> If you need to restore the backup to a lower version of the database, you need to enable the tolerant mode.
+Cliquez sur le bouton `Restaurer depuis une sauvegarde locale`, sélectionnez le fichier de sauvegarde local dans la fenêtre contextuelle, entrez le mot de passe de chiffrement du fichier de sauvegarde, puis cliquez sur "Confirmer" pour restaurer la sauvegarde.
 
-![Restore from Local Backup](./static/restore-from-local.png)
+> Laissez le mot de passe vide pour une sauvegarde non chiffrée.
 
-#### Download Backup File
+> Si vous avez besoin de restaurer la sauvegarde sur une version inférieure de la base de données, vous devez activer le mode tolérant.
 
-Click the `Download` button of the backup item in the backup list to download the backup file.
+![Restaurer depuis une sauvegarde locale](./static/restore-from-local.png)
 
-#### Delete Backup
+#### Télécharger le fichier de sauvegarde
 
-Click the `Delete` button of the backup item in the backup list to delete the backup file.
+Cliquez sur le bouton `Télécharger` de l'élément de sauvegarde dans la liste des sauvegardes pour télécharger le fichier de sauvegarde.
 
-## Backup Settings
+#### Supprimer la sauvegarde
 
-Switch to the "Settings" tab, modify the backup settings, and click `Save` to take effect.
-![Backup Settings](./static/backup-settings.png)
+Cliquez sur le bouton `Supprimer` de l'élément de sauvegarde dans la liste des sauvegardes pour supprimer le fichier de sauvegarde.
 
-### Backup Settings Description
+## Paramètres de sauvegarde
 
-- `Automatic backup`: When enable `Run automatic backup on the cron schedule`, you can set automatic backups at specified times.
-- `Maximum number of backups`: Set the maximum number of locally saved backup files. After exceeding the number, the earliest backup files will be automatically deleted.
-- `Sync backup to cloud storage`: Set the cloud storage location where the backup files are automatically uploaded after successful backup, only support cloud storage.
-- `Backup local storage files`: Whether to include files uploaded by users to the server's local storage (storage/uploads) in the backup.
-- `Restore password`: If a restore password is set, it must be entered when restoring the backup.
+Passez à l'onglet "Paramètres", modifiez les paramètres de sauvegarde et cliquez sur `Sauvegarder` pour appliquer les modifications.
 
-> **Please keep the restore password safe. Forgetting the password will make it impossible to restore the backup file.**
+![Paramètres de sauvegarde](./static/backup-settings.png)
+
+### Description des paramètres de sauvegarde
+
+- **Sauvegarde automatique** : Lorsque l'option `Exécuter une sauvegarde automatique selon un planning cron` est activée, vous pouvez définir des sauvegardes automatiques à des moments spécifiques.
+- **Nombre maximal de sauvegardes** : Définir le nombre maximal de fichiers de sauvegarde stockés localement. Une fois ce nombre dépassé, les fichiers de sauvegarde les plus anciens seront automatiquement supprimés.
+- **Synchroniser la sauvegarde vers le stockage en cloud** : Définir l'emplacement du stockage en cloud où les fichiers de sauvegarde seront automatiquement téléchargés après une sauvegarde réussie. Cela ne prend en charge que le stockage en cloud.
+- **Sauvegarder les fichiers locaux** : Définir si les fichiers téléchargés par les utilisateurs sur le stockage local du serveur (storage/uploads) doivent être inclus dans la sauvegarde.
+- **Mot de passe de restauration** : Si un mot de passe de restauration est défini, il doit être saisi lors de la restauration de la sauvegarde.
+
+> **Veuillez garder le mot de passe de restauration en sécurité. Oublier le mot de passe rendra impossible la restauration du fichier de sauvegarde.**

@@ -1,17 +1,17 @@
-# Overview
+# Vue d'ensemble
 
-NocoBase provides a unique DSL to describe the structure of data, known as Collection, which unifies the data structure from various sources, providing a reliable foundation for data management, analysis, and application.
+NocoBase fournit un DSL unique pour décrire la structure des données, appelé Collection, qui unifie la structure des données provenant de diverses sources, offrant ainsi une base fiable pour la gestion des données, l'analyse et l'application.
 
 ![20240512161522](https://static-docs.nocobase.com/20240512161522.png)
 
-To conveniently use various data models, it supports various types of collections:
+Pour utiliser de manière pratique divers modèles de données, NocoBase prend en charge différents types de collections :
 
-- [General collection](/handbook/data-source-main/general-collection): Built-in common system fields;
-- [Inheritance collection](/handbook/data-source-main/inheritance-collection): You can create a parent collection and then derive a child collection from the parent collection. The child collection will inherit the structure of the parent collection and can also define its own columns.
-- [Tree collection](/handbook/collection-tree): Tree structure collection, currently only supports adjacency collection design;
-- [Calendar Tabcollectionle](/handbook/calendar/calendar-collection): Used to create calendar-related event collections;
-- [File collection](/handbook/file-manager/file-collection): Used for file storage management;
-- [Expression collection](/handbook/workflow-dynamic-calculation/expression): Used for dynamic expression scenarios in workflows;
-- [SQL collection](/handbook/collection-sql): Not an actual database collection, but quickly presents SQL queries in a structured manner;
-- [Connect to database view](/handbook/collection-view): Connects to existing database views;
-- [Connect to foreign data](/handbook/collection-fdw): Allows the database system to directly access and query data in external data sources, based on FDW technology.
+- [Collection générale](/handbook/data-source-main/general-collection) : Champs système courants intégrés ;
+- [Collection par héritage](/handbook/data-source-main/inheritance-collection) : Vous pouvez créer une collection parente, puis dériver une collection enfant de cette collection parente. La collection enfant héritera de la structure de la collection parente et pourra également définir ses propres colonnes ;
+- [Collection arborescente](/handbook/collection-tree) : Collection sous forme de structure arborescente, actuellement seule la conception de collection d'adjacence est prise en charge ;
+- [Collection de calendrier](/handbook/calendar/calendar-collection) : Utilisée pour créer des collections d'événements liées au calendrier ;
+- [Collection de fichiers](/handbook/file-manager/file-collection) : Utilisée pour la gestion du stockage des fichiers ;
+- [Collection d'expressions](/handbook/workflow-dynamic-calculation/expression) : Utilisée pour des scénarios d'expressions dynamiques dans les flux de travail ;
+- [Collection SQL](/handbook/collection-sql) : Ce n'est pas une collection de base de données réelle, mais elle permet de présenter rapidement des requêtes SQL de manière structurée ;
+- [Se connecter à une vue de base de données](/handbook/collection-view) : Se connecte à des vues de base de données existantes ;
+- [Se connecter à des données externes](/handbook/collection-fdw) : Permet au système de base de données d'accéder directement aux données dans des sources de données externes, basé sur la technologie FDW.

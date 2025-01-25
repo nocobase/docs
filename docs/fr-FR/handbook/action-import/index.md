@@ -1,60 +1,60 @@
-# Import Data
+# Importation de données
 
-## Overview
+## Vue d'ensemble
 
 ## Installation
 
-## Import Guidelines
+## Directives d'importation
 
-### Numeric Fields
+### Champs numériques
 
-Numeric and percentage values are supported, while entries like `N/A` or `-` will be excluded.
+Les valeurs numériques et en pourcentage sont prises en charge, tandis que des entrées telles que `N/A` ou `-` seront exclues.
 
-| Number 1 | Percentage | Number 2 | Number 3 |
-| -------- | ---------- | -------- | -------- |
-| 123      | 25%        | N/A      | -        |
+| Nombre 1 | Pourcentage | Nombre 2 | Nombre 3 |
+| -------- | ----------- | -------- | -------- |
+| 123      | 25%         | N/A      | -        |
 
-After conversion to JSON:
+Après conversion en JSON :
 
 ```ts
 {
-  "Number 1": 123,
-  "Percentage": 0.25,
-  "Number 2": null,
-  "Number 3": null,
+  "Nombre 1": 123,
+  "Pourcentage": 0.25,
+  "Nombre 2": null,
+  "Nombre 3": null,
 }
 ```
 
-### Boolean Fields
+### Champs booléens
 
-The following text values are recognized (case-insensitive for English):
+Les valeurs textuelles suivantes sont reconnues (insensible à la casse pour l'anglais) :
 
 - `Yes`, `Y`, `True`, `1`, `是`
 - `No`, `N`, `False`, `0`, `否`
 
-| Field 1 | Field 2 | Field 3 | Field 4 | Field 5 |
+| Champ 1 | Champ 2 | Champ 3 | Champ 4 | Champ 5 |
 | ------- | ------- | ------- | ------- | ------- |
 | No      | Yes     | Y       | true    | 0       |
 
-After conversion to JSON:
+Après conversion en JSON :
 
 ```ts
 {
-  "Field 1": false,
-  "Field 2": true,
-  "Field 3": true,
-  "Field 4": true,
-  "Field 5": false,
+  "Champ 1": false,
+  "Champ 2": true,
+  "Champ 3": true,
+  "Champ 4": true,
+  "Champ 5": false,
 }
 ```
 
-### Date Fields
+### Champs de date
 
 | DateOnly            | Local (+08:00)      | GMT                 |
 | ------------------- | ------------------- | ------------------- |
 | 2023-01-18 22:22:22 | 2023-01-18 22:22:22 | 2023-01-18 22:22:22 |
 
-After conversion to JSON:
+Après conversion en JSON :
 
 ```ts
 {
@@ -64,53 +64,53 @@ After conversion to JSON:
 }
 ```
 
-### Select Fields
+### Champs de sélection
 
-Option values and labels can be used interchangeably as input text. Multiple options can be separated by commas (`,` `，`) or by full-width commas ( `、`).
+Les valeurs et les étiquettes des options peuvent être utilisées de manière interchangeable comme texte d'entrée. Plusieurs options peuvent être séparées par des virgules (`,` `，`) ou des virgules en pleine largeur ( `、`).
 
-For instance, if the `Priority` field has the following options:
+Par exemple, si le champ `Priority` a les options suivantes :
 
-| Option Value | Option Label |
-| ------------ | ------------ |
-| low          | Low          |
-| medium       | Medium       |
-| high         | High         |
+| Valeur de l'option | Libellé de l'option |
+| ------------------ | ------------------- |
+| low                | Low                 |
+| medium             | Medium              |
+| high               | High                |
 
-Both the value and label can be used as input.
+Les valeurs et libellés peuvent être utilisés comme entrée.
 
 | Priority |
 | -------- |
 | High     |
 | low      |
 
-After conversion to JSON:
+Après conversion en JSON :
 
 ```ts
 [{ Priority: 'high' }, { Priority: 'low' }];
 ```
 
-### Chinese Administrative Region Fields
+### Champs de région administrative chinoise
 
-| Region 1       | Region 2       |
-| -------------- | -------------- |
-| Beijing/City   | Tianjin/City   |
+| Région 1         | Région 2         |
+| ---------------- | ---------------- |
+| Beijing/City     | Tianjin/City     |
 
-After conversion to JSON:
+Après conversion en JSON :
 
 ```ts
 {
-  "Region 1": ["11", "1101"],
-  "Region 2": ["12", "1201"]
+  "Région 1": ["11", "1101"],
+  "Région 2": ["12", "1201"]
 }
 ```
 
-### Attachment Fields
+### Champs de pièce jointe
 
-| Attachment                                |
-| ----------------------------------------- |
-| https://www.nocobase.com/images/logo.png  |
+| Attachment                                 |
+| ------------------------------------------ |
+| https://www.nocobase.com/images/logo.png   |
 
-After conversion to JSON:
+Après conversion en JSON :
 
 ```ts
 {
@@ -125,30 +125,30 @@ After conversion to JSON:
 }
 ```
 
-### Relationship Fields
+### Champs de relation
 
-Multiple values can be separated by commas (`,` `，`) or full-width commas ( `、`).
+Plusieurs valeurs peuvent être séparées par des virgules (`,` `，`) ou des virgules en pleine largeur ( `、`).
 
-| Department/Name | Category/Title   |
-| --------------- | ---------------- |
-| Development     | Category 1, Category 2 |
+| Département/Nom  | Catégorie/Titre          |
+| ---------------- | ------------------------ |
+| Development      | Catégorie 1, Catégorie 2 |
 
-After conversion to JSON:
+Après conversion en JSON :
 
 ```ts
 {
-  "Department": [1], // 1 is the record ID for the department named "Development"
-  "Category": [1, 2], // 1 and 2 are the record IDs for categories titled "Category 1" and "Category 2"
+  "Département": [1], // 1 est l'ID de l'enregistrement pour le département nommé "Development"
+  "Catégorie": [1, 2], // 1 et 2 sont les IDs des enregistrements pour les catégories intitulées "Catégorie 1" et "Catégorie 2"
 }
 ```
 
-### JSON Fields
+### Champs JSON
 
 | JSON1              |
 | ------------------ |
 | {"key":"value"}    |
 
-After conversion to JSON:
+Après conversion en JSON :
 
 ```ts
 {
@@ -156,13 +156,13 @@ After conversion to JSON:
 }
 ```
 
-### Map Geometry Fields
+### Champs de géométrie de carte
 
-| Point  | Line         | Polygon           | Circle |
+| Point  | Ligne        | Polygon           | Circle |
 | ------ | ------------ | ----------------- | ------ |
 | 1,2    | (1,2),(3,4)  | (1,2),(3,4),(1,2) | 1,2,3  |
 
-After conversion to JSON:
+Après conversion en JSON :
 
 ```ts
 {
@@ -173,40 +173,40 @@ After conversion to JSON:
 }
 ```
 
-## Custom Import Format
+## Format d'importation personnalisé
 
-You can register custom `ValueParser` methods through the `db.registerFieldValueParsers()` method. For example:
+Vous pouvez enregistrer des méthodes `ValueParser` personnalisées via la méthode `db.registerFieldValueParsers()`. Par exemple :
 
 ```ts
 import { BaseValueParser } from '@nocobase/database';
 
 class PointValueParser extends BaseValueParser {
   async setValue(value) {
-    if (Array isArray(value)) {
+    if (Array.isArray(value)) {
       this.value = value;
-    } else if (typeof value was string) {
+    } else if (typeof value === 'string') {
       this.value = value.split(',');
     } else {
-      this.errors.push('Value invalid');
+      this.errors.push('Valeur invalide');
     }
   }
 }
 
 const db = new Database();
 
-// For fields of type=point, the data will be parsed using PointValueParser during import
+// Pour les champs de type=point, les données seront analysées en utilisant PointValueParser lors de l'importation
 db.registerFieldValueParsers({
   point: PointValueParser,
 });
 ```
 
-### Example Import
+### Exemple d'importation
 
 | Point |
 | ----- |
 | 1,2   |
 
-After conversion to JSON:
+Après conversion en JSON :
 
 ```ts
 {

@@ -153,6 +153,10 @@ Sync signal management. Refer to [SyncManager](./sync-manager.md).
 
 User authentication management. Refer to [AuthManager](../auth/auth-manager.md).
 
+### `auditManager`
+
+Resource audit management. Refer to [AuditManager](./audit-manager).
+
 ### `cronJobManager`
 
 Application cron job management.

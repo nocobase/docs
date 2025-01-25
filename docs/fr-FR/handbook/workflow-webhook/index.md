@@ -1,93 +1,93 @@
-# Webhook Event
+# Événement Webhook
 
 <PluginInfo name="workflow-webhook" link="/handbook/workflow-webhook" commercial="true"></PluginInfo>
 
-The Webhook trigger provides a system-generated URL for third-party systems to call via HTTP POST requests. This URL triggers workflow execution when specific events occur, such as payment callbacks or notifications.
+Le déclencheur Webhook fournit une URL générée par le système pour que des systèmes tiers puissent l'appeler via des requêtes HTTP POST. Cette URL déclenche l'exécution du flux de travail lorsque des événements spécifiques se produisent, tels que des rappels de paiement ou des notifications.
 
-## User Guide
+## Guide de l'utilisateur
 
-### Creating a Trigger
+### Création d'un Déclencheur
 
-Create a workflow, select "Webhook Event" as the workflow type:
+Créez un flux de travail et sélectionnez "Événement Webhook" comme type de flux de travail :
 
 ![20241210105049](https://static-docs.nocobase.com/20241210105049.png)
 
-:::info{title="Tip"}
-The key difference between "Synchronous" and "Asynchronous" workflows lies in their response behavior. Synchronous workflows wait until the workflow execution is complete before returning a response. In contrast, asynchronous workflows immediately return a pre-configured response, then execute the workflow in the background.
+:::info{title="Astuce"}
+La principale différence entre les flux de travail "Synchrones" et "Asynchrones" réside dans leur comportement de réponse. Les flux de travail synchrones attendent que l'exécution du flux de travail soit terminée avant de renvoyer une réponse. En revanche, les flux de travail asynchrones renvoient immédiatement une réponse préconfigurée, puis exécutent le flux de travail en arrière-plan.
 :::
 
-### Trigger Configuration
+### Configuration du Déclencheur
 
 ![20241210105441](https://static-docs.nocobase.com/20241210105441.png)
 
-#### Webhook URL
+#### URL Webhook
 
-The URL is automatically generated and tied to the workflow. Use the copy button to paste the URL into the third-party system.  
+L'URL est générée automatiquement et liée au flux de travail. Utilisez le bouton de copie pour coller l'URL dans le système tiers.
 
-HTTP requests must use the POST method. Other methods return a `405` error.  
+Les requêtes HTTP doivent utiliser la méthode POST. D'autres méthodes retournent une erreur `405`.
 
-#### Security
+#### Sécurité
 
-Basic HTTP authentication is supported. By enabling this option and setting a username and password, you can secure the Webhook. The third-party system must include the username and password in the Webhook URL for authentication (Criteria Detail: [MDN: HTTP authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#basic_authentication_scheme)).
+Une authentification HTTP de base est supportée. En activant cette option et en définissant un nom d'utilisateur et un mot de passe, vous pouvez sécuriser le Webhook. Le système tiers doit inclure le nom d'utilisateur et le mot de passe dans l'URL Webhook pour l'authentification (Détails : [MDN : Authentification HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#basic_authentication_scheme)).
 
-When the user name and password are set, the system checks whether the user name and password in the request match, and returns a `401` error when no match is provided or no match is provided.
+Lorsque le nom d'utilisateur et le mot de passe sont définis, le système vérifie si le nom d'utilisateur et le mot de passe dans la requête correspondent, et renvoie une erreur `401` si aucune correspondance n'est fournie.
 
-#### Parsing Request Data
+#### Analyse des Données de la Requête
 
-Data in HTTP requests must be parsed to make it usable in Workflow. Parsed data is available as variables in subsequent nodes.
+Les données dans les requêtes HTTP doivent être analysées pour les rendre utilisables dans le flux de travail. Les données analysées sont disponibles en tant que variables dans les nœuds suivants.
 
-Parsing an HTTP request is divided into three parts:
+L'analyse d'une requête HTTP est divisée en trois parties :
 
-1. Request Headers
+1. **En-têtes de la Requête**
 
-   Headers are simple key-value pairs in string format. Specify the fields you need, such as `Date` , `X-Request-Id`, etc.
+   Les en-têtes sont de simples paires clé-valeur au format chaîne. Spécifiez les champs dont vous avez besoin, tels que `Date`, `X-Request-Id`, etc.
 
-2. Request Parameters
+2. **Paramètres de la Requête**
 
-  Request parameter is the URL of query parameters, such as `http://localhost:13000/api/webhook:trigger/1hfmkioou0d? query=1`  'query' parameter. Paste the complete URL sample or query only the parameter part of the sample and click the parse button to automatically parse the key-value pairs.
-  
-  ! [20241210111155](https://static-docs.nocobase.com/20241210111155.png)
-  
-  Automatic parsing converts the parameter portion of the URL into a JSON structure, and generates a path based on the parameter hierarchy such as `query[0]`, `query[0].a`, etc. The path name can be manually modified if it does not meet the requirements, but usually does not need to be modified. Aliases are optional for displaying the name of a variable when used as a variable. At the same time, all parameter tables in the sample are generated. If there are unnecessary parameters, you can delete them.
-  
-3. Request Body
+   Le paramètre de la requête est l'URL des paramètres de la requête, comme `http://localhost:13000/api/webhook:trigger/1hfmkioou0d? query=1`. Copiez l'URL complète ou collez uniquement la partie du paramètre de la requête, puis cliquez sur le bouton d'analyse pour analyser automatiquement les paires clé-valeur.
 
-  The request Body is the body of the HTTP request. Currently, only the request body in Content-Type format application/json is supported. You can directly configure the path to be parsed, or enter a JSON example and click the parse button for automatic parsing.
+   ![20241210111155](https://static-docs.nocobase.com/20241210111155.png)
 
-  ! [20241210112529](https://static-docs.nocobase.com/20241210112529.png)
+   L'analyse automatique convertit la partie paramètre de l'URL en une structure JSON et génère un chemin basé sur la hiérarchie des paramètres, tel que `query[0]`, `query[0].a`, etc. Le nom du chemin peut être modifié manuellement si nécessaire, mais généralement, il n'est pas nécessaire de le modifier. Les alias sont optionnels pour afficher le nom d'une variable lorsqu'elle est utilisée en tant que variable. En même temps, toutes les tables des paramètres dans l'exemple sont générées. Si des paramètres inutiles existent, vous pouvez les supprimer.
 
-  Automatic parsing JSON structure will be the key/value pair into paths, such as `{" a ": 1," b ": {" c" : 2}}` generates `a`, `b`, `b.c` path, etc. Aliases are optional for displaying the name of a variable when used as a variable. At the same time, all parameter tables in the sample are generated. If there are unnecessary parameters, you can delete them.
+3. **Corps de la Requête**
 
-#### Response Settings
+   Le corps de la requête est le contenu de la requête HTTP. Actuellement, seuls les corps de requête au format `application/json` sont pris en charge. Vous pouvez configurer directement le chemin à analyser ou entrer un exemple JSON et cliquer sur le bouton d'analyse pour une analyse automatique.
 
-The response part of Webhook is configured differently in synchronous and asynchronous workflows. The asynchronous workflows are directly configured in the trigger. After receiving the Webhook request, the response configuration in the trigger is immediately returned to the third-party system before the workflow is executed. Synchronous workflows need to be handled in the process by adding response nodes as required by the business (Detail: [Response nodes](#response nodes)).
+   ![20241210112529](https://static-docs.nocobase.com/20241210112529.png)
 
-Typically, the response to an asynchronously triggered Webhook event has a status code of `200` and a response body of `ok`. You can also customize the status code, response header, and response body of the response.
+   L'analyse automatique du JSON transforme la paire clé/valeur en chemins, comme `{"a": 1, "b": {"c": 2}}` génère `a`, `b`, `b.c`, etc. Les alias sont optionnels pour afficher le nom d'une variable lorsqu'elle est utilisée en tant que variable. En même temps, toutes les tables des paramètres dans l'exemple sont générées. Si des paramètres inutiles existent, vous pouvez les supprimer.
 
-! [20241210114312](https://static-docs.nocobase.com/20241210114312.png)
+#### Paramètres de Réponse
 
-### Response node
+La partie réponse du Webhook est configurée différemment dans les flux de travail synchrones et asynchrones. Les flux de travail asynchrones sont directement configurés dans le déclencheur. Après avoir reçu la requête Webhook, la configuration de la réponse dans le déclencheur est immédiatement renvoyée au système tiers avant l'exécution du flux de travail. Les flux de travail synchrones doivent être traités dans le processus en ajoutant des nœuds de réponse selon les besoins de l'entreprise (Détails : [Nœuds de Réponse](#response-nodes)).
 
-It is only supported for use in synchronous mode Webhook workflows for responses returned to third-party systems. For example, if there is an unexpected result (such as an error or failure) during the processing of a payment callback, the response node can return an error response to the third-party system so that some third-party systems can retry later according to the status.
+Typiquement, la réponse à un événement Webhook déclenché de manière asynchrone a un code d'état `200` et un corps de réponse de `ok`. Vous pouvez également personnaliser le code d'état, les en-têtes de réponse et le corps de la réponse.
 
-In addition, the execution of the response node terminates the execution of the workflow, and subsequent nodes do not execute. If the entire workflow is not configured with a response node, the system will automatically respond according to the state of the process execution, returning `200` for successful execution and `500` for failed execution.
+![20241210114312](https://static-docs.nocobase.com/20241210114312.png)
 
-#### Creating a response node
+### Nœud de Réponse
 
-In the workflow configuration interface, click the plus sign ("+") button in the process to add the "Response" node:
+Il est uniquement pris en charge pour les flux de travail Webhook en mode synchrone afin de renvoyer des réponses aux systèmes tiers. Par exemple, si un résultat inattendu se produit (tel qu'une erreur ou un échec) lors du traitement d'un rappel de paiement, le nœud de réponse peut renvoyer une réponse d'erreur au système tiers afin que certains systèmes tiers puissent réessayer plus tard en fonction du statut.
 
-! [20241210115120](https://static-docs.nocobase.com/20241210115120.png)
+De plus, l'exécution du nœud de réponse termine l'exécution du flux de travail, et les nœuds suivants ne sont pas exécutés. Si l'ensemble du flux de travail n'est pas configuré avec un nœud de réponse, le système répondra automatiquement en fonction de l'état de l'exécution du processus, renvoyant `200` pour une exécution réussie et `500` pour une exécution échouée.
 
-#### Response configuration
+#### Création d'un Nœud de Réponse
 
-! [20241210115500](https://static-docs.nocobase.com/20241210115500.png)
+Dans l'interface de configuration du flux de travail, cliquez sur le signe plus ("+") dans le processus pour ajouter un nœud "Réponse" :
 
-Variables in the workflow context can be used in the response body.
+![20241210115120](https://static-docs.nocobase.com/20241210115120.png)
 
-#### Example
+#### Configuration de la Réponse
 
-In the Webhook workflow in synchronous mode, different responses can be returned according to different business conditions, as shown in the figure below:
+![20241210115500](https://static-docs.nocobase.com/20241210115500.png)
 
-! [20241210120655](https://static-docs.nocobase.com/20241210120655.png)
+Les variables dans le contexte du flux de travail peuvent être utilisées dans le corps de la réponse.
 
-Check whether a service status is satisfied through the conditional branch node. If yes, a success message is displayed. Otherwise, a failure message is displayed.
+#### Exemple
+
+Dans le flux de travail Webhook en mode synchrone, différentes réponses peuvent être renvoyées selon les différentes conditions métier, comme illustré ci-dessous :
+
+![20241210120655](https://static-docs.nocobase.com/20241210120655.png)
+
+Vérifiez si un statut de service est satisfait via le nœud de branchement conditionnel. Si oui, un message de succès est affiché. Sinon, un message d'échec est affiché.

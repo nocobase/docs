@@ -1,105 +1,45 @@
-# Popup
+# UI Editor
 
-## Introduction
+## What You See Is What You Get
 
-A popup window is a small window on the page, used to display some extended content within the current page. It can be presented in the form of a drawer or a dialog box, such as the details of a particular order or product, and can also be used for editing data. Popup operations play a very important role in the NocoBase interface configuration. Many blocks provide various popup operations, which can be used to add, view, edit data, etc. At the same time, various popup operations can be customized to adapt to various scenarios and needs.
+NocoBase employs a what-you-see-is-what-you-get (WYSIWYG) interface configuration mode. By clicking the UI Editor button, you can switch between the configuration mode and the usage mode.
 
-## Types & Size
+![2024-01-20_11-42-20](https://static-docs.nocobase.com/2024-01-20_11-42-20.jpg)
 
-> In version v1.3.0-alpha and above, it supports opening as a [page](/handbook/ui/pop-up#page).
+Usage mode:
 
-Pop-ups come in two types: drawer and dialog. Configure the type and size of the pop-up during the configuration of actions.
+![2024-01-20_11-28-46](https://static-docs.nocobase.com/2024-01-20_11-28-46.jpg)
 
-<video width="100%" height="440" controls>
+Configuration mode:
 
- <source src="https://static-docs.nocobase.com/z-2024-06-13-09.43.42-2024-06-13-09-44-18.mp4">
+![2024-01-20_11-29-50](https://static-docs.nocobase.com/2024-01-20_11-29-50.jpg)
 
-</video>
+## Layout Template
 
-### Drawer
+NocoBase includes a layout template with navigation areas on the top and left sides, and a content area on the right.
 
-![2024-06-13_09-45-33-2024-06-13-09-46-11](https://static-docs.nocobase.com/2024-06-13_09-45-33-2024-06-13-09-46-11.png)
+![2024-01-20_11-36-38](https://static-docs.nocobase.com/2024-01-20_11-36-38.jpg)
 
-### Dialog
+## Configuration Items
 
-![2024-06-13_09-45-56-2024-06-13-09-46-20](https://static-docs.nocobase.com/2024-06-13_09-45-56-2024-06-13-09-46-20.png)
+Upon entering the interface configuration mode, orange configurable items will appear on the interface. Typically, the entry point for each configurable element's options is located at the top right corner of that element. Almost all elements can be configured and reviewed in real-time on the interface, with the following as some examples:
 
-### Page
+Configuration items for the menu:
 
-:::info{title=Tip}
-The version of NocoBase needs to be v1.3.0-alpha or above.
-:::
+![2024-01-20_11-30-29](https://static-docs.nocobase.com/2024-01-20_11-30-29.jpg)
 
-![20240809170648](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240809170648.png)
+Configuration items for the page:
 
-## Use Cases
+![2024-01-20_11-30-52](https://static-docs.nocobase.com/2024-01-20_11-30-52.jpg)
 
-The main scenarios of the popup window currently include:
+Configuration items for the block:
 
-- Popup actions of the block, which can be used to add, view, edit the data of the block;
-- Popup actions of relationship data, which can be used to view and edit the extended information of relationship data.
+![2024-01-20_11-31-20](https://static-docs.nocobase.com/2024-01-20_11-31-20.jpg)
 
-### Popup Actions of the Block
+Configuration items for the action:
 
-![20240511141127](https://static-docs.nocobase.com/20240511141127.png)
+![2024-01-20_11-31-50](https://static-docs.nocobase.com/2024-01-20_11-31-50.jpg)
 
-### Popup Actions of Relationship Data
+Configuration items for the table column:
 
-![20240511141247](https://static-docs.nocobase.com/20240511141247.png)
-
-### Sharing a Single Record's Data
-
-:::info{title=Tip}
-The version of NocoBase needs to be v1.3.0-alpha or above.
-:::
-
-If you want to share the data of a single record with others, you can directly copy the URL of the browser address bar after opening the popup window, and then share it with others. When others open this URL, the corresponding popup window will automatically pop up on the page.
-
-![20240809173339_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240809173339_rec_.gif)
-
-## Adding Blocks
-
-The block added in the popup window can currently be used to add the following types of blocks.
-
-![20240511141349](https://static-docs.nocobase.com/20240511141349.png)
-
-The data in the popup window is divided into three dimensions:
-
-- Current record: used to display the current record;
-- Relationship record: used to display the relationship data related to the current record;
-- Other records: used to display data from other tables;
-
-![20240511141442](https://static-docs.nocobase.com/20240511141442.png)
-
-### Current Record
-
-Example: Display the current order data.
-
-![20240511141809](https://static-docs.nocobase.com/20240511141809.gif)
-
-### Relationship Record
-
-Example: Display the product data associated with the current order.
-
-![20240511143040](https://static-docs.nocobase.com/20240511143040.gif)
-
-### Other Records
-
-Example: Configure the warehouse details block in the popup operation of the order table block.
-
-![20240511143415](https://static-docs.nocobase.com/20240511143415.gif)
-
-## Use Variables
-
-- Row action popup: Each popup has a "Current popup record" variable, representing the current row record.
-- Association field popup: Each popup has a "Current popup record" variable, representing the clicked relationship record.
-
-The blocks in the popup can use the "Current popup record" variable, with the following use cases:
-
-- Configuring data scope for blocks
-- Configuring data scope for association fields
-- Configuring default values for fields (form for adding data)
-- Configuring linkage rules for actions
-- Assign field values configuration for form submit actions
-
-For more content, refer to [Variables](/handbook/ui/variables)
+![2024-01-20_11-32-08](https://static-docs.nocobase.com/2024-01-20_11-32-08.jpg)

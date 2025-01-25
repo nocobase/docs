@@ -1,23 +1,23 @@
-# Node Configuration
+# Configuration du Nœud
 
-## Creating a Node
+## Création d'un Nœud
 
-Create a dynamic calculation node:
+Créez un nœud de calcul dynamique :
 
-![Creating a Dynamic Calculation Node](https://static-docs.nocobase.com/14613f73a7dfc822a30276c8c04cdeb7.png)
+![Création d'un Nœud de Calcul Dynamique](https://static-docs.nocobase.com/14613f73a7dfc822a30276c8c04cdeb7.png)
 
-## Node Configuration
+## Configuration du Nœud
 
-## Calculation Expression
+### Expression de Calcul
 
-Unlike the expression options in a standard calculation node, dynamic expressions must be selected based on preloaded data rather than directly inputting the expression. Choose the preloaded product discount rule data from the trigger:
+Contrairement aux options d'expressions dans un nœud de calcul standard, les expressions dynamiques doivent être sélectionnées en fonction des données préchargées plutôt que d'entrer directement l'expression. Choisissez les données de règle de réduction produit préchargées à partir du déclencheur :
 
-![Select Dynamic Expression Data](https://static-docs.nocobase.com/21ccc63e604dd90b7d26c3c33c12d671.png)
+![Sélectionner les Données d'Expression Dynamique](https://static-docs.nocobase.com/21ccc63e604dd90b7d26c3c33c12d671.png)
 
-### Variable Data Source
+### Source de Données de Variable
 
-You also need to select the data row object from the table to be used as a variable in the expression. This can be chosen from the workflow context, where results have been preloaded or queried. The object must be a data row from the table associated with the expression data. In this case, select the product data:
+Vous devez également sélectionner l'objet de ligne de données à partir du tableau qui sera utilisé comme variable dans l'expression. Cela peut être choisi à partir du contexte du workflow, où les résultats ont été préchargés ou interrogés. L'objet doit être une ligne de données du tableau associé aux données d'expression. Dans ce cas, sélectionnez les données produit :
 
-![Select Variable Data Source](https://static-docs.nocobase.com/afbffe9661539d26e4b175ae8a4b28f7.png)
+![Sélectionner la Source de Données de Variable](https://static-docs.nocobase.com/afbffe9661539d26e4b175ae8a4b28f7.png)
 
-Saving the node configuration completes the entire setup process.
+Une fois la configuration du nœud enregistrée, le processus de configuration est terminé.

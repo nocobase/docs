@@ -1,19 +1,19 @@
-# Action Configuration
+# Configuration de l'Action
 
-Within any data block, you have the option to add a "Trigger Workflow" button to the action bar for individual rows of data, whether in forms, tables, or detail pages:
+Dans chaque bloc de données, vous avez la possibilité d'ajouter un bouton "Déclencher un Workflow" à la barre d'action pour les lignes de données individuelles, que ce soit dans des formulaires, des tableaux ou des pages de détails :
 
-![Add Action Button to Block_Form](https://static-docs.nocobase.com/20240509165428.png)
+![Ajouter un Bouton d'Action au Bloc_Formulaire](https://static-docs.nocobase.com/20240509165428.png)
 
-![Add Action Button to Block_Table Row](https://static-docs.nocobase.com/20240509165340.png)
+![Ajouter un Bouton d'Action au Bloc_Ligne du Tableau](https://static-docs.nocobase.com/20240509165340.png)
 
-![Add Action Button to Block_Detail](https://static-docs.nocobase.com/20240509165545.png)
+![Ajouter un Bouton d'Action au Bloc_Détail](https://static-docs.nocobase.com/20240509165545.png)
 
-Once the button is added, you can link it to the workflow you previously created:
+Une fois le bouton ajouté, vous pouvez le lier au workflow que vous avez créé au préalable :
 
-![Button Bind to Workflow](https://static-docs.nocobase.com/20240509165631.png)
+![Lier le Bouton au Workflow](https://static-docs.nocobase.com/20240509165631.png)
 
-![Select Workflow to Bind](https://static-docs.nocobase.com/20240509165658.png)
+![Sélectionner le Workflow à Lier](https://static-docs.nocobase.com/20240509165658.png)
 
-Afterward, simply clicking this button will initiate the custom action event:
+Ensuite, en cliquant simplement sur ce bouton, l'événement d'action personnalisé sera déclenché :
 
-![Trigger Result After Button Click](https://static-docs.nocobase.com/20240509170453.png)
+![Résultat du Déclenchement Après Clic sur le Bouton](https://static-docs.nocobase.com/20240509170453.png)

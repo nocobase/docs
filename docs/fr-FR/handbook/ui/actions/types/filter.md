@@ -1,21 +1,21 @@
-# Filter
+# Filtrer
 
 ## Introduction
 
-Filtering operations are commonly found within data blocks, allowing users to filter data by setting various conditions. It's essential to note that if a data block has a predefined data range, the filtering criteria will be combined with the range conditions to create the final filtering rules.
+Les opérations de filtrage sont couramment utilisées dans les blocs de données, permettant aux utilisateurs de filtrer les données en définissant diverses conditions. Il est important de noter que si un bloc de données a une plage de données prédéfinie, les critères de filtrage seront combinés avec les conditions de la plage pour créer les règles de filtrage finales.
 
 ![20240413105921](https://static-docs.nocobase.com/20240413105921.png)
 
-## Operation Configuration Items
+## Éléments de Configuration de l'Opération
 
 ![20240413110004](https://static-docs.nocobase.com/20240413110004.png)
 
-### Filterable Fields
+### Champs Filtrables
 
-By default, all fields in the table are enabled, and only enabled fields can be selected from the condition field list.
+Par défaut, tous les champs de la table sont activés, et seuls les champs activés peuvent être sélectionnés dans la liste des champs de condition.
 
-Fields from related tables can also be used as filterable fields.
+Les champs des tables liées peuvent également être utilisés comme champs filtrables.
 
 ![20240423200041](https://static-docs.nocobase.com/20240423200041.png)
 
-- [Edit Button](/handbook/ui/actions/action-settings/edit-button)
+- [Bouton de Modification](/handbook/ui/actions/action-settings/edit-button)

@@ -1,89 +1,87 @@
-# Association Field Component
+# Composant de Champ d'Association
 
 ## Introduction
 
-NocoBase's association field components are designed to help users better display and handle associated data. Regardless of the type of relationship, these components are flexible and universal. Users can select and configure these components according to specific needs.
+Les composants de champ d'association de NocoBase sont conçus pour aider les utilisateurs à mieux afficher et gérer les données associées. Quel que soit le type de relation, ces composants sont flexibles et universels. Les utilisateurs peuvent sélectionner et configurer ces composants en fonction des besoins spécifiques.
 
-### Dropdown Selector
+### Sélecteur Déroulant
 
-All association fields whose target collection is not a file collection, the default component in the edit state is a drop-down selector. The drop-down option displays the value of the title field, which is suitable for quickly selecting associated data by displaying a key field information.
+Tous les champs d'association dont la collection cible n'est pas une collection de fichiers, le composant par défaut en mode édition est un sélecteur déroulant. L'option déroulante affiche la valeur du champ titre, ce qui est adapté pour sélectionner rapidement les données associées en affichant les informations d'un champ clé.
 
 ![20240429205659](https://static-docs.nocobase.com/20240429205659.png)
 
-For more information, refer to [Dropdown Selector](/handbook/ui/fields/specific/select)
+Pour plus d'informations, consultez [Sélecteur Déroulant](/handbook/ui/fields/specific/select)
 
-### Record Picker
+### Sélecteur d'Enregistrement
 
-The record picker presents data in the form of a pop-up window. Users can configure relationship fields (including relationship's relationship fields) in the record selector, allowing for more accurate selection of associated data.
+Le sélecteur d'enregistrement présente les données sous forme de fenêtre contextuelle. Les utilisateurs peuvent configurer des champs de relation (y compris les champs de relation des relations) dans le sélecteur d'enregistrement, permettant ainsi une sélection plus précise des données associées.
 
 ![20240429210824](https://static-docs.nocobase.com/20240429210824.png)
 
-For more information, refer to [Record Picker](/handbook/ui/fields/specific/picker)
+Pour plus d'informations, consultez [Sélecteur d'Enregistrement](/handbook/ui/fields/specific/picker)
 
-### Cascade Selector
+### Sélecteur Cascade
 
-The cascade selector is suitable for relationship fields where the target collection is a tree collection. It allows users to select data according to the hierarchical structure of the tree collection data. It is applicable to scenarios such as province-city-district, industry classification, product attributes, and other cascade selection scenarios.
+Le sélecteur cascade est adapté aux champs de relation où la collection cible est une collection arborescente. Il permet aux utilisateurs de sélectionner les données en fonction de la structure hiérarchique des données de la collection arborescente. Il est applicable à des scénarios tels que province-ville-arrondissement, classification industrielle, attributs de produit, et autres scénarios de sélection en cascade.
 
 ![20240429213256](https://static-docs.nocobase.com/20240429213256.png)
 
-For more information, refer to [Cascade Selector](/handbook/ui/fields/specific/cascade-select)
+Pour plus d'informations, consultez [Sélecteur Cascade](/handbook/ui/fields/specific/cascade-select)
 
-### Sub-Form
+### Sous-Formulaire
 
-When dealing with more complex relationship data, using a dropdown selector or data selector can be inconvenient. In this case, users need to frequently open pop-up windows. For this scenario, a sub-form can be used. Users can directly maintain relationship fields on the current page or current pop-up, without repeatedly opening new pop-ups, making the operation process smoother. Multi-level relationships are presented in the form of nested forms.
+Lors de la gestion de données de relation plus complexes, l'utilisation d'un sélecteur déroulant ou d'un sélecteur de données peut être contraignante. Dans ce cas, les utilisateurs doivent fréquemment ouvrir des fenêtres contextuelles. Pour ce scénario, un sous-formulaire peut être utilisé. Les utilisateurs peuvent maintenir directement les champs de relation sur la page ou la fenêtre contextuelle actuelle, sans avoir à ouvrir de nouvelles fenêtres contextuelles, rendant ainsi le processus opérationnel plus fluide. Les relations multi-niveaux sont présentées sous forme de formulaires imbriqués.
 
 ![20240429215953](https://static-docs.nocobase.com/20240429215953.png)
 
-For more information, refer to [Sub-Form](/handbook/ui/fields/specific/nester)
+Pour plus d'informations, consultez [Sous-Formulaire](/handbook/ui/fields/specific/nester)
 
-### Sub-Form (Pop-up)
+### Sous-Formulaire (Fenêtre Contextuelle)
 
-When the relationship level is deep and there are many data fields, the sub-form layout may appear lengthy, making it difficult to effectively present the primary and secondary relationship of the form. For this scenario, you can use a sub-form (pop-up). Users can move some non-key or infrequently used relationship fields from the main form to an independent pop-up for filling out, making the main form more concise and clear.
+Lorsque le niveau de relation est profond et que de nombreux champs de données sont présents, la disposition du sous-formulaire peut sembler longue, rendant difficile la présentation efficace de la relation principale et secondaire du formulaire. Pour ce scénario, vous pouvez utiliser un sous-formulaire (fenêtre contextuelle). Les utilisateurs peuvent déplacer certains champs de relation non essentiels ou rarement utilisés du formulaire principal vers une fenêtre contextuelle indépendante pour les remplir, rendant le formulaire principal plus concis et clair.
 
-The Sub-Form (Pop-up) not only simplifies the form layout, but also solves the problem of not being able to directly fill in relationship field data in the sub-table.
+Le Sous-Formulaire (Fenêtre Contextuelle) simplifie non seulement la disposition du formulaire, mais résout également le problème de l'impossibilité de remplir directement les données de champ de relation dans le sous-tableau.
 
 ![20240429222237](https://static-docs.nocobase.com/20240429222237.gif)
 
-For more information, refer to [Sub-Form (Pop-up)](/handbook/ui/fields/specific/popover-nester)
+Pour plus d'informations, consultez [Sous-Formulaire (Fenêtre Contextuelle)](/handbook/ui/fields/specific/popover-nester)
 
-### Sub-Table
+### Sous-Tableau
 
-The sub-table presents one-to-many or many-to-many relationship records in the form of a table. It provides a clear, structured way to display and manage associated data, supporting the creation of new data in batches or the selection of existing data for association.
+Le sous-tableau présente des enregistrements de relation un-à-plusieurs ou plusieurs-à-plusieurs sous forme de tableau. Il offre un moyen clair et structuré d'afficher et de gérer les données associées, prenant en charge la création de nouvelles données en masse ou la sélection de données existantes pour l'association.
 
 ![20240429222505](https://static-docs.nocobase.com/20240429222505.png)
 
-For more information, refer to [Sub-Table](/handbook/ui/fields/specific/sub-table)
+Pour plus d'informations, consultez [Sous-Tableau](/handbook/ui/fields/specific/sub-table)
 
-### Sub-Detail
+### Sous-Détail
 
-The sub-detail are the corresponding components of the sub-form in reading mode, and the multi-level relational data is displayed in a nested form.
-
+Les sous-détails sont les composants correspondants du sous-formulaire en mode lecture, et les données de relation multi-niveaux sont affichées sous forme imbriquée.
 
 ![20240822223651](https://static-docs.nocobase.com/20240822223651.png)
 
-For more information, refer to [Sub-Detail](/handbook/ui/fields/specific/sub-detail)
+Pour plus d'informations, consultez [Sous-Détail](/handbook/ui/fields/specific/sub-detail)
 
+### Gestionnaire de Fichiers
 
-### File Manager
-
-The file manager is a relationship field component specifically for dealing with relationship target collections as file collections.
+Le gestionnaire de fichiers est un composant de champ de relation spécifiquement conçu pour traiter les collections de fichiers comme des collections cibles de relation.
 
 ![20240429222753](https://static-docs.nocobase.com/20240429222753.png)
 
-For more information, refer to [File Manager](/handbook/ui/fields/specific/file-manager)
+Pour plus d'informations, consultez [Gestionnaire de Fichiers](/handbook/ui/fields/specific/file-manager)
 
-### Title
+### Titre
 
-The title component is a relationship field component used in reading mode, displaying key information of associated data through the configuration of the title field.
+Le composant Titre est un composant de champ de relation utilisé en mode lecture, affichant les informations clés des données associées par la configuration du champ titre.
 
 ![20240429223646](https://static-docs.nocobase.com/20240429223646.png)
 
-For more information, refer to [Title](/handbook/ui/fields/specific/title)
+Pour plus d'informations, consultez [Titre](/handbook/ui/fields/specific/title)
 
-### Tag
+### Étiquette
 
-The tag component is a relationship field component used in reading mode. Using the tag component in data presentation can better classify and identify relationship data. It needs to configure the title field and color field (selected from the target table fields).
+Le composant Étiquette est un composant de champ de relation utilisé en mode lecture. L'utilisation du composant étiquette dans la présentation des données permet de mieux classifier et identifier les données de relation. Il nécessite la configuration du champ titre et du champ couleur (sélectionné parmi les champs de la table cible).
 
 ![20240429225054](https://static-docs.nocobase.com/20240429225054.png)
 
-For more information, refer to [Tag](/handbook/ui/fields/specific/tag)
+Pour plus d'informations, consultez [Étiquette](/handbook/ui/fields/specific/tag)

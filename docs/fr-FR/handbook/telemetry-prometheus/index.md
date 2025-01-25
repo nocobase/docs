@@ -1,26 +1,26 @@
-# Telemetry - Prometheus
+# Télémétrie - Prometheus
 
 <PluginInfo name="telemetry-prometheus"></PluginInfo>
 
 ## Introduction
 
-This plugin is used to convert OpenTelemetry protocol (OTLP) data into Prometheus format and expose an interface for Prometheus to scrape metric data.
+Ce plugin est utilisé pour convertir les données du protocole OpenTelemetry (OTLP) au format Prometheus et exposer une interface permettant à Prometheus de récupérer les données de métriques.
 
 ## Installation
 
 :::info{title=Note}
-This is a commercial plugin. Please see [NocoBase commercial version](https://www.nocobase.com/commercial) for details.
+Il s'agit d'un plugin commercial. Veuillez consulter la [version commerciale de NocoBase](https://www.nocobase.com/commercial) pour plus de détails.
 :::
 
-## User Manual
+## Manuel de l'Utilisateur
 
-### Environment Variables
+### Variables d'Environnement
 
-Configure the environment variables before starting NocoBase.
+Configurez les variables d'environnement avant de démarrer NocoBase.
 
 #### TELEMETRY_ENABLED
 
-Set to `on`.
+Définissez sur `on`.
 
 ```bash
 TELEMETRY_ENABLED=on
@@ -28,7 +28,7 @@ TELEMETRY_ENABLED=on
 
 #### TELEMETRY_METRIC_READER
 
-Add `prometheus`.
+Ajoutez `prometheus`.
 
 ```bash
 TELEMETRY_METRIC_READER=prometheus
@@ -36,22 +36,22 @@ TELEMETRY_METRIC_READER=prometheus
 
 #### TELEMETRY_PROMETHEUS_SERVER
 
-Whether to start a separate server.
+Indique si un serveur séparé doit être démarré.
 
-- `off`. The scraping interface is `/api/prometheus:metrics`.
-- `on`. The scraping interface is `:port/metrics`.
+- `off`. L'interface de récupération est `/api/prometheus:metrics`.
+- `on`. L'interface de récupération est `:port/metrics`.
 
 #### TELEMETRY_PROMETHEUS_PORT
 
-The port for the separate server when activated. Default `9464`.
+Le port pour le serveur séparé lorsqu'il est activé. Par défaut `9464`.
 
-#### Related Documents
+#### Documents Associés
 
-- [Environment Variables](../../welcome/getting-started/env.md#telemetry_enabled)
+- [Variables d'Environnement](../../welcome/getting-started/env.md#telemetry_enabled)
 
-### Prometheus Configuration
+### Configuration de Prometheus
 
-Separate server
+Serveur séparé
 
 ```yaml
 scrape_configs:
@@ -60,7 +60,7 @@ scrape_configs:
       - targets: ['localhost:9464']
 ```
 
-Internal API
+API interne
 
 ```yaml
 scrape_configs:

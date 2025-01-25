@@ -1,15 +1,15 @@
-## Delete
+## Supprimer
 
 ### Introduction
 
-The delete operation allows for the removal of data records. This can be done by configuring a row deletion button or utilizing the bulk action button for multiple records at once.
+L'opération de suppression permet de retirer des enregistrements de données. Cela peut être fait en configurant un bouton de suppression de ligne ou en utilisant le bouton d'action de masse pour supprimer plusieurs enregistrements à la fois.
 
 ![20240413211215](https://static-docs.nocobase.com/20240413211215.png)
 
-### Operation Configuration Items
+### Éléments de Configuration de l'Opération
 
 ![20240413211439](https://static-docs.nocobase.com/20240413211439.png)
 
-- [Edit Button](/handbook/ui/actions/action-settings/edit-button)
-- [Secondary Confirmation](/handbook/ui/actions/action-settings/double-check)
-- Refresh data after execution: Enabled by default, this option automatically refreshes the block data once the operation is successfully completed.
+- [Bouton d'Édition](/handbook/ui/actions/action-settings/edit-button)
+- [Confirmation Secondaire](/handbook/ui/actions/action-settings/double-check)
+- Actualiser les données après exécution : Activé par défaut, cette option actualise automatiquement les données du bloc une fois l'opération terminée avec succès.

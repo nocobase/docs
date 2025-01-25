@@ -1,7 +1,7 @@
 # UI Schema Storage
 
 :::warning
-Document pending.
+Documentation en attente.
 :::
 
 <!--

@@ -1,32 +1,32 @@
-# Data Source - KingbaseES Database
+# Source de données - Base de données KingbaseES
 
 <PluginInfo licenseBundled="true" name="data-source-kingbase"></PluginInfo>
 
 ## Introduction
 
-KingbaseES can be used as a data source, either as the primary database or an external database.
+KingbaseES peut être utilisé comme source de données, soit comme base de données principale, soit comme base de données externe.
 
 :::warning
-Currently, only KingbaseES databases running in pg mode are supported.
+Actuellement, seules les bases de données KingbaseES fonctionnant en mode pg sont prises en charge.
 :::
 
 ## Installation
 
-### Using as the Primary Database
+### Utilisation en tant que base de données principale
 
-Refer to the [Installation Overview](/welcome/getting-started/installation) for the setup procedures, the difference is mainly due to the environment variables.
+Référez-vous à la section [Vue d'ensemble de l'installation](/welcome/getting-started/installation) pour les procédures d'installation, la principale différence réside dans les variables d'environnement.
 
-#### Environment Variables
+#### Variables d'environnement
 
-Edit the .env file to add or modify the following environment variable configurations:
+Modifiez le fichier `.env` pour ajouter ou modifier les configurations de variables d'environnement suivantes :
 
 ```bash
-# For accessing commercial plugins
+# Pour accéder aux plugins commerciaux
 NOCOBASE_PKG_URL=https://pkg.nocobase.com/
-NOCOBASE_PKG_USERNAME=your-username   # Service platform username
-NOCOBASE_PKG_PASSWORD=your-password   # Service platform password
+NOCOBASE_PKG_USERNAME=your-username   # Nom d'utilisateur de la plateforme de service
+NOCOBASE_PKG_PASSWORD=your-password   # Mot de passe de la plateforme de service
 
-# Adjust DB parameters as needed
+# Ajustez les paramètres DB si nécessaire
 DB_DIALECT=kingbase
 DB_HOST=localhost
 DB_PORT=54321
@@ -35,7 +35,7 @@ DB_USER=nocobase
 DB_PASSWORD=nocobase
 ```
 
-#### Docker Installation
+#### Installation via Docker
 
 ```yml
 version: "3"
@@ -51,32 +51,32 @@ networks:
     depends_on:
       - postgres
     environment:
-      # For accessing commercial plugins
+      # Pour accéder aux plugins commerciaux
       - NOCOBASE_PKG_URL=https://pkg.nocobase.com/
-      - NOCOBASE_PKG_USERNAME=your-username   # Service platform username
-      - NOCOBASE_PKG_PASSWORD=your-password   # Service platform password
-      # Application key for generating user tokens, etc.
-      # Changing APP_KEY invalidates old tokens
-      # Use a random string and keep it confidential
+      - NOCOBASE_PKG_USERNAME=your-username   # Nom d'utilisateur de la plateforme de service
+      - NOCOBASE_PKG_PASSWORD=your-password   # Mot de passe de la plateforme de service
+      # Clé d'application pour générer des tokens utilisateurs, etc.
+      # Modifier APP_KEY invalide les anciens tokens
+      # Utilisez une chaîne aléatoire et gardez-la confidentielle
       - APP_KEY=your-secret-key
-      # Database type
+      # Type de base de données
       - DB_DIALECT=kingbase
-      # Database host, replace with existing database server IP if needed
+      # Hôte de la base de données, remplacez par l'IP du serveur de base de données si nécessaire
       - DB_HOST=kingbase
-      # Database name
+      # Nom de la base de données
       - DB_DATABASE=kingbase
-      # Database user
+      # Utilisateur de la base de données
       - DB_USER=nocobase
-      # Database password
+      # Mot de passe de la base de données
       - DB_PASSWORD=nocobase
-      # Timezone
+      # Fuseau horaire
       - TZ=Asia/Shanghai
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
       - "13000:80"
 
-  # Kingbase service for testing purposes only
+  # Service Kingbase pour test uniquement
   kingbase:
     image: registry.cn-shanghai.aliyuncs.com/nocobase/kingbase:v009r001c001b0030_single_x86
     platform: linux/amd64
@@ -87,15 +87,15 @@ networks:
     volumes:
       - ./storage/db/kingbase:/home/kingbase/userdata
     environment:
-      ENABLE_CI: no # Must be set to no
+      ENABLE_CI: no # Doit être défini sur no
       DB_USER: nocobase
       DB_PASSWORD: nocobase
-      DB_MODE: pg  # pg only
+      DB_MODE: pg  # uniquement pg
       NEED_START: yes
     command: ["/usr/sbin/init"]
 ```
 
-#### Installation Using create-nocobase-app
+#### Installation via create-nocobase-app
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d kingbase \
@@ -107,30 +107,30 @@ yarn create nocobase-app my-nocobase-app -d kingbase \
    -e TZ=Asia/Shanghai
 ```
 
-### Using as an External Database
+### Utilisation en tant que base de données externe
 
-Edit the .env file to add environment variables for accessing commercial plugins:
+Modifiez le fichier `.env` pour ajouter les variables d'environnement nécessaires pour accéder aux plugins commerciaux :
 
 ```bash
-# For accessing commercial plugins
+# Pour accéder aux plugins commerciaux
 NOCOBASE_PKG_URL=https://pkg.nocobase.com/
-NOCOBASE_PKG_USERNAME=your-username   # Service platform username
-NOCOBASE_PKG_PASSWORD=your-password   # Service platform password
+NOCOBASE_PKG_USERNAME=your-username   # Nom d'utilisateur de la plateforme de service
+NOCOBASE_PKG_PASSWORD=your-password   # Mot de passe de la plateforme de service
 ```
 
-Execute the installation or upgrade command
+Exécutez la commande d'installation ou de mise à jour
 
 ```bash
 yarn nocobase install
-# or
+# ou
 yarn nocobase upgrade
 ```
 
-Activate the Plugin
+Activez le plugin
 
 ![20241024121815](https://static-docs.nocobase.com/20241024121815.png)
 
-## User Guide
+## Guide utilisateur
 
-- Primary Database: Refer to the [handbook](/handbook)
-- External Database: See [Data Source / External Database](/handbook/data-source-manager/external-database)
+- Base de données principale : Référez-vous au [manuel](/handbook)
+- Base de données externe : Consultez [Source de données / Base de données externe](/handbook/data-source-manager/external-database)

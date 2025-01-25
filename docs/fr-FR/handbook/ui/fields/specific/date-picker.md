@@ -1,20 +1,20 @@
-# Date picker
+# Sélecteur de Date
 
 ## Introduction
 
-The date field offers flexibility with customizable date and time formats to suit your needs.
+Le champ de date offre une grande flexibilité avec des formats de date et d'heure personnalisables pour répondre à vos besoins.
 
-## Configuring Date Formats
+## Configuration des Formats de Date
 
-### Data Table Fields
+### Champs de Table de Données
 
 ![20240417114311](https://static-docs.nocobase.com/20240417114311.png)
 
-### Field Settings
+### Paramètres du Champ
 
 ![20240409174158](https://static-docs.nocobase.com/20240409174158.png)
 
-Beyond the array of preset date and time formats, the system accommodates custom formats, allowing you to tailor the display to your specific preferences.
+Au-delà des formats de date et d'heure prédéfinis, le système permet d'utiliser des formats personnalisés, vous offrant ainsi la possibilité d'adapter l'affichage à vos préférences spécifiques.
 
 ![20240409174559](https://static-docs.nocobase.com/20240409174559.png)
 

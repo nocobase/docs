@@ -1,25 +1,25 @@
-# Notification: email
+# Notification : Email
 
 <PluginInfo name="notification-email"></PluginInfo>
 
 ## Introduction
 
-Send notifications through the email channel, currently supporting only the SMTP transmission method.
+Envoyez des notifications via le canal email, en prenant actuellement en charge uniquement la méthode de transmission SMTP.
 
 ## Installation
 
-This is a built-in plugin that must be activated before use.
+Il s'agit d'un plugin intégré qui doit être activé avant utilisation.
 
 ![20240928192940](https://static-docs.nocobase.com/20240928192940.png)
 
-## User Manual
+## Manuel d'utilisation
 
-### Email Channel Configuration
+### Configuration du canal Email
 
-Currently, only the SMTP transmission method is supported.
+Actuellement, seule la méthode de transmission SMTP est prise en charge.
 
 ![20240928191819](https://static-docs.nocobase.com/20240928191819.png)
 
-### Workflow Notification Configuration
+### Configuration des notifications de Workflow
 
 ![20240928191935](https://static-docs.nocobase.com/20240928191935.png)

@@ -1,24 +1,24 @@
-# Bar Chart
+# Graphique à barres
 
-## Data Configuration
+## Configuration des données
 
-### 1 Metric, 1 Dimension
+### 1 métrique, 1 dimension
 
-![1 Metric, 1 Dimension](https://static-docs.nocobase.com/202410101129463.png)
+![1 métrique, 1 dimension](https://static-docs.nocobase.com/202410101129463.png)
 
-### 1 Metric, 1 Axis Dimension, 1 Category Dimension
+### 1 métrique, 1 dimension d'axe, 1 dimension de catégorie
 
-In this setup, configure one metric and two dimensions. One dimension serves as the X-axis field (X field), while the other acts as the category field (Series field). The X-axis field and the category field can be the same.
+Dans cette configuration, définissez une métrique et deux dimensions. Une dimension sert de champ pour l'axe des X (champ X), tandis que l'autre sert de champ de catégorie (champ des séries). Le champ X et le champ de catégorie peuvent être identiques.
 
-![1 Metric, 1 Axis Dimension, 1 Category Dimension](https://static-docs.nocobase.com/202410101130607.png)
+![1 métrique, 1 dimension d'axe, 1 dimension de catégorie](https://static-docs.nocobase.com/202410101130607.png)
 
-#### Configuration Options
+#### Options de configuration
 
-| Option           | Description                                              |
-| ---------------- | -------------------------------------------------------- |
-| X-axis Field     | The field used for the X-axis dimension                 |
-| Category Field   | The field used for the category dimension               |
-| Size             | Sets the chart size, either fixed aspect ratio or height|
-| Grouping         | Specifies whether to display grouped bars               |
-| Stacking         | Specifies whether to stack the bars                     |
-| Percentage View  | Specifies whether percentage display             |
+| Option            | Description                                                  |
+| ----------------- | ------------------------------------------------------------ |
+| Champ de l'axe X  | Le champ utilisé pour la dimension de l'axe des X           |
+| Champ de catégorie| Le champ utilisé pour la dimension de catégorie              |
+| Taille            | Définit la taille du graphique, soit un rapport d'aspect fixe ou la hauteur |
+| Regroupement      | Spécifie si les barres doivent être regroupées              |
+| Empilement        | Spécifie si les barres doivent être empilées                |
+| Affichage en pourcentage | Spécifie si l'affichage en pourcentage doit être activé |

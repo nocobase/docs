@@ -1,42 +1,48 @@
-# Advanced Understanding
+### Compréhension Avancée
 
-**Conditions for Interception**
+**Conditions d'Interception**
 
-In "pre-action events," two specific conditions may cause the corresponding operation to be intercepted:
+Dans les **"événements pré-action"**, deux conditions spécifiques peuvent entraîner l'interception de l'opération correspondante :
 
-1. The process reaches an "End Process" node. As explained earlier, if the triggering data does not meet the conditions set in the "Condition" node, the process will follow the "No" branch, executing the "End Process" node. This causes the process to terminate, and the requested operation is intercepted.
-2. Any node within the process fails to execute—whether due to an error or other exceptional circumstances. In such cases, the process concludes with the corresponding status, and the operation is intercepted. For instance, if an "HTTP Request" is used to fetch external data and the request fails, the process ends in a failed state, simultaneously intercepting the corresponding operation request.
+1. Le processus atteint un **nœud "Fin du Processus"**. Comme expliqué précédemment, si les données déclencheuses ne remplissent pas les conditions définies dans le **nœud "Condition"**, le processus suivra le branchement "Non", exécutant le nœud **"Fin du Processus"**. Cela entraîne la terminaison du processus et l'interception de l'opération demandée.
+2. Un nœud dans le processus échoue à s'exécuter—en raison d'une erreur ou d'autres circonstances exceptionnelles. Dans ces cas, le processus se termine avec le statut correspondant, et l'opération est interceptée. Par exemple, si un **nœud "HTTP Request"** est utilisé pour récupérer des données externes et que la requête échoue, le processus se termine en échec, tout en interceptant la requête d'opération correspondante.
 
-Once these interception conditions are met, the operation in question is halted entirely. For example, if an order submission is intercepted, no corresponding order data will be generated.
+Lorsque ces conditions d'interception sont remplies, l'opération en question est complètement arrêtée. Par exemple, si la soumission d'une commande est interceptée, aucune donnée de commande correspondante ne sera générée.
 
-**Parameters for Corresponding Operations**
+---
 
-In "pre-action event" workflows, various data points are available as variables within the process, depending on the operation:
+**Paramètres pour les Opérations Correspondantes**
 
-| Operation Type \\ Variable | "User acted" | "Role of user acted" | Operation Parameter: "ID" | Parameter: "Values submitted" |
-| -------------------------- | ---------- | -------------------------- | ------------------------- | -------------------------------------------- |
-| Create a record             | ✓          | ✓                          | -                         | ✓                                              |
-| Update a record             | ✓          | ✓                          | ✓                         | ✓                                              |
-| Delete one or more records  | ✓          | ✓                          | ✓                         | -                                              |
+Dans les workflows d'**"événements pré-action"**, divers points de données sont disponibles en tant que variables au sein du processus, selon l'opération :
 
-:::info{title=Tip}
-The variables "Trigger variables / Parameter / Values submitted" in pre-action events are not the actual data stored in the database but the parameters submitted with the operation. To retrieve actual database data, you must use the "Query record" node within the process.
+| Type d'Opération \\ Variable | "Utilisateur agissant" | "Rôle de l'utilisateur agissant" | Paramètre d'Opération : "ID" | Paramètre : "Valeurs soumises" |
+| ----------------------------- | ----------------------- | ------------------------------- | ---------------------------- | ----------------------------- |
+| Créer un enregistrement        | ✓                       | ✓                               | -                            | ✓                             |
+| Mettre à jour un enregistrement| ✓                       | ✓                               | ✓                            | ✓                             |
+| Supprimer un ou plusieurs enregistrements | ✓            | ✓                               | ✓                            | -                             |
 
-Additionally, for delete operations, when dealing with a single record, the "ID" in the operation parameters is a simple value. For multiple records, however, the "ID" is an array.
+:::info{title=Astuce}
+Les variables **"Variables déclencheurs / Paramètre / Valeurs soumises"** dans les événements pré-action ne représentent pas les données réelles stockées dans la base de données, mais les paramètres soumis avec l'opération. Pour récupérer les données réelles de la base de données, vous devez utiliser le **nœud "Query record"** au sein du processus.
+
+De plus, pour les opérations de suppression, lors de la gestion d'un seul enregistrement, l'**"ID"** dans les paramètres d'opération est une valeur simple. Cependant, pour plusieurs enregistrements, l'**"ID"** devient un tableau.
 :::
 
-**Response Messages**
+---
 
-Once the trigger is configured, you can define the relevant logic within the workflow. Typically, the "Condition" node's branching mechanism is used to decide whether to "End Process" based on specific business conditions, returning a pre-defined "Response Message":
+**Messages de Réponse**
 
-![Interception Process Configuration](https://static-docs.nocobase.com/cfddda5d8012fd3d0ca09f04ea610539.png)
+Une fois que le déclencheur est configuré, vous pouvez définir la logique pertinente dans le workflow. En règle générale, le mécanisme de branchement du **nœud "Condition"** est utilisé pour décider si le processus doit se **"Terminer"** en fonction de certaines conditions métier, renvoyant un **"Message de Réponse"** pré-défini :
 
-At this stage, the workflow configuration is complete. You can test it by submitting data that does not meet the configured conditions, triggering the interception logic. This will result in the return of a response message:
+![Configuration du Processus d'Interception](https://static-docs.nocobase.com/cfddda5d8012fd3d0ca09f04ea610539.png)
 
-![Error Response Message](https://static-docs.nocobase.com/06bd4a6b6ec499c853f0c39987f63a6a.png)
+À ce stade, la configuration du workflow est complète. Vous pouvez le tester en soumettant des données qui ne remplissent pas les conditions configurées, ce qui déclenchera la logique d'interception. Cela entraînera le retour d'un message de réponse :
 
-**Response Message Status**
+![Message de Réponse d'Erreur](https://static-docs.nocobase.com/06bd4a6b6ec499c853f0c39987f63a6a.png)
 
-If the "End Process" node is set to exit with a "Success" status and the process reaches this node, the operation request will still be intercepted. However, the returned response message will display a "Success" (instead of "Error") status:
+---
 
-![Success Status Response Message](https://static-docs.nocobase.com/9559bbf56067144759451294b18c790e.png)
+**Statut du Message de Réponse**
+
+Si le nœud **"Fin du Processus"** est configuré pour se terminer avec un statut **"Succès"** et que le processus atteint ce nœud, la demande d'opération sera tout de même interceptée. Cependant, le message de réponse renvoyé affichera un statut **"Succès"** (au lieu de **"Erreur"**) :
+
+![Message de Réponse avec Statut de Succès](https://static-docs.nocobase.com/9559bbf56067144759451294b18c790e.png)

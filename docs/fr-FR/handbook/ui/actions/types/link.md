@@ -1,34 +1,34 @@
-# Link
+# Lien
 
 ## Introduction
 
-The link operation, which functions via route navigation, supports the passing of variables. The target page can dynamically adjust its content based on the provided data, making it configurable for use within data blocks.
+L'opération de lien, qui fonctionne via la navigation par routes, prend en charge le passage de variables. La page cible peut ajuster dynamiquement son contenu en fonction des données fournies, ce qui la rend configurable pour une utilisation au sein des blocs de données.
 
 ![20240603150755](https://static-docs.nocobase.com/20240603150755.png)
 
-## Operation Configuration
+## Configuration de l'Opération
 
 ![20240603150823](https://static-docs.nocobase.com/20240603150823.png)
 
-### Edit Link
+### Modifier le Lien
 
 ![20240603150944](https://static-docs.nocobase.com/20240603150944.png)
 
 ![20240603224322](https://static-docs.nocobase.com/20240603224322.png)
 
-### Usage Scenarios
+### Scénarios d'Utilisation
 
-Example: The author and article tables have a one-to-many relationship. In the author table, you can configure the "View posts" link operation. By clicking this link, the author's ID is passed as a parameter to the article table, allowing the target page to filter the articles based on the specified author's ID.
+Exemple : Les tables auteur et article ont une relation un-à-plusieurs. Dans la table auteur, vous pouvez configurer l'opération de lien "Voir les articles". En cliquant sur ce lien, l'ID de l'auteur est passé en paramètre à la table des articles, ce qui permet à la page cible de filtrer les articles en fonction de l'ID de l'auteur spécifié.
 
 ![20240603151934](https://static-docs.nocobase.com/20240603151934.png)
 
-### Open in New Window
+### Ouvrir dans une Nouvelle Fenêtre
 
-When the "Open in new window" option is selected, the link will open in a new window.
+Lorsque l'option "Ouvrir dans une nouvelle fenêtre" est sélectionnée, le lien s'ouvrira dans une nouvelle fenêtre.
 
 ![20240718160541](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240718160541.png)
 
-Here is a complete configuration example:
+Voici un exemple de configuration complète :
 
 <video width="100%" height="440" controls>
 
@@ -36,5 +36,5 @@ Here is a complete configuration example:
 
 </video>
 
-- [Edit Button](/handbook/ui/actions/action-settings/edit-button): Customize the button's title, color, and icon.
-- [Linkage Rule](/handbook/ui/actions/action-settings/linkage-rule): Dynamically control the button's state.
+- [Bouton de Modification](/handbook/ui/actions/action-settings/edit-button) : Personnalisez le titre, la couleur et l'icône du bouton.
+- [Règle de Liaison](/handbook/ui/actions/action-settings/linkage-rule) : Contrôlez dynamiquement l'état du bouton.

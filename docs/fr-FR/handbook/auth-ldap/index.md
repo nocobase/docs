@@ -4,52 +4,52 @@
 
 ## Introduction
 
-The Auth: LDAP plugin follows the LDAP (Lightweight Directory Access Protocol) protocol standard, enabling users to sign in to NocoBase using their LDAP server credentials.
+Le plugin **Auth: LDAP** suit la norme de protocole LDAP (Lightweight Directory Access Protocol), permettant aux utilisateurs de se connecter à NocoBase en utilisant leurs identifiants de serveur LDAP.
 
-## Activate plugin
+## Activer le plugin
 
 <img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405101600789.png"/>
 
-## Add LDAP Authentication
+## Ajouter l'authentification LDAP
 
-Go to the authentication plugin settings page.
+Accédez à la page de paramètres du plugin d'authentification.
 
 <img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405101601510.png"/>
 
-Add - LDAP
+Ajoutez - **LDAP**
 
 <img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405101602104.png"/>
 
 ## Configuration
 
-### Basic Configuration
+### Configuration de base
 
 <img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405101605728.png"/>
 
-- Sign up automatically when the user does not exist - Whether to automatically create a new user when no matching existing user is found.
-- LDAP URL - LDAP server URL
-- Bind DN - DN used to test server connection and search for users
-- Bind password - Password of Bind DN
-- Test connection - Click the button to test server connection and Bind DN authentication.
+- **Inscription automatique lorsque l'utilisateur n'existe pas** - Décidez s'il faut créer automatiquement un nouvel utilisateur lorsque aucun utilisateur existant correspondant n'est trouvé.
+- **URL LDAP** - URL du serveur LDAP
+- **Bind DN** - DN utilisé pour tester la connexion au serveur et rechercher des utilisateurs
+- **Mot de passe Bind** - Mot de passe du Bind DN
+- **Test de connexion** - Cliquez sur le bouton pour tester la connexion au serveur et l'authentification du Bind DN.
 
-### Search Configuration
+### Configuration de la recherche
 
 <img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405101609984.png"/>
 
-- Search DN - DN used to search for users
-- Search filter - Filtering condition for searching users, using `{{account}}` to represent the user account used for login
-- Scope - `Base`, `One level`, `Subtree`, default `Subtree`
-- Size limit - Search page size
+- **Search DN** - DN utilisé pour rechercher des utilisateurs
+- **Search filter** - Condition de filtrage pour la recherche des utilisateurs, utilisez `{{account}}` pour représenter le compte utilisateur utilisé pour la connexion
+- **Scope** - `Base`, `One level`, `Subtree`, par défaut `Subtree`
+- **Size limit** - Taille de la page de recherche
 
-### Attribute Mapping
+### Mapping des attributs
 
 <img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405101612814.png"/>
 
-- Use this field to bind the user - Field used to bind existing users. If the login account is a username, choose username; if it is an email, choose email. Default is username.
-- Attribute map - Mapping of user attributes to fields in the NocoBase user table.
+- **Champ utilisé pour lier l'utilisateur** - Champ utilisé pour lier les utilisateurs existants. Si le compte de connexion est un nom d'utilisateur, choisissez `username`; si c'est un e-mail, choisissez `email`. Par défaut, `username`.
+- **Attributs mappés** - Mapping des attributs utilisateur aux champs dans la table des utilisateurs NocoBase.
 
-## Sign In
+## Connexion
 
-Visit the sign in page and enter LDAP username and password in the sign in form.
+Visitez la page de connexion et saisissez le nom d'utilisateur et le mot de passe LDAP dans le formulaire de connexion.
 
 <img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405101614300.png"/>

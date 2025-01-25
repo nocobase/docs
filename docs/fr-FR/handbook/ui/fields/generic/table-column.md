@@ -2,71 +2,71 @@
 
 ## Introduction
 
-Table fields offer a robust set of features beyond basic column width adjustment, field titles, and sorting. They provide enhanced display configurations for specialized fields such as date fields, relationship fields, and numerical fields, allowing for a more tailored and informative data presentation.
+Les champs de type tableau offrent un ensemble robuste de fonctionnalités au-delà de l'ajustement de la largeur des colonnes, des titres de champs et du tri. Ils offrent des configurations d'affichage améliorées pour des champs spécialisés tels que les champs de date, les champs relationnels et les champs numériques, permettant ainsi une présentation de données plus personnalisée et informative.
 
 ![20240511140644](https://static-docs.nocobase.com/20240511140644.png)
 
-## Field Configuration Options
+## Options de Configuration des Champs
 
-### Date Field Formatting
+### Formatage des Champs de Date
 
 ![20240417114116](https://static-docs.nocobase.com/20240417114116.png)
 
-For comprehensive information on date formatting options, consult the [Date Formatting](/handbook/ui/fields/specific/date-picker) guide.
+Pour des informations complètes sur les options de formatage des dates, consultez le guide sur [le Formatage des Dates](/handbook/ui/fields/specific/date-picker).
 
-### Numerical Field Formatting
+### Formatage des Champs Numériques
 
 ![20240417215229](https://static-docs.nocobase.com/20240417215229.png)
 
-The numerical field formatting feature offers versatile options including:
-- Simple unit conversion
-- Thousands separators
-- Prefixes and suffixes
-- Precision control
-- Scientific notation
+La fonctionnalité de formatage des champs numériques offre diverses options, notamment :
+- Conversion d'unités simple
+- Séparateurs de milliers
+- Préfixes et suffixes
+- Contrôle de la précision
+- Notation scientifique
 
 ![20240417215425](https://static-docs.nocobase.com/20240417215425.png)
 
-For an in-depth exploration of numerical formatting capabilities, refer to the [Number Formatting](/handbook/ui/fields/field-settings/number-format) documentation.
+Pour une exploration approfondie des capacités de formatage numérique, consultez la documentation sur [le Formatage des Nombres](/handbook/ui/fields/field-settings/number-format).
 
-### Sorting
+### Tri
 
-The current sorting functionality allows for single-column sorting within the current page data. Note that sorting by relationship fields is not supported in this version.
+La fonctionnalité de tri actuelle permet un tri par colonne unique au sein des données de la page actuelle. Notez que le tri par champs relationnels n'est pas pris en charge dans cette version.
 
 ![20240422115501](https://static-docs.nocobase.com/20240422115501.png)
 
-### Fixed Columns
+### Colonnes Fixes
 
 ![20240511140524](https://static-docs.nocobase.com/20240511140524.png)
 
-### Field Components
+### Composants de Champ
 
-Certain fields offer the flexibility to switch between different component types. For instance, the `URL` component can be toggled to function as a `Preview` component.
+Certains champs offrent la flexibilité de passer d'un type de composant à un autre. Par exemple, le composant `URL` peut être converti en composant `Preview`.
 
 ![20240806165152](https://static-docs.nocobase.com/20240806165152.png)
 
-For developers looking to expand the range of available components, the [Extending Value Field Components](/plugin-samples/field/value) guide provides valuable insights.
+Pour les développeurs souhaitant étendre la gamme de composants disponibles, le guide [Étendre les Composants de Valeur des Champs](/plugin-samples/field/value) fournit des informations utiles.
 
 ### Styles
 
-The styling feature enables dynamic configuration of column colors and background colors based on specified conditions. To illustrate this powerful functionality, let's walk through an example using a bank transaction details table:
+La fonctionnalité de style permet de configurer dynamiquement les couleurs de colonne et les couleurs d'arrière-plan en fonction de conditions spécifiées. Pour illustrer cette fonctionnalité puissante, examinons un exemple avec un tableau de détails de transactions bancaires :
 
-Scenario: We want to visually differentiate between income (positive amounts) and expenses (negative amounts) in the transaction amount column.
+**Scénario** : Nous souhaitons différencier visuellement les revenus (montants positifs) et les dépenses (montants négatifs) dans la colonne du montant des transactions.
 
-Step-by-step guide:
+**Guide étape par étape** :
 
-1. Access the field settings for the transaction amount column and navigate to the Style option.
-![style-menu-2024-08-08-18-23-13](https://static-docs.nocobase.com/style-menu-2024-08-08-18-23-13.png)
+1. Accédez aux paramètres de champ pour la colonne du montant des transactions et allez dans l'option Style.
+   ![style-menu-2024-08-08-18-23-13](https://static-docs.nocobase.com/style-menu-2024-08-08-18-23-13.png)
 
-2. Create the first conditional rule: For positive transactions (income), set the field color to green.
-   - Click "Add Linkage Rule"
-   - Configure: When transaction amount > 0, apply green color
-![style-green-2024-08-08-18-33-34](https://static-docs.nocobase.com/style-green-2024-08-08-18-33-34.png)
+2. Créez la première règle conditionnelle : Pour les transactions positives (revenus), définissez la couleur du champ sur vert.
+   - Cliquez sur "Ajouter une règle de liaison"
+   - Configurez : Lorsque le montant de la transaction > 0, appliquez la couleur verte
+   ![style-green-2024-08-08-18-33-34](https://static-docs.nocobase.com/style-green-2024-08-08-18-33-34.png)
 
-3. Establish the second conditional rule: For negative transactions (expenses), set the field color to red.
-   - Click "Add Linkage Rule" again
-   - Configure: When transaction amount < 0, apply red color
-![style-red-2024-08-08-18-35-01](https://static-docs.nocobase.com/style-red-2024-08-08-18-35-01.png)
+3. Définissez la deuxième règle conditionnelle : Pour les transactions négatives (dépenses), définissez la couleur du champ sur rouge.
+   - Cliquez à nouveau sur "Ajouter une règle de liaison"
+   - Configurez : Lorsque le montant de la transaction < 0, appliquez la couleur rouge
+   ![style-red-2024-08-08-18-35-01](https://static-docs.nocobase.com/style-red-2024-08-08-18-35-01.png)
 
-The result is a visually intuitive representation of financial data:
+Le résultat est une représentation visuelle intuitive des données financières :
 ![result-2024-08-08-18-38-05](https://static-docs.nocobase.com/result-2024-08-08-18-38-05.png)

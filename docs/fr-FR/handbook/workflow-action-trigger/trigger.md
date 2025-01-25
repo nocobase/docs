@@ -1,48 +1,48 @@
-# Trigger Configuration
+# Configuration du Déclencheur
 
-#### Creating a Workflow
+#### Création d'un Workflow
 
-To create a workflow, begin by selecting "Post-action Event" as the type:
+Pour créer un workflow, commencez par sélectionner "Événement Post-action" comme type :
 
-![Creating Workflow with Post-action Trigger](https://static-docs.nocobase.com/13c87035ec1bb7332514676d3e896007.png)
+![Création de Workflow avec Déclencheur Post-action](https://static-docs.nocobase.com/13c87035ec1bb7332514676d3e896007.png)
 
-#### Execution Mode
+#### Mode d'Exécution
 
-When setting up post-action events, you have the option to choose between "Synchronous" and "Asynchronous" execution modes:
+Lors de la configuration des événements post-action, vous avez la possibilité de choisir entre les modes d'exécution "Synchronisé" et "Asynchrone" :
 
-![Creating Workflow - Choosing Synchronous or Asynchronous](https://static-docs.nocobase.com/bc83525c7e539d578f9e2e20baf9ab69.png)
+![Création de Workflow - Choisir Synchronisé ou Asynchrone](https://static-docs.nocobase.com/bc83525c7e539d578f9e2e20baf9ab69.png)
 
-Use the synchronous mode if the process needs to execute and provide feedback immediately after a user operation. For other scenarios, the default asynchronous mode is generally suitable. In asynchronous mode, the user operation completes instantly, and the workflow continues to execute in the background as part of a queued process.
+Utilisez le mode synchrone si le processus doit être exécuté et fournir un retour immédiatement après l'opération de l'utilisateur. Pour les autres scénarios, le mode asynchrone par défaut est généralement adapté. En mode asynchrone, l'opération de l'utilisateur est terminée instantanément, et le workflow continue de s'exécuter en arrière-plan dans le cadre d'un processus en file d'attente.
 
-#### Configuring the Data Table
+#### Configuration de la Table de Données
 
-To begin configuration, navigate to the workflow canvas and click on the trigger to open the settings window. The first step is to select the data table that you wish to bind:
+Pour commencer la configuration, accédez au canevas de workflow et cliquez sur le déclencheur pour ouvrir la fenêtre des paramètres. La première étape consiste à sélectionner la table de données à lier :
 
-![Workflow Configuration - Selecting Data Table](https://static-docs.nocobase.com/35c49a91eba731127edcf76719c97634.png)
+![Configuration du Workflow - Sélectionner la Table de Données](https://static-docs.nocobase.com/35c49a91eba731127edcf76719c97634.png)
 
-#### Selecting Trigger Mode
+#### Choisir le Mode de Déclenchement
 
-Next, determine the trigger mode by choosing between Local Mode and Global Mode:
+Ensuite, déterminez le mode de déclenchement en choisissant entre le Mode Local et le Mode Global :
 
-![Workflow Configuration - Choosing Trigger Mode](https://static-docs.nocobase.com/317809c48b2f2a2d38aedc7d08abdadc.png)
+![Configuration du Workflow - Choisir le Mode de Déclenchement](https://static-docs.nocobase.com/317809c48b2f2a2d38aedc7d08abdadc.png)
 
-- **Local Mode**: This mode triggers the workflow only on the action buttons that have been explicitly bound to it. If the workflow is not bound, clicking the button will not initiate the workflow. This mode is ideal when you want to tailor the workflow to specific forms or actions.
-- **Global Mode**: In this mode, the workflow is triggered by any action button configured within the data table, regardless of the form's origin, and does not require specific workflow binding.
+- **Mode Local** : Ce mode déclenche le workflow uniquement sur les boutons d'action qui lui ont été explicitement liés. Si le workflow n'est pas lié, cliquer sur le bouton ne déclenchera pas le workflow. Ce mode est idéal lorsque vous souhaitez personnaliser le workflow pour des formulaires ou actions spécifiques.
+- **Mode Global** : Dans ce mode, le workflow est déclenché par n'importe quel bouton d'action configuré au sein de la table de données, quelle que soit l'origine du formulaire, et ne nécessite pas de liaison spécifique du workflow.
 
-In Local Mode, you can currently bind the following action buttons:
+En Mode Local, vous pouvez actuellement lier les boutons d'action suivants :
 
-- The "Submit" and "Save" buttons in new forms.
-- The "Submit" and "Save" buttons in update forms.
-- The "Update Data" button within data rows (such as in tables, lists, or kanban views).
+- Les boutons "Soumettre" et "Sauvegarder" dans les nouveaux formulaires.
+- Les boutons "Soumettre" et "Sauvegarder" dans les formulaires de mise à jour.
+- Le bouton "Mettre à jour les données" dans les lignes de données (par exemple, dans les tableaux, listes ou vues Kanban).
 
-#### Choosing Action Type
+#### Choisir le Type d'Action
 
-When using Global Mode, you also need to specify the action type. The available options are "Create record action" and "Update record action." The workflow is triggered upon the successful completion of either operation.
+Lorsque vous utilisez le Mode Global, vous devez également spécifier le type d'action. Les options disponibles sont "Action de création de record" et "Action de mise à jour de record." Le workflow sera déclenché après la réussite de l'une ou l'autre des opérations.
 
-#### Preloading Related Data
+#### Pré-chargement des Données Liées
 
-If subsequent workflow steps require the use of related data from the trigger, you can select the relationship fields to preload:
+Si les étapes ultérieures du workflow nécessitent l'utilisation de données liées provenant du déclencheur, vous pouvez sélectionner les champs de relation à précharger :
 
-![Workflow Configuration - Preloading Relationships](https://static-docs.nocobase.com/5cded063509c7ba1d34f49bec8d68227.png)
+![Configuration du Workflow - Pré-charger les Relations](https://static-docs.nocobase.com/5cded063509c7ba1d34f49bec8d68227.png)
 
-These preloaded related data will then be readily accessible throughout the workflow after it is triggered.
+Ces données liées préchargées seront ensuite facilement accessibles tout au long du workflow après qu'il ait été déclenché.

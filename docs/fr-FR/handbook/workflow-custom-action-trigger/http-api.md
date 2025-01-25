@@ -1,20 +1,20 @@
 # HTTP API
 
-Custom action events can be triggered not only through user interface actions but also via HTTP API calls. Specifically, these events introduce a new operation type called `trigger` for all collection operations, allowing workflows to be initiated through the NocoBase standard operation API.
+Les événements d'opération personnalisée peuvent être déclenchés non seulement via des actions dans l'interface utilisateur, mais aussi par des appels API HTTP. Ces événements introduisent un nouveau type d'opération appelé `trigger` pour toutes les opérations sur les collections, permettant d'initier des workflows via l'API d'opération standard de NocoBase.
 
-For instance, a workflow typically triggered by a button can be invoked using the following command:
+Par exemple, un workflow déclenché par un bouton peut être invoqué en utilisant la commande suivante :
 
 ```bash
-curl -X POST -H 'Authorization: Bearer <your token>' -H 'X-Role: <roleName>' \
+curl -X POST -H 'Authorization: Bearer <votre jeton>' -H 'X-Role: <nomDuRôle>' \
   "http://localhost:3000/api/samples:trigger/<:id>?triggerWorkflows=workflowKey"
 ```
 
-Since this operation targets a single data entry, when calling it for existing data, you must specify the ID of the data row by replacing the `<:id>` portion of the URL.
+Puisque cette opération cible une seule entrée de données, lors de l'appel pour des données existantes, vous devez spécifier l'ID de la ligne de données en remplaçant la partie `<:id>` de l'URL.
 
-When invoking the API for a form submission (such as adding or updating data), you can omit the ID for new entries but must provide the relevant data as the execution context:
+Lorsque vous invoquez l'API pour une soumission de formulaire (comme l'ajout ou la mise à jour de données), vous pouvez omettre l'ID pour les nouvelles entrées mais devez fournir les données pertinentes en tant que contexte d'exécution :
 
 ```bash
-curl -X POST -H 'Authorization: Bearer <your token>' -H 'X-Role: <roleName>' -d \
+curl -X POST -H 'Authorization: Bearer <votre jeton>' -H 'X-Role: <nomDuRôle>' -d \
   '{
     "title": "Sample 1",
     "indicator": 91
@@ -22,10 +22,10 @@ curl -X POST -H 'Authorization: Bearer <your token>' -H 'X-Role: <roleName>' -d 
   "http://localhost:3000/api/samples:trigger?triggerWorkflows=workflowKey"
 ```
 
-For updating a form, you need to include both the data row ID and the updated data:
+Pour mettre à jour un formulaire, vous devez inclure à la fois l'ID de la ligne de données et les données mises à jour :
 
 ```bash
-curl -X POST -H 'Authorization: Bearer <your token>' -H 'X-Role: <roleName>' -d \
+curl -X POST -H 'Authorization: Bearer <votre jeton>' -H 'X-Role: <nomDuRôle>' -d \
   '{
     "title": "Sample 1",
     "indicator": 91
@@ -33,31 +33,31 @@ curl -X POST -H 'Authorization: Bearer <your token>' -H 'X-Role: <roleName>' -d 
   "http://localhost:3000/api/samples:trigger/<:id>?triggerWorkflows=workflowKey"
 ```
 
-If both the ID and data are provided, the specified data row will be loaded first, and then the provided data will overwrite the original row to generate the final trigger context.
+Si à la fois l'ID et les données sont fournis, la ligne de données spécifiée sera d'abord chargée, puis les données fournies écraseront la ligne originale pour générer le contexte final du déclencheur.
 
 :::warning{title="Note"}
-If relational data is provided, it will also be overwritten. Take special care when handling relational data with Preload associations to avoid unintentionally altering related data.
+Si des données relationnelles sont fournies, elles seront également écrasées. Faites particulièrement attention lorsque vous manipulez des données relationnelles avec des associations Preload pour éviter de modifier accidentellement des données liées.
 :::
 
-Additionally, the URL parameter `triggerWorkflows` designates the workflow key(s). Multiple workflows can be separated by commas. You can obtain this key by hovering over the workflow name at the top of the workflow canvas:
+De plus, le paramètre d'URL `triggerWorkflows` désigne la ou les clés du workflow. Plusieurs workflows peuvent être séparés par des virgules. Vous pouvez obtenir cette clé en survolant le nom du workflow en haut du canevas de workflow :
 
-![Workflow Key View Method](https://static-docs.nocobase.com/20240426135108.png)
+![Méthode d'affichage de la clé du workflow](https://static-docs.nocobase.com/20240426135108.png)
 
-Once the call is successful, the custom operation event for the `samples` table will be triggered.
+Une fois l'appel réussi, l'événement d'opération personnalisé pour la table `samples` sera déclenché.
 
-:::info{title="Tip"}
-Since external API calls also require user authentication, you must include authentication information in the request, similar to requests sent from the standard interface. This includes the `Authorization` header or `token` parameter (the token obtained after login) and the `X-Role` header (the user's current role name).
+:::info{title="Astuce"}
+Étant donné que les appels API externes nécessitent également une authentification utilisateur, vous devez inclure les informations d'authentification dans la requête, de manière similaire aux requêtes envoyées depuis l'interface standard. Cela inclut l'en-tête `Authorization` ou le paramètre `token` (le jeton obtenu après connexion) et l'en-tête `X-Role` (le nom du rôle actuel de l'utilisateur).
 :::
 
-If you need to trigger an event for a many-to-one data item (currently not supported for many-to-many relationships), you can specify the related field’s trigger data using `!` in the parameter:
+Si vous devez déclencher un événement pour un élément de données many-to-one (actuellement non pris en charge pour les relations many-to-many), vous pouvez spécifier les données déclenchées du champ associé en utilisant `!` dans le paramètre :
 
 ```bash
-curl -X POST -H 'Authorization: Bearer <your token>' -H 'X-Role: <roleName>' \
+curl -X POST -H 'Authorization: Bearer <votre jeton>' -H 'X-Role: <nomDuRôle>' \
   "http://localhost:3000/api/posts:trigger/<:id>?triggerWorkflows=workflowKey!category"
 ```
 
-After a successful call, the custom operation event for the corresponding `categories` table will be triggered.
+Après un appel réussi, l'événement d'opération personnalisé pour la table `categories` correspondante sera déclenché.
 
-:::info{title="Tip"}
-When triggering an event via HTTP API, ensure that the workflow is enabled and that the collection configuration is correct. Otherwise, the call may fail or result in errors.
+:::info{title="Astuce"}
+Lorsque vous déclenchez un événement via l'API HTTP, assurez-vous que le workflow est activé et que la configuration de la collection est correcte. Sinon, l'appel pourrait échouer ou entraîner des erreurs.
 :::

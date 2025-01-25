@@ -1,62 +1,61 @@
-# Linkage Rules
+# Règles de Liaison
 
 ## Introduction
 
-Linkage rules allow dynamic adjustment of form field states based on user behavior, such as Visible/Hidden, Required/Not Required, and value assignment. Currently, the following components support configuring linkage rules: [Form Blocks](https://docs.nocobase.com/handbook/ui/blocks/data-blocks/form#linkage-rules), [Details Blocks](https://docs.nocobase.com/handbook/ui/blocks/data-blocks/details#linkage-rules), [Action Buttons](https://docs.nocobase.com/handbook/ui/actions/action-settings/linkage-rule), [Sub Forms](https://docs.nocobase.com/handbook/ui/fields/specific/nester) (requires v1.3.17-beta or above), and [Sub Tables](https://docs.nocobase.com/handbook/ui/fields/specific/sub-table) (requires v1.3.17-beta or above).
-
+Les règles de liaison permettent d'ajuster dynamiquement l'état des champs de formulaire en fonction du comportement de l'utilisateur, tels que Visible/Caché, Obligatoire/Non Obligatoire et l'assignation de valeurs. Actuellement, les composants suivants prennent en charge la configuration des règles de liaison : [Blocs de formulaire](https://docs.nocobase.com/handbook/ui/blocks/data-blocks/form#linkage-rules), [Blocs de détails](https://docs.nocobase.com/handbook/ui/blocks/data-blocks/details#linkage-rules), [Boutons d'action](https://docs.nocobase.com/handbook/ui/actions/action-settings/linkage-rule), [Sous-formulaires](https://docs.nocobase.com/handbook/ui/fields/specific/nester) (requiert v1.3.17-beta ou version supérieure), et [Sous-tables](https://docs.nocobase.com/handbook/ui/fields/specific/sub-table) (requiert v1.3.17-beta ou version supérieure).
 
 ![20240408100711](https://static-docs.nocobase.com/20240408100711.png)
 
 ![20240408100757](https://static-docs.nocobase.com/20240408100757.png)
 
-## Usage Instructions
+## Instructions d'utilisation
 
-1. Field Configuration: Ensure all form fields utilized in the rules are properly configured to guarantee rule effectiveness and accuracy.
+1. **Configuration des champs** : Assurez-vous que tous les champs du formulaire utilisés dans les règles sont correctement configurés pour garantir l'efficacité et la précision des règles.
 
-2. Conditional Activation: When rule conditions are satisfied (optional), the system automatically executes the specified property modifications.
+2. **Activation conditionnelle** : Lorsque les conditions de la règle sont remplies (facultatif), le système exécute automatiquement les modifications de propriétés spécifiées.
 
-3. Multi-Rule Support: Forms can accommodate multiple linkage rules. When several rule conditions are simultaneously met, the system executes the results sequentially, following the order of rule definition.
+3. **Prise en charge de plusieurs règles** : Les formulaires peuvent contenir plusieurs règles de liaison. Lorsque plusieurs conditions de règles sont simultanément remplies, le système exécute les résultats de manière séquentielle, en suivant l'ordre de définition des règles.
 
-4. Rule Management: Enjoy comprehensive control with features for custom naming, sorting, deleting, enabling, disabling, and duplicating rules.
+4. **Gestion des règles** : Profitez d'un contrôle complet avec des fonctionnalités telles que la dénomination personnalisée, le tri, la suppression, l'activation, la désactivation et la duplication des règles.
 
-5. Constant and Variable Integration: Leverage constants or variables in field assignments and condition configurations. For detailed information on variables, consult the [Variables](/handbook/ui/variables) section.
+5. **Intégration des constantes et des variables** : Utilisez des constantes ou des variables dans les affectations de champs et les configurations de conditions. Pour plus d'informations sur les variables, consultez la section [Variables](/handbook/ui/variables).
 
-### Value Assignment
+### Affectation de Valeurs
 
-Illustration: Automatically evaluate and designate customer levels (e.g., A+, A, A-) based on projected annual purchase amounts.
+**Illustration** : Évaluer et attribuer automatiquement des niveaux de clients (par exemple, A+, A, A-) en fonction des montants d'achats annuels estimés.
 
-- Estimated annual purchase exceeding 20,000: Customer classified as A+.
+- Achat annuel estimé supérieur à 20 000 : Client classé A+.
 
 ![20240408102241](https://static-docs.nocobase.com/20240408102241.png)
 
-- Estimated annual purchase between 10,000 and 20,000 (inclusive): Customer classified as A.
+- Achat annuel estimé entre 10 000 et 20 000 (inclus) : Client classé A.
 
 ![20240408102303](https://static-docs.nocobase.com/20240408102303.png)
 
-- Estimated annual purchase below 10,000: Customer classified as A-.
+- Achat annuel estimé inférieur à 10 000 : Client classé A-.
 
 ![20240408102324](https://static-docs.nocobase.com/20240408102324.png)
 
-### Field Requirement
+### Exigence de Champ
 
-Illustration: Dynamically adjust the requirement status of the product's promotional price based on its promotion status.
+**Illustration** : Ajuster dynamiquement le statut d'obligation du prix promotionnel du produit en fonction de son statut promotionnel.
 
-- When "IsPromotion" is active, promotional price becomes mandatory.
+- Lorsque "IsPromotion" est activé, le prix promotionnel devient obligatoire.
 
 ![20240408105031](https://static-docs.nocobase.com/20240408105031.png)
 
-- When "IsPromotion" is inactive, promotional price becomes optional.
+- Lorsque "IsPromotion" est inactif, le prix promotionnel devient optionnel.
 
 ![20240408105115](https://static-docs.nocobase.com/20240408105115.png)
 
-### Visibility Control
+### Contrôle de Visibilité
 
-Illustration: Manage the visibility of the promotional price input field based on the product's promotion status.
+**Illustration** : Gérer la visibilité du champ de prix promotionnel en fonction du statut de la promotion du produit.
 
-- When "IsPromotion" is true, the promotional price field is displayed and required.
+- Lorsque "IsPromotion" est vrai, le champ de prix promotionnel est affiché et obligatoire.
 
 ![20240408115240](https://static-docs.nocobase.com/20240408115240.png)
 
-- When "IsPromotion" is false, the promotional price field is hidden and not required.
+- Lorsque "IsPromotion" est faux, le champ de prix promotionnel est caché et non obligatoire.
 
 ![20240408115338](https://static-docs.nocobase.com/20240408115338.png)

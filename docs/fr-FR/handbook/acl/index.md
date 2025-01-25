@@ -1,25 +1,25 @@
-# Access Control
+# Contrôle d'accès (ACL)
 
 ## Introduction
 
-NocoBase's ACL module mainly consists of two parts:
+Le module ACL de NocoBase se compose principalement de deux parties :
 
-- `@nocobase/acl` in the kernel, which provides core functions
-- `@nocobase/plugin-acl` in the plugin, which provides dynamic configuration capabilities
+- `@nocobase/acl` dans le noyau, qui fournit les fonctions principales
+- `@nocobase/plugin-acl` dans le plugin, qui fournit des capacités de configuration dynamique
 
 ## Installation
 
-Built-in plugin, no separate installation required.
+Plugin intégré, aucune installation séparée requise.
 
-## Development Guide
+## Guide de développement
 
-### Extending a new permission configuration tab
+### Extension d'un nouvel onglet de configuration des permissions
 
-Below is an example of the "Mobile Menu" configuration item, demonstrating how to extend a new permission configuration tab. The effect is shown in the figure below:
+Ci-dessous un exemple de l'élément de configuration "Menu mobile", montrant comment étendre un nouvel onglet de configuration des permissions. L'effet est illustré dans l'image ci-dessous :
 
 ![20240903210248](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240903210248.png)
 
-The code is as follows:
+Le code est le suivant :
 
 ```typescript
 import { Plugin } from '@nocobase/client';
@@ -31,7 +31,7 @@ class PluginMobileClient extends Plugin {
 
     aclInstance?.settingsUI.addPermissionsTab(({ t, TabLayout, activeKey }) => ({
       key: 'mobile-menu',
-      label: t('Mobile menu', {
+      label: t('Menu mobile', {
         ns: 'plugin-mobile',
       }),
       children: (
@@ -44,9 +44,9 @@ class PluginMobileClient extends Plugin {
 }
 ```
 
-First, we need to obtain an instance of the `PluginACLClient` plugin ([other methods to obtain plugin instances](https://docs.nocobase.com/development/client/life-cycle#%E8%8E%B7%E5%8F%96%E6%8F%92%E4%BB%B6)), and add a new permission configuration tab using the `settingsUI.addPermissionsTab` method. In this example, we added a permission configuration tab named "Mobile Menu".
+Tout d'abord, nous devons obtenir une instance du plugin `PluginACLClient` ([autres méthodes pour obtenir des instances de plugins](https://docs.nocobase.com/development/client/life-cycle#%E8%8E%B7%E5%8F%96%E6%8F%92%E4%BB%B6)), puis ajouter un nouvel onglet de configuration des permissions à l'aide de la méthode `settingsUI.addPermissionsTab`. Dans cet exemple, nous avons ajouté un onglet de configuration des permissions nommé "Menu mobile".
 
-The value of the `settingsUI` property is an instance of a class named `ACLSettingsUI`, and its type information is as follows:
+La valeur de la propriété `settingsUI` est une instance d'une classe nommée `ACLSettingsUI`, et ses informations de type sont les suivantes :
 
 ```typescript
 import { TabsProps } from 'antd/es/tabs/index';
@@ -62,19 +62,19 @@ type TabCallback = (props: PermissionsTabsProps) => Tab;
 
 interface PermissionsTabsProps {
   /**
-   * the key of the currently active tab panel
+   * la clé de l'onglet actuellement actif
    */
   activeKey: string;
   /**
-   * the currently selected role
+   * le rôle actuellement sélectionné
    */
   role: Role;
   /**
-   * translation function
+   * fonction de traduction
    */
   t: TFunction;
   /**
-   * used to constrain the size of the container in the Tab
+   * utilisée pour contraindre la taille du conteneur dans l'onglet
    */
   TabLayout: React.FC;
 }

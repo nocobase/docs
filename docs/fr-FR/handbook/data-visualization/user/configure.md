@@ -1,83 +1,83 @@
-# Configuration Panel
+## Panneau de Configuration du Graphique
 
-The chart configuration panel is organized into three primary sections: Data Configuration, Chart Configuration, and Chart Preview.
+Le panneau de configuration du graphique est divisé en trois sections principales : Configuration des Données, Configuration du Graphique, et Aperçu du Graphique.
 
-![Configuration Panel Image](https://static-docs.nocobase.com/202404192019222.png)
+![Panneau de Configuration Image](https://static-docs.nocobase.com/202404192019222.png)
 
-## Data Configuration
+### 1. Configuration des Données
 
-![Data Configuration Image](https://static-docs.nocobase.com/202404192020544.png)
+![Image de la Configuration des Données](https://static-docs.nocobase.com/202404192020544.png)
 
-- The drop-down at the top represents the current Collection being configured, which can be switched using the drop-down menu.
-- Once the configuration is complete, clicking "Run Query" will retrieve the data according to the settings. The "Data" panel will display the resulting data.
+- **Sélection de la Collection** : Le menu déroulant en haut vous permet de sélectionner la collection de données à configurer. Vous pouvez changer de collection à tout moment.
+- **Exécuter la Requête** : Après avoir configuré les paramètres, cliquez sur "Exécuter la requête" pour récupérer les données en fonction des réglages. Les données retournées seront affichées dans le panneau "Données".
 
-### Measures
+#### Mesures
 
-![Measures Image](https://static-docs.nocobase.com/202404192023854.png)
+![Mesures Image](https://static-docs.nocobase.com/202404192023854.png)
 
-Measure fields contain the key data that the chart will display. These fields can be aggregated using functions such as `Sum`, `Count`, `Avg`, `Max`, and `Min`. You can add multiple measure fields, and assign aliases to them as needed.
+Les champs de mesure contiennent les données clés que le graphique affichera. Ces champs peuvent être agrégés à l'aide de fonctions comme `Sum` (Somme), `Count` (Comptage), `Avg` (Moyenne), `Max` (Maximale), et `Min` (Minimale). Vous pouvez ajouter plusieurs champs de mesure et leur attribuer des alias si nécessaire.
 
-### Dimensions
+#### Dimensions
 
 ![Dimensions Image](https://static-docs.nocobase.com/202404192025717.png)
 
-Dimension fields determine how the data is grouped within the chart. For date-type fields, various formatting options are available, as shown in the image. Formatting is handled by database functions (e.g., `date_format` in MySQL). For other data types, refer to the [Data Transformation](#数据转换) section.
+Les champs de dimensions déterminent la manière dont les données sont regroupées dans le graphique. Pour les champs de type date, vous avez plusieurs options de formatage disponibles, comme montré dans l'image. Le formatage des dates est effectué via des fonctions de base de données (par exemple, `date_format` dans MySQL). Pour d'autres types de données, consultez la section [Transformation des Données](#数据转换).
 
 :::info
-**Dimension Formatting VS Data Transformation**
+**Formatage des Dimensions vs Transformation des Données**
 
-- Dimension formatting occurs before the final data is fetched, grouping data according to the formatted dimension values. This is commonly needed when filtering data by time periods.
-- Data transformation further refines the data after it is retrieved, enhancing readability and presentation. This transformation is applied on the frontend.
-  :::
+- Le **formatage des dimensions** se fait avant la récupération des données et permet de grouper les données selon les valeurs dimensionnelles formatées. Cela est souvent utilisé pour filtrer les données par période.
+- La **transformation des données** intervient après que les données ont été récupérées et sert à améliorer leur lisibilité et présentation. Cela se fait sur le frontend.
+:::
 
-### Filter
+#### Filtrage
 
-![Filter Image](https://static-docs.nocobase.com/202404192029597.png)
+![Filtre Image](https://static-docs.nocobase.com/202404192029597.png)
 
-Filters are applied to the data before grouping. You can use variables for dynamic filtering:
+Les filtres sont appliqués aux données avant qu'elles ne soient groupées. Vous pouvez utiliser des variables pour un filtrage dynamique :
 
-- Current User: Information related to the currently logged-in user.
-- Date Variables: Date ranges dynamically calculated based on the current date.
-  - Current Filter: Custom filter fields set within the current chart block. Refer to [Filter Block](./filter.md).
+- **Utilisateur Actuel** : Informations liées à l'utilisateur actuellement connecté.
+- **Variables de Date** : Plages de dates calculées dynamiquement en fonction de la date actuelle.
+  - **Filtre Actuel** : Champs de filtre personnalisés définis dans le bloc de graphique actuel. Consultez [Bloc de Filtre](./filter.md).
 
-### Sort and Limit
+#### Trier et Limiter
 
-![Sort and Limit Image](https://static-docs.nocobase.com/202404192034106.png)
+![Trier et Limiter Image](https://static-docs.nocobase.com/202404192034106.png)
 
-The default DataSet is limited to a maximum of 2000 entries.
+Le jeu de données par défaut est limité à un maximum de 2000 entrées.
 
-### Cache
+#### Mise en Cache
 
 ![Cache Image](https://static-docs.nocobase.com/202404192035918.png)
 
-When enabled cache, the chart will display data from the cache. You can configure the cache duration as needed.
+Lorsque la mise en cache est activée, le graphique affichera les données provenant du cache. Vous pouvez configurer la durée du cache selon vos besoins.
 
-## Chart Configuration
+### 2. Configuration du Graphique
 
-### Container Configuration
+#### Configuration du Conteneur
 
-This section allows you to configure the properties of the container component that displays the chart.
+Cette section vous permet de configurer les propriétés du composant conteneur qui affiche le graphique.
 
-- Chart Title
-- Show Chart Border
+- **Titre du Graphique**
+- **Afficher la Bordure du Graphique**
 
-![Container Configuration Image](https://static-docs.nocobase.com/202404192037644.png)
+![Configuration du Conteneur Image](https://static-docs.nocobase.com/202404192037644.png)
 
-The display effect of the chart title:
+Voici l'effet d'affichage du titre du graphique :
 
-![Chart Title Display Image](https://static-docs.nocobase.com/202404192048473.png)
+![Affichage du Titre Image](https://static-docs.nocobase.com/202404192048473.png)
 
-The display effect when showing the chart border:
+Et l'effet d'affichage de la bordure du graphique :
 
-![Chart Border Display Image](https://static-docs.nocobase.com/202404192048223.png)
+![Affichage de la Bordure Image](https://static-docs.nocobase.com/202404192048223.png)
 
-### Chart Configuration
+#### Configuration du Graphique
 
-![Chart Configuration Image](https://static-docs.nocobase.com/202404192050696.png)
+![Configuration du Graphique Image](https://static-docs.nocobase.com/202404192050696.png)
 
-- **Chart Type**: This is where you select the type of chart to display. NocoBase uses <a href="https://g2plot.antv.antgroup.com/" target="_blank">Ant Design Charts</a> 2.x as the default chart library. To extend and use other chart libraries or components, see the [Development Guide](../dev/index.md).
-- **Basic Configuration**: After selecting a chart type, basic visual configuration options appear, such as fields for the x-axis, y-axis, and classification. These field configurations are provided via dropdown menus, which list the basic fields and field aliases from the Collection.
-- **JSON Configuration**: If the basic configuration doesn’t meet your requirements, you can configure additional chart component properties using JSON. Refer to the chart component documentation for details. To include JavaScript expressions in the JSON configuration, wrap them in `{{}}`. For example:
+- **Type de Graphique** : Ici, vous pouvez choisir le type de graphique à afficher. NocoBase utilise la bibliothèque de graphiques **Ant Design Charts** version 2.x par défaut. Pour utiliser d'autres bibliothèques de graphiques ou composants, consultez le [Guide de Développement](../dev/index.md).
+- **Configuration de Base** : Après avoir sélectionné un type de graphique, les options de configuration visuelle de base s'affichent, telles que les champs pour l'axe des x, l'axe des y et la classification. Ces configurations de champs sont fournies via des menus déroulants listant les champs de la collection.
+- **Configuration JSON** : Si la configuration de base ne répond pas à vos besoins, vous pouvez configurer des propriétés supplémentaires du graphique à l'aide du format JSON. Pour inclure des expressions JavaScript dans la configuration JSON, enveloppez-les dans `{{}}`. Par exemple :
 
 ```json
 {
@@ -88,33 +88,36 @@ The display effect when showing the chart border:
 }
 ```
 
-## Data Transformation
+### 3. Transformation des Données
 
-![Data Transformation Image](https://static-docs.nocobase.com/202404192109597.png)
+![Transformation des Données Image](https://static-docs.nocobase.com/202404192109597.png)
 
-Data transformation enables further processing of response data. The supported data types for transformation are `number`, `date`, `time`, and `datetime`. For fields not belonging to these types, you can manually assign one of these types to apply the corresponding transformation methods.
+La transformation des données permet de traiter davantage les données de réponse. Les types de données pris en charge pour la transformation sont `number`, `date`, `time`, et `datetime`. Pour les champs ne correspondant à aucun de ces types, vous pouvez leur attribuer manuellement l'un de ces types pour appliquer les méthodes de transformation correspondantes.
 
-Multiple transformation methods can be applied to the same field. The transformations are executed in sequence, with each step passing its result to the next. You can reorder the transformation steps by dragging them.
+Plusieurs méthodes de transformation peuvent être appliquées au même champ. Les transformations sont exécutées successivement, chaque étape passant son résultat à la suivante. Vous pouvez réorganiser les étapes de transformation en les faisant glisser.
 
 :::warning
-Be mindful that some transformation methods may alter the original data type. When applying multiple transformations, ensure that you choose the correct method based on the data type after each step. For instance, when formatting a number as currency by adjusting precision and adding a prefix, you should first apply the precision adjustment and then the prefix. This is because after adding the prefix, the number is converted to a string, and further precision adjustments will no longer apply.
+Soyez attentif, car certaines méthodes de transformation peuvent altérer le type de données d'origine. Lors de l'application de multiples transformations, assurez-vous de choisir la méthode appropriée en fonction du type de données après chaque étape. Par exemple, pour formater un nombre en devise en ajustant la précision et en ajoutant un préfixe, vous devez d'abord ajuster la précision, puis ajouter le préfixe. Cela est dû au fait qu'après l'ajout du préfixe, le nombre est converti en chaîne, ce qui rend les ajustements de précision inefficaces.
 :::
 
-Supported transformation methods:
+#### Méthodes de Transformation prises en charge
 
-| Type                                  | Method         | Description                                                                                                                   | Converted Type     |
-| ------------------------------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------- | ------------------ |
-| Number (`number`)                     | Prefix         |                                                                                                                               | `string`           |
-|                                       | Suffix         |                                                                                                                               | `string`           |
-|                                       | Precision      |`1`, `1.0`, `1.00`, `1.000`.                                                                                                   | `number`           |
-|                                       | Separator      |`100,000.00` (English), `100.000,00` (German), etc.                                                                            | `string`           |
-|                                       | Percentage     |                                                                                                                               | `string`           |
-|                                       | Scientific Notation |                                                                                                                          | `number`           |
-|                                       | Abbreviation   | `1K`, `1M`, `1T`, `1B`, etc.                                                                                                 | `string`           |
-| DateTime (`datetime`, `date`, `time`) | Formatting     | Uses preset or custom formats like `YYYY-MM-DD`. Refer to the [dayjs](https://day.js.org/docs/en/display/format) documentation. | `string`           |
-|                                       | Prefix         |                                                                                                                               | `string`           |
-|                                       | Suffix         |                                                                                                                               | `string`           |
-| String (`string`)                     | Type Conversion| Converts the string into another type, such as date/time or number.                                                           | `Date` \| `number` |
-|                                       | Prefix         |                                                                                                                               | `string`           |
-|                                       | Suffix         |                                                                                                                               | `string`           |
+| Type                                  | Méthode         | Description                                                                                                                   | Type Converti     |
+| ------------------------------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| Nombre (`number`)                     | Préfixe         |                                                                                                                               | `string`          |
+|                                       | Suffixe         |                                                                                                                               | `string`          |
+|                                       | Précision       | `1`, `1.0`, `1.00`, `1.000`.                                                                                                   | `number`          |
+|                                       | Séparateur      | `100,000.00` (Anglais), `100.000,00` (Allemand), etc.                                                                          | `string`          |
+|                                       | Pourcentage     |                                                                                                                               | `string`          |
+|                                       | Notation Scientifique |                                                                                                                          | `number`          |
+|                                       | Abréviation     | `1K`, `1M`, `1T`, `1B`, etc.                                                                                                 | `string`          |
+| DateTime (`datetime`, `date`, `time`) | Formatage       | Utilise des formats prédéfinis ou personnalisés comme `YYYY-MM-DD`. Consultez la [documentation de dayjs](https://day.js.org/docs/en/display/format). | `string`          |
+|                                       | Préfixe         |                                                                                                                               | `string`          |
+|                                       | Suffixe         |                                                                                                                               | `string`          |
+| Chaîne (`string`)                     | Conversion de Type | Convertit la chaîne en un autre type, comme une date/heure ou un nombre.                                                      | `Date` \| `number` |
+|                                       | Préfixe         |                                                                                                                               | `string`          |
+|                                       | Suffixe         |                                                                                                                               | `string`          |
 
+---
+
+Ce panneau de configuration complet vous permet de personnaliser en profondeur vos graphiques dans NocoBase, de la configuration des données à l'affichage visuel, tout en offrant des options avancées de transformation pour s'assurer que vos graphiques sont parfaitement adaptés à vos besoins.

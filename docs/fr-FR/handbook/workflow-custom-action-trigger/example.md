@@ -1,47 +1,47 @@
-# Example
+# Exemple
 
-Imagine we have a "Sample" collection. For samples marked as "Collected," a "Send to Testing" operation is needed. This operation first checks the sample's basic information, generates a "Testing" Record, and then updates the sample's status to "Testing". This entire process is too complex to be handled by simple "Create, Read, Update, Delete" button clicks. In such scenarios, custom operation events are the perfect solution.
+Imaginons que nous ayons une collection "Échantillon". Pour les échantillons marqués comme "Collectés", une opération "Envoyer au Test" est nécessaire. Cette opération vérifie d'abord les informations de base de l'échantillon, génère un enregistrement "Test", puis met à jour le statut de l'échantillon en "En Test". L'ensemble du processus est trop complexe pour être géré simplement par des clics de boutons "Créer, Lire, Mettre à jour, Supprimer". Dans de tels scénarios, les événements d'opération personnalisée sont la solution idéale.
 
-To start, create a "Sample" collection and a "Testing" collection, and input some basic test data into the Sample collection:
+Pour commencer, créez une collection "Échantillon" et une collection "Test", puis saisissez quelques données de test de base dans la collection Échantillon :
 
-![Example_Sample_Data_Table](https://static-docs.nocobase.com/20240509172234.png)
+![Exemple_Tableau_Échantillon](https://static-docs.nocobase.com/20240509172234.png)
 
-Next, you'll need to create a "Custom action Event" workflow. If you require immediate feedback during the operation, opt for the synchronous mode (bear in mind that synchronous mode doesn't support asynchronous nodes like human intervention):
+Ensuite, vous devrez créer un workflow d' "Événement d'Opération Personnalisée". Si vous avez besoin de retours immédiats pendant l'opération, choisissez le mode synchrone (notez que le mode synchrone ne prend pas en charge les nœuds asynchrones comme l'intervention humaine) :
 
-![Example_Create_Workflow](https://static-docs.nocobase.com/20240509173106.png)
+![Exemple_Créer_Workflow](https://static-docs.nocobase.com/20240509173106.png)
 
-Within the trigger configuration, choose "Sample" as the collection:
+Dans la configuration du déclencheur, choisissez "Échantillon" comme collection :
 
-![Example_Trigger_Configuration](https://static-docs.nocobase.com/20240509173148.png)
+![Exemple_Configuration_Déclencheur](https://static-docs.nocobase.com/20240509173148.png)
 
-Now, arrange the logic of the process according to your business needs. For instance, you might set it so that the "Send to Testing" operation is only allowed when the index parameter exceeds `90`; otherwise, a relevant warning is provided:
+Ensuite, organisez la logique du processus selon vos besoins commerciaux. Par exemple, vous pouvez définir que l'opération "Envoyer au Test" est autorisée uniquement lorsque le paramètre d'indice dépasse `90` ; sinon, un avertissement pertinent est fourni :
 
-![Example_Business_Logic_Arrangement](https://static-docs.nocobase.com/20240509174159.png)
+![Exemple_Organisation_Logique_Affaires](https://static-docs.nocobase.com/20240509174159.png)
 
 :::info{title=Note}
-The "[Response Message](../../nodes/response-message.md)" node can be utilized in synchronous custom operation events to send feedback messages to the client. This feature isn't available in asynchronous mode.
+Le nœud "[Message de Réponse](../../nodes/response-message.md)" peut être utilisé dans les événements d'opération personnalisée synchrones pour envoyer des messages de retour au client. Cette fonctionnalité n'est pas disponible en mode asynchrone.
 :::
 
-After setting up and enabling the workflow, return to the table interface, and add a "Trigger Workflow" button in the operations column:
+Après avoir configuré et activé le workflow, retournez à l'interface du tableau et ajoutez un bouton "Déclencher Workflow" dans la colonne des opérations :
 
-![Example_Add_Operation_Button](https://static-docs.nocobase.com/20240509174525.png)
+![Exemple_Ajouter_Bouton_Opération](https://static-docs.nocobase.com/20240509174525.png)
 
-Next, in the button's configuration menu, select the option to bind the workflow, and open the configuration window:
+Ensuite, dans le menu de configuration du bouton, sélectionnez l'option pour lier le workflow et ouvrez la fenêtre de configuration :
 
-![Example_Open_Workflow_Binding_Popup](https://static-docs.nocobase.com/20240509174633.png)
+![Exemple_Ouvrir_Popup_Lien_Workflow](https://static-docs.nocobase.com/20240509174633.png)
 
-Add the workflow that was previously enabled:
+Ajoutez le workflow que vous avez activé précédemment :
 
-![Example_Select_Workflow](https://static-docs.nocobase.com/20240509174723.png)
+![Exemple_Sélectionner_Workflow](https://static-docs.nocobase.com/20240509174723.png)
 
-After submission, rename the button to reflect the action, like "Testing," and the configuration is complete.
+Après soumission, renommez le bouton pour refléter l'action, comme "Tester", et la configuration est terminée.
 
-To use the feature, select any sample data from the table and click the "Send to Testing" button to trigger the custom operation event. As per the pre-arranged logic, if the sample's index parameter is below 90, you'll see a warning message like this:
+Pour utiliser cette fonctionnalité, sélectionnez des données d'échantillon dans le tableau et cliquez sur le bouton "Envoyer au Test" pour déclencher l'événement d'opération personnalisé. Selon la logique pré-arrangée, si le paramètre d'indice de l'échantillon est inférieur à 90, vous verrez un message d'avertissement comme ceci :
 
-![Example_Inspection_Criteria_Not_Met](https://static-docs.nocobase.com/20240509175026.png)
+![Exemple_Critères_Inspection_Non_Remplis](https://static-docs.nocobase.com/20240509175026.png)
 
-If the index parameter is over 90, the process will proceed as expected, creating a "Testing Record" entry and updating the sample's status to "Testing":
+Si le paramètre d'indice dépasse 90, le processus se poursuivra comme prévu, créant un enregistrement "Test" et mettant à jour le statut de l'échantillon en "En Test" :
 
-![Example_Inspection_Successful](https://static-docs.nocobase.com/20240509175247.png)
+![Exemple_Inspection_Réussie](https://static-docs.nocobase.com/20240509175247.png)
 
-And there you have it—a simple custom operation event. This approach can be similarly applied to other complex business operations, such as order processing or report submission, using custom operation events to achieve the desired results.
+Et voilà—un événement d'opération personnalisé simple. Cette approche peut être appliquée de manière similaire à d'autres opérations commerciales complexes, telles que le traitement des commandes ou la soumission de rapports, en utilisant des événements d'opération personnalisés pour obtenir les résultats souhaités.

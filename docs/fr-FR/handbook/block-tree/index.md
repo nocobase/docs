@@ -1,35 +1,35 @@
-# Tree Filter Block
+# Bloc Filtre Arborescent
 
 <PluginInfo commercial="true" name="block-tree"></PluginInfo>
 
 ## Introduction
 
-The tree filter block needs to be connected to the data block for use, providing filtering capabilities for the data block.
+Le bloc de filtre arborescent doit être connecté au bloc de données pour être utilisé, offrant des capacités de filtrage pour le bloc de données.
 
-## Adding Block
+## Ajouter un Bloc
 
 <video width="100%" controls>
   <source src="https://static-docs.nocobase.com/20240607144133_rec_.mp4" type="video/mp4">
 </video>
 
-## Block Settings
+## Paramètres du Bloc
 
 ![20240607144440](https://static-docs.nocobase.com/20240607144440.png)
 
-### Connecting Data Block
+### Connexion au Bloc de Données
 
-Example: The form filter block connects to the detail data block to achieve linkage.
+Exemple : Le bloc de filtre de formulaire se connecte au bloc de données détaillées pour établir une liaison.
 
 <video width="100%" height="440" controls>
     <source src="https://static-docs.nocobase.com/20240607145351_rec_.mp4" type="video/mp4">
   </video>
 
-For more information, refer to [Connecting Data Block](/handbook/ui/blocks/block-settings/connect-block)
+Pour plus d'informations, consultez [Connexion au Bloc de Données](/handbook/ui/blocks/block-settings/connect-block)
 
-- [Editing Block Title](/handbook/ui/blocks/block-settings/block-title)
-- [Linkage Rule](/handbook/ui/blocks/block-settings/linkage-rule)
-- [Save as Block Template](/handbook/ui/blocks/block-settings/block-template)
+- [Modifier le Titre du Bloc](/handbook/ui/blocks/block-settings/block-title)
+- [Règle de Liaison](/handbook/ui/blocks/block-settings/linkage-rule)
+- [Enregistrer en tant que Modèle de Bloc](/handbook/ui/blocks/block-settings/block-template)
 
-## Configuring Fields
+## Configuration des Champs
 
 ![20240607145820](https://static-docs.nocobase.com/20240607145820.png)

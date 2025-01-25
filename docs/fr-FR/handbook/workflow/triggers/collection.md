@@ -1,86 +1,86 @@
-# Collection event
+# Événement de collection
 
-Trigger types of collection events will listen for adding, deleting and updating events of the collection. When an action on the record of collection occurs and meets the configured conditions, the corresponding workflow will be triggered. For example, reducing the inventory of goods after adding a new order, waiting for manual review after adding a comment, etc.
+Les types de déclencheurs d'événements de collection écouteront les événements d'ajout, de suppression et de mise à jour des enregistrements de la collection. Lorsqu'une action sur un enregistrement de collection se produit et répond aux conditions configurées, le workflow correspondant sera déclenché. Par exemple, la réduction de l'inventaire des produits après l'ajout d'une nouvelle commande, l'attente d'une revue manuelle après l'ajout d'un commentaire, etc.
 
-## Basic Usage
+## Utilisation de base
 
-There are several types of changes to the collection:
+Il existe plusieurs types de modifications sur la collection :
 
-1. After a record added.
-2. After a record updated.
-3. After a record added or updated.
-4. After a record deleted.
+1. Après l'ajout d'un enregistrement.
+2. Après la mise à jour d'un enregistrement.
+3. Après l'ajout ou la mise à jour d'un enregistrement.
+4. Après la suppression d'un enregistrement.
 
 ![Collection Events_Trigger Timing Selection](https://static-docs.nocobase.com/81275602742deb71e0c830eb97aa612c.png)
 
-You can choose the timing of the trigger according to the needs of the business. When change type selected that includes updating a record, you can also limit the fields that have changed. Only when the selected fields change will the trigger condition be satisfied. If none are selected, it means that all fields changing will trigger.
+Vous pouvez choisir le moment du déclenchement en fonction des besoins de l'entreprise. Lorsque le type de modification sélectionné inclut la mise à jour d'un enregistrement, vous pouvez également limiter les champs qui ont changé. Le déclencheur ne sera satisfait que lorsque les champs sélectionnés changeront. Si aucun champ n'est sélectionné, cela signifie que toute modification de champ déclenchera l'événement.
 
 ![Collection Events_Selection of Fields that Have Changed](https://static-docs.nocobase.com/874a1475f01298b3c00267b2b4674611.png)
 
-In more detail, conditions can be configured for each field of the triggered record. It only triggers when the conditions of the fields are met.
+Plus en détail, des conditions peuvent être configurées pour chaque champ de l'enregistrement déclenché. L'événement ne se déclenche que lorsque les conditions des champs sont remplies.
 
 ![Collection Events_Configuring Conditions for Data Satisfying](https://static-docs.nocobase.com/264ae3835dcd75cee0eef7812c11fe0c.png)
 
-After the collection event is triggered, the source record of the event will be injected into the execution plan as trigger context data for subsequent nodes to use as variables. However, when subsequent nodes need to use the association fields of this record, preloading of the association fields needs to be configured first. The selected association fields will be injected into the context after triggering and can be selected and used by path.
+Après que l'événement de collection soit déclenché, l'enregistrement source de l'événement sera injecté dans le plan d'exécution en tant que données contextuelles pour que les nœuds suivants l'utilisent comme variables. Cependant, lorsque les nœuds suivants ont besoin d'utiliser les champs d'association de cet enregistrement, un préchargement des champs d'association doit d'abord être configuré. Les champs d'association sélectionnés seront injectés dans le contexte après le déclenchement et pourront être sélectionnés et utilisés par les chemins.
 
-## Related Tips
+## Astuces associées
 
-### Batch data action triggering is not supported
+### Le déclenchement des actions par lot de données n'est pas pris en charge
 
-Collection events do not support triggering on batch data action for now. For example, when adding article record and simultaneously adding multiple tag records of the article (many-to-many relationship data), only the workflow for adding the article will be triggered, and the workflows for adding multiple tags simultaneously will not be triggered. For associating or adding of many-to-many association records, the workflow of the intermediate collection will not be triggered either.
+Les événements de collection ne prennent pas en charge le déclenchement d'actions par lot de données pour l'instant. Par exemple, lors de l'ajout d'un enregistrement d'article et de l'ajout simultané de plusieurs enregistrements de balises pour l'article (données de relation plusieurs-à-plusieurs), seul le workflow pour l'ajout de l'article sera déclenché, et les workflows pour l'ajout de plusieurs balises simultanément ne seront pas déclenchés. Pour l'association ou l'ajout d'enregistrements de relation plusieurs-à-plusieurs, le workflow de la collection intermédiaire ne sera pas non plus déclenché.
 
-### Data operations out of NocoBase application will not trigger
+### Les opérations de données en dehors de l'application NocoBase ne déclencheront pas d'événements
 
-Data actions on collections through HTTP API calls to the application interface can also trigger corresponding events. However, if the data changes are not made through the NodoBase application but directly through database operations, the corresponding events will not be triggered. For example, the triggers in the database itself will not be associated with workflows in the application.
+Les actions de données sur les collections via des appels API HTTP à l'interface de l'application peuvent également déclencher les événements correspondants. Cependant, si les modifications de données ne sont pas effectuées via l'application NocoBase mais directement via des opérations sur la base de données, les événements correspondants ne seront pas déclenchés. Par exemple, les déclencheurs dans la base de données elle-même ne seront pas associés aux workflows de l'application.
 
-Also, using the SQL node to operate on the database is equivalent to directly operating on the database and will not trigger collection events.
+De plus, l'utilisation du nœud SQL pour opérer sur la base de données revient à opérer directement sur la base de données et ne déclenchera pas d'événements de collection.
 
-### External Data Sources
+### Sources de données externes
 
-from `0.20`, workflow started to support external data sources. If an external data source plugin is used and the collection event is configured for an external data source, as long as the data operation on this data source is completed within the application (user addition, update, and workflow data operations, etc.), the corresponding collection event can be triggered. However, if the data change is made through other systems or directly within the external database, the collection event will not be triggered.
+À partir de `0.20`, le workflow a commencé à prendre en charge les sources de données externes. Si un plugin de source de données externe est utilisé et qu'un événement de collection est configuré pour une source de données externe, tant que l'opération de données sur cette source de données est effectuée dans l'application (ajout, mise à jour, et opérations de données de workflow, etc.), l'événement de collection correspondant peut être déclenché. Cependant, si le changement de données est effectué par d'autres systèmes ou directement dans la base de données externe, l'événement de collection ne sera pas déclenché.
 
-## Example
+## Exemple
 
-Take an example scenario of calculating the total price and deducting inventory after adding an order.
+Prenons un scénario d'exemple de calcul du prix total et de déduction de l'inventaire après l'ajout d'une commande.
 
-First, we create the product collection and the order collection, and the data model is as follows:
+Tout d'abord, créons la collection de produits et la collection de commandes, et le modèle de données est comme suit :
 
-| Field Name | Field Type |
-| ---------- | ---------- |
-| Product Name | Single Line Text |
-| Price | Number |
-| Inventory | Integer |
+| Nom du champ    | Type de champ    |
+| --------------- | ---------------- |
+| Nom du produit  | Texte sur une ligne |
+| Prix            | Nombre           |
+| Inventaire      | Entier           |
 
-| Field Name | Field Type |
-| ---------- | ---------- |
-| Order Number | Auto Number |
-| Order Product | Many-to-One (Product) |
-| Order Total Price | Number |
+| Nom du champ    | Type de champ    |
+| --------------- | ---------------- |
+| Numéro de commande | Numéro automatique |
+| Produit de commande  | Plusieurs à Un (Produit) |
+| Prix total de la commande | Nombre |
 
-And add basic product data:
+Ajoutons ensuite des données de produits de base :
 
-| Product Name | Price | Inventory |
-| ------------ | ----- | -------- |
-| iPhone 14 Pro | 7999 | 10 |
-| iPhone 13 Pro | 5999 | 0 |
+| Nom du produit   | Prix | Inventaire |
+| ---------------- | ---- | ---------- |
+| iPhone 14 Pro    | 7999 | 10         |
+| iPhone 13 Pro    | 5999 | 0          |
 
-Then create a workflow based on the collection event of the order:
+Ensuite, créons un workflow basé sur l'événement de collection de la commande :
 
-![Collection Events_Example_Add Order Trigger](https://static-docs.nocobase.com/094392a870dddc65aeb20357f62ddc08.png)
+![Collection Events_Example_Add Order Trigger](https://static.docs.nocobase.com/094392a870dddc65aeb20357f62ddc08.png)
 
-Several configuration items:
+Voici plusieurs éléments de configuration :
 
-- Data collection: Select the "Order" table.
-- Trigger on: Select "After Adding Data" trigger.
-- Condition: Leave it blank.
-- Preload associations: Check "Product".
+- Collection de données : Sélectionnez la table "Commande".
+- Déclencheur sur : Sélectionnez le déclencheur "Après ajout de données".
+- Condition : Laissez vide.
+- Précharger les associations : Cochez "Produit".
 
-Then configure other nodes based on the logic of the workflow, check if the product inventory is greater than 0, and deduct inventory if it is, otherwise delete the order as it is invalid:
+Ensuite, configurez les autres nœuds en fonction de la logique du workflow, vérifiez si l'inventaire du produit est supérieur à 0, et déduisez l'inventaire si c'est le cas, sinon supprimez la commande car elle est invalide :
 
-![Collection Events_Example_Add Order Workflow Arrangement](https://static-docs.nocobase.com/7713ea1aaa0f52a0dc3c92aba5e58f05.png)
+![Collection Events_Example_Add Order Workflow Arrangement](https://static.docs.nocobase.com/7713ea1aaa0f52a0dc3c92aba5e58f05.png)
 
-The configuration of the nodes will be detailed in the documentation of the specific types.
+La configuration des nœuds sera détaillée dans la documentation des types spécifiques.
 
-Enable the workflow and test by adding an order through the UI. After placing an order for "iPhone 14 Pro", the inventory of the corresponding product will be reduced to 9. However, if an order is placed for "iPhone 13 Pro", the order will be deleted due to insufficient inventory.
+Activez le workflow et testez-le en ajoutant une commande via l'interface utilisateur. Après avoir passé une commande pour l' "iPhone 14 Pro", l'inventaire du produit correspondant sera réduit à 9. Cependant, si une commande est passée pour l' "iPhone 13 Pro", la commande sera supprimée en raison de l'inventaire insuffisant.
 
-![Collection Events_Example_Add Order Execution Result](https://static-docs.nocobase.com/24cbe51e24ba4804b3bd48d99415c54f.png)
+![Collection Events_Example_Add Order Execution Result](https://static.docs.nocobase.com/24cbe51e24ba4804b3bd48d99415c54f.png)

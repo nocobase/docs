@@ -1,20 +1,20 @@
-# Overview
+# Vue d'ensemble
 
 <PluginInfo name="workflow-dynamic-calculation" link="/handbook/workflow-dynamic-calculation"></PluginInfo>
 
-Dynamic Calculation nodes stand out from Operator nodes by allowing diverse calculations based on data-associated expressions. While traditional formula fields are limited to applying a single fixed formula across all data rows, Dynamic calculation solve this limitation by enabling workflows to handle different calculation methods for varying data rows.
+Les nœuds de Calcul Dynamique se distinguent des nœuds Opérateur en permettant des calculs divers basés sur des expressions associées aux données. Alors que les champs de formule traditionnels sont limités à l'application d'une seule formule fixe sur toutes les lignes de données, le Calcul Dynamique résout cette limitation en permettant aux workflows de gérer différentes méthodes de calcul pour différentes lignes de données.
 
-For example, different product categories in order data may require distinct statistical formulas to compute specific report data.
+Par exemple, différentes catégories de produits dans les données de commande peuvent nécessiter des formules statistiques distinctes pour calculer des données de rapport spécifiques.
 
 ## Installation
 
-This plugin comes pre-installed and does not require any additional setup.
+Ce plugin est préinstallé et ne nécessite aucune configuration supplémentaire.
 
-## User Manual
+## Manuel de l'utilisateur
 
-Using dynamic expressions involves several key sections:
+L'utilisation des expressions dynamiques comprend plusieurs sections clés :
 
-- ["Expression" Template Table](./collection.md)
-- [Node](./node.md)
+- [Table modèle "Expression"](./collection.md)
+- [Nœud](./node.md)
 
-For practical examples, refer to the [Examples](./example.md) section.
+Pour des exemples pratiques, consultez la section [Exemples](./example.md).

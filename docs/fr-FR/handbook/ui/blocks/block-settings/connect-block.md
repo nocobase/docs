@@ -1,36 +1,36 @@
-# Connecting Data Blocks
+# Connexion des Blocs de Données
 
 ## Introduction
 
-Connecting data blocks is a powerful feature that enables dynamic filtering linkage between different data components. At its core, this functionality involves establishing a relationship between two collections: a source collection (primary collection) and a target collection (foreign key collection). This connection facilitates seamless data filtering and interaction.
+La connexion des blocs de données est une fonctionnalité puissante qui permet une liaison dynamique de filtrage entre différents composants de données. En substance, cette fonctionnalité consiste à établir une relation entre deux collections : une collection source (collection principale) et une collection cible (collection clé étrangère). Cette connexion permet un filtrage et une interaction fluides des données.
 
-The options for connecting blocks are versatile, including:
-- Data blocks from the same collection on the current page or pop-up window
-- Blocks from different collections with foreign key constraints
-- Blocks from collections with inheritance relationships
+Les options pour connecter les blocs sont polyvalentes, incluant :
+- Des blocs de données provenant de la même collection sur la page actuelle ou la fenêtre pop-up.
+- Des blocs provenant de différentes collections avec des contraintes de clé étrangère.
+- Des blocs de collections avec des relations d'héritage.
 
-Users can connect multiple blocks simultaneously, enhancing the flexibility of data interactions. Regardless of the chosen method, the underlying principle remains consistent: the source collection (actively connecting collection) supplies filter parameters to the target collection (connected collection), enabling precise data filtering and display.
+Les utilisateurs peuvent connecter plusieurs blocs simultanément, ce qui renforce la flexibilité des interactions de données. Quel que soit le mode de connexion choisi, le principe sous-jacent reste le même : la collection source (collection activement connectée) fournit les paramètres de filtrage à la collection cible (collection connectée), permettant un filtrage et un affichage précis des données.
 
-## User Manual
+## Manuel de l'utilisateur
 
-### Connecting Filter Blocks to Data Blocks
+### Connecter des Blocs de Filtrage à des Blocs de Données
 
-![Illustration of connecting filter blocks to data blocks](https://static-docs.nocobase.com/20240407180953.png)
+![Illustration de la connexion des blocs de filtrage aux blocs de données](https://static-docs.nocobase.com/20240407180953.png)
 
-### Connecting Data Blocks to Data Blocks
+### Connecter des Blocs de Données entre eux
 
-#### Linkage Between Data Blocks from the Same collection
+#### Liaison entre des Blocs de Données provenant de la Même Collection
 
-Example: Creating a dynamic linkage between an order collection block and its corresponding order details block.
+Exemple : Créer une liaison dynamique entre un bloc de collection de commandes et son bloc de détails de commande correspondant.
 
- <video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240407161700.mp4" type="video/mp4">
- </video>
+<video width="100%" height="440" controls>
+    <source src="https://static-docs.nocobase.com/20240407161700.mp4" type="video/mp4">
+</video>
 
-#### Linkage Between Related Data collection Blocks (Different collection Blocks with Foreign Key Constraints)
+#### Liaison entre des Blocs de Collections Liées (Blocs de Collections Différentes avec Contraintes de Clé Étrangère)
 
-Example: Leveraging the many-to-one relationship between the order collection and customer collection to implement filtering linkage. This setup allows users to query order data for a specific customer by creating a connection between the customer collection block and the order collection block.
+Exemple : Utiliser la relation plusieurs-à-un entre la collection de commandes et la collection de clients pour mettre en œuvre une liaison de filtrage. Cette configuration permet aux utilisateurs de consulter les données de commande pour un client spécifique en établissant une connexion entre le bloc de la collection client et le bloc de la collection de commandes.
 
- <video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240407163523.mp4" type="video/mp4">
- </video>
+<video width="100%" height="440" controls>
+    <source src="https://static-docs.nocobase.com/20240407163523.mp4" type="video/mp4">
+</video>

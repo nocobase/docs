@@ -1,15 +1,13 @@
-# Secondary Confirmation
+# Confirmation Secondaire
 
 ## Introduction
 
-The Double check configuration is designed to ensure that an operation is deliberate before it proceeds. When an action is clicked, a confirmation box will appear. By default, the delete button has secondary confirmation enabled to prevent accidental operations that could lead to data loss or irreversible outcomes.
+La configuration de double confirmation est conçue pour s'assurer qu'une opération est délibérée avant de procéder. Lorsqu'une action est cliquée, une boîte de confirmation apparaîtra. Par défaut, le bouton de suppression a la confirmation secondaire activée pour éviter les opérations accidentelles pouvant entraîner la perte de données ou des résultats irréversibles.
 
 ![20240919164638](https://static-docs.nocobase.com/20240919164638.png)
 
-Support customizing secondary confirmation content and titles
+La personnalisation du contenu et du titre de la confirmation secondaire est prise en charge.
 
 ![20240919164704](https://static-docs.nocobase.com/20240919164704.png)
 
 ![20240919164800](https://static-docs.nocobase.com/20240919164800.png)
-
-

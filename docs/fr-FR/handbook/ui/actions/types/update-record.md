@@ -1,33 +1,33 @@
-# Update Record
+# Mettre à Jour un Enregistrement
 
 ## Introduction
 
-Custom row operations enable data updates by configuring field assignments and setting precise update logic for each field.
+Les opérations personnalisées sur les lignes permettent des mises à jour de données en configurant des assignations de champs et en définissant une logique de mise à jour précise pour chaque champ.
 
 ![20240413212430](https://static-docs.nocobase.com/20240413212430.png)
 
-## Operation Configuration Items
+## Éléments de Configuration de l'Opération
 
 ![20240413212816](https://static-docs.nocobase.com/20240413212816.png)
 
-### Linkage Rules
+### Règles de Liaison
 
-Example: The button is hidden when the bill status is cancelled.
+Exemple : Le bouton est masqué lorsque le statut de la facture est annulé.
 
 ![20240423210252](https://static-docs.nocobase.com/20240423210252.png)
 
-For more details, see [Linkage Rule](/handbook/ui/actions/action-settings/linkage-rule).
+Pour plus de détails, consultez [Règle de Liaison](/handbook/ui/actions/action-settings/linkage-rule).
 
-### Assign Field Values
+### Assigner des Valeurs aux Champs
 
-Example: Update the receipt time in the current record to reflect the current time.
+Exemple : Mettre à jour l'heure de réception dans l'enregistrement actuel pour refléter l'heure actuelle.
 
 ![20240423210506](https://static-docs.nocobase.com/20240423210506.png)
 
-For more information, refer to [Assign Field Values](/handbook/ui/actions/action-settings/assign-values).
+Pour plus d'informations, consultez [Assigner des Valeurs aux Champs](/handbook/ui/actions/action-settings/assign-values).
 
-- [Edit Button](/handbook/ui/actions/action-settings/edit-button)
-- [Secondary Confirmation](/handbook/ui/actions/action-settings/double-check)
-- [After Successful Submission](/handbook/ui/actions/action-settings/affter-successful)
-- [Bind Workflows](/handbook/ui/actions/action-settings/bind-workflow)
-- Refresh the data after the execution
+- [Bouton de Modification](/handbook/ui/actions/action-settings/edit-button)
+- [Confirmation Secondaire](/handbook/ui/actions/action-settings/double-check)
+- [Après Soumission Réussie](/handbook/ui/actions/action-settings/affter-successful)
+- [Associer des Flux de Travail](/handbook/ui/actions/action-settings/bind-workflow)
+- Actualiser les données après exécution

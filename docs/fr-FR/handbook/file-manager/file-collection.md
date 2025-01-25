@@ -1,29 +1,29 @@
-# File Collecton
+# Collection de fichiers
 
 <PluginInfo name="file-manager"></PluginInfo>
 
 ## Introduction
 
-Files are collection records with a specific structure, the collection is known as file collection, which store the metadata of files and can be managed through the File Manager.
+Les fichiers sont des enregistrements de collection avec une structure spécifique. Cette collection est appelée collection de fichiers, qui stocke les métadonnées des fichiers et peut être gérée via le gestionnaire de fichiers.
 
-## User Manual
+## Manuel de l'utilisateur
 
-Creating File Collection
+### Création de la collection de fichiers
 
 ![20240324090414](https://static-docs.nocobase.com/20240324090414.png)
 
-Preset Fields in File Collection
+### Champs prédéfinis dans la collection de fichiers
 
 ![20240324090527](https://static-docs.nocobase.com/20240324090527.png)
 
-Using in Blocks
+### Utilisation dans les blocs
 
 ![20240324090848](https://static-docs.nocobase.com/20240324090848.png)
 
-Association Field
+### Champ d'association
 
 ![20240324091529](https://static-docs.nocobase.com/20240324091529.png)
 
-Association Blocks
+### Blocs d'association
 
 ![20240324091321](https://static-docs.nocobase.com/20240324091321.png)

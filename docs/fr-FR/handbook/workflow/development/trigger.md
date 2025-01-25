@@ -1,22 +1,22 @@
-# **Extend Trigger Types**
+### **Extend Trigger Types**
 
-Every workflow must be configured with a specific trigger that serves as the entry point for executing the process.
+Chaque workflow doit être configuré avec un déclencheur spécifique qui sert de point d'entrée pour l'exécution du processus.
 
-Trigger types typically correspond to specific system events. Throughout an application's lifecycle, any event that offers a subscription option can be defined as a trigger type. Examples include receiving requests, data table operations, or scheduled tasks.
+Les types de déclencheurs correspondent généralement à des événements spécifiques du système. Tout au long du cycle de vie de l'application, tout événement offrant une option d'abonnement peut être défini comme un type de déclencheur. Parmi les exemples, on trouve la réception de requêtes, les opérations sur des tables de données ou des tâches planifiées.
 
-Trigger types are registered in the plugin's trigger registry using unique string identifiers. The workflow plugin comes with several built-in triggers:
+Les types de déclencheurs sont enregistrés dans le registre des déclencheurs du plugin à l'aide d'identifiants uniques sous forme de chaînes de caractères. Le plugin de workflow inclut plusieurs déclencheurs intégrés :
 
-- `'collection'`: Triggered by data table operations.
-- `'schedule'`: Triggered by scheduled tasks.
-- `'action'`: Triggered by post-operation events.
+- `'collection'` : Déclenché par des opérations sur des tables de données.
+- `'schedule'` : Déclenché par des tâches planifiées.
+- `'action'` : Déclenché par des événements post-opération.
 
-When extending trigger types, it's essential to ensure that each identifier is unique. The server side should handle the registration for subscribing and unsubscribing to triggers, while the client side should provide the corresponding configuration interface.
+Lors de l'extension des types de déclencheurs, il est essentiel de s'assurer que chaque identifiant est unique. Le côté serveur doit gérer l'enregistrement pour s'abonner et se désabonner des déclencheurs, tandis que le côté client doit fournir l'interface de configuration correspondante.
 
-## **Server-Side Implementation**
+## **Implémentation Côté Serveur**
 
-Any custom trigger should extend the `Trigger` base class and implement the `on` and `off` methods, which manage the subscription and unsubscription to specific system events. The `on` method must invoke `this.workflow.trigger()` within the event callback to trigger the workflow. The `off` method should ensure proper cleanup during unsubscription.
+Tout déclencheur personnalisé doit étendre la classe de base `Trigger` et implémenter les méthodes `on` et `off`, qui gèrent l'abonnement et le désabonnement aux événements système spécifiques. La méthode `on` doit invoquer `this.workflow.trigger()` dans le rappel de l'événement pour déclencher le workflow. La méthode `off` doit garantir un nettoyage approprié lors du désabonnement.
 
-The `this.workflow` property refers to the workflow plugin instance, passed into the `Trigger` base class during construction.
+La propriété `this.workflow` fait référence à l'instance du plugin de workflow, transmise à la classe de base `Trigger` lors de la construction.
 
 ```ts
 import { Trigger } from '@nocobase/plugin-workflow';
@@ -25,50 +25,50 @@ class MyTrigger extends Trigger {
   timer: NodeJS.Timeout;
 
   on(workflow) {
-    // Register event
+    // Enregistrer l'événement
     this.timer = setInterval(() => {
-      // Trigger workflow
+      // Déclencher le workflow
       this.workflow.trigger(workflow, { date: new Date() });
     }, workflow.config.interval ?? 60000);
   }
 
   off(workflow) {
-    // Unregister event
+    // Désabonnement de l'événement
     clearInterval(this.timer);
   }
 }
 ```
 
-Next, register the trigger instance with the workflow engine in the plugin that extends the workflow:
+Ensuite, enregistrez l'instance du déclencheur avec le moteur de workflow dans le plugin qui étend le workflow :
 
 ```ts
 import WorkflowPlugin from '@nocobase/plugin-workflow';
 
 export default class MyPlugin extends Plugin {
   load() {
-    // Get workflow plugin instance
+    // Obtenir l'instance du plugin de workflow
     const workflowPlugin = this.app.pm.get(WorkflowPlugin) as WorkflowPlugin;
 
-    // Register trigger
+    // Enregistrer le déclencheur
     workflowPlugin.registerTrigger('interval', MyTrigger);
   }
 }
 ```
 
-Once the server is up and running, the `'interval'` trigger type will be available for addition and execution.
+Une fois le serveur lancé, le type de déclencheur `'interval'` sera disponible pour être ajouté et exécuté.
 
-## **Client-Side Configuration**
+## **Configuration Côté Client**
 
-On the client side, the primary task is to provide a configuration interface tailored to the specific settings required for each trigger type. Each trigger type should also be registered with the workflow plugin.
+Du côté client, la tâche principale consiste à fournir une interface de configuration adaptée aux paramètres spécifiques requis pour chaque type de déclencheur. Chaque type de déclencheur doit également être enregistré avec le plugin de workflow.
 
-For instance, to configure the interval-based trigger mentioned earlier, define the `interval` configuration field in the form interface:
+Par exemple, pour configurer le déclencheur basé sur l'intervalle mentionné précédemment, définissez le champ de configuration `interval` dans l'interface du formulaire :
 
 ```ts
 import { Trigger } from '@nocobase/workflow/client';
 
 class MyTrigger extends Trigger {
   title = 'Interval Timer Trigger';
-  // Fields of trigger config
+  // Champs de configuration du déclencheur
   fieldset = {
     interval: {
       type: 'number',
@@ -82,7 +82,7 @@ class MyTrigger extends Trigger {
 }
 ```
 
-Then, register this trigger type with the workflow plugin instance in the extending plugin:
+Ensuite, enregistrez ce type de déclencheur avec l'instance du plugin de workflow dans le plugin étendant :
 
 ```ts
 import { Plugin } from '@nocobase/client';
@@ -91,7 +91,7 @@ import WorkflowPlugin from '@nocobase/plugin-workflow/client';
 import MyTrigger from './MyTrigger';
 
 export default class extends Plugin {
-  // Modify the app instance here if necessary
+  // Modifiez l'instance de l'application si nécessaire
   async load() {
     const workflow = this.app.pm.get(WorkflowPlugin) as WorkflowPlugin;
     workflow.registerTrigger('interval', MyTrigger);
@@ -99,10 +99,10 @@ export default class extends Plugin {
 }
 ```
 
-Once registered, the new trigger type will appear in the workflow configuration interface.
+Une fois enregistré, le nouveau type de déclencheur apparaîtra dans l'interface de configuration du workflow.
 
-:::info{title=Tip}
-Ensure that the trigger type identifier registered on the client side matches the one on the server side to avoid errors.
+:::info{title=Astuce}
+Assurez-vous que l'identifiant du type de déclencheur enregistré côté client correspond à celui côté serveur pour éviter les erreurs.
 :::
 
-For further details on defining trigger types, refer to the [Workflow API Reference](./api#pluginregisterTrigger) section.
+Pour plus de détails sur la définition des types de déclencheurs, consultez la section [Référence de l'API Workflow](./api#pluginregisterTrigger).

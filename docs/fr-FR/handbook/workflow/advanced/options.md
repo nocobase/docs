@@ -1,29 +1,29 @@
-# Advanced Options
+# Options Avancées
 
-## Execution Modes
+## Modes d'Exécution
 
-Workflow execution is based on the trigger type selected when creating, and can be executed in "Asynchronously" or "Synchronously" mode. "Asynchronously" mode means that after a specific event is triggered, it will enter the execution queue and be executed one by one by the background scheduler, while "synchronously" mode will not enter the scheduling queue after triggering, and will start execution directly, and will immediately provide feedback after execution.
+L'exécution des flux de travail dépend du type de déclencheur sélectionné lors de la création et peut être effectuée en mode **"Asynchrone"** ou **"Synchrone"**. Le mode **"Asynchrone"** signifie qu'après qu'un événement spécifique ait été déclenché, il entre dans la file d'attente d'exécution et est exécuté un par un par le planificateur en arrière-plan. Tandis que le mode **"Synchrone"** ne passe pas par la file d'attente de planification après le déclenchement, mais commence immédiatement l'exécution et fournit un retour immédiat après l'exécution.
 
-Collection event, post-action event, custom action event, schedule event and approval event will be executed asynchronously by default, while pre-action event will be executed synchronously by default. Among them, collection event, post-action event and custom action event support both modes, and you can choose when creating a workflow:
+Les événements de collecte, les événements après action, les événements d'action personnalisée, les événements planifiés et les événements d'approbation seront exécutés de manière asynchrone par défaut, tandis que les événements avant action seront exécutés de manière synchrone par défaut. Parmi ceux-ci, les événements de collecte, les événements après action et les événements d'action personnalisée supportent les deux modes, et vous pouvez choisir lors de la création du flux de travail :
 
-![Synchronous mode: Creating synchronous workflow](https://static-docs.nocobase.com/39bc0821f50c1bde4729c531c6236795.png)
+![Mode synchrone : Création d'un flux de travail synchrone](https://static-docs.nocobase.com/39bc0821f50c1bde4729c531c6236795.png)
 
 :::info{title=Note}
-Synchronously mode workflow are limited by their mode and cannot use nodes that generate a "pending" status, such as "manual process" etc.
+Les flux de travail en mode synchrone sont limités par leur mode et ne peuvent pas utiliser des nœuds qui génèrent un statut "en attente", comme les nœuds "processus manuel", etc.
 :::
 
-## Automatically Delete History
+## Suppression Automatique de l'Historique
 
-When workflows are triggered frequently, you can reduce interference and database storage pressure by configuring automatic deletion of historical executions.
+Lorsque des flux de travail sont déclenchés fréquemment, vous pouvez réduire l'interférence et la pression sur le stockage de la base de données en configurant la suppression automatique des exécutions historiques.
 
-Similarly, in the pop-up for creating and editing workflows, you can configure whether the corresponding process automatically deletes history:
+De même, dans la fenêtre contextuelle de création et de modification des flux de travail, vous pouvez configurer si le processus correspondant supprime automatiquement l'historique :
 
-![Configure automatic deletion of history](https://static-docs.nocobase.com/b2e4c08e7a01e213069912fe04baa7bd.png)
+![Configurer la suppression automatique de l'historique](https://static-docs.nocobase.com/b2e4c08e7a01e213069912fe04baa7bd.png)
 
-Automatic deletion can be configured based on the status of the execution. In most cases, it is recommended to only select the "Succeeded" status, so that history of execution failures can be retained for subsequent troubleshooting.
+La suppression automatique peut être configurée en fonction du statut de l'exécution. Dans la plupart des cas, il est recommandé de sélectionner uniquement le statut "Réussi", afin que l'historique des échecs d'exécution soit conservé pour un dépannage ultérieur.
 
-It is recommended not to enable automatic deletion of history when debugging workflows, so that the execution logic of the workflows can be reviewed in history.
+Il est recommandé de ne pas activer la suppression automatique de l'historique lors du débogage des flux de travail, afin de pouvoir examiner la logique d'exécution des flux dans l'historique.
 
 :::info{title=Note}
-Deleting the history of workflows will not reduce the count of workflows already executed.
+La suppression de l'historique des flux de travail ne réduira pas le nombre de flux de travail déjà exécutés.
 :::

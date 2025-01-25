@@ -4,49 +4,49 @@
 
 ## Introduction
 
-The https://static-docs.nocobase.com plugin provides a basic user model and a user management interface.
+Le plugin **https://static-docs.nocobase.com** fournit un modèle utilisateur de base ainsi qu'une interface de gestion des utilisateurs.
 
 ## Installation
 
-Built-in plugin, no separate installation required.
+Il s'agit d'un plugin intégré et ne nécessite pas d'installation séparée.
 
-## Usage Instructions
+## Instructions d'utilisation
 
-### User Management
+### Gestion des utilisateurs
 
-This plugin provides a user management interface in the configuration center. After application initialization, an undeletable super admin account will be added. The super admin has Root permissions and can access all resources.
+Ce plugin propose une interface de gestion des utilisateurs dans le centre de configuration. Après l'initialisation de l'application, un compte super administrateur non supprimable sera ajouté. Le super administrateur dispose des permissions Root et peut accéder à toutes les ressources.
 
 ![](https://static-docs.nocobase.com/44bf40f56b45d4dd96c424fb08082cf6.png)
 
-In addition, you can also add various different blocks of the https://static-docs.nocobase.com collection to manage https://static-docs.nocobase.com, such as table blocks:
+De plus, vous pouvez ajouter différents blocs de la collection **https://static-docs.nocobase.com** pour gérer les utilisateurs, tels que des blocs de table :
 
 ![](https://static-docs.nocobase.com/76b5a4652f869541a9e8f18a4568a7c9.png)
 
-### Add User
+### Ajouter un utilisateur
 
 ![](https://static-docs.nocobase.com/4f8ef9ffc1c17f275b62b462f6385b19.png)
 
 ![](https://static-docs.nocobase.com/437828173950bd7c21b40a6243ffe150.png)
 
-### Modify User Profile
+### Modifier le profil utilisateur
 
 ![](https://static-docs.nocobase.com/d25e06872bd1d48ed8c1139728fa5ff3.png)
 
 ![](https://static-docs.nocobase.com/c140bcaab240385b9b5aca32a2ec2801.png)
 
-### Change User Password
+### Changer le mot de passe de l'utilisateur
 
 ![](https://static-docs.nocobase.com/26c24c4cebda3d144dc4e9b728c2ede5.png)
 
 ![](https://static-docs.nocobase.com/23a2b2223cb5b387b3699cc6143302e8.png)
 
-### Settings
+### Paramètres
 
-:::info{title=Tip}
-The version of NocoBase needs to be v1.3.34-beta or above.
+:::info{title=Astuce}
+La version de NocoBase doit être v1.3.34-beta ou supérieure.
 :::
 
-Configure whether to allow editing user profiles and changing user passwords (applies to all users).
+Configurez si la modification des profils utilisateurs et le changement de mots de passe sont autorisés (cela s'applique à tous les utilisateurs).
 
 ![20241021212438](https://static-docs.nocobase.com/20241021212438.png)
 

@@ -1,67 +1,67 @@
-# Aggregate
+# Agrégat
 
 <PluginInfo name="workflow-aggregate" link="/handbook/workflow-aggregate"></PluginInfo>
 
-This plugin is designed to execute aggregate function queries on specific data within a table that meets defined conditions, returning the relevant statistical outcomes. It is particularly useful for generating statistical data for reports.
+Ce plugin est conçu pour exécuter des requêtes de fonctions d'agrégation sur des données spécifiques dans une table qui répondent à des conditions définies, renvoyant ainsi les résultats statistiques pertinents. Il est particulièrement utile pour générer des données statistiques pour des rapports.
 
-The node operates using database aggregate functions and currently supports querying a single field within a single data table. The resulting statistics are stored within the node’s output, making them available for subsequent nodes in the workflow.
+Le nœud fonctionne en utilisant des fonctions d'agrégation de base de données et prend en charge la requête d'un seul champ au sein d'une seule table de données. Les statistiques résultantes sont stockées dans la sortie du nœud, les rendant disponibles pour les nœuds suivants dans le flux de travail.
 
 ## Installation
 
-This is a built-in plugin, so no installation steps are required.
+Ce plugin est intégré, il n'est donc pas nécessaire d'effectuer des étapes d'installation.
 
-## User Manual
+## Manuel Utilisateur
 
-### Creating a Node
+### Création d'un Nœud
 
-In the workflow configuration interface, click the plus ("+") button within the process flow to add an "Aggregate Query" node:
+Dans l'interface de configuration du workflow, cliquez sur le bouton plus ("+") dans le flux de processus pour ajouter un nœud "Requête d'agrégation" :
 
-![Create Aggregate Query Node](https://static-docs.nocobase.com/7f9d806ebf5064f80c30f8b67f316f0f.png)
+![Créer un Nœud de Requête d'Agrégation](https://static-docs.nocobase.com/7f9d806ebf5064f80c30f8b67f316f0f.png)
 
-### Node Configuration
+### Configuration du Nœud
 
-![Aggregate Query Node_Configuration](https://static-docs.nocobase.com/57362f747b9992230567c6bb5e986fd2.png)
+![Configuration du Nœud de Requête d'Agrégation](https://static-docs.nocobase.com/57362f747b9992230567c6bb5e986fd2.png)
 
-#### Aggregate Functions
+#### Fonctions d'Agrégation
 
-This plugin supports five SQL aggregate functions: `COUNT`, `SUM`, `AVG`, `MIN`, and `MAX`. You can select any one of these functions to perform the aggregate query on your data.
+Ce plugin prend en charge cinq fonctions d'agrégation SQL : `COUNT`, `SUM`, `AVG`, `MIN`, et `MAX`. Vous pouvez choisir l'une de ces fonctions pour effectuer la requête d'agrégation sur vos données.
 
-#### Target Type
+#### Type de Cible
 
-There are two methods for selecting the target of the aggregate query. The first is to directly select the target data table and one of its fields. The second is to choose a related data table and field from the existing data objects in the workflow context to perform the aggregate query.
+Il existe deux méthodes pour sélectionner la cible de la requête d'agrégation. La première consiste à sélectionner directement la table de données cible et l'un de ses champs. La deuxième consiste à choisir une table de données liée et un champ à partir des objets de données existants dans le contexte du workflow pour effectuer la requête d'agrégation.
 
 #### Distinct
 
-This feature corresponds to the `DISTINCT` keyword in SQL. The distinct field must be the same as the selected data table field, and currently, different fields cannot be selected for the distinct and target fields.
+Cette fonctionnalité correspond au mot-clé `DISTINCT` en SQL. Le champ distinct doit être le même que le champ de table de données sélectionné, et actuellement, différents champs ne peuvent pas être sélectionnés pour les champs distincts et cibles.
 
-#### Filter Conditions
+#### Conditions de Filtre
 
-You can apply filter conditions similar to those in a standard data table query, using the workflow’s context variables.
+Vous pouvez appliquer des conditions de filtre similaires à celles d'une requête standard sur une table de données, en utilisant les variables de contexte du workflow.
 
-### Example
+### Exemple
 
-The aggregate target "Collection Table Data" is quite intuitive, so let's illustrate the usage of the aggregate target as "Related Collection Table Data" with the example of "counting the total number of articles in a category after adding a new article to that category."
+La cible d'agrégation "Données de Table de Collection" est assez intuitive, voyons donc l'utilisation de la cible d'agrégation comme "Données de Table de Collection Liée" avec l'exemple "compter le nombre total d'articles dans une catégorie après avoir ajouté un nouvel article à cette catégorie."
 
-First, create two data tables: "Posts" and "Categories." The "Posts" collection includes a many-to-one relationship field pointing to the "Categories" collection, and a reverse relationship field that allows one category to contain multiple articles:
+Commencez par créer deux tables de données : "Posts" et "Categories." La collection "Posts" inclut un champ de relation "Many-to-One" pointant vers la collection "Categories", ainsi qu'un champ de relation inverse permettant à une catégorie de contenir plusieurs articles :
 
-| Field Name        | Type               |
+| Nom du Champ      | Type               |
 | ----------------- | ------------------ |
-| Title             | Single Line Text   |
-| Category          | Many-to-One (Category) |
+| Titre             | Texte sur une ligne|
+| Catégorie         | Many-to-One (Catégorie) |
 
-| Field Name    | Type               |
-|---------------| ------------------ |
-| Category Name | Single Line Text   |
-| Posts         | One-to-Many (Articles) |
+| Nom du Champ      | Type               |
+| ----------------- | ------------------ |
+| Nom de la Catégorie | Texte sur une ligne |
+| Articles          | One-to-Many (Articles) |
 
-Next, create a workflow triggered by an event in the data table, specifically when new data is added to the "Articles" table.
+Ensuite, créez un workflow déclenché par un événement dans la table de données, spécifiquement lorsqu'une nouvelle donnée est ajoutée à la table "Articles".
 
-Then, add an aggregate query node with the following configuration:
+Ajoutez ensuite un nœud de requête d'agrégation avec la configuration suivante :
 
-![Aggregate Query Node_Example_Configuration](https://static-docs.nocobase.com/542272e638c6c0a567373d1b37ddda78.png)
+![Exemple de Configuration du Nœud de Requête d'Agrégation](https://static-docs.nocobase.com/542272e638c6c0a567373d1b37ddda78.png)
 
-Once the workflow is triggered, the aggregate query node will calculate the total number of articles within the category of the newly added article and save this count as the node’s output.
+Une fois le workflow déclenché, le nœud de requête d'agrégation calculera le nombre total d'articles dans la catégorie de l'article nouvellement ajouté et enregistrera ce nombre comme la sortie du nœud.
 
-:::info{title=Tip}
-If you need to access related data in a collection table event trigger, ensure you configure the relevant fields for "Preload associations" in the trigger; otherwise, these fields won’t be selectable.
+:::info{title=Conseil}
+Si vous devez accéder aux données liées dans un déclencheur d'événement de table de collection, assurez-vous de configurer les champs pertinents pour "Précharger les associations" dans le déclencheur ; sinon, ces champs ne seront pas sélectionnables.
 :::

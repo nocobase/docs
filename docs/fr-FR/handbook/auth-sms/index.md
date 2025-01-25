@@ -1,18 +1,18 @@
-# Auth: SMS
+# Auth : SMS
 
 ## Introduction
 
-The SMS authentication plugin supports users to register through SMS and log in to NocoBase.
+Le plugin d'authentification SMS permet aux utilisateurs de s'inscrire et de se connecter à NocoBase via SMS.
 
-> It needs to be used in conjunction with the SMS verification code function provided by the [`@nocobase/plugin-verification` plugin](../verification/)
+> Il nécessite l'utilisation du plugin de code de vérification SMS fourni par le plugin [`@nocobase/plugin-verification`](../verification/).
 
-## Add SMS Authentication
+## Ajouter l'authentification SMS
 
-Enter the user authentication plugin management page.
+Accédez à la page de gestion des plugins d'authentification des utilisateurs.
 
 ![](../auth-oidc/static/2023-12-03-18-19-33.png)
 
-Add - SMS
+Ajoutez - SMS
 
 ![](https://static-docs.nocobase.com/29c8916492fd5e1564a872b31ad3ac0d.png)
 
@@ -20,12 +20,12 @@ Add - SMS
 
 ![](https://static-docs.nocobase.com/a4d35ec63ba22ae2ea9e3e8e1cbb783d.png)
 
-For the configuration of the SMS verification code function, see the [Verification Plugin (@nocobase/plugin-verification) Documentation](../verification/index.md), the SMS login authentication function will use the configured and set default SMS verification code Provider to send SMS.
+Pour la configuration de la fonction de code de vérification SMS, consultez la [documentation du plugin Verification (@nocobase/plugin-verification)](../verification/index.md). La fonction d'authentification par SMS utilisera le fournisseur de code de vérification SMS par défaut que vous avez configuré et paramétré pour envoyer les SMS.
 
-Sign up automatically when the user does not exist: When this option is checked, when the user's mobile phone number does not exist, a new user will be registered using the mobile phone number as the nickname.
+**Inscription automatique lorsqu'un utilisateur n'existe pas** : Lorsque cette option est activée, si le numéro de téléphone de l'utilisateur n'existe pas, un nouvel utilisateur sera inscrit en utilisant le numéro de téléphone comme pseudonyme.
 
-## Log In
+## Connexion
 
-Visit the login page to use.
+Visitez la page de connexion pour utiliser l'authentification SMS.
 
 ![](https://static-docs.nocobase.com/8d630739201bc27d8b0de076ab4f75e2.png)

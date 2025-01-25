@@ -1,17 +1,17 @@
-# Title
+# Titre
 
 ## Introduction
 
-In reading mode, the default component for relationship fields is the title component, which marks the current associated record by displaying the value of the title field.
+En mode lecture, le composant par défaut pour les champs relationnels est le composant titre, qui marque l'enregistrement associé actuel en affichant la valeur du champ de titre.
 
-## Field Configuration Options
+## Options de Configuration des Champs
 
 ![20240429223353](https://static-docs.nocobase.com/20240429223353.png)
 
-### Enable Link (Enabled by default)
+### Activer le Lien (activé par défaut)
 
-Clicking will open a pop-up window, allowing you to customize the configuration block for data management.
+Cliquer sur le lien ouvrira une fenêtre contextuelle, permettant de personnaliser le bloc de configuration pour la gestion des données.
 
 ![20240429223831](https://static-docs.nocobase.com/20240429223831.png)
 
-For more details, see [Field Components](/handbook/ui/fields/association-field).
+Pour plus de détails, consultez [Composants de Champ](/handbook/ui/fields/association-field).

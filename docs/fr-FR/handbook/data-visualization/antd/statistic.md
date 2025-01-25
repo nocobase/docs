@@ -1,13 +1,13 @@
-# Statistical Values
+# Valeurs Statistiques
 
-## Data Configuration
+## Configuration des Données
 
-### 1 Metric
+### 1 Métrique
 
-![1 Metric](https://static-docs.nocobase.com/202410101147166.png)
+![1 Métrique](https://static-docs.nocobase.com/202410101147166.png)
 
-## Configuration Options
+## Options de Configuration
 
-| Configuration Item | Description                      |
-| ------------------ | -------------------------------- |
-| Link               | Fixed link, clickable for redirection | 
+| Élément de Configuration | Description                                 |
+| ------------------------ | ------------------------------------------- |
+| Lien                     | Lien fixe, cliquable pour la redirection    |

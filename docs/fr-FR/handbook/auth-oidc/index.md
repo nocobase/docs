@@ -4,74 +4,74 @@
 
 ## Introduction
 
-The Auth: OIDC plugin follows the OIDC (Open ConnectID) protocol standard, using the Authorization Code Flow, to allow users to sign in to NocoBase using accounts provided by third-party identity authentication service providers (IdP).
+Le plugin **Auth: OIDC** suit la norme du protocole OIDC (Open ConnectID), utilisant le flux de code d'autorisation, permettant aux utilisateurs de se connecter à NocoBase en utilisant des comptes fournis par des prestataires de services d'authentification d'identité tiers (IdP).
 
-## Activate Plugin
+## Activer le Plugin
 
-![](https://static-docs.nocobase.com/202411122358790.png)
+![](https://static.docs.nocobase.com/202411122358790.png)
 
-## Add OIDC Authentication
+## Ajouter l'authentification OIDC
 
-Enter the user authentication plugin management page.
+Accédez à la **page de gestion du plugin d'authentification des utilisateurs**.
 
-![](https://static-docs.nocobase.com/202411130004459.png)
+![](https://static.docs.nocobase.com/202411130004459.png)
 
-Add - OIDC
+Cliquez sur **Ajouter** et sélectionnez **OIDC**.
 
-![](https://static-docs.nocobase.com/1efbde1c0e2f4967efc1c4336be45ca2.png)
+![](https://static.docs.nocobase.com/1efbde1c0e2f4967efc1c4336be45ca2.png)
 
 ## Configuration
 
-### Basic Configuration
+### Configuration de base
 
-![](https://static-docs.nocobase.com/202411130006341.png)
+![](https://static.docs.nocobase.com/202411130006341.png)
 
-| Configuration                                       | Description                                                                                                                | Version         |
-| --------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | --------------- |
-| Sign up automatically when the user does not exist | Whether to automatically create a new user if no matching existing user is found.                                        | -               |
-| Issuer                                             | The issuer provided by the IdP, usually ending with `/.well-known/openid-configuration`.                                   | -               |
-| Client ID                                          | The Client ID                                                                                                             | -               |
-| Client Secret                                      | The Client Secret                                                                                                    | -               |
-| scope                                              | Optional, defaults to `openid email profile`.                                                                              | -               |
-| id_token signed response algorithm                 | The signing algorithm for `id_token`, defaults to `RS256`.                                                                | -               |
-| Enable RP-initiated logout                         | Enables RP-initiated logout. Logs out the IdP session when the user logs out. The IdP logout callback should use the Post logout redirect URL provided in [Usage](#usage). | `v1.3.44-beta` |
+| Configuration                                         | Description                                                                                                             | Version         |
+| ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | --------------- |
+| **Inscription automatique lorsqu'aucun utilisateur n'existe** | Détermine si un nouvel utilisateur doit être automatiquement créé lorsqu'aucun utilisateur correspondant n'est trouvé.   | -               |
+| **Émetteur**                                          | L'émetteur fourni par l'IdP, se terminant généralement par `/.well-known/openid-configuration`.                           | -               |
+| **ID Client**                                         | L'ID Client                                                                                                             | -               |
+| **Secret Client**                                     | Le Secret Client                                                                                                        | -               |
+| **Portée (Scope)**                                    | Facultatif, par défaut `openid email profile`.                                                                           | -               |
+| **Algorithme de signature du jeton id_token**          | L'algorithme de signature pour `id_token`, par défaut `RS256`.                                                          | -               |
+| **Activer la déconnexion initiée par le RP**          | Active la déconnexion initiée par le RP. Cela déconnecte la session de l'IdP lorsque l'utilisateur se déconnecte. L'URL de redirection après déconnexion doit être configurée dans [Utilisation](#utilisation). | `v1.3.44-beta` |
 
-### Field Mapping
+### Mappage des champs
 
-| Configuration                    | Description                                                                                                     |
-| -------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| Field Map                        | Field mapping. NocoBase supports mapping fields such as nickname, email, and phone number. The default nickname uses `openid`. |
-| Use this field to bind the user  | Used to match and bind with existing users. You can choose email or username, with email as the default. The IdP must provide `email` or `username` information. |
+| Configuration                     | Description                                                                                                     |
+| ---------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **Mappage des champs**             | Mappage des champs. NocoBase prend en charge le mappage de champs tels que le surnom, l'email et le numéro de téléphone. Le surnom par défaut est `openid`. |
+| **Champ utilisé pour lier l'utilisateur** | Utilisé pour faire correspondre et lier avec les utilisateurs existants. Vous pouvez choisir l'email ou le nom d'utilisateur, l'email étant par défaut. L'IdP doit fournir des informations sur l'`email` ou le `nom d'utilisateur`. |
 
-### Advanced Configuration
+### Configuration avancée
 
-![](https://static-docs.nocobase.com/202411130013306.png)
+![](https://static.docs.nocobase.com/202411130013306.png)
 
-| Configuration                                                  | Description                                                                                                                                                               | Version         |
-| -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
-| HTTP                                                          | Whether the NocoBase callback URL uses HTTP protocol, default is `https`.                                                                                               | -               |
-| Port                                                          | Port for the NocoBase callback URL, defaults to `443/80`.                                                                                                                | -               |
-| State token                                                   | Used to verify the request source and prevent CSRF attacks. You can provide a fixed value, but **leaving it blank to generate random values by default is strongly recommended. If you use a fixed value, carefully evaluate your environment and security risks.** | -               |
-| Pass parameters in the authorization code grant exchange      | Some IdPs may require passing Client ID or Client Secret as parameters when exchanging a code for a token. You can select this option and specify the corresponding parameter names. | -               |
-| Method to call the user info endpoint                         | The HTTP method used when requesting the user info API.                                                                                                                 | -               |
-| Where to put the access token when calling the user info endpoint | How the access token is passed when calling the user info API:<br/>- Header - In the request header (default).<br />- Body - In the request body, used with `POST` method.<br />- Query parameters - As query parameters, used with `GET` method. | -               |
-| Skip SSL verification                                         | Skip SSL verification when requesting the IdP API. **This option exposes your system to risks of man-in-the-middle attacks. Only enable this option if you understand its purpose and implications. It is strongly discouraged in production environments.** | `v1.3.40-beta` |
+| Configuration                                                        | Description                                                                                                                                                               | Version         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| **HTTP**                                                            | Détermine si l'URL de retour de NocoBase utilise le protocole HTTP, par défaut c'est `https`.                                                                           | -               |
+| **Port**                                                            | Port pour l'URL de retour de NocoBase, par défaut `443/80`.                                                                                                               | -               |
+| **Jeton d'état**                                                     | Utilisé pour vérifier la source de la demande et éviter les attaques CSRF. Vous pouvez fournir une valeur fixe, mais **laisser ce champ vide pour générer des valeurs aléatoires par défaut est fortement recommandé. Si vous utilisez une valeur fixe, évaluez soigneusement votre environnement et les risques de sécurité.** | -               |
+| **Passer des paramètres lors de l'échange du code d'autorisation**   | Certains IdPs peuvent exiger le passage de l'ID Client ou du Secret Client comme paramètres lors de l'échange d'un code contre un jeton. Vous pouvez sélectionner cette option et spécifier les noms des paramètres correspondants. | -               |
+| **Méthode pour appeler l'endpoint des informations utilisateur**     | La méthode HTTP utilisée pour appeler l'API d'informations sur l'utilisateur.                                                                                             | -               |
+| **Où placer le jeton d'accès lors de l'appel à l'endpoint des informations utilisateur** | Comment le jeton d'accès est passé lors de l'appel à l'API d'informations utilisateur :<br/>- En-tête - Dans l'en-tête de la requête (par défaut).<br />- Corps - Dans le corps de la requête, utilisé avec la méthode `POST`.<br />- Paramètres de la requête - En tant que paramètres de la requête, utilisés avec la méthode `GET`. | -               |
+| **Ignorer la vérification SSL**                                     | Ignorer la vérification SSL lors de l'appel à l'API de l'IdP. **Cette option expose votre système à des risques d'attaques de type "man-in-the-middle". N'activez cette option que si vous comprenez son but et ses implications. Elle est fortement déconseillée dans les environnements de production.** | `v1.3.40-beta` |
 
 ---
 
-### Usage
+### Utilisation
 
-| Configuration            | Description                                                                                     |
-| ------------------------- | ----------------------------------------------------------------------------------------------- |
-| Redirect URL             | Used to configure the callback URL in the IdP.                                                  |
-| Post logout redirect URL | Used to configure the Post logout redirect URL in the IdP when RP-initiated logout is enabled. |
+| Configuration                  | Description                                                                                              |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------- |
+| **URL de redirection**          | Utilisée pour configurer l'URL de retour dans l'IdP.                                                     |
+| **URL de redirection après déconnexion** | Utilisée pour configurer l'URL de redirection après déconnexion dans l'IdP lorsque la déconnexion initiée par le RP est activée. |
 
 :::info
-When testing locally, use `127.0.0.1` instead of `localhost` for the URL, as OIDC login requires writing state to the client cookie for security validation. If you see a flash of the login window but fail to log in successfully, check the server logs for state mismatch issues and ensure the state parameter is included in the request cookie. This issue often occurs when the state in the client cookie does not match the state in the request.
+Lors des tests en local, utilisez `127.0.0.1` au lieu de `localhost` pour l'URL, car la connexion OIDC nécessite l'écriture d'un état dans le cookie client pour la validation de sécurité. Si vous voyez un clignotement de la fenêtre de connexion mais échouez à vous connecter, vérifiez les journaux du serveur pour les problèmes de non-correspondance des états et assurez-vous que le paramètre d'état est inclus dans le cookie de la requête. Ce problème se produit souvent lorsque l'état dans le cookie client ne correspond pas à l'état dans la requête.
 :::
 
-### Login
+### Connexion
 
-Visit the login page and click the button below the login form to initiate third-party login.
+Accédez à la page de connexion et cliquez sur le bouton sous le formulaire de connexion pour initier la connexion via un fournisseur tiers.
 
 ![](https://static-docs.nocobase.com/e493d156254c2ac0b6f6e1002e6a2e6b.png)

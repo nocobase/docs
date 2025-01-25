@@ -1,44 +1,44 @@
-# HTTP API
+# API HTTP
 
-Approval events aren’t confined to actions within the user interface; they can also be triggered through HTTP API calls.
+Les événements d'approbation ne sont pas limités aux actions dans l'interface utilisateur ; ils peuvent également être déclenchés par des appels API HTTP.
 
-For approvals initiated from data blocks and approval center blocks, you can trigger them using an API call (using the creation button for the `posts` table as an example):
+Pour les approbations initiées depuis les blocs de données et les blocs du centre d'approbation, vous pouvez les déclencher en utilisant un appel API (en utilisant le bouton de création pour la table `posts` comme exemple) :
 
 ```bash
-curl -X POST -H 'Authorization: Bearer <your token>' -H 'X-Role: <roleName>' -d \
+curl -X POST -H 'Authorization: Bearer <votre jeton>' -H 'X-Role: <nomDuRôle>' -d \
   '{
-    "title": "Hello, world!",
-    "content": "This is a test post."
+    "title": "Bonjour, le monde !",
+    "content": "Ceci est un post de test."
   }'
-  "http://localhost:3000/api/posts:create?triggerWorkflows=workflowKey"
+  "http://localhost:3000/api/posts:create?triggerWorkflows=cléDuWorkflow"
 ```
 
-The URL parameter `triggerWorkflows` is the key of the workflow, with multiple workflows separated by commas. You can find this key by hovering over the workflow name at the top of the workflow canvas:
+Le paramètre URL `triggerWorkflows` est la clé du workflow, avec plusieurs workflows séparés par des virgules. Vous pouvez trouver cette clé en survolant le nom du workflow en haut du canevas du workflow :
 
-![How to View Workflow Key](https://static-docs.nocobase.com/20240426135108.png)
+![Comment voir la clé du workflow](https://static-docs.nocobase.com/20240426135108.png)
 
-Once the call is successful, the approval workflow for the `posts` table will be triggered.
+Une fois l'appel effectué avec succès, le workflow d'approbation pour la table `posts` sera déclenché.
 
 :::info{title="Note"}
-Because external calls also rely on user identity, HTTP API calls must include authentication details, just like standard interface requests. This includes the `Authorization` header or the `token` parameter (token obtained during login), as well as the `X-Role` header (indicating the user’s current role).
+Étant donné que les appels externes dépendent également de l'identité de l'utilisateur, les appels API HTTP doivent inclure des détails d'authentification, tout comme les requêtes standard de l'interface. Cela inclut l'en-tête `Authorization` ou le paramètre `token` (jeton obtenu lors de la connexion), ainsi que l'en-tête `X-Role` (indiquant le rôle actuel de l'utilisateur).
 :::
 
-If you need to trigger an event related to a one-to-one relationship (note that one-to-many relationships are not yet supported), you can use `!` in the parameters to specify the related field that should trigger the event:
+Si vous devez déclencher un événement lié à une relation un-à-un (notez que les relations un-à-plusieurs ne sont pas encore prises en charge), vous pouvez utiliser `!` dans les paramètres pour spécifier le champ lié qui doit déclencher l'événement :
 
 ```bash
-curl -X POST -H 'Authorization: Bearer <your token>' -H 'X-Role: <roleName>' -d \
+curl -X POST -H 'Authorization: Bearer <votre jeton>' -H 'X-Role: <nomDuRôle>' -d \
   '{
-    "title": "Hello, world!",
-    "content": "This is a test post.",
+    "title": "Bonjour, le monde !",
+    "content": "Ceci est un post de test.",
     "category": {
-      "title": "Test category"
+      "title": "Catégorie de test"
     }
   }'
-  "http://localhost:3000/api/posts:create?triggerWorkflows=workflowKey!category"
+  "http://localhost:3000/api/posts:create?triggerWorkflows=cléDuWorkflow!category"
 ```
 
-When the call is successfully executed, the approval event for the `categories` table will be triggered.
+Lorsque l'appel est exécuté avec succès, l'événement d'approbation pour la table `categories` sera déclenché.
 
 :::info{title="Note"}
-When triggering events via HTTP API calls, ensure that the workflow is enabled and that the data table configuration is correct; otherwise, the call may not be successful or may result in errors.
+Lors du déclenchement d'événements via des appels API HTTP, assurez-vous que le workflow est activé et que la configuration de la table de données est correcte ; sinon, l'appel peut échouer ou entraîner des erreurs.
 :::

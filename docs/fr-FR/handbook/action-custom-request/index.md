@@ -1,51 +1,54 @@
-# Custom Request
+# **Demande personnalisée**
 <PluginInfo name="action-custom-request"></PluginInfo>
 
-## Overview
+## Aperçu
+
+Le plugin **Demande personnalisée** permet aux utilisateurs de configurer des demandes HTTP personnalisées au sein de l'application. Ce plugin est intégré et ne nécessite pas d'installation séparée.
 
 ## Installation
 
-This plugin is built-in, so no separate installation is required.
+Ce plugin est intégré, il n'est donc pas nécessaire d'effectuer une installation séparée.
 
-## Instructions for Use
+## Instructions d'utilisation
 
-![20240426120014](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426120014.png)
+![Interface de configuration des demandes personnalisées](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426120014.png)
 
-### Configuring Permissions
+### Configuration des autorisations
 
-When the "Allows to configuration interface" option is selected, you can set up custom requests.
+Lorsque l'option "Permet de configurer l'interface" est sélectionnée, vous pouvez configurer des demandes personnalisées.
 
-![20240426114957](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426114957.png)
+![Interface de configuration des autorisations](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426114957.png)
 
-The customRequests table is system-level, and permissions are controlled via the acl.registerSnippet method.
+La table **customRequests** est au niveau système et les autorisations sont contrôlées via la méthode **acl.registerSnippet**.
 
 ```typescript
 this.app.acl.registerSnippet({
-  name: 'ui.customRequests', // Permission for configuring interface related to ui.*
+  name: 'ui.customRequests', // Autorisation pour configurer l'interface liée à ui.*
   actions: ['customRequests:*'],
 });
 ```
+
 ### Variables
 
-You can configure variables within both the URL and request body.
+Vous pouvez configurer des variables à la fois dans l'URL et dans le corps de la requête.
 
-- Current record
-- Current user
-- Current time
-- API token (supported by v1.3.22-beta and above)
+- Enregistrement actuel
+- Utilisateur actuel
+- Heure actuelle
+- Jeton API (pris en charge depuis la version v1.3.22-beta et supérieure)
 
-![20240426120953](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426120953.png)
+![Exemple de configuration de variables](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426120953.png)
 
-![20240426121051](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426121051.png)
+![Exemple de variables dans le corps de la requête](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426121051.png)
 
-## Operation Configuration Items
+## Éléments de configuration de l'opération
 
-### Request Settings
+### Paramètres de la demande
 
-![20240426120131](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426120131.png)
+![Paramètres de la demande personnalisée](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426120131.png)
 
-### Access Control
+### Contrôle d'accès
 
-Each custom request can have custom role-based permissions, with default permissions granted to all users.
+Chaque demande personnalisée peut avoir des autorisations basées sur des rôles personnalisés, avec des autorisations par défaut accordées à tous les utilisateurs.
 
-![20240426120451](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426120451.png)
+![Interface de configuration du contrôle d'accès](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426120451.png)

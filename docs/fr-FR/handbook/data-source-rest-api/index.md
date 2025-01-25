@@ -1,30 +1,30 @@
-# REST API Data Source
+# Source de données API REST
 
 <PluginInfo commercial="true" name="data-source-rest-api"></PluginInfo>
 
 ## Introduction
 
-This plugin allows you to integrate data from REST API sources seamlessly.
+Ce plugin permet d'intégrer des données provenant de sources API REST de manière transparente.
 
 ## Installation
 
-As a commercial plugin, it requires uploading and activation through the plugin manager.
+Étant un plugin commercial, il nécessite d'être téléchargé et activé via le gestionnaire de plugins.
 
 ![20240323162741](https://static-docs.nocobase.com/20240323162741.png)
 
-## Adding a REST API Source
+## Ajouter une source API REST
 
-After activating the plugin, you can add a REST API source by selecting it from the Add new dropdown menu in the data source management section.
+Après l'activation du plugin, vous pouvez ajouter une source API REST en la sélectionnant dans le menu déroulant "Ajouter nouveau" dans la gestion des sources de données.
 
 ![20240721171420](https://static-docs.nocobase.com/20240721171420.png)
 
-### Configuring the REST API Source
+### Configurer la source API REST
 
 ![20240721171507](https://static-docs.nocobase.com/20240721171507.png)
 
-## Adding a Collection
+## Ajouter une Collection
 
-In NocoBase, a RESTful resource is mapped to a Collection, such as a Users resource.
+Dans NocoBase, une ressource RESTful est mappée à une Collection, telle qu'une ressource Utilisateurs.
 
 ```bash
 GET /users
@@ -34,7 +34,7 @@ PUT /users/1
 DELETE /users/1
 ```
 
-These API endpoints are mapped in NocoBase as follows:
+Ces points de terminaison API sont mappés dans NocoBase comme suit :
 
 ```bash
 GET /users:list
@@ -44,65 +44,66 @@ POST /users:update?filterByTk=1
 POST /users:destroy?filterByTk=1
 ```
 
-For a comprehensive guide on NocoBase API design specifications, refer to the API documentation.
+Pour un guide complet sur les spécifications de conception d'API NocoBase, consultez la documentation de l'API.
 
 ![20240716213344](https://static-docs.nocobase.com/20240716213344.png)
 
-Check the "NocoBase API - Core" chapter for detailed information.
+Consultez le chapitre "NocoBase API - Core" pour des informations détaillées.
 
 ![20240716213258](https://static-docs.nocobase.com/20240716213258.png)
 
-The Collection configuration for a REST API data source includes the following:
+La configuration de la collection pour une source de données API REST inclut les éléments suivants :
 
-### List
+### Liste
 
-Map the interface for viewing a list of resources.
+Mappez l'interface pour afficher une liste de ressources.
 
 ![20240716211351](https://static-docs.nocobase.com/20240716211351.png)
 
-### Get
+### Obtenir
 
-Map the interface for viewing resource details.
+Mappez l'interface pour afficher les détails d'une ressource.
 
 ![20240716211532](https://static-docs.nocobase.com/20240716211532.png)
 
-### Create
+### Créer
 
-Map the interface for creating a resource.
+Mappez l'interface pour créer une ressource.
 
 ![20240716211634](https://static-docs.nocobase.com/20240716211634.png)
 
-### Update
+### Mettre à jour
 
-Map the interface for updating a resource.
+Mappez l'interface pour mettre à jour une ressource.
 
 ![20240716211733](https://static-docs.nocobase.com/20240716211733.png)
 
-### Destroy
+### Supprimer
 
-Map the interface for deleting a resource.
+Mappez l'interface pour supprimer une ressource.
 
 ![20240716211808](https://static-docs.nocobase.com/20240716211808.png)
 
-Both the List and Get interfaces are required to be configured.
-## Debugging the API
+Les interfaces Liste et Obtenir doivent être configurées.
 
-### Request parameter integration
+## Débogage de l'API
 
-example: configure pagination parameters for the List API.
+### Intégration des paramètres de requête
 
-if the third-party api does not support pagination natively, implement pagination will based on the retrieved list data.
+Exemple : configurez les paramètres de pagination pour l'API Liste.
+
+Si l'API tierce ne prend pas en charge la pagination nativement, la pagination sera implémentée sur la base des données de la liste récupérée.
 
 ![20241121205229](https://static-docs.nocobase.com/20241121205229.png)
 
-Note: Only variables added to the API will work.
+Note : Seules les variables ajoutées à l'API fonctionneront.
 
-| Third-party API params name | NocoBase params             |
-| --------------------------- | --------------------------- |
-| page                        | {{request.params.page}}     |
-| limit                       | {{request.params.pageSize}} |
+| Nom des paramètres API tiers | Paramètres NocoBase            |
+| ---------------------------- | ------------------------------ |
+| page                         | {{request.params.page}}        |
+| limit                        | {{request.params.pageSize}}    |
 
-You can easily debug the API by clicking Try it out.
+Vous pouvez facilement déboguer l'API en cliquant sur "Try it out".
 
 ![20241121210320](https://static-docs.nocobase.com/20241121210320.png)
 
@@ -110,118 +111,118 @@ You can easily debug the API by clicking Try it out.
       <source src="https://static-docs.nocobase.com/20241121211034.mp4" type="video/mp4">
 </video>
 
-### Response format transformation
+### Transformation du format de réponse
 
-The response format of the third-party API may not be in NocoBase standard, and it needs to be transformed before it can be correctly displayed on the front end.
+Le format de réponse de l'API tierce peut ne pas être conforme aux standards de NocoBase, et il doit être transformé avant de pouvoir être correctement affiché sur l'interface.
 
 ![20241121214638](https://static-docs.nocobase.com/20241121214638.png)
 
-Adjust the conversion rules based on the response format of the third-party API to ensure the output conforms to the NocoBase standard.
+Ajustez les règles de transformation en fonction du format de réponse de l'API tierce pour garantir que la sortie soit conforme au standard NocoBase.
 
 ![20241121215100](https://static-docs.nocobase.com/20241121215100.png)
 
-### Debugging Process Overview
+### Vue d'ensemble du processus de débogage
 
 ![20240717110051](https://static-docs.nocobase.com/20240717110051.png)
 
 ## Variables
 
-The REST API data source supports three types of variables for API integration:
+La source de données API REST prend en charge trois types de variables pour l'intégration API :
 
-- Custom data source variables
-- NocoBase request variables
-- Third-party response variables
+- Variables personnalisées de la source de données
+- Variables de requête NocoBase
+- Variables de réponse tierces
 
-### Custom Data Source Variables
+### Variables personnalisées de la source de données
 
 ![20240716221937](https://static-docs.nocobase.com/20240716221937.png)
 
 ![20240716221858](https://static-docs.nocobase.com/20240716221858.png)
 
-### NocoBase Request
+### Requête NocoBase
 
-- Params: URL query parameters (Search Params), which vary depending on the interface.
-- Headers: Custom request headers, primarily providing specific X- information from NocoBase.
-- Body: The request body.
-- Token: The API token for the current NocoBase request.
+- Params : Paramètres de requête URL (paramètres de recherche), qui varient selon l'interface.
+- Headers : En-têtes de requête personnalisés, principalement pour fournir des informations spécifiques X depuis NocoBase.
+- Body : Le corps de la requête.
+- Token : Le token API pour la requête NocoBase actuelle.
 
 ![20240716222042](https://static-docs.nocobase.com/20240716222042.png)
 
-### Third-Party Responses
+### Réponses tierces
 
-Currently, only the response body is available.
+Actuellement, seule la réponse du corps est disponible.
 
 ![20240716222303](https://static-docs.nocobase.com/20240716222303.png)
 
-Below are the variables available for each interface:
+Voici les variables disponibles pour chaque interface :
 
-### List
+### Liste
 
-| Parameter               | Description                                                |
-| ----------------------- | ---------------------------------------------------------- |
-| request.params.page     | Current page                                               |
-| request.params.pageSize | Number of items per page                                   |
-| request.params.filter   | Filter criteria (must meet NocoBase Filter format)         |
-| request.params.sort     | Sorting criteria (must meet NocoBase Sort format)          |
-| request.params.appends  | Fields to load on demand, typically for association fields |
-| request.params.fields   | Fields to include (whitelist)                              |
-| request.params.except   | Fields to exclude (blacklist)                              |
-
-### Get
-
-| Parameter                 | Description                                                |
+| Paramètre                 | Description                                                |
 | ------------------------- | ---------------------------------------------------------- |
-| request.params.filterByTk | Required, typically the current record ID                  |
-| request.params.filter     | Filter criteria (must meet NocoBase Filter format)         |
-| request.params.appends    | Fields to load on demand, typically for association fields |
-| request.params.fields     | Fields to include (whitelist)                              |
-| request.params.except     | Fields to exclude (blacklist)                              |
+| request.params.page       | Page actuelle                                              |
+| request.params.pageSize   | Nombre d'éléments par page                                  |
+| request.params.filter     | Critères de filtrage (doit suivre le format de filtrage NocoBase) |
+| request.params.sort       | Critères de tri (doit suivre le format de tri NocoBase)    |
+| request.params.appends    | Champs à charger à la demande, typiquement pour les champs d'association |
+| request.params.fields     | Champs à inclure (liste blanche)                            |
+| request.params.except     | Champs à exclure (liste noire)                              |
 
-### Create
+### Obtenir
 
-| Parameter                | Description               |
+| Paramètre                 | Description                                                |
+| ------------------------- | ---------------------------------------------------------- |
+| request.params.filterByTk | Obligatoire, généralement l'ID actuel de l'enregistrement |
+| request.params.filter     | Critères de filtrage (doit suivre le format de filtrage NocoBase) |
+| request.params.appends    | Champs à charger à la demande, typiquement pour les champs d'association |
+| request.params.fields     | Champs à inclure (liste blanche)                            |
+| request.params.except     | Champs à exclure (liste noire)                              |
+
+### Créer
+
+| Paramètre                | Description               |
 | ------------------------ | ------------------------- |
-| request.params.whiteList | Whitelist                 |
-| request.params.blacklist | Blacklist                 |
-| request.body             | Initial data for creation |
+| request.params.whiteList | Liste blanche             |
+| request.params.blacklist | Liste noire               |
+| request.body             | Données initiales pour la création |
 
-### Update
+### Mettre à jour
 
-| Parameter                 | Description                                        |
+| Paramètre                 | Description                                        |
 | ------------------------- | -------------------------------------------------- |
-| request.params.filterByTk | Required, typically the current record ID          |
-| request.params.filter     | Filter criteria (must meet NocoBase Filter format) |
-| request.params.whiteList  | Whitelist                                          |
-| request.params.blacklist  | Blacklist                                          |
-| request.body              | Data for update                                    |
+| request.params.filterByTk | Obligatoire, généralement l'ID actuel de l'enregistrement |
+| request.params.filter     | Critères de filtrage (doit suivre le format de filtrage NocoBase) |
+| request.params.whiteList  | Liste blanche                                       |
+| request.params.blacklist  | Liste noire                                         |
+| request.body              | Données pour la mise à jour                        |
 
-### Destroy
+### Supprimer
 
-| Parameter                 | Description                               |
+| Paramètre                 | Description                               |
 | ------------------------- | ----------------------------------------- |
-| request.params.filterByTk | Required, typically the current record ID |
-| request.params.filter     | Filtering conditions                      |
+| request.params.filterByTk | Obligatoire, généralement l'ID actuel de l'enregistrement |
+| request.params.filter     | Conditions de filtrage                    |
 
-## Field Configuration
+## Configuration des champs
 
-Field metadata (Fields) is extracted from the CRUD interface data of the adapted resource to serve as the fields of the collection.
+Les métadonnées des champs (Fields) sont extraites des données de l'interface CRUD de la ressource adaptée pour servir de champs à la collection.
 
 ![20240716223636](https://static-docs.nocobase.com/20240716223636.png)
 
-Field metadata extraction.
+Extraction des métadonnées des champs.
 
 ![20241121230436](https://static-docs.nocobase.com/20241121230436.png)
 
-Field and preview.
+Champs et aperçu.
 
 ![20240716224403](https://static-docs.nocobase.com/20240716224403.png)
 
-Edit fields (similar to other data sources).
+Édition des champs (similaire aux autres sources de données).
 
 ![20240716224704](https://static-docs.nocobase.com/20240716224704.png)
 
-## Adding REST API Data Source Blocks
+## Ajouter des blocs de source de données API REST
 
-Once the collection is configured, you can add blocks to the interface.
+Une fois la collection configurée, vous pouvez ajouter des blocs à l'interface.
 
 ![20240716225120](https://static-docs.nocobase.com/20240716225120.png)

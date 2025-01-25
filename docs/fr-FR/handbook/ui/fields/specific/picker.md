@@ -1,43 +1,43 @@
-# Record picker
+# Sélecteur d'Enregistrement
 
 ## Introduction
 
-The **Record picker**, presented as a popup table selector, allows users to select existing data associations for the target table or add new data to the target table and then associate it.
+Le **Sélecteur d'Enregistrement**, présenté comme un sélecteur de tableau contextuel, permet aux utilisateurs de sélectionner des associations de données existantes pour la table cible ou d'ajouter de nouvelles données à la table cible avant de les associer.
 
 ![20240410114516](https://static-docs.nocobase.com/20240410114516.png)
 
-The order table features a many-to-many relationship field called "Products".
+La table des commandes possède un champ de relation plusieurs-à-plusieurs appelé "Produits".
 
-Data that has already been selected will not appear in the table selector.
+Les données déjà sélectionnées n'apparaîtront pas dans le sélecteur de tableau.
 
 <video width="100%" height="440" controls>
   <source src="https://static-docs.nocobase.com/20240410121032.mp4" type="video/mp4">
 </video>
 
-Within the table selector, users can further manage the relationship target table (add, delete, import, export, etc.).
+Au sein du sélecteur de tableau, les utilisateurs peuvent également gérer la table cible de la relation (ajouter, supprimer, importer, exporter, etc.).
 
 ![20240410115239](https://static-docs.nocobase.com/20240410115239.png)
 
-## Field Configuration Options
+## Options de Configuration des Champs
 
-### Allow Adding Data
+### Autoriser l'Ajout de Données
 
-This option enables users to add data to the target table and then select that newly added data.
+Cette option permet aux utilisateurs d'ajouter des données à la table cible puis de sélectionner ces nouvelles données.
 
 <video width="100%" height="440" controls>
   <source src="https://static-docs.nocobase.com/20240422214222.mp4" type="video/mp4">
 </video>
 
-### Allow Adding/Associating Multiple Items
+### Autoriser l'Ajout/Association de Plusieurs Éléments
 
-This setting restricts multiple relationship data to allow associating only one piece of data.
+Cette option limite les données de relation multiples et permet uniquement d'associer un seul élément de données.
 
-### Title Field
+### Champ Titre
 
 ![20240422205632](https://static-docs.nocobase.com/20240422205632.gif)
 
-For more information, refer to [Title Field](/handbook/ui/fields/field-settings/title-field)
+Pour plus d'informations, consultez [Champ Titre](/handbook/ui/fields/field-settings/title-field)
 
-- [Popup Size](/handbook/ui/actions/action-settings/popup-size)
+- [Taille du Popup](/handbook/ui/actions/action-settings/popup-size)
 
-- [Field Components](/handbook/ui/fields/association-field)
+- [Composants de Champ](/handbook/ui/fields/association-field)

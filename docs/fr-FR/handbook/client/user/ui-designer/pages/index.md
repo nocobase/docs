@@ -1,31 +1,31 @@
 ### Page
 
-#### Page Structure
+#### Structure de la page
 
-1. Page Designer
-2. Page Title
-3. Page Tabs (Subpages)
-4. Page Body (Hosts blocks)
+1. **Concepteur de page**
+2. **Titre de la page**
+3. **Onglets de page (sous-pages)**
+4. **Corps de la page (hôte des blocs)**
 
-![](https://static-docs.nocobase.com/0c84950f8d58246497da21fbdd2ffc6b.png)
+![](https://static-docs.nocobase.com/0c84950f8d58246497da21fbdd2ffc6e.png)
 
-#### Page Designer
+#### Concepteur de page
 
 ![](https://static-docs.nocobase.com/19ce82228c9fb0681dcd9a73798b49f9.png)
 
-- **Enable page header:** Controls whether the header is displayed.
-- **Display page title:** Controls whether the page title is displayed in the header.
-- **Edit page title:** The default page title is the menu item title, but you can customize it.
-- **Enable page tabs:** Tabs refer to the subpages of the page.
+- **Activer l'en-tête de la page :** Contrôle si l'en-tête est affiché.
+- **Afficher le titre de la page :** Contrôle si le titre de la page est affiché dans l'en-tête.
+- **Éditer le titre de la page :** Le titre par défaut de la page est le titre de l'élément du menu, mais vous pouvez le personnaliser.
+- **Activer les onglets de page :** Les onglets font référence aux sous-pages de la page.
 
-#### Page Tabs
+#### Onglets de page
 
-After enabling page tabs, you can add subpages within the page.
+Après avoir activé les onglets de page, vous pouvez ajouter des sous-pages à l'intérieur de la page.
 
 ![](https://static-docs.nocobase.com/febacab3419e1a0ea98b178db63fa86d.png)
 
-#### Page Layout
+#### Mise en page de la page
 
-Multiple blocks can be arranged by dragging to adjust the layout.
+Plusieurs blocs peuvent être organisés en faisant glisser pour ajuster la disposition.
 
 ![](https://static-docs.nocobase.com/f6692295ac0917f3babce9a60ce80879.gif)

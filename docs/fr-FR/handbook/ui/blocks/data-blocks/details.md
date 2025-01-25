@@ -1,55 +1,55 @@
-# Details Block
+# Bloc Détails
 
 ## Introduction
 
-The details block is used to display the values of each field for each data item in detail. It supports flexible field layout and has built-in various actions.
+Le bloc détails est utilisé pour afficher les valeurs de chaque champ pour chaque élément de données en détail. Il prend en charge une mise en page flexible des champs et dispose de diverses actions intégrées.
 
-## Adding Blocks
+## Ajouter des Blocs
 
 <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240417122622.mp4" type="video/mp4">
 </video>
 
-## Block Settings
+## Paramètres du Bloc
 
 ![20240417122949](https://static-docs.nocobase.com/20240417122949.png)
 
-### Set Data Scope
+### Définir la Portée des Données
 
-Example: Default filtering of delivered orders
+Exemple : Filtrage par défaut des commandes livrées
 
 ![20240417122910](https://static-docs.nocobase.com/20240417122910.png)
 
-For more details, please refer to [Setting Data Scope](/handbook/ui/blocks/block-settings/data-scope)
+Pour plus de détails, veuillez consulter [Définir la Portée des Données](/handbook/ui/blocks/block-settings/data-scope)
 
-### Set Default Sorting Rule
+### Définir la Règle de Tri par Défaut
 
 ![20240417123300](https://static-docs.nocobase.com/20240417123300.png)
 
-For more details, please refer to [Sorting Rules](/handbook/ui/blocks/block-settings/sorting-rule)
+Pour plus de détails, veuillez consulter [Règles de Tri](/handbook/ui/blocks/block-settings/sorting-rule)
 
-- [Set Data Loading Method](/handbook/ui/blocks/block-settings/loading-mode)
-- [Save as Block Template](/handbook/ui/blocks/block-settings/block-template)
+- [Définir la Méthode de Chargement des Données](/handbook/ui/blocks/block-settings/loading-mode)
+- [Enregistrer comme Modèle de Bloc](/handbook/ui/blocks/block-settings/block-template)
 
-## Configure Fields
+## Configurer les Champs
 
-### The Current Collecton Fields
+### Champs de la Collection Actuelle
 
 ![20240417213735](https://static-docs.nocobase.com/20240417213735.png)
 
-### The Association Fields
+### Champs d'Association
 
 ![20240417214006](https://static-docs.nocobase.com/20240417214006.png)
 
-For more details on detail field configuration, please refer to [Detail Fields](/handbook/ui/fields/generic/detail-form-item)
+Pour plus de détails sur la configuration des champs de détail, veuillez consulter [Champs Détails](/handbook/ui/fields/generic/detail-form-item)
 
-## Configure Actions
+## Configurer les Actions
 
 ![20240417214433](https://static-docs.nocobase.com/20240417214433.png)
 
-- [Edit](/handbook/ui/actions/types/edit)
-- [Delete](/handbook/ui/actions/types/delete)
+- [Modifier](/handbook/ui/actions/types/edit)
+- [Supprimer](/handbook/ui/actions/types/delete)
 - [Pop-up](/handbook/ui/actions/types/pop-up)
-- [Update Record](/handbook/ui/actions/types/update-record)
-- [Custom Request](/handbook/action-custom-request)
-- [Trigger workflow](/handbook/workflow/manual/triggers/cutom-action-trigger)
+- [Mettre à jour l'enregistrement](/handbook/ui/actions/types/update-record)
+- [Demande Personnalisée](/handbook/action-custom-request)
+- [Déclencher un flux de travail](/handbook/workflow/manual/triggers/cutom-action-trigger)

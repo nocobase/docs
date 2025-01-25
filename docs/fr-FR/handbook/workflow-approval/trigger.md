@@ -1,55 +1,55 @@
-# Trigger Configuration
+# Configuration du Déclencheur
 
-## Creating a Workflow
+## Création d'un Workflow
 
-To set up an approval workflow, start by selecting the "Approval" type during the workflow creation process:
+Pour configurer un workflow d'approbation, commencez par sélectionner le type "Approbation" lors de la création du workflow :
 
-![Approval Trigger_Create Approval Workflow](https://static-docs.nocobase.com/f52dda854f46a669e0c1c7fb487a17ea.png)
+![Déclencheur d'Approbation_Créer un Workflow d'Approbation](https://static-docs.nocobase.com/f52dda854f46a669e0c1c7fb487a17ea.png)
 
-Next, in the workflow configuration interface, click on the trigger to open a popup window for additional configuration options.
+Ensuite, dans l'interface de configuration du workflow, cliquez sur le déclencheur pour ouvrir une fenêtre contextuelle avec des options de configuration supplémentaires.
 
-## Binding Data Tables
+## Lier les Tables de Données
 
-NocoBase’s approval plugin is designed with flexibility in mind, allowing it to be integrated with any custom data collection. This means there’s no need to repeatedly configure the data model for approval processes. Instead, you can reuse existing data collections. When configuring the trigger, the first step is to select a data table to determine which data entries will trigger the workflow upon creation or update:
+Le plugin d'approbation de NocoBase est conçu pour offrir une grande flexibilité, permettant son intégration avec n'importe quelle collection de données personnalisée. Cela signifie qu'il n'est pas nécessaire de reconfigurer en permanence le modèle de données pour les processus d'approbation. Vous pouvez réutiliser des collections de données existantes. Lors de la configuration du déclencheur, la première étape consiste à sélectionner une table de données pour déterminer quelles entrées de données déclencheront le workflow lors de la création ou de la mise à jour :
 
-![Approval Trigger_Trigger Configuration_Select Data Table](https://static-docs.nocobase.com/8732a4419b1e28d2752b8f601132c82d.png)
+![Déclencheur d'Approbation_Configuration du Déclencheur_Sélectionner la Table de Données](https://static-docs.nocobase.com/8732a4419b1e28d2752b8f601132c82d.png)
 
-After selecting the data table, bind the workflow to the submit button in the form used for creating or editing data within the chosen table:
+Après avoir sélectionné la table de données, liez le workflow au bouton de soumission du formulaire utilisé pour créer ou modifier les données dans la table sélectionnée :
 
-![Initiate Approval_Bind Workflow](https://static-docs.nocobase.com/2872ff108c61d7bf6d0bfb19886774c6.png)
+![Démarrer l'Approbation_Lier le Workflow](https://static-docs.nocobase.com/2872ff108c61d7bf6d0bfb19886774c6.png)
 
-Once the form is submitted, the corresponding approval workflow will be triggered. The submitted data will be saved in the specified data table and also snapshotted within the approval flow for future review by approvers.
+Une fois le formulaire soumis, le workflow d'approbation correspondant sera déclenché. Les données soumises seront enregistrées dans la table de données spécifiée et également prises en instantané dans le flux d'approbation pour une révision future par les approbateurs.
 
-## Where to Initiate an Approval
+## Où Initier une Approbation
 
-There are two locations within the user interface where approvals can be initiated:
-1. Through the submission of a data collection form that has been bound to an approval process, typically used for initiating a single approval process.
-2. Via the Approval block, which allows for the centralized initiation of global processes.
+Il existe deux emplacements dans l'interface utilisateur où les approbations peuvent être initiées :
+1. Par la soumission d'un formulaire de collection de données qui a été lié à un processus d'approbation, généralement utilisé pour initier un processus d'approbation unique.
+2. Via le bloc d'Approbation, qui permet l'initiation centralisée de processus globaux.
 
-![Approval Trigger_Trigger Configuration_Where to Initiate Approval](https://static-docs.nocobase.com/1a193ec0acfa6cde221c6e5d49a50b3e.png)
+![Déclencheur d'Approbation_Configuration du Déclencheur_Où Initier l'Approbation](https://static-docs.nocobase.com/1a193ec0acfa6cde221c6e5d49a50b3e.png)
 
-By selecting "Initiate and approve in both data blocks and global approval blocks" the process will appear in the “Initiations” dropdown menu within the Approval Center block, enabling users to manage various approvals from a central location.
+En sélectionnant "Initier et approuver dans les blocs de données et les blocs d'approbation globaux", le processus apparaîtra dans le menu déroulant “Initiations” au sein du bloc Centre d'Approbation, permettant aux utilisateurs de gérer diverses approbations depuis un emplacement centralisé.
 
-## Withdrawn
+## Retrait
 
-If the approval process permits the initiator to withdraw the request, select the "Allowed to be withdrawn" option:
+Si le processus d'approbation permet à l'initiateur de retirer la demande, sélectionnez l'option "Autorisé à être retiré" :
 
-![Approval Trigger_Trigger Configuration_Allow Withdrawal](https://static-docs.nocobase.com/09185712fc55bc536892136ce0ade4a8.png)
+![Déclencheur d'Approbation_Configuration du Déclencheur_Autoriser le Retrait](https://static-docs.nocobase.com/09185712fc55bc536892136ce0ade4a8.png)
 
-When this option is selected, the initiator can withdraw the approval request at any time before any approver has processed it. However, once any subsequent approval nodes have been processed, the approval can no longer be withdrawn.
+Lorsque cette option est sélectionnée, l'initiateur peut retirer la demande d'approbation à tout moment avant qu'un approbateur n'ait traité la demande. Cependant, une fois que des nœuds d'approbation ont été traités, l'approbation ne peut plus être retirée.
 
-## Configuring the Form Interface for Initiating Approvals
+## Configuration de l'Interface du Formulaire pour Initier des Approbations
 
-Finally, you’ll need to configure the form interface for the initiator. This interface is used when initiating an approval from the Approval Center block or when re-initiating after a withdrawal. Click the configuration button to open a popup window:
+Enfin, vous devrez configurer l'interface du formulaire pour l'initiateur. Cette interface est utilisée lors de l'initiation d'une approbation depuis le bloc Centre d'Approbation ou lors d'une nouvelle initiation après un retrait. Cliquez sur le bouton de configuration pour ouvrir une fenêtre contextuelle :
 
-![Approval Trigger_Trigger Configuration_Initiator Form](https://static-docs.nocobase.com/ca8b7e362d912138cf7d73bb60b37ac1.png)
+![Déclencheur d'Approbation_Configuration du Déclencheur_Formulaire de l'Initiateur](https://static-docs.nocobase.com/ca8b7e362d912138cf7d73bb60b37ac1.png)
 
-You can add a form based on the bound data table or include explanatory text (Markdown) to guide the initiator. A form is required; otherwise, the initiator will not be able to proceed upon entering this interface.
+Vous pouvez ajouter un formulaire basé sur la table de données liée ou inclure un texte explicatif (Markdown) pour guider l'initiateur. Un formulaire est requis, sinon l'initiateur ne pourra pas poursuivre après être entré dans cette interface.
 
-After adding the form block, you can configure the corresponding data table's field components and arrange them as needed to organize the content to be filled out, similar to the regular form configuration interface:
+Après avoir ajouté le bloc du formulaire, vous pouvez configurer les composants de champ de la table de données correspondante et les organiser comme nécessaire pour organiser le contenu à remplir, similaire à l'interface de configuration d'un formulaire standard :
 
-![Approval Trigger_Trigger Configuration_Initiator Form_Field Configuration](https://static-docs.nocobase.com/5a1e7f9c9d8de092c7b55585dad7d633.png)
+![Déclencheur d'Approbation_Configuration du Déclencheur_Formulaire de l'Initiateur_Configuration des Champs](https://static-docs.nocobase.com/5a1e7f9c9d8de092c7b55585dad7d633.png)
 
-In addition to the submit button, you can also add a “Save Draft” button to support the temporary storage of data during the process:
+En plus du bouton de soumission, vous pouvez également ajouter un bouton "Sauvegarder le Brouillon" pour permettre le stockage temporaire des données durant le processus :
 
-![Approval Trigger_Trigger Configuration_Initiator Form_Action Configuration](https://static-docs.nocobase.com/2f4850d2078e94538995a9df70d3d2d1.png)
+![Déclencheur d'Approbation_Configuration du Déclencheur_Formulaire de l'Initiateur_Configuration des Actions](https://static-docs.nocobase.com/2f4850d2078e94538995a9df70d3d2d1.png)

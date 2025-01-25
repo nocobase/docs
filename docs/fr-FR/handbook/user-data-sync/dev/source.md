@@ -1,14 +1,14 @@
-# Extending Synchronized Data Sources
+# Extension des Sources de Données Synchronisées
 
-## Overview
+## Vue d'ensemble
 
-NocoBase allows users to extend data source types for user data synchronization as needed.
+NocoBase permet aux utilisateurs d'étendre les types de sources de données pour la synchronisation des données utilisateur selon leurs besoins.
 
-## Server Side
+## Côté Serveur
 
-### Data Source Interface
+### Interface de la Source de Données
 
-The built-in user data synchronization plugin provides registration and management for data source types. To extend a data source type, inherit the `SyncSource` abstract class provided by the plugin and implement the relevant standard interfaces.
+Le plugin natif de synchronisation des données utilisateur fournit un enregistrement et une gestion pour les types de sources de données. Pour étendre un type de source de données, il faut hériter de la classe abstraite `SyncSource` fournie par le plugin et implémenter les interfaces standard pertinentes.
 
 ```ts
 import { SyncSource, UserData } from '@nocobase/plugin-user-data-sync';
@@ -20,7 +20,7 @@ class CustomSyncSource extends SyncSource {
 }
 ```
 
-The `SyncSource` class includes an `options` property to retrieve custom configurations for the data source.
+La classe `SyncSource` inclut une propriété `options` permettant de récupérer les configurations personnalisées pour la source de données.
 
 ```ts
 import { SyncSource, UserData } from '@nocobase/plugin-user-data-sync';
@@ -35,35 +35,35 @@ class CustomSyncSource extends SyncSource {
 }
 ```
 
-### Description of `UserData` Fields
+### Description des Champs `UserData`
 
-| Field        | Description                               |
-| ------------ | ----------------------------------------- |
-| `dataType`   | Data type, options are `user` and `department` |
-| `uniqueKey`  | Unique identifier field                  |
-| `records`    | Data records                             |
-| `sourceName` | Data source name                         |
+| Champ        | Description                                   |
+| ------------ | --------------------------------------------- |
+| `dataType`   | Type de données, les options sont `user` et `department` |
+| `uniqueKey`  | Champ identifiant unique                      |
+| `records`    | Enregistrements des données                    |
+| `sourceName` | Nom de la source de données                   |
 
-If `dataType` is `user`, the `records` field contains the following fields:
+Si `dataType` est `user`, le champ `records` contient les champs suivants :
 
-| Field         | Description      |
-| ------------- | ---------------- |
-| `id`          | User ID          |
-| `nickname`    | User nickname    |
-| `avatar`      | User avatar      |
-| `email`       | Email            |
-| `phone`       | Phone number     |
-| `departments` | Array of department IDs |
+| Champ         | Description     |
+| ------------- | --------------- |
+| `id`          | ID de l'utilisateur |
+| `nickname`    | Surnom de l'utilisateur |
+| `avatar`      | Avatar de l'utilisateur |
+| `email`       | Email de l'utilisateur |
+| `phone`       | Numéro de téléphone de l'utilisateur |
+| `departments` | Liste des IDs de départements |
 
-If `dataType` is `department`, the `records` field contains the following fields:
+Si `dataType` est `department`, le champ `records` contient les champs suivants :
 
-| Field     | Description          |
-| --------- | -------------------- |
-| `id`      | Department ID        |
-| `name`    | Department name      |
-| `parentId`| Parent department ID |
+| Champ     | Description           |
+| --------- | --------------------- |
+| `id`      | ID du département     |
+| `name`    | Nom du département    |
+| `parentId`| ID du département parent |
 
-### Example Implementation of the Data Source Interface
+### Exemple d'Implémentation de l'Interface Source de Données
 
 ```ts
 import { SyncSource, UserData } from '@nocobase/plugin-user-data-sync';
@@ -96,9 +96,9 @@ class CustomSyncSource extends SyncSource {
 }
 ```
 
-### Registering a Data Source Type
+### Enregistrement d'un Type de Source de Données
 
-The extended data source must be registered with the data management module.
+La source de données étendue doit être enregistrée auprès du module de gestion des données.
 
 ```ts
 import UserDataSyncPlugin from '@nocobase/plugin-user-data-sync';
@@ -111,7 +111,7 @@ class CustomSourcePlugin extends Plugin {
     if (syncPlugin) {
       syncPlugin.sourceManager.registerType('custom-source-type', {
         syncSource: CustomSyncSource,
-        title: 'Custom Source',
+        title: 'Source Personnalisée',
       });
     }
   }
@@ -120,9 +120,9 @@ class CustomSourcePlugin extends Plugin {
 
 ---
 
-## Client Side
+## Côté Client
 
-The client user interface registers data source types using the `registerType` method provided by the user data synchronization plugin's client interface:
+L'interface utilisateur côté client enregistre les types de sources de données en utilisant la méthode `registerType` fournie par l'interface client du plugin de synchronisation des données utilisateur :
 
 ```ts
 import SyncPlugin from '@nocobase/plugin-user-data-sync/client';
@@ -132,15 +132,15 @@ class CustomSourcePlugin extends Plugin {
     const sync = this.app.pm.get(SyncPlugin);
     sync.registerType(authType, {
       components: {
-        AdminSettingsForm, // Backend management form
+        AdminSettingsForm, // Formulaire de gestion côté backend
       },
     });
   }
 }
 ```
 
-### Backend Management Form
+### Formulaire de Gestion Côté Backend
 
-![Backend Management Form](https://static-docs.nocobase.com/202412041429835.png)
+![Formulaire de Gestion Côté Backend](https://static-docs.nocobase.com/202412041429835.png)
 
-The top section provides general data source configuration, while the bottom section allows for registration of custom configuration forms.
+La section supérieure permet de configurer la source de données en général, tandis que la section inférieure permet l'enregistrement de formulaires de configuration personnalisée.

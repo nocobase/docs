@@ -1,33 +1,33 @@
-# Fields
+# Champs
 
-In the UI, fields refer to components that serve as carriers for individual data units. Various types of data are represented through different field components. Fields must be attached to blocks and cannot function independently.
+Dans l'interface utilisateur, les champs font référence à des composants qui servent de conteneurs pour des unités de données individuelles. Différents types de données sont représentés par différents composants de champ. Les champs doivent être rattachés à des blocs et ne peuvent pas fonctionner indépendamment.
 
-## Fields within Blocks
+## Champs au sein des Blocs
 
-Fields are typically not used in isolation but rather as sub-elements within data-type blocks. These blocks generally include "configured columns," with the list of fields provided by the current data table.
+Les champs ne sont généralement pas utilisés de manière isolée, mais plutôt comme sous-éléments au sein des blocs de type de données. Ces blocs incluent généralement des "colonnes configurées", avec la liste des champs fournie par la table de données actuelle.
 
 ![](https://static-docs.nocobase.com/c5ea18ad1847332fe78075413f23de46.png)
 
-## Field Designer (Toolbar)
+## Concepteur de Champs (Barre d'outils)
 
-Like blocks, field components feature three icons in the upper right corner:
+Comme les blocs, les composants de champ disposent de trois icônes dans le coin supérieur droit :
 
-- Drag and Drop Layout
-- Quick Add Field
-- Field Parameter Configuration
+- Disposition Glisser-Déposer
+- Ajout rapide de champ
+- Configuration des paramètres du champ
 
 ![](https://static-docs.nocobase.com/30cc5fcaeeb171862f79449a72a7fcf9.png)
 
-## Field Layout
+## Disposition des Champs
 
-You can customize the layout of fields within a block by dragging and rearranging them as needed.
+Vous pouvez personnaliser la disposition des champs au sein d'un bloc en les faisant glisser et en les réorganisant selon vos besoins.
 
 ![](https://static-docs.nocobase.com/0825ea8c014c9073f505e74f707ded66.gif)
 
-## Field Components
+## Composants de Champ
 
-Certain fields support switching between different components. For example, the `URL` component can be switched to the `Preview` component.
+Certains champs prennent en charge le changement entre différents composants. Par exemple, le composant `URL` peut être changé en composant `Aperçu`.
 
 ![20240806164801](https://static-docs.nocobase.com/20240806164801.png)
 
-If you need to add more components, refer to [Extending Value Field Components](/plugin-samples/field/value).
+Si vous avez besoin d'ajouter plus de composants, consultez [Extension des composants de champ de valeur](/plugin-samples/field/value).

@@ -23,6 +23,16 @@ if (lang !== 'en-US') {
   Object.values(sidebar).forEach(setTitle);
 }
 
+let site_url=""
+if (lang==='zh-CN'){
+  site_url = "https://docs-cn.nocobase.com"
+}else if (lang==='ja-JP'){
+  site_url = "https://docs-jp.nocobase.com"
+}else {
+  site_url = "https://docs.nocobase.com"
+}
+
+
 export default defineConfig({
   hash: true,
   alias: {},
@@ -60,10 +70,18 @@ export default defineConfig({
       { id: 'en-US', switchPrefix: 'en', hostname: 'docs.nocobase.com' },
       { id: 'ja-JP', switchPrefix: 'ja', hostname: 'docs-ja.nocobase.com' },
     ],
+    algolia: {
+      appId: 'SOXMYGAM7C',
+      apiKey: '64843cbaefbee8de62326b2ae47b8601',
+      indexName: 'nocobase',
+    },
   }),
   favicons: [
     '/favicon.ico',
     '/favicon-32x32.png',
     '/favicon-16x16.png',
   ],
+  sitemap: {
+    hostname: site_url,
+  },
 });

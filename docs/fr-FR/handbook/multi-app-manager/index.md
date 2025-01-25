@@ -1,54 +1,54 @@
-# Multi-App Manager
+# Gestionnaire Multi-Applications
 
 <PluginInfo name="multi-app-manager"></PluginInfo>
 
 ## Introduction
 
-Dynamically manage multiple applications without the need for separate deployments, with each application being an independent instance.
+Gérez dynamiquement plusieurs applications sans nécessiter de déploiements séparés, chaque application étant une instance indépendante.
 
 :::warning
-The multi-app management plugin does not provide the capability for user sharing. It can be integrated through the "[Authentication plugin](/handbook/auth)" or handled using the "[App Switching plugin](/handbook/app-switching)".
+Le plugin de gestion multi-applications ne fournit pas la capacité de partage des utilisateurs. Il peut être intégré via le "[plugin d'authentification](/handbook/auth)" ou géré avec le "[plugin de changement d'application](/handbook/app-switching)".
 :::
 
 ## Installation
 
-This is a preset plugin that needs to be activated before use.
+Il s'agit d'un plugin prédéfini qui doit être activé avant d'être utilisé.
 
 ![20240327144151](https://static-docs.nocobase.com/20240327144151.png)
 
-## User Manual
+## Manuel d'utilisation
 
 ![20240327144327](https://static-docs.nocobase.com/20240327144327.png)
 
-### Adding Applications
+### Ajouter des Applications
 
 ![20240327150722](https://static-docs.nocobase.com/20240327150722.png)
 
-### Starting Methods
+### Méthodes de Démarrage
 
-Two starting methods are provided:
+Deux méthodes de démarrage sont proposées :
 
-- Start on first visit: The sub-application starts only when a user visits the sub-application's URL for the first time;
-- Start with the main application: When the main application starts, the sub-applications start as well, which increases the startup time of the main application.
+- Démarrage à la première visite : L'application secondaire démarre uniquement lorsqu'un utilisateur visite l'URL de l'application secondaire pour la première fois.
+- Démarrage avec l'application principale : Lorsque l'application principale démarre, les applications secondaires démarrent également, ce qui augmente le temps de démarrage de l'application principale.
 
 ![20240327170218](https://static-docs.nocobase.com/20240327170218.png)
 
-### Custom Domain Name
+### Nom de Domaine Personnalisé
 
-Sub-applications can be accessed via subpaths `/apps/:appName/admin/`, for example:
+Les sous-applications peuvent être accessibles via des sous-chemins `/apps/:appName/admin/`, par exemple :
 
 ```bash
 http://localhost:13000/apps/a_7zkxoarusnx/admin/z45sjaukasd
 ```
 
-Additionally, sub-applications can be configured with independent subdomains, which require domain resolution to the current IP. If nginx is used, the domain also needs to be added in the nginx configuration.
+De plus, les sous-applications peuvent être configurées avec des sous-domaines indépendants, ce qui nécessite une résolution de domaine vers l'IP actuelle. Si nginx est utilisé, le domaine doit également être ajouté à la configuration de nginx.
 
 ![20240327170301](https://static-docs.nocobase.com/20240327170301.png)
 
-### Display in the Menu
+### Affichage dans le Menu
 
 :::warning
-The list of sub-applications displayed in the current right drop-down menu is only a set of quick links. Users are not shared; sub-applications require login and can only be used by the main application's root account. Full application switching capabilities will be provided in the commercial plugin "[App Switching](//handbook/app-switching)".
+La liste des sous-applications affichée dans le menu déroulant droit actuel n'est qu'un ensemble de liens rapides. Les utilisateurs ne sont pas partagés ; les sous-applications nécessitent une connexion et peuvent uniquement être utilisées par le compte racine de l'application principale. Des capacités complètes de changement d'application seront fournies dans le plugin commercial "[Changement d'Application](//handbook/app-switching)".
 :::
 
 ![20240327151239](https://static-docs.nocobase.com/20240327151239.png)

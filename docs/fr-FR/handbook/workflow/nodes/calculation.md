@@ -1,39 +1,39 @@
-# Calculation
+# Calcul
 
-Although the calculation node does not control the flow of the process, it is an important function in the workflow. The calculation node can evaluate an expression, and the result will be stored in the corresponding node's result for later use by other nodes. It is a tool for calculating, processing, and transforming data. To some extent, it can replace the functionality of calling a function to compute a value in programming languages and assigning it to a variable.
+Bien que le nœud de calcul ne contrôle pas le flux du processus, il est une fonction importante dans le workflow. Le nœud de calcul peut évaluer une expression, et le résultat sera stocké dans le résultat du nœud correspondant pour une utilisation ultérieure par d'autres nœuds. Il s'agit d'un outil de calcul, de traitement et de transformation des données. Dans une certaine mesure, il peut remplacer la fonctionnalité d'appel d'une fonction pour calculer une valeur dans des langages de programmation et l'assigner à une variable.
 
-## Creating a Node
+## Création d'un Nœud
 
-In the workflow configuration UI, click the plus ("+") button in the flow to add a "Calculation" node:
+Dans l'interface de configuration du workflow, cliquez sur le bouton plus ("+") dans le flux pour ajouter un nœud "Calcul" :
 
-![Calculation Node - Adding](https://static-docs.nocobase.com/58a455540d26945251cd143eb4b16579.png)
+![Nœud de Calcul - Ajout](https://static-docs.nocobase.com/58a455540d26945251cd143eb4b16579.png)
 
-## Node Configuration
+## Configuration du Nœud
 
-![Calculation Node - Configuration](https://static-docs.nocobase.com/6a155de3f6a883d8cd1881b2d9c33874.png)
+![Nœud de Calcul - Configuration](https://static-docs.nocobase.com/6a155de3f6a883d8cd1881b2d9c33874.png)
 
-### Calculation Engine
+### Moteur de Calcul
 
-The calculation engine specifies the syntax supported of the expression. Currently supported calculation engines include [Math.js](https://mathjs.org/) and [Formula.js](https://formulajs.info/), each of which has built-in support for a large number of common functions and methods for data manipulation. Specific usage can be found in their official documentation.
+Le moteur de calcul spécifie la syntaxe prise en charge pour l'expression. Les moteurs de calcul actuellement pris en charge incluent [Math.js](https://mathjs.org/) et [Formula.js](https://formulajs.info/), chacun d'eux ayant une prise en charge intégrée pour un grand nombre de fonctions courantes et de méthodes pour la manipulation des données. L'utilisation spécifique peut être trouvée dans leur documentation officielle.
 
 :::info{title=Note}
-It's important to note that there is a difference in array indexing between the them. In Math.js, indexing starts from `1`, while in Formula.js, it starts from `0`.
+Il est important de noter qu'il existe une différence dans l'indexation des tableaux entre les deux. Dans Math.js, l'indexation commence à partir de `1`, tandis que dans Formula.js, elle commence à partir de `0`.
 :::
 
-Additionally, if simple string concatenation is needed, the "String Template" can be used directly. This engine will replace variables in the expression with their corresponding values and then return the concatenated string.
+De plus, si une simple concaténation de chaînes est nécessaire, le "Template de chaîne" peut être utilisé directement. Ce moteur remplacera les variables dans l'expression par leurs valeurs correspondantes et retournera ensuite la chaîne concaténée.
 
 ### Expression
 
-The expression is a string representation of a calculation formula, composed of variables, constants, operators, and supported functions. Variables from the workflow context can be used, such as results from preceding nodes of the calculation node or scope variables from loops.
+L'expression est une représentation sous forme de chaîne d'une formule de calcul, composée de variables, constantes, opérateurs et fonctions prises en charge. Les variables provenant du contexte du workflow peuvent être utilisées, telles que les résultats des nœuds précédents du nœud de calcul ou les variables de portée des boucles.
 
-If the expression input does not comply with the syntax, an error will be prompted in the node configuration. If a variable does not exist during execution or its type does not match, or if an undefined function is used, the calculation node will terminate prematurely with an error status.
+Si l'expression saisie ne respecte pas la syntaxe, une erreur sera affichée dans la configuration du nœud. Si une variable n'existe pas pendant l'exécution ou si son type ne correspond pas, ou si une fonction non définie est utilisée, le nœud de calcul se terminera prématurément avec un statut d'erreur.
 
-## Example
+## Exemple
 
-### Calculating Total Order Price
+### Calcul du Prix Total de la Commande
 
-Typically, an order may contain multiple items, each with different prices and quantities. The total price of the order requires calculating the sum of the products of prices and quantities for all items. You can use a calculation node to compute the total order price after loading the list of order details (a many-to-many relationship dataset):
+Typiquement, une commande peut contenir plusieurs articles, chacun avec des prix et des quantités différents. Le prix total de la commande nécessite de calculer la somme des produits des prix et des quantités pour tous les articles. Vous pouvez utiliser un nœud de calcul pour calculer le prix total de la commande après avoir chargé la liste des détails de la commande (un jeu de données à relation plusieurs-à-plusieurs) :
 
-![Calculation Node - Example - Node Configuration](https://static-docs.nocobase.com/85966b0116afb49aa966eeaa85e78dae.png)
+![Nœud de Calcul - Exemple - Configuration du Nœud](https://static-docs.nocobase.com/85966b0116afb49aa966eeaa85e78dae.png)
 
-Where the `SUMPRODUCT` function from Formula.js calculates the sum of the products of two arrays of the same length, and then summing them up yields the total order price.
+Où la fonction `SUMPRODUCT` de Formula.js calcule la somme des produits de deux tableaux de même longueur, puis les additionner donne le prix total de la commande.

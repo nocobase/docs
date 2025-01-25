@@ -1,57 +1,57 @@
-# Overview
+# Aperçu
 
-## Built-in Engines
+## Moteurs intégrés
 
-Currently, NocoBase supports the following built-in engine types:
+Actuellement, NocoBase prend en charge les types de moteurs intégrés suivants :
 
-- [Local Storage](./local.md)
+- [Stockage local](./local.md)
 - [Alibaba Cloud OSS](./aliyun-oss.md)
 - [Amazon S3](./amazon-s3.md)
 - [Tencent Cloud COS](./tencent-cos.md)
 
-A local storage engine is automatically added during system installation and can be used directly. New engines can also be added or existing engine parameters can be edited.
+Un moteur de stockage local est ajouté automatiquement lors de l'installation du système et peut être utilisé directement. De nouveaux moteurs peuvent également être ajoutés ou les paramètres d'un moteur existant peuvent être modifiés.
 
-## Common Engine Parameters
+## Paramètres communs des moteurs
 
-In addition to specific parameters for different engine categories, the following are common parameters:
+En plus des paramètres spécifiques à chaque catégorie de moteur, voici les paramètres communs :
 
-### Title
+### Titre
 
-The name of the storage engine for human recognition.
+Le nom du moteur de stockage pour une identification facile par les utilisateurs.
 
-### System Name
+### Nom du système
 
-The system name of the storage engine for system identifying. It must be unique in system-wide. If not provided, it will be generate randomly.
+Le nom du système du moteur de stockage pour l'identification par le système. Il doit être unique dans l'ensemble du système. S'il n'est pas fourni, il sera généré aléatoirement.
 
-### Access base URL
+### URL de base d'accès
 
-The prefix part of the URL address accessible to the file externally, which can be the access URL base of a CDN, for example: "`https://cdn.nocobase.com/app`" (without the trailing "`/`").
+La partie préfixe de l'URL accessible au fichier en externe, qui peut être l'URL d'accès de base d'un CDN, par exemple : "`https://cdn.nocobase.com/app`" (sans le "`/`" final).
 
-### Path
+### Chemin
 
-The relative path used when storing files. This part will also be automatically concatenated to the final URL when accessed. For example: "`user/avatar`" (without the leading or trailing "`/`").
+Le chemin relatif utilisé lors du stockage des fichiers. Cette partie sera automatiquement ajoutée à l'URL finale lors de l'accès. Par exemple : "`user/avatar`" (sans le "`/`" initial ou final).
 
-### File Size Limit
+### Limite de taille de fichier
 
-The size limit for uploading files to this storage engine. Files larger than this setting will not be uploaded. The system maximum limit is 1GB.
+La limite de taille pour télécharger des fichiers sur ce moteur de stockage. Les fichiers plus volumineux que cette limite ne seront pas téléchargés. La limite maximale du système est de 1 Go.
 
-### Default Storage Engine
+### Moteur de stockage par défaut
 
-When checked, it is set as the default storage engine for the system. Files uploaded in attachment fields or file collections without specifying a storage engine will be saved to the default storage engine. The default storage engine cannot be deleted.
+Lorsque cette option est activée, le moteur de stockage est défini comme moteur par défaut pour le système. Les fichiers téléchargés dans les champs de pièce jointe ou les collections de fichiers sans spécification de moteur de stockage seront enregistrés dans le moteur de stockage par défaut. Le moteur de stockage par défaut ne peut pas être supprimé.
 
-### Keep Files When Destroying Records
+### Conserver les fichiers lors de la suppression des enregistrements
 
-When checked, uploaded files in the storage engine will be retained even when the data records in attachment fields or file collections are deleted. By default, files in the storage engine are deleted when records are deleted.
+Lorsque cette option est activée, les fichiers téléchargés dans le moteur de stockage seront conservés même lorsque les enregistrements de données dans les champs de pièce jointe ou les collections de fichiers sont supprimés. Par défaut, les fichiers du moteur de stockage sont supprimés lorsque les enregistrements sont supprimés.
 
-See local storage as an example:
+Exemple avec le stockage local :
 
-![Example of File Storage Engine Configuration](https://static-docs.nocobase.com/20240529115151.png)
+![Exemple de configuration du moteur de stockage de fichiers](https://static-docs.nocobase.com/20240529115151.png)
 
 :::info{title=Note}
-After file upload, the final access path is composed of several parts:
+Après le téléchargement du fichier, le chemin d'accès final est composé de plusieurs parties :
 
 ```
 <Base URL>/<Path>/<FileName><Extension>
 ```
-For example: `https://cdn.nocobase.com/app/user/avatar/20240529115151.png`.
+Par exemple : `https://cdn.nocobase.com/app/user/avatar/20240529115151.png`.
 :::

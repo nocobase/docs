@@ -1,60 +1,64 @@
-# Filter Blocks
+# Blocs de Filtre
 
-The filter block within a chart block allows for dynamic filtering across multiple charts within the same block.
+Le bloc de filtre au sein d'un bloc de graphique permet de filtrer dynamiquement plusieurs graphiques dans le même bloc.
 
-## Enabling/Disabling
+## Activation/Désactivation
 
-To enable or disable a filter block, navigate within the chart block and select "Add Block" - "Filter."
+Pour activer ou désactiver un bloc de filtre, naviguez dans le bloc de graphique et sélectionnez "Ajouter un Bloc" - "Filtre."
 
 ![](https://static-docs.nocobase.com/d0e6b116952fa6b719acb0f858b432c3.png)
 
-## Configuring Fields
+## Configuration des Champs
 
-### Collection Fields
+### Champs de Collection
 
-For charts within the current chart block, you can create a filter form field by selecting the relevant fields directly from the associated Collection.
+Pour les graphiques au sein du bloc de graphique actuel, vous pouvez créer un champ de filtre en sélectionnant directement les champs pertinents depuis la collection associée.
 
 ![](https://static-docs.nocobase.com/e2ef150e9beb8c78004d9049a7536219.png)
 
-The form fields can be configured as follows:
+Les champs du formulaire peuvent être configurés comme suit :
 
 ![](https://static-docs.nocobase.com/215f0b996e69bf2d5b99746e6d521c3d.png)
 
-- Edit field title.
-- Edit description.
-- Define the operator to be used when applying the filter.  
+- Modifier le titre du champ.
+- Modifier la description.
+- Définir l’opérateur à utiliser lors de l’application du filtre.
   ![](https://static-docs.nocobase.com/d6a593a330d27da4ea78124dfdb8450d.png)
 
-- Assign a default value to the field, utilizing variables if needed. The variable’s data type must align with the data type of the current field.
+- Assigner une valeur par défaut au champ, en utilisant des variables si nécessaire. Le type de données de la variable doit être compatible avec le type de données du champ actuel.
   ![](https://static-docs.nocobase.com/37dee4008f3283db24d491fb8f0404fa.png)
 
-  For instance:
+  Par exemple :
+  
+  - Définir la valeur par défaut sur l'ID de l'utilisateur actuel pour filtrer automatiquement les données pour l'utilisateur actuel lors du chargement de la page.
+  - Définir la valeur par défaut sur la date actuelle pour filtrer automatiquement les données pour la date actuelle lors du chargement de la page.
 
-  - Set the default value to the current user ID to automatically filter data for the current user when the page loads.
-  - Set the default value to the current date to automatically filter data for the current date when the page loads.
+### Champs Personnalisés
 
-### Custom Fields
-
-In certain scenarios, you may need to use a single filter field to filter different fields across various tables. For example, a single date field might be used to filter different date fields in different tables. In such cases, you can opt to create a custom field.
+Dans certains scénarios, vous pouvez avoir besoin d'utiliser un champ de filtre unique pour filtrer différents champs à travers plusieurs tables. Par exemple, un champ de date unique pourrait être utilisé pour filtrer différents champs de date dans différentes tables. Dans ces cas, vous pouvez choisir de créer un champ personnalisé.
 
 ![](https://static-docs.nocobase.com/87544594246453d175ef265030c0801a.png)
 
-When adding a custom field, you'll need to specify the field title, choose the appropriate field component, and configure it accordingly. Additionally, you can select a field from the data tables used in the current block to apply that field's metadata configuration directly, avoiding redundancy.
+Lors de l'ajout d'un champ personnalisé, vous devrez spécifier le titre du champ, choisir le composant de champ approprié, et le configurer en conséquence. De plus, vous pouvez sélectionner un champ provenant des tables de données utilisées dans le bloc actuel pour appliquer la configuration des métadonnées de ce champ directement, évitant ainsi la redondance.
 
 ![](https://static-docs.nocobase.com/ef09136d674d4b7356e819350bcac804.png)
 
-To implement a custom filter field, open the configuration of the relevant chart, then in the data query filter settings, add filter conditions using variables from the "Current filter." Ensure that the type of the field being filtered matches the type of the custom filter field.
+Pour mettre en œuvre un champ de filtre personnalisé, ouvrez la configuration du graphique pertinent, puis dans les paramètres de filtrage de la requête de données, ajoutez les conditions de filtrage en utilisant des variables provenant du "Filtre actuel". Assurez-vous que le type de champ à filtrer correspond au type du champ de filtre personnalisé.
 
 ![](https://static-docs.nocobase.com/f9f2487c4da4b2024af1556743beab6c.png)
 
-For custom fields, you can also set the title, description, and default value.
+Pour les champs personnalisés, vous pouvez également définir le titre, la description et la valeur par défaut.
 
 ![](https://static-docs.nocobase.com/4a8feb12404f5cc5e74d589263307e5a.png)
 
-## Configuring Block Actions
+## Configuration des Actions de Bloc
 
-- **Filter:** Apply the filter conditions.
-- **Reset:** Reset the filter form.
-- **Collapse / Expand:** Collapse into a single row or expand into multiple rows.
+- **Filtrer** : Applique les conditions de filtre.
+- **Réinitialiser** : Réinitialise le formulaire de filtre.
+- **Réduire / Développer** : Réduit le filtre en une seule ligne ou l'agrandit en plusieurs lignes.
 
 ![](https://static-docs.nocobase.com/8619ac90fa045b3a9c6d6610f7be1a81.png)
+
+---
+
+Les blocs de filtre permettent une gestion avancée de vos graphiques, vous offrant la possibilité de filtrer dynamiquement plusieurs graphiques en fonction des champs spécifiés. Vous pouvez utiliser des champs de collection ou des champs personnalisés, en fonction de vos besoins, tout en ayant un contrôle total sur les actions du bloc de filtre.

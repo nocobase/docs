@@ -1,55 +1,55 @@
-# Response Message
+# Message de Réponse
 
 <PluginInfo name="workflow-response-message" link="/handbook/workflow-response-message" commercial="true"></PluginInfo>
 
-The Response Message node is designed to deliver custom messages to the client who initiates an operation within certain types of workflows.
+Le nœud "Message de Réponse" est conçu pour fournir des messages personnalisés au client qui initie une opération dans certains types de flux de travail.
 
 :::info{title=Note}
-This node currently can be used in the workflow types "Pre-Action Event" and "Custom Action Event (synchronous mode)".
+Ce nœud peut actuellement être utilisé dans les types de flux de travail "Événement pré-opération" et "Événement d'action personnalisé (mode synchrone)".
 :::
 
-## User Manual
+## Manuel de l'utilisateur
 
-### Creating a Node
+### Création d'un Nœud
 
-Within the supported workflow types, you can insert a "Response Message" node at any point in the workflow. To do this, click the plus ("+") button within the workflow to add the "Response Message" node:
+Dans les types de flux de travail pris en charge, vous pouvez insérer un nœud "Message de Réponse" à n'importe quel point du flux de travail. Pour ce faire, cliquez sur le bouton plus ("+") dans le flux de travail pour ajouter le nœud "Message de Réponse" :
 
-![Add Node](https://static-docs.nocobase.com/eac2b3565e95e4ce59f340624062ed3d.png)
+![Ajouter un Nœud](https://static-docs.nocobase.com/eac2b3565e95e4ce59f340624062ed3d.png)
 
-Throughout the entire request process, response messages are accumulated in an array. When the process reaches a Response Message node, the new message content is appended to this array. Upon the server sending the response content, all messages within the array are delivered together to the client.
+Tout au long du processus de demande, les messages de réponse sont accumulés dans un tableau. Lorsque le processus atteint un nœud Message de Réponse, le contenu du nouveau message est ajouté à ce tableau. Lorsque le serveur envoie le contenu de la réponse, tous les messages du tableau sont livrés ensemble au client.
 
-### Node Configuration
+### Configuration du Nœud
 
-The message content is structured as a template string, allowing the insertion of variables. You can customize the template's content in the node configuration as needed:
+Le contenu du message est structuré sous forme de chaîne de modèle, permettant l'insertion de variables. Vous pouvez personnaliser le contenu du modèle dans la configuration du nœud selon vos besoins :
 
-![Node Configuration](https://static-docs.nocobase.com/d5fa5f4002d50baf3ba16048818fddfc.png)
+![Configuration du Nœud](https://static-docs.nocobase.com/d5fa5f4002d50baf3ba16048818fddfc.png)
 
-As the process executes and reaches this node, the template is parsed to generate the final message content. In the example configuration above, the variable "Scope variables / Loop all products / Loop target / Product / Title" will be replaced with specific values during the actual workflow, such as:
+Lorsque le processus s'exécute et atteint ce nœud, le modèle est analysé pour générer le contenu final du message. Dans la configuration d'exemple ci-dessus, la variable "Variables de portée / Boucle tous les produits / Cible de boucle / Produit / Titre" sera remplacée par des valeurs spécifiques lors du flux de travail réel, comme par exemple :
 
 ```
-Insufficient stock for product "iPhone 14 Pro"
+Stock insuffisant pour le produit "iPhone 14 Pro"
 ```
 
-![Message Content](https://static-docs.nocobase.com/06bd4a6b6ec499c853f0c39987f63a6a.png)
+![Contenu du Message](https://static-docs.nocobase.com/06bd4a6b6ec499c853f0c39987f63a6a.png)
 
-### Process Configuration
+### Configuration du Processus
 
-The status prompt of the response message is determined by the success or failure of the process execution. If any node in the process fails to execute, the entire process is considered a failure. In this case, the message content will be returned to the client with a failure status as a notification.
+L'indication du statut du message de réponse est déterminée par la réussite ou l'échec de l'exécution du processus. Si un nœud du processus échoue à s'exécuter, l'ensemble du processus est considéré comme échoué. Dans ce cas, le contenu du message sera retourné au client avec un statut d'échec en tant que notification.
 
-If you need to actively define a failure status within the process, you can use the "End Node" and configure it as a failure. When the process reaches this node, it will exit with a failure status, and the message will be returned to the client with a failure status.
+Si vous devez définir activement un statut d'échec dans le processus, vous pouvez utiliser le "Nœud de Fin" et le configurer en tant qu'échec. Lorsque le processus atteint ce nœud, il se termine avec un statut d'échec, et le message sera renvoyé au client avec un statut d'échec.
 
-If the entire process completes without any failure and reaches the end successfully, the message content will be returned to the client with a success status.
+Si l'ensemble du processus est terminé avec succès, sans échec, et atteint la fin, le contenu du message sera renvoyé au client avec un statut de succès.
 
 :::info{title=Note}
-If multiple response message nodes are defined in the process, the content of the executed nodes will be appended to an array. When the process is completed, all message content will be returned to the client together as a notification.
+Si plusieurs nœuds de message de réponse sont définis dans le processus, le contenu des nœuds exécutés sera ajouté à un tableau. Lorsque le processus est terminé, tout le contenu des messages sera renvoyé au client ensemble en tant que notification.
 :::
 
-### Use Cases
+### Cas d'utilisation
 
-#### "Pre-Action Event" Workflow
+#### Flux de travail "Événement pré-opération"
 
-In a "Pre-Action Event" workflow, a response message can be used to provide feedback to the client upon completion of the process. For further details, refer to [Request Interception](../triggers/pre-action.md).
+Dans un flux de travail "Événement pré-opération", un message de réponse peut être utilisé pour fournir un retour d'information au client à l'issue du processus. Pour plus de détails, consultez [Interception des demandes](../triggers/pre-action.md).
 
-#### "Post-Action Event" Workflow
+#### Flux de travail "Événement post-opération"
 
-In synchronous mode within a "Post-Action Event" workflow, the response message is sent to the client after the process is completed. Unlike the "Pre-Action Event" workflow, where the result might vary, the message displayed here is always a "success" notification. This consistency occurs because the triggering operation has already been successfully executed, and the success of the linked workflow does not impact the original operation's result.
+Dans le mode synchrone d'un flux de travail "Événement post-opération", le message de réponse est envoyé au client après la fin du processus. Contrairement au flux de travail "Événement pré-opération", où le résultat peut varier, le message affiché ici est toujours une notification de "succès". Cette constance se produit parce que l'opération déclenchée a déjà été exécutée avec succès, et la réussite du flux de travail lié n'affecte pas le résultat de l'opération d'origine.

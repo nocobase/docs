@@ -1,13 +1,13 @@
-# Print
+# Impression
 
 <PluginInfo name="action-print"></PluginInfo>
 
 ## Introduction
 
-The print button is a functional button in the details section. When clicked, it triggers the browser’s print function, allowing users to easily print the content to a physical document or other printing devices.
+Le bouton d'impression est un bouton fonctionnel dans la section des détails. Lorsqu'il est cliqué, il déclenche la fonction d'impression du navigateur, permettant aux utilisateurs d'imprimer facilement le contenu sur un document physique ou sur d'autres appareils d'impression.
 
 ## Installation
 
-This is a built-in plugin, no separate installation required.
+Il s'agit d'un plugin intégré, aucune installation séparée n'est requise.
 
 ![20240426105637](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426105637.png)

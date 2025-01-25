@@ -1,31 +1,31 @@
-# Bulk Edit Fields
+# Modification en Masse des Champs
 
 ## Introduction
 
-The Bulk edit form is a specialized form block designed for batch editing operations.
+Le formulaire de modification en masse est un bloc de formulaire spécialisé conçu pour les opérations de modification par lots.
 
 ![20240425100652](https://static-docs.nocobase.com/20240425100652.png)
 
 ![20240422151115](https://static-docs.nocobase.com/20240422151115.png)
 
-## Field Configuration
+## Configuration des Champs
 
-You can configure only the fields within the current table. There are three methods for updating fields:
+Vous pouvez configurer uniquement les champs au sein de la table actuelle. Il existe trois méthodes pour mettre à jour les champs :
 
-- **No Update:** The field retains its original value after submission.
-- **Modify To:** The field becomes required.
-- **Clear:** The field's value is cleared after submission.
+- **Pas de Mise à Jour :** Le champ conserve sa valeur d'origine après la soumission.
+- **Modifier Vers :** Le champ devient requis.
+- **Effacer :** La valeur du champ est effacée après la soumission.
 
 ![20240425100730](https://static-docs.nocobase.com/20240425100730.png)
 
-For relationship fields, you can flexibly switch between different field components.
+Pour les champs de relation, vous pouvez basculer de manière flexible entre différents composants de champ.
 
 ![20240425100857](https://static-docs.nocobase.com/20240425100857.png)
 
-## Field Configuration Options
+## Options de Configuration des Champs
 
-- [Edit Field Title](/handbook/ui/fields/field-settings/edit-title)
-- [Display Title](/handbook/ui/fields/field-settings/display-title)
-- [Edit Field Description](/handbook/ui/fields/field-settings/edit-description)
-- [Edit Field Tooltip](/handbook/ui/fields/field-settings/edit-tooltip)
-- [Set Validation Rules](/handbook/ui/fields/field-settings/validation-rules)
+- [Modifier le Titre du Champ](/handbook/ui/fields/field-settings/edit-title)
+- [Afficher le Titre](/handbook/ui/fields/field-settings/display-title)
+- [Modifier la Description du Champ](/handbook/ui/fields/field-settings/edit-description)
+- [Modifier l'Astuce du Champ](/handbook/ui/fields/field-settings/edit-tooltip)
+- [Définir les Règles de Validation](/handbook/ui/fields/field-settings/validation-rules)

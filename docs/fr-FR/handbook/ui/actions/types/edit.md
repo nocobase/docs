@@ -1,26 +1,26 @@
-# Edit
+# Modifier
 
 ## Introduction
 
-The edit function is part of the row actions, with the current record serving as its context. It opens in a popup window, allowing users to configure and customize various blocks as needed.
+La fonction de modification fait partie des actions sur les lignes, avec l'enregistrement actuel comme contexte. Elle s'ouvre dans une fenêtre contextuelle, permettant aux utilisateurs de configurer et personnaliser différents blocs selon leurs besoins.
 
 ![20240412115736](https://static-docs.nocobase.com/20240412115736.png)
 
-Configure data blocks according to your requirements.
+Configurez les blocs de données selon vos exigences.
 
 ![20240421110538](https://static-docs.nocobase.com/20240421110538.png)
 
-## Operation Configuration Items
+## Éléments de Configuration de l'Opération
 
 ![20240421110728](https://static-docs.nocobase.com/20240421110728.png)
 
-### Linkage Rules
+### Règles de Liaison
 
-Example: Editing is disabled for orders that have been received.  
+Exemple : La modification est désactivée pour les commandes qui ont été reçues.
 ![20240423211911](https://static-docs.nocobase.com/20240423211911.png)
 
-For more information, see [Linkage Rule](/handbook/ui/actions/action-settings/linkage-rule).
+Pour plus d'informations, consultez [Règle de Liaison](/handbook/ui/actions/action-settings/linkage-rule).
 
-- [Edit Button](/handbook/ui/actions/action-settings/edit-button): Customize the title, color, and icon of the edit button.
-- [Open Mode](/handbook/ui/actions/action-settings/open-mode): Choose between Pop-up or Drawer.
-- [Popup Size](/handbook/ui/actions/action-settings/popup-size): The default size is Middle (available sizes: Large/Middle/Small).
+- [Bouton de Modification](/handbook/ui/actions/action-settings/edit-button) : Personnalisez le titre, la couleur et l'icône du bouton de modification.
+- [Mode d'Ouverture](/handbook/ui/actions/action-settings/open-mode) : Choisissez entre Pop-up ou Tiroir.
+- [Taille de la Fenêtre Contextuelle](/handbook/ui/actions/action-settings/popup-size) : La taille par défaut est Moyenne (tailles disponibles : Grande/Moyenne/Petite).

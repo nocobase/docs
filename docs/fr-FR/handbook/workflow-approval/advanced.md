@@ -1,37 +1,37 @@
-# Advanced Understanding
+# Compréhension Avancée
 
-## Snapshot of Submitted Data for Approval
+## Instantané des Données Soumises pour Approbation
 
-In the approval process, data is governed by the principle of transactional data immutability. Each submission generates a snapshot that is then tracked and circulated during the approval process. The flow of this process is as follows:
+Dans le processus d'approbation, les données sont régies par le principe d'immuabilité transactionnelle des données. Chaque soumission génère un instantané qui est ensuite suivi et circulé pendant le processus d'approbation. Le flux de ce processus est le suivant :
 
-![Approval Data Snapshot Process Diagram](https://static-docs.nocobase.com/62a545a85d9e72c6b47e4b52707c4380.png)
+![Diagramme du Processus de Snapshot des Données d'Approbation](https://static-docs.nocobase.com/62a545a85d9e72c6b47e4b52707c4380.png)
 
-When actions such as "withdraw" or "return" are triggered within the process, the system preserves a snapshot of the data as it existed at that point within the same application document:
+Lorsqu'une action comme "retirer" ou "retourner" est déclenchée dans le processus, le système préserve un instantané des données tel qu'il existait à ce moment-là dans le même document de l'application :
 
-![Approval Data Snapshot Process Example](https://static-docs.nocobase.com/62800d88772c88f1eaa11f6f493aea55.png)
+![Exemple de Processus d'Instantané des Données d'Approbation](https://static-docs.nocobase.com/62800d88772c88f1eaa11f6f493aea55.png)
 
-As illustrated above, every time data is withdrawn and then resubmitted, a new snapshot is saved for that particular submission process.
+Comme illustré ci-dessus, chaque fois que des données sont retirées puis soumises à nouveau, un nouveau snapshot est sauvegardé pour ce processus de soumission particulier.
 
-## Approval Process Statuses
+## Statuts du Processus d'Approbation
 
-For the initiator, an application document's status field indicates the current stage of the approval process, typically reflecting the following states:
+Pour l'initiateur, le champ de statut du document de demande indique l'étape actuelle du processus d'approbation, reflétant généralement les états suivants :
 
-| Status         | Description |
-|----------------| ----------- |
-| Draft      | The applicant has temporarily saved the application form's data but has not yet officially submitted it to start the process. |
-| Submitted  | The application has been submitted and is awaiting approval. At this stage, no approver has yet processed it, and if allowed by the configuration, the initiator can still withdraw the application. |
-| On going   | The application has moved through at least one approval node, with at least one approver having submitted their decision. The initiator can no longer withdraw the application at this stage. |
-| Returned   | The application has been returned by one of the approvers, allowing the initiator to modify and resubmit it. |
-| Approved   | All approval nodes have been processed, and the application has been approved at each stage, marking the process as complete. |
-| Rejected   | The application has been rejected at one of the approval nodes, thereby terminating the process. |
+| Statut       | Description |
+|--------------| ----------- |
+| Brouillon   | L'application a été temporairement sauvegardée, mais n'a pas encore été officiellement soumise pour démarrer le processus. |
+| Soumis      | La demande a été soumise et attend l'approbation. À ce stade, aucun approbateur ne l'a encore traitée, et si la configuration le permet, l'initiateur peut encore retirer la demande. |
+| En cours    | La demande a traversé au moins un nœud d'approbation, avec au moins un approbateur ayant soumis sa décision. L'initiateur ne peut plus retirer la demande à ce stade. |
+| Retourné    | La demande a été retournée par un approbateur, permettant à l'initiateur de la modifier et de la soumettre à nouveau. |
+| Approuvé    | Tous les nœuds d'approbation ont été traités, et la demande a été approuvée à chaque étape, marquant la fin du processus. |
+| Rejeté      | La demande a été rejetée à un des nœuds d'approbation, mettant ainsi fin au processus. |
 
-For each approval node, a record of the processing action is generated for the designated approver. Each approver’s record includes a status field indicating the current state of their processing, which typically includes the following statuses:
+Pour chaque nœud d'approbation, un enregistrement de l'action de traitement est généré pour l'approbateur désigné. L'enregistrement de chaque approbateur inclut un champ de statut indiquant l'état actuel de son traitement, avec généralement les statuts suivants :
 
-| Status    | Description |
-| --------- | ----------- |
-| Assigned  | A record for the corresponding approver has been created, but since the processing rule requires serial handling, the approver must wait for the previous approver to finish before they can proceed. |
-| Pending   | The application is awaiting action from the current approver. |
-| Returned  | The current approver has returned the application. |
-| Approved  | The current approver has approved the application. |
-| Rejected  | The current approver has rejected the application. |
-| Unprocessed | The application has reached a terminal state according to the node's processing rules after being handled by other approvers, or the workflow has become invalid, so the current approver is no longer required to take action. |
+| Statut     | Description |
+|------------| ----------- |
+| Assigné    | Un enregistrement pour l'approbateur correspondant a été créé, mais comme la règle de traitement nécessite une gestion en série, l'approbateur doit attendre que le précédent approbateur termine avant de pouvoir continuer. |
+| En attente | La demande est en attente d'action de l'approbateur actuel. |
+| Retourné   | L'approbateur actuel a retourné la demande. |
+| Approuvé   | L'approbateur actuel a approuvé la demande. |
+| Rejeté     | L'approbateur actuel a rejeté la demande. |
+| Non traité | La demande a atteint un état terminal selon les règles de traitement du nœud après avoir été traitée par d'autres approbateurs, ou le workflow est devenu invalide, donc l'approbateur actuel n'est plus requis pour agir. |

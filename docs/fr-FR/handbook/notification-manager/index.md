@@ -1,34 +1,34 @@
-# Notification Manager
+# Gestionnaire de Notifications
 
 <PluginInfo name="notification-manager"></PluginInfo>
 
 ## Introduction
 
-The Notification Manager is a centralized service that integrates various notification channels, offering a unified interface for channel configuration, management of notifications, and log recording. It’s also designed to be highly flexible, allowing for the expansion of additional channels.
+Le Gestionnaire de Notifications est un service centralisé qui intègre divers canaux de notifications, offrant une interface unifiée pour la configuration des canaux, la gestion des notifications et l'enregistrement des journaux. Il est également conçu pour être très flexible, permettant l'ajout de canaux supplémentaires.
 
 ![20240928112556](https://static-docs.nocobase.com/20240928112556.png)
 
-- Purple section: The Notification Manager provides a comprehensive service that includes channel configuration and log recording, with the option to expand to other notification channels.
-- Green section: In-App Message, a built-in channel, enables users to receive notifications directly within the application.
-- Red section: Email, an extendable channel, allows users to receive notifications through email.
+- Section violette : Le Gestionnaire de Notifications offre un service complet incluant la configuration des canaux et l'enregistrement des journaux, avec la possibilité d'ajouter d'autres canaux de notifications.
+- Section verte : Message en application, un canal intégré, permet aux utilisateurs de recevoir des notifications directement dans l'application.
+- Section rouge : Email, un canal extensible, permet aux utilisateurs de recevoir des notifications par email.
 
-## Channel Management
+## Gestion des Canaux
 
 ![20240928181752](https://static-docs.nocobase.com/20240928181752.png)
 
-The currently supported channels include:
+Les canaux actuellement supportés comprennent :
 
-- [In-App Message](/handbook/notification-in-app-message) (under development)
-- [Email](/handbook/notification-email) (built-in SMTP protocol)
+- [Message en application](/handbook/notification-in-app-message) (en développement)
+- [Email](/handbook/notification-email) (protocole SMTP intégré)
 
-For additional channels, refer to the [Channel Expansion](./extension) documentation.
+Pour les canaux supplémentaires, consultez la documentation sur l'[Extension des Canaux](./extension).
 
-## Notification Logs
+## Journaux de Notifications
 
-The system logs each notification's details and status, offering a valuable tool for both analysis and troubleshooting.
+Le système enregistre les détails et l'état de chaque notification, offrant ainsi un outil précieux pour l'analyse et le dépannage.
 
 ![20240928181649](https://static-docs.nocobase.com/20240928181649.png)
 
-## Workflow Notification Node
+## Noeud de Notification de Flux de Travail
 
 ![20240928181726](https://static-docs.nocobase.com/20240928181726.png)

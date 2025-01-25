@@ -1,16 +1,16 @@
-# Word Cloud Chart
+# Graphique nuage de mots
 
-## Data Configuration
+## Configuration des données
 
-### 1 Measure, 1 Dimension
+### 1 mesure, 1 dimension
 
-![1 Measure, 1 Dimension](https://static-docs.nocobase.com/202410091936018.png)
+![1 mesure, 1 dimension](https://static-docs.nocobase.com/202410091936018.png)
 
-## Configuration Options
+## Options de configuration
 
-| Option             | Description                                      |
-| ------------------ | ------------------------------------------------ |
-| Size               | Sets the size of the chart, with either a fixed aspect ratio or fixed height |
-| Light mode theme   | Select this option to preview when the system is in light mode |
-| Dark mode theme    | Select this option to preview when the system is in dark mode |
-| Shape              | Controls the shape of the chart                 |
+| Option               | Description                                                                 |
+| -------------------- | --------------------------------------------------------------------------- |
+| Taille               | Définissez la taille du graphique, soit avec un ratio d'aspect fixe, soit une hauteur fixe |
+| Thème mode clair     | Sélectionnez cette option pour prévisualiser lorsque le système est en mode clair |
+| Thème mode sombre    | Sélectionnez cette option pour prévisualiser lorsque le système est en mode sombre |
+| Forme                | Contrôle la forme du graphique                                                |

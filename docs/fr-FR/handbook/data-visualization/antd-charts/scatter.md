@@ -1,21 +1,21 @@
-# Scatter Chart
+# Graphique en nuage de points (Scatter Chart)
 
-## Data Configuration
+## Configuration des données
 
-### 1 Measure, 1 Dimension
+### 1 Mesure, 1 Dimension
 
-![1 Measure, 1 Dimension](https://static-docs.nocobase.com/202410101138172.png)
+![1 Mesure, 1 Dimension](https://static-docs.nocobase.com/202410101138172.png)
 
-### 1 Measure, 1 Axis Dimension, One Series Dimension
+### 1 Mesure, 1 Dimension de l'axe, 1 Dimension de la série
 
-Configure one metric and two dimensions. One of the dimensions is the X-axis field (X field) and the other is the Series field (Series field).
+Configurez une mesure et deux dimensions. L'une des dimensions est utilisée pour définir l'axe X (dimension X) et l'autre est utilisée pour la catégorie des séries (dimension de la série).
 
-![1 Measure, 1 Axis Dimension, One Series Dimension](https://static-docs.nocobase.com/202410101137837.png)
+![1 Mesure, 1 Dimension de l'axe, 1 Dimension de la série](https://static-docs.nocobase.com/202410101137837.png)
 
-## Configuration Options
+## Options de configuration
 
 | Option         | Description                                             |
 | -------------- | ------------------------------------------------------- |
-| X-axis Field   | The dimension used to define the X-axis of the chart.   |
-| Series Field   | The dimension used to categorize data points into distinct series. |
-| Size           | Set chart’s size, either by setting a fixed aspect ratio or a fixed height. |
+| Dimension de l'axe X | La dimension utilisée pour définir l'axe X du graphique.   |
+| Dimension de la série | La dimension utilisée pour catégoriser les points de données en séries distinctes. |
+| Taille         | Définissez la taille du graphique, soit en fixant un ratio d'aspect, soit en définissant une hauteur fixe. |

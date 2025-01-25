@@ -1,7 +1,7 @@
-# Verification Code
+# Code Vérification
 
 :::warning
-To be added.
+A ajouter
 :::
 
 <!--

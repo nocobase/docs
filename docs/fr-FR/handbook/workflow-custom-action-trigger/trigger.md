@@ -1,23 +1,23 @@
-# Trigger Configuration
+# Configuration du Déclencheur
 
-## Creating a Workflow
+## Création d'un Workflow
 
-When setting up a workflow, begin by selecting "Custom action event":
+Lors de la configuration d'un workflow, commencez par sélectionner **"Événement d'action personnalisé"** :
 
-![Creating "Custom Operation Event" Workflow](https://static-docs.nocobase.com/20240509091820.png)
+![Création du workflow "Événement d'Opération Personnalisée"](https://static-docs.nocobase.com/20240509091820.png)
 
-## Trigger Configuration
+## Configuration du Déclencheur
 
-### Data Table
+### Table de Données
 
-Since custom operation events are tied to specific data rows, you'll need to first choose the data table that will be associated with your data model:
+Étant donné que les événements d'opération personnalisée sont associés à des lignes de données spécifiques, vous devez d'abord choisir la table de données qui sera liée à votre modèle de données :
 
-![Trigger Configuration_Select Data Table](https://static-docs.nocobase.com/20240509150515.png)
+![Configuration du Déclencheur_Sélection de la Table de Données](https://static-docs.nocobase.com/20240509150515.png)
 
-### Related Data to Utilize
+### Données Liées à Utiliser
 
-If your workflow requires the use of related data from the triggered data row, you can select the necessary deep relationship fields here:
+Si votre workflow nécessite l'utilisation de données liées provenant de la ligne de données déclenchée, vous pouvez sélectionner les champs de relation profonde nécessaires ici :
 
-![Trigger Configuration_Select Data Relations to Use](https://static-docs.nocobase.com/20240509154856.png)
+![Configuration du Déclencheur_Sélectionner les Relations de Données à Utiliser](https://static-docs.nocobase.com/20240509154856.png)
 
-These fields will be automatically preloaded into the workflow's context once the event is triggered, making them available for use within the workflow.
+Ces champs seront automatiquement préchargés dans le contexte du workflow une fois l'événement déclenché, les rendant disponibles pour une utilisation dans le workflow.

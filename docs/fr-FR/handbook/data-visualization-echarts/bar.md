@@ -1,39 +1,39 @@
-# Bar Chart
+# Diagramme à barres
 
-## Data Configuration
+## Configuration des données
 
-### 1 or more measures, 1 dimension
+### 1 ou plusieurs mesures, 1 dimension
 
-![1 or more measures, 1 dimension](https://static-docs.nocobase.com/202410091114926.png)
+![1 ou plusieurs mesures, 1 dimension](https://static-docs.nocobase.com/202410091114926.png)
 
-### 1 measure, 1 axis dimension, one category dimension
+### 1 mesure, 1 dimension d'axe, 1 dimension de catégorie
 
-Configure 1 measure and 2 dimensions. 1 dimension is used as the Y-axis field, and the other as the series field.
+Configurez 1 mesure et 2 dimensions. 1 dimension est utilisée pour le champ de l'axe Y, et l'autre pour le champ des séries.
 
-![1 measure, 1 axis dimension, one category dimension](https://static-docs.nocobase.com/202410091117000.png)
+![1 mesure, 1 dimension d'axe, 1 dimension de catégorie](https://static-docs.nocobase.com/202410091117000.png)
 
-## Configuration Options
+## Options de configuration
 
 | Option                        | Description                                                                                                 |
 | ----------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| yField                        | The dimension field for the Y-axis                                                                           |
-| seriesField                   | The dimension field for categorization                                                                       |
-| Size                          | Set the size of the chart, either with a fixed aspect ratio or a fixed height                                |
-| Light mode theme              | Choose this option to preview the chart when the system is in light mode                                     |
-| Dark mode theme               | Choose this option to preview the chart when the system is in dark mode                                      |
-| Show legend                   | Control whether the legend is displayed                                                                      |
-| Legend orient                 | Control the direction of the legend, either horizontal or vertical                                           |
-| Legend position (left, bottom, right, top) | Control the relative position of the legend                                                       |
-| Label type                    | Control whether the labels are displayed and the type of labels shown                                        |
-| Label position                | Control the position of the labels, such as top, inside, or inside top                                       |
-| Stack                         | Control whether the bars are stacked: not stacked, stacked, or percentage stacked<br />![](https://static-docs.nocobase.com/202410091108049.png) |
-| Bar width (min, max)          | Control the width of the bars, which can be a fixed value or percentage, and can even be negative            |
-| Bar gap                       | Spacing between bars, as a percentage of the bar width                                                       |
-| Bar category gap              | Spacing between different categories, as a percentage of the bar width                                       |
-| Color by                      | Control whether the bar colors are distinguished by category or data                                         |
-| Colors                        | Precisely control the color for each category                                                                |
-| X-Axis title                  | Control the position of the X-axis title                                                                     |
-| Y-Axis title                  | Control the position of the Y-axis title                                                                     |
-| Y-Axis label rotate           | Control the rotation angle of the Y-axis labels, useful for displaying more labels when space is tight        |
-| Padding                       | Adjust the padding inside the chart                                                                          |
-| Split line                    | Control whether the grid lines are displayed and their style                                                 |
+| yField                        | Le champ de la dimension pour l'axe Y                                                                       |
+| seriesField                   | Le champ de la dimension pour la catégorisation                                                             |
+| Taille                        | Définissez la taille du graphique, soit avec un ratio d'aspect fixe, soit avec une hauteur fixe              |
+| Thème mode clair              | Choisissez cette option pour prévisualiser le graphique lorsque le système est en mode clair                |
+| Thème mode sombre             | Choisissez cette option pour prévisualiser le graphique lorsque le système est en mode sombre               |
+| Afficher la légende           | Contrôlez si la légende est affichée                                                                         |
+| Orientation de la légende     | Contrôlez la direction de la légende, soit horizontale, soit verticale                                        |
+| Position de la légende (gauche, bas, droite, haut) | Contrôlez la position relative de la légende                                              |
+| Type d'étiquette              | Contrôlez si les étiquettes sont affichées et quel type d'étiquettes sont montrées                          |
+| Position des étiquettes       | Contrôlez la position des étiquettes, telles que en haut, à l'intérieur, ou en haut à l'intérieur           |
+| Empilage                      | Contrôlez si les barres sont empilées : non empilées, empilées ou empilées en pourcentage<br />![](https://static-docs.nocobase.com/202410091108049.png) |
+| Largeur des barres (min, max) | Contrôlez la largeur des barres, qui peut être une valeur fixe ou un pourcentage, et peut même être négative  |
+| Espacement entre les barres   | Espacement entre les barres, en pourcentage de la largeur des barres                                        |
+| Espacement entre les catégories de barres | Espacement entre les différentes catégories, en pourcentage de la largeur des barres                 |
+| Couleur par                   | Contrôlez si les couleurs des barres sont distinguées par catégorie ou par données                          |
+| Couleurs                      | Contrôlez précisément la couleur de chaque catégorie                                                        |
+| Titre de l'axe X              | Contrôlez la position du titre de l'axe X                                                                   |
+| Titre de l'axe Y              | Contrôlez la position du titre de l'axe Y                                                                   |
+| Rotation des étiquettes de l'axe Y | Contrôlez l'angle de rotation des étiquettes de l'axe Y, utile pour afficher plus d'étiquettes lorsque l'espace est limité |
+| Marges                        | Ajustez les marges à l'intérieur du graphique                                                                |
+| Ligne de séparation           | Contrôlez si les lignes de grille sont affichées et leur style                                              |

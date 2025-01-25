@@ -1,39 +1,42 @@
-# API Documentation
+# Documentation API
 
 <PluginInfo name="api-doc"></PluginInfo>
 
 ## Introduction
 
-The plugin generates NocoBase HTTP API documentation based on Swagger.
+Ce plugin génère la documentation API HTTP de NocoBase basée sur Swagger.
 
 ## Installation
 
-This is a built-in plugin, no installation required. Activate to use.
+Ce plugin est intégré, il n'est donc pas nécessaire de l'installer. Il suffit de l'activer pour l'utiliser.
 
-## Usage Instructions
+## Instructions d'utilisation
 
-### Accessing the API Documentation Page
+### Accéder à la page de documentation API
 
+Vous pouvez accéder à la documentation API à l'adresse suivante :
+```
 http://localhost:13000/admin/settings/api-doc/documentation
+```
 
 ![](https://static-docs.nocobase.com/8db51cf50e3c666aba5a850a0fb664a0.png)
 
-### Documentation Overview
+### Aperçu de la documentation
 
 ![](https://static-docs.nocobase.com/5bb4d3e5bba6c6fdfcd830592e72385b.png)
 
-- Total API Documentation: `/api/swagger:get`
-- Core API Documentation: `/api/swagger:get?ns=core`
-- All Plugins API Documentation: `/api/swagger:get?ns=plugins`
-- Each Plugin's Documentation: `/api/swagger:get?ns=plugins/{name}`
-- User Customized Collections API Documentation: `/api/swagger:get?ns=collections`
-- Specified `${collection}` and related `${collection}.${association}` resources: `/api/swagger:get?ns=collections/{name}`
+- Documentation API complète : `/api/swagger:get`
+- Documentation API de base : `/api/swagger:get?ns=core`
+- Documentation API de tous les plugins : `/api/swagger:get?ns=plugins`
+- Documentation API de chaque plugin : `/api/swagger:get?ns=plugins/{name}`
+- Documentation API des collections personnalisées par l'utilisateur : `/api/swagger:get?ns=collections`
+- Ressources spécifiques de `${collection}` et `${collection}.${association}` : `/api/swagger:get?ns=collections/{name}`
 
-## Developer Guide
+## Guide du développeur
 
-### How to Write Swagger Documentation for Plugins
+### Comment écrire la documentation Swagger pour les plugins
 
-Add a `swagger/index.ts` file in the plugin's `src` folder with the following content:
+Ajoutez un fichier `swagger/index.ts` dans le dossier `src` du plugin avec le contenu suivant :
 
 ```typescript
 export default {
@@ -48,4 +51,4 @@ export default {
 };
 ```
 
-For detailed writing rules, please refer to the [Swagger Official Documentation](https://swagger.io/docs/specification/about/).
+Pour des règles d'écriture détaillées, veuillez vous référer à la [documentation officielle Swagger](https://swagger.io/docs/specification/about/).

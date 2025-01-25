@@ -1,43 +1,43 @@
-# 从企业微信同步用户数据
+# Synchronisation des Données Utilisateur depuis WeCom (Entreprise WeChat)
 
 <PluginInfo commercial="true" name="wecom"></PluginInfo>
 
-## 介绍
+## Introduction
 
-**企业微信**插件支持用户从企业微信同步用户和部门数据。
+Le plugin **WeCom (Entreprise WeChat)** permet de synchroniser les données des utilisateurs et des départements de WeCom avec NocoBase.
 
-## 创建和配置企业微信自建应用。
+## Créer et Configurer une Application Personnalisée WeCom
 
-首先需要在企业微信管理后台，创建企业微信自建应用，并获取**企业 ID**, **AgentId** 和 **Secret**.
+Tout d'abord, vous devez créer une application personnalisée dans le panneau de gestion de WeCom et récupérer l'**ID de l'entreprise**, **AgentId**, et **Secret**.
 
-参考 [用户认证 - 企业微信](./auth)。
+Référez-vous à [Authentification Utilisateur - WeCom](./auth) pour plus de détails.
 
-## 在 NocoBase 上添加同步数据源
+## Ajouter une Source de Données de Synchronisation dans NocoBase
 
-用户和权限 - 同步 - 添加，填写获取的相关信息。
+Allez dans **Utilisateurs et Permissions > Synchronisation > Ajouter**, puis remplissez les informations obtenues ci-dessus.
 
 ![](https://static-docs.nocobase.com/202412041251867.png)
 
-## 配置通讯录同步
+## Configurer la Synchronisation du Carnet d'Adresses
 
-进入企业微信管理后台 - 安全和管理 - 管理工具，点击通讯录同步。
+Accédez à la gestion de WeCom - **Sécurité et Gestion > Outils de Gestion**, puis cliquez sur **Synchronisation du Carnet d'Adresses**.
 
 ![](https://static-docs.nocobase.com/202412041249958.png)
 
-按如图所示设置，并设置企业可信 IP.
+Réglez les paramètres comme indiqué ci-dessous, et configurez également l'IP de confiance de l'entreprise.
 
 ![](https://static-docs.nocobase.com/202412041250776.png)
 
-接下来就可以进行用户数据同步了。
+Vous pouvez maintenant commencer à synchroniser les données utilisateur.
 
-## 设置接收事件服务器
+## Configurer le Serveur de Réception des Événements
 
-如果希望企业微信侧的用户、部门数据变动可以及时同步给 NocoBase 应用，可以进一步设置。
+Si vous souhaitez que les modifications des données des utilisateurs et départements dans WeCom soient synchronisées en temps réel vers l'application NocoBase, vous devez configurer un serveur de réception d'événements.
 
-在填写了前面的配置信息之后，可以复制通讯录回调通知地址。
+Après avoir rempli les informations de configuration précédentes, vous pouvez copier l'URL de notification de retour du carnet d'adresses.
 
 ![](https://static-docs.nocobase.com/202412041256547.png)
 
-填写到企业微信设置上，并获取 Token 和 EncodingAESKey, 完成 NocoBase 用户同步数据源配置。
+Entrez cette URL dans la configuration de WeCom, puis récupérez le Token et le **EncodingAESKey**, pour finaliser la configuration de la source de données de synchronisation des utilisateurs dans NocoBase.
 
 ![](https://static-docs.nocobase.com/202412041257947.png)

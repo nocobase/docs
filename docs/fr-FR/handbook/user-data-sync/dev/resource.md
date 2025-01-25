@@ -1,14 +1,14 @@
-# Extending Sync Target Resources
+# Extension des Ressources Cibles de Synchronisation
 
-## Overview
+## Vue d'ensemble
 
-NocoBase natively supports syncing user data to the **User** and **Department** tables. It also allows for extending the target resources for data synchronization to write data to other tables or perform custom processing as needed.
+NocoBase prend en charge nativement la synchronisation des données des utilisateurs avec les tables **User** et **Department**. Il permet également d'étendre les ressources cibles pour la synchronisation des données afin d'écrire des données dans d'autres tables ou d'effectuer des traitements personnalisés selon les besoins.
 
-:::warning{title=Experimental}
-Full documentation is pending.
+:::warning{title=Expérimental}
+La documentation complète est en attente.
 :::
 
-## Target Resource Handler Interface
+## Interface du Gestionnaire des Ressources Cibles
 
 ```ts
 export abstract class UserDataResource {
@@ -42,7 +42,7 @@ export abstract class UserDataResource {
 }
 ```
 
-## Registering Target Resources
+## Enregistrement des Ressources Cibles
 
 `registerResource(resource: UserDataResource, options?: ToposortOptions)`
 

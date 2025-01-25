@@ -1,20 +1,20 @@
-# Title Field
+# Champ Titre
 
 ## Introduction
 
-The title field is a key element in relational field components, serving as the visible identifier of relational data within the user interface.
+Le champ titre est un élément clé dans les composants de champs relationnels, servant d'identifiant visible des données relationnelles dans l'interface utilisateur.
 
-## Configuration Locations for the Title Field
+## Lieux de configuration du champ titre
 
-### Global Configuration in the Data Table
+### Configuration globale dans la table de données
 
-This setting applies across the entire application.
+Cette configuration s'applique à l'ensemble de l'application.
 
 ![20240422210646](https://static-docs.nocobase.com/20240422210646.png)
 
-### Configuration within Relational Field Components
+### Configuration dans les composants de champs relationnels
 
-This setting is limited to the specific block, taking precedence over global settings.
+Cette configuration est limitée au bloc spécifique, et elle prévaut sur les paramètres globaux.
 
 ![20240422210935](https://static-docs.nocobase.com/20240422210935.png)
 

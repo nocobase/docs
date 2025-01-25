@@ -1,9 +1,9 @@
-# Update record
+# Mettre à jour un enregistrement
 
-Custom row operations update record by configuring field assignments to specify the content to be modified.
+Les opérations personnalisées sur les lignes permettent de mettre à jour un enregistrement en configurant les affectations de champs pour spécifier le contenu à modifier.
 
-![Update Data Operation](https://static-docs.nocobase.com/03af47524a4b41742cdeb298b02500eb.png)
+![Opération de mise à jour des données](https://static-docs.nocobase.com/03af47524a4b41742cdeb298b02500eb.png)
 
-As shown in the illustration, an update data operation is configured in the waybill table block to confirm delivery.
+Comme illustré, une opération de mise à jour des données est configurée dans le bloc de tableau des lettres de transport pour confirmer la livraison.
 
-![Waybill Update Operation](https://static-docs.nocobase.com/3057b0c6cd176342a15a3892488019fa.gif)
+![Opération de mise à jour des lettres de transport](https://static-docs.nocobase.com/3057b0c6cd176342a15a3892488019fa.gif)

@@ -1,13 +1,13 @@
-# Pie Chart
+# Graphique en secteur (Pie Chart)
 
-## Data Configuration
+## Configuration des données
 
-### 1 Metric, 1 Dimension
+### 1 Mesure, 1 Dimension
 
-![1 Metric, 1 Dimension](https://static-docs.nocobase.com/202410101131823.png)
+![1 Mesure, 1 Dimension](https://static-docs.nocobase.com/202410101131823.png)
 
-## Configuration Options
+## Options de configuration
 
 | Option   | Description                                                       |
 | -------- | ----------------------------------------------------------------- |
-| Size     | Adjust the chart size, either by maintaining a fixed aspect ratio or setting a fixed height. |
+| Taille   | Ajustez la taille du graphique, soit en maintenant un ratio fixe, soit en définissant une hauteur fixe. |

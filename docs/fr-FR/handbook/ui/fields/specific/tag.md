@@ -1,35 +1,35 @@
-# Tags
+# Étiquettes
 
 ## Introduction
 
-Tags serve as a display component within the relational field view mode, requiring you to configure both the title field and the color field.
+Les étiquettes servent de composant d'affichage dans le mode de vue des champs relationnels, nécessitant la configuration à la fois du champ de titre et du champ de couleur.
 
-## Usage Instructions
+## Instructions d'utilisation
 
-### Using Tags in a Table
+### Utiliser les étiquettes dans un tableau
 
-In the order table, there is a many-to-one relational field labeled "Tags."
+Dans le tableau des commandes, il existe un champ relationnel plusieurs-à-un intitulé "Étiquettes."
 
-The tags table includes two fields: "Tag Name" and "Tag Color."
+Le tableau des étiquettes comprend deux champs : "Nom de l'Étiquette" et "Couleur de l'Étiquette."
 
 ![20240410212554](https://static-docs.nocobase.com/20240410212554.png)
 
-### Using Tags in Details
+### Utiliser les étiquettes dans les détails
 
 ![20240410212625](https://static-docs.nocobase.com/20240410212625.png)
 
-## Field Configuration Options
+## Options de Configuration des Champs
 
-### Title Field
+### Champ de Titre
 
 ![20240422220237](https://static-docs.nocobase.com/20240422220237.png)
 
-For further details, see [Title Field](/handbook/ui/fields/field-settings/title-field).
+Pour plus de détails, consultez [Champ de Titre](/handbook/ui/fields/field-settings/title-field).
 
-### Enable Link (Enabled by Default)
+### Activer le Lien (activé par défaut)
 
-Clicking on the link will open a popup window where you can configure the details of the current relational record or edit the form.
+Cliquer sur le lien ouvrira une fenêtre contextuelle où vous pourrez configurer les détails de l'enregistrement relationnel actuel ou modifier le formulaire.
 
 ![20240410212643](https://static-docs.nocobase.com/20240410212643.png)
 
-For further information, see [Field Component](/handbook/ui/fields/association-field).
+Pour plus d'informations, consultez [Composant de Champ](/handbook/ui/fields/association-field).

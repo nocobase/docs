@@ -8,16 +8,16 @@
 
 ## Installation
 
-This plugin comes pre-installed, so no additional installation steps are required.
+Ce plugin est préinstallé, il n'y a donc pas de étapes d'installation supplémentaires à suivre.
 
-## Operation Configuration Items
+## Éléments de configuration des opérations
 
-![20240426163008](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426163008.png)
+![Configuration de l'opération](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426163008.png)
 
-### Exportable Fields
+### Champs exportables
 
-- First Level: Displays all fields of the current collection.
-- Second Level: If the field is a relational type, you'll need to select fields from the related table.
-- Third Level: Only up to three levels of relationships are supported. Fields in the final relational level won't be shown.
+- **Premier niveau** : Affiche tous les champs de la collection actuelle.
+- **Deuxième niveau** : Si le champ est de type relationnel, vous devez sélectionner les champs de la table associée.
+- **Troisième niveau** : Seuls trois niveaux de relations sont pris en charge. Les champs du dernier niveau relationnel ne seront pas affichés.
 
-![20240426163433](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426163433.png)
+![Configuration de l'exportation](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426163433.png)

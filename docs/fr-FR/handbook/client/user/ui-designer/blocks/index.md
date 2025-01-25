@@ -1,90 +1,90 @@
-# Block
+# Bloc
 
-A block serves as the content container, designed to be placed within a page, modal, or drawer. These blocks can be easily rearranged through drag-and-drop functionality, allowing for flexible layout customization.
+Un bloc sert de conteneur de contenu, conçu pour être placé dans une page, une fenêtre modale ou un tiroir. Ces blocs peuvent être facilement réorganisés par une fonctionnalité de glisser-déposer, permettant une personnalisation flexible de la mise en page.
 
-## Adding Blocks
+## Ajout de Blocs
 
-Blocks can be seamlessly integrated into a page, a modal, or a drawer, depending on the desired application.
+Les blocs peuvent être intégrés de manière transparente dans une page, une fenêtre modale ou un tiroir, selon l'application souhaitée.
 
-### Blocks within Pages
+### Blocs dans les Pages
 
-Within pages, you can choose from various block types, including Data Blocks, Filter Blocks, and Other Blocks, each serving distinct purposes.
+Dans les pages, vous pouvez choisir parmi divers types de blocs, y compris les Blocs de Données, les Blocs de Filtrage, et d'autres Blocs, chacun ayant des objectifs distincts.
 
 ![](https://static-docs.nocobase.com/dad0a394d33dd26f31c3202a76bb0153.png)
 
-### Blocks within Modals (Dialogs or Drawers)
+### Blocs dans les Modales (Dialogues ou Tiroirs)
 
-Modals, which include dialogs and drawers, also support block integration. While similar to pages, the blocks within modals are typically used for operations related to single records, such as adding, editing, or viewing data. Available block types include Current Data Blocks, Relationship Blocks, and Other Blocks.
+Les modales, comprenant des dialogues et des tiroirs, supportent également l'intégration de blocs. Bien que similaires aux pages, les blocs dans les modales sont généralement utilisés pour des opérations liées à un seul enregistrement, comme l'ajout, la modification ou la visualisation de données. Les types de blocs disponibles incluent les Blocs de Données Actuelles, les Blocs de Relations, et d'autres Blocs.
 
-#### Drawers
+#### Tiroirs
 
 ![](https://static-docs.nocobase.com/e18726fb0b52ddab89b9b1a44788f361.png)
 
-#### Dialogs
+#### Dialogues
 
 ![](https://static-docs.nocobase.com/4763fc5fc008bdf3915f84a7e433c0f8.png)
 
-## Block Designer
+## Concepteur de Blocs
 
-Each block features three icons in the upper right corner, offering easy access to essential tools:
+Chaque bloc possède trois icônes dans le coin supérieur droit, offrant un accès facile aux outils essentiels :
 
-1. Drag-and-Drop Layout
-2. Quick Add Block
-3. Block Parameter Configuration
+1. Mise en page Glisser-Déposer
+2. Ajout Rapide de Bloc
+3. Configuration des Paramètres du Bloc
 
 ![](https://static-docs.nocobase.com/b488f3013532a246df59b89c0688a58f.png)
 
-For simple blocks, all configuration options are centralized under "Block Parameter Configuration," such as in Markdown blocks.
+Pour les blocs simples, toutes les options de configuration sont centralisées sous "Configuration des Paramètres du Bloc", comme dans les blocs Markdown.
 
 ![](https://static-docs.nocobase.com/f37e277863068b2661f66d4020af806a.png)
 
-More complex blocks, especially those dealing with data, provide additional embedded options like "Configure Field" and "Configure Action," offering greater flexibility.
+Les blocs plus complexes, notamment ceux traitant des données, offrent des options supplémentaires telles que "Configurer le Champ" et "Configurer l'Action", offrant ainsi une plus grande flexibilité.
 
 ![](https://static-docs.nocobase.com/71b550da637d23145a5f62d48ee8521b.png)
 
-Moreover, you can explore advanced nesting possibilities, as demonstrated by the Chart Block.
+De plus, vous pouvez explorer des possibilités de hiérarchisation avancées, comme le montre le Bloc de Graphique.
 
 ![](https://static-docs.nocobase.com/07588190b3f41ae3060e71d8b76b4447.png)
 
-## Block Layout
+## Mise en Page des Blocs
 
-To customize the layout, simply drag and drop blocks into your preferred arrangement.
+Pour personnaliser la mise en page, il vous suffit de glisser et déposer les blocs dans l'arrangement de votre choix.
 
 ![](https://static-docs.nocobase.com/f6692295ac0917f3babce9a60ce80879.gif)
 
-## Block Templates
+## Modèles de Blocs
 
-You can save any data-type block as a template, which allows for quick duplication or referencing in future projects. For example, a form used for both adding and editing data can be saved as a template, streamlining your workflow by reusing it in different contexts.
+Vous pouvez enregistrer tout bloc de type données comme modèle, ce qui permet de le dupliquer rapidement ou de le référencer dans des projets futurs. Par exemple, un formulaire utilisé à la fois pour ajouter et modifier des données peut être enregistré comme modèle, ce qui simplifie votre flux de travail en le réutilisant dans différents contextes.
 
-### How to Add and Use Templates
+### Comment Ajouter et Utiliser des Modèles
 
-1. Save a data block as a block template (note: only data-type blocks have this feature).
+1. Enregistrez un bloc de données comme modèle de bloc (note : seuls les blocs de type données disposent de cette fonctionnalité).
 
 ![](https://static-docs.nocobase.com/b7718cea8784587d53524ade3c5b0a82.png)
 
-2. When adding a block, select either the duplicate or reference option for the template.
+2. Lors de l'ajout d'un bloc, sélectionnez l'option de duplication ou de référence pour le modèle.
 
 ![](https://static-docs.nocobase.com/135df7344e0f3080199e4bb1071c2fa6.png)
 
-### Difference Between Duplicate and Referencing
+### Différence entre Dupliquer et Référencer
 
-Duplicate template a new block based on the template, with no link to the original template—any changes to the block will not affect the template. Referencing, however, directly links to the template, meaning any changes to the block will alter the template, and all instances where the template is referenced will be updated accordingly.
+Dupliquer un modèle crée un nouveau bloc basé sur le modèle, sans lien avec le modèle d'origine — toute modification du bloc n'affectera pas le modèle. En revanche, référencer lie directement au modèle, ce qui signifie que toute modification du bloc modifiera également le modèle, et toutes les instances où le modèle est référencé seront mises à jour en conséquence.
 
-## Block Types
+## Types de Blocs
 
-NocoBase categorizes blocks into four primary types:
+NocoBase catégorise les blocs en quatre types principaux :
 
-- **Data Blocks:** Used to display Collection data within the block.
-- **Filter Blocks:** These can be added to pages and are specifically designed for filtering data within Data Blocks.
-- **Relationship Blocks:** These are added to modals and are used for CRUD operations on data related to the current record.
-- **Other Blocks:** These include standalone blocks like Markdown, Audit Log blocks, Workflow To-Do blocks, etc.
+- **Blocs de Données :** Utilisés pour afficher les données de la collection au sein du bloc.
+- **Blocs de Filtrage :** Ceux-ci peuvent être ajoutés aux pages et sont spécifiquement conçus pour filtrer les données dans les Blocs de Données.
+- **Blocs de Relations :** Ajoutés dans les modales, ils sont utilisés pour effectuer des opérations CRUD sur des données liées à l'enregistrement actuel.
+- **Autres Blocs :** Ceux-ci incluent des blocs autonomes comme les blocs Markdown, les blocs de journal d'audit, les blocs de tâches de workflow, etc.
 
-### Data Blocks
+### Blocs de Données
 
-### Filter Blocks
+### Blocs de Filtrage
 
-### Relationship Blocks
+### Blocs de Relations
 
-### Other Blocks
+### Autres Blocs
 
-## Filter Interactions
+## Interactions avec les Filtres
