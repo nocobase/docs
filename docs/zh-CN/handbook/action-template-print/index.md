@@ -305,6 +305,8 @@ X
 
 **说明**：使用 `:sort(power)` 对 `cars` 数组按 `power` 属性进行升序排序，然后依次渲染每辆汽车的品牌和功率。
 
+--- 
+
 ## 格式化器
 
 格式化器用于对数据进行特定格式的转换或条件判断，增强模板的灵活性和表现力。
@@ -606,7 +608,7 @@ X
   "orderStatus": 1
 }
 ```
-假设在 `carbone.render(data, options)` 的 `options.enum` 中配置如下：
+假设在 `render(data, options)` 的 `options.enum` 中配置如下：
 ```json
 {
   "enum": {
@@ -836,7 +838,7 @@ X
 **数据集**：
 ```json
 {
-  "articleTitle": "Carbone Report Extended Version"
+  "articleTitle": "Report Extended Version"
 }
 ```
 
@@ -986,7 +988,7 @@ X
 
 **示例**：
 
-假设你在 Carbone 配置中定义了翻译字典，将文本 `"Submit"` 翻译为 `"提交"`。
+假设你在配置中定义了翻译字典，将文本 `"Submit"` 翻译为 `"提交"`。
 
 **数据集**：
 ```json
@@ -1061,7 +1063,7 @@ X
 }
 ```
 
-> 假设在 `Carbone.render(data, options)` 时，`options` 设置如下：
+> 假设在 `render(data, options)` 时，`options` 设置如下：
 > ```json
 > {
 >   "currency": {
@@ -1148,7 +1150,7 @@ EUR->USD，再强制 USD->USD：1000
 }
 ```
 
-> 假设在 `Carbone.render(data, options)` 时，`options.lang` 为 `en-us`，且文档类型为非 ODS/XLSX（如 DOCX、PDF 等）。
+> 假设在 `render(data, options)` 时，`options.lang` 为 `en-us`，且文档类型为非 ODS/XLSX（如 DOCX、PDF 等）。
 
 **模板内容**：
 ```
@@ -1184,7 +1186,7 @@ EUR->USD，再强制 USD->USD：1000
 }
 ```
 
-> 假设在 `Carbone.render(data, options)` 时，配置如下：
+> 假设在 `render(data, options)` 时，配置如下：
 > ```json
 > {
 >   "lang": "en-us",
@@ -1551,7 +1553,6 @@ floor(-1.05)：-2
 ## 数组操作（Array manipulation）
 
 ### 1. aggStr( separator )
-> **版本**：ENTERPRISE FEATURE，NEWv4.17.0+  
 > **功能**：将数组中的值合并为一个字符串，并用可选分隔符 `separator` 进行拼接。若不提供分隔符，默认为 `,`。
 
 **语法**：
@@ -1606,7 +1607,6 @@ Ford, Chevrolet
 ---
 
 ### 2. arrayJoin( separator, index, count )
-> **版本**：NEWv4.12.0+  
 > **功能**：将数组元素（`String` 或 `Number`）合并为一个单一字符串；可选指定从数组中哪一段开始合并。
 
 **语法**：
@@ -1659,7 +1659,6 @@ Ford, Chevrolet
 ---
 
 ### 3. arrayMap( objSeparator, attributeSeparator, attributes )
-> **版本**：v0.12.5+  
 > **功能**：将对象数组映射成字符串。可指定对象之间的分隔符、属性之间的分隔符以及需要输出的属性。
 
 **语法**：
@@ -1736,9 +1735,8 @@ Ford, Chevrolet
 ---
 
 ### 4. count( start )
-> **版本**：v1.1.0+  
 > **功能**：在循环（如 `{d.array[i].xx}`）中打印**行号**或**序号**，默认为从 1 开始。  
-> **注意**：从 v4.0.0 开始，该功能内部被替换为 `:cumCount`。
+> **注意**：该功能直接使用 `:cumCount`。
 
 **语法**：
 ```
@@ -1778,179 +1776,13 @@ Ford, Chevrolet
 **说明**：
 - 仅在循环（包括 `{d.array[i].xx}` 等场景）有效，用于打印当前行索引的计数。
 - `start` 可指定从某个数开始计数，如 `:count(5)` 则首行从 5 开始计数。
-- Carbone 4.0+ 建议使用 `:cumCount`，功能更灵活。
-
----
-
-## 条件输出（Conditioned output）
-
-Carbone 提供了一系列条件输出的格式化器，用于在模板中根据特定条件**隐藏**或**显示**指定内容。可根据业务需求选择**`drop`/`keep`**（简洁用法）或者**`showBegin`/`showEnd`**、**`hideBegin`/`hideEnd`**（适用于大段内容）等。
-
-### 1. drop(element)
-> **版本**：ENTERPRISE FEATURE，UPDATEDv4.22.10+  
-> **功能**：若条件为真，则**删除**文档中的某个元素或若干元素，如段落、表格行、图片、图表等。
-
-**语法**：
-```
-{d.data:ifEM():drop(element, nbrToDrop)}
-```
-- `element`：可为 `p`（段落）、`row`（表格行）、`img`（图片）、`table`（整张表格）、`chart`（图表）、`shape`（形状）、`slide`（幻灯片，仅限 ODP）或 `item`（列表项，仅限 ODP/ODT）。
-- `nbrToDrop`：可选，整数，表示删除当前及后续多少个元素。
-
-**示例**：
-
-**数据集**：
-```json
-{
-  "imgUrl": null
-}
-```
-
-**模板内容**（DOCX 场景，简化示例）：
-```
-这里有一张图片：{d.imgUrl:ifEM:drop(img)}
-```
-
-- 在 Word 模板中，将此占位符置于图片的标题或说明里。
-
-**渲染结果**：
-```
-这里有一张图片：
-```
-> 图片被删除，因 `imgUrl` 为空 (`ifEM` 为真)。
-
-**说明**：
-- 若 `ifEM` 条件成立，则执行 `drop(img)`，删除该图片及其所在段落内容。
-- `drop` 仅支持 DOCX/ODT/ODS/ODP/PPTX/PDF/HTML；且一旦执行 `drop`，后续不再执行其他格式化器。
-
----
-
-### 2. keep(element)
-> **版本**：ENTERPRISE FEATURE，NEWv4.17.0+  
-> **功能**：若条件为真，则**保留/显示**文档中的某个元素或若干元素，其余情况则不显示。
-
-**语法**：
-```
-{d.data:ifNEM:keep(element, nbrToKeep)}
-```
-- `element`：同 `drop` 一样，可为 `p`、`row`、`img`、`table`、`chart`、`shape`、`slide`、`item` 等。
-- `nbrToKeep`：可选，整数，表示保留当前及后续多少个元素。
-
-**示例**：
-
-**数据集**：
-```json
-{
-  "tableData": []
-}
-```
-
-**模板内容**（DOCX 场景，简化示例）：
-```
-{d.tableData:ifNEM:keep(table)}
-```
-
-- 在 Word 模板中，将此占位符置于表格中某个单元格内。
-
-**渲染结果**：
-```
-（空白）
-```
-> 由于 `tableData` 为空，`ifNEM` 为假（not empty 失败），因此表格未被保留，整张表被删除。
-
-**说明**：
-- 若条件成立，则保留对应元素；否则删除该元素及其所有内容。
-- 和 `drop` 相反，`keep` 在条件不满足时删除元素。
-
----
-
-### 3. showBegin()/showEnd()
-> **版本**：COMMUNITY FEATURE，v2.0.0+  
-> **功能**：显示 `showBegin` 与 `showEnd` 之间的内容（可包含多段文本、表格、图片等），若条件为真则保留此部分，若条件为假则删除。
-
-**语法**：
-```
-{d.someData:ifEQ(someValue):showBegin}
-...显示的内容...
-{d.someData:showEnd}
-```
-
-**示例**：
-
-**数据集**：
-```json
-{
-  "toBuy": true
-}
-```
-
-**模板内容**：
-```
-Banana{d.toBuy:ifEQ(true):showBegin}
-Apple
-Pineapple
-{d.toBuy:showEnd}grapes
-```
-
-**渲染结果**：
-```
-Banana
-Apple
-Pineapple
-grapes
-```
-> 当 `toBuy` 为 `true` 时，`showBegin` 和 `showEnd` 之间的所有内容都会展示。
-
-**说明**：
-- 适用于**多行或多页**内容的隐藏和展示；如果仅是一行，可考虑使用 `keep`/`drop` 获得更简洁的写法。
-- 推荐在 `showBegin` 与 `showEnd` 中仅使用**换行（Shift+Enter）**分隔，以确保渲染正常。
-
----
-
-### 4. hideBegin()/hideEnd()
-> **版本**：COMMUNITY FEATURE，v2.0.0+  
-> **功能**：隐藏 `hideBegin` 与 `hideEnd` 之间的内容，若条件为真则删除这部分内容，否则保留。
-
-**语法**：
-```
-{d.someData:ifEQ(someValue):hideBegin}
-...隐藏的内容...
-{d.someData:hideEnd}
-```
-
-**示例**：
-
-**数据集**：
-```json
-{
-  "toBuy": true
-}
-```
-
-**模板内容**：
-```
-Banana{d.toBuy:ifEQ(true):hideBegin}
-Apple
-Pineapple
-{d.toBuy:hideEnd}grapes
-```
-
-**渲染结果**：
-```
-Banana
-grapes
-```
-> 当 `toBuy` 为 `true`，`hideBegin` 与 `hideEnd` 内的 Apple、Pineapple 内容被隐藏。
-
-**说明**：
-- 与 `showBegin()/showEnd()` 相对，用于隐藏多段文本、表格、图片等。
-- 同样建议仅在 `hideBegin` 与 `hideEnd` 中使用**换行（Shift+Enter）**分隔。
+- 建议使用 `:cumCount`，功能更灵活。
 
 ---
 
 ## 日期与时间操作格式化器示例
 
-> **注意**：自 v3.0.0 开始，Carbone 使用 [Day.js](https://day.js.org/docs/en/display/format) 进行日期处理。大多数和 Moment.js 相关的格式在 Day.js 中仍可用，但底层库已替换为 Day.js。
+> **注意**：模板打印使用 [Day.js](https://day.js.org/docs/en/display/format) 进行日期处理。大多数和 Moment.js 相关的格式在 Day.js 中仍可用，但底层库已替换为 Day.js。
 
 ### 1. {c.now} 的使用
 
@@ -1996,7 +1828,7 @@ grapes
 }
 ```
 
-> 假设在 `Carbone.render(data, options)` 时，设置：
+> 假设在 `render(data, options)` 时，设置：
 > ```json
 > {
 >   "lang": "en", 
@@ -2044,7 +1876,7 @@ grapes
 }
 ```
 
-> 假设在 `Carbone.render(data, options)` 时：
+> 假设在 `render(data, options)` 时：
 > ```json
 > {
 >   "lang": "en",
@@ -2092,7 +1924,7 @@ grapes
 }
 ```
 
-> 假设在 `Carbone.render(data, options)` 时：
+> 假设在 `render(data, options)` 时：
 > ```json
 > {
 >   "lang": "fr",
@@ -2287,7 +2119,7 @@ grapes
 }
 ```
 
-> 假设在 `Carbone.render(data, options)` 时：
+> 假设在 `render(data, options)` 时：
 > ```json
 > {
 >   "lang": "en",
@@ -2342,12 +2174,11 @@ grapes
 
 
 
+## 条件输出（Conditioned output）
 
+### 1. 条件控制器
 
-
-## 其他条件控制器
-
-Carbone 提供了许多**判断**（`ifEQ`、`ifNE`、`ifGT`、`ifGTE`、`ifLT`、`ifLTE`、`ifIN`、`ifNIN`、`ifEM`、`ifNEM`、`ifTE` 等），以及**组合逻辑**（`and()`、`or()`）和**分支输出**（`show(message)`、`elseShow(message)`）等。它们可以搭配用于在模板中实现灵活的条件逻辑。以下仅列出常用的示例，更多可参见官方文档：
+模板打印插件提供了许多**判断**（`ifEQ`、`ifNE`、`ifGT`、`ifGTE`、`ifLT`、`ifLTE`、`ifIN`、`ifNIN`、`ifEM`、`ifNEM`、`ifTE` 等），以及**组合逻辑**（`and()`、`or()`）和**分支输出**（`show(message)`、`elseShow(message)`）等。它们可以搭配用于在模板中实现灵活的条件逻辑。以下仅列出常用的示例，更多可参见官方文档：
 
 - **ifEM()**：判断是否为空（`null`、`undefined`、`[]`、`{}`、`""` 等）。
 - **ifNEM()**：判断是否不为空。
@@ -2389,8 +2220,162 @@ three = "unknown"
 - `or()` 和 `and()` 用于配置逻辑操作符。
 - `elseShow('unknown')` 用于在所有前置条件均不成立时，输出 "unknown"。
 
+模板打印提供了一系列条件输出的格式化器，用于在模板中根据特定条件**隐藏**或**显示**指定内容。可根据业务需求选择**`drop`/`keep`**（简洁用法）或者**`showBegin`/`showEnd`**、**`hideBegin`/`hideEnd`**（适用于大段内容）等。
+
 ---
-通过**数组操作**和**条件输出**示例，你可以：
-1. **灵活处理数组**：使用 `:aggStr`、`:arrayJoin`、`:arrayMap`、`:count` 等操作，实现**合并、拼接、映射**以及**计数**功能。
-2. **精准控制内容展示**：通过 `drop` / `keep` 或 `showBegin` / `showEnd` / `hideBegin` / `hideEnd` 等方式，根据条件（`ifEQ`、`ifGT` 等）决定是否保留文档中**特定元素**或**大段内容**。
-3. **组合多种判断**：与数字、字符串相关的格式化器（如 `ifNEM`、`ifIN` 等）相配合，可实现更为复杂的业务逻辑控制。
+
+### 2. drop(element)
+> **功能**：若条件为真，则**删除**文档中的某个元素或若干元素，如段落、表格行、图片、图表等。
+
+**语法**：
+```
+{d.data:ifEM():drop(element, nbrToDrop)}
+```
+- `element`：可为 `p`（段落）、`row`（表格行）、`img`（图片）、`table`（整张表格）、`chart`（图表）、`shape`（形状）、`slide`（幻灯片，仅限 ODP）或 `item`（列表项，仅限 ODP/ODT）。
+- `nbrToDrop`：可选，整数，表示删除当前及后续多少个元素。
+
+**示例**：
+
+**数据集**：
+```json
+{
+  "imgUrl": null
+}
+```
+
+**模板内容**（DOCX 场景，简化示例）：
+```
+这里有一张图片：{d.imgUrl:ifEM:drop(img)}
+```
+
+- 在 Word 模板中，将此占位符置于图片的标题或说明里。
+
+**渲染结果**：
+```
+这里有一张图片：
+```
+> 图片被删除，因 `imgUrl` 为空 (`ifEM` 为真)。
+
+**说明**：
+- 若 `ifEM` 条件成立，则执行 `drop(img)`，删除该图片及其所在段落内容。
+- `drop` 仅支持 DOCX/ODT/ODS/ODP/PPTX/PDF/HTML；且一旦执行 `drop`，后续不再执行其他格式化器。
+
+---
+
+### 3. keep(element)
+> **功能**：若条件为真，则**保留/显示**文档中的某个元素或若干元素，其余情况则不显示。
+
+**语法**：
+```
+{d.data:ifNEM:keep(element, nbrToKeep)}
+```
+- `element`：同 `drop` 一样，可为 `p`、`row`、`img`、`table`、`chart`、`shape`、`slide`、`item` 等。
+- `nbrToKeep`：可选，整数，表示保留当前及后续多少个元素。
+
+**示例**：
+
+**数据集**：
+```json
+{
+  "tableData": []
+}
+```
+
+**模板内容**（DOCX 场景，简化示例）：
+```
+{d.tableData:ifNEM:keep(table)}
+```
+
+- 在 Word 模板中，将此占位符置于表格中某个单元格内。
+
+**渲染结果**：
+```
+（空白）
+```
+> 由于 `tableData` 为空，`ifNEM` 为假（not empty 失败），因此表格未被保留，整张表被删除。
+
+**说明**：
+- 若条件成立，则保留对应元素；否则删除该元素及其所有内容。
+- 和 `drop` 相反，`keep` 在条件不满足时删除元素。
+
+---
+
+### 4. showBegin()/showEnd()
+> **功能**：显示 `showBegin` 与 `showEnd` 之间的内容（可包含多段文本、表格、图片等），若条件为真则保留此部分，若条件为假则删除。
+
+**语法**：
+```
+{d.someData:ifEQ(someValue):showBegin}
+...显示的内容...
+{d.someData:showEnd}
+```
+
+**示例**：
+
+**数据集**：
+```json
+{
+  "toBuy": true
+}
+```
+
+**模板内容**：
+```
+Banana{d.toBuy:ifEQ(true):showBegin}
+Apple
+Pineapple
+{d.toBuy:showEnd}grapes
+```
+
+**渲染结果**：
+```
+Banana
+Apple
+Pineapple
+grapes
+```
+> 当 `toBuy` 为 `true` 时，`showBegin` 和 `showEnd` 之间的所有内容都会展示。
+
+**说明**：
+- 适用于**多行或多页**内容的隐藏和展示；如果仅是一行，可考虑使用 `keep`/`drop` 获得更简洁的写法。
+- 推荐在 `showBegin` 与 `showEnd` 中仅使用**换行（Shift+Enter）**分隔，以确保渲染正常。
+
+---
+
+### 5. hideBegin()/hideEnd()
+> **功能**：隐藏 `hideBegin` 与 `hideEnd` 之间的内容，若条件为真则删除这部分内容，否则保留。
+
+**语法**：
+```
+{d.someData:ifEQ(someValue):hideBegin}
+...隐藏的内容...
+{d.someData:hideEnd}
+```
+
+**示例**：
+
+**数据集**：
+```json
+{
+  "toBuy": true
+}
+```
+
+**模板内容**：
+```
+Banana{d.toBuy:ifEQ(true):hideBegin}
+Apple
+Pineapple
+{d.toBuy:hideEnd}grapes
+```
+
+**渲染结果**：
+```
+Banana
+grapes
+```
+> 当 `toBuy` 为 `true`，`hideBegin` 与 `hideEnd` 内的 Apple、Pineapple 内容被隐藏。
+
+**说明**：
+- 与 `showBegin()/showEnd()` 相对，用于隐藏多段文本、表格、图片等。
+- 同样建议仅在 `hideBegin` 与 `hideEnd` 中使用**换行（Shift+Enter）**分隔。

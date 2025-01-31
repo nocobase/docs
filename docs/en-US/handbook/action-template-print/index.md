@@ -605,7 +605,7 @@ Raw Data: [{"id":2,"name":"homer"},{"id":3,"name":"bart"}]
   "orderStatus": 1
 }
 ```
-Assume the following configuration in `carbone.render(data, options)`'s `options.enum`:
+Assume the following configuration in `render(data, options)`'s `options.enum`:
 ```json
 {
   "enum": {
@@ -834,7 +834,7 @@ Right Padding (length 10, character '#'): abc#######
 **Dataset**:
 ```json
 {
-  "articleTitle": "Carbone Report Extended Version"
+  "articleTitle": "Report Extended Version"
 }
 ```
 
@@ -984,7 +984,7 @@ Array Length: 5
 
 **Example**:
 
-Assume you have defined a translation dictionary in Carbone configuration, translating the text `"Submit"` to `"提交"`.
+Assume you have defined a translation dictionary in configuration, translating the text `"Submit"` to `"提交"`.
 
 **Dataset**:
 ```json
@@ -1040,7 +1040,6 @@ The following examples follow the document style described above to help you bet
 
 ---
 
-
 ## Number Operation Formatter Examples
 
 ### 1. convCurr( target, source )
@@ -1059,7 +1058,7 @@ The following examples follow the document style described above to help you bet
 }
 ```
 
-> Assume the following settings in `Carbone.render(data, options)`:
+> Assume the following settings in `render(data, options)`:
 > ```json
 > {
 >   "currency": {
@@ -1146,7 +1145,7 @@ Unlike `toFixed()`, `round()` uses correct rounding for decimals, e.g., `1.05` r
 }
 ```
 
-> Assume in `Carbone.render(data, options)`, `options.lang` is `en-us`, and the document type is not ODS/XLSX (e.g., DOCX, PDF, etc.).
+> Assume in `render(data, options)`, `options.lang` is `en-us`, and the document type is not ODS/XLSX (e.g., DOCX, PDF, etc.).
 
 **Template Content**:
 ```
@@ -1182,7 +1181,7 @@ Number Formatting (2 decimal places): 1,000.46
 }
 ```
 
-> Assume the following settings in `Carbone.render(data, options)`:
+> Assume the following settings in `render(data, options)`:
 > ```json
 > {
 >   "lang": "en-us",
@@ -1549,7 +1548,6 @@ Result: 12
 ## Array Manipulation
 
 ### 1. aggStr( separator )
-> **Version**: ENTERPRISE FEATURE, NEWv4.17.0+  
 > **Function**: Merges values in an array into a single string, concatenated with an optional `separator`. If no separator is provided, it defaults to `,`.
 
 **Syntax**:
@@ -1604,7 +1602,6 @@ Ford, Chevrolet
 ---
 
 ### 2. arrayJoin( separator, index, count )
-> **Version**: NEWv4.12.0+  
 > **Function**: Merges array elements (`String` or `Number`) into a single string; optionally specifies which segment of the array to start merging from.
 
 **Syntax**:
@@ -1657,7 +1654,6 @@ Non-array data: 20
 ---
 
 ### 3. arrayMap( objSeparator, attributeSeparator, attributes )
-> **Version**: v0.12.5+  
 > **Function**: Maps an array of objects into a string. Allows specifying separators between objects and attributes, as well as which attributes to output.
 
 **Syntax**:
@@ -1734,9 +1730,8 @@ Non-array data:
 ---
 
 ### 4. count( start )
-> **Version**: v1.1.0+  
 > **Function**: Prints a **line number** or **sequence number** in a loop (e.g., `{d.array[i].xx}`), starting from 1 by default.  
-> **Note**: Starting from v4.0.0, this function has been internally replaced by `:cumCount`.
+> **Note**: This function has been internally replaced by `:cumCount`.
 
 **Syntax**:
 ```
@@ -1776,179 +1771,13 @@ No. | Name
 **Description**:
 - Only valid in loops (including scenarios like `{d.array[i].xx}`), used to print the current line index count.
 - `start` can specify a starting number, e.g., `:count(5)` will start counting from 5.
-- Carbone 4.0+ recommends using `:cumCount` for more flexibility.
-
----
-
-## Conditioned Output
-
-Carbone provides a series of condition-based output formatters to **hide** or **display** specified content in templates based on specific conditions. Depending on business needs, you can choose **`drop`/`keep`** (concise usage) or **`showBegin`/`showEnd`**, **`hideBegin`/`hideEnd`** (suitable for large sections of content).
-
-### 1. drop(element)
-> **Version**: ENTERPRISE FEATURE, UPDATEDv4.22.10+  
-> **Function**: If the condition is true, **deletes** an element or several elements in the document, such as paragraphs, table rows, images, charts, etc.
-
-**Syntax**:
-```
-{d.data:ifEM():drop(element, nbrToDrop)}
-```
-- `element`: Can be `p` (paragraph), `row` (table row), `img` (image), `table` (entire table), `chart` (chart), `shape` (shape), `slide` (slide, ODP only), or `item` (list item, ODP/ODT only).
-- `nbrToDrop`: Optional, an integer indicating how many elements to delete starting from the current one.
-
-**Example**:
-
-**Dataset**:
-```json
-{
-  "imgUrl": null
-}
-```
-
-**Template Content** (DOCX scenario, simplified example):
-```
-Here is an image: {d.imgUrl:ifEM:drop(img)}
-```
-
-- In the Word template, place this placeholder in the image's title or description.
-
-**Rendered Result**:
-```
-Here is an image:
-```
-> The image is deleted because `imgUrl` is empty (`ifEM` is true).
-
-**Description**:
-- If the `ifEM` condition is met, `drop(img)` is executed, deleting the image and its associated paragraph content.
-- `drop` is only supported in DOCX/ODT/ODS/ODP/PPTX/PDF/HTML; once `drop` is executed, no other formatters are executed.
-
----
-
-### 2. keep(element)
-> **Version**: ENTERPRISE FEATURE, NEWv4.17.0+  
-> **Function**: If the condition is true, **retains/displays** an element or several elements in the document; otherwise, it does not display them.
-
-**Syntax**:
-```
-{d.data:ifNEM:keep(element, nbrToKeep)}
-```
-- `element`: Same as `drop`, can be `p`, `row`, `img`, `table`, `chart`, `shape`, `slide`, `item`, etc.
-- `nbrToKeep`: Optional, an integer indicating how many elements to retain starting from the current one.
-
-**Example**:
-
-**Dataset**:
-```json
-{
-  "tableData": []
-}
-```
-
-**Template Content** (DOCX scenario, simplified example):
-```
-{d.tableData:ifNEM:keep(table)}
-```
-
-- In the Word template, place this placeholder in a cell within the table.
-
-**Rendered Result**:
-```
-(Blank)
-```
-> Since `tableData` is empty, `ifNEM` is false (not empty fails), so the table is not retained, and the entire table is deleted.
-
-**Description**:
-- If the condition is met, the corresponding element is retained; otherwise, the element and all its content are deleted.
-- Opposite to `drop`, `keep` deletes the element when the condition is not met.
-
----
-
-### 3. showBegin()/showEnd()
-> **Version**: COMMUNITY FEATURE, v2.0.0+  
-> **Function**: Displays the content between `showBegin` and `showEnd` (which can include multiple paragraphs, tables, images, etc.), retaining this section if the condition is true, otherwise deleting it.
-
-**Syntax**:
-```
-{d.someData:ifEQ(someValue):showBegin}
-...Content to display...
-{d.someData:showEnd}
-```
-
-**Example**:
-
-**Dataset**:
-```json
-{
-  "toBuy": true
-}
-```
-
-**Template Content**:
-```
-Banana{d.toBuy:ifEQ(true):showBegin}
-Apple
-Pineapple
-{d.toBuy:showEnd}grapes
-```
-
-**Rendered Result**:
-```
-Banana
-Apple
-Pineapple
-grapes
-```
-> When `toBuy` is `true`, all content between `showBegin` and `showEnd` is displayed.
-
-**Description**:
-- Suitable for **multi-line or multi-page** content hiding and displaying; if it's just a single line, consider using `keep`/`drop` for a more concise approach.
-- It is recommended to use only **line breaks (Shift+Enter)** between `showBegin` and `showEnd` to ensure proper rendering.
-
----
-
-### 4. hideBegin()/hideEnd()
-> **Version**: COMMUNITY FEATURE, v2.0.0+  
-> **Function**: Hides the content between `hideBegin` and `hideEnd`, deleting this section if the condition is true, otherwise retaining it.
-
-**Syntax**:
-```
-{d.someData:ifEQ(someValue):hideBegin}
-...Content to hide...
-{d.someData:hideEnd}
-```
-
-**Example**:
-
-**Dataset**:
-```json
-{
-  "toBuy": true
-}
-```
-
-**Template Content**:
-```
-Banana{d.toBuy:ifEQ(true):hideBegin}
-Apple
-Pineapple
-{d.toBuy:hideEnd}grapes
-```
-
-**Rendered Result**:
-```
-Banana
-grapes
-```
-> When `toBuy` is `true`, the content between `hideBegin` and `hideEnd` (Apple, Pineapple) is hidden.
-
-**Description**:
-- Opposite to `showBegin()/showEnd()`, used to hide multiple paragraphs, tables, images, etc.
-- Similarly, it is recommended to use only **line breaks (Shift+Enter)** between `hideBegin` and `hideEnd`.
+- Recommends using `:cumCount` for more flexibility.
 
 ---
 
 ## Date and Time Operation Formatter Examples
 
-> **Note**: Starting from v3.0.0, Carbone uses [Day.js](https://day.js.org/docs/en/display/format) for date processing. Most formats related to Moment.js are still available in Day.js, but the underlying library has been replaced with Day.js.
+> **Note**: Template Printing uses [Day.js](https://day.js.org/docs/en/display/format) for date processing. Most formats related to Moment.js are still available in Day.js, but the underlying library has been replaced with Day.js.
 
 ### 1. Usage of {c.now}
 
@@ -1994,7 +1823,7 @@ Current time: 2025-01-07 10:05:30
 }
 ```
 
-> Assume during `Carbone.render(data, options)`:
+> Assume during `render(data, options)`:
 > ```json
 > {
 >   "lang": "en", 
@@ -2042,7 +1871,7 @@ Day of the week: Sunday
 }
 ```
 
-> Assume during `Carbone.render(data, options)`:
+> Assume during `render(data, options)`:
 > ```json
 > {
 >   "lang": "en",
@@ -2090,7 +1919,7 @@ Day of the week: Sunday
 }
 ```
 
-> Assuming during `Carbone.render(data, options)`:
+> Assuming during `render(data, options)`:
 > ```json
 > {
 >   "lang": "fr",
@@ -2286,7 +2115,7 @@ In days: 61
 }
 ```
 
-> Assuming during `Carbone.render(data, options)`:
+> Assuming during `render(data, options)`:
 > ```json
 > {
 >   "lang": "en",
@@ -2337,11 +2166,12 @@ The following common formats can be used in `patternOut` (partial examples):
 
 For more formats, refer to the [Day.js official documentation](https://day.js.org/docs/en/display/format) or the list above.
 
----
 
-## Other Condition Controllers
+## Conditioned Output
 
-Carbone provides various **conditionals** (`ifEQ`, `ifNE`, `ifGT`, `ifGTE`, `ifLT`, `ifLTE`, `ifIN`, `ifNIN`, `ifEM`, `ifNEM`, `ifTE`, etc.), as well as **logical combinations** (`and()`, `or()`) and **branch outputs** (`show(message)`, `elseShow(message)`). These can be combined to implement flexible conditional logic in templates. Below are some common examples; for more details, refer to the official documentation:
+### 1. Basic conditionals
+
+There are various **conditionals** (`ifEQ`, `ifNE`, `ifGT`, `ifGTE`, `ifLT`, `ifLTE`, `ifIN`, `ifNIN`, `ifEM`, `ifNEM`, `ifTE`, etc.), as well as **logical combinations** (`and()`, `or()`) and **branch outputs** (`show(message)`, `elseShow(message)`). These can be combined to implement flexible conditional logic in templates. Below are some common examples; for more details, refer to the official documentation:
 
 - **ifEM()**: Checks if the value is empty (`null`, `undefined`, `[]`, `{}`, `""`, etc.).
 - **ifNEM()**: Checks if the value is not empty.
@@ -2389,3 +2219,163 @@ Through **array operations** and **conditional output** examples, you can:
 1. **Flexibly handle arrays**: Use `:aggStr`, `:arrayJoin`, `:arrayMap`, `:count`, etc., to achieve **merging, concatenation, mapping**, and **counting**.
 2. **Precisely control content display**: Use `drop` / `keep` or `showBegin` / `showEnd` / `hideBegin` / `hideEnd` to decide whether to retain **specific elements** or **large sections of content** in the document based on conditions (`ifEQ`, `ifGT`, etc.).
 3. **Combine multiple conditions**: Work with number and string-related formatters (e.g., `ifNEM`, `ifIN`, etc.) to implement more complex business logic control.
+
+We provides a series of condition-based output formatters to **hide** or **display** specified content in templates based on specific conditions. Depending on business needs, you can choose **`drop`/`keep`** (concise usage) or **`showBegin`/`showEnd`**, **`hideBegin`/`hideEnd`** (suitable for large sections of content).
+
+### 2. drop(element)
+> **Function**: If the condition is true, **deletes** an element or several elements in the document, such as paragraphs, table rows, images, charts, etc.
+
+**Syntax**:
+```
+{d.data:ifEM():drop(element, nbrToDrop)}
+```
+- `element`: Can be `p` (paragraph), `row` (table row), `img` (image), `table` (entire table), `chart` (chart), `shape` (shape), `slide` (slide, ODP only), or `item` (list item, ODP/ODT only).
+- `nbrToDrop`: Optional, an integer indicating how many elements to delete starting from the current one.
+
+**Example**:
+
+**Dataset**:
+```json
+{
+  "imgUrl": null
+}
+```
+
+**Template Content** (DOCX scenario, simplified example):
+```
+Here is an image: {d.imgUrl:ifEM:drop(img)}
+```
+
+- In the Word template, place this placeholder in the image's title or description.
+
+**Rendered Result**:
+```
+Here is an image:
+```
+> The image is deleted because `imgUrl` is empty (`ifEM` is true).
+
+**Description**:
+- If the `ifEM` condition is met, `drop(img)` is executed, deleting the image and its associated paragraph content.
+- `drop` is only supported in DOCX/ODT/ODS/ODP/PPTX/PDF/HTML; once `drop` is executed, no other formatters are executed.
+
+---
+
+### 3. keep(element)
+> **Function**: If the condition is true, **retains/displays** an element or several elements in the document; otherwise, it does not display them.
+
+**Syntax**:
+```
+{d.data:ifNEM:keep(element, nbrToKeep)}
+```
+- `element`: Same as `drop`, can be `p`, `row`, `img`, `table`, `chart`, `shape`, `slide`, `item`, etc.
+- `nbrToKeep`: Optional, an integer indicating how many elements to retain starting from the current one.
+
+**Example**:
+
+**Dataset**:
+```json
+{
+  "tableData": []
+}
+```
+
+**Template Content** (DOCX scenario, simplified example):
+```
+{d.tableData:ifNEM:keep(table)}
+```
+
+- In the Word template, place this placeholder in a cell within the table.
+
+**Rendered Result**:
+```
+(Blank)
+```
+> Since `tableData` is empty, `ifNEM` is false (not empty fails), so the table is not retained, and the entire table is deleted.
+
+**Description**:
+- If the condition is met, the corresponding element is retained; otherwise, the element and all its content are deleted.
+- Opposite to `drop`, `keep` deletes the element when the condition is not met.
+
+---
+
+### 4. showBegin()/showEnd()
+> **Function**: Displays the content between `showBegin` and `showEnd` (which can include multiple paragraphs, tables, images, etc.), retaining this section if the condition is true, otherwise deleting it.
+
+**Syntax**:
+```
+{d.someData:ifEQ(someValue):showBegin}
+...Content to display...
+{d.someData:showEnd}
+```
+
+**Example**:
+
+**Dataset**:
+```json
+{
+  "toBuy": true
+}
+```
+
+**Template Content**:
+```
+Banana{d.toBuy:ifEQ(true):showBegin}
+Apple
+Pineapple
+{d.toBuy:showEnd}grapes
+```
+
+**Rendered Result**:
+```
+Banana
+Apple
+Pineapple
+grapes
+```
+> When `toBuy` is `true`, all content between `showBegin` and `showEnd` is displayed.
+
+**Description**:
+- Suitable for **multi-line or multi-page** content hiding and displaying; if it's just a single line, consider using `keep`/`drop` for a more concise approach.
+- It is recommended to use only **line breaks (Shift+Enter)** between `showBegin` and `showEnd` to ensure proper rendering.
+
+---
+
+### 5. hideBegin()/hideEnd()
+> **Function**: Hides the content between `hideBegin` and `hideEnd`, deleting this section if the condition is true, otherwise retaining it.
+
+**Syntax**:
+```
+{d.someData:ifEQ(someValue):hideBegin}
+...Content to hide...
+{d.someData:hideEnd}
+```
+
+**Example**:
+
+**Dataset**:
+```json
+{
+  "toBuy": true
+}
+```
+
+**Template Content**:
+```
+Banana{d.toBuy:ifEQ(true):hideBegin}
+Apple
+Pineapple
+{d.toBuy:hideEnd}grapes
+```
+
+**Rendered Result**:
+```
+Banana
+grapes
+```
+> When `toBuy` is `true`, the content between `hideBegin` and `hideEnd` (Apple, Pineapple) is hidden.
+
+**Description**:
+- Opposite to `showBegin()/showEnd()`, used to hide multiple paragraphs, tables, images, etc.
+- Similarly, it is recommended to use only **line breaks (Shift+Enter)** between `hideBegin` and `hideEnd`.
+
+---
