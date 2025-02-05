@@ -2,7 +2,7 @@
 
 <PluginInfo commercial="true" name="action-template-print"></PluginInfo>
 <style>
-.markdown h3 {
+.markdown h4 {
     font-size: 18px;
     font-weight: 500;
 }
