@@ -2,6 +2,13 @@
 
 <PluginInfo commercial="true" name="action-template-print"></PluginInfo>
 
+<style>
+.markdown h3 {
+    font-size: 18px;
+    font-weight: 500;
+}
+</style>
+
 ## 介绍
 
 模板打印插件支持使用 Word、Excel 和 PowerPoint 编辑模板文件（支持 `.docx`、`.xlsx`、`.pptx` 格式），在模板中设置占位符和逻辑结构，从而动态生成预定格式的文件，如 `.docx`、`.xlsx`、`.pptx` 以及 PDF 文件。可以广泛应用于生成各类业务文档，例如报价单、发票、合同等。
@@ -24,45 +31,45 @@
 ### 激活模板打印功能
 
 1. **打开详情区块**：
-  - 在应用中，进入需要使用模板打印功能的详情区块。
+- 在应用中，进入需要使用模板打印功能的详情区块。
 
 2. **进入配置操作菜单**：
-  - 在界面上方，点击“配置操作”菜单。
+- 在界面上方，点击“配置操作”菜单。
 
 3. **选择“模板打印”**：
-  - 在下拉菜单中，点击“模板打印”选项以激活插件功能。
+- 在下拉菜单中，点击“模板打印”选项以激活插件功能。
 
-   ![激活模板打印](https://static-docs.nocobase.com/20241212150539-2024-12-12-15-05-43.png)
+![激活模板打印](https://static-docs.nocobase.com/20241212150539-2024-12-12-15-05-43.png)
 
 ### 配置模板
 
 1. **进入模板配置页面**：
-  - 在“模板打印”按钮的配置菜单中，选择“模板配置”选项。
+- 在“模板打印”按钮的配置菜单中，选择“模板配置”选项。
 
-   ![模板配置选项](https://static-docs.nocobase.com/20241212151858-2024-12-12-15-19-01.png)
+![模板配置选项](https://static-docs.nocobase.com/20241212151858-2024-12-12-15-19-01.png)
 
 2. **添加新模板**：
-  - 点击“添加模板”按钮，进入模板添加页面。
+- 点击“添加模板”按钮，进入模板添加页面。
 
-   ![添加模板按钮](https://static-docs.nocobase.com/20241212151243-2024-12-12-15-12-46.png)
+![添加模板按钮](https://static-docs.nocobase.com/20241212151243-2024-12-12-15-12-46.png)
 
 3. **填写模板信息**：
-  - 在模板表单中，填写模板名称，选择模板类型（Word、Excel、PowerPoint）。
-  - 上传相应的模板文件（支持 `.docx`、`.xlsx`、`.pptx` 格式）。
+- 在模板表单中，填写模板名称，选择模板类型（Word、Excel、PowerPoint）。
+- 上传相应的模板文件（支持 `.docx`、`.xlsx`、`.pptx` 格式）。
 
-   ![配置模板名称和文件](https://static-docs.nocobase.com/20241212151518-2024-12-12-15-15-21.png)
+![配置模板名称和文件](https://static-docs.nocobase.com/20241212151518-2024-12-12-15-15-21.png)
 
 4. **编辑和保存模板**：
-  - 来到“字段列表”页面，复制字段，并填充到模板中
-    ![字段列表](https://static-docs.nocobase.com/20250107141010.png)
-    ![20241212152743-2024-12-12-15-27-45](https://static-docs.nocobase.com/20241212152743-2024-12-12-15-27-45.png)
-  - 填写完毕后，点击“保存”按钮完成模板的添加。
+- 来到“字段列表”页面，复制字段，并填充到模板中
+  ![字段列表](https://static-docs.nocobase.com/20250107141010.png)
+  ![20241212152743-2024-12-12-15-27-45](https://static-docs.nocobase.com/20241212152743-2024-12-12-15-27-45.png)
+- 填写完毕后，点击“保存”按钮完成模板的添加。
 
 5. **模板管理**：
-  - 点击模板列表右侧的“使用”按钮，可以激活模板。
-  - 点击“编辑”按钮，可以修改模板名称或替换模板文件。
-  - 点击“下载”按钮，可以下载已经配置好的模板文件。
-  - 点击“删除”按钮，可以移除不再需要的模板。系统会提示确认操作以避免误删。
+- 点击模板列表右侧的“使用”按钮，可以激活模板。
+- 点击“编辑”按钮，可以修改模板名称或替换模板文件。
+- 点击“下载”按钮，可以下载已经配置好的模板文件。
+- 点击“删除”按钮，可以移除不再需要的模板。系统会提示确认操作以避免误删。
   ![模板管理](https://static-docs.nocobase.com/20250107140436.png)
 
 ## 基础用法
@@ -183,7 +190,7 @@
 
 ### 遍历数组
 
-#### 语法说明
+#### 1. 语法说明
 
 - 使用标签 `{d.array[i].属性}` 定义当前循环项，用 `{d.array[i+1].属性}` 指定下一项以标识循环区域。
 - 循环时会自动以第一行（`[i]` 部分）作为模板进行重复；模板中只需写一次循环示例即可。
@@ -194,7 +201,7 @@
 {d.数组名[i+1].属性}
 ```
 
-#### 示例：简单数组循环
+#### 2. 示例：简单数组循环
 
 ##### 数据
 ```json
@@ -226,7 +233,7 @@ Peugeot4
 
 ---
 
-#### 示例：嵌套数组循环
+#### 3. 示例：嵌套数组循环
 
 适用于数组内嵌套数组的情况，可以无限层级嵌套。
 
@@ -274,7 +281,7 @@ Kia
 
 ---
 
-#### 示例：双向循环（高级功能，v4.8.0+）
+#### 4. 示例：双向循环（高级功能，v4.8.0+）
 
 双向循环可同时在行和列上进行迭代，适用于生成对比表等复杂布局（注：部分格式目前仅 DOCX、HTML、MD 模板官方支持）。
 
@@ -311,7 +318,7 @@ EV6Prius 3
 
 ---
 
-#### 示例：访问循环迭代器值（v4.0.0+）
+#### 5. 示例：访问循环迭代器值（v4.0.0+）
 
 在循环中可以直接访问当前迭代的索引值，便于实现特殊格式需求。
 
@@ -326,7 +333,7 @@ EV6Prius 3
 
 ### 遍历对象
 
-#### 语法说明
+#### 1. 语法说明
 
 - 对于对象中的属性，可以使用 `.att` 获取属性名称，使用 `.val` 获取属性值。
 - 迭代时，每次会遍历一个属性项。
@@ -337,7 +344,7 @@ EV6Prius 3
 {d.对象名[i].val}  // 属性值
 ```
 
-#### 示例：对象属性遍历
+#### 2. 示例：对象属性遍历
 
 ##### 数据
 ```json
@@ -371,7 +378,7 @@ bob30
 
 利用排序功能可以在模板中直接对数组数据进行排序。
 
-#### 语法说明：升序排序
+#### 1. 语法说明：升序排序
 
 - 在循环标签中使用属性作为排序依据，语法格式为：
   ```
@@ -380,7 +387,7 @@ bob30
   ```
 - 若需要多重排序，可在方括号内以逗号分隔多个排序属性。
 
-#### 示例：按数字属性排序
+#### 2. 示例：按数字属性排序
 
 ##### 数据
 ```json
@@ -410,7 +417,7 @@ BMW
 Ferrari
 ```
 
-#### 示例：多属性排序
+#### 3. 示例：多属性排序
 
 ##### 数据
 ```json
@@ -448,14 +455,14 @@ Ferrari
 
 筛选处理用于根据特定条件过滤循环中的数据行。
 
-#### 语法说明：数字筛选
+#### 1. 语法说明：数字筛选
 
 - 在循环标签中增加条件（例如 `age > 19`），语法格式：
   ```
   {d.array[i, 条件].属性}
   ```
 
-#### 示例：数字筛选
+#### 2. 示例：数字筛选
 
 ##### 数据
 ```json
@@ -483,14 +490,14 @@ Bob
 
 ---
 
-#### 语法说明：字符串筛选
+#### 3. 语法说明：字符串筛选
 
 - 使用单引号标明字符串条件，格式示例：
   ```
   {d.array[i, type='rocket'].name}
   ```
 
-#### 示例：字符串筛选
+#### 4. 示例：字符串筛选
 
 ##### 数据
 ```json
@@ -518,14 +525,14 @@ Falcon Heavy
 
 ---
 
-#### 语法说明：筛选前 N 项
+#### 5. 语法说明：筛选前 N 项
 
 - 可利用循环索引 `i` 过滤出前 N 个元素，语法示例：
   ```
   {d.array[i, i < N].属性}
   ```
 
-#### 示例：筛选前两项
+#### 6. 示例：筛选前两项
 
 ##### 数据
 ```json
@@ -553,13 +560,13 @@ Model S
 
 ---
 
-#### 语法说明：排除最后 N 项
+#### 7. 语法说明：排除最后 N 项
 
 - 通过负索引 `i` 表示倒数项，例如：
   - `{d.array[i=-1].属性}` 获取最后一项
   - `{d.array[i, i!=-1].属性}` 排除最后一项
 
-#### 示例：排除最后一项和最后两项
+#### 8. 示例：排除最后一项和最后两项
 
 ##### 数据
 ```json
@@ -600,14 +607,14 @@ Model S
 
 ---
 
-#### 语法说明：智能筛选
+#### 9. 语法说明：智能筛选
 
 - 通过智能条件块可根据复杂条件隐藏整行，示例格式：
   ```
   {d.array[i].属性:ifIN('关键字'):drop(row)}
   ```
 
-#### 示例：智能筛选
+#### 10. 示例：智能筛选
 
 ##### 数据
 ```json
@@ -639,7 +646,7 @@ Model 3
 
 ### 分组处理
 
-#### 语法说明
+#### 1. 语法说明
 
 - 利用自定义迭代器对数据按指定属性进行分组，并使用聚合格式化器（如 `aggSum`）对分组数据求和。
 - 语法格式示例：
@@ -648,7 +655,7 @@ Model 3
   {d.array[分组属性+1].属性}
   ```
 
-#### 示例：按品牌分组并求和
+#### 2. 示例：按品牌分组并求和
 
 ##### 数据
 ```json
@@ -682,7 +689,7 @@ Venturi3
 
 ### 去重处理
 
-#### 语法说明
+#### 1. 语法说明
 
 - 通过自定义迭代器，可根据某个属性的值获取唯一（不重复）的项。语法与普通循环类似，但会自动忽略重复的项。
 
@@ -692,7 +699,7 @@ Venturi3
 {d.array[属性+1].属性}
 ```
 
-#### 示例：选择唯一数据
+#### 2. 示例：选择唯一数据
 
 ##### 数据
 ```json
@@ -728,14 +735,14 @@ Airbus
 
 ### 概览
 
-#### 语法说明
+#### 1. 语法说明
 格式化器的基本调用形式为：
 ```
 {d.属性:formatter1:formatter2(...)}
 ```  
 例如，将字符串 `"JOHN"` 转换为 `"John"` 的示例中，先用 `lowerCase` 将所有字母转为小写，再用 `ucFirst` 将首字母大写。
 
-#### 示例
+#### 2. 示例
 数据：
 ```json
 {
@@ -748,7 +755,7 @@ Airbus
 My name is {d.name:lowerCase:ucFirst}. I was born on {d.birthday:formatD(LL)}.
 ```
 
-#### 结果
+#### 3. 结果
 渲染后输出：
 ```
 My name is John. I was born on January 31, 2000.
@@ -758,21 +765,21 @@ My name is John. I was born on January 31, 2000.
 
 ### 常量参数
 
-#### 语法说明
+#### 1. 语法说明
 许多格式化器支持一个或多个常量参数，用逗号分隔，并放在圆括号中以修改输出。例如，`:prepend(myPrefix)` 会在文本前添加 “myPrefix”。  
 注意：如果参数中包含逗号或空格，必须用单引号包裹，如 `prepend('my prefix')`。
 
-#### 示例
+#### 2. 示例
 模板示例（见具体格式化器的用法）。
 
-#### 结果
+#### 3. 结果
 输出会在文本前添加指定的前缀。
 
 ---
 
 ### 动态参数
 
-#### 语法说明
+#### 1. 语法说明
 格式化器支持动态参数，参数以点号（.）开头且不加引号。  
 可使用两种方式：
 - **绝对 JSON 路径**：以 `d.` 或 `c.` 开头（根数据或补充数据）。
@@ -791,7 +798,7 @@ My name is John. I was born on January 31, 2000.
 {d.subObject.qtyB:add(..qtyA):add(.qtyC)}
 ```
 
-#### 示例
+#### 2. 示例
 数据：
 ```json
 {
@@ -815,7 +822,7 @@ My name is John. I was born on January 31, 2000.
 {d.subArray[0].qtyE:add(..subObject.qtyC)}       // 结果：6 (3 + 3)
 ```
 
-#### 结果
+#### 3. 结果
 各示例分别得到 8、8、28、6。
 
 > **注意：** 使用自定义迭代器或数组过滤器作为动态参数是不允许的，如：
@@ -830,7 +837,7 @@ My name is John. I was born on January 31, 2000.
 
 针对文本数据提供多种格式化器，下文依次介绍各格式化器的语法、示例和结果。
 
-#### :lowerCase
+#### 1. :lowerCase
 
 ##### 语法说明
 将所有字母转换为小写。
@@ -848,7 +855,7 @@ null:lowerCase()       // 输出 null
 
 ---
 
-#### :upperCase
+#### 2. :upperCase
 
 ##### 语法说明
 将所有字母转换为大写。
@@ -866,7 +873,7 @@ null:upperCase()       // 输出 null
 
 ---
 
-#### :ucFirst
+#### 3. :ucFirst
 
 ##### 语法说明
 仅将字符串的首字母转换为大写，其余保持不变。
@@ -885,7 +892,7 @@ undefined:ucFirst()    // 输出 undefined
 
 ---
 
-#### :ucWords
+#### 4. :ucWords
 
 ##### 语法说明
 将字符串中每个单词的首字母转换为大写。
@@ -904,7 +911,7 @@ undefined:ucWords()    // 输出 undefined
 
 ---
 
-#### :print(message)
+#### 5. :print(message)
 
 ##### 语法说明
 始终返回指定的消息，无论原数据为何，用作兜底格式化器。  
@@ -924,7 +931,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :printJSON
+#### 6. :printJSON
 
 ##### 语法说明
 将对象或数组转化为 JSON 格式的字符串输出。
@@ -932,8 +939,11 @@ null:print('hello!')       // 输出 "hello!"
 ##### 示例
 ```
 [{'id':2,'name':'homer'},{'id':3,'name':'bart'}]:printJSON()
-// 输出 "[\n  {\"id\": 2, \"name\": \"homer\"},\n  {\"id\": 3, \"name\": \"bart\"}\n]"
-'my car':printJSON()   // 输出 "\"my car\""
+// 输出 "[
+  {"id": 2, "name": "homer"},
+  {"id": 3, "name": "bart"}
+]"
+'my car':printJSON()   // 输出 ""my car""
 ```
 
 ##### 结果
@@ -941,7 +951,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :unaccent
+#### 7. :unaccent
 
 ##### 语法说明
 去除文本中的重音符号，使文本变为无重音格式。
@@ -959,21 +969,28 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :convCRLF
+#### 8. :convCRLF
 
 ##### 语法说明
-将文本中的回车换行符（`\r\n` 或 `\n`）转换为文档中的换行标记，适用于 DOCX、PPTX、ODT、ODP 和 ODS 等格式。  
-注意：在 `:convCRLF` 格式化器之前使用 `:html` 时，`\n` 会转换为 `<br>` 标签。
+将文本中的回车换行符（`
+` 或 `
+`）转换为文档中的换行标记，适用于 DOCX、PPTX、ODT、ODP 和 ODS 等格式。  
+注意：在 `:convCRLF` 格式化器之前使用 `:html` 时，`
+` 会转换为 `<br>` 标签。
 
 ##### 示例
 ```
 // 针对 ODT 格式：
-'my blue \n car':convCRLF()    // 输出 "my blue <text:line-break/> car"
-'my blue \r\n car':convCRLF()    // 输出 "my blue <text:line-break/> car"
+'my blue 
+ car':convCRLF()    // 输出 "my blue <text:line-break/> car"
+'my blue 
+ car':convCRLF()    // 输出 "my blue <text:line-break/> car"
 
 // 针对 DOCX 格式：
-'my blue \n car':convCRLF()    // 输出 "my blue </w:t><w:br/><w:t> car"
-'my blue \r\n car':convCRLF()    // 输出 "my blue </w:t><w:br/><w:t> car"
+'my blue 
+ car':convCRLF()    // 输出 "my blue </w:t><w:br/><w:t> car"
+'my blue 
+ car':convCRLF()    // 输出 "my blue </w:t><w:br/><w:t> car"
 ```
 
 ##### 结果
@@ -981,7 +998,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :substr(begin, end, wordMode)
+#### 9. :substr(begin, end, wordMode)
 
 ##### 语法说明
 对字符串进行切割操作，从 `begin` 索引开始（基于 0），到 `end` 索引前结束。  
@@ -1002,7 +1019,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :split(delimiter)
+#### 10. :split(delimiter)
 
 ##### 语法说明
 用指定分隔符 `delimiter` 将字符串拆分为数组。  
@@ -1021,7 +1038,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :padl(targetLength, padString)
+#### 11. :padl(targetLength, padString)
 
 ##### 语法说明
 从字符串左侧填充指定字符，使最终字符串长度达到 `targetLength`。  
@@ -1044,7 +1061,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :padr(targetLength, padString)
+#### 12. :padr(targetLength, padString)
 
 ##### 语法说明
 从字符串右侧填充指定字符，使最终字符串长度达到 `targetLength`。  
@@ -1064,7 +1081,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :ellipsis(maximum)
+#### 13. :ellipsis(maximum)
 
 ##### 语法说明
 如果文本超过指定字符数，则在末尾添加省略号 “...”。  
@@ -1083,7 +1100,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :prepend(textToPrepend)
+#### 14. :prepend(textToPrepend)
 
 ##### 语法说明
 在文本前面添加指定前缀。  
@@ -1100,7 +1117,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :append(textToAppend)
+#### 15. :append(textToAppend)
 
 ##### 语法说明
 在文本后面添加指定后缀。  
@@ -1117,7 +1134,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :replace(oldText, newText)
+#### 16. :replace(oldText, newText)
 
 ##### 语法说明
 将文本中所有匹配的 `oldText` 替换为 `newText`。  
@@ -1139,7 +1156,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :len
+#### 17. :len
 
 ##### 语法说明
 返回字符串或数组的长度。
@@ -1157,7 +1174,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :t
+#### 18. :t
 
 ##### 语法说明
 根据翻译词典对文本进行翻译。  
@@ -1165,7 +1182,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :preserveCharRef
+#### 19. :preserveCharRef
 
 ##### 语法说明
 默认情况下，会移除 XML 中的某些非法字符（如 &、>、< 等），此格式化器可保留字符引用（例如 `&#xa7;` 保持不变），适用于特定的 XML 生成场景。  
@@ -1175,7 +1192,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ### 数字格式化
 
-#### :formatN(precision)
+#### 1. :formatN(precision)
 
 ##### 语法说明
 根据本地化设置格式化数字。  
@@ -1195,7 +1212,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :round(precision)
+#### 2. :round(precision)
 
 ##### 语法说明
 对数字进行四舍五入处理，参数指定小数位数。
@@ -1211,7 +1228,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :add(value)
+#### 3. :add(value)
 
 ##### 语法说明
 将当前数字与指定值相加。  
@@ -1229,7 +1246,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :sub(value)
+#### 4. :sub(value)
 
 ##### 语法说明
 将当前数字与指定值相减。  
@@ -1247,7 +1264,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :mul(value)
+#### 5. :mul(value)
 
 ##### 语法说明
 将当前数字与指定值相乘。  
@@ -1265,7 +1282,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :div(value)
+#### 6. :div(value)
 
 ##### 语法说明
 将当前数字与指定值相除。  
@@ -1283,7 +1300,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :mod(value)
+#### 7. :mod(value)
 
 ##### 语法说明
 计算当前数字对指定值的模（取余）。  
@@ -1301,7 +1318,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :abs
+#### 8. :abs
 
 ##### 语法说明
 返回数字的绝对值。
@@ -1319,7 +1336,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :ceil
+#### 9. :ceil
 
 ##### 语法说明
 向上取整，即返回大于等于当前数字的最小整数。
@@ -1336,7 +1353,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :floor
+#### 10. :floor
 
 ##### 语法说明
 向下取整，即返回小于等于当前数字的最大整数。
@@ -1353,7 +1370,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :int
+#### 11. :int
 
 ##### 语法说明
 将数字转换为整数（不推荐使用）。
@@ -1363,7 +1380,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :toEN
+#### 12. :toEN
 
 ##### 语法说明
 将数字转换为英文格式（小数点为 '.'），不推荐使用。
@@ -1373,7 +1390,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :toFixed
+#### 13. :toFixed
 
 ##### 语法说明
 将数字转换为字符串，仅保留指定小数位数，不推荐使用。
@@ -1383,7 +1400,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :toFR
+#### 14. :toFR
 
 ##### 语法说明
 将数字转换为法文格式（小数点为 ','），不推荐使用。
@@ -1395,7 +1412,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ### 货币格式化
 
-#### :formatC(precisionOrFormat, targetCurrency)
+#### 1. :formatC(precisionOrFormat, targetCurrency)
 
 ##### 语法说明
 格式化货币数字，可指定小数位数或特定输出格式。  
@@ -1426,7 +1443,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :convCurr(target, source)
+#### 2. :convCurr(target, source)
 
 ##### 语法说明
 将数字从一种货币转换为另一种货币。汇率可通过 API 选项传入或全局设置。  
@@ -1452,7 +1469,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ### 日期格式化
 
-#### :formatD(patternOut, patternIn)
+#### 1. :formatD(patternOut, patternIn)
 
 ##### 语法说明
 格式化日期，接受输出格式模式 `patternOut`，输入格式模式 `patternIn`（默认为 ISO 8601）。  
@@ -1477,7 +1494,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :addD(amount, unit, patternIn)
+#### 2. :addD(amount, unit, patternIn)
 
 ##### 语法说明
 在日期上添加指定的时间量。支持单位：day、week、month、quarter、year、hour、minute、second、millisecond。  
@@ -1501,7 +1518,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :subD(amount, unit, patternIn)
+#### 3. :subD(amount, unit, patternIn)
 
 ##### 语法说明
 从日期中减去指定的时间量。参数同 `addD`。
@@ -1521,7 +1538,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :startOfD(unit, patternIn)
+#### 4. :startOfD(unit, patternIn)
 
 ##### 语法说明
 将日期设置为指定时间单位的起始时刻。  
@@ -1544,7 +1561,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :endOfD(unit, patternIn)
+#### 5. :endOfD(unit, patternIn)
 
 ##### 语法说明
 将日期设置为指定时间单位的结束时刻。  
@@ -1565,7 +1582,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :diffD(toDate, unit, patternFromDate, patternToDate)
+#### 6. :diffD(toDate, unit, patternFromDate, patternToDate)
 
 ##### 语法说明
 计算两个日期之间的差值，并以指定单位输出。支持的输出单位包括：
@@ -1602,7 +1619,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### :convDate(patternIn, patternOut)
+#### 7. :convDate(patternIn, patternOut)
 
 ##### 语法说明
 将日期从一种格式转换为另一种格式。（不推荐使用）  
@@ -1628,7 +1645,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ---
 
-#### 日期格式模式
+#### 8. 日期格式模式
 常用日期格式说明（参照 DayJS 说明）：
 - `X`：Unix 时间戳（秒），如 1360013296
 - `x`：Unix 毫秒时间戳，如 1360013296123
@@ -1652,7 +1669,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ### 时间间隔格式化
 
-#### :formatI(patternOut, patternIn)
+#### 1. :formatI(patternOut, patternIn)
 
 ##### 语法说明
 格式化时长或间隔，支持的输出格式包括：
@@ -1697,7 +1714,7 @@ null:print('hello!')       // 输出 "hello!"
 
 ### 数组格式化
 
-#### :arrayJoin(separator, index, count)
+#### 1. :arrayJoin(separator, index, count)
 
 ##### 语法说明
 将一个字符串或数字数组拼接为一个字符串。  
@@ -1728,7 +1745,7 @@ undefined:arrayJoin()                             // 输出 undefined
 
 ---
 
-#### :arrayMap(objSeparator, attSeparator, attributes)
+#### 2. :arrayMap(objSeparator, attSeparator, attributes)
 
 ##### 语法说明
 将对象数组转化为字符串，不处理嵌套对象或数组。  
@@ -1768,7 +1785,7 @@ undefined:arrayMap()                  // 输出 undefined
 
 ---
 
-#### :count(start)
+#### 3. :count(start)
 
 ##### 语法说明
 统计数组中的行号，并输出当前行号。  
@@ -1829,7 +1846,7 @@ undefined:arrayMap()                  // 输出 undefined
 
 ### 内联条件
 
-#### :show(text) / :elseShow(text)
+#### 1. :show(text) / :elseShow(text)
 
 ##### 语法
 ```
@@ -1861,7 +1878,7 @@ val5 = high
 
 ---
 
-#### Switch Case（多重条件判断）
+#### 2. Switch Case（多重条件判断）
 
 ##### 语法
 使用连续的条件格式器构建类似 switch-case 的结构：
@@ -1898,7 +1915,7 @@ val3 = C
 
 ---
 
-#### 多变量条件判断
+#### 3. 多变量条件判断
 
 ##### 语法
 使用逻辑操作符 and/or 可以测试多个变量：
@@ -1936,7 +1953,7 @@ or = OK
 {数据:格式器(参数):show(文本):elseShow(替代文本)}
 ```
 
-#### :and(value)
+#### 1. :and(value)
 
 ##### 语法
 ```
@@ -1953,7 +1970,7 @@ or = OK
 
 ---
 
-#### :or(value)
+#### 2. :or(value)
 
 ##### 语法
 ```
@@ -1970,7 +1987,7 @@ or = OK
 
 ---
 
-#### :ifEM()
+#### 3. :ifEM()
 
 ##### 语法
 ```
@@ -1988,7 +2005,7 @@ null:ifEM():show('Result true'):elseShow('Result false')
 
 ---
 
-#### :ifNEM()
+#### 4. :ifNEM()
 
 ##### 语法
 ```
@@ -2006,7 +2023,7 @@ null:ifEM():show('Result true'):elseShow('Result false')
 
 ---
 
-#### :ifEQ(value)
+#### 5. :ifEQ(value)
 
 ##### 语法
 ```
@@ -2024,7 +2041,7 @@ null:ifEM():show('Result true'):elseShow('Result false')
 
 ---
 
-#### :ifNE(value)
+#### 6. :ifNE(value)
 
 ##### 语法
 ```
@@ -2042,7 +2059,7 @@ null:ifEM():show('Result true'):elseShow('Result false')
 
 ---
 
-#### :ifGT(value)
+#### 7. :ifGT(value)
 
 ##### 语法
 ```
@@ -2060,7 +2077,7 @@ null:ifEM():show('Result true'):elseShow('Result false')
 
 ---
 
-#### :ifGTE(value)
+#### 8. :ifGTE(value)
 
 ##### 语法
 ```
@@ -2078,7 +2095,7 @@ null:ifEM():show('Result true'):elseShow('Result false')
 
 ---
 
-#### :ifLT(value)
+#### 9. :ifLT(value)
 
 ##### 语法
 ```
@@ -2096,7 +2113,7 @@ null:ifEM():show('Result true'):elseShow('Result false')
 
 ---
 
-#### :ifLTE(value)
+#### 10. :ifLTE(value)
 
 ##### 语法
 ```
@@ -2114,7 +2131,7 @@ null:ifEM():show('Result true'):elseShow('Result false')
 
 ---
 
-#### :ifIN(value)
+#### 11. :ifIN(value)
 
 ##### 语法
 ```
@@ -2132,7 +2149,7 @@ null:ifEM():show('Result true'):elseShow('Result false')
 
 ---
 
-#### :ifNIN(value)
+#### 12. :ifNIN(value)
 
 ##### 语法
 ```
@@ -2150,7 +2167,7 @@ null:ifEM():show('Result true'):elseShow('Result false')
 
 ---
 
-#### :ifTE(type)
+#### 13. :ifTE(type)
 
 ##### 语法
 ```
@@ -2172,7 +2189,7 @@ null:ifEM():show('Result true'):elseShow('Result false')
 
 条件块用于对文档中一段区域进行显示或隐藏，常用于包裹多个标签或整段文本。
 
-#### :showBegin / :showEnd
+#### 1. :showBegin / :showEnd
 
 ##### 语法
 ```
@@ -2207,7 +2224,7 @@ Grapes
 
 ---
 
-#### :hideBegin / :hideEnd
+#### 2. :hideBegin / :hideEnd
 
 ##### 语法
 ```
@@ -2240,89 +2257,11 @@ Grapes
 
 ---
 
-### 智能条件
-
-智能条件以更简洁的方式直接移除或保留目标元素，不在生成的报告中输出任何标签内容。
-
-#### :drop(element) / :keep(element)
-
-##### 语法
-```
-{数据:if条件:drop(元素)}
-{数据:if条件:keep(元素)}
-```
-其中元素可以为：
-- `row`：表格行
-- `p`：段落
-- `img`：图片
-- `table`：表格
-- `chart`：图表
-- `shape`：形状
-- `slide`：幻灯片（仅限 ODP）
-- `item`：列表项（仅限 ODP/ODT）
-- `sheet`：工作表（仅限 ODS）
-
-对于 `row` 和 `p` 可传入第二参数，表示同时操作后续的 N 个行或段落。例如：
-```
-{d.text:ifEM:drop(p, 3)}
-```
-表示若 `d.text` 为空，则删除当前段落及其后 2 个段落。
-
-##### 示例1：删除表格中包含 “Falcon” 的行
-
-数据：
-```json
-[
-  { "name": "Falcon 9" },
-  { "name": "Model S" },
-  { "name": "Model 3" },
-  { "name": "Falcon Heavy" }
-]
-```
-模板：
-```
-Planes
-{d[i].name}
-{d[i].name:ifIN('Falcon'):drop(row)}
-{d[i+1].name}
-```
-
-##### 结果1
-输出结果中，包含 “Falcon” 的行被删除，显示：
-```
-Planes
-Model S
-
-Model 3
-```
-
-##### 示例2：当数组长度小于 6 时删除整个表格
-
-数据：
-```json
-[
-  { "name": "Bob" }
-]
-```
-模板：
-```
-Planes {d:len:ifLT(6):drop(table)}
-{d[i].name}
-{d[i+1].name}
-```
-
-##### 结果2
-若数组长度小于 6，则整个表格被删除，不显示任何内容。
-
----
-
----
-
 ## 计算
 
 ### 简单数学运算
 
-#### :add(value)
+#### 1. :add(value)
 ##### 语法
 ```
 {数据: add(值)}
@@ -2343,7 +2282,7 @@ Planes {d:len:ifLT(6):drop(table)}
 
 ---
 
-#### :mul(value)
+#### 2. :mul(value)
 ##### 语法
 ```
 {数据: mul(值)}
@@ -2364,7 +2303,7 @@ Planes {d:len:ifLT(6):drop(table)}
 
 ---
 
-#### :sub(value)
+#### 3. :sub(value)
 ##### 语法
 ```
 {数据: sub(值)}
@@ -2385,7 +2324,7 @@ Planes {d:len:ifLT(6):drop(table)}
 
 ---
 
-#### :div(value)
+#### 4. :div(value)
 ##### 语法
 ```
 {数据: div(值)}
@@ -2406,7 +2345,7 @@ Planes {d:len:ifLT(6):drop(table)}
 
 ---
 
-#### :mod(value)
+#### 5. :mod(value)
 ##### 语法
 ```
 {数据: mod(值)}
@@ -2427,7 +2366,7 @@ Planes {d:len:ifLT(6):drop(table)}
 
 ---
 
-#### :abs()
+#### 6. :abs()
 ##### 语法
 ```
 {数据: abs()}
@@ -2448,7 +2387,7 @@ Planes {d:len:ifLT(6):drop(table)}
 
 ---
 
-#### 数学公式运算
+#### 7. 数学公式运算
 支持在括号内书写简单的数学表达式（仅允许运算符 +, -, *, /，不允许使用括号嵌套），运算顺序遵循乘除优先于加减。
 
 ##### 语法
@@ -2476,370 +2415,11 @@ Planes {d:len:ifLT(6):drop(table)}
 
 ---
 
-### 聚合计算
-
-聚合计算用于处理数据集合，返回单一的聚合结果，也支持基于分组（partition）的独立计算。
-
-#### :aggSum(partitionBy)
-##### 语法
-- 聚合全部数据：
-  ```
-  {数据数组.字段:aggSum}
-  ```
-- 带分组：
-  ```
-  {数据数组.字段:aggSum(.分组字段)}
-  ```
-##### 示例
-数据：
-```json
-{
-  "cars": [
-    { "brand": "Lexus",   "qty": 1 },
-    { "brand": "Faraday", "qty": 4 },
-    { "brand": "Venturi", "qty": 3 },
-    { "brand": "Faraday", "qty": 2 },
-    { "brand": "Aptera",  "qty": 1 },
-    { "brand": "Venturi", "qty": 10 }
-  ]
-}
-```
-模板：
-```
-Total: {d.cars[].qty:aggSum}
-Brand Total: {d.cars[].qty:aggSum(.brand)}
-```
-##### 结果
-- 全部数量总和输出 21。
-- 按品牌分组时，示例中输出：Lexus → 1；Faraday → 6；Venturi → 13；Aptera → 1。
-
----
-
-#### :aggAvg(partitionBy)
-##### 语法
-- 聚合全部数据：
-  ```
-  {数据数组.字段:aggAvg}
-  ```
-- 带分组：
-  ```
-  {数据数组.字段:aggAvg(.分组字段)}
-  ```
-##### 示例
-使用上述 `cars` 数据，模板：
-```
-Average: {d.cars[].qty:aggAvg}
-```
-##### 结果
-输出平均值 3.5（计算：(1+4+3+2+1+10)/6 = 21/6）。
-
----
-
-#### :aggMin(partitionBy)
-##### 语法
-```
-{数据数组.字段:aggMin}
-```
-或带分组：
-```
-{数据数组.字段:aggMin(.分组字段)}
-```
-##### 示例
-模板：
-```
-Minimum: {d.cars[].qty:aggMin}
-```
-##### 结果
-输出最小值 1。
-
----
-
-#### :aggMax(partitionBy)
-##### 语法
-```
-{数据数组.字段:aggMax}
-```
-或带分组：
-```
-{数据数组.字段:aggMax(.分组字段)}
-```
-##### 示例
-模板：
-```
-Maximum: {d.cars[].qty:aggMax}
-```
-##### 结果
-输出最大值 10。
-
----
-
-#### :aggCount(partitionBy)
-##### 语法
-```
-{数据数组.任意字段:aggCount}
-```
-##### 示例
-模板：
-```
-Count: {d.cars[].qty:aggCount}
-```
-##### 结果
-输出计数 6（即数据项总数，不依赖字段值）。
-
----
-
-#### :aggCountD(partitionBy)
-##### 语法
-```
-{数据数组.字段:aggCountD}
-```
-##### 示例
-模板：
-```
-Distinct Brands: {d.cars[].brand:aggCountD}
-```
-##### 结果
-输出不同品牌数量 4。
-
----
-
-#### :aggStr(separator, partitionBy)
-##### 语法
-```
-{数据数组.字段:aggStr(分隔符)}
-```
-其中默认分隔符为 ", "。
-##### 示例
-模板：
-```
-Cars List: {d.cars[].brand:aggStr}
-Cars List with custom separator: {d.cars[].brand:aggStr(' | ')}
-```
-##### 结果
-- 第一个例子输出 "Lexus, Faraday, Venturi, Faraday, Aptera, Venturi"。
-- 第二个例子输出 "Lexus | Faraday | Venturi | Faraday | Aptera | Venturi"。
-
----
-
-#### :aggStrD(separator, partitionBy)
-##### 语法
-```
-{数据数组.字段:aggStrD(分隔符)}
-```
-##### 示例
-模板：
-```
-Distinct Cars List: {d.cars[].brand:aggStrD}
-Distinct Cars List with custom separator: {d.cars[].brand:aggStrD(' | ')}
-```
-##### 结果
-- 第一个例子输出 "Lexus, Faraday, Aptera, Venturi"（去重后）。
-- 第二个例子输出 "Lexus | Faraday | Aptera | Venturi"。
-
----
-
-#### :cumSum(partitionBy)
-##### 语法
-```
-{数据数组.字段:cumSum}
-```
-##### 示例
-数据（数组形式）：
-```json
-[
-  { "brand": "Lexus",   "qty": 1 },
-  { "brand": "Faraday", "qty": 4 },
-  { "brand": "Venturi", "qty": 3 },
-  { "brand": "Faraday", "qty": 2 },
-  { "brand": "Aptera",  "qty": 1 },
-  { "brand": "Venturi", "qty": 10 }
-]
-```
-模板：
-```
-{d[i].brand}{d[i].qty:cumSum}
-```
-##### 结果
-依次输出累计和，如：  
-Lexus 1  
-Faraday 5  
-Venturi 8  
-Faraday 10  
-Aptera 11  
-Venturi 21
-
----
-
-#### :cumCount(partitionBy)
-##### 语法
-```
-{数据数组.任意字段:cumCount}
-```
-##### 示例
-模板：
-```
-{d[i].brand}{d[i].qty:cumCount}
-```
-##### 结果
-为列表中的每一行分配一个顺序号，依次输出累计计数。例如，对于连续出现的记录，其计数依次为 1、2、3…（具体数值依数据排列而定）。
-
----
-
-#### :cumCountD(partitionBy)
-##### 语法
-```
-{数据数组.字段:cumCountD}
-```
-##### 示例
-模板：
-```
-{d[i].brand}{d[i].brand:cumCountD}
-```
-##### 结果
-输出去重后的累计计数，例如：  
-若数据中 "Lexus" 第一次出现计为 1，"Faraday" 第二次出现仍为 1 或根据上下文累计不同则依照分组规则。
-
----
-
-#### :aggSum :cumSum（组合使用）
-##### 语法
-```
-{数据数组.嵌套字段:aggSum:cumSum}
-```
-##### 示例
-数据：
-```json
-[
-  { 
-    "country": "France",
-    "cities": [
-      { "cars": 100 },
-      { "cars": 50 },
-      { "cars": 1 }
-    ]
-  },
-  { 
-    "country": "Italy",
-    "cities": [
-      { "cars": 20 },
-      { "cars": 2 }
-    ]
-  }
-]
-```
-模板：
-```
-{d[i].country}{d[i].cities[].cars:aggSum:cumSum}
-```
-##### 结果
-输出累计和，例如：  
-France 累计 151  
-Italy 累计 173
-
----
-
-### 存储与转换
-
-此部分功能用于在计算过程中存储中间结果或修改/生成新的 JSON 数据结构。原文中给出了较多示例，以下只挑选几个常见用法进行说明。
-
-#### :set(absolutePath) —— 存储值
-##### 语法
-```
-{数据:aggSum:set(c.变量名)}
-```
-##### 示例
-数据：
-```json
-{
-  "cars": [
-    { "qty": 1 },
-    { "qty": 4 }
-  ]
-}
-```
-模板：
-```
-{d.cars[].qty:aggSum:set(c.mySum)}
-打印存储的值: {c.mySum}
-```
-##### 结果
-输出 "打印存储的值: 5"（即 1+4 的和）。
-
----
-
-#### :set(.relativePath) —— 修改 JSON 对象
-##### 语法
-```
-{数据:append('文本'):set(.新属性)}
-```
-##### 示例
-数据：
-```json
-{
-  "cars": [
-    { "qty": 1 },
-    { "qty": 4 }
-  ]
-}
-```
-模板：
-```
-{d.cars[].qty:append(' tyres'):set(.newInfo)}
-JSON输出: {d:printJSON}
-```
-##### 结果
-生成后的 JSON 中，每个对象增加属性 "newInfo"（例如第一个对象为 `{"qty":1, "newInfo": "1 tyres"}`）。
-
----
-
-#### :set(absolutePath[]) —— 转换/生成新 JSON
-##### 语法
-```
-{数据数组: set(c.新数组[])}
-```
-##### 示例
-数据：
-```json
-{
-  "myArray": [
-    { "country": "A", "city": "1A" },
-    { "country": "A", "city": "2A" },
-    { "country": "B", "city": "1B" }
-  ]
-}
-```
-模板：
-```
-{d.myArray[]:set(c.new[])}
-JSON生成: {c:printJSON}
-```
-##### 结果
-输出新的 JSON 结构：
-```json
-{
-  "new": [
-    { "country": "A", "city": "1A" },
-    { "country": "A", "city": "2A" },
-    { "country": "B", "city": "1B" }
-  ]
-}
-```
-
----
-
-#### 其他存储与转换用法
-- **选择性克隆数组**：例如仅提取部分属性生成新数组。
-- **数组合并**：通过多次调用 `:set` 将多个数组合并为一个新数组。
-- **基于条件的合并与分组**：可在 `:set` 中使用搜索表达式，实现类似 SQL 的 inner join 或分组嵌套。
-
----
-
-
 ## 高级功能
 
 ### 分页
 
-#### 页码更新
+#### 1. 页码更新
 
 ##### 语法
 在 Office 软件中插入即可。
@@ -2855,7 +2435,7 @@ JSON生成: {c:printJSON}
 
 ---
 
-#### 目录生成
+#### 2. 目录生成
 
 ##### 语法
 在 Office 软件中插入即可。
@@ -2871,7 +2451,7 @@ JSON生成: {c:printJSON}
 
 ---
 
-#### 表头重复
+#### 3. 表头重复
 
 ##### 语法
 在 Office 软件中插入即可。
@@ -2887,529 +2467,9 @@ JSON生成: {c:printJSON}
 
 ---
 
-### 图片处理
-
-#### 动态图片插入
-
-##### 语法
-在图片的替换标签中直接引用数据字段，例如：
-```
-{d.image}
-```
-
-##### 示例
-- 模板中预先放置一个临时图片，并在其“替代文本”中写入 `{d.image}`
-- JSON 数据示例：
-  ```json
-  {
-    "image": "http://link.to/your/picture.jpg"
-  }
-  ```
-
-##### 结果
-渲染时，会将临时图片替换为数据中指定的图片。
-
----
-
-#### 图片尺寸调整（:imageFit）
-
-##### 语法
-```
-{d.image:imageFit(参数)}
-```
-- 参数可为：
-  - `fillWidth`（默认）：按宽度填充，不改变长宽比；
-  - `contain`：保持长宽比，完全显示图片；
-  - `fill`：拉伸图片以填满容器。
-
-##### 示例
-```
-{d.image:imageFit(contain)}
-{d.image:imageFit(fill)}
-```
-
-##### 结果
-- 第一例中图片按比例缩放，确保完整显示；
-- 第二例中图片可能被拉伸以完全填充容器。
-
----
-
-#### ODT 中的简单图片替换
-
-##### 语法
-与动态图片插入类似，标签写在图片的替代文本中：
-```
-{d.dog}
-```
-
-##### 示例
-JSON 数据：
-```json
-{
-  "dog": "http://link.to/the/picture"
-}
-```
-模板中：  
-在图片的替代文本中写入 `{d.dog}`
-
-##### 结果
-生成报告后，模板中的临时图片会被 JSON 中的链接图片替换。
-
----
-
-#### ODT 中的图片循环
-
-##### 语法
-在循环中使用图片标签，通常在第一张图片的描述中添加重复标记：
-```
-{d.flags[i].picture}
-```
-后续图片自动重复，无需额外放置占位符。
-
-##### 示例
-JSON 数据：
-```json
-{
-  "flags": [
-    { "name": "France", "picture": "http://link.to/the/flag-fr" },
-    { "name": "Germany", "picture": "http://link.to/the/flag-de" },
-    { "name": "Italy", "picture": "http://link.to/the/flag-it" }
-  ]
-}
-```
-模板中：  
-在第一张图片的描述中写入 `{d.flags[i].picture}`，并确保图片设置为“作为字符”锚定。
-
-##### 结果
-生成报告后，将按顺序显示所有图片。
-
----
-
-#### Base64 图片插入（ODT）
-
-##### 语法
-标签同样写入图片的属性中，如：
-```
-{d.frenchFlagImage}
-```
-
-##### 示例
-JSON 数据中图片采用 Base64 Data URI：
-```json
-{
-  "frenchFlagImage": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQABLAEsAAD/..."
-}
-```
-模板中：  
-在图片的标题或替代文本中写入 `{d.frenchFlagImage}`
-
-##### 结果
-渲染后，临时图片被 Base64 数据生成的新图片替换。
-
----
-
-#### DOCX 中的简单图片替换
-
-##### 语法
-在图片的替代文本中使用标签：
-```
-{d.image}
-```
-
-##### 示例
-JSON 数据：
-```json
-{
-  "image": "http://link.to/your/picture.jpg"
-}
-```
-模板中：  
-更新图片的替代文本为 `{d.image}`
-
-##### 结果
-生成报告后，图片将被替换为数据中指定的图片。
-
----
-
-#### DOCX 中的图片循环
-
-##### 语法
-同 ODT 图片循环的用法，将重复标记放置于图片的替代文本中：
-```
-{d.images[i]}
-```
-
-##### 示例
-参照 ODT 图片循环示例，确保图片设置为 “In Line with Text”（行内）锚定。
-
-##### 结果
-报告中会依次替换并显示每个图片。
-
----
-
-### 颜色处理
-
-#### 简单文本颜色
-
-##### 语法
-```
-{d.flowerColor:color(p)}
-```
-- 其中 `p` 表示对当前段落文本应用颜色。
-
-##### 示例
-JSON 数据：
-```json
-{
-  "flowerColor": "#FF0000"
-}
-```
-模板中：
-```
-Color of roses {d.flowerColor:color(p)}This paragraph is not colored.
-```
-
-##### 结果
-“Color of roses”部分会显示为红色，其余文本保持默认颜色。
-
----
-
-#### 条件判断设置颜色
-
-##### 语法
-结合条件格式器与 `:color(p)`：
-```
-{d.test:ifEQ(OK):show(.success):elseShow(.error):color(p)}
-```
-
-##### 示例
-JSON 数据：
-```json
-{
-  "test": "OK",
-  "success": "#007700",
-  "error": "#FF0000"
-}
-```
-模板中：
-```
-The assessment passed {d.test:ifEQ(OK):show(.success):elseShow(.error):color(p)}
-```
-
-##### 结果
-当 `test` 为 “OK” 时，文本颜色变为 `#007700`（绿色）；否则显示 `#FF0000`（红色）。
-
----
-
-#### 表格行颜色应用（循环中设置颜色）
-
-##### 语法
-在循环中使用：
-```
-{d.tests[i].result:ifEQ(ok):show(#000000):elseShow(d.error):color(row, text)}
-```
-- `color(row, text)` 表示对当前表格行文本应用颜色。
-
-##### 示例
-JSON 数据：
-```json
-{
-  "error": "#FF0000",
-  "tests": [
-    { "name": "Security Training", "result": "ok" },
-    { "name": "Code Auditing", "result": "20 Vulnerabilities found" },
-    { "name": "Firewall Testing", "result": "ok" }
-  ]
-}
-```
-模板中：
-```
-Testinfo
-{d.tests[i].name}{d.tests[i].result} {d.tests[i].result:ifEQ(ok):show(#007700):elseShow(d.error):color(row, text)}
-{d.tests[i+1]}
-```
-
-##### 结果
-符合条件的行文本颜色会改变：`ok` 时显示黑色或指定颜色，其他情况显示红色。
-
----
-
-#### 组合颜色设置（文本与背景同时设置）
-
-##### 语法
-组合使用两条标签：
-```
-{d.tests[i].result:ifEQ(ok):show(#000000):elseShow(#FFFFFF):color(row, text)}
-{d.tests[i].result:ifEQ(ok):show(#FFFFFF):elseShow(d.error):color(row, background)}
-```
-
-##### 示例
-参照前述 JSON 数据，模板中同时对文本和背景进行设置。
-
-##### 结果
-当 `result` 为 `ok` 时，行文本为黑色，背景为白色；否则文本为指定颜色，背景为错误颜色。
-
----
-
-#### 颜色绑定（bindColor）
-
-##### 语法
-旧方法（推荐使用 `:color` 替代）：
-```
-{bindColor(myColorToBind, myFormat)= d.myVar}
-```
-- `myColorToBind` 为模板中的参考颜色
-- `d.myVar` 为新的颜色值
-
-##### 示例
-JSON 数据：
-```json
-{
-  "color": "#FF0000",
-  "color2": "#00FF00",
-  "color3": "#0000FF"
-}
-```
-模板中示例说明：  
-在模板中预先设置参考颜色，`bindColor` 会将参考颜色替换为 JSON 数据中的颜色。
-
-##### 结果
-动态生成的颜色将覆盖模板中原有的参考颜色。
-
----
-
-### HTML处理
-
-#### HTML 标签渲染（:html）
-
-##### 语法
-```
-{d.description:html}
-```
-
-##### 示例 1
-JSON 数据：
-```json
-{
-  "name": "<b>raptor</b>",
-  "description": "The engine is <u>powered</u> by <i>cryogenic liquid methane</i><br>and<br><b><i>liquid oxygen</i></b> (LOX),<br><s>rather than the RP-1 kerosene and LOX</s>."
-}
-```
-模板中：
-```
-{d.name:html}  
-{d.description:html}
-```
-
-##### 结果
-输出将渲染 HTML 标签效果，如加粗、下划线、斜体、换行和删除线。
-
----
-
-##### 示例 2
-JSON 数据：
-```json
-{
-  "name": "Banana",
-  "description": "<b>is an elongated, edible fruit</b>"
-}
-```
-模板中：
-```
-The famous fruit {d.name} {d.description:html}, botanically a berry.
-```
-
-##### 结果
-生成报告后，“is an elongated, edible fruit” 部分以 HTML 样式呈现（例如加粗）。
-
----
-
-### 图表
-
-#### 原生图表（Native Charts）
-
-##### 语法
-原生图表不依赖特定标签，数据绑定在 XLSX/ODS 表格中完成。  
-在 LibreOffice 中可结合 `{bindChart()}` 使用。
-
-##### 示例
-在 MS Word 中插入图表后，编辑图表数据时，将数据区域中的数值替换为类似 `{d.temps[i].min}` 的标签。
-
-##### 结果
-生成报告时，图表中的数据会动态更新，显示最新的数值。
-
----
-
-#### 高级 Echarts 图表
-
-##### 语法
-在图片替换标签中使用 `:chart` 格式器：
-```
-{d.chartOptions:chart}
-```
-
-##### 示例
-JSON 数据：
-```json
-{
-  "chartOptions": {
-    "type": "echarts@v5a",
-    "width": 600,
-    "height": 400,
-    "theme": null,
-    "option": {
-      "xAxis": { "type": "category", "data": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"] },
-      "yAxis": { "type": "value" },
-      "series": [{
-        "data": [150, 230, 224, 218, 135, 147, 260],
-        "type": "line"
-      }]
-    }
-  }
-}
-```
-模板中：
-在一个图片的“替代文本”中写入 `{d.chartOptions:chart}`
-
-##### 结果
-生成的报告中，该图片区域将显示为根据 JSON 配置生成的 Echarts 图表（通常为 SVG 格式）。
-
----
-
-### 条形码生成
-
-#### 条形码作为图片
-
-##### 语法
-```
-{d.value:barcode(条码类型)}
-```
-- 例如：`{d.productCodeBarEan13:barcode(ean13)}`
-
-##### 示例
-JSON 数据：
-```json
-{
-  "urlQrCode": "http://localhost:13000",
-  "productCodeBarEan13": "2112345678900",
-  "productGs1": "(01)95012345678903(3103)000123"
-}
-```
-模板中：
-- 对 QR 码：`{d.urlQrCode:barcode(qrcode):imageFit(contain)}`
-- 对 EAN-13：`{d.productCodeBarEan13:barcode(ean13)}`
-- 对 GS1-128：`{d.productGs1:barcode(gs1-128)}`
-
-##### 结果
-生成报告后，各临时图片区域将替换为对应条形码图片，且可通过额外参数调整尺寸与文本显示。
-
----
-
-#### 条形码作为字体
-
-##### 语法
-与图片方式类似，但需要安装特定条码字体，在模板中直接使用标签：
-```
-{d.productValueEan13:barcode(ean13)}
-```
-
-##### 示例
-JSON 数据：
-```json
-{
-  "productValueEan13": "8056459824973",
-  "productValueEan8": "35967101",
-  "productValueCode39": "GSJ-220097",
-  "productValueCode128": "0312345600001"
-}
-```
-模板中：
-分别将标签应用于对应区域，并将第一对大括号字体设置为条码字体。
-
-##### 结果
-报告中条形码以字体方式呈现（仅支持少数几种条码）。
-
----
-
-### 超链接
-
-#### 动态超链接
-
-##### 语法
-在超链接元素中使用标签，例如：
-```
-{d.url:defaultURL('http://localhost:13000')}
-```
-- `:defaultURL` 用于在 URL 无效时提供默认链接。
-
-##### 示例
-JSON 数据：
-```json
-{
-  "url": "http://example.com"
-}
-```
-模板中：
-在超链接属性中写入 `{d.url:defaultURL('http://localhost:13000/')}`
-
-##### 结果
-生成的报告中，超链接将指向有效 URL，如 URL 格式不正确则替换为默认链接。
-
----
-
-### 表单处理
-
-#### 动态文本字段
-
-##### 语法
-在可编辑文本框中直接插入标签：
-```
-{d.value}
-```
-
-##### 示例
-模板中：  
-在 LibreOffice 的文本框内写入 `{d.value}`  
-JSON 数据：
-```json
-{
-  "value": "用户预填内容"
-}
-```
-
-##### 结果
-生成的 PDF 或 ODT 文档中，文本框内预填入 “用户预填内容”。
-
----
-
-#### 动态复选框
-
-##### 语法
-利用条件格式器实现真假判断显示不同符号：
-```
-{d.value:ifEQ(true):show(✅):elseShow(❌)}
-```
-
-##### 示例
-JSON 数据：
-```json
-{
-  "value": true
-}
-```
-模板中：
-```
-{d.value:ifEQ(true):show(✅):elseShow(❌)}
-```
-
-##### 结果
-当 `value` 为 true 时，显示 ✅；否则显示 ❌。
-
----
-
 ### 国际化（i18n）
 
-#### 静态文本翻译
+#### 1. 静态文本翻译
 
 ##### 语法
 使用 `{t(文本)}` 标签对静态文本进行国际化：
@@ -3429,7 +2489,7 @@ JSON 数据或外部本地化字典（例如针对 "fr-fr"）中提供对应翻�
 
 ---
 
-#### 动态文本翻译
+#### 2. 动态文本翻译
 
 ##### 语法
 对于数据内容可使用 `:t` 格式器，例如：
@@ -3451,7 +2511,7 @@ JSON 数据和本地化字典中提供相应翻译。
 
 ### 键值映射
 
-#### 枚举转换（:convEnum）
+#### 1. 枚举转换（:convEnum）
 
 ##### 语法
 ```
@@ -3478,94 +2538,5 @@ API options 示例中传入：
 
 ##### 结果
 输出 “pending”；若索引超出枚举范围，则输出原始值。
-
----
-
-### 数据转换
-
-#### 位置平移（:transform）
-
-##### 语法
-```
-{d.pos:transform(axis, unit)}
-```
-- `axis` 可为 `x` 或 `y`；
-- `unit` 可为 `cm`、`mm`、`inch` 或 `pt`。
-
-##### 示例
-```
-{d.pos:transform(x, cm)}
-```
-JSON 数据：
-```json
-{
-  "pos": 4
-}
-```
-
-##### 结果
-元素将在水平方向上移动 4 厘米（基于元素原始位置）。
-
----
-
-### 文件操作
-
-#### 附加文件（:appendFile）
-
-##### 语法
-```
-{数据:appendFile}
-```
-仅适用于 PDF 格式文档。
-
-##### 示例
-JSON 数据：
-```json
-{
-  "products": [
-    {
-      "name": "PV 500w Half-Cut",
-      "datasheet": "https://example.com/datasheet1.pdf"
-    },
-    {
-      "name": "PV 425w Half-Cut",
-      "datasheet": "https://example.com/datasheet2.pdf"
-    }
-  ]
-}
-```
-模板中：
-```
-{d.products[i].datasheet:appendFile}
-```
-
-##### 结果
-生成的 PDF 报告末尾将依次附加各产品的技术文档。
-
----
-
-#### 附加附件（:attachFile）
-
-##### 语法
-```
-{数据:attachFile(文件名, 类型)}
-```
-- `文件名` 为附件在 PDF 中显示的名称；
-- `类型` 为附件类型（例如 "Data"、"Source" 等）。
-
-##### 示例
-模板中：
-```
-{d.fileURL:attachFile('factur-x.xml', 'Data')}
-```
-JSON 数据：
-```json
-{
-  "fileURL": "https://example.com/factur-x.xml"
-}
-```
-
-##### 结果
-生成的 PDF 报告中会嵌入该附件，供用户下载查看。
 
 ---
