@@ -2240,6 +2240,84 @@ Grapes
 
 ---
 
+### 智能条件
+
+智能条件以更简洁的方式直接移除或保留目标元素，不在生成的报告中输出任何标签内容。
+
+#### :drop(element) / :keep(element)
+
+##### 语法
+```
+{数据:if条件:drop(元素)}
+{数据:if条件:keep(元素)}
+```
+其中元素可以为：
+- `row`：表格行
+- `p`：段落
+- `img`：图片
+- `table`：表格
+- `chart`：图表
+- `shape`：形状
+- `slide`：幻灯片（仅限 ODP）
+- `item`：列表项（仅限 ODP/ODT）
+- `sheet`：工作表（仅限 ODS）
+
+对于 `row` 和 `p` 可传入第二参数，表示同时操作后续的 N 个行或段落。例如：
+```
+{d.text:ifEM:drop(p, 3)}
+```
+表示若 `d.text` 为空，则删除当前段落及其后 2 个段落。
+
+##### 示例1：删除表格中包含 “Falcon” 的行
+
+数据：
+```json
+[
+  { "name": "Falcon 9" },
+  { "name": "Model S" },
+  { "name": "Model 3" },
+  { "name": "Falcon Heavy" }
+]
+```
+模板：
+```
+Planes
+{d[i].name}
+{d[i].name:ifIN('Falcon'):drop(row)}
+{d[i+1].name}
+```
+
+##### 结果1
+输出结果中，包含 “Falcon” 的行被删除，显示：
+```
+Planes
+Model S
+
+Model 3
+```
+
+##### 示例2：当数组长度小于 6 时删除整个表格
+
+数据：
+```json
+[
+  { "name": "Bob" }
+]
+```
+模板：
+```
+Planes {d:len:ifLT(6):drop(table)}
+{d[i].name}
+{d[i+1].name}
+```
+
+##### 结果2
+若数组长度小于 6，则整个表格被删除，不显示任何内容。
+
+---
+
+---
+
 ## 计算
 
 ### 简单数学运算
@@ -2398,6 +2476,365 @@ Grapes
 
 ---
 
+### 聚合计算
+
+聚合计算用于处理数据集合，返回单一的聚合结果，也支持基于分组（partition）的独立计算。
+
+#### :aggSum(partitionBy)
+##### 语法
+- 聚合全部数据：
+  ```
+  {数据数组.字段:aggSum}
+  ```
+- 带分组：
+  ```
+  {数据数组.字段:aggSum(.分组字段)}
+  ```
+##### 示例
+数据：
+```json
+{
+  "cars": [
+    { "brand": "Lexus",   "qty": 1 },
+    { "brand": "Faraday", "qty": 4 },
+    { "brand": "Venturi", "qty": 3 },
+    { "brand": "Faraday", "qty": 2 },
+    { "brand": "Aptera",  "qty": 1 },
+    { "brand": "Venturi", "qty": 10 }
+  ]
+}
+```
+模板：
+```
+Total: {d.cars[].qty:aggSum}
+Brand Total: {d.cars[].qty:aggSum(.brand)}
+```
+##### 结果
+- 全部数量总和输出 21。
+- 按品牌分组时，示例中输出：Lexus → 1；Faraday → 6；Venturi → 13；Aptera → 1。
+
+---
+
+#### :aggAvg(partitionBy)
+##### 语法
+- 聚合全部数据：
+  ```
+  {数据数组.字段:aggAvg}
+  ```
+- 带分组：
+  ```
+  {数据数组.字段:aggAvg(.分组字段)}
+  ```
+##### 示例
+使用上述 `cars` 数据，模板：
+```
+Average: {d.cars[].qty:aggAvg}
+```
+##### 结果
+输出平均值 3.5（计算：(1+4+3+2+1+10)/6 = 21/6）。
+
+---
+
+#### :aggMin(partitionBy)
+##### 语法
+```
+{数据数组.字段:aggMin}
+```
+或带分组：
+```
+{数据数组.字段:aggMin(.分组字段)}
+```
+##### 示例
+模板：
+```
+Minimum: {d.cars[].qty:aggMin}
+```
+##### 结果
+输出最小值 1。
+
+---
+
+#### :aggMax(partitionBy)
+##### 语法
+```
+{数据数组.字段:aggMax}
+```
+或带分组：
+```
+{数据数组.字段:aggMax(.分组字段)}
+```
+##### 示例
+模板：
+```
+Maximum: {d.cars[].qty:aggMax}
+```
+##### 结果
+输出最大值 10。
+
+---
+
+#### :aggCount(partitionBy)
+##### 语法
+```
+{数据数组.任意字段:aggCount}
+```
+##### 示例
+模板：
+```
+Count: {d.cars[].qty:aggCount}
+```
+##### 结果
+输出计数 6（即数据项总数，不依赖字段值）。
+
+---
+
+#### :aggCountD(partitionBy)
+##### 语法
+```
+{数据数组.字段:aggCountD}
+```
+##### 示例
+模板：
+```
+Distinct Brands: {d.cars[].brand:aggCountD}
+```
+##### 结果
+输出不同品牌数量 4。
+
+---
+
+#### :aggStr(separator, partitionBy)
+##### 语法
+```
+{数据数组.字段:aggStr(分隔符)}
+```
+其中默认分隔符为 ", "。
+##### 示例
+模板：
+```
+Cars List: {d.cars[].brand:aggStr}
+Cars List with custom separator: {d.cars[].brand:aggStr(' | ')}
+```
+##### 结果
+- 第一个例子输出 "Lexus, Faraday, Venturi, Faraday, Aptera, Venturi"。
+- 第二个例子输出 "Lexus | Faraday | Venturi | Faraday | Aptera | Venturi"。
+
+---
+
+#### :aggStrD(separator, partitionBy)
+##### 语法
+```
+{数据数组.字段:aggStrD(分隔符)}
+```
+##### 示例
+模板：
+```
+Distinct Cars List: {d.cars[].brand:aggStrD}
+Distinct Cars List with custom separator: {d.cars[].brand:aggStrD(' | ')}
+```
+##### 结果
+- 第一个例子输出 "Lexus, Faraday, Aptera, Venturi"（去重后）。
+- 第二个例子输出 "Lexus | Faraday | Aptera | Venturi"。
+
+---
+
+#### :cumSum(partitionBy)
+##### 语法
+```
+{数据数组.字段:cumSum}
+```
+##### 示例
+数据（数组形式）：
+```json
+[
+  { "brand": "Lexus",   "qty": 1 },
+  { "brand": "Faraday", "qty": 4 },
+  { "brand": "Venturi", "qty": 3 },
+  { "brand": "Faraday", "qty": 2 },
+  { "brand": "Aptera",  "qty": 1 },
+  { "brand": "Venturi", "qty": 10 }
+]
+```
+模板：
+```
+{d[i].brand}{d[i].qty:cumSum}
+```
+##### 结果
+依次输出累计和，如：  
+Lexus 1  
+Faraday 5  
+Venturi 8  
+Faraday 10  
+Aptera 11  
+Venturi 21
+
+---
+
+#### :cumCount(partitionBy)
+##### 语法
+```
+{数据数组.任意字段:cumCount}
+```
+##### 示例
+模板：
+```
+{d[i].brand}{d[i].qty:cumCount}
+```
+##### 结果
+为列表中的每一行分配一个顺序号，依次输出累计计数。例如，对于连续出现的记录，其计数依次为 1、2、3…（具体数值依数据排列而定）。
+
+---
+
+#### :cumCountD(partitionBy)
+##### 语法
+```
+{数据数组.字段:cumCountD}
+```
+##### 示例
+模板：
+```
+{d[i].brand}{d[i].brand:cumCountD}
+```
+##### 结果
+输出去重后的累计计数，例如：  
+若数据中 "Lexus" 第一次出现计为 1，"Faraday" 第二次出现仍为 1 或根据上下文累计不同则依照分组规则。
+
+---
+
+#### :aggSum :cumSum（组合使用）
+##### 语法
+```
+{数据数组.嵌套字段:aggSum:cumSum}
+```
+##### 示例
+数据：
+```json
+[
+  { 
+    "country": "France",
+    "cities": [
+      { "cars": 100 },
+      { "cars": 50 },
+      { "cars": 1 }
+    ]
+  },
+  { 
+    "country": "Italy",
+    "cities": [
+      { "cars": 20 },
+      { "cars": 2 }
+    ]
+  }
+]
+```
+模板：
+```
+{d[i].country}{d[i].cities[].cars:aggSum:cumSum}
+```
+##### 结果
+输出累计和，例如：  
+France 累计 151  
+Italy 累计 173
+
+---
+
+### 存储与转换
+
+此部分功能用于在计算过程中存储中间结果或修改/生成新的 JSON 数据结构。原文中给出了较多示例，以下只挑选几个常见用法进行说明。
+
+#### :set(absolutePath) —— 存储值
+##### 语法
+```
+{数据:aggSum:set(c.变量名)}
+```
+##### 示例
+数据：
+```json
+{
+  "cars": [
+    { "qty": 1 },
+    { "qty": 4 }
+  ]
+}
+```
+模板：
+```
+{d.cars[].qty:aggSum:set(c.mySum)}
+打印存储的值: {c.mySum}
+```
+##### 结果
+输出 "打印存储的值: 5"（即 1+4 的和）。
+
+---
+
+#### :set(.relativePath) —— 修改 JSON 对象
+##### 语法
+```
+{数据:append('文本'):set(.新属性)}
+```
+##### 示例
+数据：
+```json
+{
+  "cars": [
+    { "qty": 1 },
+    { "qty": 4 }
+  ]
+}
+```
+模板：
+```
+{d.cars[].qty:append(' tyres'):set(.newInfo)}
+JSON输出: {d:printJSON}
+```
+##### 结果
+生成后的 JSON 中，每个对象增加属性 "newInfo"（例如第一个对象为 `{"qty":1, "newInfo": "1 tyres"}`）。
+
+---
+
+#### :set(absolutePath[]) —— 转换/生成新 JSON
+##### 语法
+```
+{数据数组: set(c.新数组[])}
+```
+##### 示例
+数据：
+```json
+{
+  "myArray": [
+    { "country": "A", "city": "1A" },
+    { "country": "A", "city": "2A" },
+    { "country": "B", "city": "1B" }
+  ]
+}
+```
+模板：
+```
+{d.myArray[]:set(c.new[])}
+JSON生成: {c:printJSON}
+```
+##### 结果
+输出新的 JSON 结构：
+```json
+{
+  "new": [
+    { "country": "A", "city": "1A" },
+    { "country": "A", "city": "2A" },
+    { "country": "B", "city": "1B" }
+  ]
+}
+```
+
+---
+
+#### 其他存储与转换用法
+- **选择性克隆数组**：例如仅提取部分属性生成新数组。
+- **数组合并**：通过多次调用 `:set` 将多个数组合并为一个新数组。
+- **基于条件的合并与分组**：可在 `:set` 中使用搜索表达式，实现类似 SQL 的 inner join 或分组嵌套。
+
+---
+
+
 ## 高级功能
 
 ### 分页
@@ -2447,6 +2884,526 @@ Grapes
 
 ##### 结果
 当表格跨页时，表头自动在每页顶部重复显示。
+
+---
+
+### 图片处理
+
+#### 动态图片插入
+
+##### 语法
+在图片的替换标签中直接引用数据字段，例如：
+```
+{d.image}
+```
+
+##### 示例
+- 模板中预先放置一个临时图片，并在其“替代文本”中写入 `{d.image}`
+- JSON 数据示例：
+  ```json
+  {
+    "image": "http://link.to/your/picture.jpg"
+  }
+  ```
+
+##### 结果
+渲染时，会将临时图片替换为数据中指定的图片。
+
+---
+
+#### 图片尺寸调整（:imageFit）
+
+##### 语法
+```
+{d.image:imageFit(参数)}
+```
+- 参数可为：
+  - `fillWidth`（默认）：按宽度填充，不改变长宽比；
+  - `contain`：保持长宽比，完全显示图片；
+  - `fill`：拉伸图片以填满容器。
+
+##### 示例
+```
+{d.image:imageFit(contain)}
+{d.image:imageFit(fill)}
+```
+
+##### 结果
+- 第一例中图片按比例缩放，确保完整显示；
+- 第二例中图片可能被拉伸以完全填充容器。
+
+---
+
+#### ODT 中的简单图片替换
+
+##### 语法
+与动态图片插入类似，标签写在图片的替代文本中：
+```
+{d.dog}
+```
+
+##### 示例
+JSON 数据：
+```json
+{
+  "dog": "http://link.to/the/picture"
+}
+```
+模板中：  
+在图片的替代文本中写入 `{d.dog}`
+
+##### 结果
+生成报告后，模板中的临时图片会被 JSON 中的链接图片替换。
+
+---
+
+#### ODT 中的图片循环
+
+##### 语法
+在循环中使用图片标签，通常在第一张图片的描述中添加重复标记：
+```
+{d.flags[i].picture}
+```
+后续图片自动重复，无需额外放置占位符。
+
+##### 示例
+JSON 数据：
+```json
+{
+  "flags": [
+    { "name": "France", "picture": "http://link.to/the/flag-fr" },
+    { "name": "Germany", "picture": "http://link.to/the/flag-de" },
+    { "name": "Italy", "picture": "http://link.to/the/flag-it" }
+  ]
+}
+```
+模板中：  
+在第一张图片的描述中写入 `{d.flags[i].picture}`，并确保图片设置为“作为字符”锚定。
+
+##### 结果
+生成报告后，将按顺序显示所有图片。
+
+---
+
+#### Base64 图片插入（ODT）
+
+##### 语法
+标签同样写入图片的属性中，如：
+```
+{d.frenchFlagImage}
+```
+
+##### 示例
+JSON 数据中图片采用 Base64 Data URI：
+```json
+{
+  "frenchFlagImage": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQABLAEsAAD/..."
+}
+```
+模板中：  
+在图片的标题或替代文本中写入 `{d.frenchFlagImage}`
+
+##### 结果
+渲染后，临时图片被 Base64 数据生成的新图片替换。
+
+---
+
+#### DOCX 中的简单图片替换
+
+##### 语法
+在图片的替代文本中使用标签：
+```
+{d.image}
+```
+
+##### 示例
+JSON 数据：
+```json
+{
+  "image": "http://link.to/your/picture.jpg"
+}
+```
+模板中：  
+更新图片的替代文本为 `{d.image}`
+
+##### 结果
+生成报告后，图片将被替换为数据中指定的图片。
+
+---
+
+#### DOCX 中的图片循环
+
+##### 语法
+同 ODT 图片循环的用法，将重复标记放置于图片的替代文本中：
+```
+{d.images[i]}
+```
+
+##### 示例
+参照 ODT 图片循环示例，确保图片设置为 “In Line with Text”（行内）锚定。
+
+##### 结果
+报告中会依次替换并显示每个图片。
+
+---
+
+### 颜色处理
+
+#### 简单文本颜色
+
+##### 语法
+```
+{d.flowerColor:color(p)}
+```
+- 其中 `p` 表示对当前段落文本应用颜色。
+
+##### 示例
+JSON 数据：
+```json
+{
+  "flowerColor": "#FF0000"
+}
+```
+模板中：
+```
+Color of roses {d.flowerColor:color(p)}This paragraph is not colored.
+```
+
+##### 结果
+“Color of roses”部分会显示为红色，其余文本保持默认颜色。
+
+---
+
+#### 条件判断设置颜色
+
+##### 语法
+结合条件格式器与 `:color(p)`：
+```
+{d.test:ifEQ(OK):show(.success):elseShow(.error):color(p)}
+```
+
+##### 示例
+JSON 数据：
+```json
+{
+  "test": "OK",
+  "success": "#007700",
+  "error": "#FF0000"
+}
+```
+模板中：
+```
+The assessment passed {d.test:ifEQ(OK):show(.success):elseShow(.error):color(p)}
+```
+
+##### 结果
+当 `test` 为 “OK” 时，文本颜色变为 `#007700`（绿色）；否则显示 `#FF0000`（红色）。
+
+---
+
+#### 表格行颜色应用（循环中设置颜色）
+
+##### 语法
+在循环中使用：
+```
+{d.tests[i].result:ifEQ(ok):show(#000000):elseShow(d.error):color(row, text)}
+```
+- `color(row, text)` 表示对当前表格行文本应用颜色。
+
+##### 示例
+JSON 数据：
+```json
+{
+  "error": "#FF0000",
+  "tests": [
+    { "name": "Security Training", "result": "ok" },
+    { "name": "Code Auditing", "result": "20 Vulnerabilities found" },
+    { "name": "Firewall Testing", "result": "ok" }
+  ]
+}
+```
+模板中：
+```
+Testinfo
+{d.tests[i].name}{d.tests[i].result} {d.tests[i].result:ifEQ(ok):show(#007700):elseShow(d.error):color(row, text)}
+{d.tests[i+1]}
+```
+
+##### 结果
+符合条件的行文本颜色会改变：`ok` 时显示黑色或指定颜色，其他情况显示红色。
+
+---
+
+#### 组合颜色设置（文本与背景同时设置）
+
+##### 语法
+组合使用两条标签：
+```
+{d.tests[i].result:ifEQ(ok):show(#000000):elseShow(#FFFFFF):color(row, text)}
+{d.tests[i].result:ifEQ(ok):show(#FFFFFF):elseShow(d.error):color(row, background)}
+```
+
+##### 示例
+参照前述 JSON 数据，模板中同时对文本和背景进行设置。
+
+##### 结果
+当 `result` 为 `ok` 时，行文本为黑色，背景为白色；否则文本为指定颜色，背景为错误颜色。
+
+---
+
+#### 颜色绑定（bindColor）
+
+##### 语法
+旧方法（推荐使用 `:color` 替代）：
+```
+{bindColor(myColorToBind, myFormat)= d.myVar}
+```
+- `myColorToBind` 为模板中的参考颜色
+- `d.myVar` 为新的颜色值
+
+##### 示例
+JSON 数据：
+```json
+{
+  "color": "#FF0000",
+  "color2": "#00FF00",
+  "color3": "#0000FF"
+}
+```
+模板中示例说明：  
+在模板中预先设置参考颜色，`bindColor` 会将参考颜色替换为 JSON 数据中的颜色。
+
+##### 结果
+动态生成的颜色将覆盖模板中原有的参考颜色。
+
+---
+
+### HTML处理
+
+#### HTML 标签渲染（:html）
+
+##### 语法
+```
+{d.description:html}
+```
+
+##### 示例 1
+JSON 数据：
+```json
+{
+  "name": "<b>raptor</b>",
+  "description": "The engine is <u>powered</u> by <i>cryogenic liquid methane</i><br>and<br><b><i>liquid oxygen</i></b> (LOX),<br><s>rather than the RP-1 kerosene and LOX</s>."
+}
+```
+模板中：
+```
+{d.name:html}  
+{d.description:html}
+```
+
+##### 结果
+输出将渲染 HTML 标签效果，如加粗、下划线、斜体、换行和删除线。
+
+---
+
+##### 示例 2
+JSON 数据：
+```json
+{
+  "name": "Banana",
+  "description": "<b>is an elongated, edible fruit</b>"
+}
+```
+模板中：
+```
+The famous fruit {d.name} {d.description:html}, botanically a berry.
+```
+
+##### 结果
+生成报告后，“is an elongated, edible fruit” 部分以 HTML 样式呈现（例如加粗）。
+
+---
+
+### 图表
+
+#### 原生图表（Native Charts）
+
+##### 语法
+原生图表不依赖特定标签，数据绑定在 XLSX/ODS 表格中完成。  
+在 LibreOffice 中可结合 `{bindChart()}` 使用。
+
+##### 示例
+在 MS Word 中插入图表后，编辑图表数据时，将数据区域中的数值替换为类似 `{d.temps[i].min}` 的标签。
+
+##### 结果
+生成报告时，图表中的数据会动态更新，显示最新的数值。
+
+---
+
+#### 高级 Echarts 图表
+
+##### 语法
+在图片替换标签中使用 `:chart` 格式器：
+```
+{d.chartOptions:chart}
+```
+
+##### 示例
+JSON 数据：
+```json
+{
+  "chartOptions": {
+    "type": "echarts@v5a",
+    "width": 600,
+    "height": 400,
+    "theme": null,
+    "option": {
+      "xAxis": { "type": "category", "data": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"] },
+      "yAxis": { "type": "value" },
+      "series": [{
+        "data": [150, 230, 224, 218, 135, 147, 260],
+        "type": "line"
+      }]
+    }
+  }
+}
+```
+模板中：
+在一个图片的“替代文本”中写入 `{d.chartOptions:chart}`
+
+##### 结果
+生成的报告中，该图片区域将显示为根据 JSON 配置生成的 Echarts 图表（通常为 SVG 格式）。
+
+---
+
+### 条形码生成
+
+#### 条形码作为图片
+
+##### 语法
+```
+{d.value:barcode(条码类型)}
+```
+- 例如：`{d.productCodeBarEan13:barcode(ean13)}`
+
+##### 示例
+JSON 数据：
+```json
+{
+  "urlQrCode": "http://localhost:13000",
+  "productCodeBarEan13": "2112345678900",
+  "productGs1": "(01)95012345678903(3103)000123"
+}
+```
+模板中：
+- 对 QR 码：`{d.urlQrCode:barcode(qrcode):imageFit(contain)}`
+- 对 EAN-13：`{d.productCodeBarEan13:barcode(ean13)}`
+- 对 GS1-128：`{d.productGs1:barcode(gs1-128)}`
+
+##### 结果
+生成报告后，各临时图片区域将替换为对应条形码图片，且可通过额外参数调整尺寸与文本显示。
+
+---
+
+#### 条形码作为字体
+
+##### 语法
+与图片方式类似，但需要安装特定条码字体，在模板中直接使用标签：
+```
+{d.productValueEan13:barcode(ean13)}
+```
+
+##### 示例
+JSON 数据：
+```json
+{
+  "productValueEan13": "8056459824973",
+  "productValueEan8": "35967101",
+  "productValueCode39": "GSJ-220097",
+  "productValueCode128": "0312345600001"
+}
+```
+模板中：
+分别将标签应用于对应区域，并将第一对大括号字体设置为条码字体。
+
+##### 结果
+报告中条形码以字体方式呈现（仅支持少数几种条码）。
+
+---
+
+### 超链接
+
+#### 动态超链接
+
+##### 语法
+在超链接元素中使用标签，例如：
+```
+{d.url:defaultURL('http://localhost:13000')}
+```
+- `:defaultURL` 用于在 URL 无效时提供默认链接。
+
+##### 示例
+JSON 数据：
+```json
+{
+  "url": "http://example.com"
+}
+```
+模板中：
+在超链接属性中写入 `{d.url:defaultURL('http://localhost:13000/')}`
+
+##### 结果
+生成的报告中，超链接将指向有效 URL，如 URL 格式不正确则替换为默认链接。
+
+---
+
+### 表单处理
+
+#### 动态文本字段
+
+##### 语法
+在可编辑文本框中直接插入标签：
+```
+{d.value}
+```
+
+##### 示例
+模板中：  
+在 LibreOffice 的文本框内写入 `{d.value}`  
+JSON 数据：
+```json
+{
+  "value": "用户预填内容"
+}
+```
+
+##### 结果
+生成的 PDF 或 ODT 文档中，文本框内预填入 “用户预填内容”。
+
+---
+
+#### 动态复选框
+
+##### 语法
+利用条件格式器实现真假判断显示不同符号：
+```
+{d.value:ifEQ(true):show(✅):elseShow(❌)}
+```
+
+##### 示例
+JSON 数据：
+```json
+{
+  "value": true
+}
+```
+模板中：
+```
+{d.value:ifEQ(true):show(✅):elseShow(❌)}
+```
+
+##### 结果
+当 `value` 为 true 时，显示 ✅；否则显示 ❌。
 
 ---
 
@@ -2521,5 +3478,94 @@ API options 示例中传入：
 
 ##### 结果
 输出 “pending”；若索引超出枚举范围，则输出原始值。
+
+---
+
+### 数据转换
+
+#### 位置平移（:transform）
+
+##### 语法
+```
+{d.pos:transform(axis, unit)}
+```
+- `axis` 可为 `x` 或 `y`；
+- `unit` 可为 `cm`、`mm`、`inch` 或 `pt`。
+
+##### 示例
+```
+{d.pos:transform(x, cm)}
+```
+JSON 数据：
+```json
+{
+  "pos": 4
+}
+```
+
+##### 结果
+元素将在水平方向上移动 4 厘米（基于元素原始位置）。
+
+---
+
+### 文件操作
+
+#### 附加文件（:appendFile）
+
+##### 语法
+```
+{数据:appendFile}
+```
+仅适用于 PDF 格式文档。
+
+##### 示例
+JSON 数据：
+```json
+{
+  "products": [
+    {
+      "name": "PV 500w Half-Cut",
+      "datasheet": "https://example.com/datasheet1.pdf"
+    },
+    {
+      "name": "PV 425w Half-Cut",
+      "datasheet": "https://example.com/datasheet2.pdf"
+    }
+  ]
+}
+```
+模板中：
+```
+{d.products[i].datasheet:appendFile}
+```
+
+##### 结果
+生成的 PDF 报告末尾将依次附加各产品的技术文档。
+
+---
+
+#### 附加附件（:attachFile）
+
+##### 语法
+```
+{数据:attachFile(文件名, 类型)}
+```
+- `文件名` 为附件在 PDF 中显示的名称；
+- `类型` 为附件类型（例如 "Data"、"Source" 等）。
+
+##### 示例
+模板中：
+```
+{d.fileURL:attachFile('factur-x.xml', 'Data')}
+```
+JSON 数据：
+```json
+{
+  "fileURL": "https://example.com/factur-x.xml"
+}
+```
+
+##### 结果
+生成的 PDF 报告中会嵌入该附件，供用户下载查看。
 
 ---

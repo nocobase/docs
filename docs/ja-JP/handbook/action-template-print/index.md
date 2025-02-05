@@ -1812,6 +1812,7 @@ Conditional statements allow you to dynamically control the display or hiding of
 
 - **Inline conditions**: Directly output text (or replace it with other text).
 - **Conditional blocks**: Display or hide a section of the document, suitable for multiple Template tags, paragraphs, tables, etc.
+- **Smart conditions**: Remove or retain target elements (such as rows, paragraphs, images, etc.) with a single tag, using a more concise syntax.
 
 All conditions begin with a logical evaluation formatter (e.g., ifEQ, ifGT, etc.), followed by action formatters (such as show, elseShow, drop, keep, etc.).
 
@@ -1839,6 +1840,7 @@ The logical operators and action formatters supported in conditional statements 
 - **Action Formatters**
   - **:show(text) / :elseShow(text)**: Used in inline conditions to directly output the specified text.
   - **:hideBegin / :hideEnd** and **:showBegin / :showEnd**: Used in conditional blocks to hide or show sections of the document.
+  - **:drop(element) / :keep(element)**: Used in smart conditions to remove or retain specific document elements.
 
 The following sections introduce the detailed syntax, examples, and results for each usage.
 
@@ -2255,6 +2257,86 @@ Banana
 Grapes
 ```
 
+---
+
+### Smart Conditions
+
+Smart conditions allow you to directly remove or retain target elements using a more concise syntax so that no tag content is output in the generated report.
+
+#### :drop(element) / :keep(element)
+
+##### Syntax
+```
+{data:ifCondition:drop(element)}
+{data:ifCondition:keep(element)}
+```
+The element can be one of:
+- `row`: Table row
+- `p`: Paragraph
+- `img`: Image
+- `table`: Table
+- `chart`: Chart
+- `shape`: Shape
+- `slide`: Slide (ODP only)
+- `item`: List item (ODP/ODT only)
+- `sheet`: Worksheet (ODS only)
+
+For `row` and `p`, a second parameter can be provided to indicate that the following N rows or paragraphs should also be affected. For example:
+```
+{d.text:ifEM:drop(p, 3)}
+```
+indicates that if `d.text` is empty, then the current paragraph and the following 2 paragraphs are removed.
+
+##### Example 1: Remove table rows that contain "Falcon"
+
+Data:
+```json
+[
+  { "name": "Falcon 9" },
+  { "name": "Model S" },
+  { "name": "Model 3" },
+  { "name": "Falcon Heavy" }
+]
+```
+Template:
+```
+Planes
+{d[i].name}
+{d[i].name:ifIN('Falcon'):drop(row)}
+{d[i+1].name}
+```
+
+##### Result 1
+In the output, rows containing "Falcon" are removed, displaying:
+```
+Planes
+Model S
+
+Model 3
+```
+
+##### Example 2: Remove the entire table when the array length is less than 6
+
+Data:
+```json
+[
+  { "name": "Bob" }
+]
+```
+Template:
+```
+Planes {d:len:ifLT(6):drop(table)}
+{d[i].name}
+{d[i+1].name}
+```
+
+##### Result 2
+If the array length is less than 6, the entire table is removed and no content is displayed.
+
+---
+
+Below is the translated version in English, following the same hierarchical structure:
+
 ## Computation
 
 ### Simple Mathematical Operations
@@ -2413,6 +2495,366 @@ Outputs 48.
 
 ---
 
+### Aggregation Calculations
+
+Aggregation calculations are used to process collections of data, returning a single aggregated result, and also support independent calculations based on grouping (partition).
+
+#### :aggSum(partitionBy)
+##### Syntax
+- Aggregate all data:
+  ```
+  {dataArray.field:aggSum}
+  ```
+- With grouping:
+  ```
+  {dataArray.field:aggSum(.groupField)}
+  ```
+##### Example
+Data:
+```json
+{
+  "cars": [
+    { "brand": "Lexus",   "qty": 1 },
+    { "brand": "Faraday", "qty": 4 },
+    { "brand": "Venturi", "qty": 3 },
+    { "brand": "Faraday", "qty": 2 },
+    { "brand": "Aptera",  "qty": 1 },
+    { "brand": "Venturi", "qty": 10 }
+  ]
+}
+```
+Template:
+```
+Total: {d.cars[].qty:aggSum}
+Brand Total: {d.cars[].qty:aggSum(.brand)}
+```
+##### Result
+- The total sum outputs 21.
+- When grouped by brand, the example outputs: Lexus → 1; Faraday → 6; Venturi → 13; Aptera → 1.
+
+---
+
+#### :aggAvg(partitionBy)
+##### Syntax
+- Aggregate all data:
+  ```
+  {dataArray.field:aggAvg}
+  ```
+- With grouping:
+  ```
+  {dataArray.field:aggAvg(.groupField)}
+  ```
+##### Example
+Using the above `cars` data, the template:
+```
+Average: {d.cars[].qty:aggAvg}
+```
+##### Result
+Outputs an average of 3.5 (calculation: (1+4+3+2+1+10)/6 = 21/6).
+
+---
+
+#### :aggMin(partitionBy)
+##### Syntax
+```
+{dataArray.field:aggMin}
+```
+or with grouping:
+```
+{dataArray.field:aggMin(.groupField)}
+```
+##### Example
+Template:
+```
+Minimum: {d.cars[].qty:aggMin}
+```
+##### Result
+Outputs the minimum value 1.
+
+---
+
+#### :aggMax(partitionBy)
+##### Syntax
+```
+{dataArray.field:aggMax}
+```
+or with grouping:
+```
+{dataArray.field:aggMax(.groupField)}
+```
+##### Example
+Template:
+```
+Maximum: {d.cars[].qty:aggMax}
+```
+##### Result
+Outputs the maximum value 10.
+
+---
+
+#### :aggCount(partitionBy)
+##### Syntax
+```
+{dataArray.anyField:aggCount}
+```
+##### Example
+Template:
+```
+Count: {d.cars[].qty:aggCount}
+```
+##### Result
+Outputs a count of 6 (i.e. the total number of data items, regardless of the field value).
+
+---
+
+#### :aggCountD(partitionBy)
+##### Syntax
+```
+{dataArray.field:aggCountD}
+```
+##### Example
+Template:
+```
+Distinct Brands: {d.cars[].brand:aggCountD}
+```
+##### Result
+Outputs the number of distinct brands as 4.
+
+---
+
+#### :aggStr(separator, partitionBy)
+##### Syntax
+```
+{dataArray.field:aggStr(separator)}
+```
+where the default separator is ", ".
+##### Example
+Template:
+```
+Cars List: {d.cars[].brand:aggStr}
+Cars List with custom separator: {d.cars[].brand:aggStr(' | ')}
+```
+##### Result
+- The first example outputs "Lexus, Faraday, Venturi, Faraday, Aptera, Venturi".
+- The second example outputs "Lexus | Faraday | Venturi | Faraday | Aptera | Venturi".
+
+---
+
+#### :aggStrD(separator, partitionBy)
+##### Syntax
+```
+{dataArray.field:aggStrD(separator)}
+```
+##### Example
+Template:
+```
+Distinct Cars List: {d.cars[].brand:aggStrD}
+Distinct Cars List with custom separator: {d.cars[].brand:aggStrD(' | ')}
+```
+##### Result
+- The first example outputs "Lexus, Faraday, Aptera, Venturi" (after deduplication).
+- The second example outputs "Lexus | Faraday | Aptera | Venturi".
+
+---
+
+#### :cumSum(partitionBy)
+##### Syntax
+```
+{dataArray.field:cumSum}
+```
+##### Example
+Data (in array form):
+```json
+[
+  { "brand": "Lexus",   "qty": 1 },
+  { "brand": "Faraday", "qty": 4 },
+  { "brand": "Venturi", "qty": 3 },
+  { "brand": "Faraday", "qty": 2 },
+  { "brand": "Aptera",  "qty": 1 },
+  { "brand": "Venturi", "qty": 10 }
+]
+```
+Template:
+```
+{d[i].brand}{d[i].qty:cumSum}
+```
+##### Result
+Outputs the cumulative sum sequentially, for example:  
+Lexus 1  
+Faraday 5  
+Venturi 8  
+Faraday 10  
+Aptera 11  
+Venturi 21
+
+---
+
+#### :cumCount(partitionBy)
+##### Syntax
+```
+{dataArray.anyField:cumCount}
+```
+##### Example
+Template:
+```
+{d[i].brand}{d[i].qty:cumCount}
+```
+##### Result
+Assigns a sequential number to each row in the list, outputting a cumulative count sequentially. For example, for consecutive records, the count would be 1, 2, 3… (exact values depend on the data order).
+
+---
+
+#### :cumCountD(partitionBy)
+##### Syntax
+```
+{dataArray.field:cumCountD}
+```
+##### Example
+Template:
+```
+{d[i].brand}{d[i].brand:cumCountD}
+```
+##### Result
+Outputs the cumulative count of distinct values. For example:  
+If "Lexus" appears for the first time it is counted as 1, and if "Faraday" appears again it remains as 1 (or accumulates differently according to the grouping rules).
+
+---
+
+#### :aggSum :cumSum (Combined Usage)
+##### Syntax
+```
+{dataArray.nestedField:aggSum:cumSum}
+```
+##### Example
+Data:
+```json
+[
+  { 
+    "country": "France",
+    "cities": [
+      { "cars": 100 },
+      { "cars": 50 },
+      { "cars": 1 }
+    ]
+  },
+  { 
+    "country": "Italy",
+    "cities": [
+      { "cars": 20 },
+      { "cars": 2 }
+    ]
+  }
+]
+```
+Template:
+```
+{d[i].country}{d[i].cities[].cars:aggSum:cumSum}
+```
+##### Result
+Outputs the cumulative sum, for example:  
+France cumulative 151  
+Italy cumulative 173
+
+---
+
+### Storage and Transformation
+
+This section is used to store intermediate results or modify/generate new JSON data structures during calculations. The original text provides many examples; here, only a few common usages are explained.
+
+#### :set(absolutePath) —— Store Value
+##### Syntax
+```
+{data:aggSum:set(c.variableName)}
+```
+##### Example
+Data:
+```json
+{
+  "cars": [
+    { "qty": 1 },
+    { "qty": 4 }
+  ]
+}
+```
+Template:
+```
+{d.cars[].qty:aggSum:set(c.mySum)}
+Print stored value: {c.mySum}
+```
+##### Result
+Outputs "Print stored value: 5" (i.e. the sum of 1+4).
+
+---
+
+#### :set(.relativePath) —— Modify JSON Object
+##### Syntax
+```
+{data:append('text'):set(.newProperty)}
+```
+##### Example
+Data:
+```json
+{
+  "cars": [
+    { "qty": 1 },
+    { "qty": 4 }
+  ]
+}
+```
+Template:
+```
+{d.cars[].qty:append(' tyres'):set(.newInfo)}
+JSON output: {d:printJSON}
+```
+##### Result
+In the generated JSON, each object gains a new property "newInfo" (for example, the first object becomes `{"qty":1, "newInfo": "1 tyres"}`).
+
+---
+
+#### :set(absolutePath[]) —— Transform/Generate New JSON
+##### Syntax
+```
+{dataArray: set(c.newArray[])}
+```
+##### Example
+Data:
+```json
+{
+  "myArray": [
+    { "country": "A", "city": "1A" },
+    { "country": "A", "city": "2A" },
+    { "country": "B", "city": "1B" }
+  ]
+}
+```
+Template:
+```
+{d.myArray[]:set(c.new[])}
+JSON output: {c:printJSON}
+```
+##### Result
+Outputs the new JSON structure:
+```json
+{
+  "new": [
+    { "country": "A", "city": "1A" },
+    { "country": "A", "city": "2A" },
+    { "country": "B", "city": "1B" }
+  ]
+}
+```
+
+---
+
+#### Other Storage and Transformation Usages
+- **Selective Cloning of Arrays**: For example, generating a new array by extracting only certain properties.
+- **Array Merging**: Merging multiple arrays into a new array through multiple calls to `:set`.
+- **Conditional Merging and Grouping**: Using search expressions within `:set` to achieve functionality similar to SQL inner join or nested grouping.
+--- 
+
+
+
+
 ## Advanced Features
 
 ### Pagination
@@ -2465,6 +2907,526 @@ In LibreOffice:
 
 ##### Result
 When a table spans multiple pages, the header will automatically repeat at the top of each page.
+
+---
+
+### Image Handling
+
+#### Dynamic Image Insertion
+
+##### Syntax
+Directly reference the data field in the image replacement tag, for example:
+```
+{d.image}
+```
+
+##### Example
+- Place a temporary image in the template and write `{d.image}` in its “alternative text” field.
+- JSON Data Example:
+  ```json
+  {
+    "image": "http://link.to/your/picture.jpg"
+  }
+  ```
+
+##### Result
+When Template renders the report, the temporary image will be replaced by the image specified in the data.
+
+---
+
+#### Image Size Adjustment (:imageFit)
+
+##### Syntax
+```
+{d.image:imageFit(parameter)}
+```
+- Parameters can be:
+  - `fillWidth` (default): Fill the width while maintaining the aspect ratio;
+  - `contain`: Maintain the aspect ratio and display the entire image;
+  - `fill`: Stretch the image to completely fill the container.
+
+##### Example
+```
+{d.image:imageFit(contain)}
+{d.image:imageFit(fill)}
+```
+
+##### Result
+- In the first example, the image is scaled proportionally to ensure complete display.
+- In the second example, the image may be stretched to completely fill the container.
+
+---
+
+#### Simple Image Replacement in ODT
+
+##### Syntax
+Similar to dynamic image insertion, the tag is placed in the image’s alternative text:
+```
+{d.dog}
+```
+
+##### Example
+JSON Data:
+```json
+{
+  "dog": "http://link.to/the/picture"
+}
+```
+In the template:  
+Write `{d.dog}` in the image’s alternative text.
+
+##### Result
+After generating the report, the temporary image in the template will be replaced by the image from the JSON link.
+
+---
+
+#### Image Looping in ODT
+
+##### Syntax
+Use the image tag within a loop, typically adding a repeat marker in the description of the first image:
+```
+{d.flags[i].picture}
+```
+Subsequent images will be repeated automatically without placing additional placeholders.
+
+##### Example
+JSON Data:
+```json
+{
+  "flags": [
+    { "name": "France", "picture": "http://link.to/the/flag-fr" },
+    { "name": "Germany", "picture": "http://link.to/the/flag-de" },
+    { "name": "Italy", "picture": "http://link.to/the/flag-it" }
+  ]
+}
+```
+In the template:  
+Write `{d.flags[i].picture}` in the description of the first image and ensure the image is set to “anchor as character.”
+
+##### Result
+After generating the report, all images will be displayed sequentially.
+
+---
+
+#### Base64 Image Insertion (ODT)
+
+##### Syntax
+Similarly, place the tag in the image’s properties, for example:
+```
+{d.frenchFlagImage}
+```
+
+##### Example
+In the JSON data, the image uses a Base64 Data URI:
+```json
+{
+  "frenchFlagImage": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQABLAEsAAD/..."
+}
+```
+In the template:  
+Write `{d.frenchFlagImage}` in the image’s title or alternative text.
+
+##### Result
+After rendering, the temporary image is replaced by a new image generated from the Base64 data.
+
+---
+
+#### Simple Image Replacement in DOCX
+
+##### Syntax
+Use the tag in the image’s alternative text:
+```
+{d.image}
+```
+
+##### Example
+JSON Data:
+```json
+{
+  "image": "http://link.to/your/picture.jpg"
+}
+```
+In the template:  
+Update the image’s alternative text to `{d.image}`.
+
+##### Result
+After generating the report, the image will be replaced with the one specified in the data.
+
+---
+
+#### Image Looping in DOCX
+
+##### Syntax
+Similar to the ODT image looping method, place the repeat marker in the image’s alternative text:
+```
+{d.images[i]}
+```
+
+##### Example
+Refer to the ODT image looping example and ensure the image is set to “In Line with Text” anchoring.
+
+##### Result
+The report will sequentially replace and display each image.
+
+---
+
+### Color Handling
+
+#### Simple Text Color
+
+##### Syntax
+```
+{d.flowerColor:color(p)}
+```
+- Here, `p` indicates that the color is applied to the current paragraph text.
+
+##### Example
+JSON Data:
+```json
+{
+  "flowerColor": "#FF0000"
+}
+```
+In the template:
+```
+Color of roses {d.flowerColor:color(p)}This paragraph is not colored.
+```
+
+##### Result
+The “Color of roses” portion will display in red, while the rest of the text remains in the default color.
+
+---
+
+#### Conditional Color Setting
+
+##### Syntax
+Combine a conditional formatter with `:color(p)`:
+```
+{d.test:ifEQ(OK):show(.success):elseShow(.error):color(p)}
+```
+
+##### Example
+JSON Data:
+```json
+{
+  "test": "OK",
+  "success": "#007700",
+  "error": "#FF0000"
+}
+```
+In the template:
+```
+The assessment passed {d.test:ifEQ(OK):show(.success):elseShow(.error):color(p)}
+```
+
+##### Result
+When `test` is “OK”, the text color becomes `#007700` (green); otherwise, it shows `#FF0000` (red).
+
+---
+
+#### Table Row Color Application (Setting Color in Loops)
+
+##### Syntax
+Used within a loop:
+```
+{d.tests[i].result:ifEQ(ok):show(#000000):elseShow(d.error):color(row, text)}
+```
+- `color(row, text)` indicates that the color is applied to the text of the current table row.
+
+##### Example
+JSON Data:
+```json
+{
+  "error": "#FF0000",
+  "tests": [
+    { "name": "Security Training", "result": "ok" },
+    { "name": "Code Auditing", "result": "20 Vulnerabilities found" },
+    { "name": "Firewall Testing", "result": "ok" }
+  ]
+}
+```
+In the template:
+```
+Testinfo
+{d.tests[i].name}{d.tests[i].result} {d.tests[i].result:ifEQ(ok):show(#007700):elseShow(d.error):color(row, text)}
+{d.tests[i+1]}
+```
+
+##### Result
+Rows meeting the condition will have their text color changed: “ok” rows display in black (or the specified color) while others show in red.
+
+---
+
+#### Combined Color Setting (Setting Text and Background Simultaneously)
+
+##### Syntax
+Use two tags together:
+```
+{d.tests[i].result:ifEQ(ok):show(#000000):elseShow(#FFFFFF):color(row, text)}
+{d.tests[i].result:ifEQ(ok):show(#FFFFFF):elseShow(d.error):color(row, background)}
+```
+
+##### Example
+Using the previous JSON data, the template sets both text and background colors simultaneously.
+
+##### Result
+When `result` is “ok”, the row text is black with a white background; otherwise, the text shows in the specified color with the error color as the background.
+
+---
+
+#### Color Binding (bindColor)
+
+##### Syntax
+The old method (it is recommended to use `:color` instead):
+```
+{bindColor(myColorToBind, myFormat)= d.myVar}
+```
+- `myColorToBind` is the reference color in the template.
+- `d.myVar` is the new color value.
+
+##### Example
+JSON Data:
+```json
+{
+  "color": "#FF0000",
+  "color2": "#00FF00",
+  "color3": "#0000FF"
+}
+```
+The template explanation:  
+Predefine a reference color in the template; `bindColor` will replace it with the color from the JSON data.
+
+##### Result
+Dynamically generated colors will override the reference colors in the template.
+
+---
+
+### HTML Handling
+
+#### HTML Tag Rendering (:html)
+
+##### Syntax
+```
+{d.description:html}
+```
+
+##### Example 1
+JSON Data:
+```json
+{
+  "name": "<b>raptor</b>",
+  "description": "The engine is <u>powered</u> by <i>cryogenic liquid methane</i><br>and<br><b><i>liquid oxygen</i></b> (LOX),<br><s>rather than the RP-1 kerosene and LOX</s>."
+}
+```
+In the template:
+```
+{d.name:html}  
+{d.description:html}
+```
+
+##### Result
+The output will render HTML tags—such as bold, underline, italics, line breaks, and strikethrough—appropriately.
+
+---
+
+##### Example 2
+JSON Data:
+```json
+{
+  "name": "Banana",
+  "description": "<b>is an elongated, edible fruit</b>"
+}
+```
+In the template:
+```
+The famous fruit {d.name} {d.description:html}, botanically a berry.
+```
+
+##### Result
+After generating the report, the phrase “is an elongated, edible fruit” will be rendered with HTML styling (for example, in bold).
+
+---
+
+### Charts
+
+#### Native Charts
+
+##### Syntax
+Native charts do not rely on specific Template tags; data binding is performed within XLSX/ODS spreadsheets.  
+In LibreOffice, they can be combined with `{bindChart()}`.
+
+##### Example
+After inserting a chart in MS Word, edit the chart data by replacing numeric values in the data area with tags like `{d.temps[i].min}`.
+
+##### Result
+When the report is generated, the chart data will update dynamically to display the latest values.
+
+---
+
+#### Advanced Echarts Charts
+
+##### Syntax
+Use the `:chart` formatter within the image replacement tag:
+```
+{d.chartOptions:chart}
+```
+
+##### Example
+JSON Data:
+```json
+{
+  "chartOptions": {
+    "type": "echarts@v5a",
+    "width": 600,
+    "height": 400,
+    "theme": null,
+    "option": {
+      "xAxis": { "type": "category", "data": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"] },
+      "yAxis": { "type": "value" },
+      "series": [{
+        "data": [150, 230, 224, 218, 135, 147, 260],
+        "type": "line"
+      }]
+    }
+  }
+}
+```
+In the template:  
+Place `{d.chartOptions:chart}` in the alternative text of an image.
+
+##### Result
+In the generated report, that image area will display an Echarts chart generated based on the JSON configuration (typically in SVG format).
+
+---
+
+### Barcode Generation
+
+#### Barcode as Image
+
+##### Syntax
+```
+{d.value:barcode(barcodeType)}
+```
+- For example: `{d.productCodeBarEan13:barcode(ean13)}`
+
+##### Example
+JSON Data:
+```json
+{
+  "urlQrCode": "http://localhost:13000/",
+  "productCodeBarEan13": "2112345678900",
+  "productGs1": "(01)95012345678903(3103)000123"
+}
+```
+In the template:
+- For a QR Code: `{d.urlQrCode:barcode(qrcode):imageFit(contain)}`
+- For EAN-13: `{d.productCodeBarEan13:barcode(ean13)}`
+- For GS1-128: `{d.productGs1:barcode(gs1-128)}`
+
+##### Result
+After generating the report, each temporary image area will be replaced by the corresponding barcode image, with additional parameters available to adjust size and text display.
+
+---
+
+#### Barcode as Font
+
+##### Syntax
+Similar to the image method but requires installing a specific barcode font. Directly use the tag in the template:
+```
+{d.productValueEan13:barcode(ean13)}
+```
+
+##### Example
+JSON Data:
+```json
+{
+  "productValueEan13": "8056459824973",
+  "productValueEan8": "35967101",
+  "productValueCode39": "GSJ-220097",
+  "productValueCode128": "0312345600001"
+}
+```
+In the template:
+Apply the corresponding tag to each area, and set the font of the first pair of curly braces to the barcode font.
+
+##### Result
+In the report, the barcode will be rendered as a font (only a few barcode types are supported).
+
+---
+
+### Hyperlinks
+
+#### Dynamic Hyperlinks
+
+##### Syntax
+Use Template tags within hyperlink elements, for example:
+```
+{d.url:defaultURL('https://localhost:13000')}
+```
+- `:defaultURL` is used to provide a default link when the URL is invalid.
+
+##### Example
+JSON Data:
+```json
+{
+  "url": "http://example.com"
+}
+```
+In the template:
+Insert `{d.url:defaultURL('https://localhost:13000')}` in the hyperlink attribute.
+
+##### Result
+In the generated report, the hyperlink will point to the valid URL; if the URL format is incorrect, it will be replaced with the default link.
+
+---
+
+### Form Handling
+
+#### Dynamic Text Field
+
+##### Syntax
+Directly insert the tag into an editable text box:
+```
+{d.value}
+```
+
+##### Example
+In the template:  
+Insert `{d.value}` into a text box in LibreOffice.  
+JSON Data:
+```json
+{
+  "value": "Pre-filled content for the user"
+}
+```
+
+##### Result
+In the generated PDF or ODT document, the text box will be pre-filled with “Pre-filled content for the user.”
+
+---
+
+#### Dynamic Checkbox
+
+##### Syntax
+Use a conditional formatter to display different symbols based on a boolean:
+```
+{d.value:ifEQ(true):show(✅):elseShow(❌)}
+```
+
+##### Example
+JSON Data:
+```json
+{
+  "value": true
+}
+```
+In the template:
+```
+{d.value:ifEQ(true):show(✅):elseShow(❌)}
+```
+
+##### Result
+When `value` is true, a ✅ is displayed; otherwise, a ❌ is shown.
 
 ---
 
@@ -2539,5 +3501,94 @@ In the template:
 
 ##### Result
 Outputs “pending”; if the index exceeds the enumeration range, the original value is output.
+
+---
+
+### Data Transformation
+
+#### Position Transformation (:transform)
+
+##### Syntax
+```
+{d.pos:transform(axis, unit)}
+```
+- `axis` can be `x` or `y`;
+- `unit` can be `cm`, `mm`, `inch`, or `pt`.
+
+##### Example
+```
+{d.pos:transform(x, cm)}
+```
+JSON Data:
+```json
+{
+  "pos": 4
+}
+```
+
+##### Result
+The element will be moved 4 centimeters horizontally (relative to its original position).
+
+---
+
+### File Operations
+
+#### Appending Files (:appendFile)
+
+##### Syntax
+```
+{data:appendFile}
+```
+This is only applicable for PDF documents.
+
+##### Example
+JSON Data:
+```json
+{
+  "products": [
+    {
+      "name": "PV 500w Half-Cut",
+      "datasheet": "https://example.com/datasheet1.pdf"
+    },
+    {
+      "name": "PV 425w Half-Cut",
+      "datasheet": "https://example.com/datasheet2.pdf"
+    }
+  ]
+}
+```
+In the template:
+```
+{d.products[i].datasheet:appendFile}
+```
+
+##### Result
+At the end of the generated PDF report, the technical documents for each product will be appended sequentially.
+
+---
+
+#### Attaching Files (:attachFile)
+
+##### Syntax
+```
+{data:attachFile(filename, type)}
+```
+- `filename` is the name displayed for the attachment in the PDF.
+- `type` is the attachment type (for example, “Data” or “Source”).
+
+##### Example
+In the template:
+```
+{d.fileURL:attachFile('factur-x.xml', 'Data')}
+```
+JSON Data:
+```json
+{
+  "fileURL": "https://example.com/factur-x.xml"
+}
+```
+
+##### Result
+In the generated PDF report, the attachment will be embedded for users to download and view.
 
 ---
