@@ -1183,7 +1183,7 @@ Examples and results depend on the actual translation dictionary configuration.
 #### :preserveCharRef
 
 ##### Syntax Explanation
-By default, Carbone removes certain illegal characters from XML (such as `&`, `>`, `<`, etc.). This formatter preserves character references (for example, `&#xa7;` remains unchanged) and is suitable for specific XML generation scenarios.  
+By default, Template removes certain illegal characters from XML (such as `&`, `>`, `<`, etc.). This formatter preserves character references (for example, `&#xa7;` remains unchanged) and is suitable for specific XML generation scenarios.  
 Examples and results depend on the specific use case.
 
 ---
@@ -1808,10 +1808,10 @@ Below is the translated text back into English with the same structure using sec
 
 ## Conditional Statements
 
-Conditional statements allow you to dynamically control the display or hiding of content in the document based on data values. Carbone provides three main ways to write conditions:
+Conditional statements allow you to dynamically control the display or hiding of content in the document based on data values. Template provides three main ways to write conditions:
 
 - **Inline conditions**: Directly output text (or replace it with other text).
-- **Conditional blocks**: Display or hide a section of the document, suitable for multiple Carbone tags, paragraphs, tables, etc.
+- **Conditional blocks**: Display or hide a section of the document, suitable for multiple Template tags, paragraphs, tables, etc.
 - **Smart conditions**: Remove or retain target elements (such as rows, paragraphs, images, etc.) with a single tag, using a more concise syntax.
 
 All conditions begin with a logical evaluation formatter (e.g., ifEQ, ifGT, etc.), followed by action formatters (such as show, elseShow, drop, keep, etc.).
@@ -2930,7 +2930,7 @@ Directly reference the data field in the image replacement tag, for example:
   ```
 
 ##### Result
-When Carbone renders the report, the temporary image will be replaced by the image specified in the data.
+When Template renders the report, the temporary image will be replaced by the image specified in the data.
 
 ---
 
@@ -3252,7 +3252,7 @@ After generating the report, the phrase “is an elongated, edible fruit” will
 #### Native Charts
 
 ##### Syntax
-Native charts do not rely on specific Carbone tags; data binding is performed within XLSX/ODS spreadsheets.  
+Native charts do not rely on specific Template tags; data binding is performed within XLSX/ODS spreadsheets.  
 In LibreOffice, they can be combined with `{bindChart()}`.
 
 ##### Example
@@ -3313,7 +3313,7 @@ In the generated report, that image area will display an Echarts chart generated
 JSON Data:
 ```json
 {
-  "urlQrCode": "http://carbone.io/",
+  "urlQrCode": "http://localhost:13000/",
   "productCodeBarEan13": "2112345678900",
   "productGs1": "(01)95012345678903(3103)000123"
 }
@@ -3359,9 +3359,9 @@ In the report, the barcode will be rendered as a font (only a few barcode types 
 #### Dynamic Hyperlinks
 
 ##### Syntax
-Use Carbone tags within hyperlink elements, for example:
+Use Template tags within hyperlink elements, for example:
 ```
-{d.url:defaultURL('https://carbone.io')}
+{d.url:defaultURL('https://localhost:13000')}
 ```
 - `:defaultURL` is used to provide a default link when the URL is invalid.
 
@@ -3373,7 +3373,7 @@ JSON Data:
 }
 ```
 In the template:
-Insert `{d.url:defaultURL('https://carbone.io')}` in the hyperlink attribute.
+Insert `{d.url:defaultURL('https://localhost:13000')}` in the hyperlink attribute.
 
 ##### Result
 In the generated report, the hyperlink will point to the valid URL; if the URL format is incorrect, it will be replaced with the default link.

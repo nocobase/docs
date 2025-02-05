@@ -1168,7 +1168,7 @@ null:print('hello!')       // 输出 "hello!"
 #### :preserveCharRef
 
 ##### 语法说明
-默认情况下，Carbone 会移除 XML 中的某些非法字符（如 &、>、< 等），此格式化器可保留字符引用（例如 `&#xa7;` 保持不变），适用于特定的 XML 生成场景。  
+默认情况下，会移除 XML 中的某些非法字符（如 &、>、< 等），此格式化器可保留字符引用（例如 `&#xa7;` 保持不变），适用于特定的 XML 生成场景。  
 示例和结果依据具体使用场景而定。
 
 ---
@@ -1789,10 +1789,10 @@ undefined:arrayMap()                  // 输出 undefined
 
 ## 条件判断
 
-条件判断允许根据数据的值来动态控制文档中内容的显示或隐藏。Carbone 提供了三种主要的条件写法：
+条件判断允许根据数据的值来动态控制文档中内容的显示或隐藏。提供了三种主要的条件写法：
 
 - **内联条件**：直接输出文本（或替换为其他文本）。
-- **条件块**：对文档中一段区域进行显示或隐藏，适用于多个 Carbone 标签、段落、表格等。
+- **条件块**：对文档中一段区域进行显示或隐藏，适用于多个 标签、段落、表格等。
 - **智能条件**：通过一条标签直接移除或保留目标元素（如行、段落、图片等），语法更简洁。
 
 所有条件均以一个逻辑判断格式器开始（例如 ifEQ、ifGT 等），后续跟随执行动作的格式器（如 show、elseShow、drop、keep 等）。
@@ -2907,7 +2907,7 @@ JSON生成: {c:printJSON}
   ```
 
 ##### 结果
-Carbone 渲染时，会将临时图片替换为数据中指定的图片。
+渲染时，会将临时图片替换为数据中指定的图片。
 
 ---
 
@@ -3229,7 +3229,7 @@ The famous fruit {d.name} {d.description:html}, botanically a berry.
 #### 原生图表（Native Charts）
 
 ##### 语法
-原生图表不依赖特定 Carbone 标签，数据绑定在 XLSX/ODS 表格中完成。  
+原生图表不依赖特定标签，数据绑定在 XLSX/ODS 表格中完成。  
 在 LibreOffice 中可结合 `{bindChart()}` 使用。
 
 ##### 示例
@@ -3290,7 +3290,7 @@ JSON 数据：
 JSON 数据：
 ```json
 {
-  "urlQrCode": "http://carbone.io/",
+  "urlQrCode": "http://localhost:13000",
   "productCodeBarEan13": "2112345678900",
   "productGs1": "(01)95012345678903(3103)000123"
 }
@@ -3336,9 +3336,9 @@ JSON 数据：
 #### 动态超链接
 
 ##### 语法
-在超链接元素中使用 Carbone 标签，例如：
+在超链接元素中使用标签，例如：
 ```
-{d.url:defaultURL('https://carbone.io')}
+{d.url:defaultURL('http://localhost:13000')}
 ```
 - `:defaultURL` 用于在 URL 无效时提供默认链接。
 
@@ -3350,7 +3350,7 @@ JSON 数据：
 }
 ```
 模板中：
-在超链接属性中写入 `{d.url:defaultURL('https://carbone.io')}`
+在超链接属性中写入 `{d.url:defaultURL('http://localhost:13000/')}`
 
 ##### 结果
 生成的报告中，超链接将指向有效 URL，如 URL 格式不正确则替换为默认链接。

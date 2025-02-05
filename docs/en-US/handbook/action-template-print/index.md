@@ -24,46 +24,46 @@ The Template Printing plugin is a powerful tool that allows you to edit template
 ### Activating Template Printing
 
 1. **Open the Detail Block**:
-   - Navigate to the detail block in the application where you need to use the template printing feature.
+- Navigate to the detail block in the application where you need to use the template printing feature.
 
 2. **Access the Configuration Operation Menu**:
-   - Click the "Configuration Operation" menu at the top of the interface.
+- Click the "Configuration Operation" menu at the top of the interface.
 
 3. **Select "Template Printing"**:
-   - Click the "Template Printing" option in the dropdown menu to activate the plugin.
+- Click the "Template Printing" option in the dropdown menu to activate the plugin.
 
-   ![Activate Template Printing](https://static-docs.nocobase.com/20241212150539-2024-12-12-15-05-43.png)
+![Activate Template Printing](https://static-docs.nocobase.com/20241212150539-2024-12-12-15-05-43.png)
 
 ### Configuring Templates
 
 1. **Access the Template Configuration Page**:
-   - In the configuration menu of the "Template Printing" button, select the "Template Configuration" option.
+- In the configuration menu of the "Template Printing" button, select the "Template Configuration" option.
 
-   ![Template Configuration Option](https://static-docs.nocobase.com/20241212151858-2024-12-12-15-19-01.png)
+![Template Configuration Option](https://static-docs.nocobase.com/20241212151858-2024-12-12-15-19-01.png)
 
 2. **Add a New Template**:
-   - Click the "Add Template" button to enter the template addition page.
+- Click the "Add Template" button to enter the template addition page.
 
-   ![Add Template Button](https://static-docs.nocobase.com/20241212151243-2024-12-12-15-12-46.png)
+![Add Template Button](https://static-docs.nocobase.com/20241212151243-2024-12-12-15-12-46.png)
 
 3. **Fill in Template Information**:
-   - In the template form, fill in the template name and select the template type (Word, Excel, PowerPoint).
-   - Upload the corresponding template file (supports `.docx`, `.xlsx`, `.pptx` formats).
+- In the template form, fill in the template name and select the template type (Word, Excel, PowerPoint).
+- Upload the corresponding template file (supports `.docx`, `.xlsx`, `.pptx` formats).
 
-   ![Configure Template Name and File](https://static-docs.nocobase.com/20241212151518-2024-12-12-15-15-21.png)
+![Configure Template Name and File](https://static-docs.nocobase.com/20241212151518-2024-12-12-15-15-21.png)
 
 4. **Edit and Save the Template**:
-   - Go to the "Field List" page, copy fields, and fill them into the template.
-    ![Field List](https://static-docs.nocobase.com/20250107141010.png)
-    ![20241212152743-2024-12-12-15-27-45](https://static-docs.nocobase.com/20241212152743-2024-12-12-15-27-45.png)
-   - After filling in the details, click the "Save" button to complete the template addition.
+- Go to the "Field List" page, copy fields, and fill them into the template.
+  ![Field List](https://static-docs.nocobase.com/20250107141010.png)
+  ![20241212152743-2024-12-12-15-27-45](https://static-docs.nocobase.com/20241212152743-2024-12-12-15-27-45.png)
+- After filling in the details, click the "Save" button to complete the template addition.
 
 5. **Template Management**:
-   - Click the "Use" button on the right side of the template list to activate the template.
-   - Click the "Edit" button to modify the template name or replace the template file.
-   - Click the "Download" button to download the configured template file.
-   - Click the "Delete" button to remove unnecessary templates. The system will prompt for confirmation to avoid accidental deletion.
-   ![Template Management](https://static-docs.nocobase.com/20250107140436.png)
+- Click the "Use" button on the right side of the template list to activate the template.
+- Click the "Edit" button to modify the template name or replace the template file.
+- Click the "Download" button to download the configured template file.
+- Click the "Delete" button to remove unnecessary templates. The system will prompt for confirmation to avoid accidental deletion.
+  ![Template Management](https://static-docs.nocobase.com/20250107140436.png)
 
 ## Basic Syntax
 
@@ -1183,7 +1183,7 @@ Examples and results depend on the actual translation dictionary configuration.
 #### :preserveCharRef
 
 ##### Syntax Explanation
-By default, Carbone removes certain illegal characters from XML (such as `&`, `>`, `<`, etc.). This formatter preserves character references (for example, `&#xa7;` remains unchanged) and is suitable for specific XML generation scenarios.  
+By default, Template removes certain illegal characters from XML (such as `&`, `>`, `<`, etc.). This formatter preserves character references (for example, `&#xa7;` remains unchanged) and is suitable for specific XML generation scenarios.  
 Examples and results depend on the specific use case.
 
 ---
@@ -1808,10 +1808,10 @@ Below is the translated text back into English with the same structure using sec
 
 ## Conditional Statements
 
-Conditional statements allow you to dynamically control the display or hiding of content in the document based on data values. Carbone provides three main ways to write conditions:
+Conditional statements allow you to dynamically control the display or hiding of content in the document based on data values. Template provides three main ways to write conditions:
 
 - **Inline conditions**: Directly output text (or replace it with other text).
-- **Conditional blocks**: Display or hide a section of the document, suitable for multiple Carbone tags, paragraphs, tables, etc.
+- **Conditional blocks**: Display or hide a section of the document, suitable for multiple Template tags, paragraphs, tables, etc.
 - **Smart conditions**: Remove or retain target elements (such as rows, paragraphs, images, etc.) with a single tag, using a more concise syntax.
 
 All conditions begin with a logical evaluation formatter (e.g., ifEQ, ifGT, etc.), followed by action formatters (such as show, elseShow, drop, keep, etc.).
@@ -2930,7 +2930,7 @@ Directly reference the data field in the image replacement tag, for example:
   ```
 
 ##### Result
-When Carbone renders the report, the temporary image will be replaced by the image specified in the data.
+When Template renders the report, the temporary image will be replaced by the image specified in the data.
 
 ---
 
@@ -3252,7 +3252,7 @@ After generating the report, the phrase “is an elongated, edible fruit” will
 #### Native Charts
 
 ##### Syntax
-Native charts do not rely on specific Carbone tags; data binding is performed within XLSX/ODS spreadsheets.  
+Native charts do not rely on specific Template tags; data binding is performed within XLSX/ODS spreadsheets.  
 In LibreOffice, they can be combined with `{bindChart()}`.
 
 ##### Example
@@ -3313,7 +3313,7 @@ In the generated report, that image area will display an Echarts chart generated
 JSON Data:
 ```json
 {
-  "urlQrCode": "http://carbone.io/",
+  "urlQrCode": "http://localhost:13000/",
   "productCodeBarEan13": "2112345678900",
   "productGs1": "(01)95012345678903(3103)000123"
 }
@@ -3359,9 +3359,9 @@ In the report, the barcode will be rendered as a font (only a few barcode types 
 #### Dynamic Hyperlinks
 
 ##### Syntax
-Use Carbone tags within hyperlink elements, for example:
+Use Template tags within hyperlink elements, for example:
 ```
-{d.url:defaultURL('https://carbone.io')}
+{d.url:defaultURL('https://localhost:13000')}
 ```
 - `:defaultURL` is used to provide a default link when the URL is invalid.
 
@@ -3373,7 +3373,7 @@ JSON Data:
 }
 ```
 In the template:
-Insert `{d.url:defaultURL('https://carbone.io')}` in the hyperlink attribute.
+Insert `{d.url:defaultURL('https://localhost:13000')}` in the hyperlink attribute.
 
 ##### Result
 In the generated report, the hyperlink will point to the valid URL; if the URL format is incorrect, it will be replaced with the default link.
