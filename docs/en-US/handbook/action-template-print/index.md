@@ -1,6 +1,12 @@
 # Template Printing
 
 <PluginInfo commercial="true" name="action-template-print"></PluginInfo>
+<style>
+.markdown h3 {
+    font-size: 18px;
+    font-weight: 500;
+}
+</style>
 
 ## Introduction
 
@@ -185,7 +191,7 @@ Loop handling is used to repeatedly render data from arrays or objects by defini
 
 ### Iterating over Arrays
 
-#### Syntax Description
+#### 1. Syntax Description
 
 - Use the tag `{d.array[i].property}` to define the current loop item, and use `{d.array[i+1].property}` to specify the next item to mark the loop area.
 - During the loop, the first line (the `[i]` part) is automatically used as the template for repetition; you only need to write the loop example once in the template.
@@ -196,7 +202,7 @@ Example syntax format:
 {d.arrayName[i+1].property}
 ```
 
-#### Example: Simple Array Loop
+#### 2. Example: Simple Array Loop
 
 ##### Data
 ```json
@@ -228,7 +234,7 @@ Peugeot4
 
 ---
 
-#### Example: Nested Array Loop
+#### 3. Example: Nested Array Loop
 
 Suitable for cases where an array contains nested arrays; nesting can be at an infinite level.
 
@@ -276,7 +282,7 @@ Kia
 
 ---
 
-#### Example: Bidirectional Loop (Advanced Feature, v4.8.0+)
+#### 4. Example: Bidirectional Loop (Advanced Feature, v4.8.0+)
 
 Bidirectional loops allow iteration over both rows and columns simultaneously, which is suitable for generating comparison tables and other complex layouts (note: currently, some formats are officially supported only in DOCX, HTML, and MD templates).
 
@@ -313,7 +319,7 @@ EV6Prius 3
 
 ---
 
-#### Example: Accessing Loop Iterator Values (v4.0.0+)
+#### 5. Example: Accessing Loop Iterator Values (v4.0.0+)
 
 Within a loop, you can directly access the current iteration’s index, which helps meet special formatting requirements.
 
@@ -328,7 +334,7 @@ Within a loop, you can directly access the current iteration’s index, which he
 
 ### Iterating over Objects
 
-#### Syntax Description
+#### 1. Syntax Description
 
 - For properties in an object, use `.att` to obtain the property name and `.val` to obtain the property value.
 - During iteration, each property item is traversed one by one.
@@ -339,7 +345,7 @@ Example syntax format:
 {d.objectName[i].val}  // property value
 ```
 
-#### Example: Object Property Iteration
+#### 2. Example: Object Property Iteration
 
 ##### Data
 ```json
@@ -373,7 +379,7 @@ bob30
 
 Using the sorting feature, you can directly sort array data within the template.
 
-#### Syntax Description: Ascending Order Sorting
+#### 1. Syntax Description: Ascending Order Sorting
 
 - Use an attribute as the sorting criterion in the loop tag. The syntax format is:
   ```
@@ -382,7 +388,7 @@ Using the sorting feature, you can directly sort array data within the template.
   ```
 - For multiple sorting criteria, separate the attributes with commas within the brackets.
 
-#### Example: Sorting by Numeric Attribute
+#### 2. Example: Sorting by Numeric Attribute
 
 ##### Data
 ```json
@@ -412,7 +418,7 @@ BMW
 Ferrari
 ```
 
-#### Example: Multi-Attribute Sorting
+#### 3. Example: Multi-Attribute Sorting
 
 ##### Data
 ```json
@@ -450,14 +456,14 @@ Ferrari
 
 Filtering is used to filter out rows in a loop based on specific conditions.
 
-#### Syntax Description: Numeric Filtering
+#### 1. Syntax Description: Numeric Filtering
 
 - Add conditions in the loop tag (for example, `age > 19`). The syntax format is:
   ```
   {d.array[i, condition].property}
   ```
 
-#### Example: Numeric Filtering
+#### 2. Example: Numeric Filtering
 
 ##### Data
 ```json
@@ -485,14 +491,14 @@ Bob
 
 ---
 
-#### Syntax Description: String Filtering
+#### 3. Syntax Description: String Filtering
 
 - Specify string conditions using single quotes. For example:
   ```
   {d.array[i, type='rocket'].name}
   ```
 
-#### Example: String Filtering
+#### 4. Example: String Filtering
 
 ##### Data
 ```json
@@ -520,14 +526,14 @@ Falcon Heavy
 
 ---
 
-#### Syntax Description: Filter the First N Items
+#### 5. Syntax Description: Filter the First N Items
 
 - You can use the loop index `i` to filter out the first N elements. For example:
   ```
   {d.array[i, i < N].property}
   ```
 
-#### Example: Filtering the First Two Items
+#### 6. Example: Filtering the First Two Items
 
 ##### Data
 ```json
@@ -555,13 +561,13 @@ Model S
 
 ---
 
-#### Syntax Description: Exclude the Last N Items
+#### 7. Syntax Description: Exclude the Last N Items
 
 - Use negative indexing `i` to represent items from the end. For example:
   - `{d.array[i=-1].property}` retrieves the last item.
   - `{d.array[i, i!=-1].property}` excludes the last item.
 
-#### Example: Excluding the Last One and Last Two Items
+#### 8. Example: Excluding the Last One and Last Two Items
 
 ##### Data
 ```json
@@ -602,14 +608,14 @@ Model S
 
 ---
 
-#### Syntax Description: Intelligent Filtering
+#### 9. Syntax Description: Intelligent Filtering
 
 - Using intelligent condition blocks, you can hide an entire row based on complex conditions. For example:
   ```
   {d.array[i].property:ifIN('keyword'):drop(row)}
   ```
 
-#### Example: Intelligent Filtering
+#### 10. Example: Intelligent Filtering
 
 ##### Data
 ```json
@@ -642,7 +648,7 @@ Model 3
 
 ### Grouping
 
-#### Syntax Description
+#### 1. Syntax Description
 
 - Use a custom iterator to group data by a specified attribute and apply an aggregate formatter (such as `aggSum`) to sum the grouped data.
 - Example syntax format:
@@ -651,7 +657,7 @@ Model 3
   {d.array[groupingAttribute+1].property}
   ```
 
-#### Example: Grouping by Brand and Summing
+#### 2. Example: Grouping by Brand and Summing
 
 ##### Data
 ```json
@@ -685,7 +691,7 @@ Venturi3
 
 ### Deduplication
 
-#### Syntax Description
+#### 1. Syntax Description
 
 - Using a custom iterator, you can obtain unique (non-duplicate) items based on a property value. The syntax is similar to a normal loop but automatically ignores duplicate items.
 
@@ -695,7 +701,7 @@ Example format:
 {d.array[property+1].property}
 ```
 
-#### Example: Selecting Unique Data
+#### 2. Example: Selecting Unique Data
 
 ##### Data
 ```json
@@ -735,14 +741,14 @@ Formatters are used to convert raw data into text that is easy to read. They are
 
 ### Overview
 
-#### Syntax Explanation
+#### 1. Syntax Explanation
 The basic invocation of a formatter is as follows:
 ```
 {d.property:formatter1:formatter2(...)}
 ```  
 For example, in the case of converting the string `"JOHN"` to `"John"`, the formatter `lowerCase` is used first to convert all letters to lower case, and then `ucFirst` is used to capitalize the first letter.
 
-#### Example
+#### 2. Example
 
 Data:
 ```json
@@ -757,7 +763,7 @@ Template:
 My name is {d.name:lowerCase:ucFirst}. I was born on {d.birthday:formatD(LL)}.
 ```
 
-#### Result
+#### 3. Result
 
 After rendering, the output is:
 ```
@@ -768,15 +774,15 @@ My name is John. I was born on January 31, 2000.
 
 ### Constant Parameters
 
-#### Syntax Explanation
+#### 1. Syntax Explanation
 Many formatters support one or more constant parameters, which are separated by commas and enclosed in parentheses to modify the output. For example, `:prepend(myPrefix)` will add “myPrefix” in front of the text.  
 **Note:** If the parameter contains commas or spaces, it must be enclosed in single quotes, for example: `prepend('my prefix')`.
 
-#### Example
+#### 2. Example
 
 Template example (see the specific formatter usage for details).
 
-#### Result
+#### 3. Result
 
 The output will have the specified prefix added in front of the text.
 
@@ -784,7 +790,7 @@ The output will have the specified prefix added in front of the text.
 
 ### Dynamic Parameters
 
-#### Syntax Explanation
+#### 1. Syntax Explanation
 Formatters also support dynamic parameters. These parameters start with a dot (`.`) and are not enclosed in quotes.  
 There are two methods to specify dynamic parameters:
 - **Absolute JSON Path:** Begins with `d.` or `c.` (referring to root data or supplemental data).
@@ -803,7 +809,7 @@ If you need to access data from a higher level (parent or above), you can use mu
 {d.subObject.qtyB:add(..qtyA):add(.qtyC)}
 ```
 
-#### Example
+#### 2. Example
 
 Data:
 ```json
@@ -829,7 +835,7 @@ Usage in Template:
 {d.subArray[0].qtyE:add(..subObject.qtyC)}       // Result: 6 (3 + 3)
 ```
 
-#### Result
+#### 3. Result
 
 The examples yield 8, 8, 28, and 6 respectively.
 
@@ -845,7 +851,7 @@ The examples yield 8, 8, 28, and 6 respectively.
 
 This section provides various formatters for text data. The following subsections introduce each formatter’s syntax, examples, and results.
 
-#### :lowerCase
+#### 1. :lowerCase
 
 ##### Syntax Explanation
 Converts all letters to lower case.
@@ -863,7 +869,7 @@ Each example outputs as indicated in the comments.
 
 ---
 
-#### :upperCase
+#### 2. :upperCase
 
 ##### Syntax Explanation
 Converts all letters to upper case.
@@ -881,7 +887,7 @@ Each example outputs as indicated in the comments.
 
 ---
 
-#### :ucFirst
+#### 3. :ucFirst
 
 ##### Syntax Explanation
 Capitalizes only the first letter of the string while leaving the rest unchanged.
@@ -900,7 +906,7 @@ The output is as described in the comments.
 
 ---
 
-#### :ucWords
+#### 4. :ucWords
 
 ##### Syntax Explanation
 Capitalizes the first letter of each word in the string.
@@ -919,7 +925,7 @@ The output is as shown in the examples.
 
 ---
 
-#### :print(message)
+#### 5. :print(message)
 
 ##### Syntax Explanation
 Always returns the specified message regardless of the original data, making it useful as a fallback formatter.  
@@ -939,7 +945,7 @@ Returns the specified string "hello!" in all cases.
 
 ---
 
-#### :printJSON
+#### 6. :printJSON
 
 ##### Syntax Explanation
 Converts an object or array into a JSON-formatted string.
@@ -947,8 +953,11 @@ Converts an object or array into a JSON-formatted string.
 ##### Example
 ```
 [{'id':2,'name':'homer'},{'id':3,'name':'bart'}]:printJSON()
-// Outputs "[\n  {\"id\": 2, \"name\": \"homer\"},\n  {\"id\": 3, \"name\": \"bart\"}\n]"
-'my car':printJSON()   // Outputs "\"my car\""
+// Outputs "[
+  {"id": 2, "name": "homer"},
+  {"id": 3, "name": "bart"}
+]"
+'my car':printJSON()   // Outputs ""my car""
 ```
 
 ##### Result
@@ -956,7 +965,7 @@ The output is the JSON-formatted string of the given data.
 
 ---
 
-#### :unaccent
+#### 7. :unaccent
 
 ##### Syntax Explanation
 Removes diacritical marks from text, converting it to an unaccented format.
@@ -974,21 +983,28 @@ All examples output the text with accents removed.
 
 ---
 
-#### :convCRLF
+#### 8. :convCRLF
 
 ##### Syntax Explanation
-Converts carriage return and newline characters (`\r\n` or `\n`) into document-specific line break tags. This is useful for formats such as DOCX, PPTX, ODT, ODP, and ODS.  
-**Note:** When using `:html` before `:convCRLF`, the `\n` will be converted to a `<br>` tag.
+Converts carriage return and newline characters (`
+` or `
+`) into document-specific line break tags. This is useful for formats such as DOCX, PPTX, ODT, ODP, and ODS.  
+**Note:** When using `:html` before `:convCRLF`, the `
+` will be converted to a `<br>` tag.
 
 ##### Example
 ```
 // For ODT format:
-'my blue \n car':convCRLF()    // Outputs "my blue <text:line-break/> car"
-'my blue \r\n car':convCRLF()    // Outputs "my blue <text:line-break/> car"
+'my blue 
+ car':convCRLF()    // Outputs "my blue <text:line-break/> car"
+'my blue 
+ car':convCRLF()    // Outputs "my blue <text:line-break/> car"
 
 // For DOCX format:
-'my blue \n car':convCRLF()    // Outputs "my blue </w:t><w:br/><w:t> car"
-'my blue \r\n car':convCRLF()    // Outputs "my blue </w:t><w:br/><w:t> car"
+'my blue 
+ car':convCRLF()    // Outputs "my blue </w:t><w:br/><w:t> car"
+'my blue 
+ car':convCRLF()    // Outputs "my blue </w:t><w:br/><w:t> car"
 ```
 
 ##### Result
@@ -996,7 +1012,7 @@ The output shows the line break markers appropriate for the target document form
 
 ---
 
-#### :substr(begin, end, wordMode)
+#### 9. :substr(begin, end, wordMode)
 
 ##### Syntax Explanation
 Performs substring operations on a string, starting at index `begin` (0-based) and ending just before index `end`.  
@@ -1017,7 +1033,7 @@ The output is the substring extracted according to the parameters.
 
 ---
 
-#### :split(delimiter)
+#### 10. :split(delimiter)
 
 ##### Syntax Explanation
 Splits a string into an array using the specified delimiter.  
@@ -1036,7 +1052,7 @@ The example results in an array split by the given delimiter.
 
 ---
 
-#### :padl(targetLength, padString)
+#### 11. :padl(targetLength, padString)
 
 ##### Syntax Explanation
 Pads the left side of a string with a specified character until the final string reaches `targetLength`.  
@@ -1059,7 +1075,7 @@ Each example outputs the string padded on the left accordingly.
 
 ---
 
-#### :padr(targetLength, padString)
+#### 12. :padr(targetLength, padString)
 
 ##### Syntax Explanation
 Pads the right side of a string with a specified character until the final string reaches `targetLength`.  
@@ -1079,7 +1095,7 @@ The output shows the string padded on the right.
 
 ---
 
-#### :ellipsis(maximum)
+#### 13. :ellipsis(maximum)
 
 ##### Syntax Explanation
 If the text exceeds the specified number of characters, appends an ellipsis ("...") at the end.  
@@ -1098,7 +1114,7 @@ The examples show text truncated and appended with an ellipsis if needed.
 
 ---
 
-#### :prepend(textToPrepend)
+#### 14. :prepend(textToPrepend)
 
 ##### Syntax Explanation
 Prepends the specified text to the beginning of the string.  
@@ -1115,7 +1131,7 @@ The output shows the text with the specified prefix added.
 
 ---
 
-#### :append(textToAppend)
+#### 15. :append(textToAppend)
 
 ##### Syntax Explanation
 Appends the specified text to the end of the string.  
@@ -1132,7 +1148,7 @@ The output shows the text with the specified suffix added.
 
 ---
 
-#### :replace(oldText, newText)
+#### 16. :replace(oldText, newText)
 
 ##### Syntax Explanation
 Replaces all occurrences of `oldText` in the text with `newText`.  
@@ -1154,7 +1170,7 @@ The output is the text after replacing the specified segments.
 
 ---
 
-#### :len
+#### 17. :len
 
 ##### Syntax Explanation
 Returns the length of a string or an array.
@@ -1172,7 +1188,7 @@ Outputs the corresponding length as a number.
 
 ---
 
-#### :t
+#### 18. :t
 
 ##### Syntax Explanation
 Translates the text using a translation dictionary.  
@@ -1180,7 +1196,7 @@ Examples and results depend on the actual translation dictionary configuration.
 
 ---
 
-#### :preserveCharRef
+#### 19. :preserveCharRef
 
 ##### Syntax Explanation
 By default, Template removes certain illegal characters from XML (such as `&`, `>`, `<`, etc.). This formatter preserves character references (for example, `&#xa7;` remains unchanged) and is suitable for specific XML generation scenarios.  
@@ -1190,7 +1206,7 @@ Examples and results depend on the specific use case.
 
 ### Number Formatting
 
-#### :formatN(precision)
+#### 1. :formatN(precision)
 
 ##### Syntax Explanation
 Formats a number according to localization settings.  
@@ -1210,7 +1226,7 @@ The number is output according to the specified precision and localization forma
 
 ---
 
-#### :round(precision)
+#### 2. :round(precision)
 
 ##### Syntax Explanation
 Rounds the number to the specified number of decimal places.
@@ -1226,7 +1242,7 @@ The output is the number rounded to the given precision.
 
 ---
 
-#### :add(value)
+#### 3. :add(value)
 
 ##### Syntax Explanation
 Adds the specified value to the current number.  
@@ -1244,7 +1260,7 @@ The output is the sum of the current number and the specified value.
 
 ---
 
-#### :sub(value)
+#### 4. :sub(value)
 
 ##### Syntax Explanation
 Subtracts the specified value from the current number.  
@@ -1262,7 +1278,7 @@ The output is the current number minus the specified value.
 
 ---
 
-#### :mul(value)
+#### 5. :mul(value)
 
 ##### Syntax Explanation
 Multiplies the current number by the specified value.  
@@ -1280,7 +1296,7 @@ The output is the product of the current number and the specified value.
 
 ---
 
-#### :div(value)
+#### 6. :div(value)
 
 ##### Syntax Explanation
 Divides the current number by the specified value.  
@@ -1298,7 +1314,7 @@ The output is the result of the division.
 
 ---
 
-#### :mod(value)
+#### 7. :mod(value)
 
 ##### Syntax Explanation
 Computes the modulus (remainder) of the current number divided by the specified value.  
@@ -1316,7 +1332,7 @@ The output is the remainder from the modulus operation.
 
 ---
 
-#### :abs
+#### 8. :abs
 
 ##### Syntax Explanation
 Returns the absolute value of the number.
@@ -1334,7 +1350,7 @@ The output is the absolute value of the input number.
 
 ---
 
-#### :ceil
+#### 9. :ceil
 
 ##### Syntax Explanation
 Rounds the number upward to the smallest integer that is greater than or equal to the current number.
@@ -1351,7 +1367,7 @@ The output is the number rounded upward to the nearest integer.
 
 ---
 
-#### :floor
+#### 10. :floor
 
 ##### Syntax Explanation
 Rounds the number downward to the largest integer that is less than or equal to the current number.
@@ -1368,7 +1384,7 @@ The output is the number rounded downward to the nearest integer.
 
 ---
 
-#### :int
+#### 11. :int
 
 ##### Syntax Explanation
 Converts the number to an integer (not recommended for use).
@@ -1378,7 +1394,7 @@ Depends on the specific conversion case.
 
 ---
 
-#### :toEN
+#### 12. :toEN
 
 ##### Syntax Explanation
 Converts the number to English format (using `.` as the decimal point). Not recommended for use.
@@ -1388,7 +1404,7 @@ Depends on the specific conversion case.
 
 ---
 
-#### :toFixed
+#### 13. :toFixed
 
 ##### Syntax Explanation
 Converts the number to a string while keeping only the specified number of decimal places. Not recommended for use.
@@ -1398,7 +1414,7 @@ Depends on the specific conversion case.
 
 ---
 
-#### :toFR
+#### 14. :toFR
 
 ##### Syntax Explanation
 Converts the number to French format (using `,` as the decimal separator). Not recommended for use.
@@ -1410,7 +1426,7 @@ Depends on the specific conversion case.
 
 ### Currency Formatting
 
-#### :formatC(precisionOrFormat, targetCurrency)
+#### 1. :formatC(precisionOrFormat, targetCurrency)
 
 ##### Syntax Explanation
 Formats a currency number and allows specifying the number of decimals or a particular output format.  
@@ -1441,7 +1457,7 @@ The output depends on the API options and exchange rate settings.
 
 ---
 
-#### :convCurr(target, source)
+#### 2. :convCurr(target, source)
 
 ##### Syntax Explanation
 Converts a number from one currency to another. The exchange rate can be passed via API options or set globally.  
@@ -1467,7 +1483,7 @@ The output is the converted currency value.
 
 ### Date Formatting
 
-#### :formatD(patternOut, patternIn)
+#### 1. :formatD(patternOut, patternIn)
 
 ##### Syntax Explanation
 Formats a date by accepting an output format `patternOut` and an optional input format `patternIn` (defaults to ISO 8601).  
@@ -1492,7 +1508,7 @@ The output is the date formatted as specified.
 
 ---
 
-#### :addD(amount, unit, patternIn)
+#### 2. :addD(amount, unit, patternIn)
 
 ##### Syntax Explanation
 Adds a specified amount of time to a date. Supported units include: day, week, month, quarter, year, hour, minute, second, millisecond.  
@@ -1516,7 +1532,7 @@ The output is the new date after the specified time has been added.
 
 ---
 
-#### :subD(amount, unit, patternIn)
+#### 3. :subD(amount, unit, patternIn)
 
 ##### Syntax Explanation
 Subtracts a specified amount of time from a date. The parameters are the same as in `addD`.
@@ -1536,7 +1552,7 @@ The output is the new date after the specified time has been subtracted.
 
 ---
 
-#### :startOfD(unit, patternIn)
+#### 4. :startOfD(unit, patternIn)
 
 ##### Syntax Explanation
 Sets the date to the start of the specified time unit.  
@@ -1559,7 +1575,7 @@ The output is the date set to the start of the specified unit.
 
 ---
 
-#### :endOfD(unit, patternIn)
+#### 5. :endOfD(unit, patternIn)
 
 ##### Syntax Explanation
 Sets the date to the end of the specified time unit.  
@@ -1580,7 +1596,7 @@ The output is the date set to the end of the specified unit.
 
 ---
 
-#### :diffD(toDate, unit, patternFromDate, patternToDate)
+#### 6. :diffD(toDate, unit, patternFromDate, patternToDate)
 
 ##### Syntax Explanation
 Calculates the difference between two dates and outputs it in the specified unit. Supported units include:
@@ -1617,7 +1633,7 @@ The output is the time difference between the two dates, converted into the spec
 
 ---
 
-#### :convDate(patternIn, patternOut)
+#### 7. :convDate(patternIn, patternOut)
 
 ##### Syntax Explanation
 Converts a date from one format to another (not recommended for use).  
@@ -1643,7 +1659,7 @@ The output is the date converted to the specified format.
 
 ---
 
-#### Date Format Patterns
+#### 8. Date Format Patterns
 
 Common date format symbols (refer to the DayJS documentation):
 - `X`: Unix timestamp (in seconds), e.g., 1360013296
@@ -1668,7 +1684,7 @@ Common date format symbols (refer to the DayJS documentation):
 
 ### Interval Formatting
 
-#### :formatI(patternOut, patternIn)
+#### 1. :formatI(patternOut, patternIn)
 
 ##### Syntax Explanation
 Formats a duration or interval. The supported output formats include:
@@ -1713,7 +1729,7 @@ The output is the duration or interval displayed in the specified unit or format
 
 ### Array Formatting
 
-#### :arrayJoin(separator, index, count)
+#### 1. :arrayJoin(separator, index, count)
 
 ##### Syntax Explanation
 Joins an array of strings or numbers into a single string.  
@@ -1744,7 +1760,7 @@ The output is a string created by joining the array elements according to the sp
 
 ---
 
-#### :arrayMap(objSeparator, attSeparator, attributes)
+#### 2. :arrayMap(objSeparator, attSeparator, attributes)
 
 ##### Syntax Explanation
 Transforms an array of objects into a string. It does not process nested objects or arrays.  
@@ -1784,7 +1800,7 @@ The output is a string generated by mapping and joining the array elements, igno
 
 ---
 
-#### :count(start)
+#### 3. :count(start)
 
 ##### Syntax Explanation
 Counts the row number in an array and outputs the current row number.  
@@ -1846,7 +1862,7 @@ The following sections introduce the detailed syntax, examples, and results for 
 
 ### Inline Conditions
 
-#### :show(text) / :elseShow(text)
+#### 1. :show(text) / :elseShow(text)
 
 ##### Syntax
 ```
@@ -1878,7 +1894,7 @@ val5 = high
 
 ---
 
-#### Switch Case (Multiple Conditionals)
+#### 2. Switch Case (Multiple Conditionals)
 
 ##### Syntax
 Use consecutive condition formatters to build a structure similar to a switch-case:
@@ -1915,7 +1931,7 @@ val3 = C
 
 ---
 
-#### Multi-variable Conditionals
+#### 3. Multi-variable Conditionals
 
 ##### Syntax
 Use the logical operators and/or to test multiple variables:
@@ -1953,7 +1969,7 @@ In the following sections, the described formatters use the inline condition syn
 {data:formatter(parameter):show(text):elseShow(alternative text)}
 ```
 
-#### :and(value)
+#### 1. :and(value)
 
 ##### Syntax
 ```
@@ -1970,7 +1986,7 @@ If `d.car` equals `'delorean'` and `d.speed` is greater than 80, the output is `
 
 ---
 
-#### :or(value)
+#### 2. :or(value)
 
 ##### Syntax
 ```
@@ -1987,7 +2003,7 @@ If `d.car` equals `'delorean'` or `d.speed` is greater than 80, the output is `T
 
 ---
 
-#### :ifEM()
+#### 3. :ifEM()
 
 ##### Syntax
 ```
@@ -2005,7 +2021,7 @@ For `null` or an empty array, the output is `Result true`; otherwise, it is `Res
 
 ---
 
-#### :ifNEM()
+#### 4. :ifNEM()
 
 ##### Syntax
 ```
@@ -2023,7 +2039,7 @@ For non-empty data (such as the number 0 or the string 'homer'), the output is `
 
 ---
 
-#### :ifEQ(value)
+#### 5. :ifEQ(value)
 
 ##### Syntax
 ```
@@ -2041,7 +2057,7 @@ If the data equals the specified value, the output is `Result true`; otherwise, 
 
 ---
 
-#### :ifNE(value)
+#### 6. :ifNE(value)
 
 ##### Syntax
 ```
@@ -2059,7 +2075,7 @@ The first example outputs `Result false`, while the second example outputs `Resu
 
 ---
 
-#### :ifGT(value)
+#### 7. :ifGT(value)
 
 ##### Syntax
 ```
@@ -2077,7 +2093,7 @@ The first example outputs `Result true`, and the second outputs `Result false`.
 
 ---
 
-#### :ifGTE(value)
+#### 8. :ifGTE(value)
 
 ##### Syntax
 ```
@@ -2095,7 +2111,7 @@ The first example outputs `Result true`, while the second outputs `Result false`
 
 ---
 
-#### :ifLT(value)
+#### 9. :ifLT(value)
 
 ##### Syntax
 ```
@@ -2113,7 +2129,7 @@ The first example outputs `Result true`, and the second outputs `Result false`.
 
 ---
 
-#### :ifLTE(value)
+#### 10. :ifLTE(value)
 
 ##### Syntax
 ```
@@ -2131,7 +2147,7 @@ The first example outputs `Result true`, and the second outputs `Result false`.
 
 ---
 
-#### :ifIN(value)
+#### 11. :ifIN(value)
 
 ##### Syntax
 ```
@@ -2149,7 +2165,7 @@ Both examples output `Result true` (because the string contains 'is', and the ar
 
 ---
 
-#### :ifNIN(value)
+#### 12. :ifNIN(value)
 
 ##### Syntax
 ```
@@ -2167,7 +2183,7 @@ The first example outputs `Result false` (because the string contains 'is'), and
 
 ---
 
-#### :ifTE(type)
+#### 13. :ifTE(type)
 
 ##### Syntax
 ```
@@ -2189,7 +2205,7 @@ The first example outputs `Result true` (since 'homer' is a string), and the sec
 
 Conditional blocks are used to display or hide a section of the document, typically to enclose multiple tags or an entire block of text.
 
-#### :showBegin / :showEnd
+#### 1. :showBegin / :showEnd
 
 ##### Syntax
 ```
@@ -2224,7 +2240,7 @@ Grapes
 
 ---
 
-#### :hideBegin / :hideEnd
+#### 2. :hideBegin / :hideEnd
 
 ##### Syntax
 ```
@@ -2259,7 +2275,7 @@ Grapes
 
 ### Simple Mathematical Operations
 
-#### :add(value)
+#### 1. :add(value)
 ##### Syntax
 ```
 {data: add(value)}
@@ -2280,7 +2296,7 @@ Outputs 15, which is the result of 10 + 5.
 
 ---
 
-#### :mul(value)
+#### 2. :mul(value)
 ##### Syntax
 ```
 {data: mul(value)}
@@ -2301,7 +2317,7 @@ Outputs 30, which is the result of 10 × 3.
 
 ---
 
-#### :sub(value)
+#### 3. :sub(value)
 ##### Syntax
 ```
 {data: sub(value)}
@@ -2322,7 +2338,7 @@ Outputs 6, which is the result of 10 - 4.
 
 ---
 
-#### :div(value)
+#### 4. :div(value)
 ##### Syntax
 ```
 {data: div(value)}
@@ -2343,7 +2359,7 @@ Outputs 5, which is the result of 10 / 2.
 
 ---
 
-#### :mod(value)
+#### 5. :mod(value)
 ##### Syntax
 ```
 {data: mod(value)}
@@ -2364,7 +2380,7 @@ Outputs 1, which is the remainder of 10 divided by 3.
 
 ---
 
-#### :abs()
+#### 6. :abs()
 ##### Syntax
 ```
 {data: abs()}
@@ -2385,7 +2401,7 @@ Outputs 23, which is the absolute value of -23.
 
 ---
 
-#### Mathematical Expression Calculation
+#### 7. Mathematical Expression Calculation
 Supports writing simple mathematical expressions inside the parentheses (only the operators +, -, *, / are allowed, and nested parentheses are not permitted). The order of operations follows multiplication and division before addition and subtraction.
 
 ##### Syntax
@@ -2417,7 +2433,7 @@ Outputs 48.
 
 ### Pagination
 
-#### Page Number Update
+#### 1. Page Number Update
 
 ##### Syntax
 Simply insert it in your Office software.
@@ -2434,7 +2450,7 @@ In the generated report, the page numbers will update automatically.
 
 ---
 
-#### Table of Contents Generation
+#### 2. Table of Contents Generation
 
 ##### Syntax
 Simply insert it in your Office software.
@@ -2451,7 +2467,7 @@ The report’s table of contents will update automatically based on the document
 
 ---
 
-#### Repeating Table Headers
+#### 3. Repeating Table Headers
 
 ##### Syntax
 Simply insert it in your Office software.
@@ -2470,7 +2486,7 @@ When a table spans multiple pages, the header will automatically repeat at the t
 
 ### Internationalization (i18n)
 
-#### Static Text Translation
+#### 1. Static Text Translation
 
 ##### Syntax
 Use the `{t(text)}` tag for internationalizing static text:
@@ -2490,7 +2506,7 @@ When generating the report, the text will be replaced with the corresponding tra
 
 ---
 
-#### Dynamic Text Translation
+#### 2. Dynamic Text Translation
 
 ##### Syntax
 For data content, use the `:t` formatter, for example:
@@ -2512,7 +2528,7 @@ Based on the condition, the output will be either “lundi” or “mardi” (us
 
 ### Key-Value Mapping
 
-#### Enum Conversion (:convEnum)
+#### 1. Enum Conversion (:convEnum)
 
 ##### Syntax
 ```
