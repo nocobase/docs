@@ -3024,6 +3024,7 @@ export default [
         title: 'Variables and secrets',
         'title.zh-CN': '变量和密钥',
         'title.ja-JP': '変数と秘密',
+        'title.fr-FR': 'Variables and secrets',
         // subTitle: '@nocobase/plugin-backups',
         link: '/handbook/environment-variables',
       },
