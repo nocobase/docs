@@ -3021,10 +3021,10 @@ export default [
         link: '/handbook/localization-management',
       },
       {
-        title: 'Environment variables',
-        'title.fr-FR': 'Variables d\'environnement',
-        'title.zh-CN': '环境变量',
-        'title.ja-JP': '环境变量',
+        title: 'Variables and secrets',
+        'title.zh-CN': '变量和密钥',
+        'title.ja-JP': '変数と秘密',
+        // subTitle: '@nocobase/plugin-backups',
         link: '/handbook/environment-variables',
       },
       {
