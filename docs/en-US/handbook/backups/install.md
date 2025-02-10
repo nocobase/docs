@@ -9,6 +9,7 @@ For Docker versions, you can directly write a script in the `./storage/scripts` 
 
 ```bash
 mkdir ./storage/scripts
+cd ./storage/scripts
 vim install-database-client.sh
 ```
 
