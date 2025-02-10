@@ -8,6 +8,7 @@ Generating PDFs requires installing LibreOffice. [Please download it from the of
 
 ```bash
 mkdir ./storage/scripts
+cd ./storage/scripts
 vim install-libreoffice.sh
 ```
 

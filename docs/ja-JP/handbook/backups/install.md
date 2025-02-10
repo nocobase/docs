@@ -9,6 +9,7 @@ Docker バージョンでは、`./storage/scripts` ディレクトリにスク�
 
 ```bash
 mkdir ./storage/scripts
+cd ./storage/scripts
 vim install-database-client.sh
 ```
 
