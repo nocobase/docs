@@ -1,4 +1,4 @@
-# Environment Variables
+# Variables and secrets
 
 <PluginInfo name="environment-variables"></PluginInfo>
 
