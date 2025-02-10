@@ -1,8 +1,5 @@
 # Collection templates
 
-<Alert>
-📢 Collection templates are scheduled to be available in Q4 2022.
-</Alert>
 
 In real business scenarios, different collections may have their own initialization rules and business logic, and NocoBase addresses such issues by providing collection templates.
 

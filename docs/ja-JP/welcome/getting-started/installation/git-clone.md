@@ -50,7 +50,7 @@ yarn install --frozen-lockfile
 NocoBase に必要な環境変数はルートディレクトリの `.env` ファイルに保存されています。実際の状況に応じて環境変数を変更してください。変更方法がわからない場合は、[こちらをクリックして環境変数の説明を確認](../env.md)するか、デフォルトのままにしておくこともできます。
 
 ```bash
-TZ=Asia/Shanghai
+TZ=Asia/Tokyo
 APP_KEY=your-secret-key
 DB_HOST=localhost
 DB_PORT=5432

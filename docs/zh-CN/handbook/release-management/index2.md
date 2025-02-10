@@ -227,6 +227,7 @@ docker compose up -d
 
 ```bash
 mkdir ./storage/scripts
+cd ./storage/scripts
 vim install-database-client.sh
 ```
 

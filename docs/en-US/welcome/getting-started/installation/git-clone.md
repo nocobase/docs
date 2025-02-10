@@ -50,7 +50,7 @@ yarn install --frozen-lockfile
 The environment variables required by NocoBase are stored in the root `.env` file, modify the environment variables according to the actual situation, if you don't know how to change them, [click here for environment variables description](../env.md), or you can leave it as default.
 
 ```bash
-TZ=Asia/Shanghai
+TZ=UTC
 APP_KEY=your-secret-key
 DB_HOST=localhost
 DB_PORT=5432

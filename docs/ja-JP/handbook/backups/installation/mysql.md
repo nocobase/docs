@@ -1,26 +1,27 @@
-# MySQL データベースクライアントのインストール
+# MySQL Database Client Installation
 
-## Docker のインストール
+## Docker Installation
 
-### NocoBase Dockerfile のあるディレクトリに移動し、Dockerfile を新規作成
+### Create a Dockerfile in the directory where your NocoBase Dockerfile is located
 
 ```Dockerfile
-# next バージョンをベースにする
-FROM registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:next
+# Based on the "next" version
+FROM nocobase/nocobase:latest
 
-# 国内ユーザーは sources.list を更新する必要があります
+# Update sources.list to use the official Debian repositories
 RUN tee /etc/apt/sources.list > /dev/null <<EOF
-deb http://mirrors.aliyun.com/debian/ bullseye main contrib non-free
-deb-src http://mirrors.aliyun.com/debian/ bullseye main contrib non-free
-deb http://mirrors.aliyun.com/debian-security/ bullseye-security main contrib non-free
-deb-src http://mirrors.aliyun.com/debian-security/ bullseye-security main contrib non-free
-deb http://mirrors.aliyun.com/debian/ bullseye-updates main contrib non-free
-deb-src http://mirrors.aliyun.com/debian/ bullseye-updates main contrib non-free
-deb http://mirrors.aliyun.com/debian/ bullseye-backports main contrib non-free
-deb-src http://mirrors.aliyun.com/debian/ bullseye-backports main contrib non-free
+deb http://deb.debian.org/debian/ bullseye main contrib non-free
+deb-src http://deb.debian.org/debian/ bullseye main contrib non-free
+deb http://security.debian.org/debian-security bullseye-security main contrib non-free
+deb-src http://security.debian.org/debian-security bullseye-security main contrib non-free
+deb http://deb.debian.org/debian/ bullseye-updates main contrib non-free
+deb-src http://deb.debian.org/debian/ bullseye-updates main contrib non-free
+deb http://deb.debian.org/debian/ bullseye-backports main contrib non-free
+deb-src http://deb.debian.org/debian/ bullseye-backports main contrib non-free
 EOF
 
-# インストールスクリプトを実行します。実際の状況に応じて、対応する MySQL バージョンのリンクに置き換えてください。
+# Execute the installation script.
+# Please replace the link below with the appropriate MySQL version link if necessary.
 RUN apt-get update && apt-get install -y wget && \
  wget https://downloads.mysql.com/archives/get/p/23/file/mysql-community-client-core_8.1.0-1debian11_amd64.deb && \
  dpkg -x mysql-community-client-core_8.1.0-1debian11_amd64.deb /tmp/mysql-client && \
@@ -28,7 +29,7 @@ RUN apt-get update && apt-get install -y wget && \
  cp /tmp/mysql-client/usr/bin/mysql /usr/bin/
 ```
 
-### NocoBase の docker-compose.yml ファイルを修正します。
+### Modify NocoBase’s docker-compose.yml File
 
 ```diff
 version: "3"
@@ -37,37 +38,39 @@ networks:
     driver: bridge
 services:
   app:
-    build:
-      dockerfile: Dockerfile
+-   image: nocobase/nocobase:next
++   build:
++     dockerfile: Dockerfile
     networks:
       - nocobase
     depends_on:
       - postgres
     environment:
-      # アプリケーションのキー。ユーザートークンなどを生成するために使用します。
-      # APP_KEYが変更されると、古いトークンも無効になります。
-      # 任意のランダムな文字列に設定し、外部に漏れないようにしてください。
+      # Application secret key used for generating user tokens, etc.
+      # Changing APP_KEY will invalidate existing tokens.
+      # Use any random string and keep it confidential.
       - APP_KEY=your-secret-key
-      # データベースの種類。postgres、mysql、mariadb、sqliteをサポートしています。
+      # Database dialect; supports postgres, mysql, mariadb, sqlite
       - DB_DIALECT=postgres
-      # データベースホスト。既存のデータベースサーバーのIPに置き換えてください。
+      # Database host; replace with the IP address of your existing database server if needed
       - DB_HOST=postgres
-      # データベース名
+      # Database name
       - DB_DATABASE=nocobase
-      # データベースユーザー
+      # Database user
       - DB_USER=nocobase
-      # データベースパスワード
+      # Database password
       - DB_PASSWORD=nocobase
-      # タイムゾーン
+      # Time zone
       - TZ=Asia/Shanghai
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
       - "13000:80"
     # init: true
-  # 既存のデータベースサービスを使用する場合、postgresは起動する必要はありません。
+  # If you are using an existing database service, you can omit the postgres service.
   postgres:
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/postgres:16
+-    image: nocobase/postgres:16
++    image: nocobase/postgres:16
     restart: always
     command: postgres -c wal_level=logical
     environment:
@@ -80,24 +83,25 @@ services:
       - nocobase
 ```
 
-### アップグレード
+### Upgrading
 
-以前は毎回更新のたびに新しいイメージをプルしていましたが、変更後は毎回新しいイメージをビルドする必要があります。
+Previously, you would pull a new image for each update. Now, you need to build a new image every time:
 
 ```diff
-# 最新のイメージをプル
+# Pull the latest image
 - docker-compose pull app
-# appコンテナを更新
+# Update the app container
 + docker-compose build app --pull
-# 起動
+# Start the container
 docker-compose up -d app
-# appプロセスの状況を確認
+# Check the app logs
 docker-compose logs app
 ```
 
-## その他のインストール方法
+## Other Installation Methods
 
-もしあなたのNocoBaseが[create-nocobase-appでインストール](/welcome/getting-started/installation/create-nocobase-app)されたり、[Gitソースコードでインストール](/welcome/getting-started/installation/git-clone)された場合は、MySQLの公式リリースページにアクセスし、該当するMySQLバージョンを選択し、MySQLの公式ドキュメントに従ってインストールしてください。
-- 過去のバージョン: https://downloads.mysql.com/archives/community/
-- 最新のバージョン: https://dev.mysql.com/downloads/mysql/
+If you installed NocoBase using [create-nocobase-app installation](/welcome/getting-started/installation/create-nocobase-app) or by [cloning the Git repository](/welcome/getting-started/installation/git-clone), please visit the official MySQL download page to select the appropriate MySQL version and follow the official documentation for installation:
+
+- Historical versions: [https://downloads.mysql.com/archives/community/](https://downloads.mysql.com/archives/community/)
+- Latest version: [https://dev.mysql.com/downloads/mysql/](https://dev.mysql.com/downloads/mysql/)
 

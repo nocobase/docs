@@ -9,6 +9,7 @@ Docker 版本，可以直接在 `./storage/scripts` 目录下，编写一段脚�
 
 ```bash
 mkdir ./storage/scripts
+cd ./storage/scripts
 vim install-database-client.sh
 ```
 

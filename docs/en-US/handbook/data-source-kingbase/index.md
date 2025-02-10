@@ -70,7 +70,7 @@ networks:
       # Database password
       - DB_PASSWORD=nocobase
       # Timezone
-      - TZ=Asia/Shanghai
+      - TZ=UTC
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
@@ -104,7 +104,7 @@ yarn create nocobase-app my-nocobase-app -d kingbase \
    -e DB_DATABASE=kingbase \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
-   -e TZ=Asia/Shanghai
+   -e TZ=UTC
 ```
 
 ### Using as an External Database

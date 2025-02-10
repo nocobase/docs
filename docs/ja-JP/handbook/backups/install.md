@@ -9,6 +9,7 @@ Docker バージョンでは、`./storage/scripts` ディレクトリにスク�
 
 ```bash
 mkdir ./storage/scripts
+cd ./storage/scripts
 vim install-database-client.sh
 ```
 
@@ -24,26 +25,13 @@ vim install-database-client.sh
 # pg_dumpがインストールされているか確認
 if [ ! -f /usr/bin/pg_dump ]; then
     echo "pg_dumpがインストールされていません。PostgreSQLクライアントのインストールを開始します..."
-
-    # Aliyunミラーを設定
-    tee /etc/apt/sources.list > /dev/null <<EOF
-deb http://mirrors.aliyun.com/debian/ bookworm main contrib non-free
-deb-src http://mirrors.aliyun.com/debian/ bookworm main contrib non-free
-deb http://mirrors.aliyun.com/debian-security/ bookworm-security main contrib non-free
-deb-src http://mirrors.aliyun.com/debian-security/ bookworm-security main contrib non-free
-deb http://mirrors.aliyun.com/debian/ bookworm-updates main contrib non-free
-deb-src http://mirrors.aliyun.com/debian/ bookworm-updates main contrib non-free
-deb http://mirrors.aliyun.com/debian/ bookworm-backports main contrib non-free
-deb-src http://mirrors.aliyun.com/debian/ bookworm-backports main contrib non-free
-EOF
-
     # 必要なツールをインストールし、キャッシュをクリア
     apt-get update && apt-get install -y --no-install-recommends wget gnupg \
       && rm -rf /var/lib/apt/lists/*
 
     # PostgreSQLソースを設定
-    echo "deb [signed-by=/usr/share/keyrings/pgdg.asc] http://mirrors.aliyun.com/postgresql/repos/apt bookworm-pgdg main" > /etc/apt/sources.list.d/pgdg.list
-    wget --quiet -O /usr/share/keyrings/pgdg.asc http://mirrors.aliyun.com/postgresql/repos/apt/ACCC4CF8.asc
+    echo "deb [signed-by=/usr/share/keyrings/pgdg.asc] https://apt.postgresql.org/pub/repos/apt bookworm-pgdg main" > /etc/apt/sources.list.d/pgdg.list
+    wget --quiet -O /usr/share/keyrings/pgdg.asc https://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc
 
     # PostgreSQLクライアントをインストール
     apt-get update && apt-get install -y --no-install-recommends postgresql-client-16 \
@@ -63,18 +51,6 @@ fi
 
 if [ ! -f /usr/bin/mysql ]; then
     echo "MySQLクライアントがインストールされていません。MySQLクライアントのインストールを開始します..."
-
-    tee /etc/apt/sources.list > /dev/null <<EOF
-deb http://mirrors.aliyun.com/debian/ bookworm main contrib non-free
-deb-src http://mirrors.aliyun.com/debian/ bookworm main contrib non-free
-deb http://mirrors.aliyun.com/debian-security/ bookworm-security main contrib non-free
-deb-src http://mirrors.aliyun.com/debian-security/ bookworm-security main contrib non-free
-deb http://mirrors.aliyun.com/debian/ bookworm-updates main contrib non-free
-deb-src http://mirrors.aliyun.com/debian/ bookworm-updates main contrib non-free
-deb http://mirrors.aliyun.com/debian/ bookworm-backports main contrib non-free
-deb-src http://mirrors.aliyun.com/debian/ bookworm-backports main contrib non-free
-EOF
-
     echo "パッケージリストを更新し、必要なツールをインストールします..."
     apt-get update && apt-get install -y --no-install-recommends wget gnupg \
         && rm -rf /var/lib/apt/lists/*

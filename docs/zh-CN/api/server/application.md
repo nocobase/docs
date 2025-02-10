@@ -153,6 +153,10 @@ export interface ApplicationOptions {
 
 用户认证管理。参考 [AuthManager](../auth/auth-manager.md).
 
+### `auditManager`
+
+资源审计管理。参考 [AuditManager](./audit-manager).
+
 ### `cronJobManager`
 
 应用定时任务管理。

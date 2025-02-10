@@ -5,8 +5,8 @@
 Currently, NocoBase supports the following built-in engine types:
 
 - [Local Storage](./local.md)
-- [Alibaba Cloud OSS](./aliyun-oss.md)
 - [Amazon S3](./amazon-s3.md)
+- [Alibaba Cloud OSS](./aliyun-oss.md)
 - [Tencent Cloud COS](./tencent-cos.md)
 
 A local storage engine is automatically added during system installation and can be used directly. New engines can also be added or existing engine parameters can be edited.
