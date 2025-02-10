@@ -61,3 +61,5 @@ The refresh operation does not extend the Session Validity Period, it only regen
 **Recommended Settings:**
 
 For security reasons, it is recommended to set it between 5 to 10 minutes.
+
+NocoBase 已经内置了 PM2，用于管理应用进程，生产环境直接 yarn start 就可以了.
