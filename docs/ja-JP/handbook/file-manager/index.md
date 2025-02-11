@@ -26,6 +26,10 @@
 
 [詳細はファイル保存エンジンの紹介を参照してください](./storage/index.md)
 
-### 拡張開発
+### HTTP API
+
+Files can be uploaded through the HTTP API, refer to [HTTP API](./http-api.md).
+
+## 拡張開発
 
 * [フロントエンドのファイルタイプの拡張](./development/client-file-type.md)

@@ -26,6 +26,10 @@ The file storage engine is used to save files to specific services, including lo
 
 [More usage information can be found in the file storage introduction document](./storage/index.md)
 
-### Development
+### HTTP API
+
+Files can be uploaded through the HTTP API, refer to [HTTP API](./http-api.md).
+
+## Development
 
 * [Extend client file type](./development/client-file-type.md)
