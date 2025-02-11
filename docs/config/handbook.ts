@@ -2433,6 +2433,12 @@ export default [
                 link: '/handbook/workflow/nodes/end',
               },
               {
+                title: 'JSON Variable Mapping',
+                'title.zh-CN': 'JSON 变量映射',
+                'title.ja-JP': 'JSON 变量映射',
+                link: '/handbook/workflow/nodes/json-variable-mapping',
+              },
+              {
                 title: 'Loop',
                 'title.zh-CN': '循环',
                 'title.ja-JP': 'ループ',
@@ -2456,14 +2462,14 @@ export default [
           },
           {
             title: 'Calculation',
+            'title.zh-CN': '计算',
             'title.fr-FR': 'Calcul',
-            'title.zh-CN': '运算',
             'title.ja-JP': '計算',
             type: 'group',
             children: [
               {
                 title: 'Calculation',
-                'title.zh-CN': '运算',
+                'title.zh-CN': '计算',
                 'title.ja-JP': '計算',
                 link: '/handbook/workflow/nodes/calculation',
               },
@@ -2478,6 +2484,12 @@ export default [
                 'title.zh-CN': '动态计算',
                 'title.ja-JP': '動的計算',
                 link: '/handbook/workflow/nodes/dynamic-calculation',
+              },
+              {
+                title: 'JSON Calculation',
+                'title.zh-CN': 'JSON 计算',
+                'title.ja-JP': 'JSONクエリ',
+                link: '/handbook/workflow/nodes/json-query',
               },
             ],
           },
@@ -2559,12 +2571,6 @@ export default [
                 'title.zh-CN': 'JavaScript 脚本',
                 'title.ja-JP': 'JavaScript スクリプト',
                 link: '/handbook/workflow/nodes/javascript',
-              },
-              {
-                title: 'JSON Query',
-                'title.zh-CN': 'JSON 解析',
-                'title.ja-JP': 'JSONクエリ',
-                link: '/handbook/workflow/nodes/json-query',
               },
               {
                 title: 'Request',
@@ -2821,12 +2827,19 @@ export default [
             link: '/handbook/workflow-javascript',
           },
           {
-            title: 'JSON Query',
+            title: 'JSON Calculation',
+            'title.zh-CN': 'JSON 计算',
+            'title.ja-JP': 'JSON 計算',
             'title.fr-FR': 'Requête JSON',
-            'title.zh-CN': 'JSON 解析',
-            'title.ja-JP': 'JSONクエリ',
             subTitle: '@nocobase/plugin-workflow-json-query',
             link: '/handbook/workflow-json-query',
+          },
+          {
+            title: 'JSON Variable Mapping',
+            'title.zh-CN': 'JSON 变量映射',
+            'title.ja-JP': 'JSON 変数映射',
+            subTitle: '@nocobase/plugin-workflow-json-variable-mapping',
+            link: '/handbook/workflow-json-variable-mapping',
           },
           {
             title: 'Loop',
