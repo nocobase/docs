@@ -32,6 +32,7 @@ networks:
 services:
   app:
     image: nocobase/nocobase:latest
+    restart: always
     networks:
       - nocobase
     depends_on:
@@ -92,6 +93,7 @@ networks:
 services:
   app:
     image: nocobase/nocobase:latest
+    restart: always
     networks:
       - nocobase
     depends_on:
@@ -154,6 +156,7 @@ networks:
 services:
   app:
     image: nocobase/nocobase:latest
+    restart: always
     networks:
       - nocobase
     depends_on:

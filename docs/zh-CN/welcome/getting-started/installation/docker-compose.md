@@ -32,6 +32,7 @@ networks:
 services:
   app:
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
+    restart: always
     networks:
       - nocobase
     depends_on:
@@ -92,6 +93,7 @@ networks:
 services:
   app:
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
+    restart: always
     networks:
       - nocobase
     depends_on:
@@ -153,6 +155,7 @@ networks:
 services:
   app:
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
+    restart: always
     networks:
       - nocobase
     depends_on:
