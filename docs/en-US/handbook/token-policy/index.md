@@ -57,6 +57,7 @@ The Expired Token Refresh Time Limit refers to the maximum time window allowed f
 
 If the refresh time limit is exceeded, the user must log in again to obtain a new Token.
 The refresh operation does not extend the Session Validity Period, it only regenerates the Token.
+Storage engine based on Aliyun OSS, you need to prepare relevant accounts and permissions in advance.
 
 **Recommended Settings:**
 
