@@ -26,6 +26,10 @@
 
 [更多内容查看文件存储引擎介绍](./storage/index.md)
 
-### 扩展开发
+### HTTP API
+
+文件上传可以通过 HTTP API 进行处理，参考 [HTTP API](./http-api.md)。
+
+## 扩展开发
 
 * [扩展前端文件类型](./development/client-file-type.md)
