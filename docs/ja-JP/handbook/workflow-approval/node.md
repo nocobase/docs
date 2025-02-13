@@ -89,6 +89,10 @@
 
 ![承認ノード_インターフェース設定_操作フォームブロック](https://static-docs.nocobase.com/20241226232013.png)
 
+Besides, fields that can be modified by the approver can also be added to the operation form. These fields will be displayed in the operation form when the approver processes the approval. The approver can modify the values of these fields, and after submission, the data used for approval and the corresponding data snapshot in the approval process will be updated simultaneously.
+
+![approval_node_ui_configuration_action_form_modify_fields](https://static-docs.nocobase.com/20241226232124.png)
+
 ### 「承認」、「拒否」、「返却」
 
 承認操作ボタンの中でも、「承認」、「拒否」、「返却」は決定操作です。これらを提出すると、承認者のタスクは完了し、提出時に記入が必要な追加フィールド（例：「コメント」など）は、各ボタンの「処理設定」ポップアップで追加できます。
