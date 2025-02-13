@@ -42,6 +42,7 @@ services:
 -   image: nocobase/nocobase:next  # (previously: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:next)
 +   build:
 +     dockerfile: Dockerfile
+    restart: always
     networks:
       - nocobase
     depends_on:

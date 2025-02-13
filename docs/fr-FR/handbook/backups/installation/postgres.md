@@ -41,6 +41,7 @@ services:
 -   image: nocobase/nocobase:next
 +   build:
 +     dockerfile: Dockerfile
+    restart: always
     networks:
       - nocobase
     depends_on:

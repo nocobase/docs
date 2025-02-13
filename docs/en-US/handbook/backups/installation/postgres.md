@@ -43,6 +43,7 @@ services:
 +     dockerfile: Dockerfile
     networks:
       - nocobase
+    restart: always
     depends_on:
       - postgres
     environment:
