@@ -206,7 +206,7 @@ export default {
   },
 };
 
-const resourceMangaer = new ResourceManager();
+const resourceManager = new ResourceManager();
 await resourceManager.import({
   directory: path.resolve(__dirname, 'resources'),
 });
@@ -234,7 +234,7 @@ export interface ImportOptions {
 
 ### `use()`
 
-`ResourceMangaer` ミドルウェアを追加します。
+`resourceManager` ミドルウェアを追加します。
 
 ```ts
 resourceManager.use(async () => {

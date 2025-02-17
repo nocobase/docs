@@ -206,7 +206,7 @@ export default {
   },
 };
 
-const resourceMangaer = new ResourceManager();
+const resourceManager = new ResourceManager();
 await resourceManager.import({
   directory: path.resolve(__dirname, 'resources'),
 });
@@ -234,7 +234,7 @@ export interface ImportOptions {
 
 ### `use()`
 
-添加 `ResourceMangaer` 中间件。
+添加 `resourceManager` 中间件。
 
 ```ts
 resourceManager.use(async () => {
