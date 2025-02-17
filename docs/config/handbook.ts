@@ -1979,6 +1979,12 @@ export default [
             ],
           },
           {
+            title: 'HTTP API',
+            'title.fr-FR': 'HTTP API',
+            'title.zh-CN': 'HTTP API',
+            link: '/handbook/file-manager/http-api',
+          },
+          {
             title: 'Development',
             'title.fr-FR': 'Développement',
             'title.zh-CN': '扩展开发',

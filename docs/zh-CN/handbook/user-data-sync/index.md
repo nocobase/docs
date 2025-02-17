@@ -15,7 +15,7 @@
 ![](https://static-docs.nocobase.com/202412041043465.png)
 
 :::info
-在未安装提供用户数据同步来源的插件时，可以通过 HTTP API 同步用户数据。参考 [数据源 - HTTP API](./sources/api).
+在未安装提供用户数据同步来源的插件时，可以通过 HTTP API 同步用户数据。参考 [数据源 - HTTP API](./sources/api.md).
 :::
 
 ## 添加数据源

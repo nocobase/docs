@@ -26,6 +26,10 @@ Le moteur de stockage de fichiers est utilisé pour sauvegarder les fichiers sur
 
 [Plus d'informations sur l'utilisation peuvent être trouvées dans le document d'introduction au stockage de fichiers](./storage/index.md)
 
-### Développement
+### HTTP API
+
+Files can be uploaded through the HTTP API, refer to [HTTP API](./http-api.md).
+
+## Développement
 
 * [Étendre le type de fichier client](./development/client-file-type.md)

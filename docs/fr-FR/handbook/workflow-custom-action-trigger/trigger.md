@@ -8,13 +8,25 @@ Lors de la configuration d'un workflow, commencez par sélectionner **"Événeme
 
 ## Configuration du Déclencheur
 
+### Context Type
+
+> v.1.6.0+
+
+Different context types determine where the workflow can be bound to buttons in different blocks:
+
+* None: A global event that can be bound to action buttons in the action panel and other data blocks.
+* Single record: Can be bound to action buttons in data blocks such as table rows, forms, and details.
+* Multiple records: Can be bound to batch operation buttons in the table block.
+
+![触发器配置_上下文类型](https://static-docs.nocobase.com/20250215135808.png)
+
 ### Table de Données
 
-Étant donné que les événements d'opération personnalisée sont associés à des lignes de données spécifiques, vous devez d'abord choisir la table de données qui sera liée à votre modèle de données :
+When the context type is single record or multiple records, you'll need to choose the collection that will be associated with your data model:
 
 ![Configuration du Déclencheur_Sélection de la Table de Données](https://static-docs.nocobase.com/20240509150515.png)
 
-### Données Liées à Utiliser
+### Association Data to Use
 
 Si votre workflow nécessite l'utilisation de données liées provenant de la ligne de données déclenchée, vous pouvez sélectionner les champs de relation profonde nécessaires ici :
 

@@ -8,13 +8,25 @@ When setting up a workflow, begin by selecting "Custom action event":
 
 ## Trigger Configuration
 
-### Data Table
+### Context Type
 
-Since custom operation events are tied to specific data rows, you'll need to first choose the data table that will be associated with your data model:
+> v.1.6.0+
+
+Different context types determine where the workflow can be bound to buttons in different blocks:
+
+* None: A global event that can be bound to action buttons in the action panel and other data blocks.
+* Single record: Can be bound to action buttons in data blocks such as table rows, forms, and details.
+* Multiple records: Can be bound to batch operation buttons in the table block.
+
+![触发器配置_上下文类型](https://static-docs.nocobase.com/20250215135808.png)
+
+### Collection
+
+When the context type is single record or multiple records, you'll need to choose the collection that will be associated with your data model:
 
 ![Trigger Configuration_Select Data Table](https://static-docs.nocobase.com/20240509150515.png)
 
-### Related Data to Utilize
+### Association Data to Use
 
 If your workflow requires the use of related data from the triggered data row, you can select the necessary deep relationship fields here:
 
