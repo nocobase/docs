@@ -49,7 +49,7 @@ export default [
             children: [
               {
                 title: 'Overview',
-		'title.fr-FR': 'Vue d\'ensemble',
+                'title.fr-FR': 'Vue d\'ensemble',
                 'title.zh-CN': '介绍',
                 'title.ja-JP': '概要',
                 link: '/handbook/data-source-manager/external-database',
@@ -398,6 +398,13 @@ export default [
                 'title.ja-JP': '中国の行政区',
                 link: '/handbook/field-china-region',
               },
+              {
+                title: 'Data dictionary',
+                'title.fr-FR': 'Data dictionary',
+                'title.zh-CN': '数据字典',
+                'title.ja-JP': 'データ辞書',
+                link: '/handbook/data-dictionary',
+              },
             ],
           },
           {
@@ -699,48 +706,48 @@ export default [
     children: [
       {
         title: 'UI Editor mode',
-    	'title.fr-FR': 'Mode éditeur UI',
+        'title.fr-FR': 'Mode éditeur UI',
         'title.zh-CN': '界面配置模式',
         'title.ja-JP': 'UIエディタモード',
         link: '/handbook/ui/ui-editor',
       },
       {
         title: 'Menu',
-    	'title.fr-FR': 'Menu',
+        'title.fr-FR': 'Menu',
         'title.zh-CN': '菜单',
         'title.ja-JP': 'メニュー',
         link: '/handbook/ui/menus',
       },
       {
         title: 'Page',
-    	'title.fr-FR': 'Page',
+        'title.fr-FR': 'Page',
         'title.zh-CN': '页面',
         'title.ja-JP': 'ページ',
         link: '/handbook/ui/pages',
       },
       {
         title: 'Pop-up',
-    	'title.fr-FR': 'Pop-up',
+        'title.fr-FR': 'Pop-up',
         'title.zh-CN': '弹窗',
         'title.ja-JP': 'ポップアップ',
         link: '/handbook/ui/pop-up',
       },
       {
         title: 'Blocks',
-    	'title.fr-FR': 'Blocks',
+        'title.fr-FR': 'Blocks',
         'title.zh-CN': '区块',
         'title.ja-JP': 'ブロック',
         children: [
           {
             title: 'Overview',
-    	    'title.fr-FR': 'Vue d\'ensemble',
+            'title.fr-FR': 'Vue d\'ensemble',
             'title.zh-CN': '概述',
             'title.ja-JP': '概要',
             link: '/handbook/ui/blocks',
           },
           {
             title: 'Data blocks',
-    	    'title.fr-FR': 'Data blocks',
+            'title.fr-FR': 'Data blocks',
             'title.zh-CN': '数据区块',
             'title.ja-JP': 'データブロック',
             children: [
@@ -1264,7 +1271,7 @@ export default [
           },
           {
             title: 'Common settings',
-	    'title.fr-FR': 'Parmètres communs',
+            'title.fr-FR': 'Parmètres communs',
             'title.zh-CN': '通用配置项',
             'title.ja-JP': '一般設定',
             children: [
@@ -1630,12 +1637,12 @@ export default [
                 children: [
                   {
                     title: 'HTTP API',
-             	    'title.fr-FR': 'HTTP API',
+                    'title.fr-FR': 'HTTP API',
                     link: '/handbook/user-data-sync/sources/api',
                   },
                   {
                     title: 'WeCom',
-	            'title.fr-FR': 'WeCom',
+                    'title.fr-FR': 'WeCom',
                     'title.zh-CN': '企业微信',
                     link: '/handbook/wecom/user-data-sync',
                   },
@@ -1911,7 +1918,7 @@ export default [
         children: [
           {
             title: 'Overview',
-	    'title.fr-FR': 'Vue d\'ensemble',
+            'title.fr-FR': 'Vue d\'ensemble',
             'title.zh-CN': '概述',
             'title.ja-JP': '概要',
             link: '/handbook/file-manager',
@@ -2059,7 +2066,7 @@ export default [
                   },
                   {
                     title: 'Configure chart',
-	            'title.fr-FR': 'Configuration de graphique',
+                    'title.fr-FR': 'Configuration de graphique',
                     'title.zh-CN': '配置图表',
                     'title.ja-JP': 'チャートを設定',
                     link: '/handbook/data-visualization/user/Configure',
@@ -2260,7 +2267,7 @@ export default [
       },
       {
         title: 'Multi-app manager',
- 	'title.fr-FR': 'Gestionnaire multi-App',
+        'title.fr-FR': 'Gestionnaire multi-App',
         'title.zh-CN': '多应用管理',
         'title.ja-JP': 'マルチアプリ管理',
         // subTitle: '@nocobase/plugin-api-doc',
@@ -2403,7 +2410,7 @@ export default [
       },
       {
         title: 'Nodes',
-	'title.fr-FR': 'Noeuds',
+        'title.fr-FR': 'Noeuds',
         'title.zh-CN': '节点',
         'title.ja-JP': 'ノード',
         children: [
