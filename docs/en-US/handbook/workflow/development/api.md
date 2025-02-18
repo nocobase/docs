@@ -305,6 +305,40 @@ Registers the configuration panel corresponding to the node type.
 | `type`         | `string`                            | Node type identifier, consistent with the identifier used during registration |
 | `instruction`  | `typeof Instruction \| Instruction` | Node type or instance                   |
 
+#### `registerInstructionGroup()`
+
+注册节点类型分组。NocoBase 默认提供 4 个节点类型分组：
+
+* `'control'`：控制类
+* `'collection'`：数据表操作类
+* `'manual'`：人工处理类
+* `'extended'`：其他扩展类
+
+如果需要扩展其他分组，可以使用该方法注册。
+
+**签名**
+
+`registerInstructionGroup(type: string, group: { label: string }): void`
+
+**参数**
+
+| 参数      | 类型               | 说明                           |
+| --------- | ----------------- | ----------------------------- |
+| `type`    | `string`          | 节点分组标识，与注册使用的标识一致 |
+| `group` | `{ label: string }` | 分组信息，目前仅包含标题         |
+
+**示例**
+
+```js
+export default class YourPluginClient extends Plugin {
+  load() {
+    const pluginWorkflow = this.app.pm.get(PluginWorkflowClient);
+
+    pluginWorkflow.registerInstructionGroup('ai', { label: `{{t("AI", { ns: "${NAMESPACE}" })}}` });
+  }
+}
+```
+
 ## `Trigger`
 
 Base class for triggers, used to extend custom trigger types.
