@@ -1,5 +1,7 @@
 # 集群模式
 
+<PluginInfo licenseBundled="enterprise" plugins="pubsub-adapter-redis,lock-adapter-redis"></PluginInfo>
+
 NocoBase 自 v1.6.0 版本开始支持以集群模式运行应用。应用以集群模式运行时，可以通过多个实例和使用多核模式来提高应用的对并发访问处理的性能。
 
 ## 系统架构

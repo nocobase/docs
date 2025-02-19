@@ -1,5 +1,7 @@
 # Cluster Mode
 
+<PluginInfo licenseBundled="enterprise" plugins="pubsub-adapter-redis,lock-adapter-redis"></PluginInfo>
+
 Starting from version v1.6.0, NocoBase supports running applications in cluster mode. When an application runs in cluster mode, its performance in handling concurrent accesses can be improved through multiple instances and using a multi-core mode.
 
 ## System Architecture
