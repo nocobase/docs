@@ -157,7 +157,7 @@ For public file access, configure as follows:
 
 3. Click "Create Rule," complete the fields, and click "OK."
 
-![CORS Rule Setup](https://static-docs.nocobase.com/file-storage-s3-pro-1735355973593.png)
+![CORS Rule Setup](https://static-docs.nocobase.com/20250219171042784.png)
 
 #### AccessKey and SecretAccessKey Retrieval
 
