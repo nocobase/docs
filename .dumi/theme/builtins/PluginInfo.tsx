@@ -5,56 +5,107 @@ import messages from '../locale/pluginInfo';
 interface PluginInfoProps {
   name: string;
   link?: string;
+  plugins?: string;
   commercial?: boolean;
-  licenseBundled?: boolean;
+  licenseBundled?: 'enterprise' | 'commercial' | boolean;
   /** @deprecated This parameter is deprecated and will be removed in future versions. */
   deprecated?: boolean;
 }
 
+function PluginLink(props: { name: string; link?: string }) {
+  const { name, link } = props;
+  return <Link to={link ?? `/handbook/${name}`}>plugin-{name}</Link>;
+}
+
+function PluginList({ plugins, name, link }: { plugins?: string; name: string; link?: string }) {
+  return plugins ? (
+    <>
+      {plugins.split(',').map((item, i) => (
+        <React.Fragment key={item}>
+          <PluginLink name={item.trim()} />
+          {i < plugins.split(',').length - 1 ? ', ' : ''}
+        </React.Fragment>
+      ))}
+    </>
+  ) : (
+    <PluginLink name={name} link={link} />
+  );
+}
+
+function formatMessage(template: string, values: Record<string, React.ReactNode>) {
+  const parts = template.split(/(\{[^}]+\})/g);
+  return parts.map((part, index) => {
+    const matches = part.match(/\{([^}]+)\}/);
+    if (matches) {
+      const key = matches[1];
+      return <React.Fragment key={index}>{values[key]}</React.Fragment>;
+    }
+    return part;
+  });
+}
+
 const PluginInfo: React.FC<PluginInfoProps> = (props) => {
-  const { name, link, commercial, licenseBundled, deprecated } = props;
+  const { name, link, plugins, commercial, licenseBundled, deprecated } = props;
   const { themeConfig } = useSiteData();
-  const zhCN = themeConfig.lang === 'zh-CN';
-  const jaJP = themeConfig.lang === 'ja-JP';
-  const bundleTexts = licenseBundled === 'enterprise' ? {
-    'zh-CN': '企业版',
-    'ja-JP': '企业版',
-    'en-US': 'commercial edition',
-  } : {
-    'zh-CN': '商业版',
-    'ja-JP': '商业版',
-    'en-US': 'commercial edition',
-  }
   const lang = themeConfig.lang || 'en-US';
   const t = messages[lang];
 
-  const getCommercialLink = () => {
-    const baseUrl = 'https://www.nocobase.com';
-    const path = {
+  const edition = licenseBundled && licenseBundled === 'enterprise' 
+    ? t.enterpriseEdition 
+    : t.commercialEdition;
+
+  const commercialLink = (text: string) => {
+    const paths = {
       'zh-CN': '/cn/commercial',
       'ja-JP': '/jp/commercial',
       'en-US': '/en/commercial'
-    }[lang];
+    };
     
     return (
-      <a target="_blank" rel="noreferrer" href={`${baseUrl}${path}`}>
-        {t.commercialEdition}
+      <a target="_blank" rel="noreferrer" href={`${t.commercialBaseUrl}${paths[lang]}`}>
+        {text}
       </a>
     );
   };
 
-  const getLicenseLink = () => {
-    const baseUrl = 'https://www.nocobase.com';
-    const path = {
+  const licenseLink = () => {
+    const paths = {
       'zh-CN': '/cn/plugins',
       'ja-JP': '/jp/plugins',
       'en-US': '/en/plugins'
-    }[lang];
+    };
     
     return (
-      <a target="_blank" rel="noreferrer" href={`${baseUrl}${path}`}>
+      <a target="_blank" rel="noreferrer" href={`${t.commercialBaseUrl}${paths[lang]}`}>
         {t.commercialLicense}
       </a>
+    );
+  };
+
+  const pluginsList = <PluginList plugins={plugins} name={name} link={link} />;
+
+  const renderMessage = () => {
+    if (licenseBundled) {
+      return (
+        <span>
+          {formatMessage(t.bundledPluginMessage, {
+            plugins: pluginsList,
+            edition: commercialLink(edition)
+          })}
+        </span>
+      );
+    }
+
+    return (
+      <span>
+        {formatMessage(t.pluginMessage, {
+          commercial: commercial ? t.commercial : '',
+          plugins: pluginsList,
+          license: commercial ? formatMessage(t.licenseDetails, {
+            license: licenseLink()
+          }) : ''
+        })}
+      </span>
     );
   };
 
@@ -67,31 +118,7 @@ const PluginInfo: React.FC<PluginInfoProps> = (props) => {
         </svg>
         <h4>{deprecated ? t.deprecatedInfo : t.info}</h4>
         <section>
-          {licenseBundled ? (
-            <p>
-              {t.bundledPluginMessage.split('{pluginName}').map((part, index, array) => (
-                <React.Fragment key={index}>
-                  {part}
-                  {index < array.length - 1 && (
-                    <Link to={link ?? `/handbook/${name}`}>plugin-{name}</Link>
-                  )}
-                </React.Fragment>
-              ))}
-              {t.bundledPluginMessage.includes('{commercialLink}') && getCommercialLink()}
-            </p>
-          ) : (
-            <p>
-              {commercial ? t.pluginMessage.split('{commercialText}')[0] + t.commercial : t.pluginMessage.split('{commercialText}')[0]}
-              <Link to={link ?? `/handbook/${name}`}>plugin-{name}</Link>
-              {commercial && (
-                <>
-                  {t.licenseDetails.split('{licenseLink}')[0]}
-                  {getLicenseLink()}
-                  {t.licenseDetails.split('{licenseLink}')[1]}
-                </>
-              )}
-            </p>
-          )}
+          <p>{renderMessage()}</p>
         </section>
         {deprecated && (
           <section>
