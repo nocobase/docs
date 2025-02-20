@@ -1,5 +1,5 @@
 # Backup-Restore
-
+<PluginInfo name="backup-restore" deprecated=true></PluginInfo>
 ## Introduction
 
 The backup-restore and restore plugin for the NocoBase application is used in scenarios such as application replication, migration, and upgrades.
