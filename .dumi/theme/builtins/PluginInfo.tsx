@@ -14,6 +14,17 @@ interface PluginInfoProps {
 const PluginInfo: React.FC<PluginInfoProps> = (props) => {
   const { name, link, commercial, licenseBundled, deprecated } = props;
   const { themeConfig } = useSiteData();
+  const zhCN = themeConfig.lang === 'zh-CN';
+  const jaJP = themeConfig.lang === 'ja-JP';
+  const bundleTexts = licenseBundled === 'enterprise' ? {
+    'zh-CN': '企业版',
+    'ja-JP': '企业版',
+    'en-US': 'commercial edition',
+  } : {
+    'zh-CN': '商业版',
+    'ja-JP': '商业版',
+    'en-US': 'commercial edition',
+  }
   const lang = themeConfig.lang || 'en-US';
   const t = messages[lang];
 
