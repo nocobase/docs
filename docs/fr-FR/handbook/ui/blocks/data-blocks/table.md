@@ -42,7 +42,7 @@ Pour plus d'informations, consultez [Connecter les Blocs de Données](/handbook/
 
 - [Modifier le Titre du Bloc](/handbook/ui/blocks/block-settings/block-title)
 - [Définir la Méthode de Chargement des Données](/handbook/ui/blocks/block-settings/loading-mode)
-- [Enregistrer comme Modèle de Bloc](/handbook/ui/blocks/block-settings/block-template)
+- [Enregistrer comme Modèle de Bloc](/handbook/block-template)
 
 ## Configurer les Champs
 

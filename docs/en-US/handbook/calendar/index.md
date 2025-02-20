@@ -33,7 +33,7 @@ Clicking on a task bar highlights the selection and opens a detailed pop-up wind
 ![20240419203603](https://static-docs.nocobase.com/20240419203603.png)
 
 - [Edit Block Title](/handbook/ui/blocks/block-settings/block-title)
-- [Save as Block Template](/handbook/ui/blocks/block-settings/block-template)
+- [Save as Block Template](/handbook/block-template)
 
 ### Set Data Range
 

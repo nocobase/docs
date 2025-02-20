@@ -26,7 +26,7 @@
 
 - [ブロックタイトルの編集](/handbook/ui/blocks/block-settings/block-title)
 - [連動ルール](/handbook/ui/blocks/block-settings/linkage-rule)
-- [ブロックテンプレートとして保存](/handbook/ui/blocks/block-settings/block-template)
+- [ブロックテンプレートとして保存](/handbook/block-template)
 
 ## フィールド設定
 

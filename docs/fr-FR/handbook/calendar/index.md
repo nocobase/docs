@@ -33,7 +33,7 @@ En cliquant sur une barre de tâche, vous mettez en surbrillance la sélection e
 ![20240419203603](https://static-docs.nocobase.com/20240419203603.png)
 
 - [Modifier le titre du bloc](/handbook/ui/blocks/block-settings/block-title)
-- [Enregistrer en tant que modèle de bloc](/handbook/ui/blocks/block-settings/block-template)
+- [Enregistrer en tant que modèle de bloc](/handbook/block-template)
 
 ### Définir la portée des données
 

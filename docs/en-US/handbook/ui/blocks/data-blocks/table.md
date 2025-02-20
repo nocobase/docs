@@ -42,7 +42,7 @@ For more information, refer to [Connecting Data Blocks](/handbook/ui/blocks/bloc
 
 - [Edit Block Title](/handbook/ui/blocks/block-settings/block-title)
 - [Set Data Loading Mode](/handbook/ui/blocks/block-settings/loading-mode)
-- [Save as Block Template](/handbook/ui/blocks/block-settings/block-template)
+- [Save as Block Template](/handbook/block-template)
 
 ## Configure Fields
 
