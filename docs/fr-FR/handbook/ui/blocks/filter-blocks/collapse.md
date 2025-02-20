@@ -29,7 +29,7 @@ Exemple : Connectez le même bloc de table de données dans la fenêtre pop-up p
 Pour plus de contenu, consultez [Connecter les Blocs de Données](/handbook/ui/blocks/block-settings/connect-block).
 
 - [Modifier le Titre du Bloc](/handbook/ui/blocks/block-settings/block-title)
-- [Enregistrer comme Modèle de Bloc](/handbook/ui/blocks/block-settings/block-template)
+- [Enregistrer comme Modèle de Bloc](/handbook/block-template)
 
 ## Configuration des Champs
 

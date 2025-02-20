@@ -40,7 +40,7 @@ Il s'agit d'un plugin intégré, aucune installation n'est requise.
 
 Pour plus de détails, consultez [Définir la plage de données](/handbook/ui/blocks/block-settings/data-scope).
 
-- [Enregistrer en tant que modèle de bloc](/handbook/ui/blocks/block-settings/block-template)
+- [Enregistrer en tant que modèle de bloc](/handbook/block-template)
 - [Définir le mode de chargement des données](/handbook/ui/blocks/block-settings/loading-mode)
 
 ## Configuration des actions
