@@ -1,6 +1,6 @@
 # 备份和还原
 
-<PluginInfo name="plugin-manager"></PluginInfo>
+<PluginInfo name="backup-restore" deprecated=true></PluginInfo>
 
 ## 介绍
 
