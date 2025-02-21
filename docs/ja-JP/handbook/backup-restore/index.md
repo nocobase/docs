@@ -1,6 +1,6 @@
 # バックアップと復元
 
-<PluginInfo name="plugin-manager"></PluginInfo>
+<PluginInfo name="backup-restore" deprecated=true></PluginInfo>
 
 ## 紹介
 

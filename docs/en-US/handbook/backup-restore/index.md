@@ -1,6 +1,6 @@
 # Backup and Restore
 
-<PluginInfo name="backup-restore"></PluginInfo>
+<PluginInfo name="backup-restore" deprecated=true></PluginInfo>
 
 ## Introduction
 
