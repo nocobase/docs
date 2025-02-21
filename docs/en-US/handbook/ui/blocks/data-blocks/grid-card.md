@@ -49,7 +49,7 @@ Example: Configure the Orders Grid Card block to display in "Full Height" mode f
 For more details, refer to [Block Height](/handbook/ui/blocks/block-settings/block-height).
 
 - [Setting Sorting Rules](/handbook/ui/blocks/block-settings/sorting-rule)
-- [Saving as a Block Template](/handbook/ui/blocks/block-settings/block-template)
+- [Saving as a Block Template](/handbook/block-template)
 
 ## Configuring Fields
 

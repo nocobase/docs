@@ -40,7 +40,7 @@
 
 詳細は [データ範囲の設定](/handbook/ui/blocks/block-settings/data-scope) を参照してください。
 
-- [ブロックテンプレートとして保存](/handbook/ui/blocks/block-settings/block-template)
+- [ブロックテンプレートとして保存](/handbook/block-template)
 - [データロード方式の設定](/handbook/ui/blocks/block-settings/loading-mode)
 
 ## 設定操作
