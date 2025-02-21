@@ -125,6 +125,33 @@ For public file access, configure as follows:
 
 ![Public Access Setting](https://static-docs.nocobase.com/file-storage-s3-pro-1735355971823.png)
 
+#### Thumbnail Configuration (Optional)
+
+This configuration is optional and should be used when you need to optimize the image preview size or effect. **Please note, this deployment may incur additional costs. For more details, refer to AWS's terms and pricing.**
+
+1. Visit [Dynamic Image Transformation for Amazon CloudFront](https://aws.amazon.com/solutions/implementations/dynamic-image-transformation-for-amazon-cloudfront/?nc1=h_ls).
+
+2. Click the `Launch in the AWS Console` button at the bottom of the page to start the deployment.
+   ![](https://static-docs.nocobase.com/20250221164214117.png)
+
+3. Follow the prompts to complete the configuration. The following options need special attention:
+   1. When creating the stack, you need to specify the Amazon S3 bucket name that contains the source images. Please enter the bucket name you created earlier.
+   2. If you chose to deploy the demo UI, after deployment, you can use the UI to test the image processing functionality. In the AWS CloudFormation console, select your stack, go to the "Outputs" tab, find the value corresponding to the `DemoUrl` key, and click the link to open the demo interface.
+   3. This solution uses the `sharp` Node.js library for efficient image processing. You can download the source code from the GitHub repository and customize it as needed.
+   
+   ![](https://static-docs.nocobase.com/20250221164315472.png)
+   ![](https://static-docs.nocobase.com/20250221164404755.png)
+
+4. Once the configuration is complete, wait for the deployment status to change to `CREATE_COMPLETE`.
+
+5. In the NocoBase configuration, please note the following:
+   1. `Thumbnail rule`: Fill in the image processing parameters, such as `?width=100`. For details, refer to the [AWS documentation](https://docs.aws.amazon.com/solutions/latest/serverless-image-handler/use-supported-query-param-edits.html).
+   2. `Access base URL`: Enter the value from Outputs -> ApiEndpoint after deployment.
+   3. `Force path style (access)`: Select **Ignore** (as the bucket name has already been filled in the configuration, no further action is needed during access).
+   
+   ![](https://static-docs.nocobase.com/20250221164447562.png)
+
+
 ### Alibaba Cloud OSS
 
 #### Bucket Creation
@@ -177,7 +204,7 @@ For public file access, configure as follows:
 
 ![AccessKey Details](https://static-docs.nocobase.com/file-storage-s3-pro-1735355974781.png)
 
-#### Parameter Retrieval and Configuration (To Be Updated)
+#### Parameter Retrieval and Configuration
 
 1. Use the retrieved `AccessKey ID` and `AccessKey Secret`.
 
@@ -193,23 +220,70 @@ For public file access, configure as follows:
 
 ![Endpoint Configuration](https://static-docs.nocobase.com/file-storage-s3-pro-1735355975715.png)
 
+#### Thumbnail Configuration (Optional)
+
+This configuration is optional and should only be used when optimizing the image preview size or effect.
+
+1. Fill in the relevant parameters for `Thumbnail rule`. For specific parameter settings, refer to [Image Processing Parameters](https://help.aliyun.com/zh/oss/user-guide/img-parameters/?spm=a2c4g.11186623.help-menu-31815.d_4_14_1_1.170243033CdbSm&scm=20140722.H_144582._.OR_help-T_cn~zh-V_1).
+
+2. Keep the `Force path style (access)` and `Force path style (upload)` settings the same.
+
+
+### MinIO
+
+#### Bucket Creation
+
+1. Click on the **Buckets** menu on the left -> Click **Create Bucket** to open the creation page.
+
+2. Enter the Bucket name, then click the **Save** button.
+
+![Bucket Creation](https://static-docs.nocobase.com/20250106111325326.png)
+
+#### AccessKey and SecretAccessKey Retrieval
+
+1. Navigate to **Access Keys** -> Click the **Create access key** button to open the creation page.
+
+![Create Access Key](https://static-docs.nocobase.com/20250106111922957.png)
+
+2. Click the **Save** button.
+
+![Save Access Key](https://static-docs.nocobase.com/20250106111850639.png)
+
+3. Save the **Access Key** and **Secret Key** from the popup window for future configuration.
+
+![Access Key Details](https://static-docs.nocobase.com/20250106112831483.png)
+
+#### Parameter Configuration
+
+1. Go to the **File Manager** page in NocoBase.
+
+![File Manager Page](https://static-docs.nocobase.com/20250106112404523.png)
+
+2. Click the **Add new** button and select **S3 Pro**.
+
+![Add New Storage](https://static-docs.nocobase.com/20250106112454091.png)
+
+3. Configure the form as follows:
+   - **AccessKey ID** and **AccessKey Secret**: Use the values saved from the previous step.
+   - **Region**: For private deployments of MinIO, the concept of a region does not apply. Set it to `"auto"`.
+   - **Endpoint**: Enter the domain name or IP address of your deployed service.
+   - Set **Force path style** to **Path-Style**. The final file URL will be in the format:  
+     `https://{Endpoint}/{bucket-name}/{fileKey}`.
+
+Here is an example of the final form:
+
+![Form Example](https://static-docs.nocobase.com/20250106113609538.png)
+
+![Configuration Example](https://static-docs.nocobase.com/20250106113621611.png)
+
+
 ### Tencent COS
 
 Refer to the configurations above. The process is largely similar.
 
-### MinIO
-
-For MinIO, note the following:
-
-1. MinIO deployments lack the `Region` concept. Set this to "auto."
-
-2. Use the deployment's domain or IP address for the `Endpoint`.
-
-3. Ensure `Force path style` is set to `Path-Style`, resulting in file URLs like `https://serverAddress/bucket-name/fileKey`.
-
 ### Cloudflare R2
 
-Refer to the configurations above.
+Refer to the configurations above. The process is largely similar.
 
 ## User Guide
 
