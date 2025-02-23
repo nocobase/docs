@@ -42,6 +42,7 @@ networks:
 services:
   app:
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:develop
+    restart: always
     networks:
       - nocobase
     depends_on:
@@ -110,6 +111,7 @@ networks:
 services:
   app:
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:develop
+    restart: always
     networks:
       - nocobase
     depends_on:
@@ -166,6 +168,7 @@ networks:
 services:
   app:
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:develop
+    restart: always
     networks:
       - nocobase
     depends_on:
@@ -227,6 +230,7 @@ docker compose up -d
 
 ```bash
 mkdir ./storage/scripts
+cd ./storage/scripts
 vim install-database-client.sh
 ```
 

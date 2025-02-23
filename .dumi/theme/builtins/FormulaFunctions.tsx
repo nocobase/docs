@@ -2912,21 +2912,6 @@ const functionsData = [
         }
       },
       {
-        title: 'COUNTUNIQUE',
-        call: "COUNTUNIQUE([1,1,2,2,3,3])",
-        result: 3,
-        definition: {
-          en: 'Counts the number of unique values.',
-          cn: '计算唯一值的数量。',
-          ja: 'ユニークな値の数をカウントします。'
-        },
-        parameterDefinitions: {
-          en: "Arguments are arrays of numbers or text.",
-          cn: "参数是数值或文本数组。",
-          ja: "引数は数値またはテキストの配列です。"
-        }
-      },
-      {
         title: 'COVARIANCEP',
         call: "COVARIANCEP([3,2,4,5,6], [9,7,12,15,17])",
         result: 5.2,

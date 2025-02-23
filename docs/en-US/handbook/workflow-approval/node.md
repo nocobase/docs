@@ -89,6 +89,10 @@ The operation form block can include buttons supported by this node, such as "Ap
 
 ![Operation Form Block in Interface Configuration](https://static-docs.nocobase.com/20241226232013.png)
 
+Besides, fields that can be modified by the approver can also be added to the operation form. These fields will be displayed in the operation form when the approver processes the approval. The approver can modify the values of these fields, and after submission, the data used for approval and the corresponding data snapshot in the approval process will be updated simultaneously.
+
+![approval_node_ui_configuration_action_form_modify_fields](https://static-docs.nocobase.com/20241226232124.png)
+
 ### "Approve," "Reject," and "Return"
 
 Among the approval operation buttons, "Approve," "Reject," and "Return" are decisive actions. Once submitted, the approver's task at this node is completed. Additional fields to be filled out during submission, such as "Comments," can be added in the "Processing Configuration" pop-up for each button.

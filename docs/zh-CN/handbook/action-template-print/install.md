@@ -10,6 +10,7 @@ https://www.libreoffice.org/download/download-libreoffice)。Docker 版本，可
 
 ```bash
 mkdir ./storage/scripts
+cd ./storage/scripts
 vim install-libreoffice.sh
 ```
 

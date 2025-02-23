@@ -1,5 +1,7 @@
 # クラスター モード
 
+<PluginInfo licenseBundled="enterprise" plugins="pubsub-adapter-redis,lock-adapter-redis"></PluginInfo>
+
 NocoBase は v1.6.0 バージョンからアプリケーションのクラスター モードでの実行をサポートしています。アプリケーションがクラスター モードで実行されると、複数のインスタンスとマルチコア モードを使用して、アプリケーションの同時アクセス処理性能を向上させることができます。
 
 ## システムアーキテクチャ

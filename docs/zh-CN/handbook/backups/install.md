@@ -9,6 +9,7 @@ Docker 版本，可以直接在 `./storage/scripts` 目录下，编写一段脚�
 
 ```bash
 mkdir ./storage/scripts
+cd ./storage/scripts
 vim install-database-client.sh
 ```
 
@@ -38,7 +39,7 @@ deb-src http://mirrors.aliyun.com/debian/ bookworm-backports main contrib non-fr
 EOF
 
     # Install necessary tools and clean cache
-    apt-get update && apt-get install -y --no-install-recommends wget gnupg \
+    rm -rf /etc/apt/sources.list.d/debian.sources && apt-get update && apt-get install -y --no-install-recommends wget gnupg \
       && rm -rf /var/lib/apt/lists/*
 
     # Configure PostgreSQL source
@@ -76,7 +77,7 @@ deb-src http://mirrors.aliyun.com/debian/ bookworm-backports main contrib non-fr
 EOF
 
     echo "Updating package list and installing necessary tools..."
-    apt-get update && apt-get install -y --no-install-recommends wget gnupg \
+    rm -rf /etc/apt/sources.list.d/debian.sources && apt-get update && apt-get install -y --no-install-recommends wget gnupg \
         && rm -rf /var/lib/apt/lists/*
 
     wget --no-check-certificate https://downloads.mysql.com/archives/get/p/23/file/mysql-community-client-core_8.0.39-1debian12_amd64.deb && \

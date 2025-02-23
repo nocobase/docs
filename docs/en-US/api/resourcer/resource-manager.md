@@ -206,7 +206,7 @@ export default {
   },
 };
 
-const resourceMangaer = new ResourceManager();
+const resourceManager = new ResourceManager();
 await resourceManager.import({
   directory: path.resolve(__dirname, 'resources'),
 });

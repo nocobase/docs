@@ -77,15 +77,37 @@ Dans cette fenêtre de configuration, vous pouvez ajouter des blocs tels que les
 
 ![Ajouter un Bloc dans la Configuration de l'Interface](https://static-docs.nocobase.com/9f8f11926e935ad8f8fbeec368edebfe.png)
 
+### Bloc des Détails
+
 Le bloc des détails de l'approbation comprend les données soumises par l'initiateur. Semblable à un bloc de données standard, vous pouvez librement ajouter des composants de champ de la table de données et les organiser pour organiser le contenu que l'approbateur doit examiner :
 
 ![Bloc des Détails dans la Configuration de l'Interface](https://static-docs.nocobase.com/1140ec13caeea1b364d12e057720a29c.png)
+
+### Barre d'Opération
 
 La barre d'opération peut inclure des boutons pris en charge par ce nœud, tels que "Approuver", "Rejeter", et "Retourner" :
 
 ![Barre d'Opération dans la Configuration de l'Interface](https://static-docs.nocobase.com/1bb090ed123f62ba8a524a3e9e7da328.png)
 
-De plus, la barre d'opération peut inclure des champs pour que les approbateurs les remplissent, tels qu'un champ "Commentaire".
+Besides, fields that can be modified by the approver can also be added to the operation form. These fields will be displayed in the operation form when the approver processes the approval. The approver can modify the values of these fields, and after submission, the data used for approval and the corresponding data snapshot in the approval process will be updated simultaneously.
+
+![approval_node_ui_configuration_action_form_modify_fields](https://static-docs.nocobase.com/20241226232124.png)
+
+### "Approve," "Reject," and "Return"
+
+Among the approval operation buttons, "Approve," "Reject," and "Return" are decisive actions. Once submitted, the approver's task at this node is completed. Additional fields to be filled out during submission, such as "Comments," can be added in the "Processing Configuration" pop-up for each button.
+
+![Operation Form Processing Configuration](https://static-docs.nocobase.com/20241226232225.png)
+
+### "Reassign" and "Add Approver"
+
+"Reassign" and "Add Approver" are non-decisive operations used to dynamically adjust the approvers in the approval workflow. "Reassign" transfers the current user's approval task to another user, while "Add Approver" inserts an additional approver before or after the current approver, allowing the new approver to continue the approval process.
+
+After enabling the "Reassign" or "Add Approver" operation buttons, you need to set the "Assignable User Range" in the button's configuration menu to define the scope of users who can be assigned as new approvers:
+
+![Operation Form Assignable User Range](https://static-docs.nocobase.com/20241226232321.png)
+
+Similar to the node's original approver configuration, the assignable user range can be directly selected approvers or based on query conditions from the user table. The final result will be a merged collection, excluding users already in the approver collection.
 
 :::warning{title=Important}
 Si vous activez ou désactivez un bouton dans la barre d'opération, assurez-vous de sauvegarder la configuration du nœud après avoir fermé la fenêtre de configuration de l'interface. Sinon, les modifications ne prendront pas effet.

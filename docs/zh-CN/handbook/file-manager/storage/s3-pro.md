@@ -167,8 +167,7 @@
 
 3. 点击 "Create Rule" 按钮，并填写相关内容滚动至下方点击 "OK"。可参考下方截图，或者进行更加详细设置
 
-![](https://static-docs.nocobase.com/file-storage-s3-pro-1735355973593.png)
-
+![](https://static-docs.nocobase.com/20250219171042784.png)
 
 #### AccessKey、SecretAccessKey 获取
 

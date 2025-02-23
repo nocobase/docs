@@ -1,4 +1,4 @@
-# 環境変数
+# 変数と秘密
 
 <PluginInfo name="environment-variables"></PluginInfo>
 
