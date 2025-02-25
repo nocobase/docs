@@ -39,7 +39,7 @@ It's a built-in plugin, no installation is required.
 
 For more details, refer to [Setting Data Range](/handbook/ui/blocks/block-settings/data-scope).
 
-- [Save as Block Template](/handbook/ui/blocks/block-settings/block-template)
+- [Save as Block Template](/handbook/block-template)
 - [Set Data Loading Mode](/handbook/ui/blocks/block-settings/loading-mode)
 
 ## Action Configuration
