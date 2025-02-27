@@ -95,7 +95,7 @@ The multi-core (cluster) mode for starting app. If this variable is configured, 
 The default value is empty, meaning it is not enabled.
 
 :::warning{title="Attention"}
-This mode requires the use of plugins related to cluster mode, such as `@nocobase/plugin-sync-adapter-redis`. Otherwise, the functionality of applicaiton may encounter unexpected issues.
+This mode requires the use of plugins related to cluster mode, such as `@nocobase/plugin-sync-adapter-redis`. Otherwise, the functionality of application may encounter unexpected issues.
 :::
 
 Reference: [Cluster mode](./deployment/cluster-mode.md).
@@ -215,12 +215,12 @@ Service platform password, used for automatically downloading and updating plugi
 
 ### LOGGER_TRANSPORT
 
-日志输出方式，多个用 `,` 分隔。开发环境默认值 `console`, 生产环境默认值 `console,dailyRotateFile`.
-可选项：
+Log output method，separated by `,` 。Default is `console` in development, `console,dailyRotateFile` in production. 
+Options：
 
 - `console` - `console.log`
-- `file` - `文件`
-- `dailyRotateFile` - `按天滚动文件`
+- `file` - `Output to file`
+- `dailyRotateFile` - `Output to daily rotating files`
 
 ```bash
 LOGGER_TRANSPORT=console,dailyRotateFile
@@ -228,7 +228,7 @@ LOGGER_TRANSPORT=console,dailyRotateFile
 
 ### LOGGER_BASE_PATH
 
-基于文件的日志存储路径，默认为 `storage/logs`。
+File-based log storage path, default is `storage/logs`。
 
 ```bash
 LOGGER_BASE_PATH=storage/logs
@@ -236,7 +236,7 @@ LOGGER_BASE_PATH=storage/logs
 
 ### LOGGER_LEVEL
 
-输出日志级别，开发环境默认值 `debug`, 生产环境默认值 `info`. 可选项：
+Output log level. Default is `debug` in development and `info` in production. Options:
 
 - `error`
 - `warn`
@@ -248,14 +248,14 @@ LOGGER_BASE_PATH=storage/logs
 LOGGER_LEVEL=info
 ```
 
-数据库日志输出级别为 `debug`, 由 `DB_LOGGING` 控制是否输出，不受 `LOGGER_LEVEL` 影响。
+The database log output level is `debug`, controlled by `DB_LOGGING`, and is unaffected by `LOGGER_LEVEL`.
 
 ### LOGGER_MAX_FILES
 
-最大保留日志文件数。
+Maximum number of log files to keep.
 
-- `LOGGER_TRANSPORT` 为 `file` 时，默认值为 `10`.
-- `LOGGER_TRANSPORT` 为 `dailyRotateFile`, 使用 `[n]d` 代表天数。默认值为 `14d`.
+- When `LOGGER_TRANSPORT` is `file` : Default is `10`.
+- When `LOGGER_TRANSPORT` is `dailyRotateFile`: Use `[n]d` to represent days. Default is `14d`.
 
 ```bash
 LOGGER_MAX_FILES=14d
@@ -263,10 +263,10 @@ LOGGER_MAX_FILES=14d
 
 ### LOGGER_MAX_SIZE
 
-按大小滚动日志。
+Log rotation by size.
 
-- `LOGGER_TRANSPORT` 为 `file` 时，单位为 `byte`, 默认值为 `20971520 (20 * 1024 * 1024)`.
-- `LOGGER_TRANSPORT` 为 `dailyRotateFile`, 可以使用 `[n]k`, `[n]m`, `[n]g`. 默认不配置。
+- When `LOGGER_TRANSPORT` is `file`: Unit is `byte`. Default is `20971520 (20 * 1024 * 1024)`.
+- When `LOGGER_TRANSPORT` is `dailyRotateFile`: Use `[n]k`, `[n]m`, `[n]g`. Default is not set.
 
 ```bash
 LOGGER_MAX_SIZE=20971520
@@ -274,7 +274,7 @@ LOGGER_MAX_SIZE=20971520
 
 ### LOGGER_FORMAT
 
-日志打印格式，开发环境默认 `console`, 生产环境默认 `json`. 可选项:
+Log print format. Default is `console` in development and `json` in production. Options:
 
 - `console`
 - `json`
@@ -285,11 +285,11 @@ LOGGER_MAX_SIZE=20971520
 LOGGER_FORMAT=json
 ```
 
-参考：[日志格式](../plugins/logger/index.md#logformat)
+Reference：[Log Format](../plugins/logger/index.md#logformat)
 
 ### CACHE_DEFAULT_STORE
 
-Specify the default cache method using the unique name，default is `memory`, options inlcude：
+Specify the default cache method using the unique name，default is `memory`, options include：
 
 - `memory`
 - `redis`
@@ -316,7 +316,7 @@ CACHE_REDIS_URL=redis://localhost:6379
 
 ### TELEMETRY_ENABLED
 
-启动遥测数据收集，默认为 `off`.
+Enable telemetry data collection，default is `off`.
 
 ```bash
 TELEMETRY_ENABLED=on
@@ -324,7 +324,7 @@ TELEMETRY_ENABLED=on
 
 ### TELEMETRY_METRIC_READER
 
-启用的监控指标采集器，默认为 `console`. 其他值需要参考对应采集器插件注册的名字，如 `prometheus`. 多个使用 `,` 分隔。
+Enabled monitoring metric collectors, default is `console`. Other values should refer to the names registered by corresponding collector plugins, such as `prometheus`. Multiple separated by `,` .
 
 ```bash
 TELEMETRY_METRIC_READER=console,prometheus
@@ -332,7 +332,7 @@ TELEMETRY_METRIC_READER=console,prometheus
 
 ### TELEMETRY_TRACE_PROCESSOR
 
-启用的链路数据处理器，默认为 `console`. 其他值需要参考对应处理器插件注册的名字。多个使用 `,` 分隔。
+Enabled trace data processors, default is `console`. Other values should refer to the names registered by corresponding processor plugins. Multiple separated by `,`.
 
 ```bash
 TELEMETRY_TRACE_PROCESSOR=console
@@ -361,12 +361,12 @@ These plugins will be automatically installed or upgraded during initialization 
 :::
 
 ```bash
-APPEND_PRESET_LOCAL_PLUGINS=@my-project/plugin-foo,@my-project/plugin-bar
+APPEND_PRESET_BUILT_IN_PLUGINS=@my-project/plugin-foo,@my-project/plugin-bar
 ```
 
 ## Temporary Environment Variables
 
-The installation of NocoBase can be assited by setting temporary environment variables, such as:
+The installation of NocoBase can be assisted by setting temporary environment variables, such as:
 
 ```bash
 yarn cross-env \
@@ -402,7 +402,7 @@ yarn cross-env \
 
 ### INIT_ROOT_EMAIL
 
-Root user mailbox
+Root user email
 
 ```bash
 yarn cross-env \
