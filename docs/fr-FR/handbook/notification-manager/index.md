@@ -18,7 +18,7 @@ Le Gestionnaire de Notifications est un service centralisé qui intègre divers 
 
 Les canaux actuellement supportés comprennent :
 
-- [Message en application](/handbook/notification-in-app-message) (en développement)
+- [Message en application](/handbook/notification-in-app-message)
 - [Email](/handbook/notification-email) (protocole SMTP intégré)
 
 Pour les canaux supplémentaires, consultez la documentation sur l'[Extension des Canaux](./extension).

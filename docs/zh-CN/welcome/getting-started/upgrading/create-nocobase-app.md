@@ -33,3 +33,26 @@ yarn dev
 ## 独立插件升级
 
 NocoBase 升级之后，通过界面安装的独立插件可能也需要升级，参考文档 [独立插件的安装与升级](/welcome/getting-started/plugin)
+
+## 升级到指定版本
+
+修改项目根目录的 `package.json` 文件，修改 `@nocobase/cli` 和 `@nocobase/devtools` 的版本号即可（只能升级不能降级）。如：
+
+```diff
+{
+  "dependencies": {
+-   "@nocobase/cli": "1.5.11"
++   "@nocobase/cli": "1.6.0-beta.8"
+  },
+  "devDependencies": {
+-   "@nocobase/devtools": "1.5.11"
++   "@nocobase/devtools": "1.6.0-beta.8"
+  }
+}
+```
+
+然后执行升级命令
+
+```bash
+yarn nocobase upgrade --skip-code-update
+```
