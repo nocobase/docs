@@ -3142,6 +3142,50 @@ export default [
     ],
   },
   {
+    title: 'AI integration',
+    'title.zh-CN': 'AI 集成',
+    type: 'group',
+    children: [
+      // {
+      //   title: 'Overview',
+      //   'title.zh-CN': '概述',
+      //   link: '/handbook/ai',
+      // },
+      {
+        title: 'LLM service management',
+        'title.zh-CN': 'LLM 服务管理',
+        link: '/handbook/ai/service',
+      },
+      {
+        title: 'Workflow',
+        'title.zh-CN': '工作流',
+        children: [
+          {
+            title: 'LLM node',
+            'title.zh-CN': 'LLM 节点',
+            children: [
+              {
+                title: 'Text chat',
+                'title.zh-CN': '文本对话',
+                link: '/handbook/ai/workflow/nodes/llm/chat',
+              },
+              {
+                title: 'Multimodal Chat',
+                'title.zh-CN': '多模态对话',
+                link: '/handbook/ai-ee/workflow/nodes/llm/multimodal-chat',
+              },
+              {
+                title: 'Structured output',
+                'title.zh-CN': '结构化输出',
+                link: '/handbook/ai-ee/workflow/nodes/llm/structured-output',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
     title: 'Security',
     'title.zh-CN': '安全性',
     'title.ja-JP': 'あんぜんせい',
