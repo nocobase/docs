@@ -1,37 +1,37 @@
-# 验证：TOTP 认证器
+# Verification: TOTP Authenticator
 
 <PluginInfo name="verification-totp-authenticator" commercial="true"></PluginInfo>
 
-## 介绍
+## Introduction
 
-TOTP 认证器验证支持用户绑定任意符合 TOTP (Time-based One-Time Password) 规范 (<a href="https://www.rfc-editor.org/rfc/rfc6238" target="_blank">RFC-6238</a>)的认证器，通过基于时间的一次性密码 (TOTP) 进行身份验证。
+The TOTP Authenticator allows users to bind any authenticator that complies with the TOTP (Time-based One-Time Password) specification (<a href="https://www.rfc-editor.org/rfc/rfc6238" target="_blank">RFC-6238</a>), and perform identity verification using a time-based one-time password (TOTP).
 
-## 管理员配置
+## Administrator Configuration
 
-进入验证管理页面。
+Navigate to the Verification Management page.
 
 ![](https://static-docs.nocobase.com/202502271726791.png)
 
-添加 - TOTP 验证器
+Add - TOTP Authenticator
 
 ![](https://static-docs.nocobase.com/202502271745028.png)
 
-除了唯一标识和标题以外，TOTP 验证器不需要其他配置。
+Apart from a unique identifier and title, no additional configuration is required for the TOTP authenticator.
 
 ![](https://static-docs.nocobase.com/202502271746034.png)
 
-## 用户绑定
+## User Binding
 
-添加验证器后，用户可以在个人中心的验证管理中绑定 TOTP 认证器。
+After adding the authenticator, users can bind the TOTP authenticator in their personal verification management area.
 
 ![](https://static-docs.nocobase.com/202502272252324.png)
 
 :::warning
-插件暂时未提供恢复码机制，绑定 TOTP 认证器后请用户妥善保管。如不小心丢失了认证器，可以使用其他验证方式验证身份，也通过其他验证方式解绑后重新绑定。
+The plugin does not currently provide a recovery code mechanism. Once the TOTP authenticator is bound, users are advised to keep it secure. If the authenticator is accidentally lost, they can use an alternative verification method to verify their identity, unbind the authenticator, and then rebind it.
 :::
 
-## 用户解绑
+## User Unbinding
 
-解绑认证器需要通过已绑定的验证方式，进行验证。
+Unbinding the authenticator requires verification using the already bound verification method.
 
 ![](https://static-docs.nocobase.com/202502282103205.png)
