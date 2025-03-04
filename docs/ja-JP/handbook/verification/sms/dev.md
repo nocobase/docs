@@ -1,12 +1,12 @@
-# 扩展短信服务商
+# Extend SMS Provider
 
-本文主要介绍如何通过插件的形式扩展 [验证：短信](./index.md) 功能中的短信服务商。
+This article primarily explains how to extend the SMS provider functionality in the [Auth: SMS](./index.md) feature via a plugin.
 
-## 客户端
+## Client
 
-### 注册配置表单
+### Register Configuration Form
 
-用户在配置短信验证器时，选择短信服务商类型后，会出现一个和该服务商类型关联的配置表单，这个配置表单需要开发者在客户端自行注册。
+When configuring the SMS verifier, after selecting an SMS provider type, a configuration form associated with that provider type will appear. This configuration form needs to be registered by the developer on the client side.
 
 ![](https://static-docs.nocobase.com/202503011221912.png)
 
@@ -50,17 +50,17 @@ class PluginCustomSMSProviderClient extends Plugin {
 }
 ```
 
-## 服务端
+## Server
 
-### 实现发送接口
+### Implement Sending Interface
 
-验证插件已经对创建一次性动态验证码 (OTP) 的流程实现了封装，开发者只需要实现与短信服务商交互的发送逻辑即可。
+The verification plugin has already encapsulated the process of creating one-time dynamic passwords (OTPs), so developers only need to implement the logic for sending messages to interact with the SMS provider.
 
 ```ts
 class CustomSMSProvider extends SMSProvider {
   constructor(options) {
     super(options);
-    // options 为客户端的配置对象
+    // options is the configuration object from the client
     const options = this.options;
     // ...
   }
@@ -71,9 +71,9 @@ class CustomSMSProvider extends SMSProvider {
 }
 ```
 
-### 注册验证类型
+### Register Verification Type
 
-发送接口实现好以后，需要进行注册。
+Once the sending interface is implemented, it needs to be registered.
 
 ```ts
 import { Plugin } from '@nocobase/server';
@@ -83,7 +83,7 @@ import { tval } from '@nocobase/utils';
 class PluginCustomSMSProviderServer extends Plugin {
   async load() {
     const plugin = this.app.pm.get('verification') as PluginVerificationServer;
-    // name 需要和客户端对应
+    // The name must correspond to the one used on the client
     plugin.smsOTPProviderManager.registerProvider('custom-sms-provider-name', {
       title: tval('Custom SMS provider', { ns: namespace }),
       provider: CustomSMSProvider,
