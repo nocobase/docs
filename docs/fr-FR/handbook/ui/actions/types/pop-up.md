@@ -8,7 +8,7 @@ La fonctionnalité de fenêtre contextuelle personnalisée fonctionne de manièr
 
 Configurez les blocs selon les besoins dans la fenêtre contextuelle.
 
-![20240426161322](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426161322.png)
+![20240426161322](https://static-docs.nocobase.com/20240426161322.png)
 
 ## Éléments de Configuration de l'Opération
 

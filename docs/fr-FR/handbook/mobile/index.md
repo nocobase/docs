@@ -62,7 +62,7 @@ Le filtrage utilise une méthode d'interaction basée sur [Popup](https://mobile
 
 Vous pouvez configurer les permissions d'accès au menu de la même manière que sur la version desktop, comme indiqué ci-dessous (le plugin mobile doit être activé au préalable) :
 
-![20240903221327_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240903221327_rec_.gif)
+![20240903221327_rec_](https://static-docs.nocobase.com/20240903221327_rec_.gif)
 
 ## Guide de développement
 

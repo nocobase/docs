@@ -30,7 +30,7 @@
 需要 NocoBase 的版本是 v1.3.0-alpha 及以上。
 :::
 
-![20240809170648](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240809170648.png)
+![20240809170648](https://static-docs.nocobase.com/20240809170648.png)
 
 ## 使用场景
 
@@ -55,7 +55,7 @@
 
 如果想跟其他人分享单条记录的数据，可以在打开弹窗之后，直接复制浏览器地址栏的 URL，然后分享给其他人。当其他人打开这个 URL 后，会在页面中自动弹出对应的弹窗。
 
-![20240809173339_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240809173339_rec_.gif)
+![20240809173339_rec_](https://static-docs.nocobase.com/20240809173339_rec_.gif)
 
 ## 添加区块
 

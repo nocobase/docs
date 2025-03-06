@@ -6,9 +6,9 @@
 
 ### フィルター条件が空の場合に全データをロードする
 
-![フィルター条件が空の場合に全データをロードする例](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240407170234.gif)
+![フィルター条件が空の場合に全データをロードする例](https://static-docs.nocobase.com/20240407170234.gif)
 
 ### フィルター条件が空の場合にデータをロードしない
 
-![フィルター条件が空の場合にデータをロードしない例](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240721160327_rec_.gif)
+![フィルター条件が空の場合にデータをロードしない例](https://static-docs.nocobase.com/20240721160327_rec_.gif)
 

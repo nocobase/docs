@@ -28,7 +28,7 @@ NocoBaseには三種類のメニュー項目が組み込まれています：
 
 第三者のURLにジャンプできます。URLおよび検索パラメータに変数を使用できます。
 
-![20240709231114](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240709231114.png)
+![20240709231114](https://static-docs.nocobase.com/20240709231114.png)
 
 ## メニューの設定
 

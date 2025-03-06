@@ -62,7 +62,7 @@ NocoBase はモバイル端末向けに特有の UI 設定画面を提供して�
 
 デスクトップ版と同様に、メニューアクセス権を設定できます。設定位置は以下の通りです（モバイルプラグインを先に有効にする必要があります）：
 
-![20240903221327_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240903221327_rec_.gif)
+![20240903221327_rec_](https://static-docs.nocobase.com/20240903221327_rec_.gif)
 
 ## 開発ガイド
 

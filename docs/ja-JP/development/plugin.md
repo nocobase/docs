@@ -2,7 +2,7 @@
 
 NocoBaseはプラグインを整理するための3つの方法を提供しており、すべてのプラグインパッケージは最終的にプロジェクトのルートディレクトリにある `node_modules` に集約されます：
 
-![20240424112928](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240424112928.png)
+![20240424112928](https://static-docs.nocobase.com/20240424112928.png)
 
 :::warning
 3つの方法で整理されたプラグインは、最終的に `yarn install` を実行する必要があります。アプリのプラグイン管理ページに表示する必要がある場合は、`pm add` を通じてアプリに追加してください。

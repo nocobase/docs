@@ -28,7 +28,7 @@
 必要なNocoBaseのバージョンはv1.3.0-alpha以上です。
 :::
 
-![20240809170648](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240809170648.png)
+![20240809170648](https://static-docs.nocobase.com/20240809170648.png)
 
 ## 使用シーン
 
@@ -53,7 +53,7 @@ NocoBaseのバージョンはv1.3.0-alpha以上が必要です。
 
 他の人と単一レコードのデータを共有したい場合は、ポップアップを開いた後、ブラウザのアドレスバーのURLを直接コピーし、他の人に共有してください。共有されたURLを他の人が開くと、対応するポップアップが自動的に表示されます。
 
-![20240809173339_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240809173339_rec_.gif)
+![20240809173339_rec_](https://static-docs.nocobase.com/20240809173339_rec_.gif)
 
 ## ブロックの追加
 
