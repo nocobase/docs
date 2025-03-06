@@ -1498,6 +1498,13 @@ export default [
               },
             ],
           },
+          {
+            title: 'Access control',
+            'title.fr-FR': 'Contrôle des droits opérationnels',
+            'title.zh-CN': '操作权限控制',
+            'title.ja-JP': '操作権限制御',
+            link: '/handbook/ui/actions/permission',
+          },
         ],
       },
       {
