@@ -60,7 +60,7 @@
 
 ![20250306215749](https://static-docs.nocobase.com/20250306215749.png)
 
-如果没有设置角色，默认所有角色可见
+如果没有设置角色，默认所有角色可见。
 
 ![20250306215854](https://static-docs.nocobase.com/20250306215854.png)
 
