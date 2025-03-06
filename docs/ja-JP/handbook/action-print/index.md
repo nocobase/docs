@@ -10,5 +10,5 @@
 
 内蔵プラグインのため、別途インストールは不要です。
 
-![20240426105637](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426105637.png)
+![20240426105637](https://static-docs.nocobase.com/20240426105637.png)
 

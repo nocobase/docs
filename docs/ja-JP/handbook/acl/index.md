@@ -17,7 +17,7 @@ NocoBaseのACLモジュールは主に2つの部分で構成されています�
 
 以下に「モバイルメニュー」設定項目を例に、新しい権限設定タブの拡張方法を示します。効果は下の図のようになります：
 
-![20240903210248](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240903210248.png)
+![20240903210248](https://static-docs.nocobase.com/20240903210248.png)
 
 コードは以下の通りです：
 

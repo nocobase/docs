@@ -10,4 +10,4 @@ The print button is a functional button in the details section. When clicked, it
 
 This is a built-in plugin, no separate installation required.
 
-![20240426105637](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426105637.png)
+![20240426105637](https://static-docs.nocobase.com/20240426105637.png)

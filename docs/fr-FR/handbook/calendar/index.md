@@ -61,7 +61,7 @@ Cette option peut être utilisée pour configurer la couleur de fond des événe
 2. Ensuite, retournez dans l'interface de configuration du bloc calendrier et sélectionnez le champ que vous venez de configurer avec des couleurs dans le **Champ couleur de fond**.
 3. Enfin, vous pouvez essayer de sélectionner une couleur pour un événement du calendrier et cliquer sur soumettre. Vous verrez que la couleur a pris effet.
 
-![20240914192017_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240914192017_rec_.gif)
+![20240914192017_rec_](https://static-docs.nocobase.com/20240914192017_rec_.gif)
 
 ## Configurer les actions
 

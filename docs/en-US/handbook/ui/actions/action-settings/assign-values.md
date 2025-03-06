@@ -18,12 +18,12 @@ Only fields within the current table can be configured.
 
 ### Constants
 
-![20240426153323](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426153323.png)
+![20240426153323](https://static-docs.nocobase.com/20240426153323.png)
 
 ### Variables
 
 Different field types support various variable types, offering flexibility depending on the data you're working with.
 
-![20240426153534](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426153534.png)
+![20240426153534](https://static-docs.nocobase.com/20240426153534.png)
 
 For more information on variables, refer to the [Variables](/handbook/ui/variables) section.

@@ -36,6 +36,6 @@
 需要 NocoBase v1.3.17-beta 及以上版本。
 :::
 
-![20240906083737_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240906083737_rec_.gif)
+![20240906083737_rec_](https://static-docs.nocobase.com/20240906083737_rec_.gif)
 
 更多内容参考 [联动规则](/handbook/ui/blocks/block-settings/linkage-rule)

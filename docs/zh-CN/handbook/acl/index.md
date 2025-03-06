@@ -17,7 +17,7 @@ NocoBase 的 ACL 模块主要由两部分组成：
 
 下面以“移动端菜单”配置项为例，演示如何扩展一个新的权限配置栏。效果如下图所示：
 
-![20240903210248](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240903210248.png)
+![20240903210248](https://static-docs.nocobase.com/20240903210248.png)
 
 代码如下：
 

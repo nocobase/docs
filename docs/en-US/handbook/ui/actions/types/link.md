@@ -26,7 +26,7 @@ Example: The author and article tables have a one-to-many relationship. In the a
 
 When the "Open in new window" option is selected, the link will open in a new window.
 
-![20240718160541](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240718160541.png)
+![20240718160541](https://static-docs.nocobase.com/20240718160541.png)
 
 Here is a complete configuration example:
 
