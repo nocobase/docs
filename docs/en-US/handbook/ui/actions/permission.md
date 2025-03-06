@@ -19,7 +19,7 @@ In NocoBase’s permission system, collection operation permissions are generall
 
 This generalized permission management method is suitable for standardized data permission control, ensuring that the same operations on the same collection across different pages, pop-ups, and blocks follow consistent permission rules, making it unified and maintainable.
 
-#### Global Data Source Permissions
+#### Global Permissions
 
 Global permissions apply to all collections under the data source and are categorized by resource type as shown below:
 
