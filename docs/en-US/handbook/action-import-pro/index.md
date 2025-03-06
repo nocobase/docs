@@ -47,11 +47,11 @@ The values configured in the import options will be used as default during the i
 
 - Allow uploaders to modify import options
 
-  ![20250306230531](https://static-docs.nocobase.com/20250306230531.png)
+![20250306230531](https://static-docs.nocobase.com/20250306230531.png)
 
 - Disable uploaders from modifying import options
 
-  ![20250306230650](https://static-docs.nocobase.com/20250306230650.png)
+![20250306230650](https://static-docs.nocobase.com/20250306230650.png)
 
 #### Mode Description
 
