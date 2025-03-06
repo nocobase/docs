@@ -25,7 +25,7 @@ After initiating an import, the import process will be executed in a separate ba
 
 After the import is complete, you can view the import results in the import task.
 
-### Import Configuration
+### Import Settings
 
 #### Import Options - Trigger Workflow
 
@@ -42,6 +42,8 @@ Select this option and choose the corresponding mode to automatically identify a
 The values configured in the import options will be used as default during the import process. Admins can control whether uploaders can modify these options (except for the trigger workflow option).
 
 #### Uploader Permissions Settings
+
+![20250306232121](https://static-docs.nocobase.com/20250306232121.png)
 
 - Allow uploaders to modify import options
 
