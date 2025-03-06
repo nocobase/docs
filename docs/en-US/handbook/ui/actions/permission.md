@@ -40,6 +40,8 @@ Specific collection permissions override global permissions and allow more granu
 
 ### Independent Operation Permissions
 
+Note: This feature is supported starting from v1.6.0-beta.13.
+
 Unlike unified operation permissions, independent operation permissions are applied specifically to individual operations. This allows the same operation to have different permission settings at different locations.
 
 This permission model is ideal for personalized operations, such as:
@@ -65,6 +67,6 @@ If no roles are set, all roles are visible by default.
 ![20250306215854](https://static-docs.nocobase.com/20250306215854.png)
 
 ## Related Documentation
-[Configure Permissions](/handbook/ui/acl/user)**
+[Configure Permissions](/handbook/ui/acl/user)
 
 
