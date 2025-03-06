@@ -66,4 +66,4 @@
 
 ## 相关文档
 
-[配置权限](/handbook/ui/acl/user)
+[配置权限](/handbook/acl/user)

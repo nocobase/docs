@@ -67,6 +67,6 @@ If no roles are set, all roles are visible by default.
 ![20250306215854](https://static-docs.nocobase.com/20250306215854.png)
 
 ## Related Documentation
-[Configure Permissions](/handbook/ui/acl/user)
+[Configure Permissions](/handbook/acl/user)
 
 
