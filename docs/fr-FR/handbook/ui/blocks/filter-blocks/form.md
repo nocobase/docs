@@ -58,4 +58,4 @@ Comme un bloc de formulaire classique, vous pouvez définir des valeurs par déf
 
 Par défaut, en cliquant sur le bouton "Réinitialiser", les valeurs par défaut des champs sont conservées. Si vous souhaitez supprimer les valeurs par défaut des champs, vous pouvez ouvrir les options de configuration et activer l'option "Effacer les Valeurs Par Défaut".
 
-![20240716183611](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240716183611.png)
+![20240716183611](https://static-docs.nocobase.com/20240716183611.png)

@@ -6,8 +6,8 @@ The default data loading method is "Load all data when filter criteria are empty
 
 ### Load all data when filter is empty
 
-![![20240407170234](httpsstatic-docs.nocobase.com20240407170234.png)](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/![20240407170234](httpsstatic-docs.nocobase.com20240407170234.png).gif)
+![![20240407170234](httpsstatic-docs.nocobase.com20240407170234.png)](https://static-docs.nocobase.com/![20240407170234](httpsstatic-docs.nocobase.com20240407170234.png).gif)
 
 ### Do not load data when filter is empty
 
-![20240721160327_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240721160327_rec_.gif)
+![20240721160327_rec_](https://static-docs.nocobase.com/20240721160327_rec_.gif)

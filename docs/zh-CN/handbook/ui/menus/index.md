@@ -29,7 +29,7 @@ NocoBase 内置三种菜项类型：
 
 可以跳转到第三方 URL。可以在 URL 和 Search params 中使用变量。
 
-![20240709231114](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240709231114.png)
+![20240709231114](https://static-docs.nocobase.com/20240709231114.png)
 
 ## 配置菜单
 

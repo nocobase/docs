@@ -30,7 +30,7 @@ Pop-ups come in two types: drawer and dialog. Configure the type and size of the
 The version of NocoBase needs to be v1.3.0-alpha or above.
 :::
 
-![20240809170648](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240809170648.png)
+![20240809170648](https://static-docs.nocobase.com/20240809170648.png)
 
 ## Use Cases
 
@@ -55,7 +55,7 @@ The version of NocoBase needs to be v1.3.0-alpha or above.
 
 If you want to share the data of a single record with others, you can directly copy the URL of the browser address bar after opening the popup window, and then share it with others. When others open this URL, the corresponding popup window will automatically pop up on the page.
 
-![20240809173339_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240809173339_rec_.gif)
+![20240809173339_rec_](https://static-docs.nocobase.com/20240809173339_rec_.gif)
 
 ## Adding Blocks
 

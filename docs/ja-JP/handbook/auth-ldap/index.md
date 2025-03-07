@@ -8,23 +8,23 @@
 
 ## プラグインの有効化
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405101600789.png"/>
+<img src="https://static-docs.nocobase.com/202405101600789.png"/>
 
 ## LDAP認証の追加
 
 ユーザー認証プラグイン管理ページに移動します。
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405101601510.png"/>
+<img src="https://static-docs.nocobase.com/202405101601510.png"/>
 
 「追加」- 「LDAP」を選択します。
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405101602104.png"/>
+<img src="https://static-docs.nocobase.com/202405101602104.png"/>
 
 ## 設定
 
 ### 基本設定
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405101605728.png"/>
+<img src="https://static-docs.nocobase.com/202405101605728.png"/>
 
 - **ユーザーが存在しない場合に自動的にサインアップ** - 一致する既存のユーザーが見つからない場合、新しいユーザーを自動的に作成するかどうかを選択します。
 - **LDAP URL** - LDAPサーバーのアドレスを指定します。
@@ -34,7 +34,7 @@
 
 ### 検索設定
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405101609984.png"/>
+<img src="https://static-docs.nocobase.com/202405101609984.png"/>
 
 - **検索DN** - ユーザー検索に使用するDNです。
 - **検索フィルター** - ユーザーを検索するためのフィルター条件です。`{{account}}`はログイン時に使用するユーザーアカウントを表します。
@@ -43,7 +43,7 @@
 
 ### 属性マッピング
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405101612814.png"/>
+<img src="https://static-docs.nocobase.com/202405101612814.png"/>
 
 - **このフィールドを使用してユーザーをバインド** - 既存のユーザーをバインドするためのフィールドです。ログインアカウントがユーザー名の場合はユーザー名を、メールアドレスの場合はメールアドレスを選択します。デフォルトはユーザー名です。
 - **属性マップ** - ユーザー属性とNocoBaseユーザーテーブルのフィールドマッピングです。
@@ -52,5 +52,5 @@
 
 ログインページにアクセスし、ログインフォームにLDAPユーザー名とパスワードを入力してログインします。
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405101614300.png"/>
+<img src="https://static-docs.nocobase.com/202405101614300.png"/>
 

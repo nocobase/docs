@@ -32,5 +32,5 @@
 
 v1.2.23-alpha バージョンでは、ウェブサイトアイコン favicon の設定機能が追加されました。下記の画像を参照してください：
 
-![350438864-08053d02-5429-407f-a3f7-fed439993623](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/350438864-08053d02-5429-407f-a3f7-fed439993623.gif)
+![350438864-08053d02-5429-407f-a3f7-fed439993623](https://static-docs.nocobase.com/350438864-08053d02-5429-407f-a3f7-fed439993623.gif)
 

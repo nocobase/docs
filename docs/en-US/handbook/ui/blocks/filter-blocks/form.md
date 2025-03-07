@@ -57,4 +57,4 @@ Like a normal [Form Block](/handbook/ui/blocks/data-blocks/form), you can set de
 
 By default, clicking the "Reset" button will preserve the default values of the fields. If you want to clear the default values of the fields, you can open the configuration options and enable the "Clear Default Values" option.
 
-![20240716183611](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240716183611.png)
+![20240716183611](https://static-docs.nocobase.com/20240716183611.png)

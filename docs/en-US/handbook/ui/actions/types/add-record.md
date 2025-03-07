@@ -16,18 +16,18 @@ This functionality is currently designed for setting default field values in the
 
 For example, the Order table and the Product table have a many-to-many relationship. In the Product table block, you can configure the "Add Record" operation to input data into the Order table.
 
-![20240426101803](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426101803.png)
+![20240426101803](https://static-docs.nocobase.com/20240426101803.png)
 
 In this case, set the default value of the "Product" relationship field in the Order table to "Table selected records".
 
-![20240426101823](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426101823.png)
+![20240426101823](https://static-docs.nocobase.com/20240426101823.png)
 
-![20240426101922](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426101922.png)
+![20240426101922](https://static-docs.nocobase.com/20240426101922.png)
 
 Here's the complete operation:
 
 <video width="100%" height="440" controls>
-<source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426102142.mp4" type="video/mp4">
+<source src="https://static-docs.nocobase.com/20240426102142.mp4" type="video/mp4">
 </video>
 
 ## Operation Configuration Items

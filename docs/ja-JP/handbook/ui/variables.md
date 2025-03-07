@@ -141,7 +141,7 @@
 ### URL クエリパラメータ
 この変数は現在のページのURL中のクエリパラメータを示し、ページのURLにクエリ文字列が存在する場合のみ使用可能です。[リンク操作](/handbook/ui/actions/types/link)と合わせて使用することで、さらに便利になります。
 
-![20240603200410](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240603200410.gif)
+![20240603200410](https://static-docs.nocobase.com/20240603200410.gif)
 
 ### API トークン
 この変数の値は文字列で、NocoBase APIにアクセスするための認証情報です。ユーザーの識別に利用できます。

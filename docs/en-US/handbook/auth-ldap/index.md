@@ -8,23 +8,23 @@ The Auth: LDAP plugin follows the LDAP (Lightweight Directory Access Protocol) p
 
 ## Activate plugin
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405101600789.png"/>
+<img src="https://static-docs.nocobase.com/202405101600789.png"/>
 
 ## Add LDAP Authentication
 
 Go to the authentication plugin settings page.
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405101601510.png"/>
+<img src="https://static-docs.nocobase.com/202405101601510.png"/>
 
 Add - LDAP
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405101602104.png"/>
+<img src="https://static-docs.nocobase.com/202405101602104.png"/>
 
 ## Configuration
 
 ### Basic Configuration
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405101605728.png"/>
+<img src="https://static-docs.nocobase.com/202405101605728.png"/>
 
 - Sign up automatically when the user does not exist - Whether to automatically create a new user when no matching existing user is found.
 - LDAP URL - LDAP server URL
@@ -34,7 +34,7 @@ Add - LDAP
 
 ### Search Configuration
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405101609984.png"/>
+<img src="https://static-docs.nocobase.com/202405101609984.png"/>
 
 - Search DN - DN used to search for users
 - Search filter - Filtering condition for searching users, using `{{account}}` to represent the user account used for login
@@ -43,7 +43,7 @@ Add - LDAP
 
 ### Attribute Mapping
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405101612814.png"/>
+<img src="https://static-docs.nocobase.com/202405101612814.png"/>
 
 - Use this field to bind the user - Field used to bind existing users. If the login account is a username, choose username; if it is an email, choose email. Default is username.
 - Attribute map - Mapping of user attributes to fields in the NocoBase user table.
@@ -52,4 +52,4 @@ Add - LDAP
 
 Visit the sign in page and enter LDAP username and password in the sign in form.
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405101614300.png"/>
+<img src="https://static-docs.nocobase.com/202405101614300.png"/>

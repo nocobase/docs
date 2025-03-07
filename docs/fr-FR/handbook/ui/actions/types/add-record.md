@@ -16,18 +16,18 @@ Cette fonctionnalité est actuellement conçue pour définir des valeurs par dé
 
 Par exemple, la table Commande et la table Produit ont une relation plusieurs-à-plusieurs. Dans le bloc de la table Produit, vous pouvez configurer l'opération "Ajouter un Enregistrement" pour saisir des données dans la table Commande.
 
-![20240426101803](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426101803.png)
+![20240426101803](https://static-docs.nocobase.com/20240426101803.png)
 
 Dans ce cas, définissez la valeur par défaut du champ de relation "Produit" dans la table Commande sur "Enregistrements sélectionnés de la table".
 
-![20240426101823](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426101823.png)
+![20240426101823](https://static-docs.nocobase.com/20240426101823.png)
 
-![20240426101922](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426101922.png)
+![20240426101922](https://static-docs.nocobase.com/20240426101922.png)
 
 Voici l'opération complète :
 
 <video width="100%" height="440" controls>
-<source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426102142.mp4" type="video/mp4">
+<source src="https://static-docs.nocobase.com/20240426102142.mp4" type="video/mp4">
 </video>
 
 ## Éléments de Configuration de l'Opération

@@ -8,7 +8,7 @@ The custom pop-up feature functions much like the view and edit actions. It's pa
 
 Configure blocks as needed in the pop-up window.
 
-![20240426161322](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426161322.png)
+![20240426161322](https://static-docs.nocobase.com/20240426161322.png)
 
 ## Operation Configuration Items
 
