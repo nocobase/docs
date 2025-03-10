@@ -1,15 +1,17 @@
-# LLM 服务管理
+# LLM Service Management
 
 <PluginInfo name="ai"></PluginInfo>
 
-## 介绍
+## Introduction
 
-在使用 AI 功能之前，需要先接入在线 LLM 服务。NocoBase 支持以多种 API 协议接入在线 LLM 服务。目前开源版支持 OpenAI 和 DeepSeek. 企业版在开源版的基础上增加了对 Ollama 本地模型的支持，同时企业用户也可以联系我们，按需扩展支持更多的 API 协议。
+Before using AI features, you need to first integrate an online LLM service. NocoBase supports integrating online LLM services using multiple API protocols.
+Currently, the open-source version supports mainstream LLM protocols, such as OpenAI and DeepSeek, or LLM services with the same calling format, which can be integrated through the API interfaces provided by the LLM service providers.
+The enterprise version also supports Ollama local models, and enterprise users can also contact us to extend support for more API protocols as needed.
 
 ![](https://static-docs.nocobase.com/202503021832046.png)
 
-## 配置
+## Configuring
 
-按照所选 API 协议填写在线服务信息，通常需要输入 API key 和 Base URL.
+Fill in the online service information according to the selected API protocol, usually requiring input of an API key and Base URL.
 
 ![](https://static-docs.nocobase.com/202503032320237.png)

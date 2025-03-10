@@ -1,59 +1,59 @@
-# 路由管理器
+# Routes
 
 <PluginInfo name="client"></PluginInfo>
 
-## 介绍
+## Introduction
 
-路由管理器是一个用于管理系统主页面路由的工具，支持`桌面端`和`移动端`。使用路由管理器创建的路由，会同步显示在菜单中（可配置为不显示在菜单中）。反之，在页面菜单处添加的菜单，也会同步显示在路由管理器列表中。
+The route manager is a tool for managing the routes of the main page of the system, supporting `desktop` and `mobile` endpoints. Routes created using the route manager will be synchronized to the menu (can be configured to not display in the menu). Conversely, menus added in the page menu will also be synchronized to the route manager list.
 
 ![20250107115449](https://static-docs.nocobase.com/20250107115449.png)
 
-## 使用手册
+## User Manual
 
-### 路由类型
+### Route Types
 
-系统支持四种类型的路由：
+The system supports four types of routes:
 
-- 分组（group）：用于对路由进行分组管理，可以包含子路由
-- 页面（page）：系统内部页面
-- 标签（tab）：用于在页面内部进行标签页切换的路由类型
-- 链接（link）：内部或者外部链接，可直接跳转到其配置的链接地址
+- Group (group): Used to manage routes by grouping them, and can include sub-routes
+- Page (page): System internal page
+- Tab (tab): Used to switch between tabs in a page
+- Link (link): Internal or external link, can directly jump to the configured link address
 
-### 添加路由
+### Add Route
 
-点击右上角的“Add new”按钮可以创建新的路由：
+Click the "Add new" button in the upper right corner to create a new route:
 
-1. 选择路由类型（Type）
-2. 填写路由标题（Title）
-3. 选择路由图标（Icon）
-4. 设置是否在菜单中显示（Show in menu）
-5. 设置是否开启 Tab 页（Enable page tabs）
-6. 对于页面类型，系统会自动生成唯一的路由路径（Path）
+1. Select the route type (Type)
+2. Fill in the route title (Title)
+3. Select the route icon (Icon)
+4. Set whether to display in the menu (Show in menu)
+5. Set whether to enable page tabs (Enable page tabs)
+6. For page type, the system will automatically generate a unique route path (Path)
 
 ![20250124131803](https://static-docs.nocobase.com/20250124131803.png)
 
-### 路由操作
+### Route Actions
 
-每个路由条目支持以下操作：
+Each route entry supports the following Actions:
 
-- Add child：添加子路由
-- Edit：编辑路由配置
-- View：查看路由页面
-- Delete：删除路由
+- Add child: Add a sub-route
+- Edit: Edit the route configuration
+- View: View the route page
+- Delete: Delete the route
 
-### 批量操作
+### Batch Actions
 
-顶部工具栏提供以下批量操作功能：
+The top toolbar provides the following batch Action functions:
 
-- Refresh：刷新路由列表
-- Delete：删除选中的路由
-- Hide in menu：在菜单中隐藏选中的路由
-- Show in menu：在菜单中显示选中的路由
+- Refresh: Refresh the route list
+- Delete: Delete the selected route
+- Hide in menu: Hide the selected route in the menu
+- Show in menu: Show the selected route in the menu
 
-### 路由筛选
+### Route Filter
 
-使用顶部的“Filter”功能可以根据需要筛选路由列表。
+Use the "Filter" function at the top to filter the route list.
 
-:::info{title=提示}
-路由配置的修改将直接影响系统的导航菜单结构。请谨慎操作，确保路由配置的正确性。
+:::info{title=Note}
+Modifying route configurations will directly affect the navigation menu structure of the system. Please proceed with caution and ensure the correctness of the route configurations.
 :::
