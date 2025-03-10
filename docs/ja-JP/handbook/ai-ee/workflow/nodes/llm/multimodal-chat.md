@@ -1,16 +1,16 @@
-# 多模态对话
+# Multimodal Chat
 
 <PluginInfo name="ai-ee" licenseBundled="true"></PluginInfo>
 
-## 图片
+## Image
 
-在模型支持的前提下，LLM 节点可以向模型发送图片。使用的时候需要通过变量选择附件字段，或关联文件表记录。选择文件表记录的时候可以选到只记录对象层级，也可以选择到 URL 字段。
+When the model supports it, the LLM node can send images to the model. When using it, you need to select the attachment field through a variable or associate a file table record. When selecting a file table record, you can select to only record the object level or select to the URL field.
 
 ![](https://static-docs.nocobase.com/202503041034858.png)
 
-图片的发送格式有两个选项供选择：
+The image sending format has two options:
 
-- 通过 URL 发送 - 除了本地存储的图片，都会以 URL 的形式进行发送，本地存储的图片会转换成 base64 格式发送。
-- 通过 base64 发送 - 不管是本地存储还是云存储的图片，都以 base64 的格式发送。适用于图片 URL 无法被在线 LLM 服务直接访问的情况。
+- Send via URL - All images, except for locally stored images, will be sent in URL format, and locally stored images will be converted to base64 format.
+- Send via base64 - Whether the image is locally stored or cloud-stored, it will be sent in base64 format. This is applicable to situations where the image URL cannot be accessed directly by the online LLM service.
 
 ![](https://static-docs.nocobase.com/202503041200638.png)
