@@ -2806,6 +2806,12 @@ export default [
                 link: '/handbook/workflow-approval/block',
               },
               {
+                title: 'Workflow tasks',
+                'title.zh-CN': '流程待办',
+                'title.ja-JP': '流程待办',
+                link: '/handbook/workflow-approval/tasks',
+              },
+              {
                 title: 'Advanced',
                 'title.zh-CN': '高级',
                 'title.ja-JP': '高度',
