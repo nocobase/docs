@@ -1,50 +1,51 @@
-# 结构化输出
+# Structured Output
 
 <PluginInfo name="ai-ee" licenseBundled="true"></PluginInfo>
 
-## 介绍
+## Introduction
 
-在有些应用场景下，用户可能希望 LLM 模型以 JSON 格式响应结构化内容，可以通过配置「结构化输出」来实现。
+In some application scenarios, users may want the LLM model to respond with structured content in JSON format, which can be achieved by configuring "Structured Output".
 
 ![](https://static-docs.nocobase.com/202503041306405.png)
 
-## 配置说明
+## Configuration Instructions
 
-- **JSON Schema** - 用户可通过配置 [JSON Schema](https://json-schema.org/) 规定模型响应的预期结构。
-- **名称 (Name)** - _非必填_，用于帮助模型更好地理解 JSON Schema 所表示的对象。
-- **描述 (Description)** - _非必填_，用于帮助模型更好地理解 JSON Schema 的用途。
-- **Strict** - 要求模型严格按照 JSON Schema 结构生成响应。目前，仅 OpenAI 的部分新模型支持此参数，勾选前请确认模型是否兼容。
+- **JSON Schema** - Users can configure [JSON Schema](https://json-schema.org/) to specify the expected structure of the model's response.
+- **Name** - _Optional_, used to help the model better understand the object represented by the JSON Schema.
+- **Description** - _Optional_, used to help the model better understand the purpose of the JSON Schema.
+- **Strict** - Requires the model to generate a response strictly adhering to the JSON Schema structure. Currently, only some newer models from OpenAI support this parameter. Please confirm compatibility with the model before selecting it.
 
-## 结构化内容生成方式
+## Structured Content Generation Method
 
-模型的结构化内容生成方式，取决于所使用的 **模型** 及其 **Response format** 配置：
+The method of generating structured content depends on the **model** and its **Response format** configuration:
 
-1. Response format 仅支持 `text` 的模型
+1. Models that only support `text` in Response format
 
-   - 调用时，节点会绑定一个基于 JSON Schema 生成 JSON 格式内容的 Tools，引导模型通过调用该 Tools 生成结构化响应。
+   - When calling, the node will bind a Tool that generates JSON content based on the JSON Schema, guiding the model to generate a structured response by calling this Tool.
 
-2. Response format 支持 JSON 模式 (`json_object`) 的模型
+2. Models that support JSON mode (`json_object`) in Response format
 
-   - 若调用时选择 JSON 模式，用户需在 Prompt 中明确指示模型以 JSON 格式返回，并提供响应字段说明。
-   - 在此模式下，JSON Schema 仅用于解析模型返回的 JSON 字符串，将其转换为目标 JSON 对象。
+   - When calling, select JSON mode, and users need to explicitly indicate in the Prompt that the model should return in JSON format, and provide a response field description.
+   - In this mode, the JSON Schema is only used to parse the JSON string returned by the model into a target JSON object.
 
-3. Response format 支持 JSON Schema (`json_schema`) 的模型
+3. Models that support JSON Schema (`json_schema`) in Response format
 
-   - JSON Schema 直接用于指定模型的目标响应结构。
-   - 可选 **Strict** 参数，要求模型严格遵循 JSON Schema 生成响应。
+   - JSON Schema is directly used to specify the target response structure of the model.
+   - Optional **Strict** parameter, requiring the model to generate a response strictly adhering to the JSON Schema.
 
-4. Ollama 本地模型
-   - 若配置了 JSON Schema，调用时，节点会将其作为 `format` 参数传入模型。
+4. Ollama local models
 
-## 使用结构化输出结果
+   - If JSON Schema is configured, when calling, the node will pass it as the `format` parameter to the model.
 
-模型响应的结构化内容以 JSON 对象的形式保存在节点的 Structured content 字段，可供后续节点使用。
+## Using Structured Output Results
+
+The structured content of the model's response is saved in the Structured content field of the node, which can be used by subsequent nodes.
 
 ![](https://static-docs.nocobase.com/202503041330291.png)
 
 ![](https://static-docs.nocobase.com/202503041331279.png)
 
-如果需要使用 JSON 对象中的字段内容，可以参考：
+If you need to use the content of the fields in the JSON object, you can refer to:
 
-- [JSON 变量映射](../../../../../handbook/workflow-json-variable-mapping)
-- [JSON 计算](../../../../../handbook/workflow-json-query)
+- [JSON Variable Mapping](../../../../../handbook/workflow-json-variable-mapping)
+- [JSON Query](../../../../../handbook/workflow-json-query)
