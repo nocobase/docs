@@ -231,7 +231,7 @@ services:
     image: nocobase/nocobase:alpha
     image: nocobase/nocobase:1.3.51
 # ...
-` ` `
+```
 
 ## 3. Install and start NocoBase
 
