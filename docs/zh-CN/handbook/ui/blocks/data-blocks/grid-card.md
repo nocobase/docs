@@ -49,7 +49,7 @@
 更多内容参考 [区块高度](/handbook/ui/blocks/block-settings/block-height)
 
 - [设置排序规则](/handbook/ui/blocks/block-settings/sorting-rule)
-- [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
+- [保存为区块模板](/handbook/block-template)
 
 ## 配置字段
 

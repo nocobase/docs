@@ -72,7 +72,7 @@ Solution: Select an existing product as a template and use its attribute informa
 </video>
 
 - [Edit Block Title](/handbook/ui/blocks/block-settings/block-title)
-- [Save as Block Template](/handbook/ui/blocks/block-settings/block-template)
+- [Save as Block Template](/handbook/block-template)
 
 ## Configure Fields
 

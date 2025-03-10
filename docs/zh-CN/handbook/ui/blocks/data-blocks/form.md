@@ -74,7 +74,7 @@
 </video>
 
 - [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
-- [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
+- [保存为区块模板](/handbook/block-template)
 
 ### 设置区块高度
 
