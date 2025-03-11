@@ -1595,7 +1595,23 @@ export default [
             'title.fr-FR': 'Rôles et droits',
             'title.zh-CN': '角色和权限',
             'title.ja-JP': '役割と権限',
-            link: '/handbook/acl',
+            children: [
+              {
+                title: 'Overview',
+                'title.fr-FR': "Vue d'ensemble",
+                'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
+                link: '/handbook/acl',
+              },
+              {
+                title: 'User manual',
+                'title.fr-FR': 'Gestion des départements',
+                'title.zh-CN': '使用手册',
+                'title.ja-JP': 'ユーザーマニュアル',
+                link: '/handbook/acl/manual'
+              },
+
+            ]
           },
           {
             title: 'Departments',
