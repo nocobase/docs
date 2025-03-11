@@ -14,6 +14,7 @@ The approval process is organized into several key sections:
 - [Approval Node Configuration](./node.md)
 - [Initiate Approval Configuration](./action.md)
 - [Approval Relevant Blocks](./block.md)
+- [Workflow task](./tasks.md)
 
 For a deeper dive into these concepts, see [Advanced](./advanced.md).
 
