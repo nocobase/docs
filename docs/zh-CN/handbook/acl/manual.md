@@ -24,7 +24,7 @@
 ### 角色并集规则
 并集是让其拥有所有角色的最大权限。以下说明，当角色设置同一项冲突时，应该如何判定角色权限。
 
-#### 操作权限合并：
+#### 操作权限合并
 示例：角色1（role1）配置允许界面，角色2（role2）配置允许安装、激活、禁用插件
 
 ![20250312190133](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312190133.png)
@@ -41,50 +41,276 @@
 场景1：多角色设置到同一字段条件
 
 角色A，配置条件：Age < 30
-![20250312181235](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312181235.png)
+
+<table style="table-layout: fixed; width: 100%;">
+  <tr>
+    <th>UserID</th>
+    <th>Name</th>
+    <th>Age</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Jack</td>
+    <td>23</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Lily</td>
+    <td>29</td>
+  </tr>
+</table>
 
 角色B，配置条件：Age > 25
-![20250312181256](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312181256.png)
+
+<table style="table-layout: fixed; width: 100%;">
+  <tr>
+    <th>UserID</th>
+    <th>Name</th>
+    <th>Age</th>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Lily</td>
+    <td>29</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Sam</td>
+    <td>32</td>
+  </tr>
+</table>
 
 合并后：
 
-![20250312181330](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312181330.png)
+<table style="table-layout: fixed; width: 100%;">
+  <tr>
+    <th>UserID</th>
+    <th>Name</th>
+    <th>Age</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Jack</td>
+    <td>23</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Lily</td>
+    <td>29</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Sam</td>
+    <td>32</td>
+  </tr>
+</table>
 
 场景2：不同角色设置不同字段为条件
 
 角色A，配置条件：Age < 30
-![20250312181400](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312181400.png)
+
+<table style="table-layout: fixed; width: 100%;">
+  <tr>
+    <th>UserID</th>
+    <th>Name</th>
+    <th>Age</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Jack</td>
+    <td>23</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Lily</td>
+    <td>29</td>
+  </tr>
+</table>
 
 角色B，配置条件：Name包含“Ja”
-![20250312181451](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312181451.png)
+<table style="table-layout: fixed; width: 100%;">
+  <tr>
+    <th>UserID</th>
+    <th>Name</th>
+    <th>Age</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Jack</td>
+    <td>23</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Jasmin</td>
+    <td>27</td>
+  </tr>
+</table>
 
 合并后：
 
-![20250312181510](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312181510.png)
+<table style="table-layout: fixed; width: 100%;">
+  <tr>
+    <th>UserID</th>
+    <th>Name</th>
+    <th>Age</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Jack</td>
+    <td>23</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Lily</td>
+    <td>29</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Jasmin</td>
+    <td>27</td>
+  </tr>
+</table>
 
 ##### 数据列
 
 角色A，配置可见字段：Name，Age
-![20250312181601](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312181601.png)
+
+<table style="table-layout: fixed; width: 100%;">
+  <tr>
+    <th>UserID</th>
+    <th>Name</th>
+    <th>Age</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Jack</td>
+    <td>23</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Lily</td>
+    <td>29</td>
+  </tr>
+</table>
 
 角色B，配置可见字段：Name，Sex
-![20250312181616](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312181616.png)
+
+<table style="table-layout: fixed; width: 100%;">
+  <tr>
+    <th>UserID</th>
+    <th>Name</th>
+    <th>Sex</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Jack</td>
+    <td>Man</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Lily</td>
+    <td>Woman</td>
+  </tr>
+</table>
 
 合并后：
 
-![20250312181652](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312181652.png)
+<table style="table-layout: fixed; width: 100%;">
+  <tr>
+    <th>UserID</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Sex</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Jack</td>
+    <td>23</td>
+    <td>Man</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Lily</td>
+    <td>29</td>
+    <td>Woman</td>
+  </tr>
+</table>
 
 ##### 行列混合
 
 角色A，配置条件为Age < 30，可见字段为Name，Age
-![20250312181740](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312181740.png)
+
+<table style="table-layout: fixed; width: 100%;">
+  <tr>
+    <th>UserID</th>
+    <th>Name</th>
+    <th>Age</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Jack</td>
+    <td>23</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Lily</td>
+    <td>29</td>
+  </tr>
+</table>
 
 角色B，配置条件为Name包含“Ja”，可见字段为Name、Sex
-![20250312181829](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312181829.png)
+<table style="table-layout: fixed; width: 100%;">
+  <tr>
+    <th>UserID</th>
+    <th>Name</th>
+    <th>Sex</th>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Jade</td>
+    <td>Woman</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>James</td>
+    <td>Man</td>
+  </tr>
+</table>
 
 合并后：
 
-![20250312181858](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312181858.png)
+<table style="table-layout: fixed; width: 100%;">
+  <tr>
+    <th>UserID</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Sex</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Jack</td>
+    <td>23</td>
+    <td><span style="background-color:#FFDDDD">Man</span></td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Lily</td>
+    <td>29</td>
+    <td><span style="background-color:#FFDDDD">Woman</span></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Jade</td>
+    <td><span style="background-color:#FFDDDD">27</span></td>
+    <td>Woman</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>James</td>
+    <td><span style="background-color:#FFDDDD">31</span></td>
+    <td>Man</td>
+  </tr>
+</table>
 
 **说明：红色单元格标注的数据，在不同角色都不可见，但在合并角色下可见**
 

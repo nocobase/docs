@@ -1,95 +1,177 @@
 # User Manual
 
 ## Role Union
-Role Union is a permission management mode. Depending on the system settings, system developers can choose to use `Independent roles`, `Allow role union`, or `Roles union only` to meet different permission needs.
+
+Role Union is a permission management mode. According to system settings, system developers can choose to use `Independent roles`, `Allow roles union`, or `Allow roles union`, to meet different permission requirements.
 
 ![20250312184651](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312184651.png)
 
 ### Independent roles
-By default, the system uses `Independent roles`: Role union is not used, and users need to switch between their assigned roles individually.
 
-![20250312184729](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312184729.png)
+By default, the system uses independent roles. Users must switch between the roles they possess individually.
+
+![20250312184729](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312184729.png)  
 ![20250312184826](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312184826.png)
 
-### Allow role union
-System developers can enable role union, allowing users to have the combined permissions of all their assigned roles while still being able to switch roles individually.
+### Allow roles union
+
+System developers can enable `Allow roles union`, allowing users to simultaneously have permissions of all assigned roles while still permitting users to switch roles individually.
 
 ![20250312185006](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312185006.png)
 
-### Role union only
-Users are strictly required to use role union and cannot switch roles individually.
+### Roles union only
+
+Users are enforced to only use Role Union and cannot switch roles individually.
 
 ![20250312185105](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312185105.png)
 
-### Role Union Rules
-Union mode grants the maximum permissions available across all assigned roles. The following explanation outlines how permissions are determined when different roles have conflicting settings.
+### Rules for Role Union
 
-#### Execute Permission Merging:
-Example: Role1 is configured to allow access to the interface, while Role2 is configured to allow installation, activation, and deactivation of plugins.
+Role union grants the maximum permissions across all roles. Below are the explanations for resolving permission conflicts when roles have different settings on the same permission.
 
-![20250312190133](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312190133.png)
+#### Operation Permission Merge
+
+Example:  
+Role1 is configured to `Allows to configure interface` and Role2 is configured to `Allows to install, activate, disable plugins`
+
+![20250312190133](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312190133.png)  
 
 ![20250312190352](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312190352.png)
 
-When logging in with the **Full Permissions** role, the user will have both sets of permissions.
+When logging in with the **Full Permissions** role, the user will have both permissions simultaneously.
 
 ![20250312190621](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312190621.png)
 
-#### Data Scope Merging
+#### Data Scope Merge
 
 ##### Data Rows
-**Scenario 1: Multiple roles define conditions for the same field**
 
-- Role A is configured with the condition: Age < 30  
-  ![20250312181235](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312181235.png)
+Scenario 1: Multiple roles setting conditions on the same field
 
-- Role B is configured with the condition: Age > 25  
-  ![20250312181256](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312181256.png)
+Role A filter: Age < 30  
 
-- **After merging:**
+<table style="table-layout: fixed; width: 100%;">
+  <tr><th>UserID</th><th>Name</th><th>Age</th></tr>
+  <tr><td>1</td><td>Jack</td><td>23</td></tr>
+  <tr><td>2</td><td>Lily</td><td>29</td></tr>
+</table>
 
-  ![20250312181330](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312181330.png)
+Role B filter: Age > 25
+<table style="table-layout: fixed; width: 100%;">
+  <tr><th>UserID</th><th>Name</th><th>Age</th></tr>
+  <tr><td>2</td><td>Lily</td><td>29</td></tr>
+  <tr><td>3</td><td>Sam</td><td>32</td></tr>
+</table>
 
-**Scenario 2: Different roles define conditions for different fields**
+**After merging:**
+<table style="table-layout: fixed; width: 100%;">
+  <tr><th>UserID</th><th>Name</th><th>Age</th></tr>
+  <tr><td>1</td><td>Jack</td><td>23</td></tr>
+  <tr><td>2</td><td>Lily</td><td>29</td></tr>
+  <tr><td>3</td><td>Sam</td><td>32</td></tr>
+</table>
 
-- Role A is configured with the condition: Age < 30  
-  ![20250312181400](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312181400.png)
 
-- Role B is configured with the condition: Name contains "Ja"  
-  ![20250312181451](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312181451.png)
+Scenario 2: Different roles setting conditions on different fields
 
-- **After merging:**
+Role A filter: Age < 30
+<table style="table-layout: fixed; width: 100%;">
+  <tr><th>UserID</th><th>Name</th><th>Age</th></tr>
+  <tr><td>1</td><td>Jack</td><td>23</td></tr>
+  <tr><td>2</td><td>Lily</td><td>29</td></tr>
+</table>
 
-  ![20250312181510](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312181510.png)
+Role B filter: Name contains “Ja”
+<table style="table-layout: fixed; width: 100%;">
+  <tr><th>UserID</th><th>Name</th><th>Age</th></tr>
+  <tr><td>1</td><td>Jack</td><td>23</td></tr>
+  <tr><td>3</td><td>Jasmin</td><td>27</td></tr>
+</table>
+
+**After merging:**
+<table style="table-layout: fixed; width: 100%;">
+  <tr><th>UserID</th><th>Name</th><th>Age</th></tr>
+  <tr><td>1</td><td>Jack</td><td>23</td></tr>
+  <tr><td>2</td><td>Lily</td><td>29</td></tr>
+  <tr><td>3</td><td>Jasmin</td><td>27</td></tr>
+</table>
 
 ##### Data Columns
 
-- Role A is configured with visible fields: Name, Age  
-  ![20250312181601](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312181601.png)
+Role A visible columns: Name, Age
+<table style="table-layout: fixed; width: 100%;">
+  <tr><th>UserID</th><th>Name</th><th>Age</th></tr>
+  <tr><td>1</td><td>Jack</td><td>23</td></tr>
+  <tr><td>2</td><td>Lily</td><td>29</td></tr>
+</table>
 
-- Role B is configured with visible fields: Name, Sex  
-  ![20250312181616](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312181616.png)
+Role B visible columns: Name, Sex
+<table style="table-layout: fixed; width: 100%;">
+  <tr><th>UserID</th><th>Name</th><th>Sex</th></tr>
+  <tr><td>1</td><td>Jack</td><td>Man</td></tr>
+  <tr><td>2</td><td>Lily</td><td>Woman</td></tr>
+</table>
 
-- **After merging:**
+**After merging:**
+<table style="table-layout: fixed; width: 100%;">
+  <tr><th>UserID</th><th>Name</th><th>Age</th><th>Sex</th></tr>
+  <tr><td>1</td><td>Jack</td><td>23</td><td>Man</td></tr>
+  <tr><td>2</td><td>Lily</td><td>29</td><td>Woman</td></tr>
+</table>
 
-  ![20250312181652](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312181652.png)
+##### Mixed Rows and Columns
+Role A filter: Age < 30, columns Name, Age
+<table style="table-layout: fixed; width: 100%;">
+  <tr>
+    <th>UserID</th>
+    <th>Name</th>
+    <th>Age</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Jack</td>
+    <td>23</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Lily</td>
+    <td>29</td>
+  </tr>
+</table>
 
-##### Mixed Row and Column Conditions
+Role B filter: Name contains “Ja”, columns Name, Sex
+<table style="table-layout: fixed; width: 100%;">
+  <tr>
+    <th>UserID</th>
+    <th>Name</th>
+    <th>Sex</th>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Jade</td>
+    <td>Woman</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>James</td>
+    <td>Man</td>
+  </tr>
+</table>
 
-- Role A is configured with the condition: Age < 30, and visible fields: Name, Age  
-  ![20250312181740](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312181740.png)
+**After merging:**
+<table style="table-layout: fixed; width: 100%;">
+  <tr><th>UserID</th><th>Name</th><th>Age</th><th>Sex</th></tr>
+  <tr><td>1</td><td>Jack</td><td>23</td><td><span style="background-color:#FFDDDD">Man</span></td></tr>
+  <tr><td>2</td><td>Lily</td><td>29</td><td><span style="background-color:#FFDDDD">Woman</span></td></tr>
+  <tr><td>3</td><td>Jade</td><td><span style="background-color:#FFDDDD">27</span></td><td>Woman</td></tr>
+  <tr><td>4</td><td>James</td><td><span style="background-color:#FFDDDD">31</span></td><td>Man</td></tr>
+</table>
 
-- Role B is configured with the condition: Name contains "Ja", and visible fields: Name, Sex  
-  ![20250312181829](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312181829.png)
-
-- **After merging:**
-
-  ![20250312181858](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312181858.png)
-
-**Note: Data marked with red cells was not visible to any single role but becomes visible in the merged role.**
+Note: Cells with red background indicate data invisible in individual roles but visible in the merged role.
 
 ##### Summary
-The role union follows these data scope rules:
-1. **Row conditions**: A row is accessible if it meets **any** of the conditions.
-2. **Column conditions**: The visible fields from all roles are **combined**.
-3. **Row and column conditions together**: Rows and columns are merged separately rather than being combined as a single condition set.
+
+Role merging data-scope rules:
+1. Between rows, if any condition is satisfied, the row has permissions.
+2. Between columns, fields are combined.
+3. When rows and columns are both configured, rows and columns are merged separately, not by row-column combinations.
