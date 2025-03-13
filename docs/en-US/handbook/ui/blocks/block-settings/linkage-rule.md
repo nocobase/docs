@@ -64,7 +64,7 @@ Illustration: Manage the visibility of the promotional price input field based o
 
 > **Note**: This feature is supported starting from **v1.7.0-beta.2**
 
-It is possible to dynamically configure options for field types such as `select`, `radioGroup`, `multipleSelect`, and `checkboxGroup`. The available options can be automatically change based on other form fields.
+It is allow to dynamically configure options for field types such as `select`, `radioGroup`, `multipleSelect`, and `checkboxGroup`. The available options can be automatically change based on other form fields.
 
 #### **Example: Controlling Subcategories Based on Product Category in a Product Management System**
 
@@ -88,7 +88,7 @@ It is possible to dynamically configure options for field types such as `select`
 
 > **Note**: This feature is supported starting from **v1.7.0-beta.2**
 
-It is possible to dynamically configure date ranges for field types such as `date`, `datetime`, `dateOnly`, `datetimeNoTz`, `unixTimestamp`, `createdAt`, and `updatedAt`. The selectable date range can automatically adjust based on changes in other form fields.
+It is allow to dynamically configure date scope for field types such as `date`, `datetime`, `dateOnly`, `datetimeNoTz`, `unixTimestamp`, `createdAt`, and `updatedAt`. The selectable date scope can automatically adjust based on changes in other form fields.
 
 #### **Example: Setting the End Date After the Start Date**
 
