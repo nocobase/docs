@@ -72,7 +72,7 @@ Les modèles de données de formulaire simplifient le processus d'entrée de don
 </video>
 
 - [Modifier le Titre du Bloc](/handbook/ui/blocks/block-settings/block-title)
-- [Enregistrer comme Modèle de Bloc](/handbook/ui/blocks/block-settings/block-template)
+- [Enregistrer comme Modèle de Bloc](/handbook/block-template)
 
 ## Configurer les Champs
 

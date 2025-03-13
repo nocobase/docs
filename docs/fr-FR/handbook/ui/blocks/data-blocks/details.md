@@ -29,7 +29,7 @@ Pour plus de détails, veuillez consulter [Définir la Portée des Données](/ha
 Pour plus de détails, veuillez consulter [Règles de Tri](/handbook/ui/blocks/block-settings/sorting-rule)
 
 - [Définir la Méthode de Chargement des Données](/handbook/ui/blocks/block-settings/loading-mode)
-- [Enregistrer comme Modèle de Bloc](/handbook/ui/blocks/block-settings/block-template)
+- [Enregistrer comme Modèle de Bloc](/handbook/block-template)
 
 ## Configurer les Champs
 

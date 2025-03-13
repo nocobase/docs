@@ -89,7 +89,7 @@
 
 - [ブロックタイトルの編集](/handbook/ui/blocks/block-settings/block-title)
 - [データブロックの接続](/handbook/ui/blocks/block-settings/connect-block)
-- [ブロックテンプレートとして保存](/handbook/ui/blocks/block-settings/block-template)
+- [ブロックテンプレートとして保存](/handbook/block-template)
 
 ## 設定操作
 

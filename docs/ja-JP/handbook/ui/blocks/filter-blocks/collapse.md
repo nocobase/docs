@@ -29,7 +29,7 @@
 詳細は[データブロックの接続](/handbook/ui/blocks/block-settings/connect-block)を参照してください。
 
 - [ブロックタイトルの編集](/handbook/ui/blocks/block-settings/block-title)
-- [ブロックテンプレートとして保存](/handbook/ui/blocks/block-settings/block-template)
+- [ブロックテンプレートとして保存](/handbook/block-template)
 
 ## フィールドの設定
 
