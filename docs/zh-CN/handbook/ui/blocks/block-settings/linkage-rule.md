@@ -2,7 +2,7 @@
 
 ## 介绍
 
-联动规则允许根据用户的行为动态调整表单字段的状态，例如：显示/隐藏、必填/非必填、赋值等。现在支持配置联动规则的有：[表单区块](https://docs-cn.nocobase.com/handbook/ui/blocks/data-blocks/form#%E8%81%94%E5%8A%A8%E8%A7%84%E5%88%99)、[详情区块](https://docs-cn.nocobase.com/handbook/ui/blocks/data-blocks/details#%E8%81%94%E5%8A%A8%E8%A7%84%E5%88%99)、[操作按钮](https://docs-cn.nocobase.com/handbook/ui/actions/action-settings/linkage-rule)、[子表单](https://docs-cn.nocobase.com/handbook/ui/fields/specific/nester)（需 v1.3.17-beta 及以上版本）、[子表格](https://docs-cn.nocobase.com/handbook/ui/fields/specific/sub-table)（需 v1.3.17-beta 及以上版本）。
+联动规则允许根据用户的行为动态调整表单字段的状态，例如：显示/隐藏、必填/非必填、赋值，选项字段的范围设置、时间字段的可选范围等。现在支持配置联动规则的有：[表单区块](https://docs-cn.nocobase.com/handbook/ui/blocks/data-blocks/form#%E8%81%94%E5%8A%A8%E8%A7%84%E5%88%99)、[详情区块](https://docs-cn.nocobase.com/handbook/ui/blocks/data-blocks/details#%E8%81%94%E5%8A%A8%E8%A7%84%E5%88%99)、[操作按钮](https://docs-cn.nocobase.com/handbook/ui/actions/action-settings/linkage-rule)、[子表单](https://docs-cn.nocobase.com/handbook/ui/fields/specific/nester)（需 v1.3.17-beta 及以上版本）、[子表格](https://docs-cn.nocobase.com/handbook/ui/fields/specific/sub-table)（需 v1.3.17-beta 及以上版本）。
 
 ![20240408100711](https://static-docs.nocobase.com/20240408100711.png)
 
@@ -59,3 +59,39 @@
 - 是否促销为 false,促销价格隐藏且非必填。
 
 ![20240408115338](https://static-docs.nocobase.com/20240408115338.png)
+
+### 选项
+
+> **注意**: 该功能**从v1.7.0-beta.2版本起支持**
+
+支持为`select`, `radioGroup`, `multipleSelect`, `checkboxGroup`等类型的字段动态的配置选项，其可选项可以根据表单中其他字段的变化实现联动。
+
+示例：在商品管理系统中，根据选择商品的主类别，控制子类别可选项。
+
+- 主类别（Select）：电子产品时，子类别可选项为手机、笔记本、耳机。
+
+![20250313215730](https://static-docs.nocobase.com/20250313215730.png)
+
+- 主类别为家用电器，子类别可选项为空调、冰箱、洗衣机。
+
+![20250313215834](https://static-docs.nocobase.com/20250313215834.png)
+
+联动效果如下
+
+<video width="100%" height="440" controls>
+      <source src="https://static-docs.nocobase.com/20250313215944.mp4" type="video/mp4">
+</video>
+
+### 日期范围
+
+> **注意**: 该功能**从v1.7.0-beta.2版本起支持**
+
+支持为`date`, `datetime`, `dateOnly`, `datetimeNoTz`, `unixTimestamp`, `createdAt`, `updatedAt`等类型字段动态配置日期范围，其可选日期范围可以根据表单中其他字段的变化自动调整。
+
+示例：选择开始日期后，结束日期不能早于开始日期。
+
+![20250313220839](https://static-docs.nocobase.com/20250313220839.png)
+
+示例：交付日期 (Delivery Date) 不能早于今天且不能晚于订单截止日期 (Order Deadline)。
+
+![20250313222051](https://static-docs.nocobase.com/20250313222051.png)
