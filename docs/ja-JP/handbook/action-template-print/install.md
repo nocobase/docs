@@ -42,8 +42,9 @@ apt-get install -y \
     libglib2.0-0 \
     libcups2 \
     libx11-xcb1 \
-    ttf-mscorefonts-installer \
-    fonts-wqy-zenhei
+    fonts-liberation \
+    fonts-noto-cjk \
+    wget
 
 rm -rf /var/lib/apt/lists/*
 
