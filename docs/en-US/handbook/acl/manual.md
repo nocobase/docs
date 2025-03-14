@@ -4,26 +4,26 @@
 
 Role Union is a permission management mode. According to system settings, system developers can choose to use `Independent roles`, `Allow roles union`, or `Allow roles union`, to meet different permission requirements.
 
-![20250312184651](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312184651.png)
+![20250312184651](https://static-docs.nocobase.com/20250312184651.png)
 
 ### Independent roles
 
 By default, the system uses independent roles. Users must switch between the roles they possess individually.
 
-![20250312184729](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312184729.png)  
-![20250312184826](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312184826.png)
+![20250312184729](https://static-docs.nocobase.com/20250312184729.png)  
+![20250312184826](https://static-docs.nocobase.com/20250312184826.png)
 
 ### Allow roles union
 
 System developers can enable `Allow roles union`, allowing users to simultaneously have permissions of all assigned roles while still permitting users to switch roles individually.
 
-![20250312185006](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312185006.png)
+![20250312185006](https://static-docs.nocobase.com/20250312185006.png)
 
 ### Roles union only
 
 Users are enforced to only use Role Union and cannot switch roles individually.
 
-![20250312185105](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312185105.png)
+![20250312185105](https://static-docs.nocobase.com/20250312185105.png)
 
 ### Rules for Role Union
 
@@ -34,13 +34,13 @@ Role union grants the maximum permissions across all roles. Below are the explan
 Example:  
 Role1 is configured to `Allows to configure interface` and Role2 is configured to `Allows to install, activate, disable plugins`
 
-![20250312190133](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312190133.png)  
+![20250312190133](https://static-docs.nocobase.com/20250312190133.png)  
 
-![20250312190352](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312190352.png)
+![20250312190352](https://static-docs.nocobase.com/20250312190352.png)
 
 When logging in with the **Full Permissions** role, the user will have both permissions simultaneously.
 
-![20250312190621](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250312190621.png)
+![20250312190621](https://static-docs.nocobase.com/20250312190621.png)
 
 #### Data Scope Merge
 
