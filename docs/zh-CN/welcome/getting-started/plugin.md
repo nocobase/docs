@@ -13,27 +13,40 @@ NOCOBASE_PKG_PASSWORD=your-password
 
 [如何设置环境变量？](/welcome/getting-started/env)
 
-### 执行应用的安装或升级命令
+### 下载插件
 
-安装或升级应用之后，即可在插件管理器中看到已授权的所有商业插件，插件会自动下载并更新。
+#### Docker 安装
 
-#### 安装应用
+重启容器即可自动下载插件
 
-- [Docker 安装（推荐）](./installation/docker-compose.md)
-- [create-nocobase-app 安装](./installation/create-nocobase-app.md)
-- [Git 源码安装](./installation/git-clone.md)
+```bash
+docker compose restart app
+```
 
-#### 升级应用
+#### Git 源码或 create-nocobase-app 安装
 
-- [Docker 安装的升级](./upgrading/docker-compose.md)
-- [create-nocobase-app 安装的升级](./upgrading/create-nocobase-app.md)
-- [Git 源码安装的升级](./upgrading/git-clone.md)
+执行 `pkg download-pro` 命令下载插件
+
+```bash
+yarn nocobase pkg download-pro
+```
+
+:::warning
+
+- 以上步骤，只会下载与当前应用版本匹配的插件，并不会更新插件，如果需要更新插件请先[升级应用](/welcome/getting-started/upgrading)，授权的插件会自动更新。
+- 授权的插件也会在应用 [安装](/welcome/getting-started/installation) 或 [升级](/welcome/getting-started/upgrading) 时自动下载。
+
+:::
 
 ### 激活插件
 
 在插件管理器中选择需要激活的插件即可。
 
 ![20241204000230](https://static-docs.nocobase.com/20241204000230.png)
+
+### 升级插件
+
+先[升级应用](/welcome/getting-started/upgrading)，授权的插件会在应用升级时自动下载或更新。目前暂不支持仅升级插件而不升级应用。
 
 ## 通过界面安装与更新插件
 
@@ -56,39 +69,6 @@ NOCOBASE_PKG_PASSWORD=your-password
 在插件管理器中选择需要激活的插件即可。
 
 ![20241204000230](https://static-docs.nocobase.com/20241204000230.png)
-
-## 通过命令行安装与更新插件
-
-:::warning
-- 支持批处理
-- 如果因应用更新导致插件不兼容并无法启动，可以采用这种方式来更新不兼容的插件
-:::
-
-### 0. Docker 版本需要先进入容器
-
-```bash
-docker-compose exec app bash
-```
-
-### 1. 登录插件所在 npm registry
-
-registry 需要根据实际情况来配置。
-
-```bash
-npm login --registry=https://pkg.nocobase.com/
-```
-
-### 2. 添加或更新插件
-
-```bash
-yarn pm add @nocobase/plugin-data-source-external-mysql @nocobase/plugin-embed --registry=https://pkg.nocobase.com/
-```
-
-### 3. 激活插件
-
-```bash
-yarn pm enable @nocobase/plugin-data-source-external-mysql @nocobase/plugin-embed
-```
 
 ## 将插件上传到插件目录来安装与升级
 
@@ -152,5 +132,5 @@ mkdir -p /my-nocobase/storage/plugins/@nocobase/plugin-auth-cas && \
 将插件上传到插件目录之后，需要执行 `nocobase upgrade` 命令来更新插件。
 
 ```bash
-yarn nocobase upgrade
+yarn nocobase upgrade --skip-code-update
 ```
