@@ -51,7 +51,7 @@ When translating, please gradually convert it to a structure similar to the foll
 ```
 
 #### 1.3 Translation Testing and Synchronization
-After completing your translation, please test and verify that all texts display correctly. Once submitted, the system will automatically synchronize the localization content to the repository.
+After completing your translation, please test and verify that all texts display correctly( we will provide verification methods later). Once submitted, the system will automatically synchronize the localization content to the repository.
 
 ## II. Documentation and User Manual Localization
 
