@@ -1,21 +1,21 @@
-# 1. Traductions
+# Traductions
 
-La langue par défaut de NocoBase est l’anglais. Actuellement, NocoBase prend en charge l’anglais, le chinois simplifié, le japonais, le russe et le turc. Nous vous invitons cordialement à contribuer à la traduction de NocoBase dans d’autres langues, afin de rendre le système accessible aux utilisateurs du monde entier !
+La langue par défaut de NocoBase est l'anglais. Actuellement l'anglais, le chinois simplifié, le japonnais, le russe et le turque sont supportés. Nous vous invitons chaleureusement à nous aider à traduire NocoBase dans d'autres langues, rendant ainsi le système accessible aux utilisateurs du monde entier !
 
-## 2. Localisation du système NocoBase
+## Localisation du système NocoBase
 
-### 2.1 Traduction de l’interface système et des plugins
+### Traduction de l'interface système et des plugins
 
-#### 2.1.1 Portée de la traduction
-Note : Cette traduction concerne uniquement l’interface système de NocoBase et la localisation des plugins, et n’inclut pas d’autres contenus personnalisés (comme les tables de données ou le contenu des blocs Markdown).
+#### Portée de la traduction
+Remarque : Cela s'applique à l'interface système NocoBase et à la localisation des plugins, n'incluant pas d'autre contenu personnalisé (comme les tables de données, le contenu des blocs markdown).
 
 ![20250319120347](https://static-docs.nocobase.com/20250319120347.png)
 
-#### 2.1.2 Aperçu du contenu de localisation
-NocoBase utilise Git pour gérer le contenu de localisation du système. Le dépôt principal se trouve ici :
+#### Aperçu du contenu de localisation
+NocoBase utilise Git pour gérer le contenu de localisation du système. Le dépôt principal est :
 https://github.com/nocobase/locales
 
-Les différentes langues sont représentées par des fichiers JSON nommés d’après des codes de langue abrégés (par exemple, `de-DE.json`, `fr-FR.json`, etc.). La structure de ces fichiers est organisée par modules de plugins, regroupant les traductions sous forme de paires clé-valeur, par exemple :
+Les différentes langues sont nommées avec des fichiers JSON utilisant des abréviations de code de langue, comme `de-DE.json`, `fr-FR.json`, etc. La structure du fichier JSON est organisée par modules de plugin, stockant les traductions en paires clé-valeur, par exemple :
 
 ```json
 {
@@ -33,7 +33,7 @@ Les différentes langues sont représentées par des fichiers JSON nommés d’a
 }
 ```
 
-Lors de la traduction, vous adapterez la structure de façon similaire :
+Lors de la traduction, vous traduiriez progressivement vers une structure similaire à :
 
 ```json
 {
@@ -51,86 +51,85 @@ Lors de la traduction, vous adapterez la structure de façon similaire :
 }
 ```
 
-#### 2.1.3 Synchronisation des traductions
-Une fois votre traduction soumise, le système déploiera automatiquement les mises à jour vers le dépôt de code.
+#### Synchronisation des traductions
+Après avoir soumis une traduction, le système poussera automatiquement le contenu de localisation vers le dépôt de code.
 
-## 3. Traduction de la documentation et du manuel utilisateur
+### Traduction de la documentation et du manuel utilisateur
 
-Le contenu de localisation de la documentation et du manuel utilisateur de NocoBase est stocké à l’adresse suivante :
+Le contenu de localisation de la documentation et du manuel utilisateur de NocoBase est stocké dans :
 https://github.com/nocobase/docs
 
-Pour chaque langue, un répertoire de localisation spécifique est utilisé, par exemple :
+Pour les différentes localisations linguistiques, nous utilisons des répertoires de localisation supplémentaires directs, par exemple :
 https://github.com/nocobase/docs/blob/main/docs/en-US/
 
 ![20250319121816](https://static-docs.nocobase.com/20250319121816.png)
 
-Lors de la traduction des documents, veillez également à intégrer les modifications issues du répertoire :
+Lors de la traduction de documents, vous devez également prêter attention aux modifications de texte du répertoire :
 https://github.com/nocobase/docs/blob/main/docs/config/
 ![20250319121853](https://static-docs.nocobase.com/20250319121853.png)
 
-Les textes des composants globaux se trouvent dans :
+Emplacement des modifications de texte des composants globaux dans la documentation :
 https://github.com/nocobase/docs/blob/main/.dumi/theme/builtins/
 
-Par exemple, le message d’information du plugin est disponible ici :
+Par exemple, le texte d'information du plugin :
 https://github.com/nocobase/docs/blob/main/.dumi/theme/builtins/PluginInfo.tsx
 
 ![20250319122109](https://static-docs.nocobase.com/20250319122109.png)
 
-## 4. Localisation du site web
+### Localisation du site web
 
-Le contenu de localisation du site web NocoBase (incluant l’ensemble des pages et textes) se trouve sur :
+Le contenu de localisation du site web NocoBase (y compris les pages du site web et tout le texte) est stocké dans :
 https://github.com/nocobase/website
 
-Pour ajouter une nouvelle langue, veuillez consulter les pages existantes :
+Si vous avez besoin d'ajouter une nouvelle langue, veuillez vous référer aux pages de langue existantes :
 - Pages en anglais : https://github.com/nocobase/website/blob/main/src/en/
 - Pages en chinois : https://github.com/nocobase/website/blob/main/src/cn/
 - Pages en japonais : https://github.com/nocobase/website/blob/main/src/ja/
-
 ![20250319121600](https://static-docs.nocobase.com/20250319121600.png)
 
-Les adresses pour modifier le style global sont les suivantes :
+Adresses de modification du style global :
 - Anglais : https://github.com/nocobase/website/blob/main/src/layouts/BaseEN.astro
 - Chinois : https://github.com/nocobase/website/blob/main/src/layouts/BaseCN.astro
 - Japonais : https://github.com/nocobase/website/blob/main/src/layouts/BaseJA.astro
-
 ![20250319121501](https://static-docs.nocobase.com/20250319121501.png)
 
-L’adresse de localisation des composants globaux du site web est :
+Adresse de localisation des composants globaux du site web :
 https://github.com/nocobase/website/tree/main/src/components
 
 ![20250319122940](https://static-docs.nocobase.com/20250319122940.png)
 
-## 5. Comment commencer à traduire
+## Comment commencer à traduire
 
-Si vous souhaitez contribuer à une nouvelle traduction pour NocoBase, suivez ces étapes :
+Si vous souhaitez contribuer à une nouvelle traduction de langue pour NocoBase, veuillez suivre ces étapes :
 
-1. Pour l’interface système : clonez le dépôt https://github.com/nocobase/locales et créez un nouveau fichier JSON de langue en vous basant sur les fichiers existants.
-2. Pour la documentation : clonez le dépôt https://github.com/nocobase/docs, créez un répertoire pour la nouvelle langue et commencez à traduire.
-3. Pour le site web : clonez le dépôt https://github.com/nocobase/website et créez de nouvelles pages en vous inspirant des pages existantes.
+1. Pour l'interface système, clonez le dépôt https://github.com/nocobase/locales, créez un nouveau fichier JSON de langue basé sur les fichiers de langue existants
+2. Pour la documentation, clonez le dépôt https://github.com/nocobase/docs, créez un nouveau répertoire de langue et commencez à traduire
+3. Pour le site web, clonez le dépôt https://github.com/nocobase/website, créez de nouvelles pages de langue en vous référant aux pages de langue existantes
 
-Après avoir terminé, soumettez votre traduction via une Pull Request. Nous examinerons et intégrerons votre contribution. Les nouvelles langues apparaîtront ensuite dans la configuration du système, permettant aux utilisateurs de choisir leur langue préférée.
+Après avoir terminé votre traduction, veuillez la soumettre à NocoBase via une Pull Request. Nous examinerons et fusionnerons votre contribution. Pour la localisation du système, vous verrez les nouvelles langues dans la configuration du système, où vous pourrez configurer les langues à afficher pour que les utilisateurs puissent choisir.
 
 ![20250319123452](https://static-docs.nocobase.com/20250319123452.png)
 
-## 6. Informations historiques
+## Informations historiques
 
-Les fichiers de langue de NocoBase se trouvent aux emplacements suivants :
+Les fichiers de langue NocoBase sont situés aux emplacements suivants :
 
 ```shell
 packages/core/**/src/locale
 packages/plugins/**/src/locale
 ```
 
-La traduction du noyau de NocoBase est principalement située ici :
+La traduction du noyau NocoBase se trouve principalement ici :
+
 https://github.com/nocobase/nocobase/tree/main/packages/core/client/src/locale
 
-Pour ajouter une nouvelle traduction, copiez le fichier en_US.ts, renommez-le selon la langue souhaitée, puis traduisez les chaînes qu’il contient. Une fois terminé, soumettez-le via Pull Request afin de l’ajouter à la liste des langues. La nouvelle langue sera alors disponible dans la configuration du système.
+Veuillez copier le fichier en_US.ts, nommez-le avec le nom de la langue que vous souhaitez ajouter, puis traduisez les chaînes qu'il contient. Une fois la traduction terminée, veuillez la soumettre à NocoBase via pull request et nous l'ajouterons à la liste des langues. Ensuite, vous verrez les nouvelles langues dans la configuration du système, où vous pourrez configurer les langues que vous souhaitez afficher pour que les utilisateurs puissent choisir.
 
 <img src="./translations/enabled-languages.jpg" style="max-width: 800px;"/>
 
-## 7. Codes de langue supportés et progrès de localisation
+## Codes de langue supportés et progrès de localisation
 
-Le tableau suivant répertorie les langues disponibles ainsi que l’état d’avancement de leur traduction pour votre référence :
+Le tableau suivant répertorie les langues disponibles et les progrès de localisation pour votre référence :
 
 | Nom de culture linguistique | Nom d'affichage | Progrès | Contributeurs |
 | ---------------------------------------------------------------------------------------------------------------------------- | -------------------- | --- | --- |
