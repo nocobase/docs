@@ -41,7 +41,6 @@ Les opérations de restauration ne sont pas autorisées dans les scénarios suiv
   - souligné
   - préfixe de table
   - schéma
-- Lorsque le mode `Tolérant` n'est pas activé, et que la version de la base de données lors de la création de la sauvegarde est plus récente que la version actuelle de la base de données de l'application.
 
 > **La restauration est une opération complète de base de données. Il est recommandé de sauvegarder la base de données actuelle avant de restaurer une sauvegarde.**
 
@@ -51,8 +50,6 @@ Cliquez sur le bouton "Restaurer" de l'élément de sauvegarde dans la liste des
 
 > Laissez le mot de passe vide pour une sauvegarde non chiffrée.
 
-> Si vous avez besoin de restaurer la sauvegarde sur une version inférieure de la base de données, vous devez activer le mode tolérant.
-
 ![Restaurer la sauvegarde](./static/restore-backup.png)
 
 #### Restaurer depuis un fichier de sauvegarde local
@@ -60,8 +57,6 @@ Cliquez sur le bouton "Restaurer" de l'élément de sauvegarde dans la liste des
 Cliquez sur le bouton `Restaurer depuis une sauvegarde locale`, sélectionnez le fichier de sauvegarde local dans la fenêtre contextuelle, entrez le mot de passe de chiffrement du fichier de sauvegarde, puis cliquez sur "Confirmer" pour restaurer la sauvegarde.
 
 > Laissez le mot de passe vide pour une sauvegarde non chiffrée.
-
-> Si vous avez besoin de restaurer la sauvegarde sur une version inférieure de la base de données, vous devez activer le mode tolérant.
 
 ![Restaurer depuis une sauvegarde locale](./static/restore-from-local.png)
 
