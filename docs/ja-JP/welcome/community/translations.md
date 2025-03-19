@@ -1,6 +1,6 @@
 # 翻訳
 
-NocoBaseのデフォルト言語は英語です。現在、英語、簡体字中国語、および日本語がサポートされています。皆様の協力により、NocoBaseは多言語対応が進み、世界中のより多くのユーザーが利用できるようになります！
+NocoBaseのデフォルト言語は英語です。現在、メインアプリケーションでは英語、イタリア語、オランダ語、簡体字中国語、日本語がサポートされています。皆様にはNocoBaseのさらなる言語翻訳へのご協力を心よりお願い申し上げ、世界中のユーザーがより便利にNocoBaseをご利用いただけるよう期待しております！
 
 ## 1. NocoBaseシステムのローカライズ
 
@@ -9,7 +9,10 @@ NocoBaseのデフォルト言語は英語です。現在、英語、簡体字中
 #### 1.1.1 翻訳範囲の説明
 注：こちらの翻訳は、NocoBaseのシステムインターフェースおよびプラグインのローカライズに適用されます。データテーブルやMarkdownブロックなど、その他のカスタムコンテンツは対象外です。
 
-![20250319120347](https://static-docs.nocobase.com/20250319120347.png)
+![bbb6e0b44aeg](https://static-docs.nocobase.com/img_v3_02kh_8d429938-3aca-44b6-a437-bbb6e0b44aeg.jpg)
+
+![20250319220127](https://static-docs.nocobase.com/20250319220127.png)
+
 
 #### 1.1.2 ローカライズコンテンツの紹介
 NocoBaseはGitを利用してローカライズコンテンツを管理しています。主なリポジトリは以下の通りです：  
@@ -99,7 +102,7 @@ https://github.com/nocobase/website
 ![20250319121501](https://static-docs.nocobase.com/20250319121501.png)
 
 また、ウェブサイトのグローバルコンポーネントのローカライズは、以下で管理されています：  
-https://github.com/Albert-mah/website/tree/main/src/components
+https://github.com/nocobase/website/tree/main/src/components
 
 ![20250319122940](https://static-docs.nocobase.com/20250319122940.png)
 
@@ -154,7 +157,7 @@ NocoBaseに新しい言語の翻訳を提供する場合、以下の手順で進
 | hy-AM                                                                                                                        | Հայերեն              |     |     |
 | id-ID                                                                                                                        | Bahasa Indonesia     |     |     |
 | is-IS                                                                                                                        | Íslenska             |     |     |
-| [it-IT](https://github.com/nocobase/locales/blob/main/it-IT.json "https://github.com/nocobase/locales/blob/main/it-IT.json") | Italiano             |     |     |
+| [it-IT](https://github.com/nocobase/locales/blob/main/it-IT.json "https://github.com/nocobase/locales/blob/main/it-IT.json") | Italiano             |     |    [@N3tN00b3r](https://github.com/N3tN00b3r)  |
 | [ja-JP](https://github.com/nocobase/locales/blob/main/ja-JP.json "https://github.com/nocobase/locales/blob/main/ja-JP.json") | 日本語                  |     |     |
 | ka-GE                                                                                                                        | ქართული              |     |     |
 | kk-KZ                                                                                                                        | Қазақ тілі           |     |     |
@@ -171,7 +174,7 @@ NocoBaseに新しい言語の翻訳を提供する場合、以下の手順で進
 | nb-NO                                                                                                                        | Norsk bokmål         |     |     |
 | ne-NP                                                                                                                        | नेपाली               |     |     |
 | nl-BE                                                                                                                        | Vlaams               |     |     |
-| nl-NL                                                                                                                        | Nederlands           |     |     |
+| nl-NL                                                                                                                        | Nederlands           |     |    [@mathyvds](https://github.com/mathyvds)  |
 | pl-PL                                                                                                                        | Polski               |     |     |
 | [pt-BR](https://github.com/nocobase/locales/blob/main/pt-BR.json "https://github.com/nocobase/locales/blob/main/pt-BR.json") | Português brasileiro |     |     |
 | pt-PT                                                                                                                        | Português            |     |     |

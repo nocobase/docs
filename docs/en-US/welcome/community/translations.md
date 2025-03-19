@@ -1,6 +1,6 @@
 # Translation
 
-The default language of NocoBase is English. Currently, English, Simplified Chinese, and Japanese are supported. We sincerely invite you to contribute translations for additional languages, enabling users around the world to use our system more conveniently!
+The default language of NocoBase is English. Currently, the main application supports English, Italian, Dutch, Simplified Chinese, and Japanese. We sincerely invite you to contribute translations for additional languages, enabling users around the world to enjoy an even more convenient NocoBase experience.
 
 ---
 
@@ -11,13 +11,19 @@ The default language of NocoBase is English. Currently, English, Simplified Chin
 #### 1.1 Translation Scope
 This applies only to the localization of the NocoBase system interface and plugins, and does not cover other custom content (such as data tables or Markdown blocks).
 
-![System Localization Diagram](https://static-docs.nocobase.com/20250319120347.png)
+![bbb6e0b44aeg](https://static-docs.nocobase.com/img_v3_02kh_8d429938-3aca-44b6-a437-bbb6e0b44aeg.jpg)
+
+![20250319220127](https://static-docs.nocobase.com/20250319220127.png)
+
 
 #### 1.2 Localization Content Overview
 NocoBase uses Git to manage its localization content. The primary repository is:
 https://github.com/nocobase/locales
 
-Each language is represented by a JSON file named according to its language code (e.g., de-DE.json, fr-FR.json). The file structure is organized by plugin modules, using key-value pairs to store translations. For example:{
+Each language is represented by a JSON file named according to its language code (e.g., de-DE.json, fr-FR.json). The file structure is organized by plugin modules, using key-value pairs to store translations. For example:
+
+```json
+{
   // Client plugin
   "@nocobase/client": {
     "(Fields only)": "(Fields only)",
@@ -164,7 +170,7 @@ The following table lists available languages and localization progress for your
 | hy-AM                                                                                                                        | Հայերեն              |     |     |
 | id-ID                                                                                                                        | Bahasa Indonesia     |     |     |
 | is-IS                                                                                                                        | Íslenska             |     |     |
-| [it-IT](https://github.com/nocobase/locales/blob/main/it-IT.json "https://github.com/nocobase/locales/blob/main/it-IT.json") | Italiano             |     |     |
+| [it-IT](https://github.com/nocobase/locales/blob/main/it-IT.json "https://github.com/nocobase/locales/blob/main/it-IT.json") | Italiano             |     |   [@N3tN00b3r](https://github.com/N3tN00b3r)   |
 | [ja-JP](https://github.com/nocobase/locales/blob/main/ja-JP.json "https://github.com/nocobase/locales/blob/main/ja-JP.json") | 日本語                  |     |     |
 | ka-GE                                                                                                                        | ქართული              |     |     |
 | kk-KZ                                                                                                                        | Қазақ тілі           |     |     |
@@ -181,7 +187,7 @@ The following table lists available languages and localization progress for your
 | nb-NO                                                                                                                        | Norsk bokmål         |     |     |
 | ne-NP                                                                                                                        | नेपाली               |     |     |
 | nl-BE                                                                                                                        | Vlaams               |     |     |
-| nl-NL                                                                                                                        | Nederlands           |     |     |
+| nl-NL                                                                                                                        | Nederlands           |     |   [@mathyvds](https://github.com/mathyvds)   |
 | pl-PL                                                                                                                        | Polski               |     |     |
 | [pt-BR](https://github.com/nocobase/locales/blob/main/pt-BR.json "https://github.com/nocobase/locales/blob/main/pt-BR.json") | Português brasileiro |     |     |
 | pt-PT                                                                                                                        | Português            |     |     |
