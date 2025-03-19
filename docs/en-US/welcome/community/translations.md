@@ -17,7 +17,10 @@ This applies only to the localization of the NocoBase system interface and plugi
 NocoBase uses Git to manage its localization content. The primary repository is:
 https://github.com/nocobase/locales
 
-Each language is represented by a JSON file named according to its language code (e.g., de-DE.json, fr-FR.json). The file structure is organized by plugin modules, using key-value pairs to store translations. For example:{
+Each language is represented by a JSON file named according to its language code (e.g., de-DE.json, fr-FR.json). The file structure is organized by plugin modules, using key-value pairs to store translations. For example:
+
+```json
+{
   // Client plugin
   "@nocobase/client": {
     "(Fields only)": "(Fields only)",
