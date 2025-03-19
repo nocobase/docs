@@ -1,22 +1,21 @@
 # 翻訳
 
-NocoBaseのデフォルト言語は英語で、現在、英語、簡体字中国語、日本語をサポートしています。NocoBaseを自分の言語に翻訳することに協力していただければ幸いです。世界中のより多くのユーザーがNocoBaseを使用できるようになります！
+NocoBaseのデフォルト言語は英語です。現在、英語、簡体字中国語、および日本語がサポートされています。皆様の協力により、NocoBaseは多言語対応が進み、世界中のより多くのユーザーが利用できるようになります！
 
+## 1. NocoBaseシステムのローカライズ
 
-## NocoBaseシステムのローカライズ
+### 1.1 システムインターフェースとプラグインの翻訳
 
-### システムインターフェースとプラグインの翻訳
-
-#### 翻訳範囲の説明
-注：NocoBaseシステムインターフェース、プラグインのローカライズ翻訳に適用され、その他のカスタムコンテンツ（データテーブル、markdownブロックのコンテンツなど）は含まれません。
+#### 1.1.1 翻訳範囲の説明
+注：こちらの翻訳は、NocoBaseのシステムインターフェースおよびプラグインのローカライズに適用されます。データテーブルやMarkdownブロックなど、その他のカスタムコンテンツは対象外です。
 
 ![20250319120347](https://static-docs.nocobase.com/20250319120347.png)
 
-#### ローカライズコンテンツの紹介
-NocoBaseはGitを使用してシステムのローカライズコンテンツを管理しており、主なリポジトリは次の場所にあります：
+#### 1.1.2 ローカライズコンテンツの紹介
+NocoBaseはGitを利用してローカライズコンテンツを管理しています。主なリポジトリは以下の通りです：  
 https://github.com/nocobase/locales
 
-異なる言語は言語コードの略称を持つJSONファイルで命名されています。例えば、`de-DE.json`、`fr-FR.json`などです。JSONファイル内の構造はプラグインモジュールによって整理され、キーと値のペアの形式で翻訳コンテンツを保存しています。例：
+各言語は言語コードを名称とするJSONファイル（例：`de-DE.json`、`fr-FR.json`）で管理されています。JSONファイル内はプラグインモジュールごとに整理され、キーと値のペア形式で翻訳内容が保存されています。例：
 
 ```json
 {
@@ -34,7 +33,7 @@ https://github.com/nocobase/locales
 }
 ```
 
-翻訳を行う際には、以下のような構造に段階的に翻訳していく必要があります：
+翻訳作業は、以下の段階的な構造に基づいて行ってください：
 
 ```json
 {
@@ -52,73 +51,76 @@ https://github.com/nocobase/locales
 }
 ```
 
-#### 翻訳のテストと検証
+#### 1.1.3 翻訳のテストと検証
+※翻訳内容については、適宜テストおよび検証を行ってください。
 
+#### 1.1.4 翻訳の同期
+翻訳を提出すると、専用スクリプトが自動的にローカライズコンテンツをリポジトリへプッシュします。
 
-#### 翻訳の同期
-翻訳を提出すると、スクリプトが自動的にローカライズコンテンツをコードリポジトリにプッシュします。
+## 2. ドキュメントとユーザーマニュアルの翻訳
 
-### ドキュメントとユーザーマニュアルの翻訳
-
-NocoBaseのドキュメントとユーザーマニュアルのローカライズコンテンツは次の場所に保存されています：
+NocoBaseのドキュメントおよびユーザーマニュアルのローカライズコンテンツは、以下のリポジトリに保存されています：  
 https://github.com/nocobase/docs
 
-異なる言語のローカライズについては、ローカライズディレクトリを直接追加する方法を採用しています。例えば：
+各言語のローカライズは、専用ディレクトリを追加する方式で管理されています。例：  
 https://github.com/nocobase/docs/blob/main/docs/en-US/
 
 ![20250319121816](https://static-docs.nocobase.com/20250319121816.png)
 
-ドキュメントを翻訳する際には、ディレクトリのテキストの変更にも注意する必要があります：
-https://github.com/nocobase/docs/blob/main/docs/config/
+ドキュメント翻訳の際は、ディレクトリ内のテキスト変更にも十分ご注意ください：  
+https://github.com/nocobase/docs/blob/main/docs/config/  
 ![20250319121853](https://static-docs.nocobase.com/20250319121853.png)
 
-ドキュメント内のグローバルコンポーネントのテキスト変更場所：
+また、ドキュメント内のグローバルコンポーネントのテキストは、以下に保持されています：  
 https://github.com/nocobase/docs/blob/main/.dumi/theme/builtins/
 
-例えば、プラグイン情報のテキスト：
+例：プラグイン情報のテキスト  
 https://github.com/nocobase/docs/blob/main/.dumi/theme/builtins/PluginInfo.tsx
 
 ![20250319122109](https://static-docs.nocobase.com/20250319122109.png)
 
+## 3. 公式ウェブサイトのローカライズ
 
-### 公式ウェブサイトのローカライズ
-
-NocoBase公式ウェブサイトのローカライズコンテンツ（ウェブサイトページとすべてのテキストを含む）は次の場所に保存されています：
+NocoBase公式ウェブサイトのローカライズコンテンツ（全ページおよびすべてのテキスト）は、以下のリポジトリに保存されています：  
 https://github.com/nocobase/website
 
-
-新しい言語を追加する場合は、既存の言語ページを参考にしてください：
+新たな言語の追加は、既存の言語ページを参考にしてください：
 - 英語ページ：https://github.com/nocobase/website/blob/main/src/en/
 - 中国語ページ：https://github.com/nocobase/website/blob/main/src/cn/
 - 日本語ページ：https://github.com/nocobase/website/blob/main/src/ja/
+
 ![20250319121600](https://static-docs.nocobase.com/20250319121600.png)
 
-
-グローバルスタイルの修正アドレス：
+グローバルスタイルの調整は、以下のファイルを参照してください：
 - 英語：https://github.com/nocobase/website/blob/main/src/layouts/BaseEN.astro
 - 中国語：https://github.com/nocobase/website/blob/main/src/layouts/BaseCN.astro
 - 日本語：https://github.com/nocobase/website/blob/main/src/layouts/BaseJA.astro
+
 ![20250319121501](https://static-docs.nocobase.com/20250319121501.png)
 
-ウェブサイトのグローバルコンポーネントのローカライズアドレス：
+また、ウェブサイトのグローバルコンポーネントのローカライズは、以下で管理されています：  
 https://github.com/Albert-mah/website/tree/main/src/components
 
 ![20250319122940](https://static-docs.nocobase.com/20250319122940.png)
 
+## 4. 翻訳を始める方法
 
-## 翻訳を始める方法
+NocoBaseに新しい言語の翻訳を提供する場合、以下の手順で進めてください：
 
-NocoBaseに新しい言語の翻訳を提供したい場合は、以下の手順に従ってください：
+1. 【システムインターフェース】  
+   https://github.com/nocobase/locales リポジトリをクローンし、既存の言語ファイルを参考に新規言語用JSONファイルを作成します。
 
-1. システムインターフェースについては、https://github.com/nocobase/locales リポジトリをクローンし、既存の言語ファイルに基づいて新しい言語のJSONファイルを作成します
-2. ドキュメントについては、https://github.com/nocobase/docs リポジトリをクローンし、新しい言語のディレクトリを作成して翻訳を開始します
-3. ウェブサイトについては、https://github.com/nocobase/website リポジトリをクローンし、既存の言語ページを参考に新しい言語のページを作成します
+2. 【ドキュメント】  
+   https://github.com/nocobase/docs リポジトリをクローンし、対象言語のディレクトリを作成して翻訳を開始します。
 
-翻訳が完了したら、プルリクエストを通じてNocoBaseに提出してください。私たちはあなたの貢献を審査し、マージします。システムのローカライズについては、システム設定で新しい言語が表示され、設定でユーザーが選択できる言語として設定できます。
+3. 【公式ウェブサイト】  
+   https://github.com/nocobase/website リポジトリをクローンし、既存の言語ページを参考に新規言語ページを作成します。
+
+翻訳が完了しましたら、プルリクエストを通じてご提出ください。皆様の貢献は審査の上、マージされます。システムのローカライズは、システム設定にて新しい言語が表示され、ユーザーが選択可能な状態となります。
 
 ![20250319123452](https://static-docs.nocobase.com/20250319123452.png)
 
-## サポートされている言語コードとローカライズの進捗
+## 5. サポートされている言語コードとローカライズの進捗
 
 以下の表には、利用可能な言語とローカライズの進捗が示されています：
 
