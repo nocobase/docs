@@ -1,6 +1,6 @@
 # 翻译
 
-NocoBase 默认语言为英语，目前支持英语、简体中文和日语。我们诚挚邀请您为 NocoBase 贡献更多语言翻译，助力全球用户更便捷地使用我们的系统！
+NocoBase 默认语言为英语，目前主应用支持英语、意大利语、荷兰语、简体中文、日语。我们诚挚邀请您为 NocoBase 贡献更多语言翻译，助力全球用户更便捷地使用NocoBase！
 
 ---
 
@@ -11,7 +11,10 @@ NocoBase 默认语言为英语，目前支持英语、简体中文和日语。�
 #### 1.1 翻译范围说明
 仅适用于 NocoBase 系统界面和插件的本地化翻译，不涵盖其他自定义内容（例如数据表、Markdown 区块等）。
 
-![系统本地化示意图](https://static-docs.nocobase.com/20250319120347.png)
+![bbb6e0b44aeg](https://static-docs.nocobase.com/img_v3_02kh_8d429938-3aca-44b6-a437-bbb6e0b44aeg.jpg)
+
+![20250319220127](https://static-docs.nocobase.com/20250319220127.png)
+
 
 #### 1.2 本地化内容介绍
 NocoBase 利用 Git 管理本地化内容，主要仓库地址为：
@@ -103,7 +106,7 @@ https://github.com/nocobase/website
 ![全局样式示意图](https://static-docs.nocobase.com/20250319121501.png)
 
 官网全局组件本地化位于：
-https://github.com/Albert-mah/website/tree/main/src/components
+https://github.com/nocobase/website/tree/main/src/components
 
 ![官网组件示意图](https://static-docs.nocobase.com/20250319122940.png)
 
@@ -146,7 +149,7 @@ https://github.com/Albert-mah/website/tree/main/src/components
 | [de-DE](https://github.com/nocobase/locales/blob/main/de-DE.json "https://github.com/nocobase/locales/blob/main/de-DE.json") | Deutsch              |     |     |
 | el-GR                                                                                                                        | Ελληνικά             |     |     |
 | en-GB                                                                                                                        | English(GB)          |     |     |
-| [en-US](https://github.com/nocobase/locales/blob/main/en-US.json "https://github.com/nocobase/locales/blob/main/en-US.json") | English              |     |     |
+| [en-US](https://github.com/nocobase/locales/blob/main/en-US.json "https://github.com/nocobase/locales/blob/main/en-US.json") | English              |  100%   |     |
 | [es-ES](https://github.com/nocobase/locales/blob/main/es-ES.json "https://github.com/nocobase/locales/blob/main/es-ES.json") | Español              |     |     |
 | et-EE                                                                                                                        | Estonian (Eesti)     |     |     |
 | fa-IR                                                                                                                        | فارسی                |     |     |
@@ -163,7 +166,7 @@ https://github.com/Albert-mah/website/tree/main/src/components
 | hy-AM                                                                                                                        | Հայերեն              |     |     |
 | id-ID                                                                                                                        | Bahasa Indonesia     |     |     |
 | is-IS                                                                                                                        | Íslenska             |     |     |
-| [it-IT](https://github.com/nocobase/locales/blob/main/it-IT.json "https://github.com/nocobase/locales/blob/main/it-IT.json") | Italiano             |     |     |
+| [it-IT](https://github.com/nocobase/locales/blob/main/it-IT.json "https://github.com/nocobase/locales/blob/main/it-IT.json") | Italiano             |     |  [@N3tN00b3r](https://github.com/N3tN00b3r) |
 | [ja-JP](https://github.com/nocobase/locales/blob/main/ja-JP.json "https://github.com/nocobase/locales/blob/main/ja-JP.json") | 日本語                  |     |     |
 | ka-GE                                                                                                                        | ქართული              |     |     |
 | kk-KZ                                                                                                                        | Қазақ тілі           |     |     |
@@ -180,7 +183,7 @@ https://github.com/Albert-mah/website/tree/main/src/components
 | nb-NO                                                                                                                        | Norsk bokmål         |     |     |
 | ne-NP                                                                                                                        | नेपाली               |     |     |
 | nl-BE                                                                                                                        | Vlaams               |     |     |
-| nl-NL                                                                                                                        | Nederlands           |     |     |
+| nl-NL                                                                                                                        | Nederlands           |     |  [@mathyvds](https://github.com/mathyvds)  |
 | pl-PL                                                                                                                        | Polski               |     |     |
 | [pt-BR](https://github.com/nocobase/locales/blob/main/pt-BR.json "https://github.com/nocobase/locales/blob/main/pt-BR.json") | Português brasileiro |     |     |
 | pt-PT                                                                                                                        | Português            |     |     |

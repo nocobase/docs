@@ -1,6 +1,6 @@
 # 1. Traductions
 
-La langue par défaut de NocoBase est l’anglais. Actuellement, NocoBase prend en charge l’anglais, le chinois simplifié, le japonais, le russe et le turc. Nous vous invitons cordialement à contribuer à la traduction de NocoBase dans d’autres langues, afin de rendre le système accessible aux utilisateurs du monde entier !
+La langue par défaut de NocoBase est l’anglais. Actuellement, l’application principale prend en charge l’anglais, l’italien, le néerlandais, le chinois simplifié et le japonais. Nous vous invitons sincèrement à contribuer aux traductions de NocoBase afin de permettre aux utilisateurs du monde entier de profiter d’une utilisation plus aisée du système !
 
 ## 2. Localisation du système NocoBase
 
@@ -9,7 +9,10 @@ La langue par défaut de NocoBase est l’anglais. Actuellement, NocoBase prend 
 #### 2.1.1 Portée de la traduction
 Note : Cette traduction concerne uniquement l’interface système de NocoBase et la localisation des plugins, et n’inclut pas d’autres contenus personnalisés (comme les tables de données ou le contenu des blocs Markdown).
 
-![20250319120347](https://static-docs.nocobase.com/20250319120347.png)
+![bbb6e0b44aeg](https://static-docs.nocobase.com/img_v3_02kh_8d429938-3aca-44b6-a437-bbb6e0b44aeg.jpg)
+
+![20250319220127](https://static-docs.nocobase.com/20250319220127.png)
+
 
 #### 2.1.2 Aperçu du contenu de localisation
 NocoBase utilise Git pour gérer le contenu de localisation du système. Le dépôt principal se trouve ici :
@@ -162,7 +165,7 @@ Le tableau suivant répertorie les langues disponibles ainsi que l’état d’a
 | hy-AM                                                                                                                        | Հայերեն              |     |     |
 | id-ID                                                                                                                        | Bahasa Indonesia     |     |     |
 | is-IS                                                                                                                        | Íslenska             |     |     |
-| [it-IT](https://github.com/nocobase/locales/blob/main/it-IT.json "https://github.com/nocobase/locales/blob/main/it-IT.json") | Italiano             |     |     |
+| [it-IT](https://github.com/nocobase/locales/blob/main/it-IT.json "https://github.com/nocobase/locales/blob/main/it-IT.json") | Italiano             |     |   [@N3tN00b3r](https://github.com/N3tN00b3r)   |
 | [ja-JP](https://github.com/nocobase/locales/blob/main/ja-JP.json "https://github.com/nocobase/locales/blob/main/ja-JP.json") | 日本語                  |     |     |
 | ka-GE                                                                                                                        | ქართული              |     |     |
 | kk-KZ                                                                                                                        | Қазақ тілі           |     |     |
@@ -179,7 +182,7 @@ Le tableau suivant répertorie les langues disponibles ainsi que l’état d’a
 | nb-NO                                                                                                                        | Norsk bokmål         |     |     |
 | ne-NP                                                                                                                        | नेपाली               |     |     |
 | nl-BE                                                                                                                        | Vlaams               |     |     |
-| nl-NL                                                                                                                        | Nederlands           |     |     |
+| nl-NL                                                                                                                        | Nederlands           |     |    [@mathyvds](https://github.com/mathyvds)   |
 | pl-PL                                                                                                                        | Polski               |     |     |
 | [pt-BR](https://github.com/nocobase/locales/blob/main/pt-BR.json "https://github.com/nocobase/locales/blob/main/pt-BR.json") | Português brasileiro |     |     |
 | pt-PT                                                                                                                        | Português            |     |     |
