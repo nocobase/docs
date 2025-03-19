@@ -540,7 +540,7 @@ const AuthorsRepo = db.getRepository('authors');
 const author1 = AuthorsRepo.create({ name: 'author1' });
 
 const PostsRepo = db.getRepository('authors.posts', author1.id);
-const post1 = AuthorsRepo.create({ title: 'post1' });
+const post1 = PostsRepo.create({ title: 'post1' });
 asset(post1.authorId === author1.id); // true
 ```
 
