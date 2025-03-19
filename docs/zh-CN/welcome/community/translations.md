@@ -1,22 +1,23 @@
 # 翻译
 
-NocoBase 默认语言是英语，目前主要支持英语、简体中文、日语。我们非常欢迎您帮助 NocoBase 翻译成更多语言，让全球更多用户能够使用 NocoBase！
+NocoBase 默认语言为英语，目前支持英语、简体中文和日语。我们诚挚邀请您为 NocoBase 贡献更多语言翻译，助力全球用户更便捷地使用我们的系统！
 
+---
 
-## NocoBase系统本地化
+## 一、系统本地化
 
-### 系统界面和插件翻译
+### 1. 系统界面和插件翻译
 
-#### 翻译范围说明
-注：适用于 NocoBase 系统界面、插件本地化翻译，不包含其他自定义内容（如数据表、markdown区块内容）。
+#### 1.1 翻译范围说明
+仅适用于 NocoBase 系统界面和插件的本地化翻译，不涵盖其他自定义内容（例如数据表、Markdown 区块等）。
 
-![20250319120347](https://static-docs.nocobase.com/20250319120347.png)
+![系统本地化示意图](https://static-docs.nocobase.com/20250319120347.png)
 
-#### 本地化内容介绍
-NocoBase 采用 Git 管理系统的本地化内容，主要仓库地址为：
+#### 1.2 本地化内容介绍
+NocoBase 利用 Git 管理本地化内容，主要仓库地址为：
 https://github.com/nocobase/locales
 
-不同语种以语言代码缩写的 JSON 文件命名，如 `de-DE.json`、`fr-FR.json` 等。JSON 文件内的结构按照插件模块组织，采用键值对的形式存储翻译内容，例如：
+各语种采用语言代码命名对应的 JSON 文件（如 `de-DE.json`、`fr-FR.json`），文件结构按照插件模块组织，采用键值对存储翻译内容。例如：
 
 ```json
 {
@@ -34,7 +35,7 @@ https://github.com/nocobase/locales
 }
 ```
 
-假设进行翻译的时候，需要逐步翻译为类似如下的结构
+翻译时，请逐步转换为如下结构：
 
 ```json
 {
@@ -52,75 +53,85 @@ https://github.com/nocobase/locales
 }
 ```
 
-#### 翻译测试和验证
+#### 1.3 翻译测试与同步
+- 完成翻译后，请先进行测试与验证，确保所有文本正确显示。（我们随后会提供验证方式）
+- 翻译提交后，系统脚本会自动将本地化内容同步至代码仓库。
 
+---
 
-#### 翻译同步
-提交翻译后，我们的脚本会自动推送本地化内容到代码仓库。
+## 二、文档及用户手册本地化
 
-### 文档和用户手册翻译
-
-NocoBase 文档和用户手册的本地化内容存放在：
+文档和用户手册的本地化内容存放在：
 https://github.com/nocobase/docs
 
-对于不同语种的本地化，我们采用直接附加本地化目录的方式，例如：
+采用直接添加本地化目录的方式，例如：
 https://github.com/nocobase/docs/blob/main/docs/en-US/
 
-![20250319121816](https://static-docs.nocobase.com/20250319121816.png)
+![文档本地化示意图](https://static-docs.nocobase.com/20250319121816.png)
 
-在翻译文档时，还需要注意目录文案的修改：
-https://github.com/nocobase/docs/blob/main/docs/config/
-![20250319121853](https://static-docs.nocobase.com/20250319121853.png)
+注意事项：
+- 修改目录文案请参考：https://github.com/nocobase/docs/blob/main/docs/config/
+  
+  ![目录文案示意图](https://static-docs.nocobase.com/20250319121853.png)
 
-文档中全局组件的文案修改位置：
-https://github.com/nocobase/docs/blob/main/.dumi/theme/builtins/
+- 全局组件文案修改位于：https://github.com/nocobase/docs/blob/main/.dumi/theme/builtins/
+  
+  例如，插件信息文案：
+  https://github.com/nocobase/docs/blob/main/.dumi/theme/builtins/PluginInfo.tsx
 
-比如插件信息文案：
-https://github.com/nocobase/docs/blob/main/.dumi/theme/builtins/PluginInfo.tsx
+  ![插件信息示意图](https://static-docs.nocobase.com/20250319122109.png)
 
-![20250319122109](https://static-docs.nocobase.com/20250319122109.png)
+---
 
+## 三、官网本地化
 
-### 官网本地化
-
-NocoBase 官网本地化内容（包含官网页面和所有文案）存放在：
+官网页面及所有文案存放在：
 https://github.com/nocobase/website
 
-
-其中，如需新增语言，请参考现有语言页面：
+新增语言时，请参考现有页面：
 - 英文页面：https://github.com/nocobase/website/blob/main/src/en/
 - 中文页面：https://github.com/nocobase/website/blob/main/src/cn/
 - 日文页面：https://github.com/nocobase/website/blob/main/src/ja/
-![20250319121600](https://static-docs.nocobase.com/20250319121600.png)
 
+![官网本地化示意图](https://static-docs.nocobase.com/20250319121600.png)
 
-全局样式修改地址：
+全局样式修改路径：
 - 英文：https://github.com/nocobase/website/blob/main/src/layouts/BaseEN.astro
 - 中文：https://github.com/nocobase/website/blob/main/src/layouts/BaseCN.astro
 - 日文：https://github.com/nocobase/website/blob/main/src/layouts/BaseJA.astro
-![20250319121501](https://static-docs.nocobase.com/20250319121501.png)
 
-官网全局组件的本地化地址：
+![全局样式示意图](https://static-docs.nocobase.com/20250319121501.png)
+
+官网全局组件本地化位于：
 https://github.com/Albert-mah/website/tree/main/src/components
 
-![20250319122940](https://static-docs.nocobase.com/20250319122940.png)
+![官网组件示意图](https://static-docs.nocobase.com/20250319122940.png)
 
+---
 
-## 如何开始翻译
+## 四、如何开始翻译
 
-如果您想为 NocoBase 贡献一种新的语言翻译，请按照以下步骤操作：
+若您希望为 NocoBase 贡献新语言翻译，请按以下步骤进行：
 
-1. 对于系统界面，克隆 https://github.com/nocobase/locales 仓库，根据现有语言文件创建新的语言 JSON 文件
-2. 对于文档，克隆 https://github.com/nocobase/docs 仓库，创建新的语言目录并开始翻译
-3. 对于官网，克隆 https://github.com/nocobase/website 仓库，参考现有语言页面创建新语言的页面
+1. 【系统界面翻译】
+   - 克隆仓库：https://github.com/nocobase/locales
+   - 基于现有语言文件创建新的 JSON 文件。
+2. 【文档本地化】
+   - 克隆仓库：https://github.com/nocobase/docs
+   - 创建新语言目录，并开始翻译。
+3. 【官网本地化】
+   - 克隆仓库：https://github.com/nocobase/website
+   - 参考现有语言页面创建对应的新语言页面。
 
-翻译完成后，请通过 Pull Request 提交给 NocoBase。我们将审核并合并您的贡献。对于系统本地化，您将在系统配置中看到新增的语言，可以在设置中配置需要显示哪些语言供用户选择。
+翻译完成后，请通过 Pull Request 提交给 NocoBase。审核合并后，新语言将在系统设置中显示，供用户选择。
 
-![20250319123452](https://static-docs.nocobase.com/20250319123452.png)
+![翻译同步示意图](https://static-docs.nocobase.com/20250319123452.png)
 
-## 支持的语言代码和本地化进度
+---
 
-下表列出了可用的语种信息和本地化进度，供您参考：
+## 五、支持的语言代码与本地化进度
+
+下表列出了当前支持的语种及本地化进度，供您参考：
 
 | 语种名称                                                                                                                         | 显示名称                 | 进度  | 贡献者 |
 | ---------------------------------------------------------------------------------------------------------------------------- | -------------------- | --- | --- |
