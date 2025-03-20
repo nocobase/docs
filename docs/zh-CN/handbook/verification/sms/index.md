@@ -25,6 +25,12 @@
 - <a href="https://www.aliyun.com/product/sms" target="_blank">阿里云短信</a>
 - <a href="https://cloud.tencent.com/product/sms" target="_blank">腾讯云短信</a>
 
+在服务商管理后台配置短信模板时，需要给短信验证码预留参数。
+
+- 阿里云配置示例：`您的验证码为：${code}`
+
+- 腾讯云配置示例：`您的验证码为：{1}`
+
 开发者也可以以插件形式扩展其他的短信服务商。参考：[扩展短信服务商](../../../handbook/verification/sms/dev)
 
 ## 用户绑定
