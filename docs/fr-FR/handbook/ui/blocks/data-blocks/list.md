@@ -49,7 +49,7 @@ Example: Set the height of the order list block to "Full Height" mode.
 For more details, refer to [Block Height](/handbook/ui/blocks/block-settings/block-height).
 
 - [Edit Block Title](/handbook/ui/blocks/block-settings/block-title)
-- [Save as Block Template](/handbook/ui/blocks/block-settings/block-template)
+- [Save as Block Template](/handbook/block-template)
 
 ## Configuring Fields
 

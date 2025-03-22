@@ -91,7 +91,7 @@ For more information, see [Block Height](/handbook/ui/blocks/block-settings/bloc
 
 - [Edit Block Title](/handbook/ui/blocks/block-settings/block-title)
 - [Connect Data Block](/handbook/ui/blocks/block-settings/connect-block)
-- [Save as Block Template](/handbook/ui/blocks/block-settings/block-template)
+- [Save as Block Template](/handbook/block-template)
 
 ## Configuration Operations
 

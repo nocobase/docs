@@ -29,7 +29,7 @@
 更多内容参考 [排序规则](/handbook/ui/blocks/block-settings/sorting-rule)
 
 - [设置数据加载方式](/handbook/ui/blocks/block-settings/loading-mode)
-- [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
+- [保存为区块模板](/handbook/block-template)
 
 ### 联动规则
 
