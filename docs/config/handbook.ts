@@ -994,7 +994,8 @@ export default [
         'title.ja-JP': 'フィールド',
         children: [
           {
-            title: "Vue d'ensemble",
+            title: "Overview",
+            'title.fr-FR': 'Vue d\'ensemble',
             'title.zh-CN': '概述',
             'title.ja-JP': '概要',
             link: '/handbook/ui/fields',
@@ -1328,7 +1329,7 @@ export default [
           },
           {
             title: 'Action types',
-            'title.fr-FR': "Types d'action",
+            'title.fr-FR': 'Types d\'action',
             'title.zh-CN': '操作类型',
             'title.ja-JP': 'アクションタイプ',
             children: [
@@ -1460,32 +1461,34 @@ export default [
               },
               {
                 title: 'Template print',
-                'title.fr-FR': "Template d'impression",
+                'title.fr-FR': 'Template d\'impression',
                 'title.zh-CN': '模板打印',
                 link: '/handbook/action-template-print',
               },
 
               {
                 title: 'Import',
-                'title.fr-FR': 'Importer',
+                'title.fr-FR': 'Import',
                 'title.zh-CN': '导入',
                 'title.ja-JP': 'インポート',
                 link: '/handbook/action-import',
               },
               {
                 title: 'Import Pro',
+                'title.fr-FR': 'Import pro',
                 'title.zh-CN': '导入 Pro',
                 link: '/handbook/action-import-pro',
               },
               {
                 title: 'Export',
-                'title.fr-FR': 'Exporter',
+                'title.fr-FR': 'Export',
                 'title.zh-CN': '导出',
                 'title.ja-JP': 'エクスポート',
                 link: '/handbook/action-export',
               },
               {
                 title: 'Export Pro',
+                'title.fr-FR': 'Export pro',
                 'title.zh-CN': '导出 Pro',
                 link: '/handbook/action-export-pro',
               },
@@ -1541,20 +1544,24 @@ export default [
       },
       {
         title: 'Calculation engines',
+        'title.fr-FR': 'Moteur de calcul',
         'title.zh-CN': '计算引擎',
         children: [
           {
             title: 'Overview',
+            'title.fr-FR': 'Vue d\'ensemble',
             'title.zh-CN': '概述',
             link: '/handbook/calculation-engines',
           },
           {
             title: 'Formula',
+            'title.fr-FR': 'Formula',
             'title.zh-CN': 'Formula',
             link: '/handbook/calculation-engines/formula',
           },
           {
             title: 'Mathjs',
+            'title.fr-FR': 'Mathjs',
             'title.zh-CN': 'Mathjs',
             link: '/handbook/calculation-engines/mathjs',
           },
@@ -1598,7 +1605,7 @@ export default [
             children: [
               {
                 title: 'Overview',
-                'title.fr-FR': "Vue d'ensemble",
+                'title.fr-FR': 'Vue d\'ensemble',
                 'title.zh-CN': '概述',
                 'title.ja-JP': '概要',
                 link: '/handbook/acl',
@@ -1621,7 +1628,7 @@ export default [
             children: [
               {
                 title: 'Overview',
-                'title.fr-FR': "Vue d'ensemble",
+                'title.fr-FR': 'Vue d\'ensemble',
                 'title.zh-CN': '概述',
                 'title.ja-JP': '概要',
                 link: '/handbook/departments',
@@ -1671,12 +1678,14 @@ export default [
                 children: [
                   {
                     title: 'Extending Synchronized Data Sources',
+                    'title.fr-FR': 'Etendre les sources de données synchronisées',
                     'title.zh-CN': '扩展同步数据源',
                     'title.ja-JP': '拡張された同期データソース',
                     link: '/handbook/user-data-sync/dev/source',
                   },
                   {
                     title: 'Extending Sync Target Resources',
+                    'title.fr-FR': 'Etendre les ressources cibles synchronisées',
                     'title.zh-CN': '扩展同步目标资源',
                     'title.ja-JP': '同期対象リソースの拡張',
                     link: '/handbook/user-data-sync/dev/resource',
@@ -1702,14 +1711,14 @@ export default [
             children: [
               {
                 title: 'Overview',
-                'title.fr-FR': "Vue d'ensemble",
+                'title.fr-FR': 'Vue d\'ensemble',
                 'title.zh-CN': '概述',
                 'title.ja-JP': '概要',
                 link: '/handbook/auth',
               },
               {
                 title: 'User manual',
-                'title.fr-FR': "Gestion de l'authentification",
+                'title.fr-FR': 'Gestion de l\'authentification',
                 'title.zh-CN': '使用手册',
                 'title.ja-JP': 'ユーザーマニュアル',
                 link: '/handbook/auth/user',
@@ -1722,12 +1731,14 @@ export default [
                 children: [
                   {
                     title: 'Extend Authentication Type',
+                    'title.fr-FR': 'Etendre le type d\'authentification',
                     'title.zh-CN': '扩展认证类型',
                     'title.ja-JP': '認証タイプの拡張',
                     link: '/handbook/auth/dev/guide',
                   },
                   {
                     title: 'API Reference',
+                    'title.fr-FR': 'Référence d\'API',
                     'title.zh-CN': 'API 参考',
                     'title.ja-JP': 'API 参考',
                     link: '/handbook/auth/dev/api',
@@ -1774,12 +1785,14 @@ export default [
                 children: [
                   {
                     title: 'Sign in with Google',
+                    'title.fr-FR': 'S\'enregistrer avec Google',
                     'title.zh-CN': '谷歌登录',
                     'title.ja-JP': 'Googleでサインイン',
                     link: '/handbook/auth-oidc/example/google',
                   },
                   {
                     title: 'Microsoft Entra ID',
+                    'title.fr-FR': 'Microsoft Entra ID',
                     'title.zh-CN': '微软登录',
                     'title.ja-JP': 'MicroSoft Entra ID',
                     link: '/handbook/auth-oidc/example/microsoft',
@@ -1810,6 +1823,7 @@ export default [
                 children: [
                   {
                     title: 'Sign in with Google',
+                    'title.fr-FR': 'S\'enregistrer avec Google',
                     'title.zh-CN': '谷歌登录',
                     'title.ja-JP': 'Googleでサインイン',
                     link: '/handbook/auth-saml/example/google',
@@ -1872,7 +1886,7 @@ export default [
             children: [
               {
                 title: 'Overview',
-                'title.fr-FR': "Vue d'ensemble",
+                'title.fr-FR': 'Vue d\'ensemble',
                 'title.zh-CN': '概述',
                 'title.ja-JP': '概要',
                 link: '/handbook/verification',
@@ -1885,18 +1899,21 @@ export default [
                 children: [
                   {
                     title: 'Extend verification type',
+                    'title.fr-FR': 'Extension du type de vérification',
                     'title.zh-CN': '扩展验证类型',
                     'title.ja-JP': 'Extend verification type',
                     link: '/handbook/verification/dev/type',
                   },
                   {
                     title: 'Extend verification scene',
+                    'title.fr-FR': 'Extension du contexte de vérification',
                     'title.zh-CN': '扩展验证场景',
                     'title.ja-JP': 'Extend verification scene',
                     link: '/handbook/verification/dev/scene',
                   },
                   {
                     title: 'API reference',
+                    'title.fr-FR': 'Référence d\'API',
                     'title.zh-CN': 'API 参考',
                     'title.ja-JP': 'API 参考',
                     link: '/handbook/verification/dev/api',
@@ -1913,7 +1930,7 @@ export default [
             children: [
               {
                 title: 'User manual',
-                'title.fr-FR': "Gestion de l'authentification",
+                'title.fr-FR': 'Gestion de l\'authentification',
                 'title.zh-CN': '使用手册',
                 'title.ja-JP': 'ユーザーマニュアル',
                 link: '/handbook/verification/sms',
@@ -1950,7 +1967,7 @@ export default [
             children: [
               {
                 title: 'Overview',
-                'title.fr-FR': "Vue d'ensemble",
+                'title.fr-FR': 'Vue d\'ensemble',
                 'title.zh-CN': '概述',
                 'title.ja-JP': '概要',
                 link: '/handbook/notification-manager',
@@ -1962,11 +1979,13 @@ export default [
                 children: [
                   {
                     title: 'Notification Extension',
+                    'title.fr-FR': 'Notification d\'extension',
                     'title.zh-CN': '扩展通知渠道类型',
                     link: '/handbook/notification-manager/development/extension',
                   },
                   {
                     title: 'Notification API',
+                    'title.fr-FR': 'Notification d\'API',
                     'title.zh-CN': '扩展通知API',
                     link: '/handbook/notification-manager/development/api',
                   },
@@ -2004,7 +2023,7 @@ export default [
         children: [
           {
             title: 'Overview',
-            'title.fr-FR': "Vue d'ensemble",
+            'title.fr-FR': 'Vue d\'ensemble',
             'title.zh-CN': '概述',
             'title.ja-JP': '概要',
             link: '/handbook/file-manager',
@@ -2031,6 +2050,7 @@ export default [
             children: [
               {
                 title: 'Overview',
+                'title.fr-FR': 'Vue d\'ensemble',
                 'title.zh-CN': '概述',
                 'title.ja-JP': '概要',
                 link: '/handbook/file-manager/storage',
@@ -2065,6 +2085,7 @@ export default [
               },
               {
                 title: 'File storage: S3(Pro)',
+                'title.fr-FR': 'Stockage fichier: S3(Pro)',
                 'title.zh-CN': '文件存储：S3（Pro）',
                 'title.ja-JP': 'ファイルストレージ：S3(Pro)',
                 link: '/handbook/file-manager/storage/s3-pro',
@@ -2109,7 +2130,7 @@ export default [
           },
           {
             title: 'Audit logs',
-            'title.fr-FR': "Log d'audit",
+            'title.fr-FR': 'Log d\'audit',
             'title.zh-CN': '审计日志',
             'title.ja-JP': '監査ログ',
             // subTitle: '@nocobase/plugin-audit-logs',
@@ -2125,7 +2146,7 @@ export default [
         children: [
           {
             title: 'Overview',
-            'title.fr-FR': "Vue d'ensemble",
+            'title.fr-FR': 'Vue d\'ensemble',
             'title.zh-CN': '概述',
             'title.ja-JP': '概要',
             link: '/handbook/data-visualization',
@@ -2173,42 +2194,49 @@ export default [
                 children: [
                   {
                     title: 'Overview',
+                    'title.fr-FR': 'Vue d\'ensemble',
                     'title.zh-CN': '概览',
                     'title.ja-JP': '概要',
                     link: '/handbook/data-visualization/antd-charts/overview',
                   },
                   {
                     title: 'Line',
+                    'title.fr-FR': 'Ligne',
                     'title.zh-CN': '折线图',
                     'title.ja-JP': 'ラインチャート',
                     link: '/handbook/data-visualization/antd-charts/line',
                   },
                   {
                     title: 'Column',
+                    'title.fr-FR': 'Colonne',
                     'title.zh-CN': '柱状图',
                     'title.ja-JP': 'コラムチャート',
                     link: '/handbook/data-visualization/antd-charts/column',
                   },
                   {
                     title: 'Bar',
+                    'title.fr-FR': 'Barre',
                     'title.zh-CN': '条形图',
                     'title.ja-JP': 'バーチャート',
                     link: '/handbook/data-visualization/antd-charts/bar',
                   },
                   {
                     title: 'Pie',
+                    'title.fr-FR': 'Secteur (camembert)',
                     'title.zh-CN': '饼图',
                     'title.ja-JP': 'パイチャート',
                     link: '/handbook/data-visualization/antd-charts/pie',
                   },
                   {
                     title: 'Dual Axes',
+                    'title.fr-FR': 'Deux axes',
                     'title.zh-CN': '双轴图',
                     'title.ja-JP': 'デュアルアクシス',
                     link: '/handbook/data-visualization/antd-charts/dual-axes',
                   },
                   {
                     title: 'Scatter',
+                    'title.fr-FR': 'Dispersion',
                     'title.zh-CN': '散点图',
                     'title.ja-JP': '散布図',
                     link: '/handbook/data-visualization/antd-charts/scatter',
@@ -2222,18 +2250,21 @@ export default [
                 children: [
                   {
                     title: 'Overview',
+                    'title.fr-FR': 'Vue d\'ensemble',
                     'title.zh-CN': '概览',
                     'title.ja-JP': '概要',
                     link: '/handbook/data-visualization/antd/overview',
                   },
                   {
                     title: 'Table',
+                    'title.fr-FR': 'Tableau',
                     'title.zh-CN': '表格',
                     'title.ja-JP': 'テーブル',
                     link: '/handbook/data-visualization/antd/table',
                   },
                   {
                     title: 'Statistic',
+                    'title.fr-FR': 'Statistique',
                     'title.zh-CN': '统计',
                     'title.ja-JP': '統計',
                     link: '/handbook/data-visualization/antd/statistic',
@@ -2246,72 +2277,84 @@ export default [
                 children: [
                   {
                     title: 'ECharts Overview',
+                    'title.fr-FR': 'Vue d\'ensemble',
                     'title.zh-CN': 'ECharts 概览',
                     'title.ja-JP': 'ECharts概要',
                     link: '/handbook/data-visualization-echarts',
                   },
                   {
                     title: 'Line',
+                    'title.fr-FR': 'Ligne',
                     'title.zh-CN': '折线图',
                     'title.ja-JP': 'ラインチャート',
                     link: '/handbook/data-visualization-echarts/line',
                   },
                   {
                     title: 'Column',
+                    'title.fr-FR': 'Colonne',
                     'title.zh-CN': '柱状图',
                     'title.ja-JP': 'コラムチャート',
                     link: '/handbook/data-visualization-echarts/column',
                   },
                   {
                     title: 'Bar',
+                    'title.fr-FR': 'Barre',
                     'title.zh-CN': '条形图',
                     'title.ja-JP': 'バーチャート',
                     link: '/handbook/data-visualization-echarts/bar',
                   },
                   {
-                    title: 'Diverging Bar',
+                    title: 'Barre divergente',
+                    'title.fr-FR': 'Worklfow',
                     'title.zh-CN': '分岐条形图',
                     'title.ja-JP': 'ダイバージングバーチャート',
                     link: '/handbook/data-visualization-echarts/diverging-bar',
                   },
                   {
                     title: 'Pie',
+                    'title.fr-FR': 'Secteur (camembert)',
                     'title.zh-CN': '饼图',
                     'title.ja-JP': 'パイチャート',
                     link: '/handbook/data-visualization-echarts/pie',
                   },
                   {
                     title: 'Area',
+                    'title.fr-FR': 'Aire',
                     'title.zh-CN': '面积图',
                     'title.ja-JP': 'エリアチャート',
                     link: '/handbook/data-visualization-echarts/area',
                   },
                   {
                     title: 'Scatter',
+                    'title.fr-FR': 'Dispersion',
                     'title.zh-CN': '散点图',
                     'title.ja-JP': '散布図',
                     link: '/handbook/data-visualization-echarts/scatter',
                   },
                   {
                     title: 'Funnel',
+                    'title.fr-FR': 'Entonoir',
                     'title.zh-CN': '漏斗图',
                     'title.ja-JP': 'ファネルチャート',
                     link: '/handbook/data-visualization-echarts/funnel',
                   },
                   {
                     title: 'Radar',
+                    'title.fr-FR': 'Radar',
                     'title.zh-CN': '雷达图',
                     'title.ja-JP': 'レーダーチャート',
                     link: '/handbook/data-visualization-echarts/radar',
                   },
                   {
                     title: 'Treemap',
+                    'title.fr-FR': 'Arborescence',
                     'title.zh-CN': '矩形树图',
                     'title.ja-JP': 'ツリーマップ',
                     link: '/handbook/data-visualization-echarts/treemap',
                   },
                   {
                     title: 'Word Cloud',
+                    'title.fr-FR': 'Nuage de mots',
                     'title.zh-CN': '词云图',
                     'title.ja-JP': 'ワードクラウド',
                     link: '/handbook/data-visualization-echarts/wordcloud',
@@ -2335,7 +2378,7 @@ export default [
               },
               {
                 title: 'Example of integrating ECharts',
-                'title.fr-FR': "Exemple d'intégration ECharts",
+                'title.fr-FR': 'Exemple d\'intégration ECharts',
                 'title.zh-CN': 'ECharts 集成示例',
                 'title.ja-JP': 'ECharts統合の例',
                 link: '/handbook/data-visualization/step-by-step',
@@ -2362,17 +2405,20 @@ export default [
       },
       {
         title: 'Email manager',
+        'title.fr-FR': 'Gestionnaire d\'email',
         'title.zh-CN': '邮件管理',
         'title.ja-JP': 'メール管理',
         children: [
           {
             title: 'Administrator configuration',
+            'title.fr-FR': 'Configuration administrateur',
             'title.zh-CN': '管理员配置',
             'title.ja-JP': '管理者設定',
             link: '/handbook/email-manager/usage-admin',
           },
           {
             title: 'User manual',
+            'title.fr-FR': 'Manuel utilisateur',
             'title.zh-CN': '使用手册',
             'title.ja-JP': 'ユーザーマニュアル',
             link: '/handbook/email-manager/usage-user',
@@ -2381,6 +2427,7 @@ export default [
       },
       {
         title: 'Routes',
+        'title.fr-FR': 'Routes',
         'title.zh-CN': '路由',
         'title.ja-JP': 'ルート',
         link: '/handbook/routes',
@@ -2396,12 +2443,14 @@ export default [
     children: [
       {
         title: 'Workflow',
+        'title.fr-FR': 'Worklfow',
         'title.zh-CN': '工作流',
         'title.ja-JP': 'ワークフロー',
         link: '/handbook/workflow',
       },
       {
         title: 'Quick Start',
+        'title.fr-FR': 'Démarrage rapide',
         'title.zh-CN': '快速开始',
         'title.ja-JP': 'クイックスタート',
         link: '/handbook/workflow/quick-start',
@@ -2414,24 +2463,28 @@ export default [
         children: [
           {
             title: 'Variables',
+            'title.fr-FR': 'Variables',
             'title.zh-CN': '变量',
             'title.ja-JP': '変数',
             link: '/handbook/workflow/advanced/variables',
           },
           {
             title: 'Executions',
+            'title.fr-FR': 'Exécutions',
             'title.zh-CN': '执行',
             'title.ja-JP': '実行',
             link: '/handbook/workflow/advanced/executions',
           },
           {
             title: 'Revisions',
+            'title.fr-FR': 'Révisions',
             'title.zh-CN': '修订',
             'title.ja-JP': 'リビジョン',
             link: '/handbook/workflow/advanced/revisions',
           },
           {
             title: 'Options',
+            'title.fr-FR': 'Option',
             'title.zh-CN': '选项',
             'title.ja-JP': 'オプション',
             link: '/handbook/workflow/advanced/options',
@@ -2446,48 +2499,56 @@ export default [
         children: [
           {
             title: 'Triggers Overview',
+            'title.fr-FR': 'Vue d\'ensemble',
             'title.zh-CN': '触发器概览',
             'title.ja-JP': 'トリガー概要',
             link: '/handbook/workflow/triggers',
           },
           {
             title: 'Collection Trigger',
+            'title.fr-FR': 'Déclencheur de collection',
             'title.zh-CN': '集合触发器',
             'title.ja-JP': 'コレクショントリガー',
             link: '/handbook/workflow/triggers/collection',
           },
           {
             title: 'Schedule Trigger',
+            'title.fr-FR': 'Déclencheur planifié',
             'title.zh-CN': '计划触发器',
             'title.ja-JP': 'スケジュールトリガー',
             link: '/handbook/workflow/triggers/schedule',
           },
           {
             title: 'Pre-Action Trigger',
+            'title.fr-FR': 'Déclencheur pré-Action',
             'title.zh-CN': '操作前触发器',
             'title.ja-JP': 'アクション前トリガー',
             link: '/handbook/workflow/triggers/pre-action',
           },
           {
             title: 'Custom Action Trigger',
+            'title.fr-FR': 'Déclencheure d\'Action personnalisée',
             'title.zh-CN': '自定义操作触发器',
             'title.ja-JP': 'カスタムアクショントリガー',
             link: '/handbook/workflow/triggers/custom-action',
           },
           {
             title: 'Post-Action Trigger',
+            'title.fr-FR': 'Déclencheur post-Action',
             'title.zh-CN': '操作后触发器',
             'title.ja-JP': 'アクション後トリガー',
             link: '/handbook/workflow/triggers/post-action',
           },
           {
             title: 'Approval Trigger',
+            'title.fr-FR': 'Déclencheur d\'approbation',
             'title.zh-CN': '审批触发器',
             'title.ja-JP': '承認トリガー',
             link: '/handbook/workflow/triggers/approval',
           },
           {
             title: 'Webhook Trigger',
+            'title.fr-FR': 'Déclencheur Webhook',
             'title.zh-CN': 'Webhook 触发器',
             'title.ja-JP': 'Webhook トリガー',
             link: '/handbook/workflow/triggers/webhook',
@@ -2502,6 +2563,7 @@ export default [
         children: [
           {
             title: 'Nodes Overview',
+            'title.fr-FR': 'Vue d\'ensemble',
             'title.zh-CN': '节点概览',
             'title.ja-JP': 'ノード概要',
             link: '/handbook/workflow/nodes',
@@ -2515,42 +2577,49 @@ export default [
             children: [
               {
                 title: 'Condition',
+                'title.fr-FR': 'Condition',
                 'title.zh-CN': '条件',
                 'title.ja-JP': '条件',
                 link: '/handbook/workflow/nodes/condition',
               },
               {
                 title: 'Delay',
+                'title.fr-FR': 'Retard',
                 'title.zh-CN': '延时',
                 'title.ja-JP': '遅延',
                 link: '/handbook/workflow/nodes/delay',
               },
               {
                 title: 'End',
+                'title.fr-FR': 'Fin',
                 'title.zh-CN': '结束',
                 'title.ja-JP': '終了',
                 link: '/handbook/workflow/nodes/end',
               },
               {
                 title: 'JSON Variable Mapping',
+                'title.fr-FR': 'Mapping de variable JSON',
                 'title.zh-CN': 'JSON 变量映射',
                 'title.ja-JP': 'JSON 变量映射',
                 link: '/handbook/workflow/nodes/json-variable-mapping',
               },
               {
                 title: 'Loop',
+                'title.fr-FR': 'Boucle',
                 'title.zh-CN': '循环',
                 'title.ja-JP': 'ループ',
                 link: '/handbook/workflow/nodes/loop',
               },
               {
                 title: 'Parallel',
+                'title.fr-FR': 'Parallèle',
                 'title.zh-CN': '并行',
                 'title.ja-JP': '並行',
                 link: '/handbook/workflow/nodes/parallel',
               },
               {
                 title: 'Variable',
+                'title.fr-FR': 'Variable',
                 'title.zh-CN': '变量',
                 'title.ja-JP': '変数',
                 link: '/handbook/workflow/nodes/variable',
@@ -2568,24 +2637,28 @@ export default [
             children: [
               {
                 title: 'Calculation',
+                'title.fr-FR': 'Calcul',
                 'title.zh-CN': '计算',
                 'title.ja-JP': '計算',
                 link: '/handbook/workflow/nodes/calculation',
               },
               {
                 title: 'Date Calculation',
+                'title.fr-FR': 'Calcul de date',
                 'title.zh-CN': '日期计算',
                 'title.ja-JP': '日付計算',
                 link: '/handbook/workflow/nodes/date-calculation',
               },
               {
                 title: 'Dynamic Calculation',
+                'title.fr-FR': 'Calcul dynamique',
                 'title.zh-CN': '动态计算',
                 'title.ja-JP': '動的計算',
                 link: '/handbook/workflow/nodes/dynamic-calculation',
               },
               {
                 title: 'JSON Calculation',
+                'title.fr-FR': 'Calcul JSON',
                 'title.zh-CN': 'JSON 计算',
                 'title.ja-JP': 'JSONクエリ',
                 link: '/handbook/workflow/nodes/json-query',
@@ -2601,36 +2674,42 @@ export default [
             children: [
               {
                 title: 'Create',
+                'title.fr-FR': 'Créer',
                 'title.zh-CN': '创建',
                 'title.ja-JP': '作成',
                 link: '/handbook/workflow/nodes/create',
               },
               {
                 title: 'Update',
+                'title.fr-FR': 'Mettre à jour',
                 'title.zh-CN': '更新',
                 'title.ja-JP': '更新',
                 link: '/handbook/workflow/nodes/update',
               },
               {
                 title: 'Destroy',
+                'title.fr-FR': 'Détruire',
                 'title.zh-CN': '销毁',
                 'title.ja-JP': '破壊',
                 link: '/handbook/workflow/nodes/destroy',
               },
               {
                 title: 'Query',
+                'title.fr-FR': 'Requêter',
                 'title.zh-CN': '查询',
                 'title.ja-JP': 'クエリ',
                 link: '/handbook/workflow/nodes/query',
               },
               {
                 title: 'Aggregate',
+                'title.fr-FR': 'Lister',
                 'title.zh-CN': '聚合',
                 'title.ja-JP': '集約',
                 link: '/handbook/workflow/nodes/aggregate',
               },
               {
                 title: 'SQL',
+                'title.fr-FR': 'SQL',
                 'title.zh-CN': 'SQL',
                 'title.ja-JP': 'SQL',
                 link: '/handbook/workflow/nodes/sql',
@@ -2646,12 +2725,14 @@ export default [
             children: [
               {
                 title: 'Manual',
+                'title.fr-FR': 'Manuel',
                 'title.zh-CN': '人工处理',
                 'title.ja-JP': '手動処理',
                 link: '/handbook/workflow/nodes/manual',
               },
               {
                 title: 'Approval',
+                'title.fr-FR': 'Approbation',
                 'title.zh-CN': '审批',
                 'title.ja-JP': '承認',
                 link: '/handbook/workflow/nodes/approval',
@@ -2667,30 +2748,35 @@ export default [
             children: [
               {
                 title: 'JavaScript',
+                'title.fr-FR': 'JavaScript',
                 'title.zh-CN': 'JavaScript 脚本',
                 'title.ja-JP': 'JavaScript スクリプト',
                 link: '/handbook/workflow/nodes/javascript',
               },
               {
                 title: 'Request',
+                'title.fr-FR': 'Requête',
                 'title.zh-CN': '请求',
                 'title.ja-JP': 'リクエスト',
                 link: '/handbook/workflow/nodes/request',
               },
               {
                 title: 'Response',
+                'title.fr-FR': 'Réponse',
                 'title.zh-CN': '响应',
                 'title.ja-JP': 'レスポンス',
                 link: '/handbook/workflow/nodes/response',
               },
               {
                 title: 'Response Message',
+                'title.fr-FR': 'Message de réponse',
                 'title.zh-CN': '响应消息',
                 'title.ja-JP': 'レスポンスメッセージ',
                 link: '/handbook/workflow/nodes/response-message',
               },
               {
                 title: 'Variable',
+                'title.fr-FR': 'Variable',
                 'title.zh-CN': '变量',
                 'title.ja-JP': '変数',
                 link: '/handbook/workflow/nodes/variable',
@@ -2707,24 +2793,28 @@ export default [
         children: [
           {
             title: 'Overview',
+            'title.fr-FR': 'Vue d\'ensemble',
             'title.zh-CN': '概览',
             'title.ja-JP': '概要',
             link: '/handbook/workflow/development',
           },
           {
             title: 'Trigger',
+            'title.fr-FR': 'Déclencheur',
             'title.zh-CN': '触发器',
             'title.ja-JP': 'トリガー',
             link: '/handbook/workflow/development/trigger',
           },
           {
             title: 'Instruction',
+            'title.fr-FR': 'Instruction',
             'title.zh-CN': '指令',
             'title.ja-JP': 'インストラクション',
             link: '/handbook/workflow/development/instruction',
           },
           {
             title: 'API Reference',
+            'title.fr-FR': 'Référence d\'API',
             'title.zh-CN': 'API 参考',
             'title.ja-JP': 'API 参考',
             link: '/handbook/workflow/development/api',
@@ -2746,30 +2836,35 @@ export default [
             children: [
               {
                 title: 'Workflow Action Trigger',
+                'title.fr-FR': 'Déclencheur d\'Action de workflow',
                 'title.zh-CN': '工作流操作触发器',
                 'title.ja-JP': 'ワークフローアクショントリガー',
                 link: '/handbook/workflow-action-trigger',
               },
               {
                 title: 'Trigger',
+                'title.fr-FR': 'Déclencheur',
                 'title.zh-CN': '触发器',
                 'title.ja-JP': 'トリガー',
                 link: '/handbook/workflow-action-trigger/trigger',
               },
               {
                 title: 'Action',
+                'title.fr-FR': 'Action',
                 'title.zh-CN': '操作',
                 'title.ja-JP': 'アクション',
                 link: '/handbook/workflow-action-trigger/action',
               },
               {
                 title: 'Example',
+                'title.fr-FR': 'Exemple',
                 'title.zh-CN': '示例',
                 'title.ja-JP': '例',
                 link: '/handbook/workflow-action-trigger/example',
               },
               {
                 title: 'HTTP API',
+                'title.fr-FR': 'HTTP API',
                 'title.zh-CN': 'HTTP API',
                 'title.ja-JP': 'HTTP API',
                 link: '/handbook/workflow-action-trigger/http-api',
@@ -2793,48 +2888,56 @@ export default [
             children: [
               {
                 title: 'Workflow Approval',
+                'title.fr-FR': 'Approbation du workflow',
                 'title.zh-CN': '工作流审批',
                 'title.ja-JP': 'ワークフロー承認',
                 link: '/handbook/workflow-approval',
               },
               {
                 title: 'Trigger',
+                'title.fr-FR': 'Déclencheur',
                 'title.zh-CN': '触发器',
                 'title.ja-JP': 'トリガー',
                 link: '/handbook/workflow-approval/trigger',
               },
               {
                 title: 'Node',
+                'title.fr-FR': 'Nœud',
                 'title.zh-CN': '节点',
                 'title.ja-JP': 'ノード',
                 link: '/handbook/workflow-approval/node',
               },
               {
                 title: 'Action',
+                'title.fr-FR': 'Action',
                 'title.zh-CN': '操作',
                 'title.ja-JP': 'アクション',
                 link: '/handbook/workflow-approval/action',
               },
               {
                 title: 'Block',
+                'title.fr-FR': 'Bloc',
                 'title.zh-CN': '区块',
                 'title.ja-JP': 'ブロック',
                 link: '/handbook/workflow-approval/block',
               },
               {
                 title: 'Workflow tasks',
+                'title.fr-FR': 'Tâches du workflow',
                 'title.zh-CN': '流程待办',
                 'title.ja-JP': '流程待办',
                 link: '/handbook/workflow-approval/tasks',
               },
               {
                 title: 'Advanced',
+                'title.fr-FR': 'Avancé',
                 'title.zh-CN': '高级',
                 'title.ja-JP': '高度',
                 link: '/handbook/workflow-approval/advanced',
               },
               {
                 title: 'HTTP API',
+                'title.fr-FR': 'HTTP API',
                 'title.zh-CN': 'HTTP API',
                 'title.ja-JP': 'HTTP API',
                 link: '/handbook/workflow-approval/http-api',
@@ -2843,37 +2946,42 @@ export default [
           },
           {
             title: 'Custom Action Trigger',
-            'title.fr-FR': "Déclencheur d'action personnalisé",
+            'title.fr-FR': 'Déclencheur d\'action personnalisé',
             'title.zh-CN': '自定义操作事件',
             'title.ja-JP': 'カスタムアクショントリガー',
             subTitle: '@nocobase/plugin-workflow-custom-action-trigger',
             children: [
               {
                 title: 'Custom Action Trigger',
+                'title.fr-FR': 'Déclencheur d\'action personnalisé',
                 'title.zh-CN': '自定义操作触发器',
                 'title.ja-JP': 'カスタムアクショントリガー',
                 link: '/handbook/workflow-custom-action-trigger',
               },
               {
                 title: 'Trigger',
+                'title.fr-FR': 'Déclencheur',
                 'title.zh-CN': '触发器',
                 'title.ja-JP': 'トリガー',
                 link: '/handbook/workflow-custom-action-trigger/trigger',
               },
               {
                 title: 'Action',
+                'title.fr-FR': 'Action',
                 'title.zh-CN': '操作',
                 'title.ja-JP': 'アクション',
                 link: '/handbook/workflow-custom-action-trigger/action',
               },
               {
                 title: 'Example',
+                'title.fr-FR': 'Exemple',
                 'title.zh-CN': '示例',
                 'title.ja-JP': '例',
                 link: '/handbook/workflow-custom-action-trigger/example',
               },
               {
                 title: 'HTTP API',
+                'title.fr-FR': 'HTTP API',
                 'title.zh-CN': 'HTTP API',
                 'title.ja-JP': 'HTTP API',
                 link: '/handbook/workflow-custom-action-trigger/http-api',
@@ -2905,18 +3013,21 @@ export default [
             children: [
               {
                 title: 'Dynamic Calculation',
+                'title.fr-FR': 'Calcul dynamique',
                 'title.zh-CN': '动态计算',
                 'title.ja-JP': '動的計算',
                 link: '/handbook/workflow-dynamic-calculation',
               },
               {
                 title: 'Collection',
+                'title.fr-FR': 'Collection',
                 'title.zh-CN': '集合',
                 'title.ja-JP': 'コレクション',
                 link: '/handbook/workflow-dynamic-calculation/collection',
               },
               {
                 title: 'Node',
+                'title.fr-FR': 'Nœud',
                 'title.zh-CN': '节点',
                 'title.ja-JP': 'ノード',
                 link: '/handbook/workflow-dynamic-calculation/node',
@@ -2933,14 +3044,15 @@ export default [
           },
           {
             title: 'JSON Calculation',
+            'title.fr-FR': 'Requête JSON',
             'title.zh-CN': 'JSON 计算',
             'title.ja-JP': 'JSON 計算',
-            'title.fr-FR': 'Requête JSON',
             subTitle: '@nocobase/plugin-workflow-json-query',
             link: '/handbook/workflow-json-query',
           },
           {
             title: 'JSON Variable Mapping',
+            'title.fr-FR': 'Mappage des variables JSON',
             'title.zh-CN': 'JSON 变量映射',
             'title.ja-JP': 'JSON 変数映射',
             subTitle: '@nocobase/plugin-workflow-json-variable-mapping',
@@ -2963,24 +3075,28 @@ export default [
             children: [
               {
                 title: 'Manual Process',
+                'title.fr-FR': 'Processus manuel',
                 'title.zh-CN': '人工处理',
                 'title.ja-JP': '手動処理',
                 link: '/handbook/workflow-manual',
               },
               {
                 title: 'Node',
+                'title.fr-FR': 'Nœud',
                 'title.zh-CN': '节点',
                 'title.ja-JP': 'ノード',
                 link: '/handbook/workflow-manual/node',
               },
               {
                 title: 'Block',
+                'title.fr-FR': 'Bloc',
                 'title.zh-CN': '区块',
                 'title.ja-JP': 'ブロック',
                 link: '/handbook/workflow-manual/block',
               },
               {
                 title: 'Example',
+                'title.fr-FR': 'Exemple',
                 'title.zh-CN': '示例',
                 'title.ja-JP': '例',
                 link: '/handbook/workflow-manual/example',
@@ -3013,36 +3129,42 @@ export default [
             children: [
               {
                 title: 'Pre-Action Trigger',
+                'title.fr-FR': 'Pré-déclencheur d\'action',
                 'title.zh-CN': '操作前触发器',
                 'title.ja-JP': 'アクション前トリガー',
                 link: '/handbook/workflow-request-interceptor',
               },
               {
                 title: 'Trigger',
+                'title.fr-FR': 'Déclencheur',
                 'title.zh-CN': '触发器',
                 'title.ja-JP': 'トリガー',
                 link: '/handbook/workflow-request-interceptor/trigger',
               },
               {
                 title: 'Action',
+                'title.fr-FR': 'Action',
                 'title.zh-CN': '操作',
                 'title.ja-JP': 'アクション',
                 link: '/handbook/workflow-request-interceptor/action',
               },
               {
                 title: 'Advanced',
+                'title.fr-FR': 'Avancé',
                 'title.zh-CN': '高级',
                 'title.ja-JP': '高度',
                 link: '/handbook/workflow-request-interceptor/advanced',
               },
               {
                 title: 'Example',
+                'title.fr-FR': 'Exemple',
                 'title.zh-CN': '示例',
                 'title.ja-JP': '例',
                 link: '/handbook/workflow-request-interceptor/example',
               },
               {
                 title: 'HTTP API',
+                'title.fr-FR': 'HTTP API',
                 'title.zh-CN': 'HTTP API',
                 'title.ja-JP': 'HTTP API',
                 link: '/handbook/workflow-request-interceptor/http-api',
@@ -3067,6 +3189,7 @@ export default [
           },
           {
             title: 'Sub-flow',
+            'title.fr-FR': 'Sous-flux',
             'title.zh-CN': '子流程',
             'title.ja-JP': '子流程',
             subTitle: '@nocobase/plugin-workflow-subflow',
@@ -3140,9 +3263,9 @@ export default [
       },
       {
         title: 'Variables and secrets',
+        'title.fr-FR': 'Variables and secrets',
         'title.zh-CN': '变量和密钥',
         'title.ja-JP': '変数と秘密',
-        'title.fr-FR': 'Variables and secrets',
         // subTitle: '@nocobase/plugin-backups',
         link: '/handbook/environment-variables',
       },
@@ -3156,6 +3279,7 @@ export default [
       },
       {
         title: 'Migration manager',
+        'title.fr-FR': 'Gestionnaire de migration',
         'title.zh-CN': '迁移管理',
         'title.ja-JP': '迁移管理',
         // subTitle: '@nocobase/plugin-backups',
@@ -3163,6 +3287,7 @@ export default [
       },
       {
         title: 'Release management',
+        'title.fr-FR': 'Gestionnaire de version release',
         'title.zh-CN': '发布管理',
         'title.ja-JP': '发布管理',
         // subTitle: '@nocobase/plugin-backups',
@@ -3172,6 +3297,7 @@ export default [
   },
   {
     title: 'AI integration',
+    'title.fr-FR': 'AI intégration',
     'title.zh-CN': 'AI 集成',
     type: 'group',
     children: [
@@ -3182,29 +3308,35 @@ export default [
       // },
       {
         title: 'LLM service management',
+        'title.fr-FR': 'Gestionnaire de service LLM',
         'title.zh-CN': 'LLM 服务管理',
         link: '/handbook/ai/service',
       },
       {
         title: 'Workflow',
+        'title.fr-FR': 'Worklfow',
         'title.zh-CN': '工作流',
         children: [
           {
             title: 'LLM node',
+            'title.fr-FR': 'Noeud LLM',
             'title.zh-CN': 'LLM 节点',
             children: [
               {
                 title: 'Text chat',
+                'title.fr-FR': 'Chat texte',
                 'title.zh-CN': '文本对话',
                 link: '/handbook/ai/workflow/nodes/llm/chat',
               },
               {
                 title: 'Multimodal Chat',
+                'title.fr-FR': 'Chat multimodal',
                 'title.zh-CN': '多模态对话',
                 link: '/handbook/ai-ee/workflow/nodes/llm/multimodal-chat',
               },
               {
                 title: 'Structured output',
+                'title.fr-FR': 'Sortie structurée',
                 'title.zh-CN': '结构化输出',
                 link: '/handbook/ai-ee/workflow/nodes/llm/structured-output',
               },
@@ -3216,49 +3348,56 @@ export default [
   },
   {
     title: 'Security',
+    'title.fr-FR': 'Sécurité',
     'title.zh-CN': '安全性',
     'title.ja-JP': 'あんぜんせい',
     type: 'group',
     children: [
       {
         title: 'Security guide',
+        'title.fr-FR': 'Guide de sécurité',
         'title.zh-CN': '安全指南',
         'title.ja-JP': 'あんぜんガイドライン',
         link: '/handbook/security',
       },
       {
         title: 'Token policy',
+        'title.fr-FR': 'Politique de jeton',
         'title.zh-CN': 'Token 策略',
         'title.ja-JP': 'トークンポリシー',
         link: '/handbook/token-policy',
       },
       {
         title: 'Password policy',
+        'title.fr-FR': 'Politique de mot de passe',
         'title.zh-CN': '密码策略',
         'title.ja-JP': 'パスワードポリシー',
         link: '/handbook/password-policy',
       },
       {
         title: 'User lockout',
+        'title.fr-FR': 'Vérouillage de l\'utilisateur',
         'title.zh-CN': '用户锁定',
         'title.ja-JP': 'ユーザーロック',
         link: '/handbook/password-policy/user-lockout',
       },
       {
         title: 'IP restriction',
+        'title.fr-FR': 'Restriction d\'IP',
         'title.zh-CN': 'IP 限制',
         'title.ja-JP': 'IP restriction',
         link: '/handbook/IP-restriction',
       },
       {
         title: 'Audit logs',
+        'title.fr-FR': 'Audit de log',
         'title.zh-CN': '审计日志',
         'title.ja-JP': '审计日志',
         link: '/handbook/audit-logger',
       },
       {
         title: 'Two-factor authentication (2FA)',
-        'title.fr-FR': 'Two-factor authentication (2FA)',
+        'title.fr-FR': 'Authentification à 2 facteurs (2FA)',
         'title.zh-CN': '双因素身份认证 (2FA)',
         'title.ja-JP': 'Two-factor authentication (2FA)',
         link: '/handbook/two-factor-authentication',
