@@ -8,54 +8,49 @@ Les règles de liaison permettent d'ajuster dynamiquement l'état des champs de 
 
 ![20240408100757](https://static-docs.nocobase.com/20240408100757.png)
 
-## Instructions d'utilisation
-
-1. **Configuration des champs** : Assurez-vous que tous les champs du formulaire utilisés dans les règles sont correctement configurés pour garantir l'efficacité et la précision des règles.
-
-2. **Activation conditionnelle** : Lorsque les conditions de la règle sont remplies (facultatif), le système exécute automatiquement les modifications de propriétés spécifiées.
-
-3. **Prise en charge de plusieurs règles** : Les formulaires peuvent contenir plusieurs règles de liaison. Lorsque plusieurs conditions de règles sont simultanément remplies, le système exécute les résultats de manière séquentielle, en suivant l'ordre de définition des règles.
-
-4. **Gestion des règles** : Profitez d'un contrôle complet avec des fonctionnalités telles que la dénomination personnalisée, le tri, la suppression, l'activation, la désactivation et la duplication des règles.
-
-5. **Intégration des constantes et des variables** : Utilisez des constantes ou des variables dans les affectations de champs et les configurations de conditions. Pour plus d'informations sur les variables, consultez la section [Variables](/handbook/ui/variables).
-
-### Affectation de Valeurs
-
-**Illustration** : Évaluer et attribuer automatiquement des niveaux de clients (par exemple, A+, A, A-) en fonction des montants d'achats annuels estimés.
-
-- Achat annuel estimé supérieur à 20 000 : Client classé A+.
-
-![20240408102241](https://static-docs.nocobase.com/20240408102241.png)
-
-- Achat annuel estimé entre 10 000 et 20 000 (inclus) : Client classé A.
-
-![20240408102303](https://static-docs.nocobase.com/20240408102303.png)
-
-- Achat annuel estimé inférieur à 10 000 : Client classé A-.
-
-![20240408102324](https://static-docs.nocobase.com/20240408102324.png)
-
-### Exigence de Champ
-
-**Illustration** : Ajuster dynamiquement le statut d'obligation du prix promotionnel du produit en fonction de son statut promotionnel.
-
-- Lorsque "IsPromotion" est activé, le prix promotionnel devient obligatoire.
-
-![20240408105031](https://static-docs.nocobase.com/20240408105031.png)
-
-- Lorsque "IsPromotion" est inactif, le prix promotionnel devient optionnel.
-
-![20240408105115](https://static-docs.nocobase.com/20240408105115.png)
-
-### Contrôle de Visibilité
-
-**Illustration** : Gérer la visibilité du champ de prix promotionnel en fonction du statut de la promotion du produit.
-
-- Lorsque "IsPromotion" est vrai, le champ de prix promotionnel est affiché et obligatoire.
-
-![20240408115240](https://static-docs.nocobase.com/20240408115240.png)
-
-- Lorsque "IsPromotion" est faux, le champ de prix promotionnel est caché et non obligatoire.
+- Lorsque "IsPromotion" est faux, le champ du prix promotionnel est masqué et non requis.
 
 ![20240408115338](https://static-docs.nocobase.com/20240408115338.png)
+
+### **Options**
+
+> **Note** : Cette fonctionnalité est prise en charge à partir de **v1.7.0-beta.2**.
+
+Il est possible de configurer dynamiquement les options pour les types de champs tels que `select`, `radioGroup`, `multipleSelect` et `checkboxGroup`. Les options disponibles peuvent être automatiquement modifiées en fonction d'autres champs du formulaire.
+
+#### **Exemple : Contrôler les sous-catégories en fonction de la catégorie du produit dans un système de gestion de produits**
+
+- **Catégorie (Sélectionner)** : Lorsque vous sélectionnez **Électronique**, les sous-catégories disponibles sont **Téléphones mobiles, Ordinateurs portables et Casques audio**.
+
+![20250313215730](https://static-docs.nocobase.com/20250313215730.png)
+
+- Lorsque vous sélectionnez **Électroménager**, les sous-catégories disponibles sont **Climatiseurs, Réfrigérateurs et Lave-linge**.
+
+![20250313215834](https://static-docs.nocobase.com/20250313215834.png)
+
+#### **Aperçu de la liaison**
+
+<video width="100%" height="440" controls>
+  <source src="https://static-docs.nocobase.com/20250313215944.mp4" type="video/mp4">
+</video>
+
+---
+
+### **Plage de dates**
+
+> **Note** : Cette fonctionnalité est prise en charge à partir de **v1.7.0-beta.2**.
+
+Il est possible de configurer dynamiquement la plage de dates pour les types de champs tels que `date`, `datetime`, `dateOnly`, `datetimeNoTz`, `unixTimestamp`, `createdAt` et `updatedAt`. La plage de dates sélectionnable peut être automatiquement ajustée en fonction des modifications d'autres champs du formulaire.
+
+#### **Exemple : Définir la date de fin après la date de début**
+
+Lorsque vous sélectionnez une **date de début**, la **date de fin** ne peut être qu'une date ultérieure et ne peut pas être antérieure à la date de début.
+
+![20250313220839](https://static-docs.nocobase.com/20250313220839.png)
+
+#### **Exemple : La date de livraison ne peut être antérieure à aujourd'hui et pas plus tard que la date limite de la commande**
+
+- La **date de livraison** ne peut être antérieure à **aujourd'hui**.
+- La **date de livraison** ne peut pas être postérieure à la **date limite de la commande**.
+
+![20250313222051](https://static-docs.nocobase.com/20250313222051.png)
