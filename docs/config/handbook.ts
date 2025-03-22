@@ -1605,7 +1605,7 @@ export default [
               },
               {
                 title: 'User manual',
-                'title.fr-FR': 'Gestion des départements',
+                'title.fr-FR': 'Gestion des rôles et droits',
                 'title.zh-CN': '使用手册',
                 'title.ja-JP': 'ユーザーマニュアル',
                 link: '/handbook/acl/manual'
