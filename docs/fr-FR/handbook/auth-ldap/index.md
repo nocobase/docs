@@ -8,23 +8,23 @@ Le plugin **Auth: LDAP** suit la norme de protocole LDAP (Lightweight Directory 
 
 ## Activer le plugin
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405101600789.png"/>
+<img src="https://static-docs.nocobase.com/202405101600789.png"/>
 
 ## Ajouter l'authentification LDAP
 
 Accédez à la page de paramètres du plugin d'authentification.
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405101601510.png"/>
+<img src="https://static-docs.nocobase.com/202405101601510.png"/>
 
 Ajoutez - **LDAP**
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405101602104.png"/>
+<img src="https://static-docs.nocobase.com/202405101602104.png"/>
 
 ## Configuration
 
 ### Configuration de base
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405101605728.png"/>
+<img src="https://static-docs.nocobase.com/202405101605728.png"/>
 
 - **Inscription automatique lorsque l'utilisateur n'existe pas** - Décidez s'il faut créer automatiquement un nouvel utilisateur lorsque aucun utilisateur existant correspondant n'est trouvé.
 - **URL LDAP** - URL du serveur LDAP
@@ -34,7 +34,7 @@ Ajoutez - **LDAP**
 
 ### Configuration de la recherche
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405101609984.png"/>
+<img src="https://static-docs.nocobase.com/202405101609984.png"/>
 
 - **Search DN** - DN utilisé pour rechercher des utilisateurs
 - **Search filter** - Condition de filtrage pour la recherche des utilisateurs, utilisez `{{account}}` pour représenter le compte utilisateur utilisé pour la connexion
@@ -43,7 +43,7 @@ Ajoutez - **LDAP**
 
 ### Mapping des attributs
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405101612814.png"/>
+<img src="https://static-docs.nocobase.com/202405101612814.png"/>
 
 - **Champ utilisé pour lier l'utilisateur** - Champ utilisé pour lier les utilisateurs existants. Si le compte de connexion est un nom d'utilisateur, choisissez `username`; si c'est un e-mail, choisissez `email`. Par défaut, `username`.
 - **Attributs mappés** - Mapping des attributs utilisateur aux champs dans la table des utilisateurs NocoBase.
@@ -52,4 +52,4 @@ Ajoutez - **LDAP**
 
 Visitez la page de connexion et saisissez le nom d'utilisateur et le mot de passe LDAP dans le formulaire de connexion.
 
-<img src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/202405101614300.png"/>
+<img src="https://static-docs.nocobase.com/202405101614300.png"/>

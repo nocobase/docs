@@ -25,17 +25,33 @@ After initiating an import, the import process will be executed in a separate ba
 
 After the import is complete, you can view the import results in the import task.
 
-### Import Option - Trigger Workflow
+### Import Settings
 
-![index-2024-12-30-09-16-55](https://static-docs.nocobase.com/index-2024-12-30-09-16-55.png)
+#### Import Options - Trigger Workflow
 
-You can choose whether to trigger workflows during import. If this option is checked and the data table has associated workflows (table events), the import will trigger workflows row by row.
+![20250306231010](https://static-docs.nocobase.com/20250306231010.png)
 
-### Import Option - Identify Duplicate Records
+When importing, you can choose whether to trigger a workflow. If this option is selected and the data table is bound to a workflow (via data table events), the workflow will be triggered for each row during the import.
 
-![index-2024-12-30-09-18-27](https://static-docs.nocobase.com/index-2024-12-30-09-18-27.png)
+#### Import Option - Identify Duplicate Records
 
-You can choose whether to identify duplicate records during import. When this option is checked and a corresponding mode is selected, duplicate records will be identified and processed during import.
+![20250306231054](https://static-docs.nocobase.com/20250306231054.png)
+
+Select this option and choose the corresponding mode to automatically identify and handle duplicate records during import.
+
+The values configured in the import options will be used as default during the import process. Admins can control whether uploaders can modify these options (except for the trigger workflow option).
+
+#### Uploader Permissions Settings
+
+![20250306232121](https://static-docs.nocobase.com/20250306232121.png)
+
+- Allow uploaders to modify import options
+
+![20250306230531](https://static-docs.nocobase.com/20250306230531.png)
+
+- Disable uploaders from modifying import options
+
+![20250306230650](https://static-docs.nocobase.com/20250306230650.png)
 
 #### Mode Description
 

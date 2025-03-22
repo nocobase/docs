@@ -20,16 +20,6 @@ After selecting the data table, bind the workflow to the submit button in the fo
 
 Once the form is submitted, the corresponding approval workflow will be triggered. The submitted data will be saved in the specified data table and also snapshotted within the approval flow for future review by approvers.
 
-## Where to Initiate an Approval
-
-There are two locations within the user interface where approvals can be initiated:
-1. Through the submission of a data collection form that has been bound to an approval process, typically used for initiating a single approval process.
-2. Via the Approval block, which allows for the centralized initiation of global processes.
-
-![Approval Trigger_Trigger Configuration_Where to Initiate Approval](https://static-docs.nocobase.com/1a193ec0acfa6cde221c6e5d49a50b3e.png)
-
-By selecting "Initiate and approve in both data blocks and global approval blocks" the process will appear in the “Initiations” dropdown menu within the Approval Center block, enabling users to manage various approvals from a central location.
-
 ## Withdrawn
 
 If the approval process permits the initiator to withdraw the request, select the "Allowed to be withdrawn" option:

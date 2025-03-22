@@ -295,6 +295,38 @@ useVariables(node, options): VariableOption {
 結果の中に深層オブジェクトの配列が存在する場合も、同様に `children` を使用してパスを記述できますが、配列のインデックスを含めることはできません。NocoBase ワークフローの変数処理において、オブジェクト配列の変数パス記述は、使用時に自動的に深層値の配列に平坦化され、インデックスを使用して特定の値にアクセスすることはできません。詳細は「[ワークフロー：進階使用](../manual/advanced#使用変数)」の内容を参照してください。
 :::
 
+### 节点是否可用
+
+默认情况下，工作流中可以任意添加节点。但在某些情况下，节点在一些特定类型的工作流或者分支内是不适用的，这时可以通过 `isAvailable` 来配置节点的可用性：
+
+```ts
+// 类型定义
+export abstract class Instruction {
+  isAvailable?(ctx: NodeAvailableContext): boolean;
+}
+
+export type NodeAvailableContext = {
+  // 工作流插件实例
+  engine: WorkflowPlugin;
+  // 工作流实例
+  workflow: object;
+  // 上游节点
+  upstream: object;
+  // 是否是分支节点（分支编号）
+  branchIndex: number;
+};
+```
+
+`isAvailable` 方法返回 `true` 时表示节点可用，`false` 表示不可用。`ctx` 参数中包含了当前节点的上下文信息，可以根据这些信息来判断节点是否可用。
+
+在没有特殊需求的情况下，不需要实现 `isAvailable` 方法，节点默认是可用的。最常见需要配置的情况，是节点可能是一个高耗时的操作，不适合在同步流程中执行，可以通过 `isAvailable` 方法来限制节点的使用。例如：
+
+```ts
+isAvailable({ engine, workflow, upstream, branchIndex }) {
+  return !engine.isWorkflowSync(workflow);
+}
+```
+
 ### さらに知る
 
 ノードタイプの各パラメータ定義については、[ワークフロー API 参考](./api#instruction-1) セクションを参照してください。

@@ -10,4 +10,4 @@
 
 内置插件，无需单独安装
 
-![20240426105637](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426105637.png)
+![20240426105637](https://static-docs.nocobase.com/20240426105637.png)

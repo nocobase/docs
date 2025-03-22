@@ -32,4 +32,4 @@ Le HTML est utilisé pour la configuration afin d'offrir aux utilisateurs une pl
 
 Dans la version v1.2.23-alpha, nous avons ajouté la possibilité de définir un favicon, comme montré ci-dessous :
 
-![350438864-08053d02-5429-407f-a3f7-fed439993623](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/350438864-08053d02-5429-407f-a3f7-fed439993623.gif)
+![350438864-08053d02-5429-407f-a3f7-fed439993623](https://static-docs.nocobase.com/350438864-08053d02-5429-407f-a3f7-fed439993623.gif)

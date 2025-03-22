@@ -8,7 +8,7 @@
 
 ポップアップ内では、必要に応じてブロックを設定できます。
 
-![20240426161322](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426161322.png)
+![20240426161322](https://static-docs.nocobase.com/20240426161322.png)
 
 ## 操作設定項目
 

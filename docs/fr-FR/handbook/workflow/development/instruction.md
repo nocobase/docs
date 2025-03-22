@@ -295,6 +295,38 @@ De cette manière, l'interface suivante peut être utilisée pour sélectionner 
 Lorsqu'une structure dans le résultat est un tableau d'objets profond, `children` peut également être utilisé pour décrire le chemin, mais il ne peut pas contenir d'indices de tableau. En effet, dans le traitement des variables de workflow de NocoBase, la description du chemin de variable pour les tableaux d'objets est automatiquement aplatie en un tableau de valeurs profondes, et les indices de tableau ne peuvent pas être utilisés pour accéder à une valeur spécifique. Vous pouvez vous référer à la section "Workflow : Utilisation Avancée" dans [Variables Avancées](../manual/advanced#Using Variables).
 :::
 
+### Node Availability
+
+By default, nodes can be added to workflows at will. However, in some cases, nodes may not be suitable for certain types of workflows or branches. In such cases, the `isAvailable` method can be used to configure the availability of nodes:
+
+```ts
+// Type definition
+export abstract class Instruction {
+  isAvailable?(ctx: NodeAvailableContext): boolean;
+}
+
+export type NodeAvailableContext = {
+  // instance of workflow plugin
+  engine: WorkflowPlugin;
+  // instance of current workflow
+  workflow: object;
+  // upstream node
+  upstream: object;
+  // node as branch start (branch index number)
+  branchIndex: number;
+};
+```
+
+The `isAvailable` method returns `true` when the node is available and `false` when it is not. The `ctx` parameter contains the context information of the current node, which can be used to determine whether the node is available.
+
+In most cases, the `isAvailable` method does not need to be implemented, and the node is available by default. The most common need for this configuration is when a node may be a high-cost operation and is not suitable for workflow in a synchronous process. In this case, the `isAvailable` method can be used to restrict the use of the node. For example:
+
+```ts
+isAvailable({ engine, workflow, upstream, branchIndex }) {
+  return !engine.isWorkflowSync(workflow);
+}
+```
+
 ### En savoir plus
 
 Pour une définition détaillée de chaque paramètre dans la définition des types de nœuds, consultez la section [Référence de l'API Workflow](./api#instruction-1).

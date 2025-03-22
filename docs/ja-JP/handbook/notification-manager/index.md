@@ -18,7 +18,7 @@
 
 現在対応しているチャネル：
 
-- [アプリ内メッセージ](/handbook/notification-in-app-message)（開発中）
+- [アプリ内メッセージ](/handbook/notification-in-app-message)
 - [電子メール](/handbook/notification-email)（SMTPプロトコルに対応）
 
 さらに通知チャネルを追加することもできます。詳細は[チャネル拡張](./extension)をご覧ください。

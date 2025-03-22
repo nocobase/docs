@@ -18,7 +18,7 @@
 
 目前已支持的渠道有：
 
-- [站内信](/handbook/notification-in-app-message)（开发中）
+- [站内信](/handbook/notification-in-app-message)
 - [电子邮件](/handbook/notification-email)（内置 SMTP 传输方式）
 
 也可以扩展更多渠道通知，参考[渠道扩展](./extension)文档

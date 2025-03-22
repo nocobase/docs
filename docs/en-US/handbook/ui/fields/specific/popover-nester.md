@@ -41,6 +41,6 @@ By default, multiple entries can be added or associated. When this option is dis
 The version of NocoBase needs to be v1.3.17-beta or above.
 :::
 
-![20240906085955_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240906085955_rec_.gif)
+![20240906085955_rec_](https://static-docs.nocobase.com/20240906085955_rec_.gif)
 
 For more information, refer to [Linkage Rules](/handbook/ui/blocks/block-settings/linkage-rule)

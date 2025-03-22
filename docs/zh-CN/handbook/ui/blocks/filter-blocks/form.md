@@ -58,4 +58,4 @@
 
 默认清况下，点击“重置”按钮会保留字段的默认值。如果想清空字段的默认值，可以打开配置项，开启“清除默认值”选项。
 
-![20240716183611](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240716183611.png)
+![20240716183611](https://static-docs.nocobase.com/20240716183611.png)

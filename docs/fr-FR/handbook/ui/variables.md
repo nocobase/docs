@@ -166,7 +166,7 @@ Les cas d'utilisation associés incluent :
 
 Cette variable représente les paramètres de recherche dans l'URL de la page actuelle. Cette variable n'est disponible que lorsqu'il y a une chaîne de requête dans l'URL de la page. Il est plus pratique de l'utiliser avec [Lien](/handbook/ui/actions/types/link).
 
-![20240603200410](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240603200410.gif)
+![20240603200410](https://static-docs.nocobase.com/20240603200410.gif)
 
 ### Jeton API
 
