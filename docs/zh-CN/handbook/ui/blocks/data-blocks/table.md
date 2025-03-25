@@ -38,6 +38,10 @@
       <source src="https://static-docs.nocobase.com/20240415221426.mp4" type="video/mp4">
 </video>
 
+:::info{title=提示}
+在 NocoBase 1.5.0-beta 及以上版本中，支持通过更多字段进行连接。详情请参考：[连接数据区块](/handbook/ui/blocks/block-settings/connect-block)。
+:::
+
 更多内容参考 [连接数据区块](/handbook/ui/blocks/block-settings/connect-block)
 
 ### 设置区块高度
