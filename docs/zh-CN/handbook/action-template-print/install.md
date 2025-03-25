@@ -21,7 +21,7 @@ vim install-libreoffice.sh
 
 # Define variables
 INSTALL_DIR="/opt/libreoffice24.8"
-DOWNLOAD_URL="https://download.documentfoundation.org/libreoffice/stable/24.8.4/deb/x86_64/LibreOffice_24.8.4_Linux_x86-64_deb.tar.gz"
+DOWNLOAD_URL="https://download.documentfoundation.org/libreoffice/stable/24.8.5/deb/x86_64/LibreOffice_24.8.5_Linux_x86-64_deb.tar.gz"
 
 # Check if LibreOffice is already installed
 if [ -d "$INSTALL_DIR" ]; then
