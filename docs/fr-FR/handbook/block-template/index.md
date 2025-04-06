@@ -87,4 +87,3 @@ Les blocs créés à partir d’un modèle se distinguent des blocs classiques p
 
 :::info{title=Remarque}
 La position des composants UI à l'intérieur d’un bloc est déterminée par la page, et non synchronisée automatiquement avec le modèle. Pour synchroniser la disposition, il faut **restaurer le bloc complet depuis le modèle**.
-:::

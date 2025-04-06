@@ -1,8 +1,6 @@
 # Enregistrer comme modèle de bloc  
 <PluginInfo name="block-template"></PluginInfo>
 
-## Introduction
-
 La fonctionnalité **Enregistrer comme modèle de bloc** permet d’enregistrer un bloc, ainsi que sa table de données associée, en tant que modèle. Ces modèles peuvent ensuite être gérés de manière centralisée dans la page de gestion des modèles. Lors de l’ajout d’un bloc, il est alors possible de sélectionner un modèle pour créer rapidement un nouveau bloc.
 
 ## Guide d'utilisation
