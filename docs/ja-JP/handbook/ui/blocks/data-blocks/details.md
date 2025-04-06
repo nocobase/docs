@@ -29,7 +29,7 @@
 詳細は [ソートルール](/handbook/ui/blocks/block-settings/sorting-rule) をご覧ください。
 
 - [データ読み込み方法の設定](/handbook/ui/blocks/block-settings/loading-mode)
-- [ブロックテンプレートとして保存](/handbook/ui/blocks/block-settings/block-template)
+- [ブロックテンプレートとして保存](/handbook/block-template)
 
 ### 連動ルール
 

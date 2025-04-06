@@ -905,7 +905,7 @@ export default [
             'title.fr-FR': 'Template de blocs',
             'title.zh-CN': '区块模板',
             'title.ja-JP': 'ブロックテンプレート',
-            link: '/handbook/ui/blocks/block-templates',
+            link: '/handbook/block-template',
           },
           {
             title: 'Block settings',
@@ -942,11 +942,18 @@ export default [
                 link: '/handbook/ui/blocks/block-settings/connect-block',
               },
               {
+                title: 'Revert to template',
+                'title.fr-FR': 'Restaurer le modèle',
+                'title.zh-CN': '恢复到模板',
+                'title.ja-JP': 'テンプレートに戻す',
+                link: '/handbook/block-template',
+              },
+              {
                 title: 'Save as template',
-                'title.fr-FR': 'Enregistrer une template',
-                'title.zh-CN': '保存为区块模板',
+                'title.fr-FR': 'Enregistrer comme modèle',
+                'title.zh-CN': '保存为模板',
                 'title.ja-JP': 'テンプレートとして保存',
-                link: '/handbook/ui/blocks/block-settings/block-template',
+                link: '/handbook/block-template',
               },
               {
                 title: 'Linkage rules',

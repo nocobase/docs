@@ -28,7 +28,7 @@ For more information, refer to [Connecting Data Block](/handbook/ui/blocks/block
 
 - [Editing Block Title](/handbook/ui/blocks/block-settings/block-title)
 - [Linkage Rule](/handbook/ui/blocks/block-settings/linkage-rule)
-- [Save as Block Template](/handbook/ui/blocks/block-settings/block-template)
+- [Save as Block Template](/handbook/block-template)
 
 ## Configuring Fields
 

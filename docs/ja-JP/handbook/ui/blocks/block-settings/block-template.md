@@ -1,24 +1,23 @@
-# ブロックテンプレートとして保存
-<PluginInfo name="ui-schema-storage"></PluginInfo>
+# 保存为区块模板
+<PluginInfo name="block-template"></PluginInfo>
 
-## 紹介
+## 介绍
 
-ブロックテンプレートとして保存することで、ブロックとその関連データテーブルをテンプレートとして保存し、テンプレート管理ページで一元管理できます。ブロックを追加する際には、テンプレートを参照したり、コピーして迅速にブロックを作成することが可能です。
+保存为区块模板是将区块及其关联的数据表保存为模板，在模板管理页中可以统一管理这些模板，在添加区块时，可以选择该模板快速创建区块。
 
-## 使用マニュアル
-![20240407175846](https://static-docs.nocobase.com/20240407175846.png)
+## 使用手册
+![20240407175846](https://static-docs.nocobase.com/save-as-block-template.png)
 
-カスタムブロックテンプレート名を入力します。
+自定义区块模板名称。
 
-![20240407153407](https://static-docs.nocobase.com/20240407153407.png)
+![20240407153407]![save-as-template-dialog](https://static-docs.nocobase.com/save-as-template-dialog.png)
 
-ブロックテンプレート管理ページで、すべてのブロックテンプレートを一元管理します。
+在区块模板管理页中统一管理所有区块模板。
 
-![20240407153550](https://static-docs.nocobase.com/20240407153550.png)
+![20240407153550](https://static-docs.nocobase.com/main-screen-block-template.png)
 
-ブロックを追加する際には、テンプレートを参照したり、コピーして迅速にブロックを作成します。
+在添加区块时候选择模板,快速创建区块。
 
-![20240422095346](https://static-docs.nocobase.com/20240422095346.png)
+![20240422095346](https://static-docs.nocobase.com/create-block.png)
 
-ブロックテンプレートの詳細については、[ブロックテンプレート](/handbook/ui/blocks/block-templates)をご参照ください。
-
+更多区块模板介绍可参考 [区块模板](/handbook/block-template)

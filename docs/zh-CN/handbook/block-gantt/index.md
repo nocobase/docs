@@ -39,7 +39,7 @@
 
 更多内容参考 [设置数据范围](/handbook/ui/blocks/block-settings/data-scope)
 
-- [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
+- [保存为区块模板](/handbook/block-template)
 - [设置数据加载方式](/handbook/ui/blocks/block-settings/loading-mode)
 
 ## 配置操作
