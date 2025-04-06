@@ -2,7 +2,7 @@
 
 ## 介绍
 
-用户可以在样式菜单中调整字段的样式（目前支持颜色和背景颜色设置），同时支持依据字段值或系统变量值动态调整。
+用户可以在样式菜单中调整字段的样式包括color,background-color,text-align,font-size、font-weight、font-style，同时支持依据字段值或系统变量值动态调整。
 
 ## 使用方法
 
