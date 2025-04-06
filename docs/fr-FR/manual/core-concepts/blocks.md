@@ -37,7 +37,7 @@ NocoBase 目前内置 10 几种区块，未来可以通过插件的方式支持�
 
 1. 选择区块类型：目前可用的区块类型包括表格、表单、详情、日历、看板、Markdown
 2. 选择 Collection：此处会列出所有的 Collection
-3. 选择创建方式：创建空白区块，或者从复制区块模板，或者引用区块模板
+3. 选择创建方式：创建空白区块，或者从模板创建
 4. 选择模板：若第 3 步选择了从模板创建，则在第 4 步选择模板
 
 ![6.block-add.jpg](https://static-docs.nocobase.com/4a4dad014fddada53f2d49f5dba681fb.jpg)
