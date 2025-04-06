@@ -949,6 +949,13 @@ export default [
                 link: '/handbook/block-template',
               },
               {
+                title: 'Save as template',
+                'title.fr-FR': 'Enregistrer comme modèle',
+                'title.zh-CN': '保存为模板',
+                'title.ja-JP': 'テンプレートとして保存',
+                link: '/handbook/block-template',
+              },
+              {
                 title: 'Linkage rules',
                 'title.fr-FR': 'Règles de liaison',
                 'title.zh-CN': '联动规则',
