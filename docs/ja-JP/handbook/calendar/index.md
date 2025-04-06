@@ -33,7 +33,7 @@
 ![20240419203603](https://static-docs.nocobase.com/20240419203603.png)
 
 - [ブロックタイトルを編集](/handbook/ui/blocks/block-settings/block-title)
-- [ブロックテンプレートとして保存](/handbook/ui/blocks/block-settings/block-template)
+- [ブロックテンプレートとして保存](/handbook/block-template)
 
 ### データ範囲の設定
 

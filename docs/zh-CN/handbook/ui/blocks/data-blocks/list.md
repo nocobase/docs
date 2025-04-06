@@ -49,7 +49,7 @@
 更多内容参考 [区块高度](/handbook/ui/blocks/block-settings/block-height)
 
 - [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
-- [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
+- [保存为区块模板](/handbook/block-template)
 
 ## 配置字段
 

@@ -50,7 +50,7 @@
 
 - [ブロックタイトルの編集](/handbook/ui/blocks/block-settings/block-title)
 - [データ読み込み方法の設定](/handbook/ui/blocks/block-settings/loading-mode)
-- [ブロックテンプレートとして保存](/handbook/ui/blocks/block-settings/block-template)
+- [ブロックテンプレートとして保存](/handbook/block-template)
 
 ## フィールドの設定
 

@@ -29,7 +29,7 @@ Collapse 筛选区块需要连接数据区块使用，为数据区块提供筛�
 更多内容参考 [连接数据区块](/handbook/ui/blocks/block-settings/connect-block)
 
 - [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
-- [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
+- [保存为区块模板](/handbook/block-template)
 
 ## 配置字段
 
