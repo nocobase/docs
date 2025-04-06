@@ -1,24 +1,23 @@
-# Save as template
-<PluginInfo name="ui-schema-storage"></PluginInfo>
+# 保存为区块模板
+<PluginInfo name="block-template"></PluginInfo>
 
-## Introduction
+## 介绍
 
-Saving a block as a template allows you to save both the block and its associated data tables. These templates can be centrally managed on the template management page. When adding a block, you can choose to reference or copy a template to quickly create a new block.
+保存为区块模板是将区块及其关联的数据表保存为模板，在模板管理页中可以统一管理这些模板，在添加区块时，可以选择该模板快速创建区块。
 
-## User Guide
+## 使用手册
+![20240407175846](https://static-docs.nocobase.com/save-as-block-template.png)
 
-![20240407175846](https://static-docs.nocobase.com/20240407175846.png)
+自定义区块模板名称。
 
-You can customize the name of the block template.
+![save-as-template-dialog](https://static-docs.nocobase.com/save-as-template-dialog.png)
 
-![20240407153407](https://static-docs.nocobase.com/20240407153407.png)
+在区块模板管理页中统一管理所有区块模板。
 
-All block templates can be centrally managed on the block template management page.
+![20240407153550](https://static-docs.nocobase.com/main-screen-block-template.png)
 
-![20240407153550](https://static-docs.nocobase.com/20240407153550.png)
+在添加区块时候选择模板,快速创建区块。
 
-When adding a block, you can either reference or copy a template to create the block quickly.
+![20240422095346](https://static-docs.nocobase.com/create-block.png)
 
-![20240422095346](https://static-docs.nocobase.com/20240422095346.png)
-
-For more information about block templates, refer to [Block Templates](/handbook/ui/blocks/block-templates).
+更多区块模板介绍可参考 [区块模板](/handbook/block-template)

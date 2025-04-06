@@ -1,24 +1,23 @@
-# Enregistrer comme modèle
-<PluginInfo name="ui-schema-storage"></PluginInfo>
+# 保存为区块模板
+<PluginInfo name="block-template"></PluginInfo>
 
-## Introduction
+## 介绍
 
-Enregistrer un bloc comme modèle vous permet de sauvegarder à la fois le bloc et ses tables de données associées. Ces modèles peuvent être gérés de manière centralisée sur la page de gestion des modèles. Lors de l'ajout d'un bloc, vous pouvez choisir de référencer ou de copier un modèle pour créer rapidement un nouveau bloc.
+保存为区块模板是将区块及其关联的数据表保存为模板，在模板管理页中可以统一管理这些模板，在添加区块时，可以选择该模板快速创建区块。
 
-## Guide de l'utilisateur
+## 使用手册
+![20240407175846](https://static-docs.nocobase.com/save-as-block-template.png)
 
-![20240407175846](https://static-docs.nocobase.com/20240407175846.png)
+自定义区块模板名称。
 
-Vous pouvez personnaliser le nom du modèle de bloc.
+![save-as-template-dialog](https://static-docs.nocobase.com/save-as-template-dialog.png)
 
-![20240407153407](https://static-docs.nocobase.com/20240407153407.png)
+在区块模板管理页中统一管理所有区块模板。
 
-Tous les modèles de blocs peuvent être gérés de manière centralisée sur la page de gestion des modèles de blocs.
+![20240407153550](https://static-docs.nocobase.com/main-screen-block-template.png)
 
-![20240407153550](https://static-docs.nocobase.com/20240407153550.png)
+在添加区块时候选择模板,快速创建区块。
 
-Lors de l'ajout d'un bloc, vous pouvez soit référencer, soit copier un modèle pour créer rapidement le bloc.
+![20240422095346](https://static-docs.nocobase.com/create-block.png)
 
-![20240422095346](https://static-docs.nocobase.com/20240422095346.png)
-
-Pour plus d'informations sur les modèles de blocs, consultez [Modèles de Blocs](/handbook/ui/blocks/block-templates).
+更多区块模板介绍可参考 [区块模板](/handbook/block-template)
