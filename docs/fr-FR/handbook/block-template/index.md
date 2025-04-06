@@ -1,90 +1,90 @@
-# 区块模板
+# Modèle de bloc
 
 <PluginInfo name="block-template"></PluginInfo>
 
-## 介绍
+## Introduction
 
-区块模板用于为区块提供模板能力, 可用于模板的集中管理及通过模板创建区块。通过模板创建的区块, 与模板是继承关系, 可以在模板基础上增加自己的配置。
+Le modèle de bloc permet de fournir des capacités de modélisation aux blocs. Il peut être utilisé pour la gestion centralisée des modèles et pour créer des blocs à partir de modèles. Les blocs créés à partir d’un modèle héritent de celui-ci et peuvent y ajouter leur propre configuration.
 
-## 安装
+## Installation
 
-内置插件, 无需安装。
+Plugin intégré, aucune installation requise.
 
-## 使用说明
+## Guide d'utilisation
 
-![主界面](https://static-docs.nocobase.com/main-screen-block-template.png)
+![Écran principal](https://static-docs.nocobase.com/main-screen-block-template.png)
 
-### 模板管理
+### Gestion des modèles
 
-#### 创建模板
+#### Créer un modèle
 
-点击 "新增" 按钮, 输入相关信息, 点击 "提交" 按钮, 即可创建模板。
+Cliquez sur le bouton **« Nouveau »**, renseignez les informations nécessaires, puis cliquez sur **« Soumettre »** pour créer un modèle.
 
-![创建模板](https://static-docs.nocobase.com/create-template.png)
+![Créer un modèle](https://static-docs.nocobase.com/create-template.png)
 
-##### 保存为模板
+##### Enregistrer en tant que modèle
 
-页面中的数据区块, 可以通过 "保存为模板" 菜单, 将当前区块保存为模板。
+Les blocs de données d’une page peuvent être enregistrés en tant que modèles via le menu **« Enregistrer comme modèle »**.
 
-![保存为模板](https://static-docs.nocobase.com/save-as-block-template.png)
+![Enregistrer comme modèle](https://static-docs.nocobase.com/save-as-block-template.png)
 
-:::info{title=注意}
-- 仅支持页面中的数据区块保存为模板。不支持将弹窗中区块直接保存为模板。
+:::info{title=Remarque}
+- Seuls les blocs de données présents sur la page peuvent être enregistrés comme modèles. Les blocs dans des fenêtres pop-up ne peuvent pas être enregistrés directement comme modèles.
 :::
 
-#### 配置模板
+#### Configurer un modèle
 
-选择模板, 点击 "配置" 按钮, 即可进入模板配置界面, 配置模板数据区块。
+Sélectionnez un modèle, puis cliquez sur le bouton **« Configurer »** pour accéder à l'interface de configuration et définir les blocs de données du modèle.
 
-![配置模板](https://static-docs.nocobase.com/configure-template.png)
+![Configurer un modèle](https://static-docs.nocobase.com/configure-template.png)
 
-:::info{title=注意}
-- 目前模板仅支持添加一个数据区块, 未配置数据区块时, 将无法使用该模板创建区块。
-- 图表区块暂不支持配置为模板。
+:::info{title=Remarque}
+- Actuellement, un modèle ne peut contenir qu’un seul bloc de données. Si aucun bloc de données n’est configuré, il ne sera pas possible d’utiliser le modèle pour créer un bloc.
+- Les blocs de type graphique ne peuvent pas encore être utilisés dans les modèles.
 :::
 
-#### 编辑模板
+#### Modifier un modèle
 
-选择模板, 点击 "编辑" 按钮, 即可进入模板编辑界面修改模板标题、描述。
+Sélectionnez un modèle, puis cliquez sur le bouton **« Modifier »** pour changer le titre ou la description du modèle.
 
-![编辑模板](https://static-docs.nocobase.com/edit-template.png)
+![Modifier un modèle](https://static-docs.nocobase.com/edit-template.png)
 
-#### 复制模板
+#### Copier un modèle
 
-选择模板, 点击 "复制" 按钮, 输入新模板标题, 点击 "提交" 按钮, 即可复制模板。
-模板复制后可以进行编辑以适应新的需求场景。
+Sélectionnez un modèle, cliquez sur **« Copier »**, entrez un nouveau titre, puis cliquez sur **« Soumettre »**. Le modèle sera copié et pourra ensuite être modifié pour répondre à d'autres besoins.
 
-![复制模板](https://static-docs.nocobase.com/copy-template.png)
+![Copier un modèle](https://static-docs.nocobase.com/copy-template.png)
 
-#### 删除模板
+#### Supprimer un modèle
 
-选择模板, 点击 "删除" 按钮, 点击 "提交" 按钮, 即可删除模板。
+Sélectionnez un modèle, cliquez sur **« Supprimer »**, puis cliquez sur **« Soumettre »** pour confirmer la suppression.
 
-![删除模板](https://static-docs.nocobase.com/delete-template.png)
+![Supprimer un modèle](https://static-docs.nocobase.com/delete-template.png)
 
-删除可以选择是否"保留已创建的区块":
-- 若选择保留, 则模板被删除后, 已创建的区块会被转换成普通的页面区块。
-- 若选择不保留, 则模板被删除后, 已创建的区块也会被删除。
+Lors de la suppression, vous pouvez choisir de **conserver ou non les blocs créés à partir du modèle** :
+- Si vous choisissez de conserver, les blocs existants seront convertis en blocs de page classiques.
+- Sinon, tous les blocs créés à partir du modèle seront également supprimés.
 
-### 模板使用
+### Utilisation des modèles
 
-#### 创建区块
+#### Créer un bloc
 
-在页面中创建区块时, 选择对应区块的模板, 即可使用模板创建区块。
+Lors de la création d’un bloc sur une page, vous pouvez sélectionner un modèle de bloc existant pour l’utiliser.
 
-![创建区块](https://static-docs.nocobase.com/create-block.png)
+![Créer un bloc](https://static-docs.nocobase.com/create-block.png)
 
-从模板创建的区块与普通区块有以下几点不同:
-1. 该区块与模板是继承关系, 可以在模板基础上增加自己的配置, 未修改的配置会与模板保持同步。
-2. 继承自模板的 UI 组件无法从页面中删除。
-![无法删除](https://static-docs.nocobase.com/disable-delete.png)
+Les blocs créés à partir d’un modèle se distinguent des blocs classiques par les points suivants :
 
-3. 区块新增的字段、操作会以不同的背景色展示, 以便区分。
-![区块样式](https://static-docs.nocobase.com/template-bg.png)
+1. Le bloc hérite du modèle : vous pouvez ajouter votre propre configuration, tandis que les paramètres non modifiés restent synchronisés avec le modèle.
+2. Les composants UI hérités du modèle ne peuvent pas être supprimés de la page.  
+   ![Suppression désactivée](https://static-docs.nocobase.com/disable-delete.png)
 
-4. 区块及继承自模板的 UI 组件均会多一个 "恢复到模板" 的配置项, 用于恢复到模板完全一致的状态。
-![恢复到模板](https://static-docs.nocobase.com/revert-to-template.gif)
+3. Les champs et actions ajoutés sont affichés avec un fond de couleur différente pour les distinguer.  
+   ![Style du bloc](https://static-docs.nocobase.com/template-bg.png)
 
-:::info{title=注意}
-区块内部的 UI 组件的位置以页面为准, 创建后不能自动同步模板中的位置, 若需要同步模板中的位置, 只能将整个区块恢复到模板。
+4. Les blocs et les composants UI hérités disposent d’une option **« Revenir au modèle »**, qui permet de rétablir la configuration du modèle d'origine.  
+   ![Revenir au modèle](https://static-docs.nocobase.com/revert-to-template.gif)
+
+:::info{title=Remarque}
+La position des composants UI à l'intérieur d’un bloc est déterminée par la page, et non synchronisée automatiquement avec le modèle. Pour synchroniser la disposition, il faut **restaurer le bloc complet depuis le modèle**.
 :::

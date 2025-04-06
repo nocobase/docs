@@ -1,87 +1,92 @@
-# 区块
+# Bloc
 
-区块是用来展示和操作数据的视图。在 NocoBase 里，将页面、弹窗、抽屉看作是区块的容器，容器就像一张画布，在里面可以放置各种各样的区块。
+Un **bloc** est une vue utilisée pour **afficher et manipuler des données**.  
+Dans NocoBase, les pages, les pop-ups et les tiroirs sont considérés comme des **conteneurs de blocs**. Ces conteneurs agissent comme des toiles sur lesquelles on peut placer différents types de blocs.
 
-得益于 NocoBase 将数据与视图分离的设计，页面通过区块承载数据，并根据不同的区块类型，以不同的形式组织和管理数据。
+Grâce à l’architecture de NocoBase qui sépare **les données de la vue**, les blocs permettent de porter les données sur une page tout en les organisant et en les gérant selon leur type.
 
-## 区块结构
+## Structure d’un bloc
 
-一个完整的区块由三部分组成：
+Un bloc complet se compose de trois parties :
 
-1. 内容区：区块的主体
-2. 操作区：可以放置各种操作按钮，用于操作区块数据
-3. 配置区：操作区块配置的按钮
+1. **Zone de contenu** : le corps principal du bloc  
+2. **Zone d’actions** : pour placer divers boutons d’action permettant d’interagir avec les données  
+3. **Zone de configuration** : bouton d’accès à la configuration du bloc  
 
-![6.block.jpg](https://static-docs.nocobase.com/07ea73c9abcc16846dd5cd0c960d7cb0.jpg)
+![Structure du bloc](https://static-docs.nocobase.com/07ea73c9abcc16846dd5cd0c960d7cb0.jpg)
 
-## 区块类型
+## Types de blocs
 
-![add-block.jpg](https://static-docs.nocobase.com/c105b36b1f61420f2082d8bc5153f3f0.jpg)
+![Ajout de bloc](https://static-docs.nocobase.com/c105b36b1f61420f2082d8bc5153f3f0.jpg)
 
-NocoBase 目前内置 10 几种区块，未来可以通过插件的方式支持更多种。
+NocoBase intègre actuellement une dizaine de types de blocs, et d’autres peuvent être ajoutés via des plugins à l’avenir.
 
-- **数据区块**：为组织数据而设计的区块。
-  - **表格**：以表格形式展示多条数据的区块，既可以展示一个数据表，也可以展示相互之间有关联关系的多个数据表。
-  - **表单**：以各种类型的输入框录入或编辑数据的区块，既可以为某一个数据表进行录入，也可以对相互之间有关联关系的多个数据表统一录入。
-  - **详情**：展示一条特定数据的区块，既可以对某一个数据表的某一条数据进行展示，也可以对相互之间有关联关系的多个数据表中的多条数据统一展示。
-  - **日历**：以日历的形式展示多条数据的区块，适合某些在日期上具备重要特征的数据。
-  - **看板**：以看板的形式展示多条数据的区块，适合用来对生产过程进行管理。
-- **图表区块**：为图形化展示统计数据而设计的区块。目前支持：柱状图、条形图、折线图、饼图、面积图等。
-- **其他区块**：为展示特殊数据而设计的区块。
-  - **Markdown**：用 Markdown 书写的文本内容。
-  - **操作记录**：展示一个数据表中的所有数据的变更记录，包括新建、编辑和删除。
+- **Blocs de données** : conçus pour structurer et manipuler des données.
+  - **Tableau** : affiche plusieurs enregistrements sous forme tabulaire. Peut afficher une ou plusieurs tables liées entre elles.
+  - **Formulaire** : permet de saisir ou modifier des données à l’aide de champs de saisie. Peut concerner une table ou plusieurs tables liées.
+  - **Détail** : affiche une fiche individuelle. Peut montrer une ligne d’une table ou plusieurs lignes de plusieurs tables liées.
+  - **Calendrier** : affiche plusieurs données organisées selon des dates, utile pour des données temporelles.
+  - **Kanban** : affiche les données sous forme de colonnes pour la gestion de flux (type tâches ou production).
+- **Blocs de graphiques** : conçus pour la visualisation statistique. Prend en charge : histogrammes, barres, lignes, camemberts, zones, etc.
+- **Autres blocs** : pour des usages spécifiques.
+  - **Markdown** : contenu texte au format Markdown.
+  - **Historique** : affiche toutes les modifications d’un enregistrement (création, édition, suppression).
 
-## 添加区块
+## Ajouter un bloc
 
-进入界面配置模式，在页面和弹窗内点击 Add block 按钮即可添加区块。选项分为 4 步：
+Passez en mode **Configuration d’interface**, puis cliquez sur le bouton **Add block** dans une page ou un pop-up. Le processus d’ajout se fait en 4 étapes :
 
-1. 选择区块类型：目前可用的区块类型包括表格、表单、详情、日历、看板、Markdown
-2. 选择 Collection：此处会列出所有的 Collection
-3. 选择创建方式：创建空白区块，或者从模板创建
-4. 选择模板：若第 3 步选择了从模板创建，则在第 4 步选择模板
+1. **Choisir le type de bloc** : tableau, formulaire, détail, calendrier, kanban, markdown
+2. **Choisir la collection** : liste de toutes les collections disponibles
+3. **Choisir le mode de création** : bloc vide ou à partir d’un modèle
+4. **Choisir un modèle** : si l’option précédente utilise un modèle
 
-![6.block-add.jpg](https://static-docs.nocobase.com/4a4dad014fddada53f2d49f5dba681fb.jpg)
+![Ajout de bloc - étapes](https://static-docs.nocobase.com/4a4dad014fddada53f2d49f5dba681fb.jpg)
 
-## 配置区块
+## Configurer un bloc
 
-配置区块包括三方面的内容：
+La configuration d’un bloc se fait en trois étapes principales :
 
-- 配置区块内容
-- 配置区块操作
-- 配置区块属性
+- Configurer le **contenu** du bloc  
+- Configurer les **actions** disponibles  
+- Configurer les **propriétés** du bloc  
 
-### 配置区块内容
+### Configurer le contenu du bloc
 
-以表格区块为例，区块内容是指表格中要显示的列。点击 Configure columns 即可配置要显示的列：
+Prenons l’exemple d’un **bloc tableau**. Le contenu correspond aux colonnes visibles dans le tableau.  
+Cliquez sur **Configure columns** pour définir les colonnes à afficher :
 
-![6.block-content.gif](https://static-docs.nocobase.com/4644fe7e4f6a93e58d63219a1ef19633.gif)
+![Configurer les colonnes](https://static-docs.nocobase.com/4644fe7e4f6a93e58d63219a1ef19633.gif)
 
-### 配置区块操作
+### Configurer les actions du bloc
 
-以表格区块为例，有筛选、添加、删除、查看、编辑、自定义等操作可选。点击 Configure actions 按钮可以配置操作。其中，每个操作按钮都可以单独配置属性：
+Toujours dans un bloc tableau, vous pouvez activer des actions comme : filtrer, ajouter, supprimer, afficher, modifier, actions personnalisées.  
+Cliquez sur **Configure actions** pour les configurer individuellement :
 
-![6.block-content.gif](https://static-docs.nocobase.com/4644fe7e4f6a93e58d63219a1ef19633.gif)
+![Configurer les actions](https://static-docs.nocobase.com/4644fe7e4f6a93e58d63219a1ef19633.gif)
 
-### 配置区块属性
+### Configurer les propriétés du bloc
 
-将光标移到区块右上角，会看到区块配置按钮。以表格区块为例，可以配置的属性有：
+Passez la souris dans le coin supérieur droit du bloc pour accéder aux options de configuration.  
+Par exemple, pour un bloc tableau, vous pouvez ajuster :
 
-- Block title
-- Drag & drop sorting
-- Set the data scope
-- Set default sorting rules
-- Records per page
+- Titre du bloc
+- Tri par glisser-déposer
+- Définir la portée des données
+- Définir les règles de tri par défaut
+- Nombre d’enregistrements par page
 
-## 调整布局
+## Réorganiser la disposition
 
-页面内既可以只放一个区块，也可以放多个区块进行组合。你可以通过拖拽完成区块位置和宽度的调整。
+Une page peut contenir un seul bloc ou plusieurs blocs en combinaison.  
+Vous pouvez **réorganiser les blocs par glisser-déposer** pour ajuster leur position ou leur largeur.
 
-![block-drag.gif](https://static-docs.nocobase.com/afa28c9ec8958c0581ec70f6d40891b6.gif)
+![Disposition des blocs](https://static-docs.nocobase.com/afa28c9ec8958c0581ec70f6d40891b6.gif)
 
-## 区块模板
+## Modèles de blocs
 
-你可以将一个区块保存为模板，以后可以通过这个模板快速创建新的区块。
+Vous pouvez enregistrer un bloc comme **modèle**, ce qui permet de le réutiliser facilement plus tard.
 
-比如，一个数据表的表单，既用于新增数据，又用于编辑数据，那就可以将这个表单保存为模板，在新增数据和编辑数据的界面里引用它。
+Par exemple, si un formulaire sert à la fois à **ajouter** et à **modifier** une donnée, vous pouvez l’enregistrer comme modèle pour l’utiliser dans les deux cas sans recréer sa configuration.
 
-![block-template.jpg](https://static-docs.nocobase.com/d024cfc5dfd96bfc3ed48cd5c9963cde.jpg)
+![Modèle de bloc](https://static-docs.nocobase.com/d024cfc5dfd96bfc3ed48cd5c9963cde.jpg)

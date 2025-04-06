@@ -1,80 +1,107 @@
-# 区块
+# Bloc
 
-区块是内容的载体，可以放置于页面（Page）、对话框（Modal）或抽屉（Drawer）里，多个区块可以自由拖拽排列。
+Un **bloc** est un conteneur de contenu pouvant être placé dans une **page**, une **fenêtre modale (dialogue)** ou un **tiroir (drawer)**.  
+Les blocs peuvent être librement agencés par **glisser-déposer**.
 
-## 添加区块
+## Ajouter un bloc
 
-区块可以放置于页面（Page）、对话框（Modal）或抽屉（Drawer）里
+Les blocs peuvent être placés dans une page, une fenêtre modale ou un tiroir.
 
-### 页面里的区块
+### Blocs dans une page
 
-目前页面里的区块类型包括：数据区块、筛选区块、其他区块
+Les types de blocs disponibles dans une **page** sont :
+
+- Blocs de données  
+- Blocs de filtrage  
+- Autres blocs  
 
 ![](https://static-docs.nocobase.com/dad0a394d33dd26f31c3202a76bb0153.png)
 
-### 弹窗（对话框或抽屉）里的区块
+### Blocs dans une fenêtre modale ou un tiroir
 
-弹窗有对话框和抽屉两种，和页面一样也可以添加区块，区别在于弹窗里的区块通常为单条记录的添加、编辑或查看等，区块类型包括当前数据区块、关系区块、其他区块。
+Les fenêtres contextuelles peuvent être des **modales** ou des **tiroirs**. Comme pour les pages, on peut y ajouter des blocs.  
+Cependant, dans ces cas-là, les blocs sont généralement utilisés pour des actions sur **un seul enregistrement** (ajout, édition, visualisation).
 
-#### 抽屉
+Les types de blocs disponibles sont :
+
+- Blocs de données actuelles  
+- Blocs de relation  
+- Autres blocs  
+
+#### Tiroir
 
 ![](https://static-docs.nocobase.com/e18726fb0b52ddab89b9b1a44788f361.png)
 
-#### 对话框
+#### Fenêtre modale
 
 ![](https://static-docs.nocobase.com/4763fc5fc008bdf3915f84a7e433c0f8.png)
 
-## 区块的设计器
+## Designer de blocs
 
-每个区块右上角都有三个小图标，从左到右分别为：
+En haut à droite de chaque bloc se trouvent **trois icônes**, de gauche à droite :
 
-1. 拖拽布局
-2. 快捷添加区块
-3. 区块参数配置
+1. **Glisser-déposer** pour modifier la disposition  
+2. **Ajout rapide** d’un bloc  
+3. **Configuration des paramètres du bloc**
 
 ![](https://static-docs.nocobase.com/b488f3013532a246df59b89c0688a58f.png)
 
-简单的区块所有的配置项都集中在「区块参数配置」里，如 Markdown
+Pour les blocs simples (ex : Markdown), toutes les options sont regroupées dans **la configuration des paramètres** :
 
 ![](https://static-docs.nocobase.com/f37e277863068b2661f66d4020af806a.png)
 
-复杂的数据类型区块还会提供独立的内嵌的「配置字段」和「配置操作」
+Pour les blocs de données complexes, il existe des sections supplémentaires comme :
+
+- **Configurer les champs**
+- **Configurer les actions**
 
 ![](https://static-docs.nocobase.com/71b550da637d23145a5f62d48ee8521b.png)
 
-除此之外，也可以自由发挥，提供更多嵌套的可能，如图表区块
+Et certains blocs, comme les **blocs graphiques**, offrent encore plus de possibilités de personnalisation imbriquée :
 
 ![](https://static-docs.nocobase.com/07588190b3f41ae3060e71d8b76b4447.png)
 
-## 区块布局
+## Disposition des blocs
 
-多个区块可以通过拖拽调整布局
+Plusieurs blocs peuvent être déplacés et redimensionnés par glisser-déposer pour organiser la mise en page.
 
 ![](https://static-docs.nocobase.com/f6692295ac0917f3babce9a60ce80879.gif)
 
-## 区块模板
+## Modèles de blocs
 
-可以将一个数据类型区块保存为模板，以后添加区块时可以直接使用这个模板。比如，一个数据表的表单，既用于新增数据，又用于编辑数据，那就可以将这个表单保存为模板，在新增数据和编辑数据的界面里通过该模板创建对应的表单区块。
+Vous pouvez enregistrer un bloc de type données comme **modèle**, afin de le réutiliser facilement.
 
-### 如何添加和使用模板？
+Par exemple, un formulaire utilisé à la fois pour **créer** et **modifier** des enregistrements peut être enregistré comme modèle, puis réutilisé dans différentes interfaces (ajout, édition).
 
-参考[区块模板](/handbook/block-template)
+### Comment ajouter et utiliser un modèle ?
 
-## 区块类型
+Voir [Modèles de blocs](/handbook/block-template)
 
-NocoBase 默认将区块分为四种类型：
+## Types de blocs
 
-- 数据区块：可以将 Collection 的数据展示在区块里
-- 筛选区块：目前只能在页面里添加，可用于数据区块的数据筛选
-- 关系区块：目前只能在弹窗里添加，可用于当前记录的关系数据的增删改查等
-- 其他区块：用于放置独立区块，如 Markdown、审计日志区块、工作流待办区块等
+NocoBase classe par défaut les blocs en **quatre catégories** :
 
-### 数据区块
+- **Blocs de données** : affichent les données d’une collection
+- **Blocs de filtrage** : uniquement dans les pages, permettent de filtrer les blocs de données
+- **Blocs de relation** : uniquement dans les fenêtres modales, pour gérer les données liées à l’enregistrement en cours
+- **Autres blocs** : blocs autonomes comme Markdown, journaux d’audit, blocs de tâches de workflow, etc.
 
-### 筛选区块
+### Bloc de données
 
-### 关系区块
+Affiche les données d’une collection, par exemple sous forme de tableau, formulaire, vue détaillée, calendrier ou kanban.
 
-### 其他区块
+### Bloc de filtrage
 
-## 筛选联动
+Permet de filtrer les données affichées dans d'autres blocs. Utilisable uniquement dans les **pages**.
+
+### Bloc de relation
+
+Utilisé dans les **modales ou tiroirs** pour gérer les données liées à un enregistrement (affichage, ajout, édition, suppression).
+
+### Autres blocs
+
+Blocs utilitaires pour afficher du contenu spécifique comme du texte Markdown, des journaux d’activité ou des tâches à réaliser dans un flux de travail.
+
+## Filtrage lié (Filtrage en cascade)
+
+Fonctionnalité permettant de lier plusieurs filtres entre eux, afin que les options disponibles dans un filtre dépendent de la sélection effectuée dans un autre.
