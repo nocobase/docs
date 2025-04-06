@@ -61,7 +61,7 @@ This option can be used to configure the background color of calendar events. He
 2. Then, return to the calendar block configuration interface and select the field you just configured with colors in the **Background Color Field**.
 3. Finally, you can try selecting a color for a calendar event and click submit. You'll see that the color has taken effect.
 
-![20240914192017_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240914192017_rec_.gif)
+![20240914192017_rec_](https://static-docs.nocobase.com/20240914192017_rec_.gif)
 
 ## Configure Actions
 

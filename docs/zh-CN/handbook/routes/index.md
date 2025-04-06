@@ -6,7 +6,7 @@
 
 路由管理器是一个用于管理系统主页面路由的工具，支持`桌面端`和`移动端`。使用路由管理器创建的路由，会同步显示在菜单中（可配置为不显示在菜单中）。反之，在页面菜单处添加的菜单，也会同步显示在路由管理器列表中。
 
-![20250107115449](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250107115449.png)
+![20250107115449](https://static-docs.nocobase.com/20250107115449.png)
 
 ## 使用手册
 
@@ -30,7 +30,7 @@
 5. 设置是否开启 Tab 页（Enable page tabs）
 6. 对于页面类型，系统会自动生成唯一的路由路径（Path）
 
-![20250124131803](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250124131803.png)
+![20250124131803](https://static-docs.nocobase.com/20250124131803.png)
 
 ### 路由操作
 

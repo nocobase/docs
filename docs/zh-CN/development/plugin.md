@@ -2,7 +2,7 @@
 
 NocoBase 提供了三种方式组织插件，所有插件包最终都会汇聚到项目根目录下的 `node_modules` 里：
 
-![20240424112928](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240424112928.png)
+![20240424112928](https://static-docs.nocobase.com/20240424112928.png)
 
 :::warning
 三种方式组织的插件最终都需要执行 `yarn install`，如果需要在应用的插件管理器页面里显示，还需要通过 `pm add` 添加到应用里。

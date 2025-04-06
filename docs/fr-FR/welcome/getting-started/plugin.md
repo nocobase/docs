@@ -1,112 +1,86 @@
-# Installation et mise à jour des plugins
+# Installation and Upgrade of Plugins
 
-## Installation et mise à niveau de plugins commerciaux (v1.4 et supérieur)
+## Installation and Upgrade of Commercial Plugins (v1.4 and Above)
 
-### Configurer les variables d'environnement
+### Configure Environment Variables
 
-Définissez les variables d'environnement [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) et [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password)(Nom d'utilisateur et mot de passe NocoBase Service Platform) pour télécharger automatiquement les plugins commerciaux lors de l’installation ou de la mise à niveau de l’application.
+Set the environment variables [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) and [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password) (NocoBase Service Platform username and password) to automatically download commercial plugins during application installation or upgrade.
 
 ```bash
 NOCOBASE_PKG_USERNAME=your-username
 NOCOBASE_PKG_PASSWORD=your-password
 ```
 
-[Comment définir les variables d'environnement ?](/welcome/getting-started/env)
+[How to set environment variables?](/welcome/getting-started/env)
 
-### Exécuter les commandes d'installation ou de mise à niveau de l'application
+### Download Plugins
 
-Une fois l'application installée ou mise à niveau, tous les plugins commerciaux autorisés apparaîtront dans le gestionnaire de plugins. Les plugins seront automatiquement téléchargés et mis à jour.
+#### Docker Installation
 
-#### Installation
+Restart the container to automatically download plugins
 
-- [Docker (recommendé)](./installation/docker-compose.md)
-- [create-nocobase-app](./installation/create-nocobase-app.md)
-- [Code source Git](./installation/git-clone.md)
+```bash
+docker compose restart app
+```
 
-#### Mise à niveau
+#### Git Source Code or create-nocobase-app Installation
 
-- [Mise à niveau pour Docker compose](./upgrading/docker-compose.md)
-- [Mise à niveau pour create-nocobase-app](./upgrading/create-nocobase-app.md)
-- [Mise à niveau pour Code source Git](./upgrading/git-clone.md)
+Execute the `pkg download-pro` command to download plugins
 
-### Activer les plugins
-
-Sélectionnez les plugins que vous souhaitez activer dans le gestionnaire de plugins.
-
-![Activation de Plugin](https://static-docs.nocobase.com/20241204000230.png)
-
----
-
-## Installation et mise à jour des plugins via l'interface
+```bash
+yarn nocobase pkg download-pro
+```
 
 :::warning
-L'ajout ou la mise à jour de plugins via l'interface redémarrera l'application. Pour les opérations par lots, envisagez des méthodes alternatives.
+
+- The above steps will only download plugins that match the current application version, and will not update plugins. If you need to update plugins, please [upgrade the application](/welcome/getting-started/upgrading) first, and authorized plugins will be automatically updated.
+- Authorized plugins will also be automatically downloaded during application [installation](/welcome/getting-started/installation) or [upgrade](/welcome/getting-started/upgrading).
+
 :::
 
-### Uploader des packages de plugins via Plugin Manager
+### Activate Plugins
 
-Les plugins commerciaux et tiers peuvent être directement uploadé via l'interface.
+Select the plugins you want to activate in the plugin manager.
 
-![Upload de Plugins](https://static-docs.nocobase.com/20241204000127.png)
+![20241204000230](https://static-docs.nocobase.com/20241204000230.png)
+
+### Upgrade Plugins
+
+First [upgrade the application](/welcome/getting-started/upgrading), and authorized plugins will be automatically downloaded or updated during the application upgrade. Currently, it is not possible to upgrade plugins without upgrading the application.
+
+## Installing and Updating Plugins via Interface
+
+:::warning
+Adding or updating plugins through the interface will restart the application. For batch operations, consider alternative methods.
+:::
+
+### Upload Plugin Packages via Plugin Manager
+
+Both commercial and third-party plugins can be directly uploaded via the interface.
+
+![20241204000127](https://static-docs.nocobase.com/20241204000127.png)
 
 Notes:
 
-- Pour créer des packages de plugins, reportez-vous à [Ecrire votre premier Plugin](/development/your-first-plugin) pour garantir une construction et un packaging appropriés.
+- For creating plugin packages, refer to [Writing Your First Plugin](/development/your-fisrt-plugin) to ensure proper building and packaging.
 
-### Activer les Plugins
+### Activate Plugins
 
-Sélectionnez les plugins que vous souhaitez activer dans le gestionnaire de plugins.
+Select the plugins you want to activate in the plugin manager.
 
-![Activation de Plugin](https://static-docs.nocobase.com/20241204000230.png)
+![20241204000230](https://static-docs.nocobase.com/20241204000230.png)
 
----
-
-## Installation et mise à jour des plugins via la ligne de commande
+## Installing and Updating Plugins via Plugin Directory Upload
 
 :::warning
-- Prend en charge les opérations par lots.
-- Cette méthode est recommandée si les mises à jour de l'application entraînent une incompatibilité du plugin ou un échec de démarrage.
-  :::
+- Supports batch operations and is convenient for migration.
+- Suitable for servers in an intranet environment.
+- Recommended for updating incompatible plugins caused by application updates.
+:::
 
-### 0. Pour les versions Docker, entrez dans le conteneur
+### Add or Update Plugins
 
-```bash
-docker-compose exec app bash
-```
-
-### 1. Connectez-vous au registre NPM
-
-Configurez le registre en fonction de votre configuration.
-
-```bash
-npm login --registry=https://pkg.nocobase.com/
-```
-
-### 2. Ajouter ou mettre à jour des plugins
-
-```bash
-yarn pm add @nocobase/plugin-data-source-external-mysql @nocobase/plugin-embed --registry=https://pkg.nocobase.com/
-```
-
-### 3. Activer les plugins
-
-```bash
-yarn pm enable @nocobase/plugin-data-source-external-mysql @nocobase/plugin-embed
-```
-
----
-
-## Installation et mise à jour des plugins via l'upload du répertoire de plugins
-
-:::warning
-- Prend en charge les opérations par lots et est pratique pour la migration.
-- Convient aux serveurs dans un environnement intranet.
-- Recommandé pour la mise à jour des plugins incompatibles provoqués par les mises à jour d'applications.
-  :::
-
-### Ajouter ou mettre à jour des plugins
-
-Stockez les plugins commerciaux et tiers dans le répertoire `./storage/plugins/`. Vous pouvez télécharger des plugins dans un environnement de développement et les télécharger dans le répertoire `./storage/plugins/` sur le serveur. Vous pouvez également extraire directement le package du plugin dans le répertoire. Par exemple:
+Store commercial and third-party plugins in the `./storage/plugins/` directory. You can download plugins in a development environment and upload them to the `./storage/plugins/` directory on the server. Alternatively, directly extract the plugin package into the directory. For example:
 
 ```bash
 mkdir -p /my-nocobase/storage/plugins/@nocobase/plugin-auth-cas && \
@@ -115,9 +89,9 @@ mkdir -p /my-nocobase/storage/plugins/@nocobase/plugin-auth-cas && \
   --strip-components=1
 ```
 
-Cette commande garantit que le plugin est extrait dans `/my-nocobase/storage/plugins/@nocobase/plugin-auth-cas` sans le répertoire `package`. La structure correcte des répertoires est la suivante :
+This command ensures the plugin is extracted to `/my-nocobase/storage/plugins/@nocobase/plugin-auth-cas` without the `package` directory. The correct directory structure is as follows:
 
-```plaintext
+```bash
 ./plugin-auth-cas/dist/server/migrations/20240425200816-change-locale-module.js
 ./plugin-auth-cas/dist/server/auth.js
 ./plugin-auth-cas/client.js
@@ -153,10 +127,10 @@ Cette commande garantit que le plugin est extrait dans `/my-nocobase/storage/plu
 ./plugin-auth-cas/LICENSE.txt
 ```
 
-### Exécutez la commande Upgrade pour mettre à jour les plugins
+### Run the Upgrade Command to Update Plugins
 
-Après avoir uploadé les plugins dans le répertoire des plugins, exécutez la commande « nocobase update » pour terminer la mise à jour.
+After uploading plugins to the plugin directory, execute the `nocobase upgrade` command to complete the update.
 
 ```bash
-yarn nocobase upgrade
+yarn nocobase upgrade --skip-code-update
 ```

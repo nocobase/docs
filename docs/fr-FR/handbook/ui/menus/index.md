@@ -28,7 +28,7 @@ Une page peut servir de conteneur pour des blocs, hébergeant une variété de b
 
 Les liens peuvent rediriger vers des URL de tiers. Vous pouvez utiliser des variables dans l'URL et les paramètres de recherche.
 
-![20240709231114](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240709231114.png)
+![20240709231114](https://static-docs.nocobase.com/20240709231114.png)
 
 ## Configuration du Menu
 

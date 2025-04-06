@@ -162,7 +162,7 @@ For a detailed definition of each parameter in defining node types, refer to the
 
 Similar to triggers, the configuration form of a command (node type) needs to be implemented on the frontend.
 
-### The Simplest Node Command
+### A Simplest Node
 
 All commands must be derived from the `Instruction` base class, with relevant properties and methods used to configure and utilize the node.
 
@@ -296,6 +296,38 @@ This way, the following interface can be used to select among the variables in s
 :::info{title="Tip"}
 When a structure in the result is a deep object array, `children` can also be used to describe the path, but it cannot contain array indices. This is because, in NocoBase workflow variable handling, the variable path description for object arrays is automatically flattened into an array of deep values, and array indices cannot be used to access a specific value. You can refer to the content in the "Workflow: Advanced Usage" section of [Advanced Variables](../manual/advanced#Using Variables).
 :::
+
+### Node Availability
+
+By default, nodes can be added to workflows at will. However, in some cases, nodes may not be suitable for certain types of workflows or branches. In such cases, the `isAvailable` method can be used to configure the availability of nodes:
+
+```ts
+// Type definition
+export abstract class Instruction {
+  isAvailable?(ctx: NodeAvailableContext): boolean;
+}
+
+export type NodeAvailableContext = {
+  // instance of workflow plugin
+  engine: WorkflowPlugin;
+  // instance of current workflow
+  workflow: object;
+  // upstream node
+  upstream: object;
+  // node as branch start (branch index number)
+  branchIndex: number;
+};
+```
+
+The `isAvailable` method returns `true` when the node is available and `false` when it is not. The `ctx` parameter contains the context information of the current node, which can be used to determine whether the node is available.
+
+In most cases, the `isAvailable` method does not need to be implemented, and the node is available by default. The most common need for this configuration is when a node may be a high-cost operation and is not suitable for workflow in a synchronous process. In this case, the `isAvailable` method can be used to restrict the use of the node. For example:
+
+```ts
+isAvailable({ engine, workflow, upstream, branchIndex }) {
+  return !engine.isWorkflowSync(workflow);
+}
+```
 
 ### Learn More
 

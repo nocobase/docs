@@ -62,7 +62,7 @@ Filtering utilizes a [Popup](https://mobile.ant.design/components/popup) interac
 
 You can configure menu access permissions just like on the desktop side, as shown below (the mobile plugin must be enabled first):
 
-![20240903221327_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240903221327_rec_.gif)
+![20240903221327_rec_](https://static-docs.nocobase.com/20240903221327_rec_.gif)
 
 ## Development Guide
 

@@ -17,7 +17,7 @@ Built-in plugin, no separate installation required.
 
 Below is an example of the "Mobile Menu" configuration item, demonstrating how to extend a new permission configuration tab. The effect is shown in the figure below:
 
-![20240903210248](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240903210248.png)
+![20240903210248](https://static-docs.nocobase.com/20240903210248.png)
 
 The code is as follows:
 

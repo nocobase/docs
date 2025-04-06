@@ -16,18 +16,18 @@
 
 示例：订单表和商品表是多对多的关系，在商品表格区块配置「添加记录」操作，为订单表添加数据。
 
-![20240426101803](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426101803.png)
+![20240426101803](https://static-docs.nocobase.com/20240426101803.png)
 
 配置订单表关系字段「商品」的默认值为「表格选中记录」。
 
-![20240426101823](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426101823.png)
+![20240426101823](https://static-docs.nocobase.com/20240426101823.png)
 
-![20240426101922](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426101922.png)
+![20240426101922](https://static-docs.nocobase.com/20240426101922.png)
 
 完整操作如下：
 
 <video width="100%" height="440" controls>
-<source src="https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426102142.mp4" type="video/mp4">
+<source src="https://static-docs.nocobase.com/20240426102142.mp4" type="video/mp4">
 </video>
 
 ## 操作配置项

@@ -103,11 +103,11 @@ export class PayInstruction extends Instruction {
       status: JOB_STATUS.PENDING,
     });
 
-    const { plugin } = processor;
+    const { workflow } = processor;
     // do payment asynchronously
     paymentService.pay(node.config, (result) => {
       // notify processor to resume the job
-      return plugin.resume(job.id, result);
+      return workflow.resume(job.id, result);
     });
 
     // return created job instance
@@ -294,6 +294,38 @@ useVariables(node, options): VariableOption {
 :::info{title="提示"}
 当结果中某个结构是深层对象数组时，同样可以使用 `children` 来描述路径，但不能包含数组索引，因为在 NocoBase 工作流的变量处理中，针对对象数组的变量路径描述，在使用时会自动扁平化为深层值的数组，而不能通过索引来访问第几个值。可以参考《[工作流：进阶使用](../manual/advanced#使用变量)》部分的内容。
 :::
+
+### 节点是否可用
+
+默认情况下，工作流中可以任意添加节点。但在某些情况下，节点在一些特定类型的工作流或者分支内是不适用的，这时可以通过 `isAvailable` 来配置节点的可用性：
+
+```ts
+// 类型定义
+export abstract class Instruction {
+  isAvailable?(ctx: NodeAvailableContext): boolean;
+}
+
+export type NodeAvailableContext = {
+  // 工作流插件实例
+  engine: WorkflowPlugin;
+  // 工作流实例
+  workflow: object;
+  // 上游节点
+  upstream: object;
+  // 是否是分支节点（分支编号）
+  branchIndex: number;
+};
+```
+
+`isAvailable` 方法返回 `true` 时表示节点可用，`false` 表示不可用。`ctx` 参数中包含了当前节点的上下文信息，可以根据这些信息来判断节点是否可用。
+
+在没有特殊需求的情况下，不需要实现 `isAvailable` 方法，节点默认是可用的。最常见需要配置的情况，是节点可能是一个高耗时的操作，不适合在同步流程中执行，可以通过 `isAvailable` 方法来限制节点的使用。例如：
+
+```ts
+isAvailable({ engine, workflow, upstream, branchIndex }) {
+  return !engine.isWorkflowSync(workflow);
+}
+```
 
 ### 了解更多
 

@@ -18,12 +18,12 @@ Seuls les champs présents dans la table actuelle peuvent être configurés.
 
 ### Constantes
 
-![20240426153323](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426153323.png)
+![20240426153323](https://static-docs.nocobase.com/20240426153323.png)
 
 ### Variables
 
 Différents types de champs supportent divers types de variables, offrant une flexibilité selon les données avec lesquelles vous travaillez.
 
-![20240426153534](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426153534.png)
+![20240426153534](https://static-docs.nocobase.com/20240426153534.png)
 
 Pour plus d'informations sur les variables, consultez la section [Variables](/handbook/ui/variables).

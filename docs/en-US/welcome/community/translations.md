@@ -1,159 +1,210 @@
-# Translations
+# Translation
 
-The default language of NocoBase is English, currently English, Simplified Chinese, Japanese, Russian, Turkish are supported. You can help NocoBase to translate into your language.
+The default language of NocoBase is English. Currently, the main application supports English, Italian, Dutch, Simplified Chinese, and Japanese. We sincerely invite you to contribute translations for additional languages, enabling users around the world to enjoy an even more convenient NocoBase experience.
 
-The NocoBase language files are located at the following locations.
+---
+
+## I. System Localization
+
+### 1. System Interface and Plugin Translation
+
+#### 1.1 Translation Scope
+This applies only to the localization of the NocoBase system interface and plugins, and does not cover other custom content (such as data tables or Markdown blocks).
+
+![bbb6e0b44aeg](https://static-docs.nocobase.com/img_v3_02kh_8d429938-3aca-44b6-a437-bbb6e0b44aeg.jpg)
+
+![20250319220127](https://static-docs.nocobase.com/20250319220127.png)
+
+
+#### 1.2 Localization Content Overview
+NocoBase uses Git to manage its localization content. The primary repository is:
+https://github.com/nocobase/locales
+
+Each language is represented by a JSON file named according to its language code (e.g., de-DE.json, fr-FR.json). The file structure is organized by plugin modules, using key-value pairs to store translations. For example:
+
+```json
+{
+  // Client plugin
+  "@nocobase/client": {
+    "(Fields only)": "(Fields only)",
+    "12 hour": "12 hour",
+    "24 hour": "24 hour"
+    // ...other key-value pairs
+  },
+  "@nocobase/plugin-acl": {
+    // Key-value pairs for this plugin
+  }
+  // ...other plugin modules
+}
+```
+
+When translating, please gradually convert it to a structure similar to the following:
+
+```json
+{
+  // Client plugin
+  "@nocobase/client": {
+    "(Fields only)": "(Fields only - translated)",
+    "12 hour": "12 hour - translated",
+    "24 hour": "24 hour - translated"
+    // ...other key-value pairs
+  },
+  "@nocobase/plugin-acl": {
+    // Key-value pairs for this plugin
+  }
+  // ...other plugin modules
+}
+```
+
+#### 1.3 Translation Testing and Synchronization
+After completing your translation, please test and verify that all texts display correctly( we will provide verification methods later). Once submitted, the system will automatically synchronize the localization content to the repository.
+
+## II. Documentation and User Manual Localization
+
+The localization content for documentation and user manuals is stored in:
+https://github.com/nocobase/docs
+
+Localization is implemented by adding separate directories for each language, for example:
+https://github.com/nocobase/docs/blob/main/docs/en-US/
+
+![Documentation Localization Diagram](https://static-docs.nocobase.com/20250319121816.png)
+
+Notes:
+- For directory text modifications, please refer to:
+  https://github.com/nocobase/docs/blob/main/docs/config/
+  
+  ![Directory Text Diagram](https://static-docs.nocobase.com/20250319121853.png)
+
+- Global component text modifications can be found at:
+  https://github.com/nocobase/docs/blob/main/.dumi/theme/builtins/
+  
+  For example, plugin information text:
+  https://github.com/nocobase/docs/blob/main/.dumi/theme/builtins/PluginInfo.tsx
+  
+  ![Plugin Information Diagram](https://static-docs.nocobase.com/20250319122109.png)
+
+## III. Website Localization
+
+Website pages and all related texts are stored in:
+https://github.com/nocobase/website
+
+When adding a new language, please refer to the existing language pages:
+- English: https://github.com/nocobase/website/blob/main/src/en/
+- Chinese: https://github.com/nocobase/website/blob/main/src/cn/
+- Japanese: https://github.com/nocobase/website/blob/main/src/ja/
+
+![Website Localization Diagram](https://static-docs.nocobase.com/20250319121600.png)
+
+Global style modifications are located at:
+- English: https://github.com/nocobase/website/blob/main/src/layouts/BaseEN.astro
+- Chinese: https://github.com/nocobase/website/blob/main/src/layouts/BaseCN.astro
+- Japanese: https://github.com/nocobase/website/blob/main/src/layouts/BaseJA.astro
+
+![Global Style Diagram](https://static-docs.nocobase.com/20250319121501.png)
+
+The website’s global component localization is available at:
+https://github.com/nocobase/website/tree/main/src/components
+
+![Website Components Diagram](https://static-docs.nocobase.com/20250319122940.png)
+
+## How to Start Translating
+
+If you want to contribute a new language translation to NocoBase, please follow these steps:
+
+1. For the system interface, clone the https://github.com/nocobase/locales repository and create a new language JSON file based on an existing file.
+2. For documentation, clone the https://github.com/nocobase/docs repository, create a new language directory, and begin translating.
+3. For the website, clone the https://github.com/nocobase/website repository and create new language pages by referencing existing ones.
+
+After completing your translation, please submit a Pull Request to NocoBase. The new languages will appear in the system configuration, allowing you to select which languages to display.
+
+![Enabled Languages Diagram](https://static-docs.nocobase.com/20250319123452.png)
+
+## Legacy Information
+
+The NocoBase language files are located at the following locations:
 
 ```shell
 packages/core/**/src/locale
 packages/plugins/**/src/locale
 ```
 
-Among other things, the translation of the NocoBase core is mainly located here
+The core translations are primarily located here:
 
 https://github.com/nocobase/nocobase/tree/main/packages/core/client/src/locale
 
-Please copy en_US.ts, name it with the name of the language you want to add, and then translate the strings in it. Once the translation is done, please submit it to NocoBase via pull request and we will add it to the list of languages. Then you will see the new languages in the system configuration, where you can configure which languages you want to display for users to choose.
+Please copy en_US.ts, rename it with the language code you wish to add, and translate its strings. Once completed, submit a Pull Request, and the language will be added to the system configuration.
 
 <img src="./translations/enabled-languages.jpg" style="max-width: 800px;"/>
 
-The following table lists the Language Culture Name, Locale File Name, Display Name.
+## Supported Language Codes and Localization Progress
 
-| Language Culture Name | Locale File Name | Display Name                  |
-| :-------------------- | :--------------- | :---------------------------- |
-| af-ZA                 | af_ZA.ts         | Afrikaans - South Africa      |
-| sq-AL                 | sq_AL.ts         | Albanian - Albania            |
-| ar-DZ                 | ar_DZ.ts         | Arabic - Algeria              |
-| ar-BH                 | ar_BH.ts         | Arabic - Bahrain              |
-| ar-EG                 | ar_EG.ts         | Arabic - Egypt                |
-| ar-IQ                 | ar_IQ.ts         | Arabic - Iraq                 |
-| ar-JO                 | ar_JO.ts         | Arabic - Jordan               |
-| ar-KW                 | ar_KW.ts         | Arabic - Kuwait               |
-| ar-LB                 | ar_LB.ts         | Arabic - Lebanon              |
-| ar-LY                 | ar_LY.ts         | Arabic - Libya                |
-| ar-MA                 | ar_MA.ts         | Arabic - Morocco              |
-| ar-OM                 | ar_OM.ts         | Arabic - Oman                 |
-| ar-QA                 | ar_QA.ts         | Arabic - Qatar                |
-| ar-SA                 | ar_SA.ts         | Arabic - Saudi Arabia         |
-| ar-SY                 | ar_SY.ts         | Arabic - Syria                |
-| ar-TN                 | ar_TN.ts         | Arabic - Tunisia              |
-| ar-AE                 | ar_AE.ts         | Arabic - United Arab Emirates |
-| ar-YE                 | ar_YE.ts         | Arabic - Yemen                |
-| hy-AM                 | hy_AM.ts         | Armenian - Armenia            |
-| Cy-az-AZ              | Cy_az_AZ.ts      | Azeri (Cyrillic) - Azerbaijan |
-| Lt-az-AZ              | Lt_az_AZ.ts      | Azeri (Latin) - Azerbaijan    |
-| eu-ES                 | eu_ES.ts         | Basque - Basque               |
-| be-BY                 | be_BY.ts         | Belarusian - Belarus          |
-| bg-BG                 | bg_BG.ts         | Bulgarian - Bulgaria          |
-| ca-ES                 | ca_ES.ts         | Catalan - Catalan             |
-| zh-CN                 | zh_CN.ts         | Chinese - China               |
-| zh-HK                 | zh_HK.ts         | Chinese - Hong Kong SAR       |
-| zh-MO                 | zh_MO.ts         | Chinese - Macau SAR           |
-| zh-SG                 | zh_SG.ts         | Chinese - Singapore           |
-| zh-TW                 | zh_TW.ts         | Chinese - Taiwan              |
-| zh-CHS                | zh_CHS.ts        | Chinese (Simplified)          |
-| zh-CHT                | zh_CHT.ts        | Chinese (Traditional)         |
-| hr-HR                 | hr_HR.ts         | Croatian - Croatia            |
-| cs-CZ                 | cs_CZ.ts         | Czech - Czech Republic        |
-| da-DK                 | da_DK.ts         | Danish - Denmark              |
-| div-MV                | div_MV.ts        | Dhivehi - Maldives            |
-| nl-BE                 | nl_BE.ts         | Dutch - Belgium               |
-| nl-NL                 | nl_NL.ts         | Dutch - The Netherlands       |
-| en-AU                 | en_AU.ts         | English - Australia           |
-| en-BZ                 | en_BZ.ts         | English - Belize              |
-| en-CA                 | en_CA.ts         | English - Canada              |
-| en-CB                 | en_CB.ts         | English - Caribbean           |
-| en-IE                 | en_IE.ts         | English - Ireland             |
-| en-JM                 | en_JM.ts         | English - Jamaica             |
-| en-NZ                 | en_NZ.ts         | English - New Zealand         |
-| en-PH                 | en_PH.ts         | English - Philippines         |
-| en-ZA                 | en_ZA.ts         | English - South Africa        |
-| en-TT                 | en_TT.ts         | English - Trinidad and Tobago |
-| en-GB                 | en_GB.ts         | English - United Kingdom      |
-| en-US                 | en_US.ts         | English - United States       |
-| en-ZW                 | en_ZW.ts         | English - Zimbabwe            |
-| et-EE                 | et_EE.ts         | Estonian - Estonia            |
-| fo-FO                 | fo_FO.ts         | Faroese - Faroe Islands       |
-| fa-IR                 | fa_IR.ts         | Farsi - Iran                  |
-| fi-FI                 | fi_FI.ts         | Finnish - Finland             |
-| fr-BE                 | fr_BE.ts         | French - Belgium              |
-| fr-CA                 | fr_CA.ts         | French - Canada               |
-| fr-FR                 | fr_FR.ts         | French - France               |
-| fr-LU                 | fr_LU.ts         | French - Luxembourg           |
-| fr-MC                 | fr_MC.ts         | French - Monaco               |
-| fr-CH                 | fr_CH.ts         | French - Switzerland          |
-| gl-ES                 | gl_ES.ts         | Galician - Galician           |
-| ka-GE                 | ka_GE.ts         | Georgian - Georgia            |
-| de-AT                 | de_AT.ts         | German - Austria              |
-| de-DE                 | de_DE.ts         | German - Germany              |
-| de-LI                 | de_LI.ts         | German - Liechtenstein        |
-| de-LU                 | de_LU.ts         | German - Luxembourg           |
-| de-CH                 | de_CH.ts         | German - Switzerland          |
-| el-GR                 | el_GR.ts         | Greek - Greece                |
-| gu-IN                 | gu_IN.ts         | Gujarati - India              |
-| he-IL                 | he_IL.ts         | Hebrew - Israel               |
-| hi-IN                 | hi_IN.ts         | Hindi - India                 |
-| hu-HU                 | hu_HU.ts         | Hungarian - Hungary           |
-| is-IS                 | is_IS.ts         | Icelandic - Iceland           |
-| id-ID                 | id_ID.ts         | Indonesian - Indonesia        |
-| it-IT                 | it_IT.ts         | Italian - Italy               |
-| it-CH                 | it_CH.ts         | Italian - Switzerland         |
-| ja-JP                 | ja_JP.ts         | Japanese - Japan              |
-| kn-IN                 | kn_IN.ts         | Kannada - India               |
-| kk-KZ                 | kk_KZ.ts         | Kazakh - Kazakhstan           |
-| kok-IN                | kok_IN.ts        | Konkani - India               |
-| ko-KR                 | ko_KR.ts         | Korean - Korea                |
-| ky-KZ                 | ky_KZ.ts         | Kyrgyz - Kazakhstan           |
-| lv-LV                 | lv_LV.ts         | Latvian - Latvia              |
-| lt-LT                 | lt_LT.ts         | Lithuanian - Lithuania        |
-| mk-MK                 | mk_MK.ts         | Macedonian (FYROM)            |
-| ms-BN                 | ms_BN.ts         | Malay - Brunei                |
-| ms-MY                 | ms_MY.ts         | Malay - Malaysia              |
-| mr-IN                 | mr_IN.ts         | Marathi - India               |
-| mn-MN                 | mn_MN.ts         | Mongolian - Mongolia          |
-| nb-NO                 | nb_NO.ts         | Norwegian (BokmÃ¥l) - Norway  |
-| nn-NO                 | nn_NO.ts         | Norwegian (Nynorsk) - Norway  |
-| pl-PL                 | pl_PL.ts         | Polish - Poland               |
-| pt-BR                 | pt_BR.ts         | Portuguese - Brazil           |
-| pt-PT                 | pt_PT.ts         | Portuguese - Portugal         |
-| pa-IN                 | pa_IN.ts         | Punjabi - India               |
-| ro-RO                 | ro_RO.ts         | Romanian - Romania            |
-| ru-RU                 | ru_RU.ts         | Russian - Russia              |
-| sa-IN                 | sa_IN.ts         | Sanskrit - India              |
-| Cy-sr-SP              | Cy_sr_SP.ts      | Serbian (Cyrillic) - Serbia   |
-| Lt-sr-SP              | Lt_sr_SP.ts      | Serbian (Latin) - Serbia      |
-| sk-SK                 | sk_SK.ts         | Slovak - Slovakia             |
-| sl-SI                 | sl_SI.ts         | Slovenian - Slovenia          |
-| es-AR                 | es_AR.ts         | Spanish - Argentina           |
-| es-BO                 | es_BO.ts         | Spanish - Bolivia             |
-| es-CL                 | es_CL.ts         | Spanish - Chile               |
-| es-CO                 | es_CO.ts         | Spanish - Colombia            |
-| es-CR                 | es_CR.ts         | Spanish - Costa Rica          |
-| es-DO                 | es_DO.ts         | Spanish - Dominican Republic  |
-| es-EC                 | es_EC.ts         | Spanish - Ecuador             |
-| es-SV                 | es_SV.ts         | Spanish - El Salvador         |
-| es-GT                 | es_GT.ts         | Spanish - Guatemala           |
-| es-HN                 | es_HN.ts         | Spanish - Honduras            |
-| es-MX                 | es_MX.ts         | Spanish - Mexico              |
-| es-NI                 | es_NI.ts         | Spanish - Nicaragua           |
-| es-PA                 | es_PA.ts         | Spanish - Panama              |
-| es-PY                 | es_PY.ts         | Spanish - Paraguay            |
-| es-PE                 | es_PE.ts         | Spanish - Peru                |
-| es-PR                 | es_PR.ts         | Spanish - Puerto Rico         |
-| es-ES                 | es_ES.ts         | Spanish - Spain               |
-| es-UY                 | es_UY.ts         | Spanish - Uruguay             |
-| es-VE                 | es_VE.ts         | Spanish - Venezuela           |
-| sw-KE                 | sw_KE.ts         | Swahili - Kenya               |
-| sv-FI                 | sv_FI.ts         | Swedish - Finland             |
-| sv-SE                 | sv_SE.ts         | Swedish - Sweden              |
-| syr-SY                | syr_SY.ts        | Syriac - Syria                |
-| ta-IN                 | ta_IN.ts         | Tamil - India                 |
-| tt-RU                 | tt_RU.ts         | Tatar - Russia                |
-| te-IN                 | te_IN.ts         | Telugu - India                |
-| th-TH                 | th_TH.ts         | Thai - Thailand               |
-| tr-TR                 | tr_TR.ts         | Turkish - Turkey              |
-| uk-UA                 | uk_UA.ts         | Ukrainian - Ukraine           |
-| ur-PK                 | ur_PK.ts         | Urdu - Pakistan               |
-| Cy-uz-UZ              | Cy_uz_UZ.ts      | Uzbek (Cyrillic) - Uzbekistan |
-| Lt-uz-UZ              | Lt_uz_UZ.ts      | Uzbek (Latin) - Uzbekistan    |
-| vi-VN                 | vi_VN.ts         | Vietnamese - Vietnam          |
+The following table lists available languages and localization progress for your reference:
+
+| Language Culture Name  | Display Name                 | Progress  | Contributors |
+| ---------------------------------------------------------------------------------------------------------------------------- | -------------------- | --- | --- |
+| ar-EG                                                                                                                        | العربية              |     |     |
+| az-AZ                                                                                                                        | Azərbaycan dili      |     |     |
+| bg-BG                                                                                                                        | Български            |     |     |
+| bn-BD                                                                                                                        | Bengali              |     |     |
+| by-BY                                                                                                                        | Беларускі            |     |     |
+| ca-ES                                                                                                                        | Сatalà/Espanya       |     |     |
+| cs-CZ                                                                                                                        | Česky                |     |     |
+| da-DK                                                                                                                        | Dansk                |     |     |
+| [de-DE](https://github.com/nocobase/locales/blob/main/de-DE.json "https://github.com/nocobase/locales/blob/main/de-DE.json") | Deutsch              |     |     |
+| el-GR                                                                                                                        | Ελληνικά             |     |     |
+| en-GB                                                                                                                        | English(GB)          |     |     |
+| [en-US](https://github.com/nocobase/locales/blob/main/en-US.json "https://github.com/nocobase/locales/blob/main/en-US.json") | English              |     |     |
+| [es-ES](https://github.com/nocobase/locales/blob/main/es-ES.json "https://github.com/nocobase/locales/blob/main/es-ES.json") | Español              |     |     |
+| et-EE                                                                                                                        | Estonian (Eesti)     |     |     |
+| fa-IR                                                                                                                        | فارسی                |     |     |
+| fi-FI                                                                                                                        | Suomi                |     |     |
+| fr-BE                                                                                                                        | Français(BE)         |     |     |
+| fr-CA                                                                                                                        | Français(CA)         |     |     |
+| [fr-FR](https://github.com/nocobase/locales/blob/main/fr-FR.json "https://github.com/nocobase/locales/blob/main/fr-FR.json") | Français             |     |     |
+| ga-IE                                                                                                                        | Gaeilge              |     |     |
+| gl-ES                                                                                                                        | Galego               |     |     |
+| he-IL                                                                                                                        | עברית                |     |     |
+| hi-IN                                                                                                                        | हिन्दी               |     |     |
+| hr-HR                                                                                                                        | Hrvatski jezik       |     |     |
+| hu-HU                                                                                                                        | Magyar               |     |     |
+| hy-AM                                                                                                                        | Հայերեն              |     |     |
+| id-ID                                                                                                                        | Bahasa Indonesia     |     |     |
+| is-IS                                                                                                                        | Íslenska             |     |     |
+| [it-IT](https://github.com/nocobase/locales/blob/main/it-IT.json "https://github.com/nocobase/locales/blob/main/it-IT.json") | Italiano             |     |   [@N3tN00b3r](https://github.com/N3tN00b3r)   |
+| [ja-JP](https://github.com/nocobase/locales/blob/main/ja-JP.json "https://github.com/nocobase/locales/blob/main/ja-JP.json") | 日本語                  |     |     |
+| ka-GE                                                                                                                        | ქართული              |     |     |
+| kk-KZ                                                                                                                        | Қазақ тілі           |     |     |
+| km-KH                                                                                                                        | ភាសាខ្មែរ            |     |     |
+| kn-IN                                                                                                                        | ಕನ್ನಡ                |     |     |
+| [ko-KR](https://github.com/nocobase/locales/blob/main/ko-KR.json "https://github.com/nocobase/locales/blob/main/ko-KR.json") | 한국어                  |     |     |
+| ku-IQ                                                                                                                        | کوردی                |     |     |
+| lt-LT                                                                                                                        | lietuvių             |     |     |
+| lv-LV                                                                                                                        | Latviešu valoda      |     |     |
+| mk-MK                                                                                                                        | македонски јазик     |     |     |
+| ml-IN                                                                                                                        | മലയാളം               |     |     |
+| mn-MN                                                                                                                        | Монгол хэл           |     |     |
+| ms-MY                                                                                                                        | بهاس ملايو           |     |     |
+| nb-NO                                                                                                                        | Norsk bokmål         |     |     |
+| ne-NP                                                                                                                        | नेपाली               |     |     |
+| nl-BE                                                                                                                        | Vlaams               |     |     |
+| nl-NL                                                                                                                        | Nederlands           |     |   [@mathyvds](https://github.com/mathyvds)   |
+| pl-PL                                                                                                                        | Polski               |     |     |
+| [pt-BR](https://github.com/nocobase/locales/blob/main/pt-BR.json "https://github.com/nocobase/locales/blob/main/pt-BR.json") | Português brasileiro |     |     |
+| pt-PT                                                                                                                        | Português            |     |     |
+| ro-RO                                                                                                                        | România              |     |     |
+| [ru-RU](https://github.com/nocobase/locales/blob/main/ru-RU.json "https://github.com/nocobase/locales/blob/main/ru-RU.json") | Русский              |     |     |
+| si-LK                                                                                                                        | සිංහල                |     |     |
+| sk-SK                                                                                                                        | Slovenčina           |     |     |
+| sl-SI                                                                                                                        | Slovenščina          |     |     |
+| sr-RS                                                                                                                        | српски језик         |     |     |
+| sv-SE                                                                                                                        | Svenska              |     |     |
+| ta-IN                                                                                                                        | Tamil                |     |     |
+| th-TH                                                                                                                        | ภาษาไทย              |     |     |
+| tk-TK                                                                                                                        | Turkmen              |     |     |
+| [tr-TR](https://github.com/nocobase/locales/blob/main/tr-TR.json "https://github.com/nocobase/locales/blob/main/tr-TR.json") | Türkçe               |     |     |
+| [uk-UA](https://github.com/nocobase/locales/blob/main/uk-UA.json "https://github.com/nocobase/locales/blob/main/uk-UA.json") | Українська           |     |     |
+| ur-PK                                                                                                                        | Oʻzbekcha            |     |     |
+| vi-VN                                                                                                                        | Tiếng Việt           |     |     |
+| [zh-CN](https://github.com/nocobase/locales/blob/main/zh-CN.json "https://github.com/nocobase/locales/blob/main/zh-CN.json") | 简体中文                 |     |     |
+| zh-HK                                                                                                                        | 繁體中文（香港）             |     |     |
+| [zh-TW](https://github.com/nocobase/locales/blob/main/zh-TW.json "https://github.com/nocobase/locales/blob/main/zh-TW.json") | 繁體中文（台湾）             |     |     |

@@ -116,7 +116,7 @@
 
 ![](https://static-docs.nocobase.com/file-storage-s3-pro-1735355971345.png)
 
-#### 公开访问
+#### 公开访问（可选）
 
 此为非必要配置，当你需要将上传文件完全公开时，进行配置
 
@@ -131,6 +131,32 @@
 3. 在NocoBase中勾选 Public access
 
 ![](https://static-docs.nocobase.com/file-storage-s3-pro-1735355971823.png)
+
+#### 缩略图配置（可选）
+
+此配置为可选项，适用于优化图像预览尺寸或效果时使用。**请注意，该部署方案可能产生额外费用，具体费用请参考 AWS 的相关条款。**
+
+1. 访问 [Dynamic Image Transformation for Amazon CloudFront](https://aws.amazon.com/solutions/implementations/dynamic-image-transformation-for-amazon-cloudfront/?nc1=h_ls)。
+
+2. 点击页面底部的 `Launch in the AWS Console` 按钮，开始部署方案。
+   ![](https://static-docs.nocobase.com/20250221164214117.png)
+
+3. 按照提示完成配置，以下几个选项需要特别注意：
+   1. 在创建堆栈时，您需要指定一个包含源图像的 Amazon S3 存储桶名称。请填写您之前创建的存储桶名称。
+   2. 如果您选择了部署演示 UI，部署完成后可通过该界面测试图像处理功能。在 AWS CloudFormation 控制台中，选择您的堆栈，转到“输出”选项卡，找到 DemoUrl 键对应的值，点击该链接打开演示界面。
+   3. 本方案使用了 `sharp` Node.js 库来高效处理图像。您可以从 GitHub 仓库下载源代码，按需进行自定义。
+   
+   ![](https://static-docs.nocobase.com/20250221164315472.png)
+   ![](https://static-docs.nocobase.com/20250221164404755.png)
+
+4. 配置完成后，等待部署状态变为 `CREATE_COMPLETE` 即可。
+
+5. 在 NocoBase 配置中，有以下几个注意事项：
+   1. `Thumbnail rule`：填写图像处理相关参数，例如 `?width=100`。具体可参考 [AWS 文档](https://docs.aws.amazon.com/solutions/latest/serverless-image-handler/use-supported-query-param-edits.html)。
+   2. `Access base URL`：填写部署后 Outputs -> ApiEndpoint 的值。
+   3. `Force path style (access)`：需勾选 **Ignore**（因为在配置时已经填写了存储桶名称，访问时不再需要）。
+   
+   ![](https://static-docs.nocobase.com/20250221164447562.png)
 
 ### 阿里云OSS
 
@@ -190,7 +216,7 @@
 ![](https://static-docs.nocobase.com/file-storage-s3-pro-1735355974781.png)
 
 
-#### 参数获取与配置（待完善，等插件测试完成后截图）
+#### 参数获取与配置
 
 1. AccessKey ID 和 AccessKey Secret 为上一操作中获取到的值
     
@@ -206,26 +232,65 @@
 
 ![](https://static-docs.nocobase.com/file-storage-s3-pro-1735355975715.png)
 
+#### 缩略图配置（可选）
 
-### 腾讯COS
+此配置为可选项，仅在需要优化图像预览尺寸或效果时使用。
 
-可以参考上述的文件服务进行配置，主要逻辑都相似
+1. 填写 `Thumbnail rule` 相关参数。具体参数设置可参考 [图片处理参数](https://help.aliyun.com/zh/oss/user-guide/img-parameters/?spm=a2c4g.11186623.help-menu-31815.d_4_14_1_1.170243033CdbSm&scm=20140722.H_144582._.OR_help-T_cn~zh-V_1)。
+
+2. `Force path style (access)` 和 `Force path style (upload)` 保持相同即可。
 
 
 ### MinIO
 
-可以参考上述的文件服务进行配置，需要注意的点如下
+#### Bucket 创建
 
-1. 私有部署的MinIO没有Region概念，可以配置成 "auto"
-    
-2. Endpoint 填写部署服务的域名或者ip地址
-    
-3. 需将Force path style设置为 Path-Style，最终文件地址为https://serverAddress/bucket-name/fileKey
-    
+1. 点击左侧 Buckets 菜单 -> 点击 Create Bucket，进入创建页面
+2. 填写Bucket名称后，点击保存按钮
+#### AccessKey、SecretAccessKey 获取
+
+1. 进入 Access Keys -> 点击 Create access key 按钮，进入创建页面
+
+![](https://static-docs.nocobase.com/20250106111922957.png)
+
+2. 点击保存按钮
+
+![](https://static-docs.nocobase.com/20250106111850639.png)
+
+1. 保存弹窗内的 Access Key 和 Secret Key，后续配置使用
+
+![](https://static-docs.nocobase.com/20250106112831483.png)
+
+#### 参数配置
+
+1. 进入到 NocoBase -> File manager 页面
+
+![](https://static-docs.nocobase.com/20250106112404523.png)
+
+2. 点击 Add new 按钮，选择 S3 Pro
+
+![](https://static-docs.nocobase.com/20250106112454091.png)
+
+3. 填写表单
+   - **AccessKey ID** 和 **AccessKey Secret** 为上一步保存的文本
+   - **Region**：私有部署的MinIO没有Region概念，可以配置成 "auto"
+   - **Endpoint**：填写部署的服务域名或者ip地址
+   - 需将Force path style设置为 Path-Style，最终文件地址为https://{Endpoint}/{bucket-name}/{fileKey}，
+
+最终表单示例如下
+
+![](https://static-docs.nocobase.com/20250106113609538.png)
+
+![](https://static-docs.nocobase.com/20250106113621611.png)
+
+
+### 腾讯COS
+
+可以参考上述的文件服务进行配置，逻辑相似
 
 ### Cloudflare R2
 
-可以参考上述的文件服务进行配置
+可以参考上述的文件服务进行配置，逻辑相似
 
 
 ## 用户使用

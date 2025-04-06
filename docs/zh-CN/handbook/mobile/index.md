@@ -62,7 +62,7 @@ NocoBase 为移动端提供了特有的 UI 配置界面
 
 可以像桌面端一样配置菜单访问权限，位置如下所示（需先启用移动端插件）：
 
-![20240903221327_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240903221327_rec_.gif)
+![20240903221327_rec_](https://static-docs.nocobase.com/20240903221327_rec_.gif)
 
 ## 开发指南
 

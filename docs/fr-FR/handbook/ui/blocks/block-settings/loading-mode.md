@@ -10,4 +10,4 @@ La méthode de chargement des données par défaut est "Charger toutes les donn�
 
 ### Ne pas charger de données lorsque le filtrage est vide
 
-![20240721160327_rec_](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240721160327_rec_.gif)
+![20240721160327_rec_](https://static-docs.nocobase.com/20240721160327_rec_.gif)

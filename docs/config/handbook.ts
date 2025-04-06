@@ -15,7 +15,7 @@ export default [
     children: [
       {
         title: 'Overview',
-        'title.fr-FR': 'Vue d\'ensemble',
+        'title.fr-FR': "Vue d'ensemble",
         'title.zh-CN': '概述',
         'title.ja-JP': '概要',
         link: '/handbook/data-modeling',
@@ -49,7 +49,7 @@ export default [
             children: [
               {
                 title: 'Overview',
-		'title.fr-FR': 'Vue d\'ensemble',
+                'title.fr-FR': "Vue d'ensemble",
                 'title.zh-CN': '介绍',
                 'title.ja-JP': '概要',
                 link: '/handbook/data-source-manager/external-database',
@@ -181,7 +181,7 @@ export default [
         children: [
           {
             title: 'Overview',
-            'title.fr-FR': 'Vue d\'ensemble',
+            'title.fr-FR': "Vue d'ensemble",
             'title.zh-CN': '概述',
             'title.ja-JP': '概要',
             link: '/handbook/data-modeling/collection',
@@ -223,7 +223,7 @@ export default [
           },
           {
             title: 'Expression collection',
-            'title.fr-FR': 'Collection d\'expressions',
+            'title.fr-FR': "Collection d'expressions",
             'title.zh-CN': '表达式表',
             'title.ja-JP': '式コレクション',
             link: '/handbook/collection-expression/collection',
@@ -259,7 +259,7 @@ export default [
         children: [
           {
             title: 'Overview',
-            'title.fr-FR': 'Vue d\'ensemble',
+            'title.fr-FR': "Vue d'ensemble",
             'title.zh-CN': '概述',
             'title.ja-JP': '概要',
             // subTitle: '@nocobase/plugin-data-source-external-mariadb',
@@ -451,7 +451,7 @@ export default [
             children: [
               {
                 title: 'Overview',
-                'title.fr-FR': 'Vue d\'ensemble',
+                'title.fr-FR': "Vue d'ensemble",
                 'title.zh-CN': '概述',
                 'title.ja-JP': '概要',
                 link: '/handbook/data-modeling/collection-fields/datetime',
@@ -644,7 +644,7 @@ export default [
             children: [
               {
                 title: 'Overview',
-                'title.fr-FR': 'Vue d\'ensemble',
+                'title.fr-FR': "Vue d'ensemble",
                 'title.zh-CN': '概述',
                 'title.ja-JP': '概要',
                 link: '/handbook/data-modeling/collection-fields/associations',
@@ -699,48 +699,48 @@ export default [
     children: [
       {
         title: 'UI Editor mode',
-    	'title.fr-FR': 'Mode éditeur UI',
+        'title.fr-FR': 'Mode éditeur UI',
         'title.zh-CN': '界面配置模式',
         'title.ja-JP': 'UIエディタモード',
         link: '/handbook/ui/ui-editor',
       },
       {
         title: 'Menu',
-    	'title.fr-FR': 'Menu',
+        'title.fr-FR': 'Menu',
         'title.zh-CN': '菜单',
         'title.ja-JP': 'メニュー',
         link: '/handbook/ui/menus',
       },
       {
         title: 'Page',
-    	'title.fr-FR': 'Page',
+        'title.fr-FR': 'Page',
         'title.zh-CN': '页面',
         'title.ja-JP': 'ページ',
         link: '/handbook/ui/pages',
       },
       {
         title: 'Pop-up',
-    	'title.fr-FR': 'Pop-up',
+        'title.fr-FR': 'Pop-up',
         'title.zh-CN': '弹窗',
         'title.ja-JP': 'ポップアップ',
         link: '/handbook/ui/pop-up',
       },
       {
         title: 'Blocks',
-    	'title.fr-FR': 'Blocks',
+        'title.fr-FR': 'Blocks',
         'title.zh-CN': '区块',
         'title.ja-JP': 'ブロック',
         children: [
           {
             title: 'Overview',
-    	    'title.fr-FR': 'Vue d\'ensemble',
+            'title.fr-FR': "Vue d'ensemble",
             'title.zh-CN': '概述',
             'title.ja-JP': '概要',
             link: '/handbook/ui/blocks',
           },
           {
             title: 'Data blocks',
-    	    'title.fr-FR': 'Data blocks',
+            'title.fr-FR': 'Data blocks',
             'title.zh-CN': '数据区块',
             'title.ja-JP': 'データブロック',
             children: [
@@ -994,7 +994,7 @@ export default [
         'title.ja-JP': 'フィールド',
         children: [
           {
-            title: 'Vue d\'ensemble',
+            title: "Vue d'ensemble",
             'title.zh-CN': '概述',
             'title.ja-JP': '概要',
             link: '/handbook/ui/fields',
@@ -1028,7 +1028,7 @@ export default [
               },
               {
                 title: 'Bulk edit form',
-                'title.fr-FR': 'Formulaire d\'édition en masse',
+                'title.fr-FR': "Formulaire d'édition en masse",
                 'title.zh-CN': '批量编辑表单',
                 'title.ja-JP': 'バルク編集フォーム',
                 link: '/handbook/ui/fields/generic/bulk-edit-form-item',
@@ -1092,7 +1092,7 @@ export default [
               },
               {
                 title: 'Record picker',
-                'title.fr-FR': 'Selection d\'enregisrement',
+                'title.fr-FR': "Selection d'enregisrement",
                 'title.zh-CN': '数据选择器',
                 'title.ja-JP': 'レコードピッカー',
                 link: '/handbook/ui/fields/specific/picker',
@@ -1219,7 +1219,7 @@ export default [
               },
               {
                 title: 'Edit tooltip',
-                'title.fr-FR': 'Modifier l\'infobulle',
+                'title.fr-FR': "Modifier l'infobulle",
                 'title.zh-CN': '编辑提示信息',
                 'title.ja-JP': 'ツールチップを編集',
                 link: '/handbook/ui/fields/field-settings/edit-tooltip',
@@ -1257,14 +1257,14 @@ export default [
         children: [
           {
             title: 'Overview',
-            'title.fr-FR': 'Vue d\'ensemble',
+            'title.fr-FR': "Vue d'ensemble",
             'title.zh-CN': '概述',
             'title.ja-JP': '概要',
             link: '/handbook/ui/actions',
           },
           {
             title: 'Common settings',
-	    'title.fr-FR': 'Parmètres communs',
+            'title.fr-FR': 'Parmètres communs',
             'title.zh-CN': '通用配置项',
             'title.ja-JP': '一般設定',
             children: [
@@ -1277,7 +1277,7 @@ export default [
               },
               {
                 title: 'Open mode',
-                'title.fr-FR': 'Mode d\'ouverture',
+                'title.fr-FR': "Mode d'ouverture",
                 'title.zh-CN': '打开方式',
                 'title.ja-JP': 'オープンモード',
                 link: '/handbook/ui/actions/action-settings/open-mode',
@@ -1328,7 +1328,7 @@ export default [
           },
           {
             title: 'Action types',
-            'title.fr-FR': 'Types d\'action',
+            'title.fr-FR': "Types d'action",
             'title.zh-CN': '操作类型',
             'title.ja-JP': 'アクションタイプ',
             children: [
@@ -1460,7 +1460,7 @@ export default [
               },
               {
                 title: 'Template print',
-                'title.fr-FR': 'Template d\'impression',
+                'title.fr-FR': "Template d'impression",
                 'title.zh-CN': '模板打印',
                 link: '/handbook/action-template-print',
               },
@@ -1497,6 +1497,13 @@ export default [
                 link: '/handbook/action-qr-scan',
               },
             ],
+          },
+          {
+            title: 'Access control',
+            'title.fr-FR': 'Contrôle des droits opérationnels',
+            'title.zh-CN': '操作权限',
+            'title.ja-JP': '操作権限',
+            link: '/handbook/ui/actions/permission',
           },
         ],
       },
@@ -1588,7 +1595,23 @@ export default [
             'title.fr-FR': 'Rôles et droits',
             'title.zh-CN': '角色和权限',
             'title.ja-JP': '役割と権限',
-            link: '/handbook/acl',
+            children: [
+              {
+                title: 'Overview',
+                'title.fr-FR': "Vue d'ensemble",
+                'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
+                link: '/handbook/acl',
+              },
+              {
+                title: 'User manual',
+                'title.fr-FR': 'Gestion des départements',
+                'title.zh-CN': '使用手册',
+                'title.ja-JP': 'ユーザーマニュアル',
+                link: '/handbook/acl/manual'
+              },
+
+            ]
           },
           {
             title: 'Departments',
@@ -1598,7 +1621,7 @@ export default [
             children: [
               {
                 title: 'Overview',
-                'title.fr-FR': 'Vue d\'ensemble',
+                'title.fr-FR': "Vue d'ensemble",
                 'title.zh-CN': '概述',
                 'title.ja-JP': '概要',
                 link: '/handbook/departments',
@@ -1630,12 +1653,12 @@ export default [
                 children: [
                   {
                     title: 'HTTP API',
-             	    'title.fr-FR': 'HTTP API',
+                    'title.fr-FR': 'HTTP API',
                     link: '/handbook/user-data-sync/sources/api',
                   },
                   {
                     title: 'WeCom',
-	            'title.fr-FR': 'WeCom',
+                    'title.fr-FR': 'WeCom',
                     'title.zh-CN': '企业微信',
                     link: '/handbook/wecom/user-data-sync',
                   },
@@ -1665,10 +1688,10 @@ export default [
         ],
       },
       {
-        title: 'Users authentication',
-        'title.fr-FR': 'Authentification des utilisateurs',
-        'title.zh-CN': '用户认证',
-        'title.ja-JP': 'ユーザー認証',
+        title: 'Authentication & Verification',
+        'title.fr-FR': 'Authentication & Verification',
+        'title.zh-CN': '认证和验证',
+        'title.ja-JP': 'Authentication & Verification',
         children: [
           {
             title: 'Authentication',
@@ -1679,14 +1702,14 @@ export default [
             children: [
               {
                 title: 'Overview',
-                'title.fr-FR': 'Vue d\'ensemble',
+                'title.fr-FR': "Vue d'ensemble",
                 'title.zh-CN': '概述',
                 'title.ja-JP': '概要',
                 link: '/handbook/auth',
               },
               {
                 title: 'User manual',
-                'title.fr-FR': 'Gestion de l\'authentification',
+                'title.fr-FR': "Gestion de l'authentification",
                 'title.zh-CN': '使用手册',
                 'title.ja-JP': 'ユーザーマニュアル',
                 link: '/handbook/auth/user',
@@ -1826,20 +1849,90 @@ export default [
             link: '/handbook/wecom/auth',
           },
           {
-            title: 'Verification',
-            'title.fr-FR': 'Vérification',
-            'title.zh-CN': '验证码',
-            'title.ja-JP': '検証',
-            // subTitle: '@nocobase/plugin-verification',
-            link: '/handbook/verification',
-          },
-          {
             title: 'API Keys',
             'title.fr-FR': 'Clés API',
             'title.zh-CN': 'API 密钥',
             'title.ja-JP': 'APIキー',
             // subTitle: '@nocobase/plugin-verification',
             link: '/handbook/api-keys',
+          },
+          {
+            title: 'Two-factor authentication (2FA)',
+            'title.fr-FR': 'Two-factor authentication (2FA)',
+            'title.zh-CN': '双因素身份认证 (2FA)',
+            'title.ja-JP': 'Two-factor authentication (2FA)',
+            link: '/handbook/two-factor-authentication',
+          },
+          {
+            title: 'Verification',
+            'title.fr-FR': 'Vérification',
+            'title.zh-CN': '验证',
+            'title.ja-JP': '検証',
+            // subTitle: '@nocobase/plugin-verification',
+            children: [
+              {
+                title: 'Overview',
+                'title.fr-FR': "Vue d'ensemble",
+                'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
+                link: '/handbook/verification',
+              },
+              {
+                title: 'Development',
+                'title.fr-FR': 'Développement',
+                'title.zh-CN': '开发指南',
+                'title.ja-JP': '開発ガイド',
+                children: [
+                  {
+                    title: 'Extend verification type',
+                    'title.zh-CN': '扩展验证类型',
+                    'title.ja-JP': 'Extend verification type',
+                    link: '/handbook/verification/dev/type',
+                  },
+                  {
+                    title: 'Extend verification scene',
+                    'title.zh-CN': '扩展验证场景',
+                    'title.ja-JP': 'Extend verification scene',
+                    link: '/handbook/verification/dev/scene',
+                  },
+                  {
+                    title: 'API reference',
+                    'title.zh-CN': 'API 参考',
+                    'title.ja-JP': 'API 参考',
+                    link: '/handbook/verification/dev/api',
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            title: 'Verification - SMS',
+            'title.fr-FR': 'Verification - SMS',
+            'title.zh-CN': '验证 - 短信',
+            'title.ja-JP': 'Verification - SMS',
+            children: [
+              {
+                title: 'User manual',
+                'title.fr-FR': "Gestion de l'authentification",
+                'title.zh-CN': '使用手册',
+                'title.ja-JP': 'ユーザーマニュアル',
+                link: '/handbook/verification/sms',
+              },
+              {
+                title: 'Extend SMS provider',
+                'title.fr-FR': 'Extend SMS provider',
+                'title.zh-CN': '扩展短信服务商',
+                'title.ja-JP': 'Extend SMS provider',
+                link: '/handbook/verification/sms/dev',
+              },
+            ],
+          },
+          {
+            title: 'Verification - TOTP authenticator',
+            'title.fr-FR': 'Verification - TOTP authenticator',
+            'title.zh-CN': '验证 - TOTP 认证器',
+            'title.ja-JP': 'Verification - SMS',
+            link: '/handbook/verification-totp-authenticator',
           },
         ],
       },
@@ -1857,7 +1950,7 @@ export default [
             children: [
               {
                 title: 'Overview',
-                'title.fr-FR': 'Vue d\'ensemble',
+                'title.fr-FR': "Vue d'ensemble",
                 'title.zh-CN': '概述',
                 'title.ja-JP': '概要',
                 link: '/handbook/notification-manager',
@@ -1911,7 +2004,7 @@ export default [
         children: [
           {
             title: 'Overview',
-	    'title.fr-FR': 'Vue d\'ensemble',
+            'title.fr-FR': "Vue d'ensemble",
             'title.zh-CN': '概述',
             'title.ja-JP': '概要',
             link: '/handbook/file-manager',
@@ -2016,7 +2109,7 @@ export default [
           },
           {
             title: 'Audit logs',
-            'title.fr-FR': 'Log d\'audit',
+            'title.fr-FR': "Log d'audit",
             'title.zh-CN': '审计日志',
             'title.ja-JP': '監査ログ',
             // subTitle: '@nocobase/plugin-audit-logs',
@@ -2032,7 +2125,7 @@ export default [
         children: [
           {
             title: 'Overview',
-            'title.fr-FR': 'Vue d\'ensemble',
+            'title.fr-FR': "Vue d'ensemble",
             'title.zh-CN': '概述',
             'title.ja-JP': '概要',
             link: '/handbook/data-visualization',
@@ -2059,7 +2152,7 @@ export default [
                   },
                   {
                     title: 'Configure chart',
-	            'title.fr-FR': 'Configuration de graphique',
+                    'title.fr-FR': 'Configuration de graphique',
                     'title.zh-CN': '配置图表',
                     'title.ja-JP': 'チャートを設定',
                     link: '/handbook/data-visualization/user/Configure',
@@ -2242,7 +2335,7 @@ export default [
               },
               {
                 title: 'Example of integrating ECharts',
-                'title.fr-FR': 'Exemple d\'intégration ECharts',
+                'title.fr-FR': "Exemple d'intégration ECharts",
                 'title.zh-CN': 'ECharts 集成示例',
                 'title.ja-JP': 'ECharts統合の例',
                 link: '/handbook/data-visualization/step-by-step',
@@ -2260,7 +2353,7 @@ export default [
       },
       {
         title: 'Multi-app manager',
- 	'title.fr-FR': 'Gestionnaire multi-App',
+        'title.fr-FR': 'Gestionnaire multi-App',
         'title.zh-CN': '多应用管理',
         'title.ja-JP': 'マルチアプリ管理',
         // subTitle: '@nocobase/plugin-api-doc',
@@ -2403,7 +2496,7 @@ export default [
       },
       {
         title: 'Nodes',
-	'title.fr-FR': 'Noeuds',
+        'title.fr-FR': 'Noeuds',
         'title.zh-CN': '节点',
         'title.ja-JP': 'ノード',
         children: [
@@ -2729,6 +2822,12 @@ export default [
                 link: '/handbook/workflow-approval/block',
               },
               {
+                title: 'Workflow tasks',
+                'title.zh-CN': '流程待办',
+                'title.ja-JP': '流程待办',
+                link: '/handbook/workflow-approval/tasks',
+              },
+              {
                 title: 'Advanced',
                 'title.zh-CN': '高级',
                 'title.ja-JP': '高度',
@@ -2744,7 +2843,7 @@ export default [
           },
           {
             title: 'Custom Action Trigger',
-            'title.fr-FR': 'Déclencheur d\'action personnalisé',
+            'title.fr-FR': "Déclencheur d'action personnalisé",
             'title.zh-CN': '自定义操作事件',
             'title.ja-JP': 'カスタムアクショントリガー',
             subTitle: '@nocobase/plugin-workflow-custom-action-trigger',
@@ -3072,6 +3171,50 @@ export default [
     ],
   },
   {
+    title: 'AI integration',
+    'title.zh-CN': 'AI 集成',
+    type: 'group',
+    children: [
+      // {
+      //   title: 'Overview',
+      //   'title.zh-CN': '概述',
+      //   link: '/handbook/ai',
+      // },
+      {
+        title: 'LLM service management',
+        'title.zh-CN': 'LLM 服务管理',
+        link: '/handbook/ai/service',
+      },
+      {
+        title: 'Workflow',
+        'title.zh-CN': '工作流',
+        children: [
+          {
+            title: 'LLM node',
+            'title.zh-CN': 'LLM 节点',
+            children: [
+              {
+                title: 'Text chat',
+                'title.zh-CN': '文本对话',
+                link: '/handbook/ai/workflow/nodes/llm/chat',
+              },
+              {
+                title: 'Multimodal Chat',
+                'title.zh-CN': '多模态对话',
+                link: '/handbook/ai-ee/workflow/nodes/llm/multimodal-chat',
+              },
+              {
+                title: 'Structured output',
+                'title.zh-CN': '结构化输出',
+                link: '/handbook/ai-ee/workflow/nodes/llm/structured-output',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
     title: 'Security',
     'title.zh-CN': '安全性',
     'title.ja-JP': 'あんぜんせい',
@@ -3112,6 +3255,13 @@ export default [
         'title.zh-CN': '审计日志',
         'title.ja-JP': '审计日志',
         link: '/handbook/audit-logger',
+      },
+      {
+        title: 'Two-factor authentication (2FA)',
+        'title.fr-FR': 'Two-factor authentication (2FA)',
+        'title.zh-CN': '双因素身份认证 (2FA)',
+        'title.ja-JP': 'Two-factor authentication (2FA)',
+        link: '/handbook/two-factor-authentication',
       },
     ],
   },

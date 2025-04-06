@@ -26,7 +26,7 @@
 
 「新しいウィンドウで開く」にチェックを入れると、リンクは新しいウィンドウで開きます。
 
-![20240718160541](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240718160541.png)
+![20240718160541](https://static-docs.nocobase.com/20240718160541.png)
 
 完全な設定例は以下の通りです：
 

@@ -26,7 +26,7 @@ Exemple : Les tables auteur et article ont une relation un-à-plusieurs. Dans la
 
 Lorsque l'option "Ouvrir dans une nouvelle fenêtre" est sélectionnée, le lien s'ouvrira dans une nouvelle fenêtre.
 
-![20240718160541](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240718160541.png)
+![20240718160541](https://static-docs.nocobase.com/20240718160541.png)
 
 Voici un exemple de configuration complète :
 

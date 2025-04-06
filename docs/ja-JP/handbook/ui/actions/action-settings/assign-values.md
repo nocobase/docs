@@ -18,13 +18,13 @@
 
 ### 定数
 
-![20240426153323](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426153323.png)
+![20240426153323](https://static-docs.nocobase.com/20240426153323.png)
 
 ### 変数
 
 異なる種類のフィールドは、さまざまな変数タイプをサポートしています。
 
-![20240426153534](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426153534.png)
+![20240426153534](https://static-docs.nocobase.com/20240426153534.png)
 
 変数に関する詳細は、[変数](/handbook/ui/variables)を参照してください。
 

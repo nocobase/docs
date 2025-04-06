@@ -18,12 +18,12 @@
 
 ### 常量
 
-![20240426153323](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426153323.png)
+![20240426153323](https://static-docs.nocobase.com/20240426153323.png)
 ### 变量
 
 不同类型的字段支持不同变量类型
 
-![20240426153534](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240426153534.png)
+![20240426153534](https://static-docs.nocobase.com/20240426153534.png)
 
 更多关于变量内容参考 [变量](/handbook/ui/variables)
 

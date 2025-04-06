@@ -17,7 +17,7 @@ Plugin intégré, aucune installation séparée requise.
 
 Ci-dessous un exemple de l'élément de configuration "Menu mobile", montrant comment étendre un nouvel onglet de configuration des permissions. L'effet est illustré dans l'image ci-dessous :
 
-![20240903210248](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20240903210248.png)
+![20240903210248](https://static-docs.nocobase.com/20240903210248.png)
 
 Le code est le suivant :
 
