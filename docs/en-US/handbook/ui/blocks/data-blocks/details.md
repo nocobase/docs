@@ -29,7 +29,7 @@ For more details, please refer to [Setting Data Scope](/handbook/ui/blocks/block
 For more details, please refer to [Sorting Rules](/handbook/ui/blocks/block-settings/sorting-rule)
 
 - [Set Data Loading Method](/handbook/ui/blocks/block-settings/loading-mode)
-- [Save as Block Template](/handbook/ui/blocks/block-settings/block-template)
+- [Save as Block Template](/handbook/block-template)
 
 ## Configure Fields
 

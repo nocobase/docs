@@ -28,7 +28,7 @@ Pour plus d'informations, consultez [Connexion au Bloc de Données](/handbook/ui
 
 - [Modifier le Titre du Bloc](/handbook/ui/blocks/block-settings/block-title)
 - [Règle de Liaison](/handbook/ui/blocks/block-settings/linkage-rule)
-- [Enregistrer en tant que Modèle de Bloc](/handbook/ui/blocks/block-settings/block-template)
+- [Enregistrer en tant que Modèle de Bloc](/handbook/block-template)
 
 ## Configuration des Champs
 

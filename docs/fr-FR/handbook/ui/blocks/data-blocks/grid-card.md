@@ -49,7 +49,7 @@ Exemple : Configurez le bloc Cartes en Grille des Commandes pour s'afficher en m
 Pour plus de détails, consultez [Hauteur du Bloc](/handbook/ui/blocks/block-settings/block-height).
 
 - [Définir les Règles de Tri](/handbook/ui/blocks/block-settings/sorting-rule)
-- [Enregistrer comme Modèle de Bloc](/handbook/ui/blocks/block-settings/block-template)
+- [Enregistrer comme Modèle de Bloc](/handbook/block-template)
 
 ## Configurer les Champs
 
