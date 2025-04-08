@@ -47,7 +47,7 @@
 詳細については、[ブロックの高さ](/handbook/ui/blocks/block-settings/block-height)をご覧ください。
 
 - [並び替えルールの設定](/handbook/ui/blocks/block-settings/sorting-rule)
-- [ブロックテンプレートとして保存](/handbook/ui/blocks/block-settings/block-template)
+- [ブロックテンプレートとして保存](/handbook/block-template)
 
 ## フィールドの設定
 
