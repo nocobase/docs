@@ -1,4 +1,4 @@
-# Block Template
+# Modèle de bloc
 
 <PluginInfo name="block-template"></PluginInfo>
 <style>
@@ -9,135 +9,131 @@
 
 ## Introduction
 
-Block Template provides templating capabilities for blocks, enabling centralized management of templates and the creation of blocks from them. Blocks created from a template inherit from it, allowing you to add your own configurations on top of the template.
+Le modèle de bloc permet de fournir des capacités de modélisation aux blocs. Il peut être utilisé pour la gestion centralisée des modèles et pour créer des blocs à partir de modèles. Les blocs créés à partir d’un modèle héritent de celui-ci et peuvent y ajouter leur propre configuration.
 
 ## Installation
 
-Built-in plugin, no installation required.
+Plugin intégré, aucune installation requise.
 
-## Usage Instructions
+## Guide d'utilisation
 
-![Main Interface](https://static-docs.nocobase.com/main-screen-block-template.png)
+![Écran principal](https://static-docs.nocobase.com/main-screen-block-template.png)
 
-### Template Management
+### Gestion des modèles
 
-#### Create Template
+#### Créer un modèle
 
-The Block Templates offers two methods for creation so you can choose the one that best fits your scenario:
+Cliquez sur le bouton **« Nouveau »**, renseignez les informations nécessaires, puis cliquez sur **« Soumettre »** pour créer un modèle.
 
-##### 1. Create via the Template Management Interface
+![Créer un modèle](https://static-docs.nocobase.com/create-template.png)
 
-**Applicable Scenario:**
-- When starting a new template from scratch
+##### Enregistrer en tant que modèle
 
-**Steps:**
-1. Enter the block templates management interface
-2. Click the "Add new" button
-3. Enter the basic template information
-4. Configure the template content
-5. Click "Submit" to complete creation
+Les blocs de données d’une page peuvent être enregistrés en tant que modèles via le menu **« Enregistrer comme modèle »**.
 
-![Create Template](https://static-docs.nocobase.com/create-template.png)
+![Enregistrer comme modèle](https://static-docs.nocobase.com/save-as-block-template.png)
 
-##### 2. Create Template from an Existing Block
-
-**Applicable Scenario:**
-- When the desired block is already configured on the page
-- When you need to reuse the configuration of an existing block in another context
-- When you want to quickly create a template without reconfiguring
-
-**Steps:**
-1. Locate the data block on the page that you wish to save as a template
-2. Select the "Save as Template" option
-3. Enter a template name and save
-
-![Save as Template](https://static-docs.nocobase.com/save-as-block-template.png)
-
-:::info{title=Note}
-- Only data blocks on pages can be saved as templates
-- Blocks in pop-up dialogs cannot be directly saved as templates
-- Chart blocks are currently not supported for templating
+:::info{title=Remarque}
+- Seuls les blocs de données présents sur la page peuvent être enregistrés comme modèles. Les blocs dans des fenêtres pop-up ne peuvent pas être enregistrés directement comme modèles.
 :::
 
-#### Configure Template
+#### Configurer un modèle
 
-Select a template and click the "Configure" button to enter the configuration interface for the template's data block.
+Sélectionnez un modèle, puis cliquez sur le bouton **« Configurer »** pour accéder à l'interface de configuration et définir les blocs de données du modèle.
 
-![Configure Template](https://static-docs.nocobase.com/configure-template.png)
+![Configurer un modèle](https://static-docs.nocobase.com/configure-template.png)
 
-:::info{title=Note}
-- Currently, a template supports only one data block. Without a data block configured, the template cannot be used to create a block.
-- Chart blocks are not currently supported for templating.
+:::info{title=Remarque}
+- Actuellement, un modèle ne peut contenir qu’un seul bloc de données. Si aucun bloc de données n’est configuré, il ne sera pas possible d’utiliser le modèle pour créer un bloc.
+- Les blocs de type graphique ne peuvent pas encore être utilisés dans les modèles.
 :::
 
-#### Edit Template
+#### Modifier un modèle
 
-Select a template and click the "Edit" button to enter the editing interface where you can modify the template's title and description.
+Sélectionnez un modèle, puis cliquez sur le bouton **« Modifier »** pour changer le titre ou la description du modèle.
 
-![Edit Template](https://static-docs.nocobase.com/edit-template.png)
+![Modifier un modèle](https://static-docs.nocobase.com/edit-template.png)
 
-#### Duplicate Template
+#### Copier un modèle
 
-Select a template, click the "Duplicate" button, enter a new template title, and click "Submit" to copy the template.
-The copied template can then be edited to suit new requirements.
+Sélectionnez un modèle, cliquez sur **« Copier »**, entrez un nouveau titre, puis cliquez sur **« Soumettre »**. Le modèle sera copié et pourra ensuite être modifié pour répondre à d'autres besoins.
 
-![Copy Template](https://static-docs.nocobase.com/copy-template.png)
+![Copier un modèle](https://static-docs.nocobase.com/copy-template.png)
 
-#### Delete Template
+#### Supprimer un modèle
 
-Select a template, click the "Delete" button, and then click "Submit" to delete the template.
+Sélectionnez un modèle, cliquez sur **« Supprimer »**, puis cliquez sur **« Soumettre »** pour confirmer la suppression.
 
-![Delete Template](https://static-docs.nocobase.com/delete-template.png)
+![Supprimer un modèle](https://static-docs.nocobase.com/delete-template.png)
 
-When deleting, you can choose whether to "Keep the created blocks":
-- If kept, the blocks created from the template will be converted to regular page blocks once the template is deleted.
-- If not kept, the blocks created from the template will also be deleted.
+Lors de la suppression, vous pouvez choisir de **conserver ou non les blocs créés à partir du modèle** :
+- Si vous choisissez de conserver, les blocs existants seront convertis en blocs de page classiques.
+- Sinon, tous les blocs créés à partir du modèle seront également supprimés.
 
-### Template Usage
+### Utilisation des modèles
 
-#### Create Block
+#### Créer un bloc
 
-When creating a block on a page, select the corresponding block template to create the block using that template.
+Lors de la création d’un bloc sur une page, vous pouvez sélectionner un modèle de bloc existant pour l’utiliser.
 
-![Create Block](https://static-docs.nocobase.com/create-block.png)
+![Créer un bloc](https://static-docs.nocobase.com/create-block.png)
 
-Blocks created from a template differ from regular blocks in the following ways:
-1. The block inherits from the template, allowing you to add your own configurations on top; any unmodified settings remain synchronized with the template.
-2. UI components inherited from the template cannot be removed from the page.
-![Cannot Remove](https://static-docs.nocobase.com/disable-delete.png)
+Les blocs créés à partir d’un modèle se distinguent des blocs classiques par les points suivants :
 
-3. Additional fields and actions in the block are highlighted with different background colors for easy distinction.
-![Block Style](https://static-docs.nocobase.com/template-bg.png)
+1. Le bloc hérite du modèle : vous pouvez ajouter votre propre configuration, tandis que les paramètres non modifiés restent synchronisés avec le modèle.
+2. Les composants UI hérités du modèle ne peuvent pas être supprimés de la page.  
+   ![Suppression désactivée](https://static-docs.nocobase.com/disable-delete.png)
 
-4. Both the block and the UI components inherited from the template include an option to "Revert to Template", which resets them entirely to match the template.
-![Revert to Template](https://static-docs.nocobase.com/revert-to-template.gif)
+3. Les champs et actions ajoutés sont affichés avec un fond de couleur différente pour les distinguer.  
+   ![Style du bloc](https://static-docs.nocobase.com/template-bg.png)
 
-:::info{title=Note}
-The positioning of UI components within a block is determined by the page layout and will not automatically update to reflect changes in the template. To synchronize component positions with the template, you must revert the entire block to the template.
-:::
+4. Les blocs et les composants UI hérités disposent d’une option **« Revenir au modèle »**, qui permet de rétablir la configuration du modèle d'origine.  
+   ![Revenir au modèle](https://static-docs.nocobase.com/revert-to-template.gif)
+
+:::info{title=Remarque}
+La position des composants UI à l'intérieur d’un bloc est déterminée par la page, et non synchronisée automatiquement avec le modèle. Pour synchroniser la disposition, il faut **restaurer le bloc complet depuis le modèle**.
+
 
 ## FAQ
 
-**Q: How do I create an edit form template?**
+**Q : Comment créer un modèle de formulaire de modification ?**
 
-A: The configuration for an edit form template is the same as that for an add form template. You can create an edit form template by configuring an add form block, and the template will automatically appear in the edit form's template options.
+**R :** La configuration d’un modèle de formulaire de modification est identique à celle d’un formulaire d’ajout. Vous pouvez créer un modèle de formulaire de modification en configurant un bloc de type formulaire d’ajout — il apparaîtra alors automatiquement dans les options de modèle lors de la configuration d’un formulaire de modification.
 
-**Q: Why do the field positions in the template not sync with the block created from it?**
+---
 
-A: The positioning of UI components within a block is determined by the page layout and does not automatically synchronize with changes in the template. If you need to sync them, use the "Revert to Template" function; note that reverting will erase any custom configurations on the block.
+**Q : Pourquoi la position des champs dans le modèle ne se synchronise-t-elle pas avec le bloc créé à partir de celui-ci ?**
 
-**Q: How should unused templates be handled?**
+**R :** Le positionnement des composants de l’interface utilisateur dans un bloc est déterminé par la mise en page de la page elle-même, et ne se synchronise pas automatiquement avec les modifications du modèle.  
+Si vous souhaitez synchroniser les positions, utilisez la fonction **"Restaurer depuis le modèle"**. Attention : cela **effacera les personnalisations** effectuées sur le bloc.
 
-A: It is recommended to delete unused templates. When deleting a template, you can choose whether or not to keep the blocks created from it. If you choose to keep them, the blocks will be converted to standard page blocks without affecting existing functionality; if not, the blocks created from the template will also be deleted.
+---
 
-**Q: Why can't templates be configured for chart blocks?**
+**Q : Que faire des modèles non utilisés ?**
 
-A: Future versions will support templating for chart blocks.
+**R :** Il est recommandé de **supprimer** les modèles inutilisés. Lors de la suppression d’un modèle, vous pouvez choisir de **conserver ou non les blocs créés à partir de celui-ci** :
+- Si vous les conservez, ces blocs seront convertis en blocs de page standard, sans perte de fonctionnalité.
+- Si vous ne les conservez pas, les blocs créés à partir du modèle seront **également supprimés**.
 
-**Q: Why is there no option to save a block from a pop-up as a template?**
+---
 
-A: Templates are based on blocks within the page, which operate in an independent context. Blocks in pop-up dialogs depend on blocks outside the current pop-up, so saving blocks from pop-ups as templates is not currently supported.
+**Q : Pourquoi les modèles ne sont-ils pas disponibles pour les blocs de type graphique ?**
 
-**Q: How can deprecated templates be converted into new block templates?**
+**R :** Cette fonctionnalité sera disponible dans une **prochaine version**.
 
-A: You can create a new page block by copying an old template, and then save the new page block as a template. ![20250408092704_rec_](https://static-docs.nocobase.com/20250408092704_rec_.gif)
+---
+
+**Q : Pourquoi ne puis-je pas enregistrer un bloc d’une fenêtre modale en tant que modèle ?**
+
+**R :** Les modèles sont basés sur les blocs placés directement sur les pages, car ils fonctionnent dans un **contexte indépendant**.  
+Les blocs dans les fenêtres contextuelles (modales ou tiroirs) dépendent de blocs situés **hors de ces fenêtres**, c’est pourquoi il n’est **pas encore possible de les enregistrer comme modèles**.
+
+---
+
+**Q : Comment convertir un ancien modèle en un nouveau modèle de bloc ?**
+
+**R :** Vous pouvez créer un **nouveau bloc de page** à partir d’un ancien modèle, puis enregistrer ce **nouveau bloc comme modèle**.
+
+![Conversion de modèle](https://static-docs.nocobase.com/20250408092704_rec_.gif)
+
+---
