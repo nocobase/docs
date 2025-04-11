@@ -1,6 +1,11 @@
 # 区块模板
 
 <PluginInfo name="block-template"></PluginInfo>
+<style>
+.markdown h5 {
+    font-size: 15px;
+}
+</style>
 
 ## 介绍
 
