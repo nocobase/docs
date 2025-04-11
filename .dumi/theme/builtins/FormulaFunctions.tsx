@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import * as formulajs from '@formulajs/formulajs';
 import generateFunctionsComponent from './generator/generateFunctionsComponent';
+import { evaluate } from './utils/formulaEvaluate';
+import { IFunctionCategory } from './generator/generateFunctionsComponent';
 
 const functionsData = [
   {
@@ -4285,17 +4287,12 @@ const functionsData = [
   }
 ];
 
-const CommonComponent = generateFunctionsComponent({ data: functionsData });
-
+// Create component with evaluate function
 const FormulajsFunctions: React.FC = () => {
-  console.log(Object.keys(formulajs));
-
-  // 在此挂载 formula.js
-  useEffect(() => {
-    Object.keys(formulajs).forEach((key) => {
-      (window as any)[key] = (formulajs as any)[key];
-    });
-  }, []);
+  const CommonComponent = generateFunctionsComponent({ 
+    data: functionsData as IFunctionCategory[],
+    evaluateFunction: evaluate
+  });
 
   return <CommonComponent />;
 };

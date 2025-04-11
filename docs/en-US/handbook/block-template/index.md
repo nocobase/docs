@@ -1,90 +1,144 @@
-# 区块模板
+# Block Template
 
 <PluginInfo name="block-template"></PluginInfo>
+<style>
+.markdown h5 {
+    font-size: 15px;
+}
+</style>
 
-## 介绍
 
-区块模板用于为区块提供模板能力, 可用于模板的集中管理及通过模板创建区块。通过模板创建的区块, 与模板是继承关系, 可以在模板基础上增加自己的配置。
+## Introduction
 
-## 安装
+Block Template provides templating capabilities for blocks, enabling centralized management of templates and the creation of blocks from them. Blocks created from a template inherit from it, allowing you to add your own configurations on top of the template.
 
-内置插件, 无需安装。
+## Installation
 
-## 使用说明
+Built-in plugin, no installation required.
 
-![主界面](https://static-docs.nocobase.com/main-screen-block-template.png)
+## Usage Instructions
 
-### 模板管理
+![Main Interface](https://static-docs.nocobase.com/main-screen-block-template.png)
 
-#### 创建模板
+### Template Management
 
-点击 "新增" 按钮, 输入相关信息, 点击 "提交" 按钮, 即可创建模板。
+#### Create Template
 
-![创建模板](https://static-docs.nocobase.com/create-template.png)
+The Block Templates offers two methods for creation so you can choose the one that best fits your scenario:
 
-##### 保存为模板
+##### 1. Create via the Template Management Interface
 
-页面中的数据区块, 可以通过 "保存为模板" 菜单, 将当前区块保存为模板。
+**Applicable Scenario:**
+- When starting a new template from scratch
 
-![保存为模板](https://static-docs.nocobase.com/save-as-block-template.png)
+**Steps:**
+1. Enter the block templates management interface
+2. Click the "Add new" button
+3. Enter the basic template information
+4. Configure the template content
+5. Click "Submit" to complete creation
 
-:::info{title=注意}
-- 仅支持页面中的数据区块保存为模板。不支持将弹窗中区块直接保存为模板。
+![Create Template](https://static-docs.nocobase.com/create-template.png)
+
+##### 2. Create Template from an Existing Block
+
+**Applicable Scenario:**
+- When the desired block is already configured on the page
+- When you need to reuse the configuration of an existing block in another context
+- When you want to quickly create a template without reconfiguring
+
+**Steps:**
+1. Locate the data block on the page that you wish to save as a template
+2. Select the "Save as Template" option
+3. Enter a template name and save
+
+![Save as Template](https://static-docs.nocobase.com/save-as-block-template.png)
+
+:::info{title=Note}
+- Only data blocks on pages can be saved as templates
+- Blocks in pop-up dialogs cannot be directly saved as templates
+- Chart blocks are currently not supported for templating
 :::
 
-#### 配置模板
+#### Configure Template
 
-选择模板, 点击 "配置" 按钮, 即可进入模板配置界面, 配置模板数据区块。
+Select a template and click the "Configure" button to enter the configuration interface for the template's data block.
 
-![配置模板](https://static-docs.nocobase.com/configure-template.png)
+![Configure Template](https://static-docs.nocobase.com/configure-template.png)
 
-:::info{title=注意}
-- 目前模板仅支持添加一个数据区块, 未配置数据区块时, 将无法使用该模板创建区块。
-- 图表区块暂不支持配置为模板。
+:::info{title=Note}
+- Currently, a template supports only one data block. Without a data block configured, the template cannot be used to create a block.
+- Chart blocks are not currently supported for templating.
 :::
 
-#### 编辑模板
+#### Edit Template
 
-选择模板, 点击 "编辑" 按钮, 即可进入模板编辑界面修改模板标题、描述。
+Select a template and click the "Edit" button to enter the editing interface where you can modify the template's title and description.
 
-![编辑模板](https://static-docs.nocobase.com/edit-template.png)
+![Edit Template](https://static-docs.nocobase.com/edit-template.png)
 
-#### 复制模板
+#### Duplicate Template
 
-选择模板, 点击 "复制" 按钮, 输入新模板标题, 点击 "提交" 按钮, 即可复制模板。
-模板复制后可以进行编辑以适应新的需求场景。
+Select a template, click the "Duplicate" button, enter a new template title, and click "Submit" to copy the template.
+The copied template can then be edited to suit new requirements.
 
-![复制模板](https://static-docs.nocobase.com/copy-template.png)
+![Copy Template](https://static-docs.nocobase.com/copy-template.png)
 
-#### 删除模板
+#### Delete Template
 
-选择模板, 点击 "删除" 按钮, 点击 "提交" 按钮, 即可删除模板。
+Select a template, click the "Delete" button, and then click "Submit" to delete the template.
 
-![删除模板](https://static-docs.nocobase.com/delete-template.png)
+![Delete Template](https://static-docs.nocobase.com/delete-template.png)
 
-删除可以选择是否"保留已创建的区块":
-- 若选择保留, 则模板被删除后, 已创建的区块会被转换成普通的页面区块。
-- 若选择不保留, 则模板被删除后, 已创建的区块也会被删除。
+When deleting, you can choose whether to "Keep the created blocks":
+- If kept, the blocks created from the template will be converted to regular page blocks once the template is deleted.
+- If not kept, the blocks created from the template will also be deleted.
 
-### 模板使用
+### Template Usage
 
-#### 创建区块
+#### Create Block
 
-在页面中创建区块时, 选择对应区块的模板, 即可使用模板创建区块。
+When creating a block on a page, select the corresponding block template to create the block using that template.
 
-![创建区块](https://static-docs.nocobase.com/create-block.png)
+![Create Block](https://static-docs.nocobase.com/create-block.png)
 
-从模板创建的区块与普通区块有以下几点不同:
-1. 该区块与模板是继承关系, 可以在模板基础上增加自己的配置, 未修改的配置会与模板保持同步。
-2. 继承自模板的 UI 组件无法从页面中删除。
-![无法删除](https://static-docs.nocobase.com/disable-delete.png)
+Blocks created from a template differ from regular blocks in the following ways:
+1. The block inherits from the template, allowing you to add your own configurations on top; any unmodified settings remain synchronized with the template.
+2. UI components inherited from the template cannot be removed from the page.
+![Cannot Remove](https://static-docs.nocobase.com/disable-delete.png)
 
-3. 区块新增的字段、操作会以不同的背景色展示, 以便区分。
-![区块样式](https://static-docs.nocobase.com/template-bg.png)
+3. Additional fields and actions in the block are highlighted with different background colors for easy distinction.
+![Block Style](https://static-docs.nocobase.com/template-bg.png)
 
-4. 区块及继承自模板的 UI 组件均会多一个 "恢复到模板" 的配置项, 用于恢复到模板完全一致的状态。
-![恢复到模板](https://static-docs.nocobase.com/revert-to-template.gif)
+4. Both the block and the UI components inherited from the template include an option to "Revert to Template", which resets them entirely to match the template.
+![Revert to Template](https://static-docs.nocobase.com/revert-to-template.gif)
 
-:::info{title=注意}
-区块内部的 UI 组件的位置以页面为准, 创建后不能自动同步模板中的位置, 若需要同步模板中的位置, 只能将整个区块恢复到模板。
+:::info{title=Note}
+The positioning of UI components within a block is determined by the page layout and will not automatically update to reflect changes in the template. To synchronize component positions with the template, you must revert the entire block to the template.
 :::
+
+## FAQ
+
+**Q: How do I create an edit form template?**
+
+A: The configuration for an edit form template is the same as that for an add form template. You can create an edit form template by configuring an add form block, and the template will automatically appear in the edit form's template options.
+
+**Q: Why do the field positions in the template not sync with the block created from it?**
+
+A: The positioning of UI components within a block is determined by the page layout and does not automatically synchronize with changes in the template. If you need to sync them, use the "Revert to Template" function; note that reverting will erase any custom configurations on the block.
+
+**Q: How should unused templates be handled?**
+
+A: It is recommended to delete unused templates. When deleting a template, you can choose whether or not to keep the blocks created from it. If you choose to keep them, the blocks will be converted to standard page blocks without affecting existing functionality; if not, the blocks created from the template will also be deleted.
+
+**Q: Why can't templates be configured for chart blocks?**
+
+A: Future versions will support templating for chart blocks.
+
+**Q: Why is there no option to save a block from a pop-up as a template?**
+
+A: Templates are based on blocks within the page, which operate in an independent context. Blocks in pop-up dialogs depend on blocks outside the current pop-up, so saving blocks from pop-ups as templates is not currently supported.
+
+**Q: How can deprecated templates be converted into new block templates?**
+
+A: You can create a new page block by copying an old template, and then save the new page block as a template. ![20250408092704_rec_](https://static-docs.nocobase.com/20250408092704_rec_.gif)

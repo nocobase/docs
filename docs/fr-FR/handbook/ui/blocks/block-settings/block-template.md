@@ -1,9 +1,13 @@
 # Enregistrer comme modèle de bloc  
 <PluginInfo name="block-template"></PluginInfo>
 
-La fonctionnalité **Enregistrer comme modèle de bloc** permet d’enregistrer un bloc, ainsi que sa table de données associée, en tant que modèle. Ces modèles peuvent ensuite être gérés de manière centralisée dans la page de gestion des modèles. Lors de l’ajout d’un bloc, il est alors possible de sélectionner un modèle pour créer rapidement un nouveau bloc.
-
 ## Guide d'utilisation
+Enregistrer comme modèle de bloc permet de sauvegarder un bloc de données (et la table de données associée) présent sur une page en tant que modèle. Ces modèles peuvent ensuite être gérés de manière centralisée dans la page de gestion des modèles, et réutilisés facilement lors de l’ajout d’un nouveau bloc.
+
+Seuls les blocs de données présents sur une page peuvent être enregistrés comme modèles.
+Il n’est pas possible d’enregistrer un bloc depuis une fenêtre contextuelle (modale ou tiroir) comme modèle.
+
+Les blocs de graphiques ne sont pas encore pris en charge pour être configurés en tant que modèles.
 
 ![20240407175846](https://static-docs.nocobase.com/save-as-block-template.png)
 

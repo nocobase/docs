@@ -1,6 +1,11 @@
 # Modèle de bloc
 
 <PluginInfo name="block-template"></PluginInfo>
+<style>
+.markdown h5 {
+    font-size: 15px;
+}
+</style>
 
 ## Introduction
 
@@ -87,3 +92,48 @@ Les blocs créés à partir d’un modèle se distinguent des blocs classiques p
 
 :::info{title=Remarque}
 La position des composants UI à l'intérieur d’un bloc est déterminée par la page, et non synchronisée automatiquement avec le modèle. Pour synchroniser la disposition, il faut **restaurer le bloc complet depuis le modèle**.
+
+
+## FAQ
+
+**Q : Comment créer un modèle de formulaire de modification ?**
+
+**R :** La configuration d’un modèle de formulaire de modification est identique à celle d’un formulaire d’ajout. Vous pouvez créer un modèle de formulaire de modification en configurant un bloc de type formulaire d’ajout — il apparaîtra alors automatiquement dans les options de modèle lors de la configuration d’un formulaire de modification.
+
+---
+
+**Q : Pourquoi la position des champs dans le modèle ne se synchronise-t-elle pas avec le bloc créé à partir de celui-ci ?**
+
+**R :** Le positionnement des composants de l’interface utilisateur dans un bloc est déterminé par la mise en page de la page elle-même, et ne se synchronise pas automatiquement avec les modifications du modèle.  
+Si vous souhaitez synchroniser les positions, utilisez la fonction **"Restaurer depuis le modèle"**. Attention : cela **effacera les personnalisations** effectuées sur le bloc.
+
+---
+
+**Q : Que faire des modèles non utilisés ?**
+
+**R :** Il est recommandé de **supprimer** les modèles inutilisés. Lors de la suppression d’un modèle, vous pouvez choisir de **conserver ou non les blocs créés à partir de celui-ci** :
+- Si vous les conservez, ces blocs seront convertis en blocs de page standard, sans perte de fonctionnalité.
+- Si vous ne les conservez pas, les blocs créés à partir du modèle seront **également supprimés**.
+
+---
+
+**Q : Pourquoi les modèles ne sont-ils pas disponibles pour les blocs de type graphique ?**
+
+**R :** Cette fonctionnalité sera disponible dans une **prochaine version**.
+
+---
+
+**Q : Pourquoi ne puis-je pas enregistrer un bloc d’une fenêtre modale en tant que modèle ?**
+
+**R :** Les modèles sont basés sur les blocs placés directement sur les pages, car ils fonctionnent dans un **contexte indépendant**.  
+Les blocs dans les fenêtres contextuelles (modales ou tiroirs) dépendent de blocs situés **hors de ces fenêtres**, c’est pourquoi il n’est **pas encore possible de les enregistrer comme modèles**.
+
+---
+
+**Q : Comment convertir un ancien modèle en un nouveau modèle de bloc ?**
+
+**R :** Vous pouvez créer un **nouveau bloc de page** à partir d’un ancien modèle, puis enregistrer ce **nouveau bloc comme modèle**.
+
+![Conversion de modèle](https://static-docs.nocobase.com/20250408092704_rec_.gif)
+
+---
