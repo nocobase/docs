@@ -6,6 +6,11 @@
 
 Le plugin de gestion des sauvegardes NocoBase offre des fonctionnalités pour la sauvegarde complète de la base de données NocoBase et des fichiers téléchargés par les utilisateurs, y compris la planification des sauvegardes, leur téléchargement, leur suppression et leur restauration.
 
+:::warning
+The Backup Manager plugin is included in the Professional and Enterprise editions. For Community and Standard edition users, you can directly back up the database; see details at: [`How to Backup and Restore NocoBase`](https://www.nocobase.com/en/blog/nocobase-backup-restore)
+:::
+
+
 ## Installation
 
 Ce plugin est intégré à la version professionnelle de NocoBase et ne nécessite pas d'installation manuelle. Veuillez consulter la [version commerciale](https://www.nocobase.com/en/commercial) pour plus de détails.

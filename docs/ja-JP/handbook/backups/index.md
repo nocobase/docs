@@ -6,6 +6,11 @@
 
 NocoBaseバックアップマネージャープラグインは、NocoBaseデータベースおよびユーザーがアップロードしたファイルの完全バックアップ、定期バックアップ、バックアップのダウンロード、削除、復元などの機能を提供します。
 
+:::warning
+The Backup Manager plugin is included in the Professional and Enterprise editions. For Community and Standard edition users, you can directly back up the database; see details at: [`How to Backup and Restore NocoBase`](https://www.nocobase.com/en/blog/nocobase-backup-restore)
+:::
+
+
 ## インストール
 
 <embed src="./install.md"></embed>

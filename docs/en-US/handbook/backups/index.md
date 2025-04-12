@@ -6,6 +6,10 @@
 
 The NocoBase backup manager plugin provides features for fully backing up of the NocoBase database and user uploaded files, including backup's scheduling, downloading, deleting, and restoring operation.
 
+:::warning
+The Backup Manager plugin is included in the Professional and Enterprise editions. For Community and Standard edition users, you can directly back up the database; see details at: [`How to Backup and Restore NocoBase`](https://www.nocobase.com/en/blog/nocobase-backup-restore)
+:::
+
 ## Installation
 
 <embed src="./install.md"></embed>

@@ -6,6 +6,10 @@
 
 NocoBase 备份管理器插件，提供了 NocoBase 数据库及用户上传文件的全量备份、定时备份、备份的下载、删除及还原等功能。
 
+:::warning
+备份管理器插件包含在专业版和企业版中。对于社区版和标准版用户，可以直接备份数据库，详情参考：[`如何备份和还原 NocoBase`](https://www.nocobase.com/cn/blog/nocobase-backup-restore)
+:::
+
 ## 安装
 
 <embed src="./install.md"></embed>
