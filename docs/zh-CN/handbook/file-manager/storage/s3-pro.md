@@ -32,7 +32,7 @@
 
 4. 在弹出浮层后，您将看到需要填写的表单内容较多。可以参考后续文档，获取对应文件服务的相关参数信息，并将其正确填写到表单中。
 
-![](https://static-docs.nocobase.com/20250102160811093.png)
+![](https://static-docs.nocobase.com/20250413190828536.png)
 
 
 ## 服务商配置
@@ -130,7 +130,7 @@
 
 3. 在NocoBase中勾选 Public access
 
-![](https://static-docs.nocobase.com/file-storage-s3-pro-1735355971823.png)
+![](https://static-docs.nocobase.com/20250413182850144.png)
 
 #### 缩略图配置（可选）
 
@@ -153,10 +153,15 @@
 
 5. 在 NocoBase 配置中，有以下几个注意事项：
    1. `Thumbnail rule`：填写图像处理相关参数，例如 `?width=100`。具体可参考 [AWS 文档](https://docs.aws.amazon.com/solutions/latest/serverless-image-handler/use-supported-query-param-edits.html)。
-   2. `Access base URL`：填写部署后 Outputs -> ApiEndpoint 的值。
-   3. `Force path style (access)`：需勾选 **Ignore**（因为在配置时已经填写了存储桶名称，访问时不再需要）。
+   2. `Access endpoint`：填写部署后 Outputs -> ApiEndpoint 的值。
+   3. `Full access URL style`：需勾选 **Ignore**（因为在配置时已经填写了存储桶名称，访问时不再需要）。
    
-   ![](https://static-docs.nocobase.com/20250221164447562.png)
+   ![](https://static-docs.nocobase.com/20250413183152619.png)
+
+#### 配置示例
+
+![](https://static-docs.nocobase.com/20250413184023239.png)
+
 
 ### 阿里云OSS
 
@@ -238,7 +243,11 @@
 
 1. 填写 `Thumbnail rule` 相关参数。具体参数设置可参考 [图片处理参数](https://help.aliyun.com/zh/oss/user-guide/img-parameters/?spm=a2c4g.11186623.help-menu-31815.d_4_14_1_1.170243033CdbSm&scm=20140722.H_144582._.OR_help-T_cn~zh-V_1)。
 
-2. `Force path style (access)` 和 `Force path style (upload)` 保持相同即可。
+2. `Full upload URL style` 和 `Full access URL style` 保持相同即可。
+
+#### 配置示例
+
+![](https://static-docs.nocobase.com/20250413184232454.png)
 
 
 ### MinIO
@@ -265,28 +274,27 @@
 
 1. 进入到 NocoBase -> File manager 页面
 
-![](https://static-docs.nocobase.com/20250106112404523.png)
-
 2. 点击 Add new 按钮，选择 S3 Pro
-
-![](https://static-docs.nocobase.com/20250106112454091.png)
 
 3. 填写表单
    - **AccessKey ID** 和 **AccessKey Secret** 为上一步保存的文本
    - **Region**：私有部署的MinIO没有Region概念，可以配置成 "auto"
    - **Endpoint**：填写部署的服务域名或者ip地址
-   - 需将Force path style设置为 Path-Style，最终文件地址为https://{Endpoint}/{bucket-name}/{fileKey}，
+   - 需将 Full access URL style 设置为 Path-Style
 
-最终表单示例如下
+#### 配置示例
 
-![](https://static-docs.nocobase.com/20250106113609538.png)
-
-![](https://static-docs.nocobase.com/20250106113621611.png)
+![](https://static-docs.nocobase.com/20250413183727376.png)
 
 
 ### 腾讯COS
 
 可以参考上述的文件服务进行配置，逻辑相似
+
+#### 配置示例
+
+![](https://static-docs.nocobase.com/20250413184401783.png)
+
 
 ### Cloudflare R2
 

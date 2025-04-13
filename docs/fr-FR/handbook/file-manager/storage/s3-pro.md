@@ -30,7 +30,7 @@ Building on the file management plugin, this version adds support for file stora
 
 4. In the pop-up window, you will see a detailed form to fill out. Refer to the following documentation to obtain the relevant parameters for your file service and correctly input them into the form.
 
-![](https://static-docs.nocobase.com/20250102160811093.png)
+![](https://static-docs.nocobase.com/20250413190828536.png)
 
 ## Service Provider Configuration
 
@@ -123,7 +123,7 @@ For public file access, configure as follows:
 
 3. Check "Public access" in NocoBase.
 
-![Public Access Setting](https://static-docs.nocobase.com/file-storage-s3-pro-1735355971823.png)
+![](https://static-docs.nocobase.com/20250413182850144.png)
 
 #### Thumbnail Configuration (Optional)
 
@@ -147,10 +147,13 @@ This configuration is optional and should be used when you need to optimize the 
 5. In the NocoBase configuration, please note the following:
    1. `Thumbnail rule`: Fill in the image processing parameters, such as `?width=100`. For details, refer to the [AWS documentation](https://docs.aws.amazon.com/solutions/latest/serverless-image-handler/use-supported-query-param-edits.html).
    2. `Access base URL`: Enter the value from Outputs -> ApiEndpoint after deployment.
-   3. `Force path style (access)`: Select **Ignore** (as the bucket name has already been filled in the configuration, no further action is needed during access).
+   3. `Full access URL style`: Select **Ignore** (as the bucket name has already been filled in the configuration, no further action is needed during access).
    
-   ![](https://static-docs.nocobase.com/20250221164447562.png)
+   ![](https://static-docs.nocobase.com/20250413183152619.png)
 
+#### Configuration Example
+
+![](https://static-docs.nocobase.com/20250413184023239.png)
 
 ### Alibaba Cloud OSS
 
@@ -226,8 +229,11 @@ This configuration is optional and should only be used when optimizing the image
 
 1. Fill in the relevant parameters for `Thumbnail rule`. For specific parameter settings, refer to [Image Processing Parameters](https://help.aliyun.com/zh/oss/user-guide/img-parameters/?spm=a2c4g.11186623.help-menu-31815.d_4_14_1_1.170243033CdbSm&scm=20140722.H_144582._.OR_help-T_cn~zh-V_1).
 
-2. Keep the `Force path style (access)` and `Force path style (upload)` settings the same.
+2. Keep the `Full upload URL style` and `Full access URL style` settings the same.
 
+#### Configuration Example
+
+![](https://static-docs.nocobase.com/20250413184232454.png)
 
 ### MinIO
 
@@ -257,11 +263,7 @@ This configuration is optional and should only be used when optimizing the image
 
 1. Go to the **File Manager** page in NocoBase.
 
-![File Manager Page](https://static-docs.nocobase.com/20250106112404523.png)
-
 2. Click the **Add new** button and select **S3 Pro**.
-
-![Add New Storage](https://static-docs.nocobase.com/20250106112454091.png)
 
 3. Configure the form as follows:
    - **AccessKey ID** and **AccessKey Secret**: Use the values saved from the previous step.
@@ -270,16 +272,18 @@ This configuration is optional and should only be used when optimizing the image
    - Set **Force path style** to **Path-Style**. The final file URL will be in the format:  
      `https://{Endpoint}/{bucket-name}/{fileKey}`.
 
-Here is an example of the final form:
+#### Configuration Example
 
-![Form Example](https://static-docs.nocobase.com/20250106113609538.png)
-
-![Configuration Example](https://static-docs.nocobase.com/20250106113621611.png)
+![](https://static-docs.nocobase.com/20250413183727376.png)
 
 
 ### Tencent COS
 
 Refer to the configurations above. The process is largely similar.
+
+#### Configuration Example
+
+![](https://static-docs.nocobase.com/20250413184401783.png)
 
 ### Cloudflare R2
 
