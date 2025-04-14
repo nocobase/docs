@@ -1,87 +1,88 @@
-# List Block
+# Bloc Liste
 
 ## Introduction
 
-The list block displays data in a list format, suitable for scenarios such as task lists, news updates, product information, and other data presentation needs.
+Le bloc **Liste** permet d’afficher des données sous forme de liste. Il est particulièrement adapté aux scénarios tels que les listes de tâches, les actualités, les fiches produit et autres besoins de présentation de données.
 
-## Adding a Block
-
-<video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240417224417.mp4" type="video/mp4">
-</video>
-
-## Block Configuration Options
-
-![20240417224539](https://static-docs.nocobase.com/20240417224539.png)
-
-### Setting Data Scope
-
-As shown in the image: The default filter selects orders with a "Refunded" status.
-
-![20240417224701](https://static-docs.nocobase.com/20240417224701.png)
-
-For more details, refer to [Setting Data Scope](/handbook/ui/blocks/block-settings/data-scope).
-
-### Setting Sorting Rules
-
-As shown in the image: Orders are sorted in descending order by order amount.
-
-![20240417225302](https://static-docs.nocobase.com/20240417225302.png)
-
-For more details, refer to [Setting Sorting Rules](/handbook/ui/blocks/block-settings/sorting-rule).
-
-### Setting Data Loading Method
-
-Typically used in conjunction with the filter block to load data only when filtered.
+## Ajout d’un bloc
 
 <video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240417225539.mp4" type="video/mp4">
+  <source src="https://static-docs.nocobase.com/20240417224417.mp4" type="video/mp4">
 </video>
 
-For more details, refer to [Setting Data Loading Method](/handbook/ui/blocks/block-settings/loading-mode).
+## Options de configuration du bloc
 
-### Setting Block Height
+![Options de configuration](https://static-docs.nocobase.com/20240417224539.png)
 
-Example: Set the height of the order list block to "Full Height" mode.
+### Définir la portée des données
 
-![20240604233102](https://static-docs.nocobase.com/20240604233102.gif)
+Comme illustré ci-dessous : le filtre par défaut sélectionne les commandes avec un statut **« Remboursé »**.
 
-For more details, refer to [Block Height](/handbook/ui/blocks/block-settings/block-height).
+![Portée des données](https://static-docs.nocobase.com/20240417224701.png)
 
-- [Edit Block Title](/handbook/ui/blocks/block-settings/block-title)
-- [Save as Block Template](/handbook/block-template)
+Pour plus de détails, consultez la page [Définir la portée des données](/handbook/ui/blocks/block-settings/data-scope).
 
-## Configuring Fields
+### Définir les règles de tri
 
-### Main Table Fields
+Exemple ci-dessous : les commandes sont triées par **montant décroissant**.
 
-![20240417230027](https://static-docs.nocobase.com/20240417230027.png)
+![Règles de tri](https://static-docs.nocobase.com/20240417225302.png)
 
-### Related Table Fields
+Pour plus de détails, consultez la page [Définir les règles de tri](/handbook/ui/blocks/block-settings/sorting-rule).
 
-![20240417230115](https://static-docs.nocobase.com/20240417230115.png)
+### Définir la méthode de chargement des données
 
-For more details on configuring list fields, refer to [Detail Fields](/handbook/ui/fields/generic/detail-form-item).
+Utilisé généralement avec un bloc filtre pour ne charger les données qu’après application d’un filtre.
 
-## Configuring Actions
+<video width="100%" height="440" controls>
+  <source src="https://static-docs.nocobase.com/20240417225539.mp4" type="video/mp4">
+</video>
 
-### Global Actions
+Pour plus de détails, consultez la page [Définir la méthode de chargement](/handbook/ui/blocks/block-settings/loading-mode).
 
-![20240421115811](https://static-docs.nocobase.com/20240421115811.png)
+### Définir la hauteur du bloc
 
-- [Filter](/handbook/ui/actions/types/filter)
-- [Add New](/handbook/ui/actions/types/add-new)
-- [Refresh](/handbook/ui/actions/types/refresh)
-- [Import](/handbook/action-import)
-- [Export](/handbook/action-export)
+Exemple : définir la hauteur du bloc de liste des commandes en mode **Hauteur complète**.
 
-### Row Actions
+![Hauteur du bloc](https://static-docs.nocobase.com/20240604233102.gif)
 
-![20240418114424](https://static-docs.nocobase.com/20240418114424.png)
+Pour plus de détails, consultez la page [Hauteur du bloc](/handbook/ui/blocks/block-settings/block-height).
 
-- [View](/handbook/ui/actions/types/view)
-- [Edit](/handbook/ui/actions/types/edit)
-- [Delete](/handbook/ui/actions/types/delete)
-- [Pop-Up](/handbook/ui/actions/types/pop-up)
-- [Update Record](/handbook/ui/actions/types/update-record)
-- [Custom Request](/handbook/action-custom-request)
+Autres options :
+- [Modifier le titre du bloc](/handbook/ui/blocks/block-settings/block-title)
+- [Enregistrer comme modèle de bloc](/handbook/block-template)
+
+## Configuration des champs
+
+### Champs de la table principale
+
+![Champs principaux](https://static-docs.nocobase.com/20240417230027.png)
+
+### Champs de tables liées
+
+![Champs liés](https://static-docs.nocobase.com/20240417230115.png)
+
+Pour plus de détails sur la configuration des champs de liste, consultez la page [Champs détaillés](/handbook/ui/fields/generic/detail-form-item).
+
+## Configuration des actions
+
+### Actions globales
+
+![Actions globales](https://static-docs.nocobase.com/20240421115811.png)
+
+- [Filtrer](/handbook/ui/actions/types/filter)
+- [Ajouter](/handbook/ui/actions/types/add-new)
+- [Rafraîchir](/handbook/ui/actions/types/refresh)
+- [Importer](/handbook/action-import)
+- [Exporter](/handbook/action-export)
+
+### Actions par ligne
+
+![Actions par ligne](https://static-docs.nocobase.com/20240418114424.png)
+
+- [Afficher](/handbook/ui/actions/types/view)
+- [Modifier](/handbook/ui/actions/types/edit)
+- [Supprimer](/handbook/ui/actions/types/delete)
+- [Fenêtre contextuelle](/handbook/ui/actions/types/pop-up)
+- [Mettre à jour l'enregistrement](/handbook/ui/actions/types/update-record)
+- [Requête personnalisée](/handbook/action-custom-request)
