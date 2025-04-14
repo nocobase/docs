@@ -112,15 +112,13 @@
 4. 区块及继承自模板的 UI 组件均会多一个 "恢复到模板" 的配置项, 用于恢复到模板完全一致的状态。
 ![恢复到模板](https://static-docs.nocobase.com/revert-to-template.gif)
 
+5. 当需要将模板区块与原模板脱离继承关系时, 可以通过 "转换为普通区块" 功能将模板区块转换为普通区块。
+![convert-to-normal-block](https://static-docs.nocobase.com/convert-to-normal-block.png)
+
+
 :::info{title=注意}
 区块内部的 UI 组件的位置以页面为准, 创建后不能自动同步模板中的位置, 若需要同步模板中的位置, 只能将整个区块恢复到模板。
 :::
-
-#### 转换为普通区块
-
-当需要将模板区块与原模板脱离继承关系时, 可以通过 "转换为普通区块" 功能将模板区块转换为普通区块。
-
-![convert-to-normal-block](https://static-docs.nocobase.com/convert-to-normal-block.png)
 
 ## 常见问题
 
