@@ -117,6 +117,12 @@ Blocks created from a template differ from regular blocks in the following ways:
 The positioning of UI components within a block is determined by the page layout and will not automatically update to reflect changes in the template. To synchronize component positions with the template, you must revert the entire block to the template.
 :::
 
+#### Convert To Normal Block
+
+When you need to separate a template block from its original template, you can use the "Convert To Normal Block" function to convert the template block to a normal block.
+
+![convert-to-normal-block](https://static-docs.nocobase.com/convert-to-normal-block.png)
+
 ## FAQ
 
 **Q: How do I create an edit form template?**
