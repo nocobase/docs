@@ -130,7 +130,6 @@
 
 3. 在NocoBase中勾选 Public access
 
-![](https://static-docs.nocobase.com/20250413182850144.png)
 
 #### 缩略图配置（可选）
 
@@ -156,11 +155,11 @@
    2. `Access endpoint`：填写部署后 Outputs -> ApiEndpoint 的值。
    3. `Full access URL style`：需勾选 **Ignore**（因为在配置时已经填写了存储桶名称，访问时不再需要）。
    
-   ![](https://static-docs.nocobase.com/20250413183152619.png)
+   ![](https://static-docs.nocobase.com/20250414152135514.png)
 
 #### 配置示例
 
-![](https://static-docs.nocobase.com/20250413184023239.png)
+![](https://static-docs.nocobase.com/20250414152344959.png)
 
 
 ### 阿里云OSS
@@ -247,7 +246,7 @@
 
 #### 配置示例
 
-![](https://static-docs.nocobase.com/20250413184232454.png)
+![](https://static-docs.nocobase.com/20250414152525600.png)
 
 
 ### MinIO
@@ -284,7 +283,7 @@
 
 #### 配置示例
 
-![](https://static-docs.nocobase.com/20250413183727376.png)
+![](https://static-docs.nocobase.com/20250414152700671.png)
 
 
 ### 腾讯COS
@@ -293,12 +292,16 @@
 
 #### 配置示例
 
-![](https://static-docs.nocobase.com/20250413184401783.png)
+![](https://static-docs.nocobase.com/20250414153252872.png)
 
 
 ### Cloudflare R2
 
 可以参考上述的文件服务进行配置，逻辑相似
+
+#### 配置示例
+
+![](https://static-docs.nocobase.com/20250414154500264.png)
 
 
 ## 用户使用

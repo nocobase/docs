@@ -123,7 +123,6 @@ For public file access, configure as follows:
 
 3. Check "Public access" in NocoBase.
 
-![](https://static-docs.nocobase.com/20250413182850144.png)
 
 #### Thumbnail Configuration (Optional)
 
@@ -149,11 +148,12 @@ This configuration is optional and should be used when you need to optimize the 
    2. `Access base URL`: Enter the value from Outputs -> ApiEndpoint after deployment.
    3. `Full access URL style`: Select **Ignore** (as the bucket name has already been filled in the configuration, no further action is needed during access).
    
-   ![](https://static-docs.nocobase.com/20250413183152619.png)
+   ![](https://static-docs.nocobase.com/20250414152135514.png)
 
 #### Configuration Example
 
-![](https://static-docs.nocobase.com/20250413184023239.png)
+![](https://static-docs.nocobase.com/20250414152344959.png)
+
 
 ### Alibaba Cloud OSS
 
@@ -233,7 +233,7 @@ This configuration is optional and should only be used when optimizing the image
 
 #### Configuration Example
 
-![](https://static-docs.nocobase.com/20250413184232454.png)
+![](https://static-docs.nocobase.com/20250414152525600.png)
 
 ### MinIO
 
@@ -274,7 +274,7 @@ This configuration is optional and should only be used when optimizing the image
 
 #### Configuration Example
 
-![](https://static-docs.nocobase.com/20250413183727376.png)
+![](https://static-docs.nocobase.com/20250414152700671.png)
 
 
 ### Tencent COS
@@ -283,11 +283,16 @@ Refer to the configurations above. The process is largely similar.
 
 #### Configuration Example
 
-![](https://static-docs.nocobase.com/20250413184401783.png)
+![](https://static-docs.nocobase.com/20250414153252872.png)
 
 ### Cloudflare R2
 
 Refer to the configurations above. The process is largely similar.
+
+#### Configuration Example
+
+![](https://static-docs.nocobase.com/20250414154500264.png)
+
 
 ## User Guide
 
