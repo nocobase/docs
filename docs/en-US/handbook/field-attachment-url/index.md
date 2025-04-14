@@ -1,6 +1,6 @@
 # Data Field: Attachment (URL)
 
-<PluginInfo commercial="true" name="field-attachment-url"></PluginInfo>
+<PluginInfo name="field-attachment-url"></PluginInfo>
 
 ## Introduction
 

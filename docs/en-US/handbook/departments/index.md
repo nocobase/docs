@@ -1,6 +1,6 @@
 # Departments
 
-<PluginInfo commercial="true" name="departments"></PluginInfo>
+<PluginInfo name="departments"></PluginInfo>
 
 ## Introduction
 

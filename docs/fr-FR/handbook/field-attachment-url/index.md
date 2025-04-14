@@ -1,6 +1,6 @@
 # Champ de données : Pièce jointe (URL)
 
-<PluginInfo commercial="true" name="field-attachment-url"></PluginInfo>
+<PluginInfo name="field-attachment-url"></PluginInfo>
 
 ## Introduction
 
