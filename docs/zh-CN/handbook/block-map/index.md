@@ -91,7 +91,7 @@
 
 - [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
 - [连接数据区块](/handbook/ui/blocks/block-settings/connect-block)
-- [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
+- [保存为区块模板](/handbook/block-template)
 
 ## 配置操作
 

@@ -4,7 +4,7 @@
 
 ## Introduction
 
-NocoBase's main database can be used to store both business data and the metadata of the application, including system table data and custom table data. The main database supports relational databases such as MySQL, PostgreSQL, SQLite, etc. During the installation of the NocoBase application, the main database must be installed synchronously and cannot be deleted.
+NocoBase's main database can be used to store both business data and the metadata of the application, including system table data and custom table data. The main database supports relational databases such as MySQL, PostgreSQL, etc. During the installation of the NocoBase application, the main database must be installed synchronously and cannot be deleted.
 
 ## Installation
 

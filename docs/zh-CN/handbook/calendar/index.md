@@ -36,7 +36,7 @@
 ![20240419203603](https://static-docs.nocobase.com/20240419203603.png)
 
 - [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
-- [保存为区块模板](/handbook/ui/blocks/block-settings/block-template)
+- [保存为区块模板](/handbook/block-template)
 
 ### 设置数据范围
 

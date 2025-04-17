@@ -29,7 +29,7 @@ Example: Connect the same data table block in the pop-up window to achieve filte
 For more content, refer to [Connecting Data Blocks](/handbook/ui/blocks/block-settings/connect-block)
 
 - [Edit Block Title](/handbook/ui/blocks/block-settings/block-title)
-- [Save as Block Template](/handbook/ui/blocks/block-settings/block-template)
+- [Save as Block Template](/handbook/block-template)
 
 ## Configuring Fields
 

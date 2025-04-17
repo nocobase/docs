@@ -15,7 +15,7 @@ export interface IFunctionDefinition {
 export interface IFunctionItem {
   title: string;
   call: string;
-  result: string;
+  result: string | number | object | any;
   definition: IFunctionDefinition;
   parameterDefinitions: IFunctionDefinition;
 }
@@ -27,6 +27,7 @@ export interface IFunctionCategory {
 
 interface IGenerateFunctionsComponentProps {
   data: IFunctionCategory[];
+  evaluateFunction?: (expression: string, scope?: Record<string, any>) => any;
 }
 
 /**
@@ -35,7 +36,7 @@ interface IGenerateFunctionsComponentProps {
  * 只负责将用户输入的公式执行，并将结果显示出来。
  */
 const generateFunctionsComponent = (props: IGenerateFunctionsComponentProps) => {
-  const { data } = props;
+  const { data, evaluateFunction } = props;
 
   const CommonFunctions: React.FC = () => {
     const { themeConfig } = useSiteData();
@@ -55,9 +56,16 @@ const generateFunctionsComponent = (props: IGenerateFunctionsComponentProps) => 
           setResult('');
           return;
         }
-        // 注意：此处调用 Function(...) 时，若公式用到了特定库函数（如 math.sqrt），
-        //       需要你事先把 math.sqrt 挂载到 window 上，否则会报错“未定义”。
-        let evaluatedResult = Function('"use strict"; return (' + formulaStr + ')')();
+        
+        let evaluatedResult;
+        
+        // 使用提供的evaluateFunction如果有的话，否则使用默认的函数求值方式
+        if (evaluateFunction) {
+          evaluatedResult = evaluateFunction(formulaStr);
+        } else {
+          // 旧的求值逻辑保留作为备用
+          evaluatedResult = Function('"use strict"; return (' + formulaStr + ')')();
+        }
 
         if (evaluatedResult instanceof Date) {
           evaluatedResult = evaluatedResult.toString();

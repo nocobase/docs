@@ -1,6 +1,6 @@
 # データテーブルフィールド：添付ファイル（URL）
 
-<PluginInfo commercial="true" name="field-attachment-url"></PluginInfo>
+<PluginInfo name="field-attachment-url"></PluginInfo>
 
 ## 紹介
 

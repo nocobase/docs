@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo } from 'react';
 import * as math from 'mathjs'; // 只挂载 mathjs
 import generateFunctionsComponent from './generator/generateFunctionsComponent';
+import { evaluate } from './utils/evaluate';
+import { IFunctionCategory, IFunctionItem } from './generator/generateFunctionsComponent';
 
 const functionsData = [
   {
@@ -298,8 +300,8 @@ const functionsData = [
       },
       {
         "title": "slu",
-        "call": "slu([[1,2],[3,4]], 'natural', 1)",
-        "result": "Error: Unexpected type of argument in function slu (expected: SparseMatrix, actual: Array, index: 0)",
+        "call": "slu(sparse([[4,3], [6, 3]]), 1, 0.001)",
+        "result": "{\"L\":{\"mathjs\":\"SparseMatrix\",\"values\":[1,1.5,1],\"index\":[0,1,1],\"ptr\":[0,2,3],\"size\":[2,2]},\"U\":{\"mathjs\":\"SparseMatrix\",\"values\":[4,3,-1.5],\"index\":[0,0,1],\"ptr\":[0,1,3],\"size\":[2,2]},\"p\":[0,1],\"q\":[0,1]}",
         "definition": {
           "en": "Compute the sparse LU decomposition with full pivoting.",
           "cn": "以完全主元方式计算稀疏 LU 分解。",
@@ -1083,8 +1085,8 @@ const functionsData = [
     "functions": [
       {
         "title": "arg",
-        "call": "arg('2 + 2i')",
-        "result": "Error: Cannot convert \"2 + 2i\" to a number",
+        "call": "arg(complex('2 + 2i'))",
+        "result": 0.785398163,
         "definition": {
           "en": "Compute the argument (angle) of a complex value.",
           "cn": "计算复数的幅角（相位）。",
@@ -1098,8 +1100,8 @@ const functionsData = [
       },
       {
         "title": "conj",
-        "call": "conj('2 + 2i')",
-        "result": "Error: Cannot convert \"2 + 2i\" to a number",
+        "call": "conj(complex('2 + 2i'))",
+        "result": "{\"mathjs\":\"Complex\",\"re\":2,\"im\":-2}",
         "definition": {
           "en": "Compute the complex conjugate of a complex value.",
           "cn": "计算复数的共轭。",
@@ -1113,8 +1115,8 @@ const functionsData = [
       },
       {
         "title": "im",
-        "call": "im('2 + 3i')",
-        "result": "Error: Cannot convert \"2 + 3i\" to a number",
+        "call": "im(complex('2 + 3i'))",
+        "result": 3,
         "definition": {
           "en": "Get the imaginary part of a complex number.",
           "cn": "获取复数的虚部。",
@@ -1128,8 +1130,8 @@ const functionsData = [
       },
       {
         "title": "re",
-        "call": "re('2 + 3i')",
-        "result": "Error: Cannot convert \"2 + 3i\" to a number",
+        "call": "re(complex('2 + 3i'))",
+        "result": 2,
         "definition": {
           "en": "Get the real part of a complex number.",
           "cn": "获取复数的实部。",
@@ -1247,23 +1249,8 @@ const functionsData = [
     "category": "Matrix functions",
     "functions": [
       {
-        "title": "apply",
-        "call": "apply([[1,2],[3,4]], 1, val => val * 2)",
-        "result": "[\n  null,\n  null\n]",
-        "definition": {
-          "en": "Apply a callback function over a matrix/array along a specified axis.",
-          "cn": "沿指定轴对矩阵或数组应用函数。",
-          "ja": "指定した軸に沿ってコールバック関数を適用します。"
-        },
-        "parameterDefinitions": {
-          "en": "A (Array|Matrix), dim (number), callback (function)",
-          "cn": "A（数组或矩阵），dim（数字），callback（函数）",
-          "ja": "A（配列または行列）、dim（数値）、callback（関数）"
-        }
-      },
-      {
         "title": "column",
-        "call": "column([[1,2],[3,4]], 0)",
+        "call": "column([[1,2],[3,4]], 1)",
         "result": "[\n  [\n    1\n  ],\n  [\n    3\n  ]\n]",
         "definition": {
           "en": "Return a specific column from a Matrix.",
@@ -1443,12 +1430,12 @@ const functionsData = [
       },
       {
         "title": "filter",
-        "call": "filter([1,2,3,4,5], val => val > 2)",
-        "result": "[\n  3,\n  4,\n  5\n]",
+        "call": "filter(['23', 'foo', '100', '55', 'bar'], /[0-9]+/)",
+        "result": "[\"23\", \"100\", \"55\"]",
         "definition": {
-          "en": "Filter the items in an array or 1D matrix using a test function.",
-          "cn": "使用测试函数过滤数组或一维矩阵。",
-          "ja": "テスト関数を使用して配列または1次元行列をフィルタします。"
+          "en": "(Unsupported) Filter the items in an array or 1D matrix using a test function.",
+          "cn": "（暂不支持）使用测试函数过滤数组或一维矩阵。",
+          "ja": "（この関数はサポートされていません）テスト関数を使用して配列または1次元行列をフィルタします。"
         },
         "parameterDefinitions": {
           "en": "x (Array|Matrix), test (function)",
@@ -1476,10 +1463,10 @@ const functionsData = [
         "call": "forEach([1,2,3], val => console.log(val))",
         "result": "undefined",
         "definition": {
-          "en": "Iterate over elements of a matrix/array and execute a callback.",
-          "cn": "遍历矩阵/数组的每个元素并执行回调。",
-          "ja": "行列/配列の要素をイテレートし、コールバックを実行します。"
-        },
+          "en": "（Unsupported）Iterate over elements of a matrix/array and execute a callback.",
+          "cn": "（暂不支持）遍历矩阵/数组的每个元素并执行回调。",
+          "ja": "（この関数はサポートされていません）行列/配列の要素をイテレートし、コールバックを実行します。"
+      },
         "parameterDefinitions": {
           "en": "x (Array|Matrix), callback (function)",
           "cn": "x（数组或矩阵），callback（函数）",
@@ -1593,12 +1580,12 @@ const functionsData = [
       },
       {
         "title": "matrixFromFunction",
-        "call": "matrixFromFunction([2,3], (i,j) => i + j)",
-        "result": "Error: Cannot convert \"0,0undefined\" to a number",
+        "call": "matrixFromFunction([5], i => math.random())",
+        "result": "a random vector",
         "definition": {
-          "en": "Create a matrix by evaluating a function at each matrix index.",
-          "cn": "根据函数对矩阵每个索引进行求值来生成矩阵。",
-          "ja": "行列の各インデックスで関数を評価し、行列を生成します。"
+          "en": "(Unsupported)Create a matrix by evaluating a function at each matrix index.",
+          "cn": "(暂不支持) 根据函数对矩阵每个索引进行求值来生成矩阵。",
+          "ja": "(この関数はサポートされていません)行列の各インデックスで関数を評価し、行列を生成します。"
         },
         "parameterDefinitions": {
           "en": "size (Array), fn (function)",
@@ -1818,8 +1805,8 @@ const functionsData = [
       },
       {
         "title": "subset",
-        "call": "subset(['a','b','c'], 1)",
-        "result": "Error: Unexpected type of argument in function subset (expected: Index, actual: number, index: 1)",
+        "call": "subset([[1, 2], [3, 4]], index(1, 1),2)",
+        "result": "[[2,2],[3,4]]",
         "definition": {
           "en": "Retrieve or replace a subset of a matrix or string.",
           "cn": "获取或替换矩阵或字符串的子集。",
@@ -2918,8 +2905,8 @@ const functionsData = [
     "functions": [
       {
         "title": "to",
-        "call": "to(5, 'cm')",
-        "result": "Error: Unexpected type of argument in function to (expected: Array or DenseMatrix or Matrix, actual: identifier | string, index: 1)",
+        "call": "to(unit('2 inch'), 'cm')",
+        "result": "{\"mathjs\":\"Unit\",\"value\":5.08,\"unit\":\"cm\",\"fixPrefix\":true}",
         "definition": {
           "en": "Convert a value to another unit.",
           "cn": "将一个数值转换为指定单位。",
@@ -3045,17 +3032,28 @@ const functionsData = [
   }
 ];
 
-
 function filterFunctionsData(
   data: {
     category: string;
     functions: {
       title: string;
+      call: string;
+      result: string | number | object | any;
+      definition: {
+        en?: string;
+        cn?: string;
+        ja?: string;
+      };
+      parameterDefinitions: {
+        en?: string;
+        cn?: string;
+        ja?: string;
+      };
       [key: string]: any;
     }[];
   }[],
   math: Record<string, any>
-) {
+): IFunctionCategory[] {
   // 先拿到所有的函数名称
   const mathKeys = Object.keys(math);
 
@@ -3072,32 +3070,18 @@ function filterFunctionsData(
       // 如果该分类筛完后还有函数，就保留下来
       if (filteredFunctions.length > 0) {
         return {
-          ...categoryItem,
-          functions: filteredFunctions,
+          category: categoryItem.category,
+          functions: filteredFunctions as IFunctionItem[],
         };
       }
       // 如果没有则返回 null，用于后面过滤掉空分类
       return null;
     })
     // 最后把 null 的分类过滤掉
-    .filter((item) => item !== null) as {
-    category: string;
-    functions: {
-      title: string;
-      [key: string]: any;
-    }[];
-  }[];
+    .filter((item): item is IFunctionCategory => item !== null);
 }
 
-
 const MathFunctions: React.FC = () => {
-  // 把 mathjs 的 API 暴露到全局（如果确有需要）
-  useEffect(() => {
-    Object.keys(math).forEach((key) => {
-      (window as any)[key] = (math as any)[key];
-    });
-  }, []);
-
   // 根据最新 mathjs 版本过滤无效函数
   const filteredData = useMemo(() => {
     return filterFunctionsData(functionsData, math);
@@ -3105,7 +3089,10 @@ const MathFunctions: React.FC = () => {
 
   // 生成组件
   const CommonComponent = useMemo(
-    () => generateFunctionsComponent({ data: filteredData }),
+    () => generateFunctionsComponent({ 
+      data: filteredData,
+      evaluateFunction: evaluate
+    }),
     [filteredData]
   );
 
