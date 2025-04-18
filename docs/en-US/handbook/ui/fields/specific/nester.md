@@ -37,4 +37,4 @@ The version of NocoBase needs to be v1.3.17-beta or above.
 
 ![20240906083737_rec_](https://static-docs.nocobase.com/20240906083737_rec_.gif)
 
-For more information, refer to [Linkage Rules](/handbook/ui/blocks/block-settings/linkage-rule)
+For more information, refer to [Linkage Rules](/handbook/ui/blocks/block-settings/field-linkage-rule)

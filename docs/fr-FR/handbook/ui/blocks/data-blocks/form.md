@@ -20,7 +20,7 @@ Contrôlez le comportement des champs du formulaire à l'aide des règles de lia
 
 ![20240416220254](https://static-docs.nocobase.com/20240416220254.png)
 
-Pour plus d'informations, consultez [Règles de Liaison](/handbook/ui/blocks/block-settings/linkage-rule).
+Pour plus d'informations, consultez [Règles de Liaison](/handbook/ui/blocks/block-settings/field-linkage-rule).
 
 ### Modèles de Données de Formulaire (Prend en charge uniquement les formulaires pour l'ajout de nouvelles données)
 

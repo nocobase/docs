@@ -956,11 +956,18 @@ export default [
                 link: '/handbook/block-template',
               },
               {
-                title: 'Linkage rules',
-                'title.fr-FR': 'Règles de liaison',
-                'title.zh-CN': '联动规则',
-                'title.ja-JP': '連動ルール',
-                link: '/handbook/ui/blocks/block-settings/linkage-rule',
+                title: 'Field linkage rules',
+                'title.fr-FR': 'Règle de dépendance des champs',
+                'title.zh-CN': '字段联动规则',
+                'title.ja-JP': 'フィールド連動ルール',
+                link: '/handbook/ui/blocks/block-settings/field-linkage-rule',
+              },
+              {
+                title: 'Block linkage rules',
+                'title.fr-FR': 'Règle de dépendance des blocs',
+                'title.zh-CN': '区块联动规则',
+                'title.ja-JP': 'ブロック連動ルール',
+                link: '/handbook/ui/blocks/block-settings/block-linkage-rule',
               },
               {
                 title: 'Edit block title',
@@ -1520,6 +1527,13 @@ export default [
         'title.zh-CN': '变量',
         'title.ja-JP': '変数',
         link: '/handbook/ui/variables',
+      },
+      {
+        title: 'Linkage rules',
+        'title.fr-FR': 'Règle de dépendance',
+        'title.zh-CN': '联动规则',
+        'title.ja-JP': '連動ルール（れんどうルール）',
+        link: '/handbook/ui/linkage-rule',
       },
       {
         title: 'Template engines',

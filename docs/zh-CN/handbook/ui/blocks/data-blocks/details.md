@@ -39,7 +39,7 @@
 
 ![20240511115156](https://static-docs.nocobase.com/20240511115156.png)
 
-更多内容参考 [联动规则](/handbook/ui/blocks/block-settings/linkage-rule)
+更多内容参考 [联动规则](/handbook/ui/blocks/block-settings/field-linkage-rule)
 
 ### 设置区块高度
 

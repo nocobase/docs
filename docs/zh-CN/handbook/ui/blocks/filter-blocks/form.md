@@ -25,7 +25,7 @@
 更多内容参考 [连接数据区块](/handbook/ui/blocks/block-settings/connect-block)
 
 - [编辑区块标题](/handbook/ui/blocks/block-settings/block-title)
-- [联动规则](/handbook/ui/blocks/block-settings/linkage-rule)
+- [联动规则](/handbook/ui/blocks/block-settings/field-linkage-rule)
 - [保存为区块模板](/handbook/block-template)
 
 ## 配置字段

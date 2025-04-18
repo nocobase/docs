@@ -20,7 +20,7 @@
 
 ![20240416220254](https://static-docs.nocobase.com/20240416220254.png)
 
-更多内容参考 [联动规则](/handbook/ui/blocks/block-settings/linkage-rule)
+更多内容参考 [联动规则](/handbook/ui/blocks/block-settings/field-linkage-rule)
 
 ### 表单数据模板（仅支持新增数据的表单）
 

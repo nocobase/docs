@@ -12,13 +12,16 @@
 
 ## 添加区块
 
+![20250403220300](https://static-docs.nocobase.com/20250403220300.png)
+
+1. 标题字段: 用于显示在日历条形上的信息；目前支持`input`, `select`, `phone`, `email`, `radioGroup`,`sequence` 类等型字段,可以通过插件扩展日历区块支持的标题字段类型。
+2. 开始时间: 任务的开始时间；
+3. 结束时间: 任务的结束时间；
+
 <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240419201640.mp4" type="video/mp4">
 </video>
 
-1. 标题字段: 用于显示在日历条形上的信息；
-2. 开始时间: 任务的开始时间；
-3. 结束时间: 任务的结束时间；
 
 点击任务条,同一任务条高亮，并弹出弹窗。
 

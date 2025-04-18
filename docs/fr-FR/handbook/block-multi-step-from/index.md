@@ -22,7 +22,7 @@ Contrôlez le comportement des champs du formulaire grâce aux règles de liaiso
 
 ![](https://static-docs.nocobase.com/202410101717884.png)
 
-Plus de contenu à consulter sur les [Règles de liaison](/handbook/ui/blocks/block-settings/linkage-rule)
+Plus de contenu à consulter sur les [Règles de liaison](/handbook/ui/blocks/block-settings/field-linkage-rule)
 
 
 ### Paramétrage de la Hauteur du Bloc

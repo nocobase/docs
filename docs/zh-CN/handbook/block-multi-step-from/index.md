@@ -22,7 +22,7 @@
 
 ![](https://static-docs.nocobase.com/202410101717884.png)
 
-更多内容参考 [联动规则](/handbook/ui/blocks/block-settings/linkage-rule)
+更多内容参考 [联动规则](/handbook/ui/blocks/block-settings/field-linkage-rule)
 
 
 ### 设置区块高度

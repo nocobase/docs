@@ -39,4 +39,4 @@
 
 ![20240906090603_rec_](https://static-docs.nocobase.com/20240906090603_rec_.gif)
 
-更多内容参考 [联动规则](/handbook/ui/blocks/block-settings/linkage-rule)
+更多内容参考 [联动规则](/handbook/ui/blocks/block-settings/field-linkage-rule)

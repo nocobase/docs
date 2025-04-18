@@ -39,7 +39,7 @@
 
 ![20240511115156](https://static-docs.nocobase.com/20240511115156.png)
 
-詳細は [連動ルール](/handbook/ui/blocks/block-settings/linkage-rule) をご覧ください。
+詳細は [連動ルール](/handbook/ui/blocks/block-settings/field-linkage-rule) をご覧ください。
 
 ### ブロックの高さの設定
 
