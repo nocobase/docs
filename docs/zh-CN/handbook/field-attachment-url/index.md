@@ -1,6 +1,6 @@
 # 数据表字段：附件（URL）
 
-<PluginInfo commercial="true" name="field-attachment-url"></PluginInfo>
+<PluginInfo name="field-attachment-url"></PluginInfo>
 
 ## 介绍
 

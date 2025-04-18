@@ -1,6 +1,6 @@
 # 部門
 
-<PluginInfo commercial="true" name="departments"></PluginInfo>
+<PluginInfo name="departments"></PluginInfo>
 
 ## 紹介
 

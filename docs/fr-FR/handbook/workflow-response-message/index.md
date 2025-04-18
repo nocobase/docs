@@ -1,6 +1,6 @@
 # Message de Réponse
 
-<PluginInfo name="workflow-response-message" link="/handbook/workflow-response-message" commercial="true"></PluginInfo>
+<PluginInfo name="workflow-response-message" link="/handbook/workflow-response-message"></PluginInfo>
 
 Le nœud "Message de Réponse" est conçu pour fournir des messages personnalisés au client qui initie une opération dans certains types de flux de travail.
 

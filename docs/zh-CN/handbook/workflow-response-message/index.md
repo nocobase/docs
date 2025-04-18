@@ -1,6 +1,6 @@
 # 响应消息
 
-<PluginInfo name="workflow-response-message" link="/handbook/workflow-response-message" commercial="true"></PluginInfo>
+<PluginInfo name="workflow-response-message" link="/handbook/workflow-response-message" ></PluginInfo>
 
 响应消息节点用于在特定类型的流程中向提交操作的客户端反馈流程中自定义的消息。
 

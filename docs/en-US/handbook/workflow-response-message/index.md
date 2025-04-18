@@ -1,6 +1,6 @@
 # Response Message
 
-<PluginInfo name="workflow-response-message" link="/handbook/workflow-response-message" commercial="true"></PluginInfo>
+<PluginInfo name="workflow-response-message" link="/handbook/workflow-response-message"></PluginInfo>
 
 The Response Message node is designed to deliver custom messages to the client who initiates an operation within certain types of workflows.
 

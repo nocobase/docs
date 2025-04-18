@@ -1,6 +1,6 @@
 # 応答メッセージ
 
-<PluginInfo name="workflow-response-message" link="/handbook/workflow-response-message" commercial="true"></PluginInfo>
+<PluginInfo name="workflow-response-message" link="/handbook/workflow-response-message"></PluginInfo>
 
 応答メッセージノードは、特定のタイプのプロセスにおいて、操作を提出したクライアントに対してカスタマイズされたメッセージをフィードバックするために使用されます。
 

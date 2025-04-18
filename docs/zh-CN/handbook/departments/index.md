@@ -1,6 +1,6 @@
 # 部门
 
-<PluginInfo commercial="true" name="departments"></PluginInfo>
+<PluginInfo name="departments"></PluginInfo>
 
 ## 介绍
 

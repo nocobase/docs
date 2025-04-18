@@ -4,7 +4,7 @@
 
 ## Introduction
 
-La base de données principale de NocoBase peut être utilisée pour stocker à la fois les données métiers et les métadonnées de l'application, y compris les données des tables système et des tables personnalisées. La base de données principale prend en charge des bases de données relationnelles telles que MySQL, PostgreSQL, SQLite, etc. Lors de l'installation de l'application NocoBase, la base de données principale doit être installée simultanément et ne peut pas être supprimée.
+La base de données principale de NocoBase peut être utilisée pour stocker à la fois les données métiers et les métadonnées de l'application, y compris les données des tables système et des tables personnalisées. La base de données principale prend en charge des bases de données relationnelles telles que MySQL, PostgreSQL,  etc. Lors de l'installation de l'application NocoBase, la base de données principale doit être installée simultanément et ne peut pas être supprimée.
 
 ## Installation
 
