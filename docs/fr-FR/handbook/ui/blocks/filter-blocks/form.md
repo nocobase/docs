@@ -25,7 +25,7 @@ Exemple : Le bloc de filtrage de formulaire se connecte au bloc de données de d
 Pour plus de contenu, consultez [Connexion au Bloc de Données](/handbook/ui/blocks/block-settings/connect-block).
 
 - [Modifier le Titre du Bloc](/handbook/ui/blocks/block-settings/block-title)
-- [Règles de Liaison](/handbook/ui/blocks/block-settings/linkage-rule)
+- [Règles de Liaison](/handbook/ui/blocks/block-settings/field-linkage-rule)
 - [Enregistrer comme Modèle de Bloc](/handbook/block-template)
 
 ## Configuration des Champs

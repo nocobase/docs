@@ -20,7 +20,7 @@ Control form field behavior through linkage rules.
 
 ![20240416220254](https://static-docs.nocobase.com/20240416220254.png)
 
-For more information, refer to [Linkage Rules](/handbook/ui/blocks/block-settings/linkage-rule).
+For more information, refer to [Linkage Rules](/handbook/ui/blocks/block-settings/field-linkage-rule).
 
 ### Form Data Templates (Supports Form for Adding New Data Only)
 
