@@ -123,7 +123,7 @@ Ajustez les règles de transformation en fonction du format de réponse de l'API
 
 ### Vue d'ensemble du processus de débogage
 
-![20240717110051](https://static-docs.nocobase.com/20240717110051.png)
+![20250418085020](https://static-docs.nocobase.com/20250418085020.png)
 
 ## Variables
 
@@ -207,7 +207,7 @@ Voici les variables disponibles pour chaque interface :
 
 Les métadonnées des champs (Fields) sont extraites des données de l'interface CRUD de la ressource adaptée pour servir de champs à la collection.
 
-![20240716223636](https://static-docs.nocobase.com/20240716223636.png)
+![20250418085048](https://static-docs.nocobase.com/20250418085048.png)
 
 Extraction des métadonnées des champs.
 

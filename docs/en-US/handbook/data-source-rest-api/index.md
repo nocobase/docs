@@ -122,7 +122,7 @@ Adjust the conversion rules based on the response format of the third-party API 
 
 ### Debugging Process Overview
 
-![20240717110051](https://static-docs.nocobase.com/20240717110051.png)
+![20250418085020](https://static-docs.nocobase.com/20250418085020.png)
 
 ## Variables
 
@@ -206,7 +206,7 @@ Below are the variables available for each interface:
 
 Field metadata (Fields) is extracted from the CRUD interface data of the adapted resource to serve as the fields of the collection.
 
-![20240716223636](https://static-docs.nocobase.com/20240716223636.png)
+![20250418085048](https://static-docs.nocobase.com/20250418085048.png)
 
 Field metadata extraction.
 
