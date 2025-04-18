@@ -2,7 +2,7 @@
 
 <PluginInfo commercial="true" name="filter-operator-multiple-keywords"></PluginInfo>
 
-## 插件简介
+## 介绍
 
 **多关键词筛选**插件为 NocoBase 平台增加了强大的文本筛选功能，让您能够在单行文本字段中使用多个关键词进行筛选，大大提高了数据查询的灵活性和效率。
 
