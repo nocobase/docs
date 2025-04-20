@@ -1,21 +1,30 @@
 # 设置样式
 
 ## 介绍
+字段样式的联动规则是提升用户交互体验的重要工具，通过动态样式配置，可以提升区块的视觉效果，帮助用户更快速地识别关键信息。
+主要包括：
 
-用户可以在样式菜单中调整字段的样式包括color,background-color,text-align,font-size、font-weight、font-style，同时支持依据字段值或系统变量值动态调整。
+- `color`
+- `background-color`
+- `text-align`
+- `font-size`
+- `font-weight`
+- `font-style`
+
+常用于根据字段状态高亮重点信息、提示异常或进行视觉引导。
 
 ## 使用方法
 
-假设我们有一张银行交易明细表，有一列是交易金额，我们要把正数（收入）设置为绿色，负数（支出）设置为红色，以下是具体的操作步骤：
+示例：根据订单金额的不同，将订单金额字段的颜色进行动态调整。当订单金额超过1000时，设置为绿色；当订单金额小于等于1000时，设置为红色。
 
-1. 首先，打开交易金额的字段设置菜单，点击风格。
-![style-menu-2024-08-08-18-23-13](https://static-docs.nocobase.com/style-menu-2024-08-08-18-23-13.png)
+![20250418171434](https://static-docs.nocobase.com/20250418171434.png)
 
-2. 点击添加联动规则，设置第一个规则，当交易金额大于0时字段的颜色设置为绿色。
-![style-green-2024-08-08-18-33-34](https://static-docs.nocobase.com/style-green-2024-08-08-18-33-34.png)
+- 规则一，设置条件为**订单金额大于10000**时，字段颜色为绿色。
 
-3. 再次点击添加联动规则，设置第二个规则，当交易金额小于0时字段的颜色设置为红色。
-![style-red-2024-08-08-18-35-01](https://static-docs.nocobase.com/style-red-2024-08-08-18-35-01.png)
+![20250418171640](https://static-docs.nocobase.com/20250418171640.png)
 
-最终的效果如下
-![result-2024-08-08-18-38-05](https://static-docs.nocobase.com/result-2024-08-08-18-38-05.png)
+- 规则二，设置条件为**订单金额小于等于1000**时，字段颜色为红色。
+
+![20250418171900](https://static-docs.nocobase.com/20250418171900.png)
+
+更多联动规则说明参考 [联动规则](/handbook/ui/linkage-rule)

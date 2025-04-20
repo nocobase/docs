@@ -76,4 +76,4 @@
 
 ![20250418170520](https://static-docs.nocobase.com/20250418170520.png)
 
-更多联动规则说明参考[联动规则](/handbook/ui/linkage-rule)
+更多联动规则说明参考 [联动规则](/handbook/ui/linkage-rule)
