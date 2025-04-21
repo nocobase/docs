@@ -52,11 +52,7 @@ When sign up is not allowed, the sign up page cannot be accessed
 
 ![](https://static-docs.nocobase.com/09325c4b07e09f88f80a14dff8430556.png)
 
-### Sign up form Settings
-
-:::info
-`v1.4.0-beta.7` and later versions supported.
-:::
+### Sign up form Settings<Badge>v1.4.0-beta.7+</Badge>
 
 You can set which fields in the user collection need to be displayed in the sign up form and whether they are required or not. At least one of username or email fields needs to be set to display and required.
 
@@ -65,3 +61,64 @@ You can set which fields in the user collection need to be displayed in the sign
 Sign up page
 
 ![](https://static-docs.nocobase.com/202411262135801.png)
+
+### Forgot Password<Badge>v1.7.0+</Badge>
+
+The forgot password feature allows users to reset their password via email verification when they cannot remember it.
+
+#### Admin Configuration
+
+1.  **Enable Forgot Password Feature**
+
+    In "Settings" > "Authentication" > "Forgot password" tab, check the "Enable forgot password feature" checkbox.
+
+    ![20250421101929_rec_](https://static-docs.nocobase.com/20250421101929_rec_.gif)
+
+2.  **Configure Notification Channel**
+
+    Select an email notification channel (currently only email is supported). If no notification channel is available, please add one first.
+
+    ![20250421102311_rec_](https://static-docs.nocobase.com/20250421102311_rec_.gif)
+
+3.  **Configure Password Reset Email**
+
+    Customize the email subject and content, supporting HTML or plain text format. The following variables can be used:
+    - Current User
+    - Date
+    - Reset Password Link
+
+    ![20250421102902](https://static-docs.nocobase.com/20250421102902.png)
+
+4.  **Set Reset Link Validity Period**
+
+    Set the validity period of the reset link in minutes, default is 60 minutes.
+
+    ![20250421103240](https://static-docs.nocobase.com/20250421103240.png)
+
+#### User Flow
+
+1.  **Initiate Password Reset Request**
+
+    Click the "Forgot Password" link on the login page (requires the administrator to enable the forgot password feature first) to enter the forgot password page.
+
+    ![20250421103458_rec_](https://static-docs.nocobase.com/20250421103458_rec_.gif)
+
+    Enter the registered email address and click the "Send Reset Email" button.
+
+    ![20250421113442_rec_](https://static-docs.nocobase.com/20250421113442_rec_.gif)
+
+2.  **Reset Password**
+
+    The user will receive an email containing a reset link. After clicking the link, set a new password on the opened page.
+
+    ![20250421113748](https://static-docs.nocobase.com/20250421113748.png)
+
+    After setting it up, the user can log in to the system with the new password.
+
+#### Notes
+
+-   The reset link has a time limit, usually valid within 60 minutes after generation (configurable by the administrator).
+-   The link can only be used once and becomes invalid immediately after use.
+-   If the user does not receive the reset email, please check if the email address is correct or check the spam folder.
+-   Administrators should ensure that the mail server is configured correctly to guarantee successful delivery of reset emails.
+

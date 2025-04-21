@@ -52,11 +52,7 @@ Lorsque l'inscription n'est pas autorisée, la page d'inscription ne pourra pas 
 
 ![](https://static-docs.nocobase.com/09325c4b07e09f88f80a14dff8430556.png)
 
-### Paramètres du formulaire d'inscription
-
-:::info
-Les versions `v1.4.0-beta.7` et ultérieures prennent en charge cette fonctionnalité.
-:::
+### Paramètres du formulaire d'inscription<Badge>v1.4.0-beta.7+</Badge>
 
 Vous pouvez définir les champs de la collection des utilisateurs à afficher dans le formulaire d'inscription et s'ils sont requis ou non. Au moins un des champs `nom d'utilisateur` ou `email` doit être défini pour s'afficher et être requis.
 
@@ -65,3 +61,64 @@ Vous pouvez définir les champs de la collection des utilisateurs à afficher da
 Page d'inscription
 
 ![](https://static-docs.nocobase.com/202411262135801.png)
+
+### Mot de passe oublié<Badge>v1.7.0+</Badge>
+
+La fonction de mot de passe oublié permet aux utilisateurs de réinitialiser leur mot de passe par vérification par e-mail lorsqu'ils ne s'en souviennent plus.
+
+#### Configuration administrateur
+
+1.  **Activer la fonction de mot de passe oublié**
+
+    Dans "Paramètres" > "Authentification" > onglet "Mot de passe oublié", cochez la case "Activer la fonction de mot de passe oublié".
+
+    ![20250421101929_rec_](https://static-docs.nocobase.com/20250421101929_rec_.gif)
+
+2.  **Configurer le canal de notification**
+
+    Sélectionnez un canal de notification par e-mail (actuellement, seul l'e-mail est pris en charge). Si aucun canal de notification n'est disponible, veuillez en ajouter un d'abord.
+
+    ![20250421102311_rec_](https://static-docs.nocobase.com/20250421102311_rec_.gif)
+
+3.  **Configurer l'e-mail de réinitialisation du mot de passe**
+
+    Personnalisez l'objet et le contenu de l'e-mail, en prenant en charge le format HTML ou texte brut. Les variables suivantes peuvent être utilisées :
+    - Utilisateur actuel
+    - Date
+    - Lien de réinitialisation du mot de passe
+
+    ![20250421102902](https://static-docs.nocobase.com/20250421102902.png)
+
+4.  **Définir la période de validité du lien de réinitialisation**
+
+    Définissez la période de validité du lien de réinitialisation en minutes, la valeur par défaut est de 60 minutes.
+
+    ![20250421103240](https://static-docs.nocobase.com/20250421103240.png)
+
+#### Flux utilisateur
+
+1.  **Initier la demande de réinitialisation du mot de passe**
+
+    Cliquez sur le lien "Mot de passe oublié" sur la page de connexion (nécessite que l'administrateur active d'abord la fonction de mot de passe oublié) pour accéder à la page de mot de passe oublié.
+
+    ![20250421103458_rec_](https://static-docs.nocobase.com/20250421103458_rec_.gif)
+
+    Entrez l'adresse e-mail enregistrée et cliquez sur le bouton "Envoyer l'e-mail de réinitialisation".
+
+    ![20250421113442_rec_](https://static-docs.nocobase.com/20250421113442_rec_.gif)
+
+2.  **Réinitialiser le mot de passe**
+
+    L'utilisateur recevra un e-mail contenant un lien de réinitialisation. Après avoir cliqué sur le lien, définissez un nouveau mot de passe sur la page ouverte.
+
+    ![20250421113748](https://static-docs.nocobase.com/20250421113748.png)
+
+    Une fois la configuration terminée, l'utilisateur peut se connecter au système avec le nouveau mot de passe.
+
+#### Remarques
+
+-   Le lien de réinitialisation a une limite de temps, généralement valide dans les 60 minutes suivant sa génération (configurable par l'administrateur).
+-   Le lien ne peut être utilisé qu'une seule fois et devient invalide immédiatement après utilisation.
+-   Si l'utilisateur ne reçoit pas l'e-mail de réinitialisation, veuillez vérifier si l'adresse e-mail est correcte ou consulter le dossier spam.
+-   Les administrateurs doivent s'assurer que le serveur de messagerie est correctement configuré pour garantir la livraison réussie des e-mails de réinitialisation.
+
