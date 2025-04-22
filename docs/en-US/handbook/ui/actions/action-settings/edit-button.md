@@ -2,8 +2,8 @@
 
 ## Introduction
 
-You can personalize the button’s name, icon, and background color. There are three color choices: default, highlighted, or Danger red.
+You can customize the button's name, icon, and background color. You can choose from three color options: default, highlight, or red. When an icon is set, the button can display only the icon.
 
-![20240413093715](https://static-docs.nocobase.com/20240413093715.png)
+![20250405140611](https://static-docs.nocobase.com/20250405140611.png)
 
-![20240413093745](https://static-docs.nocobase.com/20240413093745.png)
+![20250405140640](https://static-docs.nocobase.com/20250405140640.png)

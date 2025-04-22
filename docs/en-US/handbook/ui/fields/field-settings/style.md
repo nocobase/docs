@@ -1,22 +1,29 @@
-# Style Configuration
+# Set Styles
 
 ## Introduction
+The field style linkage rules are an important tool to enhance user interaction. By dynamically configuring styles, it improves the visual effect of blocks and helps users quickly identify key information. The main style properties include:
 
-Users can adjust the style of fields in the style menu (currently supporting color and background color settings). Additionally, styles can be dynamically adjusted based on field values or system variables.
+- `color`
+- `background-color`
+- `text-align`
+- `font-size`
+- `font-weight`
+- `font-style`
 
-## How to Use
+These are commonly used to highlight key information based on field status, indicate anomalies, or guide visually.
 
-Suppose we have a bank transaction detail table with a column for transaction amounts. We want to set positive amounts (income) to green and negative amounts (expenses) to red. Here are the specific steps:
+## Usage
 
-1. First, open the settings menu for the transaction amount field and click on the style option.
-![Screenshot_2024-08-08_14-56-12-2024-08-08-22-57-37](https://static-docs.nocobase.com/Screenshot_2024-08-08_14-56-12-2024-08-08-22-57-37.png)
+Example: Dynamically adjust the color of the order amount field based on the order amount. When the order amount exceeds 1000, set the color to green; when the order amount is less than or equal to 1000, set the color to red.
 
-2. Click "Add Dynamic Rule" and set the first rule: when the transaction amount is greater than 0, set the field color to green.
-![Screenshot_2024-08-08_14-58-17-2024-08-08-22-58-36](https://static-docs.nocobase.com/Screenshot_2024-08-08_14-58-17-2024-08-08-22-58-36.png)
+![20250418171434](https://static-docs.nocobase.com/20250418171434.png)
 
-3. Click "Add Dynamic Rule" again to set the second rule: when the transaction amount is less than 0, set the field color to red.
+- **Rule 1**: Set the condition to **order amount greater than 10000**, and the field color will be green.
 
-![Screenshot_2024-08-08_14-59-03-2024-08-08-22-59-14](https://static-docs.nocobase.com/Screenshot_2024-08-08_14-59-03-2024-08-08-22-59-14.png)
+![20250418171640](https://static-docs.nocobase.com/20250418171640.png)
 
-The final result will look like this:
-![Screenshot_2024-08-08_14-59-20-2024-08-08-22-59-28](https://static-docs.nocobase.com/Screenshot_2024-08-08_14-59-20-2024-08-08-22-59-28.png)
+- **Rule 2**: Set the condition to **order amount less than or equal to 1000**, and the field color will be red.
+
+![20250418171900](https://static-docs.nocobase.com/20250418171900.png)
+
+For more details, refer to [Linkage Rules](/handbook/ui/linkage-rule).
