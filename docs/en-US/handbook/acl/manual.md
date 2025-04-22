@@ -50,124 +50,99 @@ Scenario 1: Multiple roles setting conditions on the same field
 
 Role A filter: Age < 30  
 
-<table style="table-layout: fixed; width: 100%;">
-  <tr><th>UserID</th><th>Name</th><th>Age</th></tr>
-  <tr><td>1</td><td>Jack</td><td>23</td></tr>
-  <tr><td>2</td><td>Lily</td><td>29</td></tr>
-</table>
+| UserID | Name | Age |
+| ------ | ---- | --- |
+| 1      | Jack | 23  |
+| 2      | Lily | 29  |
 
 Role B filter: Age > 25
-<table style="table-layout: fixed; width: 100%;">
-  <tr><th>UserID</th><th>Name</th><th>Age</th></tr>
-  <tr><td>2</td><td>Lily</td><td>29</td></tr>
-  <tr><td>3</td><td>Sam</td><td>32</td></tr>
-</table>
+
+| UserID | Name | Age |
+| ------ | ---- | --- |
+| 2      | Lily | 29  |
+| 3      | Sam  | 32  |
 
 **After merging:**
-<table style="table-layout: fixed; width: 100%;">
-  <tr><th>UserID</th><th>Name</th><th>Age</th></tr>
-  <tr><td>1</td><td>Jack</td><td>23</td></tr>
-  <tr><td>2</td><td>Lily</td><td>29</td></tr>
-  <tr><td>3</td><td>Sam</td><td>32</td></tr>
-</table>
+
+| UserID | Name | Age |
+| ------ | ---- | --- |
+| 1      | Jack | 23  |
+| 2      | Lily | 29  |
+| 3      | Sam  | 32  |
 
 
 Scenario 2: Different roles setting conditions on different fields
 
 Role A filter: Age < 30
-<table style="table-layout: fixed; width: 100%;">
-  <tr><th>UserID</th><th>Name</th><th>Age</th></tr>
-  <tr><td>1</td><td>Jack</td><td>23</td></tr>
-  <tr><td>2</td><td>Lily</td><td>29</td></tr>
-</table>
 
-Role B filter: Name contains “Ja”
-<table style="table-layout: fixed; width: 100%;">
-  <tr><th>UserID</th><th>Name</th><th>Age</th></tr>
-  <tr><td>1</td><td>Jack</td><td>23</td></tr>
-  <tr><td>3</td><td>Jasmin</td><td>27</td></tr>
-</table>
+| UserID | Name | Age |
+| ------ | ---- | --- |
+| 1      | Jack | 23  |
+| 2      | Lily | 29  |
+
+Role B filter: Name contains "Ja"
+
+| UserID | Name   | Age |
+| ------ | ------ | --- |
+| 1      | Jack   | 23  |
+| 3      | Jasmin | 27  |
 
 **After merging:**
-<table style="table-layout: fixed; width: 100%;">
-  <tr><th>UserID</th><th>Name</th><th>Age</th></tr>
-  <tr><td>1</td><td>Jack</td><td>23</td></tr>
-  <tr><td>2</td><td>Lily</td><td>29</td></tr>
-  <tr><td>3</td><td>Jasmin</td><td>27</td></tr>
-</table>
+
+| UserID | Name   | Age |
+| ------ | ------ | --- |
+| 1      | Jack   | 23  |
+| 2      | Lily   | 29  |
+| 3      | Jasmin | 27  |
 
 ##### Data Columns
 
 Role A visible columns: Name, Age
-<table style="table-layout: fixed; width: 100%;">
-  <tr><th>UserID</th><th>Name</th><th>Age</th></tr>
-  <tr><td>1</td><td>Jack</td><td>23</td></tr>
-  <tr><td>2</td><td>Lily</td><td>29</td></tr>
-</table>
+
+| UserID | Name | Age |
+| ------ | ---- | --- |
+| 1      | Jack | 23  |
+| 2      | Lily | 29  |
 
 Role B visible columns: Name, Sex
-<table style="table-layout: fixed; width: 100%;">
-  <tr><th>UserID</th><th>Name</th><th>Sex</th></tr>
-  <tr><td>1</td><td>Jack</td><td>Man</td></tr>
-  <tr><td>2</td><td>Lily</td><td>Woman</td></tr>
-</table>
+
+| UserID | Name | Sex   |
+| ------ | ---- | ----- |
+| 1      | Jack | Man   |
+| 2      | Lily | Woman |
 
 **After merging:**
-<table style="table-layout: fixed; width: 100%;">
-  <tr><th>UserID</th><th>Name</th><th>Age</th><th>Sex</th></tr>
-  <tr><td>1</td><td>Jack</td><td>23</td><td>Man</td></tr>
-  <tr><td>2</td><td>Lily</td><td>29</td><td>Woman</td></tr>
-</table>
+
+| UserID | Name | Age | Sex   |
+| ------ | ---- | --- | ----- |
+| 1      | Jack | 23  | Man   |
+| 2      | Lily | 29  | Woman |
 
 ##### Mixed Rows and Columns
 Role A filter: Age < 30, columns Name, Age
-<table style="table-layout: fixed; width: 100%;">
-  <tr>
-    <th>UserID</th>
-    <th>Name</th>
-    <th>Age</th>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Jack</td>
-    <td>23</td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>Lily</td>
-    <td>29</td>
-  </tr>
-</table>
 
-Role B filter: Name contains “Ja”, columns Name, Sex
-<table style="table-layout: fixed; width: 100%;">
-  <tr>
-    <th>UserID</th>
-    <th>Name</th>
-    <th>Sex</th>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>Jade</td>
-    <td>Woman</td>
-  </tr>
-  <tr>
-    <td>4</td>
-    <td>James</td>
-    <td>Man</td>
-  </tr>
-</table>
+| UserID | Name | Age |
+| ------ | ---- | --- |
+| 1      | Jack | 23  |
+| 2      | Lily | 29  |
+
+Role B filter: Name contains "Ja", columns Name, Sex
+
+| UserID | Name  | Sex   |
+| ------ | ----- | ----- |
+| 3      | Jade  | Woman |
+| 4      | James | Man   |
 
 **After merging:**
-<table style="table-layout: fixed; width: 100%;">
-  <tr><th>UserID</th><th>Name</th><th>Age</th><th>Sex</th></tr>
-  <tr><td>1</td><td>Jack</td><td>23</td><td><span style="background-color:#FFDDDD">Man</span></td></tr>
-  <tr><td>2</td><td>Lily</td><td>29</td><td><span style="background-color:#FFDDDD">Woman</span></td></tr>
-  <tr><td>3</td><td>Jade</td><td><span style="background-color:#FFDDDD">27</span></td><td>Woman</td></tr>
-  <tr><td>4</td><td>James</td><td><span style="background-color:#FFDDDD">31</span></td><td>Man</td></tr>
-</table>
 
-Note: Cells with red background indicate data invisible in individual roles but visible in the merged role.
+| UserID | Name  | Age                                      | Sex                                        |
+| ------ | ----- | ---------------------------------------- | ------------------------------------------ |
+| 1      | Jack  | 23                                       | <span style="background-color:#FFDDDD">Man</span>   |
+| 2      | Lily  | 29                                       | <span style="background-color:#FFDDDD">Woman</span> |
+| 3      | Jade  | <span style="background-color:#FFDDDD">27</span> | Woman                                      |
+| 4      | James | <span style="background-color:#FFDDDD">31</span> | Man                                        |
+
+**Note: Cells with red background indicate data invisible in individual roles but visible in the merged role.**
 
 ##### Summary
 

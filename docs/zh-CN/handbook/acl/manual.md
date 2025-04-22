@@ -42,277 +42,99 @@
 
 角色A，配置条件：Age < 30
 
-<table style="table-layout: fixed; width: 100%;">
-  <tr>
-    <th>UserID</th>
-    <th>Name</th>
-    <th>Age</th>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Jack</td>
-    <td>23</td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>Lily</td>
-    <td>29</td>
-  </tr>
-</table>
+| UserID | Name | Age |
+| ------ | ---- | --- |
+| 1      | Jack | 23  |
+| 2      | Lily | 29  |
 
 角色B，配置条件：Age > 25
 
-<table style="table-layout: fixed; width: 100%;">
-  <tr>
-    <th>UserID</th>
-    <th>Name</th>
-    <th>Age</th>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>Lily</td>
-    <td>29</td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>Sam</td>
-    <td>32</td>
-  </tr>
-</table>
+| UserID | Name | Age |
+| ------ | ---- | --- |
+| 2      | Lily | 29  |
+| 3      | Sam  | 32  |
 
 合并后：
 
-<table style="table-layout: fixed; width: 100%;">
-  <tr>
-    <th>UserID</th>
-    <th>Name</th>
-    <th>Age</th>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Jack</td>
-    <td>23</td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>Lily</td>
-    <td>29</td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>Sam</td>
-    <td>32</td>
-  </tr>
-</table>
+| UserID | Name | Age |
+| ------ | ---- | --- |
+| 1      | Jack | 23  |
+| 2      | Lily | 29  |
+| 3      | Sam  | 32  |
 
 场景2：不同角色设置不同字段为条件
 
 角色A，配置条件：Age < 30
 
-<table style="table-layout: fixed; width: 100%;">
-  <tr>
-    <th>UserID</th>
-    <th>Name</th>
-    <th>Age</th>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Jack</td>
-    <td>23</td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>Lily</td>
-    <td>29</td>
-  </tr>
-</table>
+| UserID | Name | Age |
+| ------ | ---- | --- |
+| 1      | Jack | 23  |
+| 2      | Lily | 29  |
 
-角色B，配置条件：Name包含“Ja”
-<table style="table-layout: fixed; width: 100%;">
-  <tr>
-    <th>UserID</th>
-    <th>Name</th>
-    <th>Age</th>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Jack</td>
-    <td>23</td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>Jasmin</td>
-    <td>27</td>
-  </tr>
-</table>
+角色B，配置条件：Name包含"Ja"
+
+| UserID | Name   | Age |
+| ------ | ------ | --- |
+| 1      | Jack   | 23  |
+| 3      | Jasmin | 27  |
 
 合并后：
 
-<table style="table-layout: fixed; width: 100%;">
-  <tr>
-    <th>UserID</th>
-    <th>Name</th>
-    <th>Age</th>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Jack</td>
-    <td>23</td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>Lily</td>
-    <td>29</td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>Jasmin</td>
-    <td>27</td>
-  </tr>
-</table>
+| UserID | Name   | Age |
+| ------ | ------ | --- |
+| 1      | Jack   | 23  |
+| 2      | Lily   | 29  |
+| 3      | Jasmin | 27  |
 
 ##### 数据列
 
 角色A，配置可见字段：Name，Age
 
-<table style="table-layout: fixed; width: 100%;">
-  <tr>
-    <th>UserID</th>
-    <th>Name</th>
-    <th>Age</th>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Jack</td>
-    <td>23</td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>Lily</td>
-    <td>29</td>
-  </tr>
-</table>
+| UserID | Name | Age |
+| ------ | ---- | --- |
+| 1      | Jack | 23  |
+| 2      | Lily | 29  |
 
 角色B，配置可见字段：Name，Sex
 
-<table style="table-layout: fixed; width: 100%;">
-  <tr>
-    <th>UserID</th>
-    <th>Name</th>
-    <th>Sex</th>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Jack</td>
-    <td>Man</td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>Lily</td>
-    <td>Woman</td>
-  </tr>
-</table>
+| UserID | Name | Sex   |
+| ------ | ---- | ----- |
+| 1      | Jack | Man   |
+| 2      | Lily | Woman |
 
 合并后：
 
-<table style="table-layout: fixed; width: 100%;">
-  <tr>
-    <th>UserID</th>
-    <th>Name</th>
-    <th>Age</th>
-    <th>Sex</th>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Jack</td>
-    <td>23</td>
-    <td>Man</td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>Lily</td>
-    <td>29</td>
-    <td>Woman</td>
-  </tr>
-</table>
+| UserID | Name | Age | Sex   |
+| ------ | ---- | --- | ----- |
+| 1      | Jack | 23  | Man   |
+| 2      | Lily | 29  | Woman |
 
 ##### 行列混合
 
 角色A，配置条件为Age < 30，可见字段为Name，Age
 
-<table style="table-layout: fixed; width: 100%;">
-  <tr>
-    <th>UserID</th>
-    <th>Name</th>
-    <th>Age</th>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Jack</td>
-    <td>23</td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>Lily</td>
-    <td>29</td>
-  </tr>
-</table>
+| UserID | Name | Age |
+| ------ | ---- | --- |
+| 1      | Jack | 23  |
+| 2      | Lily | 29  |
 
-角色B，配置条件为Name包含“Ja”，可见字段为Name、Sex
-<table style="table-layout: fixed; width: 100%;">
-  <tr>
-    <th>UserID</th>
-    <th>Name</th>
-    <th>Sex</th>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>Jade</td>
-    <td>Woman</td>
-  </tr>
-  <tr>
-    <td>4</td>
-    <td>James</td>
-    <td>Man</td>
-  </tr>
-</table>
+角色B，配置条件为Name包含"Ja"，可见字段为Name、Sex
+
+| UserID | Name  | Sex   |
+| ------ | ----- | ----- |
+| 3      | Jade  | Woman |
+| 4      | James | Man   |
 
 合并后：
 
-<table style="table-layout: fixed; width: 100%;">
-  <tr>
-    <th>UserID</th>
-    <th>Name</th>
-    <th>Age</th>
-    <th>Sex</th>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Jack</td>
-    <td>23</td>
-    <td><span style="background-color:#FFDDDD">Man</span></td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>Lily</td>
-    <td>29</td>
-    <td><span style="background-color:#FFDDDD">Woman</span></td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>Jade</td>
-    <td><span style="background-color:#FFDDDD">27</span></td>
-    <td>Woman</td>
-  </tr>
-  <tr>
-    <td>4</td>
-    <td>James</td>
-    <td><span style="background-color:#FFDDDD">31</span></td>
-    <td>Man</td>
-  </tr>
-</table>
+| UserID | Name  | Age                                      | Sex                                        |
+| ------ | ----- | ---------------------------------------- | ------------------------------------------ |
+| 1      | Jack  | 23                                       | <span style="background-color:#FFDDDD">Man</span>   |
+| 2      | Lily  | 29                                       | <span style="background-color:#FFDDDD">Woman</span> |
+| 3      | Jade  | <span style="background-color:#FFDDDD">27</span> | Woman                             |
+| 4      | James | <span style="background-color:#FFDDDD">31</span> | Man                               |
 
-**说明：红色单元格标注的数据，在不同角色都不可见，但在合并角色下可见**
+**说明：部分标记的数据，在不同角色都不可见，但在合并角色下可见**
 
 ##### 总结
 角色合并在数据范围规则：

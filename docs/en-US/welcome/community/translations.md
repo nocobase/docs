@@ -57,7 +57,13 @@ When translating, please gradually convert it to a structure similar to the foll
 ```
 
 #### 1.3 Translation Testing and Synchronization
-After completing your translation, please test and verify that all texts display correctly( we will provide verification methods later). Once submitted, the system will automatically synchronize the localization content to the repository.
+- After completing your translation, please test and verify that all texts display correctly.
+We've also released a translation validation plugin - search for `Locale tester` in the plugin marketplace.
+![20250422233152](https://static-docs.nocobase.com/20250422233152.png)
+After installation, copy the JSON content from the corresponding localization file in the git repository, paste it inside, and click OK to verify if the translation content is effective.
+![20250422233950](https://static-docs.nocobase.com/20250422233950.png)
+
+- Once submitted, system scripts will automatically synchronize the localization content to the code repository.
 
 ## II. Documentation and User Manual Localization
 
@@ -83,10 +89,12 @@ Notes:
   
   ![Plugin Information Diagram](https://static-docs.nocobase.com/20250319122109.png)
 
-## III. Website Localization
+## III. Website Localization (Detailed Guide)
 
-Website pages and all related texts are stored in:
+The website pages and all content are stored in:
 https://github.com/nocobase/website
+
+### 3.0 Getting Started and Reference Resources
 
 When adding a new language, please refer to the existing language pages:
 - English: https://github.com/nocobase/website/blob/main/src/en/
@@ -102,12 +110,155 @@ Global style modifications are located at:
 
 ![Global Style Diagram](https://static-docs.nocobase.com/20250319121501.png)
 
-The website’s global component localization is available at:
+The website's global component localization is available at:
 https://github.com/nocobase/website/tree/main/src/components
 
 ![Website Components Diagram](https://static-docs.nocobase.com/20250319122940.png)
 
-## How to Start Translating
+### 3.1 Content Structure and Localization Method
+
+We use a mixed content management approach. English, Chinese, and Japanese content and resources are regularly synchronized from the CMS system and overwritten, while other languages can be edited directly in local files. Local content is stored in the `content` directory, organized as follows:
+
+```
+/content
+  /articles        # Blog articles
+    /article-slug
+      index.md     # English content (default)
+      index.cn.md  # Chinese content 
+      index.ja.md  # Japanese content
+      metadata.json # Metadata and other localization properties
+  /tutorials       # Tutorials
+  /releases        # Release information
+  /pages           # Some static pages
+  /categories      # Category information
+    /article-categories.json  # Article category list
+    /category-slug            # Individual category details
+      /category.json
+  /tags            # Tag information
+    /article-tags.json        # Article tag list
+    /release-tags.json        # Release tag list
+    /tag-slug                 # Individual tag details
+      /tag.json
+  /help-center     # Help center content
+    /help-center-tree.json    # Help center navigation structure
+  ....
+```
+
+### 3.2 Content Translation Guidelines
+
+- About Markdown Content Translation
+
+1. Create a new language file based on the default file (e.g., `index.md` to `index.fr.md`)
+2. Add localized properties in the corresponding fields in the JSON file
+3. Maintain consistency in file structure, links, and image references
+
+- JSON Content Translation
+Many content metadata are stored in JSON files, which typically contain multilingual fields:
+
+```json
+{
+  "id": 123,
+  "title": "English Title",       // English title (default)
+  "title_cn": "中文标题",          // Chinese title
+  "title_ja": "日本語タイトル",    // Japanese title
+  "description": "English description",
+  "description_cn": "中文描述",
+  "description_ja": "日本語の説明",
+  "slug": "article-slug",         // URL path (usually not translated)
+  "status": "published",
+  "publishedAt": "2025-03-19T12:00:00Z"
+}
+```
+
+**Translation Notes:**
+
+1. **Field Naming Convention**: Translation fields typically use the `{original_field}_{language_code}` format
+   - For example: title_fr (French title), description_de (German description)
+
+2. **When Adding a New Language**:
+   - Add a corresponding language suffix version for each field that needs translation
+   - Do not modify the original field values (such as title, description, etc.), as they serve as default language (English) content
+
+3. **CMS Synchronization Mechanism**:
+   - The CMS system periodically updates English, Chinese and Japanese content
+   - The system will only update/overwrite content for these three languages (some properties in the JSON), and **will not delete** language fields added by other contributors
+   - For example: if you added a French translation (title_fr), CMS synchronization will not affect this field
+
+
+### 3.3 Configuring Support for a New Language
+
+To add support for a new language, you need to modify the `SUPPORTED_LANGUAGES` configuration in the `src/utils/index.ts` file:
+
+```typescript
+export const SUPPORTED_LANGUAGES = {
+  en: {
+    code: 'en',
+    locale: 'en-US',
+    name: 'English',
+    default: true
+  },
+  cn: {
+    code: 'cn',
+    locale: 'zh-CN',
+    name: 'Chinese'
+  },
+  ja: {
+    code: 'ja',
+    locale: 'ja-JP',
+    name: 'Japanese'
+  },
+  // Example of adding a new language:
+  fr: {
+    code: 'fr',
+    locale: 'fr-FR',
+    name: 'French'
+  }
+};
+```
+
+### 3.4 Layout Files and Styles
+
+Each language needs corresponding layout files:
+
+1. Create a new layout file (e.g., for French, create `src/layouts/BaseFR.astro`)
+2. You can copy an existing layout file (such as `BaseEN.astro`) and translate it
+3. The layout file contains translations for global elements like navigation menus, footers, etc.
+4. Be sure to update the language switcher configuration to properly switch to the newly added language
+
+### 3.5 Creating Language Page Directories
+
+Create independent page directories for the new language:
+
+1. Create a folder named with the language code in the `src` directory (e.g., `src/fr/`)
+2. Copy the page structure from other language directories (e.g., `src/en/`)
+3. Update page content, translating titles, descriptions and text into the target language
+4. Ensure pages use the correct layout component (e.g., `.layout: '@/layouts/BaseFR.astro'`)
+
+### 3.6 Component Localization
+
+Some common components also need translation:
+
+1. Check components in the `src/components/` directory
+2. Pay special attention to components with fixed text (like navigation bars, footers, etc.)
+3. Components may use conditional rendering to display content in different languages:
+
+```astro
+{Astro.url.pathname.startsWith('/en') && <p>English content</p>}
+{Astro.url.pathname.startsWith('/cn') && <p>中文内容</p>}
+{Astro.url.pathname.startsWith('/fr') && <p>Contenu français</p>}
+```
+
+### 3.7 Testing and Validation
+
+After completing the translation, conduct thorough testing:
+
+1. Run the website locally (usually using `yarn dev`)
+2. Check how all pages display in the new language
+3. Verify that the language switching functionality works properly
+4. Ensure all links point to the correct language version pages
+5. Check responsive layouts to ensure translated text doesn't break page design
+
+## IV. How to Start Translating
 
 If you want to contribute a new language translation to NocoBase, please follow these steps:
 
