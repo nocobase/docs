@@ -47,7 +47,7 @@ NocoBase v1.3.17-beta 以上が必要です。
 
 ![20240906084911_rec_](https://static-docs.nocobase.com/20240906084911_rec_.gif)
 
-詳細については、[連動規則](/handbook/ui/blocks/block-settings/linkage-rule)をご参照ください。
+詳細については、[連動規則](/handbook/ui/blocks/block-settings/field-linkage-rule)をご参照ください。
 
 ### 允许解除已有数据关联
 

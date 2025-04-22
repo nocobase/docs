@@ -20,6 +20,9 @@
 
 <img src="https://static-docs.nocobase.com/202404202134187.png"/>
 
+### UISchema 中的词条
+
+
 ### 同步翻译词条
 
 <img src="https://static-docs.nocobase.com/202404202134850.png"/>

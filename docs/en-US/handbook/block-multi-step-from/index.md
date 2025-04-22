@@ -22,7 +22,7 @@ Control the behavior of form fields through linkage rules.
 
 ![](https://static-docs.nocobase.com/202410101717884.png)
 
-More content reference [Linkage rules](/handbook/ui/blocks/block-settings/linkage-rule)
+More content reference [Linkage rules](/handbook/ui/blocks/block-settings/field-linkage-rule)
 
 
 ### Block Height Setting

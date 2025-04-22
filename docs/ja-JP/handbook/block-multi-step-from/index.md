@@ -21,7 +21,7 @@
 
 ![](https://static-docs.nocobase.com/202410101717884.png)
 
-詳細は[リンクルール](/handbook/ui/blocks/block-settings/linkage-rule)をご参照ください。
+詳細は[リンクルール](/handbook/ui/blocks/block-settings/field-linkage-rule)をご参照ください。
 
 ### ブロックの高さを設定する
 

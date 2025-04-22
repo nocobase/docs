@@ -2,8 +2,9 @@
 
 ## Introduction
 
-Vous pouvez personnaliser le nom, l'icône et la couleur de fond du bouton. Trois choix de couleur sont disponibles : par défaut, en surbrillance ou en rouge danger.
+Vous pouvez personnaliser le nom du bouton, l'icône et la couleur de fond du bouton. Trois couleurs sont disponibles : par défaut, survolée ou rouge. Lorsque l'icône est définie, il est possible d'afficher uniquement l'icône.
 
-![20240413093715](https://static-docs.nocobase.com/20240413093715.png)
+![20250405140611](https://static-docs.nocobase.com/20250405140611.png)
 
-![20240413093745](https://static-docs.nocobase.com/20240413093745.png)
+![20250405140640](https://static-docs.nocobase.com/20250405140640.png)
+

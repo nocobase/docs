@@ -25,7 +25,7 @@ Example: The Form filter block connects to the details data block to implement l
 For more content, refer to [Connect to Data Block](/handbook/ui/blocks/block-settings/connect-block)
 
 - [Edit Block Title](/handbook/ui/blocks/block-settings/block-title)
-- [Linkage Rules](/handbook/ui/blocks/block-settings/linkage-rule)
+- [Linkage Rules](/handbook/ui/blocks/block-settings/field-linkage-rule)
 - [Save as Block Template](/handbook/block-template)
 
 ## Field Configuration

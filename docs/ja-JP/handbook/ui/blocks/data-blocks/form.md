@@ -20,7 +20,7 @@
 
 ![20240416220254](https://static-docs.nocobase.com/20240416220254.png)
 
-詳細については、[連動ルール](/handbook/ui/blocks/block-settings/linkage-rule)を参照してください。
+詳細については、[連動ルール](/handbook/ui/blocks/block-settings/field-linkage-rule)を参照してください。
 
 ### フォームデータテンプレート（新規データのフォームのみサポート）
 
