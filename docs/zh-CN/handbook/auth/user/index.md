@@ -72,28 +72,30 @@ NocoBase 目前支持的用户认证类型有：
 
    在"设置" > "用户认证" > "忘记密码"选项卡中，勾选"启用忘记密码功能"复选框。
 
-   ![20250421101929_rec_](https://static-docs.nocobase.com/20250421101929_rec_.gif)
+   ![20250423071957_rec_](https://static-docs.nocobase.com/20250423071957_rec_.gif)
 
 2. **配置通知渠道**
 
    选择一个邮件通知渠道（当前仅支持邮件）。如果没有可用的通知渠道，请先添加一个。
 
-   ![20250421102311_rec_](https://static-docs.nocobase.com/20250421102311_rec_.gif)
+   ![20250423072225_rec_](https://static-docs.nocobase.com/20250423072225_rec_.gif)
 
 3. **配置密码重置邮件**
 
    自定义邮件主题和内容，支持HTML或纯文本格式。可以使用以下变量：
-   - 当前用户
-   - 日期
-   - 重置密码链接
+   - 当前用户（Current user）
+   - 日期变量（Date variables）
+   - 系统设置（System settings）
+   - 重置密码链接（Reset password link）
+   - 重置链接有效期（分钟）（Reset link expiration (minutes)）
 
-   ![20250421102902](https://static-docs.nocobase.com/20250421102902.png)
+   ![20250423073313](https://static-docs.nocobase.com/20250423073313.png)
 
 4. **设置重置链接有效期**
 
-   设置重置链接的有效时间（分钟），默认为60分钟。
+   设置重置链接的有效时间（分钟），默认为120分钟。
 
-   ![20250421103240](https://static-docs.nocobase.com/20250421103240.png)
+   ![20250423073557](https://static-docs.nocobase.com/20250423073557.png)
 
 #### 用户使用流程
 
