@@ -3309,6 +3309,13 @@ export default [
         'title.ja-JP': '公开表单',
         link: '/handbook/public-forms',
       },
+      {
+        title: 'Multi-keyword filter',
+        'title.fr-FR': 'Filtre à mots-clés multiples',
+        'title.zh-CN': '多关键词筛选',
+        'title.ja-JP': 'マルチキーワードフィルター',
+        link: '/handbook/multi-keyword-filter',
+      },
     ],
   },
 ];
