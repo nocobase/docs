@@ -27,7 +27,7 @@
 詳細については [データブロックの接続](/handbook/ui/blocks/block-settings/connect-block) をご参照ください。
 
 - [ブロックタイトルの編集](/handbook/ui/blocks/block-settings/block-title)
-- [連動ルール](/handbook/ui/blocks/block-settings/linkage-rule)
+- [連動ルール](/handbook/ui/blocks/block-settings/field-linkage-rule)
 - [ブロックテンプレートとして保存](/handbook/block-template)
 
 ## 設定フィールド

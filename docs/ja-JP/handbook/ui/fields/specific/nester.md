@@ -37,5 +37,5 @@ NocoBase v1.3.17-beta 以上のバージョンが必要です。
 
 ![20240906083737_rec_](https://static-docs.nocobase.com/20240906083737_rec_.gif)
 
-詳細は [リンクルール](/handbook/ui/blocks/block-settings/linkage-rule) を参照してください。
+詳細は [リンクルール](/handbook/ui/blocks/block-settings/field-linkage-rule) を参照してください。
 
