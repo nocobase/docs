@@ -55,7 +55,13 @@ https://github.com/nocobase/locales
 ```
 
 #### 1.1.3 翻訳のテストと検証
-※翻訳内容については、適宜テストおよび検証を行ってください。（翻訳完了後、検証方法を提供します）
+- 翻訳内容については、適宜テストおよび検証を行ってください。
+翻訳検証用のプラグインもリリースしています。プラグインマーケットで「翻訳テストツール（Locale tester）」を検索してインストールできます。
+![20250422233152](https://static-docs.nocobase.com/20250422233152.png)
+インストール後、GitリポジトリのJSONファイルの内容をコピーして貼り付け、OKをクリックすると翻訳内容の効果を確認できます。
+![20250422233950](https://static-docs.nocobase.com/20250422233950.png)
+
+- 翻訳を提出すると、専用スクリプトが自動的にローカライズコンテンツをリポジトリへプッシュします。
 
 #### 1.1.4 翻訳の同期
 翻訳を提出すると、専用スクリプトが自動的にローカライズコンテンツをリポジトリへプッシュします。
@@ -82,10 +88,12 @@ https://github.com/nocobase/docs/blob/main/.dumi/theme/builtins/PluginInfo.tsx
 
 ![20250319122109](https://static-docs.nocobase.com/20250319122109.png)
 
-## 3. 公式ウェブサイトのローカライズ
+## 3. 公式ウェブサイトのローカライズ（詳細ガイド）
 
 NocoBase公式ウェブサイトのローカライズコンテンツ（全ページおよびすべてのテキスト）は、以下のリポジトリに保存されています：  
 https://github.com/nocobase/website
+
+### 3.0 スタートガイドと参考リソース
 
 新たな言語の追加は、既存の言語ページを参考にしてください：
 - 英語ページ：https://github.com/nocobase/website/blob/main/src/en/
@@ -105,6 +113,149 @@ https://github.com/nocobase/website
 https://github.com/nocobase/website/tree/main/src/components
 
 ![20250319122940](https://static-docs.nocobase.com/20250319122940.png)
+
+### 3.1 コンテンツ構造とローカライズ方法
+
+私たちは混合コンテンツ管理方式を採用しています。英語、中国語、日本語のコンテンツとリソースはCMSシステムから定期的に同期され上書きされますが、他の言語は直接ローカルファイルを編集することができます。ローカルコンテンツは`content`ディレクトリに以下の構造で保存されています：
+
+```
+/content
+  /articles        # ブログ記事
+    /article-slug
+      index.md     # 英語コンテンツ（デフォルト）
+      index.cn.md  # 中国語コンテンツ 
+      index.ja.md  # 日本語コンテンツ
+      metadata.json # メタデータと他のローカライズプロパティ
+  /tutorials       # チュートリアル
+  /releases        # リリース情報
+  /pages           # 一部の静的ページ
+  /categories      # カテゴリ情報
+    /article-categories.json  # 記事カテゴリリスト
+    /category-slug            # 個別カテゴリ詳細
+      /category.json
+  /tags            # タグ情報
+    /article-tags.json        # 記事タグリスト
+    /release-tags.json        # リリースタグリスト
+    /tag-slug                 # 個別タグ詳細
+      /tag.json
+  /help-center     # ヘルプセンターコンテンツ
+    /help-center-tree.json    # ヘルプセンターナビゲーション構造
+  ....
+```
+
+### 3.2 コンテンツ翻訳のガイドライン
+
+- Markdownコンテンツの翻訳について
+
+1. デフォルトファイル（例：`index.md`）をベースに新言語ファイル（例：`index.fr.md`）を作成
+2. JSONファイル内の対応するフィールドにローカライズされたプロパティを追加
+3. ファイル構造、リンク、画像参照の一貫性を維持
+
+- JSONコンテンツの翻訳
+多くのコンテンツメタデータはJSONファイルに保存され、通常は多言語フィールドを含んでいます：
+
+```json
+{
+  "id": 123,
+  "title": "English Title",       // 英語タイトル（デフォルト）
+  "title_cn": "中文标题",          // 中国語タイトル
+  "title_ja": "日本語タイトル",    // 日本語タイトル
+  "description": "English description",
+  "description_cn": "中文描述",
+  "description_ja": "日本語の説明",
+  "slug": "article-slug",         // URLパス（通常翻訳不要）
+  "status": "published",
+  "publishedAt": "2025-03-19T12:00:00Z"
+}
+```
+
+**翻訳の注意点：**
+
+1. **フィールド命名規則**：翻訳フィールドは通常 `{原フィールド}_{言語コード}` の形式を採用
+   - 例：title_fr（フランス語タイトル）、description_de（ドイツ語説明）
+
+2. **新言語追加時**：
+   - 翻訳が必要な各フィールドに対応する言語のサフィックスバージョンを追加
+   - 元のフィールド値（title、descriptionなど）は変更しないでください。これらはデフォルト言語（英語）のコンテンツとして機能します
+
+3. **CMS同期メカニズム**：
+   - CMSシステムは定期的に英語、中国語、日本語のコンテンツを更新します
+   - システムはこれら3つの言語のコンテンツ（JSON内の一部プロパティ）のみを更新/上書きし、他の貢献者が追加した言語フィールドは**削除しません**
+   - 例：フランス語翻訳（title_fr）を追加した場合、CMS同期はそのフィールドに影響しません
+
+
+### 3.3 新言語サポートの設定
+
+新言語サポートを追加するには、`src/utils/index.ts`ファイル内の`SUPPORTED_LANGUAGES`設定を変更する必要があります：
+
+```typescript
+export const SUPPORTED_LANGUAGES = {
+  en: {
+    code: 'en',
+    locale: 'en-US',
+    name: 'English',
+    default: true
+  },
+  cn: {
+    code: 'cn',
+    locale: 'zh-CN',
+    name: 'Chinese'
+  },
+  ja: {
+    code: 'ja',
+    locale: 'ja-JP',
+    name: 'Japanese'
+  },
+  // 新言語追加例：
+  fr: {
+    code: 'fr',
+    locale: 'fr-FR',
+    name: 'French'
+  }
+};
+```
+
+### 3.4 レイアウトファイルとスタイル
+
+各言語に対応するレイアウトファイルが必要です：
+
+1. 新しいレイアウトファイルを作成（例：フランス語の場合は`src/layouts/BaseFR.astro`）
+2. 既存のレイアウトファイル（`BaseEN.astro`など）をコピーして翻訳
+3. レイアウトファイルにはナビゲーションメニュー、フッターなどのグローバル要素の翻訳が含まれています
+4. 言語スイッチャーの設定を更新し、新しく追加された言語に正しく切り替わるようにしてください
+
+### 3.5 言語ページディレクトリの作成
+
+新言語用の独立したページディレクトリを作成：
+
+1. `src`ディレクトリ内に言語コードで名付けたフォルダを作成（例：`src/fr/`）
+2. 他の言語ディレクトリ（例：`src/en/`）のページ構造を参照
+3. ページ内容を更新し、タイトル、説明、テキストを対象言語に翻訳
+4. ページが正しいレイアウトコンポーネントを使用していることを確認（例：`.layout: '@/layouts/BaseFR.astro'`）
+
+### 3.6 コンポーネントのローカライズ
+
+一部の共通コンポーネントも翻訳が必要です：
+
+1. `src/components/`ディレクトリ内のコンポーネントを確認
+2. 固定テキストを含むコンポーネント（ナビゲーションバー、フッターなど）に特に注意
+3. コンポーネントは条件付きレンダリングを使用して異なる言語のコンテンツを表示することがあります：
+
+```astro
+{Astro.url.pathname.startsWith('/en') && <p>English content</p>}
+{Astro.url.pathname.startsWith('/cn') && <p>中文内容</p>}
+{Astro.url.pathname.startsWith('/fr') && <p>Contenu français</p>}
+```
+
+### 3.7 テストと検証
+
+翻訳完了後、総合的なテストを行います：
+
+1. ローカルでウェブサイトを実行（通常は`yarn dev`を使用）
+2. 新言語でのすべてのページ表示を確認
+3. 言語切り替え機能が正常に動作するか検証
+4. すべてのリンクが正しい言語バージョンのページを指していることを確認
+5. レスポンシブレイアウトを確認し、翻訳後のテキストがページデザインを崩さないようにする
 
 ## 4. 翻訳を始める方法
 
