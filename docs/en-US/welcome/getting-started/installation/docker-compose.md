@@ -46,6 +46,8 @@ services:
       - DB_DIALECT=postgres
       # Database host, can be replaced with the IP of an existing database server
       - DB_HOST=postgres
+      # Database port
+      - DB_PORT=5432
       # Database name
       - DB_DATABASE=nocobase
       # Database user
@@ -107,6 +109,8 @@ services:
       - DB_DIALECT=mysql
       # Database host, can be replaced with the IP of an existing database server
       - DB_HOST=mysql
+      # Database port
+      - DB_PORT=3306
       # Database name
       - DB_DATABASE=nocobase
       # Database user
@@ -170,6 +174,8 @@ services:
       - DB_DIALECT=mariadb
       # Database host, can be replaced with the IP of an existing database server
       - DB_HOST=mariadb
+      # Database port
+      - DB_PORT=3306
       # Database name
       - DB_DATABASE=nocobase
       # Database user
