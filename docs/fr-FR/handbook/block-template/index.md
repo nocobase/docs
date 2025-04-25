@@ -31,6 +31,10 @@ NocoBase offers two types of templates: Inherited templates and Reference templa
 
 A Reference template is a general-purpose template, similar to an UI Schema snippet. It allows saving data blocks (including blocks in pages, modals, and compatible third-party blocks) as Reference templates, which can then be used elsewhere via "Reference" or "Duplicate" methods.
 
+There are two types of reference templates:
+- Reference template: Save the complete configuration of the block, including fields and actions. Most blocks are saved as this type.
+- Reference template (Fields only): Save only the fields configuration of the block, and actions will not be saved. When converting a form or a single record detail block to a reference template, it will be saved as this type.
+
 #### Creating a Reference Template
 
 Select the data block you want to save as a Reference template, click the "Save as reference template" button to create the Reference template.
