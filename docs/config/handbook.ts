@@ -1008,7 +1008,8 @@ export default [
         'title.ja-JP': 'フィールド',
         children: [
           {
-            title: "Vue d'ensemble",
+            title: 'Overview',
+            'title.fr-FR': "Vue d'ensemble",
             'title.zh-CN': '概述',
             'title.ja-JP': '概要',
             link: '/handbook/ui/fields',
