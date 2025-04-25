@@ -17,7 +17,7 @@
 
 ## 使用说明
 
-![主界面](https://static-docs.nocobase.com/main-screen-block-template.png)
+![主界面](https://static-docs.nocobase.com/main-screen-block-templates.png)
 
 ### 选择模板类型
 
@@ -29,33 +29,33 @@ NocoBase 提供了两种类型的模板:继承模板和引用模板。其区别�
 
 ### 引用模板
 
-引用模板是一种通用的模板形式，类似于 UI Schema 的片段。它可以将数据区块（包括弹窗中的区块和第三方已适配的区块）保存为模板，并在需要的地方通过“引用”或“复制”的方式使用。
+引用模板是一种通用的模板形式，类似于 UI Schema 的片段。它可以将数据区块（包括页面、弹窗中的区块和第三方已适配的区块）保存为引用模板，并在需要的地方通过“引用”或“复制”的方式使用。
 
 #### 创建引用模板
 
 选中需要保存为引用模板的数据区块，点击“保存为引用模板”按钮，即可创建引用模板。
 
-![保存为引用模板](https://static-docs.nocobase.com/save-as-block-template.png)
+![保存为引用模板](https://static-docs.nocobase.com/save-as-reference-block-template.png)
 
 #### 使用引用模板
 
 引用模板提供两种使用方式，您可以根据实际场景选择最适合的方法：
 
-1. **引用模板方式**
+1. **引用**
 
 在页面中创建区块时，选择对应的引用模板，即可使用引用模板创建区块。
 
-![创建区块](https://static-docs.nocobase.com/create-block.png)
+![创建区块](https://static-docs.nocobase.com/create-block-from-reference-template.png)
 
-2. **复制模板方式**
+2. **复制**
 
-在页面中创建区块时，选择对应的引用模板，即可使用引用模板创建区块。
+在页面中创建区块时，选择对应的复制模板，即可复制该模板创建区块。
 
-![创建区块](https://static-docs.nocobase.com/create-block.png)
+![创建区块](https://static-docs.nocobase.com/create-block-from-copy-template.png)
 
 ### 继承模板
 
-继承模板主要用于数据区块，创建的区块实例会继承模板的配置，并能在此基础上进行扩展或覆盖。未被实例覆盖的配置会随模板更新而同步。
+继承模板主要适用于希望区块能跟随模板的基础更新，但也需要做一些自己的调整的场景。通过继承模板创建的区块，会继承模板的配置，并能在此基础上进行扩展或覆盖。未被区块覆盖的配置会随模板更新而同步。
 
 #### 创建继承模板
 
@@ -64,16 +64,16 @@ NocoBase 提供了两种类型的模板:继承模板和引用模板。其区别�
 1. **在区块模板管理界面创建**
 
 **适用场景**：
-- 需要从零开始规划新模板
+- 需要从零开始规划新继承模板
 
 **操作步骤**：
 1. 进入区块模板管理界面
 2. 点击"新增"按钮
-3. 输入模板基本信息
+3. 输入继承模板基本信息
 4. 点击"提交"完成创建
-5. 配置模板内容
+5. 配置继承模板内容
 
-![创建模板](https://static-docs.nocobase.com/create-template.png)
+![创建继承模板](https://static-docs.nocobase.com/create-inherited-template.png)
 
 2. **从现有区块创建**
 
@@ -87,7 +87,7 @@ NocoBase 提供了两种类型的模板:继承模板和引用模板。其区别�
 2. 选择"保存为继承模板"选项
 3. 输入模板名称并保存
 
-![保存为继承模板](https://static-docs.nocobase.com/save-as-block-template.png)
+![保存为继承模板](https://static-docs.nocobase.com/save-as-inherited-template.png)
 
 :::info{title=注意}
 - 仅支持页面中的数据区块保存为继承模板
@@ -110,20 +110,20 @@ NocoBase 提供了两种类型的模板:继承模板和引用模板。其区别�
 
 选择继承模板, 点击 "编辑" 按钮, 即可进入继承模板编辑界面修改继承模板标题、描述。
 
-![编辑继承模板](https://static-docs.nocobase.com/edit-template.png)
+![编辑继承模板](https://static-docs.nocobase.com/edit-inherited-template.png)
 
 #### 复制继承模板
 
 选择继承模板, 点击 "复制" 按钮, 输入新继承模板标题, 点击 "提交" 按钮, 即可复制继承模板。
 继承模板复制后可以进行编辑以适应新的需求场景。
 
-![复制继承模板](https://static-docs.nocobase.com/copy-template.png)
+![复制继承模板](https://static-docs.nocobase.com/copy-inherited-template.png)
 
 #### 删除继承模板
 
 选择继承模板, 点击 "删除" 按钮, 点击 "提交" 按钮, 即可删除继承模板。
 
-![删除继承模板](https://static-docs.nocobase.com/delete-template.png)
+![删除继承模板](https://static-docs.nocobase.com/delete-inherited-template.png)
 
 删除继承模板可以选择是否"保留已创建的区块":
 - 若选择保留, 则继承模板被删除后, 已创建的区块会被转换成普通的页面区块。
@@ -133,7 +133,7 @@ NocoBase 提供了两种类型的模板:继承模板和引用模板。其区别�
 
 在页面中创建区块时, 选择对应继承模板的模板, 即可使用继承模板创建区块。
 
-![创建区块](https://static-docs.nocobase.com/create-block.png)
+![创建区块](https://static-docs.nocobase.com/create-block-from-inherited-template.png)
 
 从继承模板创建的区块与普通区块有以下几点不同:
 1. 该区块与继承模板是继承关系, 可以在继承模板基础上增加自己的配置, 未修改的配置会与继承模板保持同步。
