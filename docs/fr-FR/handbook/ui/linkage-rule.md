@@ -90,7 +90,7 @@ Dans l'attribution des champs et la configuration des conditions, non seulement 
 
 > **Note** : cette fonctionnalité est disponible à partir de la version v1.7.0-beta.24
 
-Les règles de liaison de bloc permettent de contrôler dynamiquement l'affichage des blocs en fonction de variables système (comme l'utilisateur actuel, le rôle actuel) ou de variables du contexte (comme l'enregistrement de la fenêtre contextuelle actuelle). Par exemple, un administrateur peut voir un bloc avec toutes les informations d'une commande, tandis qu'un utilisateur standard peut ne voir que des informations spécifiques. Cette fonctionnalité permet de configurer deux blocs de commande et d'ajouter des règles de liaison de bloc pour créer cet effet.
+Les règles de liaison des blocs permettent de contrôler dynamiquement l'affichage des blocs en fonction des variables système (comme l'utilisateur actuel, le rôle) ou des variables contextuelles (comme l'enregistrement du popup actuel). Par exemple, un administrateur peut voir l'intégralité des informations de commande, tandis qu'un rôle de service client ne peut voir que certaines données de commande spécifiques. Grâce aux règles de liaison des blocs, il est possible de configurer les blocs correspondants en fonction du rôle, avec des champs, des boutons d'opération et des plages de données différents dans chaque bloc. Lorsque le rôle connecté correspond au rôle cible, le système affiche le bloc correspondant.
 
 👉 Plus de détails : [Règles de Liaison de Bloc](/handbook/ui/blocks/block-settings/block-linkage-rule)
 

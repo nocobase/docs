@@ -91,7 +91,7 @@ In field assignment and condition configuration, both constants and variables ar
 
 > **Note**: This feature **is supported starting from v1.7.0-beta.24 versions**
 
-Block linkage rules allow dynamically controlling the display of blocks based on system variables (such as current user, current role) or contextual variables (such as current popup record). For example, an admin can view the full order information, while a regular user can only see specific order details. By configuring two order blocks and setting block linkage rules, this effect can be achieved.
+Block linkage rules allow dynamic control of block visibility based on system variables (such as the current user or role) or context variables (such as the current popup record). For example, an administrator can view the complete order information, while a customer service role can only view specific order data. Through block linkage rules, the corresponding block can be configured based on the role, with different fields, operation buttons, and data ranges set within the block. When the logged-in role matches the target role, the system will display the corresponding block.
 
 👉 For more details, check: [Block/Block Linkage Rules](/handbook/ui/blocks/block-settings/block-linkage-rule)
 
