@@ -55,8 +55,8 @@ Exemple : Configurer le Markdown pour afficher les informations de suivi dans le
 ![20250427150308](https://static-docs.nocobase.com/20250427150308.png)
 Les informations Markdown seront affichées uniquement lorsque le statut de la commande est "Expédiée".
 ![20250427150341](https://static-docs.nocobase.com/20250427150341.png)
-Le résultat est le suivant :
 
+Le résultat est le suivant :
 <video width="100%" height="440" controls>
   <source src="https://static-docs.nocobase.com/20250427150738.mp4" type="video/mp4">
 </video>

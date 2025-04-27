@@ -55,8 +55,8 @@
 ![20250427150308](https://static-docs.nocobase.com/20250427150308.png)
 订单状态为「已发货」才显示 Markdown 信息
 ![20250427150341](https://static-docs.nocobase.com/20250427150341.png)
-效果如下：
 
+效果如下：
 <video width="100%" height="440" controls>
   <source src="https://static-docs.nocobase.com/20250427150738.mp4" type="video/mp4">
 </video>
