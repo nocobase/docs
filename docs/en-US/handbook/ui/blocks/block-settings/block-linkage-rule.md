@@ -10,7 +10,8 @@ Block linkage rules allow users to dynamically control the display and hiding of
 
 ![20250427144259](https://static-docs.nocobase.com/20250427144259.png)
 
-> **Note**: Before executing the block linkage rule, the block's display must first pass through **ACL permission checks**. Only when the user has the necessary access permissions will the block linkage rule logic be evaluated. In other words, the block linkage rule will only take effect once the ACL view permissions are met.
+> **Note**: Before executing the block linkage rules, the block's visibility must first pass through **ACL permission checks**. Only when the user has the corresponding access rights can the block linkage rule logic be applied. In other words, the block linkage rules take effect only after the ACL view permission requirements are met. Without any block linkage rules, the block is displayed by default.
+
 
 ### Control Blocks with Global Variables
 

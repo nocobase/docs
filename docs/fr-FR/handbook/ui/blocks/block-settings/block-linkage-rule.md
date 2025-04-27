@@ -10,7 +10,8 @@ Les règles de liaison de blocs permettent aux utilisateurs de contrôler dynami
 
 ![20250427144259](https://static-docs.nocobase.com/20250427144259.png)
 
-> **Remarque** : Avant d'exécuter la règle de liaison de blocs, l'affichage du bloc doit d'abord passer par des **vérifications des permissions ACL**. Ce n'est que lorsque l'utilisateur dispose des permissions nécessaires qu'une logique de règle de liaison de bloc sera évaluée. En d'autres termes, la règle de liaison de bloc ne prendra effet que lorsque les permissions de vue ACL seront satisfaites.
+> **Note** : Avant d'exécuter les règles de liaison des blocs, l'affichage du bloc doit d'abord passer par **les vérifications des droits ACL**. Seul un utilisateur disposant des droits d'accès appropriés pourra appliquer la logique des règles de liaison des blocs. En d'autres termes, les règles de liaison des blocs ne prennent effet qu'après avoir satisfait aux exigences de permission de vue ACL. En l'absence de règles de liaison des blocs, le bloc est affiché par défaut.
+
 
 ### Contrôler les Blocs avec des Variables Globales
 
