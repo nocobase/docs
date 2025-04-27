@@ -64,61 +64,61 @@ Sign up page
 
 ### Forgot Password<Badge>v1.7.0+</Badge>
 
-The forgot password feature allows users to reset their password via email verification when they cannot remember it.
+The forgot password feature allows users to reset their password via email verification if they forget it.
 
-#### Admin Configuration
+#### Administrator Configuration
 
 1.  **Enable Forgot Password Feature**
 
-    In "Settings" > "Authentication" > "Forgot password" tab, check the "Enable forgot password feature" checkbox.
+  In "Settings" > "Authentication" > "Forgot password" tab, check the "Enable Forgot Password Feature" checkbox.
 
-    ![20250421101929_rec_](https://static-docs.nocobase.com/20250421101929_rec_.gif)
+  ![20250423071957_rec_](https://static-docs.nocobase.com/20250423071957_rec_.gif)
 
 2.  **Configure Notification Channel**
 
-    Select an email notification channel (currently only email is supported). If no notification channel is available, please add one first.
+  Select an email notification channel (currently only email is supported). If no notification channel is available, you need to add one first.
 
-    ![20250421102311_rec_](https://static-docs.nocobase.com/20250421102311_rec_.gif)
+  ![20250423072225_rec_](https://static-docs.nocobase.com/20250423072225_rec_.gif)
 
 3.  **Configure Password Reset Email**
 
-    Customize the email subject and content, supporting HTML or plain text format. The following variables can be used:
-    - Current User
-    - Date
-    - Reset Password Link
+  Customize the email subject and content, supporting HTML or plain text format. You can use the following variables:
+  -   Current user
+  -   System settings
+  -   Reset password link
+  -   Reset link expiration (minutes)
 
-    ![20250421102902](https://static-docs.nocobase.com/20250421102902.png)
+  ![20250427170047](https://static-docs.nocobase.com/20250427170047.png)
 
-4.  **Set Reset Link Validity Period**
+4.  **Set Reset Link Expiration**
 
-    Set the validity period of the reset link in minutes, default is 60 minutes.
+  Set the validity period (in minutes) for the reset link, default is 120 minutes.
 
-    ![20250421103240](https://static-docs.nocobase.com/20250421103240.png)
+  ![20250423073557](https://static-docs.nocobase.com/20250423073557.png)
 
-#### User Flow
+#### User Workflow
 
 1.  **Initiate Password Reset Request**
 
-    Click the "Forgot Password" link on the login page (requires the administrator to enable the forgot password feature first) to enter the forgot password page.
+  Click the "Forgot Password" link on the login page (requires the administrator to enable the forgot password feature first) to go to the forgot password page.
 
-    ![20250421103458_rec_](https://static-docs.nocobase.com/20250421103458_rec_.gif)
+  ![20250421103458_rec_](https://static-docs.nocobase.com/20250421103458_rec_.gif)
 
-    Enter the registered email address and click the "Send Reset Email" button.
+  Enter the registered email address and click the "Send Reset Email" button.
 
-    ![20250421113442_rec_](https://static-docs.nocobase.com/20250421113442_rec_.gif)
+  ![20250421113442_rec_](https://static-docs.nocobase.com/20250421113442_rec_.gif)
 
 2.  **Reset Password**
 
-    The user will receive an email containing a reset link. After clicking the link, set a new password on the opened page.
+  The user will receive an email containing a reset link. Click the link to open a page where you can set a new password.
 
-    ![20250421113748](https://static-docs.nocobase.com/20250421113748.png)
+  ![20250421113748](https://static-docs.nocobase.com/20250421113748.png)
 
-    After setting it up, the user can log in to the system with the new password.
+  After setting it up, the user can log in to the system with the new password.
 
 #### Notes
 
--   The reset link has a time limit, usually valid within 60 minutes after generation (configurable by the administrator).
+-   The reset link has a time limit, by default it is valid for 120 minutes after generation (configurable by the administrator).
 -   The link can only be used once and becomes invalid immediately after use.
 -   If the user does not receive the reset email, please check if the email address is correct or check the spam folder.
--   Administrators should ensure that the mail server is configured correctly to guarantee successful delivery of reset emails.
-
+-   The administrator should ensure that the mail server configuration is correct to guarantee that the reset email can be sent successfully.
