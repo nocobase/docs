@@ -86,9 +86,9 @@ Vous pouvez effectuer les actions suivantes sur chaque règle :
 
 Dans l'attribution des champs et la configuration des conditions, non seulement les constantes sont prises en charge, mais aussi les variables. La liste des variables dépend du contexte du bloc. Choisir et utiliser les variables de manière appropriée permet de répondre plus facilement aux besoins métier. Pour plus d'informations sur les variables, consultez la section [Variables](/handbook/ui/variables).
 
-## Règles de Liaison de Bloc (fonctionnalité à venir)
+## Règles de Liaison de Bloc 
 
-> **Note** : cette fonctionnalité est disponible à partir de la version v1.7.0-beta.xx
+> **Note** : cette fonctionnalité est disponible à partir de la version v1.7.0-beta.24
 
 Les règles de liaison de bloc permettent de contrôler dynamiquement l'affichage des blocs en fonction de variables système (comme l'utilisateur actuel, le rôle actuel) ou de variables du contexte (comme l'enregistrement de la fenêtre contextuelle actuelle). Par exemple, un administrateur peut voir un bloc avec toutes les informations d'une commande, tandis qu'un utilisateur standard peut ne voir que des informations spécifiques. Cette fonctionnalité permet de configurer deux blocs de commande et d'ajouter des règles de liaison de bloc pour créer cet effet.
 

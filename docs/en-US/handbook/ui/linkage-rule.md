@@ -87,9 +87,9 @@ Each rule can be managed with the following options:
 
 In field assignment and condition configuration, both constants and variables are supported. The variable list varies depending on the block's location, and choosing and using variables wisely can help meet business requirements more flexibly. For more information about variables, refer to [Variables](/handbook/ui/variables).
 
-## Block Linkage Rules (Feature Pending Release)
+## Block Linkage Rules 
 
-> **Note**: This feature **is supported starting from v1.7.0-beta.xx versions**
+> **Note**: This feature **is supported starting from v1.7.0-beta.24 versions**
 
 Block linkage rules allow dynamically controlling the display of blocks based on system variables (such as current user, current role) or contextual variables (such as current popup record). For example, an admin can view the full order information, while a regular user can only see specific order details. By configuring two order blocks and setting block linkage rules, this effect can be achieved.
 
