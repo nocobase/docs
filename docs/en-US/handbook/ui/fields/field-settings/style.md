@@ -1,7 +1,7 @@
 # Set Styles
 
 ## Introduction
-The field style linkage rules are an important tool to enhance user interaction. By dynamically configuring styles, it improves the visual effect of blocks and helps users quickly identify key information. The main style properties include:
+The field style linkage rules are an important tool to enhance user interaction. By dynamically configuring styles, it improves the visual effect of element and helps users quickly identify key information. The main style properties include:
 
 - `color`
 - `background-color`

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Field linkage rules allow users to dynamically adjust the status of form/detail block fields based on user actions. Currently, the following blocks support field linkage rules:
+Field linkage rules refer to the ability to dynamically adjust the attributes of fields in a form/detail block based on user actions. Currently, the blocks that support field linkage rules include:
 
 - [Form Block](/handbook/ui/blocks/data-blocks/form#%E8%81%94%E5%8A%A8%E8%A7%84%E5%88%99)
 - [Detail Block](/handbook/ui/blocks/data-blocks/details#%E8%81%94%E5%8A%A8%E8%A7%84%E5%88%99)
@@ -11,22 +11,23 @@ Field linkage rules allow users to dynamically adjust the status of form/detail 
 
 ## Usage Instructions
 
-#### **Linkage Rules in Form Block**
+#### **Form Block**
 
-In form blocks, linkage rules can dynamically adjust field behavior based on specific conditions:
+In form blocks, linkage rules can dynamically adjust field attributes based on specific conditions:
 
 - **Control Field Visibility/Hidden**: Determine whether the current field is displayed based on the value of other fields.
 - **Set Field as Required**: Dynamically set a field as required or optional based on specific conditions.
 - **Assign Values**: Automatically assign values to fields based on conditions.
 - **Configure Field Options**: Dynamically update the available options in dropdowns based on other fields in the form.
-- **Limit Time Range for Time Fields**: In time fields, limit the selectable time range based on the values of other fields.
+- **Limit Date Scope for Datetime Fields**: In dateTime fields, limit the selectable date scope based on the values of other fields.
 
-#### **Linkage Rules in Detail Block**
+#### **Detail Block**
 
 In detail blocks, linkage rules are mainly used to dynamically control the visibility and hiding of fields in the detail block.
 
 ![20250418161037](https://static-docs.nocobase.com/20250418161037.png)
 
+## Attribute Linkage
 ### Assigning Values
 
 Example: When an order is checked as a supplementary order, the order status is automatically set to "Pending Review."
@@ -65,7 +66,7 @@ Linkage effect as shown below:
 
 > **Note**: This feature is supported starting from version `v1.7.0-beta.2`.
 
-It supports dynamically configuring date ranges for fields such as `date`, `datetime`, `dateOnly`, `datetimeNoTz`, `unixTimestamp`, `createdAt`, `updatedAt`, etc. The selectable date range can automatically adjust based on changes in other fields in the form.
+It supports dynamically configuring date scope for fields such as `date`, `datetime`, `dateOnly`, `datetimeNoTz`, `unixTimestamp`, `createdAt`, `updatedAt`, etc. The selectable date scope can automatically adjust based on changes in other fields in the form.
 
 Example: After selecting the order date, the delivery date cannot be earlier than the order date.
 

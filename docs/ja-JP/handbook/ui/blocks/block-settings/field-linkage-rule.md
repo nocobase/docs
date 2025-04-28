@@ -1,78 +1,79 @@
-# フィールドの連動ルール
+# Field Linkage Rules
 
-## イントロダクション
+## Introduction
 
-フィールドの連動ルールは、ユーザーの操作に応じてフォームや詳細ブロックのフィールドの状態を動的に調整することを許可します。現在、フィールド連動ルールがサポートされているブロックには以下が含まれます：
+Field linkage rules refer to the ability to dynamically adjust the attributes of fields in a form/detail block based on user actions. Currently, the blocks that support field linkage rules include:
 
-- [フォームブロック](/handbook/ui/blocks/data-blocks/form#%E8%81%94%E5%8A%A8%E8%A7%84%E5%88%99)
-- [詳細ブロック](/handbook/ui/blocks/data-blocks/details#%E8%81%94%E5%8A%A8%E8%A7%84%E5%88%99)
-- [ネストされたフォーム](/handbook/ui/fields/specific/nester)（v1.3.17-beta 以上が必要）
-- [サブテーブル](/handbook/ui/fields/specific/sub-table)（v1.3.17-beta 以上が必要）
+- [Form Block](/handbook/ui/blocks/data-blocks/form#%E8%81%94%E5%8A%A8%E8%A7%84%E5%88%99)
+- [Detail Block](/handbook/ui/blocks/data-blocks/details#%E8%81%94%E5%8A%A8%E8%A7%84%E5%88%99)
+- [Sub-form](/handbook/ui/fields/specific/nester) (requires v1.3.17-beta or higher)
+- [Sub-table](/handbook/ui/fields/specific/sub-table) (requires v1.3.17-beta or higher)
 
-## 使用説明
+## Usage Instructions
 
-#### **フォームブロックでの連動ルール**
+#### **Form Block**
 
-フォームブロック内で、連動ルールは特定の条件に基づいてフィールドの動作を動的に調整できます：
+In form blocks, linkage rules can dynamically adjust field attributes based on specific conditions:
 
-- **フィールドの表示/非表示の制御**：他のフィールドの値に基づいて、現在のフィールドを表示するか非表示にするかを決定します。
-- **フィールドを必須に設定**：特定の条件下で、フィールドを必須または非必須に設定します。
-- **値の設定**：条件に基づいてフィールドに自動的に値を設定します。
-- **選択肢フィールドの選択肢範囲の設定**：条件に基づいて、ドロップダウンリストの選択肢の可選範囲を動的に更新します。
-- **日時フィールドの選択可能な日時範囲の制限**：他のフィールドの値に基づいて、日時フィールドの選択可能な範囲を制限します。
+- **Control Field Visibility/Hidden**: Determine whether the current field is displayed based on the value of other fields.
+- **Set Field as Required**: Dynamically set a field as required or optional based on specific conditions.
+- **Assign Values**: Automatically assign values to fields based on conditions.
+- **Configure Field Options**: Dynamically update the available options in dropdowns based on other fields in the form.
+- **Limit Date Scope for Datetime Fields**: In dateTime fields, limit the selectable date scope based on the values of other fields.
 
-#### **詳細ブロックでの連動ルール**
+#### **Detail Block**
 
-詳細ブロックでは、連動ルールは主にフィールドの表示/非表示を動的に制御します。
+In detail blocks, linkage rules are mainly used to dynamically control the visibility and hiding of fields in the detail block.
 
 ![20250418161037](https://static-docs.nocobase.com/20250418161037.png)
 
-### 値の設定
+## Attribute Linkage
+### Assigning Values
 
-例：注文が「追加注文」としてチェックされた場合、注文ステータスを「待機中確認」に自動的に設定します。
+Example: When an order is checked as a supplementary order, the order status is automatically set to "Pending Review."
 
 ![20250418161712](https://static-docs.nocobase.com/20250418161712.png)
 
-### 必須
+### Required Fields
 
-例：注文ステータスが「未払い」の場合、注文金額は必須フィールドになります。
+Example: When the order status is "Pending Payment", the order amount is required.
 
 ![20250418163252](https://static-docs.nocobase.com/20250418163252.png)
 
-### 表示/非表示
+### Visibility/Hidden
 
-例：「未払い」の注文ステータスの場合にのみ、支払い方法が表示されます。
+Example: The payment method is displayed only when the order status is "Pending Payment."
 
 ![20250418163733](https://static-docs.nocobase.com/20250418163733.png)
 
-### 選択肢
+### Options
 
-> **注意**: この機能は**v1.7.0-beta.2バージョン以降でサポートされています**
+> **Note**: This feature is supported starting from version `v1.7.0-beta.2`.
 
-`select`, `radioGroup`, `multipleSelect`, `checkboxGroup` などのフィールドタイプに対して、選択肢を動的に設定できます。これらの選択肢はフォーム内の他のフィールドの変更に基づいて連動することができます。
+It supports dynamically configuring options for fields like `select`, `radioGroup`, `multipleSelect`, `checkboxGroup`, etc. The available options can be linked to the changes in other fields in the form.
 
-例：注文金額が10000を超える場合にのみ、「分割払い」を選択できます。
+Example: "Installment Payment" is available only when the order amount is greater than 10,000.
 
 ![20250418164806](https://static-docs.nocobase.com/20250418164806.png)
 
-連動効果は以下の通りです。
+Linkage effect as shown below:
 
 <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20250418164831.mp4" type="video/mp4">
 </video>
 
-### 日付範囲
+### Date Scope
 
-> **注意**: この機能は**v1.7.0-beta.2バージョン以降でサポートされています**
+> **Note**: This feature is supported starting from version `v1.7.0-beta.2`.
 
-`date`, `datetime`, `dateOnly`, `datetimeNoTz`, `unixTimestamp`, `createdAt`, `updatedAt` などのフィールドタイプに対して、日付範囲を動的に設定できます。これらの選択可能な日付範囲はフォーム内の他のフィールドの変更に基づいて自動的に調整されます。
+It supports dynamically configuring date scope for fields such as `date`, `datetime`, `dateOnly`, `datetimeNoTz`, `unixTimestamp`, `createdAt`, `updatedAt`, etc. The selectable date scope can automatically adjust based on changes in other fields in the form.
 
-例：注文日を選択した後、発送日は注文日より前に選べません。
+Example: After selecting the order date, the delivery date cannot be earlier than the order date.
 
 ![20250418165500](https://static-docs.nocobase.com/20250418165500.png)
 
-例：納品日 (Delivery Date) は今日以降、そして注文締め切り日 (Order Deadline) を超えることはできません。
+Example: The delivery date cannot be earlier than today and cannot be later than the order deadline.
 
 ![20250418170520](https://static-docs.nocobase.com/20250418170520.png)
 
-その他の連動ルールについての詳細は[連動ルール](/handbook/ui/linkage-rule)をご覧ください。
+For more information on linkage rules, refer to [Linkage Rules](/handbook/ui/linkage-rule).

@@ -1,52 +1,52 @@
-# Règles de liaison 
+# Action Linkage Rules
 
 ## Introduction
 
-Les règles de liaison des opérations permettent aux utilisateurs de contrôler dynamiquement l'état des opérations (comme l'affichage, l'activation, la désactivation, etc.) en fonction de conditions spécifiques. En configurant ces règles, les utilisateurs peuvent lier le comportement des boutons d'opération aux enregistrements actuels, aux rôles des utilisateurs ou aux données du contexte. Depuis la version `v1.7.0-beta.19`, tous les boutons globaux prennent en charge la configuration des règles de liaison.
+Action linkage rules allow users to dynamically control the attribute of actions (such as Visible, Enabled, Hidden, Disabled) based on specific conditions. By configuring these rules, users can link the behavior of action buttons with the current record, user role, or contextual data. Since version `v1.7.0-beta.19, all buttons support the configuration of linkage rules.
 
-> **Note** : Les règles de liaison des opérations ne supportent pas encore une liaison directe avec les valeurs des formulaires, ce qui signifie qu'il n'est pas possible de faire des évaluations conditionnelles basées sur les valeurs des champs du formulaire actuel (c'est-à-dire que les variables du formulaire actuel ne sont pas prises en charge). Actuellement, les règles de liaison des opérations peuvent être configurées en fonction d'autres données contextuelles ou de variables système pour contrôler l'affichage, l'activation, la désactivation, etc.
+> **Note**: Action linkage rules do not currently support direct linkage with form values. Therefore, it is not allow to perform conditional checks based on fields in the current form (i.e., current form variables are not supported). Currently, operation linkage rules support controlling the visibility, enablement, and disablement of actions based on other contextual data or system variables.
 
 ![20240423113057](https://static-docs.nocobase.com/20240423113057.png)
 
-## Instructions d'utilisation
+## Usage Instructions
 
 ![20250418152329](https://static-docs.nocobase.com/20250418152329.png)
 
-Lorsque la condition est remplie (par défaut, elle est toujours validée sans condition), les attributs sont définis, et il est possible d'utiliser des constantes ou des variables dans les évaluations de condition.
+When conditions are met (by default, they pass without conditions), the action will be triggered. Constants and variables can be used in the condition evaluation.
 
-## Constantes
+## Constants
 
-Exemple : seuls les commandes en attente de traitement peuvent être éditées.
+Example: Only orders that are 'pending' can be edited.
 
 ![20250418150033](https://static-docs.nocobase.com/20250418150033.png)
 
 ## Variables
 
-### Variables système
+### System Variables
 
-Exemple 1 : Le bouton de suppression des commandes dont la date est postérieure à aujourd'hui est désactivé.
+Example 1: Disable the delete button for orders with a delivery date later than today.
 
 ![20250418145825](https://static-docs.nocobase.com/20250418145825.png)
 
-Exemple 2 : Le bouton de suppression en masse dans l'en-tête du tableau des commandes n'est disponible que pour le rôle d'administrateur. D'autres rôles ne peuvent pas exécuter cette opération.
+Example 2: The bulk delete button on the order block table header is only available to the administrator role; other roles cannot perform this action.
 
 ![20250418150637](https://static-docs.nocobase.com/20250418150637.png)
 
 ![20250418150826](https://static-docs.nocobase.com/20250418150826.png)
 
-### Variables contextuelles
+### Context Variables
 
-Exemple : Le bouton d'ajout sur les détails de commande (bloc relation) est uniquement activé lorsque le statut de la commande est « En attente de paiement ». Dans tous les autres statuts, le bouton sera désactivé.
+Example: The "Add" button in the order details (association block) is enabled only when the order status is "Pending Payment." In other statuses, the button will be disabled.
 
 ![20250418145312](https://static-docs.nocobase.com/20250418145312.png)
 
 ![20250418150429](https://static-docs.nocobase.com/20250418150429.png)
 
-Pour plus d'informations sur les variables, consultez [Variables](/handbook/ui/variables).
+For more information on variable content, refer to [Variables](/handbook/ui/variables).
 
 ## RoadMap
 
-- Planifié ou en cours
-  - Les règles de liaison des opérations prendront en charge le formulaire actuel.
+- Planned or In Progress
+  - Operation linkage rules support for the current form
 
-Pour plus de détails sur les règles de liaison, consultez [Règles de liaison](/handbook/ui/linkage-rule).
+For more information on linkage rules, refer to [Linkage Rules](/handbook/ui/linkage-rule)

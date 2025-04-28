@@ -4,7 +4,7 @@
 
 ## Introduction
 
-Block linkage rules allow users to dynamically control the display and hiding of blocks. Specific blocks can be automatically hidden or shown based on certain conditions.
+Block linkage rules allow users to dynamically control the visibility of blocks, enabling the management of element display at the block level. As containers for fields and action buttons, blocks enable users to flexibly control the visibility of the entire view from the block's perspective.
 
 ![20250427140619](https://static-docs.nocobase.com/20250427140619.png)
 
@@ -15,12 +15,11 @@ Block linkage rules allow users to dynamically control the display and hiding of
 
 ### Control Blocks with Global Variables
 
-Block linkage rules support controlling the display of blocks via global variables. For example, different roles might have viewing permissions for the same order table, but the data displayed can be personalized and differentiated. By configuring block display fields and operation buttons according to different roles, flexible data display and permission control for operations can be achieved.
-
+Block linkage rules support controlling the display of blocks through global variables. For example, different roles may have view permissions for the same order collection, but the content they can view can be personalized and differentiated. By configuring the fields and actions  displayed in the block according to the role's permissions, flexible data display and action permissions control can be achieved.
 #### Customer Service Role
 
-- **Data Range**: Can only view orders with the status "Pending Shipment" and hide sensitive data such as payment information and discount customer data.
-- **Operable Buttons**:
+- **Data Scope**: Can only view orders with the status "Pending Shipment" and hide sensitive data such as payment information and discount customer data.
+- **Actions**:
   - View Order Details
   - Process Returns/Exchanges
   - Generate Refund Request
@@ -30,8 +29,8 @@ Block linkage rules support controlling the display of blocks via global variabl
 
 #### Finance Role
 
-- **Data Range**: Can only view orders with the status "Paid" or "Refunding" and does not need to view product details or customer information.
-- **Operable Buttons**:
+- **Data Scope**: Can only view orders with the status "Paid" or "Refunding" and does not need to view product details or customer information.
+- **Actions**:
   - Audit Refund
   - Generate Invoice
 - **Viewable Fields**: OrderNumber, OrderDate, OrderStatus, ShippingAddress, TotalAmount (excluding sensitive fields like Items, Customers, etc.).
@@ -40,7 +39,7 @@ Block linkage rules support controlling the display of blocks via global variabl
 
 ### Control Blocks with Context Variables
 
-Blocks can also be controlled by variables in the context. For example, you can use "current record", "current form", or "current popup record" context variables to dynamically show or hide blocks.
+Blocks can also be controlled by variables in the context. For example, you can use "current record", "current form", or "current popup record" context variables to dynamically show blocks.
 
 Example: The "Shipping Information" block will only be displayed when the order status is "Shipped".
 
