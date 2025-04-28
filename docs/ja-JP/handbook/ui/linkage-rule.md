@@ -1,120 +1,120 @@
-# リンク規則
+# Linkage Rules
 
-## イントロダクション
+## Introduction
 
-NocoBaseにおけるリンク規則は、フロントエンドのインターフェース要素のインタラクション動作を制御するためのメカニズムです。ユーザーは、異なる条件に基づいてインターフェース内のブロック、フィールド、操作の表示や動作ロジックを調整し、柔軟でローコードのインタラクション体験を実現できます。この機能は継続的に改善されています。
+In NocoBase, linkage rules are a mechanism for controlling the interactive behavior of front-end interface elements. It allows users to adjust the display and behavior logic of blocks, fields, and actions based on different conditions, enabling flexible, low-code interactive experiences. This feature is constantly being refined and enhanced.
 
-リンク規則を構成することで、以下のようなことが可能になります：
+By configuring linkage rules, you can achieve the following:
 
-- 現在のユーザーの役割に応じて、特定のブロックを非表示にする/表示する。異なる役割ごとに表示されるデータ範囲を異なるブロックに分け、例えば管理者はすべての情報を表示し、一般ユーザーは基本情報のみを表示する。
-- フォームで特定のオプションを選択した際に、他のフィールドの値を自動で入力したりリセットしたりする。
-- フォームで特定のオプションを選択した際に、いくつかの入力項目を無効化する。
-- 条件に基づいてフィールドの背景色、フォントサイズ、フォントの太さなどを設定し、特定の条件を満たした際にフィールドをハイライトする。
-- 特定の条件下で操作ボタンの表示/非表示やクリック可能/不可能を制御する。
+- Hide/show certain blocks based on the current user role, e.g., the admin can view full information blocks, while regular users can only see basic information blocks.
+- Automatically fill or reset other field values when a form selects a particular option.
+- Disable certain input fields when a form selects a particular option.
+- Dynamically set field background colors, font sizes, font weights, etc., and highlight fields when a condition is met.
+- Control whether actions are visible or clickable based on certain conditions.
 
-## 条件設定
+## Condition Configuration
 
 ![20250417214217](https://static-docs.nocobase.com/20250417214217.png)
-### 左側の変数
 
-条件の左側の変数は、リンク規則内で「判断対象」となるオブジェクトを定義するために使用されます。つまり、この変数の値を基に条件を判断し、リンク動作をトリガーするかどうかを決定します。
+### Left-side Variables
 
-選択可能な変数には以下が含まれます：
+The left-side variables in a condition are used to define the "object being judged" in the linkage rule, i.e., the condition will evaluate this variable’s value to determine whether the linkage behavior should be triggered.
 
-- コンテキスト内のフィールド、例: `「現在のフォーム/xxx」`、`「現在のレコード/xxx」`、`「現在のポップアップレコード/xxx」` など
-- システム全体の変数、例: `現在のユーザー`、`現在の役割` など。これらは、ユーザーの役職や権限情報に基づいて動的に制御する際に使用されます。
-  > ✅ 左側の変数として選択できるものは、ブロックのコンテキストによって決まります。ビジネスニーズに応じて左側の変数を適切に使用することが重要です：
-  >
-  > - 「現在のユーザー」：現在のログインユーザー情報を表します。
-  > - 「現在のフォーム」：フォームでリアルタイムに入力される値を表します。
-  > - 「現在のレコード」：保存されたレコードの値、例えばテーブルの行の記録などを表します。
+Available variables include:
 
-### 演算子
+- Context variables, such as `「Current Form/xxx」`, `「Current Record/xxx」`, `「Current Popup Record/xxx」`, etc.;
+- System-wide variables, such as `Current User`, `Current Role`, etc., suitable for dynamically controlling based on user identity, permissions, etc.
 
-演算子は、条件判断のロジックを設定するために使用されます。つまり、左側の変数と右側の値をどのように比較するかを決定します。異なるタイプの左側変数には異なる演算子が対応しており、代表的なものは以下の通りです：
+> ✅ The available left-side variables are determined by the context of the block, so choose variables according to business needs:
+> 
+> - `Current User` the information of the currently logged-in user，including data from collection associated with the user;
+> - `Current Form`  the real-time input values in the form;
+> - `Current Record` the saved record values, such as row data in a table.
 
-- **テキスト型**：`$includes`、`$eq`、`$ne`、`$empty`、`$notEmpty` など
-- **数値型**：`$eq`、`$gt`、`$lt`、`$gte`、`$lte` など
-- **ブール型**：`$isTruly`、`$isFalsy`
-- **配列型**：`$match`、`$anyOf`、`$empty`、`$notEmpty` など
+### Operators
 
-> ✅ システムは左側の変数のタイプに基づいて自動的に使用可能な演算子を推奨し、論理設定が正しいことを保証します。
+Operators are used to set the logical comparison between the left-side variable and the right-side value. Different types of left-side variables support different operators. Common operators include:
 
-### 右側の値
+- **Text type**: `$includes`, `$eq`, `$ne`, `$empty`, `$notEmpty`, etc.
+- **Numeric type**: `$eq`, `$gt`, `$lt`, `$gte`, `$lte`, etc.
+- **Boolean type**: `$isTruly`, `$isFalsy`
+- **Array type**: `$match`, `$anyOf`, `$empty`, `$notEmpty`, etc.
 
-左側の変数と比較するために使用される、条件が成立するかどうかを判断する参照値です。
+> ✅ The system will automatically recommend the available operators based on the type of the left-side variable to ensure logical configuration.
 
-サポートされる内容は以下を含みます：
+### Right-side Value
 
-- 定数値：固定の数値、テキスト、日付などを入力する。
-- コンテキスト変数：現在のフォームの他のフィールド、現在のレコードなど。
-- システム変数：現在のユーザー、現在の時間、現在の役割など。
+The right-side value is used for comparison with the left-side variable, serving as the reference value for determining whether the condition is met.
 
-> ✅ システムは左側の変数のタイプに基づいて、右側の入力方法を自動的に適応します。例えば：
->
-> - 左側が「選択フィールド」の場合、対応する選択肢の選択器が表示されます。
-> - 左側が「日付フィールド」の場合、日付選択器が表示されます。
-> - 左側が「テキストフィールド」の場合、テキスト入力ボックスが表示されます。
+Supported content includes:
 
-> 💡 右側の値（特に動的変数）を柔軟に使用することで、現在のユーザー、データ状態、コンテキストに基づくリンクロジックを構築し、より強力なインタラクション体験を実現できます。
+- Constant values: fixed numeric values, text, dates, etc.;
+- Context variables: other fields from the current form, current records, etc.;
+- System variables: such as the current user, current time, current role, etc.
 
-## 規則の実行ロジック
+> ✅ The system will adapt the input component for the right-side value based on the type of the left-side variable, such as:
+> 
+> - If the left-side variable is a “selection field”, a corresponding options selector will be displayed;
+> - If the left-side variable is a “date field”, a date picker will be displayed;
+> - If the left-side variable is a “text field”, a text input box will displayed.
 
-### 条件のトリガー
+> 💡 By flexibly using the right-side values (especially dynamic variables), you can build linkage logic based on the current user, current data state, and context environment, enabling a richer interactive experience.
 
-規則内の条件が満たされると（必須ではない）、下記の属性変更操作が自動で実行されます。条件が設定されていない場合、規則は常に満たされていると見なされ、属性変更操作が自動で実行されます。
+## Rule Execution Logic
 
-### 複数の規則
+### Condition Trigger
 
-1つのフォームに対して複数のリンク規則を設定することができます。複数の規則条件が同時に満たされると、システムは規則の順番に従って結果を実行します。つまり、最後の結果が実行基準となります。
+When the condition in a rule is met (optional), the property modification actions below are automatically executed. If no condition is set, the rule is considered always met, and the property modification will be executed by default.
 
-例：規則1でフィールドを「無効」に設定し、規則2でフィールドを「編集可能」に設定した場合、両方の条件が満たされるとフィールドは「編集可能」状態になります。
+### Multiple Rules
 
-> 複数の規則の実行順序は非常に重要です。規則を設計する際には、優先順位や相互関係を明確にして、規則の衝突を避けるようにしてください。
+Multiple linkage rules can be configured for a block, action, or field. When multiple rules are met simultaneously, the system executes them in the order they are defined, with the last rule's result taking precedence. For example, Rule 1 disables a field, and Rule 2 makes it editable. If both conditions are met, the field will become editable according to Rule 2.
 
-## 規則の管理
+> The execution order of multiple rules is crucial. Make sure to clarify their priorities and interrelationships to avoid rule conflicts.
 
-各規則に対して以下の操作が可能です：
+## Rule Management
 
-- カスタム命名：規則に理解しやすい名前を付け、管理および識別を容易にする。
-- 並べ替え：規則の実行優先順位に基づいて順序を調整し、システムが正しい順序で規則を処理できるようにする。
-- 削除：不要な規則を削除する。
-- 有効化/無効化：規則を一時的に無効化し、削除せずに特定の条件下で一時的に規則を停止する。
-- 規則のコピー：既存の規則をコピーして新しい規則を作成し、重複した設定を避ける。
+Each rule can be managed with the following options:
 
-## 変数について
+- Custom Naming: Set an easy-to-understand name for the rule for better management and recognition.
+- Sorting: Adjust the order of rules based on execution priority to ensure that the system processes them correctly.
+- Deletion: Remove rules that are no longer needed.
+- Enable/Disable: Temporarily disable a rule without deleting it. This is useful for situations where a rule needs to be paused temporarily.
+- Copy Rule: Create new rules by copying existing ones, avoiding redundant configuration.
 
-フィールドの値設定および条件設定では、定数の使用だけでなく、変数の使用もサポートしています。変数リストは異なるブロックの位置によって異なり、変数を適切に選択して使用することで、ビジネスニーズに柔軟に対応できます。変数に関する詳細は[変数](/handbook/ui/variables)をご覧ください。
+## About Variables
 
-## ブロックリンク規則
+In field assignment and condition configuration, both constants and variables are supported. The variable list varies depending on the block's location, and choosing and using variables wisely can help meet business requirements more flexibly. For more information about variables, refer to [Variables](/handbook/ui/variables).
 
-> **注意**: この機能は**v1.7.0-beta.24バージョン以降でサポートされています**
+## Block Linkage Rules 
 
-ブロック連動ルールは、システム変数（例：現在のユーザー、役割）やコンテキスト変数（例：現在のポップアップレコード）に基づいて、ブロックの表示を動的に制御できます。例えば、管理者は完全な注文情報を表示できますが、カスタマーサービスの役割では特定の注文データのみ表示できます。ブロック連動ルールを使用すると、役割に応じて適切なブロックを構成し、そのブロック内で異なるフィールド、操作ボタン、およびデータ範囲を設定できます。ログインした役割がターゲット役割の場合、システムは対応するブロックを表示します。
+> **Note**: This feature **is supported starting from v1.7.0-beta.24 versions**
 
-👉 詳細については：[ブロック/ブロックリンク規則](/handbook/ui/blocks/block-settings/block-linkage-rule)を参照してください。
+Block linkage rules allow dynamic control of block visibility based on system variables (such as the current user or role) or context variables (such as the current popup record). For example, an administrator can view the complete order information, while a customer service role can only view specific order data. Through block linkage rules, the corresponding block can be configured based on the role, with different fields,actions, and data scope set within the block. When the logged-in role matches the target role, the system will display the corresponding block.
 
-## フィールドリンク規則
+👉 For more details, check: [Block/Block Linkage Rules](/handbook/ui/blocks/block-settings/block-linkage-rule)
 
-フィールドリンク規則は、ユーザーの操作に基づいてフォームまたは詳細ブロック内のフィールドの状態を動的に調整します。主に以下の操作が可能です：
+## Field Linkage Rules
 
-- フィールドの **表示/非表示**
-- フィールドを **必須** に設定
-- **値の設定**
-- オプションフィールドの **オプション範囲** の設定
-- 時間フィールドの **選択可能な時間範囲** の設定
+Field linkage rules are used to dynamically adjust the properties of fields in a form or detail block. These mainly include:
 
-👉 詳細については：[ブロック/フィールドリンク規則](/handbook/ui/blocks/block-settings/field-linkage-rule)を参照してください。
+- Control the **visibility** of fields
+- Set fields as **required**
+- **Assign values**
+- Configure the **options** of option fields
+- Limit the **Date scope** for time fields
 
-## 操作リンク規則
+👉 For more details, check: [Block/Field Linkage Rules](/handbook/ui/blocks/block-settings/field-linkage-rule)
 
-操作リンク規則は、現在のレコード値やシステム変数を使って操作の動作（表示/無効化など）を制御します。
+## Actions Linkage Rules
 
-👉 詳細については：[操作/リンク規則](/handbook/ui/actions/action-settings/linkage-rule)を参照してください。
+Actions linkage rules currently support controlling operation behaviors (e.g., hide/disable) based on current record values and global variables.
 
-## フィールドスタイルリンク規則
+👉 For more details, check: [Operation/Linkage Rules](/handbook/ui/actions/action-settings/linkage-rule)
 
-フィールドスタイルリンク規則は、条件に基づいてフィールドのスタイル属性を動的に設定することを可能にします。主に以下のスタイル属性を設定できます：
+## Field Style Linkage Rules
+
+Field style linkage rules allow dynamically setting field style properties based on conditions, mainly including:
 
 - `color`
 - `background-color`
@@ -123,6 +123,6 @@ NocoBaseにおけるリンク規則は、フロントエンドのインターフ
 - `font-weight`
 - `font-style`
 
-フィールドの状態に基づいて重要な情報をハイライトしたり、異常を示したり、視覚的に誘導するために使用されます。
+These are commonly used to highlight key information based on field status, indicate anomalies, or provide visual guidance.
 
-👉 詳細については：[フィールド/スタイル](/handbook/ui/fields/field-settings/style)を参照してください。
+👉 For more details, check: [Field/Style](/handbook/ui/fields/field-settings/style)

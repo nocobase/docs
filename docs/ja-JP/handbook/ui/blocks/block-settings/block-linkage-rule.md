@@ -1,64 +1,64 @@
-# ブロック連動ルール
+# Block Linkage Rules
 
-> **注意**: この機能はv1.7.0-beta.24バージョンからサポートされています。
+> **Note**: This feature is supported starting from v1.7.0-beta.24.
 
-## 概要
+## Introduction
 
-ブロック連動ルールは、ユーザーがブロックの表示と非表示を動的に制御できる機能です。特定の条件が満たされると、対応するブロックが自動的に非表示または表示されます。
+Block linkage rules allow users to dynamically control the visibility of blocks, enabling the management of element display at the block level. As containers for fields and action buttons, blocks enable users to flexibly control the visibility of the entire view from the block's perspective.
 
 ![20250427140619](https://static-docs.nocobase.com/20250427140619.png)
 
 ![20250427144259](https://static-docs.nocobase.com/20250427144259.png)
 
-> **注意**: ブロック連動ルールを実行する前に、ブロックの表示はまず **ACL権限の確認** を通過する必要があります。ユーザーが適切なアクセス権を持っている場合のみ、ブロック連動ルールのロジックが適用されます。言い換えれば、ブロック連動ルールは、ACLの表示権限の要件を満たした後にのみ有効になります。ブロック連動ルールがない場合、ブロックはデフォルトで表示されます。
+> **Note**: Before executing the block linkage rules, the block's visibility must first pass through **ACL permission checks**. Only when the user has the corresponding access rights can the block linkage rule logic be applied. In other words, the block linkage rules take effect only after the ACL view permission requirements are met. Without any block linkage rules, the block is displayed by default.
 
-### グローバル変数でブロックを制御
 
-ブロック連動ルールは、グローバル変数を使ってブロックの表示内容を制御できます。例えば、異なる役割が同じ注文表の表示権限を持っていても、表示されるデータは個別にカスタマイズされ、差別化できます。異なる役割に応じて、ブロックの表示フィールドや操作ボタンを設定することにより、柔軟なデータ表示と操作権限の制御を実現できます。
+### Control Blocks with Global Variables
 
-#### カスタマーサービス役割
+Block linkage rules support controlling the display of blocks through global variables. For example, different roles may have view permissions for the same order collection, but the content they can view can be personalized and differentiated. By configuring the fields and actions  displayed in the block according to the role's permissions, flexible data display and action permissions control can be achieved.
+#### Customer Service Role
 
-- **データ範囲**：出荷待ちの注文のみを表示し、支払い情報や割引顧客情報などの機密データを非表示にします。
-- **操作可能なボタン**：
-  - 注文詳細の表示
-  - 返品/交換の処理
-  - 返金リクエストの生成
-- **表示可能なフィールド**：OrderNumber、OrderDate、OrderStatus、ShippingAddress（TotalAmount、Discount、Customersなどの機密フィールドは含まれません）。
+- **Data Scope**: Can only view orders with the status "Pending Shipment" and hide sensitive data such as payment information and discount customer data.
+- **Actions**:
+  - View Order Details
+  - Process Returns/Exchanges
+  - Generate Refund Request
+- **Viewable Fields**: OrderNumber, OrderDate, OrderStatus, ShippingAddress (excluding sensitive fields like TotalAmount, Discount, Customers, etc.).
 
   ![20250427141800](https://static-docs.nocobase.com/20250427141800.png)
 
-#### 財務役割
+#### Finance Role
 
-- **データ範囲**：支払い済みまたは返金中の注文のみを表示し、商品詳細や顧客情報は表示しません。
-- **操作可能なボタン**：
-  - 返金の監査
-  - 請求書の生成
-- **表示可能なフィールド**：OrderNumber、OrderDate、OrderStatus、ShippingAddress、TotalAmount（Items、Customersなどの機密フィールドは含まれません）。
+- **Data Scope**: Can only view orders with the status "Paid" or "Refunding" and does not need to view product details or customer information.
+- **Actions**:
+  - Audit Refund
+  - Generate Invoice
+- **Viewable Fields**: OrderNumber, OrderDate, OrderStatus, ShippingAddress, TotalAmount (excluding sensitive fields like Items, Customers, etc.).
 
   ![20250427142420](https://static-docs.nocobase.com/20250427142420.png)
 
-### コンテキスト変数でブロックを制御
+### Control Blocks with Context Variables
 
-ブロックはコンテキスト内の変数を使用して制御することもできます。例えば、「現在のレコード」、「現在のフォーム」、「現在のポップアップレコード」などのコンテキスト変数を使って、ブロックを動的に表示または非表示にすることができます。
+Blocks can also be controlled by variables in the context. For example, you can use "current record", "current form", or "current popup record" context variables to dynamically show blocks.
 
-例：注文の状態が「発送済み」の場合にのみ、「発送情報」ブロックを表示します。
+Example: The "Shipping Information" block will only be displayed when the order status is "Shipped".
 
 ![20250427143707](https://static-docs.nocobase.com/20250427143707.png)
 
 ![20250427143951](https://static-docs.nocobase.com/20250427143951.png)
 
-### ブロック内のMarkdown
+### Markdown in Blocks
 
-例：詳細ブロックにMarkdownを設定して、追跡情報を表示します。
+Example: Configure Markdown to display tracking information in the details block.
 ![20250427150236](https://static-docs.nocobase.com/20250427150236.png)
 
 ![20250427150308](https://static-docs.nocobase.com/20250427150308.png)
-Markdown情報は、注文の状態が「発送済み」の場合にのみ表示されます。
+The Markdown information will only be displayed when the order status is "Shipped".
 ![20250427150341](https://static-docs.nocobase.com/20250427150341.png)
 
-以下のように表示されます：
+The effect is as follows:
 <video width="100%" height="440" controls>
   <source src="https://static-docs.nocobase.com/20250427150738.mp4" type="video/mp4">
 </video>
 
-連動ルールの詳細については、[連動ルール](/handbook/ui/linkage-rule)をご参照ください。
+For more details on linkage rules, refer to [Linkage Rules](/handbook/ui/linkage-rule).

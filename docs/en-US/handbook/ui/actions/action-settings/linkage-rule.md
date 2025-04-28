@@ -1,10 +1,10 @@
-# Operation Linkage Rules
+# Action Linkage Rules
 
 ## Introduction
 
-Operation linkage rules allow users to dynamically control the status of actions (such as Visible, Enabled, Hidden, Disabled) based on specific conditions. By configuring these rules, users can link the behavior of action buttons with the current record, user role, or contextual data. Starting from version `v1.7.0-beta.19`, global buttons support configuring linkage rules.
+Action linkage rules allow users to dynamically control the attribute of actions (such as Visible, Enabled, Hidden, Disabled) based on specific conditions. By configuring these rules, users can link the behavior of action buttons with the current record, user role, or contextual data. Since version `v1.7.0-beta.19, all buttons support the configuration of linkage rules.
 
-> **Note**: Operation linkage rules do not currently support direct linkage with form values. Therefore, it is not possible to perform conditional checks based on fields in the current form (i.e., current form variables are not supported). Currently, operation linkage rules support controlling the visibility, enablement, and disablement of actions based on other contextual data or system variables.
+> **Note**: Action linkage rules do not currently support direct linkage with form values. Therefore, it is not allow to perform conditional checks based on fields in the current form (i.e., current form variables are not supported). Currently, operation linkage rules support controlling the visibility, enablement, and disablement of actions based on other contextual data or system variables.
 
 ![20240423113057](https://static-docs.nocobase.com/20240423113057.png)
 
@@ -16,7 +16,7 @@ When conditions are met (by default, they pass without conditions), the action w
 
 ## Constants
 
-Example: Only orders that are pending can be edited.
+Example: Only orders that are 'pending' can be edited.
 
 ![20250418150033](https://static-docs.nocobase.com/20250418150033.png)
 
@@ -28,7 +28,7 @@ Example 1: Disable the delete button for orders with a delivery date later than 
 
 ![20250418145825](https://static-docs.nocobase.com/20250418145825.png)
 
-Example 2: The bulk delete button on the order block table header is only available to the administrator role; other roles cannot perform this operation.
+Example 2: The bulk delete button on the order block table header is only available to the administrator role; other roles cannot perform this action.
 
 ![20250418150637](https://static-docs.nocobase.com/20250418150637.png)
 
@@ -36,7 +36,7 @@ Example 2: The bulk delete button on the order block table header is only availa
 
 ### Context Variables
 
-Example: The "Add" button in the order details (relationship block) is enabled only when the order status is "Pending Payment." In other statuses, the button will be disabled.
+Example: The "Add" button in the order details (association block) is enabled only when the order status is "Pending Payment." In other statuses, the button will be disabled.
 
 ![20250418145312](https://static-docs.nocobase.com/20250418145312.png)
 

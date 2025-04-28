@@ -1,78 +1,79 @@
-# Règles de liaison des champs
+# Field Linkage Rules
 
 ## Introduction
 
-Les règles de liaison des champs permettent de modifier dynamiquement l'état des champs dans les blocs de formulaire/détails en fonction du comportement de l'utilisateur. Les blocs de champs actuellement pris en charge pour ces règles de liaison incluent :
+Field linkage rules refer to the ability to dynamically adjust the attributes of fields in a form/detail block based on user actions. Currently, the blocks that support field linkage rules include:
 
-- [Bloc de formulaire](/handbook/ui/blocks/data-blocks/form#%E8%81%94%E5%8A%A8%E8%A7%84%E5%88%99)
-- [Bloc de détails](/handbook/ui/blocks/data-blocks/details#%E8%81%94%E5%8A%A8%E8%A7%84%E5%88%99)
-- [Sous-formulaire](/handbook/ui/fields/specific/nester) (nécessite la version v1.3.17-beta ou supérieure)
-- [Sous-tableau](/handbook/ui/fields/specific/sub-table) (nécessite la version v1.3.17-beta ou supérieure)
+- [Form Block](/handbook/ui/blocks/data-blocks/form#%E8%81%94%E5%8A%A8%E8%A7%84%E5%88%99)
+- [Detail Block](/handbook/ui/blocks/data-blocks/details#%E8%81%94%E5%8A%A8%E8%A7%84%E5%88%99)
+- [Sub-form](/handbook/ui/fields/specific/nester) (requires v1.3.17-beta or higher)
+- [Sub-table](/handbook/ui/fields/specific/sub-table) (requires v1.3.17-beta or higher)
 
-## Instructions d'utilisation
+## Usage Instructions
 
-#### **Règles de liaison dans le bloc de formulaire**
+#### **Form Block**
 
-Dans le bloc de formulaire, les règles de liaison peuvent ajuster dynamiquement le comportement des champs en fonction de conditions spécifiques :
+In form blocks, linkage rules can dynamically adjust field attributes based on specific conditions:
 
-- **Contrôler l'affichage/la dissimulation des champs** : Afficher ou masquer un champ en fonction des valeurs d'autres champs.
-- **Rendre un champ obligatoire** : Définir dynamiquement un champ comme obligatoire ou non obligatoire en fonction de certaines conditions.
-- **Affectation de valeur** : Affecter automatiquement une valeur à un champ en fonction de conditions.
-- **Configurer les options des champs de sélection** : Mettre à jour dynamiquement les options de sélection d'un champ en fonction des autres champs du formulaire.
-- **Limiter la plage horaire des champs de temps** : Limiter la plage horaire des champs de type temps en fonction des valeurs d'autres champs.
+- **Control Field Visibility/Hidden**: Determine whether the current field is displayed based on the value of other fields.
+- **Set Field as Required**: Dynamically set a field as required or optional based on specific conditions.
+- **Assign Values**: Automatically assign values to fields based on conditions.
+- **Configure Field Options**: Dynamically update the available options in dropdowns based on other fields in the form.
+- **Limit Date Scope for Datetime Fields**: In dateTime fields, limit the selectable date scope based on the values of other fields.
 
-#### **Règles de liaison dans le bloc de détails**
+#### **Detail Block**
 
-Dans le bloc de détails, les règles de liaison sont principalement utilisées pour contrôler dynamiquement l'affichage ou la dissimulation des champs dans le bloc de détails.
+In detail blocks, linkage rules are mainly used to dynamically control the visibility and hiding of fields in the detail block.
 
 ![20250418161037](https://static-docs.nocobase.com/20250418161037.png)
 
-### Affectation de valeur
+## Attribute Linkage
+### Assigning Values
 
-Exemple : Lorsque la commande est marquée comme commande supplémentaire, le statut de la commande est automatiquement défini sur « En attente de révision ».
+Example: When an order is checked as a supplementary order, the order status is automatically set to "Pending Review."
 
 ![20250418161712](https://static-docs.nocobase.com/20250418161712.png)
 
-### Champ obligatoire
+### Required Fields
 
-Exemple : Lorsque le statut de la commande est « En attente de paiement », le montant de la commande devient obligatoire.
+Example: When the order status is "Pending Payment", the order amount is required.
 
 ![20250418163252](https://static-docs.nocobase.com/20250418163252.png)
 
-### Affichage/masquage
+### Visibility/Hidden
 
-Exemple : Le mode de paiement n'est affiché que lorsque le statut de la commande est « En attente de paiement ».
+Example: The payment method is displayed only when the order status is "Pending Payment."
 
 ![20250418163733](https://static-docs.nocobase.com/20250418163733.png)
 
 ### Options
 
-> **Note** : Cette fonctionnalité est disponible **à partir de la version v1.7.0-beta.2**.
+> **Note**: This feature is supported starting from version `v1.7.0-beta.2`.
 
-Il est possible de configurer dynamiquement les options pour des champs de type `select`, `radioGroup`, `multipleSelect`, `checkboxGroup`, etc. Ces options peuvent être mises à jour en fonction des changements dans d'autres champs du formulaire.
+It supports dynamically configuring options for fields like `select`, `radioGroup`, `multipleSelect`, `checkboxGroup`, etc. The available options can be linked to the changes in other fields in the form.
 
-Exemple : L'option « Paiement en plusieurs fois » est disponible uniquement lorsque le montant de la commande est supérieur à 10 000.
+Example: "Installment Payment" is available only when the order amount is greater than 10,000.
 
 ![20250418164806](https://static-docs.nocobase.com/20250418164806.png)
 
-Effet de liaison :
+Linkage effect as shown below:
 
 <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20250418164831.mp4" type="video/mp4">
 </video>
 
-### Plage de dates
+### Date Scope
 
-> **Note** : Cette fonctionnalité est disponible **à partir de la version v1.7.0-beta.2**.
+> **Note**: This feature is supported starting from version `v1.7.0-beta.2`.
 
-Il est possible de configurer dynamiquement la plage de dates pour des champs de type `date`, `datetime`, `dateOnly`, `datetimeNoTz`, `unixTimestamp`, `createdAt`, `updatedAt`, etc. Cette plage de dates peut être ajustée en fonction des changements dans d'autres champs du formulaire.
+It supports dynamically configuring date scope for fields such as `date`, `datetime`, `dateOnly`, `datetimeNoTz`, `unixTimestamp`, `createdAt`, `updatedAt`, etc. The selectable date scope can automatically adjust based on changes in other fields in the form.
 
-Exemple : Après avoir sélectionné la date de la commande, la date de livraison ne peut pas être antérieure à la date de la commande.
+Example: After selecting the order date, the delivery date cannot be earlier than the order date.
 
 ![20250418165500](https://static-docs.nocobase.com/20250418165500.png)
 
-Exemple : La date de livraison ne peut pas être antérieure à aujourd'hui et ne peut pas dépasser la date limite de la commande.
+Example: The delivery date cannot be earlier than today and cannot be later than the order deadline.
 
 ![20250418170520](https://static-docs.nocobase.com/20250418170520.png)
 
-Pour plus de détails sur les règles de liaison, consultez [Règles de liaison](/handbook/ui/linkage-rule).
+For more information on linkage rules, refer to [Linkage Rules](/handbook/ui/linkage-rule).

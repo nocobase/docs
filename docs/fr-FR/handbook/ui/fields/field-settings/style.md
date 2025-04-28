@@ -1,8 +1,7 @@
-# Configuration des Styles
+# Set Styles
 
 ## Introduction
-
-Les règles de liaison des styles de champ sont un outil essentiel pour améliorer l'expérience utilisateur. En configurant dynamiquement les styles, vous pouvez améliorer l'impact visuel des blocs et aider les utilisateurs à repérer plus rapidement les informations clés. Cela comprend principalement :
+The field style linkage rules are an important tool to enhance user interaction. By dynamically configuring styles, it improves the visual effect of element and helps users quickly identify key information. The main style properties include:
 
 - `color`
 - `background-color`
@@ -11,18 +10,20 @@ Les règles de liaison des styles de champ sont un outil essentiel pour amélior
 - `font-weight`
 - `font-style`
 
-Ces règles sont couramment utilisées pour mettre en évidence des informations importantes en fonction de l'état du champ, signaler des anomalies ou guider visuellement l'utilisateur.
+These are commonly used to highlight key information based on field status, indicate anomalies, or guide visually.
 
-## Méthode d'utilisation
+## Usage
 
-Exemple : Modifiez dynamiquement la couleur du champ "Montant de la commande" en fonction du montant de la commande. Si le montant de la commande dépasse 1000, la couleur devient verte ; si le montant est inférieur ou égal à 1000, la couleur devient rouge.
+Example: Dynamically adjust the color of the order amount field based on the order amount. When the order amount exceeds 1000, set the color to green; when the order amount is less than or equal to 1000, set the color to red.
 
-- Règle 1 : Lorsque **le montant de la commande est supérieur à 10000**, la couleur du champ devient verte.
+![20250418171434](https://static-docs.nocobase.com/20250418171434.png)
+
+- **Rule 1**: Set the condition to **order amount greater than 10000**, and the field color will be green.
 
 ![20250418171640](https://static-docs.nocobase.com/20250418171640.png)
 
-- Règle 2 : Lorsque **le montant de la commande est inférieur ou égal à 1000**, la couleur du champ devient rouge.
+- **Rule 2**: Set the condition to **order amount less than or equal to 1000**, and the field color will be red.
 
 ![20250418171900](https://static-docs.nocobase.com/20250418171900.png)
 
-Pour plus d'informations, consultez [Règles de Liaison](/handbook/ui/linkage-rule).
+For more details, refer to [Linkage Rules](/handbook/ui/linkage-rule).
