@@ -35,6 +35,29 @@ After initiating an export, the export process will be executed in a separate ba
 
 After the export is complete, you can download the exported file from the export task.
 
+#### Concurrent Exports
+When there are many concurrent export tasks, server configuration can affect system response time, potentially slowing it down. Therefore, we recommend system developers configure the maximum number of concurrent export tasks (default is 3). When the configured concurrency limit is exceeded, tasks will enter a queuing state.
+![20250505171706](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250505171706.png)
+
+Concurrency configuration method: Set using environment variables, e.g., ASYNC_TASK_MAX_CONCURRENCY=4, [How to configure environment variables?](../../welcome/getting-started/env)
+
+Based on comprehensive testing with different configurations and data complexities, recommended concurrency settings:
+- For 2-core CPU: concurrency of 3.
+- For 4-core CPU: concurrency of 5.
+
+#### About Performance 
+When you find that the export process is unusually slow, it may be due to performance issues caused by the database table structure. To ensure efficient exports, your data tables must meet the following conditions:
+
+| Condition Type | Required Criteria | Additional Notes |
+|----------------|-------------------|------------------|
+| Table Structure (at least one requirement) | Has primary key<br>Has unique constraint<br>Has index (unique, normal, compound) | Priority: primary key > unique constraint > index |
+| Field Properties | Primary key/unique constraint/index (one of them) must have sortable properties, such as: auto-increment ID, snowflake ID, UUID v1, timestamp, numbers, etc.<br>(Note: Non-sortable fields like UUID v3/v4/v5, ordinary strings, etc. will affect performance) | None |
+
+If all the above conditions are met and exports are still slow, **try to minimize unnecessary fields, especially relationship fields**.
+![20250506003557](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250506003557.png)
+You can analyze logs or provide feedback to our official team.
+![20250505182122](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250505182122.png)
+
 ### Attachment Export
 
 Attachment export supports exporting attachment-related fields as compressed packages.
