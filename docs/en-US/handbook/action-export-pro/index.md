@@ -35,6 +35,40 @@ After initiating an export, the export process will be executed in a separate ba
 
 After the export is complete, you can download the exported file from the export task.
 
+#### Concurrent Exports
+When there are many concurrent export tasks, server configuration can affect system response time, potentially slowing it down. Therefore, we recommend system developers configure the maximum number of concurrent export tasks (default is 3). When the configured concurrency limit is exceeded, tasks will enter a queuing state.
+![20250505171706](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250505171706.png)
+
+Concurrency configuration method: Set using environment variables, e.g., ASYNC_TASK_MAX_CONCURRENCY=<number>, [How to configure environment variables?](../../welcome/getting-started/env)
+
+Based on comprehensive testing with different configurations and data complexities, recommended concurrency settings:
+- For 2-core CPU: concurrency of 3.
+- For 4-core CPU: concurrency of 5.
+
+#### About Performance
+
+When you notice unusually slow export processes (see reference below), it may be due to performance issues caused by the database table structure.
+
+| Data Characteristics | Index Type | Data Volume | Export Duration |
+|----------------------|------------|-------------|-----------------|
+| No relationship fields | Primary key/Unique constraint | 1 million | 3-6 minutes |
+| No relationship fields | Regular index | 1 million | 6-10 minutes |
+| No relationship fields | Compound index (non-unique) | 1 million | 30 minutes |
+| With relationship fields<br>(one-to-one, one-to-many,<br>many-to-one, many-to-many) | Primary key/Unique constraint | 500,000 | 15-30 minutes |
+
+To ensure efficient exports, we recommend:
+1. Your data tables must meet the following conditions:
+
+| Condition Type | Required Criteria | Additional Notes |
+|----------------|-------------------|------------------|
+| Table Structure (at least one requirement) | Has primary key<br>Has unique constraint<br>Has index (unique, regular, compound) | Priority: primary key > unique constraint > index |
+| Field Properties | Primary key/unique constraint/index (one of them) must have sortable properties, such as: auto-increment ID, snowflake ID, UUID v1, timestamp, numbers, etc.<br>(Note: Non-sortable fields like UUID v3/v4/v5, ordinary strings, etc. will affect performance) | None |
+
+2. Reduce unnecessary export fields, especially relationship fields (performance issues with relationship fields are still being optimized)
+![20250506215940](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250506215940.png)
+3. If you've met all the above conditions and still experience slow exports, you can analyze logs or provide feedback to our official team.
+![20250505182122](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250505182122.png)
+
 ### Attachment Export
 
 Attachment export supports exporting attachment-related fields as compressed packages.
