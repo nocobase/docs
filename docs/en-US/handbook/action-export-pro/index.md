@@ -56,16 +56,17 @@ When you notice unusually slow export processes (see reference below), it may be
 | No relationship fields | Compound index (non-unique) | 1 million | 30 minutes |
 | With relationship fields<br>(one-to-one, one-to-many,<br>many-to-one, many-to-many) | Primary key/Unique constraint | 500,000 | 15-30 minutes |
 
-To ensure efficient exports, your data tables must meet the following conditions:
+To ensure efficient exports, we recommend:
+1. Your data tables must meet the following conditions:
 
 | Condition Type | Required Criteria | Additional Notes |
 |----------------|-------------------|------------------|
 | Table Structure (at least one requirement) | Has primary key<br>Has unique constraint<br>Has index (unique, regular, compound) | Priority: primary key > unique constraint > index |
 | Field Properties | Primary key/unique constraint/index (one of them) must have sortable properties, such as: auto-increment ID, snowflake ID, UUID v1, timestamp, numbers, etc.<br>(Note: Non-sortable fields like UUID v3/v4/v5, ordinary strings, etc. will affect performance) | None |
 
-If all the above conditions are met and exports are still slow, **try to minimize unnecessary fields, especially relationship fields (performance issues with relationship fields are still being optimized)**
-![20250506003557](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250506003557.png)
-You can analyze logs or provide feedback to our official team.
+2. Reduce unnecessary export fields, especially relationship fields (performance issues with relationship fields are still being optimized)
+![20250506215940](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250506215940.png)
+3. If you've met all the above conditions and still experience slow exports, you can analyze logs or provide feedback to our official team.
 ![20250505182122](https://nocobase-docs.oss-cn-beijing.aliyuncs.com/20250505182122.png)
 
 ### Attachment Export
