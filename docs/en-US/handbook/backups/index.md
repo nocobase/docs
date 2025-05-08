@@ -16,6 +16,13 @@ The Backup Manager plugin is included in the Professional and Enterprise edition
 
 ## Usage Instructions
 
+执行备份和还原操作需要数据库用户具备相应的权限。以下是不同数据库类型所需的最小权限要求：
+
+| 数据库类型 | 备份 | 还原 |
+|-----------|------|------|
+| MySQL/MariaDB | `SELECT`、`SHOW VIEW`、`TRIGGER`、`LOCK TABLES`、`EVENT`、`SELECT ON mysql.servers` (开启 FDW 时需要) | `SELECT`、`SHOW VIEW`、`TRIGGER`、`LOCK TABLES`、`EVENT`、`CREATE`、`UPDATE`、`INDEX`、`DROP`、`INSERT`、`ALTER`、`CREATE ROUTINE`、`REFERENCES`、`CREATE VIEW`、`SUPER` (开启 FDW 时需要) |
+| PostgreSQL | `SELECT`、`CONNECT`、`USAGE` | `CREATE`、`USAGE`、`CONNECT`、`DROP`、`ALTER`、`SELECT`、`INSERT`、`UPDATE`、`DELETE`、`TRUNCATE`、`REFERENCES`、`TRIGGER`、`SUPERUSER` (开启 FDW 时需要) |
+
 ![Main Interface](./static/main-screen.png)
 
 ### Create New Backup
