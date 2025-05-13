@@ -1,0 +1,1 @@
+- `transaction`: Transaction object. If no transaction parameter is passed, the method will automatically create an internal transaction.
