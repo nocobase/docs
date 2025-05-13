@@ -1,8 +1,33 @@
 # 插件的安装与升级
 
-## 商业插件的安装与升级（v1.4及以上版本）
+## 插件的安装与升级
 
-### 配置环境变量
+### v1.7及以上版本
+
+#### 配置license-key
+在您的本地项目根目录下执行以下命令，生成实例 ID：
+```bash
+yarn nocobase generate-instance-id
+```
+命令执行成功后，使用以下命令查看生成的实例 ID：
+```bash
+cat ./storage/.license/instance-id
+```
+
+:::info{title=提示}
+在 Docker 环境中，Docker 容器运行后会自动将实例 ID 生成至 ./storage/.license/instance-id 文件，您可以通过访问该文件获取实例 ID。
+:::
+
+访问 NocoBase Service，点击页面上的 "添加" 按钮。在弹出的表单中，将上一步命令输出的实例 ID 粘贴到相应的字段中，然后保存表单。
+
+TODO 截图
+
+保存成功后，返回到 License key 列表页面，找到你刚刚添加的条目，点击其对应的 "下载" 按钮，下载 license-key 文件。最后，将下载得到的 license-key 文件放置到项目的 `./storage/.license/` 文件夹中。
+
+
+### v1.4及以上版本（v1.7以下）
+
+#### 配置环境变量
 
 通过设置环境变量 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) 和 [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password)（NocoBase 服务平台的用户名和密码），即可在安装或升级应用时自动下载商业插件。
 
