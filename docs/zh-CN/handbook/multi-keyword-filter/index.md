@@ -1,6 +1,6 @@
 # 多关键词筛选<Badge>v1.7.0+</Badge>
 
-<PluginInfo commercial="true" name="filter-operator-multiple-keywords"></PluginInfo>
+<PluginInfo commercial="true" name="multi-keyword-filter"></PluginInfo>
 
 ## 介绍
 
@@ -12,10 +12,14 @@
 
 这两个操作符可用于以下字段：
 - 单行文本
-- 手机号码
-- 电子邮件
-- URL
+- 手机号
+- 邮箱
+- 整数
+- 数字
+- 百分比
 - UUID
+- Nano ID
+- 公式
 - 自动编码
 
 ## 应用场景
@@ -101,10 +105,14 @@
 ### 哪些字段支持这个功能？
 
 - 单行文本
-- 手机号码
-- 电子邮件
-- URL
+- 手机号
+- 邮箱
+- 整数
+- 数字
+- 百分比
 - UUID
+- Nano ID
+- 公式
 - 自动编码
 
 ## 提示和技巧
