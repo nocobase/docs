@@ -43,7 +43,9 @@ Based on the above performance test results and current design considerations, h
 
 2. **Relationship Field Processing Efficiency**: The system processes relationship fields using record-by-record query associations, which becomes a performance bottleneck in large data volume scenarios. For simple relationship structures (such as one-to-many associations between two tables), we recommend a phased import strategy: first import the main table's basic data, then establish relationships between tables afterward. If business requirements necessitate importing relationship data simultaneously, please refer to the performance test results above to plan import times accordingly.
 
-3. **Workflow Processing Mechanism**: The test results indicate that enabling workflow triggers has minimal impact on the data import process itself. However, it's important to note that even after an import task shows as 100% complete, the system still requires additional time to create workflow execution plans. During this phase, the system generates workflow execution plans for each imported record, utilizing certain backend resources, but without affecting the normal use of the imported data. When processing large-scale data imports, we recommend using this feature cautiously unless absolutely necessary.
+3. **Workflow Processing Mechanism**: We do not recommend enabling workflow triggers when importing large volumes of data, primarily for two reasons:
+   - When the import task status shows 100%, the task does not immediately end, as the system still needs additional time to create workflow execution plans. During this phase, the system generates corresponding workflow execution plans for each imported record, occupying the import thread, though this does not affect the use of already imported data.
+   - After the import task is fully completed, the concurrent execution of numerous workflows may cause system resource constraints, affecting overall system response speed and user experience.
 
 These three factors affecting performance are being considered for further optimization in future updates.
 
