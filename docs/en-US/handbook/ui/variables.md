@@ -124,17 +124,17 @@ Only used in association blocks, representing the source record of the associati
 
 ### Date Variables
 
-Date variables are dynamic placeholders for date and time that can be used across the system to define data range filters in blocks, related field conditions, action linkage rules, and default values for date fields. Depending on the usage scenario, the parsing logic differs:
+Date variables are dynamic placeholders for date that can be used across the system to define data scope filters in blocks, related field conditions, action linkage rules, and default values for date fields. Depending on the usage scenario, the parsing logic differs:
 
 - In **assignment scenarios** (e.g., default value setting), variables resolve to a specific moment in time.
-- In **filtering scenarios** (e.g., date conditions in data ranges), variables resolve to a time range to support flexible filtering.
+- In **filtering scenarios** (e.g., date conditions in data scope), variables resolve to a datetime scope to support flexible filtering.
 
 #### Filtering Scenarios
 
 Common use cases include:
 
-- Setting date field conditions in block data range filters
-- Setting date conditions in related field data ranges
+- Setting date field conditions in block data scope filters
+- Setting date conditions in related field data scope
 - Defining date conditions in action linkage rules
 
 ![20250522211606](https://static-docs.nocobase.com/20250522211606.png)
