@@ -1589,6 +1589,13 @@ export default [
         'title.ja-JP': 'モバイル',
         link: '/handbook/mobile',
       },
+      {
+        title: 'Custom variables',
+        'title.fr-FR': 'Variables personnalisées',
+        'title.zh-CN': '自定义变量',
+        'title.ja-JP': 'カスタム変数',
+        link: '/handbook/custom-variables',
+      },
     ],
   },
   {
