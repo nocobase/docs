@@ -1,27 +1,30 @@
-# Upgrading for `create-nocobase-app`
+# Обновление для `create-nocobase-app`
 
-## 0. Preparing for the upgrade
+## 0. Подготовка к обновлению
 
 :::warning
-- Make sure to backup the database before upgrading!!!
-- **Version 1.4 and above**: By setting the environment variables [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) and [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password), you can automatically download commercial plugins during application installation or upgrade.
-:::
+- Обязательно сделайте **резервную копию базы данных перед обновлением**!
+- **Для версий 1.4 и выше**: при указании переменных [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) и [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password) коммерческие плагины будут автоматически загружены при установке или обновлении.
+  :::
 
-## 1. Upgrading
+## 1. Обновление приложения
 
-Upgrade the application by running the `yarn nocobase upgrade` command.
+Для обновления приложения выполните команду:
 
 ```bash
-# Switch to the corresponding directory
+# Перейдите в директорию проекта
 cd my-nocobase-app
-# Execute the update command
+# Запустите команду обновления
 yarn nocobase upgrade
-# Start
+# Запуск в режиме разработки
 yarn dev
 ```
 
-If there are problems with upgrading, you can also [recreate new app](/welcome/getting-started/installation/create-nocobase-app) and refer to the old version of .env to change the environment variables. The database information needs to be configured correctly. When using a SQLite database, you need to copy the database files to the `./storage/db/` directory. Finally, run `yarn nocobase upgrade` to upgrade.
+Если возникнут проблемы при обновлении, вы можете создать новое приложение заново, использовав .env из старой версии для переноса переменных окружения. 
+Важно правильно указать данные подключения к базе данных.
+Если вы используете SQLite, скопируйте файлы базы данных в папку ./storage/db/,
+после чего снова выполните yarn nocobase upgrade.
 
-## 2. Upgrading independent plugins
+## 2. Обновление отдельных плагинов
 
-After upgrading NocoBase, independent plugins installed through the interface might also need to be upgraded. Please refer to documentation [Installation and Upgrade of Plugins](/welcome/getting-started/plugin)
+После обновления NocoBase, установленные через интерфейс плагины также могут потребовать обновления. Подробнее читайте в разделе [Установка и обновление плагинов](/welcome/getting-started/plugin)

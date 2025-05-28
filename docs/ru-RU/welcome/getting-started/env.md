@@ -1,14 +1,14 @@
-# Environment Variables
+# Переменные окружения
 
-## How to Set Environment Variables?
+## Как задать переменные окружения?
 
-### Git Source Code or `create-nocobase-app` Installation Method
+### Установка из исходного кода или с помощью `create-nocobase-app`
 
-Set environment variables in the `.env` file in the project's root directory. After modifying the environment variables, kill the application process and restart it.
+Задайте переменные окружения в файле .env в корневой директории проекта. После изменения переменных необходимо перезапустить процесс приложения.
 
-### Docker Installation Method
+### Установка через Docker
 
-Modify the `docker-compose.yml` configuration and set the environment variables in the `environment` parameter. Example:
+Измените файл `docker-compose.yml`, добавив переменные окружения в параметр `environment`. Пример:
 
 ```yml
 services:
@@ -18,7 +18,7 @@ services:
       - APP_ENV=production
 ```
 
-You can also use `env_file` to set environment variables in the `.env` file. Example:
+Можно также использовать параметр `env_file`, чтобы задать переменные в отдельном `.env` файле. Пример:
 
 ```yml
 services:
@@ -27,32 +27,32 @@ services:
     env_file: .env
 ```
 
-After modifying the environment variables, rebuild the app container:
+После изменения переменных окружения перезапустите контейнер:
 
 ```yml
-docker-compose up -d app
+docker compose up -d app
 ```
 
-## Global Environment Variables
+## Глобальные переменные окружения
 
-Saved in the `.env` file
+Хранятся в файле `.env`
 
 ### TZ
 
-Used to set the application's time zone, with the default being the system's time zone.
+Устанавливает часовой пояс приложения. По умолчанию используется системный часовой пояс.
 
 https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 :::warning
-Time-related operations will be handled according to this time zone. Changing TZ may affect date values in the database. For more details, refer to [Date & Time Overview](/handbook/data-modeling/collection-fields/datetime).
+Операции, связанные со временем, будут выполняться в соответствии с этим часовым поясом. Изменение TZ может повлиять на значения даты в базе данных. Более подробную информацию см. в разделе [Обзор даты и времени](/handbook/data-modeling/collection-fields/datetime).
 :::
 
 ### APP_ENV
 
-Application environment, default is `development`, options include
+Среда выполнения приложения, по умолчанию `development`. Возможные значения
 
-- `production` production environment
-- `development` development environment
+- `production` среда в производстве
+- `development` среда разработки
 
 ```bash
 APP_ENV=production
@@ -60,7 +60,7 @@ APP_ENV=production
 
 ### APP_KEY
 
-Secret key, for scenarios such as jwt
+Секретный ключ, используется, например, для генерации JWT.
 
 ```bash
 APP_KEY=app-key-test
@@ -68,7 +68,7 @@ APP_KEY=app-key-test
 
 ### APP_PORT
 
-Application port, default is `13000`
+Порт, на котором работает приложение. По умолчанию: `13000`
 
 ```bash
 APP_PORT=13000
@@ -76,7 +76,7 @@ APP_PORT=13000
 
 ### API_BASE_PATH
 
-NocoBase API address prefix, default is `/api/`
+Префикс адреса API NocoBase. По умолчанию:  `/api/`
 
 ```bash
 API_BASE_PATH=/api/
@@ -86,25 +86,25 @@ API_BASE_PATH=/api/
 
 > `v1.6.0+`
 
-The multi-core (cluster) mode for starting app. If this variable is configured, will be passed to the pm2 start command as the `-i <instances>` parameter. The options are consistent with the pm2 `-i` parameter (refer to [PM2: Cluster Mode](https://pm2.keymetrics.io/docs/usage/cluster-mode/)), including:
+Многопроцессный (кластерный) режим запуска приложения. Если переменная задана, она будет передана в команду запуска pm2 как параметр `-i` <instances>. Поддерживаются те же параметры, что и в: [PM2: Cluster Mode](https://pm2.keymetrics.io/docs/usage/cluster-mode/)),
 
-- `max`: Use the maximum number of CPU cores
-- `-1`: Use the maximum number of CPU cores minus one
-- `<number>`: Specify the number of cores
+- `max`: Использовать максимум доступных ядер CPU
+- `-1`: Использовать максимум ядер минус одно
+- `<number>`: Указать конкретное количество ядер
 
-The default value is empty, meaning it is not enabled.
+Если переменная не задана — режим кластера отключён.
 
 :::warning{title="Attention"}
-This mode requires the use of plugins related to cluster mode, such as `@nocobase/plugin-sync-adapter-redis`. Otherwise, the functionality of application may encounter unexpected issues.
+Этот режим требует использования плагинов, связанных с кластерным режимом, таких как `@nocobase/plugin-sync-adapter-redis`. В противном случае функциональность приложения может столкнуться с непредвиденными проблемами.
 :::
 
-Reference: [Cluster mode](./deployment/cluster-mode.md).
+Подробнее: [Cluster mode](./deployment/cluster-mode.md).
 
 ### PLUGIN_PACKAGE_PREFIX
 
-Plugin package prefix, default is `@nocobase/plugin-,@nocobase/preset-`
+Префикс имён пакетов плагинов. По умолчанию: `@nocobase/plugin-,@nocobase/preset-`
 
-For example, add plugin `hello` into project `my-nocobase-app`, the plugin package name is `@my-nocobase-app/plugin-hello`.
+Пример: при добавлении плагина `hello` в проект `my-nocobase-app`, имя пакета будет `@my-nocobase-app/plugin-hello`.
 
 PLUGIN_PACKAGE_PREFIX is configured as follows:
 
@@ -112,15 +112,15 @@ PLUGIN_PACKAGE_PREFIX is configured as follows:
 PLUGIN_PACKAGE_PREFIX=@nocobase/plugin-,@nocobase-preset-,@my-nocobase-app/plugin-
 ```
 
-The correspondence between plugin name and package name is:
+Соответствие имён плагинов и пакетов:
 
-- `users` plugin package name is `@nocobase/plugin-users`
-- `nocobase` plugin package name is `@nocobase/preset-nocobase`
-- `hello` plugin package name is `@my-nocobase-app/plugin-hello`
+- `users` Название пакета плагина `@nocobase/plugin-users`
+- `nocobase` Название пакета плагина `@nocobase/preset-nocobase`
+- `hello` Название пакета плагина `@my-nocobase-app/plugin-hello`
 
 ### DB_DIALECT
 
-Database type, default is `sqlite`, options include
+Тип базы данных, по умолчанию — `sqlite`. Возможные значения:
 
 - `sqlite`
 - `mysql`
@@ -143,9 +143,9 @@ DB_STORAGE=/your/path/nocobase.db
 
 ### DB_HOST
 
-Database host (required when using MySQL or PostgreSQL databases)
+Путь к файлу базы данных (обязательно при использовании базы данных SQLite)
 
-Default is `localhost`
+По умолчанию `localhost`
 
 ```bash
 DB_HOST=localhost
@@ -153,7 +153,7 @@ DB_HOST=localhost
 
 ### DB_PORT
 
-Database port (required when using MySQL or PostgreSQL databases)
+Порт базы данных (обязательно при использовании MySQL или PostgreSQL)
 
 - Default port of MySQL is 3306
 - Default port of PostgreSQL is 5432

@@ -1,7 +1,7 @@
-# Overview
+# Обзор
 
-NocoBase supports three types of installation, with slight differences in upgrades.
+NocoBase поддерживает три типа установки, и каждый из них имеет свои особенности при обновлении.
 
-- [Upgrading for Docker compose](./docker-compose.md)
-- [Upgrading for create-nocobase-app](./create-nocobase-app.md)
-- [Upgrading for Git source code](./git-clone.md)
+- [Обновление при использовании Docker Compose](./docker-compose.md)
+- [Обновление для create-nocobase-app](./create-nocobase-app.md)
+- [Обновление при установке из исходного кода (Git)](./git-clone.md)

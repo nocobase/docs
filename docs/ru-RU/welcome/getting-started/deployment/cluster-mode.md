@@ -1,4 +1,4 @@
-# Cluster Mode
+# Кластерный режим
 
 <PluginInfo licenseBundled="enterprise" plugins="pubsub-adapter-redis,lock-adapter-redis"></PluginInfo>
 

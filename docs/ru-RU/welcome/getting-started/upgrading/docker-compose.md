@@ -1,32 +1,32 @@
-# Upgrading for Docker compose
+# Обновление при через Docker Compose
 
-## 0. Preparing for the upgrade
+## 0. Подготовка к обновлению
 
 :::warning
-- Make sure to backup the database before upgrading!!!
-- **Version 1.4 and above**: By setting the environment variables [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) and [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password), you can automatically download commercial plugins during application installation or upgrade.
+- Обязательно сделайте **резервную копию базы данных перед обновлением**!
+- **Для версий 1.4 и выше**: при указании переменных [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) и [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password) плагины будут автоматически загружаться при установке или обновлении приложения.
 :::
 
-## 1. Navigate to the directory containing `docker-compose.yml`
+## 1. Перейдите в директорию, где находится `docker-compose.yml`
 
-Example
+Пример:
 
 ```bash
-# MacOS, Linux...
+# Для macOS или Linux
 cd /your/path/my-project/
-# Windows
+# Для Windows
 cd C:\your\path\my-project
 ```
 
-## 2. Update the image version
+## 2. Обновите версию образа
 
-- 'latest' : Functional stability, more complete test version, only do bug fixes. Installing this version is recommended.
-- 'beta' : contains a new feature that is about to be released, a version that has been preliminarily tested and may have some known or unknown issues.
-- 'alpha' : a version in development that contains the latest feature code, may not be completed or has a lot of instability, and is mainly used for internal development and rapid iteration.
-- ` 1.3.51 ` : specify a version number, the latest version of the view [] list of previous versions (https://hub.docker.com/r/nocobase/nocobase/tags).
+- 'latest' : стабильная версия с полной проверкой, содержит только исправления ошибок. Рекомендуется к установке.
+- 'beta' : включает новые функции, которые скоро будут выпущены. Уже протестирована, но возможны ошибки.
+- 'alpha' : версия в разработке, содержит последние изменения, может быть нестабильной. Используется в основном для внутреннего тестирования и быстрой итерации.
+- ` 1.3.51 ` : можно указать конкретную версию. Список доступных версий см. на (https://hub.docker.com/r/nocobase/nocobase/tags).
 
 :::warning
-Images can only be upgraded, not downgraded. The next version cannot be downgraded to latest.
+Образы можно только обновлять, откат на предыдущую версию невозможен. Версия next не может быть откатана до latest.
 :::
 
 ```yml
@@ -39,17 +39,17 @@ services:
 # ...
 ```
 
-## 3. Restart the container
+## 3. Перезапустите контейнер
 
 ```bash
-# Pull the latest image
-docker-compose pull
-# Start
-docker-compose up -d app
-# View the app process
-docker-compose logs app
+# Загрузка последней версии образа
+docker compose pull
+# Запуск контейнера
+docker compose up -d app
+# Просмотр логов приложения
+docker compose logs app
 ```
 
-## 4. Upgrading independent plugins
+## 4. Обновление отдельных плагинов
 
-After upgrading NocoBase, independent plugins installed through the interface might also need to be upgraded. Please refer to documentation [Installation and Upgrade of Plugins](/welcome/getting-started/plugin)
+После обновления NocoBase, отдельные установленные через интерфейс плагины также могут требовать обновления. Подробнее см. в раздел [Установка и обновление плагинов](/welcome/getting-started/plugin)

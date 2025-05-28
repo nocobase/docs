@@ -1,59 +1,65 @@
 # create-nocobase-app
 
-The other processes are no different from the [create-nocobase-app](/welcome/getting-started/installation/create-nocobase-app).
+Остальные шаги не отличаются от [create-nocobase-app](/welcome/getting-started/installation/create-nocobase-app).
 
 <embed src="./env-note.md"></embed>
-- When deploying in a production environment, to reduce volume, you can install only the necessary dependencies with `yarn install --production`
-
+- При развёртывании в продакшн-среде, чтобы уменьшить размер проекта, можно установить только необходимые зависимости командой: `yarn install --production`
 <br />
 
-[>>> For more information, view the complete 'Environment Variables' <<<](/welcome/getting-started/env)
+[>>> Для получения дополнительной информации смотрите полный список 'Переменные окружения' <<<](/welcome/getting-started/env)
 
-## Managing Application Processes
+## Управление процессами приложения
 
-NocoBase has already built-in [PM2](https://pm2.keymetrics.io/) for managing application processes. In a production environment, you can directly use `yarn start`. If you need it to run in the background, just add the `-d` parameter, for example:
+В NocoBase уже встроен менеджер процессов [PM2](https://pm2.keymetrics.io/) для управления приложением.  
+В продакшн-среде вы можете просто использовать команду:
 
 ```bash
-# Run in the background
+yarn start
+```
+Если требуется запустить процесс в фоновом режиме, добавьте флаг -d, например:
+```bash
+# Запустить в фоновом режиме
 yarn start -d
 ```
 
-Restart
+Перезапустить
 
 ```bash
 yarn nocobase pm2-restart
 ```
 
-Stop
+Остановить
 
 ```bash
 yarn nocobase pm2-stop
 ```
 
-More PM2 commands
+Посмотреть другие команды PM2
 
 ```bash
 yarn nocobase pm2 -h
 ```
 
-## Configuring Nginx
+## Настройка Nginx
 
-In a production environment, you can consider having Nginx proxy the static files. NocoBase provides the `create-nginx-conf` command to generate Nginx configuration files.
+В продакшн-среде вы можете настроить проксирование статических файлов через Nginx.  
+NocoBase предоставляет команду `create-nginx-conf` для генерации конфигурационных файлов Nginx.
 
 ```bash
 yarn nocobase create-nginx-conf
 ```
 
-The file path is `./storage/nocobase.conf`. Adjust it further according to the actual situation, and finally add it to `/etc/nginx/sites-enabled`, for example:
+Файл конфигурации будет сохранён по пути `./storage/nocobase.conf`. При необходимости отредактируйте его под вашу инфраструктуру, а затем добавьте в каталог `/etc/nginx/sites-enabled`, например:
 
 ```bash
 ln -s /app/nocobase/storage/nocobase.conf /etc/nginx/sites-enabled/nocobase.conf
 ```
 
-**Remarks**
+**Примечания**
 
-- When deploying to a subpath, you need to configure the `APP_PUBLIC_PATH` environment variable. After configuring, you need to re-execute the `create-nginx-conf` command;
-- Modify the generated `nocobase.conf` according to the actual situation, such as configuring the domain name, etc.;
-- `/app/nocobase/` is the directory where the example application is located, and it needs to be adjusted according to the actual situation;
-- `/etc/nginx/sites-enabled` is the default Nginx configuration path, the actual situation may vary, you can check it with `nginx -V`;
-- If you are not using Nginx, you can make some adjustments referring to the Nginx configuration.
+- При развёртывании в подкаталоге необходимо задать переменную окружения `APP_PUBLIC_PATH`. После этого **необходимо заново выполнить** команду `create-nginx-conf`;
+- Отредактируйте сгенерированный файл `nocobase.conf` в соответствии с вашими требованиями, например, укажите нужное доменное имя;
+- Путь `/app/nocobase/` — это пример расположения приложения, его нужно изменить в соответствии с вашей структурой проекта;
+- Каталог `/etc/nginx/sites-enabled` — это путь по умолчанию для конфигураций Nginx. В вашем окружении он может отличаться — проверьте командой `nginx -V`;
+- Если вы не используете Nginx, вы всё равно можете взять данную конфигурацию за основу и адаптировать её под используемый веб-сервер.
+

@@ -1,65 +1,64 @@
-# Upgrading for Git source code
+# Обновление при установке из исходного кода (Git)
 
-## 0. Preparing for the upgrade
+## 0. Подготовка к обновлению
 
 :::warning
-- Make sure to backup the database before upgrading!!!
-- **Version 1.4 and above**: By setting the environment variables [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) and [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password), you can automatically download commercial plugins during application installation or upgrade.
-:::
+- Обязательно сделайте **резервную копию базы данных перед обновлением**!
+- **Для версий 1.4 и выше**: при указании переменных [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) и [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password) коммерческие плагины будут автоматически загружены при установке или обновлении.
+  :::
 
-## 1. switch to the NocoBase project directory
+## 1. Перейдите в директорию проекта NocoBase
 
 ```bash
 cd my-nocobase-app
 ```
 
-## 2. Pull the latest code
+## 2. Загрузите последнюю версию исходного кода
 
 ```bash
 git pull
 ```
 
-## 3. Delete cache and dependencies (optional)
+## 3. Удалите кэш и зависимости (необязательно)
 
-If the normal upgrade process fails, try emptying the cache and dependencies and re-downloading it.
+Если обновление проходит с ошибками, попробуйте очистить кэш и удалить зависимости:
 
 ```bash
-# delete nocobase cache
+# Очистить кэш NocoBase
 yarn nocobase clean
-# delete dependencies
+# Удалить зависимости
 yarn rimraf -rf node_modules
 ```
 
-## 4. Update dependencies
+## 4. Установите зависимости заново
 
 ```bash
 yarn install
 ```
 
-## 5. Execute the update command
+## 5. Выполните команду обновления
 
 ```bash
 yarn nocobase upgrade
 ```
 
-## 6. Start NocoBase
+## 6. Запустите NocoBase
 
-development environment
+В режиме разработки
 
 ```bash
 yarn dev
 ```
 
-Production environment
+В режиме Production
 
 ```bash
-# compile
+# Сборка проекта
 yarn build
-
-# Start
+# Запуск
 yarn start
 ```
 
-## 7. Upgrading independent plugins
+## 7. Обновление отдельных плагинов
 
-After upgrading NocoBase, independent plugins installed through the interface might also need to be upgraded. Please refer to documentation [Installation and Upgrade of Plugins](/welcome/getting-started/plugin)
+После обновления NocoBase, отдельные установленные через интерфейс плагины также могут потребовать обновления. См. раздел [Установка и обновление плагинов](/welcome/getting-started/plugin)

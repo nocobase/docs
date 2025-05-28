@@ -1,31 +1,48 @@
-# How NocoBase works
+# Как работает NocoBase
 
-NocoBase supports all features through a microkernel and pluginized architectural design.
+NocoBase реализует все функции благодаря микроядерной архитектуре и модульной системе плагинов.
 
-## Microkernel
+## Микроядерная архитектура (Microkernel)
 
-NocoBase's kernel is similar to a development framework that defines the application lifecycle and standardizes the interface protocols of each layer. The basic structure of NocoBase is shown in the following diagram:
+Ядро NocoBase похоже на фреймворк разработки, который определяет жизненный цикл приложения и стандартизирует интерфейсы каждого уровня. Базовая структура NocoBase показана на следующей схеме:
 
 ![how-micro-core](https://static-docs.nocobase.com/how-micro-core.png)
 
-The data model is used as the underlying driver, the block-based interface is used as the user layer, and the business logic layer is used as the bridge connecting the two and carrying all kinds of business rules, so that the data can flow cyclically through the user's operations.
+В основе лежит **модель данных** как движок, **интерфейс на основе блоков** как пользовательский уровень, а **уровень бизнес-логики** служит связующим звеном, реализующим бизнес-правила и обеспечивающим циклическое взаимодействие данных через действия пользователя.
 
-NocoBase defines standard protocols at the following three main levels:
-1. data model: based on the upper layer of relational database ORM encapsulation, standardized data modeling description (refer to [Collections & Fields](/development/server/collections)).
-2. HTTP routing: RESTful-like interface form based on resources and actions definitions (refer to [Resources and Actions](/development/server/resources-actions)).
-3. client-side interface: Formily 2.0-based JSON Schema to describe customized page and block layouts (refer to [UI Schema](/development/client/ui-schema/quick-start)).
+NocoBase определяет стандартные протоколы на следующих трёх уровнях:
 
-Based on these protocols, it also makes the development of other modules more standardized and easier.
+1. **Модель данных** — надстройка над ORM для реляционных БД с унифицированным описанием структуры данных  
+   (см. [Коллекции и поля](/development/server/collections))
 
-### Pluginization
+2. **HTTP-маршрутизация** — интерфейс в стиле REST на основе ресурсов и действий  
+   (см. [Ресурсы и действия](/development/server/resources-actions))
 
-NocoBase opens up extensible interfaces in all aspects of the application lifecycle, including field types, collection types, third-party data sources in the data model, middleware insertion in the business logic layer, interface components, blocks, etc., and in all aspects of the entire application lifecycle (startup, stopping, and plug-in loading), and even many plug-ins provide secondary extensible interfaces. These designs fully provide a variety of extension possibilities for application development, and all the built-in features of NocoBase are also composed through this design:
+3. **Клиентский интерфейс** — описание макетов страниц и блоков через JSON Schema на базе Formily 2.0  
+   (см. [UI Schema](/development/client/ui-schema/quick-start))
+
+На основе этих протоколов разработка дополнительных модулей становится проще и единообразнее.
+
+### Плагинная архитектура
+
+NocoBase предоставляет расширяемые интерфейсы на всех этапах жизненного цикла приложения:  
+типизация полей и коллекций, внешние источники данных, middleware на уровне бизнес-логики, UI-компоненты, блоки и т.д.  
+Даже сами события запуска, остановки и загрузки плагинов поддерживают расширение.  
+Кроме того, **многие плагины также предоставляют свои собственные интерфейсы для дальнейшего расширения**.
+
+Благодаря этому подходу, можно не только настраивать и расширять функциональность под любые задачи,  
+но и реализовывать весь функционал системы исключительно через плагины — как это сделано во встроенных модулях NocoBase:
 
 ![how-plugins-en](https://static-docs.nocobase.com/how-plugins-en.png)
 
-Plugins can be used to extend the required functionality in any life cycle of the application, such as the Permissions plugin, which contains customized data tables, business processing for request middleware, and interfaces for front-end administration.
-Through this design, NocoBase not only realizes rich no-code features, but also supports free extensions when the built-in functionality cannot meet the needs.
+**Плагины могут добавлять функциональность на любом этапе жизненного цикла приложения.**  
+Например, плагин "Разрешения" включает:
+- пользовательские таблицы данных,
+- бизнес-логику обработки запросов на уровне middleware,
+- интерфейсы для панели управления.
 
-### Learn more
+Такой подход обеспечивает как мощные no-code возможности, так и гибкость для разработки и расширения при необходимости.
 
-Please refer to the section on [Plugin development](/development) to start extending by developing plugins.
+### Подробнее
+
+См. раздел [Разработка плагинов](/development), чтобы начать расширять платформу с помощью собственных модулей.

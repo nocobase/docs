@@ -6,16 +6,16 @@ The other processes are no different from the [Docker installation](/welcome/get
 
 <br />
 
-[>>> For more information, view the complete 'Environment Variables' <<<](/welcome/getting-started/env)
+[>>> Для получения дополнительной информации смотрите полный список 'Переменные окружения' <<<](/welcome/getting-started/env)
 
-## Domain Binding
+## Привязка домена
 
-Taking nginx as an example, proxy through nginx http://127.0.0.1:13000/
-
+На примере **nginx**: настройка проксирования через nginx http://127.0.0.1:13000/
+Откройте или создайте файл конфигурации Nginx и добавьте туда конфигурацию прокси
 ```bash
 server {
     listen 80;
-    server_name your_domain.com;  # Replace your_domain.com with your domain
+    server_name your_domain.com;  # Замените на ваше доменное имя или суб домен 
 
     location / {
         proxy_pass http://127.0.0.1:13000/;
@@ -28,9 +28,9 @@ server {
 }
 ```
 
-## Deploy on Subpath
+## Развёртывание в подкаталог
 
-To deploy to a subpath, you need to configure the `APP_PUBLIC_PATH` environment variable.
+Для развёртывания приложения в подкаталоге необходимо указать переменную окружения `APP_PUBLIC_PATH`.
 
 ```diff
 services:
@@ -40,12 +40,13 @@ services:
 +     - APP_PUBLIC_PATH=/nocobase/
 ```
 
-The application's URL is http://127.0.0.1:13000/nocobase/, and the Nginx configuration is
+URL приложения: http://127.0.0.1:13000/nocobase/  
+Пример конфигурации Nginx:
 
 ```bash
 server {
     listen 80;
-    server_name your_domain.com;  # Replace your_domain.com with your domain
+    server_name your_domain.com;  # Замените на ваше доменное имя или суб домен 
 
     location /nocobase/ {
         proxy_pass http://127.0.0.1:13000/nocobase/;
@@ -57,4 +58,4 @@ server {
 }
 ```
 
-Finally, you can access it through http://your_domain.com/nocobase/
+В итоге доступ к приложению будет по адресу: http://your_domain.com/nocobase/
