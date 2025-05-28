@@ -4,6 +4,7 @@ export default [
     'title.fr-FR': 'Bienvenue',
     'title.zh-CN': '欢迎',
     'title.ja-JP': 'ようこそ',
+    'title.ru-RU': 'Добро пожаловать',
     type: 'group',
     children: [
       '/welcome/introduction',
@@ -18,6 +19,7 @@ export default [
     'title.fr-FR': 'Démarrer',
     'title.zh-CN': '快速开始',
     'title.ja-JP': '始めに',
+    'title.ru-RU': 'Начиная',
     type: 'group',
     children: [
       {
@@ -25,6 +27,7 @@ export default [
     	'title.fr-FR': 'Installation',
         'title.zh-CN': '安装',
         'title.ja-JP': 'インストール',
+        'title.ru-RU': 'Установка',
         children: [
           '/welcome/getting-started/installation',
           '/welcome/getting-started/installation/docker-compose',
@@ -38,6 +41,7 @@ export default [
     	'title.fr-FR': 'Upgrading',
         'title.zh-CN': '升级',
         'title.ja-JP': 'アップグレード',
+        'title.ru-RU': 'Обновление',
         children: [
           '/welcome/getting-started/upgrading',
           '/welcome/getting-started/upgrading/docker-compose',
@@ -47,9 +51,10 @@ export default [
       },
       {
         title: 'Deployment',
-   	'title.fr-FR': 'Déploiement',
+   	    'title.fr-FR': 'Déploiement',
         'title.zh-CN': '部署',
         'title.ja-JP': 'デプロイ',
+        'title.ru-RU': 'Развертывание',
         children: [
           '/welcome/getting-started/deployment',
           '/welcome/getting-started/deployment/docker-compose',
@@ -60,6 +65,7 @@ export default [
             title: 'How to deploy faster',
             'title.zh-CN': '如何部署才更快',
             'title.ja-JP': 'デプロイの最適化',
+            'title.ru-RU': 'Быстрая установка',
             link: 'https://www.nocobase.com/en/tutorials/how-to-deploy-nocobase-faster',
             'link.zh-CN': 'https://www.nocobase.com/cn/tutorials/how-to-deploy-nocobase-faster',
             'link.ja-JP': 'https://www.nocobase.com/ja/tutorials/how-to-deploy-nocobase-faster',
@@ -126,6 +132,7 @@ export default [
     'title.fr-FR': 'Communauté',
     'title.zh-CN': '社区',
     'title.ja-JP': 'コミュニティ',
+    'title.ru-RU': 'Сообщество',
     type: 'group',
     children: [
       '/welcome/community/contributing',

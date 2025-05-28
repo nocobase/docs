@@ -1,4 +1,4 @@
-# Handbook Guide
+# Справочник и практическое руководство
 
 1. If you are first exposed to NocoBase, it is recommended that you start with "[Data Modeling - Overview](/handbook/data-modeling)". In this chapter, you can understand the features of NocoBase data modeling;
 2. Going further, you can add "[Pages](/handbook/ui/pages)" and "[Blocks](/handbook/ui/blocks)" in the interface. You can choose suitable blocks to display the data in the data source;

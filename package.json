@@ -8,10 +8,12 @@
     "dev:en": "cross-env DOC_LANG=en-US dumi dev",
     "dev:fr": "cross-env DOC_LANG=fr-FR dumi dev",
     "dev:ja": "cross-env DOC_LANG=ja-JP dumi dev",
+    "dev:ru": "cross-env DOC_LANG=ru-RU dumi dev",
     "build": "dumi build",
     "build:en": "cross-env DOC_LANG=en-US dumi build",
     "build:fr": "cross-env DOC_LANG=fr-FR dumi build",
     "build:ja": "cross-env DOC_LANG=ja-JP dumi build",
+    "build:ru": "cross-env DOC_LANG=ru-RU dumi build",
     "prepare": "husky install && dumi setup"
   },
   "authors": [],

@@ -1,13 +1,13 @@
-# Overview
+# Обзор
 
-## Single Node Mode
+## Режим одного узла
 
-NocoBase supports three different installation methods, each with slightly different deployment procedures.
+NocoBase поддерживает три различных способа установки, каждый из которых имеет свои особенности в процессе развёртывания.
 
 - [Docker](./docker-compose.md)
 - [create-nocobase-app](./create-nocobase-app.md)
 - [Git source code](./git-clone.md)
 
-## Cluster Mode
+## Кластерный режим
 
-- [Cluster Mode Deployment](./cluster-mode.md)
+- [Развёртывание в кластерном режиме](./cluster-mode.md)

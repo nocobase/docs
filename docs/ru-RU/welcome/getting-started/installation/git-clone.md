@@ -1,53 +1,53 @@
-# Git source code
+# Установка из (Git)
 
-## 0. Prerequisites
+## 0. Предварительные требования
 
-Make sure you have:
+Убедитесь, что у вас установлены:
 
-- Git, Node.js 20+, Yarn 1.22.x installed
-- Configured and started the required database &mdash; MySQL 8.x, MariaDB 10.9+, PostgreSQL 10+ &mdash; choose any one.
+- Git, Node.js 20+, Yarn 1.22.x
+- Настроена и запущена одна из поддерживаемых баз данных: MySQL 8.x, MariaDB 10.9+ или PostgreSQL 10+
 
-## 1. Download with Git
+## 1. Клонирование репозитория через Git
 
-### Latest version (`main`)
+### Последняя стабильная версия (Latest) (`main`)
 
-Stable and well-tested version and only bug fixed will be made. This version is recommended.
+Надёжная, протестированная версия. Обновляется только с исправлениями ошибок. Рекомендуется.
 
 ```bash
 git clone https://github.com/nocobase/nocobase.git -b main --depth=1 my-nocobase
 ```
 
-### Beta version (`next`)
+### Бета-версия (Beta) (`next`)
 
-This version includes new features that are about to be released and it has been preliminarily tested, but still have known or unknown issues.
+Содержит новые функции, которые скоро будут выпущены. Уже протестирована, но могут быть ошибки.
 
 ```bash
 git clone https://github.com/nocobase/nocobase.git -b next --depth=1 my-nocobase
 ```
 
-### Alpha version (`develop`)
+### Альфа-версия (Alpha) (`develop`)
 
-A development version containing the latest features, which may be incomplete or unstable.
+Версия в активной разработке. Содержит новейшие функции, но может быть нестабильной или незавершённой.
 
 ```bash
 git clone https://github.com/nocobase/nocobase.git -b develop --depth=1 my-nocobase
 ```
 
-## 2. Switch to the project directory
+## 2. Переход в директорию проекта
 
 ```bash
 cd my-nocobase
 ```
 
-## 3. Install dependencies
+## 3. Установка зависимостей
 
 ```bash
 yarn install --frozen-lockfile
 ```
 
-## 4. Set environment variables
+## 4. Настройка переменных окружения
 
-The environment variables required by NocoBase are stored in the root `.env` file, modify the environment variables according to the actual situation, if you don't know how to change them, [click here for environment variables description](../env.md), or you can leave it as default.
+Переменные среды хранятся в файле `.env` в корне проекта. Измените значения в соответствии с вашей конфигурацией. Если не знаете, что указывать — [click here for environment variables description](../env.md), или оставьте значения по умолчанию:
 
 ```bash
 TZ=UTC
@@ -63,35 +63,35 @@ NOCOBASE_PKG_PASSWORD=your-password
 
 :::warning
 
-- **Version 1.4 and above**: By setting the environment variables [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) and [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password), you can automatically download commercial plugins during application installation or upgrade;
-- `TZ` is used to set the application's time zone, with the default being the system's time zone;
-- `APP_KEY` is the application's secret key, used for generating user tokens and so on (if APP_KEY is changed, the old tokens will also become invalid). It can be any random string. Please change it to your own secret key and ensure it is not disclosed to the public.
-- `DB_*` is related to the database. If it is not the default database service in the example, please modify it according to the actual situation.
+- **Версия 1.4 и выше**: можно указать переменные [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) и [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password), чтобы автоматически загружать коммерческие плагины во время установки или обновления.;
+- `TZ` часовой пояс приложения (по умолчанию — системный).;
+- `APP_KEY` секретный ключ приложения для генерации токенов. Обязательно задайте свой собственный ключ и не публикуйте его.
+- `DB_*` параметры подключения к базе данных. При использовании внешнего сервера измените значения на собственные.
   :::
 
-## 5. Install NocoBase
+## 5. Установка NocoBase
 
 ```bash
-yarn nocobase install --lang=en-US
+yarn nocobase install --lang=ru-RU
 ```
 
-## 6. Start NocoBase
+## 6. Запуск NocoBase
 
-Development
+Режим разработки
 
 ```bash
 yarn dev
 ```
 
-Production
+Режим продакшн
 
 ```bash
-# Build (make sure you have executed `yarn install --frozen-lockfile`, note that it does not include `--production`)
+# Сборка проекта (только после установки зависимостей!)
 yarn build
-# Start
+# Запуск в продакшене
 yarn start
 ```
 
-## 7. Log in to NocoBase
+## 7. Вход в систему
 
-Open [http://localhost:13000](http://localhost:13000) in a web browser. The initial account and password are `admin@nocobase.com` and `admin123`.
+Откройте [http://localhost:13000](http://localhost:13000) в браузере. Стандартные данные для входа: Email: `admin@nocobase.com` и Пароль: `admin123`.

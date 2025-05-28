@@ -2,40 +2,39 @@
 
 <PluginInfo licenseBundled="enterprise" plugins="pubsub-adapter-redis,lock-adapter-redis"></PluginInfo>
 
-Starting from version v1.6.0, NocoBase supports running applications in cluster mode. When an application runs in cluster mode, its performance in handling concurrent accesses can be improved through multiple instances and using a multi-core mode.
+Начиная с версии v1.6.0, NocoBase поддерживает запуск приложений в режиме кластера. Когда приложение работает в режиме кластера, его производительность в обработке параллельных запросов может быть улучшена за счет использования нескольких экземпляров и многопоточного режима.
 
-## System Architecture
+## Архитектура системы
 
 ![20241231010814](https://static-docs.nocobase.com/20241231010814.png)
 
-### Architectural Components
+### Компоненты архитектуры
 
-The current cluster mode is focused solely on application instances. Other system components in the distributed architecture can be selected by the operations personnel of different teams according to their operational requirements, as long as they comply with the current constraints.
+Текущий режим кластера направлен только на экземпляры приложения, исключая внешние сервисы такие как База данных, Redis итд. Если у Вас есть необходимость развернуть дополнительные компоненты в режиме кластера, Вам нужно решить это самостоятельно.
 
-#### Application Cluster
+#### Кластер приложения
 
-The application cluster is a collection of instances of NocoBase applications, where each instance can be an independent node or multiple application processes running on a single machine in multi-core mode, or a combination of both.
+Поскольку текущий режим кластера направлен только на экземпляры приложения, база данных в настоящее время поддерживает только один узел. Для конфигураций, таких как мастер-слейв базы данных, это должно быть реализовано через промежуточное ПО, обеспечивая прозрачность для приложения NocoBase.
 
-#### Database
+#### База Данных
 
-Since the current cluster mode only targets application instances, the database currently only supports a single node. For setups such as master-slave databases, it must be implemented through middleware independently, ensuring transparency to the NocoBase application.
+Кластер приложения представляет собой набор экземпляров приложений NocoBase, где каждый экземпляр может быть независимым узлом или несколькими процессами приложения, работающими на одной машине в многопоточном режиме, или комбинацией обоих вариантов.
 
-#### Caching, Synchronization Messages, and Distributed Locks
+#### Кэширование, Синхронизация Сообщений и Распределенные Замки
 
-The NocoBase cluster mode relies on middleware such as caching, synchronization messages, and distributed locks to achieve communication and coordination between clusters. Currently, Redis is preliminarily supported as middleware for these functionalities.
+Режим кластера NocoBase зависит от промежуточного ПО, таких как кэширование, синхронизация сообщений и распределенные замки, для обеспечения связи и координации между кластерами. В настоящее время предварительно поддерживается Redis в качестве промежуточного ПО для этих функций.
 
-#### Load Balancing
+#### Нагрузочное Балансирование
 
-The NocoBase cluster mode requires a load balancer to distribute requests and perform health checks and failover for application instances. This part should be selected and configured according to the operations needs of the team.
+Режим кластера NocoBase требует наличия балансировщика для распределения запросов и выполнения проверок состояния и перенаправления при отказе для экземпляров приложения. Эту часть следует выбрать и настроить в соответствии с архитектурой вашего кластера.
 
-## Deployment Steps
+## Шаги Развертывания
 
-### Infrastructure Preparation
+### Подготовка Инфраструктуры
 
-#### Load Balancer
+#### Нагрузочный Балансировщик
 
-Taking a self-built Nginx as an example, add the following content to the configuration file:
-
+На примере использования Nginx как балансировщика, добавьте следующее содержимое в файл конфигурации:
 ```
 upstream myapp {
     # ip_hash; # Can be used for session persistence, once enabled, requests from the same client will always be sent to the same backend server.
@@ -55,78 +54,84 @@ server {
 }
 ```
 
-This means that requests are reverse proxied and distributed to different server nodes for processing. The configurations for load balancing middleware provided by other cloud service providers can be referenced in the specific configuration documentation provided by them.
+Это означает, что запросы проксируются в обратном направлении и распределяются между различными серверными узлами для обработки.
+Конфигурации балансировщиков нагрузки, предоставляемые другими облачными провайдерами, можно найти в их соответствующей технической документации.
 
-#### Redis Service
+#### Служба Redis
 
-Start a Redis service within the cluster's internal network (or k8s). Alternatively, enable separate Redis services based on different functionalities (caching, synchronization messages, and distributed locks).
+Запустите службу Redis во внутренней сети кластера (или в Kubernetes).
+Также возможно раздельное включение нескольких экземпляров Redis в зависимости от задач: для кэширования, передачи синхронизирующих сообщений и реализации распределённых блокировок.
 
-#### Local Storage (Optional)
+#### Локальное хранилище (необязательно)
 
-If local storage is used, in a multi-node mode, it should be mounted as a local storage directory to support shared access across multiple nodes. Otherwise, local storage will not automatically synchronize and cannot be used properly.
+Если используется локальное хранилище, при работе в многосерверном режиме необходимо примонтировать его как общую директорию, доступную для всех узлов.
+В противном случае локальное хранилище не будет синхронизироваться автоматически и не сможет использоваться корректно.
 
-If not using local storage, after the application starts, the cloud service-based file storage space must be set as the default file storage space, and the application’s logo (or other files) should be migrated to the cloud storage space.
+Если локальное хранилище не используется, то после запуска приложения необходимо настроить облачное файловое хранилище как хранилище по умолчанию, а логотип приложения (и другие загружаемые файлы) перенести в это облачное хранилище.
 
-### Related Plugin Preparation
+### Подготовка связанных плагинов
 
-| Function | Plugin |
-| --- | --- |
-| Caching | Built-in |
+| Функция                  | Плагин                                |
+|--------------------------|---------------------------------------|
+| Caching                  | Built-in                              |
 | Synchronization Messages | @nocobase/plugin-pubsub-adapter-redis |
-| Distributed Lock | @nocobase/plugin-lock-adapter-redis |
+| Distributed Lock         | @nocobase/plugin-lock-adapter-redis   |
 
 :::info{title=Tip}
-Just like applications in single-node mode, as long as the respective environment variables for the commercial plugin service platform are configured, the application will automatically download the corresponding plugins after startup.
+Так же, как и в односерверном режиме, при корректно настроенных переменных окружения коммерческой платформы плагинов, необходимые плагины будут автоматически загружены при запуске приложения.
 :::
 
-### Environment Variable Configuration
+### Настройка переменных окружения
 
-In addition to the basic environment variables, the following environment variables must be configured consistently across all nodes.
+Помимо основных переменных окружения, следующие переменные должны быть **одинаково настроены на всех узлах**.
 
-#### Application Key
+#### Ключ приложения
 
-The key used for creating JWT Tokens during user login; it is recommended to use a random string.
+Ключ, используемый для генерации JWT-токенов при входе пользователя. Рекомендуется использовать случайную строку.
 
 ```ini
 APP_KEY=
-```
 
-#### Multi-core Mode
+
+#### Многоядерный режим
 
 ```ini
 # Enable PM2 multi-core mode
-# CLUSTER_MODE=max # Default is disabled and needs to be manually configured
+# CLUSTER_MODE=max # По умолчанию отключено — необходимо настроить вручную.
 ```
 
-#### Caching
+#### Кэширование
 
 ```ini
-# Cache adapter; must be set to redis in cluster mode (default is memory if not set)
+# Адаптер кэша; в кластерном режиме обязательно указывается значение redis (по умолчанию используется memory)
 CACHE_DEFAULT_STORE=redis
 
-# Redis cache adapter connection address; must be actively set
+# Адрес подключения к Redis для кэширования; необходимо задать вручную
 CACHE_REDIS_URL=
+
 ```
 
-#### Synchronization Messages
+#### Синхронизация сообщений
 
 ```ini
-# Redis synchronization adapter connection address; default is redis://localhost:6379/0 if not set
+# Адрес подключения к Redis для адаптера синхронизации; по умолчанию — redis://localhost:6379/0, если не указано
 PUBSUB_ADAPTER_REDIS_URL=
+
 ```
 
-#### Distributed Lock
+#### Распределённая блокировка
 
 ```ini
-# Lock adapter; must be set to redis in cluster mode (default is memory local lock if not set)
+# Адаптер блокировок; в кластерном режиме обязательно указывается значение redis (по умолчанию используется локальная блокировка в памяти)
 LOCK_ADAPTER_DEFAULT=redis
 
-# Redis lock adapter connection address; default is redis://localhost:6379/0 if not set
+# Адрес подключения к Redis для блокировок; по умолчанию — redis://localhost:6379/0, если не указано
 LOCK_ADAPTER_REDIS_URL=
 ```
 
 :::info{title=Tip}
-Generally, the related adapters can all use the same Redis instance, but it’s best to distinguish by using different databases to avoid potential key conflict issues.
+Как правило, все связанные адаптеры могут использовать один и тот же экземпляр Redis,  
+однако **рекомендуется использовать разные базы данных**, чтобы избежать возможных конфликтов ключей.
 
 ```ini
 CACHE_REDIS_URL=redis://localhost:6379/0
@@ -135,43 +140,46 @@ LOCK_ADAPTER_REDIS_URL=redis://localhost:6379/2
 ```
 :::
 
-#### Enable Built-in Plugins
+#### Включение встроенных плагинов
 
 ```ini
-# Built-in plugins to be enabled
+# Встроенные плагины, которые необходимо включить
 APPEND_PRESET_BUILT_IN_PLUGINS=lock-adapter-redis,pubsub-adapter-redis
 ```
 
-### Start the Application
+### Запуск приложения
 
-When starting the application for the first time, you should first start one of the nodes and wait for the plugins to be installed and enabled before starting the other nodes.
+При первом запуске приложения необходимо **сначала запустить один из узлов**  
+и дождаться установки и активации всех плагинов, прежде чем запускать остальные.
 
-## Upgrade or Maintenance
+## Обновление или обслуживание
 
-When it is necessary to upgrade the NocoBase version or enable/disable plugins, refer to this process.
+Если необходимо обновить версию NocoBase или включить/отключить плагины, следуйте следующей инструкции.
 
-:::warning{title=Note}
-In a cluster production environment, caution or prohibition is advised when using features such as plugin management and version upgrades.
+:::warning{title=Внимание}
+В кластерной среде, особенно в продакшене, следует **с осторожностью (а при возможности — избегать)** использовать функции управления плагинами и обновления версий.
 
-NocoBase has not yet implemented online upgrades for the cluster version. To ensure data consistency, services need to be paused during the upgrade process.
+На данный момент **NocoBase не поддерживает онлайн-обновление в кластерном режиме**.  
+Для обеспечения целостности данных во время обновления необходимо приостановить работу всех сервисов.
 :::
 
-### Stop Current Services
+### Остановить текущие сервисы
 
-Stop all NocoBase application instances, middleware such as Redis, and redirect load-balanced traffic to a 503 status page.
+Остановите все экземпляры приложения NocoBase, службы Redis и **перенаправьте весь трафик от балансировщика нагрузки на страницу с кодом 503**.
 
-### Backup Data
+### Создать резервную копию
 
-Before upgrading, it is strongly recommended to back up database data to prevent issues during the upgrade process.
+Перед обновлением настоятельно рекомендуется **сделать резервную копию базы данных**, чтобы избежать потери данных в случае ошибок.
 
-### Update Version
+### Обновить версию
 
-Refer to [Docker Upgrade](../upgrading/docker-compose.md) to update the version of the NocoBase application image.
+См. инструкцию [по обновлению через Docker](../upgrading/docker-compose.md), чтобы обновить образ NocoBase.
 
-### Start Services
+### Запустить сервисы
 
-1. Restart the dependent middleware (Redis)
-2. Start one node in the cluster and wait for the update to complete and start successfully
-3. Verify functionality; if there are exceptions that cannot be resolved, you may roll back to the previous version
-4. Start the other nodes
-5. Redirect load-balanced traffic to the application cluster
+1. Перезапустите все зависимости (например, Redis)
+2. Запустите **один узел** кластера и дождитесь успешного завершения обновления
+3. Проверьте работоспособность; при возникновении критических ошибок — выполните откат до предыдущей версии
+4. Запустите остальные узлы
+5. Перенаправьте трафик от балансировщика нагрузки обратно на кластер
+

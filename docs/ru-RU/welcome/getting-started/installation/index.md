@@ -1,43 +1,51 @@
-# Overview
+# Обзор
 
-## Installation Methods
+## Способы установки
 
-NocoBase supports three installation methods.
+NocoBase поддерживает три способа установки:
 
-- [Docker (recommended)](./docker-compose.md)
+- [Docker (рекомендуется)](./docker-compose.md)
 - [create-nocobase-app](./create-nocobase-app.md)
 - [Git source code](./git-clone.md)
 
-## How to choose the Installation method?
+## Как выбрать способ установки?
 
-### Docker (recommended)
+### Docker (рекомендуется)
 
-Suitable for no-code scenarios, no code to write. When upgrading, just download the latest image and reboot.
+Подходит для no-code сценариев — не требует написания кода.
+Для обновления достаточно скачать свежий образ и перезапустить контейнер.
 
 ### create-nocobase-app
 
-The business code of the project is completely independent and supports low-code development.
+Бизнес-логика проекта полностью отделена и позволяет использовать low-code подход.
+Удобно для кастомизации с минимальным уровнем программирования
 
-### Git source code
+### Исходный код из Git
 
-If you want to experience the latest unreleased version, or want to participate in the contribution, you need to make changes and debug on the source code, it is recommended to choose this installation method, which requires a high level of development skills, and if the code has been updated, you can git pull the latest code.
+Рекомендуется, если вы хотите: работать с самой последней (возможно нестабильной) версией, внести вклад в разработку, отлаживать и вносить изменения в кодовую базу.
+Требуется опыт разработки. Для обновления достаточно выполнить git pull.
 
-## Which version to install?
+## Какую версию устанавливать?
 
-### Latest version
+### Последняя стабильная версия (Latest)
 
-This is a stable and well-tested version and only bug fixed will be made. This version is recommended.
+Полностью протестирована, поддерживается и получает только исправления ошибок.
+Рекомендуется для всех пользователей.
 
-### Beta version
+### Бета-версия (Beta)
 
-This version includes new features that are about to be released and it has been preliminarily tested, but still have known or unknown issues, primarily for testing and feedback. Ideal for early testers willing to try new features and provide feedback.
+Содержит новые функции, которые ещё не выпущены.
+Предварительно протестирована, но могут быть известные или неизвестные ошибки.
+Подходит для тестирования и обратной связи.
 
-### Alpha version
+### Альфа-версия (Alpha)
 
-A development version containing the latest features, which may be incomplete or unstable. Suitable for technical users interested in cutting-edge features. Not recommended for production use.
+Версия в разработке, включает самые новые функции, которые могут быть нестабильны или незавершены.
+Рекомендуется только для технически подготовленных пользователей.
+Не подходит для использования в продакшене.
 
-| Version  | Source code branch | Docker images version      | create-nocobase-app version  | Specific version                             |
-| -------- | ------------------ | -------------------------- | ---------------------------- | -------------------------------------------- |
-| `Latest` | `main`             | `nocobase/nocobase:latest` | `create-nocobase-app@latest` | `1.3.51`<br />`1.3.52`<br />...              |
-| `Beta`   | `next`             | `nocobase/nocobase:beta`   | `create-nocobase-app@beta`   | `1.4.0-beta.1`<br/>`1.4.0-beta.2`<br />...   |
-| `Alpha`  | `develop`          | `nocobase/nocobase:alpha`  | `create-nocobase-app@alpha`  | `1.5.0-alpha.1`<br/>`1.5.0-alpha.2`<br />... |
+| Версия   | Ветка кода | Docker images версия       | create-nocobase-app версия   | Версия                                       |
+|----------|------------|----------------------------|------------------------------|----------------------------------------------|
+| `Latest` | `main`     | `nocobase/nocobase:latest` | `create-nocobase-app@latest` | `1.3.51`<br />`1.3.52`<br />...              |
+| `Beta`   | `next`     | `nocobase/nocobase:beta`   | `create-nocobase-app@beta`   | `1.4.0-beta.1`<br/>`1.4.0-beta.2`<br />...   |
+| `Alpha`  | `develop`  | `nocobase/nocobase:alpha`  | `create-nocobase-app@alpha`  | `1.5.0-alpha.1`<br/>`1.5.0-alpha.2`<br />... |

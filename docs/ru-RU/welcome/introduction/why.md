@@ -1,25 +1,29 @@
-# Why NocoBase
+# Почему выбирают NocoBase
 
-## Open source, autonomous and controllable
+## Открытый исходный код, автономность и контроль
 
-NocoBase is open source under the AGPL-3.0 license, and can be used free of charge as long as you follow the license. Advanced features are provided through the commercial version, which also provides full source code and is privately deployed to keep data private and secure.
+NocoBase распространяется с открытым исходным кодом по лицензии AGPL-3.0 — вы можете использовать её бесплатно при соблюдении условий лицензии. Расширенные функции доступны в коммерческой версии, которая также поставляется с полным исходным кодом и разворачивается на ваших серверах — это обеспечивает полный контроль над системой и безопасность данных.
 
-## Strong no-code capability
+## Мощные возможности no-code разработки
 
-NocoBase has three core concepts: collection, block, and action. By defining the data collections, to abstract the business; through the block to present the data; through the action to send the user's instructions to the server to complete the data interaction or change.
+В основе NocoBase лежат три ключевые концепции: коллекции, блоки и действия.; Коллекции определяют структуру данных и отражают бизнес-сущности, ;Блоки визуализируют данные, ; Действия отправляют команды пользователя на сервер для изменения или взаимодействия с данными. ; Это позволяет описывать и реализовывать бизнес-логику без программирования.
 
-## High extensibility
+## Высокая расширяемость
 
-In the actual business, the ideal situation is to use no-code to meet 80% of the needs, the rest usually need to extend the development. NocoBase adopts the microkernel architecture, with a sound plugin system, all kinds of functions are extended in the form of plugins. NocoBase is based on Node.js and uses mainstream frameworks and technologies, including Koa, Sequelize, React and so on, which makes it extremely easy to expand.
+На практике около 80% задач удобно решаются с помощью no-code, но оставшиеся 20% требуют расширения.
+NocoBase построен по микроядерной архитектуре с развитой системой плагинов. Все дополнительные функции реализуются в виде плагинов. Платформа построена на Node.js с использованием популярных технологий: Koa, Sequelize, React и других. Это делает её особенно удобной для доработки и расширения.
 
-## Integrate with existing systems
+## Интеграция с существующими системами
 
-Organizations usually have various systems and databases already in place, and NocoBase supports using third-party databases or APIs as data sources, as well as embedding NocoBase into third-party systems or embedding third-party systems into NocoBase.
+Компании уже используют различные системы и базы данных. NocoBase поддерживает подключение к сторонним базам данных и API в качестве источников данных, а также позволяет встраивать себя в сторонние системы или, наоборот, встраивать внешние сервисы внутрь NocoBase.
 
-## Extremely simple and lightweight
+## Простой и лёгкий в использовании
 
-NocoBase uses JavaScript/TypeScript technology stack, one person can complete the front-end and back-end development. It has low server requirements and can be deployed on a single low-configuration server.
+Технологический стек на JavaScript/TypeScript позволяет одному разработчику заниматься как фронтендом, так и бэкендом.
+NocoBase нетребователен к ресурсам и может быть развёрнут на сервере с минимальной конфигурацией.
 
-## Pay once, use forever
+## Один раз платишь — используешь навсегда
 
-NocoBase only charges for premium features. On top of the open source version, we offer commercial licenses, commercial services, and commercial plugins. Pay once and get lifetime licenses, as well as full source code for commercial plugins.
+Оплата взимается только за коммерческие функции.
+Помимо open source-версии, предлагаются коммерческие лицензии, услуги и плагины.
+Вы платите один раз — и получаете пожизненную лицензию и исходный код всех коммерческих компонентов.

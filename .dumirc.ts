@@ -28,6 +28,8 @@ if (lang==='zh-CN'){
   site_url = "https://docs-cn.nocobase.com"
 }else if (lang==='ja-JP'){
   site_url = "https://docs-jp.nocobase.com"
+}else if (lang==='ru-RU'){
+  site_url = "https://docs-ru.nocobase.com"
 }else {
   site_url = "https://docs.nocobase.com"
 }

@@ -1,21 +1,22 @@
 # create-nocobase-app
 
-## 0. Prerequisites
+## 0. Предварительные требования
 
-Make sure you have:
+Убедитесь, что у вас:
 
-- Installed Node.js 20+, Yarn 1.22.x
-- Configured and started one of the required database MySQL 8.x, MariaDB 10.9+, PostgreSQL 10+
+- Установлены Node.js 20+, Yarn 1.22.x
+- Настроена и запущена одна из поддерживаемых баз данных: MySQL 8.x, MariaDB 10.9+ или PostgreSQL 10+
 
-You can download and install the latest LTS version from the official website. It is recommended to use nvm (or nvm-windows for Win systems) to manage Node.js versions if you plan to work with Node.js for a long time.
+Рекомендуется установить последнюю LTS-версию Node.js с официального сайта. Для удобства управления версиями Node.js используйте nvm (или nvm-windows для Windows).
 
+Проверка установленной версии:
 ```bash
 $ node -v
 
 v20.10.0
 ```
 
-Install yarn package manager
+Установка менеджера пакетов Yarn:
 
 ```bash
 $ npm install --global yarn
@@ -24,11 +25,11 @@ $ yarn -v
 1.22.21
 ```
 
-## 1. Create a NocoBase project
+## 1. Создание проекта NocoBase
 
-### Latest version
+### Последняя стабильная версия (Latest)
 
-Stable and well-tested version and only bug fixed will be made. This version is recommended.
+Рекомендуется к установке. Надёжная и протестированная версия, обновляется только с исправлениями ошибок.
 
 <Tabs>
 <div label="PostgreSQL" name="postgres">
@@ -80,9 +81,9 @@ yarn create nocobase-app my-nocobase-app -d mariadb \
 </div>
 </Tabs>
 
-### Beta version
+### Бета-версия (Beta)
 
-This version includes new features that are about to be released and it has been preliminarily tested, but still have known or unknown issues.
+Содержит функции, которые ещё не выпущены, но уже прошли первичное тестирование. Может содержать ошибки.
 
 <Tabs>
 <div label="PostgreSQL" name="postgres">
@@ -134,9 +135,9 @@ npx create-nocobase-app@beta my-nocobase-app -d mariadb \
 </div>
 </Tabs>
 
-### Alpha version
+### Альфа-версия (Alpha)
 
-A development version containing the latest features, which may be incomplete or unstable.
+Версия в активной разработке. Содержит самые свежие функции, которые могут быть нестабильны или незавершены.
 
 <Tabs>
 <div label="PostgreSQL" name="postgres">
@@ -190,48 +191,48 @@ npx create-nocobase-app@alpha my-nocobase-app -d mariadb \
 
 :::warning
 
-- **Version 1.4 and above**: By setting the environment variables [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) and [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password), you can automatically download commercial plugins during application installation or upgrade;
-- `TZ` is used to set the application's time zone, with the default being the system's time zone;
-- `APP_KEY` is the application's secret key, used for generating user tokens and so on (if APP_KEY is changed, the old tokens will also become invalid). It can be any random string. Please change it to your own secret key and ensure it is not disclosed to the public.
-- `DB_*` is related to the database. If it is not the default database service in the example, please modify it according to the actual situation.
+- **Версия 1.4 и выше**: можно указать переменные [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) и [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password), чтобы автоматически загружать коммерческие плагины во время установки или обновления.;
+- `TZ` часовой пояс приложения (по умолчанию — системный).;
+- `APP_KEY` секретный ключ приложения для генерации токенов. Обязательно задайте свой собственный ключ и не публикуйте его.
+- `DB_*` параметры подключения к базе данных. При использовании внешнего сервера измените значения на собственные.
   :::
 
-## 2. Switch to the project directory
+## 2. Переход в директорию проекта
 
 ```bash
 cd my-nocobase-app
 ```
 
-## 3. Install dependencies
+## 3. Установка зависимостей
 
-📢 This next step may take more than ten minutes due to network environment, system configuration, and other factors.
+📢 Установка может занять более 10 минут в зависимости от скорости сети и конфигурации системы.
 
 ```bash
 yarn install
 ```
 
-## 4. Install NocoBase
+## 4. Установка NocoBase
 
 ```bash
-yarn nocobase install --lang=en-US
+yarn nocobase install --lang=ru-RU
 ```
 
-## 5. Start NocoBase
+## 5. Запуск NocoBase
 
-Development
+Режим разработки
 
 ```bash
 yarn dev
 ```
 
-Production
+Режим продакшн
 
 ```bash
 yarn start
 ```
 
-Note: For production, if the code has been modified, you need to execute `yarn build` and restart NocoBase.
+💡 Для продакшн-режима: если вы внесли изменения в код, перед запуском необходимо выполнить yarn build.
 
-## 6. Log in to NocoBase
+## 6. Вход в систему
 
-Open [http://localhost:13000](http://localhost:13000) in a web browser. The initial account and password are `admin@nocobase.com` and `admin123`.
+Откройте [http://localhost:13000](http://localhost:13000) в браузере. Стандартные данные для входа: Email: `admin@nocobase.com` и Пароль: `admin123`.

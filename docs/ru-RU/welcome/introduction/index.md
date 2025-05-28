@@ -1,30 +1,33 @@
-# Introduction
+# Начиная
 
 <video width="100%" controls>
       <source src="https://static-docs.nocobase.com/EN-NocoBase-V1203-202501151021.mp4" type="video/mp4">
 </video>
 
 
-## What is NocoBase
+## Что такое NocoBase
 
-NocoBase is a extensibility-first, open-source no-code development platform.  
-Instead of investing years of time and millions of dollars in research and development, deploy NocoBase in a few minutes and you'll have a private, controllable, and extremely extensible no-code development platform!
+NocoBase — это ориентированная на расширяемость, открытая no-code платформа для разработки.
+Вместо того чтобы тратить годы и миллионы рублей на разработку с нуля, 
+вы можете развернуть NocoBase всего за несколько минут — и получить в своё распоряжение частную,
+управляемую и легко расширяемую no-code платформу для создания приложений.
 
-Homepage:  
-https://www.nocobase.com/
+Главная:  
+https://www.nocobase.com/ru
 
 Online Demo:  
 https://demo.nocobase.com/new
 
-Documents:  
+Документация:  
 https://docs.nocobase.com/
 
-Commericial license & plugins:  
-https://www.nocobase.com/en/commercial
+Коммерческие лицензии и плагины:  
+https://nocobase.com/ru/commercial
 
-License agreement:   
-https://www.nocobase.com/en/agreement
+Лицензии и документы:
+https://www.nocobase.com/ru/agreement
 
 
-## Contact Us:  
-hello@nocobase.com
+## Связатся с нами:  
+hello@nocobase.com (Весь мир)
+hello@nocobase.ru (Для писем и России)

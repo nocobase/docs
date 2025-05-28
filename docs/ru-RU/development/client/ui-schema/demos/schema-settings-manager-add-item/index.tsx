@@ -23,7 +23,7 @@ class PluginDemoAddSchemaSettingsItem extends Plugin {
 }
 
 // 快捷模拟一个 App
-const app = createApp({ 
+const app = createApp({
   plugins: [PluginDemoAddSchemaSettingsItem],
 });
 

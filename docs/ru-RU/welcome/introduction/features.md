@@ -1,21 +1,23 @@
-# Distinctive features
+# Особенности, которые отличают NocoBase
 
-## 1. Model-driven, separate "user interface" from "data structure"
+## 1. Модель-ориентированный подход: разделение интерфейса и структуры данных
 
-Most form-, table-, or process-driven no-code products create data structures directly in the user interface, such as Airtable, where adding a new column to a table is adding a new field. This has the advantage of simplicity of use, but the disadvantage of limited functionality and flexibility to meet the needs of more complex scenarios.
+Большинство no-code платформ, основанных на формах, таблицах или процессах (например, Airtable), создают структуру данных напрямую через пользовательский интерфейс — добавляя колонку, вы фактически добавляете новое поле. Такой подход прост в использовании, но ограничивает гибкость и функциональность в более сложных сценариях.
 
-NocoBase adopts the design idea of separating the data structure from the user interface, allowing you to create any number of blocks (data views) for the data collections, with different type, styles, content, and actions in each block. This balances the simplicity of no-code operation with the flexibility of native development.
+NocoBase использует архитектуру с разделением интерфейса и структуры данных. Это позволяет создавать любое количество блоков (представлений данных) для одной и той же коллекции — с разным типом, стилем, содержимым и действиями в каждом блоке. Такой подход сохраняет простоту no-code-интерфейса, но при этом обеспечивает гибкость, близкую к традиционной разработке.
 
 ![model](https://nocobase-file.oss-cn-beijing.aliyuncs.com/model-l.png)
 
-## 2. What you see is what you get
+## 2. Что видишь — то и получаешь
 
-NocoBase enables the development of complex and distinctive business systems, but this does not mean that complex and specialized operations are required. With a single click, configuration options are displayed on the usage interface, and administrators with system configuration privileges can directly configure the user interface in a WYSIWYG manner.
+NocoBase позволяет строить сложные и уникальные бизнес-системы, но это не означает сложного управления.
+Все действия по настройке выполняются прямо в пользовательском интерфейсе: достаточно одного клика, чтобы открыть параметры конфигурации. Администратор с соответствующими правами может настроить интерфейс в режиме реального времени по принципу WYSIWYG (What You See Is What You Get).
 
 ![wysiwyg](https://nocobase-file.oss-cn-beijing.aliyuncs.com/wysiwyg.gif)
 
-## 3. Functions as plugins
+## 3. Расширение функциональности через плагины
 
-NocoBase adopts plugin architecture, all new functions can be realized by developing and installing plugins, and expanding the functions is as easy as installing an APP on your phone.
+Архитектура NocoBase построена на плагинах.
+Новые функции реализуются путём разработки и установки плагинов. Это делает расширение возможностей платформы таким же простым, как установка приложения на смартфон.
 
 ![plugins](https://nocobase-file.oss-cn-beijing.aliyuncs.com/plugins-l.png)

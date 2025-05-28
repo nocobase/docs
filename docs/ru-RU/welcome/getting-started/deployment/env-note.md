@@ -1,7 +1,7 @@
-**Points to Note:**
+**Важные моменты:**
 
-- `TZ` is used to set the application's time zone, with the default being the system's time zone;
-- `APP_KEY` is the application's secret key, used for generating user tokens and so on (if APP_KEY is changed, the old tokens will also become invalid). It can be any random string. Please change it to your own secret key and ensure it is not disclosed to the public.
-- `DB_*` is related to the database. If it is not the default database service in the example, please modify it according to the actual situation;
-- When deploying in a production environment, `APP_ENV=production`;
-- When deploying on a subpath, you need to configure `APP_PUBLIC_PATH`, such as `APP_PUBLIC_PATH=/nocobase/`.
+- `TZ` используется для установки часового пояса приложения, по умолчанию используется часовой пояс системы;
+- `APP_KEY` — это секретный ключ приложения, используемый для генерации токенов пользователей и т.д. (если `APP_KEY` изменяется, старые токены также становятся недействительными). Это может быть любая случайная строка. Пожалуйста, измените его на свой собственный секретный ключ и убедитесь, что он не раскрывается публично.
+- `DB_*` относится к базе данных. Если это не служба базы данных по умолчанию как из примера, пожалуйста, измените параметры в соответствии с реальными значениями;
+- При развертывании в производстве, установите `APP_ENV=production`;
+- При развертывании в пути отличном от корня, необходимо настроить `APP_PUBLIC_PATH`, например, `APP_PUBLIC_PATH=/nocobase/`.

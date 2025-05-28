@@ -4,6 +4,7 @@ export default [
     title: 'Quick Start',
     'title.zh-CN': '快速上手',
     'title.ja-JP': 'クイックスタート',
+    'title.ru-RU': 'Быстрый старт',
     type: 'group',
     children: [
       '/manual/quick-start/the-first-app',
@@ -15,6 +16,7 @@ export default [
     title: '功能导航',
     'title.zh-CN': '功能导航',
     'title.ja-JP': '機能ナビゲーション',
+    'title.ru-RU': 'Навигация',
     type: 'group',
     children: [
       {
