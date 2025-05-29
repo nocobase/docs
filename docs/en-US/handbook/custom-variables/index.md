@@ -1,4 +1,4 @@
-# NocoBase 自定义变量插件使用手册<Badge>v2.0.0+</Badge>
+# NocoBase 自定义变量插件使用手册<Badge>v1.8.0+</Badge>
 
 <PluginInfo commercial="true" name="custom-variables"></PluginInfo>
 
