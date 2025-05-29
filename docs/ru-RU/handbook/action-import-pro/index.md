@@ -1,64 +1,64 @@
-# Import Pro
+# Импорт Pro
 
 <PluginInfo commercial="true" name="action-import-pro"></PluginInfo>
 
-## Introduction
+## Введение
 
-The Import Pro plugin provides enhanced functionality based on the regular import feature.
+Плагин Импорт Pro предоставляет расширенные возможности на основе обычного импорта.
 
-## Installation
+## Установка
 
-This plugin depends on the async task management plugin. Please enable the async task management plugin before use.
+Этот плагин зависит от плагина управления асинхронными задачами. Пожалуйста, включите плагин async task management перед использованием.
 
-## Enhanced Features
+## Расширенные возможности
 
-- Supports asynchronous import operations, executed in independent threads, suitable for importing large amounts of data.
-- Supports advanced import options.
+- Поддержка асинхронного импорта, выполняемого в отдельных потоках — подходит для загрузки больших объёмов данных.
+- Поддержка расширенных параметров импорта.
 
-## User Manual
+## Руководство пользователя
 
-### Asynchronous Import
+### Асинхронный импорт
 
-After initiating an import, the import process will be executed in a separate background thread without requiring manual user configuration. In the user interface, after executing the import operation, the current import task will be displayed in the upper right corner, showing real-time task progress.
+После запуска импорта процесс будет выполнен в отдельном фоновом потоке без необходимости ручной настройки пользователем. В пользовательском интерфейсе, после выполнения операции импорта, задача будет отображаться в правом верхнем углу, с отображением прогресса.
 
 ![index-2024-12-30-09-21-05](https://static-docs.nocobase.com/index-2024-12-30-09-21-05.png)
 
-After the import is complete, you can view the import results in the import task.
+После завершения импорта вы можете просмотреть результаты задачи импорта.
 
-### Import Settings
+### Настройки импорта
 
-#### Import Options - Trigger Workflow
+#### Опции импорта — Запуск workflow
 
 ![20250306231010](https://static-docs.nocobase.com/20250306231010.png)
 
-When importing, you can choose whether to trigger a workflow. If this option is selected and the data table is bound to a workflow (via data table events), the workflow will be triggered for each row during the import.
+При импорте можно указать, запускать ли workflow. Если опция включена и таблица привязана к workflow (через события таблицы), то он будет запускаться для каждой строки данных.
 
-#### Import Option - Identify Duplicate Records
+#### Опции импорта — Обнаружение дубликатов
 
 ![20250306231054](https://static-docs.nocobase.com/20250306231054.png)
 
-Select this option and choose the corresponding mode to automatically identify and handle duplicate records during import.
+При выборе этой опции вы можете указать режим обработки дубликатов, и система будет автоматически определять и обрабатывать такие записи при импорте.
 
-The values configured in the import options will be used as default during the import process. Admins can control whether uploaders can modify these options (except for the trigger workflow option).
+Выбранные настройки будут использоваться по умолчанию. Администратор может задать возможность или запрет на изменение этих настроек загрузчиком (кроме опции запуска workflow).
 
-#### Uploader Permissions Settings
+#### Права загрузчика
 
 ![20250306232121](https://static-docs.nocobase.com/20250306232121.png)
 
-- Allow uploaders to modify import options
+- Разрешить загрузчику изменять параметры импорта
 
 ![20250306230531](https://static-docs.nocobase.com/20250306230531.png)
 
-- Disable uploaders from modifying import options
+- Запретить загрузчику изменять параметры импорта
 
 ![20250306230650](https://static-docs.nocobase.com/20250306230650.png)
 
-#### Mode Description
+#### Описание режимов
 
-- Skip Duplicate: Check for existing records using the data in the "Identifying Field". If a record exists, skip this entry; otherwise, import it as a new record.
-- Update Duplicate: Check for existing records using the data in the "Identifying Field". If a record exists, update it; otherwise, import it as a new record.
-- Update Duplicate Only: Check for existing records using the data in the "Identifying Field". If a record exists, update it; otherwise, skip it.
+- **Пропустить дубликаты**: проверка по полю идентификации. Если запись уже существует — пропускается; если нет — импортируется как новая.
+- **Обновить дубликаты**: если запись найдена — обновляется; если нет — импортируется как новая.
+- **Обновить только дубликаты**: если запись найдена — обновляется; если нет — пропускается.
 
-#### Identifying Fields
+#### Поля идентификации
 
-The system identifies whether a row is a duplicate record based on the value of this field.
+Система определяет наличие дубликата на основе значений, указанных в этом поле.

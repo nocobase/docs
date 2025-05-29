@@ -1,51 +1,52 @@
-# Custom Request
+# Пользовательский запрос
 <PluginInfo name="action-custom-request"></PluginInfo>
 
-## Overview
+## Обзор
 
-## Installation
+## Установка
 
-This plugin is built-in, so no separate installation is required.
+Плагин встроен в систему, установка не требуется.
 
-## Instructions for Use
+## Инструкция по использованию
 
 ![20240426120014](https://static-docs.nocobase.com/20240426120014.png)
 
-### Configuring Permissions
+### Настройка прав
 
-When the "Allows to configuration interface" option is selected, you can set up custom requests.
+При включении опции **«Можно настраивать интерфейс»** становится доступна настройка пользовательских запросов.
 
 ![20240426114957](https://static-docs.nocobase.com/20240426114957.png)
 
-The customRequests table is system-level, and permissions are controlled via the acl.registerSnippet method.
+Таблица `customRequests` является системной, а доступ к ней управляется через метод `acl.registerSnippet`.
 
 ```typescript
 this.app.acl.registerSnippet({
-  name: 'ui.customRequests', // Permission for configuring interface related to ui.*
+  name: 'ui.customRequests', // Право на конфигурацию интерфейса, связанного с ui.*
   actions: ['customRequests:*'],
 });
 ```
-### Variables
 
-You can configure variables within both the URL and request body.
+### Переменные
 
-- Current record
-- Current user
-- Current time
-- API token (supported by v1.3.22-beta and above)
+Можно задавать переменные как в URL, так и в теле запроса:
+
+- Текущая запись
+- Текущий пользователь
+- Текущее время
+- API токен (поддерживается с версии v1.3.22-beta и выше)
 
 ![20240426120953](https://static-docs.nocobase.com/20240426120953.png)
 
 ![20240426121051](https://static-docs.nocobase.com/20240426121051.png)
 
-## Operation Configuration Items
+## Конфигурация операций
 
-### Request Settings
+### Настройки запроса
 
 ![20240426120131](https://static-docs.nocobase.com/20240426120131.png)
 
-### Access Control
+### Контроль доступа
 
-Each custom request can have custom role-based permissions, with default permissions granted to all users.
+Каждому пользовательскому запросу можно задать права доступа по ролям. По умолчанию доступ открыт для всех пользователей.
 
 ![20240426120451](https://static-docs.nocobase.com/20240426120451.png)

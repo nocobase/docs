@@ -1,152 +1,124 @@
-# User Manual
+# Руководство пользователя
 
-## Role Union
+## Объединение ролей (Role Union)
 
-Role Union is a permission management mode. According to system settings, system developers can choose to use `Independent roles`, `Allow roles union`, or `Allow roles union`, to meet different permission requirements.
+**Объединение ролей** — это режим управления правами доступа. В зависимости от настроек системы, разработчики могут выбрать один из вариантов: `Независимые роли`, `Разрешить объединение ролей` или `Только объединение ролей`, чтобы соответствовать различным требованиям безопасности.
 
 ![20250312184651](https://static-docs.nocobase.com/20250312184651.png)
 
-### Independent roles
+### Независимые роли
 
-By default, the system uses independent roles. Users must switch between the roles they possess individually.
+По умолчанию система использует **независимые роли**. Пользователи вручную переключаются между ролями, которые им назначены.
 
 ![20250312184729](https://static-docs.nocobase.com/20250312184729.png)  
 ![20250312184826](https://static-docs.nocobase.com/20250312184826.png)
 
-### Allow roles union
+### Разрешить объединение ролей
 
-System developers can enable `Allow roles union`, allowing users to simultaneously have permissions of all assigned roles while still permitting users to switch roles individually.
+Разработчики могут включить параметр **Разрешить объединение ролей**, который позволяет пользователю одновременно иметь права всех назначенных ролей, при этом всё ещё можно вручную переключать роли.
 
 ![20250312185006](https://static-docs.nocobase.com/20250312185006.png)
 
-### Roles union only
+### Только объединение ролей
 
-Users are enforced to only use Role Union and cannot switch roles individually.
+Пользователи всегда работают с объединёнными правами и **не могут переключаться между ролями вручную**.
 
 ![20250312185105](https://static-docs.nocobase.com/20250312185105.png)
 
-### Rules for Role Union
+### Правила объединения ролей
 
-Role union grants the maximum permissions across all roles. Below are the explanations for resolving permission conflicts when roles have different settings on the same permission.
+Объединение ролей предоставляет **максимальные права** из всех назначенных ролей. Ниже описано, как разрешаются конфликты при разных настройках на одни и те же разрешения.
 
-#### Operation Permission Merge
+#### Объединение операций
 
-Example:  
-Role1 is configured to `Allows to configure interface` and Role2 is configured to `Allows to install, activate, disable plugins`
+Пример:  
+Роль 1: `Можно настраивать интерфейс`  
+Роль 2: `Можно устанавливать, активировать и отключать плагины`
 
 ![20250312190133](https://static-docs.nocobase.com/20250312190133.png)  
-
 ![20250312190352](https://static-docs.nocobase.com/20250312190352.png)
 
-When logging in with the **Full Permissions** role, the user will have both permissions simultaneously.
+При входе с ролью **Полные права** пользователь получает **обе группы прав**.
 
 ![20250312190621](https://static-docs.nocobase.com/20250312190621.png)
 
-#### Data Scope Merge
+#### Объединение области данных (Data Scope)
 
-##### Data Rows
+##### Строки данных
 
-Scenario 1: Multiple roles setting conditions on the same field
+**Сценарий 1:** несколько ролей фильтруют по одному полю
 
-Role A filter: Age < 30  
+Роль A: `Возраст < 30`
 
-| UserID | Name | Age |
-| ------ | ---- | --- |
-| 1      | Jack | 23  |
-| 2      | Lily | 29  |
+| ID | Имя  | Возраст |
+|----|------|---------|
+| 1  | Jack | 23      |
+| 2  | Lily | 29      |
 
-Role B filter: Age > 25
+Роль B: `Возраст > 25`
 
-| UserID | Name | Age |
-| ------ | ---- | --- |
-| 2      | Lily | 29  |
-| 3      | Sam  | 32  |
+| ID | Имя  | Возраст |
+|----|------|---------|
+| 2  | Lily | 29      |
+| 3  | Sam  | 32      |
 
-**After merging:**
+**После объединения:**
 
-| UserID | Name | Age |
-| ------ | ---- | --- |
-| 1      | Jack | 23  |
-| 2      | Lily | 29  |
-| 3      | Sam  | 32  |
+| ID | Имя  | Возраст |
+|----|------|---------|
+| 1  | Jack | 23      |
+| 2  | Lily | 29      |
+| 3  | Sam  | 32      |
 
+**Сценарий 2:** разные поля в условиях фильтра
 
-Scenario 2: Different roles setting conditions on different fields
+Роль A: `Возраст < 30`  
+Роль B: `Имя содержит "Ja"`
 
-Role A filter: Age < 30
+| ID | Имя    | Возраст |
+|----|--------|---------|
+| 1  | Jack   | 23      |
+| 2  | Lily   | 29      |
+| 3  | Jasmin | 27      |
 
-| UserID | Name | Age |
-| ------ | ---- | --- |
-| 1      | Jack | 23  |
-| 2      | Lily | 29  |
+**После объединения:**
 
-Role B filter: Name contains "Ja"
+| ID | Имя    | Возраст |
+|----|--------|---------|
+| 1  | Jack   | 23      |
+| 2  | Lily   | 29      |
+| 3  | Jasmin | 27      |
 
-| UserID | Name   | Age |
-| ------ | ------ | --- |
-| 1      | Jack   | 23  |
-| 3      | Jasmin | 27  |
+##### Столбцы данных
 
-**After merging:**
+Роль A: `Имя`, `Возраст`  
+Роль B: `Имя`, `Пол`
 
-| UserID | Name   | Age |
-| ------ | ------ | --- |
-| 1      | Jack   | 23  |
-| 2      | Lily   | 29  |
-| 3      | Jasmin | 27  |
+**После объединения:**
 
-##### Data Columns
+| ID | Имя  | Возраст | Пол    |
+|----|------|---------|--------|
+| 1  | Jack | 23      | Man    |
+| 2  | Lily | 29      | Woman  |
 
-Role A visible columns: Name, Age
+##### Смешанное объединение строк и столбцов
 
-| UserID | Name | Age |
-| ------ | ---- | --- |
-| 1      | Jack | 23  |
-| 2      | Lily | 29  |
+Роль A: `Возраст < 30`, колонки: `Имя`, `Возраст`  
+Роль B: `Имя содержит "Ja"`, колонки: `Имя`, `Пол`
 
-Role B visible columns: Name, Sex
+**После объединения:**
 
-| UserID | Name | Sex   |
-| ------ | ---- | ----- |
-| 1      | Jack | Man   |
-| 2      | Lily | Woman |
+| ID | Имя   | Возраст                                 | Пол                                      |
+|----|--------|------------------------------------------|-------------------------------------------|
+| 1  | Jack  | 23                                       | <span style=\"background-color:#FFDDDD\">Man</span>   |
+| 2  | Lily  | 29                                       | <span style=\"background-color:#FFDDDD\">Woman</span> |
+| 3  | Jade  | <span style=\"background-color:#FFDDDD\">27</span> | Woman                                    |
+| 4  | James | <span style=\"background-color:#FFDDDD\">31</span> | Man                                      |
 
-**After merging:**
+**Примечание:** Ячейки с красным фоном — это данные, которые **не были видимы в отдельных ролях**, но стали доступны при объединении.
 
-| UserID | Name | Age | Sex   |
-| ------ | ---- | --- | ----- |
-| 1      | Jack | 23  | Man   |
-| 2      | Lily | 29  | Woman |
+##### Итоги объединения области данных:
 
-##### Mixed Rows and Columns
-Role A filter: Age < 30, columns Name, Age
-
-| UserID | Name | Age |
-| ------ | ---- | --- |
-| 1      | Jack | 23  |
-| 2      | Lily | 29  |
-
-Role B filter: Name contains "Ja", columns Name, Sex
-
-| UserID | Name  | Sex   |
-| ------ | ----- | ----- |
-| 3      | Jade  | Woman |
-| 4      | James | Man   |
-
-**After merging:**
-
-| UserID | Name  | Age                                      | Sex                                        |
-| ------ | ----- | ---------------------------------------- | ------------------------------------------ |
-| 1      | Jack  | 23                                       | <span style="background-color:#FFDDDD">Man</span>   |
-| 2      | Lily  | 29                                       | <span style="background-color:#FFDDDD">Woman</span> |
-| 3      | Jade  | <span style="background-color:#FFDDDD">27</span> | Woman                                      |
-| 4      | James | <span style="background-color:#FFDDDD">31</span> | Man                                        |
-
-**Note: Cells with red background indicate data invisible in individual roles but visible in the merged role.**
-
-##### Summary
-
-Role merging data-scope rules:
-1. Between rows, if any condition is satisfied, the row has permissions.
-2. Between columns, fields are combined.
-3. When rows and columns are both configured, rows and columns are merged separately, not by row-column combinations.
+1. **Строки**: если условие выполнено хотя бы в одной роли — строка доступна
+2. **Столбцы**: объединяются все доступные поля
+3. При конфигурации строк и столбцов одновременно — объединение происходит **отдельно по строкам и по столбцам**, а не по их пересечению

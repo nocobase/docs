@@ -1,25 +1,25 @@
-# Access Control
+# Контроль доступа
 
-## Introduction
+## Введение
 
-NocoBase's ACL module mainly consists of two parts:
+Модуль ACL (Access Control List) в NocoBase состоит из двух основных частей:
 
-- `@nocobase/acl` in the kernel, which provides core functions
-- `@nocobase/plugin-acl` in the plugin, which provides dynamic configuration capabilities
+- `@nocobase/acl` — модуль в ядре, предоставляющий базовые функции управления доступом
+- `@nocobase/plugin-acl` — плагин, реализующий возможности динамической настройки
 
-## Installation
+## Установка
 
-Built-in plugin, no separate installation required.
+Плагин встроен в систему — отдельная установка не требуется.
 
-## Development Guide
+## Руководство по разработке
 
-### Extending a new permission configuration tab
+### Расширение вкладок конфигурации прав доступа
 
-Below is an example of the "Mobile Menu" configuration item, demonstrating how to extend a new permission configuration tab. The effect is shown in the figure below:
+Ниже приведён пример расширения интерфейса конфигурации прав — добавление новой вкладки **«Мобильное меню»**. Результат показан на изображении:
 
 ![20240903210248](https://static-docs.nocobase.com/20240903210248.png)
 
-The code is as follows:
+Пример кода:
 
 ```typescript
 import { Plugin } from '@nocobase/client';
@@ -44,9 +44,12 @@ class PluginMobileClient extends Plugin {
 }
 ```
 
-First, we need to obtain an instance of the `PluginACLClient` plugin ([other methods to obtain plugin instances](https://docs.nocobase.com/development/client/life-cycle#%E8%8E%B7%E5%8F%96%E6%8F%92%E4%BB%B6)), and add a new permission configuration tab using the `settingsUI.addPermissionsTab` method. In this example, we added a permission configuration tab named "Mobile Menu".
+Сначала необходимо получить экземпляр плагина `PluginACLClient`  
+([другие способы получения экземпляров плагинов](https://docs.nocobase.com/development/client/life-cycle#%E8%8E%B7%E5%8F%96%E6%8F%92%E4%BB%B6)),  
+а затем добавить новую вкладку конфигурации прав доступа с помощью метода `settingsUI.addPermissionsTab`.  
+В приведённом примере добавляется вкладка с названием **«Mobile Menu»**.
 
-The value of the `settingsUI` property is an instance of a class named `ACLSettingsUI`, and its type information is as follows:
+Свойство `settingsUI` является экземпляром класса `ACLSettingsUI`, тип которого выглядит следующим образом:
 
 ```typescript
 import { TabsProps } from 'antd/es/tabs/index';

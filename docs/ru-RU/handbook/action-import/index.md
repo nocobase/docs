@@ -1,20 +1,20 @@
-# Import Data
+# Импорт данных
 
-## Overview
+## Обзор
 
-## Installation
+## Установка
 
-## Import Guidelines
+## Рекомендации по импорту
 
-### Numeric Fields
+### Числовые поля
 
-Numeric and percentage values are supported, while entries like `N/A` or `-` will be excluded.
+Поддерживаются числовые и процентные значения. Значения вроде `N/A` или `-` будут исключены.
 
-| Number 1 | Percentage | Number 2 | Number 3 |
-| -------- | ---------- | -------- | -------- |
-| 123      | 25%        | N/A      | -        |
+| Число 1 | Процент | Число 2 | Число 3 |
+|---------|---------|---------|---------|
+| 123     | 25%     | N/A     | -       |
 
-After conversion to JSON:
+После преобразования в JSON:
 
 ```ts
 {
@@ -25,9 +25,9 @@ After conversion to JSON:
 }
 ```
 
-### Boolean Fields
+### Булевы поля
 
-The following text values are recognized (case-insensitive for English):
+Распознаются следующие значения (регистр в английском не учитывается):
 
 - `Yes`, `Y`, `True`, `1`, `是`
 - `No`, `N`, `False`, `0`, `否`
@@ -36,7 +36,7 @@ The following text values are recognized (case-insensitive for English):
 | ------- | ------- | ------- | ------- | ------- |
 | No      | Yes     | Y       | true    | 0       |
 
-After conversion to JSON:
+После преобразования в JSON:
 
 ```ts
 {
@@ -48,13 +48,13 @@ After conversion to JSON:
 }
 ```
 
-### Date Fields
+### Поля даты
 
 | DateOnly            | Local (+08:00)      | GMT                 |
 | ------------------- | ------------------- | ------------------- |
 | 2023-01-18 22:22:22 | 2023-01-18 22:22:22 | 2023-01-18 22:22:22 |
 
-After conversion to JSON:
+После преобразования в JSON:
 
 ```ts
 {
@@ -64,11 +64,11 @@ After conversion to JSON:
 }
 ```
 
-### Select Fields
+### Поля выбора (Select Fields)
 
-Option values and labels can be used interchangeably as input text. Multiple options can be separated by commas (`,` `，`) or by full-width commas ( `、`).
+Значения и метки опций можно использовать взаимозаменяемо. Несколько опций можно разделять запятыми (`\,`, `，`) или полноширинными запятыми (`、`).
 
-For instance, if the `Priority` field has the following options:
+Например, если поле `Priority` имеет следующие опции:
 
 | Option Value | Option Label |
 | ------------ | ------------ |
@@ -76,26 +76,26 @@ For instance, if the `Priority` field has the following options:
 | medium       | Medium       |
 | high         | High         |
 
-Both the value and label can be used as input.
+Оба варианта — и значение, и метка — могут использоваться в качестве входных данных.
 
 | Priority |
 | -------- |
 | High     |
 | low      |
 
-After conversion to JSON:
+После преобразования в JSON:
 
 ```ts
 [{ Priority: 'high' }, { Priority: 'low' }];
 ```
 
-### Chinese Administrative Region Fields
+### Поля китайских административных регионов
 
 | Region 1       | Region 2       |
 | -------------- | -------------- |
 | Beijing/City   | Tianjin/City   |
 
-After conversion to JSON:
+После преобразования в JSON:
 
 ```ts
 {
@@ -104,13 +104,13 @@ After conversion to JSON:
 }
 ```
 
-### Attachment Fields
+### Поля вложений (Attachment Fields)
 
 | Attachment                                |
 | ----------------------------------------- |
 | https://www.nocobase.com/images/logo.png  |
 
-After conversion to JSON:
+После преобразования в JSON:
 
 ```ts
 {
@@ -125,15 +125,15 @@ After conversion to JSON:
 }
 ```
 
-### Relationship Fields
+### Поля связей (Relationship Fields)
 
-Multiple values can be separated by commas (`,` `，`) or full-width commas ( `、`).
+Несколько значений могут быть разделены запятой (`,` `，`) или полной запятой (`、`).
 
 | Department/Name | Category/Title   |
 | --------------- | ---------------- |
 | Development     | Category 1, Category 2 |
 
-After conversion to JSON:
+После преобразования в JSON:
 
 ```ts
 {
@@ -142,13 +142,13 @@ After conversion to JSON:
 }
 ```
 
-### JSON Fields
+### Поля JSON (JSON Fields)
 
 | JSON1              |
 | ------------------ |
 | {"key":"value"}    |
 
-After conversion to JSON:
+После преобразования в JSON:
 
 ```ts
 {
@@ -156,13 +156,13 @@ After conversion to JSON:
 }
 ```
 
-### Map Geometry Fields
+### Поля геометрии карты (Map Geometry Fields)
 
 | Point  | Line         | Polygon           | Circle |
 | ------ | ------------ | ----------------- | ------ |
 | 1,2    | (1,2),(3,4)  | (1,2),(3,4),(1,2) | 1,2,3  |
 
-After conversion to JSON:
+После преобразования в JSON:
 
 ```ts
 {
@@ -173,9 +173,9 @@ After conversion to JSON:
 }
 ```
 
-## Custom Import Format
+## Пользовательский формат импорта
 
-You can register custom `ValueParser` methods through the `db.registerFieldValueParsers()` method. For example:
+Вы можете зарегистрировать пользовательские методы `ValueParser` с помощью метода `db.registerFieldValueParsers()`. Например:
 
 ```ts
 import { BaseValueParser } from '@nocobase/database';
@@ -200,13 +200,13 @@ db.registerFieldValueParsers({
 });
 ```
 
-### Example Import
+### Пример импорта
 
 | Point |
 | ----- |
 | 1,2   |
 
-After conversion to JSON:
+После преобразования в JSON:
 
 ```ts
 {

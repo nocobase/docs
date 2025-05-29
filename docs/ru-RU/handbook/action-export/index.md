@@ -1,23 +1,23 @@
-# Export
+# Экспорт
 
 <PluginInfo name="action-export"></PluginInfo>
 
-## Introduction
+## Введение
 
-![20240426162728](https://static-docs.nocobase.com/20240426162728.png)
+![](https://static-docs.nocobase.com/20240426162728.png)
 
-## Installation
+## Установка
 
-This plugin comes pre-installed, so no additional installation steps are required.
+Плагин предустановлен и не требует дополнительной установки.
 
-## Operation Configuration Items
+## Настройки операций
 
-![20240426163008](https://static-docs.nocobase.com/20240426163008.png)
+![](https://static-docs.nocobase.com/20240426163008.png)
 
-### Exportable Fields
+### Доступные для экспорта поля
 
-- First Level: Displays all fields of the current collection.
-- Second Level: If the field is a relational type, you'll need to select fields from the related table.
-- Third Level: Only up to three levels of relationships are supported. Fields in the final relational level won't be shown.
+- **Первый уровень**: Отображаются все поля текущей коллекции.
+- **Второй уровень**: Если поле является связью, нужно выбрать поля из связанной таблицы.
+- **Третий уровень**: Поддерживается только до трёх уровней вложенных связей. Поля на последнем уровне связей отображаться не будут.
 
-![20240426163433](https://static-docs.nocobase.com/20240426163433.png)
+![](https://static-docs.nocobase.com/20240426163433.png)

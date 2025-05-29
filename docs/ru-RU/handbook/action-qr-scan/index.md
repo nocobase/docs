@@ -1,31 +1,32 @@
-# Scan QR Code
+# Сканирование QR-кода
 
-## Introduction
+## Введение
 
-The QR code scanning action can be added in the action panel block to facilitate navigation within the system.
+Действие сканирования QR-кода можно добавить в блок панели действий для упрощения навигации внутри системы.
 
-## Example
+## Пример
 
 <video width="100%" controls>
   <source src="https://static-docs.nocobase.com/20240612214013_rec_.mp4" type="video/mp4">
 </video>
 
-## User Guide
+## Руководство пользователя
 
-### Generate a QR Code
+### Генерация QR-кода
 
-1. Suppose the page link to redirect to is: `https://localhost:13000/m/page/vyoiwa25jig`.
-2. Extract the relative link starting from `/page/` from the mobile page URL, and use it to generate a QR code.
-3. Create a new Markdown block and use the following code:
+1. Предположим, что ссылка на страницу для перехода: `https://localhost:13000/m/page/vyoiwa25jig`.
+2. Извлеките относительную часть ссылки, начиная с `/page/`, и используйте её для генерации QR-кода.
+3. Создайте новый Markdown-блок и используйте следующий код:
 
 ```markdown
 <qr-code value="/page/tr8r70ajpko" type="svg"></qr-code>
 ```
 
-4. Add a "Scan QR Code" action to scan and navigate to the corresponding page.
+4. Добавьте действие "Сканировать QR-код", чтобы выполнить сканирование и перейти на соответствующую страницу.
 
-**Note**:
-- The QR code scanning action only supports internal system relative links and must start with `/page/`.
-- External page links are not supported at this time.
+**Примечание**:
+- Действие сканирования QR-кода поддерживает только относительные ссылки внутри системы и должно начинаться с `/page/`.
+- Внешние ссылки на страницы в настоящее время не поддерживаются.
 
-For further details, check the [Action Panel Block](/handbook/block-action-panel) documentation.
+Для получения дополнительной информации см. документацию по [Блоку панели действий](/handbook/block-action-panel).
+
