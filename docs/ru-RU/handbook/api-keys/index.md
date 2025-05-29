@@ -1,37 +1,37 @@
 # API Key
 
-## Introduction
+## Введение
 
-## Installation
+## Установка
 
-## Usage Instructions
+## Инструкции по использованию
 
 http://localhost:13000/admin/settings/api-keys/configuration
 
 ![](https://static-docs.nocobase.com/d64ccbdc8a512a0224e9f81dfe14a0a8.png)
 
-### Add API Key
+### Добавить API Key
 
 ![](https://static-docs.nocobase.com/46141872fc0ad9a96fa5b14e97fcba12.png)
 
-**Notes**
+**Примечания**
 
-- The added API key is for the current user, and the role is the role to which the current user belongs
-- Please make sure that the `APP_KEY` environment variable has been configured and is kept confidential. If the APP_KEY changes, all added API keys will become invalid.
+- Добавленный API-ключ предназначен для текущего пользователя, а роль — это роль, к которой принадлежит текущий пользователь
+- Убедитесь, что переменная среды `APP_KEY` настроена и остается конфиденциальной. Если APP_KEY изменится, все добавленные API-ключи станут недействительными.
 
-### How to configure APP_KEY
+### Как настроить APP_KEY
 
-For the docker version, modify the docker-compose.yml file
+Для версии docker измените файл docker-compose.yml
 
 ```diff
 services:
-  app:
-    image: nocobase/nocobase:main
-    environment:
-+     - APP_KEY=4jAokvLKTJgM0v_JseUkJ
+app:
+image: nocobase/nocobase:main
+environment:
++ - APP_KEY=4jAokvLKTJgM0v_JseUkJ
 ```
 
-For the source code or create-nocobase-app installation, you can directly modify the APP_KEY in the .env file
+Для исходного кода или установки create-nocobase-app вы можете напрямую изменить APP_KEY в файле .env
 
 ```bash
 APP_KEY=4jAokvLKTJgM0v_JseUkJ

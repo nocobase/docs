@@ -1,16 +1,16 @@
-# Audit Logger
+# Журнал аудита
 
 <PluginInfo licenseBundled="true" name="audit-logger"></PluginInfo>
 
-## Introduction
+## Введение
 
-The audit log is used to record and track user activities and resource operation history within the system.
+Журнал аудита используется для записи и отслеживания действий пользователя и истории работы ресурсов в системе.
 
 ![](https://static-docs.nocobase.com/202501031627719.png)
 
 ![](https://static-docs.nocobase.com/202501031627922.png)
 
-## Parameter Description
+## Описание параметра
 
 | Parameter               | Description                                                             |
 | ----------------------- | ------------------------------------------------------------------------ |
@@ -30,18 +30,18 @@ The audit log is used to record and track user activities and resource operation
 | **UA**                  | The UA information of the user                                          |
 | **Metadata**            | Metadata such as parameters, request body, and response content of the operation request |
 
-## Audit Resource Description
+## Описание ресурса аудита
 
-Currently, the following resource operations will be recorded in the audit log:
+В настоящее время в журнале аудита будут регистрироваться следующие операции с ресурсами:
 
-### Main Application
+### Основное приложение
 
 | Operation             | Description         |
 | --------------------- | ------------------- |
 | `app:resart`          | Application restart |
 | `app:clearCache`      | Clear application cache |
 
-### Plugin Manager
+### Менеджер плагинов
 
 | Operation             | Description         |
 | --------------------- | ------------------- |
@@ -51,7 +51,7 @@ Currently, the following resource operations will be recorded in the audit log:
 | `pm:disable`          | Disable plugin      |
 | `pm:remove`           | Remove plugin       |
 
-### User Authentication
+### Аутентификация пользователя
 
 | Operation                  | Description         |
 | -------------------------- | ------------------- |
@@ -60,13 +60,13 @@ Currently, the following resource operations will be recorded in the audit log:
 | `auth:signOut`             | Sign out            |
 | `auth:changePassword`      | Change password     |
 
-### User
+### Пользователь
 
 | Operation                  | Description         |
 | -------------------------- | ------------------- |
 | `users:updateProfile`      | Update profile      |
 
-### UI Configuration
+### Конфигурация UI
 
 | Operation                       | Description           |
 | ------------------------------ | --------------------- |
@@ -74,7 +74,7 @@ Currently, the following resource operations will be recorded in the audit log:
 | `uiSchemas:patch`               | Modify UI Schema      |
 | `uiSchemas:remove`              | Remove UI Schema      |
 
-### Collection Operations
+### Операции по взысканию
 
 | Operation             | Description             |
 | --------------------- | ----------------------- |
@@ -90,6 +90,7 @@ Currently, the following resource operations will be recorded in the audit log:
 | `export`              | Export record           |
 | `import`              | Import record           |
 
-## Adding Other Audit Resources
+## Добавление других ресурсов аудита
 
-If you have extended other resource operations through plugins and wish to record these resource operation behaviors in the audit log, please refer to [API](../../api/server/audit-manager.md).
+Если вы расширили другие операции с ресурсами с помощью плагинов и хотите 
+записать поведение этих операций с ресурсами в журнал аудита, обратитесь к [API](../../api/server/audit-manager.md).

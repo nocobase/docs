@@ -1,10 +1,11 @@
-### Install Plugins
+### Установка плагинов
 
-Refer to [Installing and Upgrading Commercial Plugins](/welcome/getting-started/plugin)
+См. раздел [Установка и обновление коммерческих плагинов](/welcome/getting-started/plugin)
 
-### Install LibreOffice (Optional)
+### Установка LibreOffice (опционально)
 
-Generating PDFs requires installing LibreOffice. [Please download it from the official website](https://www.libreoffice.org/download/download-libreoffice). For the Docker version, you can create a script directly in the `./storage/scripts` directory.
+Для генерации PDF необходимо установить LibreOffice. [Скачайте его с официального сайта](https://www.libreoffice.org/download/download-libreoffice).  
+Если вы используете версию в Docker, вы можете создать скрипт напрямую в каталоге `./storage/scripts`.
 
 ```bash
 mkdir ./storage/scripts
@@ -12,22 +13,22 @@ cd ./storage/scripts
 vim install-libreoffice.sh
 ```
 
-The content of `install-libreoffice.sh` is as follows:
+Содержимое `install-libreoffice.sh` следующее:
 
 ```sh
 #!/bin/bash
 
-# Define variables
+# Определить переменные
 INSTALL_DIR="/opt/libreoffice24.8"
 DOWNLOAD_URL="https://download.documentfoundation.org/libreoffice/stable/24.8.5/deb/x86_64/LibreOffice_24.8.5_Linux_x86-64_deb.tar.gz"
 
-# Check if LibreOffice is already installed
+# Проверьте, установлен ли уже LibreOffice
 if [ -d "$INSTALL_DIR" ]; then
     echo "LibreOffice is already installed, skipping installation."
     exit 0
 fi
 
-# Update APT and install dependencies
+# Обновите APT и установите зависимости
 apt-get update
 
 apt-get install -y \
@@ -50,7 +51,7 @@ rm -rf /var/lib/apt/lists/*
 
 cd /app/nocobase/storage/scripts
 
-# Download and install LibreOffice if not already present
+# Загрузите и установите LibreOffice, если он еще не установлен
 if [ ! -d "./libreoffice" ]; then
     rm -rf libreoffice.tar.gz
     wget --no-check-certificate -O libreoffice.tar.gz $DOWNLOAD_URL
@@ -66,7 +67,7 @@ if [ ! -d "./libreoffice" ]; then
     fi
 fi
 
-# Install LibreOffice
+# Установить LibreOffice
 dpkg -i libreoffice/DEBS/*.deb
 
 ln -s /opt/libreoffice24.8/program/soffice.bin /usr/bin/libreoffice
@@ -80,7 +81,7 @@ fi
 echo "LibreOffice installation completed successfully."
 ```
 
-Restart the `app` container:
+Перезапустите контейнер `app`:
 
 ```bash
 docker compose restart app
@@ -88,7 +89,7 @@ docker compose restart app
 docker compose logs app
 ```
 
-Verify the installation was successful:
+Убедитесь, что установка прошла успешно:
 
 ```bash
 $ docker compose exec app bash -c "libreoffice --version"

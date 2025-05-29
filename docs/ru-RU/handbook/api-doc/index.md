@@ -1,39 +1,39 @@
-# API Documentation
+# Документация API
 
 <PluginInfo name="api-doc"></PluginInfo>
 
-## Introduction
+## Введение
 
-The plugin generates NocoBase HTTP API documentation based on Swagger.
+Плагин генерирует документацию NocoBase HTTP API на основе Swagger.
 
-## Installation
+## Установка
 
-This is a built-in plugin, no installation required. Activate to use.
+Это встроенный плагин, установка не требуется. Активируйте для использования.
 
-## Usage Instructions
+## Инструкции по использованию
 
-### Accessing the API Documentation Page
+### Доступ к странице документации API
 
 http://localhost:13000/admin/settings/api-doc/documentation
 
 ![](https://static-docs.nocobase.com/8db51cf50e3c666aba5a850a0fb664a0.png)
 
-### Documentation Overview
+### Обзор документации
 
 ![](https://static-docs.nocobase.com/5bb4d3e5bba6c6fdfcd830592e72385b.png)
 
-- Total API Documentation: `/api/swagger:get`
-- Core API Documentation: `/api/swagger:get?ns=core`
-- All Plugins API Documentation: `/api/swagger:get?ns=plugins`
-- Each Plugin's Documentation: `/api/swagger:get?ns=plugins/{name}`
-- User Customized Collections API Documentation: `/api/swagger:get?ns=collections`
-- Specified `${collection}` and related `${collection}.${association}` resources: `/api/swagger:get?ns=collections/{name}`
+- Общая документация API: `/api/swagger:get`
+- Основная документация API: `/api/swagger:get?ns=core`
+- Вся документация API плагинов: `/api/swagger:get?ns=plugins`
+- Документация каждого плагина: `/api/swagger:get?ns=plugins/{name}`
+- Документация API пользовательских коллекций: `/api/swagger:get?ns=collections`
+- Указанные ресурсы `${collection}` и связанные ресурсы `${collection}.${association}`: `/api/swagger:get?ns=collections/{name}`
 
-## Developer Guide
+## Руководство разработчика
 
-### How to Write Swagger Documentation for Plugins
+### Как написать документацию Swagger для плагинов
 
-Add a `swagger/index.ts` file in the plugin's `src` folder with the following content:
+Добавьте файл `swagger/index.ts` в папку `src` плагина со следующим содержимым:
 
 ```typescript
 export default {
@@ -48,4 +48,4 @@ export default {
 };
 ```
 
-For detailed writing rules, please refer to the [Swagger Official Documentation](https://swagger.io/docs/specification/about/).
+Подробные примеры и рекомендации написания можно найти в [Официальной документации Swagger](https://swagger.io/docs/specification/about/).
