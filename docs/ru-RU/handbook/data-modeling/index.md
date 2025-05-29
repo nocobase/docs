@@ -1,50 +1,60 @@
-# Overview
+# Обзор
 
-Data modeling is a key step in designing databases, involving a deep analysis and abstraction process of various data and their relationships in the real world. In this process, we try to reveal the intrinsic connections between data and formalize them into data models, laying the foundation for the database structure of the information system. NocoBase is a data model-driven platform with the following features:
+Моделирование данных — это ключевой этап в проектировании баз данных. 
+Оно включает в себя глубокий анализ и абстрагирование различных данных и их взаимосвязей в реальном мире. 
+В ходе этого процесса мы стремимся выявить внутренние связи между данными и формализовать их в виде моделей данных, 
+создавая основу для структуры базы данных информационной системы. 
+NocoBase — это платформа, основанная на модели данных, обладающая следующими возможностями:
 
-## Supports Access to Data from Various Sources
+## Поддержка различных источников данных
 
-The data source of NocoBase can be common databases, API (SDK) platforms, and files.
+Источник данных в NocoBase может быть представлен как обычными базами данных, 
+так и API (SDK) платформами или файлами.
 
 ![20240512085558](https://static-docs.nocobase.com/20240512085558.png)
 
-NocoBase provides a [data source manager](/handbook/data-source-manager) for managing various data sources and their data tables. The data source manager plugin only provides a management interface for all data sources and does not provide the ability to access data sources. It needs to be used in conjunction with various data source plugins. The currently supported data sources include:
+NocoBase предоставляет [менеджер источников данных](/handbook/data-source-manager) для управления различными источниками данных и их таблицами.
+Плагин менеджера источников данных предоставляет только интерфейс управления и не обладает возможностью подключения к самим источникам. 
+Для этого необходимо использовать соответствующие плагины источников данных. 
+В настоящее время поддерживаются следующие источники:
 
-- [Main Database](/handbook/data-source-main): NocoBase's main database, supporting relational databases such as MySQL, PostgreSQL, SQLite, etc.
-- [External MySQL](/handbook/data-source-external-mysql): Use an external MySQL database as a data source.
-- [External MariaDB](/handbook/data-source-external-mariadb): Use an external MariaDB database as a data source.
-- [External PostgreSQL](/handbook/data-source-external-postgres): Use an external PostgreSQL database as a data source.
+- [Основная база данных](/handbook/data-source-main): Основная БД NocoBase с поддержкой реляционных СУБД (MySQL, PostgreSQL, SQLite и др.);
+- [Внешний MySQL](/handbook/data-source-external-mysql): Использование внешней базы данных MySQL;
+- [Внешний MariaDB](/handbook/data-source-external-mariadb): Использование внешней базы данных MariaDB;
+- [Внешний PostgreSQL](/handbook/data-source-external-postgres): Использование внешней базы данных PostgreSQL.
 
 ![20240512083651](https://static-docs.nocobase.com/20240512083651.png)
 
-## Provides a Variety of Data Modeling Tools
+## Широкие возможности моделирования данных
 
-**Simple data table management interface**: Used to create various models (data tables) or connect to existing models (data tables).
+**Простой интерфейс управления таблицами** — используется для создания новых моделей (таблиц данных) или подключения к существующим.
 
 ![20240512090751](https://static-docs.nocobase.com/20240512090751.png)
 
-**Visual interface similar to ER diagrams**: Used to extract entities and their relationships from user and business requirements. It provides an intuitive and easy-to-understand way to describe data models. Through ER diagrams, you can more clearly understand the main data entities in the system and their relationships.
+**Визуальный интерфейс в стиле ER-диаграмм** — позволяет извлекать сущности и их связи из пользовательских или бизнес-требований. 
+Это интуитивно понятный способ описания моделей данных. 
+С помощью ER-диаграмм вы можете наглядно видеть основные сущности системы и их взаимосвязи.
 
 ![20240512091042](https://static-docs.nocobase.com/20240410075906.png)
 
-## Supports Various Types of  Data Tables
+## Поддержка различных типов коллекций данных
 
-- [General collection](/handbook/data-source-main/general-collection): Built-in common system fields;
-- [Inheritance collection](/handbook/data-source-main/inheritance-collection): You can create a parent collection and then derive a child collection from the parent collection. The child collection will inherit the structure of the parent collection and can also define its own columns.
-- [Tree collection](/handbook/collection-tree): Tree structure collection, currently only supports adjacency collection design;
-- [Calendar Tabcollectionle](/handbook/calendar/calendar-collection): Used to create calendar-related event collections;
-- [File collection](/handbook/file-manager/file-collection): Used for file storage management;
-- [Expression collection](/handbook/workflow-dynamic-calculation/expression): Used for dynamic expression scenarios in workflows;
-- [SQL collection](/handbook/collection-sql): Not an actual database collection, but quickly presents SQL queries in a structured manner;
-- [Connect to database view](/handbook/collection-view): Connects to existing database views;
-- [Connect to foreign data](/handbook/collection-fdw): Allows the database system to directly access and query data in external data sources, based on FDW technology.
+- [Обычная коллекция](/handbook/data-source-main/general-collection): Включает системные поля по умолчанию;
+- [Коллекция-наследник](/handbook/data-source-main/inheritance-collection): Позволяет создать родительскую коллекцию и на её основе — дочернюю, наследующую структуру, но с возможностью добавления собственных столбцов;
+- [Деревовидная коллекция](/handbook/collection-tree): Коллекция с древовидной структурой (поддерживается только смежная модель);
+- [Календарная коллекция](/handbook/calendar/calendar-collection): Используется для событий, связанных с календарём;
+- [Коллекция файлов](/handbook/file-manager/file-collection): Хранение и управление файлами;
+- [Коллекция выражений](/handbook/workflow-dynamic-calculation/expression): Для сценариев с динамическими вычислениями в workflow;
+- [SQL-коллекция](/handbook/collection-sql): Не является физической таблицей в БД, но позволяет отображать SQL-запросы в структурированном виде;
+- [Подключение к представлениям БД](/handbook/collection-view): Подключение к существующим представлениям в базе данных;
+- [Подключение к внешним данным](/handbook/collection-fdw): Доступ к внешним источникам данных с использованием технологии FDW.
 
 ![20240512102212](https://static-docs.nocobase.com/20240512102212.png)
 
-For more content, see the "[Collection / Overview](/handbook/data-modeling/collection)" section.
+Больше информации — в разделе [«Коллекции / Обзор»](/handbook/data-modeling/collection).
 
-## Provides a Rich Variety of Field Types
+## Богатый выбор типов полей
 
 ![20240512110352](https://static-docs.nocobase.com/20240512110352.png)
 
-For more content, see the "[Collection Fields / Overview](/handbook/data-modeling/collection-fields)" section.
+Больше информации — в разделе [«Поля коллекции / Обзор»](/handbook/data-modeling/collection-fields).

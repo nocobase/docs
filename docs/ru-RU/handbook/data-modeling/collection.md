@@ -1,17 +1,17 @@
-# Overview
+# Обзор
 
-NocoBase provides a unique DSL to describe the structure of data, known as Collection, which unifies the data structure from various sources, providing a reliable foundation for data management, analysis, and application.
+NocoBase предоставляет уникальный DSL (доменно-ориентированный язык) для описания структуры данных — так называемую *Коллекцию (Collection)*. Этот подход позволяет унифицировать структуру данных из различных источников и обеспечивает надёжную основу для управления данными, их анализа и применения.
 
 ![20240512161522](https://static-docs.nocobase.com/20240512161522.png)
 
-To conveniently use various data models, it supports various types of collections:
+Для удобной работы с различными моделями данных поддерживаются следующие типы коллекций:
 
-- [General collection](/handbook/data-source-main/general-collection): Built-in common system fields;
-- [Inheritance collection](/handbook/data-source-main/inheritance-collection): You can create a parent collection and then derive a child collection from the parent collection. The child collection will inherit the structure of the parent collection and can also define its own columns.
-- [Tree collection](/handbook/collection-tree): Tree structure collection, currently only supports adjacency collection design;
-- [Calendar Tabcollectionle](/handbook/calendar/calendar-collection): Used to create calendar-related event collections;
-- [File collection](/handbook/file-manager/file-collection): Used for file storage management;
-- [Expression collection](/handbook/workflow-dynamic-calculation/expression): Used for dynamic expression scenarios in workflows;
-- [SQL collection](/handbook/collection-sql): Not an actual database collection, but quickly presents SQL queries in a structured manner;
-- [Connect to database view](/handbook/collection-view): Connects to existing database views;
-- [Connect to foreign data](/handbook/collection-fdw): Allows the database system to directly access and query data in external data sources, based on FDW technology.
+- [Обычная коллекция](/handbook/data-source-main/general-collection): Содержит встроенные системные поля по умолчанию;
+- [Коллекция-наследник](/handbook/data-source-main/inheritance-collection): Позволяет создать родительскую коллекцию и на её основе дочернюю, унаследовав структуру, но с возможностью добавления собственных столбцов;
+- [Деревовидная коллекция](/handbook/collection-tree): Иерархическая структура данных (в текущей версии поддерживается только модель смежных списков);
+- [Календарная коллекция](/handbook/calendar/calendar-collection): Используется для событий, связанных с календарём;
+- [Коллекция файлов](/handbook/file-manager/file-collection): Применяется для хранения и управления файлами;
+- [Коллекция выражений](/handbook/workflow-dynamic-calculation/expression): Используется в workflow-сценариях с динамическими вычислениями;
+- [SQL-коллекция](/handbook/collection-sql): Не является реальной таблицей в базе данных, но позволяет структурированно представлять SQL-запросы;
+- [Подключение к представлениям БД](/handbook/collection-view): Подключение к существующим представлениям в базе данных;
+- [Подключение к внешним источникам данных](/handbook/collection-fdw): Позволяет напрямую обращаться к внешним источникам данных через FDW-технологию.

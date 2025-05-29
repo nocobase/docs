@@ -1,50 +1,61 @@
-# Many-to-Many
+# Многие ко многим (Many-to-Many)
 
-In a course enrollment system, there are two entities: students and courses. A student can enroll in multiple courses, and a course can have multiple students enrolled, constituting a many-to-many relationship. In a relational database, to represent the many-to-many relationship between students and courses, an intermediary collection, such as an enrollment collection, is usually used. This collection can record which courses each student has chosen and which students have enrolled in each course. This design effectively represents the many-to-many relationship between students and courses.
+В системе записи на курсы есть две сущности: **студенты** и **курсы**. 
+Один студент может записаться на несколько курсов, и каждый курс может включать множество студентов,
+что образует связь типа «многие ко многим».
 
-ER Diagram:
+В реляционных базах данных для представления такой связи обычно используется промежуточная коллекция — 
+например, **коллекция записей на курсы** (enrollment). Эта коллекция фиксирует, 
+какие курсы выбрал каждый студент и какие студенты записались на каждый курс. 
+Такая структура эффективно реализует модель «многие ко многим» между студентами и курсами.
+
+**ER-диаграмма:**
 
 ![alt text](https://static-docs.nocobase.com/0e9921228e1ee375dc639431bb89782c.png)
 
-Field Configuration:
+**Настройка полей:**
 
 ![alt text](https://static-docs.nocobase.com/8e2739ac5d44fb46f30e2da42ca87a82.png)
 
-## Parameter Description
+## Описание параметров
 
-### Source Collection
+### Исходная коллекция (Source Collection)
 
-The source collection, which is the collection where the current field resides.
+Коллекция, в которой находится текущее поле.
 
-### Target Collection
+### Целевая коллекция (Target Collection)
 
-The target collection, which is the collection to be associated with.
+Коллекция, с которой устанавливается связь.
 
-### Through Collection
+### Промежуточная коллекция (Through Collection)
 
-The intermediary collection, used when a many-to-many relationship exists between two entities. The intermediary collection has two foreign keys that are used to maintain the association between the two entities.
+Коллекция, используемая для реализации связи «многие ко многим» между двумя сущностями. 
+Содержит два внешних ключа, каждый из которых ссылается на одну из сущностей.
 
-### Source Key
+### Ключ исходной коллекции (Source Key)
 
-The field in the source collection that is referenced by the foreign key. It must be unique.
+Поле в исходной коллекции, на которое ссылается внешний ключ. Должно быть уникальным.
 
-### Foreign Key 1
+### Внешний ключ 1 (Foreign Key 1)
 
-The field in the intermediary collection that establishes the association with the source collection.
+Поле в промежуточной коллекции, устанавливающее связь с исходной коллекцией.
 
-### Foreign Key 2
+### Внешний ключ 2 (Foreign Key 2)
 
-The field in the intermediary collection that establishes the association with the target collection.
+Поле в промежуточной коллекции, устанавливающее связь с целевой коллекцией.
 
-### Target Key
+### Ключ целевой коллекции (Target Key)
 
-The field in the target collection that is referenced by the foreign key. It must be unique.
+Поле в целевой коллекции, на которое ссылается внешний ключ. Должно быть уникальным.
 
 ### ON DELETE
 
-ON DELETE refers to the rules applied to foreign key references in related child collections when records in the parent collection are deleted. It is an option used when defining a foreign key constraint. Common ON DELETE options include:
+Опция **ON DELETE** определяет поведение внешнего ключа при удалении записей в родительской 
+коллекции. Используется при задании ограничений целостности.
 
-- **CASCADE**: When a record in the parent collection is deleted, all related records in the child collection are automatically deleted.
-- **SET NULL**: When a record in the parent collection is deleted, the foreign key values in the related child collection records are set to NULL.
-- **RESTRICT**: The default option, it prevents the deletion of a parent collection record if there are related records in the child collection.
-- **NO ACTION**: Similar to RESTRICT, it prevents the deletion of a parent collection record if there are related records in the child collection.
+Доступны следующие режимы:
+
+- **CASCADE**: При удалении записи в родительской коллекции все связанные записи в дочерней коллекции удаляются автоматически.
+- **SET NULL**: При удалении родительской записи внешние ключи в дочерней коллекции устанавливаются в `NULL`.
+- **RESTRICT**: По умолчанию. Не позволяет удалить запись в родительской коллекции, если есть связанные записи в дочерней.
+- **NO ACTION**: Аналогично `RESTRICT`, запрещает удаление родительской записи при наличии связанных записей.

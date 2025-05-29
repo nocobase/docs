@@ -1,29 +1,30 @@
-# Overview
+# Обзор
 
-## Interface Types of Fields
-
-NocoBase classifies fields into the following categories from the Interface perspective:
+## Типы интерфейсов полей
+С точки зрения интерфейса, NocoBase классифицирует поля на следующие категории:
 
 ![20240512110352](https://static-docs.nocobase.com/20240512110352.png)
 
-## Field Data Types
-
-Each Field Interface has a default data type. For instance, for fields with the Interface as a Number, the default data type is double, but it can also be float, decimal, etc. The data types currently supported are:
+## Типы данных полей
+Каждому интерфейсу поля соответствует тип данных по умолчанию. 
+Например, для интерфейсов с типом "Число" по умолчанию используется тип `double`,
+но также доступны `float`, `decimal` и другие. 
+В настоящее время поддерживаются следующие типы данных:
 
 ![20240512103733](https://static-docs.nocobase.com/20240512103733.png)
 
-## Field Type Mapping
+## Сопоставление типов полей
+Процесс добавления нового поля в основную базу данных включает следующие шаги:
 
-The process for adding new fields to the main database is as follows:
-
-1. Select the Interface type
-2. Configure the optional data type for the current Interface
+1. Выбор типа интерфейса;
+2. Настройка (при необходимости) конкретного типа данных, соответствующего интерфейсу.
 
 ![20240512172416](https://static-docs.nocobase.com/20240512172416.png)
 
-The process for field mapping from external data sources is:
+Процесс сопоставления полей из внешних источников данных следующий:
 
-1. Automatically map the corresponding data type (Field type) and UI type (Field Interface) based on the field type of the external database.
-2. Modify to a more suitable data type and Interface type as needed
+1. Автоматическое определение соответствующего типа данных (Field type) и интерфейса (Field Interface) 
+на основе типа поля во внешней базе данных;
+2. При необходимости — изменение на более подходящие типы данных и интерфейс.
 
 ![20240512172759](https://static-docs.nocobase.com/20240512172759.png)

@@ -1,26 +1,27 @@
-# Translation
+# Перевод
 
-The default language of NocoBase is English. Currently, the main application supports English, Italian, Dutch, Simplified Chinese, and Japanese. We sincerely invite you to contribute translations for additional languages, enabling users around the world to enjoy an even more convenient NocoBase experience.
+Языком по умолчанию в NocoBase является английский. В настоящее время основное приложение поддерживает Английский, Итальянский, Нидерландский, Упрощённый китайский, Японский языки и Русский язык. Мы искренне приглашаем вас внести вклад в перевод на другие языки, чтобы пользователи по всему миру могли получать ещё больше удовольствия и удобства от использования NocoBase.
 
 ---
 
-## I. System Localization
+## I. Локализация системы
 
-### 1. System Interface and Plugin Translation
+### 1. Перевод интерфейса системы и плагинов
 
-#### 1.1 Translation Scope
-This applies only to the localization of the NocoBase system interface and plugins, and does not cover other custom content (such as data tables or Markdown blocks).
-
+#### 1.1 Область перевода
+Это относится только к переводу интерфейса системы NocoBase и встроенных плагинов, и **не распространяется** на другие пользовательские материалы (например, таблицы данных или Markdown-блоки).
 ![bbb6e0b44aeg](https://static-docs.nocobase.com/img_v3_02kh_8d429938-3aca-44b6-a437-bbb6e0b44aeg.jpg)
 
 ![20250319220127](https://static-docs.nocobase.com/20250319220127.png)
 
 
-#### 1.2 Localization Content Overview
-NocoBase uses Git to manage its localization content. The primary repository is:
+#### 1.2 Обзор локализуемого контента
+NocoBase использует Git для управления файлами локализации. Основной репозиторий находится по адресу:
 https://github.com/nocobase/locales
 
-Each language is represented by a JSON file named according to its language code (e.g., de-DE.json, fr-FR.json). The file structure is organized by plugin modules, using key-value pairs to store translations. For example:
+Каждый язык представлен отдельным JSON-файлом, название которого соответствует языковому коду (например, `de-DE.json`, `fr-FR.json`).  
+Структура файла организована по модулям плагинов и использует пары ключ-значение для хранения переводов.  
+Пример:
 
 ```json
 {
@@ -38,156 +39,160 @@ Each language is represented by a JSON file named according to its language code
 }
 ```
 
-When translating, please gradually convert it to a structure similar to the following:
+При переводе, пожалуйста, постепенно приводите структуру к следующему формату:
 
 ```json
 {
-  // Client plugin
+  // Клиентский JSON
   "@nocobase/client": {
-    "(Fields only)": "(Fields only - translated)",
-    "12 hour": "12 hour - translated",
-    "24 hour": "24 hour - translated"
-    // ...other key-value pairs
+    "(Fields only)": "(Только поля)",
+    "12 hour": "12 часов",
+    "24 hour": "24 часа"
+    // ... другие ключ-значения
   },
   "@nocobase/plugin-acl": {
-    // Key-value pairs for this plugin
+    // Ключ-значение для плагина
   }
-  // ...other plugin modules
+  // ...другие плагины
+}
 }
 ```
 
-#### 1.3 Translation Testing and Synchronization
-- After completing your translation, please test and verify that all texts display correctly.
-We've also released a translation validation plugin - search for `Locale tester` in the plugin marketplace.
+#### 1.3 Тестирование и синхронизация перевода
+- После завершения перевода обязательно протестируйте отображение всех текстов в интерфейсе.  
+  Мы также выпустили плагин для проверки перевода — найдите его в маркетплейсе плагинов под названием `Locale tester`.
 ![20250422233152](https://static-docs.nocobase.com/20250422233152.png)
-After installation, copy the JSON content from the corresponding localization file in the git repository, paste it inside, and click OK to verify if the translation content is effective.
+После установки плагина скопируйте содержимое соответствующего JSON-файла локализации из репозитория Git, вставьте его в поле ввода и нажмите OK — так вы сможете проверить, корректно ли работает ваш перевод.
 ![20250422233950](https://static-docs.nocobase.com/20250422233950.png)
 
-- Once submitted, system scripts will automatically synchronize the localization content to the code repository.
+- После отправки переводов системные скрипты автоматически синхронизируют локализованный контент с исходным кодом в репозитории.
 
-## II. Documentation and User Manual Localization
+## II. Локализация документации и пользовательского руководства
 
-The localization content for documentation and user manuals is stored in:
+Контент для локализации документации и руководства пользователя хранится в следующем разделе:
 https://github.com/nocobase/docs
 
-Localization is implemented by adding separate directories for each language, for example:
+Локализация реализуется путём добавления отдельных директорий для каждого языка, например:
 https://github.com/nocobase/docs/blob/main/docs/en-US/
 
 ![Documentation Localization Diagram](https://static-docs.nocobase.com/20250319121816.png)
 
-Notes:
-- For directory text modifications, please refer to:
+Примечания:
+- Для изменений в текстах директории, пожалуйста, обратитесь к:
   https://github.com/nocobase/docs/blob/main/docs/config/
   
   ![Directory Text Diagram](https://static-docs.nocobase.com/20250319121853.png)
 
-- Global component text modifications can be found at:
+- Изменения текстов глобальных компонентов находятся по адресу:
   https://github.com/nocobase/docs/blob/main/.dumi/theme/builtins/
-  
-  For example, plugin information text:
+
+  Например, текстовая информация о плагинах:
   https://github.com/nocobase/docs/blob/main/.dumi/theme/builtins/PluginInfo.tsx
   
   ![Plugin Information Diagram](https://static-docs.nocobase.com/20250319122109.png)
 
-## III. Website Localization (Detailed Guide)
+## III. Локализация сайта (Подробное руководство)
 
-The website pages and all content are stored in:
+Страницы сайта и весь контент расположен по адресу:
 https://github.com/nocobase/website
 
-### 3.0 Getting Started and Reference Resources
+### 3.0 Начало работы и справочные ресурсы
 
-When adding a new language, please refer to the existing language pages:
+При добавлении нового языка, пожалуйста, ориентируйтесь на уже существующие страницы:
 - English: https://github.com/nocobase/website/blob/main/src/en/
 - Chinese: https://github.com/nocobase/website/blob/main/src/cn/
 - Japanese: https://github.com/nocobase/website/blob/main/src/ja/
+- Русский: https://github.com/nocobase/website/blob/main/src/ru/
 
 ![Website Localization Diagram](https://static-docs.nocobase.com/20250319121600.png)
 
-Global style modifications are located at:
+Изменения глобальных стилей размещаются по адресам:
 - English: https://github.com/nocobase/website/blob/main/src/layouts/BaseEN.astro
 - Chinese: https://github.com/nocobase/website/blob/main/src/layouts/BaseCN.astro
 - Japanese: https://github.com/nocobase/website/blob/main/src/layouts/BaseJA.astro
+- Русский: https://github.com/nocobase/website/blob/main/src/layouts/BaseRU.astro
 
 ![Global Style Diagram](https://static-docs.nocobase.com/20250319121501.png)
 
-The website's global component localization is available at:
+Глобальная локализация компонентов сайта доступна по ссылке:
 https://github.com/nocobase/website/tree/main/src/components
 
 ![Website Components Diagram](https://static-docs.nocobase.com/20250319122940.png)
 
-### 3.1 Content Structure and Localization Method
+### 3.1 Структура контента и метод локализации
 
-We use a mixed content management approach. English, Chinese, and Japanese content and resources are regularly synchronized from the CMS system and overwritten, while other languages can be edited directly in local files. Local content is stored in the `content` directory, organized as follows:
-
+Мы используем смешанный подход к управлению контентом. Контент на Английском, Китайском, Японском и Русском языке регулярно синхронизируется с CMS и перезаписывается, а другие языки можно редактировать напрямую в локальных файлах. Локальный контент хранится в директории content, структура следующая:
 ```
 /content
-  /articles        # Blog articles
+  /articles        # Статьи блога
     /article-slug
-      index.md     # English content (default)
-      index.cn.md  # Chinese content 
-      index.ja.md  # Japanese content
-      metadata.json # Metadata and other localization properties
-  /tutorials       # Tutorials
-  /releases        # Release information
-  /pages           # Some static pages
-  /categories      # Category information
-    /article-categories.json  # Article category list
-    /category-slug            # Individual category details
+      index.md     # Английский контент (по умолчанию)
+      index.cn.md  # Китайский контент
+      index.ja.md  # Японский контент
+      metadata.json # Метаданные и параметры локализации
+  /tutorials       # Обучающие материалы
+  /releases        # Информация о релизах
+  /pages           # Статические страницы
+  /categories      # Информация о категориях
+    /article-categories.json  # Список категорий статей
+    /category-slug            # Данные отдельной категории
       /category.json
-  /tags            # Tag information
-    /article-tags.json        # Article tag list
-    /release-tags.json        # Release tag list
-    /tag-slug                 # Individual tag details
+  /tags            # Информация о тегах
+    /article-tags.json        # Теги статей
+    /release-tags.json        # Теги релизов
+    /tag-slug                 # Данные отдельного тега
       /tag.json
-  /help-center     # Help center content
-    /help-center-tree.json    # Help center navigation structure
+  /help-center     # Контент Центра помощи
+    /help-center-tree.json    # Структура навигации по помощи
   ....
 ```
 
-### 3.2 Content Translation Guidelines
+### 3.2 Рекомендации по переводу контента
 
-- About Markdown Content Translation
+- Перевод Markdown-файлов
 
-1. Create a new language file based on the default file (e.g., `index.md` to `index.fr.md`)
-2. Add localized properties in the corresponding fields in the JSON file
-3. Maintain consistency in file structure, links, and image references
+1. Создайте новый файл для нужного языка на основе стандартного (например, `index.md` → `index.fr.md`)
+2. Добавьте локализованные значения в соответствующие поля JSON-файла
+3. Соблюдайте структуру файлов, ссылки и изображения
 
-- JSON Content Translation
-Many content metadata are stored in JSON files, which typically contain multilingual fields:
+- Перевод JSON-контента
+Многие метаданные хранятся в JSON-файлах, в которых используются многоязычные поля:
 
 ```json
 {
   "id": 123,
-  "title": "English Title",       // English title (default)
-  "title_cn": "中文标题",          // Chinese title
-  "title_ja": "日本語タイトル",    // Japanese title
+  "title": "English Title",       // Английский заголовок (по умолчанию)
+  "title_cn": "中文标题",          // Китайский заголовок
+  "title_ja": "日本語タイトル",    // Японский заголовок
+  "title_ru": "Русский заголовок",// Русский заголовок
   "description": "English description",
   "description_cn": "中文描述",
   "description_ja": "日本語の説明",
-  "slug": "article-slug",         // URL path (usually not translated)
+  "description_ru": "Русское описание",
+  "slug": "article-slug",         // URL (обычно не переводится)
   "status": "published",
   "publishedAt": "2025-03-19T12:00:00Z"
 }
 ```
 
-**Translation Notes:**
+**Примечания по переводу:**
 
-1. **Field Naming Convention**: Translation fields typically use the `{original_field}_{language_code}` format
-   - For example: title_fr (French title), description_de (German description)
+1. **Именование полей:**: Используйте формат `{original_field}_{language_code}`
+   - Например: title_fr (французский заголовок), description_de (описание на немецком)
 
-2. **When Adding a New Language**:
-   - Add a corresponding language suffix version for each field that needs translation
-   - Do not modify the original field values (such as title, description, etc.), as they serve as default language (English) content
+2. **При добавлении нового языка:**:
+   - Создайте версии всех необходимых полей с соответствующим суффиксом языка
+   - Не изменяйте оригинальные значения (например, title, description), они используются как контент по умолчанию
 
-3. **CMS Synchronization Mechanism**:
-   - The CMS system periodically updates English, Chinese and Japanese content
-   - The system will only update/overwrite content for these three languages (some properties in the JSON), and **will not delete** language fields added by other contributors
-   - For example: if you added a French translation (title_fr), CMS synchronization will not affect this field
+3. **Механизм синхронизации CMS:**:
+   - CMS периодически обновляет данные на Английском, Китайском, Японском и Русском языках
+   - При этом **не удаляются поля** других языков, добавленные вручную
+   - Например, поле `title_fr` с французским переводом останется без изменений после синхронизации
 
 
-### 3.3 Configuring Support for a New Language
+### 3.3 Настройка поддержки нового языка
 
-To add support for a new language, you need to modify the `SUPPORTED_LANGUAGES` configuration in the `src/utils/index.ts` file:
+Чтобы добавить поддержку нового языка, измените объект `SUPPORTED_LANGUAGES` в файле `src/utils/index.ts`:
 
 ```typescript
 export const SUPPORTED_LANGUAGES = {
@@ -207,70 +212,73 @@ export const SUPPORTED_LANGUAGES = {
     locale: 'ja-JP',
     name: 'Japanese'
   },
-  // Example of adding a new language:
-  fr: {
-    code: 'fr',
-    locale: 'fr-FR',
-    name: 'French'
+  // Пример добавления нового языка:
+  ru: {
+    code: 'ru',
+    locale: 'ru-RU',
+    name: 'Russian'
   }
 };
 ```
 
-### 3.4 Layout Files and Styles
+### 3.4 Файлы шаблонов и стили
 
-Each language needs corresponding layout files:
+Каждому языку должен соответствовать свой layout-файл:
 
-1. Create a new layout file (e.g., for French, create `src/layouts/BaseFR.astro`)
-2. You can copy an existing layout file (such as `BaseEN.astro`) and translate it
-3. The layout file contains translations for global elements like navigation menus, footers, etc.
-4. Be sure to update the language switcher configuration to properly switch to the newly added language
+1. Создайте новый файл шаблона, например, `src/layouts/BaseRU.astro`
+2. Скопируйте существующий (например, `BaseEN.astro`) и переведите его
+3. В шаблоне локализуются глобальные элементы — меню, футеры и пр.
+4. Обязательно обновите конфигурацию переключателя языков
 
-### 3.5 Creating Language Page Directories
+### 3.5 Создание директорий для страниц на новом языке
 
-Create independent page directories for the new language:
+Создайте независимые каталоги страниц для нового языка:
 
-1. Create a folder named with the language code in the `src` directory (e.g., `src/fr/`)
-2. Copy the page structure from other language directories (e.g., `src/en/`)
-3. Update page content, translating titles, descriptions and text into the target language
-4. Ensure pages use the correct layout component (e.g., `.layout: '@/layouts/BaseFR.astro'`)
+1. В каталоге `src` создайте новую папку с кодом языка (например, `src/ru/`)
+2. Скопируйте структуру из существующего языка (например, `src/en/`)
+3. Переведите содержимое страниц: заголовки, описания, текст
+4. Убедитесь, что используется правильный layout-файл (`.layout: '@/layouts/BaseFR.astro'`)
 
-### 3.6 Component Localization
+### 3.6 Локализация компонентов
 
-Some common components also need translation:
+Часто используемые компоненты тоже требуют перевода:
 
-1. Check components in the `src/components/` directory
-2. Pay special attention to components with fixed text (like navigation bars, footers, etc.)
-3. Components may use conditional rendering to display content in different languages:
+1. Проверьте содержимое `src/components/`
+2. Особое внимание уделите элементам с фиксированным текстом (меню, футер и пр.)
+3. В компонентах может использоваться условный рендеринг:
 
 ```astro
 {Astro.url.pathname.startsWith('/en') && <p>English content</p>}
 {Astro.url.pathname.startsWith('/cn') && <p>中文内容</p>}
-{Astro.url.pathname.startsWith('/fr') && <p>Contenu français</p>}
+{Astro.url.pathname.startsWith('/fr') && <p>Contenu français</p>}\
+{Astro.url.pathname.startsWith('/ru') && <p>Контент на Русском</p>}
 ```
 
-### 3.7 Testing and Validation
+### 3.7 Тестирование и проверка
 
-After completing the translation, conduct thorough testing:
+После завершения перевода убедитесь в корректной работе:
 
-1. Run the website locally (usually using `yarn dev`)
-2. Check how all pages display in the new language
-3. Verify that the language switching functionality works properly
-4. Ensure all links point to the correct language version pages
-5. Check responsive layouts to ensure translated text doesn't break page design
+1. Запустите сайт локально (`yarn dev`)
+2. Проверьте отображение всех страниц на новом языке
+3. Убедитесь, что переключение языков работает корректно
+4. Проверьте правильность всех ссылок
+5. Убедитесь, что вёрстка не ломается из-за длины переведённого текста
 
-## IV. How to Start Translating
+## IV. Как начать перевод
 
-If you want to contribute a new language translation to NocoBase, please follow these steps:
+Если вы хотите внести перевод на новый язык в NocoBase, следуйте инструкции:
 
-1. For the system interface, clone the https://github.com/nocobase/locales repository and create a new language JSON file based on an existing file.
-2. For documentation, clone the https://github.com/nocobase/docs repository, create a new language directory, and begin translating.
-3. For the website, clone the https://github.com/nocobase/website repository and create new language pages by referencing existing ones.
+1. Для интерфейса системы — клонируйте репозиторий: https://github.com/nocobase/locales
+Создайте JSON-файл для нового языка на основе существующего.
+2. Для документации — клонируйте: https://github.com/nocobase/docs
+   Создайте папку с кодом языка и начните перевод.
+3. Для сайта — клонируйте: https://github.com/nocobase/website
+   Создайте страницы нового языка, ориентируясь на текущие.
 
-After completing your translation, please submit a Pull Request to NocoBase. The new languages will appear in the system configuration, allowing you to select which languages to display.
-
+После завершения перевода создайте Pull Request. Новый язык появится в конфигурации системы и станет доступен для отображения.
 ![Enabled Languages Diagram](https://static-docs.nocobase.com/20250319123452.png)
 
-## Legacy Information
+## Устаревшая информация
 
 The NocoBase language files are located at the following locations:
 
@@ -279,17 +287,17 @@ packages/core/**/src/locale
 packages/plugins/**/src/locale
 ```
 
-The core translations are primarily located here:
+Файлы локализации NocoBase находятся в следующих директориях:
 
 https://github.com/nocobase/nocobase/tree/main/packages/core/client/src/locale
 
-Please copy en_US.ts, rename it with the language code you wish to add, and translate its strings. Once completed, submit a Pull Request, and the language will be added to the system configuration.
+Скопируйте файл `en_US.ts`, переименуйте в соответствие с новым языковым кодом и переведите его строки. После завершения отправьте `Pull Request` — язык будет добавлен в конфигурацию.
 
 <img src="./translations/enabled-languages.jpg" style="max-width: 800px;"/>
 
-## Supported Language Codes and Localization Progress
+## Поддерживаемые языки и прогресс локализации
 
-The following table lists available languages and localization progress for your reference:
+В таблице ниже указаны доступные языки и прогресс их локализации (см. оригинальный документ).
 
 | Language Culture Name  | Display Name                 | Progress  | Contributors |
 | ---------------------------------------------------------------------------------------------------------------------------- | -------------------- | --- | --- |

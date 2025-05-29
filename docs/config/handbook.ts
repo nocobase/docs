@@ -4,6 +4,7 @@ export default [
     'title.fr-FR': 'Guide',
     'title.zh-CN': '指南',
     'title.ja-JP': 'ガイド',
+    'title.ru-RU': 'Инструкции',
     link: '/handbook',
   },
   {
@@ -11,6 +12,7 @@ export default [
     'title.fr-FR': 'Modélisation des données',
     'title.zh-CN': '数据建模',
     'title.ja-JP': 'データモデリング',
+    'title.ru-RU': 'Модели данных',
     type: 'group',
     children: [
       {
@@ -18,6 +20,7 @@ export default [
         'title.fr-FR': "Vue d'ensemble",
         'title.zh-CN': '概述',
         'title.ja-JP': '概要',
+        'title.ru-RU': 'Обзор',
         link: '/handbook/data-modeling',
       },
       {
@@ -25,12 +28,14 @@ export default [
         'title.fr-FR': 'Sources de données',
         'title.zh-CN': '数据源',
         'title.ja-JP': 'データソース',
+        'title.ru-RU': 'Источники данных',
         children: [
           {
             title: 'Data source manager',
             'title.fr-FR': 'Gestionnaire de sources de données',
             'title.zh-CN': '数据源管理',
             'title.ja-JP': 'データソースマネージャー',
+            'title.ru-RU': 'Менеджер источника данных',
             link: '/handbook/data-source-manager',
           },
           {
@@ -38,6 +43,7 @@ export default [
             'title.fr-FR': 'Base de données principale',
             'title.zh-CN': '主数据库',
             'title.ja-JP': 'メインデータベース',
+            'title.ru-RU': 'Главная база данных',
             // subTitle: '@nocobase/plugin-collection-manager',
             link: '/handbook/data-source-main',
           },
@@ -46,12 +52,14 @@ export default [
             'title.fr-FR': 'Base de données externe',
             'title.zh-CN': '外部数据库',
             'title.ja-JP': '外部データベース',
+            'title.ru-RU': 'Внешняя база данных',
             children: [
               {
                 title: 'Overview',
                 'title.fr-FR': "Vue d'ensemble",
                 'title.zh-CN': '介绍',
                 'title.ja-JP': '概要',
+                'title.ru-RU': 'Обзор',
                 link: '/handbook/data-source-manager/external-database',
               },
               {
@@ -59,6 +67,7 @@ export default [
                 'title.fr-FR': 'Source de données MySQL',
                 'title.zh-CN': '外部 MySQL',
                 'title.ja-JP': '外部 MySQL',
+                'title.ru-RU': 'Внешняя база MySQL',
                 // subTitle: '@nocobase/plugin-data-source-external-mysql',
                 link: '/handbook/data-source-external-mysql',
               },
@@ -67,6 +76,7 @@ export default [
                 'title.fr-FR': 'Source de données MariaDB',
                 'title.zh-CN': '外部 MariaDB',
                 'title.ja-JP': '外部 MariaDB',
+                'title.ru-RU': 'Внешняя база MariaDB',
                 // subTitle: '@nocobase/plugin-data-source-external-mariadb',
                 link: '/handbook/data-source-external-mariadb',
               },
@@ -75,6 +85,7 @@ export default [
                 'title.fr-FR': 'Source de données PostgreSQL',
                 'title.zh-CN': '外部 PostgreSQL',
                 'title.ja-JP': '外部 PostgreSQL',
+                'title.ru-RU': 'Внешняя база PostgreSQL',
                 // subTitle: '@nocobase/plugin-data-source-external-postgres',
                 link: '/handbook/data-source-external-postgres',
               },
@@ -83,6 +94,7 @@ export default [
                 'title.fr-FR': 'Source de données MSSQL',
                 'title.zh-CN': '外部 MSSQL',
                 'title.ja-JP': '外部 MSSQL',
+                'title.ru-RU': 'Внешняя база MSSQL',
                 // subTitle: '@nocobase/plugin-data-source-external-mysql',
                 link: '/handbook/data-source-external-mssql',
               },
@@ -91,6 +103,7 @@ export default [
                 'title.fr-FR': 'Source de données Oracle',
                 'title.zh-CN': '外部 Oracle',
                 'title.ja-JP': '外部 Oracle',
+                'title.ru-RU': 'Внешняя база Oracle',
                 // subTitle: '@nocobase/plugin-data-source-external-mysql',
                 link: '/handbook/data-source-external-oracle',
               },
@@ -101,6 +114,7 @@ export default [
             'title.fr-FR': 'Source de données API REST',
             'title.zh-CN': 'REST API 数据源',
             'title.ja-JP': 'REST API データソース',
+            'title.ru-RU': 'Источник данных REST API',
             // subTitle: '@nocobase/plugin-data-source-external-postgres',
             link: '/handbook/data-source-rest-api',
           },
@@ -109,6 +123,7 @@ export default [
             'title.fr-FR': 'Source de données KingbaseES',
             'title.zh-CN': '人大金仓（KingbaseES）数据源',
             'title.ja-JP': '人大金仓（KingbaseES）データソース',
+            'title.ru-RU': 'Источник данных KingbaseES',
             link: '/handbook/data-source-kingbase',
           },
           {
@@ -116,6 +131,7 @@ export default [
             'title.fr-FR': 'Outil de gestion des ER',
             'title.zh-CN': '类 ER 工具',
             'title.ja-JP': 'ER図のようなツール',
+            'title.ru-RU': 'Инструмент ER Диаграмм',
             // subTitle: '@nocobase/plugin-graph-collection-manager',
             link: '/handbook/graph-collection-manager',
           },
@@ -178,12 +194,14 @@ export default [
         'title.fr-FR': 'Collections',
         'title.zh-CN': '数据表',
         'title.ja-JP': 'コレクション',
+        'title.ru-RU': 'Коллекции',
         children: [
           {
             title: 'Overview',
             'title.fr-FR': "Vue d'ensemble",
             'title.zh-CN': '概述',
             'title.ja-JP': '概要',
+            'title.ru-RU': 'Обзор',
             link: '/handbook/data-modeling/collection',
           },
           {
@@ -191,6 +209,7 @@ export default [
             'title.fr-FR': 'Collection générale',
             'title.zh-CN': '普通表',
             'title.ja-JP': '一般コレクション',
+            'title.ru-RU': 'Основные коллекции',
             link: '/handbook/data-source-main/general-collection',
           },
           {
@@ -205,6 +224,7 @@ export default [
             'title.fr-FR': 'Collection de fichiers',
             'title.zh-CN': '文件表',
             'title.ja-JP': 'ファイルコレクション',
+            'title.ru-RU': 'Коллекции файлов',
             link: '/handbook/file-manager/file-collection',
           },
           {
@@ -212,6 +232,7 @@ export default [
             'title.fr-FR': 'Arborescences',
             'title.zh-CN': '树表',
             'title.ja-JP': '木構造コレクション',
+            'title.ru-RU': 'Коллекции дерево',
             link: '/handbook/collection-tree',
           },
           {
@@ -219,6 +240,7 @@ export default [
             'title.fr-FR': 'Collection de calendriers',
             'title.zh-CN': '日历表',
             'title.ja-JP': 'カレンダーコレクション',
+            'title.ru-RU': 'Коллекции календарь',
             link: '/handbook/calendar/calendar-collection',
           },
           {
@@ -226,6 +248,7 @@ export default [
             'title.fr-FR': "Collection d'expressions",
             'title.zh-CN': '表达式表',
             'title.ja-JP': '式コレクション',
+            'title.ru-RU': 'Коллекции выражений',
             link: '/handbook/collection-expression/collection',
           },
           {
@@ -233,6 +256,7 @@ export default [
             'title.fr-FR': 'Collection SQL',
             'title.zh-CN': 'SQL 表',
             'title.ja-JP': 'SQLコレクション',
+            'title.ru-RU': 'Коллекции SQL',
             link: '/handbook/collection-sql',
           },
           {
@@ -240,6 +264,7 @@ export default [
             'title.fr-FR': 'Collection de vues',
             'title.zh-CN': '数据库视图',
             'title.ja-JP': 'ビューコレクション',
+            'title.ru-RU': 'Коллекции представлений',
             link: '/handbook/collection-view',
           },
           {
@@ -247,6 +272,7 @@ export default [
             'title.fr-FR': 'Collection de données étrangères（FDW）',
             'title.zh-CN': '外部数据表',
             'title.ja-JP': '外部データコレクション（FDW）',
+            'title.ru-RU': 'Коллекции',
             link: '/handbook/collection-fdw',
           },
         ],
@@ -256,12 +282,14 @@ export default [
         'title.fr-FR': 'Collection de champs',
         'title.zh-CN': '数据表字段',
         'title.ja-JP': 'コレクションフィールド',
+        'title.ru-RU': 'Поля коллекций',
         children: [
           {
             title: 'Overview',
             'title.fr-FR': "Vue d'ensemble",
             'title.zh-CN': '概述',
             'title.ja-JP': '概要',
+            'title.ru-RU': 'Обзор',
             // subTitle: '@nocobase/plugin-data-source-external-mariadb',
             link: '/handbook/data-modeling/collection-fields',
           },
@@ -270,12 +298,14 @@ export default [
             'title.fr-FR': 'Basic',
             'title.zh-CN': '基本类型',
             'title.ja-JP': '基本タイプ',
+            'title.ru-RU': 'Базовые',
             children: [
               {
                 title: 'Single text',
                 'title.fr-FR': 'Texte simple',
                 'title.zh-CN': '单行文本',
                 'title.ja-JP': '単一行テキスト',
+                'title.ru-RU': 'Строка',
                 link: '/handbook/data-modeling/collection-fields/basic/input',
               },
               {
@@ -283,6 +313,7 @@ export default [
                 'title.fr-FR': 'Texte long',
                 'title.zh-CN': '多行文本',
                 'title.ja-JP': '複数行テキスト',
+                'title.ru-RU': 'Текст',
                 link: '/handbook/data-modeling/collection-fields/basic/textarea',
               },
               {
@@ -290,6 +321,7 @@ export default [
                 'title.fr-FR': 'Téléphone',
                 'title.zh-CN': '手机号码',
                 'title.ja-JP': '電話番号',
+                'title.ru-RU': 'Телефон',
                 link: '/handbook/data-modeling/collection-fields/basic/phone',
               },
               {
@@ -297,6 +329,7 @@ export default [
                 'title.fr-FR': 'Email',
                 'title.zh-CN': '电子邮箱',
                 'title.ja-JP': '電子メール',
+                'title.ru-RU': 'Email',
                 link: '/handbook/data-modeling/collection-fields/basic/email',
               },
               {
@@ -304,6 +337,7 @@ export default [
                 'title.fr-FR': 'URL',
                 'title.zh-CN': 'URL',
                 'title.ja-JP': 'URL',
+                'title.ru-RU': 'URL',
                 link: '/handbook/data-modeling/collection-fields/basic/url',
               },
               {
@@ -311,6 +345,7 @@ export default [
                 'title.fr-FR': 'Entier',
                 'title.zh-CN': '整数',
                 'title.ja-JP': '整数',
+                'title.ru-RU': 'Целое число',
                 link: '/handbook/data-modeling/collection-fields/basic/integer',
               },
               {
@@ -318,6 +353,7 @@ export default [
                 'title.fr-FR': 'Nombre',
                 'title.zh-CN': '数字',
                 'title.ja-JP': '数値',
+                'title.ru-RU': 'Число с точкой',
                 link: '/handbook/data-modeling/collection-fields/basic/number',
               },
               {
@@ -325,6 +361,7 @@ export default [
                 'title.fr-FR': 'Pourcentage',
                 'title.zh-CN': '百分比',
                 'title.ja-JP': 'パーセント',
+                'title.ru-RU': 'Процент',
                 link: '/handbook/data-modeling/collection-fields/basic/percent',
               },
               {
@@ -332,6 +369,7 @@ export default [
                 'title.fr-FR': 'Mot de passe',
                 'title.zh-CN': '密码',
                 'title.ja-JP': 'パスワード',
+                'title.ru-RU': 'Пароль',
                 link: '/handbook/data-modeling/collection-fields/basic/password',
               },
               {
@@ -339,6 +377,7 @@ export default [
                 'title.fr-FR': 'Couleur',
                 'title.zh-CN': '颜色',
                 'title.ja-JP': '色',
+                'title.ru-RU': 'Цвет',
                 link: '/handbook/data-modeling/collection-fields/basic/color',
               },
               {
@@ -346,6 +385,7 @@ export default [
                 'title.fr-FR': 'Icône',
                 'title.zh-CN': '图标',
                 'title.ja-JP': 'アイコン',
+                'title.ru-RU': 'Иконка',
                 link: '/handbook/data-modeling/collection-fields/basic/icon',
               },
             ],
@@ -355,12 +395,14 @@ export default [
             'title.fr-FR': 'Selection',
             'title.zh-CN': '选择类型',
             'title.ja-JP': '選択タイプ',
+            'title.ru-RU': 'Выбор',
             children: [
               {
                 title: 'Checkbox',
                 'title.fr-FR': 'Checkbox',
                 'title.zh-CN': '勾选',
                 'title.ja-JP': 'チェックボックス',
+                'title.ru-RU': 'Чек-бокс',
                 link: '/handbook/data-modeling/collection-fields/choices/checkbox',
               },
               {
@@ -368,6 +410,7 @@ export default [
                 'title.fr-FR': 'Selection simple',
                 'title.zh-CN': '下拉菜单（单选）',
                 'title.ja-JP': '単一選択',
+                'title.ru-RU': 'Одиночный выбор',
                 link: '/handbook/data-modeling/collection-fields/choices/select',
               },
               {
@@ -375,6 +418,7 @@ export default [
                 'title.fr-FR': 'Selection multiple',
                 'title.zh-CN': '下拉菜单（多选）',
                 'title.ja-JP': '複数選択',
+                'title.ru-RU': 'Множественный выбор',
                 link: '/handbook/data-modeling/collection-fields/choices/multiple-select',
               },
               {
@@ -382,6 +426,7 @@ export default [
                 'title.fr-FR': 'Groupe Radio',
                 'title.zh-CN': '单选框',
                 'title.ja-JP': 'ラジオボタン',
+                'title.ru-RU': 'Радио группа',
                 link: '/handbook/data-modeling/collection-fields/choices/radio-group',
               },
               {
@@ -389,6 +434,7 @@ export default [
                 'title.fr-FR': 'Groupe Checkbox',
                 'title.zh-CN': '复选框',
                 'title.ja-JP': 'チェックボックスグループ',
+                'title.ru-RU': 'Группа Чек-боксов',
                 link: '/handbook/data-modeling/collection-fields/choices/checkbox-group',
               },
               {
@@ -396,6 +442,7 @@ export default [
                 'title.fr-FR': 'China region',
                 'title.zh-CN': '中国行政区',
                 'title.ja-JP': '中国の行政区',
+                'title.ru-RU': 'Китайский регион',
                 link: '/handbook/field-china-region',
               },
             ],
@@ -405,12 +452,14 @@ export default [
             'title.fr-FR': 'Média',
             'title.zh-CN': '多媒体',
             'title.ja-JP': 'メディア',
+            'title.ru-RU': 'Медиа',
             children: [
               {
                 title: 'Markdown',
                 'title.fr-FR': 'Markdown',
                 'title.zh-CN': 'Markdown',
                 'title.ja-JP': 'Markdown',
+                'title.ru-RU': 'Markdown',
                 link: '/handbook/data-modeling/collection-fields/media/markdown',
               },
               {
@@ -418,6 +467,7 @@ export default [
                 'title.fr-FR': 'Markdown(Vditor)',
                 'title.zh-CN': 'Markdown(Vditor)',
                 'title.ja-JP': 'Markdown(Vditor)',
+                'title.ru-RU': 'Markdown(Vditor)',
                 link: '/handbook/field-markdown-vditor',
               },
               {
@@ -425,6 +475,7 @@ export default [
                 'title.fr-FR': 'Rich text',
                 'title.zh-CN': '富文本',
                 'title.ja-JP': 'リッチテキスト',
+                'title.ru-RU': 'Rich Текст',
                 link: '/handbook/data-modeling/collection-fields/media/rich-text',
               },
               {
@@ -432,6 +483,7 @@ export default [
                 'title.fr-FR': 'Attachment(Assocation)',
                 'title.zh-CN': '附件（关系）',
                 'title.ja-JP': '添付ファイル（Assocation）',
+                'title.ru-RU': 'Вложение',
                 link: '/handbook/file-manager/field-attachment',
               },
               {
@@ -439,6 +491,7 @@ export default [
                 'title.fr-FR': 'Attachment（URL）',
                 'title.zh-CN': '附件（URL）',
                 'title.ja-JP': '添付ファイル（URL）',
+                'title.ru-RU': 'Вложение(URL)',
                 link: '/handbook/field-attachment-url',
               },
             ],
@@ -448,12 +501,14 @@ export default [
             'title.fr-FR': 'Date et heure',
             'title.zh-CN': '日期 & 时间',
             'title.ja-JP': '日付と時間',
+            'title.ru-RU': 'Дата & Время',
             children: [
               {
                 title: 'Overview',
                 'title.fr-FR': "Vue d'ensemble",
                 'title.zh-CN': '概述',
                 'title.ja-JP': '概要',
+                'title.ru-RU': 'Обзор',
                 link: '/handbook/data-modeling/collection-fields/datetime',
               },
               {
@@ -461,6 +516,7 @@ export default [
                 'title.fr-FR': 'Date et heure(avec time zone)',
                 'title.zh-CN': '日期时间（含时区）',
                 'title.ja-JP': '日付と時間（タイムゾーンあり）',
+                'title.ru-RU': 'Дата (с часовым поясом)',
                 link: '/handbook/data-modeling/collection-fields/datetime/datetime',
               },
               {
@@ -468,6 +524,7 @@ export default [
                 'title.fr-FR': 'Date et heure(sans time zone)',
                 'title.zh-CN': '日期时间（不含时区）',
                 'title.ja-JP': '日付と時間（タイムゾーンなし）',
+                'title.ru-RU': 'Дата (Без часового пояса)',
                 link: '/handbook/data-modeling/collection-fields/datetime/datetime-without-tz',
               },
               {
@@ -475,6 +532,7 @@ export default [
                 'title.fr-FR': 'Timestamp Unix',
                 'title.zh-CN': 'Unix 时间戳',
                 'title.ja-JP': 'Unix タイムスタンプ',
+                'title.ru-RU': 'Unix отметка времени',
                 link: '/handbook/data-modeling/collection-fields/datetime/unix-timestamp',
               },
               {
@@ -482,6 +540,7 @@ export default [
                 'title.fr-FR': 'Date(sans heure)',
                 'title.zh-CN': '日期（不含时间）',
                 'title.ja-JP': '日付（時間なし）',
+                'title.ru-RU': 'Дата (без времени)',
                 link: '/handbook/data-modeling/collection-fields/datetime/date',
               },
               {
@@ -489,6 +548,8 @@ export default [
                 'title.fr-FR': 'Heure',
                 'title.zh-CN': '时间',
                 'title.ja-JP': '時間',
+                'title.ru-RU': 'Время',
+
                 link: '/handbook/data-modeling/collection-fields/datetime/time',
               },
             ],

@@ -1,6 +1,6 @@
 # Acknowledgements
 
-NocoBase uses excellent and proven open source products, to whom we express our sincere gratitude.
+NocoBase использует отличные и проверенные open source-продукты, за что выражает им искреннюю благодарность.
 
 - [Ant Design](https://ant.design/)
 - [Dnd Kit](https://dndkit.com/)

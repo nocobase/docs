@@ -1,62 +1,70 @@
-# One-to-One
+# Отношение «Один к одному» (One-to-One)
 
-In the relationship between employees and personal profiles, each employee can only have one personal profile record, and each personal profile record can only correspond to one employee. In this case, the relationship between the employee and the personal profile is one-to-one.
+В отношениях между сотрудниками и личными профилями действует связь «один к одному»: 
+каждый сотрудник может иметь только один персональный профиль, и каждый профиль может 
+быть привязан только к одному сотруднику.
 
-The foreign key in a one-to-one relationship can be placed in either the source collection or the target collection. If it represents "having one," the foreign key is more appropriately placed in the target collection; if it represents "belonging to," then the foreign key is better placed in the source collection.
+В таких связях внешний ключ можно разместить как в исходной коллекции, так и в целевой. 
+Если связь описывает "имеет" (having one), внешний ключ уместнее размещать в целевой коллекции. 
+Если связь означает "принадлежит" (belonging to), внешний ключ лучше поместить в исходную коллекцию.
 
-For example, in the case mentioned above, where an employee has only one personal profile and the personal profile belongs to the employee, it is appropriate to place the foreign key in the personal profile collection.
+Например, если сотрудник **имеет (having one)** персональный профиль, и этот профиль **принадлежит (belonging to)** сотруднику,
+то логично поместить внешний ключ в коллекцию профилей.
 
-## One-to-One (Having One)
+## Один к одному — «Имеет» (Having One)
 
-This indicates that an employee has a personal profile record.
+Означает, что сотрудник имеет одну запись профиля.
 
-ER Relationship
+**ER-диаграмма:**
 
 ![alt text](https://static-docs.nocobase.com/4359e128936bbd7c9ff51bcff1d646dd.png)
 
-Field Configuration
+**Настройка поля:**
 
 ![alt text](https://static-docs.nocobase.com/7665a87e094b4fb50c9426a108f87105.png)
 
-## One-to-One (Belonging Relationship)
+## Один к одному — «Принадлежит» (Belonging)
 
-This indicates that a personal profile belongs to a specific employee.
+Означает, что профиль принадлежит определённому сотруднику.
 
-ER Relationship
+**ER-диаграмма:**
 
-![](https://static-docs.nocobase.com/31e7cc3e630220cf1e98753ca24ac72d.png)
+![alt text](https://static-docs.nocobase.com/31e7cc3e630220cf1e98753ca24ac72d.png)
 
-Field Configuration
+**Настройка поля:**
 
 ![alt text](https://static-docs.nocobase.com/4f09eeb3c7717d61a349842da43c187c.png)
 
-## Parameter Descriptions
+## Описание параметров
 
-### Source Collection
+### Исходная коллекция (Source Collection)
 
-The source collection, which is the collection where the current field is located.
+Коллекция, в которой находится текущее поле.
 
-### Target Collection
+### Целевая коллекция (Target Collection)
 
-The target collection, the collection that is being related.
+Коллекция, с которой устанавливается связь.
 
-### Foreign Key
+### Внешний ключ (Foreign Key)
 
-Used to establish a relationship between two collections. In a one-to-one relationship, the foreign key can be placed in either the source collection or the target collection. If it represents "having one," the foreign key is more appropriately placed in the target collection; if it represents "belonging to," then the foreign key is better placed in the source collection.
+Поле, которое устанавливает связь между двумя коллекциями. В отношениях один к одному внешний ключ может находиться как в исходной, так и в целевой коллекции:
+- Если выражает «имеет», внешний ключ размещают в **целевой** коллекции;
+- Если выражает «принадлежит», внешний ключ размещают в **исходной** коллекции.
 
-### Source Key <- Foreign Key (Foreign Key in the Target collection)
+### Ключ источника ← Внешний ключ (если ключ в целевой коллекции)
 
-The field referenced by the foreign key constraint must be unique. When the foreign key is placed in the target collection, it indicates "having one."
+Поле, на которое ссылается внешний ключ. Оно должно быть уникальным. Такой подход описывает связь типа «имеет».
 
-### Target Key <- Foreign Key (Foreign Key in the Source collection)
+### Ключ цели ← Внешний ключ (если ключ в исходной коллекции)
 
-The field referenced by the foreign key constraint must be unique. When the foreign key is placed in the source collection, it indicates a "belonging relationship."
+Поле, на которое ссылается внешний ключ. Оно должно быть уникальным. Такой подход описывает связь типа «принадлежит».
 
 ### ON DELETE
 
-ON DELETE refers to the action rules for the foreign key reference in the related child collection when deleting records from the parent collection. It is an option defined when establishing a foreign key constraint. Common ON DELETE options include:
+**ON DELETE** определяет поведение при удалении записи из родительской коллекции. 
+Эта опция задаётся при создании внешнего ключа и определяет, что произойдёт с дочерними записями:
 
-- CASCADE: When a record in the parent collection is deleted, automatically delete all related records in the child collection.
-- SET NULL: When a record in the parent collection is deleted, set the foreign key value in the related child collection to NULL.
-- RESTRICT: The default option, where deletion of a parent collection record is refused if there are related records in the child collection.
-- NO ACTION: Similar to RESTRICT, deletion of a parent collection record is refused if there are related records in the child collection.
+- **CASCADE**: При удалении родительской записи автоматически удаляются связанные дочерние записи.
+- **SET NULL**: Внешний ключ в дочерней коллекции устанавливается в `NULL`.
+- **RESTRICT**: (по умолчанию) — не позволяет удалить запись, если есть связанные данные.
+- **NO ACTION**: Поведение иденти

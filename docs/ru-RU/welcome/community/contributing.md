@@ -1,48 +1,50 @@
-# Contributing
+# Участие в разработке
 
-- Fork the source code to your own repository
-- Modify source code
-- Submit pull request
-- Sign the CLA
+- Сделайте форк исходного кода в свой репозиторий
+- Внесите изменения в исходный код
+- Отправьте pull request
+- Подпишите лицензионное соглашение участника (CLA)
 
-## Download
+## Скачать
 
 ```bash
-# Replace the following git address with your own repo
+# Замените следующий адрес git на свой собственный репозиторий
 git clone https://github.com/nocobase/nocobase.git
 cd nocobase
 yarn install
 ```
 
-## Development and Testing
+## Разработка и тестирование
 
 ```bash
-# Install and start the application
+# Установить зависимости и запустить приложение
 yarn dev
-# Run all tests
+# Запустить все тесты
 yarn test
-# Run all test files in the folder
+# Запустить все тесты в папке
 yarn test <dir>
-# Run a single test file
+# Запустить один тестовый файл
 yarn test <file>
 ```
 
-## Documentation preview
+## Просмотр документации
 
 ```bash
-# Start documentation
+# Запустить локальный просмотр документации
 yarn doc --lang=zh-CN
 yarn doc --lang=en-US
+yarn doc --lang=ru-RU
 ```
 
-The documentation is in the docs directory and follows Markdown syntax
+Документация находится в каталоге `docs` и оформлена в формате Markdown:
 
 ```bash
 |- /docs/
   |- en-US
   |- zh-CN
+  |- ru-RU
 ```
 
-## Others
+## Прочее
 
-For more CLI instructions, please [refer to the NocoBase CLI chapter](https://docs-cn.nocobase.com/api/cli).
+Для получения дополнительных CLI-команд см. [refer to the NocoBase CLI chapter](https://docs-cn.nocobase.com/api/cli).

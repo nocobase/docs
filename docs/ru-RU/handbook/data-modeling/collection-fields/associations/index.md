@@ -1,12 +1,12 @@
-# Relationship Fields
+# Поля связей (Relationship Fields)
 
-In NocoBase, relationship fields are not actual fields but are used to establish connections between collections. This concept is equivalent to relationships in relational databases.
+В NocoBase поля связей не являются реальными полями в таблице базы данных — они используются для установления связей между коллекциями.
+Эта концепция эквивалентна отношениям в реляционных базах данных.
+В реляционных СУБД наиболее часто встречаются следующие типы связей:
 
-In relational databases, the most common types of relationships include the following:
+- [Один к одному (One-to-One)](./o2o/index.md): Каждой сущности из одной коллекции соответствует ровно одна сущность из другой коллекции. Такой тип связи используется, когда необходимо разделить разные аспекты одной сущности по разным коллекциям для уменьшения избыточности и повышения согласованности данных.
+- [Один ко многим (One-to-Many)](./o2m/index.md): Каждая сущность из одной коллекции может быть связана с несколькими сущностями из другой коллекции. Это один из самых распространённых типов связей. Пример: один автор может написать несколько статей, но каждая статья имеет только одного автора.
+- [Многие к одному (Many-to-One)](./m2o/index.md): Несколько сущностей из одной коллекции могут быть связаны с одной сущностью из другой коллекции. Этот тип связи также часто используется в моделировании данных. Пример: несколько студентов могут быть привязаны к одному классу.
+- [Многие ко многим (Many-to-Many)](./m2m/index.md): Несколько сущностей из двух коллекций могут быть взаимосвязаны. Такой тип связи обычно реализуется через промежуточную коллекцию, в которой фиксируются связи между сущностями. Пример: студент может записаться на несколько курсов, и один курс может включать нескольких студентов.
 
-- [One-to-One](./o2o/index.md): Each entity in two collections corresponds to only one entity in the other collection. This type of relationship is usually used to store different aspects of an entity in separate collections to reduce redundancy and improve data consistency.
-- [One-to-Many](./o2m/index.md): Each entity in one collection can be associated with multiple entities in another collection. This is one of the most common relationship types. For example, one author can write multiple articles, but each article can have only one author.
-- [Many-to-One](./m2o/index.md): Multiple entities in one collection can be associated with one entity in another collection. This type of relationship is also common in data modeling. For instance, multiple students can belong to the same class.
-- [Many-to-Many](./m2m/index.md): Multiple entities in two collections can be associated with each other. This type of relationship typically requires an intermediary collection to record the associations between the entities. For example, the relationship between students and courses—a student can enroll in multiple courses, and a course can have multiple students.
-
-These types of relationships play an important role in database design and data modeling, helping to describe complex real-world relationships and data structures.
+Эти типы связей играют ключевую роль в проектировании баз данных и моделировании данных, позволяя точно описывать сложные связи и структуры, встречающиеся в реальном мире.

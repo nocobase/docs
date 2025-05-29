@@ -1,42 +1,47 @@
-# One-to-Many
+# Отношение «Один ко многим» (One-to-Many)
 
-The relationship between a class and its students is an example of a one-to-many relationship: one class can have multiple students, but each student belongs to only one class.
+Отношения между классом и его учениками — это пример связи типа «один ко многим»: 
+один класс может включать нескольких студентов, но каждый студент принадлежит только одному классу.
 
-ER Diagram:
+**ER-диаграмма:**
 
 ![alt text](https://static-docs.nocobase.com/9475f044d123d28ac8e56a077411f8dc.png)
 
-Field Configuration:
+**Настройка полей:**
 
 ![alt text](https://static-docs.nocobase.com/a608ce54821172dad7e8ab760107ff4e.png)
 
-## Parameter Description
+## Описание параметров
 
-### Source Collection
+### Исходная коллекция (Source Collection)
 
-The source collection, which is the collection where the current field resides.
+Коллекция, в которой находится текущее поле (в данном примере — *классы*).
 
-### Target Collection
+### Целевая коллекция (Target Collection)
 
-The target collection, which is the collection to be associated with.
+Коллекция, с которой устанавливается связь (в данном примере — *студенты*).
 
-### Source Key
+### Ключ исходной коллекции (Source Key)
 
-The field in the source collection that is referenced by the foreign key. It must be unique.
+Поле в исходной коллекции, на которое ссылается внешний ключ. Оно должно быть уникальным.
 
-### Foreign Key
+### Внешний ключ (Foreign Key)
 
-The field in the target collection that is used to establish the association between the two collections.
+Поле в целевой коллекции, которое используется для установления связи между двумя коллекциями. 
+Оно ссылается на `Source Key` в родительской коллекции.
 
-### Target Key
+### Ключ целевой коллекции (Target Key)
 
-The field in the target collection used to view each row record in the relationship block, usually a unique field.
+Поле в целевой коллекции, отображаемое для каждой строки в блоке связей. 
+Обычно это уникальное или человеко-читаемое поле (например, имя).
 
 ### ON DELETE
 
-ON DELETE refers to the rules applied to foreign key references in related child collections when records in the parent collection are deleted. It is an option used when defining a foreign key constraint. Common ON DELETE options include:
+Опция **ON DELETE** определяет поведение при удалении записи в родительской коллекции (в нашем примере — *класс*), к которой привязаны записи в дочерней коллекции (*студенты*).
 
-- **CASCADE**: When a record in the parent collection is deleted, all related records in the child collection are automatically deleted.
-- **SET NULL**: When a record in the parent collection is deleted, the foreign key values in the related child collection records are set to NULL.
-- **RESTRICT**: The default option, it prevents the deletion of a parent collection record if there are related records in the child collection.
-- **NO ACTION**: Similar to RESTRICT, it prevents the deletion of a parent collection record if there are related records in the child collection.
+Доступные варианты:
+
+- **CASCADE**: При удалении записи в родительской коллекции автоматически удаляются все связанные записи в дочерней коллекции.
+- **SET NULL**: При удалении родительской записи внешний ключ в дочерней коллекции устанавливается в `NULL`.
+- **RESTRICT**: (по умолчанию) — не позволяет удалить родительскую запись, если есть связанные дочерние записи.
+- **NO ACTION**: Поведение аналогично `RESTRICT` — удаление блокируется при наличии связанных записей.
