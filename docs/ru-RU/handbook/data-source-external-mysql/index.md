@@ -1,17 +1,17 @@
-# External Data Source - MySQL
+# Внешний источник данных — MySQL
 
 <PluginInfo commercial="true" name="data-source-external-mysql"></PluginInfo>
 
-## Introduction
+## Введение
 
-Use an external MySQL database as a data source. Currently supported versions: MySQL >= 5.7
+Используйте внешнюю базу данных MySQL в качестве источника данных. В настоящее время поддерживаются версии: MySQL >= 5.7
 
-## Installation
+## Установка
 
-This plugin is a commercial plugin, which needs to be uploaded and activated through the plugin manager.
+Этот плагин — коммерческий плагин, который необходимо загрузить и активировать через менеджер плагинов.
 
 ![20240323162741](https://static-docs.nocobase.com/20240323162741.png)
 
-## Usage Instructions
+## Инструкции по использованию
 
-Refer to the [Data Source / External Database](/handbook/data-source-manager/external-database) section.
+См. раздел [Источник данных / Внешняя база данных](/handbook/data-source-manager/external-database).

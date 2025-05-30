@@ -1,51 +1,51 @@
-# Backup and Restore
+# Резервное копирование и восстановление
 
 <PluginInfo name="backup-restore" deprecated=true></PluginInfo>
 
-## Introduction
+## Введение
 
-The backup and restore plugin can be used for scenarios such as application replication, migration, and upgrade.
+Плагин резервного копирования и восстановления можно использовать для таких сценариев, как репликация приложений, миграция и обновление.
 
-## Installation
+## Установка
 
-This plugin is built-in and does not require manual installation or activation.
+Этот плагин встроен и не требует ручной установки или активации.
 
-## User Instructions
+## Инструкции для пользователя
 
-![Backup and Restore List Page](https://static-docs.nocobase.com/071b969c4db9bdc6d2c359e1b6bef5da.png)
+![Страница списка резервного копирования и восстановления](https://static-docs.nocobase.com/071b969c4db9bdc6d2c359e1b6bef5da.png)
 
-### Creating a Backup
+### Создание резервной копии
 
-![Creating Backup](https://static-docs.nocobase.com/0e3d9410e6b1cfbda38044033f0b4053.png)
+![Создание резервной копии](https://static-docs.nocobase.com/0e3d9410e6b1cfbda38044033f0b4053.png)
 
-### Restore Backup
+### Восстановление резервной копии
 
-You can choose to upload a backup from your local device or click on a backup file to restore.
+Вы можете загрузить резервную копию с локального устройства или нажать на файл резервной копии для восстановления.
 
-![Restore Backup](https://static-docs.nocobase.com/e4b95a4376260fd516de7828fd9f1056.png)
+![Восстановить резервную копию](https://static-docs.nocobase.com/e4b95a4376260fd516de7828fd9f1056.png)
 
-Select the data you need to restore, the selected data will completely overwrite the corresponding data table of the target application.
+Выберите данные, которые необходимо восстановить, выбранные данные полностью перезапишут соответствующую таблицу данных целевого приложения.
 
-![Restore Backup](https://static-docs.nocobase.com/9c7cb78b51c8f949e417b5a1e0180ae2.png)
+![Восстановить резервную копию](https://static-docs.nocobase.com/9c7cb78b51c8f949e417b5a1e0180ae2.png)
 
-### Backup Instructions 
+### Инструкции по резервному копированию
 
-Click on "Learn more" to view the backup instructions.
+Нажмите «Подробнее», чтобы просмотреть инструкции по резервному копированию.
 
-![Backup and Restore Instructions](https://static-docs.nocobase.com/4f54eba0fde2d6481274665cb184a79e.png)
+![Инструкции по резервному копированию и восстановлению](https://static-docs.nocobase.com/4f54eba0fde2d6481274665cb184a79e.png)
 
-Backup Instructions
+Инструкции по резервному копированию
 
-![Backup and Restore Instructions](https://static-docs.nocobase.com/bd5c68cf7e35d04e525f9b13e48e32d9.png)
+![Инструкции по резервному копированию и восстановлению](https://static-docs.nocobase.com/bd5c68cf7e35d04e525f9b13e48e32d9.png)
 
-Backup Groups
+Группы резервного копирования
 
-- Required Data: Essential data for system operation.
-- Skipped Data: Data skipped and not backed up.
-- User Data: Data related to users.
-- Log Data: Data used to record some actions log.
-- Third-party Service Information: Generally information about various service providers, such as file storage services, map services, and SMS service provider configuration information, etc.
-- Custom Collection Data: Data of collections added through the collection manager.
-- Unknown Data: Data without configured backup rules.
+- Требуемые данные: Важные данные для работы системы.
+- Пропущенные данные: Данные, пропущенные и не резервные копии.
+- Данные пользователя: Данные, связанные с пользователями.
+- Данные журнала: Данные, используемые для записи журнала некоторых действий.
+- Информация о сторонних службах: Общая информация о различных поставщиках услуг, таких как службы хранения файлов, картографические службы, информация о конфигурации поставщика услуг SMS и т. д.
+- Данные пользовательских коллекций: Данные коллекций, добавленных через менеджер коллекций.
+- Неизвестные данные: данные без настроенных правил резервного копирования.
 
-Note: You can choose the data you want to back up or restore by group. The selected data will completely overwrite when restoring.
+Примечание: вы можете выбрать данные, которые хотите создать резервную копию или восстановить по группе. Выбранные данные будут полностью перезаписаны при восстановлении.

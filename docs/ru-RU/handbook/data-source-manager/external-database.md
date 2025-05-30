@@ -1,47 +1,47 @@
-# Overview
+# Обзор
 
-## Introduction
+## Введение
 
-Use an existing external database as a data source. Currently, the supported external databases are MySQL, MariaDB, and PostgreSQL.
+Используйте существующую внешнюю базу данных в качестве источника данных. В настоящее время поддерживаются внешние базы данных MySQL, MariaDB и PostgreSQL.
 
-## Usage Instructions
+## Инструкции по использованию
 
-### Adding an External Database
+### Добавление внешней базы данных
 
-After activating the plugin, you can select and add it from the Add new dropdown menu in the data source management.
+После активации плагина вы можете выбрать и добавить его из раскрывающегося меню Добавить новый в управлении источником данных.
 
 ![20240507204316](https://static-docs.nocobase.com/20240507204316.png)
 
-Fill in the information of the database you need to connect to.
+Заполните информацию о базе данных, к которой необходимо подключиться.
 
 ![20240507204820](https://static-docs.nocobase.com/20240507204820.png)
 
-### Data Table Synchronization
+### Синхронизация таблиц данных
 
-After establishing a connection with the external database, all data tables in the data source will be directly read. The external database does not support directly adding data tables or modifying table structures. If modifications are needed, they can be made through the database client, and then the "Refresh" button can be clicked on the interface to synchronize.
+После установления соединения с внешней базой данных все таблицы данных в источнике данных будут напрямую считываться. Внешняя база данных не поддерживает прямое добавление таблиц данных или изменение структур таблиц. Если необходимы изменения, их можно внести через клиент базы данных, а затем нажать кнопку «Обновить» в интерфейсе для синхронизации.
 
 ![20240507204725](https://static-docs.nocobase.com/20240507204725.png)
 
-### Configuring Fields
+### Настройка полей
 
-The external database will automatically read the fields of the existing data tables and display them. You can quickly view and configure the title of the field, the data type (Field type), and the UI type (Field interface). You can also click the "Edit" button to modify more configurations.
+Внешняя база данных автоматически считывает поля существующих таблиц данных и отображает их. Вы можете быстро просмотреть и настроить заголовок поля, тип данных (тип поля) и тип пользовательского интерфейса (интерфейс поля). Вы также можете нажать кнопку «Изменить», чтобы изменить больше конфигураций.
 
 ![20240507210537](https://static-docs.nocobase.com/20240507210537.png)
 
-Because the external database does not support modifying table structures, the only type available when adding new fields is the relationship field. Relationship fields are not real fields, but are used to establish connections between tables.
+Поскольку внешняя база данных не поддерживает изменение структур таблиц, единственным типом, доступным при добавлении новых полей, является поле отношения. Поля отношения не являются настоящими полями, но используются для установления связей между таблицами.
 
 ![20240507220140](https://static-docs.nocobase.com/20240507220140.png)
 
-For more content, refer to the [Collection Fields/Overview](/handbook/data-modeling/collection-fields) section.
+Более подробную информацию см. в разделе [Поля коллекции/Обзор](/handbook/data-modeling/collection-fields).
 
-### Field Type Mapping
+### Сопоставление типов полей
 
-NocoBase will automatically map the corresponding data type (Field type) and UI type (Field Interface) for the field types of the external database.
+NocoBase автоматически сопоставит соответствующий тип данных (тип поля) и тип пользовательского интерфейса (интерфейс поля) для типов полей внешней базы данных.
 
-- Data type (Field type): Used to define the kind, format, and structure of data that the field can store.
-- UI type (Field Interface): Refers to the type of control used to display and input field values in the user interface.
+- Тип данных (тип поля): используется для определения вида, формата и структуры данных, которые может хранить поле.
+- Тип пользовательского интерфейса (интерфейс поля): относится к типу элемента управления, используемого для отображения и ввода значений полей в пользовательском интерфейсе.
 
-The table below shows the mapping of field types for PostgreSQL, MySQL/MariaDB to NocoBase Data Type and NocoBase Interface Type.
+В таблице ниже показано сопоставление типов полей для PostgreSQL, MySQL/MariaDB с типом данных NocoBase и типом интерфейса NocoBase.
 
 | PostgreSQL | MySQL/MariaDB | NocoBase Data Type | NocoBase Interface Type |
 | - | - | - | - |
@@ -71,18 +71,18 @@ The table below shows the mapping of field types for PostgreSQL, MySQL/MariaDB t
 | SET | SET | set | multipleSelect<br/>checkboxGroup |
 | RANGE | - | - | - |
 
-### Unsupported Field Types
+### Неподдерживаемые типы полей
 
-Unsupported field types will be displayed separately. These fields need to be developed for adaptation before they can be used.
+Неподдерживаемые типы полей будут отображаться отдельно. Эти поля необходимо разработать для адаптации, прежде чем их можно будет использовать.
 
 ![20240507221854](https://static-docs.nocobase.com/20240507221854.png)
 
-### Filter Target Key
+### Ключ фильтра-цели
 
-Data tables that are displayed as blocks must have a filter target key configured. The filter target key refers to filtering data based on a specific field, and the field value must be unique. The filter target key defaults to the primary key field of the data table. If it is a view or a data table without a primary key, or a data table with a composite primary key, you need to customize the filter target key.
+Таблицы данных, отображаемые в виде блоков, должны иметь настроенный ключ фильтра-цели. Ключ фильтра-цели относится к фильтрации данных на основе определенного поля, а значение поля должно быть уникальным. Ключ фильтра-цели по умолчанию соответствует полю первичного ключа таблицы данных. Если это представление или таблица данных без первичного ключа или таблица данных с составным первичным ключом, вам необходимо настроить ключ фильтра-цели.
 
 ![20240507210230](https://static-docs.nocobase.com/20240507210230.png)
 
-Only data tables that have set a filter target key can be added to the page.
+Только таблицы данных, которые установили целевой ключ фильтра, могут быть добавлены на страницу.
 
 ![20240507222827](https://static-docs.nocobase.com/20240507222827.png)

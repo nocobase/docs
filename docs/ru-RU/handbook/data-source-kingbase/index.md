@@ -1,24 +1,24 @@
-# Data Source - KingbaseES Database
+# Источник данных — База данных KingbaseES
 
 <PluginInfo licenseBundled="true" name="data-source-kingbase"></PluginInfo>
 
-## Introduction
+## Введение
 
-KingbaseES can be used as a data source, either as the primary database or an external database.
+KingbaseES можно использовать как источник данных, как в качестве основной базы данных, так и в качестве внешней базы данных.
 
 :::warning
-Currently, only KingbaseES databases running in pg mode are supported.
+В настоящее время поддерживаются только базы данных KingbaseES, работающие в режиме pg.
 :::
 
-## Installation
+## Установка
 
-### Using as the Primary Database
+### Использование в качестве основной базы данных
 
-Refer to the [Installation Overview](/welcome/getting-started/installation) for the setup procedures, the difference is mainly due to the environment variables.
+Ознакомьтесь с [Обзором установки](/welcome/getting-started/installation) для получения информации о процедурах настройки, разница в основном связана с переменными среды.
 
-#### Environment Variables
+#### Переменные среды
 
-Edit the .env file to add or modify the following environment variable configurations:
+Отредактируйте файл .env, чтобы добавить или изменить следующие конфигурации переменных среды:
 
 ```bash
 # For accessing commercial plugins
@@ -35,7 +35,7 @@ DB_USER=nocobase
 DB_PASSWORD=nocobase
 ```
 
-#### Docker Installation
+#### Установка через Docker compose
 
 ```yml
 version: "3"
@@ -77,7 +77,7 @@ networks:
     ports:
       - "13000:80"
 
-  # Kingbase service for testing purposes only
+  # Служба Kingbase только для целей тестирования
   kingbase:
     image: registry.cn-shanghai.aliyuncs.com/nocobase/kingbase:v009r001c001b0030_single_x86
     platform: linux/amd64
@@ -96,7 +96,7 @@ networks:
     command: ["/usr/sbin/init"]
 ```
 
-#### Installation Using create-nocobase-app
+#### Установка с помощью create-nocobase-app
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d kingbase \
@@ -108,9 +108,9 @@ yarn create nocobase-app my-nocobase-app -d kingbase \
    -e TZ=UTC
 ```
 
-### Using as an External Database
+### Использование в качестве внешней базы данных
 
-Edit the .env file to add environment variables for accessing commercial plugins:
+Отредактируйте файл .env, чтобы добавить переменные среды для доступа к коммерческим плагинам:
 
 ```bash
 # For accessing commercial plugins
@@ -119,7 +119,7 @@ NOCOBASE_PKG_USERNAME=your-username   # Service platform username
 NOCOBASE_PKG_PASSWORD=your-password   # Service platform password
 ```
 
-Execute the installation or upgrade command
+Выполните команду установки или обновления
 
 ```bash
 yarn nocobase install
@@ -127,11 +127,11 @@ yarn nocobase install
 yarn nocobase upgrade
 ```
 
-Activate the Plugin
+Активируйте плагин
 
 ![20241024121815](https://static-docs.nocobase.com/20241024121815.png)
 
-## User Guide
+## Руководство пользователя
 
-- Primary Database: Refer to the [handbook](/handbook)
-- External Database: See [Data Source / External Database](/handbook/data-source-manager/external-database)
+- Первичная база данных: см. [руководство](/handbook)
+- Внешняя база данных: см. [Источник данных / Внешняя база данных](/handbook/data-source-manager/external-database)

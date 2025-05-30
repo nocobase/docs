@@ -1,30 +1,30 @@
-# REST API Data Source
+# Источник данных REST API
 
 <PluginInfo commercial="true" name="data-source-rest-api"></PluginInfo>
 
-## Introduction
+## Введение
 
-This plugin allows you to integrate data from REST API sources seamlessly.
+Этот плагин позволяет вам легко интегрировать данные из источников REST API.
 
-## Installation
+## Установка
 
-As a commercial plugin, it requires uploading and activation through the plugin manager.
+Как коммерческий плагин, он требует загрузки и активации через менеджер плагинов.
 
 ![20240323162741](https://static-docs.nocobase.com/20240323162741.png)
 
-## Adding a REST API Source
+## Добавление источника REST API
 
-After activating the plugin, you can add a REST API source by selecting it from the Add new dropdown menu in the data source management section.
+После активации плагина вы можете добавить источник REST API, выбрав его в раскрывающемся меню Добавить новый в разделе управления источником данных.
 
 ![20240721171420](https://static-docs.nocobase.com/20240721171420.png)
 
-### Configuring the REST API Source
+### Настройка источника REST API
 
 ![20240721171507](https://static-docs.nocobase.com/20240721171507.png)
 
-## Adding a Collection
+## Добавление коллекции
 
-In NocoBase, a RESTful resource is mapped to a Collection, such as a Users resource.
+В NocoBase ресурс RESTful сопоставляется с коллекцией, например ресурсом Users.
 
 ```bash
 GET /users
@@ -34,7 +34,7 @@ PUT /users/1
 DELETE /users/1
 ```
 
-These API endpoints are mapped in NocoBase as follows:
+Эти конечные точки API отображаются в NocoBase следующим образом:
 
 ```bash
 GET /users:list
@@ -44,118 +44,118 @@ POST /users:update?filterByTk=1
 POST /users:destroy?filterByTk=1
 ```
 
-For a comprehensive guide on NocoBase API design specifications, refer to the API documentation.
+Полное руководство по спецификациям проектирования API NocoBase см. в документации API.
 
 ![20240716213344](https://static-docs.nocobase.com/20240716213344.png)
 
-Check the "NocoBase API - Core" chapter for detailed information.
+Подробную информацию см. в главе «NocoBase API - Core».
 
 ![20240716213258](https://static-docs.nocobase.com/20240716213258.png)
 
-The Collection configuration for a REST API data source includes the following:
+Конфигурация коллекции для источника данных REST API включает следующее:
 
-### List
+### Список
 
-Map the interface for viewing a list of resources.
+Сопоставьте интерфейс для просмотра списка ресурсов.
 
 ![20240716211351](https://static-docs.nocobase.com/20240716211351.png)
 
-### Get
+### Получить
 
-Map the interface for viewing resource details.
+Сопоставьте интерфейс для просмотра сведений о ресурсах.
 
 ![20240716211532](https://static-docs.nocobase.com/20240716211532.png)
 
-### Create
+### Создать
 
-Map the interface for creating a resource.
+Сопоставить интерфейс для создания ресурса.
 
 ![20240716211634](https://static-docs.nocobase.com/20240716211634.png)
 
-### Update
+### Обновить
 
-Map the interface for updating a resource.
+Сопоставить интерфейс для обновления ресурса.
 
 ![20240716211733](https://static-docs.nocobase.com/20240716211733.png)
 
-### Destroy
+### Уничтожить
 
-Map the interface for deleting a resource.
+Сопоставить интерфейс для удаления ресурса.
 
 ![20240716211808](https://static-docs.nocobase.com/20240716211808.png)
 
-Both the List and Get interfaces are required to be configured.
-## Debugging the API
+Необходимо настроить интерфейсы List и Get.
+## Отладка API
 
-### Request parameter integration
+### Интеграция параметров запроса
 
-example: configure pagination parameters for the List API.
+Пример: настройка параметров пагинации для API List.
 
-if the third-party api does not support pagination natively, implement pagination will based on the retrieved list data.
+Если сторонний API не поддерживает пагинацию изначально, реализация пагинации будет основана на извлеченных данных списка.
 
 ![20241121205229](https://static-docs.nocobase.com/20241121205229.png)
 
-Note: Only variables added to the API will work.
+Примечание: будут работать только переменные, добавленные в API.
 
 | Third-party API params name | NocoBase params             |
 | --------------------------- | --------------------------- |
 | page                        | {{request.params.page}}     |
 | limit                       | {{request.params.pageSize}} |
 
-You can easily debug the API by clicking Try it out.
+Вы можете легко отладить API, нажав «Попробовать».
 
 ![20241121210320](https://static-docs.nocobase.com/20241121210320.png)
 
 <video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20241121211034.mp4" type="video/mp4">
+<source src="https://static-docs.nocobase.com/20241121211034.mp4" type="video/mp4">
 </video>
 
-### Response format transformation
+### Преобразование формата ответа
 
-The response format of the third-party API may not be in NocoBase standard, and it needs to be transformed before it can be correctly displayed on the front end.
+Формат ответа стороннего API может не соответствовать стандарту NocoBase, и его необходимо преобразовать, прежде чем он сможет корректно отображаться на внешнем интерфейсе.
 
 ![20241121214638](https://static-docs.nocobase.com/20241121214638.png)
 
-Adjust the conversion rules based on the response format of the third-party API to ensure the output conforms to the NocoBase standard.
+Настройте правила преобразования на основе формата ответа стороннего API, чтобы гарантировать соответствие вывода стандарту NocoBase.
 
 ![20241121215100](https://static-docs.nocobase.com/20241121215100.png)
 
-### Debugging Process Overview
+### Обзор процесса отладки
 
 ![20250418085020](https://static-docs.nocobase.com/20250418085020.png)
 
-## Variables
+## Переменные
 
-The REST API data source supports three types of variables for API integration:
+Источник данных API REST поддерживает три типа переменных для интеграции API:
 
-- Custom data source variables
-- NocoBase request variables
-- Third-party response variables
+- Пользовательские переменные источника данных
+- Переменные запроса NocoBase
+- Сторонние переменные ответа
 
-### Custom Data Source Variables
+### Пользовательский источник данных Переменные
 
 ![20240716221937](https://static-docs.nocobase.com/20240716221937.png)
 
 ![20240716221858](https://static-docs.nocobase.com/20240716221858.png)
 
-### NocoBase Request
+### Запрос NocoBase
 
-- Params: URL query parameters (Search Params), which vary depending on the interface.
-- Headers: Custom request headers, primarily providing specific X- information from NocoBase.
-- Body: The request body.
-- Token: The API token for the current NocoBase request.
+- Параметры: параметры запроса URL (параметры поиска), которые различаются в зависимости от интерфейса.
+- Заголовки: пользовательские заголовки запроса, в первую очередь предоставляющие определенную информацию X-от NocoBase.
+- Тело: тело запроса.
+- Токен: токен API для текущего запроса NocoBase.
 
 ![20240716222042](https://static-docs.nocobase.com/20240716222042.png)
 
-### Third-Party Responses
+### Ответы третьих лиц
 
-Currently, only the response body is available.
+В настоящее время доступно только тело ответа.
 
 ![20240716222303](https://static-docs.nocobase.com/20240716222303.png)
 
-Below are the variables available for each interface:
+Ниже приведены переменные, доступные для каждого интерфейса:
 
-### List
+### List (Список)
 
 | Parameter               | Description                                                |
 | ----------------------- | ---------------------------------------------------------- |
@@ -167,7 +167,7 @@ Below are the variables available for each interface:
 | request.params.fields   | Fields to include (whitelist)                              |
 | request.params.except   | Fields to exclude (blacklist)                              |
 
-### Get
+### Get (Получить)
 
 | Parameter                 | Description                                                |
 | ------------------------- | ---------------------------------------------------------- |
@@ -177,7 +177,7 @@ Below are the variables available for each interface:
 | request.params.fields     | Fields to include (whitelist)                              |
 | request.params.except     | Fields to exclude (blacklist)                              |
 
-### Create
+### Create (Создать)
 
 | Parameter                | Description               |
 | ------------------------ | ------------------------- |
@@ -185,7 +185,7 @@ Below are the variables available for each interface:
 | request.params.blacklist | Blacklist                 |
 | request.body             | Initial data for creation |
 
-### Update
+### Update (Обновить)
 
 | Parameter                 | Description                                        |
 | ------------------------- | -------------------------------------------------- |
@@ -195,33 +195,33 @@ Below are the variables available for each interface:
 | request.params.blacklist  | Blacklist                                          |
 | request.body              | Data for update                                    |
 
-### Destroy
+### Destroy (Удалить)
 
 | Parameter                 | Description                               |
 | ------------------------- | ----------------------------------------- |
 | request.params.filterByTk | Required, typically the current record ID |
 | request.params.filter     | Filtering conditions                      |
 
-## Field Configuration
+## Конфигурация поля
 
-Field metadata (Fields) is extracted from the CRUD interface data of the adapted resource to serve as the fields of the collection.
+Метаданные поля (Поля) извлекаются из данных интерфейса CRUD адаптированного ресурса для использования в качестве полей коллекции.
 
 ![20250418085048](https://static-docs.nocobase.com/20250418085048.png)
 
-Field metadata extraction.
+Извлечение метаданных поля.
 
 ![20241121230436](https://static-docs.nocobase.com/20241121230436.png)
 
-Field and preview.
+Поле и предварительный просмотр.
 
 ![20240716224403](https://static-docs.nocobase.com/20240716224403.png)
 
-Edit fields (similar to other data sources).
+Изменение полей (аналогично другим источникам данных).
 
 ![20240716224704](https://static-docs.nocobase.com/20240716224704.png)
 
-## Adding REST API Data Source Blocks
+## Добавление блоков источника данных REST API
 
-Once the collection is configured, you can add blocks to the interface.
+После настройки коллекции вы можете добавлять блоки в интерфейс.
 
 ![20240716225120](https://static-docs.nocobase.com/20240716225120.png)

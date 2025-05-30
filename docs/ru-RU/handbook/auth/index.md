@@ -1,19 +1,19 @@
-# User Authentication
+# Аутентификация пользователей
 
-## Introduction
+## Введение
 
-The user authentication module of NocoBase mainly consists of two parts:
+Модуль аутентификации пользователей в NocoBase состоит из двух частей:
 
-- The `@nocobase/auth` in the kernel defines login, registration, verification and other user authentication related expandable interfaces and middleware, and is also used for registering and managing various extended authentication methods.
-- The `@nocobase/plugin-auth` in the plugin is used to initialize the authentication management module in the kernel, and also provides basic username (or email) / password authentication method.
+- **`@nocobase/auth`** в ядре: определяет интерфейсы и middleware для входа в систему, регистрации, верификации и других процессов аутентификации, а также используется для регистрации и управления различными методами аутентификации.
+- **`@nocobase/plugin-auth`** в плагинах: инициализирует модуль управления аутентификацией в ядре и предоставляет базовый метод аутентификации — по имени пользователя (или email) и паролю.
 
-> It needs to be used in conjunction with the user management function provided by the [`@nocobase/plugin-users` plugin](../users/index.md)
+> Для работы требуется также использование модуля управления пользователями, предоставляемого плагином [`@nocobase/plugin-users`](../users/index.md)
 
-In addition, NocoBase also provides other various user authentication method plugins
+Дополнительно, NocoBase предлагает и другие плагины для различных способов аутентификации:
 
-- [@nocobase/plugin-auth-sms](../auth-sms/index.md) - Provides SMS verification login function
-- [@nocobase/plugin-auth-saml](../auth-saml/index.md) - Provides SAML SSO login function
-- [@nocobase/plugin-auth-oidc](../auth-oidc/index.md) - Provides OIDC SSO login function
-- [@nocobase/plugin-auth-cas](../auth-cas/index.md) - Provides CAS SSO login function
+- [@nocobase/plugin-auth-sms](../auth-sms/index.md) — аутентификация с помощью SMS-кодов.
+- [@nocobase/plugin-auth-saml](../auth-saml/index.md) — аутентификация через SAML SSO.
+- [@nocobase/plugin-auth-oidc](../auth-oidc/index.md) — аутентификация через OIDC SSO.
+- [@nocobase/plugin-auth-cas](../auth-cas/index.md) — аутентификация через CAS SSO.
 
-Through the above plugins, after the administrator configures the corresponding authentication method, users can directly use the user identity provided by platforms such as Google Workspace, Microsoft Azure to log in to the system, and can also connect to Auth0, Logto, Keycloak and other platform tools. In addition, developers can also conveniently expand other authentication methods they need through the basic interfaces we provide.
+С помощью этих плагинов администратор может настроить аутентификацию пользователей, позволяя входить в систему с использованием учётных данных Google Workspace, Microsoft Azure и других платформ. Также можно подключить такие инструменты, как Auth0, Logto, Keycloak. Разработчики могут легко расширять список поддерживаемых методов аутентификации, используя предоставленные базовые интерфейсы.

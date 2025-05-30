@@ -1,8 +1,8 @@
-# MariaDB Database Client Installation
+# Установка клиента базы данных MariaDB
 
-## Docker Installation
+## Установка Docker
 
-### Create a Dockerfile in the directory containing the NocoBase Dockerfile
+### Создайте Dockerfile в каталоге, содержащем NocoBase Dockerfile
 
 ```Dockerfile
 # Based on the "next" version
@@ -28,7 +28,7 @@ RUN apt-get update && apt-get install -y wget && \
   cp /tmp/mysql-client/usr/bin/mysql /usr/bin/
 ```
 
-### Modify the docker-compose.yml File for NocoBase
+### Измените файл docker-compose.yml для NocoBase
 
 ```diff
 version: "3"
@@ -88,9 +88,9 @@ services:
       - nocobase
 ```
 
-### Upgrading
+### Обновление
 
-Previously, you would pull a new image for each update. Now, you need to build a new image every time:
+Раньше вам приходилось извлекать новый образ для каждого обновления. Теперь вам нужно каждый раз создавать новый образ:
 
 ```diff
 # Pull the latest image
@@ -103,7 +103,7 @@ docker-compose up -d app
 docker-compose logs app
 ```
 
-## Other Installation Methods
+## Другие методы установки
 
-If your NocoBase was installed using [create-nocobase-app](/welcome/getting-started/installation/create-nocobase-app) or by [cloning the Git repository](/welcome/getting-started/installation/git-clone), please visit the official MySQL download page for installation.
-- Latest version: [https://dev.mysql.com/downloads/mysql/](https://dev.mysql.com/downloads/mysql/)
+Если ваш NocoBase был установлен с помощью [create-nocobase-app](/welcome/getting-started/installation/create-nocobase-app) или [клонированием репозитория Git](/welcome/getting-started/installation/git-clone), посетите официальную страницу загрузки MySQL для установки.
+- Последняя версия: [https://dev.mysql.com/downloads/mysql/](https://dev.mysql.com/downloads/mysql/)

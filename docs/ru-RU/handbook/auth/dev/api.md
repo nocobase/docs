@@ -1,20 +1,20 @@
-# API Reference
+# Ссылка на API
 
-## Server Side
+## Серверная сторона
 
 ### Auth
 
-Kernel API, reference: [Auth](../../../api/auth/auth.md)
+API ядра, ссылка: [Auth](../../../api/auth/auth.md)
 
 ### BaseAuth
 
-Kernel API, reference: [BaseAuth](../../../api/auth/base-auth.md)
+API ядра, ссылка: [BaseAuth](../../../api/auth/base-auth.md)
 
 ### AuthModel
 
-#### Overview
+#### Обзор
 
-`AuthModel` is the authenticator used in NocoBase applications (`Authenticator`, reference: [AuthManager - setStorer](../../../api/auth/auth-manager.md#setstorer) and [Auth - constructor](../../../api/auth/auth.md#constructor)) data model, providing some methods for interacting with the user data collection. In addition, methods provided by Sequelize Model can also be used.
+`AuthModel` — это аутентификатор, используемый в приложениях NocoBase (`Authenticator`, ссылка: [AuthManager - setStorer](../../../api/auth/auth-manager.md#setstorer) и [Auth - constructor](../../../api/auth/auth.md#constructor)), предоставляющий некоторые методы для взаимодействия с пользовательской коллекцией данных. Кроме того, можно использовать методы, предоставляемые Sequelize Model.
 
 ```ts
 import { AuthModel } from '@nocobase/plugin-auth';
@@ -31,26 +31,26 @@ class CustomAuth extends BaseAuth {
 }
 ```
 
-#### Class Methods
+#### Методы класса
 
-- `findUser(uuid: string): UserModel` - Query user by `uuid`.
+- `findUser(uuid: string): UserModel` - Запрос пользователя по `uuid`.
 
-  - `uuid` - User unique identifier from the current authentication type
+- `uuid` - Уникальный идентификатор пользователя из текущего типа аутентификации
 
-- `newUser(uuid: string, userValues?: any): UserModel` - Create a new user, bind the user to the current authenticator through `uuid`.
+- `newUser(uuid: string, userValues?: any): UserModel` - Создать нового пользователя, привязать пользователя к текущему аутентификатору через `uuid`.
 
-  - `uuid` - User unique identifier from the current authentication type
-  - `userValues` - Optional. Other user information. When not passed, `uuid` will be used as the user's nickname.
+- `uuid` - Уникальный идентификатор пользователя из текущего типа аутентификации
+- `userValues` - Необязательно. Другая информация о пользователе. Если не передано, `uuid` будет использоваться как псевдоним пользователя.
 
-- `findOrCreateUser(uuid: string, userValues?: any): UserModel` - Find or create a new user, the creation rule is the same as above.
-  - `uuid` - User unique identifier from the current authentication type
-  - `userValues` - Optional. Other user information.
+- `findOrCreateUser(uuid: string, userValues?: any): UserModel` - Найти или создать нового пользователя, правило создания такое же, как указано выше.
+- `uuid` - Уникальный идентификатор пользователя из текущего типа аутентификации
+- `userValues` - Необязательно. Другая информация о пользователе.
 
-## Client Side
+## Клиентская сторона
 
 ### `plugin.registerType()`
 
-Register the client of the authentication type.
+Регистрация клиента типа аутентификации.
 
 ```ts
 import AuthPlugin from '@nocobase/plugin-auth/client';
@@ -70,11 +70,11 @@ class CustomAuthPlugin extends Plugin {
 }
 ```
 
-#### Signature
+#### Подпись
 
 - `registerType(authType: string, options: AuthOptions)`
 
-#### Type
+#### Тип
 
 ```ts
 export type AuthOptions = {
@@ -87,16 +87,16 @@ export type AuthOptions = {
 };
 ```
 
-#### Details
+#### Подробности
 
-- `SignInForm` - Sign in form
-- `SignInButton` - Sign in (third-party) button, can be used as an alternative to the sign-in form
-- `SignUpForm` - Sign up form
-- `AdminSettingsForm` - Admin configuration form
+- `SignInForm` - Форма входа
+- `SignInButton` - Кнопка входа (стороннего разработчика), может использоваться как альтернатива форме входа
+- `SignUpForm` - Форма регистрации
+- `AdminSettingsForm` - Форма конфигурации администратора
 
-### Route
+### Маршрут
 
-The frontend routes for registering the auth plugin are as follows:
+Фронтенд-маршруты для регистрации плагина аутентификации следующие:
 
 - Auth Layout
   - name: `auth`

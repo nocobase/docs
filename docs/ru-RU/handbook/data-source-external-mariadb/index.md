@@ -1,17 +1,17 @@
-# External Data Source - MariaDB
+# Внешний источник данных - MariaDB
 
 <PluginInfo commercial="true" name="data-source-external-mariadb"></PluginInfo>
 
-## Introduction
+## Введение
 
-Use an external MariaDB database as a data source. Currently supported versions: MariaDB >= 10.3
+Используйте внешнюю базу данных MariaDB в качестве источника данных. Текущие поддерживаемые версии: MariaDB >= 10.3
 
-## Installation
+## Установка
 
-This plugin is a commercial plugin, which needs to be uploaded and activated through the plugin manager.
+Этот плагин является коммерческим плагином, который необходимо загрузить и активировать через менеджер плагинов.
 
 ![20240323162741](https://static-docs.nocobase.com/20240323162741.png)
 
-## Usage Instructions
+## Инструкции по использованию
 
-Refer to the [Data Source / External Database](/handbook/data-source-manager/external-database) section.
+См. раздел [Источник данных / Внешняя база данных](/handbook/data-source-manager/external-database).

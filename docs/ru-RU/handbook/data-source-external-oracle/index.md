@@ -1,20 +1,20 @@
-# External Data Source - Oracle
+# Внешний источник данных — Oracle
 
 <PluginInfo commercial="true" name="data-source-external-oracle"></PluginInfo>
 
-## Introduction
+## Введение
 
-This plugin allows you to use an external Oracle database as a data source. It supports Oracle versions >= 11g.
+Этот плагин позволяет использовать внешнюю базу данных Oracle в качестве источника данных. Он поддерживает версии Oracle >= 11g.
 
-## Installation
+## Установка
 
-### Install Oracle Client
+### Установка клиента Oracle
 
-For Oracle server versions earlier than 12.1, you need to install the Oracle client.
+Для версий сервера Oracle ниже 12.1 необходимо установить клиент Oracle.
 
-![Oracle Client Installation](https://static-docs.nocobase.com/20241204164359.png)
+![Установка клиента Oracle](https://static-docs.nocobase.com/20241204164359.png)
 
-Example for Linux:
+Пример для Linux:
 
 ```bash
 apt-get update
@@ -25,14 +25,14 @@ echo /opt/instantclient_19_25 > /etc/ld.so.conf.d/oracle-instantclient.conf
 ldconfig
 ```
 
-If the client is not installed as described above, you will need to specify the path to the client (for more details, refer to the [node-oracledb documentation](https://node-oracledb.readthedocs.io/en/latest/user_guide/initialization.html)).
+Если клиент не установлен, как описано выше, вам нужно будет указать путь к клиенту (для получения более подробной информации обратитесь к [документации node-oracledb](https://node-oracledb.readthedocs.io/en/latest/user_guide/initialization.html)).
 
-![Oracle Client Path Configuration](https://static-docs.nocobase.com/20241204165940.png)
+![Конфигурация пути клиента Oracle](https://static-docs.nocobase.com/20241204165940.png)
 
-### Install the Plugin
+### Установка плагина
 
-Follow the instructions in [Installing and Upgrading Commercial Plugins](/welcome/getting-started/plugin).
+Следуйте инструкциям в [Установка и обновление коммерческих плагинов](/welcome/getting-started/plugin).
 
-## Use Cases
+## Примеры использования
 
-For detailed instructions, refer to the [Data Source / External Database](/handbook/data-source-manager/external-database) section.
+Для получения подробных инструкций обратитесь к разделу [Источник данных / Внешняя база данных](/handbook/data-source-manager/external-database).

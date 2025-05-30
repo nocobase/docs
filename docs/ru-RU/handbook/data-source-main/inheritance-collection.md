@@ -1,20 +1,20 @@
-# Inheritance Collection
+# Коллекция наследования
 
 <PluginInfo name="data-source-main"></PluginInfo>
 
-## Introduction
+## Введение
 
-You can create a parent collection and derive child collection from that parent collection. The child collection will inherit the structure of the parent collection, and can also define its own columns. This design pattern helps organize and manage data with similar structures but possible differences.
+Вы можете создать родительскую коллекцию и вывести дочернюю коллекцию из этой родительской коллекции. Дочерняя коллекция унаследует структуру родительской коллекции, а также может определять свои собственные столбцы. Этот шаблон проектирования помогает организовывать и управлять данными с похожими структурами, но возможными различиями.
 
-Here are some common features of support for inheritable collections:
+Вот некоторые общие черты поддержки наследуемых коллекций:
 
-- Parent Collection: The parent collection contains common columns and data, defining the basic structure of the entire inheritance hierarchy.
-- Child Collection: The child collection inherits the structure of the parent collection, but can also define its own columns. This allows each child collection to have the common properties of the parent collection while containing attributes specific to the subclass.
-- Querying: When querying, you can choose to query the entire inheritance hierarchy, just the parent collection, or a specific child collection. This allows different levels of data to be retrieved and processed as needed.
-- Inheritance Relationship: An inheritance relationship is established between the parent collection and the child collection, meaning that the structure of the parent collection can be used to define consistent attributes, while allowing the child collection to extend or override these attributes.
+- Родительская коллекция: родительская коллекция содержит общие столбцы и данные, определяющие базовую структуру всей иерархии наследования.
+- Дочерняя коллекция: дочерняя коллекция наследует структуру родительской коллекции, но также может определять свои собственные столбцы. Это позволяет каждой дочерней коллекции иметь общие свойства родительской коллекции, при этом содержа атрибуты, специфичные для подкласса.
+- Запрос: при запросе вы можете выбрать запрос всей иерархии наследования, только родительской коллекции или определенной дочерней коллекции. Это позволяет извлекать и обрабатывать различные уровни данных по мере необходимости.
+- Отношение наследования: устанавливается отношение наследования между родительской коллекцией и дочерней коллекцией, что означает, что структура родительской коллекции может использоваться для определения согласованных атрибутов, позволяя при этом дочерней коллекции расширять или переопределять эти атрибуты.
 
-This design pattern helps to reduce data redundancy, simplify the database model, and make the data easier to maintain. However, it needs to be used with caution as inheritable collections can increase the complexity of queries, especially when dealing with the entire inheritance hierarchy. Databases that support inheritable collections generally provide specific syntax and tools to manage and query these collection structures.
+Этот шаблон проектирования помогает уменьшить избыточность данных, упростить модель базы данных и сделать данные более удобными для обслуживания. Однако его следует использовать с осторожностью, поскольку наследуемые коллекции могут повысить сложность запросов, особенно при работе со всей иерархией наследования. Базы данных, которые поддерживают наследуемые коллекции, обычно предоставляют определенный синтаксис и инструменты для управления и запроса этих структур коллекций.
 
-## User Manual
+## Руководство пользователя
 
 ![20240324085907](https://static-docs.nocobase.com/20240324085907.png)

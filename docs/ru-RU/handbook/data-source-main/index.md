@@ -1,37 +1,39 @@
-# Main DataBase
+# Основная база данных
 
 <PluginInfo name="data-source-main"></PluginInfo>
 
-## Introduction
+## Введение
 
-NocoBase's main database can be used to store both business data and the metadata of the application, including system table data and custom table data. The main database supports relational databases such as MySQL, PostgreSQL, etc. During the installation of the NocoBase application, the main database must be installed synchronously and cannot be deleted.
+Основная база данных NocoBase может использоваться для хранения как бизнес-данных, так и метаданных приложения, включая данные системных таблиц и 
+данные пользовательских таблиц. 
+Основная база данных поддерживает реляционные базы данных, такие как MySQL, PostgreSQL и т. д. Во время установки приложения NocoBase основная база данных должна быть установлена одновременно и не может быть удалена.
 
-## Installation
+## Установка
 
-This is a built-in plugin, no separate installation is required.
+Это встроенный плагин, отдельная установка не требуется.
 
-## User Manual
+## Руководство пользователя
 
 ![20240322230134](https://static-docs.nocobase.com/20240322230134.png)
 
-### Supporting the creation of various data tables
+### Поддержка создания различных таблиц данных
 
-- [General collection](/handbook/data-source-main/general-collection): built-in commonly used system fields;
-- [Inheritance collection](/handbook/data-source-main/inheritance-collection): allows the creation of a parent table, from which child tables can be derived. Child tables will inherit the structure of the parent table, and can also define their own columns.
-- [Tree collection](/handbook/collection-tree): tree-structured table, currently only supports adjacent table design;
-- [Calendar collection](/handbook/calendar/calendar-collection): for creating calendar-related event tables;
-- [File collection](/handbook/file-manager/file-collection): for managing file storage;
-- [Expression Collection](/handbook/workflow-dynamic-calculation/expression): for dynamic expression scenarios in workflows;
-- [SQL Collection](/handbook/collection-sql): Not an actual database table, but quickly presenting the SQL query in a structured manner;
-- [Database View collection](/handbook/collection-view): connects to an existing database view;
-- [FDW collection](/handbook/collection-fdw): allows the database system to directly access and query data in external data sources, based on FDW technology;
+- [Общая коллекция](/handbook/data-source-main/general-collection): встроенные часто используемые системные поля;
+- [Коллекция наследования](/handbook/data-source-main/inheritance-collection): позволяет создать родительскую таблицу, из которой могут быть получены дочерние таблицы. Дочерние таблицы унаследуют структуру родительской таблицы, а также могут определять собственные столбцы.
+- [Коллекция дерева](/handbook/collection-tree): древовидная таблица, в настоящее время поддерживает только дизайн смежных таблиц;
+- [Коллекция календаря](/handbook/calendar/calendar-collection): для создания таблиц событий, связанных с календарем;
+- [Коллекция файлов](/handbook/file-manager/file-collection): для управления хранилищем файлов;
+- [Коллекция выражений](/handbook/workflow-dynamic-calculation/expression): для сценариев динамических выражений в рабочих процессах;
+- [Коллекция SQL](/handbook/collection-sql): не является фактической таблицей базы данных, но быстро представляет SQL-запрос в структурированном виде;
+- [Коллекция представлений базы данных](/handbook/collection-view): подключается к существующему представлению базы данных;
+- [Коллекция FDW](/handbook/collection-fdw): позволяет системе базы данных напрямую получать доступ и запрашивать данные во внешних источниках данных на основе технологии FDW;
 
-### Supporting classification management of collections
+### Поддержка управления классификацией коллекций
 
 ![20240322231520](https://static-docs.nocobase.com/20240322231520.png)
 
-### Offering a wide range of field types
+### Предложение широкого спектра типов полей
 
 ![20240322230950](https://static-docs.nocobase.com/20240322230950.png)
 
-See more in the [Data Table Fields / Overview](/handbook/data-modeling/collection-fields) section.
+Подробнее см. в разделе [Поля таблиц данных / Обзор](/handbook/data-modeling/collection-fields).

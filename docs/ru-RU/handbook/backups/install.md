@@ -1,11 +1,11 @@
-### Install Database Client
+### Установка клиента базы данных
 
-Visit the official website to download the client that matches the version of the database you are using:
+Посетите официальный сайт, чтобы загрузить клиент, соответствующий версии используемой вами базы данных:
 
 - MySQL: https://dev.mysql.com/downloads/
 - PostgreSQL: https://www.postgresql.org/download/
 
-For Docker versions, you can directly write a script in the `./storage/scripts` directory
+Для версий Docker вы можете напрямую добавить скрипт в каталог `./storage/scripts`
 
 ```bash
 mkdir ./storage/scripts
@@ -13,7 +13,7 @@ cd ./storage/scripts
 vim install-database-client.sh
 ```
 
-The content of `install-database-client.sh` is as follows:
+Содержимое `install-database-client.sh` выглядит следующим образом:
 
 <Tabs>
 
@@ -71,7 +71,7 @@ fi
 
 </Tabs>
 
-Then restart the app container
+Затем перезапустите контейнер приложения.
 
 ```bash
 docker compose restart app
@@ -79,7 +79,7 @@ docker compose restart app
 docker compose logs app
 ```
 
-Check the database client version number, which must match the database server version number
+Проверьте номер версии клиента базы данных, который должен совпадать с номером версии сервера базы данных.
 
 <Tabs>
 <div label="PostgreSQL" name="PostgreSQL">
@@ -97,6 +97,6 @@ docker compose exec app bash -c "mysql -V"
 </div>
 </Tabs>
 
-### Install Plugins
+### Установка плагинов
 
-Refer to [Installation and Upgrade of Commercial Plugins](/welcome/getting-started/plugin)
+См. [Установка и обновление коммерческих плагинов](/welcome/getting-started/plugin)

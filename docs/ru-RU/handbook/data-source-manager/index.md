@@ -1,30 +1,30 @@
-# Data Source Manager
+# Менеджер источников данных
 
 <PluginInfo name="data-source-manager"></PluginInfo>
 
-## Introduction
+## Введение
 
-NocoBase provides a data source management plugin for managing data sources and their data tables. The data source management plugin only provides a management interface for all data sources and does not provide the ability to access data sources. It needs to be used in conjunction with various data source plugins. The data sources currently supported for access include:
+NocoBase предоставляет плагин управления источниками данных для управления источниками данных и их таблицами данных. Плагин управления источниками данных предоставляет только интерфейс управления для всех источников данных и не предоставляет возможность доступа к источникам данных. Его необходимо использовать в сочетании с различными плагинами источников данных. В настоящее время поддерживаются следующие источники данных для доступа:
 
-- [Main Database](/handbook/data-source-main): NocoBase's main database, supporting relational databases such as MySQL, PostgreSQL, SQLite, etc.
-- [External MySQL](/handbook/data-source-external-mysql): Use an external MySQL database as a data source.
-- [External MariaDB](/handbook/data-source-external-mariadb): Use an external MariaDB database as a data source.
-- [External PostgreSQL](/handbook/data-source-external-postgres): Use an external PostgreSQL database as a data source.
+- [Основная база данных](/handbook/data-source-main): Основная база данных NocoBase, поддерживающая реляционные базы данных, такие как MySQL, PostgreSQL, SQLite и т. д.
+- [Внешняя MySQL](/handbook/data-source-external-mysql): Использование внешней базы данных MySQL в качестве источника данных.
+- [Внешняя MariaDB](/handbook/data-source-external-mariadb): Использование внешней базы данных MariaDB в качестве источника данных.
+- [Внешний PostgreSQL](/handbook/data-source-external-postgres): использование внешней базы данных PostgreSQL в качестве источника данных.
 
-In addition, more types can be extended through plugins, which can be common types of databases or platforms that provide APIs (SDKs).
+Кроме того, можно расширить больше типов с помощью плагинов, которые могут быть обычными типами баз данных или платформ, предоставляющих API (SDK).
 
-## Installation
+## Установка
 
-Built-in plugin, no separate installation required.
+Встроенный плагин, отдельная установка не требуется.
 
-## Usage Instructions
+## Инструкции по использованию
 
-When the application is initialized and installed, a data source will be provided by default to store NocoBase data, known as the main database. For more information, see the [Main Database](/handbook/data-source-main).
+Когда приложение инициализируется и устанавливается, по умолчанию будет предоставлен источник данных для хранения данных NocoBase, известный как основная база данных. Для получения дополнительной информации см. [Основная база данных](/handbook/data-source-main).
 
 ![20240322220423](https://static-docs.nocobase.com/20240322220423.png)
 
-At the same time, it also supports external databases as data sources. For more information, see the [External Database / Introduction](/handbook/data-source-manager/external-database).
+В то же время он также поддерживает внешние базы данных в качестве источников данных. Для получения дополнительной информации см. [Внешняя база данных / Введение](/handbook/data-source-manager/external-database).
 
 ![20240507204316](https://static-docs.nocobase.com/20240507204316.png)
 
-You can also access data from HTTP API sources. For more information, see the [HTTP API Data Source](/handbook/data-source-http-api).
+Вы также можете получить доступ к данным из источников HTTP API. Для получения дополнительной информации см. [Источник данных HTTP API](/handbook/data-source-http-api).
