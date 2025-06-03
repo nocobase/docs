@@ -1,129 +1,129 @@
-# 多关键词筛选<Badge>v1.7.0+</Badge>
+# Multi-Keyword Filter<Badge>v1.7.0+</Badge>
 
 <PluginInfo commercial="true" name="multi-keyword-filter"></PluginInfo>
 
-## 介绍
+## Introduction
 
-**多关键词筛选**插件为 NocoBase 平台增加了强大的文本筛选功能，让您能够使用多个关键词进行筛选，大大提高了数据查询的灵活性和效率。
+The **Multi-Keyword Filter** plugin adds powerful text filtering capabilities to the NocoBase platform, allowing you to filter using multiple keywords, greatly improving the flexibility and efficiency of data queries.
 
-该插件主要提供两个筛选操作符：
-- **等于任意一个**：筛选包含指定关键词列表中任意一个的记录
-- **不等于任意一个**：筛选不包含指定关键词列表中任意一个的记录
+This plugin primarily provides two filter operators:
+- **Equals any**: Filters records that contain any of the specified keywords in the list
+- **Not equals any**: Filters records that do not contain any of the specified keywords in the list
 
-这两个操作符可用于以下字段：
-- 单行文本
-- 手机号
-- 邮箱
-- 整数
-- 数字
-- 百分比
+These operators can be used with the following field types:
+- Single line text
+- Phone
+- Email
+- Integer
+- Number
+- Percent
 - UUID
 - Nano ID
-- 自动编码
+- Sequence
 
-## 应用场景
+## Use Cases
 
-- 需要根据多个产品编码、标签或分类进行筛选
-- 从 Excel 文件导入大量关键词进行批量筛选
-- 需要快速查找符合多个条件的数据记录
+- Need to filter based on multiple product codes, tags, or categories
+- Import large numbers of keywords from Excel files for batch filtering
+- Need to quickly find data records that meet multiple conditions
 
-## 使用范围
+## Scope of Use
 
-- 筛选表单区块的字段
+- Fields in filter form blocks
 ![20250417170714](https://static-docs.nocobase.com/20250417170714.png)
-- 筛选按钮的字段
+- Fields in filter buttons
 ![20250417170923](https://static-docs.nocobase.com/20250417170923.png)
-- 数据范围筛选的字段
+- Fields in data scope filtering
 ![20250417171011](https://static-docs.nocobase.com/20250417171011.png)
-- 联动规则的字段
+- Fields in linkage rules
 ![20250417171124](https://static-docs.nocobase.com/20250417171124.png)
 
-## 如何使用
+## How to Use
 
-### 1. 添加单行文本字段
+### 1. Add Single Line Text Field
 
-以筛选表单和单行文本为例，将单行文本字段的操作符设置为"等于任意一个"或"不等于任意一个"
+Using filter forms and single line text as an example, set the operator for the single line text field to "equals any" or "not equals any"
 
 ![20250417165918_rec_](https://static-docs.nocobase.com/20250417165918_rec_.gif)
 
-### 2. 输入关键词
+### 2. Input Keywords
 
-有两种方式可以输入关键词：
+There are two ways to input keywords:
 
-#### 2.1 手动输入
+#### 2.1 Manual Input
 
-1. 在输入框中直接输入关键词
-2. 多个关键词可以用换行符分隔
-3. 输入完成后，点击筛选按钮对数据进行筛选
+1. Directly enter keywords in the input box
+2. Multiple keywords can be separated by line breaks
+3. After entering, click the filter button to filter the data
 
-#### 2.2 从 Excel 导入关键词
+#### 2.2 Import Keywords from Excel
 
-1. 准备一个 Excel 文件(支持 .xlsx 或 .xls 格式)，包含需要导入的关键词
-2. 点击输入框右侧的"导入 Excel"按钮
-3. 选择并上传 Excel 文件
+1. Prepare an Excel file (supports .xlsx or .xls format) containing the keywords to import
+2. Click the "Import Excel" button on the right side of the input box
+3. Select and upload the Excel file
 
-**如果 Excel 只有一列数据**：
-- 系统将自动导入该列所有非空值作为关键词
+**If Excel has only one column of data**:
+- The system will automatically import all non-empty values from that column as keywords
 
-**如果 Excel 包含多列数据**：
-- 系统会弹出列选择对话框
-- 可以选择一列或多列进行导入
-- 选择单列：该列中所有非空值将被导入为关键词
-- 选择多列：多列中的非空值将被合并为关键词，重复值会被自动去除
-- 点击"确认"按钮完成导入
+**If Excel contains multiple columns of data**:
+- The system will display a column selection dialog
+- You can select one or multiple columns for import
+- Single column selection: All non-empty values in that column will be imported as keywords
+- Multiple column selection: Non-empty values from multiple columns will be merged as keywords, duplicates will be automatically removed
+- Click the "Confirm" button to complete the import
 
 ![20250417170324_rec_](https://static-docs.nocobase.com/20250417170324_rec_.gif)
 
-### 3. 筛选效果
+### 3. Filter Results
 
-- **等于任意一个**：字段值与关键词列表中任一值匹配的记录都会被显示
-- **不等于任意一个**：字段值与关键词列表中所有值都不匹配的记录会被显示
+- **Equals any**: Records where the field value matches any value in the keyword list will be displayed
+- **Not equals any**: Records where the field value does not match any value in the keyword list will be displayed
 
-## 常见问题解答
+## Frequently Asked Questions
 
-### 如何清除已添加的关键词？
+### How to clear added keywords?
 
-点击关键词标签上的"×"按钮可删除单个关键词，或者点击输入框右侧的"×"删除所有关键词。
+Click the "×" button on a keyword tag to delete individual keywords, or click the "×" on the right side of the input box to delete all keywords.
 
 ![20250417165604](https://static-docs.nocobase.com/20250417165604.png)
 
-### 可以导入多少个关键词？
+### How many keywords can be imported?
 
-插件支持大量关键词的导入，但建议控制在合理范围内（如数百个），以免影响查询性能。
+The plugin supports importing large numbers of keywords, but it's recommended to keep them within a reasonable range (such as hundreds) to avoid affecting query performance.
 
-### 导入的关键词格式有什么要求？
+### What are the format requirements for imported keywords?
 
-- Excel 文件应包含至少一列数据
-- 空值会被自动过滤
-- 重复值会被自动去除
+- Excel files should contain at least one column of data
+- Empty values will be automatically filtered out
+- Duplicate values will be automatically removed
 
-### 是否支持模糊匹配？
+### Does it support fuzzy matching?
 
-该插件提供的是精确匹配功能。
+This plugin provides exact matching functionality.
 
-### 哪些字段支持这个功能？
+### Which fields support this feature?
 
-- 单行文本
-- 手机号
-- 邮箱
-- 整数
-- 数字
-- 百分比
+- Single line text
+- Phone
+- Email
+- Integer
+- Number
+- Percent
 - UUID
 - Nano ID
-- 公式
-- 自动编码
+- Formula
+- Sequence
 
-## 提示和技巧
+## Tips and Tricks
 
-- 将常用的关键词列表保存在 Excel 文件中，需要时快速导入
-- 选择多列导入时，可以合并来自不同列的关键词
-- 使用"不等于任意一个"操作符可以快速排除不需要的数据
+- Save commonly used keyword lists in Excel files for quick import when needed
+- When importing multiple columns, you can merge keywords from different columns
+- Use the "not equals any" operator to quickly exclude unwanted data
 
-## 系统要求
+## System Requirements
 
-- NocoBase 版本：1.7.0 或更高版本
+- NocoBase version: 1.7.0 or higher
 
 ---
 
-通过使用多关键词筛选插件，您可以更高效地管理和查询数据，特别是在处理大量数据和需要频繁进行多条件筛选的场景下，该插件将显著提升您的工作效率。
+By using the Multi-Keyword Filter plugin, you can manage and query data more efficiently, especially when dealing with large amounts of data and frequent multi-condition filtering scenarios. This plugin will significantly improve your work efficiency.
