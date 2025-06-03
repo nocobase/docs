@@ -1,8 +1,7 @@
-# スタイル設定
+# Set Styles
 
-## イントロダクション
-フィールドスタイルの連動ルールは、ユーザーインタラクションの体験を向上させる重要なツールです。動的なスタイル設定を使用することで、ブロックの視覚効果を強化し、ユーザーが重要な情報をより迅速に識別できるようになります。
-主に以下のスタイルが含まれます：
+## Introduction
+The field style linkage rules are an important tool to enhance user interaction. By dynamically configuring styles, it improves the visual effect of element and helps users quickly identify key information. The main style properties include:
 
 - `color`
 - `background-color`
@@ -11,20 +10,20 @@
 - `font-weight`
 - `font-style`
 
-これらは、フィールドの状態に基づいて重要な情報をハイライトしたり、異常を通知したり、視覚的なガイドを提供するために一般的に使用されます。
+These are commonly used to highlight key information based on field status, indicate anomalies, or guide visually.
 
-## 使用方法
+## Usage
 
-例：注文金額に応じて、注文金額フィールドの色を動的に変更します。注文金額が1000を超える場合、色を緑に設定し、1000以下の場合は赤に設定します。
+Example: Dynamically adjust the color of the order amount field based on the order amount. When the order amount exceeds 1000, set the color to green; when the order amount is less than or equal to 1000, set the color to red.
 
 ![20250418171434](https://static-docs.nocobase.com/20250418171434.png)
 
-- ルール1：条件が**注文金額が10000より大きい**場合、フィールドの色を緑に設定します。
+- **Rule 1**: Set the condition to **order amount greater than 10000**, and the field color will be green.
 
 ![20250418171640](https://static-docs.nocobase.com/20250418171640.png)
 
-- ルール2：条件が**注文金額が1000以下**の場合、フィールドの色を赤に設定します。
+- **Rule 2**: Set the condition to **order amount less than or equal to 1000**, and the field color will be red.
 
 ![20250418171900](https://static-docs.nocobase.com/20250418171900.png)
 
-その他の詳細については、[連動ルール](/handbook/ui/linkage-rule)を参照してください。
+For more details, refer to [Linkage Rules](/handbook/ui/linkage-rule).

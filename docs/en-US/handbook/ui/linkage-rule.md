@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In NocoBase, linkage rules are a mechanism for controlling the interactive behavior of front-end interface elements. It allows users to adjust the display and behavior logic of blocks, fields, and operations based on different conditions, enabling flexible, low-code interactive experiences. This feature is continuously being iterated and optimized.
+In NocoBase, linkage rules are a mechanism for controlling the interactive behavior of front-end interface elements. It allows users to adjust the display and behavior logic of blocks, fields, and actions based on different conditions, enabling flexible, low-code interactive experiences. This feature is constantly being refined and enhanced.
 
 By configuring linkage rules, you can achieve the following:
 
@@ -10,7 +10,7 @@ By configuring linkage rules, you can achieve the following:
 - Automatically fill or reset other field values when a form selects a particular option.
 - Disable certain input fields when a form selects a particular option.
 - Dynamically set field background colors, font sizes, font weights, etc., and highlight fields when a condition is met.
-- Control whether operation buttons are visible or clickable based on certain conditions.
+- Control whether actions are visible or clickable based on certain conditions.
 
 ## Condition Configuration
 
@@ -22,14 +22,14 @@ The left-side variables in a condition are used to define the "object being judg
 
 Available variables include:
 
-- Context fields, such as `「Current Form/xxx」`, `「Current Record/xxx」`, `「Current Popup Record/xxx」`, etc.;
+- Context variables, such as `「Current Form/xxx」`, `「Current Record/xxx」`, `「Current Popup Record/xxx」`, etc.;
 - System-wide variables, such as `Current User`, `Current Role`, etc., suitable for dynamically controlling based on user identity, permissions, etc.
 
 > ✅ The available left-side variables are determined by the context of the block, so choose variables according to business needs:
 > 
-> - `Current User` represents the information of the currently logged-in user;
-> - `Current Form` represents the real-time input values in the form;
-> - `Current Record` represents saved record values, such as rows in a table.
+> - `Current User` the information of the currently logged-in user，including data from collection associated with the user;
+> - `Current Form`  the real-time input values in the form;
+> - `Current Record` the saved record values, such as row data in a table.
 
 ### Operators
 
@@ -52,11 +52,11 @@ Supported content includes:
 - Context variables: other fields from the current form, current records, etc.;
 - System variables: such as the current user, current time, current role, etc.
 
-> ✅ The system will adapt the input method for the right-side value based on the type of the left-side variable, such as:
+> ✅ The system will adapt the input component for the right-side value based on the type of the left-side variable, such as:
 > 
 > - If the left-side variable is a “selection field”, a corresponding options selector will be displayed;
-> - If the left-side variable is a “date field”, a date picker will be shown;
-> - If the left-side variable is a “text field”, a text input box will appear.
+> - If the left-side variable is a “date field”, a date picker will be displayed;
+> - If the left-side variable is a “text field”, a text input box will displayed.
 
 > 💡 By flexibly using the right-side values (especially dynamic variables), you can build linkage logic based on the current user, current data state, and context environment, enabling a richer interactive experience.
 
@@ -64,12 +64,11 @@ Supported content includes:
 
 ### Condition Trigger
 
-When the condition in a rule is met (optional), the property modification operations below are automatically executed. If no condition is set, the rule is considered always met, and the property modification will be executed by default.
+When the condition in a rule is met (optional), the property modification actions below are automatically executed. If no condition is set, the rule is considered always met, and the property modification will be executed by default.
 
 ### Multiple Rules
 
-You can configure multiple linkage rules for a form. When multiple rules are satisfied, the system will execute them in the order they are configured, from first to last. The final result will be based on the last rule executed.
-Example: Rule 1 disables a field, Rule 2 makes the field editable. If both rules are met, the field will become "editable".
+Multiple linkage rules can be configured for a block, action, or field. When multiple rules are met simultaneously, the system executes them in the order they are defined, with the last rule's result taking precedence. For example, Rule 1 disables a field, and Rule 2 makes it editable. If both conditions are met, the field will become editable according to Rule 2.
 
 > The execution order of multiple rules is crucial. Make sure to clarify their priorities and interrelationships to avoid rule conflicts.
 
@@ -87,29 +86,29 @@ Each rule can be managed with the following options:
 
 In field assignment and condition configuration, both constants and variables are supported. The variable list varies depending on the block's location, and choosing and using variables wisely can help meet business requirements more flexibly. For more information about variables, refer to [Variables](/handbook/ui/variables).
 
-## Block Linkage Rules (Feature Pending Release)
+## Block Linkage Rules 
 
-> **Note**: This feature **is supported starting from v1.7.0-beta.xx versions**
+> **Note**: This feature **is supported starting from v1.7.0-beta.24 versions**
 
-Block linkage rules allow dynamically controlling the display of blocks based on system variables (such as current user, current role) or contextual variables (such as current popup record). For example, an admin can view the full order information, while a regular user can only see specific order details. By configuring two order blocks and setting block linkage rules, this effect can be achieved.
+Block linkage rules allow dynamic control of block visibility based on system variables (such as the current user or role) or context variables (such as the current popup record). For example, an administrator can view the complete order information, while a customer service role can only view specific order data. Through block linkage rules, the corresponding block can be configured based on the role, with different fields,actions, and data scope set within the block. When the logged-in role matches the target role, the system will display the corresponding block.
 
 👉 For more details, check: [Block/Block Linkage Rules](/handbook/ui/blocks/block-settings/block-linkage-rule)
 
 ## Field Linkage Rules
 
-Field linkage rules are used to dynamically adjust the status of fields in a form or detail block based on user actions, including:
+Field linkage rules are used to dynamically adjust the properties of fields in a form or detail block. These mainly include:
 
 - Control the **visibility** of fields
 - Set fields as **required**
 - **Assign values**
-- Configure the **options range** of option fields
-- Limit the **available time range** for time fields
+- Configure the **options** of option fields
+- Limit the **Date scope** for time fields
 
 👉 For more details, check: [Block/Field Linkage Rules](/handbook/ui/blocks/block-settings/field-linkage-rule)
 
-## Operation Linkage Rules
+## Actions Linkage Rules
 
-Operation linkage rules currently support controlling operation behaviors (e.g., hide/disable) based on current record values and global variables.
+Actions linkage rules currently support controlling operation behaviors (e.g., hide/disable) based on current record values and global variables.
 
 👉 For more details, check: [Operation/Linkage Rules](/handbook/ui/actions/action-settings/linkage-rule)
 

@@ -122,45 +122,74 @@ Only used in association blocks, representing the source record of the associati
 "Parent record" is deprecated, it is recommended to use the equivalent "Current popup record" instead.
 :::
 
-### Date variables
+### Date Variables
 
-Related variables include:
+Date variables are dynamic placeholders for date that can be used across the system to define data scope filters in blocks, related field conditions, action linkage rules, and default values for date fields. Depending on the usage scenario, the parsing logic differs:
 
-- Current time
-- Yesterday
-- Today
-- Tomorrow
-- Last week
-- This week
-- Next week
-- Last month
-- This month
-- Next month
-- Last quarter
-- This quarter
-- Next quarter
-- Last year
-- This year
-- Next year
-- Last 7 days
-- Next 7 days
-- Last 30 days
-- Next 30 days
-- Last 90 days
-- Next 90 days
+- In **assignment scenarios** (e.g., default value setting), variables resolve to a specific moment in time.
+- In **filtering scenarios** (e.g., date conditions in data scope), variables resolve to a datetime scope to support flexible filtering.
 
-<br />
+#### Filtering Scenarios
 
-:::warning
-Except for the Current time which is a moment (string), other date variables are time periods (arrays). Currently, time periods can only be used in data scope and cannot be used in field default values.
-:::
+Common use cases include:
 
-Related use cases include:
+- Setting date field conditions in block data scope filters
+- Setting date conditions in related field data scope
+- Defining date conditions in action linkage rules
 
-- Date field condition settings for block data scope
-- Date field condition settings for association field data scopes
-- Date field condition settings for action linkage rules
-- Date field default value settings
+![20250522211606](https://static-docs.nocobase.com/20250522211606.png)
+
+ Supported Variables:
+
+- `Current time`
+- `Yesterday`
+- `Today`
+- `Tomorrow`
+- `Last week`
+- `This week`
+- `Next week`
+- `Last month`
+- `This month`
+- `Next month`
+- `Last quarter`
+- `This quarter`
+- `Next quarter`
+- `Last year`
+- `This year`
+- `Next year`
+- `Last 7 days`
+- `Next 7 days`
+- `Last 30 days`
+- `Next 30 days`
+- `Last 90 days`
+- `Next 90 days`
+
+#### Assignment Scenarios
+
+In assignment contexts, the same date variable will resolve differently depending on the type of the target date field. For example, when assigning the variable `Today`:
+
+- For **Timestamp** and **DateTime with timezone** fields: the variable resolves to a full UTC time string, such as `2024-04-20T16:00:00.000Z`, including timezone info. This is ideal for cross-timezone data synchronization.
+
+- For **DateTime without timezone** fields: the variable resolves to a local time string, such as `2025-04-21 00:00:00`, with no timezone information, which is more suitable for local business logic.
+
+- For **DateOnly** fields: the variable resolves to a pure date string, such as `2025-04-21`, containing only the year, month, and day.
+
+The system intelligently parses the variable based on the field type to ensure correct formatting and prevent data errors or exceptions due to mismatches.
+
+![20250522212802](https://static-docs.nocobase.com/20250522212802.png)
+
+ Common Assignment Use Cases:
+
+- Setting default values for date fields in form blocks
+- Setting `value` property of date fields in linkage rules
+- Assigning values to date fields in form submission actions
+
+ Supported Variables:
+
+- `Now`
+- `Yesterday`
+- `Today`
+- `Tomorrow`
 
 ### URL search params
 

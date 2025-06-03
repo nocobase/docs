@@ -28,9 +28,9 @@
 
 ![20240409114740](https://static-docs.nocobase.com/20240409114740.png)
 
-### ウェブサイトアイコン favicon の設定（v1.2.23-alpha）
+### ウェブサイトアイコン favicon の設定<Badge>v1.2.23-alpha+</Badge>
 
 v1.2.23-alpha バージョンでは、ウェブサイトアイコン favicon の設定機能が追加されました。下記の画像を参照してください：
 
-![350438864-08053d02-5429-407f-a3f7-fed439993623](https://static-docs.nocobase.com/350438864-08053d02-5429-407f-a3f7-fed439993623.gif)
+![20250601143958_rec_](https://static-docs.nocobase.com/20250601143958_rec_.gif)
 

@@ -2,14 +2,12 @@
 
 ## Introduction
 
-The Double check configuration is designed to ensure that an operation is deliberate before it proceeds. When an action is clicked, a confirmation box will appear. By default, the delete button has secondary confirmation enabled to prevent accidental operations that could lead to data loss or irreversible outcomes.
+The double confirmation configuration is used to confirm whether an action should be executed. When an action is clicked, a confirmation dialog will appear. The delete button is enabled by default to prevent accidental operations that could lead to data loss or irreversible results.
 
-![20240919164638](https://static-docs.nocobase.com/20240919164638.png)
+![20250430171936](https://static-docs.nocobase.com/20250430171936.png)
 
-Support customizing secondary confirmation content and titles
+It supports custom content and titles for the double confirmation, as well as the ability to retrieve variables.
 
-![20240919164704](https://static-docs.nocobase.com/20240919164704.png)
+![20250430172414](https://static-docs.nocobase.com/20250430172414.png)
 
-![20240919164800](https://static-docs.nocobase.com/20240919164800.png)
-
-
+![20250430172601](https://static-docs.nocobase.com/20250430172601.png)

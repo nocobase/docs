@@ -122,45 +122,74 @@ Utilisé uniquement dans les blocs de relation, représentant l'enregistrement s
 "L'enregistrement parent" est obsolète, il est recommandé d'utiliser l'équivalent "Enregistrement actuel du popup" à la place.
 :::
 
-### Variables de date
+### Date Variables
 
-Les variables associées incluent :
+Date variables are dynamic placeholders for date that can be used across the system to define data scope filters in blocks, related field conditions, action linkage rules, and default values for date fields. Depending on the usage scenario, the parsing logic differs:
 
-- Heure actuelle
-- Hier
-- Aujourd'hui
-- Demain
-- La semaine dernière
-- Cette semaine
-- La semaine prochaine
-- Le mois dernier
-- Ce mois-ci
-- Le mois prochain
-- Le trimestre dernier
-- Ce trimestre
-- Le trimestre prochain
-- L'année dernière
-- Cette année
-- L'année prochaine
-- Les 7 derniers jours
-- Les 7 prochains jours
-- Les 30 derniers jours
-- Les 30 prochains jours
-- Les 90 derniers jours
-- Les 90 prochains jours
+- In **assignment scenarios** (e.g., default value setting), variables resolve to a specific moment in time.
+- In **filtering scenarios** (e.g., date conditions in data scope), variables resolve to a datetime scope to support flexible filtering.
 
-<br />
+#### Filtering Scenarios
 
-:::warning
-À l'exception de l'Heure actuelle, qui est un moment (chaîne), les autres variables de date sont des périodes de temps (tableaux). Actuellement, les périodes de temps ne peuvent être utilisées que dans la portée des données et ne peuvent pas être utilisées pour les valeurs par défaut des champs.
-:::
+Common use cases include:
 
-Les cas d'utilisation associés incluent :
+- Setting date field conditions in block data scope filters
+- Setting date conditions in related field data scope
+- Defining date conditions in action linkage rules
 
-- Paramètres de condition de champ de date pour la portée des données du bloc
-- Paramètres de condition de champ de date pour la portée des données des champs de relation
-- Paramètres de condition de champ de date pour les règles de liaison d'action
-- Paramètres de valeur par défaut de champ de date
+![20250522211606](https://static-docs.nocobase.com/20250522211606.png)
+
+ Supported Variables:
+
+- `Current time`
+- `Yesterday`
+- `Today`
+- `Tomorrow`
+- `Last week`
+- `This week`
+- `Next week`
+- `Last month`
+- `This month`
+- `Next month`
+- `Last quarter`
+- `This quarter`
+- `Next quarter`
+- `Last year`
+- `This year`
+- `Next year`
+- `Last 7 days`
+- `Next 7 days`
+- `Last 30 days`
+- `Next 30 days`
+- `Last 90 days`
+- `Next 90 days`
+
+#### Assignment Scenarios
+
+In assignment contexts, the same date variable will resolve differently depending on the type of the target date field. For example, when assigning the variable `Today`:
+
+- For **Timestamp** and **DateTime with timezone** fields: the variable resolves to a full UTC time string, such as `2024-04-20T16:00:00.000Z`, including timezone info. This is ideal for cross-timezone data synchronization.
+
+- For **DateTime without timezone** fields: the variable resolves to a local time string, such as `2025-04-21 00:00:00`, with no timezone information, which is more suitable for local business logic.
+
+- For **DateOnly** fields: the variable resolves to a pure date string, such as `2025-04-21`, containing only the year, month, and day.
+
+The system intelligently parses the variable based on the field type to ensure correct formatting and prevent data errors or exceptions due to mismatches.
+
+![20250522212802](https://static-docs.nocobase.com/20250522212802.png)
+
+ Common Assignment Use Cases:
+
+- Setting default values for date fields in form blocks
+- Setting `value` property of date fields in linkage rules
+- Assigning values to date fields in form submission actions
+
+ Supported Variables:
+
+- `Now`
+- `Yesterday`
+- `Today`
+- `Tomorrow`
 
 ### Paramètres de recherche de l'URL
 

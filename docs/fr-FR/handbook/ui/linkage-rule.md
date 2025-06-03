@@ -1,120 +1,120 @@
-# Règles de Liaison
+# Linkage Rules
 
 ## Introduction
 
-Dans NocoBase, les règles de liaison sont un mécanisme utilisé pour contrôler le comportement interactif des éléments de l'interface front-end. Elles permettent aux utilisateurs d'ajuster la présentation et la logique comportementale des blocs, des champs et des actions en fonction de différentes conditions, offrant ainsi une expérience interactive flexible et à faible code. Cette fonctionnalité est en cours d'optimisation continue.
+In NocoBase, linkage rules are a mechanism for controlling the interactive behavior of front-end interface elements. It allows users to adjust the display and behavior logic of blocks, fields, and actions based on different conditions, enabling flexible, low-code interactive experiences. This feature is constantly being refined and enhanced.
 
-En configurant les règles de liaison, vous pouvez réaliser des actions comme :
+By configuring linkage rules, you can achieve the following:
 
-- Masquer/afficher certains blocs en fonction du rôle de l'utilisateur actuel, avec des blocs affichant des informations différentes selon le rôle (par exemple, un administrateur peut voir un bloc avec toutes les informations, tandis qu'un utilisateur standard ne voit que des informations de base).
-- Lorsqu'un certain champ est sélectionné dans un formulaire, automatiquement remplir ou réinitialiser la valeur d'autres champs.
-- Lorsqu'un certain champ est sélectionné dans un formulaire, désactiver certains éléments de saisie.
-- Modifier dynamiquement la couleur de fond, la taille de police, la graisse de police, etc., en fonction de conditions spécifiques pour mettre en surbrillance un champ.
-- Contrôler la visibilité ou l'interactivité des boutons d'action en fonction de certaines conditions.
+- Hide/show certain blocks based on the current user role, e.g., the admin can view full information blocks, while regular users can only see basic information blocks.
+- Automatically fill or reset other field values when a form selects a particular option.
+- Disable certain input fields when a form selects a particular option.
+- Dynamically set field background colors, font sizes, font weights, etc., and highlight fields when a condition is met.
+- Control whether actions are visible or clickable based on certain conditions.
 
-## Configuration des Conditions
+## Condition Configuration
 
 ![20250417214217](https://static-docs.nocobase.com/20250417214217.png)
 
-### Variables à gauche
+### Left-side Variables
 
-Les variables à gauche dans une règle de liaison sont utilisées pour définir l'"objet de la condition", c'est-à-dire la variable dont la valeur sera utilisée pour effectuer la comparaison afin de déterminer si l'action de liaison doit être exécutée.
+The left-side variables in a condition are used to define the "object being judged" in the linkage rule, i.e., the condition will evaluate this variable’s value to determine whether the linkage behavior should be triggered.
 
-Les variables disponibles comprennent :
+Available variables include:
 
-- Champs dans le contexte, tels que `« Formulaire actuel/xxx »`, `« Enregistrement actuel/xxx »`, `« Enregistrement de la fenêtre contextuelle actuelle/xxx »`, etc.
-- Variables globales du système, telles que `Utilisateur actuel`, `Rôle actuel`, etc., qui peuvent être utilisées pour un contrôle dynamique basé sur l'identité ou les permissions de l'utilisateur.
-  > ✅ Les variables à gauche disponibles dépendent du contexte du bloc. Utilisez les variables à gauche de manière appropriée en fonction des besoins métier :
-  >
-  > - « Utilisateur actuel » fait référence aux informations de l'utilisateur actuellement connecté ;
-  > - « Formulaire actuel » fait référence aux valeurs saisies en temps réel dans le formulaire ;
-  > - « Enregistrement actuel » fait référence aux valeurs enregistrées, telles que celles des lignes de tableau.
+- Context variables, such as `「Current Form/xxx」`, `「Current Record/xxx」`, `「Current Popup Record/xxx」`, etc.;
+- System-wide variables, such as `Current User`, `Current Role`, etc., suitable for dynamically controlling based on user identity, permissions, etc.
 
-### Opérateurs
+> ✅ The available left-side variables are determined by the context of the block, so choose variables according to business needs:
+> 
+> - `Current User` the information of the currently logged-in user，including data from collection associated with the user;
+> - `Current Form`  the real-time input values in the form;
+> - `Current Record` the saved record values, such as row data in a table.
 
-Les opérateurs servent à établir la logique de comparaison, c'est-à-dire à déterminer comment comparer la variable à gauche à la valeur de droite. Différents types de variables à gauche supportent différents opérateurs, les opérateurs courants incluent :
+### Operators
 
-- **Types texte** : `$includes`, `$eq`, `$ne`, `$empty`, `$notEmpty`, etc.
-- **Types numériques** : `$eq`, `$gt`, `$lt`, `$gte`, `$lte`, etc.
-- **Types booléens** : `$isTruly`, `$isFalsy`
-- **Types tableau** : `$match`, `$anyOf`, `$empty`, `$notEmpty`, etc.
+Operators are used to set the logical comparison between the left-side variable and the right-side value. Different types of left-side variables support different operators. Common operators include:
 
-> ✅ Le système recommande automatiquement une liste d'opérateurs disponibles en fonction du type de la variable à gauche, garantissant une logique de configuration appropriée.
+- **Text type**: `$includes`, `$eq`, `$ne`, `$empty`, `$notEmpty`, etc.
+- **Numeric type**: `$eq`, `$gt`, `$lt`, `$gte`, `$lte`, etc.
+- **Boolean type**: `$isTruly`, `$isFalsy`
+- **Array type**: `$match`, `$anyOf`, `$empty`, `$notEmpty`, etc.
 
-### Valeur à droite
+> ✅ The system will automatically recommend the available operators based on the type of the left-side variable to ensure logical configuration.
 
-La valeur à droite est celle avec laquelle la variable à gauche sera comparée pour déterminer si la condition est remplie.
+### Right-side Value
 
-Les contenus suivants sont pris en charge :
+The right-side value is used for comparison with the left-side variable, serving as the reference value for determining whether the condition is met.
 
-- Valeurs constantes : saisie de valeurs fixes telles que des nombres, du texte, des dates, etc.
-- Variables du contexte : telles que d'autres champs du formulaire actuel, l'enregistrement actuel, etc.
-- Variables système : comme l'utilisateur actuel, l'heure actuelle, le rôle actuel, etc.
+Supported content includes:
 
-> ✅ Le système adapte automatiquement l'interface pour la saisie de la valeur à droite en fonction du type de la variable à gauche, par exemple :
->
-> - Si la variable à gauche est un champ « option », un sélecteur d'options sera affiché ;
-> - Si la variable à gauche est un champ « date », un sélecteur de date sera affiché ;
-> - Si la variable à gauche est un champ « texte », un champ de saisie de texte sera affiché.
+- Constant values: fixed numeric values, text, dates, etc.;
+- Context variables: other fields from the current form, current records, etc.;
+- System variables: such as the current user, current time, current role, etc.
 
-> 💡 En utilisant judicieusement les valeurs dynamiques à droite (en particulier les variables), vous pouvez construire des logiques de liaison basées sur l'utilisateur actuel, l'état des données et le contexte, créant ainsi des interactions plus puissantes.
+> ✅ The system will adapt the input component for the right-side value based on the type of the left-side variable, such as:
+> 
+> - If the left-side variable is a “selection field”, a corresponding options selector will be displayed;
+> - If the left-side variable is a “date field”, a date picker will be displayed;
+> - If the left-side variable is a “text field”, a text input box will displayed.
 
-## Logique d'exécution des règles
+> 💡 By flexibly using the right-side values (especially dynamic variables), you can build linkage logic based on the current user, current data state, and context environment, enabling a richer interactive experience.
 
-### Déclenchement des conditions
+## Rule Execution Logic
 
-Lorsque la condition d'une règle est remplie (et que le champ n'est pas requis), l'action de modification des propriétés est automatiquement exécutée. Si aucune condition n'est définie, la règle est considérée comme toujours remplie, et l'action de modification des propriétés est donc toujours exécutée.
+### Condition Trigger
 
-### Plusieurs règles
+When the condition in a rule is met (optional), the property modification actions below are automatically executed. If no condition is set, the rule is considered always met, and the property modification will be executed by default.
 
-Vous pouvez configurer plusieurs règles de liaison pour un formulaire. Lorsque plusieurs règles sont satisfaites, le système exécute les actions dans l'ordre où les règles ont été définies, c'est-à-dire en suivant l'ordre des règles, et la dernière règle est celle qui prévaut.
-Exemple : la règle 1 rend un champ « désactivé », et la règle 2 le rend « modifiable ». Si les conditions des deux règles sont satisfaites, le champ sera « modifiable ».
+### Multiple Rules
 
-> L'ordre d'exécution des règles est crucial. Veillez à bien définir les priorités et relations entre les règles pour éviter des conflits de logique.
+Multiple linkage rules can be configured for a block, action, or field. When multiple rules are met simultaneously, the system executes them in the order they are defined, with the last rule's result taking precedence. For example, Rule 1 disables a field, and Rule 2 makes it editable. If both conditions are met, the field will become editable according to Rule 2.
 
-## Gestion des règles
+> The execution order of multiple rules is crucial. Make sure to clarify their priorities and interrelationships to avoid rule conflicts.
 
-Vous pouvez effectuer les actions suivantes sur chaque règle :
+## Rule Management
 
-- **Nomination personnalisée** : attribuez un nom clair à chaque règle pour une meilleure gestion et identification.
-- **Tri** : ajustez l'ordre des règles en fonction de la priorité d'exécution pour garantir que le système traite les règles dans l'ordre correct.
-- **Suppression** : supprimez les règles qui ne sont plus nécessaires.
-- **Activer/Désactiver** : désactivez temporairement une règle sans la supprimer, ce qui est utile lorsque vous devez désactiver une règle dans certains cas sans la supprimer définitivement.
-- **Copier la règle** : dupliquez une règle existante pour créer une nouvelle règle, afin d'éviter la saisie manuelle répétitive.
+Each rule can be managed with the following options:
 
-## À propos des variables
+- Custom Naming: Set an easy-to-understand name for the rule for better management and recognition.
+- Sorting: Adjust the order of rules based on execution priority to ensure that the system processes them correctly.
+- Deletion: Remove rules that are no longer needed.
+- Enable/Disable: Temporarily disable a rule without deleting it. This is useful for situations where a rule needs to be paused temporarily.
+- Copy Rule: Create new rules by copying existing ones, avoiding redundant configuration.
 
-Dans l'attribution des champs et la configuration des conditions, non seulement les constantes sont prises en charge, mais aussi les variables. La liste des variables dépend du contexte du bloc. Choisir et utiliser les variables de manière appropriée permet de répondre plus facilement aux besoins métier. Pour plus d'informations sur les variables, consultez la section [Variables](/handbook/ui/variables).
+## About Variables
 
-## Règles de Liaison de Bloc (fonctionnalité à venir)
+In field assignment and condition configuration, both constants and variables are supported. The variable list varies depending on the block's location, and choosing and using variables wisely can help meet business requirements more flexibly. For more information about variables, refer to [Variables](/handbook/ui/variables).
 
-> **Note** : cette fonctionnalité est disponible à partir de la version v1.7.0-beta.xx
+## Block Linkage Rules 
 
-Les règles de liaison de bloc permettent de contrôler dynamiquement l'affichage des blocs en fonction de variables système (comme l'utilisateur actuel, le rôle actuel) ou de variables du contexte (comme l'enregistrement de la fenêtre contextuelle actuelle). Par exemple, un administrateur peut voir un bloc avec toutes les informations d'une commande, tandis qu'un utilisateur standard peut ne voir que des informations spécifiques. Cette fonctionnalité permet de configurer deux blocs de commande et d'ajouter des règles de liaison de bloc pour créer cet effet.
+> **Note**: This feature **is supported starting from v1.7.0-beta.24 versions**
 
-👉 Plus de détails : [Règles de Liaison de Bloc](/handbook/ui/blocks/block-settings/block-linkage-rule)
+Block linkage rules allow dynamic control of block visibility based on system variables (such as the current user or role) or context variables (such as the current popup record). For example, an administrator can view the complete order information, while a customer service role can only view specific order data. Through block linkage rules, the corresponding block can be configured based on the role, with different fields,actions, and data scope set within the block. When the logged-in role matches the target role, the system will display the corresponding block.
 
-## Règles de Liaison de Champ
+👉 For more details, check: [Block/Block Linkage Rules](/handbook/ui/blocks/block-settings/block-linkage-rule)
 
-Les règles de liaison de champ sont utilisées pour ajuster dynamiquement l'état des champs dans les formulaires ou les blocs de détails, notamment pour :
+## Field Linkage Rules
 
-- Contrôler l'**affichage/masquage** des champs.
-- Définir si un champ est **obligatoire**.
-- **Assigner des valeurs**.
-- Configurer la **plage d'options** pour les champs à options.
-- Limiter la **plage de temps** pour les champs de type date.
+Field linkage rules are used to dynamically adjust the properties of fields in a form or detail block. These mainly include:
 
-👉 Plus de détails : [Règles de Liaison de Champ](/handbook/ui/blocks/block-settings/field-linkage-rule)
+- Control the **visibility** of fields
+- Set fields as **required**
+- **Assign values**
+- Configure the **options** of option fields
+- Limit the **Date scope** for time fields
 
-## Règles de Liaison des Actions
+👉 For more details, check: [Block/Field Linkage Rules](/handbook/ui/blocks/block-settings/field-linkage-rule)
 
-Les règles de liaison des actions permettent de contrôler les actions en fonction des valeurs des enregistrements actuels ou des variables globales, telles que la visibilité ou la possibilité de désactiver les actions.
+## Actions Linkage Rules
 
-👉 Plus de détails : [Règles de Liaison des Actions](/handbook/ui/actions/action-settings/linkage-rule)
+Actions linkage rules currently support controlling operation behaviors (e.g., hide/disable) based on current record values and global variables.
 
-## Règles de Liaison de Style de Champ
+👉 For more details, check: [Operation/Linkage Rules](/handbook/ui/actions/action-settings/linkage-rule)
 
-Les règles de liaison de style de champ permettent de définir dynamiquement les propriétés de style des champs en fonction de conditions spécifiques, principalement pour les propriétés suivantes :
+## Field Style Linkage Rules
+
+Field style linkage rules allow dynamically setting field style properties based on conditions, mainly including:
 
 - `color`
 - `background-color`
@@ -123,6 +123,6 @@ Les règles de liaison de style de champ permettent de définir dynamiquement le
 - `font-weight`
 - `font-style`
 
-Elles sont souvent utilisées pour mettre en surbrillance des informations importantes, signaler des anomalies ou guider visuellement l'utilisateur.
+These are commonly used to highlight key information based on field status, indicate anomalies, or provide visual guidance.
 
-👉 Plus de détails : [Règles de Style de Champ](/handbook/ui/fields/field-settings/style)
+👉 For more details, check: [Field/Style](/handbook/ui/fields/field-settings/style)

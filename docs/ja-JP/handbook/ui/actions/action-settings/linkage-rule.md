@@ -1,52 +1,52 @@
-# 操作の連動ルール
+# Action Linkage Rules
 
-## 介紹
+## Introduction
 
-操作連動ルールを使用すると、特定の条件に基づいて操作の状態（表示、利用可能、非表示、無効化など）を動的に制御できます。これらのルールを設定することにより、ユーザーは操作ボタンの動作を現在のレコード、ユーザーの役割、またはコンテキストデータと連動させることができます。`v1.7.0-beta.19` 以降、すべてのグローバルボタンは連動ルールの設定をサポートしています。
+Action linkage rules allow users to dynamically control the attribute of actions (such as Visible, Enabled, Hidden, Disabled) based on specific conditions. By configuring these rules, users can link the behavior of action buttons with the current record, user role, or contextual data. Since version `v1.7.0-beta.19, all buttons support the configuration of linkage rules.
 
-> **注意**: 操作連動ルールは現在、フォームの値との直接的な連動には対応していません。そのため、現在のフォームのフィールド値に基づいて条件判断を行うことはできません（つまり、現在のフォーム変数の使用はサポートされていません）。現在、操作の連動ルールは他のコンテキストデータやシステム変数を基に操作の表示、利用可能、無効化などの状態を制御することをサポートしています。
+> **Note**: Action linkage rules do not currently support direct linkage with form values. Therefore, it is not allow to perform conditional checks based on fields in the current form (i.e., current form variables are not supported). Currently, operation linkage rules support controlling the visibility, enablement, and disablement of actions based on other contextual data or system variables.
 
 ![20240423113057](https://static-docs.nocobase.com/20240423113057.png)
 
-## 使用方法
+## Usage Instructions
 
 ![20250418152329](https://static-docs.nocobase.com/20250418152329.png)
 
-条件を満たすと（条件なしでデフォルトで許可）、実行属性の設定がトリガーされます。条件判断には定数や変数の使用がサポートされています。
+When conditions are met (by default, they pass without conditions), the action will be triggered. Constants and variables can be used in the condition evaluation.
 
-## 定数
+## Constants
 
-例: 「処理待ち」の注文のみが編集可能です。
+Example: Only orders that are 'pending' can be edited.
 
 ![20250418150033](https://static-docs.nocobase.com/20250418150033.png)
 
-## 変数
+## Variables
 
-### システム変数
+### System Variables
 
-例1: 注文日が今日以降の注文の削除ボタンを無効化します。
+Example 1: Disable the delete button for orders with a delivery date later than today.
 
 ![20250418145825](https://static-docs.nocobase.com/20250418145825.png)
 
-例2: 注文区画の表のバッチ削除ボタンは管理者役割のみ使用可能で、他の役割はこの操作を実行できません。
+Example 2: The bulk delete button on the order block table header is only available to the administrator role; other roles cannot perform this action.
 
 ![20250418150637](https://static-docs.nocobase.com/20250418150637.png)
 
 ![20250418150826](https://static-docs.nocobase.com/20250418150826.png)
 
-### コンテキスト変数
+### Context Variables
 
-例: 注文明細（関連区画）の追加ボタンは、注文ステータスが「支払い待ち」の場合のみ有効で、他のステータスではボタンが無効化されます。
+Example: The "Add" button in the order details (association block) is enabled only when the order status is "Pending Payment." In other statuses, the button will be disabled.
 
 ![20250418145312](https://static-docs.nocobase.com/20250418145312.png)
 
 ![20250418150429](https://static-docs.nocobase.com/20250418150429.png)
 
-変数の詳細については[変数](/handbook/ui/variables)をご覧ください。
+For more information on variable content, refer to [Variables](/handbook/ui/variables).
 
 ## RoadMap
 
-- 計画中または進行中
-  - 操作連動ルールが現在のフォームをサポート
+- Planned or In Progress
+  - Operation linkage rules support for the current form
 
-その他の連動ルールについての詳細は[連動ルール](/handbook/ui/linkage-rule)を参照してください。
+For more information on linkage rules, refer to [Linkage Rules](/handbook/ui/linkage-rule)

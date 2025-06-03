@@ -99,44 +99,74 @@
 「親レコード」は廃止されましたので、同等の「現在のポップアップレコード」を使用することをお勧めします。
 :::
 
-### 日付変数
-関連変数は以下の通りです：
+### Date Variables
 
-- 現在の時刻
-- 昨日
-- 今日
-- 明日
-- 先週
-- 今週
-- 来週
-- 先月
-- 今月
-- 来月
-- 先四半期
-- 今四半期
-- 来四半期
-- 昨年
-- 今年
-- 来年
-- 過去7日間
-- 次の7日間
-- 過去30日間
-- 次の30日間
-- 過去90日間
-- 次の90日間
+Date variables are dynamic placeholders for date that can be used across the system to define data scope filters in blocks, related field conditions, action linkage rules, and default values for date fields. Depending on the usage scenario, the parsing logic differs:
 
-<br />
+- In **assignment scenarios** (e.g., default value setting), variables resolve to a specific moment in time.
+- In **filtering scenarios** (e.g., date conditions in data scope), variables resolve to a datetime scope to support flexible filtering.
 
-:::warning
-現在の時刻（Current time）は時刻（文字列）ですが、それ以外のすべての日時変数は期間（配列）であり、現在の期間はデータ範囲でのみ使用可能で、フィールドのデフォルト値には使用できません。
-:::
+#### Filtering Scenarios
 
-関連する使用シーンは以下の通りです：
+Common use cases include:
 
-- 区画データ範囲の日付フィールド条件設定
-- 関係フィールドのデータ範囲の日付フィールド条件設定
-- 操作連動ルールの日付フィールド条件設定
-- 日付フィールドのデフォルト値設定
+- Setting date field conditions in block data scope filters
+- Setting date conditions in related field data scope
+- Defining date conditions in action linkage rules
+
+![20250522211606](https://static-docs.nocobase.com/20250522211606.png)
+
+ Supported Variables:
+
+- `Current time`
+- `Yesterday`
+- `Today`
+- `Tomorrow`
+- `Last week`
+- `This week`
+- `Next week`
+- `Last month`
+- `This month`
+- `Next month`
+- `Last quarter`
+- `This quarter`
+- `Next quarter`
+- `Last year`
+- `This year`
+- `Next year`
+- `Last 7 days`
+- `Next 7 days`
+- `Last 30 days`
+- `Next 30 days`
+- `Last 90 days`
+- `Next 90 days`
+
+#### Assignment Scenarios
+
+In assignment contexts, the same date variable will resolve differently depending on the type of the target date field. For example, when assigning the variable `Today`:
+
+- For **Timestamp** and **DateTime with timezone** fields: the variable resolves to a full UTC time string, such as `2024-04-20T16:00:00.000Z`, including timezone info. This is ideal for cross-timezone data synchronization.
+
+- For **DateTime without timezone** fields: the variable resolves to a local time string, such as `2025-04-21 00:00:00`, with no timezone information, which is more suitable for local business logic.
+
+- For **DateOnly** fields: the variable resolves to a pure date string, such as `2025-04-21`, containing only the year, month, and day.
+
+The system intelligently parses the variable based on the field type to ensure correct formatting and prevent data errors or exceptions due to mismatches.
+
+![20250522212802](https://static-docs.nocobase.com/20250522212802.png)
+
+ Common Assignment Use Cases:
+
+- Setting default values for date fields in form blocks
+- Setting `value` property of date fields in linkage rules
+- Assigning values to date fields in form submission actions
+
+ Supported Variables:
+
+- `Now`
+- `Yesterday`
+- `Today`
+- `Tomorrow`
 
 ### URL クエリパラメータ
 この変数は現在のページのURL中のクエリパラメータを示し、ページのURLにクエリ文字列が存在する場合のみ使用可能です。[リンク操作](/handbook/ui/actions/types/link)と合わせて使用することで、さらに便利になります。
