@@ -3332,7 +3332,7 @@ export default [
         link: '/handbook/public-forms',
       },
       {
-        title: 'Multi-keyword filter',
+        title: 'Multi-keyword Filter',
         'title.fr-FR': 'Filtre à mots-clés multiples',
         'title.zh-CN': '多关键词筛选',
         'title.ja-JP': 'マルチキーワードフィルター',
