@@ -24,3 +24,7 @@ Developers can also extend other types of verification via plugins. Refer to: [E
 Developers can also integrate identity verification into other necessary scenarios by extending plugins. Refer to: [Extending Verification Scenarios](../../handbook/verification/dev/scene)
 
 **Differences and Relationships Between the Verification Module and the User Authentication Module:** The User Authentication Module is primarily responsible for identity authentication during user login, with processes such as SMS login and two-factor authentication relying on verifiers provided by the Verification Module; meanwhile, the Verification Module handles identity verification for various high-risk operations, with user login being one of those scenarios.
+
+![](https://static-docs.nocobase.com/202502262315404.png)
+
+![](https://static-docs.nocobase.com/202502262315966.png)
