@@ -1,10 +1,10 @@
-# Multi-Keyword Filter<Badge>v1.7.0+</Badge>
+# Multi-keyword Filter<Badge>v1.7.0+</Badge>
 
 <PluginInfo commercial="true" name="multi-keyword-filter"></PluginInfo>
 
 ## Introduction
 
-The **Multi-Keyword Filter** plugin adds powerful text filtering capabilities to the NocoBase platform, allowing you to filter using multiple keywords, greatly improving the flexibility and efficiency of data queries.
+The **Multi-keyword Filter** plugin adds powerful text filtering capabilities to the NocoBase platform, allowing you to filter using multiple keywords, greatly improving the flexibility and efficiency of data queries.
 
 This plugin primarily provides two filter operators:
 - **Equals any**: Filters records that contain any of the specified keywords in the list
@@ -126,4 +126,4 @@ This plugin provides exact matching functionality.
 
 ---
 
-By using the Multi-Keyword Filter plugin, you can manage and query data more efficiently, especially when dealing with large amounts of data and frequent multi-condition filtering scenarios. This plugin will significantly improve your work efficiency.
+By using the multi-keyword filter plugin, you can manage and query data more efficiently, especially when dealing with large amounts of data and frequent multi-condition filtering scenarios. This plugin will significantly improve your work efficiency.
