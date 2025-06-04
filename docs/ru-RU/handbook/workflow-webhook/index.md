@@ -1,93 +1,92 @@
-# Webhook Event
+# Событие Webhook
 
 <PluginInfo name="workflow-webhook" link="/handbook/workflow-webhook" commercial="true"></PluginInfo>
 
-The Webhook trigger provides a system-generated URL for third-party systems to call via HTTP POST requests. This URL triggers workflow execution when specific events occur, such as payment callbacks or notifications.
+Триггер вебхука предоставляет системно сгенерированный URL для вызова третьей стороной через HTTP POST запросы. Этот URL запускает выполнение рабочего процесса при наступлении определенных событий, таких как обратные вызовы платежей или уведомления.
+## Пользовательское руководство
 
-## User Guide
+### Создание триггера
 
-### Creating a Trigger
-
-Create a workflow, select "Webhook Event" as the workflow type:
+Создайте рабочий процесс, выберите "Webhook Event" в качестве типа рабочего процесса:
 
 ![20241210105049](https://static-docs.nocobase.com/20241210105049.png)
-
-:::info{title="Tip"}
-The key difference between "Synchronous" and "Asynchronous" workflows lies in their response behavior. Synchronous workflows wait until the workflow execution is complete before returning a response. In contrast, asynchronous workflows immediately return a pre-configured response, then execute the workflow in the background.
+[workflow-javascript](../workflow-javascript)
+:::info{title="Подсказка"}
+Основное различие между "Синхронными" и "Асинхронными" рабочими процессами заключается в их поведении ответа. Синхронные рабочие процессы ожидают завершения выполнения рабочего процесса перед возвратом ответа. В отличие от них, асинхронные рабочие процессы немедленно возвращают предварительно настроенный ответ, а затем выполняют рабочий процесс в фоновом режиме.
 :::
 
-### Trigger Configuration
+### Настройка триггера
 
 ![20241210105441](https://static-docs.nocobase.com/20241210105441.png)
 
 #### Webhook URL
 
-The URL is automatically generated and tied to the workflow. Use the copy button to paste the URL into the third-party system.  
+URL автоматически генерируется и привязывается к рабочему процессу. Используйте кнопку копирования, чтобы вставить URL в систему третьей стороны. 
 
-HTTP requests must use the POST method. Other methods return a `405` error.  
+HTTP запросы должны использовать метод POST. Другие методы возвращают ошибку`405`. 
 
-#### Security
+#### Безопасность
 
-Basic HTTP authentication is supported. By enabling this option and setting a username and password, you can secure the Webhook. The third-party system must include the username and password in the Webhook URL for authentication (Criteria Detail: [MDN: HTTP authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#basic_authentication_scheme)).
+Поддерживается базовая HTTP аутентификация. Включив эту опцию и установив имя пользователя и пароль, вы можете защитить Webhook. Система третьей стороны должна включать имя пользователя и пароль в URL Webhook для аутентификации  (Criteria Detail: [MDN: HTTP authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#basic_authentication_scheme)).
 
-When the user name and password are set, the system checks whether the user name and password in the request match, and returns a `401` error when no match is provided or no match is provided.
+Когда имя пользователя и пароль установлены, система проверяет, соответствуют ли имя пользователя и пароль в запросе, и возвращает ошибку`401`, если совпадение не найдено.
 
-#### Parsing Request Data
+#### Парсинг данных запроса
 
-Data in HTTP requests must be parsed to make it usable in Workflow. Parsed data is available as variables in subsequent nodes.
+Данные в HTTP запросах должны быть распарсены, чтобы сделать их доступными для использования в рабочем процессе. Распарсенные данные доступны как переменные в последующих узлах.
 
-Parsing an HTTP request is divided into three parts:
+Парсинг HTTP запроса делится на три части:  
 
-1. Request Headers
+1. Заголовки запроса
 
-   Headers are simple key-value pairs in string format. Specify the fields you need, such as `Date` , `X-Request-Id`, etc.
+   Заголовки представляют собой простые пары ключ-значение в строковом формате. Укажите нужные вам поля, такие как `Date` , `X-Request-Id`, и т.д.
 
-2. Request Parameters
+2. Параметры запроса
 
-  Request parameter is the URL of query parameters, such as `http://localhost:13000/api/webhook:trigger/1hfmkioou0d? query=1`  'query' parameter. Paste the complete URL sample or query only the parameter part of the sample and click the parse button to automatically parse the key-value pairs.
+Параметры запроса — это параметры URL запроса, например`http://localhost:13000/api/webhook:trigger/1hfmkioou0d? query=1` Вставьте полный URL-пример или только часть параметров запроса и нажмите кнопку парсинга для автоматического парсинга пар ключ-значение.
   
   ! [20241210111155](https://static-docs.nocobase.com/20241210111155.png)
-  
-  Automatic parsing converts the parameter portion of the URL into a JSON structure, and generates a path based on the parameter hierarchy such as `query[0]`, `query[0].a`, etc. The path name can be manually modified if it does not meet the requirements, but usually does not need to be modified. Aliases are optional for displaying the name of a variable when used as a variable. At the same time, all parameter tables in the sample are generated. If there are unnecessary parameters, you can delete them.
-  
-3. Request Body
 
-  The request Body is the body of the HTTP request. Currently, only the request body in Content-Type format application/json is supported. You can directly configure the path to be parsed, or enter a JSON example and click the parse button for automatic parsing.
+Автоматический парсинг преобразует часть параметров URL в JSON-структуру и создает путь на основе иерархии параметров, например `query[0]`, `query[0].a`, и т.д. Имена путей можно вручную изменить, если они не удовлетворяют требованиям, но обычно это не требуется. Алиасы необязательны для отображения имени переменной при использовании в качестве переменной. Одновременно генерируются все таблицы параметров в примере. Если есть ненужные параметры, их можно удалить.
+  
+3. Тело запроса
+
+Тело запроса — это тело HTTP запроса. В настоящее время поддерживаются только тела запросов в формате Content-Type application/json. Вы можете напрямую настроить путь для парсинга или ввести пример JSON и нажать кнопку парсинга для автоматического парсинга.
 
   ! [20241210112529](https://static-docs.nocobase.com/20241210112529.png)
 
-  Automatic parsing JSON structure will be the key/value pair into paths, such as `{" a ": 1," b ": {" c" : 2}}` generates `a`, `b`, `b.c` path, etc. Aliases are optional for displaying the name of a variable when used as a variable. At the same time, all parameter tables in the sample are generated. If there are unnecessary parameters, you can delete them.
+Автоматический парсинг JSON-структуры преобразует пары ключ-значение в пути, например,  `{" a ": 1," b ": {" c" : 2}}` генерирует пути  `a`, `b`, `b.c` и т.д. Алиасы необязательны для отображения имени переменной при использовании в качестве переменной. Одновременно генерируются все таблицы параметров в примере. Если есть ненужные параметры, их можно удалить.
 
-#### Response Settings
+#### Настройка ответа
 
-The response part of Webhook is configured differently in synchronous and asynchronous workflows. The asynchronous workflows are directly configured in the trigger. After receiving the Webhook request, the response configuration in the trigger is immediately returned to the third-party system before the workflow is executed. Synchronous workflows need to be handled in the process by adding response nodes as required by the business (Detail: [Response nodes](#response nodes)).
+Часть ответа вебхука настраивается по-разному для синхронных и асинхронных рабочих процессов. В асинхронных рабочих процессах настройка ответа осуществляется непосредственно в триггере. После получения запроса вебхука конфигурация ответа в триггере сразу возвращается системе третьей стороны до выполнения рабочего процесса. В синхронных рабочих процессах ответ нужно обрабатывать в процессе, добавляя узлы ответа по мере необходимости (Detail: [Response nodes](#response nodes)).
 
-Typically, the response to an asynchronously triggered Webhook event has a status code of `200` and a response body of `ok`. You can also customize the status code, response header, and response body of the response.
+Обычно ответ на асинхронно вызванное событие вебхука имеет статус-код `200` и тело ответа `ok`. Вы также можете настроить статус-код, заголовок ответа и тело ответа.
 
 ! [20241210114312](https://static-docs.nocobase.com/20241210114312.png)
 
-### Response node
+### Узел ответа
 
-It is only supported for use in synchronous mode Webhook workflows for responses returned to third-party systems. For example, if there is an unexpected result (such as an error or failure) during the processing of a payment callback, the response node can return an error response to the third-party system so that some third-party systems can retry later according to the status.
+Поддерживается только для использования в синхронном режиме рабочих процессов Webhook для ответов, возвращаемых системам третьей стороны. Например, если во время обработки обратного вызова платежа возникает неожиданный результат (например, ошибка или сбой), узел ответа может вернуть ошибочный ответ системе третьей стороны, чтобы некоторые системы третьей стороны могли повторить попытку позже в зависимости от состояния.
 
-In addition, the execution of the response node terminates the execution of the workflow, and subsequent nodes do not execute. If the entire workflow is not configured with a response node, the system will automatically respond according to the state of the process execution, returning `200` for successful execution and `500` for failed execution.
+Кроме того, выполнение узла ответа прекращает выполнение рабочего процесса, и последующие узлы не выполняются. Если в рабочем процессе не настроен узел ответа, система автоматически отвечает в зависимости от состояния выполнения процесса, возвращая `200` при успешном выполнении и `500` при неудачном выполнении.
 
-#### Creating a response node
+#### Создание узла ответа
 
-In the workflow configuration interface, click the plus sign ("+") button in the process to add the "Response" node:
+В интерфейсе конфигурации рабочего процесса нажмите кнопку плюса ("+") в процессе, чтобы добавить узел "Ответ":
 
 ! [20241210115120](https://static-docs.nocobase.com/20241210115120.png)
 
-#### Response configuration
+#### Конфигурация ответа
 
 ! [20241210115500](https://static-docs.nocobase.com/20241210115500.png)
 
-Variables in the workflow context can be used in the response body.
+В теле ответа можно использовать переменные из контекста рабочего процесса.
 
-#### Example
+#### Пример 
 
-In the Webhook workflow in synchronous mode, different responses can be returned according to different business conditions, as shown in the figure below:
+В синхронном режиме рабочего процесса Webhook можно возвращать разные ответы в зависимости от различных условий бизнес-логики, как показано на рисунке ниже:
 
 ! [20241210120655](https://static-docs.nocobase.com/20241210120655.png)
 
-Check whether a service status is satisfied through the conditional branch node. If yes, a success message is displayed. Otherwise, a failure message is displayed.
+Через узел условного ветвления проверяется, удовлетворяет ли состояние службы заданным условиям. Если да, отображается сообщение об успехе. В противном случае, отображается сообщение об ошибке.

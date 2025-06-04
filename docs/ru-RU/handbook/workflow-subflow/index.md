@@ -1,75 +1,72 @@
-# Subflow
+# Подпроцесс
 
 <PluginInfo name="workflow-subflow" link="/handbook/workflow-subflow" commercial="true"></PluginInfo>
 
-Used to call other processes within a workflow, allowing the current process variables to serve as inputs for the subflow, and using the outputs of the subflow as variables in subsequent nodes of the current process.
+Используется для вызова других процессов в рамках рабочего процесса, позволяя текущим переменным процесса служить входными данными для подпроцесса и использовать выходные данные подпроцесса как переменные в последующих узлах текущего процесса.
 
-The process of calling a subflow is illustrated in the diagram below:
+Процесс вызова подпроцесса иллюстрируется на диаграмме ниже:
 
 ![20241230134634](https://static-docs.nocobase.com/20241230134634.png)
 
-Subflows can be used to reuse some common process logic, such as sending emails or SMS, or to break a complex process into multiple subflows for easier management and maintenance.
+Подпроцессы могут использоваться для повторного использования общей логики процесса, такой как отправка электронных писем или SMS, или для разделения сложного процесса на несколько подпроцессов для более легкого управления и обслуживания.
 
-## User Manual
+## Пользовательское руководство
 
-Essentially, workflows do not distinguish whether a process is a subflow or not; any workflow can be called by other processes and can call other processes. All workflows are equal, existing only in a caller and callee relationship.
+По сути, рабочие процессы не различают, является ли процесс подпроцессом или нет: любой рабочий процесс может вызываться другими процессами и сам вызывать другие процессы. Все рабочие процессы равны, существуя только в отношениях "вызывающий-вызываемый".
 
-Similarly, the use of subflows occurs in two locations:
+Использование подпроцессов происходит в двух местах:
 
-1. In the main process: as the caller, invoking other workflows through the "Call Workflow" node.
-2. In the subflow: as the callee, saving the variables that need to be output in the current process through the "Process Output" node, which can then be utilized by subsequent nodes in the workflow that calls the current process.
+1. В основном процессе: как вызывающий, через узел "Вызов рабочего процесса".
+2. В подпроцессе: в качестве вызываемого объекта сохраняются переменные, которые необходимо вывести в текущем процессе через узел «Вывод процесса», которые затем могут быть использованы последующими узлами рабочего процесса, вызывающего текущий процесс.
 
-### Call Workflow Node
+### Узел "Вызов рабочего процесса"
 
-#### Create Node
+#### Создание узла
 
-In the workflow configuration interface, click the plus ("+") button within the process to add a "Call Workflow" node:
-
+В интерфейсе конфигурации рабочего процесса нажмите кнопку плюс ("+") внутри процесса, чтобы добавить узел "Вызов рабочего процесса":
+  
 ![Add Call Workflow Node](https://static-docs.nocobase.com/20241230001323.png)
 
-#### Configure Node
+  #### Настройка узла
 
-##### Select Workflow
+##### Выбор рабочего процесса
 
-Select the workflow to be called, which can be quickly found using the search box:
+Выберите рабочий процесс для вызова, который можно быстро найти с помощью поля поиска:
 
 ![Select Workflow](https://static-docs.nocobase.com/20241230001534.png)
 
-:::info{title=Tip}
-* Workflows that are not enabled can still be called as subflows.
-* When the current workflow is in synchronous mode, only synchronous subflows can be called.
-:::
 
-##### Configure Trigger Variables for the Workflow
+* Неактивные рабочие процессы все равно могут быть вызваны как подпроцессы.
+* Когда текущий рабочий процесс находится в синхронном режиме, могут быть вызваны только синхронные подпроцессы.
 
-After selecting the workflow, you also need to configure the trigger variables as input data for the subflow. You can choose static data directly or select variables from the current process:
+##### Настройка переменных триггера
+
+После выбора рабочего процесса также необходимо настроить триггерные переменные как входные данные для подпроцесса. Вы можете выбрать статические данные напрямую или выбрать переменные из текущего процесса:
 
 ![Configure Trigger Variables](https://static-docs.nocobase.com/20241230162722.png)
 
-Different types of triggers require different variables, which can be configured on the form as needed.
+Для разных типов триггеров требуются разные переменные, которые можно настроить в форме по мере необходимости.
 
-### Process Output Node
+### Узел "Вывод процесса"
 
-#### Create Node
+#### Создание узла
 
-In the called workflow, add a "Process Output" node:
+В вызываемом рабочем процессе добавьте узел "Вывод процесса":
 
 ![20241231002033](https://static-docs.nocobase.com/20241231002033.png)
 
-#### Configure Node
+#### Настройка узла
 
-##### Output Value
+##### Выходное значение
 
-Input or select variables as output values. Output values can be of any type, including constants such as strings, numbers, boolean values, dates, or custom JSON. They can also be other variables within the process.
+Введите или выберите переменные как выходные значения. Выходные значения могут быть любого типа, включая константы, такие как строки, числа, булевые значения, даты или пользовательский JSON. Они также могут быть другими переменными в процессе.
 
 ![20241231003059](https://static-docs.nocobase.com/20241231003059.png)
 
-:::info{title=Tip}
-If multiple "Process Output" nodes are added in the called workflow, the value will be output according to the last executed "Process Output" node when calling that workflow.
-:::
+Если в вызываемом рабочем процессе добавлено несколько узлов "Вывод процесса", значение будет выводиться в соответствии с последним выполненным узлом "Вывод процесса" при вызове этого рабочего процесса.
 
-### Using Process Output
+### Использование вывода процесса
 
-Returning to the main process, to use the subflow's output values in other nodes below the call workflow, the result of the call workflow node can be selected. If the subflow outputs a simple value, such as a string, number, boolean value, or date (date in UTC string format), it can be used directly. If it is a complex object (such as an object in a Collection), it must first be mapped through a JSON parsing node before its properties can be used; otherwise, it can only be used as the entire object.
+Вернувшись к основному процессу, для использования выходных значений подпроцесса в других узлах ниже вызова рабочего процесса можно выбрать результат узла вызова рабочего процесса. Если подпроцесс выводит простое значение, такое как строка, число, булево значение или дата (дата в формате UTC-строки), оно может быть использовано напрямую. Если это сложный объект (например, объект в коллекции), он должен сначала быть сопоставлен через узел разбора JSON, прежде чем его свойства можно будет использовать; в противном случае он может быть использован только как целый объект.
 
-If the subflow does not configure a process output node or does not output any value, then when using the result of the call workflow node in the main process, only a null value (`null`) will be obtained.
+Если подпроцесс не настроен на узел вывода процесса или не выводит никакого значения, то при использовании результата узла вызова рабочего процесса в основном процессе будет получено только нулевое значение  (`null`) 

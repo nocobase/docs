@@ -1,242 +1,238 @@
-# NocoBase Security Guide
+# Руководство по безопасности NocoBase
 
-NocoBase focuses on the security of data and applications from functional design to system implementation. The platform has built-in multiple security functions such as user authentication, access control, and data encryption, and also allows flexible configuration of security policies according to actual needs. Whether it is protecting user data, managing access permissions, or isolating development and production environments, NocoBase provides practical tools and solutions. This guide aims to provide guidance for the secure use of NocoBase, helping users protect the security of data, applications, and the environment, ensuring the efficient use of system functions under the premise of user security.
+NocoBase уделяет внимание безопасности данных и приложений на всех этапах, от функционального дизайна до реализации системы. Платформа имеет встроенные многочисленные функции безопасности, такие как аутентификация пользователей, управление доступом и шифрование данных, а также позволяет гибко настраивать политики безопасности в соответствии с реальными потребностями. Будь то защита пользовательских данных, управление правами доступа или изоляция сред разработки и производства, NocoBase предлагает практические инструменты и решения. Это руководство предназначено для обеспечения безопасного использования NocoBase, помогая пользователям защищать безопасность данных, приложений и окружения, гарантируя эффективное использование системных функций при соблюдении безопасности пользователей.
 
-## User Authentication
+## Аутентификация пользователей
 
-User authentication is used to identify user identities, prevent users from entering the system without authorization, and ensure that user identities are not abused.
+Аутентификация пользователей используется для идентификации пользовательских учетных записей, предотвращения несанкционированного доступа к системе и защиты от злоупотребления пользовательскими учетными записями.
 
-### Token Policy
+### Политика токенов
 
-By default, NocoBase uses JWT (JSON Web Token) for authentication of server-side APIs and supports the setting of the following Token policies:
+По умолчанию NocoBase использует JWT (JSON Web Token) для аутентификации серверных API и поддерживает настройку следующих политик токенов:
 
-| Configuration Item | Description |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Session Validity | The maximum valid time for each user login. During the session validity, the Token will be automatically updated. After the timeout, the user is required to log in again. |
-| Token Validity | The validity period of each issued API Token. After the Token expires, if it is within the session validity period and has not exceeded the refresh limit, the server will automatically issue a new Token to maintain the user session, otherwise the user is required to log in again. (Each Token can only be refreshed once) |
-| Expired Token Refresh Limit | The maximum time limit allowed for refreshing a Token after it expires. |
+| Параметр Конфигурации      | Описание                                                                                                                                                                                                                                                                                                                         |
+|----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Срок действия сессии       | Максимальное время действия каждой сессии пользователя. В течение срока действия сессии токен будет автоматически обновляться. По истечении времени действия пользователь должен войти снова.                                                                                                                                                       |
+| Срок действия токена       |Срок действия каждого выпущенного API-токена. По истечении срока действия токена, если он находится в пределах срока действия сессии и не превышает лимит обновления, сервер автоматически выдаст новый токен для поддержания сессии пользователя, в противном случае пользователь должен войти снова. (Каждый токен может быть обновлен только один раз) |
+| Лимит обновления истекшего токена | Максимальное время, в течение которого допускается обновление токена после его истечения.                                                                                                                                                                                                                                                          |
 
-Usually, we recommend administrators:
+Обычно мы рекомендуем администраторам:
 
-- Set a shorter Token validity period to limit the exposure time of the Token.
-- Set a reasonable session validity period, which is longer than the Token validity period but should not be too long, to balance user experience and security. Use the automatic Token refresh mechanism to ensure that active user sessions are not interrupted while reducing the risk of long-term sessions being abused.
-- Set a reasonable expired Token refresh limit so that the Token naturally expires when the user is inactive for a long time without issuing a new Token, reducing the risk of abuse of idle user sessions.
+- Установить более короткий срок действия токена, чтобы ограничить время его экспозиции.
+- Установить разумный срок действия сессии, который будет длиннее срока действия токена, но не слишком длинным, чтобы сбалансировать удобство пользователя и безопасность. Используйте механизм автоматического обновления токена, чтобы гарантировать, что активные сессии пользователей не прерываются, одновременно снижая риск злоупотребления долгосрочными сессиями.
+- Установить разумный лимит обновления истекшего токена, чтобы токен естественным образом истекал, когда пользователь длительное время неактивен, без выпуска нового токена, снижая риск злоупотребления неактивными сессиями пользователей.
 
-### Token Client Storage
+### Хранение токенов на клиенте
 
-By default, user Tokens are stored in the browser's LocalStorage. After closing the browser page and opening it again, if the Token is still valid, the user does not need to log in again.
+По умолчанию токены пользователей хранятся в LocalStorage браузера. После закрытия страницы браузера и повторного открытия, если токен все еще действителен, пользователь не должен входить снова.
 
-If you want users to log in again every time they enter the page, you can set the environment variable `API_CLIENT_STORAGE_TYPE=sessionStorage` to save the user Token to the browser's SessionStorage, so as to achieve the purpose of users logging in again every time they open the page.
+Если вы хотите, чтобы пользователи каждый раз входили при открытии страницы, вы можете установить переменную окружения `API_CLIENT_STORAGE_TYPE=sessionStorage`, чтобы сохранять токен пользователя в SessionStorage браузера, тем самым достигая цели повторного входа пользователя при каждом открытии страницы.
 
-### Password Policy
+### Политика паролей
 
-> Professional Edition and above
+> Профессиональная версия и выше
 
 NocoBase supports setting password rules and password login attempt lock policies for all users to enhance the security of NocoBase applications that have password login enabled. You can refer to [Password Policy](./password-policy/index.md) to understand each configuration item.
 
-#### Password Rules
+#### Правила паролей
 
-| Configuration Item | Description |
-| -------------------------- | -------------------------------------------------------- |
-| **Password Length** | The minimum password length requirement, the maximum length is 64. |
-| **Password Complexity** | Set the complexity requirements for the password, the types of characters that must be included. |
-| **Can't Include Username in Password** | Set whether the password can include the current user's username. |
-| **Remember Password History** | Remember the number of passwords recently used by the user. The user cannot reuse them when changing the password. |
+| Параметр Конфигурации                  | Описание                                                                                                           |
+|----------------------------------------|--------------------------------------------------------------------------------------------------------------------|
+| **Минимальная длина пароля**                    | Минимальная длина пароля, максимальная длина — 64.                                                 |
+| **Сложность пароля**                | Установка требований к сложности пароля, типы символов, которые должны быть включены.                   |
+| **Запрет включения имени пользователя в пароле** | Установка, может ли пароль включать имя текущего пользователя.                                                  |
+| **Помнить историю паролей**          | Количество недавно использованных паролей, которые помнит пользователь. Пользователь не может повторно использовать их при изменении пароля. |
 
-#### Password Expiration Configuration
+#### Настройка срока действия пароля
 
-| Configuration Item | Description |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Password Validity Period** | The validity period of user passwords. Users must change their passwords before they expire in order to recalculate the validity period. If they do not change their passwords before they expire, they will not be able to log in with the old password and will need administrator assistance to reset it. <br>If other login methods are configured, the user can log in using other methods. |
-| **Password Expiration Reminder Notification Channel** | Within 10 days before the user's password expires, a reminder will be sent each time the user logs in. |
+| Параметр конфигурации                                 | Описание                                                                                                                                                                                                                                                                                                                                                                                         |
+|-------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Срок действия пароля**                          | Срок действия паролей пользователей. Пользователи должны изменить свои пароли до истечения срока действия, чтобы пересчитать его. Если они не изменят свои пароли до истечения срока действия, они не смогут войти с использованием старого пароля и потребуется помощь администратора для сброса. <br>Если настроены другие способы входа, пользователи могут войти с использованием других методов.|
+| **Канал уведомлений о приближающемся истечении срока действия пароля** | За 10 дней до истечения срока действия пароля пользователя будет отправляться уведомление при каждом входе пользователя.                                                                                                                                                                                                                                                                                           |
 
-#### Password Login Security
+#### Безопасность входа по паролю
 
-| Configuration Item | Description |
-| ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| **Maximum Invalid Password Login Attempts** | Set the maximum number of login attempts a user can try within a specified time interval. |
-| **Maximum Invalid Password Login Time Interval (seconds)** | Set the time interval for calculating the user's maximum invalid login attempts, in seconds. |
-| **Lock Time (seconds)** | Set the time to lock the user after the user exceeds the invalid password login limit (0 means no limit). <br>During the period when the user is locked, it will be forbidden to access the system through any authentication method, including API keys. |
+| Параметр конфишурации                                      | Описание                                                                                                                                                                                                                                                  |
+|------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Максимальное количество попыток входа с неверным паролем**                | Установка максимального количества попыток входа пользователя в указанном временном интервале.                                                                                                                                                                 |
+| **Максимальный временной интервал попыток входа с неверным паролем (секунды)** | Установка временного интервала для расчета максимального количества неудачных попыток входа пользователя, в секундах.                                                                                                                                                              |
+| **Время блокировки (секунды)**                                    | Установка времени блокировки пользователя после превышения лимита неудачных попыток входа (0 означает отсутствие лимита). <br>В период блокировки пользователь не сможет получить доступ к системе ни через один метод аутентификации, включая API-ключи. |
 
-Usually, we recommend:
+Обычно мы рекомендуем:
 
-- Set strong password rules to reduce the risk of passwords being guessed by association or brute force.
-- Set a reasonable password validity period to force users to change their passwords regularly.
-- Combine the number of invalid password logins and time configuration to limit high-frequency password login attempts in a short time and prevent brute-force password cracking.
-- If the security requirements are strict, you can set a reasonable time for locking the user after exceeding the login limit. However, it should be noted that the lock time setting may be maliciously used. Attackers may intentionally enter the wrong password multiple times for target accounts, forcing the accounts to be locked and unable to be used normally. In actual use, you can combine IP restrictions, API frequency restrictions, and other means to prevent such attacks.
-- Change the default NocoBase root username, email, and password to prevent malicious use.
-- Since both password expiration or account locking will prevent access to the system, including administrator accounts, it is recommended to set up multiple accounts in the system that have permission to reset passwords and unlock users.
+- Установить сильные правила паролей, чтобы снизить риск угадывания паролей по ассоциации или перебором.
+- Установить разумный срок действия пароля, чтобы принудительно заставлять пользователей регулярно менять пароли.
+- Комбинировать количество неудачных попыток входа и временные настройки, чтобы ограничивать частые попытки входа в короткий промежуток времени и предотвращать перебор паролей.
+- При строгих требованиях к безопасности можно установить разумное время блокировки пользователя после превышения лимита входа. Однако следует отметить, что настройка времени блокировки может быть злонамеренно использована. Атакующие могут намеренно вводить неверный пароль несколько раз для целевых аккаунтов, заставляя их блокироваться и становиться недоступными для нормального использования. В реальной эксплуатации можно комбинировать ограничения по IP, ограничения частоты API и другие средства для предотвращения таких атак.
+- Изменить стандартное имя пользователя, адрес электронной почты и пароль NocoBase, чтобы предотвратить их злонамеренное использование.
+- Поскольку как истечение срока действия пароля, так и блокировка аккаунта могут препятствовать доступу к системе, включая аккаунты администраторов, рекомендуется настроить несколько аккаунтов в системе, имеющих права сброса паролей и разблокировки пользователей.
 
 ![](https://static-docs.nocobase.com/202501031618900.png)
 
-### User Lockout
+### Блокировка пользователей
 
-> Professional Edition and above, included in the password policy plugin
+> Профессиональная версия и выше, включена в плагин политики паролей
 
-Manage users who are locked out for exceeding the invalid password login limit. You can actively unlock them or actively add abnormal users to the lockout list. After a user is locked, they will be prohibited from accessing the system through any authentication method, including API keys.
+Управление пользователями, заблокированными за превышение лимита неудачных попыток входа. Можно активно разблокировать их или активно добавлять аномальных пользователей в список заблокированных. После блокировки пользователь будет запрещен от доступа к системе через любой метод аутентификации, включая API-ключи.
 
 ![](https://static-docs.nocobase.com/202501031618399.png)
 
-### Single Sign-On (SSO)
+### Единый вход (SSO)
 
-> Commercial Plugin
+> Коммерческий плагин
 
-NocoBase provides a rich set of SSO authentication plugins, supporting multiple mainstream protocols such as OIDC, SAML 2.0, LDAP, and CAS. At the same time, NocoBase also has a complete set of authentication method extension interfaces, which can support the rapid development and access of other authentication types. You can easily connect your existing IdP with NocoBase to centrally manage user identities on the IdP to enhance security.
+NocoBase предоставляет богатый набор плагинов аутентификации SSO, поддерживающих множество основных протоколов, таких как OIDC, SAML 2.0, LDAP и CAS. Одновременно NocoBase имеет полный набор интерфейсов расширения методов аутентификации, что позволяет быстро разрабатывать и подключать другие типы аутентификации. Вы можете легко подключить свой существующий IdP к NocoBase для централизованного управления пользовательскими учетными записями на IdP, повышая безопасность.
 ![](https://static-docs.nocobase.com/202501031619427.png)
 
-### Two-factor authentication
+### Двухфакторная аутентификация
 
-> Enterprise Edition
+> Корпоративная версия
 
-Two-factor authentication requires users to provide a second piece of valid information to prove their identity when logging in with a password, such as sending a one-time dynamic verification code to the user's trusted device, to verify the user's identity and ensure that the user's identity is not abused which reduces the risk of password leakage.
+Двухфакторная аутентификация требует от пользователей предоставления второй части действительной информации для подтверждения своей личности при входе с использованием пароля, например, отправки одноразового динамического кода верификации на доверенное устройство пользователя, чтобы подтвердить личность пользователя и гарантировать, что она не будет злоупотреблена, что снижает риск утечки паролей.
 
-### IP Access Control
+### Контроль доступа по IP
 
-> Enterprise Edition
+> Корпоративная версия
 
-NocoBase supports setting blacklists or whitelists for user access IPs.
 
-- In a strictly secure environment, you can set an IP whitelist to allow only specific IPs or IP ranges to access the system to restrict unauthorized external network connections and reduce security risks at the source.
-- Under public network access conditions, if the administrator discovers abnormal access, they can set an IP blacklist to block known malicious IP addresses or accesses from suspicious sources, reducing security threats such as malicious scanning and brute force cracking.
-- Log records are kept for rejected access requests.
+- В условиях строгой безопасности можно настроить белый список IP-адресов, чтобы разрешить доступ только определенным IP-адресам или диапазонам IP-адресов, ограничивая несанкционированные внешние сетевые подключения и снижая риски безопасности на уровне источника.
+- При доступе через публичную сеть, если администратор обнаруживает аномальный доступ, можно настроить черный список IP-адресов, чтобы блокировать известные злонамеренные IP-адреса или доступы из подозрительных источников, снижая угрозы, такие как злонамеренное сканирование и перебор паролей.
+- Ведутся журналы записей для отклоненных запросов на доступ.
 
-## Permission Control
+## Управление доступом
 
-By setting different roles in the system and setting corresponding permissions for roles, you can finely control the permissions of users to access resources. Administrators need to configure reasonably according to the needs of actual scenarios to reduce the risk of system resource leakage.
+Настройка различных ролей в системе и назначение соответствующих прав доступа для ролей позволяет детально контролировать права доступа пользователей к ресурсам. Администраторы должны настраивать разумно в соответствии с потребностями реальных сценариев, чтобы снизить риск утечки системных ресурсов.
 
-### Roles and Permissions
+### Роли и права доступа
 
-NocoBase controls the permissions of users to access resources by setting roles in the system, authorizing different roles, and binding users to corresponding roles. Each user can have multiple roles, and users can switch roles to operate resources from different perspectives. If the department plugin is installed, you can also bind roles and departments, so that users can have the roles bound on their respective departments.
+NocoBase контролирует права доступа пользователей к ресурсам путем настройки ролей в системе, авторизации различных ролей и привязки пользователей к соответствующим ролям. Каждый пользователь может иметь несколько ролей, и пользователи могут переключаться между ролями для работы с ресурсами с разных точек зрения. Если установлен плагин департаментов, можно также привязывать роли и департаменты, чтобы пользователи имели роли, привязанные к своим департаментам.
 
 ![](https://static-docs.nocobase.com/202501031620965.png)
 
-### System Configuration Permissions
+### Права доступа к системной конфигурации
 
-System configuration permissions include the following settings:
+Права доступа к системной конфигурации включают следующие настройки:
 
-- Whether to allow the configuration interface
-- Whether to allow to install, enable, and disable plugins
-- Whether to allow to configure plugins
-- Whether to allow to clear the cache and restart the application
-- Configuration permissions for each plugin
+- Разрешить интерфейс конфигурации
+- Разрешить установку, включение и отключение плагинов
+- Разрешить настройку плагинов
+- Разрешить очистку кэша и перезапуск приложения
+- Права доступа для каждого плагина
 
-### Menu Permissions
+### Права доступа к меню
 
-Menu permissions are used to control the permission of users to enter different menu pages, including desktop and mobile.
+Права доступа к меню используются для контроля доступа пользователей к различным страницам меню, включая рабочий стол и мобильную версию.
 ![](https://static-docs.nocobase.com/202501031620717.png)
 
-### Data Permissions
+### Права доступа к данным
 
-NocoBase provides fine-grained control over the permissions of users to access data in the system, ensuring that different users can only access data related to their responsibilities, preventing overreach and data leakage.
+NocoBase обеспечивает детальный контроль над разрешениями пользователей на доступ к данным в системе, гарантируя, что разные пользователи могут получать доступ только к данным, связанным с их обязанностями, предотвращая злоупотребление полномочиями и утечку данных.
 
-#### Global Control
+#### Глобальный контроль
 
 ![](https://static-docs.nocobase.com/202501031620866.png)
 
-#### Table-level, Field-level Control
+#### Контроль на уровне таблиц и полей
 
 ![](https://static-docs.nocobase.com/202501031621047.png)
 
-#### Data Scope Control
+#### Контроль области данных
 
-Set the scope of data that users can operate. Note that the scope of data here is different from the scope of data configured in the block. The scope of data configured in the block is usually only used for front-end filtering of data. If you need to strictly control the permission of users to access data resources, you need to configure it here, which is controlled by the server.
-
+Установите объем данных, с которыми могут работать пользователи. Обратите внимание, что объем данных здесь отличается от объема данных, настроенных в блоке. Объем данных, настроенный в блоке, обычно используется только для внешней фильтрации данных. Если вам необходимо строго контролировать разрешение пользователей на доступ к ресурсам данных, вам необходимо настроить его здесь, который контролируется сервером.
 ![](https://static-docs.nocobase.com/202501031621712.png)
 
-## Data Security
+## Безопасность данных
 
-During the data storage and backup process, NocoBase provides an effective mechanism to ensure data security.
+В процессе хранения и резервного копирования данных NocoBase предоставляет эффективный механизм для обеспечения безопасности данных.
 
-### Password Storage
+### Хранение паролей
 
-NocoBase users' passwords are encrypted and stored using the scrypt algorithm, which can effectively resist large-scale hardware attacks.
+Пароли пользователей NocoBase шифруются и хранятся с использованием алгоритма scrypt, что эффективно противодействует массовым аппаратным атакам.
 
-### Environment Variables and Keys
+### Переменные окружения и ключи
 
-When using third-party services in NocoBase, we recommend that you configure the third-party key information into environment variables and store them encrypted. This is convenient for configuration and use in different places and also enhances security. You can refer to the documentation for detailed usage methods.
+При использовании сторонних сервисов в NocoBase мы рекомендуем настраивать информацию о сторонних ключах в переменные окружения и хранить их в зашифрованном виде. Это удобно для настройки и использования в разных местах и повышает безопасность. Подробнее о методах использования можно узнать в документации.
 
-:::warning
-By default, the key is encrypted using the AES-256-CBC algorithm. NocoBase will automatically generate a 32-bit encryption key and save it to storage/.data/environment/aes_key.dat. Users should properly keep the key file to prevent it from being stolen. If you need to migrate data, the key file needs to be migrated together.
-:::
+
+По умолчанию ключ шифруется с использованием алгоритма AES-256-CBC. NocoBase автоматически генерирует 32-битный ключ шифрования и сохраняет его в storage/.data/environment/aes_key.dat. Пользователи должны должным образом хранить файл ключа, чтобы предотвратить его кражу. Если вам нужно перенести данные, файл ключа также должен быть перенесен вместе с данными.
 
 ![](https://static-docs.nocobase.com/202501031622612.png)
 
-### File Storage
+### Хранение файлов
 
-If you need to store sensitive files, it is recommended to use a cloud storage service compatible with the S3 protocol and use the commercial plugin File storage: S3 (Pro) to enable private reading and writing of files. If you need to use it in the internal network environment, it is recommended to use storage applications that support private deployment and are compatible with the S3 protocol, such as MinIO.
-
+Если вам нужно хранить конфиденциальные файлы, рекомендуется использовать облачное хранилище, совместимое с протоколом S3, и использовать коммерческий плагин Хранение файлов: S3 (Pro) для включения приватного чтения и записи файлов. Если вам нужно использовать его в локальной сети, рекомендуется использовать приложения для хранения, поддерживающие приватную установку и совместимые с протоколом S3, такие как MinIO.
 ![](https://static-docs.nocobase.com/202501031623549.png)
 
-### Application Backup
+### Резервное копирование приложения
 
-To ensure the security of application data and avoid data loss, we recommend that you back up the database regularly.
+Для обеспечения безопасности данных приложения и предотвращения потери данных мы рекомендуем регулярно резервировать базу данных.
 
-Open-source edition can refer to https://www.nocobase.com/en/blog/nocobase-backup-restore to back up with database tools. We also recommend that you properly keep backup files to prevent data leakage.
+Открытая версия может использовать инструменты базы данных для резервного копирования, подробнее см. на сайте: https://www.nocobase.com/en/blog/nocobase-backup-restore . Мы также рекомендуем хранить файлы резервных копий в безопасном месте, чтобы предотвратить утечку данных.
 
-Professional and above editions can use the backup manager for backups. The backup manager provides the following features:
+Профессиональные и выше версии могут использовать менеджер резервного копирования для резервного копирования. Менеджер резервного копирования предоставляет следующие функции:
 
-- Scheduled automatic backup: Periodic automatic backups save time and manual operations, and data security is more secure.
-- Synchronize backup files to cloud storage: Isolate backup files from the application service itself to prevent the loss of backup files while the service is unavailable due to server failure.
-- Backup file encryption: Set a password for backup files to reduce the risk of data loss caused by backup file leakage.
+- Автоматическое резервное копирование по расписанию: периодическое автоматическое резервное копирование экономит время и сокращает объем ручных операций, а безопасность данных становится более надежной.
+- Синхронизация файлов резервных копий с облачным хранилищем: Изоляция файлов резервных копий от самого приложения, чтобы предотвратить потерю файлов резервных копий при недоступности службы из-за сбоев сервера.
+- Шифрование файлов резервных копий: Установка пароля для файлов резервных копий, чтобы снизить риск потери данных при утечке файлов резервных копий.
 
 ![](https://static-docs.nocobase.com/202501031623107.png)
 
-## Runtime Environment Security
+## Безопасность среды выполнения
 
-Correctly deploying NocoBase and ensuring the security of the runtime environment is one of the keys to ensuring the security of NocoBase applications.
+Правильная установка NocoBase и обеспечение безопасности среды выполнения являются одним из ключевых факторов для обеспечения безопасности приложений NocoBase.
 
-### HTTPS Deployment
+### Установка HTTPS
 
-To prevent man-in-the-middle attacks, we recommend that you add an SSL/TLS certificate to your NocoBase application site to ensure the security of data during network transmission.
+Для предотвращения атак "man-in-the-middle attacks" мы рекомендуем добавить SSL/TLS-сертификат на ваш сайт приложения NocoBase, чтобы обеспечить безопасность данных при передаче через сеть.
 
-### API Transport Encryption
+### Транспортное шифрование API
 
-> Enterprise Edition
+> Корпоративная версия 
 
-In environments with more stringent data security requirements, NocoBase supports enabling API transport encryption to encrypt API request and response content, avoid clear text transmission, and increase the threshold for data cracking.
+В средах с более строгими требованиями к безопасности данных NocoBase поддерживает включение транспортного шифрования API для шифрования содержимого запросов и ответов API, предотвращения передачи открытого текста и увеличения порога взлома данных.
 
-### Private Deployment
+### Локальное развертывание
 
-By default, NocoBase does not need to communicate with third-party services, and the NocoBase team will not collect any user information. It is only necessary to connect to the NocoBase server when performing the following two operations:
+По умолчанию NocoBase не требует связи со сторонними сервисами, и команда NocoBase не собирает никакую информацию пользователей. Соединение с сервером NocoBase требуется только при выполнении следующих двух операций:
 
-1. Automatically download commercial plugins through the NocoBase Service platform.
-2. Online identity verification and application activation for commercial edition.
+1. Автоматическая загрузка коммерческих плагинов через платформу сервисов NocoBase.
+2. Онлайн-верификация и активация приложения для коммерческой версии.
 
-If you are willing to sacrifice a certain degree of convenience, these two operations also support offline completion and do not need to be directly connected to the NocoBase server.
+Если вы готовы пожертвовать некоторым уровнем удобства, эти две операции также поддерживают выполнение в автономном режиме и не требуют прямого подключения к серверу NocoBase.
 
-NocoBase supports complete intranet deployment, refer to
-
+NocoBase поддерживает полную установку в локальной сети, подробнее в:
 - https://www.nocobase.com/en/blog/load-docker-image
 - [Upload plugins to the plugin directory to install and upgrade](../welcome/getting-started/plugin#installing-and-updating-plugins-via-plugin-directory-upload)
 
-### Multiple Environment Isolation
+  ### Изоляция нескольких сред
 
-> Professional Edition and above
+> Профессиональная версия и выше
 
-In actual use, we recommend enterprise users to isolate testing and production environments to ensure the security of application data and the runtime environment in the production environment. With the migration management plugin, you can migrate application data between different environments.
+В реальной эксплуатации мы рекомендуем предприятиям изолировать тестовые и производственные среды для обеспечения безопасности данных приложения и среды выполнения в производственной среде. С помощью плагина управления миграциями можно мигрировать данные приложения между разными средами.
 
 ![](https://static-docs.nocobase.com/202501031627729.png)
 
-## Auditing and Monitoring
+## Аудит и мониторинг
 
-### Audit Logs
+### Журналы аудита
 
-> Enterprise Edition
+> Корпоративная версия
 
-NocoBase's audit log function records users' activity records in the system. By recording users' key operations and access behaviors, administrators can:
+Функция журнала аудита NocoBase записывает активность пользователей в системе. Записывая ключевые операции и поведение доступа пользователей, администраторы могут:
 
-- Check users' access information such as IP, device, and operation time to detect abnormal behaviors in time.
-- Trace the operation history of data resources in the system.
+- Проверять информацию о доступе пользователей, такие как IP-адрес, устройство и время операции, для своевременного обнаружения аномального поведения.
+- Отслеживать историю операций с ресурсами данных в системе.
 
 ![](https://static-docs.nocobase.com/202501031627719.png)
 
 ![](https://static-docs.nocobase.com/202501031627922.png)
 
-### Application Logs
+### Журналы приложения
 
-NocoBase provides multiple log types to help users understand the system's running status and behavior records, so that system problems can be identified and located in a timely manner, ensuring the system's security and controllability from different dimensions. The main types of logs include:
+NocoBase предоставляет несколько типов журналов, чтобы помочь пользователям понимать состояние работы системы и записи поведения, что позволяет своевременно идентифицировать и локализовать проблемы системы, обеспечивая ее безопасность и управляемость с разных сторон. Основные типы журналов включают:
 
-- Request log: API request logs, including accessed URLs, HTTP methods, request parameters, response times, and status codes.
-- System log: Records application running events, including service startup, configuration changes, error messages, and key operations.
-- SQL log: Records database operation statements and their execution times, covering operations such as query, update, insert, and delete.
-- Workflow log: Execution log of the workflow, including execution time, running information, and error information.
+- Журнал запросов: Журналы API -запросов, включая посещенные URL, методы HTTP, параметры запроса, время ответа и коды состояния.
+- Журнал системы: Записи событий работы приложения, включая запуск службы, изменения конфигурации, сообщения об ошибках и ключевые операции.
+- Журнал SQL: Записи операций базы данных и их времени выполнения, включая операции запроса, обновления, вставки и удаления.
+- Журнал рабочего процесса: журнал выполнения рабочего процесса, включая время выполнения, информацию о выполнении и информацию об ошибках.
+- 
