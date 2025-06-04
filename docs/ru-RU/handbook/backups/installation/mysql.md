@@ -1,8 +1,8 @@
-# MySQL Database Client Installation
+# Установка клиента базы данных MySQL
 
-## Docker Installation
+## Установка Docker
 
-### Create a Dockerfile in the directory where your NocoBase Dockerfile is located
+### Создайте Dockerfile в каталоге, где находится ваш NocoBase Dockerfile
 
 ```Dockerfile
 # Based on the "next" version
@@ -29,7 +29,7 @@ RUN apt-get update && apt-get install -y wget && \
  cp /tmp/mysql-client/usr/bin/mysql /usr/bin/
 ```
 
-### Modify NocoBase’s docker-compose.yml File
+### Измените файл docker-compose.yml NocoBase
 
 ```diff
 version: "3"
@@ -84,9 +84,9 @@ services:
       - nocobase
 ```
 
-### Upgrading
+### Обновление
 
-Previously, you would pull a new image for each update. Now, you need to build a new image every time:
+Раньше вам приходилось извлекать новый образ для каждого обновления. Теперь вам нужно каждый раз создавать новый образ:
 
 ```diff
 # Pull the latest image
@@ -99,10 +99,10 @@ docker-compose up -d app
 docker-compose logs app
 ```
 
-## Other Installation Methods
+## Другие способы установки
 
-If you installed NocoBase using [create-nocobase-app installation](/welcome/getting-started/installation/create-nocobase-app) or by [cloning the Git repository](/welcome/getting-started/installation/git-clone), please visit the official MySQL download page to select the appropriate MySQL version and follow the official documentation for installation:
+Если вы установили NocoBase с помощью [create-nocobase-app installation](/welcome/getting-started/installation/create-nocobase-app) или [клонированием репозитория Git](/welcome/getting-started/installation/git-clone), посетите официальную страницу загрузки MySQL, чтобы выбрать подходящую версию MySQL, и следуйте официальной документации по установке:
 
-- Historical versions: [https://downloads.mysql.com/archives/community/](https://downloads.mysql.com/archives/community/)
-- Latest version: [https://dev.mysql.com/downloads/mysql/](https://dev.mysql.com/downloads/mysql/)
+- Исторические версии: [https://downloads.mysql.com/archives/community/](https://downloads.mysql.com/archives/community/)
+- Последняя версия: [https://dev.mysql.com/downloads/mysql/](https://dev.mysql.com/downloads/mysql/)
 

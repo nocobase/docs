@@ -1,54 +1,56 @@
-# Export records Pro
+# Экспорт записей Pro
 
 <PluginInfo commercial="true" name="action-export-pro"></PluginInfo>
 
-## Introduction
+## Введение
 
-The Export records Pro plugin provides enhanced functionality based on the regular export feature.
+Плагин **Экспорт записей Pro** расширяет возможности стандартного экспорта данных.
 
-## Installation
+## Установка
 
-This plugin depends on the async task management plugin. Please enable the async task management plugin before use.
+Для работы плагина требуется активированный плагин управления асинхронными задачами. Пожалуйста, включите его перед использованием.
 
-## Enhanced Features
+## Расширенные возможности
 
-- Supports asynchronous export operations, executed in independent threads, suitable for exporting large amounts of data.
-- Supports attachment export.
+- Поддержка асинхронного экспорта — выполнение в отдельном потоке, подходит для больших объёмов данных.
+- Поддержка экспорта вложений.
 
-## User Manual
+## Руководство пользователя
 
-### Export Mode Configuration
+### Настройка режима экспорта
 
 ![index-2025-01-13-20-58-39](https://static-docs.nocobase.com/index-2025-01-13-20-58-39.png)
 
-You can configure the export mode on the export button, with three available export modes:
+Вы можете настроить режим экспорта на кнопке экспорта. Доступны три варианта:
 
-- Auto: Determines the export mode based on the amount of data at export time. If the data volume is less than 1000 records (100 records for attachment export), synchronous export is used; if the data volume exceeds 1000 records (100 records for attachment export), asynchronous export is used.
-- Sync: Uses synchronous export, which runs in the main thread and is suitable for small-scale data. Using synchronous mode for large-scale data exports may cause system blocking, lag, and inability to process other user requests.
-- Async: Uses asynchronous export, which runs in a separate background thread and won't block the current system.
+- **Auto**: Определяет режим автоматически. При количестве записей < 1000 (или < 100 для вложений) используется синхронный режим; при превышении — асинхронный.
+- **Sync**: Синхронный экспорт — выполняется в основном потоке. Подходит для небольших объёмов. При больших данных может вызывать подвисание системы.
+- **Async**: Асинхронный экспорт — выполняется в фоновом потоке, не блокируя интерфейс и систему.
 
-### Asynchronous Export
+### Асинхронный экспорт
 
-After initiating an export, the export process will be executed in a separate background thread without requiring manual user configuration. In the user interface, after executing the export operation, the current export task will be displayed in the upper right corner, showing real-time task progress.
+После запуска экспорта процесс выполняется в фоне без участия пользователя. В интерфейсе задание появляется в правом верхнем углу, отображая статус выполнения.
 
 ![index-2024-12-30-09-21-05](https://static-docs.nocobase.com/index-2024-12-30-09-21-05.png)
 
-After the export is complete, you can download the exported file from the export task.
+После завершения можно скачать готовый файл из задачи экспорта.
 
-### Attachment Export
+### Экспорт вложений
 
-Attachment export supports exporting attachment-related fields as compressed packages.
+Поддерживается экспорт полей-вложений в виде zip-архива.
 
-#### Attachment Export Configuration
+#### Настройка экспорта вложений
 
 ![index-2024-12-30-09-16-55](https://static-docs.nocobase.com/index-2024-12-30-09-16-55.png)
 
-- Configure the attachment fields to be exported, multiple selections supported.
-- You can choose whether to generate a folder for each record.
+- Выберите поля вложений для экспорта (допускается множественный выбор).
+- Можно настроить создание отдельной папки для каждой записи.
 
-File naming rules:
+**Правила именования файлов:**
 
-- If you choose to generate a folder for each record, the file naming rule is: `{record title field value}/{attachment field name}[-{file sequence number}].{file extension}`.
-- If you choose not to generate folders, the file naming rule is: `{record title field value}-{attachment field name}[-{file sequence number}].{file extension}`.
+- Если включено создание папки:  
+  `{значение заголовочного поля записи}/{название поля вложения}[-{номер файла}].{расширение}`
+- Без папок:  
+  `{значение заголовочного поля записи}-{название поля вложения}[-{номер файла}].{расширение}`
 
-The file sequence number is automatically generated when there are multiple attachments in the attachment field.
+Номер файла автоматически добавляется, если в одном поле несколько вложений.

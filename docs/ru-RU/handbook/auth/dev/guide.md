@@ -1,34 +1,37 @@
-# Extend Authentication Type
+# Расширение типа аутентификации
 
-## Overview
+## Обзор
 
-NocoBase supports extending user authentication types as needed. User authentication generally falls into two types: one is to determine user identity within the NocoBase application itself, such as password login, SMS login, etc.; the other is to have third-party services determine user identity and notify the NocoBase application of the result through callbacks, such as OIDC, SAML, and other authentication methods. The authentication process for these two different types of authentication methods in NocoBase is basically as follows:
+NocoBase поддерживает расширение типов аутентификации пользователя по мере необходимости. Аутентификация пользователя обычно делится на два типа: один заключается в определении личности пользователя в самом приложении NocoBase, например, вход по паролю, вход по SMS и т. д.; другой заключается в определении сторонними службами личности пользователя и уведомлении приложения NocoBase о результате с помощью обратных вызовов, таких как OIDC, SAML и другие методы аутентификации. Процесс аутентификации для этих двух различных типов методов аутентификации в NocoBase в основном выглядит следующим образом:
 
-### No Third-party Callbacks are required
+### Сторонние обратные вызовы не требуются
 
-1. The client uses the NocoBase SDK to call the login interface `api.auth.signIn()`, requesting the login interface `auth:signIn`, while carrying the current authenticator identifier through the request header `X-Authenticator` to the backend.
-2. The `auth:signIn` interface forwards to the corresponding authentication type based on the authenticator identifier in the request header, and the `validate` method in the registered authentication class of that authentication type performs the corresponding logical processing.
-3. The client retrieves user information and authentication token from the `auth:signIn` interface response, saves the token to Local Storage, and completes the login. This step is automatically handled internally by the SDK.
-
+1. Клиент использует NocoBase SDK для вызова интерфейса входа `api.auth.signIn()`, запрашивая интерфейс входа `auth:signIn`, при этом передавая текущий идентификатор аутентификатора через заголовок запроса `X-Authenticator` в бэкэнд.
+2. Интерфейс `auth:signIn` перенаправляет к соответствующему типу аутентификации на основе идентификатора аутентификатора в заголовке запроса, а метод `validate` в зарегистрированном классе аутентификации этого типа аутентификации выполняет соответствующую логическую обработку.
+3. Клиент извлекает информацию о пользователе и токен аутентификации из ответа интерфейса `auth:signIn`, сохраняет токен в локальном хранилище и завершает вход. Этот шаг автоматически обрабатывается внутри SDK.
+4. 
 <img src="https://static-docs.nocobase.com/202404211852848.png"/>
 
 ### Dependent on Third-party Callbacks
 
-1. The client obtains the third-party login URL through its own registered interface (such as `auth:getAuthUrl`), and carries information such as the application name and authenticator identifier according to the protocol.
-2. Redirect to the third-party URL to complete the login. The third-party service calls the callback interface of the NocoBase application (which needs to be registered by itself, such as `auth:redirect`), returns the authentication result, and returns information such as the application name and authenticator identifier.
-3. In the callback interface method, parse the parameters to obtain the authenticator identifier, obtain the corresponding authentication class through `AuthManager`, and actively call the `auth.signIn()` method. The `auth.signIn()` method will call the `validate()` method to handle the authentication logic.
-4. After the callback method obtains the authentication token, it redirects back to the frontend page with a 302 status code, and carries the `token` and authenticator identifier in the URL parameters, `?authenticator=xxx&token=yyy`.
+### Зависит от сторонних обратных вызовов
+
+1. Клиент получает сторонний URL-адрес входа через свой собственный зарегистрированный интерфейс (например, `auth:getAuthUrl`) и передает информацию, такую ​​как имя приложения и идентификатор аутентификатора, в соответствии с протоколом.
+2. Перенаправляет на сторонний URL-адрес для завершения входа. Сторонняя служба вызывает интерфейс обратного вызова приложения NocoBase (который должен быть зарегистрирован самостоятельно, например `auth:redirect`), возвращает результат аутентификации и возвращает информацию, такую ​​как имя приложения и идентификатор аутентификатора.
+3. В методе интерфейса обратного вызова проанализируйте параметры, чтобы получить идентификатор аутентификатора, получите соответствующий класс аутентификации через `AuthManager` и активно вызовите метод `auth.signIn()`. Метод `auth.signIn()` вызовет метод `validate()` для обработки логики аутентификации.
+4. После того как метод обратного вызова получит токен аутентификации, он перенаправит обратно на страницу интерфейса с кодом состояния 302 и перенесет `token` и идентификатор аутентификатора в параметры URL, `?authenticator=xxx&token=yyy`.
 
 <img src="https://static-docs.nocobase.com/202404211852377.png"/>
 
-Next, we'll discuss how to register server-side interfaces and client-side user interfaces.
+Далее мы обсудим, как регистрировать серверные интерфейсы и клиентские пользовательские интерфейсы.
 
-## Server
+## Сервер
 
-### Interface
+### Интерфейс
 
-The NocoBase kernel provides registration and management for extending authentication types. The core logic processing of extending the login plugin requires inheriting the `Auth` abstract class of the kernel and implementing the corresponding standard interfaces.  
-For the complete API, see [Auth](../../../api/auth/auth.md).
+Ядро NocoBase обеспечивает регистрацию и управление для расширения типов аутентификации. Основная логическая обработка расширения плагина входа требует наследования абстрактного класса `Auth` ядра и реализации соответствующих стандартных интерфейсов.
+Полный API см. в [Auth](../../../api/auth/auth.md).
+
 
 ```typescript
 import { Auth } from '@nocobase/auth';
@@ -42,7 +45,7 @@ class CustomAuth extends Auth {
 }
 ```
 
-In most cases, the extended user authentication type can also use the existing JWT authentication logic to generate the credential for the user to access the API. The `BaseAuth` class in the kernel has done the basic implementation of the `Auth` abstract class, see [BaseAuth](../../../api/auth/base-auth.md). Plugins can directly inherit the `BaseAuth` class to reuse part of the logic code and reduce development costs.
+В большинстве случаев расширенный тип аутентификации пользователя может также использовать существующую логику аутентификации JWT для генерации учетных данных для доступа пользователя к API. Класс `BaseAuth` в ядре выполнил базовую реализацию абстрактного класса `Auth`, см. [BaseAuth](../../../api/auth/base-auth.md). Плагины могут напрямую наследовать класс `BaseAuth` для повторного использования части логического кода и снижения затрат на разработку.
 
 ```javascript
 import { BaseAuth } from '@nocobase/auth';
@@ -59,9 +62,9 @@ class CustomAuth extends BaseAuth {
 }
 ```
 
-### User Data
+### Данные пользователя
 
-In a NocoBase application, the related collections are defined by default as:
+В приложении NocoBase связанные коллекции по умолчанию определяются следующим образом:
 
 | Collections           | Description                                                                                                          | Plugin                                                         |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
@@ -69,9 +72,9 @@ In a NocoBase application, the related collections are defined by default as:
 | `authenticators`      | Store authenticator (authentication type entity) information, corresponding to authentication type and configuration | User Authentication Plugin (`@nocobase/plugin-auth`)           |
 | `usersAuthenticators` | Associates users and authenticators, saves user information under the corresponding authenticator                    | User Authentication Plugin (`@nocobase/plugin-auth`)           |
 
-In general, extended login methods use `users` and `usersAuthenticators` to store corresponding user data. Only in special cases do you need to add a new Collection yourself.
+В общем, расширенные методы входа используют `users` и `usersAuthenticators` для хранения соответствующих пользовательских данных. Только в особых случаях вам нужно добавить новую коллекцию самостоятельно.
 
-The main fields of `usersAuthenticators` are
+Основные поля `usersAuthenticators`:
 
 | Field           | Description                                                                                 |
 | --------------- | ------------------------------------------------------------------------------------------- |
@@ -80,7 +83,7 @@ The main fields of `usersAuthenticators` are
 | `userId`        | User ID                                                                                     |
 | `authenticator` | Authenticator name (unique identifier)                                                      |
 
-For user query and creation operations, the `authenticators` data model `AuthModel` also encapsulates several methods that can be used in the `CustomAuth` class via `this.authenticator[methodName]`. For the complete API, see [AuthModel](../dev/api.md#authmodel).
+Для операций запроса и создания пользователя модель данных `authenticators` `AuthModel` также инкапсулирует несколько методов, которые могут использоваться в классе `CustomAuth` через `this.authenticator[methodName]`. Для полного API см. [AuthModel](../dev/api.md#authmodel).
 
 ```ts
 import { AuthModel } from '@nocobase/plugin-auth';
@@ -97,9 +100,9 @@ class CustomAuth extends BaseAuth {
 }
 ```
 
-### Authentication Type Registration
+### Регистрация типа аутентификации
 
-The extended authentication method needs to be registered with the authentication management module.
+Расширенный метод аутентификации необходимо зарегистрировать в модуле управления аутентификацией.
 
 ```javascript
 class CustomAuthPlugin extends Plugin {
@@ -111,9 +114,9 @@ class CustomAuthPlugin extends Plugin {
 }
 ```
 
-## Client
+## Клиент
 
-The client user interface is registered through the interface `registerType` provided by the user authentication plugin client:
+Пользовательский интерфейс клиента регистрируется через интерфейс `registerType`, предоставляемый клиентом плагина аутентификации пользователя:
 
 ```ts
 import AuthPlugin from '@nocobase/plugin-auth/client';
@@ -133,35 +136,35 @@ class CustomAuthPlugin extends Plugin {
 }
 ```
 
-### Sign In Form
+### Форма входа
 
 ![](https://static-docs.nocobase.com/33afe18f229c3db45c7a1921c2c050b7.png)
 
-If multiple authenticators corresponding to the authentication type have registered login forms, they will be displayed in the form of Tabs. The Tab title is the title of the authenticator configured in the background.
+Если несколько аутентификаторов, соответствующих типу аутентификации, имеют зарегистрированные формы входа, они будут отображаться в виде вкладок. Заголовок вкладки — это заголовок аутентификатора, настроенного в фоновом режиме.
 
 ![](https://static-docs.nocobase.com/ada6d7add744be0c812359c23bf4c7fc.png)
 
-### Sign In Button
+### Кнопка входа
 
 ![](https://static-docs.nocobase.com/e706f7785782adc77b0f4ee4faadfab8.png)
 
-Usually for third-party login buttons, but can actually be any component.
+Обычно для сторонних кнопок входа, но на самом деле может быть любым компонентом.
 
-### Sign Up Form
+### Форма регистрации
 
 ![](https://static-docs.nocobase.com/f95c53431bf21ec312fcfd51923f0b42.png)
 
-If you need to jump from the login page to the sign up page, you need to handle it yourself in the login component.
+Если вам нужно перейти со страницы входа на страницу регистрации, вам нужно сделать это самостоятельно в компоненте входа.
 
-### Backend Management Form
+### Форма управления бэкэндом
 
 ![](https://static-docs.nocobase.com/f4b544b5b0f5afee5621ad4abf66b24f.png)
 
-The top is the generic authenticator configuration, and the bottom is the part of the custom configuration form that can be registered.
+Вверху находится общая конфигурация аутентификатора, а внизу — часть формы пользовательской конфигурации, которую можно зарегистрировать.
 
-### Request APIs
+### API запросов
 
-To initiate requests for user authentication-related interfaces on the client-side, you can use the SDK provided by NocoBase.
+Чтобы инициировать запросы на интерфейсы, связанные с аутентификацией пользователя, на стороне клиента, вы можете использовать SDK, предоставляемый NocoBase.
 
 ```ts
 import { useAPIClient } from '@nocobase/client';
@@ -171,4 +174,4 @@ const api = useAPIClient();
 api.auth.signIn(data, authenticator);
 ```
 
-For detailed API references, see [@nocobase/sdk - Auth](../../../api/sdk/auth.md).
+Подробные справочные материалы по API см. в [@nocobase/sdk - Auth](../../../api/sdk/auth.md).

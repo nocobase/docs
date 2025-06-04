@@ -1,25 +1,25 @@
-# **Bulk Edit**
+# **Массовое редактирование**
 
-## Introduction
+## Введение
 
-The Bulk editing feature is crafted for situations where different update logic must be applied to various groups of records, offering high flexibility in data processing tasks. When the user clicks the batch editing button, a configuration interface appears, enabling the user to define distinct assignment logic for each field. This allows for precise control over how each record is updated based on specific needs.
+Функция массового редактирования предназначена для ситуаций, когда необходимо применить разную логику обновления к различным группам записей. Это обеспечивает высокую гибкость при обработке данных. При нажатии пользователем кнопки массового редактирования появляется интерфейс настройки, позволяющий задать индивидуальную логику назначения значений для каждого поля. Это даёт возможность точно управлять обновлением записей в соответствии с конкретными потребностями.
 
-![Bulk Editing Interface](https://static-docs.nocobase.com/70e1fb4122f56fc340405b16d229bd60.png)
+![Интерфейс массового редактирования](https://static-docs.nocobase.com/70e1fb4122f56fc340405b16d229bd60.png)
 
-## Installation
+## Установка
 
-## User Guide
+## Руководство пользователя
 
-1. Select the data for Bulk editing: either Selected or All, with the default option being Selected.
+1. Выберите данные для массового редактирования: "Выбранные" или "Все". По умолчанию используется вариант "Выбранные".
 
-![Bulk Editing Data Selection](https://static-docs.nocobase.com/c158538d86397bd48fdaed606b647166.png)
+![Выбор данных для редактирования](https://static-docs.nocobase.com/c158538d86397bd48fdaed606b647166.png)
 
-2. Define the update logic for each field, with options to:
+2. Задайте логику обновления для каждого поля. Доступные опции:
 
-  - Leave unchanged
-  - Modify to a specified value
-  - Clear the field
+- Не изменять
+- Изменить на заданное значение
+- Очистить поле
 
-In the example shown, the Bulk editing operation is applied within the shipment table block. The selected data has the transportation mode updated to air freight, and both the delivery confirmation and actual arrival times are cleared.
+В приведённом примере операция массового редактирования выполняется в блоке таблицы "Отгрузки". У выбранных записей способ транспортировки обновляется на "авиа", а подтверждение доставки и фактическое время прибытия — очищаются.
 
-![Bulk Editing Configuration](https://static-docs.nocobase.com/65db9e898d11b01441b7830895f4dd76.gif)
+![Настройка массового редактирования](https://static-docs.nocobase.com/65db9e898d11b01441b7830895f4dd76.gif)

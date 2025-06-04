@@ -1,10 +1,10 @@
-# General Collection
+# Общая коллекция
 
 <PluginInfo name="data-source-main"></PluginInfo>
 
-## Introduction
-It is used in most scenarios. A general collection can be used unless a special collection template is needed.
+## Введение
+Используется в большинстве сценариев. Общую коллекцию можно использовать, если не требуется специальные коллекции.
 
-## User Manual
+## Руководство пользователя
 
 ![20240324085739](https://static-docs.nocobase.com/20240324085739.png)

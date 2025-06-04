@@ -5661,10 +5661,10 @@ dumi-assets-types@2.0.0-alpha.0:
   resolved "https://registry.npmjs.org/dumi-assets-types/-/dumi-assets-types-2.0.0-alpha.0.tgz#46bf619ed1cb6d27bbe6a9cfe4be51e5e9589981"
   integrity sha512-a/Y5lf0G6gwsEQ9hop/n03CcjmHsGBk384Cz/AEX6mRYrfSpUx/lQvP9HLoXkCzScl9PL1sSmLPnMkgaXDCZLA==
 
-dumi-theme-nocobase@^0.2.30:
-  version "0.2.30"
-  resolved "https://registry.yarnpkg.com/dumi-theme-nocobase/-/dumi-theme-nocobase-0.2.30.tgz#a65d3d029b41310a934cd0084597ebbd12d62a3f"
-  integrity sha512-Xih1b5mb43MEZH1DRdcZSrUXA3Z+3TFN5k90eVe6GI1yr0hBiA0waosMinx1i0aUOPmkTzLMJCK3VWdoqAGxWg==
+dumi-theme-nocobase@^0.2.31:
+  version "0.2.31"
+  resolved "https://registry.yarnpkg.com/dumi-theme-nocobase/-/dumi-theme-nocobase-0.2.31.tgz#e756a9b15d2a638c981877e76aad5625961baa01"
+  integrity sha512-hzjavAJ+q87bzh9v1s0O3uhhE8XtViJgrTQQG2LnE2sTEFOkWb1VLKDtcwxFP1wODeuFYlUlypEl30e/NOIZyA==
   dependencies:
     "@ant-design/icons" "^5.1.3"
     "@babel/runtime" "^7.22.3"

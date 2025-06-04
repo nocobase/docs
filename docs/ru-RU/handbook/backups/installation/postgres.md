@@ -1,8 +1,8 @@
-# Postgres Database Client Installation
+# Установка клиента базы данных Postgres
 
-## Docker Installation
+## Установка Docker
 
-### Create a Dockerfile in the directory where your NocoBase Dockerfile is located
+### Создайте Dockerfile в каталоге, где находится ваш NocoBase Dockerfile
 
 ```Dockerfile
 # Based on the "next" version
@@ -29,7 +29,7 @@ RUN apt update && apt install -y postgresql-common gnupg \
   && apt install -y postgresql-client-${PG_VERSION}
 ```
 
-### Modify the docker-compose.yml File for NocoBase
+### Измените файл docker-compose.yml для NocoBase
 
 ```diff
 version: "3"
@@ -83,9 +83,9 @@ services:
       - nocobase
 ```
 
-### Upgrading
+### Обновление
 
-Previously, you would pull a new image for each update. Now, you need to build a new image every time:
+Раньше вам приходилось извлекать новый образ для каждого обновления. Теперь вам нужно каждый раз создавать новый образ:
 
 ```diff
 # Pull the latest image
@@ -98,6 +98,6 @@ docker-compose up -d app
 docker-compose logs app
 ```
 
-## Other Installation Methods
+## Другие способы установки
 
-If you installed NocoBase using [create-nocobase-app](/welcome/getting-started/installation/create-nocobase-app) or by [cloning the Git repository](/welcome/getting-started/installation/git-clone), please visit [PostgreSQL's official download page](https://www.postgresql.org/download/) to select the appropriate PostgreSQL version and follow the official documentation for installation.
+Если вы установили NocoBase с помощью [create-nocobase-app](/welcome/getting-started/installation/create-nocobase-app) или [клонированием репозитория Git](/welcome/getting-started/installation/git-clone), посетите [официальную страницу загрузки PostgreSQL](https://www.postgresql.org/download/), чтобы выбрать подходящую версию PostgreSQL, и следуйте официальной документации по установке.

@@ -1,9 +1,9 @@
-# App Switching
+# Переключение приложений
 
 <PluginInfo commercial="true" name="app-switching"></PluginInfo>
 
-## Introduction
+## Введение
 
 :::warning
-The App Switching plugin is currently under development and has yet to be released.
+Плагин "Переключение приложений" находится в разработке и пока не выпущен.
 :::

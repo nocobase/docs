@@ -1,13 +1,13 @@
-# Print
+# Печать
 
 <PluginInfo name="action-print"></PluginInfo>
 
-## Introduction
+## Введение
 
-The print button is a functional button in the details section. When clicked, it triggers the browser’s print function, allowing users to easily print the content to a physical document or other printing devices.
+Кнопка печати — это функциональная кнопка в разделе деталей. При нажатии она запускает функцию печати браузера, позволяя пользователям легко распечатать содержимое на бумаге или сохранить в PDF/другие устройства печати.
 
-## Installation
+## Установка
 
-This is a built-in plugin, no separate installation required.
+Плагин встроен в систему и не требует отдельной установки.
 
 ![20240426105637](https://static-docs.nocobase.com/20240426105637.png)

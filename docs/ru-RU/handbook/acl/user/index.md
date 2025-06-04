@@ -1,225 +1,226 @@
-# Hand book
+# Руководство
 
-## **Management Center**
+## **Центр управления**
 
-##### **Role Management**
+##### **Управление ролями**
 
-The application comes with two predefined roles: "Admin" and "Member," each with distinct default permission settings tailored to their functionalities.
+Приложение поставляется с двумя предустановленными ролями: **"Admin"** и **"Member"**, каждая из которых имеет уникальные настройки прав, соответствующие их функциям.
 
 ![](https://static-docs.nocobase.com/da7083c67d794e23dc6eb0f85b1de86c.png)
 
-##### **Adding, Deleting, and Modifying Roles**
+##### **Добавление, удаление и изменение ролей**
 
-The role identifier, a unique system identifier, allows customization of default roles, but the system's predefined roles cannot be deleted.
+Каждая роль имеет уникальный системный идентификатор, который позволяет изменять предустановленные роли, однако сами предустановленные роли удалить нельзя.
 
 ![](https://static-docs.nocobase.com/35f323b346db4f9f12f9bee4dea63302.png)
 
-##### **Setting the Default Role**
+##### **Назначение роли по умолчанию**
 
-The default role is the one automatically assigned to new users if no specific role is provided during their creation.
+Роль по умолчанию — это роль, которая автоматически присваивается новым пользователям, если при их создании не указана конкретная роль.
 
 ![](https://static-docs.nocobase.com/f41bba7ff55ca28715c486dc45bc1708.png)
 
-##### **Configuring Permissions**
+##### **Настройка прав**
 
-###### **General Permission Settings**
+###### **Общие настройки прав**
 
 ![](https://static-docs.nocobase.com/119a9650259f9be71210121d0d3a435d.png)
 
-1. **Allows to configure interface**: This permission governs whether a user can configure the interface. Activating it adds a UI configuration button. The "admin" role has this permission enabled by default.
-2. **Allows to install, activate, disable plugins**: This permission dictates whether a user can enable or disable plugins. When active, the user gains access to the plugin manager interface. The "admin" role has this permission enabled by default.
-3. **Allows to configure plugins**: This permission lets the user configure plugin parameters or manage plugin backend data. The "admin" role has this permission enabled by default.
-4. **Allows to clear cache, reboot application**: This permission is tied to system maintenance tasks like clearing the cache and restarting the application. Once activated, related operation buttons appear in the personal center. This permission is disabled by default.
-5. **New menu items are allowed to be accessed by default.**: Newly created menus are accessible by default, and this setting is enabled by default.
+1. **Можно настраивать интерфейс**: Определяет, может ли пользователь настраивать интерфейс. При активации появляется кнопка конфигурации UI. По умолчанию включено для роли "admin".
+2. **Можно устанавливать, активировать и отключать плагины**: Определяет, может ли пользователь включать или отключать плагины. При активации пользователь получает доступ к интерфейсу управления плагинами. По умолчанию включено для роли "admin".
+3. **Можно настраивать плагины**: Разрешает настройку параметров плагинов или управление их внутренними данными. По умолчанию включено для роли "admin".
+4. **Можно очищать кэш и перезапускать приложение**: Связано с задачами технического обслуживания, такими как очистка кэша и перезапуск приложения. После активации соответствующие кнопки отображаются в личном кабинете. По умолчанию отключено.
+5. **Доступ к новым пунктам меню по умолчанию**: Новые элементы меню доступны по умолчанию. Эта настройка включена по умолчанию.
 
-###### **Action permissions**
+###### **Права на действия**
 
-Action permissions apply universally to all data tables and are categorized by operation type. These permissions can be configured based on data scope: all data or the user's own data. The former allows operations on the entire data table, while the latter restricts operations to data relevant to the user.
+Права на действия применяются ко всем таблицам данных и разделяются по типам операций. Их можно настроить с учётом области данных: для всех данных или только для собственных. Первый вариант разрешает работу с любыми записями, второй — только с записями, связанными с пользователем.
 
-##### **Data Table Operation Permissions**
+##### **Права на операции с таблицами данных**
 
 ![](https://static-docs.nocobase.com/6a6e0281391cecdea5b5218e6173c5d7.png)
 
 ![](https://static-docs.nocobase.com/9814140434ff9e1bf028a6c282a5a165.png)
 
-Collection operation permissions allow fine-tuning of Action permissions by configuring access to resources within each data table. These permissions include:
+Права на действия с коллекциями позволяют точно настроить доступ к операциям, определяя доступ к данным в каждой таблице. Эти права включают:
 
-1. **Action permissions**: These include adding, viewing, editing, deleting, exporting, and importing actions. Permissions are set based on data scope:
-- **All records**: Grants the user the ability to perform actions on all records within the data table.
-- **Own records**: Restricts the user to perform actions only on records they have created.
+1. **Права на действия**: Включают операции добавления, просмотра, редактирования, удаления, экспорта и импорта. Права настраиваются по области данных:
+- **Все записи**: Пользователь может выполнять действия со всеми записями таблицы.
+- **Собственные записи**: Пользователь может выполнять действия только со своими записями.
 
-2. **Field Permissions**: Field permissions enable you to set specific permissions for each field during different operations. For instance, certain fields can be configured to be view-only, without editing privileges.
+2. **Права на поля**: Позволяют настроить доступ к каждому полю для различных операций. Например, некоторые поля можно сделать доступными только для просмотра без возможности редактирования.
 
-##### **Menu permissions**
+##### **Права на пункты меню**
 
-Menu permissions control access based on menu items.
+Права на пункты меню определяют доступ на основе конкретных элементов интерфейса меню.
 
 ![](https://static-docs.nocobase.com/28eddfc843d27641162d9129e3b6e33f.png)
 
-##### **Plugin Configuration Permissions**
+##### **Права на конфигурацию плагинов**
 
-Plugin configuration permissions control the ability to configure specific plugin parameters. When enabled, the corresponding plugin management interface appears in the management center.
+Права на конфигурацию плагинов определяют возможность настраивать параметры конкретных плагинов. При включении этих прав в центре управления появляется соответствующий интерфейс управления плагином.
 
 ![](https://static-docs.nocobase.com/5a742ae20a9de93dc2722468b9fd7475.png)
 
-#### **Personal Center**
+#### **Личный кабинет**
 
-##### **Role Switching**
+##### **Переключение ролей**
 
-Users can be assigned multiple roles and switch between them in the personal center. The default role when logging in is determined by the most recently switched role (this value updates with each switch) or, if not applicable, the first role (system default role).
+Пользователю может быть назначено несколько ролей, между которыми он может переключаться в личном кабинете. При входе по умолчанию используется последняя выбранная роль (это значение обновляется при каждом переключении), либо, если она не задана, первая в списке (роль по умолчанию системы).
 
 ![](https://static-docs.nocobase.com/e331d11ec1ca3b8b7e0472105b167819.png)
 
-#### **Application in UI**
+#### **Применение в интерфейсе**
 
-##### **Data Block Permissions**
+##### **Права на блоки данных**
 
-Visibility of data blocks in a data table is controlled by view operation permissions, with individual configurations taking precedence over global settings.
+Видимость блоков данных в таблице управляется правами на просмотр. Индивидуальные настройки имеют приоритет над глобальными.
 
-For example, under global permissions, the "admin" role has full access, but the order table may have individual permissions configured, making it invisible.
+Например, в глобальных правах роли "admin" разрешён полный доступ, но в таблице заказов могут быть заданы индивидуальные права, из-за чего блок становится невидимым.
 
 ![](https://static-docs.nocobase.com/3d026311739c7cf5fdcd03f710d09bc4.png)
 
 ![](https://static-docs.nocobase.com/a88caba1cad47001c1610bf402a4a2c1.png)
 
-###### **Field Permissions**
+###### **Права на поля**
 
-- **View**: Determines whether specific fields are visible at the field level, allowing control over which fields are visible to certain roles within the order table.
+- **Просмотр (View)**: Определяет, какие поля видимы на уровне поля, позволяя задавать, какие именно поля будут отображаться для определённых ролей в таблице заказов.
 
 ![](https://static-docs.nocobase.com/30dea84d984d95039e6f7b180955a6cf.png)
 
-In the UI, only fields with configured permissions are visible within the order table block. System fields (Id, CreatedAt, LastUpdatedAt) retain view permissions even without specific configuration.
+В интерфейсе только поля с явно заданными правами будут отображаться в блоке таблицы заказов. Системные поля (Id, CreatedAt, LastUpdatedAt) всегда отображаются, даже если для них не задана конфигурация.
 
 ![](https://static-docs.nocobase.com/40cc49b517efe701147fd2e799e79dcc.png)
 
-- **Edit**: Controls whether fields can be edited and saved (updated).
+- **Редактирование (Edit)**: Управляет тем, можно ли редактировать и сохранять (обновлять) поля.
 
-  In the UI, only fields with edit permissions are shown in the edit operation form block within the order table.
+  В интерфейсе в форме редактирования отображаются только поля, для которых разрешено редактирование.
 
 ![](https://static-docs.nocobase.com/6531ca4122f0887547b5719e2146ba93.png)
 
-Similarly, only fields with add permissions are shown in the add operation form block within the order table.
+Аналогично, в форме добавления отображаются только поля с правами на добавление.
 
 ![](https://static-docs.nocobase.com/12982450c311ec1bf87eb9dc5fb04650.png)
 
 ![](https://static-docs.nocobase.com/1dbe559a9579c2e052e194e50edc74a7.gif)
 
-- **Add**: Determines whether fields can be added (created).
+- **Добавление (Add)**: Определяет, можно ли создавать (добавлять) поля.
 
 ![](https://static-docs.nocobase.com/3ab1bbe41e61915e920fd257f2e0da7e.png)
 
-In the UI, only fields with add permissions are displayed within the add operation form block of the order table.
+В интерфейсе в форме добавления отображаются только поля с правами на добавление.
 
 ![](https://static-docs.nocobase.com/8d0c07893b63771c428974f9e126bf35.png)
 
-- **Export**: Controls whether fields can be exported.
-- **Import**: Controls whether fields can be imported.
+- **Экспорт (Export)**: Управляет возможностью экспорта полей.
+- **Импорт (Import)**: Управляет возможностью импорта полей.
 
-##### **Operation Permissions**
+##### **Права на действия**
 
-Individually configured permissions take the highest priority. If specific permissions are configured, they override global settings; otherwise, the global settings are applied.
+Индивидуальные настройки имеют наивысший приоритет. Если заданы конкретные права, они переопределяют глобальные. В противном случае применяются глобальные настройки.
 
-- **Add new**: Controls whether the add operation button is visible within a block.
+- **Добавить (Add new)**: Управляет отображением кнопки добавления в блоке.
 
 ![](https://static-docs.nocobase.com/2e3123b5dbc72ae78942481360626629.png)
 
-When the add operation is permitted, the add button appears within the operation area of the order table block in the UI.
+Если операция добавления разрешена, в блоке таблицы заказов появляется кнопка "Добавить".
 
 ![](https://static-docs.nocobase.com/f0458980d450544d94c73160d75ba96c.png)
 
-- **View**: Determines whether the data block is visible.
+- **Просмотр (View)**: Определяет, будет ли блок данных отображаться.
 
 ![](https://static-docs.nocobase.com/6e4a1e6ea92f50bf84959dedbf1d5683.png)
 
-In the UI, data blocks for other data tables remain hidden, but the order table block is shown if individual permissions are set.
+В интерфейсе блоки других таблиц остаются скрытыми, но блок таблицы заказов отображается, если заданы индивидуальные права.
 
 ![](https://static-docs.nocobase.com/f2dd142a40fe19fb657071fd901b2291.png)
 
 ![](https://static-docs.nocobase.com/b92f0edc51a27b52e85cdeb76271b936.gif)
 
-- **Edit**: Controls whether the edit operation button is displayed within a block.
+- **Редактирование (Edit)**: Управляет отображением кнопки редактирования в блоке.
 
 ![](https://static-docs.nocobase.com/fb1c0290e2a833f1c2b415c761e54c45.gif)
 
-Operation permissions can be further refined by setting the data scope.
+Права на действия могут быть детализированы через настройку области данных (data scope).
 
 ![](https://static-docs.nocobase.com/b082308f62a3a9084cab78a370c14a9f.gif)
 
-- **Delete**: Controls whether the delete operation button is visible within a block.
+- **Удаление (Delete)**: Управляет отображением кнопки удаления в блоке.
 
 ![](https://static-docs.nocobase.com/021c9e79bcc1ad221b606a9555ff5644.gif)
 
-- **Export**: Controls whether the export operation button is visible within a block.
-- **Import**: Controls whether the import operation button is visible within a block.
+- **Экспорт (Export)**: Управляет отображением кнопки экспорта в блоке.
+- **Импорт (Import)**: Управляет отображением кнопки импорта в блоке.
 
-#### Relationship Permissions
+#### Права на связи
 
-##### When Used as a Field
+##### Используется как поле
 
-- The visibility of a relationship field is determined by the permissions set on the source table's fields. These permissions control whether the entire relationship field component appears in the user interface.
+- Видимость поля-связи определяется правами, заданными для полей исходной таблицы. Эти права управляют отображением всего компонента поля связи в интерфейсе.
 
-For example, in the Order table, the "Customer" relationship field is restricted to view and import/export permissions, as depicted below:
+Например, в таблице "Заказы" поле связи "Клиент" ограничено правами только на просмотр и экспорт/импорт, как показано ниже:
 
-![Relationship Permissions Example](https://static-docs.nocobase.com/d0dc797aae73feeabc436af285dd4f59.png)
+![Пример прав на поле связи](https://static-docs.nocobase.com/d0dc797aae73feeabc436af285dd4f59.png)
 
-In the UI, this configuration ensures that the "Customer" relationship field does not appear in the add and edit operation sections of the Order table.
+В интерфейсе такое ограничение означает, что поле "Клиент" не будет отображаться в формах добавления и редактирования таблицы "Заказы".
 
-The complete configuration process is illustrated below:
+Полный процесс настройки показан ниже:
 
 ![Example Configuration Process](https://static-docs.nocobase.com/372f8a4f414feea097c23b2ba326c0ef.gif)
 
-- The permissions for fields within the relationship field component (such as those found in sub-tables or sub-forms) are determined by the permissions of the target data table.
+- Права на поля внутри компонента связи (например, в подтаблицах или подформах) определяются правами целевой таблицы.
 
-When the relationship field component is a sub-form:
+Если компонент связи реализован как подформа:
 
-In this case, as shown, the "Customer" relationship field in the Order table is granted full permissions, while the Customer table itself is configured to be read-only.
+В этом случае, как показано, поле связи "Клиент" в таблице "Заказы" имеет полный доступ, а сама таблица "Клиенты" настроена только для чтения.
 
-The permissions for the Order table are set as follows, granting the "Customer" relationship field full access:
+Права таблицы "Заказы" настроены следующим образом, предоставляя полю связи "Клиент" полный доступ:
 
-![Order Table Permissions](https://static-docs.nocobase.com/3a3ab9722f14a7b3a35361219d67fa40.png)
+![Права таблицы Заказы](https://static-docs.nocobase.com/3a3ab9722f14a7b3a35361219d67fa40.png)
 
-The permissions for the Customer table are configured to allow view-only access:
+Права таблицы "Клиенты" настроены на доступ только для просмотра:
 
-![Customer Table Permissions](https://static-docs.nocobase.com/46704d179b931006a9a22852e6c5089e.png)
+![Права таблицы Клиенты](https://static-docs.nocobase.com/46704d179b931006a9a22852e6c5089e.png)
 
-In the UI, this configuration results in the "Customer" relationship field being visible in the Order table section. However, when the interface is switched to a sub-form (where fields within the sub-form are visible in the details but hidden during new or edit operations), the behavior changes accordingly.
+В пользовательском интерфейсе это приводит к тому, что поле связи "Клиент" отображается в разделе таблицы "Заказы". Однако при переключении интерфейса в режим подформы (где поля подформы отображаются в деталях, но скрыты при создании или редактировании), поведение изменяется соответствующим образом.
 
-The complete configuration process is demonstrated below:
+Полный процесс настройки показан ниже:
 
-![Example Configuration Process](https://static-docs.nocobase.com/932dbf6ac46e36ee357ff3e8b9ea1423.gif)
+![Пример настройки](https://static-docs.nocobase.com/932dbf6ac46e36ee357ff3e8b9ea1423.gif)
 
-Further refinement of sub-form field permissions allows individual fields to be specifically controlled.
+Дополнительная настройка прав полей в подформе позволяет контролировать отдельные поля:
 
-For instance, as shown below, the Customer table can be configured so that the "Customer Name" field is neither visible nor editable:
+Например, как показано ниже, в таблице "Клиенты" можно настроить, чтобы поле "Имя клиента" было недоступным для просмотра и редактирования:
 
-![Customer Table Field Permissions](https://static-docs.nocobase.com/e7b875521cbc4e28640f027f36d0413c.png)
+![Права на поле Клиенты](https://static-docs.nocobase.com/e7b875521cbc4e28640f027f36d0413c.png)
 
-The complete configuration process for this setting is illustrated here:
+Процесс настройки отображён здесь:
 
-![Example Configuration Process](https://static-docs.nocobase.com/7a07e68c2fe2a13f0c2cef19be489264.gif)
+![Процесс настройки](https://static-docs.nocobase.com/7a07e68c2fe2a13f0c2cef19be489264.gif)
 
-When dealing with a sub-table instead of a sub-form, the configuration principles remain the same:
+Если используется подтаблица вместо подформы, принципы настройки остаются теми же:
 
-As illustrated, the "shipment" relationship field in the Order table has full permissions, while the shipment collection itself is set to read-only.
+Как показано, поле связи "Отгрузка" в таблице "Заказы" имеет полный доступ, в то время как сама коллекция отгрузок (shipment) доступна только для просмотра.
 
-In the UI, this setup allows the relationship field to be visible. However, when the interface is switched to a sub-table (where fields within the sub-table are visible during viewing operations but hidden during new or edit operations), the behavior adjusts accordingly.
+В интерфейсе это позволяет отобразить поле связи. Однако при переключении интерфейса в режим подтаблицы (где поля отображаются только при просмотре, но скрыты при создании и редактировании), поведение изменяется:
 
-![shipment Relationship Field Permissions](https://static-docs.nocobase.com/fd4b7d81cdd765db789d9c85cf9dc324.gif)
+![Права поля Отгрузка](https://static-docs.nocobase.com/fd4b7d81cdd765db789d9c85cf9dc324.gif)
 
-Fine-tuning sub-collection field permissions also enables specific control over individual fields.
+Точная настройка полей подколлекции также позволяет отдельно управлять отображением каждого поля:
 
-![Sub-table Field Permissions](https://static-docs.nocobase.com/51d70a624cb2b0366e421bcdc8abb7fd.gif)
+![Права полей подтаблицы](https://static-docs.nocobase.com/51d70a624cb2b0366e421bcdc8abb7fd.gif)
 
-##### When Used as a Block
+##### Когда используется как блок
 
-- The visibility of a relationship block is governed by the permissions set on the target table associated with the relationship field, independent of the permissions on the relationship field itself.
+- Видимость блока связи управляется правами, установленными для целевой таблицы, связанной с полем связи, независимо от самих прав на поле связи.
 
-For example, the visibility of the "Customer" relationship block is controlled by the permissions configured for the Customer table:
+Например, видимость блока связи "Клиент" определяется настройками прав таблицы "Клиенты":
 
-![Relationship Block Visibility](https://static-docs.nocobase.com/633ebb301767430b740ecfce11df47b3.gif)
+![Видимость блока связи](https://static-docs.nocobase.com/633ebb301767430b740ecfce11df47b3.gif)
 
-- The fields within a relationship block are controlled by the permissions set on the target table’s fields.
+- Права на поля внутри блока связи управляются правами, установленными на поля целевой таблицы.
 
-As depicted below, the Customer table can be configured to allow viewing of specific fields only:
+Как показано ниже, таблицу "Клиенты" можно настроить так, чтобы были доступны только определённые поля:
 
-![Customer Table Field View Permissions](https://static-docs.nocobase.com/35af9426c20911323b17f67f81bac8fc.gif)
+![Права на просмотр полей таблицы Клиенты](https://static-docs.nocobase.com/35af9426c20911323b17f67f81bac8fc.gif)
+

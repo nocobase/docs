@@ -1,4 +1,4 @@
-# Template Printing
+# Печать по шаблону
 
 <PluginInfo commercial="true" name="action-template-print"></PluginInfo>
 <style>
@@ -8,203 +8,210 @@
 }
 </style>
 
-## Introduction
+## Введение
 
-The Template Printing plugin is a powerful tool that allows you to edit template files in Word, Excel, and PowerPoint (supporting `.docx`, `.xlsx`, `.pptx` formats), set placeholders and logical structures within the templates, and dynamically generate pre-formatted files such as `.docx`, `.xlsx`, `.pptx`, and PDF files. This plugin is widely used for generating various business documents, such as quotations, invoices, contracts, etc., significantly improving the efficiency and accuracy of document generation.
+Плагин **Печать по шаблону** — мощный инструмент, который позволяет редактировать шаблоны в форматах Word, Excel и PowerPoint 
+(поддержка `.docx`, `.xlsx`, `.pptx`), настраивать плейсхолдеры и логические конструкции, а 
+затем динамически генерировать предформатированные файлы (включая PDF). 
+Плагин широко используется для создания коммерческих документов: коммерческих предложений, 
+счетов, договоров и пр., существенно повышая скорость и точность подготовки документов.
 
-### Key Features
+### Основные возможности
 
-- **Multi-format Support**: Compatible with Word, Excel, and PowerPoint templates to meet different document generation needs.
-- **Dynamic Data Filling**: Automatically fills and generates document content through placeholders and logical structures.
-- **Flexible Template Management**: Supports adding, editing, deleting, and categorizing templates for easy maintenance and use.
-- **Rich Template Syntax**: Supports basic replacement, array access, loops, conditional output, and other template syntax to meet complex document generation needs.
-- **Formatter Support**: Provides conditional output, date formatting, number formatting, and other functions to enhance the readability and professionalism of documents.
-- **Efficient Output Formats**: Supports direct generation of PDF files for easy sharing and printing.
+- **Многоформатность**: Поддержка шаблонов Word, Excel и PowerPoint.
+- **Динамическое заполнение данных**: Автоматическая генерация документа по плейсхолдерам и логике шаблона.
+- **Гибкое управление шаблонами**: Возможность добавления, редактирования, удаления и категоризации шаблонов.
+- **Богатый синтаксис шаблонов**: Поддержка подстановок, циклов, условий и других конструкций.
+- **Поддержка форматирования**: Условия, форматирование дат и чисел для повышения читабельности и точности.
+- **Удобный вывод**: Поддержка экспорта в PDF для печати и отправки.
 
-## Installation
+## Установка
 
 <embed src="./install.md"></embed>
 
-## Configuration Instructions
+## Инструкция по настройке
 
-### Activating Template Printing
+### Активация шаблонной печати
 
-1. **Open the Detail Block**:
-- Navigate to the detail block in the application where you need to use the template printing feature.
+1. **Откройте блок с деталями**:
+  - Перейдите в блок, где будет использоваться функция печати по шаблону.
 
-2. **Access the Configuration Operation Menu**:
-- Click the "Configuration Operation" menu at the top of the interface.
+2. **Откройте меню "Операции конфигурации"**:
+  - В верхней части интерфейса нажмите на "Операции конфигурации".
 
-3. **Select "Template Printing"**:
-- Click the "Template Printing" option in the dropdown menu to activate the plugin.
+3. **Выберите пункт "Печать по шаблону"**:
+  - В выпадающем списке выберите "Печать по шаблону" для активации плагина.
 
-![Activate Template Printing](https://static-docs.nocobase.com/20241212150539-2024-12-12-15-05-43.png)
+![Активация шаблона](https://static-docs.nocobase.com/20241212150539-2024-12-12-15-05-43.png)
 
-### Configuring Templates
+### Настройка шаблонов
 
-1. **Access the Template Configuration Page**:
-- In the configuration menu of the "Template Printing" button, select the "Template Configuration" option.
+1. **Откройте страницу конфигурации шаблона**:
+  - В меню настройки кнопки "Печать по шаблону" выберите "Конфигурация шаблона".
 
-![Template Configuration Option](https://static-docs.nocobase.com/20241212151858-2024-12-12-15-19-01.png)
+![Пункт Конфигурации](https://static-docs.nocobase.com/20241212151858-2024-12-12-15-19-01.png)
 
-2. **Add a New Template**:
-- Click the "Add Template" button to enter the template addition page.
+2. **Добавьте новый шаблон**:
+  - Нажмите "Добавить шаблон", чтобы открыть форму создания.
 
-![Add Template Button](https://static-docs.nocobase.com/20241212151243-2024-12-12-15-12-46.png)
+![Кнопка добавления шаблона](https://static-docs.nocobase.com/20241212151243-2024-12-12-15-12-46.png)
 
-3. **Fill in Template Information**:
-- In the template form, fill in the template name and select the template type (Word, Excel, PowerPoint).
-- Upload the corresponding template file (supports `.docx`, `.xlsx`, `.pptx` formats).
+3. **Заполните информацию о шаблоне**:
+  - Укажите название и тип (Word, Excel, PowerPoint).
+  - Загрузите файл шаблона (`.docx`, `.xlsx`, `.pptx`).
 
-![Configure Template Name and File](https://static-docs.nocobase.com/20241212151518-2024-12-12-15-15-21.png)
+![Настройка шаблона](https://static-docs.nocobase.com/20241212151518-2024-12-12-15-15-21.png)
 
-4. **Edit and Save the Template**:
-- Go to the "Field List" page, copy fields, and fill them into the template.
-  ![Field List](https://static-docs.nocobase.com/20250107141010.png)
-  ![20241212152743-2024-12-12-15-27-45](https://static-docs.nocobase.com/20241212152743-2024-12-12-15-27-45.png)
-- After filling in the details, click the "Save" button to complete the template addition.
+4. **Отредактируйте и сохраните шаблон**:
+  - Перейдите на вкладку "Список полей", скопируйте нужные и вставьте в шаблон.
+    ![Список полей](https://static-docs.nocobase.com/20250107141010.png)
+    ![Поле конфигурации](https://static-docs.nocobase.com/20241212152743-2024-12-12-15-27-45.png)
+  - Нажмите "Сохранить", чтобы завершить добавление.
 
-5. **Template Management**:
-- Click the "Use" button on the right side of the template list to activate the template.
-- Click the "Edit" button to modify the template name or replace the template file.
-- Click the "Download" button to download the configured template file.
-- Click the "Delete" button to remove unnecessary templates. The system will prompt for confirmation to avoid accidental deletion.
-  ![Template Management](https://static-docs.nocobase.com/20250107140436.png)
+5. **Управление шаблонами**:
+  - Нажмите "Использовать", чтобы активировать шаблон.
+  - "Редактировать" — изменить название или заменить файл.
+  - "Скачать" — загрузить шаблон.
+  - "Удалить" — удалить шаблон (будет запрошено подтверждение).
 
-## Basic Syntax
+![Управление шаблонами](https://static-docs.nocobase.com/20250107140436.png)
 
-The Template Printing plugin provides various syntaxes to flexibly insert dynamic data and logical structures into templates. Below are detailed syntax explanations and usage examples.
+## Основной синтаксис
 
-### Basic Replacement
+Плагин поддерживает разнообразный синтаксис для динамической генерации документов.
 
-Use placeholders in the format `{d.xxx}` for data replacement. For example:
+### Простая подстановка
 
-- `{d.title}`: Reads the `title` field from the dataset.
-- `{d.date}`: Reads the `date` field from the dataset.
+Плейсхолдер `{d.xxx}` используется для подстановки значения из данных. Примеры:
 
-**Example**:
+- `{d.title}` — поле `title`.
+- `{d.date}` — поле `date`.
 
-Template Content:
+**Пример**:
+
+Шаблон:
 ```
-Dear Customer,
+Уважаемый клиент,
 
-Thank you for purchasing our product: {d.productName}.
-Order ID: {d.orderId}
-Order Date: {d.orderDate}
+Спасибо что приобрели наш продукт: {d.productName}.
+Номер заказа: {d.orderId}
+Дата заказа: {d.orderDate}
 
-Wish you a pleasant experience!
+Спасибо что остаетесь с нами!
 ```
 
-Dataset:
+Набор данных:
 ```json
 {
-  "productName": "Smart Watch",
+  "productName": "Умные часы",
   "orderId": "A123456789",
   "orderDate": "2025-01-01"
 }
 ```
 
-Rendered Result:
+Результат:
 ```
-Dear Customer,
+Уважаемый клиент,
 
-Thank you for purchasing our product: Smart Watch.
-Order ID: A123456789
-Order Date: 2025-01-01
+Спасибо что приобрели наш продукт: Умные часы.
+Номер заказа: A123456789
+Дата заказа: 2025-01-01
 
-Wish you a pleasant experience!
+Спасибо что остаетесь с нами!
 ```
 
-### Accessing Sub-objects
+### Доступ к вложенным объектам
 
-If the dataset contains sub-objects, you can access the properties of the sub-objects using dot notation.
+Если в наборе данных содержатся вложенные объекты, вы можете получить доступ к их свойствам, 
+используя точечную нотацию.
 
-**Syntax**: `{d.parent.child}`
+**Синтаксис**: `{d.parent.child}`
 
-**Example**:
+**Пример**:
 
-Dataset:
+Набор данных:
 ```json
 {
   "customer": {
-    "name": "Li Lei",
+    "name": "Иван Петров",
     "contact": {
-      "email": "lilei@example.com",
-      "phone": "13800138000"
+      "email": "ivan_petrov@nocobase.ru",
+      "phone": "79019020000"
     }
   }
 }
 ```
 
-Template Content:
+Шаблон:
 ```
-Customer Name: {d.customer.name}
-Email Address: {d.customer.contact.email}
-Phone Number: {d.customer.contact.phone}
-```
-
-Rendered Result:
-```
-Customer Name: Li Lei
-Email Address: lilei@example.com
-Phone Number: 13800138000
+Клиент: {d.customer.name}
+Email: {d.customer.contact.email}
+Телеофн: {d.customer.contact.phone}
 ```
 
-### Accessing Arrays
+Результат:
+```
+Клиент: Иван Петров
+Email: ivan_petrov@nocobase.ru
+Телеофн: 79019020000
+```
 
-If the dataset contains arrays, you can use the reserved keyword `i` to access elements in the array.
+### Доступ к массивам
 
-**Syntax**: `{d.arrayName[i].field}`
+Если в наборе данных содержатся массивы, вы можете использовать зарезервированное слово `i` 
+для доступа к элементам массива.
 
-**Example**:
+**Синтаксис**: `{d.arrayName[i].field}`
 
-Dataset:
+**Пример**:
+
+Набор данных:
 ```json
 {
   "staffs": [
-    { "firstname": "James", "lastname": "Anderson" },
-    { "firstname": "Emily", "lastname": "Roberts" },
-    { "firstname": "Michael", "lastname": "Johnson" }
+    { "firstname": "Андрей", "lastname": "Сембаев" },
+    { "firstname": "Петр", "lastname": "Иванов" },
+    { "firstname": "Нина", "lastname": "Добрых" }
   ]
 }
 ```
 
-Template Content:
+Шаблон:
 ```
-The first employee's last name is {d.staffs[i=0].lastname}, and the first name is {d.staffs[i=0].firstname}
-```
-
-Rendered Result:
-```
-The first employee's last name is Anderson, and the first name is James
+Первый сотрудник: фамилия — {d.staffs[i=0].lastname}, имя — {d.staffs[i=0].firstname}
 ```
 
-
+Результат:
+```
+Первый сотрудник: фамилия — Сембаев, имя — Андрей
+```
 
 Below is the English translation with second-level and third-level headings:
 
-## Loop Handling
+## Обработка циклов
 
-Loop handling is used to repeatedly render data from arrays or objects by defining start and end markers for the loop. Below, several common scenarios are described.
+Обработка циклов используется для многократного отображения данных из массивов или объектов путём задания начальной и конечной метки для цикла. Ниже приведены несколько распространённых сценариев.
 
 ---
 
-### Iterating over Arrays
+### Перебор массивов
 
-#### 1. Syntax Description
+#### 1. Описание синтаксиса
 
-- Use the tag `{d.array[i].property}` to define the current loop item, and use `{d.array[i+1].property}` to specify the next item to mark the loop area.
-- During the loop, the first line (the `[i]` part) is automatically used as the template for repetition; you only need to write the loop example once in the template.
+- Используйте тег `{d.array[i].property}` для обозначения текущего элемента в цикле, и `{d.array[i+1].property}` — для следующего элемента, чтобы определить границы области цикла.
+- Во время выполнения цикла первая строка (`[i]` часть) автоматически используется как шаблон для повторения; вам нужно указать пример строки только один раз в шаблоне.
 
-Example syntax format:
+Пример синтаксиса:
+
 ```
 {d.arrayName[i].property}
 {d.arrayName[i+1].property}
 ```
 
-#### 2. Example: Simple Array Loop
+#### 2. Пример: простой цикл по массиву
 
-##### Data
+##### Данные
+
 ```json
 {
   "cars": [
@@ -216,16 +223,16 @@ Example syntax format:
 }
 ```
 
-##### Template
+##### Шаблон
 ```
-Carsid
+МашиныID
 {d.cars[i].brand}{d.cars[i].id}
 {d.cars[i+1].brand}
 ```
 
-##### Result
+##### Результат
 ```
-Carsid
+МашиныID
 Toyota1
 Hyundai2
 BMW3
@@ -234,11 +241,12 @@ Peugeot4
 
 ---
 
-#### 3. Example: Nested Array Loop
+#### 3. Пример: Вложенный цикл по массиву
 
-Suitable for cases where an array contains nested arrays; nesting can be at an infinite level.
+Подходит для случаев, когда массив содержит вложенные массивы; уровень вложенности может быть любым.
 
-##### Data
+##### Данные
+
 ```json
 [
   {
@@ -258,22 +266,22 @@ Suitable for cases where an array contains nested arrays; nesting can be at an i
 ]
 ```
 
-##### Template
+##### Шаблон
 ```
 {d[i].brand}
 
-Models
+Модель
 {d[i].models[i].size} - {d[i].models[i].power}
 {d[i].models[i+1].size}
 
 {d[i+1].brand}
 ```
 
-##### Result
+##### Результат
 ```
 Toyota
 
-Models
+Модель
 Prius 4 - 125
 Prius 5 - 139
 
@@ -282,11 +290,14 @@ Kia
 
 ---
 
-#### 4. Example: Bidirectional Loop (Advanced Feature, v4.8.0+)
+#### 4. Пример: Двунаправленный цикл (расширенная функция, v4.8.0+)
 
-Bidirectional loops allow iteration over both rows and columns simultaneously, which is suitable for generating comparison tables and other complex layouts (note: currently, some formats are officially supported only in DOCX, HTML, and MD templates).
+Двунаправленные циклы позволяют выполнять итерацию одновременно по строкам и столбцам, 
+что подходит для генерации таблиц сравнения и других сложных макетов 
+(примечание: в настоящее время некоторые форматы официально поддерживаются только в шаблонах DOCX, HTML и MD).
 
-##### Data
+##### Данные
+
 ```json
 {
   "titles": [
@@ -302,14 +313,14 @@ Bidirectional loops allow iteration over both rows and columns simultaneously, w
 }
 ```
 
-##### Template
+##### Шаблон
 ```
 {d.titles[i].name}{d.titles[i+1].name}
 {d.cars[i].models[i]}{d.cars[i].models[i+1]}
 {d.cars[i+1].models[i]}
 ```
 
-##### Result
+##### Результат
 ```
 KiaToyotaHopium
 EV3Prius 1Prototype
@@ -319,35 +330,38 @@ EV6Prius 3
 
 ---
 
-#### 5. Example: Accessing Loop Iterator Values (v4.0.0+)
+#### 5. Пример: Доступ к значениям итератора в цикле (v4.0.0+)
 
-Within a loop, you can directly access the current iteration’s index, which helps meet special formatting requirements.
+Внутри цикла вы можете напрямую получить доступ к индексу текущей итерации, что помогает удовлетворить особые требования к форматированию.
 
-##### Template Example
+##### Пример шаблона
+
 ```
 {d[i].cars[i].other.wheels[i].tire.subObject:add(.i):add(..i):add(...i)}
 ```
 
-> Note: The number of dots indicates the index level (for example, `.i` represents the current level, while `..i` represents the previous level). There is currently an issue with reverse ordering; please refer to the official documentation for details.
+> Примечание: Количество точек указывает уровень индекса (например, `.i` — текущий уровень, `..i` — предыдущий уровень). В настоящее время существует проблема с обратной сортировкой; пожалуйста, смотрите официальную документацию для получения подробностей.
 
 ---
 
-### Iterating over Objects
+### Перебор объектов
 
-#### 1. Syntax Description
+#### 1. Описание синтаксиса
 
-- For properties in an object, use `.att` to obtain the property name and `.val` to obtain the property value.
-- During iteration, each property item is traversed one by one.
+- Для свойств в объекте используйте `.att`, чтобы получить имя свойства, и `.val`, чтобы получить значение свойства.
+- Во время перебора каждый элемент свойства обрабатывается поочерёдно.
 
-Example syntax format:
+Пример синтаксиса:
+
 ```
-{d.objectName[i].att}  // property name
-{d.objectName[i].val}  // property value
+{d.objectName[i].att}  // Имя
+{d.objectName[i].val}  // Значение
 ```
 
-#### 2. Example: Object Property Iteration
+#### 2. Пример: Перебор свойств объекта
 
-##### Data
+##### Данные
+
 ```json
 {
   "myObject": {
@@ -358,16 +372,16 @@ Example syntax format:
 }
 ```
 
-##### Template
+##### Шаблон
 ```
-People namePeople age
+Люди namePeople Возраст
 {d.myObject[i].att}{d.myObject[i].val}
 {d.myObject[i+1].att}{d.myObject[i+1].val}
 ```
 
-##### Result
+##### Результат
 ```
-People namePeople age
+Люди namePeople Возраст
 paul10
 jack20
 bob30
@@ -375,22 +389,24 @@ bob30
 
 ---
 
-### Sorting
+### Сортировка
 
-Using the sorting feature, you can directly sort array data within the template.
+С помощью функции сортировки можно напрямую отсортировать данные массива в шаблоне.
 
-#### 1. Syntax Description: Ascending Order Sorting
+#### 1. Описание синтаксиса: Сортировка по возрастанию
 
-- Use an attribute as the sorting criterion in the loop tag. The syntax format is:
+- Используйте атрибут в качестве критерия сортировки в теге цикла. Формат синтаксиса:
+
   ```
   {d.array[sortingAttribute, i].property}
   {d.array[sortingAttribute+1, i+1].property}
   ```
-- For multiple sorting criteria, separate the attributes with commas within the brackets.
+- Для нескольких критериев сортировки перечислите атрибуты через запятую в скобках.
 
-#### 2. Example: Sorting by Numeric Attribute
+#### 2. Пример: Сортировка по числовому атрибуту
 
-##### Data
+##### Данные
+
 ```json
 {
   "cars": [
@@ -402,14 +418,14 @@ Using the sorting feature, you can directly sort array data within the template.
 }
 ```
 
-##### Template
+##### Шаблон
 ```
-Cars
+Машина
 {d.cars[power, i].brand}
 {d.cars[power+1, i+1].brand}
 ```
 
-##### Result
+##### Результат
 ```
 Cars
 Peugeot
@@ -418,9 +434,10 @@ BMW
 Ferrari
 ```
 
-#### 3. Example: Multi-Attribute Sorting
+#### 3. Пример: Сортировка по нескольким атрибутам
 
-##### Data
+##### Данные
+
 ```json
 {
   "cars": [
@@ -433,14 +450,14 @@ Ferrari
 }
 ```
 
-##### Template
+##### Шаблон
 ```
-Cars
+Машины
 {d.cars[power, sub.size, i].brand}
 {d.cars[power+1, sub.size+1, i+1].brand}
 ```
 
-##### Result
+##### Результат
 ```
 Cars
 Kia
@@ -452,20 +469,22 @@ Ferrari
 
 ---
 
-### Filtering
+### Фильтрация
 
-Filtering is used to filter out rows in a loop based on specific conditions.
+Фильтрация используется для исключения строк в цикле на основе заданных условий.
 
-#### 1. Syntax Description: Numeric Filtering
+#### 1. Описание синтаксиса: Фильтрация по числовым значениям
 
-- Add conditions in the loop tag (for example, `age > 19`). The syntax format is:
+- Добавьте условия в тег цикла (например, `age > 19`). Формат синтаксиса:
+
   ```
   {d.array[i, condition].property}
   ```
 
-#### 2. Example: Numeric Filtering
+#### 2. Пример: Фильтрация по числовому значению
 
-##### Data
+##### Данные
+
 ```json
 [
   { "name": "John",   "age": 20 },
@@ -475,14 +494,14 @@ Filtering is used to filter out rows in a loop based on specific conditions.
 ]
 ```
 
-##### Template
+##### Шаблон
 ```
-People
+Люди
 {d[i, age > 19, age < 30].name}
 {d[i+1, age > 19, age < 30].name}
 ```
 
-##### Result
+##### Результат
 ```
 People
 John
@@ -491,16 +510,16 @@ Bob
 
 ---
 
-#### 3. Syntax Description: String Filtering
+#### 3. Описание синтаксиса: Фильтрация строк
 
-- Specify string conditions using single quotes. For example:
+- Укажите условия строк, используя одинарные кавычки. Например:
   ```
   {d.array[i, type='rocket'].name}
   ```
 
-#### 4. Example: String Filtering
+#### 4. Пример: Фильтрация строк
 
-##### Data
+##### Данные
 ```json
 [
   { "name": "Falcon 9",    "type": "rocket" },
@@ -510,32 +529,32 @@ Bob
 ]
 ```
 
-##### Template
+##### Шаблон
 ```
-People
+Люди
 {d[i, type='rocket'].name}
 {d[i+1, type='rocket'].name}
 ```
 
-##### Result
+##### Результат
 ```
-People
+Люди
 Falcon 9
 Falcon Heavy
 ```
 
 ---
 
-#### 5. Syntax Description: Filter the First N Items
+#### 5. Описание синтаксиса: Фильтрация первых N элементов
 
-- You can use the loop index `i` to filter out the first N elements. For example:
+- Вы можете использовать индекс цикла `i` для фильтрации первых N элементов. Например:
   ```
   {d.array[i, i < N].property}
   ```
 
-#### 6. Example: Filtering the First Two Items
+#### 6. Пример: Фильтрация первых двух элементов
 
-##### Data
+##### Данные
 ```json
 [
   { "name": "Falcon 9" },
@@ -545,31 +564,31 @@ Falcon Heavy
 ]
 ```
 
-##### Template
+##### Шаблон
 ```
-People
+Люди
 {d[i, i < 2].name}
 {d[i+1, i < 2].name}
 ```
 
-##### Result
+##### Результат
 ```
-People
+Люди
 Falcon 9
 Model S
 ```
 
 ---
 
-#### 7. Syntax Description: Exclude the Last N Items
+#### 7. Описание синтаксиса: Исключить последние N элементов
 
-- Use negative indexing `i` to represent items from the end. For example:
+- Используйте отрицательную индексацию `i` для представления элементов с конца. Например:
   - `{d.array[i=-1].property}` retrieves the last item.
   - `{d.array[i, i!=-1].property}` excludes the last item.
 
-#### 8. Example: Excluding the Last One and Last Two Items
+#### 8. Пример: Исключение последнего и последних двух элементов
 
-##### Data
+##### Данные
 ```json
 [
   { "name": "Falcon 9" },
@@ -579,45 +598,46 @@ Model S
 ]
 ```
 
-##### Template
+##### Шаблон
 ```
-Last item: {d[i=-1].name}
+Последний элемент: {d[i=-1].name}
 
-Excluding the last item:
+Исключая последний элемент:
 {d[i, i!=-1].name}
 {d[i+1, i!=-1].name}
 
-Excluding the last two items:
+Исключая последние два элемента:
 {d[i, i<-2].name}
 {d[i+1, i<-2].name}
 ```
 
-##### Result
+##### Результат
 ```
-Last item: Falcon Heavy
+Последний элемент: Falcon Heavy
 
-Excluding the last item:
+Исключая последний элемент:
 Falcon 9
 Model S
 Model 3
 
-Excluding the last two items:
+Исключая последние два элемента:
 Falcon 9
 Model S
 ```
 
 ---
 
-#### 9. Syntax Description: Intelligent Filtering
+#### 9. Описание синтаксиса: интеллектуальная фильтрация
 
-- Using intelligent condition blocks, you can hide an entire row based on complex conditions. For example:
+- Используя интеллектуальные блоки условий, вы можете скрыть целую строку на основе сложных условий. 
+Например:
   ```
   {d.array[i].property:ifIN('keyword'):drop(row)}
   ```
 
-#### 10. Example: Intelligent Filtering
+#### 10. Пример: интеллектуальная фильтрация
 
-##### Data
+##### Данные
 ```json
 [
   { "name": "Falcon 9" },
@@ -627,39 +647,39 @@ Model S
 ]
 ```
 
-##### Template
+##### Шаблон
 ```
-People
+Люди
 {d[i].name}
 {d[i].name:ifIN('Falcon'):drop(row)}
 {d[i+1].name}
 ```
 
-##### Result
+##### Результат
 ```
-People
+Люди
 Model S
 Model 3
 ```
 
-*(Note: Rows containing "Falcon" in the template are removed by the intelligent filtering condition.)*
+*(Примечание: строки, содержащие «Falcon» в шаблоне, удаляются условием интеллектуальной фильтрации.)*
 
 ---
 
-### Grouping
+### Группировка
 
-#### 1. Syntax Description
+#### 1. Описание синтаксиса
 
-- Use a custom iterator to group data by a specified attribute and apply an aggregate formatter (such as `aggSum`) to sum the grouped data.
-- Example syntax format:
+- Используйте пользовательский итератор для группировки данных по указанному атрибуту и ​​применяйте агрегатный форматер (например, `aggSum`) для суммирования сгруппированных данных.
+- Пример формата синтаксиса:
   ```
   {d.array[groupingAttribute].property}{d.array[groupingAttribute].quantity:aggSum(.groupingAttribute)}
   {d.array[groupingAttribute+1].property}
   ```
 
-#### 2. Example: Grouping by Brand and Summing
+#### 2. Пример: Группировка по бренду и суммирование
 
-##### Data
+##### Данные
 ```json
 [
   { "brand": "Lucid",   "qty": 1 },
@@ -671,14 +691,14 @@ Model 3
 ]
 ```
 
-##### Template
+##### Шаблон
 ```
 VehiclesQuantity
 {d[brand].brand}{d[brand].qty:aggSum(.brand)}
 {d[brand+1].brand}
 ```
 
-##### Result
+##### Результат
 ```
 VehiclesQuantity
 Aptera1
@@ -689,21 +709,21 @@ Venturi3
 
 ---
 
-### Deduplication
+### Дедупликация
 
-#### 1. Syntax Description
+#### 1. Описание синтаксиса
 
-- Using a custom iterator, you can obtain unique (non-duplicate) items based on a property value. The syntax is similar to a normal loop but automatically ignores duplicate items.
+- Используя пользовательский итератор, вы можете получить уникальные (не дублирующиеся) элементы на основе значения свойства. Синтаксис похож на обычный цикл, но автоматически игнорирует дублирующиеся элементы.
 
-Example format:
+Пример формата:
 ```
 {d.array[property].property}
 {d.array[property+1].property}
 ```
 
-#### 2. Example: Selecting Unique Data
+#### 2. Пример: Выбор уникальных данных
 
-##### Data
+##### Данные
 ```json
 [
   { "type": "car",   "brand": "Hyundai" },
@@ -713,14 +733,14 @@ Example format:
 ]
 ```
 
-##### Template
+##### Шаблон
 ```
 Vehicles
 {d[type].brand}
 {d[type+1].brand}
 ```
 
-##### Result
+##### Результат
 ```
 Vehicles
 Hyundai
@@ -733,24 +753,22 @@ Below is the English translation of the documentation, with headings and subhead
 
 ---
 
-## Formatters
+## Форматирование
 
-Formatters are used to convert raw data into text that is easy to read. They are applied to data using a colon (`:`) and can be chained so that the output of each formatter becomes the input for the next. Some formatters support constant parameters or dynamic parameters.
-
+Форматирование используют для преобразования необработанных данных в текст, который легко читать. Они применяются к данным с помощью двоеточия (`:`) и могут быть объединены в цепочку, так что вывод каждого форматирования становится вводом для следующего. Некоторые форматирование поддерживают постоянные параметры или динамические параметры.
 ---
 
-### Overview
+### Обзор
 
-#### 1. Syntax Explanation
-The basic invocation of a formatter is as follows:
+#### 1. Объяснение синтаксиса
+Базовый вызов форматера выглядит следующим образом:
 ```
 {d.property:formatter1:formatter2(...)}
 ```  
-For example, in the case of converting the string `"JOHN"` to `"John"`, the formatter `lowerCase` is used first to convert all letters to lower case, and then `ucFirst` is used to capitalize the first letter.
+Например, в случае преобразования строки `"JOHN"` в `"John"` сначала используется форматер `lowerCase` для преобразования всех букв в нижний регистр, а затем `ucFirst` используется для преобразования первой буквы в заглавную.
+#### 2. Пример
 
-#### 2. Example
-
-Data:
+Данные:
 ```json
 {
   "name": "JOHN",
@@ -758,60 +776,62 @@ Data:
 }
 ```
 
-Template:
+Шаблон:
 ```
-My name is {d.name:lowerCase:ucFirst}. I was born on {d.birthday:formatD(LL)}.
+Меня зовут {d.name:lowerCase:ucFirst}. Я родился {d.birthday:formatD(LL)}.
 ```
 
-#### 3. Result
+#### 3. Результат
 
-After rendering, the output is:
+После рендеринга вывод будет таким:
 ```
-My name is John. I was born on January 31, 2000.
+Меня зовут Джон. Я родился 31 января 2000 года.
 ```
 
 ---
 
-### Constant Parameters
+### Постоянные параметры
 
-#### 1. Syntax Explanation
-Many formatters support one or more constant parameters, which are separated by commas and enclosed in parentheses to modify the output. For example, `:prepend(myPrefix)` will add “myPrefix” in front of the text.  
-**Note:** If the parameter contains commas or spaces, it must be enclosed in single quotes, for example: `prepend('my prefix')`.
+#### 1. Описание синтаксиса
+Многие форматирования поддерживают один или несколько постоянных параметров, которые указываются в скобках и разделяются запятыми для изменения вывода. Например, `:prepend(myPrefix)` добавит «myPrefix» перед текстом.  
+**Примечание:** Если параметр содержит запятые или пробелы, его необходимо заключать в одинарные кавычки, например: `prepend('my prefix')`.
 
-#### 2. Example
+#### 2. Пример
 
-Template example (see the specific formatter usage for details).
+Пример шаблона (см. конкретное использование форматирования для деталей).
 
-#### 3. Result
+#### 3. Результат
 
-The output will have the specified prefix added in front of the text.
+Вывод будет содержать заданный префикс перед текстом.
 
 ---
 
-### Dynamic Parameters
+### Динамические параметры
 
-#### 1. Syntax Explanation
-Formatters also support dynamic parameters. These parameters start with a dot (`.`) and are not enclosed in quotes.  
-There are two methods to specify dynamic parameters:
-- **Absolute JSON Path:** Begins with `d.` or `c.` (referring to root data or supplemental data).
-- **Relative JSON Path:** Begins with a single dot (`.`), indicating that the property is looked up from the current parent object.
+#### 1. Описание синтаксиса
+Форматирование также поддерживают динамические параметры. Такие параметры начинаются с точки (`.`) и не заключаются в кавычки.  
+Существует два способа указания динамических параметров:
+- **Абсолютный путь JSON:** начинается с `d.` или `c.` (ссылается на корневые или дополнительные данные).
+- **Относительный путь JSON:** начинается с одной точки (`.`), указывая на поиск свойства в текущем родительском объекте.
 
-For example:
+Например:
+
 ```
 {d.subObject.qtyB:add(d.subObject.qtyC)}
 ```
-It can also be written as a relative path:
+Это также можно записать как относительный путь:
 ```
 {d.subObject.qtyB:add(.qtyC)}
 ```
-If you need to access data from a higher level (parent or above), you can use multiple dots:
+Если необходимо получить доступ к данным более высокого уровня (родительского и выше), можно использовать несколько точек:
 ```
 {d.subObject.qtyB:add(..qtyA):add(.qtyC)}
 ```
 
-#### 2. Example
+#### 2. Пример
 
-Data:
+Данные:
+
 ```json
 {
   "id": 10,
@@ -827,19 +847,19 @@ Data:
 }
 ```
 
-Usage in Template:
+Использование в шаблоне:
 ```
-{d.subObject.qtyB:add(d.subObject.qtyC)}      // Result: 8 (5 + 3)
-{d.subObject.qtyB:add(.qtyC)}                   // Result: 8
-{d.subObject.qtyB:add(..qtyA):add(.qtyC)}        // Result: 28 (5 + 20 + 3)
-{d.subArray[0].qtyE:add(..subObject.qtyC)}       // Result: 6 (3 + 3)
+{d.subObject.qtyB:add(d.subObject.qtyC)}      // Результат: 8 (5 + 3)
+{d.subObject.qtyB:add(.qtyC)}                   // Результат: 8
+{d.subObject.qtyB:add(..qtyA):add(.qtyC)}        // Результат: 28 (5 + 20 + 3)
+{d.subArray[0].qtyE:add(..subObject.qtyC)}       // Результат: 6 (3 + 3)
 ```
 
-#### 3. Result
+#### 3. Результат
 
-The examples yield 8, 8, 28, and 6 respectively.
+Примеры дают 8, 8, 28 и 6 соответственно.
 
-> **Note:** Using custom iterators or array filters as dynamic parameters is not allowed, for example:
+> **Примечание:** Использование пользовательских итераторов или фильтров массивов в качестве динамических параметров не допускается, например:
 > ```
 > {d.subObject.qtyB:add(..subArray[i].qtyE)}
 > {d.subObject.qtyB:add(d.subArray[i].qtyE)}
@@ -847,110 +867,110 @@ The examples yield 8, 8, 28, and 6 respectively.
 
 ---
 
-### Text Formatting
+### Форматирование текста
 
-This section provides various formatters for text data. The following subsections introduce each formatter’s syntax, examples, and results.
+В этом разделе представлены различные методы форматирования текстовых данных. В следующих подразделах представлен синтаксис каждого форматировщика, примеры и результаты.
 
-#### 1. :lowerCase
+#### 1. :(Нижний регистр)lowerCase
 
-##### Syntax Explanation
-Converts all letters to lower case.
+##### Объяснение синтаксиса
+Преобразует все буквы в нижний регистр.
 
-##### Example
+##### Пример
 ```
-'My Car':lowerCase()   // Outputs "my car"
-'my car':lowerCase()   // Outputs "my car"
-null:lowerCase()       // Outputs null
-1203:lowerCase()       // Outputs 1203
+'My Car':lowerCase()   // Вывод "my car"
+'my car':lowerCase()   // Вывод "my car"
+null:lowerCase()       // Вывод null
+1203:lowerCase()       // Вывод 1203
 ```
 
-##### Result
-Each example outputs as indicated in the comments.
+##### Результат
+Каждый пример выводит данные, указанные в комментариях.
 
 ---
 
-#### 2. :upperCase
+#### 2. :Верхний регистр(upperCase)
 
-##### Syntax Explanation
-Converts all letters to upper case.
+##### Объяснение синтаксиса
+Преобразует все буквы в верхний регистр.
 
-##### Example
+##### Пример
 ```
-'My Car':upperCase()   // Outputs "MY CAR"
-'my car':upperCase()   // Outputs "MY CAR"
-null:upperCase()       // Outputs null
-1203:upperCase()       // Outputs 1203
+'My Car':upperCase()   // Вывод "MY CAR"
+'my car':upperCase()   // Вывод "MY CAR"
+null:upperCase()       // Вывод null
+1203:upperCase()       // Вывод 1203
 ```
 
-##### Result
-Each example outputs as indicated in the comments.
+##### Результат
+Каждый пример выводит данные, указанные в комментариях.
 
 ---
 
-#### 3. :ucFirst
+#### 3. :Заглавная первая буква(ucFirst)
 
-##### Syntax Explanation
-Capitalizes only the first letter of the string while leaving the rest unchanged.
+##### Объяснение синтаксиса
+Делает заглавной только первую букву строки, оставляя остальные неизменными.
 
-##### Example
+##### Пример
 ```
-'My Car':ucFirst()     // Outputs "My Car"
-'my car':ucFirst()     // Outputs "My car"
-null:ucFirst()         // Outputs null
-undefined:ucFirst()    // Outputs undefined
-1203:ucFirst()         // Outputs 1203
+'My Car':ucFirst()     // Вывод "My Car"
+'my car':ucFirst()     // Вывод "My car"
+null:ucFirst()         // Вывод null
+undefined:ucFirst()    // Вывод undefined
+1203:ucFirst()         // Вывод 1203
 ```
 
-##### Result
-The output is as described in the comments.
+##### Результат
+Выход такой, как описано в комментариях.
 
 ---
 
-#### 4. :ucWords
+#### 4. :Заглавная первая буква слова (ucWords)
 
-##### Syntax Explanation
-Capitalizes the first letter of each word in the string.
+##### Объяснение синтаксиса
+Делает заглавной первую букву каждого слова в строке.
 
-##### Example
+##### Пример
 ```
-'my car':ucWords()     // Outputs "My Car"
-'My cAR':ucWords()     // Outputs "My CAR"
-null:ucWords()         // Outputs null
-undefined:ucWords()    // Outputs undefined
-1203:ucWords()         // Outputs 1203
+'my car':ucWords()     // Вывод "My Car"
+'My cAR':ucWords()     // Вывод "My CAR"
+null:ucWords()         // Вывод null
+undefined:ucWords()    // Вывод undefined
+1203:ucWords()         // Вывод 1203
 ```
 
-##### Result
-The output is as shown in the examples.
+##### Результат
+Вывод такой же, как показано в примерах.
 
 ---
 
 #### 5. :print(message)
 
-##### Syntax Explanation
-Always returns the specified message regardless of the original data, making it useful as a fallback formatter.  
-Parameter:
-- **message:** The text to print.
+##### Объяснение синтаксиса
+Всегда возвращает указанное сообщение независимо от исходных данных, что делает его полезным в качестве резервного форматировщика.
+Параметр:
+- **message:** Текст для печати.
 
-##### Example
+##### Пример
 ```
-'My Car':print('hello!')   // Outputs "hello!"
-'my car':print('hello!')   // Outputs "hello!"
-null:print('hello!')       // Outputs "hello!"
-1203:print('hello!')       // Outputs "hello!"
+'My Car':print('hello!')   // Вывод  "hello!"
+'my car':print('hello!')   // Вывод  "hello!"
+null:print('hello!')       // Вывод  "hello!"
+1203:print('hello!')       // Вывод  "hello!"
 ```
 
-##### Result
-Returns the specified string "hello!" in all cases.
+##### Результат
+Возвращает указанную строку "hello!" во всех случаях.
 
 ---
 
 #### 6. :printJSON
 
-##### Syntax Explanation
-Converts an object or array into a JSON-formatted string.
+##### Объяснение синтаксиса
+Преобразует объект или массив в строку в формате JSON.
 
-##### Example
+##### Пример
 ```
 [{'id':2,'name':'homer'},{'id':3,'name':'bart'}]:printJSON()
 // Outputs "[
@@ -960,17 +980,17 @@ Converts an object or array into a JSON-formatted string.
 'my car':printJSON()   // Outputs ""my car""
 ```
 
-##### Result
-The output is the JSON-formatted string of the given data.
+##### Результат
+Выходные данные — строка в формате JSON с заданными данными.
 
 ---
 
 #### 7. :unaccent
 
-##### Syntax Explanation
-Removes diacritical marks from text, converting it to an unaccented format.
+##### Объяснение синтаксиса
+Удаляет диакритические знаки из текста, преобразуя его в формат без ударений.
 
-##### Example
+##### Пример
 ```
 'crÃ¨me brulÃ©e':unaccent()   // Outputs "creme brulee"
 'CRÃME BRULÃE':unaccent()   // Outputs "CREME BRULEE"
@@ -978,21 +998,21 @@ Removes diacritical marks from text, converting it to an unaccented format.
 'Ã©Ã¹Ã¯ÃªÃ¨Ã ':unaccent()       // Outputs "euieea"
 ```
 
-##### Result
-All examples output the text with accents removed.
+##### Результат
+Все примеры выводят текст с удаленными акцентами.
 
 ---
 
 #### 8. :convCRLF
 
-##### Syntax Explanation
-Converts carriage return and newline characters (`
-` or `
-`) into document-specific line break tags. This is useful for formats such as DOCX, PPTX, ODT, ODP, and ODS.  
-**Note:** When using `:html` before `:convCRLF`, the `
-` will be converted to a `<br>` tag.
+##### Объяснение синтаксиса
+Преобразует символы возврата каретки и новой строки (`
+` или `
+`) в теги переноса строки, специфичные для документа. Это полезно для таких форматов, как DOCX, PPTX, ODT, ODP и ODS.
+**Примечание:** При использовании `:html` перед `:convCRLF`, `
+` будет преобразован в тег `<br>`.
 
-##### Example
+##### Пример
 ```
 // For ODT format:
 'my blue 
@@ -1007,18 +1027,18 @@ Converts carriage return and newline characters (`
  car':convCRLF()    // Outputs "my blue </w:t><w:br/><w:t> car"
 ```
 
-##### Result
-The output shows the line break markers appropriate for the target document format.
+##### Результат
+Вывод показывает маркеры переноса строки, соответствующие формату целевого документа.
 
 ---
 
 #### 9. :substr(begin, end, wordMode)
 
-##### Syntax Explanation
-Performs substring operations on a string, starting at index `begin` (0-based) and ending just before index `end`.  
-An optional parameter `wordMode` (boolean or `last`) controls whether to avoid breaking a word in the middle.
+##### Объяснение синтаксиса
+Выполняет операции над подстроками в строке, начиная с индекса `begin` (начиная с 0) и заканчивая непосредственно перед индексом `end`.
+Необязательный параметр `wordMode` (логический или `last`) управляет тем, следует ли избегать разрыва слова в середине.
 
-##### Example
+##### Пример
 ```
 'foobar':substr(0, 3)            // Outputs "foo"
 'foobar':substr(1)               // Outputs "oobar"
@@ -1028,40 +1048,40 @@ An optional parameter `wordMode` (boolean or `last`) controls whether to avoid b
 'abcd efg hijklm':substr(1, 11, true)  // Outputs "abcd efg "
 ```
 
-##### Result
-The output is the substring extracted according to the parameters.
+##### Результат
+Выходные данные — это подстрока, извлеченная в соответствии с параметрами.
 
 ---
 
 #### 10. :split(delimiter)
 
-##### Syntax Explanation
-Splits a string into an array using the specified delimiter.  
-Parameter:
-- **delimiter:** The delimiter string.
+##### Объяснение синтаксиса
+Разбивает строку на массив, используя указанный разделитель.
+Параметр:
+- **delimiter:** Строка разделителя.
 
-##### Example
+##### Пример
 ```
 'abcdefc12':split('c')    // Outputs ["ab", "def", "12"]
 1222.1:split('.')         // Outputs ["1222", "1"]
 'ab/cd/ef':split('/')      // Outputs ["ab", "cd", "ef"]
 ```
 
-##### Result
-The example results in an array split by the given delimiter.
+##### Результат
+Пример приводит к массиву, разделенному указанным разделителем.
 
 ---
 
 #### 11. :padl(targetLength, padString)
 
-##### Syntax Explanation
-Pads the left side of a string with a specified character until the final string reaches `targetLength`.  
-If the target length is less than the original string length, the original string is returned.  
-Parameters:
-- **targetLength:** The desired total length.
-- **padString:** The string used for padding (default is a space).
+##### Объяснение синтаксиса
+Дополняет левую часть строки указанным символом, пока конечная строка не достигнет `targetLength`.
+Если целевая длина меньше исходной длины строки, возвращается исходная строка.
+Параметры:
+- **targetLength:** Требуемая общая длина.
+- **padString:** Строка, используемая для заполнения (по умолчанию — пробел).
 
-##### Example
+##### Пример
 ```
 'abc':padl(10)              // Outputs "       abc"
 'abc':padl(10, 'foo')       // Outputs "foofoofabc"
@@ -1070,18 +1090,18 @@ Parameters:
 'abc':padl(1)               // Outputs "abc"
 ```
 
-##### Result
-Each example outputs the string padded on the left accordingly.
+##### Результат
+Каждый пример выводит строку, дополненную слева соответствующим образом.
 
 ---
 
 #### 12. :padr(targetLength, padString)
 
-##### Syntax Explanation
-Pads the right side of a string with a specified character until the final string reaches `targetLength`.  
-Parameters are the same as for `:padl`.
+##### Объяснение синтаксиса
+Дополняет правую часть строки указанным символом, пока конечная строка не достигнет `targetLength`.
+Параметры такие же, как для `:padl`.
 
-##### Example
+##### Пример
 ```
 'abc':padr(10)              // Outputs "abc       "
 'abc':padr(10, 'foo')       // Outputs "abcfoofoof"
@@ -1090,74 +1110,74 @@ Parameters are the same as for `:padl`.
 'abc':padr(1)               // Outputs "abc"
 ```
 
-##### Result
-The output shows the string padded on the right.
+##### Результат
+Вывод показывает строку, дополненную справа.
 
 ---
 
 #### 13. :ellipsis(maximum)
 
-##### Syntax Explanation
-If the text exceeds the specified number of characters, appends an ellipsis ("...") at the end.  
-Parameter:
-- **maximum:** The maximum allowed number of characters.
+##### Объяснение синтаксиса
+Если текст превышает указанное количество символов, добавляет многоточие ("...") в конце.
+Параметр:
+- **maximum:** Максимально допустимое количество символов.
 
-##### Example
+##### Пример
 ```
 'abcdef':ellipsis(3)      // Outputs "abc..."
 'abcdef':ellipsis(6)      // Outputs "abcdef"
 'abcdef':ellipsis(10)     // Outputs "abcdef"
 ```
 
-##### Result
-The examples show text truncated and appended with an ellipsis if needed.
+##### Результат
+В примерах показан текст, обрезанный и дополненный многоточием, если необходимо.
 
 ---
 
 #### 14. :prepend(textToPrepend)
 
-##### Syntax Explanation
-Prepends the specified text to the beginning of the string.  
-Parameter:
-- **textToPrepend:** The prefix text.
+##### Объяснение синтаксиса
+Добавляет указанный текст в начало строки.
+Параметр:
+- **textToPrepend:** Текст префикса.
 
-##### Example
+##### Пример
 ```
 'abcdef':prepend('123')     // Outputs "123abcdef"
 ```
 
-##### Result
-The output shows the text with the specified prefix added.
+##### Результат
+Вывод показывает текст с указанным добавленным префиксом.
 
 ---
 
 #### 15. :append(textToAppend)
 
-##### Syntax Explanation
-Appends the specified text to the end of the string.  
-Parameter:
-- **textToAppend:** The suffix text.
+##### Объяснение синтаксиса
+Добавляет указанный текст в конец строки.
+Параметр:
+- **textToAppend:** Текст суффикса.
 
-##### Example
+##### Пример
 ```
 'abcdef':append('123')      // Outputs "abcdef123"
 ```
 
-##### Result
-The output shows the text with the specified suffix added.
+##### Результат
+Вывод показывает текст с добавленным указанным суффиксом.
 
 ---
 
 #### 16. :replace(oldText, newText)
 
-##### Syntax Explanation
-Replaces all occurrences of `oldText` in the text with `newText`.  
-Parameters:
-- **oldText:** The text to be replaced.
-- **newText:** The new text to replace with.  
-  **Note:** If `newText` is null, it indicates that the matching text should be removed.
+##### Объяснение синтаксиса
+Заменяет все вхождения `oldText` в тексте на `newText`.
+Параметры:
+- **oldText:** Текст для замены.
+- **newText:** Новый текст для замены.
+  **Примечание:** Если `newText` равен null, это означает, что соответствующий текст следует удалить.
 
-##### Example
+##### Пример
 ```
 'abcdef abcde':replace('cd', 'OK')    // Outputs "abOKef abOKe"
 'abcdef abcde':replace('cd')          // Outputs "abef abe"
@@ -1165,17 +1185,17 @@ Parameters:
 'abcdef abcde':replace('cd', 1000)      // Outputs "ab1000ef ab1000e"
 ```
 
-##### Result
-The output is the text after replacing the specified segments.
+##### Результат
+Выход — текст после замены указанных сегментов.
 
 ---
 
 #### 17. :len
 
-##### Syntax Explanation
-Returns the length of a string or an array.
+##### Объяснение синтаксиса
+Возвращает длину строки или массива.
 
-##### Example
+##### Пример
 ```
 'Hello World':len()     // Outputs 11
 '':len()                // Outputs 0
@@ -1183,161 +1203,161 @@ Returns the length of a string or an array.
 [1,'Hello']:len()       // Outputs 2
 ```
 
-##### Result
-Outputs the corresponding length as a number.
+##### Результат
+Выводит соответствующую длину в виде числа.
 
 ---
 
 #### 18. :t
 
-##### Syntax Explanation
-Translates the text using a translation dictionary.  
-Examples and results depend on the actual translation dictionary configuration.
+##### Объяснение синтаксиса
+Переводит текст с использованием словаря перевода.
+Примеры и результаты зависят от фактической конфигурации словаря перевода.
 
 ---
 
 #### 19. :preserveCharRef
 
-##### Syntax Explanation
-By default, Template removes certain illegal characters from XML (such as `&`, `>`, `<`, etc.). This formatter preserves character references (for example, `&#xa7;` remains unchanged) and is suitable for specific XML generation scenarios.  
-Examples and results depend on the specific use case.
+##### Объяснение синтаксиса
+По умолчанию Template удаляет некоторые недопустимые символы из XML (такие как `&`, `>`, `<` и т. д.). Этот форматировщик сохраняет ссылки на символы (например, `&#xa7;` остается неизменным) и подходит для определенных сценариев генерации XML.
+Примеры и результаты зависят от конкретного варианта использования.
 
 ---
 
-### Number Formatting
+### Форматирование чисел
 
 #### 1. :formatN(precision)
 
-##### Syntax Explanation
-Formats a number according to localization settings.  
-Parameter:
-- **precision:** The number of decimal places.  
-  For ODS/XLSX formats, the number of displayed decimals is determined by the text editor; for other formats, this parameter is used.
+##### Объяснение синтаксиса
+Форматирует число в соответствии с настройками локализации.
+Параметр:
+- **precision:** Количество десятичных знаков.
+  Для форматов ODS/XLSX количество отображаемых десятичных знаков определяется текстовым редактором; для других форматов используется этот параметр.
 
-##### Example
+##### Пример
 ```
 // Example environment: API options { "lang": "en-us" }
 '10':formatN()         // Outputs "10.000"
 '1000.456':formatN()   // Outputs "1,000.456"
 ```
 
-##### Result
-The number is output according to the specified precision and localization format.
+##### Результат
+Число выводится в соответствии с указанной точностью и форматом локализации.
 
 ---
 
 #### 2. :round(precision)
 
-##### Syntax Explanation
-Rounds the number to the specified number of decimal places.
+##### Объяснение синтаксиса
+Округляет число до указанного количества десятичных знаков.
 
-##### Example
+##### Пример
 ```
 10.05123:round(2)      // Outputs 10.05
 1.05:round(1)          // Outputs 1.1
 ```
 
-##### Result
-The output is the number rounded to the given precision.
+##### Результат
+Выход — число, округленное до заданной точности.
 
 ---
 
 #### 3. :add(value)
 
-##### Syntax Explanation
-Adds the specified value to the current number.  
-Parameter:
-- **value:** The number to add.
+##### Объяснение синтаксиса
+Добавляет указанное значение к текущему числу.
+Параметр:
+- **value:** Число для добавления.
 
-##### Example
+##### Пример
 ```
 1000.4:add(2)         // Outputs 1002.4
 '1000.4':add('2')      // Outputs 1002.4
 ```
 
-##### Result
-The output is the sum of the current number and the specified value.
+##### Результат
+Выходные данные представляют собой сумму текущего числа и указанного значения.
 
 ---
 
 #### 4. :sub(value)
 
-##### Syntax Explanation
-Subtracts the specified value from the current number.  
-Parameter:
-- **value:** The number to subtract.
+##### Объяснение синтаксиса
+Вычитает указанное значение из текущего числа.
+Параметр:
+- **value:** Число для вычитания.
 
-##### Example
+##### Пример
 ```
 1000.4:sub(2)         // Outputs 998.4
 '1000.4':sub('2')      // Outputs 998.4
 ```
 
-##### Result
-The output is the current number minus the specified value.
+##### Результат
+Выход — текущее число минус указанное значение.
 
 ---
 
 #### 5. :mul(value)
 
-##### Syntax Explanation
-Multiplies the current number by the specified value.  
-Parameter:
-- **value:** The multiplier.
+##### Объяснение синтаксиса
+Умножает текущее число на указанное значение.
+Параметр:
+- **value:** Множитель.
 
-##### Example
+##### Пример
 ```
 1000.4:mul(2)         // Outputs 2000.8
 '1000.4':mul('2')      // Outputs 2000.8
 ```
 
-##### Result
-The output is the product of the current number and the specified value.
+##### Результат
+Выход — это произведение текущего числа и указанного значения.
 
 ---
 
 #### 6. :div(value)
 
-##### Syntax Explanation
-Divides the current number by the specified value.  
-Parameter:
-- **value:** The divisor.
+##### Объяснение синтаксиса
+Делит текущее число на указанное значение.
+Параметр:
+- **value:** Делитель.
 
-##### Example
+##### Пример
 ```
 1000.4:div(2)         // Outputs 500.2
 '1000.4':div('2')      // Outputs 500.2
 ```
 
-##### Result
-The output is the result of the division.
+##### Результат
+Выход — результат деления.
 
 ---
 
 #### 7. :mod(value)
 
-##### Syntax Explanation
-Computes the modulus (remainder) of the current number divided by the specified value.  
-Parameter:
-- **value:** The modulus divisor.
+##### Объяснение синтаксиса
+Вычисляет модуль (остаток) текущего числа, деленного на указанное значение.
+Параметр:
+- **value:** Делитель модуля.
 
-##### Example
+##### Пример
 ```
 4:mod(2)              // Outputs 0
 3:mod(2)              // Outputs 1
 ```
 
-##### Result
-The output is the remainder from the modulus operation.
+##### Результат
+Выход — остаток от операции модуля.
 
 ---
 
 #### 8. :abs
 
-##### Syntax Explanation
-Returns the absolute value of the number.
+##### Объяснение синтаксиса
+Возвращает абсолютное значение числа.
 
-##### Example
+##### Пример
 ```
 -10:abs()             // Outputs 10
 -10.54:abs()          // Outputs 10.54
@@ -1345,100 +1365,100 @@ Returns the absolute value of the number.
 '-200':abs()          // Outputs 200
 ```
 
-##### Result
-The output is the absolute value of the input number.
+##### Результат
+Выходное значение — абсолютное значение входного числа.
 
 ---
 
 #### 9. :ceil
 
-##### Syntax Explanation
-Rounds the number upward to the smallest integer that is greater than or equal to the current number.
+##### Объяснение синтаксиса
+Округляет число вверх до наименьшего целого числа, которое больше или равно текущему числу.
 
-##### Example
+##### Пример
 ```
 10.05123:ceil()       // Outputs 11
 1.05:ceil()           // Outputs 2
 -1.05:ceil()          // Outputs -1
 ```
 
-##### Result
-The output is the number rounded upward to the nearest integer.
+##### Результат
+Выходные данные — число, округленное в большую сторону до ближайшего целого числа.
 
 ---
 
 #### 10. :floor
 
-##### Syntax Explanation
-Rounds the number downward to the largest integer that is less than or equal to the current number.
+##### Объяснение синтаксиса
+Округляет число в меньшую сторону до наибольшего целого числа, которое меньше или равно текущему числу.
 
-##### Example
+##### Пример
 ```
 10.05123:floor()      // Outputs 10
 1.05:floor()          // Outputs 1
 -1.05:floor()         // Outputs -2
 ```
 
-##### Result
-The output is the number rounded downward to the nearest integer.
+##### Результат
+Результат — число, округлённое меньшую сторону до ближайшего целого.
 
 ---
 
 #### 11. :int
 
-##### Syntax Explanation
-Converts the number to an integer (not recommended for use).
+##### Описание синтаксиса
+Преобразует число в целое (не рекомендуется к использованию).
 
-##### Example and Result
-Depends on the specific conversion case.
+##### Пример и результат
+Зависит от конкретного случая преобразования.
 
 ---
 
 #### 12. :toEN
 
-##### Syntax Explanation
-Converts the number to English format (using `.` as the decimal point). Not recommended for use.
+##### Описание синтаксиса
+Преобразует число в английский формат (использует `.` как разделитель дробной части). Не рекомендуется к использованию.
 
-##### Example and Result
-Depends on the specific conversion case.
+##### Пример и результат
+Зависит от конкретного случая преобразования.
 
 ---
 
 #### 13. :toFixed
 
-##### Syntax Explanation
-Converts the number to a string while keeping only the specified number of decimal places. Not recommended for use.
+##### Описание синтаксиса
+Преобразует число в строку с сохранением указанного количества знаков после запятой. Не рекомендуется к использованию.
 
-##### Example and Result
-Depends on the specific conversion case.
+##### Пример и результат
+Зависит от конкретного случая преобразования.
 
 ---
 
 #### 14. :toFR
 
-##### Syntax Explanation
-Converts the number to French format (using `,` as the decimal separator). Not recommended for use.
+##### Описание синтаксиса
+Преобразует число во французский формат (использует `,` как разделитель дробной части). Не рекомендуется к использованию.
 
-##### Example and Result
-Depends on the specific conversion case.
+##### Пример и результат
+Зависит от конкретного случая преобразования.
 
 ---
 
-### Currency Formatting
+### Форматирование валют
 
 #### 1. :formatC(precisionOrFormat, targetCurrency)
 
-##### Syntax Explanation
-Formats a currency number and allows specifying the number of decimals or a particular output format.  
-Parameters:
-- **precisionOrFormat:** An optional parameter that can either be a number (specifying the number of decimals) or a format specifier:
-  - An integer: changes the default decimal precision.
-  - `'M'`: outputs only the main currency name.
-  - `'L'`: outputs the number along with the currency symbol (default).
-  - `'LL'`: outputs the number along with the main currency name.
-- **targetCurrency:** Optional; the target currency code (in uppercase, e.g., USD, EUR) that overrides the global settings.
+##### Описание синтаксиса
+Форматирует числовое значение как валюту и позволяет указать количество знаков после запятой или конкретный формат вывода.  
+Параметры:
+- **precisionOrFormat** — необязательный параметр: число (точность) или строка формата:
+  - Целое число: задаёт количество знаков после запятой.
+  - `'M'`: выводит только наименование валюты.
+  - `'L'`: выводит число с символом валюты (по умолчанию).
+  - `'LL'`: выводит число с полным названием валюты.
+- **targetCurrency** — необязательный параметр: код целевой валюты в верхнем регистре (например, USD, EUR), который переопределяет глобальные настройки.
 
-##### Example
+##### Пример
 ```
 // Example environment: API options { "lang": "en-us", "currency": { "source": "EUR", "target": "USD", "rates": { "EUR": 1, "USD": 2 } } }
 '1000.456':formatC()      // Outputs "$2,000.91"
@@ -1452,21 +1472,21 @@ Parameters:
 '1000.456':formatC()      // When the source and target currencies are the same, outputs "1 000,46 €"
 ```
 
-##### Result
-The output depends on the API options and exchange rate settings.
+##### Результат
+Выходные данные зависят от параметров API и настроек обменного курса.
 
 ---
 
 #### 2. :convCurr(target, source)
 
-##### Syntax Explanation
-Converts a number from one currency to another. The exchange rate can be passed via API options or set globally.  
-If no parameters are specified, the conversion is automatically performed from `options.currencySource` to `options.currencyTarget`.  
-Parameters:
-- **target:** Optional; the target currency code (defaults to `options.currencyTarget`).
-- **source:** Optional; the source currency code (defaults to `options.currencySource`).
+##### Объяснение синтаксиса
+Преобразует число из одной валюты в другую. Обменный курс можно передать через параметры API или задать глобально.
+Если параметры не указаны, преобразование выполняется автоматически из `options.currencySource` в `options.currencyTarget`.
+Параметры:
+- **target:** Необязательно; код целевой валюты (по умолчанию `options.currencyTarget`).
+- **source:** Необязательно; код исходной валюты (по умолчанию `options.currencySource`).
 
-##### Example
+##### Пример
 ```
 // Example environment: API options { "currency": { "source": "EUR", "target": "USD", "rates": { "EUR": 1, "USD": 2 } } }
 10:convCurr()              // Outputs 20
@@ -1476,20 +1496,20 @@ Parameters:
 1000:convCurr('USD', 'USD') // Outputs 1000
 ```
 
-##### Result
-The output is the converted currency value.
+##### Результат
+Выходные данные — это преобразованное значение валюты.
 
 ---
 
-### Date Formatting
+### Форматирование даты
 
 #### 1. :formatD(patternOut, patternIn)
 
-##### Syntax Explanation
-Formats a date by accepting an output format `patternOut` and an optional input format `patternIn` (defaults to ISO 8601).  
-Timezone and language adjustments can be made via `options.timezone` and `options.lang`.
+##### Объяснение синтаксиса
+Форматирует дату, принимая выходной формат `patternOut` и необязательный входной формат `patternIn` (по умолчанию ISO 8601).
+Настройки часового пояса и языка можно выполнить с помощью `options.timezone` и `options.lang`.
 
-##### Example
+##### Пример
 ```
 // Example environment: API options { "lang": "en-us", "timezone": "Europe/Paris" }
 '20160131':formatD('L')      // Outputs "01/31/2016"
@@ -1503,21 +1523,21 @@ Timezone and language adjustments can be made via `options.timezone` and `option
 1410715640:formatD('LLLL', 'X') // Outputs "dimanche 14 septembre 2014 19:27"
 ```
 
-##### Result
-The output is the date formatted as specified.
+##### Результат
+Вывод — дата, отформатированная указанным образом.
 
 ---
 
 #### 2. :addD(amount, unit, patternIn)
 
-##### Syntax Explanation
-Adds a specified amount of time to a date. Supported units include: day, week, month, quarter, year, hour, minute, second, millisecond.  
-Parameters:
-- **amount:** The quantity to add.
-- **unit:** The time unit (case-insensitive).
-- **patternIn:** Optional, the input format (defaults to ISO8601).
+##### Объяснение синтаксиса
+Добавляет указанное количество времени к дате. Поддерживаемые единицы: день, неделя, месяц, квартал, год, час, минута, секунда, миллисекунда.
+Параметры:
+- **amount:** Количество для добавления.
+- **unit:** Единица времени (без учета регистра).
+- **patternIn:** Необязательно, формат ввода (по умолчанию ISO8601).
 
-##### Example
+##### Пример
 ```
 // Example environment: API options { "lang": "fr", "timezone": "Europe/Paris" }
 '2017-05-10T15:57:23.769561+03:00':addD('3', 'day')    // Outputs "2017-05-13T12:57:23.769Z"
@@ -1527,17 +1547,17 @@ Parameters:
 '31-2016-01':addD('3', 'month', 'DD-YYYY-MM')  // Outputs "2016-04-30T00:00:00.000Z"
 ```
 
-##### Result
-The output is the new date after the specified time has been added.
+##### Результат
+Выходные данные — новая дата после добавления указанного времени.
 
 ---
 
 #### 3. :subD(amount, unit, patternIn)
 
-##### Syntax Explanation
-Subtracts a specified amount of time from a date. The parameters are the same as in `addD`.
+##### Объяснение синтаксиса
+Вычитает указанное количество времени из даты. Параметры такие же, как в `addD`.
 
-##### Example
+##### Пример
 ```
 // Example environment: API options { "lang": "fr", "timezone": "Europe/Paris" }
 '2017-05-10T15:57:23.769561+03:00':subD('3', 'day')    // Outputs "2017-05-07T12:57:23.769Z"
@@ -1547,20 +1567,20 @@ Subtracts a specified amount of time from a date. The parameters are the same as
 '31-2016-01':subD('3', 'month', 'DD-YYYY-MM')  // Outputs "2015-10-31T00:00:00.000Z"
 ```
 
-##### Result
-The output is the new date after the specified time has been subtracted.
+##### Результат
+Выходные данные — это новая дата после вычитания указанного времени.
 
 ---
 
 #### 4. :startOfD(unit, patternIn)
 
-##### Syntax Explanation
-Sets the date to the start of the specified time unit.  
-Parameters:
-- **unit:** The time unit.
-- **patternIn:** Optional, the input format.
+##### Объяснение синтаксиса
+Устанавливает дату на начало указанной единицы времени.
+Параметры:
+- **unit:** Единица времени.
+- **patternIn:** Необязательно, формат ввода.
 
-##### Example
+##### Пример
 ```
 // Example environment: API options { "lang": "fr", "timezone": "Europe/Paris" }
 '2017-05-10T15:57:23.769561+03:00':startOfD('day')    // Outputs "2017-05-10T00:00:00.000Z"
@@ -1570,18 +1590,18 @@ Parameters:
 '31-2016-01':startOfD('month', 'DD-YYYY-MM')  // Outputs "2016-01-01T00:00:00.000Z"
 ```
 
-##### Result
-The output is the date set to the start of the specified unit.
+##### Результат
+Выходные данные — это дата, установленная на начало указанной единицы.
 
 ---
 
 #### 5. :endOfD(unit, patternIn)
 
-##### Syntax Explanation
-Sets the date to the end of the specified time unit.  
-Parameters are the same as for `startOfD`.
+##### Объяснение синтаксиса
+Устанавливает дату на конец указанной единицы времени.
+Параметры такие же, как для `startOfD`.
 
-##### Example
+##### Пример
 ```
 // Example environment: API options { "lang": "fr", "timezone": "Europe/Paris" }
 '2017-05-10T15:57:23.769561+03:00':endOfD('day')    // Outputs "2017-05-10T23:59:59.999Z"
@@ -1591,15 +1611,15 @@ Parameters are the same as for `startOfD`.
 '31-2016-01':endOfD('month', 'DD-YYYY-MM')  // Outputs "2016-01-31T23:59:59.999Z"
 ```
 
-##### Result
-The output is the date set to the end of the specified unit.
+##### Результат
+Выходные данные — дата, установленная на конец указанного блока.
 
 ---
 
 #### 6. :diffD(toDate, unit, patternFromDate, patternToDate)
 
-##### Syntax Explanation
-Calculates the difference between two dates and outputs it in the specified unit. Supported units include:
+##### Объяснение синтаксиса
+Вычисляет разницу между двумя датами и выводит ее в указанном блоке. Поддерживаемые блоки включают:
 - `day(s)` or `d`
 - `week(s)` or `w`
 - `quarter(s)` or `Q`
@@ -1610,13 +1630,13 @@ Calculates the difference between two dates and outputs it in the specified unit
 - `second(s)` or `s`
 - `millisecond(s)` or `ms` (default unit)
 
-Parameters:
-- **toDate:** The target date.
-- **unit:** The unit for output.
-- **patternFromDate:** Optional, the format of the starting date.
-- **patternToDate:** Optional, the format of the target date.
+Параметры:
+- **toDate:** Целевая дата.
+- **unit:** Единица для вывода.
+- **patternFromDate:** Необязательно, формат начальной даты.
+- **patternToDate:** Необязательно, формат целевой даты.
 
-##### Example
+##### Пример
 ```
 '20101001':diffD('20101201')              // Outputs 5270400000
 '20101001':diffD('20101201', 'second')      // Outputs 5270400
@@ -1628,20 +1648,20 @@ Parameters:
 '2010+10+01':diffD('2010=12=01', 'ms', 'YYYY+MM+DD', 'YYYY=MM=DD')  // Outputs 5270400000
 ```
 
-##### Result
-The output is the time difference between the two dates, converted into the specified unit.
+##### Результат
+Выходные данные — это разница во времени между двумя датами, преобразованная в указанную единицу.
 
 ---
 
 #### 7. :convDate(patternIn, patternOut)
 
-##### Syntax Explanation
-Converts a date from one format to another (not recommended for use).  
-Parameters:
-- **patternIn:** The input date format.
-- **patternOut:** The output date format.
+##### Объяснение синтаксиса
+Преобразует дату из одного формата в другой (не рекомендуется для использования).
+Параметры:
+- **patternIn:** Формат входной даты.
+- **patternOut:** Формат выходной даты.
 
-##### Example
+##### Пример
 ```
 // Example environment: API options { "lang": "en", "timezone": "Europe/Paris" }
 '20160131':convDate('YYYYMMDD', 'L')      // Outputs "01/31/2016"
@@ -1654,14 +1674,14 @@ Parameters:
 '20160131':convDate('YYYYMMDD', 'dddd')   // Outputs "dimanche"
 ```
 
-##### Result
-The output is the date converted to the specified format.
+##### Результат
+Выходные данные — дата, преобразованная в указанный формат.
 
 ---
 
-#### 8. Date Format Patterns
+#### 8. Шаблоны формата даты
 
-Common date format symbols (refer to the DayJS documentation):
+Распространенные символы формата даты (см. документацию DayJS):
 - `X`: Unix timestamp (in seconds), e.g., 1360013296
 - `x`: Unix timestamp in milliseconds, e.g., 1360013296123
 - `YY`: Two-digit year, e.g., 18
@@ -1682,20 +1702,20 @@ Common date format symbols (refer to the DayJS documentation):
 
 ---
 
-### Interval Formatting
+### Форматирование интервала
 
 #### 1. :formatI(patternOut, patternIn)
 
-##### Syntax Explanation
-Formats a duration or interval. The supported output formats include:
-- `human+` or `human` (suitable for human-friendly display)
-- Units such as `millisecond(s)`, `second(s)`, `minute(s)`, `hour(s)`, `year(s)`, `month(s)`, `week(s)`, `day(s)` (or their abbreviations).
+##### Объяснение синтаксиса
+Форматирует длительность или интервал. Поддерживаемые форматы вывода включают:
+- `human+` или `human` (подходит для удобного отображения человеком)
+- Единицы, такие как `миллисекунды`, `секунды`, `минуты`, `часы`, `годы`, `месяцы`, `недели`, `дни` (или их сокращения).
 
-Parameters:
-- **patternOut:** The output format (for example, `'second'` or `'human+'`).
-- **patternIn:** Optional, the input unit (for example, `'milliseconds'` or `'s'`).
+Параметры:
+- **patternOut:** Формат вывода (например, `'секунда'` или `'human+'`).
+- **patternIn:** Необязательно, единица ввода (например, `'миллисекунды'` или `'с'`).
 
-##### Example
+##### Пример
 ```
 // Example environment: API options { "lang": "en", "timezone": "Europe/Paris" }
 2000:formatI('second')       // Outputs 2
@@ -1727,18 +1747,18 @@ The output is the duration or interval displayed in the specified unit or format
 
 ---
 
-### Array Formatting
+### Форматирование массива
 
 #### 1. :arrayJoin(separator, index, count)
 
-##### Syntax Explanation
-Joins an array of strings or numbers into a single string.  
-Parameters:
-- **separator:** The delimiter (default is a comma `,`).
-- **index:** Optional; the starting index from which to join.
-- **count:** Optional; the number of items to join starting from `index` (can be negative to count from the end).
+##### Объяснение синтаксиса
+Объединяет массив строк или чисел в одну строку.
+Параметры:
+- **separator:** Разделитель (по умолчанию запятая `,`).
+- **index:** Необязательно; начальный индекс, с которого нужно объединить.
+- **count:** Необязательно; количество элементов для объединения, начиная с `index` (может быть отрицательным для подсчета с конца).
 
-##### Example
+##### Пример
 ```
 ['homer','bart','lisa']:arrayJoin()              // Outputs "homer, bart, lisa"
 ['homer','bart','lisa']:arrayJoin(' | ')          // Outputs "homer | bart | lisa"
@@ -1755,21 +1775,21 @@ undefined:arrayJoin()                             // Outputs undefined
 ['homer','bart','lisa']:arrayJoin('', 0, -1)      // Outputs "homerbart"
 ```
 
-##### Result
-The output is a string created by joining the array elements according to the specified parameters.
+##### Результат
+Выходные данные — строка, созданная путем объединения элементов массива в соответствии с указанными параметрами.
 
 ---
 
 #### 2. :arrayMap(objSeparator, attSeparator, attributes)
 
-##### Syntax Explanation
-Transforms an array of objects into a string. It does not process nested objects or arrays.  
-Parameters:
-- **objSeparator:** The separator between objects (default is `, `).
-- **attSeparator:** The separator between object attributes (default is `:`).
-- **attributes:** Optional; a list of object attributes to output.
+##### Объяснение синтаксиса
+Преобразует массив объектов в строку. Он не обрабатывает вложенные объекты или массивы.
+Параметры:
+- **objSeparator:** Разделитель между объектами (по умолчанию `, `).
+- **attSeparator:** Разделитель между атрибутами объекта (по умолчанию `:`).
+- **attributes:** Необязательно; список атрибутов объекта для вывода.
 
-##### Example
+##### Пример
 ```
 [{'id':2,'name':'homer'},{'id':3,'name':'bart'}]:arrayMap()
 // Outputs "2:homer, 3:bart"
@@ -1795,97 +1815,95 @@ null:arrayMap()                       // Outputs null
 undefined:arrayMap()                  // Outputs undefined
 ```
 
-##### Result
-The output is a string generated by mapping and joining the array elements, ignoring nested object content.
+##### Результат
+Выходные данные представляют собой строку, сгенерированную путем сопоставления и объединения элементов массива, игнорируя содержимое вложенных объектов.
 
 ---
 
 #### 3. :count(start)
 
-##### Syntax Explanation
-Counts the row number in an array and outputs the current row number.  
-For example:
+##### Объяснение синтаксиса
+Подсчитывает номер строки в массиве и выводит текущий номер строки.
+Например:
 ```
 {d[i].id:count()}
 ```  
-Regardless of the value of `id`, it outputs the current row count.  
-Starting from v4.0.0, this formatter has been replaced internally by `:cumCount`.
+Независимо от значения `id`, выводится текущий номер строки.  
+Начиная с версии v4.0.0, это форматирование было заменено на `:cumCount`.
 
-Parameter:
-- **start:** Optional; the starting value for the count.
+Параметр:
+- **start** — необязательный параметр, задаёт начальное значение счётчика.
 
-##### Example and Result
-In use, the output will display the row number according to the sequence of the array elements.
-
----
-
-
-Below is the translated text back into English with the same structure using secondary (##) and tertiary (###) headings:
-
-## Conditional Statements
-
-Conditional statements allow you to dynamically control the display or hiding of content in the document based on data values. Template provides three main ways to write conditions:
-
-- **Inline conditions**: Directly output text (or replace it with other text).
-- **Conditional blocks**: Display or hide a section of the document, suitable for multiple Template tags, paragraphs, tables, etc.
-
-All conditions begin with a logical evaluation formatter (e.g., ifEQ, ifGT, etc.), followed by action formatters (such as show, elseShow, drop, keep, etc.).
+##### Пример и результат
+В выводе будет отображаться номер строки в соответствии с порядком элементов массива.
 
 ---
 
-### Overview
+## Условные конструкции
 
-The logical operators and action formatters supported in conditional statements include:
+Условные конструкции позволяют динамически управлять отображением или скрытием содержимого документа на основе значений данных. Шаблон поддерживает три основных способа записи условий:
 
-- **Logical Operators**
-  - **ifEQ(value)**: Checks if the data is equal to the specified value.
-  - **ifNE(value)**: Checks if the data is not equal to the specified value.
-  - **ifGT(value)**: Checks if the data is greater than the specified value.
-  - **ifGTE(value)**: Checks if the data is greater than or equal to the specified value.
-  - **ifLT(value)**: Checks if the data is less than the specified value.
-  - **ifLTE(value)**: Checks if the data is less than or equal to the specified value.
-  - **ifIN(value)**: Checks if the data is contained in an array or string.
-  - **ifNIN(value)**: Checks if the data is not contained in an array or string.
-  - **ifEM()**: Checks if the data is empty (e.g., null, undefined, an empty string, an empty array, or an empty object).
-  - **ifNEM()**: Checks if the data is non-empty.
-  - **ifTE(type)**: Checks if the data type is equal to the specified type (for example, "string", "number", "boolean", etc.).
-  - **and(value)**: Logical “and”, used to connect multiple conditions.
-  - **or(value)**: Logical “or”, used to connect multiple conditions.
+- **Встроенные условия**: Прямой вывод текста (или его замена другим).
+- **Блоки условий**: Отображение или скрытие целых разделов документа, включая несколько тегов шаблона, абзацы, таблицы и т. д.
 
-- **Action Formatters**
-  - **:show(text) / :elseShow(text)**: Used in inline conditions to directly output the specified text.
-  - **:hideBegin / :hideEnd** and **:showBegin / :showEnd**: Used in conditional blocks to hide or show sections of the document.
-
-The following sections introduce the detailed syntax, examples, and results for each usage.
+Все условия начинаются с логического форматтера (например, ifEQ, ifGT и др.), за которым следуют действия (например, show, elseShow, drop, keep и др.).
 
 ---
 
-### Inline Conditions
+### Обзор
+
+Поддерживаемые логические операторы и действия в условиях:
+
+- **Логические операторы**
+  - **ifEQ(value)**: Проверяет, равно ли значение указанному.
+  - **ifNE(value)**: Проверяет, не равно ли значение указанному.
+  - **ifGT(value)**: Проверяет, больше ли значение указанного.
+  - **ifGTE(value)**: Проверяет, больше или равно указанному.
+  - **ifLT(value)**: Проверяет, меньше ли значение указанного.
+  - **ifLTE(value)**: Проверяет, меньше или равно указанному.
+  - **ifIN(value)**: Проверяет, содержится ли значение в массиве или строке.
+  - **ifNIN(value)**: Проверяет, не содержится ли значение в массиве или строке.
+  - **ifEM()**: Проверяет, является ли значение пустым (например, null, undefined, пустая строка, массив или объект).
+  - **ifNEM()**: Проверяет, не является ли значение пустым.
+  - **ifTE(type)**: Проверяет, совпадает ли тип значения с указанным (например, "string", "number", "boolean" и т. д.).
+  - **and(value)**: Логическое «и», используется для объединения нескольких условий.
+  - **or(value)**: Логическое «или», используется для объединения нескольких условий.
+
+- **Форматтеры действий**
+  - **:show(text) / :elseShow(text)**: Используются во встроенных условиях для вывода указанного текста.
+  - **:hideBegin / :hideEnd** и **:showBegin / :showEnd**: Используются в блоках условий для скрытия или отображения разделов документа.
+
+Ниже представлены синтаксис, примеры и результаты для каждого типа использования.
+
+---
+
+### Встроенные условия
 
 #### 1. :show(text) / :elseShow(text)
 
-##### Syntax
+##### Синтаксис
+
 ```
 {data:condition:show(text)}
 {data:condition:show(text):elseShow(alternative text)}
 ```
 
-##### Example
-Assume the data is:
+##### Пример
+Предположим, что данные:
 ```json
 {
   "val2": 2,
   "val5": 5
 }
 ```
-The template is as follows:
+Шаблон выглядит следующим образом:
 ```
 val2 = {d.val2:ifGT(3):show('high')}
 val2 = {d.val2:ifGT(3):show('high'):elseShow('low')}
 val5 = {d.val5:ifGT(3):show('high')}
 ```
 
-##### Result
+##### Результат
 ```
 val2 = 2
 val2 = low
@@ -1894,20 +1912,20 @@ val5 = high
 
 ---
 
-#### 2. Switch Case (Multiple Conditionals)
+#### 2. Switch Case (множественные условные операторы)
 
-##### Syntax
-Use consecutive condition formatters to build a structure similar to a switch-case:
+##### Синтаксис
+Используйте последовательные форматировщики условий для создания структуры, похожей на switch-case:
 ```
 {data:ifEQ(value1):show(result1):ifEQ(value2):show(result2):elseShow(default result)}
 ```
-Or achieve the same with the or operator:
+Или добиться того же самого с помощью оператора or:
 ```
 {data:ifEQ(value1):show(result1):or(data):ifEQ(value2):show(result2):elseShow(default result)}
 ```
 
-##### Example
-Data:
+##### Пример
+Данные:
 ```json
 {
   "val1": 1,
@@ -1915,14 +1933,14 @@ Data:
   "val3": 3
 }
 ```
-Template:
+Шаблон:
 ```
 val1 = {d.val1:ifEQ(1):show(A):ifEQ(2):show(B):elseShow(C)}
 val2 = {d.val2:ifEQ(1):show(A):ifEQ(2):show(B):elseShow(C)}
 val3 = {d.val3:ifEQ(1):show(A):ifEQ(2):show(B):elseShow(C)}
 ```
 
-##### Result
+##### Результат
 ```
 val1 = A
 val2 = B
@@ -1931,30 +1949,30 @@ val3 = C
 
 ---
 
-#### 3. Multi-variable Conditionals
+#### 3. Многопеременные условные операторы
 
-##### Syntax
-Use the logical operators and/or to test multiple variables:
+##### Синтаксис
+Используйте логические операторы и/или для проверки нескольких переменных:
 ```
 {data1:ifEQ(condition1):and(.data2):ifEQ(condition2):show(result):elseShow(alternative result)}
 {data1:ifEQ(condition1):or(.data2):ifEQ(condition2):show(result):elseShow(alternative result)}
 ```
 
-##### Example
-Data:
+##### Пример
+Данные:
 ```json
 {
   "val2": 2,
   "val5": 5
 }
 ```
-Template:
+Шаблон:
 ```
 and = {d.val2:ifEQ(1):and(.val5):ifEQ(5):show(OK):elseShow(KO)}
 or = {d.val2:ifEQ(1):or(.val5):ifEQ(5):show(OK):elseShow(KO)}
 ```
 
-##### Result
+##### Результат
 ```
 and = KO
 or = OK
@@ -1962,266 +1980,264 @@ or = OK
 
 ---
 
-### Logical Operators and Formatters
+### Логические операторы и форматирования
 
-In the following sections, the described formatters use the inline condition syntax with the following format:
+В следующих разделах описанные форматирования используют синтаксис встроенного условия со следующим форматом:
 ```
 {data:formatter(parameter):show(text):elseShow(alternative text)}
 ```
 
-#### 1. :and(value)
+#### 1. :and(значение)
 
-##### Syntax
+##### Синтаксис
 ```
 {data:ifEQ(value):and(new data or condition):ifGT(another value):show(text):elseShow(alternative text)}
 ```
 
-##### Example
+##### Пример
 ```
 {d.car:ifEQ('delorean'):and(.speed):ifGT(80):show('TravelInTime'):elseShow('StayHere')}
 ```
 
-##### Result
+##### Результат
 If `d.car` equals `'delorean'` and `d.speed` is greater than 80, the output is `TravelInTime`; otherwise, the output is `StayHere`.
 
 ---
 
-#### 2. :or(value)
+#### 2. :or(значение)
 
-##### Syntax
+##### Синтаксис
 ```
 {data:ifEQ(value):or(new data or condition):ifGT(another value):show(text):elseShow(alternative text)}
 ```
 
-##### Example
+##### Пример
 ```
 {d.car:ifEQ('delorean'):or(.speed):ifGT(80):show('TravelInTime'):elseShow('StayHere')}
 ```
 
-##### Result
+##### Результат
 If `d.car` equals `'delorean'` or `d.speed` is greater than 80, the output is `TravelInTime`; otherwise, the output is `StayHere`.
 
 ---
 
 #### 3. :ifEM()
 
-##### Syntax
+##### Синтаксис
 ```
 {data:ifEM():show(text):elseShow(alternative text)}
 ```
 
-##### Example
+##### Пример
 ```
 null:ifEM():show('Result true'):elseShow('Result false')
 []:ifEM():show('Result true'):elseShow('Result false')
 ```
 
-##### Result
-For `null` or an empty array, the output is `Result true`; otherwise, it is `Result false`.
+##### Результат
+Для `null` или пустого массива выводом будет `Result true`; в противном случае — `Result false`.
 
 ---
 
 #### 4. :ifNEM()
 
-##### Syntax
+##### Синтаксис
 ```
 {data:ifNEM():show(text):elseShow(alternative text)}
 ```
 
-##### Example
+##### Пример
 ```
 0:ifNEM():show('Result true'):elseShow('Result false')
 'homer':ifNEM():show('Result true'):elseShow('Result false')
 ```
 
-##### Result
-For non-empty data (such as the number 0 or the string 'homer'), the output is `Result true`; for empty data, the output is `Result false`.
-
+##### Результат
+Для непустых данных (например, числа 0 или строки «homer») выводится `Result true`; для пустых данных выводится `Result false`.
 ---
 
 #### 5. :ifEQ(value)
 
-##### Syntax
+##### Синтаксис
 ```
 {data:ifEQ(value):show(text):elseShow(alternative text)}
 ```
 
-##### Example
+##### Пример
 ```
 100:ifEQ(100):show('Result true'):elseShow('Result false')
 'homer':ifEQ('homer'):show('Result true'):elseShow('Result false')
 ```
 
-##### Result
-If the data equals the specified value, the output is `Result true`; otherwise, it is `Result false`.
+##### Результат
+Если данные равны указанному значению, то выводится «Результат true»; в противном случае — «Результат false».
 
 ---
 
 #### 6. :ifNE(value)
 
-##### Syntax
+##### Синтаксис
 ```
 {data:ifNE(value):show(text):elseShow(alternative text)}
 ```
 
-##### Example
+##### Пример
 ```
 100:ifNE(100):show('Result true'):elseShow('Result false')
 100:ifNE(101):show('Result true'):elseShow('Result false')
 ```
 
-##### Result
-The first example outputs `Result false`, while the second example outputs `Result true`.
+##### Результат
+Первый пример выводит `Result false`, а второй пример выводит `Result true`.
 
 ---
 
 #### 7. :ifGT(value)
 
-##### Syntax
+##### Синтаксис
 ```
 {data:ifGT(value):show(text):elseShow(alternative text)}
 ```
 
-##### Example
+##### Пример
 ```
 1234:ifGT(1):show('Result true'):elseShow('Result false')
 -23:ifGT(19):show('Result true'):elseShow('Result false')
 ```
 
-##### Result
-The first example outputs `Result true`, and the second outputs `Result false`.
+##### Результат
+Первый пример выводит `Result true`, а второй выводит `Result false`.
 
 ---
 
 #### 8. :ifGTE(value)
 
-##### Syntax
+##### Синтаксис
 ```
 {data:ifGTE(value):show(text):elseShow(alternative text)}
 ```
 
-##### Example
+##### Пример
 ```
 50:ifGTE(-29):show('Result true'):elseShow('Result false')
 1:ifGTE(768):show('Result true'):elseShow('Result false')
 ```
 
-##### Result
-The first example outputs `Result true`, while the second outputs `Result false`.
+##### Результат
+Первый пример выводит `Result true`, а второй выводит `Result false`.
 
 ---
 
 #### 9. :ifLT(value)
 
-##### Syntax
+##### Синтаксис
 ```
 {data:ifLT(value):show(text):elseShow(alternative text)}
 ```
 
-##### Example
+##### Пример
 ```
 -23:ifLT(19):show('Result true'):elseShow('Result false')
 1290:ifLT(768):show('Result true'):elseShow('Result false')
 ```
 
-##### Result
-The first example outputs `Result true`, and the second outputs `Result false`.
+##### Результат
+Первый пример выводит `Result true`, а второй выводит `Result false`.
 
 ---
 
 #### 10. :ifLTE(value)
 
-##### Syntax
+##### Синтаксис
 ```
 {data:ifLTE(value):show(text):elseShow(alternative text)}
 ```
 
-##### Example
+##### Пример
 ```
 5:ifLTE(5):show('Result true'):elseShow('Result false')
 1290:ifLTE(768):show('Result true'):elseShow('Result false')
 ```
 
-##### Result
-The first example outputs `Result true`, and the second outputs `Result false`.
+##### Результат
+Первый пример выводит `Result true`, а второй выводит `Result false`.
 
 ---
 
 #### 11. :ifIN(value)
 
-##### Syntax
+##### Синтаксис
 ```
 {data:ifIN(value):show(text):elseShow(alternative text)}
 ```
 
-##### Example
+##### Пример
 ```
 'car is broken':ifIN('is'):show('Result true'):elseShow('Result false')
 [1,2,'toto']:ifIN(2):show('Result true'):elseShow('Result false')
 ```
 
-##### Result
-Both examples output `Result true` (because the string contains 'is', and the array contains 2).
+##### Результат
+Оба примера выводят `Result true` (потому что строка содержит `is', а массив содержит 2).
 
 ---
 
 #### 12. :ifNIN(value)
 
-##### Syntax
+##### Синтаксис
 ```
 {data:ifNIN(value):show(text):elseShow(alternative text)}
 ```
 
-##### Example
+##### Пример
 ```
 'car is broken':ifNIN('is'):show('Result true'):elseShow('Result false')
 [1,2,'toto']:ifNIN(2):show('Result true'):elseShow('Result false')
 ```
 
-##### Result
-The first example outputs `Result false` (because the string contains 'is'), and the second example outputs `Result false` (because the array contains 2).
+##### Результат
+Первый пример выводит `Result false` (потому что строка содержит 'is'), а второй пример выводит `Result false` (потому что массив содержит 2).
 
 ---
 
 #### 13. :ifTE(type)
 
-##### Syntax
+##### Синтаксис
 ```
 {data:ifTE('type'):show(text):elseShow(alternative text)}
 ```
 
-##### Example
+##### Пример
 ```
 'homer':ifTE('string'):show('Result true'):elseShow('Result false')
 10.5:ifTE('number'):show('Result true'):elseShow('Result false')
 ```
 
-##### Result
-The first example outputs `Result true` (since 'homer' is a string), and the second outputs `Result true` (since 10.5 is a number).
-
+##### Результат
+Первый пример выводит `Result true` (поскольку 'homer' — это строка), а второй выводит `Result true` (поскольку 10.5 — это число).
 ---
 
-### Conditional Blocks
+### Условные блоки
 
-Conditional blocks are used to display or hide a section of the document, typically to enclose multiple tags or an entire block of text.
+Условные блоки используются для отображения или скрытия раздела документа, как правило, для заключения нескольких тегов или целого блока текста.
 
 #### 1. :showBegin / :showEnd
 
-##### Syntax
+##### Синтаксис
 ```
 {data:ifEQ(condition):showBegin}
 Document block content
 {data:showEnd}
 ```
 
-##### Example
-Data:
+##### Пример
+Данные:
 ```json
 {
   "toBuy": true
 }
 ```
-Template:
+Шаблон:
 ```
 Banana{d.toBuy:ifEQ(true):showBegin}
 Apple
@@ -2229,8 +2245,8 @@ Pineapple
 {d.toBuy:showEnd}Grapes
 ```
 
-##### Result
-When the condition is met, the content in between is displayed:
+##### Результат
+При выполнении условия отображается содержимое между ними:
 ```
 Banana
 Apple
@@ -2242,21 +2258,21 @@ Grapes
 
 #### 2. :hideBegin / :hideEnd
 
-##### Syntax
+##### Синтаксис
 ```
 {data:ifEQ(condition):hideBegin}
 Document block content
 {data:hideEnd}
 ```
 
-##### Example
-Data:
+##### Пример
+Данные:
 ```json
 {
   "toBuy": true
 }
 ```
-Template:
+Шаблон:
 ```
 Banana{d.toBuy:ifEQ(true):hideBegin}
 Apple
@@ -2264,152 +2280,153 @@ Pineapple
 {d.toBuy:hideEnd}Grapes
 ```
 
-##### Result
-When the condition is met, the content in between is hidden, resulting in:
+##### Результат
+При выполнении условия содержимое между ними скрывается, что приводит к следующему:
 ```
 Banana
 Grapes
 ```
 
-## Computation
+## Вычисление
 
-### Simple Mathematical Operations
+### Простые математические операции
 
 #### 1. :add(value)
-##### Syntax
+##### Синтаксис
 ```
 {data: add(value)}
 ```
-##### Example
-Assume the data is:
+##### Пример
+Предположим, что данные:
 ```json
 {
   "num": 10
 }
 ```
-Template:
+Шаблон:
 ```
 {d.num:add(5)}
 ```
-##### Result
-Outputs 15, which is the result of 10 + 5.
+##### Результат
+Выводит 15, что является результатом 10 + 5.
 
 ---
 
-#### 2. :mul(value)
-##### Syntax
+#### 2. :mul(значение)
+##### Синтаксис
 ```
 {data: mul(value)}
 ```
-##### Example
-Data:
+##### Пример
+Данные:
 ```json
 {
   "num": 10
 }
 ```
-Template:
+Шаблон:
 ```
 {d.num:mul(3)}
 ```
-##### Result
-Outputs 30, which is the result of 10 × 3.
+##### Результат
+Выводит 30, что является результатом 10 × 3.
 
 ---
 
-#### 3. :sub(value)
-##### Syntax
+#### 3. :sub(значение)
+##### Синтаксис
 ```
 {data: sub(value)}
 ```
-##### Example
-Data:
+##### Пример
+Данные:
 ```json
 {
   "num": 10
 }
 ```
-Template:
+Шаблон:
 ```
 {d.num:sub(4)}
 ```
-##### Result
-Outputs 6, which is the result of 10 - 4.
+##### Результат
+Выходы 6, что является результатом 10 - 4.
 
 ---
 
-#### 4. :div(value)
-##### Syntax
+#### 4. :div(значение)
+##### Синтаксис
 ```
 {data: div(value)}
 ```
-##### Example
-Data:
+##### Пример
+Данные:
 ```json
 {
   "num": 10
 }
 ```
-Template:
+Шаблон:
 ```
 {d.num:div(2)}
 ```
-##### Result
-Outputs 5, which is the result of 10 / 2.
+##### Результат
+Выход 5, что является результатом 10 / 2.
 
 ---
 
-#### 5. :mod(value)
-##### Syntax
+#### 5. :mod(значение)
+##### Синтаксис
 ```
 {data: mod(value)}
 ```
-##### Example
-Data:
+##### Пример
+Данные:
 ```json
 {
   "num": 10
 }
 ```
-Template:
+Шаблон:
 ```
 {d.num:mod(3)}
 ```
-##### Result
-Outputs 1, which is the remainder of 10 divided by 3.
+##### Результат
+На выходе получается 1, что является остатком от деления 10 на 3.
 
 ---
 
 #### 6. :abs()
-##### Syntax
+##### Синтаксис
 ```
 {data: abs()}
 ```
-##### Example
-Data:
+##### Пример
+Данные:
 ```json
 {
   "value": -23
 }
 ```
-Template:
+Шаблон:
 ```
 {d.value:abs}
 ```
-##### Result
-Outputs 23, which is the absolute value of -23.
+##### Результат
+Выводит 23, что является абсолютным значением -23.
 
 ---
 
-#### 7. Mathematical Expression Calculation
-Supports writing simple mathematical expressions inside the parentheses (only the operators +, -, *, / are allowed, and nested parentheses are not permitted). The order of operations follows multiplication and division before addition and subtraction.
+#### 7. Расчет математических выражений
+Поддерживает написание простых математических выражений внутри скобок (разрешены только операторы +, -, *, /, а вложенные скобки не допускаются).
+Порядок операций следует за умножением и делением перед сложением и вычитанием.
 
-##### Syntax
+##### Синтаксис
 ```
 {data: add(.other + .vat * d.sub.price - 10 / 2)}
 ```
-##### Example
-Data:
+##### Пример
+Данные:
 ```json
 {
   "val": 1,
@@ -2420,127 +2437,128 @@ Data:
   }
 }
 ```
-Template:
+Шаблон:
 ```
 {d.val:add(.other + .vat * d.sub.price - 10 / 2)}
 ```
-##### Result
-Outputs 48.
+##### Результат
+Вывод 48.
 
 ---
 
-## Advanced Features
+## Расширенные возможности
 
-### Pagination
+### Нумерация страниц
 
-#### 1. Page Number Update
+#### 1. Обновление номера страницы
 
-##### Syntax
-Simply insert it in your Office software.
+##### Синтаксис
+Просто вставьте соответствующее поле в вашем офисном редакторе.
 
-##### Example
-In Microsoft Word:
-- Use the “Insert → Page Number” function
+##### Пример
+В Microsoft Word:
+- Используйте меню «Вставка → Номер страницы»
 
-In LibreOffice:
-- Use the “Insert → Field → Page Number” function
+В LibreOffice:
+- Используйте меню «Вставка → Поле → Номер страницы»
 
-##### Result
-In the generated report, the page numbers will update automatically.
-
----
-
-#### 2. Table of Contents Generation
-
-##### Syntax
-Simply insert it in your Office software.
-
-##### Example
-In Microsoft Word:
-- Use the “Insert → Index and Table → Table of Contents” function
-
-In LibreOffice:
-- Use the “Insert → Table of Contents and Index → Table, Index or Bibliography” function
-
-##### Result
-The report’s table of contents will update automatically based on the document content.
+##### Результат
+В сгенерированном отчёте номера страниц будут обновляться автоматически.
 
 ---
 
-#### 3. Repeating Table Headers
+#### 2. Генерация оглавления
 
-##### Syntax
-Simply insert it in your Office software.
+##### Синтаксис
+Просто вставьте оглавление в вашем офисном редакторе.
 
-##### Example
-In Microsoft Word:
-- Right-click the table header → Table Properties → Check “Repeat as header row at the top of each page”
+##### Пример
+В Microsoft Word:
+- Используйте меню «Вставка → Указатели и таблицы → Оглавление»
 
-In LibreOffice:
-- Right-click the table header → Table Properties → Text Flow tab → Check “Repeat heading”
+В LibreOffice:
+- Используйте меню «Вставка → Оглавление и указатель → Оглавление, указатель или библиография»
 
-##### Result
-When a table spans multiple pages, the header will automatically repeat at the top of each page.
+##### Результат
+Оглавление в отчёте будет автоматически обновляться на основе содержания документа.
 
 ---
 
-### Internationalization (i18n)
+#### 3. Повтор заголовков таблицы
 
-#### 1. Static Text Translation
+##### Синтаксис
+Просто настройте повтор заголовка в вашем офисном редакторе.
 
-##### Syntax
-Use the `{t(text)}` tag for internationalizing static text:
+##### Пример
+В Microsoft Word:
+- Щёлкните правой кнопкой мыши по заголовку таблицы → Свойства таблицы → Установите флажок «Повторять как строку заголовка в начале каждой страницы»
+
+В LibreOffice:
+- Щёлкните правой кнопкой мыши по заголовку таблицы → Свойства таблицы → Вкладка «Размещение текста» → Установите флажок «Повторить заголовок»
+
+##### Результат
+Если таблица переходит на следующую страницу, заголовок будет автоматически повторяться на каждой странице.
+
+---
+
+### Интернационализация (i18n)
+
+#### 1. Перевод статического текста
+
+##### Синтаксис
+Используйте тег `{t(text)}` для интернационализации статического текста:
+
 ```
 {t(meeting)}
 ```
 
-##### Example
-In the template:
+##### Пример
+В шаблоне:
 ```
 {t(meeting)} {t(apples)}
 ```
-JSON Data or an external localization dictionary (e.g., for "fr-fr") provides corresponding translations (for example, "meeting" → "rendez-vous" and "apples" → "Pommes").
+Данные JSON или внешний словарь локализации (например, для «fr-fr») предоставляют соответствующие переводы (например, «meeting» → «rendez-vous» и «apples» → «Pommes»).
 
-##### Result
-When generating the report, the text will be replaced with the corresponding translation based on the target language.
+##### Результат
+При формировании отчета текст будет заменен соответствующим переводом на основе целевого языка.
 
 ---
 
-#### 2. Dynamic Text Translation
+#### 2. Динамический перевод текста
 
-##### Syntax
-For data content, use the `:t` formatter, for example:
+##### Синтаксис
+Для содержимого данных используйте форматер `:t`, например:
 ```
 {d.id:ifEQ(2):show({t(monday)}):elseShow({t(tuesday)})}
 ```
 
-##### Example
-In the template:
+##### Пример
+В шаблоне:
 ```
 {d.id:ifEQ(2):show({t(monday)}):elseShow({t(tuesday)})}
 ```
-JSON Data and the localization dictionary provide the appropriate translations.
+Данные JSON и словарь локализации предоставляют соответствующие переводы.
 
-##### Result
-Based on the condition, the output will be either “lundi” or “mardi” (using the target language as an example).
+##### Результат
+В зависимости от условия вывод будет либо «lundi», либо «mardi» (используя целевой язык в качестве примера).
 
 ---
 
-### Key-Value Mapping
+### Сопоставление ключ-значение
 
-#### 1. Enum Conversion (:convEnum)
+#### 1. Преобразование перечисления (:convEnum)
 
-##### Syntax
+##### Синтаксис
 ```
 {data:convEnum(enumName)}
 ```
-For example:
+Для примера:
 ```
 0:convEnum('ORDER_STATUS')
 ```
 
-##### Example
-In an API options example, the following is provided:
+##### Пример
+В примере параметров API указано следующее:
 ```json
 {
   "enum": {
@@ -2548,12 +2566,12 @@ In an API options example, the following is provided:
   }
 }
 ```
-In the template:
+В шаблоне:
 ```
 0:convEnum('ORDER_STATUS')
 ```
 
-##### Result
-Outputs “pending”; if the index exceeds the enumeration range, the original value is output.
+##### Результат
+Выводит «ожидание»; если индекс превышает диапазон перечисления, выводится исходное значение.
 
 ---

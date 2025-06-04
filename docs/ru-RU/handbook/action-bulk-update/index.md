@@ -1,16 +1,16 @@
-# Bulk update
+# Массовое обновление
 
-## Introduction
+## Введение
 
-The bulk update function is designed for situations where you need to apply the same modification across multiple records. Before executing a batch update, users must first define the logic for assigning values to the fields that will be updated. This logic is applied to all selected records once the update button is clicked.
+Функция массового обновления предназначена для случаев, когда необходимо внести однотипные изменения в несколько записей. Перед выполнением обновления пользователю необходимо задать логику присвоения значений для обновляемых полей. Эта логика будет применена ко всем выбранным записям после нажатия кнопки обновления.
 
 ![](https://static-docs.nocobase.com/d9e6804f7cdbecd43ce4695bb83561cd.png)
 
-## User Guide
+## Руководство пользователя
 
-1. Set the Data to Update: Choose between "Selected" or "All," with "Selected" being the default option.
-2. Field Assignment: Specify which fields will be included in the batch update; only these specified fields will be affected.
+1. Установите диапазон данных для обновления: выберите между «Выбранные» или «Все» (по умолчанию — «Выбранные»).
+2. Присвоение полей: укажите, какие поля будут включены в массовое обновление — изменения затронут только указанные поля.
 
-In the example shown, the batch update operation is configured in the waybill table to mark the selected records as "Delivery Confirmed."
+В приведённом примере массовое обновление настроено для таблицы накладных (waybill) с целью отметить выбранные записи как «Доставка подтверждена».
 
 ![](https://static-docs.nocobase.com/41eb7980cd31ebfb013c05c1bbb747a5.gif)

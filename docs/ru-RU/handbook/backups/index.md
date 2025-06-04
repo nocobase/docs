@@ -1,82 +1,82 @@
-# Backups Manager
+# Менеджер резервного копирования
 
 <PluginInfo licenseBundled="true" name="backups"></PluginInfo>
 
-## Introduction
+## Введение
 
-The NocoBase backup manager plugin provides features for fully backing up of the NocoBase database and user uploaded files, including backup's scheduling, downloading, deleting, and restoring operation.
+Плагин менеджера резервного копирования NocoBase предоставляет функции для полного резервного копирования базы данных NocoBase и загруженных пользователем файлов, включая планирование резервного копирования, загрузку, удаление и восстановление.
 
 :::warning
-The Backup Manager plugin is included in the Professional and Enterprise editions. For Community and Standard edition users, you can directly back up the database; see details at: [`How to Backup and Restore NocoBase`](https://www.nocobase.com/en/blog/nocobase-backup-restore)
+Плагин менеджера резервного копирования включен в редакции Professional и Enterprise. Для пользователей редакций Community и Standard вы можете напрямую создавать резервную копию базы данных; см. подробности на странице: [`Как сделать резервную копию и восстановить NocoBase`](https://www.nocobase.com/en/blog/nocobase-backup-restore)
 :::
 
-## Installation
+## Установка
 
 <embed src="./install.md"></embed>
 
-## Usage Instructions
+## Инструкции по использованию
 
-![Main Interface](./static/main-screen.png)
+![Главный интерфейс](./static/main-screen.png)
 
-### Create New Backup
+### Создать новую резервную копию
 
-Click the "New backup" button to create a new backup based on the backup configuration and display the backup status in the backup list.
-![Create New Backup](./static/new-backup.png)
+Нажмите кнопку «Новая резервная копия», чтобы создать новую резервную копию на основе конфигурации резервной копии и отобразить статус резервной копии в списке резервных копий.
+![Создать новую резервную копию](./static/new-backup.png)
 
-### Restore Backup
+### Восстановить резервную копию
 
-Supports restoring backups from the backup list or uploading local backup files to restore backups.
-Restore operations are not allowed in the following scenarios:
+Поддерживает восстановление резервных копий из списка резервных копий или загрузку локальных файлов резервных копий для восстановления резервных копий.
+Операции восстановления не допускаются в следующих сценариях:
 
-- When the current NocoBase version is lower than the NocoBase version in the backup file.
-- When the current NocoBase database is inconsistent with the following configurations in the backup file:
-  - dialect
-  - underscored
-  - table prefix
-  - schema
-- When the `Tolerant mode` is not enabled, and the database version when creating the backup is higher than the current application database version.
+- Когда текущая версия NocoBase ниже версии NocoBase в файле резервной копии.
+- Когда текущая база данных NocoBase не соответствует следующим конфигурациям в файле резервной копии:
+- диалект
+- подчеркивание
+- префикс таблицы
+- схема
+- Когда «Толерантный режим» не включен, а версия базы данных при создании резервной копии выше текущей версии базы данных приложения.
 
-> **Restore is a full database operation. It is recommended to back up the current database before restoring a backup.**
+> **Восстановление — это полная операция базы данных. Рекомендуется создать резервную копию текущей базы данных перед восстановлением резервной копии.**
 
-#### Restore from the backup list
+#### Восстановление из списка резервных копий
 
-Click the "Restore" button of the backup item in the backup list, enter the backup file encryption password in the pop-up window, and click "Confirm" to restore the backup.
+Нажмите кнопку «Восстановить» элемента резервной копии в списке резервных копий, введите пароль шифрования файла резервной копии во всплывающем окне и нажмите «Подтвердить», чтобы восстановить резервную копию.
 
-> Leave password empty for unencrypted backup.
+> Оставьте пароль пустым для незашифрованной резервной копии.
 
-> If you need to restore the backup to a lower version of the database, you need to enable the tolerant mode.
+> Если вам нужно восстановить резервную копию до более низкой версии базы данных, вам необходимо включить толерантный режим.
 
-![Restore Backup](./static/restore-backup.png)
+![Восстановить резервную копию](./static/restore-backup.png)
 
-#### Restore from local backup file
+#### Восстановить из локального файла резервной копии
 
-Click the `Restore from local backup` button, select the local backup file in the pop-up window, enter the backup file encryption password, and click "Confirm" to restore the backup.
+Нажмите кнопку «Восстановить из локальной резервной копии», выберите локальный файл резервной копии во всплывающем окне, введите пароль шифрования файла резервной копии и нажмите «Подтвердить», чтобы восстановить резервную копию.
 
-> Leave password empty for unencrypted backup.
+> Оставьте пароль пустым для незашифрованной резервной копии.
 
-> If you need to restore the backup to a lower version of the database, you need to enable the tolerant mode.
+> Если вам нужно восстановить резервную копию до более низкой версии базы данных, вам нужно включить толерантный режим.
 
-![Restore from Local Backup](./static/restore-from-local.png)
+![Восстановить из локальной резервной копии](./static/restore-from-local.png)
 
-#### Download Backup File
+#### Загрузить файл резервной копии
 
-Click the `Download` button of the backup item in the backup list to download the backup file.
+Нажмите кнопку «Загрузить» элемента резервной копии в списке резервных копий, чтобы загрузить файл резервной копии.
 
-#### Delete Backup
+#### Удалить резервную копию
 
-Click the `Delete` button of the backup item in the backup list to delete the backup file.
+Нажмите кнопку «Удалить» элемента резервной копии в списке резервных копий, чтобы удалить файл резервной копии.
 
-## Backup Settings
+## Настройки резервного копирования
 
-Switch to the "Settings" tab, modify the backup settings, and click `Save` to take effect.
-![Backup Settings](./static/backup-settings.png)
+Перейдите на вкладку «Настройки», измените настройки резервного копирования и нажмите «Сохранить», чтобы изменения вступили в силу.
+![Настройки резервного копирования](./static/backup-settings.png)
 
-### Backup Settings Description
+### Описание настроек резервного копирования
 
-- `Automatic backup`: When enable `Run automatic backup on the cron schedule`, you can set automatic backups at specified times.
-- `Maximum number of backups`: Set the maximum number of locally saved backup files. After exceeding the number, the earliest backup files will be automatically deleted.
-- `Sync backup to cloud storage`: Set the cloud storage location where the backup files are automatically uploaded after successful backup, only support cloud storage.
-- `Backup local storage files`: Whether to include files uploaded by users to the server's local storage (storage/uploads) in the backup.
-- `Restore password`: If a restore password is set, it must be entered when restoring the backup.
+- `Автоматическое резервное копирование`: если включен параметр `Запускать автоматическое резервное копирование по расписанию cron`, можно настроить автоматическое резервное копирование в указанное время.
+- `Максимальное количество резервных копий`: установите максимальное количество локально сохраненных файлов резервных копий. После превышения этого количества самые ранние файлы резервных копий будут автоматически удалены.
+- `Синхронизация резервного копирования с облачным хранилищем`: установите место хранения в облаке, куда автоматически загружаются файлы резервных копий после успешного резервного копирования, поддерживается только облачное хранилище.
+- `Резервное копирование файлов локального хранилища`: следует ли включать в резервную копию файлы, загруженные пользователями в локальное хранилище сервера (хранение/загрузки).
+- `Восстановление пароля`: если установлен пароль восстановления, его необходимо ввести при восстановлении резервной копии.
 
-> **Please keep the restore password safe. Forgetting the password will make it impossible to restore the backup file.**
+> **Пожалуйста, сохраните пароль восстановления в надежном месте. Если вы забудете пароль, восстановление файла резервной копии станет невозможным.**
