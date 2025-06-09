@@ -167,3 +167,4 @@ mkdir -p /my-nocobase/storage/plugins/@nocobase/plugin-auth-cas && \
 ```bash
 yarn nocobase upgrade --skip-code-update
 ```
+
