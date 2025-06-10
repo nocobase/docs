@@ -1,4 +1,4 @@
-# Template Printing
+# テンプレート印刷
 
 <PluginInfo commercial="true" name="action-template-print"></PluginInfo>
 <style>
@@ -8,188 +8,199 @@
 }
 </style>
 
-## Introduction
+## はじめに
 
-The Template Printing plugin is a powerful tool that allows you to edit template files in Word, Excel, and PowerPoint (supporting `.docx`, `.xlsx`, `.pptx` formats), set placeholders and logical structures within the templates, and dynamically generate pre-formatted files such as `.docx`, `.xlsx`, `.pptx`, and PDF files. This plugin is widely used for generating various business documents, such as quotations, invoices, contracts, etc., significantly improving the efficiency and accuracy of document generation.
+テンプレート印刷プラグインは、Word、Excel、PowerPoint（`.docx`、`.xlsx`、`.pptx`形式をサポート）でテンプレートファイルを編集し、テンプレート内にプレースホルダーと論理構造を設定し、`.docx`、`.xlsx`、`.pptx`、PDFファイルなどの事前フォーマットされたファイルを動的に生成できる強力なツールです。このプラグインは、見積書、請求書、契約書などの様々なビジネス文書の生成に広く使用され、文書生成の効率性と精度を大幅に向上させます。
 
-### Key Features
+### 主な機能
 
-- **Multi-format Support**: Compatible with Word, Excel, and PowerPoint templates to meet different document generation needs.
-- **Dynamic Data Filling**: Automatically fills and generates document content through placeholders and logical structures.
-- **Flexible Template Management**: Supports adding, editing, deleting, and categorizing templates for easy maintenance and use.
-- **Rich Template Syntax**: Supports basic replacement, array access, loops, conditional output, and other template syntax to meet complex document generation needs.
-- **Formatter Support**: Provides conditional output, date formatting, number formatting, and other functions to enhance the readability and professionalism of documents.
-- **Efficient Output Formats**: Supports direct generation of PDF files for easy sharing and printing.
+- **マルチフォーマットサポート**: Word、Excel、PowerPointテンプレートに対応し、異なる文書生成ニーズに応えます。
+- **動的データ入力**: プレースホルダーと論理構造を通じて、文書内容を自動的に入力・生成します。
+- **柔軟なテンプレート管理**: テンプレートの追加、編集、削除、分類をサポートし、保守と使用を容易にします。
+- **豊富なテンプレート構文**: 基本的な置換、配列アクセス、ループ、条件出力などのテンプレート構文をサポートし、複雑な文書生成ニーズに対応します。
+- **フォーマッターサポート**: 条件出力、日付フォーマット、数値フォーマットなどの機能を提供し、文書の可読性と専門性を向上させます。
+- **効率的な出力形式**: PDFファイルの直接生成をサポートし、共有と印刷を容易にします。
 
-## Installation
+## インストール
 
 <embed src="./install.md"></embed>
 
-## Configuration Instructions
+## 設定手順
 
-### Activating Template Printing
+### テンプレート印刷の有効化
+テンプレート印刷は現在、詳細ブロックとテーブルブロックをサポートしています。以下にこれら2つのタイプのブロックの設定方法をご紹介します。
 
-1. **Open the Detail Block**:
-- Navigate to the detail block in the application where you need to use the template printing feature.
+#### 詳細ブロック
 
-2. **Access the Configuration Operation Menu**:
-- Click the "Configuration Operation" menu at the top of the interface.
+1. **詳細ブロックを開く**:
+- テンプレート印刷機能を使用する必要があるアプリケーションの詳細ブロックに移動します。
 
-3. **Select "Template Printing"**:
-- Click the "Template Printing" option in the dropdown menu to activate the plugin.
+2. **設定操作メニューにアクセス**:
+- インターフェースの上部にある「設定操作」メニューをクリックします。
 
-![Activate Template Printing](https://static-docs.nocobase.com/20241212150539-2024-12-12-15-05-43.png)
+3. **「テンプレート印刷」を選択**:
+- ドロップダウンメニューで「テンプレート印刷」オプションをクリックして、プラグインを有効にします。
 
-### Configuring Templates
+![テンプレート印刷を有効化](https://static-docs.nocobase.com/20241212150539-2024-12-12-15-05-43.png)
 
-1. **Access the Template Configuration Page**:
-- In the configuration menu of the "Template Printing" button, select the "Template Configuration" option.
+### テンプレートの設定
 
-![Template Configuration Option](https://static-docs.nocobase.com/20241212151858-2024-12-12-15-19-01.png)
+1. **テンプレート設定ページにアクセス**:
+- 「テンプレート印刷」ボタンの設定メニューで、「テンプレート設定」オプションを選択します。
 
-2. **Add a New Template**:
-- Click the "Add Template" button to enter the template addition page.
+![テンプレート設定オプション](https://static-docs.nocobase.com/20241212151858-2024-12-12-15-19-01.png)
 
-![Add Template Button](https://static-docs.nocobase.com/20241212151243-2024-12-12-15-12-46.png)
+2. **新しいテンプレートを追加**:
+- 「テンプレート追加」ボタンをクリックして、テンプレート追加ページに入ります。
 
-3. **Fill in Template Information**:
-- In the template form, fill in the template name and select the template type (Word, Excel, PowerPoint).
-- Upload the corresponding template file (supports `.docx`, `.xlsx`, `.pptx` formats).
+![テンプレート追加ボタン](https://static-docs.nocobase.com/20241212151243-2024-12-12-15-12-46.png)
 
-![Configure Template Name and File](https://static-docs.nocobase.com/20241212151518-2024-12-12-15-15-21.png)
+3. **テンプレート情報を入力**:
+- テンプレートフォームで、テンプレート名を入力し、テンプレートタイプ（Word、Excel、PowerPoint）を選択します。
+- 対応するテンプレートファイルをアップロードします（`.docx`、`.xlsx`、`.pptx`形式をサポート）。
 
-4. **Edit and Save the Template**:
-- Go to the "Field List" page, copy fields, and fill them into the template.
-  ![Field List](https://static-docs.nocobase.com/20250107141010.png)
+![テンプレート名とファイルの設定](https://static-docs.nocobase.com/20241212151518-2024-12-12-15-15-21.png)
+
+4. **テンプレートの編集と保存**:
+- 「フィールドリスト」ページに移動し、フィールドをコピーしてテンプレートに入力します。
+  ![フィールドリスト](https://static-docs.nocobase.com/20250107141010.png)
   ![20241212152743-2024-12-12-15-27-45](https://static-docs.nocobase.com/20241212152743-2024-12-12-15-27-45.png)
-- After filling in the details, click the "Save" button to complete the template addition.
+- 詳細を入力した後、「保存」ボタンをクリックしてテンプレートの追加を完了します。
 
-5. **Template Management**:
-- Click the "Use" button on the right side of the template list to activate the template.
-- Click the "Edit" button to modify the template name or replace the template file.
-- Click the "Download" button to download the configured template file.
-- Click the "Delete" button to remove unnecessary templates. The system will prompt for confirmation to avoid accidental deletion.
-  ![Template Management](https://static-docs.nocobase.com/20250107140436.png)
+5. **テンプレート管理**:
+- テンプレートリストの右側にある「使用」ボタンをクリックして、テンプレートを有効にします。
+- 「編集」ボタンをクリックして、テンプレート名を変更したり、テンプレートファイルを置き換えたりします。
+- 「ダウンロード」ボタンをクリックして、設定済みのテンプレートファイルをダウンロードします。
+- 「削除」ボタンをクリックして、不要なテンプレートを削除します。システムは誤って削除することを避けるために確認を求めます。
+  ![テンプレート管理](https://static-docs.nocobase.com/20250107140436.png)
 
-## Basic Syntax
+#### テーブルブロック
 
-The Template Printing plugin provides various syntaxes to flexibly insert dynamic data and logical structures into templates. Below are detailed syntax explanations and usage examples.
+テーブルブロックの使用方法は詳細ブロックとほぼ同じですが、以下の違いがあります：
 
-### Basic Replacement
+1. **複数レコード印刷のサポート**：印刷するレコードをチェックして選択する必要があります。一度に最大100件のレコードを印刷できます。
+   
+![20250416215633-2025-04-16-21-56-35](https://static-docs.nocobase.com/20250416215633-2025-04-16-21-56-35.png)
 
-Use placeholders in the format `{d.xxx}` for data replacement. For example:
+2. **テンプレート分離管理**：テーブルブロックと詳細ブロックのテンプレートは互換性がありません — データ構造が異なるためです（一つはオブジェクト、もう一つは配列）。
 
-- `{d.title}`: Reads the `title` field from the dataset.
-- `{d.date}`: Reads the `date` field from the dataset.
+## 基本構文
 
-**Example**:
+テンプレート印刷プラグインは、テンプレートに動的データと論理構造を柔軟に挿入するための様々な構文を提供します。以下に詳細な構文説明と使用例を示します。
 
-Template Content:
+### 基本的な置換
+
+`{d.xxx}`形式のプレースホルダーを使用してデータを置換します。例：
+
+- `{d.title}`: データセットから`title`フィールドを読み取ります。
+- `{d.date}`: データセットから`date`フィールドを読み取ります。
+
+**例**:
+
+テンプレート内容:
 ```
-Dear Customer,
+お客様各位
 
-Thank you for purchasing our product: {d.productName}.
-Order ID: {d.orderId}
-Order Date: {d.orderDate}
+弊社製品をご購入いただき、ありがとうございます: {d.productName}。
+注文ID: {d.orderId}
+注文日: {d.orderDate}
 
-Wish you a pleasant experience!
+素晴らしい体験をお祈りしています！
 ```
 
-Dataset:
+データセット:
 ```json
 {
-  "productName": "Smart Watch",
+  "productName": "スマートウォッチ",
   "orderId": "A123456789",
   "orderDate": "2025-01-01"
 }
 ```
 
-Rendered Result:
+レンダリング結果:
 ```
-Dear Customer,
+お客様各位
 
-Thank you for purchasing our product: Smart Watch.
-Order ID: A123456789
-Order Date: 2025-01-01
+弊社製品をご購入いただき、ありがとうございます: スマートウォッチ。
+注文ID: A123456789
+注文日: 2025-01-01
 
-Wish you a pleasant experience!
+素晴らしい体験をお祈りしています！
 ```
 
-### Accessing Sub-objects
+### サブオブジェクトへのアクセス
 
-If the dataset contains sub-objects, you can access the properties of the sub-objects using dot notation.
+データセットにサブオブジェクトが含まれている場合、ドット記法を使用してサブオブジェクトのプロパティにアクセスできます。
 
-**Syntax**: `{d.parent.child}`
+**構文**: `{d.parent.child}`
 
-**Example**:
+**例**:
 
-Dataset:
+データセット:
 ```json
 {
   "customer": {
-    "name": "Li Lei",
+    "name": "田中太郎",
     "contact": {
-      "email": "lilei@example.com",
-      "phone": "13800138000"
+      "email": "tanaka@example.com",
+      "phone": "090-1234-5678"
     }
   }
 }
 ```
 
-Template Content:
+テンプレート内容:
 ```
-Customer Name: {d.customer.name}
-Email Address: {d.customer.contact.email}
-Phone Number: {d.customer.contact.phone}
-```
-
-Rendered Result:
-```
-Customer Name: Li Lei
-Email Address: lilei@example.com
-Phone Number: 13800138000
+顧客名: {d.customer.name}
+メールアドレス: {d.customer.contact.email}
+電話番号: {d.customer.contact.phone}
 ```
 
-### Accessing Arrays
+レンダリング結果:
+```
+顧客名: 田中太郎
+メールアドレス: tanaka@example.com
+電話番号: 090-1234-5678
+```
 
-If the dataset contains arrays, you can use the reserved keyword `i` to access elements in the array.
+### 配列へのアクセス
 
-**Syntax**: `{d.arrayName[i].field}`
+データセットに配列が含まれている場合、予約キーワード`i`を使用して配列内の要素にアクセスできます。
 
-**Example**:
+**構文**: `{d.arrayName[i].field}`
 
-Dataset:
+**例**:
+
+データセット:
 ```json
 {
   "staffs": [
-    { "firstname": "James", "lastname": "Anderson" },
-    { "firstname": "Emily", "lastname": "Roberts" },
-    { "firstname": "Michael", "lastname": "Johnson" }
+    { "firstname": "太郎", "lastname": "田中" },
+    { "firstname": "花子", "lastname": "佐藤" },
+    { "firstname": "次郎", "lastname": "鈴木" }
   ]
 }
 ```
 
-Template Content:
+テンプレート内容:
 ```
-The first employee's last name is {d.staffs[i=0].lastname}, and the first name is {d.staffs[i=0].firstname}
-```
-
-Rendered Result:
-```
-The first employee's last name is Anderson, and the first name is James
+最初の従業員の姓は {d.staffs[i=0].lastname} で、名前は {d.staffs[i=0].firstname} です
 ```
 
+レンダリング結果:
+```
+最初の従業員の姓は 田中 で、名前は 太郎 です
+```
 
 
-Below is the English translation with second-level and third-level headings:
 
-## Loop Handling
+## ループ処理
 
 Loop handling is used to repeatedly render data from arrays or objects by defining start and end markers for the loop. Below, several common scenarios are described.
 
 ---
 
-### Iterating over Arrays
+### 配列の反復処理
 
 #### 1. Syntax Description
 
@@ -321,7 +332,7 @@ EV6Prius 3
 
 #### 5. Example: Accessing Loop Iterator Values (v4.0.0+)
 
-Within a loop, you can directly access the current iteration’s index, which helps meet special formatting requirements.
+Within a loop, you can directly access the current iteration's index, which helps meet special formatting requirements.
 
 ##### Template Example
 ```
@@ -332,7 +343,7 @@ Within a loop, you can directly access the current iteration’s index, which he
 
 ---
 
-### Iterating over Objects
+### オブジェクトの反復処理
 
 #### 1. Syntax Description
 
@@ -375,7 +386,7 @@ bob30
 
 ---
 
-### Sorting
+### ソート
 
 Using the sorting feature, you can directly sort array data within the template.
 
@@ -452,7 +463,7 @@ Ferrari
 
 ---
 
-### Filtering
+### フィルタリング
 
 Filtering is used to filter out rows in a loop based on specific conditions.
 
@@ -646,7 +657,7 @@ Model 3
 
 ---
 
-### Deduplication
+### 重複除去
 
 #### 1. Syntax Description
 
@@ -690,13 +701,13 @@ Below is the English translation of the documentation, with headings and subhead
 
 ---
 
-## Formatters
+## フォーマッター
 
-Formatters are used to convert raw data into text that is easy to read. They are applied to data using a colon (`:`) and can be chained so that the output of each formatter becomes the input for the next. Some formatters support constant parameters or dynamic parameters.
+フォーマッターは、生データを読みやすいテキストに変換するために使用されます。データにコロン（`:`）を使用して適用され、チェーン化することができ、各フォーマッターの出力が次のフォーマッターの入力になります。一部のフォーマッターは定数パラメータまたは動的パラメータをサポートしています。
 
 ---
 
-### Overview
+### 概要
 
 #### 1. Syntax Explanation
 The basic invocation of a formatter is as follows:
@@ -729,10 +740,10 @@ My name is John. I was born on January 31, 2000.
 
 ---
 
-### Constant Parameters
+### 定数パラメータ
 
 #### 1. Syntax Explanation
-Many formatters support one or more constant parameters, which are separated by commas and enclosed in parentheses to modify the output. For example, `:prepend(myPrefix)` will add “myPrefix” in front of the text.  
+Many formatters support one or more constant parameters, which are separated by commas and enclosed in parentheses to modify the output. For example, `:prepend(myPrefix)` will add "myPrefix" in front of the text.  
 **Note:** If the parameter contains commas or spaces, it must be enclosed in single quotes, for example: `prepend('my prefix')`.
 
 #### 2. Example
@@ -745,7 +756,7 @@ The output will have the specified prefix added in front of the text.
 
 ---
 
-### Dynamic Parameters
+### 動的パラメータ
 
 #### 1. Syntax Explanation
 Formatters also support dynamic parameters. These parameters start with a dot (`.`) and are not enclosed in quotes.  
@@ -804,9 +815,9 @@ The examples yield 8, 8, 28, and 6 respectively.
 
 ---
 
-### Text Formatting
+### テキストフォーマット
 
-This section provides various formatters for text data. The following subsections introduce each formatter’s syntax, examples, and results.
+This section provides various formatters for text data. The following subsections introduce each formatter's syntax, examples, and results.
 
 #### 1. :lowerCase
 
@@ -1161,7 +1172,7 @@ Examples and results depend on the specific use case.
 
 ---
 
-### Number Formatting
+### 数値フォーマット
 
 #### 1. :formatN(precision)
 
@@ -1381,7 +1392,7 @@ Depends on the specific conversion case.
 
 ---
 
-### Currency Formatting
+### 通貨フォーマット
 
 #### 1. :formatC(precisionOrFormat, targetCurrency)
 
@@ -1779,7 +1790,7 @@ In use, the output will display the row number according to the sequence of the 
 
 Below is the translated text back into English with the same structure using secondary (##) and tertiary (###) headings:
 
-## Conditional Statements
+## 条件文
 
 Conditional statements allow you to dynamically control the display or hiding of content in the document based on data values. Template provides three main ways to write conditions:
 
@@ -1806,8 +1817,8 @@ The logical operators and action formatters supported in conditional statements 
   - **ifEM()**: Checks if the data is empty (e.g., null, undefined, an empty string, an empty array, or an empty object).
   - **ifNEM()**: Checks if the data is non-empty.
   - **ifTE(type)**: Checks if the data type is equal to the specified type (for example, "string", "number", "boolean", etc.).
-  - **and(value)**: Logical “and”, used to connect multiple conditions.
-  - **or(value)**: Logical “or”, used to connect multiple conditions.
+  - **and(value)**: Logical "and", used to connect multiple conditions.
+  - **or(value)**: Logical "or", used to connect multiple conditions.
 
 - **Action Formatters**
   - **:show(text) / :elseShow(text)**: Used in inline conditions to directly output the specified text.
@@ -2228,9 +2239,9 @@ Banana
 Grapes
 ```
 
-## Computation
+## 計算
 
-## Advanced Features
+## 高度な機能
 
 ### Pagination
 
@@ -2241,10 +2252,10 @@ Simply insert it in your Office software.
 
 ##### Example
 In Microsoft Word:
-- Use the “Insert → Page Number” function
+- Use the "Insert → Page Number" function
 
 In LibreOffice:
-- Use the “Insert → Field → Page Number” function
+- Use the "Insert → Field → Page Number" function
 
 ##### Result
 In the generated report, the page numbers will update automatically.
@@ -2258,13 +2269,13 @@ Simply insert it in your Office software.
 
 ##### Example
 In Microsoft Word:
-- Use the “Insert → Index and Table → Table of Contents” function
+- Use the "Insert → Index and Table → Table of Contents" function
 
 In LibreOffice:
-- Use the “Insert → Table of Contents and Index → Table, Index or Bibliography” function
+- Use the "Insert → Table of Contents and Index → Table, Index or Bibliography" function
 
 ##### Result
-The report’s table of contents will update automatically based on the document content.
+The report's table of contents will update automatically based on the document content.
 
 ---
 
@@ -2275,10 +2286,10 @@ Simply insert it in your Office software.
 
 ##### Example
 In Microsoft Word:
-- Right-click the table header → Table Properties → Check “Repeat as header row at the top of each page”
+- Right-click the table header → Table Properties → Check "Repeat as header row at the top of each page"
 
 In LibreOffice:
-- Right-click the table header → Table Properties → Text Flow tab → Check “Repeat heading”
+- Right-click the table header → Table Properties → Text Flow tab → Check "Repeat heading"
 
 ##### Result
 When a table spans multiple pages, the header will automatically repeat at the top of each page.
@@ -2323,7 +2334,7 @@ In the template:
 JSON Data and the localization dictionary provide the appropriate translations.
 
 ##### Result
-Based on the condition, the output will be either “lundi” or “mardi” (using the target language as an example).
+Based on the condition, the output will be either "lundi" or "mardi" (using the target language as an example).
 
 ---
 
@@ -2355,6 +2366,117 @@ In the template:
 ```
 
 ##### Result
-Outputs “pending”; if the index exceeds the enumeration range, the original value is output.
+Outputs "pending"; if the index exceeds the enumeration range, the original value is output.
 
 ---
+
+### ダイナミック画像
+:::info
+現在、XLSXおよびDOCXファイル形式をサポートしています
+:::
+
+ドキュメントテンプレートに「ダイナミック画像」を挿入することができます。これは、テンプレート内のプレースホルダー画像がレンダリング時にデータに基づいて自動的に実際の画像に置き換えられることを意味します。このプロセスは非常にシンプルで、以下の手順のみ必要です：
+
+1. プレースホルダーとして一時的な画像を挿入する
+
+2. その画像の「代替テキスト」を編集してフィールドラベルを設定する
+
+3. ドキュメントをレンダリングすると、システムが自動的に実際の画像に置き換えます
+
+以下、具体例を通してDOCXとXLSXの操作方法をそれぞれ説明します。
+
+#### DOCXファイルでのダイナミック画像挿入
+
+##### 単一画像の置換
+
+1. DOCXテンプレートを開き、一時的な画像を挿入します（任意のプレースホルダー画像、例えば[青一色の画像](https://static-docs.nocobase.com/solid-color-image-2025-04-14-11-00-26.png)など）
+
+:::info
+**画像形式の説明**
+
+- 現在、プレースホルダー画像はPNG形式のみサポートしています。提供している例の[青一色の画像](https://static-docs.nocobase.com/solid-color-image-2025-04-14-11-00-26.png)の使用を推奨します
+- ターゲットレンダリング画像はPNG、JPG、JPEG形式のみサポートしています。他の画像形式はレンダリングに失敗する可能性があります。
+
+**画像サイズの説明**
+
+DOCXでもXLSXでも、最終レンダリング時の画像サイズは、テンプレート内の一時画像の寸法に従います。つまり、実際に置き換えられる画像は、挿入したプレースホルダー画像と同じサイズに自動的にスケールされます。レンダリング後の画像サイズを150×150にしたい場合は、テンプレートで一時画像を使用し、そのサイズに調整してください。
+:::
+
+2. この画像を右クリックし、「代替テキスト」を編集して、挿入したい画像フィールドラベルを入力します（例：`{d.imageUrl}`）：
+
+![20250414211130-2025-04-14-21-11-31](https://static-docs.nocobase.com/20250414211130-2025-04-14-21-11-31.png)
+
+3. レンダリングに以下のサンプルデータを使用します：
+```json
+{
+  "name": "リンゴ",
+  "imageUrl": "https://images.pexels.com/photos/206959/pexels-photo-206959.jpeg"
+}
+```
+
+4. レンダリング結果では、一時画像が実際の画像に置き換えられます：
+
+![20250414203444-2025-04-14-20-34-46](https://static-docs.nocobase.com/20250414203444-2025-04-14-20-34-46.png)
+
+##### 複数画像のループ置換
+
+テンプレートに商品リストのような画像グループを挿入したい場合は、ループ方式で実装することもできます。具体的な手順は以下の通りです：
+
+1. データが以下のようになっているとします：
+```json
+{
+  "products": [
+    {
+      "name": "リンゴ",
+      "imageUrl": "https://images.pexels.com/photos/206959/pexels-photo-206959.jpeg"
+    },
+    {
+      "name": "バナナ",
+      "imageUrl": "https://images.pexels.com/photos/61127/pexels-photo-61127.jpeg"
+    }
+  ]
+}
+```
+
+2. DOCXテンプレートでループエリアを設定し、各ループアイテムに一時画像を挿入して、代替テキストを`{d.products[i].imageUrl}`に設定します：
+
+![20250414205418-2025-04-14-20-54-19](https://static-docs.nocobase.com/20250414205418-2025-04-14-20-54-19.png)
+
+3. レンダリング後、すべての一時画像がそれぞれのデータ画像に置き換えられます：
+
+![20250414205503-2025-04-14-20-55-05](https://static-docs.nocobase.com/20250414205503-2025-04-14-20-55-05.png)
+
+#### XLSXファイルでのダイナミック画像挿入
+
+Excelテンプレート（XLSX）での操作方法は基本的に同じですが、以下の点にご注意ください：
+
+1. 画像を挿入した後、画像がセルの上に浮いているのではなく、「セル内の画像」を選択していることを確認してください。
+
+![20250414211643-2025-04-14-21-16-45](https://static-docs.nocobase.com/20250414211643-2025-04-14-21-16-45.png)
+
+2. セルを選択後、「代替テキスト」を表示をクリックして、フィールドラベル（例：`{d.imageUrl}`）を入力します。
+
+### バーコード
+:::info
+現在、XLSXおよびDOCXファイル形式をサポートしています
+:::
+
+#### バーコード生成（QRコードなど）
+
+バーコード生成は[ダイナミック画像](/handbook/action-template-print#ダイナミック画像)と同じ方法で動作し、3つのステップのみ必要です：
+
+1. テンプレートにバーコードの位置をマークするために一時画像を挿入する
+
+2. 画像の「代替テキスト」を編集し、バーコード形式フィールドラベルを書き込みます（例：`{d.code:barcode(qrcode)}`。ここで`qrcode`はバーコードのタイプです（下記の[サポートリスト](/handbook/action-template-print#サポートされているバーコードタイプ)を参照））
+
+![20250414214626-2025-04-14-21-46-28](https://static-docs.nocobase.com/20250414214626-2025-04-14-21-46-28.png)
+
+3. レンダリング後、プレースホルダー画像が対応するバーコード画像に自動的に置き換えられます：
+
+![20250414214925-2025-04-14-21-49-26](https://static-docs.nocobase.com/20250414214925-2025-04-14-21-49-26.png)
+
+#### サポートされているバーコードタイプ
+
+| バーコード名 | タイプ |
+| ------------ | ------ |
+| QRコード     | qrcode |
