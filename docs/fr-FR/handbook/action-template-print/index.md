@@ -21,18 +21,21 @@ The Template Printing plugin is a powerful tool that allows you to edit template
 
 ## Configuration Instructions
 
-### Activating Template Printing
+### Activation de l'Impression de Modèles
+L'impression de modèles prend actuellement en charge les blocs de détails et les blocs de tableaux. Voici les méthodes de configuration pour ces deux types de blocs.
 
-1. **Open the Detail Block**:
-   - Navigate to the detail block in the application where you need to use the template printing feature.
+#### Blocs de Détails
 
-2. **Access the Configuration Operation Menu**:
-   - Click the "Configuration Operation" menu at the top of the interface.
+1. **Ouvrir le Bloc de Détail**:
+   - Naviguez vers le bloc de détail dans l'application où vous devez utiliser la fonctionnalité d'impression de modèles.
 
-3. **Select "Template Printing"**:
-   - Click the "Template Printing" option in the dropdown menu to activate the plugin.
+2. **Accéder au Menu d'Opération de Configuration**:
+   - Cliquez sur le menu "Opération de Configuration" en haut de l'interface.
 
-   ![Activate Template Printing](https://static-docs.nocobase.com/20241212150539-2024-12-12-15-05-43.png)
+3. **Sélectionner "Impression de Modèles"**:
+   - Cliquez sur l'option "Impression de Modèles" dans le menu déroulant pour activer le plugin.
+
+   ![Activer l'Impression de Modèles](https://static-docs.nocobase.com/20241212150539-2024-12-12-15-05-43.png)
 
 ### Configuring Templates
 
@@ -58,12 +61,22 @@ The Template Printing plugin is a powerful tool that allows you to edit template
     ![20241212152743-2024-12-12-15-27-45](https://static-docs.nocobase.com/20241212152743-2024-12-12-15-27-45.png)
    - After filling in the details, click the "Save" button to complete the template addition.
 
-5. **Template Management**:
-   - Click the "Use" button on the right side of the template list to activate the template.
-   - Click the "Edit" button to modify the template name or replace the template file.
-   - Click the "Download" button to download the configured template file.
-   - Click the "Delete" button to remove unnecessary templates. The system will prompt for confirmation to avoid accidental deletion.
-   ![Template Management](https://static-docs.nocobase.com/20250107140436.png)
+5. **Gestion des Modèles**:
+   - Cliquez sur le bouton "Utiliser" à droite de la liste des modèles pour activer le modèle.
+   - Cliquez sur le bouton "Modifier" pour modifier le nom du modèle ou remplacer le fichier de modèle.
+   - Cliquez sur le bouton "Télécharger" pour télécharger le fichier de modèle configuré.
+   - Cliquez sur le bouton "Supprimer" pour supprimer les modèles inutiles. Le système demandera une confirmation pour éviter la suppression accidentelle.
+   ![Gestion des Modèles](https://static-docs.nocobase.com/20250107140436.png)
+
+#### Blocs de Tableaux
+
+L'utilisation des blocs de tableaux est pratiquement identique à celle des blocs de détails, avec les différences suivantes :
+
+1. **Support pour l'Impression de Plusieurs Enregistrements** : Vous devez d'abord sélectionner les enregistrements à imprimer en les cochant. Vous pouvez imprimer jusqu'à 100 enregistrements en une fois.
+   
+![20250416215633-2025-04-16-21-56-35](https://static-docs.nocobase.com/20250416215633-2025-04-16-21-56-35.png)
+
+2. **Gestion d'Isolation des Modèles** : Les modèles pour les blocs de tableaux et les blocs de détails ne sont pas interchangeables — car les structures de données sont différentes (l'une est un objet, l'autre est un tableau).
 
 ## Template Syntax
 
@@ -843,7 +856,7 @@ Right Padding (length 10, character '#'): abc#######
 Article Title (max 5 characters): {d.articleTitle:ellipsis(5)}
 ```
 
-**Rendering Result**:
+**Rendered Result**:
 ```
 Article Title (max 5 characters): Carbo...
 ```
@@ -873,7 +886,7 @@ Article Title (max 5 characters): Carbo...
 Username: {d.username:prepend('Mr. ')}
 ```
 
-**Rendering Result**:
+**Rendered Result**:
 ```
 Username: Mr. john
 ```
@@ -903,7 +916,7 @@ Username: Mr. john
 Filename: {d.filename:append('.pdf')}
 ```
 
-**Rendering Result**:
+**Rendered Result**:
 ```
 Filename: document.pdf
 ```
@@ -998,7 +1011,7 @@ Assume you have defined a translation dictionary in Carbone configuration, trans
 Button: {d.buttonLabel:t()}
 ```
 
-**Rendering Result**:
+**Rendered Result**:
 ```
 Button: 提交
 ```
@@ -1028,7 +1041,7 @@ Button: 提交
 Symbol: {d.legalSymbol:preserveCharRef()}
 ```
 
-**Rendering Result**:
+**Rendered Result**:
 ```
 Symbol: &#xa7;
 ```
@@ -2389,3 +2402,116 @@ Through **array operations** and **conditional output** examples, you can:
 1. **Flexibly handle arrays**: Use `:aggStr`, `:arrayJoin`, `:arrayMap`, `:count`, etc., to achieve **merging, concatenation, mapping**, and **counting**.
 2. **Precisely control content display**: Use `drop` / `keep` or `showBegin` / `showEnd` / `hideBegin` / `hideEnd` to decide whether to retain **specific elements** or **large sections of content** in the document based on conditions (`ifEQ`, `ifGT`, etc.).
 3. **Combine multiple conditions**: Work with number and string-related formatters (e.g., `ifNEM`, `ifIN`, etc.) to implement more complex business logic control.
+
+---
+
+### Images Dynamiques
+:::info
+Prend actuellement en charge les types de fichiers XLSX et DOCX
+:::
+
+Vous pouvez insérer des "images dynamiques" dans les modèles de documents, ce qui signifie que les images de substitution dans le modèle seront automatiquement remplacées par de vraies images lors du rendu basé sur les données. Ce processus est très simple et ne nécessite que :
+
+1. Insérer une image temporaire comme substitut
+
+2. Modifier le "Texte Alternatif" de cette image pour définir l'étiquette du champ
+
+3. Rendre le document, et le système remplacera automatiquement par l'image réelle
+
+Ci-dessous, nous expliquerons les méthodes d'opération pour DOCX et XLSX à travers des exemples spécifiques.
+
+#### Insertion d'Images Dynamiques dans les Fichiers DOCX
+
+##### Remplacement d'Image Unique
+
+1. Ouvrez votre modèle DOCX et insérez une image temporaire (peut être n'importe quelle image de substitution, comme une [image bleue unie](https://static-docs.nocobase.com/solid-color-image-2025-04-14-11-00-26.png))
+
+:::info
+**Instructions sur le Format d'Image**
+
+- Actuellement, les images de substitution ne prennent en charge que le format PNG. Nous recommandons d'utiliser notre exemple fourni [image bleue unie](https://static-docs.nocobase.com/solid-color-image-2025-04-14-11-00-26.png)
+- Les images de rendu cibles ne prennent en charge que les formats PNG, JPG, JPEG. D'autres types d'images peuvent échouer lors du rendu.
+
+**Instructions sur la Taille d'Image**
+
+Que ce soit pour DOCX ou XLSX, la taille finale de l'image rendue suivra les dimensions de l'image temporaire dans le modèle. C'est-à-dire que l'image de remplacement réelle sera automatiquement redimensionnée pour correspondre à la taille de l'image de substitution que vous avez insérée. Si vous voulez que l'image rendue soit de 150×150, veuillez utiliser une image temporaire dans le modèle et l'ajuster à cette taille.
+:::
+
+2. Cliquez avec le bouton droit sur cette image, modifiez son "Texte Alternatif", et remplissez l'étiquette du champ d'image que vous voulez insérer, par exemple `{d.imageUrl}` :
+
+![20250414211130-2025-04-14-21-11-31](https://static-docs.nocobase.com/20250414211130-2025-04-14-21-11-31.png)
+
+3. Utilisez les données d'exemple suivantes pour le rendu :
+```json
+{
+  "name": "Pomme",
+  "imageUrl": "https://images.pexels.com/photos/206959/pexels-photo-206959.jpeg"
+}
+```
+
+4. Dans le résultat rendu, l'image temporaire sera remplacée par l'image réelle :
+
+![20250414203444-2025-04-14-20-34-46](https://static-docs.nocobase.com/20250414203444-2025-04-14-20-34-46.png)
+
+##### Remplacement d'Images Multiples en Boucle
+
+Si vous voulez insérer un groupe d'images dans le modèle, comme une liste de produits, vous pouvez également l'implémenter par des boucles. Les étapes spécifiques sont les suivantes :
+
+1. Supposons que vos données soient les suivantes :
+```json
+{
+  "products": [
+    {
+      "name": "Pomme",
+      "imageUrl": "https://images.pexels.com/photos/206959/pexels-photo-206959.jpeg"
+    },
+    {
+      "name": "Banane",
+      "imageUrl": "https://images.pexels.com/photos/61127/pexels-photo-61127.jpeg"
+    }
+  ]
+}
+```
+
+2. Configurez une zone de boucle dans le modèle DOCX, et insérez des images temporaires dans chaque élément de boucle avec le Texte Alternatif défini sur `{d.products[i].imageUrl}`, comme montré ci-dessous :
+
+![20250414205418-2025-04-14-20-54-19](https://static-docs.nocobase.com/20250414205418-2025-04-14-20-54-19.png)
+
+3. Après le rendu, toutes les images temporaires seront remplacées par leurs images de données respectives :
+
+![20250414205503-2025-04-14-20-55-05](https://static-docs.nocobase.com/20250414205503-2025-04-14-20-55-05.png)
+
+#### Insertion d'Images Dynamiques dans les Fichiers XLSX
+
+La méthode d'opération dans les modèles Excel (XLSX) est pratiquement la même, notez simplement les points suivants :
+
+1. Après avoir inséré une image, veuillez vous assurer de sélectionner "image dans la cellule" plutôt que de faire flotter l'image au-dessus de la cellule.
+
+![20250414211643-2025-04-14-21-16-45](https://static-docs.nocobase.com/20250414211643-2025-04-14-21-16-45.png)
+
+2. Après avoir sélectionné la cellule, cliquez pour voir le "Texte Alternatif" pour remplir l'étiquette du champ, comme `{d.imageUrl}`.
+
+### Code-barres
+:::info
+Prend actuellement en charge les types de fichiers XLSX et DOCX
+:::
+
+#### Génération de Codes-barres (comme les codes QR)
+
+La génération de codes-barres fonctionne de la même manière que les [Images Dynamiques](/handbook/action-template-print#images-dynamiques), nécessitant seulement trois étapes :
+
+1. Insérer une image temporaire dans le modèle pour marquer la position du code-barres
+
+2. Modifier le "Texte Alternatif" de l'image et écrire l'étiquette du champ de format de code-barres, par exemple `{d.code:barcode(qrcode)}`, où `qrcode` est le type de code-barres (voir la [liste supportée](/handbook/action-template-print#types-de-codes-barres-supportés) ci-dessous)
+
+![20250414214626-2025-04-14-21-46-28](https://static-docs.nocobase.com/20250414214626-2025-04-14-21-46-28.png)
+
+3. Après le rendu, l'image de substitution sera automatiquement remplacée par l'image de code-barres correspondante :
+
+![20250414214925-2025-04-14-21-49-26](https://static-docs.nocobase.com/20250414214925-2025-04-14-21-49-26.png)
+
+#### Types de Codes-barres Supportés
+
+| Nom du Code-barres | Type   |
+| ------------------ | ------ |
+| Code QR            | qrcode |
