@@ -29,18 +29,18 @@ NocoBaseは[データソース管理プラグイン](/handbook/data-source-manag
 
 ## 様々なデータテーブルの作成をサポート
 
-| データテーブル | 説明 |
-| - | - |
-| [一般コレクション](/handbook/data-source-main/general-collection) | 一般的なシステムフィールドを内蔵しています。 |
+| データテーブル                                                        | 説明                                                                                                                                                   |
+| --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [一般コレクション](/handbook/data-source-main/general-collection)     | 一般的なシステムフィールドを内蔵しています。                                                                                                           |
 | [継承コレクション](/handbook/data-source-main/inheritance-collection) | 親テーブルを作成し、その親テーブルから子テーブルを派生させます。子テーブルは親テーブルのフィールドを継承し、独自のフィールドを定義することも可能です。 |
-| [木構造コレクション](/handbook/collection-tree) | 木構造のテーブルで、現在は隣接リストデザインのみをサポートしています。 |
-| [カレンダーコレクション](/handbook/calendar/calendar-collection) | カレンダー関連のイベントテーブルを作成するために使用します。 |
-| [ファイルコレクション](/handbook/file-manager/file-collection) | ファイルストレージの管理に使用します。 |
-| [コメントテーブル](/handbook/comments/comment-collection) | データに対するコメントやフィードバックを保存するために使用します。 |
-| [式コレクション](/handbook/workflow-dynamic-calculation/expression) | ワークフローの動的式シナリオに使用します。 |
-| [SQLコレクション](/handbook/collection-sql) | 実際のデータベーステーブルではなく、SQLクエリを迅速に構造化して表示します。 |
-| [ビューコレクション](/handbook/collection-view) | 既存のデータベースビューを接続します。 |
-| [外部データテーブル（FDW）](/handbook/collection-fdw) | データベースのFDW技術を基にしてリモートデータテーブルを接続します。 |
+| [木構造コレクション](/handbook/collection-tree)                       | 木構造のテーブルで、現在は隣接リストデザインのみをサポートしています。                                                                                 |
+| [カレンダーコレクション](/handbook/calendar/calendar-collection)      | カレンダー関連のイベントテーブルを作成するために使用します。                                                                                           |
+| [ファイルコレクション](/handbook/file-manager/file-collection)        | ファイルストレージの管理に使用します。                                                                                                                 |
+| [コメントテーブル](/handbook/comments/comment-collection)             | データに対するコメントやフィードバックを保存するために使用します。                                                                                     |
+| [式コレクション](/handbook/collection-expression/collection)          | ワークフローの動的式シナリオに使用します。                                                                                                             |
+| [SQLコレクション](/handbook/collection-sql)                           | 実際のデータベーステーブルではなく、SQLクエリを迅速に構造化して表示します。                                                                            |
+| [ビューコレクション](/handbook/collection-view)                       | 既存のデータベースビューを接続します。                                                                                                                 |
+| [外部データテーブル（FDW）](/handbook/collection-fdw)                 | データベースのFDW技術を基にしてリモートデータテーブルを接続します。                                                                                    |
 
 より詳しい内容は「[データ表 / 概要](/handbook/data-modeling/collection)」の章をご覧ください。
 
@@ -49,4 +49,3 @@ NocoBaseは[データソース管理プラグイン](/handbook/data-source-manag
 ![20240512110352](https://static-docs.nocobase.com/20240512110352.png)
 
 詳細については「[データテーブルのフィールド／概要](/handbook/data-modeling/collection-fields)」の章をご覧ください。
-

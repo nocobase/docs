@@ -11,7 +11,7 @@ To conveniently use various data models, it supports various types of collection
 - [Tree collection](/handbook/collection-tree): Tree structure collection, currently only supports adjacency collection design;
 - [Calendar Tabcollectionle](/handbook/calendar/calendar-collection): Used to create calendar-related event collections;
 - [File collection](/handbook/file-manager/file-collection): Used for file storage management;
-- [Expression collection](/handbook/workflow-dynamic-calculation/expression): Used for dynamic expression scenarios in workflows;
+- [Expression collection](/handbook/collection-expression/collection): Used for dynamic expression scenarios in workflows;
 - [SQL collection](/handbook/collection-sql): Not an actual database collection, but quickly presents SQL queries in a structured manner;
 - [Connect to database view](/handbook/collection-view): Connects to existing database views;
 - [Connect to foreign data](/handbook/collection-fdw): Allows the database system to directly access and query data in external data sources, based on FDW technology.
