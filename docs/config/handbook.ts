@@ -2379,9 +2379,9 @@ export default [
     type: 'group',
     children: [
       {
-        title: 'Workflow',
-        'title.zh-CN': '工作流',
-        'title.ja-JP': 'ワークフロー',
+        title: 'Overview',
+        'title.zh-CN': '概述',
+        'title.ja-JP': '概述',
         link: '/handbook/workflow',
       },
       {
@@ -2404,20 +2404,20 @@ export default [
           },
           {
             title: 'Executions',
-            'title.zh-CN': '执行',
-            'title.ja-JP': '実行',
+            'title.zh-CN': '执行计划',
+            'title.ja-JP': '実行計画',
             link: '/handbook/workflow/advanced/executions',
           },
           {
-            title: 'Revisions',
-            'title.zh-CN': '修订',
-            'title.ja-JP': 'リビジョン',
+            title: 'Revisions Management',
+            'title.zh-CN': '版本管理',
+            'title.ja-JP': 'バージョン管理',
             link: '/handbook/workflow/advanced/revisions',
           },
           {
             title: 'Options',
-            'title.zh-CN': '选项',
-            'title.ja-JP': 'オプション',
+            'title.zh-CN': '高级配置',
+            'title.ja-JP': '高级配置',
             link: '/handbook/workflow/advanced/options',
           },
         ],
@@ -2429,27 +2429,27 @@ export default [
         'title.ja-JP': 'トリガー',
         children: [
           {
-            title: 'Triggers Overview',
-            'title.zh-CN': '触发器概览',
-            'title.ja-JP': 'トリガー概要',
+            title: 'Overview',
+            'title.zh-CN': '概览',
+            'title.ja-JP': '概要',
             link: '/handbook/workflow/triggers',
           },
           {
-            title: 'Collection Trigger',
-            'title.zh-CN': '集合触发器',
-            'title.ja-JP': 'コレクショントリガー',
+            title: 'Collection Event',
+            'title.zh-CN': '数据表事件',
+            'title.ja-JP': 'データテーブルイベント',
             link: '/handbook/workflow/triggers/collection',
           },
           {
-            title: 'Schedule Trigger',
-            'title.zh-CN': '计划触发器',
-            'title.ja-JP': 'スケジュールトリガー',
+            title: 'Schedule',
+            'title.zh-CN': '定时任务',
+            'title.ja-JP': '定期タスク',
             link: '/handbook/workflow/triggers/schedule',
           },
           {
-            title: 'Pre-Action Trigger',
-            'title.zh-CN': '操作前触发器',
-            'title.ja-JP': 'アクション前トリガー',
+            title: 'Pre-Action Event',
+            'title.zh-CN': '操作前事件',
+            'title.ja-JP': '操作前イベント',
             link: '/handbook/workflow/triggers/pre-action',
           },
           {
@@ -2459,21 +2459,21 @@ export default [
             link: '/handbook/workflow/triggers/custom-action',
           },
           {
-            title: 'Post-Action Trigger',
-            'title.zh-CN': '操作后触发器',
-            'title.ja-JP': 'アクション後トリガー',
+            title: 'Post-Action Event',
+            'title.zh-CN': '操作后事件',
+            'title.ja-JP': '操作後のイベント',
             link: '/handbook/workflow/triggers/post-action',
           },
           {
-            title: 'Approval Trigger',
-            'title.zh-CN': '审批触发器',
-            'title.ja-JP': '承認トリガー',
+            title: 'Approval',
+            'title.zh-CN': '审批',
+            'title.ja-JP': '承認',
             link: '/handbook/workflow/triggers/approval',
           },
           {
-            title: 'Webhook Trigger',
-            'title.zh-CN': 'Webhook 触发器',
-            'title.ja-JP': 'Webhook トリガー',
+            title: 'Webhook',
+            'title.zh-CN': 'Webhook',
+            'title.ja-JP': 'Webhook',
             link: '/handbook/workflow/triggers/webhook',
           },
         ],
@@ -2486,8 +2486,8 @@ export default [
         children: [
           {
             title: 'Nodes Overview',
-            'title.zh-CN': '节点概览',
-            'title.ja-JP': 'ノード概要',
+            'title.zh-CN': '概览',
+            'title.ja-JP': '概要',
             link: '/handbook/workflow/nodes',
           },
           {
@@ -2722,16 +2722,16 @@ export default [
         'title.ja-JP': '関連プラグイン',
         children: [
           {
-            title: 'Post-Action Trigger',
-            'title.fr-FR': 'Post-action trigger',
+            title: 'Post-Action Event',
+            'title.fr-FR': 'Post-action Event',
             'title.zh-CN': '操作后事件',
             'title.ja-JP': 'アクション後トリガー',
             subTitle: '@nocobase/plugin-workflow-action-trigger',
             children: [
               {
-                title: 'Workflow Action Trigger',
-                'title.zh-CN': '工作流操作触发器',
-                'title.ja-JP': 'ワークフローアクショントリガー',
+                title: 'Overview',
+                'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
                 link: '/handbook/workflow-action-trigger',
               },
               {
@@ -2776,9 +2776,9 @@ export default [
             subTitle: '@nocobase/plugin-workflow-approval',
             children: [
               {
-                title: 'Workflow Approval',
-                'title.zh-CN': '工作流审批',
-                'title.ja-JP': 'ワークフロー承認',
+                title: 'Overview',
+                'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
                 link: '/handbook/workflow-approval',
               },
               {
@@ -2827,9 +2827,9 @@ export default [
             subTitle: '@nocobase/plugin-workflow-custom-action-trigger',
             children: [
               {
-                title: 'Custom Action Trigger',
-                'title.zh-CN': '自定义操作触发器',
-                'title.ja-JP': 'カスタムアクショントリガー',
+                title: 'Overview',
+                'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
                 link: '/handbook/workflow-custom-action-trigger',
               },
               {
@@ -2882,15 +2882,15 @@ export default [
             subTitle: '@nocobase/plugin-workflow-dynamic-calculation',
             children: [
               {
-                title: 'Dynamic Calculation',
-                'title.zh-CN': '动态计算',
-                'title.ja-JP': '動的計算',
+                title: 'Overview',
+                'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
                 link: '/handbook/workflow-dynamic-calculation',
               },
               {
                 title: 'Collection',
-                'title.zh-CN': '集合',
-                'title.ja-JP': 'コレクション',
+                'title.zh-CN': '数据表',
+                'title.ja-JP': '式のコレクション',
                 link: '/handbook/workflow-dynamic-calculation/collection',
               },
               {
@@ -2940,9 +2940,9 @@ export default [
             subTitle: '@nocobase/plugin-workflow-manual',
             children: [
               {
-                title: 'Manual Process',
-                'title.zh-CN': '人工处理',
-                'title.ja-JP': '手動処理',
+                title: 'Overview',
+                'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
                 link: '/handbook/workflow-manual',
               },
               {
@@ -2990,9 +2990,9 @@ export default [
             link: '/handbook/workflow-request-interceptor',
             children: [
               {
-                title: 'Pre-Action Trigger',
-                'title.zh-CN': '操作前触发器',
-                'title.ja-JP': 'アクション前トリガー',
+                title: 'Overview',
+                'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
                 link: '/handbook/workflow-request-interceptor',
               },
               {

@@ -112,3 +112,33 @@ Similar to the node's original approver configuration, the assignable user range
 :::warning{title=Important}
 If you enable or disable an operation button, or modify the assignable user range, ensure to save the node configuration after closing the interface configuration window. Otherwise, the changes to the operation button will not take effect.
 :::
+
+## Node Results
+
+After the approval is completed, the relevant status and data will be recorded in the node results and can be used as variables by subsequent nodes.
+
+![20250614095052](https://static-docs.nocobase.com/20250614095052.png)
+
+### Approval Status of the Node
+
+Represents the approval status of the entire request. The result is an enum value. See: [Approval Processing Status](./advanced.md#process-status-of-approval-node).
+
+### Data After Approval
+
+If the approver modifies the approval content in the form, the modified data will be recorded in the node results for use by subsequent nodes. If you need to use relational fields, you must configure preloading for the relational fields in the trigger.
+
+### Approval Records
+
+> v1.8.0+
+
+Approval processing records are an array containing the handling records of all approvers in the node. Each record includes the following fields:
+
+| Field | Type | Description |
+| --- | --- | --- |
+| id | number | Unique identifier of the processing record |
+| userId | number | User ID who handled the record |
+| status | number | Processing status. See: [Status of Approver's Processing Record](./advanced.md#审批人处理记录的状态) |
+| comment | string | Comment made during processing |
+| updatedAt | string | Last updated time of the processing record |
+
+You can use the fields as variables in subsequent nodes as needed.

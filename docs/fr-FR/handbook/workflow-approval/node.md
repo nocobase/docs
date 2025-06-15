@@ -112,3 +112,32 @@ Similar to the node's original approver configuration, the assignable user range
 :::warning{title=Important}
 Si vous activez ou désactivez un bouton dans la barre d'opération, assurez-vous de sauvegarder la configuration du nœud après avoir fermé la fenêtre de configuration de l'interface. Sinon, les modifications ne prendront pas effet.
 :::
+## Résultat du nœud
+
+Une fois l'approbation terminée, l'état et les données associés sont enregistrés dans le résultat du nœud, et peuvent être utilisés comme variables par les nœuds suivants.
+
+![20250614095052](https://static-docs.nocobase.com/20250614095052.png)
+
+### Statut d'approbation du nœud
+
+Représente le statut de traitement du nœud d'approbation actuel. Le résultat est une valeur énumérée. Voir : [Statut de traitement du nœud d'approbation](./advanced.md#审批节点的处理状态).
+
+### Données après approbation
+
+Si l'approbateur modifie le contenu de l'approbation dans le formulaire, les données modifiées seront enregistrées dans le résultat du nœud pour être utilisées par les nœuds suivants. Pour utiliser des champs relationnels, vous devez configurer le préchargement de ces champs dans le déclencheur.
+
+### Enregistrements d'approbation
+
+> v1.8.0+
+
+Les enregistrements de traitement d'approbation sont un tableau contenant les enregistrements de tous les approbateurs du nœud. Chaque enregistrement comprend les champs suivants :
+
+| Champ | Type | Description |
+| --- | --- | --- |
+| id | number | Identifiant unique de l'enregistrement |
+| userId | number | ID de l'utilisateur ayant traité l'enregistrement |
+| status | number | Statut du traitement. Voir : [Statut de traitement des approbateurs](./advanced.md#审批人处理记录的状态) |
+| comment | string | Commentaire saisi lors du traitement |
+| updatedAt | string | Date de mise à jour de l'enregistrement |
+
+Les champs peuvent être utilisés comme variables dans les nœuds suivants selon les besoins.
