@@ -137,7 +137,7 @@ Approval processing records are an array containing the handling records of all 
 | --- | --- | --- |
 | id | number | Unique identifier of the processing record |
 | userId | number | User ID who handled the record |
-| status | number | Processing status. See: [Status of Approver's Processing Record](./advanced.md#审批人处理记录的状态) |
+| status | number | Processing status. See: [Process Status of Individual Approver](./advanced.md#process-status-of-individual-approver) |
 | comment | string | Comment made during processing |
 | updatedAt | string | Last updated time of the processing record |
 
