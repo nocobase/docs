@@ -34,7 +34,7 @@ NocoBase fournit un [gestionnaire de sources de données](/handbook/data-source-
 - [Collection arbre](/handbook/collection-tree) : Collection à structure arborescente, actuellement prenant en charge uniquement la conception de collection adjacente ;
 - [Tableau de calendrier](/handbook/calendar/calendar-collection) : Utilisée pour créer des collections d'événements liés au calendrier ;
 - [Collection de fichiers](/handbook/file-manager/file-collection) : Utilisée pour la gestion du stockage des fichiers ;
-- [Collection d'expressions](/handbook/workflow-dynamic-calculation/expression) : Utilisée pour des scénarios d'expressions dynamiques dans les workflows ;
+- [Collection d'expressions](/handbook/collection-expression/collection) : Utilisée pour des scénarios d'expressions dynamiques dans les workflows ;
 - [Collection SQL](/handbook/collection-sql) : Pas une véritable collection de base de données, mais permet de présenter rapidement les requêtes SQL de manière structurée ;
 - [Connexion à la vue de base de données](/handbook/collection-view) : Se connecte aux vues de base de données existantes ;
 - [Connexion aux données externes](/handbook/collection-fdw) : Permet au système de base de données d'accéder directement aux données de sources de données externes, basé sur la technologie FDW.
