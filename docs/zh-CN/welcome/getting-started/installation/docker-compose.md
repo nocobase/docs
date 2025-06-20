@@ -214,13 +214,15 @@ services:
 
 选择合适的 NocoBase 版本, 参考 [版本选择](./index.md#安装哪个版本)
 
-- `latest`：功能稳定，测试较为完善的版本，仅做缺陷修复。推荐安装此版本。
-- `beta`: 包含即将发布的新功能，经过初步测试的版本，可能存在部分已知或未知问题。
-- `alpha`: 开发中的版本，包含最新的功能代码，可能尚未完成或存在较多不稳定因素，主要用于内部开发和快速迭代。
-- `1.3.51`：指定版本号，最新版本查看 [已发布版本列表](https://hub.docker.com/r/nocobase/nocobase/tags)
+- `latest` `latest-full`：功能稳定，测试较为完善的版本，仅做缺陷修复。推荐安装此版本。
+- `beta` `beta-full`: 包含即将发布的新功能，经过初步测试的版本，可能存在部分已知或未知问题。
+- `alpha` `alpha-full`: 开发中的版本，包含最新的功能代码，可能尚未完成或存在较多不稳定因素，主要用于内部开发和快速迭代。
+- `1.7.14` `1.7.14-full`：指定版本号，最新版本查看 [已发布版本列表](https://hub.docker.com/r/nocobase/nocobase/tags)
 
 :::warning
-**v1.4及以上版本**通过设置环境变量 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) 和 [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password)，即可在安装或升级应用时自动下载商业插件。
+- full 镜像包含了备份管理、迁移管理插件所需的 PostgreSQL 16/17 客户端、MySQL 8.0 客户端、Oracle 19.25 客户端以及模板打印（PDF）所需的 LibreOffice；
+- 如需自建镜像，可参考官方提供的 [Dockerfile（精简版）](https://github.com/nocobase/nocobase/blob/main/docker/nocobase/Dockerfile) 和 [Dockerfile-full（完整版）](https://github.com/nocobase/nocobase/blob/main/docker/nocobase/Dockerfile-full)
+- **v1.4及以上版本**通过设置环境变量 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) 和 [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password)，即可在安装或升级应用时自动下载商业插件。
 :::
 
 示例
@@ -233,13 +235,25 @@ services:
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:beta
     image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:alpha
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:1.3.51
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:1.7.14
+
+    # full 镜像
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest-full
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:beta-full
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:alpha-full
+    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:1.7.14-full
 
     # Docker Hub 镜像（国内用户无法下载）
     image: nocobase/nocobase:latest
     image: nocobase/nocobase:beta
     image: nocobase/nocobase:alpha
-    image: nocobase/nocobase:1.3.51
+    image: nocobase/nocobase:1.7.14
+
+    # full 镜像
+    image: nocobase/nocobase:latest-full
+    image: nocobase/nocobase:beta-full
+    image: nocobase/nocobase:alpha-full
+    image: nocobase/nocobase:1.7.14-full
 # ...
 ```
 
