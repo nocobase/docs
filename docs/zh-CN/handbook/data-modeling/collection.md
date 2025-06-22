@@ -11,7 +11,7 @@ NocoBase 提供了一种特有的 DSL 来描述数据的结构，称之为 Colle
 - [树表](/handbook/collection-tree)：树结构表，目前只支持邻接表设计；
 - [日历表](/handbook/calendar/calendar-collection)：用于创建日历相关的事件表；
 - [文件表](/handbook/file-manager/file-collection)：用于文件存储的管理；
-- [表达式表](/handbook/workflow-dynamic-calculation/expression)：用于工作流的动态表达式场景；
+- [表达式表](/handbook/collection-expression/collection)：用于工作流的动态表达式场景；
 - [SQL 表](/handbook/collection-sql)：并不是实际的数据库表，而是快速的将 SQL 查询，结构化的展示出来；
 - [视图表](/handbook/collection-view)：连接已有的数据库视图；
 - [外部表](/handbook/collection-fdw)：允许数据库系统直接访问和查询外部数据源中的数据，基于 FDW 技术；
