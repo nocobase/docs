@@ -1,17 +1,19 @@
 # 插件的安装与升级
 
-## 商业插件的安装与升级（v1.4及以上版本）
+## 商业插件的安装与升级
 
-### 配置环境变量
+### 配置授权信息
 
-通过设置环境变量 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) 和 [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password)（NocoBase 服务平台的用户名和密码），即可在安装或升级应用时自动下载商业插件。
+#### NocoBase 版本 >=1.7.0
 
-```bash
-NOCOBASE_PKG_USERNAME=your-username
-NOCOBASE_PKG_PASSWORD=your-password
-```
+请前往 NocoBase Service 平台查看授权配置说明
 
-[如何设置环境变量？](/welcome/getting-started/env)
+#### NocoBase 版本 <1.7.0：配置账号和密码
+
+:::warning
+配置账号和密码的方式即将废弃，请尽快升级并更改为许可证密钥的方式。
+:::
+
 
 ### 下载插件
 
@@ -134,3 +136,4 @@ mkdir -p /my-nocobase/storage/plugins/@nocobase/plugin-auth-cas && \
 ```bash
 yarn nocobase upgrade --skip-code-update
 ```
+
