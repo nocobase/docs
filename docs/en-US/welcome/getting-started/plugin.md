@@ -1,17 +1,18 @@
 # Installation and Upgrade of Plugins
 
-## Installation and Upgrade of Commercial Plugins (v1.4 and Above)
+## Installation and Upgrade of Commercial Plugins
 
-### Configure Environment Variables
+### Configure License Key
 
-Set the environment variables [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) and [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password) (NocoBase Service Platform username and password) to automatically download commercial plugins during application installation or upgrade.
+#### NocoBase Version >=1.7.0
 
-```bash
-NOCOBASE_PKG_USERNAME=your-username
-NOCOBASE_PKG_PASSWORD=your-password
-```
+Please visit the NocoBase Service Platform to view the license key configuration instructions.
 
-[How to set environment variables?](/welcome/getting-started/env)
+#### NocoBase Version <1.7.0
+
+:::warning
+Configuring account and password will be deprecated, please upgrade and change to license key.
+:::
 
 ### Download Plugins
 

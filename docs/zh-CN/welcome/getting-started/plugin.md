@@ -1,35 +1,12 @@
 # 插件的安装与升级
 
-## 插件的安装与升级
+## 商业插件的安装与升级
 
 ### 配置授权信息
 
-#### NocoBase 版本 >=1.7.0：配置许可证密钥
+#### NocoBase 版本 >=1.7.0
 
-##### 获取 InstanceID（需要先确保数据库可以正常连接）
-
-**Docker 安装**
-
-- 直接复制 `./storage/.license/instance-id` 内容
-
-**Git 源码或 create-nocobase-app 安装**
-
-- 先执行 `yarn nocobase generate-instance-id`
-- 再复制 `./storage/.license/instance-id`
-
-##### 生成并下载许可证密钥
-
-根据获取到的 InstanceID 生成许可证密钥
-
-![image](https://github.com/user-attachments/assets/009c54df-4de2-4160-8f1d-533cc56704c2)
-
-下载许可证密钥
-
-![image](https://github.com/user-attachments/assets/adec5af6-ebd3-434d-ad0f-f80103a916e0)
-
-##### 上传许可证密钥
-
-- 将生成的文件上传至 `./storage/.license/license-key`
+请前往 NocoBase Service 平台查看授权配置说明
 
 #### NocoBase 版本 <1.7.0：配置账号和密码
 
@@ -37,14 +14,6 @@
 配置账号和密码的方式即将废弃，请尽快升级并更改为许可证密钥的方式。
 :::
 
-通过设置环境变量 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) 和 [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password)（NocoBase 服务平台的用户名和密码），即可在安装或升级应用时自动下载商业插件。
-
-```bash
-NOCOBASE_PKG_USERNAME=your-username
-NOCOBASE_PKG_PASSWORD=your-password
-```
-
-[如何设置环境变量？](/welcome/getting-started/env)
 
 ### 下载插件
 
