@@ -1,54 +1,8 @@
 # 插件的安装与升级
 
-## 商业插件的安装与升级
+## 商业插件的安装与升级（v1.7.x及以上版本）
 
-### 配置授权信息
-
-#### NocoBase 版本 >=1.7.0
-
-请前往 NocoBase Service 平台查看授权配置说明
-
-#### NocoBase 版本 <1.7.0：配置账号和密码
-
-:::warning
-配置账号和密码的方式即将废弃，请尽快升级并更改为许可证密钥的方式。
-:::
-
-
-### 下载插件
-
-#### Docker 安装
-
-重启容器即可自动下载插件
-
-```bash
-docker compose restart app
-```
-
-#### Git 源码或 create-nocobase-app 安装
-
-执行 `pkg download-pro` 命令下载插件
-
-```bash
-yarn nocobase pkg download-pro
-```
-
-:::warning
-
-- 以上步骤，只会下载与当前应用版本匹配的插件，并不会更新插件，如果需要更新插件请先[升级应用](/welcome/getting-started/upgrading)，授权的插件会自动更新。
-- 授权的插件也会在应用 [安装](/welcome/getting-started/installation) 或 [升级](/welcome/getting-started/upgrading) 时自动下载。
-
-:::
-
-### 激活插件
-
-在插件管理器中选择需要激活的插件即可。
-
-![20241204000230](https://static-docs.nocobase.com/20241204000230.png)
-
-### 升级插件
-
-先[升级应用](/welcome/getting-started/upgrading)，授权的插件会在应用升级时自动下载或更新。目前暂不支持仅升级插件而不升级应用。
+请登录 NocoBase Service 查看使用文档。
 
 ## 通过界面安装与更新插件
 
