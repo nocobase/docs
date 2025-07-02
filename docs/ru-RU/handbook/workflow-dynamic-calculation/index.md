@@ -1,20 +1,21 @@
-# Overview
+# Обзор
 
 <PluginInfo name="workflow-dynamic-calculation" link="/handbook/workflow-dynamic-calculation"></PluginInfo>
 
-Dynamic Calculation nodes stand out from Operator nodes by allowing diverse calculations based on data-associated expressions. While traditional formula fields are limited to applying a single fixed formula across all data rows, Dynamic calculation solve this limitation by enabling workflows to handle different calculation methods for varying data rows.
+Узлы динамических вычислений отличаются от узлов операторов тем, что позволяют выполнять разнообразные вычисления на основе выражений, связанных с данными. 
+В то время как традиционные поля формул ограничены применением одной фиксированной формулы ко всем строкам данных, динамические вычисления решают это ограничение, позволяя "workflow" обрабатывать различные методы вычислений для различных строк данных.
 
-For example, different product categories in order data may require distinct statistical formulas to compute specific report data.
+Например, для различных категорий продуктов в данных заказа могут потребоваться различные статистические формулы для вычисления определенных данных отчета.
 
-## Installation
+## Установка
 
-This plugin comes pre-installed and does not require any additional setup.
+Этот плагин предварительно установлен и не требует дополнительной настройки.
 
-## User Manual
+## Руководство пользователя
 
-Using dynamic expressions involves several key sections:
+Использование динамических выражений включает несколько ключевых разделов:
 
-- ["Expression" Template Table](./collection.md)
-- [Node](./node.md)
+- [Таблица шаблонов "Выражение"](./collection.md)
+- [Узел](./node.md)
 
-For practical examples, refer to the [Examples](./example.md) section.
+Практические примеры см. в разделе [Примеры](./example.md).

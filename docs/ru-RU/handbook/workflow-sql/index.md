@@ -1,58 +1,58 @@
 # SQL Actions
 
-In certain scenarios where the standard data table operation nodes fall short for more complex tasks, you can directly employ the SQL Action node to execute sophisticated SQL queries within the database.
+В некоторых сценариях, где стандартные узлы операций с таблицами данных не справляются с более сложными задачами, вы можете напрямую использовать узел SQL Action для выполнения сложных SQL-запросов в базе данных.
 
-Unlike executing SQL operations by connecting to the database externally, within the workflow, you can leverage variables from the workflow context as parameters within your SQL statements.
+В отличие от выполнения SQL-операций путем внешнего подключения к базе данных, в "workflow" вы можете использовать переменные из контекста "workflow" в качестве параметров в ваших SQL-выражениях.
 
 ## FAQ
 
-### How can the results of an SQL Action node be utilized?
+### Как можно использовать результаты узла SQL Action?
 
-When using a `SELECT` statement, the query results are stored in the node in Sequelize's JSON format. You can parse and utilize these results through the [JSON-query](/handbook/workflow-json-query) plugin.
+При использовании оператора `SELECT` результаты запроса сохраняются в узле в формате JSON Sequelize. Вы можете анализировать и использовать эти результаты с помощью плагина [JSON-query](/handbook/workflow-json-query).
 
-### Will SQL actions trigger table events?
+### Будут ли SQL-действия вызывать события таблицы?
 
-**No**. SQL actions directly execute SQL commands on the database. Actions such as `CREATE` / `UPDATE` / `DELETE` occur in the database, while table events are managed at the Node.js application layer (ORM processing). As a result, these operations do not trigger table events.
+**Нет**. SQL-действия напрямую выполняют команды SQL в базе данных. Такие действия, как `CREATE` / `UPDATE` / `DELETE`, происходят в базе данных, в то время как события таблицы управляются на уровне приложения Node.js (обработка ORM). В результате эти операции не запускают события таблицы.
 
-## Installation
+## Установка
 
-This plugin is built-in, so no installation is necessary.
+Этот плагин встроен, поэтому установка не требуется.
 
-## User Guide
+## Руководство пользователя
 
-### Creating a Node
+### Создание узла
 
-In the workflow configuration interface, click the plus sign (“+”) within the flow to add an "SQL Action" node:
+В интерфейсе конфигурации "workflow" щелкните знак «плюс» («+») внутри потока, чтобы добавить узел «Действие SQL»:
 
-![Adding SQL Actions](https://static-docs.nocobase.com/0ce40a226d7a5bf3717813e27da40e62.png)
+![Добавление действий SQL](https://static-docs.nocobase.com/0ce40a226d7a5bf3717813e27da40e62.png)
 
-### Configuring the Node
+### Настройка узла
 
-![SQL Node Configuration](https://static-docs.nocobase.com/98611dc13bcda04348bd0856561a7b04.png)
+![Конфигурация узла SQL](https://static-docs.nocobase.com/98611dc13bcda04348bd0856561a7b04.png)
 
-#### Data Source
+#### Источник данных
 
-Select the data source for executing the SQL.
+Выберите источник данных для выполнения SQL.
 
-The data source must be of a database type, such as the main data source, PostgreSQL type, or any other data source compatible with Sequelize.
+Источник данных должен иметь тип базы данных, например, основной источник данных, тип PostgreSQL или любой другой источник данных, совместимый с Sequelize.
 
-#### SQL Content
+#### Содержимое SQL
 
-Edit the SQL statement. Currently, only one SQL statement is supported.
+Измените оператор SQL. В настоящее время поддерживается только один оператор SQL.
 
-You can insert required variables by clicking the variable button in the upper right corner of the editor. Before execution, the variables will be replaced with their corresponding values in the text, and the final SQL statement will be sent to the database for querying.
+Вы можете вставить требуемые переменные, нажав кнопку переменной в правом верхнем углу редактора. Перед выполнением переменные будут заменены соответствующими им значениями в тексте, а окончательный оператор SQL будет отправлен в базу данных для запроса.
 
-### Node Execution Results
+### Результаты выполнения узла
 
-Starting from `v1.3.15-beta`, the result of the SQL node execution is an array consisting purely of data. Prior to this version, the result was a Sequelize native structure that included query metadata (for more details, see: [`sequelize.query()`](https://sequelize.org/api/v6/class/src/sequelize.js~sequelize#instance-method-query)).
+Начиная с `v1.3.15-beta`, результатом выполнения узла SQL является массив, состоящий исключительно из данных. До этой версии результатом была собственная структура Sequelize, включающая метаданные запроса (для получения более подробной информации см.: [`sequelize.query()`](https://sequelize.org/api/v6/class/src/sequelize.js~sequelize#instance-method-query)).
 
-For example, the following query:
+Например, следующий запрос:
 
 ```sql
 select count(id) from posts;
 ```
 
-Result before `v1.3.15-beta`:
+Результат до `v1.3.15-beta`:
 
 ```json
 [
@@ -65,7 +65,7 @@ Result before `v1.3.15-beta`:
 ]
 ```
 
-Result after `v1.3.15-beta`:
+Результат после `v1.3.15-beta`:
 
 ```json
 [

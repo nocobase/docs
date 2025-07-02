@@ -1,25 +1,25 @@
-# Workflow tasks
+# Задачи рабочего процесса
 
-Workflow tasks center provides a unified entry point for users to view and process tasks. Tasks initiated by the current user and tasks to be done can be accessed from task center button in the top toolbar. And from categories navigation in left side, user could view different types of tasks.
+Центр задач рабочего процесса предоставляет пользователям единую точку входа для просмотра и обработки задач. Задачи, инициированные текущим пользователем, и задачи, которые необходимо выполнить, можно открыть с помощью кнопки центра задач на верхней панели инструментов. А с помощью навигации по категориям в левой части пользователь может просматривать различные типы задач.
 
 ![20250310161203](https://static-docs.nocobase.com/20250310161203.png)
 
-## My Applications
+## Мои заявки
 
-### View applications initiated
+### Просмотр инициированных заявок
 
 ![20250310161609](https://static-docs.nocobase.com/20250310161609.png)
 
-### Apply new approval
+### Применить новое одобрение
 
 ![20250310161658](https://static-docs.nocobase.com/20250310161658.png)
 
-## My approval tasks
+## Мои задачи по одобрению
 
-### To-do list
+### To-do список
 
 ![20250310161934](https://static-docs.nocobase.com/20250310161934.png)
 
-### Approval details
+### Подробности утверждения
 
 ![20250310162111](https://static-docs.nocobase.com/20250310162111.png)

@@ -1,21 +1,21 @@
-# Trigger Configuration
+# Конфигурация триггера
 
-## Creating a Trigger
+## Создание триггера
 
-When setting up a workflow, select "Pre-action event" as the event type:
+При настройке "workflow" выберите «Событие перед действием» в качестве типа события:
 
-![Pre-action event](https://static-docs.nocobase.com/2add03f2bdb0a836baae5fe9864fc4b6.png)
+![Событие перед действием](https://static-docs.nocobase.com/2add03f2bdb0a836baae5fe9864fc4b6.png)
 
-## Selecting the Data Table
+## Выбор таблицы данных
 
-The first step in configuring a trigger for intercepting workflows is to select the data table associated with the action:
+Первым шагом в настройке триггера для перехвата "workflow" является выбор таблицы данных, связанной с действием:
 
-![Intercept Event Configuration_Data Table](https://static-docs.nocobase.com/8f7122caca8159d334cf776f838d53d6.png)
+![Конфигурация события перехвата_Таблица данных](https://static-docs.nocobase.com/8f7122caca8159d334cf776f838d53d6.png)
 
-Next, choose the intercept mode. You can either intercept only the action buttons linked to this workflow or intercept all selected actions for the data table (regardless of the form the action originates from and without needing to bind the corresponding workflow):
+Далее выберите режим перехвата. Вы можете перехватывать только кнопки действий, связанные с этим "workflow", или перехватывать все выбранные действия для таблицы данных (независимо от формы, из которой исходит действие, и без необходимости привязывать соответствующий "workflow"):
 
-## Intercept Mode
+## Режим перехвата
 
-![Intercept Event Configuration_Intercept Mode](https://static-docs.nocobase.com/145a7f7c3ba440bb6ca93a5ee84f16e2.png)
+![Конфигурация событий перехвата_Режим перехвата](https://static-docs.nocobase.com/145a7f7c3ba440bb6ca93a5ee84f16e2.png)
 
-Currently, the supported action types include "Create," "Update," and "Delete." You can select multiple action types simultaneously.
+В настоящее время поддерживаемые типы действий включают «Создать», «Обновить» и «Удалить». Вы можете выбрать несколько типов действий одновременно.

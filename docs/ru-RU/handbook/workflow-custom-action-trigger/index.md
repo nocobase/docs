@@ -1,20 +1,21 @@
-# Overview
+# Обзор
 
 <PluginInfo name="workflow-custom-action-trigger" link="/handbook/workflow-custom-action-trigger" commercial="true"></PluginInfo>
 
-NocoBase provides built-in standard data operations like create, read, update, and delete. However, when these operations aren't sufficient to meet complex business requirements, custom action events within workflows can be utilized. These events can be linked to the "Trigger Workflow" button on page blocks, enabling you to perform custom data operations tailored to specific needs.
+NocoBase предоставляет встроенные стандартные операции с данными, такие как создание, чтение, обновление и удаление. Однако, когда этих операций недостаточно для удовлетворения сложных бизнес-требований, можно использовать события настраиваемых действий в "workflow". Эти события можно связать с кнопкой "Trigger Workflow" на блоках страниц, что позволяет выполнять операции с данными, соответствующие конкретным потребностям.
 
 :::info{title=Note}
-The "Custom Action Event" evolved from the "Submit to Workflow" mode found in the "Post-Action Event" feature. As of version `v1.0.0-alpha.7`, it has been separated into its own event and renamed as "Custom Action Event."
+"Custom Action Event" развился из режима "Submit to Workflow", который находится в функции "Post-Action Event". Начиная с версии `v1.0.0-alpha.7`, он был выделен в отдельное событие и переименован в "Custom Action Event".
+
 :::
 
-## User Manual
+## Руководство пользователя
 
-Custom action events are used in several key areas:
+События пользовательских действий используются в нескольких ключевых областях:
 
-- [Trigger Configuration](./trigger.md)
-- [Action Configuration](./action.md)
+- [Конфигурация триггера](./trigger.md)
+- [Конфигурация действия](./action.md)
 
-For practical examples of how to use these events, refer to the [Examples](./example.md) section.
+Практические примеры использования этих событий см. в разделе [Примеры](./example.md).
 
-If integration with an external system is needed, consult the [Http Api](./http-api.md) guide.
+Если требуется интеграция с внешней системой, см. руководство [Http Api](./http-api.md).

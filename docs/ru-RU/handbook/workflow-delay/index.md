@@ -1,37 +1,40 @@
-# Delay
+# Задержка
 
 <PluginInfo name="workflow-delay" link="/handbook/workflow-delay"></PluginInfo>
 
-The delay node allows you to introduce a pause within a workflow. Once the delay concludes, you can configure whether to proceed with the next step or terminate the workflow prematurely.
+Узел задержки позволяет вам ввести паузу в "workflow". После завершения задержки вы можете настроить, следует ли продолжать следующий шаг или преждевременно завершить "workflow".
 
-This node is often used in tandem with parallel branch nodes. By adding a delay node to one of the branches, you can effectively manage timeouts. For example, in a scenario where one branch requires manual processing while another includes a delay node, you can determine the outcome if the manual process exceeds the allotted time. Selecting "timeout failure" means that the manual process must be completed within the specified timeframe. On the other hand, choosing "timeout continuation" allows the workflow to bypass the manual process once the delay has elapsed.
+Этот узел часто используется в тандеме с параллельными узлами ветки. Добавив узел задержки к одной из веток, вы можете эффективно управлять тайм-аутами. Например, в сценарии, где одна ветка требует ручной обработки, а другая включает узел задержки, вы можете определить результат, если ручной процесс превысит отведенное время. 
+Выбор «сбой тайм-аута» означает, что ручной процесс должен быть завершен в течение указанного периода времени. С другой стороны, выбор «продолжение тайм-аута» позволяет "worklfow" обходить ручной процесс после истечения задержки.
 
-## Installation
+## Установка
 
-This plugin is built-in and requires no installation.
+Этот плагин встроен и не требует установки.
 
-## User Manual
+## Руководство пользователя
 
-### Creating a Node
+### Создание узла
 
-In the workflow configuration interface, click the plus sign ("+") within the flow to add a "Delay" node:
+В интерфейсе конфигурации "workflow" щелкните знак плюс («+») в потоке, чтобы добавить узел «Задержка»:
 
-![Create Delay Node](https://static-docs.nocobase.com/d0816999c9f7acaec1c409bd8fb6cc36.png)
+![Создать узел задержки](https://static-docs.nocobase.com/d0816999c9f7acaec1c409bd8fb6cc36.png)
 
-### Node Configuration
+### Конфигурация узла
 
-![Delay Node Configuration](https://static-docs.nocobase.com/5fe8a36535f20a087a0148ffa1cd2aea.png)
+![Конфигурация узла задержки](https://static-docs.nocobase.com/5fe8a36535f20a087a0148ffa1cd2aea.png)
 
-#### Delay Time
+#### Время задержки
 
-You can specify the delay duration by entering a number and selecting a time unit. Supported units include seconds, minutes, hours, days, and weeks.
+Вы можете указать длительность задержки, введя число и выбрав единицу времени. Поддерживаемые единицы включают секунды, минуты, часы, дни и недели.
 
-#### Timeout Status
+#### Статус тайм-аута
 
-You can set the timeout status to either "Succeed and continue" or "Fail and Exit." The "Succeed and continue" option ensures that the workflow progresses to the next steps after the delay ends. Conversely, the "Fail and Exit" option terminates the workflow with a failure status once the delay concludes.
+Вы можете установить статус тайм-аута на «Успешно и продолжить» или «Сбой и выход». Параметр «Успешно и продолжить» гарантирует, что "workflow" перейдет к следующим шагам после окончания задержки. 
+Наоборот, параметр «Неудача и выход» завершает "workflow" со статусом сбоя после окончания задержки.
 
-### Example
+### Пример
 
-In a scenario where a work order must be addressed within a certain timeframe, you can add a manual node to one branch and a delay node to the other in parallel branches. If the manual process fails to respond within 10 minutes, the work order status will be updated to "Timeout Unprocessed."
+В сценарии, где рабочий заказ должен быть выполнен в течение определенного периода времени, вы можете добавить ручной узел в одну ветвь и узел задержки в другую в параллельных ветках. 
+Если ручной процесс не отвечает в течение 10 минут, статус рабочего заказа будет обновлен до «Время ожидания не обработано».
 
-![Delay Node Example - Workflow Organization](https://static-docs.nocobase.com/898c84adc376dc211b003a62e16e8e5b.png)
+![Пример узла задержки — Организация рабочего процесса](https://static-docs.nocobase.com/898c84adc376dc211b003a62e16e8e5b.png)

@@ -2,118 +2,119 @@
 
 <PluginInfo name="workflow-script" link="/handbook/workflow-script" commercial="true"></PluginInfo>
 
-The JavaScript node allows users to execute custom Node.js scripts within a workflow. These scripts can utilize upstream workflow variables as parameters and return values that subsequent nodes can use.
+Узел JavaScript позволяет пользователям выполнять пользовательские скрипты Node.js в "workflow". Эти скрипты могут использовать переменные "workflow" в качестве параметров и возвращать значения, которые могут использовать последующие узлы.
 
-The script supports most Node.js features but has some differences from the native execution environment. See the [Feature List](#feature-list) for details.
+Скрипт поддерживает большинство функций Node.js, но имеет некоторые отличия от собственной среды выполнения. Подробности см. в [Списке функций](#feature-list).
 
-## User Manual
+## Руководство пользователя
 
-### Creating a Node
+### Создание узла
 
-In the workflow configuration interface, click the plus (“+”) button in the workflow to add a “Script” node:
+В интерфейсе конфигурации "workflow" нажмите кнопку «плюс» («+») в "workflow", чтобы добавить узел «Скрипт»:
 
 ![20241007122632](https://static-docs.nocobase.com/20241007122632.png)
 
-### Node Configuration
+### Конфигурация узла
 
 ![20241007122825](https://static-docs.nocobase.com/20241007122825.png)
 
-#### Parameters
+#### Параметры
 
-Use parameters to pass variables or static values from the workflow context into the script, making them accessible in the script logic. `name` represents the parameter name, which will serve as the variable name in the script. `value` represents the parameter value, which can be a workflow variable or a constant.
+Используйте параметры для передачи переменных или статических значений из контекста "workflow" в сценарий, делая их доступными в логике сценария. `name` представляет имя параметра, которое будет служить именем переменной в сценарии. `value` представляет значение параметра, которое может быть переменной "workflow" или константой.
 
-#### Script Content
+#### Содержимое скрипта
 
-The script content functions as a single function where you can write any JavaScript code supported by the Node.js environment. Use the `return` statement to provide a value as the node's output, making it available as a variable for downstream nodes.
+Содержимое скрипта функционирует как одна функция, в которой вы можете написать любой код JavaScript, поддерживаемый средой Node.js. Используйте оператор `return`, чтобы предоставить значение в качестве выходных данных узла, сделав его доступным в качестве переменной для нижестоящих узлов.
 
-After writing the script, use the test button below the editor to open a test execution dialog. Populate parameters with static values for simulation. The dialog displays the return value and output (logs) after execution.
+После написания скрипта используйте кнопку теста под редактором, чтобы открыть диалоговое окно выполнения теста. Заполните параметры статическими значениями для моделирования. В диалоговом окне отображаются возвращаемое значение и выходные данные (журналы) после выполнения.
 
 ![20241007153631](https://static-docs.nocobase.com/20241007153631.png)
 
-#### Timeout Setting
+#### Настройка тайм-аута
 
-Set the timeout in milliseconds. A value of `0` means no timeout.
+Установите тайм-аут в миллисекундах. Значение `0` означает отсутствие тайм-аута.
 
-#### Continue Workflow on Error
+#### Продолжить рабочий процесс при ошибке
 
-If enabled, the workflow will continue even if the script encounters an error or timeout.
+Если включено, "workflow" будет продолжен, даже если скрипт обнаружит ошибку или тайм-аут.
 
-:::info{title="Note"}
-When a script fails, it will not return a value, and the node's output will contain the error message. If subsequent nodes use the result variable from this script node, handle it carefully.
+:::info{title="Примечание"}
+Когда скрипт завершается неудачей, он не возвращает значение, а вывод узла будет содержать сообщение об ошибке. Если последующие узлы используют переменную результата из этого узла скрипта, обращайтесь с этим осторожно.
 :::
 
-## Feature List
+## Список функций
 
-### Node.js Version
+### Версия Node.js
 
-The Node.js version matches the version used by the main application.
+Версия Node.js совпадает с версией, используемой основным приложением.
 
-### Module Support
+### Поддержка модулей
 
-The script allows restricted use of modules, adhering to the CommonJS standard. Use the `require()` directive to import modules in your code.
+Скрипт позволяет ограниченно использовать модули, придерживаясь стандарта CommonJS. Используйте директиву `require()` для импорта модулей в ваш код.
 
-It supports Node.js native modules and modules installed in `node_modules` (including dependencies used by NocoBase). To make modules available in the code, declare them in the application environment variable `WORKFLOW_SCRIPT_MODULES`. Separate multiple module names with commas, e.g.:
+Он поддерживает собственные модули Node.js и модули, установленные в `node_modules` (включая зависимости, используемые NocoBase). Чтобы сделать модули доступными в коде, объявите их в переменной среды приложения `WORKFLOW_SCRIPT_MODULES`. Разделяйте несколько имен модулей запятыми, например:
 
 ```ini
 WORKFLOW_SCRIPT_MODULES=crypto,timers,lodash,dayjs
 ```
 
-:::info{title="Note"}
-Modules not declared in `WORKFLOW_SCRIPT_MODULES`, including native Node.js modules or installed `node_modules`, **cannot** be used in scripts. This strategy allows administrators to control the modules accessible to users, reducing the risk of excessive script permissions.
+:::info{title="Примечание"}
+Модули, не объявленные в `WORKFLOW_SCRIPT_MODULES`, включая собственные модули Node.js или установленные `node_modules`, **не могут** использоваться в скриптах. Эта стратегия позволяет администраторам контролировать модули, доступные пользователям, что снижает риск чрезмерных разрешений скрипта.
 :::
 
-### Global Variables
+### Глобальные переменные
 
-Global variables such as `global`, `process`, `__dirname`, and `__filename` are **not supported**.
+Глобальные переменные, такие как `global`, `process`, `__dirname` и `__filename` **не поддерживаются**.
 
 ```js
-console.log(global); // will throw error: "global is not defined"
+console.log(global); // выдаст ошибку: "global is not defined"
 ```
 
-### Input Parameters
+### Входные параметры
 
-Parameters configured in the node are treated as global variables in the script and can be used directly. Only basic types such as `boolean`, `number`, `string`, `object`, and arrays are supported. `Date` objects are converted to ISO-formatted strings when passed. Other complex types, such as custom class instances, cannot be directly passed.
+Параметры, настроенные в узле, обрабатываются в скрипте как глобальные переменные и могут использоваться напрямую. Поддерживаются только базовые типы, такие как `boolean`, `number`, `string`, `object` и массивы. Объекты `Date` при передаче преобразуются в строки в формате ISO.
+Другие сложные типы, такие как экземпляры пользовательских классов, не могут быть переданы напрямую.
 
-### Return Values
+### Возвращаемые значения
 
-Use the `return` statement to return data of basic types (same as parameter rules) to the node as its output. If the code does not contain a `return` statement, the node will have no output value.
+Используйте оператор `return` для возврата данных базовых типов (таких же, как правила параметров) в узел в качестве его выходных данных. Если код не содержит оператора `return`, узел не будет иметь выходного значения.
 
 ```js
 return 123;
 ```
 
-### Output (Logs)
+### Вывод (журналы)
 
-**Supports** logging via `console`.
+**Поддерживает** ведение журнала через `console`.
 
 ```js
 console.log('hello world!');
 ```
 
-The script node’s output will also be recorded in the corresponding workflow’s log files.
+Вывод узла скрипта также будет записан в соответствующие файлы журнала "workflow".
 
-### Asynchronous Operations
+### Асинхронные операции
 
-**Supports** asynchronous functions using `async` and `await`. It also **supports** the global `Promise` object.
+**Поддерживает** асинхронные функции с использованием `async` и `await`. Также **поддерживает** глобальный объект `Promise`.
 
 ```js
 async function test() {
-  return Promise.resolve(1);
+return Promise.resolve(1);
 }
 
 const value = await test();
 return value;
 ```
 
-### Timers
+### Таймеры
 
-To use methods like `setTimeout`, `setInterval`, or `setImmediate`, import them from the Node.js `timers` package.
+Чтобы использовать такие методы, как `setTimeout`, `setInterval` или `setImmediate`, импортируйте их из пакета `timers` Node.js.
 
 ```js
 const { setTimeout, setInterval, setImmediate, clearTimeout, clearInterval, clearImmediate } = require('timers');
 
-async function sleep(time) {
-  return new Promise((resolve) => setTimeout(resolve, time));
+асинхронная функция sleep(time) {
+return new Promise((resolve) => setTimeout(resolve, time));
 }
 
 await sleep(1000);

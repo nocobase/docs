@@ -1,55 +1,55 @@
-# Response Message
+# Ответное сообщение
 
 <PluginInfo name="workflow-response-message" link="/handbook/workflow-response-message"></PluginInfo>
 
-The Response Message node is designed to deliver custom messages to the client who initiates an operation within certain types of workflows.
+Узел «Ответное сообщение» предназначен для доставки пользовательских сообщений клиенту, который инициирует операцию в определенных типах "workflow".
 
 :::info{title=Note}
-This node currently can be used in the workflow types "Pre-Action Event" and "Custom Action Event (synchronous mode)".
+В настоящее время этот узел можно использовать в типах "workflow" «Преддействие» и «Пользовательское действие (синхронный режим)».
 :::
 
-## User Manual
+## Руководство пользователя
 
-### Creating a Node
+### Создание узла
 
-Within the supported workflow types, you can insert a "Response Message" node at any point in the workflow. To do this, click the plus ("+") button within the workflow to add the "Response Message" node:
+В поддерживаемых типах "workflow" вы можете вставить узел «Ответное сообщение» в любой точке "workflow". Для этого нажмите кнопку плюса («+») в "workflow", чтобы добавить узел «Ответное сообщение»:
 
-![Add Node](https://static-docs.nocobase.com/eac2b3565e95e4ce59f340624062ed3d.png)
+![Добавить узел](https://static-docs.nocobase.com/eac2b3565e95e4ce59f340624062ed3d.png)
 
-Throughout the entire request process, response messages are accumulated in an array. When the process reaches a Response Message node, the new message content is appended to this array. Upon the server sending the response content, all messages within the array are delivered together to the client.
+На протяжении всего процесса запроса ответные сообщения накапливаются в массиве. Когда процесс достигает узла Ответное сообщение, новое содержимое сообщения добавляется к этому массиву. После того, как сервер отправляет содержимое ответа, все сообщения в массиве доставляются вместе клиенту.
 
-### Node Configuration
+### Конфигурация узла
 
-The message content is structured as a template string, allowing the insertion of variables. You can customize the template's content in the node configuration as needed:
+Содержимое сообщения структурировано как строка шаблона, что позволяет вставлять переменные. Вы можете настроить содержимое шаблона в конфигурации узла по мере необходимости:
 
-![Node Configuration](https://static-docs.nocobase.com/d5fa5f4002d50baf3ba16048818fddfc.png)
+![Конфигурация узла](https://static-docs.nocobase.com/d5fa5f4002d50baf3ba16048818fddfc.png)
 
-As the process executes and reaches this node, the template is parsed to generate the final message content. In the example configuration above, the variable "Scope variables / Loop all products / Loop target / Product / Title" will be replaced with specific values during the actual workflow, such as:
+По мере выполнения процесса и достижения этого узла шаблон анализируется для генерации окончательного содержимого сообщения. В приведенном выше примере конфигурации переменная «Переменные области действия / Цикл всех продуктов / Цель цикла / Продукт / Название» будет заменена определенными значениями во время фактического "workflow", например:
 
 ```
-Insufficient stock for product "iPhone 14 Pro"
+Недостаточно запасов для продукта «iPhone 14 Pro»
 ```
 
-![Message Content](https://static-docs.nocobase.com/06bd4a6b6ec499c853f0c39987f63a6a.png)
+![Содержимое сообщения](https://static-docs.nocobase.com/06bd4a6b6ec499c853f0c39987f63a6a.png)
 
-### Process Configuration
+### Конфигурация процесса
 
-The status prompt of the response message is determined by the success or failure of the process execution. If any node in the process fails to execute, the entire process is considered a failure. In this case, the message content will be returned to the client with a failure status as a notification.
+Запрос статуса ответного сообщения определяется успехом или неудачей выполнения процесса. Если какой-либо узел в процессе не выполняется, весь процесс считается неудачей. В этом случае содержимое сообщения будет возвращено клиенту со статусом неудачи в качестве уведомления.
 
-If you need to actively define a failure status within the process, you can use the "End Node" and configure it as a failure. When the process reaches this node, it will exit with a failure status, and the message will be returned to the client with a failure status.
+Если вам необходимо активно определить статус неудачи в процессе, вы можете использовать «Конечный узел» и настроить его как неудачу. Когда процесс достигнет этого узла, он завершится со статусом сбоя, и сообщение будет возвращено клиенту со статусом сбоя.
 
-If the entire process completes without any failure and reaches the end successfully, the message content will be returned to the client with a success status.
+Если весь процесс завершится без сбоев и успешно завершится, содержимое сообщения будет возвращено клиенту со статусом успеха.
 
 :::info{title=Note}
-If multiple response message nodes are defined in the process, the content of the executed nodes will be appended to an array. When the process is completed, all message content will be returned to the client together as a notification.
+Если в процессе определены несколько узлов ответных сообщений, содержимое выполненных узлов будет добавлено в массив. Когда процесс завершится, все содержимое сообщения будет возвращено клиенту вместе в качестве уведомления.
 :::
 
-### Use Cases
+### Примеры использования
 
-#### "Pre-Action Event" Workflow
+#### "Workflow" «Преддействие события»
 
-In a "Pre-Action Event" workflow, a response message can be used to provide feedback to the client upon completion of the process. For further details, refer to [Request Interception](../triggers/pre-action.md).
+В "workflow" «Преддействие события» ответное сообщение может использоваться для предоставления клиенту обратной связи после завершения процесса. Для получения дополнительных сведений см. [Перехват запроса](../triggers/pre-action.md).
 
-#### "Post-Action Event" Workflow
+#### "Workflow" "Post-Action Event"
 
-In synchronous mode within a "Post-Action Event" workflow, the response message is sent to the client after the process is completed. Unlike the "Pre-Action Event" workflow, where the result might vary, the message displayed here is always a "success" notification. This consistency occurs because the triggering operation has already been successfully executed, and the success of the linked workflow does not impact the original operation's result.
+В синхронном режиме в "workflow" "Post-Action Event" ответное сообщение отправляется клиенту после завершения процесса. В отличие от "workflow" "Pre-Action Event", где результат может отличаться, отображаемое здесь сообщение всегда является уведомлением об "успехе". Эта согласованность возникает, поскольку инициирующая операция уже была успешно выполнена, а успех связанного "workflow" не влияет на результат исходной операции.

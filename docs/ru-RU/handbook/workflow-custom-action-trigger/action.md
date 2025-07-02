@@ -1,59 +1,60 @@
-# Action Configuration
+# Конфигурация действий
 
-According to the context type configured in the workflow, the configuration of action buttons in different blocks will also differ.
+В зависимости от типа контекста, настроенного в "workflow", конфигурация кнопок действий в разных блоках также будет отличаться.
 
-## None
+## Нет
 
 > v.1.6.0+
 
-In the action panel and other data blocks, you can add a "Trigger Workflow" button:
+На панели действий и других блоках данных можно добавить кнопку «Запустить "workflow"»:
 
-![区块添加操作按钮_操作面板](https://static-docs.nocobase.com/20250215221738.png)
+![Блокировать кнопку добавления операции_панель операций](https://static-docs.nocobase.com/20250215221738.png)
 
-![区块添加操作按钮_日历](https://static-docs.nocobase.com/20250215221942.png)
+![Блокировать кнопку добавления операции_календарь](https://static-docs.nocobase.com/20250215221942.png)
 
-![区块添加操作按钮_甘特图](https://static-docs.nocobase.com/20250215221810.png)
+![Блокировать кнопку добавления операции_диаграмма Ганта](https://static-docs.nocobase.com/20250215221810.png)
 
-After added, bind the previously created workflow with context type set to "None", as an example of the button in the action panel:
+После добавления привяжите ранее созданный "workflow" с типом контекста «Нет», как пример кнопки на панели действий:
 
-![按钮绑定工作流_操作面板](https://static-docs.nocobase.com/20250215222120.png)
+![Кнопка привязки рабочего процесса_панель операций](https://static-docs.nocobase.com/20250215222120.png)
 
-![选择要绑定的工作流_无上下文](https://static-docs.nocobase.com/20250215222234.png)
+![Выберите рабочий процесс для привязки_без контекста](https://static-docs.nocobase.com/20250215222234.png)
 
-## Single record
+## Отдельная запись
 
-Within any data block, you have the option to add a "Trigger Workflow" button to the action bar for individual rows of data, whether in forms, tables, or detail pages:
+В любом блоке данных у вас есть возможность добавить кнопку «Запустить "workflow"» на панель действий для отдельных строк данных, будь то формы, таблицы или страницы с подробностями:
 
-![Add Action Button to Block_Form](https://static-docs.nocobase.com/20240509165428.png)
+![Добавить кнопку действия в Block_Form](https://static-docs.nocobase.com/20240509165428.png)
 
-![Add Action Button to Block_Table Row](https://static-docs.nocobase.com/20240509165340.png)
+![Добавить кнопку действия в строку Block_Table](https://static-docs.nocobase.com/20240509165340.png)
 
-![Add Action Button to Block_Detail](https://static-docs.nocobase.com/20240509165545.png)
+![Добавить кнопку действия в Block_Detail](https://static-docs.nocobase.com/20240509165545.png)
 
-Once the button is added, you can link it to the workflow you previously created:
+После добавления кнопки вы можете связать ее с ранее созданным "workflow":
 
-![Button Bind to Workflow](https://static-docs.nocobase.com/20240509165631.png)
+![Привязать кнопку к рабочему процессу](https://static-docs.nocobase.com/20240509165631.png)
 
-![Select Workflow to Bind](https://static-docs.nocobase.com/20240509165658.png)
+![Выбрать рабочий процесс для Bind](https://static-docs.nocobase.com/20240509165658.png)
 
-Afterward, simply clicking this button will initiate the custom action event:
+После этого простое нажатие этой кнопки инициирует событие настраиваемого действия:
 
 ![Trigger Result After Button Click](https://static-docs.nocobase.com/20240509170453.png)
 
-## Multiple records
+## Несколько записей
 
 > v.1.6.0+
 
-In the action bar of the table block, when adding a "Trigger Workflow" button, there will be an additional option to select the context type as "None" or "Multiple Records":
+В панели действий блока таблицы при добавлении кнопки «Trigger Workflow» будет дополнительная возможность выбора типа контекста как «None» или «Multiple Records»:
 
-![区块添加操作按钮_表格](https://static-docs.nocobase.com/20250215222507.png)
+![Блокировка кнопки добавления действия_table](https://static-docs.nocobase.com/20250215222507.png)
 
-When selecting "None", it is a global event, and only workflows with context type set to "None" can be bound.
+При выборе «None» это глобальное событие, и только "workflow" с типом контекста, установленным на «Нет», могут быть привязаны.
 
-When selecting "Multiple Records", you can bind workflows of the multiple records type, which can be used for batch operations after selecting multiple records (currently only supported in tables). The available workflows are limited to those configured to match the collection of the current data block:
+При выборе «Несколько записей» вы можете привязать "workflow" с типом «Несколько записей», которые могут использоваться для пакетных операций после выбора нескольких записей (в настоящее время поддерживается только в таблицах).
+Доступные "workflow" ограничены теми, которые настроены для соответствия коллекции текущего блока данных:
 
 ![20250215224436](https://static-docs.nocobase.com/20250215224436.png)
 
-When clicking the button to trigger, you must have already selected some data rows in the table, otherwise the workflow will not be triggered:
+При нажатии кнопки для запуска вы должны уже выбрать некоторые строки данных в таблице, в противном случае "workflow" не будет запущен:
 
 ![20250215224736](https://static-docs.nocobase.com/20250215224736.png)

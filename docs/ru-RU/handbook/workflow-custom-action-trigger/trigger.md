@@ -1,35 +1,35 @@
-# Trigger Configuration
+# Конфигурация триггера
 
-## Creating a Workflow
+## Создание "workflow"
 
-When setting up a workflow, begin by selecting "Custom action event":
+При настройке "workflow" начните с выбора «Событие пользовательского действия»:
 
-![Creating "Custom Operation Event" Workflow](https://static-docs.nocobase.com/20240509091820.png)
+![Создание рабочего процесса «Событие пользовательской операции»](https://static-docs.nocobase.com/20240509091820.png)
 
-## Trigger Configuration
+## Конфигурация триггера
 
-### Context Type
+### Тип контекста
 
 > v.1.6.0+
 
-Different context types determine where the workflow can be bound to buttons in different blocks:
+Различные типы контекста определяют, где "workflow" может быть привязан к кнопкам в разных блоках:
 
-* None: A global event that can be bound to action buttons in the action panel and other data blocks.
-* Single record: Can be bound to action buttons in data blocks such as table rows, forms, and details.
-* Multiple records: Can be bound to batch operation buttons in the table block.
+* None: глобальное событие, которое может быть привязано к кнопкам действий на панели действий и других блоках данных.
+* Отдельная запись: может быть привязана к кнопкам действий в блоках данных, таких как строки таблицы, формы и сведения.
+* Несколько записей: может быть привязано к кнопкам пакетной операции в блоке таблицы.
 
-![触发器配置_上下文类型](https://static-docs.nocobase.com/20250215135808.png)
+![Тип_контекста_конфигурации_триггера](https://static-docs.nocobase.com/20250215135808.png)
 
-### Collection
+### Коллекция
 
-When the context type is single record or multiple records, you'll need to choose the collection that will be associated with your data model:
+Когда тип контекста — одна запись или несколько записей, вам нужно будет выбрать коллекцию, которая будет связана с вашей моделью данных:
 
-![Trigger Configuration_Select Data Table](https://static-docs.nocobase.com/20240509150515.png)
+![Конфигурация триггера_Выбор таблицы данных](https://static-docs.nocobase.com/20240509150515.png)
 
-### Association Data to Use
+### Данные ассоциации для использования
 
-If your workflow requires the use of related data from the triggered data row, you can select the necessary deep relationship fields here:
+Если ваш "workflow" требует использования связанных данных из строки данных триггера, вы можете выбрать необходимые поля глубокой связи здесь:
 
-![Trigger Configuration_Select Data Relations to Use](https://static-docs.nocobase.com/20240509154856.png)
+![Конфигурация триггера_Выбор связей данных для использования](https://static-docs.nocobase.com/20240509154856.png)
 
-These fields will be automatically preloaded into the workflow's context once the event is triggered, making them available for use within the workflow.
+Эти поля будут автоматически предварительно загружены в контекст "workflow" после запуска события, что сделает их доступными для использования в "workflow".

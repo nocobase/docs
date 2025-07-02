@@ -1,16 +1,17 @@
-# Overview
+# Обзор
 
 <PluginInfo name="workflow-request-interceptor" link="/handbook/workflow-request-interceptor" commercial="true"></PluginInfo>
 
-The pre-operation event plugin introduces a powerful mechanism for intercepting form operation requests. This interception occurs after a form operation is submitted but before it’s processed. If the process triggered includes an "End Process" node or if any other nodes fail to execute correctly (whether due to errors or incomplete execution), the form operation will be intercepted. Otherwise, the operation will proceed as planned. When paired with the "Response Message" node, this feature allows you to configure the process to return specific response messages to the client, offering clear and relevant prompts. Pre-operation events are ideal for business validation or logic checks, enabling the approval or interception of client-submitted requests for creating, updating, or deleting records.
+Плагин событий перед операцией представляет собой мощный механизм перехвата запросов на операции формы. Этот перехват происходит после отправки операции формы, но до ее обработки. Если запущенный процесс включает узел "Завершить процесс" или если какие-либо другие узлы не выполняются правильно (из-за ошибок или неполного выполнения), операция формы будет перехвачена. 
+В противном случае операция будет выполнена по плану. В сочетании с узлом "Сообщение ответа" эта функция позволяет настроить процесс для возврата клиенту определенных ответных сообщений, предлагая четкие и релевантные подсказки. События перед операцией идеально подходят для проверки бизнес-данных или логики, позволяя утверждать или перехватывать отправленные клиентом запросы на создание, обновление или удаление записей.
 
-## User Guide
+## Руководство пользователя
 
-Using pre-operation events involves several key steps:
+Использование предоперационных событий включает несколько ключевых шагов:
 
-- [Trigger Configuration](./trigger.md)
-- [Operation Configuration](./node.md)
+- [Конфигурация триггера](./trigger.md)
+- [Конфигурация операции](./node.md)
 
-For a deeper understanding, you can explore [Advanced Usage](./advanced.md), and see how it’s applied in real scenarios by reviewing the [Examples](./example.md).
+Для более глубокого понимания вы можете изучить [Расширенное использование](./advanced.md) и увидеть, как оно применяется в реальных сценариях, просмотрев [Примеры](./example.md).
 
-If you need to integrate with an external system, refer to [External Call](./http-api.md).
+Если вам необходимо интегрироваться с внешней системой, обратитесь к [Внешнему вызову](./http-api.md).

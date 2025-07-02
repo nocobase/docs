@@ -1,87 +1,87 @@
-# HTTP Requests
+# HTTP-запросы
 
 <PluginInfo name="workflow-request" link="/handbook/workflow-request"></PluginInfo>
 
-When you need to interact with another web system, the HTTP Request node is your go-to tool. This node allows you to send an HTTP request to a specified address, complete with data in JSON or `application/x-www-form-urlencoded` formats, facilitating seamless communication with external systems.
+Когда вам нужно взаимодействовать с другой веб-системой, узел HTTP-запроса — ваш инструмент. Этот узел позволяет отправлять HTTP-запрос на указанный адрес с данными в формате JSON или `application/x-www-form-urlencoded`, что обеспечивает бесперебойную связь с внешними системами.
 
-If you're already familiar with tools like Postman, mastering the HTTP Request node will be straightforward. However, unlike traditional tools, this node leverages context variables from the current workflow, making it a powerful addition to your business process integration.
+Если вы уже знакомы с такими инструментами, как Postman, освоить узел HTTP-запроса будет просто. Однако, в отличие от традиционных инструментов, этот узел использует контекстные переменные из текущего "wowrkflow", что делает его мощным дополнением к интеграции вашего бизнес-процесса.
 
-### Installation
+### Установка
 
-This is a built-in plugin, so there's no need for installation.
+Это встроенный плагин, поэтому установка не требуется.
 
-### User Guide
+### Руководство пользователя
 
-#### Creating a Node
+#### Создание узла
 
-In the workflow configuration interface, click the plus (“+”) button within your process to add an "HTTP Request" node:
+В интерфейсе конфигурации "worklow" нажмите кнопку «плюс» («+») в вашем процессе, чтобы добавить узел «HTTP Request»:
 
 ![HTTP Request_Add](https://static-docs.nocobase.com/46f2a6fc3f6869c80f8fbd362a54e644.png)
 
-#### Node Configuration
+#### Конфигурация узла
 
 ![HTTP Request Node_Configuration](https://static-docs.nocobase.com/2fcb29af66b892fa704add52e2974a52.png)
 
-**Request Method**
+**Метод запроса**
 
-Choose from the available HTTP request methods: `GET`, `POST`, `PUT`, `PATCH`, and `DELETE`.
+Выберите из доступных методов HTTP-запроса: `GET`, `POST`, `PUT`, `PATCH` и `DELETE`.
 
-**Request URL**
+**URL запроса**
 
-Specify the URL of the HTTP service, including the protocol (`http://` or `https://`). For security, `https://` is recommended.
+Укажите URL службы HTTP, включая протокол (`http://` или `https://`). Для безопасности рекомендуется `https://`.
 
-**Request Data Format**
+**Формат данных запроса**
 
-This defines the `Content-Type` in the request header, with options for `application/json` and `application/x-www-form-urlencoded`.
+Это определяет `Content-Type` в заголовке запроса с параметрами для `application/json` и `application/x-www-form-urlencoded`.
 
-**Request Header Configuration**
+**Конфигурация заголовка запроса**
 
-Set key-value pairs for the request headers, with values that can dynamically reference variables from the workflow context.
-
-:::info{title=Note}
-The `Content-Type` header is predetermined by the request data format setting. Manual input here will not override this configuration.
-:::
-
-**Request Parameters**
-
-Define key-value pairs for the query string. Values can dynamically utilize variables from the workflow context.
-
-**Request Body**
-
-Currently, the request body supports only standard JSON format. Use the variable button in the upper-right corner of the text editor to insert context variables.
+Установите пары ключ-значение для заголовков запроса со значениями, которые могут динамически ссылаться на переменные из контекста "workflow".
 
 :::info{title=Note}
-Ensure that variables within JSON are used as strings, for example: `"a": "{{$context.data.a}}"`.
+Заголовок `Content-Type` предопределен настройкой формата данных запроса. Ручной ввод здесь не переопределит эту конфигурацию.
 :::
 
-**Timeout Settings**
+**Параметры запроса**
 
-If the request takes too long to respond, the timeout setting will cancel it, leading to the premature termination of the current workflow with a failure status.
+Определите пары ключ-значение для строки запроса. Значения могут динамически использовать переменные из контекста "workflow".
 
-**Ignore Failure**
+**Тело запроса**
 
-The request node considers any HTTP status code between `200` and `299` as a success. Codes outside this range are deemed failures. If you select the "Ignore failed requests and continue workflow" option, the workflow will proceed with subsequent nodes, even if the request fails.
+В настоящее время тело запроса поддерживает только стандартный формат JSON. Используйте кнопку переменной в правом верхнем углу текстового редактора для вставки контекстных переменных.
 
-### Using Response Results
+:::info{title=Note}
+Убедитесь, что переменные в JSON используются как строки, например: `"a": "{{$context.data.a}}"`.
+:::
 
-The HTTP request's response results can be parsed using the [JSON Query](./plugins/json-query.md) node, enabling further use in subsequent workflow nodes.
+**Настройки тайм-аута**
 
-Starting from version `v1.0.0-alpha.16`, the request node’s response includes three components that can be used as variables:
+Если запрос слишком долго не отвечает, настройка тайм-аута отменит его, что приведет к преждевременному завершению текущего "workflow" со статусом сбоя.
 
-- Status Code
-- Response Headers
-- Data
+**Игнорировать сбой**
+
+Узел запроса считает любой код состояния HTTP между `200` и `299` успешным. Коды за пределами этого диапазона считаются сбоями. Если вы выберете опцию «Игнорировать сбойные запросы и продолжить "worflow"», "workflow" продолжится с последующими узлами, даже если запрос не будет выполнен.
+
+### Использование результатов ответа
+
+Результаты ответа HTTP-запроса можно проанализировать с помощью узла [JSON Query](./plugins/json-query.md), что позволяет использовать их в последующих узлах "workflow".
+
+Начиная с версии `v1.0.0-alpha.16`, ответ узла запроса включает три компонента, которые можно использовать в качестве переменных:
+
+- Код состояния
+- Заголовки ответа
+- Данные
 
 ![HTTP Request Node_Response Result Usage](https://static-docs.nocobase.com/20240529110610.png)
 
-The response status code is a standard numerical HTTP status code, such as `200` or `403`, as provided by the service.
+Код состояния ответа — это стандартный числовой код состояния HTTP, например `200` или `403`, предоставляемый службой.
 
-Response headers are in JSON format, and the response data—also in JSON—must be parsed using the JSON node before being utilized.
+Заголовки ответа имеют формат JSON, а данные ответа — также в формате JSON — должны быть проанализированы с помощью узла JSON перед использованием.
 
-### Example
+### Пример
 
-For instance, you can configure the request node to interface with a cloud platform for sending notification SMS. Here’s how you would set up the Alibaba Cloud SMS API (with parameters adapted according to the relevant documentation):
+Например, вы можете настроить узел запроса для взаимодействия с облачной платформой для отправки уведомлений SMS. Вот как вы настроите API SMS Alibaba Cloud (с параметрами, адаптированными в соответствии с соответствующей документацией):
 
 ![HTTP Request Node_Configuration](https://static-docs.nocobase.com/20240515124004.png)
 
-When the workflow triggers this node, it will call Alibaba Cloud’s SMS API based on the configuration. If successful, a text message will be sent via the cloud SMS service.
+Когда "workflow" запускает этот узел, он вызывает API SMS Alibaba Cloud на основе конфигурации. В случае успеха текстовое сообщение будет отправлено через облачную службу SMS.

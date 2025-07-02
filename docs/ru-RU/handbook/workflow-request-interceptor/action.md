@@ -1,13 +1,13 @@
-# Action Configuration
+# Конфигурация действия
 
-If you set the trigger configuration to "Triggered only when a form bound to this workflow is submitted", you must return to the form interface and bind the workflow to the appropriate action button:
+Если вы установили конфигурацию триггера на «Срабатывает только при отправке формы, привязанной к этому "workflow"», вам необходимо вернуться в интерфейс формы и привязать "workflow" к соответствующей кнопке действия:
 
-![Binding Workflow to New Order](https://static-docs.nocobase.com/bae3931e60f9bcc51bbc222e40e891e5.png)
+![Привязка "workflow" к новому заказу](https://static-docs.nocobase.com/bae3931e60f9bcc51bbc222e40e891e5.png)
 
-In the workflow binding configuration, select the relevant workflow. Typically, choosing "Entire Form Data" as the context for triggering data is sufficient:
+В конфигурации привязки "workflow" выберите соответствующий "workflow". Обычно достаточно выбрать «Entire Form Data» в качестве контекста для запуска данных:
 
-![Select Workflow to Bind](https://static-docs.nocobase.com/78e2f023029bd570c91ee4cd19b7a0a7.png)
+![Выберите "workflow" для привязки](https://static-docs.nocobase.com/78e2f023029bd570c91ee4cd19b7a0a7.png)
 
-:::info{title=Note}
-Currently, buttons bound to pre-action events only support the "Submit" (or "Save"), "Update records," and "Delete" buttons in forms for new entries or updates. The "Trigger Workflow" button is not supported (this button can only be bound to post-action events).
+:::info{title=Примечание}
+В настоящее время кнопки, привязанные к событиям до действия, поддерживают только кнопки «Отправить» (или «Сохранить»), «Обновить записи» и «Удалить» в формах для новых записей или обновлений. Кнопка «Trigger Workflow» не поддерживается (эту кнопку можно привязать только к событиям после действия).
 :::

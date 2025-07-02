@@ -1,42 +1,42 @@
-# Advanced Understanding
+# Расширенное понимание
 
-**Conditions for Interception**
+**Условия перехвата**
 
-In "pre-action events," two specific conditions may cause the corresponding operation to be intercepted:
+В «событиях до действия» два конкретных условия могут привести к перехвату соответствующей операции:
 
-1. The process reaches an "End Process" node. As explained earlier, if the triggering data does not meet the conditions set in the "Condition" node, the process will follow the "No" branch, executing the "End Process" node. This causes the process to terminate, and the requested operation is intercepted.
-2. Any node within the process fails to execute—whether due to an error or other exceptional circumstances. In such cases, the process concludes with the corresponding status, and the operation is intercepted. For instance, if an "HTTP Request" is used to fetch external data and the request fails, the process ends in a failed state, simultaneously intercepting the corresponding operation request.
+1. Процесс достигает узла «Завершить процесс». Как объяснялось ранее, если данные запуска не соответствуют условиям, установленным в узле «Условие», процесс следует по ветки «Нет», выполняя узел «Завершить процесс». Это приводит к завершению процесса, а запрошенная операция перехватывается.
+2. Любой узел в процессе не может быть выполнен — будь то из-за ошибки или других исключительных обстоятельств. В таких случаях процесс завершается с соответствующим статусом, и операция перехватывается. Например, если «Запрос HTTP» используется для получения внешних данных и запрос не выполняется, процесс завершается в состоянии сбоя, одновременно перехватывая соответствующий запрос операции.
 
-Once these interception conditions are met, the operation in question is halted entirely. For example, if an order submission is intercepted, no corresponding order data will be generated.
+После выполнения этих условий перехвата рассматриваемая операция полностью останавливается. Например, если перехвачена отправка заказа, соответствующие данные заказа не будут сгенерированы.
 
-**Parameters for Corresponding Operations**
+**Параметры для соответствующих операций**
 
-In "pre-action event" workflows, various data points are available as variables within the process, depending on the operation:
+В "workflow" «событий до действия» различные точки данных доступны как переменные внутри процесса в зависимости от операции:
 
-| Operation Type \\ Variable | "User acted" | "Role of user acted" | Operation Parameter: "ID" | Parameter: "Values submitted" |
+| Тип операции \\ Переменная | «Пользователь действовал» | «Роль пользователя выполнена» | Параметр операции: «ID» | Параметр: «Отправленные значения» |
 | -------------------------- | ---------- | -------------------------- | ------------------------- | -------------------------------------------- |
-| Create a record             | ✓          | ✓                          | -                         | ✓                                              |
-| Update a record             | ✓          | ✓                          | ✓                         | ✓                                              |
-| Delete one or more records  | ✓          | ✓                          | ✓                         | -                                              |
+| Создать запись             | ✓          | ✓                          | -                         | ✓                                              |
+| Обновить запись             | ✓          | ✓                          | ✓                         | ✓                                              |
+| Удалить одну или несколько записей  | ✓          | ✓                          | ✓                         | -                                              |
 
 :::info{title=Tip}
-The variables "Trigger variables / Parameter / Values submitted" in pre-action events are not the actual data stored in the database but the parameters submitted with the operation. To retrieve actual database data, you must use the "Query record" node within the process.
+Переменные "Переменные триггера / Параметр / Отправленные значения" в событиях до действия — это не фактические данные, хранящиеся в базе данных, а параметры, отправленные с операцией. Чтобы получить фактические данные базы данных, необходимо использовать узел "Запрос записи" в процессе.
 
-Additionally, for delete operations, when dealing with a single record, the "ID" in the operation parameters is a simple value. For multiple records, however, the "ID" is an array.
+Кроме того, для операций удаления при работе с одной записью "ID" в параметрах операции — это простое значение. Однако для нескольких записей "ID" — это массив.
 :::
 
-**Response Messages**
+**Ответные сообщения**
 
-Once the trigger is configured, you can define the relevant logic within the workflow. Typically, the "Condition" node's branching mechanism is used to decide whether to "End Process" based on specific business conditions, returning a pre-defined "Response Message":
+После настройки триггера можно определить соответствующую логику в "workflow". Обычно механизм ветвления узла «Условие» используется для принятия решения о «Завершении процесса» на основе определенных бизнес-условий, возвращая предопределенное «Ответное сообщение»:
 
-![Interception Process Configuration](https://static-docs.nocobase.com/cfddda5d8012fd3d0ca09f04ea610539.png)
+![Конфигурация процесса перехвата](https://static-docs.nocobase.com/cfddda5d8012fd3d0ca09f04ea610539.png)
 
-At this stage, the workflow configuration is complete. You can test it by submitting data that does not meet the configured conditions, triggering the interception logic. This will result in the return of a response message:
+На этом этапе конфигурация "workflow" завершена. Вы можете проверить ее, отправив данные, которые не соответствуют настроенным условиям, что приведет к запуску логики перехвата. Это приведет к возврату ответного сообщения:
 
-![Error Response Message](https://static-docs.nocobase.com/06bd4a6b6ec499c853f0c39987f63a6a.png)
+![Сообщение об ошибке](https://static-docs.nocobase.com/06bd4a6b6ec499c853f0c39987f63a6a.png)
 
-**Response Message Status**
+**Состояние ответного сообщения**
 
-If the "End Process" node is set to exit with a "Success" status and the process reaches this node, the operation request will still be intercepted. However, the returned response message will display a "Success" (instead of "Error") status:
+Если узел «Завершить процесс» настроен на выход со статусом «Успешно» и процесс достигает этого узла, запрос операции все равно будет перехвачен. Однако возвращенное ответное сообщение будет отображать статус «Успешно» (вместо «Ошибка»):
 
-![Success Status Response Message](https://static-docs.nocobase.com/9559bbf56067144759451294b18c790e.png)
+![Сообщение об успешном статусе](https://static-docs.nocobase.com/9559bbf56067144759451294b18c790e.png)

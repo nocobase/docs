@@ -11,7 +11,6 @@ NocoBase 有很多 `Add block` 按钮用于向界面添加区块，但是目前�
 本实例会基于 ant-design 的 [Carousel](https://ant.design/components/carousel) 组件创建 `Carousel` 区块，并将其添加到 `Page`、`Table` 以及移动端的 `Add block` 中。
 
 本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-block-carousel) 中查看。
-
 <video width="100%" controls="">
   <source src="https://static-docs.nocobase.com/20240603155655_rec_.mp4" type="video/mp4" />
 </video>

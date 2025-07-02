@@ -1,114 +1,114 @@
-# Approval Node Configuration
+# Конфигурация узла утверждения
 
-In an approval workflow, a dedicated "Approval" node is required to configure the logic for approvers to handle (approve, reject, or return) the initiated approval request. This "Approval" node is exclusively used within approval workflows.
-
-:::info{title=Tip}
-**Difference from the general "Manual" node:** The general "Manual" node is versatile and can be used across various workflows for manual data input, decision-making on process continuation, and other scenarios. In contrast, the "Approval" Node is specialized for approval workflows and is not applicable in other types of workflows.
-:::
-
-## Creating a Node
-
-To create an "Approval" node, click the plus sign ("+") in the workflow. Then, select one of the available pass modes to configure the approval node:
-
-![Approval Node Creation](https://static-docs.nocobase.com/f15d61208a3918d005cd2031fc9b6ce7.png)
-
-## Pass Modes
-
-There are two pass modes available:
-
-1.  Direct Pass Mode: This mode is ideal for simpler workflows, where the outcome at the approval node determines whether the process ends. If the request is not approved, the process exits immediately.
-
-    ![Approval Node Pass Mode - Direct Pass Mode](https://static-docs.nocobase.com/a9d446a186f61c546607cf1c2534b287.png)
-
-2.  Branching Mode: This mode is typically used for more complex workflows. After the approval node produces a result, subsequent nodes can execute within the resulting branches.
-
-    ![Approval Node Pass Mode - Branching Mode](https://static-docs.nocobase.com/57dc6a8907f3bb02fb28c354c241e4e5.png)
-
-    If the node is configured with a "Return" operation, a "Return" branch will be created, and the process will forcibly exit after the return branch is completed.
-
-    Once this node is "approved," the process continues through both the pass branch and the subsequent workflow. Following a "reject" operation, the default setting allows the process to continue through the subsequent workflow, although you can configure the node to end the process after executing the rejection branch.
+В "workflow" утверждения требуется специальный узел «Утверждение» для настройки логики обработки (утверждения, отклонения или возврата) инициированного запроса на утверждение утверждающими. Этот узел «Утверждение» используется исключительно в "workflow" утверждения.
 
 :::info{title=Tip}
-The pass mode cannot be modified once the node is created.
+**Отличие от общего узла «Ручное»:** Общий узел «Ручное» универсален и может использоваться в различных рабочих процессах для ручного ввода данных, принятия решений о продолжении процесса и других сценариях. Напротив, узел «Утверждение» специализирован для "workflow" утверждения и не применим в других типах "workflow".
 :::
 
-## Approvers
+## Создание узла
 
-Approvers are the users responsible for the approval actions at the node. They can consist of one or more users, selected from a static list or a dynamic value specified by a variable.
+Чтобы создать узел «Утверждение», щелкните знак «плюс» («+») в "workflow". Затем выберите один из доступных режимов прохода для настройки узла утверждения:
+
+![Создание узла утверждения](https://static-docs.nocobase.com/f15d61208a3918d005cd2031fc9b6ce7.png)
+
+## Режимы прохода
+
+Доступны два режима прохода:
+
+1. Режим прямого прохода: этот режим идеально подходит для более простых "Workflow", где результат на узле утверждения определяет, завершается ли процесс. Если запрос не одобрен, процесс немедленно завершается.
+
+![Режим прохождения узла утверждения - режим прямого прохода](https://static-docs.nocobase.com/a9d446a186f61c546607cf1c2534b287.png)
+
+2. Режим ветвления: этот режим обычно используется для более сложных рабочих процессов. После того, как узел утверждения выдает результат, последующие узлы могут выполняться в полученных ветках.
+
+![Режим пропуска узла утверждения — режим ветвления](https://static-docs.nocobase.com/57dc6a8907f3bb02fb28c354c241e4e5.png)
+
+Если узел настроен с операцией «Возврат», будет создана ветка «Возврат», и процесс принудительно завершится после завершения ветки возврата.
+
+После «одобрения» этого узла процесс продолжается как через ветку пропуска, так и через последующий "workflow". После операции «отклонения» настройка по умолчанию позволяет процессу продолжаться через последующий "workflow", хотя вы можете настроить узел на завершение процесса после выполнения ветки отклонения.
+
+:::info{title=Tip}
+Режим пропуска нельзя изменить после создания узла.
+:::
+
+## Утверждающие
+
+Утверждающие — это пользователи, ответственные за действия по утверждению на узле. Они могут состоять из одного или нескольких пользователей, выбранных из статического списка или динамического значения, указанного переменной.
 
 ![Approval Node_Approvers](https://static-docs.nocobase.com/29c64297d577b9ca9457b1d7ac62287d.png)
 
-When using a variable, only primary keys or foreign keys from user data in the context and node results can be selected. If the selected variable is an array (in cases of many-to-many relationships), each user in the array will be merged into the overall approver collection.
+При использовании переменной можно выбрать только первичные ключи или внешние ключи из данных пользователя в контексте и результатах узла. Если выбранная переменная является массивом (в случаях отношений «многие ко многим»), каждый пользователь в массиве будет объединен в общую коллекцию утверждающих.
 
-## Negotiation Modes
+## Режимы согласования
 
-If there is only one approver (including cases where multiple variables are deduplicated), the approval will be handled solely by that user, regardless of the negotiation mode chosen.
+Если есть только один утверждающий (включая случаи, когда дедуплицируются несколько переменных), утверждение будет обрабатываться исключительно этим пользователем, независимо от выбранного режима согласования.
 
-For multiple approvers, the selected negotiation mode determines the handling method:
+Для нескольких утверждающих выбранный режим согласования определяет метод обработки:
 
-1. Or: The node passes with the approval of any one person; all must reject for the node to be rejected.
-2. And: The node passes only if all approvers approve; a single rejection results in rejection.
-3. Voting: The node passes if a majority (as specified) of approvers approve; otherwise, the node is rejected.
+1. Или: узел проходит с одобрения любого одного человека; все должны отклонить, чтобы узел был отклонен.
+2. И: узел проходит, только если все утверждающие одобряют; одно отклонение приводит к отклонению.
+3. Голосование: узел проходит, если большинство (как указано) утверждающих одобряет; в противном случае узел отклоняется.
 
-For the return operation, if any user in the approver collection opts for a return, the node will directly exit the workflow.
+Для операции возврата, если любой пользователь в коллекции утверждающих выбирает возврат, узел напрямую выходит из "workflow".
 
-## Processing Order
+## Порядок обработки
 
-For multiple approvers, the processing order dictates the sequence of actions:
+Для нескольких утверждающих порядок обработки определяет последовательность действий:
 
-1. Parallelly: All approvers can act in any order, with no sequence required.
-2. Sequentially: Approvers act in the order defined in the approver collection, where each subsequent user can only proceed after the previous one has submitted their decision.
+1. Параллельно: все утверждающие могут действовать в любом порядке, последовательность не требуется.
+2. Последовательно: утверждающие действуют в порядке, определенном в коллекции утверждающих, где каждый последующий пользователь может продолжить работу только после того, как предыдущий представил свое решение.
 
-Regardless of whether "Sequentially" processing is set, the results generated will follow the rules outlined in the "Negotiation Modes" section, with the node completing execution once the conditions are met.
+Независимо от того, установлена ли обработка «Последовательно», сгенерированные результаты будут следовать правилам, изложенным в разделе «Режимы переговоров», при этом узел завершает выполнение после выполнения условий.
 
-## Exit Workflow After Rejection Branch Completion
+## Выход из рабочего процесса после завершения ветки отклонения
 
-When "Branch Mode" is set for "Pass Mode," you can opt to exit the workflow after the rejection branch is completed. If selected, a "✗" symbol will appear at the end of the rejection branch, indicating that no further nodes will be executed after this branch concludes:
+Когда «Режим ветвления» установлен на «Режим пропуска», вы можете выбрать выход из "workflow" после завершения ветки отклонения. Если выбрано, в конце ветки отклонения появится символ «✗», указывающий, что никакие дальнейшие узлы не будут выполняться после завершения этой ветки:
 
-![Exit After Rejection](https://static-docs.nocobase.com/1e740df93c128fb6fe54bf85a740e683.png)
+![Выход после отклонения](https://static-docs.nocobase.com/1e740df93c128fb6fe54bf85a740e683.png)
 
-## Approver Interface Configuration
+## Конфигурация интерфейса утверждающего
 
-The approver interface configuration provides the interface for approvers when the workflow reaches this node. Click the configuration button to open the settings window:
+Конфигурация интерфейса утверждающего предоставляет интерфейс для утверждающих, когда "workflow" достигает этого узла. Нажмите кнопку конфигурации, чтобы открыть окно настроек:
 
-![Approver Interface Configuration Pop-up](https://static-docs.nocobase.com/2c321ae164b436f1c572305ff27cc9dd.png)
+![Всплывающее окно конфигурации интерфейса утверждающего](https://static-docs.nocobase.com/2c321ae164b436f1c572305ff27cc9dd.png)
 
-In this configuration window, you can add blocks such as approval submission details, operation bars, and custom prompt text:
+В этом окне конфигурации можно добавлять блоки, такие как сведения об отправке утверждения, панели операций и настраиваемый текст подсказки:
 
-![Add Block in Interface Configuration](https://static-docs.nocobase.com/9f8f11926e935ad8f8fbeec368edebfe.png)
+![Добавить блок в конфигурацию интерфейса](https://static-docs.nocobase.com/9f8f11926e935ad8f8fbeec368edebfe.png)
 
-### Details Block
+### Блок подробностей
 
-The approval content details block includes the data submitted by the initiator. Similar to a standard data block, you can freely add field components from the data table and arrange them to organize the content that the approver needs to review:
+Блок подробностей содержимого утверждения включает данные, отправленные инициатором. Подобно стандартному блоку данных, вы можете свободно добавлять компоненты полей из таблицы данных и упорядочивать их для организации содержимого, которое должен просмотреть утверждающий:
 
-![Details Block in Interface Configuration](https://static-docs.nocobase.com/1140ec13caeea1b364d12e057720a29c.png)
+![Блок сведений в конфигурации интерфейса](https://static-docs.nocobase.com/1140ec13caeea1b364d12e057720a29c.png)
 
-### Form Block
+### Блок формы
 
-The operation form block can include buttons supported by this node, such as "Approve," "Reject," "Return," "Reassign," and "Add Approver":
+Блок формы операции может включать кнопки, поддерживаемые этим узлом, такие как «Утвердить», «Отклонить», «Вернуть», «Переназначить» и «Добавить утверждающего»:
 
-![Operation Form Block in Interface Configuration](https://static-docs.nocobase.com/20241226232013.png)
+![Блок формы операции в конфигурации интерфейса](https://static-docs.nocobase.com/20241226232013.png)
 
-Besides, fields that can be modified by the approver can also be added to the operation form. These fields will be displayed in the operation form when the approver processes the approval. The approver can modify the values of these fields, and after submission, the data used for approval and the corresponding data snapshot in the approval process will be updated simultaneously.
+Кроме того, в форму операции можно добавлять поля, которые может изменять утверждающий. Эти поля будут отображаться в форме операции, когда утверждающий обрабатывает утверждение. Утверждающий может изменять значения этих полей, и после отправки данные, используемые для утверждения, и соответствующий снимок данных в процессе утверждения будут обновлены одновременно.
 
 ![approval_node_ui_configuration_action_form_modify_fields](https://static-docs.nocobase.com/20241226232124.png)
 
-### "Approve," "Reject," and "Return"
+### "Утвердить", "Отклонить" и "Вернуть"
 
-Among the approval operation buttons, "Approve," "Reject," and "Return" are decisive actions. Once submitted, the approver's task at this node is completed. Additional fields to be filled out during submission, such as "Comments," can be added in the "Processing Configuration" pop-up for each button.
+Среди кнопок операций утверждения "Утвердить", "Отклонить" и "Вернуть" являются решающими действиями. После отправки задача утверждающего на этом узле завершается. Дополнительные поля для заполнения во время отправки, такие как "Комментарии", можно добавить во всплывающее окно "Конфигурация обработки" для каждой кнопки.
 
-![Operation Form Processing Configuration](https://static-docs.nocobase.com/20241226232225.png)
+![Конфигурация обработки формы операции](https://static-docs.nocobase.com/20241226232225.png)
 
-### "Reassign" and "Add Approver"
+### «Переназначить» и «Добавить утверждающего»
 
-"Reassign" and "Add Approver" are non-decisive operations used to dynamically adjust the approvers in the approval workflow. "Reassign" transfers the current user's approval task to another user, while "Add Approver" inserts an additional approver before or after the current approver, allowing the new approver to continue the approval process.
+«Переназначить» и «Добавить утверждающего» — это нерешающие операции, используемые для динамической корректировки утверждающих в "workflow" утверждения. «Переназначить» передает задачу утверждения текущего пользователя другому пользователю, тогда как «Добавить утверждающего» вставляет дополнительного утверждающего до или после текущего утверждающего, позволяя новому утверждающему продолжить процесс утверждения.
 
-After enabling the "Reassign" or "Add Approver" operation buttons, you need to set the "Assignable User Range" in the button's configuration menu to define the scope of users who can be assigned as new approvers:
+После включения кнопок операций «Переназначить» или «Добавить утверждающего» необходимо установить «Назначаемый диапазон пользователей» в меню конфигурации кнопки, чтобы определить область пользователей, которые могут быть назначены в качестве новых утверждающих:
 
-![Operation Form Assignable User Range](https://static-docs.nocobase.com/20241226232321.png)
+![Форма операции Назначаемый диапазон пользователей](https://static-docs.nocobase.com/20241226232321.png)
 
-Similar to the node's original approver configuration, the assignable user range can be directly selected approvers or based on query conditions from the user table. The final result will be a merged collection, excluding users already in the approver collection.
+Подобно исходной конфигурации утверждающего узла, назначаемый диапазон пользователей может быть напрямую выбран утверждающими или на основе условий запроса из таблицы пользователей. Конечным результатом будет объединенная коллекция, исключающая пользователей, уже находящихся в коллекции утверждающих.
 
-:::warning{title=Important}
-If you enable or disable an operation button, or modify the assignable user range, ensure to save the node configuration after closing the interface configuration window. Otherwise, the changes to the operation button will not take effect.
+:::warning{title=Важно}
+Если вы включаете или отключаете кнопку операции или изменяете назначаемый диапазон пользователей, обязательно сохраните конфигурацию узла после закрытия окна конфигурации интерфейса. В противном случае изменения кнопки операции не вступят в силу.
 :::

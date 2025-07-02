@@ -1,129 +1,131 @@
-# Date Calculation
+# Расчет даты
 
 <PluginInfo name="workflow-date-calculation" link="/handbook/workflow-date-calculation" commercial="true"></PluginInfo>
 
-The Date Calculation node offers a set of nine powerful functions, enabling operations such as adding or subtracting time periods, formatting time strings, and converting duration units. Each function is designed with specific input and output value types, and can seamlessly integrate the results from other nodes as parameter variables. By chaining these functions through a calculation pipeline, you can achieve the desired output with precision.
+Узел расчета даты предлагает набор из девяти мощных функций, позволяющих выполнять такие операции, как добавление или вычитание периодов времени, форматирование строк времени и преобразование единиц длительности. Каждая функция разработана с определенными типами входных и выходных значений и может легко интегрировать результаты из других узлов в качестве переменных параметров. 
+Объединяя эти функции через конвейер вычислений, вы можете добиться желаемого результата с точностью.
 
-## User Manual
+## Руководство пользователя
 
-### Creating a Node
+### Создание узла
 
-To add a "Date Calculation" node in the workflow configuration interface, simply click the plus (“+”) button within the process:
+Чтобы добавить узел «Вычисление даты» в интерфейсе конфигурации "workflow", просто нажмите кнопку «плюс» («+») в процессе:
 
-![Create Node for Date Calculation](https://static-docs.nocobase.com/[图片].png)
+![Создать узел для вычисления даты](https://static-docs.nocobase.com/[图片].png)
 
-### Node Configuration
+### Конфигурация узла
 
-![Node Configuration for Date Calculation](https://static-docs.nocobase.com/20240817184423.png)
+![Конфигурация узла для вычисления даты](https://static-docs.nocobase.com/20240817184423.png)
 
-#### Input Value
+#### Входное значение
 
-Input values can be either variables or date constants. Variables might include data that triggers the workflow or results from upstream nodes. Constants can be any selected date.
+Входные значения могут быть как переменными, так и константами даты. Переменные могут включать данные, которые запускают рабочий процесс или результаты из узлов выше по течению. Константы могут быть любой выбранной датой.
 
-#### Input Value Type
+#### Тип входного значения
+  
+Тип входного значения определяет, как будет обрабатываться вход, и делится на два типа:
 
-The input value type determines how the input will be processed and is categorized into two types:
+* Тип даты: сюда входят любые входные данные, которые можно преобразовать в формат даты и времени, например числовые временные метки или строки, представляющие время.
 
-* Date Type: This includes any input that can be converted into a date-time format, such as numeric timestamps or strings representing time.
-* Number Type: The input value type influences the selection of time calculation steps, so it’s crucial to choose the correct type.
+* Тип числа: тип входного значения влияет на выбор шагов расчета времени, поэтому крайне важно выбрать правильный тип.
 
-#### Calculation Steps
+#### Шаги расчета
 
-Each calculation step consists of a specific function and its parameter configuration. The pipeline design allows the output of one function to feed directly into the next, enabling a sequence of time calculations and conversions.
+Каждый шаг расчета состоит из определенной функции и ее конфигурации параметров. Конструкция конвейера позволяет передавать выходные данные одной функции непосредственно в следующую, обеспечивая последовательность вычислений и преобразований времени.
 
-The output type after each step is fixed, which in turn determines the functions available for the next step. If the types are compatible, the calculation continues; if not, the result of the current step becomes the final output of the node.
+Тип выходных данных после каждого шага фиксирован, что, в свою очередь, определяет функции, доступные для следующего шага. Если типы совместимы, расчет продолжается; если нет, результат текущего шага становится конечным выходом узла.
 
-### Calculation Functions
+### Функции расчета
 
-#### Add a range
+#### Добавить диапазон
 
-- Accepted Input Value Type: Date
-- Parameters:
-  - The amount to add, which can be a numeric value or a variable from within the node.
-  - The time unit (e.g., days, hours).
-- Output Value Type: Date
-- Example: If the input value is `2024-7-15 00:00:00`, the amount is `1`, and the unit is "days," the output will be `2024-7-16 00:00:00`.
+- Допустимый тип входного значения: Дата
+- Параметры:
+ - Сумма для прибавления, которая может быть числовым значением или переменной внутри узла.
+ - Единица времени (например, дни, часы).
+- Тип выходного значения: Дата
+- Пример: если входное значение равно `2024-7-15 00:00:00`, сумма равна `1`, а единица измерения — «дни», выход будет равен `2024-7-16 00:00:00`.
 
-#### Subtract a range
+#### Вычесть диапазон
 
-- Accepted Input Value Type: Date
-- Parameters:
-  - The amount to subtract, which can be a numeric value or a variable from within the node.
-  - The time unit (e.g., days, hours).
-- Output Value Type: Date
-- Example: If the input value is `2024-7-15 00:00:00`, the amount is `1`, and the unit is "days," the output will be `2024-7-14 00:00:00`.
+- Допустимый тип входного значения: Дата
+- Параметры:
+ - Сумма для вычитания, которая может быть числовым значением или переменной внутри узла.
+ - Единица времени (например, дни, часы).
+- Тип выходного значения: Дата
+- Пример: если входное значение равно `2024-7-15 00:00:00`, сумма равна `1`, а единица измерения - "дни", выходное значение будет равно `2024-7-14 00:00:00`.
 
-#### Get difference with another data value
+#### Получить разницу с другим значением данных
 
-- Accepted Input Value Type: Date
-- Parameters:
-  - The date for comparison, which can be a constant or a variable in the workflow context.
-  - The time unit (e.g., days, hours).
-  - Whether to take the absolute value.
-  - Rounding options: retain decimals, round off, round up, or round down.
-- Output Value Type: Numeric
-- Example: If the input value is `2024-7-15 00:00:00`, and you compare it with `2024-7-16 06:00:00`, using "days" as the unit, without taking the absolute value and retaining decimals, the output will be `-1.25`.
+- Принятый тип входного значения: Дата
+- Параметры:
+ - Дата для сравнения, которая может быть константой или переменной в контексте "workflow".
+ - Единица времени (например, дни, часы).
+ - Следует ли брать абсолютное значение.
+- Параметры округления: сохранить десятичные дроби, округлить, округлить в большую или меньшую сторону.
+- Тип выходного значения: числовой
+- Пример: если входное значение равно `2024-7-15 00:00:00`, и вы сравниваете его с `2024-7-16 06:00:00`, используя в качестве единицы измерения "дни", не принимая абсолютное значение и сохраняя десятичные знаки, выход будет равен `-1,25`.
 
-:::info{title=Note}
-If both absolute value and rounding are selected, the absolute value is applied first, followed by rounding.
+:::info{title=Примечание}
+Если выбраны и абсолютное значение, и округление, сначала применяется абсолютное значение, а затем округление.
 :::
 
-#### Get value on specific unit of input date
+#### Получить значение в определенной единице измерения входной даты
 
-- Accepted Input Value Type: Date
-- Parameters:
-  - The time unit (e.g., days, hours).
-- Output Value Type: Numeric
-- Example: If the input value is `2024-7-15 00:00:00` and the unit is "days," the output will be `15`.
+- Допустимый тип входного значения: Дата
+- Параметры:
+ - Единица времени (например, дни, часы).
+- Тип выходного значения: числовой
+- Пример: если входное значение равно `2024-7-15 00:00:00`, а единица измерения - "дни", выход будет равен `15`.
 
-#### Set to time of unit start
+#### Установить время начала блока
 
-- Accepted Input Value Type: Date
-- Parameters:
-  - The time unit (e.g., days, hours).
-- Output Value Type: Date
-- Example: If the input value is `2024-7-15 14:26:30` and the unit is "days," the output will be `2024-7-15 00:00:00`.
+- Принятый тип входного значения: Дата
+- Параметры:
+- Единица времени (например, дни, часы).
+- Тип выходного значения: Дата
+- Пример: Если входное значение равно `2024-7-15 14:26:30`, а единица измерения — «дни», выход будет равен `2024-7-15 00:00:00`.
 
-#### Set to time of unit end
+#### Установить время окончания блока
 
-- Accepted Input Value Type: Date
-- Parameters:
-  - The time unit (e.g., days, hours).
-- Output Value Type: Date
-- Example: If the input value is `2024-7-15 14:26:30` and the unit is "days," the output will be `2024-7-15 23:59:59`.
+- Принятый тип входного значения: Дата
+- Параметры:
+- Единица времени (например, дни, часы).
+- Тип выходного значения: Дата
+- Пример: Если входное значение равно `2024-7-15 14:26:30`, а единица измерения — «дни», выход будет равен `2024-7-15 23:59:59`.
 
-#### Is leap year
+#### Високосный год
 
-- Accepted Input Value Type: Date
-- Parameters: None
-- Output Value Type: Boolean
-- Example: If the input value is `2024-7-15 14:26:30`, the output will be `true`.
+- Допустимый тип входного значения: Дата
+- Параметры: Нет
+- Выходной тип значения: Логический
+- Пример: Если входное значение равно `2024-7-15 14:26:30`, выходное значение будет `true`.
 
-#### Format to String
+#### Формат в строку
 
-- Accepted Input Value Type: Date
-- Parameters:
-  - The format, as specified in [Day.js: Format](https://day.js.org/docs/zh-CN/display/format).
-- Output Value Type: String
-- Example: If the input value is `2024-7-15 14:26:30` and the format is `the time is YYYY/MM/DD HH:mm:ss`, the output will be `the time is 2024/07/15 14:26:30`.
+- Допустимый тип входного значения: Дата
+- Параметры:
+- Формат, как указано в [Day.js: Формат](https://day.js.org/docs/zh-CN/display/format).
+- Выходной тип значения: Строка
+- Пример: Если входное значение равно `2024-7-15 14:26:30`, а формат равен `время равно YYYY/MM/DD HH:mm:ss`, выходное значение будет `время равно 2024/07/15 14:26:30`.
 
-#### Convert unit
+#### Преобразование единиц
 
-- Accepted Input Value Type: Numeric
-- Parameters:
-  - The original time unit.
-  - The target time unit.
-  - Rounding options: retain decimals, round off, round up, or round down.
-- Output Value Type: Numeric
-- Example: If the input value is `2`, the original unit is "weeks," the target unit is "days," and no decimals are retained, the output will be `14`.
+- Допустимый тип входного значения: Числовой
+- Параметры:
+- Исходная единица времени.
+- Целевая единица времени.
+- Параметры округления: сохранить десятичные знаки, округлить, округлить в большую или меньшую сторону.
+- Тип выходного значения: Числовой
+- Пример: если входное значение равно `2`, исходная единица — «недели», целевая единица — «дни», и десятичные знаки не сохраняются, выходное значение будет равно `14`.
 
-### Example
+### Пример
 
-![Example of Date Calculation Node](https://static-docs.nocobase.com/20240817184137.png)
+![Пример узла расчета даты](https://static-docs.nocobase.com/20240817184137.png)
 
-Imagine a promotional activity where you want to automatically set an end time for the promotion when a product is created. This end time would be the last day of the following week at 23:59:59. To achieve this, you can create two time functions and link them in a pipeline:
+Представьте себе рекламную акцию, в которой вы хотите автоматически установить время окончания акции при создании продукта. Это время окончания будет последним днем следующей недели в 23:59:59. Для этого можно создать две функции времени и связать их в конвейер:
 
-1. Calculate the date for the following week.
-2. Adjust the date to the last day of that week at 23:59:59.
+1. Рассчитать дату для следующей недели.
+2. Скорректировать дату на последний день этой недели в 23:59:59.
 
-By doing this, you'll generate the desired time value, which can then be passed to the next node, such as a data table modification node, to set the promotion end time in the database.
+Сделав это, вы сгенерируете желаемое значение времени, которое затем можно передать следующему узлу, например узлу изменения таблицы данных, чтобы установить время окончания акции в базе данных.

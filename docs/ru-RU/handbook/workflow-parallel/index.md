@@ -1,35 +1,35 @@
-# Parallel Branches
+# Параллельные ветви
 
-Parallel branch nodes enable the division of a process into multiple branches, each configurable with distinct nodes. Depending on the selected mode of the branch, the execution approach varies. When multiple operations need to be carried out simultaneously, the parallel branch node proves highly effective.
+Узлы параллельной ветки позволяют разделить процесс на несколько веток, каждая из которых настраивается с помощью отдельных узлов. В зависимости от выбранного режима ветви, подход к выполнению меняется. Когда необходимо выполнить несколько операций одновременно, узел параллельной ветки оказывается очень эффективным.
 
-## Installation
+## Установка
 
-This feature is a built-in plugin, so no installation is necessary.
+Эта функция является встроенным плагином, поэтому установка не требуется.
 
-## User Manual
+## Руководство пользователя
 
-### Creating a Node
+### Создание узла
 
-In the workflow configuration interface, click the plus (“+”) button to add a "Parallel Branch" node to the process:
+В интерфейсе конфигурации "workflow" нажмите кнопку «плюс» («+»), чтобы добавить узел «Параллельная ветка» в процесс:
 
 ![Parallel Branch_Add](https://static-docs.nocobase.com/9e0f3faa0b9335270647a30477559eac.png)
 
-Once a parallel branch node is added to the process, it will automatically create two sub-branches by default. You can add more branches by clicking the appropriate button. Each branch can include as many nodes as needed, and unnecessary branches can be removed by clicking the delete button at the start of the branch.
+После добавления узла параллельной ветки в процесс он автоматически создаст две подветки по умолчанию. Вы можете добавить больше ветвок, нажав соответствующую кнопку. Каждая ветка может включать столько узлов, сколько необходимо, а ненужные ветки можно удалить, нажав кнопку удаления в начале ветки.
 
 ![Parallel Branch_Branch Management](https://static-docs.nocobase.com/36088a8b7970c8a1771eb3ee9bc2a757.png)
 
-### Node Configuration
+### Конфигурация узла
 
-#### Branch Modes
+#### Режимы ветвления
 
-Parallel branch nodes offer three modes:
+Узлы параллельного ветвления предлагают три режима:
 
-- **All succeeded**: The process continues to execute nodes following the branches only if all branches succeed. If any branch terminates early—whether due to failure, error, or any non-success state—the entire parallel branch node terminates in that state. This is also referred to as "All Mode."
-- **Any succeeded**: The process will proceed to execute subsequent nodes once any branch succeeds. The entire parallel branch node will only terminate early if all branches fail or terminate prematurely, regardless of the reason. This is known as "Any Mode."
-- **Any succeeded or failed**: The process will continue executing subsequent nodes once any branch succeeds. However, if any branch fails, the entire parallel branch node will terminate early in that state. This is also known as "Race Mode."
+- **Все успешно**: процесс продолжает выполнять узлы, следующие за ветками, только если все ветки выполнены успешно. Если какая-либо ветка завершается раньше — из-за сбоя, ошибки или любого неуспешного состояния — весь узел параллельного ветвления завершается в этом состоянии. Это также называется «Режим всех».
+- **Любой успешно**: процесс продолжит выполнять последующие узлы, как только какая-либо ветка будет выполнена успешно. Весь узел параллельного ветвления завершится раньше, только если все ветки завершатся неудачей или преждевременно, независимо от причины. Это известно как «Любой режим».
+- **Любой успешный или неудачный**: процесс продолжит выполнение последующих узлов после успешного выполнения любой ветки. Однако если какая-либо ветка даст сбой, весь параллельный узел ветки будет завершен на ранней стадии в этом состоянии. Это также известно как «Режим гонки».
 
-In all modes, branches are executed sequentially from left to right. The process continues executing subsequent nodes or terminates early once the conditions of the selected mode are met.
+Во всех режимах ветки выполняются последовательно слева направо. Процесс продолжает выполнение последующих узлов или завершается на ранней стадии после выполнения условий выбранного режима.
 
-### Example
+### Пример
 
-Refer to the example provided in the [Delay Node](/handbook/workflow-delay#示例) section.
+См. пример, приведенный в разделе [Узел задержки](/handbook/workflow-delay#示例).

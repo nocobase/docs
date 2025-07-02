@@ -1,45 +1,46 @@
-# Trigger Configuration
+# Конфигурация триггера
 
-## Creating a Workflow
+## Создание рабочего процесса
 
-To set up an approval workflow, start by selecting the "Approval" type during the workflow creation process:
+Чтобы настроить "workflow" утверждения, начните с выбора типа «Утверждение» во время процесса создания "workflow":
 
-![Approval Trigger_Create Approval Workflow](https://static-docs.nocobase.com/f52dda854f46a669e0c1c7fb487a17ea.png)
+![Утверждение триггера_Создание "workflow" утверждения](https://static-docs.nocobase.com/f52dda854f46a669e0c1c7fb487a17ea.png)
 
-Next, in the workflow configuration interface, click on the trigger to open a popup window for additional configuration options.
+Далее в интерфейсе конфигурации "workflow" щелкните триггер, чтобы открыть всплывающее окно для дополнительных параметров конфигурации.
 
-## Binding Data Tables
+## Привязка таблиц данных
 
-NocoBase’s approval plugin is designed with flexibility in mind, allowing it to be integrated with any custom data collection. This means there’s no need to repeatedly configure the data model for approval processes. Instead, you can reuse existing data collections. When configuring the trigger, the first step is to select a data table to determine which data entries will trigger the workflow upon creation or update:
+Плагин утверждения NocoBase разработан с учетом гибкости, что позволяет интегрировать его с любым пользовательским набором данных. Это означает, что нет необходимости повторно настраивать модель данных для процессов утверждения. Вместо этого вы можете повторно использовать существующие наборы данных. 
+При настройке триггера первым шагом является выбор таблицы данных, чтобы определить, какие записи данных будут запускать "workflow" при создании или обновлении:
 
 ![Approval Trigger_Trigger Configuration_Select Data Table](https://static-docs.nocobase.com/8732a4419b1e28d2752b8f601132c82d.png)
 
-After selecting the data table, bind the workflow to the submit button in the form used for creating or editing data within the chosen table:
+После выбора таблицы данных привяжите "workflow" к кнопке отправки в форме, используемой для создания или редактирования данных в выбранной таблице:
 
 ![Initiate Approval_Bind Workflow](https://static-docs.nocobase.com/2872ff108c61d7bf6d0bfb19886774c6.png)
 
-Once the form is submitted, the corresponding approval workflow will be triggered. The submitted data will be saved in the specified data table and also snapshotted within the approval flow for future review by approvers.
+После отправки формы будет запущен соответствующий "workflow" утверждения. Отправленные данные будут сохранены в указанной таблице данных, а также будут сделаны моментальные снимки в потоке утверждения для будущего просмотра утверждающими лицами.
 
-## Withdrawn
+## Отозвано
 
-If the approval process permits the initiator to withdraw the request, select the "Allowed to be withdrawn" option:
+Если процесс утверждения позволяет инициатору отозвать запрос, выберите опцию «Разрешено отозвать»:
 
 ![Approval Trigger_Trigger Configuration_Allow Withdrawal](https://static-docs.nocobase.com/09185712fc55bc536892136ce0ade4a8.png)
 
-When this option is selected, the initiator can withdraw the approval request at any time before any approver has processed it. However, once any subsequent approval nodes have been processed, the approval can no longer be withdrawn.
+Если выбрана эта опция, инициатор может отозвать запрос на утверждение в любое время до того, как какой-либо утверждающий его обработает. Однако после обработки любых последующих узлов утверждения утверждение больше не может быть отозвано.
 
-## Configuring the Form Interface for Initiating Approvals
+## Настройка интерфейса формы для инициирования утверждений
 
-Finally, you’ll need to configure the form interface for the initiator. This interface is used when initiating an approval from the Approval Center block or when re-initiating after a withdrawal. Click the configuration button to open a popup window:
+Наконец, вам нужно будет настроить интерфейс формы для инициатора. Этот интерфейс используется при инициировании утверждения из блока Approval Center или при повторной инициации после отзыва. Нажмите кнопку конфигурации, чтобы открыть всплывающее окно:
 
 ![Approval Trigger_Trigger Configuration_Initiator Form](https://static-docs.nocobase.com/ca8b7e362d912138cf7d73bb60b37ac1.png)
 
-You can add a form based on the bound data table or include explanatory text (Markdown) to guide the initiator. A form is required; otherwise, the initiator will not be able to proceed upon entering this interface.
+Вы можете добавить форму на основе таблицы привязанных данных или включить пояснительный текст (Markdown) для руководства инициатора. Форма обязательна; в противном случае инициатор не сможет продолжить работу при входе в этот интерфейс.
 
-After adding the form block, you can configure the corresponding data table's field components and arrange them as needed to organize the content to be filled out, similar to the regular form configuration interface:
+После добавления блока формы вы можете настроить соответствующие компоненты полей таблицы данных и расположить их по мере необходимости для организации содержимого, которое нужно заполнить, аналогично обычному интерфейсу конфигурации формы:
 
 ![Approval Trigger_Trigger Configuration_Initiator Form_Field Configuration](https://static-docs.nocobase.com/5a1e7f9c9d8de092c7b55585dad7d633.png)
 
-In addition to the submit button, you can also add a “Save Draft” button to support the temporary storage of data during the process:
+В дополнение к кнопке «Отправить» вы также можете добавить кнопку «Сохранить черновик» для поддержки временного хранения данных во время процесса:
 
 ![Approval Trigger_Trigger Configuration_Initiator Form_Action Configuration](https://static-docs.nocobase.com/2f4850d2078e94538995a9df70d3d2d1.png)

@@ -1,21 +1,22 @@
-# Overview
+# Обзор
 
 <PluginInfo commercial="true" name="workflow-approval" link="/handbook/workflow-approval"></PluginInfo>
 
-Approval processes are tailored specifically for workflows initiated and managed by individuals to determine the status of related data. Commonly employed in office automation and other scenarios requiring human decision-making, these processes include creating and managing workflows such as "Leave Requests," "Expense Reimbursement Approvals," and "Material Procurement Approvals."
+Процессы утверждения специально разработаны для рабочих процессов, инициированных и управляемых отдельными лицами для определения статуса связанных данных.
+Обычно используемые в автоматизации офиса и других сценариях, требующих принятия решений человеком, эти процессы включают создание и управление рабочими процессами, такими как «Заявки на отпуск», «Утверждения возмещения расходов» и «Утверждения закупок материалов».
 
-The approval plugin offers a dedicated workflow type (trigger) known as "Approval (Event)" and a specialized "Approval" node. When paired with NocoBase's unique custom data tables and blocks, it enables the rapid and flexible creation and management of various approval scenarios.
+Плагин утверждения предлагает специальный тип рабочего процесса (триггер), известный как «Утверждение (событие)», и специализированный узел «Утверждение». В сочетании с уникальными пользовательскими таблицами и блоками данных NocoBase он обеспечивает быстрое и гибкое создание и управление различными сценариями утверждения.
 
-## User Manual
+## Руководство пользователя
 
-The approval process is organized into several key sections:
+Процесс утверждения организован в несколько ключевых разделов:
 
-- [Trigger Configuration](./trigger.md)
-- [Approval Node Configuration](./node.md)
-- [Initiate Approval Configuration](./action.md)
-- [Approval Relevant Blocks](./block.md)
-- [Workflow task](./tasks.md)
+- [Конфигурация триггера](./trigger.md)
+- [Конфигурация узла утверждения](./node.md)
+- [Инициирование конфигурации утверждения](./action.md)
+- [Соответствующие блоки утверждения](./block.md)
+- [Задача рабочего процесса](./tasks.md)
 
-For a deeper dive into these concepts, see [Advanced](./advanced.md).
+Для более глубокого погружения в эти концепции см. [Дополнительно](./advanced.md).
 
-To invoke this process from an external system, consult [HTTP API](./http-api.md).
+Чтобы вызвать этот процесс из внешней системы, обратитесь к [HTTP API](./http-api.md).

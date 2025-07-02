@@ -1,23 +1,23 @@
-# Node Configuration
+# Конфигурация узла
 
-## Creating a Node
+## Создание узла
 
-Create a dynamic calculation node:
+Создайте узел динамического расчета:
 
-![Creating a Dynamic Calculation Node](https://static-docs.nocobase.com/14613f73a7dfc822a30276c8c04cdeb7.png)
+![Создание узла динамического расчета](https://static-docs.nocobase.com/14613f73a7dfc822a30276c8c04cdeb7.png)
 
-## Node Configuration
+## Конфигурация узла
 
-## Calculation Expression
+## Выражение расчета
 
-Unlike the expression options in a standard calculation node, dynamic expressions must be selected based on preloaded data rather than directly inputting the expression. Choose the preloaded product discount rule data from the trigger:
+В отличие от параметров выражения в стандартном узле расчета, динамические выражения должны выбираться на основе предварительно загруженных данных, а не напрямую вводить выражение. Выберите предварительно загруженные данные правила скидки на продукт из триггера:
 
-![Select Dynamic Expression Data](https://static-docs.nocobase.com/21ccc63e604dd90b7d26c3c33c12d671.png)
+![Выберите данные динамического выражения](https://static-docs.nocobase.com/21ccc63e604dd90b7d26c3c33c12d671.png)
 
-### Variable Data Source
+### Источник переменных данных
 
-You also need to select the data row object from the table to be used as a variable in the expression. This can be chosen from the workflow context, where results have been preloaded or queried. The object must be a data row from the table associated with the expression data. In this case, select the product data:
+Вам также необходимо выбрать объект строки данных из таблицы, который будет использоваться в качестве переменной в выражении. Это можно выбрать из контекста "workflow", где результаты были предварительно загружены или запрошены. Объект должен быть строкой данных из таблицы, связанной с данными выражения. В этом случае выберите данные продукта:
 
-![Select Variable Data Source](https://static-docs.nocobase.com/afbffe9661539d26e4b175ae8a4b28f7.png)
+![Выберите источник переменных данных](https://static-docs.nocobase.com/afbffe9661539d26e4b175ae8a4b28f7.png)
 
-Saving the node configuration completes the entire setup process.
+Сохранение конфигурации узла завершает весь процесс настройки.
