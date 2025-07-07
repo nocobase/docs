@@ -48,10 +48,30 @@ Define key-value pairs for the query string. Values can dynamically utilize vari
 
 **Request Body**
 
-Currently, the request body supports only standard JSON format. Use the variable button in the upper-right corner of the text editor to insert context variables.
+Depends on the `Content-Type` option, different formats are supported.
+
+##### application/json
+
+Standard JSON format text is supported. Use the variable button in the upper-right corner of the text editor to insert context variables.
 
 :::info{title=Note}
 Ensure that variables within JSON are used as strings, for example: `"a": "{{$context.data.a}}"`.
+:::
+
+##### application/x-www-form-urlencoded
+
+This format supports standard key-value pairs. The variable button in the text editor can also be used to insert context variables.
+
+##### application/xml
+
+Supports standard XML format text. Similar to JSON, you can use the variable button to insert context variables.
+
+##### multipart/form-data
+
+Supports `multipart/form-data` format for key-value pairs. When selecting a data type as a file object, you can upload files. Files can only be selected from existing file objects in the context, such as results from file collection queries or related data from associated file collection.
+
+:::info{title=Note}
+When selecting file data, ensure that the variable corresponds to a single file object, not a list of files (in many-to-one relationships, the relationship field's value will be an array).
 :::
 
 **Timeout Settings**
