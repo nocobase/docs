@@ -1253,6 +1253,13 @@ export default [
                 'title.ja-JP': 'スタイル',
                 link: '/handbook/ui/fields/field-settings/style',
               },
+              {
+                title: '',
+                'title.fr-FR': 'Enable scan',
+                'title.zh-CN': '扫码录入',
+                'title.ja-JP': 'スキャン入力',
+                link: '/handbook/ui/fields/field-settings/enable-scan',
+              },
             ],
           },
           {
@@ -1637,10 +1644,9 @@ export default [
                 'title.fr-FR': 'Gestion des départements',
                 'title.zh-CN': '使用手册',
                 'title.ja-JP': 'ユーザーマニュアル',
-                link: '/handbook/acl/manual'
+                link: '/handbook/acl/manual',
               },
-
-            ]
+            ],
           },
           {
             title: 'Departments',
