@@ -32,7 +32,7 @@ HTTP 服务的 URL，需要包含协议部分（`http://` 或 `https://`），�
 
 #### 请求数据格式
 
-即请求头中的 `Content-Type`，支持 `application/json` 和 `application/x-www-form-urlencoded` 两种格式。
+即请求头中的 `Content-Type`，支持的格式见“[请求体](#请求体)”部分。
 
 #### 请求头配置
 
@@ -50,25 +50,25 @@ HTTP 服务的 URL，需要包含协议部分（`http://` 或 `https://`），�
 
 请求的 Body 部分，根据 `Content-Type` 选择的不同，支持不同的格式。
 
-##### application/json
+##### `application/json`
 
 支持标准的 JSON 格式的文本，可以通过文本编辑框右上角的变量按钮插入流程上下文中的变量。
 
 :::info{title=提示}
-变量必须在 JSON 的字符串中使用，例如：`"a": "{{$context.data.a}}"`。
+变量必须在 JSON 的字符串中使用，例如：`{ "a": "{{$context.data.a}}" }`。
 :::
 
-##### application/x-www-form-urlencoded
+##### `application/x-www-form-urlencoded`
 
-支持 `application/x-www-form-urlencoded` 格式的键值对，值可以使用流程上下文中的变量，包含变量时会作为字符串模板解析并拼接为最终的字符串值。
+键值对格式，值可以使用流程上下文中的变量，包含变量时会作为字符串模板解析并拼接为最终的字符串值。
 
-##### application/xml
+##### `application/xml`
 
 支持标准的 XML 格式的文本，可以通过文本编辑框右上角的变量按钮插入流程上下文中的变量。
 
-##### multipart/form-data <Badge>v1.8.0+</Badge>
+##### `multipart/form-data` <Badge>v1.8.0+</Badge>
 
-支持 `multipart/form-data` 格式的键值对表单数据，数据类型选择文件对象时可以上传文件。文件仅能通过变量选择上下文中已存在的文件对象，如对文件表查询的结果，或关联文件表的关系数据。
+支持表单数据的键值对，数据类型选择文件对象时可以上传文件。文件仅能通过变量选择上下文中已存在的文件对象，如对文件表查询的结果，或关联文件表的关系数据。
 
 :::info{title=提示}
 选择文件数据时，需要确保变量对应的是单个文件对象，而不是一个文件列表（在对多关系查询时，关系字段的值会是一个数组）。

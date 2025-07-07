@@ -30,7 +30,7 @@ Indiquez l'URL du service HTTP, y compris le protocole (`http://` ou `https://`)
 
 #### Format des Données de Requête
 
-Cela définit le `Content-Type` dans l'en-tête de la requête, avec les options `application/json` et `application/x-www-form-urlencoded`.
+Il s'agit du champ `Content-Type` dans l'en-tête de la requête. Les formats pris en charge sont listés dans la section “[Corps de la requête](#requête)”.
 
 #### Configuration des En-têtes de Requête
 
@@ -43,32 +43,33 @@ L'en-tête `Content-Type` est prédéfini par le paramètre de format des donné
 #### Paramètres de Requête
 
 Définissez des paires clé-valeur pour la chaîne de requête. Les valeurs peuvent utiliser dynamiquement des variables du contexte du workflow.
+
 #### Corps de la requête
 
 La partie Body de la requête prend en charge différents formats selon le `Content-Type` sélectionné.
 
-##### application/json
+##### `application/json`
 
-Prend en charge le format texte JSON standard. Vous pouvez insérer des variables du contexte du flux à l'aide du bouton de variable situé en haut à droite de la zone d'édition de texte.
+Prend en charge le format texte JSON standard. Vous pouvez insérer des variables du contexte du flux en cliquant sur le bouton de variable en haut à droite de la zone d’édition de texte.
 
 :::info{title=Astuce}
-Les variables doivent être utilisées à l'intérieur d'une chaîne JSON, par exemple : `"a": "{{$context.data.a}}"`.
+Les variables doivent être utilisées à l’intérieur d’une chaîne JSON, par exemple : `{ "a": "{{$context.data.a}}" }`.
 :::
 
-##### application/x-www-form-urlencoded
+##### `application/x-www-form-urlencoded`
 
-Prend en charge le format `application/x-www-form-urlencoded` sous forme de paires clé-valeur. La valeur peut contenir des variables du contexte du flux, qui seront interprétées comme un modèle de chaîne et concaténées pour former la valeur finale.
+Format de paires clé-valeur. Les valeurs peuvent inclure des variables du contexte du flux, qui seront interprétées comme des modèles de chaînes et concaténées pour produire la valeur finale.
 
-##### application/xml
+##### `application/xml`
 
-Prend en charge le format texte XML standard. Vous pouvez insérer des variables du contexte du flux à l'aide du bouton de variable situé en haut à droite de la zone d'édition de texte.
+Prend en charge le format texte XML standard. Vous pouvez insérer des variables du contexte du flux via le bouton de variable en haut à droite de la zone d'édition.
 
-##### multipart/form-data <Badge>v1.8.0+</Badge>
+##### `multipart/form-data` <Badge>v1.8.0+</Badge>
 
-Prend en charge les données de formulaire au format `multipart/form-data` sous forme de paires clé-valeur. Si le type de données est défini sur "objet fichier", il est possible de téléverser un fichier. Le fichier doit être sélectionné via une variable pointant vers un objet fichier existant dans le contexte, comme un résultat de requête sur une table de fichiers ou une relation avec une table de fichiers.
+Prend en charge des données de formulaire sous forme de paires clé-valeur. Si vous sélectionnez “objet fichier” comme type de données, vous pouvez téléverser un fichier. Le fichier doit être spécifié via une variable correspondant à un objet fichier déjà présent dans le contexte, comme un résultat de requête sur la table des fichiers ou une relation vers cette table.
 
 :::info{title=Astuce}
-Lorsque vous sélectionnez un fichier, assurez-vous que la variable correspond à un **objet fichier unique**, et non à une **liste de fichiers** (dans le cas d'une relation multiple, le champ relationnel sera un tableau).
+Lors de la sélection d’un fichier, assurez-vous que la variable correspond à **un seul objet fichier**, et non à une **liste de fichiers** (dans le cas d’une relation multiple, la valeur du champ relationnel sera un tableau).
 :::
 
 #### Paramètres de Délai d'Attente
