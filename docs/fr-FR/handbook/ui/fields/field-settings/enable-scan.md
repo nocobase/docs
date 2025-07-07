@@ -1,4 +1,5 @@
 # Scan Input
+> Supported in version 1.7.6 and above.
 
 ## Introduction
 
