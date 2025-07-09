@@ -11,8 +11,7 @@ NocoBaseは、データ構造を記述するための独自のDSL（ドメイン
 - [木構造コレクション](/handbook/collection-tree)：木構造のテーブルで、現在は隣接リスト設計のみをサポートしています。
 - [カレンダーコレクション](/handbook/calendar/calendar-collection)：カレンダーに関連するイベントテーブルを作成するために使用します。
 - [ファイルコレクション](/handbook/file-manager/file-collection)：ファイルストレージの管理に使用します。
-- [式コレクション](/handbook/workflow-dynamic-calculation/expression)：ワークフローの動的式シナリオに使用します。
+- [式コレクション](/handbook/collection-expression/collection)：ワークフローの動的式シナリオに使用します。
 - [SQLコレクション](/handbook/collection-sql)：実際のデータベーステーブルではなく、SQLクエリを迅速に構造化して表示します。
 - [ビューコレクション](/handbook/collection-view)：既存のデータベースビューを接続します。
 - [外部コレクション](/handbook/collection-fdw)：FDWテクノロジーに基づき、データベースシステムが外部データソースのデータを直接にアクセスし、クエリを実行できるようになっている。
-
