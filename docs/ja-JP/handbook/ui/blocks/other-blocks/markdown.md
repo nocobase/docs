@@ -138,6 +138,21 @@ Handlebars テンプレートを使用する場合:
 
 より多くの変数の紹介については [設定画面 / 変数](/handbook/ui/variables) の章を参照してください。
 
+## Localization
+> Supported in version 1.7.6 and later.
+
+Markdown content now supports localization. You can use the `{{t 'xxx'}}` syntax to insert multilingual text (make sure the **Localization** plugin is enabled), and configure the corresponding translations in the Localization Management panel.
+
+![20250707154720](https://static-docs.nocobase.com/20250707154720.png)
+
+Translations can be added and managed in the Localization panel. After configuring, don't forget to publish the changes.
+
+![20250707154933](https://static-docs.nocobase.com/20250707154933.png)
+
+![20250707155049](https://static-docs.nocobase.com/20250707155049.png)
+
+![20250707155236](https://static-docs.nocobase.com/20250707155236.gif)
+
 ## QRコード
 
 Markdown では QR コードの設定がサポートされており、変数と組み合わせて使用できます。

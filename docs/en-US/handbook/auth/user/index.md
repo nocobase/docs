@@ -62,7 +62,7 @@ Sign up page
 
 ![](https://static-docs.nocobase.com/202411262135801.png)
 
-### Forgot Password<Badge>v1.7.0+</Badge>
+### Forgot Password<Badge>v1.8.0+</Badge>
 
 The forgot password feature allows users to reset their password via email verification if they forget it.
 
