@@ -1,6 +1,6 @@
 # Copie carbone (CC)
 
-<PluginInfo name="workflow-cc" link="/handbook/workflow-cc" commercial="true"></PluginInfo>
+<PluginInfo name="workflow-cc" link="/handbook/workflow-cc"></PluginInfo>
 
 Le nœud de copie carbone permet d'envoyer certaines informations contextuelles du processus de workflow à des utilisateurs spécifiés, à des fins de consultation ou d'information. Par exemple, au cours d’un processus d’approbation ou autre, vous pouvez envoyer des informations à d’autres parties prenantes afin qu’elles soient tenues au courant de l’avancement.
 

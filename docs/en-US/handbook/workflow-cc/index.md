@@ -1,6 +1,6 @@
 # CC (Carbon Copy)
 
-<PluginInfo name="workflow-cc" link="/handbook/workflow-cc" commercial="true"></PluginInfo>
+<PluginInfo name="workflow-cc" link="/handbook/workflow-cc"></PluginInfo>
 
 The CC node is used to send certain contextual information from the workflow process to designated users for their awareness and reference. For example, during approval or other processes, relevant information can be copied to other participants so that they can stay informed of the progress.
 
