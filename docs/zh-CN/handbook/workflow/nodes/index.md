@@ -33,6 +33,7 @@
 - 人工处理
   - [人工处理](./manual.md)（插件 @nocobase/plugin-workflow-manual 提供）
   - [审批](./approval.md)（插件 @nocobase/plugin-workflow-approval 提供）
+  - [抄送](./cc.md)（插件 @nocobase/plugin-workflow-cc 提供）
 - 其他扩展
   - [JavaScript](./javascript.md)（插件 @nocobase/plugin-workflow-javascript 提供）
   <!-- - [邮件发送](./mailer.md)（插件 @nocobase/plugin-workflow-mailer 提供） -->

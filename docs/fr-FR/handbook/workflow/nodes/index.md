@@ -29,6 +29,7 @@ D'un point de vue fonctionnel, les nœuds implémentés jusqu'à présent se ré
 - **Traitement Manuel**
   - [Traitement manuel](./manual.md) (fourni par le plugin @nocobase/plugin-workflow-manual)
   - [Approbation](./approval.md) (fourni par le plugin @nocobase/plugin-workflow-approval)
+  - [CC](./cc.md) (fourni par le plugin @nocobase/plugin-workflow-cc)
 - **Autres Extensions**
   - [Requête HTTP](./request.md) (fourni par le plugin @nocobase/plugin-workflow-request)
   - [Message de réponse](./response-message.md) (fourni par le plugin @nocobase/plugin-workflow-response-message)
