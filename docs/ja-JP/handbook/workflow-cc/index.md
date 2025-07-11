@@ -1,6 +1,6 @@
 # 参照通知（CC）
 
-<PluginInfo name="workflow-cc" link="/handbook/workflow-cc" commercial="true"></PluginInfo>
+<PluginInfo name="workflow-cc" link="/handbook/workflow-cc"></PluginInfo>
 
 参照通知ノードは、ワークフローの実行中に発生する一部のコンテキスト情報を指定されたユーザーに送信し、内容を把握・参照してもらうために使用します。たとえば、承認プロセスや他の処理中に関連情報を別の関係者に共有することで、進捗をタイムリーに把握してもらうことができます。
 

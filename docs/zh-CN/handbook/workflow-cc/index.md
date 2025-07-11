@@ -1,6 +1,6 @@
 # 抄送
 
-<PluginInfo name="workflow-cc" link="/handbook/workflow-cc" commercial="true"></PluginInfo>
+<PluginInfo name="workflow-cc" link="/handbook/workflow-cc"></PluginInfo>
 
 抄送节点用于将工作流的执行过程中的某些上下文内容发送给指定的用户，以供了解和查阅。例如在审批或其他流程中，可以将相关信息抄送给其他参与者，以便他们及时了解工作进展。
 
