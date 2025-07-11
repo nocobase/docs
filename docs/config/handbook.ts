@@ -2691,6 +2691,12 @@ export default [
                 'title.ja-JP': '承認',
                 link: '/handbook/workflow/nodes/approval',
               },
+              {
+                title: 'CC',
+                'title.zh-CN': '抄送',
+                'title.ja-JP': '抄送',
+                link: '/handbook/workflow/nodes/cc',
+              },
             ],
           },
           {
@@ -2875,6 +2881,14 @@ export default [
                 link: '/handbook/workflow-approval/http-api',
               },
             ],
+          },
+          {
+            title: 'CC',
+            'title.fr-FR': 'CC',
+            'title.zh-CN': '抄送',
+            'title.ja-JP': 'CC',
+            subTitle: '@nocobase/plugin-workflow-cc',
+            link: '/handbook/workflow-cc',
           },
           {
             title: 'Custom Action Trigger',

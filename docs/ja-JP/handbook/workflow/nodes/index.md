@@ -36,7 +36,7 @@
 - 人手処理  
   - [人手処理](./manual.md)（プラグイン @nocobase/plugin-workflow-manual 提供）
   - [承認](./approval.md)（プラグイン @nocobase/plugin-workflow-approval 提供）
-
+  - [抄送](./cc.md)（プラグイン @nocobase/plugin-workflow-cc 提供）
 - その他拡張
   - [HTTP リクエスト](./request.md)（プラグイン @nocobase/plugin-workflow-request 提供）
   - [レスポンスメッセージ](./response-message.md)（プラグイン @nocobase/plugin-workflow-response-message 提供）

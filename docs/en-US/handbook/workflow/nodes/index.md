@@ -33,6 +33,7 @@ From a functional perspective, the nodes implemented so far are in four categori
 - Manual Processing
   - [Manual Processing](./manual.md) (provided by plugin @nocobase/plugin-workflow-manual)
   - [Approval](./approval.md) (provided by plugin @nocobase/plugin-workflow-approval)
+  - [CC](./cc.md) (provided by plugin @nocobase/plugin-workflow-cc)
 - Other Extensions
   - [HTTP Request](./request.md) (provided by plugin @nocobase/plugin-workflow-request)
   - [Response Message](./response-message.md) (provided by plugin @nocobase/plugin-workflow-response-message)
