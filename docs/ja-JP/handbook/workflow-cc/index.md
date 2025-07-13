@@ -1,4 +1,4 @@
-# 参照通知（CC）
+# 参照通知（CC） <Badge>v1.8.2+</Badge>
 
 <PluginInfo name="workflow-cc" link="/handbook/workflow-cc"></PluginInfo>
 
