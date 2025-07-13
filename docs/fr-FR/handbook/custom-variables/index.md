@@ -1,4 +1,4 @@
-# NocoBase 自定义变量插件使用手册<Badge>v1.8.0+</Badge>
+# 自定义变量<Badge>v1.8.0+</Badge>
 
 <PluginInfo commercial="true" name="custom-variables"></PluginInfo>
 
@@ -20,8 +20,7 @@
 ## 安装和激活
 
 ### 前提条件
-- NocoBase 2.x 版本
-- 商业授权许可
+- NocoBase 版本 v1.8.0+
 
 ### 安装步骤
 1. [购买](https://www.nocobase.com/cn/commercial) NocoBase 商业授权
@@ -131,7 +130,7 @@
 - **文字颜色**：设置徽章内文字的颜色
 - **大小**：选择默认大小或小尺寸
 - **最大数字**：当数字超过此值时显示"99+"的形式
-- **显示零值**：是否在数值为0时也显示徽章
+- **显示零值**：是否在数值为 0 时也显示徽章
 
 #### 样式建议
 - **重要数据**：使用红色或橙色背景，吸引注意
@@ -225,7 +224,7 @@
 - 检查过滤条件是否过于严格
 
 **问题2：徽章不显示**
-- 确认徽章语法正确，参考 [Formula.js](https://docs.nocobase.com/handbook/calculation-engines/formula)
+- 确认表达式语法是否正确，参考 [Formula.js](https://docs.nocobase.com/handbook/calculation-engines/formula)
 - 检查聚合变量是否已创建成功
 - 确认"显示零值"设置是否符合预期
 
@@ -254,5 +253,3 @@
 - 逐步掌握过滤条件的使用
 - 注意变量命名的规范性
 - 定期维护和优化变量配置
-
-希望这个使用手册能帮助您更好地使用自定义变量插件的聚合变量功能。
