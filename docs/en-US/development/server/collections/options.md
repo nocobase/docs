@@ -58,7 +58,7 @@ interface FieldOptions {
 }
 ```
 
-[Introduction to UI Schema here](/development/client/ui-schema-designer/what-is-ui-schema)
+[Introduction to UI Schema here](/development/client/ui-schema/what-is-ui-schema)
 
 ### Field Type
 

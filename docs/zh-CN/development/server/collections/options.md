@@ -56,7 +56,7 @@ interface FieldOptions {
   uiSchema?: ISchema;
 ```
 
-[UI Schema 的介绍点此查看](/development/client/ui-schema-designer/what-is-ui-schema)
+[UI Schema 的介绍点此查看](/development/client/ui-schema/what-is-ui-schema)
 
 ### Field Type
 
