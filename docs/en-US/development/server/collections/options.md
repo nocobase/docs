@@ -28,6 +28,12 @@ interface CollectionOptions {
   sortable?: CollectionSortable;
   model?: string;
   repository?: string;
+  /* This parameter is intended for plugin developers and indicates whether the table can be managed via the system UI. Default is false.
+   * When set to true:
+   * 1. The table will appear in the primary data source, and deletion of the table or any of its fields will be prohibited.
+   * 2. The table can be used in system-level features such as blocks, workflows, etc.
+   */
+  uiManageable?: boolean;
   [key: string]: any;
 }
 
@@ -49,6 +55,7 @@ interface FieldOptions {
   index?: boolean;
   interface?: string;
   uiSchema?: ISchema;
+}
 ```
 
 [Introduction to UI Schema here](/development/client/ui-schema-designer/what-is-ui-schema)

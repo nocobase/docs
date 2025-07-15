@@ -28,6 +28,11 @@ interface CollectionOptions {
   sortable?: CollectionSortable;
   model?: string;
   repository?: string;
+  /* 该参数是给插件开发者使用，表示是否允许被系统界面管理，默认 false。设置为 true 时： 
+   * 1. 会出现在主数据源，并且不允许删除此表和表中的任何字段
+   * 2. 允许在系统场景中（区块、工作流等）使用此表
+   */
+  uiManageable?: boolean;
   [key: string]: any;
 }
 
