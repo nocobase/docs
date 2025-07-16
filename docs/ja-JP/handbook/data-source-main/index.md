@@ -21,7 +21,7 @@ NocoBase のマスターデータベースは、システムテーブルのデ�
 - [木構造コレクション](/handbook/collection-tree)：木構造のテーブルで、現在は隣接リスト設計のみをサポートしています。
 - [カレンダーコレクション](/handbook/calendar/calendar-collection)：カレンダー関連のイベントテーブルを作成するために使用します。
 - [ファイルコレクション](/handbook/file-manager/file-collection)：ファイルストレージの管理に使用されます。
-- [式コレクション](/handbook/workflow-dynamic-calculation/expression)：ワークフローの動的式シナリオに利用されます。
+- [式コレクション](/handbook/collection-expression/collection)：ワークフローの動的式シナリオに利用されます。
 - [SQLコレクション](/handbook/collection-sql)：実際のデータベーステーブルではなく、SQLクエリを迅速に構造化して表示するためのものです。
 - [ビューコレクション](/handbook/collection-view)：既存のデータベースビューに接続します。
 - [外部コレクション](/handbook/collection-fdw)：データベースシステムが外部データソース内のデータに直接アクセスし、クエリを実行できるようにします。FDW技術に基づいています。
@@ -35,4 +35,3 @@ NocoBase のマスターデータベースは、システムテーブルのデ�
 ![20240322230950](https://static-docs.nocobase.com/20240322230950.png)
 
 詳細については「[データテーブルフィールド / 概要](/handbook/data-modeling/collection-fields)」セクションをご覧ください。
-
