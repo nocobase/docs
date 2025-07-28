@@ -1,39 +1,39 @@
-# v1.0：2024-04-28
+# Версия 1.0: 2024-04-28
 
-## v1.0 Milestone
+## Этап обновления 1.0
 
-After 3 years of development, NocoBase has reached its first major version upgrade, transitioning from version 0.x to 1.0. This marks a significant milestone.
+После 3 лет разработки NocoBase достиг своего первого крупного обновления версии, перейдя с версии 0.x на 1.0. Это знаменует собой важную веху.
 
-- During the 0.x phase: The core API and features underwent rapid changes, with each new version potentially introducing incompatible changes.
-- During the 1.x phase: The core API has stabilized, and NocoBase will focus on adding new plugins, optimizing security, and enhancing performance while maintaining stability.
+В фазе 0.x: Основное API и функции претерпевали быстрые изменения, и каждая новая версия могла содержать критические изменения.
+В фазе 1.x: Основное API стабилизировалось, и NocoBase сосредоточится на добавлении новых плагинов, оптимизации безопасности и улучшении производительности, сохраняя при этом стабильность.
 
-## New Features
+## Новые возможности
 
-- Theme editor can configure page and modal padding, block spacing, and block corner radius.
-- When adding blocks, collections support filtering.
-- Relationship records supports sorting.
-- Improved interactivity of data visualization.
-- Support for adding chart blocks on mobile devices.
-- Chart filter blocks support setting field data scope.
-- Add more variables, [see details](https://docs.nocobase.com/handbook/ui/variables).
-- Blocks from any collections can be added in popups.
-- Workflows: "Post-action event" can be triggered by buttons inside association blocks.
-- Automatic refresh of data in the parent container when data changes within a popup.
-- Significant performance improvements in table blocks.
-- Substantial increase in test coverage.
+- Редактор тем может настраивать отступы между страницами и режимами, интервал между блоками и радиус угла блока.
+- При добавлении блоков коллекции поддерживают фильтрацию.
+- Записи взаимосвязей поддерживают сортировку.
+- Улучшена интерактивность визуализации данных.
+- Поддержка добавления блоков диаграмм на мобильных устройствах.
+- Блоки фильтров диаграммы поддерживают настройку объема данных поля.
+- Добавьте дополнительные переменные, [подробнее](https://docs.nocobase.com/handbook/ui/variables).
+- Блоки из любых коллекций могут быть добавлены во всплывающие окна.
+- Рабочие процессы: "Событие после действия" может быть запущено с помощью кнопок внутри ассоциативных блоков.
+- Автоматическое обновление данных в родительском контейнере при изменении данных во всплывающем окне.
+- Значительное повышение производительности блоков таблиц.
+- Существенное увеличение охвата тестированием.м
 
-## New Plugins
+## Новые плагины
 
-- Field: Markdown (Vditor)
+- Поле: Markdown (Vditor)
 
-  - Used to store Markdown and render it using Vditor editor, supports common Markdown syntax and supports uploading images, recordings, etc.It also allows for instant rendering, where what you see is what you get.
-- Comments
-  - Provides comment collection template and block to add commenting functionality for any collection.
+  - Используется для хранения Markdown и его рендеринга с помощью редактора Vditor, поддерживает общий синтаксис Markdown и поддерживает загрузку изображений, записей и т.д. Также позволяет выполнять мгновенный рендеринг, где вы получаете то, что видите.
+  - Комментарии
+  - Предоставляет шаблон коллекции комментариев и блок для добавления функций комментирования к любой коллекции.
 
-## Full Changelog
+## Полный список изменений
 
 <details>
-<summary>View the full changelog</summary>
+<summary>Открыть полный список изменений</summary>
 
 - feat(plugin-workflow): refresh the list after sync <u>#4177</u>
 - feat(plugin-workflow): show workflow key as tooltip on title <u>#4178</u>
@@ -271,101 +271,101 @@ After 3 years of development, NocoBase has reached its first major version upgra
 
 </details>
 
-## Plugin Changes
+## Изменения в плагинах
 
-The following plugins are no longer provided as open-source version (users who have been using them in production environments, please contact us for upgrades):
+Следующие плагины больше не предоставляются в виде версий с открытым исходным кодом (пользователи, которые использовали их в производственных средах, пожалуйста, свяжитесь с нами для обновления):
 
-- @nocobase/plugin-auth-cas: Authenticates identity via the CAS protocol.
-- @nocobase/plugin-auth-odic: Authenticates identity via OIDC (OpenID Connect) protocol.
-- @nocobase/plugin-auth-saml: Authenticates identity via SAML 2.0.
+- @nocobase/plugin-auth-cas: Аутентифицирует личность с помощью протокола CAS.
+- @nocobase/plugin-auth-odic: Аутентифицирует личность по протоколу OIDC (OpenID Connect).
+- @nocobase/plugin-auth-saml: Аутентифицирует личность по протоколу SAML 2.0.
 
-The following plugins have been deprecated and will be removed in upcoming versions:
+Следующие плагины устарели и будут удалены в следующих версиях:
 
-- @nocobase/plugin-audit-logs: Deprecated, temporarily not removed, won't be installed in the new version.
-- @nocobase/plugin-snapshot-field: Deprecated, temporarily not removed, won't be installed in the new version.
-- @nocobase/plugin-charts: Use @nocobase/plugin-data-visualization instead.
-- @nocobase/plugin-excel-formula-field: Use @nocobase/plugin-field-formula instead.
-- @nocobase/plugin-math-formula-field: Use @nocobase/plugin-field-formula instead.
-- @nocobase/plugin-ui-routes-storage: Deprecated, frontend routes can be extended directly in the frontend.
+- @nocobase/plugin-audit-logs: Устарели, временно не удалены и не будут установлены в новой версии.
+- @nocobase/plugin-snapshot-поле: устарело, временно не удалено, не будет установлено в новой версии.
+- @nocobase/plugin-графики: вместо этого используйте @nocobase/plugin-визуализация данных.
+- @nocobase/plugin-excel-formula-field: Вместо этого используйте @nocobase/plugin-field-formula.
+- @nocobase/plugin-math-formula-field: Вместо этого используйте @nocobase/plugin-field-formula.
+- @nocobase/plugin-ui-routes-storage: Устарел, интерфейсные маршруты могут быть расширены непосредственно во внешнем интерфейсе.
 
-For the complete list of plugins, please refer to: [https://www.nocobase.com/plugins.html](https://www.nocobase.com/plugins.html)
+С полным списком плагинов вы можете ознакомиться здесь: [https://www.nocobase.com/plugins.html](https://www.nocobase.com/plugins.html)
 
-## Code Comments
+## Комментарии к коду
 
-To provide a better development experience, we've added comments to some special APIs:
+Чтобы упростить процесс разработки, мы добавили комментарии к некоторым специальным API-интерфейсам:
 
-- `@internal`: Typically used to identify internal implementation details or methods that are not designed for public use but exist for internal use within the code.
-- `@experimental`: Used to identify experimental features or APIs. These APIs are still in development and testing phases, may undergo significant changes, or even be removed or replaced in future versions.
-- `@deprecated`: Used to identify deprecated features, methods, or APIs in the code. Although they are still available, they may be removed in future versions, or there may be better alternative solutions available.
+- `@internal`: Обычно используется для определения деталей внутренней реализации или методов, которые не предназначены для публичного использования, но существуют для внутреннего использования в коде.
+- `@experimental`: Используется для идентификации экспериментальных функций или API. Эти API все еще находятся на стадии разработки и тестирования, могут претерпеть значительные изменения или даже быть удалены или заменены в будущих версиях.
+- `@deprecated`: Используется для идентификации устаревших функций, методов или API в коде. Хотя они все еще доступны, в будущих версиях они могут быть удалены или могут быть доступны более эффективные альтернативные решения.
 
-## License Agreement
+## Лицензионное соглашение
 
-NocoBase is dual-licensed under AGPL-3.0 and commercial licenses. For details, please refer to the [NocoBase License Agreement](https://cn.nocobase.com/agreement-cn.html).
+NocoBase имеет двойную лицензию - AGPL-3.0 и коммерческую лицензию. Для получения дополнительной информации, пожалуйста, ознакомьтесь с [Лицензионным соглашением NocoBase](https://cn.nocobase.com/agreement-cn.html).
 
-## Upgrade Guide
+## Руководство по обновлению
 
-- Always backup your database before upgrading! Always backup your database! Always backup your database!
-- You can also backup the entire project code.
+- Всегда делайте резервную копию своей базы данных перед обновлением! Всегда делайте резервную копию своей базы данных! Всегда делайте резервную копию своей базы данных!
+- Вы также можете создать резервную копию всего кода проекта.
 
-Since the Auth: CAS, Auth: OIDC, Auth: SAML three SSO plugins are removed from the open-source code, the upgrade will be divided into two cases.
+Поскольку три модуля единого входа Auth: CAS, Auth: OIDC, Auth: SAML удалены из открытого исходного кода, обновление будет разделено на два этапа.
 
-### If you are not using SSO plugins
+### Если вы не используете плагины единого входа
 
-Please follow the [conventional method](https://docs.nocobase.com/welcome/getting-started/upgrading) for upgrading.
+Пожалуйста, выполните обновление [обычным способом](https://docs.nocobase.com/welcome/getting-started/upgrading).
 
-### If you are using SSO plugins
+### Если вы используете плагины единого входа
 
-Please follow these steps to upgrade:
+Пожалуйста, выполните следующие действия для обновления:
 
-#### 1. Upgrade the Application
+#### 1. Обновите приложение
 
-Refer to [NocoBase Upgrade Overview](/welcome/getting-started/upgrading), and upgrade NocoBase to the latest version.
+Обратитесь к [Обзору обновления NocoBase] (/добро пожаловать/начало работы/обновление) и обновите NocoBase до последней версии.
 
-If you previously enabled CAS, OIDC, SAML plugins, you will see the following prompts during the upgrade:
+Если вы ранее включали плагины CAS, OIDC, SAML, во время обновления вы увидите следующие подсказки:
 
-Command line upgrade terminal prompt:
+Запрос терминала обновления командной строки:
 
 ![20240428212151](https://static-docs.nocobase.com/20240428212151.png)
 
-Docker version interface prompt:
+Запрос интерфейса версии Docker:
 
 ![20240428194926](https://static-docs.nocobase.com/20240428194926.png)
 
-#### 2. Remove Plugins or Obtain Plugin Version 1.0?
+#### 2. Удалите плагины или установите версию плагина 1.0?
 
-***If you choose to remove the plugins and continue upgrading:***
+***Если вы решите удалить плагины и продолжить обновление:***
 
-Remove the plugins according to the prompts
+Удалите плагины в соответствии с инструкциями
 
 ```bash
-# Main application
+# Основное приложение
 yarn pm remove cas oidc saml --force
-# If it's a sub-application, add the --app parameter
+# Если это вложенное приложение, добавьте --app parameter
 yarn pm remove cas oidc saml --force --app=sub-app1
 ```
 
-Continue upgrading
+Продолжайте обновление
 
 ```bash
 yarn nocobase upgrade
 ```
 
-***If you choose to update the plugins to version 1.0***
+***Если вы решите обновить плагины до версии 1.0***
 
-Contact the NocoBase team to obtain version 1.0 of the plugins and continue with the upgrade.
+Свяжитесь с командой NocoBase, чтобы получить плагины версии 1.0 и продолжить обновление.
 
-#### 3. CAS, OIDC, SAML Plugin Upgrade Process
+#### 3. Процесс обновления плагинов CAS, OIDC, SAML
 
-At this point, the application interface is no longer accessible, so we need to upgrade manually.
+На данный момент интерфейс приложения больше недоступен, поэтому нам необходимо обновить его вручную.
 
-1. Log in with your account at Business User Services Platform to download the latest version of the plugins.
-2. Unzip the plugins to the specified directory
-    - CAS plugin unzip to `./storage/plugins/@nocobase/plugin-auth-cas`
-    - OIDC plugin unzip to `./storage/plugins/@nocobase/plugin-auth-oidc`
-    - SAML plugin unzip to `./storage/plugins/@nocobase/plugin-auth-saml`
-3. Upgrade the application
-    - For Docker version, simply restart the container
-    - For source code or create-nocobase-app version
-        1. Download dependencies `yarn install`
-        2. Execute upgrade command `yarn nocobase upgrade`
-        3. Restart the application
+1. Войдите в свою учетную запись на платформе Business User Services Platform, чтобы загрузить последнюю версию плагинов.
+2. Распакуйте плагины в указанный каталог
+    - Плагин CAS распаковать в файл `./storage/plugins/@nocobase/plugin-auth-cas`.
+    - Плагин OIDC распаковать в "./хранилище/плагины/@nocobase/plugin-auth-oidc"
+    - Плагин SAML распаковать в `./хранилище/плагины/@nocobase/plugin-auth-saml`
+3. Обновите приложение
+    - Для получения версии Docker просто перезапустите контейнер
+    - Для получения исходного кода или версии приложения create-nocobase-app
+        1. Загрузите зависимости `yarn install`
+        2. Выполните команду обновления "yarn nocobase upgrade`
+        3. Перезапустите приложение
