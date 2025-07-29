@@ -16,7 +16,7 @@ D'un point de vue fonctionnel, les nœuds implémentés jusqu'à présent se ré
   - [Branche parallèle](./parallel.md) (fourni par le plugin @nocobase/plugin-workflow-parallel)
   - [Output](./output.md) (provided by plugin @nocobase/plugin-workflow-subflow)
   - [Call Workflow](./subflow.md) (provided by plugin @nocobase/plugin-workflow-subflow)
-  - [Variable personnalisée](./variable.md) (fourni par le plugin @nocobase/plugin-workflow-variable)
+  - [Variable](./variable.md) (fourni par le plugin @nocobase/plugin-workflow-variable)
 - **Calcul**
   - [Calcul](./calculation.md)
   - [Calcul de date](./date-calculation.md) (fourni par le plugin @nocobase/plugin-workflow-date-calculation)

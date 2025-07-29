@@ -14,7 +14,7 @@ From a functional perspective, the nodes implemented so far are in four categori
   - [End Process](./end.md)
   - [Loop](./loop.md) (provided by plugin @nocobase/plugin-workflow-loop)
   - [Parallel Branch](./parallel.md) (provided by plugin @nocobase/plugin-workflow-parallel)
-  - [Custom Variable](./variable.md) (provided by plugin @nocobase/plugin-workflow-variable)
+  - [Variable](./variable.md) (provided by plugin @nocobase/plugin-workflow-variable)
   - [Call Workflow](./subflow.md) (provided by plugin @nocobase/plugin-workflow-subflow)
   - [Output](./output.md) (provided by plugin @nocobase/plugin-workflow-subflow)
 - Calculation
