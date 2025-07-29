@@ -1,8 +1,8 @@
-# v0.9.0：NocoBase 的 Logging 系统
+# Версия 0.9.0: система ведения журнала NocoBase
 
-## `@nocobase/logger`
+## `@nocobase/регистратор`
 
-基于 Winston 实现，提供了便捷的创建 logger 实例的方法。
+Основанный на реализации Winston, он предоставляет удобный способ создания экземпляра регистратора.
 
 ```ts
 const logger = createLogger();
@@ -13,14 +13,14 @@ app.logger = instance;
 app.use(middleware);
 ```
 
-## 新增的环境变量
+## Новые переменные среды
 
-logger 相关环境变量有：
+связанными с регистратором переменными среды являются：
 
-- [LOGGER_TRANSPORT](../getting-started/env.md#logger_transport)
-- [LOGGER_BASE_PATH](./getting-started/env.md#logger_base_path)
+- [LOGGER_TRANSPORT](../начало работы/env.md#logger_transport)
+- [ПУТЬ к БАЗЕ РЕГИСТРАТОРА](./начало работы/env.md#путь к базе регистратора)
 
-## Application 的 logger 配置
+## Приложение для ведения журнала событий 
 
 ```ts
 const app = new Application({
@@ -35,21 +35,21 @@ const app = new Application({
 });
 ```
 
-更多配置项参考 [Winston 文档](https://github.com/winstonjs/winston#table-of-contents)
+Обратитесь к дополнительным элементам конфигурации [Winston 文档](https://github.com/winstonjs/winston#table-of-contents)
 
 ## app.logger & ctx.logger
 
-ctx.logger 带有 reqId，整个 ctx 周期里都是一个 reqId
+В контексте `ctx` логгер `logger` использует уникальный идентификатор запроса (reqId), который остается постоянным на протяжении всего жизненного цикла контекста.
 
 ```ts
 ctx.logger = app.logger.child({ reqId: ctx.reqId });
 ```
 
-`app.logger` 和 `ctx.logger` 都是 Winston 实例，详细用法参考 [Winston 文档](https://github.com/winstonjs/winston#table-of-contents)
+`app.logger` и `ctx.logger` являются экземплярами Winston. Подробное использование см. в [документации Winston](https://github.com/winstonjs/winston#table-of-contents).
 
-## 自定义 Transports
+## Кастомные Transports
 
-除了 Winston 的方式以外，NocoBase 还提供了一种更便捷的方式
+Помимо стандартного подхода Winston, NocoBase предоставляет более удобный способ настройки.
 
 ```ts
 import { Transports } from '@nocobase/logger';
