@@ -1,47 +1,47 @@
-# v0.10: 2023-06-20
+# Версия 0.10: 2023-06-20
 
-## New features in the second quarter
+## Новые возможности во втором квартале
 
-- Association field component improvements, support for multiple component switching
-  - Select
-  - Record picker
-  - Sub-form/Sub-details
-  - Sub-table
-  - File manager
-  - Title(read only)
-- Quick creation of relational data, supports two quick creation modes
-  - Add in drop-down menu to quickly create a new record based on the title field
-  - Add in pop-up window to configure complex add forms
-- Duplicate action, supports two modes
-  - Direct duplicate
-  - Copy into the form and continue to fill in
-- Form data templates
-- Filter data scope support variables
-- List block
-- Grid card block
-- Mobile client plugin
-- User authentication plugin, support for different authentication methods
-  - Email/Password
-  - SMS
+- Улучшения в компонентах ассоциативных полей, поддержка переключения между несколькими компонентами
+  - Выбор
+  - Средство выбора записей
+  - Вспомогательная форма/дополнительные сведения
+  - Вспомогательная таблица
+  - файловый менеджер
+  - Название (только для чтения)
+- Быстрое создание реляционных данных, поддерживает два режима быстрого создания
+  - Добавить в выпадающем меню для быстрого создания новой записи на основе поля заголовка
+  - Добавить во всплывающем окне для настройки сложных форм добавления
+- Действие дублирования, поддерживает два режима
+  - Прямое дублирование
+  - Скопируйте в форму и продолжайте заполнять
+- Шаблоны данных формы
+- Переменные поддержки области данных фильтра
+- Блок списка
+- Блок карточек сетки
+- Подключаемый модуль мобильного клиента
+- Подключаемый модуль аутентификации пользователя, поддерживающий различные методы аутентификации
+  - Адрес электронной почты / пароль
+- SMS
   - OIDC
   - SAML
-- Workflow nodes
-  - Manual node upgrade, support for adding and editing from existing collections
-  - Loop node
-  - Aggregate node
-- File manager
-  - Provide file collection template
-  - Provide file manager component
+- Узлы рабочего процесса
+  - Обновление узлов вручную, поддержка добавления и редактирования из существующих коллекций
+  - Узел цикла
+  - Узел агрегирования
+- файловый менеджер
+  - Предоставить шаблон сбора файлов
+  - Предоставить компонент файлового менеджера
 
-## Upgrading applications
+## Обновление приложений
 
-### Upgrading for Docker compose
+### Обновление для Docker compose
 
-No change, upgrade reference [Upgrading for Docker compose](/welcome/getting-started/upgrading/docker-compose)
+Изменений нет, ссылка на обновление [Обновление для Docker compose] (/добро пожаловать/начало работы/обновление/docker-compose)
 
-### Upgrading for Git source code
+### Обновление исходного кода Git
 
-v0.10 has a major upgrade of dependencies, so to prevent errors when upgrading the source code, you need to delete the following directories before upgrading
+Версия 0.10 содержит значительное обновление зависимостей, поэтому для предотвращения ошибок при обновлении исходного кода перед обновлением необходимо удалить следующие каталоги
 
 ```bash
 # Remove .umi cache
@@ -52,25 +52,25 @@ yarn rimraf -rf "./packages/*/*/{lib,esm,es,dist,node_modules}"
 yarn rimraf -rf node_modules
 ```
 
-See [Upgrading for Git source code](/welcome/getting-started/upgrading/git-clone) for more details
+Смотрите [Обновление исходного кода Git] (/добро пожаловать/начало работы/обновление/git-clone) для получения более подробной информации
 
-### Upgrading for create-nocobase-app
+### Обновление для create-nocobase-app
 
-It is recommended that `yarn create` re-download the new version and modify the `.env` configuration, for more details refer to [major version upgrade guide](/welcome/getting-started/upgrading/create-nocobase-app#major-upgrade)
+Рекомендуется, чтобы `yarn create` повторно загрузил новую версию и изменил конфигурацию `.env`, для получения более подробной информации обратитесь к [руководству по обновлению основной версии] (/добро пожаловать/начало работы/обновление/create-nocobase-app#основное обновление).
 
-## Upcoming deprecated and potentially incompatible changes
+## Предстоящие устаревшие и потенциально несовместимые изменения
 
-### Sub-table field component
+### Компонент полей вложенных таблиц
 
-Not compatible with new version, block fields need to be removed and reassigned (UI reassignment only)
+Не совместим с новой версией, необходимо удалить и переназначить поля блоков (только переназначение пользовательского интерфейса)
 
-### Attachment upload api changes
+### Изменения в api загрузки вложений
 
-In addition to the built-in attachments table, users can also custom file collection, the upload api for attachments has been changed from `/api/attachments:upload` to `/api/<file-collection>:create`, upload is deprecated, still compatible with v0.10 but will be Removed.
+В дополнение к встроенной таблице вложений пользователи также могут настраивать сбор файлов, api-интерфейс загрузки для вложений был изменен с `/api/attachments:upload` на `/api/<коллекция файлов>:create`, загрузка устарела, по-прежнему совместима с версией 0.10, но будет обновлена. быть удаленным.
 
-### signin/signup api changes
+### Изменения в API входа/регистрации
 
-The nocobase kernel provides a more powerful [auth module](https://github.com/nocobase/nocobase/tree/main/packages/plugins/auth) with the following changes to the user login, registration, verification, and logout apis:
+Ядро nocobase предоставляет более мощный [модуль аутентификации] (https://github.com/nocobase/nocobase/tree/main/packages/plugins/auth) со следующими изменениями в интерфейсах входа пользователя в систему, регистрации, верификации и выхода из системы:
 
 ```bash
 /api/users:signin -> /api/auth:signIn
@@ -79,25 +79,25 @@ The nocobase kernel provides a more powerful [auth module](https://github.com/no
 /api/users:check -> /api/auth:check
 ```
 
-Note: The above users interface, which is deprecated, is still compatible with v0.10, but will be removed in the next major release.
+Примечание: Вышеупомянутый пользовательский интерфейс, который устарел, по-прежнему совместим с версией 0.10, но будет удален в следующем крупном выпуске.
 
-### Adjustments to date field filtering
+### Изменения в фильтрации полей даты
 
-If date related filtering was previously configured in the data range, it needs to be deleted and reconfigured.
+Если ранее в диапазоне данных была настроена фильтрация, связанная с датой, ее необходимо удалить и перенастроить.
 
-## Third-party plugin upgrade guide
+## Руководство по обновлению сторонних плагинов
 
-### Dependencies upgrade
+### Обновление зависимостей
 
-dependencies mainly including
+Зависимости, в основном включающие:
 
-- `react` upgrade to v18
-- `react-dom` upgrade to v18
-- `react-router` upgrade to v6.11
-- `umi` upgrade to v4
-- `dumi` upgrade to v2
+- обновление `react` до версии 18
+- обновление `react-dom` до версии 18
+- обновление `react-router` до версии 6.11
+- обновление `umi` до версии 4
+- обновление `dumi` до версии 2
 
-The `package.json` dependencies should be changed to the latest version, e.g:
+Зависимости `package.json` должны быть изменены на последнюю версию, например:
 
 ```diff
 {
@@ -112,13 +112,13 @@ The `package.json` dependencies should be changed to the latest version, e.g:
 }
 ```
 
-### Code changes
+### Изменения в коде
 
-Because react-router has been upgraded, the related code also needs to be changed, the main changes include
+Поскольку react-router был обновлен, необходимо также изменить соответствующий код, основные изменения включают в себя
 
-### Layout Component
+### Компонент компоновки
 
-Layout component needs to use `<Outlet />` instead of `props.children`.
+Компонент компоновки должен использовать `<Outlet />` вместо `props.children`.
 
 ```diff
 import React from 'react';
@@ -134,7 +134,7 @@ export default function Layout(props) {
 }
 ```
 
-if you use `React.cloneElement` to render the route component, you need to change it like this:
+если вы используете `React.cloneElement` для отображения компонента route, вам нужно изменить его следующим образом:
 
 ```diff
 import React from 'react';
@@ -150,7 +150,7 @@ export default function RouteComponent(props) {
 }
 ```
 
-Change the route component to get the value from `useOutletContext`
+Измените компонент маршрута, чтобы получить значение из `useOutletContext`
 
 ```diff
 import React from 'react';
@@ -163,9 +163,9 @@ import React from 'react';
 }
 ```
 
-### Redirect
+### Перенаправление
 
-`<Redirect>` is changed to `<Navigate replace />`.
+`<Перенаправление>` заменено на `<Перейти к замене />`.
 
 ```diff
 - <Redirect to="about" />
@@ -174,7 +174,7 @@ import React from 'react';
 
 ### useHistory
 
-`useNavigate` is changed to `useHistory`.
+`useNavigate` изменен на `useHistory`.
 
 ```diff
 - import { useHistory } from 'react-router-dom';
@@ -192,14 +192,14 @@ import React from 'react';
 
 ### useLocation
 
-`useLocation<type>()` is changed to `useLocation`.
+`useLocation<type>()` изменен на `useLocation`.
 
 ```diff
 - const location= useLocation<type>();
 + const location= useLocation();
 ```
 
-`const { query } = useLocation()` is changed to `useSearchParams()`。
+`const { query } = useLocation()` изменен на `useSearchParams()`。
 
 ```diff
 - const location = useLocation();
@@ -209,9 +209,9 @@ import React from 'react';
 + searchParams.get('name');
 ```
 
-### path
+### Путь
 
-All of the following are valid route paths in v6:
+Все приведенные ниже пути являются допустимыми в версии 6:
 
 ```
 /groups
@@ -222,7 +222,7 @@ All of the following are valid route paths in v6:
 /files/:id/*
 ```
 
-The following RegExp-style route paths are not valid in v6:
+Следующие маршруты в стиле регулярных выражений недопустимы в версии 6:
 
 ```
 /tweets/:id(\d+)
@@ -230,4 +230,4 @@ The following RegExp-style route paths are not valid in v6:
 /files-*
 ```
 
-For more api changes, please refer to [react-router@6](https://reactrouter.com/en/main/upgrading/v5)。
+Для получения дополнительной информации об изменениях в api, пожалуйста, обратитесь к [react-router@6](https://reactrouter.com/en/main/upgrading/v5).
