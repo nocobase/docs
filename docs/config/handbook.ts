@@ -34,18 +34,18 @@ export default [
             link: '/handbook/data-source-manager',
           },
           {
-            title: 'Main database',
-            'title.fr-FR': 'Base de données principale',
-            'title.zh-CN': '主数据库',
-            'title.ja-JP': 'メインデータベース',
+            title: 'Main data source',
+            'title.fr-FR': 'Source de données principale',
+            'title.zh-CN': '主数据源',
+            'title.ja-JP': 'メインデータソース',
             // subTitle: '@nocobase/plugin-collection-manager',
             link: '/handbook/data-source-main',
           },
           {
-            title: 'External database',
-            'title.fr-FR': 'Base de données externe',
-            'title.zh-CN': '外部数据库',
-            'title.ja-JP': '外部データベース',
+            title: 'External data sources (Databases)',
+            'title.fr-FR': 'Sources de données externes (Bases de données)',
+            'title.zh-CN': '外部数据源（数据库）',
+            'title.ja-JP': '外部データソース（データベース）',
             children: [
               {
                 title: 'Overview',
@@ -56,7 +56,7 @@ export default [
               },
               {
                 title: 'External MySQL',
-                'title.fr-FR': 'Source de données MySQL',
+                'title.fr-FR': 'MySQL externe',
                 'title.zh-CN': '外部 MySQL',
                 'title.ja-JP': '外部 MySQL',
                 // subTitle: '@nocobase/plugin-data-source-external-mysql',
@@ -64,7 +64,7 @@ export default [
               },
               {
                 title: 'External MariaDB',
-                'title.fr-FR': 'Source de données MariaDB',
+                'title.fr-FR': 'MariaDB externe',
                 'title.zh-CN': '外部 MariaDB',
                 'title.ja-JP': '外部 MariaDB',
                 // subTitle: '@nocobase/plugin-data-source-external-mariadb',
@@ -72,7 +72,7 @@ export default [
               },
               {
                 title: 'External PostgreSQL',
-                'title.fr-FR': 'Source de données PostgreSQL',
+                'title.fr-FR': 'PostgreSQL externe',
                 'title.zh-CN': '外部 PostgreSQL',
                 'title.ja-JP': '外部 PostgreSQL',
                 // subTitle: '@nocobase/plugin-data-source-external-postgres',
@@ -80,7 +80,7 @@ export default [
               },
               {
                 title: 'External MSSQL',
-                'title.fr-FR': 'Source de données MSSQL',
+                'title.fr-FR': 'MSSQL externe',
                 'title.zh-CN': '外部 MSSQL',
                 'title.ja-JP': '外部 MSSQL',
                 // subTitle: '@nocobase/plugin-data-source-external-mysql',
@@ -88,13 +88,20 @@ export default [
               },
               {
                 title: 'External Oracle',
-                'title.fr-FR': 'Source de données Oracle',
+                'title.fr-FR': 'Oracle externe',
                 'title.zh-CN': '外部 Oracle',
                 'title.ja-JP': '外部 Oracle',
                 // subTitle: '@nocobase/plugin-data-source-external-mysql',
                 link: '/handbook/data-source-external-oracle',
               },
             ],
+          },
+          {
+            title: 'Master vs External Data Sources',
+            'title.fr-FR': 'Sources de données: principale vs externe',
+            'title.zh-CN': '主、外部数据源对比',
+            'title.ja-JP': 'メイン・外部データソース比較',
+            link: '/handbook/data-modeling/master-vs-external-data-sources',
           },
           {
             title: 'REST API data source',
