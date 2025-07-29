@@ -6,13 +6,12 @@ Nodes are the basic units of logical arrangement in a workflow. A workflow can c
 Workflow triggers are not considered to be nodes but are displayed in the workflow diagram as entry nodes. They are different concepts from nodes. For details, please refer to the [Triggers](../triggers/index.md) section.
 :::
 
-From a functional perspective, the nodes implemented so far are in four categories (a total of 24 types of nodes):
+From a functional perspective, the nodes implemented so far are in four categories (a total of 25 types of nodes):
 
 - Flow Control
   - [Condition](./condition.md)
   - [Delay](./delay.md) (provided by plugin @nocobase/plugin-workflow-deley)
   - [End Process](./end.md)
-  - [JSON Variable Mapping](./json-variable-mapping.md) (provided by plugin @nocobase/plugin-workflow-json-variable-mapping)
   - [Loop](./loop.md) (provided by plugin @nocobase/plugin-workflow-loop)
   - [Parallel Branch](./parallel.md) (provided by plugin @nocobase/plugin-workflow-parallel)
   - [Custom Variable](./variable.md) (provided by plugin @nocobase/plugin-workflow-variable)
@@ -23,6 +22,7 @@ From a functional perspective, the nodes implemented so far are in four categori
   - [Date Calculation](./date-calculation.md) (provided by plugin @nocobase/plugin-workflow-date-calculation)
   - [Dynamic Expression Calculation](./dynamic-calculation.md) (provided by plugin @nocobase/plugin-workflow-dynamic-calculation)
   - [JSON Calculation](./json-query.md) (provided by plugin @nocobase/plugin-workflow-json-query)
+  - [JSON Variable Mapping](./json-variable-mapping.md) (provided by plugin @nocobase/plugin-workflow-json-variable-mapping)
 - Data Table Operations
   - [Create Record](./create.md)
   - [Update Record](./update.md)
@@ -33,7 +33,8 @@ From a functional perspective, the nodes implemented so far are in four categori
 - Manual Processing
   - [Manual Processing](./manual.md) (provided by plugin @nocobase/plugin-workflow-manual)
   - [Approval](./approval.md) (provided by plugin @nocobase/plugin-workflow-approval)
+  - [CC](./cc.md) (provided by plugin @nocobase/plugin-workflow-cc)
 - Other Extensions
+  - [JavaScript](./javascript.md) (provided by plugin @nocobase/plugin-workflow-javascript)
   - [HTTP Request](./request.md) (provided by plugin @nocobase/plugin-workflow-request)
   - [Response Message](./response-message.md) (provided by plugin @nocobase/plugin-workflow-response-message)
-  - [JavaScript](./javascript.md) (provided by plugin @nocobase/plugin-workflow-javascript)
