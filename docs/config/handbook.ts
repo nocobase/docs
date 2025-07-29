@@ -97,10 +97,10 @@ export default [
             ],
           },
           {
-            title: 'Main vs External Databases',
-            'title.fr-FR': 'Bases de données: principale vs externe',
-            'title.zh-CN': '主、外部数据库对比',
-            'title.ja-JP': 'メイン・外部データベース比較',
+            title: 'Master vs External Data Sources',
+            'title.fr-FR': 'Sources de données: principale vs externe',
+            'title.zh-CN': '主、外部数据源对比',
+            'title.ja-JP': 'メイン・外部データソース比較',
             link: '/handbook/data-modeling/master-vs-external-data-sources',
           },
           {

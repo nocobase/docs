@@ -1,14 +1,14 @@
-# Bases de données: principale vs externe
+# Sources de données: principale vs externe
 
-Les différences entre les bases de données principales et les bases de données externes dans NocoBase se reflètent principalement dans quatre aspects : le support des types de bases de données, le support des types de collections, le support des types de champs et les capacités de sauvegarde et de migration.
+Les différences entre les sources de données principales et les sources de données externes dans NocoBase se reflètent principalement dans quatre aspects : le support des types de sources de données, le support des types de collections, le support des types de champs et les capacités de sauvegarde et de migration.
 
-## 1. Support des types de bases de données
+## 1. Support des types de sources de données
 
 Pour plus de détails, voir : [Gestionnaire de sources de données](https://docs.nocobase.com/handbook/data-source-manager)
 
-### Types de bases de données
+### Types de sources de données
 
-| Type de base de données | Support base de données principale | Support base de données externe |
+| Type de source de données | Support source de données principale | Support source de données externe |
 |---------------------------|-------------------------------------|-----------------------------------|
 | PostgreSQL | ✅ | ✅ |
 | MySQL | ✅ | ✅ |
@@ -19,7 +19,7 @@ Pour plus de détails, voir : [Gestionnaire de sources de données](https://docs
 
 ### Gestion des collections
 
-| Gestion des collections | Support base de données principale | Support base de données externe |
+| Gestion des collections | Support source de données principale | Support source de données externe |
 |------------------------|-------------------------------------|-----------------------------------|
 | Gestion de base | ✅ | ✅ |
 | Gestion visuelle | ✅ | ❌ |
@@ -28,7 +28,7 @@ Pour plus de détails, voir : [Gestionnaire de sources de données](https://docs
 
 Pour plus de détails, voir : [Collections](https://docs.nocobase.com/handbook/data-modeling/collection)
 
-| Type de collection | Base de données principale | Base de données externe | Description |
+| Type de collection | Source de données principale | Source de données externe | Description |
 |-------------------|------------------------------|---------------------------|-------------|
 | Générale | ✅ | ✅ | Collection de base |
 | Vue | ✅ | ✅ | Vue de source de données |
@@ -47,7 +47,7 @@ Pour plus de détails, voir : [Collections de champs](https://docs.nocobase.com/
 
 ### Types de base
 
-| Type de champ | Base de données principale | Base de données externe |
+| Type de champ | Source de données principale | Source de données externe |
 |--------------|---------------------------|------------------------|
 | Texte simple | ✅ | ✅ |
 | Texte long | ✅ | ✅ |
@@ -63,7 +63,7 @@ Pour plus de détails, voir : [Collections de champs](https://docs.nocobase.com/
 
 ### Types de choix
 
-| Type de champ | Base de données principale | Base de données externe |
+| Type de champ | Source de données principale | Source de données externe |
 |--------------|---------------------------|------------------------|
 | Checkbox | ✅ | ✅ |
 | Sélection simple | ✅ | ✅ |
@@ -74,7 +74,7 @@ Pour plus de détails, voir : [Collections de champs](https://docs.nocobase.com/
 
 ### Types de médias
 
-| Type de champ | Base de données principale | Base de données externe |
+| Type de champ | Source de données principale | Source de données externe |
 |--------------|---------------------------|------------------------|
 | Média | ✅ | ✅ |
 | Markdown | ✅ | ✅ |
@@ -85,7 +85,7 @@ Pour plus de détails, voir : [Collections de champs](https://docs.nocobase.com/
 
 ### Types de date et heure
 
-| Type de champ | Base de données principale | Base de données externe |
+| Type de champ | Source de données principale | Source de données externe |
 |--------------|---------------------------|------------------------|
 | Date et heure(avec fuseau horaire) | ✅ | ✅ |
 | Date et heure(sans fuseau horaire) | ✅ | ✅ |
@@ -95,7 +95,7 @@ Pour plus de détails, voir : [Collections de champs](https://docs.nocobase.com/
 
 ### Types géométriques
 
-| Type de champ | Base de données principale | Base de données externe |
+| Type de champ | Source de données principale | Source de données externe |
 |--------------|---------------------------|------------------------|
 | Point | ✅ | ✅ |
 | Ligne | ✅ | ✅ |
@@ -104,7 +104,7 @@ Pour plus de détails, voir : [Collections de champs](https://docs.nocobase.com/
 
 ### Types avancés
 
-| Type de champ | Base de données principale | Base de données externe |
+| Type de champ | Source de données principale | Source de données externe |
 |--------------|---------------------------|------------------------|
 | UUID | ✅ | ✅ |
 | Nano ID | ✅ | ✅ |
@@ -117,7 +117,7 @@ Pour plus de détails, voir : [Collections de champs](https://docs.nocobase.com/
 
 ### Champs d'informations système
 
-| Type de champ | Base de données principale | Base de données externe |
+| Type de champ | Source de données principale | Source de données externe |
 |--------------|---------------------------|------------------------|
 | Créé le | ✅ | ✅ |
 | Dernière mise à jour le | ✅ | ✅ |
@@ -127,7 +127,7 @@ Pour plus de détails, voir : [Collections de champs](https://docs.nocobase.com/
 
 ### Types d'association
 
-| Type de champ | Base de données principale | Base de données externe |
+| Type de champ | Source de données principale | Source de données externe |
 |--------------|---------------------------|------------------------|
 | Un à un | ✅ | ✅ |
 | Un à plusieurs | ✅ | ✅ |
@@ -136,30 +136,30 @@ Pour plus de détails, voir : [Collections de champs](https://docs.nocobase.com/
 | Plusieurs à plusieurs (tableau) | ✅ | ❌ |
 
 :::info
-Les champs de pièces jointes dépendent des collections de fichiers, qui ne sont supportées que par les bases de données principales. Par conséquent, les bases de données externes ne supportent actuellement pas les champs de pièces jointes.
+Les champs de pièces jointes dépendent des collections de fichiers, qui ne sont supportées que par les sources de données principales. Par conséquent, les sources de données externes ne supportent actuellement pas les champs de pièces jointes.
 :::
 
 ## 4. Comparaison du support de sauvegarde et de migration
 
-| Fonctionnalité | Base de données principale | Base de données externe |
+| Fonctionnalité | Source de données principale | Source de données externe |
 |---------------|------------------------------|---------------------------|
 | Sauvegarde et restauration | ✅ | ❌ (Géré par l'utilisateur) |
 | Gestion de la migration | ✅ | ❌ (Géré par l'utilisateur) |
 
 :::info
-NocoBase fournit des capacités de sauvegarde, de restauration et de migration de structure pour les bases de données principales. Pour les bases de données externes, ces opérations doivent être complétées indépendamment par les utilisateurs selon leurs propres environnements de base de données. NocoBase ne fournit pas de support intégré.
+NocoBase fournit des capacités de sauvegarde, de restauration et de migration de structure pour les sources de données principales. Pour les sources de données externes, ces opérations doivent être complétées indépendamment par les utilisateurs selon leurs propres environnements de source de données. NocoBase ne fournit pas de support intégré.
 :::
 
 ## Comparaison résumée
 
-| Élément de comparaison | Base de données principale | Base de données externe |
+| Élément de comparaison | Source de données principale | Source de données externe |
 |-----------------------|------------------------------|---------------------------|
-| Types de bases de données | PostgreSQL, MySQL, MariaDB, KingbaseES | PostgreSQL, MySQL, MariaDB, MSSQL, Oracle, KingbaseES |
+| Types de sources de données | PostgreSQL, MySQL, MariaDB, KingbaseES | PostgreSQL, MySQL, MariaDB, MSSQL, Oracle, KingbaseES |
 | Support des types de collections | Tous les types de collections | Uniquement les collections générales et de vues |
 | Support des types de champs | Tous les types de champs | Tous les types de champs sauf les champs de pièces jointes |
 | Sauvegarde et migration | Support intégré | Géré par l'utilisateur |
 
 ## Recommandations
 
-- **Si vous devez utiliser les fonctionnalités avancées de NocoBase** (comme les commentaires, l'héritage, les téléchargements de fichiers, etc.), veuillez utiliser la **base de données principale**.
-- **Si vous devez seulement lire ou vous connecter aux données de bases de données externes existantes**, vous pouvez utiliser les **bases de données externes**.
+- **Si vous devez utiliser les fonctionnalités avancées de NocoBase** (comme les commentaires, l'héritage, les téléchargements de fichiers, etc.), veuillez utiliser la **source de données principale**.
+- **Si vous devez seulement lire ou vous connecter aux données de sources de données externes existantes**, vous pouvez utiliser les **sources de données externes**.
