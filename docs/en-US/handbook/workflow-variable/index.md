@@ -1,4 +1,4 @@
-# Custom Variables
+# Variable
 
 <PluginInfo name="workflow-variable" link="/handbook/workflow-variable" commercial="true"></PluginInfo>
 

@@ -16,7 +16,7 @@
   - [并行分支](./parallel.md)（插件 @nocobase/plugin-workflow-parallel 提供）
   - [流程输出](./output.md)（插件 @nocobase/plugin-workflow-subflow 提供）
   - [调用工作流](./subflow.md)（插件 @nocobase/plugin-workflow-subflow 提供）
-  - [自定义变量](./variable.md)（插件 @nocobase/plugin-workflow-variable 提供）
+  - [变量](./variable.md)（插件 @nocobase/plugin-workflow-variable 提供）
 - 计算类
   - [运算](./calculation.md)
   - [日期计算](./date-calculation.md)（插件 @nocobase/plugin-workflow-date-calculation 提供）
