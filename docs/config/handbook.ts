@@ -2574,12 +2574,6 @@ export default [
                 link: '/handbook/workflow/nodes/end',
               },
               {
-                title: 'JSON Variable Mapping',
-                'title.zh-CN': 'JSON 变量映射',
-                'title.ja-JP': 'JSON 变量映射',
-                link: '/handbook/workflow/nodes/json-variable-mapping',
-              },
-              {
                 title: 'Loop',
                 'title.zh-CN': '循环',
                 'title.ja-JP': 'ループ',
@@ -2599,6 +2593,12 @@ export default [
               },
               '/handbook/workflow/nodes/subflow',
               '/handbook/workflow/nodes/output',
+              {
+                title: 'Variable',
+                'title.zh-CN': '变量',
+                'title.ja-JP': '変数',
+                link: '/handbook/workflow/nodes/variable',
+              },
             ],
           },
           {
@@ -2632,6 +2632,12 @@ export default [
                 'title.ja-JP': 'JSONクエリ',
                 link: '/handbook/workflow/nodes/json-query',
               },
+              {
+                title: 'JSON Variable Mapping',
+                'title.zh-CN': 'JSON 变量映射',
+                'title.ja-JP': 'JSON 变量映射',
+                link: '/handbook/workflow/nodes/json-variable-mapping',
+              },
             ],
           },
           {
@@ -2655,8 +2661,8 @@ export default [
               },
               {
                 title: 'Destroy',
-                'title.zh-CN': '销毁',
-                'title.ja-JP': '破壊',
+                'title.zh-CN': '删除',
+                'title.ja-JP': '删除',
                 link: '/handbook/workflow/nodes/destroy',
               },
               {
@@ -2736,12 +2742,6 @@ export default [
                 'title.zh-CN': '响应消息',
                 'title.ja-JP': 'レスポンスメッセージ',
                 link: '/handbook/workflow/nodes/response-message',
-              },
-              {
-                title: 'Variable',
-                'title.zh-CN': '变量',
-                'title.ja-JP': '変数',
-                link: '/handbook/workflow/nodes/variable',
               },
             ],
           },
@@ -3129,10 +3129,10 @@ export default [
             link: '/handbook/workflow-subflow',
           },
           {
-            title: 'Custom variable',
-            'title.fr-FR': 'Variable personnalisée',
-            'title.zh-CN': '自定义变量',
-            'title.ja-JP': 'カスタム変数',
+            title: 'Variable',
+            'title.fr-FR': 'Variable',
+            'title.zh-CN': '变量',
+            'title.ja-JP': '変数',
             subTitle: '@nocobase/plugin-workflow-variable',
             link: '/handbook/workflow-variable',
           },
