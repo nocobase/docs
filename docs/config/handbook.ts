@@ -101,7 +101,7 @@ export default [
             'title.fr-FR': 'Bases de données: principale vs externe',
             'title.zh-CN': '主、外部数据库对比',
             'title.ja-JP': 'メイン・外部データベース比較',
-            link: '/handbook/data-modeling/master-vs-external-data-sources',
+            link: '/handbook/data-modeling/main-vs-external-data-sources',
           },
           {
             title: 'REST API data source',
