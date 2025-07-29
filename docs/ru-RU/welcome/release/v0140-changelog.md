@@ -1,16 +1,16 @@
-# v0.14: 2023-09-12
+# Версия 0.14: 2023-09-12
 
-This release enables plug-and-play plugins in production environments. You can now add plugins directly through the UI, and support downloading from the npm registry (which can be private), local uploads, and URL downloads.
+В этом выпуске доступны подключаемые модули `plug-and-play` в производственных средах. Теперь вы можете добавлять плагины непосредственно через пользовательский интерфейс и поддерживать загрузку из реестра npm (который может быть частным), локальную загрузку и загрузку по URL-адресу.
 
-## New features
+## Новые возможности
 
-### New plugin manager interface
+### Новый интерфейс менеджера плагинов
 
 ![20240429074459](https://static-docs.nocobase.com/20240429074459.png)
 
-### Uploaded plugins are located in the storage/plugins directory.
+### Загруженные плагины находятся в каталоге storage/plugins.
 
-The storage/plugins directory is used to upload plugins, and is organized as npm packages.
+Каталог storage/plugins используется для загрузки плагинов и организован в виде пакетов npm.
 
 ```bash
 |- /storage/
@@ -23,40 +23,40 @@ The storage/plugins directory is used to upload plugins, and is organized as npm
     |- /my-nocobase-plugin-hello/
 ```
 
-### Plugin updates
+### Обновления плагинов
 
-Currently, only plugins under storage/plugins can be updated, as shown here:
+В настоящее время можно обновлять только плагины в разделе хранилище/plugins, как показано здесь:
 
 ![20240429074511](https://static-docs.nocobase.com/20240429074511.png)
 
-Note: In order to facilitate maintenance and upgrading, and to avoid unavailability of the storage plugins due to upgrading, you can put the new plugin directly into storage/plugins and then perform the upgrade operation.
+Примечание: Чтобы упростить обслуживание и обновление, а также избежать недоступности плагинов хранилища из-за обновления, вы можете установить новый плагин непосредственно в хранилище/плагины, а затем выполнить операцию обновления.
 
-## Incompatible changes
+## Несовместимые изменения
 
-### Changes to plugin names
+### Изменения в названиях плагинов
 
-- PLUGIN_PACKAGE_PREFIX environment variable is no longer provided.
-- Plugin names and package names are unified, old plugin names can still exist as aliases.
+- Переменная среды `PLUGIN_PACKAGE_PREFIX` больше не используется.
+- Имена плагинов и пакетов унифицированы, старые имена плагинов по-прежнему могут использоваться в качестве псевдонимов.
 
-### Improvements to pm.add
+### Улучшения в pm.add
 
 ```bash
-# Use packageName instead of pluginName, lookup locally, error if not found
+# Использовать packageName вместо PluginName, выполнить поиск локально, ошибка, если не найдено
 pm add packageName
 
-# Download from remote only if registry is provided, can also specify version
+# Загрузка с удаленного компьютера возможна только при наличии реестра, также можно указать версию
 pm add packageName --registry=xx --auth-token=yy --version=zz
 
-# You can also provide a local zip, add multiple times and replace it with the last one
+# Вы также можете указать локальный почтовый индекс, добавлять его несколько раз и заменять последним
 pm add /a/plugin.zip
 
-# Remote zip, replace it with the same name
+# Удаленный архив, замените его на то же имя
 pm add http://url/plugin.zip
 ```
 
-### Nginx configuration changes
+### Изменения конфигурации Nginx
 
-Add `/static/plugins/` location
+Добавить расположение `/static/plugins/`
 
 ```conf
 server {
@@ -75,8 +75,8 @@ server {
 }
 ```
 
-More see full version of [nocobase.conf](https://github.com/nocobase/nocobase/blob/main/docker/nocobase/nocobase.conf)
+Подробнее смотрите в полной версии [nocobase.conf](https://github.com/nocobase/nocobase/blob/main/docker/nocobase/nocobase.conf)
 
-## Plugin development guide
+## Руководство по разработке плагина
 
-[Develop the first plugin](/development/your-fisrt-plugin)
+[Разработка первого плагина](/development/your-fisrt-plugin)
