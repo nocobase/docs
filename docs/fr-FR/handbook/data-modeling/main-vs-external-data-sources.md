@@ -161,5 +161,5 @@ NocoBase fournit des capacités de sauvegarde, de restauration et de migration d
 
 ## Recommandations
 
-- **Si vous devez utiliser les fonctionnalités avancées de NocoBase** (comme les commentaires, l'héritage, les téléchargements de fichiers, etc.), veuillez utiliser la **base de données principale**.
-- **Si vous devez seulement lire ou vous connecter aux données de bases de données externes existantes**, vous pouvez utiliser les **bases de données externes**.
+- **Si vous utilisez NocoBase pour construire un nouveau système métier**, veuillez utiliser la **base de données principale**, qui vous permettra d'utiliser toutes les fonctionnalités de NocoBase.
+- **Si vous utilisez NocoBase pour vous connecter aux bases de données d'autres systèmes pour des opérations CRUD de base**, alors utilisez les **bases de données externes**.

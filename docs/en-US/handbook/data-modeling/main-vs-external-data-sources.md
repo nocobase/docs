@@ -161,5 +161,5 @@ NocoBase provides backup, restore, and structure migration capabilities for main
 
 ## Recommendations
 
-- **If you need to use NocoBase's advanced features** (such as comments, inheritance, file uploads, etc.), please use the **main database**.
-- **If you only need to read or connect to existing external database data**, you can use **external databases**.
+- **If you are using NocoBase to build a new business system**, please use the **main database**, which will allow you to use NocoBase's complete functionality.
+- **If you are using NocoBase to connect to other systems' databases for basic CRUD operations**, then use **external databases**.
