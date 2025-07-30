@@ -1,21 +1,21 @@
-# v0.11: 2023-07-08
+# Версия 0.11: 2023-07-08
 
-## New features
+## Новые возможности
 
-- New client application, plugin and router
-- Ant design upgrade to v5
-- New plugin
-  - Data visualization
-  - API keys
-  - Google map
+- Новое клиентское приложение, плагин и маршрутизатор
+- Обновление дизайна Ant до версии 5
+- Новый плагин
+  - Визуализация данных
+  - Ключи API
+  - Карта Google
 
-## Incompatible changes
+## Несовместимые изменения
 
-### New client application, plugin and router
+### Новое клиентское приложение, плагин и маршрутизатор
 
-#### Plugin changes
+#### Изменения в плагинах
 
-before you had to pass a component and the component needed to pass `props.children`, for example:
+Раньше вам приходилось передавать компонент, а компоненту требовалось передавать `props.children`, например:
 
 ```tsx | pure
 const HelloProvider = (props) => {
@@ -26,7 +26,7 @@ const HelloProvider = (props) => {
 export default HelloProvider;
 ```
 
-now you need to change to the plugin way, for example:
+Теперь вам нужно перейти на использование плагина, например:
 
 ```diff | pure
 +import { Plugin } from '@nocobase/client'
@@ -48,17 +48,17 @@ const HelloProvider = (props) => {
 + export default HelloPlugin;
 ```
 
-plugins are very powerful and can do a lot of things in the `load` phase:
+Плагины очень мощные и могут многое делать на этапе `загрузки`:
 
-- modify routes
-- add Components
-- add Providers
-- add Scopes
-- load other plugins
+- изменить маршруты
+- добавить компоненты
+- добавить поставщиков
+- добавить области видимости
+- загрузить другие плагины
 
-#### Routing changes
+#### Изменения маршрута
 
-if you used `RouteSwitchContext` to modify the route before, you now need to replace it with a plugin:
+Если раньше вы использовали "RouteSwitchContext" для изменения маршрута, то теперь вам нужно заменить его плагином:mm
 
 ```tsx | pure
 import { RouteSwitchContext } from '@nocobase/client';
@@ -80,7 +80,7 @@ const HelloProvider = () => {
 };
 ```
 
-now you need to change to the plugin way, for example:
+Теперь вам нужно перейти на использование плагина, например:
 
 ```diff | pure
 - import { RouteSwitchContext } from '@nocobase/client';
@@ -112,9 +112,9 @@ const HelloProvider = (props) => {
 + export default HelloPlugin;
 ```
 
-more details can be found in [packages/core/client/src/application/index.md](https://github.com/nocobase/nocobase/blob/main/packages/core/client/src/application/index.md)
+Более подробную информацию можно найти в разделе [packages/core/client/src/application/index.md](https://github.com/nocobase/nocobase/blob/main/packages/core/client/src/application/index.md)
 
-### antd upgrade to v5
+### Обновление antd до версии 5
 
-- antd related details view the official website [V4 to V5](https://ant.design/docs/react/migration-v5)
-- `@formily/antd` replace with `@formily/antd-v5`
+- подробности, связанные с antd, смотрите на официальном веб-сайте [версии с 4 по 5](https://ant.design/docs/react/migration-v5)
+- `@formily/antd` заменить на `@formily/antd-v5`
