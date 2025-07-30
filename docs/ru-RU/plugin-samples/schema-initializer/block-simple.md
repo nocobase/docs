@@ -1,28 +1,28 @@
-# 添加新的简单区块 Simple Block
+# Добавление нового простого блока Simple Block
 
-## 场景说明
+## Описание сценария
 
-NocoBase 有很多 `Add block` 按钮用于向界面添加区块。其中有些和数据表有关系的被成为数据区块 `Data Block`，有些和数据表无关的被称为简单区块 `Simple Block`。
+В NocoBase существует множество кнопок `Add block`, которые используются для добавления блоков в интерфейс. Некоторые из них связаны с таблицами данных и называются блоками данных (`Data Block`), а другие, не связанные с данными, называются простыми блоками (`Simple Block`).
 
 ![img_v3_02b4_a4529308-62e3-4fa7-be4d-5dcae332c49g](https://static-docs.nocobase.com/img_v3_02b4_a4529308-62e3-4fa7-be4d-5dcae332c49g.jpg)
 
-但是目前已有的区块类型不一定满足我们的需求，我们就需要根据需求自定开发一些区块，本篇文章就是针对简单区块 `Simple Block` 进行说明。
+Однако существующие типы блоков не всегда удовлетворяют потребности, поэтому может потребоваться создание пользовательских блоков. Данная статья посвящена созданию простого блока `Simple Block`.
 
-## 示例说明
+## Описание примера
 
-本实例会创建一个图片区块类型，并将其添加到 `Page`、`Table` 以及移动端的 `Add block` 中。
+В этом примере будет создан блок для отображения изображений, который будет добавлен в меню `Add block` на страницах (`Page`), в таблицах (`Table`) и в мобильной версии.
 
-本实例主要为了演示 initializer 的使用，更多关于区块扩展可以查看 [区块扩展](/plugin-samples/block) 文档。
+Этот пример демонстрирует использование Initializer. Подробности о расширении блоков см. в документации [Расширения блоков](/plugin-samples/block).
 
-本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-initializer-block-simple) 中查看。
+Полный код примера доступен в [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-initializer-block-simple).
 
 <video width="100%" controls="">
   <source src="https://static-docs.nocobase.com/20240522-181816.mp4" type="video/mp4" />
 </video>
 
-## 初始化插件
+## Инициализация плагина
 
-我们按照 [编写第一个插件](/development/your-fisrt-plugin) 文档说明，如果没有一个项目，可以先创建一个项目，如果已经有了或者是 clone 的源码，则跳过这一步。
+Следуйте инструкциям из документации [Создание первого плагина](/development/your-fisrt-plugin). Если у вас нет проекта, создайте его. Если проект уже есть или вы клонировали исходный код, пропустите этот шаг.
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d sqlite
@@ -31,65 +31,67 @@ yarn install
 yarn nocobase install
 ```
 
-然后初始化一个插件，并添加到系统中：
+Затем инициализируйте плагин и добавьте его в систему:
 
 ```bash
 yarn pm create @nocobase-sample/plugin-initializer-block-simple
 yarn pm enable @nocobase-sample/plugin-initializer-block-simple
 ```
 
-然后启动项目即可：
+Запустите проект:
 
 ```bash
 yarn dev
 ```
 
-然后登录后访问 [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) 就可以看到插件已经安装并启用了。
+После входа в систему перейдите по адресу [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/), чтобы убедиться, что плагин установлен и активирован.
 
-## 功能实现
+## Реализация функциональности
 
-在实现本示例之前，我们需要先了解一些基础知识：
+Перед началом работы с этим примером необходимо ознакомиться с основными концепциями:
 
-- [SchemaInitializer 教程](/development/client/ui-schema/initializer)：用于向界面内添加各种区块、字段、操作等
-- [SchemaInitializer API](https://client.docs.nocobase.com/core/ui-schema/schema-initializer)：用于向界面内添加各种区块、字段、操作等
-- [UI Schema 协议](/development/client/ui-schema/what-is-ui-schema)：详细介绍 Schema 的结构和每个属性的作用
-- [Designable 设计器](/development/client/ui-schema/designable)：用于修改 Schema
+- [Руководство по SchemaInitializer](/development/client/ui-schema/initializer): Используется для добавления блоков, полей, операций и других элементов в интерфейс.
+- [API SchemaInitializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer): Описание API для добавления элементов в интерфейс.
+- [Протокол UI Schema](/development/client/ui-schema/what-is-ui-schema): Подробное описание структуры схемы и роли каждого свойства.
+- [Дизайнер Designable](/development/client/ui-schema/designable): Используется для изменения схемы.
+
+Структура проекта:
 
 ```bash
 .
-├── client # 客户端插件
-│   ├── initializer # 初始化器
-│   ├── component # 区块组件
-│   ├── index.tsx # 客户端插件入口
-│   ├── locale.ts # 多语言工具函数
-│   ├── constants.ts # 常量
-│   ├── schema # Schema
+├── client # Клиентская часть плагина
+│   ├── initializer # Инициализатор
+│   ├── component # Компоненты блока
+│   ├── index.tsx # Входной файл клиентского плагина
+│   ├── locale.ts # Утилиты для мультиязычности
+│   ├── constants.ts # Константы
+│   ├── schema # Схемы
 │   └── settings # Schema Settings
-├── locale # 多语言文件
-│   ├── en-US.json # 英语
-│   └── zh-CN.json # 中文
-├── index.ts # 服务端插件入口
-└── server # 服务端插件
+├── locale # Файлы локализации
+│   ├── en-US.json # Английский
+│   └── zh-CN.json # Китайский
+├── index.ts # Входной файл серверного плагина
+└── server # Серверная часть плагина
 ```
 
-### 1. 定义名称
+### 1. Определение имени
 
-我们首先需要定义区块名称，它将会使用在各个地方。
+Сначала необходимо определить имя блока, которое будет использоваться в различных местах.
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/constants.ts`：
+Создайте файл `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/constants.ts`:
 
 ```ts
 export const BlockName = 'Image';
 export const BlockNameLowercase = BlockName.toLowerCase();
 ```
 
-### 2. 实现区块组件
+### 2. Реализация компонента блока
 
-#### 2.1 定义区块组件
+#### 2.1 Определение компонента блока
 
-本示例要做的是一个图片区块组件，我们取名为 `Image`。
+В этом примере создается компонент блока для отображения изображений, названный `Image`.
 
-所以我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/component/Image.tsx` 文件，其内容如下：
+Создайте файл `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/component/Image.tsx`:
 
 ```tsx | pure
 import React, { FC } from 'react';
@@ -106,19 +108,19 @@ export const Image: FC<{ height?: number }> = withDynamicSchemaProps(({ height =
 }, { displayName: BlockName })
 ```
 
-`Image` 组件整体来说是一个被 `withDynamicSchemaProps` 包裹的函数组件，[withDynamicSchemaProps](/development/client/ui-schema/what-is-ui-schema#x-component-props-和-x-use-component-props) 是一个高阶组件，用于处理 Schema 中的的动态属性。
+Компонент `Image` — это функциональный компонент, обернутый в [withDynamicSchemaProps](/development/client/ui-schema/what-is-ui-schema#x-component-props-и-x-use-component-props), который обрабатывает динамические свойства из схемы.
 
-如果不看 `withDynamicSchemaProps` 的话，`Image` 组件就是一个简单的函数组件。
+Без учета `withDynamicSchemaProps` компонент `Image` является простым функциональным компонентом.
 
-然后将其在 `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/component/index.ts` 中导出：
+Экспортируйте компонент в `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/component/index.ts`:
 
 ```tsx | pure
 export * from './Image';
 ```
 
-#### 2.2 注册区块组件
+#### 2.2 Регистрация компонента блока
 
-我们需要将 `Image` 通过插件注册到系统中。
+Зарегистрируйте компонент `Image` в системе через плагин.
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
@@ -133,14 +135,14 @@ export class PluginInitializerBlockSimpleClient extends Plugin {
 export default PluginInitializerBlockSimpleClient;
 ```
 
-#### 2.3 验证区块组件
+#### 2.3 Проверка компонента блока
 
-组件验证方式有 2 种：
+Существует два способа проверки компонента:
 
-- 临时页面验证：我们可以临时建一个页面，然后渲染 `Image` 组件，查看是否符合需求
-- 文档示例验证：可以启动文档 `yarn doc plugins/@nocobase-sample/plugin-initializer-block-simple`，通过写文档示例的方式验证是否符合需求（TODO）
+- Проверка через временную страницу: Создайте временную страницу, отрендерите компонент `Image` и проверьте, соответствует ли он требованиям.
+- Проверка через документацию: Запустите документацию с помощью `yarn doc plugins/@nocobase-sample/plugin-initializer-block-simple` и проверьте с помощью примеров в документации (TODO).
 
-我们以 `临时页面验证` 为例，我们新建一个页面，根据属性参数添加一个或者多个 `Image` 组件，查看是否符合需求。
+Рассмотрим проверку через временную страницу. Создайте страницу, добавьте один или несколько компонентов `Image` с различными параметрами и проверьте их работу.
 
 ```tsx | pure
 import React from 'react';
@@ -171,21 +173,21 @@ export class PluginInitializerBlockSimpleClient extends Plugin {
 export default PluginInitializerBlockSimpleClient;
 ```
 
-然后访问 `http://localhost:13000/admin/image-component` 就可以看到对应测试页面的内容了。
+Перейдите по адресу `http://localhost:13000/admin/image-component`, чтобы увидеть содержимое тестовой страницы.
 
 ![20240526165057](https://static-docs.nocobase.com/20240526165057.png)
 
-验证完毕后需要删除测试页面。
+После проверки удалите тестовую страницу.
 
-### 3. 定义区块 Schema
+### 3. Определение схемы блока
 
-#### 3.1 定义区块 Schema
+#### 3.1 Определение схемы блока
 
-NocoBase 的动态页面都是通过 Schema 来渲染，所以我们需要定义一个 Schema，后续用于在界面中添加 `Image` 区块。在实现本小节之前，我们需要先了解一些基础知识：
+Динамические страницы в NocoBase рендерятся через схемы, поэтому необходимо определить схему для добавления блока `Image` в интерфейс. Перед этим ознакомьтесь с:
 
-- [UI Schema 协议](/development/client/ui-schema/what-is-ui-schema)：详细介绍 Schema 的结构和每个属性的作用
+- [Протокол UI Schema](/development/client/ui-schema/what-is-ui-schema): Подробное описание структуры схемы и роли каждого свойства.
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/schema/index.ts` 文件：
+Создайте файл `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/schema/index.ts`:
 
 ```tsx | pure
 import { ISchema } from "@nocobase/client";
@@ -202,13 +204,13 @@ export const imageSchema: ISchema = {
 };
 ```
 
-关于 `imageSchema` 的详细说明：
+Описание `imageSchema`:
 
-- `type`：类型，这里是 `void`，表示纯 UI 节点，没有数据
-- `x-decorator`：装饰器，这里是 [CardItem 组件](https://client.docs.nocobase.com/components/card-item)，目前的区块都是被包裹在卡片中的，用于提供样式、布局和拖拽等功能
-- `x-component`：组件，这里是 `Image`，就是我们刚定义的组件
+- `type`: Тип, здесь `void`, указывающий на чистый UI-узел без данных.
+- `x-decorator`: Декоратор, здесь используется компонент [CardItem](https://client.docs.nocobase.com/components/card-item), который оборачивает блоки для обеспечения стилей, компоновки и функциональности перетаскивания.
+- `x-component`: Компонент, здесь `Image`, ранее определенный компонент.
 
-上述 Schema 转为 React 组件后相当于：
+Эта схема эквивалентна следующему React-компоненту:
 
 ```tsx | pure
 <CardItem>
@@ -216,9 +218,9 @@ export const imageSchema: ISchema = {
 </CardItem>
 ```
 
-#### 3.2 验证区块 Schema
+#### 3.2 Проверка схемы блока
 
-同验证组件一样，我们可以通过临时页面验证或者文档示例验证的方式来验证 Schema 是否符合需求。我们这里以临时页面验证为例：
+Аналогично проверке компонента, схему можно проверить через временную страницу или примеры в документации. Рассмотрим проверку через временную страницу:
 
 ```tsx | pure
 import React from 'react';
@@ -244,17 +246,17 @@ export class PluginInitializerBlockSimpleClient extends Plugin {
 export default PluginInitializerBlockSimpleClient;
 ```
 
-关于 `SchemaComponent` 的详细说明可以查看 [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponent-1) 文档。
+Подробности о `SchemaComponent` см. в [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponent-1).
 
-我们访问 [http://localhost:13000/admin/image-schema](http://localhost:13000/admin/image-schema) 就可以看到对应测试页面的内容了。
+Перейдите по адресу [http://localhost:13000/admin/image-schema](http://localhost:13000/admin/image-schema), чтобы увидеть содержимое тестовой страницы.
 
 ![20240526165408](https://static-docs.nocobase.com/20240526165408.png)
 
-验证完毕后需要删除测试页面。
+После проверки удалите тестовую страницу.
 
-### 4. 定义 Schema Initializer Item
+### 4. Определение элемента SchemaInitializer
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/initializer/index.ts` 文件：
+Создайте файл `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/initializer/index.ts`:
 
 ```ts
 import { SchemaInitializerItemType, useSchemaInitializer } from '@nocobase/client';
@@ -280,22 +282,22 @@ export const imageInitializerItem: SchemaInitializerItemType = {
 }
 ```
 
-- `type`：类型，这里是 `item`，表示是一个文本，其有点击事件，点击后可以插入一个新的 Schema
-- `name`：唯一标识符，用于区分不同的 Schema Item 和增删改查操作
-- `icon`：图标，更多 icon 可以参考 [Ant Design Icons](https://ant.design/components/icon)
-- `useComponentProps`：返回一个对象，包含 `title` 和 `onClick` 两个属性，`title` 是显示的文本，`onClick` 是点击后的回调函数
-- [useSchemaInitializer()](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#useschemainitializer)：用于获取 `SchemaInitializerContext` 上下文
-  - `insert`：插入一个新的 Schema
+- `type`: Тип, здесь `item`, указывающий на текстовый элемент с событием клика, которое вставляет новую схему.
+- `name`: Уникальный идентификатор для различения элементов SchemaInitializer и операций с ними.
+- `icon`: Иконка, список доступных иконок см. в [Ant Design Icons](https://ant.design/components/icon).
+- `useComponentProps`: Возвращает объект с полями `title` (отображаемый текст) и `onClick` (обработчик клика).
+- [useSchemaInitializer()](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#useschemainitializer): Получает контекст `SchemaInitializerContext`.
+  - `insert`: Вставляет новую схему.
 
-更多关于 Schema Item 的定义可以参考 [Schema Initializer Item](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types) 文档。
+Подробности о создании элементов SchemaInitializer см. в [Schema Initializer Item](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types).
 
-### 5. 实现 Schema Settings
+### 5. Реализация SchemaSettings
 
-#### 5.1 定义 Schema Settings
+#### 5.1 Определение SchemaSettings
 
-一个完整的 Block 还需要有 Schema Settings，用于配置一些属性和操作，但 Schema Settings 不是本示例的重点，所以我们这里仅有一个 `remove` 操作。
+Для полноценного блока требуется SchemaSettings для настройки свойств и операций. В этом примере реализована только операция `remove`, так как SchemaSettings не является основным фокусом.
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/settings/index.ts` 文件：
+Создайте файл `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/settings/index.ts`:
 
 ```ts | pure
 import { SchemaSettings } from "@nocobase/client";
@@ -318,11 +320,11 @@ export const imageSettings = new SchemaSettings({
 });
 ```
 
-- componentProps
-  - `removeParentsIfNoChildren`：如果没有子节点，是否删除父节点
-  - `breakRemoveOn`：删除时的中断条件。因为 `Add Block` 会自动将子项的包裹在 `Grid` 中，所以这里设置 `breakRemoveOn: { 'x-component': 'Grid' }`，当删除 `Grid` 时，不再向上删除。
+- `componentProps`:
+  - `removeParentsIfNoChildren`: Указывает, удалять ли родительский узел, если у него нет дочерних.
+  - `breakRemoveOn`: Условие остановки удаления. Поскольку `Add Block` автоматически оборачивает элементы в `Grid`, здесь задано `breakRemoveOn: { 'x-component': 'Grid' }`, чтобы предотвратить удаление `Grid`.
 
-#### 5.2 注册 Schema Settings
+#### 5.2 Регистрация SchemaSettings
 
 ```ts
 import { Plugin } from '@nocobase/client';
@@ -338,9 +340,9 @@ export class PluginInitializerBlockSimpleClient extends Plugin {
 export default PluginInitializerBlockSimpleClient;
 ```
 
-#### 5.3 使用 Schema Settings
+#### 5.3 Использование SchemaSettings
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/schema/index.ts` 中的 `imageSchema`：
+Обновите `imageSchema` в `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/schema/index.ts`:
 
 ```diff
 + import { imageSettings } from "../settings";
@@ -353,21 +355,19 @@ const imageSchema: ISchema = {
 };
 ```
 
-### 6. 添加到 Add block 中
+### 6. Добавление в `Add block`
 
-系统中有很多个 `Add block` 按钮，但他们的 **name 是不同的**。
+В системе есть множество кнопок `Add block`, но их имена (`name`) различны.
 
 ![img_v3_02b4_049b0a62-8e3b-420f-adaf-a6350d84840g](https://static-docs.nocobase.com/img_v3_02b4_049b0a62-8e3b-420f-adaf-a6350d84840g.jpg)
 
-#### 6.1 添加到页面级别 Add block 中
+#### 6.1 Добавление в `Add block` на уровне страницы
 
-如果我们需要添加到页面级别的 `Add block` 中，我们需要知道对应的 `name`，我们可以通过 TODO 方式查看对应的 `name`。
+Чтобы добавить блок в `Add block` на уровне страницы, необходимо знать соответствующий `name`. Способ получения `name` описан в документации (TODO).
 
-TODO
+Из изображения видно, что `Add block` на уровне страницы имеет `name` `page:addBlock`, а группа `Other Blocks` — `name` `otherBlocks`.
 
-通过上图可以看到页面级别的 `Add block` 对应的 name 为 `page:addBlock`，`Other Blocks` 对应的 name 为 `otherBlocks`。
-
-然后我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/index.tsx` 文件：
+Обновите файл `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/index.tsx`:
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
@@ -387,27 +387,27 @@ export class PluginInitializerBlockSimpleClient extends Plugin {
 export default PluginInitializerBlockSimpleClient;
 ```
 
-上述代码首先将 `Image` 组件注册到系统中，这样前面 `imageSchema` 定义的 `x-component: 'Image'` 才能找到对应的组件，更多详细解释可以查看 [全局注册 Component 和 Scope](/plugin-samples/component-and-scope/global)。
+Код регистрирует компонент `Image` в системе, чтобы `x-component: 'Image'` в `imageSchema` мог найти соответствующий компонент. Подробности см. в [Глобальная регистрация Component и Scope](/plugin-samples/component-and-scope/global).
 
-然后将 `imageSettings` 通过 [app.schemaSettingsManager.add](https://client.docs.nocobase.com/core/ui-schema/schema-settings-manager#schemasettingsmanageradd) 添加到系统中。
+Затем `imageSettings` добавляется в систему через [app.schemaSettingsManager.add](https://client.docs.nocobase.com/core/ui-schema/schema-settings-manager#schemasettingsmanageradd).
 
-然后使用 [app.schemaInitializerManager.addItem](https://client.docs.nocobase.com/core/ui-schema/schema-initializer-manager#schemainitializermanageradditem) 将 `imageInitializerItem` 添加对应 Initializer 子项中，其中 `page:addBlock` 是页面上 `Add block` 的 name，`otherBlocks` 是其父级的 name。
+Элемент `imageInitializerItem` добавляется в подэлементы Initializer через [app.schemaInitializerManager.addItem](https://client.docs.nocobase.com/core/ui-schema/schema-initializer-manager#schemainitializermanageradditem), где `page:addBlock` — это `name` кнопки `Add block` на странице, а `otherBlocks` — `name` родительской группы.
 
-然后我们 hover `Add block` 按钮，就可以看到 `Image` 这个新的区块类型了，点击 `Image`，就可以添加一个新的 `Image` 区块了。
+При наведении на кнопку `Add block` появится новый тип блока `Image`. При клике на `Image` будет добавлен новый блок `Image`.
 
 <video width="100%" controls="">
   <source src="https://static-docs.nocobase.com/20240522-175523.mp4" type="video/mp4" />
 </video>
 
-#### 6.2 添加到弹窗 Add block 中
+#### 6.2 Добавление в `Add block` во всплывающем окне
 
-我们不仅需要将其添加到页面级别的 `Add block` 中，还需要将其添加到 `Table` 区块 `Add new` 弹窗的 `Add block` 中。
+Необходимо добавить блок в `Add block` во всплывающем окне `Add new` блока `Table`.
 
 ![img_v3_02b4_fc47fe3a-35a1-4186-999c-0b48e6e001dg](https://static-docs.nocobase.com/img_v3_02b4_fc47fe3a-35a1-4186-999c-0b48e6e001dg.jpg)
 
-我们按照页面级别获取 `name` 的方式获取到 `Table` 区块的 `Add block` 的 `name` 为 `popup:addNew:addBlock`，`Other Blocks` 对应的 name 为 `otherBlocks`。
+Аналогично, определите `name` для `Add block` блока `Table`, который равен `popup:addNew:addBlock`, а для группы `Other Blocks` — `otherBlocks`.
 
-然后修改 `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/index.tsx` 文件：
+Обновите файл `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/index.tsx`:
 
 ```diff
 export class PluginInitializerBlockSimpleClient extends Plugin {
@@ -423,13 +423,13 @@ export class PluginInitializerBlockSimpleClient extends Plugin {
 
 ![img_v3_02b4_7062bfab-5a7b-439c-b385-92c5704b6b3g](https://static-docs.nocobase.com/img_v3_02b4_7062bfab-5a7b-439c-b385-92c5704b6b3g.jpg)
 
-#### 6.3 添加到移动端 Add block 中
+#### 6.3 Добавление в `Add block` мобильной версии
 
-> 首先要激活移动端插件，参考 [激活插件](/welcome/getting-started/plugin#3-activate-the-plugin) 文档。
+> Сначала активируйте плагин для мобильной версии, см. [Активация плагина](/welcome/getting-started/plugin#3-activate-the-plugin).
 
-我们可以将其添加到移动端的 `Add block` 中，获取 `name` 的方法这里就不再赘述了。
+Добавьте блок в `Add block` мобильной версии. Способ получения `name` здесь не описывается.
 
-然后修改 `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/index.tsx` 文件：
+Обновите файл `packages/plugins/@nocobase-sample/plugin-initializer-block-simple/src/client/index.tsx`:
 
 ```diff
 export class PluginInitializerBlockSimpleClient extends Plugin {
@@ -446,22 +446,22 @@ export class PluginInitializerBlockSimpleClient extends Plugin {
 
 ![img_v3_02b4_ec873b25-5a09-4f3a-883f-1d722035799g](https://static-docs.nocobase.com/img_v3_02b4_ec873b25-5a09-4f3a-883f-1d722035799g.jpg)
 
-如果需要更多的 `Add block`，可以继续添加，只需要知道对应的 `name` 即可。
+Для добавления в другие `Add block` достаточно знать соответствующий `name`.
 
-## 打包和上传到生产环境
+## Сборка и развертывание в продакшен
 
-按照 [构建并打包插件](/development/your-fisrt-plugin#构建并打包插件) 文档说明，我们可以打包插件并上传到生产环境。
+Следуйте инструкциям из документации [Сборка и упаковка плагина](/development/your-fisrt-plugin#сборка-и-упаковка-плагина) для сборки и развертывания плагина.
 
-如果是 clone 的源码，需要先执行一次全量 build，将插件的依赖也构建好。
+Если вы используете клонированный исходный код, выполните полную сборку, чтобы собрать зависимости плагина:
 
 ```bash
 yarn build
 ```
 
-如果是使用的 `create-nocobase-app` 创建的项目，可以直接执行：
+Если проект создан с помощью `create-nocobase-app`, выполните:
 
 ```bash
 yarn build @nocobase-sample/plugin-initializer-block-simple --tar
 ```
 
-这样就可以看到 `storage/tar/@nocobase-sample/plugin-initializer-block-simple.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
+После этого в папке `storage/tar/@nocobase-sample/plugin-initializer-block-simple.tar.gz` появится архив плагина. Установите его через [загрузку](/welcome/getting-started/plugin).
