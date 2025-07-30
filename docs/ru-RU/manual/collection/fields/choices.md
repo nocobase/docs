@@ -1,8 +1,8 @@
-# 选择类型
+# Выбор типа
 
-- Checkbox
-- Single select
-- Multiple select
-- Radio group
-- Checkbox group
-- China region（插件扩展）
+- Флажок
+- Одиночный выбор
+- Множественный выбор
+- Группа радиостанций
+- Группа флажков
+
