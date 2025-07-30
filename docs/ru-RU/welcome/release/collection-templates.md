@@ -1,80 +1,83 @@
-# v0.9.0: Collection 模板
+# Версия 0.9.0 
+# Шаблоны коллекций (Collection Templates)
 
-<img src="./v08-1-collection-templates/v08-1-collection-templates.jpg">
+<img src="./v08-1-collection-templates/v08-1-collection-templates.jpg" alt="Интерфейс шаблонов коллекций">
 
-## 为什么需要 Collection 模板？
+## Зачем нужны шаблоны коллекций?
 
-待补充
+*(Раздел будет дополнен)*
 
-## 配置参数说明
+## Описание параметров конфигурации
 
 ```ts
 interface ICollectionTemplate {
-  name: string;
-  title?: string;
-  /** 排序 */
+  name: string; // Уникальное имя шаблона
+  title?: string; // Отображаемое название
+  /** Порядок сортировки */
   order?: number;
-  /** 默认配置 */
+  /** Конфигурация по умолчанию */
   default?: CollectionOptions;
-  /** UI 可配置的 CollectionOptions 参数（添加或编辑的 Collection 表单的字段） */
+  /** Настраиваемые параметры CollectionOptions (поля формы для создания/редактирования коллекции) */
   configurableProperties?: Record<string, ISchema>;
-  /** 当前模板可用的字段类型 */
+  /** Доступные типы полей для этого шаблона */
   availableFieldInterfaces?:
     | AvailableFieldInterfacesInclude
     | AvailableFieldInterfacesExclude;
 }
 
 interface AvailableFieldInterfacesInclude {
-  include?: any[];
+  include?: any[]; // Явное включение типов полей
 }
 
 interface AvailableFieldInterfacesExclude {
-  exclude?: any[];
+  exclude?: any[]; // Исключение типов полей
 }
 
 interface CollectionOptions {
   /**
-   * 自动生成 id
+   * Автогенерация ID
    * @default true
-   * */
+   */
   autoGenId?: boolean;
-  /** 创建人 */
+  /** Поле "Создано пользователем" */
   createdBy?: boolean;
-  /** 最后更新人 */
+  /** Поле "Обновлено пользователем" */
   updatedBy?: boolean;
-  /** 创建日期 */
+  /** Поле "Дата создания" */
   createdAt?: boolean;
-  /** 更新日期 */
+  /** Поле "Дата обновления" */
   updatedAt?: boolean;
-  /** 可排序 */
+  /** Поддержка сортировки */
   sortable?: boolean;
-  /* 树结构 */
+  /** Древовидная структура */
   tree?: string;
-  /* 日志 */
+  /** Логирование изменений */
   logging?: boolean;
-  /** 继承 */
+  /** Наследование от других коллекций */
   inherits: string | string[];
-  /* 字段列表 */
+  /** Список полей */
   fields?: FieldOptions[];
 }
 ```
 
-## 示例
+## Пример использования
 
-创建时都不需要 autoGenId，并且只提供 title 和 name 配置项
+Создание шаблона без автогенерации ID, с настройкой только названия и имени:
 
 ```ts
 import { collectionConfigurableProperties } from '@nocobase/client';
 
 {
   default: {
-    autoGenId: false,
-    fields: [],
+    autoGenId: false, // Отключение автогенерации ID
+    fields: [], // Пустой список полей по умолчанию
   },
   configurableProperties: {
-    ...collectionConfigurableProperties('name', 'title'),
+    ...collectionConfigurableProperties('name', 'title'), // Разрешить настройку только name и title
   },
 }
 ```
 
-完整插件示例参考：[samples/custom-collection-template](https://github.com/nocobase/nocobase/tree/feat/collection-templates/packages/samples/custom-collection-template)
+Полный пример плагина с шаблоном коллекции:  
+[samples/custom-collection-template](https://github.com/nocobase/nocobase/tree/feat/collection-templates/packages/samples/custom-collection-template)
+
