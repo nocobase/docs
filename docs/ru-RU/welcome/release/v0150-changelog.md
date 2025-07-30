@@ -1,20 +1,20 @@
-# v0.15：2023-11-13
+# Версия 0.15: 2023-11-13
 
-## Features
+## Особенности
 
 ![Plugin settings manager](https://static-docs.nocobase.com/20240115140600.png)
 
-## Breaking changes
+## Кардинальные изменения
 
-### Plugin configuration page registration API
+### API регистрации страницы настройки плагина
 
-以前使用 `SettingsCenterProvider` 注册插件配置页面，现在需要通过插件注册。
+Раньше я использовал Настройку `scenterprovider` для регистрации страницы конфигурации подключаемого модуля, но теперь мне нужно зарегистрироваться через подключаемый модуль.
 
-Previously, the plugin configuration page was registered using `SettingsCenterProvider`, and now it needs to be registered through the plugin.
+Ранее страница настройки плагина была зарегистрирована с помощью `SettingsCenterProvider`, а теперь ее необходимо зарегистрировать через плагин.
 
-- Case 1: There is only one Tab on the original page
+- Пример 1: На исходной странице есть только одна вкладка
 
-When there is only one Tab on the page, the new version of the Tab will be deleted, leaving only the title and icon of the page.
+Если на странице есть только одна вкладка, новая версия вкладки будет удалена, оставив только заголовок и значок страницы.
 
 ```tsx | pure
 const HelloProvider = React.memo(props => {
@@ -39,7 +39,7 @@ const HelloProvider = React.memo(props => {
 });
 ```
 
-Now it needs to be changed to:
+Теперь его нужно изменить на:
 
 ```tsx | pure
 class HelloPlugin extends Plugin {
@@ -55,9 +55,9 @@ class HelloPlugin extends Plugin {
 }
 ```
 
-The `Hello Tab` of `tab1` is deleted.
+`Приветственная вкладка` из `tab1` удалена.
 
-`aclSnippet` parameter `pm.hello.tab1` corresponds to the key of the original `settings` object:
+Параметр `aclSnippet` `pm.hello.tab1" соответствует ключу исходного объекта `настройки`.:
 
 ```tsx
 <SettingsCenterProvider
@@ -74,7 +74,7 @@ The `Hello Tab` of `tab1` is deleted.
 ></SettingsCenterProvider>
 ```
 
-- Case 2: There are multiple Tabs on the original page
+- Пример 2: На исходной странице есть несколько вкладок
 
 ```tsx
 const HelloProvider = React.memo(props => {
@@ -103,7 +103,7 @@ const HelloProvider = React.memo(props => {
 });
 ```
 
-Now it needs to be changed to:
+Теперь его нужно изменить на:
 
 ```tsx
 import { Outlet } from "react-router-dom";
@@ -129,7 +129,7 @@ class HelloPlugin extends Plugin {
 }
 ```
 
-Get the routing information corresponding to the pluginSettingsManager
+Получите информацию о маршруте, соответствующую `pluginSettingsManager`
 
 ```tsx
 const baseName = app.pluginSettingsManager.getRouteName("hello");
@@ -138,7 +138,7 @@ const basePath = app.pluginSettingsManager.getRoutePath("hello"); // /admin/sett
 // /admin/settings/hello
 ```
 
-If there is a link jump inside the plugin configuration page, you need to change it accordingly, for example:
+Если на странице конфигурации плагина есть переход по ссылке, вам необходимо соответствующим образом изменить ее, например:
 
 ```tsx | pure
 navigate("/admin/settings/hello/1").navigate("/admin/settings/hello/2");
@@ -149,8 +149,8 @@ navigate(`${basePath}/1`);
 navigate(`${basePath}/2`);
 ```
 
-For more information, see the [plugin settings manager](https://docs.nocobase.com/development/client/plugin-settings).
+Для получения дополнительной информации обратитесь к [менеджеру настроек плагина](https://docs.nocobase.com/development/client/plugin-settings).
 
-## Changelog
+## Список изменений
 
-For a complete changelog, please refer to [Changelog](https://github.com/nocobase/nocobase/blob/main/CHANGELOG.md).
+Полный список изменений приведен в разделе [Список изменений](https://github.com/nocobase/nocobase/blob/main/CHANGELOG.md).
