@@ -1,18 +1,18 @@
-# Form Configuration Page
+# Страница конфигурации формы
 
-## Scenario Description
+## Описание сценария
 
-The configuration interface is composed of a form.
+Интерфейс конфигурации состоит из формы.
 
-## Example Description
+## Описание примера
 
-Suppose we need to connect to a third-party map service and configure the map's `key` and `secret`. We can add a configuration page via a plugin to fill in this information.
+Предположим, нам нужно подключиться к стороннему картографическому сервису и настроить `key` и `secret` для карты. Мы можем добавить страницу конфигурации через плагин для ввода этой информации.
 
-The complete example code in this document can be found in [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-settings-form).
+Полный код примера доступен в репозитории [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-settings-form).
 
-## Initialize the Plugin
+## Инициализация плагина
 
-Following the [Writing Your First Plugin](/development/your-fisrt-plugin) document, if you don’t have a project yet, you can create one first. If you already have one or have cloned the source code, you can skip this step.
+Следуя руководству [Создание первого плагина](/development/your-fisrt-plugin), создайте проект, если у вас его ещё нет. Если проект уже создан или вы клонировали исходный код, этот шаг можно пропустить.
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d sqlite
@@ -21,34 +21,34 @@ yarn install
 yarn nocobase install
 ```
 
-Then, initialize a plugin and add it to the system:
+Затем инициализируйте плагин и добавьте его в систему:
 
 ```bash
 yarn pm create @nocobase-sample/plugin-settings-form
 yarn pm enable @nocobase-sample/plugin-settings-form
 ```
 
-Now, start the project:
+Запустите проект:
 
 ```bash
 yarn dev
 ```
 
-After logging in, visit [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) to see that the plugin has been installed and enabled.
+После входа в систему перейдите по адресу [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/), чтобы убедиться, что плагин установлен и активирован.
 
-## Backend Implementation
+## Реализация серверной части
 
-### 1. Create the Database Table
+### 1. Создание таблицы базы данных
 
-The backend mainly involves creating a database table to store configuration information. For creating database tables, we need to be familiar with the following:
+На серверной части основная задача — создание таблицы базы данных для хранения конфигурационной информации. Для создания таблиц нужно ознакомиться со следующими концепциями:
 
-- [Tables and Fields](/development/server/collections)
-- [Creating Tables](/development/server/collections/configure#在插件代码里定义)
-- [Field Type](/development/server/collections/options#field-type)
-- [defineCollection() API](/api/database#definecollection)
-- [Collection API](/api/database/collection)
+- [Таблицы и поля](/development/server/collections)
+- [Создание таблиц](/development/server/collections/configure#в-плагин-коде)
+- [Типы полей](/development/server/collections/options#field-type)
+- [API defineCollection()](/api/database#definecollection)
+- [API коллекций](/api/database/collection)
 
-In this example, we create the `packages/plugins/@nocobase-sample/plugin-settings-form/src/server/collections/map-configuration.ts` file with the following content:
+В этом примере создайте файл `packages/plugins/@nocobase-sample/plugin-settings-form/src/server/collections/map-configuration.ts` со следующим содержимым:
 
 ```ts
 import { defineCollection } from '@nocobase/database';
@@ -68,11 +68,11 @@ export default defineCollection({
 });
 ```
 
-As needed, we created a `SamplesMapConfiguration` database table containing two fields: `key` and `secret`, both of string type.
+Мы создали таблицу базы данных `SamplesMapConfiguration`, содержащую два поля: `key` и `secret`, оба типа `string`.
 
-### 2. Execute the Update
+### 2. Выполнение обновления
 
-We need to update the database with the defined table, which can be done with the following command:
+Необходимо обновить базу данных с определённой таблицей, что можно сделать следующей командой:
 
 ```bash
 yarn nocobase upgrade
@@ -80,13 +80,13 @@ yarn nocobase upgrade
 
 ![img_v3_02av_db5e9985-eb20-4420-a0b2-8a809ff05a5g](https://static-docs.nocobase.com/img_v3_02av_db5e9985-eb20-4420-a0b2-8a809ff05a5g.jpg)
 
-## Frontend Implementation
+## Реализация клиентской части
 
-### 1. Create the Plugin Configuration Page
+### 1. Создание страницы конфигурации плагина
 
-We've already introduced the detailed steps for [Adding a Plugin Configuration Page (Single Route)](/plugin-samples/router/add-setting-page-single-route), so we won’t repeat them here.
+Мы уже описали подробные шаги для [Добавления страницы конфигурации плагина (один маршрут)](/plugin-samples/router/add-setting-page-single-route), поэтому здесь не будем их повторять.
 
-We modify the `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/index.tsx` file as follows:
+Измените файл `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/index.tsx` следующим образом:
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
@@ -96,7 +96,7 @@ import { name } from '../../package.json';
 export class PluginSettingsFormClient extends Plugin {
   async load() {
     this.app.pluginSettingsManager.add(name, {
-      title: 'Plugin Settings Form',
+      title: 'Форма настроек плагина',
       icon: 'FormOutlined',
       Component: () => 'TODO',
     });
@@ -106,21 +106,21 @@ export class PluginSettingsFormClient extends Plugin {
 export default PluginSettingsFormClient;
 ```
 
-Then, visit [http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-form](http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-form) to see the configuration page.
+Затем перейдите по адресу [http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-form](http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-form), чтобы увидеть страницу конфигурации.
 
 ![img_v3_02av_c90b5767-97dd-4fef-8dd0-c7ff9a136a9g](https://static-docs.nocobase.com/img_v3_02av_c90b5767-97dd-4fef-8dd0-c7ff9a136a9g.jpg)
 
-### 2. Define the Data Table Structure
+### 2. Определение структуры таблицы данных
 
-Based on the Schema definition method, we first need to define the structure of the data table. To define the data table structure on the frontend, we need to understand the following concepts:
+На основе метода определения схемы сначала необходимо определить структуру таблицы данных. Для этого на клиентской стороне нужно понимать следующие концепции:
 
-- [Tables and Fields](/development/server/collections#field-component)
-- [Field Type](/development/server/collections/options#field-type)
-- [Field Interface](/development/server/collections/options#field-interface)
-- [UI Schema Protocol](/development/client/ui-schema/what-is-ui-schema)
-- [Field Components](https://client.docs.nocobase.com/components)
+- [Таблицы и поля](/development/server/collections#field-component)
+- [Типы полей](/development/server/collections/options#field-type)
+- [Интерфейс поля](/development/server/collections/options#field-interface)
+- [Протокол UI Schema](/development/client/ui-schema/what-is-ui-schema)
+- [Компоненты полей](https://client.docs.nocobase.com/components)
 
-We then create the `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/PluginSettingsForm.tsx` file with the following content:
+Создайте файл `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/PluginSettingsForm.tsx` со следующим содержимым:
 
 ```ts
 const mapConfigurationCollection = {
@@ -132,7 +132,7 @@ const mapConfigurationCollection = {
       name: 'key',
       interface: 'input',
       uiSchema: {
-        title: 'Title',
+        title: 'Ключ',
         required: true,
         'x-component': 'Input',
       },
@@ -142,7 +142,7 @@ const mapConfigurationCollection = {
       name: 'secret',
       interface: 'input',
       uiSchema: {
-        title: 'Secret',
+        title: 'Секрет',
         required: true,
         'x-component': 'Input',
       },
@@ -151,28 +151,28 @@ const mapConfigurationCollection = {
 };
 ```
 
-We've defined a `SamplesMapConfiguration` data table with two fields: `key` and `secret`. The `fields` are explained as follows:
+Мы определили таблицу данных `SamplesMapConfiguration` с двумя полями: `key` и `secret`. Поля описаны следующим образом:
 
-- `type`: Since the values are strings, it is set to `string` and must match the backend field type.
-- `name`: The field's name, which must match the backend field name.
-- `interface`: Corresponding to the string value, it is set to `input`.
-- `uiSchema`: Refers to the rendering of the frontend form components.
-  - `title`: The title of the form field.
-  - `required`: As it is mandatory, it is set to `true`.
-  - `x-component`: The [Input component](https://client.docs.nocobase.com/components/input) is chosen for single-line text input.
+- `type`: Поскольку значения строковые, установлено значение `string`, которое должно соответствовать типу поля на серверной стороне.
+- `name`: Имя поля, должно совпадать с именем поля на серверной стороне.
+- `interface`: Для строкового значения выбрано значение `input`.
+- `uiSchema`: Определяет рендеринг компонентов формы на клиентской стороне.
+  - `title`: Заголовок поля формы.
+  - `required`: Поскольку поле обязательно, установлено значение `true`.
+  - `x-component`: Выбран компонент [Input](https://client.docs.nocobase.com/components/input) для ввода однострочного текста.
 
-### 3. Create Form Schema
+### 3. Создание схемы формы
 
-For writing form schemas, the following concepts are important:
+Для создания схем форм важны следующие концепции:
 
-- [Form Component](https://client.docs.nocobase.com/components/form-v2)
-- [CollectionField Component](https://client.docs.nocobase.com/core/data-source/collection-field)
-- [CardItem Component](https://client.docs.nocobase.com/components/card-item)
-- [Schema Protocol](/development/client/ui-schema/what-is-ui-schema)
-- [DataBlockProvider Component](https://client.docs.nocobase.com/core/data-block/data-block-provider)
-- [Action Component](https://client.docs.nocobase.com/components/action)
+- [Компонент формы](https://client.docs.nocobase.com/components/form-v2)
+- [Компонент CollectionField](https://client.docs.nocobase.com/core/data-source/collection-field)
+- [Компонент CardItem](https://client.docs.nocobase.com/components/card-item)
+- [Протокол схемы](/development/client/ui-schema/what-is-ui-schema)
+- [Компонент DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider)
+- [Компонент Action](https://client.docs.nocobase.com/components/action)
 
-We continue to write the following in `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/PluginSettingsForm.tsx`:
+Продолжите добавлять в файл `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/PluginSettingsForm.tsx`:
 
 ```ts
 import { useMemo } from 'react';
@@ -198,19 +198,19 @@ const schema: ISchema = {
       'x-use-component-props': 'useFormBlockProps',
       properties: {
         key: {
-          title: 'Key',
+          title: 'Ключ',
           'x-decorator': 'FormItem',
           'x-component': 'CollectionField',
         },
         secret: {
-          title: 'Secret',
+          title: 'Секрет',
           'x-decorator': 'FormItem',
           'x-component': 'CollectionField',
         },
         footer: {
           type: 'void',
           'x-component': 'Action',
-          title: 'Submit',
+          title: 'Отправить',
           'x-use-component-props': 'useSubmitActionProps',
         },
       },
@@ -246,32 +246,30 @@ const useSubmitActionProps = (): ActionProps => {
         values,
         filterKeys: [collection.filterTargetKey],
       });
-      message.success('Saved successfully!');
+      message.success('Успешно сохранено!');
     },
   };
 };
 ```
 
-- [CardItem](https://client
+- [CardItem](https://client.docs.nocobase.com/components/card-item): Компонент карты, обеспечивающий компоновку в стиле карточки.
+- [DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider): Компонент, предоставляющий данные дочерним узлам, с атрибутами `collection` и `action`, так как форма запрашивает данные одной строки.
+- [FormV2](https://client.docs.nocobase.com/components/form-v2): Компонент формы для её рендеринга.
+- `useFormBlockProps`: Используется для получения атрибутов блока данных и передачи их компоненту FormV2. Подробные примеры см. в разделе [Значения по умолчанию](https://client.docs.nocobase.com/components/form-v2#default-values).
+- [CollectionField](https://client.docs.nocobase.com/core/data-source/collection-field): Компонент поля таблицы данных, используемый для чтения UI Schema коллекции и её рендеринга.
+- [Action](https://client.docs.nocobase.com/components/action): Компонент кнопки действия, используемый для отправки формы.
+- `useSubmitActionProps`: Используется для получения атрибутов кнопки отправки.
+  - [useCollection](/core/data-source/collection-provider): Используется для получения информации о таблице данных.
+  - [useDataBlockResource](/core/data-block/data-block-resource-provider): Хук, предоставляемый DataBlockProvider для доступа к ресурсам блока данных для операций CRUD.
 
-.docs.nocobase.com/components/card-item): A card component that provides card-style layouts.
-- [DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider): A component that provides data to child nodes, with the `collection` and `action` attributes since the form fetches single-row data.
-- [FormV2](https://client.docs.nocobase.com/components/form-v2): A form component used to render the form.
-- `useFormBlockProps`: Used to get the data block's attributes and pass them to the FormV2 component. For detailed examples, see FormV2 [Default values](https://client.docs.nocobase.com/components/form-v2#default-values).
-- [CollectionField](https://client.docs.nocobase.com/core/data-source/collection-field): A data table field component used to read the UI Schema of the Collection and render it.
-- [Action](https://client.docs.nocobase.com/components/action): An action button component used to submit the form.
-- `useSubmitActionProps`: Used to get the attributes of the submit button.
-  - [useCollection](/core/data-source/collection-provider): Used to get information about the data table.
-  - [useDataBlockResource](/core/data-block/data-block-resource-provider): A hook provided by DataBlockProvider to access the data block's resources for CRUD operations.
+### 4. Создание компонента формы
 
-### 4. Create the Form Component
+Для рендеринга схемы в компонент нужно понимать следующие концепции:
 
-To render the schema into a component, we need to understand the following concepts:
+- Компонент [ExtendCollectionsProvider](https://client.docs.nocobase.com/core/data-source/extend-collections-provider) для расширения таблиц данных.
+- Компонент [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component) для рендеринга форм.
 
-- [ExtendCollectionsProvider](https://client.docs.nocobase.com/core/data-source/extend-collections-provider) component to extend data tables.
-- [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component) component to render forms.
-
-We continue writing in `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/PluginSettingsForm.tsx`:
+Продолжите добавлять в файл `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/PluginSettingsForm.tsx`:
 
 ```tsx | pure
 import React from 'react';
@@ -285,9 +283,9 @@ export const PluginSettingsForm = () => {
 };
 ```
 
-### 5. Register the Plugin Configuration Page
+### 5. Регистрация страницы конфигурации плагина
 
-We modify the `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/index.tsx` file as follows:
+Измените файл `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/index.tsx` следующим образом:
 
 ```diff
 import { Plugin } from '@nocobase/client';
@@ -298,7 +296,7 @@ import { name } from '../../package.json';
 export class PluginSettingFormClient extends Plugin {
   async load() {
     this.app.pluginSettingsManager.add(name, {
-      title: 'Plugin Settings Form',
+      title: 'Форма настроек плагина',
       icon: 'FormOutlined',
 -     Component: () => 'TODO',
 +     Component: PluginSettingsForm,
@@ -309,22 +307,22 @@ export class PluginSettingFormClient extends Plugin {
 export default PluginSettingFormClient;
 ```
 
-Now, visit [http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-form](http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-form) to see the configuration page.
+Теперь перейдите по адресу [http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-form](http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-form), чтобы увидеть страницу конфигурации.
 
 <video width="100%" controls>
   <source src="https://static-docs.nocobase.com/20240517-182716.mp4" type="video/mp4">
 </video>
 
-### 6. Use Configuration Data Inside the Page
+### 6. Использование данных конфигурации на странице
 
-When using form data, there are two scenarios: using the data inside the page and using it globally. The difference is:
+При использовании данных формы есть два сценария: использование данных внутри страницы и глобальное использование. Разница в следующем:
 
-- Global usage: After updating the form data, it needs to be synchronized to the global state for real-time updates.
-- Page-specific usage: Since the page will be automatically destroyed and created upon switching, there’s no need to synchronize the data.
+- Глобальное использование: После обновления данных формы их нужно синхронизировать с глобальным состоянием для обновления в реальном времени.
+- Использование внутри страницы: Поскольку страница автоматически уничтожается и создаётся при переключении, синхронизация данных не требуется.
 
-In this step, we'll demonstrate using form data inside a page.
+На этом этапе мы продемонстрируем использование данных формы внутри страницы.
 
-We create the `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/PluginSettingsFormPage.tsx` file with the following content:
+Создайте файл `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/PluginSettingsFormPage.tsx` со следующим содержимым:
 
 ```tsx | pure
 import { useRequest } from '@nocobase/client';
@@ -341,7 +339,7 @@ export const PluginSettingsFormPage = () => {
 }
 ```
 
-Then we introduce the `PluginSettingsFormPage` component in the `PluginSettingsForm` component:
+Затем добавьте компонент `PluginSettingsFormPage` в компонент `PluginSettingsForm`:
 
 ```tsx | pure
 import { PluginSettingsFormPage } from './PluginSettingsFormPage'
@@ -359,15 +357,15 @@ export class PluginSettingFormClient extends Plugin {
 }
 ```
 
-Now, visit [http://localhost:13000/admin/plugin-settings-form-page](http://localhost:13000/admin/plugin-settings-form-page) to see the form data.
+Теперь перейдите по адресу [http://localhost:13000/admin/plugin-settings-form-page](http://localhost:13000/admin/plugin-settings-form-page), чтобы увидеть данные формы.
 
 ![img_v3_02av_70ade722-7069-4fc7-a2c3-c080f85ff30g](https://static-docs.nocobase.com/img_v3_02av_70ade722-7069-4fc7-a2c3-c080f85ff30g.jpg)
 
-### 7. Use Configuration Data Globally
+### 7. Глобальное использование данных конфигурации
 
-To use the data globally and ensure real-time updates, we need to use `Context` and NocoBase's [Provider](/development/client/providers) capabilities.
+Для глобального использования данных с обеспечением обновления в реальном времени необходимо использовать `Context` и возможности [Provider](/development/client/providers) NocoBase.
 
-We create the `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/PluginSettingsFormProvider.tsx` file with the following content:
+Создайте файл `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/PluginSettingsFormProvider.tsx` со следующим содержимым:
 
 ```tsx | pure
 import React, { createContext, FC } from 'react';
@@ -390,7 +388,7 @@ export const usePluginSettingsFormRequest = () => {
 };
 ```
 
-Then we modify the `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/index.tsx` file to register it globally:
+Затем измените файл `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/index.tsx`, чтобы зарегистрировать его глобально:
 
 ```ts
 import { PluginSettingsFormProvider } from './PluginSettingsFormProvider'
@@ -404,7 +402,7 @@ export class PluginSettingFormClient extends Plugin {
 }
 ```
 
-After updating the form, we need to re-fetch the global data. We modify the `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/PluginSettingsForm.tsx` file:
+После обновления формы нужно повторно загрузить глобальные данные. Измените файл `packages/plugins/@nocobase-sample/plugin-settings-form/src/client/PluginSettingsForm.tsx`:
 
 ```diff
 + import { usePluginSettingsFormRequest } from './PluginSettingsFormProvider';
@@ -426,7 +424,7 @@ const useSubmitActionProps = (): ActionProps => {
         filterKeys: [collection.filterTargetKey],
       });
 +     await globalSettingsFormRequest.runAsync();
-      message.success('Saved successfully!');
+      message.success('Успешно сохранено!');
     },
   };
 };
@@ -436,20 +434,20 @@ const useSubmitActionProps = (): ActionProps => {
   <source src="https://static-docs.nocobase.com/20240517-182717.mp4" type="video/mp4">
 </video>
 
-## Packaging and Uploading to Production Environment
+## Упаковка и загрузка в продакшен
 
-Following the [Build and Package Plugin](/development/your-fisrt-plugin#构建并打包插件) document, we can package the plugin and upload it to the production environment.
+Следуя руководству [Сборка и упаковка плагина](/development/your-fisrt-plugin#构建并打包插件), вы можете упаковать плагин и загрузить его в продакшен.
 
-If you've cloned the source code, you need to perform a full build first to package the plugin's dependencies.
+Если вы клонировали исходный код, сначала выполните полную сборку, чтобы упаковать зависимости плагина:
 
 ```bash
 yarn build
 ```
 
-If you used the `create-nocobase-app` to create the project, you can directly execute:
+Если вы использовали `create-nocobase-app` для создания проекта, выполните:
 
 ```bash
 yarn build @nocobase-sample/plugin-settings-form --tar
 ```
 
-Then you’ll see the `storage/tar/@nocobase-sample/plugin-settings-form.tar.gz` file, which can be installed by following the [uploading instructions](/welcome/getting-started/plugin).
+После этого появится файл `storage/tar/@nocobase-sample/plugin-settings-form.tar.gz`, который можно установить, следуя инструкциям по [загрузке плагина](/welcome/getting-started/plugin).
