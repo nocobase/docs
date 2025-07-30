@@ -4,6 +4,12 @@
 
 ![](https://static-docs.nocobase.com/c87178922308143656bc444c57bac45d.png)
 
+## Блок Ганта (без данных)
+
+![](https://static-docs.nocobase.com/1b439225f12b7a09aaab9d3a6dc11215.png)
+
+## Настройки блока
+
 ## Блок Ганта (нет данных)
 
 ![](https://static-docs.nocobase.com/1b439225f12b7a09aaab9d3a6dc11215.png)
