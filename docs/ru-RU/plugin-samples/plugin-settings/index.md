@@ -1,59 +1,59 @@
-# Plugin Configuration Page Overview
+# Обзор страницы конфигурации плагина
 
-## Scenario Introduction
+## Введение в сценарий
 
-When developing plugins, it is often necessary to provide a configuration page where users can set various parameters for the plugin.
+При разработке плагинов часто требуется предоставить страницу конфигурации, где пользователи могут задавать различные параметры для плагина.
 
-There are four common types of plugin configuration pages:
+Существует четыре распространённых типа страниц конфигурации плагинов:
 
-### Form Configuration Page
+### Страница конфигурации формы
 
-Users can fill in certain parameters in a form and save them. These parameters will be stored in a database and retrieved by the plugin during its operation. For example, see the [Custom Brand Plugin](/handbook/custom-brand#user-guide).
+Пользователи могут заполнить определённые параметры в форме и сохранить их. Эти параметры будут храниться в базе данных и использоваться плагином во время работы. Например, см. [Плагин кастомизации бренда](/handbook/custom-brand#user-guide).
 
 ![img_v3_02av_cc1d4351-3a24-4cd9-b5a6-98fb3b8dae6g](https://static-docs.nocobase.com/img_v3_02av_cc1d4351-3a24-4cd9-b5a6-98fb3b8dae6g.jpg)
 
-As shown above, this configuration page is a form where users can input parameters such as `Brand` and `About`, and then click the `Submit` button to save them.
+Как показано выше, эта страница конфигурации представляет собой форму, в которой пользователи могут ввести параметры, такие как `Brand` и `About`, а затем нажать кнопку `Отправить` для их сохранения.
 
-### Table Configuration Page
+### Страница конфигурации таблицы
 
-The plugin's configuration consists of a dataset that users can add, delete, or modify within a table. For example, see the [Users & Permissions Plugin](/handbook/users).
+Конфигурация плагина состоит из набора данных, которые пользователи могут добавлять, удалять или изменять в таблице. Например, см. [Плагин пользователей и прав доступа](/handbook/users).
 
 ![img_v3_02av_11e5f726-f716-4c0f-a244-2b6543b1b5dg](https://static-docs.nocobase.com/img_v3_02av_11e5f726-f716-4c0f-a244-2b6543b1b5dg.jpg)
 
-As seen above, this configuration page is a table where users can add, delete, and modify user information.
+Как видно выше, эта страница конфигурации представляет собой таблицу, в которой пользователи могут добавлять, удалять и изменять информацию о пользователях.
 
-### Table Configuration Page (Multiple New Entry Forms)
+### Страница конфигурации таблицы (несколько форм для добавления записей)
 
-The plugin's configuration consists of a dataset, but multiple forms are available for adding new entries. For example, see the [File Manager Plugin](/handbook/file-manager).
+Конфигурация плагина состоит из набора данных, но для добавления новых записей доступно несколько форм. Например, см. [Плагин менеджера файлов](/handbook/file-manager).
 
 ![img_v3_02av_1d023074-402a-4586-848a-b4abd0ee5d4g](https://static-docs.nocobase.com/img_v3_02av_1d023074-402a-4586-848a-b4abd0ee5d4g.jpg)
 
-As shown above, there are multiple forms for adding new entries, allowing users to choose different forms for data input.
+Как показано выше, для добавления новых записей доступно несколько форм, что позволяет пользователям выбирать разные формы для ввода данных.
 
-### Other Cases
+### Другие случаи
 
-There are also other special cases, such as the [Theme Editor Plugin](/handbook/theme-editor#navigate-to-theme-configuration-page).
+Также существуют другие специальные случаи, например, [Плагин редактора тем](/handbook/theme-editor#navigate-to-theme-configuration-page).
 
 ![img_v3_02av_ec2fa97f-2d1a-415c-8106-e3d979740fcg](https://static-docs.nocobase.com/img_v3_02av_ec2fa97f-2d1a-415c-8106-e3d979740fcg.jpg)
 
-As seen above, this image displays the corresponding theme editor interface.
+Как видно выше, это изображение показывает интерфейс редактора тем.
 
-## Examples
+## Примеры
 
-For the above scenarios, we provide the following examples:
+Для описанных выше сценариев предоставлены следующие примеры:
 
-- [Form Configuration Page](/plugin-samples/plugin-settings/form)
-- [Table Configuration Page](/plugin-samples/plugin-settings/table)
-- [Table Configuration Page (Multiple New Entry Forms)](/plugin-samples/plugin-settings/table-multiple-forms.md)
+- [Страница конфигурации формы](/plugin-samples/plugin-settings/form)
+- [Страница конфигурации таблицы](/plugin-samples/plugin-settings/table)
+- [Страница конфигурации таблицы (несколько форм для добавления записей)](/plugin-samples/plugin-settings/table-multiple-forms.md)
 
-For special cases, you can develop according to your specific needs.
+Для специальных случаев разработка может быть выполнена в соответствии с конкретными потребностями.
 
-## Configuration Page Routes
+## Маршруты страниц конфигурации
 
-For plugin routing, refer to:
+Для маршрутизации плагинов обратитесь к:
 
-- [Plugin Configuration Page (Single Route)](/plugin-samples/router/add-setting-page-single-route)
-- [Plugin Configuration Page (Tabs Route)](/plugin-samples/router/add-setting-page-tabs-routes)
-- [Plugin Configuration Page (Different Layouts)](/plugin-samples/router/add-setting-page-layout-routes)
+- [Страница конфигурации плагина (один маршрут)](/plugin-samples/router/add-setting-page-single-route)
+- [Страница конфигурации плагина (вкладки)](/plugin-samples/router/add-setting-page-tabs-routes)
+- [Страница конфигурации плагина (разные макеты)](/plugin-samples/router/add-setting-page-layout-routes)
 
-This set of plugin examples does not go into detail on routing. Those interested can consult the relevant documentation.
+Этот набор примеров плагинов не углубляется в детали маршрутизации. Заинтересованные могут ознакомиться с соответствующей документацией.
