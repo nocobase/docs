@@ -1,24 +1,24 @@
 # SchemaInitializer
 
-[SchemaInitializer](/development/client/ui-schema/initializer) 用于向界面内添加各种区块、字段、操作等。
+[SchemaInitializer](/development/client/ui-schema/initializer) используется для добавления различных блоков, полей, операций и других элементов в интерфейс.
 
-根据需求不同可能有以下扩展场景：
+В зависимости от потребностей могут быть следующие сценарии расширения:
 
-- 向已有的 Initializer 中添加子项
-- 创建新的 Initializer
+- Добавление элементов в существующие Initializer
+- Создание новых Initializer
 
-根据以上场景，我们提供了如下示例：
+Для этих сценариев предоставлены следующие примеры:
 
-**向已有的 Initializer 中添加子项**
+**Добавление элементов в существующие Initializer**
 
-- [添加简单区块 Simple Block](/plugin-samples/schema-initializer/block-simple)
-- [添加数据区块 Data Block](/plugin-samples/schema-initializer/data-block)
-- [添加带弹窗的数据区块 Data Block Modal](/plugin-samples/schema-initializer/data-block-modal)
-- [添加简单 Action](/plugin-samples/schema-initializer/action-simple)
-- [添加弹窗 Action](/plugin-samples/schema-initializer/action-modal)
+- [Добавление простого блока Simple Block](/plugin-samples/schema-initializer/block-simple)
+- [Добавление блока данных Data Block](/plugin-samples/schema-initializer/data-block)
+- [Добавление блока данных с всплывающим окном Data Block Modal](/plugin-samples/schema-initializer/data-block-modal)
+- [Добавление простого действия Action](/plugin-samples/schema-initializer/action-simple)
+- [Добавление действия с всплывающим окном Action Modal](/plugin-samples/schema-initializer/action-modal)
 
-**创建新的 Initializer**
+**Создание новых Initializer**
 
-- [区块内嵌的 Initializer - 配置字段](/plugin-samples/schema-initializer/configure-fields)
-- [区块内嵌的 Initializer - 配置操作](/plugin-samples/schema-initializer/configure-actions)
-<!-- - [区块内嵌的 Initializer - 其他自定义](/plugin-samples/schema-initializer/configure-custom) -->
+- [Встроенный Initializer в блоке — настройка полей](/plugin-samples/schema-initializer/configure-fields)
+- [Встроенный Initializer в блоке — настройка операций](/plugin-samples/schema-initializer/configure-actions)
+<!-- - [Встроенный Initializer в блоке — другие пользовательские настройки](/plugin-samples/schema-initializer/configure-custom) -->
