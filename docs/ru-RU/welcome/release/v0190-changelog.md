@@ -1,22 +1,22 @@
-# v0.19：2024-01-08
+# Версия 0.19: 2024-01-08
 
-## New features
+## Новые функции
 
-### Telemetry
+### Телеметрия
 
-- Development documentation: https://docs.nocobase.com/development/server/telemetry
-- Kernel API: https://docs.nocobase.com/api/telemetry/telemetry
-- Prometheus plugin: https://docs.nocobase.com/plugins/telemetry-prometheus
+- Документация по разработке: https://docs.nocobase.com/development/server/telemetry
+- API ядра: https://docs.nocobase.com/api/telemetry/telemetry
+- Плагин Prometheus: https://docs.nocobase.com/plugins/telemetry-prometheus
 
-### Application backup and restore
+### Резервное копирование и восстановление приложений
 
-- Plugin documentation: https://docs.nocobase.com/plugins/backup-restore
+- Документация по плагину: https://docs.nocobase.com/plugins/backup-restore
 
-## Kernel optimizations
+## Оптимизация ядра
 
-### Command line optimizations
+### Оптимизация командной строки
 
-For NocoBase 0.19 and above, plugin customized commands must be placed in the plugin's `src/server/commands/*.ts` directory with the following contents:
+Для NocoBase 0.19 и выше пользовательские команды плагина должны быть размещены в каталоге плагина `src/server/commands/*.ts` со следующим содержимым:
 
 ```typescript
 export default function(app) {
@@ -24,17 +24,17 @@ export default function(app) {
 }
 ```
 
-The execution flow of the command line:
+Процесс выполнения командной строки:
 
 ![20240115141900](https://static-docs.nocobase.com/20240115141900.png)
 
-Special configuration of Command
+Специальная конфигурация команды
 
-- `ipc()` When the app is running, the command line sends commands via ipc to operate the running app instance, when ipc() is not configured, a new app instance will be created and then the operation will be executed (it will not interfere with the running app instance)
-- `auth()` performs database verification, if the database configuration is incorrect, this command will not be executed.
-- `preload()` whether to preload the application configuration, that is, execute app.load()
+- `ipc()` Когда приложение запущено, командная строка отправляет команды через ipc для управления запущенным экземпляром приложения, когда ipc() не настроен, будет создан новый экземпляр приложения, а затем операция будет выполнена (это не повлияет на работу запущенного экземпляра приложения)
+- `auth()` выполняет проверку базы данных, если конфигурация базы данных неверна, эта команда выполнена не будет.
+- `preload()` следует ли предварительно загрузить конфигурацию приложения, то есть выполнить app.load()
 
-This can be configured according to the actual usage of the command, examples are as follows:
+Это может быть настроено в соответствии с фактическим использованием команды, примерами являются следующие:
 
 ```typescript
 app.command('a').ipc().action()
@@ -42,50 +42,48 @@ app.command('a').auth().action()
 app.command('a').preload().action()
 ```
 
-### Installation process optimization
+### Оптимизация процесса установки
 
 ![20240115141914](https://static-docs.nocobase.com/20240115141914.png)
 
-### Startup process optimization
+### Оптимизация процесса запуска
 
 ![20240115141922](https://static-docs.nocobase.com/20240115141922.png)
 
-### Upgrade process optimization
+### Оптимизация процесса обновления
 
 ![20240115141933](https://static-docs.nocobase.com/20240115141933.png)
 
-The upgrade migrations are categorized into beforeLoad, afterSync, and afterLoad:
+Миграции обновлений подразделяются на beforeLoad, afterSync и afterLoad после загрузки:
 
-- beforeLoad: Executed before the loading of each module, divided into three stages:
+- Предварительная загрузка: Выполняется перед загрузкой каждого модуля, разделена на три этапа:
 
-  - Before loading kernel modules
-  - Before loading preset plugins
-  - Before loading other plugins
+  - Перед загрузкой модулей ядра
+  - Перед загрузкой предустановленных плагинов
+  - Перед загрузкой других плагинов
 
-- afterSync: Executed after the synchronization of data table configurations with the database, divided into three stages:
+- Последующая синхронизация: Выполняется после синхронизации конфигураций таблиц данных с базой данных, разделенной на три этапа:
 
-  - After synchronizing kernel tables with the database
-  - After synchronizing preset plugin tables with the database
-  - After synchronizing other plugin tables with the database
-
-- afterLoad: Executed only after the complete loading of the application.
+  - После синхронизации таблиц ядра с базой данных
+  - После синхронизации предустановленных таблиц подключаемого модуля с базой данных
+  - После синхронизации других таблиц подключаемого модуля с базой данных.
 
 ```typescript
 export default class extends Migration {
-  // When to perform the migration
+  // Когда следует выполнить миграцию
   on = 'beforeLoad';
-  // Execute only when the following app version number is met.
+  // Выполняется только при выполнении следующего номера версии приложения.
   appVersion = '<=0.13.0-alpha.5';
-  // Execute only when the following plugin version number is met.
+  // Выполняется только при выполнении следующего номера версии плагина.
   pluginVersion = '<=0.13.0-alpha.5';
-  // Upgrade script.
+  // Сценарий обновления.
   async up() {}
 }
 ```
 
-### Add the create-migration command
+### Добавьте команду create-migration
 
-Creates a migration file
+Создадим файл миграции:
 
 ```bash
 yarn nocobase create-migration -h
@@ -98,7 +96,7 @@ Options:
   -h, --help   display help for command
 ```
 
-Example
+Например:
 
 ```bash
 $ yarn nocobase create-migration update-ui --pkg=@nocobase/plugin-client
@@ -108,7 +106,7 @@ $ yarn nocobase create-migration update-ui --pkg=@nocobase/plugin-client
 ✨  Done in 5.02s.
 ```
 
-A migration file will be generated in `src/server/migrations` of the plugin package `@nocobase/plugin-client` as `20240107173313-update-ui.ts` with the following initial contents:
+Файл миграции будет сгенерирован в `src/server/migrations` пакета плагинов `@nocobase/plugin-client` как `20240107173313-update-ui.ts` со следующим исходным содержимым:
 
 ```typescript
 import { Migration } from '@nocobase/server';
@@ -123,23 +121,23 @@ export default class extends Migration {
 }
 ```
 
-### The plugin's convention-based directories
+### Каталоги плагина, основанные на соглашениях
 
 ```bash
 |- /plugin-sample-hello
-  |- /dist             # Directory for compiled plugin
-  |- /src              # Source code for the plugin
+  |- /dist             # Каталог для скомпилированного плагина
+  |- /src              # Исходный код для плагина
     |- /client
       |- plugin.ts
-      |- index.ts      # Client-side entry point
-    |- /locale         # Conventional directory for shared multilingual files between frontend and backend
-    |- /swagger        # Conventional directory for Swagger documentation
+      |- index.ts      # Точка входа на стороне клиента
+    |- /locale         # Обычный каталог для обмена многоязычными файлами между интерфейсом и серверной частью
+    |- /swagger        # Обычный каталог для документации Swagger
     |- /server
-      |- collections   # Conventional directory for plugin's data table configurations
-      |- commands      # Conventional directory for custom commands
-      |- migrations    # Conventional directory for migration files
-      |- plugin.ts     # Plugin class
-      |- index.ts      # Server-side entry point
+      |- collections   # Обычный каталог для конфигураций таблиц данных плагина
+      |- commands      # Обычный каталог для пользовательских команд
+      |- migrations    # Обычный каталог для переноса файлов
+      |- plugin.ts     # Класс подключаемого модуля
+      |- index.ts      # Точка входа на стороне сервера
     |- index.ts
   |- .npmignore
   |- client.d.ts
@@ -149,12 +147,12 @@ export default class extends Migration {
   |- server.js
 ```
 
-Testing process optimization
+Оптимизация процесса тестирования
 
-Provided more user-friendly `createMockServer()` and `startMockServer()` methods for writing test cases:
+Добавлены более удобные для пользователя методы `createMockServer()` и `startMockServer()` для написания тестовых примеров:
 
-- `createMockServer()` Quickly creates and starts an application.
-- `startMockServer()` Quickly starts an application (without reinstalling).
+- `createMockServer()` Быстро создает и запускает приложение.
+- `startMockServer()` Быстро запускает приложение (без переустановки).
 
 ```typescript
 import { createMockServer } from '@nocobase/server';
@@ -178,11 +176,11 @@ describe('test example', () => {
 });
 ```
 
-## Breaking changes
+## Важные изменения
 
-### Collections, commands, migrations configuration changes to convention-based directories
+### Коллекции, команды, миграции изменяют конфигурацию в каталогах, основанных на соглашениях
 
-Example 1: Collections loaded by importCollections, the code is deleted directly, and the collections configuration file must be placed in the `src/server/collections` directory.
+Пример 1: Коллекции загружаются с помощью importCollections, код удаляется напрямую, а файл конфигурации коллекций должен быть помещен в каталог `src/server/collections`.
 
 ```diff
 export class AuthPlugin extends Plugin {
@@ -192,7 +190,7 @@ export class AuthPlugin extends Plugin {
 }
 ```
 
-Example 2: Collections loaded through this.db.import, the code is directly deleted, the collections configuration file must be placed in the `src/server/collections` directory
+Пример 2: Коллекции загружены через this.db.import, код удаляется напрямую, файл конфигурации коллекций должен быть помещен в каталог `src/server/collections`
 
 ```diff
 export class AuthPlugin extends Plugin {
@@ -204,7 +202,7 @@ export class AuthPlugin extends Plugin {
 }
 ```
 
-Example 3: A collection defined by db.collection() is recommended to be placed in the `src/server/collections` directory.
+Пример 3: Коллекцию, определенную с помощью db.collection(), рекомендуется поместить в каталог `src/server/collections`.
 
 ```diff
 export class AuthPlugin extends Plugin {
@@ -216,7 +214,7 @@ export class AuthPlugin extends Plugin {
 }
 ```
 
-Add a new `src/server/collections/examples.ts` file with the following contents:
+Добавьте новый файл `src/server/collections/examples.ts` со следующим содержимым:
 
 ```typescript
 import { defineCollection } from '@nocobase/database';
@@ -226,7 +224,7 @@ export default defineCollection({
 });
 ```
 
-Example 4: Remove db.addMigrations() and place the migration file in the `src/server/migrations` directory.
+Пример 4. Удалите db.addMigrations() и поместите файл миграции в каталог `src/server/migrations`.
 
 ```diff
 export class AuthPlugin extends Plugin {
@@ -242,7 +240,7 @@ export class AuthPlugin extends Plugin {
 }
 ```
 
-Example 5: Customizing the command line
+Пример 5. Настройка командной строки
 
 ```diff
 export class MyPlugin extends Plugin {
@@ -260,7 +258,7 @@ export class MyPlugin extends Plugin {
 }
 ```
 
-Add a new `src/server/collections/echo.ts` file with the following contents:
+Добавьте новый файл `src/server/collections/echo.ts` со следующим содержимым:
 
 ```typescript
 export default function(app) {
