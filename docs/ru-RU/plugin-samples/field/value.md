@@ -1,20 +1,20 @@
-# 有值字段组件
+# Компоненты с полем значения
 
-有值字段组件是组件有 `value` 属性的字段组件，用于展示字段的值。举例来说，`Input`、`Select`、`Checkbox`、`Radio`、`Switch` 等组件都是有值字段组件。
+Компоненты с полем значения — это компоненты, которые имеют атрибут `value` и используются для отображения значений полей. Например, компоненты `Input`, `Select`, `Checkbox`, `Radio`, `Switch` и т.д. являются компонентами с полем значения.
 
-## 示例说明
+## Описание примера
 
-本实例会新增 `QRCode` 组件，用于 URL 字段的值展示，并支持 `尺寸`、`颜色`、`边框` 的配置。
+В данном примере мы добавим компонент `QRCode`, предназначенный для отображения значения поля URL с поддержкой настройки `размера`, `цвета` и `границы`.
 
-本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-field-value) 中查看。
+Полный код примера можно найти в репозитории [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-field-value).
 
 <video width="100%" controls="">
   <source src="https://static-docs.nocobase.com/1721790389902.mov" type="video/mp4" />
 </video>
 
-## 初始化插件
+## Инициализация плагина
 
-我们按照 [编写第一个插件](/development/your-fisrt-plugin) 文档说明，如果没有一个项目，可以先创建一个项目，如果已经有了或者是 clone 的源码，则跳过这一步。
+Следуя инструкциям из документа [Создание первого плагина](/development/your-fisrt-plugin), если у вас нет проекта, создайте его. Если проект уже существует или вы клонировали исходный код, пропустите этот шаг.
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d sqlite
@@ -23,63 +23,64 @@ yarn install
 yarn nocobase install
 ```
 
-然后初始化一个插件，并添加到系统中：
+Затем инициализируйте плагин и добавьте его в систему:
 
 ```bash
 yarn pm create @nocobase-sample/plugin-field-value
 yarn pm enable @nocobase-sample/plugin-field-value
 ```
 
-然后启动项目即可：
+Запустите проект:
 
 ```bash
 yarn dev
 ```
 
-然后登录后访问 [http://localhost:13000/admin/pm/list/locale/](http://localhost:13000/admin/pm/list/locale/) 就可以看到插件已经安装并启用了。
+После входа в систему перейдите по адресу [http://localhost:13000/admin/pm/list/locale/](http://localhost:13000/admin/pm/list/locale/), чтобы убедиться, что плагин установлен и активирован.
 
-## 功能实现
+## Реализация функционала
 
-在实现本示例之前，我们需要先了解一些基础知识：
+Перед реализацией примера необходимо ознакомиться с основными понятиями:
 
-- [ant-design QRCode](https://ant.design/components/qr-code)
-- [SchemaInitializer 教程](/development/client/ui-schema/initializer)：用于向界面内添加各种区块、字段、操作等
-- [SchemaInitializer API](https://client.docs.nocobase.com/core/ui-schema/schema-initializer)：用于向界面内添加各种区块、字段、操作等
-- [UI Schema 协议](/development/client/ui-schema/what-is-ui-schema)：详细介绍 Schema 的结构和每个属性的作用
-- [Designable 设计器](/development/client/ui-schema/designable)：用于修改 Schema
+- [QRCode от Ant Design](https://ant.design/components/qr-code)
+- [Руководство по SchemaInitializer](/development/client/ui-schema/initializer): для добавления блоков, полей и операций в интерфейс.
+- [API SchemaInitializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer): для добавления элементов в интерфейс.
+- [Протокол UI Schema](/development/client/ui-schema/what-is-ui-schema): подробное описание структуры Schema и роли каждого атрибута.
+- [Designable дизайнер](/development/client/ui-schema/designable): для изменения Schema.
 
+Структура проекта:
 
 ```bash
 .
-├── client # 客户端插件
-│   ├── QRCode.tsx # 组件
-│   ├── settings.tsx # Schema Settings
-│   ├── locale.ts #  多语言工具函数
-│   └── index.ts # 客户端入口文件
-├── locale # 多语言文件
-│   ├── en-US.json # 英语
-│   └── zh-CN.json # 中文
-├── index.ts # 服务端插件入口
-└── server # 服务端插件
+├── client # Клиентская часть плагина
+│   ├── QRCode.tsx # Компонент
+│   ├── settings.tsx # Настройки Schema
+│   ├── locale.ts # Утилиты для мультиязычности
+│   └── index.ts # Точка входа на клиентской стороне
+├── locale # Файлы мультиязычности
+│   ├── en-US.json # Английский
+│   └── zh-CN.json # Китайский
+├── index.ts # Точка входа серверной части плагина
+└── server # Серверная часть плагина
 ```
 
-### 1. 组件
+### 1. Компонент
 
 ![20240723211323](https://static-docs.nocobase.com/20240723211323.png)
 
-对于组件而言我们需要适配三种模式：
+Компонент должен поддерживать три режима:
 
-- Editable：编辑模式
-- ReadOnly：只读模式（禁止编辑）
-- Easy-reading：阅览模式
+- **Editable**: Режим редактирования.
+- **ReadOnly**: Режим только для чтения (редактирование запрещено).
+- **Easy-reading**: Режим просмотра.
 
-其中 `ReadOnly` 模式属于编辑模式的 `disabled` 属性，所以我们只需要适配 `Editable` 和 `Easy-reading` 两种模式。
+Режим `ReadOnly` реализуется через атрибут `disabled` в режиме редактирования, поэтому достаточно адаптировать `Editable` и `Easy-reading`.
 
-#### 1.1 编辑模式组件
+#### 1.1 Компонент в режиме редактирования
 
-在编辑模式下，组件会自动注入 `onChange`、`value`、`disabled` 以及 `schema` 中的 [x-component-props](/development/client/ui-schema/what-is-ui-schema#x-component-props-and-x-use-component-props) 属性。
+В режиме редактирования компоненту автоматически передаются свойства `onChange`, `value`, `disabled` и свойства из [x-component-props](/development/client/ui-schema/what-is-ui-schema#x-component-props-and-x-use-component-props) в Schema.
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-field-value/src/client/QRCode.tsx` 文件：
+Создайте файл `packages/plugins/@nocobase-sample/plugin-field-value/src/client/QRCode.tsx`:
 
 ```tsx | pure
 import React, { FC } from 'react';
@@ -92,58 +93,59 @@ interface QRCodeProps extends AntdQRCodeProps {
 }
 
 const QRCodeEditable: FC<QRCodeProps> = ({ value, disabled, onChange, ...otherProps }) => {
-  return <Space direction="vertical" align="center">
-    <AntdQRCode value={value || '-'} {...otherProps} />
-    <Input.URL
-      maxLength={60}
-      value={value}
-      disabled={disabled}
-      onChange={(e) => onChange(e.target.value)}
-    />
-  </Space>;
-}
+  return (
+    <Space direction="vertical" align="center">
+      <AntdQRCode value={value || '-'} {...otherProps} />
+      <Input.URL
+        maxLength={60}
+        value={value}
+        disabled={disabled}
+        onChange={(e) => onChange(e.target.value)}
+      />
+    </Space>
+  );
+};
 ```
 
-编辑模式下，我们使用 `Space` 组件将 `QRCode` 和 `Input.URL` 组件放在一起，`QRCode` 组件用于展示 URL 字段的值，`Input.URL` 用于编辑 URL 字段的值。
+В режиме редактирования мы используем компонент `Space` для размещения `QRCode` и `Input.URL`. `QRCode` отображает значение URL, а `Input.URL` позволяет его редактировать.
 
-其中 `value`、`disabled`、`onChange` 是 `Editable` 模式下自动注入的属性。
+Свойства `value`, `disabled`, `onChange` автоматически передаются в режиме `Editable`.
 
-#### 1.2 预览模式组件
+#### 1.2 Компонент в режиме просмотра
 
-在预览模式下，组件会自动注入 `value` 以及 `schema` 中的 [x-component-props](/development/client/ui-schema/what-is-ui-schema#x-component-props-and-x-use-component-props) 属性。
+В режиме просмотра компоненту передаются `value` и свойства из [x-component-props](/development/client/ui-schema/what-is-ui-schema#x-component-props-and-x-use-component-props).
 
-我们继续修改 `packages/plugins/@nocobase-sample/plugin-field-value/src/client/QRCode.tsx` 文件：
+Добавьте в `packages/plugins/@nocobase-sample/plugin-field-value/src/client/QRCode.tsx`:
 
 ```tsx | pure
 const QRCodeReadPretty: FC<QRCodeProps> = ({ value, ...otherProps }) => {
   if (!value) return null;
   return <AntdQRCode value={value} {...otherProps} />;
-}
+};
 ```
 
-#### 1.3 连接组件
+#### 1.3 Соединение компонентов
 
-我们需要将 `QRCodeEditable` 和 `QRCodeReadPretty` 组件连接起来，这样在 Schema 中就能够通过 [x-pattern](https://docs.nocobase.com/development/client/ui-schema/what-is-ui-schema#x-pattern) 自动切换组件。
+Необходимо соединить `QRCodeEditable` и `QRCodeReadPretty`, чтобы в Schema можно было автоматически переключать компоненты через [x-pattern](https://docs.nocobase.com/development/client/ui-schema/what-is-ui-schema#x-pattern).
 
-我们继续修改 `packages/plugins/@nocobase-sample/plugin-field-value/src/client/QRCode.tsx` 文件：
+Добавьте в `packages/plugins/@nocobase-sample/plugin-field-value/src/client/QRCode.tsx`:
 
 ```tsx | pure
 import { connect, mapReadPretty } from '@formily/react';
 
-export const QRCode: FC<QRCodeProps>  = connect(QRCodeEditable, mapReadPretty(QRCodeReadPretty);
+export const QRCode: FC<QRCodeProps> = connect(QRCodeEditable, mapReadPretty(QRCodeReadPretty));
 
 QRCode.displayName = 'QRCode';
 ```
 
-我们使用 [connect](https://react.formilyjs.org/api/shared/connect) 函数能将 `QRCodeEditable` 和 `QRCodeReadPretty` 组件连接起来。
+Функция [connect](https://react.formilyjs.org/api/shared/connect) объединяет компоненты `QRCodeEditable` и `QRCodeReadPretty`.
 
-#### 1.4 注册组件
+#### 1.4 Регистрация компонента
 
-我们需要将 `QRCode` 通过插件注册到系统中。
+Зарегистрируйте компонент `QRCode` в системе через плагин.
 
 ```ts
 import { Plugin } from '@nocobase/client';
-
 import { QRCode } from './QRCode';
 
 export class PluginFieldComponentValueClient extends Plugin {
@@ -155,22 +157,21 @@ export class PluginFieldComponentValueClient extends Plugin {
 export default PluginFieldComponentValueClient;
 ```
 
-这样就可以在 Schema 中以字符串的方式使用 `QRCode` 组件了。
+Теперь компонент `QRCode` можно использовать в Schema как строку:
 
 ```json
 {
   "type": "string",
-  "x-component": "QRCode",
+  "x-component": "QRCode"
 }
 ```
 
-#### 1.5 添加到 field interface 的 `componentOptions` 中
+#### 1.5 Добавление в `componentOptions` интерфейса поля
 
-我们还需要将 `QRCode` 组件添加到 `url` interface 字段的 `componentOptions` 中，这样就可以通过界面自由切换组件了。
+Добавьте `QRCode` в `componentOptions` интерфейса поля `url`, чтобы пользователи могли переключать компоненты через интерфейс.
 
 ```ts
 import { Plugin } from '@nocobase/client';
-
 import { QRCode } from './QRCode';
 import { qrCodeComponentFieldSettings } from './settings';
 import { tStr } from './locale';
@@ -189,65 +190,71 @@ export class PluginFieldComponentValueClient extends Plugin {
 export default PluginFieldComponentValueClient;
 ```
 
-其中关于 `app.addFieldInterfaceComponentOption` 的使用可以参考 [文档](https://client.docs.nocobase.com/core/data-source/collection-field-interface-manager#addfieldinterfacecomponentoption)。
+Подробности об использовании `app.addFieldInterfaceComponentOption` см. в [документации](https://client.docs.nocobase.com/core/data-source/collection-field-interface-manager#addfieldinterfacecomponentoption).
 
-![编辑模式](https://static-docs.nocobase.com/20240724111012.png)
+![Режим редактирования](https://static-docs.nocobase.com/20240724111012.png)
 
-![ReadOnly 模式](https://static-docs.nocobase.com/20240724111116.png)
+![Режим ReadOnly](https://static-docs.nocobase.com/20240724111116.png)
 
-![预览模式](https://static-docs.nocobase.com/20240724111231.png)
+![Режим просмотра](https://static-docs.nocobase.com/20240724111231.png)
 
-### 2. 实现 Schema Settings
+### 2. Реализация настроек Schema
 
-我们需要通过 Schema Settings 来配置 `QRCode` 组件的属性。
+Для настройки свойств компонента `QRCode` используем Schema Settings.
 
-#### 2.1 定义 Schema Settings
+#### 2.1 Определение настроек Schema
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-field-value/src/client/settings.tsx` 文件：
+Создайте файл `packages/plugins/@nocobase-sample/plugin-field-value/src/client/settings.tsx`:
 
 ```ts
-import { createModalSettingsItem, createSelectSchemaSettingsItem, createSwitchSettingsItem, SchemaSettings } from "@nocobase/client";
-
+import { createModalSettingsItem, createSelectSchemaSettingsItem, createSwitchSettingsItem, SchemaSettings } from '@nocobase/client';
 import { tStr, useT } from './locale';
 
 export const qrCodeComponentFieldSettings = new SchemaSettings({
   name: 'fieldSettings:component:QRCode',
   items: [
     // TODO
-  ]
+  ],
 });
 ```
 
-其中 `name` 的命名规则为 `fieldSettings:component:${componentName}`，`componentName` 为组件的名字。
+Имя `name` следует правилу `fieldSettings:component:${componentName}`, где `componentName` — имя компонента.
 
-#### 2.2 注册 Schema Settings
+#### 2.2 Регистрация настроек Schema
 
-我们将 `qrCodeComponentFieldSettings` 注册到系统中。
+Зарегистрируйте `qrCodeComponentFieldSettings` в системе.
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-field-component-value/src/client/index.tsx` 文件：
+Обновите `packages/plugins/@nocobase-sample/plugin-field-component-value/src/client/index.tsx`:
 
 ```ts
-// ...
+import { Plugin } from '@nocobase/client';
+import { QRCode } from './QRCode';
 import { qrCodeComponentFieldSettings } from './settings';
+import { tStr } from './locale';
 
 export class PluginFieldComponentValueClient extends Plugin {
   async load() {
-    // ...
+    this.app.addComponents({ QRCode });
     this.schemaSettingsManager.add(qrCodeComponentFieldSettings);
+    this.app.addFieldInterfaceComponentOption('url', {
+      label: tStr('QRCode'),
+      value: 'QRCode',
+    });
   }
 }
+
+export default PluginFieldComponentValueClient;
 ```
 
-### 3. 实现 Schema Settings items
+### 3. Реализация элементов настроек Schema
 
-#### 3.1 实现 `Size`
+#### 3.1 Реализация настройки `Size`
 
-`Size` 我们使用 `select` 选择框来选择 `small`、`middle`、`large`。
+Для настройки размера используем выпадающий список `select` с вариантами `small`, `middle`, `large`.
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-field-component-value/src/client/settings.ts`：
+Обновите `packages/plugins/@nocobase-sample/plugin-field-component-value/src/client/settings.ts`:
 
 ```ts
-// ...
 export const qrCodeComponentFieldSettings = new SchemaSettings({
   name: 'fieldSettings:component:QRCode',
   items: [
@@ -270,31 +277,53 @@ export const qrCodeComponentFieldSettings = new SchemaSettings({
           {
             label: t('Large'),
             value: 200,
-          }
-        ]
-      }
+          },
+        ];
+      },
     }),
   ],
 });
 ```
 
-- `name`：唯一标识
-- `title`：标题
-- `schemaKey`：Schema 的 key，我们这里将其存储在 `x-component-props.size` 中
-- `defaultValue`：默认值
-- `useOptions`：选项
+- `name`: Уникальный идентификатор.
+- `title`: Заголовок.
+- `schemaKey`: Ключ Schema, в данном случае `x-component-props.size`.
+- `defaultValue`: Значение по умолчанию.
+- `useOptions`: Опции для выпадающего списка.
 
 ![20240724111505](https://static-docs.nocobase.com/20240724111505.png)
 
-#### 3.2 实现 `Bordered`
+#### 3.2 Реализация настройки `Bordered`
 
-`Border` 我们使用 `switch` 开关来选择是否显示边框。
+Для настройки границы используем переключатель `switch`.
 
 ```ts
 export const qrCodeComponentFieldSettings = new SchemaSettings({
   name: 'fieldSettings:component:QRCode',
   items: [
-    // ...
+    createSelectSchemaSettingsItem({
+      name: 'size',
+      title: tStr('Size'),
+      schemaKey: 'x-component-props.size',
+      defaultValue: 160,
+      useOptions() {
+        const t = useT();
+        return [
+          {
+            label: t('Small'),
+            value: 100,
+          },
+          {
+            label: t('Middle'),
+            value: 160,
+          },
+          {
+            label: t('Large'),
+            value: 200,
+          },
+        ];
+      },
+    }),
     createSwitchSettingsItem({
       name: 'bordered',
       schemaKey: 'x-component-props.bordered',
@@ -305,21 +334,49 @@ export const qrCodeComponentFieldSettings = new SchemaSettings({
 });
 ```
 
-- `name`：唯一标识
-- `schemaKey`：Schema 的 key，我们这里将其存储在 `x-component-props.bordered` 中
-- `defaultValue`：默认值
+- `name`: Уникальный идентификатор.
+- `schemaKey`: Ключ Schema, в данном случае `x-component-props.bordered`.
+- `defaultValue`: Значение по умолчанию.
 
 ![20240724111935](https://static-docs.nocobase.com/20240724111935.png)
 
-#### 3.3 实现 `Color`
+#### 3.3 Реализация настройки `Color`
 
-`Color` 我们使用 `Modal` 弹窗来选择颜色。
+Для настройки цвета используем модальное окно с выбором цвета.
 
 ```ts
 export const qrCodeComponentFieldSettings = new SchemaSettings({
   name: 'fieldSettings:component:QRCode',
   items: [
-    // ...
+    createSelectSchemaSettingsItem({
+      name: 'size',
+      title: tStr('Size'),
+      schemaKey: 'x-component-props.size',
+      defaultValue: 160,
+      useOptions() {
+        const t = useT();
+        return [
+          {
+            label: t('Small'),
+            value: 100,
+          },
+          {
+            label: t('Middle'),
+            value: 160,
+          },
+          {
+            label: t('Large'),
+            value: 200,
+          },
+        ];
+      },
+    }),
+    createSwitchSettingsItem({
+      name: 'bordered',
+      schemaKey: 'x-component-props.bordered',
+      title: tStr('Bordered'),
+      defaultValue: true,
+    }),
     createModalSettingsItem({
       name: 'color',
       title: tStr('Color'),
@@ -334,9 +391,9 @@ export const qrCodeComponentFieldSettings = new SchemaSettings({
               title: tStr('Color'),
               default: color,
               'x-component': 'ColorPicker',
-            }
-          }
-        }
+            },
+          },
+        };
       },
     }),
   ],
@@ -345,17 +402,17 @@ export const qrCodeComponentFieldSettings = new SchemaSettings({
 
 ![20240724112041](https://static-docs.nocobase.com/20240724112041.png)
 
-### 4. 多语言
+### 4. Мультиязычность
 
-我们可以通过 [http://localhost:13000/admin/settings/system-settings](http://localhost:13000/admin/settings/system-settings) 添加多个语言，并且在右上角切换语言。
+Можно добавить несколько языков через [http://localhost:13000/admin/settings/system-settings](http://localhost:13000/admin/settings/system-settings) и переключать их в правом верхнем углу.
 
 ![20240611113758](https://static-docs.nocobase.com/20240611113758.png)
 
-#### 4.1 英语
+#### 4.1 Английский язык
 
-我们编辑 `packages/plugins/@nocobase-sample/plugin-field-value/src/locale/zh-CN.json` 文件：
+Отредактируйте `packages/plugins/@nocobase-sample/plugin-field-value/src/locale/en-US.json`:
 
-```diff
+```json
 {
   "QRCode": "QRCode",
   "Size": "Size",
@@ -367,11 +424,11 @@ export const qrCodeComponentFieldSettings = new SchemaSettings({
 }
 ```
 
-#### 4.1 中文
+#### 4.2 Китайский язык
 
-我们编辑 `packages/plugins/@nocobase-sample/plugin-field-value/src/locale/zh-CN.json` 文件：
+Отредактируйте `packages/plugins/@nocobase-sample/plugin-field-value/src/locale/zh-CN.json`:
 
-```diff
+```json
 {
   "QRCode": "二维码",
   "Size": "尺寸",
@@ -383,22 +440,22 @@ export const qrCodeComponentFieldSettings = new SchemaSettings({
 }
 ```
 
-![TODO：截图](https://static-docs.nocobase.com/TODO：截图.png)
+![TODO: Скриншот](https://static-docs.nocobase.com/TODO：截图.png)
 
-## 打包和上传到生产环境
+## Сборка и загрузка в продакшен
 
-按照 [构建并打包插件](/development/your-fisrt-plugin#构建并打包插件) 文档说明，我们可以打包插件并上传到生产环境。
+Следуя инструкциям [Сборка и упаковка плагина](/development/your-fisrt-plugin#构建并打包插件), упакуйте плагин и загрузите его в продакшен.
 
-如果是 clone 的源码，需要先执行一次全量 build，将插件的依赖也构建好。
+Если вы используете клонированный исходный код, сначала выполните полную сборку, чтобы собрать зависимости плагина:
 
 ```bash
 yarn build
 ```
 
-如果是使用的 `create-nocobase-app` 创建的项目，可以直接执行：
+Если вы используете проект, созданный через `create-nocobase-app`, выполните:
 
 ```bash
 yarn build @nocobase-sample/plugin-field-value --tar
 ```
 
-这样就可以看到 `storage/tar/@nocobase-sample/plugin-field-value.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
+В результате в папке `storage/tar/@nocobase-sample/plugin-field-value.tar.gz` появится архив плагина. Установите его через интерфейс загрузки, описанный в [документации](/welcome/getting-started/plugin).
