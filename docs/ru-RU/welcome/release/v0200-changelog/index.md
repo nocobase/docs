@@ -1,173 +1,170 @@
-# v0.20: 2024-03-03
+# Версия 0.20: 2024-03-03
 
-## New Features
+## Новые возможности
 
-### Support for Multiple Data Sources
+### Поддержка нескольких источников данных
 
-Added the "[Data Source Manager](/handbook/data-source-manager)" plugin, used to manage all collections and fields for data sources. The Data Source Manager plugin provides a centralized interface for managing data sources and does not provide the capability to access data sources. It needs to be used in conjunction with various data source plugins. Currently supported data sources include:
+Добавлен плагин [Менеджер источников данных](/handbook/data-source-manager), используемый для управления всеми коллекциями и полями для источников данных. Плагин Data Source Manager предоставляет централизованный интерфейс для управления источниками данных и не предоставляет возможности доступа к источникам данных. Его необходимо использовать в сочетании с различными плагинами для источников данных. В настоящее время поддерживаются следующие источники данных:
 
-- [Main Database](/handbook/data-source-main): NocoBase main database, supporting relational databases such as MySQL, PostgreSQL, SQLite, etc.
-- [External MySQL Data Source](/handbook/data-source-external-mysql): Access an existing MySQL database as a data source.
-- [External MariaDB Data Source](/handbook/data-source-external-mariadb): Access an existing MariaDB database as a data source.
-- [External PostgreSQL Data Source](/handbook/data-source-external-postgres): Access an existing PostgreSQL database as a data source.
+- [Основная база данных](/handbook/data-source-main): основная база данных NocoBase, поддерживающая реляционные базы данных, такие как MySQL, PostgreSQL, SQLite и т.д.
+- [Внешний источник данных MySQL](/handbook/data-source-external-mysql): Доступ к существующей базе данных MySQL в качестве источника данных.
+- [Внешний источник данных MariaDB](/handbook/data-source-external-mariadb): Доступ к существующей базе данных MariaDB в качестве источника данных.
+- [Внешний источник данных PostgreSQL](/handbook/data-source-external-postgres): Доступ к существующей базе данных PostgreSQL в качестве источника данных.
 
-In addition, more data sources can be extended, which can be common types of databases or platforms that provide APIs (SDKs).
+Кроме того, можно расширить число источников данных, которые могут быть обычными типами баз данных или платформ, предоставляющих API (SDK).
 
 ![Data Source Manager](https://static-docs.nocobase.com/fe8ecdaf640097eeb310c94a997b9090.png)
 
-### Adjustment to Collections Management
+### Настройка управления коллекциями
 
-Moved the original "Collection Manager" to "Data Source > Main Database > Configuration".
+Перенес исходный "Менеджер коллекций" в "Источник данных > Основная база данных > Конфигурация".
 
 ![Main Database Configuration](https://static-docs.nocobase.com/b5ad882a131e447f78b0c22a92ec9df6.gif)
 
-### Support for Non-ID Fields as Primary and Relationship Constraints
+### Поддержка полей, отличных от ID, в качестве основных и связанных ограничений
 
-When creating a collection, you can choose not to create an ID field.
+При создании коллекции вы можете отказаться от создания поля ID.
 
 ![Predefined Fields](https://static-docs.nocobase.com/87dc4101a884f97cbfce00f1891f7cf6.png)
 
-Integer fields can be used as primary keys.
+Целочисленные поля могут использоваться в качестве первичных ключей.
 
 ![Integer fields can be used as primary keys](https://static-docs.nocobase.com/cce37d7d8e9feaa66970da0c643a2d9d.png)
 
-Single-line text fields can also be used as primary keys.
+Однострочные текстовые поля также могут использоваться в качестве первичных ключей.
 
 ![Single-line text fields can also be used as primary keys](https://static-docs.nocobase.com/b2c797f52bedfcfa06936a244dd9be4b.png)
 
-Relationship constraints support selecting other fields with Unique indexes set as non-primary key fields.
+Ограничения взаимосвязи поддерживают выбор других полей с уникальными индексами, установленными в качестве полей, не являющихся первичными ключами.
 
 ![](https://static-docs.nocobase.com/e5515e58426c5be08ba982b0bb311410.png)
 
-### Adjustment to Drag-and-Drop Sorting
+### Настройка сортировки с помощью перетаскивания
 
-Added a "Sort" type field. Sorting fields are no longer automatically generated when creating collections and need to be manually created.
+Добавлено поле типа "Сортировать". Поля сортировки больше не создаются автоматически при создании коллекций и их необходимо создавать вручную.
 
 ![](https://static-docs.nocobase.com/470891c7bb34c506328c1f3824a6cf20.png)
 
-When selecting a field as a group, grouping will be done before sorting.
+При выборе поля в качестве группы перед сортировкой будет произведена группировка.
 
 ![](https://static-docs.nocobase.com/0794d0a9c0dc288a8fc924a3542bb86e.png)
 
-When enabling drag-and-drop sorting in table block, you need to select the sorting field.
+При включении сортировки перетаскиванием в табличном блоке вам необходимо выбрать поле сортировки.
 
 ![](https://static-docs.nocobase.com/20cf12fd7ca3d8c0aa1917a95c0a7e7c.png)
 
-When creating a Kanban block, you need to select the sorting field.
+При создании блока Канбан вам необходимо выбрать поле сортировки.
 
 ![](https://static-docs.nocobase.com/b810265790d6a1ec099e3d88d1361271.png)
 
-### Adjustment to User and Permission Interfaces
+### Настройка пользовательского интерфейса и интерфейсов разрешений
 
-Added user management interface and unified user and role management under one menu.
+Добавлен интерфейс управления пользователями и унифицированное управление пользователями и ролями в одном меню.
 
 ![](https://static-docs.nocobase.com/7be26746652098f07ce105dbae373522.png)
 
-Adjusted the role management interface to facilitate the management of user-associated roles, permissions, departments, etc.
+Изменен интерфейс управления ролями, чтобы упростить управление связанными с пользователями ролями, разрешениями, отделами и т.д.
 
 ![](https://static-docs.nocobase.com/4ec942af764dfcec1ddc9a244816a6ee.png)
 
-Moved the original "Action Permissions" to the "Data Source" tab.
+Перенес исходные "Разрешения на действия" на вкладку "Источник данных".
 
 ![](https://static-docs.nocobase.com/461ab881fe94a33f9a122e9734b85f4d.gif)
 
-### Department Plugin
+### Плагин отделов
 
 ![](https://static-docs.nocobase.com/093473d9c23a789d41899df9bcaf3389.png)
 
-Organize users by departments, set hierarchical relationships, link roles to control permissions, and use departments as variables in workflows and expressions.
+Организуйте пользователей по отделам, устанавливайте иерархические связи, связывайте роли для управления разрешениями и используйте отделы в качестве переменных в рабочих процессах и выражениях.
 
-### Workflow: Approval
+### Рабочий процесс: Утверждение
 
-The approval plugin provides dedicated workflow types (triggers) "Initiate Approval" and "Approval" nodes for this process. Combined with NocoBase's unique custom data tables and custom blocks, various approval scenarios can be quickly and flexibly created and managed.
+Плагин утверждения предоставляет специальные типы рабочих процессов (триггеры) "Инициировать утверждение" и узлы "Утверждение" для этого процесса. В сочетании с уникальными пользовательскими таблицами данных и пользовательскими блоками NocoBase можно быстро и гибко создавать различные сценарии утверждения и управлять ими.
 
-Approval configuration
+Конфигурация утверждения
 
 ![Approval Configuration](https://static-docs.nocobase.com/21acc5615ecc03aeeb44671ab945baea.png)
 
-Approval process
+Процесс утверждения
 
 ![Approval Process](https://static-docs.nocobase.com/6a879641bd15de0648cd4602779ef9fa.png)
 
-Further details can be found in the documentation: [Workflow Approval](/handbook/workflow-approval)
+Более подробную информацию можно найти в документации: [Утверждение рабочего процесса](/handbook/workflow-approval)
 
-### Workflow: End Process Node
+### Рабочий процесс: Узел завершения процесса
 
-This node immediately ends the current execution of the workflow when executed and ends with the status configured in the node. It is typically used for specific logic flow control, to exit the current workflow after meeting certain logical conditions, without continuing with subsequent processing. It can be likened to the return command in programming languages, used to exit the currently executing function.
+Этот узел немедленно завершает текущее выполнение рабочего процесса при выполнении и сохраняет статус, настроенный в узле. Обычно он используется для управления определенным логическим потоком, чтобы завершить текущий рабочий процесс после выполнения определенных логических условий без продолжения последующей обработки. Это можно сравнить с командой return в языках программирования, используемой для выхода из выполняемой в данный момент функции.
 
 ![](https://static-docs.nocobase.com/38d6352211d791fd4233f5cd4bdb34f2.png)
 
-Further details can be found in the documentation: [End Process Node](/handbook/workflow/manual/nodes/end)
+Более подробную информацию можно найти в документации: [Конечный узел процесса](/handbook/workflow/manual/nodes/end)
 
-### Workflow: Custom Variable Node
+### Рабочий процесс: Custom Variable Node
 
-Variables can be declared in the workflow or assigned values to previously declared variables, typically used to store temporary data in the workflow. It is suitable for scenarios where calculation results need to be stored for later use outside the branch (such as loops, parallelism, etc.).
+Переменные могут быть объявлены в рабочем процессе или присвоены значения ранее объявленным переменным, которые обычно используются для хранения временных данных в рабочем процессе. Он подходит для сценариев, где результаты вычислений необходимо сохранить для последующего использования вне ветви (например, циклы, параллелизм и т.д.).
 
 ![](https://static-docs.nocobase.com/c19913f99968d987a52aaa53578a7318.png)
 
-Further details can be found in the documentation: [Custom Variable Node](/handbook/workflow-variable)
+Более подробную информацию можно найти в документации:  [Пользовательский переменный узел](/handbook/workflow-variable)
 
-### Workflow: Request Interceptor
+### Рабочий процесс: перехватчик запросов
 
-The request interceptor plugin provides a mechanism to intercept operations on forms, where the interception event is triggered after the corresponding form operation is submitted and before it is processed. If a "End Process" node is executed in the subsequent process flow after triggering, or if other nodes fail to execute (errors or other incomplete executions), the form operation will be intercepted, otherwise the scheduled operation will be executed normally. It can be used for business validation or logic checks to approve or intercept client-submitted create, update, and delete operations.
+Плагин request interceptor предоставляет механизм перехвата операций с формами, при котором событие перехвата запускается после отправки соответствующей операции с формой и до ее обработки. Если узел "Завершить процесс" выполняется в последующем потоке процесса после запуска или если другие узлы не выполняются (ошибки или другие неполные выполнения), операция с формой будет перехвачена, в противном случае запланированная операция будет выполнена в обычном режиме. Его можно использовать для бизнес-проверки или логических проверок для утверждения или перехвата отправленных клиентом операций создания, обновления и удаления.
 
 ![](https://static-docs.nocobase.com/3f3991aaf9d73b8c2f7c179e7702d16b.png)
 
-Further details can be found in the documentation: [Request Interceptor](/handbook/workflow-request-interceptor)
+Более подробную информацию можно найти в документации: [Перехватчик запросов](/handbook/workflow-request-interceptor)
 
-### Workflow: Response Message Node
+### Рабочий процесс: Узел ответных сообщений
 
-The response message node is used to provide feedback to the client with custom messages in specific types of workflows (such as request interception and form events).
+Узел ответных сообщений используется для предоставления обратной связи клиенту с помощью пользовательских сообщений в определенных типах рабочих процессов (таких как перехват запросов и события форм).
 
-Node configuration
+Конфигурация узла
 
 ![](https://static-docs.nocobase.com/4376843af541ef6a08696e074cb6cd07.png)
 
-Prompt message
+Подсказка
 
 ![](https://static-docs.nocobase.com/051f12855bd0ce74b22de191b8b87cf5.png)
 
-Further details can be found in the documentation: [Response Message Node](/handbook/workflow-response-message)
+Более подробную информацию можно найти в документации: [Узел ответного сообщения](/handbook/workflow-response-message)
 
-## Incompatible Changes
+## Несовместимые изменения
 
-### Conflictingly Named APIs
+### API с разными именами
 
-In this kernel change, some new version APIs conflict with the old version names. These conflicting old version APIs will be retained in this version but will be uniformly suffixed with `_deprecated`.
-
-| Original API           | Deprecated API                  | New API                                                                                                                |
+В результате этого изменения в ядре некоторые API новой версии вступают в конфликт с именами старых версий. Эти конфликтующие API старой версии будут сохранены в этой версии, но к ним будет добавлен суффикс `_deprecated`.
+| Оригинальный API | Устаревший API | Новый API |
 | ---------------------- | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| CollectionProvider     | CollectionProvider_deprecated   | [CollectionProvider](https://client.docs.nocobase.com/core/data-source/collection-provider)                 |
-| useCollection          | useCollection_deprecated        | [useCollection](https://client.docs.nocobase.com/core/data-source/collection-provider#hooks)                |
-| useCollectionField     | useCollectionField_deprecated   | [useCollectionField](https://client.docs.nocobase.com/core/data-source/collection-field#hooks)              |
-| useCollectionManager   | useCollectionManager_deprecated | [useCollectionManager](https://client.docs.nocobase.com/core/data-source/collection-manager-provider#hooks) |
+| CollectionProvider | CollectionProvider_deprecated | [CollectionProvider](https://client.docs.nocobase.com/core/data-source/collection-provider) |
+| useCollection | useCollection_deprecated | [useCollection](https://client.docs.nocobase.com/core/data-source/collection-provider#hooks) |
+| useCollectionField | useCollectionField_deprecated | [useCollectionField](https://client.docs.nocobase.com/core/data-source/collection-field#hooks) |
+| useCollectionManager | usecollectionmanager_рекомендуемый | [useCollectionManager](https://client.docs.nocobase.com/core/data-source/collection-manager-provider#hooks) |
 | useContext(CollectionManagerContext) | useCollectionManager_deprecated | [useCollectionManager](https://client.docs.nocobase.com/core/data-source/collection-manager-provider#hooks) |
 
-If you are using the above related APIs, you have two ways to change:
+Если вы используете вышеупомянутые связанные API, у вас есть два способа изменить:
 
-- Simple replacement: Replace the original API with the one suffixed with `_deprecated`, for example, replace `useCollection()` with `useRecord_deprecated()`.
-- Use the new API according to the new documentation: Although the names of the new APIs are the same as the old APIs, there are differences in parameters and return values. You need to refer to the new documentation
+- Простая замена: замените исходный API на API с суффиксом `_deprecated`, например, замените `useCollection()` на `useRecord_deprecated()`.
+- Используйте новый API в соответствии с новой документацией: хотя названия новых API совпадают со старыми, существуют различия в параметрах и возвращаемых значениях. Вам необходимо обратиться к новой документации для корректировки соответствующего кода.
 
- to adjust the corresponding code.
+### Другие API, требующие корректировки
 
-### Other APIs Requiring Adjustment
+- `registerTemplate()` изменен на `app.dataSourceManager.addCollectionTemplates()`
+- `registerField()` изменено на `app.dataSourceManager.addFieldInterfaces()`
+- `registerGroup()` изменено на `app.dataSourceManager.addFieldInterfaceGroups()`
+- `useContext(CollectionManagerContext)` изменен на `useCollectionManager_deprecated()`
+-  Расширяем коллекции с помощью `ExtendCollectionsProvider`
+- `RecordProvider` требует явной передачи родительского параметра, когда это необходимо
 
-- `registerTemplate()` changed to `app.dataSourceManager.addCollectionTemplates()`
-- `registerField()` changed to `app.dataSourceManager.addFieldInterfaces()`
-- `registerGroup()` changed to `app.dataSourceManager.addFieldInterfaceGroups()`
-- `useContext(CollectionManagerContext)` changed to `useCollectionManager_deprecated()`
-- Extend collections using `ExtendCollectionsProvider`
-- `RecordProvider` requires explicit passing of the parent parameter when needed
+## Изменить примеры
 
-## Change Examples
+### Расширение шаблона коллекции
 
-### Collection Template Extension
+#### Определение
 
-#### Definition
+Ранее он был определен как объект, теперь его необходимо преобразовать в класс. Например:
 
-Previously defined as an object, it now needs to be changed to a class. For example:
-
-Before:
+До:
 
 ```typescript
 import { ICollectionTemplate } from '@nocobase/client';
@@ -181,7 +178,7 @@ const calendar: ICollectionTemplate = {
 }
 ```
 
-Now:
+После:
 
 ```typescript
 import { CollectionTemplate } from '@nocobase/client';
@@ -194,13 +191,13 @@ class CalendarCollectionTemplate extends CollectionTemplate {
 }
 ```
 
-The original object properties become class members.
+Свойства исходного объекта становятся членами класса.
 
-#### Registration
+#### Регистрация
 
-Previously registered through `registerTemplate`, now needs to be registered through the plugin's `dataSourceManager.addCollectionTemplates`. For example:
+Ранее зарегистрированный через "registerTemplate", теперь должен быть зарегистрирован через "dataSourceManager.addCollectionTemplates" плагина. Например:
 
-Before:
+До:
 
 ```typescript
 import { registerTemplate } from '@nocobase/client';
@@ -209,7 +206,7 @@ import { calendar } from './calendar'
 registerTemplate('calendar', calendar);
 ```
 
-Now:
+После:
 
 ```typescript
 import { Plugin } from '@nocobase/client';
@@ -222,13 +219,13 @@ export class CalendarPluginClient extends Plugin {
 }
 ```
 
-### Field Interface Extension
+### Расширение интерфейса поля
 
-#### Definition
+#### Определение
 
-Previously defined as an object, it now needs to be changed to a class. For example:
+Ранее оно было определено как объект, теперь его необходимо преобразовать в класс. Например:
 
-Before:
+До:
 
 ```typescript
 import { IField } from '@nocobase/client';
@@ -242,7 +239,7 @@ const attachment: IField = {
 }
 ```
 
-Now:
+После:
 
 ```typescript
 import { CollectionFieldInterface } from '@nocobase/client';
@@ -256,13 +253,13 @@ class AttachmentFieldInterface extends CollectionFieldInterface {
 }
 ```
 
-The original object properties become class members.
+Свойства исходного объекта становятся членами класса.
 
-#### Registration
+#### Регистрация
 
-Previously registered through `registerField`, now needs to be registered through the plugin's `dataSourceManager.addFieldInterfaces` and does not require passing `CollectionManagerProvider` again. For example:
+Ранее зарегистрированный через `registerField`, теперь должен быть зарегистрирован через `dataSourceManager.addFieldInterfaces` плагина и не требует повторной передачи `CollectionManagerProvider`. Например:
 
-Before:
+До:
 
 ```diff
 import { registerField } from '@nocobase/client';
@@ -281,7 +278,7 @@ export const FileManagerProvider: FC = (props) => {
 };
 ```
 
-Now:
+После:
 
 ```typescript
 import { Plugin } from '@nocobase/client';
@@ -294,9 +291,9 @@ export class FilPlugin extends Plugin {
 }
 ```
 
-### Field Interface Group Extension
+### Расширение группы интерфейса поля
 
-Previously registered through `registerGroup`, now needs to be registered through the plugin's `dataSourceManager.addFieldInterfaceGroups`. For example:
+Ранее зарегистрированное через `registerGroup`, теперь необходимо зарегистрировать через `dataSourceManager.addFieldInterfaceGroups` плагина. Например:
 
 ```diff
 - import { registerGroup, Plugin } from '@nocobase/client';
@@ -319,14 +316,14 @@ export class MapPlugin extends Plugin {
 }
 ```
 
-### `useContext(CollectionManagerContext)` Changed to `useCollectionManager_deprecated()`
+### `useContext(CollectionManagerContext)` изменен на `useCollectionManager_deprecated()`
 
 ```diff
 - const ctx = useContext(CollectionManagerContext);
 + const ctx = useCollectionManager_deprecated();
 ```
 
-### Extend Collections, Use `ExtendCollectionsProvider` Instead of `CollectionManagerProvider`
+### Расширьте коллекции, используйте "ExtendCollectionsProvider` вместо `CollectionManagerProvider`
 
 ```diff
 const Demo = () => {
@@ -338,9 +335,9 @@ const Demo = () => {
 }
 ```
 
-### Changes to RecordProvider
+### Изменения в RecordProvider
 
-Previously, when the parent property was not passed, the value of the last RecordProvider was automatically retrieved as the parent. Now, the parent needs to be explicitly passed, and when the parent is not passed, the value of the parent will be undefined.
+Ранее, когда родительское свойство не передавалось, значение последнего RecordProvider автоматически извлекалось в качестве родительского. Теперь родительское значение должно быть передано явно, и если родительское значение не передано, значение родительского значения будет неопределенным.
 
 ```diff
 - <RecordProvider record={recordData}>
@@ -349,7 +346,7 @@ Previously, when the parent property was not passed, the value of the last Recor
 </RecordProvider>
 ```
 
-If there is no historical baggage, you can also directly use CollectionRecordProvider to replace.
+Если у вас нет архивных данных, вы также можете напрямую использовать `CollectionRecordProvider` для замены.
 
 ```diff
 - <RecordProvider record={recordData}>
@@ -359,7 +356,7 @@ If there is no historical baggage, you can also directly use CollectionRecordPro
 + </CollectionRecordProvider>
 ```
 
-:::warning{title="Difference Between RecordProvider and CollectionRecordProvider"}
-- RecordProvider is deprecated and will be removed in the future.
-- RecordProvider carries the old RecordContext, while CollectionRecordProvider does not.
-:::
+### Разница между `RecordProvider` и `CollectionRecordProvider`
+
+- `RecordProvider` устарел и будет удален в будущем.
+- `RecordProvider` содержит старый `RecordContext`, в то время как `CollectionRecordProvider` этого не делает.

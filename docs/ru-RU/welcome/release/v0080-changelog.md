@@ -1,49 +1,49 @@
-# v0.8：2022-11-01
+# Версия 0.8: 2022-11-01
 
-Starting with v0.8, NocoBase begins to provide an available plugin manager and development documentation. Here are the main changes in v0.8.
+Начиная с версии 0.8, NocoBase начинает предоставлять доступ к менеджеру плагинов и документации по разработке. Вот основные изменения в версии 0.8.
 
-## Tweaks to the top right corner of the interface
+## Изменения в правом верхнем углу интерфейса
 
-- UI Editor
-- Plugin Manager
-- Settings Center
-- Personal Center
+- Редактор пользовательского интерфейса
+- Менеджер плагинов
+- Центр настроек
+- Персональный центр
 
 <img src="./v08-changelog/topright.jpg" style="max-width: 500px;" />
 
-## The new plugin manager
+## Новый менеджер плагинов
 
-v0.8 provides a powerful plugin manager for managing plugins in a no-code way.
+Версия 0.8 предоставляет мощный менеджер плагинов для управления плагинами без использования кода.
 
-### Plugin manager flow
+### Поток управления плагинами
 
 <img src="./v08-changelog/pm-flow.svg" style="max-width: 580px;"/>
 
-### Plugin Manager interface
+### Интерфейс менеджера плагинов
 
-Currently it is mainly used for disabling, activating and deleting local plugins. Built-in plugins cannot be deleted.
+В настоящее время он в основном используется для отключения, активации и удаления локальных плагинов. Встроенные плагины удалить невозможно.
 
 <img src="./v08-changelog/pm-ui.jpg" />
 
-### Plugin Manager command
+### Команда менеджера плагинов
 
-In addition to being able to activate and disable plugins from the no-code interface, you can also manage plugins more completely from the command line.
+Помимо возможности активировать и отключать плагины из интерфейса без использования кода, вы также можете более полно управлять плагинами из командной строки.
 
 ```
-# Create a plugin
+# Создаем плагин
 yarn pm create hello
-# Register the plugin
+# Регистрируем плагин
 yarn pm add hello
-# Activate the plugin
+# Активируем плагин
 yarn pm enable hello
-# Disable the plugin
+# Отключаем плагин
 yarn pm disable hello
-# Remove the plugin
+# Удаляем плагин
 yarn pm remove hello
 
 ```
 
-Note: Releases and upgrades for plugins will be supported in subsequent releases.
+Примечание: Релизы и обновления для плагинов будут поддерживаться в последующих версиях.
 
 ```
 # Publish the plugin
@@ -53,11 +53,11 @@ yarn pm upgrade hello
 
 ```
 
-For more plugin examples, see [packages/samples](https://github.com/nocobase/nocobase/tree/main/packages/samples).
+Дополнительные примеры плагинов смотрите в разделе [пакеты/примеры](https://github.com/nocobase/nocobase/tree/main/packages/samples).
 
-## Changes of plugin
+## Изменения в плагине
 
-### Plugin’s directory structure
+### Структура каталогов плагина
 
 ```
 |- /hello
@@ -72,30 +72,30 @@ For more plugin examples, see [packages/samples](https://github.com/nocobase/noc
 
 ```
 
-### Plugin’s name specification
+### Спецификация имени плагина
 
-NocoBase plugin is also an NPM package, the correspondence rule between plugin name and NPM package name is `${PLUGIN_PACKAGE_PREFIX}-${pluginName}`.
+Плагин NocoBase также является пакетом NPM, правило соответствия между именем плагина и именем пакета NPM таково: `${PLUGIN_PACKAGE_PREFIX}-${PluginName}`.
 
-`PLUGIN_PACKAGE_PREFIX` is the plugin package prefix, which can be customized in .env, [click here for PLUGIN_PACKAGE_PREFIX description](https://www.notion.so/api/env#plugin_package_prefix).
+`PLUGIN_PACKAGE_PREFIX` - это префикс пакета плагина, который можно настроить в `.env`, [нажмите здесь, чтобы ознакомиться с описанием PLUGIN_PACKAGE_PREFIX](https://www.notion.so/api/env#plugin_package_prefix).
 
-For example, a project named `my-nocobase-app` adds the `hello` plugin with package name `@my-nocobase-app/plugin-hello`.
+Например, проект с именем `my-nocobase-app` добавляет плагин `hello` с именем пакета `@my-nocobase-app/plugin-hello`.
 
-`PLUGIN_PACKAGE_PREFIX` is configured as follows.
+`PLUGIN_PACKAGE_PREFIX` настраивается следующим образом.
 
 ```
 PLUGIN_PACKAGE_PREFIX=@nocobase/plugin-,@nocobase/preset-,@my-nocobase-app/plugin-
 
 ```
 
-The correspondence between plugin names and package names is
+Соответствие между названиями плагинов и названиями пакетов таково:
 
-- `users` plugin package name is `@nocobase/plugin-users`
-- `nocobase` plugin package name is `@nocobase/preset-nocobase`
-- `hello` plugin package named `@my-nocobase-app/plugin-hello`
+- `users` название пакета плагина - `@nocobase/plugin-users`
+- `nocobase` название пакета плагина - `@nocobase/preset-nocobase`
+- `hello` название пакета плагина - `@my-nocobase-app/plugin-hello`
 
-### Plugin’s lifecycle
+### Жизненный цикл плагина
 
-v0.8 provides a more complete approach to the plugin lifecycle.
+Версия 0.8 обеспечивает более полный подход к жизненному циклу плагина.
 
 ```
 import { InstallOptions, Plugin } from '@nocobase/server';
@@ -134,9 +134,9 @@ export default HelloPlugin;
 
 ```
 
-### Front- and back-end entrance for plugins
+### Интерфейсный и серверный вход для плагинов
 
-The lifecycle of the plugin is controlled by the server
+Жизненный цикл плагина контролируется сервером:
 
 ```
 import { Application } from '@nocobase/server';
@@ -159,7 +159,7 @@ app.plugin(MyPlugin, { name: 'my-plugin' });
 
 ```
 
-The client side of the plugin exists as Context.Provider (similar to Middleware on the server side)
+Клиентская часть плагина существует в виде контекста. Провайдер (аналогично промежуточному программному обеспечению на стороне сервера)
 
 ```
 import React from 'react';
@@ -188,35 +188,35 @@ app.use(HelloProvider);
 
 ```
 
-## Custom business code
+## Пользовательский бизнес-код
 
-v0.7 plugins are not complete, custom business code may be scattered in `packages/app/client` and `packages/app/server`, which is not conducive to upgrade and maintenance. v0.8 recommends organizing as a plugin package and using `yarn pm` to manage plugins.
+Плагины версии 0.7 не являются полными, пользовательский бизнес-код может быть разбросан по `пакетам/приложению/клиенту` и `пакетам/приложению/серверу`, что не способствует обновлению и обслуживанию. В версии 0.8 рекомендуется организовать его в виде пакета плагинов и использовать `yarn pm` для управления плагинами.
 
-## More complete documentation is provided
+## Предоставляется более полная документация
 
-- **Welcome**: a quick look at NocoBase
-- **Manual**: learn more about the core features provided by the NocoBase platform
-- **Plugin Development Tutorial**: Advanced dive into plugin development
-- **API Reference**: Check the API usage during plugin development
-- **Client Components Library** (in preparation): provides examples and usage of NocoBase components
+- **Добро пожаловать**: краткий обзор NocoBase
+- **Руководство**: узнайте больше об основных функциях, предоставляемых платформой NocoBase
+- **Руководство по разработке плагинов**: Углубленное изучение разработки плагинов
+- **Ссылка на API**: Проверьте использование API при разработке плагинов
+- **Библиотека клиентских компонентов** (в стадии подготовки): содержит примеры использования компонентов NocoBase
 
-## More plugin examples are provided
+## Приведены дополнительные примеры плагинов
 
-- [command](https://github.com/nocobase/nocobase/tree/develop/packages/samples/command)
-- [custom-block](https://github.com/nocobase/nocobase/tree/develop/packages/samples/custom-block)
-- [custom-page](https://github.com/nocobase/nocobase/tree/develop/packages/samples/custom-page)
+- [команда](https://github.com/nocobase/nocobase/tree/develop/packages/samples/command)
+- [пользовательский блок](https://github.com/nocobase/nocobase/tree/develop/packages/samples/custom-block)
+- [пользовательская страница](https://github.com/nocobase/nocobase/tree/develop/packages/samples/custom-page)
 - [custom-signup-page](https://github.com/nocobase/nocobase/tree/develop/packages/samples/custom-signup-page)
-- [hello](https://github.com/nocobase/nocobase/tree/develop/packages/samples/hello)
-- [ratelimit](https://github.com/nocobase/nocobase/tree/develop/packages/samples/ratelimit)
-- [shop-actions](https://github.com/nocobase/nocobase/tree/develop/packages/samples/shop-actions)
-- [shop-events](https://github.com/nocobase/nocobase/tree/develop/packages/samples/shop-events)
-- [shop-i18n](https://github.com/nocobase/nocobase/tree/develop/packages/samples/shop-i18n)
-- [shop-modeling](https://github.com/nocobase/nocobase/tree/develop/packages/samples/shop-modeling)
+- [привет](https://github.com/nocobase/nocobase/tree/develop/packages/samples/hello)
+- [ограничение по ставке](https://github.com/nocobase/nocobase/tree/develop/packages/samples/ratelimit)
+- [действия в магазине](https://github.com/nocobase/nocobase/tree/develop/packages/samples/shop-actions)
+- [магазин-события](https://github.com/nocobase/nocobase/tree/develop/packages/samples/shop-events)
+- [магазин-i18n](https://github.com/nocobase/nocobase/tree/develop/packages/samples/shop-i18n)
+- [магазин-моделирование](https://github.com/nocobase/nocobase/tree/develop/packages/samples/shop-modeling)
 
-## Other new features and functionality
+## Другие новые возможности и функционал
 
-- Import from Excel
-- Bulk Update & Edit
-- Graphical collection
-- Workflow support for viewing execution history
-- JSON field
+- Импорт из Excel
+- Массовое обновление и редактирование
+- Графическая коллекция
+- Поддержка рабочего процесса для просмотра истории выполнения
+- Поле JSON

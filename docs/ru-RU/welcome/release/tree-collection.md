@@ -1,6 +1,6 @@
-# Tree collection
+# Древовидная коллекция
 
-## Collection options
+## Варианты коллекции
 
 ```ts
 {
@@ -21,24 +21,24 @@
 }
 ```
 
-## UI
+## Пользовательский интерфейс
 
-### Create tree collection
+### Создать древовидную коллекцию
 
 <img src="./tree-collection/tree-collection.jpg">
 
-### Default fields
+### Поля по умолчанию
 
 <img src="./tree-collection/init.jpg">
 
-### Table block
+### Табличный блок
 
 <img src="./tree-collection/tree-table.jpg">
 
-### Add child
+### Добавить дочерний элемент
 
 <img src="./tree-collection/add-child.jpg">
 
-### Expend/Collapse
+### Раскрыть/свернуть
 
 <img src="./tree-collection/expend-collapse.jpg">

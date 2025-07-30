@@ -1,39 +1,39 @@
-# v0.12: 2023-08-02
+# Версия 0.12: 2023-08-02
 
-## New Features
+## Новые возможности
 
-- New plugin build tool. The built plugins will be able to be used directly on the production environment without the need for a second build.
+- Новый инструмент для сборки плагинов. Встроенные плагины можно будет использовать непосредственно в рабочей среде без необходимости повторной сборки.
 
-## Application upgrades
+## Обновления приложений
 
-### Upgrade of Docker installation
+### Обновление установки Docker
 
-No change, refer to [Docker Image Upgrade Guide](/welcome/getting-started/upgrading/docker-compose) for upgrade.
+Изменений нет, обратитесь к [Руководству по обновлению образа Docker] (/welcome/начало работы/обновление/docker-compose) для получения информации об обновлении.
 
-### Upgrading source code installation
+### Обновление установки исходного кода
 
-The plugin build tool has been freshly upgraded, and the cache needs to be cleared after pulling new sources.
+Инструмент сборки плагина был недавно обновлен, и после загрузки новых исходных текстов необходимо очистить кэш.
 
 ```bash
-git pull # Pull the new source code.
-yarn clean # Clear the cache.
+git pull # Извлеките новый исходный код.
+yarn clean # Очистите кэш.
 ```
 
-For more details, see [Git source upgrade guide](/welcome/getting-started/upgrading/git-clone).
+Более подробную информацию смотрите в [Руководстве по обновлению исходного кода Git] (`/добро пожаловать/начало работы/обновление/git-clone`).
 
-### Upgrading a create-nocobase-app installation
+### Обновление установки create-nocobase-app
 
-Redownload the new version via `yarn create` and update the .env configuration, see [major version upgrade guide](/welcome/getting-started/upgrading/create-nocobase-app#Major version upgrade) for more details.
+Повторно загрузите новую версию через `yarn create` и обновите конфигурацию .env, более подробную информацию смотрите в [руководстве по обновлению основной версии] (`/welcome/начало работы/обновление/create-nocobase-app#Обновление основной версии`).
 
-## Incompatible changes
+## Несовместимые изменения
 
-### @nocobase/app-client and @nocobase/app-server merged into @nocobase-app
+### @nocobase/app-клиент и @nocobase/app-сервер объединены в @nocobase-app
 
-Apps installed via create-nocobase-app no longer have a packages/app directory, and custom code in packages/app needs to be moved to the custom plugin.
+Приложения, установленные с помощью `create-nocobase-app`, больше не имеют каталога `packages/app`, и пользовательский код в `packages/app` необходимо перенести в пользовательский плагин.
 
-### The dist/client path of the app has changed.
+### Путь к приложению dist/client изменился.
 
-If you are configuring nginx yourself, you will need to make a similar adjustment
+Если вы настраиваете nginx самостоятельно, вам нужно будет выполнить аналогичную настройку
 
 ```diff
 server {
@@ -53,13 +53,13 @@ server {
 }
 ```
 
-### Third party plugins need to be rebuilt
+### Необходимо перестроить плагины сторонних производителей
 
-Refer to the third-party plugin upgrade guide below
+Обратитесь к руководству по обновлению плагинов сторонних производителей, приведенному ниже
 
-## Third-party plugin upgrade guide
+## Руководство по обновлению плагинов сторонних производителей
 
-### The plugin directory must have both `src/client` and `src/server` directories.
+### В каталоге плагинов должны быть каталоги `src/client` и `src/server`.
 
 ```js
 // src/client/index.ts
@@ -87,18 +87,18 @@ class MyPlugin extends Plugin {
 export default MyPlugin;
 ```
 
-Specific demo code can be referred to: [sample-hello](https://github.com/nocobase/nocobase/tree/main/packages/samples/hello)
+Конкретный демонстрационный код можно найти по ссылке: [пример-привет](https://github.com/nocobase/nocobase/tree/main/packages/samples/hello)
 
-### Plugin's multilingual placement `src/locale` directory
+### Каталог многоязычного размещения плагина `src/locale`
 
-Both frontend and backend, multi-language translation files are placed in the `src/locale` directory, so the plugin doesn't need to load multi-language packages by itself.
+Файлы многоязычных переводов как для внешнего, так и для внутреннего интерфейса размещаются в каталоге `src/locale`, поэтому плагину не нужно загружать многоязычные пакеты самостоятельно.
 
-### Adjustment of plugin dependencies
+### Настройка зависимостей плагина
 
-The dependencies of the plugin are divided into its own dependencies and global dependencies. Global dependencies are directly used globally and will not be packaged into the plugin product, while its own dependencies will be packaged into the product. After the plug-in is built, the production environment is plug-and-play, and there is no need to install dependencies or build twice. Adjustments to plugin dependencies include:
+Зависимости плагина делятся на его собственные зависимости и глобальные зависимости. Глобальные зависимости напрямую используются во всем мире и не будут включены в продукт плагина, в то время как его собственные зависимости будут включены в продукт. После сборки подключаемого модуля производственная среда становится доступной по принципу "подключай и работай", и нет необходимости устанавливать зависимости или выполнять сборку дважды. Настройки зависимостей подключаемого модуля включают:
 
-- Put `@nocobase/*` related packages into `peerDependencies` and specify the version number as `0.x`;
-- Place other dependencies in `devDependencies`, not `dependencies`, as the plugin will extract all the dependencies required by the production environment after packaging.
+- Поместите связанные пакеты `@nocobase/*` в "peerDependencies" и укажите номер версии как `0.x`.;
+- Поместите другие зависимости в поле `devDependencies`, а не `dependencies`, так как плагин извлечет все зависимости, необходимые производственной среде, после упаковки.
 
 ```diff
 {
@@ -125,26 +125,26 @@ The dependencies of the plugin are divided into its own dependencies and global 
 }
 ```
 
-### The output path of the plugin has been changed from `lib` to `dist`
+### Выходной путь плагина был изменен с `lib` на `dist`
 
-dist directory structure
+Структура каталогов dist:
 
 ```bash
 |- dist
-  |- client       # Client-side, umd
+  |- client       # Клиентская сторона, umd
     |- index.js
     |- index.d.ts
-  |- server       # Server-side, cjs
+  |- server       # Серверная часть, cjs
     |- index.js
     |- index.d.ts
     |- others
-  |- locale       # multilingual package
-  |- node_modules # server dependencies
+  |- locale       # многоязычный пакет
+  |- node_modules # зависимости от сервера
 ```
 
-Other related adjustments include:
+Другие связанные с этим изменения включают в себя:
 
-Adjustment of the main parameter of package.json
+Изменение основного параметра package.json
 
 ```diff
 {

@@ -10,6 +10,12 @@
 
 ## Настройки блока
 
+## Блок Ганта (нет данных)
+
+![](https://static-docs.nocobase.com/1b439225f12b7a09aaab9d3a6dc11215.png)
+
+## Заблокировать настройки
+
 ![](https://static-docs.nocobase.com/e3b1950ca356fd58b4e1b644067337e4.png)
 
 ## Общие задачи

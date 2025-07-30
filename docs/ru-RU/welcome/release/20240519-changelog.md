@@ -1,112 +1,113 @@
-# v1.0.0-alpha.15: 2024.05.19
+# Версия 1.0.0 - альфа 
+# 15:2024.05.19
 
-## New Features
+## Новые возможности
 
-### Fixed Table Columns
+### Исправлены столбцы таблицы
 
-Refer to [Fixed Table Columns](https://docs-cn.nocobase.com/handbook/ui/fields/generic/table-column#%E5%9B%BA%E5%AE%9A%E5%88%97)
+См. [Исправлены столбцы таблицы](https://docs-cn.nocobase.com/handbook/ui/fields/generic/table-column#%E5%9B%BA%E5%AE%9A%E5%88%97)
 
 <img src="https://static-docs.nocobase.com/202405191512587.png"/>
 
-### Support for Adding Gantt, Kanban Blocks in Modals/Drawers
+### Поддержка добавления блоков Ганта, Канбана в модулях / выдвижных ящиках
 
-Refer to [Adding Blocks in Modals](https://docs-cn.nocobase.com/handbook/ui/pop-up)
+См. [Adding Blocks in Modals](https://docs-cn.nocobase.com/handbook/ui/pop-up)
 
 <img src="https://static-docs.nocobase.com/202405191512280.png"/>
 
-### Support for Adding Linkage Rules in Detail Blocks
+### Поддержка добавления правил привязки в подробные блоки
 
-The linkage rules in detail blocks now support dynamically setting fields to show/hide. Refer to [Linkage Rules in Detail Blocks](https://docs-cn.nocobase.com/handbook/ui/blocks/data-blocks/details#%E8%81%94%E5%8A%A8%E8%A7%84%E5%88%99)
+Правила привязки в подробных блоках теперь поддерживают динамическую настройку отображения/скрытия полей. См. [Правила привязки в подробных блоках](https://docs-cn.nocobase.com/handbook/ui/blocks/data-blocks/details#%E8%81%94%E5%8A%A8%E8%A7%84%E5%88%99)
 
 <img src="https://static-docs.nocobase.com/202405191513781.png"/>
 
-### Auth: LDAP
+### Авторизация: LDAP
 
-Added the "Auth: LDAP" plugin (commercial plugin), which allows users to sign in to NocoBase using LDAP server account credentials. Refer to the [User Manual](https://docs-cn.nocobase.com/handbook/auth-ldap)
+Добавлен плагин "Auth: LDAP" (компьютерный плагин), который позволяет пользователю войти в NocoBase, используя учетную запись сервера LDAP. Обратитесь к [Руководителю пользователя](https://docs-cn.nocobase.com/handbook/auth-ldap)
 
 <img src="https://static-docs.nocobase.com/202405191513995.png"/>
 
-### Workflow HTTP Request Node
+### Узел HTTP-запроса рабочего процесса
 
-#### Support for `application/www-x-form-urlencoded` Data Format
+#### Поддержка формата данных `application/www-x-form-urlencoded`
 
-Previously, request node only supported JSON format (`application/json`) for the body part of the Content-Type. After the upgrade, it also support configuring form format data in key-value pairs.
+Ранее request node поддерживал только формат JSON (`application/json`) для основной части Content-Type. После обновления он также поддерживает настройку данных формата формы в парах ключ-значение.
 
 <img src="https://static-docs.nocobase.com/202405191514472.png"/>
 
-#### String Template Support for Value Input Fields
+#### Поддержка шаблонов строк для полей ввода значений
 
-Previously, the value input fields in the "Headers" and "Parameters" sections of request node only supported pure input or variable selection. After the upgrade, you can directly enter a string with embedded variables. It will be automatically parsed as the final string value before sending the request.
+Ранее поля ввода значений в разделах `Заголовки` и `Параметры` узла запроса поддерживали только чистый ввод или выбор переменных. После обновления вы можете напрямую вводить строку со встроенными переменными. Оно будет автоматически проанализировано как конечное строковое значение перед отправкой запроса.
 
 <img src="https://static-docs.nocobase.com/202405191514748.png"/>
 
-### Workflow Custom Action Event
+### Событие пользовательского действия рабочего процесса
 
-The "Submit to Workflow" action button, originally bound to directly trigger type of the "Post-action Events", has been split and independently created as the "Trigger Workflow" action button for "Custom Action Events" (a commercial plugin). The previously added action buttons in the open-source version can still be used, but no longer supported for new additions. Please use the new "Custom Action Event" instead. See the [Usage Manual](https://docs-cn.nocobase.com/handbook/workflow-custom-action-trigger) for more information.
+Кнопка действия `Отправить в рабочий процесс`, изначально привязанная к типу прямого запуска `Событий после выполнения действия`, была разделена и независимо создана как кнопка действия `Запустить рабочий процесс` для `Пользовательских событий действия` (коммерческий плагин). Ранее добавленные кнопки действий в версии с открытым исходным кодом по-прежнему можно использовать, но они больше не поддерживаются для новых дополнений. Пожалуйста, используйте вместо них новое `Пользовательское событие действия`. Дополнительную информацию смотрите в [Руководстве по использованию](https://docs-cn.nocobase.com/handbook/workflow-custom-action-trigger).
 
 <img src="https://static-docs.nocobase.com/202405191515770.png"/>
 
-## Improvements
+## Улучшения
 
-### Configure Actions Adjustments
+### Корректировки настроек действий
 
-#### UI Adjustments
+#### Корректировки пользовательского интерфейса
 
-1. Flattened menu hierarchy and removed some toggle operations, supporting repeated additions.
+1. Сглажена иерархия меню и удалены некоторые операции переключения, поддерживающие повторные добавления.
 
-Before:
+До:
 
 <img src="https://static-docs.nocobase.com/202405191516585.png"/>
 
-After:
+После:
 
 <img src="https://static-docs.nocobase.com/202405191516026.png"/>
 
-2. Merged similar actions
+2. Объединены аналогичные действия
 
-2.1. Merged "Add New" and "Add Record" options
+2.1. Объединены опции `Добавить новое` и `Добавить запись`
 
-Before:
+До:
 
 <img src="https://static-docs.nocobase.com/202405191516874.png"/>
 
-After:
+После:
 
 <img src="https://static-docs.nocobase.com/202405191516737.png"/>
 
-2.2 Merged "Submit" and "Save Record" options
+2.2 Объединены опции `Отправить` и `Сохранить запись`.
 
-Before:
+До:
 
 <img src="https://static-docs.nocobase.com/202405191517966.png"/>
 
-After:
+После:
 
 <img src="https://static-docs.nocobase.com/202405191517078.png"/>
 
-#### Impact on Developers
+#### Влияние на разработчиков
 
-See PR：<a href="https://github.com/nocobase/nocobase/pull/4336" target="_blank">refactor: flatten and merge Actions #4336</a>
+Смотрите PR:<a href="https://github.com/nocobase/nocobase/pull/4336" target="_blank">рефакторинг: сглаживание и объединение действий #4336</a>
 
-### Logs
+### Журналы
 
-#### Log Plugin File List
+#### Список файлов плагина журнала
 
-Before: In a multi-application environment, the log plugin displays all application log file lists.
+До: В среде с несколькими приложениями подключаемый модуль log отображает списки файлов журнала всех приложений.
 
-After: In a multi-application environment, the log plugin only displays the current application log file list.
+После: В среде с несколькими приложениями подключаемый модуль log отображает только список файлов журнала текущего приложения.
 
-#### Workflow and Custom Request Folder Paths
+#### Пути к папкам рабочего процесса и пользовательских запросов
 
-Before: The folder path for workflow and custom request log files is at the same level as the application log folder.
+До: Путь к папке для файлов журнала рабочего процесса и пользовательских запросов находится на том же уровне, что и папка журнала приложения.
 
-After: The folder path for workflow and custom request log files belongs to the corresponding application log folder.
+После: Путь к папке для файлов журнала рабочего процесса и пользовательских запросов относится к соответствующей папке журнала приложения.
 
-### Workflow
+### Рабочий процесс
 
-#### HTTP Request Node Result Data
+#### Данные о результатах узла HTTP-запроса
 
-Previously, the result data structure after successful or failed HTTP request node was inconsistent.
+Ранее структура данных результата после успешного или неудачного HTTP-запроса узла была несогласованной.
 
 ```js
 // Only the response data part is returned when successful
@@ -123,7 +124,7 @@ Previously, the result data structure after successful or failed HTTP request no
 }
 ```
 
-Now, the response for both success and failure will be stored consistently in the node result.
+Теперь ответ как на успешный, так и на неудачный результат будет последовательно сохранен в node result.
 
 ```js
 // Success
@@ -145,38 +146,38 @@ Now, the response for both success and failure will be stored consistently in th
 }
 ```
 
-Other exceptions such as no response from the server (`status` is `null`), or failed initialization, can be observed in the server logs for error handling. See more details in <a href="https://github.com/nocobase/nocobase/issues/4373" target="_blank">[Workflow: HTTP request Node] Node result type not fixed #4373</a>
+Другие исключения, такие как отсутствие ответа от сервера (`статус` равен `null`) или неудачная инициализация, могут быть обнаружены в журналах обработки ошибок сервера. Смотрите более подробную информацию в <a href="https://github.com/nocobase/nocobase/issues/4373" target="_blank">[Рабочий процесс: узел HTTP-запроса] Тип результата узла не исправлен #4373</a>
 
-## Bug Fixes
+## Исправлена ошибка
 
-- Date fields in charts were not converted according to the client's time zone when aggregating data with a date field dimension. <a href="https://github.com/nocobase/nocobase/pull/4366" target="_blank">fix(data-vi): should use local timezone when formatting date #4366</a>
+- Поля даты в графиках не были преобразованы в соответствии с часовым поясом клиента при объединении данных с измерением поля даты. <a href="https://github.com/nocobase/nocobase/pull/4366" target="_blank">исправление(data-vi): при форматировании даты #4366 следует использовать местный часовой пояс</a>
 
-- Poor view refreshing; database views must be exited and re-entered to refresh. <a href="https://github.com/nocobase/nocobase/pull/4224" target="_blank">fix: collection fields should refreshed after editing sync from database #4224</a>
+- Плохое обновление представления; для обновления необходимо выйти из представлений базы данных и повторно войти в них. <a href="https://github.com/nocobase/nocobase/pull/4224" target="_blank">исправлено: поля коллекции должны обновляться после редактирования синхронизации из базы данных #4224</a>
 
-- Tree table blocks did not collapse all nodes when adding a child node. <a href="https://github.com/nocobase/nocobase/pull/4289" target="_blank">fix: do not collapse all nodes when adding a child node in the tree table block #4289</a>
+- Блоки древовидной таблицы не сворачивали все узлы при добавлении дочернего узла. <a href="https://github.com/nocobase/nocobase/pull/4289" target="_blank">исправлено: не сворачивать все узлы при добавлении дочернего узла в блок древовидной таблицы #4289</a>
 
-- Collection title field setting was invalid. <a href="https://github.com/nocobase/nocobase/pull/4358" target="_blank">fix: collection title field setting is invalid #4358</a>
+- Неверная настройка поля "Название коллекции". <a href="https://github.com/nocobase/nocobase/pull/4358" target="_blank">исправление: неверная настройка поля "название коллекции" #4358</a>
 
-- bigint field lost precision in read pretty mode. <a href="https://github.com/nocobase/nocobase/pull/4360" target="_blank">fix: bigint field loses precision in read pretty mode #4360</a>
+- поле bigint потеряло точность в режиме read pretty. <a href="https://github.com/nocobase/nocobase/pull/4360" target="_blank">исправлено: поле bigint потеряло точность в режиме read pretty #4360</a>
 
-- Log files remained open after stopping sub-applications. <a href="https://github.com/nocobase/nocobase/pull/4380" target="_blank">fix(logger): should close log stream after destroying app #4380</a>
+- Файлы журнала оставались открытыми после остановки вспомогательных приложений. <a href="https://github.com/nocobase/nocobase/pull/4380" target="_blank">исправлено (логгер): должен закрывать поток журналов после удаления приложения #4380</a>
 
-- Workflow aggregate node association field selection bug. <a href="https://github.com/nocobase/nocobase/pull/4315" target="_blank">fix(plugin-workflow-aggregate): fix association field select #4315</a>
+- Ошибка выбора поля ассоциации агрегатных узлов рабочего процесса. <a href="https://github.com/nocobase/nocobase/pull/4315" target="_blank">исправление(plugin-workflow-aggregate): исправлена связь в поле выбора #4315</a>
 
-- Ignore error option was invalid in HTTP request node sync mode. <a href="https://github.com/nocobase/nocobase/pull/4334" target="_blank">fix(plugin-workflow-request): fix ignoreFail in sync mode #4334</a>
+- Параметр игнорировать ошибку был недопустим в режиме синхронизации узла HTTP-запроса. <a href="https://github.com/nocobase/nocobase/pull/4334" target="_blank">исправление (плагин-рабочий процесс-запрос): исправлена ошибка игнорирования в режиме синхронизации #4334</a>
 
-- Value input fields in workflow HTTP request node overflowed. <ahref="https://github.com/nocobase/nocobase/pull/4353" target="_blank">fix(plugin-workflow-request): fix value fields overflowing #4354</a>
+- Поля ввода значений в узле HTTP-запроса workflow переполнены. <ahref="https://github.com/nocobase/nocobase/pull/4353" target="_blank">исправлено(плагин-workflow-запрос): исправлено переполнение полей значений #4354</a>
 
-- Special characters caused workflow HTTP request node to hang. <ahref="https://github.com/nocobase/nocobase/pull/4376" target="_blank">fix(plugin-workflow-request): fix request hanging when invalid header value #4376</a>
+- Специальные символы вызывали зависание узла HTTP-запроса workflow. <ahref="https://github.com/nocobase/nocobase/pull/4376" target="_blank">исправление(plugin-workflow-request): исправлено зависание запроса при неверном значении заголовка #4376</a>
 
-- Setting marginBlock in the theme editor affected the spacing between form fields. <a href="https://github.com/nocobase/nocobase/pull/4374" target="_blank">fix(theme-editor): form field spacing should not be affected by token.marginBlock #4374</a>
+- Установка marginBlock в редакторе тем повлияла на интервал между полями формы. <a href="https://github.com/nocobase/nocobase/pull/4374" target="_blank">исправление (редактор тем): маркер не должен влиять на интервал между полями формы.marginBlock #4374</a>
 
-- Fixed an issue where clicking on the "License" option in the top right corner of the page would result in incorrect redirection. [PR #4415](https://github.com/nocobase/nocobase/pull/4415)
+- Исправлена ошибка, из-за которой нажатие на опцию "Лицензия" в правом верхнем углу страницы приводило к неправильному перенаправлению. [PR #4415](https://github.com/nocobase/nocobase/pull/4415)
 
-- Fixed the issue where the operator of the field becomes invalid after saving the filter form as a block template. [PR #4390](https://github.com/nocobase/nocobase/pull/4390)
+- Исправлена ошибка, из-за которой оператор поля становился недействительным после сохранения формы фильтра в виде шаблона блока. [PR #4390](https://github.com/nocobase/nocobase/pull/4390)
 
-## Documentation
+## Документация
 
-- Added plugin sample documentation: https://docs-cn.nocobase.com/plugin-samples
+- Добавлен пример документации по плагину: https://docs-cn.nocobase.com/plugin-samples
 
-- Updated documentation structure for workflow usage manual: https://docs-cn.nocobase.com/handbook/workflow
+- Обновлена структура документации для руководства по использованию рабочего процесса: https://docs-cn.nocobase.com/handbook/workflow
