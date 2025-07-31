@@ -1,10 +1,10 @@
-# Storage
+# Хранилище (Storage)
 
-## Overview
+## Обзор
 
-The `Storage` class is used for client-side information storage, defaulting to `localStorage`.
+Класс `Storage` используется для хранения данных на стороне клиента. По умолчанию применяется `localStorage`.
 
-### Basic Usage
+### Базовое использование
 
 ```ts
 export abstract class Storage {
@@ -19,36 +19,36 @@ export class CustomStorage extends Storage {
 }
 ```
 
-## Class Methods
+## Методы класса
 
 ### `setItem()`
 
-Store content.
+Сохраняет данные в хранилище.
 
-#### Signature
+#### Сигнатура
 
 - `setItem(key: string, value: string): void`
 
 ### `getItem()`
 
-Retrieve content.
+Извлекает данные из хранилища по ключу.
 
-#### Signature
+#### Сигнатура
 
 - `getItem(key: string): string | null`
 
 ### `removeItem()`
 
-Delete content.
+Удаляет данные из хранилища по указанному ключу.
 
-#### Signature
+#### Сигнатура
 
 - `removeItem(key: string): void`
 
 ### `clear()`
 
-Clear all content.
+Очищает всё содержимое хранилища.
 
-#### Signature
+#### Сигнатура
 
 - `clear(): void`
