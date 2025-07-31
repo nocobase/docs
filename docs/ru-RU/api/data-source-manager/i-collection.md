@@ -1,69 +1,71 @@
-# ICollection
+# ICollection (Интерфейс коллекции)
 
-`ICollection` is an interface for data models, which includes information such as the model's name, fields, associations, etc.
+Интерфейс `ICollection` представляет модель данных, содержащую информацию о названии модели, полях, ассоциациях и других характеристиках.
 
 ```typescript
 export interface ICollection {
-  repository: IRepository;
+  repository: IRepository;  // Репозиторий коллекции
 
-  updateOptions(options: any): void;
+  updateOptions(options: any): void;  // Обновление параметров
 
-  setField(name: string, options: any): IField;
+  setField(name: string, options: any): IField;  // Установка поля
 
-  removeField(name: string): void;
+  removeField(name: string): void;  // Удаление поля
 
-  getFields(): Array<IField>;
+  getFields(): Array<IField>;  // Получение всех полей
 
-  getField(name: string): IField;
+  getField(name: string): IField;  // Получение конкретного поля
 
-  [key: string]: any;
+  [key: string]: any;  // Динамические свойства
 }
 ```
 
-## Members
+## Основные компоненты
 
 ### repository
 
-The `Repository` instance to which `ICollection` belongs.
+Экземпляр `Repository`, к которому принадлежит данная коллекция.
 
-## API
+## Методы API
 
 ### updateOptions()
 
-Updates the properties of the `Collection`.
+Обновляет параметры коллекции.
 
-#### Signature
-
-- `updateOptions(options: any): void`
+```typescript
+updateOptions(options: any): void
+```
 
 ### setField()
 
-Sets a field of the `Collection`.
+Добавляет или изменяет поле в коллекции.
 
-#### Signature
-
-- `setField(name: string, options: any): IField`
+```typescript
+setField(name: string, options: any): IField
+```
 
 ### removeField()
 
-Removes a field from the `Collection`.
+Удаляет поле из коллекции.
 
-#### Signature
-
-- `removeField(name: string): void`
+```typescript
+removeField(name: string): void
+```
 
 ### getFields()
 
-Retrieves all fields of the `Collection`.
+Возвращает массив всех полей коллекции.
 
-#### Signature
-
-- `getFields(): Array<IField>`
+```typescript
+getFields(): Array<IField>
+```
 
 ### getField()
 
-Retrieves a field of the `Collection` by name.
+Получает конкретное поле коллекции по имени.
 
-#### Signature
+```typescript
+getField(name: string): IField
+```
 
-- `getField(name: string): IField`
+Этот интерфейс предоставляет базовый функционал для работы с коллекциями данных в системе, позволяя управлять их структурой и свойствами.
