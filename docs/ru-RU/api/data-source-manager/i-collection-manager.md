@@ -1,109 +1,111 @@
-# ICollectionManager
+# ICollectionManager (Интерфейс менеджера коллекций)
 
-The `ICollectionManager` interface is used to manage `Collection` instances of data sources.
+Интерфейс `ICollectionManager` используется для управления экземплярами `Collection` в источниках данных.
 
-## API
+## API методы
 
 ### registerFieldTypes()
 
-Registers the field types in a `Collection`.
+Регистрирует типы полей в коллекции.
 
-#### Signature
-
-- `registerFieldTypes(types: Record<string, any>): void`
+```typescript
+registerFieldTypes(types: Record<string, any>): void
+```
 
 ### registerFieldInterfaces()
 
-Registers the `Interface` for a `Collection`.
+Регистрирует интерфейсы для коллекции.
 
-#### Signature
-
-- `registerFieldInterfaces(interfaces: Record<string, any>): void`
+```typescript
+registerFieldInterfaces(interfaces: Record<string, any>): void
+```
 
 ### registerCollectionTemplates()
 
-Registers `Collection Templates`.
+Регистрирует шаблоны коллекций.
 
-#### Signature
-
-- `registerCollectionTemplates(templates: Record<string, any>): void`
+```typescript
+registerCollectionTemplates(templates: Record<string, any>): void
+```
 
 ### registerModels()
 
-Registers `Models`.
+Регистрирует модели данных.
 
-#### Signature
-
-- `registerModels(models: Record<string, any>): void`
+```typescript
+registerModels(models: Record<string, any>): void
+```
 
 ### registerRepositories()
 
-Registers `Repositories`.
+Регистрирует репозитории данных.
 
-#### Signature
-
-- `registerRepositories(repositories: Record<string, any>): void`
+```typescript
+registerRepositories(repositories: Record<string, any>): void
+```
 
 ### getRegisteredRepository()
 
-Retrieves an instance of a registered repository.
+Получает экземпляр зарегистрированного репозитория.
 
-#### Signature
-
-- `getRegisteredRepository(key: string): IRepository`
+```typescript
+getRegisteredRepository(key: string): IRepository
+```
 
 ### defineCollection()
 
-Defines a `Collection`.
+Определяет новую коллекцию.
 
-#### Signature
-
-- `defineCollection(options: CollectionOptions): ICollection`
+```typescript
+defineCollection(options: CollectionOptions): ICollection
+```
 
 ### extendCollection()
 
-Modifies an existing `Collection` property.
+Изменяет свойства существующей коллекции.
 
-#### Signature
-
-- `extendCollection(collectionOptions: CollectionOptions, mergeOptions?: MergeOptions): ICollection`
+```typescript
+extendCollection(collectionOptions: CollectionOptions, mergeOptions?: MergeOptions): ICollection
+```
 
 ### hasCollection()
 
-Determines if a `Collection` exists.
+Проверяет существование коллекции.
 
-#### Signature
-
-- `hasCollection(name: string): boolean`
+```typescript
+hasCollection(name: string): boolean
+```
 
 ### getCollection()
 
-Retrieves an instance of a `Collection`.
+Получает экземпляр коллекции.
 
-#### Signature
-
-- `getCollection(name: string): ICollection`
+```typescript
+getCollection(name: string): ICollection
+```
 
 ### getCollections()
 
-Retrieves all instances of `Collection`.
+Получает все экземпляры коллекций.
 
-#### Signature
-
-- `getCollections(): Array<ICollection>`
+```typescript
+getCollections(): Array<ICollection>
+```
 
 ### getRepository()
 
-Retrieves an instance of a `Repository`.
+Получает экземпляр репозитория.
 
-#### Signature
-
-- `getRepository(name: string, sourceId?: string | number): IRepository`
+```typescript
+getRepository(name: string, sourceId?: string | number): IRepository
+```
 
 ### sync()
 
-Synchronizes the data source, with the logic implemented by subclasses.
+Синхронизирует источник данных (логика реализуется в подклассах).
 
-#### Signature
+```typescript
+sync(): Promise<void>
+```
 
-- `sync(): Promise<void>`
+Этот интерфейс предоставляет полный набор методов для управления коллекциями данных, их типами полей, интерфейсами, шаблонами, моделями и репозиториями в системе NocoBase.
