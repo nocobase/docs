@@ -1,35 +1,35 @@
-# Overview
+# Обзор
 
-## Introduction
+## Введение
 
-The Workflow plugin is a powerful tool commonly known as a Business Process Management (BPM) tool in the industry. It is used for designing and orchestration of business processes based on data models. By organizing the trigger conditions and flow nodes, it makes the business process running automatically.
+Плагин Workflow (Рабочие процессы) — это мощный инструмент, известный в отрасли как система управления бизнес-процессами (BPM). Он предназначен для проектирования и организации бизнес-процессов на основе моделей данных. Путем настройки условий триггеров и узлов потока он обеспечивает автоматическое выполнение бизнес-процессов.
 
-In NocoBase applications, the Workflow plugin is designed for no-code scenarios, allowing users to orchestrate and process common business tasks through the UI. Therefore they can change the business processes in the system runtime dynamically.
+В приложениях NocoBase плагин Workflow разработан для сценариев no-code, позволяя пользователям через интерфейс настраивать и обрабатывать типовые бизнес-задачи. Это дает возможность динамически изменять бизнес-процессы прямо во время работы системы.
 
-Each workflow consists of a trigger and several nodes. Through the specific functionality of each node, the workflow describes the business logic that needs to be processed when the corresponding event occurs in the system. A typical workflow is illustrated in the following diagram:
+Каждый рабочий процесс состоит из триггера и нескольких узлов. Благодаря специфической функциональности каждого узла, workflow описывает бизнес-логику, которая должна выполняться при возникновении соответствующего события в системе. Типичный рабочий процесс показан на следующей диаграмме:
 
-![Example of workflow](https://static-docs.nocobase.com/4511011beac54779cb68e66555ebf8a8.png)
+![Пример рабочего процесса](https://static-docs.nocobase.com/4511011beac54779cb68e66555ebf8a8.png)
 
-The functionality of the above workflow is as follows: When a user submits an order form, the system automatically checks the inventory of the products in the order. If there is sufficient stock, the inventory will be deducted; otherwise, the order will be updated as invalid.
+Функционал приведенного workflow: Когда пользователь отправляет форму заказа, система автоматически проверяет наличие товаров на складе. Если товары есть в достаточном количестве, их запас уменьшается; в противном случае заказ помечается как недействительный.
 
-As a more general perspective, workflows in NocoBase applications can address the following scenarios:
+В более общем смысле рабочие процессы в NocoBase позволяют решать следующие задачи:
 
-- **Data automation processing**: For example, automatically process data in a collection according to predefined workflows, such as calculating and updating associated data after a triggered event.
-- **Human-involved business processes**: When a business process cannot be fully automated, partial decision-making can be assigned to user through manual nodes, such as approval and review. After the results of processing are submitted by user, the subsequent processes continue.
-- **Integration with external systems**: API interfaces of external systems can be called through request nodes (or nodes that extend various types of third-party function calls) to achieve data interaction with external systems.
+- **Автоматическая обработка данных**: Например, автоматическая обработка данных в коллекции согласно предопределенным workflow, такой как расчет и обновление связанных данных после срабатывания события.
+- **Бизнес-процессы с участием человека**: Когда процесс не может быть полностью автоматизирован, часть решений может быть делегирована пользователю через ручные узлы (например, утверждение и проверка). После обработки пользователем процесс продолжается.
+- **Интеграция с внешними системами**: Через узлы запросов (или узлы с функционалом вызова сторонних сервисов) можно взаимодействовать с API внешних систем для обмена данными.
 
-## Installation
+## Установка
 
-Workflow is a built-in plugin in NocoBase and does not require additional installation.
+Workflow — это встроенный плагин NocoBase, не требующий дополнительной установки.
 
-## Learn More
+## Дополнительные материалы
 
-- [Quick start](./quick-start.md)
-- Advanced understanding
-  - [Executions](./advanced/executions.md)
-  - [Advanced Options](./advanced/options.md)
-  - [Variables](./advanced/variables.md)
-  - [Revisions](./advanced/revisions.md)
-- [Triggers](./triggers/index.md)
-- [Nodes](./nodes/index.md)
-- [Development Guide](./development/index.md)
+- [Быстрый старт](./quick-start.md)
+- Продвинутые темы
+  - [Выполнения](./advanced/executions.md)
+  - [Расширенные настройки](./advanced/options.md)
+  - [Переменные](./advanced/variables.md)
+  - [Ревизии](./advanced/revisions.md)
+- [Триггеры](./triggers/index.md)
+- [Узлы](./nodes/index.md)
+- [Руководство разработчика](./development/index.md)
