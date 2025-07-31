@@ -1,39 +1,40 @@
-# Middleware
+# Мидлвары (Промежуточное ПО)
 
-It is similar to the middleware of Koa, but with more enhanced features for easy extensions.
+Мидлвары в NocoBase похожи на мидлвары в Koa, но обладают расширенными возможностями для упрощения расширения функциональности.  
+Определённые мидлвары можно вставлять и использовать в различных местах, например, в роутере ресурсов (resourcer), а момент их вызова определяется разработчиком.
 
-The defined middleware can be inserted for use in multiple places, such as the resourcer, and it is up to the developer for when to invoke it.
+## Конструктор
 
-## Constructor
+### Сигнатура
 
-**Signature**
+```js
+constructor(options: Function)
+constructor(options: MiddlewareOptions)
+```
 
-- `constructor(options: Function)`
-- `constructor(options: MiddlewareOptions)`
+### Параметры
 
-**Parameter**
+| Имя       | Тип                  | По умолчанию | Описание                                 |
+|-----------|----------------------|--------------|------------------------------------------|
+| `options` | `Function`           | —            | Функция-обработчик мидлвара               |
+| `options` | `MiddlewareOptions`  | —            | Объект настроек мидлвара                  |
+| `options.only`    | `string[]`     | —            | Разрешены только указанные действия       |
+| `options.except`  | `string[]`     | —            | Исключённые действия (не будут обработаны)|
+| `options.handler` | `Function`     | —            | Функция-обработчик                        |
 
-| Name              | Type                 | Default | Description                            |
-| ----------------- | -------------------- | ------- | -------------------------------------- |
-| `options`         | `Function`           | -       | Handler function of middlware          |
-| `options`         | `MiddlewareOptions ` | -       | Configuration items of middlware       |
-| `options.only`    | `string[]`           | -       | Only the specified actions are allowed |
-| `options.except`  | `string[]`           | -       | The specified actions are excluded     |
-| `options.handler` | `Function`           | -       | Handler function                       |
+### Примеры
 
-**Example**
+**Простое определение:**
 
-Simple definition:
-
-```ts
+```js
 const middleware = new Middleware((ctx, next) => {
   await next();
 });
 ```
 
-Definition with relevant parameters:
+**Определение с параметрами:**
 
-```ts
+```js
 const middleware = new Middleware({
   only: ['create', 'update'],
   async handler(ctx, next) {
@@ -42,17 +43,17 @@ const middleware = new Middleware({
 });
 ```
 
-## Instance Methods
+## Методы экземпляра
 
 ### `getHandler()`
 
-Get the orchestrated handler functions.
+Возвращает скомпонованную цепочку обработчиков.
 
-**Example**
+#### Пример
 
-The following middleware will output `1` and then `2` when requested.
+Следующий мидлвар при запросе выведет сначала `1`, затем `2`:
 
-```ts
+```js
 const middleware = new Middleware((ctx, next) => {
   console.log(1);
   await next();
@@ -66,39 +67,48 @@ middleware.use(async (ctx, next) => {
 app.resourcer.use(middleware.getHandler());
 ```
 
+---
+
 ### `use()`
 
-Add a middleware function to the current middleware. Used to provide extension points for the middleware. See `getHandler()` for the examples.
+Добавляет функцию-мидлвар в текущую цепочку. Используется для расширения функциональности мидлвара.  
+См. пример в `getHandler()`.
 
-**Signature**
+#### Сигнатура
 
-- `use(middleware: Function)`
+```js
+use(middleware: Function)
+```
 
-**Parameter**
+#### Параметры
 
-| Name         | Type       | Default | Description                        |
-| ------------ | ---------- | ------- | ---------------------------------- |
-| `middleware` | `Function` | -       | Handler function of the middleware |
+| Имя        | Тип        | По умолчанию | Описание                     |
+|------------|------------|--------------|------------------------------|
+| `middleware` | `Function` | —            | Функция-обработчик мидлвара   |
+
+---
 
 ### `disuse()`
 
-Remove the middleware functions that have been added to the current middleware.
+Удаляет ранее добавленную функцию-мидлвар из текущей цепочки.
 
-**Signature**
+#### Сигнатура
 
-- `disuse(middleware: Function)`
+```js
+disuse(middleware: Function)
+```
 
-**Parameter**
+#### Параметры
 
-| Name         | Type       | Default | Description                        |
-| ------------ | ---------- | ------- | ---------------------------------- |
-| `middleware` | `Function` | -       | Handler function of the middleware |
+| Имя        | Тип        | По умолчанию | Описание                     |
+|------------|------------|--------------|------------------------------|
+| `middleware` | `Function` | —            | Функция-обработчик мидлвара   |
 
-**Example**
+#### Пример
 
-The following example will only output `1` when requested, the output of `2` in fn1 will not be executed.
+В этом примере при запросе будет выведено только `1`. Вывод `2` из `fn1` выполняться не будет:
 
-```ts
+```js
 const middleware = new Middleware((ctx, next) => {
   console.log(1);
   await next();
@@ -116,58 +126,66 @@ app.resourcer.use(middleware.getHandler());
 middleware.disuse(fn1);
 ```
 
+---
+
 ### `canAccess()`
 
-Check whether the current middleware is to be invoked for a specific action, it is usually handled by the resourcer internally.
+Проверяет, должен ли текущий мидлвар быть вызван для указанного действия. Обычно используется внутри `resourcer`.
 
-**Signature**
+#### Сигнатура
 
-- `canAccess(name: string): boolean`
+```js
+canAccess(name: string): boolean
+```
 
-**Parameter**
+#### Параметры
 
-| Name   | Type     | Default | Description        |
-| ------ | -------- | ------- | ------------------ |
-| `name` | `string` | -       | Name of the action |
+| Имя     | Тип      | По умолчанию | Описание               |
+|---------|----------|--------------|------------------------|
+| `name`  | `string` | —            | Название действия      |
 
-## Other Exports
+---
+
+## Другие экспорты
 
 ### `branch()`
 
-Create a branch middleware for branching in the middleware.
+Создаёт "ветвящийся" мидлвар, позволяющий выбирать разные обработчики в зависимости от контекста.
 
-**Signature**
+#### Сигнатура
 
-- `branch(map: { [key: string]: Function }, reducer: Function, options): Function`
+```js
+branch(map: { [key: string]: Function }, reducer: Function, options): Function
+```
 
-**Parameter**
+#### Параметры
 
-| Name                     | Type                          | Default          | Description                                                                                                       |
-| ------------------------ | ----------------------------- | ---------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `map`                    | `{ [key: string]: Function }` | -                | Mapping table of the branch handler function, key names are given by subsequent calculation functions when called |
-| `reducer`                | `(ctx) => string`             | -                | Calculation function, it is used to calculate the key name of the branch based on the context                     |
-| `options?`               | `Object`                      | -                | Configuration items of the branch                                                                                 |
-| `options.keyNotFound?`   | `Function`                    | `ctx.throw(404)` | Handler function when key name is not found                                                                       |
-| `options.handlerNotSet?` | `Function`                    | `ctx.throw(404)` | The function when no handler function is defined                                                                  |
+| Имя                 | Тип                         | По умолчанию       | Описание                                                                 |
+|---------------------|-----------------------------|--------------------|--------------------------------------------------------------------------|
+| `map`               | `{ [key: string]: Function }` | —                  | Таблица соответствия обработчиков; ключи определяются функцией `reducer`  |
+| `reducer`           | `(ctx) => string`             | —                  | Функция, вычисляющая ключ ветви на основе контекста                       |
+| `options?`          | `Object`                      | —                  | Дополнительные настройки ветвления                                        |
+| `options.keyNotFound?`   | `Function`               | `ctx.throw(404)`   | Обработчик, вызываемый, если ключ не найден                              |
+| `options.handlerNotSet?` | `Function`               | `ctx.throw(404)`   | Обработчик, вызываемый, если для ключа не задан обработчик                |
 
-**Example**
+#### Пример
 
-When authenticating user, determine what to do next according to the value of the `authenticator` parameter in the query section of the request URL.
+Определяет, как действовать дальше при аутентификации, в зависимости от параметра `authenticator` в URL:
 
-```ts
+```js
 app.resourcer.use(
   branch(
     {
       password: async (ctx, next) => {
-        // ...
+        // Обработка аутентификации по паролю
       },
       sms: async (ctx, next) => {
-        // ...
+        // Обработка аутентификации по SMS
       },
     },
     (ctx) => {
       return ctx.action.params.authenticator ?? 'password';
-    },
-  ),
+    }
+  )
 );
 ```
