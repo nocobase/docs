@@ -1,137 +1,137 @@
-# PluginManager
+# Менеджер плагинов (PluginManager)
 
-`PluginManager` is the plugin manager for NocoBase.
+`PluginManager` - это менеджер плагинов для NocoBase.
 
-## Instance Properties
+## Свойства экземпляра
 
 ### `repository`
 
-The `Repository` instance for the plugin data table. API reference: [DataBase - Repository](../database/repository.md).
+Экземпляр `Repository` для таблицы данных плагинов. См. [DataBase - Repository](../database/repository.md).
 
-## Instance Methods
+## Методы экземпляра
 
 ### `addPreset()`
 
-Adds a system built-in plugin. Built-in plugins are enabled by default and do not appear in the client plugin manager list.
+Добавляет встроенный системный плагин. Встроенные плагины включены по умолчанию и не отображаются в списке клиентского менеджера плагинов.
 
-#### Signature
+#### Сигнатура
 
 - `addPreset(plugin: string | typeof Plugin, options: any = {})`
 
-#### Details
+#### Детали
 
-| Parameter | Type                        | Description             |
-| --------- | --------------------------- | ----------------------- |
-| `plugin`  | `string` \| `typeof Plugin` | Plugin name or instance |
-| `options` | `any`                       | Plugin options          |
+| Параметр | Тип                        | Описание              |
+| -------- | -------------------------- | --------------------- |
+| `plugin` | `string` \| `typeof Plugin`| Имя или экземпляр плагина |
+| `options`| `any`                      | Настройки плагина     |
 
 ### `getPlugins()`
 
-Gets all plugin instances of the current application.
+Получает все экземпляры плагинов текущего приложения.
 
-#### Signature
+#### Сигнатура
 
 - `getPlugins(): Map<typeof Plugin, Plugin<any>>`
 
 ### `getAliases()`
 
-Gets all plugin names.
+Получает все имена плагинов.
 
-#### Signature
+#### Сигнатура
 
 - `getAliases(): IterableIterator<string>`
 
 ### `get()`
 
-Gets a specific plugin.
+Получает конкретный плагин.
 
-#### Signature
+#### Сигнатура
 
 - `get(name: string | typeof Plugin): Plugin<any>`
 
 ### `has()`
 
-Checks if a plugin exists.
+Проверяет существование плагина.
 
-#### Signature
+#### Сигнатура
 
 - `has(name: string | typeof Plugin): boolean`
 
 ### `create()`
 
-Creates a plugin and generates the plugin directory.
+Создает плагин и генерирует директорию плагина.
 
-#### Signature
+#### Сигнатура
 
 - `create(pluginName: string, options?: { forceRecreate?: boolean }): Promise<void>`
 
-#### Details
+#### Детали
 
-| Parameter               | Type      | Description                                                     | Default |
-| ----------------------- | --------- | --------------------------------------------------------------- | ------- |
-| `pluginName`            | `string`  | Plugin name                                                     | -       |
-| `options.forceRecreate` | `boolean` | Whether to remove the existing plugin directory and recreate it | `false` |
+| Параметр               | Тип      | Описание                                                     | По умолчанию |
+| ---------------------- | -------- | ----------------------------------------------------------- | ------------ |
+| `pluginName`           | `string` | Имя плагина                                                 | -            |
+| `options.forceRecreate`| `boolean`| Удалять ли существующую директорию плагина и создавать заново | `false`      |
 
 ### `add()`
 
-Adds or upgrades a plugin.
+Добавляет или обновляет плагин.
 
-#### Signature
+#### Сигнатура
 
 - `add(plugin?: any, options: any = {}, insert = false, isUpgrade = false): Promise<void>`
 
-#### Details
+#### Детали
 
-| Parameter   | Type                        | Description                         | Default |
-| ----------- | --------------------------- | ----------------------------------- | ------- |
-| `plugin`    | `string` \| `typeof Plugin` | Plugin name or instance             | -       |
-| `options`   | `any`                       | Plugin configuration                | -       |
-| `insert`    | `boolean`                   | Whether to add plugin table records | `false` |
-| `isUpgrade` | `boolean`                   | Whether it's a plugin upgrade       | `false` |
+| Параметр   | Тип                        | Описание                         | По умолчанию |
+| ---------- | -------------------------- | ------------------------------- | ------------ |
+| `plugin`   | `string` \| `typeof Plugin`| Имя или экземпляр плагина        | -            |
+| `options`  | `any`                      | Конфигурация плагина             | -            |
+| `insert`   | `boolean`                  | Добавлять ли записи в таблицу плагинов | `false`      |
+| `isUpgrade`| `boolean`                  | Является ли обновлением плагина  | `false`      |
 
 ### `load()`
 
-Loads all enabled plugins.
+Загружает все включенные плагины.
 
-#### Signature
+#### Сигнатура
 
 - `load(): Promise<void>`
 
 ### `install()`
 
-Installs all enabled plugins that are not yet installed.
+Устанавливает все включенные плагины, которые еще не установлены.
 
-#### Signature
+#### Сигнатура
 
 - `install(): Promise<void>`
 
 ### `enable()`
 
-Enables one or more plugins that are not enabled.
+Включает один или несколько отключенных плагинов.
 
-#### Signature
+#### Сигнатура
 
 - `enable(name: string | string[]): Promise<void>`
 
 ### `disable()`
 
-Disables one or more enabled plugins.
+Отключает один или несколько включенных плагинов.
 
-#### Signature
+#### Сигнатура
 
 - `disable(name: string | string[]): Promise<void>`
 
 ### `remove()`
 
-Removes one or more plugins.
+Удаляет один или несколько плагинов.
 
-#### Signature
+#### Сигнатура
 
 - `remove(name: string | string[], options?: { removeDir?: boolean; force?: boolean })`
 
-#### Details
+#### Детали
 
-| Parameter           | Type                   | Description                                                                                | Default |
+| Параметр           | Тип                   | Описание                                                                                | По умолчанию |
 | ------------------- | ---------------------- | ------------------------------------------------------------------------------------------ | ------- |
 | `name`              | `string` \| `string[]` | Plugin name(s)                                                                             | -       |
 | `options.removeDir` | `boolean`              | Whether to remove the plugin directory                                                     | `false` |
