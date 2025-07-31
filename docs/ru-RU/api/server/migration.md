@@ -1,12 +1,12 @@
-# Migration
+# Миграция
 
-`Migration` is a class in NocoBase used for upgrade scripts, typically used to synchronize database-related changes.
+`Migration` — это класс в NocoBase, используемый для скриптов обновления, обычно применяемых для синхронизации изменений, связанных с базой данных.
 
-## Instance Properties
+## Свойства экземпляра
 
 ### `appVersion`
 
-Current application version. The script will be executed only if it matches the version.
+Текущая версия приложения. Скрипт будет выполнен только в том случае, если версия совпадает.
 
 ```typescript
 export default class extends Migration {
@@ -17,7 +17,7 @@ export default class extends Migration {
 
 ### `on`
 
-The trigger timing for the upgrade script execution, with a default value of `afterLoad`. Refer to [Application - Events](./application.md#events).
+Момент запуска скрипта обновления. Значение по умолчанию — `afterLoad`. См. [Приложение — События](./application.md#events).
 
 ```typescript
 export default class extends Migration {
@@ -28,34 +28,34 @@ export default class extends Migration {
 
 ### `app`
 
-The `Application` instance of the current application. Refer to [Application](./application.md).
+Экземпляр `Application` текущего приложения. См. [Приложение](./application.md).
 
 ### `pm`
 
-The `PluginManager` instance of the current application. Refer to [PluginManager](./plugin-manager.md).
+Экземпляр `PluginManager` текущего приложения. См. [PluginManager](./plugin-manager.md).
 
 ### `plugin`
 
-The `Plugin` instance of the current plugin. Refer to [Plugin](./plugin.md).
+Экземпляр `Plugin` текущего плагина. См. [Плагин](./plugin.md).
 
 ### `db`
 
-The `DataBase` instance of the current application. Refer to [DataBase](../database/index.md).
+Экземпляр `DataBase` текущего приложения. См. [База данных](../database/index.md).
 
 ### `sequelize`
 
-The `Sequelize` instance. Refer to [Sequelize](https://sequelize.org/).
+Экземпляр `Sequelize`. См. [Sequelize](https://sequelize.org/).
 
 ### `queryInterface`
 
-Refer to [Sequelize - Query Interface](https://sequelize.org/docs/v6/other-topics/query-interface/).
+См. [Sequelize — Интерфейс запросов](https://sequelize.org/docs/v6/other-topics/query-interface/).
 
-### Instance Methods
+## Методы экземпляра
 
 ### `up()`
 
-Method for upgrade execution.
+Метод, выполняющий обновление (миграцию вперёд).
 
 ### `down()`
 
-Method for downgrade execution.
+Метод, выполняющий откат обновления (миграцию назад).
