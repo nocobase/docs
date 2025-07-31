@@ -1,513 +1,181 @@
-# Collection
+# Коллекция (Collection)
 
-## Overview
+## Обзор
 
-`Collection` is used to define the data model in the system, such as model name, fields, indexes, associations, and other information. It is usually called through the `collection` method of the `Database` instance as a proxy entry.
+Класс `Collection` используется для определения модели данных в системе, включая имя модели, поля, индексы, связи и другую информацию. Обычно вызывается через метод `collection` экземпляра `Database`.
 
 ```javascript
 const { Database } = require('@nocobase/database')
 
-// Create database instance
+// Создание экземпляра базы данных
 const db = new Database({...});
 
-// Define data model
+// Определение модели данных
 db.collection({
   name: 'users',
-  // Define model fields
   fields: [
-    // Scalar field
+    // Скалярное поле
     {
       name: 'name',
       type: 'string',
     },
 
-    // Association field
+    // Связь
     {
       name: 'profile',
-      type: 'hasOne' // 'hasMany', 'belongsTo', 'belongsToMany'
+      type: 'hasOne' // Также 'hasMany', 'belongsTo', 'belongsToMany'
     }
   ],
 });
 ```
 
-Refer to [Fields](/api/database/field) for more field types.
+## Конструктор
 
-## Constructor
+**Сигнатура**
+```typescript
+constructor(options: CollectionOptions, context: CollectionContext)
+```
 
-**Signature**
+**Параметры**
 
-- `constructor(options: CollectionOptions, context: CollectionContext)`
+| Параметр             | Тип                          | По умолчанию | Описание                                                                 |
+|----------------------|------------------------------|--------------|--------------------------------------------------------------------------|
+| `options.name`       | `string`                     | -            | Идентификатор коллекции                                                 |
+| `options.tableName`  | `string`                     | -            | Имя таблицы в БД (если не указано, используется `options.name`)         |
+| `options.fields`     | `FieldOptions[]`             | -            | Определение полей                                                       |
+| `options.model`      | `string \| ModelStatic<Model>`| -            | Тип модели Sequelize                                                    |
+| `options.repository` | `string \| RepositoryType`   | -            | Тип репозитория данных                                                  |
+| `options.sortable`   | `string \| boolean \| object`| -            | Настройка сортируемых полей                                             |
+| `options.autoGenId`  | `boolean`                    | `true`       | Автогенерация первичного ключа                                          |
+| `context.database`   | `Database`                   | -            | Экземпляр базы данных                                                   |
 
-**Parameter**
-
-| Name                  | Type                                                        | Default | Description                                                                                                               |
-| --------------------- | ----------------------------------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------- |
-| `options.name`        | `string`                                                    | -       | Identifier of the collection                                                                                              |
-| `options.tableName?`  | `string`                                                    | -       | Database table name, the value of `options.name` is used if not set                                                       |
-| `options.fields?`     | `FieldOptions[]`                                            | -       | Definition of fields, refer to [Field](./field) for details                                                               |
-| `options.model?`      | `string \| ModelStatic<Model>`                              | -       | Model type of Sequelize; in case `string` is used, this model name needs to be registered in the db before being called   |
-| `options.repository?` | `string \| RepositoryType`                                  | -       | Data repository type; in case `string` is used, this repository type needs to be registered in the db before being called |
-| `options.sortable?`   | `string \| boolean \| { name?: string; scopeKey?: string }` | -       | Configure which fields are sortable; not sortable by default                                                              |
-| `options.autoGenId?`  | `boolean`                                                   | `true`  | Whether to automatically generate unique primary key; `true` by default                                                   |
-| `context.database`    | `Database`                                                  | -       | The context database in which it resides                                                                                  |
-
-**Example**
-
-Create a table <i>posts</i>:
-
-```ts
+**Пример**
+```typescript
 const posts = new Collection(
   {
     name: 'posts',
     fields: [
-      {
-        type: 'string',
-        name: 'title',
-      },
-      {
-        type: 'double',
-        name: 'price',
-      },
+      { type: 'string', name: 'title' },
+      { type: 'double', name: 'price' },
     ],
   },
-  {
-    // An existing database instance
-    database: db,
-  },
+  { database: db } // Существующий экземпляр БД
 );
 ```
 
-## Instance Members
+## Свойства экземпляра
 
-### `options`
+- `options` - Исходные параметры конфигурации таблицы
+- `context` - Контекст (экземпляр базы данных)
+- `name` - Имя таблицы данных
+- `db` - Экземпляр базы данных
+- `filterTargetKey` - Имя поля первичного ключа
+- `isThrough` - Является ли промежуточной таблицей
+- `model` - Соответствующий тип модели Sequelize
+- `repository` - Экземпляр репозитория данных
 
-Initial parameters for data table configuration, which are consistent with the `options` parameter of the constructor.
-
-### `context`
-
-The contextual environment to which the current data table belongs, currently mainly the database instance.
-
-### `name`
-
-Name of the data table.
-
-### `db`
-
-The database instance to which it belongs.
-
-### `filterTargetKey`
-
-Name of the field that is used as the primary key.
-
-### `isThrough`
-
-Whether it is an intermediate table.
-
-### `model`
-
-Match the Model type of Sequelize.
-
-### `repository`
-
-Data repository instance.
-
-## Field Configuration Methods
+## Методы работы с полями
 
 ### `getField()`
+Получить поле по имени.
 
-Get a field object whose corresponding name has been defined in the data table.
-
-**Signature**
-
-- `getField(name: string): Field`
-
-**Parameter**
-
-| Name   | Type     | Default | Description       |
-| ------ | -------- | ------- | ----------------- |
-| `name` | `string` | -       | Name of the field |
-
-**Example**
-
-```ts
-const posts = db.collection({
-  name: 'posts',
-  fields: [
-    {
-      type: 'string',
-      name: 'title',
-    },
-  ],
-});
-
-const field = posts.getField('title');
+```typescript
+getField(name: string): Field
 ```
 
 ### `setField()`
+Установить поле.
 
-Set a field to the data table.
-
-**Signature**
-
-- `setField(name: string, options: FieldOptions): Field`
-
-**Parameter**
-
-| Name      | Type           | Default | Description                                                       |
-| --------- | -------------- | ------- | ----------------------------------------------------------------- |
-| `name`    | `string`       | -       | Name of the field                                                 |
-| `options` | `FieldOptions` | -       | Configuration of the field, refer to [Field](./field) for details |
-
-**Example**
-
-```ts
-const posts = db.collection({ name: 'posts' });
-
-posts.setField('title', { type: 'string' });
+```typescript 
+setField(name: string, options: FieldOptions): Field
 ```
 
 ### `setFields()`
+Установить несколько полей.
 
-Set multiple fields to the data table.
-
-**Signature**
-
-- `setFields(fields: FieldOptions[], resetFields = true): Field[]`
-
-**Parameter**
-
-| Name          | Type             | Default | Description                                                        |
-| ------------- | ---------------- | ------- | ------------------------------------------------------------------ |
-| `fields`      | `FieldOptions[]` | -       | Configuration of the fields, refer to [Field](./field) for details |
-| `resetFields` | `boolean`        | `true`  | Whether to reset existing fields                                   |
-
-**Example**
-
-```ts
-const posts = db.collection({ name: 'posts' });
-
-posts.setFields([
-  { type: 'string', name: 'title' },
-  { type: 'double', name: 'price' },
-]);
+```typescript
+setFields(fields: FieldOptions[], resetFields = true): Field[]
 ```
 
 ### `removeField()`
+Удалить поле.
 
-Remove a field object whose corresponding name has been defined in the data table.
-
-**Signature**
-
-- `removeField(name: string): void | Field`
-
-**Parameter**
-
-| Name   | Type     | Default | Description       |
-| ------ | -------- | ------- | ----------------- |
-| `name` | `string` | -       | Name of the field |
-
-**Example**
-
-```ts
-const posts = db.collection({
-  name: 'posts',
-  fields: [
-    {
-      type: 'string',
-      name: 'title',
-    },
-  ],
-});
-
-posts.removeField('title');
+```typescript
+removeField(name: string): void | Field
 ```
 
 ### `resetFields()`
+Сбросить все поля.
 
-Reset (Empty) fields of the data table.
-
-**Signature**
-
-- `resetFields(): void`
-
-**Example**
-
-```ts
-const posts = db.collection({
-  name: 'posts',
-  fields: [
-    {
-      type: 'string',
-      name: 'title',
-    },
-  ],
-});
-
-posts.resetFields();
+```typescript 
+resetFields(): void
 ```
 
 ### `hasField()`
+Проверить наличие поля.
 
-Check if the data table has defined a field object with the corresponding name.
-
-**Signature**
-
-- `hasField(name: string): boolean`
-
-**Parameter**
-
-| Name   | Type     | Default | Description       |
-| ------ | -------- | ------- | ----------------- |
-| `name` | `string` | -       | Name of the field |
-
-**Example**
-
-```ts
-const posts = db.collection({
-  name: 'posts',
-  fields: [
-    {
-      type: 'string',
-      name: 'title',
-    },
-  ],
-});
-
-posts.hasField('title'); // true
+```typescript
+hasField(name: string): boolean
 ```
 
 ### `findField()`
+Найти поле по условию.
 
-Find field objects in the data table that match the conditions.
-
-**Signature**
-
-- `findField(predicate: (field: Field) => boolean): Field | undefined`
-
-**Parameter**
-
-| Name        | Type                        | Default | Description   |
-| ----------- | --------------------------- | ------- | ------------- |
-| `predicate` | `(field: Field) => boolean` | -       | The condition |
-
-**Example**
-
-```ts
-const posts = db.collection({
-  name: 'posts',
-  fields: [
-    {
-      type: 'string',
-      name: 'title',
-    },
-  ],
-});
-
-posts.findField((field) => field.name === 'title');
+```typescript
+findField(predicate: (field: Field) => boolean): Field | undefined
 ```
 
 ### `forEachField()`
+Итерироваться по полям.
 
-Iterate over field objects in the data table.
-
-**Signature**
-
-- `forEachField(callback: (field: Field) => void): void`
-
-**Parameter**
-
-| Name       | Type                     | Default | Description       |
-| ---------- | ------------------------ | ------- | ----------------- |
-| `callback` | `(field: Field) => void` | -       | Callback function |
-
-**Example**
-
-```ts
-const posts = db.collection({
-  name: 'posts',
-  fields: [
-    {
-      type: 'string',
-      name: 'title',
-    },
-  ],
-});
-
-posts.forEachField((field) => console.log(field.name));
+```typescript
+forEachField(callback: (field: Field) => void): void
 ```
 
-## Index Configuration Methods
+## Методы работы с индексами
 
 ### `addIndex()`
+Добавить индекс.
 
-Add data table index.
-
-**Signature**
-
-- `addIndex(index: string | string[] | { fields: string[], unique?: boolean,[key: string]: any })`
-
-**Parameter**
-
-| Name    | Type                                                         | Default | Description                   |
-| ------- | ------------------------------------------------------------ | ------- | ----------------------------- |
-| `index` | `string \| string[]`                                         | -       | Names of fields to be indexed |
-| `index` | `{ fields: string[], unique?: boolean, [key: string]: any }` | -       | Full configuration            |
-
-**Example**
-
-```ts
-const posts = db.collection({
-  name: 'posts',
-  fields: [
-    {
-      type: 'string',
-      name: 'title',
-    },
-  ],
-});
-
-posts.addIndex({
-  fields: ['title'],
-  unique: true,
-});
+```typescript
+addIndex(index: string | string[] | object)
 ```
 
 ### `removeIndex()`
+Удалить индекс.
 
-Remove data table index.
-
-**Signature**
-
-- `removeIndex(fields: string[])`
-
-**Parameter**
-
-| Name     | Type       | Default | Description                       |
-| -------- | ---------- | ------- | --------------------------------- |
-| `fields` | `string[]` | -       | Names of fields to remove indexes |
-
-**Example**
-
-```ts
-const posts = db.collection({
-  name: 'posts',
-  fields: [
-    {
-      type: 'string',
-      name: 'title',
-    },
-  ],
-  indexes: [
-    {
-      fields: ['title'],
-      unique: true,
-    },
-  ],
-});
-
-posts.removeIndex(['title']);
+```typescript
+removeIndex(fields: string[])
 ```
 
-## Table Configuration Methods
+## Методы работы с таблицей
 
 ### `remove()`
+Удалить таблицу.
 
-Remove data table.
-
-**Signature**
-
-- `remove(): void`
-
-**Example**
-
-```ts
-const posts = db.collection({
-  name: 'posts',
-  fields: [
-    {
-      type: 'string',
-      name: 'title',
-    },
-  ],
-});
-
-posts.remove();
+```typescript
+remove(): void
 ```
 
-## Database Operation Methods
+## Методы работы с БД
 
 ### `sync()`
+Синхронизировать таблицу с БД.
 
-Synchronize the definitions in data table to the database. In addition to the default `Model.sync` logic in Sequelize, the data tables corresponding to the relational fields will also be handled together.
-
-**Signature**
-
-- `sync(): Promise<void>`
-
-**Example**
-
-```ts
-const posts = db.collection({
-  name: 'posts',
-  fields: [
-    {
-      type: 'string',
-      name: 'title',
-    },
-  ],
-});
-
-await posts.sync();
+```typescript
+sync(): Promise<void>
 ```
 
 ### `existsInDb()`
+Проверить существование таблицы в БД.
 
-Check whether the data table exists in the database.
-
-**Signature**
-
-- `existsInDb(options?: Transactionable): Promise<boolean>`
-
-**Parameter**
-
-| Name                   | Type          | Default | Description          |
-| ---------------------- | ------------- | ------- | -------------------- |
-| `options?.transaction` | `Transaction` | -       | Transaction instance |
-
-**Example**
-
-```ts
-const posts = db.collection({
-  name: 'posts',
-  fields: [
-    {
-      type: 'string',
-      name: 'title',
-    },
-  ],
-});
-
-const existed = await posts.existsInDb();
-
-console.log(existed); // false
+```typescript
+existsInDb(options?: Transactionable): Promise<boolean>
 ```
 
 ### `removeFromDb()`
+Удалить таблицу из БД.
 
-**Signature**
-
-- `removeFromDb(): Promise<void>`
-
-**Example**
-
-```ts
-const books = db.collection({
-  name: 'books',
-});
-
-//  Synchronize the table books to the database
-await db.sync();
-
-// Remove the table books from the database
-await books.removeFromDb();
+```typescript
+removeFromDb(): Promise<void>
 ```
