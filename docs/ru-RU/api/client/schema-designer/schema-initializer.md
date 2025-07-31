@@ -1,6 +1,6 @@
 # SchemaInitializer
 
-Used for the initialization of various schemas. Newly added schema can be inserted anywhere in an existing schema node, including:
+Используется для инициализации различных схем. Недавно добавленная схема может быть вставлена в любое место существующего узла схемы, включая:
 
 ```ts
 {
@@ -18,7 +18,7 @@ Used for the initialization of various schemas. Newly added schema can be insert
 }
 ```
 
-The core of SchemaInitializer includes `<SchemaInitializer.Button />` and `<SchemaInitializer.Item />` the two components. `<SchemaInitializer.Button />` is used to create the dropdown menu button of schema, and the options of the dropdown menu is `<SchemaInitializer.Item/>`.
+Ядро SchemaInitializer включает в себя `<SchemaInitializer.Button />` и `<SchemaInitializer.Item />`. `<SchemaInitializer.Button />` используется для создания кнопки выпадающего меню схемы, а параметрами выпадающего меню являются `<SchemaInitializer.Item/>`.
 
 ### `<SchemaInitializerProvider />`
 
