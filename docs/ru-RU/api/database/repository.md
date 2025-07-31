@@ -1,8 +1,8 @@
-# Repository
+# Репозиторий (Repository)
 
-## Overview
+## Обзор
 
-On a given `Collection` object, you can get its `Repository` object to perform read and write operations on the data table.
+Для любого объекта `Collection` можно получить соответствующий объект `Repository`, чтобы выполнять операции чтения и записи с таблицей данных.
 
 ```javascript
 const { UserCollection } = require('./collections');
@@ -15,15 +15,15 @@ const user = await UserRepository.findOne({
   },
 });
 
-user.name = 'new name';
+user.name = 'новое имя';
 await user.save();
 ```
 
-### Query
+### Запросы
 
-#### Basic Query
+#### Базовые запросы
 
-On the `Repository` object, call the `find*` methods to perform query. The `filter` parameter is supported by all query methods to filter the data.
+На объекте `Repository` можно вызывать методы `find*` для выполнения запросов. Все методы запроса поддерживают параметр `filter` для фильтрации данных.
 
 ```javascript
 // SELECT * FROM users WHERE id = 1
@@ -34,9 +34,9 @@ userRepository.find({
 });
 ```
 
-#### Operator
+#### Операторы
 
-The `filter` parameter in the `Repository` also provides a variety of operators to perform more diverse queries.
+Параметр `filter` в `Repository` также поддерживает множество операторов для более сложных запросов.
 
 ```javascript
 // SELECT * FROM users WHERE age > 18
@@ -56,39 +56,39 @@ userRepository.find({
 });
 ```
 
-Refer to [Filter Operators](/api/database/operators) for more details on operators.
+Более подробную информацию об операторах см. в разделе [Операторы фильтрации](/api/database/operators).
 
-#### Field Control
+#### Управление полями
 
-Control the output fields by the `fields`, `except`, and `appends` parameters when performing query.
+Управляйте выводимыми полями с помощью параметров `fields`, `except` и `appends` при выполнении запроса.
 
-- `fields`: Specify output fields
-- `except`: Exclude output fields
-- `appends`: Append output associated fields
+- `fields`: указывает, какие поля включить в результат
+- `except`: исключает указанные поля из результата
+- `appends`: добавляет связанные поля в результат
 
 ```javascript
-// The result contains only the id and name fields
+// Результат содержит только поля id и name
 userRepository.find({
   fields: ['id', 'name'],
 });
 
-// The result does not contain only the password field
+// Результат не содержит поле password
 userRepository.find({
   except: ['password'],
 });
 
-// The result contains data associated with the posts object
+// Результат содержит данные связанных объектов posts
 userRepository.find({
   appends: ['posts'],
 });
 ```
 
-#### Associated Field Query
+#### Запросы по связанным полям
 
-The `filter` parameter supports filtering by associated fields, for example:
+Параметр `filter` поддерживает фильтрацию по связанным полям, например:
 
 ```javascript
-// Find the user objects whose associated posts have title of "post title"
+// Найти пользователей, у которых связанные посты имеют заголовок "post title"
 userRepository.find({
   filter: {
     'posts.title': 'post title',
@@ -96,10 +96,10 @@ userRepository.find({
 });
 ```
 
-Associated fields can also be nested:
+Связанные поля могут быть вложенными:
 
 ```javascript
-// Find the user objects whose associated posts have comments containing "keywords"
+// Найти пользователей, у которых в комментариях к постам содержится "keywords"
 await userRepository.find({
   filter: {
     'posts.comments.content': {
@@ -109,9 +109,9 @@ await userRepository.find({
 });
 ```
 
-#### Sort
+#### Сортировка
 
-Sort query results by the `sort` parameter.
+Управляйте порядком сортировки с помощью параметра `sort`.
 
 ```javascript
 // SELECT * FROM users ORDER BY age
@@ -130,7 +130,7 @@ await userRepository.find({
 });
 ```
 
-Sort by the field of the associated object is also supported:
+Поддерживается сортировка по полям связанных объектов:
 
 ```javascript
 await userRepository.find({
@@ -138,11 +138,11 @@ await userRepository.find({
 });
 ```
 
-### Create
+### Создание
 
-#### Basic Create
+#### Базовое создание
 
-Create new data objects via `Repository`.
+Создавайте новые объекты данных с помощью `Repository`.
 
 ```javascript
 await userRepository.create({
@@ -151,7 +151,7 @@ await userRepository.create({
 });
 // INSERT INTO users (name, age) VALUES ('Mark', 18)
 
-// Bulk creation
+// Массовое создание
 await userRepository.create([
   {
     name: 'Mark',
@@ -164,9 +164,9 @@ await userRepository.create([
 ]);
 ```
 
-#### Create Association
+#### Создание связей
 
-Create associated objects at the same time of creating data. Like query, nested use of associated objects is also supported. For example:
+Можно создавать связанные объекты одновременно с созданием основного объекта. Как и в запросах, поддерживаются вложенные связи. Например:
 
 ```javascript
 await userRepository.create({
@@ -174,28 +174,28 @@ await userRepository.create({
   age: 18,
   posts: [
     {
-      title: 'post title',
-      content: 'post content',
+      title: 'заголовок поста',
+      content: 'содержание поста',
       tags: [
         {
-          name: 'tag1',
+          name: 'тег1',
         },
         {
-          name: 'tag2',
+          name: 'тег2',
         },
       ],
     },
   ],
 });
-// When creating a user, create a post to associate with the user, and create tags to associate with the post
+// При создании пользователя также создаётся пост, связанный с ним, и теги, связанные с постом
 ```
 
-If the associated object is already in the database, you can pass its ID to create an association with it.
+Если связанный объект уже существует в базе данных, можно передать его ID, чтобы установить с ним связь.
 
 ```javascript
 const tag1 = await tagRepository.findOne({
   filter: {
-    name: 'tag1',
+    name: 'тег1',
   },
 });
 
@@ -204,14 +204,14 @@ await userRepository.create({
   age: 18,
   posts: [
     {
-      title: 'post title',
-      content: 'post content',
+      title: 'заголовок поста',
+      content: 'содержание поста',
       tags: [
         {
-          id: tag1.id, // Create an association with an existing associated object
+          id: tag1.id, // установить связь с существующим объектом
         },
         {
-          name: 'tag2',
+          name: 'тег2',
         },
       ],
     },
@@ -219,11 +219,11 @@ await userRepository.create({
 });
 ```
 
-### Update
+### Обновление
 
-#### Basic Update
+#### Базовое обновление
 
-After getting the data object, you can modify the properties directly on the data object (`Model`), and then call the `save` method to save the changes.
+После получения объекта данных можно напрямую изменить его свойства (объект `Model`) и затем вызвать метод `save()` для сохранения изменений.
 
 ```javascript
 const user = await userRepository.findOne({
@@ -236,12 +236,12 @@ user.age = 20;
 await user.save();
 ```
 
-The data object `Model` is inherited from Sequelize Model, refer to [Sequelize Model](https://sequelize.org/master/manual/model-basics.html) for the operations on `Model`.
+Объект данных `Model` наследуется от Sequelize Model. Подробнее о работе с `Model` см. в [Sequelize Model](https://sequelize.org/master/manual/model-basics.html).
 
-Or update data via `Repository`:
+Также можно обновлять данные через `Repository`:
 
 ```javascript
-// Update the records that meet the filtering condition
+// Обновить записи, соответствующие условию фильтрации
 await userRepository.update({
   filter: {
     name: 'Mark',
@@ -252,7 +252,7 @@ await userRepository.update({
 });
 ```
 
-Control which fields to update by the `whitelist` and `blacklist` parameters, for example:
+Управляйте полями для обновления с помощью параметров `whitelist` и `blacklist`, например:
 
 ```javascript
 await userRepository.update({
@@ -263,16 +263,16 @@ await userRepository.update({
     age: 20,
     name: 'Alex',
   },
-  whitelist: ['age'], // Only update the age field
+  whitelist: ['age'], // Обновлять только поле age
 });
 ```
 
-#### Update Associated Field
+#### Обновление связанных полей
 
-Associated objects can be set while updating, for example:
+При обновлении можно устанавливать связанные объекты, например:
 
 ```javascript
-const tag1 = tagRepository.findOne({
+const tag1 = await tagRepository.findOne({
   filter: {
     id: 1,
   },
@@ -283,13 +283,13 @@ await postRepository.update({
     id: 1,
   },
   values: {
-    title: 'new post title',
+    title: 'новый заголовок поста',
     tags: [
       {
-        id: tag1.id, // Associate with tag1
+        id: tag1.id, // связать с tag1
       },
       {
-        name: 'tag2', // Create new tag and associate with it
+        name: 'тег2', // создать новый тег и связать с ним
       },
     ],
   },
@@ -300,14 +300,14 @@ await postRepository.update({
     id: 1,
   },
   values: {
-    tags: null, // Disassociate post from tags
+    tags: null, // отвязать пост от тегов
   },
 });
 ```
 
-### Delete
+### Удаление
 
-Call the `destroy()` method in `Repository` to perform the deletion operation. Filtering condition has to be specified to delete.
+Вызовите метод `destroy()` в `Repository` для удаления записей. Для удаления необходимо указать условие фильтрации.
 
 ```javascript
 await userRepository.destroy({
@@ -317,15 +317,15 @@ await userRepository.destroy({
 });
 ```
 
-## Constructor
+## Конструктор
 
-It is usually not called directly by the developer, the instantiation is done mainly by specifying a corresponding repository type that is already registered in the parameter of `db.colletion()`. Repository type is registered through `db.registerRepositories()`.
+Как правило, конструктор не вызывается напрямую разработчиком. Экземпляр создаётся автоматически при указании соответствующего типа репозитория, зарегистрированного в параметре `db.collection()`. Тип репозитория регистрируется с помощью `db.registerRepositories()`.
 
-**Signature**
+**Сигнатура**
 
 - `constructor(collection: Collection)`
 
-**Example**
+**Пример**
 
 ```ts
 import { Repository } from '@nocobase/database';
@@ -342,7 +342,7 @@ db.registerRepositories({
 
 db.collection({
   name: 'books',
-  // here link to the registered repository
+  // здесь указывается зарегистрированный репозиторий
   repository: 'books',
 });
 
@@ -352,31 +352,31 @@ const books = db.getRepository('books') as MyRepository;
 await books.myQuery('SELECT * FROM books;');
 ```
 
-## Instance Members
+## Экземплярные свойства
 
 ### `database`
 
-The database management instance where the context is located.
+Экземпляр менеджера базы данных, в контексте которого работает репозиторий.
 
 ### `collection`
 
-The corresponding data table management instance.
+Соответствующий экземпляр менеджера таблицы данных.
 
 ### `model`
 
-The corresponding data model class.
+Соответствующий класс модели данных.
 
-## Instance Methods
+## Методы экземпляра
 
 ### `find()`
 
-Find datasets from the database with the specified filtering conditions and sorting, etc.
+Находит набор данных из базы данных по заданным условиям фильтрации, сортировке и другим параметрам.
 
-**Signature**
+**Сигнатура**
 
 - `async find(options?: FindOptions): Promise<Model[]>`
 
-**Type**
+**Типы**
 
 ```typescript
 type Filter = FilterWithOperator | FilterWithValue | FilterAnd | FilterOr;
@@ -405,14 +405,14 @@ interface CommonFindOptions extends Transactionable {
 type FindOptions = SequelizeFindOptions & CommonFindOptions & FilterByTk;
 ```
 
-**Detailed Information**
+**Подробное описание**
 
 #### `filter: Filter`
 
-Query conditions for filtering data results. In the query parameters that passed in, `key` is the name of the field, `value` is the corresponding value. Operators can be used in conjunction with other filtering conditions.
+Условия запроса для фильтрации результатов. В передаваемых параметрах `key` — имя поля, `value` — соответствующее значение. Можно использовать операторы и комбинировать условия фильтрации.
 
 ```typescript
-// Find records with name "foo" and age above 18
+// Найти записи с именем "foo" и возрастом больше 18
 repository.find({
   filter: {
     name: 'foo',
@@ -423,14 +423,14 @@ repository.find({
 });
 ```
 
-Refer to [Operators](./operators.md) for more information.
+Подробнее об операторах см. в разделе [Операторы](./operators.md).
 
 #### `filterByTk: TargetKey`
 
-Query data by `TargetKey`, this is shortcut for the `filter` parameter. The field of `TargetKey` can be [configured](./collection.md#filtertargetkey) in `Collection`, the default is `primaryKey`.
+Поиск данных по `TargetKey` — это сокращённый способ указать параметр `filter`. Поле `TargetKey` можно [настроить](./collection.md#filtertargetkey) в `Collection`, по умолчанию используется первичный ключ (`primaryKey`).
 
 ```typescript
-// By default, find records with id 1
+// По умолчанию найти запись с id = 1
 repository.find({
   filterByTk: 1,
 });
@@ -438,29 +438,29 @@ repository.find({
 
 #### `fields: string[]`
 
-Query columns. It is used to control which data fields to output. With this parameter, only the specified fields will be returned.
+Список запрашиваемых колонок. Используется для управления тем, какие поля данных будут возвращены. При использовании этого параметра возвращаются только указанные поля.
 
 #### `except: string[]`
 
-Exclude columns. It is used to control which data fields to output. With this parameter, the specified fields will not be returned.
+Исключаемые колонки. Используется для управления выводом полей — указанные поля не будут включены в результат.
 
 #### `appends: string[]`
 
-Append columns. It is used to load associated data. With this parameter, the specified associated fields will be returned together.
+Дополнительные колонки. Используется для загрузки связанных данных. При указании этого параметра возвращаются также данные из указанных связанных полей.
 
 #### `sort: string[] | string`
 
-Specify the sorting method of the query results. The input parameter is the name of the field, by default is to sort in the ascending order (`asc`); a `-` symbol needs to be added before the field name to sort in the descending order (`desc`). For example, `['-id', 'name']` means to sort by `id desc, name asc`.
+Задаёт порядок сортировки результатов запроса. Параметр — имя поля. По умолчанию сортировка по возрастанию (`asc`). Чтобы отсортировать по убыванию (`desc`), перед именем поля нужно поставить символ `-`. Например, `['-id', 'name']` означает сортировку по `id desc, name asc`.
 
 #### `limit: number`
 
-Limit the number of results, same as `limit` in `SQL`.
+Ограничивает количество возвращаемых результатов, аналог `LIMIT` в SQL.
 
 #### `offset: number`
 
-The offset of the query, same as `offset` in `SQL`.
+Смещение для запроса, аналог `OFFSET` в SQL.
 
-**Example**
+**Пример**
 
 ```ts
 const posts = db.getRepository('posts');
@@ -476,17 +476,19 @@ const results = await posts.find({
 });
 ```
 
+---
+
 ### `findOne()`
 
-Find a single piece of data from the database for specific conditions. Equivalent to `Model.findOne()` in Sequelize.
+Находит одну запись из базы данных по заданным условиям. Аналог `Model.findOne()` в Sequelize.
 
-**Signature**
+**Сигнатура**
 
 - `async findOne(options?: FindOneOptions): Promise<Model | null>`
 
 <embed src="./shared/find-one.md"></embed>
 
-**Example**
+**Пример**
 
 ```ts
 const posts = db.getRepository('posts');
@@ -496,15 +498,17 @@ const result = await posts.findOne({
 });
 ```
 
+---
+
 ### `count()`
 
-Query a certain amount of data from the database for specific conditions. Equivalent to `Model.count()` in Sequelize.
+Подсчитывает количество записей, соответствующих заданным условиям. Аналог `Model.count()` в Sequelize.
 
-**Signature**
+**Сигнатура**
 
 - `count(options?: CountOptions): Promise<number>`
 
-**Type**
+**Типы**
 
 ```typescript
 interface CountOptions
@@ -514,27 +518,29 @@ interface CountOptions
 }
 ```
 
-**Example**
+**Пример**
 
 ```ts
 const books = db.getRepository('books');
 
 const count = await books.count({
   filter: {
-    title: 'Three character classic',
+    title: 'Три столпа китайской культуры',
   },
 });
 ```
 
+---
+
 ### `findAndCount()`
 
-Find datasets from the database with the specified filtering conditions and return the number of results. Equivalent to `Model.findAndCountAll()` in Sequelize.
+Находит набор данных по заданным условиям и возвращает одновременно сами данные и их количество. Аналог `Model.findAndCountAll()` в Sequelize.
 
-**Signature**
+**Сигнатура**
 
 - `async findAndCount(options?: FindAndCountOptions): Promise<[Model[], number]>`
 
-**Type**
+**Типы**
 
 ```typescript
 type FindAndCountOptions = Omit<
@@ -544,47 +550,53 @@ type FindAndCountOptions = Omit<
   CommonFindOptions;
 ```
 
-**Detailed Information**
+### `findAndCount()`
 
-The query parameters are the same as `find()`. An array is returned with the first element of the query results, and the second element of the total number of results.
+**Подробное описание**
+
+Параметры запроса те же, что и у метода `find()`. Возвращается массив, где первый элемент — результаты запроса, а второй — общее количество найденных записей.
+
+---
 
 ### `create()`
 
-Inserts a newly created data into the data table. Equivalent to `Model.create()` in Sequelize. When the data object to be created carries any associated field, the corresponding associated data record is created or updated along with it.
+Добавляет новую запись в таблицу данных. Аналог `Model.create()` в Sequelize. Если создаваемый объект содержит связанные поля, то соответствующие связанные записи также будут созданы или обновлены одновременно.
 
-**Signature**
+**Сигнатура**
 
 - `async create<M extends Model>(options: CreateOptions): Promise<M>`
 
 <embed src="./shared/create-options.md"></embed>
 
-**Example**
+**Пример**
 
 ```ts
 const posts = db.getRepository('posts');
 
 const result = await posts.create({
   values: {
-    title: 'NocoBase 1.0 Release Notes',
+    title: 'Заметки о релизе NocoBase 1.0',
     tags: [
-      // Update data when there is a primary key and value of the associated table
+      // Обновление данных, если указан первичный ключ связанной таблицы
       { id: 1 },
-      // Create data when there is no primary key and value
+      // Создание новой записи, если первичный ключ не указан
       { name: 'NocoBase' },
     ],
   },
 });
 ```
 
+---
+
 ### `createMany()`
 
-Inserts multiple newly created data into the data table. This is equivalent to calling the `create()` method multiple times.
+Добавляет несколько новых записей в таблицу данных. Эквивалентно многократному вызову метода `create()`.
 
-**Signature**
+**Сигнатура**
 
 - `createMany(options: CreateManyOptions): Promise<Model[]>`
 
-**Type**
+**Типы**
 
 ```typescript
 interface CreateManyOptions extends BulkCreateOptions {
@@ -592,12 +604,12 @@ interface CreateManyOptions extends BulkCreateOptions {
 }
 ```
 
-**Detailed Information**
+**Подробное описание**
 
-- `records`: An array of data objects to be created.
-- `transaction`: Transaction object. If no transaction parameter is passed, the method will automatically create an internal transaction.
+- `records`: массив объектов данных, которые необходимо создать.
+- `transaction`: объект транзакции. Если параметр транзакции не передан, метод автоматически создаст внутреннюю транзакцию.
 
-**Example**
+**Пример**
 
 ```ts
 const posts = db.getRepository('posts');
@@ -605,33 +617,35 @@ const posts = db.getRepository('posts');
 const results = await posts.createMany({
   records: [
     {
-      title: 'NocoBase 1.0 Release Notes',
+      title: 'Заметки о релизе NocoBase 1.0',
       tags: [
-        // Update data when there is a primary key and value of the associated table
+        // Обновление записи по id
         { id: 1 },
-        // Create data when there is no primary key and value
+        // Создание новой записи
         { name: 'NocoBase' },
       ],
     },
     {
-      title: 'NocoBase 1.1 Release Notes',
+      title: 'Заметки о релизе NocoBase 1.1',
       tags: [{ id: 1 }],
     },
   ],
 });
 ```
 
+---
+
 ### `update()`
 
-Update data in the data table. Equivalent to `Model.update()` in Sequelize. When the data object to be updated carries any associated field, the corresponding associated data record is created or updated along with it.
+Обновляет данные в таблице. Аналог `Model.update()` в Sequelize. Если обновляемый объект содержит связанные поля, то соответствующие связанные записи также будут созданы или обновлены.
 
-**Signature**
+**Сигнатура**
 
 - `async update<M extends Model>(options: UpdateOptions): Promise<M>`
 
 <embed src="./shared/update-options.md"></embed>
 
-**Example**
+**Пример**
 
 ```ts
 const posts = db.getRepository('posts');
@@ -639,26 +653,28 @@ const posts = db.getRepository('posts');
 const result = await posts.update({
   filterByTk: 1,
   values: {
-    title: 'NocoBase 1.0 Release Notes',
+    title: 'Заметки о релизе NocoBase 1.0',
     tags: [
-      // Update data when there is a primary key and value of the associated table
+      // Обновление по id
       { id: 1 },
-      // Create data when there is no primary key and value
+      // Создание новой записи
       { name: 'NocoBase' },
     ],
   },
 });
 ```
 
+---
+
 ### `destroy()`
 
-Delete data from the data table. Equivalent to `Model.destroy()` in Sequelize.
+Удаляет данные из таблицы. Аналог `Model.destroy()` в Sequelize.
 
-**Signature**
+**Сигнатура**
 
-- `async destroy(options?: TargetKey | TargetKey[] | DestoryOptions): Promise<number>`
+- `async destroy(options?: TargetKey | TargetKey[] | DestroyOptions): Promise<number>`
 
-**Type**
+**Типы**
 
 ```typescript
 interface DestroyOptions extends SequelizeDestroyOptions {
@@ -669,9 +685,9 @@ interface DestroyOptions extends SequelizeDestroyOptions {
 }
 ```
 
-**Detailed Information**
+**Подробное описание**
 
-- `filter`：Specify the filtering conditions of the records to be deleted. Refer to the [`find()`](#find) method for the detailed usage of the filter.
-- `filterByTk`：Specify the filtering conditions by TargetKey.
+- `filter`: задаёт условия фильтрации для удаляемых записей. Подробнее об использовании фильтра см. в методе [`find()`](#find).
+- `filterByTk`: указывает первичный ключ (или массив ключей) записи, которую нужно удалить. Это сокращённый способ задать условие фильтрации по первичному ключу.tering conditions by TargetKey.
 - `truncate`: Whether to empty the table data, this parameter is valid if no `filter` or `filterByTk` parameter is passed.
 - `transaction`: Transaction object. If no transaction parameter is passed, the method will automatically create an internal transaction.
