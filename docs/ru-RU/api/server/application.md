@@ -1,16 +1,18 @@
-# Application
+# Приложение (Application)
 
-`Application` is the core module of the NocoBase server, based on [Koa](https://koajs.com) extensions. It's responsible for major application initialization logic and managing the application lifecycle.
+## Обзор
 
-## Constructor
+`Application` - это центральный модуль сервера NocoBase, основанный на расширениях [Koa](https://koajs.com). Отвечает за основную логику инициализации приложения и управление его жизненным циклом.
+
+## Конструктор
 
 ### `constructor()`
 
-#### Signature
+#### Сигнатура
 
 - `constructor(public options: ApplicationOptions)`
 
-#### Types
+#### Типы
 
 ```typescript
 export type PluginType = string | typeof Plugin;
@@ -47,135 +49,129 @@ export interface ApplicationOptions {
 }
 ```
 
-#### Details
+#### Детали
 
 ##### ApplicationOptions
 
-| Property          | Type                                    | Description                                                           |
-| ----------------- | --------------------------------------- | --------------------------------------------------------------------- |
-| `name`            | `string`                                | Application identifier                                                |
-| `database`        | `IDatabaseOptions` \| `DataBase`        | Configuration for `DataBase` instance or the instance itself          |
-| `cacheManager`    | `CacheManagerOptions`                   | Configuration for `CacheManager` instance                             |
-| `resourceManager` | [`ResourcerOptions`](#resourceroptions) | Configuration for resource management                                 |
-| `authManager`     | `AuthManagerOptions`                    | Configuration for user authentication management                      |
-| `bodyParser`      | `bodyParser.Options`                    | Parameters passed to the `@koa/bodyparser` middleware                 |
-| `bodyParser`      | `any`                                   | Parameters passed to the `@koa/cors` middleware                       |
-| `dataWrapping`    | `boolean`                               | Whether to format response data                                       |
-| `registerActions` | `boolean`                               | Whether to register default CRUD operation interfaces for data tables |
-| `i18n`            | `i18n` \| `InitOptions`                 | `i18n` instance or initialization configuration                       |
-| `plugins`         | `PluginConfiguration[]`                 | Names of built-in installed plugins or an array of instances          |
-| `acl`             | `boolean`                               | Whether to enable access control                                      |
-| `logger`          | [`AppLoggerOptions`](#apploggeroptions) | Configuration for application logging                                 |
-| `telemetry`       | `AppTelemetryOptions`                   | Configuration for telemetry module                                    |
+| Свойство          | Тип                                    | Описание                                                           |
+| ----------------- | --------------------------------------- | ----------------------------------------------------------------- |
+| `name`            | `string`                                | Идентификатор приложения                                          |
+| `database`        | `IDatabaseOptions` \| `DataBase`        | Конфигурация или экземпляр `DataBase`                             |
+| `cacheManager`    | `CacheManagerOptions`                   | Конфигурация `CacheManager`                                       |
+| `resourceManager` | [`ResourcerOptions`](#resourceroptions) | Конфигурация управления ресурсами                                 |
+| `authManager`     | `AuthManagerOptions`                    | Конфигурация аутентификации пользователей                         |
+| `bodyParser`      | `bodyParser.Options`                    | Параметры для middleware `@koa/bodyparser`                        |
+| `cors`            | `any`                                   | Параметры для middleware `@koa/cors`                              |
+| `dataWrapping`    | `boolean`                               | Форматировать ли данные ответа                                    |
+| `registerActions` | `boolean`                               | Регистрировать ли CRUD-интерфейсы для таблиц данных по умолчанию |
+| `i18n`            | `i18n` \| `InitOptions`                 | Экземпляр или конфигурация инициализации `i18n`                   |
+| `plugins`         | `PluginConfiguration[]`                 | Имена встроенных плагинов или массив экземпляров                  |
+| `acl`             | `boolean`                               | Включить контроль доступа                                         |
+| `logger`          | [`AppLoggerOptions`](#apploggeroptions) | Конфигурация логирования                                          |
+| `telemetry`       | `AppTelemetryOptions`                   | Конфигурация телеметрии                                           |
 
 ##### ResourcerOptions
 
-| Property | Type     | Description              |
-| -------- | -------- | ------------------------ |
-| `prefix` | `string` | Prefix for resource APIs |
+| Свойство | Тип     | Описание               |
+| -------- | ------- | ---------------------- |
+| `prefix` | `string`| Префикс API ресурсов   |
 
 ##### AppLoggerOptions
 
-| Property  | Type                   | Description                                                               |
-| --------- | ---------------------- | ------------------------------------------------------------------------- |
-| `request` | `RequestLoggerOptions` | Refer to [Logger - requestLogger()](../logger.md#requestlogger)           |
-| `system`  | `SystemLoggerOptions`  | Refer to [Logger - createSystemLogger()](../logger.md#createsystemlogger) |
+| Свойство  | Тип                   | Описание                                                               |
+| --------- | --------------------- | --------------------------------------------------------------------- |
+| `request` | `RequestLoggerOptions` | См. [Logger - requestLogger()](../logger.md#requestlogger)            |
+| `system`  | `SystemLoggerOptions`  | См. [Logger - createSystemLogger()](../logger.md#createsystemlogger)  |
 
-## Instance Properties
+## Свойства экземпляра
 
 ### `name`
 
-Application identifier. Default is `main`.
+Идентификатор приложения. По умолчанию `main`.
 
 ### `version`
 
-Application version management. Application version can be obtained using `version.get()`.
+Управление версиями приложения. Версия доступна через `version.get()`.
 
 ### `mainDataSource`
 
-Main data source.
+Основной источник данных.
 
 ### `db`
 
-Instance of `DataBase` for the main data source. Refer to [DataBase](../database/index.md).
+Экземпляр `DataBase` для основного источника данных. См. [DataBase](../database/index.md).
 
 ### `acl`
 
-Instance of `ACL`. Refer to [ACL](../acl/acl.md).
+Экземпляр `ACL`. См. [ACL](../acl/acl.md).
 
 ### `log`
 
-System logs. Refer to [Logger](../logger.md).
+Системные логи. См. [Logger](../logger.md).
 
 ### `logger`
 
-Equivalent to `log`.
+Аналог `log`.
 
 ### `cache`
 
-Application cache, instance of `Cache`. Refer to [Cache](../cache/cache.md).
+Кэш приложения, экземпляр `Cache`. См. [Cache](../cache/cache.md).
 
 ### `cli`
 
-Application command-line methods.
+Методы командной строки приложения.
 
 ### `i18n`
 
-Internationalization. Instance of `i18n`.
+Интернационализация. Экземпляр `i18n`.
 
 ### `telemetry`
 
-Instance of `Telemetry`. Refer to [Telemetry](../telemetry/telemetry.md).
+Экземпляр `Telemetry`. См. [Telemetry](../telemetry/telemetry.md).
 
 ### `pm`
 
-Plugin management. Refer to [PluginManager](./plugin-manager).
+Управление плагинами. См. [PluginManager](./plugin-manager).
 
 ### `dataSourceManager`
 
-Data source management. Refer to [DataSourceManager](../data-source-manager/).
+Управление источниками данных. См. [DataSourceManager](../data-source-manager/).
 
 ### `resourceManager`
 
-Resource management. Refer to [ResourceManager](../resourcer/resource-manager.md).
+Управление ресурсами. См. [ResourceManager](../resourcer/resource-manager.md).
 
 ### `cacheManager`
 
-Cache management. Refer to [CacheManager](../cache/cache-manager.md).
-
-<!--
-### `syncManager`
-
-Sync signal management. Refer to [SyncManager](./sync-manager.md).
--->
+Управление кэшем. См. [CacheManager](../cache/cache-manager.md).
 
 ### `authManager`
 
-User authentication management. Refer to [AuthManager](../auth/auth-manager.md).
+Управление аутентификацией. См. [AuthManager](../auth/auth-manager.md).
 
 ### `auditManager`
 
-Resource audit management. Refer to [AuditManager](./audit-manager).
+Аудит ресурсов. См. [AuditManager](./audit-manager).
 
 ### `cronJobManager`
 
-Application cron job management.
+Управление cron-задачами.
 
 ### `localeManager`
 
-Application localization resource management.
+Управление локализацией.
 
-## Lifecycle Methods
+## Методы жизненного цикла
 
 ### `load()`
 
-Loads the application and performs application initialization.
+Загружает приложение и выполняет инициализацию.
 
-#### Signature
+#### Сигнатура
 
 - `load(options?: LoadOptions): Promise<void>`
 
-#### Types
+#### Типы
 
 ```typescript
 interface LoadOptions {
@@ -186,32 +182,32 @@ interface LoadOptions {
 }
 ```
 
-#### Details
+#### Детали
 
-| Property        | Type      | Description                                             | Default |
-| --------------- | --------- | ------------------------------------------------------- | ------- |
-| `reload`        | `boolean` | Indicates if it's a reload operation                    | `false` |
-| `hooks`         | `boolean` | Whether to trigger `beforeLoad` / `afterLoad` hooks     | `true`  |
-| `sync`          | `boolean` | Whether to synchronize data table configuration changes | `false` |
-| `[key: string]` | `any`     | Additional configuration, will be passed to hooks       | -       |
+| Свойство        | Тип      | Описание                                             | По умолчанию |
+| --------------- | -------- | --------------------------------------------------- | ------------ |
+| `reload`        | `boolean`| Является ли операцией перезагрузки                  | `false`      |
+| `hooks`         | `boolean`| Вызывать ли хуки `beforeLoad` / `afterLoad`        | `true`       |
+| `sync`          | `boolean`| Синхронизировать ли изменения таблиц данных         | `false`      |
+| `[key: string]` | `any`    | Дополнительная конфигурация для хуков               | -            |
 
 ### `reload()`
 
-Reloads the application, triggering a re-initialization.
+Перезагружает приложение, выполняя повторную инициализацию.
 
-#### Signature
+#### Сигнатура
 
 - `reload(options?: LoadOptions): Promise<void>`
 
 ### `start()`
 
-Starts the application to accept requests.
+Запускает приложение для обработки запросов.
 
-#### Signature
+#### Сигнатура
 
 - `start(options: StartOptions = {}): Promise<void>`
 
-#### Types
+#### Типы
 
 ```typescript
 interface StartOptions {
@@ -219,156 +215,154 @@ interface StartOptions {
 }
 ```
 
-#### Details
+#### Детали
 
-| Property       | Type      | Description                                                | Default |
-| -------------- | --------- | ---------------------------------------------------------- | ------- |
-| `checkInstall` | `boolean` | Indicates whether to check if the application is installed | `false` |
+| Свойство       | Тип      | Описание                                                | По умолчанию |
+| -------------- | -------- | ------------------------------------------------------ | ------------ |
+| `checkInstall` | `boolean`| Проверять ли установку приложения                      | `false`      |
 
 ### `restart()`
 
-Restarts the application, executing `reload()` and `start()`.
+Перезапускает приложение, выполняя `reload()` и `start()`.
 
-#### Signature
+#### Сигнатура
 
 - `restart(options: StartOptions = {}): Promise<void>`
 
 ### `install()`
 
-Installs the application, which involves application initialization, synchronization of data table configuration changes, plugin installation, and application restart if it's already started.
+Устанавливает приложение, включая инициализацию, синхронизацию таблиц, установку плагинов и перезапуск.
 
-#### Signature
+#### Сигнатура
 
 - `install(options: InstallOptions = {}): Promise<void>`
 
-#### Details
+#### Детали
 
-| Property | Type      | Description                                                              | Default |
-| -------- | --------- | ------------------------------------------------------------------------ | ------- |
-| `force`  | `boolean` | Indicates whether to reinstall the application if it's already installed | `false` |
+| Свойство | Тип      | Описание                                                              | По умолчанию |
+| -------- | -------- | -------------------------------------------------------------------- | ------------ |
+| `force`  | `boolean`| Переустанавливать ли приложение, если оно уже установлено            | `false`      |
 
 ### `upgrade()`
 
-Upgrades the application by executing migration scripts for each plugin and restarting the application.
+Обновляет приложение, выполняя миграции плагинов и перезапуская его.
 
-#### Signature
+#### Сигнатура
 
 - `upgrade(): Promise<void>`
 
-### `
+### `stop()`
 
-stop()`
+Останавливает приложение, закрывая соединения с БД, кэш и телеметрию.
 
-Stops the application by closing database connections, cache middleware, and telemetry connections.
-
-#### Signature
+#### Сигнатура
 
 - `stop(): Promise<void>`
 
 ### `destroy()`
 
-Destroys the application, equivalent to calling `stop()`.
+Уничтожает приложение (аналогично `stop()`).
 
-#### Signature
+#### Сигнатура
 
 - `destroy(): Promise<void>`
 
 ### `isInstalled()`
 
-Checks if the application is installed.
+Проверяет установку приложения.
 
-#### Signature
+#### Сигнатура
 
 - `isInstalled(): Promise<boolean>`
 
 ### `isStarted()`
 
-Checks if the application is started.
+Проверяет запуск приложения.
 
-#### Signature
+#### Сигнатура
 
 - `isStarted(): Promise<boolean>`
 
-## Other Methods
+## Другие методы
 
 ### `on()`
 
-Listens for application events. Refer to [emitter.on(eventName, listener)](https://nodejs.org/api/events.html#emitteroneventname-listener).
+Подписывается на события приложения. См. [emitter.on()](https://nodejs.org/api/events.html#emitteroneventname-listener).
 
-#### Signature
+#### Сигнатура
 
 - `on(eventName: string | symbol, listener: (...args: any[]) => void): this`
 
 ### `off()`
 
-Removes event listeners. Refer to [emitter.off(eventName, listener)](https://nodejs.org/api/events.html#emitteroffeventname-listener).
+Отписывается от событий. См. [emitter.off()](https://nodejs.org/api/events.html#emitteroffeventname-listener).
 
-#### Signature
+#### Сигнатура
 
 - `off(eventName: string | symbol, listener: (...args: any[]) => void): this`
 
 ### `use()`
 
-Adds application middleware. Refer to [Koa - Application](https://koajs.com/#application).
+Добавляет middleware приложения. См. [Koa - Application](https://koajs.com/#application).
 
 ### `command()`
 
-Adds application command-line commands.
+Добавляет команды CLI.
 
-#### Signature
+#### Сигнатура
 
 - `command(name: string, desc?: string, opts?: CommandOptions): AppCommand`
 
-#### Details
+#### Детали
 
-| Property | Type             | Description                                                                        |
-| -------- | ---------------- | ---------------------------------------------------------------------------------- |
-| `name`   | `string`         | Command                                                                            |
-| `desc`   | `string`         | Command description                                                                |
-| `opts`   | `CommandOptions` | Command configuration, refer to [Commander.js](https://github.com/tj/commander.js) |
+| Свойство | Тип             | Описание                                                                        |
+| -------- | --------------- | ------------------------------------------------------------------------------ |
+| `name`   | `string`        | Имя команды                                                                    |
+| `desc`   | `string`        | Описание команды                                                               |
+| `opts`   | `CommandOptions`| Конфигурация команды (см. [Commander.js](https://github.com/tj/commander.js))  |
 
 ### `runCommand()`
 
-Runs application commands.
+Выполняет команды приложения.
 
-#### Signature
+#### Сигнатура
 
 - `runCommand(command: string, ...args: any[])`
 
 ### `authenticate()`
 
-Performs DB connection check and version check.
+Проверяет соединение с БД и версию.
 
-#### Signature
+#### Сигнатура
 
 - `authenticate(): Promise<void>`
 
-## Events
+## События
 
 ### `'beforeLoad'` / `'afterLoad'`
 
-Triggered before and after [`load()`](#load) and [`reload()`](#reload).
+Вызываются до и после [`load()`](#load) и [`reload()`](#reload).
 
 ### `'beforeReload'` / `'afterReload'`
 
-Triggered before and after [`reload()`](#reload).
+Вызываются до и после [`reload()`](#reload).
 
 ### `'beforeInstall'` / `'afterInstall'`
 
-Triggered before and after [`install()`](#install).
+Вызываются до и после [`install()`](#install).
 
 ### `'beforeUpgrade'` / `'afterUpgrade'`
 
-Triggered before and after [`upgrade()`](#upgrade).
+Вызываются до и после [`upgrade()`](#upgrade).
 
 ### `'beforeStart'` / `'afterStart'`
 
-Triggered before and after [`start()`](#start).
+Вызываются до и после [`start()`](#start).
 
 ### `'beforeStop'` / `'afterStop'`
 
-Triggered before and after [`stop()`](#stop) and [`destroy()`](#destroy). `'beforeStop'` is triggered before [`restart()`](#restart).
+Вызываются до и после [`stop()`](#stop) и [`destroy()`](#destroy). `'beforeStop'` также перед [`restart()`](#restart).
 
 ### `'beforeDestroy'` / `'afterDestroy'`
 
-Triggered before and after [`destroy()`](#destroy).
+Вызываются до и после [`destroy()`](#destroy).
