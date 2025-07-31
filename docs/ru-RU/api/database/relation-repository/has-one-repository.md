@@ -1,14 +1,15 @@
-# HasOneRepository
+# HasOneRepository (Репозиторий связи "один к одному")
 
-## Overview
+## Обзор
 
-`HasOneRepository` is the associated repository of type `HasOne`.
+`HasOneRepository` - это репозиторий для работы со связями типа "один к одному" (`HasOne`).
 
 ```typescript
+// Определение коллекций
 const User = db.collection({
   name: 'users',
   fields: [
-    { type: 'hasOne', name: 'profile' },
+    { type: 'hasOne', name: 'profile' },  // Связь один-к-одному
     { type: 'string', name: 'name' },
   ],
 });
@@ -18,170 +19,124 @@ const Profile = db.collection({
   fields: [{ type: 'string', name: 'avatar' }],
 });
 
+// Создание пользователя
 const user = await User.repository.create({
   values: { name: 'u1' },
 });
 
-// Get the associated repository
+// Получение репозитория связи
 const userProfileRepository = User.repository
   .relation('profile')
   .of(user.get('id'));
 
-// Or to initialize directly
+// Или прямая инициализация
 new HasOneRepository(User, 'profile', user.get('id'));
 ```
 
-## Class Methods
+## Методы класса
 
 ### `find()`
 
-Find associated objects.
-
-**Signature**
-
-- `async find(options?: SingleRelationFindOption): Promise<Model<any> | null>`
-
-**Type**
+Поиск связанного объекта.
 
 ```typescript
+async find(options?: SingleRelationFindOption): Promise<Model<any> | null>
+```
+
+**Параметры:**
+```typescript
 interface SingleRelationFindOption extends Transactionable {
-  fields?: Fields;
-  except?: Except;
-  appends?: Appends;
-  filter?: Filter;
+  fields?: Fields;    // Поля для выборки
+  except?: Except;    // Исключаемые поля
+  appends?: Appends;  // Дополнительные поля
+  filter?: Filter;    // Условия фильтрации
 }
 ```
 
-**Detailed Information**
-
-Query parameters are the same as [`Repository.find()`](../repository.md#find).
-
-**Example**
-
+**Пример:**
 ```typescript
 const profile = await UserProfileRepository.find();
-// Return null if the associated object does not exist
+// Возвращает null, если связанный объект не существует
 ```
 
 ### `create()`
 
-Create associated objects.
+Создание связанного объекта.
 
-**Signature**
+```typescript
+async create(options?: CreateOptions): Promise<Model>
+```
 
-- `async create(options?: CreateOptions): Promise<Model>`
-
-<embed src="../shared/create-options.md"></embed>
-
-**Example**
-
+**Пример:**
 ```typescript
 const profile = await UserProfileRepository.create({
   values: { avatar: 'avatar1' },
 });
-
-console.log(profile.toJSON());
-/*
-{
-  id: 1,
-  avatar: 'avatar1',
-  userId: 1,
-  updatedAt: 2022-09-24T13:59:40.025Z,
-  createdAt: 2022-09-24T13:59:40.025Z
-}
-*/
 ```
 
 ### `update()`
 
-Update associated objects.
+Обновление связанного объекта.
 
-**Signature**
+```typescript
+async update(options: UpdateOptions): Promise<Model>
+```
 
-- `async update(options: UpdateOptions): Promise<Model>`
-
-<embed src="../shared/update-options.md"></embed>
-
-**Example**
-
+**Пример:**
 ```typescript
 const profile = await UserProfileRepository.update({
   values: { avatar: 'avatar2' },
 });
-
-profile.get('avatar'); // 'avatar2'
 ```
 
 ### `remove()`
 
-Remove associated objects. Only to unassociate, not to delete the associated object.
-
-**Signature**
-
-- `async remove(options?: Transactionable): Promise<void>`
-
-**Detailed Information**
-
-- `transaction`: Transaction object. If no transaction parameter is passed, the method will automatically create an internal transaction.
-
-**Example**
+Удаление связи (без удаления самого объекта).
 
 ```typescript
-await UserProfileRepository.remove();
-(await UserProfileRepository.find()) == null; // true
+async remove(options?: Transactionable): Promise<void>
+```
 
-(await Profile.repository.count()) === 1; // true
+**Пример:**
+```typescript
+await UserProfileRepository.remove();
 ```
 
 ### `destroy()`
 
-Delete associated objects.
-
-**Signature**
-
-- `async destroy(options?: Transactionable): Promise<Boolean>`
-
-**Detailed Information**
-
-- `transaction`: Transaction object. If no transaction parameter is passed, the method will automatically create an internal transaction.
-
-**Example**
+Удаление связанного объекта.
 
 ```typescript
+async destroy(options?: Transactionable): Promise<Boolean>
+```
+
+**Пример:**
+```typescript
 await UserProfileRepository.destroy();
-(await UserProfileRepository.find()) == null; // true
-(await Profile.repository.count()) === 0; // true
 ```
 
 ### `set()`
 
-Set associated objects.
-
-**Signature**
-
-- `async set(options: TargetKey | SetOption): Promise<void>`
-
-**Type**
+Установка связанного объекта.
 
 ```typescript
+async set(options: TargetKey | SetOption): Promise<void>
+```
+
+**Параметры:**
+```typescript
 interface SetOption extends Transactionable {
-  tk?: TargetKey;
+  tk?: TargetKey;  // Идентификатор связанного объекта
 }
 ```
 
-**Detailed Information**
-
-- tk: Set the targetKey of the associated object.
-- transaction: Transaction object. If no transaction parameter is passed, the method will automatically create an internal transaction.
-
-**Example**
-
+**Пример:**
 ```typescript
 const newProfile = await Profile.repository.create({
   values: { avatar: 'avatar2' },
 });
 
 await UserProfileRepository.set(newProfile.get('id'));
-
-(await UserProfileRepository.find()).get('id') === newProfile.get('id'); // true
 ```
+
+Все методы поддерживают работу с транзакциями через параметр `transaction`. Если транзакция не передана, методы создают внутреннюю транзакцию автоматически.
