@@ -1,24 +1,45 @@
-**Type**
+# Интерфейс UpdateOptions
 
 ```typescript
 interface UpdateOptions extends Omit<SequelizeUpdateOptions, 'where'> {
-  values: Values;
-  filter?: Filter;
-  filterByTk?: TargetKey;
-  whitelist?: WhiteList;
-  blacklist?: BlackList;
-  updateAssociationValues?: AssociationKeysToBeUpdate;
-  context?: any;
+  values: Values;                       // Объект данных для обновления
+  filter?: Filter;                      // Условия фильтрации записей
+  filterByTk?: TargetKey;               // Фильтрация по целевому ключу
+  whitelist?: WhiteList;                // Белый список полей
+  blacklist?: BlackList;                // Черный список полей
+  updateAssociationValues?: AssociationKeysToBeUpdate;  // Связи для обновления
+  context?: any;                        // Контекст выполнения
 }
 ```
 
-**Details**
+## Детализация параметров
 
-- `values`: The data object of the records to be updated.
-- `filter`: Specifies the filter conditions for the records to be updated. For detailed usage of Filter, refer to the [`find()`](#find) method.
-- `filterByTk`: Specifies the filter conditions for the records to be updated by TargetKey.
-- `whitelist`: A whitelist for the `values` fields. Only fields listed will be written.
-- `blacklist`: A blacklist for the `values` fields. Fields listed will not be written.
-- `transaction`: The transaction object. If no transaction parameter is passed, the method will automatically create an internal transaction.
+1. **values** (обязательный)  
+   Объект данных, содержащий новые значения для обновляемых записей.
 
-At least one of `filterByTk` or `filter` must be provided.
+2. **filter**  
+   Условия фильтрации записей для обновления.  
+   *Подробнее об использовании Filter см. в методе [`find()`](#find).*
+
+3. **filterByTk**  
+   Позволяет указать целевую запись для обновления по первичному ключу.
+
+4. **whitelist**  
+   Список полей, которые разрешено обновлять.  
+   *Только указанные поля будут изменены.*
+
+5. **blacklist**  
+   Список полей, которые запрещено обновлять.  
+   *Указанные поля останутся без изменений.*
+
+6. **transaction**  
+   Объект транзакции.  
+   *Если не указан, создается автоматически.*
+
+7. **updateAssociationValues**  
+   Список связей, которые нужно обновить вместе с основной записью.
+
+8. **context**  
+   Дополнительный контекст выполнения операции.
+
+**Важно!** Должен быть указан хотя бы один из параметров: `filterByTk` или `filter`.
