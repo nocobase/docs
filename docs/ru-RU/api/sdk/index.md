@@ -1,10 +1,10 @@
 # APIClient
 
-## Overview
+## Обзор
 
-`APIClient` is a wrapper based on <a href="https://axios-http.com/" target="_blank">`axios`</a>, used for making HTTP requests to perform resource operations in NocoBase from the client-side.
+`APIClient` - это обертка на основе <a href="https://axios-http.com/" target="_blank">`axios`</a>, используемая для выполнения HTTP-запросов к ресурсам NocoBase на клиентской стороне.
 
-### Basic Usage
+### Базовое использование
 
 ```ts
 class PluginSampleAPIClient extends Plugin {
@@ -16,31 +16,31 @@ class PluginSampleAPIClient extends Plugin {
 }
 ```
 
-## Instance Properties
+## Свойства экземпляра
 
 ### `axios`
 
-An `axios` instance that provides access to the `axios` API, such as `apiClient.axios.interceptors`.
+Экземпляр `axios`, предоставляющий доступ к API `axios`, например `apiClient.axios.interceptors`.
 
 ### `auth`
 
-A client-side authentication class, refer to [Auth](./auth.md).
+Класс аутентификации на клиентской стороне, см. [Auth](./auth.md).
 
 ### `storage`
 
-A client-side storage class, refer to [Storage](./storage.md).
+Класс клиентского хранилища, см. [Storage](./storage.md).
 
-## Class Methods
+## Методы класса
 
 ### `constructor()`
 
-Constructor to create an `APIClient` instance.
+Конструктор для создания экземпляра `APIClient`.
 
-#### Signature
+#### Сигнатура
 
 - `constructor(instance?: APIClientOptions)`
 
-#### Type
+#### Типы
 
 ```ts
 interface ExtendedOptions {
@@ -55,13 +55,13 @@ export type APIClientOptions =
 
 ### `request()`
 
-Makes an HTTP request.
+Выполняет HTTP-запрос.
 
-#### Signature
+#### Сигнатура
 
 - `request<T = any, R = AxiosResponse<T>, D = any>(config: AxiosRequestConfig<D> | ResourceActionOptions): Promise<R>`
 
-#### Type
+#### Типы
 
 ```ts
 type ResourceActionOptions<P = any> = {
@@ -72,11 +72,11 @@ type ResourceActionOptions<P = any> = {
 };
 ```
 
-#### Details
+#### Подробности
 
 ##### AxiosRequestConfig
 
-Common axios request parameters. Refer to <a href="https://axios-http.com/docs/req_config" target="_blank">Request Config</a>.
+Стандартные параметры запроса axios. См. <a href="https://axios-http.com/docs/req_config" target="_blank">Request Config</a>.
 
 ```ts
 const res = await apiClient.request({ url: '' });
@@ -84,7 +84,7 @@ const res = await apiClient.request({ url: '' });
 
 ##### ResourceActionOptions
 
-Parameters for NocoBase resource operations.
+Параметры для операций с ресурсами NocoBase.
 
 ```ts
 const res = await apiClient.request({
@@ -96,17 +96,17 @@ const res = await apiClient.request({
 });
 ```
 
-| Property        | Type     | Description                                                                                                                                                |
-| --------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `resource`      | `string` | 1. Resource name, such as `a`<br />2. Name of the associated object, such as `a.b`                                                                         |
-| `resourceOf`    | `any`    | Primary key value of the resource when `resource` is the name of an associated object. For example, for `a.b`, it represents the primary key value of `a`. |
-| `action`        | `string` | Action name                                                                                                                                                |
-| `params`        | `any`    | Request parameter object, mainly URL parameters, request body is put into `params.values`                                                                  |
-| `params.values` | `any`    | Request body object                                                                                                                                        |
+| Свойство        | Тип     | Описание                                                                                                                      |
+| --------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `resource`      | `string`| 1. Имя ресурса, например `a`<br />2. Имя ассоциированного объекта, например `a.b`                                            |
+| `resourceOf`    | `any`   | Значение первичного ключа ресурса, когда `resource` является именем ассоциированного объекта. Например, для `a.b` - значение первичного ключа `a`. |
+| `action`        | `string`| Имя действия                                                                                                                |
+| `params`        | `any`   | Объект параметров запроса (в основном URL-параметры), тело запроса передается в `params.values`                             |
+| `params.values` | `any`   | Объект тела запроса                                                                                                         |
 
 ### `resource()`
 
-Gets the object containing NocoBase resource operation methods.
+Получает объект с методами для операций с ресурсами NocoBase.
 
 ```ts
 const resource = apiClient.resource('users');
@@ -123,11 +123,11 @@ const res = await resource.list({
 });
 ```
 
-#### Signature
+#### Сигнатура
 
 - `resource(name: string, of?: any, headers?: AxiosRequestHeaders): IResource`
 
-#### Type
+#### Типы
 
 ```ts
 export interface ActionParams {
@@ -142,10 +142,10 @@ export type IResource = {
 };
 ```
 
-#### Details
+#### Подробности
 
-| Parameter | Type                  | Description                                                                                                                                                |
-| --------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `name`    | `string`              | Resource name, such as `a`<br />2. Name of the associated object, such as `a.b`                                                                            |
-| `of`      | `any`                 | Primary key value of the resource when `resource` is the name of an associated object. For example, for `a.b`, it represents the primary key value of `a`. |
-| `headers` | `AxiosRequestHeaders` | HTTP request headers to be sent with subsequent resource operation requests                                                                                |
+| Параметр | Тип                  | Описание                                                                                                                      |
+| -------- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `name`   | `string`             | Имя ресурса, например `a`<br />2. Имя ассоциированного объекта, например `a.b`                                               |
+| `of`     | `any`                | Значение первичного ключа ресурса, когда `resource` является именем ассоциированного объекта. Например, для `a.b` - значение первичного ключа `a`. |
+| `headers`| `AxiosRequestHeaders`| HTTP-заголовки, которые будут отправляться с последующими запросами операций с ресурсами                                    |
