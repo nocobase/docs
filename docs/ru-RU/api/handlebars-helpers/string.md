@@ -1,77 +1,76 @@
-
-# String
+# Строки
 
 ## {{append}}
 
-Append the specified `suffix` to the given string.
+Добавляет указанный `suffix` к заданной строке.
 
-**Params**
+**Параметры**
 
 * `str` **{String}**
 * `suffix` **{String}**
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
-<!-- given that "item.stem" is "foo" -->
+<!-- если "item.stem" равно "foo" -->
 {{append item.stem ".html"}}
-<!-- results in:  'foo.html' -->
+<!-- результат: 'foo.html' -->
 ```
 
 ## {{camelcase}}
 
-camelCase the characters in the given `string`.
+Преобразует символы в заданной строке в camelCase.
 
-**Params**
+**Параметры**
 
-* `string` **{String}**: The string to camelcase.
+* `string` **{String}**: Строка для преобразования.
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{camelcase "foo bar baz"}};
-<!-- results in:  'fooBarBaz' -->
+<!-- результат: 'fooBarBaz' -->
 ```
 
 ## {{capitalize}}
 
-Capitalize the first word in a sentence.
+Делает первую букву в предложении заглавной.
 
-**Params**
+**Параметры**
 
 * `str` **{String}**
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{capitalize "foo bar baz"}}
-<!-- results in:  "Foo bar baz" -->
+<!-- результат: "Foo bar baz" -->
 ```
 
 ## {{capitalizeAll}}
 
-Capitalize all words in a string.
+Делает первую букву каждого слова в строке заглавной.
 
-**Params**
+**Параметры**
 
 * `str` **{String}**
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{capitalizeAll "foo bar baz"}}
-<!-- results in:  "Foo Bar Baz" -->
+<!-- результат: "Foo Bar Baz" -->
 ```
 
 ## {{center}}
 
-Center a string using non-breaking spaces
+Центрирует строку, используя неразрывные пробелы.
 
-**Params**
+**Параметры**
 
 * `str` **{String}**
 * `spaces` **{String}**
@@ -79,532 +78,532 @@ Center a string using non-breaking spaces
 
 ## {{chop}}
 
-Like trim, but removes both extraneous whitespace **and non-word characters** from the beginning and end of a string.
+Удаляет лишние пробелы и небуквенные символы с начала и конца строки.
 
-**Params**
+**Параметры**
 
-* `string` **{String}**: The string to chop.
+* `string` **{String}**: Строка для обработки.
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{chop "_ABC_"}}
-<!-- results in:  'ABC' -->
+<!-- результат: 'ABC' -->
 
 {{chop "-ABC-"}}
-<!-- results in:  'ABC' -->
+<!-- результат: 'ABC' -->
 
 {{chop " ABC "}}
-<!-- results in:  'ABC' -->
+<!-- результат: 'ABC' -->
 ```
 
 ## {{dashcase}}
 
-dash-case the characters in `string`. Replaces non-word characters and periods with hyphens.
+Преобразует символы в строке в dash-case. Заменяет небуквенные символы и точки на дефисы.
 
-**Params**
+**Параметры**
 
 * `string` **{String}**
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{dashcase "a-b-c d_e"}}
-<!-- results in:  'a-b-c-d-e' -->
+<!-- результат: 'a-b-c-d-e' -->
 ```
 
 ## {{dotcase}}
 
-dot.case the characters in `string`.
+Преобразует символы в строке в dot.case.
 
-**Params**
+**Параметры**
 
 * `string` **{String}**
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{dotcase "a-b-c d_e"}}
-<!-- results in:  'a.b.c.d.e' -->
+<!-- результат: 'a.b.c.d.e' -->
 ```
 
 ## {{downcase}}
 
-Lowercase all of the characters in the given string. Alias for [lowercase](#lowercase).
+Преобразует все символы в строке в нижний регистр. Аналог [lowercase](#lowercase).
 
-**Params**
+**Параметры**
 
 * `string` **{String}**
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{downcase "aBcDeF"}}
-<!-- results in:  'abcdef' -->
+<!-- результат: 'abcdef' -->
 ```
 
 ## {{ellipsis}}
 
-Truncates a string to the specified `length`, and appends it with an elipsis, `…`.
+Обрезает строку до указанной длины и добавляет многоточие (`…`).
 
-**Params**
+**Параметры**
 
 * `str` **{String}**
-* `length` **{Number}**: The desired length of the returned string.
-* `returns` **{String}**: The truncated string.
+* `length` **{Number}**: Желаемая длина строки.
+* `returns` **{String}**: Обрезанная строка.
 
-**Example**
+**Пример**
 
 ```handlebars
 {{ellipsis (sanitize "<span>foo bar baz</span>"), 7}}
-<!-- results in:  'foo bar…' -->
+<!-- результат: 'foo bar…' -->
 {{ellipsis "foo bar baz", 7}}
-<!-- results in:  'foo bar…' -->
+<!-- результат: 'foo bar…' -->
 ```
 
 ## {{hyphenate}}
 
-Replace spaces in a string with hyphens.
+Заменяет пробелы в строке на дефисы.
 
-**Params**
+**Параметры**
 
 * `str` **{String}**
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{hyphenate "foo bar baz qux"}}
-<!-- results in:  "foo-bar-baz-qux" -->
+<!-- результат: "foo-bar-baz-qux" -->
 ```
 
 ## {{isString}}
 
-Return true if `value` is a string.
+Возвращает `true`, если значение является строкой.
 
-**Params**
+**Параметры**
 
 * `value` **{String}**
 * `returns` **{Boolean}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{isString "foo"}}
-<!-- results in:  'true' -->
+<!-- результат: 'true' -->
 ```
 
 ## {{lowercase}}
 
-Lowercase all characters in the given string.
+Преобразует все символы в строке в нижний регистр.
 
-**Params**
+**Параметры**
 
 * `str` **{String}**
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{lowercase "Foo BAR baZ"}}
-<!-- results in:  'foo bar baz' -->
+<!-- результат: 'foo bar baz' -->
 ```
 
 ## {{occurrences}}
 
-Return the number of occurrences of `substring` within the given `string`.
+Возвращает количество вхождений подстроки в заданной строке.
 
-**Params**
+**Параметры**
 
 * `str` **{String}**
 * `substring` **{String}**
-* `returns` **{Number}**: Number of occurrences
+* `returns` **{Number}**: Количество вхождений.
 
-**Example**
+**Пример**
 
 ```handlebars
 {{occurrences "foo bar foo bar baz" "foo"}}
-<!-- results in:  2 -->
+<!-- результат: 2 -->
 ```
 
 ## {{pascalcase}}
 
-PascalCase the characters in `string`.
+Преобразует символы в строке в PascalCase.
 
-**Params**
+**Параметры**
 
 * `string` **{String}**
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{pascalcase "foo bar baz"}}
-<!-- results in:  'FooBarBaz' -->
+<!-- результат: 'FooBarBaz' -->
 ```
 
 ## {{pathcase}}
 
-path/case the characters in `string`.
+Преобразует символы в строке в path/case.
 
-**Params**
+**Параметры**
 
 * `string` **{String}**
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{pathcase "a-b-c d_e"}}
-<!-- results in:  'a/b/c/d/e' -->
+<!-- результат: 'a/b/c/d/e' -->
 ```
 
 ## {{plusify}}
 
-Replace spaces in the given string with pluses.
+Заменяет пробелы в строке на знаки плюса.
 
-**Params**
+**Параметры**
 
-* `str` **{String}**: The input string
-* `returns` **{String}**: Input string with spaces replaced by plus signs
+* `str` **{String}**: Входная строка.
+* `returns` **{String}**: Строка с пробелами, заменёнными на плюсы.
 
-**Example**
+**Пример**
 
 ```handlebars
 {{plusify "foo bar baz"}}
-<!-- results in:  'foo+bar+baz' -->
+<!-- результат: 'foo+bar+baz' -->
 ```
 
 ## {{prepend}}
 
-Prepends the given `string` with the specified `prefix`.
+Добавляет указанный `prefix` в начало строки.
 
-**Params**
+**Параметры**
 
 * `str` **{String}**
 * `prefix` **{String}**
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
-<!-- given that "val" is "bar" -->
+<!-- если "val" равно "bar" -->
 {{prepend val "foo-"}}
-<!-- results in:  'foo-bar' -->
+<!-- результат: 'foo-bar' -->
 ```
 
 ## {{raw}}
 
-Render a block without processing mustache templates inside the block.
+Выводит блок без обработки шаблонов Mustache внутри него.
 
-**Params**
+**Параметры**
 
 * `options` **{Object}**
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{{{#raw}}}}
 {{foo}}
 {{{{/raw}}}}
-<!-- results in:  '{{foo}}' -->
+<!-- результат: '{{foo}}' -->
 ```
 
 ## {{remove}}
 
-Remove all occurrences of `substring` from the given `str`.
+Удаляет все вхождения подстроки из строки.
 
-**Params**
+**Параметры**
 
 * `str` **{String}**
 * `substring` **{String}**
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{remove "a b a b a b" "a "}}
-<!-- results in:  'b b b' -->
+<!-- результат: 'b b b' -->
 ```
 
 ## {{removeFirst}}
 
-Remove the first occurrence of `substring` from the given `str`.
+Удаляет первое вхождение подстроки из строки.
 
-**Params**
+**Параметры**
 
 * `str` **{String}**
 * `substring` **{String}**
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{remove "a b a b a b" "a"}}
-<!-- results in:  ' b a b a b' -->
+<!-- результат: ' b a b a b' -->
 ```
 
 ## {{replace}}
 
-Replace all occurrences of substring `a` with substring `b`.
+Заменяет все вхождения подстроки `a` на подстроку `b`.
 
-**Params**
+**Параметры**
 
 * `str` **{String}**
 * `a` **{String}**
 * `b` **{String}**
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{replace "a b a b a b" "a" "z"}}
-<!-- results in:  'z b z b z b' -->
+<!-- результат: 'z b z b z b' -->
 ```
 
 ## {{replaceFirst}}
 
-Replace the first occurrence of substring `a` with substring `b`.
+Заменяет первое вхождение подстроки `a` на подстроку `b`.
 
-**Params**
+**Параметры**
 
 * `str` **{String}**
 * `a` **{String}**
 * `b` **{String}**
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{replace "a b a b a b" "a" "z"}}
-<!-- results in:  'z b a b a b' -->
+<!-- результат: 'z b a b a b' -->
 ```
 
 ## {{reverse}}
 
-Reverse a string.
+Переворачивает строку.
 
-**Params**
+**Параметры**
 
 * `str` **{String}**
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{reverse "abcde"}}
-<!-- results in:  'edcba' -->
+<!-- результат: 'edcba' -->
 ```
 
 ## {{sentence}}
 
-Sentence case the given string
+Преобразует строку в sentence case (первая буква каждого предложения заглавная).
 
-**Params**
+**Параметры**
 
 * `str` **{String}**
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{sentence "hello world. goodbye world."}}
-<!-- results in:  'Hello world. Goodbye world.' -->
+<!-- результат: 'Hello world. Goodbye world.' -->
 ```
 
 ## {{snakecase}}
 
-snake_case the characters in the given `string`.
+Преобразует символы в строке в snake_case.
 
-**Params**
+**Параметры**
 
 * `string` **{String}**
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{snakecase "a-b-c d_e"}}
-<!-- results in:  'a_b_c_d_e' -->
+<!-- результат: 'a_b_c_d_e' -->
 ```
 
 ## {{split}}
 
-Split `string` by the given `character`.
+Разделяет строку по указанному символу.
 
-**Params**
+**Параметры**
 
-* `string` **{String}**: The string to split.
-* `returns` **{String}** `character`: Default is an empty string.
+* `string` **{String}**: Строка для разделения.
+* `returns` **{String}** `character`: По умолчанию — пустая строка.
 
-**Example**
+**Пример**
 
 ```handlebars
 {{split "a,b,c" ","}}
-<!-- results in:  ['a', 'b', 'c'] -->
+<!-- результат: ['a', 'b', 'c'] -->
 ```
 
 ## {{startsWith}}
 
-Tests whether a string begins with the given prefix.
+Проверяет, начинается ли строка с указанного префикса.
 
-**Params**
+**Параметры**
 
 * `prefix` **{String}**
 * `testString` **{String}**
 * `options` **{String}**
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{#startsWith "Goodbye" "Hello, world!"}}
-  Whoops
+  Упс
 {{else}}
-  Bro, do you even hello world?
+  Бро, ты вообще "Hello, world!"?
 {{/startsWith}}
 ```
 
 ## {{titleize}}
 
-Title case the given string.
+Преобразует строку в Title Case (каждое слово с заглавной буквы).
 
-**Params**
+**Параметры**
 
 * `str` **{String}**
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{titleize "this is title case"}}
-<!-- results in:  'This Is Title Case' -->
+<!-- результат: 'This Is Title Case' -->
 ```
 
 ## {{trim}}
 
-Removes extraneous whitespace from the beginning and end of a string.
+Удаляет лишние пробелы с начала и конца строки.
 
-**Params**
+**Параметры**
 
-* `string` **{String}**: The string to trim.
+* `string` **{String}**: Строка для обработки.
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{trim " ABC "}}
-<!-- results in:  'ABC' -->
+<!-- результат: 'ABC' -->
 ```
 
 ## {{trimLeft}}
 
-Removes extraneous whitespace from the beginning of a string.
+Удаляет лишние пробелы с начала строки.
 
-**Params**
+**Параметры**
 
-* `string` **{String}**: The string to trim.
+* `string` **{String}**: Строка для обработки.
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{trim " ABC "}}
-<!-- results in:  'ABC ' -->
+<!-- результат: 'ABC ' -->
 ```
 
 ## {{trimRight}}
 
-Removes extraneous whitespace from the end of a string.
+Удаляет лишние пробелы с конца строки.
 
-**Params**
+**Параметры**
 
-* `string` **{String}**: The string to trim.
+* `string` **{String}**: Строка для обработки.
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{trimRight " ABC "}}
-<!-- results in:  ' ABC' -->
+<!-- результат: ' ABC' -->
 ```
 
 ## {{truncate}}
 
-Truncate a string to the specified `length`. Also see [ellipsis](#ellipsis).
+Обрезает строку до указанной длины. См. также [ellipsis](#ellipsis).
 
-**Params**
+**Параметры**
 
 * `str` **{String}**
-* `limit` **{Number}**: The desired length of the returned string.
-* `suffix` **{String}**: Optionally supply a string to use as a suffix to denote when the string has been truncated. Otherwise an ellipsis (`…`) will be used.
-* `returns` **{String}**: The truncated string.
+* `limit` **{Number}**: Желаемая длина строки.
+* `suffix` **{String}**: Опционально, строка для обозначения обрезки (по умолчанию — многоточие `…`).
+* `returns` **{String}**: Обрезанная строка.
 
-**Example**
+**Пример**
 
 ```handlebars
 truncate("foo bar baz", 7);
-<!-- results in:  'foo bar' -->
+<!-- результат: 'foo bar' -->
 truncate(sanitize("<span>foo bar baz</span>", 7));
-<!-- results in:  'foo bar' -->
+<!-- результат: 'foo bar' -->
 ```
 
 ## {{truncateWords}}
 
-Truncate a string to have the specified number of words. Also see [truncate](#truncate).
+Обрезает строку до указанного количества слов. См. также [truncate](#truncate).
 
-**Params**
+**Параметры**
 
 * `str` **{String}**
-* `limit` **{Number}**: The desired length of the returned string.
-* `suffix` **{String}**: Optionally supply a string to use as a suffix to denote when the string has been truncated.
-* `returns` **{String}**: The truncated string.
+* `limit` **{Number}**: Желаемое количество слов.
+* `suffix` **{String}**: Опционально, строка для обозначения обрезки.
+* `returns` **{String}**: Обрезанная строка.
 
-**Example**
+**Пример**
 
 ```handlebars
 truncateWords("foo bar baz", 1);
-<!-- results in:  'foo…' -->
+<!-- результат: 'foo…' -->
 truncateWords("foo bar baz", 2);
-<!-- results in:  'foo bar…' -->
+<!-- результат: 'foo bar…' -->
 truncateWords("foo bar baz", 3);
-<!-- results in:  'foo bar baz' -->
+<!-- результат: 'foo bar baz' -->
 ```
 
 ## {{upcase}}
 
-Uppercase all of the characters in the given string. Alias for [uppercase](#uppercase).
+Преобразует все символы в строке в верхний регистр. Аналог [uppercase](#uppercase).
 
-**Params**
+**Параметры**
 
 * `string` **{String}**
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{upcase "aBcDeF"}}
-<!-- results in:  'ABCDEF' -->
+<!-- результат: 'ABCDEF' -->
 ```
 
 ## {{uppercase}}
 
-Uppercase all of the characters in the given string. If used as a block helper it will uppercase the entire block. This helper does not support inverse blocks.
+Преобразует все символы в строке в верхний регистр. Если используется как блок, преобразует весь блок. Не поддерживает инверсные блоки.
 
-**Params**
+**Параметры**
 
-* `str` **{String}**: The string to uppercase
-* `options` **{Object}**: Handlebars options object
+* `str` **{String}**: Строка для преобразования.
+* `options` **{Object}**: Объект опций Handlebars.
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{uppercase "aBcDeF"}}
-<!-- results in:  'ABCDEF' -->
+<!-- результат: 'ABCDEF' -->
 ```
