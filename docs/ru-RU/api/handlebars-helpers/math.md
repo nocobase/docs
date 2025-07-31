@@ -1,166 +1,147 @@
-
-# Math
+# Математические операции
 
 ## {{abs}}
 
-Return the magnitude of `a`.
+Возвращает модуль числа `a`.
 
-**Params**
-
+**Параметры**
 * `a` **{Number}**
 * `returns` **{Number}**
 
 ## {{add}}
 
-Return the sum of `a` plus `b`.
+Возвращает сумму `a` и `b`.
 
-**Params**
-
+**Параметры**
 * `a` **{Number}**
 * `b` **{Number}**
 * `returns` **{Number}**
 
 ## {{avg}}
 
-Returns the average of all numbers in the given array.
+Возвращает среднее значение всех чисел в массиве.
 
-**Params**
-
-* `array` **{Array}**: Array of numbers to add up.
+**Параметры**
+* `array` **{Array}**: Массив чисел для вычисления
 * `returns` **{Number}**
 
-**Example**
-
+**Пример**
 ```handlebars
 {{avg "[1, 2, 3, 4, 5]"}}
-<!-- results in: '3' -->
+<!-- результат: '3' -->
 ```
 
 ## {{ceil}}
 
-Get the `Math.ceil()` of the given value.
+Округляет число вверх (Math.ceil()).
 
-**Params**
-
+**Параметры**
 * `value` **{Number}**
 * `returns` **{Number}**
 
 ## {{divide}}
 
-Divide `a` by `b`
+Делит `a` на `b`.
 
-**Params**
-
-* `a` **{Number}**: numerator
-* `b` **{Number}**: denominator
+**Параметры**
+* `a` **{Number}**: числитель
+* `b` **{Number}**: знаменатель
 
 ## {{floor}}
 
-Get the `Math.floor()` of the given value.
+Округляет число вниз (Math.floor()).
 
-**Params**
-
+**Параметры**
 * `value` **{Number}**
 * `returns` **{Number}**
 
 ## {{minus}}
 
-Return the difference of `a` minus `b`.
+Возвращает разность `a` и `b`.
 
-**Params**
-
+**Параметры**
 * `a` **{Number}**
 * `b` **{Number}**
 
 ## {{modulo}}
 
-Get the remainder of a division operation.
+Возвращает остаток от деления.
 
-**Params**
-
+**Параметры**
 * `a` **{Number}**
 * `b` **{Number}**
 * `returns` **{Number}**
 
 ## {{multiply}}
 
-Return the product of `a` times `b`.
+Возвращает произведение `a` и `b`.
 
-**Params**
-
-* `a` **{Number}**: factor
-* `b` **{Number}**: multiplier
+**Параметры**
+* `a` **{Number}**: множимое
+* `b` **{Number}**: множитель
 * `returns` **{Number}**
 
 ## {{plus}}
 
-Add `a` by `b`.
+Складывает `a` и `b`.
 
-**Params**
-
-* `a` **{Number}**: factor
-* `b` **{Number}**: multiplier
+**Параметры**
+* `a` **{Number}**: слагаемое
+* `b` **{Number}**: слагаемое
 
 ## {{random}}
 
-Generate a random number between two values
+Генерирует случайное число в заданном диапазоне.
 
-**Params**
-
+**Параметры**
 * `min` **{Number}**
 * `max` **{Number}**
 * `returns` **{String}**
 
 ## {{remainder}}
 
-Get the remainder when `a` is divided by `b`.
+Возвращает остаток от деления `a` на `b`.
 
-**Params**
-
-* `a` **{Number}**: a
-* `b` **{Number}**: b
+**Параметры**
+* `a` **{Number}**: делимое
+* `b` **{Number}**: делитель
 
 ## {{round}}
 
-Round the given number.
+Округляет число по правилам математики.
 
-**Params**
-
+**Параметры**
 * `number` **{Number}**
 * `returns` **{Number}**
 
 ## {{subtract}}
 
-Return the product of `a` minus `b`.
+Возвращает разность `a` и `b`.
 
-**Params**
-
+**Параметры**
 * `a` **{Number}**
 * `b` **{Number}**
 * `returns` **{Number}**
 
 ## {{sum}}
 
-Returns the sum of all numbers in the given array.
+Возвращает сумму всех чисел в массиве.
 
-**Params**
-
-* `array` **{Array}**: Array of numbers to add up.
+**Параметры**
+* `array` **{Array}**: Массив чисел для сложения
 * `returns` **{Number}**
 
-**Example**
-
+**Пример**
 ```handlebars
 {{sum "[1, 2, 3, 4, 5]"}}
-<!-- results in: '15' -->
+<!-- результат: '15' -->
 ```
 
 ## {{times}}
 
-Multiply number `a` by number `b`.
+Умножает `a` на `b`.
 
-**Params**
-
-* `a` **{Number}**: factor
-* `b` **{Number}**: multiplier
+**Параметры**
+* `a` **{Number}**: множимое
+* `b` **{Number}**: множитель
 * `returns` **{Number}**
