@@ -1,14 +1,14 @@
 # ResourceManager
 
-## Overview
+## Обзор
 
-`ResourceManager` is the resource management module of NocoBase, used to define resources and register operation methods for resources.
+`ResourceManager` - это модуль управления ресурсами в NocoBase, используемый для определения ресурсов и регистрации методов операций с ними.
 
-## Class Methods
+## Методы класса
 
 ### `define()`
 
-Defines a resource.
+Определяет ресурс.
 
 ```ts
 app.resourceManager.define({
@@ -22,11 +22,11 @@ app.resourceManager.define({
 });
 ```
 
-#### Signature
+#### Сигнатура
 
 - `define(options: ResourceOptions): Resource`
 
-#### Type
+#### Типы
 
 ```ts
 export interface ResourceOptions {
@@ -72,27 +72,27 @@ export interface ActionOptions {
 }
 ```
 
-#### Details
+#### Подробности
 
 ##### ResourceOptions
 
-| Property      | Type                                           | Description            | Default  |
-| ------------- | ---------------------------------------------- | ---------------------- | -------- |
-| `name`        | `string`                                       | Resource name          | -        |
-| `type`        | `ResourceType`                                 | Resource type          | `single` |
-| `actions`     | [`{ [key: string]: ActionType }`](#actiontype) | Actions                | -        |
-| `only`        | `ActionName[]`                                 | Whitelist of `actions` | -        |
-| `except`      | `ActionName[]`                                 | Blacklist of `actions` | -        |
-| `middleware`  | `MiddlewareType`                               | Middleware             | -        |
-| `middlewares` | `MiddlewareType`                               | Middlewares            | -        |
+| Свойство      | Тип                                           | Описание            | По умолчанию |
+| ------------- | --------------------------------------------- | ------------------- | ------------ |
+| `name`        | `string`                                      | Имя ресурса         | -            |
+| `type`        | `ResourceType`                                | Тип ресурса         | `single`     |
+| `actions`     | [`{ [key: string]: ActionType }`](#actiontype)| Действия            | -            |
+| `only`        | `ActionName[]`                                | Белый список действий | -            |
+| `except`      | `ActionName[]`                                | Черный список действий | -            |
+| `middleware`  | `MiddlewareType`                              | Middleware          | -            |
+| `middlewares` | `MiddlewareType`                              | Middlewares         | -            |
 
 ##### ActionType
 
-There are two types of action methods:
+Существует два типа методов действий:
 
 - `HandlerType`
 
-This type directly defines the operation method through middleware. Example:
+Определяет метод операции напрямую через middleware. Пример:
 
 ```ts
 app.resourceManager.define({
@@ -108,7 +108,7 @@ app.resourceManager.define({
 
 - `ActionOptions`
 
-This type is mainly used to override the request parameters of a certain existing operation. Example:
+Используется для переопределения параметров запроса существующей операции. Пример:
 
 ```ts
 app.resourceManager.define({
@@ -123,33 +123,33 @@ app.resourceManager.define({
 });
 ```
 
-| Property        | Type             | Description                                                                 |
-| --------------- | ---------------- | --------------------------------------------------------------------------- |
-| `values`        | `any`            | Default values for the action request                                       |
-| `filter`        | `Filter`         | Filtering parameters, refer to [Filter Operators](../database/operators.md) |
-| `fields`        | `string[]`       | Fields to retrieve                                                          |
-| `except`        | `string[]`       | Fields to exclude                                                           |
-| `appends`       | `string[]`       | Related fields to append                                                    |
-| `whitelist`     | `string[]`       | Field whitelist                                                             |
-| `blacklist`     | `string[]`       | Field blacklist                                                             |
-| `sort`          | `string[]`       | Sorting parameters                                                          |
-| `page`          | `number`         | Current page                                                                |
-| `pageSize`      | `number`         | Number of data items per page                                               |
-| `maxPageSize`   | `number`         | Maximum number of data items per page                                       |
-| `middleware`    | `MiddlewareType` | Middleware                                                                  |
-| `middlewares`   | `MiddlewareType` | Middlewares                                                                 |
-| `handler`       | `HandlerType`    | Method executed for the action                                              |
-| `[key: string]` | `any`            | Other extended configurations                                               |
+| Свойство       | Тип             | Описание                                                                 |
+| -------------- | --------------- | ----------------------------------------------------------------------- |
+| `values`       | `any`           | Значения по умолчанию для запроса действия                              |
+| `filter`       | `Filter`        | Параметры фильтрации (см. [Filter Operators](../database/operators.md)) |
+| `fields`       | `string[]`      | Получаемые поля                                                        |
+| `except`       | `string[]`      | Исключаемые поля                                                       |
+| `appends`      | `string[]`      | Добавляемые связанные поля                                             |
+| `whitelist`    | `string[]`      | Белый список полей                                                     |
+| `blacklist`    | `string[]`      | Черный список полей                                                    |
+| `sort`         | `string[]`      | Параметры сортировки                                                   |
+| `page`         | `number`        | Текущая страница                                                       |
+| `pageSize`     | `number`        | Количество элементов на странице                                       |
+| `maxPageSize`  | `number`        | Максимальное количество элементов на странице                          |
+| `middleware`   | `MiddlewareType`| Middleware                                                             |
+| `middlewares`  | `MiddlewareType`| Middlewares                                                            |
+| `handler`      | `HandlerType`   | Метод выполнения действия                                              |
+| `[key: string]`| `any`           | Другие расширенные конфигурации                                        |
 
 ### `registerActionHandlers()`
 
-Registers action methods.
+Регистрирует методы действий.
 
-#### Signature
+#### Сигнатура
 
 - `registerActionHandler(name: ActionName, handler: HandlerType)`
 
-#### Type
+#### Типы
 
 ```ts
 export type DefaultActionType =
@@ -169,30 +169,30 @@ export type HandlerType = (
 ) => any;
 ```
 
-#### Details
+#### Подробности
 
-| Property  | Type          | Description                                                                                                                                                        |
-| --------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `name`    | `ActionName`  | Action name.<br />1. As a regular string, registers actions for all resources.<br />2. In the form `<resource>:<action>`, registers actions for specific resources |
-| `handler` | `HandlerType` | Middleware for the action                                                                                                                                          |
+| Свойство  | Тип          | Описание                                                                                                                       |
+| --------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| `name`    | `ActionName` | Имя действия:<br />1. Как обычная строка - регистрирует действия для всех ресурсов<br />2. В форме `<ресурс>:<действие>` - регистрирует действия для конкретных ресурсов |
+| `handler` | `HandlerType`| Middleware для действия                                                                                                       |
 
 ### `isDefined()`
 
-Checks if a resource is defined.
+Проверяет, определен ли ресурс.
 
-#### Signature
+#### Сигнатура
 
 - `isDefined(name: string)`
 
-#### Details
+#### Подробности
 
-| Property | Type     | Description   |
-| -------- | -------- | ------------- |
-| `name`   | `string` | Resource name |
+| Свойство | Тип     | Описание   |
+| -------- | ------- | ---------- |
+| `name`   | `string`| Имя ресурса |
 
 ### `import()`
 
-Loads resource configurations from a specified directory.
+Загружает конфигурации ресурсов из указанной директории.
 
 ```ts
 // ./resources/demo.ts
@@ -212,11 +212,11 @@ await resourceManager.import({
 });
 ```
 
-#### Signature
+#### Сигнатура
 
 - `import(options: ImportOptions): Promise<Map<string, Resource>>`
 
-#### Type
+#### Типы
 
 ```ts
 export interface ImportOptions {
@@ -225,16 +225,16 @@ export interface ImportOptions {
 }
 ```
 
-#### Details
+#### Подробности
 
-| Property     | Type       | Description               | Default Value          |
-| ------------ | ---------- | ------------------------- | ---------------------- |
-| `directory`  | `string`   | Directory path            | -                      |
-| `extensions` | `string[]` | Optional, file extensions | `['js', 'ts', 'json']` |
+| Свойство     | Тип       | Описание               | Значение по умолчанию   |
+| ------------ | --------- | ---------------------- | ----------------------- |
+| `directory`  | `string`  | Путь к директории      | -                       |
+| `extensions` | `string[]`| Опционально, расширения файлов | `['js', 'ts', 'json']` |
 
 ### `use()`
 
-Adds `ResourceManager` middleware.
+Добавляет middleware для `ResourceManager`.
 
 ```ts
 resourceManager.use(async () => {
@@ -245,14 +245,14 @@ resourceManager.use(async () => {
 });
 ```
 
-#### Signature
+#### Сигнатура
 
 - `use(middlewares: HandlerType | HandlerType[], options: ToposortOptions = {})`
 
-#### Details
+#### Подробности
 
-Refer to [Middleware](../../development/server/middleware.md).
+См. [Middleware](../../development/server/middleware.md).
 
 ### `middleware()`
 
-Middleware for `ResourceManager`, parses request parameters (refer to [ctx.action](./action.md)) and executes operation methods.
+Middleware для `ResourceManager`, обрабатывает параметры запроса (см. [ctx.action](./action.md)) и выполняет методы операций.
