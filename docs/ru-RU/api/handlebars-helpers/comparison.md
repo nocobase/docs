@@ -1,66 +1,63 @@
-# Comparison
+# Сравнение
 
 ## {{and}}
 
-Helper that renders the block if **both** of the given values are truthy. If an inverse block is specified it will be rendered when falsy. Works as a block helper, inline helper or subexpression.
+Хелпер, который отображает блок, если **оба** переданных значения истинны. Если указан обратный блок (inverse block), он будет отображён в случае ложного значения. Может использоваться как блоковый хелпер, inline-хелпер или подвыражение.
 
-**Params**
+**Параметры**
 
 * `a` **{any}**
 * `b` **{any}**
-* `options` **{Object}**: Handlebars provided options object
+* `options` **{Object}**: Объект options, предоставляемый Handlebars.
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 <!-- {great: true, magnificent: true} -->
 {{#and great magnificent}}A{{else}}B{{/and}}
-<!-- results in: 'A' -->
+<!-- результат: 'A' -->
 ```
 
 ## {{compare}}
 
-Render a block when a comparison of the first and third
-arguments returns true. The second argument is
-the [arithemetic operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators) to use. You may also
-optionally specify an inverse block to render when falsy.
+Отображает блок, если сравнение первого и третьего аргументов возвращает `true`. Второй аргумент — это [арифметический оператор](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators), который используется для сравнения. Можно также указать обратный блок для отображения в случае ложного значения.
 
-**Params**
+**Параметры**
 
 * `a` **{}**
-* `operator` **{}**: The operator to use. Operators must be enclosed in quotes: `">"`, `"="`, `"<="`, and so on.
+* `operator` **{}**: Оператор сравнения. Операторы должны быть заключены в кавычки: `">"`, `"="`, `"<="` и т.д.
 * `b` **{}**
-* `options` **{Object}**: Handlebars provided options object
-* `returns` **{String}**: Block, or if specified the inverse block is rendered if falsey.
+* `options` **{Object}**: Объект options, предоставляемый Handlebars.
+* `returns` **{String}**: Блок или обратный блок, если указан и результат ложный.
 
 ## {{contains}}
 
-Block helper that renders the block if `collection` has the given `value`, using strict equality (`===`) for comparison, otherwise the inverse block is rendered (if specified). If a `startIndex` is specified and is negative, it is used as the offset from the end of the collection.
+Блоковый хелпер, который отображает блок, если `collection` содержит значение `value` (используется строгое сравнение `===`). Если указан обратный блок, он будет отображён, если значение не найдено. Если задан `startIndex` (может быть отрицательным), поиск начнётся с указанного индекса (или от конца коллекции, если индекс отрицательный).
 
-**Params**
+**Параметры**
 
-* `collection` **{Array|Object|String}**: The collection to iterate over.
-* `value` **{any}**: The value to check for.
-* `[startIndex=0]` **{Number}**: Optionally define the starting index.
-* `options` **{Object}**: Handlebars provided options object.
+* `collection` **{Array|Object|String}**: Коллекция для проверки.
+* `value` **{any}**: Значение для поиска.
+* `[startIndex=0]` **{Number}**: Начальный индекс (опционально).
+* `options` **{Object}**: Объект options, предоставляемый Handlebars.
 
-**Example**
+**Пример**
 
 ```handlebars
 <!-- array = ['a', 'b', 'c'] -->
 {{#contains array "d"}}
-  This will not be rendered.
+  Это не будет отображено.
 {{else}}
-  This will be rendered.
+  Это будет отображено.
 {{/contains}}
 ```
 
 ## {{default}}
 
-Returns the first value that is not undefined, otherwise the "default" value is returned.
+Возвращает первое значение, которое не является `undefined`, в противном случае возвращает значение по умолчанию.
 
-**Params**
+**Параметры**
 
 * `value` **{any}**
 * `defaultValue` **{any}**
@@ -68,89 +65,75 @@ Returns the first value that is not undefined, otherwise the "default" value is 
 
 ## {{eq}}
 
-Block helper that renders a block if `a` is **equal to** `b`.
-If an inverse block is specified it will be rendered when falsy.
-You may optionally use the `compare=""` hash argument for the
-second value.
+Блоковый хелпер, который отображает блок, если `a` **равно** `b`. Если указан обратный блок, он будет отображён в случае ложного значения. Можно использовать хеш-аргумент `compare=""` для второго значения.
 
-**Params**
+**Параметры**
 
 * `a` **{String}**
 * `b` **{String}**
-* `options` **{Object}**: Handlebars provided options object
-* `returns` **{String}**: Block, or inverse block if specified and falsey.
+* `options` **{Object}**: Объект options, предоставляемый Handlebars.
+* `returns` **{String}**: Блок или обратный блок, если указан и результат ложный.
 
 ## {{gt}}
 
-Block helper that renders a block if `a` is **greater than** `b`.
+Блоковый хелпер, который отображает блок, если `a` **больше** `b`. Если указан обратный блок, он будет отображён в случае ложного значения. Можно использовать хеш-аргумент `compare=""` для второго значения.
 
-If an inverse block is specified it will be rendered when falsy.
-You may optionally use the `compare=""` hash argument for the
-second value.
-
-**Params**
+**Параметры**
 
 * `a` **{String}**
 * `b` **{String}**
-* `options` **{Object}**: Handlebars provided options object
-* `returns` **{String}**: Block, or inverse block if specified and falsey.
+* `options` **{Object}**: Объект options, предоставляемый Handlebars.
+* `returns` **{String}**: Блок или обратный блок, если указан и результат ложный.
 
 ## {{gte}}
 
-Block helper that renders a block if `a` is **greater than or equal to** `b`.
+Блоковый хелпер, который отображает блок, если `a` **больше или равно** `b`. Если указан обратный блок, он будет отображён в случае ложного значения. Можно использовать хеш-аргумент `compare=""` для второго значения.
 
-If an inverse block is specified it will be rendered when falsy.
-You may optionally use the `compare=""` hash argument for the
-second value.
-
-**Params**
+**Параметры**
 
 * `a` **{String}**
 * `b` **{String}**
-* `options` **{Object}**: Handlebars provided options object
-* `returns` **{String}**: Block, or inverse block if specified and falsey.
+* `options` **{Object}**: Объект options, предоставляемый Handlebars.
+* `returns` **{String}**: Блок или обратный блок, если указан и результат ложный.
 
 ## {{has}}
 
-Block helper that renders a block if `value` has `pattern`.
-If an inverse block is specified it will be rendered when falsy.
+Блоковый хелпер, который отображает блок, если `value` содержит `pattern`. Если указан обратный блок, он будет отображён в случае ложного значения.
 
-**Params**
+**Параметры**
 
-* `val` **{any}**: The value to check.
-* `pattern` **{any}**: The pattern to check for.
-* `options` **{Object}**: Handlebars provided options object
+* `val` **{any}**: Значение для проверки.
+* `pattern` **{any}**: Шаблон для поиска.
+* `options` **{Object}**: Объект options, предоставляемый Handlebars.
 * `returns` **{String}**
 
 ## {{isEmpty}}
 
-Inline, subexpression, or block helper that returns true (or the block) if the given collection is empty, or false (or the inverse block, if supplied) if the colleciton is not empty.
+Inline, подвыражение или блоковый хелпер, который возвращает `true` (или блок), если переданная коллекция пуста, и `false` (или обратный блок, если указан), если коллекция не пуста.
 
-**Params**
+**Параметры**
 
 * `collection` **{Object}**
 * `options` **{Object}**
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 <!-- array: [] -->
 {{#isEmpty array}}AAA{{else}}BBB{{/isEmpty}}
-<!-- results in: 'AAA' -->
+<!-- результат: 'AAA' -->
 
 <!-- array: [] -->
 {{isEmpty array}}
-<!-- results in: true -->
+<!-- результат: true -->
 ```
 
 ## {{isFalsey}}
 
-Returns true if the given `value` is falsey. Uses the [falsey](https://github.com/jonschlinkert/falsey)
-library for comparisons. Please see that library for more information
-or to report bugs with this helper.
+Возвращает `true`, если переданное значение `value` является ложным (falsey). Использует библиотеку [falsey](https://github.com/jonschlinkert/falsey) для сравнений.
 
-**Params**
+**Параметры**
 
 * `val` **{any}**
 * `options` **{Options}**
@@ -158,11 +141,9 @@ or to report bugs with this helper.
 
 ## {{isTruthy}}
 
-Returns true if the given `value` is truthy. Uses the [falsey](https://github.com/jonschlinkert/falsey)
-library for comparisons. Please see that library for more information
-or to report bugs with this helper.
+Возвращает `true`, если переданное значение `value` является истинным (truthy). Использует библиотеку [falsey](https://github.com/jonschlinkert/falsey) для сравнений.
 
-**Params**
+**Параметры**
 
 * `val` **{any}**
 * `options` **{Options}**
@@ -170,210 +151,188 @@ or to report bugs with this helper.
 
 ## {{ifEven}}
 
-Return true if the given value is an even number.
+Возвращает `true`, если переданное значение является чётным числом.
 
-**Params**
+**Параметры**
 
 * `number` **{Number}**
-* `options` **{Object}**: Handlebars provided options object
-* `returns` **{String}**: Block, or inverse block if specified and falsey.
+* `options` **{Object}**: Объект options, предоставляемый Handlebars.
+* `returns` **{String}**: Блок или обратный блок, если указан и результат ложный.
 
-**Example**
+**Пример**
 
 ```handlebars
 {{#ifEven value}}
-  render A
+  отобразить A
 {{else}}
-  render B
+  отобразить B
 {{/ifEven}}
 ```
 
 ## {{ifNth}}
 
-Conditionally renders a block if the remainder is zero when
-`a` operand is divided by `b`. If an inverse block is specified
-it will be rendered when the remainder is **not zero**.
+Условно отображает блок, если остаток от деления операнда `a` на `b` равен нулю. Если указан обратный блок, он будет отображён, если остаток **не равен нулю**.
 
-**Params**
+**Параметры**
 
 * **{}**: {Number}
 * **{}**: {Number}
-* `options` **{Object}**: Handlebars provided options object
-* `returns` **{String}**: Block, or inverse block if specified and falsey.
+* `options` **{Object}**: Объект options, предоставляемый Handlebars.
+* `returns` **{String}**: Блок или обратный блок, если указан и результат ложный.
 
 ## {{ifOdd}}
 
-Block helper that renders a block if `value` is **an odd number**. If an inverse block is specified it will be rendered when falsy.
+Блоковый хелпер, который отображает блок, если `value` является **нечётным числом**. Если указан обратный блок, он будет отображён в случае ложного значения.
 
-**Params**
+**Параметры**
 
 * `value` **{Object}**
-* `options` **{Object}**: Handlebars provided options object
-* `returns` **{String}**: Block, or inverse block if specified and falsey.
+* `options` **{Object}**: Объект options, предоставляемый Handlebars.
+* `returns` **{String}**: Блок или обратный блок, если указан и результат ложный.
 
-**Example**
+**Пример**
 
 ```handlebars
 {{#ifOdd value}}
-  render A
+  отобразить A
 {{else}}
-  render B
+  отобразить B
 {{/ifOdd}}
 ```
 
 ## {{is}}
 
-Block helper that renders a block if `a` is **equal to** `b`.
-If an inverse block is specified it will be rendered when falsy.
-Similar to [eq](#eq) but does not do strict equality.
+Блоковый хелпер, который отображает блок, если `a` **равно** `b`. Если указан обратный блок, он будет отображён в случае ложного значения. Похож на `eq`, но не использует строгое сравнение.
 
-**Params**
+**Параметры**
 
 * `a` **{any}**
 * `b` **{any}**
-* `options` **{Object}**: Handlebars provided options object
+* `options` **{Object}**: Объект options, предоставляемый Handlebars.
 * `returns` **{String}**
 
 ## {{isnt}}
 
-Block helper that renders a block if `a` is **not equal to** `b`.
-If an inverse block is specified it will be rendered when falsy.
-Similar to [unlessEq](#unlesseq) but does not use strict equality for
-comparisons.
+Блоковый хелпер, который отображает блок, если `a` **не равно** `b`. Если указан обратный блок, он будет отображён в случае ложного значения. Похож на `unlessEq`, но не использует строгое сравнение.
 
-**Params**
+**Параметры**
 
 * `a` **{String}**
 * `b` **{String}**
-* `options` **{Object}**: Handlebars provided options object
+* `options` **{Object}**: Объект options, предоставляемый Handlebars.
 * `returns` **{String}**
 
 ## {{lt}}
 
-Block helper that renders a block if `a` is **less than** `b`.
+Блоковый хелпер, который отображает блок, если `a` **меньше** `b`. Если указан обратный блок, он будет отображён в случае ложного значения. Можно использовать хеш-аргумент `compare=""` для второго значения.
 
-If an inverse block is specified it will be rendered when falsy.
-You may optionally use the `compare=""` hash argument for the
-second value.
-
-**Params**
+**Параметры**
 
 * `context` **{Object}**
-* `options` **{Object}**: Handlebars provided options object
-* `returns` **{String}**: Block, or inverse block if specified and falsey.
+* `options` **{Object}**: Объект options, предоставляемый Handlebars.
+* `returns` **{String}**: Блок или обратный блок, если указан и результат ложный.
 
 ## {{lte}}
 
-Block helper that renders a block if `a` is **less than or equal to** `b`.
+Блоковый хелпер, который отображает блок, если `a` **меньше или равно** `b`. Если указан обратный блок, он будет отображён в случае ложного значения. Можно использовать хеш-аргумент `compare=""` для второго значения.
 
-If an inverse block is specified it will be rendered when falsy.
-You may optionally use the `compare=""` hash argument for the
-second value.
-
-**Params**
+**Параметры**
 
 * `a` **{Sring}**
 * `b` **{Sring}**
-* `options` **{Object}**: Handlebars provided options object
-* `returns` **{String}**: Block, or inverse block if specified and falsey.
+* `options` **{Object}**: Объект options, предоставляемый Handlebars.
+* `returns` **{String}**: Блок или обратный блок, если указан и результат ложный.
 
 ## {{neither}}
 
-Block helper that renders a block if **neither of** the given values
-are truthy. If an inverse block is specified it will be rendered
-when falsy.
+Блоковый хелпер, который отображает блок, если **ни одно из** переданных значений не является истинным. Если указан обратный блок, он будет отображён в случае ложного значения.
 
-**Params**
+**Параметры**
 
 * `a` **{any}**
 * `b` **{any}**
-* `options` **{}**: Handlebars options object
-* `returns` **{String}**: Block, or inverse block if specified and falsey.
+* `options` **{}**: Объект options, предоставляемый Handlebars.
+* `returns` **{String}**: Блок или обратный блок, если указан и результат ложный.
 
 ## {{not}}
 
-Returns true if `val` is falsey. Works as a block or inline helper.
+Возвращает `true`, если `val` является ложным (falsey). Может использоваться как блоковый или inline-хелпер.
 
-**Params**
+**Параметры**
 
 * `val` **{String}**
-* `options` **{Object}**: Handlebars provided options object
+* `options` **{Object}**: Объект options, предоставляемый Handlebars.
 * `returns` **{String}**
 
 ## {{or}}
 
-Block helper that renders a block if **any of** the given values is truthy. If an inverse block is specified it will be rendered when falsy.
+Блоковый хелпер, который отображает блок, если **хотя бы одно из** переданных значений является истинным. Если указан обратный блок, он будет отображён в случае ложного значения.
 
-**Params**
+**Параметры**
 
-* `arguments` **{...any}**: Variable number of arguments
-* `options` **{Object}**: Handlebars options object
-* `returns` **{String}**: Block, or inverse block if specified and falsey.
+* `arguments` **{...any}**: Переменное количество аргументов.
+* `options` **{Object}**: Объект options, предоставляемый Handlebars.
+* `returns` **{String}**: Блок или обратный блок, если указан и результат ложный.
 
-**Example**
+**Пример**
 
 ```handlebars
 {{#or a b c}}
-  If any value is true this will be rendered.
+  Если хотя бы одно значение истинно, это будет отображено.
 {{/or}}
 ```
 
 ## {{unlessEq}}
 
-Block helper that always renders the inverse block **unless `a` is
-is equal to `b`**.
+Блоковый хелпер, который всегда отображает обратный блок, **если `a` не равно `b`**.
 
-**Params**
+**Параметры**
 
 * `a` **{String}**
 * `b` **{String}**
-* `options` **{Object}**: Handlebars provided options object
-* `returns` **{String}**: Inverse block by default, or block if falsey.
+* `options` **{Object}**: Объект options, предоставляемый Handlebars.
+* `returns` **{String}**: Обратный блок по умолчанию или блок, если результат ложный.
 
 ## {{unlessGt}}
 
-Block helper that always renders the inverse block **unless `a` is
-is greater than `b`**.
+Блоковый хелпер, который всегда отображает обратный блок, **если `a` не больше `b`**.
 
-**Params**
+**Параметры**
 
-* `a` **{Object}**: The default value
-* `b` **{Object}**: The value to compare
-* `options` **{Object}**: Handlebars provided options object
-* `returns` **{String}**: Inverse block by default, or block if falsey.
+* `a` **{Object}**: Значение по умолчанию.
+* `b` **{Object}**: Значение для сравнения.
+* `options` **{Object}**: Объект options, предоставляемый Handlebars.
+* `returns` **{String}**: Обратный блок по умолчанию или блок, если результат ложный.
 
 ## {{unlessLt}}
 
-Block helper that always renders the inverse block **unless `a` is
-is less than `b`**.
+Блоковый хелпер, который всегда отображает обратный блок, **если `a` не меньше `b`**.
 
-**Params**
+**Параметры**
 
-* `a` **{Object}**: The default value
-* `b` **{Object}**: The value to compare
-* `options` **{Object}**: Handlebars provided options object
-* `returns` **{String}**: Block, or inverse block if specified and falsey.
+* `a` **{Object}**: Значение по умолчанию.
+* `b` **{Object}**: Значение для сравнения.
+* `options` **{Object}**: Объект options, предоставляемый Handlebars.
+* `returns` **{String}**: Блок или обратный блок, если указан и результат ложный.
 
 ## {{unlessGteq}}
 
-Block helper that always renders the inverse block **unless `a` is
-is greater than or equal to `b`**.
+Блоковый хелпер, который всегда отображает обратный блок, **если `a` не больше или равно `b`**.
 
-**Params**
+**Параметры**
 
 * `a` **{any}**
 * `b` **{any}**
-* `options` **{Object}**: Handlebars provided options object
-* `returns` **{String}**: Block, or inverse block if specified and falsey.
+* `options` **{Object}**: Объект options, предоставляемый Handlebars.
+* `returns` **{String}**: Блок или обратный блок, если указан и результат ложный.
 
 ## {{unlessLteq}}
 
-Block helper that always renders the inverse block **unless `a` is
-is less than or equal to `b`**.
+Блоковый хелпер, который всегда отображает обратный блок, **если `a` не меньше или равно `b`**.
 
-**Params**
+**Параметры**
 
 * `a` **{any}**
 * `b` **{any}**
-* `options` **{Object}**: Handlebars provided options object
-* `returns` **{String}**: Block, or inverse block if specified and falsey.
+* `options` **{Object}**: Объект options, предоставляемый Handlebars.
+* `returns` **{String}**: Блок или обратный блок, если указан и результат ложный.
