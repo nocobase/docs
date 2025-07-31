@@ -1,61 +1,67 @@
-# IRepository
+# IRepository (Интерфейс репозитория)
 
-The `Repository` interface defines a series of model operation methods for adapting CRUD (Create, Read, Update, Delete) operations on data sources.
+Интерфейс `IRepository` определяет набор методов для выполнения CRUD-операций (Создание, Чтение, Обновление, Удаление) над моделями данных.
 
-## API
+## API методы
 
 ### find()
 
-Returns a list of models that match the query parameters.
+Возвращает список моделей, соответствующих параметрам запроса.
 
-#### Signature
-
-- `find(options?: any): Promise<IModel[]>`
+```typescript
+find(options?: any): Promise<IModel[]>
+```
 
 ### findOne()
 
-Returns the first model that matches the query parameters. If multiple models match, only the first one is returned.
+Возвращает первую модель, соответствующую параметрам запроса. Если найдено несколько моделей, возвращает только первую.
 
-#### Signature
-
-- `findOne(options?: any): Promise<IModel>`
+```typescript
+findOne(options?: any): Promise<IModel>
+```
 
 ### count()
 
-Returns the number of models that match the query parameters.
+Возвращает количество моделей, соответствующих параметрам запроса.
 
-#### Signature
-
-- `count(options?: any): Promise<Number>`
+```typescript
+count(options?: any): Promise<Number>
+```
 
 ### findAndCount()
 
-Returns both the list of models and the count of models that match the query parameters.
+Возвращает одновременно список моделей и их количество, соответствующих параметрам запроса.
 
-#### Signature
-
-- `findAndCount(options?: any): Promise<[IModel[], Number]>`
+```typescript
+findAndCount(options?: any): Promise<[IModel[], Number]>
+```
 
 ### create()
 
-Creates a model data object.
+Создает новый объект модели данных.
 
-#### Signature
-
-- `create(options: any): void`
+```typescript
+create(options: any): void
+```
 
 ### update()
 
-Updates the model data object based on the query conditions.
+Обновляет объект модели данных на основе условий запроса.
 
-#### Signature
-
-- `update(options: any): void`
+```typescript
+update(options: any): void
+```
 
 ### destroy()
 
-Deletes the model data object based on the query conditions.
+Удаляет объект модели данных на основе условий запроса.
 
-#### Signature
+```typescript
+destroy(options: any): void
+```
 
-- `destroy(options: any): void`
+Этот интерфейс предоставляет стандартизированный набор методов для работы с данными, что позволяет:
+- Унифицировать доступ к данным из разных источников
+- Реализовывать сложные запросы к данным
+- Управлять жизненным циклом объектов моделей
+- Оптимизировать работу с данными через комбинированные методы (например, findAndCount)
