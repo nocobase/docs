@@ -1,10 +1,10 @@
-# Server
+# Сервер
 
-## Overview
+## Обзор
 
-NocoBase conducts server-side testing based on [Vitest](https://vitest.dev/). `@nocobase/test` provides convenient methods for server-side testing to mock services and databases.
+NocoBase выполняет серверное тестирование на основе [Vitest](https://vitest.dev/). Модуль `@nocobase/test` предоставляет удобные методы для тестирования серверной части, включая моки сервисов и баз данных.
 
-### Basic Usage
+### Базовое использование
 
 ```ts
 describe('actions', () => {
@@ -30,7 +30,7 @@ describe('actions', () => {
 
 ### `defineConfig()`
 
-Retrieve the Vitest configuration.
+Получает конфигурацию Vitest.
 
 ```ts
 import { defineConfig } from '@nocobase/test/vitest.mjs';
@@ -40,37 +40,37 @@ const config = defineConfig();
 
 ### `mockDatabase()`
 
-Create a `MockDataBase` instance for testing.
+Создает экземпляр `MockDataBase` для тестирования.
 
-#### Signature
+#### Сигнатура
 
 - `mockDatabase(options: IDatabaseOptions = {}): MockDatabase`
 
-#### Details
+#### Детали
 
-| Parameter | Type               | Description                               |
-| --------- | ------------------ | ----------------------------------------- |
-| `options` | `IDatabaseOptions` | Refer to [DataBase](../database/index.md) |
+| Параметр | Тип               | Описание                               |
+|----------|-------------------|----------------------------------------|
+| `options`| `IDatabaseOptions`| См. [DataBase](../database/index.md)   |
 
 ### `mockServer()`
 
-Create a `MockServer` instance.
+Создает экземпляр `MockServer`.
 
-#### Signature
+#### Сигнатура
 
 - `mockServer(options?: ApplicationOptions): MockServer`
 
-#### Details
+#### Детали
 
-| Parameter | Type                 | Description                                      |
-| --------- | -------------------- | ------------------------------------------------ |
-| `options` | `ApplicationOptions` | Refer to [Application](../server/application.md) |
+| Параметр | Тип                 | Описание                                      |
+|----------|---------------------|-----------------------------------------------|
+| `options`| `ApplicationOptions`| См. [Application](../server/application.md)   |
 
 ### `createMockServer()`
 
-Create a `MockServer` instance, perform forced installation, and start it.
+Создает экземпляр `MockServer`, выполняет принудительную установку и запускает его.
 
-#### Signature
+#### Сигнатура
 
 ```ts
 createMockServer(options?: ApplicationOptions & {
@@ -81,47 +81,47 @@ createMockServer(options?: ApplicationOptions & {
 }): Promise<MockServer>
 ```
 
-#### Details
+#### Детали
 
-| Parameter               | Type                 | Description                                      |
-| ----------------------- | -------------------- | ------------------------------------------------ |
-| `options`               | `ApplicationOptions` | Refer to [Application](../server/application.md) |
-| `options.version`       | `string`             | Application version                              |
-| `options.beforeInstall` | `BeforeInstallFn`    | Function to execute before installation          |
-| `options.skipInstall`   | `boolean`            | Whether to skip forced installation              |
-| `options.skipStart`     | `boolean`            | Whether to skip application startup              |
+| Параметр               | Тип                 | Описание                                      |
+|------------------------|---------------------|-----------------------------------------------|
+| `options`              | `ApplicationOptions`| См. [Application](../server/application.md)   |
+| `options.version`      | `string`            | Версия приложения                             |
+| `options.beforeInstall`| `BeforeInstallFn`   | Функция для выполнения перед установкой       |
+| `options.skipInstall`  | `boolean`           | Пропускать ли принудительную установку        |
+| `options.skipStart`    | `boolean`           | Пропускать ли запуск приложения               |
 
 ### `MockServer`
 
-`MockServer` inherits from `Application` and is a class for server-side testing applications.
+`MockServer` наследуется от `Application` и представляет класс для тестирования серверных приложений.
 
-#### Class Methods
+#### Методы класса
 
 ##### `loadAndInstall()`
 
-Load and install the application.
+Загружает и устанавливает приложение.
 
 ##### `cleanDb()`
 
-Clear the database.
+Очищает базу данных.
 
 ##### `quickstart()`
 
-Execute `nocobase start --quickstart`.
+Выполняет `nocobase start --quickstart`.
 
 ##### `destroy()`
 
-Destroy the application.
+Уничтожает приложение.
 
 ##### `agent()`
 
-Initiate API requests in test cases.
+Инициирует API-запросы в тестовых сценариях.
 
-**Signature**
+**Сигнатура**
 
 - `agent(): ExtendedAgent`
 
-**Type**
+**Тип**
 
 ```ts
 interface ExtendedAgent extends SuperAgentTest {
@@ -131,27 +131,27 @@ interface ExtendedAgent extends SuperAgentTest {
 }
 ```
 
-**Details**
+**Детали**
 
 - `SuperAgentTest`
 
-Refer to [superagent](https://github.com/ladjs/superagent).
+См. [superagent](https://github.com/ladjs/superagent).
 
 - `login()`
 
-Log in with a user model.
+Аутентификация с моделью пользователя.
 
 - `loginUsingId()`
 
-Log in with a user ID.
+Аутентификация по ID пользователя.
 
 - `resource()`
 
-Retrieve a resource.
+Получает ресурс.
 
-| Parameter    | Type     | Description                                                                                                                                                                        |
-| ------------ | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `name`       | `string` | 1. Resource name, e.g., `a` <br /> 2. Associated object name of the resource, e.g., `a.b`                                                                                          |
-| `resourceOf` | `any`    | Primary key value of the resource when `resource` is the associated object name of the resource. For example, when `a.b` is specified, it represents the primary key value of `a`. |
+| Параметр    | Тип     | Описание                                                                                                                |
+|-------------|---------|-------------------------------------------------------------------------------------------------------------------------|
+| `name`      | `string`| 1. Имя ресурса, например `a` <br /> 2. Имя ассоциированного объекта ресурса, например `a.b`                            |
+| `resourceOf`| `any`   | Первичный ключ ресурса, когда `resource` является именем ассоциированного объекта. Например, для `a.b` - ключ ресурса `a`. |
 
 ### sleep
