@@ -1,4 +1,4 @@
-# @nocobaselogger
+# @nocobase/logger
 
 ## Создание логгера
 
