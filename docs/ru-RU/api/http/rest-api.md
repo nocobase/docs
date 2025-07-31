@@ -1,180 +1,160 @@
 # REST API
 
-HTTP API of NocoBase is a superset of REST API, and the standard CRUD API also supports the RESTful style.
+HTTP API NocoBase является надмножеством REST API, а стандартный CRUD API также поддерживает RESTful-стиль.
 
-## Collection Resources
+## Ресурсы коллекций
 
-### Create Collection
+### Создание записи в коллекции
 
-HTTP API
+**HTTP API**
+```
+POST  /api/<коллекция>:create
 
-```bash
-POST  /api/<collection>:create
-
-{} # JSON body
+{} # тело в формате JSON
 ```
 
-REST API
+**REST API**
+```
+POST  /api/<коллекция>
 
-```bash
-POST  /api/<collection>
-
-{} # JSON body
+{} # тело в формате JSON
 ```
 
-### View Collection List
+### Просмотр списка записей коллекции
 
-HTTP API
-
-```bash
-GET   /api/<collection>:list
+**HTTP API**
+```
+GET   /api/<коллекция>:list
 ```
 
-REST API
-
-```bash
-GET   /api/<collection>
+**REST API**
+```
+GET   /api/<коллекция>
 ```
 
-### View Collection Details
+### Просмотр деталей записи коллекции
 
-HTTP API
-
-```bash
-GET   /api/<collection>:get?filterByTk=<collectionIndex>
-GET   /api/<collection>:get/<collectionIndex>
+**HTTP API**
+```
+GET   /api/<коллекция>:get?filterByTk=<индекс_коллекции>
+GET   /api/<коллекция>:get/<индекс_коллекции>
 ```
 
-REST API
-
-```bash
-GET   /api/<collection>/<collectionIndex>
+**REST API**
+```
+GET   /api/<коллекция>/<индекс_коллекции>
 ```
 
-### Update Collection
+### Обновление записи в коллекции
 
-HTTP API
+**HTTP API**
+```
+POST   /api/<коллекция>:update?filterByTk=<индекс_коллекции>
 
-```bash
-POST   /api/<collection>:update?filterByTk=<collectionIndex>
+{} # тело в формате JSON
 
-{} # JSON body
+# Или
+POST   /api/<коллекция>:update/<индекс_коллекции>
 
-# Or
-POST   /api/<collection>:update/<collectionIndex>
-
-{} # JSON body
+{} # тело в формате JSON
 ```
 
-REST API
+**REST API**
+```
+PUT    /api/<коллекция>/<индекс_коллекции>
 
-```bash
-PUT    /api/<collection>/<collectionIndex>
-
-{} # JSON body
+{} # тело в формате JSON
 ```
 
-### Delete Collection
+### Удаление записи из коллекции
 
-HTTP API
-
-```bash
-POST      /api/<collection>:destroy?filterByTk=<collectionIndex>
-# Or
-POST      /api/<collection>:destroy/<collectionIndex>
+**HTTP API**
+```
+POST   /api/<коллекция>:destroy?filterByTk=<индекс_коллекции>
+# Или
+POST   /api/<коллекция>:destroy/<индекс_коллекции>
 ```
 
-REST API
-
-```bash
-DELETE    /api/<collection>/<collectionIndex>
+**REST API**
+```
+DELETE /api/<коллекция>/<индекс_коллекции>
 ```
 
-## Association Resources
+## Ассоциативные ресурсы (связанные данные)
 
-### Create Association
+### Создание ассоциированной записи
 
-HTTP API
+**HTTP API**
+```
+POST   /api/<коллекция>/<индекс_коллекции>/<ассоциация>:create
 
-```bash
-POST    /api/<collection>/<collectionIndex>/<association>:create
-
-{} # JSON body
+{} # тело в формате JSON
 ```
 
-REST API
+**REST API**
+```
+POST   /api/<коллекция>/<индекс_коллекции>/<ассоциация>
 
-```bash
-POST    /api/<collection>/<collectionIndex>/<association>
-
-{} # JSON body
+{} # тело в формате JSON
 ```
 
-### View Association List
+### Просмотр списка ассоциированных записей
 
-HTTP API
-
-```bash
-GET   /api/<collection>/<collectionIndex>/<association>:list
+**HTTP API**
+```
+GET   /api/<коллекция>/<индекс_коллекции>/<ассоциация>:list
 ```
 
-REST API
-
-```bash
-GET   /api/<collection>/<collectionIndex>/<association>
+**REST API**
+```
+GET   /api/<коллекция>/<индекс_коллекции>/<ассоциация>
 ```
 
-### View Association Details
+### Просмотр деталей ассоциированной записи
 
-HTTP API
-
-```bash
-GET   /api/<collection>/<collectionIndex>/<association>:get?filterByTk=<associationIndex>
-# Or
-GET   /api/<collection>/<collectionIndex>/<association>:get/<associationIndex>
+**HTTP API**
+```
+GET   /api/<коллекция>/<индекс_коллекции>/<ассоциация>:get?filterByTk=<индекс_ассоциации>
+# Или
+GET   /api/<коллекция>/<индекс_коллекции>/<ассоциация>:get/<индекс_ассоциации>
 ```
 
-REST API
-
-```bash
-GET   /api/<collection>/<collectionIndex>/<association>:get/<associationIndex>
+**REST API**
+```
+GET   /api/<коллекция>/<индекс_коллекции>/<ассоциация>:get/<индекс_ассоциации>
 ```
 
-### Update Association
+### Обновление ассоциированной записи
 
-HTTP API
+**HTTP API**
+```
+POST   /api/<коллекция>/<индекс_коллекции>/<ассоциация>:update?filterByTk=<индекс_ассоциации>
 
-```bash
-POST   /api/<collection>/<collectionIndex>/<association>:update?filterByTk=<associationIndex>
+{} # тело в формате JSON
 
-{} # JSON body
+# Или
+POST   /api/<коллекция>/<индекс_коллекции>/<ассоциация>:update/<индекс_ассоциации>
 
-# Or
-POST   /api/<collection>/<collectionIndex>/<association>:update/<associationIndex>
-
-{} # JSON body
+{} # тело в формате JSON
 ```
 
-REST API
+**REST API**
+```
+PUT    /api/<коллекция>/<индекс_коллекции>/<ассоциация>:update/<индекс_ассоциации>
 
-```bash
-PUT    /api/<collection>/<collectionIndex>/<association>:update/<associationIndex>
-
-{} # JSON
+{} # тело в формате JSON
 ```
 
-### Delete Association
+### Удаление ассоциированной записи
 
-HTTP API
-
-```bash
-POST    /api/<collection>/<collectionIndex>/<association>:destroy?filterByTk=<associationIndex>
-# Or
-POST    /api/<collection>/<collectionIndex>/<association>:destroy/<associationIndex>
+**HTTP API**
+```
+POST   /api/<коллекция>/<индекс_коллекции>/<ассоциация>:destroy?filterByTk=<индекс_ассоциации>
+# Или
+POST   /api/<коллекция>/<индекс_коллекции>/<ассоциация>:destroy/<индекс_ассоциации>
 ```
 
-REST API
-
-```bash
-DELETE  /api/<collection>/<collectionIndex>/<association>/<associationIndex>
+**REST API**
+```
+DELETE /api/<коллекция>/<индекс_коллекции>/<ассоциация>/<индекс_ассоциации>
 ```
