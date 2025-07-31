@@ -1,20 +1,21 @@
-# @nocobase/logger
+# logger
 
-## Create Logger
+## Создание логгера
 
-### createLogger()
+### `createLogger()`
 
-Creates a custom logger.
+Создаёт пользовательский логгер.
 
-#### Signature
-
-- `createLogger(options: LoggerOptions)`
-
-#### Type
+#### Сигнатура
 
 ```ts
-interface LoggerOptions
-  extends Omit<winston.LoggerOptions, 'transports' | 'format'> {
+createLogger(options: LoggerOptions)
+```
+
+#### Тип
+
+```ts
+interface LoggerOptions extends Omit<winston.LoggerOptions, 'transports' | 'format'> {
   dirname?: string;
   filename?: string;
   format?: 'logfmt' | 'json' | 'delimiter' | 'console' | winston.Logform.Format;
@@ -22,36 +23,42 @@ interface LoggerOptions
 }
 ```
 
-#### Details
+#### Параметры
 
-- `dirname`: Log directory
-- `filename`: Log file name
-- `format`: Log format
-- `transports`: Log transports
+- `dirname`: Каталог для сохранения логов.
+- `filename`: Имя файла логов.
+- `format`: Формат вывода логов.
+- `transports`: Методы (каналы) вывода логов.
 
-### createSystemLogger()
+---
 
-Creates system runtime logs printed in a specified method. Refer to [Logger plugin - System log](../plugins/logger/index.md#system-log).
+### `createSystemLogger()`
 
-#### Signature
+Создаёт системные логи выполнения приложения, выводимые указанным способом. См. [Плагин логгера — Системный лог](../plugins/logger/index.md#system-log).
 
-- `createSystemLogger(options: SystemLoggerOptions)`
+#### Сигнатура
 
-#### Type
+```ts
+createSystemLogger(options: SystemLoggerOptions)
+```
+
+#### Тип
 
 ```ts
 export interface SystemLoggerOptions extends LoggerOptions {
-  seperateError?: boolean; // print error seperately, default true
+  seperateError?: boolean; // выводить ошибки отдельно, по умолчанию true
 }
 ```
 
-#### Details
+#### Параметры
 
-- `seperateError`: Whether to print `error` level logs separately
+- `seperateError`: Определяет, следует ли отдельно выводить логи уровня `error`.
 
-### app.createLogger()
+---
 
-#### Definition
+### `app.createLogger()`
+
+#### Определение
 
 ```ts
 class Application {
@@ -65,13 +72,15 @@ class Application {
 }
 ```
 
-When `dirname` is a relative path, the log files will be output to the directory named after the current application.
+Если `dirname` задан как относительный путь, файлы логов будут сохраняться в каталоге, названном по имени текущего приложения.
 
-### plugin.createLogger()
+---
 
-Usage is the same as `app.createLogger()`.
+### `plugin.createLogger()`
 
-#### Definition
+Использование аналогично `app.createLogger()`.
+
+#### Определение
 
 ```ts
 class Plugin {
@@ -81,51 +90,71 @@ class Plugin {
 }
 ```
 
-## Configuration
+---
 
-### getLoggerLevel()
+## Конфигурация
 
-`getLoggerLevel(): 'debug' | 'info' | 'warn' | 'error'`
+### `getLoggerLevel()`
 
-Gets the log level currently configured in the system.
+```ts
+getLoggerLevel(): 'debug' | 'info' | 'warn' | 'error'
+```
 
-### getLoggerFilePath()
+Возвращает текущий уровень логирования, заданный в системе.
 
-`getLoggerFilePath(...paths: string[]): string`
+---
 
-Concatenates directory paths based on the log directory currently configured in the system.
+### `getLoggerFilePath()`
 
-### getLoggerTransports()
+```ts
+getLoggerFilePath(...paths: string[]): string
+```
 
-`getLoggerTransports(): ('console' | 'file' | 'dailyRotateFile')[]`
+Объединяет переданные пути в один, на основе каталога логов, заданного в конфигурации системы.
 
-Gets the log output methods currently configured in the system.
+---
 
-### getLoggerFormat()
+### `getLoggerTransports()`
 
-`getLoggerFormat(): 'logfmt' | 'json' | 'delimiter' | 'console'`
+```ts
+getLoggerTransports(): ('console' | 'file' | 'dailyRotateFile')[]
+```
 
-Gets the log format currently configured in the system.
+Возвращает методы (каналы) вывода логов, настроенные в системе.
 
-## Logger Transports
+---
 
-### Transports
+### `getLoggerFormat()`
 
-Predefined output methods.
+```ts
+getLoggerFormat(): 'logfmt' | 'json' | 'delimiter' | 'console'
+```
+
+Возвращает формат логов, заданный в системе.
+
+---
+
+## Каналы вывода (Transports)
+
+Предопределённые методы вывода логов.
 
 - `Transports.console`
 - `Transports.file`
 - `Transports.dailyRotateFile`
 
+#### Пример использования
+
 ```ts
 import { Transports } from '@nocobase/logger';
 
 const transport = Transports.console({
-  //...
+  // ...
 });
 ```
 
-## References
+---
 
-- [Development - Logger](../handbook/logger/index.md)
-- [Logger Plugin](../plugins/logger/index.md)
+## Ссылки
+
+- [Руководство — Логгер](../handbook/logger/index.md)
+- [Плагин логгера](../plugins/logger/index.md)
