@@ -1,20 +1,20 @@
-# Telemetry
+# Телеметрия (Telemetry)
 
-## Overview
+## Обзор
 
-`Telemetry` is the telemetry module of NocoBase, encapsulating OpenTelemetry support for registering metrics and traces within the OpenTelemetry ecosystem.
+`Telemetry` — это модуль телеметрии NocoBase, который инкапсулирует поддержку OpenTelemetry и обеспечивает регистрацию метрик и трейсов в экосистеме OpenTelemetry.
 
-## Class Methods
+## Методы класса
 
 ### `constructor()`
 
-Constructor to create a `Telemetry` instance.
+Конструктор для создания экземпляра `Telemetry`.
 
-#### Signature
+#### Сигнатура
 
 - `constructor(options?: TelemetryOptions)`
 
-#### Type
+#### Тип
 
 ```ts
 export interface TelemetryOptions {
@@ -25,43 +25,43 @@ export interface TelemetryOptions {
 }
 ```
 
-#### Details
+#### Параметры
 
-| Property      | Type            | Description                                                                                              | Default Value                      |
-| ------------- | --------------- | -------------------------------------------------------------------------------------------------------- | ---------------------------------- |
-| `serviceName` | `string`        | Optional. Refer to [Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/resource/#service) | `nocobase`                         |
-| `version`     | `string`        | Optional. Refer to [Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/resource/#service) | Optional, current NocoBase version |
-| `trace`       | `TraceOptions`  | Optional. Refer to [Trace](./trace.md)                                                                   | -                                  |
-| `metric`      | `MetricOptions` | Optional. Refer to [Metric](./metric.md)                                                                 | -                                  |
+| Свойство      | Тип            | Описание                                                                                              | Значение по умолчанию               |
+| ------------- | --------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------- |
+| `serviceName` | `string`        | Необязательно. См. [Семантические соглашения](https://opentelemetry.io/docs/specs/semconv/resource/#service) | `nocobase`                          |
+| `version`     | `string`        | Необязательно. См. [Семантические соглашения](https://opentelemetry.io/docs/specs/semconv/resource/#service) | Текущая версия NocoBase (опционально) |
+| `trace`       | `TraceOptions`  | Необязательно. См. [Trace](./trace.md)                                                                | —                                   |
+| `metric`      | `MetricOptions` | Необязательно. См. [Metric](./metric.md)                                                              | —                                   |
 
 ### `init()`
 
-Registers instrumentation and initializes `Trace` and `Metric`.
+Регистрирует инструментарий (instrumentation) и инициализирует `Trace` и `Metric`.
 
-#### Signature
+#### Сигнатура
 
 - `init(): void`
 
 ### `start()`
 
-Starts the processing of `Trace` and `Metric` related data, such as exporting to Prometheus.
+Запускает обработку данных, связанных с `Trace` и `Metric`, например, экспортирует их в Prometheus.
 
-#### Signature
+#### Сигнатура
 
 - `start(): void`
 
 ### `shutdown()`
 
-Stops the processing of `Trace` and `Metric` related data.
+Останавливает обработку данных, связанных с `Trace` и `Metric`.
 
-#### Signature
+#### Сигнатура
 
 - `shutdown(): Promise<void>`
 
 ### `addInstrumentation()`
 
-Adds instrumentation libraries.
+Добавляет библиотеки инструментария (instrumentation).
 
-#### Signature
+#### Сигнатура
 
 - `addInstrumentation(...instrumentation: InstrumentationOption[])`
