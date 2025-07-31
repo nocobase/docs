@@ -1,73 +1,73 @@
-# Schedule event
+# Планируемое событие
 
-Scheduled tasks are events triggered based on time conditions, including two modes:
+Планируемые задачи — это события, срабатывающие по временным условиям, включающие два режима:
 
-- Custom Time: Regularly scheduled triggers similar to cron based on system time.
-- Time field of collection: Triggered according to the value of the time field in the collection.
+- Пользовательское время: Регулярные триггеры по расписанию, аналогичные cron, на основе системного времени.
+- Поле времени коллекции: Срабатывание по значению временного поля в коллекции.
 
-When the system reaches the time (accurate to seconds) that meets the configured trigger conditions, the corresponding workflow will be triggered.
+Когда система достигает времени (с точностью до секунд), соответствующего настроенным условиям срабатывания, запускается соответствующий рабочий процесс.
 
-## Basic Usage
+## Основное использование
 
-### Creating Schedule event
+### Создание планируемого события
 
-Select the "Schedule event" type when creating a workflow in the workflow list:
+При создании рабочего процесса в списке выберите тип "Планируемое событие":
 
-![Create Scheduled event](https://static-docs.nocobase.com/e09b6c9065167875b2ca7de5f5a799a7.png)
+![Создание планируемого события](https://static-docs.nocobase.com/e09b6c9065167875b2ca7de5f5a799a7.png)
 
-### Custom Time Mode
+### Режим пользовательского времени
 
-For the regular mode, start by configuring the start time to any point in time (accurate to seconds). The start time can be set to a future time or a past time. When set to a past time, it will check whether it is time based on the configured repeat condition. If no repeat condition is configured, the workflow will not be triggered if the start time is in the past.
+Для регулярного режима сначала настройте время начала на любую точку времени (с точностью до секунд). Время начала можно установить как в будущем, так и в прошлом. Если установлено прошедшее время, система проверит соответствие времени на основе настроенного условия повтора. Если условие повтора не настроено, рабочий процесс не сработает при времени начала в прошлом.
 
-There are two ways to configure repeat rules:
+Есть два способа настройки правил повтора:
 
-- Interval Time: Trigger every fixed interval after the start time, such as every hour, every 30 minutes, etc.
-- Advanced Mode: Using cron rules, it can be configured to occur at fixed rule of dates and times.
+- Интервал времени: Срабатывание через фиксированные промежутки после времени начала, например каждый час, каждые 30 минут и т.д.
+- Расширенный режим: Использование cron-правил для настройки срабатывания в фиксированные моменты даты и времени.
 
-After configuring the repeat rule, you can also configure the end condition, which can end at a fixed point in time or by the number of times executed.
+После настройки правила повтора можно также настроить условие завершения — по фиксированному моменту времени или по количеству выполнений.
 
-### Time Field of Collection Mode
+### Режим поля времени коллекции
 
-Using the time field of the collection to determine the start time is a trigger mode that combines ordinary scheduled tasks with the collection time field. Using this mode can simplify some nodes in specific processes and make the configuration more intuitive. For example, to change the status of orders that have not been paid for more than 30 minutes to canceled, you can simply configure a scheduled task in the collection time field mode, select the start time as 30 minutes after the order created time field.
+Использование поля времени коллекции для определения времени начала — это режим триггера, сочетающий обычные планируемые задачи с полем времени коллекции. Этот режим упрощает некоторые узлы в специфических процессах и делает конфигурацию более интуитивной. Например, для изменения статуса неоплаченных заказов старше 30 минут на "отменён" достаточно настроить планируемую задачу в режиме поля времени коллекции, выбрав время начала как "30 минут после поля времени создания заказа".
 
-## Related Tips
+## Связанные рекомендации
 
-### Scheduled Tasks in Application Not Started
+### Планируемые задачи при остановленном приложении
 
-If the configured time conditions are met but the entire NocoBase application service is in a stopped or shutdown state, the scheduled tasks that should be triggered at the corresponding time point will be missed, and after the service restarts, missed tasks will not be triggered again. So, it may be necessary to consider handling corresponding situations or backup measures when using it.
+Если настроенные временные условия выполнены, но сервис приложения NocoBase остановлен или выключен, соответствующие планируемые задачи будут пропущены. После перезапуска сервиса пропущенные задачи не выполнятся автоматически. Рекомендуется предусматривать обработку таких ситуаций или резервные механизмы.
 
-### Repeat Count
+### Счётчик повторов
 
-When the repeat count is configured in the end condition, it calculates the total number of executions of the same workflow including all versions. For example, if a scheduled task has been executed 10 times in version 1, and the repeat count is also set to 10 times, the workflow will no longer be triggered. Even if it is copied to a new version, it will not be triggered unless the repeat count is modified to a number greater than 10. However, if it is duplicated to a new workflow, the number of executions will be recalculated from 0. Without modifying the relevant configuration, the new workflow can be triggered 10 more times.
+При настройке количества повторов в условии завершения учитывается общее количество выполнений одного рабочего процесса во всех версиях. Например, если задача уже выполнялась 10 раз в версии 1, а максимальное количество повторов равно 10, workflow больше не сработает, даже если его скопировать в новую версию. Однако при дублировании в новый рабочий процесс счётчик выполнений сбрасывается.
 
-### Difference Between Interval Time and Advanced Mode in Repeat Rules
+### Разница между интервальным временем и расширенным режимом
 
-The interval time in the repeat rule is relative to the time point of the previous trigger (start time), while the advanced mode triggers at fixed time points. For example, if it is configured to trigger every 30 minutes, and the last trigger is at 2021-09-01 12:01:23, the next trigger time will be 2021-09-01 12:31:23. The advanced mode, same as cron, configures rules to trigger at fixed time points, for example, it can be configured to trigger at 01 and 31 minutes past every hour.
+Интервальное время в правиле повтора отсчитывается от момента предыдущего срабатывания (или времени начала), тогда как расширенный режим срабатывает в фиксированные моменты. Например, при настройке "каждые 30 минут" и последнем срабатывании в 12:01:23 следующее будет в 12:31:23. Расширенный режим работает как cron — срабатывает строго по заданным временным точкам.
 
-## Example
+## Пример
 
-Suppose we want to check orders that have not been paid for more than 30 minutes every minute and automatically change their status to canceled. We'll implement it using both modes.
+Допустим, мы хотим каждую минуту проверять заказы, не оплаченные более 30 минут, и автоматически менять их статус на "отменён". Реализуем это обоими способами.
 
-### Custom Time Mode
+### Режим пользовательского времени
 
-Create a workflow based on a scheduled task, select the "Custom Time" mode in the trigger configuration, choose any time point not later than the current time as the start time, select "Every Minute" for the repeat rule, and leave the end condition blank:
+Создаём workflow на основе планируемой задачи, выбираем режим "Пользовательское время", устанавливаем время начала не позднее текущего момента, настраиваем повтор "каждую минуту" без условия завершения:
 
-![Scheduled Task_Trigger Configuration_Custom Time Mode](https://static-docs.nocobase.com/71131e3f2034263f883062389b356cbd.png)
+![Настройка триггера - пользовательское время](https://static-docs.nocobase.com/71131e3f2034263f883062389b356cbd.png)
 
-Then, configure other nodes according to the logic of the workflow, calculating a time 30 minutes before current system time, and updating the status to canceled if unpaid which created before then:
+Затем настраиваем другие узлы workflow для вычисления времени "30 минут назад" и обновления статуса неоплаченных заказов, созданных до этого времени:
 
-![Scheduled Task_Trigger Configuration_Custom Time Mode](https://static-docs.nocobase.com/188bc5287ffa1fb24a4e7baa1de6eb29.png)
+![Логика обработки](https://static-docs.nocobase.com/188bc5287ffa1fb24a4e7baa1de6eb29.png)
 
-After enabling the workflow, it will trigger every minute from the start time, calculate 30 minutes before now, and update the status of orders created before that time to canceled.
+После активации workflow будет срабатывать каждую минуту, вычислять временную границу и обновлять статусы.
 
-### Time Field of Collection Mode
+### Режим поля времени коллекции
 
-Create a workflow based on a scheduled task, select the "Collection Time Field" mode in the trigger configuration, choose the "Orders" collection, select 30 minutes after the order created time as the start time, and choose "No Repeat" for the repeat rule:
+Создаём workflow, выбираем режим "Поле времени коллекции", указываем коллекцию "Заказы", устанавливаем время начала как "30 минут после создания заказа", выбираем "без повтора":
 
-![Scheduled Task_Trigger Configuration_Collection Time Field Mode_Trigger](https://static-docs.nocobase.com/d40d5aef57f42799d31cc5882dd94246.png)
+![Настройка триггера - поле коллекции](https://static-docs.nocobase.com/d40d5aef57f42799d31cc5882dd94246.png)
 
-Then, configure other nodes according to the logic of the workflow, update orders with the ID of the triggered data and the status "Unpaid" to canceled:
+Затем настраиваем узел обновления для изменения статуса конкретного заказа (ID берётся из контекста срабатывания):
 
-![Scheduled Task_Trigger Configuration_Collection Time Field Mode_Update Node](https://static-docs.nocobase.com/491dde9df8f773f5b14a4fd8ceac9d3e.png)
+![Узел обновления](https://static-docs.nocobase.com/491dde9df8f773f5b14a4fd8ceac9d3e.png)
 
-Unlike the custom time mode, there is no need to calculate 30 minutes before, because the triggered data context in the workflow contains the corresponding data record that meet the time conditions, so you can directly update the status of the corresponding orders.
+В отличие от первого способа, здесь не требуется вычислять временную границу — workflow срабатывает уже для конкретных записей, соответствующих условию по времени.
