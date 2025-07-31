@@ -1,69 +1,69 @@
-# Overview
+# Обзор HTTP API NocoBase
 
-HTTP API of NocoBase is designed based on Resource & Action, a superset of REST API. The operation includes but not limited to create, read, update and delete. Resource Action can be extended arbitrarily in NocoBase.
+HTTP API NocoBase разработан на основе концепции "Ресурсы и Действия" (Resource & Action), представляя собой расширенную версию REST API. Поддерживаемые операции включают, но не ограничиваются созданием, чтением, обновлением и удалением данных. Действия с ресурсами могут быть произвольно расширены в NocoBase.
 
-## Resource
+## Ресурсы
 
-In NocoBase, resource has two expressions:
+В NocoBase ресурсы представлены в двух формах:
 
-- `<collection>`
-- `<collection>.<association>`
+- `<коллекция>`
+- `<коллекция>.<ассоциация>`
 
 <Alert>
 
-- Collection is the set of all abstract data
-- Association is the associated data of collection
-- Resource includes both collection and collection.association
+- Коллекция - это набор абстрактных данных
+- Ассоциация - связанные данные коллекции
+- Ресурс включает как коллекции, так и их ассоциации
 
 </Alert>
 
-### Example
+### Примеры
 
-- `posts` Post
-- `posts.user` Post user
-- `posts.tags` Post tags
+- `posts` - Посты
+- `posts.user` - Автор поста
+- `posts.tags` - Теги поста
 
-## Action
+## Действия
 
-Action on resource is expressed by `:<action>`
+Действия с ресурсами обозначаются через `:<действие>`:
 
-- `<collection>:<action>`
-- `<collection>.<association>:<action>`
+- `<коллекция>:<действие>`
+- `<коллекция>.<ассоциация>:<действие>`
 
-Built-in global actions for collection or association:
+Встроенные глобальные действия для коллекций и ассоциаций:
 
-- `create`
-- `get`
-- `list`
-- `update`
-- `destroy`
-- `move`
+- `create` - Создать
+- `get` - Получить
+- `list` - Получить список
+- `update` - Обновить
+- `destroy` - Удалить
+- `move` - Переместить
 
-Built-in association actions for association only:
+Специальные действия для ассоциаций:
 
-- `set`
-- `add`
-- `remove`
-- `toggle`
+- `set` - Установить
+- `add` - Добавить
+- `remove` - Удалить
+- `toggle` - Переключить
 
-### Example
+### Примеры
 
-- `posts:create` Create post
-- `posts.user:get` Get post user
-- `posts.tags:add` Add tags to post (associate existing tags with post)
+- `posts:create` - Создать пост
+- `posts.user:get` - Получить автора поста
+- `posts.tags:add` - Добавить теги к посту (связать существующие теги)
 
-## Request URL
+## URL запросов
 
 ```bash
-<GET|POST>   /api/<collection>:<action>
-<GET|POST>   /api/<collection>:<action>/<collectionIndex>
-<GET|POST>   /api/<collection>/<collectionIndex>/<association>:<action>
-<GET|POST>   /api/<collection>/<collectionIndex>/<association>:<action>/<associationIndex>
+<GET|POST>   /api/<коллекция>:<действие>
+<GET|POST>   /api/<коллекция>:<действие>/<индекс_коллекции>
+<GET|POST>   /api/<коллекция>/<индекс_коллекции>/<ассоциация>:<действие>
+<GET|POST>   /api/<коллекция>/<индекс_коллекции>/<ассоциация>:<действие>/<индекс_ассоциации>
 ```
 
-### Example
+### Примеры
 
-posts resource
+Ресурс posts:
 
 ```bash
 POST  /api/posts:create
@@ -73,7 +73,7 @@ POST  /api/posts:update/1
 POST  /api/posts:destroy/1
 ```
 
-posts.comments resource
+Ресурс posts.comments:
 
 ```bash
 POST  /api/posts/1/comments:create
@@ -83,7 +83,7 @@ POST  /api/posts/1/comments:update/1
 POST  /api/posts/1/comments:destroy/1
 ```
 
-posts.tags resource
+Ресурс posts.tags:
 
 ```bash
 POST  /api/posts/1/tags:create
@@ -95,69 +95,71 @@ POST  /api/posts/1/tags:add
 GET   /api/posts/1/tags:remove
 ```
 
-## Locate Resource
+## Локализация ресурсов
 
-- Collection resource locates the data to be processed by `collectionIndex`, `collectionIndex` must be unique.
-- Association resource locates the data to be processed by `collectionIndex` and `associationIndex` jointly, `associationIndex` may not be unique, but the joint index of `collectionIndex` and `associationIndex` must be unique.
+- Ресурсы коллекции идентифицируются по `индекс_коллекции`, который должен быть уникальным
+- Ресурсы ассоциации идентифицируются парой `индекс_коллекции` и `индекс_ассоциации`, где только их комбинация должна быть уникальной
 
-When viewing details of association resource, the requested URL needs to provide both `<collectionIndex>` and `<associationIndex>`, `<collectionIndex>` is necessary as `<associationIndex>` may not be unique.
+При запросе деталей ассоциации URL должен содержать оба индекса, так как `индекс_ассоциации` может повторяться.
 
-For example, `tables.fields` represents the fields of a data table:
+Например, для `tables.fields` (поля таблиц):
 
 ```bash
 GET   /api/tables/table1/fields/title
 GET   /api/tables/table2/fields/title
 ```
 
-Both table1 and table2 have the title field, title is unique in one table, but other tables may also have fields of that name.
+Обе таблицы содержат поле title, которое уникально в пределах одной таблицы, но может повторяться в других таблицах.
 
-## Request Parameters
+## Параметры запросов
 
-Request parameters can be placed in the headers, parameters (query string), and body (GET requests do not have a body) of the request.
+Параметры могут передаваться в:
+- Заголовках (headers)
+- Параметрах строки запроса (query string) 
+- Теле запроса (для GET-запросов тело не используется)
 
-Some special request parameters:
+Специальные параметры:
 
-- `filter` Data filtering, used in actions related to query.
-- `filterByTk` Filter by tk field, used in actions to specify details of data.
-- `sort` Sorting, used in actions related to query.
-- `fields` Date to output, used in actions related to query
-- `appends` Fields of additional relationship, used in actions related to query.
-- `except` Exclude some fields (not to output), used in actions related to query.
-- `whitelist` Fields whitelist, used in actions related to data creation and update.
-- `blacklist` Fields blacklist, used in actions related to data creation and update.
+- `filter` - Фильтрация данных (для запросов)
+- `filterByTk` - Фильтр по полю tk (для уточнения данных)
+- `sort` - Сортировка (для запросов)
+- `fields` - Поля для вывода (для запросов)
+- `appends` - Дополнительные связанные поля (для запросов)
+- `except` - Исключаемые поля (для запросов)
+- `whitelist` - Белый список полей (для создания/обновления)
+- `blacklist` - Черный список полей (для создания/обновления)
 
 ### filter
 
-Data filtering.
+Фильтрация данных:
 
 ```bash
-# simple
+# Простой вариант
 GET /api/posts?filter[status]=publish
-# json string format is recommended, which requires encodeURIComponent encoding
+# Рекомендуемый формат JSON (требует encodeURIComponent)
 GET /api/posts?filter={"status":"published"}
 
-# filter operators
+# Операторы фильтрации
 GET /api/posts?filter[status.$eq]=publish
 GET /api/posts?filter={"status.$eq":"published"}
 
-# $and
+# Логические операторы
 GET /api/posts?filter={"$and": [{"status.$eq":"published"}, {"title.$includes":"a"}]}
-# $or
 GET /api/posts?filter={"$or": [{"status.$eq":"pending"}, {"status.$eq":"draft"}]}
 
-# association field
+# Фильтрация по ассоциациям
 GET /api/posts?filter[user.email.$includes]=gmail
 GET /api/posts?filter={"user.email.$includes":"gmail"}
 ```
 
-[Click here for more information about filter operators](http-api/filter-operators)
+[Подробнее об операторах фильтрации](http-api/filter-operators)
 
 ### filterByTk
 
-Filter by tk field. In the default settings:
+Фильтрация по полю `tk`. При стандартных настройках:
 
-- collection resource: tk is the primary key of the data table.
-- association resource: tk is the targetKey field of the association.
+- Для ресурсов коллекции: `tk` — это первичный ключ таблицы данных.
+- Для ассоциативных ресурсов: `tk` — это поле `targetKey` ассоциации.
 
 ```bash
 GET   /api/posts:get?filterByTk=1&fields=name,title&appends=tags
@@ -165,25 +167,25 @@ GET   /api/posts:get?filterByTk=1&fields=name,title&appends=tags
 
 ### sort
 
-Sorting. To sort in the descending order, put `-` in front of the field.
+Сортировка. Чтобы отсортировать по убыванию, добавьте `-` перед названием поля.
 
 ```bash
-# Sort createAt field in the ascending order
+# Сортировка по полю createdAt по возрастанию
 GET /api/posts:get?sort=createdAt
-# Sort createAt field in the descending order
+# Сортировка по полю createdAt по убыванию
 GET /api/posts:get?sort=-createdAt
-# Sort multiple fields jointly, createAt field descending, title A-Z ascending
+# Совместная сортировка по нескольким полям: createdAt — по убыванию, title — по возрастанию (A–Z)
 GET /api/posts:get?sort=-createdAt,title
 ```
 
 ### fields
 
-Data to output.
+Поля данных для вывода.
 
 ```bash
 GET   /api/posts:list?fields=name,title
 
-Response 200 (application/json)
+Ответ 200 (application/json)
 {
   "data": [
     {
@@ -197,47 +199,47 @@ Response 200 (application/json)
 
 ### appends
 
-Fields of additional relationship.
+Дополнительные поля связанных данных (связанные ресурсы).
 
 ### except
 
-Exclude some fields (not to output), used in actions related to query.
+Исключает указанные поля из вывода (не возвращаются). Используется в операциях, связанных с запросами.
 
 ### whitelist
 
-Whitelist.
+Белый список полей.
 
 ```bash
 POST  /api/posts:create?whitelist=title
 
 {
-  "title": "My first post",
-  "date": "2022-05-19"      # The date field will be filtered out and not be written to the database
+  "title": "Мой первый пост",
+  "date": "2022-05-19"      # Поле date будет отфильтровано и не попадёт в базу данных
 }
 ```
 
 ### blacklist
 
-Blacklist.
+Чёрный список полей.
 
 ```bash
 POST  /api/posts:create?blacklist=date
 
-# The date field will be filtered out and not be written to the database
+# Поле date будет отфильтровано и не попадёт в базу данных
 {
-  "title": "My first post"
+  "title": "Мой первый пост"
 }
 ```
 
-## Request Response
+## Ответ на запрос
 
-Format of the response:
+Формат ответа:
 
 ```ts
 type ResponseResult = {
-  data?: any; // Main data
-  meta?: any; // Additional Data
-  errors?: ResponseError[]; // Errors
+  data?: any; // Основные данные
+  meta?: any; // Дополнительная информация
+  errors?: ResponseError[]; // Ошибки
 };
 
 type ResponseError = {
@@ -246,14 +248,14 @@ type ResponseError = {
 };
 ```
 
-### Example
+### Примеры
 
-View list:
+Получение списка:
 
 ```bash
 GET /api/posts:list
 
-Response 200 (application/json)
+Ответ 200 (application/json)
 
 {
   data: [
@@ -262,20 +264,20 @@ Response 200 (application/json)
     }
   ],
   meta: {
-    count: 1
+    count: 1,
     page: 1,
     pageSize: 1,
     totalPage: 1
-  },
+  }
 }
 ```
 
-View details:
+Просмотр деталей:
 
 ```bash
 GET /api/posts:get/1
 
-Response 200 (application/json)
+Ответ 200 (application/json)
 
 {
   data: {
@@ -284,18 +286,18 @@ Response 200 (application/json)
 }
 ```
 
-Error:
+Ошибка:
 
 ```bash
 POST /api/posts:create
 
-Response 400 (application/json)
+Ответ 400 (application/json)
 
 {
   errors: [
     {
-      message: 'name must be required',
-    },
-  ],
+      message: 'имя обязательно для заполнения',
+    }
+  ]
 }
 ```
