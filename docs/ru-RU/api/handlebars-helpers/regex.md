@@ -1,38 +1,36 @@
-
-# Regex
+# Регулярные выражения
 
 ## {{toRegex}}
 
-Convert the given string to a regular expression.
+Преобразует строку в регулярное выражение.
 
-**Params**
+**Параметры**
+* `str` **{String}**: Строка для преобразования
+* `returns` **{RegExp}**: Объект регулярного выражения
 
-* `str` **{String}**
-* `returns` **{RegExp}**
-
-**Example**
-
+**Пример**
 ```handlebars
 {{toRegex "foo"}}
-<!-- results in: /foo/ -->
+<!-- результат: /foo/ -->
 ```
 
 ## {{test}}
 
-Returns true if the given `str` matches the given regex. A regex can be passed on the context, or using the [toRegex](#toregex) helper as a subexpression.
+Проверяет, соответствует ли строка регулярному выражению. Можно передать готовое регулярное выражение или использовать хелпер [toRegex](#toregex) как подвыражение.
 
-**Params**
+**Параметры**
+* `str` **{String}**: Проверяемая строка
+* `regex` **{RegExp|String}**: Регулярное выражение или строка для преобразования
+* `returns` **{Boolean}**: Результат проверки
 
-* `str` **{String}**
-* `returns` **{RegExp}**
-
-**Example**
-
+**Примеры**
 ```handlebars
 {{test "bar" (toRegex "foo")}}
-<!-- results in: false -->
+<!-- результат: false -->
 {{test "foobar" (toRegex "foo")}}
-<!-- results in: true -->
+<!-- результат: true -->
 {{test "foobar" (toRegex "^foo$")}}
-<!-- results in: false -->
+<!-- результат: false -->
 ```
+
+
