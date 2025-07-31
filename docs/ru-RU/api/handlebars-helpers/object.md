@@ -1,155 +1,182 @@
-# Object
+# Объект
 
 ## {{extend}}
 
-Extend the context with the properties of other objects.
-A shallow merge is performed to avoid mutating the context.
+Расширяет контекст свойствами других объектов. Выполняется поверхностное слияние (shallow merge), чтобы избежать изменения исходного контекста.
 
-**Params**
+**Параметры**
 
-* `objects` **{Object}**: One or more objects to extend.
-* `returns` **{Object}**
+* `objects` **{Object}**: Один или несколько объектов для расширения.
+* `returns` **{Object}**: Новый объект с объединёнными свойствами.
+
+---
 
 ## {{forIn}}
 
-Block helper that iterates over the properties of
-an object, exposing each key and value on the context.
+Блочный хелпер, перебирающий все перечисляемые свойства объекта (включая унаследованные), делая каждый ключ и значение доступными в контексте.
 
-**Params**
+**Параметры**
 
-* `context` **{Object}**
-* `options` **{Object}**
-* `returns` **{String}**
+* `context` **{Object}**: Объект для перебора.
+* `options` **{Object}**: Объект опций Handlebars.
+* `returns` **{String}**: Результат рендеринга блока.
+
+---
 
 ## {{forOwn}}
 
-Block helper that iterates over the **own** properties of
-an object, exposing each key and value on the context.
+Блочный хелпер, перебирающий только **собственные** (не унаследованные) перечисляемые свойства объекта, делая каждый ключ и значение доступными в контексте.
 
-**Params**
+**Параметры**
 
-* `obj` **{Object}**: The object to iterate over.
+* `obj` **{Object}**: Объект для перебора.
 * `options` **{Object}**
 * `returns` **{String}**
 
+---
+
 ## {{toPath}}
 
-Take arguments and, if they are string or number, convert them to a dot-delineated object property path.
+Принимает аргументы и, если они строки или числа, преобразует их в строку пути к свойству объекта с точечной нотацией (например, `a.b.c`).
 
-**Params**
+**Параметры**
 
-* `prop` **{String|Number}**: The property segments to assemble (can be multiple).
-* `returns` **{String}**
+* `prop` **{String|Number}**: Сегменты свойства (может быть несколько).
+* `returns` **{String}**: Строка пути, например, `"a.b.c"`.
+
+---
 
 ## {{get}}
 
-Use property paths (`a.b.c`) to get a value or nested value from
-the context. Works as a regular helper or block helper.
+Использует путь к свойству (`a.b.c`) для получения значения (или вложенного значения) из контекста. Работает как обычный хелпер или блочный хелпер.
 
-**Params**
+**Параметры**
 
-* `prop` **{String}**: The property to get, optionally using dot notation for nested properties.
-* `context` **{Object}**: The context object
-* `options` **{Object}**: The handlebars options object, if used as a block helper.
-* `returns` **{String}**
+* `prop` **{String}**: Имя свойства, можно использовать точечную нотацию для вложенных свойств.
+* `context` **{Object}**: Объект контекста.
+* `options` **{Object}**: Объект опций Handlebars (если используется как блочный хелпер).
+* `returns` **{any}**: Значение найденного свойства.
+
+**Пример**
+
+```handlebars
+{{get "user.profile.name" context}}
+```
+
+---
 
 ## {{getObject}}
 
-Use property paths (`a.b.c`) to get an object from
-the context. Differs from the `get` helper in that this
-helper will return the actual object, including the
-given property key. Also, this helper does not work as a
-block helper.
+Использует путь к свойству (`a.b.c`) для получения объекта из контекста. Отличается от `get` тем, что возвращает сам объект, включая указанный ключ. Этот хелпер **не работает** как блочный.
 
-**Params**
+**Параметры**
 
-* `prop` **{String}**: The property to get, optionally using dot notation for nested properties.
-* `context` **{Object}**: The context object
-* `returns` **{String}**
+* `prop` **{String}**: Путь к свойству (с поддержкой точечной нотации).
+* `context` **{Object}**: Контекстный объект.
+* `returns` **{Object}**: Объект, содержащий указанное свойство.
+
+**Пример**
+
+```handlebars
+<!-- context: { user: { name: 'Alice' } } -->
+{{getObject "user" context}}
+<!-- результат: { name: 'Alice' } -->
+```
+
+---
 
 ## {{hasOwn}}
 
-Return true if `key` is an own, enumerable property of the given `context` object.
+Возвращает `true`, если `key` является собственным (не унаследованным) перечисляемым свойством заданного объекта `context`.
 
-**Params**
+**Параметры**
 
-* `key` **{String}**
-* `context` **{Object}**: The context object.
+* `key` **{String}**: Имя свойства.
+* `context` **{Object}**: Объект для проверки.
 * `returns` **{Boolean}**
 
-**Example**
+**Пример**
 
 ```handlebars
-{{hasOwn context key}}
+{{hasOwn context "name"}}
 ```
+
+---
 
 ## {{isObject}}
 
-Return true if `value` is an object.
+Возвращает `true`, если `value` является объектом (включая массивы и функции, если не делать строгую проверку).
 
-**Params**
+**Параметры**
 
-* `value` **{String}**
+* `value` **{any}**: Значение для проверки.
 * `returns` **{Boolean}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{isObject "foo"}}
-//=> false
+<!-- результат: false -->
 ```
+
+---
 
 ## {{JSONparse}}
 
-Parses the given string using `JSON.parse`.
+Разбирает переданную строку с помощью `JSON.parse`.
 
-**Params**
+**Параметры**
 
-* `string` **{String}**: The string to parse
+* `string` **{String}**: Строка в формате JSON для разбора.
 
-**Example**
+**Пример**
 
 ```handlebars
 <!-- string: '{"foo": "bar"}' -->
 {{JSONparse string}}
-<!-- results in: { foo: 'bar' } -->
+<!-- результат: { foo: 'bar' } -->
 ```
+
+---
 
 ## {{JSONstringify}}
 
-Stringify an object using `JSON.stringify`.
+Преобразует объект в строку с помощью `JSON.stringify`.
 
-**Params**
+**Параметры**
 
-* `obj` **{Object}**: Object to stringify
-* `returns` **{String}**
+* `obj` **{Object}**: Объект для преобразования в строку.
+* `returns` **{String}**: JSON-строка.
 
-**Example**
+**Пример**
 
 ```handlebars
 <!-- object: { foo: 'bar' } -->
 {{JSONstringify object}}
-<!-- results in: '{"foo": "bar"}' -->
+<!-- результат: '{"foo": "bar"}' -->
 ```
+
+---
 
 ## {{merge}}
 
-Deeply merge the properties of the given `objects` with the
-context object.
+Глубоко объединяет (deep merge) свойства указанных объектов с контекстом.
 
-**Params**
+**Параметры**
 
-* `object` **{Object}**: The target object. Pass an empty object to shallow clone.
-* `objects` **{Object}**
-* `returns` **{Object}**
+* `object` **{Object}**: Целевой объект. Передайте пустой объект, чтобы создать глубокую копию.
+* `objects` **{Object}**: Один или несколько объектов для слияния.
+* `returns` **{Object}**: Новый объект с объединёнными свойствами.
+
+---
 
 ## {{pick}}
 
-Pick properties from the context object.
+Выбирает указанные свойства из объекта контекста.
 
-**Params**
+**Параметры**
 
-* `properties` **{Array|String}**: One or more properties to pick.
-* `context` **{Object}**
-* `options` **{Object}**: Handlebars options object.
-* `returns` **{Object}**: Returns an object with the picked values. If used as a block helper, the values are passed as context to the inner block. If no values are found, the context is passed to the inverse block.
+* `properties` **{Array|String}**: Одно или несколько имён свойств для выбора.
+* `context` **{Object}**: Объект, из которого выбираются свойства.
+* `options` **{Object}**: Объект опций Handlebars.
+* `returns` **{Object}**: Объект, содержащий выбранные свойства. Если используется как блочный хелпер, выбранные значения передаются во внутренний блок как контекст. Если ни одного свойства не найдено, выполняется блок `else` (обратный блок).
