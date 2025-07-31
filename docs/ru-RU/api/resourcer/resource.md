@@ -1,40 +1,42 @@
-# Resource
+# Ресурс
 
-Resource is used to define resource instance. Resource instances managed by resourcer can be accessed through HTTP requests.
+Ресурс используется для определения экземпляра ресурса. Экземпляры ресурсов, управляемые `resourcer`, могут быть доступны через HTTP-запросы.
 
-## Constructor
+## Конструктор
 
-To create resource instance. Normally it is not used directly, but replaced by the call of the `define()` interface of resourcer.
+Создаёт экземпляр ресурса. Обычно используется не напрямую, а через вызов метода `define()` у `resourcer`.
 
-**Signature**
+### Сигнатура
 
-- `constructor(options: ResourceOptions, resourcer: Resourcer)`
+```js
+constructor(options: ResourceOptions, resourcer: Resourcer)
+```
 
-**Parameter**
+### Параметры
 
-| Name                  | Type                                 | Default    | Description                                                                                                     |
-| --------------------- | ------------------------------------ | ---------- | --------------------------------------------------------------------------------------------------------------- |
-| `options.name`        | `string`                             | -          | Name of the resource, corresponding to the resource address in the route of the URL                             |
-| `options.type`        | `string`                             | `'single'` | Type of the resource, options are `'single'`, `'hasOne'`, `'hasMany'`, `'belongsTo'`, `'belongsToMany'`         |
-| `options.actions`     | `Object`                             | -          | List of actions that can be taken on the resource, see the example for details                                  |
-| `options.middlewares` | `MiddlewareType \| MiddlewareType[]` | -          | List of middlewares for any operational access to the resource that is defining，see the example for details    |
-| `options.only`        | `ActionName[]`                       | `[]`       | Whitelist for global actions, only actions contained in the array (if `length > 0`) can be accessed             |
-| `options.except`      | `ActionName[]`                       | `[]`       | Blacklist for global actions, all actions except those contained in the array (if `length > 0`) can be accessed |
-| `resourcer`           | `Resourcer`                          | -          | The resourcer instance                                                                                          |
+| Имя | Тип | По умолчанию | Описание |
+|-----|-----|--------------|----------|
+| `options.name` | `string` | — | Название ресурса, соответствует адресу ресурса в маршруте URL |
+| `options.type` | `string` | `'single'` | Тип ресурса. Допустимые значения: `'single'`, `'hasOne'`, `'hasMany'`, `'belongsTo'`, `'belongsToMany'` |
+| `options.actions` | `Object` | — | Список действий, которые можно выполнять с ресурсом. Подробности в примере |
+| `options.middlewares` | `MiddlewareType \| MiddlewareType[]` | — | Список мидлваров, применяемых ко всем операциям данного ресурса. Подробности в примере |
+| `options.only` | `ActionName[]` | `[]` | Белый список глобальных действий. Если массив не пуст, доступны только действия, указанные в нём |
+| `options.except` | `ActionName[]` | `[]` | Чёрный список глобальных действий. Если массив не пуст, все действия, кроме указанных, будут доступны |
+| `resourcer` | `Resourcer` | — | Экземпляр `resourcer` |
 
-**Example**
+### Пример
 
-```ts
+```js
 app.resourcer.define({
   name: 'books',
   actions: {
-    // Extended action
+    // Расширенное действие
     publish(ctx, next) {
       ctx.body = 'ok';
     },
   },
   middleware: [
-    // Extended middleware
+    // Расширенный мидлвар
     async (ctx, next) => {
       await next();
     },
@@ -42,41 +44,43 @@ app.resourcer.define({
 });
 ```
 
-## Instance Members
+## Элементы экземпляра
 
 ### `options`
 
-Configuration items for the current resource.
+Настройки текущего ресурса.
 
 ### `resourcer`
 
-The resourcer instance to which the resource belongs.
+Экземпляр `resourcer`, которому принадлежит данный ресурс.
 
 ### `middlewares`
 
-The registered middlewares.
+Зарегистрированные мидлвары.
 
 ### `actions`
 
-The registered mapping table of actions.
+Таблица зарегистрированных действий.
 
 ### `except`
 
-Actions that are excluded.
+Действия, исключённые из доступа.
 
-## Instance Methods
+## Методы экземпляра
 
 ### `getName()`
 
-Get the name of the current resource.
+Возвращает имя текущего ресурса.
 
-**Signature**
+#### Сигнатура
 
-- `getName(): string`
+```js
+getName(): string
+```
 
-**Example**
+#### Пример
 
-```ts
+```js
 const resource = app.resourcer.define({
   name: 'books',
 });
@@ -86,21 +90,23 @@ resource.getName(); // 'books'
 
 ### `getAction()`
 
-Get action with the corresponding name.
+Возвращает действие с указанным именем.
 
-**Signature**
+#### Сигнатура
 
-- `getAction(name: string): Action`
+```js
+getAction(name: string): Action
+```
 
-**Parameter**
+#### Параметры
 
-| Name   | Type     | Default | Description        |
-| ------ | -------- | ------- | ------------------ |
-| `name` | `string` | -       | Name of the action |
+| Имя | Тип | По умолчанию | Описание |
+|-----|-----|--------------|----------|
+| `name` | `string` | — | Название действия |
 
-**Example**
+#### Пример
 
-```ts
+```js
 const resource = app.resourcer.define({
   name: 'books',
   actions: {
