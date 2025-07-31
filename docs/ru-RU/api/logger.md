@@ -1,4 +1,4 @@
-# logger
+# @nocobaselogger
 
 ## Создание логгера
 
