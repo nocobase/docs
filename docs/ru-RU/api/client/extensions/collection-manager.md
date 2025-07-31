@@ -1,19 +1,23 @@
-# CollectionManager
+# Менеджер коллекций (CollectionManager)
 
-## Components
+## Компоненты
 
 ### CollectionManagerProvider
 
-```jsx | pure
+Основной провайдер для управления коллекциями:
+
+```jsx
 <CollectionManagerProvider
   interfaces={{}}
   collections={[]}
-></CollectionManagerProvider>
+/>
 ```
 
 ### CollectionProvider
 
-```jsx | pure
+Провайдер отдельной коллекции:
+
+```jsx
 const collection = {
   name: 'tests',
   fields: [
@@ -28,12 +32,12 @@ const collection = {
     },
   ],
 };
-<CollectionProvider collection={collection}></CollectionProvider>;
+<CollectionProvider collection={collection} />
 ```
 
-If there is no collection parameter passed in, get the collection from CollectionManagerProvider with the corresponding name.
+Если параметр `collection` не передан, коллекция будет получена из CollectionManagerProvider по имени:
 
-```jsx | pure
+```jsx
 const collections = [
   {
     name: 'tests',
@@ -51,13 +55,15 @@ const collections = [
   },
 ];
 <CollectionManagerProvider collections={collections}>
-  <CollectionProvider name={'tests'}></CollectionProvider>
-</CollectionManagerProvider>;
+  <CollectionProvider name="tests" />
+</CollectionManagerProvider>
 ```
 
 ### CollectionFieldProvider
 
-```jsx | pure
+Провайдер поля коллекции:
+
+```jsx
 const field = {
   type: 'string',
   name: 'title',
@@ -67,34 +73,20 @@ const field = {
     'x-component': 'Input',
   },
 };
-<CollectionFieldProvider field={field}></CollectionFieldProvider>;
+<CollectionFieldProvider field={field} />
 ```
 
-If there is no field parameter passed in, get the field from CollectionProvider with the corresponding name.
+Если параметр `field` не передан, поле будет получено из CollectionProvider по имени:
 
-```jsx | pure
-const collection = {
-  name: 'tests',
-  fields: [
-    {
-      type: 'string',
-      name: 'title',
-      interface: 'input',
-      uiSchema: {
-        type: 'string',
-        'x-component': 'Input',
-      },
-    },
-  ],
-};
+```jsx
 <CollectionProvider collection={collection}>
-  <CollectionFieldProvider name={'title'}></CollectionFieldProvider>
-</CollectionProvider>;
+  <CollectionFieldProvider name="title" />
+</CollectionProvider>
 ```
 
 ### CollectionField
 
-Universal field component that needs to be used with `<CollectionProvider/>`, but only in schema scenarios. Get the field schema from CollectionProvider with the corresponding name. Extend the configuration via the schema where the CollectionField is located.
+Универсальный компонент поля, который должен использоваться с `<CollectionProvider/>` только в схемах. Получает схему поля из CollectionProvider по имени и расширяет конфигурацию через схему, где расположен CollectionField.
 
 ```ts
 {
@@ -107,167 +99,30 @@ Universal field component that needs to be used with `<CollectionProvider/>`, bu
 }
 ```
 
-## Hooks
+## Хуки
 
 ### useCollectionManager()
 
-Use with `<CollectionManagerProvider/>`.
+Используется с `<CollectionManagerProvider/>`:
 
-```jsx | pure
+```jsx
 const { collections, get } = useCollectionManager();
 ```
 
 ### useCollection()
 
-Use with `<CollectionProvider/>`.
+Используется с `<CollectionProvider/>`:
 
-```jsx | pure
+```jsx
 const { name, fields, getField, findField, resource } = useCollection();
 ```
 
 ### useCollectionField()
 
-Use with `<CollectionFieldProvider/>`.
+Используется с `<CollectionFieldProvider/>`:
 
-```jsx | pure
+```jsx
 const { name, uiSchema, resource } = useCollectionField();
 ```
 
-The resource needs to be used with `<RecordProvider/>` to provide context of the record of the current data table row.
-
-# CollectionManager
-
-## Components
-
-### CollectionManagerProvider
-
-```jsx | pure
-<CollectionManagerProvider
-  interfaces={{}}
-  collections={[]}
-></CollectionManagerProvider>
-```
-
-### CollectionProvider
-
-```jsx | pure
-const collection = {
-  name: 'tests',
-  fields: [
-    {
-      type: 'string',
-      name: 'title',
-      interface: 'input',
-      uiSchema: {
-        type: 'string',
-        'x-component': 'Input',
-      },
-    },
-  ],
-};
-<CollectionProvider collection={collection}></CollectionProvider>;
-```
-
-If there is no collection parameter passed in, get the collection from CollectionManagerProvider with the corresponding name.
-
-```jsx | pure
-const collections = [
-  {
-    name: 'tests',
-    fields: [
-      {
-        type: 'string',
-        name: 'title',
-        interface: 'input',
-        uiSchema: {
-          type: 'string',
-          'x-component': 'Input',
-        },
-      },
-    ],
-  },
-];
-<CollectionManagerProvider collections={collections}>
-  <CollectionProvider name={'tests'}></CollectionProvider>
-</CollectionManagerProvider>;
-```
-
-### CollectionFieldProvider
-
-```jsx | pure
-const field = {
-  type: 'string',
-  name: 'title',
-  interface: 'input',
-  uiSchema: {
-    type: 'string',
-    'x-component': 'Input',
-  },
-};
-<CollectionFieldProvider field={field}></CollectionFieldProvider>;
-```
-
-If there is no field parameter passed in, get the field from CollectionProvider with the corresponding name.
-
-```jsx | pure
-const collection = {
-  name: 'tests',
-  fields: [
-    {
-      type: 'string',
-      name: 'title',
-      interface: 'input',
-      uiSchema: {
-        type: 'string',
-        'x-component': 'Input',
-      },
-    },
-  ],
-};
-<CollectionProvider collection={collection}>
-  <CollectionFieldProvider name={'title'}></CollectionFieldProvider>
-</CollectionProvider>;
-```
-
-### CollectionField
-
-Universal field component that needs to be used with `<CollectionProvider/>`, but only in schema scenarios. Get the field schema from CollectionProvider with the corresponding name. Extend the configuration via the schema where the CollectionField is located.
-
-```ts
-{
-  name: 'title',
-  'x-decorator': 'FormItem',
-  'x-decorator-props': {},
-  'x-component': 'CollectionField',
-  'x-component-props': {},
-  properties: {},
-}
-```
-
-## Hooks
-
-### useCollectionManager()
-
-Use with `<CollectionManagerProvider/>`.
-
-```jsx | pure
-const { collections, get } = useCollectionManager();
-```
-
-### useCollection()
-
-Use with `<CollectionProvider/>`.
-
-```jsx | pure
-const { name, fields, getField, findField, resource } = useCollection();
-```
-
-### useCollectionField()
-
-Use with `<CollectionFieldProvider/>`.
-
-```jsx | pure
-const { name, uiSchema, resource } = useCollectionField();
-```
-
-The resource needs to be used with `<RecordProvider/>` to provide context of the record of the current data table row.
+Для работы с `resource` необходимо использовать `<RecordProvider/>` для предоставления контекста записи текущей строки таблицы данных.
