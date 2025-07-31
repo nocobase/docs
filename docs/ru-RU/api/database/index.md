@@ -1,46 +1,45 @@
-# Database
+# База данных (Database)
 
-## Overview
+## Обзор
 
-Database is the database interaction tool provided by NocoBase, it provides very convenient database interaction features for no-code and low-code applications. The supported databases are:
+Database - это инструмент для взаимодействия с базами данных в NocoBase, предоставляющий удобные функции для no-code и low-code приложений. Поддерживаемые СУБД:
 
 - SQLite 3.8.8+
 - MySQL 8.0.17+
 - PostgreSQL 10.0+
 
-### Connect to Database
+### Подключение к базе данных
 
-In `Database` constructor, database connection can be configured by passing the `options` parameter.
+В конструкторе `Database` можно настроить подключение к БД, передав параметр `options`.
 
 ```javascript
 const { Database } = require('@nocobase/database');
 
-// SQLite database configuration parameters
+// Конфигурация для SQLite
 const database = new Database({
   dialect: 'sqlite',
   storage: 'path/to/database.sqlite'
 })
 
-// MySQL \ PostgreSQL database configuration parameters
+// Конфигурация для MySQL/PostgreSQL
 const database = new Database({
-  dialect: /* 'postgres' or 'mysql' */,
+  dialect: /* 'postgres' или 'mysql' */,
   database: 'database',
   username: 'username',
   password: 'password',
   host: 'localhost',
   port: 'port'
 })
-
 ```
 
-Refer to [Constructor](#constructor) for detailed configurations.
+Подробные параметры конфигурации смотрите в разделе [Конструктор](#constructor).
 
-### Define Data Structure
+### Определение структуры данных
 
-`Database` defines database structure through `Collection`, one `Collection` object represents one table in the database.
+`Database` определяет структуру БД через `Collection`, где каждый объект `Collection` представляет таблицу в базе данных.
 
 ```javascript
-// Define Collection
+// Определение коллекции
 const UserCollection = database.collection({
   name: 'users',
   fields: [
@@ -56,121 +55,121 @@ const UserCollection = database.collection({
 });
 ```
 
-After the database structure is defined, use `sync()` method to synchronize the database structure.
+После определения структуры используйте метод `sync()` для синхронизации с базой данных.
 
 ```javascript
 await database.sync();
 ```
 
-Refer to [Collection](/api/database/collection) for detailed usage of `Collection`.
+Подробнее об использовании `Collection` см. в [документации Collection](/api/database/collection).
 
-### CRUD Data
+### CRUD операции с данными
 
-`Database` operates data through `Repository`.
+`Database` работает с данными через `Repository`.
 
 ```javascript
 const UserRepository = UserCollection.repository();
 
-// Create
+// Создание
 await UserRepository.create({
   name: 'Mark',
   age: 18,
 });
 
-// Query
+// Запрос
 const user = await UserRepository.findOne({
   filter: {
     name: 'Mark',
   },
 });
 
-// Update
+// Обновление
 await UserRepository.update({
   values: {
     age: 20,
   },
 });
 
-// Delete
+// Удаление
 await UserRepository.destroy(user.id);
 ```
 
-Refer to [Repository](/api/database/repository) for details of data CRUD.
+Подробнее о CRUD операциях см. в [документации Repository](/api/database/repository).
 
-## Constructor
+## Конструктор
 
-**Signature**
+**Сигнатура**
 
 - `constructor(options: DatabaseOptions)`
 
-Create a database instance.
+Создаёт экземпляр базы данных.
 
-**Parameter**
+**Параметры**
 
-| Name                   | Type           | Default       | Description                                                                                                                                         |
-| ---------------------- | -------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `options.host`         | `string`       | `'localhost'` | Database host                                                                                                                                       |
-| `options.port`         | `number`       | -             | Database service port, default port depends on the type of database used                                                                            |
-| `options.username`     | `string`       | -             | Database username                                                                                                                                   |
-| `options.password`     | `string`       | -             | Database password                                                                                                                                   |
-| `options.database`     | `string`       | -             | Database name                                                                                                                                       |
-| `options.dialect`      | `string`       | `'mysql'`     | Database type                                                                                                                                       |
-| `options.storage?`     | `string`       | `':memory:'`  | Storage mode for SQLite                                                                                                                             |
-| `options.logging?`     | `boolean`      | `false`       | Whether to enable logging                                                                                                                           |
-| `options.define?`      | `Object`       | `{}`          | Default table definition parameters                                                                                                                 |
-| `options.tablePrefix?` | `string`       | `''`          | NocoBase extension, table prefix                                                                                                                    |
-| `options.migrator?`    | `UmzugOptions` | `{}`          | NocoBase extension, parameters for migrator, refer to [Umzug](https://github.com/sequelize/umzug/blob/main/src/types.ts#L15) for the implementation |
+| Имя                      | Тип            | По умолчанию  | Описание                                                                                                                                         |
+|--------------------------|----------------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| `options.host`           | `string`       | `'localhost'` | Хост базы данных                                                                                                                                 |
+| `options.port`           | `number`       | —             | Порт службы базы данных, значение по умолчанию зависит от типа используемой СУБД                                                                  |
+| `options.username`       | `string`       | —             | Имя пользователя базы данных                                                                                                                     |
+| `options.password`       | `string`       | —             | Пароль базы данных                                                                                                                               |
+| `options.database`       | `string`       | —             | Название базы данных                                                                                                                             |
+| `options.dialect`        | `string`       | `'mysql'`     | Тип базы данных                                                                                                                                  |
+| `options.storage?`       | `string`       | `':memory:'`  | Режим хранения для SQLite                                                                                                                        |
+| `options.logging?`       | `boolean`      | `false`       | Включить логирование                                                                                                                             |
+| `options.define?`        | `Object`       | `{}`          | Параметры по умолчанию для определения таблиц                                                                                                    |
+| `options.tablePrefix?`   | `string`       | `''`          | Расширение NocoBase, префикс таблиц                                                                                                              |
+| `options.migrator?`      | `UmzugOptions` | `{}`          | Расширение NocoBase, параметры мигратора, см. [Umzug](https://github.com/sequelize/umzug/blob/main/src/types.ts#L15) для реализации               |
 
-## Migration Methods
+## Методы миграций
 
 ### `addMigration()`
 
-Add single migration file.
+Добавляет один файл миграции.
 
-**Signature**
+**Сигнатура**
 
 - `addMigration(options: MigrationItem)`
 
-**Parameter**
+**Параметры**
 
-| Name                 | Type               | Default | Description                         |
-| -------------------- | ------------------ | ------- | ----------------------------------- |
-| `options.name`       | `string`           | -       | Name of the migration file          |
-| `options.context?`   | `string`           | -       | Context of the migration file       |
-| `options.migration?` | `typeof Migration` | -       | Custom type of the migration file   |
-| `options.up`         | `Function`         | -       | `up` method of the migration file   |
-| `options.down`       | `Function`         | -       | `down` method of the migration file |
+| Имя                  | Тип                | По умолчанию | Описание                                  |
+|----------------------|--------------------|--------------|-------------------------------------------|
+| `options.name`       | `string`           | —            | Название файла миграции                   |
+| `options.context?`   | `string`           | —            | Контекст файла миграции                   |
+| `options.migration?` | `typeof Migration` | —            | Пользовательский тип миграции             |
+| `options.up`         | `Function`         | —            | Метод `up` в файле миграции               |
+| `options.down`       | `Function`         | —            | Метод `down` в файле миграции             |
 
-**Example**
+**Пример**
 
 ```ts
 db.addMigration({
   name: '20220916120411-test-1',
   async up() {
     const queryInterface = this.context.db.sequelize.getQueryInterface();
-    await queryInterface.query(/* your migration sqls */);
+    await queryInterface.query(/* ваши SQL-запросы миграции */);
   },
 });
 ```
 
 ### `addMigrations()`
 
-Add the migration files in the specified directory.
+Добавляет файлы миграций из указанной директории.
 
-**Signature**
+**Сигнатура**
 
 - `addMigrations(options: AddMigrationsOptions): void`
 
-**Parameter**
+**Параметры**
 
-| Name                 | Type       | Default        | Description                                     |
-| -------------------- | ---------- | -------------- | ----------------------------------------------- |
-| `options.directory`  | `string`   | `''`           | Directory where the migration files are located |
-| `options.extensions` | `string[]` | `['js', 'ts']` | File extensions                                 |
-| `options.namespace?` | `string`   | `''`           | Namespace                                       |
-| `options.context?`   | `Object`   | `{ db }`       | Context of the migration files                  |
+| Имя                  | Тип        | По умолчанию     | Описание                                     |
+|----------------------|------------|------------------|----------------------------------------------|
+| `options.directory`  | `string`   | `''`             | Директория с файлами миграций                |
+| `options.extensions` | `string[]` | `['js', 'ts']`   | Расширения файлов                             |
+| `options.namespace?` | `string`   | `''`             | Пространство имён (namespace)                |
+| `options.context?`   | `Object`   | `{ db }`         | Контекст файлов миграций                     |
 
-**Example**
+**Пример**
 
 ```ts
 db.addMigrations({
@@ -179,50 +178,50 @@ db.addMigrations({
 });
 ```
 
-## Tool Methods
+## Вспомогательные методы
 
 ### `inDialect()`
 
-Check whether the current database type is the specified type.
+Проверяет, является ли текущий тип базы данных указанным.
 
-**Signature**
+**Сигнатура**
 
 - `inDialect(dialect: string[]): boolean`
 
-**Parameter**
+**Параметры**
 
-| Name      | Type       | Default | Description                                                 |
-| --------- | ---------- | ------- | ----------------------------------------------------------- |
-| `dialect` | `string[]` | -       | Database type, options are `mysql`, `postgres` and `sqlite` |
+| Имя       | Тип        | По умолчанию | Описание                                                      |
+|-----------|------------|--------------|---------------------------------------------------------------|
+| `dialect` | `string[]` | —            | Тип базы данных: возможные значения — `mysql`, `postgres`, `sqlite` |
 
 ### `getTablePrefix()`
 
-Get the table name prefix in the configuration.
+Возвращает префикс имени таблицы из конфигурации.
 
-**Signature**
+**Сигнатура**
 
 - `getTablePrefix(): string`
 
-## Data Table Configurations
+## Конфигурация таблиц данных
 
 ### `collection()`
 
-Define a data table. This is like the `define` method of Sequelize, which only creates table structure in memory. Call the `sync` method if needs to be persisted to the database.
+Определяет таблицу данных. Работает аналогично методу `define` из Sequelize — создаёт структуру таблицы только в памяти. Для сохранения в базе данных необходимо вызвать метод `sync`.
 
-**Signature**
+**Сигнатура**
 
 - `collection(options: CollectionOptions): Collection`
 
-**Parameter**
+**Параметры**
 
-All configuration parameters of `options` is consistent with the constructor of the `Collection` class, refer to [Collection](/api/database/collection#Constructor).
+Все параметры `options` соответствуют параметрам конструктора класса `Collection`, см. [Collection](/api/database/collection#Constructor).
 
-**Event**
+**События**
 
-- `'beforeDefineCollection'`: Trigger before defining the table.
-- `'afterDefineCollection'`: Trigger after defining the table.
+- `'beforeDefineCollection'`: срабатывает перед созданием таблицы.
+- `'afterDefineCollection'`: срабатывает после создания таблицы.
 
-**Example**
+**Пример**
 
 ```ts
 db.collection({
@@ -239,25 +238,25 @@ db.collection({
   ],
 });
 
-// sync collection as table to db
+// синхронизировать коллекцию как таблицу в базе данных
 await db.sync();
 ```
 
 ### `getCollection()`
 
-Get a defined data table.
+Получает ранее определённую таблицу данных.
 
-**Signature**
+**Сигнатура**
 
 - `getCollection(name: string): Collection`
 
-**Parameter**
+**Параметры**
 
-| Name   | Type     | Default | Description |
-| ------ | -------- | ------- | ----------- |
-| `name` | `string` | -       | Table name  |
+| Имя    | Тип      | По умолчанию | Описание       |
+|--------|----------|--------------|----------------|
+| `name` | `string` | —            | Имя таблицы    |
 
-**Example**
+**Пример**
 
 ```ts
 const collection = db.getCollection('books');
@@ -265,19 +264,19 @@ const collection = db.getCollection('books');
 
 ### `hasCollection()`
 
-Check whether a specified data table is defined.
+Проверяет, определена ли таблица данных с указанным именем.
 
-**Signature**
+**Сигнатура**
 
 - `hasCollection(name: string): boolean`
 
-**Parameter**
+**Параметры**
 
-| Name   | Type     | Default | Description |
-| ------ | -------- | ------- | ----------- |
-| `name` | `string` | -       | Table name  |
+| Имя    | Тип      | По умолчанию | Описание       |
+|--------|----------|--------------|----------------|
+| `name` | `string` | —            | Имя таблицы    |
 
-**Example**
+**Пример**
 
 ```ts
 db.collection({ name: 'books' });
@@ -289,24 +288,24 @@ db.hasCollection('authors'); // false
 
 ### `removeCollection()`
 
-Remove a defined data table. It is to remove from memory only, call the `sync` method if needs to be persisted to the database.
+Удаляет определённую таблицу данных. Удаление происходит только из памяти. Чтобы изменения были сохранены в базе данных, необходимо вызвать метод `sync`.
 
-**Signature**
+**Сигнатура**
 
 - `removeCollection(name: string): void`
 
-**Parameter**
+**Параметры**
 
-| Name   | Type     | Default | Description |
-| ------ | -------- | ------- | ----------- |
-| `name` | `string` | -       | Table name  |
+| Имя    | Тип      | По умолчанию | Описание       |
+|--------|----------|--------------|----------------|
+| `name` | `string` | —            | Имя таблицы    |
 
-**Event**
+**События**
 
-- `'beforeRemoveCollection'`: Trigger before removing the table.
-- `'afterRemoveCollection'`: Trigger after removing the table
+- `'beforeRemoveCollection'`: срабатывает перед удалением таблицы.
+- `'afterRemoveCollection'`: срабатывает после удаления таблицы.
 
-**Example**
+**Пример**
 
 ```ts
 db.collection({ name: 'books' });
@@ -316,22 +315,22 @@ db.removeCollection('books');
 
 ### `import()`
 
-Load all files in the import file directory into memory as the configuration of collection.
+Загружает все файлы из указанной директории в память и использует их как конфигурацию коллекций.
 
-**Signature**
+**Сигнатура**
 
 - `async import(options: { directory: string; extensions?: ImportFileExtension[] }): Promise<Map<string, Collection>>`
 
-**Parameter**
+**Параметры**
 
-| Name                 | Type       | Default        | Description                      |
-| -------------------- | ---------- | -------------- | -------------------------------- |
-| `options.directory`  | `string`   | -              | Path of directory to be imported |
-| `options.extensions` | `string[]` | `['ts', 'js']` | Scan for specific suffixes       |
+| Имя                 | Тип        | По умолчанию     | Описание                                 |
+|---------------------|------------|------------------|------------------------------------------|
+| `options.directory` | `string`   | —                | Путь к директории для импорта            |
+| `options.extensions`| `string[]` | `['ts', 'js']`   | Расширения файлов для сканирования       |
 
-**Example**
+**Пример**
 
-The collection defined by file `./collections/books.ts` is as below:
+Файл `./collections/books.ts` содержит следующую конфигурацию:
 
 ```ts
 export default {
@@ -345,7 +344,7 @@ export default {
 };
 ```
 
-Import the relevant configurations when loading the plugin:
+Импортируем конфигурации при загрузке плагина:
 
 ```ts
 class Plugin {
@@ -357,21 +356,21 @@ class Plugin {
 }
 ```
 
-## Extension Registrations and Acquisitions
+## Регистрация и получение расширений
 
 ### `registerFieldTypes()`
 
-Register custom field type.
+Регистрирует пользовательский тип поля.
 
-**Signature**
+**Сигнатура**
 
 - `registerFieldTypes(fieldTypes: MapOf<typeof Field>): void`
 
-**Parameter**
+**Параметры**
 
-`fieldTypes` is a key-value pair, where key is the field type name, and value is the field type class.
+`fieldTypes` — это объект с парами ключ-значение, где ключ — имя типа поля, а значение — класс типа поля.
 
-**Example**
+**Пример**
 
 ```ts
 import { Field } from '@nocobase/database';
@@ -387,17 +386,17 @@ db.registerFieldTypes({
 
 ### `registerModels()`
 
-Register custom data model class.
+Регистрирует пользовательский класс модели данных.
 
-**Signature**
+**Сигнатура**
 
 - `registerModels(models: MapOf<ModelStatic<any>>): void`
 
-**Parameter**
+**Параметры**
 
-`models` is a key-value pair, where key is the data model name, and value is the data model class.
+`models` — объект с парами ключ-значение, где ключ — имя модели данных, а значение — класс модели.
 
-**Example**
+**Пример**
 
 ```ts
 import { Model } from '@nocobase/database';
@@ -418,17 +417,17 @@ db.collection({
 
 ### `registerRepositories()`
 
-Register custom data repository class.
+Регистрирует пользовательский класс репозитория данных.
 
-**Signature**
+**Сигнатура**
 
 - `registerRepositories(repositories: MapOf<RepositoryType>): void`
 
-**Parameter**
+**Параметры**
 
-`repositories` is a key-value pair, where key is the data repository name, and value is the data repository class.
+`repositories` — объект с парами ключ-значение, где ключ — имя репозитория, а значение — класс репозитория.
 
-**Example**
+**Пример**
 
 ```ts
 import { Repository } from '@nocobase/database';
@@ -449,17 +448,17 @@ db.collection({
 
 ### `registerOperators()`
 
-Register custom data query operator.
+Регистрирует пользовательский оператор запроса данных.
 
-**Signature**
+**Сигнатура**
 
-- `registerOperators(operators: MapOf<OperatorFunc>)`
+- `registerOperators(operators: MapOf<OperatorFunc>): void`
 
-**Parameter**
+**Параметры**
 
-`operators` is a key-value pair, where key is the operator name, and value is the generating function of the comparison operator statement.
+`operators` — объект с парами ключ-значение, где ключ — имя оператора, а значение — функция, возвращающая условие сравнения.
 
-**Example**
+**Пример**
 
 ```ts
 db.registerOperators({
@@ -476,7 +475,7 @@ db.registerOperators({
 db.getRepository('books').count({
   filter: {
     createdAt: {
-      // registered operator
+      // зарегистрированный оператор
       $dateOn: '2020-01-01',
     },
   },
@@ -485,19 +484,19 @@ db.getRepository('books').count({
 
 ### `getModel()`
 
-Get the defined data model class. If no custom model class has been registered before, the default model class of Sequelize will be returned. The default name is the same as the name defined by collection.
+Возвращает зарегистрированный класс модели данных. Если пользовательский класс модели не был зарегистрирован ранее, возвращается класс модели по умолчанию из Sequelize. Имя по умолчанию совпадает с именем, заданным при определении коллекции.
 
-**Signature**
+**Сигнатура**
 
 - `getModel(name: string): Model`
 
-**Parameter**
+**Параметры**
 
-| Name   | Type     | Default | Description           |
-| ------ | -------- | ------- | --------------------- |
-| `name` | `string` | -       | Registered model name |
+| Имя    | Тип      | По умолчанию | Описание                     |
+|--------|----------|--------------|------------------------------|
+| `name` | `string` | —            | Имя зарегистрированной модели|
 
-**Example**
+**Пример**
 
 ```ts
 db.registerModels({
@@ -509,78 +508,78 @@ const ModelClass = db.getModel('books');
 console.log(ModelClass.prototype instanceof MyModel); // true
 ```
 
-Note: The model class retrieved from collection is not strictly equivalent to the model class at registration, but is inherited from the model class at registration. Since the properties of Sequelize's model class are modified during initialization, NocoBase automatically handles this inheritance relationship. All the definitions work fine except that the classes are not equal.
+> **Примечание**: Класс модели, полученный через `getModel()`, строго не равен классу, переданному при регистрации, но он от него наследуется. Поскольку Sequelize модифицирует свойства класса модели во время инициализации, NocoBase автоматически обрабатывает это наследование. Все определения работают корректно, за исключением того, что сами классы не являются одинаковыми (не равны по ссылке).> 
 
 ### `getRepository()`
 
-Get the defined data repository class. If no custom data repository class has been registered before, the default data repository class of NocoBase will be returned. The default name is the same as the name defined by collection.
+Получает определённый класс репозитория данных. Если пользовательский класс репозитория не был зарегистрирован ранее, возвращается класс репозитория по умолчанию из NocoBase. Имя по умолчанию совпадает с именем, заданным при определении коллекции.
 
-Data repository class is mainly used for the CRUD operations based on data model, refer to [Repository](/api/database/repository).
+Класс репозитория в основном используется для операций CRUD (создание, чтение, обновление, удаление) на основе модели данных. Подробнее см. [Repository](/api/database/repository).
 
-**Signature**
+**Сигнатура**
 
 - `getRepository(name: string): Repository`
 - `getRepository(name: string, relationId?: string | number): Repository`
 
-**Parameter**
+**Параметры**
 
-| Name         | Type                 | Default | Description                           |
-| ------------ | -------------------- | ------- | ------------------------------------- |
-| `name`       | `string`             | -       | Registered data repository name       |
-| `relationId` | `string` \| `number` | -       | Foreign key value for relational data |
+| Имя         | Тип                 | По умолчанию | Описание                                      |
+|-------------|---------------------|--------------|-----------------------------------------------|
+| `name`      | `string`            | —            | Имя зарегистрированного репозитория данных    |
+| `relationId`| `string` \| `number`| —            | Значение внешнего ключа для связанных данных  |
 
-When the name contains relationship in the form of `'tables.relactions'`, the related data repository class is returned. If the second parameter is provided, the data repository will be used (query, modify, etc.) based on the foreign key values of the relational data.
+Если имя содержит связь в формате `'таблица.связь'`, возвращается репозиторий связанных данных. Если указан второй параметр, репозиторий будет использоваться (запросы, изменения и т.д.) с учётом значения внешнего ключа в связанных данных.
 
-**Example**
+**Пример**
 
-Suppose there are two data tables <i>posts</i> and <i>authors</i>, and there is a foreign key in the <i>posts</i> table points to the <i>authors</i> table:
+Предположим, есть две таблицы: `posts` (посты) и `authors` (авторы), причём в таблице `posts` есть внешний ключ, ссылающийся на `authors`:
 
 ```ts
 const AuthorsRepo = db.getRepository('authors');
-const author1 = AuthorsRepo.create({ name: 'author1' });
+const author1 = await AuthorsRepo.create({ name: 'author1' });
 
 const PostsRepo = db.getRepository('authors.posts', author1.id);
-const post1 = AuthorsRepo.create({ title: 'post1' });
-asset(post1.authorId === author1.id); // true
+const post1 = await PostsRepo.create({ title: 'post1' });
+console.assert(post1.authorId === author1.id); // true
 ```
 
-## Database Events
+## События базы данных
 
 ### `on()`
 
-Listen for database events.
+Подписывается на события базы данных.
 
-**Signature**
+**Сигнатура**
 
 - `on(event: string, listener: (...args: any[]) => void | Promise<void>): void`
 
-**Parameter**
+**Параметры**
 
-| Name     | Type     | Default | Description    |
-| -------- | -------- | ------- | -------------- |
-| event    | string   | -       | Event name     |
-| listener | Function | -       | Event listener |
+| Имя       | Тип      | По умолчанию | Описание         |
+|-----------|----------|--------------|------------------|
+| `event`   | `string` | —            | Имя события      |
+| `listener`| `Function`| —           | Обработчик события|
 
-Event name supports Model event of Sequelize by default. Global event is listened to by the name `<sequelize_model_global_event>`, single Model event is listened to by the name `<model_name>. <sequelize_model_event>`.
+Имена событий по умолчанию поддерживают события моделей Sequelize. Глобальные события прослушиваются по имени `<sequelize_model_global_event>`, события отдельной модели — по имени `<имя_модели>.<sequelize_model_event>`.
 
-Refer to the [Built-in Events](#built-in-events) section for parameter descriptions and detailed examples of all built-in event types.
+См. раздел [Встроенные события](#built-in-events) для описания параметров и подробных примеров всех встроенных типов событий.
 
 ### `off()`
 
-Remove the event listener function.
+Удаляет обработчик события.
 
-**Signature**
+**Сигнатура**
 
-- `off(name: string, listener: Function)`
+- `off(name: string, listener: Function): void`
 
-**Parameter**
+**Параметры**
 
-| Name     | Type     | Default | Description    |
-| -------- | -------- | ------- | -------------- |
-| name     | string   | -       | Event name     |
-| listener | Function | -       | Event listener |
+| Имя       | Тип      | По умолчанию | Описание         |
+|-----------|----------|--------------|------------------|
+| `name`    | `string` | —            | Имя события      |
+| `listener`| `Function`| —           | Обработчик события|
 
-**Example**
+**Пример**
 
 ```ts
 const listener = async (model, options) => {
@@ -592,26 +591,26 @@ db.on('afterCreate', listener);
 db.off('afterCreate', listener);
 ```
 
-## Database Operations
+## Операции с базой данных
 
 ### `auth()`
 
-Database connection verification. It can be used to ensure that the application has established connection to the data.
+Проверка подключения к базе данных. Может использоваться для убеждения, что приложение установило соединение с БД.
 
-**Signature**
+**Сигнатура**
 
 - `auth(options: QueryOptions & { retry?: number } = {}): Promise<boolean>`
 
-**Parameter**
+**Параметры**
 
-| Name                   | Type                  | Default | Description                                       |
-| ---------------------- | --------------------- | ------- | ------------------------------------------------- |
-| `options?`             | `Object`              | -       | Verification option                               |
-| `options.retry?`       | `number`              | `10`    | Number of retries in case of verification failure |
-| `options.transaction?` | `Transaction`         | -       | Transaction object                                |
-| `options.logging?`     | `boolean \| Function` | `false` | Whether to print the log                          |
+| Имя                   | Тип                  | По умолчанию | Описание                                      |
+|-----------------------|----------------------|--------------|-----------------------------------------------|
+| `options?`            | `Object`             | —            | Параметры проверки                            |
+| `options.retry?`      | `number`             | `10`         | Количество попыток при неудачной проверке     |
+| `options.transaction?`| `Transaction`        | —            | Объект транзакции                             |
+| `options.logging?`    | `boolean \| Function`| `false`      | Выводить ли логи                              |
 
-**Example**
+**Пример**
 
 ```ts
 await db.auth();
@@ -619,9 +618,9 @@ await db.auth();
 
 ### `reconnect()`
 
-Reconnect to the database.
+Повторное подключение к базе данных.
 
-**Example**
+**Пример**
 
 ```ts
 await db.reconnect();
@@ -629,39 +628,39 @@ await db.reconnect();
 
 ### `closed()`
 
-Check whether database has closed the connection.
+Проверяет, закрыто ли соединение с базой данных.
 
-**Signature**
+**Сигнатура**
 
 - `closed(): boolean`
 
 ### `close()`
 
-Closes database connection. Equivalent to `sequelize.close()`.
+Закрывает соединение с базой данных. Аналогично `sequelize.close()`.
 
 ### `sync()`
 
-Synchronizes database table structure. Equivalent to `sequelize.sync()`, refer to [Sequelize documentation](https://sequelize.org/api/v6/class/src/sequelize.js~sequelize#instance-method-sync) for parameters.
+Синхронизирует структуру таблиц базы данных. Аналогично `sequelize.sync()`. Подробнее о параметрах см. в [документации Sequelize](https://sequelize.org/api/v6/class/src/sequelize.js~sequelize#instance-method-sync).
 
 ### `clean()`
 
-Empty the database, it will delete all data tables.
+Очищает базу данных — удаляет все таблицы данных.
 
-**Signature**
+**Сигнатура**
 
 - `clean(options: CleanOptions): Promise<void>`
 
-**Parameter**
+**Параметры**
 
-| Name                  | Type          | Default | Description                       |
-| --------------------- | ------------- | ------- | --------------------------------- |
-| `options.drop`        | `boolean`     | `false` | Whether to remove all data tables |
-| `options.skip`        | `string[]`    | -       | Names of tables to skip           |
-| `options.transaction` | `Transaction` | -       | Transaction object                |
+| Имя                   | Тип           | По умолчанию | Описание                          |
+|-----------------------|---------------|--------------|-----------------------------------|
+| `options.drop`        | `boolean`     | `false`      | Удалять ли все таблицы            |
+| `options.skip`        | `string[]`    | —            | Имена таблиц, которые нужно пропустить |
+| `options.transaction` | `Transaction` | —            | Объект транзакции                 |
 
-**Example**
+**Пример**
 
-Remove all tables except for the `users` table.
+Удалить все таблицы, кроме таблицы `users`:
 
 ```ts
 await db.clean({
@@ -670,25 +669,25 @@ await db.clean({
 });
 ```
 
-## Package-Level Export
+## Экспорт на уровне пакета
 
 ### `defineCollection()`
 
-Create the configuration content of a data table.
+Создаёт конфигурацию таблицы данных.
 
-**Signature**
+**Сигнатура**
 
 - `defineCollection(name: string, config: CollectionOptions): CollectionOptions`
 
-**Parameter**
+**Параметры**
 
-| Name                | Type                | Default | Description                                        |
-| ------------------- | ------------------- | ------- | -------------------------------------------------- |
-| `collectionOptions` | `CollectionOptions` | -       | All parameters are the same with `db.collection()` |
+| Имя                | Тип                | По умолчанию | Описание                                        |
+|--------------------|--------------------|--------------|-------------------------------------------------|
+| `collectionOptions`| `CollectionOptions`| —            | Все параметры те же, что и у `db.collection()`  |
 
-**Example**
+**Пример**
 
-For the data table configuration file to be imported by `db.import()`:
+Файл конфигурации таблицы, который будет импортирован через `db.import()`:
 
 ```ts
 import { defineCollection } from '@nocobase/database';
@@ -706,22 +705,22 @@ export default defineCollection({
 
 ### `extendCollection()`
 
-Extent the configuration content of a data table that is already in memory, mainly for the content of files imported by the `import()` method. This is the top-level package export method of `@nocobase/database`, and is not called through db instance. The `extend` alias can also be used.
+Расширяет конфигурацию уже загруженной в память таблицы данных. В основном используется для модификации конфигураций, загруженных через метод `import()`. Это метод верхнего уровня из пакета `@nocobase/database`, который вызывается не через экземпляр `db`, а напрямую. Также можно использовать алиас `extend`.
 
-**Signature**
+**Сигнатура**
 
 - `extendCollection(collectionOptions: CollectionOptions, mergeOptions?: MergeOptions): ExtendedCollectionOptions`
 
-**Parameter**
+**Параметры**
 
-| Name                | Type                | Default | Description                                                             |
-| ------------------- | ------------------- | ------- | ----------------------------------------------------------------------- |
-| `collectionOptions` | `CollectionOptions` | -       | All the same with `db.collection()`                                     |
-| `mergeOptions?`     | `MergeOptions`      | -       | [deepmerge](https://npmjs.com/package/deepmerge) options of npm package |
+| Имя                | Тип                | По умолчанию | Описание                                                             |
+|--------------------|--------------------|--------------|----------------------------------------------------------------------|
+| `collectionOptions`| `CollectionOptions`| —            | Параметры аналогичны `db.collection()`                               |
+| `mergeOptions?`    | `MergeOptions`     | —            | Параметры для [deepmerge](https://npmjs.com/package/deepmerge)       |
 
-**Example**
+**Пример**
 
-Original definition of the table <i>books</i> (books.ts):
+Исходное определение таблицы `books` (файл `books.ts`):
 
 ```ts
 export default {
@@ -730,37 +729,39 @@ export default {
 };
 ```
 
-Extend the definition of the table <i>books</i> (books.extend.ts):
+Расширение определения таблицы `books` (файл `books.extend.ts`):
 
 ```ts
 import { extend } from '@nocobase/database';
 
-// Extend again
+// Расширяем существующую конфигурацию
 export default extend({
   name: 'books',
   fields: [{ name: 'price', type: 'number' }],
 });
 ```
 
-If the above two files are imported when calling `import()`, after being extended again by `extend()`, the table <i>books</i> will have `title` and `price` two fields.
+Если оба файла будут загружены через `import()`, после применения `extend()` таблица `books` будет содержать два поля: `title` и `price`.
 
-This method is especially useful when extending the table structure that is already defined by existing plugin.
+Этот метод особенно полезен при расширении структуры таблиц, уже определённых в существующем плагине.
 
-## Built-in Events
+---
 
-The following events will be triggered in the corresponding lifecycle of database, subscribe by the `on()` method and perform specific processing to meet some business needs.
+## Встроенные события
+
+Следующие события вызываются на соответствующих этапах жизненного цикла базы данных. Подписаться на них можно с помощью метода `on()`, чтобы выполнять определённые действия и удовлетворять бизнес-требования.
 
 ### `'beforeSync'` / `'afterSync'`
 
-Events triggered before or after a new table structure configuration (fields, indexes, etc.) is synchronized to the database. This is usually triggered when executing `collection.sync()` (internal call) for the logical processing of the extension of some special fields.
+События, вызываемые до или после синхронизации новой конфигурации структуры таблицы (полей, индексов и т.д.) с базой данных. Обычно срабатывают при вызове `collection.sync()` (внутренний вызов) — используются для логической обработки специальных полей или расширений.
 
-**Signature**
+**Сигнатура**
 
 ```ts
 on(eventName: `${string}.beforeSync` | 'beforeSync' | `${string}.afterSync` | 'afterSync', listener: SyncListener): this
 ```
 
-**Type**
+**Типы**
 
 ```ts
 import type { SyncOptions, HookReturn } from 'sequelize/types';
@@ -768,7 +769,7 @@ import type { SyncOptions, HookReturn } from 'sequelize/types';
 type SyncListener = (options?: SyncOptions) => HookReturn;
 ```
 
-**Example**
+**Пример**
 
 ```ts
 const users = db.collection({
@@ -776,28 +777,32 @@ const users = db.collection({
   fields: [{ type: 'string', name: 'username' }],
 });
 
+// Событие перед синхронизацией всех таблиц
 db.on('beforeSync', async (options) => {
-  // do something
+  // выполнить какие-то действия
 });
 
+// Событие после синхронизации таблицы "users"
 db.on('users.afterSync', async (options) => {
-  // do something
+  // выполнить какие-то действия
 });
 
 await users.sync();
 ```
 
+---
+
 ### `'beforeValidate'` / `'afterValidate'`
 
-Before creating or updating data, there is a validation against the data based on the rules defined by the collection, and the corresponding events are triggered before and after the validation. This is triggered when `repository.create()` or `repository.update()` is called.
+Перед созданием или обновлением данных выполняется валидация на основе правил, заданных в коллекции. Соответствующие события срабатывают до и после этой валидации. Вызываются при вызове `repository.create()` или `repository.update()`.
 
-**Signature**
+**Сигнатура**
 
 ```ts
 on(eventName: `${string}.beforeValidate` | 'beforeValidate' | `${string}.afterValidate` | 'afterValidate', listener: ValidateListener): this
 ```
 
-**Type**
+**Типы**
 
 ```ts
 import type { ValidationOptions } from 'sequelize/types/lib/instance-validator';
@@ -810,7 +815,7 @@ type ValidateListener = (
 ) => HookReturn;
 ```
 
-**Example**
+**Пример**
 
 ```ts
 db.collection({
@@ -826,50 +831,53 @@ db.collection({
   ],
 });
 
-// all models
+// Событие до валидации для всех моделей
 db.on('beforeValidate', async (model, options) => {
-  // do something
-});
-// tests model
-db.on('tests.beforeValidate', async (model, options) => {
-  // do something
+  // выполнить какие-то действия
 });
 
-// all models
-db.on('afterValidate', async (model, options) => {
-  // do something
+// Событие до валидации только для модели "tests"
+db.on('tests.beforeValidate', async (model, options) => {
+  // выполнить какие-то действия
 });
-// tests model
+
+// Событие после валидации для всех моделей
+db.on('afterValidate', async (model, options) => {
+  // выполнить какие-то действия
+});
+
+// Событие после валидации только для модели "tests"
 db.on('tests.afterValidate', async (model, options) => {
-  // do something
+  // выполнить какие-то действия
 });
 
 const repository = db.getRepository('tests');
 await repository.create({
   values: {
-    email: 'abc', // checks for email format
+    email: 'abc', // будет проверен на соответствие формату email
   },
 });
-// or
+
+// или
 await repository.update({
   filterByTk: 1,
   values: {
-    email: 'abc', // checks for email format
+    email: 'abc', // будет проверен на соответствие формату email
   },
 });
 ```
 
 ### `'beforeCreate'` / `'afterCreate'`
 
-Events triggered before or after creating one piece of data. This is triggered when `repository.create()` is called.
+События, вызываемые до или после создания одной записи данных. Срабатывают при вызове `repository.create()`.
 
-**Signature**
+**Сигнатура**
 
 ```ts
 on(eventName: `${string}.beforeCreate` | 'beforeCreate' | `${string}.afterCreate` | 'afterCreate', listener: CreateListener): this
 ```
 
-**Type**
+**Типы**
 
 ```ts
 import type { CreateOptions, HookReturn } from 'sequelize/types';
@@ -881,11 +889,11 @@ export type CreateListener = (
 ) => HookReturn;
 ```
 
-**Example**
+**Пример**
 
 ```ts
 db.on('beforeCreate', async (model, options) => {
-  // do something
+  // выполнить какие-то действия
 });
 
 db.on('books.afterCreate', async (model, options) => {
@@ -897,17 +905,19 @@ db.on('books.afterCreate', async (model, options) => {
 });
 ```
 
+---
+
 ### `'beforeUpdate'` / `'afterUpdate'`
 
-Events triggered before or after updating one piece of data. This is triggered when `repository.update()` is called.
+События, вызываемые до или после обновления одной записи данных. Срабатывают при вызове `repository.update()`.
 
-**Signature**
+**Сигнатура**
 
 ```ts
 on(eventName: `${string}.beforeUpdate` | 'beforeUpdate' | `${string}.afterUpdate` | 'afterUpdate', listener: UpdateListener): this
 ```
 
-**Type**
+**Типы**
 
 ```ts
 import type { UpdateOptions, HookReturn } from 'sequelize/types';
@@ -919,29 +929,31 @@ export type UpdateListener = (
 ) => HookReturn;
 ```
 
-**Example**
+**Пример**
 
 ```ts
 db.on('beforeUpdate', async (model, options) => {
-  // do something
+  // выполнить какие-то действия
 });
 
 db.on('books.afterUpdate', async (model, options) => {
-  // do something
+  // выполнить какие-то действия
 });
 ```
 
+---
+
 ### `'beforeSave'` / `'afterSave'`
 
-Events triggered before or after creating or updating one piece of data. This is triggered when `repository.create()` or `repository.update()` is called.
+События, вызываемые до или после создания или обновления одной записи данных. Срабатывают при вызове `repository.create()` или `repository.update()`.
 
-**Signature**
+**Сигнатура**
 
 ```ts
 on(eventName: `${string}.beforeSave` | 'beforeSave' | `${string}.afterSave` | 'afterSave', listener: SaveListener): this
 ```
 
-**Type**
+**Типы**
 
 ```ts
 import type { SaveOptions, HookReturn } from 'sequelize/types';
@@ -950,29 +962,31 @@ import type { Model } from '@nocobase/database';
 export type SaveListener = (model: Model, options?: SaveOptions) => HookReturn;
 ```
 
-**Example**
+**Пример**
 
 ```ts
 db.on('beforeSave', async (model, options) => {
-  // do something
+  // выполнить какие-то действия
 });
 
 db.on('books.afterSave', async (model, options) => {
-  // do something
+  // выполнить какие-то действия
 });
 ```
 
+---
+
 ### `'beforeDestroy'` / `'afterDestroy'`
 
-Events triggered before or after deleting one piece of data. This is triggered when `repository.destroy()` is called.
+События, вызываемые до или после удаления одной записи данных. Срабатывают при вызове `repository.destroy()`.
 
-**Signature**
+**Сигнатура**
 
 ```ts
 on(eventName: `${string}.beforeDestroy` | 'beforeDestroy' | `${string}.afterDestroy` | 'afterDestroy', listener: DestroyListener): this
 ```
 
-**Type**
+**Типы**
 
 ```ts
 import type { DestroyOptions, HookReturn } from 'sequelize/types';
@@ -984,29 +998,31 @@ export type DestroyListener = (
 ) => HookReturn;
 ```
 
-**Example**
+**Пример**
 
 ```ts
 db.on('beforeDestroy', async (model, options) => {
-  // do something
+  // выполнить какие-то действия
 });
 
 db.on('books.afterDestroy', async (model, options) => {
-  // do something
+  // выполнить какие-то действия
 });
 ```
 
+---
+
 ### `'afterCreateWithAssociations'`
 
-Events triggered after creating one piece of data that carries hierarchical data. This is triggered when `repository.create()` is called.
+Событие, вызываемое после создания записи, содержащей иерархические (связанные) данные. Срабатывает при вызове `repository.create()`.
 
-**Signature**
+**Сигнатура**
 
 ```ts
 on(eventName: `${string}.afterCreateWithAssociations` | 'afterCreateWithAssociations', listener: CreateWithAssociationsListener): this
 ```
 
-**Type**
+**Типы**
 
 ```ts
 import type { CreateOptions, HookReturn } from 'sequelize/types';
@@ -1018,29 +1034,31 @@ export type CreateWithAssociationsListener = (
 ) => HookReturn;
 ```
 
-**Example**
+**Пример**
 
 ```ts
 db.on('afterCreateWithAssociations', async (model, options) => {
-  // do something
+  // выполнить какие-то действия
 });
 
 db.on('books.afterCreateWithAssociations', async (model, options) => {
-  // do something
+  // выполнить какие-то действия
 });
 ```
 
+---
+
 ### `'afterUpdateWithAssociations'`
 
-Events triggered after updating one piece of data that carries hierarchical data. This is triggered when `repository.update()` is called.
+Событие, вызываемое после обновления записи, содержащей иерархические (связанные) данные. Срабатывает при вызове `repository.update()`.
 
-**Signature**
+**Сигнатура**
 
 ```ts
-on(eventName: `${string}.afterUpdateWithAssociations` | 'afterUpdateWithAssociations', listener: CreateWithAssociationsListener): this
+on(eventName: `${string}.afterUpdateWithAssociations` | 'afterUpdateWithAssociations', listener: UpdateWithAssociationsListener): this
 ```
 
-**Type**
+**Типы**
 
 ```ts
 import type { UpdateOptions, HookReturn } from 'sequelize/types';
@@ -1052,29 +1070,31 @@ export type UpdateWithAssociationsListener = (
 ) => HookReturn;
 ```
 
-**Example**
+**Пример**
 
 ```ts
 db.on('afterUpdateWithAssociations', async (model, options) => {
-  // do something
+  // выполнить какие-то действия
 });
 
 db.on('books.afterUpdateWithAssociations', async (model, options) => {
-  // do something
+  // выполнить какие-то действия
 });
 ```
 
+---
+
 ### `'afterSaveWithAssociations'`
 
-Events triggered after creating or updating one piece of data that carries hierarchical data. This is triggered when `repository.create()` or `repository.update()` is called.
+Событие, вызываемое после создания или обновления записи, содержащей иерархические (связанные) данные. Срабатывает при вызове `repository.create()` или `repository.update()`.
 
-**Signature**
+**Сигнатура**
 
 ```ts
 on(eventName: `${string}.afterSaveWithAssociations` | 'afterSaveWithAssociations', listener: SaveWithAssociationsListener): this
 ```
 
-**Type**
+**Типы**
 
 ```ts
 import type { SaveOptions, HookReturn } from 'sequelize/types';
@@ -1086,31 +1106,33 @@ export type SaveWithAssociationsListener = (
 ) => HookReturn;
 ```
 
-**Example**
+**Пример**
 
 ```ts
 db.on('afterSaveWithAssociations', async (model, options) => {
-  // do something
+  // выполнить какие-то действия
 });
 
 db.on('books.afterSaveWithAssociations', async (model, options) => {
-  // do something
+  // выполнить какие-то действия
 });
 ```
 
+---
+
 ### `'beforeDefineCollection'`
 
-Events triggered before defining a data table, such as when `db.collection()` is called.
+Событие, вызываемое перед определением таблицы данных, например, при вызове `db.collection()`.
 
-Note: This is a synchronous event.
+> **Примечание**: Это синхронное событие.
 
-**Signature**
+**Сигнатура**
 
 ```ts
 on(eventName: 'beforeDefineCollection', listener: BeforeDefineCollectionListener): this
 ```
 
-**Type**
+**Типы**
 
 ```ts
 import type { CollectionOptions } from '@nocobase/database';
@@ -1120,70 +1142,74 @@ export type BeforeDefineCollectionListener = (
 ) => void;
 ```
 
-**Example**
+**Пример**
 
 ```ts
 db.on('beforeDefineCollection', (options) => {
-  // do something
+  // выполнить какие-то действия
 });
 ```
 
+---
+
 ### `'afterDefineCollection'`
 
-Events triggered after defining a data table, such as when `db.collection()` is called.
+Событие, вызываемое после определения таблицы данных, например, при вызове `db.collection()`.
 
-Note: This is a synchronous event.
+> **Примечание**: Это синхронное событие.
 
-**Signature**
+**Сигнатура**
 
 ```ts
 on(eventName: 'afterDefineCollection', listener: AfterDefineCollectionListener): this
 ```
 
-**Type**
+**Типы**
 
 ```ts
 import type { Collection } from '@nocobase/database';
 
-export type AfterDefineCollectionListener = (options: Collection) => void;
+export type AfterDefineCollectionListener = (collection: Collection) => void;
 ```
 
-**Example**
+**Пример**
 
 ```ts
 db.on('afterDefineCollection', (collection) => {
-  // do something
+  // выполнить какие-то действия
 });
 ```
 
+---
+
 ### `'beforeRemoveCollection'` / `'afterRemoveCollection'`
 
-Events triggered before or after removing a data table from memory, such as when `db.removeCollection()` is called.
+События, вызываемые до или после удаления таблицы данных из памяти, например, при вызове `db.removeCollection()`.
 
-Note: This is a synchronous event.
+> **Примечание**: Это синхронные события.
 
-**Signature**
+**Сигнатура**
 
 ```ts
 on(eventName: 'beforeRemoveCollection' | 'afterRemoveCollection', listener: RemoveCollectionListener): this
 ```
 
-**Type**
+**Типы**
 
 ```ts
 import type { Collection } from '@nocobase/database';
 
-export type RemoveCollectionListener = (options: Collection) => void;
+export type RemoveCollectionListener = (collection: Collection) => void;
 ```
 
-**Example**
+**Пример**
 
 ```ts
 db.on('beforeRemoveCollection', (collection) => {
-  // do something
+  // выполнить какие-то действия
 });
 
 db.on('afterRemoveCollection', (collection) => {
-  // do something
+  // выполнить какие-то действия
 });
 ```
