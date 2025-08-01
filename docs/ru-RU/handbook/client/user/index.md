@@ -1,23 +1,23 @@
-# User Manual
+# Руководство пользователя
 
-This plugin is one of the core components built into NocoBase, providing the client interface. The client features an AdminLayout design, with the following key elements:
+Этот плагин является одним из основных встроенных компонентов NocoBase и предоставляет клиентский интерфейс. Интерфейс выполнен по принципу AdminLayout и включает следующие ключевые элементы:
 
-## Plugin Manager
+## Менеджер плагинов
 
-Manage your plugins with options to add, activate, disable, or delete them.
+Управление плагинами: вы можете добавлять, активировать, отключать или удалять плагины.
 
 ![](https://static-docs.nocobase.com/23ee6d074e2829617c4b766282c16627.png)
 
-## Plugin Management Center
+## Центр управления плагинами
 
-Access the configuration pages for each plugin.
+Доступ к страницам настройки каждого плагина.
 
 ![](https://static-docs.nocobase.com/f0236b3cf5b65c39fa723c66a182d214.png)
 
-## User Profile Center
+## Центр управления профилем пользователя
 
 ![](https://static-docs.nocobase.com/58ff74ebe37542180e7fd2629f940a79.png)
 
-## UI Editor
+## Редактор интерфейса (UI Editor)
 
 ![](https://static-docs.nocobase.com/8dc5d2b1e4487622e40e8a6510e3e492.png)
