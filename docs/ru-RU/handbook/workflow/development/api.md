@@ -1,8 +1,8 @@
-# API Reference
+# Справочник по API
 
-## Server-Side
+## Серверная часть
 
-The API available in the server-side package is shown in the following code:
+API, доступное в серверном пакете, показано в следующем коде:
 
 ```ts
 import PluginWorkflowServer, {
@@ -15,32 +15,32 @@ import PluginWorkflowServer, {
 
 ### `PluginWorkflowServer`
 
-The Workflow Plugin class.
+Класс плагина Workflow.
 
-Typically, during an application's runtime, the Workflow Plugin instance can be retrieved by calling `app.pm.get<PluginWorkflowServer>(PluginWorkflowServer)` from any location where the application instance `app` is accessible (hereinafter referred to as `plugin`).
+Обычно во время работы приложения экземпляр плагина Workflow можно получить, вызвав `app.pm.get<PluginWorkflowServer>(PluginWorkflowServer)` из любого места, где доступен экземпляр приложения `app` (далее именуемый `plugin`).
 
 ### `registerTrigger()`
 
-Registers a new trigger type.
+Регистрирует новый тип триггера.
 
-**Signature**
+**Сигнатура**
 
 `registerTrigger(type: string, trigger: typeof Trigger | Trigger)`
 
-**Parameters**
+**Параметры**
 
-| Parameter   | Type                        | Description             |
-| ----------- | --------------------------- | ----------------------- |
-| `type`      | `string`                    | Trigger type identifier |
-| `trigger`   | `typeof Trigger \| Trigger` | Trigger type or instance|
+| Параметр   | Тип                        | Описание               |
+| -----------| -------------------------- | ---------------------- |
+| `type`     | `string`                   | Идентификатор типа триггера |
+| `trigger`  | `typeof Trigger \| Trigger`| Тип или экземпляр триггера |
 
-**Example**
+**Пример**
 
 ```ts
 import PluginWorkflowServer, { Trigger } from '@nocobase/plugin-workflow';
 
 function handler(this: MyTrigger, workflow: WorkflowModel, message: string) {
-  // trigger workflow
+  // активировать workflow
   this.workflow.trigger(workflow, { data: message.data });
 }
 
@@ -48,7 +48,7 @@ class MyTrigger extends Trigger {
   messageHandlers: Map<number, WorkflowModel> = new Map();
   on(workflow: WorkflowModel) {
     const messageHandler = handler.bind(this, workflow);
-    // listen for some event to trigger workflow
+    // слушать событие для активации workflow
     process.on(
       'message',
       this.messageHandlers.set(workflow.id, messageHandler),
@@ -57,18 +57,18 @@ class MyTrigger extends Trigger {
 
   off(workflow: WorkflowModel) {
     const messageHandler = this.messageHandlers.get(workflow.id);
-    // remove listener
+    // удалить слушатель
     process.off('message', messageHandler);
   }
 }
 
 export default class MyPlugin extends Plugin {
   load() {
-    // get workflow plugin instance
+    // получить экземпляр плагина workflow
     const workflowPlugin =
       this.app.pm.get<PluginWorkflowServer>(PluginWorkflowServer);
 
-    // register trigger
+    // зарегистрировать триггер
     workflowPlugin.registerTrigger('myTrigger', MyTrigger);
   }
 }
@@ -76,27 +76,27 @@ export default class MyPlugin extends Plugin {
 
 ### `registerInstruction()`
 
-Registers a new node type.
+Регистрирует новый тип узла.
 
-**Signature**
+**Сигнатура**
 
 `registerInstruction(type: string, instruction: typeof Instruction | Instruction)`
 
-**Parameters**
+**Параметры**
 
-| Parameter      | Type                                | Description                |
-| -------------- | ----------------------------------- | -------------------------- |
-| `type`         | `string`                            | Instruction type identifier|
-| `instruction`  | `typeof Instruction \| Instruction` | Instruction type or instance|
+| Параметр      | Тип                                | Описание                |
+| ------------- | ---------------------------------- | ----------------------- |
+| `type`        | `string`                           | Идентификатор типа узла |
+| `instruction` | `typeof Instruction \| Instruction`| Тип или экземпляр узла  |
 
-**Example**
+**Пример**
 
 ```ts
 import PluginWorkflowServer, { Instruction, JOB_STATUS } from '@nocobase/plugin-workflow';
 
 class LogInstruction extends Instruction {
   run(node, input, processor) {
-    console.log('my instruction runs!');
+    console.log('моя команда выполняется!');
     return {
       status: JOB_STATUS.RESOLVED,
     };
@@ -105,10 +105,10 @@ class LogInstruction extends Instruction {
 
 export default class MyPlugin extends Plugin {
   load() {
-    // get workflow plugin instance
+    // получить экземпляр плагина workflow
     const workflowPlugin = this.app.pm.get<PluginWorkflowServer>(PluginWorkflowServer);
 
-    // register instruction
+    // зарегистрировать команду
     workflowPlugin.registerInstruction('log', LogInstruction);
   }
 }
@@ -116,24 +116,24 @@ export default class MyPlugin extends Plugin {
 
 ### `trigger()`
 
-Triggers a specific workflow. This is mainly used within custom triggers to activate the corresponding workflow when a specific custom event is detected.
+Активирует определенный workflow. В основном используется в пользовательских триггерах для запуска соответствующего workflow при обнаружении определенного пользовательского события.
 
-**Signature**
+**Сигнатура**
 
 `trigger(workflow: Workflow, context: any)`
 
-**Parameters**
+**Параметры**
 
-| Parameter | Type           | Description                          |
-| --------- | -------------- | ------------------------------------ |
-| `workflow`| `WorkflowModel`| The workflow object to be triggered  |
-| `context` | `object`       | The context data provided when triggering |
+| Параметр  | Тип            | Описание                          |
+| --------- | -------------- | --------------------------------- |
+| `workflow`| `WorkflowModel`| Объект workflow для активации     |
+| `context` | `object`       | Контекстные данные при активации  |
 
-:::info{title=Tip}
-`context` is currently a required parameter; the workflow will not trigger without it.
+:::info{title=Совет}
+`context` в настоящее время является обязательным параметром; workflow не активируется без него.
 :::
 
-**Example**
+**Пример**
 
 ```ts
 import { Trigger } from '@nocobase/plugin-workflow';
@@ -142,9 +142,9 @@ class MyTrigger extends Trigger {
   timer: NodeJS.Timeout;
 
   on(workflow) {
-    // register event
+    // зарегистрировать событие
     this.timer = setInterval(() => {
-      // trigger workflow
+      // активировать workflow
       this.plugin.trigger(workflow, { date: new Date() });
     }, workflow.config.interval ?? 60000);
   }
@@ -153,53 +153,53 @@ class MyTrigger extends Trigger {
 
 ### `resume()`
 
-Resumes the execution of a paused workflow at a specific node task.
+Возобновляет выполнение приостановленного рабочего процесса на определённой задаче узла.
 
-- Only workflows in the `EXECUTION_STATUS.STARTED` state can be resumed.
-- Only node tasks in the `JOB_STATUS.PENDING` state can be resumed.
+- Возобновить можно только рабочие процессы, находящиеся в состоянии `EXECUTION_STATUS.STARTED`.
+- Возобновить можно только задачи узлов, находящиеся в состоянии `JOB_STATUS.PENDING`.
 
-**Signature**
+**Сигнатура**
 
 `resume(job: JobModel)`
 
-**Parameters**
+**Параметры**
 
-| Parameter | Type       | Description                |
-| --------- | ---------- | -------------------------- |
-| `job`     | `JobModel` | The updated task object     |
+| Параметр | Тип       | Описание                     |
+|---------|----------|------------------------------|
+| `job`   | `JobModel` | Обновлённый объект задачи     |
 
-:::info{title=Tip}
-The task object passed in is usually the updated object and typically has the `status` updated to a value other than `JOB_STATUS.PENDING`; otherwise, it will remain paused.
+:::info{title=Совет}
+Передаваемый объект задачи обычно является обновлённым и, как правило, имеет поле `status`, изменённое на значение, отличное от `JOB_STATUS.PENDING`; в противном случае выполнение останется приостановленным.
 :::
 
-**Example**
+**Пример**
 
-See [source code](https://github.com/nocobase/nocobase/blob/main/packages/plugins/%40nocobase/plugin-workflow-manual/src/server/actions.ts#L99).
+См. [исходный код](https://github.com/nocobase/nocobase/blob/main/packages/plugins/%40nocobase/plugin-workflow-manual/src/server/actions.ts#L99).
 
 ## `Trigger`
 
-Base class for triggers, used to extend custom trigger types.
+Базовый класс для триггеров, используется для расширения пользовательских типов триггеров.
 
-| Parameter         | Type                                                        | Description                   |
-| ----------------- | ----------------------------------------------------------- | ----------------------------- |
-| `constructor`     | `(public readonly workflow: PluginWorkflowServer): Trigger` | Constructor                   |
-| `on?`             | `(workflow: WorkflowModel): void`                           | Event handler when workflow is started |
-| `off?`            | `(workflow: WorkflowModel): void`                           | Event handler when workflow is stopped |
+| Параметр         | Тип                                                        | Описание                                 |
+|------------------|------------------------------------------------------------|------------------------------------------|
+| `constructor`    | `(public readonly workflow: PluginWorkflowServer): Trigger` | Конструктор                              |
+| `on?`            | `(workflow: WorkflowModel): void`                          | Обработчик события при запуске рабочего процесса |
+| `off?`           | `(workflow: WorkflowModel): void`                          | Обработчик события при остановке рабочего процесса |
 
-`on`/`off` are used to register/unregister event listeners when the workflow is enabled/disabled. The passed parameter is the workflow instance corresponding to the trigger, which can be processed according to the configuration. For certain trigger types that already listen to events globally, these methods may not need to be implemented. For example, in a timed trigger, a timer can be registered in `on` and unregistered in `off`.
+`on`/`off` используются для регистрации/отмены регистрации слушателей событий при включении/выключении рабочего процесса. Передаваемый параметр — это экземпляр рабочего процесса, соответствующий триггеру, который можно обрабатывать в зависимости от конфигурации. Для некоторых типов триггеров, которые уже глобально слушают события, реализация этих методов может не потребоваться. Например, в триггере по расписанию можно зарегистрировать таймер в `on` и отменить его в `off`.
 
 ## `Instruction`
 
-Base class for instruction types, used to extend custom instruction types.
+Базовый класс для типов инструкций, используется для расширения пользовательских типов узлов.
 
-| Parameter         | Type                                                            | Description                         |
-| ----------------- | --------------------------------------------------------------- | ----------------------------------- |
-| `constructor`     | `(public readonly workflow: PluginWorkflowServer): Instruction` | Constructor                         |
-| `run`             | `Runner`                                                        | Execution logic when entering the node for the first time |
-| `resume?`         | `Runner`                                                        | Execution logic when resuming after an interruption |
-| `getScope?`       | `(node: FlowNodeModel, data: any, processor: Processor): any`   | Provides local variables generated by the branch node |
+| Параметр         | Тип                                                            | Описание                                 |
+|------------------|----------------------------------------------------------------|------------------------------------------|
+| `constructor`    | `(public readonly workflow: PluginWorkflowServer): Instruction` | Конструктор                              |
+| `run`            | `Runner`                                                       | Логика выполнения при первом входе в узел |
+| `resume?`        | `Runner`                                                       | Логика выполнения при возобновлении после приостановки |
+| `getScope?`      | `(node: FlowNodeModel, data: any, processor: Processor): any`  | Предоставляет локальные переменные, генерируемые узлом ветвления |
 
-**Related Types**
+**Связанные типы**
 
 ```ts
 export type Job =
@@ -225,109 +225,91 @@ export class Instruction {
 }
 ```
 
-`getScope` can be referred to in the [loop node implementation](https://github.com/nocobase/nocobase/blob/main/packages/plugins/%40nocobase/plugin-workflow-loop/src/server/LoopInstruction.ts#L83), which is used to provide local variables for the branch.
+`getScope` можно посмотреть в [реализации узла цикла](https://github.com/nocobase/nocobase/blob/main/packages/plugins/%40nocobase/plugin-workflow-loop/src/server/LoopInstruction.ts#L83), где он используется для предоставления локальных переменных внутри ветви.
 
-## `EXECUTION_STATUS`
-
-A table of constants representing the status of workflow execution plans, used to indicate the current status of the execution plan.
-
-| Constant Name                   | Meaning              |
-| --------------------------------| ---------------------|
-| `EXECUTION_STATUS.QUEUEING`     | Queueing             |
-| `EXECUTION_STATUS.STARTED`      | In Progress          |
-| `EXECUTION_STATUS.RESOLVED`     | Successfully Completed |
-| `EXECUTION_STATUS.FAILED`       | Failed               |
-| `EXECUTION_STATUS.ERROR`        | Execution Error      |
-| `EXECUTION_STATUS.ABORTED`      | Aborted              |
-| `EXECUTION_STATUS.CANCELED`     | Canceled             |
-| `EXECUTION_STATUS.REJECTED`     | Rejected             |
-| `EXECUTION_STATUS.RETRY_NEEDED` | Retry Needed         |
-
-Apart from the first three, all other statuses represent failure states, but they can indicate different reasons for failure.
+# Справочник по API
 
 ## `JOB_STATUS`
 
-A table of constants representing the status of workflow node tasks, used to indicate the current status of the node task. The status generated by the node also affects the status of the entire execution plan.
+Таблица констант, представляющих статус задач узлов workflow. Используется для указания текущего состояния задачи узла. Статус, генерируемый узлом, также влияет на статус всего плана выполнения.
 
-| Constant Name                | Meaning                                     |
-| ---------------------------- | ------------------------------------------ |
-| `JOB_STATUS.PENDING`         | Pending: The node has been reached, but the instruction requires suspension |
-| `JOB_STATUS.RESOLVED`        | Successfully Completed                     |
-| `JOB_STATUS.FAILED`          | Failed: The node execution did not meet the configured conditions |
-| `JOB_STATUS.ERROR`           | Error: An uncaught error occurred during node execution |
-| `JOB_STATUS.ABORTED`         | Aborted: The node was terminated by other logic after suspension |
-| `JOB_STATUS.CANCELED`        | Canceled: The node was manually canceled after suspension |
-| `JOB_STATUS.REJECTED`        | Rejected: The node was manually rejected after suspension |
-| `JOB_STATUS.RETRY_NEEDED`    | Retry Needed                               |
+| Название константы          | Значение                                   |
+| --------------------------- | ----------------------------------------- |
+| `JOB_STATUS.PENDING`        | В ожидании: узел достигнут, но выполнение приостановлено |
+| `JOB_STATUS.RESOLVED`       | Успешно завершено                         |
+| `JOB_STATUS.FAILED`         | Неудача: выполнение узла не соответствует условиям |
+| `JOB_STATUS.ERROR`          | Ошибка: во время выполнения узла возникла неперехваченная ошибка |
+| `JOB_STATUS.ABORTED`        | Прервано: узел был остановлен другой логикой после приостановки |
+| `JOB_STATUS.CANCELED`       | Отменено: узел был отменен вручную после приостановки |
+| `JOB_STATUS.REJECTED`       | Отклонено: узел был отклонен вручную после приостановки |
+| `JOB_STATUS.RETRY_NEEDED`   | Требуется повторная попытка                |
 
-## Client-Side
+## Клиентская часть
 
-The API available in the client-side package is shown in the following code:
+API, доступное в клиентском пакете, показано в следующем коде:
 
 ```ts
 import PluginWorkflowClient, {
   Trigger,
   Instruction,
 } from '@nocobase/plugin-workflow/client';
-
-
 ```
 
 ### `PluginWorkflowClient`
 
 ### `registerTrigger()`
 
-Registers the configuration panel corresponding to the trigger type.
+Регистрирует панель конфигурации, соответствующую типу триггера.
 
-**Signature**
+**Сигнатура**
 
 `registerTrigger(type: string, trigger: typeof Trigger | Trigger): void`
 
-**Parameters**
+**Параметры**
 
-| Parameter   | Type                        | Description                             |
-| ----------- | --------------------------- | --------------------------------------- |
-| `type`      | `string`                    | Trigger type identifier, consistent with the identifier used during registration |
-| `trigger`   | `typeof Trigger \| Trigger` | Trigger type or instance                |
+| Параметр   | Тип                        | Описание                              |
+| ---------- | -------------------------- | ------------------------------------ |
+| `type`     | `string`                   | Идентификатор типа триггера, должен совпадать с идентификатором при регистрации |
+| `trigger`  | `typeof Trigger \| Trigger` | Тип или экземпляр триггера            |
 
 ### `registerInstruction()`
 
-Registers the configuration panel corresponding to the node type.
+Регистрирует панель конфигурации, соответствующую типу узла.
 
-**Signature**
+**Сигнатура**
 
 `registerInstruction(type: string, instruction: typeof Instruction | Instruction): void`
 
-**Parameters**
+**Параметры**
 
-| Parameter      | Type                                | Description                             |
-| -------------- | ----------------------------------- | --------------------------------------- |
-| `type`         | `string`                            | Node type identifier, consistent with the identifier used during registration |
-| `instruction`  | `typeof Instruction \| Instruction` | Node type or instance                   |
+| Параметр      | Тип                                | Описание                              |
+| ------------- | ---------------------------------- | ------------------------------------ |
+| `type`        | `string`                           | Идентификатор типа узла, должен совпадать с идентификатором при регистрации |
+| `instruction` | `typeof Instruction \| Instruction` | Тип или экземпляр узла               |
 
 #### `registerInstructionGroup()`
 
-注册节点类型分组。NocoBase 默认提供 4 个节点类型分组：
+Регистрирует группу типов узлов. NocoBase по умолчанию предоставляет 4 группы типов узлов:
 
-* `'control'`：控制类
-* `'collection'`：数据表操作类
-* `'manual'`：人工处理类
-* `'extended'`：其他扩展类
+* `'control'`: Управляющие
+* `'collection'`: Операции с таблицами данных
+* `'manual'`: Ручная обработка
+* `'extended'`: Другие расширенные типы
 
-如果需要扩展其他分组，可以使用该方法注册。
+Для расширения другими группами можно использовать этот метод.
 
-**签名**
+**Сигнатура**
 
 `registerInstructionGroup(type: string, group: { label: string }): void`
 
-**参数**
+**Параметры**
 
-| 参数      | 类型               | 说明                           |
-| --------- | ----------------- | ----------------------------- |
-| `type`    | `string`          | 节点分组标识，与注册使用的标识一致 |
-| `group` | `{ label: string }` | 分组信息，目前仅包含标题         |
+| Параметр | Тип                | Описание                           |
+| -------- | ------------------ | --------------------------------- |
+| `type`   | `string`          | Идентификатор группы узлов         |
+| `group`  | `{ label: string }` | Информация о группе (сейчас только заголовок) |
 
-**示例**
+**Пример**
 
 ```js
 export default class YourPluginClient extends Plugin {
@@ -341,35 +323,35 @@ export default class YourPluginClient extends Plugin {
 
 ## `Trigger`
 
-Base class for triggers, used to extend custom trigger types.
+Базовый класс для триггеров, используется для расширения пользовательских типов триггеров.
 
-| Parameter            | Type                                                             | Description                             |
-| -------------------- | ---------------------------------------------------------------- | --------------------------------------- |
-| `title`              | `string`                                                         | Trigger type name                       |
-| `fieldset`           | `{ [key: string]: ISchema }`                                     | Set of trigger configuration options    |
-| `scope?`             | `{ [key: string]: any }`                                         | Object set that may be used in the configuration schema |
-| `components?`        | `{ [key: string]: React.FC }`                                    | Component set that may be used in the configuration schema |
-| `useVariables?`      | `(config: any, options: UseVariableOptions) => VariableOptions`  | Value getter for trigger context data   |
+| Параметр         | Тип                                      | Описание                              |
+| ---------------- | ---------------------------------------- | ------------------------------------ |
+| `title`          | `string`                                 | Название типа триггера                |
+| `fieldset`       | `{ [key: string]: ISchema }`             | Набор опций конфигурации триггера      |
+| `scope?`         | `{ [key: string]: any }`                 | Набор объектов, используемых в схеме конфигурации |
+| `components?`    | `{ [key: string]: React.FC }`            | Набор компонентов, используемых в схеме конфигурации |
+| `useVariables?`  | `(config: any, options: UseVariableOptions) => VariableOptions` | Метод получения данных контекста триггера |
 
-- If `useVariables` is not set, it means that this type of trigger does not provide a value-fetching function, and the trigger's context data cannot be selected in the flow node.
+- Если `useVariables` не задан, это означает, что данный тип триггера не предоставляет функцию получения значений, и данные контекста триггера нельзя выбрать в узлах потока.
 
 ## `Instruction`
 
-Base class for instructions, used to extend custom node types.
+Базовый класс для узлов, используется для расширения пользовательских типов узлов.
 
-| Parameter                 | Type                                                    | Description                                                                           |
-| ------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `group`                   | `string`                                                | Node type group identifier, currently optional: `'control'`/`'collection'`/`'manual'`/`'extended'` |
-| `fieldset`                | `Record<string, ISchema>`                               | Set of node configuration options                                                     |
-| `scope?`                  | `Record<string, Function>`                              | Object set that may be used in the configuration schema                               |
-| `components?`             | `Record<string, React.FC>`                              | Component set that may be used in the configuration schema                            |
-| `Component?`              | `React.FC`                                              | Custom rendering component for the node                                               |
-| `useVariables?`           | `(node, options: UseVariableOptions) => VariableOption` | Method for providing node variable options                                            |
-| `useScopeVariables?`      | `(node, options?) => VariableOptions`                   | Method for providing local variable options for the branch                            |
-| `useInitializers?`        | `(node) => SchemaInitializerItemType`                   | Method for providing initializer options for the node                                 |
-| `isAvailable?`            | `(ctx: NodeAvailableContext) => boolean`                | Method for determining whether the node is available in the current environment       |
+| Параметр                | Тип                                      | Описание                                                                 |
+| ----------------------- | ---------------------------------------- | ----------------------------------------------------------------------- |
+| `group`                 | `string`                                 | Идентификатор группы типов узлов (опционально: `'control'`/`'collection'`/`'manual'`/`'extended'`) |
+| `fieldset`              | `Record<string, ISchema>`                | Набор опций конфигурации узла                                           |
+| `scope?`                | `Record<string, Function>`               | Набор объектов, используемых в схеме конфигурации                       |
+| `components?`           | `Record<string, React.FC>`               | Набор компонентов, используемых в схеме конфигурации                    |
+| `Component?`            | `React.FC`                               | Пользовательский компонент отрисовки узла                               |
+| `useVariables?`         | `(node, options: UseVariableOptions) => VariableOption` | Метод предоставления опций переменных узла                              |
+| `useScopeVariables?`    | `(node, options?) => VariableOptions`    | Метод предоставления локальных переменных для ветки                     |
+| `useInitializers?`      | `(node) => SchemaInitializerItemType`    | Метод предоставления опций инициализатора для узла                      |
+| `isAvailable?`          | `(ctx: NodeAvailableContext) => boolean` | Метод определения доступности узла в текущей среде                      |
 
-**Related Types**
+**Связанные типы**
 
 ```ts
 export type NodeAvailableContext = {
@@ -379,7 +361,7 @@ export type NodeAvailableContext = {
 };
 ```
 
-- If `useVariables` is not set, it means that this node type does not provide a value-fetching function, and the result data of this node type cannot be selected in the flow. If the result value is singular (non-selectable), a static content that expresses the corresponding information can be returned (refer to the [calculation node source code](https://github.com/nocobase/nocobase/blob/main/packages/plugins/@nocobase/plugin-workflow/src/client/nodes/calculation.tsx#L68)). If selection is required (e.g., a property in an Object), a custom selection component output can be provided (refer to the [Create Data Node source code](https://github.com/nocobase/nocobase/blob/main/packages/plugins/@nocobase/plugin-workflow/src/client/nodes/create.tsx#L41)).
-- `Component`: Custom rendering component for the node, used when the default node rendering is not sufficient, allowing for complete customization of the node view. For example, to provide more operation buttons or other interactive elements for the start node of a branch type, this method should be used (refer to the [Parallel Branch source code](https://github.com/nocobase/nocobase/blob/main/packages/plugins/@nocobase/plugin-workflow-parallel/src/client/ParallelInstruction.tsx)).
-- `useInitializers`: Used to provide methods for initialization blocks, for example, in a manual node, it can initialize relevant user blocks based on the upstream node. If this method is provided, it will be available during the initialization block in the manual node configuration interface (refer to the [Create Data Node source code](https://github.com/nocobase/nocobase/blob/main/packages/plugins/@nocobase/plugin-workflow/src/client/nodes/create.tsx#L71)).
-- `isAvailable`: Mainly used to determine whether the node can be used (added) in the current environment. The current environment includes the current workflow, upstream nodes, and the current branch index.
+- Если `useVariables` не задан, это означает, что данный тип узла не предоставляет функцию получения значений, и результаты этого типа узла нельзя выбрать в потоке. Если результат является единичным значением (не выбирается), можно вернуть статическое содержимое (см. [исходный код узла вычислений](https://github.com/nocobase/nocobase/blob/main/packages/plugins/@nocobase/plugin-workflow/src/client/nodes/calculation.tsx#L68)). Если требуется выбор (например, свойство объекта), можно предоставить пользовательский компонент вывода (см. [исходный код узла создания данных](https://github.com/nocobase/nocobase/blob/main/packages/plugins/@nocobase/plugin-workflow/src/client/nodes/create.tsx#L41)).
+- `Component`: Пользовательский компонент отрисовки узла, используется, когда стандартная отрисовка недостаточна. Например, для предоставления дополнительных кнопок операций или других интерактивных элементов для начального узла ветки (см. [исходный код параллельной ветки](https://github.com/nocobase/nocobase/blob/main/packages/plugins/@nocobase/plugin-workflow-parallel/src/client/ParallelInstruction.tsx)).
+- `useInitializers`: Используется для предоставления методов инициализации блоков. Например, в ручном узле можно инициализировать соответствующие пользовательские блоки на основе вышестоящего узла (см. [исходный код узла создания данных](https://github.com/nocobase/nocobase/blob/main/packages/plugins/@nocobase/plugin-workflow/src/client/nodes/create.tsx#L71)).
+- `isAvailable`: В основном используется для определения, может ли узел быть использован (добавлен) в текущей среде. Текущая среда включает текущий workflow, вышестоящие узлы и текущий индекс ветки.
