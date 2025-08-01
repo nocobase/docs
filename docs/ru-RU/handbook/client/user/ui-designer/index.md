@@ -1,15 +1,15 @@
-# Interface Designer
+# Конструктор интерфейса
 
-When the interface configuration button is activated, it enters the UI configuration state.
+При нажатии на кнопку настройки интерфейса активируется режим конфигурирования пользовательского интерфейса.
 
 ![](https://static-docs.nocobase.com/0619e0aa0b24b81b8c08d7c572d3e0ba.jpg)
 
-### Components of the Interface Designer
+### Элементы конструктора интерфейса
 
-1. Menu
-2. Page
-3. Block
-  - Blocks without fields or operations
-  - Blocks with fields and operations
-4. Fields (attached to blocks)
-5. Operations (attached to blocks)
+1. Меню  
+2. Страница  
+3. Блок  
+   - Блоки без полей или операций  
+   - Блоки с полями и операциями  
+4. Поля (привязываются к блокам)  
+5. Операции (привязываются к блокам)
