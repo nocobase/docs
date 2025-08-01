@@ -1,44 +1,53 @@
-# Synchronizing User Data from WeCom
+# Синхронизация данных пользователей из WeCom
 
 <PluginInfo commercial="true" name="wecom"></PluginInfo>
 
-## Introduction
+## Введение
 
-The **WeCom** plugin allows users to synchronize user and department data from WeCom.
+Плагин **WeCom** позволяет синхронизировать данные пользователей и подразделений из WeCom с NocoBase.
 
-## Create and Configure a WeCom Custom Application
+## Создание и настройка приложения WeCom
 
-First, you need to create a custom application in the WeCom admin panel and obtain the **Corporate ID**, **AgentID**, and **Secret**.
+1. Создайте кастомное приложение в админ-панели WeCom
+2. Получите следующие параметры:
+   - **ID предприятия** (Corporate ID)
+   - **ID приложения** (AgentID) 
+   - **Секретный ключ** (Secret)
 
-Refer to [User Authentication - WeCom](./auth).
+Подробная инструкция доступна в разделе [Аутентификация пользователей - WeCom](./auth).
 
-## Add a Data Synchronization Source in NocoBase
+## Добавление источника синхронизации в NocoBase
 
-Navigate to Users and Permissions > Synchronization > Add, and fill in the required information.
+1. Перейдите в раздел: Пользователи и права > Синхронизация > Добавить
+2. Заполните необходимые данные:
 
 ![](https://static-docs.nocobase.com/202412041251867.png)
 
-## Configure Address Book Synchronization
+## Настройка синхронизации адресной книги
 
-Go to the WeCom admin panel and navigate to Security and Management > Management Tools, then click Address Book Synchronization.
+1. В админ-панели WeCom перейдите: Безопасность и управление > Инструменты управления
+2. Выберите "Синхронизация адресной книги":
 
 ![](https://static-docs.nocobase.com/202412041249958.png)
 
-Follow the instructions as shown in the image and configure a trusted corporate IP address.
+3. Настройте доверенные IP-адреса предприятия:
 
 ![](https://static-docs.nocobase.com/202412041250776.png)
 
-Once this is set up, you can proceed with user data synchronization.
+После завершения этих шагов можно начинать синхронизацию данных.
 
-## Set Up an Event Reception Server
+## Настройка сервера приема событий
 
-To ensure that changes in user or department data on the WeCom side are promptly synchronized with the NocoBase application, further configuration is required.
+Для оперативного обновления данных при изменениях в WeCom необходимо:
 
-After completing the previous setup steps, you can copy the address for the address book callback notifications.
+1. Скопировать адрес для callback-уведомлений:
 
 ![](https://static-docs.nocobase.com/202412041256547.png)
 
-Enter this address into the WeCom settings, and obtain the Token and EncodingAESKey to complete the NocoBase user synchronization data source configuration.
+2. Ввести этот адрес в настройках WeCom
+3. Получить Token и EncodingAESKey
+4. Завершить настройку источника данных в NocoBase:
 
 ![](https://static-docs.nocobase.com/202412041257947.png)
 
+Теперь система будет автоматически синхронизировать изменения пользователей и подразделений.
