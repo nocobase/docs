@@ -1,78 +1,78 @@
-# Kanban Block
+# Блок «Канбан»
 
 <PluginInfo name="block-kanban"></PluginInfo>
 
-## Introduction
+## Введение
 
-The Kanban block presents data in a Kanban view, enabling drag-and-drop functionality to update the status of items.
+Блок «Канбан» отображает данные в виде доски Канбан и поддерживает функцию перетаскивания элементов, позволяя обновлять статус записей с помощью drag-and-drop.
 
-## Installation
+## Установка
 
-This is a built-in plugin, so no installation is needed.
+Это встроенный плагин — отдельная установка не требуется.
 
-## Adding a Block
+## Добавление блока
 
 <video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240419214551.mp4" type="video/mp4">
+  <source src="https://static-docs.nocobase.com/20240419214551.mp4" type="video/mp4">
 </video>
 
 ![20240419214751](https://static-docs.nocobase.com/20240419214751.png)
 
-### Grouping Field
+### Поле группировки
 
-Used to organize data into specific groups. When creating or configuring a Kanban block, you must select a single-choice field as the grouping field.
+Используется для разделения данных на отдельные группы. При создании или настройке блока Канбан необходимо выбрать поле с одиночным выбором (single-choice) в качестве поля группировки.
 
-### Sorting Field
+### Поле сортировки
 
-Used to arrange data within each group. Only fields tied to the grouping field can be selected for sorting. You can also quickly create a sorting field while setting up the Kanban block.
+Используется для упорядочивания данных внутри каждой группы. В качестве поля сортировки можно выбрать только те поля, которые связаны с полем группировки. Вы также можете быстро создать поле сортировки непосредственно при настройке блока Канбан.
 
 ![20240426170628](https://static-docs.nocobase.com/20240426170628.png)
 
-## Managing Kanban Data
+## Управление данными Канбан
 
-### Clicking a Card
+### Нажатие на карточку
 
-Clicking on a card opens a pop-up window where you can configure data blocks as needed, such as setting up an edit form to modify the current card's record.
+Нажатие на карточку открывает всплывающее окно, в котором можно настроить блоки данных по необходимости, например, добавить форму редактирования для изменения записи текущей карточки.
 
 ![20240419220115](https://static-docs.nocobase.com/20240419220115.png)
 
-You can also configure how the pop-up window opens and its size.
+Также можно настроить способ открытия всплывающего окна и его размер.
 
 ![20240419220159](https://static-docs.nocobase.com/20240419220159.png)
 
-### Dragging a Card
+### Перетаскивание карточки
 
-Example: Adjust the status of a product by dragging the card. Once dragging is complete, the data will be saved automatically.
+Пример: изменение статуса товара путём перетаскивания карточки. После завершения перетаскивания данные сохраняются автоматически.
 
 <video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240419221247.mp4" type="video/mp4">
+  <source src="https://static-docs.nocobase.com/20240419221247.mp4" type="video/mp4">
 </video>
 
-## Block Configuration Options
+## Настройки блока
 
-### Setting Data Range
+### Установка диапазона данных
 
-Example: Default filtering for promotional products.
+Пример: фильтрация по умолчанию для рекламных товаров.
 
 ![20240422095659](https://static-docs.nocobase.com/20240422095659.png)
 
-For more details, refer to [Setting Data Range](/handbook/ui/blocks/block-settings/data-scope).
+Более подробную информацию см. в разделе [Установка диапазона данных](/handbook/ui/blocks/block-settings/data-scope).
 
-### Setting Block Height
+### Установка высоты блока
 
-Example: Adjust the height of the order Kanban block, with the scrollbar appearing within the columns.
+Пример: изменение высоты блока Канбан для заказов, при этом полоса прокрутки отображается внутри колонок.
 
 ![20240605220635](https://static-docs.nocobase.com/20240605220635.gif)
 
-For more details, refer to [Block Height](/handbook/ui/blocks/block-settings/block-height).
+Более подробную информацию см. в разделе [Высота блока](/handbook/ui/blocks/block-settings/block-height).
 
-## Configuring Fields
+## Настройка полей
 
 ![20240419215909](https://static-docs.nocobase.com/20240419215909.png)
 
-## Configuring Actions
+## Настройка действий
 
 ![20240419220903](https://static-docs.nocobase.com/20240419220903.png)
 
-- [Filter](/handbook/ui/actions/types/filter)
-- [Add New](/handbook/ui/actions/types/add-new)
+- [Фильтр](/handbook/ui/actions/types/filter)
+- [Добавить новое](/handbook/ui/actions/types/add-new)
