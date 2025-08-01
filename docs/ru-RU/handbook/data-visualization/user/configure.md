@@ -1,83 +1,87 @@
-# Configuration Panel
+# Панель настройки
 
-The chart configuration panel is organized into three primary sections: Data Configuration, Chart Configuration, and Chart Preview.
+Панель настройки диаграммы разделена на три основные секции: **Настройка данных**, **Настройка диаграммы** и **Предварительный просмотр диаграммы**.
 
-![Configuration Panel Image](https://static-docs.nocobase.com/202404192019222.png)
+https://static-docs.nocobase.com/202404192019222.png
 
-## Data Configuration
+## Настройка данных
 
-![Data Configuration Image](https://static-docs.nocobase.com/202404192020544.png)
+https://static-docs.nocobase.com/202404192020544.png
 
-- The drop-down at the top represents the current Collection being configured, which can be switched using the drop-down menu.
-- Once the configuration is complete, clicking "Run Query" will retrieve the data according to the settings. The "Data" panel will display the resulting data.
+Выпадающий список в верхней части отображает текущую коллекцию, для которой выполняется настройка. Вы можете переключить её с помощью выпадающего меню.
 
-### Measures
+После завершения настройки нажатие кнопки **«Выполнить запрос»** приведёт к извлечению данных согласно заданным параметрам. Результат отобразится в панели **«Данные»**.
 
-![Measures Image](https://static-docs.nocobase.com/202404192023854.png)
+### Показатели (Measures)
 
-Measure fields contain the key data that the chart will display. These fields can be aggregated using functions such as `Sum`, `Count`, `Avg`, `Max`, and `Min`. You can add multiple measure fields, and assign aliases to them as needed.
+https://static-docs.nocobase.com/202404192023854.png
 
-### Dimensions
+Поля-показатели содержат ключевые данные, которые будут отображаться на диаграмме. Эти поля могут быть агрегированы с помощью функций, таких как `Сумма`, `Количество`, `Среднее`, `Максимум` и `Минимум`. Вы можете добавить несколько полей-показателей и задать им псевдонимы по необходимости.
 
-![Dimensions Image](https://static-docs.nocobase.com/202404192025717.png)
+### Измерения (Dimensions)
 
-Dimension fields determine how the data is grouped within the chart. For date-type fields, various formatting options are available, as shown in the image. Formatting is handled by database functions (e.g., `date_format` in MySQL). For other data types, refer to the [Data Transformation](#Data Transformation) section.
+https://static-docs.nocobase.com/202404192025717.png
+
+Поля-измерения определяют, как данные группируются на диаграмме. Для полей типа «дата» доступны различные варианты форматирования (см. изображение). Форматирование выполняется с помощью функций базы данных (например, `date_format` в MySQL). Для других типов данных см. раздел [Преобразование данных](#Преобразование-данных).
 
 :::info
-**Dimension Formatting VS Data Transformation**
+**Форматирование измерений vs Преобразование данных**
 
-- Dimension formatting occurs before the final data is fetched, grouping data according to the formatted dimension values. This is commonly needed when filtering data by time periods.
-- Data transformation further refines the data after it is retrieved, enhancing readability and presentation. This transformation is applied on the frontend.
-  :::
+Форматирование измерений происходит до получения итоговых данных и группирует данные по отформатированным значениям измерений. Это особенно важно при фильтрации данных по временным периодам.
 
-### Filter
+Преобразование данных выполняется после получения данных и позволяет дополнительно обработать их для улучшения читаемости и внешнего вида. Такое преобразование применяется на стороне интерфейса.
+:::
 
-![Filter Image](https://static-docs.nocobase.com/202404192029597.png)
+### Фильтр
 
-Filters are applied to the data before grouping. You can use variables for dynamic filtering:
+https://static-docs.nocobase.com/202404192029597.png
 
-- Current User: Information related to the currently logged-in user.
-- Date Variables: Date ranges dynamically calculated based on the current date.
-  - Current Filter: Custom filter fields set within the current chart block. Refer to [Filter Block](./filter.md).
+Фильтры применяются к данным до группировки. Вы можете использовать переменные для динамической фильтрации:
 
-### Sort and Limit
+- **Текущий пользователь**: информация о вошедшем в систему пользователе.
+- **Переменные даты**: диапазоны дат, динамически рассчитываемые на основе текущей даты.
+- **Текущий фильтр**: пользовательские поля фильтра, заданные в текущем блоке диаграммы. См. [Блок фильтра](./filter.md).
 
-![Sort and Limit Image](https://static-docs.nocobase.com/202404192034106.png)
+### Сортировка и ограничение
 
-The default DataSet is limited to a maximum of 2000 entries.
+https://static-docs.nocobase.com/202404192034106.png
 
-### Cache
+По умолчанию набор данных ограничен максимум 2000 записями.
 
-![Cache Image](https://static-docs.nocobase.com/202404192035918.png)
+### Кэширование
 
-When enabled cache, the chart will display data from the cache. You can configure the cache duration as needed.
+https://static-docs.nocobase.com/202404192035918.png
 
-## Chart Configuration
+При включённом кэшировании диаграмма будет отображать данные из кэша. Вы можете настроить продолжительность хранения кэша по своему усмотрению.
 
-### Container Configuration
+## Настройка диаграммы
 
-This section allows you to configure the properties of the container component that displays the chart.
+### Настройка контейнера
 
-- Chart Title
-- Show Chart Border
+В этом разделе можно настроить свойства контейнера, в котором отображается диаграмма.
 
-![Container Configuration Image](https://static-docs.nocobase.com/202404192037644.png)
+- **Заголовок диаграммы**
+- **Показывать границу диаграммы**
 
-The display effect of the chart title:
+https://static-docs.nocobase.com/202404192037644.png
 
-![Chart Title Display Image](https://static-docs.nocobase.com/202404192048473.png)
+Пример отображения заголовка диаграммы:
 
-The display effect when showing the chart border:
+https://static-docs.nocobase.com/202404192048473.png
 
-![Chart Border Display Image](https://static-docs.nocobase.com/202404192048223.png)
+Пример отображения с границей диаграммы:
 
-### Chart Configuration
+https://static-docs.nocobase.com/202404192048223.png
 
-![Chart Configuration Image](https://static-docs.nocobase.com/202404192050696.png)
+### Настройка диаграммы
 
-- **Chart Type**: This is where you select the type of chart to display. NocoBase uses <a href="https://g2plot.antv.antgroup.com/" target="_blank">Ant Design Charts</a> 2.x as the default chart library. To extend and use other chart libraries or components, see the [Development Guide](../dev/index.md).
-- **Basic Configuration**: After selecting a chart type, basic visual configuration options appear, such as fields for the x-axis, y-axis, and classification. These field configurations are provided via dropdown menus, which list the basic fields and field aliases from the Collection.
-- **JSON Configuration**: If the basic configuration doesn’t meet your requirements, you can configure additional chart component properties using JSON. Refer to the chart component documentation for details. To include JavaScript expressions in the JSON configuration, wrap them in `{{}}`. For example:
+https://static-docs.nocobase.com/202404192050696.png
+
+- **Тип диаграммы**: здесь выбирается тип отображаемой диаграммы. В NocoBase по умолчанию используется библиотека диаграмм [Ant Design Charts](https://g2plot.antv.antgroup.com/) версии 2.x. Чтобы расширить функциональность и использовать другие библиотеки или компоненты, см. [Руководство для разработчиков](../dev/index.md).
+
+- **Базовая настройка**: после выбора типа диаграммы появляются основные параметры визуализации, такие как поля для осей X и Y, а также поля для категорий. Эти поля выбираются из выпадающего списка, где отображаются базовые поля и псевдонимы из коллекции.
+
+- **JSON-настройка**: если базовой настройки недостаточно, вы можете настроить дополнительные свойства компонента диаграммы с помощью JSON. Подробности см. в документации к компоненту диаграммы. Чтобы включить JavaScript-выражения в JSON-настройку, заключите их в `{{}}`. Например:
 
 ```json
 {
@@ -88,33 +92,32 @@ The display effect when showing the chart border:
 }
 ```
 
-## Data Transformation
+## Преобразование данных
 
-![Data Transformation Image](https://static-docs.nocobase.com/202404192109597.png)
+https://static-docs.nocobase.com/202404192109597.png
 
-Data transformation enables further processing of response data. The supported data types for transformation are `number`, `date`, `time`, and `datetime`. For fields not belonging to these types, you can manually assign one of these types to apply the corresponding transformation methods.
+Преобразование данных позволяет дополнительно обрабатывать полученные данные. Поддерживаемые типы данных для преобразования: `number`, `date`, `time` и `datetime`. Для полей других типов вы можете вручную назначить один из этих типов, чтобы применить соответствующие методы преобразования.
 
-Multiple transformation methods can be applied to the same field. The transformations are executed in sequence, with each step passing its result to the next. You can reorder the transformation steps by dragging them.
+К одному полю можно применить несколько методов преобразования. Они выполняются последовательно, и результат каждого шага передаётся на следующий. Вы можете изменить порядок шагов перетаскиванием.
 
 :::warning
-Be mindful that some transformation methods may alter the original data type. When applying multiple transformations, ensure that you choose the correct method based on the data type after each step. For instance, when formatting a number as currency by adjusting precision and adding a prefix, you should first apply the precision adjustment and then the prefix. This is because after adding the prefix, the number is converted to a string, and further precision adjustments will no longer apply.
+Обратите внимание, что некоторые методы преобразования могут изменять исходный тип данных. При применении нескольких преобразований убедитесь, что выбираете правильный метод, исходя из типа данных после каждого шага. Например, при форматировании числа как валюты (с добавлением префикса и точности), сначала нужно настроить точность, а затем добавить префикс. Это связано с тем, что после добавления префикса число становится строкой, и дальнейшее изменение точности уже не применяется.
 :::
 
-Supported transformation methods:
+Поддерживаемые методы преобразования:
 
-| Type                                  | Method         | Description                                                                                                                   | Converted Type     |
-| ------------------------------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------- | ------------------ |
-| Number (`number`)                     | Prefix         |                                                                                                                               | `string`           |
-|                                       | Suffix         |                                                                                                                               | `string`           |
-|                                       | Precision      |`1`, `1.0`, `1.00`, `1.000`.                                                                                                   | `number`           |
-|                                       | Separator      |`100,000.00` (English), `100.000,00` (German), etc.                                                                            | `string`           |
-|                                       | Percentage     |                                                                                                                               | `string`           |
-|                                       | Scientific Notation |                                                                                                                          | `number`           |
-|                                       | Abbreviation   | `1K`, `1M`, `1T`, `1B`, etc.                                                                                                 | `string`           |
-| DateTime (`datetime`, `date`, `time`) | Formatting     | Uses preset or custom formats like `YYYY-MM-DD`. Refer to the [dayjs](https://day.js.org/docs/en/display/format) documentation. | `string`           |
-|                                       | Prefix         |                                                                                                                               | `string`           |
-|                                       | Suffix         |                                                                                                                               | `string`           |
-| String (`string`)                     | Type Conversion| Converts the string into another type, such as date/time or number.                                                           | `Date` \| `number` |
-|                                       | Prefix         |                                                                                                                               | `string`           |
-|                                       | Suffix         |                                                                                                                               | `string`           |
-
+| Тип | Метод | Описание | Результатирующий тип |
+| --- | --- | --- | --- |
+| **Число (number)** | Префикс | Добавляет текст в начало | строка |
+| | Суффикс | Добавляет текст в конец | строка |
+| | Точность | 1, 1.0, 1.00, 1.000 | число |
+| | Разделитель | 100,000.00 (англ.), 100.000,00 (нем.) и т.д. | строка |
+| | Проценты | Преобразует число в процент | строка |
+| | Научная запись | Например: 1e+6 | число |
+| | Сокращение | 1K, 1M, 1B и т.д. | строка |
+| **Дата/время (datetime, date, time)** | Форматирование | Использует предустановленные или пользовательские форматы, например: YYYY-MM-DD. См. документацию [dayjs](https://day.js.org/) | строка |
+| | Префикс | Добавляет текст в начало | строка |
+| | Суффикс | Добавляет текст в конец | строка |
+| **Строка (string)** | Преобразование типа | Преобразует строку в другой тип, например: дата/время или число | дата, число |
+| | Префикс | Добавляет текст в начало | строка |
+| | Суффикс | Добавляет текст в конец | строка |
