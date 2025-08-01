@@ -1,4 +1,4 @@
-# Formula.js Functions
+# Formula.js Функции
 
 <style>
 article{
