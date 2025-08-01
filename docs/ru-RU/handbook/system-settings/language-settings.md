@@ -1,15 +1,15 @@
-# Language Settings
+# Языковые настройки
 
 <PluginInfo name="system-settings"></PluginInfo>
 
-In "System Settings" by setting "Enabled Languages," you can adjust the global language environment of the system, with the first language being the default.
+В "Системных настройках", установив "Включенные языки", вы можете настроить глобальную языковую среду системы, при этом по умолчанию используется первый язык.
 
 ![20240324192005](https://static-docs.nocobase.com/20240324192005.png)
 
-When multiple languages are enabled, users can set their language preferences in the user's personal center (top right corner).
+Если включено несколько языков, пользователи могут настроить свои языковые предпочтения в личном кабинете пользователя (в правом верхнем углу).
 
 ![20240324192509](https://static-docs.nocobase.com/20240324192509.png)
 
-If the language environment you are using is not translated, you can use the "[Localization Management](/handbook/localization-management)" plugin to perform translations.
+Если языковая среда, которую вы используете, не переведена, вы можете использовать плагин "[Localization Management](/handbook/localization-management)" для выполнения переводов. 
 
 ![20240324193055](https://static-docs.nocobase.com/20240324193055.png)
