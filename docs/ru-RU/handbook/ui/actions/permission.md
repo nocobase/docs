@@ -1,72 +1,75 @@
-# Operation Permissions
+### **Права на операции**
 
-## Introduction
+#### **Введение**
 
-In NocoBase, operation permissions are mainly divided into two categories:
+В NocoBase права на операции в основном делятся на две категории:
 
-- **Collection Resource Permissions**: Used to uniformly control the basic operation permissions such as Create, View, Update, and Delete for different roles. These permissions apply to the entire collection under the data source, ensuring that the corresponding operations for the collection are consistent across different pages or pop-ups.
-- **Independent Operation Permissions**: Used to fine-tune the control over specific operations for different roles, such as triggering workflows, custom requests, external links, etc. These permissions are for operation-level control, allowing different roles to perform specific operations without affecting the overall collection permission settings.
+- **Права на ресурсы коллекции**: используются для единообразного контроля базовых операций, таких как Создание, Просмотр, Обновление и Удаление, для разных ролей. Эти права применяются ко всей коллекции в рамках источника данных и обеспечивают согласованность операций с коллекцией на различных страницах или во всплывающих окнах.
+- **Независимые права на операции**: используются для тонкой настройки управления конкретными операциями для разных ролей, например, запуск рабочих процессов, пользовательские запросы, внешние ссылки и т.д. Эти права обеспечивают контроль на уровне отдельных операций, позволяя разным ролям выполнять определённые действия, не влияя при этом на общие настройки прав коллекции.
 
-### Collection Resource Permissions
+---
 
-In NocoBase’s permission system, collection operation permissions are generally classified based on CRUD (Create, Read, Update, Delete) operations to ensure consistency and standardization of permission management. For example:
+#### **Права на ресурсы коллекции**
 
-- **Create Permission**: Controls all actions related to creating data in the collection, such as adding or duplicating data. If a role has the create permission for the collection, the create and duplicate operations will be visible and available in all pages or pop-ups.
-- **Delete Permission**: Controls the deletion operation for the collection, including bulk deletion in collection blocks or single record deletion in detail blocks. Permissions remain consistent for all types of deletion actions.
+В системе управления правами NocoBase операции с коллекциями, как правило, классифицируются по принципу CRUD (Create, Read, Update, Delete), что обеспечивает согласованность и стандартизацию управления правами. Например:
 
-- **Update Permission**: Controls update-related operations, such as editing or modifying records.
-- **View Permission**: Controls the visibility of the data in the collection. The relevant data blocks (list, detail, etc.) will only be visible if the role has the view permission for the collection.
+- **Право на создание (Create)**: контролирует все действия, связанные с созданием данных в коллекции, такие как добавление или дублирование записей. Если у роли есть право на создание для коллекции, то операции «создать» и «дублировать» будут доступны на всех страницах и во всех всплывающих окнах.
+- **Право на удаление (Delete)**: управляет операцией удаления из коллекции, включая массовое удаление в блоках коллекций или удаление отдельных записей в блоках детализации. Права остаются одинаковыми для всех типов операций удаления.
+- **Право на обновление (Update)**: контролирует операции, связанные с изменением данных, например, редактирование или обновление записей.
+- **Право на просмотр (View)**: определяет видимость данных в коллекции. Соответствующие блоки данных (список, детализация и т.д.) будут отображаться только в том случае, если у роли есть право на просмотр этой коллекции.
 
-This generalized permission management method is suitable for standardized data permission control, ensuring that the same operations on the same collection across different pages, pop-ups, and blocks follow consistent permission rules, making it unified and maintainable.
+Такой обобщённый подход к управлению правами подходит для стандартизированного контроля доступа к данным и обеспечивает единообразие операций с одной и той же коллекцией на разных страницах, во всплывающих окнах и блоках, что делает систему управления правами единой и простой в сопровождении.
 
-#### Global Permissions
+##### **Глобальные права**
 
-Global permissions apply to all collections under the data source and are categorized by resource type as shown below:
+Глобальные права применяются ко всем коллекциям в рамках источника данных и классифицируются по типу ресурса, как показано ниже:
 
 ![20250306204756](https://static-docs.nocobase.com/20250306204756.png)
 
-#### Specific Collection Permissions
+##### **Права для конкретной коллекции**
 
-Specific collection permissions override global permissions and allow more granular control over resource access for individual collections. These permissions are divided into two aspects:
+Права для конкретной коллекции переопределяют глобальные права и позволяют более детально управлять доступом к отдельным коллекциям. Эти права делятся на две категории:
 
-1. **Operation Permissions**: These include add, view, edit, delete, export, and import operations. Permissions are configured according to data range dimensions:
+1. **Права на операции**: включают операции добавления, просмотра, редактирования, удаления, экспорта и импорта. Настройка прав осуществляется с учётом диапазона данных:
 
-   - **All Data**: Allows the user to perform operations on all records in the collection.
-   - **Own Data**: Limits the user to performing operations only on the data they created.
+   - **Все данные**: пользователь может выполнять операции со всеми записями в коллекции.
+   - **Собственные данные**: пользователь может выполнять операции только с данными, которые он создал сам.
 
-2. **Field Permissions**: Field permissions allow configuration of access rights for each field in different operations. For example, some fields may be set to view-only mode and cannot be edited.
+2. **Права на поля**: позволяют настраивать права доступа к каждому полю в рамках различных операций. Например, некоторые поля могут быть доступны только для просмотра и не подлежать редактированию.
 
 ![20250306205042](https://static-docs.nocobase.com/20250306205042.png)
 
-### Independent Operation Permissions
+---
 
-Note: This feature is supported starting from v1.6.0-beta.13.
+#### **Независимые права на операции**
 
-Unlike unified operation permissions, independent operation permissions are applied specifically to individual operations. This allows the same operation to have different permission settings at different locations.
+> **Примечание**: данная функция поддерживается начиная с версии v1.6.0-beta.13.
 
-This permission model is ideal for personalized operations, such as:
+В отличие от единых прав на операции, независимые права применяются к отдельным операциям. Это позволяет одной и той же операции иметь разные настройки прав в разных местах.
 
-- **Triggering Workflows**: Workflow triggers might need to be called differently on different pages, and thus require independent permission configuration.
-- **Custom Operations**: Specific business logic operations that should be managed independently.
-- **Pop-ups, Links, etc.**: These operations can be individually configured for visibility and permissions.
+Такая модель прав особенно удобна для персонализированных операций, например:
 
-Currently, the following operations support independent permission configuration:
+- **Запуск рабочих процессов**: запуск рабочих процессов может требоваться на разных страницах по-разному, поэтому нуждается в отдельной настройке прав.
+- **Пользовательские операции**: операции с уникальной бизнес-логикой, которые должны управляться независимо.
+- **Всплывающие окна, ссылки и т.д.**: эти операции могут быть настроены индивидуально по видимости и правам доступа.
 
-- Pop-ups (control visibility and operation permissions of pop-up operations)
-- Links (restrict whether roles can access external or internal links)
-- Triggering workflows (allow different workflows to be triggered on different pages)
-- Operations in the action panel (e.g., scan, pop-up operations, trigger workflows, external links)
-- Custom Requests (send requests to third-party services)
+В настоящее время следующие операции поддерживают независимую настройку прав:
 
-By configuring independent operation permissions, fine-grained control over the permissions of different roles is possible, making permission management more flexible.
+- Всплывающие окна (управление видимостью и правами на операции во всплывающих окнах)
+- Ссылки (ограничение доступа ролей к внешним или внутренним ссылкам)
+- Запуск рабочих процессов (разрешение на запуск разных рабочих процессов на разных страницах)
+- Операции в панели действий (например, сканирование, всплывающие окна, запуск рабочих процессов, внешние ссылки)
+- Пользовательские запросы (отправка запросов к сторонним сервисам)
+
+Настроив независимые права на операции, можно достичь детального контроля над действиями разных ролей, что делает систему управления правами более гибкой.
 
 ![20250306215749](https://static-docs.nocobase.com/20250306215749.png)
 
-If no roles are set, all roles are visible by default.
+Если ни одна роль не указана, по умолчанию операция будет видна всем ролям.
 
 ![20250306215854](https://static-docs.nocobase.com/20250306215854.png)
 
-## Related Documentation
-[Configure Permissions](/handbook/acl/user)
+---
 
-
+#### **Связанная документация**
+[Настройка прав доступа](/handbook/acl/user)
