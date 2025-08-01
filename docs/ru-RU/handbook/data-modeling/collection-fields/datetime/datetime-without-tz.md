@@ -1,8 +1,8 @@
-# Datetime（without time zone）
+# Дата и время (без указания часового пояса)
 
-## Introduction
+## Введение
 
-## Field configuration
+## Настройка поля
 
 ![20240512181142](https://static-docs.nocobase.com/20240512181142.png)
 
