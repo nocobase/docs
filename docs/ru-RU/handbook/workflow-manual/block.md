@@ -1,19 +1,19 @@
-# Todo Block
+# Блок задач (To-Do)
 
-To facilitate manual processing, a todo list should be added to the page. This list will display tasks that require attention, allowing relevant personnel to easily access and manage specific tasks within the manual node.
+Для удобства ручной обработки на страницу следует добавить список задач. Этот список будет отображать задания, требующие внимания, позволяя ответственным сотрудникам легко получать доступ и управлять конкретными задачами в рамках ручного узла.
 
-## Adding Blocks
+## Добавление блоков
 
-To add a todo list block, select "Workflow Todo" from the available blocks on the page:
+Чтобы добавить блок списка задач, выберите "Workflow Todo" из доступных блоков на странице:
 
-![Add Todo Block for Manual Node](https://static-docs.nocobase.com/198b417454cd73b704267bf30fe5e647.png)
+![Добавление блока задач для ручного узла](https://static-docs.nocobase.com/198b417454cd73b704267bf30fe5e647.png)
 
-Here is an example of a todo list block:
+Пример блока списка задач:
 
-![Todo List Example](https://static-docs.nocobase.com/cfefb0d2c6a91c5c9dfa550d6b220f34.png)
+![Пример списка задач](https://static-docs.nocobase.com/cfefb0d2c6a91c5c9dfa550d6b220f34.png)
 
-## Todo Details
+## Детали задачи
 
-Personnel can click on the relevant todo task to open a pop-up window for manual processing:
+Сотрудники могут кликнуть на соответствующую задачу, чтобы открыть всплывающее окно для ручной обработки:
 
-![Todo Details](https://static-docs.nocobase.com/ccfd0533deebff6b3f6ef4408066e688.png)
+![Детали задачи](https://static-docs.nocobase.com/ccfd0533deebff6b3f6ef4408066e688.png)
