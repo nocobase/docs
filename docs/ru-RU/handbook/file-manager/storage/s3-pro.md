@@ -1,66 +1,66 @@
-# File Storage: S3 (Pro)
+# Хранилище файлов: S3 (Pro)
 
 <PluginInfo commercial="true" name="file-storage-s3-pro"></PluginInfo>
 
-## Introduction
+## Введение
 
-Building on the file management plugin, this version adds support for file storage types compatible with the S3 protocol. Any object storage service supporting the S3 protocol can be seamlessly integrated, such as Amazon S3, Alibaba Cloud OSS, Tencent Cloud COS, MinIO, Cloudflare R2, etc., enhancing the compatibility and flexibility of storage services.
+На основе плагина управления файлами эта версия добавляет поддержку типов хранилищ, совместимых с протоколом S3. Любые сервисы объектного хранилища, поддерживающие протокол S3, могут быть интегрированы без дополнительных настроек — например, Amazon S3, Alibaba Cloud OSS, Tencent Cloud COS, MinIO, Cloudflare R2 и другие. Это значительно повышает совместимость и гибкость систем хранения.
 
-## Features
+## Возможности
 
-1. **Client Upload:** Files are uploaded directly to the storage service without passing through the NocoBase server, enabling a more efficient and faster upload experience.
+1. **Прямая загрузка с клиента:** файлы загружаются напрямую в хранилище, минуя сервер NocoBase, что обеспечивает более эффективный и быстрый процесс загрузки.
 
-2. **Private Access:** All file URLs are signed temporary authorization addresses, ensuring secure and time-limited access to files.
+2. **Частный доступ:** все URL-адреса файлов представляют собой временные подписанные ссылки с ограниченным сроком действия, что гарантирует безопасный и контролируемый доступ к файлам.
 
-## Use Cases
+## Сценарии использования
 
-1. **File Table Management:** Centrally manage and store all uploaded files, supporting various file types and storage methods for easy classification and retrieval.
+1. **Управление таблицей файлов:** централизованное управление и хранение всех загруженных файлов с поддержкой различных типов и методов хранения для удобной классификации и поиска.
 
-2. **Attachment Field Storage:** Store attachments uploaded via forms or records and associate them with specific data entries.
+2. **Хранение в полях вложений:** хранение вложений, загруженных через формы или записи, с привязкой к конкретным записям данных.
 
-## Plugin Configuration
+## Настройка плагина
 
-1. Enable the `plugin-file-storage-s3-pro` plugin.
+1. Включите плагин `plugin-file-storage-s3-pro`.
 
-2. Navigate to "Setting -> FileManager" to access the file management settings.
+2. Перейдите в раздел «Настройки → Менеджер файлов», чтобы открыть настройки управления файлами.
 
-3. Click the "Add new" button and select "S3 Pro".
+3. Нажмите кнопку «Добавить новое» и выберите «S3 Pro».
 
 ![](https://static-docs.nocobase.com/20250102160704938.png)
 
-4. In the pop-up window, you will see a detailed form to fill out. Refer to the following documentation to obtain the relevant parameters for your file service and correctly input them into the form.
+4. В появившемся окне откроется подробная форма для заполнения. Ознакомьтесь с документацией по вашему провайдеру хранилища, получите необходимые параметры и введите их в форму.
 
 ![](https://static-docs.nocobase.com/20250413190828536.png)
 
-## Service Provider Configuration
+## Настройка провайдера хранилища
 
 ### Amazon S3
 
-#### Bucket Creation
+#### Создание бакета
 
-1. Visit [Amazon S3 Console](https://ap-southeast-1.console.aws.amazon.com/s3/home).
+1. Перейдите в [консоль Amazon S3](https://ap-southeast-1.console.aws.amazon.com/s3/home).
 
-2. Click the "Create bucket" button on the right-hand side.
+2. Нажмите кнопку «Create bucket» (Создать бакет) в правой части экрана.
 
-![Create Bucket](https://static-docs.nocobase.com/file-storage-s3-pro-1735355969452.png)
+![Создание бакета](https://static-docs.nocobase.com/file-storage-s3-pro-1735355969452.png)
 
-3. Fill in the `Bucket Name`, leave other fields as default, scroll to the bottom, and click the **"Create"** button to complete the process.
+3. Укажите имя бакета (`Bucket Name`), оставьте остальные параметры по умолчанию, прокрутите вниз и нажмите кнопку **«Create»** (Создать), чтобы завершить процесс.
 
-![Bucket Configuration](https://static-docs.nocobase.com/file-storage-s3-pro-1735355969622.png)
+![Настройка бакета](https://static-docs.nocobase.com/file-storage-s3-pro-1735355969622.png)
 
-#### CORS Configuration
+#### Настройка CORS
 
-1. In the bucket list, find and click the newly created bucket to access its details.
+1. В списке бакетов найдите и нажмите на созданный бакет, чтобы открыть его настройки.
 
-![Bucket List](https://static-docs.nocobase.com/file-storage-s3-pro-1735355969980.png)
+![Список бакетов](https://static-docs.nocobase.com/file-storage-s3-pro-1735355969980.png)
 
-2. Navigate to the "Permission" tab and scroll down to the CORS configuration section.
+2. Перейдите на вкладку «Permissions» (Разрешения) и прокрутите вниз до раздела CORS.
 
-![Permissions Tab](https://static-docs.nocobase.com/file-storage-s3-pro-1735355970155.png)
+![Вкладка разрешений](https://static-docs.nocobase.com/file-storage-s3-pro-1735355970155.png)
 
-3. Enter the following configuration (customize as needed) and save.
+3. Введите следующую конфигурацию (при необходимости настройте под себя) и сохраните:
 
-```Bash
+```json
 [
     {
         "AllowedHeaders": [
@@ -81,219 +81,195 @@ Building on the file management plugin, this version adds support for file stora
 ]
 ```
 
-![CORS Rules](https://static-docs.nocobase.com/file-storage-s3-pro-1735355970494.png)
+![Правила CORS](https://static-docs.nocobase.com/file-storage-s3-pro-1735355970494.png)
 
-#### AccessKey and SecretAccessKey Retrieval
+#### Получение AccessKey и SecretAccessKey
 
-1. Click the "Security credentials" button in the top-right corner.
+1. Нажмите кнопку «Security credentials» (Учётные данные безопасности) в правом верхнем углу.
 
-![Security Credentials](https://static-docs.nocobase.com/file-storage-s3-pro-1735355970651.png)
+![Учётные данные безопасности](https://static-docs.nocobase.com/file-storage-s3-pro-1735355970651.png)
 
-2. Scroll to the "Access Keys" section and click "Create Access Key."
+2. Прокрутите до раздела «Access Keys» (Ключи доступа) и нажмите «Create Access Key» (Создать ключ доступа).
 
-![Create Access Key](https://static-docs.nocobase.com/file-storage-s3-pro-1735355970832.png)
+![Создать ключ доступа](https://static-docs.nocobase.com/file-storage-s3-pro-1735355970832.png)
 
-3. Agree to the terms (IAM usage is recommended for production environments).
+3. Согласитесь с условиями (для рабочих сред рекомендуется использовать IAM).
 
-![Access Key Agreement](https://static-docs.nocobase.com/file-storage-s3-pro-1735355970996.png)
+![Соглашение на ключ доступа](https://static-docs.nocobase.com/file-storage-s3-pro-1735355970996.png)
 
-4. Save the displayed Access Key and Secret Access Key.
+4. Сохраните отображаемые Access Key и Secret Access Key.
 
-![Access Key Details](https://static-docs.nocobase.com/file-storage-s3-pro-1735355971168.png)
+![Данные ключа доступа](https://static-docs.nocobase.com/file-storage-s3-pro-1735355971168.png)
 
-#### Parameter Retrieval and Configuration
+#### Получение параметров и настройка
 
-1. Use the retrieved `AccessKey ID` and `AccessKey Secret`.
+1. Используйте полученные `AccessKey ID` и `AccessKey Secret`.
 
-2. Visit the bucket's properties panel to find the `Bucket Name` and `Region`.
+2. Перейдите в свойства бакета, чтобы найти `Bucket Name` (имя бакета) и `Region` (регион).
 
-![Bucket Details](https://static-docs.nocobase.com/file-storage-s3-pro-1735355971345.png)
+![Детали бакета](https://static-docs.nocobase.com/file-storage-s3-pro-1735355971345.png)
 
-#### Public Access (Optional)
+#### Публичный доступ (опционально)
 
-For public file access, configure as follows:
+Для публичного доступа к файлам настройте следующее:
 
-1. In the Permissions panel, scroll to "Object Ownership," click "Edit," and enable ACLs.
+1. В панели разрешений перейдите к «Object Ownership» (Владение объектами), нажмите «Edit» (Изменить) и включите ACL.
 
-![Enable ACLs](https://static-docs.nocobase.com/file-storage-s3-pro-1735355971508.png)
+![Включить ACL](https://static-docs.nocobase.com/file-storage-s3-pro-1735355971508.png)
 
-2. Scroll to "Block public access," click "Edit," and allow ACL control.
+2. Прокрутите до «Block public access» (Блокировка публичного доступа), нажмите «Edit» и разрешите управление через ACL.
 
-![Block Public Access](https://static-docs.nocobase.com/file-storage-s3-pro-1735355971668.png)
+![Блокировка публичного доступа](https://static-docs.nocobase.com/file-storage-s3-pro-1735355971668.png)
 
-3. Check "Public access" in NocoBase.
+3. В настройках NocoBase отметьте опцию «Public access» (Публичный доступ).
 
+#### Настройка миниатюр (опционально)
 
-#### Thumbnail Configuration (Optional)
+Эта настройка необязательна и используется, если требуется оптимизировать размер или качество изображений при предварительном просмотре. **Обратите внимание: развертывание может повлечь дополнительные расходы. Подробности см. в условиях и тарифах AWS.**
 
-This configuration is optional and should be used when you need to optimize the image preview size or effect. **Please note, this deployment may incur additional costs. For more details, refer to AWS's terms and pricing.**
+1. Перейдите на страницу [Dynamic Image Transformation for Amazon CloudFront](https://aws.amazon.com/solutions/implementations/dynamic-image-transformation-for-amazon-cloudfront/?nc1=h_ls).
 
-1. Visit [Dynamic Image Transformation for Amazon CloudFront](https://aws.amazon.com/solutions/implementations/dynamic-image-transformation-for-amazon-cloudfront/?nc1=h_ls).
-
-2. Click the `Launch in the AWS Console` button at the bottom of the page to start the deployment.
+2. Нажмите кнопку `Launch in the AWS Console` внизу страницы, чтобы начать развертывание.
    ![](https://static-docs.nocobase.com/20250221164214117.png)
 
-3. Follow the prompts to complete the configuration. The following options need special attention:
-   1. When creating the stack, you need to specify the Amazon S3 bucket name that contains the source images. Please enter the bucket name you created earlier.
-   2. If you chose to deploy the demo UI, after deployment, you can use the UI to test the image processing functionality. In the AWS CloudFormation console, select your stack, go to the "Outputs" tab, find the value corresponding to the `DemoUrl` key, and click the link to open the demo interface.
-   3. This solution uses the `sharp` Node.js library for efficient image processing. You can download the source code from the GitHub repository and customize it as needed.
-   
+3. Следуйте инструкциям для завершения настройки. Обратите внимание на следующие параметры:
+   1. При создании стека укажите имя бакета Amazon S3, в котором хранятся исходные изображения. Введите имя созданного ранее бакета.
+   2. Если выбрано развертывание демо-интерфейса, после завершения вы сможете протестировать обработку изображений. В консоли AWS CloudFormation выберите свой стек, перейдите на вкладку «Outputs» (Выходные данные), найдите значение ключа `DemoUrl` и перейдите по ссылке, чтобы открыть демо-интерфейс.
+   3. Решение использует библиотеку `sharp` для Node.js для эффективной обработки изображений. Исходный код доступен на GitHub и может быть адаптирован под ваши нужды.
+
    ![](https://static-docs.nocobase.com/20250221164315472.png)
    ![](https://static-docs.nocobase.com/20250221164404755.png)
 
-4. Once the configuration is complete, wait for the deployment status to change to `CREATE_COMPLETE`.
+4. После завершения настройки дождитесь, пока статус развертывания изменится на `CREATE_COMPLETE`.
 
-5. In the NocoBase configuration, please note the following:
-   1. `Thumbnail rule`: Fill in the image processing parameters, such as `?width=100`. For details, refer to the [AWS documentation](https://docs.aws.amazon.com/solutions/latest/serverless-image-handler/use-supported-query-param-edits.html).
-   2. `Access base URL`: Enter the value from Outputs -> ApiEndpoint after deployment.
-   3. `Full access URL style`: Select **Ignore** (as the bucket name has already been filled in the configuration, no further action is needed during access).
-   
+5. В настройках NocoBase учтите следующее:
+   1. `Правило для миниатюр`: укажите параметры обработки изображений, например `?width=100`. Подробности см. в [документации AWS](https://docs.aws.amazon.com/solutions/latest/serverless-image-handler/use-supported-query-param-edits.html).
+   2. `Базовый URL доступа`: введите значение из Outputs → ApiEndpoint после развертывания.
+   3. `Полный стиль URL-доступа`: выберите **Ignore** (так как имя бакета уже указано в настройках, дополнительные действия не требуются).
+
    ![](https://static-docs.nocobase.com/20250414152135514.png)
 
-#### Configuration Example
+#### Пример настройки
 
 ![](https://static-docs.nocobase.com/20250414152344959.png)
 
+#### Настройка CORS
 
-### Alibaba Cloud OSS
+1. Перейдите на страницу сведений о бакете.
 
-#### Bucket Creation
+![Страница сведений о бакете](https://static-docs.nocobase.com/file-storage-s3-pro-1735355973018.png)
 
-1. Open the [OSS Console](https://oss.console.aliyun.com/overview).
+2. В меню выберите «Безопасность контента → CORS».
 
-![OSS Console](https://static-docs.nocobase.com/file-storage-s3-pro-1735355972149.png)
+![Меню CORS](https://static-docs.nocobase.com/file-storage-s3-pro-1735355973319.png)
 
-2. Select "Buckets" from the left menu and click "Create Bucket."
+3. Нажмите «Создать правило», заполните поля и нажмите «ОК».
 
-![Create OSS Bucket](https://static-docs.nocobase.com/file-storage-s3-pro-1735355972413.png)
+![Настройка правила CORS](https://static-docs.nocobase.com/20250219171042784.png)
 
-3. Fill in the bucket details and click "Create."
+#### Получение AccessKey и SecretAccessKey
 
-   - `Bucket Name`: Choose based on your business needs.
-   - `Region`: Select the nearest region for your users.
-   - Other settings can remain default or customized as needed.
+1. Нажмите «AccessKey» под аватаром вашего аккаунта.
 
-![Bucket Details](https://static-docs.nocobase.com/file-storage-s3-pro-1735355972730.png)
+![Меню AccessKey](https://static-docs.nocobase.com/file-storage-s3-pro-1735355973884.png)
 
-#### CORS Configuration
+2. Создайте AccessKey. Для рабочих сред рекомендуется ознакомиться с [Руководством по RAM AccessKey](https://help.aliyun.com/zh/ram/user-guide/create-an-accesskey-pair-1?spm=5176.28366559.0.0.1b5c3c2fUI9Ql8#section-rjh-18m-7kp).
 
-1. Navigate to the bucket details page.
+![Создать AccessKey](https://static-docs.nocobase.com/file-storage-s3-pro-1735355974171.png)
 
-![Bucket Details Page](https://static-docs.nocobase.com/file-storage-s3-pro-1735355973018.png)
+3. Пройдите проверку учётной записи.
 
-2. Click "Content Security -> CORS" in the menu.
+![Проверка учётной записи](https://static-docs.nocobase.com/file-storage-s3-pro-1735355974509.png)
 
-![CORS Menu](https://static-docs.nocobase.com/file-storage-s3-pro-1735355973319.png)
+4. Сохраните Access Key и Secret Access Key.
 
-3. Click "Create Rule," complete the fields, and click "OK."
+![Данные AccessKey](https://static-docs.nocobase.com/file-storage-s3-pro-1735355974781.png)
 
-![CORS Rule Setup](https://static-docs.nocobase.com/20250219171042784.png)
+#### Получение параметров и настройка
 
-#### AccessKey and SecretAccessKey Retrieval
+1. Используйте полученные `AccessKey ID` и `AccessKey Secret`.
 
-1. Click "AccessKey" under your account avatar.
+2. Перейдите в сведения о бакете, чтобы получить `Bucket Name` (имя бакета).
 
-![AccessKey Menu](https://static-docs.nocobase.com/file-storage-s3-pro-1735355973884.png)
+![Имя бакета](https://static-docs.nocobase.com/file-storage-s3-pro-1735355975063.png)
 
-2. Create an AccessKey. For production, refer to the [RAM AccessKey Guide](https://help.aliyun.com/zh/ram/user-guide/create-an-accesskey-pair-1?spm=5176.28366559.0.0.1b5c3c2fUI9Ql8#section-rjh-18m-7kp).
+3. Прокрутите вниз, чтобы найти `Region` (регион), исключив `.aliyuncs.com`.
 
-![Create AccessKey](https://static-docs.nocobase.com/file-storage-s3-pro-1735355974171.png)
+![Сведения о регионе](https://static-docs.nocobase.com/file-storage-s3-pro-1735355975437.png)
 
-3. Complete account verification.
+4. Получите `Endpoint` и добавьте префикс `https://`.
 
-![Account Verification](https://static-docs.nocobase.com/file-storage-s3-pro-1735355974509.png)
+![Настройка Endpoint](https://static-docs.nocobase.com/file-storage-s3-pro-1735355975715.png)
 
-4. Save the Access Key and Secret Access Key.
+#### Настройка миниатюр (опционально)
 
-![AccessKey Details](https://static-docs.nocobase.com/file-storage-s3-pro-1735355974781.png)
+Эта настройка необязательна и применяется только при необходимости оптимизации размера или качества изображений в предварительном просмотре.
 
-#### Parameter Retrieval and Configuration
+1. Заполните соответствующие параметры в поле `Правило для миниатюр`. Подробнее о параметрах см. в разделе [Параметры обработки изображений](https://help.aliyun.com/zh/oss/user-guide/img-parameters/?spm=a2c4g.11186623.help-menu-31815.d_4_14_1_1.170243033CdbSm&scm=20140722.H_144582._.OR_help-T_cn~zh-V_1).
 
-1. Use the retrieved `AccessKey ID` and `AccessKey Secret`.
+2. Убедитесь, что настройки `Полный стиль URL загрузки` и `Полный стиль URL доступа` одинаковы.
 
-2. Access the bucket details to retrieve the `Bucket Name`.
-
-![Bucket Name](https://static-docs.nocobase.com/file-storage-s3-pro-1735355975063.png)
-
-3. Scroll down to find the `Region` (omit `.aliyuncs.com`).
-
-![Region Details](https://static-docs.nocobase.com/file-storage-s3-pro-1735355975437.png)
-
-4. Retrieve the `Endpoint` and add `https://` as a prefix.
-
-![Endpoint Configuration](https://static-docs.nocobase.com/file-storage-s3-pro-1735355975715.png)
-
-#### Thumbnail Configuration (Optional)
-
-This configuration is optional and should only be used when optimizing the image preview size or effect.
-
-1. Fill in the relevant parameters for `Thumbnail rule`. For specific parameter settings, refer to [Image Processing Parameters](https://help.aliyun.com/zh/oss/user-guide/img-parameters/?spm=a2c4g.11186623.help-menu-31815.d_4_14_1_1.170243033CdbSm&scm=20140722.H_144582._.OR_help-T_cn~zh-V_1).
-
-2. Keep the `Full upload URL style` and `Full access URL style` settings the same.
-
-#### Configuration Example
+#### Пример настройки
 
 ![](https://static-docs.nocobase.com/20250414152525600.png)
 
 ### MinIO
 
-#### Bucket Creation
+#### Создание бакета
 
-1. Click on the **Buckets** menu on the left -> Click **Create Bucket** to open the creation page.
+1. Нажмите на меню **Buckets** слева → Нажмите **Create Bucket**, чтобы открыть страницу создания.
 
-2. Enter the Bucket name, then click the **Save** button.
+2. Введите имя бакета, затем нажмите кнопку **Save** (Сохранить).
 
-![Bucket Creation](https://static-docs.nocobase.com/20250106111325326.png)
+![Создание бакета](https://static-docs.nocobase.com/20250106111325326.png)
 
-#### AccessKey and SecretAccessKey Retrieval
+#### Получение AccessKey и SecretAccessKey
 
-1. Navigate to **Access Keys** -> Click the **Create access key** button to open the creation page.
+1. Перейдите в раздел **Access Keys** → Нажмите кнопку **Create access key**, чтобы открыть страницу создания.
 
-![Create Access Key](https://static-docs.nocobase.com/20250106111922957.png)
+![Создать ключ доступа](https://static-docs.nocobase.com/20250106111922957.png)
 
-2. Click the **Save** button.
+2. Нажмите кнопку **Save** (Сохранить).
 
-![Save Access Key](https://static-docs.nocobase.com/20250106111850639.png)
+![Сохранить ключ доступа](https://static-docs.nocobase.com/20250106111850639.png)
 
-3. Save the **Access Key** and **Secret Key** from the popup window for future configuration.
+3. Сохраните **Access Key** и **Secret Key** из всплывающего окна для дальнейшей настройки.
 
-![Access Key Details](https://static-docs.nocobase.com/20250106112831483.png)
+![Данные ключа доступа](https://static-docs.nocobase.com/20250106112831483.png)
 
-#### Parameter Configuration
+#### Настройка параметров
 
-1. Go to the **File Manager** page in NocoBase.
+1. Перейдите на страницу **Менеджер файлов** в NocoBase.
 
-2. Click the **Add new** button and select **S3 Pro**.
+2. Нажмите кнопку **Добавить новое** и выберите **S3 Pro**.
 
-3. Configure the form as follows:
-   - **AccessKey ID** and **AccessKey Secret**: Use the values saved from the previous step.
-   - **Region**: For private deployments of MinIO, the concept of a region does not apply. Set it to `"auto"`.
-   - **Endpoint**: Enter the domain name or IP address of your deployed service.
-   - Set **Force path style** to **Path-Style**. The final file URL will be in the format:  
+3. Заполните форму следующим образом:
+   - **AccessKey ID** и **AccessKey Secret**: используйте значения, сохранённые на предыдущем шаге.
+   - **Region** (Регион): для локальных развертываний MinIO понятие региона не применяется. Установите значение `"auto"`.
+   - **Endpoint**: введите доменное имя или IP-адрес вашего развернутого сервиса.
+   - Установите параметр **Force path style** (Принудительный стиль пути) в значение **Path-Style**. Итоговый URL файла будет иметь вид:  
      `https://{Endpoint}/{bucket-name}/{fileKey}`.
 
-#### Configuration Example
+#### Пример настройки
 
 ![](https://static-docs.nocobase.com/20250414152700671.png)
 
-
 ### Tencent COS
 
-Refer to the configurations above. The process is largely similar.
+См. предыдущие настройки. Процесс аналогичен.
 
-#### Configuration Example
+#### Пример настройки
 
 ![](https://static-docs.nocobase.com/20250414153252872.png)
 
 ### Cloudflare R2
 
-Refer to the configurations above. The process is largely similar.
+См. предыдущие настройки. Процесс аналогичен.
 
-#### Configuration Example
+#### Пример настройки
 
 ![](https://static-docs.nocobase.com/20250414154500264.png)
 
+## Руководство пользователя
 
-## User Guide
-
-Refer to the [file-manager plugin documentation](https://docs.nocobase.com/handbook/file-manager/).
+См. документацию по плагину [file-manager](https://docs.nocobase.com/handbook/file-manager/)
