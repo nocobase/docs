@@ -1,23 +1,33 @@
-# After Successful Submission
+# Действия после успешной отправки формы
 
-## Introduction
+## Введение
 
-The After successful submission enables customization of the response behavior upon completion. It supports defining custom success messages, selecting automatic or manual dismissal of success notifications, and choosing whether to remain on the current page, return to the previous popup or page, or redirect to a specified route, depending on the requirements.
+Функционал "После успешной отправки" позволяет настроить поведение системы после завершения операции. Вы можете:
+
+- Настраивать кастомные сообщения об успехе
+- Выбирать автоматическое или ручное закрытие уведомлений
+- Определять дальнейшее поведение:
+  - Остаться на текущей странице/попапе
+  - Вернуться на предыдущую страницу (по умолчанию)
+  - Перенаправить на указанный маршрут
 
 ![20240413213519](https://static-docs.nocobase.com/20240413213519.png)
-
 ![20241012125623](https://static-docs.nocobase.com/20241012125623.png)
 
-- Stay on the current popup or page: After the operation is successful, the pop-up window or route is not closed
-- Return to the previous popup or page(default): Close the popup window after the operation is successful
-- Redirect to: After the operation succeeds, the route is switched to the specified route
+### Варианты поведения:
 
-### Redirect to a Specific Route
+1. **Остаться на текущей странице/попапе** - после успешной операции окно/маршрут не закрывается
+2. **Вернуться назад (по умолчанию)** - попап автоматически закрывается после успешной операции
+3. **Перенаправление** - переход на указанный маршрут после успешного выполнения
 
-The `Submit` button in the form supports dynamically passing variables from the response data after a successful submission, to be used in a route redirection.
+### Перенаправление на конкретный маршрут
+
+Кнопка "Отправить" поддерживает динамическую передачу переменных из ответа сервера для использования в перенаправлении.
 
 ![20250405162542](https://static-docs.nocobase.com/20250405162542.png)
 
-You can pass the response record data as variables into the path.
-For example: After successfully creating a record, you can redirect to the details page of that record.
+Пример использования:
+После успешного создания записи можно перенаправить пользователя на страницу деталей этой записи, передав ID созданной записи в URL.
+
 ![20250405162732](https://static-docs.nocobase.com/20250405162732.png)
+
