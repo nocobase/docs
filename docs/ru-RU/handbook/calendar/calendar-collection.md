@@ -1,11 +1,12 @@
-# Calendar collection
+# Коллекция "Календарь"
 
 <PluginInfo name="calendar"></PluginInfo>
 
-## Introduction
+## Введение
 
-A calendar Collection is a specialized data table designed to store dates and date-related information. It is commonly used to manage and track time within applications or systems. The primary goal of the calendar table is to offer flexible and efficient access to date information, allowing for the swift retrieval of relevant data as needed.
+Коллекция "Календарь" — это специализированная таблица данных, предназначенная для хранения дат и связанной с ними информации. Она обычно используется для управления и отслеживания времени в приложениях или системах. Основная цель календарной таблицы — предоставить гибкий и эффективный доступ к информации о датах, позволяя быстро извлекать соответствующие данные по мере необходимости.
 
-## User Manual
+## Руководство пользователя
 
 ![20240512182454](https://static-docs.nocobase.com/20240512182454.png)
+
