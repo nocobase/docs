@@ -1,10 +1,9 @@
-# Post-action event
+# Событие после действия
 
 <PluginInfo name="workflow-action-trigger" link="/handbook/workflow-action-trigger"></PluginInfo>
 
 <embed src="../../workflow-action-trigger/trigger.md#L3-L999"></embed>
 
+## Связанные материалы
 
-## Related content
-
-Except for trigger configuration, there are also some related contents about post-action trigger that can be further understood through the [plugin documentation](../../workflow-action-trigger/index.md).
+Помимо настройки триггера, существуют и другие темы, связанные с триггером после действия, которые можно изучить дополнительно в [документации плагина](../../workflow-action-trigger/index.md).
