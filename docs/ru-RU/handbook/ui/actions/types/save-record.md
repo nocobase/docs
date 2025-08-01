@@ -1,26 +1,26 @@
-# Save Record
+# Сохранение записи
 
-### Introduction
+## Введение
 
-The save data operation enables assigning values to fields through field assignment, which takes precedence over any values entered in the form. This operation can be paired with workflows to automate data processes seamlessly.
+Операция сохранения данных позволяет назначать значения полям через механизм присвоения значений, который имеет приоритет над значениями, введенными в форме. Эта операция может быть интегрирована с рабочими процессами для автоматизации обработки данных.
 
 ![20240413214755](https://static-docs.nocobase.com/20240413214755.png)
-
 ![20240413214926](https://static-docs.nocobase.com/20240413214926.png)
 
-### Operation Configuration Items
+## Настройки операции
 
-#### Assign Field Values
+### Присвоение значений полям
 
-When field assignment is configured, the assigned value will override any input provided in the form for the same field, ensuring consistency and priority for the predefined value.
+При настройке присвоения значений, назначенное значение будет переопределять любое значение, введенное в форме для того же поля, обеспечивая приоритет предустановленного значения.
 
 ![20240423213245](https://static-docs.nocobase.com/20240423213245.png)
 
-For more details, refer to [Assign Field Values](/handbook/ui/actions/action-settings/assign-value)
+Подробнее: [Присвоение значений полям](/handbook/ui/actions/action-settings/assign-value)
 
-- [Edit Button](/handbook/ui/actions/action-settings/edit-button)
-- [Secondary Confirmation](/handbook/ui/actions/action-settings/double-check)
-- [After Successful Submission](/handbook/ui/actions/action-settings/affter-successful)
-- [Bind Workflow](/handbook/ui/actions/action-settings/bind-workflow)
-- Skip Required Validation
-- Refresh After Execution
+Основные параметры:
+- [Настройка кнопки](/handbook/ui/actions/action-settings/edit-button)
+- [Подтверждение действия](/handbook/ui/actions/action-settings/double-check)
+- [Действия после успешного сохранения](/handbook/ui/actions/action-settings/affter-successful)
+- [Привязка рабочего процесса](/handbook/ui/actions/action-settings/bind-workflow)
+- Пропуск обязательной проверки
+- Обновление после выполнения
