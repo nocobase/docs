@@ -1,15 +1,18 @@
-## Delete
+# Удаление записей
 
-### Introduction
+## Введение
 
-The delete operation allows for the removal of data records. This can be done by configuring a row deletion button or utilizing the bulk action button for multiple records at once.
+Операция удаления позволяет удалять записи данных. Доступны два варианта:
+1. Удаление одной записи через кнопку в строке таблицы
+2. Массовое удаление нескольких записей с помощью группового действия
 
 ![20240413211215](https://static-docs.nocobase.com/20240413211215.png)
 
-### Operation Configuration Items
+## Настройки операции
 
 ![20240413211439](https://static-docs.nocobase.com/20240413211439.png)
 
-- [Edit Button](/handbook/ui/actions/action-settings/edit-button)
-- [Secondary Confirmation](/handbook/ui/actions/action-settings/double-check)
-- Refresh data after execution: Enabled by default, this option automatically refreshes the block data once the operation is successfully completed.
+Основные параметры:
+- [Настройка кнопки](/handbook/ui/actions/action-settings/edit-button) - внешний вид и расположение кнопки удаления
+- [Подтверждение действия](/handbook/ui/actions/action-settings/double-check) - включение дополнительного подтверждения перед удалением
+- Обновление данных после выполнения - по умолчанию включено, автоматически обновляет данные блока после успешного удаления
