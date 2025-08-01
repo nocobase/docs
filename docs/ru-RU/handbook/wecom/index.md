@@ -2,12 +2,12 @@
 
 <PluginInfo commercial="true" name="wecom"></PluginInfo>
 
-## Introduction
+## Введение
 
-The **WeCom** plugin offers integration capabilities for Enterprise WeChat, including authentication methods, notification channels, and user data synchronization sources.
+Плагин **WeCom** предоставляет функции интеграции с корпоративным мессенджером WeChat (Enterprise WeChat), включая методы аутентификации, каналы уведомлений и источники синхронизации пользовательских данных.
 
-References:
+См. также:
 
-- [Authentication: WeCom](./auth.md)
-- [Notification: WeCom](./notification.md)
-- [Synchronization Source: WeCom](./user-data-sync.md)
+- [Аутентификация: WeCom](./auth.md)
+- [Уведомления: WeCom](./notification.md)
+- [Источник синхронизации: WeCom](./user-data-sync.md)
