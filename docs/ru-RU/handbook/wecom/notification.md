@@ -1,27 +1,27 @@
-# Notification: WeCom
+# Уведомления: WeCom
 
 <PluginInfo commercial="true" name="wecom"></PluginInfo>
 
-## Introduction
+## Введение
 
-The **WeCom** plugin enables applications to send notification messages to WeCom users.
+Плагин **WeCom** позволяет приложению отправлять уведомления пользователям в системе WeCom.
 
-## Adding and Configuring the WeCom Authenticator
+## Добавление и настройка аутентификатора WeCom
 
-First, you need to add and configure a WeCom authenticator in NocoBase. Refer to [User Authentication - WeCom](./auth). Only system users who have logged in via WeCom can receive system notifications through it.
+Сначала необходимо добавить и настроить аутентификатор WeCom в NocoBase. Подробнее см. в разделе [Аутентификация пользователей — WeCom](./auth). Только те системные пользователи, которые вошли в систему через WeCom, могут получать уведомления через этот канал.
 
-## Adding the WeCom Notification Channel
+## Добавление канала уведомлений WeCom
 
 ![](https://static-docs.nocobase.com/202412041522365.png)
 
-## Configuring the WeCom Notification Channel
+## Настройка канала уведомлений WeCom
 
-Select the authenticator you just configured.
+Выберите только что настроенный аутентификатор.
 
 ![](https://static-docs.nocobase.com/202412041525284.png)
 
-## Workflow Notification Node Configuration
+## Настройка узла уведомления в рабочем процессе
 
-Select the configured WeCom notification channel. Three message types are supported: Text Card, Markdown, and Template Card.
+Выберите настроенный канал уведомлений WeCom. Поддерживаются три типа сообщений: текстовая карточка, Markdown и шаблонная карточка.
 
 ![](https://static-docs.nocobase.com/202412041529319.png)
