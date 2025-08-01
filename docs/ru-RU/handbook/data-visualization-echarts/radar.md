@@ -1,32 +1,33 @@
-# Radar Chart
+# Радарная диаграмма (Radar Chart)
 
-## Data Configuration
+## Настройка данных
 
-### 1 or More Measures, 1 Dimension
+### 1 или более метрик, 1 измерение
 
-#### Using Dimensions as Variables
+#### Использование измерений в качестве переменных
 
-Each value of the dimension field acts as a variable, with each measure forming one radar area.
+Каждое значение поля измерения выступает как переменная, а каждая метрика формирует одну область радара.
 
 ![](https://static-docs.nocobase.com/202410091924155.png)
 
-#### Using Measures as Variables
+#### Использование метрик в качестве переменных
 
-Each measure acts as a variable, with each value of the dimension field forming one radar area.
+Каждая метрика выступает как переменная, а каждое значение поля измерения формирует одну область радара.
 
 ![](https://static-docs.nocobase.com/202410091927959.png)
 
-## Configuration Options
+## Параметры конфигурации
 
-| Option                      | Description                                                                 |
-| ---------------------------- | --------------------------------------------------------------------------- |
-| Size                         | Set the size of the chart, either by fixing the aspect ratio or a fixed height |
-| Light mode theme             | Preview requires selection when the system is in light mode                  |
-| Dark mode theme              | Preview requires selection when the system is in dark mode                   |
-| Show legend                  | Controls whether the legend is displayed                                     |
-| Legend orient                | Controls the direction of the legend, either horizontal or vertical          |
-| Legend position (left, bottom, right, top) | Controls the relative position of the legend                                  |
-| Shape                        | Polygon or circle<br />![](https://static-docs.nocobase.com/202410091929018.png) |
-| Range                        | Controls the minimum and maximum values of the variables                     |
-| Radius                       | Adjusts the radius of the chart                                              |
-| Center coordinate            | Controls the position of the chart, can be fixed values or percentages        |
+| Параметр                     | Описание                                                                 |
+|------------------------------|--------------------------------------------------------------------------|
+| Размер                       | Установка размера диаграммы - фиксированное соотношение сторон или высота |
+| Тема светлого режима         | Обязательна для предпросмотра в светлой теме интерфейса                 |
+| Тема темного режима          | Обязательна для предпросмотра в темной теме интерфейса                  |
+| Показать легенду             | Управляет отображением легенды                                          |
+| Ориентация легенды           | Определяет направление легенды - горизонтальное или вертикальное        |
+| Позиция легенды (слева, снизу, справа, сверху) | Управляет расположением легенды относительно диаграммы          |
+| Форма                        | Многоугольник или круг<br />![](https://static-docs.nocobase.com/202410091929018.png) |
+| Диапазон                     | Управляет минимальными и максимальными значениями переменных            |
+| Радиус                       | Регулирует радиус диаграммы                                             |
+| Координаты центра            | Управляет положением диаграммы (фиксированные значения или проценты)    |
+
