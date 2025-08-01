@@ -1,15 +1,17 @@
-# Secondary Confirmation
+### **Привязка рабочих процессов**
 
-## Introduction
+#### **Введение**
 
-The Double check configuration is designed to ensure that an operation is deliberate before it proceeds. When an action is clicked, a confirmation box will appear. By default, the delete button has secondary confirmation enabled to prevent accidental operations that could lead to data loss or irreversible outcomes.
+Привязка рабочего процесса — это мощный способ автоматизации обработки данных. Связывая операцию с рабочим процессом, вы обеспечиваете бесперебойное прохождение данных через бизнес-процессы. Важно отметить, что рабочие процессы запускаются только после успешной отправки данных; если операция завершается с ошибкой, рабочий процесс активирован не будет.
 
-![20240919164638](https://static-docs.nocobase.com/20240919164638.png)
+![20240413095247](https://static-docs.nocobase.com/20240413095247.png)
 
-Support customizing secondary confirmation content and titles
+![20240413095309](https://static-docs.nocobase.com/20240413095309.png)
 
-![20240919164704](https://static-docs.nocobase.com/20240919164704.png)
+Следующие кнопки операций в настоящее время поддерживают привязку к рабочим процессам:
 
-![20240919164800](https://static-docs.nocobase.com/20240919164800.png)
+- Кнопки **«Отправить»** и **«Сохранить»** в формах создания записей.
+- Кнопки **«Отправить»** и **«Сохранить»** в формах редактирования записей.
+- Кнопка **«Обновить данные»** в строках данных (включая таблицы, списки, доски канбан и т.д.).
 
-
+Более подробную информацию см. в разделе [События после действий](/handbook/workflow-action-trigger) документации по рабочим процессам.
