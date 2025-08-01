@@ -1,49 +1,49 @@
-### Menu
+### Меню
 
-#### Menu Item Types
+#### Типы пунктов меню
 
-There are three built-in menu item types:
+Существует три встроенных типа пунктов меню:
 
-- Group
-- Page
-- Link
+- Группа
+- Страница
+- Ссылка
 
 ![](https://static-docs.nocobase.com/ccf6f42d3cc2677d440f9e33b9488d1c.png)
 
-##### Group
+##### Группа
 
-When using a group, a submenu will appear on the left side.
+При использовании группы слева появится подменю.
 
 ![](https://static-docs.nocobase.com/e59b2088fd68666cd240a26566616a3e.png)
 
-##### Page
+##### Страница
 
-A page can be used to add various blocks.
+Страница может использоваться для добавления различных блоков.
 
 ![](https://static-docs.nocobase.com/4cd259f6b79f6792df72ccc291da2af9.png)
 
-##### Link
+##### Ссылка
 
-Used for URL redirection.
+Используется для перенаправления по URL.
 
 ![](https://static-docs.nocobase.com/80a6e6a875c565425224d9325332a1ad.png)
 
-#### Menu Item Designer
+#### Конструктор пунктов меню
 
-In the upper right corner of each menu item, there are two icons:
+В правом верхнем углу каждого пункта меню есть две иконки:
 
-- Drag to move
-- Configure menu item
+- Перетащить для перемещения
+- Настроить пункт меню
 
 ![](https://static-docs.nocobase.com/963ba10e36d04fd258fea0e996231f68.png)
 
-##### Menu Item Configuration
+##### Настройка пункта меню
 
 ![](https://static-docs.nocobase.com/0a9a05bd88d8bad9d711102a730f351d.png)
 
-- **Edit:** Modify the menu item title, icon, etc.
-- **Move to:** Besides dragging to move, you can also use the "Move to" option to quickly relocate the menu item.
-- **Insert before**
-- **Insert after**
-- **Insert inside** (only for group type)
-- **Delete**
+- **Редактировать:** Изменить название пункта меню, иконку и др.
+- **Переместить в:** Помимо перетаскивания, можно использовать опцию "Переместить в" для быстрого изменения положения.
+- **Вставить перед**
+- **Вставить после**
+- **Вставить внутрь** (только для типа "Группа")
+- **Удалить**
