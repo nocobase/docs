@@ -1,4 +1,4 @@
-# Mathjs Functions
+# Математические функции
 
 <style>
 article{
