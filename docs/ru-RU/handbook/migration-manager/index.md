@@ -1,92 +1,92 @@
-# Migration Manager
+# Менеджер миграций
 
 <PluginInfo licenseBundled="true" name="migration-manager"></PluginInfo>
 
-## Introduction
+## Введение
 
-The Migration Manager helps you transfer application configurations from one environment to another. Its main focus is on migrating “application configurations.” If you need a complete data migration, we recommend using the “[Backup Manager](/handbook/backups)” to back up and restore your entire application.
+Менеджер миграций помогает переносить конфигурации приложений из одного окружения в другое. Его основная задача — миграция «конфигураций приложений». Если вам требуется полный перенос данных, рекомендуем использовать «[Менеджер резервного копирования](/handbook/backups)» для создания резервных копий и восстановления всего приложения.
 
-## Installation
+## Установка
 
-The Migration Manager depends on the [Backup Manager](/handbook/backups). Make sure that the Backup Manager plugin is already installed and activated. For more information, refer to [Installing and Upgrading Commercial Plugins](/welcome/getting-started/plugin).
+Менеджер миграций зависит от [Менеджера резервного копирования](/handbook/backups). Убедитесь, что плагин Менеджера резервного копирования уже установлен и активирован. Подробнее см. в разделе [Установка и обновление коммерческих плагинов](/welcome/getting-started/plugin).
 
-## Process and Principles
+## Процесс и принципы работы
 
-The Migration Manager transfers tables and data from the primary database based on specified migration rules, moving them from one application instance to another. Note that it does not migrate data from external databases or sub-applications.
+Менеджер миграций переносит таблицы и данные из основной базы данных на основе указанных правил миграции, перемещая их из одного экземпляра приложения в другой. Обратите внимание, что он не переносит данные из внешних баз данных или подприложений.
 
 ![20250102202546](https://static-docs.nocobase.com/20250102202546.png)
 
-## Migration Rules
+## Правила миграции
 
-### Built-in Rules
+### Встроенные правила
 
-Migration Manager can migrate all tables in the primary database and supports five built-in rules:
+Менеджер миграций может переносить все таблицы в основной базе данных и поддерживает пять встроенных правил:
 
-1. **Schema-only**  
-   Only migrates the structure (schema) of tables—no data is inserted or updated.
+1. **Только схема**  
+   Переносит только структуру (схему) таблиц — данные не вставляются и не обновляются.
 
-2. **Overwrite (clear and re-insert)**  
-   Deletes all existing records from the target database table, then inserts the new data.
+2. **Перезапись (очистка и повторная вставка)**  
+   Удаляет все существующие записи из целевой таблицы базы данных, затем вставляет новые данные.
 
-3. **Upsert (Insert or update)**  
-   Checks whether each record exists (by primary key). If it does, it updates that record; if not, it inserts it.
+3. **Обновление или вставка (Upsert)**  
+   Проверяет, существует ли запись (по первичному ключу). Если существует — обновляет её, если нет — вставляет новую.
 
-4. **Insert-ignore**  
-   Inserts new records, but if a record already exists (by primary key), the insertion is ignored (no updates occur).
+4. **Вставка без обновления (Insert-ignore)**  
+   Вставляет новые записи, но если запись уже существует (по первичному ключу), вставка игнорируется (обновления не происходит).
 
-5. **Skip**  
-   Skips processing for the table entirely (no structure changes, no data migration).
+5. **Пропуск**  
+   Пропускает обработку таблицы полностью (без изменений структуры или переноса данных).
 
-**Additional notes:**
+**Дополнительные примечания:**
 
-- “Overwrite,” “Upsert,” and “Insert-ignore” all synchronize table structure changes as well.
-- If a table uses an auto-increment ID as its primary key, or if it has no primary key, neither “Upsert” nor “Insert-ignore” can be applied.
-- “Upsert” and “Insert-ignore” rely on the primary key to determine whether the record already exists.
+- «Перезапись», «Обновление или вставка» и «Вставка без обновления» также синхронизируют изменения структуры таблиц.
+- Если таблица использует автоинкрементный ID в качестве первичного ключа или не имеет первичного ключа, правила «Обновление или вставка» и «Вставка без обновления» не могут быть применены.
+- «Обновление или вставка» и «Вставка без обновления» используют первичный ключ для определения существования записи.
 
-### Detailed Design
+### Подробная схема работы
 
 ![20250102204909](https://static-docs.nocobase.com/20250102204909.png)
 
-### Configuration Interface
+### Интерфейс настройки
 
-You can configure the migration rules in the interface:
+Вы можете настроить правила миграции в интерфейсе:
 
 ![20250102205450](https://static-docs.nocobase.com/20250102205450.png)
 
-Enable independent rules:
+Включение независимых правил:
 
 ![20250107105005](https://static-docs.nocobase.com/20250107105005.png)
 
-Select which tables should be managed by these independent rules:
+Выбор таблиц, к которым применяются эти правила:
 
 ![20250107104644](https://static-docs.nocobase.com/20250107104644.png)
 
-## Migration Files
+## Файлы миграции
 
 ![20250102205844](https://static-docs.nocobase.com/20250102205844.png)
 
-### Creating a New Migration
+### Создание новой миграции
 
 ![20250102205857](https://static-docs.nocobase.com/20250102205857.png)
 
-### Executing a Migration
+### Выполнение миграции
 
 ![20250102205915](https://static-docs.nocobase.com/20250102205915.png)
 
-During execution, the system checks for environment variables (learn more about [Environment Variables](/handbook/environment-variables)):
+Во время выполнения система проверяет переменные окружения (подробнее о [Переменных окружения](/handbook/environment-variables)):
 
 ![20250102212311](https://static-docs.nocobase.com/20250102212311.png)
 
-If any required environment variables are missing, a prompt appears so you can add them before continuing:
+Если какие-либо обязательные переменные окружения отсутствуют, появится запрос на их добавление перед продолжением:
 
 ![20250102210009](https://static-docs.nocobase.com/20250102210009.png)
 
-## Migration Logs
+## Логи миграции
 
 ![20250102205738](https://static-docs.nocobase.com/20250102205738.png)
 
-## Rollback
+## Откат
 
-Before any migration runs, the current application is automatically backed up. If the migration fails or the results are not as expected, you can roll back using the [Backup Manager](/handbook/backups).
+Перед выполнением любой миграции автоматически создаётся резервная копия текущего приложения. Если миграция завершится неудачно или результаты окажутся неожиданными, вы можете выполнить откат с помощью [Менеджера резервного копирования](/handbook/backups).
 
 ![20250105195029](https://static-docs.nocobase.com/20250105195029.png)
