@@ -1,17 +1,24 @@
-# Submit
+# Операция "Отправить"
 
-The Submit operation is used to save form data (specific to form blocks).
+Операция "Отправить" используется для сохранения данных формы (специфична для блоков формы).
 
-![Submit Operation](https://static-docs.nocobase.com/a8dd8cb5a0110c35a1197eb5800a099f.png)
+![Операция Отправить](https://static-docs.nocobase.com/a8dd8cb5a0110c35a1197eb5800a099f.png)
 
-### Parameter Configuration
+### Настройка параметров
 
-- Save Method: Only supports configuring save methods in **new** operations for form blocks.
+- **Метод сохранения**: Поддерживает настройку методов сохранения только для операций **создания** в блоках формы.
 
-![Save Method Configuration](https://static-docs.nocobase.com/25fc9b88760248e7015673b29b9487f4.png)
+![Настройка метода сохранения](https://static-docs.nocobase.com/25fc9b88760248e7015673b29b9487f4.png)
 
-- Bind Workflow: Supports binding with workflows, automatically triggering workflows after submission. By defining trigger data contexts, advanced automation tasks can be achieved, improving data processing efficiency and business process control.
+- **Привязка workflow**: Позволяет связать с бизнес-процессами, автоматически запуская workflow после отправки. Через определение контекста данных можно реализовать сложные автоматизированные задачи, повышая эффективность обработки данных и контроль бизнес-процессов.
 
-![Bind Workflow](https://static-docs.nocobase.com/a77bdff33353fb155b0c919db76e0474.png)
+![Привязка workflow](https://static-docs.nocobase.com/a77bdff33353fb155b0c919db76e0474.png)
 
-For more details, refer to the Workflow Documentation.
+**Примечание:**  
+Для получения дополнительной информации обратитесь к документации по Workflow.
+
+**Ключевые особенности:**
+1. Работает исключительно с блоками формы
+2. Поддерживает различные методы сохранения данных
+3. Интеграция с системами workflow для автоматизации процессов
+4. Простое управление через интуитивный интерфейс
