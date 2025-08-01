@@ -1,20 +1,19 @@
-# FAQ
+# Часто задаваемые вопросы (FAQ)
 
-## How should JSON configuration be used?
+## Как использовать JSON-конфигурацию?
 
-Refer to the documentation or use a demo to understand the properties supported by different components through the chart component reference link. Configuration is done using JSON key-value pairs.
+Обратитесь к документации или используйте демо-примеры, чтобы понять свойства, поддерживаемые различными компонентами, через ссылки на документацию компонентов. Конфигурация выполняется с использованием пар ключ-значение в формате JSON.
 
 <img src="https://static-docs.nocobase.com/202404212046877.png"/><br />
-
 <img src="https://static-docs.nocobase.com/202404212047075.png"/>
 
-### Example: Changing the Order of Table Columns
+### Пример: Изменение порядка столбцов таблицы
 
-The table component used is Antd's table component. Open the reference link <a href="https://ant.design/components/table/" target="_blank">Table</a>. The API section corresponds to all the configurable properties supported by the component.
+Используемый табличный компонент - это таблица Ant Design. Откройте справочную ссылку <a href="https://ant.design/components/table/" target="_blank">Table</a>. В разделе API перечислены все настраиваемые свойства, поддерживаемые компонентом.
 
 <img src="https://static-docs.nocobase.com/202404212052108.png"/>
 
-To adjust the order of table columns, modify the `columns` configuration. Example:
+Для изменения порядка столбцов таблицы измените конфигурацию `columns`. Пример:
 
 ```ts
 {
@@ -25,9 +24,9 @@ To adjust the order of table columns, modify the `columns` configuration. Exampl
 }
 ```
 
-## Can JSON configuration support the use of functions?
+## Поддерживает ли JSON-конфигурация использование функций?
 
-JavaScript expressions can be wrapped in `{{}}`. Example:
+Выражения JavaScript можно обернуть в `{{}}`. Пример:
 
 ```json
 {
@@ -38,6 +37,13 @@ JavaScript expressions can be wrapped in `{{}}`. Example:
 }
 ```
 
-## What is the primary use case for custom fields in chart filter blocks?
+## Для чего используются пользовательские поля в блоках фильтров диаграмм?
 
-When there are charts from different data tables within a chart block and the same filter field is needed to filter these charts, [custom fields](./user/filter.md#custom-fields) can be used. For example, you might want to filter data within a specific time period.
+Когда в блоке диаграмм присутствуют диаграммы из разных таблиц данных и требуется один и тот же фильтр для этих диаграмм, можно использовать [пользовательские поля](./user/filter.md#custom-fields). Например, может потребоваться фильтрация данных за определенный период времени.
+
+**Дополнительные пояснения:**
+1. JSON-конфигурация позволяет гибко настраивать компоненты
+2. Ссылки на документацию компонентов содержат полный список доступных свойств
+3. Поддержка JavaScript-выражений расширяет возможности кастомизации
+4. Пользовательские поля полезны для создания универсальных фильтров
+5. Все изменения применяются динамически без необходимости перезагрузки
