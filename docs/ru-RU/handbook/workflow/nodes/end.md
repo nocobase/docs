@@ -1,23 +1,22 @@
-# End Process
+# Завершение процесса
 
-When executed, this node will immediately end the current workflow execution and end it with the status as configured in the node. It is typically used for specific logic flow control, to exit the current workflow after meeting certain logical conditions, and not continue with subsequent processing. It can be compared to the `return` instruction in programming languages, used to exit the currently executing function.
+При выполнении этот узел немедленно завершает текущее выполнение рабочего процесса и устанавливает статус, заданный в настройках узла. Обычно используется для управления логикой выполнения: позволяет выйти из текущего рабочего процесса при выполнении определённых условий, не продолжая последующую обработку. Аналогичен инструкции `return` в языках программирования, которая используется для выхода из выполняемой функции.
 
-## Creating a Node
+## Создание узла
 
-In the workflow configuration UI, click the plus ("+") button in the flow to add an "End Process" node:
+В интерфейсе настройки рабочего процесса нажмите кнопку «+» в цепочке и добавьте узел «Завершение процесса»:
 
-![Add End Process](https://static-docs.nocobase.com/672186ab4c8f7313dd3cf9c880b524b8.png)
+![Добавить узел завершения процесса](https://static-docs.nocobase.com/672186ab4c8f7313dd3cf9c880b524b8.png)
 
-## Node Configuration
+## Настройка узла
 
-![End Process Node Configuration](https://static-docs.nocobase.com/bb6a597f25e9afb72836a14a0fe0683e.png)
+![Настройка узла «Завершение процесса»](https://static-docs.nocobase.com/bb6a597f25e9afb72836a14a0fe0683e.png)
 
-### End Status
+### Статус завершения
 
-The end status will affect the final status of the execution plan of the workflow. It can be configured as "Success" or "Failure". When the workflow reaches this node, it will immediately exit with the configured status.
+Статус завершения влияет на итоговый статус плана выполнения рабочего процесса. Может быть настроен как «Успешно» или «Ошибка». Когда рабочий процесс достигает этого узла, он немедленно завершается с указанным статусом.
 
-:::info{title=Note}
-When used in workflows of the "Pre-action" type, it will intercept the action requests. For more details, please refer to the ["Pre-action" usage instructions](../triggers/pre-action).
+Примечание:
+При использовании в рабочих процессах типа «Перед действием» узел будет перехватывать запросы действий. Подробнее см. в [инструкции по использованию «Перед действием»](../triggers/pre-action).
 
-Besides intercepting the action requests, the configuration of the end status will also affect the status of the feedback information in the "Response Message" in this type of workflow.
-:::
+Помимо перехвата запросов, настройка статуса завершения также влияет на статус информационного ответа в поле «Сообщение ответа» для этого типа рабочих процессов.
