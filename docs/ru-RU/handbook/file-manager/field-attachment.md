@@ -1,15 +1,15 @@
-# Attachment Field
+# Поле для вложений
 
 <PluginInfo name="file-manager"></PluginInfo>
 
-## Introduction
+## Введение
 
-The attachment field is a specialized relational field that connects directly to the file collection.
+Поле для вложений - это специальное реляционное поле, которое напрямую связывается с коллекцией файлов.
 
-## Field Configuration
+## Настройка поля
 
 ![20240512180916](https://static-docs.nocobase.com/20240512180916.png)
 
-## Example
+## Пример использования
 
-(Example to be added)
+(Пример будет добавлен)
