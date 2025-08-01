@@ -1,36 +1,36 @@
-# Line Chart
+# Линейчатая диаграмма (график)
 
-## Data Configuration
+## Настройка данных
 
-### 1 or More Measures, 1 Dimension
+### 1 или более показателей, 1 измерение
 
-![1 or More Measures, 1 Dimension](https://static-docs.nocobase.com/202410091022965.png)
+![1 или более показателей, 1 измерение](https://static-docs.nocobase.com/202410091022965.png)
 
-### 1 Measure, 1 Axis Dimension, one Classification Dimension
+### 1 показатель, 1 измерение по оси, 1 категориальное измерение
 
-Configure 1 measure and 2 dimensions. 1 dimension serves as the X-axis field, and the other as the series field.
+Настройте 1 показатель и 2 измерения. Одно измерение используется как поле по оси X, другое — как поле для серии (категорий).
 
-![1 Measure, 1 Axis Dimension, one Classification Dimension](https://static-docs.nocobase.com/202410091029410.png)
+![1 показатель, 1 измерение по оси, 1 категориальное измерение](https://static-docs.nocobase.com/202410091029410.png)
 
-## Configuration Options
+## Параметры настройки
 
-| Configuration Option       | Description                                                                                   |
+| Параметр                   | Описание                                                                                   |
 | -------------------------- | --------------------------------------------------------------------------------------------- |
-| xField                     | The dimension field for the X-axis                                                             |
-| seriesField                | The dimension field for classification                                                         |
-| Size                       | Set the chart size, either with a fixed aspect ratio or a fixed height                         |
-| Light mode theme           | Select to preview in light mode in systems with light mode enabled                             |
-| Dark mode theme            | Select to preview in dark mode in systems with dark mode enabled                               |
-| Show legend                | Control whether to display the legend                                                         |
-| Legend orient              | Control the direction of the legend, either horizontal or vertical<br />![](https://static-docs.nocobase.com/202410091050074.png) |
-| Legend position (left, bottom, right, top) | Control the position of the legend relative to the chart                       |
-| Label type                 | Control whether and how labels are displayed, only visible when marker points are displayed    |
-| Smooth curve               | Enable or disable smooth curves in the line chart                                              |
-| Whether stack              | Enable or disable stacked data values                                                          |
-| Symbol                     | Control whether to display marker points and their styles                                      |
-| X-Axis title               | Control the position of the X-axis title                                                       |
-| Y-Axis title               | Control the position of the Y-axis title                                                       |
-| X-Axis label rotate        | Control the rotation angle of X-axis labels, useful for displaying more labels in dense data   |
-| Padding                    | Adjust the chart’s internal padding                                                            |
-| Split line                 | Control the visibility and style of grid lines                                                 |
-| Mark line                  | Add marker lines and set title, value, and color<br />![](https://static-docs.nocobase.com/202410091051511.png) |
+| xField                     | Поле измерения для оси X                                                                     |
+| seriesField                | Поле измерения для классификации                                                             |
+| Размер                     | Установите размер диаграммы — с фиксированным соотношением сторон или фиксированной высотой   |
+| Тема в светлом режиме      | Выберите для предварительного просмотра в светлом режиме, если он включён в системе            |
+| Тема в тёмном режиме       | Выберите для предварительного просмотра в тёмном режиме, если он включён в системе             |
+| Отображать легенду         | Управление отображением легенды                                                              |
+| Ориентация легенды         | Управление направлением легенды: горизонтальное или вертикальное<br />![](https://static-docs.nocobase.com/202410091050074.png) |
+| Положение легенды (слева, снизу, справа, сверху) | Управление положением легенды относительно диаграммы                       |
+| Тип меток                  | Управление отображением и типом меток; отображаются только при включённых точках-маркерах     |
+| Плавная кривая             | Включить или отключить плавные линии на графике                                                |
+| Группировка (Stack)        | Включить или отключить отображение значений в виде стека (наложенных друг на друга)            |
+| Символ (маркеры)           | Управление отображением точек-маркера и их стилями                                             |
+| Заголовок оси X            | Управление положением заголовка оси X                                                         |
+| Заголовок оси Y            | Управление положением заголовка оси Y                                                         |
+| Поворот меток оси X        | Управление углом поворота меток оси X, полезно при плотном расположении меток                 |
+| Внутренние отступы (Padding)| Настройка внутренних отступов диаграммы                                                       |
+| Линии сетки (Split line)   | Управление видимостью и стилем линий сетки                                                     |
+| Маркерная линия (Mark line)| Добавьте линии-маркеры и настройте заголовок, значение и цвет<br />![](https://static-docs.nocobase.com/202410091051511.png) |
