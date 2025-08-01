@@ -1,58 +1,61 @@
-# Chat
+# Чат с ИИ
 
 <PluginInfo name="ai"></PluginInfo>
 
-## Introduction
+## Введение
 
-The LLM node in the workflow can initiate conversations with online LLM services, leveraging the capabilities of powerful models to assist in completing a series of business processes.
+Узел LLM в workflow позволяет взаимодействовать с онлайн-сервисами языковых моделей, используя их возможности для автоматизации бизнес-процессов.
 
 ![](https://static-docs.nocobase.com/202503041012091.png)
 
-## Creating a New LLM Node
+## Создание узла LLM
 
-Since conversing with LLM services is typically time-consuming, the LLM node can only be used in asynchronous workflows.
+Поскольку взаимодействие с LLM-сервисами обычно требует времени, узел LLM можно использовать только в асинхронных workflow.
 
 ![](https://static-docs.nocobase.com/202503041013363.png)
 
-## Selecting a Model
+## Выбор модели
 
-First, choose an integrated LLM service. If an LLM service has not been integrated yet, you need to add an LLM service configuration first. For reference, see: [LLM Service Management](./../../../service.md)
+1. Сначала выберите интегрированный LLM-сервис. Если сервис ещё не подключён, необходимо сначала добавить его конфигурацию (см. [Управление LLM-сервисами](./../../../service.md))
 
-After selecting the service, the application will attempt to fetch a list of available models from the LLM service for your selection. Some online LLM services may provide model-fetching APIs that do not conform to the standard API protocol, in which case you can manually input the model ID.
+2. После выбора сервиса система попытается получить список доступных моделей. Для некоторых сервисов может потребоваться ввести ID модели вручную.
 
 ![](https://static-docs.nocobase.com/202503041013084.png)
 
-## Configuring Call Parameters
+## Настройка параметров вызова
 
-You can adjust the parameters for calling the LLM model as needed.
+Вы можете настроить параметры вызова модели под свои задачи.
 
 ![](https://static-docs.nocobase.com/202503041014778.png)
 
-### Response Format
+### Формат ответа
 
-Note the **Response Format** setting, which is used to indicate the format of the response from the model, either text or JSON. If you choose JSON mode, note the following:
+Особое внимание уделите настройке **Формата ответа** (текст или JSON). При выборе JSON:
 
-- The corresponding LLM model must support calls in JSON mode, and you must explicitly prompt the model to respond in JSON format in your prompt. For example: "Tell me a joke about cats, respond in JSON with `setup` and `punchline` keys." Otherwise, there may be no response and it could result in a `400 status code (no body)` error.
-- The response will be a JSON string, so you need to use other workflow nodes to parse it in order to use the structured content. You can also use the [Structured Output](../../../../../handbook/ai-ee/workflow/nodes/llm/structured-output) feature.
+- Модель должна поддерживать JSON-режим
+- В запросе нужно явно указать требование отвечать в JSON-формате
+- Ответ будет в виде JSON-строки, требующей дополнительного парсинга
+- Можно использовать функцию [Структурированный вывод](../../../../../handbook/ai-ee/workflow/nodes/llm/structured-output)
 
-## Messages
+## Сообщения
 
-The array of messages sent to the LLM model can include a history of conversations. The messages support three types:
+Массив сообщений для LLM может включать историю диалога. Поддерживаются 3 типа сообщений:
 
-- System – Typically used to define the role and behavior the LLM model should play in the conversation.
-- User – Content entered by the user.
-- Assistant – Content that is the model's response.
+1. **Системные** - определяют роль и поведение модели
+2. **Пользовательские** - ввод пользователя 
+3. **Ассистента** - ответы модели
 
-For user messages, if supported by the model, you can combine multiple pieces of content in one prompt corresponding to the `content` parameter. If the model only supports a string format for the `content` parameter (which is the case for most models that do not support multimodal conversations), please split the messages into multiple prompts, each containing only one piece of content. This way, the node will send the content as a string.
+Для пользовательских сообщений можно комбинировать несколько элементов контента в одном запросе (если модель поддерживает). В противном случае - разделяйте на отдельные сообщения.
 
 ![](https://static-docs.nocobase.com/202503041016140.png)
 
-You can use variables in the message content to reference the workflow's context.
+В содержимом сообщений можно использовать переменные из контекста workflow.
 
 ![](https://static-docs.nocobase.com/202503041017879.png)
 
-## Using the Response Content of the LLM Node
+## Использование ответа LLM
 
-The response from the LLM node can be used as a variable in other nodes.
+Ответ узла LLM можно использовать как переменную в других узлах workflow.
 
 ![](https://static-docs.nocobase.com/202503041018508.png)
+
