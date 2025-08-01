@@ -1,19 +1,19 @@
-# User Lockout
+### **Блокировка пользователей**
 
 <PluginInfo licenseBundled="true" name="password-policy"></PluginInfo>
 
-## Introduction
+#### **Введение**
 
-Manage locked users and proactively lock users.
+Позволяет управлять заблокированными пользователями, а также вручную блокировать пользователей.
 
 ![](https://static-docs.nocobase.com/202412281450083.png)
 
-### Unlock User
+#### **Разблокировка пользователя**
 
-Users who are locked out due to exceeding the invalid password login limit can be unlocked by deleting the record.
+Пользователи, заблокированные из-за превышения количества попыток входа с неправильным паролем, могут быть разблокированы путём удаления соответствующей записи.
 
-### Lock User
+#### **Блокировка пользователя**
 
-Adding a user record allows you to proactively lock a user. Once a user is locked, they will be prohibited from accessing the system through any authentication method, including API keys.
+Добавление записи пользователя позволяет вручную заблокировать его. После блокировки пользователь не сможет получить доступ к системе ни одним способом, включая использование API-ключей.
 
 ![](https://static-docs.nocobase.com/202412281450512.png)
