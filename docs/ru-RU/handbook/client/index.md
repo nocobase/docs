@@ -1,9 +1,9 @@
-# WEB Client
+# WEB-клиент
 
-## Introduction
+## Введение
 
-Offers a seamless user interface for interacting with the NocoBase server.
+Предоставляет удобный пользовательский интерфейс для взаимодействия с сервером NocoBase.
 
-## Installation
+## Установка
 
-As a built-in plugin, no additional installation is necessary.
+Является встроенным плагином, дополнительная установка не требуется.
