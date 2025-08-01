@@ -1,48 +1,48 @@
 # HTTP API
 
-Post-action events can be triggered not only through user interface interactions but also via HTTP API calls, providing a flexible way to initiate workflows programmatically.
+События после операции можно запускать не только через взаимодействие с пользовательским интерфейсом, но и с помощью HTTP API, что предоставляет гибкий способ программного запуска рабочих процессов.
 
-:::info{title="Note"}
-When triggering post-operation events through HTTP API calls, it's essential to ensure that the workflow is active and the data table configuration is correctly matched. If these conditions aren't met, the call may fail or produce errors.
+:::info{title="Примечание"}
+При запуске событий после операции через HTTP API важно убедиться, что рабочий процесс активен, а конфигурация таблицы данных соответствует ожидаемой. Если эти условия не выполнены, вызов может завершиться неудачей или привести к ошибкам.
 :::
 
-For workflows associated with specific operation buttons, you can trigger them using the following method (illustrated here with the `posts` table creation button):
+Для рабочих процессов, привязанных к конкретным кнопкам операций, можно использовать следующий метод вызова (в примере — кнопка создания записи в таблице `posts`):
 
 ```bash
-curl -X POST -H 'Authorization: Bearer <your token>' -H 'X-Role: <roleName>' -d \
+curl -X POST -H 'Authorization: Bearer <ваш токен>' -H 'X-Role: <имя_роли>' -d \
   '{
-    "title": "Hello, world!",
-    "content": "This is a test post."
-  }'
+    "title": "Привет, мир!",
+    "content": "Это тестовая публикация."
+  }' \
   "http://localhost:3000/api/posts:create?triggerWorkflows=workflowKey"
 ```
 
-In this example, the URL parameter `triggerWorkflows` specifies the workflow key, with multiple workflows separated by commas if needed. You can obtain this key by hovering over the workflow name at the top of the workflow canvas:
+В этом примере параметр URL `triggerWorkflows` указывает ключ рабочего процесса. Если необходимо, можно указать несколько рабочих процессов, разделив их запятыми. Ключ рабочего процесса можно посмотреть, наведя курсор на название рабочего процесса в верхней части холста:
 
-![Method to View Workflow Key](https://static-docs.nocobase.com/20240426135108.png)
+![Способ просмотра ключа рабочего процесса](https://static-docs.nocobase.com/20240426135108.png)
 
-Upon successful execution, this call will trigger the appropriate post-operation event for the `posts` table.
+При успешном выполнении этот запрос запустит соответствующее событие после операции для таблицы `posts`.
 
-:::info{title="Note"}
-Since external API calls require user authentication, the same credentials used for standard interface requests must be provided in HTTP API calls. This includes the `Authorization` request header or `token` parameter (obtained during login), and the `X-Role` request header, which specifies the current user's role.
+:::info{title="Примечание"}
+Поскольку внешние API-вызовы требуют аутентификации пользователя, в HTTP-запросах необходимо передавать те же учётные данные, что и при стандартных запросах через интерфейс. Это включает заголовок `Authorization` (или параметр `token`, полученный при входе в систему) и заголовок `X-Role`, который указывает текущую роль пользователя.
 :::
 
-If you need to trigger an event related to a one-to-one relationship (currently unsupported for many-to-one relationships), you can use the `!` symbol in the parameters to indicate the relationship field's trigger data:
+Если необходимо запустить событие, связанное с отношением один-к-одному (в настоящее время отношения «многие-к-одному» не поддерживаются), можно использовать символ `!` в параметрах, чтобы указать данные триггера для поля связи:
 
 ```bash
-curl -X POST -H 'Authorization: Bearer <your token>' -H 'X-Role: <roleName>' -d \
+curl -X POST -H 'Authorization: Bearer <ваш токен>' -H 'X-Role: <имя_роли>' -d \
   '{
-    "title": "Hello, world!",
-    "content": "This is a test post.",
+    "title": "Привет, мир!",
+    "content": "Это тестовая публикация.",
     "category": {
-      "title": "Test category"
+      "title": "Тестовая категория"
     }
-  }'
+  }' \
   "http://localhost:3000/api/posts:create?triggerWorkflows=workflowKey!category"
 ```
 
-Upon successful execution, this will trigger the corresponding post-operation event for the `categories` table.
+При успешном выполнении будет запущено соответствующее событие после операции для таблицы `categories`.
 
-:::info{title="Note"}
-If the event is set up in global mode, there's no need to specify the workflow using the `triggerWorkflows` URL parameter. Simply triggering the relevant data table operation will automatically initiate the associated workflow.
+:::info{title="Примечание"}
+Если событие настроено в глобальном режиме, нет необходимости указывать рабочий процесс через параметр URL `triggerWorkflows`. Достаточно просто выполнить операцию с соответствующей таблицей данных — это автоматически запустит привязанный рабочий процесс.
 :::
