@@ -1,34 +1,34 @@
-# Tree Filter Block
+# Блок «Древовидный фильтр»
 
 <PluginInfo commercial="true" name="block-tree"></PluginInfo>
 
-## Introduction
+## Введение
 
-The tree filter block needs to be connected to the data block for use, providing filtering capabilities for the data block.
+Блок древовидного фильтра должен быть подключён к блоку данных для использования и предоставляет функции фильтрации для этого блока данных.
 
-## Adding Block
+## Добавление блока
 
 <video width="100%" controls>
   <source src="https://static-docs.nocobase.com/20240607144133_rec_.mp4" type="video/mp4">
 </video>
 
-## Block Settings
+## Настройки блока
 
 ![20240607144440](https://static-docs.nocobase.com/20240607144440.png)
 
-### Connecting Data Block
+### Подключение к блоку данных
 
-Example: The form filter block connects to the detail data block to achieve linkage.
+Пример: блок фильтра формы подключается к блоку детализированных данных для обеспечения взаимосвязи.
 
 <video width="100%" height="440" controls>
-    <source src="https://static-docs.nocobase.com/20240607145351_rec_.mp4" type="video/mp4">
-  </video>
+  <source src="https://static-docs.nocobase.com/20240607145351_rec_.mp4" type="video/mp4">
+</video>
 
-For more information, refer to [Connecting Data Block](/handbook/ui/blocks/block-settings/connect-block)
+Дополнительную информацию см. в разделе [Подключение к блоку данных](/handbook/ui/blocks/block-settings/connect-block)
 
-- [Editing Block Title](/handbook/ui/blocks/block-settings/block-title)
-- [Save as Block Template](/handbook/block-template)
+- [Редактирование заголовка блока](/handbook/ui/blocks/block-settings/block-title)
+- [Сохранить как шаблон блока](/handbook/block-template)
 
-## Configuring Fields
+## Настройка полей
 
 ![20240607145820](https://static-docs.nocobase.com/20240607145820.png)
