@@ -1,33 +1,34 @@
-# Update Record
+# Обновление записи
 
-## Introduction
+## Введение
 
-Custom row operations enable data updates by configuring field assignments and setting precise update logic for each field.
+Кастомные операции со строками позволяют обновлять данные через настройку присвоения значений полям с точной логикой обновления для каждого поля.
 
 ![20240413212430](https://static-docs.nocobase.com/20240413212430.png)
 
-## Operation Configuration Items
+## Настройки операции
 
 ![20240413212816](https://static-docs.nocobase.com/20240413212816.png)
 
-### Linkage Rules
+### Правила связей
 
-Example: The button is hidden when the bill status is cancelled.
+Пример: Кнопка скрывается при статусе счета "Отменен".
 
 ![20240423210252](https://static-docs.nocobase.com/20240423210252.png)
 
-For more details, see [Linkage Rule](/handbook/ui/actions/action-settings/linkage-rule).
+Подробнее: [Правила связей](/handbook/ui/actions/action-settings/linkage-rule)
 
-### Assign Field Values
+### Присвоение значений полям
 
-Example: Update the receipt time in the current record to reflect the current time.
+Пример: Обновление времени получения в текущей записи на текущее время.
 
 ![20240423210506](https://static-docs.nocobase.com/20240423210506.png)
 
-For more information, refer to [Assign Field Values](/handbook/ui/actions/action-settings/assign-values).
+Подробнее: [Присвоение значений](/handbook/ui/actions/action-settings/assign-values)
 
-- [Edit Button](/handbook/ui/actions/action-settings/edit-button)
-- [Secondary Confirmation](/handbook/ui/actions/action-settings/double-check)
-- [After Successful Submission](/handbook/ui/actions/action-settings/affter-successful)
-- [Bind Workflows](/handbook/ui/actions/action-settings/bind-workflow)
-- Refresh the data after the execution
+Основные настройки:
+- [Редактирование кнопки](/handbook/ui/actions/action-settings/edit-button)
+- [Подтверждение действия](/handbook/ui/actions/action-settings/double-check)
+- [Действия после успеха](/handbook/ui/actions/action-settings/affter-successful)
+- [Привязка workflow](/handbook/ui/actions/action-settings/bind-workflow)
+- Обновление данных после выполнения
