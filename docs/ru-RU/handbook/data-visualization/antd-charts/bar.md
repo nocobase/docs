@@ -1,24 +1,30 @@
-# Bar Chart
+# Столбчатая диаграмма (Bar Chart)
 
-## Data Configuration
+## Настройка данных
 
-### 1 Metric, 1 Dimension
+### 1 метрика, 1 измерение
 
-![1 Metric, 1 Dimension](https://static-docs.nocobase.com/202410101129463.png)
+![1 метрика, 1 измерение](https://static-docs.nocobase.com/202410101129463.png)
 
-### 1 Metric, 1 Axis Dimension, 1 Category Dimension
+### 1 метрика, 1 измерение оси, 1 категориальное измерение
 
-In this setup, configure one metric and two dimensions. One dimension serves as the X-axis field (X field), while the other acts as the category field (Series field). The X-axis field and the category field can be the same.
+В этой конфигурации используется:
+- 1 метрика для значений по оси Y
+- 1 измерение для оси X (поле X)
+- 1 категориальное измерение (поле серий)
 
-![1 Metric, 1 Axis Dimension, 1 Category Dimension](https://static-docs.nocobase.com/202410101130607.png)
+Поле оси X и категориальное поле могут совпадать.
 
-#### Configuration Options
+![1 метрика, 1 измерение оси, 1 категориальное измерение](https://static-docs.nocobase.com/202410101130607.png)
 
-| Option           | Description                                              |
-| ---------------- | -------------------------------------------------------- |
-| X-axis Field     | The field used for the X-axis dimension                 |
-| Category Field   | The field used for the category dimension               |
-| Size             | Sets the chart size, either fixed aspect ratio or height|
-| Grouping         | Specifies whether to display grouped bars               |
-| Stacking         | Specifies whether to stack the bars                     |
-| Percentage View  | Specifies whether percentage display             |
+#### Параметры настройки
+
+| Параметр         | Описание                                                |
+|------------------|---------------------------------------------------------|
+| Поле оси X       | Поле, используемое для измерений по оси X               |
+| Категориальное поле | Поле для категоризации данных                         |
+| Размер           | Установка размера диаграммы (фикс. пропорции или высота)|
+| Группировка      | Отображение сгруппированных столбцов                    |
+| Накопление       | Накопление значений столбцов                            |
+| Процентный вид   | Отображение данных в процентном соотношении             |
+
