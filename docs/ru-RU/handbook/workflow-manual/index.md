@@ -1,20 +1,20 @@
-# Overview
+# Обзор
 
 <PluginInfo name="workflow-manual" link="/handbook/workflow-manual"></PluginInfo>
 
-When a business process cannot be fully automated, a manual node can be implemented to transfer part of the decision-making authority to a human operator.
+Когда бизнес-процесс не может быть полностью автоматизирован, можно использовать ручной узел для передачи части полномочий по принятию решений человеку-оператору.
 
-Upon reaching a manual node, the process will pause and generate a task for the assigned user. Based on the status selected by the user during submission, the process will either resume, remain on hold, or be terminated. This functionality is particularly valuable in scenarios requiring process approval.
+При достижении ручного узла процесс приостанавливается и создает задачу для назначенного пользователя. В зависимости от статуса, выбранного пользователем при отправке, процесс либо возобновляется, либо остается на паузе, либо прекращается. Эта функция особенно ценна в сценариях, требующих утверждения процессов.
 
-## Installation
+## Установка
 
-This is a built-in plugin, requiring no installation.
+Это встроенный плагин, не требующий дополнительной установки.
 
-## User Manual
+## Руководство пользователя
 
-The use of manual nodes is divided into two parts:
+Использование ручных узлов делится на две части:
 
-- [Node Configuration](./node.md)
-- [ToDo Block](./block.md)
+- [Конфигурация узла](./node.md)
+- [Блок задач (ToDo)](./block.md)
 
-For further insight into practical applications, you can refer to the [Examples](./example.md) section.
+Для более глубокого понимания практического применения вы можете обратиться к разделу [Примеры](./example.md).
