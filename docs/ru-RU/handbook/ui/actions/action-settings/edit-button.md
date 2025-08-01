@@ -1,8 +1,8 @@
-# Edit Button
+# Кнопка редактирования
 
-## Introduction
+## Введение
 
-You can customize the button's name, icon, and background color. You can choose from three color options: default, highlight, or red. When an icon is set, the button can display only the icon.
+Вы можете настроить название кнопки, ее значок и цвет фона. Вы можете выбрать один из трех вариантов цвета: по умолчанию, выделенный или красный. Если выбран значок, на кнопке может отображаться только значок.
 
 ![20250405140611](https://static-docs.nocobase.com/20250405140611.png)
 
