@@ -1,81 +1,83 @@
-# Area Chart
+# Диаграмма с областями
 
-## Data Configuration
+## Настройка данных
 
-### 1 or more measures, 1 dimension
+### 1 или более показателей, 1 измерение
 
-![1 or more measures, 1 dimension](https://static-docs.nocobase.com/202410091149684.png)
+![1 или более показателей, 1 измерение](https://static-docs.nocobase.com/202410091149684.png)
 
-### 1 measure, 1 axis dimension, 1 category dimension
+Конфигурация позволяет отображать один или несколько показателей (мер) по одному измерению. Это базовый вариант построения диаграммы, где по оси X откладываются значения измерения, а по оси Y - значения показателей. Каждый показатель будет представлен отдельной областью на графике.
 
-Configure 1 measure and 2 dimensions. One dimension will serve as the X-axis field, and the other will be used as the series (category) field.
+### 1 показатель, 1 измерение оси, 1 категориальное измерение
 
-![1 measure, 1 axis dimension, 1 category dimension](https://static-docs.nocobase.com/202410091153441.png)
+![1 показатель, 1 измерение оси, 1 категориальное измерение](https://static-docs.nocobase.com/202410091153441.png)
 
-## Configuration Options
+В этом варианте используется:
+- 1 показатель (мера) для значений по оси Y
+- 1 измерение для оси X
+- 1 категориальное измерение для разделения данных на серии
 
-| Option                          | Description                                                                 |
-| ------------------------------- | --------------------------------------------------------------------------- |
-| XField                          | The dimension field for the X-axis                                           |
-| seriesField                     | The dimension field used for categorization                                  |
-| Size                            | Define the chart size, either by fixed aspect ratio or fixed height          |
-| Light mode theme                | Select this option to preview when the system is in light mode               |
-| Dark mode theme                 | Select this option to preview when the system is in dark mode                |
-| Show legend                     | Toggle the display of the legend                                             |
-| Legend orient                   | Choose the direction of the legend display, either horizontal or vertical    |
-| Legend position (left, bottom, right, top) | Define the relative position of the legend                          |
-| Label type                      | Control the visibility and type of labels                                    |
-| Smooth curve                    | Enable or disable the smoothing of curves                                    |
-| Whether stack                   | Enable or disable data stacking                                              |
-| X-Axis title                    | Control the display position of the X-axis title                             |
-| Y-Axis title                    | Control the display position of the Y-axis title                             |
-| X-Axis label rotate             | Set the rotation angle of X-axis labels, helpful for displaying more labels when they are dense |
-| Padding                         | Adjust the internal padding of the chart                                     |
-| Split line                      | Configure the display and style of grid lines                                |
-| Mark line                       | Add marker lines with custom title, value, and color                         |
+Каждая категория будет представлена отдельной областью с собственным цветом. Это позволяет сравнивать распределение одного показателя по разным категориям.
 
----
+## Параметры конфигурации
 
-Now, I will move on to the final refinement stage.
+### Основные настройки
 
-### Refinement Stage (Refinement Expert)
+| Параметр                       | Описание                                                                 |
+| ------------------------------ | ------------------------------------------------------------------------ |
+| Поле оси X                     | Определяет, какие данные будут отображаться по горизонтальной оси        |
+| Поле серий                     | Поле для группировки данных и создания отдельных областей                |
+| Размер диаграммы               | Можно задать фиксированное соотношение сторон или конкретную высоту      |
 
-For this final pass, I've refined the text to enhance readability and ensure clarity, while keeping it professional and technically accurate.
+### Внешний вид
 
----
+| Параметр                       | Описание                                                                 |
+| ------------------------------ | ------------------------------------------------------------------------ |
+| Тема светлого режима           | Предпросмотр как будет выглядеть диаграмма в светлой теме интерфейса     |
+| Тема темного режима            | Предпросмотр отображения в темной теме                                   |
+| Показывать легенду             | Включает/выключает отображение легенды с пояснением цветов               |
+| Ориентация легенды             | Горизонтальное или вертикальное расположение легенды                     |
+| Позиция легенды                | Выбор из 4 вариантов: слева, справа, сверху или снизу от диаграммы       |
 
-### Area Chart
+### Настройки осей и меток
 
-#### Data Configuration
+| Параметр                       | Описание                                                                 |
+| ------------------------------ | ------------------------------------------------------------------------ |
+| Тип меток                      | Настройка формата и видимости подписей значений                         |
+| Заголовок оси X                | Управление отображением и позиционированием названия горизонтальной оси |
+| Заголовок оси Y                | Настройка заголовка вертикальной оси                                    |
+| Поворот меток оси X            | Изменение угла наклона подписей для лучшей читаемости                   |
 
-##### 1 or More Measures, 1 Dimension
+### Стилизация графика
 
-![Image](https://static-docs.nocobase.com/202410091149684.png)
+| Параметр                       | Описание                                                                 |
+| ------------------------------ | ------------------------------------------------------------------------ |
+| Сглаживание кривой             | Включает плавные линии вместо угловатых                                  |
+| Накопление значений            | Позволяет складывать значения разных серий                               |
+| Внутренние отступы             | Регулировка свободного пространства вокруг графика                      |
+| Разделительные линии           | Настройка сетки и вспомогательных линий                                 |
+| Маркерные линии                | Добавление горизонтальных или вертикальных ориентиров                    |
 
-##### 1 Measure, 1 Axis Dimension, 1 Category Dimension
+## Дополнительные возможности
 
-This setup includes 1 measure and 2 dimensions. One dimension acts as the X-axis field, while the other is used as the series (category) field.
+1. **Адаптивность**: Диаграмма автоматически подстраивается под размер контейнера
+2. **Интерактивность**: При наведении показываются точные значения
+3. **Экспорт**: Возможность сохранения изображения диаграммы
+4. **Анимация**: Плавное появление и изменение данных
+5. **Кастомизация цветов**: Индивидуальная палитра для каждой серии
 
-![Image](https://static-docs.nocobase.com/202410091153441.png)
+## Рекомендации по использованию
 
-#### Configuration Options
+1. Для сравнения нескольких показателей используйте первый тип конфигурации
+2. Для анализа распределения одного показателя по категориям - второй тип
+3. При большом количестве данных включайте сглаживание
+4. Для наглядного отображения вкладов используйте накопление
+5. При плотных подписях на оси X устанавливайте угол поворота 45°
 
-| Option                          | Description                                                                 |
-| ------------------------------- | --------------------------------------------------------------------------- |
-| X-axis Field                    | Field used to define the X-axis dimension                                    |
-| Category Field                  | Field used to categorize data                                                |
-| Size                            | Specify chart size, either by fixed aspect ratio or fixed height             |
-| Light Mode Theme                | Select for preview in light mode                                             |
-| Dark Mode Theme                 | Select for preview in dark mode                                              |
-| Show Legend                     | Toggle the visibility of the legend                                          |
-| Legend Direction                | Set legend direction (horizontal or vertical)                                |
-| Legend Position (Left, Bottom, Right, Top) | Set the position of the legend relative to the chart             |
-| Label Type                      | Manage the visibility and format of the labels                               |
-| Smooth Curve                    | Enable smoothing of the curve for a more polished look                       |
-| Stack Data                      | Option to stack values for cumulative data visualization                     |
-| X-axis Title                    | Adjust the visibility and position of the X-axis title                       |
-| Y-axis Title                    | Adjust the visibility and position of the Y-axis title                       |
-| X-axis Label Rotation           | Rotate X-axis labels to optimize space, useful when labels are densely packed |
-| Padding                         | Customize the inner padding of the chart                                     |
-| Grid Lines                      | Define the visibility and style of grid lines                                |
-| Marker Line                     | Add marker lines, and set their title, value, and color                      |
+## Примеры использования
+
+1. Анализ продаж по месяцам (ось X - месяцы, серии - товарные категории)
+2. Динамика показателей эффективности (несколько линий на одном графике)
+3. Распределение затрат по статьям бюджета с накоплением
+4. Сравнение метрик по разным филиалам компании
+5. Визуализация временных рядов с маркерами ключевых значений
