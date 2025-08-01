@@ -1,33 +1,33 @@
-# Fields
+### **Поля**
 
-In the UI, fields refer to components that serve as carriers for individual data units. Various types of data are represented through different field components. Fields must be attached to blocks and cannot function independently.
+В пользовательском интерфейсе поля — это компоненты, которые служат контейнерами для отдельных единиц данных. Различные типы данных отображаются с помощью разных компонентов полей. Поля должны быть привязаны к блокам и не могут функционировать самостоятельно.
 
-## Fields within Blocks
+#### **Поля внутри блоков**
 
-Fields are typically not used in isolation but rather as sub-elements within data-type blocks. These blocks generally include "configured columns," with the list of fields provided by the current data table.
+Поля, как правило, используются не изолированно, а как вложенные элементы в блоках с данными. Такие блоки обычно содержат раздел «Настроенные колонки», в котором представлен список полей из текущей таблицы данных.
 
 ![](https://static-docs.nocobase.com/c5ea18ad1847332fe78075413f23de46.png)
 
-## Field Designer (Toolbar)
+#### **Конструктор полей (панель инструментов)**
 
-Like blocks, field components feature three icons in the upper right corner:
+Как и блоки, компоненты полей имеют три иконки в правом верхнем углу:
 
-- Drag and Drop Layout
-- Quick Add Field
-- Field Parameter Configuration
+- Перетаскивание для изменения макета
+- Быстрое добавление поля
+- Настройка параметров поля
 
 ![](https://static-docs.nocobase.com/30cc5fcaeeb171862f79449a72a7fcf9.png)
 
-## Field Layout
+#### **Макет полей**
 
-You can customize the layout of fields within a block by dragging and rearranging them as needed.
+Вы можете настраивать макет полей внутри блока, перетаскивая и изменяя порядок полей по своему усмотрению.
 
 ![](https://static-docs.nocobase.com/0825ea8c014c9073f505e74f707ded66.gif)
 
-## Field Components
+#### **Компоненты полей**
 
-Certain fields support switching between different components. For example, the `URL` component can be switched to the `Preview` component.
+Некоторые поля поддерживают переключение между различными компонентами. Например, компонент `URL` можно изменить на компонент `Preview` (Просмотр).
 
 ![20240806164801](https://static-docs.nocobase.com/20240806164801.png)
 
-If you need to add more components, refer to [Extending Value Field Components](/plugin-samples/field/value).
+Если необходимо добавить дополнительные компоненты, см. раздел [Расширение компонентов полей со значениями](/plugin-samples/field/value).
