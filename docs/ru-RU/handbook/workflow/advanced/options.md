@@ -1,29 +1,34 @@
-# Advanced Options
+# Расширенные настройки
 
-## Execution Modes
+## Режимы выполнения
 
-Workflow execution is based on the trigger type selected when creating, and can be executed in "Asynchronously" or "Synchronously" mode. "Asynchronously" mode means that after a specific event is triggered, it will enter the execution queue and be executed one by one by the background scheduler, while "synchronously" mode will not enter the scheduling queue after triggering, and will start execution directly, and will immediately provide feedback after execution.
+Выполнение рабочего процесса зависит от выбранного при создании типа триггера и может происходить в режиме **«Асинхронно»** или **«Синхронно»**. 
 
-Collection event, post-action event, custom action event, schedule event and approval event will be executed asynchronously by default, while pre-action event will be executed synchronously by default. Among them, collection event, post-action event and custom action event support both modes, and you can choose when creating a workflow:
+- В **асинхронном режиме** после срабатывания события рабочий процесс попадает в очередь выполнения и обрабатывается по одному фоновым планировщиком.
+- В **синхронном режиме** после срабатывания рабочий процесс не попадает в очередь, а сразу запускается и возвращает результат немедленно после завершения.
 
-![Synchronous mode: Creating synchronous workflow](https://static-docs.nocobase.com/39bc0821f50c1bde4729c531c6236795.png)
+По умолчанию асинхронно выполняются события: коллекции, после действия, пользовательские действия, по расписанию и согласование. Событие «перед действием» по умолчанию выполняется синхронно. 
 
-:::info{title=Note}
-Synchronously mode workflow are limited by their mode and cannot use nodes that generate a "pending" status, such as "manual process" etc.
-:::
+При этом события коллекции, после действия и пользовательские действия поддерживают оба режима, и при создании рабочего процесса можно выбрать нужный:
 
-## Automatically Delete History
+![Синхронный режим: создание синхронного рабочего процесса](https://static-docs.nocobase.com/39bc0821f50c1bde4729c531c6236795.png)
 
-When workflows are triggered frequently, you can reduce interference and database storage pressure by configuring automatic deletion of historical executions.
+Примечание:
 
-Similarly, in the pop-up for creating and editing workflows, you can configure whether the corresponding process automatically deletes history:
+Синхронные рабочие процессы ограничены своим режимом и **не могут использовать узлы, возвращающие статус «в ожидании»**, такие как «Ручной процесс» и другие подобные.
 
-![Configure automatic deletion of history](https://static-docs.nocobase.com/b2e4c08e7a01e213069912fe04baa7bd.png)
+## Автоматическое удаление истории
 
-Automatic deletion can be configured based on the status of the execution. In most cases, it is recommended to only select the "Succeeded" status, so that history of execution failures can be retained for subsequent troubleshooting.
+При частом запуске рабочих процессов можно уменьшить нагрузку на базу данных и снизить количество шумных записей, настроив автоматическое удаление истории выполнения.
 
-It is recommended not to enable automatic deletion of history when debugging workflows, so that the execution logic of the workflows can be reviewed in history.
+Аналогично, в окне создания и редактирования рабочего процесса можно указать, нужно ли автоматически удалять историю для этого процесса:
 
-:::info{title=Note}
-Deleting the history of workflows will not reduce the count of workflows already executed.
-:::
+![Настройка автоматического удаления истории](https://static-docs.nocobase.com/b2e4c08e7a01e213069912fe04baa7bd.png)
+
+Удаление истории можно настраивать в зависимости от статуса выполнения. Чаще всего рекомендуется выбирать только статус **«Успешно»**, чтобы сохранить историю неудачных запусков для последующей диагностики.
+
+Рекомендуется **не включать** автоматическое удаление истории при отладке рабочих процессов, чтобы иметь возможность анализировать логику выполнения по истории.
+
+Примечание:
+
+Удаление истории выполнения **не влияет** на счётчик уже выполненных рабочих процессов.
