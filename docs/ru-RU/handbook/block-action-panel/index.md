@@ -1,41 +1,41 @@
-# Block: Action Panel
+# Блок: Панель действий
 
-## Introduction
+## Введение
 
-It is used for placing various quick actions. Currently, it supports
+Используется для размещения различных быстрых действий. Поддерживает:
 
-- [link](/handbook/ui/actions/types/link)
-- [Scan QR code](/handbook/action-qr-scan)
-- [Popup action](/handbook/action-popup)
-- [Custom request](/handbook/action-custom-request)
+- [Ссылки](/handbook/ui/actions/types/link)
+- [Сканирование QR-кода](/handbook/action-qr-scan)
+- [Всплывающие действия](/handbook/action-popup)
+- [Пользовательские запросы](/handbook/action-custom-request)
 
-![20240612213229](https://static-docs.nocobase.com/20240612213229.png)
+![Пример панели действий](https://static-docs.nocobase.com/20240612213229.png)
 
-## Action Types
+## Типы действий
 
-The action panel supports the following action types:
+Панель поддерживает следующие типы действий:
 
-### Link
+### Ссылки
 
 <video width="100%" controls>
   <source src="https://static-docs.nocobase.com/20240612213731_rec_.mp4" type="video/mp4">
 </video>
 
-### Scan QR Code
+### Сканирование QR-кода
 
 <video width="100%" controls>
   <source src="https://static-docs.nocobase.com/20240612214013_rec_.mp4" type="video/mp4">
 </video>
 
-### Popup
+### Всплывающие окна
 
-Consistent with the configured blocks on the page
+Согласованы с настроенными блоками на странице
 
 <video width="100%" controls>
   <source src="https://static-docs.nocobase.com/20240919163242.mp4" type="video/mp4">
 </video>
 
-### Custom request
+### Пользовательские запросы
 
 <video width="100%" controls>
   <source src="https://static-docs.nocobase.com/20240919163825.mp4" type="video/mp4">
