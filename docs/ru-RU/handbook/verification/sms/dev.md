@@ -1,14 +1,16 @@
-# Extend SMS Provider
+# Расширение SMS-провайдеров
 
-This article primarily explains how to extend the SMS provider functionality in the [Auth: SMS](./index.md) feature via a plugin.
+Эта статья объясняет, как расширить функциональность SMS-провайдеров в функции [Аутентификация по SMS](./index.md) с помощью плагина.
 
-## Client
+## Клиентская часть
 
-### Register Configuration Form
+### Регистрация формы конфигурации
 
-When configuring the SMS verifier, after selecting an SMS provider type, a configuration form associated with that provider type will appear. This configuration form needs to be registered by the developer on the client side.
+При настройке SMS-верификатора после выбора типа SMS-провайдера появляется соответствующая форма конфигурации. Эту форму необходимо зарегистрировать на клиентской стороне.
 
 ![](https://static-docs.nocobase.com/202503011221912.png)
+
+Пример кода:
 
 ```ts
 import { Plugin, SchemaComponent } from '@nocobase/client';
@@ -50,30 +52,33 @@ class PluginCustomSMSProviderClient extends Plugin {
 }
 ```
 
-## Server
+## Серверная часть
 
-### Implement Sending Interface
+### Реализация интерфейса отправки
 
-The verification plugin has already encapsulated the process of creating one-time dynamic passwords (OTPs), so developers only need to implement the logic for sending messages to interact with the SMS provider.
+Плагин верификации уже включает процесс генерации одноразовых паролей (OTP), поэтому разработчикам нужно только реализовать логику отправки сообщений.
+
+Пример реализации:
 
 ```ts
 class CustomSMSProvider extends SMSProvider {
   constructor(options) {
     super(options);
-    // options is the configuration object from the client
+    // options содержит конфигурацию с клиента
     const options = this.options;
     // ...
   }
 
   async send(phoneNumber: string, data: { code: string }) {
+    // Логика отправки SMS
     // ...
   }
 }
 ```
 
-### Register Verification Type
+### Регистрация типа верификации
 
-Once the sending interface is implemented, it needs to be registered.
+После реализации интерфейса отправки его необходимо зарегистрировать.
 
 ```ts
 import { Plugin } from '@nocobase/server';
@@ -83,9 +88,9 @@ import { tval } from '@nocobase/utils';
 class PluginCustomSMSProviderServer extends Plugin {
   async load() {
     const plugin = this.app.pm.get('verification') as PluginVerificationServer;
-    // The name must correspond to the one used on the client
+    // Имя должно соответствовать клиентской части
     plugin.smsOTPProviderManager.registerProvider('custom-sms-provider-name', {
-      title: tval('Custom SMS provider', { ns: namespace }),
+      title: tval('Кастомный SMS-провайдер', { ns: namespace }),
       provider: CustomSMSProvider,
     });
   }
