@@ -1,41 +1,40 @@
 # Microsoft Entra ID
 
 > https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app  
-> https://learn.microsoft.com/en-us/entra/identity-platform/v2-protocols-oidc
+> https://learn.microsoft.com/en-us/entra/identity-platform/v2-protocols-oidc  
 
-## Adding an Authenticator in NocoBase
+## Добавление аутентификатора в NocoBase
 
-First, add a new authenticator to NocoBase: Plug-in Settings - User authentication - Add - OIDC.
+Сначала добавьте новый аутентификатор в NocoBase: Настройки плагинов — Аутентификация пользователей — Добавить — OIDC.
 
-Copy the callback URL.
+Скопируйте URL обратного вызова (callback URL).
 
 ![](https://static-docs.nocobase.com/202412021504114.png)
 
-## Register the app
+## Регистрация приложения
 
-Open the Microsoft Entra administration Center and register a new application.
+Откройте центр администрирования Microsoft Entra и зарегистрируйте новое приложение.
 
-! [](https://static-docs.nocobase.com/202412021506837.png)
+![](https://static-docs.nocobase.com/202412021506837.png)
 
-Fill in the callback URL you just copied here.
+Укажите здесь скопированный ранее URL обратного вызова.
 
-! [](https://static-docs.nocobase.com/202412021520696.png)
+![](https://static-docs.nocobase.com/202412021520696.png)
 
-## Obtain and fill in the appropriate information
+## Получение и заполнение необходимой информации
 
-Click on the Application you just registered and copy the **Application (client) ID** and **Directory (tenant) ID** on the home page.
+Щёлкните по только что зарегистрированному приложению и скопируйте **идентификатор приложения (клиентский ID)** и **идентификатор каталога (ID клиента)** на главной странице.
 
-! [](https://static-docs.nocobase.com/202412021522063.png)
+![](https://static-docs.nocobase.com/202412021522063.png)
 
-Click Certificates & secrets to create a new Client secret and copy the **Value**.
+Перейдите в раздел «Сертификаты и секреты» (Certificates & secrets), создайте новый секрет клиента (Client secret) и скопируйте его **значение (Value)**.
 
-! [](https://static-docs.nocobase.com/202412021522846.png)
+![](https://static-docs.nocobase.com/202412021522846.png)
 
-The mapping between the preceding information and the NocoBase authenticator configuration is as follows:
+Соответствие между полученными данными и полями настройки аутентификатора в NocoBase приведено в таблице ниже:
 
-| Microsoft Entra Information   | NocoBase Authenticator Field                                                                                                               |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| Application (client) ID       | Client ID                                                                                                                                  |
-| Client Secrets - Value        | Client Secret                                                                                                                             |
-| Directory (tenant) ID         | Issuer:<br />https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration, replace `{tenant}` with the Directory(tenant)  ID    |
-
+| Данные Microsoft Entra         | Поле в аутентификаторе NocoBase                                                                                                               |
+|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| Идентификатор приложения (клиентский ID) | **Client ID** (Идентификатор клиента)                                                                                                        |
+| Секрет клиента — Значение (Value)      | **Client Secret** (Секрет клиента)                                                                                                          |
+| Идентификатор каталога (ID клиента)     | **Issuer** (Издатель):<br />https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration, где `{tenant}` нужно заменить на идентификатор каталога (ID клиента) |
