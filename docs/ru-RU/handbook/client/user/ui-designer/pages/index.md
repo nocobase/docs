@@ -1,31 +1,31 @@
-### Page
+### Страница
 
-#### Page Structure
+#### Структура страницы
 
-1. Page Designer
-2. Page Title
-3. Page Tabs (Subpages)
-4. Page Body (Hosts blocks)
+1. Конструктор страницы  
+2. Заголовок страницы  
+3. Вкладки страницы (подстраницы)  
+4. Тело страницы (содержит блоки)
 
 ![](https://static-docs.nocobase.com/0c84950f8d58246497da21fbdd2ffc6b.png)
 
-#### Page Designer
+#### Конструктор страницы
 
 ![](https://static-docs.nocobase.com/19ce82228c9fb0681dcd9a73798b49f9.png)
 
-- **Enable page header:** Controls whether the header is displayed.
-- **Display page title:** Controls whether the page title is displayed in the header.
-- **Edit page title:** The default page title is the menu item title, but you can customize it.
-- **Enable page tabs:** Tabs refer to the subpages of the page.
+- **Включить заголовок страницы:** определяет, будет ли отображаться заголовок.
+- **Отображать заголовок страницы:** управляет отображением заголовка страницы в шапке.
+- **Редактировать заголовок страницы:** по умолчанию заголовок страницы совпадает с названием пункта меню, но его можно настроить вручную.
+- **Включить вкладки страницы:** вкладки представляют собой подстраницы данной страницы.
 
-#### Page Tabs
+#### Вкладки страницы
 
-After enabling page tabs, you can add subpages within the page.
+После включения вкладок страницы можно добавлять подстраницы внутри текущей страницы.
 
 ![](https://static-docs.nocobase.com/febacab3419e1a0ea98b178db63fa86d.png)
 
-#### Page Layout
+#### Макет страницы
 
-Multiple blocks can be arranged by dragging to adjust the layout.
+Несколько блоков можно свободно размещать и перетаскивать для настройки макета страницы.
 
 ![](https://static-docs.nocobase.com/f6692295ac0917f3babce9a60ce80879.gif)
