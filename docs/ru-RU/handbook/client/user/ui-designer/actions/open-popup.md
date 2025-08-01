@@ -1,9 +1,9 @@
-# Open popup
+# Открыть всплывающее окно
 
-The Open popup operation presents data in a popup window, allowing you to customize detail blocks or form blocks. This feature is suitable for various scenarios. For example, when a data table has many fields, these fields can be divided into different operation blocks, allowing you to focus on viewing or modifying specific fields. You can create multiple customized data display or editing interfaces based on business needs.
+Операция "Открыть всплывающее окно" позволяет отображать данные во всплывающем окне, что позволяет настраивать блоки сведений или формы. Эта функция подходит для различных сценариев. Например, если таблица данных содержит много полей, эти поля можно разделить на различные операционные блоки, что позволит вам сосредоточиться на просмотре или изменении определенных полей. Вы можете создать несколько настраиваемых интерфейсов отображения или редактирования данных в зависимости от потребностей бизнеса.
 
 ![Open popup](https://static-docs.nocobase.com/c859041afb43752431e78c6e81c44c43.png)
 
-As illustrated, the order table is configured with three Open popup operations: View Main Order (Order Main Information), View Products (Product Information associated with the Order), and View Customer (Customer Information associated with the Order).
+Как показано на рисунке, таблица заказов настроена на три операции с открытым всплывающим окном: Просмотр основного заказа (Основная информация о заказе), просмотр продуктов (Информация о продукте, связанная с Заказом) и просмотр клиента (Информация о клиенте, связанная с Заказом).
 
 ![Open popup Operations](https://static-docs.nocobase.com/110e2eed418c755ef40b7259e5816c73.png)
