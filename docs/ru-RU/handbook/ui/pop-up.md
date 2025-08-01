@@ -1,105 +1,118 @@
-# Popup
+### **Всплывающее окно (Popup)**
 
-## Introduction
+#### **Введение**
 
-A popup window is a small window on the page, used to display some extended content within the current page. It can be presented in the form of a drawer or a dialog box, such as the details of a particular order or product, and can also be used for editing data. Popup operations play a very important role in the NocoBase interface configuration. Many blocks provide various popup operations, which can be used to add, view, edit data, etc. At the same time, various popup operations can be customized to adapt to various scenarios and needs.
+Всплывающее окно — это небольшое окно на странице, используемое для отображения дополнительного контента в рамках текущей страницы. Оно может открываться в виде выезжающей панели (drawer) или диалогового окна (dialog), например, для просмотра деталей заказа или товара, а также для редактирования данных.
 
-## Types & Size
+Операции с всплывающими окнами играют важную роль в настройке интерфейса NocoBase. Многие блоки предоставляют различные действия с всплывающими окнами, которые можно использовать для добавления, просмотра и редактирования данных. При этом такие операции можно гибко настраивать под различные сценарии и потребности.
 
-> In version v1.3.0-alpha and above, it supports opening as a [page](/handbook/ui/pop-up#page).
+---
 
-Pop-ups come in two types: drawer and dialog. Configure the type and size of the pop-up during the configuration of actions.
+#### **Типы и размеры**
 
-<video width="100%" height="440" controls>
+Начиная с версии **v1.3.0-alpha**, поддерживается открытие всплывающего окна в виде [страницы](/handbook/ui/pop-up#page).
 
- <source src="https://static-docs.nocobase.com/z-2024-06-13-09.43.42-2024-06-13-09-44-18.mp4">
+Существует два основных типа всплывающих окон: **выезжающая панель (drawer)** и **диалоговое окно (dialog)**. Тип и размер окна настраиваются при конфигурации действия.
 
-</video>
+##### **Выезжающая панель (Drawer)**
 
-### Drawer
+![Drawer](https://static-docs.nocobase.com/2024-06-13_09-45-33-2024-06-13-09-46-11.png)
 
-![2024-06-13_09-45-33-2024-06-13-09-46-11](https://static-docs.nocobase.com/2024-06-13_09-45-33-2024-06-13-09-46-11.png)
+##### **Диалоговое окно (Dialog)**
 
-### Dialog
+![Dialog](https://static-docs.nocobase.com/2024-06-13_09-45-56-2024-06-13-09-46-20.png)
 
-![2024-06-13_09-45-56-2024-06-13-09-46-20](https://static-docs.nocobase.com/2024-06-13_09-45-56-2024-06-13-09-46-20.png)
+##### **Страница (Page)**
 
-### Page
-
-:::info{title=Tip}
-The version of NocoBase needs to be v1.3.0-alpha or above.
+:::info{title=Подсказка}
+Требуется версия NocoBase **v1.3.0-alpha или выше**.
 :::
 
-![20240809170648](https://static-docs.nocobase.com/20240809170648.png)
+![Page](https://static-docs.nocobase.com/20240809170648.png)
 
-## Use Cases
+---
 
-The main scenarios of the popup window currently include:
+#### **Сценарии использования**
 
-- Popup actions of the block, which can be used to add, view, edit the data of the block;
-- Popup actions of relationship data, which can be used to view and edit the extended information of relationship data.
+Основные сценарии использования всплывающих окон включают:
 
-### Popup Actions of the Block
+- **Действия с всплывающими окнами в блоках** — используются для добавления, просмотра и редактирования данных.
+- **Действия с всплывающими окнами для связанных данных** — позволяют просматривать и редактировать расширенную информацию по связанным записям.
 
-![20240511141127](https://static-docs.nocobase.com/20240511141127.png)
+##### **Всплывающие окна в блоках**
 
-### Popup Actions of Relationship Data
+![Popup Actions of the Block](https://static-docs.nocobase.com/20240511141127.png)
 
-![20240511141247](https://static-docs.nocobase.com/20240511141247.png)
+##### **Всплывающие окна для связанных данных**
 
-### Sharing a Single Record's Data
+![Popup Actions of Relationship Data](https://static-docs.nocobase.com/20240511141247.png)
 
-:::info{title=Tip}
-The version of NocoBase needs to be v1.3.0-alpha or above.
+---
+
+#### **Общий доступ к данным одной записи**
+
+:::info{title=Подсказка}
+Требуется версия NocoBase **v1.3.0-alpha или выше**.
 :::
 
-If you want to share the data of a single record with others, you can directly copy the URL of the browser address bar after opening the popup window, and then share it with others. When others open this URL, the corresponding popup window will automatically pop up on the page.
+Если вы хотите поделиться данными одной записи с другими пользователями, просто скопируйте URL из адресной строки браузера после открытия всплывающего окна и отправьте его. При открытии этой ссылки у получателя автоматически откроется соответствующее всплывающее окно.
 
-![20240809173339_rec_](https://static-docs.nocobase.com/20240809173339_rec_.gif)
+![Sharing a Single Record's Data](https://static-docs.nocobase.com/20240809173339_rec_.gif)
 
-## Adding Blocks
+---
 
-The block added in the popup window can currently be used to add the following types of blocks.
+#### **Добавление блоков**
 
-![20240511141349](https://static-docs.nocobase.com/20240511141349.png)
+В всплывающее окно можно добавлять следующие типы блоков:
 
-The data in the popup window is divided into three dimensions:
+![Adding Blocks](https://static-docs.nocobase.com/20240511141349.png)
 
-- Current record: used to display the current record;
-- Relationship record: used to display the relationship data related to the current record;
-- Other records: used to display data from other tables;
+Данные во всплывающем окне делятся на три категории:
 
-![20240511141442](https://static-docs.nocobase.com/20240511141442.png)
+1. **Текущая запись** — отображает данные текущей записи.
+2. **Связанная запись** — отображает данные, связанные с текущей записью.
+3. **Другие записи** — отображает данные из других таблиц.
 
-### Current Record
+![Data Dimensions](https://static-docs.nocobase.com/20240511141442.png)
 
-Example: Display the current order data.
+---
 
-![20240511141809](https://static-docs.nocobase.com/20240511141809.gif)
+##### **Текущая запись**
 
-### Relationship Record
+**Пример:** Отображение данных текущего заказа.
 
-Example: Display the product data associated with the current order.
+![Current Record](https://static-docs.nocobase.com/20240511141809.gif)
 
-![20240511143040](https://static-docs.nocobase.com/20240511143040.gif)
+---
 
-### Other Records
+##### **Связанная запись**
 
-Example: Configure the warehouse details block in the popup operation of the order table block.
+**Пример:** Отображение данных о товарах, связанных с текущим заказом.
 
-![20240511143415](https://static-docs.nocobase.com/20240511143415.gif)
+![Relationship Record](https://static-docs.nocobase.com/20240511143040.gif)
 
-## Use Variables
+---
 
-- Row action popup: Each popup has a "Current popup record" variable, representing the current row record.
-- Association field popup: Each popup has a "Current popup record" variable, representing the clicked relationship record.
+##### **Другие записи**
 
-The blocks in the popup can use the "Current popup record" variable, with the following use cases:
+**Пример:** Настройка блока с информацией о складе в операции всплывающего окна блока таблицы заказов.
 
-- Configuring data scope for blocks
-- Configuring data scope for association fields
-- Configuring default values for fields (form for adding data)
-- Configuring linkage rules for actions
-- Assign field values configuration for form submit actions
+![Other Records](https://static-docs.nocobase.com/20240511143415.gif)
 
-For more content, refer to [Variables](/handbook/ui/variables)
+---
+
+#### **Использование переменных**
+
+- **Всплывающее окно действия строки:** каждое окно содержит переменную **«Текущая запись всплывающего окна»**, которая представляет запись текущей строки.
+- **Всплывающее окно поля связи:** переменная **«Текущая запись всплывающего окна»** представляет выбранную связанную запись.
+
+Блоки внутри всплывающего окна могут использовать переменную **«Текущая запись всплывающего окна»** в следующих сценариях:
+
+- Настройка диапазона данных для блоков.
+- Настройка диапазона данных для полей связи.
+- Установка значений по умолчанию для полей (в формах добавления данных).
+- Настройка правил связывания для действий.
+- Назначение значений полей в операциях отправки формы.
+
+Более подробно о переменных см. в разделе [Переменные](/handbook/ui/variables).
+
