@@ -1,5 +1,5 @@
-# View
+# Просмотр
 
-Detail operations are used to view detailed information about data, usually by configuring detail blocks.
+Операции детализации используются для просмотра подробной информации о данных, обычно путем настройки блоков детализации.
 
 ![View Operation](https://static-docs.nocobase.com/7252f4916033d26551d22ab3e6b95112.png)
