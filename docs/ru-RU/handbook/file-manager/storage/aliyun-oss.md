@@ -1,31 +1,31 @@
 # Aliyun OSS
 
-Storage engine based on Aliyun OSS, you need to prepare relevant accounts and permissions in advance.
+Хранилище на основе Aliyun OSS. Перед использованием необходимо подготовить соответствующие учетные записи и права доступа.
 
-## Options
+## Настройки
 
-![Example of Aliyun OSS options](https://static-docs.nocobase.com/20240712220011.png)
+![Пример настроек Aliyun OSS](https://static-docs.nocobase.com/20240712220011.png)
 
-:::info{title=Hint}
-Only the special parameters of the Aliyun OSS storage engine are introduced here. For common parameters, please refer to the [Common Engine Parameters](./index.md#common-engine-parameters).
+:::info{title="Подсказка"}
+Здесь описаны только специфичные параметры для Aliyun OSS. Общие параметры смотрите в разделе [Общие параметры хранилищ](./index.md#common-engine-parameters).
 :::
 
-### Region
+### Регион
 
-Specify the region of the OSS storage, for example: `oss-cn-hangzhou`.
+Укажите регион хранилища OSS, например: `oss-cn-hangzhou`.
 
-:::info{title=Hint}
-You can view the region information of the storage bucket in the [Aliyun OSS console](https://oss.console.aliyun.com/), and only need to take the prefix part of the region (without the complete domain name).
+:::info{title="Подсказка"}
+Регион можно посмотреть в [консоли Aliyun OSS](https://oss.console.aliyun.com/) - указывается только префикс (без полного доменного имени).
 :::
 
 ### AccessKey ID
 
-Fill in the ID of the Alibaba Cloud authorized access key.
+Идентификатор ключа доступа Alibaba Cloud.
 
 ### AccessKey Secret
 
-Fill in the secret of the Alibaba Cloud authorized access key.
+Секретный ключ доступа Alibaba Cloud.
 
 ### Bucket
 
-Fill in the name of the OSS bucket.
+Название бакета OSS.
