@@ -1,59 +1,59 @@
-# Routes
+# Маршрутизация
 
 <PluginInfo name="client"></PluginInfo>
 
-## Introduction
+## Введение
 
-The route manager is a tool for managing the routes of the main page of the system, supporting `desktop` and `mobile` endpoints. Routes created using the route manager will be synchronized to the menu (can be configured to not display in the menu). Conversely, menus added in the page menu will also be synchronized to the route manager list.
+Менеджер маршрутов - это инструмент для управления путями главной страницы системы, поддерживающий конечные точки `desktop` и `mobile`. Созданные маршруты автоматически синхронизируются с меню (можно настроить скрытие в меню). Аналогично, пункты меню, добавленные через интерфейс меню, также отображаются в списке маршрутов.
 
 ![20250107115449](https://static-docs.nocobase.com/20250107115449.png)
 
-## User Manual
+## Руководство пользователя
 
-### Route Types
+### Типы маршрутов
 
-The system supports four types of routes:
+Система поддерживает четыре типа маршрутов:
 
-- Group (group): Used to manage routes by grouping them, and can include sub-routes
-- Page (page): System internal page
-- Tab (tab): Used to switch between tabs in a page
-- Link (link): Internal or external link, can directly jump to the configured link address
+- Группа (group): Для группировки маршрутов, может содержать подмаршруты
+- Страница (page): Внутренняя страница системы
+- Вкладка (tab): Для переключения между вкладками на странице
+- Ссылка (link): Внутренняя или внешняя ссылка для прямого перехода
 
-### Add Route
+### Добавление маршрута
 
-Click the "Add new" button in the upper right corner to create a new route:
+Нажмите кнопку "Добавить" в правом верхнем углу:
 
-1. Select the route type (Type)
-2. Fill in the route title (Title)
-3. Select the route icon (Icon)
-4. Set whether to display in the menu (Show in menu)
-5. Set whether to enable page tabs (Enable page tabs)
-6. For page type, the system will automatically generate a unique route path (Path)
+1. Выберите тип маршрута (Type)
+2. Укажите название (Title)
+3. Выберите иконку (Icon)
+4. Настройте отображение в меню (Show in menu)
+5. Включите/отключите вкладки страницы (Enable page tabs)
+6. Для типа "страница" система автоматически генерирует уникальный путь (Path)
 
 ![20250124131803](https://static-docs.nocobase.com/20250124131803.png)
 
-### Route Actions
+### Действия с маршрутами
 
-Each route entry supports the following Actions:
+Для каждого маршрута доступны:
 
-- Add child: Add a sub-route
-- Edit: Edit the route configuration
-- View: View the route page
-- Delete: Delete the route
+- Добавить подмаршрут
+- Редактировать конфигурацию
+- Просмотреть страницу
+- Удалить маршрут
 
-### Batch Actions
+### Групповые операции
 
-The top toolbar provides the following batch Action functions:
+Панель инструментов предоставляет:
 
-- Refresh: Refresh the route list
-- Delete: Delete the selected route
-- Hide in menu: Hide the selected route in the menu
-- Show in menu: Show the selected route in the menu
+- Обновить список
+- Удалить выбранное
+- Скрыть в меню
+- Показать в меню
 
-### Route Filter
+### Фильтрация
 
-Use the "Filter" function at the top to filter the route list.
+Используйте фильтр в верхней части для поиска нужных маршрутов.
 
-:::info{title=Note}
-Modifying route configurations will directly affect the navigation menu structure of the system. Please proceed with caution and ensure the correctness of the route configurations.
+:::info{title=Важно}
+Изменения маршрутов напрямую влияют на структуру навигационного меню. Проверяйте корректность настроек перед сохранением.
 :::
