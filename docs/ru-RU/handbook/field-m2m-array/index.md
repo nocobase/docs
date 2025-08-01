@@ -1,42 +1,42 @@
-# Many-to-Many (Array)
+# Связь "Многие-ко-многим" (Массив)
 
 <PluginInfo name="field-m2m-array"></PluginInfo>
 
-## Introduction
+## Введение
 
-This feature allows you to use array fields in a data Collection to store multiple unique keys from the target table, thereby creating a many-to-many relationship between the two tables. For instance, consider the entities Articles and Tags. An article can be linked to multiple tags, with the article table storing the IDs of the corresponding records from the tags table in an array field.
+Эта функция позволяет использовать поля-массивы в коллекции данных для хранения нескольких уникальных ключей из целевой таблицы, создавая связь "многие-ко-многим" между таблицами. Например, рассмотрим сущности "Статьи" и "Теги". Статья может быть связана с несколькими тегами, при этом таблица статей хранит ID соответствующих записей из таблицы тегов в поле-массиве.
 
-:::warning{title=Note}
+:::warning{title="Примечание"}
 
-- Whenever possible, it's recommended to use a junction Collection to establish a standard [many-to-many](../data-modeling/collection-fields/associations/m2m/index.md) relationship instead of relying on this method.
-- Currently, only PostgreSQL supports filtering source Collection data using fields from the target table for many-to-many relationships established with array fields. For example, in the scenario above, you can filter articles based on other fields in the tags table, such as the title.
+- По возможности рекомендуется использовать промежуточную коллекцию для создания стандартной [связи многие-ко-многим](../data-modeling/collection-fields/associations/m2m/index.md) вместо данного метода.
+- В настоящее время только PostgreSQL поддерживает фильтрацию данных исходной коллекции с использованием полей из целевой таблицы для связей многие-ко-многим, установленных через поля-массивы. Например, в описанном сценарии можно фильтровать статьи по другим полям таблицы тегов, таким как название.
 
-  :::
+:::
 
-### Field Configuration
+### Настройка поля
 
-![many-to-many(array) field configuration](https://static-docs.nocobase.com/202407051108180.png)
+![Настройка поля многие-ко-многим (массив)](https://static-docs.nocobase.com/202407051108180.png)
 
-## Parameter Description
+## Описание параметров
 
-### Source Collection
+### Исходная коллекция
 
-The source Collection, where the current field resides.
+Коллекция, в которой находится текущее поле.
 
-### Target Collection
+### Целевая коллекция
 
-The target Collection with which the relationship is established.
+Коллекция, с которой устанавливается связь.
 
-### Foreign Key
+### Внешний ключ
 
-The array field in the source Collection that stores the target key from the target table.
+Поле-массив в исходной коллекции, которое хранит ключи из целевой таблицы.
 
-The corresponding relationships for array field types are as follows:
+Соответствие типов полей-массивов в разных СУБД:
 
 | NocoBase | PostgreSQL | MySQL  | SQLite |
 | -------- | ---------- | ------ | ------ |
 | `set`    | `array`    | `JSON` | `JSON` |
 
-### Target Key
+### Целевой ключ
 
-The field in the target Collection that corresponds to the values stored in the source table's array field. This field must be unique.
+Поле в целевой коллекции, соответствующее значениям, хранящимся в поле-массиве исходной таблицы. Это поле должно быть уникальным.
