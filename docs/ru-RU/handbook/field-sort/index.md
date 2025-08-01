@@ -1,147 +1,113 @@
-# Sort Field
+# Поле сортировки
 
-<PluginInfo name="field-sort"></PluginInfo>
+## Введение
 
-## Introduction
-
-Sort fields are used to sort records in the collection, supporting group first then sort (sort1).
+Поля сортировки используются для упорядочивания записей в коллекции и поддерживают сортировку вида «сначала группировка, затем сортировка» (sort1).
 
 :::warning
-Since the sort field is a field in the current collection, when sorting by group, it does not support the same record being divided into multiple groups.
+Поскольку поле сортировки является полем текущей коллекции, при сортировке по группам одна и та же запись не может входить в несколько групп одновременно.
 :::
 
-## Installation
+## Установка
 
-Built-in plugin, no separate installation required.
+Встроенный плагин — отдельная установка не требуется.
 
-## User Manual
+## Руководство пользователя
 
-### Create a Sort Field
+### Создание поля сортировки
 
-![20240409091123_rec_](https://static-docs.nocobase.com/20240409091123_rec_.gif)
+https://static-docs.nocobase.com/20240409091123_rec_.gif
 
-When creating sort fields, the sort values will be initialized:
+При создании поля сортировки значения сортировки инициализируются следующим образом:
+- Если группировка не выбрана, инициализация выполняется на основе первичного ключа и поля даты создания.
+- Если выбрана группировка, сначала выполняется группировка данных, а затем инициализация на основе первичного ключа и поля даты создания.
 
-- If group sorting is not selected, initialization will be based on the primary key field and creation date field.
-- If group sorting is selected, the data will be grouped first, and then initialization will be based on the primary key field and creation date field.
-
-:::warning{title="Explanation of Transaction Consistency"}
-- When creating a field, if the sort value initialization fails, the sort field will not be created;
-- Within a certain range, if a record moves from position A to position B, the sort values of all records in the AB interval will change. If one fails, the move will fail, and the sort values of the related records will not change.
+:::warning{title="Пояснение о согласованности транзакций"}
+- При создании поля, если инициализация значений сортировки завершится с ошибкой, поле сортировки не будет создано.
+- В определённом диапазоне, если запись перемещается из позиции A в позицию B, значения сортировки всех записей в интервале AB изменятся. Если одна из операций завершится неудачей, всё перемещение будет отменено, и значения сортировки затронутых записей останутся неизменными.
 :::
 
-#### Example 1: Create the sort1 field
+### Пример 1: Создание поля sort1
 
-The sort1 field is not grouped
+Поле sort1 не группируется.
 
-![20240409091510](https://static-docs.nocobase.com/20240409091510.png)
+https://static-docs.nocobase.com/20240409091510.png
 
-The sort fields of each record will be initialized based on the primary key field and creation date field.
+Значения поля сортировки для каждой записи будут инициализированы на основе первичного ключа и даты создания.
 
-![20240409092305](https://static-docs.nocobase.com/20240409092305.png)
+https://static-docs.nocobase.com/20240409092305.png
 
-#### Example 2: Create a sort2 field based on Class ID grouping
+### Пример 2: Создание поля sort2 с группировкой по ID класса
 
-![20240409092620](https://static-docs.nocobase.com/20240409092620.png)
+https://static-docs.nocobase.com/20240409092620.png
 
-At this time, all records in the collection will be grouped first (grouped by Class ID), and then the sort field (sort2) will be initialized. The initial values of each record are:
+В этом случае все записи в коллекции сначала группируются (по ID класса), а затем инициализируется поле сортировки (sort2). Начальные значения каждой записи:
 
-![20240409092847](https://static-docs.nocobase.com/20240409092847.png)
+https://static-docs.nocobase.com/20240409092847.png
 
-### Drag-and-Drop Sorting
+### Сортировка перетаскиванием
 
-Sort fields are mainly used for drag-and-drop sorting of various block records. The blocks currently supporting drag-and-drop sorting include tables and boards.
+Поля сортировки в основном используются для сортировки записей в различных блоках с помощью drag-and-drop. Блоки, поддерживающие сортировку перетаскиванием, включают таблицы и доски (board).
 
 :::warning
-- When the same sort field is used for drag-and-drop sorting, mixed use of multiple blocks may disrupt the existing order;
-- The field for table drag-and-drop sorting cannot choose a sort field with a grouping rule;
-  - Exception: In a one-to-many relationship table block, the foreign key can serve as a group;
-- Currently, only the board block supports group drag-and-drop sorting.
+- При использовании одного и того же поля сортировки для сортировки перетаскиванием одновременное использование нескольких блоков может нарушить существующий порядок.
+- В таблице для сортировки перетаскиванием нельзя выбирать поле сортировки, имеющее правило группировки.
+- Исключение: в блоке таблицы с отношением «один ко многим» внешний ключ может использоваться как поле группировки.
+- В настоящее время только блок доски поддерживает сортировку по группам с помощью перетаскивания.
 :::
 
-#### Drag-and-Drop Sorting of Table Rows
+### Сортировка строк таблицы перетаскиванием
 
-Table block
+**Блок таблицы**
 
-![20240409104621_rec_](https://static-docs.nocobase.com/20240409104621_rec_.gif)
+https://static-docs.nocobase.com/20240409104621_rec_.gif
 
-Relationship table block
-
-<video controls width="100%" src="https://static-docs.nocobase.com/20240409111903_rec_.mp4" title="Title"></video>
+**Блок связанной таблицы**
 
 :::warning
-In a one-to-many relationship block
+В блоке с отношением «один ко многим»:
+- Если выбрано поле сортировки без группировки, в сортировке могут участвовать все записи.
+- Если сначала выполняется группировка по внешнему ключу, а затем сортировка, правило сортировки будет применяться только к данным внутри текущей группы.
 
-- If an ungrouped sort field is selected, all records may participate in the sorting;
-- If it is first grouped based on the foreign key and then sorted, the sorting rule will only affect the data within the current group.
-
-The final effect is consistent, but the number of records participating in sorting is different, for more explanation, see [Sorting Rule Explanation](#Sorting Rule Explanation)
+Конечный эффект будет одинаковым, но количество записей, участвующих в сортировке, будет разным. Более подробное объяснение см. в разделе [Пояснение правил сортировки](#Пояснение-правил-сортировки).
 :::
 
-#### Drag-and-Drop Sorting of Board Cards
+### Сортировка карточек доски перетаскиванием
 
-![20240409110423_rec_](https://static-docs.nocobase.com/20240409110423_rec_.gif)
+https://static-docs.nocobase.com/20240409110423_rec_.gif
 
-### Sorting Rule Explanation
+## Пояснение правил сортировки
 
-#### Displacement between ungrouped (or same group) elements
+### Перемещение между несгруппированными элементами (или в одной группе)
 
-Suppose there is a set of data
+Предположим, есть набор данных:  
+`[1, 2, 3, 4, 5, 6, 7, 8, 9]`
 
-```
-[1,2,3,4,5,6,7,8,9]
-```
+Если элемент 5 перемещается вперёд на позицию 3, изменятся только порядковые номера 3, 4 и 5: 5 занимает позицию 3, а 3 и 4 сдвигаются назад.  
+Результат: `[1, 2, 5, 3, 4, 6, 7, 8, 9]`
 
-When an element, suppose 5, moves forward to position 3, at this time, only the sequence numbers 3,4,5 have changed, 5 occupies the position of 3, and 3,4 each move back one position.
+Теперь переместим 6 назад на позицию 8: 6 занимает позицию 8, 7 и 8 сдвигаются вперёд.  
+Результат: `[1, 2, 5, 3, 4, 7, 8, 6, 9]`
 
-```
-[1,2,5,3,4,6,7,8,9]
-```
+### Перемещение между разными группами
 
-At this time, continue to move 6 back to position 8, 6 occupies the position of 8, 7,8 each move forward one position.
+При сортировке по группам, если запись перемещается в другую группу, её принадлежность к группе также меняется. Например:
 
-```
-[1,2,5,3,4,7,8,6,9]
-```
+Группа A: `[1, 2, 3, 4]`  
+Группа B: `[5, 6, 7, 8]`
 
-#### Movement of elements between different groups
+Если элемент 1 перемещается к 6 (по умолчанию — после него), его группа меняется с A на B:  
+Группа A: `[2, 3, 4]`  
+Группа B: `[5, 6, 1, 7, 8]`
 
-When sorting by group, when a record moves to another group, the group where it belongs will also change. As shown in the example below:
+### Изменения сортировки не зависят от данных, отображаемых на экране
 
-```
-A: [1,2,3,4]
-B: [5,6,7,8]
-```
+Например, есть набор данных:  
+`[1, 2, 3, 4, 5, 6, 7, 8, 9]`
 
-When 1 moves to 6 (default behind), the group where 1 belongs will also change from A to B
+На экране отображаются только: `[1, 5, 9]`
 
-```
-A: [2,3,4]
-B: [5,6,1,7,8]
-```
+Если 1 перемещается на позицию 9, позиции всех промежуточных элементов (2, 3, 4, 5, 6, 7, 8) изменятся:  
+Результат: `[2, 3, 4, 5, 6, 7, 8, 9, 1]`
 
-#### Sort changes are unrelated to the data displayed on the screen
-
-For example, there is a set of data
-
-```
-[1,2,3,4,5,6,7,8,9]
-```
-
-The screen only shows
-
-```
-[1,5,9]
-```
-
-When 1 moves to position 9, the positions of the intervening 2,3,4,5,6,7,8 data will all change
-
-```
-[2,3,4,5,6,7,8,9,1]
-```
-
-The screen displays
-
-```
-[5,9,1]
-```
+На экране отобразится: `[5, 9, 1]`
