@@ -1,63 +1,72 @@
-# Token Policy
+### **Политика токенов**
 
 <PluginInfo name="auth"></PluginInfo>
 
-## Introduction
+#### **Введение**
 
-The Token Security Policy is a functional configuration designed to protect system security and enhance user experience. It includes three main configuration items: "Session Validity Period", "Token Validity Period", and "Expired Token Refresh Time Limit".
+Политика безопасности токенов — это функциональная настройка, предназначенная для повышения безопасности системы и улучшения пользовательского опыта. Она включает три основных параметра: «Срок действия сессии», «Срок действия токена» и «Лимит времени на обновление просроченного токена».
 
-## Configuration Entry
+#### **Место настройки**
 
-The configuration entry is located under Plugin Settings - Security - Token Policy:
+Параметры находятся в разделе: Настройки плагина → Безопасность → Политика токенов:
 
 ![20250105111821-2025-01-05-11-18-24](https://static-docs.nocobase.com/20250105111821-2025-01-05-11-18-24.png)
 
-## Session Validity Period
+---
 
-**Definition:**
+#### **Срок действия сессии**
 
-The Session Validity Period refers to the maximum duration that the system allows a user to maintain an active session after logging in.
+**Определение:**
 
-**Function:**
+Срок действия сессии — это максимальный период времени, в течение которого система позволяет пользователю оставаться в активной сессии после входа в систему.
 
-Once the Session Validity Period is exceeded, the user will receive a 401 error response upon subsequent access to the system, and will then be redirected to the login page for re-authentication.
-Example:
-If the Session Validity Period is set to 8 hours, the session will expire 8 hours after the user logs in, assuming no additional interactions.
+**Функция:**
 
-**Recommended Settings:**
+Если срок действия сессии истёк, при следующем обращении к системе пользователь получит ответ с кодом ошибки 401 и будет перенаправлен на страницу входа для повторной аутентификации.
 
-- Short-term operation scenarios: Recommended 1-2 hours to enhance security.
-- Long-term work scenarios: Can be set to 8 hours to accommodate business needs.
+**Пример:**
 
-## Token Validity Period
+Если срок действия сессии установлен в 8 часов, то сессия завершится через 8 часов после входа пользователя, при условии, что не было дополнительных действий.
 
-**Definition:**
+**Рекомендуемые настройки:**
 
-The Token Validity Period refers to the lifecycle of each Token issued by the system during the user's active session.
+- Для кратковременных операций: рекомендуется 1–2 часа — для повышения безопасности.
+- Для длительной работы: можно установить 8 часов, чтобы соответствовать рабочим потребностям.
 
-**Function:**
+---
 
-When a Token expires, the system will automatically issue a new Token to maintain the session activity.
-Each expired Token is only allowed to be refreshed once.
+#### **Срок действия токена**
 
-**Recommended Settings:**
+**Определение:**
 
-For security reasons, it is recommended to set it between 15 to 30 minutes.
-Adjustments can be made based on scenario requirements. For example:
-High-security scenarios: The Token Validity Period can be shortened to 10 minutes or less.
-Low-risk scenarios: The Token Validity Period can be appropriately extended to 1 hour.
+Срок действия токена — это период жизни каждого токена, выданного системой в течение активной сессии пользователя.
 
-## Expired Token Refresh Time Limit
+**Функция:**
 
-**Definition:**
+Когда токен истекает, система автоматически выдаёт новый токен, чтобы поддерживать сессию активной.  
+Каждый просроченный токен можно обновить только один раз.
 
-The Expired Token Refresh Time Limit refers to the maximum time window allowed for a user to obtain a new Token through a refresh operation after the Token has expired.
+**Рекомендуемые настройки:**
 
-**Characteristics:**
+Из соображений безопасности рекомендуется устанавливать значение от 15 до 30 минут.  
+Настройку можно корректировать в зависимости от сценария использования:
 
-If the refresh time limit is exceeded, the user must log in again to obtain a new Token.
-The refresh operation does not extend the Session Validity Period, it only regenerates the Token.
+- Высокая безопасность: срок действия токена можно сократить до 10 минут или менее.
+- Низкий уровень риска: срок действия можно увеличить до 1 часа.
 
-**Recommended Settings:**
+---
 
-For security reasons, it is recommended to set it between 5 to 10 minutes.
+#### **Лимит времени на обновление просроченного токена**
+
+**Определение:**
+
+Лимит времени на обновление просроченного токена — это максимальный временной интервал, в течение которого пользователь может получить новый токен с помощью операции обновления после истечения срока действия текущего токена.
+
+**Особенности:**
+
+- Если лимит времени превышен, пользователь должен войти в систему заново, чтобы получить новый токен.
+- Операция обновления **не продлевает** срок действия сессии — она лишь генерирует новый токен.
+
+**Рекомендуемые настройки:**
+
+Для обеспечения безопасности рекомендуется устанавливать значение от 5 до 10 минут.
