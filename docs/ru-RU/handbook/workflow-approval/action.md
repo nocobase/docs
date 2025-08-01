@@ -1,11 +1,11 @@
-# Initiate Approval Configuration
+# Настройка инициирования согласования
 
-After configuring and activating an approval workflow, you can link it to the submit button of the relevant data table form. This setup allows users to automatically initiate the approval process when they submit the form:
+После настройки и активации workflow согласования, вы можете привязать его к кнопке отправки соответствующей формы таблицы данных. Эта настройка позволяет пользователям автоматически запускать процесс согласования при отправке формы:
 
-![Initiate Approval_Bind Workflow](https://static-docs.nocobase.com/2872ff108c61d7bf6d0bfb19886774c6.png)
+![Привязка workflow к кнопке](https://static-docs.nocobase.com/2872ff108c61d7bf6d0bfb19886774c6.png)
 
-Once the workflow is linked, users will trigger the approval process upon submitting the form.
+После привязки workflow пользователи будут запускать процесс согласования при каждой отправке формы.
 
-:::info{title=Tip}
-The approval initiation button currently only supports the "Submit" (or "Save") button in "Add" or "Update" forms. It does not support the "Submit to Workflow" button (which can only be linked to "Post-action event").
+:::info{title=Совет}
+Кнопка инициирования согласования в настоящее время поддерживает только кнопки "Отправить" (или "Сохранить") в формах "Добавления" или "Редактирования". Она не поддерживает кнопку "Отправить в Workflow" (которая может быть привязана только к "Событию после действия").
 :::
