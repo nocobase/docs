@@ -1,24 +1,24 @@
-# Column Chart
+# Столбчатая диаграмма (по вертикали)
 
-## Data Configuration
+## Настройка данных
 
-### 1 Measure, 1 Dimension
+### 1 показатель, 1 измерение
 
-![Bar Chart Example](https://static-docs.nocobase.com/202410101121827.png)
+![Пример столбчатой диаграммы](https://static-docs.nocobase.com/202410101121827.png)
 
-### 1 Measure, 1 Axis Dimension, 1 Category Dimension
+### 1 показатель, 1 измерение по оси, 1 категориальное измерение
 
-Configure 1 measure and 2 dimensions, where one dimension is used as the X-axis field (X field) and the other as the category field (Series field). The X-axis field and the category field can be the same.
+Настройте 1 показатель и 2 измерения, где одно измерение используется как поле по оси X, а другое — как поле категории (поле серии). Поле по оси X и поле категории могут быть одинаковыми.
 
-![Bar Chart with Category](https://static-docs.nocobase.com/202410101122347.png)
+![Столбчатая диаграмма с категориями](https://static-docs.nocobase.com/202410101122347.png)
 
-## Configuration Options
+## Параметры настройки
 
-| Option           | Description                                                                 |
-| ---------------- | --------------------------------------------------------------------------- |
-| X-axis Field     | The dimension field for the X-axis                                          |
-| Category Field   | The dimension field for categorization                                      |
-| Size             | Set the size of the chart, either with a fixed aspect ratio or fixed height |
-| Grouped Display  | Toggle grouped display<br />![Grouped Display](https://static-docs.nocobase.com/202410101125056.png) |
-| Stacked Display  | Toggle stacked display<br />![Stacked Display](https://static-docs.nocobase.com/202410101125891.png) |
-| Percentage Display | Toggle percentage display<br />![Percentage Display](https://static-docs.nocobase.com/202410101126148.png) |
+| Параметр               | Описание                                                                 |
+| ---------------------- | ------------------------------------------------------------------------ |
+| Поле по оси X          | Поле измерения для оси X                                                 |
+| Поле категории         | Поле измерения для категоризации                                         |
+| Размер                 | Установите размер диаграммы — с фиксированным соотношением сторон или фиксированной высотой |
+| Группированный вид     | Включить или отключить группированный вид столбцов<br />![Группированный вид](https://static-docs.nocobase.com/202410101125056.png) |
+| Стековый вид           | Включить или отключить стековый (наложенный) вид столбцов<br />![Стековый вид](https://static-docs.nocobase.com/202410101125891.png) |
+| Процентный вид         | Включить или отключить отображение в процентах<br />![Процентный вид](https://static-docs.nocobase.com/202410101126148.png) |
