@@ -1,11 +1,10 @@
-# Checkbox
+# Флажок
 
-## Introduction
+## Введение
 
-## Field configuration
+## Настройка поля
 
 ![20240512180122](https://static-docs.nocobase.com/20240512180122.png)
 
-## Instructions
-
+## Инструкции
 to be added.
