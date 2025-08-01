@@ -1,9 +1,9 @@
-# Submit to Workflow
+# Отправить в Workflow
 
-The Submit to Workflow operation is implemented via plugin extensions.
+Операция отправки в Рабочем процессе реализована с помощью расширений плагина.
 
-1. Addition and update forms support the configuration and triggering of submission to workflows.
-2. Multiple workflows can be triggered with one button click, each selecting a different workflow and data context (data is not restricted, and users are responsible for ensuring this).
-3. Form button triggers only support the new workflow type "Form Event."
+1. Формы добавления и обновления поддерживают настройку и запуск отправки в workflow.
+2. Одним нажатием кнопки можно запустить несколько рабочих процессов, каждый из которых выбирает свой рабочий процесс и контекст данных (данные не ограничены, и пользователи несут ответственность за обеспечение этого).
+3. Триггеры кнопок форм поддерживают только новый тип рабочего процесса "Событие формы".
 
-For more details, refer to the Plugin Documentation.
+Для получения более подробной информации обратитесь к документации по плагину.
