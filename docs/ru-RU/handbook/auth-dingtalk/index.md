@@ -1,55 +1,58 @@
-# Auth: DingTalk
+# Аутентификация через DingTalk
 
 <PluginInfo commercial="true" name="auth-dingtalk"></PluginInfo>
 
-## Introduction
+## Введение
 
-The **Auth: DingTalk** plugin enables users to log in to NocoBase using their DingTalk accounts, streamlining the login process.
+Плагин **Auth: DingTalk** позволяет пользователям входить в NocoBase с помощью учетных записей DingTalk, упрощая процесс авторизации.
 
-## Activating the Plugin
+## Активация плагина
 
 ![](https://static-docs.nocobase.com/202406120929356.png)
 
-## Applying for API Permissions in the DingTalk Developer Console
+## Получение API-доступов в консоли разработчика DingTalk
 
-Follow the steps outlined in the <a href="https://open.dingtalk.com/document/orgapp/tutorial-obtaining-user-personal-information" target="_blank">DingTalk Open Platform - Implement Login for Third-Party Websites</a> guide to create your application.
+1. Следуйте инструкциям из руководства <a href="https://open.dingtalk.com/document/orgapp/tutorial-obtaining-user-personal-information" target="_blank">DingTalk Open Platform - Реализация входа для сторонних сайтов</a> для создания приложения.
 
-Once in the application management console, ensure you enable both "Personal Mobile Number Information" and "Address Book Personal Information Read Permissions."
+2. В консоли управления приложением активируйте разрешения:
+   - "Информация о личном мобильном номере"
+   - "Чтение персональной информации из адресной книги"
 
 ![](https://static-docs.nocobase.com/202406120006620.png)
 
-## Obtaining the Client Secret from the DingTalk Developer Console
+## Получение учетных данных
 
-Copy your **Client ID** and **Client Secret** from the console.
+Скопируйте **Client ID** и **Client Secret** из консоли разработчика:
 
 ![](https://static-docs.nocobase.com/202406120000595.png)
 
-## Adding DingTalk Authentication to NocoBase
+## Настройка аутентификации в NocoBase
 
-Navigate to the **Authentication** plugin management page.
+1. Перейдите в раздел управления плагином аутентификации:
 
 ![](https://static-docs.nocobase.com/202406112348051.png)
 
-Select **Add new - DingTalk**
+2. Выберите **Добавить новый - DingTalk**:
 
 ![](https://static-docs.nocobase.com/202406112349664.png)
 
-### Configuration
+### Конфигурация
 
 ![](https://static-docs.nocobase.com/202406120016896.png)
 
-- **Sign up automatically when the user does not exist** - When the phone number does not match an existing user, a new user is automatically created.
-- **Client ID and Client Secret** - Enter the information you copied earlier.
-- **Redirect URL** - Enter the callback URL, copy it, and proceed to the next step.
+- **Автоматическая регистрация новых пользователей** - Создает учетную запись при первом входе
+- **Client ID и Client Secret** - Введите скопированные ранее данные
+- **URL перенаправления** - Скопируйте этот адрес для следующего шага
 
-## Configuring the Callback URL in the DingTalk Developer Console
+## Настройка callback-URL в DingTalk
 
-Paste the copied **Callback URL** into the appropriate field in the DingTalk Developer Console.
+Вставьте скопированный **URL перенаправления** в соответствующее поле консоли разработчика:
 
 ![](https://static-docs.nocobase.com/202406120012221.png)
 
-## Login
+## Процесс входа
 
-Go to the login page and click the button below the login form to initiate third-party login through DingTalk.
+На странице входа нажмите кнопку под формой для авторизации через DingTalk:
 
 ![](https://static-docs.nocobase.com/202406120014539.png)
+
