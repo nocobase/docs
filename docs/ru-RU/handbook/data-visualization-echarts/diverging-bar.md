@@ -1,26 +1,27 @@
-# Diverging-bar Chart
+# Дивергентная столбчатая диаграмма (Diverging-bar Chart)
 
-## Data Configuration
+## Конфигурация данных
 
-### 2 Metrics, 1 Dimension
+### 2 метрики, 1 измерение
 
-Configure 2 metrics and 1 dimension. One metric will be assigned as the left-side X-axis field, and the other as the right-side X-axis field.
+Настройте 2 метрики и 1 измерение. Одна метрика будет назначена в качестве поля для левой оси X, другая - для правой оси X.
 
-![2 Metrics, 1 Dimension](https://static-docs.nocobase.com/202410091121686.png)
+![2 метрики, 1 измерение](https://static-docs.nocobase.com/202410091121686.png)
 
-## Configuration Options
+## Параметры конфигурации
 
-| Option            | Description                                                                 |
-| ----------------- | --------------------------------------------------------------------------- |
-| Left X field      | Metric field for the left-side X-axis                                       |
-| Right X field     | Metric field for the right-side X-axis                                      |
-| yField            | Dimension field                                                            |
-| Size              | Set the size of the chart, either with a fixed aspect ratio or fixed height  |
-| Light mode theme   | Select this option to preview in the system's light mode                    |
-| Dark mode theme    | Select this option to preview in the system's dark mode                     |
-| Show legend        | Controls whether to display the legend                                      |
-| Label type         | Controls whether to show labels and their display types                     |
-| Colors             | Allows fine control of the color for each category                          |
-| Y-Axis label rotate | Controls the rotation angle of Y-axis labels, useful when labels are dense |
-| Padding            | Adjust the padding within the chart                                         |
-| Split line         | Controls whether to display grid lines and their styles                     |
+| Параметр              | Описание                                                                 |
+|----------------------|--------------------------------------------------------------------------|
+| Левое поле X         | Метрика для левой оси X                                                 |
+| Правое поле X        | Метрика для правой оси X                                                |
+| Поле Y               | Измерение (категория)                                                   |
+| Размер               | Установка размера диаграммы (фиксированное соотношение сторон или высота) |
+| Тема светлого режима | Предпросмотр в светлой теме системы                                     |
+| Тема темного режима  | Предпросмотр в темной теме системы                                      |
+| Показывать легенду   | Управление отображением легенды                                         |
+| Тип меток            | Управление отображением и типом подписей                                |
+| Цвета                | Точная настройка цвета для каждой категории                             |
+| Поворот меток Y      | Угол поворота подписей оси Y (полезно при плотном расположении)         |
+| Внутренние отступы   | Настройка отступов внутри диаграммы                                     |
+| Разделительные линии | Управление отображением и стилем линий сетки                            |
+
