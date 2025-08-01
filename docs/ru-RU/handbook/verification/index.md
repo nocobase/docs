@@ -1,26 +1,26 @@
-# Verification
+# Проверка
 
-:::info{title=Note}
-Starting with `1.6.0-alpha.30`, the original “verification code” feature has been upgraded to “Verification Management”, which supports managing and integrating various methods of user verification. Once users bind the corresponding verification method, they can perform identity verification when needed. This feature is planned to be stably supported beginning with version `1.7.0`.
+:::info{title=Примечание}
+Начиная с версии `1.6.0-alpha.30`, оригинальная функция «кода подтверждения» была модернизирована до функции «Управление проверкой», которая поддерживает управление и интеграцию различных методов верификации пользователей. После привязки пользователем соответствующего метода проверки он может выполнять подтверждение личности по мере необходимости. Эта функция будет стабильно поддерживаться, начиная с версии `1.7.0`.
 :::
 
 <PluginInfo name="verification"></PluginInfo>
 
-## Introduction
+## Введение
 
-**The Verification Management Center supports managing and integrating various methods of user verification.** For example:
+**Центр управления проверками поддерживает управление и интеграцию различных методов верификации пользователей.** Например:
 
-- SMS Verification Code – Provided by the default verification plugin. Refer to: [Auth: SMS](../../handbook/verification/sms)
-- TOTP Authenticator – Refer to: [Auth: TOTP Authenticator](../verification-totp-authenticator/index.md)
+- Код подтверждения по SMS — предоставляется стандартным плагином проверки. См. также: [Аутентификация: SMS](../../handbook/verification/sms)
+- Аутентификатор TOTP — см. также: [Аутентификация: Аутентификатор TOTP](../verification-totp-authenticator/index.md)
 
-Developers can also extend other types of verification via plugins. Refer to: [Extending Verification Types](../../handbook/verification/dev/type)
+Разработчики также могут расширять функционал за счёт добавления других типов проверки с помощью плагинов. Подробнее см.: [Расширение типов проверки](../../handbook/verification/dev/type)
 
-**Users can perform identity verification when needed after binding the corresponding verification method.** For example:
+**После привязки соответствующего метода проверки пользователь может выполнять верификацию личности по мере необходимости.** Например:
 
-- SMS Verification Login – Refer to: [Auth: SMS](../auth-sms/index.md)
-- Two-Factor Authentication (2FA) – Refer to: [Auth: Two-Factor Authentication (2FA)](../two-factor-authentication/index.md)
-- Secondary Verification for Risk Operations – Future support
+- Вход через SMS-подтверждение — см. также: [Аутентификация: SMS](../auth-sms/index.md)
+- Двухфакторная аутентификация (2FA) — см. также: [Аутентификация: Двухфакторная аутентификация (2FA)](../two-factor-authentication/index.md)
+- Повторная проверка для рискованных операций — поддержка в будущем
 
-Developers can also integrate identity verification into other necessary scenarios by extending plugins. Refer to: [Extending Verification Scenarios](../../handbook/verification/dev/scene)
+Разработчики могут также интегрировать верификацию личности в другие необходимые сценарии с помощью расширения плагинов. Подробнее см.: [Расширение сценариев проверки](../../handbook/verification/dev/scene)
 
-**Differences and Relationships Between the Verification Module and the User Authentication Module:** The User Authentication Module is primarily responsible for identity authentication during user login, with processes such as SMS login and two-factor authentication relying on verifiers provided by the Verification Module; meanwhile, the Verification Module handles identity verification for various high-risk operations, with user login being one of those scenarios.
+**Различия и взаимосвязь между модулем проверки и модулем аутентификации пользователей:** Модуль аутентификации пользователей в первую очередь отвечает за проверку личности при входе в систему, при этом такие процессы, как вход по SMS или двухфакторная аутентификация, опираются на средства проверки, предоставляемые модулем управления проверками. В свою очередь, модуль управления проверками используется для верификации личности при выполнении различных рискованных операций, одной из которых является вход пользователя в систему.
