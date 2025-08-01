@@ -1,10 +1,10 @@
-# Extended Tutorial
+# Расширенное руководство
 
-> Using the addition of ECharts charts as an example, the complete code is available in the `@nocobase/plugin-sample-add-custom-charts` plugin.
+> В качестве примера рассмотрим добавление диаграмм ECharts. Полный код доступен в плагине `@nocobase/plugin-sample-add-custom-charts`.
 
-## Creating a New Plugin
+## Создание нового плагина
 
-Follow the steps in the [Plugin Development Guide](https://docs.nocobase.com/development/your-first-plugin) to create a new plugin. Be sure to include the dependencies `echarts`, `echarts-for-react`, and `@nocobase/plugin-data-visualization`, placing these external dependencies in the `devDependencies` section of the `package.json` file.
+Следуйте инструкциям из [Руководства по разработке плагинов](https://docs.nocobase.com/development/your-first-plugin) для создания нового плагина. Убедитесь, что добавили зависимости `echarts`, `echarts-for-react` и `@nocobase/plugin-data-visualization` в раздел `devDependencies` файла `package.json`.
 
 ```bash
 yarn pm create @nocobase/plugin-sample-add-custom-charts
@@ -32,9 +32,9 @@ npx lerna add echarts-for-react --scope=@nocobase/plugin-sample-add-custom-chart
 }
 ```
 
-## ECharts React Component
+## React-компонент ECharts
 
-Unlike G2Plot, where each chart type is a distinct component, ECharts utilizes a single component that can render various charts by passing different parameters. Since the component provided by `echarts-for-react` is a `PureComponent`, we need to wrap it into a `FunctionComponent`.
+В отличие от G2Plot, где каждый тип диаграммы - отдельный компонент, ECharts использует единый компонент, который может отображать различные диаграммы с разными параметрами. Поскольку компонент из `echarts-for-react` является `PureComponent`, нам нужно обернуть его в `FunctionComponent`.
 
 ```typescript
 // client/echarts/react-echarts.tsx
@@ -51,15 +51,15 @@ export const ReactECharts = (props: EChartsReactProps['option']) => {
 };
 ```
 
-The `echarts-for-react` component does not execute a `resize` operation on its initial render. As the NocoBase visualization plugin might need to determine whether to display the component based on the current configuration while setting up charts, this could result in the component not displaying correctly. Therefore, we manually execute `resize` each time to ensure proper rendering.
+Компонент `echarts-for-react` не выполняет операцию `resize` при первом рендере. Так как плагин визуализации NocoBase может определять необходимость отображения компонента на основе текущей конфигурации, это может привести к некорректному отображению. Поэтому мы вручную выполняем `resize` при каждом обновлении.
 
-## Extending the `Chart` Class
+## Расширение класса `Chart`
 
-> Before proceeding, please refer to the [Development Guide](../dev/index.md) to familiarize yourself with the relevant APIs.
+> Перед продолжением ознакомьтесь с [Руководством разработчика](../dev/index.md) для изучения соответствующих API.
 
-### Step 1
+### Шаг 1
 
-Since ECharts serves as a comprehensive charting library, we may need to add multiple chart types simultaneously. To facilitate this, we start by extending the basic `Chart` class to create an `ECharts` class that implements some foundational methods.
+Так как ECharts - это комплексная библиотека, нам может потребоваться добавить несколько типов диаграмм одновременно. Для этого мы расширяем базовый класс `Chart`, создавая класс `ECharts` с реализацией основных методов.
 
 ```typescript
 // client/echarts/echarts.ts
@@ -89,13 +89,11 @@ export class ECharts extends Chart {
 }
 ```
 
-ECharts primarily configures different types of charts via the `series` parameter. Therefore, when constructing the base class, we add a `series` parameter and pass in the previously defined `ReactECharts` component. The `config` parameter is preset with default values for `xField`, `yField`, and `seriesField`, enabling our default visualization configuration to produce results similar to those shown in the example.
+ECharts настраивает различные типы диаграмм через параметр `series`. При создании базового класса мы добавляем этот параметр и передаем ранее определенный компонент `ReactECharts`. Параметр `config` предустановлен значениями по умолчанию для `xField`, `yField` и `seriesField`.
 
-![](https://static-docs.nocobase.com/9a1ff5ff7c9f409978292f0d771b4358.png)
+### Шаг 2
 
-### Step 2
-
-Since most commonly used chart types require configurations for the x-axis, y-axis, and classification fields, we first implement a general `init` interface to initialize the chart’s default configuration. If a chart requires additional configuration items upon initialization, this method can be overridden in derived classes. In the implementation, we can leverage the `infer` method from the `Chart` class to determine default field configurations based on the provided measures and dimensions.
+Большинство распространенных типов диаграмм требуют конфигурации осей X, Y и полей классификации. Реализуем общий интерфейс `init` для инициализации конфигурации по умолчанию, используя метод `infer` из класса `Chart`.
 
 ```typescript
 init: ChartType['init'] = (fields, { measures, dimensions }) => {
@@ -113,9 +111,9 @@ init: ChartType['init'] = (fields, { measures, dimensions }) => {
 };
 ```
 
-### Step 3
+### Шаг 3
 
-Next, we implement the `getProps` method, which primarily retrieves chart-related configurations and converts them into properties corresponding to the ECharts component. This method can also set default properties that we prefer not to expose in the configuration options. The following code implementation serves as a general guide.
+Реализуем метод `getProps` для преобразования конфигураций в свойства компонента ECharts. Этот метод также может устанавливать свойства по умолчанию.
 
 ```typescript
 getProps({ data, general, advanced, fieldProps }: RenderProps) {
@@ -171,11 +169,11 @@ getProps({ data, general, advanced, fieldProps }: RenderProps) {
   }
 ```
 
-This logic primarily involves processing raw data, chart configurations, field metadata, and data transformation settings into the format required for component rendering. In ECharts, data processing can be managed by registering `transform` functions, as detailed in the ECharts documentation.
+Эта логика обрабатывает сырые данные, конфигурации диаграмм и метаданные полей, преобразуя их в формат, необходимый для рендеринга компонента. В ECharts обработка данных может управляться через функции `transform`.
 
-### Step 4
+### Шаг 4
 
-Finally, we implement a method to retrieve reference documentation via `getReference`. ECharts consolidates all chart parameters on a single page, so we define this method straightforwardly.
+Наконец, реализуем метод для получения справочной документации через `getReference`. ECharts объединяет все параметры диаграмм на одной странице, поэтому мы определим этот метод простым образом:
 
 ```typescript
 getReference() {
@@ -186,57 +184,57 @@ getReference() {
   }
 ```
 
-## Defining Charts
+## Определение диаграмм
 
-With the `ECharts` class established, defining charts becomes a straightforward process. For most common 2D charts, the general logic is already encapsulated within the `ECharts` class, eliminating the need for additional extensions.
+После создания класса `ECharts` определение диаграмм становится простой задачей. Для большинства распространённых 2D-диаграмм общая логика уже инкапсулирована в классе `ECharts`, что исключает необходимость в дополнительных расширениях.
 
 ```typescript
 new ECharts({
   name: 'line',
-  title: 'Line Chart',
+  title: 'Линейная диаграмма',
   series: { type: 'line' },
 });
 
 new ECharts({
   name: 'column',
-  title: 'Column Chart',
+  title: 'Столбчатая диаграмма',
   series: { type: 'bar' },
 });
 
 new ECharts({
   name: 'area',
-  title: 'Area Chart',
+  title: 'Диаграмма с областями',
   series: { type: 'line', areaStyle: {} },
 });
 ```
 
-You can also extend some visualization configurations as needed.
+Вы также можете расширить некоторые параметры визуализации по необходимости.
 
 ```typescript
 new ECharts({
   name: 'line',
-  title: 'Line Chart',
+  title: 'Линейная диаграмма',
   series: { type: 'line' },
   config: [
     {
       property: 'booleanField',
       name: 'smooth',
-      title: 'isSmooth',
+      title: 'Сглаживание',
     },
   ],
 });
 ```
 
-For certain charts, the general methods may not suffice, requiring further customization.
+Для некоторых диаграмм общих методов может быть недостаточно, и потребуется дополнительная настройка.
 
-Bar Chart：
+### Столбчатая диаграмма (Bar Chart):
 
 ```typescript
 export class Bar extends ECharts {
   constructor() {
     super({
       name: 'bar',
-      title: 'Bar Chart',
+      title: 'Гистограмма',
       series: { type: 'bar' },
     });
     this.config = [
@@ -273,27 +271,27 @@ export class Bar extends ECharts {
 new Bar();
 ```
 
-Pie Chart：
+### Круговая диаграмма (Pie Chart):
 
 ```typescript
 export class Pie extends ECharts {
   constructor() {
     super({
       name: 'pie',
-      title: 'Pie Chart',
+      title: 'Круговая диаграмма',
       series: { type: 'pie' },
     });
     this.config = [
       {
         property: 'field',
         name: 'angleField',
-        title: 'angleField',
+        title: 'Поле значений',
         required: true,
       },
       {
         property: 'field',
         name: 'colorField',
-        title: 'colorField',
+        title: 'Поле цвета',
         required: true,
       },
     ];
@@ -340,7 +338,7 @@ export class Pie extends ECharts {
 new Pie();
 ```
 
-## Adding Charts
+## Добавление диаграмм
 
 ```typescript
 // client/index.ts
@@ -363,7 +361,7 @@ export class PluginSampleAddCustomChartClient extends Plugin {
     });
   }
 
-  // You can get and modify the app instance here
+  // Здесь можно получить и изменить экземпляр приложения
   async load() {}
 }
 ```
