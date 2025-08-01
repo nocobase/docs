@@ -1,21 +1,21 @@
-# Scatter Chart
+# Точечная диаграмма (диаграмма рассеяния)
 
-## Data Configuration
+## Настройка данных
 
-### 1 Measure, 1 Dimension
+### 1 показатель, 1 измерение
 
-![1 Measure, 1 Dimension](https://static-docs.nocobase.com/202410101138172.png)
+![1 показатель, 1 измерение](https://static-docs.nocobase.com/202410101138172.png)
 
-### 1 Measure, 1 Axis Dimension, One Series Dimension
+### 1 показатель, 1 измерение по оси, 1 категориальное измерение
 
-Configure one metric and two dimensions. One of the dimensions is the X-axis field (X field) and the other is the Series field (Series field).
+Настройте один показатель и два измерения. Одно измерение используется как поле по оси X, другое — как поле серии (категории).
 
-![1 Measure, 1 Axis Dimension, One Series Dimension](https://static-docs.nocobase.com/202410101137837.png)
+![1 показатель, 1 измерение по оси, 1 категориальное измерение](https://static-docs.nocobase.com/202410101137837.png)
 
-## Configuration Options
+## Параметры настройки
 
-| Option         | Description                                             |
+| Параметр         | Описание                                             |
 | -------------- | ------------------------------------------------------- |
-| X-axis Field   | The dimension used to define the X-axis of the chart.   |
-| Series Field   | The dimension used to categorize data points into distinct series. |
-| Size           | Set chart’s size, either by setting a fixed aspect ratio or a fixed height. |
+| Поле по оси X   | Измерение, определяющее ось X диаграммы.   |
+| Поле серии   | Измерение, используемое для разделения точек данных на отдельные серии. |
+| Размер           | Установите размер диаграммы — с фиксированным соотношением сторон или фиксированной высотой. |
