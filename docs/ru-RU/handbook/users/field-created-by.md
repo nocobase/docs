@@ -1,13 +1,14 @@
-# Creator
+# Создатель
 
 <PluginInfo name="users"></PluginInfo>
 
-## Introduction
+## Введение
 
-## Field Configuration
+## Настройка полей
 
-![20240512174625](https://static-docs.nocobase.com/20240512174625.png)
+![Конфигурация полей](https://static-docs.nocobase.com/20240512174625.png)
 
-## Example
+## Пример
 
-To be added.
+Будет добавлено позже.
+
