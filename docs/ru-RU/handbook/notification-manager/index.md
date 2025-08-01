@@ -1,34 +1,37 @@
-# Notification Manager
+### **Менеджер уведомлений**
 
 <PluginInfo name="notification-manager"></PluginInfo>
 
-## Introduction
+#### **Введение**
 
-The Notification Manager is a centralized service that integrates various notification channels, offering a unified interface for channel configuration, management of notifications, and log recording. It’s also designed to be highly flexible, allowing for the expansion of additional channels.
+Менеджер уведомлений — это централизованная служба, интегрирующая различные каналы уведомлений и предоставляющая единый интерфейс для настройки каналов, управления уведомлениями и ведения журнала событий. Он также отличается высокой гибкостью и поддерживает расширение за счёт добавления дополнительных каналов.
 
 ![20240928112556](https://static-docs.nocobase.com/20240928112556.png)
 
-- Purple section: The Notification Manager provides a comprehensive service that includes channel configuration and log recording, with the option to expand to other notification channels.
-- Green section: In-App Message, a built-in channel, enables users to receive notifications directly within the application.
-- Red section: Email, an extendable channel, allows users to receive notifications through email.
+- **Фиолетовая область**: Менеджер уведомлений предоставляет комплексный сервис, включающий настройку каналов и запись логов, а также возможность подключения дополнительных каналов уведомлений.
+- **Зелёная область**: «Внутриприкладное сообщение» — встроенный канал, позволяющий пользователям получать уведомления непосредственно внутри приложения.
+- **Красная область**: «Электронная почта» — расширяемый канал, позволяющий пользователям получать уведомления по email (встроена поддержка протокола SMTP).
 
-## Channel Management
+#### **Управление каналами**
 
 ![20240928181752](https://static-docs.nocobase.com/20240928181752.png)
 
-The currently supported channels include:
+Поддерживаемые в настоящее время каналы:
 
-- [In-App Message](/handbook/notification-in-app-message)
-- [Email](/handbook/notification-email) (built-in SMTP protocol)
+- [Внутриприкладное сообщение](/handbook/notification-in-app-message)
+- [Электронная почта](/handbook/notification-email) (встроенный протокол SMTP)
 
-For additional channels, refer to the [Channel Expansion](./extension) documentation.
+Для подключения дополнительных каналов обратитесь к документации по [расширению каналов](./extension).
 
-## Notification Logs
+#### **Журналы уведомлений**
 
-The system logs each notification's details and status, offering a valuable tool for both analysis and troubleshooting.
+Система записывает подробную информацию о каждом уведомлении, включая его статус. Это удобный инструмент для анализа и диагностики проблем.
 
 ![20240928181649](https://static-docs.nocobase.com/20240928181649.png)
 
-## Workflow Notification Node
+#### **Узел уведомления в рабочем процессе**
 
 ![20240928181726](https://static-docs.nocobase.com/20240928181726.png)
+
+Узел уведомления в рабочем процессе позволяет отправлять уведомления через настроенные каналы при выполнении определённых условий. Вы можете выбрать нужный канал, настроить содержание сообщения и указать получателей.
+
