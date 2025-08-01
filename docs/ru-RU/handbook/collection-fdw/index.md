@@ -1,70 +1,70 @@
-# Connect Foreign Data Tables(FDW)
+# Подключение внешних таблиц данных (FDW)
 
 <PluginInfo name="collection-fdw"></PluginInfo>
 
-## Introduction
+## Введение
 
-This is a plugin that connects to remote data tables based on the foreign data wrapper of the database. Currently, it supports MySQL and PostgreSQL databases.
+Этот плагин позволяет подключаться к удалённым таблицам данных с использованием технологии внешней обёртки данных (Foreign Data Wrapper, FDW) базы данных. В настоящее время поддерживаются базы данных MySQL и PostgreSQL.
 
-:::info{title="Connecting Data Sources vs Connecting External Data Tables"}
-- **Connecting data sources** refers to establishing a connection with a specific database or API service, and you can fully use the features of the database or the services provided by the API;
-- **Connecting external data tables** refers to obtaining data from the outside and mapping it for local use. In the database, it is called FDW (Foreign Data Wrapper), which is a database technology that focuses on using remote tables as local tables and can only connect one by one. Because it is remote access, there will be various constraints and limitations when using it.
+:::info{title="Подключение источников данных vs Подключение внешних таблиц данных"}
+- **Подключение источников данных** означает установление соединения с конкретной базой данных или API-сервисом, что позволяет в полной мере использовать возможности базы данных или сервисов, предоставляемых API.
+- **Подключение внешних таблиц данных** означает получение данных извне и их отображение для локального использования. В базах данных эта технология называется FDW (Foreign Data Wrapper). Она позволяет использовать удалённые таблицы как локальные, но подключение осуществляется по одной таблице за раз. Из-за удалённого доступа при использовании возникают различные ограничения и условия.
 - 
-The two can also be used in combination. The former is used to establish a connection with the data source, and the latter is used for cross data-source access. For example, a certain PostgreSQL data source is connected, and a certain table in this data source is an external data table created based on FDW.
+Оба подхода можно комбинировать. Первый используется для установления соединения с источником данных, второй — для доступа между разными источниками. Например, подключается источник данных PostgreSQL, а одна из таблиц в этом источнике — это внешняя таблица, созданная на основе FDW.
 :::
 
 ### MySQL
 
-MySQL uses the `federated` engine, which needs to be activated, and supports connecting to remote MySQL and protocol-compatible databases, such as MariaDB. For more details, refer to the [Federated Storage Engine](https://dev.mysql.com/doc/refman/8.0/en/federated-storage-engine.html) documentation.
+В MySQL используется движок `federated`, который необходимо активировать. Он поддерживает подключение к удалённым базам данных MySQL и совместимым с ним по протоколу базам, таким как MariaDB. Подробнее см. документацию [Federated Storage Engine](https://dev.mysql.com/doc/refman/8.0/en/federated-storage-engine.html).
 
 ### PostgreSQL
 
-In PostgreSQL, different types of `fdw` extensions can be used to support different types of remote data. The currently supported extensions include:
+В PostgreSQL для поддержки различных типов удалённых данных можно использовать различные расширения `fdw`. В настоящее время поддерживаются следующие расширения:
 
-- [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html): Connect to a remote PostgreSQL database in PostgreSQL.
-- [mysql_fdw(under development)](https://github.com/EnterpriseDB/mysql_fdw): Connect to a remote MySQL database in PostgreSQL.
-- For other types of fdw extensions, refer to [PostgreSQL Foreign Data Wrappers](https://wiki.postgresql.org/wiki/Foreign_data_wrappers). You need to implement the corresponding adaptation interface in the code.
+- [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html): подключение к удалённой базе данных PostgreSQL из PostgreSQL.
+- [mysql_fdw (в разработке)](https://github.com/EnterpriseDB/mysql_fdw): подключение к удалённой базе данных MySQL из PostgreSQL.
+- Другие типы расширений fdw можно найти в [PostgreSQL Foreign Data Wrappers](https://wiki.postgresql.org/wiki/Foreign_data_wrappers). Для их использования необходимо реализовать соответствующий интерфейс адаптации в коде.
 
-## Installation
+## Установка
 
-Prerequisites
+### Предварительные требования
 
-- If the Main database of NocoBase is MySQL, it needs to activate `federated`. Refer to [How to enable the federated engine in MySQL](./enable-federated.md)
+- Если основная база данных NocoBase — MySQL, необходимо активировать движок `federated`. Подробнее см. [Как включить движок federated в MySQL](./enable-federated.md).
 
-Then install and activate the plugin through the plugin manager
+Затем установите и активируйте плагин через менеджер плагинов:
 
-![Install and activate the plugin](https://static-docs.nocobase.com/f84276c5712851fb3ff33af3f1ff0f59.png)
+![Установка и активация плагина](https://static-docs.nocobase.com/f84276c5712851fb3ff33af3f1ff0f59.png)
 
-## User Manual
+## Руководство пользователя
 
-Under "Collection manager > Create collection", select "Connect to foreign data"
+В разделе «Менеджер коллекций > Создать коллекцию» выберите «Подключиться к внешней таблице данных»:
 
-![Connect External Data](https://static-docs.nocobase.com/029d946a6d067d1c35a39755219d623c.png)
+![Подключение внешних данных](https://static-docs.nocobase.com/029d946a6d067d1c35a39755219d623c.png)
 
-In the "Database Server" dropdown, select an existing database service, or "Create Database Server"
+В выпадающем списке «Сервер базы данных» выберите существующий сервер базы данных или нажмите «Создать сервер базы данных»:
 
-![Database Service](https://static-docs.nocobase.com/766271708a911950a5599d60d6be4a4d.png)
+![Сервер базы данных](https://static-docs.nocobase.com/766271708a911950a5599d60d6be4a4d.png)
 
-Create a database server
+Создание сервера базы данных:
 
-![Create Database Service](https://static-docs.nocobase.com/1e357216e04cc4f200bd6212827281c8.png)
+![Создание сервера базы данных](https://static-docs.nocobase.com/1e357216e04cc4f200bd6212827281c8.png)
 
-After selecting the database server, in the "Remote table" dropdown, select the data table you need to connect.
+После выбора сервера базы данных в списке «Удалённая таблица» выберите таблицу, к которой нужно подключиться:
 
-![Select the data table you need to connect](https://static-docs.nocobase.com/e91fd6152b52b4fc01b3808053cc8dc4.png)
+![Выбор таблицы для подключения](https://static-docs.nocobase.com/e91fd6152b52b4fc01b3808053cc8dc4.png)
 
-Configure field information
+Настройка информации о полях:
 
-![Configure field information](https://static-docs.nocobase.com/e618fecc5fe327f6a495e61405e5f040.png)
+![Настройка информации о полях](https://static-docs.nocobase.com/e618fecc5fe327f6a495e61405e5f040.png)
 
-If the remote table has structural changes, you can also "Sync from remote table"
+Если в удалённой таблице произошли структурные изменения, вы можете обновить схему с помощью функции «Синхронизировать из удалённой таблицы»:
 
-![Sync from Remote Table](https://static-docs.nocobase.com/3751a9a39f933889fb3fcc4d85a6f4ad.png)
+![Синхронизация из удалённой таблицы](https://static-docs.nocobase.com/3751a9a39f933889fb3fcc4d85a6f4ad.png)
 
-Remote table sync
+Синхронизация удалённой таблицы:
 
-![Remote table sync](https://static-docs.nocobase.com/13f18200e31ea223fdd8dadaff1e9d28.png)
+![Синхронизация удалённой таблицы](https://static-docs.nocobase.com/13f18200e31ea223fdd8dadaff1e9d28.png)
 
-Finally, display it on the interface
+Наконец, отобразите таблицу на интерфейсе:
 
-![Display on the interface](https://static-docs.nocobase.com/368fca27a99277d9360ca81350949357.png)
+![Отображение на интерфейсе](https://static-docs.nocobase.com/368fca27a99277d9360ca81350949357.png)
