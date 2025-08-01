@@ -1,8 +1,8 @@
-# time
+# Время
 
-## Introduction
+## Введение
 
-## Field configuration
+## Настройка поля
 
 ![20240512181216](https://static-docs.nocobase.com/20240512181216.png)
 
