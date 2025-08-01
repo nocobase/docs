@@ -1,42 +1,42 @@
-# Query Record
+# Запрос записи
 
-Used to query and retrieve data records that meet certain conditions from a collection.
+Используется для поиска и получения записей данных, соответствующих определённым условиям, из коллекции.
 
-It can be configured to query single or multiple data records, and the query result can be used as a variable in subsequent nodes. When querying multiple data records, the query result is an array. When the query result is empty, you can choose whether to continue executing subsequent nodes.
+Можно настроить запрос одной или нескольких записей. Результат запроса можно использовать как переменную в последующих узлах. При запросе нескольких записей результатом будет массив. При пустом результате можно выбрать, следует ли продолжать выполнение последующих узлов.
 
-## Creating a Node
+## Создание узла
 
-In the workflow configuration UI, click the plus ("+") button in the workflow and add a "Query Record" node:
+В интерфейсе настройки рабочего процесса нажмите кнопку «+» и добавьте узел «Запросить запись»:
 
-![Query Record_Add](https://static-docs.nocobase.com/c1ef2b851b437806faf7a39c6ab9d33a.png)
+![Запросить запись — Добавление](https://static-docs.nocobase.com/c1ef2b851b437806faf7a39c6ab9d33a.png)
 
-## Node Configuration
+## Настройка узла
 
-![Query Node_Node Configuration](https://static-docs.nocobase.com/20240520131324.png)
+![Запросить запись — Настройка узла](https://static-docs.nocobase.com/20240520131324.png)
 
-### Collection
+### Коллекция
 
-Select the collection to query record from.
+Выберите коллекцию, из которой нужно выполнить запрос.
 
-### Result type
+### Тип результата
 
-There are two result types: "Single Data" and "Multiple record":
+Существует два типа результата: «Одна запись» и «Несколько записей»:
 
-- Single record: The result will be an object of the first matching record only, or null if no matched record.
-- Multiple records: The result will be an array containing matched records, or an empty one if no matching records. This can be used to be processed in a loop node.
+- **Одна запись**: результатом будет объект первой найденной записи или `null`, если подходящих записей нет.
+- **Несколько записей**: результатом будет массив найденных записей или пустой массив (`[]`), если записи не найдены. Может использоваться для обработки в узле цикла.
 
-### Filter Conditions
+### Условия фильтрации
 
-Similar to the filter conditions when querying a normal collection, you can use context variables of the workflow.
+Аналогично условиям фильтрации при обычном запросе к коллекции. Можно использовать переменные контекста рабочего процесса.
 
-### Sorting
+### Сортировка
 
-When querying one or more data records, sorting rules can be used to control the desired results. For example, to query the latest data record, you can sort by the "Created at" field in descending order.
+При запросе одной или нескольких записей можно задать правила сортировки для получения нужного результата. Например, чтобы получить самую свежую запись, отсортируйте по полю «Дата создания» в порядке убывания.
 
-### Pagination
+### Пагинация
 
-When the result set may be large, pagination can be used to control the number of query results. For example, to query the latest 10 data records, you can sort by the "Creation Time" field in descending order and then set pagination to 1 page with 10 data records.
+Если набор результатов может быть большим, можно использовать пагинацию для ограничения количества возвращаемых записей. Например, чтобы получить 10 самых свежих записей, отсортируйте по полю «Время создания» по убыванию и установите пагинацию: 1 страница, 10 записей на странице.
 
-### Handling Empty Results
+### Обработка пустого результата
 
-In single result mode, if there are no data records that meet the conditions, the query result will be `null`; in multiple result mode, it will be an empty array (`[]`). You can choose whether to check "Exit the workflow if the query result is empty". After checked, if the query result is empty, subsequent nodes will not be executed, and the workflow will exit prematurely with a failed status.
+В режиме одной записи, если нет подходящих данных, результат будет `null`. В режиме нескольких записей — пустой массив (`[]`). Можно выбрать опцию «Прервать выполнение рабочего процесса, если результат запроса пуст». При включении этой опции, если результат пуст, последующие узлы выполняться не будут, и рабочий процесс завершится досрочно со статусом «ошибка».
