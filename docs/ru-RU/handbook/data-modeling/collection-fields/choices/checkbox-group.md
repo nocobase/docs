@@ -1,9 +1,9 @@
-# Checkbox-group
+# Группа флажков
 
-## Introduction
+## Введение
 
-## Field configuration
+## Настройка полей
 
-## Instructions
+## Инструкции
 
 to be added.
