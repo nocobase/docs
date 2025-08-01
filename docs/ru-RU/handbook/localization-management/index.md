@@ -1,53 +1,53 @@
-# Localization Management
+# Управление локализацией
 
 <PluginInfo name="localization-management"></PluginInfo>
 
-## Introduction
+## Введение
 
-The Localization Management plugin is designed to assist in managing and implementing the localization process for NocoBase. It translates NocoBase's menus, data tables, fields, and all plugins to adapt to the language and culture of a specific region.
+Плагин "Управление локализацией" предназначен для помощи в управлении и реализации процесса локализации NocoBase. Он переводит меню, таблицы данных, поля и все плагины NocoBase для адаптации к языку и культуре конкретного региона.
 
-## Installation
+## Установка
 
-This is a built-in plugin, so no additional installation is required.
+Это встроенный плагин, поэтому дополнительная установка не требуется.
 
-## User Manual
+## Руководство пользователя
 
-### Activating the Plugin
+### Активация плагина
 
 ![](https://static-docs.nocobase.com/d16f6ecd6bfb8d1e8acff38f23ad37f8.png)
 
-### Localization Management
+### Управление локализацией
 
 ![](https://static-docs.nocobase.com/c117b5337941f0afd564152053666480.png)
 
-### Synchronizing Translation Entries
+### Синхронизация переводов
 
 ![](https://static-docs.nocobase.com/bc380a4ebdb2af075abcab5f16287cf9.png)
 
-After synchronization, it will list all the translatable entries for the current language.
+После синхронизации будут отображены все переводимые элементы для текущего языка.
 
 ![](https://static-docs.nocobase.com/cf501e6b4d2f67520ad35b00d1ed3446.png)
 
-### Publishing
+### Публикация
 
-After completing the translation, you need to click the "Publish" button to make the changes take effect.
+После завершения перевода необходимо нажать кнопку "Опубликовать", чтобы изменения вступили в силу.
 
 ![](https://static-docs.nocobase.com/1f9dc52defb37ac67912011ba31c3160.png)
 
-### Translating Other Languages
+### Перевод на другие языки
 
-Enable other languages in "System Settings," such as Simplified Chinese.
+Включите другие языки в "Системных настройках", например, упрощенный китайский.
 
 ![](https://static-docs.nocobase.com/618830967aaeb643c892fce355d59a73.png)
 
-Switch to that language.
+Переключитесь на этот язык.
 
 ![](https://static-docs.nocobase.com/35548a7bf099df4f30d160c72863c6b8.png)
 
-Synchronize the entries.
+Синхронизируйте элементы.
 
 ![](https://static-docs.nocobase.com/12f39cfcd7d8d9ce3d367426b959af16.png)
 
-Translate and publish.
+Выполните перевод и опубликуйте.
 
 ![](https://static-docs.nocobase.com/eb22725dcab6807dc8a410f5e10e9492.png)
