@@ -1,2 +1,2 @@
-# String Template
+# Строковый шаблон
 
