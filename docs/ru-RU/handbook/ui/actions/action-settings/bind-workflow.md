@@ -1,20 +1,17 @@
-# Bind Workflows
+### **Привязка рабочих процессов**
 
-## Introduction
+#### **Введение**
 
-Binding a workflow is a powerful way to automate data processing. By linking an operation to a workflow, you ensure that data flows seamlessly through business processes. It’s important to note that workflows are triggered only after a successful data submission; if the operation fails, the workflow will not be activated.
+Привязка рабочего процесса — это мощный способ автоматизации обработки данных. Связывая операцию с рабочим процессом, вы обеспечиваете бесперебойное прохождение данных через бизнес-процессы. Важно отметить, что рабочие процессы запускаются только после успешной отправки данных; если операция завершается с ошибкой, рабочий процесс активирован не будет.
 
 ![20240413095247](https://static-docs.nocobase.com/20240413095247.png)
 
 ![20240413095309](https://static-docs.nocobase.com/20240413095309.png)
 
-The following operation buttons currently support workflow binding:
+Следующие кнопки операций в настоящее время поддерживают привязку к рабочим процессам:
 
-"Submit" and "Save" buttons for new forms.
+- Кнопки **«Отправить»** и **«Сохранить»** в формах создания записей.
+- Кнопки **«Отправить»** и **«Сохранить»** в формах редактирования записей.
+- Кнопка **«Обновить данные»** в строках данных (включая таблицы, списки, доски канбан и т.д.).
 
-"Submit" and "Save" buttons for update forms.
-
-"Update Data" button in data rows (including tables, lists, kanban, etc.).
-
-For more details, see [Post-Action Events](/handbook/workflow-action-trigger) in the workflow documentation.
-
+Более подробную информацию см. в разделе [События после действий](/handbook/workflow-action-trigger) документации по рабочим процессам.
