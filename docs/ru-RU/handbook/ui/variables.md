@@ -1,173 +1,173 @@
-# Variables
+# Переменные
 
-## Introduction
-Variables are a set of tokens used to identify a value in the current context. They can be used in scenarios such as configuration block data scope, field default values, linkage rules, workflows, etc.
+## Введение
+Переменные представляют собой набор токенов, используемых для идентификации значений в текущем контексте. Они могут применяться в таких сценариях, как настройка области данных блока, значения по умолчанию для полей, правила связей, рабочие процессы и т.д.
 
 ![2024-09-25_20-08-38-2024-09-25-20-11-51](https://static-docs.nocobase.com/2024-09-25_20-08-38-2024-09-25-20-11-51.png)
 
-## Currently Supported Variables
+## Поддерживаемые переменные
 
-### Current user
+### Текущий пользователь
 
-Represents the data of the currently logged-in user.
+Представляет данные пользователя, выполнившего вход в систему.
 
 ![20240416154950](https://static-docs.nocobase.com/20240416154950.png)
 
-### Current Role
+### Текущая роль
 
-Represents the role identifier (role name) of the currently logged-in user.
+Идентификатор роли (название роли) текущего пользователя.
 
 ![20240416155100](https://static-docs.nocobase.com/20240416155100.png)
 
-### Current form
+### Текущая форма
 
-The value of the current form, only used in form blocks. It is used in the following scenarios:
+Значение текущей формы, используется только в блоках форм. Применяется в следующих сценариях:
 
-- Linkage rules of the current form
-- Default values for form fields (only valid when adding new data)
-- Data scope settings for association fields
-- Assign field values configuration for submit actions
+- Правила связей текущей формы
+- Значения по умолчанию для полей формы (действительно только при добавлении новых данных)
+- Настройки области данных для связанных полей
+- Конфигурация значений полей для действий отправки
 
-#### Linkage rules of the current form
+#### Правила связей текущей формы
 
 ![20240416170732_rec_](https://static-docs.nocobase.com/20240416170732_rec_.gif)
 
-#### Default values for form fields (only valid when adding new data)
+#### Значения по умолчанию для полей формы
 
 ![20240416171129_rec_](https://static-docs.nocobase.com/20240416171129_rec_.gif)
 
-#### Data scope settings for association fields
+#### Настройки области данных для связанных полей
 
-Used to handle linkages between relationships, for example:
+Используется для обработки связей между отношениями:
 
 ![20240416171743_rec_](https://static-docs.nocobase.com/20240416171743_rec_.gif)
 
-#### Assign field values configuration for submit actions
+#### Конфигурация значений полей для действий отправки
 
 ![20240416171215_rec_](https://static-docs.nocobase.com/20240416171215_rec_.gif)
 
-### Current object
+### Текущий объект
 
-Currently only used for field configuration in subforms and subtables of form blocks, representing the value of each item:
+Используется только для настройки полей в подформах и подтаблицах блоков форм, представляет значение каждого элемента:
 
-- Default values for subfields
-- Data scope for sub-association fields
+- Значения по умолчанию для подполей
+- Область данных для связанных подполей
 
-#### Default values for subfields
+#### Значения по умолчанию для подполей
 
 ![20240416172933_rec_](https://static-docs.nocobase.com/20240416172933_rec_.gif)
 
-#### Data scope for sub-association fields
+#### Область данных для связанных подполей
 
 ![20240416173043_rec_](https://static-docs.nocobase.com/20240416173043_rec_.gif)
 
-### Parent object
+### Родительский объект
 
-Similar to the "Current object", it represents the parent object of the current object. Supported in NocoBase v1.3.34-beta and above.
+Аналогично "Текущему объекту", представляет родительский объект текущего объекта. Поддерживается в NocoBase v1.3.34-beta и выше.
 
-### Current record
+### Текущая запись
 
-A record refers to a row in a collection, with each row representing a record. The "Current record" variable is used in the "Row Action Linkage Rules" of display blocks.
+Запись представляет собой строку в коллекции. Переменная "Текущая запись" используется в "Правилах связей действий строки" блоков отображения.
 
-#### Row Action Linkage Rules
+#### Правила связей действий строки
 
 ![20240416174813_rec_](https://static-docs.nocobase.com/20240416174813_rec_.gif)
 
-### Current popup record
+### Текущая запись всплывающего окна
 
-Popup actions play a very important role in the NocoBase interface configuration.
+Всплывающие действия играют важную роль в конфигурации интерфейса NocoBase.
 
-- Row action popup: Each popup has a "Current popup record" variable, representing the current row record.
-- Association field popup: Each popup has a "Current popup record" variable, representing the clicked relationship record.
+- Всплывающее окно действия строки: каждое окно имеет переменную "Текущая запись всплывающего окна", представляющую текущую запись строки.
+- Всплывающее окно связанного поля: каждое окно имеет переменную "Текущая запись всплывающего окна", представляющую запись выбранного отношения.
 
-The blocks in the popup can use the "Current popup record" variable, with the following use cases:
+Блоки во всплывающем окне могут использовать переменную "Текущая запись всплывающего окна" в следующих сценариях:
 
-- Configuring data scope for blocks
-- Configuring data scope for association fields
-- Configuring default values for fields (form for adding data)
-- Configuring linkage rules for actions
-- Assign field values configuration for form submit actions
+- Настройка области данных для блоков
+- Настройка области данных для связанных полей
+- Настройка значений по умолчанию для полей (форма добавления данных)
+- Настройка правил связей для действий
+- Конфигурация значений полей для действий отправки формы
 
-#### Configuring data scope for blocks
+#### Настройка области данных для блоков
 
 ![20240416224307_rec_](https://static-docs.nocobase.com/20240416224307_rec_.gif)
 
-#### Configuring data scope for association fields
+#### Настройка области данных для связанных полей
 
 ![20240416224641_rec_](https://static-docs.nocobase.com/20240416224641_rec_.gif)
 
-#### Configuring default values for fields (form for adding data)
+#### Настройка значений по умолчанию для полей
 
 ![20240416223846_rec_](https://static-docs.nocobase.com/20240416223846_rec_.gif)
 
-#### Configuring linkage rules for actions
+#### Настройка правил связей для действий
 
 ![20240416223101_rec_](https://static-docs.nocobase.com/20240416223101_rec_.gif)
 
-#### Assign field values configuration for form submit actions
+#### Конфигурация значений полей для действий отправки формы
 
 ![20240416224014_rec_](https://static-docs.nocobase.com/20240416224014_rec_.gif)
 
-### Table Select Record
+### Выбранная запись таблицы
 
-Default values for form fields that are currently only used for the Add record action for a table block
+Значения по умолчанию для полей формы, используемые только для действия "Добавить запись" в блоке таблицы.
 
-#### The default value of the form field for the Add record action
+#### Значение по умолчанию поля формы для действия "Добавить запись"
 
-### Parent record (Deprecated)
+### Родительская запись (устарело)
 
-Only used in association blocks, representing the source record of the association data.
+Используется только в блоках связей, представляет исходную запись связанных данных.
 
 :::warning
-"Parent record" is deprecated, it is recommended to use the equivalent "Current popup record" instead.
+"Родительская запись" устарела, рекомендуется использовать "Текущую запись всплывающего окна".
 :::
 
-### Date variables
+### Переменные даты
 
-Related variables include:
+Доступные переменные:
 
-- Current time
-- Yesterday
-- Today
-- Tomorrow
-- Last week
-- This week
-- Next week
-- Last month
-- This month
-- Next month
-- Last quarter
-- This quarter
-- Next quarter
-- Last year
-- This year
-- Next year
-- Last 7 days
-- Next 7 days
-- Last 30 days
-- Next 30 days
-- Last 90 days
-- Next 90 days
+- Текущее время
+- Вчера
+- Сегодня
+- Завтра
+- Прошлая неделя
+- Текущая неделя
+- Следующая неделя
+- Прошлый месяц
+- Текущий месяц
+- Следующий месяц
+- Прошлый квартал
+- Текущий квартал
+- Следующий квартал
+- Прошлый год
+- Текущий год
+- Следующий год
+- Последние 7 дней
+- Следующие 7 дней
+- Последние 30 дней
+- Следующие 30 дней
+- Последние 90 дней
+- Следующие 90 дней
 
 <br />
 
 :::warning
-Except for the Current time which is a moment (string), other date variables are time periods (arrays). Currently, time periods can only be used in data scope and cannot be used in field default values.
+Кроме "Текущего времени", которое является моментом (строка), остальные переменные даты представляют периоды (массивы). В настоящее время периоды могут использоваться только в области данных и не могут применяться для значений по умолчанию полей.
 :::
 
-Related use cases include:
+Примеры использования:
 
-- Date field condition settings for block data scope
-- Date field condition settings for association field data scopes
-- Date field condition settings for action linkage rules
-- Date field default value settings
+- Настройка условий для полей даты в области данных блока
+- Настройка условий для полей даты в области данных связанных полей
+- Настройка условий для полей даты в правилах связей действий
+- Настройка значений по умолчанию для полей даты
 
-### URL search params
+### Параметры URL
 
-This variable represents the search parameters in the current page URL. This variable is only available when there is a query string in the page URL. It is more convenient to use it together with [Link](/handbook/ui/actions/types/link).
+Эта переменная представляет параметры поиска в URL текущей страницы. Доступна только при наличии строки запроса в URL страницы. Удобно использовать вместе с [Ссылкой](/handbook/ui/actions/types/link).
 
 ![20240603200410](https://static-docs.nocobase.com/20240603200410.gif)
 
-### API token
+### API токен
 
-This variable's value is a string that serves as a credential for accessing the NocoBase API. It can be used to authenticate the user's identity.
+Значение этой переменной представляет собой строку, которая служит учетными данными для доступа к API NocoBase. Может использоваться для аутентификации пользователя.
