@@ -1,29 +1,31 @@
-# Assign Field Values
+### **Назначение значений полей**
 
-## Introduction
+#### **Введение**
 
-Field values assignment allows you to preset values for fields before executing operations. This feature ensures that data is automatically populated when updating or creating records, eliminating the need for manual input. Common scenarios include bulk updating order statuses or automatically setting the delivery time to the current time when an order is delivered.
+Назначение значений полей позволяет предварительно задать значения для полей до выполнения операций. Эта функция обеспечивает автоматическое заполнение данных при создании или обновлении записей, устраняя необходимость ручного ввода. Типичные сценарии использования включают массовое обновление статусов заказов или автоматическую установку времени доставки на текущее время при подтверждении доставки заказа.
 
 ![20240413103137](https://static-docs.nocobase.com/20240413103137.png)
 
 ![20240413215221](https://static-docs.nocobase.com/20240413215221.png)
 
-## Usage Instructions
+#### **Инструкция по использованию**
 
-### Configuring Fields
+##### **Настройка полей**
 
-Only fields within the current table can be configured.
+Настраивать можно только поля из текущей таблицы.
 
 ![20240413103207](https://static-docs.nocobase.com/20240413103207.png)
 
-### Constants
+##### **Константы**
+
+Можно задать фиксированные значения (константы) для назначения.
 
 ![20240426153323](https://static-docs.nocobase.com/20240426153323.png)
 
-### Variables
+##### **Переменные**
 
-Different field types support various variable types, offering flexibility depending on the data you're working with.
+Разные типы полей поддерживают различные типы переменных, что обеспечивает гибкость в зависимости от используемых данных.
 
 ![20240426153534](https://static-docs.nocobase.com/20240426153534.png)
 
-For more information on variables, refer to the [Variables](/handbook/ui/variables) section.
+Более подробную информацию о переменных см. в разделе [Переменные](/handbook/ui/variables).
