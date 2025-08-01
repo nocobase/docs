@@ -1,31 +1,31 @@
 # Tencent COS
 
-The storage engine based on Tencent Cloud COS, you need to prepare relevant accounts and permissions in advance.
+Хранилище на основе Tencent Cloud COS. Перед использованием необходимо подготовить соответствующие учетные записи и права доступа.
 
-## Options
+## Настройки
 
-![Example of Tencent COS options](https://static-docs.nocobase.com/20240712222125.png)
+![Пример настроек Tencent COS](https://static-docs.nocobase.com/20240712222125.png)
 
-:::info{title=Hint}
-This section only covers the specific options for the Tencent Cloud COS storage engine. For common parameters, please refer to [Common Engine Parameters](./index.md#common-engine-parameters).
+:::info{title="Подсказка"}
+В этом разделе описаны только специфичные параметры для Tencent COS. Общие параметры смотрите в разделе [Общие параметры хранилищ](./index.md#common-engine-parameters).
 :::
 
-### Region
+### Регион
 
-Fill in the region of the COS storage, for example: `ap-chengdu`.
+Укажите регион хранилища COS, например: `ap-chengdu`.
 
-:::info{title=Hint}
-You can view the region information of the storage bucket in the [Tencent Cloud COS Console](https://console.cloud.tencent.com/cos), and only need to take the prefix part of the region (without the complete domain name).
+:::info{title="Подсказка"}
+Регион можно посмотреть в [консоли Tencent COS](https://console.cloud.tencent.com/cos) - указывается только префикс (без полного доменного имени).
 :::
 
 ### SecretId
 
-Fill in the ID of the Tencent Cloud authorized access key.
+Идентификатор ключа доступа Tencent Cloud.
 
 ### SecretKey
 
-Fill in the secret of the Tencent Cloud authorized access key.
+Секретный ключ доступа Tencent Cloud.
 
 ### Bucket
 
-Fill in the name of the COS bucket, for example: `qing-cdn-1234189398`.
+Название бакета COS, например: `qing-cdn-1234189398`.
