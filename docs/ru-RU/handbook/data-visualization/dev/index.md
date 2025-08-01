@@ -1,12 +1,12 @@
-# Extend Chart Types
+# Расширение типов диаграмм
 
-## Overview
+## Обзор
 
-NocoBase uses [Ant Design Charts](https://g2plot.antv.antgroup.com/) as the default chart library, which includes commonly used chart types. Besides the built-in chart types, NocoBase also supports integrating other chart types or libraries, such as ECharts. This section primarily explains how to extend a new chart type.
+NocoBase использует [Ant Design Charts](https://g2plot.antv.antgroup.com/) в качестве стандартной библиотеки диаграмм, которая включает наиболее распространенные типы визуализаций. Помимо встроенных типов, система поддерживает интеграцию других библиотек, таких как ECharts. В этом разделе объясняется, как расширить функционал новыми типами диаграмм.
 
-## Defining a Chart
+## Определение диаграммы
 
-In the visualization plugin, each chart type is defined using a class that must implement the [ChartType](#charttype) interface. To simplify development, we provide a [Chart](#chart) base class, which partially implements the `ChartType` interface. In most cases, to extend a chart type, you only need to inherit from the `Chart` class and implement the required methods.
+Каждый тип диаграммы определяется классом, реализующим интерфейс [ChartType](#charttype). Для упрощения разработки предоставляется базовый класс [Chart](#chart), который частично реализует этот интерфейс.
 
 ```ts
 class CustomChart extends Chart {
@@ -34,38 +34,33 @@ class CustomChart extends Chart {
 }
 ```
 
-### Chart Information
+### Информация о диаграмме
 
-The basic information for a chart type includes:
+Основные параметры:
 
-| Parameter   | Description           |
-| ----------- | --------------------- |
-| `name`      | Identifier            |
-| `title`     | Display title         |
-| `Component` | Component used to render the chart |
-| `config`    | Basic visualization configuration form |
+| Параметр    | Описание                |
+|------------|-------------------------|
+| `name`     | Уникальный идентификатор |
+| `title`    | Отображаемое название   |
+| `Component`| Компонент для рендеринга |
+| `config`   | Базовая форма конфигурации |
 
 <img src="https://static-docs.nocobase.com/202404192352571.png"/>
 
-Example:
+Пример:
 
 ```ts
 new CustomChart({
   name: 'custom',
-  title: 'Custom Chart',
+  title: 'Пользовательская диаграмма',
   Component: CustomChart,
   config: ['xField', 'yField', 'seriesField'],
 });
 ```
 
-Refer to [Chart](#chart) for specific usage.
+### Инициализация конфигурации
 
-### Initializing Chart Configuration
-
-When a user selects a chart, we may want to initialize the chart configuration based on the user’s data query settings to reduce manual configuration.  
-Each time a chart is selected, the plugin internally calls the `init()` method of the chart class, passing all the field configurations from the current data table, as well as the current measures and dimensions configuration. The `init()` method can then initialize the chart configuration based on the parameters.  
-The `Chart` class includes an `infer()` method, which can be used to easily infer the initial x-axis, y-axis, and category fields configuration.  
-Example:
+При выборе диаграммы система автоматически инициализирует настройки на основе данных:
 
 ```ts
 init(
@@ -86,11 +81,9 @@ init(
 }
 ```
 
-### Retrieving Chart Component Properties
+### Получение свойств компонента
 
-After obtaining the user’s chart configuration, we may need to further process the data before passing it as properties to the chart component. The `getProps()` method accepts chart data, chart configuration, and related field information as parameters, processes them, and returns the final properties passed to the chart component.
-
-For example, in a “statistics” chart:
+Метод `getProps()` обрабатывает данные перед передачей в компонент:
 
 ```ts
 getProps({ data, fieldProps, general, advanced }: RenderProps) {
@@ -106,9 +99,7 @@ getProps({ data, fieldProps, general, advanced }: RenderProps) {
 }
 ```
 
-### Retrieving Chart Component References
-
-The `getReference()` method retrieves reference documentation for the current chart type.
+### Справочная информация
 
 ```ts
 getReference() {
@@ -119,13 +110,9 @@ getReference() {
 }
 ```
 
-## Adding a Chart
+## Добавление диаграммы
 
-After defining the chart class, we need to add the class instance to the data visualization plugin. When selecting charts, they are grouped for display, with the default group being "Built-in".
-
-<img src="https://static-docs.nocobase.com/202404201042045.png"/>
-
-We can add a group of charts or add charts to an existing group.
+После создания класса диаграммы его нужно зарегистрировать в плагине визуализации данных. Диаграммы группируются для удобства навигации.
 
 ```typescript
 import DataVisualization from '@nocobase/plugin-data-visualization'
@@ -134,39 +121,26 @@ class CustomChartsPlugin extends Plugin {
   async load() {
     const plugin = this.app.pm.get(DataVisualization);
 
-    // Add a group of charts
+    // Добавление группы
     plugin.charts.addGroup('custom', [...]);
 
-    // Set a group of charts,
-    // can be used for overriding an exist group
+    // Переопределение группы
     plugin.charts.setGroup('custom', [...]);
 
-    // Append a chart to an exist group
-    // The name of the chart is required to be unique in a group
+    // Добавление в существующую группу
     plugin.charts.add('Built-in', new CustomChart({
       // ...
     }));
   }
 }
 ```
-
-Refer to [ChartGroup](#chartgroup) for more details
-
-## Examples
-
-- [src/client/chart/g2plot](https://github.com/nocobase/nocobase/tree/main/packages/plugins/%40nocobase/plugin-data-visualization/src/client/chart/g2plot)
-
-- [src/client/chart/antd](https://github.com/nocobase/nocobase/tree/main/packages/plugins/%40nocobase/plugin-data-visualization/src/client/chart/antd)
-
-- [ECharts Integration Example](../step-by-step/index.md)
-
 ## API
 
 ### ChartGroup
 
 #### `addGroup()`
 
-Add a group of charts.
+Добавляет группу диаграмм.
 
 ```typescript
 import DataVisualization from '@nocobase/plugin-data-visualization'
@@ -175,9 +149,9 @@ class CustomChartsPlugin extends Plugin {
   async load() {
     const plugin = this.app.pm.get(DataVisualization);
 
-    // Add a group of charts
+    // Добавить группу диаграмм
     plugin.charts.addGroup('custom', {
-      title: 'Custom',
+      title: 'Пользовательская',
       charts: [...],
       sort: 1
     });
@@ -185,11 +159,11 @@ class CustomChartsPlugin extends Plugin {
 }
 ```
 
-**Signature**
+**Сигнатура**
 
 - `addGroup(name: string, charts: ChartType[])`
 
-**Types**
+**Типы**
 
 ```ts
 interface Group {
@@ -199,17 +173,17 @@ interface Group {
 }
 ```
 
-**Details**
+**Описание параметров**
 
-| Parameter | Type          | Description             |
-| --------- | ------------- | ----------------------- |
-| `name`    | `string`      | Grouped Chart Title     |
-| `charts`  | `ChartType[]` | Array of charts         |
-| `sort`    | `number`      | Optional, Grouped Chart Sorting|
+| Параметр   | Тип           | Описание                                |
+|-----------|---------------|------------------------------------------|
+| `name`    | `string`      | Уникальное имя группы диаграмм           |
+| `charts`  | `ChartType[]` | Массив диаграмм                          |
+| `sort`    | `number`      | Необязательно. Порядок сортировки группы |
 
 #### `add()`
 
-Add a chart to an existing group.
+Добавляет диаграмму в существующую группу.
 
 ```typescript
 import DataVisualization from '@nocobase/plugin-data-visualization';
@@ -219,7 +193,7 @@ class CustomChartsPlugin extends Plugin {
     const plugin = this.app.pm.get(DataVisualization);
 
     plugin.charts.add(
-      'Built-in',
+      'Встроенные',
       new CustomChart({
         // ...
       }),
@@ -228,28 +202,28 @@ class CustomChartsPlugin extends Plugin {
 }
 ```
 
-**Signature**
+**Сигнатура**
 
 - `add(group: string, chart: ChartType)`
 
-**Details**
+**Описание параметров**
 
-| Parameter  | Type        | Description             |
-| ---------- | ----------- | ----------------------- |
-| `group`    | `string`    | Unique identifier for the chart group |
-| `chart`    | `ChartType` | Chart to add            |
+| Параметр   | Тип           | Описание                                |
+|-----------|---------------|------------------------------------------|
+| `group`   | `string`      | Уникальный идентификатор группы диаграмм |
+| `chart`   | `ChartType`   | Добавляемая диаграмма                    |
 
-### Chart
+### Диаграмма (Chart)
 
 #### `constructor()`
 
-Constructor to create a new `Chart` instance.
+Конструктор для создания нового экземпляра `Chart`.
 
-**Signature**
+**Сигнатура**
 
 - `constructor({ name, title, Component, config }: ChartProps)`
 
-**Types**
+**Типы**
 
 ```ts
 export type ChartProps = {
@@ -275,20 +249,20 @@ export type ConfigType =
 export type Config = string | ConfigType;
 ```
 
-**Details**
+**Описание свойств**
 
-| Property    | Type                  | Description                       |
-| ----------- | --------------------- | --------------------------------- |
-| `name`      | `string`              | Unique identifier for the chart   |
-| `title`     | `string`              | Display title of the chart        |
-| `Component` | `React.FC<any>`       | Component used to render the chart |
-| `config`    | [`Config[]`](#config) | Optional. Visualization configuration form |
+| Свойство     | Тип                    | Описание                                                |
+|-------------|------------------------|----------------------------------------------------------|
+| `name`      | `string`               | Уникальный идентификатор диаграммы                       |
+| `title`     | `string`               | Отображаемое название диаграммы                          |
+| `Component` | `React.FC<any>`        | Компонент, используемый для отображения диаграммы        |
+| `config`    | [`Config[]`](#config)  | Необязательно. Форма конфигурации визуализации           |
 
 ##### Config
 
-The `config` supports multiple formats, which can be used in combination:
+Поле `config` поддерживает несколько форматов, которые можно комбинировать:
 
-1. UI Schema field configuration. If you want to use fields already configured in the "Data Configuration" section within the UI Schema, you can use `x-reactions': '{{ useChartFields }}'`.
+1. Конфигурация поля по UI Schema. Если вы хотите использовать поля, уже настроенные в разделе «Настройка данных», внутри UI Schema, используйте `'x-reactions': '{{ useChartFields }}'`.
 
 ```ts
 {
@@ -303,14 +277,14 @@ The `config` supports multiple formats, which can be used in combination:
 }
 ```
 
-2. Using predefined UI Schema.
+2. Использование предопределённой конфигурации UI Schema.
 
-For example, `config: ['field']` corresponds to:
+Например, `config: ['field']` соответствует:
 
 ```typescript
 {
   field: {
-    title: 'Field',
+    title: 'Поле',
     type: 'string',
     'x-decorator': 'FormItem',
     'x-component': 'Select',
@@ -320,7 +294,7 @@ For example, `config: ['field']` corresponds to:
 }
 ```
 
-3. Using predefined UI Schema with some properties replaced, where `property` refers to the predefined UI Schema identifier.
+3. Использование предопределённой конфигурации UI Schema с заменой некоторых свойств, где `property` — это идентификатор предопределённой схемы.
 
 ```typescript
 config: [
@@ -333,7 +307,7 @@ config: [
 ];
 ```
 
-This corresponds to:
+Это соответствует:
 
 ```typescript
 {
@@ -349,15 +323,12 @@ This corresponds to:
 }
 ```
 
-You can find all predefined UI Schema options in the <a href="https://github.com/nocobase/nocobase/blob/main/packages/plugins/%40nocobase/plugin-data-visualization/src/client/chart/configs.ts" target="_blank">`/src/client/chart/config.ts`</a> file.  
-Additionally, you can add new predefined UI Schema options using the [`addConfigs()`](#addconfigs) method.
-
 #### `addConfigTypes()`
 
-Adds predefined UI Schema for the chart's visualization configuration form.
+Добавляет предопределённые UI-схемы для формы визуальной настройки диаграммы.
 
 ```ts
-// Add
+// Добавление
 const boolean = ({ name, title, defaultValue = false }: FieldConfigProps) => {
   return {
     [name]: {
@@ -371,25 +342,25 @@ const boolean = ({ name, title, defaultValue = false }: FieldConfigProps) => {
 };
 chart.addConfigTypes({ booleanField });
 
-// Usage
+// Использование
 new Chart({
   config: [
     'boolean',
     {
       configType: 'boolean',
       name: 'customBooleanField',
-      title: 'Custom Boolean Field',
+      title: 'Пользовательское булево поле',
       defaultValue: true,
     },
   ],
 });
 ```
 
-**Signature**
+**Сигнатура**
 
 - `addConfigTypes(configs: { [key: string]: ConfigType })`
 
-**Types**
+**Типы**
 
 ```ts
 export type ConfigType =
@@ -398,15 +369,17 @@ export type ConfigType =
   | AnySchemaProperties;
 ```
 
-**Details**
+**Описание**
 
-`addConfigTypes()` accepts an object, where the `key` is the unique identifier of the configuration, and the value is a method that retrieves a predefined UI Schema. This method takes parameters that can be replaced and returns the corresponding UI Schema field configuration.
+Метод `addConfigTypes()` принимает объект, где `ключ` — это уникальный идентификатор конфигурации, а значение — функция, возвращающая предопределённую UI-схему. Эта функция принимает параметры (например, название, значение по умолчанию), которые можно переопределить, и возвращает соответствующую конфигурацию поля UI-схемы.
+
+---
 
 #### `init()`
 
-This function initializes the chart configuration when a chart is selected. It defines the initial settings for the chart’s properties.
+Эта функция инициализирует конфигурацию диаграммы при её выборе. Она определяет начальные настройки свойств диаграммы.
 
-**Signature**
+**Сигнатура**
 
 ```ts
 init?: (
@@ -421,7 +394,7 @@ init?: (
 };
 ```
 
-**Types**
+**Типы**
 
 ```ts
 export type FieldOption = {
@@ -450,20 +423,22 @@ export type DimensionProps = {
 };
 ```
 
-**Details**
+**Описание параметров**
 
-| Parameter            | Type              | Description                                      |
-| -------------------- | ----------------- | ------------------------------------------------ |
-| `fields`             | `FieldOption[]`   | Contains key attributes of the fields in the current data table. |
-| `query.measures`     | `MeasureProps[]`  | Configuration details for the measure fields.    |
-| `query.dimensions`   | `DimensionProps[]`| Configuration details for the dimension fields.  |
+| Параметр             | Тип               | Описание                                                  |
+|----------------------|-------------------|-----------------------------------------------------------|
+| `fields`             | `FieldOption[]`   | Содержит ключевые атрибуты полей текущей таблицы данных.   |
+| `query.measures`     | `MeasureProps[]`  | Конфигурация полей-показателей.                           |
+| `query.dimensions`   | `DimensionProps[]`| Конфигурация полей-измерений.                             |
+
+---
 
 #### `infer()`
 
-Deriving the Initial Configuration of Charts.
+Автоматическое определение начальной конфигурации диаграммы на основе доступных полей.
 
 ```ts
-// Example for a pie chart
+// Пример для круговой диаграммы
 init(fields, { measures, dimensions }) {
   const { xField, yField } = this.infer(fields, { measures, dimensions });
   return {
@@ -475,7 +450,7 @@ init(fields, { measures, dimensions }) {
 };
 ```
 
-**Signature**
+**Сигнатура**
 
 ```ts
 infer: (fields: FieldOption[], query: {
@@ -490,25 +465,27 @@ infer: (fields: FieldOption[], query: {
 }
 ```
 
-**Details**
+**Описание свойств**
 
-| Property       | Type            | Description       |
-| -------------- | --------------- | ----------------- |
-| `xField`       | `FieldOption`   | The field to be used on the x-axis. |
-| `yField`       | `FieldOption`   | The field to be used on the y-axis. |
-| `seriesField`  | `FieldOption`   | The field representing categories or series. |
-| `colorField`   | `FieldOption`   | The field used to define the color in the chart. |
-| `yFields`      | `FieldOption[]` | Multiple fields for the y-axis (used in complex charts). |
+| Свойство        | Тип               | Описание                                                   |
+|-----------------|-------------------|------------------------------------------------------------|
+| `xField`        | `FieldOption`     | Поле, используемое по оси X.                               |
+| `yField`        | `FieldOption`     | Поле, используемое по оси Y.                               |
+| `seriesField`   | `FieldOption`     | Поле, представляющее категории или серии данных.          |
+| `colorField`    | `FieldOption`     | Поле, определяющее цветовую гамму диаграммы.               |
+| `yFields`       | `FieldOption[]`   | Несколько полей по оси Y (используется в сложных диаграммах). |
+
+---
 
 #### `getProps()`
 
-This function processes the raw chart data and chart configuration metadata and transforms them into properties required by the rendering component.
+Эта функция обрабатывает исходные данные диаграммы и метаданные конфигурации и преобразует их в свойства, необходимые для компонента отрисовки.
 
-**signature**
+**Сигнатура**
 
 - `getProps({ data, general, advanced, fieldProps }: RenderProps)`
 
-**Types**
+**Типы**
 
 ```ts
 export type RenderProps = {
@@ -525,24 +502,25 @@ export type RenderProps = {
 };
 ```
 
-| Property       | Type                              | Description                             |
-| -------------- | --------------------------------- | --------------------------------------- |
-| `data`         | `Record<string, any>[]`           | The raw data to be displayed in the chart. |
-| `general`      | `any`                             | The configuration options from the chart’s visualization form. |
-| `advanced`     | `any`                             | The advanced JSON-based configuration for the chart. |
-| `fieldProps`   | `{ [field: string]: FieldProps }` | Metadata about the fields from the data table, used for display purposes. |
+| Свойство         | Тип                                   | Описание                                                  |
+|------------------|---------------------------------------|-----------------------------------------------------------|
+| `data`           | `Record<string, any>[]`               | Исходные данные, отображаемые на диаграмме.               |
+| `general`        | `any`                                 | Общие параметры конфигурации из формы визуализации.        |
+| `advanced`       | `any`                                 | Расширенная JSON-конфигурация диаграммы.                  |
+| `fieldProps`     | `{ [field: string]: FieldProps }`     | Метаданные полей таблицы, используемые для отображения.   |
 
 ##### FieldProps
 
-| Property       | Type          | Description             |
-| -------------- | ------------- | ----------------------- |
-| `label`        | `string`      | The label displayed for the field. |
-| `transformer`  | `Transformer` | A function for transforming field values. |
-| `interface`    | `string`      | The interface type of the field. |
+| Свойство         | Тип             | Описание                                                  |
+|------------------|-----------------|-----------------------------------------------------------|
+| `label`          | `string`        | Отображаемое название поля.                               |
+| `transformer`    | `Transformer`   | Функция преобразования значений поля.                     |
+| `interface`      | `string`        | Тип интерфейса поля (например, текст, дата, число и т.д.). |
+_____________________________________________________________________
 
 #### `getReference()`
 
-Retrieves reference documentation for the chart component, including the title and a direct link to the documentation.
+Получает справочную документацию для компонента диаграммы, включая название и прямую ссылку на документацию.
 
 ```ts
 getReference() {
@@ -553,7 +531,7 @@ getReference() {
 }
 ```
 
-**Signature**
+**Сигнатура**
 
 ```ts
 getReference?: () => {
@@ -562,29 +540,29 @@ getReference?: () => {
 };
 ```
 
-### ChartType
+### ChartType (Тип диаграммы)
 
 #### `name`
 
-- `string`. Identifier for the chart type.
+- `string`. Уникальный идентификатор типа диаграммы.
 
 #### `title`
 
-- `string`. The display title of the chart.
+- `string`. Отображаемое название диаграммы.
 
 #### `Component`
 
-- `React.FC<any>`. The React component used to render the chart.
+- `React.FC<any>`. React-компонент, используемый для отображения диаграммы.
 
 #### `schema`
 
-- `ISchema`. The UI Schema for the chart’s visualization configuration.
+- `ISchema`. UI-схема для конфигурации визуализации диаграммы.
 
 #### `init()`
 
-This function initializes the chart configuration.
+Функция инициализации конфигурации диаграммы.
 
-**Signature**
+**Сигнатура**
 
 ```ts
 init?: (
@@ -601,17 +579,17 @@ init?: (
 
 #### `getProps()`
 
-Handles the processing and retrieval of properties for the chart component.
+Обрабатывает и возвращает свойства для компонента диаграммы.
 
-**Signature**
+**Сигнатура**
 
 - `getProps(props: RenderProps): any`
 
 #### `getReference()`
 
-Retrieves reference documentation for the chart component.
+Получает справочную документацию для компонента диаграммы.
 
-**Signature**
+**Сигнатура**
 
 ```ts
 getReference?: () => {
