@@ -1,57 +1,56 @@
-# Overview
+# Обзор
 
-## Built-in Engines
+## Встроенные хранилища
 
-Currently, NocoBase supports the following built-in engine types:
+В настоящее время NocoBase поддерживает следующие типы встроенных хранилищ:
 
-- [Local Storage](./local.md)
+- [Локальное хранилище](./local.md)
 - [Amazon S3](./amazon-s3.md)
 - [Alibaba Cloud OSS](./aliyun-oss.md)
 - [Tencent Cloud COS](./tencent-cos.md)
 
-A local storage engine is automatically added during system installation and can be used directly. New engines can also be added or existing engine parameters can be edited.
+При установке системы автоматически добавляется локальное хранилище, которое можно использовать сразу. Вы можете добавить новые хранилища или изменить параметры существующих.
 
-## Common Engine Parameters
+## Общие параметры хранилищ
 
-In addition to specific parameters for different engine categories, the following are common parameters:
+Помимо специфических параметров для каждого типа хранилища, существуют также общие параметры:
 
-### Title
+### Название
 
-The name of the storage engine for human recognition.
+Имя хранилища, предназначенное для восприятия человеком.
 
-### System Name
+### Системное имя
 
-The system name of the storage engine for system identifying. It must be unique in system-wide. If not provided, it will be generate randomly.
+Системное имя хранилища, используемое для идентификации в системе. Должно быть уникальным в масштабах всей системы. Если не указано, генерируется случайным образом.
 
-### Access base URL
+### Базовый URL доступа
 
-The prefix part of the URL address accessible to the file externally, which can be the access URL base of a CDN, for example: "`https://cdn.nocobase.com/app`" (without the trailing "`/`").
+Префикс URL-адреса, по которому файл будет доступен извне. Может быть, например, базовым URL CDN: `https://cdn.nocobase.com/app` (без завершающего символа `/`).
 
-### Path
+### Путь
 
-The relative path used when storing files. This part will also be automatically concatenated to the final URL when accessed. For example: "`user/avatar`" (without the leading or trailing "`/`").
+Относительный путь, используемый при сохранении файлов. Эта часть автоматически добавляется к итоговому URL при обращении к файлу. Например: `user/avatar` (без начального и конечного символа `/`).
 
-### File Size Limit
+### Ограничение размера файла
 
-The size limit for uploading files to this storage engine. Files larger than this setting will not be uploaded. The system maximum limit is 1GB.
+Максимальный размер файла, который можно загрузить в это хранилище. Файлы большего размера загружены не будут. Максимальное ограничение в системе — 1 ГБ.
 
-### Default Storage Engine
+### Хранилище по умолчанию
 
-When checked, it is set as the default storage engine for the system. Files uploaded in attachment fields or file collections without specifying a storage engine will be saved to the default storage engine. The default storage engine cannot be deleted.
+Если установлено, это хранилище становится хранилищем по умолчанию для всей системы. Файлы, загружаемые в поля вложений или коллекции файлов без указания конкретного хранилища, будут сохраняться именно в это хранилище. Хранилище по умолчанию нельзя удалить.
 
-### Keep Files When Destroying Records
+### Сохранять файлы при удалении записей
 
-When checked, uploaded files in the storage engine will be retained even when the data records in attachment fields or file collections are deleted. By default, files in the storage engine are deleted when records are deleted.
+Если установлено, загруженные файлы останутся в хранилище даже после удаления соответствующих записей в полях вложений или коллекциях файлов. По умолчанию файлы удаляются вместе с записями.
 
-See local storage as an example:
+Пример настройки локального хранилища:
 
-![Example of File Storage Engine Configuration](https://static-docs.nocobase.com/20240529115151.png)
+![Пример настройки движка хранилища файлов](https://static-docs.nocobase.com/20240529115151.png)
 
-:::info{title=Note}
-After file upload, the final access path is composed of several parts:
+:::info{title=Примечание}
+После загрузки файла итоговый путь доступа формируется из нескольких частей:
 
 ```
-<Base URL>/<Path>/<FileName><Extension>
+<Базовый URL>/<Путь>/<ИмяФайла><Расширение>
 ```
-For example: `https://cdn.nocobase.com/app/user/avatar/20240529115151.png`.
-:::
+Например: `https://cdn.nocobase.com/app/user/avatar/20240529115151.png`.
