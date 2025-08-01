@@ -1,13 +1,13 @@
-# Dual-Axis Chart
+# Двухосевая диаграмма (Dual-Axis Chart)
 
-## Data Configuration
+## Настройка данных
 
-### 2 metrics, 1 dimension
+### 2 метрики, 1 измерение
 
 ![](https://static-docs.nocobase.com/202410101132724.png)
 
-#### Configuration Options
+#### Параметры конфигурации
 
-| Option  | Description                                              |
-| ------- | -------------------------------------------------------- |
-| Size    | Sets the chart size, either with a fixed aspect ratio or a fixed height |
+| Параметр | Описание                                                |
+|----------|---------------------------------------------------------|
+| Размер   | Установка размера диаграммы (фиксированные пропорции или высота) |
