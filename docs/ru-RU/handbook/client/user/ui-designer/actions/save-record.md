@@ -1,14 +1,14 @@
-# Save Record
+# Сохранить запись
 
-Custom Save Record operations are unique to form blocks, supporting the customization of the operation's behavior:
+Пользовательские операции сохранения записи уникальны для блоков форм и позволяют настраивать поведение операции:
 
-- Edit Button
-- Assign Field Values: Upon clicking the custom button, the current data field assignments are saved.
-- Skip Required Validation
-- After successful submission
+- Кнопка редактирования
+- Назначение значений полей: При нажатии пользовательской кнопки сохраняются текущие назначения полей данных.
+- Пропустить требуемую проверку
+- После успешной отправки
 
 ![Save Data Configuration](https://static-docs.nocobase.com/2d35b787114dede3a0f08d7431edb37a.png)
 
-- Bind Workflow
+- Привязать рабочий процесс
 
 ![Bind Workflow](https://static-docs.nocobase.com/6d93cd53d45c8408ed78b0289f0f5dae.png)
