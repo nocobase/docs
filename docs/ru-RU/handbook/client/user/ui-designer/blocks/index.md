@@ -1,90 +1,90 @@
-# Block
+# Блок
 
-A block serves as the content container, designed to be placed within a page, modal, or drawer. These blocks can be easily rearranged through drag-and-drop functionality, allowing for flexible layout customization.
+Блок служит контейнером для содержимого и предназначен для размещения на странице, в модальном окне или в боковой панели (drawer). Блоки можно легко переставлять с помощью перетаскивания, что позволяет гибко настраивать макет.
 
-## Adding Blocks
+## Добавление блоков
 
-Blocks can be seamlessly integrated into a page, a modal, or a drawer, depending on the desired application.
+Блоки можно интегрировать в страницу, модальное окно или боковую панель в зависимости от требуемого сценария использования.
 
-### Blocks within Pages
+### Блоки на страницах
 
-Within pages, you can choose from various block types, including Data Blocks, Filter Blocks, and Other Blocks, each serving distinct purposes.
+На страницах доступны различные типы блоков: блоки данных, блоки фильтров и прочие блоки — каждый из которых выполняет определённую функцию.
 
 ![](https://static-docs.nocobase.com/dad0a394d33dd26f31c3202a76bb0153.png)
 
-### Blocks within Modals (Dialogs or Drawers)
+### Блоки в модальных окнах (диалогах или боковых панелях)
 
-Modals, which include dialogs and drawers, also support block integration. While similar to pages, the blocks within modals are typically used for operations related to single records, such as adding, editing, or viewing data. Available block types include Current Data Blocks, Relationship Blocks, and Other Blocks.
+Модальные окна, включающие диалоги и боковые панели, также поддерживают добавление блоков. Хотя они похожи на страницы, блоки в модальных окнах обычно используются для операций с одной записью — например, добавления, редактирования или просмотра данных. Доступные типы блоков: блоки текущих данных, блоки связанных данных и прочие блоки.
 
-#### Drawers
+#### Боковые панели (Drawers)
 
 ![](https://static-docs.nocobase.com/e18726fb0b52ddab89b9b1a44788f361.png)
 
-#### Dialogs
+#### Диалоги
 
 ![](https://static-docs.nocobase.com/4763fc5fc008bdf3915f84a7e433c0f8.png)
 
-## Block Designer
+## Конструктор блоков
 
-Each block features three icons in the upper right corner, offering easy access to essential tools:
+Каждый блок имеет три иконки в правом верхнем углу, которые предоставляют быстрый доступ к основным инструментам:
 
-1. Drag-and-Drop Layout
-2. Quick Add Block
-3. Block Parameter Configuration
+1. Перетаскивание для настройки макета  
+2. Быстрое добавление блока  
+3. Настройка параметров блока  
 
 ![](https://static-docs.nocobase.com/b488f3013532a246df59b89c0688a58f.png)
 
-For simple blocks, all configuration options are centralized under "Block Parameter Configuration," such as in Markdown blocks.
+Для простых блоков все параметры настройки сосредоточены в разделе «Настройка параметров блока», как, например, в блоке Markdown.
 
 ![](https://static-docs.nocobase.com/f37e277863068b2661f66d4020af806a.png)
 
-More complex blocks, especially those dealing with data, provide additional embedded options like "Configure Field" and "Configure Action," offering greater flexibility.
+Более сложные блоки, особенно связанные с данными, предлагают дополнительные встроенные опции, такие как «Настроить поля» и «Настроить действия», что обеспечивает большую гибкость.
 
 ![](https://static-docs.nocobase.com/71b550da637d23145a5f62d48ee8521b.png)
 
-Moreover, you can explore advanced nesting possibilities, as demonstrated by the Chart Block.
+Кроме того, можно использовать расширенные возможности вложенности, как показано на примере блока диаграммы.
 
 ![](https://static-docs.nocobase.com/07588190b3f41ae3060e71d8b76b4447.png)
 
-## Block Layout
+## Макет блоков
 
-To customize the layout, simply drag and drop blocks into your preferred arrangement.
+Для настройки макета просто перетаскивайте блоки в нужное положение.
 
 ![](https://static-docs.nocobase.com/f6692295ac0917f3babce9a60ce80879.gif)
 
-## Block Templates
+## Шаблоны блоков
 
-You can save any data-type block as a template, which allows for quick duplication or referencing in future projects. For example, a form used for both adding and editing data can be saved as a template, streamlining your workflow by reusing it in different contexts.
+Любой блок с данными можно сохранить как шаблон, что позволяет быстро дублировать его или ссылаться на него в будущих проектах. Например, форму, используемую как для добавления, так и для редактирования данных, можно сохранить как шаблон, упростив тем самым рабочий процесс за счёт повторного использования в разных контекстах.
 
-### How to Add and Use Templates
+### Как добавить и использовать шаблоны
 
-1. Save a data block as a block template (note: only data-type blocks have this feature).
+1. Сохраните блок с данными как шаблон блока (обратите внимание: только блоки с данными поддерживают эту функцию).
 
 ![](https://static-docs.nocobase.com/b7718cea8784587d53524ade3c5b0a82.png)
 
-2. When adding a block, select either the duplicate or reference option for the template.
+2. При добавлении блока выберите опцию «Дублировать» или «Ссылка» для шаблона.
 
 ![](https://static-docs.nocobase.com/135df7344e0f3080199e4bb1071c2fa6.png)
 
-### Difference Between Duplicate and Referencing
+### Разница между дублированием и ссылкой
 
-Duplicate template a new block based on the template, with no link to the original template—any changes to the block will not affect the template. Referencing, however, directly links to the template, meaning any changes to the block will alter the template, and all instances where the template is referenced will be updated accordingly.
+**Дублирование** создаёт новый блок на основе шаблона, но не связывает его с оригиналом — любые изменения в новом блоке не повлияют на шаблон. **Ссылка** же напрямую связывает блок с шаблоном: любые изменения в блоке изменят сам шаблон, и все экземпляры, где используется эта ссылка, будут автоматически обновлены.
 
-## Block Types
+## Типы блоков
 
-NocoBase categorizes blocks into four primary types:
+NocoBase разделяет блоки на четыре основные категории:
 
-- **Data Blocks:** Used to display Collection data within the block.
-- **Filter Blocks:** These can be added to pages and are specifically designed for filtering data within Data Blocks.
-- **Relationship Blocks:** These are added to modals and are used for CRUD operations on data related to the current record.
-- **Other Blocks:** These include standalone blocks like Markdown, Audit Log blocks, Workflow To-Do blocks, etc.
+- **Блоки данных**: используются для отображения данных из коллекции внутри блока.
+- **Блоки фильтров**: добавляются на страницы и предназначены для фильтрации данных в блоках данных.
+- **Блоки связей**: добавляются в модальные окна и используются для операций CRUD (создание, чтение, обновление, удаление) над данными, связанными с текущей записью.
+- **Прочие блоки**: включают автономные блоки, такие как Markdown, блок журнала аудита, блок задач рабочего процесса и другие.
 
-### Data Blocks
+### Блоки данных
 
-### Filter Blocks
+### Блоки фильтров
 
-### Relationship Blocks
+### Блоки связей
 
-### Other Blocks
+### Прочие блоки
 
-## Filter Interactions
+## Взаимодействие фильтров
