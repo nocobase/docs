@@ -1,37 +1,37 @@
-# Verification: TOTP Authenticator
+# Аутентификация: TOTP-аутентификатор
 
 <PluginInfo name="verification-totp-authenticator" commercial="true"></PluginInfo>
 
-## Introduction
+## Введение
 
-The TOTP Authenticator allows users to bind any authenticator that complies with the TOTP (Time-based One-Time Password) specification (<a href="https://www.rfc-editor.org/rfc/rfc6238" target="_blank">RFC-6238</a>), and perform identity verification using a time-based one-time password (TOTP).
+TOTP-аутентификатор позволяет пользователям привязывать любые аутентификаторы, соответствующие спецификации TOTP (Time-based One-Time Password, <a href="https://www.rfc-editor.org/rfc/rfc6238" target="_blank">RFC-6238</a>), и выполнять проверку личности с использованием одноразовых паролей на основе времени.
 
-## Administrator Configuration
+## Настройка администратором
 
-Navigate to the Verification Management page.
+1. Перейдите на страницу управления верификацией:
 
 ![](https://static-docs.nocobase.com/202502271726791.png)
 
-Add - TOTP Authenticator
+2. Добавьте новый аутентификатор TOTP:
 
 ![](https://static-docs.nocobase.com/202502271745028.png)
 
-Apart from a unique identifier and title, no additional configuration is required for the TOTP authenticator.
+3. Для TOTP-аутентификатора требуется только уникальный идентификатор и название, дополнительная настройка не нужна:
 
 ![](https://static-docs.nocobase.com/202502271746034.png)
 
-## User Binding
+## Привязка пользователем
 
-After adding the authenticator, users can bind the TOTP authenticator in their personal verification management area.
+После добавления аутентификатора пользователи могут привязать TOTP-аутентификатор в личном кабинете:
 
 ![](https://static-docs.nocobase.com/202502272252324.png)
 
 :::warning
-The plugin does not currently provide a recovery code mechanism. Once the TOTP authenticator is bound, users are advised to keep it secure. If the authenticator is accidentally lost, they can use an alternative verification method to verify their identity, unbind the authenticator, and then rebind it.
+Плагин в настоящее время не предоставляет механизм резервных кодов. После привязки TOTP-аутентификатора пользователям рекомендуется сохранить его в надежном месте. В случае утери аутентификатора можно использовать альтернативный метод верификации для подтверждения личности, отвязать утерянный аутентификатор и привязать новый.
 :::
 
-## User Unbinding
+## Отвязка аутентификатора
 
-Unbinding the authenticator requires verification using the already bound verification method.
+Для отвязки TOTP-аутентификатора требуется подтверждение через уже привязанный метод верификации:
 
 ![](https://static-docs.nocobase.com/202502282103205.png)
