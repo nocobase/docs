@@ -1,128 +1,104 @@
-# Linkage Rules
+# Правила связей
 
-## Introduction
+## Введение
 
-In NocoBase, linkage rules are a mechanism for controlling the interactive behavior of front-end interface elements. It allows users to adjust the display and behavior logic of blocks, fields, and actions based on different conditions, enabling flexible, low-code interactive experiences. This feature is constantly being refined and enhanced.
+В NocoBase правила связей - это механизм управления интерактивным поведением элементов интерфейса. Они позволяют настраивать отображение и логику работы блоков, полей и действий на основе различных условий, обеспечивая гибкий low-code опыт взаимодействия.
 
-By configuring linkage rules, you can achieve the following:
+С помощью правил связей можно:
 
-- Hide/show certain blocks based on the current user role, e.g., the admin can view full information blocks, while regular users can only see basic information blocks.
-- Automatically fill or reset other field values when a form selects a particular option.
-- Disable certain input fields when a form selects a particular option.
-- Dynamically set field background colors, font sizes, font weights, etc., and highlight fields when a condition is met.
-- Control whether actions are visible or clickable based on certain conditions.
+- Скрывать/показывать блоки в зависимости от роли пользователя
+- Автоматически заполнять или сбрасывать значения полей формы
+- Блокировать поля ввода при определенных условиях
+- Динамически настраивать стили полей (цвета, шрифты)
+- Управлять видимостью и доступностью действий
 
-## Condition Configuration
+## Настройка условий
 
 ![20250417214217](https://static-docs.nocobase.com/20250417214217.png)
 
-### Left-side Variables
+### Переменные слева
 
-The left-side variables in a condition are used to define the "object being judged" in the linkage rule, i.e., the condition will evaluate this variable’s value to determine whether the linkage behavior should be triggered.
+Определяют объект оценки в правиле связи. Доступные переменные:
 
-Available variables include:
+- Контекстные: `「Текущая форма/xxx」`, `「Текущая запись/xxx」`
+- Системные: `Текущий пользователь`, `Текущая роль`
 
-- Context variables, such as `「Current Form/xxx」`, `「Current Record/xxx」`, `「Current Popup Record/xxx」`, etc.;
-- System-wide variables, such as `Current User`, `Current Role`, etc., suitable for dynamically controlling based on user identity, permissions, etc.
+> ✅ Доступные переменные зависят от контекста блока
 
-> ✅ The available left-side variables are determined by the context of the block, so choose variables according to business needs:
-> 
-> - `Current User` the information of the currently logged-in user，including data from collection associated with the user;
-> - `Current Form`  the real-time input values in the form;
-> - `Current Record` the saved record values, such as row data in a table.
+### Операторы
 
-### Operators
+Логические операторы для сравнения переменной слева и значения справа. Разные типы переменных поддерживают разные операторы:
 
-Operators are used to set the logical comparison between the left-side variable and the right-side value. Different types of left-side variables support different operators. Common operators include:
+- Текст: `$includes`, `$eq`, `$ne`
+- Числа: `$eq`, `$gt`, `$lt`
+- Булевы: `$isTruly`, `$isFalsy`
+- Массивы: `$match`, `$anyOf`
 
-- **Text type**: `$includes`, `$eq`, `$ne`, `$empty`, `$notEmpty`, etc.
-- **Numeric type**: `$eq`, `$gt`, `$lt`, `$gte`, `$lte`, etc.
-- **Boolean type**: `$isTruly`, `$isFalsy`
-- **Array type**: `$match`, `$anyOf`, `$empty`, `$notEmpty`, etc.
+### Значение справа
 
-> ✅ The system will automatically recommend the available operators based on the type of the left-side variable to ensure logical configuration.
+Используется для сравнения с переменной слева. Может быть:
 
-### Right-side Value
+- Константой
+- Контекстной переменной
+- Системной переменной
 
-The right-side value is used for comparison with the left-side variable, serving as the reference value for determining whether the condition is met.
+## Логика выполнения
 
-Supported content includes:
+### Триггер условия
 
-- Constant values: fixed numeric values, text, dates, etc.;
-- Context variables: other fields from the current form, current records, etc.;
-- System variables: such as the current user, current time, current role, etc.
+Действия выполняются при выполнении условия. Если условие не задано - выполняются по умолчанию.
 
-> ✅ The system will adapt the input component for the right-side value based on the type of the left-side variable, such as:
-> 
-> - If the left-side variable is a “selection field”, a corresponding options selector will be displayed;
-> - If the left-side variable is a “date field”, a date picker will be displayed;
-> - If the left-side variable is a “text field”, a text input box will displayed.
+### Множественные правила
 
-> 💡 By flexibly using the right-side values (especially dynamic variables), you can build linkage logic based on the current user, current data state, and context environment, enabling a richer interactive experience.
+При одновременном выполнении нескольких правил, приоритет имеет последнее.
 
-## Rule Execution Logic
+## Управление правилами
 
-### Condition Trigger
+Для каждого правила доступно:
 
-When the condition in a rule is met (optional), the property modification actions below are automatically executed. If no condition is set, the rule is considered always met, and the property modification will be executed by default.
+- Настройка имени
+- Сортировка
+- Удаление
+- Включение/отключение
+- Копирование
 
-### Multiple Rules
+## О переменных
 
-Multiple linkage rules can be configured for a block, action, or field. When multiple rules are met simultaneously, the system executes them in the order they are defined, with the last rule's result taking precedence. For example, Rule 1 disables a field, and Rule 2 makes it editable. If both conditions are met, the field will become editable according to Rule 2.
+Подробнее о переменных: [Переменные](/handbook/ui/variables)
 
-> The execution order of multiple rules is crucial. Make sure to clarify their priorities and interrelationships to avoid rule conflicts.
+## Правила связей блоков
 
-## Rule Management
+> **Примечание**: Доступно с версии v1.7.0-beta.24
 
-Each rule can be managed with the following options:
+Позволяют динамически управлять видимостью блоков.
 
-- Custom Naming: Set an easy-to-understand name for the rule for better management and recognition.
-- Sorting: Adjust the order of rules based on execution priority to ensure that the system processes them correctly.
-- Deletion: Remove rules that are no longer needed.
-- Enable/Disable: Temporarily disable a rule without deleting it. This is useful for situations where a rule needs to be paused temporarily.
-- Copy Rule: Create new rules by copying existing ones, avoiding redundant configuration.
+👉 Подробнее: [Правила связей блоков](/handbook/ui/blocks/block-settings/block-linkage-rule)
 
-## About Variables
+## Правила связей полей
 
-In field assignment and condition configuration, both constants and variables are supported. The variable list varies depending on the block's location, and choosing and using variables wisely can help meet business requirements more flexibly. For more information about variables, refer to [Variables](/handbook/ui/variables).
+Управляют свойствами полей в формах:
 
-## Block Linkage Rules 
+- Видимость
+- Обязательность
+- Значения
+- Опции
+- Диапазоны дат
 
-> **Note**: This feature **is supported starting from v1.7.0-beta.24 versions**
+👉 Подробнее: [Правила связей полей](/handbook/ui/blocks/block-settings/field-linkage-rule)
 
-Block linkage rules allow dynamic control of block visibility based on system variables (such as the current user or role) or context variables (such as the current popup record). For example, an administrator can view the complete order information, while a customer service role can only view specific order data. Through block linkage rules, the corresponding block can be configured based on the role, with different fields,actions, and data scope set within the block. When the logged-in role matches the target role, the system will display the corresponding block.
+## Правила связей действий
 
-👉 For more details, check: [Block/Block Linkage Rules](/handbook/ui/blocks/block-settings/block-linkage-rule)
+Управляют поведением операций на основе записей и переменных.
 
-## Field Linkage Rules
+👉 Подробнее: [Правила связей действий](/handbook/ui/actions/action-settings/linkage-rule)
 
-Field linkage rules are used to dynamically adjust the properties of fields in a form or detail block. These mainly include:
+## Правила стилей полей
 
-- Control the **visibility** of fields
-- Set fields as **required**
-- **Assign values**
-- Configure the **options** of option fields
-- Limit the **Date scope** for time fields
+Динамическая настройка стилей:
 
-👉 For more details, check: [Block/Field Linkage Rules](/handbook/ui/blocks/block-settings/field-linkage-rule)
+- Цвет
+- Размер шрифта
+- Начертание
+- Выравнивание
 
-## Actions Linkage Rules
-
-Actions linkage rules currently support controlling operation behaviors (e.g., hide/disable) based on current record values and global variables.
-
-👉 For more details, check: [Operation/Linkage Rules](/handbook/ui/actions/action-settings/linkage-rule)
-
-## Field Style Linkage Rules
-
-Field style linkage rules allow dynamically setting field style properties based on conditions, mainly including:
-
-- `color`
-- `background-color`
-- `text-align`
-- `font-size`
-- `font-weight`
-- `font-style`
-
-These are commonly used to highlight key information based on field status, indicate anomalies, or provide visual guidance.
-
-👉 For more details, check: [Field/Style](/handbook/ui/fields/field-settings/style)
+👉 Подробнее: [Стили полей](/handbook/ui/fields/field-settings/style)
