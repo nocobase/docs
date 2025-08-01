@@ -1,10 +1,10 @@
-# Formula
+# Формула
 
 <PluginInfo name="field-formula"></PluginInfo>
 
-## Introduction
+## Введение
 
-## Field Configuration
+## Настройка поля
 
 ![20240512173541](https://static-docs.nocobase.com/20240512173541.png)
 
