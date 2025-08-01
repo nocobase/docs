@@ -1,5 +1,5 @@
-# Overview
+# Обзор
 
-<PluginInfo commercial="true" name="data-visualization-echarts"></PluginInfo>
+<Реклама PluginInfo="истинное" название="визуализация данных-электронные диаграммы"></PluginInfo>
 
-The use of <a href = "https://echarts.apache.org/" target ="_blank"> ECharts </a> enables data visualization, supporting more chart types such as funnel charts, radar charts, and provides a more user-friendly visualization configuration.
+Использование <a href = "https://echarts.apache.org/" target ="_blank"> электронных диаграмм </a> позволяет визуализировать данные, поддерживает большее количество типов диаграмм, таких как воронкообразные диаграммы, радарные диаграммы, и обеспечивает более удобную для пользователя конфигурацию визуализации.
