@@ -1,25 +1,28 @@
-# Embed NocoBase
+# Встраивание NocoBase
 
 <PluginInfo commercial="true" name="embed"></PluginInfo>
 
-## Introduction
+## Введение
 
-This plugin is used to embed NocoBase pages into other websites or applications.
+Этот плагин позволяет встраивать страницы NocoBase на другие веб-сайты или в приложения.
 
-## Installation
+## Установка
 
-This plugin is a commercial plugin and needs to be uploaded and activated through the plugin manager.
+Плагин является коммерческим и требует загрузки через менеджер плагинов с последующей активацией.
 
 ![20240323162741](https://static-docs.nocobase.com/20240323162741.png)
 
-## User Guide
+## Руководство пользователя
 
-After activating the interface configuration, click "Copy embedded link" in the page's configuration menu (top right corner).
+После активации плагина в интерфейсе конфигурации:
+1. Нажмите "Копировать ссылку для встраивания" в меню настроек страницы (правый верхний угол)
 
 ![](https://static-docs.nocobase.com/f11bd6d5e88d38731d7cd3cb149022c8.png)
 
-After clicking, you will get a link that can be opened separately, for example, `https://xxx.com/embed/qs087rz4o2b`.
+2. Вы получите уникальную ссылку вида: `https://xxx.com/embed/qs087rz4o2b`
 
 ![](https://static-docs.nocobase.com/9d847805a00fd07372a474665ec0e968.png)
 
-If you want to embed NocoBase pages into other websites or applications, user authentication is required, and the `token` needs to be appended to the link, for example, `https://xxx.com/embed/qs087rz4o2b?token=xxx`. For detailed instructions on user authentication, please refer to [User Authentication](/handbook/auth).
+Для встраивания в сторонние ресурсы с аутентификацией пользователей:
+- Добавьте параметр `token` к ссылке: `https://xxx.com/embed/qs087rz4o2b?token=xxx`
+- Подробнее об аутентификации: [Руководство по аутентификации](/handbook/auth)
