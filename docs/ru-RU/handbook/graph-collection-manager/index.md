@@ -1,17 +1,24 @@
-# Graph Collection Manager
+# Менеджер по сбору графиков
 
 <PluginInfo name="graph-collection-manager"></PluginInfo>
 
+## Введение
+
+Это инструмент, аналогичный ER diagrams, который в настоящее время поддерживает только основную базу данных.
+
+## Установка
+
+Этот предустановленный плагин необходимо активировать, прежде чем его можно будет использовать.
+
 ## Introduction
+Это инструмент, аналогичный ER diagrams, который в настоящее время поддерживает только основную базу данных.
 
-This is a tool similar to ER diagrams, which currently only supports the main database.
+## Установка
 
-## Installation
-
-This preset plugin needs to be activated before it can be used.
+Этот предварительно настроенный плагин необходимо активировать, прежде чем его можно будет использовать.
 
 ![20240322221627](https://static-docs.nocobase.com/20240322221627.png)
 
-## User Manual
+## Руководство пользователя
 
 ![20240410075906](https://static-docs.nocobase.com/20240410075906.png)
