@@ -1,21 +1,23 @@
-# Sign in with Google
+# Вход через Google
 
-> https://developers.google.com/identity/openid-connect/openid-connect
+> Официальная документация: https://developers.google.com/identity/openid-connect/openid-connect
 
-## Get Google OAuth 2.0 Credentials
+## Получение учетных данных OAuth 2.0 Google
 
-[Google Cloud Console](https://console.cloud.google.com/apis/credentials) - Create Credentials - OAuth Client ID
+1. Перейдите в [Google Cloud Console](https://console.cloud.google.com/apis/credentials)
+2. Создайте учетные данные - ID клиента OAuth
 
 ![](https://static-docs.nocobase.com/0f2946c8643565ecc4ac13249882638c.png)
 
-Go to the configuration interface and fill in the authorized redirect URL. The redirect URL can be obtained when adding an authenticator in Nocobase, usually it's `http(s)://host:port/api/oidc:redirect`. See the [User Manual - Configuration](../index.md#configuration) section.
+3. В интерфейсе конфигурации укажите URL перенаправления. Этот URL можно получить при добавлении аутентификатора в NocoBase (обычно имеет вид `http(s)://host:port/api/oidc:redirect`). Подробнее см. раздел [Руководство пользователя - Настройка](../index.md#configuration).
 
 ![](https://static-docs.nocobase.com/24078bf52ec966a16334894cb3d9d126.png)
 
-## Add a new Authenticator on NocoBase
+## Добавление аутентификатора в NocoBase
 
-Plugin Settings - User Authentication - Add - OIDC
+1. Перейдите: Настройки плагинов → Аутентификация пользователей → Добавить → OIDC
 
 ![](https://static-docs.nocobase.com/0e4b1acdef6335aaee2139ae6629977b.png)
 
-Refer to the parameters introduced in [User Manual - Configuration](../index.md#configuration) to complete the authenticator configuration.
+2. Заполните параметры аутентификатора в соответствии с инструкциями в разделе [Руководство пользователя - Настройка](../index.md#configuration).
+
