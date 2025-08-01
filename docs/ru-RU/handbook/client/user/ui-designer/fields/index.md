@@ -1,59 +1,60 @@
-### Fields
+### Поля
 
-In the UI, fields are field components that carry unit data, with different types of data presented by different field components. Fields can only be attached to blocks and cannot be used independently.
+В пользовательском интерфейсе поля представляют собой компоненты, содержащие единицы данных, где разные типы данных отображаются разными полевыми компонентами. Поля могут быть прикреплены только к блокам и не могут использоваться самостоятельно.
 
-#### Fields in Blocks
+#### Поля в блоках
 
-Fields are generally not used alone but exist as sub-elements of data-type blocks. Data-type blocks typically have a "configure fields" option, and the field list is provided by the current data table.
+Поля обычно не используются по отдельности, а существуют как подэлементы блоков типа данных. Блоки данных обычно имеют опцию "настроить поля", а список полей предоставляется текущей таблицей данных.
 
 ![](https://static-docs.nocobase.com/c5ea18ad1847332fe78075413f23de46.png)
 
-#### Field Designer (Toolbar)
+#### Конструктор полей (Панель инструментов)
 
-Like blocks, field components also have three icons in the upper right corner:
+Как и блоки, полевые компоненты также имеют три значка в правом верхнем углу:
 
-- Drag to layout
-- Quick add field
-- Configure field parameters
+- Перетащить для компоновки
+- Быстрое добавление поля
+- Настройка параметров поля
 
 ![](https://static-docs.nocobase.com/30cc5fcaeeb171862f79449a72a7fcf9.png)
 
-#### Field Layout
+#### Компоновка полей
 
-The layout of fields within a block can be customized by dragging to move them.
+Расположение полей внутри блока можно настроить, перетаскивая их.
 
 ![](https://static-docs.nocobase.com/0825ea8c014c9073f505e74f707ded66.gif)
 
-#### General Parameter Configuration
+#### Общая конфигурация параметров
 
-- Edit field title
-- Display title
-- Edit description
-- Required
-- Validation rules
-- Set Default value
-- Pattern
+- Редактировать название поля
+- Отображать заголовок
+- Редактировать описание
+- Обязательное поле
+- Правила валидации
+- Установить значение по умолчанию
+- Шаблон
 
 ![](https://static-docs.nocobase.com/cbb838c9e167f51636d6a0ad3b287b59.png)
 
-**Important Parameter Configuration:**
+**Важные параметры конфигурации:**
 
-##### Validation Rules
+##### Правила валидации
 
-(to be added)
+(будет добавлено)
 
-##### Default Value
+##### Значение по умолчанию
 
-(to be added)
+(будет добавлено)
 
-##### Pattern
+##### Шаблон
 
-Unlike blocks, field components have three display modes:
+В отличие от блоков, полевые компоненты имеют три режима отображения:
 
-- Editable
-- Readonly (non-editable)
-- Easy-reading (read mode)
+- Редактируемый
+- Только для чтения (нередактируемый)
+- Простое чтение (режим чтения)
 
-#### Field Types
+#### Типы полей
 
-The fields in a block are provided by the data table. For more field type configurations, refer to [Data Table Field Types](https://nocobase.feishu.cn/wiki/BJKYw1xpHiVxFHkmgT3cKrKznkd).
+Поля в блоке предоставляются таблицей данных. Для получения дополнительной информации о конфигурации типов полей обратитесь к [Типам полей таблицы данных](https://nocobase.feishu.cn/wiki/BJKYw1xpHiVxFHkmgT3cKrKznkd).
+
