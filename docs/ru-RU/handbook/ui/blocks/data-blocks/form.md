@@ -1,102 +1,92 @@
-# Form Block
+### **Блок формы**
 
-## Introduction
+#### **Введение**
 
-The form block is an essential block for building data input and editing interfaces. It is highly customizable and uses corresponding components based on the data model to display the required fields. Through linkage rules, the form block can dynamically display fields. Additionally, it can be combined with workflows to achieve automated process triggering and data processing, further enhancing work efficiency or implementing logical orchestration.
+Блок формы — это основной блок для создания интерфейсов ввода и редактирования данных. Он обладает высокой степенью настраиваемости и использует соответствующие компоненты в зависимости от модели данных для отображения необходимых полей. С помощью правил связывания блок формы может динамически отображать поля. Кроме того, его можно комбинировать с рабочими процессами для автоматического запуска процессов и обработки данных, что дополнительно повышает эффективность работы или позволяет реализовывать логическую оркестровку.
 
-## Adding Blocks
+#### **Добавление блока**
 
-<video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240416215917.mp4" type="video/mp4">
-</video>
+#### **Параметры настройки блока**
 
-## Block Settings
+![Параметры](https://static-docs.nocobase.com/20240416220148.png)
 
-![20240416220148](https://static-docs.nocobase.com/20240416220148.png)
+##### **Правила связывания**
 
-### Linkage Rules
+Управление поведением полей формы с помощью правил связывания.
 
-Control form field behavior through linkage rules.
+![Связывание](https://static-docs.nocobase.com/20240416220254.png)
 
-![20240416220254](https://static-docs.nocobase.com/20240416220254.png)
+Более подробно см. в разделе [Правила связывания](/handbook/ui/blocks/block-settings/field-linkage-rule).
 
-For more information, refer to [Linkage Rules](/handbook/ui/blocks/block-settings/field-linkage-rule).
+##### **Шаблоны данных формы (поддерживаются только для форм создания новых записей)**
 
-### Form Data Templates (Supports Form for Adding New Data Only)
+Цель шаблонов данных формы — упростить процесс ввода данных и повысить эффективность. Путем фильтрации одной записи или группы записей в диапазоне данных в качестве шаблона, выбранный шаблон данных будет подставлен в форму в качестве значений по умолчанию.
 
-The purpose of the form data templates is to simplify the data entry process and improve efficiency. By filtering out a single piece or a group of records as a template from the data range, the selected target data template will be populated as the default values in the form.
+![Пример](https://static-docs.nocobase.com/20240408143719.png)
 
-![20240408143719](https://static-docs.nocobase.com/20240408143719.png)
+![Пример](https://static-docs.nocobase.com/20240424143911.png)
 
-![20240424143911](https://static-docs.nocobase.com/20240424143911.png)
+- Отфильтруйте одну запись или группу записей в качестве шаблонных данных.
+- Выберите поле заголовка для идентификации шаблонных данных.
+- Выберите поля шаблона — выбранные поля будут автоматически подставлены в форму.
 
-1. Filter out a single piece or a group of records as template data.
-2. Select the title field to identify the template data.
-3. Check the template fields, and the selected fields will be automatically populated into the form.
+##### **Синхронизация из полей формы**
 
-#### Synchronize From Form Fields
+Автоматически анализирует настроенные поля в текущем блоке формы как поля шаблона.  
+Если в будущем будут внесены изменения в поля блока формы (например, изменение компонентов полей связи), вы можете снова открыть настройку шаблона и нажать кнопку синхронизации, чтобы обеспечить согласованность между формой и шаблоном.
 
-- Automatically parse the configured fields in the current form block as template fields.
-- If there are subsequent modifications to the form block fields (such as adjustments to association field components), you can reopen the template configuration and click the sync form button to ensure consistency between the form and the template.
+Следующие поля **не** будут включены в шаблон данных:
 
-#### The following fields' data will be filtered out for the selected data template record:
-- Primary Key
-- Foreign Key
-- Fields disallowing duplicates
-- Sort fields
-- Sequence fields
-- Password
-- Created by
-- Created at
-- Last updated by
-- Last updated at
+- Первичный ключ
+- Внешний ключ
+- Поля с запретом дублирования
+- Поля сортировки
+- Поля последовательности
+- Пароль
+- Создано пользователем
+- Дата создания
+- Последнее обновление пользователем
+- Дата последнего обновления
 
-#### For Association Fields
-- Regular fields and hasOne and hasMany relationship fields are copied.
-- belongsTo and belongsToMany relationship fields are referenced, and references may become copies. For example, after changing from select to sub-form, the relationship changes from reference to copy (after becoming a copy, all fields are optional).
+##### **Для полей связи**
 
-#### Example Scenarios
+- Обычные поля и поля связей `hasOne` и `hasMany` копируются.
+- Поля связей `belongsTo` и `belongsToMany` ссылаются, но ссылки могут превращаться в копии. Например, при изменении селектора на подформу, связь изменяется со ссылки на копию (после копирования все поля становятся необязательными).
 
-Scenario Description: An e-commerce platform needs to frequently add new products, and these new products are similar or identical to existing products in many attributes.
+##### **Примеры сценариев**
 
-Solution: Select an existing product as a template and use its attribute information as the form data template. When creating a new product, users can choose to apply this template, thus quickly copying the attribute information of the template product to the new product, improving the efficiency of entering new products.
+**Описание сценария:** Платформа электронной коммерции регулярно добавляет новые товары, многие атрибуты которых схожи или идентичны уже существующим товарам.
 
-- Create a product promotion template
+**Решение:** Выберите существующий товар в качестве шаблона и используйте его атрибуты как шаблон данных формы. При создании нового товара пользователь может выбрать применение этого шаблона, что позволит быстро скопировать атрибуты из шаблона в новую запись, повысив эффективность ввода.
 
-![20240408145855](https://static-docs.nocobase.com/20240408145855.png)
+**Создание шаблона рекламной акции**
 
-- Create promotional products quickly
+![Пример](https://static-docs.nocobase.com/20240408145855.png)
 
-<video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240408150250.mp4" type="video/mp4">
-</video>
+**Быстрое создание рекламных товаров**
 
-- [Edit Block Title](/handbook/ui/blocks/block-settings/block-title)
-- [Save as Block Template](/handbook/block-template)
+- [Редактировать заголовок блока](/handbook/ui/blocks/block-settings/block-title)
+- [Сохранить как шаблон блока](/handbook/block-template)
 
-## Configure Fields
+#### **Настройка полей**
 
-### Fields in Current Collection
+##### **Поля текущей коллекции**
 
-![20240416230739](https://static-docs.nocobase.com/20240416230739.png)
+![Поля](https://static-docs.nocobase.com/20240416230739.png)
 
-### Fields in Related Collections
+##### **Поля связанных коллекций**
 
-Fields in related tables are read-only in the form and are typically used in conjunction with relationship fields to display multiple field values of related data.
+Поля из связанных таблиц в форме доступны только для чтения и обычно используются в сочетании с полями связи для отображения нескольких значений связанных данных.
 
-![20240416230811](https://static-docs.nocobase.com/20240416230811.png)
+![Поля](https://static-docs.nocobase.com/20240416230811.png)
 
-<video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240416231152.mp4" type="video/mp4">
-</video>
+Параметры настройки полей формы см. в разделе [Поля формы](/handbook/ui/fields/generic/form-item).
 
-Form field configuration options can be found in [Form Fields](/handbook/ui/fields/generic/form-item).
+#### **Настройка действий**
 
-## Configure Actions
+![Действия](https://static-docs.nocobase.com/20240417115249.png)
 
-![20240417115249](https://static-docs.nocobase.com/20240417115249.png)
-
-- [Submit](/handbook/ui/actions/types/submit)
-- [Save Data](/handbook/ui/actions/types/save-record)
-- [Custom Request](/handbook/action-custom-request)
-- [Trigger workflow](/handbook/workflow/manual/triggers/cutom-action-trigger)
+- [Отправить](/handbook/ui/actions/types/submit)
+- [Сохранить данные](/handbook/ui/actions/types/save-record)
+- [Пользовательский запрос](/handbook/action-custom-request)
+- [Запустить рабочий процесс](/handbook/workflow/manual/triggers/cutom-action-trigger)
