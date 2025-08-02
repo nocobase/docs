@@ -1,43 +1,45 @@
-# Record picker
+# Выбор записей
 
-## Introduction
+## Введение
 
-The **Record picker**, presented as a popup table selector, allows users to select existing data associations for the target table or add new data to the target table and then associate it.
+**Выбор записей** представлен в виде всплывающего табличного селектора, позволяющего:
+- Выбирать существующие ассоциации данных для целевой таблицы
+- Добавлять новые данные в целевую таблицу с последующей ассоциацией
 
 ![20240410114516](https://static-docs.nocobase.com/20240410114516.png)
 
-The order table features a many-to-many relationship field called "Products".
+Пример: таблица заказов содержит поле связи "многие-ко-многим" - "Товары".
 
-Data that has already been selected will not appear in the table selector.
+Уже выбранные данные не отображаются в табличном селекторе.
 
 <video width="100%" height="440" controls>
   <source src="https://static-docs.nocobase.com/20240410121032.mp4" type="video/mp4">
 </video>
 
-Within the table selector, users can further manage the relationship target table (add, delete, import, export, etc.).
+В табличном селекторе доступно управление целевой таблицей (добавление, удаление, импорт, экспорт и др.).
 
 ![20240410115239](https://static-docs.nocobase.com/20240410115239.png)
 
-## Field Configuration Options
+## Настройки поля
 
-### Allow Adding Data
+### Разрешить добавление данных
 
-This option enables users to add data to the target table and then select that newly added data.
+Позволяет добавлять данные в целевую таблицу с последующим выбором.
 
 <video width="100%" height="440" controls>
   <source src="https://static-docs.nocobase.com/20240422214222.mp4" type="video/mp4">
 </video>
 
-### Allow Adding/Associating Multiple Items
+### Разрешить множественное добавление/ассоциацию
 
-This setting restricts multiple relationship data to allow associating only one piece of data.
+Ограничивает множественные связи, разрешая ассоциировать только один элемент данных.
 
-### Title Field
+### Поле-заголовок
 
 ![20240422205632](https://static-docs.nocobase.com/20240422205632.gif)
 
-For more information, refer to [Title Field](/handbook/ui/fields/field-settings/title-field)
+Подробнее: [Поле-заголовок](/handbook/ui/fields/field-settings/title-field)
 
-- [Popup Size](/handbook/ui/actions/action-settings/popup-size)
+- [Размер всплывающего окна](/handbook/ui/actions/action-settings/popup-size)
 
-- [Field Components](/handbook/ui/fields/association-field)
+- [Компоненты полей](/handbook/ui/fields/association-field)
