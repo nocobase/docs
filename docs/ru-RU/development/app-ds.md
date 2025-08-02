@@ -1,19 +1,19 @@
-# Directory Structure
+# Структура директорий
 
-Whether it is a NocoBase application created via [Git source](/welcome/getting-started/installation/git-clone) or [create-nocobase-app](/welcome/getting-started/installation/create-nocobase-app), the directory structure is the same, as follows:
+Независимо от того, создано ли приложение NocoBase через [исходный код Git](/welcome/getting-started/installation/git-clone) или [create-nocobase-app](/welcome/getting-started/installation/create-nocobase-app), структура директорий будет одинаковой:
 
 ```bash
 ├── my-nocobase-app
-  ├── packages        # Packages under development
-    ├── plugins       # Plugins under development
-  ├── storage         # Used to store database files, attachments, cache, etc.
-    ├── backups       # Backup files directory
-    ├── plugins       # Plug-and-play plugins (already compiled)
-    ├── tar           # Location for storing output of yarn build --tar
-    ├── uploads       # Local storage directory
-  ├── .env            # Environment variables
-  ├── .env.e2e        # Environment variables for e2e tests yarn e2e test
-  ├── .env.test       # Environment variables for unit tests yarn test
+  ├── packages        # Разрабатываемые пакеты
+    ├── plugins       # Разрабатываемые плагины
+  ├── storage         # Хранилище для файлов БД, вложений, кэша и т.д.
+    ├── backups       # Директория для резервных копий
+    ├── plugins       # Готовые к использованию плагины (уже скомпилированные)
+    ├── tar           # Место хранения результатов сборки yarn build --tar
+    ├── uploads       # Локальное хранилище файлов
+  ├── .env            # Переменные окружения
+  ├── .env.e2e        # Переменные для e2e-тестов yarn e2e test
+  ├── .env.test       # Переменные для unit-тестов yarn test
   ├── lerna.json
   ├── package.json
   ├── playwright.config.ts
@@ -22,9 +22,9 @@ Whether it is a NocoBase application created via [Git source](/welcome/getting-s
   ├── vitest.config.mts
 ```
 
-## Plugins Directory
+## Директория плагинов
 
-Plugins under development are stored in the `packages/plugins` directory, organized as npm packages, example as below:
+Разрабатываемые плагины хранятся в директории `packages/plugins` и организованы как npm-пакеты:
 
 ```bash
 |- /packages/
@@ -36,7 +36,7 @@ Plugins under development are stored in the `packages/plugins` directory, organi
     |- /my-nocobase-plugin-hello2/
 ```
 
-Plugins added via the interface are stored in the `storage/plugins` directory, organized as npm packages, example as below:
+Плагины, добавленные через интерфейс, хранятся в `storage/plugins`:
 
 ```bash
 |- /storage/
@@ -48,7 +48,7 @@ Plugins added via the interface are stored in the `storage/plugins` directory, o
     |- /my-nocobase-plugin-hello2/
 ```
 
-Built-in plugins or plugins declared in the `dependencies` of `package.json` will all be in `node_modules`, example as below:
+Встроенные плагины или плагины, объявленные в `dependencies` файла `package.json`, находятся в `node_modules`:
 
 ```bash
 |- /node_modules/
@@ -57,20 +57,20 @@ Built-in plugins or plugins declared in the `dependencies` of `package.json` wil
     |- /plugin-auth/
 ```
 
-## Plugin Directory Structure
+## Структура директории плагина
 
-You can quickly create an empty plugin with `yarn pm create @my-project/plugin-hello`. The directory structure is as follows:
+Пустой плагин можно создать командой `yarn pm create @my-project/plugin-hello`. Структура директории:
 
 ```bash
 |- /packages/plugins/@my-project/plugin-hello
-  |- /dist          # The produсt of build
+  |- /dist          # Результаты сборки
   |- /src
-    |- /client      # Plugin client code
-    |- /server      # Plugin server code
-  |- .npmignore     # Which files or directories should be ignored when publishing the plugin package
+    |- /client      # Клиентский код плагина
+    |- /server      # Серверный код плагина
+  |- .npmignore     # Файлы/директории, игнорируемые при публикации пакета
   |- client.d.ts
   |- client.js
-  |- package.json   # Plugin package information
+  |- package.json   # Информация о пакете плагина
   |- server.d.ts
   |- server.js
 ```
