@@ -1,56 +1,56 @@
 # Detail Block
 
-## Introduction
+## Введение
 
-The detail block is used to display the value of each field for each data record in detail. It supports flexible field layouts and comes with various data operation features.
+Блок деталей используется для отображения значений каждого поля записи данных в детализированном виде. Он поддерживает гибкие макеты полей и включает различные функции для работы с данными.
 
-## Adding a Block
+## Добавление блока
 
 <video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240417122622.mp4" type="video/mp4">
+    <source src="https://static-docs.nocobase.com/20240417122622.mp4" type="video/mp4">
 </video>
 
-## Block Configuration Options
+## Настройки блока
 
 ![20240511114328](https://static-docs.nocobase.com/20240511114328.png)
 
-### Set Data Scope
+### Настройка области данных
 
-Example: Display only orders that have been shipped.
+Пример: Отображение только отправленных заказов.
 
 ![20240417122910](https://static-docs.nocobase.com/20240417122910.png)
 
-For more details, refer to [Set Data Scope](/handbook/ui/blocks/block-settings/data-scope).
+Подробнее см. [Настройка области данных](/handbook/ui/blocks/block-settings/data-scope).
 
-### Set Sorting Rules
+### Настройка правил сортировки
 
 ![20240417123300](https://static-docs.nocobase.com/20240417123300.png)
 
-For more details, refer to [Sorting Rules](/handbook/ui/blocks/block-settings/sorting-rule).
+Подробнее см. [Правила сортировки](/handbook/ui/blocks/block-settings/sorting-rule).
 
-- [Set Data Loading Mode](/handbook/ui/blocks/block-settings/loading-mode)
-- [Save as Block Template](/handbook/block-template)
+- [Настройка режима загрузки данных](/handbook/ui/blocks/block-settings/loading-mode)
+- [Сохранение как шаблон блока](/handbook/block-template)
 
-### Linkage Rules
+### Правила связей
 
-Linkage rules in detail blocks support dynamically setting field visibility.
+Правила связей в блоках деталей поддерживают динамическую настройку видимости полей.
 
-Example: Hide the delivery date if the receiving date is earlier than the delivery date.
+Пример: Скрыть дату доставки, если дата получения раньше даты доставки.
 
 ![20240511115156](https://static-docs.nocobase.com/20240511115156.png)
 
-For more details, refer to [Linkage Rules](/handbook/ui/blocks/block-settings/field-linkage-rule).
+Подробнее см. [Правила связей](/handbook/ui/blocks/block-settings/field-linkage-rule).
 
-### Set Block Height
+### Настройка высоты блока
 
-Example: Set the order detail block to "full-height" mode.
+Пример: Установка блока деталей заказа в режим "полная высота".
 
 ![20240604232307](https://static-docs.nocobase.com/20240604232307.gif)
 
-For more details, refer to [Block Height](/handbook/ui/blocks/block-settings/block-height).
+Подробнее см. [Высота блока](/handbook/ui/blocks/block-settings/block-height).
 
-## Configure Fields
+## Настройка полей
 
-### Current Table Fields
+### Поля текущей таблицы
 
-![202404172
+![202404172...]
