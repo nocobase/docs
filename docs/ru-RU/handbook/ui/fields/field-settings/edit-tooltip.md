@@ -1,8 +1,8 @@
-# Edit tooltip
+# Редактировать всплывающую подсказку
 
-## Introduction
+## Введение
 
-When a user hovers over a field, a tooltip with additional information or guidance appears. This tooltip typically provides details such as the field's purpose, input format, and any restrictions, helping users to better understand and utilize the field.![20240412112137](https://static-docs.nocobase.com/20240412112137.png)
+Когда пользователь наводит курсор мыши на поле, появляется всплывающая подсказка с дополнительной информацией или рекомендациями. Эта всплывающая подсказка обычно содержит такие сведения, как назначение поля, формат ввода и любые ограничения, помогая пользователям лучше понимать и использовать поле.![20240412112137](https://static-docs.nocobase.com/20240412112137.png)
 
 ![20240412112218](https://static-docs.nocobase.com/20240412112218.png)
 
