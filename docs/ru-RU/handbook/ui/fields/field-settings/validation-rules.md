@@ -1,26 +1,26 @@
-# Validation Rules
+# Правила проверки
 
-## Introduction
+## Введение
 
-Setting validation rules is crucial to ensure that user-entered data aligns with expected standards. While there are preset format validations, users also have the flexibility to define custom rules.
+Настройка правил проверки имеет решающее значение для обеспечения соответствия введенных пользователем данных ожидаемым стандартам. Несмотря на наличие предустановленных форматов проверки, пользователи также могут гибко определять пользовательские правила.
 
 ![20240411112215](https://static-docs.nocobase.com/20240411112215.png)
 
-We provide several preset format validations for commonly used data types, including numerical values, ID numbers, email addresses, and phone numbers.
+Мы предоставляем несколько предустановленных форматов проверки для часто используемых типов данных, включая числовые значения, идентификационные номера, адреса электронной почты и номера телефонов.
 
 ![20240411112413](https://static-docs.nocobase.com/20240411112413.png)
 
-### Length/Size Validation
+### Проверка длины/размера
 
-This feature allows for validating the minimum value of numerical data, with current support limited to constants.
+Эта функция позволяет проверять минимальное значение числовых данных, при этом текущая поддержка ограничивается константами.
 
 <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240417111233.mp4" type="video/mp4">
 </video>
 
-### Custom Regular Expression Validation
+### Проверка пользовательских регулярных выражений
 
-Example: Create a custom regular expression to validate Singaporean phone numbers and configure the corresponding error messages.
+Пример: Создайте пользовательское регулярное выражение для проверки сингапурских телефонных номеров и настройте соответствующие сообщения об ошибках.
 
 ![20240417222427](https://static-docs.nocobase.com/20240417222427.png)
 
