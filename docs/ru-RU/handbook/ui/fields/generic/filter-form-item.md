@@ -1,20 +1,20 @@
-# Filter blocks - Form Fields
+### **Блоки фильтрации — Поля формы**
 
-## Introduction
+#### **Введение**
 
-The filter form allows you to select fields from both the current table and related tables (including fields from associated relationships) to serve as filter criteria.
+Форма фильтрации позволяет выбирать поля как из текущей таблицы, так и из связанных таблиц (включая поля по связям), чтобы использовать их в качестве критериев фильтрации.
 
 ![20240409100014](https://static-docs.nocobase.com/20240409100014.png)
 
-**Example:** Suppose you want to filter orders using fields from a related table. The order table and the customer table have a one-to-many relationship. In this case, you can configure the customer's name and phone number fields from the customer table as filter criteria to help narrow down the orders.
+**Пример:** Предположим, вы хотите фильтровать заказы, используя поля из связанной таблицы. Таблицы «Заказы» и «Клиенты» связаны отношением «один ко многим». В этом случае вы можете настроить поля «Имя клиента» и «Номер телефона» из таблицы «Клиенты» в качестве критериев фильтрации, чтобы сузить список заказов.
 
 ![20240422151626](https://static-docs.nocobase.com/20240422151626.png)
 
-## Field Configuration Options
+#### **Параметры настройки полей**
 
-### Operators
+##### **Операторы**
 
-Selecting the right operators for filtering is crucial to enhance accuracy and efficiency. For string-type fields, fuzzy matching is enabled by default.
+Выбор правильных операторов фильтрации имеет важное значение для повышения точности и эффективности поиска. Для полей типа «строка» по умолчанию включено нечёткое совпадение.
 
 ![20240412112748](https://static-docs.nocobase.com/20240412112748.png)
 
@@ -22,7 +22,7 @@ Selecting the right operators for filtering is crucial to enhance accuracy and e
 
 ![20240422151953](https://static-docs.nocobase.com/20240422151953.png)
 
-- [Edit Field Title](/handbook/ui/fields/field-settings/edit-title)
-- [Display Title](/handbook/ui/fields/field-settings/display-title)
-- [Edit Field Description](/handbook/ui/fields/field-settings/edit-description)
-- [Edit Field Tooltip](/handbook/ui/fields/field-settings/edit-tooltip)
+- [Редактировать заголовок поля](/handbook/ui/fields/field-settings/edit-title)
+- [Отображать заголовок](/handbook/ui/fields/field-settings/display-title)
+- [Редактировать описание поля](/handbook/ui/fields/field-settings/edit-description)
+- [Редактировать всплывающую подсказку поля](/handbook/ui/fields/field-settings/edit-tooltip)
