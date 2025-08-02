@@ -1,39 +1,39 @@
-# Data scope
+### **Диапазон данных**
 
-## Introduction
+#### **Введение**
 
-Data scope is a powerful feature that allows users to define default filtering conditions for data blocks. This functionality enables users to dynamically adjust the scope of displayed data, tailoring it to their specific needs and enhancing the overall user experience.
+Диапазон данных — это мощная функция, позволяющая пользователям задавать условия фильтрации по умолчанию для блоков данных. Эта возможность даёт возможность динамически настраивать объём отображаемых данных в соответствии с конкретными потребностями, улучшая общее впечатление от использования.
 
-## User Manual
+#### **Руководство пользователя**
 
 ![20240407180322](https://static-docs.nocobase.com/20240407180322.png)
 
-Filter fields support selecting fields from the current table, as well as from related tables (up to three levels of relationships).
+Поля фильтрации поддерживают выбор полей из текущей таблицы, а также из связанных таблиц (до трёх уровней вложенности).
 
 ![20240422113637](https://static-docs.nocobase.com/20240422113637.png)
 
-### Operators
+##### **Операторы**
 
-Different field types support various operators. For instance, text fields support operators such as "equals," "not equals," and "contains." Numeric fields allow for operators like "greater than" and "less than," while date fields offer options such as "within a range" or "before a specific date."
+Разные типы полей поддерживают различные операторы. Например, текстовые поля поддерживают операторы «равно», «не равно», «содержит». Числовые поля позволяют использовать операторы «больше» и «меньше», а поля даты предлагают такие варианты, как «в диапазоне» или «до определённой даты».
 
 ![20240424154003](https://static-docs.nocobase.com/20240424154003.png)
 
-### Static Values
+##### **Статические значения**
 
-Example: Setting an Order "Status" to "Shipped".
+Пример: установка статуса заказа как «Отправлен».
 
- <video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240415204206.mp4" type="video/mp4">
+<video width="100%" height="440" controls>
+  <source src="https://static-docs.nocobase.com/20240415204206.mp4" type="video/mp4">
 </video>
 
-### Variable Values
+##### **Переменные значения**
 
-Example: "Delivery Date" is earlier than "yesterday."
+Пример: «Дата доставки» раньше «вчера».
 
 ![20240422090134](https://static-docs.nocobase.com/20240422090134.png)
 
 <video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240415214709.mp4" type="video/mp4">
+  <source src="https://static-docs.nocobase.com/20240415214709.mp4" type="video/mp4">
 </video>
 
-For more information about variables, refer to [Variables](/handbook/ui/variables).
+Более подробную информацию о переменных см. в разделе [Переменные](/handbook/ui/variables).
