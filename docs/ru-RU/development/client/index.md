@@ -1,8 +1,8 @@
-# Overview
+# Обзор
 
-## Directory Structure
+## Структура директорий
 
-Initialized empty plugin, the client directory structure is as follows:
+Инициализированный пустой плагин имеет следующую структуру директорий на стороне клиента:
 
 ```bash
 |- /plugin-sample-hello
@@ -13,9 +13,9 @@ Initialized empty plugin, the client directory structure is as follows:
   |- client.js
 ```
 
-## Plugin Class
+## Класс плагина
 
-The plugin class provides various methods for the plugin lifecycle.
+Класс плагина предоставляет различные методы для жизненного цикла плагина.
 
 ```ts
 import { Plugin } from '@nocobase/client';
@@ -31,34 +31,34 @@ export class PluginSampleHelloClient extends Plugin {
 export default PluginSampleHelloClient;
 ```
 
-## Plugin Lifecycle
+## Жизненный цикл плагина
 
-<img alt="Plugin Lifecycle" src="./image.png" style="width: 600px;" />
+<img alt="Жизненный цикл плагина" src="./image.png" style="width: 600px;" />
 
-- After the plugin is initialized, `afterAdd` is triggered. It's important to note that the addition of plugins is unordered, so do not attempt to obtain instances of other plugins in `afterAdd`. If you need to get instances of other plugins, you can do so in `beforeLoad` or `load`.
-- In `beforeLoad`, all activated plugins have been instantiated, and by then, instances can be obtained through [app.pluginManager.get()](https://client.docs.nocobase.com/core/application/plugin-settings-manager).
-- In `load`, the `beforeLoad` method of all plugins has been executed.
+- После инициализации плагина вызывается `afterAdd`. Важно отметить, что добавление плагинов происходит в неопределённом порядке, поэтому не пытайтесь получить экземпляры других плагинов в `afterAdd`. Если нужно получить экземпляры других плагинов, это можно сделать в `beforeLoad` или `load`.
+- В `beforeLoad` все активированные плагины уже созданы, и на этом этапе экземпляры можно получить через [app.pluginManager.get()](https://client.docs.nocobase.com/core/application/plugin-settings-manager).
+- В `load` метод `beforeLoad` всех плагинов уже выполнен.
 
-## Common Properties and Methods in the Plugin Class
+## Общие свойства и методы класса плагина
 
-| API                          | Tutorial                                                                  |
-| ---------------------------- | -------------------------------------------------------------------------- |
-| app.i18n                     | [Internationalization](/development/client/i18n)                          |
-| app.apiClient                | [API Client](/development/client/api-client)                              |
-| app.pluginManager            | [Plugin Manager](https://client.docs.nocobase.com/core/application/plugin-manager) |
-| app.router                   | [Routing Management](/development/client/router)                          |
-| app.pluginSettingsManager    | [Plugin Settings Page](/development/client/router#plugin-settings-page-extension) |
-| app.schemaInitializerManager | [Schema Initializer Config](/development/client/ui-schema/initializer)   |
-| app.schemaSettingsManager    | [Schema Settings Config](/development/client/ui-schema/settings)          |
-| app.addProviders             | [Provider Components](/development/client/providers)                      |
-| app.addComponents            | [Schema Rendering](/development/client/ui-schema/rendering)               |
-| app.addScopes                | [Schema Rendering](/development/client/ui-schema/rendering)               |
+| API                          | Руководство                                                              |
+| ---------------------------- | ------------------------------------------------------------------------ |
+| app.i18n                     | [Интернационализация](/development/client/i18n)                          |
+| app.apiClient                | [API-клиент](/development/client/api-client)                            |
+| app.pluginManager            | [Менеджер плагинов](https://client.docs.nocobase.com/core/application/plugin-manager) |
+| app.router                   | [Управление маршрутизацией](/development/client/router)                  |
+| app.pluginSettingsManager    | [Страница настроек плагина](/development/client/router#plugin-settings-page-extension) |
+| app.schemaInitializerManager | [Конфигурация инициализатора схемы](/development/client/ui-schema/initializer) |
+| app.schemaSettingsManager    | [Конфигурация настроек схемы](/development/client/ui-schema/settings)    |
+| app.addProviders             | [Компоненты Provider](/development/client/providers)                     |
+| app.addComponents            | [Рендеринг схемы](/development/client/ui-schema/rendering)               |
+| app.addScopes                | [Рендеринг схемы](/development/client/ui-schema/rendering)               |
 
-## Commonly Used React **hooks** in Components
+## Часто используемые React **хуки** в компонентах
 
-| API            | Tutorial                                                                                          |
-| -------------- | ------------------------------------------------------------------------------------------------- |
-| useApp()       | [useApp() API](https://client.docs.nocobase.com/core/application/application#useapp)             |
-| usePlugin()    | [usePlugin() API](https://client.docs.nocobase.com/core/application/plugin-manager#useplugin)    |
-| useAPIClient() | [API Client](/development/client/api-client)                                                      |
-| useRequest()   | [API Client](/development/client/api-client)                                                      |
+| API            | Руководство                                                                                      |
+| -------------- | ------------------------------------------------------------------------------------------------ |
+| useApp()       | [API useApp()](https://client.docs.nocobase.com/core/application/application#useapp)             |
+| usePlugin()    | [API usePlugin()](https://client.docs.nocobase.com/core/application/plugin-manager#useplugin)    |
+| useAPIClient() | [API-клиент](/development/client/api-client)                                                    |
+| useRequest()   | [API-клиент](/development/client/api-client)                                                    |
