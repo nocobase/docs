@@ -1,20 +1,20 @@
-# Date picker
+# Поле выбора даты
 
-## Introduction
+## Введение
 
-The date field offers flexibility with customizable date and time formats to suit your needs.
+Поле даты предоставляет гибкие возможности настройки форматов отображения даты и времени.
 
-## Configuring Date Formats
+## Настройка форматов даты
 
-### Data Table Fields
+### Поля таблицы данных
 
 ![20240417114311](https://static-docs.nocobase.com/20240417114311.png)
 
-### Field Settings
+### Настройки поля
 
 ![20240409174158](https://static-docs.nocobase.com/20240409174158.png)
 
-Beyond the array of preset date and time formats, the system accommodates custom formats, allowing you to tailor the display to your specific preferences.
+Помимо предустановленных форматов даты и времени, система поддерживает пользовательские форматы для индивидуальной настройки отображения.
 
 ![20240409174559](https://static-docs.nocobase.com/20240409174559.png)
 
