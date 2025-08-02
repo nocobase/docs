@@ -1,8 +1,8 @@
-#  Display Title
+# Отображать заголовок
 
-## Introduction
+## Введение
 
-This option controls whether field titles are displayed. It is enabled by default but allows you to disable it based on different layout requirements, hiding the title display when necessary.
+Эта опция определяет, будут ли отображаться заголовки полей. По умолчанию она включена, но позволяет отключить ее в зависимости от требований к оформлению, при необходимости скрывая отображение заголовка.
 
 ![20240411113316](https://static-docs.nocobase.com/20240411113316.png)
 
