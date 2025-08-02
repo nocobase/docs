@@ -1,20 +1,20 @@
-# Required Fields
+# Обязательные поля
 
-## Introduction
+## Введение
 
-"Required" is a fundamental rule in form validation. You can enable it directly within the field settings or dynamically configure it through form linkage rules.
+"Обязательный" - это фундаментальное правило проверки формы. Вы можете включить его непосредственно в настройках поля или динамически настроить с помощью правил привязки формы.
 
-## Static Setting
+## Статическая настройка
 
-You can directly designate a field as required, which is ideal for fields that must always be completed by users, such as username and password.
+Вы можете напрямую указать обязательное поле, что идеально подходит для полей, которые всегда должны заполняться пользователями, таких как имя пользователя и пароль.
 
 ![20240411114641](https://static-docs.nocobase.com/20240411114641.png)
 
-## Dynamic Setting (Conditional Required)
+## Динамическая настройка (требуется при определенных условиях)
 
-Required fields can be set conditionally using the form block's linkage rules.
+Обязательные поля можно задать условно, используя правила привязки блока формы.
 
-Example: The shipping date field becomes required when the order status is marked as "shipped."
+Пример: Поле даты отправки становится обязательным, когда статус заказа помечен как "отправлено".
 
 ![20240412110939](https://static-docs.nocobase.com/20240412110939.png)
 
