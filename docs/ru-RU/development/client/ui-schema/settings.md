@@ -1,22 +1,22 @@
-# Schema settings
+# Настройки схемы
 
-After activating the UI configuration, when the mouse moves over a specific block, field, or action, the corresponding Schema toolbar will be displayed. The settings button in the toolbar is the settings component for the current Schema.
+После активации конфигурации пользовательского интерфейса при наведении мыши на определённый блок, поле или действие отображается соответствующая панель инструментов схемы. Кнопка настроек на панели инструментов является компонентом настроек для текущей схемы.
 
 ![Alt text](https://static-docs.nocobase.com/3f37519ddd9ba1a99f1fdbfe32b4a454.png)
 
-## Built-in settings
+## Встроенные настройки
 
 <img src="./image-4.png" />
 
-## Adding settings items to existing settings
+## Добавление элементов настроек к существующим настройкам
 
-It is recommended to use the `schemaSettingsManager.addItem()` method to add settings items. For detailed item configurations, refer to [SchemaSettings Item API](#).
+Рекомендуется использовать метод `schemaSettingsManager.addItem()` для добавления элементов настроек. Для подробной конфигурации элементов обратитесь к [API элементов SchemaSettings](#).
 
 ```ts
 class PluginDemoAddSchemaSettingsItem extends Plugin {
   async load() {
     this.schemaSettingsManager.addItem(
-      'mySettings', // Example of existing schema settings
+      'mySettings', // Пример существующих настроек схемы
       'customItem',
       {
         type: 'item',
@@ -29,15 +29,15 @@ class PluginDemoAddSchemaSettingsItem extends Plugin {
 
 <code src="./demos/schema-settings-manager-add-item/index.tsx"></code>
 
-## Adding new settings
+## Добавление новых настроек
 
-For detailed parameters of SchemaSettings, refer to [SchemaSettingsOptions API](https://client.docs-cn.nocobase.com/core/ui-schema/schema-settings#new-schemasettingsoptions).
+Для подробных параметров SchemaSettings обратитесь к [API SchemaSettingsOptions](https://client.docs-cn.nocobase.com/core/ui-schema/schema-settings#new-schemasettingsoptions).
 
 ```ts
 const mySettings = new SchemaSettings({
-  // Must be a unique identifier
+  // Должен быть уникальным идентификатором
   name: 'mySettings',
-  // Dropdown menu items
+  // Элементы выпадающего меню
   items: [
     {
       name: 'edit',
@@ -48,14 +48,14 @@ const mySettings = new SchemaSettings({
 });
 ```
 
-### Adding in the plugin's load method
+### Добавление в методе load плагина
 
-It is recommended to use `schemaSettingsManager.add()` to add the new settings to the application.
+Рекомендуется использовать `schemaSettingsManager.add()` для добавления новых настроек в приложение.
 
 ```ts
 class PluginDemoAddSchemaSettings extends Plugin {
   async load() {
-    // Register global components
+    // Регистрация глобальных компонентов
     this.app.addComponents({ CardItem, HomePage });
     const mySettings = new SchemaSettings({
       name: 'mySettings',
@@ -64,9 +64,9 @@ class PluginDemoAddSchemaSettings extends Plugin {
           type: 'item',
           name: 'edit',
           useComponentProps() {
-            // TODO: Add relevant settings logic
+            // TODO: Добавить логику настроек
             return {
-              title: 'Edit',
+              title: 'Редактировать',
               onClick() {
                 // todo
               },
@@ -80,13 +80,13 @@ class PluginDemoAddSchemaSettings extends Plugin {
 }
 ```
 
-### How to use the newly added settings
+### Как использовать добавленные настройки
 
-The added SchemaSettings can be used in the Schema's `x-settings` parameter. Not all components support `x-settings`; it is usually used in combination with wrapper components such as BlockItem, FormItem, CardItem. In custom components, you can also use `useSchemaSettingsRender()` to handle the rendering of `x-settings` independently.
+Добавленные SchemaSettings можно использовать в параметре `x-settings` схемы. Не все компоненты поддерживают `x-settings`; обычно он используется в сочетании с обёрточными компонентами, такими как BlockItem, FormItem, CardItem. В пользовательских компонентах также можно использовать `useSchemaSettingsRender()` для независимой обработки рендеринга `x-settings`.
 
-#### Schema components that currently support `x-settings`
+#### Компоненты схемы, поддерживающие `x-settings`
 
-In most scenarios, `x-settings` need to be used in combination with wrapper components such as BlockItem, FormItem, CardItem. For example:
+В большинстве случаев `x-settings` необходимо использовать в сочетании с обёрточными компонентами, такими как BlockItem, FormItem, CardItem. Например:
 
 ```ts
 {
@@ -99,19 +99,19 @@ In most scenarios, `x-settings` need to be used in combination with wrapper comp
 
 <code src="./demos/schema-settings-manager-add/index.tsx"></code>
 
-#### How to support `x-settings` in custom components
+#### Как поддерживать `x-settings` в пользовательских компонентах
 
-If the wrapper components like BlockItem, FormItem, CardItem do not meet your needs, you can use `useSchemaSettingsRender()` to handle the rendering of `x-settings`.
+Если обёрточные компоненты, такие как BlockItem, FormItem, CardItem, не удовлетворяют вашим потребностям, вы можете использовать `useSchemaSettingsRender()` для обработки рендеринга `x-settings`.
 
 <code src="./demos/use-schema-settings-render/index.tsx"></code>
 
-In most scenarios, settings are placed on the SchemaToolbar, so supporting `x-toolbar` for custom components can also indirectly support `x-settings`. For more usage details, refer to [Schema toolbar](/development/client/ui-schema/toolbar).
+В большинстве случаев настройки размещаются на SchemaToolbar, поэтому поддержка `x-toolbar` для пользовательских компонентов также может косвенно поддерживать `x-settings`. Для получения дополнительных сведений об использовании обратитесь к [Панель инструментов схемы](/development/client/ui-schema/toolbar).
 
 <code src="./demos/schema-toolbar-basic/button.tsx"></code>
 
-## How to implement Schema settings?
+## Как реализовать настройки схемы?
 
-Use `useSchemaSettings()` to get the current Schema's `Designable`, and operate the Schema through `Designable`. Common APIs include:
+Используйте `useSchemaSettings()` для получения `Designable` текущей схемы и управляйте схемой через `Designable`. Общие API включают:
 
 - `dn.insertAdjacent()`
 - `dn.getSchemaAttribute()`
@@ -122,14 +122,14 @@ Use `useSchemaSettings()` to get the current Schema's `Designable`, and operate 
 - `dn.remove()`
 - `dn.remove()`
 
-For more details, refer to:
+Для получения дополнительных сведений обратитесь к:
 
-- [Designable Designer](/development/client/ui-schema/designable)
-- [Designable API](https://client.docs-cn.nocobase.com/core/ui-schema/designable)
+- [Дизайнер Designable](/development/client/ui-schema/designable)
+- [API Designable](https://client.docs-cn.nocobase.com/core/ui-schema/designable)
 
 <code src="./demos/schema-settings-basic/index.tsx"></code>
 
-## API Reference
+## Справочник API
 
 - [SchemaSettingsManager](https://client.docs-cn.nocobase.com/core/ui-schema/schema-settings-manager)
 - [SchemaSettings](https://client.docs-cn.nocobase.com/core/ui-schema/schema-settings)
