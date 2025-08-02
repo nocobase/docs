@@ -1,8 +1,8 @@
-# Middleware
+### **Промежуточное ПО (Middleware)**
 
-## How to register middleware?
+#### **Как зарегистрировать промежуточное ПО?**
 
-The registration method for middleware is usually written in the load method
+Метод регистрации промежуточного ПО обычно записывается в методе `load`:
 
 ```ts
 export class MyPlugin extends Plugin {
@@ -14,13 +14,13 @@ export class MyPlugin extends Plugin {
 }
 ```
 
-Notes.
+#### **Примечания**
 
-1. `app.acl.use()` Add a resource-permission-level middleware to be executed before permission determination
-2. `app.resourcer.use()` Adds a resource-level middleware that is executed only when a defined resource is requested
-3. `app.use()` Add an application-level middleware to be executed on every request
+- `app.acl.use()` — добавляет промежуточное ПО на уровне ресурса и разрешений, которое выполняется до проверки прав доступа.
+- `app.resourcer.use()` — добавляет промежуточное ПО на уровне ресурса, которое выполняется только при запросе определённого ресурса.
+- `app.use()` — добавляет промежуточное ПО на уровне приложения, которое выполняется при каждом запросе.
 
-## Onion Circle Model
+#### **Модель «луковицы» (Onion Circle Model)**
 
 ```ts
 app.use(async (ctx, next) => {
@@ -38,45 +38,49 @@ app.use(async (ctx, next) => {
 });
 ```
 
-Visit http://localhost:13000/api/hello to see that the browser responds with the following data
+При переходе по адресу `http://localhost:13000/api/hello` браузер вернёт следующие данные:
 
-```js
+```json
 {"data": [1,3,4,2]}
 ```
 
-## Built-in middlewares and execution order
+#### **Встроенное промежуточное ПО и порядок выполнения**
 
 1. `cors`
 2. `bodyParser`
 3. `i18n`
 4. `dataWrapping`
-5. `db2resource` 6.
-6. `restApi` 1.
-   1. `parseToken` 2.
-   2. `checkRole`
-   3. `acl` 1.
-      1. `acl.use()` Additional middleware added
-   4. `resourcer.use()` Additional middleware added
-   5. `action handler`
-7. `app.use()` Additional middleware added
+5. `db2resource`
+6. `restApi`
+7. `parseToken`
+8. `checkRole`
+9. `acl`
+10. `acl.use()` — дополнительное промежуточное ПО
+11. `resourcer.use()` — дополнительное промежуточное ПО
+12. `action handler`
+13. `app.use()` — дополнительное промежуточное ПО
 
-You can also use `before` or `after` to insert the middleware into the location of one of the preceding `tag`, e.g.
+Вы можете также использовать `before` или `after`, чтобы вставить промежуточное ПО в определённое место по тегу:
 
 ```ts
 app.use(m1, { tag: 'restApi' });
 app.resourcer.use(m2, { tag: 'parseToken' });
 app.resourcer.use(m3, { tag: 'checkRole' });
-// m4 will come before m1
+
+// m4 будет выполнено до m1
 app.use(m4, { before: 'restApi' });
-// m5 will be inserted between m2 and m3
+
+// m5 будет вставлено между m2 и m3
 app.resourcer.use(m5, { after: 'parseToken', before: 'checkRole' });
 ```
 
-If no location is specifically specified, the order of execution of the added middlewares is
+Если местоположение не указано, порядок выполнения добавленного промежуточного ПО следующий:
 
-1. middlewares added by `acl.use` will be executed first
-2. then the ones added by `resourcer.use`, including the middleware handler and action handler
-3. and finally the ones added by `app.use`
+1. Промежуточное ПО, добавленное через `acl.use`, выполняется первым.
+2. Затем — через `resourcer.use`, включая обработчик middleware и action handler.
+3. И, наконец, промежуточное ПО, добавленное через `app.use`.
+
+**Пример:**
 
 ```ts
 app.use(async (ctx, next) => {
@@ -113,19 +117,21 @@ app.resourcer.define({
 });
 ```
 
-Visit http://localhost:13000/api/hello to see that the browser responds with the data
+- При переходе по `http://localhost:13000/api/hello` браузер вернёт:
+  ```json
+  {"data": [1,2]}
+  ```
 
-```js
-{"data": [1,2]}
-```
+- При переходе по `http://localhost:13000/api/test:list` браузер вернёт:
+  ```json
+  {"data": [5,3,7,1,2,8,4,6]}
+  ```
 
-Visiting http://localhost:13000/api/test:list to see, the browser responds with the following data
+#### **Ресурс не определён**
 
-```js
-{"data": [5,3,7,1,2,8,4,6]}
-```
+Промежуточное ПО, добавленное через `resourcer.use()`, не будет выполнено, если ресурс не определён.
 
-### Resource undefined, middlewares added by resourcer.use() will not be executed
+**Пример:**
 
 ```ts
 app.use(async (ctx, next) => {
@@ -143,18 +149,18 @@ app.resourcer.use(async (ctx, next) => {
 });
 ```
 
-Visit http://localhost:13000/api/hello to see that the browser responds with the following data
+При переходе по `http://localhost:13000/api/hello` браузер вернёт:
 
-```js
+```json
 {"data": [1,2]}
 ```
 
-In the above example, the hello resource is not defined and will not enter the resourcer, so the middleware in the resourcer will not be executed
+В этом примере ресурс `hello` не определён, поэтому выполнение не попадает в `resourcer`, и промежуточное ПО внутри него не выполняется.
 
-## Middleware Usage
+#### **Использование промежуточного ПО**
 
 TODO
 
-## Example
+#### **Пример**
 
-- [samples/ratelimit](https://github.com/nocobase/nocobase/blob/main/packages/samples/ratelimit/) IP rate-limiting
+[samples/ratelimit](https://github.com/nocobase/nocobase/blob/main/packages/samples/ratelimit/) — ограничение частоты запросов по IP-адресу
