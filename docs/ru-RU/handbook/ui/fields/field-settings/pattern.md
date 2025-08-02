@@ -1,11 +1,11 @@
-# Pattern
+# Шаблон
 
-##### Introduction
+##### Введение
 
-Unlike blocks, field components offer three distinct Pattern, specifically for fields within forms. Switching between these modes adjusts the corresponding field configuration options.
+В отличие от блоков, компоненты field предлагают три различных шаблона, особенно для полей в формах. Переключение между этими режимами настраивает соответствующие параметры конфигурации полей.
 
-- Editable
-- Readonly (non-editable)
-- Easy-reading (view mode)
+- Редактируемый
+- Доступный только для чтения (не редактируемый)
+- Удобный для чтения (режим просмотра)
 
 ![20240411112743](https://static-docs.nocobase.com/20240411112743.png)
