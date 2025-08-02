@@ -1,42 +1,42 @@
-# Sub detail
+### **Вложенная детализация (Sub detail)**
 
-## Introduction
+#### **Введение**
 
-Sub-details serve as the dedicated components for sub-forms in reading mode. Unlike label and title components, sub-details provide the ability to display more extensive data from the current table and enable the configuration of related table data. This allows multi-level relational data to be presented clearly in a nested format.
+Вложенная детализация — это специализированный компонент для подформ в режиме просмотра. В отличие от компонентов «метка» и «заголовок», вложенная детализация позволяет отображать более объёмные данные из текущей таблицы и настраивать отображение связанных таблиц. Это обеспечивает наглядное представление многоранговых связанных данных в виде вложенной структуры.
 
-## Instructions
+#### **Инструкция**
 
-### Sub-details for Many-to-Many Relationship Fields
+##### **Вложенная детализация для полей связи «многие ко многим»**
 
 ![20240822225058](https://static-docs.nocobase.com/20240822225058.png)
 
-This feature supports the nested display of multi-level relationship fields, such as Orders/Products/Inventory or Orders/Products/Suppliers.
+Функция поддерживает вложенное отображение полей с многоуровневыми связями, например: Заказы/Товары/Остатки или Заказы/Товары/Поставщики.
 
 ![20240822225231](https://static-docs.nocobase.com/20240822225231.png)
 
-### Sub-details for One-to-One Relationship Fields
+##### **Вложенная детализация для полей связи «один к одному»**
 
 ![20240822230215](https://static-docs.nocobase.com/20240822230215.png)
 
-## Field Configuration Options
+#### **Параметры настройки поля**
 
-#### Setting Sorting Rules
+##### **Настройка правил сортировки**
 
-You can adjust the display order for many-to-many relational data.
+Можно изменить порядок отображения данных в связях «многие ко многим».
 
 ![20240822230359](https://static-docs.nocobase.com/20240822230359.png)
 
 ![20240822230422](https://static-docs.nocobase.com/20240822230422.png)
 
-### Field Component
+##### **Компонент поля**
 
-[Field Component](/handbook/ui/fields/association-field): Switch to other relationship field components, such as dropdown select, data selector, etc.
+[Компонент поля](/handbook/ui/fields/association-field): переключение на другие компоненты полей связи, например, выпадающий список, выбор данных и др.
 
-### Linkage Rules
-:::info{title=Tip}
-The version of NocoBase needs to be v1.3.17-beta or above.
+##### **Правила связывания**
+:::info{title=Подсказка}
+Требуется версия NocoBase **v1.3.17-beta или выше**.
 :::
 
 ![20240906090603_rec_](https://static-docs.nocobase.com/20240906090603_rec_.gif)
 
-For more information, refer to [Linkage Rules](/handbook/ui/blocks/block-settings/field-linkage-rule)
+Более подробную информацию см. в разделе [Правила связывания](/handbook/ui/blocks/block-settings/field-linkage-rule)
