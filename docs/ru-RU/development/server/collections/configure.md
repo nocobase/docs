@@ -1,24 +1,24 @@
-# How to configure collections?
+# Настройка коллекций
 
-NocoBase has three ways to configure collections.
+В NocoBase существует три способа настройки коллекций.
 
-<img src="./cm.svg" style="max-width: 800px;" />
+<img src="./cm.svg" style="max-width: 800px;">
 
-## Configuring collections through the interface
+## Настройка через интерфейс
 
-Business data is generally recommended to be configured using the interface, and the NocoBase platform provides two interfaces to configure collections.
+Для бизнес-данных рекомендуется использовать интерфейс. Платформа NocoBase предоставляет два варианта:
 
-### Regular table interface
+### Обычный табличный интерфейс
 
-<img src="./table.jpg" style="max-width: 800px;" />
+<img src="./table.jpg" style="max-width: 800px;">
 
-### Graphical configuration interface
+### Графический интерфейс
 
-<img src="./graph.jpg" style="max-width: 800px;" />
+<img src="./graph.jpg" style="max-width: 800px;">
 
-## Defined in the plugin code
+## Определение в коде плагина
 
-In the plugin, custom collection must be placed in the `src/server/collections/*.ts` directory of the plugin, with the following content:
+В плагинах пользовательские коллекции должны располагаться в директории `src/server/collections/*.ts`:
 
 ```ts
 import { defineCollection } from '@nocobase/database';
@@ -28,7 +28,7 @@ export default defineCollection({
 });
 ```
 
-Extend the options of an existing collection using `extendCollection()`.
+Для расширения существующей коллекции используйте `extendCollection()`:
 
 ```ts
 import { extendCollection } from '@nocobase/database';
@@ -38,22 +38,19 @@ export default extendCollection({
 });
 ```
 
-Related API Reference
-
+Ссылки на API:
 - [defineCollection()](/api/database#definecollection)
 - [extendCollection()](/api/database#extendcollection)
 
-The collection configured in the plugin is automatically synchronized with the database when the plugin is activated, giving birth to the corresponding data tables and fields.
-
-:::info{title="INFO"}
-The collection configured in the plugin is automatically synchronized with the database when the plugin is activated, generating the corresponding data tables and fields. If the plugin is already active, you need to handle the synchronization of the data tables with the upgrade command `yarn nocobase upgrade`.
+:::info{title="ИНФОРМАЦИЯ"}
+Коллекции в плагинах автоматически синхронизируются с БД при активации плагина. Если плагин уже активен, используйте команду `yarn nocobase upgrade` для синхронизации.
 :::
 
-## Managing data tables via REST API
+## Управление через REST API
 
-Third parties can also manage data tables via the HTTP interface (permissions required)
+Третьи стороны могут управлять таблицами через HTTP-интерфейс (требуются права):
 
-### Collections
+### Коллекции
 
 ```bash
 GET /api/collections
@@ -63,7 +60,7 @@ PUT /api/collections/<collectionName>
 DELETE /api/collections/<collectionName>
 ```
 
-### Collection fields
+### Поля коллекций
 
 ```bash
 GET /api/collections/<collectionName>/fields
