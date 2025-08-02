@@ -1,81 +1,81 @@
 # UI Schema
 
-A protocol for describing frontend components, based on Formily Schema 2.0, in a JSON Schema style.
+Протокол для описания компонентов фронтенда, основанный на Formily Schema 2.0, в стиле JSON Schema.
 
 ```ts
 interface ISchema {
   type: 'void' | 'string' | 'number' | 'object' | 'array';
   name?: string;
   title?: any;
-  // Decorator component
+  // Компонент-обёртка
   ['x-decorator']?: string;
-  // Decorator component properties
+  // Свойства компонента-обёртки
   ['x-decorator-props']?: any;
-  // Dynamic decorator component properties
+  // Динамические свойства компонента-обёртки
   ['x-use-decorator-props']?: any;
-  // Component
+  // Компонент
   ['x-component']?: string;
-  // Component properties
+  // Свойства компонента
   ['x-component-props']?: any;
-  // Dynamic component properties
+  // Динамические свойства компонента
   ['x-use-component-props']?: any;
-  // Display state, default is 'visible'
+  // Состояние отображения, по умолчанию 'visible'
   ['x-display']?: 'none' | 'hidden' | 'visible';
-  // Component's child nodes, simple usage
+  // Дочерние узлы компонента, простое использование
   ['x-content']?: any;
-  // children node schema
+  // Schema дочерних узлов
   properties?: Record<string, ISchema>;
 
-  // Below are only used for field components
+  // Ниже используются только для компонентов полей
 
-  // Field reactions
+  // Реакции поля
   ['x-reactions']?: SchemaReactions;
-  // Field UI interaction mode, default is 'editable'
+  // Режим взаимодействия UI поля, по умолчанию 'editable'
   ['x-pattern']?: 'editable' | 'disabled' | 'readPretty';
-  // Field validation
+  // Валидация поля
   ['x-validator']?: Validator;
-  // Default data
+  // Данные по умолчанию
   default?: any;
 
-  // For designer related
+  // Для дизайнера
 
-  // Initializer, determines what can be inserted adjacent to the current schema
+  // Инициализатор, определяет, что можно вставить рядом с текущей schema
   ['x-initializer']?: string;
   ['x-initializer-props']?: any;
 
-  // Block settings, determines what parameters can be configured for the current schema
+  // Настройки блока, определяют, какие параметры можно настроить для текущей schema
   ['x-settings']?: string;
   ['x-settings-props']?: any;
 
-  // Toolbar component
+  // Компонент панели инструментов
   ['x-toolbar']?: string;
   ['x-toolbar-props']?: any;
 }
 ```
 
-## Examples
+## Примеры
 
-### Simplest Component
+### Простейший компонент
 
-All native HTML tags can be written as schemas. For example:
+Все нативные HTML-теги можно записать в виде schema. Например:
 
 ```ts
 {
   type: 'void',
   'x-component': 'h1',
-  'x-content': 'Hello, world!',
+  'x-content': 'Привет, мир!',
 }
 ```
 
-JSX Example
+Пример JSX
 
 ```tsx | pure
-<h1>Hello, world!</h1>
+<h1>Привет, мир!</h1>
 ```
 
-### Child Components
+### Дочерние компоненты
 
-Children components are written in properties
+Дочерние компоненты записываются в properties
 
 ```tsx | pure
 {
@@ -91,7 +91,7 @@ Children components are written in properties
 }
 ```
 
-Equivalent JSX
+Эквивалентный JSX
 
 ```tsx | pure
 <div className={'form-item'}>
@@ -99,11 +99,11 @@ Equivalent JSX
 </div>
 ```
 
-## Parameter Descriptions
+## Описание параметров
 
 ### `type`
 
-Type of the node
+Тип узла
 
 ```ts
 type SchemaTypes =
@@ -120,26 +120,28 @@ interface ISchema {
 
 ### `name`
 
-Schema name
+Имя schema
 
 ```ts
 type SchemaName = string;
 interface ISchema {
-  name?: SchemaName; // Root node
+  name?: SchemaName; // Корневой узел
   properties?: {
-    [name: SchemaName]?: ISchema; // Child node
+    [name: SchemaName]?: ISchema; // Дочерний узел
   }
 };
 ```
 
-All schemas have a name, and child node names are also the keys of properties
+Все schema имеют имя, а имена дочерних узлов также являются ключами properties
 
 ```ts
 {
-  name: 'root',
+ 
+
+System: name: 'root',
   properties: {
     child1: {
-      // No need to write name here
+      // Здесь не нужно указывать имя
     },
   },
 }
@@ -147,7 +149,7 @@ All schemas have a name, and child node names are also the keys of properties
 
 ### `title`
 
-Node title
+Заголовок узла
 
 ```ts
 type SchemaTitle = string;
@@ -158,7 +160,7 @@ interface ISchema {
 
 ### `properties`
 
-Children components can be written in properties
+Дочерние компоненты можно записать в properties
 
 ```ts
 {
@@ -174,7 +176,7 @@ Children components can be written in properties
 }
 ```
 
-Equivalent JSX
+Эквивалентный JSX
 
 ```tsx | pure
 <div className={'form-item'}>
@@ -184,7 +186,7 @@ Equivalent JSX
 
 ### `x-component`
 
-Component
+Компонент
 
 ```ts
 type Component = any;
@@ -193,25 +195,25 @@ interface ISchema {
 }
 ```
 
-All native HTML tags can be written as schemas. For example:
+Все нативные HTML-теги можно записать в виде schema. Например:
 
 ```ts
 {
   type: 'void',
   'x-component': 'h1',
-  'x-content': 'Hello, world!',
+  'x-content': 'Привет, мир!',
 }
 ```
 
-JSX Example
+Пример JSX
 
 ```tsx | pure
-<h1>Hello, world!</h1>
+<h1>Привет, мир!</h1>
 ```
 
-### `x-component-props` and `x-use-component-props`
+### `x-component-props` и `x-use-component-props`
 
-`x-component-props` are component properties.
+`x-component-props` — это свойства компонента.
 
 ```ts
 {
@@ -223,7 +225,7 @@ JSX Example
 }
 ```
 
-In some cases, component properties are dynamic, so you can use `x-use-component-props`.
+В некоторых случаях свойства компонента динамические, поэтому можно использовать `x-use-component-props`.
 
 ```ts
 {
@@ -233,13 +235,13 @@ In some cases, component properties are dynamic, so you can use `x-use-component
 }
 ```
 
-The `MyTable` component needs to be wrapped with a higher-order function `withDynamicSchemaProps`. For example:
+Компонент `MyTable` должен быть обёрнут функцией высшего порядка `withDynamicSchemaProps`. Например:
 
 ```ts
 const MyTable = withDynamicSchemaProps(Table, { displayName: 'MyTable' });
 ```
 
-`useTableProps` is a custom hook for dynamically generating component properties.
+`useTableProps` — это пользовательский хук для динамической генерации свойств компонента.
 
 ```ts
 const useTableProps = () => {
@@ -250,7 +252,7 @@ const useTableProps = () => {
 };
 ```
 
-You also need to register it in the scope, refer to the documentation [Schema Rendering](/development/client/ui-schema/rendering).
+Также необходимо зарегистрировать его в scope, см. документацию [Рендеринг schema](/development/client/ui-schema/rendering).
 
 ```tsx | pure
 <SchemaComponent
@@ -266,7 +268,7 @@ You also need to register it in the scope, refer to the documentation [Schema Re
 
 ### `x-decorator`
 
-Decorator component
+Компонент-обёртка
 
 ```ts
 type Decorator = any;
@@ -275,9 +277,9 @@ interface ISchema {
 }
 ```
 
-The combination of x-decorator and x-component allows you to place two components in one schema node, reducing schema structure complexity and increasing component reusability.
+Комбинация `x-decorator` и `x-component` позволяет размещать два компонента в одном узле schema, уменьшая сложность структуры schema и повышая повторное использование компонентов.
 
-For example, in a form scenario, you can combine the FormItem component with any field component, where FormItem is the Decorator.
+Например, в сценарии формы можно комбинировать компонент FormItem с любым компонентом поля, где FormItem выступает как Decorator.
 
 ```ts
 {
@@ -298,7 +300,7 @@ For example, in a form scenario, you can combine the FormItem component with any
 }
 ```
 
-Equivalent JSX
+Эквивалентный JSX
 
 ```tsx | pure
 <div>
@@ -311,7 +313,7 @@ Equivalent JSX
 </div>
 ```
 
-You can also provide a CardItem component to wrap all blocks, so all blocks are wrapped by Card.
+Также можно использовать компонент CardItem для обёртывания всех блоков, чтобы все блоки были обёрнуты в Card.
 
 ```ts
 {
@@ -332,7 +334,7 @@ You can also provide a CardItem component to wrap all blocks, so all blocks are 
 }
 ```
 
-Equivalent JSX
+Эквивалентный JSX
 
 ```tsx | pure
 <div>
@@ -345,17 +347,17 @@ Equivalent JSX
 </div>
 ```
 
-### `x-decorator-props` and `x-use-decorator-props`
+### `x-decorator-props` и `x-use-decorator-props`
 
-Use similarly to `x-component-props` and `x-use-component-props`. The `withDynamicSchemaProps()` higher-order function needs to be used for decorator components.
+Используются аналогично `x-component-props` и `x-use-component-props`. Для компонентов-обёрток необходимо использовать функцию высшего порядка `withDynamicSchemaProps()`.
 
 ### `x-display`
 
-Component display state
+Состояние отображения компонента
 
-- `'x-display': 'visible'`: Show component
-- `'x-display': 'hidden'`: Hide component, data is not hidden
-- `'x-display': 'none'`: Hide component, data is also hidden
+- `'x-display': 'visible'`: Показать компонент
+- `'x-display': 'hidden'`: Скрыть компонент, данные не скрыты
+- `'x-display': 'none'`: Скрыть компонент, данные также скрыты
 
 #### `'x-display': 'visible'`
 
@@ -374,7 +376,7 @@ Component display state
 }
 ```
 
-Equivalent JSX
+Эквивалентный JSX
 
 ```tsx | pure
 <div className={'form-item'}>
@@ -399,11 +401,11 @@ Equivalent JSX
 }
 ```
 
-Equivalent JSX
+Эквивалентный JSX
 
 ```tsx | pure
 <div className={'form-item'}>
-  {/* No input component is output here, but the field model with name=title still exists */}
+  {/* Здесь не выводится компонент input, но модель поля с name=title всё ещё существует */}
 </div>
 ```
 
@@ -424,25 +426,25 @@ Equivalent JSX
 }
 ```
 
-Equivalent JSX
+Эквивалентный JSX
 
 ```tsx | pure
 <div className={'form-item'}>
-  {/* No input component is output here, and the field model with name=title does not exist */}
+  {/* Здесь не выводится компонент input, и модель поля с name=title не существует */}
 </div>
 ```
 
 ### `x-pattern`
 
-Component display mode
+Режим отображения компонента
 
-Used for field components, there are three display modes:
+Используется для компонентов полей, существует три режима отображения:
 
-- `'x-pattern': 'editable'`: Editable
-- `'x-pattern': 'disabled'`: Non-editable
-- `'x-pattern': 'readPretty'`: Read-only
+- `'x-pattern': 'editable'`: Редактируемый
+- `'x-pattern': 'disabled'`: Нередактируемый
+- `'x-pattern': 'readPretty'`: Только для чтения
 
-For example, the single-line text `<SingleText />` component, editable and non-editable modes are `<input />`, read-only mode is `<div />`.
+Например, для компонента однострочного текста `<SingleText />` редактируемый и нередактируемый режимы — это `<input />`, а режим только для чтения — `<div />`.
 
 #### `'x-pattern': 'editable'`
 
@@ -455,7 +457,7 @@ const schema = {
   properties: {
     title: {
       type: 'string',
-      default: 'Hello',
+      default: 'Привет',
       'x-component': 'SingleText',
       'x-pattern': 'editable',
     },
@@ -463,11 +465,11 @@ const schema = {
 };
 ```
 
-Equivalent JSX
+Эквивалентный JSX
 
 ```tsx | pure
 <div className={'form-item'}>
-  <input name={'title'} value={'Hello'} />
+  <input name={'title'} value={'Привет'} />
 </div>
 ```
 
@@ -482,7 +484,7 @@ const schema = {
   properties: {
     title: {
       type: 'string',
-      default: 'Hello',
+      default: 'Привет',
       'x-component': 'SingleText',
       'x-pattern': 'disabled',
     },
@@ -490,11 +492,11 @@ const schema = {
 };
 ```
 
-Equivalent JSX
+Эквивалентный JSX
 
 ```tsx | pure
 <div className={'form-item'}>
-  <input name={'title'} value={'Hello'} disabled />
+  <input name={'title'} value={'Привет'} disabled />
 </div>
 ```
 
@@ -509,7 +511,7 @@ const schema = {
   properties: {
     title: {
       type: 'string',
-      default: 'Hello',
+      default: 'Привет',
       'x-component': 'SingleText',
       'x-pattern': 'readPretty',
     },
@@ -517,17 +519,17 @@ const schema = {
 };
 ```
 
-Equivalent JSX
+Эквивалентный JSX
 
 ```tsx | pure
 <div className={'form-item'}>
-  <div>Hello</div>
+  <div>Привет</div>
 </div>
 ```
 
 ### `x-initializer`
 
-Not all components support `x-initializer`. Among existing common schema components, only Grid, ActionBar, and Tabs support the `x-initializer` parameter.
+Не все компоненты поддерживают `x-initializer`. Среди существующих общих компонентов schema только Grid, ActionBar и Tabs поддерживают параметр `x-initializer`.
 
 ```ts
 {
@@ -537,11 +539,11 @@ Not all components support `x-initializer`. Among existing common schema compone
 }
 ```
 
-Custom components can also use `useSchemaInitializerRender()` to handle `x-initializer` rendering. Refer to the [SchemaInitializer Initializer](/development/client/ui-schema/initializer) section for detailed usage.
+Пользовательские компоненты также могут использовать `useSchemaInitializerRender()` для обработки рендеринга `x-initializer`. Подробности использования см. в разделе [SchemaInitializer Initializer](/development/client/ui-schema/initializer).
 
 ### `x-settings`
 
-Not all components support `x-settings`. Usually, it needs to be combined with wrapper components such as BlockItem, FormItem, CardItem.
+Не все компоненты поддерживают `x-settings`. Обычно требуется комбинация с обёрточными компонентами, такими как BlockItem, FormItem, CardItem.
 
 ```ts
 {
@@ -552,11 +554,11 @@ Not all components support `x-settings`. Usually, it needs to be combined with w
 }
 ```
 
-Custom components can also use `useSchemaSettingsRender()` to handle `x-settings` rendering. Refer to the [SchemaSettings Configurator](/development/client/ui-schema/settings) section for detailed usage.
+Пользовательские компоненты также могут использовать `useSchemaSettingsRender()` для обработки рендеринга `x-settings`. Подробности использования см. в разделе [SchemaSettings Configurator](/development/client/ui-schema/settings).
 
 ### `x-toolbar`
 
-Not all components support `x-toolbar`. Usually, it needs to be combined with wrapper components such as BlockItem, FormItem, CardItem.
+Не все компоненты поддерживают `x-toolbar`. Обычно требуется комбинация с обёрточными компонентами, такими как BlockItem, FormItem, CardItem.
 
 ```ts
 {
@@ -567,4 +569,5 @@ Not all components support `x-toolbar`. Usually, it needs to be combined with wr
 }
 ```
 
-Custom components can also use `useToolbarRender()` to handle `x-toolbar` rendering. Refer to the [SchemaToolbar Toolbar](/development/client/ui-schema/toolbar) section for detailed usage.
+Пользовательские компоненты также могут использовать `useToolbarRender()` для обработки рендеринга `x-toolbar`. Подробности использования см. в разделе [SchemaToolbar Toolbar](/development/client/ui-schema/toolbar).
+
