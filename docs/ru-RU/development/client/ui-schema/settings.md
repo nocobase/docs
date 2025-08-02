@@ -1,6 +1,6 @@
-# Настройки схемы
+# Настройки Schema
 
-После активации конфигурации пользовательского интерфейса при наведении мыши на определённый блок, поле или действие отображается соответствующая панель инструментов схемы. Кнопка настроек на панели инструментов является компонентом настроек для текущей схемы.
+После активации конфигурации пользовательского интерфейса при наведении мыши на определённый блок, поле или действие отображается соответствующая панель инструментов Schema. Кнопка настроек на панели инструментов является компонентом настроек для текущей Schema.
 
 ![Alt text](https://static-docs.nocobase.com/3f37519ddd9ba1a99f1fdbfe32b4a454.png)
 
@@ -16,7 +16,7 @@
 class PluginDemoAddSchemaSettingsItem extends Plugin {
   async load() {
     this.schemaSettingsManager.addItem(
-      'mySettings', // Пример существующих настроек схемы
+      'mySettings', // Пример существующих настроек Schema
       'customItem',
       {
         type: 'item',
@@ -82,9 +82,9 @@ class PluginDemoAddSchemaSettings extends Plugin {
 
 ### Как использовать добавленные настройки
 
-Добавленные SchemaSettings можно использовать в параметре `x-settings` схемы. Не все компоненты поддерживают `x-settings`; обычно он используется в сочетании с обёрточными компонентами, такими как BlockItem, FormItem, CardItem. В пользовательских компонентах также можно использовать `useSchemaSettingsRender()` для независимой обработки рендеринга `x-settings`.
+Добавленные SchemaSettings можно использовать в параметре `x-settings` Schema. Не все компоненты поддерживают `x-settings`; обычно он используется в сочетании с обёрточными компонентами, такими как BlockItem, FormItem, CardItem. В пользовательских компонентах также можно использовать `useSchemaSettingsRender()` для независимой обработки рендеринга `x-settings`.
 
-#### Компоненты схемы, поддерживающие `x-settings`
+#### Компоненты Schema, поддерживающие `x-settings`
 
 В большинстве случаев `x-settings` необходимо использовать в сочетании с обёрточными компонентами, такими как BlockItem, FormItem, CardItem. Например:
 
@@ -105,13 +105,13 @@ class PluginDemoAddSchemaSettings extends Plugin {
 
 <code src="./demos/use-schema-settings-render/index.tsx"></code>
 
-В большинстве случаев настройки размещаются на SchemaToolbar, поэтому поддержка `x-toolbar` для пользовательских компонентов также может косвенно поддерживать `x-settings`. Для получения дополнительных сведений об использовании обратитесь к [Панель инструментов схемы](/development/client/ui-schema/toolbar).
+В большинстве случаев настройки размещаются на SchemaToolbar, поэтому поддержка `x-toolbar` для пользовательских компонентов также может косвенно поддерживать `x-settings`. Для получения дополнительных сведений об использовании обратитесь к [Панель инструментов Schema](/development/client/ui-schema/toolbar).
 
 <code src="./demos/schema-toolbar-basic/button.tsx"></code>
 
-## Как реализовать настройки схемы?
+## Как реализовать настройки Schema?
 
-Используйте `useSchemaSettings()` для получения `Designable` текущей схемы и управляйте схемой через `Designable`. Общие API включают:
+Используйте `useSchemaSettings()` для получения `Designable` текущей Schema и управляйте ей через `Designable`. Общие API включают:
 
 - `dn.insertAdjacent()`
 - `dn.getSchemaAttribute()`
