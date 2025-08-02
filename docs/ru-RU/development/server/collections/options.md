@@ -1,144 +1,125 @@
-# Collection protocol
+### **Конфигурация ресурсов и действий**
 
-Collection is the backbone of NocoBase, a protocol for describing data structures (collections and fields), very close to the concept of a relational database, but not limited to relational databases, but can also be a data source for NoSQL databases, HTTP APIs, etc.
+#### **Самые простые действия (Actions) ресурса**
 
-<img src="./schema.svg" style="max-width: 800px;" >
+#### **Действие с параметрами по умолчанию**
 
-At this stage, the Collection protocol is based on the relational database interface (db.collections), and data sources such as NoSQL databases and HTTP APIs will be implemented gradually in the future.
+#### **Использование глобальных действий**
 
-Collection protocol mainly includes two parts: CollectionOptions and FieldOptions. Because Field is extensible, the parameters of FieldOptions are very flexible.
+#### **Объединение параметров действия из нескольких источников**
 
-## CollectionOptions
+#### **Использование встроенных действий**
+
+В NocoBase ресурсы предназначены для работы с коллекциями. Настроенные коллекции (включая связи) автоматически преобразуются в соответствующие ресурсы.
+
+#### **Автоматическое преобразование**
 
 ```ts
-interface CollectionOptions {
-  name: string;
-  title?: string;
-  // Tree structure table, TreeRepository
-  tree?:
-    | 'adjacency-list'
-    | 'closure-table'
-    | 'materialized-path'
-    | 'nested-set';
-  // parent-child inheritance
-  inherits?: string | string[];
-  fields?: FieldOptions[];
-  timestamps?: boolean;
-  paranoid?: boolean;
-  sortable?: CollectionSortable;
-  model?: string;
-  repository?: string;
-  [key: string]: any;
+export class PluginSampleToResourcesServer extends Plugin {
+  async load() {
+    this.db.collection({
+      name: 'posts',
+      fields: [
+        {
+          type: 'hasMany',
+          name: 'comments',
+          target: 'comments',
+        },
+      ],
+    });
+    this.db.collection({
+      name: 'comments',
+    });
+  }
 }
-
-type CollectionSortable =
-  | string
-  | boolean
-  | { name?: string; scopeKey?: string };
 ```
 
-## FieldOptions
+Интерфейсы для `posts` и `posts.comments` в приведённом выше примере будут следующими:
 
-Generic field parameters
+**Ресурс posts**
+
+```
+POST  /api/posts:create
+GET   /api/posts:list
+GET   /api/posts:get/1
+POST  /api/posts:update/1
+POST  /api/posts:destroy/1
+```
+
+**Ресурс posts.comments**
+
+```
+POST  /api/posts/1/comments:create
+GET   /api/posts/1/comments:list
+GET   /api/posts/1/comments:get/1
+POST  /api/posts/1/comments:update/1
+POST  /api/posts/1/comments:destroy/1
+```
+
+HTTP API в NocoBase является надмножеством REST API, стандартные CRUD-операции поддерживают RESTful-стиль.
+
+#### **Встроенные действия**
+
+После преобразования коллекции в ресурс становится возможным выполнение CRUD-операций, поскольку уже определены некоторые стандартные действия.
+
+**Встроенные глобальные действия, доступные для коллекций и связей:**
+
+- `create`
+- `get`
+- `list`
+- `update`
+- `destroy`
+- `move`
+
+**Встроенные действия для связей (только для связей):**
+
+- `set`
+- `add`
+- `remove`
+- `toggle`
+
+Справочник по использованию встроенных действий доступен в документации API.
+
+#### **Пользовательские действия**
+
+**Глобальные действия**
 
 ```ts
-interface FieldOptions {
-  name: string;
-  type: string;
-  hidden?: boolean;
-  index?: boolean;
-  interface?: string;
-  uiSchema?: ISchema;
+export class PluginSampleResourcerServer extends Plugin {
+  async load() {
+    this.resourcer.registerActions({
+      import: async (ctx, next) => {},
+      export: async (ctx, next) => {},
+    });
+  }
+}
 ```
 
-[Introduction to UI Schema here](/development/client/ui-schema-designer/what-is-ui-schema)
+**Действия для конкретного ресурса**
 
-### Field Type
+```ts
+export class PluginSampleResourcerServer extends Plugin {
+  async load() {
+    this.resourcer.registerActions({
+      'posts:listPublished': async (ctx, next) => {},
+    });
+  }
+}
+```
 
-Field Type includes Attribute Type and Association Type.
+#### **Пользовательские ресурсы**
 
-**Attribute Type**
+При наличии специфических требований можно явно определить ресурс и соответствующие действия:
 
-- 'boolean'
-- 'integer'
-- 'bigInt'
-- 'double'
-- 'real'
-- 'decimal'
-- 'string'
-- 'text'
-- 'password'
-- 'date'
-- 'time'
-- 'array'
-- 'json'
-- 'jsonb'
-- 'uuid'
-- 'uid'
-- 'formula'
-- 'radio'
-- 'sort'
-- 'virtual'
-
-**Association Type**
-
-- 'belongsTo'
-- 'hasOne'
-- 'hasMany'
-- 'belongsToMany'
-
-### Field Interface
-
-**Basic**
-
-- input
-- textarea
-- phone
-- email
-- integer
-- number
-- percent
-- password
-- icon
-
-**Choices**
-
-- checkbox
-- select
-- multipleSelect
-- radioGroup
-- checkboxGroup
-- chinaRegion
-
-**Media**
-
-- attachment
-- markdown
-- richText
-
-**Date & Time**
-
-- datetime
-- time
-
-**Relation**
-
-- linkTo - `type: 'believesToMany'`
-- oho - `type: 'hasOne'`
-- obo - `type: 'believesTo'`
-- o2m - `type: 'hasMany'`
-- m2o - `type: 'believesTo'`
-- m2m - `type: 'believesToMany'`
-
-**Advanced**
-
-- formula
-- sequence
-
-**System info**
-
-- id
-- createdAt
-- createdBy
-- updatedAt
-- updatedBy
+```ts
+app.resourcer.define({
+  name: 'posts',
+  actions: {
+    create: {},
+    get: {},
+    list: {},
+    update: {},
+    destroy: {},
+  },
+});
+```
