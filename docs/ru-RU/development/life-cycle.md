@@ -1,26 +1,26 @@
-# Lifecycle
+# Жизненный цикл
 
-## Lifecycle of the server-side application
+## Жизненный цикл серверного приложения
 
-<img alt="Lifecycle of the server-side application" src="./server/image-1.png" style="width: 700px;" />
+<img alt="Жизненный цикл серверного приложения" src="./server/image-1.png" style="width: 700px;" />
 
-Triggered by `app.on()`, see [Server-side - Events](/development/server/events) for details.
+Активируется через `app.on()`, подробности см. в разделе [Сервер - События](/development/server/events).
 
 ```ts
 class PluginSampleHelloServer extends Plugin {
   async beforeLoad() {
     this.app.on('beforeInstall', async () => {
-      // coding...
+      // код...
     });
   }
 }
 ```
 
-## Lifecycle of the server-side plugin
+## Жизненный цикл серверного плагина
 
-<img alt="Lifecycle of the server-side plugin" src="./server/image.png" style="width: 450px;" />
+<img alt="Жизненный цикл серверного плагина" src="./server/image.png" style="width: 450px;" />
 
-Written in the plugin class, see [Server - Overview](/development/server) for usage details.
+Реализуется в классе плагина, подробности использования см. в разделе [Сервер - Обзор](/development/server).
 
 ```ts
 class PluginSampleHelloServer extends Plugin {
@@ -28,8 +28,8 @@ class PluginSampleHelloServer extends Plugin {
 }
 ```
 
-## Lifecycle of the client-side plugin
+## Жизненный цикл клиентского плагина
 
-<img alt="Lifecycle of the client-side plugin" src="./client/image.png" style="width: 550px;" />
+<img alt="Жизненный цикл клиентского плагина" src="./client/image.png" style="width: 550px;" />
 
-Written in the plugin class, see [Client - Overview](/development/client) for usage details.
+Реализуется в классе плагина, подробности использования см. в разделе [Клиент - Обзор](/development/client).
