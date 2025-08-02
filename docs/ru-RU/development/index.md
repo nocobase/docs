@@ -1,37 +1,37 @@
-# Introduction
+# Введение
 
-NocoBase adopts a microkernel architecture, where various functionalities are extended in the form of plugins. The plugin-based design reduces the coupling between modules, increasing reusability. With the continuous expansion of the plugin library, common scenarios can be easily built by combining plugins. NocoBase's no-code platform is composed of various plugins.
+NocoBase использует микрокерновую архитектуру, где различные функциональности расширяются в виде плагинов. Плагинный подход уменьшает связность между модулями, повышая переиспользуемость. По мере расширения библиотеки плагинов, типовые сценарии можно легко реализовывать их комбинацией. No-code платформа NocoBase состоит из различных плагинов.
 
-## Plugin Manager
+## Менеджер плагинов
 
-NocoBase provides a powerful plugin manager to handle plugin management. No-code users can manage the addition, activation, deactivation, and deletion of plugins through the interface.
+NocoBase предоставляет мощный менеджер плагинов для управления ими. No-code пользователи могут через интерфейс управлять добавлением, активацией, деактивацией и удалением плагинов.
 
-![Plugin Manager](https://static-docs.nocobase.com/f914d978dbfd8c45a650bd88ef867832.png)
+![Менеджер плагинов](https://static-docs.nocobase.com/f914d978dbfd8c45a650bd88ef867832.png)
 
-Developers can also manage plugins through the CLI.
+Разработчики также могут управлять плагинами через CLI.
 
-For more plugin examples, see [packages/samples](https://github.com/nocobase/nocobase/tree/main/packages/plugins/%40nocobase).
+Больше примеров плагинов можно найти в [packages/samples](https://github.com/nocobase/nocobase/tree/main/packages/plugins/%40nocobase).
 
-## Extensibility
+## Расширяемость
 
-Whether it's generic functionalities or personalized customization, they can be written in the form of plugins. NocoBase's extensibility is reflected in various aspects:
+Будь то типовые функциональности или персонализированные доработки - все может быть реализовано в виде плагинов. Расширяемость NocoBase проявляется в различных аспектах:
 
-- It can be visible user interface-related page modules, block types, operation types, field types, etc.
-- It can also be used for enhancing or restricting HTTP API filters, validators, access restrictions, etc.
-- It can also be more fundamental enhancements of features such as data tables, migrations, events, command-line, etc.
+- Это могут быть видимые пользователю интерфейсные модули страниц, типы блоков, операций, полей и т.д.
+- Это могут быть доработки или ограничения HTTP API - фильтры, валидаторы, ограничения доступа и т.п.
+- Это могут быть и более фундаментальные улучшения возможностей вроде таблиц данных, миграций, событий, командной строки и т.д.
 
-Modules are distributed as follows:
+Модули распределены следующим образом:
 
-- Server-side
-  - Data tables and fields
-  - Resources and operations
-  - Middleware
-  - Events
-  - Custom command-line
-  - Internationalization
-- Client-side
-  - Route management and plugin configuration pages
-  - Styles and themes
-  - Providers and contexts
+- Серверная часть:
+  - Таблицы и поля данных
+  - Ресурсы и операции
+  - Промежуточное ПО (middleware)
+  - События
+  - Пользовательские команды CLI
+  - Интернационализация
+- Клиентская часть:
+  - Управление маршрутами и страницы конфигурации плагинов
+  - Стили и темы
+  - Провайдеры и контексты
   - UI Schema
-  - Internationalization
+  - Интернационализация
