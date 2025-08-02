@@ -1,32 +1,32 @@
-# Set The Data Scope
+# Настройка области данных
 
-## Introduction
+## Введение
 
-The data scope for relationship fields is similar to the data scope setting for blocks, allowing you to set default filtering criteria for relational data.
+Область данных для полей связей аналогична настройке области данных для блоков, позволяя задавать критерии фильтрации по умолчанию для связанных данных.
 
-## Instructions
+## Инструкция
 
 ![20240422153711](https://static-docs.nocobase.com/20240422153711.png)
 
-### Static Value
+### Статическое значение
 
-Example: Only products currently for sale can be selected as related items.
+Пример: В качестве связанных элементов можно выбрать только товары, которые сейчас в продаже.
 
 ![20240422155953](https://static-docs.nocobase.com/20240422155953.png)
 
-### Variable Value
+### Переменное значение
 
-Example: Only products with a production date earlier than last month can be selected as related items.
+Пример: В качестве связанных элементов можно выбрать только товары с датой производства ранее прошлого месяца.
 
 ![20240422163640](https://static-docs.nocobase.com/20240422163640.png)
 
-For more information on variables, refer to [Variables](/handbook/ui/variables).
+Подробнее о переменных: [Переменные](/handbook/ui/variables)
 
-### Relationship Field Linkage
+### Связь полей отношений
 
-Relationship fields can be linked by setting the data scope.
+Поля связей могут быть связаны через настройку области данных.
 
-Example: In the order form, there are many-to-many relationship fields "Products" and a many-to-one relationship field "Customers." The product table has a many-to-many relationship field "Customers." In the order form block, the selectable products are those associated with the customer selected in the current form.
+Пример: В форме заказа есть поле связи "многие-ко-многим" для "Товаров" и "многие-к-одному" для "Клиентов". В таблице товаров есть поле связи "многие-ко-многим" для "Клиентов". В блоке формы заказа выбираемые товары - это те, что связаны с клиентом, выбранным в текущей форме.
 
 ![20240422154145](https://static-docs.nocobase.com/20240422154145.png)
 
