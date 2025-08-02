@@ -1,44 +1,46 @@
-# Details Fields
+### **Поля детализации**
 
-## Introduction
+#### **Введение**
 
-In detail blocks, list blocks, and grid blocks, the field configuration remains largely consistent, primarily focusing on how fields are presented in a reading view.
+В блоках детализации, списках и сетках конфигурация полей в целом одинакова и в основном сосредоточена на способе отображения полей в режиме просмотра.
 
 ![20240409131155](https://static-docs.nocobase.com/20240409131155.png)
 
-## Field Configuration Options
+#### **Параметры настройки полей**
 
-### Date Field Formatting
+##### **Форматирование поля даты**
 
 ![20240417223807](https://static-docs.nocobase.com/20240417223807.png)
 
-For more information, see [Date Formatting](/handbook/ui/fields/specific/date-picker).
+Более подробную информацию см. в разделе [Форматирование даты](/handbook/ui/fields/specific/date-picker).
 
-### Numeric Field Formatting
+##### **Форматирование числового поля**
 
 ![20240417223608](https://static-docs.nocobase.com/20240417223608.png)
 
-This feature supports basic unit conversions, thousand separators, prefix and suffix customization, precision settings, and scientific notation.
+Функция поддерживает базовые преобразования единиц измерения, разделители тысяч, настройку префиксов и суффиксов, установку точности и научную нотацию.
 
 ![20240417223709](https://static-docs.nocobase.com/20240417223709.png)
 
-For more details, see [Number Formatting](/handbook/ui/fields/field-settings/number-format).
+Более подробно см. в разделе [Форматирование чисел](/handbook/ui/fields/field-settings/number-format).
 
-- [Edit Field Title](/handbook/ui/fields/field-settings/edit-title)
-- [Display Title](/handbook/ui/fields/field-settings/display-title)
-- [Edit Field Description](/handbook/ui/fields/field-settings/edit-description)
-- [Edit Field Tooltip](/handbook/ui/fields/field-settings/edit-tooltip)
+- [Редактировать заголовок поля](/handbook/ui/fields/field-settings/edit-title)
+- [Отображать заголовок](/handbook/ui/fields/field-settings/display-title)
+- [Редактировать описание поля](/handbook/ui/fields/field-settings/edit-description)
+- [Редактировать всплывающую подсказку поля](/handbook/ui/fields/field-settings/edit-tooltip)
 
-### Field Component
+##### **Компонент поля**
 
-Certain fields allow for switching to different components. For instance, the `URL` component can be changed to a `Preview` component.
+Некоторые поля позволяют переключаться на разные компоненты. Например, компонент `URL` можно изменить на компонент `Preview` (Просмотр).
 
 ![20240806165321](https://static-docs.nocobase.com/20240806165321.png)
 
-If you need to add more components, refer to [Extending Field Value Components](/plugin-samples/field/value).
+Если необходимо добавить больше компонентов, см. раздел [Расширение компонентов полей со значениями](/plugin-samples/field/value).
 
-### Style
+##### **Стиль**
 
-![2024-06-26-15-16-09-表单样式入口](https://static-docs.nocobase.com/2024-06-26-15-16-09-表单风格入口.png)
-![2024-06-26-15-21-31-样式配置](https://static-docs.nocobase.com/2024-06-26-15-21-31-样式配置.png)
-![2024-06-26-15-22-42-表单-最终效果](https://static-docs.nocobase.com/2024-06-26-15-22-42-表单-最终效果.png)
+![2024-06-26-15-16-09-表单样式入口](https://static-docs.nocobase.com/2024-06-26-15-16-09-%E8%A1%A8%E5%8D%95%E9%A3%8E%E6%A0%BC%E5%85%A5%E5%8F%A3.png)
+
+![2024-06-26-15-21-31-样式配置](https://static-docs.nocobase.com/2024-06-26-15-21-31-%E6%A0%B7%E5%BC%8F%E9%85%8D%E7%BD%AE.png)
+
+![2024-06-26-15-22-42-表单-最终效果](https://static-docs.nocobase.com/2024-06-26-15-22-42-%E8%A1%A8%E5%8D%95-%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C.png)
