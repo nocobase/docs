@@ -1,20 +1,20 @@
-# Events
+### **События**
 
-NocoBase provides a very large number of event listeners in the lifecycle of applications, plugins, and database, and these methods will only be executed when an event is triggered.
+NocoBase предоставляет большое количество слушателей событий в жизненном цикле приложения, плагинов и базы данных. Эти методы выполняются только при возникновении соответствующего события.
 
-## How to add event listeners?
+#### **Как добавить слушатели событий?**
 
-The registration of events is usually placed in afterAdd or beforeLoad
+Регистрация событий обычно размещается в `afterAdd` или `beforeLoad`:
 
 ```ts
 export class MyPlugin extends Plugin {
-  // After the plugin is added, afterAdd() is executed with or without activation
+  // afterAdd() выполняется после добавления плагина, активирован он или нет
   afterAdd() {
     this.app.on();
     this.db.on();
   }
 
-  // beforeLoad() will only be executed after the plugin is activated
+  // beforeLoad() выполняется только после активации плагина
   beforeLoad() {
     this.app.on();
     this.db.on();
@@ -22,45 +22,45 @@ export class MyPlugin extends Plugin {
 }
 ```
 
-### `db.on`
+#### **`db.on`**
 
-Database related events are related to Collection configuration, CRUD of Repository, including:
+События, связанные с базой данных, относятся к настройке коллекций, операциям CRUD репозитория и включают:
 
-- 'beforeSync' / 'afterSync'
-- 'beforeValidate' / 'afterValidate'
-- 'beforeCreate' / 'afterCreate'
-- 'beforeUpdate' / 'afterUpdate'
-- 'beforeSave' / 'afterSave'
-- 'beforeDestroy' / 'afterDestroy'
-- 'afterCreateWithAssociations'
-- 'afterUpdateWithAssociations'
-- 'afterSaveWithAssociations'
-- 'beforeDefineCollection'
-- 'afterDefineCollection'
-- 'beforeRemoveCollection' / 'afterRemoveCollection'
+- `'beforeSync' / 'afterSync'`
+- `'beforeValidate' / 'afterValidate'`
+- `'beforeCreate' / 'afterCreate'`
+- `'beforeUpdate' / 'afterUpdate'`
+- `'beforeSave' / 'afterSave'`
+- `'beforeDestroy' / 'afterDestroy'`
+- `'afterCreateWithAssociations'`
+- `'afterUpdateWithAssociations'`
+- `'afterSaveWithAssociations'`
+- `'beforeDefineCollection'`
+- `'afterDefineCollection'`
+- `'beforeRemoveCollection' / 'afterRemoveCollection'`
 
-See [Database API](/api/database) for more details.
+Более подробно см. в разделе [API базы данных](/api/database).
 
-### `app.on()`
+#### **`app.on()`**
 
-The app's events are related to the application's lifecycle, and the relevant events are:
+События приложения связаны с его жизненным циклом и включают:
 
-- 'beforeLoad' / 'afterLoad'
-- 'beforeInstall' / 'afterInstall'
-- 'beforeUpgrade' / 'afterUpgrade'
-- 'beforeStart' / 'afterStart'
-- 'beforeStop' / 'afterStop'
-- 'beforeDestroy' / 'afterDestroy'
+- `'beforeLoad' / 'afterLoad'`
+- `'beforeInstall' / 'afterInstall'`
+- `'beforeUpgrade' / 'afterUpgrade'`
+- `'beforeStart' / 'afterStart'`
+- `'beforeStop' / 'afterStop'`
+- `'beforeDestroy' / 'afterDestroy'`
 
-Refer to [Application API](/api/server/application#Events) for more details.
+Подробнее см. в разделе [API приложения](/api/server/application#Events).
 
-## Example
+#### **Примеры**
 
-Let's continue with a simple online store as an example, the related collections modeling can be reviewed in the [Collections and Fields](/development/) section for examples.
+Рассмотрим простой интернет-магазин. Моделирование связанных коллекций можно посмотреть в разделе [Коллекции и поля](/development/).
 
-### Deducting product inventory after creating an order
+##### **Списание товара из остатков после создания заказа**
 
-Usually we have different collections for products and orders. The problem of overselling can be solved by subtracting the inventory of the item after the customer has placed the order. At this point we can define the corresponding event for the action of Creating Order and solve the inventory modification problem at this time together with:
+Обычно у нас есть отдельные коллекции для товаров и заказов. Проблему перепродажи можно решить, вычитая количество товара из остатков после оформления заказа. В этом случае можно определить соответствующее событие для действия «Создание заказа»:
 
 ```ts
 class ShopPlugin extends Plugin {
@@ -83,9 +83,9 @@ class ShopPlugin extends Plugin {
 }
 ```
 
-Since the default Sequelize event carries information about the transaction, we can use transaction directly to ensure that both data actions are performed in the same transaction.
+Так как события Sequelize по умолчанию содержат информацию о транзакции, мы можем использовать её напрямую, чтобы гарантировать выполнение обоих действий в одной транзакции.
 
-Similarly, you can change the order status to shipped after creating the shipping record: ```ts
+Аналогично можно изменить статус заказа на «Отправлен» после создания записи доставки:
 
 ```ts
 class ShopPlugin extends Plugin {
@@ -96,7 +96,7 @@ class ShopPlugin extends Plugin {
         filterByTk: delivery.orderId,
         value: {
           status: 2
-        }
+        },
         transaction: options.transaction
       });
     });
@@ -104,9 +104,9 @@ class ShopPlugin extends Plugin {
 }
 ```
 
-### Timed tasks that exist alongside the application
+##### **Планировщик задач, работающий параллельно с приложением**
 
-Without considering complex cases such as using workflow plugins, we can also implement a simple timed task mechanism via application-level events, and it can be bound to the application's process and stop when it exits. For example, if we want to scan all orders at regular intervals and automatically sign them after the sign-off time.
+Не рассматривая сложные случаи, такие как использование плагина рабочих процессов, можно реализовать простой механизм задач по расписанию через события уровня приложения. Задача будет привязана к процессу приложения и остановится при его завершении. Например, можно регулярно проверять все заказы и автоматически помечать их как полученные по истечении срока.
 
 ```ts
 class ShopPlugin extends Plugin {
@@ -144,12 +144,12 @@ class ShopPlugin extends Plugin {
       },
     });
 
-    console.log('%d orders expired', updated);
+    console.log('%d заказов просрочено', updated);
   };
 
   load() {
     this.app.on('beforeStart', () => {
-      // execute every minute
+      // выполнять каждую минуту
       this.timer = setInterval(this.checkOrder, 1000 * 60);
     });
 
@@ -161,11 +161,11 @@ class ShopPlugin extends Plugin {
 }
 ```
 
-## Summary
+#### **Заключение**
 
-The above example gives us a basic understanding of what events do and the ways they can be used to extend.
+Приведённые примеры дают базовое понимание того, как работают события и как их можно использовать для расширения функциональности.
 
-- Database related events
-- Application related events
+- События, связанные с базой данных
+- События, связанные с приложением
 
-The sample code covered in this chapter is integrated in the corresponding package [packages/samples/shop-events](https://github.com/nocobase/nocobase/tree/main/packages/samples/shop-events), which can be run directly in run locally to see the results.
+Примеры кода из этой главы интегрированы в пакет [packages/samples/shop-events](https://github.com/nocobase/nocobase/tree/main/packages/samples/shop-events) и могут быть запущены локально для проверки результата.
