@@ -1,34 +1,34 @@
-# Building
+# Сборка
 
-## Custom Build Configuration
+## Пользовательская конфигурация сборки
 
-If you want to customize the build configuration, you can create a `build.config.ts` file in the root directory of the plugin with the following content:
+Для кастомизации конфигурации сборки создайте файл `build.config.ts` в корневой директории плагина со следующим содержимым:
 
 ```js
 import { defineConfig } from '@nocobase/build';
 
 export default defineConfig({
   modifyViteConfig: (config) => {
-    // Vite is used for packaging the `src/client` side code
+    // Vite используется для сборки клиентского кода из `src/client`
 
-    // Modify the Vite configuration. For details, refer to: https://vitejs.dev/guide/
+    // Модифицируйте конфигурацию Vite. Подробности: https://vitejs.dev/guide/
     return config;
   },
   modifyTsupConfig: (config) => {
-    // Tsup is used for packaging the `src/server` side code
+    // Tsup используется для сборки серверного кода из `src/server`
 
-    // Modify the Tsup configuration. For details, refer to: https://tsup.egoist.dev/#using-custom-configuration
+    // Модифицируйте конфигурацию Tsup. Подробности: https://tsup.egoist.dev/#using-custom-configuration
     return config;
   },
   beforeBuild: (log) => {
-    // Callback function before the build starts. You can perform some actions before the build.
+    // Функция обратного вызова перед началом сборки
   },
   afterBuild: (log: PkgLog) => {
-    // Callback function after the build is completed. You can perform some actions after the build.
-  };
+    // Функция обратного вызова после завершения сборки
+  }
 });
 ```
 
-## Plugin Example
+## Пример плагина
 
 - [@nocobase/plugin-sample-custom-build](#)
