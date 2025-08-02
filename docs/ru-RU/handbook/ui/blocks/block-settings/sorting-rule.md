@@ -1,23 +1,23 @@
-# Sorting Rules
+# Правила сортировки
 
-## Introduction
+## Введение
 
-Configuring sort rules allows you to define default sorting criteria for data blocks, ensuring that the information within each block is presented in a specific, predetermined order.
+Настройка правил сортировки позволяет определить критерии сортировки по умолчанию для блоков данных, гарантируя, что информация в каждом блоке будет представлена в определенном, заранее определенном порядке.
 
-## User Guide
+## Руководство пользователя
 
 ![20240407192159](https://static-docs.nocobase.com/20240407192159.png)
 
 ![20240421115056](https://static-docs.nocobase.com/20240421115056.png)
 
-At present, the system only supports sorting based on fields within the current table.
+В настоящее время система поддерживает сортировку только по полям в текущей таблице.
 
-### Single Sort Rule
+### Правило единой сортировки
 
 ![20240407192248](https://static-docs.nocobase.com/20240407192248.png)
 
-### Multiple Sort Rules
+### Несколько правил сортировки
 
-This feature is ideal for complex sorting scenarios. For instance, you might want to first organize data by order status, and then arrange items within each status category according to their delivery time.
+Эта функция идеально подходит для сложных сценариев сортировки. Например, вы можете сначала упорядочить данные по статусу заказа, а затем упорядочить товары в каждой категории статуса в соответствии со временем их доставки.
 
 ![20240407193837](https://static-docs.nocobase.com/20240407193837.png)
