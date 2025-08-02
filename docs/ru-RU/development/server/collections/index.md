@@ -1,91 +1,95 @@
-# Core concepts
+### **Основные понятия**
 
-## Collection
+#### **Коллекция**
 
-Collection is a collection of all kinds of data, such as orders, products, users, comments, etc. Different collections are distinguished by name, e.g.
+Коллекция — это набор данных различных типов, например, заказы, товары, пользователи, комментарии и т.д. Разные коллекции различаются по имени, например:
 
-```ts
-// Orders
+```js
+// Заказы
 {
   name: 'orders',
 }
-// Products
+// Товары
 {
   name: 'products',
 }
-// Users
+// Пользователи
 {
   name: 'users',
 }
-// Comments
+// Комментарии
 {
   name: 'comments',
 }
 ```
 
-## Collection Field
+#### **Поле коллекции**
 
-Each Collection has a number of Fields.
+Каждая коллекция содержит несколько полей.
 
-```ts
-// Collection configuration
+```js
+// Конфигурация коллекции
 {
   name: 'users',
   fields: [
     { type: 'string', name: 'name' },
     { type: 'integer', name: 'age' },
-    // Other fields
+    // Другие поля
   ],
 }
-// sample data
+// Пример данных
 [
   {
     name: 'Jason',
     age: 20,
   },
-  { {
+  {
     name: 'Li Si',
     age: 18,
   }
 ];
 ```
 
-The composition of a Collection Field in NocoBase consists of
+Состав поля коллекции в NocoBase:
 
-<img src="./collection-field.svg" />
+```
+./collection-field.svg
+```
 
-### Field Type
+#### **Тип поля**
 
-Different fields are distinguished by name, and type indicates the data type of the field, which is divided into Attribute Type and Association Type, e.g.
+Разные поля различаются по имени, а тип указывает на тип данных поля. Типы делятся на **атрибутные** и **связанные**:
 
-**Attribute - Attribute Type**
+**Атрибут — Атрибутный тип**
+```
+string
+text
+date
+boolean
+time
+float
+json
+location
+password
+virtual
+...
+```
 
-- string
-- text
-- date
-- boolean
-- time
-- float
-- json
-- location
-- password
-- virtual
-- ...
+**Связь — Тип связи**
+```
+hasOne
+hasMany
+belongsTo
+belongsToMany
+...
+```
 
-**Relationship - Association Type**
+#### **Компонент поля**
 
-- hasOne
-- hasMany
-- belongsTo
-- belongsToMany
-- ...
+Поле имеет тип данных, и ввод-вывод значения поля работает корректно, но этого недостаточно. Чтобы отобразить поле на интерфейсе, требуется дополнительная настройка — `uiSchema`, например:
 
-### Field Component
-
-The field has a data type, the IO of the field value is fine, but it is not enough, if you need to display the field on the interface, you need another dimension of configuration -- `uiSchema`, e.g.
-
-```tsx | pure
-// Email field, displayed with Input component, using email validation rules
+```js
+// Поле email, отображается с помощью компонента Input, с правилом валидации email
 {
   type: 'string',
   name: 'email',
@@ -93,45 +97,45 @@ The field has a data type, the IO of the field value is fine, but it is not enou
     'x-component': 'Input',
     'x-component-props': { size: 'large' },
     'x-validator': 'email',
-    'x-pattern': 'editable', // editable state, and readonly state, read-pretty state
+    'x-pattern': 'editable', // режим редактирования, только для чтения, читаемый формат
   },
 }
 
-// Example data
+// Пример данных
 {
   email: 'admin@nocobase.com',
 }
 
-// Component example
+// Пример компонента
 <Input name={'email'} size={'large'} value={'admin@nocobase.com'} />
 ```
 
-The uiSchema is used to configure the components of the field to be displayed on the interface, each field component will correspond to a value and includes several maintained configurations:
+`uiSchema` используется для настройки компонентов поля, отображаемых на интерфейсе. Каждый компонент поля соответствует значению и включает несколько настроек:
+- Компонент поля
+- Параметры компонента
+- Правила валидации поля
+- Режим поля (редактируемый, только для чтения, читаемый формат)
+- Значение по умолчанию поля
+- Другое
 
-- The component of the field
-- The parameters of the component
-- The field's validation rules
-- The mode of the field (editable, readonly, read-pretty)
-- The default value of the field
-- Other
+[Подробнее в главе «UI Schema»](/development/client/ui-schema-designer/what-is-ui-schema).
 
-[see the UI Schema chapter for more information](/development/client/ui-schema-designer/what-is-ui-schema).
+Встроенные компоненты полей NocoBase:
+```
+Input
+InputNumber
+Select
+Radio
+Checkbox
+...
+```
 
-The built-in field components of NocoBase are
+#### **Интерфейс поля**
 
-- Input
-- InputNumber
-- Select
-- Radio
-- Checkbox
-- ...
+Используя тип поля и компонент поля, можно свободно комбинировать несколько полей. Такой шаблон называется **интерфейс поля**, например:
 
-### Field Interface
-
-With Field Type and Field Component you can freely combine several fields, we call this combined template Field Interface, e.g.
-
-```ts
-// email field, string + input, email validation rules
+```js
+// Поле email: string + Input, с правилом валидации email
 {
   type: 'string',
   name: 'email',
@@ -142,7 +146,7 @@ With Field Type and Field Component you can freely combine several fields, we ca
   },
 }
 
-// phone field, string + input, phone validation rules
+// Поле телефона: string + Input, с правилом валидации телефона
 {
   type: 'string',
   name: 'phone',
@@ -154,10 +158,10 @@ With Field Type and Field Component you can freely combine several fields, we ca
 }
 ```
 
-The above email and phone require a full uiSchema to be configured each time which is very tedious. To simplify the configuration, another concept Field interface is introduced, which can template some parameters, e.g.
+Для каждого из полей выше требуется полная настройка `uiSchema`, что неудобно. Чтобы упростить конфигурацию, вводится понятие **интерфейс поля**, которое позволяет шаблонизировать параметры, например:
 
 ```ts
-// Template for the email field
+// Шаблон для поля email
 interface email {
   type: 'string';
   uiSchema: {
@@ -167,7 +171,7 @@ interface email {
   };
 }
 
-// Template for the phone field
+// Шаблон для поля телефона
 interface phone {
   type: 'string';
   uiSchema: {
@@ -177,7 +181,7 @@ interface phone {
   };
 }
 
-// Simplified field configuration
+// Упрощённая конфигурация поля
 // email
 {
   interface: 'email',
@@ -191,4 +195,4 @@ interface phone {
 }
 ```
 
-[More Field Interface here](https://github.com/nocobase/nocobase/tree/main/packages/core/client/src/collection-manager/interfaces)
+[Другие интерфейсы полей здесь](https://github.com/nocobase/nocobase/tree/main/packages/core/client/src/collection-manager/interfaces)
