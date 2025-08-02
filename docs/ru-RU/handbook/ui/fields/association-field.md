@@ -1,89 +1,85 @@
-# Association Field Component
+# Компоненты полей связей
 
-## Introduction
+## Введение
 
-NocoBase's association field components are designed to help users better display and handle associated data. Regardless of the type of relationship, these components are flexible and universal. Users can select and configure these components according to specific needs.
+Компоненты полей связей в NocoBase помогают отображать и работать со связанными данными. Они универсальны для любых типов связей и настраиваются под конкретные задачи.
 
-### Dropdown Selector
+### Выпадающий список
 
-All association fields whose target collection is not a file collection, the default component in the edit state is a drop-down selector. The drop-down option displays the value of the title field, which is suitable for quickly selecting associated data by displaying a key field information.
+Используется по умолчанию для связей (кроме файловых коллекций). Отображает значение поля-заголовка для быстрого выбора связанных данных.
 
 ![20240429205659](https://static-docs.nocobase.com/20240429205659.png)
 
-For more information, refer to [Dropdown Selector](/handbook/ui/fields/specific/select)
+Подробнее: [Выпадающий список](/handbook/ui/fields/specific/select)
 
-### Record Picker
+### Выбор записи
 
-The record picker presents data in the form of a pop-up window. Users can configure relationship fields (including relationship's relationship fields) in the record selector, allowing for more accurate selection of associated data.
+Отображает данные во всплывающем окне. Позволяет настраивать поля связей для точного выбора.
 
 ![20240429210824](https://static-docs.nocobase.com/20240429210824.png)
 
-For more information, refer to [Record Picker](/handbook/ui/fields/specific/picker)
+Подробнее: [Выбор записи](/handbook/ui/fields/specific/picker)
 
-### Cascade Selector
+### Каскадный выбор
 
-The cascade selector is suitable for relationship fields where the target collection is a tree collection. It allows users to select data according to the hierarchical structure of the tree collection data. It is applicable to scenarios such as province-city-district, industry classification, product attributes, and other cascade selection scenarios.
+Подходит для древовидных коллекций. Позволяет выбирать данные по иерархии (регионы, категории и т.д.).
 
 ![20240429213256](https://static-docs.nocobase.com/20240429213256.png)
 
-For more information, refer to [Cascade Selector](/handbook/ui/fields/specific/cascade-select)
+Подробнее: [Каскадный выбор](/handbook/ui/fields/specific/cascade-select)
 
-### Sub-Form
+### Подформа
 
-When dealing with more complex relationship data, using a dropdown selector or data selector can be inconvenient. In this case, users need to frequently open pop-up windows. For this scenario, a sub-form can be used. Users can directly maintain relationship fields on the current page or current pop-up, without repeatedly opening new pop-ups, making the operation process smoother. Multi-level relationships are presented in the form of nested forms.
+Позволяет работать со сложными связями прямо на текущей странице без лишних всплывающих окон.
 
 ![20240429215953](https://static-docs.nocobase.com/20240429215953.png)
 
-For more information, refer to [Sub-Form](/handbook/ui/fields/specific/nester)
+Подробнее: [Подформа](/handbook/ui/fields/specific/nester)
 
-### Sub-Form (Pop-up)
+### Подформа (всплывающая)
 
-When the relationship level is deep and there are many data fields, the sub-form layout may appear lengthy, making it difficult to effectively present the primary and secondary relationship of the form. For this scenario, you can use a sub-form (pop-up). Users can move some non-key or infrequently used relationship fields from the main form to an independent pop-up for filling out, making the main form more concise and clear.
-
-The Sub-Form (Pop-up) not only simplifies the form layout, but also solves the problem of not being able to directly fill in relationship field data in the sub-table.
+Упрощает основную форму, вынося редко используемые поля во всплывающее окно.
 
 ![20240429222237](https://static-docs.nocobase.com/20240429222237.gif)
 
-For more information, refer to [Sub-Form (Pop-up)](/handbook/ui/fields/specific/popover-nester)
+Подробнее: [Подформа (всплывающая)](/handbook/ui/fields/specific/popover-nester)
 
-### Sub-Table
+### Подтаблица
 
-The sub-table presents one-to-many or many-to-many relationship records in the form of a table. It provides a clear, structured way to display and manage associated data, supporting the creation of new data in batches or the selection of existing data for association.
+Отображает связи "один-ко-многим" в виде таблицы с возможностью пакетного добавления.
 
 ![20240429222505](https://static-docs.nocobase.com/20240429222505.png)
 
-For more information, refer to [Sub-Table](/handbook/ui/fields/specific/sub-table)
+Подробнее: [Подтаблица](/handbook/ui/fields/specific/sub-table)
 
-### Sub-Detail
+### Подробности
 
-The sub-detail are the corresponding components of the sub-form in reading mode, and the multi-level relational data is displayed in a nested form.
-
+Режим чтения для подформы с вложенным отображением связанных данных.
 
 ![20240822223651](https://static-docs.nocobase.com/20240822223651.png)
 
-For more information, refer to [Sub-Detail](/handbook/ui/fields/specific/sub-detail)
+Подробнее: [Подробности](/handbook/ui/fields/specific/sub-detail)
 
+### Файловый менеджер
 
-### File Manager
-
-The file manager is a relationship field component specifically for dealing with relationship target collections as file collections.
+Специальный компонент для связей с файловыми коллекциями.
 
 ![20240429222753](https://static-docs.nocobase.com/20240429222753.png)
 
-For more information, refer to [File Manager](/handbook/ui/fields/specific/file-manager)
+Подробнее: [Файловый менеджер](/handbook/ui/fields/specific/file-manager)
 
-### Title
+### Заголовок
 
-The title component is a relationship field component used in reading mode, displaying key information of associated data through the configuration of the title field.
+Отображает ключевую информацию связанных данных в режиме чтения.
 
 ![20240429223646](https://static-docs.nocobase.com/20240429223646.png)
 
-For more information, refer to [Title](/handbook/ui/fields/specific/title)
+Подробнее: [Заголовок](/handbook/ui/fields/specific/title)
 
-### Tag
+### Тег
 
-The tag component is a relationship field component used in reading mode. Using the tag component in data presentation can better classify and identify relationship data. It needs to configure the title field and color field (selected from the target table fields).
+Классифицирует и маркирует связанные данные с использованием цветового поля.
 
 ![20240429225054](https://static-docs.nocobase.com/20240429225054.png)
 
-For more information, refer to [Tag](/handbook/ui/fields/specific/tag)
+Подробнее: [Тег](/handbook/ui/fields/specific/tag)
