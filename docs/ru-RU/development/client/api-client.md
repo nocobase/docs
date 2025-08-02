@@ -1,6 +1,6 @@
-# HTTP Request
+# HTTP-запросы
 
-NocoBase provides an `APIClient` for making HTTP requests. Within the [plugin lifecycle](/development/client#插件的声明周期) of a client-side application, you can use `app.apiClient` to make client-side requests. Inside components, you can use `useAPIClient()` and `useRequest()`.
+NocoBase предоставляет `APIClient` для выполнения HTTP-запросов. В рамках [жизненного цикла плагина](/development/client#жизненный-цикл-плагина) клиентского приложения можно использовать `app.apiClient` для клиентских запросов. Внутри компонентов можно использовать `useAPIClient()` и `useRequest()`.
 
 ## app.apiClient
 
@@ -16,18 +16,18 @@ class PluginSampleAPIClient extends Plugin {
 
 ### apiClient.request()
 
-For standard requests, refer to axios's [request config](https://axios-http.com/docs/req_config) for more details on usage.
+Для стандартных запросов обратитесь к [конфигурации запросов axios](https://axios-http.com/docs/req_config) для получения подробной информации об использовании.
 
 ```ts
 class APIClient {
-  // Client-side requests, supporting AxiosRequestConfig and ResourceActionOptions
+  // Клиентские запросы, поддерживающие AxiosRequestConfig и ResourceActionOptions
   request<T = any, R = AxiosResponse<T>, D = any>(
     config: AxiosRequestConfig<D> | ResourceActionOptions,
   ): Promise<R>;
 }
 ```
 
-Example:
+Пример:
 
 ```ts
 const response = await apiClient.request({ url });
@@ -35,9 +35,9 @@ const response = await apiClient.request({ url });
 
 ### apiClient.axios
 
-`AxiosInstance` instance
+Экземпляр `AxiosInstance`
 
-It can be used to modify axios's [default configuration](https://axios-http.com/docs/config_defaults).
+Может использоваться для изменения [стандартной конфигурации axios](https://axios-http.com/docs/config_defaults).
 
 ```ts
 axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
@@ -45,10 +45,10 @@ axios.defaults.headers.post['Content-Type'] =
   'application/x-www-form-urlencoded';
 ```
 
-It can also be used to [intercept requests or responses](https://axios-http.com/docs/interceptors).
+Также можно использовать для [перехвата запросов или ответов](https://axios-http.com/docs/interceptors).
 
 ```ts
-// Add request interceptor: use qs to convert params
+// Добавление перехватчика запросов: использование qs для преобразования параметров
 axios.interceptors.request.use((config) => {
   config.paramsSerializer = (params) => {
     return qs.stringify(params, {
@@ -59,7 +59,7 @@ axios.interceptors.request.use((config) => {
   return config;
 });
 
-// Add request interceptor: customize request headers
+// Добавление перехватчика запросов: настройка заголовков запроса
 axios.interceptors.request.use((config) => {
   config.headers['Authorization'] = `Bearer token123`;
   config.headers['X-Hostname'] = `localhost`;
@@ -71,34 +71,34 @@ axios.interceptors.request.use((config) => {
   return config;
 });
 
-// Add response interceptor
+// Добавление перехватчика ответов
 axios.interceptors.response.use(
   (response) => response,
   (error) => {
-    // Notify the user about the error
+    // Уведомление пользователя об ошибке
     notification.error({
-      message: 'Request Response Error',
+      message: 'Ошибка ответа на запрос',
     });
   },
 );
 ```
 
-### Custom Request Headers in NocoBase Server
+### Пользовательские заголовки запросов в NocoBase Server
 
-- `X-App`: Specify the current app when using multiple apps.
-- `X-Locale`: Current language.
-- `X-Hostname`: Client hostname.
-- `X-Timezone`: Client timezone.
-- `X-Role`: Current role.
-- `X-Authenticator`: Current user authentication method.
+- `X-App`: Указывает текущее приложение при использовании нескольких приложений.
+- `X-Locale`: Текущий язык.
+- `X-Hostname`: Хост клиента.
+- `X-Timezone`: Часовой пояс клиента.
+- `X-Role`: Текущая роль.
+- `X-Authenticator`: Метод аутентификации текущего пользователя.
 
 ## useAPIClient()
 
-Within a component, you can use `useAPIClient()` to get the APIClient instance of the current app, which is equivalent to `app.apiClient`.
+Внутри компонента можно использовать `useAPIClient()` для получения экземпляра APIClient текущего приложения, что эквивалентно `app.apiClient`.
 
 ## useRequest()
 
-Asynchronous data management, which can either be data from client requests or a custom asynchronous function. For detailed usage, refer to ahooks's [useRequest()](https://ahooks.js.org/hooks/use-request/index).
+Асинхронное управление данными, которые могут быть получены из клиентских запросов или пользовательской асинхронной функции. Для подробного использования обратитесь к [useRequest() в ahooks](https://ahooks.js.org/hooks/use-request/index).
 
 ```ts
 function useRequest<P>(
@@ -107,12 +107,12 @@ function useRequest<P>(
 );
 ```
 
-Example:
+Пример:
 
 ```ts
 const { data, loading, refresh, run, params } = useRequest({ url: '/users' });
 
-// Since useRequest accepts AxiosRequestConfig, the run function also accepts AxiosRequestConfig.
+// Поскольку useRequest принимает AxiosRequestConfig, функция run также принимает AxiosRequestConfig.
 run({
   params: {
     pageSize: 20,
