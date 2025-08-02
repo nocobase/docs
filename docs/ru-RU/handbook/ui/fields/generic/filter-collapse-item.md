@@ -1,31 +1,31 @@
-# Collaps Panel Fields
+# Поля сворачиваемой панели
 
-## Introduction
+## Введение
 
-The Collapse filter block exclusively supports the selection of relational fields and option fields as filter criteria.
+Блок сворачиваемого фильтра поддерживает только реляционные поля и поля с вариантами выбора в качестве критериев фильтрации.
 
-## Field Configuration Options
+## Настройки полей
 
 ![20240409120906](https://static-docs.nocobase.com/20240409120906.png)
 
-### Setting the Data Scope
+### Установка области данных
 
-Define the data scope for relational fields.
+Определение области данных для реляционных полей.
 
 ![20240422152530](https://static-docs.nocobase.com/20240422152530.png)
 
-Example: Filtering out non-promotional products.
+Пример: Фильтрация товаров без акционных предложений.
 
 ![20240422152614](https://static-docs.nocobase.com/20240422152614.png)
 
-For additional information, refer to [Setting the Data Scope](/handbook/ui/fields/field-settings/data-scope).
+Дополнительная информация: [Установка области данных](/handbook/ui/fields/field-settings/data-scope).
 
-### Title Field
+### Поле заголовка
 
 ![20240423085854](https://static-docs.nocobase.com/20240423085854.png)
 
-For further details, refer to [Title Field](/handbook/ui/fields/field-settings/title-field).
+Подробнее: [Поле заголовка](/handbook/ui/fields/field-settings/title-field).
 
-- Default display (collapsed by default)
-- Define sorting rules (for relational data)
-- Customize the title
+- Отображение по умолчанию (свёрнуто)
+- Определение правил сортировки (для реляционных данных)
+- Настройка заголовка
