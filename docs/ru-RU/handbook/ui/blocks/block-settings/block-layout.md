@@ -1,23 +1,23 @@
-# Layout
+# Макет
 
-:::info{title=Tip}
-The version of NocoBase needs to be v1.3.34-beta or above.
+:::информация{заголовок=Совет}
+Версия NocoBase должна быть бета-версией 1.3.34 или выше.
 :::
-## Introduction
+## Введение
 
-Form components, such as form blocks, detail blocks, and list blocks, support layout settings. The layout options include vertical layout (where labels and input fields are arranged in separate rows) and horizontal layout (where labels and input fields are placed side by side). This flexible layout choice can optimize the user experience based on specific needs, ensuring that information input is both clear and efficient.
+Компоненты формы, такие как блоки форм, блоки сведений и блоки списков, поддерживают настройки макета. Варианты компоновки включают вертикальную компоновку (при которой надписи и поля ввода располагаются отдельными строками) и горизонтальную компоновку (при которой надписи и поля ввода располагаются рядом). Такой гибкий выбор компоновки позволяет оптимизировать работу пользователя в зависимости от конкретных потребностей, обеспечивая четкость и эффективность ввода информации.
 
 ![20241021204953](https://static-docs.nocobase.com/20241021204953.png)
 
-### Vertical(default)
+### Вертикальный (по умолчанию)
 
-Subforms and subform (popup) also support layout configuration, with the default layout set to vertical.
+Вложенные формы и подформа (всплывающее окно) также поддерживают конфигурацию макета, при этом макет по умолчанию установлен на вертикальный.
 
 ![20241021205047](https://static-docs.nocobase.com/20241021205047.png)
 
-### Horizontal
+### Горизонтальный
 
-Horizontal layout places labels and input fields side by side, making better use of space.
+При горизонтальном расположении надписи и поля ввода располагаются рядом, что позволяет лучше использовать пространство.
 
 
 ![20241021205131](https://static-docs.nocobase.com/20241021205131.png)
