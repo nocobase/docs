@@ -1,13 +1,13 @@
-# File Manager
+# Файловый менеджер
 
-## Introduction
+## Введение
 
-The File Manager is a sophisticated relational field component designed to manage relationships where the target table is a file table. This powerful tool streamlines file handling within your database structure.
+Файловый менеджер представляет собой специализированный компонент для работы со связями, где целевая таблица является файловой таблицей. Этот инструмент оптимизирует управление файлами в структуре базы данных.
 
 ![20240410213026](https://static-docs.nocobase.com/20240410213026.png)
 
-## Field Configuration Options
+## Настройки поля
 
-- [Field Component](/handbook/ui/fields/association-field): Seamlessly switch between various relational field components, including dropdown selections, data selectors, and more, to suit your specific needs.
-- Quick Upload: Enabled by default, this feature allows for effortless file association immediately upon upload, enhancing workflow efficiency.
-- Select File: Also enabled by default, this option provides the flexibility to associate previously uploaded files, leveraging existing resources within your system.
+- [Компонент поля](/handbook/ui/fields/association-field): Возможность переключения между различными компонентами полей связей (выпадающие списки, селекторы данных и др.)
+- Быстрая загрузка: Включена по умолчанию, позволяет мгновенно ассоциировать файлы после загрузки
+- Выбор файла: Также включен по умолчанию, предоставляет возможность ассоциировать ранее загруженные файлы
