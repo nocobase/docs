@@ -1,6 +1,6 @@
-# Commands
+# Команды
 
-In a plugin, custom commands must be located in the `src/server/commands/*.ts` directory of the plugin. The content should look like this:
+В плагине пользовательские команды должны быть расположены в каталоге `src/server/commands/*.ts` плагина. Содержимое должно выглядеть следующим образом:
 
 ```ts
 import { Application } from '@nocobase/server';
@@ -18,17 +18,17 @@ export default function(app: Application) {
 }
 ```
 
-:::warning
-Custom commands in the plugin are only effective after the plugin is installed and activated.
+:::предупреждение
+Пользовательские команды в плагине вступают в силу только после установки и активации плагина.
 :::
 
-Special Configurations for Commands:
+Специальные настройки для команд:
 
-- `ipc()` When the app is running, the command-line sends instructions through ipc to operate on the running app instance. Without the `ipc()` configuration, a new application instance will be created to execute the command (this will not interfere with the running app instance).
-- `auth()` Performs database verification. If the database configuration is incorrect, the command will not be executed.
-- `preload()` Determines whether to pre-load the application configuration, i.e., execute `app.load()`.
+- `ipc()` Когда приложение запущено, командная строка отправляет инструкции через ipc для работы с запущенным экземпляром приложения. Без настройки "ipc()" для выполнения команды будет создан новый экземпляр приложения (это не повлияет на работу запущенного экземпляра приложения).
+- `auth()` Выполняет проверку базы данных. Если конфигурация базы данных неверна, команда выполнена не будет.
+- `preload()` Определяет, следует ли предварительно загружать конфигурацию приложения, т.е. выполнять `app.load()`.
 
-These configurations can be adjusted according to the actual use of the command, as shown in the examples below:
+Эти конфигурации могут быть скорректированы в соответствии с фактическим использованием команды, как показано в примерах ниже:
 
 ```ts
 app.command('a').ipc().action()
