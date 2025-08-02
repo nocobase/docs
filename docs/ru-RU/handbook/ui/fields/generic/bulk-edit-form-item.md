@@ -1,31 +1,30 @@
-# Bulk Edit Fields
+# Массовое редактирование полей
 
-## Introduction
+## Введение
 
-The Bulk edit form is a specialized form block designed for batch editing operations.
+Форма массового редактирования - это специализированный блок для пакетного изменения данных.
 
 ![20240425100652](https://static-docs.nocobase.com/20240425100652.png)
-
 ![20240422151115](https://static-docs.nocobase.com/20240422151115.png)
 
-## Field Configuration
+## Настройка полей
 
-You can configure only the fields within the current table. There are three methods for updating fields:
+Доступна настройка только полей текущей таблицы. Доступны три метода обновления:
 
-- **No Update:** The field retains its original value after submission.
-- **Modify To:** The field becomes required.
-- **Clear:** The field's value is cleared after submission.
+- **Без изменений:** Поле сохраняет исходное значение
+- **Изменить на:** Поле становится обязательным для заполнения
+- **Очистить:** Значение поля сбрасывается
 
 ![20240425100730](https://static-docs.nocobase.com/20240425100730.png)
 
-For relationship fields, you can flexibly switch between different field components.
+Для полей связей доступно переключение между различными компонентами.
 
 ![20240425100857](https://static-docs.nocobase.com/20240425100857.png)
 
-## Field Configuration Options
+## Параметры настройки полей
 
-- [Edit Field Title](/handbook/ui/fields/field-settings/edit-title)
-- [Display Title](/handbook/ui/fields/field-settings/display-title)
-- [Edit Field Description](/handbook/ui/fields/field-settings/edit-description)
-- [Edit Field Tooltip](/handbook/ui/fields/field-settings/edit-tooltip)
-- [Set Validation Rules](/handbook/ui/fields/field-settings/validation-rules)
+- [Изменение названия поля](/handbook/ui/fields/field-settings/edit-title)
+- [Отображаемое название](/handbook/ui/fields/field-settings/display-title)
+- [Описание поля](/handbook/ui/fields/field-settings/edit-description)
+- [Всплывающая подсказка](/handbook/ui/fields/field-settings/edit-tooltip)
+- [Правила валидации](/handbook/ui/fields/field-settings/validation-rules)
