@@ -1,35 +1,35 @@
-# Tags
+### **Теги**
 
-## Introduction
+#### **Введение**
 
-Tags serve as a display component within the relational field view mode, requiring you to configure both the title field and the color field.
+Теги служат компонентом отображения в режиме просмотра поля связи. Для их использования необходимо настроить поле заголовка и поле цвета.
 
-## Usage Instructions
+#### **Инструкция по использованию**
 
-### Using Tags in a Table
+##### **Использование тегов в таблице**
 
-In the order table, there is a many-to-one relational field labeled "Tags."
+В таблице заказов есть поле связи «многие к одному» с названием «Теги».
 
-The tags table includes two fields: "Tag Name" and "Tag Color."
+Таблица тегов включает два поля: «Название тега» и «Цвет тега».
 
 ![20240410212554](https://static-docs.nocobase.com/20240410212554.png)
 
-### Using Tags in Details
+##### **Использование тегов в детализации**
 
 ![20240410212625](https://static-docs.nocobase.com/20240410212625.png)
 
-## Field Configuration Options
+#### **Параметры настройки поля**
 
-### Title Field
+##### **Поле заголовка**
 
 ![20240422220237](https://static-docs.nocobase.com/20240422220237.png)
 
-For further details, see [Title Field](/handbook/ui/fields/field-settings/title-field).
+Более подробно см. в разделе [Поле заголовка](/handbook/ui/fields/field-settings/title-field).
 
-### Enable Link (Enabled by Default)
+##### **Включить ссылку (включено по умолчанию)**
 
-Clicking on the link will open a popup window where you can configure the details of the current relational record or edit the form.
+При клике по тегу открывается всплывающее окно, в котором можно настроить детали связанной записи или форму редактирования.
 
 ![20240410212643](https://static-docs.nocobase.com/20240410212643.png)
 
-For further information, see [Field Component](/handbook/ui/fields/association-field).
+Более подробную информацию см. в разделе [Компонент поля](/handbook/ui/fields/association-field).
