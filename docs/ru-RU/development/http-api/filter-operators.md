@@ -1,6 +1,6 @@
-# Filter operators
+### **Операторы фильтрации**
 
-## 通用
+#### **Общие**
 
 - $eq
 - $ne
@@ -21,7 +21,7 @@
 - $empty
 - $notEmpty
 
-## array
+#### **array**
 
 - $match
 - $notMatch
@@ -30,17 +30,17 @@
 - $arrayEmpty
 - $arrayNotEmpty
 
-## association
+#### **association**
 
 - $exists
 - $notExists
 
-## boolean
+#### **boolean**
 
 - $isTruly
 - $isFalsy
 
-## date
+#### **date**
 
 - $dateOn
 - $dateNotOn
@@ -49,7 +49,7 @@
 - $dateAfter
 - $dateNotAfter
 
-## string
+#### **string**
 
 - $includes
 - $notIncludes
