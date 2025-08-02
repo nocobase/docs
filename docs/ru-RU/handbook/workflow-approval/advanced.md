@@ -1,37 +1,37 @@
-# Advanced Understanding
+# Расширенное понимание
 
-## Snapshot of Submitted Data for Approval
+## Снимок данных, отправленных на согласование
 
-In the approval process, data is governed by the principle of transactional data immutability. Each submission generates a snapshot that is then tracked and circulated during the approval process. The flow of this process is as follows:
+В процессе согласования данные управляются на основе принципа **неменяемости транзакционных данных**. Каждая отправка данных создаёт снимок (snapshot), который затем отслеживается и передаётся в ходе процесса согласования. Поток этого процесса выглядит следующим образом:
 
-![Approval Data Snapshot Process Diagram](https://static-docs.nocobase.com/62a545a85d9e72c6b47e4b52707c4380.png)
+![Диаграмма процесса снимка данных на согласовании](https://static-docs.nocobase.com/62a545a85d9e72c6b47e4b52707c4380.png)
 
-When actions such as "withdraw" or "return" are triggered within the process, the system preserves a snapshot of the data as it existed at that point within the same application document:
+Когда в процессе выполняются действия, такие как «отозвать» или «вернуть», система сохраняет снимок данных, которые существовали на тот момент, в рамках одного и того же документа заявки:
 
-![Approval Data Snapshot Process Example](https://static-docs.nocobase.com/62800d88772c88f1eaa11f6f493aea55.png)
+![Пример процесса снимка данных на согласовании](https://static-docs.nocobase.com/62800d88772c88f1eaa11f6f493aea55.png)
 
-As illustrated above, every time data is withdrawn and then resubmitted, a new snapshot is saved for that particular submission process.
+Как показано выше, каждый раз, когда данные отзываются и затем повторно отправляются, создаётся новый снимок для этого конкретного цикла подачи заявки.
 
-## Approval Process Statuses
+## Статусы процесса согласования
 
-For the initiator, an application document's status field indicates the current stage of the approval process, typically reflecting the following states:
+Для инициатора заявки поле статуса документа указывает текущую стадию процесса согласования и обычно отражает следующие состояния:
 
-| Status         | Description |
-|----------------| ----------- |
-| Draft      | The applicant has temporarily saved the application form's data but has not yet officially submitted it to start the process. |
-| Submitted  | The application has been submitted and is awaiting approval. At this stage, no approver has yet processed it, and if allowed by the configuration, the initiator can still withdraw the application. |
-| On going   | The application has moved through at least one approval node, with at least one approver having submitted their decision. The initiator can no longer withdraw the application at this stage. |
-| Returned   | The application has been returned by one of the approvers, allowing the initiator to modify and resubmit it. |
-| Approved   | All approval nodes have been processed, and the application has been approved at each stage, marking the process as complete. |
-| Rejected   | The application has been rejected at one of the approval nodes, thereby terminating the process. |
+| Статус         | Описание |
+|----------------|--------|
+| Черновик      | Заявитель временно сохранил данные формы, но ещё не отправил её официально для запуска процесса. |
+| Отправлено    | Заявка отправлена и ожидает согласования. На этом этапе ни один из согласующих ещё не обработал заявку, и при наличии соответствующей настройки инициатор всё ещё может отозвать заявку. |
+| В процессе    | Заявка прошла как минимум один этап согласования, и по крайней мере один из согласующих уже вынес своё решение. На этом этапе инициатор уже не может отозвать заявку. |
+| Возвращено    | Заявка была возвращена одним из согласующих, что позволяет инициатору внести изменения и повторно отправить её. |
+| Согласовано   | Все этапы согласования пройдены, и заявка была одобрена на каждом этапе — процесс завершён. |
+| Отклонено     | Заявка была отклонена на одном из этапов согласования, в результате чего процесс завершён досрочно. |
 
-For each approval node, a record of the processing action is generated for the designated approver. Each approver’s record includes a status field indicating the current state of their processing, which typically includes the following statuses:
+Для каждого этапа согласования создаётся запись о действии, выполненного назначенным согласующим. В каждой записи согласующего имеется поле статуса, указывающее текущее состояние обработки, которое обычно включает следующие значения:
 
-| Status    | Description |
-| --------- | ----------- |
-| Assigned  | A record for the corresponding approver has been created, but since the processing rule requires serial handling, the approver must wait for the previous approver to finish before they can proceed. |
-| Pending   | The application is awaiting action from the current approver. |
-| Returned  | The current approver has returned the application. |
-| Approved  | The current approver has approved the application. |
-| Rejected  | The current approver has rejected the application. |
-| Unprocessed | The application has reached a terminal state according to the node's processing rules after being handled by other approvers, or the workflow has become invalid, so the current approver is no longer required to take action. |
+| Статус         | Описание |
+|----------------|--------|
+| Назначен       | Запись для соответствующего согласующего создана, но поскольку правило обработки требует последовательного согласования, согласующий должен дождаться завершения обработки предыдущим согласующим, прежде чем сможет действовать. |
+| Ожидание       | Заявка ожидает действий от текущего согласующего. |
+| Возвращено     | Текущий согласующий вернул заявку. |
+| Согласовано    | Текущий согласующий одобрил заявку. |
+| Отклонено      | Текущий согласующий отклонил заявку. |
+| Не обработано  | Заявка достигла конечного состояния согласно правилам обработки узла после действий других согласующих, либо рабочий процесс стал недействительным, поэтому от текущего согласующего больше не требуется никаких действий. |

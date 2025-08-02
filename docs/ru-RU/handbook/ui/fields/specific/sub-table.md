@@ -1,60 +1,59 @@
-# Sub table
+# Подтаблица
 
-## Introduction
+## Введение
 
-Sub table are ideal for managing many-to-many relationship fields. They support bulk creation of target table data with associations, or selecting from existing data for association.
+Подтаблицы идеально подходят для управления полями связей "многие-ко-многим". Они поддерживают:
+- Массовое создание данных целевой таблицы с ассоциациями
+- Выбор из существующих данных для ассоциации
 
-## Instructions for Use
+## Инструкция по использованию
 
 ![20240410151306](https://static-docs.nocobase.com/20240410151306.png)
 
-Different field types in the sub table display distinct field components. Larger fields (such as rich text, JSON, and multi-line text) are edited via a floating pop-up window.
+Разные типы полей в подтаблице отображаются различными компонентами. Крупные поля (например, rich text, JSON, многострочный текст) редактируются через всплывающее окно.
 
 ![20240410154316](https://static-docs.nocobase.com/20240410154316.png)
 
-Relationship fields in the sub table:
-
-Order (one-to-many) > Product (one-to-many) > Inventory.
+Пример связей в подтаблице:
+Заказ (один-ко-многим) > Товар (один-ко-многим) > Склад.
 
 ![20240410152232](https://static-docs.nocobase.com/20240410152232.png)
 
-By default, relationship field components are dropdown selectors (supporting data selectors or subforms via pop-up windows).
+По умолчанию компоненты полей связей - выпадающие списки (с поддержкой выбора данных или подформ через всплывающие окна).
 
 ![20240410152847](https://static-docs.nocobase.com/20240410152847.png)
 
-Supports drag-and-drop sorting.
+Поддержка перетаскивания для сортировки.
 
 ![20240422215629](https://static-docs.nocobase.com/20240422215629.gif)
 
-## Field Configuration Options
+## Настройки полей
 
-### Allow Selecting Existing Data (disabled by default)
+### Разрешить выбор существующих данных (по умолчанию отключено)
 
-Supports associating data from existing records.
+Позволяет ассоциировать данные из существующих записей.
 
 ![20240410160432](https://static-docs.nocobase.com/20240410160432.png)
-
 ![20240410160714](https://static-docs.nocobase.com/20240410160714.png)
 
-### Field Component
+### Компонент поля
 
-[Field Component](/handbook/ui/fields/association-field): Switch to other relationship field components, such as dropdown select, data selector, etc.
+[Компонент поля](/handbook/ui/fields/association-field): Переключение между компонентами полей связей (выпадающий список, выбор данных и др.)
 
-### Linkage Rules
-:::info{title=Tip}
-The version of NocoBase needs to be v1.3.17-beta or above.
+### Правила связей
+:::info{title=Подсказка}
+Требуется версия NocoBase v1.3.17-beta или выше.
 :::
 
 ![20240906084911_rec_](https://static-docs.nocobase.com/20240906084911_rec_.gif)
 
-For more information, refer to [Linkage Rules](/handbook/ui/blocks/block-settings/field-linkage-rule)
+Подробнее: [Правила связей](/handbook/ui/blocks/block-settings/field-linkage-rule)
 
-### Allow disassociation
+### Разрешить разъединение
 
-:::info{title=Tip}
-The version of NocoBase needs to be v1.3.34-beta or above.
+:::info{title=Подсказка}
+Требуется версия NocoBase v1.3.34-beta или выше.
 :::
 
 ![20241021210710](https://static-docs.nocobase.com/20241021210710.png)
-
 ![20241021211909](https://static-docs.nocobase.com/20241021211909.png)

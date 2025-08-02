@@ -1,18 +1,18 @@
-# Global Content Display
+# Отображение глобального контента
 
-We can display global content using the `Provider` component.
+Мы можем отображать глобальный контент с помощью компонента `Provider`.
 
-## Example Description
+## Описание примера
 
-We want to implement an announcement feature. If the backend returns announcement information, it will be displayed at the top of the page.
+Требуется реализовать функцию отображения объявлений. Если сервер возвращает информацию об объявлении, оно будет отображаться в верхней части страницы.
 
-You can view the complete example code in the [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-provider-content) repository.
+Полный код примера доступен в репозитории [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-provider-content).
 
 ![img_v3_02av_cd3c7f37-0c5b-4c9c-b10e-e413af409ccg](https://static-docs.nocobase.com/img_v3_02av_cd3c7f37-0c5b-4c9c-b10e-e413af409ccg.jpg)
 
-## Initializing the Plugin
+## Инициализация плагина
 
-Follow the instructions in the [Writing Your First Plugin](/development/your-fisrt-plugin) guide. If you don't already have a project, you can create one. If you already have a project or have cloned the source code, you can skip this step.
+Следуйте инструкциям из руководства [Создание первого плагина](/development/your-fisrt-plugin). Если у вас ещё нет проекта, создайте его. Если проект уже создан или вы клонировали исходный код, этот шаг можно пропустить.
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d sqlite
@@ -21,28 +21,28 @@ yarn install
 yarn nocobase install
 ```
 
-Next, initialize a plugin and add it to the system:
+Далее инициализируйте плагин и добавьте его в систему:
 
 ```bash
 yarn pm create @nocobase-sample/plugin-provider-content
 yarn pm enable @nocobase-sample/plugin-provider-content
 ```
 
-Now, start the project:
+Запустите проект:
 
 ```bash
 yarn dev
 ```
 
-After logging in, visit [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) to verify that the plugin has been installed and enabled.
+После входа в систему перейдите по адресу [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/), чтобы убедиться, что плагин установлен и активирован.
 
-## Feature Implementation
+## Реализация функционала
 
-### 1. Adding the `Provider` Component
+### 1. Добавление компонента `Provider`
 
-The `Provider` component is a regular React component, but it is important to remember to render the `children` as part of it.
+Компонент `Provider` — это обычный React-компонент, но важно не забыть отобразить `children` внутри него.
 
-Create a new file at `packages/plugins/@nocobase-sample/plugin-provider-content/src/client/TopAnnouncement.tsx`:
+Создайте новый файл по пути `packages/plugins/@nocobase-sample/plugin-provider-content/src/client/TopAnnouncement.tsx`:
 
 ```tsx | pure
 import React, { FC, ReactNode } from 'react';
@@ -51,7 +51,7 @@ import { useRequest } from '@nocobase/client';
 
 const mockRequest = () => new Promise((resolve) => {
   Math.random() > 0.5 ?
-    resolve({ data: { message: 'This is an important message.', type: 'info' } }) :
+    resolve({ data: { message: 'Это важное сообщение.', type: 'info' } }) :
     resolve({ data: undefined })
 })
 
@@ -81,13 +81,13 @@ export const TopAnnouncement: FC<{ children: ReactNode }> = ({ children }) => {
 };
 ```
 
-For the announcement configuration and data, you can refer to the [Plugin Form Configuration Page](/plugin-samples/plugin-settings/form). In this example, mock data is used.
+Для конфигурации и данных объявлений обратитесь к странице [Конфигурация формы плагина](/plugin-samples/plugin-settings/form). В данном примере используются моковые (тестовые) данные.
 
-Remember to render `children` within the component.
+Не забудьте отобразить `children` внутри компонента.
 
-### 2. Registering It in the System
+### 2. Регистрация в системе
 
-Modify the `packages/plugins/@nocobase-sample/plugin-provider-content/src/index.ts` file to register the `TopAnnouncement` component within the system.
+Измените файл `packages/plugins/@nocobase-sample/plugin-provider-content/src/index.ts`, чтобы зарегистрировать компонент `TopAnnouncement` в системе.
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
@@ -102,25 +102,24 @@ export class PluginProviderContentClient extends Plugin {
 export default PluginProviderContentClient;
 ```
 
-Now, visit [http://localhost:13000](http://localhost:13000), and you will see the announcement displayed at the top of the page.
+Теперь перейдите по адресу [http://localhost:13000](http://localhost:13000), и вы увидите объявление, отображаемое в верхней части страницы.
 
 ![img_v3_02av_cd3c7f37-0c5b-4c9c-b10e-e413af409ccg](https://static-docs.nocobase.com/img_v3_02av_cd3c7f37-0c5b-4c9c-b10e-e413af409ccg.jpg)
 
-## Packaging and Deploying to Production
+## Сборка и развертывание в продакшен
 
-Follow the instructions in the [Build and Package Plugin](/development/your-fisrt-plugin#构建并打包插件) document to package the plugin and upload it to the production environment.
+Следуйте инструкциям из документа [Сборка и упаковка плагина](/development/your-fisrt-plugin#构建并打包插件), чтобы упаковать плагин и загрузить его в продакшен.
 
-If you cloned the source code, run a full build first to package the plugin’s dependencies as well:
+Если вы клонировали исходный код, сначала выполните полную сборку, чтобы упаковать зависимости плагина:
 
 ```bash
 yarn build
 ```
 
-If you used `create-nocobase-app` to create the project, you can directly run:
+Если вы создали проект с помощью `create-nocobase-app`, выполните:
 
 ```bash
 yarn build @nocobase-sample/plugin-provider-content --tar
 ```
 
-You will now see the `storage/tar/@nocobase-sample/plugin-provider-content.tar.gz` file. You can then install it by [uploading it](/welcome/getting-started/plugin).
-]()
+После этого появится файл `storage/tar/@nocobase-sample/plugin-provider-content.tar.gz`, который можно установить, следуя процессу [загрузки плагина](/welcome/getting-started/plugin).

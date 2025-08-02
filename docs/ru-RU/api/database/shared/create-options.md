@@ -1,22 +1,43 @@
-**Type**
+# Типы и интерфейсы для создания записей
+
+## Типы
 
 ```typescript
-type WhiteList = string[];
-type BlackList = string[];
-type AssociationKeysToBeUpdate = string[];
+type WhiteList = string[]; // Тип для белого списка полей
+type BlackList = string[]; // Тип для черного списка полей
+type AssociationKeysToBeUpdate = string[]; // Тип для списка связей, которые нужно обновить
+```
 
+## Интерфейс CreateOptions
+
+```typescript
 interface CreateOptions extends SequelizeCreateOptions {
-  values?: Values;
-  whitelist?: WhiteList;
-  blacklist?: BlackList;
-  updateAssociationValues?: AssociationKeysToBeUpdate;
-  context?: any;
+  values?: Values; // Объект данных для создаваемой записи
+  whitelist?: WhiteList; // Список разрешенных для записи полей
+  blacklist?: BlackList; // Список запрещенных для записи полей
+  updateAssociationValues?: AssociationKeysToBeUpdate; // Список связей для обновления
+  context?: any; // Контекст выполнения
 }
 ```
 
-**Details**
+## Детализация параметров
 
-- `values`: The data object of the record to be created.
-- `whitelist`: Specifies which fields in the data object of the record to be created **can be written**. If this parameter is not passed, all fields are allowed to be written by default.
-- `blacklist`: Specifies which fields in the data object of the record to be created **are not allowed to be written**. If this parameter is not passed, all fields are allowed to be written by default.
-- `transaction`: The transaction object. If no transaction parameter is passed, the method will automatically create an internal transaction.
+1. **values**  
+   Объект данных, содержащий значения для создаваемой записи.
+
+2. **whitelist**  
+   Определяет, какие поля в объекте данных **разрешены для записи**.  
+   *Если параметр не передан, по умолчанию разрешены все поля.*
+
+3. **blacklist**  
+   Определяет, какие поля в объекте данных **запрещены для записи**.  
+   *Если параметр не передан, по умолчанию разрешены все поля.*
+
+4. **transaction**  
+   Объект транзакции. Если параметр не передан, метод автоматически создает внутреннюю транзакцию.
+
+5. **updateAssociationValues**  
+   Список связей, которые необходимо обновить при создании записи.
+
+6. **context**  
+   Контекст выполнения операции, может содержать дополнительную информацию (например, данные пользователя).

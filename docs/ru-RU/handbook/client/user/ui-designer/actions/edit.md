@@ -1,5 +1,5 @@
-# **Edit**
+# **Редактировать**
 
-The edit operation allows for data modification, typically achieved by configuring the relevant form block.
+Операция редактирования позволяет изменять данные, что обычно достигается путем настройки соответствующего блока формы.
 
 ![](https://static-docs.nocobase.com/9b412840521b7ae6d5c5f0372df2f349.png)

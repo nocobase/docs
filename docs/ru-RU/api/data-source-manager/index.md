@@ -1,56 +1,54 @@
-# DataSourceManager
+# DataSourceManager (Менеджер источников данных)
 
-`DataSourceManager` is a management class for multiple `dataSource` instances.
+`DataSourceManager` - это класс для управления несколькими экземплярами источников данных (`dataSource`).
 
-## API
+## API методы
 
 ### add()
-Adds a `dataSource` instance.
-
-#### Signature
-
-- `add(dataSource: DataSource, options: any = {}): Promise<void>`
-
-### use()
-
-Adds a global middleware to the `dataSource` instance.
-
-### middleware()
-
-Retrieves the middleware of the current `dataSourceManager` instance, which can be used to respond to HTTP requests.
-
-### afterAddDataSource()
-
-A hook function that is triggered after a new `dataSource` is added.
-
-#### Signature
-
-- `afterAddDataSource(hook: DataSourceHook)`
+Добавляет экземпляр источника данных.
 
 ```typescript
+add(dataSource: DataSource, options: any = {}): Promise<void>
+```
+
+### use()
+Добавляет глобальное middleware для экземпляра источника данных.
+
+### middleware()
+Получает middleware текущего экземпляра DataSourceManager, которое можно использовать для обработки HTTP-запросов.
+
+### afterAddDataSource()
+Хук-функция, которая срабатывает после добавления нового источника данных.
+
+```typescript
+afterAddDataSource(hook: DataSourceHook)
+
 type DataSourceHook = (dataSource: DataSource) => void;
 ```
 
 ### registerDataSourceType()
+Регистрирует тип источника данных и соответствующий ему класс.
 
-Registers the data source type and its class.
-
-#### Signature
-
-- `registerDataSourceType(type: string, dataSourceClass: typeof DataSource)`
+```typescript
+registerDataSourceType(type: string, dataSourceClass: typeof DataSource)
+```
 
 ### getDataSourceType()
+Получает класс источника данных по его типу.
 
-Retrieves the data source class.
-
-#### Signature
-
-- `getDataSourceType(type: string): typeof DataSource`
+```typescript
+getDataSourceType(type: string): typeof DataSource
+```
 
 ### buildDataSourceByType()
+Создает экземпляр источника данных на основе зарегистрированного типа и параметров.
 
-Creates a data source instance based on the registered data source type and instance parameters.
+```typescript
+buildDataSourceByType(type: string, options: any): DataSource
+```
 
-#### Signature
-
-- `buildDataSourceByType(type: string, options: any): DataSource`
+Этот менеджер позволяет:
+1. Централизованно управлять множеством источников данных
+2. Регистрировать новые типы источников данных
+3. Обрабатывать события жизненного цикла источников
+4. Обеспечивать единую точку входа для HTTP-запросов

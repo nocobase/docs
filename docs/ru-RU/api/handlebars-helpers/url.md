@@ -1,87 +1,81 @@
-
 # URL
 
 ## {{encodeURI}}
 
-Encodes a Uniform Resource Identifier (URI) component
-by replacing each instance of certain characters by
-one, two, three, or four escape sequences representing
-the UTF-8 encoding of the character.
+Кодирует компонент Uniform Resource Identifier (URI), заменяя определённые символы на одну, две, три или четыре escape-последовательности, представляющие UTF-8 кодировку символа.
 
-**Params**
+**Параметры**
 
-* `str` **{String}**: The un-encoded string
-* `returns` **{String}**: The endcoded string
+* `str` **{String}**: Не закодированная строка
+* `возвращает` **{String}**: Закодированная строка
 
 ## {{escape}}
 
-Escape the given string by replacing characters with escape sequences.
-Useful for allowing the string to be used in a URL, etc.
+Экранирует заданную строку, заменяя символы на escape-последовательности. Полезно для использования строки в URL и т.п.
 
-**Params**
+**Параметры**
 
 * `str` **{String}**
-* `returns` **{String}**: Escaped string.
+* `возвращает` **{String}**: Экранированная строка.
 
 ## {{decodeURI}}
 
-Decode a Uniform Resource Identifier (URI) component.
+Декодирует компонент Uniform Resource Identifier (URI).
 
-**Params**
+**Параметры**
 
 * `str` **{String}**
-* `returns` **{String}**
+* `возвращает` **{String}**
 
 ## {{url_encode}}
 
-Alias for [encodeURI](#encodeuri).
+Псевдоним для [encodeURI](#encodeuri).
 
 ## {{url_decode}}
 
-Alias for [decodeURI](#decodeuri).
+Псевдоним для [decodeURI](#decodeuri).
 
 ## {{urlResolve}}
 
-Take a base URL, and a href URL, and resolve them as a
-browser would for an anchor tag.
+Принимает базовый URL и URL-адрес (href) и разрешает их так, как это сделал бы браузер для тега-ссылки (anchor).
 
-**Params**
+**Параметры**
 
 * `base` **{String}**
 * `href` **{String}**
-* `returns` **{String}**
+* `возвращает` **{String}**
 
 ## {{urlParse}}
 
-Parses a `url` string into an object.
+Разбирает строку `url` в объект.
 
-**Params**
+**Параметры**
 
-* `str` **{String}**: URL string
-* `returns` **{String}**: Returns stringified JSON
+* `str` **{String}**: Строка URL
+* `возвращает` **{String}**: Возвращает строковое представление JSON
 
 ## {{stripQuerystring}}
 
-Strip the query string from the given `url`.
+Удаляет строку запроса (query string) из указанного `url`.
 
-**Params**
+**Параметры**
 
 * `url` **{String}**
-* `returns` **{String}**: the url without the queryString
+* `возвращает` **{String}**: URL без строки запроса
 
 ## {{stripProtocol}}
 
-Strip protocol from a `url`. Useful for displaying media that may have an 'http' protocol on secure connections.
+Удаляет протокол из `url`. Полезно при отображении медиа-ресурсов, которые могут использовать протокол 'http' на защищённых соединениях.
 
-**Params**
+**Параметры**
 
 * `str` **{String}**
-* `returns` **{String}**: the url with http protocol stripped
+* `возвращает` **{String}**: URL с удалённым HTTP-протоколом
 
-**Example**
+**Пример**
 
 ```handlebars
 <!-- url = 'http://foo.bar' -->
 {{stripProtocol url}}
-<!-- results in: '//foo.bar' -->
+<!-- результат: '//foo.bar' -->
 ```

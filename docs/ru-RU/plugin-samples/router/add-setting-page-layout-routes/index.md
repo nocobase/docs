@@ -1,24 +1,24 @@
-# Add Plugin Setting Page (Different Layout)
+# Добавление страницы настроек плагина (разные макеты)
 
-## Description
+## Описание
 
-The plugin requires multiple configuration pages, and some pages are not under [AdminSettingsLayout](/development/client/router#existing-page-routes), usually for detail pages, such as the `@nocobase/plugin-mobile-client` plugin or the `@nocobase/plugin-workflow`.
+Плагину требуется несколько страниц настроек, некоторые из которых не используют макет [AdminSettingsLayout](/development/client/router#existing-page-routes), обычно для страниц с деталями, например, в плагинах `@nocobase/plugin-mobile-client` или `@nocobase/plugin-workflow`.
 
-## Example Description
+## Описание примера
 
-This example will have a configuration page, and inside the configuration page, there will be a detail link that, when clicked, will navigate to a new page.
+В этом примере будет создана страница настроек, внутри которой будет ссылка на страницу с деталями, переход на которую осуществляется при клике.
 
-This document will not go into much detail about the content development. It is only used to demonstrate how to add a plugin configuration page. For specific content and logic of the configuration page, please refer to the [Plugin Settings plugin example](/plugin-samples/plugin-settings) documentation.
+Этот документ не углубляется в детали разработки содержимого. Он предназначен только для демонстрации добавления страницы настроек плагина. Для конкретного содержимого и логики страницы настроек обратитесь к документации [Пример плагина настроек](/plugin-samples/plugin-settings).
 
-You can find the complete example code for this document in the [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-add-setting-page-layout-routes) repository.
+Полный код примера доступен в репозитории [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-add-setting-page-layout-routes).
 
 <video width="100%" controls>
   <source src="https://static-docs.nocobase.com/10.mp4" type="video/mp4">
 </video>
 
-## Initialize the Plugin
+## Инициализация плагина
 
-Following the instructions in the [Writing Your First Plugin](/development/your-fisrt-plugin) documentation, if you don't have a project yet, you can create one. If you already have one or have cloned the source code, you can skip this step.
+Следуйте инструкциям из документации [Создание первого плагина](/development/your-fisrt-plugin). Если у вас нет проекта, создайте его. Если проект уже существует или вы клонировали исходный код, пропустите этот шаг.
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d sqlite
@@ -27,26 +27,26 @@ yarn install
 yarn nocobase install
 ```
 
-Then initialize a plugin and add it to the application:
+Инициализируйте плагин и добавьте его в систему:
 
 ```bash
 yarn pm create @nocobase-sample/plugin-add-setting-page-layout-routes
 yarn pm enable @nocobase-sample/plugin-add-setting-page-layout-routes
 ```
 
-Then start the project:
+Запустите проект:
 
 ```bash
 yarn dev
 ```
 
-Then, after logging in, visit [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) to see that the plugin has been installed and enabled.
+После входа в систему перейдите по адресу [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/), чтобы убедиться, что плагин установлен и активирован.
 
-## Function Implementation
+## Реализация функциональности
 
-### 1.  Register the Plugin Setting Page
+### 1. Регистрация страницы настроек плагина
 
-Following the instructions in the [Plugin Setting Page Extension](/development/client/router#plugin-setting-page-extension) section of the plugin development tutorial, we need to modify the `packages/plugins/@nocobase-sample/plugin-add-setting-page-layout-routes/src/client/index.tsx` file:
+Согласно руководству по разработке плагинов [Расширение страницы настроек плагина](/development/client/router#plugin-setting-page-extension), необходимо обновить файл `packages/plugins/@nocobase-sample/plugin-add-setting-page-layout-routes/src/client/index.tsx`:
 
 ```tsx | pure
 import React from 'react';
@@ -72,19 +72,18 @@ export class PluginAddSettingPageLayoutRoutesClient extends Plugin {
 export default PluginAddSettingPageLayoutRoutesClient;
 ```
 
-Then we can visit [http://localhost:13000/admin/settings/@nocobase-sample/plugin-add-setting-page-layout-routes](http://localhost:13000/admin/settings/@nocobase-sample/plugin-add-setting-page-layout-routes) to view the plugin configuration page.
+Перейдите по адресу [http://localhost:13000/admin/settings/@nocobase-sample/plugin-add-setting-page-layout-routes](http://localhost:13000/admin/settings/@nocobase-sample/plugin-add-setting-page-layout-routes), чтобы просмотреть страницу настроек плагина.
 
+### 2. Добавление страницы с деталями
 
-### 2.  Add Detail Page
-
-我们准备在 `AdminLayout` 下面新增一个详情页面，我们继续修改 `packages/plugins/@nocobase-sample/plugin-add-setting-page-layout-routes/src/client/index.tsx`：
+Мы добавим страницу с деталями под `AdminLayout`. Обновите файл `packages/plugins/@nocobase-sample/plugin-add-setting-page-layout-routes/src/client/index.tsx`:
 
 ```diff
 + import { Link } from 'react-router-dom'
 
 const PluginSettingPage = () => <div>
 - details
-+ <Link path={`/admin/${name}-detail`}>details</Link>
++ <Link to={`/admin/${name}-detail`}>details</Link>
 </div>
 
 export class PluginAddSettingPageLayoutRoutesClient extends Plugin {
@@ -98,34 +97,34 @@ export class PluginAddSettingPageLayoutRoutesClient extends Plugin {
 }
 ```
 
-When we click on the `details` link, it will navigate to the `/admin/@nocobase-sample/plugin-add-setting-page-layout-routes-detail` page.
+При клике на ссылку `details` произойдет переход на страницу `/admin/@nocobase-sample/plugin-add-setting-page-layout-routes-detail`.
 
 <video width="100%" controls>
   <source src="https://static-docs.nocobase.com/10.mp4" type="video/mp4">
 </video>
 
-## Permission Configuration
+## Настройка прав доступа
 
-By default, the plugin configuration page does not have any permissions. Anyone can access and configure it. To configure permissions for the plugin, we need to configure them in the plugin settings.
+По умолчанию страница настроек плагина не имеет ограничений по доступу, и любой пользователь может получить к ней доступ и изменять настройки. Чтобы настроить права доступа, необходимо задать их в настройках плагина.
 
-We can visit [http://localhost:13000/admin/settings/users-permissions/roles](http://localhost:13000/admin/settings/users-permissions/roles) to see all the roles. We can configure permissions in the plugin settings.
+Перейдите по адресу [http://localhost:13000/admin/settings/users-permissions/roles](http://localhost:13000/admin/settings/users-permissions/roles), чтобы просмотреть все роли и настроить права доступа в настройках плагина.
 
 ![20240512201624](https://static-docs.nocobase.com/20240512201624.png)
 
-## Packaging and Uploading to Production Environment
+## Сборка и развертывание в продакшен
 
-According to the documentation on [Building and Packaging Plugins](/development/your-fisrt-plugin#building-and-packaging-plugins), we can package the plugin and upload it to the production environment.
+Следуйте инструкциям из документации [Сборка и упаковка плагинов](/development/your-fisrt-plugin#building-and-packaging-plugins), чтобы упаковать плагин и загрузить его в продакшен.
 
-If you have cloned the source code, you need to perform a full build first to build the dependencies of the plugin as well.
+Для клонированного исходного кода выполните полную сборку, чтобы собрать зависимости плагина:
 
 ```bash
 yarn build
 ```
 
-If you are using `create-nocobase-app` to create your project, you can directly execute:
+Для проекта, созданного с помощью `create-nocobase-app`, выполните:
 
 ```bash
 yarn build @nocobase-sample/plugin-add-setting-page-layout-routes --tar
 ```
 
-This way you can see the `storage/tar/@nocobase-sample/plugin-add-setting-page-layout-routes.tar.gz` file, and then install it through the [upload method](/welcome/getting-started/plugin).
+В результате будет создан файл `storage/tar/@nocobase-sample/plugin-add-setting-page-layout-routes.tar.gz`, который можно установить с помощью [метода загрузки](/welcome/getting-started/plugin).

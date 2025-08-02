@@ -1,14 +1,14 @@
-# Client
+# Клиент (Client)
 
-## Overview
+## Обзор
 
-NocoBase utilizes [Vitest](https://vitest.dev/) for client-side testing. `@nocobase/test/client` provides convenient methods for writing client-side test cases.
+NocoBase использует [Vitest](https://vitest.dev/) для тестирования на стороне клиента. Пакет `@nocobase/test/client` предоставляет удобные методы для написания тестов на стороне клиента.
 
 ## API
 
 ### `defineConfig()`
 
-Retrieve the Vitest configuration.
+Получает конфигурацию Vitest.
 
 ```ts
 import { defineConfig } from '@nocobase/test/vitest.mjs';
@@ -18,29 +18,29 @@ const config = defineConfig();
 
 ### `sleep()`
 
-Delay execution for a specified period of time.
+Приостанавливает выполнение на указанное время.
 
 ```ts
 sleep(5000);
 ```
 
-#### Signature
+#### Сигнатура
 
 - `sleep: (timeout?: number) => Promise<unknown>`
 
-#### Details
+#### Параметры
 
-| Parameter | Type     | Description        |
-| --------- | -------- | ------------------ |
-| `timeout` | `number` | Delay time (in ms) |
+| Параметр  | Тип      | Описание               |
+|-----------|----------|------------------------|
+| `timeout` | `number` | Время задержки в миллисекундах |
 
 ### @testing-library/react
 
-Used for testing React components. Refer to [React Testing Library](https://testing-library.com/docs/react-testing-library/intro).
+Используется для тестирования React-компонентов. См. [React Testing Library](https://testing-library.com/docs/react-testing-library/intro).
 
 ### @testing-library/user-event
 
-Used for simulating user interactions. Refer to [User Interactions](https://testing-library.com/docs/user-event/intro/).
+Используется для имитации действий пользователя. См. [User Interactions](https://testing-library.com/docs/user-event/intro/).
 
 ```ts
 import { userEvent } from '@nocobase/test/client';

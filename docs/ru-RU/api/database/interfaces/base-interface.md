@@ -1,29 +1,34 @@
-# BaseInterface
+# BaseInterface (Базовый интерфейс)
 
-## Overview
+## Обзор
 
-BaseInterface is the foundational class for all Interface types. Users can extend this class to implement custom Interface logic.
+BaseInterface является базовым классом для всех типов интерфейсов. Пользователи могут расширять этот класс для реализации собственной логики интерфейсов.
 
 ```typescript
 class CustomInterface extends BaseInterface {
   async toValue(value: string, ctx?: any): Promise<any> {
-    // Custom toValue logic
+    // Пользовательская логика преобразования в значение
   }
 
   toString(value: any, ctx?: any) {
-    // Custom toString logic
+    // Пользовательская логика преобразования в строку
   }
 }
-// Register Interface
+// Регистрация интерфейса
 db.interfaceManager.registerInterfaceType('customInterface', CustomInterface)
 ```
 
-## Interfaces
+## Интерфейсы
 
 ### toValue(value: string, ctx?: any): Promise<any>
 
-Converts an external string to the actual value of the interface, which can be directly passed to the Repository for write operations.
+Преобразует внешнюю строку в фактическое значение интерфейса, которое может быть напрямую передано в Repository для операций записи.
 
 ### toString(value: any, ctx?: any)
 
-Converts the actual value of the interface to a string type, which can be used for exporting or displaying purposes.
+Преобразует фактическое значение интерфейса в строковый тип, который может использоваться для экспорта или отображения.
+
+Основные особенности:
+1. **toValue** - выполняет десериализацию данных (например, преобразование строки JSON в объект)
+2. **toString** - выполняет сериализацию данных (например, преобразование объекта в строку JSON)
+3. Параметр **ctx** предоставляет контекст выполнения (например, текущего пользователя или запрос)

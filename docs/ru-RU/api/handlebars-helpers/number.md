@@ -1,110 +1,115 @@
-
-# Number
+# Числа
 
 ## {{bytes}}
 
-Format a number to it's equivalent in bytes. If a string is passed, it's length will be formatted and returned.
+Форматирует число, представляя его эквивалент в байтах. Если передана строка, будет отформатирована и возвращена её длина.
 
-**Examples:**
+**Примеры:**
+* `'foo'` → `3 B`
+* `13661855` → `13.66 MB`
+* `825399` → `825.39 kB`
+* `1396` → `1.4 kB`
 
-* `'foo' => 3 B`
-* `13661855 => 13.66 MB`
-* `825399 => 825.39 kB`
-* `1396 => 1.4 kB`
+**Параметры**
+* `number` **{Number|String}**: Число или строка для форматирования.
+* `returns` **{String}**: Отформатированная строка с размером в байтах.
 
-**Params**
-
-* `number` **{Number|String}**
-* `returns` **{String}**
+---
 
 ## {{addCommas}}
 
-Add commas to numbers
+Добавляет запятые в числа для улучшения читаемости (разделение разрядов).
 
-**Params**
+**Параметры**
+* `num` **{Number}**: Число для форматирования.
+* `returns` **{Number}**: Число с добавленными запятыми (в виде строки).
 
-* `num` **{Number}**
-* `returns` **{Number}**
+---
 
 ## {{phoneNumber}}
 
-Convert a string or number to a formatted phone number.
+Преобразует строку или число в форматированный номер телефона.
 
-**Params**
+**Параметры**
+* `num` **{Number|String}**: Номер телефона для форматирования, например, `8005551212`.
+* `returns` **{Number}**: Отформатированный номер телефона: `(800) 555-1212`.
 
-* `num` **{Number|String}**: The phone number to format, e.g. `8005551212`
-* `returns` **{Number}**: Formatted phone number: `(800) 555-1212`
+---
 
 ## {{toAbbr}}
 
-Abbreviate numbers to the given number of `precision`. This is for
-general numbers, not size in bytes.
+Сокращает число до указанного количества знаков после запятой (`precision`). Предназначено для общих чисел, а не для размеров в байтах.
 
-**Params**
+**Параметры**
+* `number` **{Number}**: Число для сокращения.
+* `precision` **{Number}**: Количество знаков после запятой.
+* `returns` **{String}**: Сокращённое число в виде строки (например, `1.2K`, `3.5M`).
 
-* `number` **{Number}**
-* `precision` **{Number}**
-* `returns` **{String}**
+---
 
 ## {{toExponential}}
 
-Returns a string representing the given number in exponential notation.
+Возвращает строку, представляющую заданное число в экспоненциальной (научной) нотации.
 
-**Params**
+**Параметры**
+* `number` **{Number}**: Число для преобразования.
+* `fractionDigits` **{Number}**: (Опционально) Количество цифр после десятичной точки. По умолчанию — столько, сколько необходимо.
+* `returns` **{Number}**: Строка с числом в экспоненциальной форме.
 
-* `number` **{Number}**
-* `fractionDigits` **{Number}**: Optional. An integer specifying the number of digits to use after the decimal point. Defaults to as many digits as necessary to specify the number.
-* `returns` **{Number}**
-
-**Example**
-
+**Пример**
 ```handlebars
 {{toExponential number digits}};
 ```
 
+---
+
 ## {{toFixed}}
 
-Formats the given number using fixed-point notation.
+Форматирует заданное число с использованием нотации с фиксированной точкой.
 
-**Params**
+**Параметры**
+* `number` **{Number}**: Число для форматирования.
+* `digits` **{Number}**: (Опционально) Количество цифр после десятичной точки (от 0 до 20). По умолчанию — 0.
+* `returns` **{String}**: Строка, представляющая число с фиксированной точностью.
 
-* `number` **{Number}**
-* `digits` **{Number}**: (Optional) The number of digits to appear after the decimal point; this may be a value between 0 and 20. If this argument is omitted, it is treated as 0.
-* `returns` **{String}**: A string representing the given number using fixed-point notation.
-
-**Example**
-
+**Пример**
 ```handlebars
 {{toFixed "1.1234" 2}}
 //=> '1.12'
 ```
 
+---
+
 ## {{toFloat}}
 
-**Params**
+Преобразует значение в число с плавающей точкой (тип `float`).
 
-* `number` **{Number}**
-* `returns` **{Number}**
+**Параметры**
+* `number` **{Number}**: Значение для преобразования.
+* `returns` **{Number}**: Число с плавающей точкой.
+
+---
 
 ## {{toInt}}
 
-**Params**
+Преобразует значение в целое число (тип `int`).
 
-* `number` **{Number}**
-* `returns` **{Number}**
+**Параметры**
+* `number` **{Number}**: Значение для преобразования.
+* `returns` **{Number}**: Целое число.
+
+---
 
 ## {{toPrecision}}
 
-Returns a string representing the `Number` object to the specified precision.
+Возвращает строку, представляющую число с указанной точностью (общим количеством значащих цифр).
 
-**Params**
+**Параметры**
+* `number` **{Number}**: Число для преобразования.
+* `precision` **{Number}**: (Опционально) Количество значащих цифр. Если значение не в диапазоне от 1 до 100, будет приведено к `0`.
+* `returns` **{String}**: Строка с числом, округлённым до указанной точности, в нотации с фиксированной точкой или экспоненциальной.
 
-* `number` **{Number}**
-* `precision` **{Number}**: (Optional) An integer specifying the number of significant digits. If precison is not between 1 and 100 (inclusive), it will be coerced to `0`.
-* `returns` **{String}**: A string representing a Number object in fixed-point or exponential notation rounded to precision significant digits.
-
-**Example**
-
+**Пример**
 ```handlebars
 {{toPrecision "1.1234" 2}}
 //=> '1.1'

@@ -1,12 +1,12 @@
-# JSON Template
+### **JSON-шаблон**
 
-## Introduction
+#### **Введение**
 
-In a JSON template, variables are represented in string format and must be enclosed in double quotes, such as {{xxxx}}. During the parsing process, each variable's value is converted to its appropriate type based on its actual content. Thus, while the variable itself is a string, the resulting parsed value may not necessarily remain a string.
+В JSON-шаблоне переменные представляются в виде строк и должны быть заключены в двойные кавычки, например: `{{xxxx}}`. В процессе разбора (парсинга) значение каждой переменной преобразуется в соответствующий тип данных в зависимости от её фактического содержимого. Таким образом, хотя сама переменная в шаблоне является строкой, итоговое значение после разбора может быть любого типа — строкой, числом, объектом, массивом, `null` или `undefined`.
 
-## Example
+#### **Пример**
 
-The JSON template is as follows
+Дан следующий JSON-шаблон:
 
 ```json
 {
@@ -25,7 +25,7 @@ The JSON template is as follows
 }
 ```
 
-The current variables are as follows
+Имеются следующие текущие значения переменных:
 
 ```json
 {
@@ -38,7 +38,7 @@ The current variables are as follows
 }
 ```
 
-The parsed result will be
+Результат парсинга будет следующим:
 
 ```json
 {

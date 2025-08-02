@@ -1,40 +1,46 @@
-# Built-in Helpers
+# Встроенные хелперы
 
-https://handlebarsjs.com/guide/builtin-helpers.html
+Ссылка: [https://handlebarsjs.com/guide/builtin-helpers.html](https://handlebarsjs.com/guide/builtin-helpers.html)
 
 ## {{if}}
 
-Renders a block if the given condition is truthy.
+Отображает блок, если заданное условие является истинным (truthy).
 
-**Params**
+**Параметры**
 
-- `condition` **{Any}**: The condition to evaluate.
+* `condition` **{Any}**: Условие для проверки.
 
-**Returns**: The content inside the block if the condition is truthy, otherwise returns nothing.
+**Возвращает**
 
-**Example**
+Содержимое блока, если условие истинно; в противном случае ничего не возвращает.
+
+**Пример**
 
 ```handlebars
 {{#if condition}}
-  This will be displayed if the condition is true.
+  Этот текст отобразится, если условие истинно.
 {{/if}}
 ```
 
+---
+
 ## {{unless}}
 
-Renders a block if the given condition is falsy. This is the opposite of `if`.
+Отображает блок, если заданное условие является ложным (falsy). Противоположность хелперу `if`.
 
-**Params**
+**Параметры**
 
-- `condition` **{Any}**: The condition to evaluate.
+* `condition` **{Any}**: Условие для проверки.
 
-**Returns**: The content inside the block if the condition is falsy, otherwise returns nothing.
+**Возвращает**
 
-**Example**
+Содержимое блока, если условие ложно; в противном случае ничего не возвращает.
+
+**Пример**
 
 ```handlebars
 {{#unless condition}}
-  This will be displayed if the condition is false.
+  Этот текст отобразится, если условие ложно.
 {{/unless}}
 ```
 
@@ -42,15 +48,17 @@ Renders a block if the given condition is falsy. This is the opposite of `if`.
 
 ## {{each}}
 
-Iterates over an array or object and renders a block for each item.
+Перебирает элементы массива или объекта и отображает блок для каждого элемента.
 
-**Params**
+**Параметры**
 
-- `collection` **{Array|Object}**: The array or object to iterate over.
+* `collection` **{Array|Object}**: Массив или объект для перебора.
 
-**Returns**: Renders the block for each item in the collection.
+**Возвращает**
 
-**Example**
+Отображает блок для каждого элемента коллекции.
+
+**Пример**
 
 ```handlebars
 {{#each items}}
@@ -58,39 +66,47 @@ Iterates over an array or object and renders a block for each item.
 {{/each}}
 ```
 
+---
+
 ## {{with}}
 
-Renders a block with a given context. It allows you to specify a context for the block, simplifying access to deeply nested properties.
+Отображает блок с указанным контекстом. Позволяет установить контекст для блока, упрощая доступ к вложенным свойствам.
 
-**Params**
+**Параметры**
 
-- `context` **{Any}**: The context to use within the block.
+* `context` **{Any}**: Контекст, который будет использоваться внутри блока.
 
-**Returns**: Renders the block with the provided context.
+**Возвращает**
 
-**Example**
+Отображает блок с указанным контекстом.
+
+**Пример**
 
 ```handlebars
 {{#with person}}
-  <p>Name: {{name}}</p>
-  <p>Age: {{age}}</p>
+  <p>Имя: {{name}}</p>
+  <p>Возраст: {{age}}</p>
 {{/with}}
 ```
 
+---
+
 ## {{lookup}}
 
-Looks up the value of a specified key in an object. This helper is useful for accessing dynamic keys.
+Находит значение по указанному ключу в объекте. Этот хелпер полезен для доступа к динамическим ключам.
 
-**Params**
+**Параметры**
 
-- `context` **{Object}**: The object to look up the key from.
-- `key` **{String|Number}**: The key to look up.
+* `context` **{Object}**: Объект, в котором нужно найти ключ.
+* `key` **{String|Number}**: Ключ для поиска.
 
-**Returns**: The value of the specified key in the object.
+**Возвращает**
 
-**Example**
+Значение указанного ключа в объекте.
+
+**Пример**
 
 ```handlebars
 {{lookup person "name"}}
-<!-- If person is { name: "Alice", age: 30 }, it results in: "Alice" -->
+<!-- Если person = { name: "Alice", age: 30 }, результат: "Alice" -->
 ```

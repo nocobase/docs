@@ -1,25 +1,25 @@
-# Line Chart
+# Линейчатая диаграмма (график)
 
-## Data Configuration
+## Настройка данных
 
-### 1 Measure, 1 Dimension
+### 1 показатель, 1 измерение
 
-The line chart can be configured with one measure and one dimension, as illustrated below:
+Линейчатую диаграмму можно настроить с одним показателем и одним измерением, как показано ниже:
 
-![1 Measure, 1 Dimension](https://static-docs.nocobase.com/202410101109866.png)
+![1 показатель, 1 измерение](https://static-docs.nocobase.com/202410101109866.png)
 
-### 1 Measure, 1 Axis Dimension, One Category Dimension
+### 1 показатель, 1 измерение по оси, 1 категориальное измерение
 
-Configure one metric and two dimensions. One of the dimensions is the X-axis field (X field) and the other is the Series field (Series field).
+Настройте один показатель и два измерения. Одно измерение используется как поле по оси X, другое — как поле серии (категории).
 
-![1 Measure, 1 Axis Dimension, One Category Dimension](https://static-docs.nocobase.com/202410101113944.png)
+![1 показатель, 1 измерение по оси, 1 категориальное измерение](https://static-docs.nocobase.com/202410101113944.png)
 
-## Configuration Options
+## Параметры настройки
 
-| Configuration Option | Description                                         |
-| -------------------- | --------------------------------------------------- |
-| X-axis Field         | The dimension field that defines the X-axis         |
-| Series Field         | The dimension field that defines the categories     |
-| Size                 | Set the size of the chart, either fixed aspect ratio or fixed height |
-| Smooth Curves        | Enable or disable smooth curve rendering            |
-| Stack Data           | Whether to stack the data values on top of each other |
+| Параметр               | Описание                                         |
+| ---------------------- | ------------------------------------------------ |
+| Поле по оси X          | Поле измерения, определяющее ось X               |
+| Поле серии             | Поле измерения, определяющее категории           |
+| Размер                 | Установите размер диаграммы — с фиксированным соотношением сторон или фиксированной высотой |
+| Плавные кривые         | Включить или отключить отображение линий в виде плавных кривых |
+| Группировка данных     | Включить или отключить отображение значений в виде наложенных друг на друга столбцов (стек) |

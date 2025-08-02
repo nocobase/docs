@@ -1,59 +1,59 @@
-# Select
+# Выбор (Select)
 
-## Introduction
+## Введение
 
-The selector offers a streamlined way to select or associate data within the target table, whether you're working with existing records or newly added entries. The dropdown options also support fuzzy search for easier navigation.
+Селектор предоставляет удобный способ выбора или ассоциации данных в целевой таблице, как для существующих записей, так и для новых. Выпадающие варианты поддерживают нечеткий поиск для удобной навигации.
 
 ![20240409230638](https://static-docs.nocobase.com/20240409230638.png)
 
-## Field Configuration Options
+## Настройки поля
 
-### Quick Creation: Add Data First, Then Select
+### Быстрое создание: сначала добавление, затем выбор
 
-#### Add via Dropdown Menu
+#### Добавление через выпадающее меню
 
-When new data is added to the target table, it will be automatically selected and linked upon form submission. This method is ideal for straightforward data scenarios, such as tagging.
+Новые данные в целевой таблице автоматически выбираются и связываются при отправке формы. Идеально для простых сценариев, например тегов.
 
-For example, the order table contains a many-to-one relationship field called "Tag"
+Пример: таблица заказов содержит поле связи "многие-ко-многим" - "Тег"
 
 <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240410113002.mp4" type="video/mp4">
 </video>
 
-#### Add Popup
+#### Добавление через всплывающее окно
 
-This option allows you to configure a new form in a popup window, making it suitable for more complex scenarios, such as product entries.
+Позволяет настроить новую форму во всплывающем окне, подходит для сложных сценариев, например товаров.
 
-For instance, the order table includes a many-to-many relationship field named "Products."
+Пример: таблица заказов содержит поле связи "многие-ко-многим" - "Товары"
 
 <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240410113351.mp4" type="video/mp4">
 </video>
 
-### Set Data Range
+### Установка диапазона данных
 
-Define the range of data that will appear in the dropdown list.
+Определяет, какие данные будут отображаться в выпадающем списке.
 
 ![20240422204957](https://static-docs.nocobase.com/20240422204957.png)
 
-For more information, refer to [Set Data Range](/handbook/ui/fields/field-settings/data-scope).
+Подробнее: [Установка диапазона данных](/handbook/ui/fields/field-settings/data-scope)
 
-### Set Sorting Rules
+### Настройка правил сортировки
 
-Determine the order in which the dropdown options are displayed.
+Определяет порядок отображения вариантов в выпадающем списке.
 
-Example: Display in descending order based on the production date.
+Пример: отображение в порядке убывания по дате производства.
 
 ![20240422205340](https://static-docs.nocobase.com/20240422205340.png)
 
-### Allow Multiple Add/Associate
+### Разрешить множественное добавление/ассоциацию
 
-Limit the association in many-to-many relationship fields to a single data item.
+Ограничивает связь в полях "многие-ко-многим" одним элементом данных.
 
-### Title Field
+### Поле-заголовок
 
 ![20240422205632](https://static-docs.nocobase.com/20240422205632.gif)
 
-For additional details, see [Title Field](/handbook/ui/fields/field-settings/title-field).
+Подробнее: [Поле-заголовок](/handbook/ui/fields/field-settings/title-field)
 
-- [Field Components](/handbook/ui/fields/association-field)
+- [Компоненты полей](/handbook/ui/fields/association-field)

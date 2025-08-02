@@ -1,16 +1,16 @@
-# Word Cloud Chart
+# Диаграмма облака слов
 
-## Data Configuration
+## Настройка данных
 
-### 1 Measure, 1 Dimension
+### 1 показатель, 1 измерение
 
-![1 Measure, 1 Dimension](https://static-docs.nocobase.com/202410091936018.png)
+![1 показатель, 1 измерение](https://static-docs.nocobase.com/202410091936018.png)
 
-## Configuration Options
+## Параметры настройки
 
-| Option             | Description                                      |
+| Параметр             | Описание                                      |
 | ------------------ | ------------------------------------------------ |
-| Size               | Sets the size of the chart, with either a fixed aspect ratio or fixed height |
-| Light mode theme   | Select this option to preview when the system is in light mode |
-| Dark mode theme    | Select this option to preview when the system is in dark mode |
-| Shape              | Controls the shape of the chart                 |
+| Размер               | Устанавливает размер диаграммы — с фиксированным соотношением сторон или фиксированной высотой |
+| Тема в светлом режиме   | Выберите этот параметр для предварительного просмотра в светлом режиме системы |
+| Тема в тёмном режиме    | Выберите этот параметр для предварительного просмотра в тёмном режиме системы |
+| Форма              | Управляет формой облака слов                 |

@@ -1,56 +1,32 @@
-# 图表
+# Диаграммы в NocoBase
 
-目前，NocoBase 图表区块需要通过配置文件或编写代码来实现。图表库使用的是 [g2plot](https://g2plot.antv.vision/en/examples)，理论上支持 https://g2plot.antv.vision/en/examples 上的所有图表。目前可以配置的图表包括：
+В настоящее время для работы с диаграммами в NocoBase требуется использование конфигурационных файлов или написание кода. Система использует библиотеку [g2plot](https://g2plot.antv.vision/en/examples) и теоретически поддерживает все типы диаграмм, представленные на сайте библиотеки. В данный момент доступны для настройки:
 
-- 柱状图
-- 条形图
-- 折线图
-- 饼图
-- 面积图
+- Столбчатые диаграммы
+- Горизонтальные диаграммы
+- Линейные графики
+- Круговые диаграммы
+- Диаграммы площадей
 
-## 添加和编辑图表
+## Добавление и редактирование диаграмм
 
 ![chart-edit.gif](https://static-docs.nocobase.com/97c1d74a7ca9d0e8d2971cca2ab8de50.gif)
 
-## 图表配置
+## Настройка диаграмм
 
-初始化的图表配置是静态的 JSON 数据
+Исходная конфигурация диаграмм использует статические JSON-данные:
 
 ```json
 {
   "data": [
-    {
-      "type": "furniture & appliances",
-      "sales": 38
-    },
-    {
-      "type": "食品油副食",
-      "sales": 52
-    },
-    {
-      "type": "Fresh Fruit",
-      "sales": 61
-    },
-    {
-      "type": "美容洗护",
-      "sales": 145
-    },
-    {
-      "type": "Maternity & Baby Products",
-      "sales": 48
-    },
-    {
-      "type": "Imported Food",
-      "sales": 38
-    },
-    {
-      "type": "Food & Beverage",
-      "sales": 38
-    },
-    {
-      "type": "Home Cleaning",
-      "sales": 38
-    }
+    {"type": "Мебель и техника", "sales": 38},
+    {"type": "Продукты питания", "sales": 52},
+    {"type": "Фрукты", "sales": 61},
+    {"type": "Косметика", "sales": 145},
+    {"type": "Товары для детей", "sales": 48},
+    {"type": "Импортные продукты", "sales": 38},
+    {"type": "Напитки", "sales": 38},
+    {"type": "Бытовая химия", "sales": 38}
   ],
   "xField": "type",
   "yField": "sales",
@@ -68,141 +44,61 @@
     }
   },
   "meta": {
-    "type": {
-      "alias": "category"
-    },
-    "sales": {
-      "alias": "sales"
-    }
+    "type": {"alias": "Категория"},
+    "sales": {"alias": "Продажи"}
   }
 }
 ```
 
-data 支持表达式的写法，NocoBase 内置了 `requestChartData(config)` 函数，用于自定义图表数据的请求。Config 参数说明见： [https://github.com/axios/axios#request-config](https://github.com/axios/axios#request-config)
+## Динамические данные
 
-示例：
+Поле `data` поддерживает выражения. NocoBase включает функцию `requestChartData(config)` для запроса данных диаграмм. Параметры config: [https://github.com/axios/axios#request-config](https://github.com/axios/axios#request-config)
 
+Пример:
 ```json
 {
   "data": "{{requestChartData({ url: 'collectionName:getColumnChartData' })}}",
-  "xField": "type",
-  "yField": "sales",
-  "label": {
-    "position": "middle",
-    "style": {
-      "fill": "#FFFFFF",
-      "opacity": 0.6
-    }
-  },
-  "xAxis": {
-    "label": {
-      "autoHide": true,
-      "autoRotate": false
-    }
-  },
-  "meta": {
-    "type": {
-      "alias": "category"
-    },
-    "sales": {
-      "alias": "sales"
-    }
-  }
+  ...остальные параметры...
 }
 ```
 
-HTTP API 示例：
-
+Пример HTTP API:
 ```bash
 GET /api/collectionName:getColumnChartData
-
-Response Body
-{
-    "data": [
-    {
-      "type": "furniture & appliances",
-      "sales": 38
-    },
-    {
-      "type": "食品油副食",
-      "sales": 52
-    },
-    {
-      "type": "Fresh Fruit",
-      "sales": 61
-    },
-    {
-      "type": "美容洗护",
-      "sales": 145
-    },
-    {
-      "type": "Maternity & Baby Products",
-      "sales": 48
-    },
-    {
-      "type": "Imported Food",
-      "sales": 38
-    },
-    {
-      "type": "Food & Beverage",
-      "sales": 38
-    },
-    {
-      "type": "Home Cleaning",
-      "sales": 38
-    }
-  ]
-}
-
 ```
 
-## Server 端实现
+## Реализация на сервере
 
-为名为 collectionName 的数据表，添加自定义的 getColumnChartData 方法：
+Для таблицы `collectionName` необходимо добавить метод `getColumnChartData`:
 
 ```js
 app.resourcer.registerActionHandlers({
-  'collectionName:getColumnChartData': (ctx, next) => {
-    // The data to be output
-    ctx.body = [];
+  'collectionName:getColumnChartData': async (ctx, next) => {
+    ctx.body = []; // Возвращаемые данные
     await next();
   },
 });
-
 ```
 
-## 视频
+## Видео примеры
 
-### 静态数据
+### Статические данные
+[Видео](https://user-images.githubusercontent.com/1267426/198877269-1c56562b-167a-4808-ada3-578f0872bce1.mp4)
 
-<video width="100%" height="440" controls>
-  <source src="https://user-images.githubusercontent.com/1267426/198877269-1c56562b-167a-4808-ada3-578f0872bce1.mp4" type="video/mp4">
-</video>
+### Динамические данные
+[Видео](https://user-images.githubusercontent.com/1267426/198877336-6bd85f0b-17c5-40a5-9442-8045717cc7b0.mp4)
 
-### 动态数据
+### Другие типы диаграмм
+Поддерживаются все диаграммы с [g2plot](https://g2plot.antv.vision/en/examples)
+[Видео](https://user-images.githubusercontent.com/1267426/198877347-7fc2544c-b938-4e34-8a83-721b3f62525e.mp4)
 
-<video width="100%" height="440" controls>
-  <source src="https://user-images.githubusercontent.com/1267426/198877336-6bd85f0b-17c5-40a5-9442-8045717cc7b0.mp4" type="video/mp4">
-</video>
+## JS-выражения
 
-### 更多图表
-
-理论上支持 https://g2plot.antv.vision/en/examples 上的所有图表
-
-<video width="100%" height="440" controls>
-  <source src="https://user-images.githubusercontent.com/1267426/198877347-7fc2544c-b938-4e34-8a83-721b3f62525e.mp4" type="video/mp4">
-</video>
-
-## JS 表达式
-
-Syntax
-
+Синтаксис:
 ```js
 {
-  "key1": "{{ js expression }}"
+  "key1": "{{ js выражение }}"
 }
 ```
 
-<video width="100%" height="440" controls>
-  <source src="https://user-images.githubusercontent.com/1267426/198877361-808a51cc-6c91-429f-8cfc-8ad7f747645a.mp4" type="video/mp4">
-</video>
+[Пример использования](https://user-images.githubusercontent.com/1267426/198877361-808a51cc-6c91-429f-8cfc-8ad7f747645a.mp4)

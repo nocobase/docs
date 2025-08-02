@@ -1,17 +1,17 @@
-# Router
+# Маршрутизатор (Router)
 
 ## API
 
-### Initial
+### Инициализация
 
 ```tsx | pure
 const app = new Application({
   router: {
-    type: 'browser', // type default value is `browser`
+    type: 'browser', // тип по умолчанию — `browser`
   },
 });
 
-// or
+// или
 const app = new Application({
   router: {
     type: 'memory',
@@ -20,19 +20,19 @@ const app = new Application({
 });
 ```
 
-### add Route
+### Добавление маршрута
 
-#### basic
+#### Базовое использование
 
 ```tsx | pure
 import { RouteObject } from 'react-router-dom';
 const app = new Application();
 
 const Hello = () => {
-  return <div>Hello</div>;
+  return <div>Привет</div>;
 };
 
-// first argument is `name` of route, second argument is `RouteObject`
+// Первый аргумент — имя маршрута, второй — объект `RouteObject`
 app.router.add('root', {
   path: '/',
   element: <Hello />,
@@ -44,7 +44,7 @@ app.router.add('root', {
 });
 ```
 
-#### Component is String
+#### Компонент как строка
 
 ```tsx | pure
 app.addComponents({
@@ -56,7 +56,7 @@ app.router.add('root', {
 });
 ```
 
-#### nested
+#### Вложенные маршруты
 
 ```tsx | pure
 import { Outlet } from 'react-router-dom';
@@ -64,8 +64,8 @@ import { Outlet } from 'react-router-dom';
 const Layout = () => {
   return (
     <div>
-      <Link to="/home">Home</Link>
-      <Link to="/about">about</Link>
+      <Link to="/home">Главная</Link>
+      <Link to="/about">О нас</Link>
 
       <Outlet />
     </div>
@@ -73,11 +73,11 @@ const Layout = () => {
 };
 
 const Home = () => {
-  return <div>Home</div>;
+  return <div>Главная</div>;
 };
 
 const About = () => {
-  return <div>About</div>;
+  return <div>О нас</div>;
 };
 
 app.router.add('root', {
@@ -93,7 +93,7 @@ app.router.add('root.about', {
 });
 ```
 
-It will generate the following routes:
+Будет сгенерирована следующая структура маршрутов:
 
 ```tsx | pure
 {
@@ -111,32 +111,32 @@ It will generate the following routes:
 }
 ```
 
-### remove Route
+### Удаление маршрута
 
 ```tsx | pure
-// remove route by name
+// Удаление маршрута по имени
 app.router.remove('root.home');
 app.router.remove('hello');
 ```
 
-#### Router in plugin
+#### Маршрутизатор в плагине
 
 ```tsx | pure
 class MyPlugin extends Plugin {
   async load() {
-    // add route
+    // Добавление маршрута
     this.app.router.add('hello', {
       path: '/hello',
-      element: <div>hello</div>,
+      element: <div>привет</div>,
     });
 
-    // remove route
+    // Удаление маршрута
     this.app.router.remove('world');
   }
 }
 ```
 
-## Example
+## Пример
 
 ```tsx
 /**
@@ -146,14 +146,14 @@ import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { Application } from '@nocobase/client';
 
-const Home = () => <h1>Home</h1>;
-const About = () => <h1>About</h1>;
+const Home = () => <h1>Главная</h1>;
+const About = () => <h1>О нас</h1>;
 
 const Layout = () => {
   return (
     <div>
       <div>
-        <Link to={'/'}>Home</Link>, <Link to={'/about'}>About</Link>
+        <Link to={'/'}>Главная</Link>, <Link to={'/about'}>О нас</Link>
       </div>
       <Outlet />
     </div>

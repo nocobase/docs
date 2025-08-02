@@ -1,70 +1,70 @@
-# Auth
+# Аутентификация (Auth)
 
-## Overview
+## Обзор
 
-The `Auth` class is primarily used for accessing user information on the client-side, as well as requesting user authentication-related APIs.
+Класс `Auth` в основном используется для получения информации о пользователе на стороне клиента, а также для вызова API, связанных с аутентификацией пользователя.
 
-## Instance Properties
+## Свойства экземпляра
 
 ### `locale`
 
-The language used by the current user.
+Язык, используемый текущим пользователем.
 
 ### `role`
 
-The role used by the current user.
+Роль, используемая текущим пользователем.
 
 ### `token`
 
-The API interface token.
+Токен для доступа к API.
 
 ### `authenticator`
 
-The authenticator used for current user authentication. Refer to [User Authentication](../../handbook/auth/user.md).
+Метод аутентификации (authenticator), используемый для входа текущего пользователя. См. [Аутентификация пользователя](../../handbook/auth/user.md).
 
-## Class Methods
+## Статические методы класса
 
 ### `signIn()`
 
-User login.
+Вход пользователя в систему (авторизация).
 
-#### Signature
+#### Сигнатура
 
 - `async signIn(values: any, authenticator?: string): Promise<AxiosResponse<any>>`
 
-#### Details
+#### Параметры
 
-| Parameter       | Type     | Description                             |
-| --------------- | -------- | --------------------------------------- |
-| `values`        | `any`    | Login API request parameters            |
-| `authenticator` | `string` | Authenticator identifier used for login |
+| Параметр         | Тип      | Описание                                      |
+|------------------|----------|-----------------------------------------------|
+| `values`         | `any`    | Параметры запроса к API входа в систему       |
+| `authenticator`  | `string` | Идентификатор метода аутентификации, используемый при входе |
 
 ### `signUp()`
 
-User registration.
+Регистрация пользователя.
 
-#### Signature
+#### Сигнатура
 
 - `async signUp(values: any, authenticator?: string): Promise<AxiosResponse<any>>`
 
-#### Details
+#### Параметры
 
-| Parameter       | Type     | Description                                    |
-| --------------- | -------- | ---------------------------------------------- |
-| `values`        | `any`    | Registration API request parameters            |
-| `authenticator` | `string` | Authenticator identifier used for registration |
+| Параметр         | Тип      | Описание                                          |
+|------------------|----------|---------------------------------------------------|
+| `values`         | `any`    | Параметры запроса к API регистрации              |
+| `authenticator`  | `string` | Идентификатор метода аутентификации при регистрации |
 
 ### `signOut()`
 
-Log out.
+Выход пользователя из системы.
 
-#### Signature
+#### Сигнатура
 
 - `async signOut(values: any, authenticator?: string): Promise<AxiosResponse<any>>`
 
-#### Details
+#### Параметры
 
-| Parameter       | Type     | Description                              |
-| --------------- | -------- | ---------------------------------------- |
-| `values`        | `any`    | Logout API request parameters            |
-| `authenticator` | `string` | Authenticator identifier used for logout |
+| Параметр         | Тип      | Описание                                      |
+|------------------|----------|-----------------------------------------------|
+| `values`         | `any`    | Параметры запроса к API выхода                |
+| `authenticator`  | `string` | Идентификатор метода аутентификации при выходе |

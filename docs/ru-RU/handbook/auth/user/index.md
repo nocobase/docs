@@ -1,124 +1,124 @@
-# User Manual
+# Руководство пользователя
 
-## User Authentication Management
+## Управление аутентификацией пользователей
 
-When the user authentication plugin is installed, it will initialize an authentication method of `password`, based on the user's username and email.
+После установки плагина аутентификации пользователей автоматически инициализируется метод аутентификации по **паролю**, основанный на имени пользователя и адресе электронной почты.
 
 ![](https://static-docs.nocobase.com/66eaa9d5421c9cb713b117366bd8a5d5.png)
 
-## Activate Authentication Type
+## Активация типа аутентификации
 
 ![](https://static-docs.nocobase.com/7f1fb8f8ca5de67ffc68eff0a65848f5.png)
 
-Only activated authentication types will be displayed on the login page
+Отображаются на странице входа только активированные типы аутентификации.
 
 ![](https://static-docs.nocobase.com/8375a36ef98417af0f0977f1e07345dd.png)
 
-## User Authentication Types
+## Типы аутентификации пользователей
 
 ![](https://static-docs.nocobase.com/da4250c0cea343ebe470cbf7be4b12e4.png)
 
-The user authentication types currently supported by NocoBase are:
+В настоящее время NocoBase поддерживает следующие типы аутентификации:
 
-- Password (Password), built-in user authentication plugin
-- SMS (SMS), expanded by [sms-auth plugin](../../auth-sms/index.md)
-- CAS, expanded by [cas-auth plugin](../../auth-cas/index.md)
-- SAML, expanded by [saml-auth plugin](../../auth-saml/index.md)
-- OIDC, expanded by [oidc-auth plugin](../../auth-oidc/index.md)
+- **Пароль (Password)** — встроенный плагин аутентификации
+- **SMS (SMS)** — расширяется с помощью [плагина sms-auth](../../auth-sms/index.md)
+- **CAS** — расширяется с помощью [плагина cas-auth](../../auth-cas/index.md)
+- **SAML** — расширяется с помощью [плагина saml-auth](../../auth-saml/index.md)
+- **OIDC** — расширяется с помощью [плагина oidc-auth](../../auth-oidc/index.md)
 
-In addition, you can also expand user authentication by yourself, refer to the [Developer's Guide](../dev/guide.md).
+Кроме того, вы можете самостоятельно расширить функционал аутентификации. Подробнее см. в [Руководстве для разработчиков](../dev/guide.md).
 
-## Password Authentication
+## Аутентификация по паролю
 
-### Configuration Interface
+### Интерфейс настройки
 
 ![](https://static-docs.nocobase.com/202411131505095.png)
 
-### Allow sign up
+### Разрешить регистрацию
 
-When sign up is allowed, the login page will display the link to create an account, and you can go to the sign up page
+Если регистрация разрешена, на странице входа будет отображаться ссылка «Создать аккаунт», и пользователь сможет перейти на страницу регистрации.
 
 ![](https://static-docs.nocobase.com/78903930d4b47aaf75cf94c55dd3596e.png)
 
-Sign up page
+Страница регистрации:
 
 ![](https://static-docs.nocobase.com/ac3c3ab42df28cb7c6dc70b24e99e7f7.png)
 
-When sign up is not allowed, the login page will not display the link to create an account
+Если регистрация запрещена, ссылка «Создать аккаунт» на странице входа отображаться не будет.
 
 ![](https://static-docs.nocobase.com/8d5e3b6df9991bfc1c2e095a93745121.png)
 
-When sign up is not allowed, the sign up page cannot be accessed
+Если регистрация запрещена, доступ к странице регистрации невозможен.
 
 ![](https://static-docs.nocobase.com/09325c4b07e09f88f80a14dff8430556.png)
 
-### Sign up form Settings<Badge>v1.4.0-beta.7+</Badge>
+### Настройка формы регистрации <Badge>v1.4.0-beta.7+</Badge>
 
-You can set which fields in the user collection need to be displayed in the sign up form and whether they are required or not. At least one of username or email fields needs to be set to display and required.
+Можно настроить, какие поля из коллекции пользователей должны отображаться в форме регистрации, а также указать, являются ли они обязательными. Хотя бы одно из полей — «username» или «email» — должно быть отображено и указано как обязательное.
 
 ![](https://static-docs.nocobase.com/202411262133669.png)
 
-Sign up page
+Страница регистрации:
 
 ![](https://static-docs.nocobase.com/202411262135801.png)
 
-### Forgot Password<Badge>v1.7.0+</Badge>
+### Восстановление пароля <Badge>v1.7.0+</Badge>
 
-The forgot password feature allows users to reset their password via email verification if they forget it.
+Функция восстановления пароля позволяет пользователям сбросить пароль с помощью проверки по электронной почте, если они его забыли.
 
-#### Administrator Configuration
+#### Настройка администратором
 
-1.  **Enable Forgot Password Feature**
+1. **Включить функцию восстановления пароля**
 
-  In "Settings" > "Authentication" > "Forgot password" tab, check the "Enable Forgot Password Feature" checkbox.
+   Перейдите в «Настройки» → «Аутентификация» → вкладка «Восстановление пароля» и установите флажок «Включить функцию восстановления пароля».
 
-  ![20250423071957_rec_](https://static-docs.nocobase.com/20250423071957_rec_.gif)
+   ![20250423071957_rec_](https://static-docs.nocobase.com/20250423071957_rec_.gif)
 
-2.  **Configure Notification Channel**
+2. **Настроить канал уведомлений**
 
-  Select an email notification channel (currently only email is supported). If no notification channel is available, you need to add one first.
+   Выберите канал уведомлений по электронной почте (на данный момент поддерживается только email). Если канал отсутствует, сначала необходимо добавить его.
 
-  ![20250423072225_rec_](https://static-docs.nocobase.com/20250423072225_rec_.gif)
+   ![20250423072225_rec_](https://static-docs.nocobase.com/20250423072225_rec_.gif)
 
-3.  **Configure Password Reset Email**
+3. **Настроить письмо для сброса пароля**
 
-  Customize the email subject and content, supporting HTML or plain text format. You can use the following variables:
-  -   Current user
-  -   System settings
-  -   Reset password link
-  -   Reset link expiration (minutes)
+   Настройте тему и содержание письма. Поддерживаются форматы HTML и обычный текст. Доступны следующие переменные:
+   - Текущий пользователь
+   - Настройки системы
+   - Ссылка для сброса пароля
+   - Время жизни ссылки (в минутах)
 
-  ![20250427170047](https://static-docs.nocobase.com/20250427170047.png)
+   ![20250427170047](https://static-docs.nocobase.com/20250427170047.png)
 
-4.  **Set Reset Link Expiration**
+4. **Установить срок действия ссылки для сброса**
 
-  Set the validity period (in minutes) for the reset link, default is 120 minutes.
+   Укажите срок действия ссылки (в минутах). По умолчанию — 120 минут.
 
-  ![20250423073557](https://static-docs.nocobase.com/20250423073557.png)
+   ![20250423073557](https://static-docs.nocobase.com/20250423073557.png)
 
-#### User Workflow
+#### Процесс для пользователя
 
-1.  **Initiate Password Reset Request**
+1. **Запрос на сброс пароля**
 
-  Click the "Forgot Password" link on the login page (requires the administrator to enable the forgot password feature first) to go to the forgot password page.
+   Нажмите ссылку «Забыли пароль?» на странице входа (предварительно администратор должен включить эту функцию), чтобы перейти на страницу восстановления.
 
-  ![20250421103458_rec_](https://static-docs.nocobase.com/20250421103458_rec_.gif)
+   ![20250421103458_rec_](https://static-docs.nocobase.com/20250421103458_rec_.gif)
 
-  Enter the registered email address and click the "Send Reset Email" button.
+   Введите зарегистрированный адрес электронной почты и нажмите «Отправить письмо для сброса».
 
-  ![20250421113442_rec_](https://static-docs.nocobase.com/20250421113442_rec_.gif)
+   ![20250421113442_rec_](https://static-docs.nocobase.com/20250421113442_rec_.gif)
 
-2.  **Reset Password**
+2. **Сброс пароля**
 
-  The user will receive an email containing a reset link. Click the link to open a page where you can set a new password.
+   Пользователь получит письмо со ссылкой для сброса. После перехода по ссылке откроется страница, где можно установить новый пароль.
 
-  ![20250421113748](https://static-docs.nocobase.com/20250421113748.png)
+   ![20250421113748](https://static-docs.nocobase.com/20250421113748.png)
 
-  After setting it up, the user can log in to the system with the new password.
+   После установки нового пароля пользователь сможет войти в систему.
 
-#### Notes
+#### Примечания
 
--   The reset link has a time limit, by default it is valid for 120 minutes after generation (configurable by the administrator).
--   The link can only be used once and becomes invalid immediately after use.
--   If the user does not receive the reset email, please check if the email address is correct or check the spam folder.
--   The administrator should ensure that the mail server configuration is correct to guarantee that the reset email can be sent successfully.
+- Ссылка для сброса имеет ограниченный срок действия — по умолчанию 120 минут (настраивается администратором).
+- Ссылка может быть использована только один раз и становится недействительной сразу после использования.
+- Если пользователь не получил письмо, проверьте правильность адреса электронной почты и папку «Спам».
+- Администратор должен убедиться, что настройки почтового сервера корректны, чтобы письмо для сброса могло быть отправлено успешно.

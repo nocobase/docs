@@ -1,8 +1,8 @@
 # ctx.action
 
-## Overview
+## Обзор
 
-After the resource operation request is parsed by [`resourceManager.middleware()`](./resource-manager#middleware), some important request parameters are stored in `ctx.action` for use by subsequent middleware.
+После обработки запроса на операцию с ресурсом middleware [`resourceManager.middleware()`](./resource-manager#middleware), важные параметры запроса сохраняются в `ctx.action` для использования последующими middleware.
 
 ## API
 
@@ -10,38 +10,38 @@ After the resource operation request is parsed by [`resourceManager.middleware()
 
 `ctx.action.resourceName`
 
-The name of the resource. It can take two forms:
+Имя ресурса. Может иметь две формы:
 
-- `a` - Operates on resource `a`.
-- `a.b` - Operates on associated object `b` of resource `a`.
+- `a` - Операция с ресурсом `a`
+- `a.b` - Операция с ассоциированным объектом `b` ресурса `a`
 
 ### actionName
 
 `ctx.action.actionName`
 
-The name of the action.
+Название действия.
 
 ### sourceId
 
 `ctx.action.sourceId`
 
-When the operation object is an associated object of the resource, it represents the primary key value of the corresponding resource. For example: when `resourceName` is `a.b`, `sourceId` represents the primary key value of `a`.
+Когда объект операции является ассоциированным объектом ресурса, представляет значение первичного ключа соответствующего ресурса. Например: при `resourceName` равном `a.b`, `sourceId` представляет значение первичного ключа `a`.
 
 ### params
 
-Request parameters.
+Параметры запроса.
 
-- URL parameters can be directly obtained from `ctx.action.params`.
+- Параметры URL можно получить напрямую из `ctx.action.params`
 
 ```ts
 const { filterByTk } = ctx.action.params;
 ```
 
-- Request body parameters can be obtained using `ctx.action.params.values`.
+- Параметры тела запроса можно получить через `ctx.action.params.values`
 
 ### mergeParams()
 
-Combines parameter content with request parameters.
+Объединяет содержимое параметров с параметрами запроса.
 
 ```ts
 ctx.action.mergeParams(
@@ -81,11 +81,11 @@ ctx.action.mergeParams(
 );
 ```
 
-#### Signature
+#### Сигнатура
 
 - `mergeParams(params: ActionParams, strategies: MergeStrategies = {})`
 
-#### Type
+#### Типы
 
 ```ts
 export interface ActionParams {
@@ -118,14 +118,14 @@ export interface MergeStrategies {
 }
 ```
 
-#### Details
+#### Подробности
 
-| Property     | Type                                                     | Description                                                   |
-| ------------ | -------------------------------------------------------- | ------------------------------------------------------------- |
-| `params`     | [`ActionParams`](#actionparams)                          | Request parameters                                            |
-| `strategies` | [`{ [key: string]: MergeStrategies }`](#mergestrategies) | Merge strategies for various fields in the request parameters |
+| Свойство    | Тип                                                     | Описание                                                   |
+| ----------- | ------------------------------------------------------- | --------------------------------------------------------- |
+| `params`    | [`ActionParams`](#actionparams)                         | Параметры запроса                                        |
+| `strategies`| [`{ [key: string]: MergeStrategies }`](#mergestrategies)| Стратегии слияния для различных полей параметров запроса |
 
-Default `strategies`:
+Стандартные `strategies`:
 
 ```ts
 {
@@ -141,33 +141,33 @@ Default `strategies`:
 
 ##### ActionParams
 
-| Property        | Type       | Description                                                             |
-| --------------- | ---------- | ----------------------------------------------------------------------- |
-| `filterByTk`    | `any`      | The primary key value of the operated resource                          |
-| `filter`        | `Filter`   | Filtering parameters, refer to [Filter Operators](./database/operators) |
-| `fields`        | `string[]` | Fields to retrieve                                                      |
-| `except`        | `string[]` | Fields to exclude                                                       |
-| `appends`       | `string[]` | Related fields to append                                                |
-| `whitelist`     | `string[]` | Field whitelist                                                         |
-| `blacklist`     | `string[]` | Field blacklist                                                         |
-| `sort`          | `string[]` | Sorting parameters                                                      |
-| `page`          | `number`   | Current page                                                            |
-| `pageSize`      | `number`   | Number of data items per page                                           |
-| `values`        | `any`      | Request body                                                            |
-| `[key: string]` | `any`      | Other extended configurations                                           |
+| Свойство       | Тип         | Описание                                                                 |
+| -------------- | ----------- | ----------------------------------------------------------------------- |
+| `filterByTk`   | `any`       | Значение первичного ключа операционного ресурса                         |
+| `filter`       | `Filter`    | Параметры фильтрации (см. [Filter Operators](./database/operators))     |
+| `fields`       | `string[]`  | Получаемые поля                                                        |
+| `except`       | `string[]`  | Исключаемые поля                                                       |
+| `appends`      | `string[]`  | Добавляемые связанные поля                                             |
+| `whitelist`    | `string[]`  | Белый список полей                                                     |
+| `blacklist`    | `string[]`  | Черный список полей                                                    |
+| `sort`         | `string[]`  | Параметры сортировки                                                   |
+| `page`         | `number`    | Текущая страница                                                       |
+| `pageSize`     | `number`    | Количество элементов данных на странице                                |
+| `values`       | `any`       | Тело запроса                                                           |
+| `[key: string]`| `any`       | Другие расширенные конфигурации                                        |
 
 ##### MergeStrategies
 
-Predefined merge strategies or custom merge functions.
+Предопределенные стратегии слияния или пользовательские функции слияния.
 
-Predefined merge strategies:
+Предопределенные стратегии:
 
-| Strategy Name | Description                                       |
-| ------------- | ------------------------------------------------- |
-| `merge`       | `Object.assign`                                   |
-| `deepMerge`   | Deep traversal merge                              |
-| `overwrite`   | Overwrite                                         |
-| `andMerge`    | Merge filter parameters using the `$and` operator |
-| `orMerge`     | Merge filter parameters using the `$or` operator  |
-| `intersect`   | Intersection                                      |
-| `union`       | Union                                             |
+| Название стратегии | Описание                                       |
+| ------------------ | --------------------------------------------- |
+| `merge`           | `Object.assign`                               |
+| `deepMerge`       | Глубокое рекурсивное слияние                  |
+| `overwrite`       | Перезапись                                    |
+| `andMerge`        | Слияние параметров фильтра с оператором `$and`|
+| `orMerge`         | Слияние параметров фильтра с оператором `$or` |
+| `intersect`       | Пересечение                                   |
+| `union`           | Объединение                                   |

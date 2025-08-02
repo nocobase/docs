@@ -1,45 +1,45 @@
-# User Data Synchronization
+# Синхронизация пользовательских данных
 
 <PluginInfo name="user-data-sync"></PluginInfo>
 
-## Introduction
+## Введение
 
-This feature allows you to register and manage user data synchronization sources. By default, an HTTP API is provided, but additional data sources can be supported through plugins. It supports syncing data to the **Users** and **Departments** tables by default, with the possibility to extend synchronization to other target resources using plugins.
+Данная функция позволяет регистрировать и управлять источниками синхронизации пользовательских данных. По умолчанию предоставляется HTTP API, но дополнительные источники данных могут быть добавлены через плагины. Поддерживается синхронизация с таблицами **Пользователи** и **Отделы**, с возможностью расширения на другие ресурсы через плагины.
 
-## Installation
+## Установка
 
-This is a built-in plugin and does not require separate installation.
+Это встроенный плагин, не требующий отдельной установки.
 
-## Data Source Management and Synchronization
+## Управление источниками данных и синхронизация
 
 ![](https://static-docs.nocobase.com/202412041043465.png)
 
 :::info
-If no plugins providing user data synchronization sources are installed, user data can be synchronized using the HTTP API. Refer to [Data Source - HTTP API](./sources/api).
+Если не установлены плагины, предоставляющие источники синхронизации, данные пользователей можно синхронизировать через HTTP API. См. [Источник данных - HTTP API](./sources/api).
 :::
 
-## Adding a Data Source
+## Добавление источника данных
 
-Once you install a plugin that provides a user data synchronization source, you can add the corresponding data source. Only enabled data sources will display the "Sync" and "Task" buttons.
+После установки плагина с источником синхронизации можно добавить соответствующий источник данных. Только активные источники отображают кнопки "Синхронизировать" и "Задачи".
 
-> Example: WeCom (Enterprise WeChat)
+> Пример: WeCom (корпоративный WeChat)
 
 ![](https://static-docs.nocobase.com/202412041053785.png)
 
-## Synchronizing Data
+## Синхронизация данных
 
-Click the **Sync** button to start synchronizing data.
+Нажмите кнопку **Синхронизировать** для начала процесса.
 
 ![](https://static-docs.nocobase.com/202412041055022.png)
 
-Click the **Task** button to view the synchronization status. After successful synchronization, you can view the data in the Users and Departments lists.
+Кнопка **Задачи** позволяет просматривать статус синхронизации. После успешного завершения данные доступны в списках Пользователей и Отделов.
 
 ![](https://static-docs.nocobase.com/202412041202337.png)
 
-For failed synchronization tasks, you can click **Retry**.
+Для неудачных задач доступна функция **Повторить**.
 
 ![](https://static-docs.nocobase.com/202412041058337.png)
 
-In case of synchronization failures, you can troubleshoot the issue through system logs. Additionally, raw synchronization records are stored in the `user-data-sync` directory under the application logs folder.
+При возникновении ошибок можно провести диагностику через системные логи. Исходные записи синхронизации хранятся в директории `user-data-sync` в папке логов приложения.
 
 ![](https://static-docs.nocobase.com/202412041205655.png)

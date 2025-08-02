@@ -1,60 +1,69 @@
-# Filter Blocks
+# Блоки фильтров
 
-The filter block within a chart block allows for dynamic filtering across multiple charts within the same block.
+Блок фильтров в составе блока диаграмм позволяет осуществлять динамическую фильтрацию данных для нескольких диаграмм внутри одного блока.
 
-## Enabling/Disabling
+## Включение/отключение
 
-To enable or disable a filter block, navigate within the chart block and select "Add Block" - "Filter."
+Для активации или деактивации блока фильтров перейдите в блок диаграмм и выберите "Добавить блок" → "Фильтр".
 
 ![](https://static-docs.nocobase.com/d0e6b116952fa6b719acb0f858b432c3.png)
 
-## Configuring Fields
+## Настройка полей
 
-### Collection Fields
+### Поля коллекций
 
-For charts within the current chart block, you can create a filter form field by selecting the relevant fields directly from the associated Collection.
+Для диаграмм внутри текущего блока можно создать поле фильтрации, выбрав соответствующие поля непосредственно из связанной коллекции.
 
 ![](https://static-docs.nocobase.com/e2ef150e9beb8c78004d9049a7536219.png)
 
-The form fields can be configured as follows:
+Поля формы можно настроить следующим образом:
 
 ![](https://static-docs.nocobase.com/215f0b996e69bf2d5b99746e6d521c3d.png)
 
-- Edit field title.
-- Edit description.
-- Define the operator to be used when applying the filter.  
+- Редактирование названия поля
+- Редактирование описания
+- Определение оператора для применения фильтра  
   ![](https://static-docs.nocobase.com/d6a593a330d27da4ea78124dfdb8450d.png)
 
-- Assign a default value to the field, utilizing variables if needed. The variable’s data type must align with the data type of the current field.
+- Установка значения по умолчанию с возможностью использования переменных (тип данных переменной должен соответствовать типу поля)
   ![](https://static-docs.nocobase.com/37dee4008f3283db24d491fb8f0404fa.png)
 
-  For instance:
+  Примеры:
+  - Установка ID текущего пользователя для автоматической фильтрации данных
+  - Установка текущей даты для фильтрации данных по умолчанию
 
-  - Set the default value to the current user ID to automatically filter data for the current user when the page loads.
-  - Set the default value to the current date to automatically filter data for the current date when the page loads.
+### Пользовательские поля
 
-### Custom Fields
-
-In certain scenarios, you may need to use a single filter field to filter different fields across various tables. For example, a single date field might be used to filter different date fields in different tables. In such cases, you can opt to create a custom field.
+Когда требуется использовать одно поле фильтра для разных полей в различных таблицах (например, одно поле даты для фильтрации разных полей даты в разных таблицах), можно создать пользовательское поле.
 
 ![](https://static-docs.nocobase.com/87544594246453d175ef265030c0801a.png)
 
-When adding a custom field, you'll need to specify the field title, choose the appropriate field component, and configure it accordingly. Additionally, you can select a field from the data tables used in the current block to apply that field's metadata configuration directly, avoiding redundancy.
+При добавлении пользовательского поля необходимо:
+1. Указать название поля
+2. Выбрать соответствующий компонент поля
+3. При необходимости использовать конфигурацию метаданных из существующих полей
 
 ![](https://static-docs.nocobase.com/ef09136d674d4b7356e819350bcac804.png)
 
-To implement a custom filter field, open the configuration of the relevant chart, then in the data query filter settings, add filter conditions using variables from the "Current filter." Ensure that the type of the field being filtered matches the type of the custom filter field.
+Для реализации:
+1. Откройте конфигурацию нужной диаграммы
+2. В настройках фильтрации добавьте условия, используя переменные из "Текущего фильтра"
+3. Убедитесь в совпадении типов данных
 
 ![](https://static-docs.nocobase.com/f9f2487c4da4b2024af1556743beab6c.png)
 
-For custom fields, you can also set the title, description, and default value.
+Для пользовательских полей также доступны:
+- Настройка заголовка
+- Добавление описания
+- Установка значений по умолчанию
 
 ![](https://static-docs.nocobase.com/4a8feb12404f5cc5e74d589263307e5a.png)
 
-## Configuring Block Actions
+## Настройка действий блока
 
-- **Filter:** Apply the filter conditions.
-- **Reset:** Reset the filter form.
-- **Collapse / Expand:** Collapse into a single row or expand into multiple rows.
+- **Фильтр:** Применить условия фильтрации
+- **Сброс:** Очистить форму фильтра
+- **Свернуть/Развернуть:** Переключение между компактным и развернутым видом
 
 ![](https://static-docs.nocobase.com/8619ac90fa045b3a9c6d6610f7be1a81.png)
+

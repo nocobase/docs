@@ -1,55 +1,55 @@
-# Auth: LDAP
+# Аутентификация: LDAP
 
 <PluginInfo commercial="true" name="auth-ldap"></PluginInfo>
 
-## Introduction
+## Введение
 
-The Auth: LDAP plugin follows the LDAP (Lightweight Directory Access Protocol) protocol standard, enabling users to sign in to NocoBase using their LDAP server credentials.
+Плагин «Аутентификация: LDAP» соответствует стандарту протокола LDAP (Lightweight Directory Access Protocol) и позволяет пользователям входить в систему NocoBase, используя свои учетные данные с сервера LDAP.
 
-## Activate plugin
+## Активация плагина
 
 <img src="https://static-docs.nocobase.com/202405101600789.png"/>
 
-## Add LDAP Authentication
+## Добавление аутентификации по LDAP
 
-Go to the authentication plugin settings page.
+Перейдите на страницу настроек плагина аутентификации.
 
 <img src="https://static-docs.nocobase.com/202405101601510.png"/>
 
-Add - LDAP
+Нажмите «Добавить — LDAP».
 
 <img src="https://static-docs.nocobase.com/202405101602104.png"/>
 
-## Configuration
+## Настройка
 
-### Basic Configuration
+### Основная настройка
 
 <img src="https://static-docs.nocobase.com/202405101605728.png"/>
 
-- Sign up automatically when the user does not exist - Whether to automatically create a new user when no matching existing user is found.
-- LDAP URL - LDAP server URL
-- Bind DN - DN used to test server connection and search for users
-- Bind password - Password of Bind DN
-- Test connection - Click the button to test server connection and Bind DN authentication.
+- **Автоматическая регистрация, если пользователь не существует** — создавать ли автоматически нового пользователя, если не найден соответствующий существующий.
+- **LDAP URL** — адрес сервера LDAP.
+- **Bind DN** — DN (отличительное имя), используемое для проверки подключения к серверу и поиска пользователей.
+- **Пароль Bind DN** — пароль для указанного Bind DN.
+- **Проверить подключение** — нажмите кнопку, чтобы проверить подключение к серверу и аутентификацию по Bind DN.
 
-### Search Configuration
+### Настройка поиска
 
 <img src="https://static-docs.nocobase.com/202405101609984.png"/>
 
-- Search DN - DN used to search for users
-- Search filter - Filtering condition for searching users, using `{{account}}` to represent the user account used for login
-- Scope - `Base`, `One level`, `Subtree`, default `Subtree`
-- Size limit - Search page size
+- **Search DN** — DN, в котором будет выполняться поиск пользователей.
+- **Фильтр поиска** — условие фильтрации при поиске пользователей. Используйте `{{account}}` как переменную для логина пользователя.
+- **Область поиска (Scope)** — `Base` (только корень), `One level` (один уровень), `Subtree` (вся ветвь). По умолчанию — `Subtree`.
+- **Лимит размера (Size limit)** — количество записей на одной странице поиска.
 
-### Attribute Mapping
+### Сопоставление атрибутов
 
 <img src="https://static-docs.nocobase.com/202405101612814.png"/>
 
-- Use this field to bind the user - Field used to bind existing users. If the login account is a username, choose username; if it is an email, choose email. Default is username.
-- Attribute map - Mapping of user attributes to fields in the NocoBase user table.
+- **Использовать это поле для привязки пользователя** — поле, по которому будет производиться сопоставление с существующим пользователем. Если при входе используется имя пользователя — выберите «username»; если электронная почта — выберите «email». По умолчанию — «username».
+- **Сопоставление атрибутов (Attribute map)** — сопоставление атрибутов пользователя из LDAP с полями в таблице пользователей NocoBase.
 
-## Sign In
+## Вход в систему
 
-Visit the sign in page and enter LDAP username and password in the sign in form.
+Перейдите на страницу входа и введите имя пользователя и пароль от LDAP в форму авторизации.
 
 <img src="https://static-docs.nocobase.com/202405101614300.png"/>

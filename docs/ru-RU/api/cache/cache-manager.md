@@ -1,96 +1,89 @@
-# CacheManager
+# Менеджер кэширования (CacheManager)
 
-## Overview
+## Обзор
 
-CacheManager is based on [node-cache-manager](https://github.com/node-cache-manager/node-cache-manager) and provides caching module management for NocoBase. The built-in cache types are:
+CacheManager основан на [node-cache-manager](https://github.com/node-cache-manager/node-cache-manager) и предоставляет систему управления кэшированием для NocoBase. Встроенные типы кэша:
 
-- **memory**: Provided by the default lru-cache of node-cache-manager.
-- **redis**: Supported by node-cache-manager-redis-yet for Redis caching.
+- **memory**: Использует стандартный lru-cache из node-cache-manager
+- **redis**: Поддержка Redis через node-cache-manager-redis-yet
 
-More types can be extended and registered through the API.
+Дополнительные типы можно расширять и регистрировать через API.
 
-### Concepts
+### Основные понятия
 
-- **Store**: Defines a caching method, including a factory method for creating caches and other related configurations. Each caching method has a unique identifier provided during registration. The two built-in caching methods correspond to the unique identifiers `memory` and `redis`.
+- **Store (Хранилище)**: Определяет способ кэширования, включая фабричный метод для создания кэшей и другие настройки. Каждое хранилище имеет уникальный идентификатор.
 
-- **Store Factory Method**: Provided by `node-cache-manager` and related extension packages, used to create caches. Examples include `memory` provided by `node-cache-manager` by default, and `redisStore` provided by `node-cache-manager-redis-yet`. In this context, the object to be provided corresponds to [`StoreOptions`](#storeoptions), which is the first parameter of the `caching` method in `node-cache-manager`.
+- **Фабричный метод хранилища**: Методы из node-cache-manager для создания кэшей (например, `memory` или `redisStore`). Соответствует параметру [`StoreOptions`](#storeoptions).
 
-- **Cache**: A class encapsulated by NocoBase, providing methods related to cache usage. When actually using caching, operations are performed on instances of `Cache`. Each `Cache` instance has a unique identifier, which serves as a namespace for distinguishing different modules.
+- **Cache (Кэш)**: Класс NocoBase для работы с кэшем. Каждый экземпляр Cache имеет уникальный ID как пространство имен.
 
-## Class Methods
+## Методы класса
 
 ### `constructor()`
 
-#### Signature
-
-- `constructor(options?: CacheManagerOptions)`
-
-#### Type
-
+#### Сигнатура
 ```ts
-export type CacheManagerOptions = Partial<{
-  defaultStore: string;
-  stores: {
+constructor(options?: CacheManagerOptions)
+```
+
+#### Типы
+```ts
+type CacheManagerOptions = {
+  defaultStore?: string;
+  stores?: {
     [storeType: string]: StoreOptions;
   };
-}>;
+};
 
 type StoreOptions = {
   store?: 'memory' | FactoryStore<Store, any>;
   close?: (store: Store) => Promise<void>;
-  // global config
   [key: string]: any;
 };
 ```
 
-#### Details
+#### Параметры
 
 ##### CacheManagerOptions
 
-| Property       | Type                           | Description                                                                                                                                                          |
-| -------------- | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `defaultStore` | `string`                       | Unique identifier for the default cache type.                                                                                                                        |
-| `stores`       | `Record<string, StoreOptions>` | Registers cache types. The key is the unique identifier for the cache type, and the value is an object containing the registration method and global configurations. |
+| Параметр      | Тип                           | Описание                          |
+|---------------|-------------------------------|-----------------------------------|
+| `defaultStore`| `string`                      | ID хранилища по умолчанию         |
+| `stores`      | `Record<string, StoreOptions>`| Регистрация типов хранилищ        |
 
 ##### StoreOptions
 
-| Property        | Type                                   | Description                                                                                                                                                                                              |
-| --------------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `store`         | `memory` \| `FactoryStore<Store, any>` | The store factory method, corresponding to the first parameter of the `caching` method.                                                                                                                  |
-| `close`         | `(store: Store) => Promise<void>`      | Optional. For middleware that requires establishing a connection, such as Redis, provide a callback method for closing the connection. The parameter is the object returned by the store factory method. |
-| `[key: string]` | `any`                                  | Other global configurations for the store, corresponding to the second parameter of the `caching` method.                                                                                                |
+| Параметр     | Тип                                   | Описание                          |
+|--------------|---------------------------------------|-----------------------------------|
+| `store`      | `memory` \| `FactoryStore<Store, any>`| Фабричный метод хранилища         |
+| `close`      | `(store: Store) => Promise<void>`     | Метод закрытия соединения         |
+| `[key: string]` | `any`                              | Доп. настройки хранилища          |
 
-#### Default `options`
-
+#### Настройки по умолчанию
 ```ts
-import { redisStore, RedisStore } from 'cache-manager-redis-yet';
-
-const defaultOptions: CacheManagerOptions = {
+{
   defaultStore: 'memory',
   stores: {
     memory: {
       store: 'memory',
-      // global config
       max: 2000,
     },
     redis: {
       store: redisStore,
-      close: async (redis: RedisStore) => {
+      close: async (redis) => {
         await redis.client.quit();
       },
     },
   },
-};
+}
 ```
 
-The `options` parameter will be merged with the default options. Existing default options can be omitted. For example:
-
+Пример использования:
 ```ts
 const cacheManager = new CacheManager({
   stores: {
     defaultStore: 'redis',
     redis: {
-      // redisStore is already provided in the default options, so only need to provide redisStore configuration.
       url: 'redis://localhost:6379',
     },
   },
@@ -99,56 +92,69 @@ const cacheManager = new CacheManager({
 
 ### `registerStore()`
 
-Register a new caching method. Example:
+Регистрация нового хранилища.
 
+Пример:
 ```ts
-import { redisStore } from 'cache-manager-redis-yet';
-
 cacheManager.registerStore({
-  // Unique identifier for the store
   name: 'redis',
-  // Factory method for creating the store
   store: redisStore,
-  // Callback method for closing the store connection
-  close: async (redis: RedisStore) => {
+  close: async (redis) => {
     await redis.client.quit();
   },
-  // Global configurations
   url: 'xxx',
 });
 ```
 
-#### Signature
-
-- `registerStore(options: { name: string } & StoreOptions)`
+#### Сигнатура
+```ts
+registerStore(options: { name: string } & StoreOptions)
+```
 
 ### `createCache()`
 
-Create a cache. Example:
+Создание экземпляра кэша.
 
+Пример:
 ```ts
 await cacheManager.createCache({
-  name: 'default', // Unique identifier for the cache
-  store: 'memory', // Unique identifier for the store
-  prefix: 'mycache', // Automatically adds the 'mycache:' prefix to cache keys, optional
-  // Other store configurations, custom configurations that will be merged with global store configurations
+  name: 'default',
+  store: 'memory', 
+  prefix: 'mycache',
   max: 2000,
 });
 ```
 
-#### Signature
+#### Сигнатура
+```ts
+createCache(options: { 
+  name: string;
+  prefix?: string;
+  store?: string;
+  [key: string]: any;
+}): Promise<Cache>
+```
 
-- `createCache(options: { name: string; prefix?: string; store?: string; [key: string]: any }): Promise<Cache>`
+#### Параметры
 
-#### Details
+| Параметр | Тип      | Описание                          |
+|----------|----------|-----------------------------------|
+| `name`   | `string` | Уникальный ID кэша               |
+| `store`  | `string` | ID хранилища (по умолчанию - defaultStore) |
+| `prefix` | `string` | Префикс для ключей кэша          |
+| `[key: string]` | `any` | Доп. настройки хранилища          |
 
-##### options
+## Использование кэша
 
-| Property        | Type     | Description                                        |
-| --------------- | -------- | -------------------------------------------------- |
-| `name`          | `string` | Unique identifier for the cache                    |
-| `store`         | `string` | Unique identifier for the store                    |
-| `prefix`        | `string` | Optional. Prefix automatically added to cache keys |
-| `[key: string]` | `any`    | Other custom store configurations                  |
+После создания кэша можно использовать методы:
+- `get(key)` - получение значения
+- `set(key, value, ttl?)` - запись значения
+- `del(key)` - удаление значения
+- `reset()` - очистка всего кэша
 
-When `store` is omitted, the `defaultStore` will be used. In this case, the caching
+Пример:
+```ts
+const cache = await cacheManager.createCache({name: 'myapp'});
+await cache.set('user:1', {name: 'John'}, 3600);
+const user = await cache.get('user:1');
+```

@@ -1,80 +1,80 @@
-# Calendar Block
+# Блок «Календарь»
 
 <PluginInfo name="calendar"></PluginInfo>
 
-## Introduction
+## Введение
 
-The Calendar Block offers a streamlined way to view and manage events and date-related data in a calendar format, making it perfect for scheduling meetings, planning events, and organizing your time efficiently.
+Блок «Календарь» предоставляет удобный способ просмотра и управления событиями и данными, связанными с датами, в формате календаря. Он идеально подходит для планирования встреч, организации мероприятий и эффективного управления временем.
 
-## Installation
+## Установка
 
-This plugin comes pre-installed, so no additional setup is required.
+Плагин встроен в систему — дополнительная установка не требуется.
 
-## Adding Blocks
+## Добавление блоков
 
 <video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240419201640.mp4" type="video/mp4">
+  <source src="https://static-docs.nocobase.com/20240419201640.mp4" type="video/mp4">
 </video>
 
-1. Title Field: Displays key information directly on the calendar bars.
-2. Start Time: Indicates when the task begins.
-3. End Time: Marks when the task ends.
+1. **Поле заголовка**: отображает ключевую информацию непосредственно на полосах календаря.
+2. **Время начала**: указывает, когда начинается задача.
+3. **Время окончания**: обозначает момент завершения задачи.
 
-Clicking on a task bar highlights the selection and opens a detailed pop-up window.
+Щелчок по полосе задачи выделяет её и открывает всплывающее окно с подробной информацией.
 
 ![20240408171928](https://static-docs.nocobase.com/20240408171928.png)
 
-## Configure Fields
+## Настройка полей
 
 ![20240419203321](https://static-docs.nocobase.com/20240419203321.png)
 
-### Display Lunar Calendar
+### Отображение лунного календаря
 
 ![20240419203603](https://static-docs.nocobase.com/20240419203603.png)
 
-- [Edit Block Title](/handbook/ui/blocks/block-settings/block-title)
-- [Save as Block Template](/handbook/block-template)
+- [Редактирование заголовка блока](/handbook/ui/blocks/block-settings/block-title)
+- [Сохранить как шаблон блока](/handbook/block-template)
 
-### Set Data Range
+### Установка диапазона данных
 
 ![20240419203751](https://static-docs.nocobase.com/20240419203751.png)
 
-For additional information, see [Set Data Range](/handbook/ui/blocks/block-settings/data-scope).
+Дополнительную информацию см. в разделе [Установка диапазона данных](/handbook/ui/blocks/block-settings/data-scope).
 
-### Set Block Height
+### Установка высоты блока
 
-Example: Adjust the height of the order calendar block. No scrollbar will appear inside the calendar block.
+Пример: изменение высоты блока календаря заказов. Внутри блока календаря полоса прокрутки отсутствует.
 
 ![20240605215742](https://static-docs.nocobase.com/20240605215742.gif)
 
-For more information, refer to [Block Height](/handbook/ui/blocks/block-settings/block-height)
+Более подробно см. в разделе [Высота блока](/handbook/ui/blocks/block-settings/block-height)
 
-### Background Color Field
+### Поле цвета фона
 
-:::info{title=Tip}
-The version of NocoBase needs to be v1.4.0-beta or above.
+:::info{title=Подсказка}
+Требуется версия NocoBase v1.4.0-beta или выше.
 :::
 
-This option can be used to configure the background color of calendar events. Here's how to use it:
+Эта опция позволяет настроить цвет фона событий в календаре. Инструкция по использованию:
 
-1. The calendar data table needs to have a field of type **Single select** or **Radio group**, and this field needs to be configured with colors.
-2. Then, return to the calendar block configuration interface and select the field you just configured with colors in the **Background Color Field**.
-3. Finally, you can try selecting a color for a calendar event and click submit. You'll see that the color has taken effect.
+1. В таблице данных календаря должно быть поле типа **Одиночный выбор** или **Группа переключателей**, и для этого поля должны быть настроены цвета.
+2. Вернитесь в интерфейс настройки блока календаря и выберите это поле в разделе **Поле цвета фона**.
+3. Теперь вы можете попробовать выбрать цвет для события в календаре и нажать «Отправить». Вы увидите, что выбранный цвет отображается.
 
 ![20240914192017_rec_](https://static-docs.nocobase.com/20240914192017_rec_.gif)
 
-## Configure Actions
+## Настройка действий
 
 ![20240419203424](https://static-docs.nocobase.com/20240419203424.png)
 
-### Today
+### Сегодня
 
-The "Today" button in the Calendar Block offers quick navigation, enabling users to instantly return to the current date after exploring other dates.
+Кнопка «Сегодня» в блоке календаря позволяет быстро перейти к текущей дате после просмотра других дат.
 
 ![20240419203514](https://static-docs.nocobase.com/20240419203514.png)
 
-### Switch View
+### Смена вида
 
-The default view is set to Month.
+По умолчанию установлен вид «Месяц».
 
 ![20240419203349](https://static-docs.nocobase.com/20240419203349.png)

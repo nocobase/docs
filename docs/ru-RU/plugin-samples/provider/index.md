@@ -1,12 +1,12 @@
-## Provider
+## Провайдер
 
-According to the [Provider Tutorial](/development/client/providers), the Provider has three main functions:
+Согласно [Руководству по провайдеру](/development/client/providers), у Провайдера есть три основные функции:
 
-- Providing a globally shared context
-- Displaying global content
-- Intercepting and rendering based on conditions
+- Обеспечение глобального общего контекста
+- Отображение глобального контента
+- Перехват и рендеринг на основе условий
 
-For these functions, we offer the following examples:
+Для этих функций мы предлагаем следующие примеры:
 
-- [Global Content Display](/plugin-samples/provider/content)
-- [Global Context](/plugin-samples/provider/context)
+- [Отображение глобального контента](/plugin-samples/provider/content)
+- [Глобальный контекст](/plugin-samples/provider/context)

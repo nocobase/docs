@@ -1,42 +1,48 @@
-# Plugin Manager
+# Менеджер плагинов
 
-The Plugin Manager offers a straightforward and intuitive interface for adding plugins, enhancing NocoBase's functionality with a lightweight and user-friendly experience. It allows for seamless expansion and customization of application features, including the installation, upgrade, and uninstallation of plugins.
+Менеджер плагинов предоставляет простой и интуитивно понятный интерфейс для добавления плагинов, расширяя функциональность NocoBase с лёгким и удобным пользовательским опытом. Он позволяет бесшовно расширять и настраивать возможности приложения, включая установку, обновление и удаление плагинов.
 
-**Key Components of the Plugin Manager:**
+**Ключевые компоненты Менеджера плагинов:**
 
-1. **Local Plugins/Plugin Marketplace**: Access and manage plugins available locally or through the marketplace.
-2. **Plugin Classification**: Organize plugins by categories such as Built-in, Enabled, Disabled, and Problematic. The system supports fuzzy search by plugin name.
-3. **Add New Plugin**: Easily expand functionality by adding new plugins.
-4. **Plugin Configuration Main Body**: Centralize your plugin configurations in one place.
+1. **Локальные плагины/Маркетплейс плагинов**: Доступ к плагинам и управление ими (локальными или из маркетплейса)
+2. **Классификация плагинов**: Организация плагинов по категориям: Встроенные, Включённые, Отключённые и Проблемные. Система поддерживает нечёткий поиск по названию плагина.
+3. **Добавление нового плагина**: Простое расширение функциональности за счёт новых плагинов.
+4. **Основная область конфигурации плагинов**: Централизованное управление настройками плагинов.
 
-![Plugin Manager Interface](https://static-docs.nocobase.com/86fb70757a77ab3654f97faffc2dce78.png)
+![Интерфейс Менеджера плагинов](https://static-docs.nocobase.com/86fb70757a77ab3654f97faffc2dce78.png)
 
-## Viewing Plugin Documentation
+## Просмотр документации плагина
 
-A simple click on any plugin allows for a quick view of its documentation, which includes user instructions, compatibility checks for dependencies, and update logs.
+Один клик по любому плагину позволяет быстро просмотреть его документацию, включая инструкции по использованию, проверку совместимости зависимостей и журнал обновлений.
 
-![View Plugin Documentation](https://static-docs.nocobase.com/a4015bea903d3c6874ca94e6c1085278.png)
+![Просмотр документации плагина](https://static-docs.nocobase.com/a4015bea903d3c6874ca94e6c1085278.png)
 
-## Adding a Plugin
+## Добавление плагина
 
-With plug-and-play convenience, you can effortlessly add new plugins via the interface. The system supports downloading from the npm registry (private registries are also supported), local uploads, and URL downloads.
+С удобством plug-and-play вы можете легко добавлять новые плагины через интерфейс. Система поддерживает:
+- Загрузку из npm-репозитория (поддерживаются приватные репозитории)
+- Локальную загрузку
+- Загрузку по URL
 
-![Add Plugin](https://static-docs.nocobase.com/103baa0ba0dd88e7481c0636147c7a7c.png)
+![Добавление плагина](https://static-docs.nocobase.com/103baa0ba0dd88e7481c0636147c7a7c.png)
 
-## Activating a Plugin
+## Активация плагина
 
-![Activate Plugin](https://static-docs.nocobase.com/c76b7228678c358ba6f8f68ef05d3cd5.gif)
+![Активация плагина](https://static-docs.nocobase.com/c76b7228678c358ba6f8f68ef05d3cd5.gif)
 
-## Disabling a Plugin
+## Отключение плагина
 
-![Disable Plugin](https://static-docs.nocobase.com/86f526669dba0d4f3245d24d9e9d35a9.gif)
+![Отключение плагина](https://static-docs.nocobase.com/86f526669dba0d4f3245d24d9e9d35a9.gif)
 
-## Deleting a Plugin
+## Удаление плагина
 
-![Delete Plugin](https://static-docs.nocobase.com/b32d6507aaee2b708290311cf1e7ebca.gif)
+![Удаление плагина](https://static-docs.nocobase.com/b32d6507aaee2b708290311cf1e7ebca.gif)
 
-## Updating a Plugin
+## Обновление плагина
 
-Currently, the option to update plugins is available only for those located under storage/plugins, as illustrated below:
+В настоящее время обновление плагинов доступно только для тех, что расположены в storage/plugins, как показано ниже:
 
-![Update Plugin](https://static-docs.nocobase.com/7bfaec2785dc6a2e864fee2337fc57ef.png)
+![Обновление плагина](https://static-docs.nocobase.com/7bfaec2785dc6a2e864fee2337fc57ef.png)
+
+**Примечание:**  
+Все операции выполняются через интуитивный интерфейс без необходимости технических знаний. Менеджер плагинов значительно упрощает процесс расширения функциональности вашего приложения NocoBase.

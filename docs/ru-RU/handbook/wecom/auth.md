@@ -1,108 +1,92 @@
-### Authentication - WeCom
+# Аутентификация через WeCom
 
 <PluginInfo commercial="true" name="wecom"></PluginInfo>
 
-## Overview
+## Обзор
 
-The **WeCom** plugin allows users to log in to NocoBase using their WeCom accounts.
+Плагин **WeCom** позволяет пользователям входить в NocoBase с использованием своих учетных записей WeCom.
 
-## Activating the Plugin
+## Активация плагина
 
 ![](https://static-docs.nocobase.com/202406272056962.png)
 
-## Creating and Configuring a WeCom Custom App
+## Создание и настройка приложения WeCom
 
-Log in to the WeCom admin console and create a custom WeCom application.
-
+1. Войдите в консоль администратора WeCom и создайте кастомное приложение:
 ![](https://static-docs.nocobase.com/202406272101321.png)
-
 ![](https://static-docs.nocobase.com/202406272102087.png)
 
-Click the app to enter its details page. Scroll down and click **"WeCom Authorized Login"**.
-
+2. В деталях приложения найдите раздел "Авторизованный вход WeCom":
 ![](https://static-docs.nocobase.com/202406272104655.png)
 
-Set the authorized callback domain to the domain of the NocoBase application.
-
+3. Установите домен обратного вызова на домен приложения NocoBase:
 ![](https://static-docs.nocobase.com/202406272105662.png)
 
-Return to the app's details page and click **"Web Authorization and JS-SDK"**.
-
+4. Настройте веб-авторизацию OAuth 2.0:
 ![](https://static-docs.nocobase.com/202406272107063.png)
-
-Configure and verify the callback domain name for the app's OAuth 2.0 web authorization feature.
-
 ![](https://static-docs.nocobase.com/202406272107899.png)
 
-On the app's details page, click **"Trusted Enterprise IPs"**.
-
+5. Добавьте IP-адреса NocoBase в доверенные:
 ![](https://static-docs.nocobase.com/202406272108834.png)
-
-Set the IP addresses of the NocoBase application.
-
 ![](https://static-docs.nocobase.com/202406272109805.png)
 
-## Retrieving Keys from the WeCom Admin Console
+## Получение ключей
 
-In the WeCom admin console, go to **My Enterprise** and copy the **"Enterprise ID"**.
-
+1. Скопируйте ID предприятия:
 ![](https://static-docs.nocobase.com/202406272111637.png)
 
-In the admin console, navigate to **App Management**. Access the details of the app created earlier and copy the AgentId and Secret.
-
+2. Получите AgentId и Secret из настроек приложения:
 ![](https://static-docs.nocobase.com/202406272122322.png)
 
-## Adding WeCom Authentication in NocoBase
+## Настройка аутентификации в NocoBase
 
-Navigate to the user authentication plugin management page.
-
+1. Перейдите в управление плагинами аутентификации:
 ![](https://static-docs.nocobase.com/202406272115044.png)
 
-Add new - WeCom
-
+2. Добавьте новый метод WeCom:
 ![](https://static-docs.nocobase.com/202406272115805.png)
 
-### Configuration
+### Параметры конфигурации
 
 ![](https://static-docs.nocobase.com/202412041459250.png)
 
-| Configuration Item                                                                                   | Description                                                                                          | Version Requirement |
-| ----------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ------------------- |
-| When a phone number does not match an existing user, <br />should a new user be created automatically | Automatically create a new user if the phone number doesn't match an existing user.                 | -                   |
-| Company ID                                                                                            | Enterprise ID, obtained from the WeCom admin console.                                               | -                   |
-| AgentId                                                                                               | Obtained from the custom app configuration in the WeCom admin console.                              | -                   |
-| Secret                                                                                                | Obtained from the custom app configuration in the WeCom admin console.                              | -                   |
-| Origin                                                                                                | The domain name of the current application.                                                         | -                   |
-| Workbench application redirect link                                                                   | The application path to redirect to after successful login.                                          | `v1.4.0`            |
-| Automatic login                                                                                       | Automatically log in when opening the app link in the WeCom browser. Only one authenticator can enable this. | `v1.4.0`            |
-| Workbench application homepage link                                                                   | The homepage link of the workbench app.                                                              | -                   |
+| Параметр                                                                 | Описание                                                                 | Требуемая версия |
+|--------------------------------------------------------------------------|--------------------------------------------------------------------------|------------------|
+| Создавать нового пользователя при несовпадении номера телефона          | Автоматическая регистрация новых пользователей                          | -                |
+| ID компании                                                              | ID предприятия из консоли WeCom                                         | -                |
+| AgentId                                                                  | Из настроек приложения WeCom                                            | -                |
+| Secret                                                                   | Из настроек приложения WeCom                                            | -                |
+| Домен                                                                   | Домен текущего приложения                                               | -                |
+| Ссылка для редиректа                                                    | Куда перенаправлять после входа                                         | `v1.4.0`         |
+| Автоматический вход                                                     | Вход без подтверждения в браузере WeCom (только для одного аутентификатора) | `v1.4.0`         |
+| Ссылка на главную страницу                                              | Основная ссылка приложения                                              | -                |
 
-## Configuring the WeCom Application Homepage
+## Настройка главной страницы приложения
 
-:::info
-For versions `v1.4.0` and later, when enabling the "Automatic Login" option, the app homepage link can be simplified to: `https://<url>/<path>`. For example: `https://example.nocobase.com/admin`.
+Для версий `v1.4.0+` при включении "Автоматического входа" ссылка может быть упрощена до формата: `https://<url>/<path>`.
 
-Separate configurations can be set for mobile and desktop, such as `https://example.nocobase.com/m` for mobile and `https://example.nocobase.com/admin` for desktop.
-:::
+Пример:
+- Мобильная версия: `https://example.nocobase.com/m`
+- Десктоп: `https://example.nocobase.com/admin`
 
-Access the WeCom admin console and paste the copied workbench application homepage link into the corresponding application's homepage field.
-
+Добавьте эту ссылку в поле главной страницы приложения WeCom:
 ![](https://static-docs.nocobase.com/202406272123631.png)
-
 ![](https://static-docs.nocobase.com/202406272123048.png)
 
-## Logging In
+## Процесс входа
 
-Visit the login page and click the button below the login form to initiate third-party login.
-
+1. На странице входа нажмите кнопку для входа через WeCom:
 ![](https://static-docs.nocobase.com/202406272124608.png)
 
 :::warning
-Due to restrictions on sensitive information like phone numbers in WeCom, authorization can only be completed within the WeCom client. For first-time logins, follow the steps below to complete the initial authorization within the WeCom client.
+Первая авторизация должна быть выполнена в клиенте WeCom из-за ограничений на передачу конфиденциальных данных.
 :::
 
-## First-Time Login
+## Первичная авторизация
 
-Open the WeCom client, navigate to the workbench, scroll to the bottom, and click the app to access the previously entered application homepage. This completes the first-time authorization and enables WeCom login within the NocoBase application.
+1. Откройте клиент WeCom
+2. Перейдите в рабочий стол
+3. Найдите ваше приложение внизу списка
+4. Нажмите для завершения авторизации
 
 <img src="https://static-docs.nocobase.com/202406272131113.png" width="400" />

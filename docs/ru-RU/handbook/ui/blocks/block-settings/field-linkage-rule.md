@@ -1,79 +1,79 @@
 # Field Linkage Rules
 
-## Introduction
+## Введение
 
-Field linkage rules refer to the ability to dynamically adjust the attributes of fields in a form/detail block based on user actions. Currently, the blocks that support field linkage rules include:
+Правила связей полей позволяют динамически изменять атрибуты полей в блоках формы/детализации на основе действий пользователя. В настоящее время правила связей поддерживаются в следующих блоках:
 
-- [Form Block](/handbook/ui/blocks/data-blocks/form#%E8%81%94%E5%8A%A8%E8%A7%84%E5%88%99)
-- [Detail Block](/handbook/ui/blocks/data-blocks/details#%E8%81%94%E5%8A%A8%E8%A7%84%E5%88%99)
-- [Sub-form](/handbook/ui/fields/specific/nester) (requires v1.3.17-beta or higher)
-- [Sub-table](/handbook/ui/fields/specific/sub-table) (requires v1.3.17-beta or higher)
+- [Блок формы](/handbook/ui/blocks/data-blocks/form#%D0%9F%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%B0-%D1%81%D0%B2%D1%8F%D0%B7%D0%B5%D0%B9)
+- [Блок детализации](/handbook/ui/blocks/data-blocks/details#%D0%9F%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%B0-%D1%81%D0%B2%D1%8F%D0%B7%D0%B5%D0%B9)
+- [Подформа](/handbook/ui/fields/specific/nester) (требуется версия v1.3.17-beta или выше)
+- [Подтаблица](/handbook/ui/fields/specific/sub-table) (требуется версия v1.3.17-beta или выше)
 
-## Usage Instructions
+## Инструкции по использованию
 
-#### **Form Block**
+#### **Блок формы**
 
-In form blocks, linkage rules can dynamically adjust field attributes based on specific conditions:
+В блоках формы правила связей могут динамически изменять атрибуты полей на основе условий:
 
-- **Control Field Visibility/Hidden**: Determine whether the current field is displayed based on the value of other fields.
-- **Set Field as Required**: Dynamically set a field as required or optional based on specific conditions.
-- **Assign Values**: Automatically assign values to fields based on conditions.
-- **Configure Field Options**: Dynamically update the available options in dropdowns based on other fields in the form.
-- **Limit Date Scope for Datetime Fields**: In dateTime fields, limit the selectable date scope based on the values of other fields.
+- **Управление видимостью полей**: Определять видимость текущего поля на основе значений других полей.
+- **Установка обязательности полей**: Динамически делать поле обязательным или необязательным.
+- **Присвоение значений**: Автоматически заполнять поля значениями на основе условий.
+- **Настройка опций**: Динамически обновлять доступные варианты в выпадающих списках.
+- **Ограничение диапазона дат**: В полях даты/времени ограничивать выбираемый диапазон.
 
-#### **Detail Block**
+#### **Блок детализации**
 
-In detail blocks, linkage rules are mainly used to dynamically control the visibility and hiding of fields in the detail block.
+В блоках детализации правила связей в основном используются для управления видимостью полей.
 
 ![20250418161037](https://static-docs.nocobase.com/20250418161037.png)
 
-## Attribute Linkage
-### Assigning Values
+## Связи атрибутов
+### Присвоение значений
 
-Example: When an order is checked as a supplementary order, the order status is automatically set to "Pending Review."
+Пример: При отметке заказа как дополнительного, статус автоматически устанавливается в "Ожидает проверки".
 
 ![20250418161712](https://static-docs.nocobase.com/20250418161712.png)
 
-### Required Fields
+### Обязательные поля
 
-Example: When the order status is "Pending Payment", the order amount is required.
+Пример: При статусе "Ожидает оплаты" сумма заказа становится обязательной.
 
 ![20250418163252](https://static-docs.nocobase.com/20250418163252.png)
 
-### Visibility/Hidden
+### Видимость/Скрытие
 
-Example: The payment method is displayed only when the order status is "Pending Payment."
+Пример: Способ оплаты отображается только при статусе "Ожидает оплаты".
 
 ![20250418163733](https://static-docs.nocobase.com/20250418163733.png)
 
-### Options
+### Опции
 
-> **Note**: This feature is supported starting from version `v1.7.0-beta.2`.
+> **Примечание**: Доступно с версии `v1.7.0-beta.2`.
 
-It supports dynamically configuring options for fields like `select`, `radioGroup`, `multipleSelect`, `checkboxGroup`, etc. The available options can be linked to the changes in other fields in the form.
+Динамическая настройка опций для полей типа `select`, `radioGroup` и других на основе изменений в форме.
 
-Example: "Installment Payment" is available only when the order amount is greater than 10,000.
+Пример: "Рассрочка" доступна только при сумме заказа свыше 10 000.
 
 ![20250418164806](https://static-docs.nocobase.com/20250418164806.png)
 
-Linkage effect as shown below:
+Пример работы:
 
 <video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20250418164831.mp4" type="video/mp4">
+    <source src="https://static-docs.nocobase.com/20250418164831.mp4" type="video/mp4">
 </video>
 
-### Date Scope
+### Диапазон дат
 
-> **Note**: This feature is supported starting from version `v1.7.0-beta.2`.
+> **Примечание**: Доступно с версии `v1.7.0-beta.2`.
 
-It supports dynamically configuring date scope for fields such as `date`, `datetime`, `dateOnly`, `datetimeNoTz`, `unixTimestamp`, `createdAt`, `updatedAt`, etc. The selectable date scope can automatically adjust based on changes in other fields in the form.
+Динамическое ограничение выбираемого диапазона дат на основе других полей формы.
 
-Example: After selecting the order date, the delivery date cannot be earlier than the order date.
+Пример: Дата доставки не может быть раньше даты заказа.
 
 ![20250418165500](https://static-docs.nocobase.com/20250418165500.png)
 
-Example: The delivery date cannot be earlier than today and cannot be later than the order deadline.
+Пример: Дата доставки ограничена сегодняшним днем и крайним сроком заказа.
 
 ![20250418170520](https://static-docs.nocobase.com/20250418170520.png)
 
-For more information on linkage rules, refer to [Linkage Rules](/handbook/ui/linkage-rule).
+Подробнее см. [Правила связей](/handbook/ui/linkage-rule).

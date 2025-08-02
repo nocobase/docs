@@ -1,13 +1,13 @@
-# v0.16：2023-11-20
+# Версия 0.16: 2023-11-20
 
-## New Features
+## Новые возможности
 
-The previous version of cache has poor usability (only support memory cache), v0.16 has been refactored, built-in memory and redis store, it also supports custom store. please refer to the [API documentation](https://docs.nocobase.com/api/cache/cache-manager) for the details of how to use.
+Предыдущая версия cache отличается плохим удобством использования (поддерживает только кэш памяти), версия 0.16 была переработана, встроенная память и хранилище redis также поддерживают пользовательское хранилище. пожалуйста, обратитесь к [документации по API](https://docs.nocobase.com/api/cache/cache-manager) для получения подробной информации о том, как использовать.
 
-## Breaking Changes
+## Кардинальные изменения
 
-### Node minimum version changed to 18
-Node v16 is no longer maintained, the minimum version has been changed to v18.
+### Минимальная версия узла изменена на 18
+Узел v16 больше не поддерживается, минимальная версия была изменена на v18.
 
 ```json
 {
@@ -17,9 +17,9 @@ Node v16 is no longer maintained, the minimum version has been changed to v18.
 }
 ```
 
-### Cache creation method update
+### Обновление метода создания кэша
 
-Deprecated: Use `createCache` for cache creation.
+Устарело: используйте `createCache` для создания кэша.
 
 ```ts
 import { createCache } from "@nocobase/cache";
@@ -27,7 +27,7 @@ import { createCache } from "@nocobase/cache";
 const cache = createCache();
 ```
 
-Cache now managed by `CacheManager` and created with `app.cacheManager`.
+Кэш теперь управляется с помощью `CacheManager` и создается с помощью `app.cacheManager`.
 
 ```ts
 const cache = await app.cacheManager.createCache({
@@ -39,30 +39,30 @@ const cache = await app.cacheManager.createCache({
 });
 ```
 
-### Environment variables update
+### Обновление переменных среды
 
-Previous environment variables of cache required a JSON string for configuring.
+Для настройки предыдущих переменных среды кэша требовалась строка JSON.
 
 ```bash
 CACHE_CONFIG={"storePackage":"cache-manager-fs-hash","ttl":86400,"max":1000}
 ```
 
-New environment variables for configuring cache:
+Новые переменные среды для настройки кэша:
 
 ```bash
-# Unique name of default cache method, memory or redis
+# Уникальное имя метода кэширования по умолчанию, памяти или redis
 CACHE_DEFAULT_STORE=memory
-# Max number of items in memory cache
+# Максимальное количество элементов в кэше памяти
 CACHE_MEMORY_MAX=2000
-# Redis，optional
+# Повторное использование, необязательно
 CACHE_REDIS_URL=redis://localhost:6379
 ```
-## Full changelog
-- refactor(cache): improve cache [`#3004`](https://github.com/nocobase/nocobase/pull/3004)
-- fix: local storage base url [`#3063`](https://github.com/nocobase/nocobase/pull/3063)
-- feat: show table definition [`#3061`](https://github.com/nocobase/nocobase/pull/3061)
-- feat: mariadb support [`#3052`](https://github.com/nocobase/nocobase/pull/3052)
-- fix(plugin-workflow): client minor fixes [`#3062`](https://github.com/nocobase/nocobase/pull/3062)
-- chore: view inference [`#3060`](https://github.com/nocobase/nocobase/pull/3060)
-- fix: sort by association collection [`#3058`](https://github.com/nocobase/nocobase/pull/3058)
-- feat: node &gt;= 18 [`#3066`](https://github.com/nocobase/nocobase/pull/3066)
+## Полный список изменений
+- рефакторинг (кэширование): улучшение кэширования [`#3004`](https://github.com/nocobase/nocobase/pull/3004)
+- исправлено: URL-адрес базы данных локального хранилища [`#3063`](https://github.com/nocobase/nocobase/pull/3063)
+- функция: отображение определения таблицы [`#3061`](https://github.com/nocobase/nocobase/pull/3061)
+- особенность: поддержка mariadb [`#3052`](https://github.com/nocobase/nocobase/pull/3052)
+- исправление (плагин-рабочий процесс): незначительные исправления для клиента [`#3062`](https://github.com/nocobase/nocobase/pull/3062)
+- рутинная работа: просмотр логического вывода [`#3060`](https://github.com/nocobase/nocobase/pull/3060)
+- исправлено: сортировка по коллекции ассоциаций [`#3058`](https://github.com/nocobase/nocobase/pull/3058)
+- достижение: узел >= 18 [`#3066`](https://github.com/nocobase/nocobase/pull/3066)

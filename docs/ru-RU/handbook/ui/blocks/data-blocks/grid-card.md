@@ -1,88 +1,88 @@
 # Grid Cards
 
-## Introduction
+## Введение
 
-The Grid Card block offers a concise and visually appealing way to display summary information of data records. Designed for flexibility, it allows you to configure the number of columns based on screen size, ensuring a seamless user experience across all devices.
+Блок Grid Card предоставляет компактный и визуально привлекательный способ отображения сводной информации о записях данных. Благодаря гибкой настройке количества колонок в зависимости от размера экрана, он обеспечивает удобный просмотр на любых устройствах.
 
-## Adding Blocks
+## Добавление блоков
 
 <video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240418120045.mp4" type="video/mp4">
+    <source src="https://static-docs.nocobase.com/20240418120045.mp4" type="video/mp4">
 </video>
 
-## Block Settings
+## Настройки блока
 
 ![20240419220708](https://static-docs.nocobase.com/20240419220708.png)
 
-### Data Scope
+### Область данных
 
 <video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240419173617.mp4" type="video/mp4">
+    <source src="https://static-docs.nocobase.com/20240419173617.mp4" type="video/mp4">
 </video>
 
-For a detailed guide, see [Setting the Data Scope](/handbook/ui/blocks/block-settings/data-scope).
+Подробное руководство см. в разделе [Настройка области данных](/handbook/ui/blocks/block-settings/data-scope).
 
-### Configuring the Number of Columns per Row
+### Настройка количества колонок в строке
 
 ![20240408160228](https://static-docs.nocobase.com/20240408160228.png)
 
-You can adjust the number of columns to fit different screen sizes, ensuring optimal display.
+Количество колонок можно адаптировать под разные размеры экранов для оптимального отображения.
 
 ![20240408160844](https://static-docs.nocobase.com/20240408160844.png)
 
-### Configuring the Data Loading Method
+### Настройка метода загрузки данных
 
-Example: Connecting data blocks and setting the appropriate data loading method.
+Пример: Связь блоков данных и настройка метода загрузки.
 
-The Orders table and Products table have a many-to-many relationship. The Orders Table block and Products Grid Card block can be linked to enable data filtering. In this setup, the grid block’s data loading method is configured to load "After Filtering Data."
+Таблицы "Заказы" и "Товары" имеют связь "многие ко многим". Блок таблицы заказов и блок Grid Card товаров можно связать для фильтрации данных. В этом случае метод загрузки данных для блока Grid Card настраивается как "После фильтрации данных".
 
 <video width="100%" height="440" controls>
-<source src="https://static-docs.nocobase.com/20240419175643.mp4" type="video/mp4">
+    <source src="https://static-docs.nocobase.com/20240419175643.mp4" type="video/mp4">
 </video>
 
-### Setting Block Height
+### Настройка высоты блока
 
-Example: Configure the Orders Grid Card block to display in "Full Height" mode for an expansive view.
+Пример: Настройка блока Grid Card заказов в режиме "Полная высота" для расширенного просмотра.
 
 ![20240604232619](https://static-docs.nocobase.com/20240604232619.gif)
 
-For more details, refer to [Block Height](/handbook/ui/blocks/block-settings/block-height).
+Подробнее см. [Высота блока](/handbook/ui/blocks/block-settings/block-height).
 
-- [Setting Sorting Rules](/handbook/ui/blocks/block-settings/sorting-rule)
-- [Saving as a Block Template](/handbook/block-template)
+- [Настройка правил сортировки](/handbook/ui/blocks/block-settings/sorting-rule)
+- [Сохранение как шаблон блока](/handbook/block-template)
 
-## Configuring Fields
+## Настройка полей
 
-### Fields of the Current Table
+### Поля текущей таблицы
 
 ![20240418123118](https://static-docs.nocobase.com/20240418123118.png)
 
-### Fields of Related Tables
+### Поля связанных таблиц
 
 ![20240418123147](https://static-docs.nocobase.com/20240418123147.png)
 
-For a comprehensive guide to field configuration options for the Grid Card block, see [Detail Fields](/handbook/ui/fields/generic/detail-form-item).
+Полное руководство по настройке полей для блока Grid Card см. в разделе [Поля детальной формы](/handbook/ui/fields/generic/detail-form-item).
 
-## Configuring Actions
+## Настройка действий
 
-### Global Actions
+### Глобальные действия
 
 ![20240418122905](https://static-docs.nocobase.com/20240418122905.png)
 
-- [Filter](/handbook/ui/actions/types/filter)
-- [Add](/handbook/ui/actions/types/add-new)
-- [Delete](/handbook/ui/actions/types/delete)
-- [Refresh](/handbook/ui/actions/types/refresh)
-- [Import](/handbook/action-import)
-- [Export](/handbook/action-export)
+- [Фильтрация](/handbook/ui/actions/types/filter)
+- [Добавление](/handbook/ui/actions/types/add-new)
+- [Удаление](/handbook/ui/actions/types/delete)
+- [Обновление](/handbook/ui/actions/types/refresh)
+- [Импорт](/handbook/action-import)
+- [Экспорт](/handbook/action-export)
 
-### Row Actions
+### Действия со строками
 
 ![20240419222251](https://static-docs.nocobase.com/20240419222251.png)
 
-- [Edit](/handbook/ui/actions/types/edit)
-- [Delete](/handbook/ui/actions/types/delete)
-- [Pop-up](/handbook/ui/actions/types/pop-up)
-- [Update Record](/handbook/ui/actions/types/update-record)
-- [Custom Request](/handbook/action-custom-request)
-- [Trigger Workflow](/handbook/workflow/manual/triggers/custom-action)
+- [Редактирование](/handbook/ui/actions/types/edit)
+- [Удаление](/handbook/ui/actions/types/delete)
+- [Всплывающее окно](/handbook/ui/actions/types/pop-up)
+- [Обновление записи](/handbook/ui/actions/types/update-record)
+- [Пользовательский запрос](/handbook/action-custom-request)
+- [Запуск workflow](/handbook/workflow/manual/triggers/custom-action)

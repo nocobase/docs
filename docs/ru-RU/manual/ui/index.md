@@ -1,45 +1,43 @@
-# UI Editor
+# Редактор пользовательского интерфейса
 
-## What you see is what you get
+## Что видишь, то и получаешь
 
-NocoBase utilizes a WYSIWYG interface configuration mode. You can switch between configuration mode and usage mode by clicking the UI Editor button.
+NocoBase использует режим конфигурации интерфейса по принципу WYSIWYG (What You See Is What You Get — «что видишь, то и получаешь»). Вы можете переключаться между режимом конфигурации и режимом использования, нажимая на кнопку «Редактор UI».
 
-![2024-01-20_11-42-20](https://static-docs.nocobase.com/2024-01-20_11-42-20.jpg)
-
-Usage Mode:
+Режим использования:
 
 ![2024-01-20_11-28-46](https://static-docs.nocobase.com/2024-01-20_11-28-46.jpg)
 
-Configuration mode:
+Режим конфигурации:
 
 ![2024-01-20_11-29-50](https://static-docs.nocobase.com/2024-01-20_11-29-50.jpg)
 
-## Layout Templates
+## Шаблоны макетов
 
-NocoBase has a built-in layout template, with the navigation area on the top and left, and the content area on the right.
+NocoBase имеет встроенный шаблон макета, в котором область навигации расположена вверху и слева, а область содержимого — справа.
 
 ![2024-01-20_11-36-38](https://static-docs.nocobase.com/2024-01-20_11-36-38.jpg)
 
-## Configuration items
+## Элементы конфигурации
 
-Once you enter the UI Editor mode, orange configurable items will appear on the interface. Typically, the configuration item entry for each configurable element is located in the upper right corner of the element. Almost all elements can be configured and viewed in effect in real time on the interface, here are a few examples:
+После входа в режим редактора UI в интерфейсе появляются оранжевые элементы, доступные для настройки. Как правило, вход в настройки каждого конфигурируемого элемента находится в правом верхнем углу этого элемента. Практически все элементы можно настроить, а изменения сразу отображаются в интерфейсе в реальном времени. Вот несколько примеров:
 
-Configurable items for menu items:
+Конфигурируемые элементы для пунктов меню:
 
 ![2024-01-20_11-30-29](https://static-docs.nocobase.com/2024-01-20_11-30-29.jpg)
 
-Configuration item for pages:
+Элемент конфигурации для страниц:
 
 ![2024-01-20_11-30-52](https://static-docs.nocobase.com/2024-01-20_11-30-52.jpg)
 
-Configuration items for blocks:
+Конфигурируемые элементы для блоков:
 
 ![2024-01-20_11-31-20](https://static-docs.nocobase.com/2024-01-20_11-31-20.jpg)
 
-Configuration item for actions:
+Элемент конфигурации для действий:
 
 ![2024-01-20_11-31-50](https://static-docs.nocobase.com/2024-01-20_11-31-50.jpg)
 
-Configuration items for table columns:
+Конфигурируемые элементы для столбцов таблицы:
 
 ![2024-01-20_11-32-08](https://static-docs.nocobase.com/2024-01-20_11-32-08.jpg)

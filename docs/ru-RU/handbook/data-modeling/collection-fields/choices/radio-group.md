@@ -1,9 +1,9 @@
-# Radio Group
+# Группа радиосвязи
 
-## Introduction
+## Введение
 
-## Field configuration
+## Настройка поля
 
-## Instructions
+## Инструкции
 
 to be added.

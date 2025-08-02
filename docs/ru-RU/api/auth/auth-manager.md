@@ -1,51 +1,51 @@
 # AuthManager
 
-## Overview
+## Обзор
 
-`AuthManager` is the user authentication management module in NocoBase, used for registering different types of user authentication.
+`AuthManager` — это модуль управления аутентификацией пользователей в NocoBase, предназначенный для регистрации различных типов аутентификации.
 
-### Basic Usage
+### Базовое использование
 
 ```ts
 const authManager = new AuthManager({
-  // Key to retrieve the current authenticator identifier from the request header
+  // Ключ для получения идентификатора текущего аутентификатора из заголовка запроса
   authKey: 'X-Authenticator',
 });
 
-// Set methods for storing and retrieving authenticators in AuthManager
+// Установка методов для хранения и получения аутентификаторов в AuthManager
 authManager.setStorer({
   get: async (name: string) => {
     return db.getRepository('authenticators').find({ filter: { name } });
   },
 });
 
-// Register an authentication type
+// Регистрация типа аутентификации
 authManager.registerTypes('basic', {
   auth: BasicAuth,
-  title: 'Password',
+  title: 'Пароль',
 });
 
-// Use authentication middleware
+// Использование middleware аутентификации
 app.resourceManager.use(authManager.middleware());
 ```
 
-### Concepts
+### Основные понятия
 
-- **Authentication type (`AuthType`)**: Different types of authentication, such as Password, SMS, OIDC, SAML, etc.
-- **Authenticator**: An authenticator is a database-stored entity linked to a configuration record for a specific authentication type (`AuthType`). Multiple authenticators can exist for one authentication type, each offering diffrent authentications.
-- **Authenticator name**: Unique identifier for an authenticator, used to determine the current authentication employed by the current request.
+- **Тип аутентификации (`AuthType`)**: различные способы аутентификации, например: по паролю, по SMS, OIDC, SAML и т.д.
+- **Аутентификатор (Authenticator)**: сущность, хранящаяся в базе данных, связанная с конфигурацией определённого типа аутентификации (`AuthType`). Для одного типа может существовать несколько аутентификаторов, каждый из которых предоставляет отдельную схему аутентификации.
+- **Имя аутентификатора**: уникальный идентификатор аутентификатора, используемый для определения того, какая аутентификация применяется в текущем запросе.
 
-## Class Methods
+## Методы класса
 
 ### `constructor()`
 
-Constructor, creates an instance of `AuthManager`.
+Конструктор, создающий экземпляр `AuthManager`.
 
-#### Signature
+#### Сигнатура
 
 - `constructor(options: AuthManagerOptions)`
 
-#### Types
+#### Типы
 
 ```ts
 export interface JwtOptions {
@@ -60,32 +60,32 @@ export type AuthManagerOptions = {
 };
 ```
 
-#### Details
+#### Подробности
 
 ##### AuthManagerOptions
 
-| Attribute | Type                        | Description                                                                     | Default           |
-| --------- | --------------------------- | ------------------------------------------------------------------------------- | ----------------- |
-| `authKey` | `string`                    | Optional key to save the current authenticator identifier in the request header | `X-Authenticator` |
-| `default` | `string`                    | Optional, default authenticator identifier                                      | `basic`           |
-| `jwt`     | [`JwtOptions`](#jwtoptions) | Optional, configure if using JWT for authentication                             | -                 |
+| Атрибут   | Тип                        | Описание                                                                 | По умолчанию       |
+|----------|----------------------------|--------------------------------------------------------------------------|--------------------|
+| `authKey`| `string`                   | Опциональный ключ для хранения идентификатора аутентификатора в заголовке запроса | `X-Authenticator` |
+| `default`| `string`                   | Опционально, идентификатор аутентификатора по умолчанию                   | `basic`            |
+| `jwt`    | [`JwtOptions`](#jwtoptions)| Опционально, настройка JWT для аутентификации                             | —                  |
 
 ##### JwtOptions
 
-| Attribute   | Type     | Description                       | Default           |
-| ----------- | -------- | --------------------------------- | ----------------- |
-| `secret`    | `string` | Token secret key                  | `X-Authenticator` |
-| `expiresIn` | `string` | Optional, token expiration period | `7d`              |
+| Атрибут     | Тип     | Описание                     | По умолчанию |
+|------------|--------|------------------------------|-------------|
+| `secret`   | `string` | Секретный ключ токена         | `X-Authenticator` |
+| `expiresIn`| `string` | Опционально, срок действия токена | `7d`        |
 
 ### `setStorer()`
 
-Set methods for storing and retrieving authenticator data.
+Устанавливает методы для хранения и получения данных аутентификаторов.
 
-#### Signature
+#### Сигнатура
 
 - `setStorer(storer: Storer)`
 
-#### Types
+#### Типы
 
 ```ts
 export interface Authenticator = {
@@ -99,77 +99,77 @@ export interface Storer {
 }
 ```
 
-#### Details
+#### Подробности
 
 ##### Authenticator
 
-| Attribute  | Type                  | Description                          |
-| ---------- | --------------------- | ------------------------------------ |
-| `authType` | `string`              | Authentication type                  |
-| `options`  | `Record<string, any>` | Authenticator-related configurations |
+| Атрибут    | Тип                  | Описание                          |
+|-----------|----------------------|-----------------------------------|
+| `authType`| `string`             | Тип аутентификации                |
+| `options` | `Record<string, any>`| Конфигурационные параметры аутентификатора |
 
 ##### Storer
 
-`Storer` is the interface for authenticator storage, containing one method.
+`Storer` — интерфейс для хранения аутентификаторов, содержит один метод:
 
-- `get(name: string): Promise<Authenticator>` - Get authenticator by identifier. In NocoBase, the actual returned type is [AuthModel](../../handbook/auth/dev/api#authmodel).
+- `get(name: string): Promise<Authenticator>` — получение аутентификатора по его идентификатору. В NocoBase фактически возвращаемый тип — это [AuthModel](../../handbook/auth/dev/api#authmodel).
 
 ### `registerTypes()`
 
-Register authentication types.
+Регистрирует новый тип аутентификации.
 
-#### Signature
+#### Сигнатура
 
 - `registerTypes(authType: string, authConfig: AuthConfig)`
 
-#### Types
+#### Типы
 
 ```ts
 export type AuthExtend<T extends Auth> = new (config: Config) => T;
 
 type AuthConfig = {
-  auth: AuthExtend<Auth>; // The authentication class.
-  title?: string; // The display name of the authentication type.
+  auth: AuthExtend<Auth>; // Класс аутентификации.
+  title?: string; // Отображаемое имя типа аутентификации.
 };
 ```
 
-#### Details
+#### Подробности
 
-| Attribute | Type               | Description                                                          |
-| --------- | ------------------ | -------------------------------------------------------------------- |
-| `auth`    | `AuthExtend<Auth>` | Authentication type implementation, refer to [Auth](./auth.md)       |
-| `title`   | `string`           | Optional. Title of the authentication type displayed on the frontend |
+| Атрибут | Тип               | Описание                                                          |
+|--------|-------------------|-------------------------------------------------------------------|
+| `auth` | `AuthExtend<Auth>`| Реализация типа аутентификации, см. [Auth](./auth.md)             |
+| `title`| `string`          | Опционально. Название типа аутентификации, отображаемое в интерфейсе |
 
 ### `listTypes()`
 
-Get a list of registered authentication types.
+Возвращает список зарегистрированных типов аутентификации.
 
-#### Signature
+#### Сигнатура
 
 - `listTypes(): { name: string; title: string }[]`
 
-#### Details
+#### Подробности
 
-| Attribute | Type     | Description                      |
-| --------- | -------- | -------------------------------- |
-| `name`    | `string` | Authentication type identifier   |
-| `title`   | `string` | Title of the authentication type |
+| Атрибут | Тип     | Описание                        |
+|--------|--------|---------------------------------|
+| `name` | `string`| Идентификатор типа аутентификации|
+| `title`| `string`| Название типа аутентификации    |
 
 ### `get()`
 
-Get authenticator.
+Получает аутентификатор по имени.
 
-#### Signature
+#### Сигнатура
 
 - `get(name: string, ctx: Context)`
 
-#### Details
+#### Подробности
 
-| Attribute | Type      | Description              |
-| --------- | --------- | ------------------------ |
-| `name`    | `string`  | Authenticator identifier |
-| `ctx`     | `Context` | Request context          |
+| Атрибут | Тип      | Описание              |
+|--------|---------|------------------------|
+| `name` | `string`| Идентификатор аутентификатора |
+| `ctx`  | `Context`| Контекст запроса       |
 
 ### `middleware()`
 
-Authentication middleware. Get the current authenticator and perform user authentication.
+Middleware аутентификации. Получает текущий аутентификатор и выполняет аутентификацию пользователя.

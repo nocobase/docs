@@ -1,29 +1,29 @@
-# Set Styles
+# Настройка стилей
 
-## Introduction
-The field style linkage rules are an important tool to enhance user interaction. By dynamically configuring styles, it improves the visual effect of element and helps users quickly identify key information. The main style properties include:
+## Введение
+Правила привязки стилей полей являются важным инструментом для улучшения взаимодействия с пользователем. Динамическая настройка стилей улучшает визуальный эффект элемента и помогает пользователям быстро идентифицировать ключевую информацию. К основным свойствам стиля относятся:
 
-- `color`
-- `background-color`
-- `text-align`
-- `font-size`
-- `font-weight`
-- `font-style`
+- `цвет"
+- `цвет фона`
+- `выравнивание текста`
+- `размер шрифта`
+- `вес шрифта`
+- `стиль шрифта`
 
-These are commonly used to highlight key information based on field status, indicate anomalies, or guide visually.
+Обычно используются для выделения ключевой информации на основе статуса поля, указания аномалий или визуального указания.
 
-## Usage
+## Использование
 
-Example: Dynamically adjust the color of the order amount field based on the order amount. When the order amount exceeds 1000, set the color to green; when the order amount is less than or equal to 1000, set the color to red.
+Пример: Динамически измените цвет поля сумма заказа в зависимости от суммы заказа. Если сумма заказа превышает 1000, установите зеленый цвет; если сумма заказа меньше или равна 1000, установите красный цвет.
 
 ![20250418171434](https://static-docs.nocobase.com/20250418171434.png)
 
-- **Rule 1**: Set the condition to **order amount greater than 10000**, and the field color will be green.
+- **Правило 1**: Установите условие на **сумму заказа, превышающую 10000**, и цвет поля будет зеленым.
 
 ![20250418171640](https://static-docs.nocobase.com/20250418171640.png)
 
-- **Rule 2**: Set the condition to **order amount less than or equal to 1000**, and the field color will be red.
+- **Правило 2**: Установите условие на **сумму заказа, меньшую или равную 1000**, и цвет поля будет красным.
 
 ![20250418171900](https://static-docs.nocobase.com/20250418171900.png)
 
-For more details, refer to [Linkage Rules](/handbook/ui/linkage-rule).
+Для получения более подробной информации обратитесь к [Правилам подключения](/handbook/ui/linkage-rule).

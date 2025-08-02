@@ -1,4 +1,4 @@
-# Block Template
+# Шаблоны блоков
 
 <PluginInfo name="block-template"></PluginInfo>
 <style>
@@ -7,173 +7,159 @@
 }
 </style>
 
-## Introduction
+## Введение
 
-Block Template provides templating capabilities for blocks, enabling centralized management of templates and the creation of blocks from them.
+Шаблоны блоков предоставляют возможности для создания шаблонов блоков, позволяя централизованно управлять шаблонами и создавать блоки на их основе.
 
-## Installation
+## Установка
 
-Built-in plugin, no installation required.
+Встроенный плагин, не требует установки.
 
-## Usage Instructions
+## Инструкция по использованию
 
-![Main Interface](https://static-docs.nocobase.com/main-screen-block-templates.png)
+![Главный интерфейс](https://static-docs.nocobase.com/main-screen-block-templates.png)
 
-### Choosing a Template Type
+### Выбор типа шаблона
 
-NocoBase offers two types of templates: Inherited templates and Reference templates. Their differences and application scenarios are as follows:
-- **Reference template**: Similar to a UI Schema snippet. When used, you can choose either the Reference or Duplicate method.
-  - **Reference**: The block remains completely consistent with the template. Modifying the block instance will synchronously modify the original template. Suitable for scenarios requiring strict consistency of content/structure across multiple locations.
-  - **Duplicate**: Copies the current configuration of the template completely to the target location. After duplication, it is disconnected from the original template and no longer synchronizes updates. Suitable for quickly creating blocks or starting from a template base for completely independent modifications.
-- **Inherited template**: Blocks created maintain an inheritance relationship with the template. Blocks can be configured individually based on the template, while unmodified parts continue to synchronize with template updates. Suitable for scenarios requiring a unified basic configuration but allowing for localized differences.
+NocoBase предлагает два типа шаблонов: Наследуемые шаблоны и Референсные шаблоны. Их различия и сценарии применения:
 
-### Reference Template
+- **Референсный шаблон**: Аналогичен фрагменту UI Schema. При использовании можно выбрать метод "Ссылка" или "Копирование".
+  - **Ссылка**: Блок полностью соответствует шаблону. Изменения в блоке синхронизируются с оригинальным шаблоном. Подходит для сценариев, требующих строгой согласованности содержимого/структуры в нескольких местах.
+  - **Копирование**: Полностью копирует текущую конфигурацию шаблона. После копирования связь с шаблоном теряется, обновления не синхронизируются. Подходит для быстрого создания блоков или начала работы с шаблонной основы для полностью независимых изменений.
+- **Наследуемый шаблон**: Созданные блоки сохраняют отношение наследования с шаблоном. Блоки можно настраивать индивидуально на основе шаблона, при этом неизмененные части продолжают синхронизироваться с обновлениями шаблона. Подходит для сценариев, требующих единой базовой конфигурации, но допускающих локальные различия.
 
-A Reference template is a general-purpose template, similar to an UI Schema snippet. It allows saving data blocks (including blocks in pages, modals, and compatible third-party blocks) as Reference templates, which can then be used elsewhere via "Reference" or "Duplicate" methods.
+### Референсный шаблон
 
-There are two types of reference templates:
-- Reference template: Save the complete configuration of the block, including fields and actions. Most blocks are saved as this type.
-- Reference template (Fields only): Save only the fields configuration of the block, and actions will not be saved. When converting a form or a single record detail block to a reference template, it will be saved as this type.
+Референсный шаблон — это универсальный шаблон, аналогичный фрагменту UI Schema. Он позволяет сохранять блоки данных (включая блоки на страницах, в модальных окнах и совместимые сторонние блоки) как Референсные шаблоны, которые затем можно использовать в других местах через методы "Ссылка" или "Копирование".
 
-#### Creating a Reference Template
+Существует два типа референсных шаблонов:
+- Референсный шаблон: Сохраняет полную конфигурацию блока, включая поля и действия. Большинство блоков сохраняются как этот тип.
+- Референсный шаблон (только поля): Сохраняет только конфигурацию полей блока, действия не сохраняются. При преобразовании формы или блока деталей одной записи в референсный шаблон он сохраняется как этот тип.
 
-Select the data block you want to save as a Reference template, click the "Save as reference template" button to create the Reference template.
+#### Создание референсного шаблона
 
-![Save as reference template](https://static-docs.nocobase.com/save-as-reference-block-template.png)
+Выберите блок данных, который хотите сохранить как Референсный шаблон, нажмите кнопку "Сохранить как референсный шаблон".
 
-#### Using a Reference Template
+![Сохранить как референсный шаблон](https://static-docs.nocobase.com/save-as-reference-block-template.png)
 
-Reference templates offer two ways of usage; choose the method that best suits your scenario:
+#### Использование референсного шаблона
 
-1.  **Reference**
+Референсные шаблоны предлагают два способа использования:
 
-When creating a block on a page, select the corresponding reference template to create the block using the template reference.
+1. **Ссылка**
 
-![Create block](https://static-docs.nocobase.com/create-block-from-reference-template.png)
+При создании блока на странице выберите соответствующий референсный шаблон для создания блока с использованием ссылки на шаблон.
 
-2.  **Duplicate**
+![Создать блок](https://static-docs.nocobase.com/create-block-from-reference-template.png)
 
-When creating a block on a page, select the corresponding duplicate template option to duplicate the template and create the block.
+2. **Копирование**
 
-![Create block](https://static-docs.nocobase.com/create-block-from-copy-template.png)
+При создании блока на странице выберите соответствующую опцию копирования шаблона.
 
-### Inherited Template
+![Создать блок](https://static-docs.nocobase.com/create-block-from-copy-template.png)
 
-Inherited templates are primarily suited for scenarios where you want blocks to follow the basic updates of a template but also need to make some specific adjustments. Blocks created from an Inherited template inherit the template's configuration and allow for extensions or overrides on top of it. Configurations not overridden by the block will synchronize with template updates.
+### Наследуемый шаблон
 
-#### Creating an Inherited Template
+Наследуемые шаблоны подходят для сценариев, когда требуется, чтобы блоки следовали базовым обновлениям шаблона, но также допускали некоторые специфические изменения. Блоки, созданные из Наследуемого шаблона, наследуют конфигурацию шаблона и позволяют расширять или переопределять её. Конфигурации, не переопределенные блоком, синхронизируются с обновлениями шаблона.
 
-Inherited templates can be created in two ways, choose the method that best suits your scenario:
+#### Создание наследуемого шаблона
 
-1.  **Create in the Block Template Management Interface**
+Наследуемые шаблоны можно создать двумя способами:
 
-**Applicable Scenario:**
-- When starting a new inherited template from scratch
+1. **Создание в интерфейсе управления шаблонами блоков**
 
-**Steps:**
-1. Go to the block template management interface
-2. Click the "Add new" button
-3. Enter basic information for the inherited template
-4. Click "Submit" to complete creation
-5. Configure the content of the inherited template
+**Шаги:**
+1. Перейдите в интерфейс управления шаблонами блоков
+2. Нажмите кнопку "Добавить новый"
+3. Введите основную информацию для наследуемого шаблона
+4. Нажмите "Отправить" для завершения создания
+5. Настройте содержимое наследуемого шаблона
 
-![Create inherited template](https://static-docs.nocobase.com/create-inherited-template.png)
+![Создать наследуемый шаблон](https://static-docs.nocobase.com/create-inherited-template.png)
 
-2.  **Create from an Existing Block**
+2. **Создание из существующего блока**
 
-**Applicable Scenario:**
-- When the desired block is already configured on the page
-- When you need to reuse the configuration of an existing block in another context
-- When you want to quickly create an inherited template without reconfiguring
+**Шаги:**
+1. Найдите блок данных на странице, который хотите сохранить как шаблон
+2. Выберите опцию "Сохранить как наследуемый шаблон"
+3. Введите имя шаблона и сохраните
 
-**Steps:**
-1. Locate the data block on the page that you wish to save as a template
-2. Select the "Save as inherited template" option
-3. Enter a template name and save
+![Сохранить как наследуемый шаблон](https://static-docs.nocobase.com/save-as-inherited-template.png)
 
-![Save as inherited template](https://static-docs.nocobase.com/save-as-inherited-template.png)
-
-:::info{title=Note}
-- Only data blocks on pages can be saved as inherited templates
-- Blocks in pop-up dialogs cannot be directly saved as inherited templates
-- Chart blocks are currently not supported for inherited templating
+:::info{title=Примечание}
+- Только блоки данных на страницах можно сохранять как наследуемые шаблоны
+- Блоки во всплывающих окнах нельзя сохранять как наследуемые шаблоны
+- Блоки диаграмм пока не поддерживаются для наследуемых шаблонов
 :::
 
-#### Configuring an Inherited Template
+#### Настройка наследуемого шаблона
 
-Select an inherited template, click the "Configure" button to enter the inherited template configuration interface and configure the template's data block.
+Выберите наследуемый шаблон, нажмите кнопку "Настроить" для входа в интерфейс конфигурации.
 
-![Configure Template](https://static-docs.nocobase.com/configure-template.png)
+![Настроить шаблон](https://static-docs.nocobase.com/configure-template.png)
 
-:::info{title=Note}
-- Currently, an inherited template supports only one data block. Without a data block configured, the inherited template cannot be used to create a block.
-- Chart blocks are not currently supported for inherited templating.
+:::info{title=Примечание}
+- Наследуемый шаблон поддерживает только один блок данных
+- Блоки диаграмм пока не поддерживаются
 :::
 
-#### Editing an Inherited Template
+#### Редактирование наследуемого шаблона
 
-Select an inherited template and click the "Edit" button to enter the editing interface where you can modify the template's title and description.
+Выберите наследуемый шаблон и нажмите "Редактировать" для изменения заголовка и описания.
 
-![Edit inherited template](https://static-docs.nocobase.com/edit-inherited-template.png)
+![Редактировать наследуемый шаблон](https://static-docs.nocobase.com/edit-inherited-template.png)
 
-#### Duplicate Inherited Template
+#### Копирование наследуемого шаблона
 
-Select an inherited template, click the "Duplicate" button, enter a new template title, and click "Submit" to copy the template.
-The copied template can then be edited to suit new requirements.
+Выберите шаблон, нажмите "Копировать", введите новое имя и подтвердите.
 
-![Copy inherited template](https://static-docs.nocobase.com/copy-inherited-template.png)
+![Копировать наследуемый шаблон](https://static-docs.nocobase.com/copy-inherited-template.png)
 
-#### Delete Inherited Template
+#### Удаление наследуемого шаблона
 
-Select an inherited template, click the "Delete" button, and then click "Submit" to delete the template.
+Выберите шаблон, нажмите "Удалить" и подтвердите. Можно выбрать сохранение созданных блоков.
 
-![Delete inherited template](https://static-docs.nocobase.com/delete-inherited-template.png)
+![Удалить наследуемый шаблон](https://static-docs.nocobase.com/delete-inherited-template.png)
 
-When deleting, you can choose whether to "Keep the created blocks":
-- If kept, the blocks created from the template will be converted to regular page blocks once the template is deleted.
-- If not kept, the blocks created from the template will also be deleted.
+### Использование шаблонов
 
-### Template Usage
+#### Создание блока из наследуемого шаблона
 
-#### Create Block from Inherited Template
+При создании блока выберите соответствующий наследуемый шаблон.
 
-When creating a block on a page, select the corresponding inherited template to create the block using that template.
+![Создать блок](https://static-docs.nocobase.com/create-block-from-inherited-template.png)
 
-![Create Block](https://static-docs.nocobase.com/create-block-from-inherited-template.png)
+Особенности блоков из наследуемых шаблонов:
+1. Наследование конфигурации с возможностью добавления своих настроек
+2. Нельзя удалить унаследованные компоненты
+![Нельзя удалить](https://static-docs.nocobase.com/disable-delete.png)
+3. Дополнительные поля выделяются цветом
+![Стиль блока](https://static-docs.nocobase.com/template-bg.png)
+4. Есть функция "Вернуть к шаблону"
+![Вернуть к шаблону](https://static-docs.nocobase.com/revert-to-template.gif)
 
-Blocks created from an inherited template differ from regular blocks in the following ways:
-1. The block inherits from the template, allowing you to add your own configurations on top; any unmodified settings remain synchronized with the template.
-2. UI components inherited from the template cannot be removed from the page.
-![Cannot Remove](https://static-docs.nocobase.com/disable-delete.png)
-
-3. Additional fields and actions in the block are highlighted with different background colors for easy distinction.
-![Block Style](https://static-docs.nocobase.com/template-bg.png)
-
-4. Both the block and the UI components inherited from the inherited template include an option to "Revert to Template", which resets them entirely to match the template.
-![Revert to Template](https://static-docs.nocobase.com/revert-to-template.gif)
-
-:::info{title=Note}
-The positioning of UI components within a block is determined by the page layout and will not automatically update to reflect changes in the inherited template. To synchronize component positions with the template, you must revert the entire block to the template.
+:::info{title=Примечание}
+Позиционирование компонентов определяется макетом страницы и не синхронизируется автоматически с шаблоном. Для синхронизации используйте "Вернуть к шаблону".
 :::
 
 ## FAQ
 
-**Q: How do I create an edit form inherited template?**
+**В: Как создать шаблон формы редактирования?**
 
-A: The configuration for an edit form inherited template is the same as that for an add form inherited template. You can create an edit form inherited template by configuring an add form block, and the template will automatically appear in the edit form's inherited template options.
+О: Конфигурация аналогична форме добавления. Шаблон автоматически появится в опциях наследуемых шаблонов формы редактирования.
 
-**Q: Why do the field positions in the inherited template not sync with the block created from it?**
+**В: Почему позиции полей не синхронизируются?**
 
-A: The positioning of UI components within a block is determined by the page layout and does not automatically synchronize with changes in the inherited template. If you need to sync them, use the "Revert to Template" function; note that reverting will erase any custom configurations on the block.
+О: Позиции определяются макетом страницы. Для синхронизации используйте "Вернуть к шаблону" (это удалит пользовательские настройки).
 
-**Q: How should unused templates be handled?**
+**В: Как обрабатывать неиспользуемые шаблоны?**
 
-A: It is recommended to delete unused inherited templates. When deleting a template, you can choose whether or not to keep the blocks created from it. If you choose to keep them, the blocks will be converted to standard page blocks without affecting existing functionality; if not, the blocks created from the template will also be deleted.
+О: Рекомендуется удалять. При удалении можно сохранить созданные блоки как обычные.
 
-**Q: Why can't inherited templates be configured for chart blocks?**
+**В: Почему нет поддержки диаграмм?**
 
-A: Future versions will support inherited templates for chart blocks.
+О: Будет добавлено в будущих версиях.
 
-**Q: Why is there no option to save a block from a pop-up as an inherited template?**
+**В: Почему нельзя сохранить блок из всплывающего окна?**
 
-A: Templates are based on blocks within the page, which operate in an independent context. Blocks in pop-up dialogs depend on blocks outside the current pop-up, so saving blocks from pop-ups as inherited templates is not currently supported.
+О: Шаблоны работают только с блоками на страницах, а не во всплывающих окнах.

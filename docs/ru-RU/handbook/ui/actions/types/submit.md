@@ -1,34 +1,36 @@
-# Submit
+### **Отправка (Submit)**
 
-## Introduction
+#### **Введение**
 
-The submission function is designed to save form data (unique to form blocks) and can be integrated with workflows to streamline data automation.
+Функция отправки предназначена для сохранения данных формы (доступна только в блоках форм) и может интегрироваться с рабочими процессами для автоматизации обработки данных.
 
 ![20240413093210](https://static-docs.nocobase.com/20240413093210.png)
 
-## Operation Configuration Items
+#### **Параметры настройки операции**
 
 ![20240413095124](https://static-docs.nocobase.com/20240413095124.png)
 
-### Save Mode
+##### **Режим сохранения**
 
-The submission operation for form blocks that only add new data supports configuring the save method.
+Для операции отправки в блоках форм, предназначенных только для добавления новых данных, можно настроить способ сохранения.
 
 ![20240413101209](https://static-docs.nocobase.com/20240413101209.png)
 
 ![20240413100531](https://static-docs.nocobase.com/20240413100531.png)
 
-1. Insert and create new records directly;
-2. Insert only if the record doesn't exist (requires fields to determine the record’s existence);
-3. Insert if the record doesn't exist, otherwise update (requires fields to check for existing records).
+Доступны следующие режимы:
 
-### Bind Workflows
+1. **Вставить и создать новую запись** — всегда создавать новую запись.
+2. **Вставить, только если запись не существует** — запись добавляется только в случае отсутствия совпадений (требуется указать поля для проверки существования записи).
+3. **Вставить, если запись не существует, иначе — обновить** — если запись найдена по заданным полям, она будет обновлена, в противном случае — создана новая.
 
-The bound workflow will only be triggered once the data has been successfully submitted.
+##### **Привязка рабочих процессов**
+
+Привязанный рабочий процесс запускается только после успешной отправки данных.
 
 ![20240417120149](https://static-docs.nocobase.com/20240417120149.png)
 
-For further details, see [Bind Workflows](/handbook/ui/actions/action-settings/bind-workflow).
+Более подробную информацию см. в разделе [Привязка рабочих процессов](/handbook/ui/actions/action-settings/bind-workflow).
 
-- [Edit Button](/handbook/ui/actions/action-settings/edit-button)
-- [Secondary Confirmation](/handbook/ui/actions/action-settings/double-check)
+- [Редактирование кнопки](/handbook/ui/actions/action-settings/edit-button)
+- [Двойное подтверждение](/handbook/ui/actions/action-settings/double-check)

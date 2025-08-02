@@ -1,41 +1,40 @@
-# Create record
+# Создание записи
 
-Used to add a new row of data to a specific collection.
+Используется для добавления новой строки данных в определённую коллекцию.
 
-The field values ​​of the new record can use variables from the workflow context. Assigning values to association fields can directly reference the corresponding data variables in the context, which can be objects or foreign key values. If variables are not used, you need to manually enter the values ​​of the foreign keys, and for multiple association fields, multiple foreign key values ​​need to be separated by commas.
+Значения полей новой записи могут использовать переменные из контекста рабочего процесса. При назначении значений полям ассоциаций можно напрямую ссылаться на соответствующие переменные данных в контексте — это могут быть как объекты, так и значения внешних ключей. Если переменные не используются, необходимо вручную вводить значения внешних ключей. Для полей множественных ассоциаций значения внешних ключей следует разделять запятыми.
 
-## Creating a Node
+## Создание узла
 
-In the workflow configuration UI, click the plus ("+") button in the flow to add a "Create record" node:
+В интерфейсе настройки рабочего процесса нажмите кнопку «+» в цепочке и добавьте узел «Создать запись»:
 
-![Creating a create record node](https://static-docs.nocobase.com/386c8c01c89b1eeab848510e77f4841a.png)
+![Создание узла «Создать запись»](https://static-docs.nocobase.com/386c8c01c89b1eeab848510e77f4841a.png)
 
-## Node Configuration
+## Настройка узла
 
-![New Node Example Node Configuration](https://static-docs.nocobase.com/5f7b97a51b64a1741cf82a4d4455b610.png)
+![Пример настройки узла создания записи](https://static-docs.nocobase.com/5f7b97a51b64a1741cf82a4d4455b610.png)
 
-### Collection
+### Коллекция
 
-Select the collection to which the new record will be added.
+Выберите коллекцию, в которую будет добавлена новая запись.
 
-### Field Values
+### Значения полей
 
-Assign values ​​to the fields of the collection. Variables from the workflow context can be used, or static values ​​can be manually entered.
+Назначьте значения полям коллекции. Можно использовать переменные из контекста рабочего процесса или вручную ввести статические значения.
 
-:::info{title="Note"}
-Record added by the create node in the workflow will not automatically handle fields such as "Creator" and "Last Modifier", and you need to configure the values ​​of these two fields according to the situation.
-:::
+Примечание:
+Запись, добавленная с помощью узла «Создать» в рабочем процессе, **не обновляет автоматически** такие поля, как «Создатель» и «Последний изменявший». Вам необходимо вручную настроить значения этих полей в зависимости от ситуации.
 
-### Preload Related Data
+### Предварительная загрузка связанных данных
 
-If the fields of the new record include association fields, and you want to use the corresponding related data in subsequent workflows, you can check the corresponding association fields in the preload configuration. In this way, after adding the new record, the corresponding association data will be automatically loaded and stored together in the result data of the node.
+Если поля новой записи включают поля ассоциаций и вы хотите использовать соответствующие связанные данные в последующих узлах рабочего процесса, вы можете отметить нужные поля ассоциаций в настройке предварительной загрузки. После добавления новой записи соответствующие связанные данные будут автоматически загружены и сохранены вместе с результатом узла.
 
-## Example
+## Пример
 
-For example, when a record is added or updated in the "Posts" collection, it is required to automatically add a "Post Versions" row to record the change history of the post. This can be achieved using the create node:
+Например, при добавлении или обновлении записи в коллекции «Посты» требуется автоматически создавать запись в коллекции «Версии постов», чтобы фиксировать историю изменений. Это можно реализовать с помощью узла «Создать запись»:
 
-![New Node Example Flow Configuration](https://static-docs.nocobase.com/dfd4820d49c145fa331883fc09c9161f.png)
+![Пример конфигурации рабочего процесса](https://static-docs.nocobase.com/dfd4820d49c145fa331883fc09c9161f.png)
 
-![New Node Example Node Configuration](https://static-docs.nocobase.com/1a0992e66170be12a068da6503298868.png)
+![Пример настройки узла](https://static-docs.nocobase.com/1a0992e66170be12a068da6503298868.png)
 
-With this configuration enabled, when data changes in the "Posts" collection, a "Post Version" row will be automatically added to record the change history of the article.
+При такой конфигурации, при любом изменении данных в коллекции «Посты», автоматически будет создаваться запись в «Версии постов», фиксирующая историю изменений статьи.

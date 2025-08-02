@@ -1,15 +1,15 @@
-# Open Mode
+# Режим открытия
 
-## Introduction
+## Введение
 
-There are two ways to open a popup: using a drawer or dialog, with the drawer being the default. Drawers are ideal for managing large amounts of information and complex operations, while dialog boxes are better suited for straightforward content or quick actions. The popup can be closed by clicking on the overlay.
+Существует два способа открыть всплывающее окно: с помощью ящика или диалогового окна, при этом по умолчанию используется ящик. Ящики идеально подходят для управления большими объемами информации и выполнения сложных операций, в то время как диалоговые окна лучше подходят для простого содержимого или быстрых действий. Всплывающее окно можно закрыть, нажав на оверлей.
 
 ![20240413102507](https://static-docs.nocobase.com/20240413102507.png)
 
-- drawer
+- ящик
 
 ![20240423120702](https://static-docs.nocobase.com/20240423120702.png)
 
-- dialog
+- диалоговое окно
 
 ![20240423120721](https://static-docs.nocobase.com/20240423120721.png)

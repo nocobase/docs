@@ -1,33 +1,33 @@
-# Condition
+# Условие
 
-Similar to the `if` statement in programming languages, the condition node determines the direction of the subsequent flow based on the result of the configured condition.
+Аналогично оператору `if` в языках программирования, узел «Условие» определяет направление дальнейшего выполнения рабочего процесса на основе результата настроенного условия.
 
-## Creating a Node
+## Создание узла
 
-There are two modes for condition: "Continue if 'true'" and "Continue if 'true' or 'false'". When creating the node, you need to choose one of these modes, and it cannot be changed in the node's configuration afterward.
+Существует два режима работы узла «Условие»: «Продолжить, если „истина“» и «Продолжить, если „истина“ или „ложь“». При создании узла необходимо выбрать один из этих режимов, и после создания изменить его в настройках уже нельзя.
 
-![Mode Selection for Condition](https://static-docs.nocobase.com/3de27308c1179523d8606c66bf3a5fb4.png)
+![Выбор режима для условия](https://static-docs.nocobase.com/3de27308c1179523d8606c66bf3a5fb4.png)
 
-In the "Continue if 'true'" mode, when the result of the condition judgment is "true", workflow will continue to execute the subsequent nodes; otherwise, the flow will terminate and exit prematurely with a failed status.
+В режиме **«Продолжить, если „истина“»** рабочий процесс продолжит выполнение последующих узлов только в случае, если результат проверки условия — «истина». В противном случае выполнение будет прервано, и рабочий процесс завершится досрочно со статусом «ошибка».
 
-![Continue if 'true' Mode](https://static-docs.nocobase.com/0f6ae1afe61d501f8eb1f6dedb3d4ad7.png)
+![Режим «Продолжить, если „истина“»](https://static-docs.nocobase.com/0f6ae1afe61d501f8eb1f6dedb3d4ad7.png)
 
-This mode is suitable for scenarios where the flow should not continue if the condition is not met. For example, when configuring a form button to submit an order which bound with a "Pre-action event", if there is insufficient stock for the items in the order, the process should not continue to generate the order but instead fail and exit.
+Этот режим подходит для сценариев, в которых дальнейшее выполнение недопустимо при невыполнении условия. Например, при настройке кнопки формы для отправки заказа, привязанной к событию «Перед действием», если на складе недостаточно товара, процесс не должен продолжаться и создавать заказ, а должен завершиться с ошибкой.
 
-In the "Continue if 'true' or 'false'" mode, the condition node will produce two branches of the flow, corresponding to the scenarios where the condition judgment results are "true" and "false". Each branch can have subsequent nodes configured separately. After either branch completes execution, it will automatically return back to the parent branch where the condition node is located and continue executing the subsequent nodes.
+В режиме **«Продолжить, если „истина“ или „ложь“»** узел условия создаёт две ветви рабочего процесса — одну для случая «истина», другую — для случая «ложь». В каждой ветви можно независимо настроить последующие узлы. После завершения выполнения любой из ветвей управление автоматически возвращается в основную ветвь (на уровень выше узла условия), и выполнение продолжается.
 
-![Continue if 'true' or 'false' Mode](https://static-docs.nocobase.com/974a1fcd8603629b64ffce6c55d59282.png)
+![Режим «Продолжить, если „истина“ или „ложь“»](https://static-docs.nocobase.com/974a1fcd8603629b64ffce6c55d59282.png)
 
-This mode is suitable for scenarios where different operations need to be performed depending on whether the condition is met or not. For example, checking if a piece of data exists, and if it doesn't, inserting it; if it does, updating it.
+Этот режим подходит для сценариев, в которых при выполнении и невыполнении условия нужно выполнять разные действия. Например, проверить, существует ли запись, и если не существует — добавить её, а если существует — обновить.
 
-## Node Configuration
+## Настройка узла
 
-### Calculation Engine
+### Вычислительный движок
 
-Currently, three engines are supported:
+В настоящее время поддерживаются три движка:
 
-- **Basic**: Obtains logical results through simple binary calculations and grouping with "AND" and "OR".
-- **Math.js**: Computes logical results from expressions supported by the [Math.js](https://mathjs.org/) engine.
-- **Formula.js**: Computes logical results from expressions supported by the [Formula.js](https://formulajs.info/) engine.
+- **Базовый**: вычисляет логический результат с помощью простых бинарных операций и группировки с помощью «И» и «ИЛИ».
+- **Math.js**: вычисляет логический результат на основе выражений, поддерживаемых движком [Math.js](https://mathjs.org/).
+- **Formula.js**: вычисляет логический результат на основе выражений, поддерживаемых движком [Formula.js](https://formulajs.info/).
 
-All three calculations can use variables from the workflow context as operands for computation.
+Во всех трёх случаях в качестве операндов можно использовать переменные из контекста рабочего процесса.

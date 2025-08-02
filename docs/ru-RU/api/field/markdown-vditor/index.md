@@ -1,7 +1,7 @@
 # markdown
 
-## Example
+## Пример
 
-This is an embedded Markdown editor:
+Это встроенный редактор Markdown:
 
 <MarkdownEditor />

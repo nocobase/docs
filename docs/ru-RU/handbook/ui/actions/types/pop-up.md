@@ -1,20 +1,21 @@
-# Custom Pop-up
+# Настраиваемое всплывающее окно
 
-## Introduction
+## Введение
 
-The custom pop-up feature functions much like the view and edit actions. It's part of the table's row buttons and uses the current record as its context. Users can set up multiple pop-up actions within the row operations of a table.
+Функция настраиваемого всплывающего окна работает аналогично действиям просмотра и редактирования. Это часть кнопок строки таблицы и использует текущую запись в качестве контекста. Пользователи могут настроить несколько всплывающих действий в рамках операций со строкой таблицы.
 
 ![20240413104530](https://static-docs.nocobase.com/20240413104530.png)
 
-Configure blocks as needed in the pop-up window.
+Во всплывающем окне можно настраивать блоки по необходимости.
 
 ![20240426161322](https://static-docs.nocobase.com/20240426161322.png)
 
-## Operation Configuration Items
+## Параметры настройки операции
 
 ![20240413104602](https://static-docs.nocobase.com/20240413104602.png)
 
-- [Edit Button](/handbook/ui/actions/action-settings/edit-button): Customize the title, color, and icon of the edit button
-- [Linkage Rule](/handbook/ui/actions/action-settings/linkage-rule): Dynamically control the button’s state (Visible/Disabled)
-- [Open Mode](/handbook/ui/actions/action-settings/open-mode): Pop-up/Drawer
-- [Pop-up Size](/handbook/ui/actions/action-settings/popup-size): The default size is Middle(Large/Middle/Small)
+Основные настройки включают:
+- [Редактирование кнопки](/handbook/ui/actions/action-settings/edit-button): Настройка заголовка, цвета и иконки кнопки
+- [Правила связей](/handbook/ui/actions/action-settings/linkage-rule): Динамическое управление состоянием кнопки (Видимость/Доступность)
+- [Режим открытия](/handbook/ui/actions/action-settings/open-mode): Всплывающее окно/Выдвижная панель
+- [Размер всплывающего окна](/handbook/ui/actions/action-settings/popup-size): По умолчанию используется средний размер (Большой/Средний/Маленький)

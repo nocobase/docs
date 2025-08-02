@@ -1,8 +1,8 @@
-# Edit description
+# Редактировать описание
 
-## Introduction
+## Введение
 
-Field descriptions are short descriptive text displayed in light gray below the field component, which can be used to help users understand the purpose of the field and the input requirements.
+Описания полей - это короткий текст, выделенный светло-серым цветом под компонентом "Поле", который может быть использован для того, чтобы помочь пользователям понять назначение поля и требования к вводу данных.
 
 ![20240411114048](https://static-docs.nocobase.com/20240411114048.png)
 

@@ -1,14 +1,14 @@
-# Partial Registration of Component and Scope
+# Локальная регистрация компонента и области видимости
 
-## Example Description
+## Описание примера
 
-The functionality to be implemented is similar to the [Global Registration of Component and Scope](/plugin-samples/component-and-scope/global) example, but this time, the component and scope will be registered within the plugin itself, instead of globally.
+Функциональность, реализуемая в этом примере, аналогична примеру [Глобальная регистрация компонента и области видимости](/plugin-samples/component-and-scope/global), но в данном случае компонент и область видимости будут зарегистрированы внутри самого плагина, а не глобально.
 
-You can view the complete sample code for this document in [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-component-and-scope-local).
+Полный код примера доступен в [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-component-and-scope-local).
 
-## Initialize the Plugin
+## Инициализация плагина
 
-Following the guide on [Writing Your First Plugin](/development/your-first-plugin), if you do not yet have a project, you can create one first. If you already have a project or have cloned the source code, you can skip this step.
+Следуйте инструкциям из документации [Создание первого плагина](/development/your-first-plugin). Если у вас нет проекта, создайте его. Если проект уже есть или вы клонировали исходный код, пропустите этот шаг.
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d sqlite
@@ -17,28 +17,28 @@ yarn install
 yarn nocobase install
 ```
 
-Next, initialize a plugin and add it to the system:
+Инициализируйте плагин и добавьте его в систему:
 
 ```bash
 yarn pm create @nocobase-sample/plugin-component-and-scope-local
 yarn pm enable @nocobase-sample/plugin-component-and-scope-local
 ```
 
-Then, start the project:
+Запустите проект:
 
 ```bash
 yarn dev
 ```
 
-After logging in, go to [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) to confirm that the plugin has been installed and enabled.
+После входа в систему перейдите по адресу [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/), чтобы убедиться, что плагин установлен и активирован.
 
 ---
 
-# Functionality Implementation
+# Реализация функциональности
 
-## 1. Creating a Custom Page
+## 1. Создание пользовательской страницы
 
-Create a new file `packages/plugins/@nocobase-sample/plugin-component-and-scope-local/src/client/CustomPage.tsx` with the following content:
+Создайте файл `packages/plugins/@nocobase-sample/plugin-component-and-scope-local/src/client/CustomPage.tsx` со следующим содержимым:
 
 ```tsx | pure
 import React from "react"
@@ -48,11 +48,11 @@ export const SamplesCustomPage = () => {
 }
 ```
 
-## 2. Rendering Content Directly with `Component`
+## 2. Рендеринг содержимого напрямую с помощью `Component`
 
-For more details on custom page creation, refer to the [Add New Page](/plugin-samples/router/add-page) guide.
+Для получения дополнительной информации о создании пользовательских страниц см. руководство [Добавление новой страницы](/plugin-samples/router/add-page).
 
-Next, modify the file `packages/plugins/@nocobase-sample/plugin-component-and-scope-local/src/index.ts` as follows:
+Далее, обновите файл `packages/plugins/@nocobase-sample/plugin-component-and-scope-local/src/index.ts`:
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
@@ -70,22 +70,22 @@ export class PluginComponentAndScopeLocalClient extends Plugin {
 export default PluginComponentAndScopeLocalClient;
 ```
 
-Unlike global registration, here we directly use the `Component: SamplesCustomPage` instead of passing a string as the component type.
+В отличие от глобальной регистрации, здесь мы напрямую используем `Component: SamplesCustomPage`, вместо передачи строки с типом компонента.
 
-Next, go to [http://localhost:13000/admin/custom-page2](http://localhost:13000/admin/custom-page2) to see the content of the `SamplesCustomPage` component.
+Перейдите по адресу [http://localhost:13000/admin/custom-page2](http://localhost:13000/admin/custom-page2), чтобы увидеть содержимое компонента `SamplesCustomPage`.
 
 ![img_v3_02av_46e020ae-41d2-4bc3-a047-e28d97c20bdg](https://static-docs.nocobase.com/img_v3_02av_46e020ae-41d2-4bc3-a047-e28d97c20bdg.jpg)
 
-## 3. Rendering Content with `SchemaComponent`
+## 3. Рендеринг содержимого с помощью `SchemaComponent`
 
-You’ll need to understand the following concepts:
+Необходимо ознакомиться с следующими концепциями:
 
-- [Schema Protocol](/development/client/ui-schema/what-is-ui-schema)
+- [Протокол схемы](/development/client/ui-schema/what-is-ui-schema)
 - [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponent-1)
 - [withDynamicSchemaProps](/development/client/ui-schema/what-is-ui-schema#x-component-props-and-x-use-component-props)
 - [useFieldSchema()](https://client.docs.nocobase.com/core/ui-schema/designable#usefieldschema)
 
-Now, modify the file `packages/plugins/@nocobase-sample/plugin-component-and-scope-local/src/client/CustomPage.tsx` as follows:
+Обновите файл `packages/plugins/@nocobase-sample/plugin-component-and-scope-local/src/client/CustomPage.tsx`:
 
 ```tsx | pure
 import { ISchema, SchemaComponent, withDynamicSchemaProps } from "@nocobase/client"
@@ -138,30 +138,30 @@ export const SamplesCustomPage = () => {
 }
 ```
 
-- We defined the `SamplesHello` and `useSamplesHelloProps` components.
-- Then, we created a `schema` object where the `demo1` and `demo2` fields use corresponding components and scope, while the `demo3` and `demo4` fields use string-type components and scope.
-- Finally, we used the `SchemaComponent`'s `components` and `scope` attributes to locally register `SamplesHello` and `useSamplesHelloProps`.
+- Определены компонент `SamplesHello` и область видимости `useSamplesHelloProps`.
+- Создан объект `schema`, в котором поля `demo1` и `demo2` используют соответствующие компоненты и области видимости напрямую, а поля `demo3` и `demo4` используют строковые типы компонентов и областей видимости.
+- Использованы атрибуты `components` и `scope` компонента `SchemaComponent` для локальной регистрации `SamplesHello` и `useSamplesHelloProps`.
 
-Visit [http://localhost:13000/admin/custom-page2](http://localhost:13000/admin/custom-page2) to see the content of the `CustomPage` component.
+Перейдите по адресу [http://localhost:13000/admin/custom-page2](http://localhost:13000/admin/custom-page2), чтобы увидеть содержимое компонента `CustomPage`.
 
 ![img_v3_02av_e8d4d0c7-7a59-4f9e-a120-a2551e719ebg](https://static-docs.nocobase.com/img_v3_02av_e8d4d0c7-7a59-4f9e-a120-a2551e719ebg.jpg)
 
 ---
 
-# Packaging and Uploading to Production
+# Сборка и развертывание в продакшен
 
-Following the guide on [Building and Packaging Plugins](/development/your-first-plugin#building-and-packaging-plugins), you can package the plugin and upload it to the production environment.
+Следуйте инструкциям из руководства [Сборка и упаковка плагинов](/development/your-first-plugin#building-and-packaging-plugins), чтобы упаковать плагин и загрузить его в продакшен.
 
-If you cloned the source code, you need to perform a full build to package the plugin's dependencies:
+Для клонированного исходного кода выполните полную сборку для упаковки зависимостей плагина:
 
 ```bash
 yarn build
 ```
 
-If you used `create-nocobase-app` to create the project, simply run:
+Для проекта, созданного с помощью `create-nocobase-app`, выполните:
 
 ```bash
 yarn build @nocobase-sample/plugin-component-and-scope-local --tar
 ```
 
-This will generate the file `storage/tar/@nocobase-sample/plugin-component-and-scope-local.tar.gz`, which you can then upload using the [plugin upload method](/welcome/getting-started/plugin).
+В результате будет создан файл `storage/tar/@nocobase-sample/plugin-component-and-scope-local.tar.gz`, который можно загрузить с помощью [метода загрузки плагина](/welcome/getting-started/plugin).

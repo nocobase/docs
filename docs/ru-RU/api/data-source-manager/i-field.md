@@ -1,33 +1,41 @@
-# IField
+# IField (Интерфейс поля)
 
-`IField` defines the interface that fields need to implement.
+Интерфейс `IField` определяет структуру, которую должны реализовывать поля в системе.
 
 ```typescript
 export type FieldOptions = {
-  name: string;
-  field: string;
-  rawType: string;
-  type: string;
-  description?: string;
-  interface?: string;
-  uiSchema?: any;
-  possibleTypes?: string[];
-  defaultValue?: any;
-  primaryKey: boolean;
-  unique: boolean;
-  allowNull?: boolean;
-  autoIncrement?: boolean;
-  [key: string]: any;
+  name: string;                // Название поля
+  field: string;               // Идентификатор поля
+  rawType: string;             // Исходный тип данных
+  type: string;                // Тип поля
+  description?: string;        // Описание поля (опционально)
+  interface?: string;          // Интерфейс поля
+  uiSchema?: any;              // Схема пользовательского интерфейса
+  possibleTypes?: string[];    // Допустимые типы данных
+  defaultValue?: any;          // Значение по умолчанию
+  primaryKey: boolean;         // Является ли первичным ключом
+  unique: boolean;             // Уникальное ли поле
+  allowNull?: boolean;         // Допускает ли null-значения
+  autoIncrement?: boolean;     // Автоинкрементное ли поле
+  [key: string]: any;          // Дополнительные свойства
 };
 
 export interface IField {
-  options: FieldOptions;
+  options: FieldOptions;  // Конфигурационные параметры поля
 }
 ```
 
-
-## Properties
+## Свойства
 
 ### options
 
-- **Type**: `FieldOptions`
+- **Тип**: `FieldOptions`
+
+Объект конфигурации, содержащий все параметры и настройки поля. Включает такие свойства как:
+- базовые атрибуты (имя, тип)
+- метаданные (описание)
+- особенности работы (уникальность, обязательность)
+- настройки отображения в интерфейсе
+- технические параметры (первичный ключ, автоинкремент)
+
+Этот интерфейс обеспечивает стандартизированное описание полей данных в системе, что позволяет единообразно работать с ними на всех уровнях приложения.

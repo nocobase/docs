@@ -1,4 +1,3 @@
-# Overview
+# Обзор
 
-Use <a href="https://ant-design-charts.antgroup.com/" target="_blank">Ant Design Charts</a> 2.x for data visualization, supporting common basic chart types.
-
+Используйте <a href="https://ant-design-charts.antgroup.com/" target="_blank"> Диаграммы проектирования Ant</a> 2.x для визуализации данных, поддерживая общие базовые типы диаграмм.

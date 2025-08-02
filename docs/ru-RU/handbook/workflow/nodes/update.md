@@ -1,41 +1,41 @@
-# Update Record
+# Обновление записи
 
-Used to update data records that meet certain conditions in a collection.
+Используется для обновления записей данных, соответствующих определённым условиям, в коллекции.
 
-The collection and field assignment sections are the same as in the "Create Record" node. The main difference between "Update Record" node and "Create record" node is the filter conditions, and the need to select an update mode. In addition, the update node will return the number of rows of successfully updated data, which can only be viewed in the execution history and cannot be used as a variable in subsequent nodes.
+Разделы выбора коллекции и назначения полей аналогичны узлу «Создать запись». Основные отличия узла «Обновить запись» от узла «Создать запись» — это условия фильтрации и необходимость выбора режима обновления. Кроме того, узел обновления возвращает количество успешно обновлённых строк данных, которое можно просмотреть только в истории выполнения, но нельзя использовать как переменную в последующих узлах.
 
-## Creating a Node
+## Создание узла
 
-In the workflow configuration UI, click the plus ("+") button in the workflow and add an "Update Record" node:
+В интерфейсе настройки рабочего процесса нажмите кнопку «+» в рабочем процессе и добавьте узел «Обновить запись»:
 
-![Update Record_Add](https://static-docs.nocobase.com/9ff24d7bc173b3a71decc1f70ca9fb66.png)
+![Обновить запись — Добавление](https://static-docs.nocobase.com/9ff24d7bc173b3a71decc1f70ca9fb66.png)
 
-## Node Configuration
+## Настройка узла
 
-![Update Node_Node Configuration](https://static-docs.nocobase.com/98e0f941c57275fc835f08260d0b2e86.png)
+![Обновить запись — Настройка узла](https://static-docs.nocobase.com/98e0f941c57275fc835f08260d0b2e86.png)
 
-### Collection
+### Коллекция
 
-Select the collection to update record in.
+Выберите коллекцию, в которой нужно обновить записи.
 
-### Update Mode
+### Режим обновления
 
-There are "Batch" and "Individual" modes for updating. In batch mode, each record updating will not trigger the collection events; whereas, in individual mode, each record updating could trigger the collection events. However, there may be performance issues with individual updates, especially with large amounts of data, so use with caution. Typically, choose based on the target data to be updated and whether other workflow events need to be triggered. If updating a single data record based on a primary key, it is recommended to use individual updates; if updating multiple data records based on conditions, it is recommended to use batch updates.
+Существуют два режима обновления: «Пакетный» и «По одному». В пакетном режиме обновление каждой записи **не вызывает** событий коллекции. В режиме «по одному» каждое обновление записи может вызывать события коллекции. Однако при обновлении по одному могут возникнуть проблемы с производительностью, особенно при большом объёме данных, поэтому используйте этот режим с осторожностью. Обычно выбор режима зависит от целевых данных и необходимости запуска других событий рабочего процесса. Если вы обновляете одну запись по первичному ключу, рекомендуется использовать режим «по одному». Если вы обновляете несколько записей по условиям фильтрации, рекомендуется использовать пакетный режим.
 
-### Filter Conditions
+### Условия фильтрации
 
-Similar to the filter conditions when querying a normal collection, you can use context variables of the workflow.
+Аналогично условиям фильтрации при обычном запросе к коллекции. Можно использовать переменные контекста рабочего процесса.
 
-### Field Values
+### Значения полей
 
-Similar to the field assignment in the "Create Record" node, you can use variables from the workflow context or manually enter static values.
+Аналогично назначению полей в узле «Создать запись». Можно использовать переменные из контекста рабочего процесса или вручную ввести статические значения.
 
-Note: The update node in the workflow does not automatically handle the "Last Modified By" data; you need to configure the value of this field based on the situation.
+**Примечание**: Узел обновления в рабочем процессе **не обновляет автоматически** поле «Последний изменивший», его значение нужно настраивать вручную в зависимости от ситуации.
 
-## Example
+## Пример
 
-For example, when a "Post" created, the "Post Category" collection needs to be automatically updated with the "Post Count" field. This can be achieved using an update node:
+Например, при создании «Поста» нужно автоматически обновить поле «Количество постов» в коллекции «Категория поста». Это можно реализовать с помощью узла обновления:
 
-![Update Node_Example_Node Configuration](https://static-docs.nocobase.com/98e0f941c57275fc835f08260d0b2e86.png)
+![Обновить запись — Пример настройки узла](https://static-docs.nocobase.com/98e0f941c57275fc835f08260d0b2e86.png)
 
-When the workflow is triggered, the "Post Count" field in the "Post Category" collection will automatically be updated to the current post count +1.
+Когда рабочий процесс запускается, поле «Количество постов» в коллекции «Категория поста» автоматически обновляется до текущего значения +1.

@@ -1,12 +1,12 @@
-# Tree Collection
+# Древовидная коллекция
 
 <PluginInfo name="collection-tree"></PluginInfo>
 
-## Introduction
+## Введение
 
-A tree structure collection is a data collection design pattern used for organizing hierarchical data. This collection structure mirrors a tree, where each data item may have one or more child items, and those child items can, in turn, have their own descendants.
+Древовидная коллекция — это шаблон проектирования коллекции данных, используемый для организации иерархических данных. Эта структура коллекции напоминает дерево, в котором каждый элемент данных может иметь один или несколько дочерних элементов, а те, в свою очередь, могут иметь собственные вложенные элементы.
 
-## User Manual
+## Руководство пользователя
 
 ![20240324143228](https://static-docs.nocobase.com/20240324143228.png)
 

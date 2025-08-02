@@ -1,16 +1,16 @@
-# Global Context
+# Глобальный контекст
 
-In many situations, we need to store data in a global context so that it can be accessed anywhere, such as themes, permissions, and more.
+Во многих случаях требуется хранить данные в глобальном контексте, чтобы к ним можно было получить доступ из любого места, например, для управления темами, правами доступа и другими функциями.
 
-## Example Overview
+## Обзор примера
 
-We need to implement a feature toggle plugin to control the activation or deactivation of certain functions.
+Необходимо реализовать плагин для управления переключением функций (feature toggle), чтобы включать или отключать определённые возможности.
 
-The full sample code for this document can be viewed in the [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-provider-context) repository.
+Полный пример кода для этой документации доступен в репозитории [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-provider-context).
 
-## Plugin Initialization
+## Инициализация плагина
 
-Following the instructions in [Writing Your First Plugin](/development/your-first-plugin), if you don’t already have a project, you can create one. If you already have a project or have cloned the source code, you can skip this step.
+Следуя инструкциям из раздела [Создание первого плагина](/development/your-first-plugin), создайте новый проект, если у вас его ещё нет. Если проект уже создан или вы клонировали исходный код, этот шаг можно пропустить.
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d sqlite
@@ -19,26 +19,26 @@ yarn install
 yarn nocobase install
 ```
 
-Next, initialize a plugin and add it to the system:
+Далее инициализируйте плагин и добавьте его в систему:
 
 ```bash
 yarn pm create @nocobase-sample/plugin-provider-context
 yarn pm enable @nocobase-sample/plugin-provider-context
 ```
 
-Then, start the project:
+Запустите проект:
 
 ```bash
 yarn dev
 ```
 
-After logging in, you can visit [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) to verify that the plugin has been installed and enabled.
+После входа в систему вы можете перейти по адресу [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/), чтобы убедиться, что плагин установлен и активирован.
 
-## Feature Implementation
+## Реализация функционала
 
-The implementation of the global context requires utilizing React’s `Context` API.
+Для реализации глобального контекста используется API контекста React (`Context`).
 
-### 1. Creating the Context
+### 1. Создание контекста
 
 ```tsx | pure
 import { useRequest } from '@nocobase/client';
@@ -67,13 +67,13 @@ export const useFeature = (feature: string) => {
 }
 ```
 
-Don’t forget to render the `children` component.
+Не забудьте отобразить компонент `children`.
 
-For configuration and data related to `features`, refer to the [Plugin Form Configuration Page](/plugin-samples/plugin-settings/form) for example usage. In this case, we're using mock data.
+Для конфигурации и данных, связанных с `features`, обратитесь к примеру использования на странице [Конфигурация формы плагина](/plugin-samples/plugin-settings/form). В данном случае используются моковые (тестовые) данные.
 
-### 2. Registering the Plugin into the System
+### 2. Регистрация плагина в системе
 
-Modify the `packages/plugins/@nocobase-sample/plugin-provider-context/src/index.ts` file to register the `FeaturesProvider` component into the system.
+Измените файл `packages/plugins/@nocobase-sample/plugin-provider-context/src/index.ts`, чтобы зарегистрировать компонент `FeaturesProvider` в системе.
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
@@ -88,15 +88,15 @@ export class PluginProviderContextClient extends Plugin {
 export default PluginProviderContextClient;
 ```
 
-### 3. Accessing Context Data
+### 3. Доступ к данным контекста
 
-To access the context data, you can use the `useFeatures` and `useFeature` methods.
+Для доступа к данным контекста используйте методы `useFeatures` и `useFeature`.
 
-There are two cases: using it within this plugin or in other plugins.
+Существует два сценария: использование внутри текущего плагина и в других плагинах.
 
-#### 3.1 Using it Within This Plugin
+#### 3.1 Использование внутри текущего плагина
 
-Modify the `packages/plugins/@nocobase-sample/plugin-provider-context/src/index.ts` file to add a test page for checking the context data.
+Измените файл `packages/plugins/@nocobase-sample/plugin-provider-context/src/index.ts`, чтобы добавить тестовую страницу для проверки данных контекста.
 
 ```tsx | pure
 import React from 'react';
@@ -110,8 +110,8 @@ const TestPage = () => {
 
   return (
     <div>
-      <h1>Feature1: {feature1 ? 'Enabled' : 'Disabled'}</h1>
-      <h1>Feature2: {feature2 ? 'Enabled' : 'Disabled'}</h1>
+      <h1>Функция 1: {feature1 ? 'Включена' : 'Отключена'}</h1>
+      <h1>Функция 2: {feature2 ? 'Включена' : 'Отключена'}</h1>
     </div>
   );
 };
@@ -130,42 +130,42 @@ export class PluginProviderContextClient extends Plugin {
 export default PluginProviderContextClient;
 ```
 
-Now, visit [http://localhost:13000/admin/features-test](http://localhost:13000/admin/features-test) to see the context data.
+Теперь перейдите по адресу [http://localhost:13000/admin/features-test](http://localhost:13000/admin/features-test), чтобы увидеть данные контекста.
 
 ![img_v3_02av_51b7cb08-1b42-42f4-b553-49b4e3f217bg](https://static-docs.nocobase.com/img_v3_02av_51b7cb08-1b42-42f4-b553-49b4e3f217bg.jpg)
 
-#### 3.2 Using it in Other Plugins
+#### 3.2 Использование в других плагинах
 
-If you need to use the context in other plugins, you should export the `useFeatures` and `useFeature` methods.
+Если контекст нужно использовать в других плагинах, экспортируйте методы `useFeatures` и `useFeature`.
 
-Modify the `packages/plugins/@nocobase-sample/plugin-provider-context/src/index.ts` file:
+Измените файл `packages/plugins/@nocobase-sample/plugin-provider-context/src/index.ts`:
 
 ```tsx | pure
 export { useFeatures, useFeature } from './FeaturesProvider';
 ```
 
-Then, you can use the `useFeatures` and `useFeature` methods as shown below:
+Затем вы можете использовать методы `useFeatures` и `useFeature` следующим образом:
 
 ```tsx | pure
 import { useFeature } from '@nocobase-sample/plugin-provider-context/client';
 ```
 
-Note that the import path should be `'@nocobase-sample/plugin-provider-context/client'` rather than `'@nocobase-sample/plugin-provider-context'`.
+Обратите внимание, что путь импорта должен быть `'@nocobase-sample/plugin-provider-context/client'`, а не `'@nocobase-sample/plugin-provider-context'`.
 
-## Packaging and Deploying to Production
+## Сборка и развертывание в продакшен
 
-Following the [Build and Package Plugin](/development/your-first-plugin#build-and-package-plugin) guide, you can package the plugin and upload it to the production environment.
+Следуя руководству [Сборка и упаковка плагина](/development/your-first-plugin#build-and-package-plugin), вы можете упаковать плагин и загрузить его в продакшен.
 
-If you cloned the source code, you’ll need to perform a full build to include the plugin's dependencies.
+Если вы клонировали исходный код, потребуется выполнить полную сборку, чтобы включить зависимости плагина.
 
 ```bash
 yarn build
 ```
 
-If the project was created using `create-nocobase-app`, simply run:
+Если проект был создан с помощью `create-nocobase-app`, просто выполните:
 
 ```bash
 yarn build @nocobase-sample/plugin-provider-context --tar
 ```
 
-This will generate the `storage/tar/@nocobase-sample/plugin-provider-context.tar.gz` file, which can then be installed by following the [upload process](/welcome/getting-started/plugin).
+Это создаст файл `storage/tar/@nocobase-sample/plugin-provider-context.tar.gz`, который затем можно установить, следуя процессу [загрузки плагина](/welcome/getting-started/plugin).

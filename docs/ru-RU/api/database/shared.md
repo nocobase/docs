@@ -1,8 +1,8 @@
-**Parameters**
+**Параметры**
 
-| Parameter Name         | Type          | Default | Description                                           |
-| ---------------------- | ------------- | ------- | ----------------------------------------------------- |
-| `options.values`       | `M`           | `{}`    | The data object to be inserted                        |
-| `options.whitelist?`   | `string[]`    | -       | Whitelist for the `values` field; only fields in the list will be stored |
-| `options.blacklist?`   | `string[]`    | -       | Blacklist for the `values` field; fields in the list will not be stored |
-| `options.transaction?` | `Transaction` | -       | Transaction                                            |
+| Имя параметра           | Тип           | По умолчанию | Описание                                                  |
+|-------------------------|---------------|--------------|-----------------------------------------------------------|
+| `options.values`        | `M`           | `{}`         | Объект данных, который будет вставлен                     |
+| `options.whitelist?`    | `string[]`    | —            | Белый список для поля `values`; будут сохранены только поля, указанные в списке |
+| `options.blacklist?`    | `string[]`    | —            | Чёрный список для поля `values`; поля из списка сохранены не будут |
+| `options.transaction?`  | `Transaction` | —            | Транзакция                                                |

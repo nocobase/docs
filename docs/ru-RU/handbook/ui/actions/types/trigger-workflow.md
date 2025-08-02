@@ -1,4 +1,4 @@
-# Trigger Workflow
+# Запуск рабочего процесса
 
 <PluginInfo name="workflow-custom-action-trigger" link="/handbook/workflow-custom-action-trigger" commercial="true"></PluginInfo>
 

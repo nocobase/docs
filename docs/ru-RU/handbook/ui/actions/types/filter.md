@@ -1,21 +1,23 @@
-# Filter
+# Фильтрация данных
 
-## Introduction
+## Введение
 
-Filtering operations are commonly found within data blocks, allowing users to filter data by setting various conditions. It's essential to note that if a data block has a predefined data range, the filtering criteria will be combined with the range conditions to create the final filtering rules.
+Операции фильтрации доступны в блоках данных и позволяют пользователям задавать различные условия для отбора информации. Важно учитывать, что если для блока данных уже задан диапазон, условия фильтрации будут объединены с ним в итоговые правила отбора.
 
 ![20240413105921](https://static-docs.nocobase.com/20240413105921.png)
 
-## Operation Configuration Items
+## Настройки фильтрации
 
 ![20240413110004](https://static-docs.nocobase.com/20240413110004.png)
 
-### Filterable Fields
+### Доступные для фильтрации поля
 
-By default, all fields in the table are enabled, and only enabled fields can be selected from the condition field list.
+По умолчанию все поля таблицы доступны для фильтрации. В списке условий можно выбрать только активированные поля.
 
-Fields from related tables can also be used as filterable fields.
+Также доступны для использования поля из связанных таблиц.
 
 ![20240423200041](https://static-docs.nocobase.com/20240423200041.png)
 
-- [Edit Button](/handbook/ui/actions/action-settings/edit-button)
+Основные настройки:
+- [Редактирование кнопки](/handbook/ui/actions/action-settings/edit-button) - настройка внешнего вида и расположения элемента фильтрации
+

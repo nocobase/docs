@@ -1,211 +1,211 @@
-# Email Manager: Administrator Configuration
+# Менеджер электронной почты: Настройка администратора
 
 <PluginInfo commercial="true" name="email-manager"></PluginInfo>
 
-## Introduction
-The Email Manager Plugin is an efficient and convenient tool supporting Gmail and Outlook email authorization. It integrates email management and sending capabilities into various blocks and pages. By simply configuring authorization, users can achieve unified multi-account management and enjoy seamless email communication.
+## Введение
+Плагин Менеджер электронной почты — это эффективный и удобный инструмент, поддерживающий авторизацию через Gmail и Outlook. Он интегрирует функции управления и отправки писем в различные блоки и страницы. Простая настройка авторизации позволяет пользователям осуществлять централизованное управление несколькими учётными записями и наслаждаться бесперебойным обменом электронными письмами.
 
-## Configuration Process
+## Процесс настройки
 
-After enabling the email plugin, administrators must complete the configuration before regular users can connect their email accounts to NocoBase. Currently, only Outlook and Gmail accounts are supported via authorized login. Direct integration with Microsoft and Google accounts is not available.
+После активации плагина электронной почты администратор должен завершить настройку, прежде чем обычные пользователи смогут подключить свои учётные записи к NocoBase. В настоящее время поддерживаются только учётные записи Outlook и Gmail через авторизацию. Прямая интеграция с учётными записями Microsoft и Google недоступна.
 
-The core of the configuration involves setting up API authentication with the email service providers. Administrators need to follow these steps to ensure proper plugin functionality:
+Основой настройки является конфигурация API-аутентификации с поставщиками почтовых услуг. Администратор должен выполнить следующие шаги для обеспечения правильной работы плагина:
 
-1. **Obtain Authentication Information from Providers**  
-   - Log into the developer console of the email service provider (e.g., Google Cloud Console or Microsoft Azure Portal).  
-   - Create a new app or project, enabling Gmail or Outlook email API services.  
-   - Retrieve the Client ID and Client Secret.  
-   - Configure the redirect URI to match the plugin's callback address in NocoBase.  
+1. **Получение данных аутентификации от поставщиков**  
+   - Войдите в консоль разработчика почтового сервиса (например, Google Cloud Console или Microsoft Azure Portal).  
+   - Создайте новое приложение или проект, включив службы API Gmail или Outlook.  
+   - Получите идентификатор клиента (Client ID) и секрет клиента (Client Secret).  
+   - Настройте URI перенаправления, чтобы он соответствовал обратному адресу плагина в NocoBase.  
 
-2. **Service Provider Configuration**  
-   - Navigate to the plugin's configuration page.  
-   - Enter the required API authentication details, including Client ID and Client Secret, ensuring proper integration with the email service provider.  
+2. **Настройка поставщика услуг**  
+   - Перейдите на страницу настройки плагина.  
+   - Введите необходимые данные аутентификации API, включая идентификатор и секрет клиента, чтобы обеспечить правильную интеграцию с поставщиком почтовых услуг.  
 
-3. **Authorization Login**  
-   - Users log in to their email accounts through the OAuth protocol.  
-   - The plugin automatically generates and stores the user's authorization tokens for subsequent API calls and email operations.  
+3. **Авторизованный вход**  
+   - Пользователи входят в свои учётные записи электронной почты через протокол OAuth.  
+   - Плагин автоматически создаёт и сохраняет токены авторизации пользователя для последующих вызовов API и операций с электронной почтой.  
 
-4. **Email Integration**  
-   - Upon successful authorization, users' email accounts are integrated into NocoBase.  
-   - The plugin synchronizes email data and provides management and sending capabilities.  
+4. **Интеграция электронной почты**  
+   - После успешной авторизации учётные записи электронной почты пользователей интегрируются в NocoBase.  
+   - Плагин синхронизирует данные электронной почты и предоставляет функции управления и отправки.  
 
-5. **Using Email Features**  
-   - Users can view, manage, and send emails directly within the platform.  
-   - All operations are completed via API calls to the email service provider, ensuring real-time synchronization and efficient communication.  
+5. **Использование функций электронной почты**  
+   - Пользователи могут просматривать, управлять и отправлять электронные письма непосредственно в платформе.  
+   - Все операции выполняются через вызовы API к поставщику почтовых услуг, обеспечивая синхронизацию в реальном времени и эффективное общение.  
 
-By following the above process, the NocoBase email plugin offers efficient and secure email management. If you encounter issues during configuration, consult the relevant documentation or contact the technical support team for assistance.
+Следуя описанному процессу, плагин электронной почты NocoBase обеспечивает эффективное и безопасное управление электронной почтой. Если у вас возникнут проблемы во время настройки, обратитесь к соответствующей документации или свяжитесь со службой технической поддержки за помощью.
 
-## Plugin Configuration
+## Настройка плагина
 
-### Enabling the Email Plugin
+### Включение плагина электронной почты
 
-1. Navigate to the plugin management page.  
-2. Locate the "Email Manager" plugin and enable it.  
+1. Перейдите на страницу управления плагинами.  
+2. Найдите плагин «Менеджер электронной почты» и включите его.  
 
-### Configuring the Email Provider
+### Настройка поставщика электронной почты
 
-Once the email plugin is enabled, proceed to configure the email provider. Currently, Google and Microsoft email services are supported. Click on "Settings" -> "Email Settings" to access the configuration page.
+После включения плагина электронной почты приступите к настройке поставщика электронной почты. В настоящее время поддерживаются службы электронной почты Google и Microsoft. Нажмите «Настройки» → «Настройки электронной почты», чтобы перейти на страницу настройки.
 
-![](https://static-docs.nocobase.com/mail-1733818617187.png)  
+![](https://static-docs.nocobase.com/mail-1733818617187.png)
 
 ![](https://static-docs.nocobase.com/mail-1733818617514.png)
 
-Each provider requires the Client ID and Client Secret. The following sections detail how to obtain these parameters.
+Для каждого поставщика требуется идентификатор и секрет клиента. В следующих разделах подробно описано, как получить эти параметры.
 
-## Google Configuration
+## Настройка Google
 
-### Prerequisites
+### Предварительные требования
 
-1. To allow users to connect Gmail accounts to NocoBase, deploy NocoBase on a server that supports access to Google services, as the backend will call the Google API.
+1. Чтобы пользователи могли подключить учётные записи Gmail к NocoBase, разверните NocoBase на сервере, который поддерживает доступ к сервисам Google, поскольку бэкенд будет вызывать API Google.
 
-### Register an Account
+### Регистрация учётной записи
 
-1. Open [Google Cloud Console](https://console.cloud.google.com/welcome).  
-2. Agree to the terms upon first access.  
+1. Откройте [Google Cloud Console](https://console.cloud.google.com/welcome).  
+2. Согласитесь с условиями при первом доступе.  
 
-![](https://static-docs.nocobase.com/mail-1733818617807.png)  
+![](https://static-docs.nocobase.com/mail-1733818617807.png)
 
-### Create an App
+### Создание приложения
 
-1. Click "Select a project" at the top
+1. Нажмите «Выбрать проект» в верхней части  
 
-![](https://static-docs.nocobase.com/mail-1733818618126.png)  
+![](https://static-docs.nocobase.com/mail-1733818618126.png)
 
-2. Click "NEW PROJECT" in the modal  
+2. Нажмите «НОВЫЙ ПРОЕКТ» в модальном окне  
 
-![](https://static-docs.nocobase.com/mail-1733818618329.png)  
+![](https://static-docs.nocobase.com/mail-1733818618329.png)
 
-3. Fill in project details
+3. Заполните сведения о проекте  
 
-![](https://static-docs.nocobase.com/mail-1733818618510.png)  
+![](https://static-docs.nocobase.com/mail-1733818618510.png)
 
-4. Select the created project
+4. Выберите созданный проект  
 
-![](https://static-docs.nocobase.com/mail-1733818618828.png)  
+![](https://static-docs.nocobase.com/mail-1733818618828.png)
 
 ![](https://static-docs.nocobase.com/mail-1733818619044.png)
 
-### Enable Gmail API
+### Включение API Gmail
 
-1. Click "APIs & Services" button
+1. Нажмите кнопку «API и службы»  
 
-![](https://static-docs.nocobase.com/mail-1733818619230.png)  
+![](https://static-docs.nocobase.com/mail-1733818619230.png)
 
-2. Enter the "APIs & Services" panel
+2. Перейдите на панель «API и службы»  
 
-![](https://static-docs.nocobase.com/mail-1733818619419.png)  
+![](https://static-docs.nocobase.com/mail-1733818619419.png)
 
-3. Search for "mail" 
+3. Найдите «mail»  
 
-![](https://static-docs.nocobase.com/mail-1733818619810.png)  
+![](https://static-docs.nocobase.com/mail-1733818619810.png)
 
-![](https://static-docs.nocobase.com/mail-1733818620020.png)  
+![](https://static-docs.nocobase.com/mail-1733818620020.png)
 
-4. Click "ENABLE" to activate Gmail API
+4. Нажмите «ВКЛЮЧИТЬ», чтобы активировать API Gmail  
 
-![](https://static-docs.nocobase.com/mail-1733818620589.png)  
+![](https://static-docs.nocobase.com/mail-1733818620589.png)
 
-![](https://static-docs.nocobase.com/mail-1733818620885.png)  
+![](https://static-docs.nocobase.com/mail-1733818620885.png)
 
-### Configure OAuth Consent Screen
+### Настройка экрана согласия OAuth
 
-1. Click "OAuth consent screen" on the left
+1. Нажмите «Экран согласия OAuth» слева  
 
-![](https://static-docs.nocobase.com/mail-1733818621104.png)  
+![](https://static-docs.nocobase.com/mail-1733818621104.png)
 
-2. Choose "External"
-  
-![](https://static-docs.nocobase.com/mail-1733818621322.png)  
+2. Выберите «Внешний»  
 
-3. Fill in project information (displayed on the authorization page) and save
+![](https://static-docs.nocobase.com/mail-1733818621322.png)
 
-![](https://static-docs.nocobase.com/mail-1733818621538.png)  
+3. Заполните сведения о проекте (отображаются на странице авторизации) и сохраните  
 
-4. Enter Developer Contact Information and click "Continue"  
+![](https://static-docs.nocobase.com/mail-1733818621538.png)
 
-![](https://static-docs.nocobase.com/mail-1733818621749.png)  
+4. Введите контактную информацию разработчика и нажмите «Продолжить»  
 
-5. Click "Continue"  
+![](https://static-docs.nocobase.com/mail-1733818621749.png)
 
-![](https://static-docs.nocobase.com/mail-1733818622121.png)  
+5. Нажмите «Продолжить»  
 
-6. Add test users for pre-release testing 
+![](https://static-docs.nocobase.com/mail-1733818622121.png)
 
-![](https://static-docs.nocobase.com/mail-1733818622332.png)  
+6. Добавьте тестовых пользователей для предварительного тестирования  
 
-![](https://static-docs.nocobase.com/mail-1733818622537.png)  
+![](https://static-docs.nocobase.com/mail-1733818622332.png)
 
-7. Click "Continue" 
- 
-![](https://static-docs.nocobase.com/mail-1733818622753.png)  
+![](https://static-docs.nocobase.com/mail-1733818622537.png)
 
-8. Review summary information and return to the control panel
- 
-![](https://static-docs.nocobase.com/mail-1733818622984.png)  
+7. Нажмите «Продолжить»  
 
-### Create Credentials
+![](https://static-docs.nocobase.com/mail-1733818622753.png)
 
-1. Click "Credentials" on the left
-  
-![](https://static-docs.nocobase.com/mail-1733818623168.png)  
+8. Просмотрите сводную информацию и вернитесь на панель управления  
 
-2. Click "CREATE CREDENTIALS" and select "OAuth client ID"  
+![](https://static-docs.nocobase.com/mail-1733818622984.png)
 
-![](https://static-docs.nocobase.com/mail-1733818623386.png)  
+### Создание учётных данных
 
-3. Select "Web application"  
+1. Нажмите «Учётные данные» слева  
 
-![](https://static-docs.nocobase.com/mail-1733818623758.png)  
+![](https://static-docs.nocobase.com/mail-1733818623168.png)
 
-4. Enter application details
+2. Нажмите «СОЗДАТЬ УЧЁТНЫЕ ДАННЫЕ» и выберите «Идентификатор клиента OAuth»  
 
-![](https://static-docs.nocobase.com/mail-1733818623992.png)  
+![](https://static-docs.nocobase.com/mail-1733818623386.png)
 
-5. Enter the domain of the final deployment (e.g., the NocoBase test address)
+3. Выберите «Веб-приложение»  
 
-![](https://static-docs.nocobase.com/mail-1733818624188.png)  
+![](https://static-docs.nocobase.com/mail-1733818623758.png)
 
-6. Add the authorized callback URI: `domain + "/admin/settings/mail/oauth2"`. Example: `https://pr-1-mail.test.nocobase.com/admin/settings/mail/oauth2`
+4. Введите сведения о приложении  
 
-![](https://static-docs.nocobase.com/mail-1733818624449.png)  
+![](https://static-docs.nocobase.com/mail-1733818623992.png)
 
-7. Click "Create" to view the OAuth details
+5. Введите домен окончательного развертывания (например, тестовый адрес NocoBase)  
 
-![](https://static-docs.nocobase.com/mail-1733818624701.png)  
+![](https://static-docs.nocobase.com/mail-1733818624188.png)
 
-8. Copy the Client ID and Client Secret to the Email Configuration page
+6. Добавьте авторизованный URI обратного вызова: `домен + "/admin/settings/mail/oauth2"`. Пример: `https://pr-1-mail.test.nocobase.com/admin/settings/mail/oauth2`
 
-![](https://static-docs.nocobase.com/mail-1733818624923.png)  
+![](https://static-docs.nocobase.com/mail-1733818624449.png)
 
-9. Click "Save" to complete the configuration  
+7. Нажмите «Создать», чтобы просмотреть сведения OAuth  
 
-### Publish the App
+![](https://static-docs.nocobase.com/mail-1733818624701.png)
 
-After completing the setup and testing, proceed with app publishing by verifying user permissions and submitting the app for verification.
+8. Скопируйте идентификатор и секрет клиента на страницу настройки электронной почты  
 
-1. Click the "OAuth consent screen" menu
+![](https://static-docs.nocobase.com/mail-1733818624923.png)
+
+9. Нажмите «Сохранить», чтобы завершить настройку
+
+### Публикация приложения
+
+После завершения настройки и тестирования перейдите к публикации приложения: проверьте права пользователя и отправьте приложение на проверку.
+
+1. Нажмите меню «Экран согласия OAuth»
 
 ![](https://static-docs.nocobase.com/mail-1733818625124.png)
 
-2. Click the "EDIT APP" button, then click the "SAVE AND CONTINUE" button at the bottom
+2. Нажмите кнопку «ИЗМЕНИТЬ ПРИЛОЖЕНИЕ», затем — «СОХРАНИТЬ И ПРОДОЛЖИТЬ» внизу
 
 ![](https://static-docs.nocobase.com/mail-1735633686380.png)
 
 ![](https://static-docs.nocobase.com/mail-1735633686750.png)
 
-3. Click the "ADD OR REMOVE SCOPES" button to select user permissions
+3. Нажмите кнопку «ДОБАВИТЬ ИЛИ УДАЛИТЬ ОБЛАСТИ ДОСТУПА (SCOPES)», чтобы выбрать права пользователя
 
 ![](https://static-docs.nocobase.com/mail-1735633687054.png)
 
-4. Enter "Gmail API" in the search field, then check the "Gmail API" (ensure the Scope value is "https://mail.google.com/")
+4. Введите в поле поиска «Gmail API», затем выберите «Gmail API» (убедитесь, что значение области доступа — «https://mail.google.com/»)
 
 ![](https://static-docs.nocobase.com/mail-1735633687283.png)
 
-5. Click the "UPDATE" button at the bottom to save
+5. Нажмите кнопку «ОБНОВИТЬ» внизу, чтобы сохранить
 
 ![](https://static-docs.nocobase.com/mail-1735633687536.png)
 
-6. Click the "SAVE AND CONTINUE" button at the bottom of each page, then click the "BACK TO DASHBOARD" button to return to the control panel page
+6. Нажмите «СОХРАНИТЬ И ПРОДОЛЖИТЬ» внизу каждой страницы, затем — «ВЕРНУТЬСЯ НА ПАНЕЛЬ УПРАВЛЕНИЯ», чтобы вернуться на главную страницу консоли
 
 ![](https://static-docs.nocobase.com/mail-1735633687744.png)
 
@@ -213,143 +213,143 @@ After completing the setup and testing, proceed with app publishing by verifying
 
 ![](https://static-docs.nocobase.com/mail-1735633688075.png)
 
-7. After clicking the "PUBLISH APP" button, a confirmation page will appear listing the content required for publishing. Then click the "CONFIRM" button
+7. После нажатия кнопки «ОПУБЛИКОВАТЬ ПРИЛОЖЕНИЕ» появится страница подтверждения с перечнем требований для публикации. Нажмите «ПОДТВЕРДИТЬ»
 
 ![](https://static-docs.nocobase.com/mail-1735633688257.png)
 
-8. Back on the console page, you will see that the publication status is "In production"
+8. Вернувшись на страницу консоли, вы увидите, что статус публикации — «В рабочей среде»
 
 ![](https://static-docs.nocobase.com/mail-1735633688425.png)
 
-9. Click the "PREPARE FOR VERIFICATION" button, fill in the required information, and click the "SAVE AND CONTINUE" button (the data in the image is for reference only)
+9. Нажмите кнопку «ГОТОВИТЬСЯ К ПРОВЕРКЕ», заполните необходимую информацию и нажмите «СОХРАНИТЬ И ПРОДОЛЖИТЬ» (данные на изображении приведены для справки)
 
 ![](https://static-docs.nocobase.com/mail-1735633688634.png)
 
 ![](https://static-docs.nocobase.com/mail-1735633688827.png)
 
-10. Continue filling in the required information (the data in the image is for reference only)
+10. Продолжайте заполнять обязательную информацию (данные на изображении приведены для справки)
 
 ![](https://static-docs.nocobase.com/mail-1735633688993.png)
 
-11. Click the "SAVE AND CONTINUE" button
+11. Нажмите кнопку «СОХРАНИТЬ И ПРОДОЛЖИТЬ»
 
 ![](https://static-docs.nocobase.com/mail-1735633689159.png)
 
-12. Click the "SUBMIT FOR VERIFICATION" button to submit for verification
+12. Нажмите кнопку «ОТПРАВИТЬ НА ПРОВЕРКУ», чтобы отправить на модерацию
 
 ![](https://static-docs.nocobase.com/mail-1735633689318.png)
 
-13. Wait for approval results
+13. Дождитесь результатов проверки
 
 ![](https://static-docs.nocobase.com/mail-1735633689494.png)
 
-14. If approval has not been granted, users can click the unsafe link to authorize login
+14. Если проверка не пройдена, пользователи могут нажать на небезопасную ссылку, чтобы авторизоваться
 
 ![](https://static-docs.nocobase.com/mail-1735633689645.png)
 
-## Microsoft Configuration
+## Настройка Microsoft
 
-### Register Account
+### Регистрация учётной записи
 
-1. Go to https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account
+1. Перейдите на https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account
 
-2. Log in to your Microsoft account
+2. Войдите в свою учётную запись Microsoft
 
 ![](https://static-docs.nocobase.com/mail-1733818625779.png)
 
-### Create Tenant
+### Создание клиента (Tenant)
 
-1. Go to https://azure.microsoft.com/zh-cn/pricing/purchase-options/azure-account?icid=azurefreeaccount and log in to your account
+1. Перейдите на https://azure.microsoft.com/zh-cn/pricing/purchase-options/azure-account?icid=azurefreeaccount и войдите в свою учётную запись
 
-2. Fill in basic information and get a verification code
+2. Заполните основную информацию и получите код подтверждения
 
 ![](https://static-docs.nocobase.com/mail-1733818625984.png)
 
-3. Fill in additional information and continue
+3. Заполните дополнительную информацию и продолжите
 
 ![](https://static-docs.nocobase.com/mail-1733818626352.png)
 
-4. Fill in credit card information (you can skip this step for now)
+4. Заполните данные кредитной карты (этот шаг можно пока пропустить)
 
 ![](https://static-docs.nocobase.com/mail-1733818626622.png)
 
-### Get Client ID
+### Получение идентификатора клиента (Client ID)
 
-1. Click the top menu and select "Microsoft Entra ID"
+1. Нажмите верхнее меню и выберите «Microsoft Entra ID»
 
 ![](https://static-docs.nocobase.com/mail-1733818626871.png)
 
-2. Select "App registrations" on the left
+2. В левой части выберите «Регистрация приложений»
 
 ![](https://static-docs.nocobase.com/mail-1733818627097.png)
 
-3. Click "New registration" at the top
+3. Нажмите «Новая регистрация» вверху
 
 ![](https://static-docs.nocobase.com/mail-1733818627309.png)
 
-4. Fill in the information and submit
+4. Заполните информацию и отправьте
 
-You can choose any name, refer to the options shown in the image for account types, and leave the Redirect URI blank for now
+Можно указать любое имя, выберите типы учётных записей, как показано на изображении, пока оставьте поле «URI перенаправления» пустым
 
 ![](https://static-docs.nocobase.com/mail-1733818627555.png)
 
-5. Get the Client ID
+5. Получите идентификатор клиента (Client ID)
 
 ![](https://static-docs.nocobase.com/mail-1733818627797.png)
 
-### API Authorization
+### Авторизация API
 
-1. Open the "API permissions" menu on the right
+1. Откройте меню «Разрешения API» справа
 
 ![](https://static-docs.nocobase.com/mail-1733818628178.png)
 
-2. Click the "Add a permission" button
+2. Нажмите кнопку «Добавить разрешение»
 
 ![](https://static-docs.nocobase.com/mail-1733818628448.png)
 
-3. Click "Microsoft Graph"
+3. Нажмите «Microsoft Graph»
 
 ![](https://static-docs.nocobase.com/mail-1733818628725.png)
 
 ![](https://static-docs.nocobase.com/mail-1733818628927.png)
 
-4. Search and add the following permissions, the final result should look like this
+4. Найдите и добавьте следующие разрешения, итоговый результат должен выглядеть так:
 
     1. `"email"`
     2. `"offline_access"`
     3. `"IMAP.AccessAsUser.All"`
     4. `"SMTP.Send"`
     5. `"offline_access"`
-    6. `"User.Read"` (By default)
+    6. `"User.Read"` (по умолчанию)
 
 ![](https://static-docs.nocobase.com/mail-1733818629130.png)
 
-### Get Secret
+### Получение секрета (Secret)
 
-1. Click "Certificates & secrets" on the left
+1. Нажмите «Сертификаты и секреты» слева
 
 ![](https://static-docs.nocobase.com/mail-1733818629369.png)
 
-2. Click the "New client secret" button
+2. Нажмите кнопку «Новый секрет клиента»
 
 ![](https://static-docs.nocobase.com/mail-1733818629554.png)
 
-3. Fill in the description and expiration time, then click add
+3. Заполните описание и срок действия, затем нажмите «Добавить»
 
 ![](https://static-docs.nocobase.com/mail-1733818630292.png)
 
-4. Get the Secret ID
+4. Скопируйте идентификатор секрета (Secret ID)
 
 ![](https://static-docs.nocobase.com/mail-1733818630535.png)
 
-5. Copy both the Client ID and Client Secret and fill them in the mail configuration page
+5. Скопируйте идентификатор и секрет клиента и введите их на странице настройки почты
 
 ![](https://static-docs.nocobase.com/mail-1733818630710.png)
 
-## FAQ
+## Часто задаваемые вопросы (FAQ)
 
-Q: After Microsoft account authorization login, emails cannot be received normally.
+**Вопрос:** После входа с авторизацией через учётную запись Microsoft электронные письма не приходят.
 
-A: Currently, only Outlook and Gmail accounts are supported for authorized login. Microsoft and Google accounts are not supported. For more information, please refer to: [answers.microsoft.com](https://answers.microsoft.com/zh-hans/outlook_com/forum/all/%E7%8E%B0%E6%9C%89%E5%BE%AE%E8%BD%AF%E8%B4%A6/dba12dda-a7c7-4346-8263-53f4a6d9dc68)
+**Ответ:** В настоящее время для авторизованного входа поддерживаются только учётные записи Outlook и Gmail. Учётные записи Microsoft и Google не поддерживаются. Дополнительную информацию см. по ссылке: [answers.microsoft.com](https://answers.microsoft.com/zh-hans/outlook_com/forum/all/%E7%8E%B0%E6%9C%89%E5%BE%AE%E8%BD%AF%E8%B4%A6/dba12dda-a7c7-4346-8263-53f4a6d9dc68)
 
-**Tip**: If you are unsure whether you have a "true" Outlook.com or Gmail account, try accessing Outlook.com or Gmail.com through the web to see if you can log in and send emails. If not, it means you may not have the corresponding email service, and you need to either sign up for it or use another email service.
+**Совет:** Если вы не уверены, есть ли у вас «настоящая» учётная запись Outlook.com или Gmail, попробуйте войти через веб-интерфейс Outlook.com или Gmail.com и отправить письмо. Если войти не удаётся, возможно, у вас нет соответствующей почтовой службы, и вам нужно либо зарегистрироваться, либо использовать другую службу электронной почты.

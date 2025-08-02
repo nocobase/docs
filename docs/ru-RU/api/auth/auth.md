@@ -1,13 +1,13 @@
-# Auth
+# Аутентификация (Auth)
 
-## Overview
+## Обзор
 
-`Auth` is an abstract class for user authentication types, defining the interfaces required to complete user authentication. To extend new user authentication types, you need to inherit from the `Auth` class and implement its methods. The basic implementation can be referred to as [BaseAuth](./base-auth.md).
+`Auth` - это абстрактный класс для типов аутентификации пользователей, определяющий интерфейсы, необходимые для завершения процесса аутентификации. Для добавления новых типов аутентификации необходимо наследоваться от класса `Auth` и реализовать его методы. Базовую реализацию можно посмотреть в [BaseAuth](./base-auth.md).
 
 ```ts
 interface IAuth {
   user: Model;
-  // Check the authentication status and return the current user.
+  // Проверка статуса аутентификации и возврат текущего пользователя
   check(): Promise<Model>;
   signIn(): Promise<any>;
   signUp(): Promise<any>;
@@ -21,34 +21,34 @@ export abstract class Auth implements IAuth {
 }
 
 class CustomAuth extends Auth {
-  // check: Authentication
+  // check: Аутентификация
   async check() {
     // ...
   }
 }
 ```
 
-## Instance Properties
+## Свойства экземпляра
 
 ### `user`
 
-Information of the authenticated user.
+Информация об аутентифицированном пользователе.
 
-#### Signature
+#### Сигнатура
 
 - `abstract user: Model`
 
-## Class Methods
+## Методы класса
 
 ### `constructor()`
 
-Constructor, creates an instance of `Auth`.
+Конструктор, создает экземпляр `Auth`.
 
-#### Signature
+#### Сигнатура
 
 - `constructor(config: AuthConfig)`
 
-#### Types
+#### Типы
 
 ```ts
 export type AuthConfig = {
@@ -60,44 +60,56 @@ export type AuthConfig = {
 };
 ```
 
-#### Details
+#### Детали
 
 ##### AuthConfig
 
-| Attribute       | Type                                            | Description                                                                                                                 |
-| --------------- | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `authenticator` | [`Authenticator`](./auth-manager#authenticator) | Authenticator data model, the actual type in NocoBase applications is [AuthModel](../../handbook/auth/dev/api.md#authmodel) |
-| `options`       | `Record<string, any>`                           | Authenticator-related configurations                                                                                        |
-| `ctx`           | `Context`                                       | Request context                                                                                                             |
+| Атрибут        | Тип                                              | Описание                                                                                                                 |
+| -------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| `authenticator` | [`Authenticator`](./auth-manager#authenticator)  | Модель аутентификатора, фактический тип в приложениях NocoBase - [AuthModel](../../handbook/auth/dev/api.md#authmodel) |
+| `options`      | `Record<string, any>`                            | Конфигурации, связанные с аутентификатором                                                                             |
+| `ctx`          | `Context`                                        | Контекст запроса                                                                                                       |
 
 ### `check()`
 
-User authentication, returns user information. This is an abstract method that all authentication types must implement.
+Аутентификация пользователя, возвращает информацию о пользователе. Это абстрактный метод, который должны реализовывать все типы аутентификации.
 
-#### Signature
+#### Сигнатура
 
 - `abstract check(): Promise<Model>`
 
 ### `signIn()`
 
-User login.
+Вход пользователя в систему.
 
-#### Signature
+#### Сигнатура
 
 - `signIn(): Promise<any>`
 
 ### `signUp()`
 
-User registration.
+Регистрация пользователя.
 
-#### Signature
+#### Сигнатура
 
 - `signUp(): Promise<any>`
 
 ### `signOut()`
 
-User logout.
+Выход пользователя из системы.
 
-#### Signature
+#### Сигнатура
 
 - `signOut(): Promise<any>`
+
+## Дополнительная информация
+
+Для реализации кастомной аутентификации:
+
+1. Создайте класс, наследующийся от `Auth`
+2. Реализуйте обязательные методы (`check`, `signIn` и др.)
+3. Зарегистрируйте ваш аутентификатор в системе NocoBase
+
+Пример базовой реализации можно найти в документации по [BaseAuth](./base-auth.md).
+
+Все методы возвращают Promise, что позволяет реализовывать асинхронные операции аутентификации (например, проверку через внешние API).

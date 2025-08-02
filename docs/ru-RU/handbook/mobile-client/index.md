@@ -1,17 +1,17 @@
-# Mobile
+# Мобильный
 
 <PluginInfo name="mobile-client"></PluginInfo>
 
-## Introduction
+## Введение
 
-Provides the capability to configure mobile pages.
+Предоставляет возможность настройки мобильных страниц.
 
-## Installation
+## Установка
 
-It's a pre-installed plugin that needs to be activated before use.
+Это предустановленный плагин, который необходимо активировать перед использованием.
 
 ![20240324171718](https://static-docs.nocobase.com/20240324171718.png)
 
-## Usage
+## Использование
 
 ![20240324171605](https://static-docs.nocobase.com/20240324171605.png)

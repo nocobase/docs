@@ -1,25 +1,25 @@
 # BlockProvider
 
-## Kernel Methods
+## Методы ядра
 
-### `<BlockProvider />`
+### `BlockProvider`
 
 ### `useBlockRequestContext()`
 
-## Build-in BlockProvider Components
+## Встроенные компоненты BlockProvider
 
-### `<CalendarBlockProvider />`
+### `CalendarBlockProvider`
 
-### `<TableFieldProvider />`
+### `TableFieldProvider`
 
-### `<TableBlockProvider />`
+### `TableBlockProvider`
 
-### `<TableSelectorProvider />`
+### `TableSelectorProvider`
 
-### `<FormBlockProvider />`
+### `FormBlockProvider`
 
-### `<FormFieldProvider />`
+### `FormFieldProvider`
 
-### `<DetailsBlockProvider />`
+### `DetailsBlockProvider`
 
-### `<KanbanBlockProvider />`
+### `Канбан блок `

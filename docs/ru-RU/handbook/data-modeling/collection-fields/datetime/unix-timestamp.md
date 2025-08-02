@@ -1,8 +1,8 @@
-# Unix timestamp
+# Временная метка Unix
 
-## Introduction
+## Введение
 
-## Field configuration
+## Конфигурация поля
 
 ![20240512180432](https://static-docs.nocobase.com/20240512180432.png)
 

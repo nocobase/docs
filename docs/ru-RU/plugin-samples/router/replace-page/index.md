@@ -1,20 +1,20 @@
-# Replace Page
+# Замена страницы
 
-## Description
+## Описание
 
-Scene where the layout of an existing page needs to be changed or the entire content of the page needs to be replaced.
+Сценарий, при котором необходимо изменить макет существующей страницы или полностью заменить её содержимое.
 
-## Example Description
+## Описание примера
 
-We need to customize the layout of the login and registration pages. Currently, there is only a form, but we want to change it to a left-right layout, with an image on the left and the form on the right.
+Нам нужно настроить макет страниц входа и регистрации. В настоящее время эти страницы содержат только форму, но мы хотим изменить их на макет с двумя колонками: слева — изображение, справа — форма.
 
-You can find the complete example code for this documentation in the [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-replace-page) repository.
+Полный код примера доступен в репозитории [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-replace-page).
 
 ![20240512200917](https://static-docs.nocobase.com/20240512200917.png)
 
-## Initialize the Plugin
+## Инициализация плагина
 
-Following the instructions in the [Writing Your First Plugin](/development/your-fisrt-plugin) documentation, if you don't have a project yet, you can create one. If you already have one or have cloned the source code, you can skip this step.
+Следуйте инструкциям из документации [Создание первого плагина](/development/your-fisrt-plugin). Если у вас нет проекта, создайте его. Если проект уже существует или вы клонировали исходный код, пропустите этот шаг.
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d sqlite
@@ -23,45 +23,45 @@ yarn install
 yarn nocobase install
 ```
 
-Then initialize a plugin and add it to the application:
+Инициализируйте плагин и добавьте его в систему:
 
 ```bash
 yarn pm create @nocobase-sample/plugin-replace-page
 yarn pm enable @nocobase-sample/plugin-replace-page
 ```
 
-Then start the project:
+Запустите проект:
 
 ```bash
 yarn dev
 ```
 
-Then, after logging in, visit [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) to see that the plugin has been installed and enabled.
+После входа в систему перейдите по адресу [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/), чтобы убедиться, что плагин установлен и активирован.
 
-## Function Implementation
+## Реализация функциональности
 
-### 1. Analyzing Requirements and Source Code
+### 1. Анализ требований и исходного кода
 
-The login and registration pages are registered by the [Auth plugin](/handbook/auth/dev/api#route), which registers the following routes:
+Страницы входа и регистрации регистрируются плагином [Auth plugin](/handbook/auth/dev/api#route), который определяет следующие маршруты:
 
-- Auth layout
-  - name: `auth`
-  - path: `-`
-  - component: `AuthLayout`
+- Макет авторизации
+  - имя: `auth`
+  - путь: `-`
+  - компонент: `AuthLayout`
 
-- Sign-in page
-  - name: `auth.signin`
-  - path: `/signin`
-  - component: `SignInPage`
+- Страница входа
+  - имя: `auth.signin`
+  - путь: `/signin`
+  - компонент: `SignInPage`
 
-- Sign-up page
-  - name: `auth.signup`
-  - path: `/signup`
-  - component: `SignUpPage`
+- Страница регистрации
+  - имя: `auth.signup`
+  - путь: `/signup`
+  - компонент: `SignUpPage`
 
-The `AuthLayout` is the layout for the entire login and registration pages. We can achieve custom layout by replacing the `AuthLayout`.
+`AuthLayout` — это макет для страниц входа и регистрации. Мы можем настроить макет, заменив `AuthLayout`.
 
-To understand how to implement this, we need to refer to the source code of the original [AuthLayout](https://github.com/nocobase/nocobase/blob/main/packages/plugins/%40nocobase/plugin-auth/src/client/pages/AuthLayout.tsx).
+Для реализации необходимо изучить исходный код оригинального [AuthLayout](https://github.com/nocobase/nocobase/blob/main/packages/plugins/%40nocobase/plugin-auth/src/client/pages/AuthLayout.tsx):
 
 ```tsx | pure
 export function AuthLayout() {
@@ -95,11 +95,11 @@ export function AuthLayout() {
 }
 ```
 
-The overall source code is relatively simple. What we need to implement is a layout with a left and right side. The left side will contain an image, and the right side will contain the login and registration forms. We can either copy the existing `AuthLayout` and place it on the right side, or directly import the original `AuthLayout` and place an image on the left side.
+Исходный код относительно прост. Нам нужно реализовать макет с двумя сторонами: слева — изображение, справа — формы входа и регистрации. Мы можем либо скопировать существующий `AuthLayout` и разместить его справа, либо импортировать оригинальный `AuthLayout` и добавить изображение слева.
 
-### 2. Implementing Custom AuthLayout Component
+### 2. Реализация пользовательского компонента AuthLayout
 
-We create `packages/plugins/@nocobase-sample/plugin-replace-page/src/client/AuthLayout.tsx` with the following content:
+Создайте файл `packages/plugins/@nocobase-sample/plugin-replace-page/src/client/AuthLayout.tsx` со следующим содержимым:
 
 ```tsx | pure
 import React from 'react';
@@ -154,19 +154,19 @@ export function CustomAuthLayout() {
 }
 ```
 
-Then place the left background image [auth-image.jpg](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-replace-page/src/client/auth-image.jpg) in the `packages/plugins/@nocobase-sample/plugin-replace-page/src/client` directory.
+Поместите изображение для левой части [auth-image.jpg](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-replace-page/src/client/auth-image.jpg) в директорию `packages/plugins/@nocobase-sample/plugin-replace-page/src/client`.
 
-This completes the implementation of a login page with a left and right layout.
+Это завершает реализацию страницы входа с двухколоночным макетом.
 
-### 3. Replacing `AuthLayout` with `CustomAuthLayout`
+### 3. Замена `AuthLayout` на `CustomAuthLayout`
 
-Next, we need to import and use `CustomAuthLayout` in `packages/plugins/@nocobase-sample/plugin-replace-page/src/client/index.tsx`.
+Далее необходимо импортировать и использовать `CustomAuthLayout` в файле `packages/plugins/@nocobase-sample/plugin-replace-page/src/client/index.tsx`.
 
-There are two ways to replace `AuthLayout`: through route override and component override.
+Существует два способа замены `AuthLayout`: через переопределение маршрута и через переопределение компонента.
 
-#### Route Override
+#### Переопределение маршрута
 
-As mentioned earlier, the route name for `AuthLayout` is `auth`. We can override it using routes:
+Как упомянуто ранее, имя маршрута для `AuthLayout` — `auth`. Мы можем переопределить его с помощью маршрутов:
 
 ```ts
 import { Plugin } from '@nocobase/client';
@@ -183,9 +183,9 @@ export class PluginReplacePageClient extends Plugin {
 export default PluginReplacePageClient;
 ```
 
-The first parameter of the `router.add()` method is the name of the route. If it is added repeatedly, it will override the existing route.
+Первый параметр метода `router.add()` — это имя маршрута. Если маршрут добавляется повторно, он перезапишет существующий маршрут.
 
-#### Component Override Method
+#### Переопределение компонента
 
 ```ts
 import { Plugin } from '@nocobase/client';
@@ -198,7 +198,7 @@ export class PluginChangePageClient extends Plugin {
 }
 ```
 
-It should be noted that this method of overriding must be done using *string Component* to register the route. For example, the source code of the [auth plugin](https://github.com/nocobase/nocobase/blob/cff530acac45cc615291c344b4a26c7bc7f410dc/packages/plugins/%40nocobase/plugin-auth/src/client/index.tsx#L47) is as follows:
+Важно отметить, что этот метод переопределения работает только при использовании *строкового компонента* для регистрации маршрута. Например, исходный код [плагина auth](https://github.com/nocobase/nocobase/blob/cff530acac45cc615291c344b4a26c7bc7f410dc/packages/plugins/%40nocobase/plugin-auth/src/client/index.tsx#L47) выглядит следующим образом:
 
 ```ts
 this.app.router.add('auth', {
@@ -208,7 +208,7 @@ this.app.router.add('auth', {
 this.app.addComponents({ AuthLayout })
 ```
 
-If the source code of the `auth` plugin is registered in the following way, it cannot be overridden:
+Если исходный код плагина `auth` зарегистрирован следующим образом, переопределение не сработает:
 
 ```ts
 this.app.router.add('auth', {
@@ -216,24 +216,24 @@ this.app.router.add('auth', {
 })
 ```
 
-Then we log out and visit [http://localhost:13000/signin](http://localhost:13000/signin) to see that the layout of the login page has been changed.
+Выйдите из системы и перейдите по адресу [http://localhost:13000/signin](http://localhost:13000/signin), чтобы увидеть измененный макет страницы входа.
 
 ![20240512200917](https://static-docs.nocobase.com/20240512200917.png)
 
-## Packaging and Uploading to Production Environment
+## Сборка и развертывание в продакшен
 
-According to the documentation on [Building and Packaging Plugins](/development/your-fisrt-plugin#building-and-packaging-plugins), we can package the plugin and upload it to the production environment.
+Следуйте инструкциям из документации [Сборка и упаковка плагинов](/development/your-fisrt-plugin#building-and-packaging-plugins), чтобы упаковать плагин и загрузить его в продакшен.
 
-If you have cloned the source code, you need to perform a full build first to build the dependencies of the plugin as well.
+Для клонированного исходного кода выполните полную сборку, чтобы собрать зависимости плагина:
 
 ```bash
 yarn build
 ```
 
-If you are using `create-nocobase-app` to create your project, you can directly execute:
+Для проекта, созданного с помощью `create-nocobase-app`, выполните:
 
 ```bash
 yarn build @nocobase-sample/plugin-replace-page --tar
 ```
 
-This way, you can see the `storage/tar/@nocobase-sample/plugin-replace-page.tar.gz` file, and then install it using the [upload method](/welcome/getting-started/plugin).
+В результате будет создан файл `storage/tar/@nocobase-sample/plugin-replace-page.tar.gz`, который можно установить с помощью [метода загрузки](/welcome/getting-started/plugin).

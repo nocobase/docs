@@ -1,6 +1,6 @@
 # IModel
 
-The `IModel` interface defines the basic properties and methods of a model object.
+Интерфейс `IModel` определяет основные свойства и методы объекта модели.
 
 ```typescript
 export interface IModel {
@@ -12,4 +12,4 @@ export interface IModel {
 
 ### toJSON()
 
-Converts the model object to JSON format.
+Преобразует объект модели в формат JSON.

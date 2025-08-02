@@ -1,52 +1,52 @@
-# Release Management
+### Управление выпусками
 
-## Introduction
+#### Введение
 
-In real-world applications, to ensure data security and application stability, multiple environments are typically deployed, such as a development environment, a pre-release environment, and a production environment. This document provides examples of two common no-code development processes and explains in detail how to implement release management in NocoBase.
+На практике для обеспечения безопасности данных и стабильности приложения обычно используются несколько сред, например, среда разработки, промежуточная среда (предрелизная) и производственная среда. В этом документе приведены примеры двух распространённых процессов низко- и безкодовой разработки, а также подробно описано, как реализовать управление выпусками в NocoBase.
 
-## Installation
+#### Установка
 
-Three plugins are essential for release management. Please ensure all of the following plugins are activated.
+Для управления выпусками необходимы три плагина. Убедитесь, что все следующие плагины активированы.
 
-### Environment Variables
+##### Переменные окружения
 
-- Built-in plugin, installed and activated by default.
-- Provides centralized configuration and management of environment variables and keys, used for sensitive data storage, reusable configuration data, environment-based isolation, etc. ([View Documentation](environment-variables)).
+- Встроенный плагин, по умолчанию установлен и активирован.
+- Обеспечивает централизованную настройку и управление переменными окружения и ключами, используется для хранения конфиденциальных данных, повторно используемых конфигурационных параметров, изоляции по средам и т.д. ([Просмотреть документацию](environment-variables)).
 
-### Backup Manager
+##### Менеджер резервного копирования
 
-- Available only in the Professional edition or higher ([Learn more](https://www.nocobase.com/en/commercial)).
-- Supports backup and restoration, including scheduled backups, ensuring data security and quick recovery. ([View Documentation](/handbook/backups)).
+- Доступен только в Professional-версии и выше ([Подробнее](https://www.nocobase.com/en/commercial)).
+- Поддерживает создание резервных копий и восстановление, включая расписание резервного копирования, обеспечивая безопасность данных и быстрое восстановление. ([Просмотреть документацию](/handbook/backups)).
 
-### Migration Manager
+##### Менеджер миграций
 
-- Available only in the Professional edition or higher ([Learn more](https://www.nocobase.com/en/commercial)).
-- Used to migrate application configurations from one application environment to another ([View Documentation](/handbook/migration-manager)).
+- Доступен только в Professional-версии и выше ([Подробнее](https://www.nocobase.com/en/commercial)).
+- Используется для переноса конфигураций приложения из одной среды в другую ([Просмотреть документацию](/handbook/migration-manager)).
 
-## Common No-Code Development Processes
+#### Распространённые процессы безкодовой разработки
 
-### Single Development Environment, One-Way Release
+##### Одна среда разработки, односторонний выпуск
 
-This approach suits simple development processes. There is one development environment, one pre-release environment, and one production environment. Changes flow from the development environment to the pre-release environment and are finally deployed to the production environment. In this process, only the development environment can modify configurations—neither the pre-release nor the production environment allows modifications.
+Этот подход подходит для простых процессов разработки. Используются одна среда разработки, одна предрелизная среда и одна производственная среда. Изменения передаются из среды разработки в предрелизную среду, а затем развертываются в производственной среде. В этом процессе конфигурации можно изменять только в среде разработки — в предрелизной и производственной средах изменения запрещены.
 
 ![20250106234710](https://static-docs.nocobase.com/20250106234710.png)
 
-When configuring migration rules, select **“Overwrite”** for built-in tables in the core and plugins if needed; for all others, you can keep the default settings if there are no special requirements.
+При настройке правил миграции, при необходимости, выберите **«Перезаписать»** для встроенных таблиц в ядре и плагинах; для всех остальных можно оставить настройки по умолчанию, если нет особых требований.
 
 ![20250105194845](https://static-docs.nocobase.com/20250105194845.png)
 
-### Multiple Development Environments, Merged Release
+##### Несколько сред разработки, объединённый выпуск
 
-This approach suits multi-person collaboration or complex projects. Several parallel development environments can be used independently, and all changes are merged into a single pre-release environment for testing and verification before being deployed to production. In this process, only the development environment can modify configurations—neither the pre-release nor the production environment allows modifications.
+Этот подход подходит для командной разработки или сложных проектов. Несколько параллельных сред разработки могут использоваться независимо, а все изменения объединяются в одну предрелизную среду для тестирования и проверки, после чего развертываются в производственной среде. В этом процессе конфигурации можно изменять только в средах разработки — в предрелизной и производственной средах изменения запрещены.
 
 ![20250107103829](https://static-docs.nocobase.com/20250107103829.png)
 
-When configuring migration rules, select **“Insert or Update”** for built-in tables in the core and plugins if needed; for all others, you can keep the default settings if there are no special requirements.
+При настройке правил миграции, при необходимости, выберите **«Вставить или обновить»** для встроенных таблиц в ядре и плагинах; для всех остальных можно оставить настройки по умолчанию, если нет особых требований.
 
 ![20250105194942](https://static-docs.nocobase.com/20250105194942.png)
 
-## Rollback
+#### Откат изменений
 
-Before executing a migration, the system automatically creates a backup of the current application. If the migration fails or the results are not as expected, you can roll back and restore via the [Backup Manager](/handbook/backups).
+Перед выполнением миграции система автоматически создаёт резервную копию текущего приложения. Если миграция завершилась с ошибкой или результат не соответствует ожиданиям, вы можете выполнить откат и восстановление с помощью [Менеджера резервного копирования](/handbook/backups).
 
 ![20250105195029](https://static-docs.nocobase.com/20250105195029.png)

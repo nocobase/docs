@@ -1,9 +1,22 @@
-**Type**
+# Тип FindOneOptions
 
 ```typescript
 type FindOneOptions = Omit<FindOptions, 'limit'>;
 ```
 
-**Parameters**
+**Описание параметров**
 
-Most parameters are the same as those in `find()`. The difference is that `findOne()` returns only a single piece of data, so the `limit` parameter is not needed, and the query is always set to `1`.
+Большинство параметров совпадают с параметрами метода `find()`. Основное отличие заключается в том, что `findOne()` возвращает только одну запись, поэтому:
+
+1. Параметр `limit` исключен из типа, так как:
+   - Для `findOne()` всегда подразумевается выбор только одной записи
+   - Лимит автоматически устанавливается в значение `1`
+
+2. Метод всегда возвращает:
+   - Единственный объект данных (если запись найдена)
+   - `null` (если запись не найдена)
+
+**Особенности работы:**
+- Поддерживает все остальные параметры фильтрации и сортировки из `FindOptions`
+- Оптимизирован для поиска единичной записи
+- Автоматически добавляет ограничение `LIMIT 1` в SQL-запрос

@@ -1,71 +1,71 @@
-# Mobile
+# Мобильный плагин
 
 <PluginInfo name="mobile"></PluginInfo>
 
-## Introduction
+## Введение
 
-This plugin facilitates the configuration of mobile pages, leveraging a core framework built on Ant Design Mobile. It offers a variety of extension points and supports the integration of specific desktop blocks.
+Этот плагин упрощает настройку мобильных страниц, используя фреймворк на основе Ant Design Mobile. Он предлагает различные точки расширения и поддерживает интеграцию определённых десктопных блоков.
 
 :::warning
-The older `plugin-mobile-client` has been deprecated. Starting from version v1.3, it is recommended to transition to `plugin-mobile`. These two plugins are incompatible, so the new version will necessitate a complete reconfiguration of mobile settings.
+Старый плагин `plugin-mobile-client` устарел. Начиная с версии v1.3, рекомендуется переходить на `plugin-mobile`. Эти два плагина несовместимы, поэтому новая версия потребует полной перенастройки мобильных параметров.
 :::
 
-## Installation
+## Установка
 
-This plugin comes pre-installed but requires activation to function.
+Этот плагин предустановлен, но требует активации для работы.
 
 ![20240712113500](https://static-docs.nocobase.com/20240712113500.png)
 
-## User Manual
+## Руководство пользователя
 
-### UI Configuration Interface
+### Интерфейс настройки UI
 
-NocoBase provides a specialized UI configuration interface tailored for mobile use.
+NocoBase предоставляет специализированный интерфейс настройки для мобильных устройств.
 
 ![20240828220321](https://static-docs.nocobase.com/20240828220321.png)
 
-### Tab Bar
+### Панель вкладок
 
-Supports the addition of two types: links and pages.
+Поддерживает добавление двух типов: ссылки и страницы.
 
 ![20240828223244](https://static-docs.nocobase.com/20240828223244.png)
 
-### Adding Blocks
+### Добавление блоков
 
-The following desktop blocks can currently be added:
+В настоящее время можно добавлять следующие десктопные блоки:
 
 ![20240828223454](https://static-docs.nocobase.com/20240828223454.png)
 
-### Page Configuration
+### Настройка страниц
 
 ![20240828221452](https://static-docs.nocobase.com/20240828221452.png)
 
-### Page Tabs
+### Вкладки страниц
 
 ![20240828222225](https://static-docs.nocobase.com/20240828222225.png)
 
-### Sub-Pages
+### Подстраницы
 
-On mobile devices, pop-up actions open as sub-pages with swipe-back functionality.
+На мобильных устройствах всплывающие действия открываются как подстраницы с функцией свайпа назад.
 
 <video width="100%" controls>
   <source src="https://static-docs.nocobase.com/20240828222736_rec_.mp4" type="video/mp4">
 </video>
 
-### Filtering
+### Фильтрация
 
-Filtering utilizes a [Popup](https://mobile.ant.design/components/popup) interaction method.
+Для фильтрации используется метод взаимодействия [Popup](https://mobile.ant.design/components/popup).
 
 ![20240828230549](https://static-docs.nocobase.com/20240828230549.png)
 
-### Configure menu access permissions
+### Настройка прав доступа к меню
 
-You can configure menu access permissions just like on the desktop side, as shown below (the mobile plugin must be enabled first):
+Вы можете настроить права доступа к меню так же, как и в десктопной версии (плагин mobile должен быть сначала активирован):
 
 ![20240903221327_rec_](https://static-docs.nocobase.com/20240903221327_rec_.gif)
 
-## Development Guide
+## Руководство разработчика
 
-Currently supported extension points include:
+В настоящее время поддерживаются следующие точки расширения:
 
 ![20240712115610](https://static-docs.nocobase.com/20240712115610.png)

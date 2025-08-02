@@ -1,8 +1,8 @@
-# China Region
+# Регион Китая
 
-## Introduction
+## Введение
 
-## Field configuration
+## Конфигурация поля
 
 ![20240512180305](https://static-docs.nocobase.com/20240512180305.png)
 

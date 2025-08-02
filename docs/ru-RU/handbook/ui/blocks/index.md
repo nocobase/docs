@@ -1,56 +1,61 @@
-# Block
+# Блоки
 
-Blocks are carriers of data and content. They can be placed in a Page, a Modal dialog, or a Drawer, and multiple blocks can be freely dragged and arranged.
+Блоки являются контейнерами для данных и контента. Они могут размещаться на Страницах, в Модальных окнах или Выдвижных панелях, причем несколько блоков можно свободно перетаскивать и компоновать.
 
-## Block Types
+## Типы блоков
 
-![Block Types](https://static-docs.nocobase.com/f71af45b5cd914ea0558f760ddbbba58.png)
+![Типы блоков](https://static-docs.nocobase.com/f71af45b5cd914ea0558f760ddbbba58.png)
 
-- Data Blocks: Used to display data from the data sources on the interface.
-- Filter Blocks: Used to use data from the data sources as filtering criteria for other data blocks.
-- Other Blocks: Used to contain specific or independent content such as workflow tasks, audit logs, Markdown, etc.
+- **Блоки данных**: Используются для отображения данных из источников в интерфейсе.
+- **Блоки фильтров**: Используют данные из источников как критерии фильтрации для других блоков данных.
+- **Прочие блоки**: Содержат специфический или независимый контент (задачи workflow, журналы аудита, Markdown и т.д.).
 
-## Adding Blocks
+## Добавление блоков
 
-Blocks can be placed in a Page, Modal dialog, or Drawer.
+Блоки могут размещаться на Страницах, в Модальных окнах или Выдвижных панелях.
 
-### Blocks in a Page
+### Блоки на странице
 
-Currently, the types of blocks in a page include: Data Blocks, Filter Blocks, and Other Blocks.
+Доступные типы блоков на странице:
+- Блоки данных
+- Блоки фильтров
+- Прочие блоки
 
 ![](https://static-docs.nocobase.com/dad0a394d33dd26f31c3202a76bb0153.png)
 
-### Blocks in a Popup (Modal or Drawer)
+### Блоки во всплывающих окнах (Модальных или Выдвижных)
 
-Popups come in two forms: Modals and Drawers, and, like pages, can also have blocks added to them. The difference is that blocks in popups are generally used for adding, editing, or viewing individual records. The types of blocks include Data Blocks and Other Blocks.
+Всплывающие окна бывают двух видов: Модальные и Выдвижные. Как и страницы, они могут содержать блоки, но обычно используются для добавления, редактирования или просмотра отдельных записей. Доступные типы блоков:
+- Блоки данных
+- Прочие блоки
 
 ![2024-04-10_11-27-04](https://static-docs.nocobase.com/2024-04-10_11-27-04.png)
 
-## Block Designer
+## Конструктор блоков
 
-Every block has three small icons in the upper right corner, from left to right they are:
-
-1. Drag Layout
-2. Quick Add Block
-3. Block Configuration
+Каждый блок имеет три значка в правом верхнем углу (слева направо):
+1. Перетаскивание для изменения расположения
+2. Быстрое добавление блока
+3. Настройка блока
 
 ![](https://static-docs.nocobase.com/b488f3013532a246df59b89c0688a58f.png)
 
-Simple blocks have all their configuration items concentrated in "Block Configuration," such as Markdown.
+Простые блоки (например, Markdown) содержат все настройки в пункте "Настройка блока".
 
 ![](https://static-docs.nocobase.com/f37e277863068b2661f66d4020af806a.png)
 
-Complex data type blocks will also provide separate embedded "Configure Fields" and "Configure Actions".
+Сложные блоки данных дополнительно предоставляют:
+- "Настройка полей"
+- "Настройка действий"
 
 ![](https://static-docs.nocobase.com/71b550da637d23145a5f62d48ee8521b.png)
 
-Besides, there is also the potential for more nested possibilities, such as Chart Blocks.
+Также возможны более сложные вложенные структуры, например в Блоках диаграмм.
 
 ![](https://static-docs.nocobase.com/07588190b3f41ae3060e71d8b76b4447.png)
 
-## Block Layout
+## Компоновка блоков
 
-Multiple blocks can adjust the layout by dragging.
+Расположение нескольких блоков можно изменять перетаскиванием.
 
 ![](https://static-docs.nocobase.com/f6692295ac0917f3babce9a60ce80879.gif)
-

@@ -1,7 +1,7 @@
-# Dynamic Calculation
+# Динамический расчет
 
-<embed src="../../workflow-dynamic-calculation/node.md#L3-L999"></embed>
+<embed src="../../workflow-динамический-расчет/node.md#L3-L999"></embed>
 
-## Related Content
+## Связанный контент
 
-Except for node configuration, there are also some related contents about dynamic calculation that can be further understood through the [plugin documentation](../../workflow-dynamic-calculation/index.md).
+Кроме конфигурации узла, есть также некоторые связанные с динамическими вычислениями материалы, которые можно более подробно изучить в [документации по плагину](../../workflow-dynamic-calculation/index.md).

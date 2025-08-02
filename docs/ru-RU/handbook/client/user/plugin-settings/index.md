@@ -1,10 +1,10 @@
-# Plugin Management
+# Управление плагинами
 
-The Management Center offers users a unified platform to manage and configure system information and work-related settings. It allows users to tailor the system, data table modeling, workflow configuration, and plugin settings to meet their specific business needs and personal preferences.
+Центр управления предоставляет пользователям единую платформу для настройки и управления системной информацией и параметрами рабочих процессов. Он позволяет пользователям адаптировать систему, моделирование таблиц данных, настройку рабочих процессов и параметры плагинов в соответствии с их конкретными бизнес-задачами и личными предпочтениями.
 
-## Overview of the Plugin Management Center
+## Обзор Центра управления плагинами
 
-1. Quick Configuration Items at the Top
-2. List of All Activated Plugin Configurations
-3. Plugin Tabs
-4. Main Content Area
+1. Быстрые настройки в верхней части
+2. Список конфигураций всех активированных плагинов
+3. Вкладки плагинов
+4. Основная область содержимого

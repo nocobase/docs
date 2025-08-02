@@ -1,82 +1,82 @@
-# Overview
+# Обзор
 
-- **Creating the First Plugin**
+- **Создание первого плагина**
   - @my-project/plugin-hello
-- **Tables and Fields**
-  - sample-collection-define
-  - sample-collection-extend
-  - sample-collection-model
-  - sample-collection-repository
-  - sample-collection-template
-  - sample-collection-field-type
-  - sample-collection-field-interface
-- **Resources and Actions**
-  - sample-resource-manager-register-action-handlers
-  - sample-resource-manager-define
-  - sample-resource-manager-actions
-- **Database Usage**
-  - sample-db-registerFieldTypes
-  - sample-db-registerModels
-  - sample-db-registerRepositories
-  - sample-db-registerOperators
-  - sample-db-repository
-- **Custom Command Line**
-  - sample-cli-create-command
-- **Migration Scripts**
-  - sample-migration-create-migration
-- **Caching**
-  - sample-cache-register-store
-  - sample-cache-create-cache
-- **Server Middleware**
-  - sample-middleware-ratelimit
-- **Data Source Extensions**
-  - sample-data-source-nocobase-api
-- **Chart Extensions**
-  - sample-dv-echarts
-- **Internationalization**
-  - sample-i18n-zh-cn
-- **Frontend Routing Extensions**
-  - Add a New Page
-  - Replace an Existing Page
-  - Plugin Configuration Page (Single Route)
-  - Plugin Configuration Page (Tabbed Layout)
-  - Plugin Configuration Page (Different Layouts)
-- **Plugin Configuration Pages**
-  - Form Configuration Page
-  - Table Configuration Page
-  - Polymorphic Table Configuration Page
-- **Provider Components**
-  - Global Announcement Bar
-- **Component Extensions**
-- **Schema Initializer**
-  - Add initialization items to existing Add blocks
-  - Add initialization items to existing Configure actions
-  - Add initialization items to existing Configure fields
-  - Reuse existing SchemaInitializerItem
-    - Directly add a block
-      - Add after configuring a pop-up (such as a calendar)
-  - Create new initializers
-    - Simple button and dropdown menu
-- **Schema Settings**
-  - Add initialization items to existing Settings
-  - Reuse existing SchemaSettingsItem
-  - Create new settings
-- **Block Extensions**
-  - Simple Block Example - Gallery Image Carousel Block
-    - Block component development
-    - Initializer item
-    - Block Settings
-  - Embedded Block Initializer
-    - Configure operations
-    - Configure fields
-    - Custom initializer
-- **Operation Extensions**
-  - Command-based operations
-  - Pop-up-based operations
-- **Field Extensions**
-  - Custom Field Interface Type
-  - Custom Field Data Type
-  - Field Component Development
+- **Таблицы и поля**
+  - Определение коллекции (sample-collection-define)
+  - Расширение коллекции (sample-collection-extend)
+  - Модель коллекции (sample-collection-model)
+  - Репозиторий коллекции (sample-collection-repository)
+  - Шаблон коллекции (sample-collection-template)
+  - Тип поля коллекции (sample-collection-field-type)
+  - Интерфейс поля коллекции (sample-collection-field-interface)
+- **Ресурсы и действия**
+  - Регистрация обработчиков действий для менеджера ресурсов (sample-resource-manager-register-action-handlers)
+  - Определение менеджера ресурсов (sample-resource-manager-define)
+  - Действия менеджера ресурсов (sample-resource-manager-actions)
+- **Использование базы данных**
+  - Регистрация типов полей для базы данных (sample-db-registerFieldTypes)
+  - Регистрация моделей для базы данных (sample-db-registerModels)
+  - Регистрация репозиториев для базы данных (sample-db-registerRepositories)
+  - Регистрация операторов для базы данных (sample-db-registerOperators)
+  - Репозиторий базы данных (sample-db-repository)
+- **Пользовательская командная строка**
+  - Создание команды (sample-cli-create-command)
+- **Скрипты миграции**
+  - Создание миграции (sample-migration-create-migration)
+- **Кэширование**
+  - Регистрация хранилища кэша (sample-cache-register-store)
+  - Создание кэша (sample-cache-create-cache)
+- **Промежуточное ПО сервера**
+  - Ограничение скорости (sample-middleware-ratelimit)
+- **Расширения источников данных**
+  - API NocoBase для источника данных (sample-data-source-nocobase-api)
+- **Расширения для графиков**
+  - ECharts для визуализации данных (sample-dv-echarts)
+- **Интернационализация**
+  - Поддержка китайского языка (sample-i18n-zh-cn)
+- **Расширения маршрутизации фронтенда**
+  - Добавление новой страницы
+  - Замена существующей страницы
+  - Страница конфигурации плагина (одиночный маршрут)
+  - Страница конфигурации плагина (вкладочный макет)
+  - Страница конфигурации плагина (различные макеты)
+- **Страницы конфигурации плагина**
+  - Страница конфигурации формы
+  - Страница конфигурации таблицы
+  - Страница конфигурации полиморфной таблицы
+- **Компоненты-провайдеры**
+  - Глобальная панель объявлений
+- **Расширения компонентов**
+- **Инициализатор схемы**
+  - Добавление элементов инициализации в существующие блоки добавления
+  - Добавление элементов инициализации в существующие действия настройки
+  - Добавление элементов инициализации в существующие поля настройки
+  - Повторное использование существующего элемента SchemaInitializerItem
+    - Прямое добавление блока
+      - Добавление после настройки всплывающего окна (например, календаря)
+  - Создание новых инициализаторов
+    - Простая кнопка и выпадающее меню
+- **Настройки схемы**
+  - Добавление элементов инициализации в существующие настройки
+  - Повторное использование существующего элемента SchemaSettingsItem
+  - Создание новых настроек
+- **Расширения блоков**
+  - Пример простого блока — блок карусели изображений галереи
+    - Разработка компонента блока
+    - Элемент инициализатора
+    - Настройки блока
+  - Встроенный инициализатор блока
+    - Настройка операций
+    - Настройка полей
+    - Пользовательский инициализатор
+- **Расширения операций**
+  - Операции на основе команд
+  - Операции на основе всплывающих окон
+- **Расширения полей**
+  - Пользовательский тип интерфейса поля
+  - Пользовательский тип данных поля
+  - Разработка компонента поля
     - connect + mapReadPretty
     - observer + mapReadPretty
-  - Provide Setters for Fields
+  - Предоставление установщиков для полей

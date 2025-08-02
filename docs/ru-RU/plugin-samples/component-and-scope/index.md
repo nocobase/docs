@@ -1,14 +1,14 @@
-# Registration and Usage of Component and Scope
+# Регистрация и использование компонентов и областей видимости
 
-## Scenario Explanation
+## Описание сценария
 
-There are two main reasons why Components and Scopes need to be registered:
+Существует две основные причины, по которым необходимо регистрировать компоненты и области видимости:
 
-### Reason 1: UI Schema Needs to Be Stored on the Server
+### Причина 1: UI Schema должен храниться на сервере
 
-NocoBase’s front-end pages are rendered based on the [UI Schema](/development/client/ui-schema/what-is-ui-schema), which must be stored in the database. Since the UI Schema cannot have reference-type properties, we can only store the values of properties like `x-component`, `x-decorator`, `x-use-component-props`, and `x-use-decorator-props` as strings. Then, we register the corresponding Component and Scope in NocoBase so that during page rendering, the system can match the stored strings to the appropriate Component and Scope.
+Страницы фронтенда NocoBase рендерятся на основе [UI Schema](/development/client/ui-schema/what-is-ui-schema), который должен сохраняться в базе данных. Поскольку UI Schema не может содержать свойства ссылочного типа, такие свойства, как `x-component`, `x-decorator`, `x-use-component-props` и `x-use-decorator-props`, могут храниться только в виде строк. Затем соответствующие компоненты и области видимости регистрируются в NocoBase, чтобы при рендеринге страницы система могла сопоставить сохранённые строки с соответствующими компонентами и областями видимости.
 
-In contrast, for UI Schemas that do not need to be stored in the database, we can directly use reference-type properties. For example, in the locally developed [plugin configuration page](/plugin-samples/plugin-settings/form), properties like `x-component` and `x-use-component-props` can use reference-type values directly.
+В отличие от этого, для UI Schema, которые не нужно сохранять в базе данных, можно напрямую использовать свойства ссылочного типа. Например, на локально разработанной [странице настроек плагина](/plugin-samples/plugin-settings/form) свойства, такие как `x-component` и `x-use-component-props`, могут напрямую использовать значения ссылочного типа.
 
 ```ts
 const schema: ISchema = {
@@ -19,9 +19,9 @@ const schema: ISchema = {
 }
 ```
 
-### Reason 2: Extensibility Needs
+### Причина 2: Потребности в расширяемости
 
-Components can be used both in the UI Schema and in routing. In both cases, it may be necessary to override certain components to achieve customization. For example:
+Компоненты могут использоваться как в UI Schema, так и в маршрутизации. В обоих случаях может потребоваться переопределение определённых компонентов для достижения кастомизации. Например:
 
 ```ts
 class AuthPlugin extends Plugin {
@@ -35,9 +35,9 @@ class AuthPlugin extends Plugin {
 }
 ```
 
-If someone needs to replace the login page, there are two options:
+Если кому-то нужно заменить страницу входа, доступны два варианта:
 
-#### Option 1: Replace the Route
+#### Вариант 1: Замена маршрута
 
 ```ts
 class CustomPlugin extends Plugin {
@@ -50,7 +50,7 @@ class CustomPlugin extends Plugin {
 }
 ```
 
-#### Option 2: Directly Replace the Component
+#### Вариант 2: Прямая замена компонента
 
 ```ts
 class CustomPlugin extends Plugin {
@@ -60,15 +60,15 @@ class CustomPlugin extends Plugin {
 }
 ```
 
-In summary, if it's not one of these two scenarios, there's no need to register the Component and Scope, and you can directly use reference-type properties instead.
+В итоге, если речь не идёт об одном из этих двух сценариев, нет необходимости регистрировать компоненты и области видимости, и вместо этого можно напрямую использовать свойства ссылочного типа.
 
-## Global Registration and Local Registration
+## Глобальная и локальная регистрация
 
-Components and Scopes can be registered globally or locally.
+Компоненты и области видимости могут быть зарегистрированы глобально или локально.
 
-### Global Registration
+### Глобальная регистрация
 
-For global registration, use the methods [app.addComponents()](https://client.docs.nocobase.com/core/application/application#appaddcomponents) and [app.addScopes()](https://client.docs.nocobase.com/core/application/application#appaddscopes). For example:
+Для глобальной регистрации используются методы [app.addComponents()](https://client.docs.nocobase.com/core/application/application#appaddcomponents) и [app.addScopes()](https://client.docs.nocobase.com/core/application/application#appaddscopes). Например:
 
 ```ts
 class MyPlugin extends Plugin {
@@ -79,9 +79,9 @@ class MyPlugin extends Plugin {
 }
 ```
 
-### Local Registration
+### Локальная регистрация
 
-For local registration, use the `components` and `scope` properties of the [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponent-1) and [SchemaComponentOptions](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponentoptions) components. For example:
+Для локальной регистрации используются свойства `components` и `scope` компонентов [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponent-1) и [SchemaComponentOptions](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponentoptions). Например:
 
 ```tsx | pure
 <SchemaComponentProvider components={{ Hello }} scope={{ useDeleteProps }}>
@@ -89,11 +89,11 @@ For local registration, use the `components` and `scope` properties of the [Sche
 </SchemaComponentProvider>
 ```
 
-`SchemaComponentProvider` can be nested multiple layers deep, and inner `SchemaComponent` elements will inherit the `components` and `scope` from outer layers.
+`SchemaComponentProvider` может быть вложен на несколько уровней, и внутренние элементы `SchemaComponent` наследуют `components` и `scope` из внешних уровней.
 
-For the scenarios mentioned, we provide the following examples:
+Для описанных сценариев мы предоставляем следующие примеры:
 
-- [Global Registration of Component and Scope](/plugin-samples/component-and-scope/global)
-- [Local Registration of Component and Scope](/plugin-samples/component-and-scope/local)
+- [Глобальная регистрация компонента и области видимости](/plugin-samples/component-and-scope/global)
+- [Локальная регистрация компонента и области видимости](/plugin-samples/component-and-scope/local)
 
-For the customization scenario, refer to the routing example [Replace Page](/plugin-samples/router/replace-page).
+Для сценария кастомизации обратитесь к примеру маршрутизации [Замена страницы](/plugin-samples/router/replace-page).

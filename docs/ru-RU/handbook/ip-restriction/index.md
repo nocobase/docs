@@ -1,48 +1,48 @@
-# IP Restrictions
+# Ограничение по IP-адресам
 
 <PluginInfo licenseBundled="true" name="ip-restriction"></PluginInfo>
 
-## Introduction
+## Введение
 
-NocoBase allows administrators to set up whitelists or blacklists for user access IPs to restrict unauthorized external network connections or block known malicious IP addresses, thereby reducing security risks. It also supports administrators in querying access denial logs to identify risky IPs.
+NocoBase позволяет администраторам настраивать белые и чёрные списки IP-адресов пользователей, чтобы ограничить несанкционированные внешние подключения или блокировать известные вредоносные IP-адреса, тем самым снижая риски безопасности. Также поддерживается просмотр журналов отказов в доступе для выявления подозрительных IP-адресов.
 
-## Configuration Rules
+## Настройка правил
 
 ![2025-01-23-10-07-34-20250123100733](https://static-docs.nocobase.com/2025-01-23-10-07-34-20250123100733.png)
 
-### IP Filtering Modes
+### Режимы фильтрации по IP
 
-- **Blacklist**: When a user's access IP matches an IP in the list, the system will **deny** access; unmatched IPs are **allowed** by default.
-- **Whitelist**: When a user's access IP matches an IP in the list, the system will **allow** access; unmatched IPs are **denied** by default.
+- **Чёрный список**: если IP-адрес пользователя совпадает с адресом из списка, система **запрещает** доступ; все остальные IP-адреса по умолчанию **разрешены**.
+- **Белый список**: если IP-адрес пользователя совпадает с адресом из списка, система **разрешает** доступ; все остальные IP-адреса по умолчанию **запрещены**.
 
-### IP List
+### Список IP-адресов
 
-Used to define IP addresses that are allowed or denied access to the system. Its specific function depends on the selected IP filtering mode. Supports input of IP addresses or CIDR network segments, with multiple addresses separated by commas or line breaks.
+Используется для определения IP-адресов, которым разрешён или запрещён доступ к системе. Его функция зависит от выбранного режима фильтрации. Поддерживается ввод как отдельных IP-адресов, так и CIDR-сетей. Несколько адресов можно разделять запятыми или переносами строк.
 
-## Query Logs
+## Просмотр журналов
 
-After a user is denied access, the access IP is written to the system logs, and the corresponding log file can be downloaded for analysis.
+После отказа в доступе IP-адрес пользователя записывается в системный журнал, и соответствующий файл журнала можно скачать для анализа.
 
 ![2025-01-17-13-33-51-20250117133351](https://static-docs.nocobase.com/2025-01-17-13-33-51-20250117133351.png)
 
-Log Example:
+Пример записи в журнале:
 
 ![2025-01-14-14-42-06-20250114144205](https://static-docs.nocobase.com/2025-01-14-14-42-06-20250114144205.png)
 
-## Configuration Recommendations
+## Рекомендации по настройке
 
-### Blacklist Mode Recommendations
+### Рекомендации для режима чёрного списка
 
-- Add known malicious IP addresses to prevent potential network attacks.
-- Regularly check and update the blacklist, removing invalid or no longer needed IP addresses.
+- Добавляйте известные вредоносные IP-адреса, чтобы предотвратить возможные сетевые атаки.
+- Регулярно проверяйте и обновляйте чёрный список, удаляя устаревшие или ненужные IP-адреса.
 
-### Whitelist Mode Recommendations
+### Рекомендации для режима белого списка
 
-- Add trusted internal network IP addresses (such as office network segments) to ensure secure access to core systems.
-- Avoid including dynamically assigned IP addresses in the whitelist to prevent access interruptions.
+- Добавляйте доверенные внутренние IP-адреса (например, офисные сетевые сегменты), чтобы обеспечить безопасный доступ к критически важным системам.
+- Избегайте включения в белый список динамически выделяемых IP-адресов, чтобы предотвратить перебои в доступе.
 
-### General Recommendations
+### Общие рекомендации
 
-- Use CIDR network segments to simplify configuration, such as using 192.168.0.0/24 instead of adding individual IP addresses.
-- Regularly back up IP list configurations to quickly recover from misoperations or system failures.
-- Regularly monitor access logs to identify abnormal IPs and adjust the blacklist or whitelist promptly.
+- Используйте CIDR-сети для упрощения настройки, например, вместо добавления отдельных IP-адресов укажите сеть `192.168.0.0/24`.
+- Регулярно создавайте резервные копии конфигурации списка IP-адресов, чтобы быстро восстановиться после ошибок или сбоев системы.
+- Регулярно отслеживайте журналы доступа, выявляйте подозрительные IP-адреса и своевременно корректируйте чёрный или белый список.

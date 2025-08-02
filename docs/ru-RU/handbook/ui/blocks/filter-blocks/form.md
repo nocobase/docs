@@ -1,60 +1,60 @@
-# Form Filter Block
+### **Блок фильтрации формы**
 
-## Introduction
+#### **Введение**
 
-The Form filter block can be connected with the data block. Once connected, it can provide filtering capabilities.
+Блок фильтрации формы может быть подключён к блоку данных. После подключения он предоставляет возможность фильтрации.
 
-## Adding Block
+#### **Добавление блока**
 
-  <video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240426172722.mp4" type="video/mp4">
-    </video>
+<video width="100%" height="440" controls>
+  <source src="https://static-docs.nocobase.com/20240426172722.mp4" type="video/mp4">
+</video>
 
-## Block Settings
+#### **Настройки блока**
 
 ![20240421172115](https://static-docs.nocobase.com/20240421172115.png)
 
-### Connect to Data Block
+##### **Подключение к блоку данных**
 
-Example: The Form filter block connects to the details data block to implement linkage.
+Пример: блок фильтрации формы подключается к блоку детализации данных для реализации связывания.
 
-  <video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240421170947.mp4" type="video/mp4">
-    </video>
+<video width="100%" height="440" controls>
+  <source src="https://static-docs.nocobase.com/20240421170947.mp4" type="video/mp4">
+</video>
 
-For more content, refer to [Connect to Data Block](/handbook/ui/blocks/block-settings/connect-block)
+Более подробно см. в разделе [Подключение к блоку данных](/handbook/ui/blocks/block-settings/connect-block)
 
-- [Edit Block Title](/handbook/ui/blocks/block-settings/block-title)
-- [Linkage Rules](/handbook/ui/blocks/block-settings/field-linkage-rule)
-- [Save as Block Template](/handbook/block-template)
+- [Редактировать заголовок блока](/handbook/ui/blocks/block-settings/block-title)
+- [Правила связывания](/handbook/ui/blocks/block-settings/field-linkage-rule)
+- [Сохранить как шаблон блока](/handbook/block-template)
 
-## Field Configuration
+#### **Настройка полей**
 
-### Fields in This Collection
+##### **Поля в текущей коллекции**
 
 ![20240421171135](https://static-docs.nocobase.com/20240421171135.png)
 
-### Fields in Related Collections
-> In version v1.3.14-beta and above, it supports configuring "many-to-many" and "one-to-many" relationship fields.
+##### **Поля в связанных коллекциях**
+> Начиная с версии v1.3.14-beta поддерживаются настройки полей связей «многие ко многим» и «один ко многим».
 
-Supports using the fields of the related collections as filtering conditions
+Поддерживается использование полей связанных коллекций в качестве условий фильтрации.
 
-Example: The order collection has a many-to-one relationship field "Customer", filter the orders by customer name and phone number as filtering conditions
+**Пример:** Коллекция «Заказы» имеет поле связи «многие к одному» — «Клиент». Фильтрация заказов осуществляется по имени и номеру телефона клиента.
 
 <video width="100%" height="440" controls>
-<source src="https://static-docs.nocobase.com/20240421171437.mp4" type="video/mp4">
+  <source src="https://static-docs.nocobase.com/20240421171437.mp4" type="video/mp4">
 </video>
 
-### Setting Default Values for Fields
+##### **Установка значений по умолчанию для полей**
 
-Like a normal [Form Block](/handbook/ui/blocks/data-blocks/form), you can set default values for normal fields and relationship fields. **When a field has a default value, a filtering operation will be automatically triggered at the first rendering of the page, so that the data block connected with it can display the matching data.**
+Как и в обычном [блоке формы](/handbook/ui/blocks/data-blocks/form), можно задавать значения по умолчанию для обычных и связанных полей. **Если поле имеет значение по умолчанию, при первой загрузке страницы автоматически запускается операция фильтрации, и подключённый блок данных отображает соответствующие данные.**
 
-## Configuration Operations
+#### **Настройка операций**
 
-![Filter Operations](https://static-docs.nocobase.com/20240421171839.png)
+![Операции фильтрации](https://static-docs.nocobase.com/20240421171839.png)
 
-### Reset button
+##### **Кнопка «Сбросить»**
 
-By default, clicking the "Reset" button will preserve the default values of the fields. If you want to clear the default values of the fields, you can open the configuration options and enable the "Clear Default Values" option.
+По умолчанию при нажатии кнопки «Сбросить» значения по умолчанию полей сохраняются. Если требуется очистить и значения по умолчанию, можно открыть параметры настройки и включить опцию «Очистить значения по умолчанию».
 
 ![20240716183611](https://static-docs.nocobase.com/20240716183611.png)

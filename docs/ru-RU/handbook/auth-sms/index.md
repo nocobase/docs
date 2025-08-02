@@ -1,31 +1,32 @@
-# Auth: SMS
+# Аутентификация по SMS
 
-## Introduction
+## Введение
 
-The SMS authentication plugin supports users to register through SMS and log in to NocoBase.
+Плагин SMS-аутентификации позволяет пользователям регистрироваться и входить в NocoBase с помощью SMS.
 
-> It needs to be used in conjunction with the SMS verification code function provided by the [`@nocobase/plugin-verification` plugin](../verification/index.md)
+> Требуется интеграция с функцией SMS-верификации из плагина [`@nocobase/plugin-verification`](../verification/index.md)
 
-## Add SMS Authentication
+## Добавление SMS-аутентификации
 
-Enter the user authentication plugin management page.
+1. Перейдите в раздел управления плагинами аутентификации:
 
 ![](../auth-oidc/static/2023-12-03-18-19-33.png)
 
-Add - SMS
+2. Выберите "Добавить - SMS":
 
 ![](https://static-docs.nocobase.com/29c8916492fd5e1564a872b31ad3ac0d.png)
 
-## Configuration
+## Настройка
 
 ![](https://static-docs.nocobase.com/a4d35ec63ba22ae2ea9e3e8e1cbb783d.png)
 
-For the configuration of the SMS verification code function, see the [Verification Plugin (@nocobase/plugin-verification) Documentation](../verification/index.md), the SMS login authentication function will use the configured and set default SMS verification code Provider to send SMS.
+Для настройки SMS-верификации обратитесь к [документации плагина Verification](../verification/index.md). Для отправки SMS будет использоваться провайдер, заданный по умолчанию.
 
-Sign up automatically when the user does not exist: When this option is checked, when the user's mobile phone number does not exist, a new user will be registered using the mobile phone number as the nickname.
+**Автоматическая регистрация новых пользователей:**  
+При включении этой опции, если номер телефона не найден в системе, будет автоматически создан новый пользователь с номером телефона в качестве никнейма.
 
-## Log In
+## Процесс входа
 
-Visit the login page to use.
+Доступно на странице входа в систему:
 
 ![](https://static-docs.nocobase.com/8d630739201bc27d8b0de076ab4f75e2.png)

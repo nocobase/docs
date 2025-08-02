@@ -1,3 +1,3 @@
 ## BelongsToRepository
 
-The interface is the same as [HasOneRepository](./has-one-repository.md). `BelongsToRepository` is the `Repository` for handling `BelongsTo` relationships, and it provides some convenient methods to handle `BelongsTo` relationships.
+Интерфейс такой же, как у [HasOneRepository](./has-one-repository.md). `BelongsToRepository` - это хранилище для обработки отношений `belongsTo`, и оно предоставляет несколько удобных методов для обработки отношений `belongsTo`.

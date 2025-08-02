@@ -1,12 +1,12 @@
-# Overview
+# Обзор
 
-While the built-in features of workflows are robust, they may not cover every possible scenario. For instance, the default node types might not accommodate all the operations required in diverse business contexts. To address these gaps, we offer an extension framework for workflows, enabling you to expand trigger types and node functionalities. When the built-in features fall short, these extensions allow you to customize solutions using low-code techniques.
+Хотя встроенные функции рабочих процессов являются мощными, они могут не охватывать все возможные сценарии. Например, стандартные типы узлов могут не удовлетворять всем операциям, необходимым в разнообразных бизнес-контекстах. Чтобы устранить эти пробелы, мы предлагаем расширяемую платформу для рабочих процессов, позволяющую добавлять новые типы триггеров и расширять функциональность узлов. Когда встроенных возможностей недостаточно, такие расширения позволяют создавать кастомные решения с использованием подходов низкого кода (low-code).
 
-These extensions are categorized into two main areas:
+Эти расширения делятся на две основные категории:
 
-- [Extend Trigger Types](./trigger.md)
-- [Extend Node Types](./instruction.md)
+- [Расширение типов триггеров](./trigger.md)
+- [Расширение типов узлов](./instruction.md)
 
-## Additional Resources
+## Дополнительные материалы
 
-- [API Reference](./api.md)
+- [Справочник API](./api.md)

@@ -1,204 +1,173 @@
-# Variables and secrets
+# Переменные и секреты
 
-<PluginInfo name="environment-variables"></PluginInfo>
+## Введение
 
-## Introduction
+Центральное управление и настройка переменных среды и секретов для безопасного хранения конфиденциальных данных, повторного использования конфигурационных данных и изоляции конфигураций сред.
 
-Centralized configuration and management of environment variables and secrets for sensitive data storage, configuration data reuse, and environment configuration isolation.
+## Отличия от `.env`
 
-## Differences from `.env`
+| Характеристика               | Файл `.env`                                      | Динамические переменные среды                   |
+|-----------------------------|--------------------------------------------------|------------------------------------------------|
+| Место хранения              | Хранится в файле `.env` в корневой директории проекта | Хранится в таблице `environmentVariables` в базе данных |
+| Метод загрузки              | Загружается в `process.env` с помощью инструментов, таких как `dotenv`, при запуске приложения | Динамически считывается и загружается в `app.environment` при запуске приложения |
+| Метод изменения             | Требует прямого редактирования файла; приложение необходимо перезапустить, чтобы изменения вступили в силу | Поддерживает изменение во время выполнения; изменения вступают в силу немедленно после перезагрузки конфигурации приложения |
+| Изоляция сред               | Для каждой среды (разработка, тестирование, продакшн) требуется отдельное ведение файлов `.env` | Для каждой среды требуется отдельное ведение данных в таблице `environmentVariables` |
+| Применимые сценарии         | Подходит для фиксированных статических конфигураций, например, основной информации о базе данных приложения | Подходит для динамических конфигураций, требующих частой настройки или связанных с бизнес-логикой, например, внешние базы данных, информация о хранилище файлов и т.д. |
 
-| **Feature**                | **`.env` File**                 | **Dynamic Configuration Environment Variables**                              |
-|-----------------------|--------------------------------|-------------------------------------|
-| **Storage Location**             | Stored in the `.env` file in the project root directory   | Stored in the `environmentVariables` table in the database |
-| **Loading Method**             | Loaded into `process.env` using tools like `dotenv` during application startup  | Dynamically read and loaded into `app.environment` during application startup  |
-| **Modification Method**             | Requires direct file editing, and the application needs to be restarted for changes to take effect              | Supports runtime modification, changes take effect immediately after reloading the application configuration     |
-| **Environment Isolation**             | Each environment (development, testing, production) requires separate maintenance of `.env` files      | Each environment (development, testing, production) requires separate maintenance of data in the `environmentVariables` table  |
-| **Applicable Scenarios**             | Suitable for fixed static configurations, such as main database information for the application                   | Suitable for dynamic configurations that require frequent adjustments or are tied to business logic, such as external databases, file storage information, etc.    |
+## Установка
 
-## Installation
+Встроенный плагин — отдельная установка не требуется.
 
-Built-in plugin, no separate installation required.
+## Использование
 
-## Usage
+### Повторное использование конфигурационных данных
 
-### Configuration Data Reuse
+Например, если в нескольких местах рабочего процесса требуются узлы электронной почты и настройка SMTP, общую конфигурацию SMTP можно сохранить в переменных среды.
 
-For example, if multiple places in the workflow require email nodes and SMTP configuration, the common SMTP configuration can be stored in environment variables.
+https://static-docs.nocobase.com/20250102181045.png
 
-![20250102181045](https://static-docs.nocobase.com/20250102181045.png)
+### Хранение конфиденциальных данных
 
-### Sensitive Data Storage
+Хранение различных конфигурационных данных внешних баз данных, ключей облачного хранилища файлов и т.д.
 
-Storage of various external database configuration information, cloud file storage keys, etc.
+https://static-docs.nocobase.com/20250102103513.png
 
-![20250102103513](https://static-docs.nocobase.com/20250102103513.png)
+### Изоляция конфигурации сред
 
-### Environment Configuration Isolation
+В различных средах, таких как разработка, тестирование и продакшн, используются независимые стратегии управления конфигурацией, чтобы гарантировать, что конфигурации и данные каждой среды не мешают друг другу. Каждая среда имеет свои собственные независимые настройки, переменные и ресурсы, что предотвращает конфликты между средами разработки, тестирования и продакшна и обеспечивает ожидаемую работу системы в каждой среде.
 
-In different environments such as development, testing, and production, independent configuration management strategies are used to ensure that the configurations and data of each environment do not interfere with each other. Each environment has its own independent settings, variables, and resources, which avoids conflicts between development, testing, and production environments and ensures that the system runs as expected in each environment.
+Например, конфигурация служб хранения файлов может отличаться между средами разработки и продакшна, как показано ниже:
 
-For example, the configuration for file storage services may differ between development and production environments, as shown below:
-
-Development Environment
-
-```bash
+**Среда разработки**
+```
 FILE_STORAGE_OSS_BASE_URL=dev-storage.nocobase.com
 FILE_STORAGE_OSS_BUCKET=dev-storage
 ```
 
-Production Environment
-
-```bash
+**Продакшн-среда**
+```
 FILE_STORAGE_OSS_BASE_URL=prod-storage.nocobase.com
 FILE_STORAGE_OSS_BUCKET=prod-storage
 ```
 
-## Environment Variable Management
+## Управление переменными среды
 
-![20250102155314](https://static-docs.nocobase.com/20250102155314.png)
+https://static-docs.nocobase.com/20250102155314.png
 
-### Adding Environment Variables
+### Добавление переменных среды
 
-- Supports single and batch addition
-- Supports plaintext and encrypted storage
+Поддерживает добавление как по одной, так и пакетное.
 
-![20250102155509](https://static-docs.nocobase.com/20250102155509.png)
+Поддерживает хранение в виде обычного текста и зашифрованного.
 
-Single Addition
+https://static-docs.nocobase.com/20250102155509.png
 
-![20250102155731](https://static-docs.nocobase.com/20250102155731.png)
+#### Добавление одной переменной
 
-Batch Addition
+https://static-docs.nocobase.com/20250102155731.png
 
-![20250102155258](https://static-docs.nocobase.com/20250102155258.png)
+#### Пакетное добавление
 
-## Notes
+https://static-docs.nocobase.com/20250102155258.png
 
-### Restarting the Application
+## Примечания
 
-After modifying or deleting environment variables, a prompt to restart the application will appear at the top. Changes to environment variables will only take effect after the application is restarted.
+### Перезапуск приложения
 
-![20250102155007](https://static-docs.nocobase.com/20250102155007.png)
+После изменения или удаления переменных среды в верхней части появится подсказка о необходимости перезапуска приложения. Изменения переменных среды вступят в силу только после перезапуска приложения.
 
-### Encrypted Storage
+https://static-docs.nocobase.com/20250102155007.png
 
-Encrypted data for environment variables uses AES symmetric encryption. The PRIVATE KEY for encryption and decryption is stored in the storage directory. Please keep it safe; if lost or overwritten, the encrypted data cannot be decrypted.
+### Зашифрованное хранение
 
-```bash
-./storage/environment-variables/<app-name>/aes_key.dat
+Для переменных среды с зашифрованными данными используется симметричное шифрование AES. Ключ шифрования и расшифровки (PRIVATE KEY) хранится в директории хранилища. Пожалуйста, храните его в безопасности; если он будет утерян или перезаписан, зашифрованные данные не смогут быть расшифрованы.
+
+```
+./storage/environment-variables/<имя_приложения>/aes_key.dat
 ```
 
-## Currently Supported Plugins for Environment Variables
+## Поддерживаемые в настоящее время плагины для переменных среды
 
-### Action: Custom Request
+- **Действие: Произвольный запрос**  
+  https://static-docs.nocobase.com/20250102180751.png
 
-![20250102180751](https://static-docs.nocobase.com/20250102180751.png)
+- **Аутентификация: CAS**  
+  https://static-docs.nocobase.com/20250102160129.png
 
-### Auth: CAS
+- **Аутентификация: DingTalk**  
+  https://static-docs.nocobase.com/20250102160205.png
 
-![20250102160129](https://static-docs.nocobase.com/20250102160129.png)
+- **Аутентификация: LDAP**  
+  https://static-docs.nocobase.com/20250102160312.png
 
-### Auth: DingTalk
+- **Аутентификация: OIDC**  
+  https://static-docs.nocobase.com/20250102160426.png
 
-![20250102160205](https://static-docs.nocobase.com/20250102160205.png)
+- **Аутентификация: SAML**  
+  https://static-docs.nocobase.com/20250102160652.png
 
-### Auth: LDAP
+- **Аутентификация: WeCom**  
+  https://static-docs.nocobase.com/20250102160758.png
 
-![20250102160312](https://static-docs.nocobase.com/20250102160312.png)
+- **Источник данных: Внешняя MariaDB**  
+  https://static-docs.nocobase.com/20250102160935.png
 
-### Auth: OIDC
+- **Источник данных: Внешняя MySQL**  
+  https://static-docs.nocobase.com/20250102173602.png
 
-![20250102160426](https://static-docs.nocobase.com/20250102160426.png)
+- **Источник данных: Внешняя Oracle**  
+  https://static-docs.nocobase.com/20250102174153.png
 
-### Auth: SAML
+- **Источник данных: Внешняя PostgreSQL**  
+  https://static-docs.nocobase.com/20250102175630.png
 
-![20250102160652](https://static-docs.nocobase.com/20250102160652.png)
+- **Источник данных: Внешний SQL Server**  
+  https://static-docs.nocobase.com/20250102175814.png
 
-### Auth: WeCom
+- **Источник данных: KingbaseES**  
+  https://static-docs.nocobase.com/20250102175951.png
 
-![20250102160758](https://static-docs.nocobase.com/20250102160758.png)
+- **Источник данных: REST API**  
+  https://static-docs.nocobase.com/20250102180109.png
 
-### Data Source: External MariaDB
+- **Хранилище файлов: Локальное**  
+  https://static-docs.nocobase.com/20250102161114.png
 
-![20250102160935](https://static-docs.nocobase.com/20250102160935.png)
+- **Хранилище файлов: Aliyun OSS**  
+  https://static-docs.nocobase.com/20250102161404.png
 
-### Data Source: External MySQL
+- **Хранилище файлов: Amazon S3**  
+  https://static-docs.nocobase.com/20250102163730.png
 
-![20250102173602](https://static-docs.nocobase.com/20250102173602.png)
+- **Хранилище файлов: Tencent COS**  
+  https://static-docs.nocobase.com/20250102173109.png
 
-### Data Source: External Oracle
+- **Хранилище файлов: S3 Pro**  
+  Не адаптировано
 
-![20250102174153](https://static-docs.nocobase.com/20250102174153.png)
+- **Карты: AMap**  
+  https://static-docs.nocobase.com/20250102163803.png
 
-### Data Source: External PostgreSQL
+- **Карты: Google**  
+  https://static-docs.nocobase.com/20250102171524.png
 
-![20250102175630](https://static-docs.nocobase.com/20250102175630.png)
+- **Настройки электронной почты**  
+  Не адаптировано
 
-### Data Source: External SQL Server
+- **Уведомления: Электронная почта**  
+  https://static-docs.nocobase.com/20250102164059.png
 
-![20250102175814](https://static-docs.nocobase.com/20250102175814.png)
+- **Публичные формы**  
+  https://static-docs.nocobase.com/20250102163849.png
 
-### Data Source: KingbaseES
+- **Системные настройки**  
+  https://static-docs.nocobase.com/20250102164139.png
 
-![20250102175951](https://static-docs.nocobase.com/20250102175951.png)
+- **Проверка: SMS от Aliyun**  
+  https://static-docs.nocobase.com/20250102164247.png
 
-### Data Source: REST API
+- **Проверка: SMS от Tencent**  
+  https://static-docs.nocobase.com/20250102165814.png
 
-![20250102180109](https://static-docs.nocobase.com/20250102180109.png)
-
-### File Storage: Local
-
-![20250102161114](https://static-docs.nocobase.com/20250102161114.png)
-
-### File Storage: Aliyun OSS
-
-![20250102161404](https://static-docs.nocobase.com/20250102161404.png)
-
-### File Storage: Amazon S3
-
-![20250102163730](https://static-docs.nocobase.com/20250102163730.png)
-
-### File Storage: Tencent COS
-
-![20250102173109](https://static-docs.nocobase.com/20250102173109.png)
-
-### File Storage: S3 Pro
-
-Not adapted
-
-### Map: AMap
-
-![20250102163803](https://static-docs.nocobase.com/20250102163803.png)
-
-### Map: Google
-
-![20250102171524](https://static-docs.nocobase.com/20250102171524.png)
-
-### Email Settings
-
-Not adapted
-
-### Notification: Email
-
-![20250102164059](https://static-docs.nocobase.com/20250102164059.png)
-
-### Public Forms
-
-![20250102163849](https://static-docs.nocobase.com/20250102163849.png)
-
-### System Settings
-
-![20250102164139](https://static-docs.nocobase.com/20250102164139.png)
-
-### Verification: Aliyun SMS
-
-![20250102164247](https://static-docs.nocobase.com/20250102164247.png)
-
-### Verification: Tencent SMS
-
-![20250102165814](https://static-docs.nocobase.com/20250102165814.png)
-
-### Workflow
-
-![20250102180537](https://static-docs.nocobase.com/20250102180537.png)
+- **Рабочий процесс**  
+  https://static-docs.nocobase.com/20250102180537.png

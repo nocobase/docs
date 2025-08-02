@@ -1,11 +1,11 @@
-# Table OID
+# Идентификатор таблицы
 
-## Introduction
+## Введение
 
-## Field configuration
+## Конфигурация поля
 
 ![20240512174746](https://static-docs.nocobase.com/20240512174746.png)
 
-## Instructions
+## Инструкции
 
-to be added.
+будут добавлены позднее.

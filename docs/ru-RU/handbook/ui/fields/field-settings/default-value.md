@@ -1,126 +1,124 @@
-# Default Value
+### **Значения по умолчанию**
 
-## Introduction
+#### **Введение**
 
-Default values are the initial values for fields in a new state. You can set default values when configuring fields in a data table, or you can specify default values for fields in a new form block. These values can be constants or variables.
+Значения по умолчанию — это начальные значения полей в новой записи. Вы можете задать значения по умолчанию при настройке полей в таблице данных или указать их для полей в блоке формы создания записи. Эти значения могут быть константами или переменными.
 
-## Where Can Default Values Be Configured?
+#### **Где можно настроить значения по умолчанию?**
 
-### Data Table Fields
+##### **Поля таблицы данных**
 
-![20240411095933](https://static-docs.nocobase.com/20240411095933.png)
+![Поля таблицы](https://static-docs.nocobase.com/20240411095933.png)
 
-### Fields in New Forms
+##### **Поля в формах создания**
 
-Most fields in new forms support setting default values.
+Большинство полей в формах создания поддерживают установку значений по умолчанию.
 
-![20240411100030](https://static-docs.nocobase.com/20240411100030.png)
+![Поля в форме](https://static-docs.nocobase.com/20240411100030.png)
 
-### Adding Subforms
+##### **Добавление подформ**
 
-Whether adding subforms in new or edit forms, the added sub-data will have default values.
+При добавлении подформ в форме создания или редактирования, новые связанные данные будут заполняться значениями по умолчанию.
 
-Subform "Add new"
+**Подформа «Добавить новое»**
 
-![20240411100341](https://static-docs.nocobase.com/20240411100341.png)
+![Подформа](https://static-docs.nocobase.com/20240411100341.png)
 
-Subtable "Add new"
+**Вложенная таблица «Добавить новое»**
 
-![20240411100424](https://static-docs.nocobase.com/20240411100424.png)
+![Вложенная таблица](https://static-docs.nocobase.com/20240411100424.png)
+![Пример](https://static-docs.nocobase.com/20240411100634.png)
 
-![20240411100634](https://static-docs.nocobase.com/20240411100634.png)
+При редактировании существующих данных, если поле пустое, оно не будет заполнено значением по умолчанию. Значения по умолчанию применяются только к новым записям и не сохраняются в таблице.
 
-When editing existing data, if the data is empty, it will not be filled with default values; only newly added data will be filled with default values and will not be saved.
+![Пример](https://static-docs.nocobase.com/20240411100729.png)
 
-![20240411100729](https://static-docs.nocobase.com/20240411100729.png)
+#### **Значения по умолчанию для связанных данных**
 
-### Default Values for Relationship Data
+Значения по умолчанию доступны только для типов связей «многие к одному» и «многие ко многим», если используются компоненты выбора (Select, RecordPicker).
 
-Default values are only available for "many-to-one" and "many-to-many" relationship types when using selector components (Select, RecordPicker).
+![Связанные данные](https://static-docs.nocobase.com/20240411101025.png)
 
-![20240411101025](https://static-docs.nocobase.com/20240411101025.png)
+#### **Переменные значений по умолчанию**
 
-## Default Value Variables
+##### **Какие переменные доступны?**
 
-### What Variables Are Available?
+- Переменные даты;
+- Текущий пользователь;
+- Текущая запись (понятие применимо только к существующим данным);
+- Текущая форма (желательно, чтобы отображались только поля формы);
+- Текущий объект (понятие для каждой строки данных во вложенной форме);
+- Записи, выбранные в таблице (пока доступно только для комбинации «Блок таблицы + Форма добавления записи»).
 
-- Date variables;
-- Current user;
-- Current record (the concept only applies to existing data);
-- Current form (ideally, only fields in the form are listed);
-- Current object (concept for each row of data in a subform);
-- Form selected records (currently limited to the "Table Block + Add Record Form" combination);
+Более подробно о переменных см. в разделе [Переменные](/handbook/ui/variables).
 
-For more information on variables, refer to [Variables](/handbook/ui/variables).
+#### **Типы переменных для значений по умолчанию**
 
-### Field Default Value Variables
+Существует два типа: переменные для независимых полей и переменные для связанных полей.
 
-There are two types: non-relational field variables and relational field variables.
+##### **Переменные для значений по умолчанию в связанных полях**
 
-#### Relational Field Default Value Variables
+- Объект переменной должен быть записью коллекции;
+- Данные должны быть из таблицы на пути наследования (текущая таблица или родительская/дочерняя);
+- Переменная «Записи, выбранные в таблице» доступна только для полей связи «многие ко многим» и «один ко многим / многие к одному»;
+- При работе с несколькими уровнями данных — применяется выравнивание (flatten) и удаление дубликатов.
 
-- The variable object must be a collection record;
-- It must be from a table on the inheritance path, either the current table or a parent-child table;
-- The "Form selected records" variable is only available for "many-to-many" and "one-to-many/many-to-one" relationship fields;
-- **For multiple levels, flatten and deduplicate the data**
-
-```typescript
-// Table selected records:
+```js
+// Записи, выбранные в таблице:
 [{id:1},{id:2},{id:3},{id:4}]
 
-// Table selected records/one-to-one:
+// Записи, выбранные в таблице / один к одному:
 [{one-to-one: {id:2}}, {one-to-one: {id:3}}, {one-to-one: {id:3}}]
-// Flatten and deduplicate
+// После выравнивания и удаления дубликатов
 [{id: 2}, {id: 3}]
 
-// Table selected records/many-to-many:
-[{many-to-many: [{id: 1}, {id:2}]}, {many-to-many: {[id:3}, {id:4}]}]
-// Flatten
+// Записи, выбранные в таблице / многие ко многим:
+[{many-to-many: [{id: 1}, {id:2}]}, {many-to-many: [{id:3}, {id:4}]}]
+// После выравнивания
 [{id:1},{id:2},{id:3},{id:4}]
 ```
 
-#### Non-relational Default Value Variables
+##### **Переменные для значений по умолчанию в независимых полях**
 
-- The type must be consistent or compatible, such as strings being compatible with numbers, and all objects that provide a toString method;
-- JSON fields are special and can store any type of data;
+- Тип должен быть совместимым (например, строки совместимы с числами, объекты с методом toString);
+- Поля JSON — особые, могут хранить данные любого типа.
 
-### Field Hierarchy (Optional Fields)
+#### **Иерархия полей (опциональные поля)**
 
-![20240411101157](https://static-docs.nocobase.com/20240411101157.png)
+![Иерархия](https://static-docs.nocobase.com/20240411101157.png)
 
-- Non-relational default value variables
+**Для независимых полей:**
+- При выборе полей с несколькими уровнями поддерживается только связь «один к одному»; «многие ко многим» не поддерживается;
+- Поля JSON — особые, могут иметь меньше ограничений.
 
-  - When selecting fields with multiple levels, only one-to-one relationships are supported; many-to-many relationships are not supported;
-  - JSON fields are special and may have fewer restrictions;
+**Для связанных полей:**
+- `hasOne`: поддерживает только «один к одному»;
+- `hasMany`: поддерживает «один к одному» (внутренне преобразуется) и «многие ко многим»;
+- `belongsToMany`: поддерживает «один к одному» (внутренне преобразуется) и «многие ко многим»;
+- `belongsTo`: обычно для «один к одному», но если родительская связь `hasMany`, то поддерживается и «многие ко многим» (так как `hasMany`/`belongsTo` по сути является «многие ко многим»).
 
-- Relational default value variables
+#### **Особые случаи**
 
-  - hasOne: only supports one-to-one relationships;
-  - hasMany: supports both one-to-one (internally converted) and many-to-many relationships;
-  - belongsToMany: supports both one-to-one (internally converted) and many-to-many relationships;
-  - belongsTo: generally for one-to-one relationships, but when the parent relationship is hasMany, it also supports many-to-many (as hasMany/belongsTo is essentially a many-to-many relationship);
+«Многие ко многим» эквивалентно комбинации «один ко многим / многие к одному».
 
-## Special Cases
+**Модель**
 
-### "Many-to-many" is equivalent to a "one-to-many/many-to-one" combination
+![Модель](https://static-docs.nocobase.com/20240411101558.png)
 
-Model
+При установке переменной значения по умолчанию для связи «многие ко многим», если переменная содержит несколько записей, будут выбраны все эти записи, как показано ниже:
 
-![20240411101558](https://static-docs.nocobase.com/20240411101558.png)
+Когда таблица в блоке и таблица поля связи — одна и та же.
 
-When setting default value variables for a many-to-many relationship, if the variable has multiple records, the selected data will have multiple records, as shown below:
-When the data table in the table block and the relationship field data table are the same.
+![Пример](https://static-docs.nocobase.com/20240411103021.png)
 
-![20240411103021](https://static-docs.nocobase.com/20240411103021.png)
+#### **Почему связи «один к одному» и «один ко многим» не поддерживают значения по умолчанию?**
 
-### Why Don't One-to-one and One-to-many Relationships Have Default Values?
+Например, в связи A.B, если b1 связан с a1, он не может быть связан с a2. Если b1 свяжут с a2 — он отвяжется от a1. В этом случае данные не являются общими, а значения по умолчанию работают по принципу общего доступа (обе записи могут быть связаны). Поэтому для «один к одному» и «один ко многим» значения по умолчанию недоступны.
 
-For example, in an A.B relationship, if b1 is associated with a1, it cannot be associated with a2. If b1 is associated with a2, it will disassociate from a1. In this case, the data is not shared, while default values operate on a shared mechanism (both can be associated), so one-to-one and one-to-many cannot have default values.
+#### **Почему во вложенных формах и таблицах с «многие к одному» и «многие ко многим» нельзя задавать значения по умолчанию?**
 
-### Why Can't Subforms or Subtables with Many-to-one and Many-to-many Relationships Have Default Values?
+Потому что вложенные формы и таблицы предназначены для прямого редактирования связанных данных (включая добавление и удаление), а значения по умолчанию работают по механизму общего доступа (обе записи могут быть связаны), но не изменяют данные связи. Поэтому в этом сценарии значения по умолчанию неуместны.
 
-Because subforms and subtables focus on directly editing relationship data (including adding or removing), and relationship default values work on a shared mechanism where both can be associated but cannot modify the relationship data. Therefore, it is not suitable to provide default values in this scenario.
+Кроме того, во вложенных формах и таблицах есть подполя, и становится неясно, к чему относится значение по умолчанию — к строкам или столбцам.
 
-Additionally, subforms or subtables have subfields, so it would be unclear whether the default value is for rows or columns.
-
-Considering this, it is more appropriate not to allow setting default values for any type of subform or subtable relationship.
+Учитывая это, правильнее не разрешать устанавливать значения по умолчанию для любых типов вложенных форм и таблиц.

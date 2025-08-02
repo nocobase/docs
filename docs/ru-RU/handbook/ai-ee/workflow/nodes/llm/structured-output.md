@@ -1,51 +1,51 @@
-# Structured Output
+# Структурированный вывод
 
 <PluginInfo name="ai-ee" licenseBundled="true"></PluginInfo>
 
-## Introduction
+## Введение
 
-In some application scenarios, users may want the LLM model to respond with structured content in JSON format, which can be achieved by configuring "Structured Output".
+В некоторых сценариях использования пользователи могут хотеть, чтобы модель языкового ИИ (LLM) возвращала структурированный контент в формате JSON. Этого можно добиться с помощью настройки «Структурированный вывод».
 
 ![](https://static-docs.nocobase.com/202503041306405.png)
 
-## Configuration Instructions
+## Инструкции по настройке
 
-- **JSON Schema** - Users can configure [JSON Schema](https://json-schema.org/) to specify the expected structure of the model's response.
-- **Name** - _Optional_, used to help the model better understand the object represented by the JSON Schema.
-- **Description** - _Optional_, used to help the model better understand the purpose of the JSON Schema.
-- **Strict** - Requires the model to generate a response strictly adhering to the JSON Schema structure. Currently, only some newer models from OpenAI support this parameter. Please confirm compatibility with the model before selecting it.
+- **JSON Schema (Схема JSON)** — пользователи могут настроить [JSON Schema](https://json-schema.org/), чтобы указать ожидаемую структуру ответа модели.
+- **Имя** — *необязательно*, помогает модели лучше понять объект, представленный схемой JSON.
+- **Описание** — *необязательно*, помогает модели лучше понять назначение схемы JSON.
+- **Strict (Строгий режим)** — требует, чтобы модель строго соблюдала структуру, определённую в JSON Schema. В настоящее время этот параметр поддерживают только некоторые новые модели от OpenAI. Перед использованием убедитесь в совместимости с выбранной моделью.
 
-## Structured Content Generation Method
+## Методы генерации структурированного контента
 
-The method of generating structured content depends on the **model** and its **Response format** configuration:
+Метод генерации структурированного контента зависит от **модели** и её настройки **формата ответа (Response format)**:
 
-1. Models that only support `text` in Response format
+1. **Модели, поддерживающие только `text` в формате ответа**
 
-   - When calling, the node will bind a Tool that generates JSON content based on the JSON Schema, guiding the model to generate a structured response by calling this Tool.
+   - При вызове узел привязывает инструмент (Tool), который на основе JSON Schema генерирует JSON-контент. Это направляет модель на формирование структурированного ответа через вызов этого инструмента.
 
-2. Models that support JSON mode (`json_object`) in Response format
+2. **Модели, поддерживающие режим JSON (`json_object`) в формате ответа**
 
-   - When calling, select JSON mode, and users need to explicitly indicate in the Prompt that the model should return in JSON format, and provide a response field description.
-   - In this mode, the JSON Schema is only used to parse the JSON string returned by the model into a target JSON object.
+   - При вызове выбирается режим JSON. Пользователь должен явно указать в запросе (Prompt), что модель должна вернуть ответ в формате JSON, и описать поля ответа.
+   - В этом режиме JSON Schema используется только для преобразования строки JSON, возвращённой моделью, в целевой JSON-объект.
 
-3. Models that support JSON Schema (`json_schema`) in Response format
+3. **Модели, поддерживающие JSON Schema (`json_schema`) в формате ответа**
 
-   - JSON Schema is directly used to specify the target response structure of the model.
-   - Optional **Strict** parameter, requiring the model to generate a response strictly adhering to the JSON Schema.
+   - Схема JSON напрямую используется для определения требуемой структуры ответа модели.
+   - Дополнительно доступен параметр **Strict**, требующий строгого соответствия ответа схеме JSON.
 
-4. Ollama local models
+4. **Локальные модели Ollama**
 
-   - If JSON Schema is configured, when calling, the node will pass it as the `format` parameter to the model.
+   - Если настроена JSON Schema, при вызове она передаётся модели в качестве параметра `format`.
 
-## Using Structured Output Results
+## Использование результатов структурированного вывода
 
-The structured content of the model's response is saved in the Structured content field of the node, which can be used by subsequent nodes.
+Структурированный контент ответа модели сохраняется в поле «Структурированный контент» узла и может использоваться последующими узлами.
 
 ![](https://static-docs.nocobase.com/202503041330291.png)
 
 ![](https://static-docs.nocobase.com/202503041331279.png)
 
-If you need to use the content of the fields in the JSON object, you can refer to:
+Если требуется использовать значения полей из JSON-объекта, вы можете обратиться к следующим материалам:
 
-- [JSON Variable Mapping](../../../../../handbook/workflow-json-variable-mapping)
-- [JSON Query](../../../../../handbook/workflow-json-query)
+- [Сопоставление JSON-переменных](../../../../../handbook/workflow-json-variable-mapping)
+- [Запросы к JSON](../../../../../handbook/workflow-json-query)

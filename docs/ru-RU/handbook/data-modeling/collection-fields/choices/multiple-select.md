@@ -1,8 +1,8 @@
-# Multiple Select
+# Множественный выбор
 
-## Introduction
+## Введение
 
-## Field configuration
+## Настройка поля
 
 ![20240512180236](https://static-docs.nocobase.com/20240512180236.png)
 

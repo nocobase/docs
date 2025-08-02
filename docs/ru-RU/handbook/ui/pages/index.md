@@ -1,55 +1,55 @@
-# Page
+### **Страница**
 
-NocoBase's pages can act as containers for blocks. They are like a canvas where you can freely place a variety of blocks.
+Страницы NocoBase могут выступать в качестве контейнеров для блоков. Они подобны холсту, на котором вы можете свободно размещать различные блоки.
 
-## Page Structure
+#### **Структура страницы**
 
-After creating a page through the [menu](/handbook/ui/menus), you can see that an empty page consists of the following two parts:
+После создания страницы через [меню](/handbook/ui/menus) вы увидите, что пустая страница состоит из двух частей:
 
-1. Header
-   1. Page title
-   2. Tabs
-2. Block container
+1. **Шапка (Header)**
+   1. Название страницы
+   2. Вкладки (Tabs)
+2. **Контейнер блоков**
 
 ![2024-01-20_08-23-10](https://static-docs.nocobase.com/2024-01-20_08-23-10.jpg)
 
-## Page Settings
+#### **Настройки страницы**
 
-Hovering the mouse over the configuration icon at the top right of the page, you can see the page configuration options:
+Наведя курсор на значок настройки в правом верхнем углу страницы, вы увидите доступные параметры конфигурации:
 
 ![2024-01-20_08-24-27](https://static-docs.nocobase.com/2024-01-20_08-24-27.jpg)
 
-Configurable items include:
+Доступные параметры:
 
-- Enable page header: Controls whether to display the header;
-- Display page title: Whether to display the page title in the header;
-- Edit page title: The default page title is the menu item title, which can be customized;
-- Enable tabs: Off by default, enabling this option allows adding multiple tabs.
+- **Включить шапку страницы**: управляет отображением шапки;
+- **Отображать название страницы**: показывать ли название страницы в шапке;
+- **Редактировать название страницы**: по умолчанию название страницы совпадает с названием пункта меню, может быть изменено;
+- **Включить вкладки**: отключено по умолчанию, при включении можно добавлять несколько вкладок.
 
-### Enable Header
+##### **Включение шапки**
 
-Typically, we need to enable the header area to display the page title and tabs. However, there are situations where we might not want to enable it, for instance, when creating a Dashboard page where a top-level menu can effectively reflect the content of the page. In this case, we can disable the header and only display the blocks within the page.
+Обычно шапку включают, чтобы отображать название страницы и вкладки. Однако в некоторых случаях её можно отключить. Например, при создании страницы «Панель управления» (Dashboard), где содержание страницы уже ясно из верхнего меню. В таком случае шапку можно отключить и отображать только блоки на странице.
 
 ![20240120084618](https://static-docs.nocobase.com/20240120084618.png)
 
-### Page Title
+##### **Название страницы**
 
-The default page title is the name of the menu item. By clicking "Edit Page Title," it can be modified. Just like with the header, sometimes we don't need to display the page title and only need to show the tabs, in which case you can disable the title.
+По умолчанию название страницы совпадает с названием пункта меню. Его можно изменить, нажав «Редактировать название страницы». Как и в случае с шапкой, иногда название не нужно отображать, и требуется только показ вкладок — в этом случае отображение названия можно отключить.
 
 ![2024-01-20_08-28-43](https://static-docs.nocobase.com/2024-01-20_08-28-43.jpg)
 
-### Enable Tabs
+##### **Включение вкладок**
 
-When the content of a page is too much, or it is appropriate to divide it into several independent parts, we can enable tabs. Each tab is an independent block container. As shown below, we added 3 tabs to the orders page to display all orders, completed orders, and refunded orders. By moving the mouse to the tab title, you can see the sort and configuration buttons at the top right corner.
+Если содержание страницы слишком объёмное или его целесообразно разделить на несколько независимых частей, можно включить вкладки. Каждая вкладка представляет собой отдельный контейнер блоков. Например, на странице заказов мы добавили три вкладки для отображения всех заказов, завершённых заказов и заказов с возвратом. При наведении на заголовок вкладки в правом верхнем углу появляются кнопки сортировки и настройки.
 
 ![2024-01-20_08-47-15](https://static-docs.nocobase.com/2024-01-20_08-47-15.jpg)
 
-## Adding Blocks
+#### **Добавление блоков**
 
-Click "Add block" to add an unlimited number of blocks to the page (see the introduction of [Blocks](./blocks/index.md)).
+Нажмите «Добавить блок», чтобы добавить на страницу неограниченное количество блоков (см. описание [Блоков](./blocks/index.md)).
 
 ![2024-01-20_08-48-36](https://static-docs.nocobase.com/2024-01-20_08-48-36.jpg)
 
-After adding several blocks, you can use the move button at the top right corner of each block to drag and arrange them freely, adjusting the layout to achieve the most suitable effect.
+После добавления нескольких блоков вы можете использовать кнопку перемещения в правом верхнем углу каждого блока, чтобы свободно перетаскивать и располагать их, изменяя макет для достижения наилучшего визуального эффекта.
 
 ![page-block](https://static-docs.nocobase.com/page-block.gif)

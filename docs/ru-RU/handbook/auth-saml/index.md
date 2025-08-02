@@ -1,56 +1,59 @@
-# Auth: SAML 2.0
+# Аутентификация: SAML 2.0
 
 <PluginInfo commercial="true" name="auth-saml"></PluginInfo>
 
-## Introduction
+## Введение
 
-The Auth: SAML 2.0 plugin follows the SAML 2.0 (Security Assertion Markup Language 2.0) protocol standard, allowing users to sign in to NocoBase using accounts provided by third-party identity authentication service providers (IdP).
+Плагин «Аутентификация: SAML 2.0» соответствует стандарту протокола SAML 2.0 (Security Assertion Markup Language 2.0) и позволяет пользователям входить в систему NocoBase, используя учётные записи, предоставленные сторонними провайдерами удостоверяющих центров (IdP).
 
-## Activate Plugin
+## Активация плагина
 
 ![](https://static-docs.nocobase.com/6a12f3d8073c47532a4f8aac900e4296.png)
 
-## Add SAML Authentication
+## Добавление аутентификации по SAML
 
-Enter the user authentication plugin management page.
+Перейдите на страницу управления плагином аутентификации пользователей.
 
 ![](../auth-oidc/static/2023-12-03-18-19-33.png)
 
-Add - SAML
+Нажмите «Добавить — SAML».
 
 ![](https://static-docs.nocobase.com/5076fe56086b7799be308bbaf7c4425d.png)
 
-## Configuration
+## Настройка
 
 ![](https://static-docs.nocobase.com/976b66e589973c322d81dcddd22c6146.png)
 
-- SSO URL - Provided by IdP, used for single sign-on
-- Public Certificate - Provided by IdP
-- Entity ID (IdP Issuer) - Optional, provided by IdP
-- http - If your NocoBase application is http protocol, please check
-- Use this field to bind the user - The field used to match and bind with existing users, can choose email or username, default is email. The user information carried by IdP needs to contain the `email` or `username` field.
-- Sign up automatically when the user does not exist - Whether to automatically create a new user when no matching existing user is found.
-- Usage - `SP Issuer / EntityID` and `ACS URL` are used to copy and fill in the corresponding configuration in the IdP.
+- **SSO URL** — предоставляется IdP, используется для единого входа (Single Sign-On).
+- **Публичный сертификат** — предоставляется IdP.
+- **Entity ID (IdP Issuer)** — необязательно, предоставляется IdP.
+- **HTTP** — установите флажок, если ваше приложение NocoBase использует протокол HTTP.
+- **Использовать это поле для привязки пользователя** — поле, по которому будет выполняться сопоставление с существующими пользователями. Можно выбрать `email` или `username`, по умолчанию — `email`. Информация о пользователе, передаваемая IdP, должна содержать поле `email` или `username`.
+- **Автоматическая регистрация, если пользователь не существует** — создавать ли автоматически нового пользователя, если не найден соответствующий существующий.
+- **Использование** — значения `SP Issuer / EntityID` и `ACS URL` используются для копирования и заполнения соответствующих настроек на стороне IdP.
 
-## Field Mapping
+## Сопоставление полей
 
-Field mapping needs to be configured on the IdP's configuration platform, you can refer to the [example](../auth-saml/example/google.md).
+Сопоставление полей необходимо настроить на платформе конфигурации IdP. Вы можете ознакомиться с примером: [Google](../auth-saml/example/google.md).
 
-The fields available for mapping in NocoBase are:
+Поля, доступные для сопоставления в NocoBase:
 
-- email (required)
-- phone (only effective for platforms that support `phone` in scope, such as Alibaba Cloud, Lark)
+- email (обязательно)
+- phone (работает только на платформах, поддерживающих `phone` в scope, например, Alibaba Cloud, Lark)
 - nickname
 - username
 - firstName
 - lastName
 
-`nameID` is carried by the SAML protocol and does not need to be mapped, it will be saved as a unique user identifier.
-The priority of the new user nickname use rule is: `nickname` > `firstName lastName` > `username` > `nameID`
-Currently, user organization and role mapping are not supported.
+Поле `nameID` передаётся протоколом SAML и не требует сопоставления — оно сохраняется как уникальный идентификатор пользователя.
 
-## Sign In
+Приоритет при формировании псевдонима нового пользователя:  
+`nickname` > `firstName lastName` > `username` > `nameID`
 
-Visit the sign in page and click the button under the sign in form to initiate third-party login.
+В настоящее время сопоставление организаций и ролей пользователя не поддерживается.
+
+## Вход в систему
+
+Перейдите на страницу входа и нажмите кнопку под формой входа, чтобы запустить процесс аутентификации через сторонний провайдер.
 
 ![](https://static-docs.nocobase.com/74963865c9d36a294948e6adeb5b24bc.png)

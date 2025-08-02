@@ -2,6 +2,6 @@
 
 <PluginInfo name="file-storage-cos"></PluginInfo>
 
-## Introduction
+## Введение
 
-## Hand book
+## Мануал

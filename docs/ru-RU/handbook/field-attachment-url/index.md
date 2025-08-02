@@ -1,25 +1,25 @@
-# Data Field: Attachment (URL)
+# Поле данных: Вложение (URL)
 
 <PluginInfo name="field-attachment-url"></PluginInfo>
 
-## Introduction
+## Введение
 
-Supports attachments in URL format.
+Поддерживает вложения в формате URL.
 
-## Installation
+## Установка
 
-This plugin is a commercial plugin.
+Это коммерческий плагин.
 
-## User Manual
+## Руководство пользователя
 
-### Field Configuration
+### Конфигурация поля
 
 ![20241017092323](https://static-docs.nocobase.com/20241017092323.png)
 
-### External Data Source
+### Внешний источник данных
 
 ![20241017092456](https://static-docs.nocobase.com/20241017092456.png)
 
-### Interface
+### Интерфейс
 
 ![20241017092759](https://static-docs.nocobase.com/20241017092759.png)

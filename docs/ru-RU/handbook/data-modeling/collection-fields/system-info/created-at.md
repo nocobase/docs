@@ -1,11 +1,11 @@
-# Created At
+# Создано по адресу
 
-## Introduction
+## Введение
 
-## Field configuration
+## Настройка поля
 
 ![20240512174347](https://static-docs.nocobase.com/20240512174347.png)
 
-## Instructions
+## Инструкции
 
-to be added.
+будут добавлены позднее.

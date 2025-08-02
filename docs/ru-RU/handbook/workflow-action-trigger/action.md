@@ -1,17 +1,17 @@
-# Action Configuration
+# Настройка действий
 
-When configuring actions in local trigger mode, once the workflow setup is complete, you'll need to return to the user interface and link the workflow to the relevant form operation button in the corresponding data block.
+При настройке действий в локальном триггерном режиме, после завершения конфигурации рабочего процесса, необходимо вернуться к пользовательскому интерфейсу и привязать этот рабочий процесс к соответствующей кнопке операции формы в нужном блоке данных.
 
-The workflow associated with the "Submit" button (including the "Save record" button) will be triggered after the user submits the form and the data operation is completed.
+Рабочий процесс, привязанный к кнопке **«Отправить»** (включая кнопку **«Сохранить запись»**), будет запускаться после того, как пользователь отправит форму и операция с данными будет завершена.
 
-![Operation After Event_Submit Button](https://static-docs.nocobase.com/ae12d219b8400d75b395880ec4cb2bda.png)
+![Операция после события — Кнопка Отправить](https://static-docs.nocobase.com/ae12d219b8400d75b395880ec4cb2bda.png)
 
-To bind a workflow, simply select "Bind Workflows" from the button configuration menu to open the binding configuration dialog. Here, you can set up multiple workflows to be triggered. If none are configured, it indicates that no workflows will be triggered. For each workflow, you'll need to determine whether the trigger involves data from the entire form or data from a specific relational field within the form. Then, based on the selected data model, choose the form workflow that corresponds to the data model of the associated table.
+Чтобы привязать рабочий процесс, достаточно выбрать пункт **«Привязать рабочие процессы»** в меню настройки кнопки, чтобы открыть диалоговое окно конфигурации привязки. Здесь можно настроить запуск нескольких рабочих процессов. Если ни один процесс не настроен, это означает, что при нажатии кнопки никакие рабочие процессы запущены не будут. Для каждого рабочего процесса необходимо указать, будет ли запуск осуществляться с использованием данных всей формы или данных определённого связного поля внутри формы. Затем, на основе выбранной модели данных, следует выбрать рабочий процесс формы, соответствующий модели данных связанной таблицы.
 
-![Operation After Event_Bind Workflow Configuration_Context Selection](https://static-docs.nocobase.com/358315fc175849a7fbadbe3276ac6fed.png)
+![Операция после события — Настройка привязки рабочего процесса — Выбор контекста](https://static-docs.nocobase.com/358315fc175849a7fbadbe3276ac6fed.png)
 
-![Operation After Event_Bind Workflow Configuration_Workflow Selection](https://static-docs.nocobase.com/175a71a61b93540cce62a1cb124eb0b5.png)
+![Операция после события — Настройка привязки рабочего процесса — Выбор рабочего процесса](https://static-docs.nocobase.com/175a71a61b93540cce62a1cb124eb0b5.png)
 
-:::info{title="Note"}
-Ensure that the workflow is enabled before attempting to select it in the above interface.
+:::info{title="Примечание"}
+Убедитесь, что рабочий процесс включён, прежде чем выбирать его в указанном выше интерфейсе.
 :::

@@ -1,28 +1,28 @@
-# Adding Data Blocks
+# Добавление блоков данных
 
-## Scenario Description
+## Описание сценария
 
-NocoBase has many `Add block` buttons used to add blocks to the interface. Some of these blocks are related to data tables and are referred to as Data Blocks, while others that are not related to data tables are called Simple Blocks.
+В NocoBase есть множество кнопок `Add block`, которые используются для добавления блоков в интерфейс. Некоторые из них связаны с таблицами данных и называются блоками данных (`Data Block`), а другие, не связанные с данными, называются простыми блоками (`Simple Block`).
 
 ![img_v3_02b4_170eddb5-d3b4-461e-b74b-f83250941e5g](https://static-docs.nocobase.com/img_v3_02b4_170eddb5-d3b4-461e-b74b-f83250941e5g.jpg)
 
-However, the existing block types may not fully meet our needs, so we may need to custom-develop some blocks according to our requirements. This article specifically explains how to create Data Blocks.
+Однако существующие типы блоков не всегда удовлетворяют потребности, поэтому может потребоваться создание пользовательских блоков. Данная статья посвящена созданию блоков данных (`Data Block`).
 
-## Example Explanation
+## Описание примера
 
-In this example, we will create an `Info` block and add it to the `Page`, `Table`, and the mobile `Add block` sections.
+В этом примере будет создан блок `Info`, который будет добавлен в меню `Add block` на страницах (`Page`), в таблицах (`Table`) и в мобильной версии.
 
-This example mainly demonstrates the usage of the initializer. For more information on block extensions, refer to the [Block Extension](/plugin-samples/block) documentation.
+Этот пример демонстрирует использование Initializer. Подробности о расширении блоков см. в документации [Расширения блоков](/plugin-samples/block).
 
-The complete sample code for this document can be found in the [plugin-samples repository](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-initializer-block-data).
+Полный код примера доступен в [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-initializer-block-data).
 
 <video width="100%" controls="">
   <source src="https://static-docs.nocobase.com/20240522-182547.mp4" type="video/mp4" />
 </video>
 
-## Initializing the Plugin
+## Инициализация плагина
 
-Following the instructions in the [Creating Your First Plugin](/development/your-fisrt-plugin) document, if you don't have a project yet, you can create one first. If you already have a project or have cloned the source code, skip this step.
+Следуйте инструкциям из документации [Создание первого плагина](/development/your-fisrt-plugin). Если у вас нет проекта, создайте его. Если проект уже есть или вы клонировали исходный код, пропустите этот шаг.
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d sqlite
@@ -31,68 +31,70 @@ yarn install
 yarn nocobase install
 ```
 
-Next, initialize a plugin and add it to the system:
+Затем инициализируйте плагин и добавьте его в систему:
 
 ```bash
 yarn pm create @nocobase-sample/plugin-initializer-block-data
 yarn pm enable @nocobase-sample/plugin-initializer-block-data
 ```
 
-Then, start the project:
+Запустите проект:
 
 ```bash
 yarn dev
 ```
 
-After logging in, visit [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) to see that the plugin has been installed and enabled.
+После входа в систему перейдите по адресу [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/), чтобы убедиться, что плагин установлен и активирован.
 
-## Feature Implementation
+## Реализация функциональности
 
-Before implementing this example, we need to understand some basic concepts:
+Перед началом работы с этим примером необходимо ознакомиться с основными концепциями:
 
-- [SchemaInitializer Tutorial](/development/client/ui-schema/initializer): Used to add various blocks, fields, operations, etc., to the interface.
-- [SchemaInitializer API](https://client.docs.nocobase.com/core/ui-schema/schema-initializer): Provides an API for adding various blocks, fields, operations, etc., to the interface.
-- [UI Schema](/development/client/ui-schema/what-is-ui-schema): Used for defining the structure and style of the interface.
-- [Designable](/development/client/ui-schema/designable): A designer tool used for modifying schemas.
+- [Руководство по SchemaInitializer](/development/client/ui-schema/initializer): Используется для добавления блоков, полей, операций и других элементов в интерфейс.
+- [API SchemaInitializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer): Описание API для добавления элементов в интерфейс.
+- [UI Schema](/development/client/ui-schema/what-is-ui-schema): Используется для определения структуры и стилей интерфейса.
+- [Дизайнер Designable](/development/client/ui-schema/designable): Используется для изменения схемы.
+
+Структура проекта:
 
 ```bash
 .
-├── client # Client-side plugin
-│   ├── initializer # Initializer
-│   ├── component # Block components
-│   ├── index.tsx # Entry point for the client-side plugin
-│   ├── locale.ts # Multi-language utility functions
-│   ├── constants.ts # Constants
-│   ├── schema # Schema
-│   └── settings # Schema settings
-├── locale # Multi-language files
-│   ├── en-US.json # English
-│   └── zh-CN.json # Chinese
-├── index.ts # Server-side plugin entry point
-└── server # Server-side plugin
+├── client # Клиентская часть плагина
+│   ├── initializer # Инициализатор
+│   ├── component # Компоненты блока
+│   ├── index.tsx # Входной файл клиентского плагина
+│   ├── locale.ts # Утилиты для мультиязычности
+│   ├── constants.ts # Константы
+│   ├── schema # Схемы
+│   └── settings # Schema Settings
+├── locale # Файлы локализации
+│   ├── en-US.json # Английский
+│   └── zh-CN.json # Китайский
+├── index.ts # Входной файл серверного плагина
+└── server # Серверная часть плагина
 ```
 
-### 1. Defining Names
+### 1. Определение имен
 
-First, we need to define the block's name, which will be used in various places.
+Сначала необходимо определить имя блока, которое будет использоваться в различных местах.
 
-Create `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/constants.ts`:
+Создайте файл `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/constants.ts`:
 
 ```ts
 export const BlockName = 'Info';
 export const BlockNameLowercase = BlockName.toLowerCase();
 ```
 
-### 2. Implementing Block Components
+### 2. Реализация компонентов блока
 
-#### 2.1 Defining the Block Component
+#### 2.1 Определение компонента блока
 
-In this example, we need to create an `Info` block component with the following requirements:
+В этом примере создается компонент блока `Info` с следующими требованиями:
 
-- Display the name of the current block's data table.
-- Display the current block's data list.
+- Отображение имени текущей таблицы данных блока.
+- Отображение списка данных текущего блока.
 
-First, create `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/component/Info.tsx` with the following content:
+Создайте файл `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/component/Info.tsx`:
 
 ```tsx | pure
 import React, { FC } from 'react';
@@ -113,19 +115,19 @@ export const Info: FC<InfoProps> = withDynamicSchemaProps(({ collectionName, dat
 }, { displayName: BlockName })
 ```
 
-The `Info` component is essentially a functional component wrapped by `withDynamicSchemaProps`. The [withDynamicSchemaProps](/development/client/ui-schema/what-is-ui-schema#x-component-props-和-x-use-component-props) is a higher-order component used to handle dynamic properties in schemas.
+Компонент `Info` — это функциональный компонент, обернутый в [withDynamicSchemaProps](/development/client/ui-schema/what-is-ui-schema#x-component-props-и-x-use-component-props), который обрабатывает динамические свойства из схемы.
 
-Without considering `withDynamicSchemaProps`, the `Info` component is a simple functional component.
+Без учета `withDynamicSchemaProps` компонент `Info` является простым функциональным компонентом.
 
-Next, export it in `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/component/index.ts`:
+Экспортируйте компонент в `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/component/index.ts`:
 
 ```tsx | pure
 export * from './Info';
 ```
 
-#### 2.2 Registering the Block Component
+#### 2.2 Регистрация компонента блока
 
-We need to register the `Info` component in the system via the plugin.
+Зарегистрируйте компонент `Info` в системе через плагин.
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
@@ -140,14 +142,14 @@ export class PluginInitializerBlockDataClient extends Plugin {
 export default PluginInitializerBlockDataClient;
 ```
 
-#### 2.3 Verifying the Block Component
+#### 2.3 Проверка компонента блока
 
-There are two ways to verify the component:
+Существует два способа проверки компонента:
 
-- Temporary page verification: You can create a temporary page, render the `Info` component, and check if it meets the requirements.
-- Documentation example verification: You can start the documentation with `yarn doc plugins/@nocobase-sample/plugin-initializer-block-data` and verify the component through a documentation example (TODO).
+- Проверка через временную страницу: Создайте временную страницу, отрендерите компонент `Info` и проверьте, соответствует ли он требованиям.
+- Проверка через документацию: Запустите документацию с помощью `yarn doc plugins/@nocobase-sample/plugin-initializer-block-data` и проверьте через примеры в документации (TODO).
 
-For this example, we'll use **Temporary Page Verification**. Create a page and add one or more `Info` components based on the parameters, then check if it meets the requirements.
+Рассмотрим проверку через временную страницу. Создайте страницу, добавьте компонент `Info` с параметрами и проверьте его работу.
 
 ```tsx | pure
 import React from 'react';
@@ -174,39 +176,22 @@ export class PluginInitializerBlockDataClient extends Plugin {
 export default PluginInitializerBlockDataClient;
 ```
 
-Then, visit `http://localhost:13000/admin/info-component` to see the corresponding content on the test page.
+Перейдите по адресу `http://localhost:13000/admin/info-component`, чтобы увидеть содержимое тестовой страницы.
 
 ![20240526165834](https://static-docs.nocobase.com/20240526165834.png)
 
-After verification, delete the test page.
+После проверки удалите тестовую страницу.
 
+### 3. Определение схемы блока
 
+#### 3.1 Определение схемы блока
 
+Динамические страницы в NocoBase рендерятся через схемы, поэтому необходимо определить схему для добавления блока `Info` в интерфейс. Перед этим ознакомьтесь с:
 
+- [Протокол UI Schema](/development/client/ui-schema/what-is-ui-schema): Подробное описание структуры схемы и роли каждого свойства.
+- [DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider): Провайдер данных блока.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-### 3. 定义区块 Schema
-
-#### 3.1 定义区块 Schema
-
-NocoBase 的动态页面都是通过 Schema 来渲染，所以我们需要定义一个 Schema，后续用于在界面中添加 `Info` 区块。在实现本小节之前，我们需要先了解一些基础知识：
-
-- [UI Schema 协议](/development/client/ui-schema/what-is-ui-schema)：详细介绍 Schema 的结构和每个属性的作用
-- [DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider)：数据区块
-
-我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/schema/index.ts` 文件：
+Создайте файл `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/schema/index.ts`:
 
 ```ts
 import { useCollection, useDataBlockRequest } from "@nocobase/client";
@@ -247,27 +232,27 @@ export function getInfoSchema({ dataSource = 'main', collection }) {
 }
 ```
 
-这里有 2 个点需要说明：
+Два ключевых момента:
 
-- `getInfoSchema()`：之所以定义为函数，因为 `dataSource` 和 `collection` 是动态的，由点击的数据表决定
-- `useInfoProps()`：用于处理 `Info` 组件的动态属性，并且因为要存到数据库，所以这里的值类型为 string 类型。
+- `getInfoSchema()`: Определена как функция, поскольку `dataSource` и `collection` динамически определяются при выборе таблицы данных.
+- `useInfoProps()`: Используется для обработки динамических свойств компонента `Info`. Поскольку схема сохраняется в базе данных, значение должно быть строкового типа.
 
-`getInfoSchema()`：返回 Info 的 Schema
-  - `type: 'void'`：表示没有任何数据
-  - `x-decorator: 'DataBlockProvider'`：数据区块提供者，用于提供数据，更多关于 DataBlockProvider 可以查看 [DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider)
-  - `x-decorator-props`：`DataBlockProvider` 的属性
-    - `dataSource`：数据源
-    - `collection`：数据表
-    - `action: 'list'`：操作类型，这里是 `list`，获取数据列表
-  - `x-component: 'CardItem'`：[CardItem 组件](https://client.docs.nocobase.com/components/card-item)，目前的区块都是被包裹在卡片中的，用于提供样式、布局和拖拽等功能
-  - `properties`：子节点
-    - `info`：信息区块
+`getInfoSchema()`:
+- `type: 'void'`: Указывает, что узел не содержит данных.
+- `x-decorator: 'DataBlockProvider'`: Провайдер данных блока, предоставляет данные. Подробности см. в [DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider).
+- `x-decorator-props`: Свойства `DataBlockProvider`:
+  - `dataSource`: Источник данных.
+  - `collection`: Таблица данных.
+  - `action: 'list'`: Тип операции, здесь получение списка данных.
+- `x-component: 'CardItem'`: Компонент [CardItem](https://client.docs.nocobase.com/components/card-item), оборачивает блоки для стилей, компоновки и функциональности перетаскивания.
+- `"x-toolbar": "BlockSchemaToolbar"`: Используется для отображения имени текущей таблицы в левом верхнем углу, обычно применяется с `DataBlockProvider`.
+- `properties`: Подузлы, здесь `info` — информационный блок.
 
-`useInfoProps()`：Info 组件的动态属性
-  - [useCollection](https://client.docs.nocobase.com/core/data-source/collection-provider#usecollection)：获取当前数据表，由 [DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider) 提供
-  - [useDataBlockRequest](https://client.docs.nocobase.com/core/data-block/data-block-request-provider#usedatablockrequest) 获取数据区块请求，由 [DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider) 提供
+`useInfoProps()`:
+- [useCollection](https://client.docs.nocobase.com/core/data-source/collection-provider#usecollection): Получает текущую таблицу данных, предоставляемую [DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider).
+- [useDataBlockRequest](https://client.docs.nocobase.com/core/data-block/data-block-request-provider#usedatablockrequest): Получает запрос данных блока, предоставляемый [DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider).
 
-上述 Schema 转为 React 组件后相当于：
+Эта схема эквивалентна следующему React-компоненту:
 
 ```tsx | pure
 <DataBlockProvider collection={collection} dataSource={dataSource} action='list'>
@@ -277,9 +262,9 @@ export function getInfoSchema({ dataSource = 'main', collection }) {
 </DataBlockProvider>
 ```
 
-#### 3.2 注册 scope
+#### 3.2 Регистрация области видимости (scope)
 
-我们需要将 `useInfoProps` 注册到系统中，这样 [x-use-component-props](/development/client/ui-schema/what-is-ui-schema#x-component-props-和-x-use-component-props) 才能找到对应的 scope。
+Зарегистрируйте `useInfoProps` в системе, чтобы [x-use-component-props](/development/client/ui-schema/what-is-ui-schema#x-component-props-и-x-use-component-props) мог найти соответствующую область видимости.
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
@@ -296,11 +281,11 @@ export class PluginInitializerBlockDataClient extends Plugin {
 export default PluginInitializerBlockDataClient;
 ```
 
-更多关于 Scope 的说明可以查看 [全局注册 Component 和 Scope](/plugin-samples/component-and-scope/global)
+Подробности об области видимости см. в [Глобальная регистрация Component и Scope](/plugin-samples/component-and-scope/global).
 
-#### 3.3 验证区块 Schema
+#### 3.3 Проверка схемы блока
 
-同验证组件一样，我们可以通过临时页面验证或者文档示例验证的方式来验证 Schema 是否符合需求。我们这里以临时页面验证为例：
+Аналогично проверке компонента, схему можно проверить через временную страницу или примеры в документации. Рассмотрим проверку через временную страницу:
 
 ```tsx | pure
 import React from 'react';
@@ -331,18 +316,18 @@ export class PluginInitializerBlockDataClient extends Plugin {
 export default PluginInitializerBlockDataClient;
 ```
 
-- [SchemaComponentOptions](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponentoptions)：用于传递 Schema 中所需的 `components` 和 `scope`，具体的可查看 [局部注册 Component 和 Scope](/plugin-samples/component-and-scope/local)
-- [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponent-1)：用于渲染 Schema
+- [SchemaComponentOptions](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponentoptions): Используется для передачи компонентов и области видимости, необходимых в схеме. Подробности см. в [Локальная регистрация Component и Scope](/plugin-samples/component-and-scope/local).
+- [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponent-1): Используется для рендеринга схемы.
 
-我们访问 [http://localhost:13000/admin/info-schema](http://localhost:13000/admin/info-schema) 就可以看到对应测试页面的内容了。
+Перейдите по адресу [http://localhost:13000/admin/info-schema](http://localhost:13000/admin/info-schema), чтобы увидеть содержимое тестовой страницы.
 
 ![20240526170053](https://static-docs.nocobase.com/20240526170053.png)
 
-验证完毕后需要删除测试页面。
+После проверки удалите тестовую страницу.
 
-### 4. 定义 Schema Initializer Item
+### 4. Определение элемента SchemaInitializer
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/initializer/index.tsx` 文件：
+Создайте файл `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/initializer/index.tsx`:
 
 ```tsx | pure
 import React from 'react';
@@ -372,57 +357,30 @@ export const infoInitializerItem: SchemaInitializerItemType = {
 }
 ```
 
-实现数据区块的效果核心是 DataBlockInitializer（文档 TODO）。
+Ключ к реализации блока данных — использование `DataBlockInitializer` (документация TODO).
 
-`infoInitializerItem`：
-  - `Component`：与 [添加简单区块 Simple Block](/plugin-samples/schema-initializer/block-simple) 中使用的是 `type`，这里使用的是 `Component`，[2 种定义方式](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#two-ways-to-define-component-and-type) 都是可以的
-  - `useComponentProps`：`DataBlockInitializer` 组件的属性
-    - `title`：标题
-    - `icon`：图标，更多图标可以查看 [Ant Design Icons](https://ant.design/components/icon/)
-    - `componentType`：组件类型，这里是 `Info`
-    - `onCreateBlockSchema`：当点击数据表后的回调
-      - `item`：点击的数据表信息
-        - `item.name`：数据表名称
-        - `item.dataSource`：数据表所属的数据源
-    - [useSchemaInitializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#useschemainitializer)：提供了插入 Schema 的方法
-  - `"x-toolbar": "BlockSchemaToolbar"`：`BlockSchemaToolbar` 用于左上角显示当前数据表，一般和 `DataBlockProvider` 搭配使用
+`infoInitializerItem`:
+- `Component`: В отличие от [Добавления простого блока Simple Block](/plugin-samples/schema-initializer/block-simple), где использовался `type`, здесь используется `Component`. Оба способа допустимы, см. [Два способа определения компонента и типа](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#two-ways-to-define-component-and-type).
+- `useComponentProps`: Свойства компонента `DataBlockInitializer`:
+  - `title`: Заголовок.
+  - `icon`: Иконка, список доступных иконок см. в [Ant Design Icons](https://ant.design/components/icon/).
+  - `componentType`: Тип компонента, здесь `Info`.
+  - `onCreateBlockSchema`: Обработчик клика по таблице данных:
+    - `item`: Информация о выбранной таблице:
+      - `item.name`: Имя таблицы.
+      - `item.dataSource`: Источник данных таблицы.
+  - [useSchemaInitializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#useschemainitializer): Предоставляет методы для вставки схемы.
+- `"x-toolbar": "BlockSchemaToolbar"`: Используется для отображения имени текущей таблицы в левом верхнем углу, обычно применяется с `DataBlockProvider`.
 
-更多关于 Schema Initializer 的定义可以参考 [Schema Initializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer) 文档。
+Подробности о создании SchemaInitializer см. в [Schema Initializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer).
 
+### 5. Реализация SchemaSettings
 
+#### 5.1 Определение SchemaSettings
 
+Для полноценного блока требуется SchemaSettings для настройки свойств и операций. В этом примере реализована только операция `remove`, так как SchemaSettings не является основным фокусом.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### 5. 实现 Schema Settings
-
-#### 5.1 定义 Schema Settings
-
-一个完整的 Block 还需要有 Schema Settings，用于配置一些属性和操作，但 Schema Settings 不是本示例的重点，所以我们这里仅有一个 `remove` 操作。
-
-我们新建 `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/settings/index.ts` 文件：
+Создайте файл `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/settings/index.ts`:
 
 ```ts
 import { SchemaSettings } from "@nocobase/client";
@@ -445,7 +403,7 @@ export const infoSettings = new SchemaSettings({
 })
 ```
 
-#### 5.2 注册 Schema Settings
+#### 5.2 Регистрация SchemaSettings
 
 ```ts
 import { Plugin } from '@nocobase/client';
@@ -461,9 +419,9 @@ export class PluginInitializerBlockDataClient extends Plugin {
 export default PluginInitializerBlockDataClient;
 ```
 
-#### 5.3 使用 Schema Settings
+#### 5.3 Использование SchemaSettings
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/schema/index.ts` 文件的 `getInfoSchema` 方法，将 `x-settings` 设置为 `infoSettings.name`。
+Обновите метод `getInfoSchema` в `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/schema/index.ts`, добавив `x-settings`:
 
 ```diff
 + import { infoSettings } from "../settings";
@@ -478,21 +436,19 @@ export function getInfoSchema({ dataSource = 'main', collection }) {
 }
 ```
 
-### 6. 添加到 Add block 中
+### 6. Добавление в `Add block`
 
-系统中有很多个 `Add block` 按钮，但他们的 **name 是不同的**。
+В системе есть множество кнопок `Add block`, но их имена (`name`) различны.
 
 ![img_v3_02b4_049b0a62-8e3b-420f-adaf-a6350d84840g](https://static-docs.nocobase.com/img_v3_02b4_049b0a62-8e3b-420f-adaf-a6350d84840g.jpg)
 
-#### 6.1 添加到页面级别 Add block 中
+#### 6.1 Добавление в `Add block` на уровне страницы
 
-如果我们需要添加到页面级别的 `Add block` 中，我们需要知道对应的 `name`，我们可以通过 TODO 方式查看对应的 `name`。
+Чтобы добавить блок в `Add block` на уровне страницы, необходимо знать соответствующий `name`. Способ получения `name` описан в документации (TODO).
 
-TODO
+Из изображения видно, что `Add block` на уровне страницы имеет `name` `page:addBlock`, а группа `Data Blocks` — `name` `dataBlocks`.
 
-通过上图可以看到页面级别的 `Add block` 对应的 name 为 `page:addBlock`，`Data Blocks` 对应的 name 为 `dataBlocks`。
-
-然后我们修改 `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/index.tsx` 文件：
+Обновите файл `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/index.tsx`:
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
@@ -517,18 +473,17 @@ export default PluginDataBlockInitializerClient;
 
 <video controls width='100%' src="https://static-docs.nocobase.com/20240526170424_rec_.mp4"></video>
 
-#### 6.2 添加到弹窗 Add block 中
+#### 6.2 Добавление в `Add block` во всплывающем окне
 
-我们不仅需要将其添加到页面级别的 `Add block` 中，还需要将其添加到 `Table` 区块 `Add new` 弹窗的 `Add block` 中。
+Необходимо добавить блок в `Add block` во всплывающем окне `Add new` блока `Table`.
 
 ![img_v3_02b4_fc47fe3a-35a1-4186-999c-0b48e6e001dg](https://static-docs.nocobase.com/img_v3_02b4_fc47fe3a-35a1-4186-999c-0b48e6e001dg.jpg)
 
-我们按照页面级别获取 `name` 的方式获取到 `Table` 区块的 `Add block` 的 `name` 为 `popup:addNew:addBlock`，`Data Blocks` 对应的 name 为 `dataBlocks`。
+Аналогично, определите `name` для `Add block` блока `Table`, который равен `popup:addNew:addBlock`, а для группы `Data Blocks` — `dataBlocks`.
 
-然后修改 `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/index.tsx` 文件：
+Обновите файл `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/index.tsx`:
 
 ```diff
-import { Plugin } from '@nocobase/client';
 import { Plugin } from '@nocobase/client';
 import { Info } from './component';
 import { useInfoProps } from './schema';
@@ -548,18 +503,17 @@ export class PluginDataBlockInitializerClient extends Plugin {
 }
 
 export default PluginDataBlockInitializerClient;
-
 ```
 
 ![img_v3_02b4_7062bfab-5a7b-439c-b385-92c5704b6b3g](https://static-docs.nocobase.com/img_v3_02b4_7062bfab-5a7b-439c-b385-92c5704b6b3g.jpg)
 
-#### 6.3 添加到移动端 Add block 中
+#### 6.3 Добавление в `Add block` мобильной версии
 
-> 首先要激活移动端插件，参考 [激活插件](/welcome/getting-started/plugin#3-activate-the-plugin) 文档。
+> Сначала активируйте плагин для мобильной версии, см. [Активация плагина](/welcome/getting-started/plugin#3-activate-the-plugin).
 
-我们可以将其添加到移动端的 `Add block` 中，获取 `name` 的方法这里就不再赘述了。
+Добавьте блок в `Add block` мобильной версии. Способ получения `name` здесь не описывается.
 
-然后修改 `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/index.tsx` 文件：
+Обновите файл `packages/plugins/@nocobase-sample/plugin-initializer-block-data/src/client/index.tsx`:
 
 ```diff
 import { Plugin } from '@nocobase/client';
@@ -584,22 +538,22 @@ export class PluginDataBlockInitializerClient extends Plugin {
 export default PluginDataBlockInitializerClient;
 ```
 
-如果需要更多的 `Add block`，可以继续添加，只需要知道对应的 `name` 即可。
+Для добавления в другие `Add block` достаточно знать соответствующий `name`.
 
-## 打包和上传到生产环境
+## Сборка и развертывание в продакшен
 
-按照 [构建并打包插件](/development/your-fisrt-plugin#构建并打包插件) 文档说明，我们可以打包插件并上传到生产环境。
+Следуйте инструкциям из документации [Сборка и упаковка плагина](/development/your-fisrt-plugin#сборка-и-упаковка-плагина) для сборки и развертывания плагина.
 
-如果是 clone 的源码，需要先执行一次全量 build，将插件的依赖也构建好。
+Если вы используете клонированный исходный код, выполните полную сборку, чтобы собрать зависимости плагина:
 
 ```bash
 yarn build
 ```
 
-如果是使用的 `create-nocobase-app` 创建的项目，可以直接执行：
+Если проект создан с помощью `create-nocobase-app`, выполните:
 
 ```bash
 yarn build @nocobase-sample/plugin-initializer-block-data --tar
 ```
 
-这样就可以看到 `storage/tar/@nocobase-sample/plugin-initializer-block-data.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
+После этого в папке `storage/tar/@nocobase-sample/plugin-initializer-block-data.tar.gz` появится архив плагина. Установите его через [загрузку](/welcome/getting-started/plugin).

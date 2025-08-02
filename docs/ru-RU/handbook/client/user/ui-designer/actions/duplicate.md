@@ -1,79 +1,65 @@
-# Duplicate
+# Операция "Дублирование"
 
-The Duplicate operation enables users to duplicate a row of data to create new records, offering two methods: **direct duplicate** and **copy into the form and continue to fill in**.
+Операция "Дублирование" позволяет пользователям копировать строку данных для создания новых записей, предлагая два метода: **прямое дублирование** и **копирование в форму с последующим заполнением**.
 
-## Direct Duplicate
+## Прямое дублирование
 
-![Direct Duplicate](https://static-docs.nocobase.com/2c0ac5d1a539de4b72b49b7d966d8c09.png)
+![Прямое дублирование](https://static-docs.nocobase.com/2c0ac5d1a539de4b72b49b7d966d8c09.png)
 
-- By default, the data is copied directly.
-- Target Data Table: This is the table where the copied data will be added. In cases involving inheritance, it can be copied to a sub-table; however, direct Duplicate only adds data to the current table.
-- Template Fields: These specify the fields to be copied, allowing for full selection. This configuration is mandatory.
+- По умолчанию данные копируются напрямую.
+- Целевая таблица: Таблица, в которую будут добавлены скопированные данные. В случаях с наследованием можно копировать в дочернюю таблицу, но прямое дублирование добавляет данные только в текущую таблицу.
+- Шаблонные поля: Определяют, какие поля будут скопированы (можно выбрать все). Эта настройка обязательна.
 
-Once the configuration is complete, simply click the button to duplicate the data.
+После завершения конфигурации достаточно нажать кнопку для дублирования данных.
 
-## Copy into the form and continue to fill in
+## Копирование в форму с заполнением
 
-The template fields you configure will populate the form with default values, which can be modified before submission.
+Настроенные шаблонные поля заполнят форму значениями по умолчанию, которые можно изменить перед отправкой.
 
-You can choose either the current table or a sub-table as the target table for adding the copied data.
+Можно выбрать либо текущую таблицу, либо дочернюю таблицу в качестве цели для добавления скопированных данных.
 
-![Copy to Form](https://static-docs.nocobase.com/a072aa572fd0a0fe643eadf95471da2a.png)
+![Копирование в форму](https://static-docs.nocobase.com/a072aa572fd0a0fe643eadf95471da2a.png)
 
-Configure Template Fields: Template fields will serve as default values in the form, only including the values of selected fields.
+**Настройка шаблонных полей:** Значения выбранных полей будут использованы как значения по умолчанию в форме.
 
-![Configure Template Fields](https://static-docs.nocobase.com/8032fa2025180ade275da55b97774b4d.png)
+![Настройка шаблонных полей](https://static-docs.nocobase.com/8032fa2025180ade275da55b97774b4d.png)
 
-The "Waybill" (o2m) relationship is duplicated. Adjust its field component to a sub-form, where you can configure the sub-form fields.
+**Пример:** Отношение "Накладная" (o2m) дублируется. Его полевой компонент можно изменить на подформу, где можно настроить поля подформы.
 
-![Waybill Relationship](https://static-docs.nocobase.com/b13c9287bae8601646727a2e78b81be7.png)
+![Отношение накладной](https://static-docs.nocobase.com/b13c9287bae8601646727a2e78b81be7.png)
 
-Sync Form Fields: After configuring the form, click the sync form fields button. This will automatically select all configured fields within the form (note: each time the form field configuration is modified, it must be manually synced again). After syncing, you can further customize the template fields.
+**Синхронизация полей формы:** После настройки формы нажмите кнопку синхронизации - это автоматически выберет все настроенные поля (примечание: после каждого изменения конфигурации полей синхронизацию нужно выполнять вручную). После синхронизации можно дополнительно настроить шаблонные поля.
 
-![Sync Form Fields](https://static-docs.nocobase.com/156b6d8d741521e63d12e49092414d58.png)
+![Синхронизация полей формы](https://static-docs.nocobase.com/156b6d8d741521e63d12e49092414d58.png)
 
-Clicking the Duplicate button will open a pop-up window, where the template data will populate the form with default values. You can then modify the data before submission to complete the copy process.
+При нажатии кнопки "Дублировать" откроется всплывающее окно с формой, заполненной значениями по умолчанию. Данные можно изменить перед отправкой для завершения копирования.
 
-![Duplicate Operation Example](https://static-docs.nocobase.com/1c0a0ae0c59971f48b2282a68831d44b.png)
+![Пример операции дублирования](https://static-docs.nocobase.com/1c0a0ae0c59971f48b2282a68831d44b.png)
 
-The complete example below demonstrates how to configure the duplicate operation within an order list.
+Полный пример ниже демонстрирует настройку операции дублирования в списке заказов.
 
-![Order List duplicate Example](https://static-docs.nocobase.com/fa8a89abf0ba136df04b6d0d838eae4e.gif)
+![Пример дублирования списка заказов](https://static-docs.nocobase.com/fa8a89abf0ba136df04b6d0d838eae4e.gif)
 
-## Explanation of Different, Reference, and Preload
+## Логика обработки для разных типов отношений
 
-Different fields (with different relationship types) follow distinct processing logics, such as duplicate, reference, and preload. Adjusting field components within relationship fields also influences the processing logic. For example, Select and Record Picker handle reference relationships, while Sub-form and Sub-table manage copy relationships.
+Поля с разными типами отношений (копирование, ссылка, предзагрузка) обрабатываются по-разному. Выбор полевых компонентов также влияет на логику обработки.
 
-- Duplicate
+- **Копирование**:
+  - Стандартные поля дублируются
+  - Отношения hasOne/hasMany только копируются
+  - Все дочерние поля доступны для выбора
 
-  - Standard fields are duplicated.
-  - The relationship fields of hasOne and hasMany can only be copied (i.e., these types of relationship fields cannot use Select or Record Picker as field components; instead, Sub-form or Sub-table should be used).
-    - Changes to the field components of hasOne and hasMany do not alter the processing logic (copy).
-    - In copied relationship fields, all child fields are selectable.
+- **Ссылка**:
+  - Отношения belongsTo/belongsToMany являются ссылочными
+  - Можно преобразовать в копирование (например, изменив компонент с select на sub-form)
 
-- Reference
+- **Предзагрузка**:
+  - Отношения внутри ссылочных полей
+  - Могут стать ссылками или копиями после изменения компонентов
 
-  - belongsTo and belongsToMany are references.
-  - **References can be converted into copies. For instance, if the field component is changed from select to sub-form, the relationship transitions from reference to copy (after conversion, all child fields become selectable).**
+## Особенности
 
-- Preload: Relationship fields within referenced fields
-
-  - These relationship fields are preloaded.
-  - Preloaded relationship fields may shift to reference or copy following adjustments to the field components.
-
-## About Select All
-
-- All copy fields are selected.
-- All reference fields are selected.
-
-## Template Data Processing Logic
-
-- All foreign key fields in relationships are filtered out.
-- For copied relationships, primary key fields are also filtered out.
-- References and preloads retain their primary key fields.
-
-## Understanding Sync Form Fields
-
-In most cases, form configurations involve a large number of fields. Managing such complex forms manually can be cumbersome. To streamline this process, the sync form fields button has been introduced. This feature automatically analyzes the form field configurations and applies the appropriate copy logic—whether copy, reference, or preload—based on the field types and relationship field components. Fields that have already been configured are selected by default.
-
-After any modifications to the form field configurations, the system does not automatically update these changes. Therefore, users need to manually click the sync form fields button to apply the latest configuration to the template settings.
+- При копировании исключаются внешние ключи и первичные ключи скопированных отношений
+- При ссылках и предзагрузке первичные ключи сохраняются
+- Кнопка синхронизации автоматически анализирует конфигурацию формы и применяет соответствующую логику копирования
+- После изменений в форме синхронизацию нужно выполнять вручную

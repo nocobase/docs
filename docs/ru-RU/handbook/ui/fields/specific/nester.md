@@ -1,40 +1,40 @@
-# Nester
+### **Вложенная форма (Nester)**
 
-## Introduction
+#### **Введение**
 
-Sub-form offer an elegant solution for scenarios where relational data needs to be created before association. They present multi-level relational data in a clear, nested structure. Unlike data selectors and dropdown menus, subforms allow direct management of relational table fields within the current page block. Moreover, they ensure that relational data is submitted seamlessly alongside the main form.
+Вложенные формы — это удобное решение для сценариев, в которых связанные данные необходимо создать до их привязки. Они позволяют отображать многоранговые связанные данные в виде чёткой вложенной структуры. В отличие от выбора данных и выпадающих списков, вложенные формы дают возможность напрямую управлять полями связанной таблицы в рамках текущего блока страницы. Кроме того, они обеспечивают одновременную отправку связанных данных вместе с основной формой.
 
-## Usage Instructions
+#### **Инструкция по использованию**
 
-### Subforms for Many-to-Many Relationships
+##### **Вложенные формы для связей «многие ко многим»**
 
 ![20240409213911](https://static-docs.nocobase.com/20240409213911.png)
 
-Effortlessly display nested multi-level relationship fields, such as products and their associated inventory.
+Удобное отображение вложенных многоуровневых связей, например, товаров и их остатков на складе.
 
 ![20240422172545](https://static-docs.nocobase.com/20240422172545.png)
 
-### Subforms for One-to-One Relationships
+##### **Вложенные формы для связей «один к одному»**
 
 ![20240409214419](https://static-docs.nocobase.com/20240422172545.png)
 
-## Field Configuration Options
+#### **Параметры настройки поля**
 
-### Multiple Record Addition/Association (Enabled by Default)
+##### **Добавление/связывание нескольких записей (включено по умолчанию)**
 
-When activated, this feature allows users to add multiple records with a simple click of the + icon.
+При активации этой функции пользователи могут добавлять несколько записей, просто нажимая на значок «+».
 
 ![20240422172237](https://static-docs.nocobase.com/20240422172237.png)
 
-### Field Component
+##### **Компонент поля**
 
-[Field Component](/handbook/ui/fields/association-field): Switch to other relationship field components, such as dropdown select, data selector, etc.
+[Компонент поля](/handbook/ui/fields/association-field): переключение на другие компоненты полей связи, например, выпадающий список, выбор данных и др.
 
-### Linkage Rules
-:::info{title=Tip}
-The version of NocoBase needs to be v1.3.17-beta or above.
+##### **Правила связывания**
+:::info{title=Подсказка}
+Требуется версия NocoBase **v1.3.17-beta или выше**.
 :::
 
 ![20240906083737_rec_](https://static-docs.nocobase.com/20240906083737_rec_.gif)
 
-For more information, refer to [Linkage Rules](/handbook/ui/blocks/block-settings/field-linkage-rule)
+Более подробную информацию см. в разделе [Правила связывания](/handbook/ui/blocks/block-settings/field-linkage-rule)

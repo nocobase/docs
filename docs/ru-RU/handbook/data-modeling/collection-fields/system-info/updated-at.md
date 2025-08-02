@@ -1,11 +1,11 @@
-# Updated At
+# Обновлено по адресу
 
-## Introduction
+## Введение
 
-## Field configuration
+## Конфигурация поля
 
 ![20240512174826](https://static-docs.nocobase.com/20240512174826.png)
 
-## Instructions
+## Инструкции
 
-to be added.
+будут добавлены позднее.

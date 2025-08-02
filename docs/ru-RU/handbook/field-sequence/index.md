@@ -1,13 +1,13 @@
-# Sequence
+# Последовательность
 
-<PluginInfo name="field-sequence"></PluginInfo>
+<Имя плагина="последовательность полей"></PluginInfo>
 
-## Introduction
+## Введение
 
-## Field Configuration
+## Конфигурация поля
 
 ![20240512173752](https://static-docs.nocobase.com/20240512173752.png)
 
-## Example
+## Пример
 
-To be added
+Который будет добавлен

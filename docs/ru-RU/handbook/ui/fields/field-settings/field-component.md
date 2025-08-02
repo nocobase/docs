@@ -1,8 +1,8 @@
-# Field Component
+# Компонент поля
 
-## Introduction
+## Введение
 
-Certain fields support multiple components, allowing us to select the most appropriate one to display the field’s value. For instance, the `URL` component can be switched to a `Preview` component.
+Некоторые поля поддерживают несколько компонентов, что позволяет нам выбрать наиболее подходящий для отображения значения поля. Например, компонент `URL" можно переключить на компонент `Предварительный просмотр`.
 
 ![20240807092556](https://static-docs.nocobase.com/20240807092556.png)
 
@@ -10,4 +10,4 @@ Certain fields support multiple components, allowing us to select the most appro
 
 ![20240807092859](https://static-docs.nocobase.com/20240807092859.png)
 
-If you need to expand more components, referring to [Expand Value Field Components](/plugin-samples/field/value)。
+Если вам нужно развернуть дополнительные компоненты, обратитесь к [Развернуть компоненты поля значений](/plugin-samples/field/value).。

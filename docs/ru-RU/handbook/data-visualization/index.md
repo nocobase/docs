@@ -1,33 +1,33 @@
-# Data Visualization
+# Визуализация данных
 
 <PluginInfo name="data-visualization"></PluginInfo>
 
-## Introduction
+## Введение
 
-The NocoBase data visualization plugin provides robust data retrieval features and a rich variety of chart components. Based on system Collection data, users can quickly build visual dashboards, organize charts with flexibility, and conduct insightful business data analysis.
+Плагин визуализации данных NocoBase предоставляет мощные функции извлечения данных и богатый набор компонентов диаграмм. На основе данных из коллекций системы пользователи могут быстро создавать наглядные дашборды, гибко организовывать диаграммы и проводить глубокий анализ бизнес-данных.
 
 ![](https://static-docs.nocobase.com/51be43d5400d6294f6c20d11009f23c4.png)
 
-## Installation
+## Установка
 
-This is a built-in plugin, so no additional installation is required.
+Это встроенный плагин — дополнительная установка не требуется.
 
-## Related Documentation
+## Сопутствующая документация
 
-- User Manual
-  - [Chart Block](./user/chart-block.md)
-  - [Configuring Charts](./user/configure.md)
-  - [Filter Block](./user/filter.md)
-- Developer Guide
-  - [API Reference](./dev/index.md)
-  - [Step-by-Step Tutorial](./step-by-step/index.md)
-- [FAQ](./faq.md)
+- Руководство пользователя
+  - [Блок диаграммы](./user/chart-block.md)
+  - [Настройка диаграмм](./user/configure.md)
+  - [Блок фильтра](./user/filter.md)
+- Руководство для разработчиков
+  - [Справка по API](./dev/index.md)
+  - [Пошаговое руководство](./step-by-step/index.md)
+- [Часто задаваемые вопросы (FAQ)](./faq.md)
 
-## RoadMap
+## План развития
 
-- Simplified data processing and transformation
-- Ability to add charts in pop-up windows
-- Embed other blocks (e.g., Markdown) in chart blocks
-- Save configurations as templates
-- Enable data drill-down
-- Improved permissions control
+- Упрощённая обработка и преобразование данных
+- Возможность добавления диаграмм в всплывающие окна
+- Встраивание других блоков (например, Markdown) внутрь блоков диаграмм
+- Сохранение настроек в виде шаблонов
+- Реализация детализации данных (drill-down)
+- Улучшенный контроль прав доступа

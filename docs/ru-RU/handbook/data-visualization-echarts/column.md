@@ -1,40 +1,40 @@
-# Column Chart
+# Столбчатая диаграмма (по вертикали)
 
-## Data Configuration
+## Настройка данных
 
-### 1 or More Measures, 1 Dimension
+### 1 или более показателей, 1 измерение
 
-![1 or More Measures, 1 Dimension](https://static-docs.nocobase.com/202410091058207.png)
+![1 или более показателей, 1 измерение](https://static-docs.nocobase.com/202410091058207.png)
 
-### 1 Measure, 1 Axis Dimension, 1 Category Dimension
+### 1 показатель, 1 измерение по оси, 1 категориальное измерение
 
-Configure 1 measure and 2 dimensions. 1 dimension serves as the X-axis field (X field), and the other as the Series field.
+Настройте 1 показатель и 2 измерения. Одно измерение используется как поле по оси X, другое — как поле для серии (категорий).
 
-![1 Measure, 1 Axis Dimension, 1 Category Dimension](https://static-docs.nocobase.com/202410091105937.png)
+![1 показатель, 1 измерение по оси, 1 категориальное измерение](https://static-docs.nocobase.com/202410091105937.png)
 
-## Configuration Options
+## Параметры настройки
 
-| Option                     | Description                                                                                           |
+| Параметр                     | Описание                                                                                           |
 | -------------------------- | ----------------------------------------------------------------------------------------------------- |
-| xField                      | Dimension field for the X-axis                                                                        |
-| seriesField                 | Dimension field for categorization                                                                    |
-| Size                        | Set the chart size, either with a fixed aspect ratio or a fixed height                                |
-| Light mode theme            | Preview the chart when the system is in light mode                                                    |
-| Dark mode theme             | Preview the chart when the system is in dark mode                                                     |
-| Show legend                 | Toggle the visibility of the legend                                                                   |
-| Legend orient Legend orient | Set the orientation of the legend, either horizontal or vertical                                      |
-| Legend position (left, bottom, right, top) | Set the position of the legend relative to the chart                                           |
-| Label type                  | Control whether to display labels and which type of labels to show                                    |
-| Label position              | Set the position of the labels, such as top, inside, or inside top                                    |
-| Stack                       | Control whether the bars are stacked, with options for no stacking, stacking, or percentage stacking  <br /> ![Stacking Options](https://static-docs.nocobase.com/202410091108049.png) |
-| Bar width (min, max)        | Control the width of the bars, which can be a fixed value, percentage, or even negative values         |
-| Bar gap                     | Set the spacing between bars, as a percentage of the bar width                                        |
-| Bar category gap            | Set the spacing between different categories, as a percentage of the bar width                        |
-| Color by                    | Set bar colors by category or by data                                                                 |
-| Colors                      | Fine-tune the color for each category                                                                 |
-| X-Axis title                | Control the display position of the X-axis title                                                      |
-| Y-Axis title                | Control the display position of the Y-axis title                                                      |
-| X-Axis label rotate         | Adjust the rotation angle of the X-axis labels to display more labels when they are dense             |
-| Padding                     | Adjust the chart's inner padding                                                                      |
-| Split line                  | Control whether gridlines are displayed and their style                                               |
-| Mark line                   | Add marker lines with custom titles, values, and colors                                               | 
+| xField                      | Поле измерения для оси X                                                                        |
+| seriesField                 | Поле измерения для категоризации                                                                    |
+| Размер                        | Установите размер диаграммы — с фиксированным соотношением сторон или фиксированной высотой                                |
+| Тема в светлом режиме            | Предварительный просмотр диаграммы при включённой светлой теме системы                                                    |
+| Тема в тёмном режиме             | Предварительный просмотр диаграммы при включённой тёмной теме системы                                                     |
+| Отображать легенду                 | Включить или скрыть отображение легенды                                                                   |
+| Ориентация легенды                 | Установите ориентацию легенды: горизонтальная или вертикальная                                      |
+| Положение легенды (слева, снизу, справа, сверху) | Установите положение легенды относительно диаграммы                                           |
+| Тип меток                  | Управление отображением меток и их типом (например, значение, процент и т.д.)                                    |
+| Положение меток              | Установите положение меток: сверху, внутри столбца, внутри и сверху и т.д.                                    |
+| Стек (Stack)                       | Управление группировкой столбцов: без группировки, по стеку или по стеку в процентах<br />![Варианты стека](https://static-docs.nocobase.com/202410091108049.png) |
+| Ширина столбца (мин., макс.)        | Управление шириной столбцов — может быть фиксированной, в процентах, включая отрицательные значения         |
+| Промежуток между столбцами                     | Установите расстояние между столбцами, выраженное в процентах от ширины столбца                                        |
+| Промежуток между категориями            | Установите расстояние между разными категориями, выраженное в процентах от ширины столбца                        |
+| Цвет по                    | Установите цвет столбцов по категориям или по данным                                                                 |
+| Цвета                      | Точный контроль цвета для каждой категории                                                                 |
+| Заголовок оси X                | Управление положением заголовка оси X                                                      |
+| Заголовок оси Y                | Управление положением заголовка оси Y                                                      |
+| Поворот меток оси X         | Настройте угол поворота меток оси X, чтобы отображать больше меток при их плотном расположении             |
+| Внутренние отступы (Padding)                     | Настройте внутренние отступы диаграммы                                                                      |
+| Линии сетки (Split line)                  | Управление отображением линий сетки и их стилем                                               |
+| Маркерная линия (Mark line)                   | Добавьте линии-маркеры с пользовательскими заголовками, значениями и цветами                                               |

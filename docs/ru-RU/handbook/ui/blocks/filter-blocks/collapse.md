@@ -1,38 +1,38 @@
 # Collapse Filter Block
 
-## Introduction
+## Введение
 
-The Collapse filtering block needs to be used in connection with the data block to provide filtering capabilities for the data block. It supports selecting association fields and option fields as filtering fields, and displays them in a collapsible panel effect.
+Блок фильтрации Collapse необходимо использовать в связке с блоком данных для предоставления возможностей фильтрации для блока данных. Он поддерживает выбор связанных полей и полей с опциями в качестве фильтрующих полей, отображая их в свертываемом панельном виде.
 
-## Adding Block
+## Добавление блока
 
 ![20240408212222](https://static-docs.nocobase.com/20240408212222.png)
 
-Example: Configure the order collapse block and order table block to achieve filter linkage.
+Пример: Настройка блока сворачивания заказов и блока таблицы заказов для реализации связанной фильтрации.
 
-  <video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240408212817.mp4" type="video/mp4">
-    </video>
+<video width="100%" height="440" controls>
+    <source src="https://static-docs.nocobase.com/20240408212817.mp4" type="video/mp4">
+</video>
 
-## Block Settings
+## Настройки блока
 
 ![20240421173427](https://static-docs.nocobase.com/20240421173427.png)
 
-### Connecting Data Blocks
+### Подключение блоков данных
 
-Example: Connect the same data table block in the pop-up window to achieve filter linkage.
+Пример: Подключение того же блока таблицы данных во всплывающем окне для реализации связанной фильтрации.
 
-  <video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240408214743.mp4" type="video/mp4">
-    </video>
+<video width="100%" height="440" controls>
+    <source src="https://static-docs.nocobase.com/20240408214743.mp4" type="video/mp4">
+</video>
 
-For more content, refer to [Connecting Data Blocks](/handbook/ui/blocks/block-settings/connect-block)
+Для получения дополнительной информации см. [Подключение блоков данных](/handbook/ui/blocks/block-settings/connect-block)
 
-- [Edit Block Title](/handbook/ui/blocks/block-settings/block-title)
-- [Save as Block Template](/handbook/block-template)
+- [Редактирование заголовка блока](/handbook/ui/blocks/block-settings/block-title)
+- [Сохранение как шаблон блока](/handbook/block-template)
 
-## Configuring Fields
+## Настройка полей
 
-Only relational fields and option fields are supported as filter fields.
+Только реляционные поля и поля с опциями поддерживаются в качестве фильтрующих полей.
 
 ![20240408212301](https://static-docs.nocobase.com/20240408212301.png)

@@ -1,13 +1,14 @@
-# Pie Chart
+# Круговая диаграмма (Pie Chart)
 
-## Data Configuration
+## Настройка данных
 
-### 1 Metric, 1 Dimension
+### 1 метрика, 1 измерение
 
-![1 Metric, 1 Dimension](https://static-docs.nocobase.com/202410101131823.png)
+![1 метрика, 1 измерение](https://static-docs.nocobase.com/202410101131823.png)
 
-## Configuration Options
+## Параметры конфигурации
 
-| Option   | Description                                                       |
-| -------- | ----------------------------------------------------------------- |
-| Size     | Adjust the chart size, either by maintaining a fixed aspect ratio or setting a fixed height. |
+| Параметр | Описание                                                                 |
+|----------|--------------------------------------------------------------------------|
+| Размер   | Настройка размера диаграммы (фиксированное соотношение сторон или высота) |
+

@@ -1,13 +1,13 @@
 # SchemaSettings
 
-[SchemaSettings](/development/client/ui-schema/settings) 通过修改 Schema 动态配置区块、字段、操作的属性。
+[SchemaSettings](/development/client/ui-schema/settings) позволяет динамически настраивать свойства блоков, полей и операций путем изменения схемы.
 
-根据需求不同可能有以下扩展场景：
+В зависимости от потребностей могут быть следующие сценарии расширения:
 
-- 向已有的 SchemaSettings 中添加子项
-- 创建新的 SchemaSettings
+- Добавление элементов в существующие SchemaSettings
+- Создание новых SchemaSettings
 
-根据以上场景，我们提供了如下示例：
+Для этих сценариев предоставлены следующие примеры:
 
-- [创建新的 SchemaSettings](/plugin-samples/schema-settings/new)
-- [添加子项到已有的 SchemaSettings](/plugin-samples/schema-settings/add-item)
+- [Создание новых SchemaSettings](/plugin-samples/schema-settings/new)
+- [Добавление элементов в существующие SchemaSettings](/plugin-samples/schema-settings/add-item)

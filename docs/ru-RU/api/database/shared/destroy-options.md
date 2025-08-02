@@ -1,17 +1,31 @@
-**Type**
+# Интерфейс DestroyOptions
 
 ```typescript
 interface DestroyOptions extends SequelizeDestroyOptions {
-  filter?: Filter;
-  filterByTk?: TargetKey | TargetKey[];
-  truncate?: boolean;
-  context?: any;
+  filter?: Filter;          // Условия фильтрации для удаляемых записей
+  filterByTk?: TargetKey | TargetKey[];  // Фильтрация по целевому ключу
+  truncate?: boolean;       // Флаг очистки таблицы
+  context?: any;            // Контекст выполнения
 }
 ```
 
-**Details**
+## Описание параметров
 
-- `filter`: Specifies the filtering conditions for the records to be deleted. For detailed usage of Filter, refer to the [`find()`](#find) method.
-- `filterByTk`: Specifies the filtering conditions for the records to be deleted by TargetKey.
-- `truncate`: Whether to truncate the table data, effective when no `filter` or `filterByTk` parameters are passed.
-- `transaction`: Transaction object. If no transaction parameter is passed, the method will automatically create an internal transaction.
+1. **filter**  
+   Определяет условия фильтрации для удаляемых записей.  
+   *Подробнее об использовании Filter см. в методе [`find()`](#find).*
+
+2. **filterByTk**  
+   Позволяет указать условия фильтрации по целевому ключу (TargetKey).  
+   *Может принимать как одиночное значение ключа, так и массив ключей.*
+
+3. **truncate**  
+   Флаг, определяющий нужно ли очищать всю таблицу.  
+   *Действительно только если не переданы параметры `filter` или `filterByTk`.*
+
+4. **transaction**  
+   Объект транзакции.  
+   *Если параметр не указан, метод автоматически создает внутреннюю транзакцию.*
+
+5. **context**  
+   Контекст выполнения операции, может содержать дополнительную информацию.

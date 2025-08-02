@@ -1,16 +1,16 @@
-# Plugin Management
+# Управление плагинами
 
 <PluginInfo name="plugin-manager"></PluginInfo>
 
 
-## Plugin Manager 
+## Менеджер плагинов 
 
-By clicking the plugin manager icon in the top right corner, you can access the plugin manager page. Here, you can view, install, enable, and disable plugins.
+Нажав на значок менеджера плагинов в правом верхнем углу, вы можете перейти на страницу менеджера плагинов. Здесь вы можете просматривать, устанавливать, включать и отключать плагины.
 
 ![2024-04-10_08-47-45](https://static-docs.nocobase.com/2024-04-10_08-47-45.png)
 
-## Plugin Settings Center
+## Центр настроек плагинов
 
-Plugins usually come with their own settings page. By clicking on the settings icon in the top right corner, you can see the menu of all plugin settings pages. By clicking on the relevant menu, you can set the corresponding plugin.
+Плагины обычно поставляются со своей собственной страницей настроек. Нажав на значок настроек в правом верхнем углу, вы можете увидеть меню всех страниц настроек плагина. Нажав на соответствующее меню, вы можете установить соответствующий плагин.
 
 ![2024-04-10_08-52-41](https://static-docs.nocobase.com/2024-04-10_08-52-41.png)

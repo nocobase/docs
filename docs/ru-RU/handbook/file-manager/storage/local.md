@@ -1,18 +1,18 @@
-# Local storage
+# Локальное хранилище
 
-The uploaded files will be saved in a local directory on the server. Suitable for scenarios small scale or experimental usage, which the quantity of files is finite.
+Загружаемые файлы сохраняются в локальной директории на сервере. Подходит для небольших или тестовых сценариев использования, где количество файлов ограничено.
 
-## Options
+## Настройки
 
-![Example of file storage engine options](https://static-docs.nocobase.com/20240529115151.png)
+![Пример параметров движка хранилища файлов](https://static-docs.nocobase.com/20240529115151.png)
 
-:::info{title=Hint}
-This section only covers the specific options for the local storage engine. For common parameters, please refer to the [General Engine Parameters](./index.md#general-engine-parameters).
+:::info{title=Подсказка}
+В этом разделе описаны только специфические параметры локального хранилища. Общие параметры см. в разделе [Общие параметры хранилища](./index.md#general-engine-parameters).
 :::
 
-### Path
+### Путь
 
-The path represents both the relative path of the file stored on the server and the URL access path. For example, "`user/avatar`" (without the leading and trailing "`/`") represents:
+Путь определяет как относительный путь к файлу на сервере, так и путь для доступа по URL. Например, значение `user/avatar` (без начального и конечного символа `/`) означает:
 
-1. The relative path of the uploaded file stored on the server: `/path/to/nocobase-app/storage/uploads/user/avatar`.
-2. The URL prefix for accessing the file: `http://localhost:13000/storage/uploads/user/avatar`.
+1. Относительный путь к загруженному файлу на сервере: `/path/to/nocobase-app/storage/uploads/user/avatar`.
+2. Префикс URL для доступа к файлу: `http://localhost:13000/storage/uploads/user/avatar`.

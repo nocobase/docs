@@ -1,24 +1,24 @@
-# Adding a Popup Action
+# Добавление действия с модальным окном
 
-## Scenario Description
+## Описание сценария
 
-In NocoBase, there are many `Configure actions` used to add operation buttons to the interface.
+В NocoBase существует множество кнопок `Configure actions`, используемых для добавления операционных кнопок в интерфейс.
 
 ![img_v3_02b4_51f4918f-d344-43b2-b19e-48dca709467g](https://static-docs.nocobase.com/img_v3_02b4_51f4918f-d344-43b2-b19e-48dca709467g.jpg)
 
-If the existing action buttons do not fully meet our needs, we can add sub-items to the current `Configure actions` to create new action buttons.
+Если существующие кнопки действий не полностью удовлетворяют потребности, можно добавить новые кнопки, создав подэлементы в `Configure actions`.
 
-## Example Description
+## Описание примера
 
-In this example, we will create a button that, when clicked, opens a popup. The popup contains a document embedded in an iframe. This button will be added to the `Table`, `Details`, and `Form` blocks within the `Configure actions`.
+В этом примере создается кнопка, которая при нажатии открывает модальное окно. В окне отображается документ, встроенный через iframe. Кнопка будет добавлена в блоки `Table`, `Details` и `Form` в разделе `Configure actions`.
 
-The complete example code can be found in [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-initializer-action-modal).
+Полный код примера доступен в [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-initializer-action-modal).
 
 <video controls width='100%' src="https://static-docs.nocobase.com/20240526172851_rec_.mp4"></video>
 
-## Initializing the Plugin
+## Инициализация плагина
 
-Follow the instructions in [Creating Your First Plugin](/development/your-fisrt-plugin). If you don’t already have a project, you can create one. If you already have one or have cloned the source code, you can skip this step.
+Следуйте инструкциям из документации [Создание первого плагина](/development/your-fisrt-plugin). Если у вас нет проекта, создайте его. Если проект уже есть или вы клонировали исходный код, пропустите этот шаг.
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d sqlite
@@ -27,69 +27,71 @@ yarn install
 yarn nocobase install
 ```
 
-Next, initialize a plugin and add it to the system:
+Инициализируйте плагин и добавьте его в систему:
 
 ```bash
 yarn pm create @nocobase-sample/plugin-initializer-action-modal
 yarn pm enable @nocobase-sample/plugin-initializer-action-modal
 ```
 
-Then, start the project:
+Запустите проект:
 
 ```bash
 yarn dev
 ```
 
-After logging in, visit [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) to verify that the plugin is installed and enabled.
+После входа в систему перейдите по адресу [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/), чтобы убедиться, что плагин установлен и активирован.
 
-## Functionality Implementation
+## Реализация функциональности
 
-Before implementing this example, we need to understand some foundational knowledge:
+Перед началом работы с этим примером ознакомьтесь с основными концепциями:
 
-- [Action Component](https://client.docs.nocobase.com/components/action)
-- [SchemaInitializer Tutorial](/development/client/ui-schema/initializer): Used to add blocks, fields, actions, etc., to the interface
-- [SchemaInitializer API](https://client.docs.nocobase.com/core/ui-schema/schema-initializer): Also for adding blocks, fields, actions, etc., to the interface
-- [UI Schema](/development/client/ui-schema/what-is-ui-schema): Defines the structure and style of the interface
-- [Designable Designer](/development/client/ui-schema/designable): Used to modify the schema
+- [Компонент Action](https://client.docs.nocobase.com/components/action)
+- [Руководство по SchemaInitializer](/development/client/ui-schema/initializer): Используется для добавления блоков, полей, действий и других элементов в интерфейс.
+- [API SchemaInitializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer): Описание API для добавления элементов в интерфейс.
+- [UI Schema](/development/client/ui-schema/what-is-ui-schema): Определяет структуру и стиль интерфейса.
+- [Дизайнер Designable](/development/client/ui-schema/designable): Используется для изменения схемы.
+
+Структура проекта:
 
 ```bash
 .
-├── client # Client-side plugin
-│   ├── initializer # Initializer
-│   ├── index.tsx # Client-side plugin entry point
-│   ├── locale.ts # Localization utility functions
-│   ├── constants.ts # Constants
-│   ├── schema # Schema
+├── client # Клиентская часть плагина
+│   ├── initializer # Инициализатор
+│   ├── index.tsx # Входной файл клиентского плагина
+│   ├── locale.ts # Утилиты для мультиязычности
+│   ├── constants.ts # Константы
+│   ├── schema # Схемы
 │   └── settings # Schema Settings
-├── locale # Localization files
-│   ├── en-US.json # English
-│   └── zh-CN.json # Chinese
-├── index.ts # Server-side plugin entry point
-└── server # Server-side plugin
+├── locale # Файлы локализации
+│   ├── en-US.json # Английский
+│   └── zh-CN.json # Китайский
+├── index.ts # Входной файл серверного плагина
+└── server # Серверная часть плагина
 ```
 
-## 1. Define the Name
+## 1. Определение имени
 
-First, we need to define the action name, which will be used in several places.
+Сначала определите имя действия, которое будет использоваться в различных местах.
 
-Create the file `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/constants.ts`:
+Создайте файл `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/constants.ts`:
 
 ```ts
 export const ActionName = 'Open Document';
 export const ActionNameLowercase = 'open-document';
 ```
 
-## 2. Define the Schema
+## 2. Определение схемы
 
-### 2.1 Define the Schema
+### 2.1 Определение схемы
 
-NocoBase’s dynamic pages are rendered using schemas, so we need to define a schema for later use to add elements to the interface. Before proceeding, we need to understand the following concepts:
+Динамические страницы в NocoBase рендерятся через схемы, поэтому необходимо определить схему для добавления элементов в интерфейс. Ознакомьтесь с:
 
-- [Action Component](https://client.docs.nocobase.com/components/action)
-- [Action.Drawer Component](https://client.docs.nocobase.com/components/action#actiondrawer)
-- [UI Schema Protocol](/development/client/ui-schema/what-is-ui-schema): This document explains the structure of the schema and the purpose of each attribute
+- [Компонент Action](https://client.docs.nocobase.com/components/action)
+- [Компонент Action.Drawer](https://client.docs.nocobase.com/components/action#actiondrawer)
+- [Протокол UI Schema](/development/client/ui-schema/what-is-ui-schema): Подробное описание структуры схемы и назначения атрибутов.
 
-We will create a new file, `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/schema/index.ts`, with the following content:
+Создайте файл `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/schema/index.ts`:
 
 ```ts
 import { ISchema } from "@nocobase/client"
@@ -131,25 +133,27 @@ export const createDocumentActionModalSchema = (blockComponent: string): ISchema
 }
 ```
 
-The `createDocumentActionModalSchema` component accepts a `blockComponent` parameter and returns a schema. This schema adds a button to the interface that, when clicked, opens a popup. The popup contains an iframe with the block's document as its source.
+Функция `createDocumentActionModalSchema` принимает параметр `blockComponent` и возвращает схему, которая добавляет кнопку в интерфейс. При нажатии кнопка открывает модальное окно, содержащее iframe с документацией блока.
 
 `createDocumentActionModalSchema`:
-- `type`: Specifies the type of component. Here, it’s `void`, meaning it’s a purely UI component
-- `x-component: 'Action'`: [Action Component](https://client.docs.nocobase.com/components/action), used to generate a button
-- `title: 'Open Document'`: The title of the button
-- `properties`: Child nodes
-  - ['x-component': 'Action.Drawer'](https://client.docs.nocobase.com/components/action#actiondrawer): Refers to the Action.Drawer component
+- `type: 'void'`: Указывает на чистый UI-компонент.
+- `x-component: 'Action'`: [Компонент Action](https://client.docs.nocobase.com/components/action) для создания кнопки.
+- `title`: Заголовок кнопки, переведенный через `tStr`.
+- `x-component-props`: Свойства компонента `Action` (например, `type: 'primary'`).
+- `properties`: Дочерние узлы:
+  - `x-component: 'Action.Drawer'`: [Компонент Action.Drawer](https://client.docs.nocobase.com/components/action#actiondrawer) для модального окна.
+  - `iframe`: Компонент iframe, отображающий документацию по указанному URL.
 
-For more details on the schema, refer to the [UI Schema](/development/client/ui-schema/what-is-ui-schema) documentation.
+Подробности о схемах см. в [UI Schema](/development/client/ui-schema/what-is-ui-schema).
 
-### 2.2 Validate the Schema
+### 2.2 Проверка схемы
 
-There are two methods for validating the schema:
+Существует два способа проверки схемы:
 
-- Temporary page validation: You can create a temporary page, render the schema, and check if it meets the requirements
-- Documentation example validation: Start the documentation by running `yarn doc plugins/@nocobase-sample/plugin-initializer-action-modal`, and validate by creating a documentation example (TODO)
+- Проверка через временную страницу: Создайте временную страницу, отрендерите схему и проверьте соответствие требованиям.
+- Проверка через документацию: Запустите документацию с помощью `yarn doc plugins/@nocobase-sample/plugin-initializer-action-modal` и проверьте через примеры в документации (TODO).
 
-We’ll use the `Temporary Page Validation` method. Create a new page, add one or more examples based on the attribute parameters, and check if they meet the requirements.
+Рассмотрим проверку через временную страницу. Создайте страницу, добавьте одну или несколько схем и проверьте их работу.
 
 ```tsx | pure
 import React from 'react';
@@ -177,17 +181,17 @@ export class PluginInitializerActionModalClient extends Plugin {
 export default PluginInitializerActionModalClient;
 ```
 
-Afterward, visit [http://localhost:13000/admin/open-document-schema](http://localhost:13000/admin/open-document-schema) to view the temporary page we’ve added.
+Перейдите по адресу [http://localhost:13000/admin/open-document-schema](http://localhost:13000/admin/open-document-schema), чтобы увидеть содержимое тестовой страницы.
 
-For detailed information on `SchemaComponent`, refer to the [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponent-1) documentation.
+Подробности о `SchemaComponent` см. в [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponent-1).
 
 <video controls width='100%' src="https://static-docs.nocobase.com/20240526171945_rec_.mp4"></video>
 
-Once validation is complete, be sure to remove the test page.
+После проверки удалите тестовую страницу.
 
-# 3. Define Schema Initializer Item
+## 3. Определение элемента SchemaInitializer
 
-We will add a new file `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/initializer/index.ts`:
+Создайте файл `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/initializer/index.ts`:
 
 ```ts
 import { SchemaInitializerItemType, useSchemaInitializer } from "@nocobase/client"
@@ -213,22 +217,22 @@ export const createDocumentActionModalInitializerItem = (blockComponent: string)
 })
 ```
 
-Since we need to generate different `DocumentActionModal` instances based on various `blockComponent` values, we define the `createDocumentActionModalInitializerItem` function to generate the corresponding Schema Initializer Item.
+`createDocumentActionModalInitializerItem` создает экземпляры `DocumentActionModal` для разных значений `blockComponent`.
 
-- `type`: This is set as `item`, indicating a text element that triggers an event upon clicking, inserting a new Schema.
-- `name`: A unique identifier that helps distinguish between different Schema Items and operations, such as creating, reading, updating, and deleting.
-- `useComponentProps`: Returns an object that includes the `title` and `onClick` properties. The `title` is the displayed text, and `onClick` is the callback function executed when clicked.
-- [useSchemaInitializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#useschemainitializer): Retrieves the `SchemaInitializerContext`, which provides methods for operational tasks.
+- `type: 'item'`: Текстовый элемент с событием клика, вставляющий новую схему.
+- `name`: Уникальный идентификатор для операций (создание, чтение, обновление, удаление).
+- `useComponentProps`: Возвращает объект с `title` (заголовок) и `onClick` (обработчик клика).
+- [useSchemaInitializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#useschemainitializer): Предоставляет методы для операций с схемой.
 
-For further details on defining Schema Items, refer to the [Schema Initializer Item](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types) documentation.
+Подробности о создании SchemaInitializer см. в [Schema Initializer Item](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types).
 
-# 4. Implement Schema Settings
+## 4. Реализация SchemaSettings
 
-## 4.1 Define Schema Settings
+### 4.1 Определение SchemaSettings
 
-At the moment, once added via `createDocumentActionInitializerItem()`, items cannot be removed. We can address this by using [Schema Settings](https://client.docs.nocobase.com/core/ui-schema/schema-settings).
+Добавленные через `createDocumentActionInitializerItem` элементы нельзя удалить. Для этого используйте [Schema Settings](https://client.docs.nocobase.com/core/ui-schema/schema-settings).
 
-We will add a new file: `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/settings/index.ts`:
+Создайте файл `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/settings/index.ts`:
 
 ```ts
 import { SchemaSettings } from "@nocobase/client";
@@ -245,7 +249,9 @@ export const documentActionModalSettings = new SchemaSettings({
 });
 ```
 
-## 4.2 Register Schema Settings
+### 4.2 Регистрация SchemaSettings
+
+Обновите `index.tsx`:
 
 ```ts
 import { Plugin } from '@nocobase/client';
@@ -260,35 +266,35 @@ export class PluginInitializerActionModalClient extends Plugin {
 export default PluginInitializerActionModalClient;
 ```
 
-## 4.3 Use Schema Settings
+### 4.3 Использование SchemaSettings
 
-We will modify the `createDocumentActionModalSchema` function in `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/schema/index.ts`, adding `documentActionModalSettings` to `x-settings`.
+Обновите `createDocumentActionModalSchema` в `schema/index.ts`, добавив `x-settings`:
 
 ```diff
++ import { documentActionModalSettings } from '../settings';
+
 export const createDocumentActionModalSchema = (blockComponent: string): ISchema => {
   return {
     type: 'void',
     'x-component': 'Action',
 +   'x-settings': documentActionModalSettings.name,
-    // ..
+    // ...
   }
 }
 ```
 
-# 5. Add to Configure Actions in the Page
+## 5. Добавление в Configure Actions на странице
 
-There are several `Configure actions` buttons in the system, but their **names differ**. We will add the necessary items to the `Table`, `Details`, and `Form` sections' `Configure actions`.
+Кнопки `Configure actions` имеют разные имена (`name`). Необходимо добавить действие в блоки `Table`, `Details` и `Form`.
 
-First, we will identify the appropriate names:
+Определите соответствующие имена (см. документацию TODO).
 
-TODO
-
-Then, modify the `packages/plugins/@nocobase-sample/plugin-initializer-action-modal/src/client/index.tsx` file:
+Обновите `index.tsx`:
 
 ```diff
 import { Plugin } from '@nocobase/client';
-import { documentActionModalSettings } from './documentActionModalSettings';
-import { createDocumentActionModalInitializerItem } from './documentActionModalInitializerItem';
+import { documentActionModalSettings } from './settings';
++ import { createDocumentActionModalInitializerItem } from './initializer';
 
 export class PluginInitializerActionModalClient extends Plugin {
   async load() {
@@ -304,53 +310,52 @@ export default PluginInitializerActionModalClient;
 
 <video controls width='100%' src="https://static-docs.nocobase.com/20240526172851_rec_.mp4"></video>
 
-# 6. Multi-language Support
+## 6. Мультиязычность
 
 :::warning
-Changes to the language files will take effect only after restarting the service.
+Изменения в файлах локализации вступают в силу только после перезапуска сервиса.
 :::
 
-### 6.1 English
+### 6.1 Английский
 
-We will edit the file `packages/plugins/@nocobase-sample/plugin-initializer-action-simple/src/locale/en-US.json`:
-
-```json
-{
-  "Document": "Document"
-}
-```
-
-### 6.2 Chinese
-
-We will edit the file `packages/plugins/@nocobase-sample/plugin-initializer-action-simple/src/locale/zh-CN.json`:
+Обновите `en-US.json`:
 
 ```json
 {
-  "Document": "文档"
+  "Open Document": "Open Document"
 }
 ```
 
-If additional language support is required, more languages can be added.
+### 6.2 Китайский
 
-You can manage multiple languages and switch between them through the UI at [http://localhost:13000/admin/settings/system-settings](http://localhost:13000/admin/settings/system-settings).
+Обновите `zh-CN.json`:
+
+```json
+{
+  "Open Document": "打开文档"
+}
+```
+
+Для поддержки других языков добавьте соответствующие файлы.
+
+Управляйте языками через [http://localhost:13000/admin/settings/system-settings](http://localhost:13000/admin/settings/system-settings) и переключайте их в правом верхнем углу.
 
 ![20240611113758](https://static-docs.nocobase.com/20240611113758.png)
 
-## Packaging and Uploading to Production
+## 7. Сборка и развертывание в продакшен
 
-Following the guidelines outlined in the [Build and Package Plugins](/development/your-fisrt-plugin#build-and-package-plugins) documentation, we can package the plugin and deploy it to the production environment.
+Следуйте инструкциям из [Сборка и упаковка плагина](/development/your-fisrt-plugin#build-and-package-plugins).
 
-For cloned source code, ensure a full build is executed first to compile plugin dependencies:
+Для клонированного исходного кода выполните полную сборку:
 
 ```bash
 yarn build
 ```
 
-For projects created using `create-nocobase-app`, execute the following:
+Для проекта, созданного с помощью `create-nocobase-app`:
 
 ```bash
 yarn build @nocobase-sample/plugin-initializer-action-modal --tar
 ```
 
-This will generate the file `storage/tar/@nocobase-sample/plugin-initializer-action-modal.tar.gz`, which can then be installed by following the [upload process](/welcome/getting-started/plugin).
-
+Архив плагина появится в `storage/tar/@nocobase-sample/plugin-initializer-action-modal.tar.gz`. Установите его через [загрузку](/welcome/getting-started/plugin).

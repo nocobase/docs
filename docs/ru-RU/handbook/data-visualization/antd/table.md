@@ -1,14 +1,14 @@
-# Table
+# Таблица
 
-## Data Configuration
+## Конфигурация данных
 
-### Multiple Metrics, Multiple Dimensions
+### Несколько показателей, несколько измерений
 
-![Multiple Metrics, Multiple Dimensions](https://static-docs.nocobase.com/202410101142369.png)
+![Несколько показателей, несколько измерений](https://static-docs.nocobase.com/202410101142369.png)
 
-## Common JSON Configuration
+## Общая конфигурация JSON
 
-### Adjusting Column Order
+### Настройка порядка столбцов
 
 ```json
 {

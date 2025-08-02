@@ -1,127 +1,127 @@
-# Array
+# Массив
 
 ## {{after}}
 
-Returns all of the items in an array after the specified index. Opposite of [before](#before).
+Возвращает все элементы массива, следующие после указанного индекса. Противоположность вспомогательной функции [before](#before).
 
-**Params**
+**Параметры**
 
-* `array` **{Array}**: Collection
-* `n` **{Number}**: Starting index (number of items to exclude)
-* `returns` **{Array}**: Array exluding `n` items.
+* `array` **{Array}**: Коллекция
+* `n` **{Number}**: Начальный индекс (количество элементов, которые нужно исключить)
+* `returns` **{Array}**: Массив, исключающий `n` первых элементов.
 
-**Example**
+**Пример**
 
 ```handlebars
 <!-- array: ['a', 'b', 'c'] -->
 {{after array 1}}
-<!-- results in: '["c"]' -->
+<!-- результат: '["c"]' -->
 ```
 
 ## {{arrayify}}
 
-Cast the given `value` to an array.
+Преобразует заданное значение `value` в массив.
 
-**Params**
+**Параметры**
 
 * `value` **{any}**
 * `returns` **{Array}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{arrayify "foo"}}
-<!-- results in: [ "foo" ] -->
+<!-- результат: [ "foo" ] -->
 ```
 
 ## {{before}}
 
-Return all of the items in the collection before the specified count. Opposite of [after](#after).
+Возвращает все элементы коллекции, расположенные до указанного количества. Противоположность [after](#after).
 
-**Params**
+**Параметры**
 
 * `array` **{Array}**
 * `n` **{Number}**
-* `returns` **{Array}**: Array excluding items after the given number.
+* `returns` **{Array}**: Массив, исключающий элементы после указанного числа.
 
-**Example**
+**Пример**
 
 ```handlebars
 <!-- array: ['a', 'b', 'c'] -->
 {{before array 2}}
-<!-- results in: '["a", "b"]' -->
+<!-- результат: '["a", "b"]' -->
 ```
 
 ## {{eachIndex}}
 
-**Params**
+**Параметры**
 
 * `array` **{Array}**
 * `options` **{Object}**
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 <!-- array: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'] -->
 {{#eachIndex array}}
-  {{item}} is {{index}}
+  {{item}} — это {{index}}
 {{/eachIndex}}
 ```
 
 ## {{filter}}
 
-Block helper that filters the given array and renders the block for values that evaluate to `true`, otherwise the inverse block is returned.
+Блочный хелпер, который фильтрует заданный массив и отображает блок для значений, оцениваемых как `true`, в противном случае возвращается блок `else`.
 
-**Params**
+**Параметры**
 
 * `array` **{Array}**
 * `value` **{any}**
 * `options` **{Object}**
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 <!-- array: ['a', 'b', 'c'] -->
 {{#filter array "foo"}}AAA{{else}}BBB{{/filter}}
-<!-- results in: 'BBB' -->
+<!-- результат: 'BBB' -->
 ```
 
 ## {{first}}
 
-Returns the first item, or first `n` items of an array.
+Возвращает первый элемент или первые `n` элементов массива.
 
-**Params**
+**Параметры**
 
 * `array` **{Array}**
-* `n` **{Number}**: Number of items to return, starting at `0`.
+* `n` **{Number}**: Количество элементов для возврата, начиная с `0`.
 * `returns` **{Array}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{first "['a', 'b', 'c', 'd', 'e']" 2}}
-<!-- results in: '["a", "b"]' -->
+<!-- результат: '["a", "b"]' -->
 ```
 
 ## {{forEach}}
 
-Iterates over each item in an array and exposes the current item in the array as context to the inner block. In addition to the current array item, the helper exposes the following variables to the inner block:
+Перебирает каждый элемент массива и предоставляет текущий элемент в качестве контекста внутреннему блоку. Помимо текущего элемента массива, хелпер предоставляет следующие переменные:
 
-* `index`
-* `total`
-* `isFirst`
-* `isLast`
-Also, `@index` is exposed as a private variable, and additional
-private variables may be defined as hash arguments.
+* `index` — индекс текущего элемента
+* `total` — общее количество элементов
+* `isFirst` — `true`, если элемент первый
+* `isLast` — `true`, если элемент последний
 
-**Params**
+Также доступна приватная переменная `@index`, а дополнительные приватные переменные могут быть заданы через хэш-аргументы.
+
+**Параметры**
 
 * `array` **{Array}**
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 <!-- accounts = [
@@ -131,7 +131,7 @@ private variables may be defined as hash arguments.
 ] -->
 
 {{#forEach accounts}}
-  <a href="mailto:{{ email }}" title="Send an email to {{ name }}">
+  <a href="mailto:{{ email }}" title="Отправить письмо {{ name }}">
     {{ name }}
   </a>{{#unless isLast}}, {{/unless}}
 {{/forEach}}
@@ -139,16 +139,16 @@ private variables may be defined as hash arguments.
 
 ## {{inArray}}
 
-Block helper that renders the block if an array has the given `value`. Optionally specify an inverse block to render when the array does not have the given value.
+Блочный хелпер, который отображает блок, если массив содержит заданное `value`. Можно указать блок `else`, который будет отображаться, если значение не найдено.
 
-**Params**
+**Параметры**
 
 * `array` **{Array}**
 * `value` **{any}**
 * `options` **{Object}**
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 <!-- array: ['a', 'b', 'c'] -->
@@ -157,74 +157,73 @@ Block helper that renders the block if an array has the given `value`. Optionall
 {{else}}
   bar
 {{/inArray}}
-<!-- results in: 'bar' -->
+<!-- результат: 'bar' -->
 ```
 
 ## {{isArray}}
 
-Returns true if `value` is an es5 array.
+Возвращает `true`, если `value` является массивом ES5.
 
-**Params**
+**Параметры**
 
-* `value` **{any}**: The value to test.
+* `value` **{any}**: Значение для проверки.
 * `returns` **{Boolean}**
 
-**Example**
+**Пример**
 
 ```handlebars
 {{isArray "abc"}}
-<!-- results in: false -->
+<!-- результат: false -->
 
 <!-- array: [1, 2, 3] -->
 {{isArray array}}
-<!-- results in: true -->
+<!-- результат: true -->
 ```
 
 ## {{itemAt}}
 
-Returns the item from `array` at index `idx`.
+Возвращает элемент из `array` по индексу `idx`.
 
-**Params**
+**Параметры**
 
 * `array` **{Array}**
 * `idx` **{Number}**
 * `returns` **{any}** `value`
 
-**Example**
+**Пример**
 
 ```handlebars
 <!-- array: ['a', 'b', 'c'] -->
 {{itemAt array 1}}
-<!-- results in: 'b' -->
+<!-- результат: 'b' -->
 ```
 
 ## {{join}}
 
-Join all elements of array into a string, optionally using a given separator.
+Объединяет все элементы массива в строку, при этом можно указать разделитель (по умолчанию — запятая).
 
-**Params**
+**Параметры**
 
 * `array` **{Array}**
-* `separator` **{String}**: The separator to use. Defaults to `,`.
+* `separator` **{String}**: Разделитель. По умолчанию: `,`.
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 <!-- array: ['a', 'b', 'c'] -->
 {{join array}}
-<!-- results in: 'a, b, c' -->
+<!-- результат: 'a, b, c' -->
 
 {{join array '-'}}
-<!-- results in: 'a-b-c' -->
+<!-- результат: 'a-b-c' -->
 ```
 
 ## {{equalsLength}}
 
-Returns true if the the length of the given `value` is equal
-to the given `length`. Can be used as a block or inline helper.
+Возвращает `true`, если длина заданного `value` равна указанному `length`. Может использоваться как блочный или встроенный хелпер.
 
-**Params**
+**Параметры**
 
 * `value` **{Array|String}**
 * `length` **{Number}**
@@ -233,313 +232,314 @@ to the given `length`. Can be used as a block or inline helper.
 
 ## {{last}}
 
-Returns the last item, or last `n` items of an array or string. Opposite of [first](#first).
+Возвращает последний элемент или последние `n` элементов массива или строки. Противоположность [first](#first).
 
-**Params**
+**Параметры**
 
-* `value` **{Array|String}**: Array or string.
-* `n` **{Number}**: Number of items to return from the end of the array.
+* `value` **{Array|String}**: Массив или строка.
+* `n` **{Number}**: Количество элементов для возврата с конца.
 * `returns` **{Array}**
 
-**Example**
+**Пример**
 
 ```handlebars
-<!-- var value = ['a', 'b', 'c', 'd', 'e'] -->
+<!-- value = ['a', 'b', 'c', 'd', 'e'] -->
 
 {{last value}}
-<!-- results in: ['e'] -->
+<!-- результат: ['e'] -->
 
 {{last value 2}}
-<!-- results in: ['d', 'e'] -->
+<!-- результат: ['d', 'e'] -->
 
 {{last value 3}}
-<!-- results in: ['c', 'd', 'e'] -->
+<!-- результат: ['c', 'd', 'e'] -->
 ```
 
 ## {{length}}
 
-Returns the length of the given string or array.
+Возвращает длину заданной строки или массива.
 
-**Params**
+**Параметры**
 
 * `value` **{Array|Object|String}**
-* `returns` **{Number}**: The length of the value.
+* `returns` **{Number}**: Длина значения.
 
-**Example**
+**Пример**
 
 ```handlebars
 {{length '["a", "b", "c"]'}}
-<!-- results in: 3 -->
+<!-- результат: 3 -->
 
-<!-- results in: myArray = ['a', 'b', 'c', 'd', 'e']; -->
+<!-- myArray = ['a', 'b', 'c', 'd', 'e']; -->
 {{length myArray}}
-<!-- results in: 5 -->
+<!-- результат: 5 -->
 
-<!-- results in: myObject = {'a': 'a', 'b': 'b'}; -->
+<!-- myObject = {'a': 'a', 'b': 'b'}; -->
 {{length myObject}}
-<!-- results in: 2 -->
+<!-- результат: 2 -->
 ```
 
 ## {{lengthEqual}}
 
-Alias for [equalsLength](#equalsLength)
+Псевдоним для [equalsLength](#equalsLength)
 
 ## {{map}}
 
-Returns a new array, created by calling `function` on each element of the given `array`. For example,
+Возвращает новый массив, созданный путём вызова функции `fn` для каждого элемента заданного массива `array`.
 
-**Params**
+**Параметры**
 
-* `array` **{Array}**
-* `fn` **{Function}**
-* `returns` **{String}**
+* `array` **{Array}**: исходный массив
+* `fn` **{Function}**: функция, применяемая к каждому элементу
+* `returns` **{Array}**: новый массив с результатами применения функции
 
-**Example**
+**Пример**
 
 ```handlebars
-<!-- array: ['a', 'b', 'c'], and "double" is a
-fictitious function that duplicates letters -->
+<!-- array: ['a', 'b', 'c'], и "double" — предполагаемая функция, удваивающая символы -->
 {{map array double}}
-<!-- results in: '["aa", "bb", "cc"]' -->
+<!-- результат: '["aa", "bb", "cc"]' -->
 ```
 
 ## {{pluck}}
 
-Map over the given object or array or objects and create an array of values from the given `prop`. Dot-notation may be used (as a string) to get nested properties.
+Преобразует массив объектов в массив значений указанного свойства `prop`. Для доступа к вложенным свойствам можно использовать точечную нотацию (в виде строки).
 
-**Params**
+**Параметры**
 
-* `collection` **{Array|Object}**
-* `prop` **{Function}**
-* `returns` **{String}**
+* `collection` **{Array|Object}**: массив или объект для обработки
+* `prop` **{String}**: имя свойства (поддерживается `dot.notation`)
+* `returns` **{Array}**: массив значений свойства
 
-**Example**
+**Пример**
 
 ```handlebars
-// {{pluck items "data.title"}}
-<!-- results in: '["aa", "bb", "cc"]' -->
+<!-- items: [{data: {title: 'aa'}}, {data: {title: 'bb'}}, {data: {title: 'cc'}}] -->
+{{pluck items "data.title"}}
+<!-- результат: '["aa", "bb", "cc"]' -->
 ```
 
 ## {{reverse}}
 
-Reverse the elements in an array, or the characters in a string.
+Разворачивает элементы массива или символы строки в обратном порядке.
 
-**Params**
+**Параметры**
 
-* `value` **{Array|String}**
-* `returns` **{Array|String}**: Returns the reversed string or array.
+* `value` **{Array|String}**: массив или строка
+* `returns` **{Array|String}**: развернутый массив или строка
 
-**Example**
+**Пример**
 
 ```handlebars
 <!-- value: 'abcd' -->
 {{reverse value}}
-<!-- results in: 'dcba' -->
+<!-- результат: 'dcba' -->
+
 <!-- value: ['a', 'b', 'c', 'd'] -->
 {{reverse value}}
-<!-- results in: ['d', 'c', 'b', 'a'] -->
+<!-- результат: ['d', 'c', 'b', 'a'] -->
 ```
 
 ## {{some}}
 
-Block helper that returns the block if the callback returns true for some value in the given array.
+Блочный хелпер, который отображает содержимое блока, если функция-итератор `iter` возвращает `true` хотя бы для одного элемента массива.
 
-**Params**
+**Параметры**
 
-* `array` **{Array}**
-* `iter` **{Function}**: Iteratee
-* **{Options}**: Handlebars provided options object
-* `returns` **{String}**
+* `array` **{Array}**: массив для проверки
+* `iter` **{Function}**: функция-итератор (предикат)
+* `options` **{Options}**: объект опций Handlebars
+* `returns` **{String}**: результат рендеринга
 
-**Example**
+**Пример**
 
 ```handlebars
 <!-- array: [1, 'b', 3] -->
 {{#some array isString}}
-  Render me if the array has a string.
+  Отобразить, если в массиве есть строка.
 {{else}}
-  Render me if it doesn't.
+  Отобразить, если нет.
 {{/some}}
-<!-- results in: 'Render me if the array has a string.' -->
+<!-- результат: 'Отобразить, если в массиве есть строка.' -->
 ```
 
 ## {{sort}}
 
-Sort the given `array`. If an array of objects is passed, you may optionally pass a `key` to sort on as the second argument. You may alternatively pass a sorting function as the second argument.
+Сортирует заданный массив. Если передан массив объектов, можно указать имя свойства `key` для сортировки. Также можно передать функцию сортировки.
 
-**Params**
+**Параметры**
 
-* `array` **{Array}**: the array to sort.
-* `key` **{String|Function}**: The object key to sort by, or sorting function.
+* `array` **{Array}**: массив для сортировки
+* `key` **{String|Function}**: свойство объекта или функция сортировки
 
-**Example**
+**Пример**
 
 ```handlebars
 <!-- array: ['b', 'a', 'c'] -->
 {{sort array}}
-<!-- results in: '["a", "b", "c"]' -->
+<!-- результат: '["a", "b", "c"]' -->
 ```
 
 ## {{sortBy}}
 
-Sort an `array`. If an array of objects is passed, you may optionally pass a `key` to sort on as the second argument. You may alternatively pass a sorting function as the second argument.
+Сортирует массив. Поддерживает сортировку по одному или нескольким свойствам или с помощью функции сортировки.
 
-**Params**
+**Параметры**
 
-* `array` **{Array}**: the array to sort.
-* `props` **{String|Function}**: One or more properties to sort by, or sorting functions to use.
+* `array` **{Array}**: массив для сортировки
+* `props` **{String|Function}**: одно или несколько свойств или функции сортировки
 
-**Example**
+**Пример**
 
 ```handlebars
 <!-- array: [{a: 'zzz'}, {a: 'aaa'}] -->
 {{sortBy array "a"}}
-<!-- results in: '[{"a":"aaa"}, {"a":"zzz"}]' -->
+<!-- результат: '[{"a":"aaa"}, {"a":"zzz"}]' -->
 ```
 
 ## {{withAfter}}
 
-Use the items in the array _after_ the specified index as context inside a block. Opposite of [withBefore](#withBefore).
+Использует элементы массива, находящиеся **после** указанного индекса, как контекст внутри блока. Противоположность [withBefore](#withBefore).
 
-**Params**
+**Параметры**
 
 * `array` **{Array}**
-* `idx` **{Number}**
-* `options` **{Object}**
-* `returns` **{Array}**
+* `idx` **{Number}**: индекс, после которого берутся элементы
+* `options` **{Object}**: опции Handlebars
+* `returns` **{String}**: результат рендеринга
 
-**Example**
+**Пример**
 
 ```handlebars
 <!-- array: ['a', 'b', 'c', 'd', 'e'] -->
 {{#withAfter array 3}}
   {{this}}
 {{/withAfter}}
-<!-- results in: "de" -->
+<!-- результат: "de" -->
 ```
 
 ## {{withBefore}}
 
-Use the items in the array _before_ the specified index as context inside a block. Opposite of [withAfter](#withAfter).
+Использует элементы массива, находящиеся **до** указанного индекса, как контекст внутри блока. Противоположность [withAfter](#withAfter).
 
-**Params**
+**Параметры**
 
 * `array` **{Array}**
-* `idx` **{Number}**
+* `idx` **{Number}**: индекс, до которого берутся элементы
 * `options` **{Object}**
-* `returns` **{Array}**
+* `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 <!-- array: ['a', 'b', 'c', 'd', 'e'] -->
 {{#withBefore array 3}}
   {{this}}
 {{/withBefore}}
-<!-- results in: 'ab' -->
+<!-- результат: 'ab' -->
 ```
 
 ## {{withFirst}}
 
-Use the first item in a collection inside a handlebars block expression. Opposite of [withLast](#withLast).
+Использует первый элемент коллекции как контекст внутри блока. Противоположность [withLast](#withLast).
 
-**Params**
+**Параметры**
 
 * `array` **{Array}**
-* `idx` **{Number}**
+* `idx` **{Number}**: (не используется, вероятно, ошибка в документации)
 * `options` **{Object}**
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 <!-- array: ['a', 'b', 'c'] -->
 {{#withFirst array}}
   {{this}}
 {{/withFirst}}
-<!-- results in: 'a' -->
+<!-- результат: 'a' -->
 ```
 
 ## {{withGroup}}
 
-Block helper that groups array elements by given group `size`.
+Блочный хелпер, который разбивает массив на группы заданного размера.
 
-**Params**
+**Параметры**
 
-* `array` **{Array}**: The array to iterate over
-* `size` **{Number}**: The desired length of each array "group"
-* `options` **{Object}**: Handlebars options
+* `array` **{Array}**: массив для группировки
+* `size` **{Number}**: размер каждой группы
+* `options` **{Object}**: опции Handlebars
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 <!-- array: ['a','b','c','d','e','f','g','h'] -->
 {{#withGroup array 4}}
   {{#each this}}
     {{.}}
-  {{each}}
+  {{/each}}
   <br>
 {{/withGroup}}
-<!-- results in: -->
-<!-- 'a','b','c','d'<br> -->
-<!-- 'e','f','g','h'<br> -->
+<!-- результат:
+'a','b','c','d'<br>
+'e','f','g','h'<br> -->
 ```
 
 ## {{withLast}}
 
-Use the last item or `n` items in an array as context inside a block. Opposite of [withFirst](#withFirst).
+Использует последний элемент (или `n` последних) массива как контекст внутри блока. Противоположность [withFirst](#withFirst).
 
-**Params**
+**Параметры**
 
 * `array` **{Array}**
-* `idx` **{Number}**: The starting index.
+* `idx` **{Number}**: количество элементов с конца (по умолчанию 1)
 * `options` **{Object}**
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 <!-- array: ['a', 'b', 'c'] -->
 {{#withLast array}}
   {{this}}
 {{/withLast}}
-<!-- results in: 'c' -->
+<!-- результат: 'c' -->
 ```
 
 ## {{withSort}}
 
-Block helper that sorts a collection and exposes the sorted collection as context inside the block.
+Блочный хелпер, который сортирует коллекцию и использует отсортированную коллекцию как контекст внутри блока.
 
-**Params**
+**Параметры**
 
 * `array` **{Array}**
-* `prop` **{String}**
-* `options` **{Object}**: Specify `reverse="true"` to reverse the array.
+* `prop` **{String}**: свойство для сортировки (опционально)
+* `options` **{Object}**: можно указать `reverse="true"` для обратной сортировки
 * `returns` **{String}**
 
-**Example**
+**Пример**
 
 ```handlebars
 <!-- array: ['b', 'a', 'c'] -->
 {{#withSort array}}{{this}}{{/withSort}}
-<!-- results in: 'abc' -->
+<!-- результат: 'abc' -->
 ```
 
 ## {{unique}}
 
-Block helper that return an array with all duplicate values removed. Best used along with a [each](#each) helper.
+Блочный хелпер, возвращающий массив с удалёнными дубликатами. Наиболее полезен в сочетании с хелпером [each](#each).
 
-**Params**
+**Параметры**
 
-* `array` **{Array}**
+* `array` **{Array}**: исходный массив
 * `options` **{Object}**
-* `returns` **{Array}**
+* `returns` **{Array}**: массив без дубликатов
 
-**Example**
+**Пример**
 
 ```handlebars
 <!-- array: ['a', 'a', 'c', 'b', 'e', 'e'] -->
 {{#each (unique array)}}{{.}}{{/each}}
-<!-- results in: 'acbe' -->
+<!-- результат: 'acbe' -->
 ```

@@ -1,47 +1,48 @@
-# Iframe Block
+# Блок Iframe
 
 <PluginInfo name="block-iframe"></PluginInfo>
 
-## Introduction
+## Введение
 
-The IFrame block allows embedding external web pages or content into the current page. Users can integrate external applications seamlessly by configuring a URL or directly inserting HTML code. With HTML, users can flexibly customize content to meet specific display needs, making it ideal for customized scenarios. This approach enables loading external resources without redirection, enhancing user experience and page interactivity.
-## Installation
+Блок IFrame позволяет встраивать внешние веб-страницы или контент в текущую страницу. Пользователи могут интегрировать внешние приложения, настраивая URL или напрямую вставляя HTML-код. С помощью HTML пользователи могут гибко настраивать контент для удовлетворения конкретных потребностей отображения, что делает этот блок идеальным для пользовательских сценариев. Такой подход позволяет загружать внешние ресурсы без перенаправления, улучшая пользовательский опыт и интерактивность страницы.
 
-It's a built-in plugin, no installation is required.
+## Установка
 
-## Adding Blocks
+Это встроенный плагин, установка не требуется.
+
+## Добавление блоков
 
 ![20240408220259](https://static-docs.nocobase.com/20240408220259.png)
 
-Configure the URL or Html to directly embed the external application.
+Настройте URL или HTML для встраивания внешнего приложения.
 
 ![20240408220322](https://static-docs.nocobase.com/20240408220322.png)
 
-## Template engine
+## Шаблонизатор
 
-### string template
+### Строковый шаблон
 
-The default rendering engine supports variables
+Стандартный движок рендеринга поддерживает переменные.
 
 ### Handlebars
 
 ![20240811205239](https://static-docs.nocobase.com/20240811205239.png)
 
-For more information, refer to [Handlebars template](/handbook/template-handlebars)
+Подробнее см. [Шаблоны Handlebars](/handbook/template-handlebars).
 
-## Passing Variables
+## Передача переменных
 
-### HTML Support for Variable Parsing
+### Поддержка HTML для разбора переменных
 
-#### Support for Selecting Variables from the Variable Selector in the Current Block Context
+#### Поддержка выбора переменных из селектора переменных в текущем контексте блока
 
 ![20240603120321](https://static-docs.nocobase.com/20240603120321.png)
 
 ![20240603120629](https://static-docs.nocobase.com/20240603120629.gif)
 
-#### Support for Injecting Variables into the Application and Using Them through Code
+#### Поддержка внедрения переменных в приложение и их использование через код
 
-You can also inject custom variables into the application through code and use them in HTML. For example, creating a dynamic calendar application using Vue 3 and Element Plus:
+Вы также можете внедрять пользовательские переменные в приложение через код и использовать их в HTML. Например, создание динамического календаря с использованием Vue 3 и Element Plus:
 
 ```html
 <!doctype html>
@@ -49,7 +50,7 @@ You can also inject custom variables into the application through code and use t
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vue3 CDN Example</title>
+    <title>Пример Vue3 с CDN</title>
     <script src="https://cdn.bootcdn.net/ajax/libs/vue/3.5.9/vue.global.prod.js"></script>
     <script src="https://unpkg.com/element-plus"></script>
     <script src="https://unpkg.com/element-plus/dist/locale/zh-cn"></script>
@@ -71,13 +72,13 @@ You can also inject custom variables into the application through code and use t
                     type="primary"
                     :loading="loading"
                     @click="changeMonth(-1)"
-                    >Last month</el-button
+                    >Предыдущий месяц</el-button
                   >
                   <el-button
                     type="primary"
                     :loading="loading"
                     @click="changeMonth(1)"
-                    >Next month</el-button
+                    >Следующий месяц</el-button
                   >
                 </el-button-group>
               </div>
@@ -112,7 +113,7 @@ You can also inject custom variables into the application through code and use t
 
 ![20250320163250](https://static-docs.nocobase.com/20250320163250.png)
 
-Example: A simple calendar component created with React and Ant Design (antd), using dayjs to handle dates
+Пример: простой календарный компонент, созданный с использованием React и Ant Design (antd), с обработкой дат через dayjs:
 
 ```html
 <!doctype html>
@@ -120,7 +121,7 @@ Example: A simple calendar component created with React and Ant Design (antd), u
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>React CDN Example </title>
+    <title>Пример React с CDN</title>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <link
@@ -166,12 +167,12 @@ Example: A simple calendar component created with React and Ant Design (antd), u
                 React.createElement(
                   Button,
                   { type: 'primary', loading, onClick: () => changeMonth(-1) },
-                  'Last month',
+                  'Предыдущий месяц',
                 ),
                 React.createElement(
                   Button,
                   { type: 'primary', loading, onClick: () => changeMonth(1) },
-                  'Next month',
+                  'Следующий месяц',
                 ),
               ),
             ),
@@ -192,8 +193,8 @@ Example: A simple calendar component created with React and Ant Design (antd), u
 
 ![20250320164537](https://static-docs.nocobase.com/20250320164537.png)
 
-### Url supports variables
+### URL поддерживает переменные
 
 ![20240603142219](https://static-docs.nocobase.com/20240603142219.png)
 
-For more information on variables, refer to [Variables](/handbook/ui/variables)
+Подробнее о переменных см. [Переменные](/handbook/ui/variables).

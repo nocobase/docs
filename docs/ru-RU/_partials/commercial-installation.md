@@ -1,5 +1,5 @@
-## Installation
+## Установка
 
-This plugin is a commercial plugin, which needs to be uploaded and activated through the plugin manager：
+Этот плагин является коммерческим, его необходимо загрузить и активировать через менеджер плагинов：
 
 ![](https://static-docs.nocobase.com/20240323162741.png)

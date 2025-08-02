@@ -1,9 +1,27 @@
-# Approval
+# Утверждение (Approval)
 
 <PluginInfo commercial="true" name="workflow-approval" link="/handbook/workflow-approval"></PluginInfo>
 
+## Обзор
+
+Плагин Workflow Approval предоставляет функциональность для создания процессов утверждения в NocoBase. Это коммерческий плагин, который позволяет:
+
+- Настраивать многоуровневые процессы утверждения
+- Создавать маршруты утверждения с условиями
+- Управлять правами утверждающих
+- Отслеживать историю утверждений
+
+## Основные возможности
+
 <embed src="../../workflow-approval/trigger.md#L3-L999"></embed>
 
-## Related Content
+## Связанные материалы
 
-Except for trigger configuration, there are also some related contents about approval that can be further understood through the [plugin documentation](../../workflow-approval/index.md).
+Помимо конфигурации триггеров, в [документации плагина](../../workflow-approval/index.md) вы можете найти дополнительную информацию о:
+
+- Настройке многоступенчатых процессов утверждения
+- Управлении правами и ролями утверждающих
+- Кастомизации форм утверждения
+- Интеграции с другими плагинами
+- Расширенных сценариях использования
+

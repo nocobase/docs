@@ -1,7 +1,7 @@
-# Delete Block
+# Удалить блок
 
-## Introduction
+## Введение
 
-Deleting a block from the current page is an irreversible action.
+Удаление блока с текущей страницы является необратимым действием.
 
 ![20240407175143](https://static-docs.nocobase.com/20240407175143.png)

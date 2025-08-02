@@ -1,134 +1,96 @@
-# HasManyRepository
+# HasManyRepository (Репозиторий связи "один ко многим")
 
-`HasManyRepository` is the `Relation Repository` for handling `HasMany` relationships.
+`HasManyRepository` - это репозиторий для работы со связями типа "один ко многим" (`HasMany`).
 
-## Class Methods
+## Методы класса
 
 ### `find()`
 
-Find associated objects.
+Поиск связанных объектов.
 
-**Signature**
+```typescript
+async find(options?: FindOptions): Promise<M[]>
+```
 
-- `async find(options?: FindOptions): Promise<M[]>`
-
-**Detailed Information**
-
-Query parameters are the same as [`Repository.find()`](../repository.md#find).
+Параметры запроса аналогичны [`Repository.find()`](../repository.md#find).
 
 ### `findOne()`
 
-Find associated objects, only to return one record.
+Поиск одного связанного объекта.
 
-**Signature**
-
-- `async findOne(options?: FindOneOptions): Promise<M>`
-
-<embed src="../shared/find-one.md"></embed>
+```typescript
+async findOne(options?: FindOneOptions): Promise<M>
+```
 
 ### `count()`
 
-Return the number of records matching the query criteria.
-
-**Signature**
-
-- `async count(options?: CountOptions)`
-
-**Type**
+Получение количества записей, соответствующих условиям.
 
 ```typescript
-interface CountOptions
-  extends Omit<SequelizeCountOptions, 'distinct' | 'where' | 'include'>,
-    Transactionable {
-  filter?: Filter;
-}
+async count(options?: CountOptions)
 ```
 
 ### `findAndCount()`
 
-Find datasets from the database with the specified filtering conditions and return the number of results.
-
-**Signature**
-
-- `async findAndCount(options?: FindAndCountOptions): Promise<[any[], number]>`
-
-**Type**
+Поиск данных с одновременным получением их количества.
 
 ```typescript
-type FindAndCountOptions = CommonFindOptions;
+async findAndCount(options?: FindAndCountOptions): Promise<[any[], number]>
 ```
 
 ### `create()`
 
-Create associated objects.
+Создание связанных объектов.
 
-**Signature**
-
-- `async create(options?: CreateOptions): Promise<M>`
-
-<embed src="../shared/create-options.md"></embed>
+```typescript
+async create(options?: CreateOptions): Promise<M>
+```
 
 ### `update()`
 
-Update associated objects that match the conditions.
+Обновление связанных объектов по условиям.
 
-**Signature**
-
-- `async update(options?: UpdateOptions): Promise<M>`
-
-<embed src="../shared/update-options.md"></embed>
+```typescript
+async update(options?: UpdateOptions): Promise<M>
+```
 
 ### `destroy()`
 
-Delete associated objects.
+Удаление связанных объектов.
 
-**Signature**
-
-- `async destroy(options?: TK | DestroyOptions): Promise<M>`
-
-<embed src="../shared/destroy-options.md"></embed>
+```typescript
+async destroy(options?: TK | DestroyOptions): Promise<M>
+```
 
 ### `add()`
 
-Add association relationships between objects.
-
-**Signature**
-
-- `async add(options: TargetKey | TargetKey[] | AssociatedOptions)`
-
-**Type**
+Добавление связей между объектами.
 
 ```typescript
-interface AssociatedOptions extends Transactionable {
-  tk?: TargetKey | TargetKey[];
-}
+async add(options: TargetKey | TargetKey[] | AssociatedOptions)
 ```
 
-**Detailed Information**
-
-- `tk` - The targetKey value of the associated object, either as a single value or an array.
-  <embed src="../shared/transaction.md"></embed>
+Параметры:
+- `tk` - идентификатор связанного объекта (может быть массивом)
+- Поддержка транзакций
 
 ### `remove()`
 
-Remove the association with the given objects.
+Удаление связи с указанными объектами.
 
-**Signature**
+```typescript
+async remove(options: TargetKey | TargetKey[] | AssociatedOptions)
+```
 
-- `async remove(options: TargetKey | TargetKey[] | AssociatedOptions)`
-
-**Detailed Information**
-
-Same parameters as the [`add()`](#add) method.
+Параметры аналогичны методу `add()`.
 
 ### `set()`
 
-Set the associated object of the current relationship.
+Установка связанных объектов для текущей связи.
 
-**Signature**
+```typescript
+async set(options: TargetKey | TargetKey[] | AssociatedOptions)
+```
 
-- `async set(options: TargetKey | TargetKey[] | AssociatedOptions)`
+Параметры аналогичны методу `add()`.
 
-**Detailed Information**
-
-Same parameters as the [`add()`](#add) method.

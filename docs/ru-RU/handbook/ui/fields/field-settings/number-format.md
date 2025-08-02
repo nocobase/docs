@@ -1,23 +1,23 @@
-# Number Format
+# Числовой формат
 
-## Introduction
+## Введение
 
-Number **Format** is the process of visually enhancing and standardizing numerical fields (including formula fields) to make them more readable. This includes configuring options such as thousand separators, decimal precision, unit conversion, and scientific notation. By setting up numerical formatting, you can cater to the numerical expression preferences of different regions and industries.
+**Числовой формат** - это процесс визуального улучшения и стандартизации числовых полей (включая поля формул), чтобы сделать их более удобочитаемыми. Это включает в себя настройку таких параметров, как разделители на тысячи, десятичная точность, преобразование единиц измерения и научная нотация. Настраивая числовое форматирование, вы можете учитывать предпочтения в числовых выражениях для различных регионов и отраслей промышленности.
 
 ![20240417220017](https://static-docs.nocobase.com/20240417220017.png)
 
 ![20240417220039](https://static-docs.nocobase.com/20240417220039.png)
 
-## Instructions for Use
+## Инструкции по использованию
 
-This feature supports simple unit conversions, thousand separators, prefixes and suffixes, precision adjustments, and scientific notation.
+Эта функция поддерживает простое преобразование единиц измерения, тысячные разделители, префиксы и суффиксы, точную настройку и научную нотацию.
 
-Example: Formatting an order amount to include a currency symbol (such as the Chinese Yuan symbol ￥), thousand separators (like commas or periods), and specific decimal precision to ensure the amount is clearly and easily understood.
+Пример: Отформатируйте сумму заказа таким образом, чтобы она включала символ валюты (например, символ китайского юаня ￥), разделители в тысячах (например, запятые или точки) и определенную десятичную точность, чтобы сумма была понятной.
 
 <video width="100%" height="440" controls>
       <source src="https://static-docs.nocobase.com/20240417220140.mp4" type="video/mp4">
 </video>
 
-Scientific notation in use.
+Используемая научная нотация.
 
 ![20240417220416](https://static-docs.nocobase.com/20240417220416.png)

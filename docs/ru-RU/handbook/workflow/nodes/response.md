@@ -1,5 +1,5 @@
-# HTTP Response
+# HTTP-ответ
 
-HTTP Response node could be used in Webhook event (under synchronous mode) to return response to the third-party system.
+Узел HTTP-ответа может использоваться в событии Webhook (в синхронном режиме) для возврата ответа сторонней системе.
 
 See: [Response](/handbook/workflow-webhook#Response)。

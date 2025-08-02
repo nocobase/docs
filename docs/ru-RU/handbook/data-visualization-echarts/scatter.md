@@ -1,33 +1,33 @@
-# Scatter Chart
+# Точечная диаграмма (диаграмма рассеяния)
 
-## Data Configuration
+## Настройка данных
 
-### 1 or Multiple Metrics, 1 Dimension
+### 1 или несколько показателей, 1 измерение
 
-![1 or Multiple Metrics, 1 Dimension](https://static-docs.nocobase.com/202410091202766.png)
+![1 или несколько показателей, 1 измерение](https://static-docs.nocobase.com/202410091202766.png)
 
-### 1 Metric, 1 Axis Dimension, One Category Dimension
+### 1 показатель, 1 измерение по оси, 1 категориальное измерение
 
-Configure one metric and two dimensions. One of the dimensions will serve as the X-axis field (X field), while the other will act as the series field.
+Настройте один показатель и два измерения. Одно измерение будет использоваться как поле по оси X, другое — как поле для серии (категорий).
 
-![1 Metric, 1 Axis Dimension, One Category Dimension](https://static-docs.nocobase.com/202410091202268.png)
+![1 показатель, 1 измерение по оси, 1 категориальное измерение](https://static-docs.nocobase.com/202410091202268.png)
 
-## Configuration Options
+## Параметры настройки
 
-| Configuration Option       | Description                                                 |
+| Параметр                     | Описание                                                 |
 | -------------------------- | ----------------------------------------------------------- |
-| xField                     | Dimension field for the X-axis                               |
-| seriesField                | Dimension field for categorization                           |
-| Size                       | Set the chart size, either fixed aspect ratio or fixed height |
-| Light mode theme           | Preview available when the system is in light mode           |
-| Dark mode theme            | Preview available when the system is in dark mode            |
-| Show legend                | Toggle the visibility of the legend                          |
-| Legend orient              | Control the orientation of the legend, either horizontal or vertical |
-| Legend position (left, bottom, right, top) | Control the relative position of the legend                    |
-| Label type                 | Control whether labels are shown and the type of labels      |
-| X-Axis title               | Control the display position of the X-axis title             |
-| Y-Axis title               | Control the display position of the Y-axis title             |
-| X-Axis label rotate        | Adjust the rotation angle of the X-axis labels; useful when there are dense labels to display more effectively |
-| Padding                    | Adjust the internal padding of the chart                    |
-| Split line                 | Control whether the grid lines are displayed and their style           |
-| Mark line                  | Add reference lines, set their title, value, and color      |
+| xField                     | Поле измерения для оси X                               |
+| seriesField                | Поле измерения для категоризации                           |
+| Размер                       | Установите размер диаграммы — с фиксированным соотношением сторон или фиксированной высотой |
+| Тема в светлом режиме           | Предварительный просмотр доступен, когда система находится в светлом режиме           |
+| Тема в тёмном режиме            | Предварительный просмотр доступен, когда система находится в тёмном режиме            |
+| Отображать легенду                | Включить или скрыть отображение легенды                          |
+| Ориентация легенды              | Управление ориентацией легенды: горизонтальная или вертикальная |
+| Положение легенды (слева, снизу, справа, сверху) | Управление относительным положением легенды                    |
+| Тип меток                 | Управление отображением меток и их типом      |
+| Заголовок оси X               | Управление положением заголовка оси X             |
+| Заголовок оси Y               | Управление положением заголовка оси Y             |
+| Поворот меток оси X        | Настройка угла поворота меток оси X; полезно при плотном расположении меток для более эффективного отображения |
+| Внутренние отступы (Padding)                    | Настройка внутренних отступов диаграммы                    |
+| Линии сетки (Split line)                 | Управление отображением линий сетки и их стилем           |
+| Маркерная линия (Mark line)                  | Добавление опорных линий, настройка их заголовка, значения и цвета      |

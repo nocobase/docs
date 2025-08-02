@@ -1,13 +1,13 @@
-# Data Loading Mode
+# Режим загрузки данных
 
-## Introduction
+## Введение
 
-The default data loading method is "Load all data when filter criteria are empty." The "filter criteria" refers to the values in the **Filter Block**. Another option is "Do not load data when filter criteria are empty."
+Метод загрузки данных по умолчанию - "Загружать все данные, когда критерии фильтрации пусты". "Критерии фильтрации" относятся к значениям в ** блоке фильтрации **. Другой вариант - "Не загружать данные, когда критерии фильтрации пусты".
 
-### Load all data when filter is empty
+### Загрузить все данные, когда фильтр пуст.
 
 ![![20240407170234](httpsstatic-docs.nocobase.com20240407170234.png)](https://static-docs.nocobase.com/![20240407170234](httpsstatic-docs.nocobase.com20240407170234.png).gif)
 
-### Do not load data when filter is empty
+### Не загружать данные, когда фильтр пуст
 
 ![20240721160327_rec_](https://static-docs.nocobase.com/20240721160327_rec_.gif)

@@ -1,87 +1,79 @@
-# List Block
+### **Блок списка**
 
-## Introduction
+#### **Введение**
 
-The list block displays data in a list format, suitable for scenarios such as task lists, news updates, product information, and other data presentation needs.
+Блок списка отображает данные в формате списка и подходит для таких сценариев, как списки задач, новости, информация о товарах и другие случаи представления данных.
 
-## Adding a Block
+#### **Добавление блока**
 
-<video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240417224417.mp4" type="video/mp4">
-</video>
+#### **Параметры настройки блока**
 
-## Block Configuration Options
+![Параметры](https://static-docs.nocobase.com/20240417224539.png)
 
-![20240417224539](https://static-docs.nocobase.com/20240417224539.png)
+##### **Настройка диапазона данных**
 
-### Setting Data Scope
+Как показано на изображении: фильтр по умолчанию выбирает заказы со статусом «Возврат».
 
-As shown in the image: The default filter selects orders with a "Refunded" status.
+![Диапазон данных](https://static-docs.nocobase.com/20240417224701.png)
 
-![20240417224701](https://static-docs.nocobase.com/20240417224701.png)
+Более подробно см. в разделе [Настройка диапазона данных](/handbook/ui/blocks/block-settings/data-scope).
 
-For more details, refer to [Setting Data Scope](/handbook/ui/blocks/block-settings/data-scope).
+##### **Настройка правил сортировки**
 
-### Setting Sorting Rules
+Как показано на изображении: заказы сортируются по сумме заказа в порядке убывания.
 
-As shown in the image: Orders are sorted in descending order by order amount.
+![Сортировка](https://static-docs.nocobase.com/20240417225302.png)
 
-![20240417225302](https://static-docs.nocobase.com/20240417225302.png)
+Более подробно см. в разделе [Настройка правил сортировки](/handbook/ui/blocks/block-settings/sorting-rule).
 
-For more details, refer to [Setting Sorting Rules](/handbook/ui/blocks/block-settings/sorting-rule).
+##### **Настройка метода загрузки данных**
 
-### Setting Data Loading Method
+Обычно используется совместно с блоком фильтрации — данные загружаются только после применения фильтра.
 
-Typically used in conjunction with the filter block to load data only when filtered.
+Более подробно см. в разделе [Настройка метода загрузки данных](/handbook/ui/blocks/block-settings/loading-mode).
 
-<video width="100%" height="440" controls>
-      <source src="https://static-docs.nocobase.com/20240417225539.mp4" type="video/mp4">
-</video>
+##### **Настройка высоты блока**
 
-For more details, refer to [Setting Data Loading Method](/handbook/ui/blocks/block-settings/loading-mode).
+Пример: установка высоты блока списка заказов в режим «Полная высота».
 
-### Setting Block Height
+![Высота](https://static-docs.nocobase.com/20240604233102.gif)
 
-Example: Set the height of the order list block to "Full Height" mode.
+Более подробно см. в разделе [Высота блока](/handbook/ui/blocks/block-settings/block-height).
 
-![20240604233102](https://static-docs.nocobase.com/20240604233102.gif)
+- [Редактировать заголовок блока](/handbook/ui/blocks/block-settings/block-title)
+- [Сохранить как шаблон блока](/handbook/block-template)
 
-For more details, refer to [Block Height](/handbook/ui/blocks/block-settings/block-height).
+#### **Настройка полей**
 
-- [Edit Block Title](/handbook/ui/blocks/block-settings/block-title)
-- [Save as Block Template](/handbook/block-template)
+##### **Поля основной таблицы**
 
-## Configuring Fields
+![Основные поля](https://static-docs.nocobase.com/20240417230027.png)
 
-### Main Table Fields
+##### **Поля связанных таблиц**
 
-![20240417230027](https://static-docs.nocobase.com/20240417230027.png)
+![Связанные поля](https://static-docs.nocobase.com/20240417230115.png)
 
-### Related Table Fields
+Более подробно о настройке полей списка см. в разделе [Поля детализации](/handbook/ui/fields/generic/detail-form-item).
 
-![20240417230115](https://static-docs.nocobase.com/20240417230115.png)
+#### **Настройка действий**
 
-For more details on configuring list fields, refer to [Detail Fields](/handbook/ui/fields/generic/detail-form-item).
+##### **Глобальные действия**
 
-## Configuring Actions
+![Глобальные действия](https://static-docs.nocobase.com/20240421115811.png)
 
-### Global Actions
+- [Фильтр](/handbook/ui/actions/types/filter)
+- [Добавить новое](/handbook/ui/actions/types/add-new)
+- [Обновить](/handbook/ui/actions/types/refresh)
+- [Импорт](/handbook/action-import)
+- [Экспорт](/handbook/action-export)
 
-![20240421115811](https://static-docs.nocobase.com/20240421115811.png)
+##### **Действия со строками**
 
-- [Filter](/handbook/ui/actions/types/filter)
-- [Add New](/handbook/ui/actions/types/add-new)
-- [Refresh](/handbook/ui/actions/types/refresh)
-- [Import](/handbook/action-import)
-- [Export](/handbook/action-export)
+![Действия со строками](https://static-docs.nocobase.com/20240418114424.png)
 
-### Row Actions
-
-![20240418114424](https://static-docs.nocobase.com/20240418114424.png)
-
-- [View](/handbook/ui/actions/types/view)
-- [Edit](/handbook/ui/actions/types/edit)
-- [Delete](/handbook/ui/actions/types/delete)
-- [Pop-Up](/handbook/ui/actions/types/pop-up)
-- [Update Record](/handbook/ui/actions/types/update-record)
-- [Custom Request](/handbook/action-custom-request)
+- [Просмотр](/handbook/ui/actions/types/view)
+- [Редактирование](/handbook/ui/actions/types/edit)
+- [Удаление](/handbook/ui/actions/types/delete)
+- [Всплывающее окно](/handbook/ui/actions/types/pop-up)
+- [Обновить запись](/handbook/ui/actions/types/update-record)
+- [Пользовательский запрос](/handbook/action-custom-request)

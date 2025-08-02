@@ -1,35 +1,43 @@
-# File Manager
+# Менеджер файлов
 
 <PluginInfo name="file-manager"></PluginInfo>
 
-## Introduction
+## Введение
 
-The File Manager plugin provides a file collection, attachment field, and file storage services for effectively managing files. Files are structured data table records known as file collection, which store file metadata and can be managed through the File Manager. Attachment fields are specific relational fields associated with the file collection. The plugin supports multiple storage methods, including local storage, Alibaba Cloud OSS, Amazon S3, and Tencent Cloud COS.
+Плагин "Менеджер файлов" предоставляет функционал для эффективного управления файлами, включая:
+- Коллекцию файлов
+- Поле для вложений
+- Сервисы хранения файлов
 
-## User Manual
+Файлы представляют собой записи в таблице данных (коллекции файлов), которые хранят метаданные и могут управляться через интерфейс менеджера. Поля вложений - это специальные реляционные поля, связанные с коллекцией файлов. Плагин поддерживает различные способы хранения: локальное хранилище, Alibaba Cloud OSS, Amazon S3 и Tencent Cloud COS.
 
-### File Collection
+## Руководство пользователя
 
-An attachments collection is built-in to store all files associated with attachment fields. Additionally, new file collections can be created to store specific files.
+### Коллекция файлов
 
-[More usage information can be found in the file table introduction document](/handbook/file-manager/file-collection)
+Система включает встроенную коллекцию для хранения всех файлов, связанных с полями вложений. Также можно создавать новые коллекции для хранения специфических файлов.
 
-### Attachment Field
+[Подробнее в документации по коллекциям файлов](/handbook/file-manager/file-collection)
 
-Attachment fields are specific relational fields related to the file collection, which can be created through "Attachment field" or configured through "Association field".
+### Поле вложений
 
-[More usage information can be found in the attachment field introduction document](/handbook/file-manager/field-attachment)
+Специальные реляционные поля, связанные с коллекцией файлов. Можно создавать через "Поле вложения" или настраивать через "Ассоциативное поле".
 
-### File Storage
+[Подробнее в документации по полям вложений](/handbook/file-manager/field-attachment)
 
-The file storage engine is used to save files to specific services, including local storage (saving to the server's hard drive), cloud storage, etc.
+### Хранение файлов
 
-[More usage information can be found in the file storage introduction document](./storage/index.md)
+Движок хранения файлов поддерживает:
+- Локальное хранение (на жестком диске сервера)
+- Облачные хранилища (Alibaba Cloud OSS, Amazon S3, Tencent Cloud COS)
+
+[Подробнее в документации по хранению файлов](./storage/index.md)
 
 ### HTTP API
 
-Files can be uploaded through the HTTP API, refer to [HTTP API](./http-api.md).
+Возможна загрузка файлов через HTTP API. [Документация по API](./http-api.md)
 
-## Development
+## Разработка
 
-* [Extend client file type](./development/client-file-type.md)
+* [Расширение типов файлов на клиенте](./development/client-file-type.md)
+

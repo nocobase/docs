@@ -1,14 +1,14 @@
-# 适配的 Schema 组件
+# Поддерживаемые компоненты Schema
 
-## Common
+## Общие
 
 - DndContext
-- SortableItem
+- Сортируемый элемент
 
-## And Design
+## И дизайн
 
-- Action
-- BlockItem
-- Calendar
-- CardItem
-- Cascader
+- Действие
+- Элемент блока
+- Календарь
+- Элемент карточки
+- Каскадер

@@ -1,31 +1,31 @@
-# Using Variables
+# Использование переменных
 
-## Core Conception
+## Основная концепция
 
-Just like variables in programming languages, **variables** are important tools for connecting and organizing processes in workflow.
+Как и переменные в языках программирования, **переменные** являются важным инструментом для связи и организации процессов в workflow.
 
-When each node is executed after the workflow is triggered, variables can be used in some configuration options, and the source of the variables is from data result of upstream node, including the following categories:
+Когда каждый узел выполняется после срабатывания workflow, переменные могут использоваться в некоторых настройках конфигурации. Источником переменных являются данные результатов вышестоящих узлов, включая следующие категории:
 
-- Trigger Context Data: In cases such as action triggers and collection triggers, single record object can be used by all nodes. The specific implementation may differ based on the individual trigger.
-- Upstream node data: When executing any node, the result data of the previously completed nodes.
-- Scope variables: When the node is in some special branch structures, scope variables specific to the corresponding branch can be used, such as in loop structures, where data objects for each round of the loop can be used.
-- System variables: Some built-in system parameters, such as the current time, etc.
+- Данные контекста триггера: В случаях, таких как триггеры действий и триггеры коллекций, объект одной записи может использоваться всеми узлами. Конкретная реализация может отличаться в зависимости от отдельного триггера.
+- Данные вышестоящих узлов: При выполнении любого узла, данные результатов ранее завершенных узлов.
+- Локальные переменные: Когда узел находится в некоторых специальных ветвях структуры, могут использоваться локальные переменные, специфичные для соответствующей ветки, например, в циклических структурах, где объекты данных для каждого цикла могут быть использованы.
+- Системные переменные: Некоторые встроенные системные параметры, такие как текущее время и т.д.
 
-We have used the function of variables many times in [Quick Start](../quick-start.md), for example, in the calculation node, we can use variables to reference trigger context data for calculation:
+Мы уже использовали функцию переменных много раз в [Быстром старте](../quick-start.md), например, в узле вычислений мы можем использовать переменные для ссылки на данные контекста триггера для вычислений:
 
-![Function and variable usage in the calculation node](https://static-docs.nocobase.com/837e4851a4c70a1932542caadef3431b.png)
+![Использование функций и переменных в узле вычислений](https://static-docs.nocobase.com/837e4851a4c70a1932542caadef3431b.png)
 
-In the update node, use trigger context data as the filtering condition variable, and refer to the result of the calculation node as the field value variable to update record:
+В узле обновления используем данные контекста триггера как переменные условий фильтрации и ссылаемся на результат узла вычислений как переменную значения поля для обновления записи:
 
-![Variable in update data node](https://static-docs.nocobase.com/2e147c93643e7ebc709b9b7ab4f3af8c.png)
+![Переменные в узле обновления данных](https://static-docs.nocobase.com/2e147c93643e7ebc709b9b7ab4f3af8c.png)
 
-## Data Structure
+## Структура данных
 
-The internal of a variable is a JSON structure, which can usually be used to access specific parts of the data according to the JSONPath. Because many variables are based on the data collection of NocoBase, association data will be composed as a tree-like structure of objects, such as selecting the value of a field of related data that is queried. In addition, when association data is a to-many structure, the variable may be an array.
+Внутри переменная представляет собой структуру JSON, которая обычно может использоваться для доступа к конкретным частям данных в соответствии с JSONPath. Поскольку многие переменные основаны на коллекциях данных NocoBase, ассоциированные данные будут представлены в виде древовидной структуры объектов. Например, выбор значения поля связанных данных, которые были запрошены. Кроме того, когда ассоциированные данные имеют структуру "многие-ко-многим", переменная может быть массивом.
 
-Selecting a variable will most of the time require selecting the last layer value attribute, usually a simple data type such as number, string, etc. However, when there is an array in the variable hierarchy, the attributes at the end level will also be mapped to an array, and only when the corresponding node supports array can the array data be correctly processed. For example, in the calculation node, some calculation engines have functions specially designed for arrays, and in the loop node, the loop object can directly select an array.
+Выбор переменной чаще всего требует выбора атрибута последнего уровня, обычно это простой тип данных, такой как число, строка и т.д. Однако, когда в иерархии переменной присутствует массив, атрибуты конечного уровня также будут отображаться в массив, и только если соответствующий узел поддерживает массивы, данные массива могут быть корректно обработаны. Например, в узле вычислений некоторые механизмы вычислений имеют функции, специально предназначенные для массивов, а в узле цикла объект цикла может напрямую выбирать массив.
 
-For example, when a query node queries multiple data rows, the node result will be an array containing multiple rows of homogeneous data:
+Например, когда узел запроса запрашивает несколько строк данных, результат узла будет массивом, содержащим несколько строк однородных данных:
 
 ```json
 [
@@ -40,22 +40,22 @@ For example, when a query node queries multiple data rows, the node result will 
 ]
 ```
 
-However, when it is used as a variable in subsequent nodes, if the selected variable is in the form of `Node Result / Query Node / Title`, it will be mapped to an flat array of corresponding field values:
+Однако, когда он используется как переменная в последующих узлах, если выбранная переменная имеет форму `Результат узла / Узел запроса / Название`, она будет отображаться в плоский массив соответствующих значений полей:
 
 ```json
 ["Title 1", "Title 2"]
 ```
 
-If it is a multi-dimensional array (such as a many-to-many association fields), it will be a one-dimensional array after the corresponding field is flattened.
+Если это многомерный массив (например, поля ассоциации "многие-ко-многим"), после выравнивания соответствующего поля он станет одномерным массивом.
 
-## Builtin System Variables
+## Встроенные системные переменные
 
-### System Time
+### Системное время
 
-Retrieve the system time at the moment of execution based on the node where it is executed, the time zone is the time zone set by the server.
+Получение системного времени на момент выполнения на основе узла, где оно выполняется. Часовой пояс соответствует настройкам сервера.
 
-### Date Range Parameters
+### Параметры диапазона дат
 
-This can be used for configuring date field filter conditions in query, update, and delete nodes. It only supports "Is" comparisons, and the start and end points of the date range are based on the server's time zone settings.
+Могут использоваться для настройки условий фильтрации полей даты в узлах запроса, обновления и удаления. Поддерживается только сравнение "Равно", а начальная и конечная точки диапазона дат основаны на настройках часового пояса сервера.
 
-![Date Range Parameters](https://static-docs.nocobase.com/20240817175354.png)
+![Параметры диапазона дат](https://static-docs.nocobase.com/20240817175354.png)

@@ -1,23 +1,24 @@
-# `Carousel` 区块
+# Блок `Carousel`
 
-## 场景说明
+## Описание сценария
 
-NocoBase 有很多 `Add block` 按钮用于向界面添加区块，但是目前已有的区块类型不一定满足我们的需求，我们就需要根据需求自定开发一些区块。
+В NocoBase есть множество кнопок `Add block`, которые используются для добавления блоков в интерфейс, но существующие типы блоков не всегда удовлетворяют потребности. В таких случаях необходимо разрабатывать пользовательские блоки в соответствии с требованиями.
 
-其中有些和数据表有关系的被成为数据区块 `Data Block`，有些和数据表无关的被称为简单区块 `Simple Block`，本篇文章就是针对简单区块 `Simple Block` 举例说明。
+Блоки, связанные с таблицами данных, называются **данными блоками** (`Data Block`), а блоки, не связанные с таблицами данных, называются **простыми блоками** (`Simple Block`). Данная статья посвящена примеру создания простого блока `Simple Block`.
 
-## 示例说明
+## Описание примера
 
-本实例会基于 ant-design 的 [Carousel](https://ant.design/components/carousel) 组件创建 `Carousel` 区块，并将其添加到 `Page`、`Table` 以及移动端的 `Add block` 中。
+В этом примере мы создадим блок `Carousel` на основе компонента [Carousel](https://ant.design/components/carousel) из Ant Design и добавим его в меню `Add block` на страницах `Page`, `Table` и в мобильной версии.
 
-本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-block-carousel) 中查看。
+Полный код примера можно найти в репозитории [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-block-carousel).
+
 <video width="100%" controls="">
   <source src="https://static-docs.nocobase.com/20240603155655_rec_.mp4" type="video/mp4" />
 </video>
 
-## 初始化插件
+## Инициализация плагина
 
-我们按照 [编写第一个插件](/development/your-fisrt-plugin) 文档说明，如果没有一个项目，可以先创建一个项目，如果已经有了或者是 clone 的源码，则跳过这一步。
+Следуя инструкциям из документа [Создание вашего первого плагина](/development/your-fisrt-plugin), если у вас нет проекта, создайте его. Если проект уже существует или вы клонировали исходный код, пропустите этот шаг.
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d sqlite
@@ -26,64 +27,66 @@ yarn install
 yarn nocobase install
 ```
 
-然后初始化一个插件，并添加到系统中：
+Затем инициализируйте плагин и добавьте его в систему:
 
 ```bash
 yarn pm create @nocobase-sample/plugin-block-carousel
 yarn pm enable @nocobase-sample/plugin-block-carousel
 ```
 
-然后启动项目即可：
+Запустите проект:
 
 ```bash
 yarn dev
 ```
 
-然后登录后访问 [http://localhost:13000/admin/pm/list/locale/](http://localhost:13000/admin/pm/list/locale/) 就可以看到插件已经安装并启用了。
+После входа в систему перейдите по адресу [http://localhost:13000/admin/pm/list/locale/](http://localhost:13000/admin/pm/list/locale/), чтобы убедиться, что плагин установлен и активирован.
 
-## 功能实现
+## Реализация функционала
 
-在实现本示例之前，我们需要先了解一些基础知识：
+Перед реализацией примера необходимо ознакомиться с основными понятиями:
 
-- [ant-design Carousel](https://ant.design/components/carousel)
-- [SchemaInitializer 教程](/development/client/ui-schema/initializer)：用于向界面内添加各种区块、字段、操作等
-- [SchemaInitializer API](https://client.docs.nocobase.com/core/ui-schema/schema-initializer)：用于向界面内添加各种区块、字段、操作等
-- [UI Schema 协议](/development/client/ui-schema/what-is-ui-schema)：详细介绍 Schema 的结构和每个属性的作用
-- [Designable 设计器](/development/client/ui-schema/designable)：用于修改 Schema
+- [Carousel от Ant Design](https://ant.design/components/carousel)
+- [Руководство по SchemaInitializer](/development/client/ui-schema/initializer): для добавления блоков, полей и операций в интерфейс.
+- [API SchemaInitializer](https://client.docs.nocobase.com/core/ui-schema/schema-initializer): для добавления элементов в интерфейс.
+- [Протокол UI Schema](/development/client/ui-schema/what-is-ui-schema): подробное описание структуры Schema и роли каждого атрибута.
+- [Дизайнер Designable](/development/client/ui-schema/designable): для изменения Schema.
+
+Структура проекта:
 
 ```bash
 .
-├── client # 客户端插件
-│   ├── initializer # 初始化器
-│   ├── component # 区块组件
-│   ├── index.tsx # 客户端插件入口
-│   ├── locale.ts # 多语言工具函数
-│   ├── constants.ts # 常量
+├── client # Клиентская часть плагина
+│   ├── initializer # Инициализатор
+│   ├── component # Компонент блока
+│   ├── index.tsx # Точка входа клиентской части
+│   ├── locale.ts # Утилиты для мультиязычности
+│   ├── constants.ts # Константы
 │   ├── schema # Schema
-│   └── settings # Schema Settings
-├── locale # 多语言文件
-│   ├── en-US.json # 英语
-│   └── zh-CN.json # 中文
-├── index.ts # 服务端插件入口
-└── server # 服务端插件
+│   └── settings # Настройки Schema
+├── locale # Файлы мультиязычности
+│   ├── en-US.json # Английский
+│   └── zh-CN.json # Китайский
+├── index.ts # Точка входа серверной части
+└── server # Серверная часть плагина
 ```
 
-### 1. 定义名称
+### 1. Определение имени
 
-我们首先需要定义区块名称，它将会使用在各个地方。
+Сначала нужно определить имя блока, которое будет использоваться в различных местах.
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/constants.ts`：
+Создайте файл `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/constants.ts`:
 
 ```ts
 export const BlockName = 'Carousel';
 export const BlockNameLowercase = BlockName.toLowerCase();
 ```
 
-### 2. 实现区块组件
+### 2. Реализация компонента блока
 
-#### 2.1 定义区块组件
+#### 2.1 Определение компонента блока
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/component/Carousel.tsx` 文件，其内容如下：
+Создайте файл `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/component/Carousel.tsx` со следующим содержимым:
 
 ```tsx | pure
 import React, { FC } from 'react';
@@ -115,22 +118,21 @@ export const Carousel: FC<CarouselProps> = withDynamicSchemaProps((props) => {
     </AntdCarousel>
   ) : <Result status='404' />
 }, { displayName: BlockName })
-
 ```
 
-`Carousel` 组件整体来说是一个被 `withDynamicSchemaProps` 包裹的函数组件，[withDynamicSchemaProps](/development/client/ui-schema/what-is-ui-schema#x-component-props-和-x-use-component-props) 是一个高阶组件，用于处理 Schema 中的的动态属性。
+Компонент `Carousel` — это функциональный компонент, обёрнутый в `withDynamicSchemaProps`, который используется для обработки динамических свойств из Schema ([подробности](/development/client/ui-schema/what-is-ui-schema#x-component-props-и-x-use-component-props)).
 
-如果不看 `withDynamicSchemaProps` 的话，`Carousel` 组件就是一个简单的函数组件。
+Без учёта `withDynamicSchemaProps`, `Carousel` — это простой функциональный компонент.
 
-然后将其在 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/component/index.ts` 中导出：
+Экспортируйте компонент в `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/component/index.ts`:
 
 ```tsx | pure
 export * from './Carousel';
 ```
 
-#### 2.2 注册区块组件
+#### 2.2 Регистрация компонента блока
 
-我们需要将 `Carousel` 通过插件注册到系统中。
+Зарегистрируйте компонент `Carousel` в системе через плагин.
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
@@ -145,14 +147,14 @@ export class PluginBlockCarouselClient extends Plugin {
 export default PluginBlockCarouselClient;
 ```
 
-#### 2.3 验证区块组件
+#### 2.3 Проверка компонента блока
 
-组件验证方式有 2 种：
+Компонент можно проверить двумя способами:
 
-- 临时页面验证：我们可以临时建一个页面，然后渲染 `Carousel` 组件，查看是否符合需求
-- 文档示例验证：可以启动文档 `yarn doc plugins/@nocobase-sample/plugin-block-carousel`，通过写文档示例的方式验证是否符合需求（TODO）
+- **Проверка на временной странице**: Создайте временную страницу, отрендерьте компонент `Carousel` и проверьте, соответствует ли он требованиям.
+- **Проверка через примеры документации**: Запустите документацию с помощью команды `yarn doc plugins/@nocobase-sample/plugin-block-carousel` и проверьте через примеры документации (TODO).
 
-我们以 `临时页面验证` 为例，我们新建一个页面，根据属性参数添加一个或者多个 `Carousel` 组件，查看是否符合需求。
+Рассмотрим пример с **временной страницей**. Создайте страницу, добавьте один или несколько компонентов `Carousel` с разными параметрами и проверьте их работу.
 
 ```tsx | pure
 import React from 'react';
@@ -184,7 +186,6 @@ export class PluginBlockCarouselClient extends Plugin {
             <Carousel images={images} objectFit='contain' />
           </div>
 
-
           <div style={{ marginTop: 20, marginBottom: 20 }}>
             <Carousel images={images} autoplay />
           </div>
@@ -197,23 +198,23 @@ export class PluginBlockCarouselClient extends Plugin {
 export default PluginBlockCarouselClient;
 ```
 
-然后访问 `http://localhost:13000/admin/carousel-component` 就可以看到对应测试页面的内容了。
+Перейдите по адресу `http://localhost:13000/admin/carousel-component`, чтобы увидеть содержимое тестовой страницы.
 
 <video width="100%" controls="">
   <source src="https://static-docs.nocobase.com/20240603155918_rec_.mp4" type="video/mp4" />
 </video>
 
-验证完毕后需要删除测试页面。
+После проверки удалите тестовую страницу.
 
-### 3. 定义区块 Schema
+### 3. Определение схемы блока
 
-#### 3.1 定义区块 Schema
+#### 3.1 Определение схемы блока
 
-NocoBase 的动态页面都是通过 Schema 来渲染，所以我们需要定义一个 Schema，后续用于在界面中添加 `Carousel` 区块。在实现本小节之前，我们需要先了解一些基础知识：
+Динамические страницы NocoBase рендерятся с использованием Schema, поэтому необходимо определить Schema для добавления блока `Carousel` в интерфейс. Перед этим ознакомьтесь с:
 
-- [UI Schema 协议](/development/client/ui-schema/what-is-ui-schema)：详细介绍 Schema 的结构和每个属性的作用
+- [Протокол UI Schema](/development/client/ui-schema/what-is-ui-schema): подробное описание структуры Schema и роли каждого атрибута.
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/schema/index.ts` 文件：
+Создайте файл `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/schema/index.ts`:
 
 ```tsx | pure
 import { ISchema } from '@nocobase/client';
@@ -242,17 +243,17 @@ export const carouselSchema: ISchema = {
 };
 ```
 
-`carouselSchema`：
+`carouselSchema`:
 
-- `type`：类型，这里是 `void`，表示纯 UI 节点，没有数据
-- `'x-component': 'CardItem'`：[CardItem 组件](https://client.docs.nocobase.com/components/card-item)，目前的区块都是被包裹在卡片中的，用于提供样式、布局和拖拽等功能
-- `x-decorator-props`：用于存储 `Carousel` 组件的属性
-- `properties`：子节点
-  - `carousel`：
-    - `'x-component': BlockName`：`Carousel` 组件
-    - `'x-use-component-props': 'useCarouselBlockProps'`：用于动态获取 `Carousel` 组件的属性
+- `type`: Тип, здесь `void`, указывает на чистый UI-узел без данных.
+- `'x-component': 'CardItem'`: Компонент [CardItem](https://client.docs.nocobase.com/components/card-item), используется для стилизации, компоновки и поддержки перетаскивания блоков.
+- `x-decorator-props`: Хранит свойства компонента `Carousel`.
+- `properties`: Дочерние узлы.
+  - `carousel`:
+    - `'x-component': BlockName`: Компонент `Carousel`.
+    - `'x-use-component-props': 'useCarouselBlockProps'`: Для динамического получения свойств компонента `Carousel`.
 
-上述 Schema 转为 React 组件后相当于：
+Этот Schema эквивалентен следующему React-компоненту:
 
 ```tsx | pure
 <CardItem>
@@ -260,9 +261,9 @@ export const carouselSchema: ISchema = {
 </CardItem>
 ```
 
-#### 3.2 注册 scope
+#### 3.2 Регистрация области видимости
 
-我们需要将 `useCarouselBlockProps` 注册到系统中，这样 [x-use-component-props](/development/client/ui-schema/what-is-ui-schema#x-component-props-和-x-use-component-props) 才能找到对应的 scope。
+Зарегистрируйте `useCarouselBlockProps` в системе, чтобы [x-use-component-props](/development/client/ui-schema/what-is-ui-schema#x-component-props-и-x-use-component-props) мог найти соответствующую область видимости.
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
@@ -279,11 +280,11 @@ export class PluginBlockCarouselClient extends Plugin {
 export default PluginBlockCarouselClient;
 ```
 
-更多关于 Scope 的说明可以查看 [全局注册 Component 和 Scope](/plugin-samples/component-and-scope/global)
+Подробности о регистрации областей видимости см. в [Глобальная регистрация компонента и области видимости](/plugin-samples/component-and-scope/global).
 
-#### 3.3 验证区块 Schema
+#### 3.3 Проверка схемы блока
 
-同验证组件一样，我们可以通过临时页面验证或者文档示例验证的方式来验证 Schema 是否符合需求。我们这里以临时页面验证为例：
+Как и с компонентом, схему можно проверить через временную страницу или примеры документации. Рассмотрим проверку на временной странице:
 
 ```tsx | pure
 import React from 'react';
@@ -322,19 +323,19 @@ export class PluginBlockCarouselClient extends Plugin {
 export default PluginBlockCarouselClient;
 ```
 
-关于 `SchemaComponent` 的详细说明可以查看 [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponent-1) 文档。
+Подробности о `SchemaComponent` см. в документации [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component#schemacomponent-1).
 
-我们访问 [http://localhost:13000/admin/carousel-schema](http://localhost:13000/admin/carousel-schema) 就可以看到对应测试页面的内容了。
+Перейдите по адресу [http://localhost:13000/admin/carousel-schema](http://localhost:13000/admin/carousel-schema), чтобы увидеть содержимое тестовой страницы.
 
 <video width="100%" controls="">
   <source src="https://static-docs.nocobase.com/20240603155918_rec_.mp4" type="video/mp4" />
 </video>
 
-验证完毕后需要删除测试页面。
+После проверки удалите тестовую страницу.
 
-### 4. 定义 Schema Initializer Item
+### 4. Определение элемента инициализатора Schema
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/initializer/index.ts` 文件：
+Создайте файл `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/initializer/index.ts`:
 
 ```ts
 import { SchemaInitializerItemType, useSchemaInitializer } from '@nocobase/client';
@@ -360,31 +361,29 @@ export const carouselInitializerItem: SchemaInitializerItemType = {
 }
 ```
 
-- `type`：类型，这里是 `item`，表示是一个文本，其有点击事件，点击后可以插入一个新的 Schema
-- `name`：唯一标识符，用于区分不同的 Schema Item 和增删改查操作
-- `icon`：图标，更多 icon 可以参考 [Ant Design Icons](https://ant.design/components/icon)
-- `useComponentProps`：返回一个对象，包含 `title` 和 `onClick` 两个属性，`title` 是显示的文本，`onClick` 是点击后的回调函数
-- [useSchemaInitializer()](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#useschemainitializer)：用于获取 `SchemaInitializerContext` 上下文
-  - `insert`：插入一个新的 Schema
-- `useT()`：用于获取多语言工具函数
+- `type`: Тип, здесь `item`, указывает на текстовый элемент с событием клика, которое вставляет новый Schema.
+- `name`: Уникальный идентификатор для различия элементов Schema и операций CRUD.
+- `icon`: Иконка, см. [Ant Design Icons](https://ant.design/components/icon).
+- `useComponentProps`: Возвращает объект с свойствами `title` (текст для отображения) и `onClick` (обработчик клика).
+- [useSchemaInitializer()](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#useschemainitializer): Получает контекст `SchemaInitializerContext`.
+  - `insert`: Вставляет новый Schema.
+- `useT()`: Утилита для мультиязычности.
 
-更多关于 Schema Item 的定义可以参考 [Schema Initializer Item](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types) 文档。
+Подробности о Schema Initializer Item см. в [Schema Initializer Item](https://client.docs.nocobase.com/core/ui-schema/schema-initializer#built-in-components-and-types).
 
-### 5. 添加到 Add block 中
+### 5. Добавление в меню `Add block`
 
-系统中有很多个 `Add block` 按钮，但他们的 **name 是不同的**。
+В системе есть множество кнопок `Add block`, но их **имена различаются**.
 
 ![img_v3_02b4_049b0a62-8e3b-420f-adaf-a6350d84840g](https://static-docs.nocobase.com/img_v3_02b4_049b0a62-8e3b-420f-adaf-a6350d84840g.jpg)
 
-#### 5.1 添加到页面级别 Add block 中
+#### 5.1 Добавление в `Add block` на уровне страницы
 
-如果我们需要添加到页面级别的 `Add block` 中，我们需要知道对应的 `name`，我们可以通过 TODO 方式查看对应的 `name`。
+Чтобы добавить блок в меню `Add block` на уровне страницы, нужно знать соответствующее имя (`name`). Способ получения имени будет описан позже (TODO).
 
-TODO
+По предоставленному изображению видно, что имя `Add block` на уровне страницы — `page:addBlock`, а имя раздела `Other Blocks` — `otherBlocks`.
 
-通过上图可以看到页面级别的 `Add block` 对应的 name 为 `page:addBlock`，`Other Blocks` 对应的 name 为 `otherBlocks`。
-
-然后我们修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/index.tsx` 文件：
+Обновите файл `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/index.tsx`:
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
@@ -407,25 +406,25 @@ export class PluginBlockCarouselClient extends Plugin {
 export default PluginBlockCarouselClient;
 ```
 
-上述代码首先将 `Carousel` 组件注册到系统中，这样前面 `carouselSchema` 定义的 `x-component: 'Carousel'` 才能找到对应的组件，更多详细解释可以查看 [全局注册 Component 和 Scope](/plugin-samples/component-and-scope/global)。
+Код сначала регистрирует компонент `Carousel` в системе, чтобы `x-component: 'Carousel'` в `carouselSchema` мог найти соответствующий компонент. Подробности см. в [Глобальная регистрация компонента и области видимости](/plugin-samples/component-and-scope/global).
 
-然后将 `carouselSettings` 通过 [app.schemaSettingsManager.add](https://client.docs.nocobase.com/core/ui-schema/schema-settings-manager#schemasettingsmanageradd) 添加到系统中。
+Затем `carouselSettings` добавляется в систему с помощью [app.schemaSettingsManager.add](https://client.docs.nocobase.com/core/ui-schema/schema-settings-manager#schemasettingsmanageradd).
 
-然后使用 [app.schemaInitializerManager.addItem](https://client.docs.nocobase.com/core/ui-schema/schema-initializer-manager#schemainitializermanageradditem) 将 `carouselInitializerItem` 添加对应 Initializer 子项中，其中 `page:addBlock` 是页面上 `Add block` 的 name，`otherBlocks` 是其父级的 name。
+Элемент `carouselInitializerItem` добавляется в соответствующий инициализатор с помощью [app.schemaInitializerManager.addItem](https://client.docs.nocobase.com/core/ui-schema/schema-initializer-manager#schemainitializermanageradditem), где `page:addBlock` — имя `Add block` на уровне страницы, а `otherBlocks` — имя родительского раздела.
 
-然后我们 hover `Add block` 按钮，就可以看到 `Image` 这个新的区块类型了，点击 `Image`，就可以添加一个新的 `Carousel` 区块了。
+Наведите курсор на кнопку `Add block`, и вы увидите новый тип блока `Image`. Нажмите на `Image`, чтобы добавить новый блок `Carousel`.
 
 ![20240603161730](https://static-docs.nocobase.com/20240603161730.png)
 
-#### 5.2 添加到弹窗 Add block 中
+#### 5.2 Добавление в `Add block` во всплывающем окне
 
-我们不仅需要将其添加到页面级别的 `Add block` 中，还需要将其添加到 `Table` 区块 `Add new` 弹窗的 `Add block` 中。
+Необходимо добавить блок в меню `Add block` во всплывающем окне `Add new` блока `Table`.
 
 ![img_v3_02b4_fc47fe3a-35a1-4186-999c-0b48e6e001dg](https://static-docs.nocobase.com/img_v3_02b4_fc47fe3a-35a1-4186-999c-0b48e6e001dg.jpg)
 
-我们按照页面级别获取 `name` 的方式获取到 `Table` 区块的 `Add block` 的 `name` 为 `popup:addNew:addBlock`，`Other Blocks` 对应的 name 为 `otherBlocks`。
+Имя `Add block` для блока `Table` — `popup:addNew:addBlock`, а имя раздела `Other Blocks` — `otherBlocks`.
 
-然后修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/index.tsx` 文件：
+Обновите файл `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/index.tsx`:
 
 ```diff
 export class PluginBlockCarouselClient extends Plugin {
@@ -438,13 +437,13 @@ export class PluginBlockCarouselClient extends Plugin {
 
 ![20240603161814](https://static-docs.nocobase.com/20240603161814.png)
 
-#### 5.3 添加到移动端 Add block 中
+#### 5.3 Добавление в `Add block` на мобильной версии
 
-> 首先要激活移动端插件，参考 [激活插件](/welcome/getting-started/plugin#3-activate-the-plugin) 文档。
+> Сначала активируйте плагин для мобильной версии, см. [Активация плагина](/welcome/getting-started/plugin#3-activate-the-plugin).
 
-我们可以将其添加到移动端的 `Add block` 中，获取 `name` 的方法这里就不再赘述了。
+Добавьте блок в меню `Add block` мобильной версии. Способ получения имени здесь не описывается.
 
-然后修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/index.tsx` 文件：
+Обновите файл `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/index.tsx`:
 
 ```diff
 export class PluginBlockCarouselClient extends Plugin {
@@ -457,15 +456,15 @@ export class PluginBlockCarouselClient extends Plugin {
 
 ![20240603161913](https://static-docs.nocobase.com/20240603161913.png)
 
-如果需要更多的 `Add block`，可以继续添加，只需要知道对应的 `name` 即可。
+Для добавления в другие меню `Add block` достаточно знать их имена.
 
-### 6. 实现 Schema Settings
+### 6. Реализация настроек Schema
 
-#### 6.1 定义 Schema Settings
+#### 6.1 Определение настроек Schema
 
-一个完整的 Block 还需要有 Schema Settings，用于配置一些属性和操作。
+Для полноценного блока нужны настройки Schema для конфигурации свойств и операций.
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/index.ts` 文件：
+Создайте файл `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/index.ts`:
 
 ```ts | pure
 import { SchemaSettings } from "@nocobase/client";
@@ -479,7 +478,7 @@ export const carouselSettings = new SchemaSettings({
 });
 ```
 
-#### 6.2 注册 Schema Settings
+#### 6.2 Регистрация настроек Schema
 
 ```ts
 import { Plugin } from '@nocobase/client';
@@ -495,9 +494,9 @@ export class PluginBlockCarouselClient extends Plugin {
 export default PluginBlockCarouselClient;
 ```
 
-#### 6.3 使用 Schema Settings
+#### 6.3 Использование настроек Schema
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/schema/index.ts` 中的 `carouselSchema`：
+Обновите `carouselSchema` в `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/schema/index.ts`:
 
 ```diff
 + import { carouselSettings } from "../settings";
@@ -512,17 +511,17 @@ const carouselSchema: ISchema = {
 
 ![20240603162037](https://static-docs.nocobase.com/20240603162037.png)
 
-### 7. 实现 Schema Settings items
+### 7. Реализация элементов настроек Schema
 
-目前我们只实现了 `Schema Settings`，但是没有实现任何操作，我们需要根据需求实现各个操作。
+Мы определили `Schema Settings`, но не реализовали операции. Реализуем их в соответствии с требованиями.
 
-目前 Schema Settings 支持的内置操作类型请参考 [Schema Settings - Built-in Components and Types](https://client.docs.nocobase.com/core/ui-schema/schema-settings#built-in-components-and-types) 文档。
+Поддерживаемые типы операций см. в [Schema Settings - Built-in Components and Types](https://client.docs.nocobase.com/core/ui-schema/schema-settings#built-in-components-and-types).
 
-#### 7.1 实现 `remove` 操作
+#### 7.1 Реализация операции `remove`
 
-目前通过 initializers 添加的区块是无法删除的，我们需要实现 `remove` 操作。
+Блоки, добавленные через инициализаторы, нельзя удалить, поэтому реализуем операцию `remove`.
 
-[NocoBase] 内置了 [remove](https://client.docs.nocobase.com/core/ui-schema/schema-settings#schemasettingsremove-1) 操作类型，我们修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/index.ts` 文件：
+NocoBase предоставляет встроенный тип [remove](https://client.docs.nocobase.com/core/ui-schema/schema-settings#schemasettingsremove-1). Обновите `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/index.ts`:
 
 ```diff
 import { SchemaSettings } from '@nocobase/client';
@@ -545,21 +544,21 @@ export const carouselSettings = new SchemaSettings({
 });
 ```
 
-- componentProps
-  - `removeParentsIfNoChildren`：如果没有子节点，是否删除父节点
-  - `breakRemoveOn`：删除时的中断条件。因为 `Add Block` 会自动将子项的包裹在 `Grid` 中，所以这里设置 `breakRemoveOn: { 'x-component': 'Grid' }`，当删除 `Grid` 时，不再向上删除。
+- `componentProps`:
+  - `removeParentsIfNoChildren`: Удалять родительский узел, если у него нет дочерних узлов.
+  - `breakRemoveOn`: Условие остановки удаления. Поскольку `Add Block` автоматически оборачивает элементы в `Grid`, устанавливаем `breakRemoveOn: { 'x-component': 'Grid' }`, чтобы не удалять выше `Grid`.
 
 <video width="100%" controls="">
   <source src="https://static-docs.nocobase.com/20240603162229_rec_.mp4" type="video/mp4" />
 </video>
 
-#### 7.2 实现 `Edit Block title` 操作
+#### 7.2 Реализация операции `Edit Block title`
 
-我们可以实现一个 `Edit Block title` 操作，用于修改区块的标题。
+Реализуем операцию `Edit Block title` для изменения заголовка блока.
 
-因为编辑区块标题是一个通用的逻辑，所以 NocoBase 提供了 SchemaSettingsBlockTitleItem（文档 TODO） 组件，我们可以直接使用。
+NocoBase предоставляет компонент `SchemaSettingsBlockTitleItem` (документация TODO), который можно использовать.
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/index.ts`：
+Обновите `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/index.ts`:
 
 ```diff
 - import { SchemaSettingsBlockTitleItem } from "@nocobase/client";
@@ -597,15 +596,15 @@ export const carouselSettings = new SchemaSettings({
   <source src="https://static-docs.nocobase.com/20240603162340_rec_.mp4" type="video/mp4" />
 </video>
 
-更多可以复用的 SchemaSettings items 可以查看 TODO。
+Другие переиспользуемые элементы SchemaSettings см. в документации (TODO).
 
-#### 7.3 实现 `Edit Images` 操作
+#### 7.3 Реализация операции `Edit Images`
 
-我们可以实现一个 `Edit Images` 操作，用于修改轮播的的图片。
+Реализуем операцию `Edit Images` для редактирования изображений в карусели.
 
-##### 7.3.1 定义 Schema Settings item
+##### 7.3.1 Определение элемента SchemaSettings
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/items/images.ts` 文件：
+Создайте файл `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/items/images.ts`:
 
 ```ts
 import { SchemaSettingsItemType, useDesignable, } from "@nocobase/client";
@@ -658,30 +657,30 @@ export const imagesSchemaSettingsItem: SchemaSettingsItemType = {
 };
 ```
 
-关于 SchemaSettings Item 的定义可以查看 [SchemaSettingsItem](https://client.docs.nocobase.com/core/ui-schema/schema-settings#optionsitems)。
+Подробности о SchemaSettings Item см. в [SchemaSettingsItem](https://client.docs.nocobase.com/core/ui-schema/schema-settings#optionsitems).
 
-- `type`：内置类型。[actionModal](https://client.docs.nocobase.com/core/ui-schema/schema-settings#schemasettingsactionmodalitem) 为弹窗类型
-- `name`：唯一标识，用于增删改查
-- `useComponentProps`：返回 `actionModal` 对应组件 `SchemaSettingsActionModalItem` 的属性
+- `type`: Встроенный тип [actionModal](https://client.docs.nocobase.com/core/ui-schema/schema-settings#schemasettingsactionmodalitem) — всплывающее окно.
+- `name`: Уникальный идентификатор для операций CRUD.
+- `useComponentProps`: Возвращает свойства компонента `SchemaSettingsActionModalItem` для `actionModal`.
 
-`useComponentProps`：
+`useComponentProps`:
 
-- Hooks
-  - `useFieldSchema`：获取当前节点 schema
-  - `useDesignable`：获取当前 Designable 实例，deepMerge 用于合并 schema
-    - `x-uid`：当前节点的唯一标识
-    - `x-decorator-props`：当前节点的属性，存储了 `carousel` 的属性
+- Хуки:
+  - `useFieldSchema`: Получение текущей схемы узла.
+  - `useDesignable`: Получение экземпляра Designable, метод `deepMerge` для слияния схемы.
+    - `x-uid`: Уникальный идентификатор узла.
+    - `x-decorator-props`: Свойства узла, содержащие свойства `carousel`.
 
-- Props
-  - `title`：弹窗标题
-  - `schema`：弹窗表单 schema
-    - [Upload.Attachment](https://client.docs.nocobase.com/components/upload)：上传组件
-    - [FormItem](https://client.docs.nocobase.com/components/form-item)：表单项
-  - `onSubmit`：表单提交事件
+- Свойства:
+  - `title`: Заголовок всплывающего окна.
+  - `schema`: Схема формы всплывающего окна.
+    - [Upload.Attachment](https://client.docs.nocobase.com/components/upload): Компонент загрузки.
+    - [FormItem](https://client.docs.nocobase.com/components/form-item): Элемент формы.
+  - `onSubmit`: Событие отправки формы.
 
-##### 7.3.2 使用 SchemaSettings Item
+##### 7.3.2 Использование SchemaSettings Item
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/index.ts`：
+Обновите `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/index.ts`:
 
 ```diff
 // ...
@@ -713,11 +712,11 @@ export const carouselSettings = new SchemaSettings({
   <source src="https://static-docs.nocobase.com/20240603162436_rec_.mp4" type="video/mp4" />
 </video>
 
-#### 7.4 实现 Edit Height
+#### 7.4 Реализация `Edit Height`
 
-##### 7.4.1 实现 SchemaSettings Item
+##### 7.4.1 Определение SchemaSettings Item
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/items/height.ts` 文件：
+Создайте файл `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/items/height.ts`:
 
 ```ts
 import { SchemaSettingsItemType, useDesignable, } from "@nocobase/client";
@@ -766,30 +765,30 @@ export const heightSchemaSettingsItem: SchemaSettingsItemType = {
 };
 ```
 
-关于 SchemaSettings Item 的定义可以查看 [SchemaSettingsItem](https://client.docs.nocobase.com/core/ui-schema/schema-settings#optionsitems)。
+Подробности о SchemaSettings Item см. в [SchemaSettingsItem](https://client.docs.nocobase.com/core/ui-schema/schema-settings#optionsitems).
 
-- `type`：内置类型。[actionModal](https://client.docs.nocobase.com/core/ui-schema/schema-settings#schemasettingsactionmodalitem) 为弹窗类型
-- `name`：唯一标识，用于增删改查
-- `useComponentProps`：返回 `actionModal` 对应组件 `SchemaSettingsActionModalItem` 的属性
+- `type`: Встроенный тип [actionModal](https://client.docs.nocobase.com/core/ui-schema/schema-settings#schemasettingsactionmodalitem) — всплывающее окно.
+- `name`: Уникальный идентификатор для операций CRUD.
+- `useComponentProps`: Возвращает свойства компонента `SchemaSettingsActionModalItem` для `actionModal`.
 
-`useComponentProps`：
+`useComponentProps`:
 
-- Hooks
-  - `useFieldSchema`：获取当前节点 schema
-  - `useDesignable`：获取当前 Designable 实例，deepMerge 用于合并 schema
-    - `x-uid`：当前节点的唯一标识
-    - `x-decorator-props`：当前节点的属性，存储了 `carousel` 的属性
+- Хуки:
+  - `useFieldSchema`: Получение текущей схемы узла.
+  - `useDesignable`: Получение экземпляра Designable, метод `deepMerge` для слияния схемы.
+    - `x-uid`: Уникальный идентификатор узла.
+    - `x-decorator-props`: Свойства узла, содержащие свойства `carousel`.
 
-- Props
-  - `title`：弹窗标题
-  - `schema`：弹窗表单 schema
-    - [InputNumber](https://client.docs.nocobase.com/components/input-number)：数字输入框
-    - [FormItem](https://client.docs.nocobase.com/components/form-item)：表单项
-  - `onSubmit`：表单提交事件
+- Свойства:
+  - `title`: Заголовок всплывающего окна.
+  - `schema`: Схема формы всплывающего окна.
+    - [InputNumber](https://client.docs.nocobase.com/components/input-number): Поле ввода числа.
+    - [FormItem](https://client.docs.nocobase.com/components/form-item): Элемент формы.
+  - `onSubmit`: Событие отправки формы.
 
-##### 7.4.2 使用 SchemaSettings Item
+##### 7.4.2 Использование SchemaSettings Item
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/index.ts`：
+Обновите `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/index.ts`:
 
 ```diff
 // ...
@@ -817,15 +816,16 @@ export const carouselSettings = new SchemaSettings({
   ]
 });
 ```
+
 <video width="100%" controls="">
   <source src="https://static-docs.nocobase.com/20240603162555_rec_.mp4" type="video/mp4" />
 </video>
 
-#### 7.5 实现 ObjectFit
+#### 7.5 Реализация `ObjectFit`
 
-##### 7.5.1 实现 SchemaSettings Item
+##### 7.5.1 Определение SchemaSettings Item
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/items/objectFit.ts` 文件：
+Создайте файл `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/items/objectFit.ts`:
 
 ```ts
 import { SchemaSettingsItemType, useDesignable, } from "@nocobase/client";
@@ -868,29 +868,29 @@ export const objectFitSchemaSettingsItem: SchemaSettingsItemType = {
 };
 ```
 
-关于 SchemaSettings Item 的定义可以查看 [SchemaSettingsItem](https://client.docs.nocobase.com/core/ui-schema/schema-settings#optionsitems)。
+Подробности о SchemaSettings Item см. в [SchemaSettingsItem](https://client.docs.nocobase.com/core/ui-schema/schema-settings#optionsitems).
 
-- `type`：内置类型。[select](https://client.docs.nocobase.com/core/ui-schema/schema-settings#schemasettingsselectitem) 为选择类型
-- `name`：唯一标识，用于增删改查
-- `useComponentProps`：返回 `select` 对应组件 `SchemaSettingsSelectItem` 的属性
+- `type`: Встроенный тип [select](https://client.docs.nocobase.com/core/ui-schema/schema-settings#schemasettingsselectitem) — выпадающий список.
+- `name`: Уникальный идентификатор для операций CRUD.
+- `useComponentProps`: Возвращает свойства компонента `SchemaSettingsSelectItem` для `select`.
 
-`useComponentProps`：
+`useComponentProps`:
 
-- Hooks
-  - `useFieldSchema`：获取当前节点 schema
-  - `useDesignable`：获取当前 Designable 实例，deepMerge 用于合并 schema
-    - `x-uid`：当前节点的唯一标识
-    - `x-decorator-props`：当前节点的属性，存储了 `carousel` 的属性
+- Хуки:
+  - `useFieldSchema`: Получение текущей схемы узла.
+  - `useDesignable`: Получение экземпляра Designable, метод `deepMerge` для слияния схемы.
+    - `x-uid`: Уникальный идентификатор узла.
+    - `x-decorator-props`: Свойства узла, содержащие свойства `carousel`.
 
-- Props
-  - `title`：弹窗标题
-  - `options`：选择项
-  - `value`：默认值
-  - `onChange`：选择事件
+- Свойства:
+  - `title`: Заголовок.
+  - `options`: Опции выбора.
+  - `value`: Значение по умолчанию.
+  - `onChange`: Событие изменения.
 
-##### 7.5.2 使用 SchemaSettings Item
+##### 7.5.2 Использование SchemaSettings Item
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/index.ts`：
+Обновите `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/index.ts`:
 
 ```diff
 // ...
@@ -924,11 +924,11 @@ export const carouselSettings = new SchemaSettings({
   <source src="https://static-docs.nocobase.com/20240603162655_rec_.mp4" type="video/mp4" />
 </video>
 
-#### 7.6 实现 Autoplay
+#### 7.6 Реализация `Autoplay`
 
-##### 7.6.1 实现 SchemaSettings Item
+##### 7.6.1 Определение SchemaSettings Item
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/items/autoplay.ts` 文件：
+Создайте файл `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/items/autoplay.ts`:
 
 ```ts
 import { SchemaSettingsItemType, useDesignable, } from "@nocobase/client";
@@ -965,29 +965,28 @@ export const autoplaySchemaSettingsItem: SchemaSettingsItemType = {
 };
 ```
 
-关于 SchemaSettings Item 的定义可以查看 [SchemaSettingsItem](https://client.docs.nocobase.com/core/ui-schema/schema-settings#optionsitems)。
+Подробности о SchemaSettings Item см. в [SchemaSettingsItem](https://client.docs.nocobase.com/core/ui-schema/schema-settings#optionsitems).
 
-- `type`：内置类型。[switch](https://client.docs.nocobase.com/core/ui-schema/schema-settings#schemasettingsswitchitem) 为开关类型
-- `name`：唯一标识，用于增删改查
-- `useComponentProps`：返回 `switch` 对应组件 `SchemaSettingsSwitchItem` 的属性
+- `type`: Встроенный тип [switch](https://client.docs.nocobase.com/core/ui-schema/schema-settings#schemasettingsswitchitem) — переключатель.
+- `name`: Уникальный идентификатор для операций CRUD.
+- `useComponentProps`: Возвращает свойства компонента `SchemaSettingsSwitchItem` для `switch`.
 
-`useComponentProps`：
+`useComponentProps`:
 
-- Hooks
-  - `useFieldSchema`：获取当前节点 schema
-  - `useDesignable`：获取当前 Designable 实例，deepMerge 用于合并 schema
-    - `x-uid`：当前节点的唯一标识
-    - `x-decorator-props`：当前节点的属性，存储了 `carousel` 的属性
+- Хуки:
+  - `useFieldSchema`: Получение текущей схемы узла.
+  - `useDesignable`: Получение экземпляра Designable, метод `deepMerge` для слияния схемы.
+    - `x-uid`: Уникальный идентификатор узла.
+    - `x-decorator-props`: Свойства узла, содержащие свойства `carousel`.
 
-- Props
-  - `title`：弹窗标题
-  - `checked`：默认值
-  - `onChange`：开关事件
+- Свойства:
+  - `title`: Заголовок.
+  - `checked`: Значение по умолчанию.
+  - `onChange`: Событие изменения.
 
+##### 7.6.2 Использование SchemaSettings Item
 
-##### 7.6.2 使用 SchemaSettings Item
-
-我们修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/index.ts`：
+Обновите `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/index.ts`:
 
 ```diff
 // ...
@@ -1022,11 +1021,11 @@ export const carouselSettings = new SchemaSettings({
   <source src="https://static-docs.nocobase.com/20240603162803_rec_.mp4" type="video/mp4" />
 </video>
 
-#### 7.7 增加 divider
+#### 7.7 Добавление разделителя
 
-`editBlockTitle` 和 `remove` 是一个通用的逻辑，而 `src`、`height`、`objectFit`、`autoplay` 是针对 `Image` 的配置，我们可以通过 `divider` 来区分。
+Операции `editBlockTitle` и `remove` являются универсальными, тогда как `src`, `height`, `objectFit` и `autoplay` относятся к конфигурации `Image`. Их можно разделить с помощью `divider`.
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/index.ts`：
+Обновите `packages/plugins/@nocobase-sample/plugin-block-carousel/src/client/settings/index.ts`:
 
 ```diff
 // ...
@@ -1065,15 +1064,15 @@ export const carouselSettings = new SchemaSettings({
 
 ![20240603162933](https://static-docs.nocobase.com/20240603162933.png)
 
-### 8. 权限
+### 8. Права доступа
 
 TODO
 
-### 9. 多语言
+### 9. Мультиязычность
 
-#### 9.1 英文
+#### 9.1 Английский язык
 
-我们编辑 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/locale/en-US.json` 文件：
+Обновите файл `packages/plugins/@nocobase-sample/plugin-block-carousel/src/locale/en-US.json`:
 
 ```json
 {
@@ -1086,9 +1085,9 @@ TODO
 }
 ```
 
-#### 9.2 中文
+#### 9.2 Китайский язык
 
-我们编辑 `packages/plugins/@nocobase-sample/plugin-block-carousel/src/locale/zh-CN.json` 文件：
+Обновите файл `packages/plugins/@nocobase-sample/plugin-block-carousel/src/locale/zh-CN.json`:
 
 ```json
 {
@@ -1101,26 +1100,26 @@ TODO
 }
 ```
 
-我们可以通过 [http://localhost:13000/admin/settings/system-settings](http://localhost:13000/admin/settings/system-settings) 添加多个语言，并且在右上角切换语言。
+Добавьте несколько языков через [http://localhost:13000/admin/settings/system-settings](http://localhost:13000/admin/settings/system-settings) и переключайте их в правом верхнем углу.
 
 ![20240611113758](https://static-docs.nocobase.com/20240611113758.png)
 
 ![20240611114018](https://static-docs.nocobase.com/20240611114018.png)
 
-## 打包和上传到生产环境
+## Сборка и загрузка в продакшен
 
-按照 [构建并打包插件](/development/your-fisrt-plugin#构建并打包插件) 文档说明，我们可以打包插件并上传到生产环境。
+Следуя инструкциям из документа [Сборка и упаковка плагина](/development/your-fisrt-plugin#构建并打包插件), упакуйте плагин для продакшена.
 
-如果是 clone 的源码，需要先执行一次全量 build，将插件的依赖也构建好。
+Если вы используете клонированный исходный код, сначала выполните полную сборку, чтобы включить зависимости плагина:
 
 ```bash
 yarn build
 ```
 
-如果是使用的 `create-nocobase-app` 创建的项目，可以直接执行：
+Если проект создан с помощью `create-nocobase-app`, выполните:
 
 ```bash
 yarn build @nocobase-sample/plugin-block-carousel --tar
 ```
 
-这样就可以看到 `storage/tar/@nocobase-sample/plugin-block-carousel.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
+В результате будет создан файл `storage/tar/@nocobase-sample/plugin-block-carousel.tar.gz`, который можно установить с помощью [метода загрузки](/welcome/getting-started/plugin).

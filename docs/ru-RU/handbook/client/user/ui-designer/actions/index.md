@@ -1,45 +1,48 @@
-# Actions
+# Действия (Actions)
 
-In the UI, actions are buttons designed to trigger specific commands. These buttons can be placed directly on the page, within dialogs or drawers, and can also be used in combination with blocks. Currently, dynamic configurations of actions are primarily used in combination with blocks.
+В пользовательском интерфейсе действия представляют собой кнопки, предназначенные для выполнения конкретных команд. Эти кнопки могут размещаться:
 
-## Actions in Blocks
+- Непосредственно на странице
+- Внутри диалоговых окон или выдвижных панелей
+- В комбинации с блоками (в настоящее время динамическая конфигурация действий в основном используется совместно с блоками)
 
-![Actions in Blocks](https://static-docs.nocobase.com/3e69f1f2991842ecad640705bc9feda4.png)
+## Действия в блоках
 
-## Action Designer (Toolbar)
+![Действия в блоках](https://static-docs.nocobase.com/3e69f1f2991842ecad640705bc9feda4.png)
 
-Unlike blocks and fields, the action designer only features two icons:
+## Конструктор действий (Панель инструментов)
 
-- Drag
-- Parameter Configuration
+В отличие от блоков и полей, конструктор действий имеет только две иконки:
 
-![Action Designer](https://static-docs.nocobase.com/007422d42678c54f79668dfafe69b60e.png)
+1. Перетаскивание
+2. Настройка параметров
 
-## Action Drag Sorting
+![Конструктор действий](https://static-docs.nocobase.com/007422d42678c54f79668dfafe69b60e.png)
 
-By holding down the "Drag" icon in the button designer, you can reorder the buttons.
+## Сортировка действий перетаскиванием
+
+Удерживая иконку "Перетащить" в конструкторе кнопок, можно изменить их порядок.
 
 ```bash
-A gif is missing
+Отсутствует GIF-анимация
 ```
 
-## General Parameter Configuration
+## Общая настройка параметров
 
-- Edit Button
-- Open Mode: Drawer, Dialog
-- Popup Size: Large, Medium, Small
-- Delete
+- Редактирование кнопки
+- Режим открытия: Выдвижная панель, Диалоговое окно
+- Размер всплывающего окна: Большой, Средний, Маленький
+- Удаление
 
-![General Parameter Configuration](https://static-docs.nocobase.com/e99916932f6c4d58bcad4d892b5daf15.png)
+![Общая настройка параметров](https://static-docs.nocobase.com/e99916932f6c4d58bcad4d892b5daf15.png)
 
-## Action Linkage Rules
+## Правила связей действий
 
-Actions with contextual data can also be configured with "Linkage Rules."
+Для действий с контекстными данными можно настроить "Правила связей".
 
-![Action Linkage Rules](https://static-docs.nocobase.com/c431434a285278ea00bedf9e4dac4d45.png)
+![Правила связей действий](https://static-docs.nocobase.com/c431434a285278ea00bedf9e4dac4d45.png)
 
-Linkage Rules Configuration
+### Настройка правил связей
 
-![Linkage Rules Configuration](https://static-docs.nocobase.com/149c049bb0c0ce931c6c0333e12b0610.png)
+![Настройка правил связей](https://static-docs.nocobase.com/149c049bb0c0ce931c6c0333e12b0610.png)
 
-Multiple rules can be added, with conditions similar to those used in filtering. These rules can control whether buttons are displayed, hidden, enabled, or disabled.

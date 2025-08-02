@@ -1,48 +1,56 @@
-# RelationRepository
+# RelationRepository (Репозиторий для связей)
 
-`RelationRepository` is a `Repository` object for relation types, which allows operations on associated data without loading the associations. Based on `RelationRepository`, each association type derives its corresponding implementation, which are:
+`RelationRepository` - это объект `Repository` для работы с реляционными связями, позволяющий выполнять операции над связанными данными без их предварительной загрузки. На основе `RelationRepository` реализованы специализированные репозитории для каждого типа связей:
 
-- [`HasOneRepository`](#has-one-repository)
-- `HasManyRepository`
-- `BelongsToRepository`
-- `BelongsToManyRepository`
+- [`HasOneRepository`](#has-one-repository) (один-к-одному)
+- `HasManyRepository` (один-ко-многим)
+- `BelongsToRepository` (многие-к-одному)
+- `BelongsToManyRepository` (многие-ко-многим)
 
-## Constructor
+## Конструктор
 
-**Signature**
+**Сигнатура**
 
 - `constructor(sourceCollection: Collection, association: string, sourceKeyValue: string | number)`
 
-**Parameters**
+**Параметры**
 
-| Parameter Name     | Type               | Default Value | Description                                               |
-| ------------------ | ------------------ | ------------- | --------------------------------------------------------- |
-| `sourceCollection` | `Collection`       | -             | The Collection corresponding to the referencing relation in the association |
-| `association`      | `string`           | -             | The name of the association                               |
-| `sourceKeyValue`   | `string \| number` | -             | The key value corresponding to the referencing relation   |
+| Название параметра | Тип               | Значение по умолчанию | Описание                                                  |
+|--------------------|-------------------|-----------------------|-----------------------------------------------------------|
+| `sourceCollection` | `Collection`      | -                     | Коллекция, содержащая ссылку в отношении                  |
+| `association`      | `string`          | -                     | Название связи                                            |
+| `sourceKeyValue`   | `string \| number`| -                     | Ключевое значение соответствующей ссылки в отношении      |
 
-## Base Class Properties
+## Свойства базового класса
 
 ### `db: Database`
 
-Database object
+Объект базы данных
 
 ### `sourceCollection`
 
-The Collection corresponding to the referencing relation in the association
+Коллекция, содержащая ссылку в отношении
 
 ### `targetCollection`
 
-The Collection corresponding to the referenced relation in the association
+Коллекция, на которую ссылается отношение
 
 ### `association`
 
-The association object in Sequelize corresponding to the current association
+Объект ассоциации Sequelize, соответствующий текущей связи
 
 ### `associationField`
 
-The field in the Collection corresponding to the current association
+Поле в коллекции, соответствующее текущей связи
 
 ### `sourceKeyValue`
 
-The key value corresponding to the referencing relation
+Ключевое значение соответствующей ссылки в отношении
+
+## Основные особенности
+
+1. Позволяет работать со связанными данными без их явной загрузки
+2. Предоставляет единый интерфейс для разных типов связей
+3. Автоматически определяет тип связи и соответствующее поведение
+4. Поддерживает транзакции на уровне базы данных
+5. Интегрирован с системой коллекций NocoBase

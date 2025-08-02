@@ -1,36 +1,36 @@
 # SyncMessageManager
 
-Used to manage synchronization signals between multiple application nodes. In a distributed deployment, when the memory state changes, it is necessary to notify other nodes for synchronization. `SyncMessageManager` provides a common interface to be invoked, allowing it to be used in same way across different modules.
+Используется для управления сигналами синхронизации между несколькими узлами приложения. В распределённом развертывании, когда изменяется состояние в памяти, необходимо уведомить другие узлы для синхронизации. `SyncMessageManager` предоставляет общий интерфейс для вызова, позволяя использовать его единообразно в различных модулях.
 
-The SyncMessageManager itself does not implement specific synchronization functionality, but provides a unified interface, and it will invoke the underlying `pubSubManager` to send and receive messages.
+Сам `SyncMessageManager` не реализует конкретную функциональность синхронизации, а лишь предоставляет унифицированный интерфейс, и использует нижележащий `pubSubManager` для отправки и получения сообщений.
 
 ## `SyncMessageManager`
 
-### Members
+### Методы и свойства
 
 #### `constructor()`
 
-Constructor, creates an instance of the SyncMessageManager. An instance is automatically created during application initialization and is accessible globally within the application (`app.syncMessageManager`), so there is no need to call it.
+Конструктор, создаёт экземпляр `SyncMessageManager`. Экземпляр автоматически создаётся при инициализации приложения и доступен глобально в рамках приложения (`app.syncMessageManager`), поэтому вызывать его вручную не требуется.
 
 #### `subscribe(channel: string, callback: SyncEventCallback)`
 
-Subscribes to sync events.
+Подписывается на события синхронизации.
 
-- `channel`: Channel name to differentiate between different sync events.
-- `callback`: Event callback function, called when a sync event occurs.
+- `channel`: имя канала, используется для разделения различных событий синхронизации.
+- `callback`: функция-обработчик события, которая будет вызвана при наступлении события синхронизации.
 
 #### `unsubscribe(channel: string, callback: SyncEventCallback)`
 
-Unsubscribes from sync events.
+Отписывается от событий синхронизации.
 
 #### `publish(channel: string, message: any)`
 
-Publishes a sync message.
+Публикует сообщение синхронизации.
 
-- `channel`: Channel name to differentiate between different sync events.
-- `message`: Sync message data.
+- `channel`: имя канала, используется для разделения различных событий синхронизации.
+- `message`: данные сообщения синхронизации.
 
-### Related Types
+### Связанные типы
 
 ```ts
 export type PubSubCallback = (message: any) => Promise<void>;

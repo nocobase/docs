@@ -1,50 +1,53 @@
-# Overview
+# Обзор
 
 <PluginInfo name="workflow-action-trigger" link="/handbook/workflow-action-trigger"></PluginInfo>
 
-In the system, all user-generated data changes are typically carried out through some form of operation, usually by clicking a button. This button could be a submit button on a form or an action button within a data block. Post-action events are designed to bind specific workflows to these button actions, ensuring that a particular process is triggered upon successful user interaction.
+В системе все изменения данных, инициированные пользователями, обычно выполняются через различные операции, чаще всего - нажатие кнопок. Это может быть кнопка отправки формы или действие в блоке данных. События после действия (Post-action) позволяют привязать конкретные workflow к этим кнопкам, гарантируя запуск процесса после успешного действия пользователя.
 
-For instance, when adding or updating data, users can configure the "Bind Workflows" option on a button. Once the action is completed, the bound workflow will be triggered automatically.
+Например, при добавлении или обновлении данных можно настроить опцию "Привязать workflow" для кнопки. После успешного выполнения действия привязанный workflow запустится автоматически.
 
-From an implementation standpoint, since Post-action event processing occurs at the middleware level (using Koa middleware), even making an HTTP API call to NocoBase can trigger defined Post-action events.
+С технической стороны, поскольку обработка Post-action событий происходит на уровне middleware (с использованием Koa middleware), даже HTTP API вызовы к NocoBase могут запускать определенные Post-action события.
 
-:::info{title="Note"}
-The Post-action event was initially called "Form Event." In earlier versions, this feature was limited to form buttons. However, starting from version `v0.20`, it has also become available for operation buttons within more data blocks, leading to its renaming as "Post-action event."
+:::info{title="Примечание"}
+Изначально Post-action события назывались "События формы". В ранних версиях эта функция работала только с кнопками форм. Начиная с версии `v0.20`, она стала доступна и для кнопок действий в блоках данных, что привело к переименованию в "События после действия".
 :::
 
-## FAQ
+## Частые вопросы
 
-### Difference Between Post-action and Pre-action Events
+### Разница между Post-action и Pre-action событиями
 
-The distinction between Post-action and Pre-action events lies in the timing of their triggers during the operation request and response cycle. One is triggered before the operation is processed, while the other is triggered afterward, as illustrated below:
+Ключевое отличие между этими типами событий - момент их срабатывания в цикле запроса-ответа операции:
 
-![Operation Sequence](https://static-docs.nocobase.com/Handbook/20240916013804.png)
+![Последовательность операций](https://static-docs.nocobase.com/Handbook/20240916013804.png)
 
-Pre-action events are triggered before the operation is executed, meaning they occur before the request is processed. These events can be utilized to validate or manipulate the request data, and if the request is blocked, the operation will not proceed.
+Pre-action события срабатывают до выполнения операции (до обработки запроса). Они могут использоваться для валидации или модификации данных запроса. Если запрос блокируется, операция не выполняется.
 
-Conversely, Post-action events are triggered after the user's action has been successfully completed. At this stage, the data has already been submitted successfully, and the related processes can proceed based on the successful outcome.
+Post-action события срабатывают после успешного завершения действия пользователя. На этом этапе данные уже успешно сохранены, и можно запускать процессы на основе результата.
 
-### Difference Between Post-action and Table Events
+### Разница между Post-action и событиями таблиц
 
-Post-action events and table events have similarities in that both are triggered after data changes occur. However, their implementations differ. Post-action events are focused on the API level, whereas table events are concerned with changes in data within tables.
+Хотя оба типа событий срабатывают после изменений данных, их реализации различаются:
 
-Table events are closer to the system's core. In some instances, a single event may trigger data changes that lead to another event, creating a chain reaction. This is particularly true when related table data is altered during operations on the current table, which can trigger events in associated tables.
+- Post-action события работают на уровне API
+- События таблиц реагируют на изменения данных в таблицах
 
-Table events do not contain user-related information. In contrast, Post-action events are more closely linked to the user end, reflecting the results of user actions. The context of these processes will include user-related information, making them suitable for handling workflows resulting from user actions. In NocoBase's future design, more Post-action events may be added to expand the triggers available, so it is **recommended to use Post-action events** for managing workflows stemming from data changes caused by user actions.
+События таблиц ближе к ядру системы. Одно событие может вызвать цепную реакцию изменений в связанных таблицах. Они не содержат информации о пользователе.
 
-Another key difference is that Post-action events can be selectively bound to specific forms. If there are multiple forms, some can trigger the event upon submission, while others do not. On the other hand, table events are tied to data changes across the entire table and cannot be selectively bound.
+Post-action события теснее связаны с пользовательским интерфейсом, отражая результаты действий пользователей. Контекст этих процессов включает пользовательскую информацию, что делает их идеальными для workflow, инициированных пользователями. В будущих версиях NocoBase планируется расширение Post-action событий.
 
-## Installation
+Еще одно важное отличие: Post-action события можно выборочно привязывать к конкретным формам, тогда как события таблиц работают для всех изменений данных в таблице.
 
-This plugin is built-in and does not require installation.
+## Установка
 
-## User Manual
+Это встроенный плагин, не требующий установки.
 
-The use of Post-action events is divided into several parts:
+## Руководство пользователя
 
-- [Trigger Configuration](./trigger.md)
-- [Action Configuration](./action.md)
+Использование Post-action событий включает несколько аспектов:
 
-You can also refer to [Examples](./example.md) to understand their application in real-world scenarios.
+- [Настройка триггера](./trigger.md)
+- [Настройка действий](./action.md)
 
-If external system calls are necessary, please refer to [External Calls](./http-api.md).
+Примеры практического применения можно найти в разделе [Примеры](./example.md).
+
+Для интеграции с внешними системами см. [Внешние вызовы](./http-api.md).

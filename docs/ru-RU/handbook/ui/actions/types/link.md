@@ -1,40 +1,38 @@
-# Link
+### **Ссылка**
 
-## Introduction
+#### **Введение**
 
-The link operation, which functions via route navigation, supports the passing of variables. The target page can dynamically adjust its content based on the provided data, making it configurable for use within data blocks.
+Операция «Ссылка» работает через навигацию по маршрутам и поддерживает передачу переменных. Целевая страница может динамически изменять своё содержимое на основе переданных данных, что делает данную функцию удобной для настройки внутри блоков данных.
 
 ![20240603150755](https://static-docs.nocobase.com/20240603150755.png)
 
-## Operation Configuration
+#### **Настройка операции**
 
 ![20240603150823](https://static-docs.nocobase.com/20240603150823.png)
 
-### Edit Link
+##### **Редактирование ссылки**
 
 ![20240603150944](https://static-docs.nocobase.com/20240603150944.png)
 
 ![20240603224322](https://static-docs.nocobase.com/20240603224322.png)
 
-### Usage Scenarios
+#### **Сценарии использования**
 
-Example: The author and article tables have a one-to-many relationship. In the author table, you can configure the "View posts" link operation. By clicking this link, the author's ID is passed as a parameter to the article table, allowing the target page to filter the articles based on the specified author's ID.
+Пример: таблицы «Автор» и «Статья» связаны отношением «один ко многим». В таблице «Автор» можно настроить операцию-ссылку «Просмотр публикаций». При клике по этой ссылке ID автора передаётся как параметр в таблицу статей, и на целевой странице отображаются только статьи, соответствующие этому автору.
 
 ![20240603151934](https://static-docs.nocobase.com/20240603151934.png)
 
-### Open in New Window
+#### **Открытие в новом окне**
 
-When the "Open in new window" option is selected, the link will open in a new window.
+Если включена опция «Открыть в новом окне», ссылка будет открываться в отдельной вкладке браузера.
 
 ![20240718160541](https://static-docs.nocobase.com/20240718160541.png)
 
-Here is a complete configuration example:
+Ниже приведён полный пример настройки:
 
 <video width="100%" height="440" controls>
-
 <source src="https://static-docs.nocobase.com/20240603224044.mp4" type="video/mp4">
-
 </video>
 
-- [Edit Button](/handbook/ui/actions/action-settings/edit-button): Customize the button's title, color, and icon.
-- [Linkage Rule](/handbook/ui/actions/action-settings/linkage-rule): Dynamically control the button's state.
+- [Редактирование кнопки](/handbook/ui/actions/action-settings/edit-button): настройка заголовка, цвета и значка кнопки.
+- [Правило связывания](/handbook/ui/actions/action-settings/linkage-rule): динамическое управление состоянием кнопки.

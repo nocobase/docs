@@ -1,11 +1,11 @@
-# Rich Text
+# Форматированный текст
 
-## Introduction
+## Введение
 
-## Field configuration
+## Настройка полей
 
 ![20240512181002](https://static-docs.nocobase.com/20240512181002.png)
 
-## Instructions
+## Инструкции
 
-to be added.
+будут добавлены позднее.

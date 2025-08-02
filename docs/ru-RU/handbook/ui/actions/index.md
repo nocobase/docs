@@ -1,21 +1,32 @@
-# Actions
+# Действия (Actions)
 
-In the UI, Actions are represented by buttons that trigger specific commands. These buttons can be directly placed on pages, within dialogs, or inside drawers, and they can also be combined with blocks. The current dynamic configuration options for Actions are primarily used when combined with blocks.
+## Описание
 
-#### Actions within Blocks
+В пользовательском интерфейсе Действия представлены кнопками, которые выполняют определенные команды. Эти кнопки могут быть размещены:
+
+- Непосредственно на страницах
+- В диалоговых окнах
+- В выдвижных панелях
+- В комбинации с блоками
+
+Текущие динамические настройки Действий в основном применяются при совместном использовании с блоками.
+
+### Действия внутри блоков
 
 ![20240412113815](https://static-docs.nocobase.com/20240412113815.png)
 
-#### Operation Designer (Toolbar)
+### Конструктор операций (Панель инструментов)
 
-Unlike blocks and fields, the operation designer features only two icons:
-- Drag
-- Configuration actions
+В отличие от блоков и полей, конструктор операций содержит только две иконки:
+1. Перетаскивание
+2. Настройка действий
 
 ![20240412113855](https://static-docs.nocobase.com/20240412113855.png)
 
-#### Operation Drag-and-Drop Sorting
+### Изменение порядка действий
 
-To reorder buttons, simply hold down the "Drag" icon in the button designer and rearrange the buttons as needed.
+Для изменения порядка кнопок:
+1. Зажмите иконку "Перетаскивание" в конструкторе кнопок
+2. Переместите кнопки в нужном порядке
 
 ![20240412114236](https://static-docs.nocobase.com/20240412114236.gif)

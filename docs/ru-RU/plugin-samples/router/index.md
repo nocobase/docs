@@ -1,35 +1,35 @@
-# Explanation
+# Объяснение
 
-NocoBase's frontend pages currently include the following [page routes](/development/client/router#existing-page-routes):
+Текущие маршруты страниц фронтенда NocoBase включают следующие [маршруты страниц](/development/client/router#existing-page-routes):
 
-| Name           | Path               | Component           | Description |
+| Имя            | Путь               | Компонент           | Описание |
 | -------------- | ------------------ | ------------------- |-------------|
-| admin          | /admin/\*          | AdminLayout         | Backend management page |
-| admin.page     | /admin/:name       | AdminDynamicPage    | Dynamically created page |
-| admin.settings | /admin/settings/\* | AdminSettingsLayout | Plugin configuration page |
-| admin.pm.list  | /admin/pm/list/\* | PluginManager       | Plugin management page |
+| admin          | /admin/*           | AdminLayout         | Страница управления в админ-панели |
+| admin.page     | /admin/:name       | AdminDynamicPage    | Динамически созданная страница |
+| admin.settings | /admin/settings/*  | AdminSettingsLayout | Страница настроек плагинов |
+| admin.pm.list  | /admin/pm/list/*   | PluginManager       | Страница управления плагинами |
 
-However, these pages may not meet all requirements, for example:
+Однако эти страницы могут не удовлетворять всем требованиям, например:
 
-**add**
+**Добавление**
 
-- Add a new page for frontend display only, such as `/about`, to show information about the website.
-- Extend a new page under `/admin/*`, which requires login to access.
-- Add a configuration page for a newly added plugin.
+- Добавить новую страницу только для отображения на фронтенде, например `/about`, для показа информации о сайте.
+- Расширить новую страницу под `/admin/*`, для доступа к которой требуется авторизация.
+- Добавить страницу настроек для нового плагина.
 
-**change**
+**Изменение**
 
-- Completely replace an existing page, for example, customize the login page instead of using the default one.
-- Modify the layout of an existing page, for example, modify the layout of `/admin/*` without the top menu bar.
+- Полностью заменить существующую страницу, например, настроить страницу входа вместо стандартной.
+- Изменить макет существующей страницы, например, изменить макет `/admin/*`, убрав верхнюю панель меню.
 
-**delete**
+**Удаление**
 
-- For example, if we no longer need a registered page, we can delete it.
+- Например, если зарегистрированная страница больше не нужна, её можно удалить.
 
-To address the above scenarios, we can use NocoBase's frontend router extension feature. We provide the following examples:
+Для реализации вышеуказанных сценариев можно использовать возможности расширения маршрутизатора фронтенда NocoBase. Мы предоставляем следующие примеры:
 
-- [Add Page](/plugin-samples/router/add-page) (Add a new page)
-- [Replace Page](/plugin-samples/router/replace-page) (Modify a page)
-- [Add Plugin Setting Page (Single Route)](/plugin-samples/router/add-setting-page-single-route) (Plugin configuration page - single route)
-- [Add Plugin Setting Page (Tabs Routes)](/plugin-samples/router/add-setting-page-tabs-routes) (Plugin configuration page - tabs routes)
-- [Add Plugin Setting Page (different Routes)](/plugin-samples/router/add-setting-page-layout-routes) (Plugin configuration page - different layouts)
+- [Добавление страницы](/plugin-samples/router/add-page) (Добавление новой страницы)
+- [Замена страницы](/plugin-samples/router/replace-page) (Изменение страницы)
+- [Добавление страницы настроек плагина (один маршрут)](/plugin-samples/router/add-setting-page-single-route) (Страница настроек плагина — один маршрут)
+- [Добавление страницы настроек плагина (вкладки)](/plugin-samples/router/add-setting-page-tabs-routes) (Страница настроек плагина — маршруты с вкладками)
+- [Добавление страницы настроек плагина (разные маршруты)](/plugin-samples/router/add-setting-page-layout-routes) (Страница настроек плагина — разные макеты)

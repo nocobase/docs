@@ -1,20 +1,20 @@
-# Title Field
+# Поле заголовка
 
-## Introduction
+## Введение
 
-The title field is a key element in relational field components, serving as the visible identifier of relational data within the user interface.
+Поле заголовка является ключевым элементом в компонентах реляционных полей, служащим видимым идентификатором реляционных данных в пользовательском интерфейсе.
 
-## Configuration Locations for the Title Field
+## Расположение конфигурации для поля заголовка
 
-### Global Configuration in the Data Table
+### Глобальная конфигурация в таблице данных
 
-This setting applies across the entire application.
+Этот параметр применяется ко всему приложению.
 
 ![20240422210646](https://static-docs.nocobase.com/20240422210646.png)
 
-### Configuration within Relational Field Components
+### Настройка в компонентах реляционных полей
 
-This setting is limited to the specific block, taking precedence over global settings.
+Эта настройка ограничена конкретным блоком и имеет приоритет над глобальными настройками.
 
 ![20240422210935](https://static-docs.nocobase.com/20240422210935.png)
 

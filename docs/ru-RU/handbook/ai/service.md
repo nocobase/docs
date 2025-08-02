@@ -1,17 +1,19 @@
-# LLM Service Management
+# Управление сервисом языковой модели (LLM)
 
 <PluginInfo name="ai"></PluginInfo>
 
-## Introduction
+## Введение
 
-Before using AI features, you need to first integrate an online LLM service. NocoBase supports integrating online LLM services using multiple API protocols.
-Currently, the open-source version supports mainstream LLM protocols, such as OpenAI and DeepSeek, or LLM services with the same calling format, which can be integrated through the API interfaces provided by the LLM service providers.
-The enterprise version also supports Ollama local models, and enterprise users can also contact us to extend support for more API protocols as needed.
+Прежде чем использовать функции искусственного интеллекта, необходимо интегрировать онлайн-сервис языковой модели (LLM). NocoBase поддерживает интеграцию с онлайн-сервисами LLM по различным API-протоколам.
+
+В настоящее время в открытой версии поддерживаются основные протоколы LLM, такие как OpenAI и DeepSeek, а также любые другие сервисы LLM с аналогичным форматом вызова, которые можно интегрировать через API-интерфейсы, предоставляемые поставщиками сервисов.
+
+Версия для предприятий дополнительно поддерживает локальные модели Ollama. Пользователи корпоративной версии могут также обратиться к нам для расширения поддержки других API-протоколов по мере необходимости.
 
 ![](https://static-docs.nocobase.com/202503021832046.png)
 
-## Configuring
+## Настройка
 
-Fill in the online service information according to the selected API protocol, usually requiring input of an API key and Base URL.
+Заполните данные онлайн-сервиса в соответствии с выбранным API-протоколом. Обычно требуется указать API-ключ и базовый URL-адрес.
 
 ![](https://static-docs.nocobase.com/202503032320237.png)

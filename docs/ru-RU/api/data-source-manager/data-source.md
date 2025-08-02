@@ -1,78 +1,73 @@
-# DataSource (abstract)
+# DataSource (абстрактный класс)
 
-The `DataSource` abstract class is used to represent a type of data source, which can be a database, API, etc.
+Абстрактный класс `DataSource` представляет собой источник данных, которым может быть база данных, API и т.д.
 
-## Members
+## Члены класса
 
 ### collectionManager
 
-The CollectionManager instance of the data source, which needs to implement the [`ICollectionManager`](/api/data-source-manager/i-collection-manager) interface.
+Экземпляр CollectionManager для источника данных, должен реализовывать интерфейс [`ICollectionManager`](/api/data-source-manager/i-collection-manager).
 
 ### resourceManager
 
-The resourceManager instance of the data source, see: [`resourceManager`](/api/resourcer/resource-manager)
+Экземпляр resourceManager для источника данных. См.: [`resourceManager`](/api/resourcer/resource-manager)
 
 ### acl
 
-The ACL instance of the data source, see: [`ACL`](/api/acl/acl)
+Экземпляр ACL (управление доступом) для источника данных. См.: [`ACL`](/api/acl/acl)
 
 ## API
 
 ### constructor()
 
-Constructor, creates a `DataSource` instance.
+Конструктор, создает экземпляр `DataSource`.
 
-#### Signature
-
+#### Сигнатура:
 - `constructor(options: DataSourceOptions)`
 
 ### init()
 
-Initialization function, called immediately after `constructor`.
+Функция инициализации, вызывается сразу после `constructor`.
 
-#### Signature
-
+#### Сигнатура:
 - `init(options: DataSourceOptions)`
 
 ### name
 
-#### Signature
-
+#### Сигнатура:
 - `get name()`
 
-Returns the instance name of the data source.
+Возвращает имя экземпляра источника данных.
 
 ### middleware()
 
-Gets the middleware of the DataSource, used to mount to the Server to receive requests.
+Получает middleware DataSource, используемый для подключения к Server и обработки запросов.
 
 ### testConnection()
 
-Static method, called during the test connection operation, can be used for parameter validation, specific logic is implemented by subclasses.
+Статический метод, вызываемый при проверке соединения. Может использоваться для валидации параметров. Конкретная логика реализуется подклассами.
 
-#### Signature
-
+#### Сигнатура:
 - `static testConnection(options?: any): Promise<boolean>`
 
 ### load()
 
-#### Signature
-
+#### Сигнатура:
 - `async load(options: any = {})`
 
-The loading operation of the data source, logic is implemented by subclasses.
+Операция загрузки источника данных. Логика реализуется подклассами.
 
 ### createCollectionManager()
 
-#### Signature
+#### Сигнатура:
 - `abstract createCollectionManager(options?: any): ICollectionManager`
 
-Creates a CollectionManager instance for the data source, logic is implemented by subclasses.
+Создает экземпляр CollectionManager для источника данных. Логика реализуется подклассами.
 
 ### createResourceManager()
 
-Creates a ResourceManager instance for the data source, subclasses can override the implementation, by default creates `ResourceManager` from `@nocobase/resourcer`.
+Создает экземпляр ResourceManager для источника данных. Подклассы могут переопределить реализацию. По умолчанию создает `ResourceManager` из `@nocobase/resourcer`.
 
 ### createACL()
 
-- Creates an ACL instance for the DataSource, subclasses can override the implementation, by default creates `ACL` from `@nocobase/acl`.
+Создает экземпляр ACL для DataSource. Подклассы могут переопределить реализацию. По умолчанию создает `ACL` из `@nocobase/acl`.

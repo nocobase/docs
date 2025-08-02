@@ -1,5 +1,5 @@
-# **Refresh**
+# **Обновить**
 
-The refresh operation is designed to reload data within a data block, providing support for manual refresh.
+Операция обновления предназначена для перезагрузки данных в блоке данных, обеспечивая поддержку обновления вручную.
 
 ![](https://static-docs.nocobase.com/3488c8c8296e9048f815d89198a51c5a.png)

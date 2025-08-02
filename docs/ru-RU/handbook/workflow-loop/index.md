@@ -1,113 +1,113 @@
-## Loop
+# Цикл (Loop)
 
 <PluginInfo name="workflow-loop" link="/handbook/workflow-loop"></PluginInfo>
 
-The loop functions in a manner akin to `for`, `while`, or `forEach` constructs in programming languages. It’s designed for situations where you need to repeat certain operations a specific number of times or iterate over a dataset (such as an array). The loop node is your go-to tool for such tasks.
+Функционал цикла работает аналогично конструкциям `for`, `while` или `forEach` в языках программирования. Он предназначен для ситуаций, когда необходимо повторять определенные операции заданное количество раз или перебирать набор данных (например, массив). Узел цикла - это ваш основной инструмент для таких задач.
 
-## Installation
+## Установка
 
-This plugin comes pre-installed, so no additional setup is necessary.
+Этот плагин предустановлен, поэтому дополнительная настройка не требуется.
 
-## User Manual
+## Руководство пользователя
 
-### Creating Node
+### Создание узла
 
-In the workflow configuration interface, you can add a "Loop" node by clicking the plus sign ("+") in the process:
+В интерфейсе конфигурации workflow вы можете добавить узел "Цикл", нажав на знак плюс ("+") в процессе:
 
-![Creating a Loop Node](https://static-docs.nocobase.com/b3c8061a66bfff037f4b9509ab0aad75.png)
+![Создание узла цикла](https://static-docs.nocobase.com/b3c8061a66bfff037f4b9509ab0aad75.png)
 
-Once you create the loop node, an internal branch specifically for the loop is generated. You can then populate this branch with any number of nodes. These nodes will have access to not only the workflow context variables but also the local variables defined within the loop context—such as the current data object or the iteration index (which starts at `0`). These local variables are scoped exclusively to the loop. For nested loops, you can use variables specific to each loop level.
+После создания узла цикла генерируется внутренняя ветка, специфичная для цикла. Вы можете заполнить эту ветку любым количеством узлов. Эти узлы будут иметь доступ не только к переменным контекста workflow, но и к локальным переменным, определенным в контексте цикла - таким как текущий объект данных или индекс итерации (который начинается с `0`). Эти локальные переменные ограничены исключительно циклом. Для вложенных циклов вы можете использовать переменные, специфичные для каждого уровня цикла.
 
-### Node Configuration
+### Конфигурация узла
 
-![20241016135326](https://static-docs.nocobase.com/20241016135326.png)
+![Конфигурация узла цикла](https://static-docs.nocobase.com/20241016135326.png)
 
-#### Loop Object
+#### Объект цикла
 
-The loop node can handle various data types for the loop object, each in a different way:
+Узел цикла может обрабатывать различные типы данных для объекта цикла, каждый по-разному:
 
-1. **Array**: This is the most common use case. Typically, you'll select a workflow context variable, such as the results from a query node or preloaded data from a many-to-many relationship. If an array is selected, the loop node will iterate over each element, assigning the current element to a local variable within the loop context for each iteration.
+1. **Массив**: Это наиболее распространенный случай использования. Обычно вы выбираете переменную контекста workflow, такую как результаты из узла запроса или предзагруженные данные из отношения многие-ко-многим. Если выбран массив, узел цикла будет перебирать каждый элемент, присваивая текущий элемент локальной переменной в контексте цикла для каждой итерации.
 
-2. **Number**: When the loop object is a number, it’s treated as the number of iterations. The index within the local variable will match the loop object’s value.
+2. **Число**: Когда объект цикла - число, оно рассматривается как количество итераций. Индекс в локальной переменной будет соответствовать значению объекта цикла.
 
-3. **String**: If the loop object is a string, the loop will iterate according to the string's length, processing each character by its index.
+3. **Строка**: Если объект цикла - строка, цикл будет выполняться в соответствии с длиной строки, обрабатывая каждый символ по его индексу.
 
-4. **Others**: Other data types (including objects) are treated as a single loop object, resulting in just one iteration—typically not requiring a loop.
+4. **Другие**: Другие типы данных (включая объекты) рассматриваются как единый объект цикла, что приводит только к одной итерации - обычно не требующей цикла.
 
-You can also input constants directly when working with numbers and strings. For instance, inputting `5` (number type) will cause the loop to run 5 times, while inputting `abc` (string type) will result in 3 iterations, processing `a`, `b`, and `c` individually. The variable selection tool allows you to choose the type of constant you want to use.
+Вы также можете вводить константы напрямую при работе с числами и строками. Например, ввод `5` (числовой тип) приведет к выполнению цикла 5 раз, а ввод `abc` (тип строки) приведет к 3 итерациям, обрабатывая `a`, `b` и `c` по отдельности. Инструмент выбора переменных позволяет выбрать тип константы, который вы хотите использовать.
 
-#### Loop condition
+#### Условие цикла
 
-From version `v1.4.0-beta` on, loop condition options are added, and could be enabled in node configuration.
+Начиная с версии `v1.4.0-beta`, добавлены параметры условия цикла, которые можно включить в конфигурации узла.
 
-**Condition**
+**Условие**
 
-Similar to the configuration in a condition node, combination of conditions can be configured, and variables from the current loop, such as the loop item and loop index, can also be used.
+Аналогично конфигурации в узле условия, можно настроить комбинацию условий, а также использовать переменные из текущего цикла, такие как элемент цикла и индекс цикла.
 
-**Checkpoint**
+**Контрольная точка**
 
-Similar to `while` and `do/while` in programming languages, conditions can be configured to be evaluated either before each loop iteration or after it ends. Post-condition evaluation can execute other nodes in the loop body first before performing the condition check.
+Аналогично `while` и `do/while` в языках программирования, условия можно настроить для оценки либо перед каждой итерацией цикла, либо после ее завершения. Оценка после условия может выполнить другие узлы в теле цикла перед выполнением проверки условия.
 
-**When condition is not met**
+**Когда условие не выполняется**
 
-Similar to `break` and `continue` clause in programming languages, could be use to determine whether to break or continue the loop.
+Аналогично операторам `break` и `continue` в языках программирования, можно использовать для определения, следует ли прервать или продолжить цикл.
 
-#### Error handling of internal nodes in loop
+#### Обработка ошибок внутренних узлов в цикле
 
-From version `v1.4.0-beta` on, when an internal node in a loop fails to execute (due to unmet conditions, errors, etc.), the next step can be determined through this configuration. Three handling methods are supported:
+Начиная с версии `v1.4.0-beta`, когда внутренний узел в цикле не выполняется (из-за невыполненных условий, ошибок и т.д.), следующий шаг можно определить через эту конфигурацию. Поддерживаются три метода обработки:
 
-* Exit the process (default)
-* Exit the loop and continue the process
-* Continue to the next loop item
+* Выход из процесса (по умолчанию)
+* Выход из цикла и продолжение процесса
+* Переход к следующему элементу цикла
 
-You can choose the appropriate method as needed.
+Вы можете выбрать подходящий метод по мере необходимости.
 
-### Example
+### Пример
 
-Consider the following scenario: when placing an order, you need to check the inventory of each product in the order. If the inventory is sufficient, the stock is deducted; otherwise, the product in the order details is marked as invalid.
+Рассмотрим следующий сценарий: при размещении заказа необходимо проверить наличие каждого товара в заказе. Если товар есть в наличии, его количество вычитается; в противном случае товар в деталях заказа помечается как недействительный.
 
-1. Create three collections: Product <-(1:m)-- Order Details --(m:1)-> Order , with the following data model:
+1. Создайте три коллекции: Товар <-(1:m)-- Детали заказа --(m:1)-> Заказ, со следующей моделью данных:
 
-| Field Name     | Field Type        |
+| Название поля     | Тип поля        |
 | -------------- | ----------------- |
-| Order Details | Many-to-One (Details) |
-| Total Price | Number            |
+| Детали заказа | Многие-к-одному (Детали) |
+| Общая цена | Число            |
 
-| Field Name | Field Type        |
+| Название поля | Тип поля        |
 | ---------- | ----------------- |
-| Product    | One-to-Many (Product) |
-| Quantity   | Number            |
+| Товар    | Один-ко-многим (Товар) |
+| Количество   | Число            |
 
-| Field Name  | Field Type  |
+| Название поля  | Тип поля  |
 | ----------- | ----------- |
-| Product Name | Single-line Text |
-| Price       | Number      |
-| Inventory   | Integer     |
+| Название товара | Однострочный текст |
+| Цена       | Число      |
+| Наличие   | Целое число     |
 
-2. Create a workflow, selecting "Collection event" as the trigger, and choose the "Order" table with "Create record" as the trigger. Additionally, preload relationship data from the "Order Details" table and the Product Table under details:
+2. Создайте workflow, выбрав "Событие коллекции" в качестве триггера, и выберите таблицу "Заказ" с "Создать запись" в качестве триггера. Кроме того, предварительно загрузите данные отношений из таблицы "Детали заказа" и таблицы Товаров под деталями:
 
-![Loop Node Example Trigger Configuration](https://static-docs.nocobase.com/0086601c2fc0e17a64d046a4c86b49b7.png)
+![Пример конфигурации триггера узла цикла](https://static-docs.nocobase.com/0086601c2fc0e17a64d046a4c86b49b7.png)
 
-3. Create a loop node, selecting the loop object as "Trigger Data / Order Details," which loops through each record in the order details table:
+3. Создайте узел цикла, выбрав объект цикла как "Данные триггера / Детали заказа", который перебирает каждую запись в таблице деталей заказа:
 
-![Loop Node Example Loop Node Configuration](https://static-docs.nocobase.com/2507becc32db5a9a0641c198605a20da.png)
+![Пример конфигурации узла цикла](https://static-docs.nocobase.com/2507becc32db5a9a0641c198605a20da.png)
 
-4. Inside the loop node, create a "Condition" node to check if the product inventory is sufficient:
+4. Внутри узла цикла создайте узел "Условие" для проверки наличия товара:
 
-![Loop Node Example Condition Node Configuration](https://static-docs.nocobase.com/a6d08d15786841e1a3512b38e4629852.png)
+![Пример конфигурации узла условия](https://static-docs.nocobase.com/a6d08d15786841e1a3512b38e4629852.png)
 
-5. If the inventory is sufficient, create a "Calculation" and an "Update record" node under the "Yes" branch to update the inventory after deduction:
+5. Если товар есть в наличии, создайте узел "Вычисление" и узел "Обновить запись" под веткой "Да" для обновления количества после вычитания:
 
-![Loop Node Example Calculation Node Configuration](https://static-docs.nocobase.com/8df3604c71f8f8705b1552d3ebfe3b50.png)
+![Пример конфигурации узла вычисления](https://static-docs.nocobase.com/8df3604c71f8f8705b1552d3ebfe3b50.png)
 
-![Loop Node Example Update Inventory Node Configuration](https://static-docs.nocobase.com/2d84baa9b3b01bd85fccda9eec992378.png)
+![Пример конфигурации узла обновления наличия](https://static-docs.nocobase.com/2d84baa9b3b01bd85fccda9eec992378.png)
 
-6. If the inventory is insufficient, create an "Update record" node under the "No" branch to update the status of the order detail to "Invalid":
+6. Если товара нет в наличии, создайте узел "Обновить запись" под веткой "Нет" для обновления статуса детали заказа на "Недействительно":
 
-![Loop Node Example Update Order Details Node Configuration](https://static-docs.nocobase.com/4996613090c254c69a1d80f3b3a7fae2.png)
+![Пример конфигурации узла обновления деталей заказа](https://static-docs.nocobase.com/4996613090c254c69a1d80f3b3a7fae2.png)
 
-The complete process structure is illustrated below:
+Полная структура процесса показана ниже:
 
-![Loop Node Example Process Structure](https://static-docs.nocobase.com/6f59ef246c1f19976344a7624c4c4151.png)
+![Пример структуры процесса узла цикла](https://static-docs.nocobase.com/6f59ef246c1f19976344a7624c4c4151.png)
 
-After configuration and activation of this workflow, every time a new order is created, the system will automatically check the inventory of each product in the order. If sufficient inventory is available, the stock will be deducted; otherwise, the product in the order details will be marked as invalid (helping to calculate the valid total order price).
+После настройки и активации этого workflow, каждый раз при создании нового заказа система будет автоматически проверять наличие каждого товара в заказе. Если товар есть в наличии, его количество будет вычтено; в противном случае товар в деталях заказа будет помечен как недействительный (помогая рассчитать действительную общую цену заказа).

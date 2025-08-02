@@ -1,22 +1,22 @@
-# Add Plugin Configuration Page (Single Route)
+# Добавление страницы настроек плагина (один маршрут)
 
-## Description
+## Описание
 
-The plugin requires a simple configuration page with only one route.
+Плагину требуется простая страница настроек с одним маршрутом.
 
-## Example Description
+## Описание примера
 
-Assuming we integrate with a third-party email service and need to configure the email service token, we need a configuration page.
+Предположим, мы интегрируемся с сторонним почтовым сервисом и нам нужно настроить токен этого сервиса. Для этого требуется страница настроек.
 
-This document will not go into too much development detail, but only demonstrate how to add a plugin configuration page. For specific configuration page content and logic, please refer to the [Plugin Settings plugin example](/plugin-samples/plugin-settings) documentation.
+Этот документ не углубляется в детали разработки, а лишь демонстрирует, как добавить страницу настроек плагина. Для конкретного содержимого и логики страницы настроек обратитесь к документации [Пример плагина настроек](/plugin-samples/plugin-settings).
 
-You can view the complete example code for this document in the [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-add-setting-page-single-route) repository.
+Полный код примера доступен в репозитории [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-add-setting-page-single-route).
 
 ![20240512201126](https://static-docs.nocobase.com/20240512201126.png)
 
-## Initialize the Plugin
+## Инициализация плагина
 
-Following the instructions in the [Writing Your First Plugin](/development/your-fisrt-plugin) documentation, if you don't have a project yet, you can create one. If you already have one or have cloned the source code, you can skip this step.
+Следуйте инструкциям из документации [Создание первого плагина](/development/your-fisrt-plugin). Если у вас нет проекта, создайте его. Если проект уже существует или вы клонировали исходный код, пропустите этот шаг.
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d sqlite
@@ -25,24 +25,24 @@ yarn install
 yarn nocobase install
 ```
 
-Then initialize a plugin and add it to the application:
+Инициализируйте плагин и добавьте его в систему:
 
 ```bash
 yarn pm create @nocobase-sample/plugin-add-setting-page-single-route
 yarn pm enable @nocobase-sample/plugin-add-setting-page-single-route
 ```
 
-Then start the project:
+Запустите проект:
 
 ```bash
 yarn dev
 ```
 
-Then, after logging in, visit [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) to see that the plugin has been installed and enabled.
+После входа в систему перейдите по адресу [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/), чтобы убедиться, что плагин установлен и активирован.
 
-## Function Implementation
+## Реализация функциональности
 
-According to the tutorial on [Extending Plugin Settings Page](/development/client/router#extending-plugin-settings-page) in the plugin development documentation, we need to modify the `packages/plugins/@nocobase-sample/plugin-add-setting-page-single-route/src/client/index.tsx` file of the plugin:
+Согласно руководству по разработке плагинов [Расширение страницы настроек плагина](/development/client/router#extending-plugin-settings-page), необходимо обновить файл `packages/plugins/@nocobase-sample/plugin-add-setting-page-single-route/src/client/index.tsx`:
 
 ```ts
 import React from 'react';
@@ -66,37 +66,37 @@ export class PluginAddSettingPageSingleRouteClient extends Plugin {
 export default PluginAddSettingPageSingleRouteClient;
 ```
 
-- `name`: The name of the plugin, used to uniquely identify the plugin.
-- `title`: The title of the plugin configuration management page menu.
-- `icon`: The icon of the plugin configuration management page menu. For more icons, you can refer to the [Ant Design Icons](https://ant.design/components/icon/).
-- `Component`: The content of the setting page.
+- `name`: Имя плагина, используемое для уникальной идентификации плагина.
+- `title`: Заголовок меню страницы настроек плагина.
+- `icon`: Иконка меню страницы настроек плагина. Дополнительные иконки можно найти в [Ant Design Icons](https://ant.design/components/icon/).
+- `Component`: Содержимое страницы настроек.
 
-Then we can visit [http://localhost:13000/admin/settings/@nocobase-sample/plugin-add-setting-page-single-route](http://localhost:13000/admin/settings/@nocobase-sample/plugin-add-setting-page-single-route) to view the plugin configuration page.
+Перейдите по адресу [http://localhost:13000/admin/settings/@nocobase-sample/plugin-add-setting-page-single-route](http://localhost:13000/admin/settings/@nocobase-sample/plugin-add-setting-page-single-route), чтобы просмотреть страницу настроек плагина.
 
 ![20240512201126](https://static-docs.nocobase.com/20240512201126.png)
 
-## Permission Configuration
+## Настройка прав доступа
 
-By default, the plugin configuration page does not have any permissions. Anyone can access and configure it. To configure permissions for the plugin, we need to configure them in the plugin settings.
+По умолчанию страница настроек плагина не имеет ограничений по доступу, и любой пользователь может получить к ней доступ и изменять настройки. Чтобы настроить права доступа, необходимо задать их в настройках плагина.
 
-We can visit [http://localhost:13000/admin/settings/users-permissions/roles](http://localhost:13000/admin/settings/users-permissions/roles) to see all the roles. We can configure permissions in the plugin settings.
+Перейдите по адресу [http://localhost:13000/admin/settings/users-permissions/roles](http://localhost:13000/admin/settings/users-permissions/roles), чтобы просмотреть все роли и настроить права доступа в настройках плагина.
 
 ![20240512201234](https://static-docs.nocobase.com/20240512201234.png)
 
-## Packaging and Uploading to Production Environment
+## Сборка и развертывание в продакшен
 
-According to the documentation on [Building and Packaging Plugins](/development/your-fisrt-plugin#building-and-packaging-plugins), we can package the plugin and upload it to the production environment.
+Следуйте инструкциям из документации [Сборка и упаковка плагинов](/development/your-fisrt-plugin#building-and-packaging-plugins), чтобы упаковать плагин и загрузить его в продакшен.
 
-If you have cloned the source code, you need to perform a full build first to build the dependencies of the plugin as well.
+Для клонированного исходного кода выполните полную сборку, чтобы собрать зависимости плагина:
 
 ```bash
 yarn build
 ```
 
-If you are using `create-nocobase-app` to create your project, you can directly execute:
+Для проекта, созданного с помощью `create-nocobase-app`, выполните:
 
 ```bash
 yarn build @nocobase-sample/plugin-add-setting-page-single-route --tar
 ```
 
-This way you can see the `storage/tar/@nocobase-sample/plugin-add-setting-page-single-route.tar.gz` file, and then install it by [uploading](/welcome/getting-started/plugin).
+В результате будет создан файл `storage/tar/@nocobase-sample/plugin-add-setting-page-single-route.tar.gz`, который можно установить с помощью [метода загрузки](/welcome/getting-started/plugin).

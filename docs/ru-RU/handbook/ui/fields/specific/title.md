@@ -1,17 +1,17 @@
-# Title
+# Заголовок
 
-## Introduction
+## Введение
 
-In reading mode, the default component for relationship fields is the title component, which marks the current associated record by displaying the value of the title field.
+В режиме чтения компонентом по умолчанию для полей взаимосвязи является компонент заголовка, который помечает текущую связанную запись, отображая значение поля заголовка.
 
-## Field Configuration Options
+## Параметры конфигурации поля
 
 ![20240429223353](https://static-docs.nocobase.com/20240429223353.png)
 
-### Enable Link (Enabled by default)
+### Включить ссылку (включена по умолчанию)
 
-Clicking will open a pop-up window, allowing you to customize the configuration block for data management.
+При нажатии на нее откроется всплывающее окно, позволяющее настроить конфигурационный блок для управления данными.
 
 ![20240429223831](https://static-docs.nocobase.com/20240429223831.png)
 
-For more details, see [Field Components](/handbook/ui/fields/association-field).
+Более подробную информацию смотрите в разделе [Компоненты поля](/handbook/ui/fields/association-field).

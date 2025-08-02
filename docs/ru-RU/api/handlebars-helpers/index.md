@@ -1,17 +1,17 @@
-# Handlebars Helpers
+# Хелперы Handlebars
 
-| Category       | Description                         |
-|-------------|-------------------------------------|
-| [Core](./core.md)      | Built-in helpers        |
-| [Array](./array.md)       | Operations and methods related to arrays       |
-| [Comparison](./comparison.md) | Comparison operators and related methods       |
-| [Date](./date.md)        | Operations and methods related to date and time handling |
-| [HTML](./html.md)        | Content related to HTML documents and elements  |
-| [I18n](./i18n.md)        | Support for internationalization and multilingual handling |
-| [Math](./math.md)        | Mathematical functions and calculations       |
-| [Number](./number.md)    | Content related to number handling and formatting |
-| [Object](./object.md)    | Methods related to object operations and properties |
-| [Path](./path.md)        | Path operations and content related to the file system |
-| [Regex](./regex.md)      | Regular expressions and their usage            |
-| [String](./string.md)    | Methods related to string manipulation and operations |
-| [URL](./url.md)          | Content related to URL parsing and construction  |
+| Категория | Описание |
+| :--- | :--- |
+| **Core** (Основные) | Встроенные хелперы |
+| **Array** (Массивы) | Операции и методы, связанные с массивами |
+| **Comparison** (Сравнение) | Операторы сравнения и связанные методы |
+| **Date** (Дата) | Операции и методы, связанные с обработкой даты и времени |
+| **HTML** | Контент, связанный с HTML-документами и элементами |
+| **I18n** | Поддержка интернационализации и многязычности |
+| **Math** (Математика) | Математические функции и вычисления |
+| **Number** (Числа) | Контент, связанный с обработкой и форматированием чисел |
+| **Object** (Объекты) | Методы, связанные с операциями и свойствами объектов |
+| **Path** (Пути) | Операции с путями и контент, связанный с файловой системой |
+| **Regex** | Регулярные выражения и их использование |
+| **String** (Строки) | Методы, связанные с манипуляцией и операциями со строками |
+| **URL** | Контент, связанный с разбором и построением URL |

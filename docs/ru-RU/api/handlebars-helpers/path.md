@@ -1,136 +1,153 @@
-
-# Path
+# Пути
 
 ## {{absolute}}
 
-Get the directory path segment from the given `filepath`.
+Получает сегмент пути к директории из указанного `filepath`.  
+*(Примечание: в параметрах ошибка — `ext` должно быть `filepath`)*
 
-**Params**
+**Параметры**
 
-* `ext` **{String}**
-* `returns` **{String}**
+* `filepath` **{String}**: Путь к файлу.
+* `returns` **{String}**: Путь к директории.
 
-**Example**
+**Пример**
 
 ```handlebars
 {{absolute "docs/toc.md"}}
-<!-- results in: 'docs' -->
+<!-- результат: 'docs' -->
 ```
+
+---
 
 ## {{dirname}}
 
-Get the directory path segment from the given `filepath`.
+Получает сегмент пути к директории из указанного `filepath`.
 
-**Params**
+**Параметры**
 
-* `ext` **{String}**
-* `returns` **{String}**
+* `filepath` **{String}**: Путь к файлу.
+* `returns` **{String}**: Путь к директории.
 
-**Example**
+**Пример**
 
 ```handlebars
 {{dirname "docs/toc.md"}}
-<!-- results in: 'docs' -->
+<!-- результат: 'docs' -->
 ```
+
+---
 
 ## {{relative}}
 
-Get the relative filepath from `a` to `b`.
+Возвращает относительный путь из `a` в `b`.
 
-**Params**
+**Параметры**
 
-* `a` **{String}**
-* `b` **{String}**
-* `returns` **{String}**
+* `a` **{String}**: Исходный путь.
+* `b` **{String}**: Конечный путь.
+* `returns` **{String}**: Относительный путь от `a` к `b`.
 
-**Example**
+**Пример**
 
 ```handlebars
-{{relative a b}}
+{{relative "docs/a.md" "docs/b.md"}}
+<!-- например, результат: '../b.md' -->
 ```
+
+---
 
 ## {{basename}}
 
-Get the file extension from the given `filepath`.
+Получает имя файла (включая расширение) из указанного `filepath`.
 
-**Params**
+**Параметры**
 
-* `ext` **{String}**
-* `returns` **{String}**
+* `filepath` **{String}**: Путь к файлу.
+* `returns` **{String}**: Имя файла.
 
-**Example**
+**Пример**
 
 ```handlebars
 {{basename "docs/toc.md"}}
-<!-- results in: 'toc.md' -->
+<!-- результат: 'toc.md' -->
 ```
+
+---
 
 ## {{stem}}
 
-Get the "stem" from the given `filepath`.
+Получает "основу" имени файла (без расширения) из указанного `filepath`.
 
-**Params**
+**Параметры**
 
-* `filepath` **{String}**
-* `returns` **{String}**
+* `filepath` **{String}**: Путь к файлу.
+* `returns` **{String}**: Имя файла без расширения.
 
-**Example**
+**Пример**
 
 ```handlebars
 {{stem "docs/toc.md"}}
-<!-- results in: 'toc' -->
+<!-- результат: 'toc' -->
 ```
+
+---
 
 ## {{extname}}
 
-Get the file extension from the given `filepath`.
+Получает расширение файла из указанного `filepath`.
 
-**Params**
+**Параметры**
 
-* `filepath` **{String}**
-* `returns` **{String}**
+* `filepath` **{String}**: Путь к файлу.
+* `returns` **{String}**: Расширение файла, включая точку (например, `.md`).
 
-**Example**
+**Пример**
 
 ```handlebars
 {{extname "docs/toc.md"}}
-<!-- results in: '.md' -->
+<!-- результат: '.md' -->
 ```
+
+---
 
 ## {{resolve}}
 
-Resolve an absolute path from the given `filepath`.
+Преобразует относительный путь в абсолютный.
 
-**Params**
+**Параметры**
 
-* `filepath` **{String}**
-* `returns` **{String}**
+* `filepath` **{String}**: Относительный путь к файлу.
+* `returns` **{String}**: Абсолютный путь к файлу.
 
-**Example**
+**Пример**
 
 ```handlebars
 {{resolve "docs/toc.md"}}
-<!-- results in: '/User/dev/docs/toc.md' -->
+<!-- результат: '/User/dev/docs/toc.md' -->
 ```
+
+---
 
 ## {{segments}}
 
-Get specific (joined) segments of a file path by passing a range of array indices.
+Получает определённые сегменты пути к файлу, указав диапазон индексов массива (разделённого `/`), и объединяет их обратно в строку.
 
-**Params**
+**Параметры**
 
-* `filepath` **{String}**: The file path to split into segments.
-* `returns` **{String}**: Returns a single, joined file path.
+* `filepath` **{String}**: Путь к файлу, который будет разбит на сегменты.
+* `start` **{Number}**: Начальный индекс (включительно).
+* `end` **{Number}**: Конечный индекс (включительно).
+* `returns` **{String}**: Объединённый путь из выбранных сегментов.
 
-**Example**
+**Пример**
 
 ```handlebars
 {{segments "a/b/c/d" "2" "3"}}
-<!-- results in: 'c/d' -->
+<!-- результат: 'c/d' -->
 
 {{segments "a/b/c/d" "1" "3"}}
-<!-- results in: 'b/c/d' -->
+<!-- результат: 'b/c/d' -->
 
 {{segments "a/b/c/d" "1" "2"}}
-<!-- results in: 'b/c' -->
+<!-- результат: 'b/c' -->
 ```

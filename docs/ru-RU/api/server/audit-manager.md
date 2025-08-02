@@ -1,10 +1,10 @@
 # AuditManager
 
-## 概览
+## Обзор
 
-`AuditManager` 是 NocoBase 中的资源审计管理模块，用于注册需要参与审计的资源接口。
+`AuditManager` — это модуль управления аудитом ресурсов в NocoBase, используемый для регистрации интерфейсов ресурсов, участвующих в аудите.
 
-### 基本使用
+### Базовое использование
 
 ```ts
 import { Plugin } from '@nocobase/server';
@@ -16,11 +16,11 @@ class PluginCustomAuditResourceServer extends Plugin {
 }
 ```
 
-## 类方法
+## Методы класса
 
 ### `setLogger()`
 
-设置审计日志的输出方法。
+Устанавливает способ вывода аудит-логов.
 
 ```ts
 const auditManager = new AuditManager();
@@ -29,11 +29,11 @@ auditManager.setLogger({
 })
 ```
 
-#### 签名
+#### Сигнатура
 
 - `setLogger(logger: AuditLogger)`
 
-#### 类型
+#### Типы
 
 ```ts
 export interface AuditLog {
@@ -60,13 +60,13 @@ export interface AuditLogger {
 
 ### `registerAction()`
 
-注册参与审计的资源操作。
+Регистрирует операцию с ресурсом, участвующую в аудите.
 
-#### 签名
+#### Сигнатура
 
 - `registerAction(action: Action)`
 
-#### 类型
+#### Типы
 
 ```ts
 export interface UserInfo {
@@ -91,29 +91,29 @@ type Action =
     };
 ```
 
-#### 详细信息
+#### Подробности
 
-支持几种写法:
+Поддерживается несколько способов записи:
 
-1. 对所有资源生效
+1. Действует для всех ресурсов
 
 ```ts
 registerActions(['create']);
 ```
 
-2. 对某个资源的所有操作生效 `resource:*`
+2. Действует для всех операций определённого ресурса — `resource:*`
 
 ```ts
 registerActions(['app:*']);
 ```
 
-3. 对某个资源的某个操作生效 `resouce:action`
+3. Действует для определённой операции определённого ресурса — `resource:action`
 
 ```ts
 registerAction(['pm:update']);
 ```
 
-4. 支持传入针对操作自定义的 `getMetaData`, `getUserInfo`, `getSourceAndTarget` 方法
+4. Поддерживается передача кастомных функций `getMetaData`, `getUserInfo`, `getSourceAndTarget` для конкретной операции
 
 ```ts
 registerActions([
@@ -122,7 +122,7 @@ registerActions([
 ]);
 ```
 
-当注册的接口有重叠时，颗粒度细的注册方方式优先级更高，例如：
+При пересечении зарегистрированных интерфейсов приоритет имеет более детальная (точная) регистрация. Например:
 
 1. `registerActions('create')`
 
@@ -130,12 +130,12 @@ registerActions([
 
 3. `registerAction({ name: 'user:create', getMetaData })`
 
-对于 `user:create` 接口，生效的是 `3`.
+Для интерфейса `user:create` будет применяться вариант `3`.
 
 ### `registerActions()`
 
-注册多个参与审计的资源操作。
+Регистрирует несколько операций с ресурсами, участвующих в аудите.
 
-#### 签名
+#### Сигнатура
 
-- `registerAction(actions: Action[])`
+- `registerActions(actions: Action[])`

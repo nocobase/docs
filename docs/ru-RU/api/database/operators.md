@@ -1,6 +1,6 @@
-# Filter Operators
+# Операторы фильтрации
 
-Used in the filter parameters of the `find`, `findOne`, `findAndCount`, `count`, etc. APIs of repository:
+Используются в параметрах фильтрации методов `find`, `findOne`, `findAndCount`, `count` и других API репозитория:
 
 ```ts
 const repository = db.getRepository('books');
@@ -8,47 +8,47 @@ const repository = db.getRepository('books');
 repository.find({
   filter: {
     title: {
-      $eq: 'Spring and Autumn',
+      $eq: 'Весна и Осень',
     },
   },
 });
 ```
 
-To support JSON, NocoBase identifies query operators as a string prefixed with $.
+Для поддержки JSON NocoBase определяет операторы запроса как строки, начинающиеся с символа `$`.
 
-Moreover, NocoBase provides API to extend operators. Refer to [`db.registerOperators()`](../database#registeroperators).
+Кроме того, NocoBase предоставляет API для расширения операторов. Подробнее см. [`db.registerOperators()`](../database#registeroperators).
 
-## General Operators
+## Общие операторы
 
 ### `$eq`
 
-Check if the field value is equal to the specified value. Equivalent to `=` in SQL.
+Проверяет, равно ли значение поля указанному значению. Аналог оператора `=` в SQL.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
   filter: {
     title: {
-      $eq: 'Spring and Autumn',
+      $eq: 'Весна и Осень',
     },
   },
 });
 ```
 
-Equal to `title: 'Spring and Autumn'`
+Эквивалентно `title: 'Весна и Осень'`.
 
 ### `$ne`
 
-Check if the field value is not equal to the specified value. Equivalent to `!=` in SQL.
+Проверяет, не равно ли значение поля указанному значению. Аналог оператора `!=` в SQL.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
   filter: {
     title: {
-      $ne: 'Spring and Autumn',
+      $ne: 'Весна и Осень',
     },
   },
 });
@@ -56,9 +56,9 @@ repository.find({
 
 ### `$is`
 
-Check if the field value is the specified value. Equivalent to `IS` in SQL.
+Проверяет, является ли значение поля указанным значением. Аналог оператора `IS` в SQL.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
@@ -72,9 +72,9 @@ repository.find({
 
 ### `$not`
 
-Check if the field value is not the specified value. Equivalent to `IS NOT` in SQL.
+Проверяет, не является ли значение поля указанным значением. Аналог оператора `IS NOT` в SQL.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
@@ -88,9 +88,9 @@ repository.find({
 
 ### `$col`
 
-Check if the field value is equal to the value of another field. Equivalent to `=` in SQL.
+Проверяет, равно ли значение поля значению другого поля. Аналог оператора `=` в SQL.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
@@ -104,15 +104,15 @@ repository.find({
 
 ### `$in`
 
-Check if the field value is in the specified array. Equivalent to `IN` in SQL.
+Проверяет, содержится ли значение поля в указанном массиве. Аналог оператора `IN` в SQL.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
   filter: {
     title: {
-      $in: ['Spring and Autumn', 'Warring States'],
+      $in: ['Весна и Осень', 'Эпоха воюющих государств'],
     },
   },
 });
@@ -120,15 +120,15 @@ repository.find({
 
 ### `$notIn`
 
-Check if the field value is not in the specified array. Equivalent to `NOT IN` in SQL.
+Проверяет, не содержится ли значение поля в указанном массиве. Аналог оператора `NOT IN` в SQL.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
   filter: {
     title: {
-      $notIn: ['Spring and Autumn', 'Warring States'],
+      $notIn: ['Весна и Осень', 'Эпоха воюющих государств'],
     },
   },
 });
@@ -136,9 +136,9 @@ repository.find({
 
 ### `$empty`
 
-Check if the general field is empty. For string field, check if it is an empty string; for array field, check if it is an empty array.
+Проверяет, пусто ли поле. Для строкового поля — пустая ли строка, для массива — пуст ли массив.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
@@ -152,9 +152,9 @@ repository.find({
 
 ### `$notEmpty`
 
-Check if the general field is not empty. For string field, check if it is not an empty string; for array field, check if it is not an empty array.
+Проверяет, не пусто ли поле. Для строкового поля — не пустая ли строка, для массива — не пуст ли массив.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
@@ -166,48 +166,48 @@ repository.find({
 });
 ```
 
-## Logical Operators
+## Логические операторы
 
 ### `$and`
 
-Logical AND. Equivalent to `AND` in SQL.
+Логическое И. Аналог `AND` в SQL.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
   filter: {
-    $and: [{ title: 'Book of Songs' }, { isbn: '1234567890' }],
+    $and: [{ title: 'Книга песен' }, { isbn: '1234567890' }],
   },
 });
 ```
 
 ### `$or`
 
-Logical OR. Equivalent to `OR` in SQL.
+Логическое ИЛИ. Аналог `OR` в SQL.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
   filter: {
     $or: [
-      { title: 'Book of Songs' },
+      { title: 'Книга песен' },
       { publishedAt: { $lt: '0000-00-00T00:00:00Z' } },
     ],
   },
 });
 ```
 
-## Boolean Field Operators
+## Операторы для полей типа Boolean
 
-For boolean fields: `type: 'boolean'`
+Для полей с типом: `type: 'boolean'`
 
 ### `$isFalsy`
 
-Check if a Boolean field value is false. Boolean field values of `false`, `0` and `NULL` are all judged to be `$isFalsy: true`.
+Проверяет, является ли значение логического поля ложным. Значения `false`, `0` и `NULL` считаются ложными (`$isFalsy: true`).
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
@@ -221,9 +221,9 @@ repository.find({
 
 ### `$isTruly`
 
-Check if a Boolean field value is true. Boolean field values of `true` and `1` are all judged to be `$isTruly: true`.
+Проверяет, является ли значение логического поля истинным. Значения `true` и `1` считаются истинными (`$isTruly: true`).
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
@@ -235,9 +235,9 @@ repository.find({
 });
 ```
 
-## Numeric Type Field Operators
+## Операторы для числовых типов
 
-For numeric type fields, including:
+Для полей числовых типов, включая:
 
 - `type: 'integer'`
 - `type: 'float'`
@@ -247,9 +247,9 @@ For numeric type fields, including:
 
 ### `$gt`
 
-Check if the field value is greater than the specified value. Equivalent to `>` in SQL.
+Проверяет, больше ли значение поля указанного значения. Аналог `>` в SQL.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
@@ -263,9 +263,9 @@ repository.find({
 
 ### `$gte`
 
-Check if the field value is equal to or greater than the specified value. Equivalent to `>=` in SQL.
+Проверяет, больше ли или равно ли значение поля указанному значению. Аналог `>=` в SQL.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
@@ -279,9 +279,9 @@ repository.find({
 
 ### `$lt`
 
-Check if the field value is less than the specified value. Equivalent to `<` in SQL.
+Проверяет, меньше ли значение поля указанного значения. Аналог `<` в SQL.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
@@ -295,9 +295,9 @@ repository.find({
 
 ### `$lte`
 
-Check if the field value is equal to or less than the specified value. Equivalent to `<=` in SQL.
+Проверяет, меньше ли или равно ли значение поля указанному значению. Аналог `<=` в SQL.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
@@ -311,9 +311,9 @@ repository.find({
 
 ### `$between`
 
-Check if the field value is between the specified two values. Equivalent to `BETWEEN` in SQL.
+Проверяет, находится ли значение поля в диапазоне между двумя указанными значениями. Аналог оператора `BETWEEN` в SQL.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
@@ -327,9 +327,9 @@ repository.find({
 
 ### `$notBetween`
 
-Check if the field value is not between the specified two values. Equivalent to `NOT BETWEEN` in SQL.
+Проверяет, находится ли значение поля **не** в диапазоне между двумя указанными значениями. Аналог оператора `NOT BETWEEN` в SQL.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
@@ -341,21 +341,21 @@ repository.find({
 });
 ```
 
-## String Type Field Operators
+## Операторы для строковых полей
 
-For string type fields, including `string`.
+Для полей строкового типа: `type: 'string'`.
 
 ### `$includes`
 
-Check if the string field contains the specified substring.
+Проверяет, содержит ли строка указанную подстроку.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
   filter: {
     title: {
-      $includes: 'Three Character Classic',
+      $includes: 'Три столпа китайской культуры',
     },
   },
 });
@@ -363,15 +363,15 @@ repository.find({
 
 ### `$notIncludes`
 
-Check if the string field does not contain the specified substring.
+Проверяет, **не** содержит ли строка указанную подстроку.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
   filter: {
     title: {
-      $notIncludes: 'Three Character Classic',
+      $notIncludes: 'Три столпа китайской культуры',
     },
   },
 });
@@ -379,15 +379,15 @@ repository.find({
 
 ### `$startsWith`
 
-Check if the string field starts with the specified substring.
+Проверяет, начинается ли строка с указанной подстроки.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
   filter: {
     title: {
-      $startsWith: 'Three Character Classic',
+      $startsWith: 'Три столпа китайской культуры',
     },
   },
 });
@@ -395,15 +395,16 @@ repository.find({
 
 ### `$notStatsWith`
 
-Check if the string field does not start with the specified substring.
+Проверяет, **не** начинается ли строка с указанной подстроки.  
+*(Примечание: вероятно, опечатка в оригинале — должно быть `$notStartsWith`.)*
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
   filter: {
     title: {
-      $notStatsWith: 'Three Character Classic',
+      $notStatsWith: 'Три столпа китайской культуры',
     },
   },
 });
@@ -411,15 +412,15 @@ repository.find({
 
 ### `$endsWith`
 
-Check if the string field ends with the specified substring.
+Проверяет, заканчивается ли строка указанной подстрокой.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
   filter: {
     title: {
-      $endsWith: 'Three Character Classic',
+      $endsWith: 'Три столпа китайской культуры',
     },
   },
 });
@@ -427,15 +428,15 @@ repository.find({
 
 ### `$notEndsWith`
 
-Check if the string field does not end with the specified substring.
+Проверяет, **не** заканчивается ли строка указанной подстрокой.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
   filter: {
     title: {
-      $notEndsWith: 'Three Character Classic',
+      $notEndsWith: 'Три столпа китайской культуры',
     },
   },
 });
@@ -443,15 +444,15 @@ repository.find({
 
 ### `$like`
 
-Check if the field value contains the specified string. Equivalent to `LIKE` in SQL.
+Проверяет, содержит ли значение поля указанную строку. Аналог оператора `LIKE` в SQL.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
   filter: {
     title: {
-      $like: 'Computer',
+      $like: 'Компьютер',
     },
   },
 });
@@ -459,15 +460,15 @@ repository.find({
 
 ### `$notLike`
 
-Check if the field value does not contain the specified string. Equivalent to `NOT LIKE` in SQL.
+Проверяет, **не** содержит ли значение поля указанную строку. Аналог оператора `NOT LIKE` в SQL.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
   filter: {
     title: {
-      $notLike: 'Computer',
+      $notLike: 'Компьютер',
     },
   },
 });
@@ -475,15 +476,15 @@ repository.find({
 
 ### `$iLike`
 
-Check if a field value contains the specified string, case ignored. Equivalent to `ILIKE` in SQL (PG only).
+Проверяет, содержит ли значение поля указанную строку без учёта регистра. Аналог оператора `ILIKE` в SQL (только для PostgreSQL).
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
   filter: {
     title: {
-      $iLike: 'Computer',
+      $iLike: 'Компьютер',
     },
   },
 });
@@ -491,15 +492,15 @@ repository.find({
 
 ### `$notILike`
 
-Check if a field value does not contain the specified string, case ignored. Equivalent to `NOT ILIKE` in SQL (PG only).
+Проверяет, **не** содержит ли значение поля указанную строку без учёта регистра. Аналог оператора `NOT ILIKE` в SQL (только для PostgreSQL).
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
   filter: {
     title: {
-      $notILike: 'Computer',
+      $notILike: 'Компьютер',
     },
   },
 });
@@ -507,15 +508,15 @@ repository.find({
 
 ### `$regexp`
 
-Check if the field value matches the specified regular expression. Equivalent to `REGEXP` in SQL (PG only).
+Проверяет, соответствует ли значение поля указанному регулярному выражению. Аналог оператора `REGEXP` в SQL (только для PostgreSQL).
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
   filter: {
     title: {
-      $regexp: '^Computer',
+      $regexp: '^Компьютер',
     },
   },
 });
@@ -523,15 +524,15 @@ repository.find({
 
 ### `$notRegexp`
 
-Check if the field value does not match the specified regular expression. Equivalent to `NOT REGEXP` in SQL (PG only).
+Проверяет, **не** соответствует ли значение поля указанному регулярному выражению. Аналог оператора `NOT REGEXP` в SQL (только для PostgreSQL).
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
   filter: {
     title: {
-      $notRegexp: '^Computer',
+      $notRegexp: '^Компьютер',
     },
   },
 });
@@ -539,15 +540,15 @@ repository.find({
 
 ### `$iRegexp`
 
-Check if the field value matches the specified regular expression, case ignored. Equivalent to `~*` in SQL (PG only).
+Проверяет, соответствует ли значение поля указанному регулярному выражению без учёта регистра. Аналог оператора `~*` в SQL (только для PostgreSQL).
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
   filter: {
     title: {
-      $iRegexp: '^COMPUTER',
+      $iRegexp: '^КОМПЬЮТЕР',
     },
   },
 });
@@ -555,29 +556,29 @@ repository.find({
 
 ### `$notIRegexp`
 
-Check if the field value does not match the specified regular expression, case ignored. Equivalent to `!~*` in SQL (PG only).
+Проверяет, **не** соответствует ли значение поля указанному регулярному выражению без учёта регистра. Аналог оператора `!~*` в SQL (только для PostgreSQL).
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
   filter: {
     title: {
-      $notIRegexp: '^COMPUTER',
+      $notIRegexp: '^КОМПЬЮТЕР',
     },
   },
 });
 ```
 
-## Date Type Field Operators
+## Операторы для полей типа дата
 
-For date type fields: `type: 'date'`
+Для полей с типом: `type: 'date'`.
 
 ### `$dateOn`
 
-Check if the date field value is within a certain day.
+Проверяет, попадает ли значение даты в указанный день.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
@@ -591,9 +592,9 @@ repository.find({
 
 ### `$dateNotOn`
 
-Check if the date field value is not within a certain day.
+Проверяет, **не** попадает ли значение даты в указанный день.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
@@ -607,9 +608,9 @@ repository.find({
 
 ### `$dateBefore`
 
-Check if the date field value is before a certain value, i.e., less than the one passed in.
+Проверяет, находится ли значение даты до указанного момента, то есть меньше переданного значения.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
@@ -623,9 +624,9 @@ repository.find({
 
 ### `$dateNotBefore`
 
-Check if the date field value is not before a certain value, i.e., equal to or greater than the one passed in.
+Проверяет, не находится ли значение поля даты **до** указанного момента, то есть значение должно быть **равно или больше** переданного.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
@@ -637,11 +638,13 @@ repository.find({
 });
 ```
 
+---
+
 ### `$dateAfter`
 
-Check if the date field value is after a certain value, i.e., greater than the one passed in.
+Проверяет, находится ли значение поля даты **после** указанного момента, то есть значение должно быть **больше** переданного.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
@@ -653,11 +656,14 @@ repository.find({
 });
 ```
 
+---
+
 ### `$dateNotAfter`
 
-Check if the date field value is not after a certain value, i.e., equal to or greater than the one passed in.
+Проверяет, не находится ли значение поля даты **после** указанного момента, то есть значение должно быть **меньше или равно** переданному.  
+*(Примечание: в описании оригинала, вероятно, ошибка — должно быть "меньше или равно", а не "равно или больше".)*
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
@@ -669,79 +675,89 @@ repository.find({
 });
 ```
 
-## Array Type Field Operators
+---
 
-For array type fields: `type: 'array'`
+## Операторы для полей типа массив
+
+Для полей с типом: `type: 'array'`.
 
 ### `$match`
 
-Check if the array field values match values of the specified array.
+Проверяет, совпадают ли значения массива со значениями указанного массива (полное совпадение).
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
   filter: {
     tags: {
-      $match: ['literature', 'history'],
+      $match: ['литература', 'история'],
     },
   },
 });
 ```
+
+---
 
 ### `$notMatch`
 
-Check if the array field values do not match values of the specified array.
+Проверяет, **не** совпадают ли значения массива со значениями указанного массива.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
   filter: {
     tags: {
-      $notMatch: ['literature', 'history'],
+      $notMatch: ['литература', 'история'],
     },
   },
 });
 ```
+
+---
 
 ### `$anyOf`
 
-Check if the array field values contain any of the values of the specified array.
+Проверяет, содержит ли массив **хотя бы одно** из значений указанного массива.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
   filter: {
     tags: {
-      $anyOf: ['literature', 'history'],
+      $anyOf: ['литература', 'история'],
     },
   },
 });
 ```
+
+---
 
 ### `$noneOf`
 
-Check if the array field values contain none of the values of the specified array.
+Проверяет, **не содержит ни одного** из значений указанного массива.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
   filter: {
     tags: {
-      $noneOf: ['literature', 'history'],
+      $noneOf: ['литература', 'история'],
     },
   },
 });
 ```
 
+---
+
 ### `$arrayEmpty`
 
-Check if the array field is empty.
+Проверяет, является ли массив пустым.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
@@ -753,11 +769,13 @@ repository.find({
 });
 ```
 
+---
+
 ### `$arrayNotEmpty`
 
-Check if the array field is not empty.
+Проверяет, **не** является ли массив пустым.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
@@ -769,9 +787,11 @@ repository.find({
 });
 ```
 
-## Relational Field Type Operators
+---
 
-For checking if a relationship exists, field types include:
+## Операторы для связанных полей
+
+Для проверки существования связи. Поддерживаются типы полей:
 
 - `type: 'hasOne'`
 - `type: 'hasMany'`
@@ -780,9 +800,9 @@ For checking if a relationship exists, field types include:
 
 ### `$exists`
 
-There is relational data existing.
+Проверяет, существует ли связанная запись.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({
@@ -796,9 +816,9 @@ repository.find({
 
 ### `$notExists`
 
-There is no relational data existing.
+Проверяет, **не** существует ли связанная запись.
 
-**Example**
+**Пример**
 
 ```ts
 repository.find({

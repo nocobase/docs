@@ -1,48 +1,48 @@
-# Roadmap
+# Дорожная карта
 
-*Updated on June 11, 2024*
+* Обновлено 11 июня 2024 г.*
 
-We are developing or have already planned the following new features and plugins, ☑️ indicates just completed and published:
+Мы разрабатываем или уже запланировали следующие новые функции и плагины, ☑️ - только что завершенные и опубликованные:
 
-## Features:
+## Функции:
 
-- Field default values support expressions
-- Association fields support linkage rules
-- Record open mode: Page (alongside Dialog, Drawer)
-- [x] Link action, supports variables and expressions
-- [x] Data scope and field default values support Query params
-- [x] Set block height
-- [x] Markdown supports variables
-- [x] Iframe address supports variables.
-- Support for linked refresh between blocks
-- Add Charts blocks in pop-ups
-- [x] Refactor the Import and Export plugin to handle more data at a time
-- Single record/popup supports independent URL
-- [x] Improved tree table block
-- Workflow refactoring
-  - [x] Create record node
-  - [x] Update record node
-  - Automatically handle variable references (deprecate preload)
-- Date and time processing engine
-- Distributed architecture
-- Plugin tutorial
+- Значения полей по умолчанию поддерживают выражения
+- Ассоциативные поля поддерживают правила привязки
+- Режим открытия записи: Страница (наряду с диалоговым окном, ящиком)
+- [x] Связывает действие, поддерживает переменные и выражения
+- [x] Область данных и значения полей по умолчанию поддерживают параметры запроса
+- [x] Задает высоту блока
+- [x] Markdown поддерживает переменные
+- [x] Адрес Iframe поддерживает переменные.
+- Поддержка связанного обновления между блоками
+- Добавлены блоки диаграмм во всплывающие окна
+- [x] Изменен модуль импорта и экспорта для одновременной обработки большего количества данных
+- Одна запись / всплывающее окно поддерживает независимый URL-адрес
+- [x] Улучшен блок древовидной таблицы
+- Рефакторинг рабочего процесса
+  - [x] Создан узел записи
+  - [x] Узел обновления записей
+  - Автоматическая обработка ссылок на переменные (предварительная загрузка не рекомендуется)
+- Механизм обработки даты и времени
+- Распределенная архитектура
+- Руководство по подключению
   
-## Plugins:
+## Плагины:
 
 - [x] DingTalk
-- Wechat
-- [x] Scan QR code
-- [x] Workbench block
-- [x] Tree block
-- Audit logs
-- Action: Import records pro
-- Action: Export records pro
-- Multi-application manager
-- Share pages
-- Data source: API
-- Workflow: Script node
-- Workflow: Webhook trigger
-- Input mask
-- Embed External Systems
-- New Mobile client
-- Notification
+- WeChat
+- [x] Сканировать QR-код
+- [x] Блок Workbench
+- [x] Блок дерева
+- Журналы аудита
+- Действие: Импорт записей pro
+- Действие: Экспорт записей pro
+- Менеджер нескольких приложений
+- Общий доступ к страницам
+- Источник данных: API
+- Рабочий процесс: Узел скрипта
+- Рабочий процесс: Триггер Webhook
+- Маска ввода
+- Внедрение внешних систем
+- Новый мобильный клиент
+- Уведомление

@@ -1,47 +1,47 @@
 # @nocobase/cli
 
-The NocoBase CLI is designed to help you develop, build, and deploy NocoBase applications.
+CLI NocoBase предназначен для помощи в разработке, сборке и развертывании приложений NocoBase.
 
 <Alert>
 
-NocoBase CLI supports <i>ts-node</i> and <i>node</i> two operation modes.
+CLI NocoBase поддерживает два режима работы: <i>ts-node</i> и <i>node</i>.
 
-- ts-node mode (Default): Used for development environment, support real-time compilation, with relatively slow response
-- node mode：Used for production environment, with quick response, but you need to execute `yarn nocobase build` to compile the entire source code first
+- Режим ts-node (по умолчанию): используется в среде разработки, поддерживает компиляцию в реальном времени, но с относительно медленным откликом.
+- Режим node: используется в производственной среде, обеспечивает быстрый отклик, но требует предварительной компиляции всего исходного кода с помощью команды `yarn nocobase build`.
 
 </Alert>
 
-## Instructions For Use
+## Инструкция по использованию
 
 ```bash
 $ yarn nocobase -h
 
-Usage: nocobase [command] [options]
+Использование: nocobase [команда] [опции]
 
-Options:
+Опции:
   -h, --help
 
-Commands:
+Команды:
   console
-  db:auth               Verify if the database is successfully connected
-  db:sync               Generate relevant data tables and fields through the configuration of collections
-  install               Install
-  start                 Start application in production environment
-  build                 Compile and package
-  clean                 Delete the compiled files
-  dev                   Start application for development environment with real-time compilation
-  doc                   Documentation development
-  test                  Testing
+  db:auth               Проверка успешности подключения к базе данных
+  db:sync               Создание таблиц и полей в базе данных на основе конфигурации коллекций
+  install               Установка приложения
+  start                 Запуск приложения в производственной среде
+  build                 Компиляция и упаковка приложения
+  clean                 Удаление скомпилированных файлов
+  dev                   Запуск приложения в режиме разработки с компиляцией в реальном времени
+  doc                   Разработка документации
+  test                  Тестирование
   umi
-  upgrade               Upgrade
-  migrator              Data migration
-  pm                    Plugin manager
+  upgrade               Обновление
+  migrator              Миграция данных
+  pm                    Менеджер плагинов
   help
 ```
 
-## Application in Scaffolding
+## Использование в шаблоне приложения
 
-`scripts` in the application scaffolding `package.json` is as below:
+Секция `scripts` в файле `package.json` шаблона приложения выглядит следующим образом:
 
 ```json
 {
@@ -57,9 +57,9 @@ Commands:
 }
 ```
 
-## Command Line Extensions
+## Расширение командной строки
 
-NocoBase CLI is built based on [commander](https://github.com/tj/commander.js). You can write the extended commands freely in `app/server/index.ts`:
+CLI NocoBase построен на основе [commander](https://github.com/tj/commander.js). Вы можете свободно добавлять расширенные команды в файл `app/server/index.ts`:
 
 ```ts
 const app = new Application(config);
@@ -67,7 +67,7 @@ const app = new Application(config);
 app.command('hello').action(() => {});
 ```
 
-or in the plugin:
+или в плагине:
 
 ```ts
 class MyPlugin extends Plugin {
@@ -77,275 +77,281 @@ class MyPlugin extends Plugin {
 }
 ```
 
-Run in the terminal:
+Вызов в терминале:
 
 ```bash
 $ yarn nocobase hello
 ```
 
-## Built-in Commands
+## Встроенные команды
 
-Sorted by frequency of use.
+Отсортированы по частоте использования.
 
 ### `dev`
 
-Start application and compile code in real time in development environment.
+Запускает приложение и компилирует код в реальном времени в режиме разработки.
 
 <Alert>
-NocoBase is installed automatically if it is not installed (Refer to the `install` command).
+Если NocoBase ещё не установлен, он будет автоматически установлен (см. команду `install`).
 </Alert>
 
 ```bash
-Usage: nocobase dev [options]
+Использование: nocobase dev [опции]
 
-Options:
-  -p, --port [port]
+Опции:
+  -p, --port [порт]
   --client
   --server
   -h, --help
 ```
 
-Example:
+Примеры:
 
 ```bash
-# Launch application for development environment, with real-time compilation
+# Запуск приложения в режиме разработки с компиляцией в реальном времени
 yarn nocobase dev
-# Start the server side only
+# Запуск только серверной части
 yarn nocobase dev --server
-# Start the client side only
+# Запуск только клиентской части
 yarn nocobase dev --client
 ```
 
 ### `start`
 
-Start application in production environment, the code needs <i>yarn build</i>.
+Запускает приложение в производственной среде. Требует предварительной сборки кода командой <i>yarn build</i>.
 
 <Alert>
 
-- NocoBase is installed automatically if it is not installed (Refer to the `install` command).
-- The source code needs to be re-packaged if it has any modification (Refer to the `build` command).
+- Если NocoBase ещё не установлен, он будет автоматически установлен (см. команду `install`).
+- Если были внесены изменения в исходный код, его необходимо пересобрать (см. команду `build`).
 
 </Alert>
 
 ```bash
 $ yarn nocobase start -h
 
-Usage: nocobase start [options]
+Использование: nocobase start [опции]
 
-Options:
+Опции:
   -p, --port
   -s, --silent
   -h, --help
 ```
 
-Example:
+Пример:
 
 ```bash
-# Launch application for production environment
+# Запуск приложения в производственной среде
 yarn nocobase start
 ```
+# Команды CLI NocoBase
 
-### `install`
+## `install`
 
-Install.
+Установка системы.
 
 ```bash
 $ yarn nocobase install -h
 
-Usage: nocobase install [options]
+Использование: nocobase install [опции]
 
-Options:
-  -f, --force
-  -c, --clean
-  -s, --silent
-  -l, --lang [lang]
-  -e, --root-email <rootEmail>
-  -p, --root-password <rootPassword>
-  -n, --root-nickname [rootNickname]
-  -h, --help
+Опции:
+  -f, --force            Принудительная переустановка
+  -c, --clean            Полная очистка базы данных
+  -s, --silent           Тихий режим
+  -l, --lang [язык]      Язык интерфейса
+  -e, --root-email <email> Email администратора
+  -p, --root-password <пароль> Пароль администратора
+  -n, --root-nickname [никнейм] Никнейм администратора
+  -h, --help             Справка
 ```
 
-Example:
+Примеры:
 
 ```bash
-# Initial installation
-yarn nocobase install -l zh-CN -e admin@nocobase.com -p admin123
-# Delete all data tables from NocoBase and reinstall
-yarn nocobase install -f -l zh-CN -e admin@nocobase.com -p admin123
-# Clear database and reinstall
-yarn nocobase install -c -l zh-CN -e admin@nocobase.com -p admin123
+# Первоначальная установка
+yarn nocobase install -l ru-RU -e admin@nocobase.com -p admin123
+
+# Переустановка с удалением таблиц NocoBase
+yarn nocobase install -f -l ru-RU -e admin@nocobase.com -p admin123
+
+# Полная очистка базы и переустановка
+yarn nocobase install -c -l ru-RU -e admin@nocobase.com -p admin123
 ```
 
 <Alert>
 
-Difference between `-f/--force` and `-c/--clean`:
+Разница между `-f/--force` и `-c/--clean`:
 
-- `-f/--force` Delete data tables of NocoBase
-- `-c/--clean` Clear database, all data tables are deleted
+- `-f` удаляет только таблицы NocoBase
+- `-c` полностью очищает всю базу данных
 
 </Alert>
 
-### `upgrade`
+## `upgrade`
 
-Upgrade.
+Обновление системы.
 
 ```bash
 yarn nocobase upgrade
 ```
 
-### `test`
+## `test`
 
-<i>jest</i> test, which supports all [jest-cli](https://jestjs.io/docs/cli) options, also supports `-c, --db-clean`.
+Запуск тестов (на базе Jest) с поддержкой всех [опций jest-cli](https://jestjs.io/docs/cli).
 
 ```bash
 $ yarn nocobase test -h
 
-Usage: nocobase test [options]
+Использование: nocobase test [опции]
 
-Options:
-  -c, --db-clean        Clear database before running all tests
-  -h, --help
+Опции:
+  -c, --db-clean        Очистка базы перед запуском тестов
+  -h, --help            Справка
 ```
 
-Example:
+Примеры:
 
 ```bash
-# Run all test files
+# Все тесты
 yarn nocobase test
-# Run all test files in the specified folder
+
+# Тесты в указанной директории
 yarn nocobase test packages/core/server
-# Run all tests in the specified file
+
+# Конкретный тестовый файл
 yarn nocobase test packages/core/database/src/__tests__/database.test.ts
 
-# Clear database before running all tests
+# С очисткой базы
 yarn nocobase test -c
-yarn nocobase test packages/core/server -c
 ```
 
-### `build`
+## `build`
 
-The source code needs to be compiled and packaged before the code is deployed to the production environment; and you need to re-build the code if it has any modification.
+Сборка проекта для production.
 
 ```bash
-# All packages
+# Все пакеты
 yarn nocobase build
-# Specified packages
+
+# Указанные пакеты
 yarn nocobase build app/server app/client
 ```
 
-### `clean`
+## `clean`
 
-Delete the compiled files.
+Удаление скомпилированных файлов.
 
 ```bash
 yarn clean
-# Equivalent to
+# Эквивалентно:
 yarn rimraf -rf packages/*/*/{lib,esm,es,dist}
 ```
 
-### `doc`
+## `doc`
 
-Documentation development.
+Работа с документацией.
 
 ```bash
-# Start the documentation
-yarn doc  --lang=zh-CN # Equivalent to yarn doc dev
-# Build the documentation, and output it to . /docs/dist/ directory by default
+# Запуск сервера документации
+yarn doc --lang=ru-RU
+
+# Сборка документации
 yarn doc build
-# View the final result of the output documentation of dist
-yarn doc serve --lang=zh-CN
+
+# Просмотр собранной документации
+yarn doc serve --lang=ru-RU
 ```
 
-### `db:auth`
+## `db:auth`
 
-Verify if the database is successfully connected.
+Проверка подключения к базе данных.
 
 ```bash
 $ yarn nocobase db:auth -h
 
-Usage: nocobase db:auth [options]
+Использование: nocobase db:auth [опции]
 
-Options:
-  -r, --retry [retry]   Number of retries
-  -h, --help
+Опции:
+  -r, --retry [попытки] Количество попыток подключения
+  -h, --help            Справка
 ```
 
-### `db:sync`
+## `db:sync`
 
-Generate relevant data tables and fields through the configuration of collections.
+Синхронизация структуры базы данных с конфигурацией коллекций.
 
 ```bash
 $ yarn nocobase db:sync -h
 
-Usage: nocobase db:sync [options]
+Использование: nocobase db:sync [опции]
 
-Options:
-  -f, --force
-  -h, --help   display help for command
+Опции:
+  -f, --force          Принудительная синхронизация
+  -h, --help           Справка
 ```
-
 ### `migrator`
 
-Data migration.
+Миграция данных.
 
 ```bash
 $ yarn nocobase migrator
 
-Positional arguments:
+Позиционные аргументы:
   <command>
-    up        Applies pending migrations
-    down      Revert migrations
-    pending   Lists pending migrations
-    executed  Lists executed migrations
-    create    Create a migration file
+    up        Применяет ожидающие миграции
+    down      Откатывает миграции
+    pending   Выводит список ожидающих миграций
+    executed  Выводит список выполненных миграций
+    create    Создаёт файл миграции
 ```
 
 ### `pm`
 
-Plugin manager.
+Менеджер плагинов.
 
 ```bash
-# Create plugin
+# Создать плагин
 yarn pm create hello
-# Register plugin
+# Зарегистрировать плагин
 yarn pm add hello
-# Enable plugin
+# Включить плагин
 yarn pm enable hello
-# Disable plugin
+# Отключить плагин
 yarn pm disable hello
-# Remove plugin
+# Удалить плагин
 yarn pm remove hello
 ```
 
-Not achieved yet:
+Ещё не реализовано:
 
 ```bash
-# Upgrade plugin
+# Обновить плагин
 yarn pm upgrade hello
-# Publish plugin
+# Опубликовать плагин
 yarn pm publish hello
 ```
 
 ### `umi`
 
-`app/client` is built based on [umi](https://umijs.org/), you can run other relevant commands through `nocobase umi`.
+`app/client` построен на основе [umi](https://umijs.org/), вы можете запускать другие связанные команды через `nocobase umi`.
 
 ```bash
-# Generate the .umi cache needed for the development environment
+# Сгенерировать кэш .umi, необходимый для среды разработки
 yarn nocobase umi generate tmp
 ```
 
 ### `help`
 
-The help command, you can also use the option parameter, `-h` and `--help`.
+Команда справки. Также можно использовать параметры `-h` или `--help`.
 
 ```bash
-# View all cli
+# Просмотр всех команд CLI
 yarn nocobase help
-# Use -h instead
+# Использовать -h
 yarn nocobase -h
-# Or --help
+# Или --help
 yarn nocobase --help
-# View options of command db:sync
+# Просмотр опций команды db:sync
 yarn nocobase db:sync -h
 ```

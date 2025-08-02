@@ -1,61 +1,60 @@
-# 连接外部数据表
+# Подключение внешних таблиц данных
 
-## 介绍
+## Введение
 
-基于数据库的 foreign data wrapper 实现的连接远程数据表的功能插件。目前支持 MySQL 和 PostgreSQL 数据库。
+Плагин для подключения удаленных таблиц данных реализован на основе технологии Foreign Data Wrapper. В настоящее время поддерживаются базы данных MySQL и PostgreSQL.
 
 ### MySQL
 
-MySQL 通过 `federated` 引擎，需要激活，支持连接远程 MySQL 及其协议兼容数据库，如 MariaDB。详情文档参考 [Federated Storage Engine](https://dev.mysql.com/doc/refman/8.0/en/federated-storage-engine.html)。
+MySQL использует механизм `federated`, который требует активации и поддерживает подключение к удаленным MySQL и совместимым СУБД, таким как MariaDB. Подробнее см. документацию [Federated Storage Engine](https://dev.mysql.com/doc/refman/8.0/en/federated-storage-engine.html).
 
 ### PostgreSQL
 
-在 PostgreSQL 中，可通过不同类型的 `fdw` 扩展来支持不同的远程数据类型，目前支持的扩展有：
+В PostgreSQL подключение к различным типам удаленных данных осуществляется через расширения `fdw`. В настоящее время поддерживаются:
 
-- [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html)：在 PostgreSQL 中连接远程 PostgreSQL 数据库。
-- [mysql_fdw(开发中)](https://github.com/EnterpriseDB/mysql_fdw)：在 PostgreSQL 中连接远程 MySQL 数据库。
-- 其余类型的 fdw 扩展，可参考 [PostgreSQL Foreign Data Wrappers](https://wiki.postgresql.org/wiki/Foreign_data_wrappers)，接入 NocoBase 需要在代码中实现相应的适配接口。
+- [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) - подключение к удаленным PostgreSQL
+- [mysql_fdw (в разработке)](https://github.com/EnterpriseDB/mysql_fdw) - подключение к MySQL
+- Другие типы расширений FDW см. в [PostgreSQL Foreign Data Wrappers](https://wiki.postgresql.org/wiki/Foreign_data_wrappers). Для интеграции с NocoBase требуется реализация соответствующих интерфейсов.
 
-## 安装
+## Установка
 
-前提条件
+**Предварительные требования:**
+- Локальная MySQL (используемая NocoBase) должна иметь активированный `federated` ([инструкция](./enable-federated.md))
 
-- 本地 MySQL（NocoBase 使用的数据库）需要激活 `federated`，参考 [MySQL 如何启用 federated 引擎](./enable-federated.md)
+Затем установите и активируйте плагин через менеджер плагинов:
 
-然后通过插件管理器安装并激活插件
+![Установка плагина](https://static-docs.nocobase.com/f84276c5712851fb3ff33af3f1ff0f59.png)
 
-![安装并激活插件](https://static-docs.nocobase.com/f84276c5712851fb3ff33af3f1ff0f59.png)
+## Руководство пользователя
 
-## 使用手册
+В разделе "Управление таблицами > Создать таблицу" выберите "Подключить внешние данные":
 
-在「数据表管理 > 创建数据表」 下拉中，选择「连接外部数据」
+![Подключение внешних данных](https://static-docs.nocobase.com/029d946a6d067d1c35a39755219d623c.png)
 
-![连接外部数据](https://static-docs.nocobase.com/029d946a6d067d1c35a39755219d623c.png)
+В выпадающем списке "Сервис БД" выберите существующее подключение или создайте новое:
 
-在「数据库服务」下拉选项中，选择已存在的数据库服务，或者「创建数据库服务」
+![Сервис БД](https://static-docs.nocobase.com/766271708a911950a5599d60d6be4a4d.png)
 
-![数据库服务](https://static-docs.nocobase.com/766271708a911950a5599d60d6be4a4d.png)
+Создание сервиса БД:
 
-创建数据库服务
+![Создание сервиса БД](https://static-docs.nocobase.com/1e357216e04cc4f200bd6212827281c8.png)
 
-![创建数据库服务](https://static-docs.nocobase.com/1e357216e04cc4f200bd6212827281c8.png)
+После выбора сервиса БД укажите нужную таблицу в выпадающем списке "Удаленная таблица":
 
-选择数据库服务之后， 在「远程表」的下拉选项中，选择需要连接的数据表。
+![Выбор таблицы](https://static-docs.nocobase.com/e91fd6152b52b4fc01b3808053cc8dc4.png)
 
-![选择需要连接的数据表](https://static-docs.nocobase.com/e91fd6152b52b4fc01b3808053cc8dc4.png)
+Настройте поля:
 
-配置字段信息
+![Настройка полей](https://static-docs.nocobase.com/e618fecc5fe327f6a495e61405e5f040.png)
 
-![配置字段信息](https://static-docs.nocobase.com/e618fecc5fe327f6a495e61405e5f040.png)
+При изменении структуры удаленной таблицы можно выполнить "Синхронизацию с удаленной таблицей":
 
-如果远程表有结构变化，也可以「从远程表同步」
+![Синхронизация](https://static-docs.nocobase.com/3751a9a39f933889fb3fcc4d85a6f4ad.png)
 
-![从远程表同步](https://static-docs.nocobase.com/3751a9a39f933889fb3fcc4d85a6f4ad.png)
+Процесс синхронизации:
 
-远程表同步
+![Процесс синхронизации](https://static-docs.nocobase.com/13f18200e31ea223fdd8dadaff1e9d28.png)
 
-![远程表同步](https://static-docs.nocobase.com/13f18200e31ea223fdd8dadaff1e9d28.png)
+Отображение в интерфейсе:
 
-最后，在界面里显示
-
-![在界面里显示](https://static-docs.nocobase.com/368fca27a99277d9360ca81350949357.png)
+![Отображение в интерфейсе](https://static-docs.nocobase.com/368fca27a99277d9360ca81350949357.png)

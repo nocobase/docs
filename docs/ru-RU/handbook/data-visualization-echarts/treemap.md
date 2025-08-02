@@ -1,16 +1,17 @@
-# Treemap Chart
+# Древовидная карта (Treemap Chart)
 
-## Data Configuration
+## Настройка данных
 
-### 1 Measure, 1 Dimension
+### 1 метрика, 1 измерение
 
-![1 Measure, 1 Dimension](https://static-docs.nocobase.com/202410091933526.png)
+![1 метрика, 1 измерение](https://static-docs.nocobase.com/202410091933526.png)
 
-## Configuration Options
+## Параметры конфигурации
 
-| Option             | Description                                        |
-| ------------------ | -------------------------------------------------- |
-| Size               | Set the size of the chart, either with a fixed aspect ratio or fixed height |
-| Light mode theme   | Must be selected for preview when the system is in light mode |
-| Dark mode theme    | Must be selected for preview when the system is in dark mode  |
-| Label type         | Controls whether labels are displayed and the type of display | 
+| Параметр          | Описание                                                                 |
+|-------------------|--------------------------------------------------------------------------|
+| Размер            | Установка размера диаграммы: фиксированное соотношение сторон или высота |
+| Тема светлого режима | Обязательна для предпросмотра в светлой теме интерфейса                |
+| Тема темного режима  | Обязательна для предпросмотра в темной теме интерфейса                 |
+| Тип меток         | Управляет отображением подписей и их форматом                           |
+

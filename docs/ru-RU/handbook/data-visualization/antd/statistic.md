@@ -1,13 +1,13 @@
-# Statistical Values
+# Статистические значения
 
-## Data Configuration
+## Конфигурация данных
 
-### 1 Metric
+### 1 Показатель
 
 ![1 Metric](https://static-docs.nocobase.com/202410101147166.png)
 
-## Configuration Options
+## Параметры конфигурации
 
-| Configuration Item | Description                      |
+| Элемент конфигурации | Описание |
 | ------------------ | -------------------------------- |
-| Link               | Fixed link, clickable for redirection | 
+| Ссылка | Фиксированная ссылка, по которой можно перейти для перенаправления |

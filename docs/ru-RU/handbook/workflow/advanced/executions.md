@@ -1,54 +1,54 @@
-# Execution Plan (History)
+# План выполнения (история)
 
-After each workflow is triggered, a corresponding execution plan will be created to track the process of this task. Each execution plan has a status value to indicate the current execution status, which can be viewed in the list and details of the execution history:
+После каждого запуска рабочего процесса создаётся соответствующий план выполнения, который отслеживает ход выполнения этой задачи. Каждый план выполнения имеет статус, указывающий текущее состояние выполнения, который можно посмотреть в списке и деталях истории выполнения:
 
-![Execution plan status](https://static-docs.nocobase.com/d4440d92ccafac6fac85da4415bb2a26.png)
+![Статус плана выполнения](https://static-docs.nocobase.com/d4440d92ccafac6fac85da4415bb2a26.png)
 
-When all nodes in the main branch of the process are executed to the end of the process with a "Resolved" status, the entire execution plan will end with a "Resolved" status. When nodes in the main branch of the process appear in final status such as "failed", "error", "canceled" or "rejected", etc., the entire execution plan will be terminated early with the corresponding status. When nodes in the main branch of the process are in a "pending" status, the entire execution plan will be paused, but still display an "On going" status, until the waiting node is resumed and continues execution. Different node types have different ways of handling the "pending" status. For example, "Manual" nodes need to wait for manual processing, while "Delay" nodes need to wait until the time arrives to continue execution.
+Когда все узлы в основной ветви процесса выполняются до конца со статусом «Resolved» (успешно), весь план выполнения завершается со статусом «Resolved». Если в основной ветви процесса появляются узлы с финальным статусом, таким как «Failed» (неудача), «Error» (ошибка), «Canceled» (отменён) или «Rejected» (отклонён), план выполнения досрочно завершается с соответствующим статусом. Если узлы в основной ветви находятся в статусе «Pending» (в ожидании), весь план выполнения приостанавливается, но продолжает отображаться как «On going» (в процессе), пока ожидающий узел не будет возобновлён и выполнение не продолжится. Разные типы узлов по-разному обрабатывают статус «Pending». Например, узлы «Ручной ввод» ждут ручной обработки, а узлы «Задержка» — ждут наступления определённого времени.
 
-The status of the execution plan is as follows:
+Статусы плана выполнения:
 
-| Status    | Corresponds to the State of </br> Last Executed Node of the Main Process  | Explanation                                                                                                                    |
-| -------   | ----------------------------------------------| -----------------------------------------------                                                                                |
-| Queueing  | -                                             | The process has been triggered and an execution plan has been generated, waiting in the queue for scheduling by the scheduler. |
-| On going  | Pending                                       | The node requests a pause, waiting for further input or callback to continue.                                                  |
-| Resolved | Resolved                                     | No problems encountered, all nodes executed as expected one by one and completed.                                              |
-| Failed    | Failed                                        | Failed due to unmet the logic of node configurations.                                                                          |
-| Error     | Error                                         | The node encountered an uncaught program error and terminated early.                                                           |
-| Canceled  | Canceled                                      | The waiting node was externally canceled from execution by the administrator, and terminated early.                            |
-| Rejected  | Rejected                                      | In nodes requiring manual processing, it was rejected by user and no longer continued with subsequent processes.               |
+| Статус      | Соответствует статусу последнего </br> выполненного узла основного процесса | Пояснение |
+|-------------|----------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Queueing (В очереди)  | - | Процесс был запущен, план выполнения создан и ожидает в очереди назначения планировщиком. |
+| On going (Выполняется) | Pending (В ожидании) | Узел запросил приостановку, ожидает дальнейшего ввода или обратного вызова для продолжения. |
+| Resolved (Успешно) | Resolved (Успешно) | Проблем не возникло, все узлы выполнились по порядку и завершились. |
+| Failed (Неудача) | Failed (Неудача) | Завершился с ошибкой из-за невыполнения логики настройки узла. |
+| Error (Ошибка) | Error (Ошибка) | Узел столкнулся с необработанной программной ошибкой и завершился досрочно. |
+| Canceled (Отменён) | Canceled (Отменён) | Ожидающий узел был отменён администратором и завершился досрочно. |
+| Rejected (Отклонён) | Rejected (Отклонён) | В узлах, требующих ручной обработки, действие было отклонено пользователем, и последующие шаги не выполняются. |
 
-In the examples of [Quick S tart](../quick-start.md), we already know that checking the details of the execution history of a workflow can check whether all nodes in the execution are executed normally, and the status and result data of each executed node. In some advanced workflows and nodes, the executed results of the nodes may be multiple, such as the results of "Loop" nodes:
+В примерах из раздела [Быстрый старт](../quick-start.md) мы уже убедились, что просмотр деталей истории выполнения рабочего процесса позволяет проверить, были ли все узлы выполнены корректно, а также посмотреть статус и результаты каждого узла. В некоторых расширенных рабочих процессах и узлах результаты выполнения могут быть множественными, например, результаты узла «Цикл»:
 
-![Results of nodes executed multiple times](https://static-docs.nocobase.com/bbda259fa2ddf62b0fc0f982efbedae9.png)
+![Результаты узла, выполненного несколько раз](https://static-docs.nocobase.com/bbda259fa2ddf62b0fc0f982efbedae9.png)
 
-:::info{title=Note}
-Workflow can be triggered concurrently, but executed one by one in queue, even if multiple workflows are triggered simultaneously, they will be executed sequentially, not in parallelly. So when the status shows "Queueing" it means that one of the workflows is executing and need to wait.
+:::info{title=Примечание}
+Рабочие процессы могут запускаться одновременно, но выполняются последовательно, в очереди. Даже если несколько процессов запускаются одновременно, они будут выполняться по очереди, а не параллельно. Поэтому, когда статус показывает «Queueing» (в очереди), это означает, что один из процессов уже выполняется, и остальным нужно ждать.
 
-The "On going" status only indicates that the execution plan has started and is usually paused due to the pending status of some node, and does not mean that the execution plan preemptively occupies the execution resources at the head of the queue. Therefore, when there are "On going" execution plans, other "Queueing" execution plans can still be scheduled and executed.
+Статус «On going» (выполняется) означает только то, что план выполнения запущен, и обычно он приостановлен из-за состояния «Pending» одного из узлов. Это не означает, что процесс удерживает ресурсы выполнения в приоритетной позиции. Таким образом, даже если есть планы со статусом «On going», другие планы со статусом «Queueing» могут быть запланированы и выполнены.
 :::
 
-## Node Execution Status
+## Статус выполнения узла
 
-The status of the execution plan is determined by each node. In an execution plan after a trigger, each executed node will produce a node status, and the status will determine whether the subsequent process continues to process. Usually, after a node is executed successfully, the next node will continue to execute until all nodes are executed in sequence, or interrupted. When encountering process control nodes, such as "Branch", "Loop", "Parallel" and "Delay", etc., the next node's execution flow will be determined according to the control node's configured conditions and the runtime context data.
+Статус плана выполнения определяется каждым узлом. В плане выполнения после запуска каждый выполненный узел формирует свой статус, который определяет, будет ли процесс продолжаться дальше. Обычно после успешного выполнения узла следующий узел продолжает выполнение, пока не будут пройдены все узлы по порядку или не произойдёт прерывание. При встрече с узлами управления потоком, такими как «Ветвление», «Цикл», «Параллельно» и «Задержка», последовательность выполнения следующих узлов определяется настройками управляющего узла и данными контекста выполнения.
 
-The possible status that may be produced after each node is executed are following:
+Возможные статусы после выполнения узла:
 
-| Status | Is a Final status? | Will it Terminates Early? | Explanation                                                 |
-| ------ | :------------------------: | :-------------------------: | -------------------------------------------------------- |
-| Pending |            No              |              No             | The node requests a pause, waiting for further input or callback to continue. |
-| Resolved |           Yes             |              No             | No problems encountered, executed successfully, and continue to execute the next node until the end. |
-| Failed |              Yes             |               Yes            | Failed due to unmet node configurations.                  |
-| Error |             Yes             |               Yes            | The node encountered an uncaught program error and terminated early. |
-| Canceled |           Yes             |               Yes            | The pending node was canceled externally by the administrator, and terminated early. |
-| Rejected |            Yes            |                Yes           | In nodes requiring manual processing, it was rejected by user and no longer continued with subsequent processes. |
+| Статус | Финальный? | Приводит к досрочному завершению? | Пояснение |
+|--------|:------------------------:|:-------------------------:|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Pending (Ожидание) | Нет | Нет | Узел запрашивает приостановку, ожидает дальнейшего ввода или обратного вызова. |
+| Resolved (Успешно) | Да | Нет | Проблем не возникло, узел успешно выполнен, процесс переходит к следующему узлу до завершения. |
+| Failed (Неудача) | Да | Да | Неудача из-за невыполнения условий конфигурации узла. |
+| Error (Ошибка) | Да | Да | Узел столкнулся с необработанной программной ошибкой и завершился досрочно. |
+| Canceled (Отменён) | Да | Да | Узел в состоянии ожидания был отменён извне (администратором), процесс завершён досрочно. |
+| Rejected (Отклонён) | Да | Да | В узлах, требующих ручной обработки, действие было отклонено пользователем, дальнейшее выполнение не продолжается. |
 
-Except for the "Pending" status, all other status are final status of node execution. Only when the final status is "Resolved" the process will continue to execute, otherwise the execution of the entire process will be terminated early. When a node is in a branch process ("Parallel branchs", "Condition", "Loop", etc.), the final status generated by the node will be taken over and processed by the node that opens the branch, and so on, determining the entire process flow.
+За исключением статуса «Pending», все остальные статусы являются финальными. Только при финальном статусе «Resolved» процесс продолжает выполнение; в противном случае весь процесс завершается досрочно. Если узел находится в рамках ветви («Параллельные ветви», «Условие», «Цикл» и т.д.), его финальный статус обрабатывается узлом, открывшим ветвь, и так далее — это определяет дальнейший ход всего процесса.
 
-For example, when we use a "Condition" node with the "continue when 'Yes'" mode, if the result is "false" during execution, the entire process execution will be terminated early and exited with a failed status, as shown in the figure below:
+Например, когда мы используем узел «Условие» в режиме «Продолжить, если „да“», и при выполнении результат оказывается «ложь», весь процесс прерывается и завершается со статусом «Failed» (неудача), как показано на рисунке ниже:
 
-![Node execution failed](https://static-docs.nocobase.com/993aecfa1465894bb574444f0a44313e.png)
+![Выполнение узла завершилось с ошибкой](https://static-docs.nocobase.com/993aecfa1465894bb574444f0a44313e.png)
 
-:::info{title=Note}
-All final status other than "Resolved" can be regarded as failures, but the reasons for failure will be different, by checking the results of the nodes to know more about the failure.
-:::
+Примечание:
+
+Все финальные статусы, кроме «Resolved», можно считать неудачными, но причины различаются. Анализируя результаты узлов, можно точнее определить причину сбоя.

@@ -1,45 +1,43 @@
-# Notification: In-App Message
+### **Уведомления: Внутриприкладное сообщение (In-App Message)**
 
 <PluginInfo name="notification-in-app-message"></PluginInfo>
 
-## Introduction
+#### **Введение**
 
-Enables users to receive real-time message notifications directly within the NocoBase application.
+Плагин позволяет пользователям получать уведомления в виде сообщений непосредственно внутри приложения NocoBase в режиме реального времени.
 
-## Installation
+#### **Установка**
 
-This plugin is pre-installed, so no additional setup is required.
+Этот плагин предустановлен, дополнительная настройка не требуется.
 
-## Adding an In-App Message Channel
+#### **Добавление канала внутриприкладных сообщений**
 
-Go to the notification management section, click adding button and select In-app message.
+Перейдите в раздел управления уведомлениями, нажмите кнопку добавления и выберите «Внутриприкладное сообщение».  
 ![2024-11-08-08-33-26-20241108083326](https://static-docs.nocobase.com/2024-11-08-08-33-26-20241108083326.png)
 
-Fill in the channel name and description, then click submit.
+Заполните имя канала и описание, затем нажмите «Отправить».  
 ![2024-11-08-08-34-32-20241108083431](https://static-docs.nocobase.com/2024-11-08-08-34-32-20241108083431.png)
 
-The new channel will now appear in the list.
-
+Новый канал появится в списке.  
 ![2024-11-08-08-34-52-20241108083452](https://static-docs.nocobase.com/2024-11-08-08-34-52-20241108083452.png)
 
-## Example Usage Scenario
+#### **Пример использования**
 
-To clarify the use of In-app message, here’s an example for "Marketing Lead Follow-Up".
+Чтобы наглядно продемонстрировать, как работает внутриприкладное сообщение, рассмотрим пример сценария «Сопровождение маркетинговых лидов».
 
-Imagine your team is running a major marketing campaign aimed at tracking responses and needs from potential clients. Using in-app messages, you can:
+Представьте, что ваша команда запускает крупную маркетинговую кампанию, целью которой является отслеживание откликов и потребностей потенциальных клиентов. Используя внутриприкладные сообщения, вы можете:
 
-**Set Up a Notification Channel:** Begin by creating a channel called "Marketing Clue" in notification management, making it easy for team members to identify its purpose.
-
+**Создать канал уведомлений:** Сначала создайте канал с названием «Маркетинговые лиды» в разделе управления уведомлениями — это поможет членам команды быстро понять его назначение.  
 ![2024-11-08-08-34-32-20241108083431](https://static-docs.nocobase.com/2024-11-08-08-34-32-20241108083431.png)
 
-**Configure a Workflow:** Create a workflow that automatically triggers notifications whenever a new lead is generated. Add a notification node to this workflow, select the "Marketing Clue" channel, and customize the message content according to campaign needs. For example:
-
+**Настроить рабочий процесс:** Создайте рабочий процесс, который автоматически запускает уведомления при появлении нового лида. Добавьте в этот процесс узел «Уведомление», выберите канал «Маркетинговые лиды» и настройте текст сообщения в соответствии с целями кампании. Например:  
 ![image-1-2024-10-27-14-07-17](https://static-docs.nocobase.com/image-1-2024-10-27-14-07-17.png)
 
-**Receive Notifications in Real-Time:** Once the workflow triggers, all relevant team members will receive notifications instantly, allowing for quick responses.
+**Получать уведомления в реальном времени:** Как только рабочий процесс будет запущен, все соответствующие участники команды немедленно получат уведомления, что позволит оперативно реагировать.
 
 ![image-2-2024-10-27-14-07-22](https://static-docs.nocobase.com/image-2-2024-10-27-14-07-22.png)
 
-**Message Management and Tracking:** In-app messages are grouped by channel name, and you can filter messages by read or unread status to prioritize important information. Clicking "View" redirects you to a configured link, allowing you to manage tasks seamlessly.
+**Управление и отслеживание сообщений:** Внутриприкладные сообщения группируются по названию канала. Вы можете фильтровать их по статусу «прочитано» или «непрочитано», чтобы определить приоритеты. Нажатие на «Просмотр» перенаправляет по заранее настроенной ссылке, что позволяет эффективно управлять задачами.
 
 ![20241027140648-2024-10-27-14-06-51-2024-10-29-13-26-41](https://static-docs.nocobase.com/20241027140648-2024-10-27-14-06-51-2024-10-29-13-26-41.png)
+

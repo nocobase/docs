@@ -1,9 +1,9 @@
-# Database view
+# Просмотр базы данных
 
 <PluginInfo name="collection-view"></PluginInfo>
 
-## Introduction
+## Введение
 
-## Manu book
+## Мануал
 
 ![20240324145718](https://static-docs.nocobase.com/20240324145718.png)

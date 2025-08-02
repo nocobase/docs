@@ -1,16 +1,16 @@
-# Metric
+# Метрики (Metric)
 
-## Class Methods
+## Методы класса
 
 ### `constructor()`
 
-Constructor to create a `Metric` instance.
+Конструктор для создания экземпляра `Metric`.
 
-#### Signature
+#### Сигнатура
 
 - `constructor(options?: MetricOptions)`
 
-#### Type
+#### Типы
 
 ```ts
 export type MetricOptions = {
@@ -20,31 +20,31 @@ export type MetricOptions = {
 };
 ```
 
-#### Details
+#### Детали
 
-| Property     | Type                   | Description                                       | Default Value               |
-| ------------ | ---------------------- | ------------------------------------------------- | --------------------------- |
-| `meterName`  | `string`               | Meter identifier                                  | `nocobase-meter`            |
-| `version`    | `string`               |                                                   | Current version of NocoBase |
-| `readerName` | `string` \| `string[]` | Identifier(s) of registered `MetricReader` to use | -                           |
+| Свойство     | Тип                   | Описание                                       | Значение по умолчанию       |
+| ------------ | ---------------------- | --------------------------------------------- | --------------------------- |
+| `meterName`  | `string`               | Идентификатор метра                          | `nocobase-meter`            |
+| `version`    | `string`               | Версия                                        | Текущая версия NocoBase     |
+| `readerName` | `string` \| `string[]` | Идентификатор(ы) зарегистрированного `MetricReader` | -                           |
 
 ### `init()`
 
-Initializes `MetricProvider`.
+Инициализирует `MetricProvider`.
 
-#### Signature
+#### Сигнатура
 
 - `init(): void`
 
 ### `registerReader()`
 
-Registers a `MetricReader`.
+Регистрирует `MetricReader`.
 
-#### Signature
+#### Сигнатура
 
 - `registerReader(name: string, reader: GetMetricReader)`
 
-#### Type
+#### Типы
 
 ```ts
 import { MetricReader } from '@opentelemetry/sdk-metrics';
@@ -52,22 +52,22 @@ import { MetricReader } from '@opentelemetry/sdk-metrics';
 type GetMetricReader = () => MetricReader;
 ```
 
-#### Details
+#### Детали
 
-| Parameter | Type                 | Description                          |
-| --------- | -------------------- | ------------------------------------ |
-| `name`    | `string`             | Unique identifier for `MetricReader` |
-| `reader`  | `() => MetricReader` | Function to get `MetricReader`       |
+| Параметр | Тип                 | Описание                          |
+| -------- | ------------------- | --------------------------------- |
+| `name`   | `string`            | Уникальный идентификатор для `MetricReader` |
+| `reader` | `() => MetricReader` | Функция получения `MetricReader`  |
 
 ### `addView()`
 
-Adds a `View`. Refer to [Configure Metric Views](https://opentelemetry.io/docs/instrumentation/js/manual/#configure-metric-views).
+Добавляет `View`. См. [Configure Metric Views](https://opentelemetry.io/docs/instrumentation/js/manual/#configure-metric-views).
 
-#### Signature
+#### Сигнатура
 
 - `addView(...view: View[])`
 
-#### Type
+#### Типы
 
 ```ts
 import { View } from '@opentelemetry/sdk-metrics';
@@ -75,31 +75,32 @@ import { View } from '@opentelemetry/sdk-metrics';
 
 ### `getMeter()`
 
-Gets the `Meter`.
+Получает `Meter`.
 
-#### Signature
+#### Сигнатура
 
 - `getMeter(name?: string, version?: string)`
 
-#### Details
+#### Детали
 
-| Parameter | Type     | Description      | Default Value               |
-| --------- | -------- | ---------------- | --------------------------- |
-| `name`    | `string` | Meter identifier | `nocobase-meter`            |
-| `version` | `string` |                  | Current version of NocoBase |
+| Параметр | Тип     | Описание          | Значение по умолчанию       |
+| -------- | ------- | ----------------- | --------------------------- |
+| `name`   | `string`| Идентификатор метра | `nocobase-meter`            |
+| `version`| `string`| Версия            | Текущая версия NocoBase     |
 
 ### `start()`
 
-Starts the `MetricReader`.
+Запускает `MetricReader`.
 
-#### Signature
+#### Сигнатура
 
 - `start(): void`
 
 ### `shutdown()`
 
-Stops the `MetricReader`.
+Останавливает `MetricReader`.
 
-#### Signature
+#### Сигнатура
 
 - `shutdown(): Promise<void>`
+

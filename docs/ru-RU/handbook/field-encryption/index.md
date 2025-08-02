@@ -1,35 +1,35 @@
-# Encryption
+# Шифрование
 
 <PluginInfo commercial="true" name="field-encryption"></PluginInfo>
 
-## Introduction
+## Введение
 
-Sensitive business data, such as customer phone numbers, email addresses, and card numbers, can be encrypted to ensure privacy. Once encrypted, this data is securely stored in the database as ciphertext.
+Чувствительные бизнес-данные, такие как номера телефонов клиентов, адреса электронной почты и номера карт, можно шифровать для обеспечения конфиденциальности. После шифрования эти данные безопасно хранятся в базе данных в виде шифротекста.
 
 ![20240802175127](https://static-docs.nocobase.com/20240802175127.png)
 
-## Environment Variables
+## Переменные окружения
 
 :::warning
-Losing the `ENCRYPTION_FIELD_KEY` will make it impossible to decrypt the data.
+Потеря значения `ENCRYPTION_FIELD_KEY` сделает невозможным расшифровку данных.
 :::
 
-To enable the encryption feature, you must set up the `ENCRYPTION_FIELD_KEY` environment variable, which acts as the encryption key. This key must be exactly 32 characters long, for example:
+Для активации функции шифрования необходимо задать переменную окружения `ENCRYPTION_FIELD_KEY`, которая будет использоваться в качестве ключа шифрования. Длина ключа должна составлять ровно 32 символа. Например:
 
 ```bash
 ENCRYPTION_FIELD_KEY='2%&glK;<UA}eMxJVc53-4G(rTi0vg@J]'
 ```
 
-## Field Configuration
+## Настройка поля
 
 ![20240802173721](https://static-docs.nocobase.com/20240802173721.png)
 
-## Filtering Limitations After Encryption
+## Ограничения фильтрации после шифрования
 
-Once a field is encrypted, it only supports the following filtering operations: equals, not equals, exists, and does not exist.
+После шифрования поля поддерживаются только следующие операции фильтрации: равно, не равно, существует, не существует.
 
 ![20240802174042](https://static-docs.nocobase.com/20240802174042.png)
 
-## Example
+## Пример
 
-To be added.
+Будет добавлен позже.

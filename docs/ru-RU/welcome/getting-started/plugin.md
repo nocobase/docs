@@ -1,86 +1,82 @@
-# Installation and Upgrade of Plugins
+# Установка и обновление плагинов
 
-## Installation and Upgrade of Commercial Plugins (v1.4 and Above)
+## Установка и обновление коммерческих плагинов (версии 1.4 и выше)
 
-### Configure Environment Variables
+### Настройка переменных среды
 
-Set the environment variables [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) and [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password) (NocoBase Service Platform username and password) to automatically download commercial plugins during application installation or upgrade.
+Задайте переменные среды [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) и [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password) (имя пользователя и пароль сервисной платформы NocoBase) для автоматической загрузки коммерческих плагинов во время установки или обновления приложения.
 
 ```bash
 NOCOBASE_PKG_USERNAME=your-username
 NOCOBASE_PKG_PASSWORD=your-password
 ```
 
-[How to set environment variables?](/welcome/getting-started/env)
+[Как задать переменные окружения?](/welcome/getting-started/env)
 
-### Download Plugins
+### Загрузка плагинов
 
-#### Docker Installation
+#### Установка Docker
 
-Restart the container to automatically download plugins
+Перезапустите контейнер для автоматической загрузки плагинов
 
 ```bash
 docker compose restart app
 ```
 
-#### Git Source Code or create-nocobase-app Installation
+#### Получите исходный код Git или создайте-nocobase-приложение для установки
 
-Execute the `pkg download-pro` command to download plugins
+Выполните команду `pkg download-pro`, чтобы загрузить плагины
 
 ```bash
 yarn nocobase pkg download-pro
 ```
 
-:::warning
+Внимание ! ! !
 
-- The above steps will only download plugins that match the current application version, and will not update plugins. If you need to update plugins, please [upgrade the application](/welcome/getting-started/upgrading) first, and authorized plugins will be automatically updated.
-- Authorized plugins will also be automatically downloaded during application [installation](/welcome/getting-started/installation) or [upgrade](/welcome/getting-started/upgrading).
+- Вышеуказанные шаги позволят загрузить только те плагины, которые соответствуют текущей версии приложения, и не приведут к обновлению плагинов. Если вам нужно обновить плагины, пожалуйста, сначала [обновите приложение](/welcome/getting-started/upgrading), авторизованные плагины будут автоматически обновляться.
+- Авторизованные плагины также будут автоматически загружены во время [установки](/welcome/getting-started/installation) или [обновления](/welcome/getting-started/upgrading).
 
-:::
+### Активировать плагины
 
-### Activate Plugins
-
-Select the plugins you want to activate in the plugin manager.
+Выберите плагины, которые вы хотите активировать, в менеджере плагинов.
 
 ![20241204000230](https://static-docs.nocobase.com/20241204000230.png)
 
-### Upgrade Plugins
+### Обновите плагины
 
-First [upgrade the application](/welcome/getting-started/upgrading), and authorized plugins will be automatically downloaded or updated during the application upgrade. Currently, it is not possible to upgrade plugins without upgrading the application.
+Сначала [обновите приложение](/welcome/getting-started/upgrading) и авторизованные плагины будут автоматически загружены или обновлены во время обновления приложения. В настоящее время невозможно обновить плагины без обновления приложения.
 
-## Installing and Updating Plugins via Interface
+## Установка и обновление плагинов через интерфейс
 
-:::warning
-Adding or updating plugins through the interface will restart the application. For batch operations, consider alternative methods.
-:::
+Добавление или обновление плагинов через интерфейс приведет к перезапуску приложения. Для пакетных операций рассмотрите альтернативные методы.
 
 ### Upload Plugin Packages via Plugin Manager
 
-Both commercial and third-party plugins can be directly uploaded via the interface.
+Как коммерческие, так и сторонние плагины могут быть загружены непосредственно через интерфейс.
 
 ![20241204000127](https://static-docs.nocobase.com/20241204000127.png)
 
-Notes:
+Заметки:
 
-- For creating plugin packages, refer to [Writing Your First Plugin](/development/your-fisrt-plugin) to ensure proper building and packaging.
+- Для создания пакетов плагинов обратитесь к [Написание вашего первого плагина](/development/your-fisrt-plugin) для обеспечения надлежащего изготовления и упаковки.
 
-### Activate Plugins
+### Активировать плагины
 
-Select the plugins you want to activate in the plugin manager.
+Выберите плагины, которые вы хотите активировать, в менеджере плагинов.
 
 ![20241204000230](https://static-docs.nocobase.com/20241204000230.png)
 
-## Installing and Updating Plugins via Plugin Directory Upload
+## Установка и обновление плагинов через загрузку каталога плагинов
 
-:::warning
-- Supports batch operations and is convenient for migration.
-- Suitable for servers in an intranet environment.
-- Recommended for updating incompatible plugins caused by application updates.
-:::
+Предупреждение:
 
-### Add or Update Plugins
+- Поддерживает пакетные операции и удобен для миграции.
+- Подходит для серверов в среде интрасети.
+- Рекомендуется для обновления несовместимых плагинов, вызванных обновлениями приложений.
 
-Store commercial and third-party plugins in the `./storage/plugins/` directory. You can download plugins in a development environment and upload them to the `./storage/plugins/` directory on the server. Alternatively, directly extract the plugin package into the directory. For example:
+### Добавляйте или обновляйте плагины
+
+Храните коммерческие и сторонние плагины в каталоге `./storage/plugins/`. Вы можете загрузить плагины в среду разработки и загрузить их в каталог `./storage/plugins/` на сервере. В качестве альтернативы, можно напрямую извлечь пакет плагина в каталог. Например:
 
 ```bash
 mkdir -p /my-nocobase/storage/plugins/@nocobase/plugin-auth-cas && \
@@ -89,7 +85,7 @@ mkdir -p /my-nocobase/storage/plugins/@nocobase/plugin-auth-cas && \
   --strip-components=1
 ```
 
-This command ensures the plugin is extracted to `/my-nocobase/storage/plugins/@nocobase/plugin-auth-cas` without the `package` directory. The correct directory structure is as follows:
+Эта команда гарантирует, что плагин будет извлечен в `/my-nocobase/storage/plugins/@nocobase/plugin-auth-cas` без каталога `package`. Правильная структура каталогов выглядит следующим образом:
 
 ```bash
 ./plugin-auth-cas/dist/server/migrations/20240425200816-change-locale-module.js
@@ -127,9 +123,9 @@ This command ensures the plugin is extracted to `/my-nocobase/storage/plugins/@n
 ./plugin-auth-cas/LICENSE.txt
 ```
 
-### Run the Upgrade Command to Update Plugins
+### Запустите команду Upgrade для обновления плагинов
 
-After uploading plugins to the plugin directory, execute the `nocobase upgrade` command to complete the update.
+После загрузки плагинов в каталог плагинов выполните команду `nocobase upgrade`, чтобы завершить обновление.
 
 ```bash
 yarn nocobase upgrade --skip-code-update

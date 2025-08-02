@@ -1,10 +1,10 @@
-# API
+# API (Программный интерфейс)
 
-## Server Side
+## Серверная часть
 
 ### `BaseNotificationChannel`
 
-This abstract class represents a base for different types of notification channels, defining essential interfaces for channel implementation. To add a new notification channel, you must extend this class and implement its methods.
+Абстрактный класс, представляющий базовый шаблон для различных типов каналов уведомлений. Определяет основные интерфейсы для реализации каналов. Для добавления нового канала уведомлений необходимо наследовать этот класс и реализовать его методы.
 
 ```ts
 export abstract class BaseNotificationChannel<Message = any> {
@@ -18,11 +18,11 @@ export abstract class BaseNotificationChannel<Message = any> {
 
 ### `PluginNotificationManagerServer`
 
-This server-side plugin serves as a notification management tool, providing methods for registering notification channel types and sending notifications.
+Серверный плагин для управления уведомлениями. Предоставляет методы для регистрации типов каналов уведомлений и отправки уведомлений.
 
 #### `registerChannelType()`
 
-This method registers a new channel type on the server side. Example usage is provided below.
+Регистрирует новый тип канала на серверной стороне. Пример использования:
 
 ```ts
 import PluginNotificationManagerServer from '@nocobase/plugin-notification-manager';
@@ -38,21 +38,21 @@ export class PluginNotificationExampleServer extends Plugin {
 export default PluginNotificationExampleServer;
 ```
 
-##### Signature
+##### Сигнатура
 
 `registerChannelType({ type, Channel }: {type: string, Channel: BaseNotificationChannel })`
 
 #### `send()`
 
-The `send` method is used to dispatch notifications via a specified channel.
+Метод для отправки уведомлений через указанный канал.
 
 ```ts
 send('in-app-message', 
   message: [
     receivers: [1, 2, 3],
     receiverType: 'userId',
-    content: 'In-app message test',
-    title: 'In-app message test title'
+    content: 'Тестовое сообщение в приложении',
+    title: 'Заголовок тестового сообщения'
   ],
   triggerFrom: 'workflow')
 
@@ -60,17 +60,19 @@ send('email',
   message: [
     receivers: ['a@163.com', 'b@163.com'],
     receiverType: 'email',
-    content: 'Email test',
-    title: 'Email test title'
+    content: 'Тестовое email-сообщение',
+    title: 'Заголовок тестового email'
   ],
   triggerFrom: 'workflow')
 ```
 
-##### Signature
+##### Сигнатура
 
 `send(sendConfig: {channelName: String, message: Object, receivers: ReceiversType, triggerFrom: String })`
 
-The `receivers` field currently supports two formats: NocoBase user IDs`userId` or custom channel configurations`channel-self-defined`.
+Поле `receivers` поддерживает два формата:
+- ID пользователей NocoBase (`userId`)
+- Пользовательские конфигурации каналов (`channel-self-defined`)
 
 ```ts
 type ReceiversType = 
@@ -78,54 +80,55 @@ type ReceiversType =
   | { value: any; type: 'channel-self-defined'; channelType: string };
 ```
 
-##### Detailed Information
+##### Подробная информация
 
 `sendConfig`
 
-| Property       | Type             | Description              |
-| -------------- | ---------------- | ------------------------ |
-| `channelName`  | `string`         | Channel identifier       |
-| `message`      | `object`         | Message object           |
-| `receivers`    | `ReceiversType`  | Recipients               |
-| `triggerFrom`  | `string`         | Source of trigger        |
+| Свойство       | Тип             | Описание               |
+| -------------- | ---------------- | ---------------------- |
+| `channelName`  | `string`         | Идентификатор канала   |
+| `message`      | `object`         | Объект сообщения       |
+| `receivers`    | `ReceiversType`  | Получатели             |
+| `triggerFrom`  | `string`         | Источник триггера      |
 
-## Client Side
+## Клиентская часть
 
 ### `PluginNotificationManagerClient`
 
 #### `channelTypes`
 
-The library of registered channel types.
+Библиотека зарегистрированных типов каналов.
 
-##### Signature
+##### Сигнатура
 
 `channelTypes: Registry<registerTypeOptions>`
 
 #### `registerChannelType()`
 
-Registers a client-side channel type.
+Регистрирует тип канала на клиентской стороне.
 
-##### Signature
+##### Сигнатура
 
 `registerChannelType(params: registerTypeOptions)`
 
-##### Type
+##### Типы
 
 ```ts
 type registerTypeOptions = {
-  title: string; // Display title for the channel
-  type: string;  // Channel identifier
+  title: string; // Отображаемое название канала
+  type: string;  // Идентификатор канала
   components: {
-    ChannelConfigForm?: ComponentType // Channel configuration form component;
-    MessageConfigForm?: ComponentType<{ variableOptions: any }> // Message configuration form component;
-    ContentConfigForm?: ComponentType<{ variableOptions: any }> // Content configuration form component (for message content only, excluding recipient configuration);
+    ChannelConfigForm?: ComponentType // Компонент формы конфигурации канала;
+    MessageConfigForm?: ComponentType<{ variableOptions: any }> // Компонент формы конфигурации сообщения;
+    ContentConfigForm?: ComponentType<{ variableOptions: any }> // Компонент формы конфигурации контента (только для содержимого сообщения, без конфигурации получателей);
   };
-  meta?: { // Metadata for channel configuration
-    createable?: boolean // Whether new channels can be added;
-    editable?: boolean   // Whether channel configuration is editable;
-    deletable?: boolean  // Whether channel configuration is deletable;
+  meta?: { // Метаданные конфигурации канала
+    createable?: boolean // Возможность создания новых каналов;
+    editable?: boolean   // Возможность редактирования конфигурации канала;
+    deletable?: boolean  // Возможность удаления конфигурации канала;
   };
 };
 
 type RegisterChannelType = (params: ChannelType) => void
 ```
+

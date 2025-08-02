@@ -1,189 +1,188 @@
-# Email Manager: User Manual
+# Менеджер электронной почты: Руководство пользователя
 
-<PluginInfo commercial="true" name="email-manager"></PluginInfo>
+## Введение
 
-## Introduction
-The email manager plugin allows integration of Google and Microsoft email accounts into NocoBase for sending, receiving, viewing, managing emails, and more. Emails can also be integrated into any page or block.
+Плагин менеджера электронной почты позволяет интегрировать учётные записи электронной почты Google и Microsoft в NocoBase для отправки, получения, просмотра и управления письмами. Письма также можно интегрировать на любую страницу или в любой блок.
 
-## Linking Email Accounts
+## Привязка учётных записей электронной почты
 
-### Link Account
+### Привязка учётной записи
 
-After enabling the email plugin, click on the email icon at the top right to enter the email management page.
+После активации плагина электронной почты нажмите на значок электронной почты в правом верхнем углу, чтобы перейти на страницу управления почтой.
 
-![](https://static-docs.nocobase.com/mail-1733816161753.png)
+https://static-docs.nocobase.com/mail-1733816161753.png
 
-Click the "Account setting" button, open the overlay, and then click the "Link account" button to select the email account type you wish to link.
+Нажмите кнопку «Настройки учётной записи», откроется всплывающее окно, затем нажмите «Привязать учётную запись», чтобы выбрать тип почты, который вы хотите привязать.
 
-![](https://static-docs.nocobase.com/mail-1733816162279.png)
+https://static-docs.nocobase.com/mail-1733816162279.png
 
-The browser will automatically open the corresponding email login page. Log in to your account and grant the necessary permissions.
+Браузер автоматически откроет соответствующую страницу входа в почту. Войдите в свою учётную запись и предоставьте необходимые разрешения.
 
-![](https://static-docs.nocobase.com/mail-1733816162534.png)
+https://static-docs.nocobase.com/mail-1733816162534.png
 
-Once the authorization is complete, the page will redirect back to the NocoBase website to link the account and sync data (the first sync may take some time, so please wait).
+После завершения авторизации страница автоматически перенаправит вас обратно на сайт NocoBase для привязки учётной записи и синхронизации данных (первая синхронизация может занять некоторое время — пожалуйста, подождите).
 
-![](https://static-docs.nocobase.com/mail-1733816162794.png)
+https://static-docs.nocobase.com/mail-1733816162794.png
 
-Once data sync is complete, the current page will automatically close and return to the original email page. You will see the account has been linked.
+После завершения синхронизации данных текущая страница автоматически закроется, и вы вернётесь на исходную страницу электронной почты. Вы увидите, что учётная запись успешно привязана.
 
-![](https://static-docs.nocobase.com/mail-1733816163177.png)
+https://static-docs.nocobase.com/mail-1733816163177.png
 
-Click the overlay area to close the popup and see the email list.
+Нажмите на область всплывающего окна, чтобы закрыть его, и вы увидите список писем.
 
-![](https://static-docs.nocobase.com/mail-1733816163503.png)
+https://static-docs.nocobase.com/mail-1733816163503.png
 
-### Delete Account
-Click "Delete" to remove the account and the linked email.
+### Удаление учётной записи
 
-![](https://static-docs.nocobase.com/mail-1733816163758.png)
+Нажмите «Удалить», чтобы удалить учётную запись и привязанную электронную почту.
 
-## Email Management
+https://static-docs.nocobase.com/mail-1733816163758.png
 
-### Email Filtering
+## Управление электронной почтой
 
-On the email management page, the left side is for filtering, and the right side displays the email list. By default, the inbox is shown when entering the page.
+### Фильтрация писем
 
-![](https://static-docs.nocobase.com/mail-1733816165536.png)
+На странице управления почтой слева находится панель фильтров, а справа — список писем. По умолчанию при входе отображается папка «Входящие».
 
-Emails with the same subject are grouped, and the number of related emails will be shown after the subject field. When some emails with the same subject meet the filtering criteria, the root email of the subject will be displayed, and the type of the root email will be marked next to the subject.
+https://static-docs.nocobase.com/mail-1733816165536.png
 
-![](https://static-docs.nocobase.com/mail-1733816165797.png)
+Письма с одинаковыми темами группируются, а количество связанных писем отображается после поля темы. Если некоторые письма с одинаковой темой соответствуют критериям фильтрации, отображается главное письмо темы, а тип этого письма отмечается рядом с темой.
 
-Unread email titles will be displayed in bold, and the unread email count will be marked next to the email icon at the top.
+https://static-docs.nocobase.com/mail-1733816165797.png
 
-![](https://static-docs.nocobase.com/mail-1733816166067.png)
+Заголовки непрочитанных писем отображаются жирным шрифтом, а количество непрочитанных писем отображается рядом с иконкой почты в верхней части.
 
-### Manually Sync Emails
+https://static-docs.nocobase.com/mail-1733816166067.png
 
-The current email sync interval is 5 minutes. To force sync, click the "Refresh" button.
+### Принудительная синхронизация писем
 
-![](https://static-docs.nocobase.com/mail-1733816166364.png)
+Текущий интервал синхронизации писем составляет 5 минут. Чтобы выполнить синхронизацию вручную, нажмите кнопку «Обновить».
 
-### Change Read Status
+https://static-docs.nocobase.com/mail-1733816166364.png
 
-The "Mark as read" and "Mark as unread" buttons allow you to batch update the read status of emails.
+### Изменение статуса прочтения
 
-![](https://static-docs.nocobase.com/mail-1733816166621.png)
+Кнопки «Отметить как прочитанное» и «Отметить как непрочитанное» позволяют массово изменять статус прочтения писем.
 
-### Send Email
+https://static-docs.nocobase.com/mail-1733816166621.png
 
-Click the "Write email" button at the top to open the email composition panel.
+### Отправка письма
 
-![](https://static-docs.nocobase.com/mail-1733816166970.png)
+Нажмите кнопку «Написать письмо» в верхней части, чтобы открыть панель составления письма.
 
-After filling in the required information, you can send the email. Attachments are supported up to 3MB.
+https://static-docs.nocobase.com/mail-1733816166970.png
 
-![](https://static-docs.nocobase.com/mail-1733816167214.png)
+После заполнения необходимой информации вы можете отправить письмо. Поддерживаются вложения до 3 МБ.
 
-### View Email
+https://static-docs.nocobase.com/mail-1733816167214.png
 
-Click the "View" button on the row to view the email details. There are two formats: one is a single email where you can directly see the detailed information.
+### Просмотр письма
 
-![](https://static-docs.nocobase.com/mail-1733816167456.png)
+Нажмите кнопку «Просмотр» в строке, чтобы посмотреть подробности письма. Существует два формата отображения:
 
-The other is multiple emails with the same subject, which are displayed as a list by default. You can click to expand or collapse.
+1. Одиночное письмо — вы можете сразу увидеть подробную информацию.
 
-![](https://static-docs.nocobase.com/mail-1733816167750.png)
+https://static-docs.nocobase.com/mail-1733816167456.png
 
-When you click to view the email details, the email status will be marked as read by default. You can click the "..." button on the right and select "Mark as unread" to revert it to unread.
+2. Несколько писем с одинаковой темой — по умолчанию отображаются в виде списка, который можно развернуть или свернуть.
 
-### Reply to Email
+https://static-docs.nocobase.com/mail-1733816167750.png
 
-After entering the email details, click the "Reply" button at the bottom to reply to the email. If there are multiple recipients, you can click "Reply all" to reply to everyone.
+При просмотре письма его статус автоматически меняется на «прочитано». Чтобы вернуть статус «непрочитано», нажмите кнопку «…» справа и выберите «Отметить как непрочитанное».
 
-![](https://static-docs.nocobase.com/mail-1733816167998.png)
+### Ответить на письмо
 
-### Forward Email
+После перехода к деталям письма нажмите кнопку «Ответить» внизу, чтобы ответить отправителю. Если у письма несколько получателей, вы можете нажать «Ответить всем», чтобы ответить всем участникам.
 
-Click the "Forward" button at the bottom to forward the email to others.
+https://static-docs.nocobase.com/mail-1733816167998.png
 
-![](https://static-docs.nocobase.com/mail-1733816168241.png)
+### Переслать письмо
 
-## Email Message Block
+Нажмите кнопку «Переслать» внизу, чтобы переслать письмо другим адресатам.
 
-### Add Block
+https://static-docs.nocobase.com/mail-1733816168241.png
 
-In the configuration page, click the "Add block" button and select the "Mail messages" block to add.
+## Блок сообщений электронной почты
 
-![](https://static-docs.nocobase.com/mail-1733816168487.png)
+### Добавление блока
 
-### Field Configuration
+На странице настройки нажмите кнопку «Добавить блок» и выберите блок «Сообщения электронной почты», чтобы добавить его.
 
-Click the "Configure columns" button on the block to choose which fields to display. For detailed instructions, refer to the table field configuration.
+https://static-docs.nocobase.com/mail-1733816168487.png
 
-![](https://static-docs.nocobase.com/mail-1733816168737.png)
+### Настройка полей
 
-### Top Action Configuration
+Нажмите кнопку «Настроить столбцы» в блоке, чтобы выбрать, какие поля отображать. Подробные инструкции см. в разделе настройки полей таблицы.
 
-Click the "Configure actions" button on the block to configure the top buttons. The final action will correspond to the email management actions.
+https://static-docs.nocobase.com/mail-1733816168737.png
 
-![](https://static-docs.nocobase.com/mail-1733816168977.png)
+### Настройка действий в верхней части
 
-The "Send email" button can be configured with default content.
+Нажмите кнопку «Настроить действия» в блоке, чтобы настроить кнопки в верхней части. Конечное действие будет соответствовать действиям управления почтой.
 
-![](https://static-docs.nocobase.com/mail-1733816169243.png)
+https://static-docs.nocobase.com/mail-1733816168977.png
 
-![](https://static-docs.nocobase.com/mail-1733816169515.png)
+Кнопку «Написать письмо» можно настроить с предустановленным содержанием.
 
-### Data Filter Configuration
+https://static-docs.nocobase.com/mail-1733816169243.png  
+https://static-docs.nocobase.com/mail-1733816169515.png
 
-Click the configuration on the right side of the table, select "Set the data scope," and configure the email data filter.
+### Настройка фильтра данных
 
-![](https://static-docs.nocobase.com/mail-1733816169764.png)
+Нажмите настройку в правой части таблицы, выберите «Установить диапазон данных» и настройте фильтр данных писем.
 
-## Send Email
+https://static-docs.nocobase.com/mail-1733816169764.png
 
-#### Create the Send Email Button
+### Отправка письма
 
-1. Add the "Write email" button in the table action bar.
+#### Создание кнопки отправки письма
 
-![](https://static-docs.nocobase.com/mail-1735634129950.png)
+Добавьте кнопку «Написать письмо» в панель действий таблицы.
 
-2. Enter the button configuration menu to edit the button name.
+https://static-docs.nocobase.com/mail-1735634129950.png
 
-![](https://static-docs.nocobase.com/mail-1735634130387.png)
+Перейдите в меню настройки кнопки, чтобы изменить её название.
 
-#### Configure Default Send Content
+https://static-docs.nocobase.com/mail-1735634130387.png
 
-1. Enter the button configuration menu, then select "Mail default value."
+#### Настройка содержания по умолчанию
 
-![](https://static-docs.nocobase.com/mail-1735634130581.png)
+Перейдите в меню настройки кнопки, затем выберите «Значения письма по умолчанию».
 
-2. Set the default recipient as the email from the current row data.
+https://static-docs.nocobase.com/mail-1735634130581.png
 
-![](https://static-docs.nocobase.com/mail-1735634130773.png)
+Установите получателем по умолчанию адрес электронной почты из текущей строки данных.
 
-![](https://static-docs.nocobase.com/mail-1735634130997.png)
+https://static-docs.nocobase.com/mail-1735634130773.png  
+https://static-docs.nocobase.com/mail-1735634130997.png
 
-3. Click the "Write email" button to see that the default recipient has already been filled in.
+Нажмите кнопку «Написать письмо» — вы увидите, что адрес получателя уже заполнен.
 
-![](https://static-docs.nocobase.com/mail-1735634131163.png)
+https://static-docs.nocobase.com/mail-1735634131163.png
 
-## Revoke Authorization
+## Отзыв авторизации
 
-If your email account has been authorized but you want to delete or reauthorize it, follow the steps below:
+Если ваша учётная запись электронной почты была авторизована, но вы хотите удалить или повторно авторизовать её, выполните следующие шаги:
 
-#### **Google Email**
+### Google-почта
 
-1. Open https://myaccount.google.com/u/0/connections and log in.
+Откройте https://myaccount.google.com/u/0/connections и войдите в систему.
 
-![](https://static-docs.nocobase.com/mail-1735634131347.png)
+https://static-docs.nocobase.com/mail-1735634131347.png
 
-2. Click the corresponding app, then click "Remove."
+Нажмите на соответствующее приложение, затем нажмите «Удалить».
 
-![](https://static-docs.nocobase.com/mail-1735634131518.png)
+https://static-docs.nocobase.com/mail-1735634131518.png  
+https://static-docs.nocobase.com/mail-1735634131697.png
 
-![](https://static-docs.nocobase.com/mail-1735634131697.png)
+### Почта Microsoft
 
-#### **Microsoft Email**
+Откройте https://account.microsoft.com/ и войдите в систему.
 
-1. Open https://account.microsoft.com/ and log in.
+Нажмите кнопку «Приложения и службы, которые могут получать доступ к вашим данным».
 
-2. Click the "Apps and services that can access your data" button.
+https://static-docs.nocobase.com/mail-1735634131870.png
 
-![](https://static-docs.nocobase.com/mail-1735634131870.png)
+Нажмите «Изменить» и удалите приложение.
 
-3. Click "Edit" and remove it.
-
-![](https://static-docs.nocobase.com/mail-1735634132052.png)
+https://static-docs.nocobase.com/mail-1735634132052.png

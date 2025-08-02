@@ -1,65 +1,65 @@
-# Block Map
+# Блок Карта
 
 <PluginInfo name="block-map"></PluginInfo>
 
-## Overview
+## Обзор
 
-The Block Map is an essential tool for displaying and managing map-related data, offering support for four types of map fields: points, lines, circles, and polygons.
+Блок Карта — это важный инструмент для отображения и управления данными, связанными с картами. Он поддерживает четыре типа полей: точки, линии, окружности и полигоны.
 
-## Installation
+## Установка
 
-This plugin comes pre-installed but must be activated before use.
+Этот плагин предустановлен, но перед использованием его необходимо активировать.
 
 ![20240421120958](https://static-docs.nocobase.com/20240421120958.png)
 
-After activation, map authentication details need to be configured.
+После активации необходимо настроить данные для аутентификации карт.
 
 ![20240421121032](https://static-docs.nocobase.com/20240421121032.png)
 
-Once configured, map fields can be integrated into your data tables.
+После настройки поля карты можно интегрировать в таблицы данных.
 
 ![20240426171356](https://static-docs.nocobase.com/20240426171356.png)
 
-## Adding Map Blocks
+## Добавление блоков карты
 
-Map blocks can only be added if the associated data table includes map fields.
+Блоки карты можно добавлять только в том случае, если связанная таблица данных содержит поля карты.
 
 ![20240408194209](https://static-docs.nocobase.com/20240408194209.png)
 
 ![20240408194420](https://static-docs.nocobase.com/20240408194420.png)
 
-1. **Map Field:** Defines the type of map element (point, line, polygon).
-2. **Marker Field:** Specifies map markers (applicable only for point types).
+1. **Поле карты:** Определяет тип элемента карты (точка, линия, полигон).
+2. **Поле маркера:** Указывает маркеры карты (применяется только для типа "точка").
 
-## Points
+## Точки
 
-**Use Case:** Ideal for visualizing the distribution of retail store locations.
+**Пример использования:** Идеально подходит для визуализации расположения розничных магазинов.
 
 ![20240408195630](https://static-docs.nocobase.com/20240408195630.png)
 
-## Lines
+## Линии
 
-Lines are constructed from a sequence of map points, commonly used to illustrate paths, such as delivery routes.
+Линии строятся из последовательности точек на карте и часто используются для отображения маршрутов, например, путей доставки.
 
 ![20240408201608](https://static-docs.nocobase.com/20240408201608.png)
 
-## Circles
+## Окружности
 
 ![20240408201939](https://static-docs.nocobase.com/20240408201939.png)
 
-## Polygons
+## Полигоны
 
-**Use Case:** Perfect for area planning and zoning applications.
+**Пример использования:** Отлично подходит для планирования территорий и зонирования.
 
-![Polygon](https://static-docs.nocobase.com/20240408200546.png)
+![Полигон](https://static-docs.nocobase.com/20240408200546.png)
 
-## Block Settings
+## Настройки блока
 
 ![20240421121949](https://static-docs.nocobase.com/20240421121949.png)
 
-## Sequential Field Connections
+## Соединение полей по порядку
 
-Connect points according to the order defined by sequential fields.
+Соединяет точки в соответствии с порядком, определённым последовательными полями.
 
 ![20240408202645](https://static-docs.nocobase.com/20240408202645.png)
 
@@ -67,42 +67,42 @@ Connect points according to the order defined by sequential fields.
 
 ![20240422101027](https://static-docs.nocobase.com/20240422101027.png)
 
-## Default Map Zoom Level
+## Уровень масштабирования карты по умолчанию
 
-The zoom level defaults to 13 but can be adjusted as needed.
+Уровень масштабирования по умолчанию — 13, но его можно изменить при необходимости.
 
 ![20240408202854](https://static-docs.nocobase.com/20240408202854.png)
 
-## Defining Data Scope
+## Определение области данных
 
-**Example:** Filter for waybills marked as "shipped" (using relational fields). Only waybills within the specified data scope will be displayed.
+**Пример:** Фильтрация накладных со статусом "отправлено" (с использованием реляционных полей). Будут отображены только накладные, попадающие в указанную область данных.
 
 ![20240422101250](https://static-docs.nocobase.com/20240422101250.png)
 
-For further details, refer to [Setting Data Scope](/handbook/ui/blocks/block-settings/data-scope).
+Подробнее см. [Настройка области данных](/handbook/ui/blocks/block-settings/data-scope).
 
-## Adjusting Block Height
+## Настройка высоты блока
 
-**Example:** Modify the height of the map block to suit your layout.
+**Пример:** Изменение высоты блока карты для удобного размещения в макете.
 
 ![20240605221111](https://static-docs.nocobase.com/20240605221111.gif)
 
-For more information, see [Block Height](/handbook/ui/blocks/block-settings/block-height).
+Подробнее см. [Высота блока](/handbook/ui/blocks/block-settings/block-height).
 
-- [Edit Block Title](/handbook/ui/blocks/block-settings/block-title)
-- [Connect Data Block](/handbook/ui/blocks/block-settings/connect-block)
-- [Save as Block Template](/handbook/block-template)
+- [Редактирование заголовка блока](/handbook/ui/blocks/block-settings/block-title)
+- [Подключение блока данных](/handbook/ui/blocks/block-settings/connect-block)
+- [Сохранение как шаблон блока](/handbook/block-template)
 
-## Configuration Operations
+## Операции конфигурации
 
 ![20240421122020](https://static-docs.nocobase.com/20240421122020.png)
 
-## Batch Point Selection
+## Массовый выбор точек
 
 ![20240422102334](https://static-docs.nocobase.com/20240422102334.gif)
 
-- [Filter](/handbook/ui/actions/types/filter)
-- [Add](/handbook/ui/actions/types/add-new)
-- [Refresh](/handbook/ui/actions/types/refresh)
-- [Bulk Update](/handbook/action-bulk-update)
-- [Bulk Edit](/handbook/action-bulk-edit)
+- [Фильтр](/handbook/ui/actions/types/filter)
+- [Добавить](/handbook/ui/actions/types/add-new)
+- [Обновить](/handbook/ui/actions/types/refresh)
+- [Массовое обновление](/handbook/action-bulk-update)
+- [Массовое редактирование](/handbook/action-bulk-edit)

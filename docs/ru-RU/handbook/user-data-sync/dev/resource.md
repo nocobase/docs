@@ -1,14 +1,14 @@
-# Extending Sync Target Resources
+# Расширение целевых ресурсов синхронизации
 
-## Overview
+## Обзор
 
-NocoBase natively supports syncing user data to the **User** and **Department** tables. It also allows for extending the target resources for data synchronization to write data to other tables or perform custom processing as needed.
+NocoBase изначально поддерживает синхронизацию данных пользователей в таблицы «Пользователи» (User) и «Подразделения» (Department). Кроме того, платформа позволяет расширять целевые ресурсы синхронизации данных, чтобы записывать данные в другие таблицы или выполнять пользовательскую обработку по необходимости.
 
-:::warning{title=Experimental}
-Full documentation is pending.
+:::warning{title=Экспериментальная функция}
+Полная документация находится в стадии разработки.
 :::
 
-## Target Resource Handler Interface
+## Интерфейс обработчика целевого ресурса
 
 ```ts
 export abstract class UserDataResource {
@@ -22,29 +22,51 @@ export abstract class UserDataResource {
     this.logger = logger;
   }
 
+  /**
+   * Абстрактный метод обновления записи.
+   * @param record — исходная запись данных.
+   * @param resourcePks — первичные ключи целевого ресурса.
+   * @param matchKey — необязательное поле, по которому выполняется сопоставление (например, email, username и т.д.).
+   * @returns Массив изменённых ресурсов записи.
+   */
   abstract update(
     record: OriginRecord,
     resourcePks: PrimaryKey[],
     matchKey?: string,
   ): Promise<RecordResourceChanged[]>;
+
+  /**
+   * Абстрактный метод создания новой записи.
+   * @param record — исходная запись данных.
+   * @param matchKey — поле, по которому выполняется сопоставление.
+   * @returns Массив созданных или изменённых ресурсов записи.
+   */
   abstract create(
     record: OriginRecord,
     matchKey: string,
   ): Promise<RecordResourceChanged[]>;
 
+  /**
+   * Репозиторий записей синхронизации пользовательских данных.
+   */
   get syncRecordRepo() {
     return this.db.getRepository('userDataSyncRecords');
   }
 
+  /**
+   * Репозиторий связей между записями синхронизации и целевыми ресурсами.
+   */
   get syncRecordResourceRepo() {
     return this.db.getRepository('userDataSyncRecordsResources');
   }
 }
 ```
 
-## Registering Target Resources
+## Регистрация целевых ресурсов
 
-`registerResource(resource: UserDataResource, options?: ToposortOptions)`
+Метод: `registerResource(resource: UserDataResource, options?: ToposortOptions)`
+
+Пример регистрации пользовательского ресурса:
 
 ```ts
 import { Plugin } from '@nocobase/server';
@@ -59,3 +81,5 @@ class CustomUserResourcePluginServer extends Plugin {
   }
 }
 ```
+
+Этот код регистрирует пользовательский обработчик синхронизации данных (`CustomDataSyncResource`), который будет участвовать в процессе синхронизации и может выполнять операции создания или обновления записей в кастомных таблицах на основе входящих данных.

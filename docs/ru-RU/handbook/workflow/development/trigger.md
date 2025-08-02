@@ -1,22 +1,22 @@
-# **Extend Trigger Types**
+# **Расширение типов триггеров**
 
-Every workflow must be configured with a specific trigger that serves as the entry point for executing the process.
+Каждый рабочий процесс должен быть настроен с определённым триггером, который служит точкой входа для выполнения процесса.
 
-Trigger types typically correspond to specific system events. Throughout an application's lifecycle, any event that offers a subscription option can be defined as a trigger type. Examples include receiving requests, data table operations, or scheduled tasks.
+Типы триггеров обычно соответствуют определённым событиям в системе. На протяжении жизненного цикла приложения любое событие, которое можно подписаться, может быть определено как тип триггера. Примеры включают получение запросов, операции с таблицами данных или запланированные задачи.
 
-Trigger types are registered in the plugin's trigger registry using unique string identifiers. The workflow plugin comes with several built-in triggers:
+Типы триггеров регистрируются в реестре триггеров плагина с использованием уникальных строковых идентификаторов. Плагин рабочих процессов включает несколько встроенных триггеров:
 
-- `'collection'`: Triggered by data table operations.
-- `'schedule'`: Triggered by scheduled tasks.
-- `'action'`: Triggered by post-operation events.
+- `'collection'`: Активируется операциями с таблицами данных.
+- `'schedule'`: Активируется запланированными задачами.
+- `'action'`: Активируется событиями после выполнения операций.
 
-When extending trigger types, it's essential to ensure that each identifier is unique. The server side should handle the registration for subscribing and unsubscribing to triggers, while the client side should provide the corresponding configuration interface.
+При расширении типов триггеров важно убедиться, что каждый идентификатор уникален. Серверная часть должна обрабатывать регистрацию подписки и отписки от триггеров, а клиентская часть должна предоставлять соответствующий интерфейс для настройки.
 
-## **Server-Side Implementation**
+## **Реализация на стороне сервера**
 
-Any custom trigger should extend the `Trigger` base class and implement the `on` and `off` methods, which manage the subscription and unsubscription to specific system events. The `on` method must invoke `this.workflow.trigger()` within the event callback to trigger the workflow. The `off` method should ensure proper cleanup during unsubscription.
+Любой пользовательский триггер должен наследоваться от базового класса `Trigger` и реализовывать методы `on` и `off`, которые управляют подпиской и отпиской от определённых событий системы. Метод `on` должен вызывать `this.workflow.trigger()` внутри колбэка события, чтобы активировать рабочий процесс. Метод `off` должен обеспечивать корректную очистку при отписке.
 
-The `this.workflow` property refers to the workflow plugin instance, passed into the `Trigger` base class during construction.
+Свойство `this.workflow` ссылается на экземпляр плагина рабочих процессов, который передаётся в базовый класс `Trigger` при создании.
 
 ```ts
 import { Trigger } from '@nocobase/plugin-workflow';
@@ -25,54 +25,54 @@ class MyTrigger extends Trigger {
   timer: NodeJS.Timeout;
 
   on(workflow) {
-    // Register event
+    // Регистрация события
     this.timer = setInterval(() => {
-      // Trigger workflow
+      // Активация рабочего процесса
       this.workflow.trigger(workflow, { date: new Date() });
     }, workflow.config.interval ?? 60000);
   }
 
   off(workflow) {
-    // Unregister event
+    // Отмена регистрации события
     clearInterval(this.timer);
   }
 }
 ```
 
-Next, register the trigger instance with the workflow engine in the plugin that extends the workflow:
+Затем зарегистрируйте экземпляр триггера в движке рабочих процессов в плагине, который расширяет функциональность:
 
 ```ts
 import WorkflowPlugin from '@nocobase/plugin-workflow';
 
 export default class MyPlugin extends Plugin {
   load() {
-    // Get workflow plugin instance
+    // Получение экземпляра плагина рабочих процессов
     const workflowPlugin = this.app.pm.get(WorkflowPlugin) as WorkflowPlugin;
 
-    // Register trigger
+    // Регистрация триггера
     workflowPlugin.registerTrigger('interval', MyTrigger);
   }
 }
 ```
 
-Once the server is up and running, the `'interval'` trigger type will be available for addition and execution.
+После запуска сервера триггер типа `'interval'` будет доступен для добавления и выполнения.
 
-## **Client-Side Configuration**
+## **Настройка на стороне клиента**
 
-On the client side, the primary task is to provide a configuration interface tailored to the specific settings required for each trigger type. Each trigger type should also be registered with the workflow plugin.
+На клиентской стороне основная задача — предоставить интерфейс для настройки, адаптированный под конкретные параметры, необходимые для каждого типа триггера. Каждый тип триггера также должен быть зарегистрирован в плагине рабочих процессов.
 
-For instance, to configure the interval-based trigger mentioned earlier, define the `interval` configuration field in the form interface:
+Например, для настройки интервального триггера, упомянутого выше, определите поле `interval` в интерфейсе формы:
 
 ```ts
 import { Trigger } from '@nocobase/workflow/client';
 
 class MyTrigger extends Trigger {
-  title = 'Interval Timer Trigger';
-  // Fields of trigger config
+  title = 'Триггер по интервалу';
+  // Поля конфигурации триггера
   fieldset = {
     interval: {
       type: 'number',
-      title: 'Interval',
+      title: 'Интервал',
       name: 'config.interval',
       'x-decorator': 'FormItem',
       'x-component': 'InputNumber',
@@ -82,7 +82,7 @@ class MyTrigger extends Trigger {
 }
 ```
 
-Then, register this trigger type with the workflow plugin instance in the extending plugin:
+Затем зарегистрируйте этот тип триггера в экземпляре плагина рабочих процессов в расширяющем плагине:
 
 ```ts
 import { Plugin } from '@nocobase/client';
@@ -91,7 +91,7 @@ import WorkflowPlugin from '@nocobase/plugin-workflow/client';
 import MyTrigger from './MyTrigger';
 
 export default class extends Plugin {
-  // Modify the app instance here if necessary
+  // При необходимости измените экземпляр приложения здесь
   async load() {
     const workflow = this.app.pm.get(WorkflowPlugin) as WorkflowPlugin;
     workflow.registerTrigger('interval', MyTrigger);
@@ -99,10 +99,11 @@ export default class extends Plugin {
 }
 ```
 
-Once registered, the new trigger type will appear in the workflow configuration interface.
+После регистрации новый тип триггера появится в интерфейсе настройки рабочих процессов.
 
-:::info{title=Tip}
-Ensure that the trigger type identifier registered on the client side matches the one on the server side to avoid errors.
-:::
+Совет
 
-For further details on defining trigger types, refer to the [Workflow API Reference](./api#pluginregisterTrigger) section.
+Убедитесь, что идентификатор типа триггера, зарегистрированный на стороне клиента, совпадает с идентификатором на стороне сервера, чтобы избежать ошибок.
+
+
+Для получения дополнительной информации о определении типов триггеров обратитесь к разделу [Справочник API рабочих процессов](./api#pluginregisterTrigger).

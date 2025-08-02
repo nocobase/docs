@@ -1,26 +1,26 @@
-# Field Interface
+# Интерфейс поля
 
-前面已经介绍了基于已有的 `Field interface` 增加组件类型的方式实现字段组件的替换，但是某些场景下新增的组件不属于已有的 `Field interface`，这时候我们就需要自定义 `Field interface`。
+Ранее мы рассмотрели, как заменять компоненты полей на основе существующего `Field interface`. Однако в некоторых случаях новые компоненты не относятся к уже существующим интерфейсам полей. В таких ситуациях необходимо создать пользовательский `Field interface`.
 
-## 示例说明
+## Описание примера
 
-本文会新增一个 `Encryption` interface 类型即加解密字段。具体需求如下：
+В этом документе мы добавим новый тип интерфейса поля — `Encryption`, предназначенный для шифрования и дешифрования данных. Требования следующие:
 
-- 使用对称加密算法对字段进行加密和解密
-- 加密后，以密文的方式被存储至数据库中，在查看数据时进行解密明文显示
-- 加密后的字段不支持模糊搜索，只支持等于、不等于、为空、不为空等操作
+- Использование симметричного алгоритма шифрования для шифрования и дешифрования поля.
+- Зашифрованные данные хранятся в базе данных в виде шифрованного текста, а при просмотре данных отображаются в расшифрованном виде.
+- Зашифрованные поля не поддерживают нечеткий поиск, только операции "равно", "не равно", "существует" и "не существует".
 
-此功能需要前后端配合实现，前端需要实现加密和解密的 Field interface，后端需要实现加密和解密的逻辑。
+Для реализации этой функциональности требуется совместная работа клиентской и серверной частей. На стороне клиента необходимо реализовать интерфейс поля для шифрования и дешифрования, а на серверной стороне — логику шифрования и дешифрования.
 
-本文档完整的示例代码可以在 [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-field-interface) 中查看。
+Полный код примера доступен в репозитории [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-field-interface).
 
 <video width="100%" controls="">
   <source src="https://static-docs.nocobase.com/1721993076851.mov" type="video/mp4" />
 </video>
 
-## 初始化插件
+## Инициализация плагина
 
-我们按照 [编写第一个插件](/development/your-fisrt-plugin) 文档说明，如果没有一个项目，可以先创建一个项目，如果已经有了或者是 clone 的源码，则跳过这一步。
+Следуя инструкциям из документа [Создание первого плагина](/development/your-fisrt-plugin), если у вас нет проекта, создайте его. Если проект уже существует или вы клонировали исходный код, пропустите этот шаг.
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d sqlite
@@ -29,64 +29,66 @@ yarn install
 yarn nocobase install
 ```
 
-然后初始化一个插件，并添加到系统中：
+Инициализируйте плагин и добавьте его в систему:
 
 ```bash
 yarn pm create @nocobase-sample/plugin-field-interface
 yarn pm enable @nocobase-sample/plugin-field-interface
 ```
 
-然后启动项目即可：
+Запустите проект:
 
 ```bash
 yarn dev
 ```
 
-然后登录后访问 [http://localhost:13000/admin/pm/list/locale/](http://localhost:13000/admin/pm/list/locale/) 就可以看到插件已经安装并启用了。
+После входа в систему перейдите по адресу [http://localhost:13000/admin/pm/list/locale/](http://localhost:13000/admin/pm/list/locale/), чтобы убедиться, что плагин установлен и активирован.
 
-## 文档知识和目录结构
+## Документация и структура каталогов
 
-在实现本示例之前，我们需要先了解一些基础知识：
+Перед реализацией примера необходимо ознакомиться с основными понятиями:
 
-- [NodeJS crypto 模块](https://nodejs.org/api/crypto.html)
-- [Database]( /api/database)：用于管理数据、字段、模型、操作等
-- [CollectionFieldInterface](https://client.docs.nocobase.com/core/data-source/collection-field-interface)：前端数据字段类
-- [CollectionFieldInterfaceManager](https://client.docs.nocobase.com/core/data-source/collection-field-interface-manager)：前端用来管理 `CollectionFieldInterface` 的类
+- [Модуль crypto в Node.js](https://nodejs.org/api/crypto.html)
+- [Database](/api/database): Для управления данными, полями, моделями и операциями.
+- [CollectionFieldInterface](https://client.docs.nocobase.com/core/data-source/collection-field-interface): Класс для полей данных на клиентской стороне.
+- [CollectionFieldInterfaceManager](https://client.docs.nocobase.com/core/data-source/collection-field-interface-manager): Класс для управления `CollectionFieldInterface` на клиентской стороне.
+
+Структура проекта:
 
 ```bash
 .
-├── client # 客户端插件
-│   ├── EncryptionFieldInterface.tsx # 前端 Field Interface
-│   ├── locale.ts # 多语言工具函数
-│   └── index.ts # 前端入口文件
+├── client # Клиентская часть плагина
+│   ├── EncryptionFieldInterface.tsx # Интерфейс поля на клиентской стороне
+│   ├── locale.ts # Утилиты для мультиязычности
+│   └── index.ts # Точка входа на клиентской стороне
 ├── locale
-│   ├── en-US.json # 英语
-│   └── zh-CN.json # 中文
-├── index.ts # 服务端插件入口
+│   ├── en-US.json # Английский
+│   └── zh-CN.json # Китайский
+├── index.ts # Точка входа серверной части плагина
 └── server
-      ├── encryption-field.ts # 加解密字段
-      ├── index.ts # 服务端入口文件
-      ├── operators # 查询操作符
-      │   ├── eq.ts # 等于
-      │   ├── ne.ts # 不等于
-      │   └── utils.ts # 工具函数
-      ├── plugin.ts  # 服务端插件
-      └── utils.ts # 工具函数
+      ├── encryption-field.ts # Поле для шифрования
+      ├── index.ts # Точка входа серверной части
+      ├── operators # Операторы запросов
+      │   ├── eq.ts # Равно
+      │   ├── ne.ts # Не равно
+      │   └── utils.ts # Утилиты
+      ├── plugin.ts # Серверный плагин
+      └── utils.ts # Утилиты
 ```
 
-## 前端实现
+## Реализация на клиентской стороне
 
-### 1. 组件
+### 1. Компонент
 
-由于加解密用的是字符串，所以我们可以使用 `Input` 组件，并不需要自定义组件。
+Поскольку шифрование и дешифрование работают со строками, мы можем использовать стандартный компонент `Input`, и нет необходимости создавать пользовательский компонент.
 
-如果其他需求需要自定义组件，可以参考 [有值字段组件](/plugin-samples/field/value) 文档。
+Если требуется пользовательский компонент, обратитесь к документации [Компоненты с полем значения](/plugin-samples/field/value).
 
-### 2. Field Interface
+### 2. Интерфейс поля
 
-#### 2.1 定义
+#### 2.1 Определение
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-field-interface/src/client/EncryptionFieldInterface.tsx` 文件：
+Создайте файл `packages/plugins/@nocobase-sample/plugin-field-interface/src/client/EncryptionFieldInterface.tsx`:
 
 ```tsx | pure
 import { CollectionFieldInterface, defaultProps } from '@nocobase/client';
@@ -123,36 +125,34 @@ export class EncryptionFieldInterface extends CollectionFieldInterface {
 }
 ```
 
-所有的 Field interface 都需要继承 `CollectionFieldInterface` 类，然后实现 `name`、`type`、`group`、`order`、`title`、`default`、`availableTypes`、`hasDefaultValue`、`properties`、`filterable` 等属性，具体每个属性的含义为：
+Все интерфейсы полей должны наследовать класс `CollectionFieldInterface` и реализовывать свойства `name`, `type`, `group`, `order`, `title`, `default`, `availableTypes`, `hasDefaultValue`, `properties` и `filterable`. Описание каждого свойства:
 
-- `tStr`：生成多语言字符串模板
+- `tStr`: Генерация строковых шаблонов для мультиязычности.
+- `name`: Уникальный идентификатор интерфейса поля.
+- `type`: Тип интерфейса (в данном случае `object`).
+- `group`: Группа для отображения в настройках полей (здесь `advanced`).
+- `order`: Порядок сортировки в настройках полей.
+- `title`: Заголовок, отображаемый в настройках.
+- `default`: Конфигурация поля по умолчанию, сохраняемая в базе данных.
+  - `iv`: Инициализационный вектор, случайная строка для шифрования.
+  - `uiSchema`: Конфигурация UI поля, здесь используется компонент `Input`.
+- `availableTypes`: Доступные типы данных для поля.
+- `hasDefaultValue`: Указывает, есть ли у поля значение по умолчанию.
+- `properties`: Конфигурация свойств, включает `defaultProps`:
+  - `name`: Имя поля.
+  - `displayName`: Отображаемое имя поля.
+- `filterable`: Операторы для фильтрации.
 
-- `name`：Field interface 的唯一标识，用于区分不同的 Field interface
-- `type`：？
-- `group`：分组，用于在字段设置中分组显示，这里我们设置为 `advanced`
-- `order`：排序，用于在字段设置中排序显示
-- `title`：标题，用于在字段设置中显示
-- `default`：字段配置，插入到数据库中的默认值
-  - `iv`：初始化向量，随机字符串，用于加密
-  - `uiSchema`：字段的 UI 配置，这里我们使用 `Input` 组件
-- `availableTypes`：可用的字段类型
-- `hasDefaultValue`：是否有默认值配置
-- `properties`：属性配置，其中 `defaultProps` 包含
-  - `name`：字段名
-  - `displayName`：字段显示名
-- `filterable`：可过滤的操作符。
+Особенности `filterable`:
 
+- Поскольку данные хранятся в зашифрованном виде, поддерживаются только операторы "равно", "не равно", "существует" и "не существует".
+- Для поиска строки её нужно сначала расшифровать, поэтому вместо стандартных операторов `$eq` и `$ne` используются пользовательские `$encryptionEq` и `$encryptionNe`.
 
-其中关于 `filterable` 有 2 点注意：
+Подробности о `CollectionFieldInterface` см. в [документации](https://client.docs.nocobase.com/core/data-source/collection-field-interface).
 
-- 因为存储到数据库中是密文，所以仅支持 **相等、不等、存在、不存在** 操作符
-- 搜索字符串的时候，需要将字符串解密后再进行搜索，所以这里不能使用默认的 `$eq`、`$ne` 操作符，需要自定义操作符为 `$encryptionEq`、`$encryptionNe`。
+#### 2.2 Регистрация
 
-更多关于 CollectionFieldInterface 的属性和方法可以查看 [CollectionFieldInterface](https://client.docs.nocobase.com/core/data-source/collection-field-interface) 文档。
-
-#### 2.2 注册
-
-我们修改 `packages/plugins/@nocobase-sample/plugin-field-interface/src/client/index.ts` 文件：
+Обновите файл `packages/plugins/@nocobase-sample/plugin-field-interface/src/client/index.ts`:
 
 ```ts
 import { Plugin } from '@nocobase/client';
@@ -167,25 +167,25 @@ export class PluginFieldInterfaceClient extends Plugin {
 export default PluginFieldInterfaceClient;
 ```
 
-我们通过 `collectionFieldInterfaceManager.addFieldInterfaces()` 将 `EncryptionFieldInterface` 注册到系统中。
+Регистрация `EncryptionFieldInterface` выполняется через метод `collectionFieldInterfaceManager.addFieldInterfaces()`.
 
-更多关于 `CollectionFieldInterfaceManager` 的属性和方法可以查看 [文档](https://client.docs.nocobase.com/core/data-source/collection-field-interface-manager)。
+Подробности о `CollectionFieldInterfaceManager` см. в [документации](https://client.docs.nocobase.com/core/data-source/collection-field-interface-manager).
 
 ![20240726193638](https://static-docs.nocobase.com/20240726193638.png)
 
-此时界面上就可以看到 `Encryption` 字段了，但是后端还没有实现加解密逻辑，所以还**不能创建字段**。
+Теперь в интерфейсе отображается поле `Encryption`, но серверная часть для шифрования ещё не реализована, поэтому поле **нельзя создать**.
 
-## 后端实现
+## Реализация на серверной стороне
 
-### 1. 实现加解密
+### 1. Реализация шифрования и дешифрования
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-field-interface/src/server/utils.ts` 文件：
+Создайте файл `packages/plugins/@nocobase-sample/plugin-field-interface/src/server/utils.ts`:
 
 ```ts
 import crypto from 'crypto';
 const algorithm = 'aes-256-cbc';
 
-const keyString = process.env.ENCRYPTION_KEY || '12345678901234567890123456789012';;
+const keyString = process.env.ENCRYPTION_KEY || '12345678901234567890123456789012';
 
 const key = Buffer.from(keyString, 'utf8');
 
@@ -206,15 +206,15 @@ export function decryptSync(encrypted: string, ivString: string) {
 }
 ```
 
-我们使用 `crypto` 模块实现加解密，其中 `encryptSync` 方法用于加密，`decryptSync` 方法用于解密。具体的加密算法是 `aes-256-cbc`，密钥是 `ENCRYPTION_KEY` 环境变量，如果没有设置则使用默认值 `12345678901234567890123456789012`。
+Мы используем модуль `crypto` для реализации шифрования и дешифрования. Метод `encryptSync` шифрует данные, а `decryptSync` — расшифровывает. Используется алгоритм `aes-256-cbc`, ключ берётся из переменной окружения `ENCRYPTION_KEY` или используется значение по умолчанию `12345678901234567890123456789012`.
 
-关于 `crypto` 模块的更多信息可以查看 [NodeJS crypto 模块](https://nodejs.org/api/crypto.html) 文档。
+Подробности о модуле `crypto` см. в [документации Node.js](https://nodejs.org/api/crypto.html).
 
-### 2. 实现 Field
+### 2. Реализация поля
 
-#### 2.1 定义
+#### 2.1 Определение
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-field-interface/src/server/encryption-field.ts` 文件：
+Создайте файл `packages/plugins/@nocobase-sample/plugin-field-interface/src/server/encryption-field.ts`:
 
 ```ts
 import { BaseColumnFieldOptions, Field, FieldContext } from '@nocobase/database';
@@ -254,13 +254,13 @@ export class EncryptionField extends Field {
 }
 ```
 
-- dataType：加解密对应到数据库中是字符串，所以我们使用 `DataTypes.STRING` 类型
-- get：获取字段值时，解密
-- set：设置字段值时，加密
+- `dataType`: В базе данных зашифрованные данные хранятся как строки, поэтому используется `DataTypes.STRING`.
+- `get`: При получении значения поле расшифровывается.
+- `set`: При установке значения поле шифруется.
 
-#### 2.2 注册
+#### 2.2 Регистрация
 
-我们新建 `packages/plugins/@nocobase-sample/plugin-field-interface/src/server/plugin.ts` 文件：
+Создайте файл `packages/plugins/@nocobase-sample/plugin-field-interface/src/server/plugin.ts`:
 
 ```ts
 import { Plugin } from '@nocobase/server';
@@ -279,21 +279,21 @@ export class PluginFieldInterfaceServer extends Plugin {
 export default PluginFieldInterfaceServer;
 ```
 
-我们通过 `db.registerFieldTypes()` 将 `EncryptionField` 注册到系统中，具体可以查看 [registerFieldTypes()](/api/database#registerfieldtypes) 文档。
+Регистрация `EncryptionField` выполняется через метод `db.registerFieldTypes()`. Подробности см. в [документации](/api/database#registerfieldtypes).
 
 ![20240726192559](https://static-docs.nocobase.com/20240726192559.png)
 
-此时我们已经完成了前后端的实现，可以创建字段了，但是还需要实现查询操作符。
+Теперь реализация клиентской и серверной частей завершена, и поле можно создать, но необходимо ещё реализовать операторы запросов.
 
-### 3. 实现操作符
+### 3. Реализация операторов
 
-#### 3.1 定义
+#### 3.1 Определение
 
-我们要做的就是在查询时，将字符串加密后再进行查询。
+Операторы должны шифровать строку перед выполнением запроса.
 
-##### 3.1.1 封装公共方法
+##### 3.1.1 Общие методы
 
-因为 `$encryptionEq`、`$encryptionNe` 都是需要在加密后再进行查询，所以我们可以将这两个操作符的逻辑抽离出来，所以我们新建 `packages/plugins/@nocobase-sample/plugin-field-interface/src/server/operators/utils.ts` 文件：
+Поскольку операторы `$encryptionEq` и `$encryptionNe` требуют шифрования перед запросом, мы выносим общую логику в утилиты. Создайте файл `packages/plugins/@nocobase-sample/plugin-field-interface/src/server/operators/utils.ts`:
 
 ```ts
 import { encryptSync } from '../utils';
@@ -318,14 +318,14 @@ export function encryptSearchValueSync(str: any, ctx: any) {
 }
 ```
 
-我们定义了 2 个方法：
+Определены два метода:
 
-- `getFieldOptions`：获取字段配置
-- `encryptSearchValueSync`：加密搜索值
+- `getFieldOptions`: Получение конфигурации поля.
+- `encryptSearchValueSync`: Шифрование значения для поиска.
 
-##### 3.1.2 实现 `$encryptionEq`
+##### 3.1.2 Реализация `$encryptionEq`
 
-然后我们新建 `packages/plugins/@nocobase-sample/plugin-field-interface/src/server/operators/eq.ts` 文件：
+Создайте файл `packages/plugins/@nocobase-sample/plugin-field-interface/src/server/operators/eq.ts`:
 
 ```ts
 import { encryptSearchValueSync } from './utils';
@@ -338,11 +338,11 @@ export const $encryptionEq = (str, ctx) => {
 };
 ```
 
-我们定义了 `$encryptionEq` 操作符，将搜索值加密后再进行查询。
+Оператор `$encryptionEq` шифрует значение перед выполнением запроса.
 
-##### 3.1.3 实现 `$encryptionNe`
+##### 3.1.3 Реализация `$encryptionNe`
 
-然后我们新建 `packages/plugins/@nocobase-sample/plugin-field-interface/src/server/operators/ne.ts` 文件：
+Создайте файл `packages/plugins/@nocobase-sample/plugin-field-interface/src/server/operators/ne.ts`:
 
 ```ts
 import { encryptSearchValueSync } from './utils';
@@ -355,21 +355,23 @@ export const $encryptionNe = (str, ctx) => {
 };
 ```
 
-我们定义了 `$encryptionNe` 操作符，将搜索值加密后再进行查询。
+Оператор `$encryptionNe` также шифрует значение перед выполнением запроса.
 
-#### 3.2 注册操作符
+#### 3.2 Регистрация операторов
 
-我们修改 `packages/plugins/@nocobase-sample/plugin-field-interface/src/server/plugin.ts` 文件：
+Обновите файл `packages/plugins/@nocobase-sample/plugin-field-interface/src/server/plugin.ts`:
 
 ```ts
-// ...
+import { Plugin } from '@nocobase/server';
+import { EncryptionField } from './encryption-field';
 import { $encryptionEq } from './operators/eq';
 import { $encryptionNe } from './operators/ne';
 
 export class PluginFieldInterfaceServer extends Plugin {
   async load() {
-    // ...
-
+    this.db.registerFieldTypes({
+      encryption: EncryptionField,
+    });
     this.db.registerOperators({
       $encryptionEq,
       $encryptionNe,
@@ -382,27 +384,27 @@ export default PluginFieldInterfaceServer;
 
 ![20240726192832](https://static-docs.nocobase.com/20240726192832.png)
 
-## 多语言
+## Мультиязычность
 
-我们可以通过 [http://localhost:13000/admin/settings/system-settings](http://localhost:13000/admin/settings/system-settings) 添加多个语言，并且在右上角切换语言。
+Можно добавить несколько языков через [http://localhost:13000/admin/settings/system-settings](http://localhost:13000/admin/settings/system-settings) и переключать их в правом верхнем углу.
 
 ![20240611113758](https://static-docs.nocobase.com/20240611113758.png)
 
-### 英语
+### Английский язык
 
-我们编辑 `packages/plugins/@nocobase-sample/plugin-field-interface/src/locale/zh-CN.json` 文件：
+Отредактируйте файл `packages/plugins/@nocobase-sample/plugin-field-interface/src/locale/en-US.json`:
 
-```diff
+```json
 {
   "Encryption": "Encryption"
 }
 ```
 
-### 中文
+### Китайский язык
 
-我们编辑 `packages/plugins/@nocobase-sample/plugin-field-interface/src/locale/zh-CN.json` 文件：
+Отредактируйте файл `packages/plugins/@nocobase-sample/plugin-field-interface/src/locale/zh-CN.json`:
 
-```diff
+```json
 {
   "Encryption": "加密"
 }
@@ -410,20 +412,20 @@ export default PluginFieldInterfaceServer;
 
 ![20240726193259](https://static-docs.nocobase.com/20240726193259.png)
 
-## 打包和上传到生产环境
+## Сборка и загрузка в продакшен
 
-按照 [构建并打包插件](/development/your-fisrt-plugin#构建并打包插件) 文档说明，我们可以打包插件并上传到生产环境。
+Следуя инструкциям [Сборка и упаковка плагина](/development/your-fisrt-plugin#构建并打包插件), упакуйте плагин и загрузите его в продакшен.
 
-如果是 clone 的源码，需要先执行一次全量 build，将插件的依赖也构建好。
+Если вы используете клонированный исходный код, сначала выполните полную сборку, чтобы собрать зависимости плагина:
 
 ```bash
 yarn build
 ```
 
-如果是使用的 `create-nocobase-app` 创建的项目，可以直接执行：
+Если вы используете проект, созданный через `create-nocobase-app`, выполните:
 
 ```bash
 yarn build @nocobase-sample/plugin-field-interface --tar
 ```
 
-这样就可以看到 `storage/tar/@nocobase-sample/plugin-field-interface.tar.gz` 文件了，然后通过[上传的方式](/welcome/getting-started/plugin)进行安装。
+В результате в папке `storage/tar/@nocobase-sample/plugin-field-interface.tar.gz` появится архив плагина. Установите его через интерфейс загрузки, описанный в [документации](/welcome/getting-started/plugin).

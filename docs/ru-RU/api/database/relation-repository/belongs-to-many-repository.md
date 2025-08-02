@@ -1,144 +1,89 @@
-# BelongsToManyRepository
+# BelongsToManyRepository (Репозиторий связи "многие ко многим")
 
-`BelongsToManyRepository` is the `Relation Repository` for handling `BelongsToMany` relationships.
+`BelongsToManyRepository` - это репозиторий для работы со связями типа "многие ко многим" (`BelongsToMany`).
 
-Unlike other relationship types, the `BelongsToMany` type of relationship needs to be recorded through an intermediate table. The intermediate table can be created automatically or explicitly specified when defining association relationships in NocoBase.
+В отличие от других типов связей, связь "многие ко многим" требует наличия промежуточной таблицы. В NocoBase эта таблица может создаваться автоматически или указываться явно при определении связи.
 
-## Class Methods
+## Методы класса
 
 ### `find()`
 
-Find associated objects.
+Поиск связанных объектов.
 
-**Signature**
+```typescript
+async find(options?: FindOptions): Promise<M[]>
+```
 
-- `async find(options?: FindOptions): Promise<M[]>`
-
-**Detailed Information**
-
-Query parameters are the same as [`Repository.find()`](../repository.md#find).
+Параметры запроса аналогичны [`Repository.find()`](../repository.md#find).
 
 ### `findOne()`
 
-Find associated objects, only to return one record.
+Поиск одного связанного объекта.
 
-**Signature**
-
-- `async findOne(options?: FindOneOptions): Promise<M>`
-
-<embed src="../shared/find-one.md"></embed>
+```typescript
+async findOne(options?: FindOneOptions): Promise<M>
+```
 
 ### `count()`
 
-Return the number of records matching the query criteria.
-
-**Signature**
-
-- `async count(options?: CountOptions)`
-
-**Type**
+Получение количества записей, соответствующих условиям.
 
 ```typescript
-interface CountOptions
-  extends Omit<SequelizeCountOptions, 'distinct' | 'where' | 'include'>,
-    Transactionable {
-  filter?: Filter;
-}
+async count(options?: CountOptions)
 ```
 
 ### `findAndCount()`
 
-Find datasets from the database with the specified filtering conditions and return the number of results.
-
-**Signature**
-
-- `async findAndCount(options?: FindAndCountOptions): Promise<[any[], number]>`
-
-**Type**
+Поиск данных с одновременным получением их количества.
 
 ```typescript
-type FindAndCountOptions = CommonFindOptions;
+async findAndCount(options?: FindAndCountOptions): Promise<[any[], number]>
 ```
 
 ### `create()`
 
-Create associated objects.
+Создание связанных объектов.
 
-**Signature**
-
-- `async create(options?: CreateOptions): Promise<M>`
-
-<embed src="../shared/create-options.md"></embed>
+```typescript
+async create(options?: CreateOptions): Promise<M>
+```
 
 ### `update()`
 
-Update associated objects that match the conditions.
+Обновление связанных объектов по условиям.
 
-**Signature**
-
-- `async update(options?: UpdateOptions): Promise<M>`
-
-<embed src="../shared/update-options.md"></embed>
+```typescript
+async update(options?: UpdateOptions): Promise<M>
+```
 
 ### `destroy()`
 
-Delete associated objects.
+Удаление связанных объектов.
 
-**Signature**
-
-- `async destroy(options?: TargetKey | TargetKey[] | DestroyOptions): Promise<Boolean>`
-
-<embed src="../shared/destroy-options.md"></embed>
+```typescript
+async destroy(options?: TargetKey | TargetKey[] | DestroyOptions): Promise<Boolean>
+```
 
 ### `add()`
 
-Add new associated objects.
-
-**Signature**
-
-- `async add(
-options: TargetKey | TargetKey[] | PrimaryKeyWithThroughValues | PrimaryKeyWithThroughValues[] | AssociatedOptions
-): Promise<void>`
-
-**Type**
+Добавление новых связанных объектов.
 
 ```typescript
-type PrimaryKeyWithThroughValues = [TargetKey, Values];
-
-interface AssociatedOptions extends Transactionable {
-  tk?:
-    | TargetKey
-    | TargetKey[]
-    | PrimaryKeyWithThroughValues
-    | PrimaryKeyWithThroughValues[];
-}
+async add(
+  options: TargetKey | TargetKey[] | PrimaryKeyWithThroughValues | PrimaryKeyWithThroughValues[] | AssociatedOptions
+): Promise<void>
 ```
 
-**Detailed Information**
+Можно передавать:
+- `targetKey` связанного объекта
+- `targetKey` вместе со значениями полей промежуточной таблицы
 
-Pass the `targetKey` of the associated object directly, or pass the `targetKey` along with the field values of the intermediate table.
-
-**Example**
-
+**Пример:**
 ```typescript
-const t1 = await Tag.repository.create({
-  values: { name: 't1' },
-});
-
-const t2 = await Tag.repository.create({
-  values: { name: 't2' },
-});
-
-const p1 = await Post.repository.create({
-  values: { title: 'p1' },
-});
-
-const PostTagRepository = new BelongsToManyRepository(Post, 'tags', p1.id);
-
-// Pass in the targetKey
+// Просто ID
 PostTagRepository.add([t1.id, t2.id]);
 
-// Pass in intermediate table fields
+// С данными промежуточной таблицы
 PostTagRepository.add([
   [t1.id, { tagged_at: '123' }],
   [t2.id, { tagged_at: '456' }],
@@ -147,44 +92,32 @@ PostTagRepository.add([
 
 ### `set()`
 
-Set the associated objects.
+Установка связанных объектов.
 
-**Signature**
-
-- async set(
+```typescript
+async set(
   options: TargetKey | TargetKey[] | PrimaryKeyWithThroughValues | PrimaryKeyWithThroughValues[] | AssociatedOptions,
-  ): Promise<void>
+): Promise<void>
+```
 
-**Detailed Information**
-
-Parameters are the same as [add()](#add).
+Параметры аналогичны методу `add()`.
 
 ### `remove()`
 
-Remove the association with the given objects.
-
-**Signature**
-
-- `async remove(options: TargetKey | TargetKey[] | AssociatedOptions)`
-
-**Type**
+Удаление связи с указанными объектами.
 
 ```typescript
-interface AssociatedOptions extends Transactionable {
-  tk?: TargetKey | TargetKey[];
-}
+async remove(options: TargetKey | TargetKey[] | AssociatedOptions)
 ```
 
 ### `toggle()`
 
-Toggle the associated object.
+Переключение состояния связи.
 
-In some business scenarios, it is often needed to toggle the associated object. For example, user adds a product into collection, and the user cancels the collection and collect it again. Using the `toggle` method can quickly implement similar functions.
+Полезно для сценариев типа "добавить/удалить из избранного".
 
-**Signature**
+```typescript
+async toggle(options: TargetKey | { tk?: TargetKey; transaction?: Transaction }): Promise<void>
+```
 
-- `async toggle(options: TargetKey | { tk?: TargetKey; transaction?: Transaction }): Promise<void>`
-
-**Detailed Information**
-
-The `toggle` method automatically checks whether the associated object already exists, and removes it if it does, or adds it if it does not.
+Метод автоматически проверяет наличие связи и либо добавляет, либо удаляет её.

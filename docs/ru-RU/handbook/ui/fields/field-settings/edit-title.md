@@ -1,8 +1,8 @@
-# Edit field title
+# Изменить название поля
 
-## Introduction
+## Введение
 
-The field title refers to the name or label defined by the field, which can be personalized according to the needs of different blocks.
+Название поля относится к имени или метке, определяемой полем, которые могут быть персонализированы в соответствии с потребностями различных блоков.
 
 ![20240411110825](https://static-docs.nocobase.com/20240411110825.png)
 

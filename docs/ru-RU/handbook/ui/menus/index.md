@@ -1,51 +1,51 @@
-# Menu
+# Меню
 
-Menus are used to organize pages and external links. In the default page layout template of NocoBase, the menu is located at the top and on the left side. Among them, the top is the primary menu, and the left side is for secondary and infinitely nested sub-menus.
+Меню используются для организации страниц и внешних ссылок. В шаблоне макета страницы NocoBase по умолчанию меню расположено вверху и слева. Верхнее меню является основным, а боковое - вторичным с возможностью бесконечной вложенности подменю.
 
-## Types of Menu Items
+## Типы пунктов меню
 
-NocoBase has three built-in types of menu items:
+В NocoBase есть три встроенных типа пунктов меню:
 
-- Group
-- Page
-- Link
+- Группа
+- Страница
+- Ссылка
 
 ![](https://static-docs.nocobase.com/ccf6f42d3cc2677d440f9e33b9488d1c.png)
 
-### Group
+### Группа
 
-"Group" is used to group menu items, which can be located at the top or on the left side. Within a group, you can continue to create sub-groups, meaning the menu can have an infinite hierarchy.
+"Группа" используется для объединения пунктов меню, которые могут располагаться вверху или слева. Внутри группы можно создавать подгруппы, что позволяет создавать меню с бесконечной вложенностью.
 
 ![](https://static-docs.nocobase.com/e59b2088fd68666cd240a26566616a3e.png)
 
-### Page
+### Страница
 
-A page can serve as a container for blocks, housing a variety of blocks. (See [Pages](./pages/index.md))
+Страница может служить контейнером для блоков, содержащим различные блоки. (См. [Страницы](./pages/index.md))
 
 ![](https://static-docs.nocobase.com/4cd259f6b79f6792df72ccc291da2af9.png)
 
-### Link
+### Ссылка
 
-Links can redirect to third-party URLs. You can use variables in the URL and Search params.
+Ссылки могут перенаправлять на сторонние URL-адреса. В URL и параметрах поиска можно использовать переменные.
 
 ![20240709231114](https://static-docs.nocobase.com/20240709231114.png)
 
-## Configuring the Menu
+## Настройка меню
 
-After entering the interface configuration mode, there are two icons in the upper right corner of the menu item:
+После входа в режим конфигурации интерфейса в правом верхнем углу пункта меню есть две иконки:
 
-- Drag to move
-- Menu item configuration
+- Перетаскивание для перемещения
+- Настройка пункта меню
 
 ![](https://static-docs.nocobase.com/963ba10e36d04fd258fea0e996231f68.png)
 
-### Menu Item Configuration
+### Настройка пункта меню
 
 ![](https://static-docs.nocobase.com/0a9a05bd88d8bad9d711102a730f351d.png)
 
-- Edit: Includes the menu item's title, icon, etc.
-- Move to: In addition to dragging to move, you can also quickly move a menu item via "Move to", allowing you to move a menu item to the front, back, or inside of another menu item.
-- Insert before
-- Insert after
-- Insert inner (Only for group types)
-- Delete
+- Редактировать: включает заголовок пункта меню, иконку и т.д.
+- Переместить в: кроме перетаскивания, можно быстро переместить пункт меню с помощью "Переместить в", что позволяет переместить пункт меню вперед, назад или внутрь другого пункта меню.
+- Вставить перед
+- Вставить после
+- Вставить внутрь (только для групп)
+- Удалить

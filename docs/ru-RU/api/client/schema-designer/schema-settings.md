@@ -1,4 +1,4 @@
-# SchemaSettings
+# Настройки Schema
 
 ### `<SchemaSettings />`
 

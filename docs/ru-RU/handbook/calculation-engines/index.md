@@ -1,30 +1,30 @@
-# Calculation Engines Overview
+# Обзор вычислительных движков
 
-In NocoBase, calculation engines are integral to formula fields, linkage rules, and workflows, providing users with versatile computational tools.
+В NocoBase вычислительные движки играют ключевую роль в полях формул, правилах связывания и рабочих процессах, предоставляя пользователям универсальные инструменты для вычислений.
 
 ## Formula.js
 
-**Formula.js** is a lightweight JavaScript library that replicates many of Microsoft Excel's formula functions.  It enables users to perform complex calculations effortlessly. Key features include:
+**Formula.js** — это лёгкая JavaScript-библиотека, воспроизводящая множество функций формул Microsoft Excel. Она позволяет пользователям легко выполнять сложные вычисления. Основные особенности:
 
-- **Extensive Function Library**: Offers a wide range of functions for various mathematical operations, including statistical and financial calculations.
-- **User-Friendly API**: Designed for ease of use, allowing both developers and non-developers to create formulas without extensive coding.
-- **Real-Time Calculations**: Optimized for real-time data processing, making it suitable for applications requiring immediate computational feedback.
+- **Обширная библиотека функций**: предоставляет широкий набор функций для различных математических операций, включая статистические и финансовые расчёты.
+- **Удобный API**: разработан для простоты использования, что позволяет как разработчикам, так и обычным пользователям создавать формулы без глубоких знаний программирования.
+- **Вычисления в реальном времени**: оптимизирован для обработки данных в режиме реального времени, что делает его подходящим для приложений, требующих немедленной реакции вычислений.
 
 ## Math.js
 
-**Math.js** is a comprehensive mathematics library for JavaScript and Node.js.  It supports a broad spectrum of mathematical operations, from basic arithmetic to advanced algebra, statistics, and linear algebra. Key features include:
+**Math.js** — это полнофункциональная математическая библиотека для JavaScript и Node.js. Она поддерживает широкий спектр математических операций — от базовой арифметики до продвинутой алгебры, статистики и линейной алгебры. Ключевые особенности:
 
-- **Comprehensive Functionality**: Provides an extensive array of functions for all types of mathematical operations.
-- **Flexible Expression Parsing**: Capable of parsing and evaluating mathematical expressions in string format.
-- **Advanced Calculations**: Supports matrix operations, symbolic computation, and statistical analysis, among other advanced mathematical functions.
-- **Extensibility**: Can be extended with custom functions and constants to meet specific needs.
+- **Комплексный функционал**: предоставляет большое количество функций для всех видов математических операций.
+- **Гибкий парсинг выражений**: способна разбирать и вычислять математические выражения, заданные в виде строк.
+- **Сложные вычисления**: поддерживает операции с матрицами, символьные вычисления, статистический анализ и другие продвинутые математические функции.
+- **Расширяемость**: может быть дополнена пользовательскими функциями и константами для удовлетворения специфических потребностей.
 
-## Application in NocoBase
+## Применение в NocoBase
 
-By integrating Formula.js and Math.js, NocoBase users can:
+Интеграция Formula.js и Math.js позволяет пользователям NocoBase:
 
-- **Execute a Wide Range of Calculations**: From simple arithmetic to complex mathematical operations, enhancing the computational capabilities of their applications.
-- **Develop Robust and Efficient Applications**: Build applications that require precise and powerful mathematical computations, ensuring reliability and performance.
-- **Boost Productivity**: Utilize pre-built functions to reduce the need for extensive custom code, thereby improving development efficiency.
+- **Выполнять разнообразные вычисления**: от простых арифметических операций до сложных математических расчётов, расширяя вычислительные возможности их приложений.
+- **Создавать надёжные и эффективные приложения**: разрабатывать приложения, требующие точных и мощных математических вычислений, обеспечивая высокую производительность и стабильность.
+- **Повышать продуктивность**: использовать готовые функции, сокращая необходимость в написании сложного пользовательского кода, что ускоряет процесс разработки.
 
-These libraries are pivotal in NocoBase's no-code platform, enabling users to create flexible and customizable calculation logic without delving into complex coding. This approach simplifies the development process while enhancing the functionality and adaptability of applications. 
+Эти библиотеки играют важнейшую роль в платформе NocoBase, позволяя пользователям создавать гибкую и настраиваемую логику вычислений без необходимости писать сложный код. Такой подход упрощает разработку и одновременно расширяет функциональность и адаптивность приложений.

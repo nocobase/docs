@@ -1,8 +1,8 @@
-# Block Title
+# Заголовок блока
 
-## Introduction
+## Введение
 
-Custom block title.
+Пользовательский заголовок блока.
 
 ![20240407175754](https://static-docs.nocobase.com/20240407175754.png)
 

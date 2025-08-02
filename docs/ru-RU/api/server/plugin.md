@@ -1,10 +1,10 @@
-# Plugin
+# Плагин (Plugin)
 
-## Overview
+## Обзор
 
-`Plugin` is the plugin class for the NocoBase server, providing configuration properties and lifecycle methods related to server-side plugins.
+`Plugin` - это класс плагинов для сервера NocoBase, предоставляющий свойства конфигурации и методы жизненного цикла для серверных плагинов.
 
-### Basic Usage
+### Базовое использование
 
 ```ts
 import { Plugin } from '@nocobase/server';
@@ -14,112 +14,111 @@ export class PluginDemoServer extends Plugin {}
 export default PluginDemoServer;
 ```
 
-## Instance Properties
+## Свойства экземпляра
 
 ### `options`
 
-Configuration options for the plugin.
+Параметры конфигурации плагина.
 
 ### `name`
 
-`string` - The name of the plugin.
+`string` - Название плагина.
 
 ### `enabled`
 
-`boolean` - Whether the plugin is enabled.
+`boolean` - Включен ли плагин.
 
 ### `installed`
 
-`boolean` - Whether the plugin is installed.
+`boolean` - Установлен ли плагин.
 
 ### `log`
 
-System log instance, with the default `module` set to the plugin name. Refer to [Logger](../logger.md).
+Экземпляр системного лога, где `module` по умолчанию устанавливается в имя плагина. См. [Logger](../logger.md).
 
 ### `app`
 
-The `Application` instance of the current application. Refer to [Application](./application.md).
+Экземпляр `Application` текущего приложения. См. [Application](./application.md).
 
 ### `pm`
 
-The `PluginManager` instance of the current application. Refer to [PluginManager](./plugin-manager.md).
+Экземпляр `PluginManager` текущего приложения. См. [PluginManager](./plugin-manager.md).
 
 ### `db`
 
-The `DataBase` instance of the current application. Refer to [DataBase](../database/index.md).
+Экземпляр `DataBase` текущего приложения. См. [DataBase](../database/index.md).
 
-## Lifecycle Methods
+## Методы жизненного цикла
 
 ### `afterAdd()`
 
-Executed after the plugin is added, i.e., after [`pm.add()`](./plugin-manager.md#add).
+Выполняется после добавления плагина (после [`pm.add()`](./plugin-manager.md#add)).
 
 ### `beforeLoad()`
 
-Executed during [`pm.load()`](./plugin-manager.md#load). Used to register events, initialize classes, or perform other preprocessing logic before plugin loading. At this stage, the core API can be accessed, but not other plugin APIs.
+Выполняется во время [`pm.load()`](./plugin-manager.md#load). Используется для регистрации событий, инициализации классов или другой предварительной обработки перед загрузкой плагина. На этом этапе доступны только основные API, но не API других плагинов.
 
 ### `load()`
 
-Loads the plugin and its related configurations. Executed during [`pm.load()`](./plugin-manager.md#load), after all [`beforeLoad()`](#beforeload) methods of plugins have finished execution. At this stage, other plugin APIs can be accessed.
+Загружает плагин и связанные с ним конфигурации. Выполняется во время [`pm.load()`](./plugin-manager.md#load), после завершения всех методов [`beforeLoad()`](#beforeload) плагинов. На этом этапе доступны API других плагинов.
 
 ### `install()`
 
-Installation logic of the plugin, executed during application installation, upgrade, or when the plugin is first enabled. Typically used to perform tasks such as inserting preset data into tables.
+Логика установки плагина, выполняется при установке приложения, обновлении или первом включении плагина. Обычно используется для вставки предустановленных данных в таблицы.
 
 ### `beforeEnable()`
 
-Executed before the plugin is enabled.
+Выполняется перед включением плагина.
 
 ### `afterEnable()`
 
-Executed after the plugin is enabled.
+Выполняется после включения плагина.
 
 ### `beforeDisable()`
 
-Executed before the plugin is disabled.
+Выполняется перед отключением плагина.
 
 ### `afterDisable()`
 
-Executed after the plugin is disabled.
+Выполняется после отключения плагина.
 
 ### `beforeRemove()`
 
-Executed before the plugin is removed.
+Выполняется перед удалением плагина.
 
 ### `afterRemove()`
 
-Executed after the plugin is removed.
+Выполняется после удаления плагина.
 
-
-## Other Methods
+## Другие методы
 
 ### `t()`
 
-Internationalization method.
+Метод интернационализации.
 
 ### `createLogger()`
 
-Creates a logger. Refer to [Logger](../logger.md).
+Создает логгер. См. [Logger](../logger.md).
 
 ### `toJSON()`
 
-A method for internal use. Outputs plugin-related configuration information.
+Внутренний метод. Выводит информацию о конфигурации плагина.
 
 ### `sendSyncMessage()`
 
-Publish synchronization messages. The synchronization messages sent by this method will only be received by the same plugin on other nodes, and will not be related to other plugins.
+Отправляет синхронизационные сообщения. Сообщения будут получены только этим же плагином на других узлах, без влияния на другие плагины.
 
-#### Signature
+#### Сигнатура
 
 ```ts
 sendSyncMessage(message: any): void | Promise<void>
 ```
 
-#### Arguments
+#### Аргументы
 
-- `message`: Sync message data.
+- `message`: Данные синхронизации.
 
-#### Example
+#### Пример
 
 ```ts
 this.sendSyncMessage({
@@ -129,19 +128,19 @@ this.sendSyncMessage({
 
 ### `handleSyncMessage()`
 
-In a distributed environment, handle synchronization events published by the current plugin from other nodes. When the plugin uses memory state, it is necessary to override the event handling logic to ensure synchronization with the state of other nodes.
+В распределенной среде обрабатывает синхронизационные события от других узлов. При использовании плагином состояния в памяти необходимо переопределить логику обработки событий для синхронизации состояния между узлами.
 
-#### Signature
+#### Сигнатура
 
 ```
 handleSyncMessage(message: any): void | Promise<void>
 ```
 
-#### Arguments
+#### Аргументы
 
-- `message`: Sync message data from other nodes.
+- `message`: Данные синхронизации от других узлов.
 
-#### Example
+#### Пример
 
 ```ts
 handleSyncMessage(message: SyncMessage) {

@@ -1,9 +1,26 @@
-# Custom action event
+# Пользовательское действие (Custom Action)
 
 <PluginInfo commercial="true" name="workflow-custom-action-trigger" link="/handbook/workflow-custom-action-trigger"></PluginInfo>
 
+## Обзор
+
+Плагин Workflow Custom Action Trigger предоставляет возможность создавать и настраивать пользовательские триггеры действий в NocoBase. Это коммерческий плагин, который позволяет:
+
+- Создавать собственные события для запуска рабочих процессов
+- Настраивать условия срабатывания триггеров
+- Интегрировать пользовательские действия в бизнес-процессы
+
+## Основные возможности
+
 <embed src="../../workflow-custom-action-trigger/trigger.md#L3-L999"></embed>
 
-## Related content
+## Связанные материалы
 
-Except for trigger configuration, there are also some related contents about custom action trigger that can be further understood through the [plugin documentation](../../workflow-custom-action-trigger/index.md).
+Помимо конфигурации триггеров, в [документации плагина](../../workflow-custom-action-trigger/index.md) вы можете найти дополнительную информацию о:
+
+- Создании сложных пользовательских триггеров
+- Интеграции с другими плагинами
+- Расширенных сценариях использования
+- Настройке прав доступа для пользовательских действий
+- Отладке и мониторинге пользовательских триггеров
+

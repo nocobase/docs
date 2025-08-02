@@ -1,17 +1,15 @@
-# Trace
+# Трассировка (Trace)
 
-## Class Methods
+## Методы класса
 
 ### `constructor()`
 
-Constructor to create a `Trace` instance.
+Конструктор для создания экземпляра `Trace`.
 
-#### Signature
-
+#### Сигнатура
 - `constructor(options?: TraceOptions)`
 
-#### Type
-
+#### Типы
 ```ts
 export type TraceOptions = {
   tracerName?: string;
@@ -20,72 +18,66 @@ export type TraceOptions = {
 };
 ```
 
-#### Details
+#### Детали
 
-| Property        | Type                   | Description                                        | Default Value               |
-| --------------- | ---------------------- | -------------------------------------------------- | --------------------------- |
-| `tracerName`    | `string`               | Trace identifier                                   | `nocobase-trace`            |
-| `version`       | `string`               |                                                    | Current version of NocoBase |
-| `processorName` | `string` \| `string[]` | Identifier(s) of registered `SpanProcessor` to use | -                           |
+| Свойство        | Тип                   | Описание                                        | Значение по умолчанию      |
+|-----------------|-----------------------|------------------------------------------------|----------------------------|
+| `tracerName`    | `string`              | Идентификатор трассировки                      | `nocobase-trace`           |
+| `version`       | `string`              | Версия системы                                 | Текущая версия NocoBase    |
+| `processorName` | `string` \| `string[]`| Идентификатор(ы) зарегистрированного процессора | -                          |
 
 ### `init()`
 
-Initializes `NodeTracerProvider`.
+Инициализирует `NodeTracerProvider`.
 
-#### Signature
-
+#### Сигнатура
 - `init(): void`
 
 ### `registerProcessor()`
 
-Registers a `SpanProcessor`.
+Регистрирует процессор спанов (`SpanProcessor`).
 
-#### Signature
-
+#### Сигнатура
 - `registerProcessor(name: string, processor: GetSpanProcessor)`
 
-#### Type
-
+#### Типы
 ```ts
 import { SpanProcessor } from '@opentelemetry/sdk-trace-base';
 
 type GetSpanProcessor = () => SpanProcessor;
 ```
 
-#### Details
+#### Детали
 
-| Parameter   | Type                  | Description                           |
-| ----------- | --------------------- | ------------------------------------- |
-| `name`      | `string`              | Unique identifier for `SpanProcessor` |
-| `processor` | `() => SpanProcessor` | Function to get `SpanProcessor`       |
+| Параметр    | Тип                   | Описание                           |
+|-------------|-----------------------|------------------------------------|
+| `name`      | `string`              | Уникальный идентификатор процессора |
+| `processor` | `() => SpanProcessor` | Функция получения процессора       |
 
 ### `getTracer()`
 
-Gets the `Tracer`.
+Получает экземпляр трассировщика (`Tracer`).
 
-#### Signature
-
+#### Сигнатура
 - `getTracer(name?: string, version?: string)`
 
-#### Details
+#### Детали
 
-| Parameter | Type     | Description      | Default Value               |
-| --------- | -------- | ---------------- | --------------------------- |
-| `name`    | `string` | Trace identifier | `nocobase-trace`            |
-| `version` | `string` |                  | Current version of NocoBase |
+| Параметр | Тип      | Описание               | Значение по умолчанию      |
+|----------|----------|------------------------|----------------------------|
+| `name`   | `string` | Идентификатор трассировки | `nocobase-trace`           |
+| `version`| `string` | Версия системы         | Текущая версия NocoBase    |
 
 ### `start()`
 
-Starts the `SpanProcessor`.
+Запускает процессор спанов.
 
-#### Signature
-
+#### Сигнатура
 - `start(): void`
 
 ### `shutdown()`
 
-Stops the `SpanProcessor`.
+Останавливает процессор спанов.
 
-#### Signature
-
+#### Сигнатура
 - `shutdown(): Promise<void>`

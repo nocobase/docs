@@ -1,18 +1,18 @@
-# Table Configuration Page
+# Страница конфигурации таблицы
 
-## Scenario Description
+## Описание сценария
 
-The configuration interface consists of a table that allows you to add, edit, and delete data.
+Интерфейс конфигурации состоит из таблицы, которая позволяет добавлять, редактировать и удалять данные.
 
-## Example Description
+## Описание примера
 
-Let’s assume we need to create an email notification plugin. This plugin can have multiple templates, and each template contains information such as the email subject and content. We need a configuration interface to manage these templates.
+Предположим, нам нужно создать плагин для уведомлений по электронной почте. Этот плагин может содержать несколько шаблонов, каждый из которых включает информацию, такую как тема письма и его содержимое. Нам нужен интерфейс конфигурации для управления этими шаблонами.
 
-The complete example code for this document can be found in [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-settings-table).
+Полный код примера для этой документации можно найти в репозитории [plugin-samples](https://github.com/nocobase/plugin-samples/tree/main/packages/plugins/%40nocobase-sample/plugin-settings-table).
 
-## Initialize the Plugin
+## Инициализация плагина
 
-Following the instructions in [Writing Your First Plugin](/development/your-first-plugin), if you don't have a project yet, you can create one first. If you already have a project or have cloned the source code, you can skip this step.
+Следуя инструкциям из [Создание первого плагина](/development/your-first-plugin), если у вас ещё нет проекта, создайте его. Если проект уже существует или вы клонировали исходный код, этот шаг можно пропустить.
 
 ```bash
 yarn create nocobase-app my-nocobase-app -d sqlite
@@ -21,111 +21,34 @@ yarn install
 yarn nocobase install
 ```
 
-Next, initialize a plugin and add it to the system:
+Далее инициализируйте плагин и добавьте его в систему:
 
 ```bash
 yarn pm create @nocobase-sample/plugin-settings-table
 yarn pm enable @nocobase-sample/plugin-settings-table
 ```
 
-Then, start the project:
+Затем запустите проект:
 
 ```bash
 yarn dev
 ```
 
-After logging in, visit [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/) to see the plugin installed and enabled.
+После входа в систему перейдите по адресу [http://localhost:13000/admin/pm/list/local/](http://localhost:13000/admin/pm/list/local/), чтобы убедиться, что плагин установлен и активирован.
 
-## Backend Implementation
+## Реализация серверной части
 
-### 1. Create a Data Table
+### 1. Создание таблицы данных
 
-The backend mainly involves creating a data table to store configuration information. To create the data table, you'll need to familiarize yourself with the following concepts:
+На серверной стороне основная задача — создание таблицы данных для хранения конфигурационной информации. Для создания таблицы необходимо ознакомиться со следующими концепциями:
 
-- [Tables and Fields](/development/server/collections)
-- [Creating Tables](/development/server/collections/configure#defining-tables-in-plugin-code)
-- [Field Type](/development/server/collections/options#field-type)
-- [defineCollection() API](/api/database#definecollection)
-- [Collection API](/api/database/collection)
+- [Таблицы и поля](/development/server/collections)
+- [Создание таблиц](/development/server/collections/configure#defining-tables-in-plugin-code)
+- [Типы полей](/development/server/collections/options#field-type)
+- [API defineCollection()](/api/database#definecollection)
+- [API коллекций](/api/database/collection)
 
-For this example, we create the file `packages/plugins/@nocobase-sample/plugin-settings-table/src/server/collections/email-templates.ts` with the following content:
-
-```ts
-import { defineCollection } from '@nocobase/database';
-
-export default defineCollection({
-  name: 'samplesEmailTemplates',
-  fields: [
-    {
-      type: 'string',
-      name: 'subject',
-    },
-    {
-      type: 'text',
-      name: 'content',
-    },
-  ],
-});
-```
-
-We created a `samplesEmailTemplates` data table with two fields: `subject` and `content`. Based on our needs, we used a single-line text field for `subject` and a rich text field for `content`.
-
-- The `subject` field is of the single-line text type, so its type is set to `string`.
-- The `content` field is of the long text type, so its type is set to `text`.
-
-### 2. Apply the Update
-
-We need to update the database with the new table definition. You can run the following command to apply the update:
-
-```bash
-yarn nocobase upgrade
-```
-
-![img_v3_02av_eb156d0e-9f25-4702-a5de-2bfa5cde84bg](https://static-docs.nocobase.com/img_v3_02av_eb156d0e-9f25-4702-a5de-2bfa5cde84bg.jpg)
-
-## Frontend Implementation
-
-### 1. Create the Plugin Configuration Page
-
-In the previous [Adding a Plugin Configuration Page (Single Route)](/plugin-samples/router/add-setting-page-single-route) section, we explained this in detail. Here, we won’t repeat those instructions.
-
-Modify the file `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/index.tsx` with the following content:
-
-```tsx | pure
-import { Plugin } from '@nocobase/client';
-// @ts-ignore
-import { name } from '../../package.json';
-
-export class PluginSettingsTableClient extends Plugin {
-  async load() {
-    this.app.pluginSettingsManager.add(name, {
-      title: 'Plugin Settings Table',
-      icon: 'TableOutlined',
-      Component: () => 'TODO',
-    });
-  }
-}
-
-export default PluginSettingsTableClient;
-```
-
-Then, visit [http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-table](http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-table) to view the configuration page.
-
-![img_v3_02av_c610403d-95d8-466a-a3d1-cfcab232057g](https://static-docs.nocobase.com/img_v3_02av_c610403d-95d8-466a-a3d1-cfcab232057g.jpg)
-
-## Backend Functionality Implementation
-
-### 1. Create a Data Table
-
-The backend primarily involves creating a data table to store configuration information. For creating data tables, the following concepts need to be understood:
-
-- [Data Tables and Fields](/development/server/collections)
-- [Data Table Creation](/development/server/collections/configure#defining-in-plugin-code)
-- [Field Type](/development/server/collections/options#field-type)
-- [defineCollection() API](/api/database#definecollection)
-- [Collection API](/api/database/collection)
-
-In this example, we create a `packages/plugins/@nocobase-sample/plugin-settings-table/src/server/collections/email-templates.ts` file with the following content:
+Для этого примера создайте файл `packages/plugins/@nocobase-sample/plugin-settings-table/src/server/collections/email-templates.ts` со следующим содержимым:
 
 ```ts
 import { defineCollection } from '@nocobase/database';
@@ -145,14 +68,14 @@ export default defineCollection({
 });
 ```
 
-We create a `samplesEmailTemplates` data table with two fields: `subject` and `content`. The `subject` field is stored as single-line text, and the `content` field is stored as rich text, depending on the requirement.
+Мы создали таблицу данных `samplesEmailTemplates` с двумя полями: `subject` и `content`. В соответствии с потребностями, для `subject` используется поле однострочного текста, а для `content` — поле форматированного текста.
 
-- The `subject` field is of single-line text type, so the type is set to `string`.
-- The `content` field is of rich text type, so the type is set to `text`.
+- Поле `subject` является однострочным текстом, поэтому его тип установлен как `string`.
+- Поле `content` является длинным текстом, поэтому его тип установлен как `text`.
 
-### 2. Execute the Update
+### 2. Применение обновления
 
-We also need to update the data table definition in the database. This can be done using the following command:
+Необходимо обновить базу данных с новой структурой таблицы. Для этого выполните следующую команду:
 
 ```bash
 yarn nocobase upgrade
@@ -160,15 +83,13 @@ yarn nocobase upgrade
 
 ![img_v3_02av_eb156d0e-9f25-4702-a5de-2bfa5cde84bg](https://static-docs.nocobase.com/img_v3_02av_eb156d0e-9f25-4702-a5de-2bfa5cde84bg.jpg)
 
----
+## Реализация клиентской части
 
-## Frontend Functionality Implementation
+### 1. Создание страницы конфигурации плагина
 
-### 1. Create Plugin Configuration Page
+В разделе [Добавление страницы конфигурации плагина (один маршрут)](/plugin-samples/router/add-setting-page-single-route) мы подробно описали этот процесс, поэтому здесь не будем его повторять.
 
-We have already covered how to create a [Plugin Configuration Page (Single Route)](/plugin-samples/router/add-setting-page-single-route) in detail, so we won’t repeat it here.
-
-We modify the `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/index.tsx` file as follows:
+Измените файл `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/index.tsx` следующим образом:
 
 ```tsx | pure
 import { Plugin } from '@nocobase/client';
@@ -178,7 +99,7 @@ import { name } from '../../package.json';
 export class PluginSettingsTableClient extends Plugin {
   async load() {
     this.app.pluginSettingsManager.add(name, {
-      title: 'Plugin Settings Table',
+      title: 'Таблица настроек плагина',
       icon: 'TableOutlined',
       Component: () => 'TODO',
     });
@@ -188,21 +109,21 @@ export class PluginSettingsTableClient extends Plugin {
 export default PluginSettingsTableClient;
 ```
 
-Then, you can visit [http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-table](http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-table) to view the configuration page.
+Затем перейдите по адресу [http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-table](http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-table), чтобы увидеть страницу конфигурации.
 
 ![img_v3_02av_c610403d-95d8-466a-a3d1-cfcab232057g](https://static-docs.nocobase.com/img_v3_02av_c610403d-95d8-466a-a3d1-cfcab232057g.jpg)
 
-### 2. Define Data Table Structure
+### 2. Определение структуры таблицы данных
 
-Using Schema-based writing, we first need to define the structure of the data table. To define the data table structure on the frontend, we need to understand the following concepts:
+Используя подход на основе схемы, сначала нужно определить структуру таблицы данных. Для определения структуры таблицы на клиентской стороне необходимо изучить следующие концепции:
 
-- [Data Tables and Fields](/development/server/collections#field-component)
-- [Field Type](/development/server/collections/options#field-type)
-- [Field Interface](/development/server/collections/options#field-interface)
-- [UI Schema Protocol](/development/client/ui-schema/what-is-ui-schema)
-- [Field Components](https://client.docs.nocobase.com/components)
+- [Таблицы и поля](/development/server/collections#field-component)
+- [Типы полей](/development/server/collections/options#field-type)
+- [Интерфейс поля](/development/server/collections/options#field-interface)
+- [Протокол UI Schema](/development/client/ui-schema/what-is-ui-schema)
+- [Компоненты полей](https://client.docs.nocobase.com/components)
 
-Next, we create a `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTable.tsx` file with the following content:
+Создайте файл `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTable.tsx` со следующим содержимым:
 
 ```ts
 const emailTemplatesCollection = {
@@ -214,7 +135,7 @@ const emailTemplatesCollection = {
       name: 'subject',
       interface: 'input',
       uiSchema: {
-        title: 'Subject',
+        title: 'Тема',
         required: true,
         'x-component': 'Input',
       },
@@ -224,7 +145,7 @@ const emailTemplatesCollection = {
       name: 'content',
       interface: 'richText',
       uiSchema: {
-        title: 'Content',
+        title: 'Содержимое',
         required: true,
         'x-component': 'RichText',
       },
@@ -233,32 +154,32 @@ const emailTemplatesCollection = {
 };
 ```
 
-We define a `samplesEmailTemplates` data table with two fields: `subject` and `content`. The following are explanations of the `fields`:
+Мы определили таблицу данных `samplesEmailTemplates` с двумя полями: `subject` и `content`. Поля описаны следующим образом:
 
-- `type`: The value needs to match the type of the data table field in the backend.
-- `name`: The field name, which should match the name of the corresponding field in the backend.
-- `interface`
-  - `subject` field: Single-line text, so the value is `input`.
-  - `content` field: Rich text, so the value is `richText`.
-- `uiSchema`: Corresponds to the rendering of frontend form items.
-  - `type`: Both single-line and rich text fields are of string type, so the value is `string`.
-  - `title`: The title of the form item.
-  - `required`: This is a required field, so the value is `true`.
+- `type`: Значение должно соответствовать типу поля таблицы данных на серверной стороне.
+- `name`: Имя поля, должно совпадать с именем поля на серверной стороне.
+- `interface`:
+  - Поле `subject`: Однострочный текст, поэтому значение `input`.
+  - Поле `content`: Форматированный текст, поэтому значение `richText`.
+- `uiSchema`: Определяет рендеринг элементов формы на клиентской стороне.
+  - `type`: Для однострочного и форматированного текста используется тип `string`.
+  - `title`: Заголовок элемента формы.
+  - `required`: Обязательное поле, поэтому значение `true`.
   - `x-component`:
-    - `subject` field: Uses the [Input Component](https://client.docs.nocobase.com/components/input).
-    - `content` field: Uses the [RichText Component](https://client.docs.nocobase.com/components/rich-text).
+    - Поле `subject`: Используется компонент [Input](https://client.docs.nocobase.com/components/input).
+    - Поле `content`: Используется компонент [RichText](https://client.docs.nocobase.com/components/rich-text).
 
-### 3. Create Table Schema
+### 3. Создание схемы таблицы
 
-For creating form Schema, the following knowledge is needed:
+Для создания схемы формы необходимы следующие знания:
 
-- [Table Component](https://client.docs.nocobase.com/components/table-v2)
-- [CollectionField Component](https://client.docs.nocobase.com/core/data-source/collection-field)
-- [CardItem Component](https://client.docs.nocobase.com/components/card-item)
-- [Schema Protocol](/development/client/ui-schema/what-is-ui-schema)
-- [DataBlockProvider Component](https://client.docs.nocobase.com/core/data-block/data-block-provider)
+- [Компонент таблицы](https://client.docs.nocobase.com/components/table-v2)
+- [Компонент CollectionField](https://client.docs.nocobase.com/core/data-source/collection-field)
+- [Компонент CardItem](https://client.docs.nocobase.com/components/card-item)
+- [Протокол схемы](/development/client/ui-schema/what-is-ui-schema)
+- [Компонент DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider)
 
-We refer to the [Extends Collection Table Example](https://client.docs.nocobase.com/components/table-v2#extends-collection) and continue to modify the `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTable.tsx` file as follows:
+Мы ссылаемся на пример [Расширение таблицы коллекции](https://client.docs.nocobase.com/components/table-v2#extends-collection) и продолжаем изменять файл `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTable.tsx`:
 
 ```tsx | pure
 import { ISchema } from '@nocobase/client';
@@ -289,7 +210,7 @@ const schema: ISchema = {
       properties: {
         subject: {
           type: 'void',
-          title: 'Subject',
+          title: 'Тема',
           'x-component': 'TableV2.Column',
           properties: {
             subject: {
@@ -301,7 +222,7 @@ const schema: ISchema = {
         },
         content: {
           type: 'void',
-          title: 'Content',
+          title: 'Содержимое',
           'x-component': 'TableV2.Column',
           properties: {
             content: {
@@ -317,23 +238,21 @@ const schema: ISchema = {
 }
 ```
 
-- [CardItem](https://client.docs.nocobase.com/components/card-item): A card component that provides card-style display.
-- [DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider): A data block component used to provide data to child nodes. Since this is a form that fetches single-line data, we provide `collection` and `action` properties.
-- [TableV2](https://client.docs.nocobase.com/components/table-v2): A table component used to render forms.
-- `useTableBlockProps`: Used to get the properties of the data block and pass them to the TableV2 component, usually without modification.
-- `TableV2.Column`: A Table column component for rendering table columns.
-- [CollectionField](https://client.docs.nocobase.com/core/data-source/collection-field): A data table field component used to read the `UI Schema` from the Collection and render it.
+- [CardItem](https://client.docs.nocobase.com/components/card-item): Компонент карты, обеспечивающий отображение в стиле карточки.
+- [DataBlockProvider](https://client.docs.nocobase.com/core/data-block/data-block-provider): Компонент блока данных, предоставляющий данные дочерним узлам. Поскольку это форма, запрашивающая данные одной строки, мы указываем свойства `collection` и `action`.
+- [TableV2](https://client.docs.nocobase.com/components/table-v2): Компонент таблицы для рендеринга форм.
+- `useTableBlockProps`: Используется для получения свойств блока данных и передачи их компоненту TableV2, обычно без изменений.
+- `TableV2.Column`: Компонент столбца таблицы для рендеринга столбцов.
+- [CollectionField](https://client.docs.nocobase.com/core/data-source/collection-field): Компонент поля таблицы данных, используемый для чтения `UI Schema` из коллекции и её рендеринга.
 
-### 4. Create Table Component
+### 4. Создание компонента таблицы
 
-To render the Schema as a component, we need to understand the following:
+Для рендеринга схемы в компонент необходимо понимать следующее:
 
-- [ExtendCollectionsProvider](https://client.docs.nocobase.com/core/data-source/extend-collections-provider) component for extending data tables.
-- [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component) component for rendering forms.
+- Компонент [ExtendCollectionsProvider](https://client.docs.nocobase.com/core/data-source/extend-collections-provider) для расширения таблиц данных.
+- Компонент [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component) для рендеринга форм.
 
-We continue writing in the `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTable.tsx` file:
-
-
+Продолжите добавлять в файл `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTable.tsx`:
 
 ```tsx | pure
 import React from 'react';
@@ -347,9 +266,9 @@ export const PluginSettingsTable = () => {
 };
 ```
 
-### 5. Register Plugin Configuration Page
+### 5. Регистрация страницы конфигурации плагина
 
-We modify the `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/index.tsx` file as follows:
+Измените файл `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/index.tsx` следующим образом:
 
 ```diff
 import { Plugin } from '@nocobase/client';
@@ -357,33 +276,33 @@ import { Plugin } from '@nocobase/client';
 import { name } from '../../package.json';
 + import { PluginSettingsTable } from './PluginSettingsTable'
 
-export class PluginSettingFormClient extends Plugin {
+export class PluginSettingsTableClient extends Plugin {
   async load() {
     this.app.pluginSettingsManager.add(name, {
-      title: 'Plugin Settings Form',
-      icon: 'FormOutlined',
+      title: 'Таблица настроек плагина',
+      icon: 'TableOutlined',
 -     Component: () => 'TODO',
 +     Component: PluginSettingsTable,
     });
   }
 }
 
-export default PluginSettingFormClient;
+export default PluginSettingsTableClient;
 ```
 
-Then, you can visit [http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-table](http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-table) to view the configuration page.
+Затем перейдите по адресу [http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-table](http://localhost:13000/admin/settings/@nocobase-sample/plugin-settings-table), чтобы увидеть страницу конфигурации.
 
 ![img_v3_02av_97fd272d-1333-4faf-9ce1-6363c6a049dg](https://static-docs.nocobase.com/img_v3_02av_97fd272d-1333-4faf-9ce1-6363c6a049dg.jpg)
 
-### 6. Implementing the "Add New" Feature
+### 6. Реализация функции «Добавить новую запись»
 
-Currently, our Table lacks any data, so we need to add the "Add New" functionality. To achieve this, please refer to the following documentation:
+На данный момент наша таблица не содержит данных, поэтому нужно добавить функцию «Добавить новую запись». Для этого обратитесь к следующей документации:
 
-- Table component [With ActionToolbar Example](https://client.docs.nocobase.com/components/table-v2)
-- [Form Component](https://client.docs.nocobase.com/components/form-v2)
-- [Action Component](https://client.docs.nocobase.com/components/action)
+- Компонент таблицы [Пример с ActionToolbar](https://client.docs.nocobase.com/components/table-v2)
+- [Компонент формы](https://client.docs.nocobase.com/components/form-v2)
+- [Компонент действия](https://client.docs.nocobase.com/components/action)
 
-We will continue editing the file `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTable.tsx`:
+Продолжите редактировать файл `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTable.tsx`:
 
 ```tsx | pure
 import React from 'react';
@@ -406,7 +325,7 @@ const schema: ISchema = {
         add: {
           type: 'void',
           'x-component': 'Action',
-          title: 'Add New',
+          title: 'Добавить новую',
           'x-align': 'right',
           'x-component-props': {
             type: 'primary',
@@ -415,7 +334,7 @@ const schema: ISchema = {
             drawer: {
               type: 'void',
               'x-component': 'Action.Drawer',
-              title: 'Add new',
+              title: 'Добавить новую',
               properties: {
                 form: {
                   type: 'void',
@@ -434,7 +353,7 @@ const schema: ISchema = {
                       'x-component': 'Action.Drawer.Footer',
                       properties: {
                         submit: {
-                          title: 'Submit',
+                          title: 'Отправить',
                           'x-component': 'Action',
                           'x-use-component-props': 'useSubmitActionProps',
                         },
@@ -455,7 +374,6 @@ const schema: ISchema = {
   }
 }
 
-
 const useSubmitActionProps = () => {
   const { setVisible } = useActionContext();
   const { message } = AntdApp.useApp();
@@ -470,27 +388,27 @@ const useSubmitActionProps = () => {
       const values = form.values;
       await resource.create({ values })
       await runAsync()
-      message.success('Saved successfully');
+      message.success('Успешно сохранено');
       setVisible(false);
     },
   };
 };
 ```
 
-In this context:
+В данном контексте:
 
-- [ActionBar](https://client.docs.nocobase.com/components/action#actionbar): Provides the layout for action buttons.
-- [Action](https://client.docs.nocobase.com/components/action): The "Add New" button.
-- [Action.Drawer](https://client.docs.nocobase.com/components/action#actiondrawer): Opens a modal window when clicked.
-- [FormV2](https://client.docs.nocobase.com/components/form-v2): The form component.
-- [FormItem](https://client.docs.nocobase.com/components/form-v2#formitem): The form item component.
-- [Action.Drawer.Footer](https://client.docs.nocobase.com/components/action#actiondrawerfooter): The footer of the modal window.
-- [useSubmitActionProps](https://client.docs.nocobase.com/core/data-block/use-data-block-request#use-submit-action-props): Used for submitting the form.
-  - `useActionContext()`: Retrieves the Action context.
-  - [useDataBlockResource()](https://client.docs.nocobase.com/core/data-block/data-block-resource-provider): Obtains the `resource` provided by `TableBlockProvider`, used for CRUD operations on data.
-  - [useDataBlockRequest()](https://client.docs.nocobase.com/core/data-block/data-block-request-provider): The request object for the Table block; calling `runAsync` will re-fetch data, thus refreshing the Table.
+- [ActionBar](https://client.docs.nocobase.com/components/action#actionbar): Обеспечивает компоновку для кнопок действий.
+- [Action](https://client.docs.nocobase.com/components/action): Кнопка «Добавить новую».
+- [Action.Drawer](https://client.docs.nocobase.com/components/action#actiondrawer): Открывает модальное окно при нажатии.
+- [FormV2](https://client.docs.nocobase.com/components/form-v2): Компонент формы.
+- [FormItem](https://client.docs.nocobase.com/components/form-v2#formitem): Компонент элемента формы.
+- [Action.Drawer.Footer](https://client.docs.nocobase.com/components/action#actiondrawerfooter): Нижняя часть модального окна.
+- [useSubmitActionProps](https://client.docs.nocobase.com/core/data-block/use-data-block-request#use-submit-action-props): Используется для отправки формы.
+  - `useActionContext()`: Получает контекст действия.
+  - [useDataBlockResource()](https://client.docs.nocobase.com/core/data-block/data-block-resource-provider): Получает `resource`, предоставляемый `TableBlockProvider`, для операций CRUD.
+  - [useDataBlockRequest()](https://client.docs.nocobase.com/core/data-block/data-block-request-provider): Объект запроса для блока таблицы; вызов `runAsync` обновляет данные таблицы.
 
-Next, we need to add `useSubmitActionProps` to the context:
+Далее добавьте `useSubmitActionProps` в контекст:
 
 ```diff
 export const PluginSettingsTable = () => {
@@ -507,15 +425,15 @@ export const PluginSettingsTable = () => {
   <source src="https://static-docs.nocobase.com/20240517-190400.mp4" type="video/mp4">
 </video>
 
-### 7. Implementing the Edit Feature
+### 7. Реализация функции редактирования
 
-The edit feature is similar to the "Add New" functionality, except we need to add an edit button within the Table and modify data through a modal window. To implement the edit feature, please refer to the following documentation:
+Функция редактирования похожа на функцию «Добавить новую», но нужно добавить кнопку редактирования в таблице и изменять данные через модальное окно. Для реализации функции редактирования обратитесь к следующей документации:
 
-- Table component [View Or Edit Record](https://client.docs.nocobase.com/components/table-v2#view-or-edit-record)
-- Form component [Default Values](https://client.docs.nocobase.com/components/form-v2#default-values)
-- [useCollectionRecord()](https://client.docs.nocobase.com/core/data-block/collection-record-provider): Used to retrieve data of the current row
+- Компонент таблицы [Просмотр или редактирование записи](https://client.docs.nocobase.com/components/table-v2#view-or-edit-record)
+- Компонент формы [Значения по умолчанию](https://client.docs.nocobase.com/components/form-v2#default-values)
+- [useCollectionRecord()](https://client.docs.nocobase.com/core/data-block/collection-record-provider): Используется для получения данных текущей строки.
 
-We will continue editing the file `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTable.tsx`:
+Продолжите редактировать файл `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTable.tsx`:
 
 ```tsx | pure
 import { useCollectionRecordData } from '@nocobase/client';
@@ -546,7 +464,7 @@ const schema: ISchema = {
         // ...
         actions: {
           type: 'void',
-          title: 'Actions',
+          title: 'Действия',
           'x-component': 'TableV2.Column',
           properties: {
             actions: {
@@ -558,7 +476,7 @@ const schema: ISchema = {
               properties: {
                 edit: {
                   type: 'void',
-                  title: 'Edit',
+                  title: 'Редактировать',
                   'x-component': 'Action.Link',
                   'x-component-props': {
                     openMode: 'drawer',
@@ -567,7 +485,7 @@ const schema: ISchema = {
                   properties: {
                     drawer: {
                       type: 'void',
-                      title: 'Edit',
+                      title: 'Редактировать',
                       'x-component': 'Action.Drawer',
                       properties: {
                         form: {
@@ -588,7 +506,7 @@ const schema: ISchema = {
                               'x-component': 'Action.Drawer.Footer',
                               properties: {
                                 submit: {
-                                  title: 'Submit',
+                                  title: 'Отправить',
                                   'x-component': 'Action',
                                   'x-use-component-props': 'useSubmitActionProps',
                                 },
@@ -610,11 +528,11 @@ const schema: ISchema = {
 }
 ```
 
-`Table` passes each row's data to child nodes via the [CollectionRecordProvider](https://client.docs.nocobase.com/core/data-block/collection-record-provider).
+`Table` передаёт данные каждой строки дочерним узлам через [CollectionRecordProvider](https://client.docs.nocobase.com/core/data-block/collection-record-provider).
 
-In our `useEditFormProps`, we use `useCollectionRecordData()` to fetch the current row's data, then create a form using `createForm`, passing the current row's data as the default values.
+В `useEditFormProps` мы используем `useCollectionRecordData()` для получения данных текущей строки, затем создаём форму с помощью `createForm`, передавая данные текущей строки в качестве значений по умолчанию.
 
-Next, we modify the logic of `useSubmitActionProps()` to support both creation and editing:
+Далее измените логику `useSubmitActionProps()` для поддержки как создания, так и редактирования:
 
 ```diff
 const useSubmitActionProps = () => {
@@ -642,9 +560,9 @@ const useSubmitActionProps = () => {
 };
 ```
 
-- [useCollection](https://client.docs.nocobase.com/core/data-source/collection-provider#usecollection): The data table object provided by DataBlockProvider.
+- [useCollection](https://client.docs.nocobase.com/core/data-source/collection-provider#usecollection): Объект таблицы данных, предоставляемый DataBlockProvider.
 
-Finally, register `useEditFormProps` into the context:
+Наконец, зарегистрируйте `useEditFormProps` в контексте:
 
 ```diff
 export const PluginSettingsTable = () => {
@@ -661,13 +579,13 @@ export const PluginSettingsTable = () => {
   <source src="https://static-docs.nocobase.com/20240517-190849.mp4" type="video/mp4">
 </video>
 
-### 8. Implementing the Delete Functionality
+### 8. Реализация функции удаления
 
-The delete functionality is relatively simple. We just need to add a `Delete` button in the Action column, and upon clicking it, call `resource.destroy()` followed by refreshing the Table data.
+Функция удаления относительно проста. Нужно добавить кнопку «Удалить» в столбец действий, и при её нажатии вызвать `resource.destroy()`, а затем обновить данные таблицы.
 
-- Action [Confirm](https://client.docs.nocobase.com/components/action#confirm)
+- Действие [Confirm](https://client.docs.nocobase.com/components/action#confirm)
 
-We continue by writing the following in the `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTable.tsx` file:
+Продолжите добавлять в файл `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTable.tsx`:
 
 ```ts
 import { ActionProps } from '@nocobase/client';
@@ -680,15 +598,15 @@ function useDeleteActionProps(): ActionProps {
   const { runAsync } = useDataBlockRequest();
   return {
     confirm: {
-      title: 'Delete',
-      content: 'Are you sure you want to delete it?',
+      title: 'Удалить',
+      content: 'Вы уверены, что хотите удалить?',
     },
     async onClick() {
       await resource.destroy({
         filterByTk: record[collection.filterTargetKey]
       });
       await runAsync();
-      message.success('Deleted!');
+      message.success('Удалено!');
     },
   };
 }
@@ -707,7 +625,7 @@ const schema: ISchema = {
             // ...
             delete: {
               type: 'void',
-              title: 'Delete',
+              title: 'Удалить',
               'x-component': 'Action.Link',
               'x-use-component-props': 'useDeleteActionProps',
             }
@@ -719,8 +637,7 @@ const schema: ISchema = {
 }
 ```
 
-Then, we register `useDeleteActionProps` into the context.
-
+Затем зарегистрируйте `useDeleteActionProps` в контексте:
 
 ```diff
 export const PluginSettingsTable = () => {
@@ -737,16 +654,16 @@ export const PluginSettingsTable = () => {
   <source src="https://static-docs.nocobase.com/20240517-191110.mp4" type="video/mp4">
 </video>
 
-### 9. Using Configuration Data Within a Page
+### 9. Использование данных конфигурации на странице
 
-There are two scenarios for using form data: one is using it within the page, and the other is using it globally. The difference between the two is:
+Существует два сценария использования данных формы: использование внутри страницы и глобальное использование. Разница между ними:
 
-- **Global Usage**: When form data is updated, it needs to be synchronized to the global state to achieve real-time updates.
-- **Page-Specific Usage**: Since the page will automatically be destroyed and recreated during navigation, there's no need to synchronize the data.
+- **Глобальное использование**: При обновлении данных формы их нужно синхронизировать с глобальным состоянием для обновления в реальном времени.
+- **Использование внутри страницы**: Поскольку страница автоматически уничтожается и создаётся при навигации, синхронизация данных не требуется.
 
-In this step, we will focus on using form data within a page.
+На этом этапе мы рассмотрим использование данных формы внутри страницы.
 
-We create the `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTablePage.tsx` file with the following content:
+Создайте файл `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTablePage.tsx` со следующим содержимым:
 
 ```tsx | pure
 import { useRequest } from '@nocobase/client';
@@ -763,13 +680,13 @@ export const PluginSettingsTablePage = () => {
 }
 ```
 
-Then, we import the `PluginSettingsTablePage` component into the `PluginSettingsTable` component:
+Затем импортируйте компонент `PluginSettingsTablePage` в компонент `PluginSettingsTable`:
 
 ```tsx | pure
 import { PluginSettingsTablePage } from './PluginSettingsTablePage'
 // ...
 
-export class PluginSettingFormClient extends Plugin {
+export class PluginSettingsTableClient extends Plugin {
   async load() {
     // ...
 
@@ -781,15 +698,15 @@ export class PluginSettingFormClient extends Plugin {
 }
 ```
 
-Afterward, we can visit [http://localhost:13000/admin/plugin-settings-table-page](http://localhost:13000/admin/plugin-settings-table-page) to see our form data.
+После этого перейдите по адресу [http://localhost:13000/admin/plugin-settings-table-page](http://localhost:13000/admin/plugin-settings-table-page), чтобы увидеть данные формы.
 
 ![img_v3_02av_753dd9f1-9e8c-43c5-a1c6-1fb217844cag](https://static-docs.nocobase.com/img_v3_02av_753dd9f1-9e8c-43c5-a1c6-1fb217844cag.jpg)
 
-### 10. Global Usage of Configuration Data
+### 10. Глобальное использование данных конфигурации
 
-To ensure global use and real-time refresh, you will need to use `Context` along with NocoBase [Provider](/development/client/providers) capabilities.
+Для глобального использования и обновления в реальном времени необходимо использовать `Context` вместе с возможностями [Provider](/development/client/providers) NocoBase.
 
-We create the file `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTableProvider.tsx` with the following content:
+Создайте файл `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTableProvider.tsx` со следующим содержимым:
 
 ```tsx | pure
 import React, { createContext, FC } from 'react';
@@ -812,13 +729,13 @@ export const usePluginSettingsTableRequest = () => {
 };
 ```
 
-Next, modify the `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/index.tsx` file to register it globally:
+Затем измените файл `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/index.tsx`, чтобы зарегистрировать его глобально:
 
 ```ts
 import { PluginSettingsTableProvider } from './PluginSettingsTableProvider'
 // ...
 
-export class PluginSettingFormClient extends Plugin {
+export class PluginSettingsTableClient extends Plugin {
   async load() {
     // ...
     this.app.addProvider(PluginSettingsTableProvider)
@@ -826,7 +743,7 @@ export class PluginSettingFormClient extends Plugin {
 }
 ```
 
-After updating the form, we need to retrieve the global data again. Modify `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTable.tsx`:
+После обновления формы необходимо повторно загрузить глобальные данные. Измените файл `packages/plugins/@nocobase-sample/plugin-settings-table/src/client/PluginSettingsTable.tsx`:
 
 ```diff
 import { usePluginSettingsTableRequest } from './PluginSettingsTableProvider';
@@ -842,7 +759,7 @@ const useSubmitActionProps = (): ActionProps => {
     async onClick() {
       // ...
 +     await globalSettingsTableRequest.runAsync();
-      message.success('Saved successfully!');
+      message.success('Успешно сохранено!');
     },
   };
 };
@@ -855,7 +772,7 @@ function useDeleteActionProps(): ActionProps {
     async onClick() {
       // ...
 +     await globalSettingsTableRequest.runAsync();
-      message.success('Deleted!');
+      message.success('Удалено!');
     }
   }
 }
@@ -865,20 +782,20 @@ function useDeleteActionProps(): ActionProps {
   <source src="https://static-docs.nocobase.com/20240517-191452.mp4" type="video/mp4">
 </video>
 
-### Packaging and Uploading to Production Environment
+### Упаковка и загрузка в продакшен
 
-Following the [Build and Package Plugin](/development/your-fisrt-plugin#build-and-package-plugin) documentation, we can package the plugin and upload it to the production environment.
+Следуя документации [Сборка и упаковка плагина](/development/your-fisrt-plugin#build-and-package-plugin), вы можете упаковать плагин и загрузить его в продакшен.
 
-If you cloned the source code, you need to perform a full build first to ensure the plugin dependencies are built properly.
+Если вы клонировали исходный код, сначала выполните полную сборку, чтобы убедиться, что зависимости плагина собраны правильно:
 
 ```bash
 yarn build
 ```
 
-If your project was created using `create-nocobase-app`, you can directly run:
+Если проект был создан с помощью `create-nocobase-app`, выполните:
 
 ```bash
 yarn build @nocobase-sample/plugin-settings-table --tar
 ```
 
-This will generate the file `storage/tar/@nocobase-sample/plugin-settings-table.tar.gz`, which can be installed via the [upload method](/welcome/getting-started/plugin).
+Это создаст файл `storage/tar/@nocobase-sample/plugin-settings-table.tar.gz`, который можно установить через [метод загрузки](/welcome/getting-started/plugin).

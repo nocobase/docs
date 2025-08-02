@@ -1,12 +1,12 @@
-# Data blocks - Form Fields
+# Блоки данных - Поля формы
 
-## Introduction
+## Введение
 
-Different types of fields in a form have different configuration options, allowing users to extend the configuration options through plugins to meet more personalized needs.
+Различные типы полей формы имеют разные параметры конфигурации, позволяя пользователям расширять их через плагины для удовлетворения индивидуальных потребностей.
 
 ![20240408221914](https://static-docs.nocobase.com/20240408221914.png)
 
-Displays fields related to associated tables (one-to-one or many-to-one relationship fields) as read-only.
+Поля связанных таблиц (связи один-к-одному или многие-к-одному) отображаются только для чтения.
 
 ![20240413222636](https://static-docs.nocobase.com/20240413222636.png)
 
@@ -14,45 +14,45 @@ Displays fields related to associated tables (one-to-one or many-to-one relation
   <source src="https://static-docs.nocobase.com/20240413223027.mp4" type="video/mp4">
 </video>
 
-## Field Configuration Options
+## Настройки полей
 
-### Default Values
+### Значения по умолчанию
 
-Supports setting constants/variables as the default values for fields.
+Поддержка установки констант/переменных в качестве значений по умолчанию.
 
 ![20240417094124](https://static-docs.nocobase.com/20240417094124.png)
 
-For more information, refer to [Setting Default Values](/handbook/ui/fields/field-settings/default-value).
+Подробнее: [Установка значений по умолчанию](/handbook/ui/fields/field-settings/default-value).
 
-### Setting Validation Rules
+### Настройка правил валидации
 
 ![20240417095037](https://static-docs.nocobase.com/20240417095037.png)
 
-For more information, refer to [Setting Validation Rules](/handbook/ui/fields/field-settings/validation-rules).
+Подробнее: [Настройка правил валидации](/handbook/ui/fields/field-settings/validation-rules).
 
-### Required Fields
+### Обязательные поля
 
 ![20240417111850](https://static-docs.nocobase.com/20240417111850.png)
 
-For more information, refer to [Required Fields](/handbook/ui/fields/field-settings/required).
+Подробнее: [Обязательные поля](/handbook/ui/fields/field-settings/required).
 
-- [Edit Field Title](/handbook/ui/fields/field-settings/edit-title)
-- [Display Title](/handbook/ui/fields/field-settings/display-title)
-- [Edit Field Description](/handbook/ui/fields/field-settings/edit-description)
-- [Edit Field Tooltip](/handbook/ui/fields/field-settings/edit-tooltip)
-- [Pattern](/handbook/ui/fields/field-settings/pattern)
+- [Изменение названия поля](/handbook/ui/fields/field-settings/edit-title)
+- [Отображаемое название](/handbook/ui/fields/field-settings/display-title)
+- [Описание поля](/handbook/ui/fields/field-settings/edit-description)
+- [Всплывающая подсказка](/handbook/ui/fields/field-settings/edit-tooltip)
+- [Шаблон](/handbook/ui/fields/field-settings/pattern)
 
-### Field Components
+### Компоненты полей
 
-Some fields support switching to other components. For example, the `URL` component can be switched to the `Preview` component.
+Некоторые поля поддерживают переключение между компонентами. Например, компонент `URL` можно переключить на компонент `Предпросмотр`.
 
 ![20240806164801](https://static-docs.nocobase.com/20240806164801.png)
 
-If you need to extend more components, refer to [Extending Value Field Components](/plugin-samples/field/value).
+Для расширения компонентов см.: [Расширение компонентов полей значений](/plugin-samples/field/value).
 
-### Style
+### Стиль
 
-In reading mode, the form can be styled.
+В режиме чтения можно настроить стиль формы.
 
 ![2024-06-26-15-16-09-Form Style Entry](https://static-docs.nocobase.com/2024-06-26-15-16-09-表单风格入口.png)
 ![2024-06-26-15-21-31-Style Configuration](https://static-docs.nocobase.com/2024-06-26-15-21-31-样式配置.png)

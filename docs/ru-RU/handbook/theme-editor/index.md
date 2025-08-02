@@ -1,57 +1,72 @@
-# Theme Editor
+# Редактор тем
 
-> Note: The current theme feature is implemented based on antd 5.x version. It is recommended to read about the [Customizing Theme](https://ant.design/docs/react/customize-theme#%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%BB%E9%A2%98) concept before proceeding with this document.
+> Примечание: Текущая функциональность тем реализована на основе antd 5.x версии. Рекомендуется ознакомиться с концепцией [Настройки темы](https://ant.design/docs/react/customize-theme#%D0%9D%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-%D1%82%D0%B5%D0%BC%D1%8B) перед изучением этого документа.
 
-## Introduction
+## Введение
 
-The plugin is essentially a tool for modifying the style of the entire front-end page. It currently supports editing global [SeedToken](https://ant.design/docs/react/customize-theme#seedtoken), [MapToken](https://ant.design/docs/react/customize-theme#maptoken), and [AliasToken](https://ant.design/docs/react/customize-theme#aliastoken), as well as enabling a [switch](https://ant.design/docs/react/customize-theme#%E4%BD%BF%E7%94%A8%E9%A2%84%E8%AE%BE%E7%AE%97%E6%B3%95) to Dark Mode and Compact Mode. In the future, it may support [component-level](https://ant.design/docs/react/customize-theme#%E4%BF%AE%E6%94%B9%E7%BB%84%E4%BB%B6%E5%8F%98%E9%87%8F-component-token) theme customization.
+Этот плагин представляет собой инструмент для изменения стилей всего интерфейса. В текущей версии поддерживается редактирование глобальных параметров [SeedToken](https://ant.design/docs/react/customize-theme#seedtoken), [MapToken](https://ant.design/docs/react/customize-theme#maptoken) и [AliasToken](https://ant.design/docs/react/customize-theme#aliastoken), а также включение [темной](https://ant.design/docs/react/customize-theme#%D0%98%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BF%D1%80%D0%B5%D0%B4%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%BD%D1%8B%D1%85-%D1%82%D0%B5%D0%BC) темы и компактного режима. В будущих версиях планируется поддержка [настройки тем на уровне компонентов](https://ant.design/docs/react/customize-theme#%D0%9D%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-%D0%BA%D0%BE%D0%BC%D0%BF%D0%BE%D0%BD%D0%B5%D0%BD%D1%82%D0%BE%D0%B2).
 
-## Usage Instructions
+## Инструкция по использованию
 
-### Enabling The Theme Plugin
+### Активация плагина тем
 
-Firstly, update NocoBase to the latest version (v0.11.1 or above). Then, search for the `Theme Editor` card in the `Plugin Management` Page. Click on the Enable button at the bottom right of the card and wait for the page to refresh.
+1. Обновите NocoBase до последней версии (v0.11.1 или выше)
+2. Найдите карточку "Редактор тем" в разделе "Управление плагинами"
+3. Нажмите кнопку "Активировать" в правом нижнем углу карточки
+4. Дождитесь обновления страницы
 
 ![20240409132838](https://static-docs.nocobase.com/20240409132838.png)
 
-### Navigate to the Theme Configuration Page
+### Переход на страницу настройки тем
 
-After enabling, click on the settings button at the bottom left of the card, and you will be redirected to the theme editing page. By default, there are four theme options: `Default Theme`, `Dark Theme`, `Compact Theme`, and `Compact Dark Theme`.
+После активации нажмите кнопку настроек в левом нижнем углу карточки. Вы перейдете на страницу редактирования тем. По умолчанию доступно четыре варианта: "Стандартная тема", "Темная тема", "Компактная тема" и "Компактная темная тема".
 
 ![20240409133020](https://static-docs.nocobase.com/20240409133020.png)
 
-## Adding a New Theme
+## Добавление новой темы
 
-Click the `Add New Theme` button and choose `Create a Brand New Theme`. A Theme Editor will pop up on the right side of the page, allowing you to edit Colors, Sizes, Styles, and more. After editing, enter a theme name and click save to add the new theme.
+1. Нажмите кнопку "Добавить новую тему"
+2. Выберите "Создать полностью новую тему"
+3. В правой части страницы откроется редактор тем, где можно настроить цвета, размеры, стили и другие параметры
+4. Введите название темы и нажмите "Сохранить"
 
 ![20240409133147](https://static-docs.nocobase.com/20240409133147.png)
 
-## Applying the New Theme
+## Применение новой темы
 
-You can move the mouse to the top right corner of the page, where you will see a theme switcher. Clicking on it allows you to switch to other themes, such as the newly added theme.
+Наведите курсор в правый верхний угол страницы, чтобы увидеть переключатель тем. Выберите новую тему из списка.
 
 ![20240409133247](https://static-docs.nocobase.com/20240409133247.png)
 
-## Editing an Existing Theme
+## Редактирование существующей темы
 
-Click the `Edit` button at the bottom left of the card. Similar to adding a new theme, a Theme Editor will pop up on the right side of the page. After editing, click save to complete the theme modification.
+1. Нажмите кнопку "Редактировать" в левом нижнем углу карточки темы
+2. В правой части откроется редактор для внесения изменений
+3. Нажмите "Сохранить" для применения изменений
 
 ![20240409134413](https://static-docs.nocobase.com/20240409134413.png)
 
-## User Options for Theme Switching
+## Настройка доступности тем для пользователей
 
-Newly added themes are by default available for users to switch to. If you do not want users to switch to a certain theme, you can turn off the `User selectable` switch at the bottom right of the theme card, making it unavailable for users to choose.
+Новые темы по умолчанию доступны для выбора пользователями. Чтобы скрыть тему из списка выбора:
+
+1. Найдите нужную тему
+2. Отключите переключатель "Доступна для выбора" в правом нижнем углу карточки
 
 ![20240409133331](https://static-docs.nocobase.com/20240409133331.png)
 
-## Setting as Default Theme (The Default Theme Cannot Be Deleted)
+## Установка темы по умолчанию
 
-Initially, the `Default Theme` is set as the default. If you want to set a specific theme as the new default, switch on the `Default Theme` toggle at the bottom right of the card. This will ensure that when users open the page for the first time, they will be presented with this theme.
+1. Найдите нужную тему
+2. Включите переключатель "Тема по умолчанию" в правом нижнем углу карточки
+
+Примечание: Стандартная тема не может быть удалена.
 
 ![20240409133409](https://static-docs.nocobase.com/20240409133409.png)
 
-## Deleting a Theme
+## Удаление темы
 
-Click on the Delete button below the card, then click on the confirmation button that pops up to remove the theme.
+1. Нажмите кнопку "Удалить" под карточкой темы
+2. Подтвердите действие во всплывающем окне
 
 ![20240409133435](https://static-docs.nocobase.com/20240409133435.png)
