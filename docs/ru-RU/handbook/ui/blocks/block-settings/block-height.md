@@ -1,40 +1,40 @@
-# Block Height
+# Настройка высоты блоков
 
-## Introduction
+## Введение
 
-Block height settings in NocoBase accommodate three scenarios: default height, specified height, and full height. This feature is supported by most blocks, with the exception of Gantt chart blocks. For chart blocks, height is controlled through specific parameters.
+Настройки высоты блоков в NocoBase поддерживают три варианта: высота по умолчанию, заданная высота и полная высота. Эта функция доступна для большинства блоков, за исключением диаграмм Ганта. Для блоков с графиками высота регулируется через специальные параметры.
 
 ![20240602194552](https://static-docs.nocobase.com/20240602194552.png)
 
 ![20240602194609](https://static-docs.nocobase.com/20240602194609.png)
 
-### Default Height
+### Высота по умолчанию
 
-Each block type handles default height uniquely. For instance, table and form blocks dynamically adjust their height to fit the content, while kanban blocks default to 70% of the viewport height.
+Каждый тип блока обрабатывает высоту по умолчанию по-своему. Например, таблицы и формы автоматически подстраивают высоту под содержимое, а канбан-доски по умолчанию занимают 70% высоты окна просмотра.
 
-### Specified Height
+### Заданная высота
 
-Users have the flexibility to define the overall height of a block's outer frame. The block's internal components then automatically calculate and distribute the available space.
+Пользователи могут вручную задавать общую высоту внешнего контейнера блока. Внутренние компоненты блока затем автоматически распределяют доступное пространство.
 
 ![20240604172359](https://static-docs.nocobase.com/20240604172359.gif)
 
-### Full Height
+### Полная высота
 
-The full height mode, akin to specified height, automatically determines and allocates block height based on the window's visible area. This approach eliminates page-level scrollbars, confining them to the interior of individual blocks.
+Режим полной высоты, аналогично заданной высоте, автоматически определяет и распределяет высоту блока исходя из видимой области окна. Этот подход исключает появление скроллбаров на уровне страницы, ограничивая их внутренними областями отдельных блоков.
 
-Height handling varies subtly across different block types:
+Обработка высоты немного различается для разных типов блоков:
 
-- Tables: Scrolling occurs within the tbody;
-- Forms/Details: The Grid area scrolls, excluding the operations section;
-- Lists/Grid Cards: The Grid area scrolls, excluding operations and pagination;
-- Kanban: Each column scrolls independently;
-- Maps and Calendars: Adapt to full height without scrollbars;
-- Iframes/Markdown: The block's outer frame height is fixed, with scrolling inside the block.
+- Таблицы: скроллинг происходит внутри tbody;
+- Формы/Детали: скроллится область Grid, кроме раздела операций;
+- Списки/Карточки: скроллится область Grid, кроме операций и пагинации;
+- Канбан: каждая колонка скроллится независимо;
+- Карты и Календари: адаптируются под полную высоту без скроллбаров;
+- Iframes/Markdown: фиксированная высота внешнего контейнера со скроллингом внутри блока.
 
-#### Full Height Table Example
+#### Пример таблицы с полной высотой
 
 ![20240604172439](https://static-docs.nocobase.com/20240604172439.gif)
 
-#### Full Height Form Example
+#### Пример формы с полной высотой
 
 ![20240604222711](https://static-docs.nocobase.com/20240604222711.gif)
