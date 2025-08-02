@@ -1,21 +1,21 @@
-# Cascading Select
+### **Каскадный выбор**
 
-## Introduction
+#### **Введение**
 
-The cascading selector is tailored for relational fields where the target table follows a tree structure. It allows users to select data according to the hierarchical levels of the tree, with support for fuzzy search to streamline the selection process.
+Каскадный селектор предназначен для полей связи, целевая таблица которых имеет древовидную структуру. Он позволяет выбирать данные по уровням иерархии дерева и поддерживает нечёткий поиск для упрощения процесса выбора.
 
-## Instructions
+#### **Инструкция**
 
-- For one-to-one relationships, the cascading selector is configured for single selection.
+- Для связей «один к одному» каскадный селектор настраивается на единичный выбор.
 
 ![20240409205542](https://static-docs.nocobase.com/20240409205542.png)
 
-- For one-to-many relationships, the cascading selector enables multi-selection and supports drag-and-drop sorting for more intuitive organization.
+- Для связей «один ко многим» каскадный селектор поддерживает множественный выбор и позволяет сортировать выбранные элементы перетаскиванием.
 
 ![20240409210705](https://static-docs.nocobase.com/20240409210705.png)
 
-## Field Configuration Options
+#### **Параметры настройки поля**
 
-- [Title Field](/handbook/ui/fields/field-settings/title-field): Defines the content displayed by the cascading component (title field) for easier identification.
+- [Поле заголовка](/handbook/ui/fields/field-settings/title-field): определяет отображаемое содержимое в каскадном компоненте (поле заголовка), что упрощает идентификацию.
 
-- [Field Component](/handbook/ui/fields/association-field): Offers the flexibility to switch to other relational field components, such as dropdown selectors, data pickers, and more.
+- [Компонент поля](/handbook/ui/fields/association-field): предоставляет возможность переключения на другие компоненты полей связи, такие как выпадающие списки, выбор данных и другие.
