@@ -1,59 +1,59 @@
-# 核心概念
+# Основные концепции
 
-## 资源 Resource
+## Ресурсы (Resource)
 
-在 NocoBase 里，资源（resource）有两种表达方式：
+В NocoBase ресурсы могут быть представлены двумя способами:
 
-- `<collection>`
-- `<collection>.<association>`
+- `<коллекция>`
+- `<коллекция>.<ассоциация>`
 
 <Alert>
 
-- collection 是所有抽象数据的集合
-- association 为 collection 的关联数据
+- Коллекция - это набор абстрактных данных
+- Ассоциация - связанные данные коллекции
 
 </Alert>
 
-示例
+Примеры:
 
-- `posts` 文章
-- `posts.user` 文章用户
-- `posts.tags` 文章标签
+- `posts` - статьи
+- `posts.user` - пользователи статей
+- `posts.tags` - теги статей
 
-配置
+Конфигурация:
 
 ```js
-// 文章
+// Статьи
 {
   name: 'posts',
 }
-// 文章用户
+// Пользователи статей
 {
   name: 'posts.user',
 }
-// 文章标签
+// Теги статей
 {
   name: 'posts.tags',
 }
 ```
 
-## 操作 Action
+## Действия (Action)
 
-以 `:<action>` 的方式表示资源操作
+Действия над ресурсами обозначаются через `:<действие>`:
 
-- `<collection>:<action>`
-- `<collection>.<association>:<action>`
+- `<коллекция>:<действие>`
+- `<коллекция>.<ассоциация>:<действие>`
 
-**示例**
+**Примеры:**
 
-- `posts:create` 创建文章
-- `posts.user:get` 查看文章用户
-- `posts.tags:add` 附加文章标签（将现有的标签与文章关联）
+- `posts:create` - создать статью
+- `posts.user:get` - получить пользователя статьи
+- `posts.tags:add` - добавить тег к статье
 
-配置
+Конфигурация:
 
 ```js
-// 文章资源的增删改查配置
+// CRUD для статей
 {
   name: 'posts',
   actions: {
@@ -65,7 +65,7 @@
   },
 }
 
-// 文章用户
+// Теги статей
 {
   name: 'posts.tags',
   actions: {
@@ -80,18 +80,18 @@
 }
 ```
 
-## 如何请求资源
+## Запросы к ресурсам
 
 ```bash
-<GET|POST>   /api/<collection>:<action>
-<GET|POST>   /api/<collection>:<action>/<filterByTk>
-<GET|POST>   /api/<collection>/<sourceId>/<association>:<action>
-<GET|POST>   /api/<collection>/<sourceId>/<association>:<action>/<filterByTk>
+<GET|POST>   /api/<коллекция>:<действие>
+<GET|POST>   /api/<коллекция>:<действие>/<filterByTk>
+<GET|POST>   /api/<коллекция>/<sourceId>/<ассоциация>:<действие>
+<GET|POST>   /api/<коллекция>/<sourceId>/<ассоциация>:<действие>/<filterByTk>
 ```
 
-**示例**
+**Примеры:**
 
-posts 资源
+Ресурс posts:
 
 ```bash
 POST  /api/posts:create
@@ -101,7 +101,7 @@ POST  /api/posts:update/1
 POST  /api/posts:destroy/1
 ```
 
-posts.comments 资源
+Ресурс posts.comments:
 
 ```bash
 POST  /api/posts/1/comments:create
@@ -111,7 +111,7 @@ POST  /api/posts/1/comments:update/1
 POST  /api/posts/1/comments:destroy/1
 ```
 
-posts.tags 资源
+Ресурс posts.tags:
 
 ```bash
 POST  /api/posts/1/tags:create
@@ -123,18 +123,19 @@ POST  /api/posts/1/tags:add
 GET   /api/posts/1/tags:remove
 ```
 
-## 资源定位
+## Идентификация ресурсов
 
-所有资源都通过 `filterByTk` 定位
+Ресурсы идентифицируются через `filterByTk`:
 
-- collection 资源，`filterByTk` 必须是唯一的
-- association 资源，`filterByTk` 可能并不是唯一的，需要同时提供 `sourceId` 来定位。
+- Для коллекций `filterByTk` должен быть уникальным
+-Для ресурсов ассоциации `filterByTk` может быть не единственным, и `sourceid` должен быть указан одновременно, чтобы найти его.
 
-例如 `tables.fields` 表示数据表的字段
+Например, `tables.fields` представляют собой поля таблицы данных
 
 ```bash
 GET   /api/tables/table1/fields/title
 GET   /api/tables/table2/fields/title
 ```
 
-table1 和 table2 都有 title 字段，title 在 table1 里是唯一的，但是其他表也可能有 title 字段
+Как в таблице 1, так и в таблице 2 есть поля заголовка. Заголовок уникален для таблицы 1, но в других таблицах также могут быть поля заголовка.
+
