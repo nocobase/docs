@@ -1,135 +1,121 @@
-# Просмотр изображений
+# Разработка
 
-## Введение
+## Расширение типов файлов клиента
 
-Плагин просмотра изображений предоставляет функцию масштабирования и просмотра изображений. Он позволяет пользователям просматривать изображения в полноэкранном режиме с возможностью навигации между ними.
+Для загруженных файлов клиентский интерфейс может отображать различные предварительные просмотры в зависимости от типов файлов. Поле вложения file-manager использует встроенную возможность предварительного просмотра файлов на основе браузера (iframe), поддерживая большинство типов файлов (таких как изображения, видео, аудио и PDF) для прямого просмотра в браузере. Когда тип файла не поддерживается для предварительного просмотра в браузере или требует специального взаимодействия, можно расширить дополнительные компоненты предварительного просмотра на основе типа файла.
 
-## Установка
+### Пример
 
-Встроенный плагин — отдельная установка не требуется.
+Например, если вы хотите расширить компонент карусели для файлов изображений, вы можете использовать следующий код:
 
-## Пример использования
+```ts
+import match from 'mime-match';
+import { Plugin, attachmentFileTypes } from '@nocobase/client';
 
-### Открытие просмотра изображений
-
-```tsx
-import { useImagePreview } from '@nocobase/plugin-image-preview/client';
-
-function MyComponent() {
-  const { open } = useImagePreview();
-
-  const images = [
-    { url: 'https://example.com/image1.jpg', title: 'Изображение 1' },
-    { url: 'https://example.com/image2.jpg', title: 'Изображение 2' },
-    { url: 'https://example.com/image3.jpg', title: 'Изображение 3' },
-  ];
-
-  return (
-    <div>
-      {images.map((image, index) => (
-        <img
-          key={index}
-          src={image.url}
-          alt={image.title}
-          style={{ cursor: 'pointer', margin: '5px' }}
-          onClick={() => open(index, images)}
-        />
-      ))}
-    </div>
-  );
+class MyPlugin extends Plugin {
+  load() {
+    attachmentFileTypes.add({
+      match(file) {
+        return match(file.mimetype, 'image/*');
+      },
+      Previewer({ index, list, onSwitchIndex }) {
+        const onDownload = useCallback(
+          (e) => {
+            e.preventDefault();
+            const file = list[index];
+            saveAs(file.url, `${file.title}${file.extname}`);
+          },
+          [index, list],
+        );
+        return (
+          <LightBox
+            // discourageDownloads={true}
+            mainSrc={list[index]?.url}
+            nextSrc={list[(index + 1) % list.length]?.url}
+            prevSrc={list[(index + list.length - 1) % list.length]?.url}
+            onCloseRequest={() => onSwitchIndex(null)}
+            onMovePrevRequest={() => onSwitchIndex((index + list.length - 1) % list.length)}
+            onMoveNextRequest={() => onSwitchIndex((index + 1) % list.length)}
+            imageTitle={list[index]?.title}
+            toolbarButtons={[
+              <button
+                key={'preview-img'}
+                style={{ fontSize: 22, background: 'none', lineHeight: 1 }}
+                type="button"
+                aria-label="Download"
+                title="Download"
+                className="ril-zoom-in ril__toolbarItemChild ril__builtinButton"
+                onClick={onDownload}
+              >
+                <DownloadOutlined />
+              </button>,
+            ]}
+          />
+        );
+      },
+    });
+  }
 }
 ```
 
-### Пользовательский интерфейс загрузки
+`attachmentFileTypes` — это объект входа, предоставляемый пакетом `@nocobase/client` для расширения типов файлов. Вы можете использовать его метод `add` для расширения дескриптора типа файла.
 
-```tsx
-import { useImagePreview } from '@nocobase/plugin-image-preview/client';
-import { Button } from 'antd';
+Каждый тип файла должен реализовать метод `match()` для проверки соответствия типа файла требованиям. В примере используется пакет `mime-match` для проверки атрибута `mimetype` файла. Если он соответствует `image/*`, он считается типом файла, который требует обработки. Если он не соответствует, он вернется к встроенному типу.
 
-function CustomToolbar() {
-  const { open, close, download } = useImagePreview();
+Свойство `Previewer` в дескрипторе типа — это компонент, используемый для предварительного просмотра. Когда тип файла соответствует, этот компонент будет отрендерен для предварительного просмотра. Обычно рекомендуется использовать модальный компонент (например, `<Modal />`) в качестве базового контейнера и размещать содержимое предварительного просмотра и интерактивное содержимое в этом компоненте для реализации функциональности предварительного просмотра.
 
-  return (
-    <div>
-      <Button onClick={() => download()}>Скачать</Button>
-      <Button onClick={() => close()}>Закрыть</Button>
-    </div>
-  );
+### API
+
+```ts
+export interface FileModel {
+  id: number;
+  filename: string;
+  path: string;
+  title: string;
+  url: string;
+  extname: string;
+  size: number;
+  mimetype: string;
 }
 
-function MyComponent() {
-  const { open } = useImagePreview();
+export interface PreviewerProps {
+  index: number;
+  list: FileModel[];
+  onSwitchIndex(index): void;
+}
 
-  const images = [
-    { url: 'https://example.com/image1.jpg', title: 'Изображение 1' },
-  ];
+export interface AttachmentFileType {
+  match(file: any): boolean;
+  Previewer?: React.ComponentType<PreviewerProps>;
+}
 
-  return (
-    <div>
-      <img
-        src={images[0].url}
-        alt={images[0].title}
-        style={{ cursor: 'pointer' }}
-        onClick={() => open(0, images, CustomToolbar)}
-      />
-    </div>
-  );
+export class AttachmentFileTypes {
+  add(type: AttachmentFileType): void;
 }
 ```
 
-## API
+#### `attachmentFileTypes`
 
-### `useImagePreview()`
+`attachmentFileTypes` — это глобальный экземпляр, который можно импортировать из пакета `@nocobase/client`:
 
-Хук для управления просмотром изображений.
-
-**Возвращаемые значения:**
-
-| Метод | Описание |
-|------|---------|
-| `open(index: number, list: Array<{ url: string, title?: string }>, ToolbarComponent?: React.ComponentType)` | Открывает просмотр изображений с указанным индексом, списком изображений и необязательным пользовательским компонентом панели инструментов. |
-| `close()` | Закрывает просмотр изображений. |
-| `download()` | Скачивает текущее изображение. |
-
-### Параметры компонента панели инструментов
-
-Компонент панели инструментов получает следующие свойства:
-
-| Свойство | Тип | Описание |
-|--------|-----|----------|
-| `onClose` | `() => void` | Функция для закрытия просмотра изображений. |
-| `onMovePrev` | `() => void` | Функция для перехода к предыдущему изображению. |
-| `onMoveNext` | `() => void` | Функция для перехода к следующему изображению. |
-| `currentImage` | `{ url: string, title?: string }` | Текущее отображаемое изображение. |
-| `currentIndex` | `number` | Индекс текущего изображения в списке. |
-
-## Примечания
-
-- Поддерживается навигация с помощью клавиш со стрелками.
-- Поддерживается закрытие по клавише Escape.
-- Поддерживается масштабирование колесом мыши.
-- Изображения предзагружаются для плавной навигации.
-
-```tsx
-// Пример реализации пользовательской панели инструментов
-const CustomToolbar = ({ onClose, onMovePrev, onMoveNext, currentImage, currentIndex }) => {
-  const handleDownload = () => {
-    const link = document.createElement('a');
-    link.href = currentImage.url;
-    link.download = currentImage.title || 'image';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
-  return (
-    <div style={{ position: 'absolute', top: 10, right: 10, display: 'flex', gap: 8 }}>
-      <button onClick={onMovePrev}>Назад</button>
-      <button onClick={onMoveNext}>Вперёд</button>
-      <button onClick={handleDownload}>Скачать</button>
-      <button onClick={onClose}>Закрыть</button>
-      <span>{currentIndex + 1} из {images.length}</span>
-    </div>
-  );
-};
+```ts
+import { attachmentFileTypes } from '@nocobase/client';
 ```
+
+#### `match(file)`
+
+Метод `match` принимает объект файла и возвращает `boolean`, указывающий, соответствует ли файл этому типу.
+
+#### `Previewer`
+
+Компонент `Previewer` получает следующие свойства:
+
+- `index: number` — индекс текущего файла в списке
+- `list: FileModel[]` — массив всех файлов
+- `onSwitchIndex(index: number | null)` — функция для переключения на другой файл или закрытия предварительного просмотра
+
+### Примечания
+
+- Компонент `Previewer` должен быть модальным или полноэкранным компонентом
+- Рекомендуется использовать библиотеки типа `react-image-lightbox` или `react-image-gallery` для реализации предварительного просмотра изображений
+- Для других типов файлов можно использовать соответствующие библиотеки (например, `react-pdf` для PDF файлов)

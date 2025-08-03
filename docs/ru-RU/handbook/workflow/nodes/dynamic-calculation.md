@@ -1,6 +1,6 @@
 # Динамический расчет
 
-<embed src="../../workflow-динамический-расчет/node.md#L3-L999"></embed>
+<embed src="../../workflow-dynamic-calculation/node.md#L3-L999"></embed>
 
 ## Связанный контент
 
