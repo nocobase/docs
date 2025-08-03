@@ -1,15 +1,15 @@
-# Extending Schema Components
+# Расширение компонентов Schema
 
-In addition to native HTML tags, developers can adapt more custom components to enrich the Schema component library.
+Помимо нативных HTML-тегов, разработчики могут адаптировать дополнительные пользовательские компоненты для обогащения библиотеки компонентов schema.
 
-Common methods for extending components include:
+Общие методы расширения компонентов включают:
 
-- [connect](https://react.formilyjs.org/api/shared/connect): Non-intrusive integration with third-party components, generally used for adapting field components, often used in conjunction with [mapProps](https://react.formilyjs.org/api/shared/map-props) and [mapReadPretty](https://react.formilyjs.org/api/shared/map-read-pretty).
-- [observer](https://react.formilyjs.org/api/shared/observer): Used when the component uses observable objects internally, and you want the component to respond to changes in the observable objects.
+- [connect](https://react.formilyjs.org/api/shared/connect): Неинтрузивная интеграция с компонентами сторонних разработчиков, обычно используется для адаптации компонентов полей, часто применяется вместе с [mapProps](https://react.formilyjs.org/api/shared/map-props) и [mapReadPretty](https://react.formilyjs.org/api/shared/map-read-pretty).
+- [observer](https://react.formilyjs.org/api/shared/observer): Используется, когда компонент внутренне использует наблюдаемые объекты, и вы хотите, чтобы компонент реагировал на изменения этих объектов.
 
-## Simple Extension
+## Простое расширение
 
-Register an existing React component directly.
+Прямое регистрирование существующего React-компонента.
 
 ```tsx
 /**
@@ -18,7 +18,7 @@ Register an existing React component directly.
 import React from 'react';
 import { SchemaComponent, SchemaComponentProvider } from '@nocobase/client';
 
-const Hello = () => <h1>Hello, world!</h1>;
+const Hello = () => <h1>Привет, мир!</h1>;
 
 const schema = {
   type: 'void',
@@ -35,7 +35,7 @@ export default () => {
 };
 ```
 
-## Integrating Third-Party Components with Connect
+## Интеграция сторонних компонентов с Connect
 
 ```tsx
 /**
@@ -55,7 +55,7 @@ const SingleText = connect(
   mapProps((props, field) => {
     return {
       ...props,
-      suffix: 'Suffix',
+      suffix: 'Суффикс',
     };
   }),
   mapReadPretty(ReadPretty),
@@ -66,12 +66,12 @@ const schema = {
   properties: {
     t1: {
       type: 'string',
-      default: 'hello t1',
+      default: 'привет t1',
       'x-component': 'SingleText',
     },
     t2: {
       type: 'string',
-      default: 'hello t2',
+      default: 'привет t2',
       'x-component': 'SingleText',
       'x-pattern': 'readPretty',
     },
@@ -87,7 +87,7 @@ export default () => {
 };
 ```
 
-## Using Observer to Respond to Data Changes
+## Использование Observer для реакции на изменения данных
 
 ```tsx
 /**
@@ -146,23 +146,23 @@ export default () => {
 };
 ```
 
-## Nested Schema
+## Вложенные Schema
 
-- `props.children` nesting is suitable for `void` and `object` type properties. For examples, see [Nesting void and object type schema](#nesting-void-and-object-type-schema)
-- `<RecursionField />` for custom nesting, suitable for all types. For examples, see [Nesting array type schema](#nesting-array-type-schema).
+- Вложение через `props.children` подходит для свойств типа `void` и `object`. Примеры см. в [Вложение schema типа void и object](#nesting-void-and-object-type-schema).
+- `<RecursionField />` для пользовательского вложения, подходит для всех типов. Примеры см. в [Вложение schema типа array](#nesting-array-type-schema).
 
-Note:
+Примечание:
 
-- Properties other than `void` and `object` types cannot be directly rendered through `props.children`, but you can use `<RecursionField />` to solve the nesting problem.
-- Only `void` and `object` type schemas can be used with `onlyRenderProperties`.
+- Свойства, кроме типов `void` и `object`, нельзя напрямую рендерить через `props.children`, но можно использовать `<RecursionField />` для решения проблемы вложения.
+- Только schema типов `void` и `object` могут использоваться с `onlyRenderProperties`.
 
 ```tsx | pure
 <RecursionField schema={schema} onlyRenderProperties />
 ```
 
-### Nesting void and object type schema
+### Вложение schema типа void и object
 
-Properties nodes can be adapted directly through `props.children`.
+Узлы properties можно адаптировать напрямую через `props.children`.
 
 ```tsx
 /**
@@ -171,9 +171,9 @@ Properties nodes can be adapted directly through `props.children`.
 import React from 'react';
 import { SchemaComponent, SchemaComponentProvider } from '@nocobase/client';
 
-// The Hello component adapted children, allowing nested properties.
-const Hello = (props) => <h1>Hello, {props.children}!</h1>;
-const World = () => <span>world</span>;
+// Компонент Hello адаптирует children, позволяя вложение properties.
+const Hello = (props) => <h1>Привет, {props.children}!</h1>;
+const World = () => <span>мир</span>;
 
 const schema = {
   type: 'object',
@@ -196,21 +196,21 @@ export default () => {
 };
 ```
 
-Rendering results comparison of various property types:
+Сравнение результатов рендеринга для различных типов свойств:
 
 ```tsx
 import React from 'react';
 import { SchemaComponent, SchemaComponentProvider } from '@nocobase/client';
 
-const Hello = (props) => <h1>Hello, {props.children}!</h1>;
-const World = () => <span>world</span>;
+const Hello = (props) => <h1>Привет, {props.children}!</h1>;
+const World = () => <span>мир</span>;
 
 const schema = {
   type: 'object',
   properties: {
     title1: {
       type: 'void',
-      'x-content': 'Void schema, rendering properties',
+      'x-content': 'Schema типа void, рендеринг properties',
     },
     void: {
       type: 'void',
@@ -225,7 +225,7 @@ const schema = {
     },
     title2: {
       type: 'void',
-      'x-content': 'Object schema, rendering properties',
+      'x-content': 'Schema типа object, рендеринг properties',
     },
     object: {
       type: 'object',
@@ -240,7 +240,7 @@ const schema = {
     },
     title3: {
       type: 'void',
-      'x-content': 'Array schema, not rendering properties',
+      'x-content': 'Schema типа array, не рендерит properties',
     },
     array: {
       type: 'array',
@@ -255,7 +255,7 @@ const schema = {
     },
     title4: {
       type: 'void',
-      'x-content': 'String schema, not rendering properties',
+      'x-content': 'Schema типа string, не рендерит properties',
     },
     string: {
       type: 'string',
@@ -280,11 +280,11 @@ export default () => {
 };
 ```
 
-### Nesting array type schema
+### Вложение schema типа array
 
-You can use `<RecursionField />` to solve custom nesting issues.
+Можно использовать `<RecursionField />` для решения проблем с пользовательским вложением.
 
-#### When array elements are string or number
+#### Когда элементы массива — string или number
 
 ```tsx
 import React from 'react';
@@ -314,10 +314,10 @@ const ArrayList = observer(
     const schema = useValueSchema();
     return (
       <>
-        String Array
+        Массив строк
         <ul>
           {field.value?.map((item, index) => {
-            // Only one element
+            // Только один элемент
             return <RecursionField name={index} schema={schema} />;
           })}
         </ul>
@@ -328,7 +328,7 @@ const ArrayList = observer(
 );
 
 const Value = connect((props) => {
-  return <li>value: {props.value}</li>;
+  return <li>значение: {props.value}</li>;
 });
 
 const schema = {
@@ -357,7 +357,7 @@ export default () => {
 };
 ```
 
-#### When array elements are objects
+#### Когда элементы массива — объекты
 
 ```tsx
 import React from 'react';
@@ -375,7 +375,7 @@ const ArrayList = observer(
   (props) => {
     const field = useField();
     const schema = useFieldSchema();
-    // Convert array schema to object schema as array type schema cannot onlyRenderProperties
+    // Преобразование schema массива в schema объекта, так как schema типа array не может использовать onlyRenderProperties
     const objSchema = new Schema({
       type: 'object',
       properties: schema.properties,
@@ -383,7 +383,7 @@ const ArrayList = observer(
     return (
       <ul>
         {field.value?.map((item, index) => {
-          // Array element is object
+          // Элемент массива — объект
           return (
             <RecursionField
               name={index}
@@ -399,7 +399,7 @@ const ArrayList = observer(
 );
 
 const Value = connect((props) => {
-  return <li>value: {props.value}</li>;
+  return <li>значение: {props.value}</li>;
 });
 
 const schema = {
@@ -428,7 +428,7 @@ export default () => {
 };
 ```
 
-#### Tree Structure Data
+#### Данные древовидной структуры
 
 ```tsx
 import { ArrayField } from '@formily/core';
@@ -476,7 +476,7 @@ const ArrayTable = observer(
 );
 
 const Value = connect((props) => {
-  return <li>value: {props.value}</li>;
+  return <li>значение: {props.value}</li>;
 });
 
 const schema: ISchema = {
