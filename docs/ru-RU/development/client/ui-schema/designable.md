@@ -1,25 +1,25 @@
-# Designable
+# Проектирование
 
-NocoBase provides design capabilities for Schema through the `createDesignable()` method.
+NocoBase предоставляет возможности проектирования для schema через метод `createDesignable()`.
 
 ```ts
 import React from 'react';
 import { Schema } from '@formily/json-schema';
 import { createDesignable } from '@nocobase/client';
 
-// Create a schema example
+// Создание примера schema
 const current = new Schema({
   name: 'root',
   type: 'void',
   'x-component': 'Page',
 });
 
-// Create a designable for the current schema
+// Создание designable для текущей schema
 const dn = createDesignable({
   current,
 });
 
-// Add a hello node inside the schema node
+// Добавление узла hello внутри узла schema
 dn.insertAfterBegin({
   name: 'hello',
   type: 'void',
@@ -42,7 +42,7 @@ console.log(current.toJSON());
 }
 ```
 
-In the Schema component, `useDesignable()` can be directly used to handle the current Schema node.
+В компоненте schema можно напрямую использовать `useDesignable()` для работы с текущим узлом schema.
 
 ```javascript
 import React from 'react';
@@ -53,7 +53,7 @@ import {
   useDesignable,
 } from '@nocobase.client';
 
-const Hello = () => <h1>Hello, world!</h1>;
+const Hello = () => <h1>Привет, мир!</h1>;
 
 const Page = (props) => {
   const dn = useDesignable();
@@ -67,7 +67,7 @@ const Page = (props) => {
           });
         }}
       >
-        Click to add a child node
+        Нажмите, чтобы добавить дочерний узел
       </Button>
       {props.children}
     </div>
@@ -91,68 +91,68 @@ export default () => {
 
 ## createDesignable vs useDesignable
 
-- `createDesignable` requires the `current` parameter, while `useDesignable` is used directly on the current node without needing `current`.
-- `createDesignable` can be used in events, while `useDesignable` is a React hook method that must be executed first.
-- `createDesignable`'s `current` can be any schema, while `useDesignable` can only be the current schema.
+- `createDesignable` требует параметр `current`, тогда как `useDesignable` используется напрямую на текущем узле без необходимости указания `current`.
+- `createDesignable` можно использовать в событиях, тогда как `useDesignable` — это метод React-хук, который должен быть выполнен первым.
+- `current` в `createDesignable` может быть любой schema, тогда как `useDesignable` работает только с текущей schema.
 
-Use cases:
+Случаи использования:
 
-- If it's clear that the operation is on the current node, using `useDesignable` is more convenient.
-- If the operation is not on the current node, `createDesignable` is more appropriate.
-- If the operation is triggered by an event, such as drag and drop, `createDesignable` is more suitable.
+- Если очевидно, что операция выполняется на текущем узле, удобнее использовать `useDesignable`.
+- Если операция выполняется не на текущем узле, более подходящим будет `createDesignable`.
+- Если операция вызывается событием, например, перетаскиванием, более подходящим является `createDesignable`.
 
-## Design capabilities of designable
+## Возможности проектирования designable
 
-The design capabilities provided by designable for schema are reflected in:
+Возможности проектирования, предоставляемые designable для schema, заключаются в:
 
-- Add: Insert at an adjacent position of the current node.
-- Query: Find child nodes.
-- Modify: Change schema parameters via patch.
-- Delete: Delete the current node or a specific child node.
-- Move: Move between nodes.
+- Добавление: Вставка в соседнюю позицию текущего узла.
+- Поиск: Поиск дочерних узлов.
+- Изменение: Изменение параметров schema через патч.
+- Удаление: Удаление текущего узла или определённого дочернего узла.
+- Перемещение: Перемещение между узлами.
 
-### Add: Insert at an adjacent position of the current node
+### Добавление: Вставка в соседнюю позицию текущего узла
 
-Similar to the DOM's [insert adjacent](https://dom.spec.whatwg.org/#insert-adjacent) concept, Schema also provides the `insertAdjacent()` method for resolving adjacent position insertion issues.
+Аналогично концепции [insert adjacent](https://dom.spec.whatwg.org/#insert-adjacent) в DOM, schema также предоставляет метод `insertAdjacent()` для решения задач вставки в соседние позиции.
 
-Four adjacent positions:
+Четыре соседние позиции:
 
 ```html
 <!-- root -->
 <div>
-  <!-- beforeBegin Insert before the current node -->
+  <!-- beforeBegin Вставка перед текущим узлом -->
   <p>
-    <!-- afterBegin Insert before the first child of the current node -->
+    <!-- afterBegin Вставка перед первым дочерним узлом текущего узла -->
     ...
-    <!-- beforeEnd Insert after the last child of the current node -->
+    <!-- beforeEnd Вставка после последнего дочернего узла текущего узла -->
   </p>
-  <!-- afterEnd Insert after the current node -->
+  <!-- afterEnd Вставка после текущего узла -->
 </div>
 ```
 
-The Schema is written as follows:
+Schema записывается следующим образом:
 
 ```ts
 {
   type: 'void',
   'x-component': 'div',
   properties: {
-    // beforeBegin Insert before the current node
+    // beforeBegin Вставка перед текущим узлом
     node1: {
       type: 'void',
       'x-component': 'p',
       properties: {
-        // afterBegin Insert before the first child of the current node
+        // afterBegin Вставка перед первым дочерним узлом текущего узла
         // ...
-        // beforeEnd Insert after the last child of the current node
+        // beforeEnd Вставка после последнего дочернего узла текущего узла
       },
     },
-    // afterEnd Insert after the current node
+    // afterEnd Вставка после текущего узла
   },
 }
 ```
 
-Use `useDesignable()` to insert at an adjacent position of the current schema.
+Использование `useDesignable()` для вставки в соседнюю позицию текущей schema.
 
 ```tsx
 import React from 'react';
@@ -182,7 +182,7 @@ const Hello = (props) => {
             });
           }}
         >
-          before begin
+          перед началом
         </Button>
         <Button
           onClick={() => {
@@ -192,7 +192,7 @@ const Hello = (props) => {
             });
           }}
         >
-          after begin
+          после начала
         </Button>
         <Button
           onClick={() => {
@@ -202,7 +202,7 @@ const Hello = (props) => {
             });
           }}
         >
-          before end
+          перед концом
         </Button>
         <Button
           onClick={() => {
@@ -212,7 +212,7 @@ const Hello = (props) => {
             });
           }}
         >
-          after end
+          после конца
         </Button>
       </Space>
       <div style={{ margin: 50 }}>{props.children}</div>
@@ -235,7 +235,7 @@ export default () => {
           properties: {
             hello1: {
               type: 'void',
-              title: 'Main',
+              title: 'Главный',
               'x-component': 'Hello',
             },
           },
@@ -246,7 +246,7 @@ export default () => {
 };
 ```
 
-Use `createDesignable()` to insert at an adjacent position of a specified schema.
+Использование `createDesignable()` для вставки в соседнюю позицию указанной schema ..
 
 ```tsx
 import React from 'react';
@@ -288,7 +288,7 @@ const Page = (props) => {
           });
         }}
       >
-        Add after Title2
+        Добавить после Title2
       </Button>
       {props.children}
     </div>
@@ -306,17 +306,17 @@ export default () => {
           properties: {
             hello1: {
               type: 'void',
-              title: 'Title1',
+              title: 'Заголовок1',
               'x-component': 'Hello',
             },
             hello2: {
               type: 'void',
-              title: 'Title2',
+              title: 'Заголовок2',
               'x-component': 'Hello',
             },
             hello3: {
               type: 'void',
-              title: 'Title3',
+              title: 'Заголовок3',
               'x-component': 'Hello',
             },
           },
@@ -327,23 +327,23 @@ export default () => {
 };
 ```
 
-### Query: Find child nodes
+### Поиск: Поиск дочерних узлов
 
-formily's json-schema provides `reduceProperties` for traversing and finding nodes, but it's too cumbersome to use. Therefore, Designable provides easier-to-use `findProperties` and `findProperty` methods to find child nodes.
+JSON-schema от Formily предоставляет `reduceProperties` для обхода и поиска узлов, но его использование слишком громоздкое. Поэтому Designable предоставляет более удобные методы `findProperties` и `findProperty` для поиска дочерних узлов.
 
 #### `findProperties`
 
-Find all child nodes that meet the conditions and return an array.
+Поиск всех дочерних узлов, соответствующих условиям, и возвращение массива.
 
 ```ts
 interface FindOptions {
-  // Filter conditions
+  // Условия фильтрации
   filter: any;
-  // Elements to skip during the search
+  // Элементы, которые нужно пропустить при поиске
   skipOn?: (s: Schema) => boolean;
-  // Exit when finding a certain element
+  // Прекращение поиска при нахождении определённого элемента
   breakOn?: (s: Schema) => boolean;
-  // Recursive search
+  // Рекурсивный поиск
   recursive?: boolean;
 }
 
@@ -352,7 +352,7 @@ class Designable {
 }
 ```
 
-Example to find all nodes that meet the conditions:
+Пример поиска всех узлов, соответствующих условиям:
 
 ```ts
 const items = dn.findProperties({
@@ -378,17 +378,17 @@ console.log(items.map((s) => schema.toJSON()));
 
 #### `findProperty`
 
-Find the first child node that meets the conditions.
+Поиск первого дочернего узла, соответствующего условиям.
 
 ```ts
 interface FindOptions {
-  // Filter conditions
+  // Условия фильтрации
   filter: any;
-  // Elements to skip during the search
+  // Элементы, которые нужно пропустить при поиске
   skipOn?: (s: Schema) => boolean;
-  // Exit when finding a certain element
+  // Прекращение поиска при нахождении определённого элемента
   breakOn?: (s: Schema) => boolean;
-  // Recursive search
+  // Рекурсивный поиск
   recursive?: boolean;
 }
 
@@ -397,7 +397,7 @@ class Designable {
 }
 ```
 
-Example:
+Пример:
 
 ```ts
 const current = new Schema({
@@ -432,7 +432,7 @@ console.log(schema.toJSON());
 }
 ```
 
-### Modify: Change schema parameters
+### Изменение: Изменение параметров schema
 
 ```ts
 const current = new Schema({
@@ -454,7 +454,7 @@ dn.shallowMerge({
 });
 ```
 
-### Delete: Delete the current node or a specific child node
+### Удаление: Удаление текущего узла или определённого дочернего узла
 
 ```ts
 const current = new Schema({
@@ -478,9 +478,9 @@ dn.remove({
 });
 ```
 
-### Move: Move between nodes
+### Перемещение: Перемещение между узлами
 
-`insertAdjacent` and other methods can also be used for node drag and drop movement.
+`insertAdjacent` и другие методы также могут использоваться для перемещения узлов с помощью перетаскивания.
 
 ```javascript
 import React from 'react';
@@ -506,7 +506,7 @@ const useDragEnd = () => {
     const activeSchema = active?.data?.current?.schema;
     const overSchema = over?.data?.current?.schema;
 
-    if (!activeSchema or !overSchema) {
+    if (!activeSchema || !overSchema) {
       return;
     }
 
@@ -567,9 +567,9 @@ const Block = observer((props) => {
   return (
     <Droppable id={field.address.toString()} data={{ schema: fieldSchema }}>
       <div style={{ marginBottom: 20, padding: '20px', background: '#f1f1f1' }}>
-        Block {fieldSchema.name}{' '}
+        Блок {fieldSchema.name}{' '}
         <Draggable id={field.address.toString()} data={{ schema: fieldSchema }}>
-          Drag
+          Перетащить
         </Draggable>
       </div>
     </Droppable>
