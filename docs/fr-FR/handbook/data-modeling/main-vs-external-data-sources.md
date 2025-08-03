@@ -78,7 +78,7 @@ Pour plus de détails, voir : [Collections de champs](https://docs.nocobase.com/
 |--------------|---------------------------|------------------------|
 | Média | ✅ | ✅ |
 | Markdown | ✅ | ✅ |
-| Markdown(Vditor) | ✅ | ❌ |
+| Markdown(Vditor) | ✅ | ✅ |
 | Texte riche | ✅ | ✅ |
 | Pièce jointe(Association) | ✅ | ❌ |
 | Pièce jointe(URL) | ✅ | ✅ |
@@ -133,7 +133,7 @@ Pour plus de détails, voir : [Collections de champs](https://docs.nocobase.com/
 | Un à plusieurs | ✅ | ✅ |
 | Plusieurs à un | ✅ | ✅ |
 | Plusieurs à plusieurs | ✅ | ✅ |
-| Plusieurs à plusieurs (tableau) | ✅ | ❌ |
+| Plusieurs à plusieurs (tableau) | ✅ | ✅ |
 
 :::info
 Les champs de pièces jointes dépendent des collections de fichiers, qui ne sont supportées que par les bases de données principales. Par conséquent, les bases de données externes ne supportent actuellement pas les champs de pièces jointes.

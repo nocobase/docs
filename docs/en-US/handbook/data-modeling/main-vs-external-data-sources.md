@@ -78,7 +78,7 @@ For more details, see: [Collection Fields](https://docs.nocobase.com/handbook/da
 |-----------|----------------|-------------------|
 | Media | ✅ | ✅ |
 | Markdown | ✅ | ✅ |
-| Markdown(Vditor) | ✅ | ❌ |
+| Markdown(Vditor) | ✅ | ✅ |
 | Rich text | ✅ | ✅ |
 | Attachment(Association) | ✅ | ❌ |
 | Attachment(URL) | ✅ | ✅ |
@@ -133,7 +133,7 @@ For more details, see: [Collection Fields](https://docs.nocobase.com/handbook/da
 | One-to-many | ✅ | ✅ |
 | Many-to-one | ✅ | ✅ |
 | Many-to-many | ✅ | ✅ |
-| Many-to-many (array) | ✅ | ❌ |
+| Many-to-many (array) | ✅ | ✅ |
 
 :::info
 Attachment fields depend on file collections, which are only supported by main databases. Therefore, external databases do not currently support attachment fields.
