@@ -46,7 +46,7 @@ Parsing an HTTP request is divided into three parts:
 
   Request parameter is the URL of query parameters, such as `http://localhost:13000/api/webhook:trigger/1hfmkioou0d? query=1`  'query' parameter. Paste the complete URL sample or query only the parameter part of the sample and click the parse button to automatically parse the key-value pairs.
   
-  ! [20241210111155](https://static-docs.nocobase.com/20241210111155.png)
+  ![20241210111155](https://static-docs.nocobase.com/20241210111155.png)
   
   Automatic parsing converts the parameter portion of the URL into a JSON structure, and generates a path based on the parameter hierarchy such as `query[0]`, `query[0].a`, etc. The path name can be manually modified if it does not meet the requirements, but usually does not need to be modified. Aliases are optional for displaying the name of a variable when used as a variable. At the same time, all parameter tables in the sample are generated. If there are unnecessary parameters, you can delete them.
   
@@ -54,7 +54,7 @@ Parsing an HTTP request is divided into three parts:
 
   The request Body is the body of the HTTP request. Currently, only the request body in Content-Type format application/json is supported. You can directly configure the path to be parsed, or enter a JSON example and click the parse button for automatic parsing.
 
-  ! [20241210112529](https://static-docs.nocobase.com/20241210112529.png)
+  ![20241210112529](https://static-docs.nocobase.com/20241210112529.png)
 
   Automatic parsing JSON structure will be the key/value pair into paths, such as `{" a ": 1," b ": {" c" : 2}}` generates `a`, `b`, `b.c` path, etc. Aliases are optional for displaying the name of a variable when used as a variable. At the same time, all parameter tables in the sample are generated. If there are unnecessary parameters, you can delete them.
 
@@ -64,7 +64,7 @@ The response part of Webhook is configured differently in synchronous and asynch
 
 Typically, the response to an asynchronously triggered Webhook event has a status code of `200` and a response body of `ok`. You can also customize the status code, response header, and response body of the response.
 
-! [20241210114312](https://static-docs.nocobase.com/20241210114312.png)
+![20241210114312](https://static-docs.nocobase.com/20241210114312.png)
 
 ### Response node
 
@@ -76,11 +76,11 @@ In addition, the execution of the response node terminates the execution of the 
 
 In the workflow configuration interface, click the plus sign ("+") button in the process to add the "Response" node:
 
-! [20241210115120](https://static-docs.nocobase.com/20241210115120.png)
+![20241210115120](https://static-docs.nocobase.com/20241210115120.png)
 
 #### Response configuration
 
-! [20241210115500](https://static-docs.nocobase.com/20241210115500.png)
+![20241210115500](https://static-docs.nocobase.com/20241210115500.png)
 
 Variables in the workflow context can be used in the response body.
 
@@ -88,6 +88,6 @@ Variables in the workflow context can be used in the response body.
 
 In the Webhook workflow in synchronous mode, different responses can be returned according to different business conditions, as shown in the figure below:
 
-! [20241210120655](https://static-docs.nocobase.com/20241210120655.png)
+![20241210120655](https://static-docs.nocobase.com/20241210120655.png)
 
 Check whether a service status is satisfied through the conditional branch node. If yes, a success message is displayed. Otherwise, a failure message is displayed.

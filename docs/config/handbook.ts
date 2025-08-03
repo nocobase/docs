@@ -2125,6 +2125,21 @@ export default [
             'title.zh-CN': '扩展开发',
             link: '/handbook/file-manager/development',
           },
+          {
+            title: 'Related plugins',
+            'title.fr-FR': 'Plugins associés',
+            'title.zh-CN': '相关插件',
+            'title.ja-JP': '関連プラグイン',
+            children: [
+              {
+                title: 'File Previewer (Office)',
+                'title.fr-FR': 'Aperçu des fichiers (Office)',
+                'title.zh-CN': '文件预览（Office）',
+                'title.ja-JP': 'ファイルプレビュー（Office）',
+                link: '/handbook/file-previewer-office',
+              },
+            ],
+          }
         ],
       },
       {
