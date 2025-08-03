@@ -7,5 +7,12 @@ node_modules
 /server
 .vscode
 .idea
-.env
+.gitignore
+DEV_SERTUP.md
+setup.sh
+setup-dev.sh
+.nvmrc
+.nojekyll
+yarn-error.log
+
 
