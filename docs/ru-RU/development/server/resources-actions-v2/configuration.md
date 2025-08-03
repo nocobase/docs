@@ -1,14 +1,18 @@
-# 配置资源和操作
+### **Конфигурация ресурсов и действий**
 
-最简单的 resource actions
-带默认参数的 Action
-使用全局 Action
-Action 参数的多来源合并
-内置 Actions 的用法
+#### **Самые простые действия (Actions) ресурса**
 
-在 NocoBase 中，resource 是为 collection 服务的，已配置的 collections（包括 associations） 会自动转为相应的 resources。
+#### **Действие с параметрами по умолчанию**
 
-## 自动转换
+#### **Использование глобальных действий**
+
+#### **Объединение параметров действия из нескольких источников**
+
+#### **Использование встроенных действий**
+
+В NocoBase ресурсы предназначены для работы с коллекциями. Настроенные коллекции (включая связи) автоматически преобразуются в соответствующие ресурсы.
+
+#### **Автоматическое преобразование**
 
 ```ts
 export class PluginSampleToResourcesServer extends Plugin {
@@ -30,11 +34,11 @@ export class PluginSampleToResourcesServer extends Plugin {
 }
 ```
 
-以上示例的 `posts` 和 `posts.comments` 的接口如下：
+Интерфейсы для `posts` и `posts.comments` в приведённом выше примере будут следующими:
 
-posts 资源
+**Ресурс posts**
 
-```bash
+```
 POST  /api/posts:create
 GET   /api/posts:list
 GET   /api/posts:get/1
@@ -42,9 +46,9 @@ POST  /api/posts:update/1
 POST  /api/posts:destroy/1
 ```
 
-posts.comments 资源
+**Ресурс posts.comments**
 
-```bash
+```
 POST  /api/posts/1/comments:create
 GET   /api/posts/1/comments:list
 GET   /api/posts/1/comments:get/1
@@ -52,33 +56,33 @@ POST  /api/posts/1/comments:update/1
 POST  /api/posts/1/comments:destroy/1
 ```
 
-NocoBase 的 HTTP API 是 REST API 的超集，标准的 CRUD API 也支持 RESTful 风格。
+HTTP API в NocoBase является надмножеством REST API, стандартные CRUD-операции поддерживают RESTful-стиль.
 
-## 内置的操作
+#### **Встроенные действия**
 
-上面 collection 转为 resource 之后，之所以可以直接进行 CRUD 操作了，是因为内置了一些常用的操作
+После преобразования коллекции в ресурс становится возможным выполнение CRUD-операций, поскольку уже определены некоторые стандартные действия.
 
-内置的全局操作，可用于 collection 或 association
+**Встроенные глобальные действия, доступные для коллекций и связей:**
 
-- create
-- get
-- list
-- update
-- destroy
-- move
+- `create`
+- `get`
+- `list`
+- `update`
+- `destroy`
+- `move`
 
-内置的关联操作，仅用于 association
+**Встроенные действия для связей (только для связей):**
 
-- set
-- add
-- remove
-- toggle
+- `set`
+- `add`
+- `remove`
+- `toggle`
 
-内置 Actions 的用法参考 API 文档
+Справочник по использованию встроенных действий доступен в документации API.
 
-## 自定义操作
+#### **Пользовательские действия**
 
-### 全局操作
+**Глобальные действия**
 
 ```ts
 export class PluginSampleResourcerServer extends Plugin {
@@ -91,7 +95,7 @@ export class PluginSampleResourcerServer extends Plugin {
 }
 ```
 
-### 某资源的操作
+**Действия для конкретного ресурса**
 
 ```ts
 export class PluginSampleResourcerServer extends Plugin {
@@ -103,9 +107,9 @@ export class PluginSampleResourcerServer extends Plugin {
 }
 ```
 
-## 自定义资源
+#### **Пользовательские ресурсы**
 
-如果有特殊需求，也可以显式的定义资源及相关操作
+При наличии специфических требований можно явно определить ресурс и соответствующие действия:
 
 ```ts
 app.resourcer.define({

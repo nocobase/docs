@@ -1,23 +1,23 @@
-# Schema components
+# **Компоненты схемы (Schema components)**
 
-## Wrapper Components
+# **Обёрточные компоненты**
 
 - BlockItem
 - FormItem
 - CardItem
 
-## Layout
+## **Макет (Layout)**
 
 - Page
 - Grid
 - Tabs
 - Space
 
-## Field Components
+## **Компоненты полей**
 
-Field components are generally not used alone but are utilized within data display components.
+Компоненты полей, как правило, не используются отдельно, а применяются внутри компонентов отображения данных.
 
-- CollectionField: Universal component
+- CollectionField: универсальный компонент
 - Cascader
 - Checkbox
 - ColorSelect
@@ -38,9 +38,9 @@ Field components are generally not used alone but are utilized within data displ
 - TreeSelect
 - Upload
 
-## Data Display Components
+## **Компоненты отображения данных**
 
-These need to be used in conjunction with field components.
+Используются совместно с компонентами полей.
 
 - Calendar
 - Form
@@ -48,22 +48,22 @@ These need to be used in conjunction with field components.
 - Table
 - TableV2
 
-## Actions (onClick Event Components)
+## **Действия (компоненты с событием onClick)**
 
 - Action
 - Action.Drawer
 - Action.Modal
-- ActionBar: Used for action layout
+- ActionBar: используется для компоновки действий
 - Menu
 
-## Others
+## **Прочие**
 
 - G2plot
 - Markdown.Void
 
-## Use Cases of `x-designer` and `x-initializer`
+## **Сценарии использования `x-designer` и `x-initializer`**
 
-`x-designer` is effective when `x-decorator` or `x-component` is one of the following components:
+`x-designer` действует, когда `x-decorator` или `x-component` является одним из следующих компонентов:
 
 - BlockItem
 - CardItem
@@ -71,7 +71,7 @@ These need to be used in conjunction with field components.
 - Table.Column
 - Tabs.TabPane
 
-`x-initializer` is effective when `x-decorator` or `x-component` is one of the following components:
+`x-initializer` действует, когда `x-decorator` или `x-component` является одним из следующих компонентов:
 
 - ActionBar
 - BlockItem

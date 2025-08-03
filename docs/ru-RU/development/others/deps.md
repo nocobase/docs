@@ -1,14 +1,14 @@
-# Dependencies
+# Зависимости
 
-The plugin's dependencies are categorized into local dependencies and global dependencies. Global dependencies are provided by `@nocobase/server` and `@nocobase/client`, and they are not included in the plugin's final bundle. However, local dependencies will be bundled with the plugin.
+Зависимости плагина делятся на локальные и глобальные. Глобальные зависимости предоставляются `@nocobase/server` и `@nocobase/client` и не включаются в итоговый бандл плагина. Однако локальные зависимости будут собраны вместе с плагином.
 
-Since the local dependencies will be bundled (including npm packages required by the server, which will also be included in `dist/node_modules`), when developing a plugin, all dependencies should be added to `devDependencies`.
+Поскольку локальные зависимости включаются в бандл (включая npm-пакеты, требуемые сервером, которые также попадут в `dist/node_modules`), при разработке плагина все зависимости должны добавляться в `devDependencies`.
 
 <Alert type="warning">
-When installing the following dependencies for the plugin, ensure that their **versions** are consistent with those of `@nocobase/server` and `@nocobase/client`.
+При установке следующих зависимостей для плагина убедитесь, что их **версии** соответствуют версиям в `@nocobase/server` и `@nocobase/client`.
 </Alert>
 
-## Global Dependencies
+## Глобальные зависимости
 
 ```js
 // nocobase

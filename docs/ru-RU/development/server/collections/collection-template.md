@@ -1,9 +1,8 @@
-# Collection templates
+# Шаблоны коллекций
 
+В реальных бизнес-сценариях разные коллекции могут иметь свои правила инициализации и бизнес-логику. NocoBase решает такие проблемы с помощью шаблонов коллекций.
 
-In real business scenarios, different collections may have their own initialization rules and business logic, and NocoBase addresses such issues by providing collection templates.
-
-## General collections
+## Обычные коллекции
 
 ```ts
 db.collection({
@@ -17,7 +16,7 @@ db.collection({
 });
 ```
 
-## Tree structure collections
+## Древовидные коллекции
 
 ```ts
 db.collection({
@@ -48,7 +47,7 @@ db.collection({
 });
 ```
 
-## Parent-child inheritance collections
+## Наследуемые коллекции
 
 ```ts
 db.collection({
@@ -63,9 +62,9 @@ db.collection({
 });
 ```
 
-## More templates
+## Другие шаблоны
 
-As in the case of calendar collections, each initialized collection needs to be initialized with special cron and exclude fields, and the definition of such fields is done by the template
+Например, для календарных коллекций при инициализации требуются специальные поля cron и exclude, которые определяются шаблоном:
 
 ```ts
 db.collection({

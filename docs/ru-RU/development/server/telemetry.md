@@ -1,43 +1,41 @@
-# Telemetry
+### **Телеметрия**
 
-:::warning{title=Experimental}
+:::warning{title=Экспериментальная функция}
 :::
 
-The telemetry module of NocoBase is encapsulated based on <a href="https://opentelemetry.io/" target="_blank">OpenTelemetry</a>. This article introduces how to use the telemetry module to collect Trace and Metric data to enhance the observability of the NocoBase system.
+Модуль телеметрии в NocoBase построен на основе [OpenTelemetry](https://opentelemetry.io/). В данной статье описывается, как использовать модуль телеметрии для сбора данных трассировки (Trace) и метрик (Metric), чтобы повысить наблюдаемость системы NocoBase.
 
-:::info{title=Tip}
-NocoBase needs to be configured with the environment variable `TELEMETRY_ENABLED=true` before starting to enable telemetry data collection. See other configurations: [Environment Variables - Telemetry](../../welcome/getting-started/env.md#telemetry_enabled).
+:::info{title=Подсказка}
+Перед запуском NocoBase необходимо установить переменную окружения `TELEMETRY_ENABLED=true`, чтобы включить сбор телеметрических данных. Другие настройки см. в разделе: [Переменные окружения — Телеметрия](../../welcome/getting-started/env.md#telemetry_enabled).
 :::
 
-## Instrumentation
+#### **Инструментирование**
 
-### Metrics
+##### **Метрики**
 
-```ts
+```js
 const meter = app.telemetry.metric.getMeter();
 const counter = meter.createCounter('event_counter', {});
 counter.add(1);
 ```
 
-References:
+**Ссылки:**
+[https://opentelemetry.io/docs/instrumentation/js/manual/#acquiring-a-meter](https://opentelemetry.io/docs/instrumentation/js/manual/#acquiring-a-meter)
 
-- <a href="https://opentelemetry.io/docs/instrumentation/js/manual/#acquiring-a-meter" target="_blank">https://opentelemetry.io/docs/instrumentation/js/manual/#acquiring-a-meter</a>
+##### **Трассировка (Traces)**
 
-### Traces
-
-```ts
+```js
 const tracer = app.telemetry.trace.getTracer();
 tracer.startActiveSpan();
 tracer.startSpan();
 ```
 
-References:
+**Ссылки:**
+[https://opentelemetry.io/docs/instrumentation/js/manual/#acquiring-a-tracer](https://opentelemetry.io/docs/instrumentation/js/manual/#acquiring-a-tracer)
 
-- <a href="https://opentelemetry.io/docs/instrumentation/js/manual/#acquiring-a-tracer" target="_blank">https://opentelemetry.io/docs/instrumentation/js/manual/#acquiring-a-tracer</a>
+##### **Библиотеки**
 
-### Libraries
-
-```ts
+```js
 import { Plugin } from '@nocobase/server';
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
 
@@ -51,19 +49,18 @@ class InstrumentationPlugin extends Plugin {
 ```
 
 :::warning
-In NocoBase, the initialization location of the telemetry module is `app.beforeLoad`, refer to: [Lifecycle](../life-cycle.md). Therefore, not all instrumentation libraries are suitable for NocoBase.  
-For example, <a href="https://www.npmjs.com/package/@opentelemetry/instrumentation-koa" target="_blank">instrumentation-koa</a> needs to be introduced before `Koa` is instantiated, but although NocoBase's `Application` is based on `Koa`, the telemetry module is initialized after the `Application` is instantiated, so it cannot be applied.
+В NocoBase модуль телеметрии инициализируется на этапе `app.beforeLoad`. Подробнее см.: [Жизненный цикл](../life-cycle.md). Поэтому не все библиотеки инструментирования подходят для использования в NocoBase.  
+Например, [instrumentation-koa](https://www.npmjs.com/package/@opentelemetry/instrumentation-koa) должна подключаться до создания экземпляра `Koa`, однако, хотя `Application` в NocoBase и основан на `Koa`, модуль телеметрии инициализируется уже после создания экземпляра `Application`, поэтому его использование невозможно.
 :::
 
-References:
+**Ссылки:**
+[https://opentelemetry.io/docs/instrumentation/js/libraries/](https://opentelemetry.io/docs/instrumentation/js/libraries/)
 
-- <a href="https://opentelemetry.io/docs/instrumentation/js/libraries/" target="_blank">https://opentelemetry.io/docs/instrumentation/js/libraries/</a>
+#### **Сбор данных**
 
-## Collection
+##### **Метрики**
 
-### Metrics
-
-```ts
+```js
 import { Plugin } from '@nocobase/server';
 import {
   PeriodicExportingMetricReader,
@@ -85,9 +82,9 @@ class MetricReaderPlugin extends Plugin {
 }
 ```
 
-### Traces
+##### **Трассировка**
 
-```ts
+```js
 import { Plugin } from '@nocobase/server';
 import {
   BatchSpanProcessor,
@@ -106,6 +103,5 @@ class TraceSpanProcessorPlugin extends Plugin {
 }
 ```
 
-References:
-
-- <a href="https://opentelemetry.io/docs/instrumentation/js/exporters" target="_blank">https://opentelemetry.io/docs/instrumentation/js/exporters</a>
+**Ссылки:**
+[https://opentelemetry.io/docs/instrumentation/js/exporters](https://opentelemetry.io/docs/instrumentation/js/exporters)

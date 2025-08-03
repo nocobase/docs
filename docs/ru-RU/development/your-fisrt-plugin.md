@@ -1,47 +1,47 @@
-# Develop the first plugin
+# Создание первого плагина
 
-Before start, you need to install NocoBase:.
+Перед началом необходимо установить NocoBase:
 
-- [create-nocobase-app installation](/welcome/getting-started/installation/create-nocobase-app)
-- [Git source installation](/welcome/getting-started/installation/git-clone)
+- [Установка через create-nocobase-app](/welcome/getting-started/installation/create-nocobase-app)
+- [Установка из исходного кода Git](/welcome/getting-started/installation/git-clone)
 
-Once NocoBase is installed, we can start our plugin development journey.
+После установки NocoBase можно приступать к разработке плагина.
 
-## Create a plugin
+## Создание плагина
 
-First, you can quickly create an empty plugin via the CLI with the following command.
+Сначала создайте пустой плагин с помощью CLI-команды:
 
 ```bash
 yarn pm create @my-project/plugin-hello
 ```
 
-The directory where the plugin located is `packages/plugins/@my-project/plugin-hello` and the plugin directory structure is
+Плагин будет создан в директории `packages/plugins/@my-project/plugin-hello` со следующей структурой:
 
 ```bash
 |- /packages/plugins/@my-project/plugin-hello
   |- /src
-    |- /client # plugin client code
-    |- /server # plugin server code
+    |- /client # клиентский код плагина
+    |- /server # серверный код плагина
   |- client.d.ts
   |- client.js
-  |- package.json # plugin package information
+  |- package.json # информация о пакете плагина
   |- server.d.ts
   |- server.js
 ```
 
-Visit the Plugin Manager to view the plugin you just added, the default address is http://localhost:13000/admin/pm/list/local/
+Проверить добавленный плагин можно в Менеджере плагинов по адресу: http://localhost:13000/admin/pm/list/local/
 
 <img src="https://nocobase.oss-cn-beijing.aliyuncs.com/b04d16851fc1bbc2796ecf8f9bc0c3f4.png" />
 
-If the plugin is not shown in the plugin manager, you can add it manually with the `pm add` command.
+Если плагин не отображается, добавьте его вручную:
 
 ```bash
 yarn pm add @my-project/plugin-hello
 ```
 
-## Code the plugin
+## Написание кода плагина
 
-Create a new collection file in the plugin, e.g. `. /src/server/collections/hello.ts` with the following contents:
+Создайте файл коллекции в плагине, например `. /src/server/collections/hello.ts`:
 
 ```ts
 import { defineCollection } from '@nocobase/database';
@@ -52,7 +52,7 @@ export default defineCollection({
 });
 ```
 
-Modify the `. /src/server/plugin.ts` file as follows
+Измените файл `. /src/server/plugin.ts`:
 
 ```ts
 import { Plugin } from '@nocobase/server';
@@ -63,7 +63,7 @@ export class PluginHelloServer extends Plugin {
   async beforeLoad() {}
 
   async load() {
-    // This is just an example. Expose all actions of the hello collection to the public
+    // Пример: открыть все действия коллекции hello для публичного доступа
     this.app.acl.allow('hello', '*', 'public');
   }
 
@@ -79,39 +79,38 @@ export class PluginHelloServer extends Plugin {
 export default PluginHelloServer;
 ```
 
-## Activate the plugin
+## Активация плагина
 
-**Operated by command**
+**Через командную строку:**
 
 ```bash
 yarn pm enable @my-project/plugin-hello
 ```
 
-**Operated by UI**
+**Через интерфейс:**
 
-Visit the Plugin Manager to view the plugin you just added and click enable.
-The Plugin Manager page defaults to http://localhost:13000/admin/pm/list/local/
+Откройте Менеджер плагинов по адресу http://localhost:13000/admin/pm/list/local/ и нажмите "Активировать".
 
 <img src="https://nocobase.oss-cn-beijing.aliyuncs.com/7b7df26a8ecc32bb1ebc3f99767ff9f9.png" />
 
-:::info{title="INFO"}
-The collection configured in the plugin is automatically synchronized with the database when the plugin is activated, generating the corresponding data tables and fields. If the plugin is already active, you need to handle the synchronization of the data tables with the upgrade command `yarn nocobase upgrade`.
+:::info{title="ИНФОРМАЦИЯ"}
+При активации плагина коллекции автоматически синхронизируются с базой данных. Если плагин уже активирован, используйте команду `yarn nocobase upgrade` для синхронизации.
 :::
 
-## Debug the Plugin
+## Отладка плагина
 
-If the app is not started, you need to start the app first
+Если приложение не запущено, выполните:
 
 ```bash
-# for development
+# для разработки
 yarn dev
 
-# for production
+# для production
 yarn build
 yarn start
 ```
 
-Insert data into the hello collection of the plugin
+Добавьте данные в коллекцию hello:
 
 ```bash
 curl --location --request POST 'http://localhost:13000/api/hello:create' \
@@ -121,28 +120,28 @@ curl --location --request POST 'http://localhost:13000/api/hello:create' \
 }'
 ```
 
-View the data
+Просмотр данных:
 
 ```bash
 curl --location --request GET 'http://localhost:13000/api/hello:list'
 ```
 
-## Build the plugin
+## Сборка плагина
 
-If you cloned the source code, you need to execute `yarn build` for a full build, otherwise, a type error will be reported.
+Для полной сборки выполните:
 
 ```bash
 yarn build @my-project/plugin-hello --tar
 
-# step by step
+# или пошагово
 yarn build @my-project/plugin-hello
 yarn nocobase tar @my-project/plugin-hello
 ```
 
-The default saved path for the plugin tar is `storage/tar/@my-project/plugin-hello.tar.gz`
+Собранный плагин сохраняется в `storage/tar/@my-project/plugin-hello.tar.gz`
 
-## Upload to other NocoBase applications
+## Загрузка в другие приложения NocoBase
 
-Only supported in v0.14 and above
+Поддерживается в версии 0.14 и выше
 
 <img src="https://nocobase.oss-cn-beijing.aliyuncs.com/8aa8a511aa8c1e87a8f7ee82cf8a1359.gif" />

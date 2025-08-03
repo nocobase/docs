@@ -1,127 +1,126 @@
-# Collection protocol
+# Протокол коллекций
 
-Collection is the backbone of NocoBase, a protocol for describing data structures (collections and fields), very close to the concept of a relational database, but not limited to relational databases, but can also be a data source for NoSQL databases, HTTP APIs, etc.
+Коллекция - это основа NocoBase, протокол для описания структур данных (коллекций и полей), близкий к концепции реляционных баз данных, но не ограниченный ими. Может также использоваться для NoSQL баз данных, HTTP API и других источников данных.
 
-<img src="./schema.svg" style="max-width: 800px;" >
+<img src="./schema.svg" style="max-width: 800px;">
 
-At this stage, the Collection protocol is based on the relational database interface (db.collections), and data sources such as NoSQL databases and HTTP APIs will be implemented gradually in the future.
+На текущем этапе протокол Collection основан на интерфейсе реляционных БД (db.collections), поддержка NoSQL и HTTP API будет добавлена позже.
 
-Collection protocol mainly includes two parts: CollectionOptions and FieldOptions. Because Field is extensible, the parameters of FieldOptions are very flexible.
+Протокол Collection состоит из двух частей: CollectionOptions и FieldOptions. Поскольку Field расширяем, параметры FieldOptions очень гибкие.
 
 ## CollectionOptions
 
 ```ts
 interface CollectionOptions {
-  name: string;
-  title?: string;
-  // Tree structure table, TreeRepository
-  tree?:
-    | 'adjacency-list'
-    | 'closure-table'
-    | 'materialized-path'
-    | 'nested-set';
-  // parent-child inheritance
+  name: string; // Название коллекции
+  title?: string; // Отображаемое имя
+  // Древовидная структура:
+  tree?: 'adjacency-list' | 'closure-table' | 'materialized-path' | 'nested-set';
+  // Наследование:
   inherits?: string | string[];
+  // Поля коллекции:
   fields?: FieldOptions[];
+  // Автоматические временные метки:
   timestamps?: boolean;
+  // Мягкое удаление:
   paranoid?: boolean;
+  // Сортировка:
   sortable?: CollectionSortable;
+  // Модель:
   model?: string;
+  // Репозиторий:
   repository?: string;
   [key: string]: any;
 }
 
-type CollectionSortable =
-  | string
-  | boolean
-  | { name?: string; scopeKey?: string };
+type CollectionSortable = string | boolean | { name?: string; scopeKey?: string };
 ```
 
 ## FieldOptions
 
-Generic field parameters
+Базовые параметры поля:
 
 ```ts
 interface FieldOptions {
-  name: string;
-  type: string;
-  hidden?: boolean;
-  index?: boolean;
-  interface?: string;
-  uiSchema?: ISchema;
+  name: string; // Имя поля
+  type: string; // Тип поля
+  hidden?: boolean; // Скрытое поле
+  index?: boolean; // Индексируемое поле
+  interface?: string; // Интерфейс поля
+  uiSchema?: ISchema; // Схема UI
 ```
 
-[Introduction to UI Schema here](/development/client/ui-schema-designer/what-is-ui-schema)
+[Подробнее о UI Schema](/development/client/ui-schema-designer/what-is-ui-schema)
 
-### Field Type
+### Типы полей
 
-Field Type includes Attribute Type and Association Type.
+Типы полей включают атрибутивные и ассоциативные.
 
-**Attribute Type**
+**Атрибутивные типы**
 
-- 'boolean'
-- 'integer'
-- 'bigInt'
-- 'double'
-- 'real'
-- 'decimal'
-- 'string'
-- 'text'
-- 'password'
-- 'date'
-- 'time'
-- 'array'
-- 'json'
-- 'jsonb'
-- 'uuid'
-- 'uid'
-- 'formula'
-- 'radio'
-- 'sort'
-- 'virtual'
+- 'boolean' - Логический
+- 'integer' - Целое число
+- 'bigInt' - Большое целое
+- 'double' - Двойная точность
+- 'real' - Вещественное
+- 'decimal' - Десятичное
+- 'string' - Строка
+- 'text' - Текст
+- 'password' - Пароль
+- 'date' - Дата
+- 'time' - Время
+- 'array' - Массив
+- 'json' - JSON
+- 'jsonb' - JSON бинарный
+- 'uuid' - UUID
+- 'uid' - UID
+- 'formula' - Формула
+- 'radio' - Радио
+- 'sort' - Сортировка
+- 'virtual' - Виртуальное
 
-**Association Type**
+**Ассоциативные типы**
 
-- 'belongsTo'
-- 'hasOne'
-- 'hasMany'
-- 'belongsToMany'
+- 'belongsTo' - Принадлежит к
+- 'hasOne' - Имеет один
+- 'hasMany' - Имеет много
+- 'belongsToMany' - Принадлежит ко многим
 
-### Field Interface
+### Интерфейсы полей
 
-**Basic**
+**Базовые**
 
-- input
-- textarea
-- phone
-- email
-- integer
-- number
-- percent
-- password
-- icon
+- input - Поле ввода
+- textarea - Текстовая область
+- phone - Телефон
+- email - Email
+- integer - Целое число
+- number - Число
+- percent - Процент
+- password - Пароль
+- icon - Иконка
 
-**Choices**
+**Выбор**
 
-- checkbox
-- select
-- multipleSelect
-- radioGroup
-- checkboxGroup
-- chinaRegion
+- checkbox - Чекбокс
+- select - Выпадающий список
+- multipleSelect - Множественный выбор
+- radioGroup - Группа радио-кнопок
+- checkboxGroup - Группа чекбоксов
+- chinaRegion - Китайские регионы
 
-**Media**
+**Медиа**
 
-- attachment
-- markdown
-- richText
+- attachment - Вложение
+- markdown - Markdown
+- richText - Текстовый редактор
 
-**Date & Time**
+**Дата и время**
 
-- datetime
-- time
+- datetime - Дата и время
+- time - Время
 
-**Relation**
+**Связи**
 
 - linkTo - `type: 'believesToMany'`
 - oho - `type: 'hasOne'`
@@ -130,15 +129,15 @@ Field Type includes Attribute Type and Association Type.
 - m2o - `type: 'believesTo'`
 - m2m - `type: 'believesToMany'`
 
-**Advanced**
+**Продвинутые**
 
-- formula
-- sequence
+- formula - Формула
+- sequence - Последовательность
 
-**System info**
+**Системная информация**
 
-- id
-- createdAt
-- createdBy
-- updatedAt
-- updatedBy
+- id - ID
+- createdAt - Дата создания
+- createdBy - Создано
+- updatedAt - Дата обновления
+- updatedBy - Обновлено

@@ -1,12 +1,12 @@
-## Collections and Fields
+# Коллекции и поля
 
-## Basic Concepts
+## Основные понятия
 
-Data modeling is the lowest level foundation of an application. In NocoBase applications we model data through data tables (Collection) and fields (Field), and the modeling is also mapped to database tables for persistence.
+Моделирование данных - это фундаментальный уровень приложения. В NocoBase мы моделируем данные через таблицы (Collection) и поля (Field), которые сохраняются в базе данных.
 
-### Collection
+### Коллекция (Collection)
 
-Collection is a collection of all similar data, which corresponds to the concept of database tables in NocoBase. Such as orders, products, users, comments, etc. can form a collection definition. Different collections are distinguished by name and contain fields defined by `fields`, such as
+Коллекция - это набор однотипных данных, соответствующий понятию таблицы в базе данных. Например: заказы, товары, пользователи, комментарии могут быть определены как коллекции. Разные коллекции различаются по имени и содержат поля:
 
 ```ts
 db.collection({
@@ -19,11 +19,11 @@ db.collection({
 });
 ```
 
-The collection is only in memory after the definition, you need to call the [``db.sync()`'' (/api/database#sync) method to synchronize it to the database.
+После определения коллекция существует только в памяти, для синхронизации с БД нужно вызвать метод [`db.sync()`](/api/database#sync).
 
-### Field
+### Поле (Field)
 
-Corresponding to the concept of database table "fields", each data table (Collection) can have a number of Fields, for example.
+Соответствует понятию "столбец" в таблице БД. Каждая коллекция может содержать несколько полей:
 
 ```ts
 db.collection({
@@ -31,22 +31,20 @@ db.collection({
   fields: [
     { type: 'string', name: 'name' }
     { type: 'integer', name: 'age' }
-    // Other fields
+    // Другие поля
   ],
 });
 ```
 
-The field name (`name`) and field type (`type`) are required, and different fields are distinguished by the field name (`name`). All field types and their configurations are described in the [List of built-in field types](/api/database/field#List of built-in field types) section of the API reference.
+Обязательные параметры поля - имя (`name`) и тип (`type`). Все типы полей описаны в разделе [Список встроенных типов полей](/api/database/field#Список-встроенных-типов-полей).
 
-## Example
+## Пример
 
-For developers, we usually build functional collections that are different from normal collections and solidify these collections as part of the plugin and combine them with other data processing processes to form a complete functionality.
+Рассмотрим пример плагина интернет-магазина для демонстрации моделирования данных.
 
-Let's take a simple online store plugin as an example to show how to model and manage the collections of the plugin. Assuming you have already learned about [Develop your first plugin](/development/your-first-plugin), we continue to build on the previous plugin code, except that the name of the plugin is changed from `hello` to `shop-modeling`.
+### Определение коллекций в плагине
 
-### Define and create collections in the plugin
-
-For a store, you first need to create a collection of products, named `products`. Instead of calling [`db.collection()`](/api/database#collection) directly, in the plugin we will use a more convenient method to import multiple files of defined data tables at once. So let's start by creating a file for the product collection definition named `collections/products.ts` and fill it with the following content.
+Создадим коллекцию товаров `products` в файле `collections/products.ts`:
 
 ```ts
 export default {
@@ -72,9 +70,7 @@ export default {
 };
 ```
 
-As you can see, the collections structure definition can be used directly in standard JSON format, where `name` and `fields` are required representing the collection's name and the field definitions in the collection. Field definitions similar to Sequelize create system fields such as primary key (`id`), data creation time (`createdAt`) and data update time (`updatedAt`) by default, which can be overridden by a configuration with the same name if there is a special need.
-
-The data table defined in this file we can introduce and complete the definition in the `load()` cycle of the main plugin class using `db.import()`. This is shown below.
+Загружаем коллекцию в основном классе плагина:
 
 ```ts
 import path from 'path';
@@ -93,23 +89,17 @@ export default class ShopPlugin extends Plugin {
 }
 ```
 
-In the meantime, for testing purposes, we will temporarily allow all access permissions for the data in these collections, and later we will detail how to manage data permissions in [Permissions Management](/development/guide/acl).
+Для тестирования временно разрешаем полный доступ к данным. Автоматически генерируются CRUD API:
 
-This way, when the plugin is loaded by the main application, the `products` collection we defined is also loaded into the memory of the database management instance. At the same time, the NocoBase constraint-based resource mapping of the collections automatically generates the corresponding CRUD HTTP API after the application's service is started.
+- `GET /api/products:list` - список товаров
+- `GET /api/products:get?filterByTk=<id>` - товар по ID
+- `POST /api/products` - создать товар
+- `PUT /api/products:update?filterByTk=<id>` - обновить товар
+- `DELETE /api/products:destroy?filterByTk=<id>` - удалить товар
 
-When the following URLs are requested from the client, the corresponding responses are obtained.
+### Связи между коллекциями
 
-- `GET /api/products:list`: Get a list of all product data
-- `GET /api/products:get?filterByTk=<id>`: Get the product data for the specified ID
-- `POST /api/products`: Create a new product data
-- `PUT /api/products:update?filterByTk=<id>`: Update a product data
-- `DELETE /api/products:destroy?filterByTk=<id>`: Delete a product data
-
-### Defining associated collections and fields
-
-In the above example, we only defined a product collection, but in reality a product also needs to be associated to a category, a brand, a supplier, etc. For example, we can define a `categories` collection to store the categories, and then add a `category` field to the product collection to associate it with the category collection.
-
-Add a new file `collections/categories.ts` and fill in the content.
+Добавим коллекцию категорий `collections/categories.ts`:
 
 ```ts
 export default {
@@ -127,9 +117,7 @@ export default {
 };
 ```
 
-We have defined two fields for the `categories` collection, one for the title and another one-to-many field for all the products associated under that category, which will be described later. Since we have already used the `db.import()` method in the plugin's main class to import all the data table definitions under the `collections` directory, the new `categories` collection added here will also be automatically imported into the database management instance.
-
-Modify the file `collections/products.ts`` to add a `category`field to the`fields`.
+Добавим связь в коллекции товаров:
 
 ```ts
 {
@@ -145,25 +133,20 @@ Modify the file `collections/products.ts`` to add a `category`field to the`field
 }
 ```
 
-As you can see, the `category` field we added to the `products` collection is a `belongsTo` type field, and its `target` property points to the `categories` collection, thus defining a many-to-one relationship between the `products` collection and the `categories` collection. Combined with the `hasMany` field defined in the `categories` collection, we can achieve a relationship where one product can be associated to multiple categories and multiple products under one category. Usually `belongsTo` and `hasMany` can appear in pairs, defined in two separate collections.
+Это определяет отношение "многие-к-одному" между товарами и категориями. Доступные API:
 
-Once the relationship between the two collections is defined, we can also request the associated data directly through the HTTP API
+- `GET /api/products:list?appends=category` - товары с категориями
+- `GET /api/categories/<categoryId>/products:list` - товары категории
 
-- `GET /api/products:list?appends=category`: Get all products data, including the associated categories data
-- `GET /api/products:get?filterByTk=<id>&appends=category`: Get the product data for the specified ID, including the associated category data.
-- `GET /api/categories/<categoryId>/products:list`: Get all the products under the specified category
-- `POST /api/categories/<categoryId>/products`: Create a new product under the specified category
+NocoBase поддерживает 4 типа связей:
+- [`belongsTo`](/api/database/field#belongsto)
+- [`belongsToMany`](/api/database/field#belongstomany) 
+- [`hasMany`](/api/database/field#hasmany)
+- [`hasOne`](/api/database/field#hasone)
 
-Similar to the general ORM framework, NocoBase has four built-in relational field types, for more information you can refer to the section about API field types.
+# Расширение существующих коллекций
 
-- [`belongsTo` type](/api/database/field#belongsto)
-- [`belongsToMany` type](/api/database/field#belongstomany)
-- [`hasMany` type](/api/database/field#hasmany)
-- [`hasOne` type](/api/database/field#hasone)
-
-### Extend an existing collection
-
-In the above example, we already have a product collection and a category collection, in order to provide the sales process we also need an order collection. We can add a new `orders.ts` file to the `collections` directory and define an `orders` collection as follows
+В дополнение к коллекциям товаров и категорий, нам нужна коллекция заказов. Создадим файл `collections/orders.ts`:
 
 ```ts
 export default {
@@ -202,7 +185,9 @@ export default {
 };
 ```
 
-For the sake of simplicity, the association between the order collection and the product collection we simply define as a many-to-one relationship, while in the actual business may be used in a complex modeling approach such as many-to-many or snapshot. As you can see, an order in addition to corresponding to a commodity, we also added a relationship definition corresponding to the users, which is a collection managed by the NocoBase built-in plugins (refer to [code for users plugin](https://github.com/nocobase/nocobase/tree/main/packages/) for details plugins/users)). If we want to extend the definition of the "multiple orders owned by a user" relationship for the existing users collection, we can continue to add a new collection file `collections/users.ts` inside the current shop-modeling plugin, which is different from exporting the JSON collection directly. Unlike the direct export of a JSON, the `@nocobase/database` package's `extend()` method is used here to extend the definition of an existing collection: ``ts
+Для простоты связь между заказами и товарами определена как "многие-к-одному". Также добавлена связь с пользователями (встроенная коллекция NocoBase).
+
+Чтобы расширить коллекцию пользователей, создадим `collections/users.ts`:
 
 ```ts
 import { extend } from '@nocobase/database';
@@ -218,20 +203,14 @@ export extend({
 });
 ```
 
-This way, the existing users table also has an `orders` associated field, and we can retrieve all the order data for a given user via `GET /api/users/<userId>/orders:list`.
+Теперь можно получать заказы пользователя через `GET /api/users/<userId>/orders:list`.
 
-This method is very useful when extending collections already defined by other plugins, so that other existing plugins do not depend on the new plugin in reverse, but only form one-way dependencies, facilitating a certain degree of decoupling at the extension level.
+## Расширение типов полей
 
-### Extend field types
-
-We use `uuid` type for `id` field when we define order table, which is a built-in field type. Sometimes we may feel that UUID looks too long and waste space, and the query performance is not good, we want to use a more suitable field type, such as a complex numbering logic with date information, or Snowflake algorithm, we need to extend a custom field type.
-
-Suppose we need to apply the Snowflake ID generation algorithm directly to extend a `snowflake` field type, we can create a `fields/snowflake.ts` file.
+Для поля `id` в заказах используем тип `uuid`. Чтобы создать собственный тип (например, Snowflake ID), создадим файл `fields/snowflake.ts`:
 
 ```ts
-// Import the algorithm toolkit
 import { Snowflake } from 'nodejs-snowflake';
-// Import field type base class
 import { DataTypes, Field, BaseColumnFieldOptions } from '@nocobase/database';
 
 export interface SnowflakeFieldOptions extends BaseColumnFieldOptions {
@@ -247,14 +226,8 @@ export class SnowflakeField extends Field {
 
   constructor(options: SnowflakeFieldOptions, context) {
     super(options, context);
-
-    const {
-      epoch: custom_epoch,
-      instanceId: instance_id = process.env.INSTANCE_ID
-        ? Number.parseInt(process.env.INSTANCE_ID)
-        : 0,
-    } = options;
-    this.generator = new Snowflake({ custom_epoch, instance_id });
+    const { epoch, instanceId } = options;
+    this.generator = new Snowflake({ epoch, instanceId });
   }
 
   setValue = (instance) => {
@@ -276,45 +249,41 @@ export class SnowflakeField extends Field {
 export default SnowflakeField;
 ```
 
-Afterwards, register the new field type into the collection in the main plugin file.
+Регистрируем тип в основном файле плагина:
 
 ```ts
-import SnowflakeField from '. /fields/snowflake';
+import SnowflakeField from './fields/snowflake';
 
 export default class ShopPlugin extends Plugin {
   initialize() {
-    // ...
     this.db.registerFieldTypes({
       snowflake: SnowflakeField,
     });
-    // ...
   }
 }
 ```
 
-This allows us to use the `snowflake` field type in the order table:
+Теперь можно использовать тип `snowflake`:
 
 ```ts
-export default {
+{
   name: 'orders',
   fields: [
     {
-      type: 'snowflake'
+      type: 'snowflake',
       name: 'id',
       primaryKey: true
-    },
-    // ... . other fields
+    }
   ]
 }
 ```
 
-## Summary
+## Итог
 
-With the above example, we basically understand how to model data in a plugin, including.
+Мы рассмотрели:
+1. Создание коллекций и полей
+2. Определение связей между коллекциями
+3. Расширение существующих коллекций
+4. Создание новых типов полей
 
-- Defining collections and common fields
-- Defining association collections and fields relationships
-- Extending fields of an existing collections
-- Extending new field types
-
-We have put the code covered in this chapter into a complete sample package [packages/samples/shop-modeling](https://github.com/nocobase/nocobase/tree/main/packages/samples/shop-modeling), which can be run directly locally to see the results.
+Пример кода доступен в [packages/samples/shop-modeling](https://github.com/nocobase/nocobase/tree/main/packages/samples/shop-modeling).

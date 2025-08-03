@@ -1,23 +1,23 @@
-# Schema initializer
+# Schema Initializer
 
-After activating the UI configuration, the various visible orange buttons on the interface are Schema initializers, used for adding various blocks, fields, actions, etc., to the interface.
+После активации конфигурации пользовательского интерфейса различные видимые оранжевые кнопки на интерфейсе представляют собой schema initializers, используемые для добавления различных блоков, полей, действий и т.д. в интерфейс.
 
 <img src="./image-5.png" style="width: 960px;">
 
-## Built-in initializers
+## Встроенные initializers
 
 <img src="./image-3.png" style="width: 960px;"/>
 
-## Adding items to existing initializers
+## Добавление элементов в существующие initializers
 
-It is recommended to use the [`schemaInitializerManager.addItem()`](#) method to add items. For detailed item configurations, refer to [SchemaInitializer Item API](#).
+Рекомендуется использовать метод [`schemaInitializerManager.addItem()`](#) для добавления элементов. Для подробной конфигурации элементов обратитесь к [SchemaInitializer Item API](#).
 
 ```ts
 class PluginDemoAddSchemaInitializerItem extends Plugin {
   async load() {
     this.schemaInitializerManager.addItem(
-      'myInitializer', // Example of an existing schema initializer
-      'otherBlocks.custom', // Add custom to the otherBlocks group
+      'myInitializer', // Пример существующего schema initializer
+      'otherBlocks.custom', // Добавление custom в группу otherBlocks
       {
         type: 'item',
         useComponentProps() {},
@@ -29,20 +29,20 @@ class PluginDemoAddSchemaInitializerItem extends Plugin {
 
 <!-- <code src="./demos/schema-initializer-manager-add-item/index.tsx"></code> -->
 
-## Adding new initializers
+## Добавление новых initializers
 
-For detailed parameters of SchemaInitializer, refer to [SchemaInitializerOptions API](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer#new-schemainitializeroptions).
+Для подробных параметров SchemaInitializer обратитесь к [SchemaInitializerOptions API](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer#new-schemainitializeroptions).
 
 ```ts
 const myInitializer = new SchemaInitializer({
-  // Unique identifier for the initializer
+  // Уникальный идентификатор для initializer
   name: 'myInitializer',
-  title: 'Add Block',
-  // Wrapper, for example, inserting into a Grid requires using Grid.wrap (adds row and column tags)
+  title: 'Добавить блок',
+  // Обёртка, например, вставка в Grid требует использования Grid.wrap (добавляет теги строки и столбца)
   wrap: Grid.wrap,
-  // Insertion position, defaults to beforeEnd, supports 'beforeBegin' | 'afterBegin' | 'beforeEnd' | 'afterEnd'
+  // Позиция вставки, по умолчанию beforeEnd, поддерживает 'beforeBegin' | 'afterBegin' | 'beforeEnd' | 'afterEnd'
   insertPosition: 'beforeEnd',
-  // Dropdown menu items
+  // Элементы выпадающего меню
   items: [
     {
       name: 'a',
@@ -53,16 +53,16 @@ const myInitializer = new SchemaInitializer({
 });
 ```
 
-### Registering in the plugin's load method
+### Регистрация в методе load плагина
 
-It is recommended to use `schemaInitializerManager.add()` to add the new initializer to the application.
+Рекомендуется использовать `schemaInitializerManager.add()` для добавления нового initializer в приложение.
 
 ```ts
 class PluginDemoAddSchemaInitializer extends Plugin {
   async load() {
     const myInitializer = new SchemaInitializer({
       name: 'myInitializer',
-      title: 'Add block',
+      title: 'Добавить блок',
       wrap: Grid.wrap,
       items: [
         {
@@ -71,13 +71,13 @@ class PluginDemoAddSchemaInitializer extends Plugin {
           useComponentProps() {
             const { insert } = useSchemaInitializer();
             return {
-              title: 'Hello',
+              title: 'Привет',
               onClick: () => {
                 insert({
                   type: 'void',
                   'x-decorator': 'CardItem',
                   'x-component': 'h1',
-                  'x-content': 'Hello, world!',
+                  'x-content': 'Привет, мир!',
                 });
               },
             };
@@ -90,13 +90,13 @@ class PluginDemoAddSchemaInitializer extends Plugin {
 }
 ```
 
-### How to use the newly added initializer
+### Как использовать добавленный initializer
 
-SchemaInitializer is used in the Schema's `x-initializer` parameter.
+SchemaInitializer используется в параметре `x-initializer` schema.
 
-#### Schema components that support `x-initializer`
+#### Компоненты schema, поддерживающие `x-initializer`
 
-General Schema components that support `x-initializer` include Grid, ActionBar, Tabs. For example:
+Общие компоненты schema, поддерживающие `x-initializer`, включают Grid, ActionBar, Tabs. Например:
 
 ```ts
 {
@@ -108,13 +108,13 @@ General Schema components that support `x-initializer` include Grid, ActionBar, 
 
 <code src="./demos/schema-initializer-manager-add/index.tsx"></code>
 
-#### How to support `x-initializer` in custom components
+#### Как поддерживать `x-initializer` в пользовательских компонентах
 
-If Grid, ActionBar, Tabs, and similar components do not meet your needs, you can use [useSchemaInitializerRender()](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer#useschemainitializerrender) to handle the rendering of `x-initializer` in custom components.
+Если Grid, ActionBar, Tabs и подобные компоненты не удовлетворяют вашим потребностям, вы можете использовать [useSchemaInitializerRender()](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer#useschemainitializerrender) для обработки рендеринга `x-initializer` в пользовательских компонентах.
 
 <code src="./demos/use-schema-initializer-render/index.tsx"></code>
 
-## API Reference
+## Справочник API
 
 - [SchemaInitializerManager](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer-manager)
 - [SchemaInitializer](https://client.docs-cn.nocobase.com/core/ui-schema/schema-initializer)

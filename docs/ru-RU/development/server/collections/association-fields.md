@@ -1,17 +1,17 @@
-# Association Fields
+### **Поля связей**
 
-In a relational database, the standard way to build a table relationship is to add a foreign key field followed by a foreign key constraint. For example, Knex builds a table with the following example.
+В реляционной базе данных стандартный способ создания связи между таблицами — добавление поля внешнего ключа и ограничения внешнего ключа. Например, Knex создаёт таблицу по следующему образцу:
 
-```ts
+```js
 knex.schema.table('posts', function (table) {
   table.integer('userId').unsigned();
   table.foreign('userId').references('users.id');
 });
 ```
 
-This procedure creates a userId field in the posts table and sets the foreign key constraint posts.userId to refer to users.id. In NocoBase's Collection, such a relational constraint is created by configuring the relational field, e.g.
+Этот код создаёт поле `userId` в таблице `posts` и устанавливает ограничение внешнего ключа `posts.userId`, ссылающееся на `users.id`. В NocoBase такая связь создаётся путём настройки поля связи, например:
 
-```ts
+```js
 {
   name: 'posts',
   fields: [
@@ -25,23 +25,26 @@ This procedure creates a userId field in the posts table and sets the foreign ke
 }
 ```
 
-## Relationship parameters
+#### **Параметры связей**
 
-### BelongsTo
+##### **BelongsTo**
 
 ```ts
 interface BelongsTo {
   type: 'belongsTo';
   name: string;
-  // defaults to name's plural
+  // по умолчанию — множественное число от name
   target?: string;
-  // The default value is the primary key of the target model, usually 'id'
+  // по умолчанию — первичный ключ целевой модели, обычно 'id'
   targetKey?: any;
-  // defaults to target + 'Id'
+  // по умолчанию — target + 'Id'
   foreignKey?: any;
 }
+```
 
-// The authors table's primary key id is concatenated with the books table's foreign key authorId
+// Первичный ключ `id` таблицы `authors` связан с внешним ключом `authorId` таблицы `books`
+
+```js
 {
   name: 'books',
   fields: [
@@ -49,28 +52,31 @@ interface BelongsTo {
       type: 'belongsTo',
       name: 'author',
       target: 'authors',
-      targetKey: 'id', // authors table's primary key
-      foreignKey: 'authorId', // foreign key in books table
+      targetKey: 'id', // первичный ключ таблицы authors
+      foreignKey: 'authorId', // внешний ключ в таблице books
     }
   ],
 }
 ```
 
-### HasOne
+##### **HasOne**
 
 ```ts
 interface HasOne {
   type: 'hasOne';
   name: string;
-  // defaults to name's plural
+  // по умолчанию — множественное число от name
   target?: string;
-  // The default value is the primary key of the source model, usually 'id'
+  // по умолчанию — первичный ключ исходной модели, обычно 'id'
   sourceKey?: string;
-  // default value is the singular form of source collection name + 'Id'
+  // по умолчанию — имя исходной коллекции в единственном числе + 'Id'
   foreignKey?: string;
-foreignKey?}
+}
+```
 
-// The users table's primary key id is concatenated with the profiles' foreign key userId
+// Первичный ключ `id` таблицы `users` связан с внешним ключом `userId` таблицы `profiles`
+
+```js
 {
   name: 'users',
   fields: [
@@ -78,28 +84,31 @@ foreignKey?}
       type: 'hasOne',
       name: 'profile',
       target: 'profiles',
-      sourceKey: 'id', // users table's primary key
-      foreignKey: 'userId', // foreign key in profiles table
+      sourceKey: 'id', // первичный ключ таблицы users
+      foreignKey: 'userId', // внешний ключ в таблице profiles
     }
   ],
 }
 ```
 
-### HasMany
+##### **HasMany**
 
 ```ts
 interface HasMany {
   type: 'hasMany';
   name: string;
-  // defaults to name
+  // по умолчанию — name
   target?: string;
-  // The default value is the primary key of the source model, usually 'id'
+  // по умолчанию — первичный ключ исходной модели, обычно 'id'
   sourceKey?: string;
-  // the default value is the singular form of the source collection name + 'Id'
+  // по умолчанию — имя исходной коллекции в единственном числе + 'Id'
   foreignKey?: string;
 }
+```
 
-// The posts table's primary key id is concatenated with the comments table's postId
+// Первичный ключ `id` таблицы `posts` связан с внешним ключом `postId` таблицы `comments`
+
+```js
 {
   name: 'posts',
   fields: [
@@ -107,46 +116,49 @@ interface HasMany {
       type: 'hasMany',
       name: 'comments',
       target: 'comments',
-      sourceKey: 'id', // posts table's primary key
-      foreignKey: 'postId', // foreign key in the comments table
+      sourceKey: 'id', // первичный ключ таблицы posts
+      foreignKey: 'postId', // внешний ключ в таблице comments
     }
   ],
 }
 ```
 
-### BelongsToMany
+##### **BelongsToMany**
 
 ```ts
 interface BelongsToMany {
   type: 'belongsToMany';
   name: string;
-  // default value is name
+  // по умолчанию — name
   target?: string;
-  // defaults to the source collection name and target in the natural order of the first letter of the string
+  // по умолчанию — имя исходной коллекции и целевой, в алфавитном порядке
   through?: string;
-  // defaults to the singular form of source collection name + 'Id'
+  // по умолчанию — имя исходной коллекции в единственном числе + 'Id'
   foreignKey?: string;
-  // The default value is the primary key of the source model, usually id
+  // по умолчанию — первичный ключ исходной модели, обычно 'id'
   sourceKey?: string;
-  // the default value is the singular form of target + 'Id'
+  // по умолчанию — имя целевой таблицы в единственном числе + 'Id'
   otherKey?: string;
-  // the default value is the primary key of the target model, usually id
+  // по умолчанию — первичный ключ целевой модели, обычно 'id'
   targetKey?: string;
 }
+```
 
-// tags table's primary key, posts table's primary key and posts_tags two foreign keys are linked
+// Первичные ключи таблиц `tags` и `posts`, а также два внешних ключа таблицы `posts_tags` связаны между собой
+
+```js
 {
   name: 'posts',
   fields: [
     {
-      type: 'believesToMany',
+      type: 'belongsToMany',
       name: 'tags',
       target: 'tags',
-      through: 'posts_tags', // intermediate table
-      foreignKey: 'tagId', // foreign key 1, in posts_tags table
-      otherKey: 'postId', // foreignKey2, in posts_tags table
-      targetKey: 'id', // tags table's primary key
-      sourceKey: 'id', // posts table's primary key
+      through: 'posts_tags', // промежуточная таблица
+      foreignKey: 'tagId', // внешний ключ 1, в таблице posts_tags
+      otherKey: 'postId', // внешний ключ 2, в таблице posts_tags
+      targetKey: 'id', // первичный ключ таблицы tags
+      sourceKey: 'id', // первичный ключ таблицы posts
     }
   ],
 }

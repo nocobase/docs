@@ -1,31 +1,31 @@
-### Plugin Organization Methods
+### **Способы организации плагинов**
 
-NocoBase offers three distinct methods for organizing plugins, ensuring that all plugin packages are ultimately consolidated within the `node_modules` directory at the project's root:
+NocoBase предлагает три различных метода организации плагинов, при этом все пакеты плагинов в конечном итоге объединяются в каталоге `node_modules` в корне проекта:
 
-![20240428091419](https://static-docs.nocobase.com/20240428091419.png)
+![Схема](https://static-docs.nocobase.com/20240428091419.png)
 
-#### storages/plugins
+#### **storage/plugins**
 
-This directory is reserved for storing pre-compiled plugins that require no additional dependencies. These plugins are designed for immediate use—simply plug and play. Plugins added via the interface are placed in this directory, and you can also add plugins using the `pm add` command.
+Этот каталог предназначен для хранения предварительно собранных плагинов, которым не требуются дополнительные зависимости. Эти плагины готовы к немедленному использованию — просто подключай и используй. Плагины, добавленные через интерфейс, помещаются в этот каталог. Также вы можете добавить плагин с помощью команды `pm add`.
 
+Пример команды:
 ```bash
 tar -xvzf /downloads/plugin-data-source-external-mysql-0.21.0-alpha.10.tgz -C /my-nocobase-app/storage/plugins/@nocobase/plugin-data-source-external-mysql --strip-components=1
 ```
 
-The directory structure is organized as follows:
-
-```bash
+Структура каталога:
+```
 |- /storage/
   |- /plugins/
     |- /@nocobase/
       |- /plugin-data-source-external-mysql/
 ```
 
-#### packages/plugins
+#### **packages/plugins**
 
-For plugins that are still in development, maintenance is handled through Yarn workspaces. Running `yarn install` will ensure that all dependencies for these plugins are downloaded. The source code is accessible, but these plugins require compilation before they can be deployed in a production environment. The structure of these plugin packages mirrors that of npm packages, as illustrated below:
+Для плагинов, находящихся в стадии разработки, управление осуществляется через Yarn workspaces. При выполнении команды `yarn install` все зависимости для этих плагинов будут загружены. Исходный код доступен, однако перед использованием в рабочей среде плагины необходимо собрать. Структура таких пакетов плагинов аналогична структуре пакетов npm:
 
-```bash
+```
 |- /packages/
   |- /plugins/
     |- /@nocobase/
@@ -35,11 +35,12 @@ For plugins that are still in development, maintenance is handled through Yarn w
     |- /my-nocobase-plugin-hello2/
 ```
 
-#### package.json + dependencies
+#### **package.json + зависимости**
 
-An example of this method is the NocoBase preset plugin, which lists its plugins under the `dependencies` section in `package.json`. When you run `yarn install`, all specified plugins are automatically downloaded and ready for use.
+Примером этого метода является предустановленный пакет плагинов NocoBase, в котором плагины перечислены в разделе `dependencies` файла `package.json`. При выполнении команды `yarn install` все указанные плагины автоматически загружаются и готовы к использованию.
 
-```js
+Пример:
+```json
 {
   "name": "@nocobase/preset-nocobase",
   "version": "0.21.0-alpha.15",

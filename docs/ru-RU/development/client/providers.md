@@ -1,30 +1,31 @@
-# **Provider component**
 
-In the NocoBase client application, the `Provider` component is defined in the outer layer, with the core structure as follows:
+# **Компонент Provider**
+
+В клиентском приложении NocoBase компонент `Provider` определён на внешнем уровне, с следующей основной структурой:
 
 ```tsx | pure
 <Router>
   {' '}
-  {/* Context Provider for routes */}
+  {/* Провайдер контекста для маршрутов */}
   <ProviderA>
     <ProviderB>
-      {/* Custom Provider components - Opening tag */}
+      {/* Пользовательские компоненты Provider - Открывающий тег */}
       <Routes />
-      {/* Custom Provider components - Closing tag */}
+      {/* Пользовательские компоненты Provider - Закрывающий тег */}
     </ProviderB>
   </ProviderA>
 </Router>
 ```
 
-Since it is defined at the outer layer, the `Provider` component serves the following purposes:
+Поскольку он определён на внешнем уровне, компонент `Provider` выполняет следующие функции:
 
-- Provides globally shared context, rendering `props.children` when needed.
-- Displays global content by rendering `props.children`.
-- Acts as an interceptor, conditionally rendering `props.children`.
+- Предоставляет глобально разделяемый контекст, отображая `props.children` при необходимости.
+- Отображает глобальное содержимое, рендеря `props.children`.
+- Выполняет роль перехватчика, условно отображая `props.children`.
 
-## Providing a globally shared context
+## Предоставление глобально разделяемого контекста
 
-Use `createContext` to define a context and `useContext` to retrieve the defined context:
+Используйте `createContext` для создания контекста и `useContext` для получения определённого контекста:
 
 ```tsx
 import { Plugin, Application } from '@nocobase/client';
@@ -33,9 +34,9 @@ import { createContext, useContext } from 'react';
 const MyContext = createContext({ color: null });
 
 const HomePage = () => {
-  // Access the context value
+  // Получение значения контекста
   const { color } = useContext(MyContext);
-  return <div>Color is: {color}</div>;
+  return <div>Цвет: {color}</div>;
 };
 
 class PluginSampleProvider extends Plugin {
@@ -59,17 +60,17 @@ const app = new Application({
 export default app.getRootComponent();
 ```
 
-## Providing global content display
+## Предоставление отображения глобального содержимого
 
 ```tsx
 import { Plugin, Application } from '@nocobase/client';
 
-// Create a component and ensure children are rendered
+// Создание компонента и обеспечение рендеринга дочерних элементов
 const MyProvider = (props) => {
   const { children, name } = props;
   return (
     <div>
-      <div>Global content display - {name}</div>
+      <div>Отображение глобального содержимого - {name}</div>
       {children}
     </div>
   );
@@ -81,7 +82,7 @@ class PluginSampleProvider extends Plugin {
 
     this.app.router.add('home', {
       path: '/',
-      Component: () => <div>Home page</div>,
+      Component: () => <div>Домашняя страница</div>,
     });
   }
 }
@@ -97,28 +98,28 @@ const app = new Application({
 export default app.getRootComponent();
 ```
 
-## Intercepting functionality
+## Функция перехвата
 
 ```tsx
 import { Plugin, Application } from '@nocobase/client';
 import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 
-// Create a component and ensure children are rendered
+// Создание компонента и обеспечение рендеринга дочерних элементов
 const MyProvider = (props) => {
   const { children, name } = props;
   const location = useLocation();
   if (location.pathname === '/about') {
     return (
       <div>
-        Content intercepted. Return to <Link to={'/'}>Home</Link>
+        Содержимое перехвачено. Вернуться на <Link to={'/'}>Домашнюю страницу</Link>
       </div>
     );
   }
   return (
     <div>
-      <div>Hello, {name}</div>
-      <Link to={'/'}>Home</Link>, <Link to={'/about'}>About</Link>
+      <div>Привет, {name}</div>
+      <Link to={'/'}>Домашняя</Link>, <Link to={'/about'}>О нас</Link>
       {children}
     </div>
   );
@@ -129,7 +130,7 @@ class PluginSampleProvider extends Plugin {
     this.app.addProvider(MyProvider);
     this.app.router.add('home', {
       path: '/',
-      Component: () => <div>Home page</div>,
+      Component: () => <div>Домашняя страница</div>,
     });
   }
 }
@@ -144,3 +145,4 @@ const app = new Application({
 
 export default app.getRootComponent();
 ```
+</DOCUMENT>

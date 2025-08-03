@@ -1,12 +1,12 @@
-# How to extend fields
+# Как расширить поля
 
-The composition of a Collection Field in NocoBase consists of
+Состав поля коллекции в NocoBase состоит из
 
 <img src="./collection-field.svg" />
 
-## Extend Field Type
+## Расширить тип поля
 
-For example, to extend the password type field ``type: 'password'`
+Например, чтобы расширить поле ввода пароля введите: 'password'`
 
 ```ts
 export class MyPlugin extends Plugin {
@@ -24,16 +24,16 @@ export class PasswordField extends Field {
 }
 ```
 
-- [More implementations of the built-in field types can be found here](https://github.com/nocobase/nocobase/tree/main/packages/core/database/src/fields)
-- Also see the full samples plugin [packages/samples/shop-modeling](https://github.com/nocobase/nocobase/tree/main/packages/samples/shop-modeling)
+- [С другими реализациями встроенных типов полей можно ознакомиться здесь](https://github.com/nocobase/nocobase/tree/main/packages/core/database/src/fields)
+- Также смотрите полные образцы плагина [пакеты/образцы/магазин-моделирование](https://github.com/nocobase/nocobase/tree/main/packages/samples/shop-modeling)
 
-## Extend Field Component
+## Расширить полевой компонент
 
-Related extension documentation can be found at
+Соответствующую документацию по расширению можно найти здесь
 
-- [Extending Schema Components](/development/client/ui-schema-designer/extending-schema-components)
-- [Schema component library](/development/client/ui-schema-designer/component-library)
+- [Расширение компонентов схемы](/development/client/ui-schema-designer/extending-schema-components)
+- [[Библиотека компонентов Schema](/development/client/ui-schema-designer/component-library)
 
-## Extend Field Interface
+## Расширить полевой интерфейс
 
-- [Built-in field interfaces view here](https://github.com/nocobase/nocobase/tree/main/packages/core/client/src/collection-manager/interfaces)
+- [Встроенные полевые интерфейсы можно посмотреть здесь](https://github.com/nocobase/nocobase/tree/main/packages/core/client/src/collection-manager/interfaces)

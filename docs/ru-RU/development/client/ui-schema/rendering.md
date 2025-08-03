@@ -1,20 +1,20 @@
-# Schema Rendering
+# Schema Визуализация
 
-## Core Components
+## Основные компоненты
 
-Schema rendering involves several core components:
+Рендеринг schema включает несколько основных компонентов:
 
-- `<SchemaComponentProvider />` provides the context needed for schema rendering.
-- `<SchemaComponentOptions />` extends components and scopes, optional.
-- `<SchemaComponent />` renders the schema, must be used within `<SchemaComponentProvider />`.
+- `<SchemaComponentProvider />` предоставляет контекст, необходимый для рендеринга schema.
+- `<SchemaComponentOptions />` расширяет компоненты и области видимости, необязательный.
+- `<SchemaComponent />` выполняет рендеринг schema, должен использоваться внутри `<SchemaComponentProvider />`.
 
-Basic usage is as follows:
+Базовое использование выглядит следующим образом:
 
 ```tsx
 import React from 'react';
 import { SchemaComponent, SchemaComponentProvider } from '@nocobase/client';
 
-const Hello = () => <h1>Hello, world!</h1>;
+const Hello = () => <h1>Привет, мир!</h1>;
 
 const schema = {
   type: 'void',
@@ -31,30 +31,30 @@ export default () => {
 };
 ```
 
-For specific API details, refer to [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component).
+Для подробной информации об API обратитесь к [SchemaComponent](https://client.docs.nocobase.com/core/ui-schema/schema-component).
 
-## What is Scope?
+## Что такое Scope?
 
-Scope refers to variables or functions available within the schema. For example, the function `t()` in the following example needs to be registered in the scope to render the title correctly.
+Scope относится к переменным или функциям, доступным в schema. Например, функция `t()` в следующем примере должна быть зарегистрирована в scope для корректного рендеринга заголовка.
 
 ```tsx | pure
 <SchemaComponent
   scope={{ t }}
   schema={{
-    title: '{{t("Hello")}}',
+    title: '{{t("Привет")}}',
   }}
 >
 ```
 
-## Registering Components and Scopes
+## Регистрация компонентов и Scopes
 
-Components and scopes can be registered with SchemaComponentProvider, SchemaComponentOptions, and SchemaComponent. The differences are:
+Компоненты и scopes можно зарегистрировать с помощью SchemaComponentProvider, SchemaComponentOptions и SchemaComponent. Различия заключаются в следующем:
 
-- SchemaComponentProvider provides the top-level context.
-- SchemaComponentOptions is used to replace and extend the local context.
-- SchemaComponent provides the current schema's context.
+- SchemaComponentProvider предоставляет контекст верхнего уровня.
+- SchemaComponentOptions используется для замены и расширения локального контекста.
+- SchemaComponent предоставляет контекст текущей schema.
 
-For example:
+Например:
 
 ```tsx | pure
 <SchemaComponentProvider components={{ ComponentA }}>
@@ -67,18 +67,18 @@ For example:
 </SchemaComponentProvider>
 ```
 
-- schema1 can use ComponentA and ComponentB
-- schema2 can use ComponentA and ComponentC
-- schema3 can use ComponentA, ComponentD, and ComponentE
-- schema4 can use ComponentA, ComponentD, and ComponentF
+- schema1 может использовать ComponentA и ComponentB
+- schema2 может использовать ComponentA и ComponentC
+- schema3 может использовать ComponentA, ComponentD и ComponentE
+- schema4 может использовать ComponentA, ComponentD и ComponentF
 
-## Using in Application
+## Использование в приложении
 
-The Application in the NocoBase client has built-in SchemaComponentProvider components in its Providers.
+Приложение в клиенте NocoBase имеет встроенные компоненты SchemaComponentProvider в своих провайдерах.
 
 ```ts
 class Application {
-  // Default Providers
+  // Провайдеры по умолчанию
   addDefaultProviders() {
     this.addProvider(SchemaComponentProvider, {
       scopes: this.scopes,
@@ -88,20 +88,20 @@ class Application {
 }
 ```
 
-The final rendering component structure is as follows:
+Итоговая структура компонента рендеринга выглядит следующим образом:
 
 ```tsx | pure
 <Router>
-  {/* Context Provider for routing */}
+  {/* Провайдер контекста для маршрутизации */}
   <SchemaComponentProvider components={app.components} scopes={app.scopes}>
-    {/* Custom Provider components - start tag */}
+    {/* Пользовательские компоненты Provider - начальный тег */}
     <Routes />
-    {/* Custom Provider components - end tag */}
+    {/* Пользовательские компоненты Provider - конечный тег */}
   </SchemaComponentProvider>
 </Router>
 ```
 
-When using it within the application, you don't need to wrap it with SchemaComponentProvider; you can directly use SchemaComponent.
+При использовании в приложении нет необходимости оборачивать в SchemaComponentProvider; можно напрямую использовать SchemaComponent.
 
 ```tsx
 import {
@@ -112,7 +112,7 @@ import {
 } from '@nocobase/client';
 import React from 'react';
 
-const Hello = () => <h1>Hello, world!</h1>;
+const Hello = () => <h1>Привет, мир!</h1>;
 
 const HelloPage = () => {
   return (
@@ -150,16 +150,16 @@ const app = new Application({
 export default app.getRootComponent();
 ```
 
-In the application's lifecycle methods, you can use `app.addComponents()` and `app.addScopes()` to extend global components and scopes.
+В методах жизненного цикла приложения можно использовать `app.addComponents()` и `app.addScopes()` для расширения глобальных компонентов и scopes.
 
 ```ts
 class PluginHello extends Plugin {
   async load() {
     this.app.addComponents({
-      // Extended components
+      // Расширенные компоненты
     });
     this.app.addScopes({
-      // Extended scope
+      // Расширенный scope
     });
   }
 }

@@ -1,36 +1,36 @@
-# 概述
+### **Обзор**
 
-NocoBase 的 HTTP API 基于 Resource & Action 设计，是 REST API 的超集，操作不局限于增删改查，在 NocoBase 里，Resource Action 可以任意的扩展。
+HTTP API NocoBase основан на концепции «Ресурс и действие» (Resource & Action), является надмножеством REST API и не ограничивается стандартными операциями CRUD. В NocoBase действия ресурсов (Resource Action) могут расширяться произвольным образом.
 
-## 资源 Resource
+#### **Ресурс (Resource)**
 
-在 NocoBase 里，资源（resource）有两种表达方式：
+В NocoBase ресурс (resource) может быть представлен двумя способами:
 
 - `<collection>`
 - `<collection>.<association>`
 
 <Alert>
 
-- collection 是所有抽象数据的集合
-- association 为 collection 的关联数据
-- resource 包括 collection 和 collection.association 两类
+- collection — это набор всех абстрактных данных
+- association — связанные данные collection
+- resource включает в себя два типа: collection и collection.association
 
 </Alert>
 
-### 示例
+##### **Примеры**
 
-- `posts` 文章
-- `posts.user` 文章用户
-- `posts.tags` 文章标签
+- `posts` — статьи
+- `posts.user` — пользователь статьи
+- `posts.tags` — теги статьи
 
-## 操作 Action
+#### **Действие (Action)**
 
-以 `:<action>` 的方式表示资源操作
+Действия ресурса обозначаются как `:<action>`:
 
 - `<collection>:<action>`
 - `<collection>.<association>:<action>`
 
-内置的全局操作，可用于 collection 或 association
+Встроенные глобальные действия, доступные для collection и association:
 
 - `create`
 - `get`
@@ -39,20 +39,20 @@ NocoBase 的 HTTP API 基于 Resource & Action 设计，是 REST API 的超集�
 - `destroy`
 - `move`
 
-内置的关联操作，仅用于 association
+Встроенные действия для связей, доступные только для association:
 
 - `set`
 - `add`
 - `remove`
 - `toggle`
 
-### 示例
+##### **Примеры**
 
-- `posts:create` 创建文章
-- `posts.user:get` 查看文章用户
-- `posts.tags:add` 附加文章标签（将现有的标签与文章关联）
+- `posts:create` — создать статью
+- `posts.user:get` — просмотреть пользователя статьи
+- `posts.tags:add` — добавить тег к статье (связать существующий тег со статьёй)
 
-## 请求 URL
+#### **URL запроса**
 
 ```bash
 <GET|POST>   /api/<collection>:<action>
@@ -61,9 +61,9 @@ NocoBase 的 HTTP API 基于 Resource & Action 设计，是 REST API 的超集�
 <GET|POST>   /api/<collection>/<collectionIndex>/<association>:<action>/<associationIndex>
 ```
 
-### 示例
+##### **Примеры**
 
-posts 资源
+Ресурс `posts`:
 
 ```bash
 POST  /api/posts:create
@@ -73,7 +73,7 @@ POST  /api/posts:update/1
 POST  /api/posts:destroy/1
 ```
 
-posts.comments 资源
+Ресурс `posts.comments`:
 
 ```bash
 POST  /api/posts/1/comments:create
@@ -83,7 +83,7 @@ POST  /api/posts/1/comments:update/1
 POST  /api/posts/1/comments:destroy/1
 ```
 
-posts.tags 资源
+Ресурс `posts.tags`:
 
 ```bash
 POST  /api/posts/1/tags:create
@@ -95,48 +95,48 @@ POST  /api/posts/1/tags:add
 GET   /api/posts/1/tags:remove
 ```
 
-## 资源定位
+#### **Определение ресурса**
 
-- collection 资源，通过 `collectionIndex` 定位到待处理的数据，`collectionIndex` 必须唯一
-- association 资源，通过 `collectionIndex` 和 `associationIndex` 联合定位待处理的数据，`associationIndex` 可能不是唯一的，但是 `collectionIndex` 和 `associationIndex` 的联合索引必须唯一
+- Ресурс collection определяется по `collectionIndex`, который должен быть уникальным.
+- Ресурс association определяется по комбинации `collectionIndex` и `associationIndex`. При этом `associationIndex` может быть неуникальным, но совместный индекс `collectionIndex` и `associationIndex` должен быть уникальным.
 
-查看 association 资源详情时，请求的 URL 需要同时提供 `<collectionIndex>` 和 `<associationIndex>`，`<collectionIndex>` 并不多余，因为 `<associationIndex>` 可能不是唯一的。
+При запросе деталей ресурса association в URL необходимо указывать и `<collectionIndex>`, и `<associationIndex>`. Параметр `<collectionIndex>` не является избыточным, так как `<associationIndex>` может быть неуникальным.
 
-例如 `tables.fields` 表示数据表的字段
+Например, `tables.fields` означает поля таблицы данных:
 
 ```bash
 GET   /api/tables/table1/fields/title
 GET   /api/tables/table2/fields/title
 ```
 
-table1 和 table2 都有 title 字段，title 在 table1 里是唯一的，但是其他表也可能有 title 字段
+Таблицы `table1` и `table2` обе содержат поле `title`. Значение `title` уникально в пределах `table1`, но другие таблицы также могут содержать поле `title`.
 
-## 请求参数
+#### **Параметры запроса**
 
-请求的参数可以放在 Request 的 headers、parameters（query string）、body（GET 请求没有 body） 里。
+Параметры запроса могут передаваться в заголовках (headers), параметрах (query string) или теле запроса (body, для GET-запросов тело отсутствует).
 
-几个特殊的 Parameters 请求参数
+Несколько специальных параметров:
 
-- `filter` 数据过滤，用于查询相关操作里；
-- `filterByTk` 根据 tk 字段字过滤，用于指定详情数据的操作里；
-- `sort` 排序，用于查询相关操作里。
-- `fields` 输出哪些数据，用于查询相关操作里；
-- `appends` 附加关系字段，用于查询相关操作里；
-- `except` 排除哪些字段（不输出），用于查询相关操作里；
-- `whitelist` 字段白名单，用于数据的创建和更新相关操作里；
-- `blacklist` 字段黑名单，用于数据的创建和更新相关操作里；
+- `filter` — фильтрация данных, используется в операциях запроса;
+- `filterByTk` — фильтрация по полю `tk`, используется для указания конкретной записи в операциях детализации;
+- `sort` — сортировка, используется в операциях запроса;
+- `fields` — какие поля выводить, используется в операциях запроса;
+- `appends` — дополнительные связанные поля, используется в операциях запроса;
+- `except` — исключить поля (не выводить), используется в операциях запроса;
+- `whitelist` — белый список полей, используется при создании и обновлении данных;
+- `blacklist` — чёрный список полей, используется при создании и обновлении данных.
 
-### filter
+##### **filter**
 
-数据过滤
+Фильтрация данных:
 
 ```bash
-# simple
+# простой вариант
 GET /api/posts?filter[status]=publish
-# 推荐使用 json string 的格式，需要 encodeURIComponent 编码
+# рекомендуется использовать формат json string, требует кодирования через encodeURIComponent
 GET /api/posts?filter={"status":"published"}
 
-# filter operators
+# операторы фильтрации
 GET /api/posts?filter[status.$eq]=publish
 GET /api/posts?filter={"status.$eq":"published"}
 
@@ -145,19 +145,19 @@ GET /api/posts?filter={"$and": [{"status.$eq":"published"}, {"title.$includes":"
 # $or
 GET /api/posts?filter={"$or": [{"status.$eq":"pending"}, {"status.$eq":"draft"}]}
 
-# association field
+# поле связи
 GET /api/posts?filter[user.email.$includes]=gmail
 GET /api/posts?filter={"user.email.$includes":"gmail"}
 ```
 
-[点此查看更多关于 filter operators 的内容](http-api/filter-operators)
+[Дополнительная информация об операторах фильтрации](http-api/filter-operators)
 
 ### filterByTk
 
-根据 tk 字段过滤，默认情况：
+Фильтрация по полю `tk`. По умолчанию:
 
-- collection 资源，tk 为数据表的主键；
-- association 资源，tk 为 association 的 targetKey 字段。
+- для ресурса collection — `tk` является первичным ключом таблицы данных;
+- для ресурса association — `tk` соответствует полю `targetKey` связи.
 
 ```bash
 GET   /api/posts:get?filterByTk=1&fields=name,title&appends=tags
@@ -165,25 +165,25 @@ GET   /api/posts:get?filterByTk=1&fields=name,title&appends=tags
 
 ### sort
 
-排序。降序时，字段前面加上减号 `-`。
+Сортировка. Для сортировки по убыванию перед полем ставится знак минус `-`.
 
 ```bash
-# createAt 字段升序
+# по возрастанию по полю createdAt
 GET   /api/posts:get?sort=createdAt
-# createAt 字段降序
+# по убыванию по полю createdAt
 GET   /api/posts:get?sort=-createdAt
-# 多个字段联合排序，createAt 字段降序、title A-Z 升序
+# сортировка по нескольким полям: по убыванию по createdAt, по возрастанию по title (A–Z)
 GET   /api/posts:get?sort=-createdAt,title
 ```
 
 ### fields
 
-输出哪些数据
+Указание, какие поля включать в ответ.
 
 ```bash
 GET   /api/posts:list?fields=name,title
 
-Response 200 (application/json)
+Ответ 200 (application/json)
 {
   "data": [
     {
@@ -197,47 +197,47 @@ Response 200 (application/json)
 
 ### appends
 
-附加关系字段
+Добавление связанных полей.
 
 ### except
 
-排除哪些字段（不输出），用于查询相关操作里；
+Исключение полей (не выводить), используется в операциях запроса.
 
 ### whitelist
 
-白名单
+Белый список
 
 ```bash
 POST  /api/posts:create?whitelist=title
 
 {
   "title": "My first post",
-  "date": "2022-05-19"      # date 字段会被过滤掉，不会写入数据库
+  "date": "2022-05-19"      # поле date будет отфильтровано и не попадёт в базу данных
 }
 ```
 
 ### blacklist
 
-黑名单
+Чёрный список
 
 ```bash
 POST  /api/posts:create?blacklist=date
 
 {
   "title": "My first post",
-  "date": "2022-05-19"      # date 字段会被过滤掉，不会写入数据库
+  "date": "2022-05-19"      # поле date будет отфильтровано и не попадёт в базу данных
 }
 ```
 
-## 请求响应
+## Ответ на запрос
 
-响应的格式
+Формат ответа
 
 ```ts
 type ResponseResult = {
-  data?: any; // 主体数据
-  meta?: any; // 附加数据
-  errors?: ResponseError[]; // 报错
+  data?: any; // основные данные
+  meta?: any; // дополнительные данные
+  errors?: ResponseError[]; // ошибки
 };
 
 type ResponseError = {
@@ -246,14 +246,14 @@ type ResponseError = {
 };
 ```
 
-### 示例
+### Примеры
 
-查看列表
+Просмотр списка
 
 ```bash
 GET /api/posts:list
 
-Response 200 (application/json)
+Ответ 200 (application/json)
 
 {
   data: [
@@ -270,12 +270,12 @@ Response 200 (application/json)
 }
 ```
 
-查看详情
+Просмотр деталей
 
 ```bash
 GET /api/posts:get/1
 
-Response 200 (application/json)
+Ответ 200 (application/json)
 
 {
   data: {
@@ -284,12 +284,12 @@ Response 200 (application/json)
 }
 ```
 
-报错
+Ошибка
 
 ```bash
 POST /api/posts:create
 
-Response 400 (application/json)
+Ответ 400 (application/json)
 
 {
   errors: [

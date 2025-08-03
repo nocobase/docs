@@ -1,110 +1,117 @@
-# Overview
+### **Структура серверной части плагина**
 
-The directory structure related to the server side of an initialized empty plugin is as follows:
+Структура каталога, связанного с серверной частью инициализированного пустого плагина, выглядит следующим образом:
 
-```bash
+```
 |- /plugin-sample-hello
   |- /src
-    |- /server      # Plugin server-side code
-      |- plugin.ts  # Plugin class
-      |- index.ts   # Server-side entry point
+    |- /server      # Серверный код плагина
+      |- plugin.ts  # Класс плагина
+      |- index.ts   # Точка входа серверной части
   |- server.d.ts
   |- server.js
 ```
 
-## Plugin
+#### **Плагин**
 
-`plugin.ts` facilitates the invocation of various methods across the plugin lifecycle.
+Файл `plugin.ts` позволяет вызывать различные методы на разных этапах жизненного цикла плагина.
 
 ```ts
 import { InstallOptions, Plugin } from '@nocobase/server';
 
 export class PluginSampleHelloServer extends Plugin {
   afterAdd() {
-    // After the plugin is registered with pm.add. Mainly used for placing listeners for the app beforeLoad event
+    // Вызывается после регистрации плагина через pm.add.
+    // В основном используется для установки слушателей события app.beforeLoad
     this.app.on('beforeLoad');
   }
+
   beforeLoad() {
-    // Customize classes or methods
+    // Настройка классов или методов
     this.db.registerFieldTypes();
     this.db.registerModels();
     this.db.registerRepositories();
     this.db.registerOperators();
-    // Event listeners
+    // Слушатели событий
     this.app.on();
     this.db.on();
   }
+
   async load() {
-    // Define collection
+    // Определение коллекции
     this.db.collection();
-    // Import collection configurations
+    // Импорт конфигураций коллекций
     this.db.import();
     this.db.addMigrations();
 
-    // Define resource
+    // Определение ресурса
     this.resourcer.define();
-    // Register resource actions
+    // Регистрация действий ресурса
     this.resourcer.registerActions();
 
-    // Register middleware
+    // Регистрация промежуточного ПО (middleware)
     this.resourcer.use();
     this.acl.use();
     this.app.use();
 
     this.app.i18n;
-    // Custom commands
+    // Пользовательские команды
     this.app.command();
   }
+
   async install(options?: InstallOptions) {
-    // Installation logic
+    // Логика установки
   }
+
   async afterEnable() {
-    // After activation
+    // После активации
   }
+
   async afterDisable() {
-    // After deactivation
+    // После деактивации
   }
+
   async remove() {
-    // Deletion logic
+    // Логика удаления
   }
 }
 
-export default MyPlugin;
+export default PluginSampleHelloServer;
 ```
 
-## Plugin Lifecycle
+#### **Жизненный цикл плагина**
 
-<img alt="Plugin Lifecycle" src="./image.png" style="width: 320px;" />
+![Жизненный цикл](./image.png)
 
-- After the plugin is initialized, `afterAdd` is triggered. In `afterAdd`, not all other plugins might have been instantiated.
-- In `beforeLoad`, all activated plugins have been instantiated, and their instances can be retrieved via `app.pluginManager.get()`.
-- In `load`, the `beforeLoad` method of all plugins has been executed.
+- После инициализации плагина вызывается `afterAdd`. На этом этапе не все остальные плагины могут быть ещё созданы.
+- В `beforeLoad` все активированные плагины уже инстанцированы, и их экземпляры можно получить через `app.pluginManager.get()`.
+- В `load` метод `beforeLoad` всех плагинов уже выполнен.
 
-## Common Properties and Methods in the Plugin Class
+#### **Основные свойства и методы класса плагина**
 
-| API                              | Tutorial          |
-| -------------------------------- | ----------------- |
-| this.name                        | Plugin name       |
-| this.enabled                     | Activated         |
-| this.installed                   | Installed         |
-| this.app                         | Application instance |
-| this.pm                          | Plugin manager instance |
-| this.db                          | Database instance |
-| this.resourcer                   | Resource manager  |
-| this.acl                         | Access control    |
-| this.log                         | Logging           |
-| this.app.i18n                    | Internationalization |
-| this.db.registerFieldTypes()     | Register field types |
-| this.db.registerModels()         | Register Models   |
-| this.db.registerRepositories()   | Register Repositories |
-| this.db.registerOperators()      | Register custom operators |
-| this.app.on()                    | Application events |
-| this.db.on()                     | Database events   |
-| this.db.collection()             | Configure data tables |
-| this.db.import()                 | Import data table configurations |
-| this.db.addMigrations()          | Migrations        |
-| this.resourcer.registerActions() | Register resource actions |
-| this.resourcer.use()             | Middleware        |
-| this.acl.use()                   | Middleware        |
-| this.app.use()                   | Middleware        |
-| this.app.command()               | Command line      |
+| API | Описание |
+| --- | --- |
+| `this.name` | Название плагина |
+| `this.enabled` | Активирован ли плагин |
+| `this.installed` | Установлен ли плагин |
+| `this.app` | Экземпляр приложения |
+| `this.pm` | Экземпляр менеджера плагинов |
+| `this.db` | Экземпляр базы данных |
+| `this.resourcer` | Менеджер ресурсов |
+| `this.acl` | Система контроля доступа |
+| `this.log` | Логирование |
+| `this.app.i18n` | Интернационализация |
+| `this.db.registerFieldTypes()` | Регистрация типов полей |
+| `this.db.registerModels()` | Регистрация моделей |
+| `this.db.registerRepositories()` | Регистрация репозиториев |
+| `this.db.registerOperators()` | Регистрация пользовательских операторов |
+| `this.app.on()` | События приложения |
+| `this.db.on()` | События базы данных |
+| `this.db.collection()` | Настройка таблиц данных |
+| `this.db.import()` | Импорт конфигураций таблиц данных |
+| `this.db.addMigrations()` | Миграции |
+| `this.resourcer.registerActions()` | Регистрация действий ресурса |
+| `this.resourcer.use()` | Промежуточное ПО (middleware) |
+| `this.acl.use()` | Промежуточное ПО (middleware) |
+| `this.app.use()` | Промежуточное ПО (middleware) |
+| `this.app.command()` | Командная строка |

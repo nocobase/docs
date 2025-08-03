@@ -1,14 +1,14 @@
-# Testing
+# Тестирование
 
-Testing is based on the [Jest](https://jestjs.io/) testing framework. To facilitate writing tests, `mockDatabase()` and `mockServer()` are provided for testing database and server-side applications.
+Тестирование основано на фреймворке [Jest](https://jestjs.io/). Для удобства написания тестов предоставляются `mockDatabase()` и `mockServer()` для тестирования базы данных и серверной части приложений.
 
 :::warning
-The test environment variables are configured in the `.env.test` file. It's recommended to use a separate test database for testing.
+Переменные тестового окружения настраиваются в файле `.env.test`. Рекомендуется использовать отдельную тестовую базу данных.
 :::
 
 ## `mockDatabase()`
 
-A fully isolated db testing environment is provided by default.
+По умолчанию предоставляет полностью изолированное тестовое окружение для БД.
 
 ```ts
 import { mockDatabase } from '@nocobase/test';
@@ -49,12 +49,13 @@ describe('my db suite', () => {
 
 ## `mockServer()`
 
-A mock server application instance is provided, with the corresponding app.db being a `mockDatabase()` instance. Additionally, a convenient `app.agent()` is available for testing HTTP APIs. For Resource Action specific to NocoBase, `app.agent().resource()` is encapsulated for testing the Action of resources.
+Предоставляет mock-экземпляр серверного приложения, где app.db является экземпляром `mockDatabase()`. Также доступен удобный `app.agent()` для тестирования HTTP API. Для Resource Action, специфичных для NocoBase, предусмотрен `app.agent().resource()` для тестирования действий ресурсов.
 
 ```ts
 import { MockServer, mockServer } from '@nocobase/test';
 
-// Each plugin's minimal installation app is different, the necessary plugins need to be added according to their own conditions.
+// Минимальная конфигурация приложения для каждого плагина разная,
+// необходимо добавлять требуемые плагины в зависимости от условий
 async function createApp(options: any = {}) {
   const app = mockServer({
     ...options,
@@ -65,17 +66,19 @@ async function createApp(options: any = {}) {
       'error-handler',
       ...options.plugins,
     ],
-    // Other configuration parameters might also be present.
+    // Могут присутствовать другие параметры конфигурации
   });
-  // Here, some logic that needs special handling can be supplemented, such as importing data tables needed for testing.
+  // Здесь можно добавить логику, требующую специальной обработки,
+  // например, импорт тестовых данных
   return app;
 }
 
-// Most tests need to start the application, so a common startup method can also be provided.
+// Большинству тестов требуется запуск приложения,
+// поэтому можно предоставить общий метод запуска
 async function startApp() {
   const app = createApp();
   await app.quickstart({
-    // Before running tests, clear the database.
+    // Очистка БД перед запуском тестов
     clean: true,
   });
   return app;
@@ -89,50 +92,28 @@ describe('test example', () => {
   });
 
   afterEach(async () => {
-    // After running the tests, clear the database.
+    // Очистка БД после тестов
     await app.destroy();
-    // Stop without clearing the database.
+    // Остановка без очистки БД
     await app.stop();
   });
 
   test('case1', async () => {
-    // coding...
+    // код теста...
   });
 });
 ```
+### Запуск с последующей установкой
 
-## Common Application Processes
-
-If you need to test different processes, you can execute related commands according to the following examples.
-
-### Install then Start
-
-Terminal command line
+Команда в терминале:
 
 ```bash
-yarn nocobase install
-yarn start
-```
-
-Preliminary test process
-
-```ts
-const app = mockServer();
-await app.runCommand('install');
-await app.runCommand('start');
-```
-
-### Start then Install
-
-Terminal command line
-
-```bash
-yarn start # Stay in memory
-# Execute in another terminal
+yarn start # Остается в памяти
+# Выполнить в другом терминале
 yarn nocobase install
 ```
 
-Preliminary test process
+Тестовый процесс:
 
 ```ts
 const app = mockServer();
@@ -140,32 +121,32 @@ await app.runCommand('start');
 await app.runCommand('install');
 ```
 
-### Quickstart (Auto Install or Upgrade)
+### Быстрый старт (автоматическая установка или обновление)
 
-Terminal command line
+Команда в терминале:
 
 ```bash
 yarn start --quickstart
 ```
 
-Preliminary test process
+Тестовый процесс:
 
 ```ts
 const app = mockServer();
 await app.runCommand('start', '--quickstart');
 ```
 
-### Reinstall an Already Installed and Started Application
+### Переустановка уже установленного и запущенного приложения
 
-Terminal command line
+Команда в терминале:
 
 ```bash
 yarn start --quickstart
-# Execute in another terminal
+# Выполнить в другом терминале
 yarn nocobase install -f
 ```
 
-Preliminary test process
+Тестовый процесс:
 
 ```ts
 const app = mockServer();
@@ -173,16 +154,16 @@ await app.runCommand('start', '--quickstart');
 await app.runCommand('install', '-f');
 ```
 
-### Upgrade the Application (Before Starting)
+### Обновление приложения (перед запуском)
 
-Terminal command line
+Команда в терминале:
 
 ```bash
 yarn nocobase upgrade
 yarn start
 ```
 
-Preliminary test process
+Тестовый процесс:
 
 ```ts
 const app = mockServer();
@@ -190,15 +171,17 @@ await app.runCommand('upgrade', '-f');
 await app.runCommand('start', '--quickstart');
 ```
 
-### Upgrade the Application (After Starting)
+### Обновление приложения (после запуска)
+
+Команда в терминале:
 
 ```bash
-yarn start # Stay in memory
-# Execute in another terminal
+yarn start # Остается в памяти
+# Выполнить в другом терминале
 yarn nocobase upgrade
 ```
 
-Preliminary test process
+Тестовый процесс:
 
 ```ts
 const app = mockServer();
@@ -206,16 +189,16 @@ await app.runCommand('start', '--quickstart');
 await app.runCommand('upgrade', '-f');
 ```
 
-### Activate a Plugin
+### Активация плагина
 
-Terminal command line
+Команда в терминале:
 
 ```bash
 yarn start --quickstart
 yarn pm enable @my-project/plugin-hello
 ```
 
-Preliminary test process
+Тестовый процесс:
 
 ```ts
 const app = mockServer();
@@ -223,16 +206,16 @@ await app.runCommand('start', '--quickstart');
 await app.runCommand('pm', 'enable', '@my-project/plugin-hello');
 ```
 
-### Disable a Plugin
+### Деактивация плагина
 
-Terminal command line
+Команда в терминале:
 
 ```bash
 yarn start --quickstart
 yarn pm disable @my-project/plugin-hello
 ```
 
-Preliminary test process
+Тестовый процесс:
 
 ```ts
 const app = mockServer();

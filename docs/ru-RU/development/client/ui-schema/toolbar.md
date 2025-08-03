@@ -1,61 +1,61 @@
-# Schema toolbar
+# Панель инструментов Schema
 
-After activating the UI configuration, a toolbar corresponding to the Schema will appear when the mouse hovers over the specified block, field, or action.
+После активации конфигурации пользовательского интерфейса при наведении мыши на указанный блок, поле или действие появляется панель инструментов, соответствующая Schema.
 
 ![Alt text](https://static-docs.nocobase.com/e6d327da8e85d6548529e1051d06c31a.png)
 
-The toolbar consists of:
+Панель инструментов состоит из:
 
-- Title, default is empty
-- Drag control, providing drag capability, default is draggable
-- Initializer, default is empty
-- Settings, default is empty
+- Заголовок, по умолчанию пустой
+- Элемент управления перетаскиванием, обеспечивает возможность перетаскивания, по умолчанию включено
+- Инициализатор, по умолчанию пустой
+- Настройки, по умолчанию пустые
 
 ```tsx | pure
 <SchemaToolbar
-  title="Title"
+  title="Заголовок"
   draggable
   initialize={'myInitializer'}
   settings={'mySettings'}
 />
 ```
 
-## Usage
+## Использование
 
-The SchemaToolbar component is used in `x-toolbar`, for example:
+Компонент SchemaToolbar используется в `x-toolbar`, например:
 
 ```ts
-// Using the built-in SchemaToolbar
+// Использование встроенного SchemaToolbar
 {
   'x-toolbar': 'SchemaToolbar',
   'x-toolbar-props': {},
 }
-// Custom SchemaToolbar
+// Пользовательский SchemaToolbar
 {
   'x-toolbar': 'MySchemaToolbar',
   'x-toolbar-props': {},
 }
 ```
 
-## Schema components that support `x-toolbar` include
+## Компоненты Schema, поддерживающие `x-toolbar`
 
-- `BlockItem` (wrapper component, generally used in `x-decorator`)
-- `CardItem` (wrapper component, generally used in `x-decorator`)
-- `FormItem` (wrapper component, generally used in `x-decorator`)
-- `Action` (action button component, used in `x-component`)
+- `BlockItem` (обёрточный компонент, обычно используется в `x-decorator`)
+- `CardItem` (обёрточный компонент, обычно используется в `x-decorator`)
+- `FormItem` (обёрточный компонент, обычно используется в `x-decorator`)
+- `Action` (компонент кнопки действия, используется в `x-component`)
 
-If the schema's `x-component` or `x-decorator` uses the above components and `x-settings` is configured, `x-toolbar` can be omitted, and the built-in `SchemaToolbar` will be used by default.
+Если `x-component` или `x-decorator` Schema используют вышеуказанные компоненты и настроен `x-settings`, то `x-toolbar` можно опустить, и по умолчанию будет использоваться встроенный `SchemaToolbar`.
 
 <code src="./demos/schema-toolbar-basic/index.tsx"></code>
 
-You can also customize the toolbar component.
+Также можно настроить пользовательский компонент панели инструментов.
 
 <code src="./demos/schema-toolbar-basic/custom.tsx"></code>
 
-When used in a Grid layout, schemas within the rows and columns will inherit the Grid's `x-initializer`.
+При использовании в макете Grid Schema внутри строк и столбцов наследуют `x-initializer` от Grid.
 
 <code src="./demos/schema-toolbar-basic/grid.tsx"></code>
 
-## Supporting `x-toolbar` for custom components
+## Поддержка `x-toolbar` для пользовательских компонентов
 
 <code src="./demos/schema-toolbar-basic/button.tsx"></code>

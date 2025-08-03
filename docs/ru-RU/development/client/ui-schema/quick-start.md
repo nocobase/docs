@@ -1,37 +1,37 @@
-# Quick start
+### **Быстрый старт**
 
-## 1. Create Schema Component
+#### **1. Создание компонента схемы (Schema Component)**
 
-Render registered components by configuring `x-component`.
+Отображение зарегистрированных компонентов путём настройки параметра `x-component`.
 
-Key Concepts:
+Основные понятия:
 
-- [UI Schema Protocol](/development/client/ui-schema/what-is-ui-schema)
-- [Schema Rendering](/development/client/ui-schema/rendering)
-- [Extending Schema Components](/development/client/ui-schema/extending)
+- [Протокол UI Schema](/development/client/ui-schema/what-is-ui-schema)
+- [Отрисовка схемы](/development/client/ui-schema/rendering)
+- [Расширение компонентов схемы](/development/client/ui-schema/extending)
 
 <code src="./demos/demo1.tsx"></code>
 
-## 2. Add Schema Component to the Page
+#### **2. Добавление компонента Schema на страницу**
 
-Insert new components adjacent to existing Schemas by configuring `x-initializer`.
+Вставка новых компонентов рядом с существующими Schema путём настройки параметра `x-initializer`.
 
-Key Concepts:
+Основные понятия:
 
-- [Designable Designer](/development/client/ui-schema/designable)
-- [UI Schema Protocol - x-initializer Parameter](/development/client/ui-schema/what-is-ui-schema#x-initializer)
+- [Конструктор Designable](/development/client/ui-schema/designable)
+- [Протокол UI Schema — параметр x-initializer](/development/client/ui-schema/what-is-ui-schema#x-initializer)
 - [SchemaInitializer](/development/client/ui-schema/initializer)
 
 <code src="./demos/demo2.tsx"></code>
 
-## 3. Add Designer Toolbar to Schema
+#### **3. Добавление панели настройки **
 
-Provide a parameter configurator for Schema components by configuring `x-settings`. The designer toolbar has drag-and-drop functionality enabled by default.
+Предоставление конфигуратора параметров для компонентов Schema путём настройки параметра `x-settings`. Панель конструктора по умолчанию поддерживает перетаскивание.
 
-Key Concepts:
+Основные понятия:
 
-- [UI Schema Protocol - x-settings Parameter](/development/client/ui-schema/what-is-ui-schema#x-settings)
+- [Протокол UI Schema — параметр x-settings](/development/client/ui-schema/what-is-ui-schema#x-settings)
 - [SchemaSettings](/development/client/ui-schema/settings)
-- [Dragging and Moving Existing Schema Nodes](/development/client/ui-schema/designable#move-between-nodes)
+- [Перемещение существующих узлов схемы](/development/client/ui-schema/designable#move-between-nodes)
 
 <code src="./demos/demo3.tsx"></code>
