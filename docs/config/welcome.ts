@@ -47,7 +47,7 @@ export default [
       },
       {
         title: 'Deployment',
-   	'title.fr-FR': 'Déploiement',
+        'title.fr-FR': 'Déploiement',
         'title.zh-CN': '部署',
         'title.ja-JP': 'デプロイ',
         children: [
@@ -55,7 +55,17 @@ export default [
           '/welcome/getting-started/deployment/docker-compose',
           '/welcome/getting-started/deployment/create-nocobase-app',
           '/welcome/getting-started/deployment/git-clone',
-          '/welcome/getting-started/deployment/cluster-mode',
+          {
+            title: 'Cluster mode',
+            'title.fr-FR': 'Mode cluster',
+            'title.zh-CN': '集群部署',
+            'title.ja-JP': 'クラスターモード',
+            children: [
+              '/welcome/getting-started/deployment/cluster-mode',
+              // '/welcome/getting-started/deployment/cluster-mode/kubernetes',
+              '/welcome/getting-started/deployment/cluster-mode/services-splitting',
+            ]
+          },
           {
             title: 'How to deploy faster',
             'title.zh-CN': '如何部署才更快',
