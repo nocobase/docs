@@ -1,4 +1,4 @@
-# Service Splitting
+# Service Splitting <Badge>v1.9.0+</Badge>
 
 By default, all services in a NocoBase application run in a single Node.js instance. As features become more complex over time, some time-consuming services may affect overall performance. To improve performance, NocoBase supports running services on different nodes in cluster mode. This prevents a single service's performance issues from affecting the entire application’s responsiveness. It also allows specific services to be scaled horizontally to optimize resource usage.
 
