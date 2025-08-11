@@ -63,7 +63,13 @@ export default [
             children: [
               '/welcome/getting-started/deployment/cluster-mode',
               // '/welcome/getting-started/deployment/cluster-mode/kubernetes',
-              '/welcome/getting-started/deployment/cluster-mode/services-splitting',
+              {
+                title: 'Services splitting',
+                'title.fr-FR': 'Séparation des services',
+                'title.zh-CN': '服务拆分',
+                'title.ja-JP': 'サービス分割',
+                link: '/welcome/getting-started/deployment/cluster-mode/services-splitting',
+              }
             ]
           },
           {
