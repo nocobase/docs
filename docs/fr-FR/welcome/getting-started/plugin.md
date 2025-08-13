@@ -4,12 +4,7 @@
 
 ### Configure Environment Variables
 
-Set the environment variables [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) and [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password) (NocoBase Service Platform username and password) to automatically download commercial plugins during application installation or upgrade.
-
-```bash
-NOCOBASE_PKG_USERNAME=your-username
-NOCOBASE_PKG_PASSWORD=your-password
-```
+Commercial plugins will be automatically downloaded during application installation or upgrade when properly configured.
 
 [How to set environment variables?](/welcome/getting-started/env)
 

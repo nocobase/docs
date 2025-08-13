@@ -31,7 +31,7 @@ networks:
 
 services:
   app:
-    image: nocobase/nocobase:latest
+    image: nocobase/nocobase:latest-full
     restart: always
     networks:
       - nocobase
@@ -56,10 +56,6 @@ services:
       - DB_PASSWORD=nocobase
       # Timezone
       - TZ=UTC
-      # Service platform username and password,
-      # used for automatically downloading and updating plugins.
-      - NOCOBASE_PKG_USERNAME=
-      - NOCOBASE_PKG_PASSWORD=
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
@@ -94,7 +90,7 @@ networks:
 
 services:
   app:
-    image: nocobase/nocobase:latest
+    image: nocobase/nocobase:latest-full
     restart: always
     networks:
       - nocobase
@@ -121,10 +117,6 @@ services:
       - DB_UNDERSCORED=true
       # Timezone
       - TZ=UTC
-      # Service platform username and password,
-      # used for automatically downloading and updating plugins.
-      - NOCOBASE_PKG_USERNAME=
-      - NOCOBASE_PKG_PASSWORD=
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
@@ -159,7 +151,7 @@ networks:
 
 services:
   app:
-    image: nocobase/nocobase:latest
+    image: nocobase/nocobase:latest-full
     restart: always
     networks:
       - nocobase
@@ -186,10 +178,6 @@ services:
       - DB_UNDERSCORED=true
       # Timezone
       - TZ=UTC
-      # Service platform username and password,
-      # used for automatically downloading and updating plugins.
-      - NOCOBASE_PKG_USERNAME=
-      - NOCOBASE_PKG_PASSWORD=
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
@@ -224,7 +212,6 @@ Choose the appropriate NocoBase version, refer to [versions](./index.md#which-ve
 :::warning
 - The full image includes the PostgreSQL 16/17 client, MySQL 8.0 client, and Oracle 19.25 client required for backup manager and migration manager plugins, as well as LibreOffice required for template printing (PDF).
 - If you need to build your own image, you can refer to the official [Dockerfile (slim version)](https://github.com/nocobase/nocobase/blob/main/docker/nocobase/Dockerfile) and [Dockerfile-full (full version)](https://github.com/nocobase/nocobase/blob/main/docker/nocobase/Dockerfile-full)
-- **Version 1.4 and above**: By setting the environment variables [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) and [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password), you can automatically download commercial plugins during application installation or upgrade.
 :::
 
 Example:
@@ -233,16 +220,16 @@ Example:
 #...
 services:
   app:
-    # Docker Hub image
-    image: nocobase/nocobase:latest
-    image: nocobase/nocobase:beta
-    image: nocobase/nocobase:alpha
-    image: nocobase/nocobase:1.7.14
-    # The full image
+    # Docker Hub image (recommended full versions)
     image: nocobase/nocobase:latest-full
     image: nocobase/nocobase:beta-full
     image: nocobase/nocobase:alpha-full
     image: nocobase/nocobase:1.7.14-full
+    # Slim versions (without certain clients and LibreOffice)
+    image: nocobase/nocobase:latest
+    image: nocobase/nocobase:beta
+    image: nocobase/nocobase:alpha
+    image: nocobase/nocobase:1.7.14
 # ...
 ```
 

@@ -4,7 +4,7 @@
 
 :::warning
 - アップグレード前に必ずデータベースをバックアップしてください！！！
-- **バージョン1.4以上**: 環境変数 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) と [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password) を設定することで、アプリケーションのインストールまたはアップグレード時に商用プラグインを自動的にダウンロードできます。
+- 商用プラグインについては、システムでライセンスキーを検証し、検証後に再起動してください。詳細は [NocoBase Commercial License Activation Guide](https://www.nocobase.com/ja/blog/nocobase-commercial-license-activation-guide) を参照してください。
 :::
 
 ## 1. `docker-compose.yml` があるディレクトリに移動する

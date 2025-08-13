@@ -36,8 +36,8 @@ NocoBaseは三つのインストール方法をサポートしています：
 
 開発中のバージョンで、最新の機能コードが含まれていますが、未完成または不安定である可能性があります。最前線の機能に興味がある技術ユーザーに適しており、問題や機能の不完全さが多く存在する可能性があるため、製品環境での使用は推奨されません。
 
-| バージョン  | ソースコードブランチ | Dockerイメージバージョン      | create-nocobase-appバージョン  | 特定のバージョン                             |
-| ----------- | --------------------- | ---------------------------- | ------------------------------ | -------------------------------------------- |
-| `Latest`    | `main`                | `nocobase/nocobase:latest` | `create-nocobase-app@latest` | `1.3.51`<br />`1.3.52`<br />...              |
-| `Beta`      | `next`                | `nocobase/nocobase:beta`   | `create-nocobase-app@beta`   | `1.4.0-beta.1`<br/>`1.4.0-beta.2`<br />...   |
-| `Alpha`     | `develop`             | `nocobase/nocobase:alpha`  | `create-nocobase-app@alpha`  | `1.5.0-alpha.1`<br/>`1.5.0-alpha.2`<br />... |
+| バージョン  | ソースコードブランチ | Dockerイメージバージョン（推奨）         | create-nocobase-appバージョン  | 特定のバージョン                             |
+| ----------- | --------------------- | --------------------------------------- | ------------------------------ | -------------------------------------------- |
+| `Latest`    | `main`                | `nocobase/nocobase:latest-full`        | `create-nocobase-app@latest` | `1.3.51`<br />`1.3.52`<br />...              |
+| `Beta`      | `next`                | `nocobase/nocobase:beta-full`          | `create-nocobase-app@beta`   | `1.4.0-beta.1`<br/>`1.4.0-beta.2`<br />...   |
+| `Alpha`     | `develop`             | `nocobase/nocobase:alpha-full`         | `create-nocobase-app@alpha`  | `1.5.0-alpha.1`<br/>`1.5.0-alpha.2`<br />... |

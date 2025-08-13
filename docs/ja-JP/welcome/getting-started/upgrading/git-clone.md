@@ -4,7 +4,6 @@
 
 :::warning
 - アップグレード前に必ずデータベースのバックアップを取ってください！！！
-- **バージョン 1.4 以上**: 環境変数 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) と [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password) を設定することで、アプリケーションのインストールまたはアップグレード時に商用プラグインを自動的にダウンロードできます。
 :::
 
 ## 1. NocoBaseプロジェクトディレクトリに切り替える

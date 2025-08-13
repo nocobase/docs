@@ -57,13 +57,10 @@ DB_PORT=5432
 DB_DATABASE=postgres
 DB_USER=nocobase
 DB_PASSWORD=nocobase
-NOCOBASE_PKG_USERNAME=your-username
-NOCOBASE_PKG_PASSWORD=your-password
 ```
 
 :::warning
 
-- **v1.4 以上のバージョン**では、環境変数 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) と [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password) を設定することで、アプリケーションのインストールやアップグレード時に商用プラグインを自動的にダウンロードできます；
 - `TZ` はアプリケーションのタイムゾーンを設定するために使用され、デフォルトはオペレーティングシステムのタイムゾーンです；
 - `APP_KEY` はアプリケーションの秘密鍵で、ユーザートークンなどを生成するために使用されます（APP_KEY を変更すると、古いトークンも無効になります）。任意のランダムな文字列に変更してください。自分の秘密鍵に変更し、外部に漏れないようにしてください；
 - `DB_*` はデータベースに関連しており、例のデフォルトのデータベースサービスでない場合は、実際の状況に応じて変更してください。
