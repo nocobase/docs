@@ -4,7 +4,6 @@
 
 :::warning
 - Assurez-vous de sauvegarder la base de données avant la mise à niveau !!!
-- **Version 1.4 et supérieure** : En définissant les variables d'environnement [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) et [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password), vous pouvez télécharger automatiquement des plugins commerciaux lors de l'installation ou de la mise à niveau de l'application.
 :::
 
 ## 1. Mise à niveau
