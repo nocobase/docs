@@ -1,6 +1,6 @@
 # Cluster Mode
 
-<PluginInfo licenseBundled="enterprise" plugins="pubsub-adapter-redis,lock-adapter-redis"></PluginInfo>
+<PluginInfo licenseBundled="enterprise" plugins="pubsub-adapter-redis,lock-adapter-redis,queue-adapter-redis"></PluginInfo>
 
 Starting from version v1.6.0, NocoBase supports running applications in cluster mode. When an application runs in cluster mode, its performance in handling concurrent accesses can be improved through multiple instances and using a multi-core mode.
 
@@ -20,9 +20,9 @@ The application cluster is a collection of instances of NocoBase applications, w
 
 Since the current cluster mode only targets application instances, the database currently only supports a single node. For setups such as master-slave databases, it must be implemented through middleware independently, ensuring transparency to the NocoBase application.
 
-#### Caching, Synchronization Messages, and Distributed Locks
+#### Caching, Synchronization Messages, Message Queue and Distributed Locks
 
-The NocoBase cluster mode relies on middleware such as caching, synchronization messages, and distributed locks to achieve communication and coordination between clusters. Currently, Redis is preliminarily supported as middleware for these functionalities.
+The NocoBase cluster mode relies on middleware such as caching, synchronization messages, message queues, and distributed locks to achieve communication and coordination between clusters. Currently, Redis is preliminarily supported as middleware for these functionalities.
 
 #### Load Balancing
 
@@ -73,6 +73,7 @@ If not using local storage, after the application starts, the cloud service-base
 | --- | --- |
 | Caching | Built-in |
 | Synchronization Messages | @nocobase/plugin-pubsub-adapter-redis |
+| Message Queue | @nocobase/plugin-queue-adapter-redis |
 | Distributed Lock | @nocobase/plugin-lock-adapter-redis |
 
 :::info{title=Tip}
@@ -125,6 +126,13 @@ LOCK_ADAPTER_DEFAULT=redis
 LOCK_ADAPTER_REDIS_URL=
 ```
 
+#### Message Queue
+
+```ini
+# Redis message queue adapter; default is redis://localhost:6379/0 if not set
+QUEUE_ADAPTER_REDIS_URL=
+```
+
 :::info{title=Tip}
 Generally, the related adapters can all use the same Redis instance, but it’s best to distinguish by using different databases to avoid potential key conflict issues.
 
@@ -132,6 +140,7 @@ Generally, the related adapters can all use the same Redis instance, but it’s 
 CACHE_REDIS_URL=redis://localhost:6379/0
 PUBSUB_ADAPTER_REDIS_URL=redis://localhost:6379/1
 LOCK_ADAPTER_REDIS_URL=redis://localhost:6379/2
+QUEUE_ADAPTER_REDIS_URL=redis://localhost:6379/3
 ```
 :::
 
@@ -139,7 +148,7 @@ LOCK_ADAPTER_REDIS_URL=redis://localhost:6379/2
 
 ```ini
 # Built-in plugins to be enabled
-APPEND_PRESET_BUILT_IN_PLUGINS=lock-adapter-redis,pubsub-adapter-redis
+APPEND_PRESET_BUILT_IN_PLUGINS=lock-adapter-redis,pubsub-adapter-redis,queue-adapter-redis
 ```
 
 ### Start the Application
@@ -175,3 +184,10 @@ Refer to [Docker Upgrade](../upgrading/docker-compose.md) to update the version 
 3. Verify functionality; if there are exceptions that cannot be resolved, you may roll back to the previous version
 4. Start the other nodes
 5. Redirect load-balanced traffic to the application cluster
+
+## More References
+
+This document only introduces the basic concepts and deployment steps of NocoBase cluster mode. For more configuration items and specific scenarios, please refer to the following documents:
+
+- [Services splitting](./services-splitting.md)
+<!-- - [Kubernetes](./kubernetes.md) -->

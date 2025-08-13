@@ -1,6 +1,6 @@
 # 集群模式
 
-<PluginInfo licenseBundled="enterprise" plugins="pubsub-adapter-redis,lock-adapter-redis"></PluginInfo>
+<PluginInfo licenseBundled="enterprise" plugins="pubsub-adapter-redis,lock-adapter-redis,queue-adapter-redis"></PluginInfo>
 
 NocoBase 自 v1.6.0 版本开始支持以集群模式运行应用。应用以集群模式运行时，可以通过多个实例和使用多核模式来提高应用的对并发访问处理的性能。
 
@@ -20,9 +20,9 @@ NocoBase 自 v1.6.0 版本开始支持以集群模式运行应用。应用以集
 
 由于目前的集群模式只针对应用实例，数据库暂时只支持单节点，如有主从等数据库架构，需要自行通过中间件实现，并保证对 NocoBase 应用透明。
 
-#### 缓存、同步消息和分布式锁
+#### 缓存、同步信号、消息队列和分布式锁
 
-NocoBase 集群模式需要依赖缓存、同步消息和分布式锁等中间件来实现集群间的通信和协调，目前初步支持使用 Redis 作为相应功能的中间件。
+NocoBase 集群模式需要依赖缓存、同步信号、消息队列和分布式锁等中间件来实现集群间的通信和协调，目前初步支持使用 Redis 作为相应功能的中间件。
 
 #### 负载均衡
 
@@ -60,7 +60,7 @@ server {
 
 #### Redis 服务
 
-在集群内网（或 k8s）中，启动一个 Redis 服务。或根据不同功能（缓存、同步消息和分布式锁）各自启用一个 Redis 服务。
+在集群内网（或 k8s）中，启动一个 Redis 服务。或根据不同功能（缓存、同步信号、消息队列和分布式锁）各自启用一个 Redis 服务。
 
 #### 本地存储（按需）
 
@@ -73,7 +73,8 @@ server {
 | 功能 | 插件 |
 | --- | --- |
 | 缓存 | 内置 |
-| 同步消息 | @nocobase/plugin-pubsub-adapter-redis |
+| 同步信号 | @nocobase/plugin-pubsub-adapter-redis |
+| 消息队列 | @nocobase/plugin-queue-adapter-redis |
 | 分布式锁 | @nocobase/plugin-lock-adapter-redis |
 
 :::info{title=提示}
@@ -109,7 +110,7 @@ CACHE_DEFAULT_STORE=redis
 CACHE_REDIS_URL=
 ```
 
-#### 同步消息
+#### 同步信号
 
 ```ini
 # Redis 同步适配器连接地址，默认不填为 redis://localhost:6379/0
@@ -126,6 +127,13 @@ LOCK_ADAPTER_DEFAULT=redis
 LOCK_ADAPTER_REDIS_URL=
 ```
 
+#### 消息队列
+
+```ini
+# Redis 消息队列适配器，默认不填为 redis://localhost:6379/0
+QUEUE_ADAPTER_REDIS_URL=
+```
+
 :::info{title=提示}
 通常情况，相关的适配器可以都使用同一个 Redis 实例，但最好区分使用不同的数据库，以避免可能存在的键冲突问题，例如：
 
@@ -133,6 +141,7 @@ LOCK_ADAPTER_REDIS_URL=
 CACHE_REDIS_URL=redis://localhost:6379/0
 PUBSUB_ADAPTER_REDIS_URL=redis://localhost:6379/1
 LOCK_ADAPTER_REDIS_URL=redis://localhost:6379/2
+QUEUE_ADAPTER_REDIS_URL=redis://localhost:6379/3
 ```
 :::
 
@@ -140,7 +149,7 @@ LOCK_ADAPTER_REDIS_URL=redis://localhost:6379/2
 
 ```ini
 # 内置要开启的插件
-APPEND_PRESET_BUILT_IN_PLUGINS=lock-adapter-redis,pubsub-adapter-redis
+APPEND_PRESET_BUILT_IN_PLUGINS=lock-adapter-redis,pubsub-adapter-redis,queue-adapter-redis
 ```
 
 ### 启动应用
@@ -176,3 +185,10 @@ NocoBase 暂时未实现集群版本的在线升级，为确保数据一致性�
 3. 验证功能正确，如有异常且排查无法解决，可回滚至上一个版本
 4. 启动其他节点
 5. 转移负载均衡的流量至应用集群
+
+## 更多参考
+
+本文档仅介绍了 NocoBase 集群模式的基本概念和部署步骤，更多配置项和具体场景，可以参考以下文档：
+
+- [服务拆分](./services-splitting.md)
+<!-- - [Kubernetes 部署](./kubernetes.md) -->

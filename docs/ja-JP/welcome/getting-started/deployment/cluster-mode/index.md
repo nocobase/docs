@@ -1,6 +1,6 @@
 # クラスター モード
 
-<PluginInfo licenseBundled="enterprise" plugins="pubsub-adapter-redis,lock-adapter-redis"></PluginInfo>
+<PluginInfo licenseBundled="enterprise" plugins="pubsub-adapter-redis,lock-adapter-redis,queue-adapter-redis"></PluginInfo>
 
 NocoBase は v1.6.0 バージョンからアプリケーションのクラスター モードでの実行をサポートしています。アプリケーションがクラスター モードで実行されると、複数のインスタンスとマルチコア モードを使用して、アプリケーションの同時アクセス処理性能を向上させることができます。
 
@@ -20,9 +20,9 @@ NocoBase は v1.6.0 バージョンからアプリケーションのクラスタ
 
 現在のクラスター モードはアプリケーション インスタンスのみに対応しているため、データベースは一時的に単一ノードのみをサポートしており、主従関係などのデータベース アーキテクチャが必要な場合は、自身でミドルウェアを通じて実現し、NocoBase アプリに対して透過的であることを保証する必要があります。
 
-#### キャッシュ、同期メッセージ、分散ロック
+#### キャッシュ、同期メッセージ、消息队列、分散ロック
 
-NocoBase クラスター モードは、クラスター間の通信と調整を実現するためにキャッシュ、同期メッセージ、分散ロックなどのミドルウェアに依存する必要があります。現在、初歩的に Redis を使用して対応する機能のミドルウェアのサポートが行われています。
+NocoBase クラスター モードは、クラスター間の通信と調整を実現するためにキャッシュ、同期メッセージ、消息队列、分散ロックなどのミドルウェアに依存する必要があります。現在、初歩的に Redis を使用して対応する機能のミドルウェアのサポートが行われています。
 
 #### 負荷分散
 
@@ -74,6 +74,7 @@ server {
 | --- | --- |
 | キャッシュ | 内蔵 |
 | 同期メッセージ | @nocobase/plugin-pubsub-adapter-redis |
+| 消息队列 | @nocobase/plugin-queue-adapter-redis |
 | 分散ロック | @nocobase/plugin-lock-adapter-redis |
 
 :::info{title=ヒント}
@@ -126,6 +127,13 @@ LOCK_ADAPTER_DEFAULT=redis
 LOCK_ADAPTER_REDIS_URL=
 ```
 
+#### 消息队列
+
+```ini
+# Redis 消息队列适配器，默认不填为 redis://localhost:6379/0
+QUEUE_ADAPTER_REDIS_URL=
+```
+
 :::info{title=ヒント}
 通常、関連するアダプタは同じ Redis インスタンスを使用できますが、潜在的なキーの衝突問題を回避するために異なるデータベースを使用することをお勧めします。
 
@@ -133,6 +141,7 @@ LOCK_ADAPTER_REDIS_URL=
 CACHE_REDIS_URL=redis://localhost:6379/0
 PUBSUB_ADAPTER_REDIS_URL=redis://localhost:6379/1
 LOCK_ADAPTER_REDIS_URL=redis://localhost:6379/2
+QUEUE_ADAPTER_REDIS_URL=redis://localhost:6379/3
 ```
 :::
 
@@ -140,7 +149,7 @@ LOCK_ADAPTER_REDIS_URL=redis://localhost:6379/2
 
 ```ini
 # 有効にする内蔵プラグイン
-APPEND_PRESET_BUILT_IN_PLUGINS=lock-adapter-redis,pubsub-adapter-redis
+APPEND_PRESET_BUILT_IN_PLUGINS=lock-adapter-redis,pubsub-adapter-redis,queue-adapter-redis
 ```
 
 ### アプリケーションの起動
@@ -176,3 +185,10 @@ NocoBaseは現在、クラスター版のオンラインアップグレードを
 3. 機能が正しいか確認します。異常があった場合、トラブルシューティングで解決できないなら、前のバージョンにロールバックします。
 4. 他のノードを起動します。
 5. 負荷分散のトラフィックをアプリケーションクラスターに転送します。
+
+## 参考文献
+
+本文書では、NocoBase クラスター モードの基本概念とデプロイ手順について説明しました。詳細な設定や具体的なシナリオについては、以下の文書を参照してください。
+
+- [サービス分割](./services-splitting.md)
+<!-- - [Kubernetes 部署](./kubernetes.md) -->
