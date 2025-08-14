@@ -1448,15 +1448,15 @@ null:print('hello!')       // 输出 "hello!"
 ##### 示例
 ```
 // 示例环境：API 选项 { "lang": "en-us", "timezone": "Europe/Paris" }
-'20160131':formatD('L')      // 输出 "01/31/2016"
-'20160131':formatD('LL')     // 输出 "January 31, 2016"
-'20160131':formatD('LLLL')   // 输出 "Sunday, January 31, 2016 12:00 AM"
-'20160131':formatD('dddd')   // 输出 "Sunday"
+'20160131':formatD(L)      // 输出 01/31/2016
+'20160131':formatD(LL)     // 输出 January 31, 2016
+'20160131':formatD(LLLL)   // 输出 Sunday, January 31, 2016 12:00 AM
+'20160131':formatD(dddd)   // 输出 Sunday
 
 // 法语示例：
-'2017-05-10T15:57:23.769561+03:00':formatD('LLLL')  // 输出 "mercredi 10 mai 2017 14:57"
-'20160131':formatD('LLLL')   // 输出 "dimanche 31 janvier 2016 00:00"
-1410715640:formatD('LLLL', 'X') // 输出 "dimanche 14 septembre 2014 19:27"
+'2017-05-10T15:57:23.769561+03:00':formatD(LLLL)  // 输出 mercredi 10 mai 2017 14:57
+'20160131':formatD(LLLL)   // 输出 dimanche 31 janvier 2016 00:00
+1410715640:formatD(LLLL, X) // 输出 dimanche 14 septembre 2014 19:27
 ```
 
 ##### 结果
