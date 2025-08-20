@@ -2515,3 +2515,96 @@ La génération de codes-barres fonctionne de la même manière que les [Images 
 | Nom du Code-barres | Type   |
 | ------------------ | ------ |
 | Code QR            | qrcode |
+
+
+
+## Problèmes Courants et Solutions
+
+### 1. Les colonnes et cellules vides dans les modèles Excel disparaissent dans les résultats rendus
+
+**Description du problème** : Dans les modèles Excel, si une cellule n'a pas de contenu ou de style, elle peut être supprimée lors du rendu, provoquant des cellules manquantes dans le document final.
+
+**Solutions** :
+
+- **Remplir la couleur de fond** : Appliquer une couleur de fond aux cellules vides dans la zone cible pour s'assurer que les cellules restent visibles pendant le processus de rendu.
+- **Insérer des espaces** : Insérer un caractère espace dans les cellules vides pour maintenir la structure des cellules même sans contenu réel.
+- **Définir des bordures** : Ajouter des styles de bordure au tableau pour améliorer les limites des cellules et empêcher les cellules de disparaître lors du rendu.
+
+**Exemple** :
+
+Dans le modèle Excel, définir un arrière-plan gris clair pour toutes les cellules cibles et insérer des espaces dans les cellules vides.
+
+### 2. Les cellules fusionnées sont invalides dans la sortie
+
+**Description du problème** : Lors de l'utilisation de la fonctionnalité de boucle pour sortir des tableaux, les cellules fusionnées dans le modèle peuvent causer des résultats de rendu anormaux, tels que la perte d'effets de fusion ou le désalignement des données.
+
+**Solutions** :
+
+- **Éviter d'utiliser des cellules fusionnées** : Essayez d'éviter d'utiliser des cellules fusionnées dans les tableaux de sortie en boucle pour assurer un rendu correct des données.
+- **Utiliser le centrage sur sélection** : Si vous avez besoin que du texte soit centré horizontalement sur plusieurs cellules, utilisez la fonction "Centrer sur sélection" au lieu de fusionner les cellules.
+- **Limiter les positions des cellules fusionnées** : Si les cellules fusionnées sont nécessaires, fusionnez uniquement les cellules au-dessus ou à droite du tableau, en évitant de fusionner les cellules en dessous ou à gauche pour empêcher la perte d'effets de fusion lors du rendu.
+
+
+
+### 3. Le contenu sous la zone de rendu en boucle cause un désordre de format
+
+**Description du problème** : Dans les modèles Excel, s'il y a d'autre contenu (par exemple, résumé de commande, notes) sous une zone de boucle qui croît dynamiquement en fonction des éléments de données (par exemple, détails de commande), lors du rendu, les lignes de données générées par la boucle s'étendront vers le bas, écrasant directement ou poussant vers le bas le contenu statique ci-dessous, provoquant un désordre de format et un chevauchement de contenu dans le document final.
+
+**Solutions** :
+
+  * **Ajuster la mise en page, placer la zone de boucle en bas** : C'est la méthode la plus recommandée. Placez la zone du tableau qui nécessite un rendu en boucle au bas de toute la feuille de calcul. Déplacez toutes les informations initialement en dessous (résumé, signatures, etc.) au-dessus de la zone de boucle. De cette façon, les données de boucle peuvent s'étendre librement vers le bas sans affecter d'autres éléments.
+  * **Réserver suffisamment de lignes vides** : Si du contenu doit être placé sous la zone de boucle, estimez le nombre maximum de lignes que la boucle pourrait générer et insérez manuellement suffisamment de lignes vides comme tampon entre la zone de boucle et le contenu ci-dessous. Cependant, cette méthode comporte des risques - si les données réelles dépassent les lignes estimées, le problème se reproduira.
+  * **Utiliser des modèles Word** : Si les exigences de mise en page sont complexes et ne peuvent pas être résolues en ajustant la structure Excel, envisagez d'utiliser des documents Word comme modèles. Les tableaux dans Word poussent automatiquement le contenu ci-dessous lorsque les lignes augmentent, sans problèmes de chevauchement de contenu, ce qui les rend plus adaptés à la génération de tels documents dynamiques.
+
+**Exemple** :
+
+**Mauvaise approche** : Placer les informations "Résumé de commande" immédiatement sous le tableau "Détails de commande" en boucle.
+![20250820080712](https://static-docs.nocobase.com/20250820080712.png)
+
+**Approche correcte 1 (Ajuster la mise en page)** : Déplacer les informations "Résumé de commande" au-dessus du tableau "Détails de commande", faisant de la zone de boucle l'élément inférieur de la page.
+![20250820081510](https://static-docs.nocobase.com/20250820081510.png)
+
+**Approche correcte 2 (Réserver des lignes vides)** : Réserver de nombreuses lignes vides entre "Détails de commande" et "Résumé de commande" pour s'assurer que le contenu de boucle a suffisamment d'espace d'expansion.
+![20250820082226](https://static-docs.nocobase.com/20250820082226.png)
+
+**Approche correcte 3** : Utiliser des modèles Word.
+
+
+
+
+
+### 4. Des messages d'erreur apparaissent lors du rendu du modèle
+
+**Description du problème** : Pendant le rendu du modèle, le système affiche des messages d'erreur, provoquant l'échec du rendu.
+
+**Causes possibles** :
+
+- **Erreurs d'espace réservé** : Les noms d'espaces réservés ne correspondent pas aux champs du jeu de données ou comportent des erreurs de syntaxe.
+- **Données manquantes** : Le jeu de données manque de champs référencés dans le modèle.
+- **Utilisation incorrecte du formateur** : Les paramètres du formateur sont incorrects ou les types de formatage ne sont pas pris en charge.
+
+**Solutions** :
+
+- **Vérifier les espaces réservés** : S'assurer que les noms d'espaces réservés dans le modèle correspondent aux noms de champs dans le jeu de données et ont une syntaxe correcte.
+- **Valider le jeu de données** : Confirmer que le jeu de données contient tous les champs référencés dans le modèle avec des formats de données appropriés.
+- **Ajuster les formateurs** : Vérifier les méthodes d'utilisation des formateurs, s'assurer que les paramètres sont corrects et utiliser des types de formatage pris en charge.
+
+**Exemple** :
+
+**Modèle incorrect** :
+```
+ID de commande : {d.orderId}
+Date de commande : {d.orderDate:format('YYYY/MM/DD')}
+Montant total : {d.totalAmount:format('0.00')}
+```
+
+**Jeu de données** :
+```json
+{
+  "orderId": "A123456789",
+  "orderDate": "2025-01-01T10:00:00Z"
+  // Champ totalAmount manquant
+}
+```
+
+**Solution** : Ajouter le champ `totalAmount` au jeu de données ou supprimer la référence à `totalAmount` du modèle.
