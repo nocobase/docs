@@ -1462,15 +1462,15 @@ Timezone and language adjustments can be made via `options.timezone` and `option
 ##### Example
 ```
 // Example environment: API options { "lang": "en-us", "timezone": "Europe/Paris" }
-'20160131':formatD('L')      // Outputs "01/31/2016"
-'20160131':formatD('LL')     // Outputs "January 31, 2016"
-'20160131':formatD('LLLL')   // Outputs "Sunday, January 31, 2016 12:00 AM"
-'20160131':formatD('dddd')   // Outputs "Sunday"
+'20160131':formatD(L)      // Outputs 01/31/2016
+'20160131':formatD(LL)     // Outputs January 31, 2016
+'20160131':formatD(LLLL)   // Outputs Sunday, January 31, 2016 12:00 AM
+'20160131':formatD(dddd)   // Outputs Sunday
 
 // French example:
-'2017-05-10T15:57:23.769561+03:00':formatD('LLLL')  // Outputs "mercredi 10 mai 2017 14:57"
-'20160131':formatD('LLLL')   // Outputs "dimanche 31 janvier 2016 00:00"
-1410715640:formatD('LLLL', 'X') // Outputs "dimanche 14 septembre 2014 19:27"
+'2017-05-10T15:57:23.769561+03:00':formatD(LLLL)  // Outputs mercredi 10 mai 2017 14:57
+'20160131':formatD(LLLL)   // Outputs dimanche 31 janvier 2016 00:00
+1410715640:formatD(LLLL, X) // Outputs dimanche 14 septembre 2014 19:27
 ```
 
 ##### Result
