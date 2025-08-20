@@ -2562,10 +2562,10 @@ Dans le modèle Excel, définir un arrière-plan gris clair pour toutes les cell
 ![20250820080712](https://static-docs.nocobase.com/20250820080712.png)
 
 **Approche correcte 1 (Ajuster la mise en page)** : Déplacer les informations "Résumé de commande" au-dessus du tableau "Détails de commande", faisant de la zone de boucle l'élément inférieur de la page.
-![20250820082226](https://static-docs.nocobase.com/20250820082226.png)
+![20250820081510](https://static-docs.nocobase.com/20250820081510.png)
 
 **Approche correcte 2 (Réserver des lignes vides)** : Réserver de nombreuses lignes vides entre "Détails de commande" et "Résumé de commande" pour s'assurer que le contenu de boucle a suffisamment d'espace d'expansion.
-![20250820081510](https://static-docs.nocobase.com/20250820081510.png)
+![20250820082226](https://static-docs.nocobase.com/20250820082226.png)
 
 **Approche correcte 3** : Utiliser des modèles Word.
 
