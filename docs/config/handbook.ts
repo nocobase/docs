@@ -273,6 +273,13 @@ export default [
             link: '/handbook/data-modeling/collection-fields',
           },
           {
+            title: 'Field Validation',
+            'title.fr-FR': 'Validation',
+            'title.zh-CN': '字段验证',
+            'title.ja-JP': '検証',
+            link: '/handbook/data-modeling/collection-fields/validation',
+          },
+          {
             title: 'Basic',
             'title.fr-FR': 'Basic',
             'title.zh-CN': '基本类型',
