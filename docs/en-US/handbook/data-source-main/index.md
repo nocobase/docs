@@ -21,7 +21,7 @@ This is a built-in plugin, no separate installation is required.
 - [Tree collection](/handbook/collection-tree): tree-structured table, currently only supports adjacent table design;
 - [Calendar collection](/handbook/calendar/calendar-collection): for creating calendar-related event tables;
 - [File collection](/handbook/file-manager/file-collection): for managing file storage;
-- [Expression Collection](/handbook/workflow-dynamic-calculation/expression): for dynamic expression scenarios in workflows;
+- [Expression Collection](/handbook/collection-expression/collection): for dynamic expression scenarios in workflows;
 - [SQL Collection](/handbook/collection-sql): Not an actual database table, but quickly presenting the SQL query in a structured manner;
 - [Database View collection](/handbook/collection-view): connects to an existing database view;
 - [FDW collection](/handbook/collection-fdw): allows the database system to directly access and query data in external data sources, based on FDW technology;

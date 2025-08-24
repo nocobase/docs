@@ -27,14 +27,14 @@ NocoBase provides a [data source manager](/handbook/data-source-manager) for man
 
 ![20240512091042](https://static-docs.nocobase.com/20240410075906.png)
 
-## Supports Various Types of  Data Tables
+## Supports Various Types of Data Tables
 
 - [General collection](/handbook/data-source-main/general-collection): Built-in common system fields;
 - [Inheritance collection](/handbook/data-source-main/inheritance-collection): You can create a parent collection and then derive a child collection from the parent collection. The child collection will inherit the structure of the parent collection and can also define its own columns.
 - [Tree collection](/handbook/collection-tree): Tree structure collection, currently only supports adjacency collection design;
 - [Calendar Tabcollectionle](/handbook/calendar/calendar-collection): Used to create calendar-related event collections;
 - [File collection](/handbook/file-manager/file-collection): Used for file storage management;
-- [Expression collection](/handbook/workflow-dynamic-calculation/expression): Used for dynamic expression scenarios in workflows;
+- [Expression collection](/handbook/collection-expression/collection): Used for dynamic expression scenarios in workflows;
 - [SQL collection](/handbook/collection-sql): Not an actual database collection, but quickly presents SQL queries in a structured manner;
 - [Connect to database view](/handbook/collection-view): Connects to existing database views;
 - [Connect to foreign data](/handbook/collection-fdw): Allows the database system to directly access and query data in external data sources, based on FDW technology.
