@@ -1,38 +1,38 @@
-### Requêtes HTTP
+# Requêtes HTTP
 
 Lorsqu'il est nécessaire d'interagir avec un autre système web, le nœud **Requête HTTP** est l'outil idéal. Ce nœud vous permet d'envoyer une requête HTTP à une adresse spécifiée, accompagnée de données dans les formats JSON ou `application/x-www-form-urlencoded`, facilitant ainsi la communication avec des systèmes externes.
 
 Si vous êtes déjà familier avec des outils comme Postman, maîtriser le nœud Requête HTTP sera un jeu d'enfant. Cependant, contrairement aux outils traditionnels, ce nœud exploite des variables de contexte du workflow actuel, ce qui en fait un ajout puissant à l'intégration de votre processus métier.
 
-### Installation
+## Installation
 
 Il s'agit d'un plugin intégré, il n'est donc pas nécessaire de procéder à une installation.
 
-### Guide de l'Utilisateur
+## Guide de l'Utilisateur
 
-#### Création d'un Nœud
+### Création d'un Nœud
 
 Dans l'interface de configuration du workflow, cliquez sur le bouton plus ("+") pour ajouter un nœud "Requête HTTP" au processus :
 
 ![Requête HTTP_Ajouter](https://static-docs.nocobase.com/46f2a6fc3f6869c80f8fbd362a54e644.png)
 
-#### Configuration du Nœud
+### Configuration du Nœud
 
 ![Configuration du Nœud Requête HTTP](https://static-docs.nocobase.com/2fcb29af66b892fa704add52e2974a52.png)
 
-**Méthode de Requête**
+#### Méthode de Requête
 
 Choisissez parmi les méthodes de requête HTTP disponibles : `GET`, `POST`, `PUT`, `PATCH`, et `DELETE`.
 
-**URL de Requête**
+#### URL de Requête
 
 Indiquez l'URL du service HTTP, y compris le protocole (`http://` ou `https://`). Pour des raisons de sécurité, il est recommandé d'utiliser `https://`.
 
-**Format des Données de Requête**
+#### Format des Données de Requête
 
-Cela définit le `Content-Type` dans l'en-tête de la requête, avec les options `application/json` et `application/x-www-form-urlencoded`.
+Il s'agit du champ `Content-Type` dans l'en-tête de la requête. Les formats pris en charge sont listés dans la section “[Corps de la requête](#requête)”.
 
-**Configuration des En-têtes de Requête**
+#### Configuration des En-têtes de Requête
 
 Définissez des paires clé-valeur pour les en-têtes de la requête, avec des valeurs qui peuvent faire référence dynamiquement aux variables du contexte du workflow.
 
@@ -40,23 +40,43 @@ Définissez des paires clé-valeur pour les en-têtes de la requête, avec des v
 L'en-tête `Content-Type` est prédéfini par le paramètre de format des données de la requête. La saisie manuelle ici ne remplacera pas cette configuration.
 :::
 
-**Paramètres de Requête**
+#### Paramètres de Requête
 
 Définissez des paires clé-valeur pour la chaîne de requête. Les valeurs peuvent utiliser dynamiquement des variables du contexte du workflow.
 
-**Corps de la Requête**
+#### Corps de la requête
 
-Actuellement, le corps de la requête prend uniquement en charge le format JSON standard. Utilisez le bouton de variable dans le coin supérieur droit de l'éditeur de texte pour insérer des variables de contexte.
+La partie Body de la requête prend en charge différents formats selon le `Content-Type` sélectionné.
 
-:::info{title=Note}
-Assurez-vous que les variables dans le JSON soient utilisées sous forme de chaînes, par exemple : `"a": "{{$context.data.a}}"`.
+##### `application/json`
+
+Prend en charge le format texte JSON standard. Vous pouvez insérer des variables du contexte du flux en cliquant sur le bouton de variable en haut à droite de la zone d’édition de texte.
+
+:::info{title=Astuce}
+Les variables doivent être utilisées à l’intérieur d’une chaîne JSON, par exemple : `{ "a": "{{$context.data.a}}" }`.
 :::
 
-**Paramètres de Délai d'Attente**
+##### `application/x-www-form-urlencoded`
+
+Format de paires clé-valeur. Les valeurs peuvent inclure des variables du contexte du flux, qui seront interprétées comme des modèles de chaînes et concaténées pour produire la valeur finale.
+
+##### `application/xml`
+
+Prend en charge le format texte XML standard. Vous pouvez insérer des variables du contexte du flux via le bouton de variable en haut à droite de la zone d'édition.
+
+##### `multipart/form-data` <Badge>v1.8.0+</Badge>
+
+Prend en charge des données de formulaire sous forme de paires clé-valeur. Si vous sélectionnez “objet fichier” comme type de données, vous pouvez téléverser un fichier. Le fichier doit être spécifié via une variable correspondant à un objet fichier déjà présent dans le contexte, comme un résultat de requête sur la table des fichiers ou une relation vers cette table.
+
+:::info{title=Astuce}
+Lors de la sélection d’un fichier, assurez-vous que la variable correspond à **un seul objet fichier**, et non à une **liste de fichiers** (dans le cas d’une relation multiple, la valeur du champ relationnel sera un tableau).
+:::
+
+#### Paramètres de Délai d'Attente
 
 Si la requête prend trop de temps pour répondre, le paramètre de délai d'attente l'annulera, ce qui entraînera la terminaison prématurée du workflow actuel avec un état d'échec.
 
-**Ignorer l'Échec**
+#### Ignorer l'Échec
 
 Le nœud de requête considère tout code d'état HTTP entre `200` et `299` comme un succès. Les codes en dehors de cette plage sont considérés comme des échecs. Si vous sélectionnez l'option "Ignorer les requêtes échouées et continuer le workflow", le workflow poursuivra les nœuds suivants, même si la requête échoue.
 

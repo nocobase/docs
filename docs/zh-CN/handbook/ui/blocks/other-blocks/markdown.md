@@ -100,6 +100,20 @@ Markdown 区块无需绑定数据源使用，使用 Markdown 语法定义文本�
 
 更多变量的介绍查看 [配置界面 / 变量](/handbook/ui/variables) 章节
 
+## 本地化
+>  v1.8.0 及以上版本支持。
+
+Markdown 内容现已支持本地化，可使用 `{{t 'xxx'}}` 语法插入多语言文本(需先启用本地化插件)，并在本地化管理中配置对应译文。
+
+![20250707154720](https://static-docs.nocobase.com/20250707154720.png)
+
+在本地化管理中对词条进行翻译,配置后需要发布。
+
+![20250707154933](https://static-docs.nocobase.com/20250707154933.png)
+
+![20250707155049](https://static-docs.nocobase.com/20250707155049.png)
+
+![20250707155236](https://static-docs.nocobase.com/20250707155236.gif)
 ## 二维码
 
 Markdown 里支持配置二维码，可以结合变量使用。

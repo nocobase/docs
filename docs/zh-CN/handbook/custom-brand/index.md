@@ -28,8 +28,8 @@
 
 ![20240409114740](https://static-docs.nocobase.com/20240409114740.png)
 
-### 设置网站图标 favicon（v1.2.23-alpha）
+### 设置网站图标 favicon<Badge>v1.2.23-alpha+</Badge>
 
 在 v1.2.23-alpha 版本中，我们新增了设置网站图标 favicon 的功能，如下图所示：
 
-![350438864-08053d02-5429-407f-a3f7-fed439993623](https://static-docs.nocobase.com/350438864-08053d02-5429-407f-a3f7-fed439993623.gif)
+![20250601143958_rec_](https://static-docs.nocobase.com/20250601143958_rec_.gif)

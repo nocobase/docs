@@ -1,129 +1,129 @@
-# 多关键词筛选<Badge>v1.7.0+</Badge>
+# Filtre Multi-Mots-Clés<Badge>v1.7.0+</Badge>
 
 <PluginInfo commercial="true" name="multi-keyword-filter"></PluginInfo>
 
-## 介绍
+## Introduction
 
-**多关键词筛选**插件为 NocoBase 平台增加了强大的文本筛选功能，让您能够使用多个关键词进行筛选，大大提高了数据查询的灵活性和效率。
+Le plugin **Filtre Multi-Mots-Clés** ajoute de puissantes capacités de filtrage de texte à la plateforme NocoBase, vous permettant de filtrer en utilisant plusieurs mots-clés, améliorant grandement la flexibilité et l'efficacité des requêtes de données.
 
-该插件主要提供两个筛选操作符：
-- **等于任意一个**：筛选包含指定关键词列表中任意一个的记录
-- **不等于任意一个**：筛选不包含指定关键词列表中任意一个的记录
+Ce plugin fournit principalement deux opérateurs de filtre :
+- **Égal à n'importe lequel** : Filtre les enregistrements qui contiennent n'importe lequel des mots-clés spécifiés dans la liste
+- **Pas égal à n'importe lequel** : Filtre les enregistrements qui ne contiennent aucun des mots-clés spécifiés dans la liste
 
-这两个操作符可用于以下字段：
-- 单行文本
-- 手机号
-- 邮箱
-- 整数
-- 数字
-- 百分比
+Ces opérateurs peuvent être utilisés avec les types de champs suivants :
+- Texte sur une ligne
+- Numéro de téléphone
+- Email
+- Entier
+- Nombre
+- Pourcentage
 - UUID
 - Nano ID
-- 自动编码
+- Code auto-généré
 
-## 应用场景
+## Cas d'Usage
 
-- 需要根据多个产品编码、标签或分类进行筛选
-- 从 Excel 文件导入大量关键词进行批量筛选
-- 需要快速查找符合多个条件的数据记录
+- Besoin de filtrer basé sur plusieurs codes produits, étiquettes ou catégories
+- Importer un grand nombre de mots-clés depuis des fichiers Excel pour un filtrage par lot
+- Besoin de trouver rapidement des enregistrements de données qui répondent à plusieurs conditions
 
-## 使用范围
+## Portée d'Utilisation
 
-- 筛选表单区块的字段
+- Champs dans les blocs de formulaire de filtre
 ![20250417170714](https://static-docs.nocobase.com/20250417170714.png)
-- 筛选按钮的字段
+- Champs dans les boutons de filtre
 ![20250417170923](https://static-docs.nocobase.com/20250417170923.png)
-- 数据范围筛选的字段
+- Champs dans le filtrage de portée de données
 ![20250417171011](https://static-docs.nocobase.com/20250417171011.png)
-- 联动规则的字段
+- Champs dans les règles de liaison
 ![20250417171124](https://static-docs.nocobase.com/20250417171124.png)
 
-## 如何使用
+## Comment Utiliser
 
-### 1. 添加单行文本字段
+### 1. Ajouter un Champ Texte sur Une Ligne
 
-以筛选表单和单行文本为例，将单行文本字段的操作符设置为"等于任意一个"或"不等于任意一个"
+En utilisant les formulaires de filtre et le texte sur une ligne comme exemple, définissez l'opérateur pour le champ texte sur une ligne à "égal à n'importe lequel" ou "pas égal à n'importe lequel"
 
 ![20250417165918_rec_](https://static-docs.nocobase.com/20250417165918_rec_.gif)
 
-### 2. 输入关键词
+### 2. Saisir des Mots-Clés
 
-有两种方式可以输入关键词：
+Il y a deux façons de saisir des mots-clés :
 
-#### 2.1 手动输入
+#### 2.1 Saisie Manuelle
 
-1. 在输入框中直接输入关键词
-2. 多个关键词可以用换行符分隔
-3. 输入完成后，点击筛选按钮对数据进行筛选
+1. Entrez directement les mots-clés dans la zone de saisie
+2. Plusieurs mots-clés peuvent être séparés par des sauts de ligne
+3. Après la saisie, cliquez sur le bouton de filtre pour filtrer les données
 
-#### 2.2 从 Excel 导入关键词
+#### 2.2 Importer des Mots-Clés depuis Excel
 
-1. 准备一个 Excel 文件(支持 .xlsx 或 .xls 格式)，包含需要导入的关键词
-2. 点击输入框右侧的"导入 Excel"按钮
-3. 选择并上传 Excel 文件
+1. Préparez un fichier Excel (supporte les formats .xlsx ou .xls) contenant les mots-clés à importer
+2. Cliquez sur le bouton "Importer Excel" à droite de la zone de saisie
+3. Sélectionnez et téléchargez le fichier Excel
 
-**如果 Excel 只有一列数据**：
-- 系统将自动导入该列所有非空值作为关键词
+**Si Excel n'a qu'une seule colonne de données** :
+- Le système importera automatiquement toutes les valeurs non vides de cette colonne comme mots-clés
 
-**如果 Excel 包含多列数据**：
-- 系统会弹出列选择对话框
-- 可以选择一列或多列进行导入
-- 选择单列：该列中所有非空值将被导入为关键词
-- 选择多列：多列中的非空值将被合并为关键词，重复值会被自动去除
-- 点击"确认"按钮完成导入
+**Si Excel contient plusieurs colonnes de données** :
+- Le système affichera une boîte de dialogue de sélection de colonnes
+- Vous pouvez sélectionner une ou plusieurs colonnes pour l'importation
+- Sélection d'une seule colonne : Toutes les valeurs non vides de cette colonne seront importées comme mots-clés
+- Sélection de plusieurs colonnes : Les valeurs non vides de plusieurs colonnes seront fusionnées comme mots-clés, les doublons seront automatiquement supprimés
+- Cliquez sur le bouton "Confirmer" pour terminer l'importation
 
 ![20250417170324_rec_](https://static-docs.nocobase.com/20250417170324_rec_.gif)
 
-### 3. 筛选效果
+### 3. Résultats du Filtre
 
-- **等于任意一个**：字段值与关键词列表中任一值匹配的记录都会被显示
-- **不等于任意一个**：字段值与关键词列表中所有值都不匹配的记录会被显示
+- **Égal à n'importe lequel** : Les enregistrements où la valeur du champ correspond à n'importe quelle valeur dans la liste de mots-clés seront affichés
+- **Pas égal à n'importe lequel** : Les enregistrements où la valeur du champ ne correspond à aucune valeur dans la liste de mots-clés seront affichés
 
-## 常见问题解答
+## Questions Fréquemment Posées
 
-### 如何清除已添加的关键词？
+### Comment effacer les mots-clés ajoutés ?
 
-点击关键词标签上的"×"按钮可删除单个关键词，或者点击输入框右侧的"×"删除所有关键词。
+Cliquez sur le bouton "×" sur une étiquette de mot-clé pour supprimer des mots-clés individuels, ou cliquez sur le "×" à droite de la zone de saisie pour supprimer tous les mots-clés.
 
 ![20250417165604](https://static-docs.nocobase.com/20250417165604.png)
 
-### 可以导入多少个关键词？
+### Combien de mots-clés peuvent être importés ?
 
-插件支持大量关键词的导入，但建议控制在合理范围内（如数百个），以免影响查询性能。
+Le plugin supporte l'importation d'un grand nombre de mots-clés, mais il est recommandé de les maintenir dans une plage raisonnable (comme des centaines) pour éviter d'affecter les performances de requête.
 
-### 导入的关键词格式有什么要求？
+### Quelles sont les exigences de format pour les mots-clés importés ?
 
-- Excel 文件应包含至少一列数据
-- 空值会被自动过滤
-- 重复值会被自动去除
+- Les fichiers Excel doivent contenir au moins une colonne de données
+- Les valeurs vides seront automatiquement filtrées
+- Les valeurs en double seront automatiquement supprimées
 
-### 是否支持模糊匹配？
+### Est-ce que cela supporte la correspondance floue ?
 
-该插件提供的是精确匹配功能。
+Ce plugin fournit une fonctionnalité de correspondance exacte.
 
-### 哪些字段支持这个功能？
+### Quels champs supportent cette fonctionnalité ?
 
-- 单行文本
-- 手机号
-- 邮箱
-- 整数
-- 数字
-- 百分比
+- Texte sur une ligne
+- Numéro de téléphone
+- Email
+- Entier
+- Nombre
+- Pourcentage
 - UUID
 - Nano ID
-- 公式
-- 自动编码
+- Formule
+- Code auto-généré
 
-## 提示和技巧
+## Conseils et Astuces
 
-- 将常用的关键词列表保存在 Excel 文件中，需要时快速导入
-- 选择多列导入时，可以合并来自不同列的关键词
-- 使用"不等于任意一个"操作符可以快速排除不需要的数据
+- Sauvegardez les listes de mots-clés couramment utilisés dans des fichiers Excel pour une importation rapide lorsque nécessaire
+- Lors de l'importation de plusieurs colonnes, vous pouvez fusionner des mots-clés de différentes colonnes
+- Utilisez l'opérateur "pas égal à n'importe lequel" pour exclure rapidement les données indésirables
 
-## 系统要求
+## Exigences Système
 
-- NocoBase 版本：1.7.0 或更高版本
+- Version NocoBase : 1.7.0 ou supérieure
 
 ---
 
-通过使用多关键词筛选插件，您可以更高效地管理和查询数据，特别是在处理大量数据和需要频繁进行多条件筛选的场景下，该插件将显著提升您的工作效率。
+En utilisant le plugin Filtre Multi-Mots-Clés, vous pouvez gérer et interroger les données plus efficacement, en particulier lors du traitement de grandes quantités de données et de scénarios de filtrage multi-conditions fréquents. Ce plugin améliorera significativement votre efficacité de travail.

@@ -4,7 +4,7 @@
 
 :::warning
 - 升级前一定要先备份数据库！！！
-- **v1.4及以上版本**通过设置环境变量 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) 和 [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password)，即可在安装或升级应用时自动下载商业插件。
+- 商业插件请在系统中验证授权码，验证后重启系统。详见 [NocoBase 商业授权激活指南](https://www.nocobase.com/cn/blog/nocobase-commercial-license-activation-guide)。
 :::
 
 ## 1. 切换到 `docker-compose.yml` 所在的目录

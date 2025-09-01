@@ -28,6 +28,9 @@ The Template Printing plugin is a powerful tool that allows you to edit template
 ## Configuration Instructions
 
 ### Activating Template Printing
+Template printing currently supports detail blocks and table blocks. Below are the configuration methods for these two types of blocks.
+
+#### Detail Blocks
 
 1. **Open the Detail Block**:
 - Navigate to the detail block in the application where you need to use the template printing feature.
@@ -71,7 +74,17 @@ The Template Printing plugin is a powerful tool that allows you to edit template
 - Click the "Delete" button to remove unnecessary templates. The system will prompt for confirmation to avoid accidental deletion.
   ![Template Management](https://static-docs.nocobase.com/20250107140436.png)
 
-## Basic Syntax
+#### Table Blocks
+
+The usage of table blocks is basically the same as detail blocks, with the following differences:
+
+1. **Support for Multiple Record Printing**: You need to first select the records to print by checking them. You can print up to 100 records at once.
+   
+![20250416215633-2025-04-16-21-56-35](https://static-docs.nocobase.com/20250416215633-2025-04-16-21-56-35.png)
+
+2. **Template Isolation Management**: Templates for table blocks and detail blocks are not interchangeable — because the data structures are different (one is an object, the other is an array).
+
+## Basic Usage
 
 The Template Printing plugin provides various syntaxes to flexibly insert dynamic data and logical structures into templates. Below are detailed syntax explanations and usage examples.
 
@@ -321,7 +334,7 @@ EV6Prius 3
 
 #### 5. Example: Accessing Loop Iterator Values (v4.0.0+)
 
-Within a loop, you can directly access the current iteration’s index, which helps meet special formatting requirements.
+Within a loop, you can directly access the current iteration's index, which helps meet special formatting requirements.
 
 ##### Template Example
 ```
@@ -732,7 +745,7 @@ My name is John. I was born on January 31, 2000.
 ### Constant Parameters
 
 #### 1. Syntax Explanation
-Many formatters support one or more constant parameters, which are separated by commas and enclosed in parentheses to modify the output. For example, `:prepend(myPrefix)` will add “myPrefix” in front of the text.  
+Many formatters support one or more constant parameters, which are separated by commas and enclosed in parentheses to modify the output. For example, `:prepend(myPrefix)` will add "myPrefix" in front of the text.  
 **Note:** If the parameter contains commas or spaces, it must be enclosed in single quotes, for example: `prepend('my prefix')`.
 
 #### 2. Example
@@ -806,7 +819,7 @@ The examples yield 8, 8, 28, and 6 respectively.
 
 ### Text Formatting
 
-This section provides various formatters for text data. The following subsections introduce each formatter’s syntax, examples, and results.
+This section provides various formatters for text data. The following subsections introduce each formatter's syntax, examples, and results.
 
 #### 1. :lowerCase
 
@@ -1449,15 +1462,15 @@ Timezone and language adjustments can be made via `options.timezone` and `option
 ##### Example
 ```
 // Example environment: API options { "lang": "en-us", "timezone": "Europe/Paris" }
-'20160131':formatD('L')      // Outputs "01/31/2016"
-'20160131':formatD('LL')     // Outputs "January 31, 2016"
-'20160131':formatD('LLLL')   // Outputs "Sunday, January 31, 2016 12:00 AM"
-'20160131':formatD('dddd')   // Outputs "Sunday"
+'20160131':formatD(L)      // Outputs 01/31/2016
+'20160131':formatD(LL)     // Outputs January 31, 2016
+'20160131':formatD(LLLL)   // Outputs Sunday, January 31, 2016 12:00 AM
+'20160131':formatD(dddd)   // Outputs Sunday
 
 // French example:
-'2017-05-10T15:57:23.769561+03:00':formatD('LLLL')  // Outputs "mercredi 10 mai 2017 14:57"
-'20160131':formatD('LLLL')   // Outputs "dimanche 31 janvier 2016 00:00"
-1410715640:formatD('LLLL', 'X') // Outputs "dimanche 14 septembre 2014 19:27"
+'2017-05-10T15:57:23.769561+03:00':formatD(LLLL)  // Outputs mercredi 10 mai 2017 14:57
+'20160131':formatD(LLLL)   // Outputs dimanche 31 janvier 2016 00:00
+1410715640:formatD(LLLL, X) // Outputs dimanche 14 septembre 2014 19:27
 ```
 
 ##### Result
@@ -1806,8 +1819,8 @@ The logical operators and action formatters supported in conditional statements 
   - **ifEM()**: Checks if the data is empty (e.g., null, undefined, an empty string, an empty array, or an empty object).
   - **ifNEM()**: Checks if the data is non-empty.
   - **ifTE(type)**: Checks if the data type is equal to the specified type (for example, "string", "number", "boolean", etc.).
-  - **and(value)**: Logical “and”, used to connect multiple conditions.
-  - **or(value)**: Logical “or”, used to connect multiple conditions.
+  - **and(value)**: Logical "and", used to connect multiple conditions.
+  - **or(value)**: Logical "or", used to connect multiple conditions.
 
 - **Action Formatters**
   - **:show(text) / :elseShow(text)**: Used in inline conditions to directly output the specified text.
@@ -2241,10 +2254,10 @@ Simply insert it in your Office software.
 
 ##### Example
 In Microsoft Word:
-- Use the “Insert → Page Number” function
+- Use the "Insert → Page Number" function
 
 In LibreOffice:
-- Use the “Insert → Field → Page Number” function
+- Use the "Insert → Field → Page Number" function
 
 ##### Result
 In the generated report, the page numbers will update automatically.
@@ -2258,13 +2271,13 @@ Simply insert it in your Office software.
 
 ##### Example
 In Microsoft Word:
-- Use the “Insert → Index and Table → Table of Contents” function
+- Use the "Insert → Index and Table → Table of Contents" function
 
 In LibreOffice:
-- Use the “Insert → Table of Contents and Index → Table, Index or Bibliography” function
+- Use the "Insert → Table of Contents and Index → Table, Index or Bibliography" function
 
 ##### Result
-The report’s table of contents will update automatically based on the document content.
+The report's table of contents will update automatically based on the document content.
 
 ---
 
@@ -2275,10 +2288,10 @@ Simply insert it in your Office software.
 
 ##### Example
 In Microsoft Word:
-- Right-click the table header → Table Properties → Check “Repeat as header row at the top of each page”
+- Right-click the table header → Table Properties → Check "Repeat as header row at the top of each page"
 
 In LibreOffice:
-- Right-click the table header → Table Properties → Text Flow tab → Check “Repeat heading”
+- Right-click the table header → Table Properties → Text Flow tab → Check "Repeat heading"
 
 ##### Result
 When a table spans multiple pages, the header will automatically repeat at the top of each page.
@@ -2323,7 +2336,7 @@ In the template:
 JSON Data and the localization dictionary provide the appropriate translations.
 
 ##### Result
-Based on the condition, the output will be either “lundi” or “mardi” (using the target language as an example).
+Based on the condition, the output will be either "lundi" or "mardi" (using the target language as an example).
 
 ---
 
@@ -2355,6 +2368,210 @@ In the template:
 ```
 
 ##### Result
-Outputs “pending”; if the index exceeds the enumeration range, the original value is output.
+Outputs "pending"; if the index exceeds the enumeration range, the original value is output.
 
 ---
+
+### Dynamic Images
+:::info
+Currently supports XLSX and DOCX file types
+:::
+
+You can insert "dynamic images" in document templates, which means placeholder images in the template will be automatically replaced with actual images during rendering based on data. This process is very simple and only requires:
+
+1. Insert a temporary image as a placeholder
+
+2. Edit the "Alt Text" of that image to set the field label
+
+3. Render the document, and the system will automatically replace it with the actual image
+
+Below we'll explain the operation methods for DOCX and XLSX through specific examples.
+
+#### Inserting Dynamic Images in DOCX Files
+
+##### Single Image Replacement
+
+1. Open your DOCX template and insert a temporary image (can be any placeholder image, such as a [solid blue image](https://static-docs.nocobase.com/solid-color-image-2025-04-14-11-00-26.png))
+
+:::info
+**Image Format Instructions**
+
+- Currently, placeholder images only support PNG format. We recommend using our provided example [solid blue image](https://static-docs.nocobase.com/solid-color-image-2025-04-14-11-00-26.png)
+- Target rendered images only support PNG, JPG, JPEG formats. Other image types may fail to render.
+
+**Image Size Instructions**
+
+Whether for DOCX or XLSX, the final rendered image size will follow the dimensions of the temporary image in the template. That is, the actual replacement image will automatically scale to match the size of the placeholder image you inserted. If you want the rendered image to be 150×150, please use a temporary image in the template and adjust it to that size.
+:::
+
+2. Right-click on this image, edit its "Alt Text", and fill in the image field label you want to insert, for example `{d.imageUrl}`:
+
+![20250414211130-2025-04-14-21-11-31](https://static-docs.nocobase.com/20250414211130-2025-04-14-21-11-31.png)
+
+3. Use the following example data for rendering:
+```json
+{
+  "name": "Apple",
+  "imageUrl": "https://images.pexels.com/photos/206959/pexels-photo-206959.jpeg"
+}
+```
+
+4. In the rendered result, the temporary image will be replaced with the actual image:
+
+![20250414203444-2025-04-14-20-34-46](https://static-docs.nocobase.com/20250414203444-2025-04-14-20-34-46.png)
+
+##### Multiple Image Loop Replacement
+
+If you want to insert a group of images in the template, such as a product list, you can also implement this through loops. The specific steps are as follows:
+
+1. Assume your data is as follows:
+```json
+{
+  "products": [
+    {
+      "name": "Apple",
+      "imageUrl": "https://images.pexels.com/photos/206959/pexels-photo-206959.jpeg"
+    },
+    {
+      "name": "Banana",
+      "imageUrl": "https://images.pexels.com/photos/61127/pexels-photo-61127.jpeg"
+    }
+  ]
+}
+```
+
+2. Set up a loop area in the DOCX template, and insert temporary images in each loop item with Alt Text set to `{d.products[i].imageUrl}`, as shown below:
+
+![20250414205418-2025-04-14-20-54-19](https://static-docs.nocobase.com/20250414205418-2025-04-14-20-54-19.png)
+
+3. After rendering, all temporary images will be replaced with their respective data images:
+
+![20250414205503-2025-04-14-20-55-05](https://static-docs.nocobase.com/20250414205503-2025-04-14-20-55-05.png)
+
+#### Inserting Dynamic Images in XLSX Files
+
+The operation method in Excel templates (XLSX) is basically the same, just note the following points:
+
+1. After inserting an image, please ensure that you select "image within cell" rather than having the image float above the cell.
+
+![20250414211643-2025-04-14-21-16-45](https://static-docs.nocobase.com/20250414211643-2025-04-14-21-16-45.png)
+
+2. After selecting the cell, click to view "Alt Text" to fill in the field label, such as `{d.imageUrl}`.
+
+### Barcode
+:::info
+Currently supports XLSX and DOCX file types
+:::
+
+#### Generating Barcodes (such as QR codes)
+
+Barcode generation works the same way as [Dynamic Images](/handbook/action-template-print#dynamic-images), requiring only three steps:
+
+1. Insert a temporary image in the template to mark the barcode position
+
+2. Edit the image's "Alt Text" and write in the barcode format field label, for example `{d.code:barcode(qrcode)}`, where `qrcode` is the barcode type (see the [supported list](/handbook/action-template-print#supported-barcode-types) below)
+
+![20250414214626-2025-04-14-21-46-28](https://static-docs.nocobase.com/20250414214626-2025-04-14-21-46-28.png)
+
+3. After rendering, the placeholder image will be automatically replaced with the corresponding barcode image:
+
+![20250414214925-2025-04-14-21-49-26](https://static-docs.nocobase.com/20250414214925-2025-04-14-21-49-26.png)
+
+#### Supported Barcode Types
+
+| Barcode Name | Type   |
+| ------------ | ------ |
+| QR Code      | qrcode |
+
+
+
+## Common Issues and Solutions
+
+### 1. Empty columns and cells in Excel templates disappear in rendered results
+
+**Problem Description**: In Excel templates, if a cell has no content or styling, it may be removed during rendering, causing missing cells in the final document.
+
+**Solutions**:
+
+- **Fill background color**: Apply a background color to empty cells in the target area to ensure cells remain visible during the rendering process.
+- **Insert spaces**: Insert a space character in empty cells to maintain cell structure even without actual content.
+- **Set borders**: Add border styles to the table to enhance cell boundaries and prevent cells from disappearing during rendering.
+
+**Example**:
+
+In the Excel template, set a light gray background for all target cells and insert spaces in empty cells.
+
+### 2. Merged cells are invalid in output
+
+**Problem Description**: When using loop functionality to output tables, merged cells in the template may cause abnormal rendering results, such as lost merge effects or data misalignment.
+
+**Solutions**:
+
+- **Avoid using merged cells**: Try to avoid using merged cells in loop output tables to ensure correct data rendering.
+- **Use center across selection**: If you need text to be horizontally centered across multiple cells, use the "Center Across Selection" feature instead of merging cells.
+- **Limit merged cell positions**: If merged cells are necessary, only merge cells above or to the right of the table, avoiding merging cells below or to the left to prevent loss of merge effects during rendering.
+
+
+
+### 3. Content below loop rendering area causes format disorder
+
+**Problem Description**: In Excel templates, if there is other content (e.g., order summary, notes) below a loop area that dynamically grows based on data items (e.g., order details), during rendering, the loop-generated data rows will expand downward, directly overwriting or pushing down the static content below, causing format disorder and content overlap in the final document.
+
+**Solutions**:
+
+  * **Adjust layout, place loop area at the bottom**: This is the most recommended method. Place the table area that needs loop rendering at the bottom of the entire worksheet. Move all information originally below it (summary, signatures, etc.) to above the loop area. This way, loop data can freely expand downward without affecting any other elements.
+  * **Reserve sufficient blank rows**: If content must be placed below the loop area, estimate the maximum number of rows the loop might generate and manually insert enough blank rows as a buffer between the loop area and content below. However, this method has risks - if actual data exceeds the estimated rows, the problem will reoccur.
+  * **Use Word templates**: If layout requirements are complex and cannot be resolved by adjusting Excel structure, consider using Word documents as templates. Tables in Word automatically push content below when rows increase, without content overlap issues, making it more suitable for generating such dynamic documents.
+
+**Example**:
+
+**Wrong approach**: Placing "Order Summary" information immediately below the looping "Order Details" table.
+![20250820080712](https://static-docs.nocobase.com/20250820080712.png)
+
+**Correct approach 1 (Adjust layout)**: Move "Order Summary" information above the "Order Details" table, making the loop area the bottom element of the page.
+![20250820082226](https://static-docs.nocobase.com/20250820082226.png)
+
+**Correct approach 2 (Reserve blank rows)**: Reserve many blank rows between "Order Details" and "Order Summary" to ensure loop content has enough expansion space.
+![20250820081510](https://static-docs.nocobase.com/20250820081510.png)
+
+**Correct approach 3**: Use Word templates.
+
+
+
+
+
+### 4. Error prompts appear during template rendering
+
+**Problem Description**: During template rendering, the system displays error prompts, causing rendering failure.
+
+**Possible Causes**:
+
+- **Placeholder errors**: Placeholder names don't match dataset fields or have syntax errors.
+- **Missing data**: Dataset lacks fields referenced in the template.
+- **Improper formatter usage**: Formatter parameters are incorrect or unsupported formatting types.
+
+**Solutions**:
+
+- **Check placeholders**: Ensure placeholder names in the template match field names in the dataset and have correct syntax.
+- **Validate dataset**: Confirm the dataset contains all fields referenced in the template with proper data formats.
+- **Adjust formatters**: Check formatter usage methods, ensure parameters are correct, and use supported formatting types.
+
+**Example**:
+
+**Incorrect template**:
+```
+Order ID: {d.orderId}
+Order Date: {d.orderDate:format('YYYY/MM/DD')}
+Total Amount: {d.totalAmount:format('0.00')}
+```
+
+**Dataset**:
+```json
+{
+  "orderId": "A123456789",
+  "orderDate": "2025-01-01T10:00:00Z"
+  // Missing totalAmount field
+}
+```
+
+**Solution**: Add the `totalAmount` field to the dataset or remove the reference to `totalAmount` from the template.

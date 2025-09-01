@@ -1,52 +1,8 @@
 # プラグインのインストールとアップグレード
 
-## 商用プラグインのインストールとアップグレード（v1.4以降）
+## 商用プラグインのインストールとアップグレード（v1.7.x以上）
 
-### 環境変数の設定
-
-環境変数[`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username)と[`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password)（NocoBaseサービスプラットフォームのユーザー名とパスワード）を設定することで、アプリケーションのインストールまたはアップグレード時に商用プラグインを自動的にダウンロードできます。
-
-```bash
-NOCOBASE_PKG_USERNAME=your-username
-NOCOBASE_PKG_PASSWORD=your-password
-```
-
-[環境変数の設定方法](/welcome/getting-started/env)
-
-### プラグインのダウンロード
-
-#### Dockerインストール
-
-コンテナを再起動して、プラグインを自動的にダウンロードします
-
-```bash
-docker compose restart app
-```
-
-#### Gitソースコードまたはcreate-nocobase-appインストール
-
-`pkg download-pro`コマンドを実行してプラグインをダウンロードします
-
-```bash
-yarn nocobase pkg download-pro
-```
-
-:::warning
-
-- 上記の手順では、現在のアプリケーションバージョンに一致するプラグインのみがダウンロードされ、プラグインは更新されません。プラグインを更新する必要がある場合は、まず[アプリケーションをアップグレード](/welcome/getting-started/upgrading)してください。その後、認証済みのプラグインは自動的に更新されます。
-- 認証済みのプラグインは、アプリケーションの[インストール](/welcome/getting-started/installation)または[アップグレード](/welcome/getting-started/upgrading)時にも自動的にダウンロードされます。
-
-:::
-
-### プラグインのアクティベーション
-
-プラグイン管理画面で、アクティベートしたいプラグインを選択します。
-
-![20241204000230](https://static-docs.nocobase.com/20241204000230.png)
-
-### プラグインのアップグレード
-
-まず[アプリケーションをアップグレード](/welcome/getting-started/upgrading)してください。認証済みのプラグインはアプリケーションのアップグレード時に自動的にダウンロードまたは更新されます。現在、アプリケーションをアップグレードせずにプラグインのみをアップグレードすることはできません。
+使用方法のドキュメントを表示するには、NocoBase サービスにログインしてください。
 
 ## インターフェースを使用したプラグインのインストールと更新
 

@@ -1,52 +1,8 @@
 # Installation and Upgrade of Plugins
 
-## Installation and Upgrade of Commercial Plugins (v1.4 and Above)
+## Installation and Upgrade of Commercial Plugins(v1.7.x and above)
 
-### Configure Environment Variables
-
-Set the environment variables [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) and [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password) (NocoBase Service Platform username and password) to automatically download commercial plugins during application installation or upgrade.
-
-```bash
-NOCOBASE_PKG_USERNAME=your-username
-NOCOBASE_PKG_PASSWORD=your-password
-```
-
-[How to set environment variables?](/welcome/getting-started/env)
-
-### Download Plugins
-
-#### Docker Installation
-
-Restart the container to automatically download plugins
-
-```bash
-docker compose restart app
-```
-
-#### Git Source Code or create-nocobase-app Installation
-
-Execute the `pkg download-pro` command to download plugins
-
-```bash
-yarn nocobase pkg download-pro
-```
-
-:::warning
-
-- The above steps will only download plugins that match the current application version, and will not update plugins. If you need to update plugins, please [upgrade the application](/welcome/getting-started/upgrading) first, and authorized plugins will be automatically updated.
-- Authorized plugins will also be automatically downloaded during application [installation](/welcome/getting-started/installation) or [upgrade](/welcome/getting-started/upgrading).
-
-:::
-
-### Activate Plugins
-
-Select the plugins you want to activate in the plugin manager.
-
-![20241204000230](https://static-docs.nocobase.com/20241204000230.png)
-
-### Upgrade Plugins
-
-First [upgrade the application](/welcome/getting-started/upgrading), and authorized plugins will be automatically downloaded or updated during the application upgrade. Currently, it is not possible to upgrade plugins without upgrading the application.
+Please log in to the NocoBase Service to view the documentation.
 
 ## Installing and Updating Plugins via Interface
 

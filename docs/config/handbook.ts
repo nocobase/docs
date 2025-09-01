@@ -4,7 +4,6 @@ export default [
     'title.fr-FR': 'Guide',
     'title.zh-CN': '指南',
     'title.ja-JP': 'ガイド',
-    'title.ru-RU': 'Инструкции',
     link: '/handbook',
   },
   {
@@ -12,7 +11,6 @@ export default [
     'title.fr-FR': 'Modélisation des données',
     'title.zh-CN': '数据建模',
     'title.ja-JP': 'データモデリング',
-    'title.ru-RU': 'Модели данных',
     type: 'group',
     children: [
       {
@@ -20,7 +18,6 @@ export default [
         'title.fr-FR': "Vue d'ensemble",
         'title.zh-CN': '概述',
         'title.ja-JP': '概要',
-        'title.ru-RU': 'Обзор',
         link: '/handbook/data-modeling',
       },
       {
@@ -28,93 +25,89 @@ export default [
         'title.fr-FR': 'Sources de données',
         'title.zh-CN': '数据源',
         'title.ja-JP': 'データソース',
-        'title.ru-RU': 'Источники данных',
         children: [
           {
             title: 'Data source manager',
             'title.fr-FR': 'Gestionnaire de sources de données',
             'title.zh-CN': '数据源管理',
             'title.ja-JP': 'データソースマネージャー',
-            'title.ru-RU': 'Менеджер источника данных',
             link: '/handbook/data-source-manager',
           },
           {
-            title: 'Main database',
-            'title.fr-FR': 'Base de données principale',
-            'title.zh-CN': '主数据库',
-            'title.ja-JP': 'メインデータベース',
-            'title.ru-RU': 'Главная база данных',
+            title: 'Main data source',
+            'title.fr-FR': 'Source de données principale',
+            'title.zh-CN': '主数据源',
+            'title.ja-JP': 'メインデータソース',
             // subTitle: '@nocobase/plugin-collection-manager',
             link: '/handbook/data-source-main',
           },
           {
-            title: 'External database',
-            'title.fr-FR': 'Base de données externe',
-            'title.zh-CN': '外部数据库',
-            'title.ja-JP': '外部データベース',
-            'title.ru-RU': 'Внешняя база данных',
+            title: 'External data sources (Databases)',
+            'title.fr-FR': 'Sources de données externes (Bases de données)',
+            'title.zh-CN': '外部数据源（数据库）',
+            'title.ja-JP': '外部データソース（データベース）',
             children: [
               {
                 title: 'Overview',
                 'title.fr-FR': "Vue d'ensemble",
                 'title.zh-CN': '介绍',
                 'title.ja-JP': '概要',
-                'title.ru-RU': 'Обзор',
                 link: '/handbook/data-source-manager/external-database',
               },
               {
                 title: 'External MySQL',
-                'title.fr-FR': 'Source de données MySQL',
+                'title.fr-FR': 'MySQL externe',
                 'title.zh-CN': '外部 MySQL',
                 'title.ja-JP': '外部 MySQL',
-                'title.ru-RU': 'База MySQL',
                 // subTitle: '@nocobase/plugin-data-source-external-mysql',
                 link: '/handbook/data-source-external-mysql',
               },
               {
                 title: 'External MariaDB',
-                'title.fr-FR': 'Source de données MariaDB',
+                'title.fr-FR': 'MariaDB externe',
                 'title.zh-CN': '外部 MariaDB',
                 'title.ja-JP': '外部 MariaDB',
-                'title.ru-RU': 'База MariaDB',
                 // subTitle: '@nocobase/plugin-data-source-external-mariadb',
                 link: '/handbook/data-source-external-mariadb',
               },
               {
                 title: 'External PostgreSQL',
-                'title.fr-FR': 'Source de données PostgreSQL',
+                'title.fr-FR': 'PostgreSQL externe',
                 'title.zh-CN': '外部 PostgreSQL',
                 'title.ja-JP': '外部 PostgreSQL',
-                'title.ru-RU': 'База PostgreSQL',
                 // subTitle: '@nocobase/plugin-data-source-external-postgres',
                 link: '/handbook/data-source-external-postgres',
               },
               {
                 title: 'External MSSQL',
-                'title.fr-FR': 'Source de données MSSQL',
+                'title.fr-FR': 'MSSQL externe',
                 'title.zh-CN': '外部 MSSQL',
                 'title.ja-JP': '外部 MSSQL',
-                'title.ru-RU': 'База MSSQL',
                 // subTitle: '@nocobase/plugin-data-source-external-mysql',
                 link: '/handbook/data-source-external-mssql',
               },
               {
                 title: 'External Oracle',
-                'title.fr-FR': 'Source de données Oracle',
+                'title.fr-FR': 'Oracle externe',
                 'title.zh-CN': '外部 Oracle',
                 'title.ja-JP': '外部 Oracle',
-                'title.ru-RU': 'База Oracle',
                 // subTitle: '@nocobase/plugin-data-source-external-mysql',
                 link: '/handbook/data-source-external-oracle',
               },
             ],
           },
           {
+            title: 'Main vs External Databases',
+            'title.fr-FR': 'Bases de données: principale vs externe',
+            'title.zh-CN': '主、外部数据库对比',
+            'title.ja-JP': 'メイン・外部データベース比較',
+            link: '/handbook/data-modeling/main-vs-external-data-sources',
+          },
+          {
             title: 'REST API data source',
             'title.fr-FR': 'Source de données API REST',
             'title.zh-CN': 'REST API 数据源',
             'title.ja-JP': 'REST API データソース',
-            'title.ru-RU': 'Источник данных REST API',
             // subTitle: '@nocobase/plugin-data-source-external-postgres',
             link: '/handbook/data-source-rest-api',
           },
@@ -123,7 +116,6 @@ export default [
             'title.fr-FR': 'Source de données KingbaseES',
             'title.zh-CN': '人大金仓（KingbaseES）数据源',
             'title.ja-JP': '人大金仓（KingbaseES）データソース',
-            'title.ru-RU': 'Источник данных KingbaseES',
             link: '/handbook/data-source-kingbase',
           },
           {
@@ -131,7 +123,6 @@ export default [
             'title.fr-FR': 'Outil de gestion des ER',
             'title.zh-CN': '类 ER 工具',
             'title.ja-JP': 'ER図のようなツール',
-            'title.ru-RU': 'Инструмент ER Диаграмм',
             // subTitle: '@nocobase/plugin-graph-collection-manager',
             link: '/handbook/graph-collection-manager',
           },
@@ -194,14 +185,12 @@ export default [
         'title.fr-FR': 'Collections',
         'title.zh-CN': '数据表',
         'title.ja-JP': 'コレクション',
-        'title.ru-RU': 'Коллекции',
         children: [
           {
             title: 'Overview',
             'title.fr-FR': "Vue d'ensemble",
             'title.zh-CN': '概述',
             'title.ja-JP': '概要',
-            'title.ru-RU': 'Обзор',
             link: '/handbook/data-modeling/collection',
           },
           {
@@ -209,7 +198,6 @@ export default [
             'title.fr-FR': 'Collection générale',
             'title.zh-CN': '普通表',
             'title.ja-JP': '一般コレクション',
-            'title.ru-RU': 'Основные коллекции',
             link: '/handbook/data-source-main/general-collection',
           },
           {
@@ -217,7 +205,6 @@ export default [
             'title.fr-FR': 'Collection héritée',
             'title.zh-CN': '继承表',
             'title.ja-JP': '継承コレクション',
-            'title.ru-RU': 'Коллекция с наследованием',
             link: '/handbook/data-source-main/inheritance-collection',
           },
           {
@@ -225,7 +212,6 @@ export default [
             'title.fr-FR': 'Collection de fichiers',
             'title.zh-CN': '文件表',
             'title.ja-JP': 'ファイルコレクション',
-            'title.ru-RU': 'Коллекции файлов',
             link: '/handbook/file-manager/file-collection',
           },
           {
@@ -233,7 +219,6 @@ export default [
             'title.fr-FR': 'Arborescences',
             'title.zh-CN': '树表',
             'title.ja-JP': '木構造コレクション',
-            'title.ru-RU': 'Коллекции дерево',
             link: '/handbook/collection-tree',
           },
           {
@@ -241,7 +226,6 @@ export default [
             'title.fr-FR': 'Collection de calendriers',
             'title.zh-CN': '日历表',
             'title.ja-JP': 'カレンダーコレクション',
-            'title.ru-RU': 'Коллекции календарь',
             link: '/handbook/calendar/calendar-collection',
           },
           {
@@ -249,7 +233,6 @@ export default [
             'title.fr-FR': "Collection d'expressions",
             'title.zh-CN': '表达式表',
             'title.ja-JP': '式コレクション',
-            'title.ru-RU': 'Коллекции выражений',
             link: '/handbook/collection-expression/collection',
           },
           {
@@ -257,7 +240,6 @@ export default [
             'title.fr-FR': 'Collection SQL',
             'title.zh-CN': 'SQL 表',
             'title.ja-JP': 'SQLコレクション',
-            'title.ru-RU': 'Коллекции SQL',
             link: '/handbook/collection-sql',
           },
           {
@@ -265,7 +247,6 @@ export default [
             'title.fr-FR': 'Collection de vues',
             'title.zh-CN': '数据库视图',
             'title.ja-JP': 'ビューコレクション',
-            'title.ru-RU': 'Коллекции представлений',
             link: '/handbook/collection-view',
           },
           {
@@ -273,7 +254,6 @@ export default [
             'title.fr-FR': 'Collection de données étrangères（FDW）',
             'title.zh-CN': '外部数据表',
             'title.ja-JP': '外部データコレクション（FDW）',
-            'title.ru-RU': 'Сбор внешних данных (FDW)',
             link: '/handbook/collection-fdw',
           },
         ],
@@ -283,30 +263,33 @@ export default [
         'title.fr-FR': 'Collection de champs',
         'title.zh-CN': '数据表字段',
         'title.ja-JP': 'コレクションフィールド',
-        'title.ru-RU': 'Поля коллекций',
         children: [
           {
             title: 'Overview',
             'title.fr-FR': "Vue d'ensemble",
             'title.zh-CN': '概述',
             'title.ja-JP': '概要',
-            'title.ru-RU': 'Обзор',
             // subTitle: '@nocobase/plugin-data-source-external-mariadb',
             link: '/handbook/data-modeling/collection-fields',
+          },
+          {
+            title: 'Field Validation',
+            'title.fr-FR': 'Validation',
+            'title.zh-CN': '字段验证',
+            'title.ja-JP': '検証',
+            link: '/handbook/data-modeling/collection-fields/validation',
           },
           {
             title: 'Basic',
             'title.fr-FR': 'Basic',
             'title.zh-CN': '基本类型',
             'title.ja-JP': '基本タイプ',
-            'title.ru-RU': 'Базовые',
             children: [
               {
                 title: 'Single text',
                 'title.fr-FR': 'Texte simple',
                 'title.zh-CN': '单行文本',
                 'title.ja-JP': '単一行テキスト',
-                'title.ru-RU': 'Строка',
                 link: '/handbook/data-modeling/collection-fields/basic/input',
               },
               {
@@ -314,7 +297,6 @@ export default [
                 'title.fr-FR': 'Texte long',
                 'title.zh-CN': '多行文本',
                 'title.ja-JP': '複数行テキスト',
-                'title.ru-RU': 'Текст',
                 link: '/handbook/data-modeling/collection-fields/basic/textarea',
               },
               {
@@ -322,7 +304,6 @@ export default [
                 'title.fr-FR': 'Téléphone',
                 'title.zh-CN': '手机号码',
                 'title.ja-JP': '電話番号',
-                'title.ru-RU': 'Телефон',
                 link: '/handbook/data-modeling/collection-fields/basic/phone',
               },
               {
@@ -330,7 +311,6 @@ export default [
                 'title.fr-FR': 'Email',
                 'title.zh-CN': '电子邮箱',
                 'title.ja-JP': '電子メール',
-                'title.ru-RU': 'Email',
                 link: '/handbook/data-modeling/collection-fields/basic/email',
               },
               {
@@ -338,7 +318,6 @@ export default [
                 'title.fr-FR': 'URL',
                 'title.zh-CN': 'URL',
                 'title.ja-JP': 'URL',
-                'title.ru-RU': 'URL',
                 link: '/handbook/data-modeling/collection-fields/basic/url',
               },
               {
@@ -346,7 +325,6 @@ export default [
                 'title.fr-FR': 'Entier',
                 'title.zh-CN': '整数',
                 'title.ja-JP': '整数',
-                'title.ru-RU': 'Целое число',
                 link: '/handbook/data-modeling/collection-fields/basic/integer',
               },
               {
@@ -354,7 +332,6 @@ export default [
                 'title.fr-FR': 'Nombre',
                 'title.zh-CN': '数字',
                 'title.ja-JP': '数値',
-                'title.ru-RU': 'Число с точкой',
                 link: '/handbook/data-modeling/collection-fields/basic/number',
               },
               {
@@ -362,7 +339,6 @@ export default [
                 'title.fr-FR': 'Pourcentage',
                 'title.zh-CN': '百分比',
                 'title.ja-JP': 'パーセント',
-                'title.ru-RU': 'Процент',
                 link: '/handbook/data-modeling/collection-fields/basic/percent',
               },
               {
@@ -370,7 +346,6 @@ export default [
                 'title.fr-FR': 'Mot de passe',
                 'title.zh-CN': '密码',
                 'title.ja-JP': 'パスワード',
-                'title.ru-RU': 'Пароль',
                 link: '/handbook/data-modeling/collection-fields/basic/password',
               },
               {
@@ -378,7 +353,6 @@ export default [
                 'title.fr-FR': 'Couleur',
                 'title.zh-CN': '颜色',
                 'title.ja-JP': '色',
-                'title.ru-RU': 'Цвет',
                 link: '/handbook/data-modeling/collection-fields/basic/color',
               },
               {
@@ -386,7 +360,6 @@ export default [
                 'title.fr-FR': 'Icône',
                 'title.zh-CN': '图标',
                 'title.ja-JP': 'アイコン',
-                'title.ru-RU': 'Иконка',
                 link: '/handbook/data-modeling/collection-fields/basic/icon',
               },
             ],
@@ -396,14 +369,12 @@ export default [
             'title.fr-FR': 'Selection',
             'title.zh-CN': '选择类型',
             'title.ja-JP': '選択タイプ',
-            'title.ru-RU': 'Выбор',
             children: [
               {
                 title: 'Checkbox',
                 'title.fr-FR': 'Checkbox',
                 'title.zh-CN': '勾选',
                 'title.ja-JP': 'チェックボックス',
-                'title.ru-RU': 'Чек-бокс',
                 link: '/handbook/data-modeling/collection-fields/choices/checkbox',
               },
               {
@@ -411,7 +382,6 @@ export default [
                 'title.fr-FR': 'Selection simple',
                 'title.zh-CN': '下拉菜单（单选）',
                 'title.ja-JP': '単一選択',
-                'title.ru-RU': 'Одиночный выбор',
                 link: '/handbook/data-modeling/collection-fields/choices/select',
               },
               {
@@ -419,7 +389,6 @@ export default [
                 'title.fr-FR': 'Selection multiple',
                 'title.zh-CN': '下拉菜单（多选）',
                 'title.ja-JP': '複数選択',
-                'title.ru-RU': 'Множественный выбор',
                 link: '/handbook/data-modeling/collection-fields/choices/multiple-select',
               },
               {
@@ -427,7 +396,6 @@ export default [
                 'title.fr-FR': 'Groupe Radio',
                 'title.zh-CN': '单选框',
                 'title.ja-JP': 'ラジオボタン',
-                'title.ru-RU': 'Радио группа',
                 link: '/handbook/data-modeling/collection-fields/choices/radio-group',
               },
               {
@@ -435,7 +403,6 @@ export default [
                 'title.fr-FR': 'Groupe Checkbox',
                 'title.zh-CN': '复选框',
                 'title.ja-JP': 'チェックボックスグループ',
-                'title.ru-RU': 'Группа Чек-боксов',
                 link: '/handbook/data-modeling/collection-fields/choices/checkbox-group',
               },
               {
@@ -443,7 +410,6 @@ export default [
                 'title.fr-FR': 'China region',
                 'title.zh-CN': '中国行政区',
                 'title.ja-JP': '中国の行政区',
-                'title.ru-RU': 'Китайский регион',
                 link: '/handbook/field-china-region',
               },
             ],
@@ -453,14 +419,12 @@ export default [
             'title.fr-FR': 'Média',
             'title.zh-CN': '多媒体',
             'title.ja-JP': 'メディア',
-            'title.ru-RU': 'Медиа',
             children: [
               {
                 title: 'Markdown',
                 'title.fr-FR': 'Markdown',
                 'title.zh-CN': 'Markdown',
                 'title.ja-JP': 'Markdown',
-                'title.ru-RU': 'Markdown',
                 link: '/handbook/data-modeling/collection-fields/media/markdown',
               },
               {
@@ -468,7 +432,6 @@ export default [
                 'title.fr-FR': 'Markdown(Vditor)',
                 'title.zh-CN': 'Markdown(Vditor)',
                 'title.ja-JP': 'Markdown(Vditor)',
-                'title.ru-RU': 'Markdown(Vditor)',
                 link: '/handbook/field-markdown-vditor',
               },
               {
@@ -476,7 +439,6 @@ export default [
                 'title.fr-FR': 'Rich text',
                 'title.zh-CN': '富文本',
                 'title.ja-JP': 'リッチテキスト',
-                'title.ru-RU': 'Rich Текст',
                 link: '/handbook/data-modeling/collection-fields/media/rich-text',
               },
               {
@@ -484,7 +446,6 @@ export default [
                 'title.fr-FR': 'Attachment(Assocation)',
                 'title.zh-CN': '附件（关系）',
                 'title.ja-JP': '添付ファイル（Assocation）',
-                'title.ru-RU': 'Вложение',
                 link: '/handbook/file-manager/field-attachment',
               },
               {
@@ -492,7 +453,6 @@ export default [
                 'title.fr-FR': 'Attachment（URL）',
                 'title.zh-CN': '附件（URL）',
                 'title.ja-JP': '添付ファイル（URL）',
-                'title.ru-RU': 'Вложение(URL)',
                 link: '/handbook/field-attachment-url',
               },
             ],
@@ -502,14 +462,12 @@ export default [
             'title.fr-FR': 'Date et heure',
             'title.zh-CN': '日期 & 时间',
             'title.ja-JP': '日付と時間',
-            'title.ru-RU': 'Дата & Время',
             children: [
               {
                 title: 'Overview',
                 'title.fr-FR': "Vue d'ensemble",
                 'title.zh-CN': '概述',
                 'title.ja-JP': '概要',
-                'title.ru-RU': 'Обзор',
                 link: '/handbook/data-modeling/collection-fields/datetime',
               },
               {
@@ -517,7 +475,6 @@ export default [
                 'title.fr-FR': 'Date et heure(avec time zone)',
                 'title.zh-CN': '日期时间（含时区）',
                 'title.ja-JP': '日付と時間（タイムゾーンあり）',
-                'title.ru-RU': 'Дата (с часовым поясом)',
                 link: '/handbook/data-modeling/collection-fields/datetime/datetime',
               },
               {
@@ -525,7 +482,6 @@ export default [
                 'title.fr-FR': 'Date et heure(sans time zone)',
                 'title.zh-CN': '日期时间（不含时区）',
                 'title.ja-JP': '日付と時間（タイムゾーンなし）',
-                'title.ru-RU': 'Дата (Без часового пояса)',
                 link: '/handbook/data-modeling/collection-fields/datetime/datetime-without-tz',
               },
               {
@@ -533,7 +489,6 @@ export default [
                 'title.fr-FR': 'Timestamp Unix',
                 'title.zh-CN': 'Unix 时间戳',
                 'title.ja-JP': 'Unix タイムスタンプ',
-                'title.ru-RU': 'Unix отметка времени',
                 link: '/handbook/data-modeling/collection-fields/datetime/unix-timestamp',
               },
               {
@@ -541,7 +496,6 @@ export default [
                 'title.fr-FR': 'Date(sans heure)',
                 'title.zh-CN': '日期（不含时间）',
                 'title.ja-JP': '日付（時間なし）',
-                'title.ru-RU': 'Дата (без времени)',
                 link: '/handbook/data-modeling/collection-fields/datetime/date',
               },
               {
@@ -549,7 +503,6 @@ export default [
                 'title.fr-FR': 'Heure',
                 'title.zh-CN': '时间',
                 'title.ja-JP': '時間',
-                'title.ru-RU': 'Время',
                 link: '/handbook/data-modeling/collection-fields/datetime/time',
               },
             ],
@@ -559,14 +512,12 @@ export default [
             'title.fr-FR': 'Géométrie',
             'title.zh-CN': '几何图形',
             'title.ja-JP': '幾何学',
-            'title.ru-RU': 'Геометрия',
             children: [
               {
                 title: 'Point',
                 'title.fr-FR': 'Point',
                 'title.zh-CN': '点',
                 'title.ja-JP': '点',
-                'title.ru-RU': 'Точка',
                 link: '/handbook/data-modeling/collection-fields/geometric/point',
               },
               {
@@ -574,7 +525,6 @@ export default [
                 'title.fr-FR': 'Ligne',
                 'title.zh-CN': '线',
                 'title.ja-JP': '線',
-                'title.ru-RU': 'Линия',
                 link: '/handbook/data-modeling/collection-fields/geometric/line',
               },
               {
@@ -582,7 +532,6 @@ export default [
                 'title.fr-FR': 'Cercle',
                 'title.zh-CN': '圆',
                 'title.ja-JP': '円',
-                'title.ru-RU': 'Окружность',
                 link: '/handbook/data-modeling/collection-fields/geometric/circle',
               },
               {
@@ -590,7 +539,6 @@ export default [
                 'title.fr-FR': 'Polygone',
                 'title.zh-CN': '多边形',
                 'title.ja-JP': '多角形',
-                'title.ru-RU': 'Полигон',
                 link: '/handbook/data-modeling/collection-fields/geometric/polygon',
               },
             ],
@@ -600,14 +548,12 @@ export default [
             'title.fr-FR': 'Avancé',
             'title.zh-CN': '高级类型',
             'title.ja-JP': '高度なタイプ',
-            'title.ru-RU': 'Продвинутые поля',
             children: [
               {
                 title: 'UUID',
                 'title.fr-FR': 'UUID',
                 'title.zh-CN': 'UUID',
                 'title.ja-JP': 'UUID',
-                'title.ru-RU': 'UUID',
                 link: '/handbook/data-modeling/collection-fields/advanced/uuid',
               },
               {
@@ -615,7 +561,6 @@ export default [
                 'title.fr-FR': 'Nano ID',
                 'title.zh-CN': 'Nano ID',
                 'title.ja-JP': 'Nano ID',
-                'title.ru-RU': 'Nano ID',
                 link: '/handbook/data-modeling/collection-fields/advanced/nano-id',
               },
               {
@@ -623,7 +568,6 @@ export default [
                 'title.fr-FR': 'Sort',
                 'title.zh-CN': '排序',
                 'title.ja-JP': 'ソート',
-                'title.ru-RU': 'Сортировка',
                 link: '/handbook/field-sort',
               },
               {
@@ -631,7 +575,6 @@ export default [
                 'title.fr-FR': 'Formule',
                 'title.zh-CN': '计算公式',
                 'title.ja-JP': '計算式',
-                'title.ru-RU': 'Формула',
                 link: '/handbook/field-formula',
               },
               {
@@ -639,7 +582,6 @@ export default [
                 'title.fr-FR': 'Séquence',
                 'title.zh-CN': '自动编码',
                 'title.ja-JP': '自動エンコード',
-                'title.ru-RU': 'Последовательность',
                 link: '/handbook/field-sequence',
               },
               {
@@ -647,7 +589,6 @@ export default [
                 'title.fr-FR': 'JSON',
                 'title.zh-CN': 'JSON',
                 'title.ja-JP': 'JSON',
-                'title.ru-RU': 'JSON',
                 link: '/handbook/data-modeling/collection-fields/advanced/json',
               },
               {
@@ -655,7 +596,6 @@ export default [
                 'title.fr-FR': 'Collection select',
                 'title.zh-CN': '数据表选择器',
                 'title.ja-JP': 'コレクションセレクター',
-                'title.ru-RU': 'Коллекция выбора',
                 link: '/handbook/data-modeling/collection-fields/advanced/collection-select',
               },
               {
@@ -663,7 +603,6 @@ export default [
                 'title.fr-FR': 'Chiffrement',
                 'title.zh-CN': '加密',
                 'title.ja-JP': '暗号化',
-                'title.ru-RU': 'Щифрование',
                 link: '/handbook/field-encryption',
               },
             ],
@@ -673,14 +612,12 @@ export default [
             'title.fr-FR': 'Système info',
             'title.zh-CN': '系统信息',
             'title.ja-JP': 'システム情報',
-            'title.ru-RU': 'Системная информация',
             children: [
               {
                 title: 'Created at',
                 'title.fr-FR': 'Créé le',
                 'title.zh-CN': '创建日期',
                 'title.ja-JP': '作成日',
-                'title.ru-RU': 'Создано в',
                 link: '/handbook/data-modeling/collection-fields/system-info/created-at',
               },
               {
@@ -688,7 +625,6 @@ export default [
                 'title.fr-FR': 'Modifié le',
                 'title.zh-CN': '最后修改日期',
                 'title.ja-JP': '最終更新日',
-                'title.ru-RU': 'Последнее изменение в',
                 link: '/handbook/data-modeling/collection-fields/system-info/updated-at',
               },
               {
@@ -696,7 +632,6 @@ export default [
                 'title.fr-FR': 'Créé par',
                 'title.zh-CN': '创建人',
                 'title.ja-JP': '作成者',
-                'title.ru-RU': 'Создано от',
                 link: '/handbook/users/field-created-by',
               },
               {
@@ -704,7 +639,6 @@ export default [
                 'title.fr-FR': 'Modifié par',
                 'title.zh-CN': '最后修改人',
                 'title.ja-JP': '最終更新者',
-                'title.ru-RU': 'Последнее изменение от',
                 link: '/handbook/users/field-updated-by',
               },
               {
@@ -712,7 +646,6 @@ export default [
                 'title.fr-FR': 'Table OID',
                 'title.zh-CN': 'Table OID',
                 'title.ja-JP': 'テーブルOID',
-                'title.ru-RU': 'Table OID',
                 link: '/handbook/data-modeling/collection-fields/system-info/table-oid',
               },
             ],
@@ -722,14 +655,12 @@ export default [
             'title.fr-FR': 'Association',
             'title.zh-CN': '关系类型',
             'title.ja-JP': '関連タイプ',
-            'title.ru-RU': 'Связи',
             children: [
               {
                 title: 'Overview',
                 'title.fr-FR': "Vue d'ensemble",
                 'title.zh-CN': '概述',
                 'title.ja-JP': '概要',
-                'title.ru-RU': 'Обзор',
                 link: '/handbook/data-modeling/collection-fields/associations',
               },
               {
@@ -737,7 +668,6 @@ export default [
                 'title.fr-FR': 'Un à un',
                 'title.zh-CN': '一对一',
                 'title.ja-JP': '一対一',
-                'title.ru-RU': 'Один-к-Одному',
                 link: '/handbook/data-modeling/collection-fields/associations/o2o',
               },
               {
@@ -745,7 +675,6 @@ export default [
                 'title.fr-FR': 'Un à plusieurs',
                 'title.zh-CN': '一对多',
                 'title.ja-JP': '一対多',
-                'title.ru-RU': 'Один-к-Многим',
                 link: '/handbook/data-modeling/collection-fields/associations/o2m',
               },
               {
@@ -753,7 +682,6 @@ export default [
                 'title.fr-FR': 'Plusieurs à un',
                 'title.zh-CN': '多对一',
                 'title.ja-JP': '多対一',
-                'title.ru-RU': 'Многие-к-Одному',
                 link: '/handbook/data-modeling/collection-fields/associations/m2o',
               },
               {
@@ -761,7 +689,6 @@ export default [
                 'title.fr-FR': 'Plusieurs à plusieurs',
                 'title.zh-CN': '多对多',
                 'title.ja-JP': '多対多',
-                'title.ru-RU': 'Многие-к-Многим',
                 link: '/handbook/data-modeling/collection-fields/associations/m2m',
               },
               {
@@ -769,7 +696,6 @@ export default [
                 'title.fr-FR': 'Plusieurs à plusieurs (tableau)',
                 'title.zh-CN': '多对多（数组）',
                 'title.ja-JP': '多対多（配列）',
-                'title.ru-RU': 'Многие-к-Многим (массив)',
                 link: '/handbook/field-m2m-array',
               },
             ],
@@ -783,7 +709,6 @@ export default [
     'title.fr-FR': 'Interface utilisateur(UI)',
     'title.zh-CN': '配置界面',
     'title.ja-JP': 'UI編集',
-    'title.ru-RU': 'Редактор UI',
     type: 'group',
     children: [
       {
@@ -791,7 +716,6 @@ export default [
         'title.fr-FR': 'Mode éditeur UI',
         'title.zh-CN': '界面配置模式',
         'title.ja-JP': 'UIエディタモード',
-        'title.ru-RU': 'Режим редактора UI',
         link: '/handbook/ui/ui-editor',
       },
       {
@@ -799,7 +723,6 @@ export default [
         'title.fr-FR': 'Menu',
         'title.zh-CN': '菜单',
         'title.ja-JP': 'メニュー',
-        'title.ru-RU': 'Меню',
         link: '/handbook/ui/menus',
       },
       {
@@ -807,7 +730,6 @@ export default [
         'title.fr-FR': 'Page',
         'title.zh-CN': '页面',
         'title.ja-JP': 'ページ',
-        'title.ru-RU': 'Страница',
         link: '/handbook/ui/pages',
       },
       {
@@ -815,7 +737,6 @@ export default [
         'title.fr-FR': 'Pop-up',
         'title.zh-CN': '弹窗',
         'title.ja-JP': 'ポップアップ',
-        'title.ru-RU': 'Всплывающее окно',
         link: '/handbook/ui/pop-up',
       },
       {
@@ -823,14 +744,12 @@ export default [
         'title.fr-FR': 'Blocks',
         'title.zh-CN': '区块',
         'title.ja-JP': 'ブロック',
-        'title.ru-RU': 'Блоки',
         children: [
           {
             title: 'Overview',
             'title.fr-FR': "Vue d'ensemble",
             'title.zh-CN': '概述',
             'title.ja-JP': '概要',
-            'title.ru-RU': 'Обзор',
             link: '/handbook/ui/blocks',
           },
           {
@@ -838,14 +757,12 @@ export default [
             'title.fr-FR': 'Data blocks',
             'title.zh-CN': '数据区块',
             'title.ja-JP': 'データブロック',
-            'title.ru-RU': 'Блоки с данными',
             children: [
               {
                 title: 'Table',
                 'title.fr-FR': 'Tableau',
                 'title.zh-CN': '表格',
                 'title.ja-JP': 'テーブル',
-                'title.ru-RU': 'Таблица',
                 link: '/handbook/ui/blocks/data-blocks/table',
               },
               {
@@ -853,7 +770,6 @@ export default [
                 'title.fr-FR': 'Form',
                 'title.zh-CN': '表单',
                 'title.ja-JP': 'フォーム',
-                'title.ru-RU': 'Форма',
                 link: '/handbook/ui/blocks/data-blocks/form',
               },
               {
@@ -861,7 +777,6 @@ export default [
                 'title.fr-FR': 'Détails',
                 'title.zh-CN': '详情',
                 'title.ja-JP': '詳細',
-                'title.ru-RU': 'Детали',
                 link: '/handbook/ui/blocks/data-blocks/details',
               },
               {
@@ -869,7 +784,6 @@ export default [
                 'title.fr-FR': 'Liste',
                 'title.zh-CN': '列表',
                 'title.ja-JP': 'リスト',
-                'title.ru-RU': 'Список',
                 link: '/handbook/ui/blocks/data-blocks/list',
               },
               {
@@ -877,7 +791,6 @@ export default [
                 'title.fr-FR': 'Grille',
                 'title.zh-CN': '网格卡片',
                 'title.ja-JP': 'グリッドカード',
-                'title.ru-RU': 'Сетка карточек',
                 link: '/handbook/ui/blocks/data-blocks/grid-card',
               },
               {
@@ -885,7 +798,6 @@ export default [
                 'title.fr-FR': 'Calendar',
                 'title.zh-CN': '日历',
                 'title.ja-JP': 'カレンダー',
-                'title.ru-RU': 'Календарь',
                 link: '/handbook/calendar',
               },
               {
@@ -893,7 +805,6 @@ export default [
                 'title.fr-FR': 'Gantt',
                 'title.zh-CN': '甘特图',
                 'title.ja-JP': 'ガントチャート',
-                'title.ru-RU': 'Гантт',
                 link: '/handbook/block-gantt',
               },
               {
@@ -901,7 +812,6 @@ export default [
                 'title.fr-FR': 'Kanban',
                 'title.zh-CN': '看板',
                 'title.ja-JP': 'カンバン',
-                'title.ru-RU': 'Канбан',
                 link: '/handbook/block-kanban',
               },
               {
@@ -909,7 +819,6 @@ export default [
                 'title.fr-FR': 'Carte',
                 'title.zh-CN': '地图',
                 'title.ja-JP': '地図',
-                'title.ru-RU': 'Карта',
                 link: '/handbook/block-map',
               },
               {
@@ -917,7 +826,6 @@ export default [
                 'title.fr-FR': 'Graphiques',
                 'title.zh-CN': '图表',
                 'title.ja-JP': 'チャート',
-                'title.ru-RU': 'Графики',
                 link: '/handbook/data-visualization/',
               },
               {
@@ -925,7 +833,6 @@ export default [
                 'title.fr-FR': 'Formulaire multi-étapes',
                 'title.zh-CN': '分步表单',
                 'title.ja-JP': '多段階フォーム',
-                'title.ru-RU': 'Многоступенчатая форма',
                 link: '/handbook/block-multi-step-from',
               },
             ],
@@ -935,14 +842,12 @@ export default [
             'title.fr-FR': 'Blocs filtre',
             'title.zh-CN': '筛选区块',
             'title.ja-JP': 'フィルターブロック',
-            'title.ru-RU': 'Блоки фильтрации',
             children: [
               {
                 title: 'Form',
                 'title.fr-FR': 'Formulaire',
                 'title.zh-CN': '表单',
                 'title.ja-JP': 'フォーム',
-                'title.ru-RU': 'Форма',
                 link: '/handbook/ui/blocks/filter-blocks/form',
               },
               {
@@ -950,7 +855,6 @@ export default [
                 'title.fr-FR': 'Réduire',
                 'title.zh-CN': '折叠面板',
                 'title.ja-JP': '折りたたみパネル',
-                'title.ru-RU': 'Свернутая панель',
                 link: '/handbook/ui/blocks/filter-blocks/collapse',
               },
               {
@@ -958,7 +862,6 @@ export default [
                 'title.fr-FR': 'Arborescence',
                 'title.zh-CN': '树',
                 'title.ja-JP': '木構造',
-                'title.ru-RU': 'Дерево',
                 link: '/handbook/block-tree',
               },
             ],
@@ -968,14 +871,12 @@ export default [
             'title.fr-FR': 'Autres blocs',
             'title.zh-CN': '其他区块',
             'title.ja-JP': 'その他のブロック',
-            'title.ru-RU': 'Другие блоки',
             children: [
               {
                 title: 'Markdown',
                 'title.fr-FR': 'Markdown',
                 'title.zh-CN': 'Markdown',
                 'title.ja-JP': 'Markdown',
-                'title.ru-RU': 'Markdown',
                 link: '/handbook/ui/blocks/other-blocks/markdown',
               },
               {
@@ -983,7 +884,6 @@ export default [
                 'title.fr-FR': 'iframe',
                 'title.zh-CN': 'iframe',
                 'title.ja-JP': 'iframe',
-                'title.ru-RU': 'iframe',
                 link: '/handbook/block-iframe',
               },
               {
@@ -991,7 +891,6 @@ export default [
                 'title.fr-FR': 'Action panel',
                 'title.zh-CN': '操作面板',
                 'title.ja-JP': 'アクションパネル',
-                'title.ru-RU': 'Панель действий',
                 link: '/handbook/block-action-panel',
               },
               {
@@ -999,7 +898,6 @@ export default [
                 'title.fr-FR': 'Workflow: manuel',
                 'title.zh-CN': '工作流：人工待办',
                 'title.ja-JP': 'ワークフロー：手動タスク',
-                'title.ru-RU': 'Workflow: Обработка задач',
                 link: '/handbook/ui/blocks/other-blocks/workflow-manual-todos',
               },
               {
@@ -1007,7 +905,6 @@ export default [
                 'title.fr-FR': 'Workflow: Approbation',
                 'title.zh-CN': '工作流：审批',
                 'title.ja-JP': 'ワークフロー：承認',
-                'title.ru-RU': 'Workflow: Утверждение',
                 link: '/handbook/ui/blocks/other-blocks/workflow-approval',
               },
               // {
@@ -1022,7 +919,6 @@ export default [
             'title.fr-FR': 'Template de blocs',
             'title.zh-CN': '区块模板',
             'title.ja-JP': 'ブロックテンプレート',
-            'title.ru-RU': 'Блоки шаблонов',
             link: '/handbook/block-template',
           },
           {
@@ -1030,14 +926,12 @@ export default [
             'title.fr-FR': 'Paramètre de blocs',
             'title.zh-CN': '区块设置项',
             'title.ja-JP': 'ブロック設定',
-            'title.ru-RU': 'Блок настроек',
             children: [
               {
                 title: 'Set the data scope',
                 'title.fr-FR': 'Data scope',
                 'title.zh-CN': '设置数据范围',
                 'title.ja-JP': 'データ範囲を設定',
-                'title.ru-RU': 'Установить область видимости данных',
                 link: '/handbook/ui/blocks/block-settings/data-scope',
               },
               {
@@ -1045,7 +939,6 @@ export default [
                 'title.fr-FR': 'Règle de tri par défaut',
                 'title.zh-CN': '设置排序规则',
                 'title.ja-JP': 'デフォルトのソートルールを設定',
-                'title.ru-RU': 'Установить правила сортировки по умолчанию',
                 link: '/handbook/ui/blocks/block-settings/sorting-rule',
               },
               {
@@ -1053,7 +946,6 @@ export default [
                 'title.fr-FR': 'Mode de chargement des données',
                 'title.zh-CN': '设置数据加载方式',
                 'title.ja-JP': 'データ読み込みモードを設定',
-                'title.ru-RU': 'Установить режим загрузки данных',
                 link: '/handbook/ui/blocks/block-settings/loading-mode',
               },
               {
@@ -1061,7 +953,6 @@ export default [
                 'title.fr-FR': 'Connecter des blocs de données',
                 'title.zh-CN': '连接数据区块',
                 'title.ja-JP': 'データブロックを接続',
-                'title.ru-RU': 'Подключить блоки данных',
                 link: '/handbook/ui/blocks/block-settings/connect-block',
               },
               {
@@ -1069,7 +960,6 @@ export default [
                 'title.fr-FR': 'Restaurer le modèle',
                 'title.zh-CN': '恢复到模板',
                 'title.ja-JP': 'テンプレートに戻す',
-                'title.ru-RU': 'Вернуться к шаблону',
                 link: '/handbook/block-template',
               },
               {
@@ -1077,7 +967,6 @@ export default [
                 'title.fr-FR': 'Enregistrer comme modèle',
                 'title.zh-CN': '保存为模板',
                 'title.ja-JP': 'テンプレートとして保存',
-                'title.ru-RU': 'Сохранить как шаблон',
                 link: '/handbook/block-template',
               },
               {
@@ -1085,7 +974,6 @@ export default [
                 'title.fr-FR': 'Règle de dépendance des champs',
                 'title.zh-CN': '字段联动规则',
                 'title.ja-JP': 'フィールド連動ルール',
-                'title.ru-RU': 'Правила связывания полей',
                 link: '/handbook/ui/blocks/block-settings/field-linkage-rule',
               },
               {
@@ -1093,7 +981,6 @@ export default [
                 'title.fr-FR': 'Règle de dépendance des blocs',
                 'title.zh-CN': '区块联动规则',
                 'title.ja-JP': 'ブロック連動ルール',
-                'title.ru-RU': 'Правила связывания блоков',
                 link: '/handbook/ui/blocks/block-settings/block-linkage-rule',
               },
               {
@@ -1101,7 +988,6 @@ export default [
                 'title.fr-FR': 'Titre de bloc',
                 'title.zh-CN': '编辑区块标题',
                 'title.ja-JP': 'ブロックタイトルを編集',
-                'title.ru-RU': 'Редактировать заголовок блока',
                 link: '/handbook/ui/blocks/block-settings/block-title',
               },
               {
@@ -1109,7 +995,6 @@ export default [
                 'title.fr-FR': 'Hauteur',
                 'title.zh-CN': '设置区块高度',
                 'title.ja-JP': 'ブロックの高さを設定',
-                'title.ru-RU': 'Установить высоту блока',
                 link: '/handbook/ui/blocks/block-settings/block-height',
               },
               {
@@ -1117,7 +1002,6 @@ export default [
                 'title.fr-FR': 'Disposition',
                 'title.zh-CN': '布局',
                 'title.ja-JP': 'レイアウト',
-                'title.ru-RU': 'Макет',
                 link: '/handbook/ui/blocks/block-settings/block-layout',
               },
               {
@@ -1125,7 +1009,6 @@ export default [
                 'title.fr-FR': 'Suppression',
                 'title.zh-CN': '删除区块',
                 'title.ja-JP': 'ブロックを削除',
-                'title.ru-RU': 'Удалить блок',
                 link: '/handbook/ui/blocks/block-settings/block-delete',
               },
             ],
@@ -1137,14 +1020,12 @@ export default [
         'title.fr-FR': 'Champs',
         'title.zh-CN': '字段',
         'title.ja-JP': 'フィールド',
-        'title.ru-RU': 'Поля',
         children: [
           {
             title: 'Overview',
             'title.fr-FR': "Vue d'ensemble",
             'title.zh-CN': '概述',
             'title.ja-JP': '概要',
-            'title.ru-RU': 'Обзор',
             link: '/handbook/ui/fields',
           },
           {
@@ -1152,14 +1033,12 @@ export default [
             'title.fr-FR': 'Paramètres communs',
             'title.zh-CN': '通用配置项',
             'title.ja-JP': '一般設定',
-            'title.ru-RU': 'Общие настройки',
             children: [
               {
                 title: 'Table column',
                 'title.fr-FR': 'Colonne de tableau',
                 'title.zh-CN': '表格字段',
                 'title.ja-JP': 'テーブルカラム',
-                'title.ru-RU': 'Колонки таблицы',
                 link: '/handbook/ui/fields/generic/table-column',
               },
               {
@@ -1167,7 +1046,6 @@ export default [
                 'title.fr-FR': 'Formulaire',
                 'title.zh-CN': '表单字段',
                 'title.ja-JP': 'フォームフィールド',
-                'title.ru-RU': 'Формы',
                 link: '/handbook/ui/fields/generic/form-item',
               },
               {
@@ -1175,7 +1053,6 @@ export default [
                 'title.fr-FR': 'Détails',
                 'title.zh-CN': '详情字段',
                 'title.ja-JP': '詳細フィールド',
-                'title.ru-RU': 'Детали',
                 link: '/handbook/ui/fields/generic/detail-form-item',
               },
               {
@@ -1183,7 +1060,6 @@ export default [
                 'title.fr-FR': "Formulaire d'édition en masse",
                 'title.zh-CN': '批量编辑表单',
                 'title.ja-JP': 'バルク編集フォーム',
-                'title.ru-RU': 'Массовое редактирования формы',
                 link: '/handbook/ui/fields/generic/bulk-edit-form-item',
               },
               {
@@ -1191,7 +1067,6 @@ export default [
                 'title.fr-FR': 'Filtres',
                 'title.zh-CN': '筛选表单',
                 'title.ja-JP': 'フィルターフォーム',
-                'title.ru-RU': 'Фильтры',
                 link: '/handbook/ui/fields/generic/filter-form-item',
               },
               {
@@ -1199,7 +1074,6 @@ export default [
                 'title.fr-FR': 'Réduire',
                 'title.zh-CN': '折叠面板',
                 'title.ja-JP': '折りたたみパネル',
-                'title.ru-RU': 'Свернутая панель',
                 link: '/handbook/ui/fields/generic/filter-collapse-item',
               },
             ],
@@ -1209,14 +1083,12 @@ export default [
             'title.fr-FR': 'Paramètres spécifiques',
             'title.zh-CN': '特有配置项',
             'title.ja-JP': '特有設定',
-            'title.ru-RU': 'Особые настройки',
             children: [
               {
                 title: 'Date picker',
                 'title.fr-FR': 'Choix de date',
                 'title.zh-CN': '时间日期',
                 'title.ja-JP': '日付ピッカー',
-                'title.ru-RU': 'Выбор даты',
                 link: '/handbook/ui/fields/specific/date-picker',
               },
               {
@@ -1224,7 +1096,6 @@ export default [
                 'title.fr-FR': 'Choix en cascade',
                 'title.zh-CN': '级联选择',
                 'title.ja-JP': 'カスケードセレクト',
-                'title.ru-RU': 'Каскадное выбор',
                 link: '/handbook/ui/fields/specific/cascade-select',
               },
               {
@@ -1232,7 +1103,6 @@ export default [
                 'title.fr-FR': 'Imbrication',
                 'title.zh-CN': '子表单',
                 'title.ja-JP': 'ネスター',
-                'title.ru-RU': 'Вложенные формы (Nester)',
                 link: '/handbook/ui/fields/specific/nester',
               },
               {
@@ -1240,7 +1110,6 @@ export default [
                 'title.fr-FR': 'Imbrication popup',
                 'title.zh-CN': '子表单（弹窗）',
                 'title.ja-JP': 'ポップオーバーネスター',
-                'title.ru-RU': 'Всплывающая вложенная форма (Popover Nester)',
                 link: '/handbook/ui/fields/specific/popover-nester',
               },
               {
@@ -1248,7 +1117,6 @@ export default [
                 'title.fr-FR': 'Selecteur',
                 'title.zh-CN': '选择器',
                 'title.ja-JP': 'セレクター',
-                'title.ru-RU': 'Выбор',
                 link: '/handbook/ui/fields/specific/select',
               },
               {
@@ -1256,7 +1124,6 @@ export default [
                 'title.fr-FR': "Selection d'enregisrement",
                 'title.zh-CN': '数据选择器',
                 'title.ja-JP': 'レコードピッカー',
-                'title.ru-RU': 'Выбор записи',
                 link: '/handbook/ui/fields/specific/picker',
               },
               {
@@ -1264,7 +1131,6 @@ export default [
                 'title.fr-FR': 'Sous table',
                 'title.zh-CN': '子表格',
                 'title.ja-JP': 'サブテーブル',
-                'title.ru-RU': 'Под таблица',
                 link: '/handbook/ui/fields/specific/sub-table',
               },
               {
@@ -1272,7 +1138,6 @@ export default [
                 'title.fr-FR': 'Sous détails',
                 'title.zh-CN': '子详情',
                 'title.ja-JP': 'サブ詳細',
-                'title.ru-RU': 'Детали подэлемента',
                 link: '/handbook/ui/fields/specific/sub-detail',
               },
               {
@@ -1280,7 +1145,6 @@ export default [
                 'title.fr-FR': 'Titre',
                 'title.zh-CN': '标题',
                 'title.ja-JP': 'タイトル',
-                'title.ru-RU': 'Заголовок',
                 link: '/handbook/ui/fields/specific/title',
               },
               {
@@ -1288,7 +1152,6 @@ export default [
                 'title.fr-FR': 'Tag',
                 'title.zh-CN': '标签',
                 'title.ja-JP': 'タグ',
-                'title.ru-RU': 'Тег',
                 link: '/handbook/ui/fields/specific/tag',
               },
               {
@@ -1296,7 +1159,6 @@ export default [
                 'title.fr-FR': 'Gestionnaire de fichier',
                 'title.zh-CN': '文件管理器',
                 'title.ja-JP': 'ファイルマネージャー',
-                'title.ru-RU': 'Файловый менеджер',
                 link: '/handbook/ui/fields/specific/file-manager',
               },
               {
@@ -1304,7 +1166,6 @@ export default [
                 'title.fr-FR': 'Masque',
                 'title.zh-CN': '掩码',
                 'title.ja-JP': '掩码',
-                'title.ru-RU': 'Маска',
                 link: '/handbook/field-component-mask',
               },
             ],
@@ -1314,14 +1175,12 @@ export default [
             'title.fr-FR': 'Paramètres de champs',
             'title.zh-CN': '字段配置项',
             'title.ja-JP': 'フィールド設定',
-            'title.ru-RU': 'Настройки полей',
             children: [
               {
                 title: 'Required',
                 'title.fr-FR': 'Requis',
                 'title.zh-CN': '必填',
                 'title.ja-JP': '必須',
-                'title.ru-RU': 'Обязательное поле',
                 link: '/handbook/ui/fields/field-settings/required',
               },
               {
@@ -1329,7 +1188,6 @@ export default [
                 'title.fr-FR': 'Valeur par défaut',
                 'title.zh-CN': '默认值',
                 'title.ja-JP': 'デフォルト値',
-                'title.ru-RU': 'Значение по умолчанию',
                 link: '/handbook/ui/fields/field-settings/default-value',
               },
               {
@@ -1337,7 +1195,6 @@ export default [
                 'title.fr-FR': 'Règle de validation',
                 'title.zh-CN': '验证规则',
                 'title.ja-JP': '検証ルール',
-                'title.ru-RU': 'Правила валидации',
                 link: '/handbook/ui/fields/field-settings/validation-rules',
               },
               {
@@ -1345,7 +1202,6 @@ export default [
                 'title.fr-FR': 'Format de nombre',
                 'title.zh-CN': '数值格式化',
                 'title.ja-JP': '数値フォーマット',
-                'title.ru-RU': 'Формат числа',
                 link: '/handbook/ui/fields/field-settings/number-format',
               },
               {
@@ -1353,7 +1209,6 @@ export default [
                 'title.fr-FR': 'Périmètre de données',
                 'title.zh-CN': '设置数据范围',
                 'title.ja-JP': 'データ範囲を設定',
-                'title.ru-RU': 'Ограничение области данных',
                 link: '/handbook/ui/fields/field-settings/data-scope',
               },
               {
@@ -1361,7 +1216,6 @@ export default [
                 'title.fr-FR': 'Titre',
                 'title.zh-CN': '标题字段',
                 'title.ja-JP': 'タイトルフィールド',
-                'title.ru-RU': 'Заголовок поля',
                 link: '/handbook/ui/fields/field-settings/title-field',
               },
               {
@@ -1369,7 +1223,6 @@ export default [
                 'title.fr-FR': 'Pattern',
                 'title.zh-CN': '显示模式',
                 'title.ja-JP': '表示パターン',
-                'title.ru-RU': 'Паттерн',
                 link: '/handbook/ui/fields/field-settings/pattern',
               },
               {
@@ -1377,7 +1230,6 @@ export default [
                 'title.fr-FR': 'Modifier le titre',
                 'title.zh-CN': '编辑字段标题',
                 'title.ja-JP': 'フィールドタイトルを編集',
-                'title.ru-RU': 'Изменить заголовок поля',
                 link: '/handbook/ui/fields/field-settings/edit-title',
               },
               {
@@ -1385,7 +1237,6 @@ export default [
                 'title.fr-FR': 'Afficher le titre',
                 'title.zh-CN': '显示标题',
                 'title.ja-JP': '表示タイトル',
-                'title.ru-RU': 'Показать заголовок',
                 link: '/handbook/ui/fields/field-settings/display-title',
               },
               {
@@ -1393,7 +1244,6 @@ export default [
                 'title.fr-FR': 'Modifier la description',
                 'title.zh-CN': '编辑描述',
                 'title.ja-JP': '説明を編集',
-                'title.ru-RU': 'Изменить описание',
                 link: '/handbook/ui/fields/field-settings/edit-description',
               },
               {
@@ -1401,7 +1251,6 @@ export default [
                 'title.fr-FR': "Modifier l'infobulle",
                 'title.zh-CN': '编辑提示信息',
                 'title.ja-JP': 'ツールチップを編集',
-                'title.ru-RU': 'Изменить подсказку',
                 link: '/handbook/ui/fields/field-settings/edit-tooltip',
               },
               {
@@ -1409,7 +1258,6 @@ export default [
                 'title.fr-FR': 'Composant du champ',
                 'title.zh-CN': '字段组件',
                 'title.ja-JP': 'フィールドコンポーネント',
-                'title.ru-RU': 'Компонент поля',
                 link: '/handbook/ui/fields/field-settings/field-component',
               },
               {
@@ -1417,8 +1265,14 @@ export default [
                 'title.fr-FR': 'Style',
                 'title.zh-CN': '样式',
                 'title.ja-JP': 'スタイル',
-                'title.ru-RU': 'Стиль',
                 link: '/handbook/ui/fields/field-settings/style',
+              },
+              {
+                title: '',
+                'title.fr-FR': 'Enable scan',
+                'title.zh-CN': '扫码录入',
+                'title.ja-JP': 'スキャン入力',
+                link: '/handbook/ui/fields/field-settings/enable-scan',
               },
             ],
           },
@@ -1427,7 +1281,6 @@ export default [
             'title.fr-FR': 'Composant de champ associé',
             'title.zh-CN': '关系字段组件',
             'title.ja-JP': '関連フィールドコンポーネント',
-            'title.ru-RU': 'Связанное поле компонента',
             link: '/handbook/ui/fields/association-field',
           },
         ],
@@ -1437,14 +1290,12 @@ export default [
         'title.fr-FR': 'Actions',
         'title.zh-CN': '操作',
         'title.ja-JP': 'アクション',
-        'title.ru-RU': 'Действия',
         children: [
           {
             title: 'Overview',
             'title.fr-FR': "Vue d'ensemble",
             'title.zh-CN': '概述',
             'title.ja-JP': '概要',
-            'title.ru-RU': 'Обзор',
             link: '/handbook/ui/actions',
           },
           {
@@ -1452,14 +1303,12 @@ export default [
             'title.fr-FR': 'Parmètres communs',
             'title.zh-CN': '通用配置项',
             'title.ja-JP': '一般設定',
-            'title.ru-RU': 'Общие настройки',
             children: [
               {
                 title: 'Linkage rule',
                 'title.fr-FR': 'Règles de liaison',
                 'title.zh-CN': '联动规则',
                 'title.ja-JP': '連動ルール',
-                'title.ru-RU': 'Правила отображения',
                 link: '/handbook/ui/actions/action-settings/linkage-rule',
               },
               {
@@ -1467,7 +1316,6 @@ export default [
                 'title.fr-FR': "Mode d'ouverture",
                 'title.zh-CN': '打开方式',
                 'title.ja-JP': 'オープンモード',
-                'title.ru-RU': 'Режим открытия',
                 link: '/handbook/ui/actions/action-settings/open-mode',
               },
               {
@@ -1475,7 +1323,6 @@ export default [
                 'title.fr-FR': 'Taille de popup',
                 'title.zh-CN': '弹窗尺寸',
                 'title.ja-JP': 'ポップアップサイズ',
-                'title.ru-RU': 'Размер всплывающего окна',
                 link: '/handbook/ui/actions/action-settings/popup-size',
               },
               {
@@ -1483,7 +1330,6 @@ export default [
                 'title.fr-FR': 'Confirmation secondaire',
                 'title.zh-CN': '二次确认',
                 'title.ja-JP': '二次確認',
-                'title.ru-RU': 'Дополнительное подтверждение',
                 link: '/handbook/ui/actions/action-settings/double-check',
               },
               {
@@ -1491,7 +1337,6 @@ export default [
                 'title.fr-FR': 'Liaison de workflows',
                 'title.zh-CN': '绑定工作流',
                 'title.ja-JP': 'ワークフローをバインド',
-                'title.ru-RU': 'Привязка к workflows',
                 link: '/handbook/ui/actions/action-settings/bind-workflow',
               },
               {
@@ -1499,7 +1344,6 @@ export default [
                 'title.fr-FR': 'Assignation de valeurs de champ',
                 'title.zh-CN': '字段赋值',
                 'title.ja-JP': 'フィールド値を割り当て',
-                'title.ru-RU': 'Назначение значений поля',
                 link: '/handbook/ui/actions/action-settings/assign-values',
               },
               {
@@ -1507,7 +1351,6 @@ export default [
                 'title.fr-FR': 'Modification de boutons',
                 'title.zh-CN': '编辑按钮',
                 'title.ja-JP': 'ボタンを編集',
-                'title.ru-RU': 'Редактирование кнопки',
                 link: '/handbook/ui/actions/action-settings/edit-button',
               },
               {
@@ -1515,7 +1358,6 @@ export default [
                 'title.fr-FR': 'Après soumission en succès',
                 'title.zh-CN': '提交成功后',
                 'title.ja-JP': '送信成功後',
-                'title.ru-RU': 'После успешной отправки',
                 link: '/handbook/ui/actions/action-settings/affter-successful',
               },
             ],
@@ -1525,14 +1367,12 @@ export default [
             'title.fr-FR': "Types d'action",
             'title.zh-CN': '操作类型',
             'title.ja-JP': 'アクションタイプ',
-            'title.ru-RU': 'Типы действий',
             children: [
               {
                 title: 'View',
                 'title.fr-FR': 'Vue',
                 'title.zh-CN': '查看',
                 'title.ja-JP': '表示',
-                'title.ru-RU': 'Просмотр',
                 link: '/handbook/ui/actions/types/view',
               },
               {
@@ -1540,7 +1380,6 @@ export default [
                 'title.fr-FR': 'Filtre',
                 'title.zh-CN': '筛选',
                 'title.ja-JP': 'フィルター',
-                'title.ru-RU': 'Фильтр',
                 link: '/handbook/ui/actions/types/filter',
               },
               {
@@ -1548,7 +1387,6 @@ export default [
                 'title.fr-FR': 'Ajouter un nouveau type',
                 'title.zh-CN': '添加',
                 'title.ja-JP': '追加',
-                'title.ru-RU': 'Добавить новый',
                 link: '/handbook/ui/actions/types/add-new',
               },
               {
@@ -1556,7 +1394,6 @@ export default [
                 'title.fr-FR': 'Lien',
                 'title.zh-CN': '链接',
                 'title.ja-JP': 'リンク',
-                'title.ru-RU': 'Ссылка',
                 link: '/handbook/ui/actions/types/link',
               },
               {
@@ -1564,7 +1401,6 @@ export default [
                 'title.fr-FR': 'Modifier',
                 'title.zh-CN': '编辑',
                 'title.ja-JP': '編集',
-                'title.ru-RU': 'Редактировать',
                 link: '/handbook/ui/actions/types/edit',
               },
               {
@@ -1572,7 +1408,6 @@ export default [
                 'title.fr-FR': 'Supprimer',
                 'title.zh-CN': '删除',
                 'title.ja-JP': '削除',
-                'title.ru-RU': 'Удалить',
                 link: '/handbook/ui/actions/types/delete',
               },
               {
@@ -1580,7 +1415,6 @@ export default [
                 'title.fr-FR': 'Rafraichir',
                 'title.zh-CN': '刷新',
                 'title.ja-JP': 'リフレッシュ',
-                'title.ru-RU': 'Обновить',
                 link: '/handbook/ui/actions/types/refresh',
               },
               {
@@ -1588,7 +1422,6 @@ export default [
                 'title.fr-FR': 'Ajouter',
                 'title.zh-CN': '添加记录',
                 'title.ja-JP': 'レコードを追加',
-                'title.ru-RU': 'Добавить запись',
                 link: '/handbook/ui/actions/types/add-record',
               },
               {
@@ -1596,7 +1429,6 @@ export default [
                 'title.fr-FR': 'Pop-up personalisée',
                 'title.zh-CN': '自定义弹窗',
                 'title.ja-JP': 'カスタムポップアップ',
-                'title.ru-RU': 'Персонализированное всплывающее окно',
                 link: '/handbook/ui/actions/types/pop-up',
               },
               {
@@ -1604,7 +1436,6 @@ export default [
                 'title.fr-FR': 'Mettre à jour',
                 'title.zh-CN': '更新记录',
                 'title.ja-JP': 'レコードを更新',
-                'title.ru-RU': 'Обновить запись',
                 link: '/handbook/ui/actions/types/update-record',
               },
               {
@@ -1612,7 +1443,6 @@ export default [
                 'title.fr-FR': 'Enregistrer',
                 'title.zh-CN': '保存记录',
                 'title.ja-JP': 'レコードを保存',
-                'title.ru-RU': 'Сохранить запись',
                 link: '/handbook/ui/actions/types/save-record',
               },
               {
@@ -1620,7 +1450,6 @@ export default [
                 'title.fr-FR': 'Soumettre',
                 'title.zh-CN': '提交',
                 'title.ja-JP': '送信',
-                'title.ru-RU': 'Отправить',
                 link: '/handbook/ui/actions/types/submit',
               },
               {
@@ -1628,7 +1457,6 @@ export default [
                 'title.fr-FR': 'Déclencher un workflow',
                 'title.zh-CN': '触发工作流',
                 'title.ja-JP': 'ワークフローをトリガー',
-                'title.ru-RU': 'Вызвать workflow',
                 link: '/handbook/ui/actions/types/trigger-workflow',
               },
               {
@@ -1636,7 +1464,6 @@ export default [
                 'title.fr-FR': 'Modifier en masse',
                 'title.zh-CN': '批量编辑',
                 'title.ja-JP': 'バルク編集',
-                'title.ru-RU': 'Массовое редактирование',
                 link: '/handbook/action-bulk-edit',
               },
               {
@@ -1644,7 +1471,6 @@ export default [
                 'title.fr-FR': 'Mettre à jour en masse',
                 'title.zh-CN': '批量更新',
                 'title.ja-JP': 'バルク更新',
-                'title.ru-RU': 'Массовое обновление',
                 link: '/handbook/action-bulk-update',
               },
               {
@@ -1652,7 +1478,6 @@ export default [
                 'title.fr-FR': 'Requête personnalisée',
                 'title.zh-CN': '自定义请求',
                 'title.ja-JP': 'カスタムリクエスト',
-                'title.ru-RU': 'Персонализированный запрос',
                 link: '/handbook/action-custom-request',
               },
               {
@@ -1660,7 +1485,6 @@ export default [
                 'title.fr-FR': 'Duppliquer',
                 'title.zh-CN': '复制',
                 'title.ja-JP': '複製',
-                'title.ru-RU': 'Дублировать',
                 link: '/handbook/action-duplicate',
               },
               {
@@ -1668,14 +1492,12 @@ export default [
                 'title.fr-FR': 'Imprimer',
                 'title.zh-CN': '打印',
                 'title.ja-JP': '印刷',
-                'title.ru-RU': 'Печать',
                 link: '/handbook/action-print',
               },
               {
                 title: 'Template print',
                 'title.fr-FR': "Template d'impression",
                 'title.zh-CN': '模板打印',
-                'title.ru-RU': 'Печать по шаблону',
                 link: '/handbook/action-template-print',
               },
 
@@ -1684,13 +1506,11 @@ export default [
                 'title.fr-FR': 'Importer',
                 'title.zh-CN': '导入',
                 'title.ja-JP': 'インポート',
-                'title.ru-RU': 'Импорт',
                 link: '/handbook/action-import',
               },
               {
                 title: 'Import Pro',
                 'title.zh-CN': '导入 Pro',
-                'title.ru-RU': 'Импорт Pro',
                 link: '/handbook/action-import-pro',
               },
               {
@@ -1698,13 +1518,11 @@ export default [
                 'title.fr-FR': 'Exporter',
                 'title.zh-CN': '导出',
                 'title.ja-JP': 'エクスポート',
-                'title.ru-RU': 'Экспорт',
                 link: '/handbook/action-export',
               },
               {
                 title: 'Export Pro',
                 'title.zh-CN': '导出 Pro',
-                'title.ru-RU': 'Экспорт Pro',
                 link: '/handbook/action-export-pro',
               },
               {
@@ -1712,7 +1530,6 @@ export default [
                 'title.fr-FR': 'Scanner un QR code',
                 'title.zh-CN': '扫二维码',
                 'title.ja-JP': 'QRコードをスキャン',
-                'title.ru-RU': 'Сканер QR-кода',
                 link: '/handbook/action-qr-scan',
               },
             ],
@@ -1722,7 +1539,6 @@ export default [
             'title.fr-FR': 'Contrôle des droits opérationnels',
             'title.zh-CN': '操作权限',
             'title.ja-JP': '操作権限',
-            'title.ru-RU': 'Управление доступом',
             link: '/handbook/ui/actions/permission',
           },
         ],
@@ -1732,7 +1548,6 @@ export default [
         'title.fr-FR': 'Variables',
         'title.zh-CN': '变量',
         'title.ja-JP': '変数',
-        'title.ru-RU': 'Переменные',
         link: '/handbook/ui/variables',
       },
       {
@@ -1740,34 +1555,29 @@ export default [
         'title.fr-FR': 'Règle de dépendance',
         'title.zh-CN': '联动规则',
         'title.ja-JP': '連動ルール（れんどうルール）',
-        'title.ru-RU': 'Правила связывания',
         link: '/handbook/ui/linkage-rule',
       },
       {
         title: 'Template engines',
         'title.fr-FR': 'Moteur de template',
         'title.zh-CN': '模板引擎',
-        'title.ru-RU': 'Шаблонизаторы',
         children: [
           {
             title: 'JSON template',
             'title.fr-FR': 'Template JSON',
             'title.zh-CN': 'JSON 模板',
-            'title.ru-RU': 'Шаблонизатор JSON',
             link: '/handbook/template-json',
           },
           {
             title: 'String template',
             'title.fr-FR': 'Template String',
             'title.zh-CN': '字符串模板',
-            'title.ru-RU': 'Шаблонизатор строки',
             link: '/handbook/template-string',
           },
           {
             title: 'Handlebars',
             'title.fr-FR': 'Template Handlebars',
             'title.zh-CN': 'Handlebars',
-            'title.ru-RU': 'Handlebars',
             link: '/handbook/template-handlebars',
           },
         ],
@@ -1775,24 +1585,20 @@ export default [
       {
         title: 'Calculation engines',
         'title.zh-CN': '计算引擎',
-        'title.ru-RU': 'Шаблонизаторы',
         children: [
           {
             title: 'Overview',
             'title.zh-CN': '概述',
-            'title.ru-RU': 'Обзор',
             link: '/handbook/calculation-engines',
           },
           {
             title: 'Formula',
             'title.zh-CN': 'Formula',
-            'title.ru-RU': 'Формула',
             link: '/handbook/calculation-engines/formula',
           },
           {
             title: 'Mathjs',
             'title.zh-CN': 'Mathjs',
-            'title.ru-RU': 'MathJS',
             link: '/handbook/calculation-engines/mathjs',
           },
         ],
@@ -1802,7 +1608,6 @@ export default [
         'title.fr-FR': 'Mobile',
         'title.zh-CN': '移动端',
         'title.ja-JP': 'モバイル',
-        'title.ru-RU': 'Мобильное приложение',
         link: '/handbook/mobile',
       },
       {
@@ -1810,7 +1615,6 @@ export default [
         'title.fr-FR': 'Variables personnalisées',
         'title.zh-CN': '自定义变量',
         'title.ja-JP': 'カスタム変数',
-        'title.ru-RU': 'Пользовательские переменные',
         link: '/handbook/custom-variables',
       },
     ],
@@ -1820,7 +1624,6 @@ export default [
     'title.fr-FR': 'Core modules',
     'title.zh-CN': '核心模块',
     'title.ja-JP': 'コアモジュール',
-    'title.ru-RU': 'Модули ядра',
     type: 'group',
     children: [
       {
@@ -1828,14 +1631,12 @@ export default [
         'title.fr-FR': 'Utilisateurs et droits',
         'title.zh-CN': '用户和权限',
         'title.ja-JP': 'ユーザーと権限',
-        'title.ru-RU': 'Пользователи и разрешения',
         children: [
           {
             title: 'Users',
             'title.fr-FR': 'Utilisateurs',
             'title.zh-CN': '用户',
             'title.ja-JP': 'ユーザー',
-            'title.ru-RU': 'Пользователи',
             // subTitle: '@nocobase/plugin-users',
             link: '/handbook/users',
           },
@@ -1844,14 +1645,12 @@ export default [
             'title.fr-FR': 'Rôles et droits',
             'title.zh-CN': '角色和权限',
             'title.ja-JP': '役割と権限',
-            'title.ru-RU': 'Роли и разрешения',
             children: [
               {
                 title: 'Overview',
                 'title.fr-FR': "Vue d'ensemble",
                 'title.zh-CN': '概述',
                 'title.ja-JP': '概要',
-                'title.ru-RU': 'Обзор',
                 link: '/handbook/acl',
               },
               {
@@ -1859,25 +1658,21 @@ export default [
                 'title.fr-FR': 'Gestion des départements',
                 'title.zh-CN': '使用手册',
                 'title.ja-JP': 'ユーザーマニュアル',
-                'title.ru-RU': 'Инструкция для пользователя',
-                link: '/handbook/acl/manual'
+                link: '/handbook/acl/manual',
               },
-
-            ]
+            ],
           },
           {
             title: 'Departments',
             'title.fr-FR': 'Départements',
             'title.zh-CN': '部门',
             'title.ja-JP': '部門',
-            'title.ru-RU': 'Отделы',
             children: [
               {
                 title: 'Overview',
                 'title.fr-FR': "Vue d'ensemble",
                 'title.zh-CN': '概述',
                 'title.ja-JP': '概要',
-                'title.ru-RU': 'Обзор',
                 link: '/handbook/departments',
               },
               {
@@ -1885,7 +1680,6 @@ export default [
                 'title.fr-FR': 'Gestion des départements',
                 'title.zh-CN': '使用手册',
                 'title.ja-JP': 'ユーザーマニュアル',
-                'title.ru-RU': 'Инструкция для пользователя',
                 link: '/handbook/departments/manual',
               },
             ],
@@ -1894,32 +1688,27 @@ export default [
             title: 'Synchronization',
             'title.fr-FR': 'Synchronisation',
             'title.zh-CN': '同步',
-            'title.ru-RU': 'Синхронизация',
             children: [
               {
                 title: 'Synchronization management',
                 'title.fr-FR': 'Synchronisation des données utilisateurs',
                 'title.zh-CN': '同步管理',
-                'title.ru-RU': 'Управление синхронизацией',
                 link: '/handbook/user-data-sync',
               },
               {
                 title: 'Data sources',
                 'title.fr-FR': 'Sources de données',
                 'title.zh-CN': '数据源',
-                'title.ru-RU': 'Источники данных',
                 children: [
                   {
                     title: 'HTTP API',
                     'title.fr-FR': 'HTTP API',
-                    'title.ru-RU': 'HTTP API',
                     link: '/handbook/user-data-sync/sources/api',
                   },
                   {
                     title: 'WeCom',
                     'title.fr-FR': 'WeCom',
                     'title.zh-CN': '企业微信',
-                    'title.ru-RU': 'WeCom',
                     link: '/handbook/wecom/user-data-sync',
                   },
                 ],
@@ -1928,20 +1717,17 @@ export default [
                 title: 'Development',
                 'title.fr-FR': 'Développement',
                 'title.zh-CN': '开发指南',
-                'title.ru-RU': 'Разработка',
                 children: [
                   {
                     title: 'Extending Synchronized Data Sources',
                     'title.zh-CN': '扩展同步数据源',
                     'title.ja-JP': '拡張された同期データソース',
-                    'title.ru-RU': 'Расширение синхронизируемых источников данных',
                     link: '/handbook/user-data-sync/dev/source',
                   },
                   {
                     title: 'Extending Sync Target Resources',
                     'title.zh-CN': '扩展同步目标资源',
                     'title.ja-JP': '同期対象リソースの拡張',
-                    'title.ru-RU': 'Расширение синхронизируемых источников данных',
                     link: '/handbook/user-data-sync/dev/resource',
                   },
                 ],
@@ -1955,14 +1741,12 @@ export default [
         'title.fr-FR': 'Authentication & Verification',
         'title.zh-CN': '认证和验证',
         'title.ja-JP': 'Authentication & Verification',
-        'title.ru-RU': 'Аутентификация и верификация',
         children: [
           {
             title: 'Authentication',
             'title.fr-FR': 'Authentification',
             'title.zh-CN': '用户认证',
             'title.ja-JP': 'ユーザー認証',
-            'title.ru-RU': 'Аутентификация',
             // subTitle: '@nocobase/plugin-auth',
             children: [
               {
@@ -1970,7 +1754,6 @@ export default [
                 'title.fr-FR': "Vue d'ensemble",
                 'title.zh-CN': '概述',
                 'title.ja-JP': '概要',
-                'title.ru-RU': 'Обзор',
                 link: '/handbook/auth',
               },
               {
@@ -1978,7 +1761,6 @@ export default [
                 'title.fr-FR': "Gestion de l'authentification",
                 'title.zh-CN': '使用手册',
                 'title.ja-JP': 'ユーザーマニュアル',
-                'title.ru-RU': 'Инструкция для пользователя',
                 link: '/handbook/auth/user',
               },
               {
@@ -1986,20 +1768,17 @@ export default [
                 'title.fr-FR': 'Développement',
                 'title.zh-CN': '开发指南',
                 'title.ja-JP': '開発ガイド',
-                'title.ru-RU': 'Разработка',
                 children: [
                   {
                     title: 'Extend Authentication Type',
                     'title.zh-CN': '扩展认证类型',
                     'title.ja-JP': '認証タイプの拡張',
-                    'title.ru-RU': 'Расширение аутентификационного типа',
                     link: '/handbook/auth/dev/guide',
                   },
                   {
                     title: 'API Reference',
                     'title.zh-CN': 'API 参考',
                     'title.ja-JP': 'API 参考',
-                    'title.ru-RU': 'API справочник',
                     link: '/handbook/auth/dev/api',
                   },
                 ],
@@ -2011,7 +1790,6 @@ export default [
             'title.fr-FR': 'Authentification - SMS',
             'title.zh-CN': '用户认证 - 短信',
             'title.ja-JP': 'ユーザー認証 - SMS',
-            'title.ru-RU': 'Аутентификация по SMS',
             // subTitle: '@nocobase/plugin-sms-auth',
             link: '/handbook/auth-sms',
           },
@@ -2020,7 +1798,6 @@ export default [
             'title.fr-FR': 'Authentification - CAS',
             'title.zh-CN': '用户认证 - CAS',
             'title.ja-JP': 'ユーザー認証 - CAS',
-            'title.ru-RU': 'Аутентификация по CAS',
             // subTitle: '@nocobase/plugin-cas',
             link: '/handbook/auth-cas',
           },
@@ -2029,7 +1806,6 @@ export default [
             'title.fr-FR': 'Authentification - OIDC',
             'title.zh-CN': '用户认证 - OIDC',
             'title.ja-JP': 'ユーザー認証 - OIDC',
-            'title.ru-RU': 'Аутентификация по OIDC',
             // subTitle: '@nocobase/plugin-oidc',
             children: [
               {
@@ -2037,7 +1813,6 @@ export default [
                 'title.fr-FR': 'OIDC',
                 'title.zh-CN': '使用手册',
                 'title.ja-JP': 'ユーザーマニュアル',
-                'title.ru-RU': 'Инструкция для пользователя',
                 link: '/handbook/auth-oidc',
               },
               {
@@ -2045,20 +1820,17 @@ export default [
                 'title.fr-FR': 'Exemple',
                 'title.zh-CN': '示例',
                 'title.ja-JP': '例',
-                'title.ru-RU': 'Пример',
                 children: [
                   {
                     title: 'Sign in with Google',
                     'title.zh-CN': '谷歌登录',
                     'title.ja-JP': 'Googleでサインイン',
-                    'title.ru-RU': 'Аутентификация по через Google',
                     link: '/handbook/auth-oidc/example/google',
                   },
                   {
                     title: 'Microsoft Entra ID',
                     'title.zh-CN': '微软登录',
                     'title.ja-JP': 'MicroSoft Entra ID',
-                    'title.ru-RU': 'Аутентификация по через Microsoft Entra ID',
                     link: '/handbook/auth-oidc/example/microsoft',
                   },
                 ],
@@ -2070,7 +1842,6 @@ export default [
             'title.fr-FR': 'Authentification - SAML',
             'title.zh-CN': '用户认证 - SAML',
             'title.ja-JP': 'ユーザー認証 - SAML',
-            'title.ru-RU': 'Аутентификация по SAML',
             // subTitle: '@nocobase/plugin-saml',
             children: [
               {
@@ -2078,7 +1849,6 @@ export default [
                 'title.fr-FR': 'SAML',
                 'title.zh-CN': '使用手册',
                 'title.ja-JP': 'ユーザーマニュアル',
-                'title.ru-RU': 'Инструкция для пользователя',
                 link: '/handbook/auth-saml',
               },
               {
@@ -2086,13 +1856,11 @@ export default [
                 'title.fr-FR': 'Exemple',
                 'title.zh-CN': '示例',
                 'title.ja-JP': '例',
-                'title.ru-RU': 'Пример',
                 children: [
                   {
                     title: 'Sign in with Google',
                     'title.zh-CN': '谷歌登录',
                     'title.ja-JP': 'Googleでサインイン',
-                    'title.ru-RU': 'Аутентификация по через Google',
                     link: '/handbook/auth-saml/example/google',
                   },
                 ],
@@ -2104,7 +1872,6 @@ export default [
             'title.fr-FR': 'Authentification - LDAP',
             'title.zh-CN': '用户认证 - LDAP',
             'title.ja-JP': 'ユーザー認証 - LDAP',
-            'title.ru-RU': 'Аутентификация по LDAP',
             // subTitle: '@nocobase/plugin-saml',
             children: [
               {
@@ -2112,7 +1879,6 @@ export default [
                 'title.fr-FR': 'LDAP',
                 'title.zh-CN': '使用手册',
                 'title.ja-JP': 'ユーザーマニュアル',
-                'title.ru-RU': 'Инструкция для пользователя',
                 link: '/handbook/auth-ldap',
               },
             ],
@@ -2122,7 +1888,6 @@ export default [
             'title.fr-FR': 'Authentification - DingTalk',
             'title.zh-CN': '用户认证 - 钉钉',
             'title.ja-JP': 'ユーザー認証 - DingTalk',
-            'title.ru-RU': 'Аутентификация по DingTalk',
             link: '/handbook/auth-dingtalk',
           },
           {
@@ -2130,7 +1895,6 @@ export default [
             'title.fr-FR': 'Authentification -WeCom',
             'title.zh-CN': '用户认证 - 企业微信',
             'title.ja-JP': 'ユーザー認証 - WeCom',
-            'title.ru-RU': 'Аутентификация по WeCom',
             link: '/handbook/wecom/auth',
           },
           {
@@ -2138,7 +1902,6 @@ export default [
             'title.fr-FR': 'Clés API',
             'title.zh-CN': 'API 密钥',
             'title.ja-JP': 'APIキー',
-            'title.ru-RU': 'Ключи API',
             // subTitle: '@nocobase/plugin-verification',
             link: '/handbook/api-keys',
           },
@@ -2147,7 +1910,6 @@ export default [
             'title.fr-FR': 'Two-factor authentication (2FA)',
             'title.zh-CN': '双因素身份认证 (2FA)',
             'title.ja-JP': 'Two-factor authentication (2FA)',
-            'title.ru-RU': 'Двухфакторная аутентификация (2FA)',
             link: '/handbook/two-factor-authentication',
           },
           {
@@ -2155,7 +1917,6 @@ export default [
             'title.fr-FR': 'Vérification',
             'title.zh-CN': '验证',
             'title.ja-JP': '検証',
-            'title.ru-RU': 'Верификация',
             // subTitle: '@nocobase/plugin-verification',
             children: [
               {
@@ -2163,7 +1924,6 @@ export default [
                 'title.fr-FR': "Vue d'ensemble",
                 'title.zh-CN': '概述',
                 'title.ja-JP': '概要',
-                'title.ru-RU': 'Обзор',
                 link: '/handbook/verification',
               },
               {
@@ -2171,27 +1931,23 @@ export default [
                 'title.fr-FR': 'Développement',
                 'title.zh-CN': '开发指南',
                 'title.ja-JP': '開発ガイド',
-                'title.ru-RU': 'Разработка',
                 children: [
                   {
                     title: 'Extend verification type',
                     'title.zh-CN': '扩展验证类型',
                     'title.ja-JP': 'Extend verification type',
-                    'title.ru-RU': 'Расширенные методы верификации',
                     link: '/handbook/verification/dev/type',
                   },
                   {
                     title: 'Extend verification scene',
                     'title.zh-CN': '扩展验证场景',
                     'title.ja-JP': 'Extend verification scene',
-                    'title.ru-RU': 'Расширенные сценарии верификации',
                     link: '/handbook/verification/dev/scene',
                   },
                   {
                     title: 'API reference',
                     'title.zh-CN': 'API 参考',
                     'title.ja-JP': 'API 参考',
-                    'title.ru-RU': 'API справочник',
                     link: '/handbook/verification/dev/api',
                   },
                 ],
@@ -2203,14 +1959,12 @@ export default [
             'title.fr-FR': 'Verification - SMS',
             'title.zh-CN': '验证 - 短信',
             'title.ja-JP': 'Verification - SMS',
-            'title.ru-RU': 'Аутентификация - SMS',
             children: [
               {
                 title: 'User manual',
                 'title.fr-FR': "Gestion de l'authentification",
                 'title.zh-CN': '使用手册',
                 'title.ja-JP': 'ユーザーマニュアル',
-                'title.ru-RU': 'Инструкция для пользователя',
                 link: '/handbook/verification/sms',
               },
               {
@@ -2218,7 +1972,6 @@ export default [
                 'title.fr-FR': 'Extend SMS provider',
                 'title.zh-CN': '扩展短信服务商',
                 'title.ja-JP': 'Extend SMS provider',
-                'title.ru-RU': 'Расширение SMS провайдера',
                 link: '/handbook/verification/sms/dev',
               },
             ],
@@ -2228,7 +1981,6 @@ export default [
             'title.fr-FR': 'Verification - TOTP authenticator',
             'title.zh-CN': '验证 - TOTP 认证器',
             'title.ja-JP': 'Verification - SMS',
-            'title.ru-RU': 'Аутентификация - TOTP аутентификатор',
             link: '/handbook/verification-totp-authenticator',
           },
         ],
@@ -2238,39 +1990,33 @@ export default [
         'title.fr-FR': 'Notifications',
         'title.zh-CN': '通知',
         'title.ja-JP': '通知',
-        'title.ru-RU': 'Уведомления',
         children: [
           {
             title: 'Notification manager',
             'title.fr-FR': 'Gestionnaire de notifications',
             'title.zh-CN': '通知管理',
             'title.ja-JP': '通知管理',
-            'title.ru-RU': 'Управление уведомлениями',
             children: [
               {
                 title: 'Overview',
                 'title.fr-FR': "Vue d'ensemble",
                 'title.zh-CN': '概述',
                 'title.ja-JP': '概要',
-                'title.ru-RU': 'Обзор',
                 link: '/handbook/notification-manager',
               },
               {
                 title: 'Development',
                 'title.fr-FR': 'Développement',
                 'title.zh-CN': '开发指南',
-                'title.ru-RU': 'Разработка',
                 children: [
                   {
                     title: 'Notification Extension',
                     'title.zh-CN': '扩展通知渠道类型',
-                    'title.ru-RU': 'Расширенные уведомления',
                     link: '/handbook/notification-manager/development/extension',
                   },
                   {
                     title: 'Notification API',
                     'title.zh-CN': '扩展通知API',
-                    'title.ru-RU': 'Уведомления API',
                     link: '/handbook/notification-manager/development/api',
                   },
                 ],
@@ -2282,7 +2028,6 @@ export default [
             'title.fr-FR': 'Notification: message In-App',
             'title.zh-CN': '通知：站内信',
             'title.ja-JP': '通知：アプリ内メッセージ',
-            'title.ru-RU': 'Уведомления в приложении',
             link: '/handbook/notification-in-app-message',
           },
           {
@@ -2290,14 +2035,12 @@ export default [
             'title.fr-FR': 'Notification: Email',
             'title.zh-CN': '通知：电子邮件',
             'title.ja-JP': '通知：メール',
-            'title.ru-RU': 'Уведомления по email',
             link: '/handbook/notification-email',
           },
           {
             title: 'Notification: WeCom',
             'title.fr-FR': 'Notification: WeCom',
             'title.zh-CN': '通知：企业微信',
-            'title.ru-RU': 'Уведомления в WeCom',
             link: '/handbook/wecom/notification',
           },
         ],
@@ -2307,14 +2050,12 @@ export default [
         'title.fr-FR': 'Gestionnaire de fichiers',
         'title.zh-CN': '文件管理器',
         'title.ja-JP': 'ファイルマネージャー',
-        'title.ru-RU': 'Файловый менеджер',
         children: [
           {
             title: 'Overview',
             'title.fr-FR': "Vue d'ensemble",
             'title.zh-CN': '概述',
             'title.ja-JP': '概要',
-            'title.ru-RU': 'Обзор',
             link: '/handbook/file-manager',
           },
           {
@@ -2322,7 +2063,6 @@ export default [
             'title.fr-FR': 'Collection de fichiers',
             'title.zh-CN': '文件表',
             'title.ja-JP': 'ファイルコレクション',
-            'title.ru-RU': 'Коллекция файлов',
             link: '/handbook/file-manager/file-collection',
           },
           {
@@ -2330,7 +2070,6 @@ export default [
             'title.fr-FR': 'Champ de fichier',
             'title.zh-CN': '附件字段',
             'title.ja-JP': '添付フィールド',
-            'title.ru-RU': 'Вложенное поле',
             link: '/handbook/file-manager/field-attachment',
           },
           {
@@ -2338,13 +2077,11 @@ export default [
             'title.fr-FR': 'Stockage des fichiers',
             'title.zh-CN': '文件存储引擎',
             'title.ja-JP': 'ファイルストレージエンジン',
-            'title.ru-RU': 'Файловое хранилище',
             children: [
               {
                 title: 'Overview',
                 'title.zh-CN': '概述',
                 'title.ja-JP': '概要',
-                'title.ru-RU': 'Обзор',
                 link: '/handbook/file-manager/storage',
               },
               {
@@ -2352,7 +2089,6 @@ export default [
                 'title.fr-FR': 'Stockage local',
                 'title.zh-CN': '文件存储：本地',
                 'title.ja-JP': 'ファイルストレージ：ローカル',
-                'title.ru-RU': 'Файловое хранилище: локальное',
                 link: '/handbook/file-manager/storage/local',
               },
               {
@@ -2360,7 +2096,6 @@ export default [
                 'title.fr-FR': 'Stockage OSS',
                 'title.zh-CN': '文件存储：OSS',
                 'title.ja-JP': 'ファイルストレージ：OSS',
-                'title.ru-RU': 'Файловое хранилище: OSS',
                 link: '/handbook/file-manager/storage/aliyun-oss',
               },
               {
@@ -2368,7 +2103,6 @@ export default [
                 'title.fr-FR': 'Stockage S3',
                 'title.zh-CN': '文件存储：S3',
                 'title.ja-JP': 'ファイルストレージ：S3',
-                'title.ru-RU': 'Файловое хранилище: S3',
                 link: '/handbook/file-manager/storage/amazon-s3',
               },
               {
@@ -2376,14 +2110,12 @@ export default [
                 'title.fr-FR': 'Stockage COS',
                 'title.zh-CN': '文件存储：COS',
                 'title.ja-JP': 'ファイルストレージ：COS',
-                'title.ru-RU': 'Файловое хранилище: COS',
                 link: '/handbook/file-manager/storage/tencent-cos',
               },
               {
                 title: 'File storage: S3(Pro)',
                 'title.zh-CN': '文件存储：S3（Pro）',
                 'title.ja-JP': 'ファイルストレージ：S3(Pro)',
-                'title.ru-RU': 'Файловое хранилище: S3 (Pro)',
                 link: '/handbook/file-manager/storage/s3-pro',
               },
             ],
@@ -2392,16 +2124,29 @@ export default [
             title: 'HTTP API',
             'title.fr-FR': 'HTTP API',
             'title.zh-CN': 'HTTP API',
-            'title.ru-RU': 'HTTP API',
             link: '/handbook/file-manager/http-api',
           },
           {
             title: 'Development',
             'title.fr-FR': 'Développement',
             'title.zh-CN': '扩展开发',
-            'title.ru-RU': 'Разработка',
             link: '/handbook/file-manager/development',
           },
+          {
+            title: 'Related plugins',
+            'title.fr-FR': 'Plugins associés',
+            'title.zh-CN': '相关插件',
+            'title.ja-JP': '関連プラグイン',
+            children: [
+              {
+                title: 'File Previewer (Office)',
+                'title.fr-FR': 'Aperçu des fichiers (Office)',
+                'title.zh-CN': '文件预览（Office）',
+                'title.ja-JP': 'ファイルプレビュー（Office）',
+                link: '/handbook/file-previewer-office',
+              },
+            ],
+          }
         ],
       },
       {
@@ -2409,14 +2154,12 @@ export default [
         'title.fr-FR': 'Log et suppervision',
         'title.zh-CN': '日志和监控',
         'title.ja-JP': 'ログと監視',
-        'title.ru-RU': 'Логирование и мониторинг',
         children: [
           {
             title: 'Logger',
             'title.fr-FR': 'Log',
             'title.zh-CN': '日志',
             'title.ja-JP': 'ログ',
-            'title.ru-RU': 'Логгер',
             // subTitle: '@nocobase/plugin-logger',
             link: '/handbook/logger',
           },
@@ -2425,7 +2168,6 @@ export default [
             'title.fr-FR': 'Télémétrie - Prometheus',
             'title.zh-CN': '遥测 - Prometheus',
             'title.ja-JP': 'テレメトリ - Prometheus',
-            'title.ru-RU': 'Телеметрия - Prometheus',
             // subTitle: '@nocobase/plugin-telemetry-prometheus',
             link: '/handbook/telemetry-prometheus',
           },
@@ -2434,7 +2176,6 @@ export default [
             'title.fr-FR': "Log d'audit",
             'title.zh-CN': '审计日志',
             'title.ja-JP': '監査ログ',
-            'title.ru-RU': 'Аудит логов',
             // subTitle: '@nocobase/plugin-audit-logs',
             link: '/handbook/audit-logs',
           },
@@ -2445,14 +2186,12 @@ export default [
         'title.fr-FR': 'Visualisation des données',
         'title.zh-CN': '数据可视化',
         'title.ja-JP': 'データビジュアライゼーション',
-        'title.ru-RU': 'Визуализация данных',
         children: [
           {
             title: 'Overview',
             'title.fr-FR': "Vue d'ensemble",
             'title.zh-CN': '概述',
             'title.ja-JP': '概要',
-            'title.ru-RU': 'Обзор',
             link: '/handbook/data-visualization',
           },
           {
@@ -2460,14 +2199,12 @@ export default [
             'title.fr-FR': 'Documentation',
             'title.zh-CN': '使用手册',
             'title.ja-JP': 'ユーザーマニュアル',
-            'title.ru-RU': 'Руководство',
             children: [
               {
                 title: 'Basic usage',
                 'title.fr-FR': 'Utilisation de base',
                 'title.zh-CN': '基本使用',
                 'title.ja-JP': '基本的な使い方',
-                'title.ru-RU': 'Базовое использование',
                 type: 'group',
                 children: [
                   {
@@ -2475,7 +2212,6 @@ export default [
                     'title.fr-FR': 'Graphiques',
                     'title.zh-CN': '图表区块',
                     'title.ja-JP': 'チャートブロック',
-                    'title.ru-RU': 'Блог графиков',
                     link: '/handbook/data-visualization/user/chart-block',
                   },
                   {
@@ -2483,7 +2219,6 @@ export default [
                     'title.fr-FR': 'Configuration de graphique',
                     'title.zh-CN': '配置图表',
                     'title.ja-JP': 'チャートを設定',
-                    'title.ru-RU': 'Конфигурация графиков',
                     link: '/handbook/data-visualization/user/Configure',
                   },
                   {
@@ -2491,7 +2226,6 @@ export default [
                     'title.fr-FR': 'Filtres',
                     'title.zh-CN': '筛选区块',
                     'title.ja-JP': 'フィルターブロック',
-                    'title.ru-RU': 'Фильтры блока',
                     link: '/handbook/data-visualization/user/filter',
                   },
                 ],
@@ -2499,56 +2233,48 @@ export default [
               {
                 title: 'Ant design charts',
                 'title.fr-FR': 'Graphique Ant',
-                'title.ru-RU': 'Ant Design графики',
                 type: 'group',
                 children: [
                   {
                     title: 'Overview',
                     'title.zh-CN': '概览',
                     'title.ja-JP': '概要',
-                    'title.ru-RU': 'Обзор',
                     link: '/handbook/data-visualization/antd-charts/overview',
                   },
                   {
                     title: 'Line',
                     'title.zh-CN': '折线图',
                     'title.ja-JP': 'ラインチャート',
-                    'title.ru-RU': 'Линия',
                     link: '/handbook/data-visualization/antd-charts/line',
                   },
                   {
                     title: 'Column',
                     'title.zh-CN': '柱状图',
                     'title.ja-JP': 'コラムチャート',
-                    'title.ru-RU': 'Колонка',
                     link: '/handbook/data-visualization/antd-charts/column',
                   },
                   {
                     title: 'Bar',
                     'title.zh-CN': '条形图',
                     'title.ja-JP': 'バーチャート',
-                    'title.ru-RU': 'Бар',
                     link: '/handbook/data-visualization/antd-charts/bar',
                   },
                   {
                     title: 'Pie',
                     'title.zh-CN': '饼图',
                     'title.ja-JP': 'パイチャート',
-                    'title.ru-RU': 'Круговая диаграмма',
                     link: '/handbook/data-visualization/antd-charts/pie',
                   },
                   {
                     title: 'Dual Axes',
                     'title.zh-CN': '双轴图',
                     'title.ja-JP': 'デュアルアクシス',
-                    'title.ru-RU': 'Двухосевой график',
                     link: '/handbook/data-visualization/antd-charts/dual-axes',
                   },
                   {
                     title: 'Scatter',
                     'title.zh-CN': '散点图',
                     'title.ja-JP': '散布図',
-                    'title.ru-RU': 'Диаграмма рассеяния',
                     link: '/handbook/data-visualization/antd-charts/scatter',
                   },
                 ],
@@ -2556,28 +2282,24 @@ export default [
               {
                 title: 'Ant design',
                 'title.fr-FR': 'Design Ant',
-                'title.ru-RU': 'Дизайн Ant',
                 type: 'group',
                 children: [
                   {
                     title: 'Overview',
                     'title.zh-CN': '概览',
                     'title.ja-JP': '概要',
-                    'title.ru-RU': 'Обзор',
                     link: '/handbook/data-visualization/antd/overview',
                   },
                   {
                     title: 'Table',
                     'title.zh-CN': '表格',
                     'title.ja-JP': 'テーブル',
-                    'title.ru-RU': 'Таблица',
                     link: '/handbook/data-visualization/antd/table',
                   },
                   {
                     title: 'Statistic',
                     'title.zh-CN': '统计',
                     'title.ja-JP': '統計',
-                    'title.ru-RU': 'Статистика',
                     link: '/handbook/data-visualization/antd/statistic',
                   },
                 ],
@@ -2590,84 +2312,72 @@ export default [
                     title: 'ECharts Overview',
                     'title.zh-CN': 'ECharts 概览',
                     'title.ja-JP': 'ECharts概要',
-                    'title.ru-RU': 'Обзор ECharts',
                     link: '/handbook/data-visualization-echarts',
                   },
                   {
                     title: 'Line',
                     'title.zh-CN': '折线图',
                     'title.ja-JP': 'ラインチャート',
-                    'title.ru-RU': 'Линия',
                     link: '/handbook/data-visualization-echarts/line',
                   },
                   {
                     title: 'Column',
                     'title.zh-CN': '柱状图',
                     'title.ja-JP': 'コラムチャート',
-                    'title.ru-RU': 'Колонка',
                     link: '/handbook/data-visualization-echarts/column',
                   },
                   {
                     title: 'Bar',
                     'title.zh-CN': '条形图',
                     'title.ja-JP': 'バーチャート',
-                    'title.ru-RU': 'Бар',
                     link: '/handbook/data-visualization-echarts/bar',
                   },
                   {
                     title: 'Diverging Bar',
                     'title.zh-CN': '分岐条形图',
                     'title.ja-JP': 'ダイバージングバーチャート',
-                    'title.ru-RU': 'Двусторонняя столбчатая диаграмма',
                     link: '/handbook/data-visualization-echarts/diverging-bar',
                   },
                   {
                     title: 'Pie',
                     'title.zh-CN': '饼图',
                     'title.ja-JP': 'パイチャート',
-                    'title.ru-RU': 'Круговая диаграмма',
                     link: '/handbook/data-visualization-echarts/pie',
                   },
                   {
                     title: 'Area',
                     'title.zh-CN': '面积图',
                     'title.ja-JP': 'エリアチャート',
-                    'title.ru-RU': 'Областная диаграмма',
                     link: '/handbook/data-visualization-echarts/area',
                   },
                   {
                     title: 'Scatter',
                     'title.zh-CN': '散点图',
                     'title.ja-JP': '散布図',
-                    'title.ru-RU': 'Диаграмма рассеяния',
                     link: '/handbook/data-visualization-echarts/scatter',
                   },
                   {
                     title: 'Funnel',
                     'title.zh-CN': '漏斗图',
                     'title.ja-JP': 'ファネルチャート',
-                    'title.ru-RU': 'Фундаментальная диаграмма',
                     link: '/handbook/data-visualization-echarts/funnel',
                   },
                   {
                     title: 'Radar',
                     'title.zh-CN': '雷达图',
                     'title.ja-JP': 'レーダーチャート',
-                    'title.ru-RU': 'Радарная диаграмма',
                     link: '/handbook/data-visualization-echarts/radar',
                   },
                   {
                     title: 'Treemap',
                     'title.zh-CN': '矩形树图',
                     'title.ja-JP': 'ツリーマップ',
-                    'title.ru-RU': 'Древовидная диаграмма',
                     link: '/handbook/data-visualization-echarts/treemap',
                   },
                   {
                     title: 'Word Cloud',
                     'title.zh-CN': '词云图',
                     'title.ja-JP': 'ワードクラウド',
-                    'title.ru-RU': 'Облако слов',
                     link: '/handbook/data-visualization-echarts/wordcloud',
                   },
                 ],
@@ -2679,14 +2389,12 @@ export default [
             'title.fr-FR': 'Développement',
             'title.zh-CN': '开发指南',
             'title.ja-JP': '開発ガイド',
-            'title.ru-RU': 'Разработка',
             children: [
               {
                 title: 'Extend chart types',
                 'title.fr-FR': 'Extension de type de graphique',
                 'title.zh-CN': '扩展图表类型',
                 'title.ja-JP': 'チャートタイプを拡張',
-                'title.ru-RU': 'Расширение типов диаграмм',
                 link: '/handbook/data-visualization/dev/',
               },
               {
@@ -2694,7 +2402,6 @@ export default [
                 'title.fr-FR': "Exemple d'intégration ECharts",
                 'title.zh-CN': 'ECharts 集成示例',
                 'title.ja-JP': 'ECharts統合の例',
-                'title.ru-RU': 'Интеграция с ECharts',
                 link: '/handbook/data-visualization/step-by-step',
               },
             ],
@@ -2704,7 +2411,6 @@ export default [
             'title.fr-FR': 'FAQ',
             'title.zh-CN': '常见问题',
             'title.ja-JP': 'よくある質問',
-            'title.ru-RU': 'Часто задаваемые вопросы',
             link: '/handbook/data-visualization/faq',
           },
         ],
@@ -2714,7 +2420,6 @@ export default [
         'title.fr-FR': 'Gestionnaire multi-App',
         'title.zh-CN': '多应用管理',
         'title.ja-JP': 'マルチアプリ管理',
-        'title.ru-RU': 'Мульти-приложение управление',
         // subTitle: '@nocobase/plugin-api-doc',
         link: '/handbook/multi-app-manager',
         // children: ['/plugins/api-doc'],
@@ -2723,20 +2428,17 @@ export default [
         title: 'Email manager',
         'title.zh-CN': '邮件管理',
         'title.ja-JP': 'メール管理',
-        'title.ru-RU': 'Email управление',
         children: [
           {
             title: 'Administrator configuration',
             'title.zh-CN': '管理员配置',
             'title.ja-JP': '管理者設定',
-            'title.ru-RU': 'Конфигурация администратора',
             link: '/handbook/email-manager/usage-admin',
           },
           {
             title: 'User manual',
             'title.zh-CN': '使用手册',
             'title.ja-JP': 'ユーザーマニュアル',
-            'title.ru-RU': 'Руководство пользователя',
             link: '/handbook/email-manager/usage-user',
           },
         ],
@@ -2745,7 +2447,6 @@ export default [
         title: 'Routes',
         'title.zh-CN': '路由',
         'title.ja-JP': 'ルート',
-        'title.ru-RU': 'Маршрутизация',
         link: '/handbook/routes',
       },
     ],
@@ -2755,21 +2456,18 @@ export default [
     'title.fr-FR': 'Workflow',
     'title.zh-CN': '工作流',
     'title.ja-JP': 'ワークフロー',
-    'title.ru-RU': 'Workflow',
     type: 'group',
     children: [
       {
-        title: 'Workflow',
-        'title.zh-CN': '工作流',
-        'title.ja-JP': 'ワークフロー',
-        'title.ru-RU': 'Workflow',
+        title: 'Overview',
+        'title.zh-CN': '概述',
+        'title.ja-JP': '概述',
         link: '/handbook/workflow',
       },
       {
         title: 'Quick Start',
         'title.zh-CN': '快速开始',
         'title.ja-JP': 'クイックスタート',
-        'title.ru-RU': 'Быстрый старт',
         link: '/handbook/workflow/quick-start',
       },
       {
@@ -2777,34 +2475,29 @@ export default [
         'title.fr-FR': 'Avancé',
         'title.zh-CN': '进阶理解',
         'title.ja-JP': '高度な理解',
-        'title.ru-RU': 'Расширенные настройки',
         children: [
           {
             title: 'Variables',
             'title.zh-CN': '变量',
             'title.ja-JP': '変数',
-            'title.ru-RU': 'Переменные',
             link: '/handbook/workflow/advanced/variables',
           },
           {
             title: 'Executions',
-            'title.zh-CN': '执行',
-            'title.ja-JP': '実行',
-            'title.ru-RU': 'Выполнения',
+            'title.zh-CN': '执行计划',
+            'title.ja-JP': '実行計画',
             link: '/handbook/workflow/advanced/executions',
           },
           {
-            title: 'Revisions',
-            'title.zh-CN': '修订',
-            'title.ja-JP': 'リビジョン',
-            'title.ru-RU': 'Ревизии',
+            title: 'Revisions Management',
+            'title.zh-CN': '版本管理',
+            'title.ja-JP': 'バージョン管理',
             link: '/handbook/workflow/advanced/revisions',
           },
           {
             title: 'Options',
-            'title.zh-CN': '选项',
-            'title.ja-JP': 'オプション',
-            'title.ru-RU': 'Опции',
+            'title.zh-CN': '高级配置',
+            'title.ja-JP': '高级配置',
             link: '/handbook/workflow/advanced/options',
           },
         ],
@@ -2814,62 +2507,53 @@ export default [
         'title.fr-FR': 'Déclencheurs',
         'title.zh-CN': '触发器',
         'title.ja-JP': 'トリガー',
-        'title.ru-RU': 'Триггеры',
         children: [
           {
-            title: 'Triggers Overview',
-            'title.zh-CN': '触发器概览',
-            'title.ja-JP': 'トリガー概要',
-            'title.ru-RU': 'Триггеры обзор',
+            title: 'Overview',
+            'title.zh-CN': '概览',
+            'title.ja-JP': '概要',
             link: '/handbook/workflow/triggers',
           },
           {
-            title: 'Collection Trigger',
-            'title.zh-CN': '集合触发器',
-            'title.ja-JP': 'コレクショントリガー',
-            'title.ru-RU': 'Триггер на события коллекции',
+            title: 'Collection Event',
+            'title.zh-CN': '数据表事件',
+            'title.ja-JP': 'データテーブルイベント',
             link: '/handbook/workflow/triggers/collection',
           },
           {
-            title: 'Schedule Trigger',
-            'title.zh-CN': '计划触发器',
-            'title.ja-JP': 'スケジュールトリガー',
-            'title.ru-RU': 'Триггер по расписание',
+            title: 'Schedule',
+            'title.zh-CN': '定时任务',
+            'title.ja-JP': '定期タスク',
             link: '/handbook/workflow/triggers/schedule',
           },
           {
-            title: 'Pre-Action Trigger',
-            'title.zh-CN': '操作前触发器',
-            'title.ja-JP': 'アクション前トリガー',
-            'title.ru-RU': 'Триггер перед действием',
+            title: 'Pre-Action Event',
+            'title.zh-CN': '操作前事件',
+            'title.ja-JP': '操作前イベント',
             link: '/handbook/workflow/triggers/pre-action',
           },
           {
             title: 'Custom Action Trigger',
             'title.zh-CN': '自定义操作触发器',
             'title.ja-JP': 'カスタムアクショントリガー',
-            'title.ru-RU': 'Триггер действия пользователя',
             link: '/handbook/workflow/triggers/custom-action',
           },
           {
-            title: 'Post-Action Trigger',
-            'title.zh-CN': '操作后触发器',
-            'title.ja-JP': 'アクション後トリガー',
-            'title.ru-RU': 'Триггер после действия',
+            title: 'Post-Action Event',
+            'title.zh-CN': '操作后事件',
+            'title.ja-JP': '操作後のイベント',
             link: '/handbook/workflow/triggers/post-action',
           },
           {
-            title: 'Approval Trigger',
-            'title.zh-CN': '审批触发器',
-            'title.ja-JP': '承認トリガー',
-            'title.ru-RU': 'Триггер на утверждение',
+            title: 'Approval',
+            'title.zh-CN': '审批',
+            'title.ja-JP': '承認',
             link: '/handbook/workflow/triggers/approval',
           },
           {
-            title: 'Webhook Trigger',
-            'title.zh-CN': 'Webhook 触发器',
-            'title.ja-JP': 'Webhook トリガー',
-            'title.ru-RU': 'Триггер на Webhook',
+            title: 'Webhook',
+            'title.zh-CN': 'Webhook',
+            'title.ja-JP': 'Webhook',
             link: '/handbook/workflow/triggers/webhook',
           },
         ],
@@ -2879,13 +2563,11 @@ export default [
         'title.fr-FR': 'Noeuds',
         'title.zh-CN': '节点',
         'title.ja-JP': 'ノード',
-        'title.ru-RU': 'Узлы',
         children: [
           {
             title: 'Nodes Overview',
-            'title.zh-CN': '节点概览',
-            'title.ja-JP': 'ノード概要',
-            'title.ru-RU': 'Обзор узлов',
+            'title.zh-CN': '概览',
+            'title.ja-JP': '概要',
             link: '/handbook/workflow/nodes',
           },
           {
@@ -2893,60 +2575,52 @@ export default [
             'title.fr-FR': 'Contrôle du workflow',
             'title.zh-CN': '流程控制类',
             'title.ja-JP': 'フロー制御',
-            'title.ru-RU': 'Управление потоком',
             type: 'group',
             children: [
               {
                 title: 'Condition',
                 'title.zh-CN': '条件',
                 'title.ja-JP': '条件',
-                'title.ru-RU': 'Состояние',
                 link: '/handbook/workflow/nodes/condition',
               },
               {
                 title: 'Delay',
                 'title.zh-CN': '延时',
                 'title.ja-JP': '遅延',
-                'title.ru-RU': 'Задержка',
                 link: '/handbook/workflow/nodes/delay',
               },
               {
                 title: 'End',
                 'title.zh-CN': '结束',
                 'title.ja-JP': '終了',
-                'title.ru-RU': 'Конец',
                 link: '/handbook/workflow/nodes/end',
-              },
-              {
-                title: 'JSON Variable Mapping',
-                'title.zh-CN': 'JSON 变量映射',
-                'title.ja-JP': 'JSON 变量映射',
-                'title.ru-RU': 'Сопоставление переменных JSON',
-                link: '/handbook/workflow/nodes/json-variable-mapping',
               },
               {
                 title: 'Loop',
                 'title.zh-CN': '循环',
                 'title.ja-JP': 'ループ',
-                'title.ru-RU': 'Цикл',
                 link: '/handbook/workflow/nodes/loop',
               },
               {
                 title: 'Parallel',
                 'title.zh-CN': '并行',
                 'title.ja-JP': '並行',
-                'title.ru-RU': 'Параллельное выполнение',
                 link: '/handbook/workflow/nodes/parallel',
               },
               {
                 title: 'Variable',
                 'title.zh-CN': '变量',
                 'title.ja-JP': '変数',
-                'title.ru-RU': 'Переменная',
                 link: '/handbook/workflow/nodes/variable',
               },
               '/handbook/workflow/nodes/subflow',
               '/handbook/workflow/nodes/output',
+              {
+                title: 'Variable',
+                'title.zh-CN': '变量',
+                'title.ja-JP': '変数',
+                link: '/handbook/workflow/nodes/variable',
+              },
             ],
           },
           {
@@ -2954,36 +2628,37 @@ export default [
             'title.zh-CN': '计算',
             'title.fr-FR': 'Calcul',
             'title.ja-JP': '計算',
-            'title.ru-RU': 'Калькуляция',
             type: 'group',
             children: [
               {
                 title: 'Calculation',
                 'title.zh-CN': '计算',
                 'title.ja-JP': '計算',
-                'title.ru-RU': 'Калькуляция',
                 link: '/handbook/workflow/nodes/calculation',
               },
               {
                 title: 'Date Calculation',
                 'title.zh-CN': '日期计算',
                 'title.ja-JP': '日付計算',
-                'title.ru-RU': 'Расчет даты',
                 link: '/handbook/workflow/nodes/date-calculation',
               },
               {
                 title: 'Dynamic Calculation',
                 'title.zh-CN': '动态计算',
                 'title.ja-JP': '動的計算',
-                'title.ru-RU': 'Динамический расчет',
                 link: '/handbook/workflow/nodes/dynamic-calculation',
               },
               {
                 title: 'JSON Calculation',
                 'title.zh-CN': 'JSON 计算',
                 'title.ja-JP': 'JSONクエリ',
-                'title.ru-RU': 'Расчет JSON',
                 link: '/handbook/workflow/nodes/json-query',
+              },
+              {
+                title: 'JSON Variable Mapping',
+                'title.zh-CN': 'JSON 变量映射',
+                'title.ja-JP': 'JSON 变量映射',
+                link: '/handbook/workflow/nodes/json-variable-mapping',
               },
             ],
           },
@@ -2992,49 +2667,42 @@ export default [
             'title.fr-FR': 'Actions',
             'title.zh-CN': '数据表操作',
             'title.ja-JP': 'コレクションアクション',
-            'title.ru-RU': 'Действия с коллекцией',
             type: 'group',
             children: [
               {
                 title: 'Create',
                 'title.zh-CN': '创建',
                 'title.ja-JP': '作成',
-                'title.ru-RU': 'Создание коллекции',
                 link: '/handbook/workflow/nodes/create',
               },
               {
                 title: 'Update',
                 'title.zh-CN': '更新',
                 'title.ja-JP': '更新',
-                'title.ru-RU': 'Обновить коллекцию',
                 link: '/handbook/workflow/nodes/update',
               },
               {
                 title: 'Destroy',
-                'title.zh-CN': '销毁',
-                'title.ja-JP': '破壊',
-                'title.ru-RU': 'Удалить коллекцию',
+                'title.zh-CN': '删除',
+                'title.ja-JP': '删除',
                 link: '/handbook/workflow/nodes/destroy',
               },
               {
                 title: 'Query',
                 'title.zh-CN': '查询',
                 'title.ja-JP': 'クエリ',
-                'title.ru-RU': 'Запросить из коллекции',
                 link: '/handbook/workflow/nodes/query',
               },
               {
                 title: 'Aggregate',
                 'title.zh-CN': '聚合',
                 'title.ja-JP': '集約',
-                'title.ru-RU': 'Агрегировать данные',
                 link: '/handbook/workflow/nodes/aggregate',
               },
               {
                 title: 'SQL',
                 'title.zh-CN': 'SQL',
                 'title.ja-JP': 'SQL',
-                'title.ru-RU': 'SQL запрос',
                 link: '/handbook/workflow/nodes/sql',
               },
             ],
@@ -3044,22 +2712,25 @@ export default [
             'title.fr-FR': 'Manuel',
             'title.zh-CN': '人工处理',
             'title.ja-JP': '手動処理',
-            'title.ru-RU': 'Инструкция',
             type: 'group',
             children: [
               {
                 title: 'Manual',
                 'title.zh-CN': '人工处理',
                 'title.ja-JP': '手動処理',
-                'title.ru-RU': 'Инструкция',
                 link: '/handbook/workflow/nodes/manual',
               },
               {
                 title: 'Approval',
                 'title.zh-CN': '审批',
                 'title.ja-JP': '承認',
-                'title.ru-RU': 'Утверждение',
                 link: '/handbook/workflow/nodes/approval',
+              },
+              {
+                title: 'CC',
+                'title.zh-CN': '抄送',
+                'title.ja-JP': '抄送',
+                link: '/handbook/workflow/nodes/cc',
               },
             ],
           },
@@ -3068,43 +2739,31 @@ export default [
             'title.fr-FR': 'Etendu',
             'title.zh-CN': '扩展类型',
             'title.ja-JP': '拡張タイプ',
-            'title.ru-RU': 'Расширенные',
             type: 'group',
             children: [
               {
                 title: 'JavaScript',
                 'title.zh-CN': 'JavaScript 脚本',
                 'title.ja-JP': 'JavaScript スクリプト',
-                'title.ru-RU': 'JavaScript скрипт',
                 link: '/handbook/workflow/nodes/javascript',
               },
               {
                 title: 'Request',
                 'title.zh-CN': '请求',
                 'title.ja-JP': 'リクエスト',
-                'title.ru-RU': 'Запрос',
                 link: '/handbook/workflow/nodes/request',
               },
               {
                 title: 'Response',
                 'title.zh-CN': '响应',
                 'title.ja-JP': 'レスポンス',
-                'title.ru-RU': 'Ответ',
                 link: '/handbook/workflow/nodes/response',
               },
               {
                 title: 'Response Message',
                 'title.zh-CN': '响应消息',
                 'title.ja-JP': 'レスポンスメッセージ',
-                'title.ru-RU': 'Сообщение ответа',
                 link: '/handbook/workflow/nodes/response-message',
-              },
-              {
-                title: 'Variable',
-                'title.zh-CN': '变量',
-                'title.ja-JP': '変数',
-                'title.ru-RU': 'Переменная',
-                link: '/handbook/workflow/nodes/variable',
               },
             ],
           },
@@ -3115,34 +2774,29 @@ export default [
         'title.fr-FR': 'Développement',
         'title.zh-CN': '开发指南',
         'title.ja-JP': '開発ガイド',
-        'title.ru-RU': 'Разработка',
         children: [
           {
             title: 'Overview',
             'title.zh-CN': '概览',
             'title.ja-JP': '概要',
-            'title.ru-RU': 'Обзор',
             link: '/handbook/workflow/development',
           },
           {
             title: 'Trigger',
             'title.zh-CN': '触发器',
             'title.ja-JP': 'トリガー',
-            'title.ru-RU': 'Триггер',
             link: '/handbook/workflow/development/trigger',
           },
           {
             title: 'Instruction',
             'title.zh-CN': '指令',
             'title.ja-JP': 'インストラクション',
-            'title.ru-RU': 'Инструкция',
             link: '/handbook/workflow/development/instruction',
           },
           {
             title: 'API Reference',
             'title.zh-CN': 'API 参考',
             'title.ja-JP': 'API 参考',
-            'title.ru-RU': 'API справочник',
             link: '/handbook/workflow/development/api',
           },
         ],
@@ -3152,49 +2806,42 @@ export default [
         'title.fr-FR': 'Plugins associés',
         'title.zh-CN': '相关插件',
         'title.ja-JP': '関連プラグイン',
-        'title.ru-RU': 'Связанные плагины',
         children: [
           {
-            title: 'Post-Action Trigger',
-            'title.fr-FR': 'Post-action trigger',
+            title: 'Post-Action Event',
+            'title.fr-FR': 'Post-action Event',
             'title.zh-CN': '操作后事件',
             'title.ja-JP': 'アクション後トリガー',
-            'title.ru-RU': 'Триггер после действия',
             subTitle: '@nocobase/plugin-workflow-action-trigger',
             children: [
               {
-                title: 'Workflow Action Trigger',
-                'title.zh-CN': '工作流操作触发器',
-                'title.ja-JP': 'ワークフローアクショントリガー',
-                'title.ru-RU': 'Тригер Workflow',
+                title: 'Overview',
+                'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
                 link: '/handbook/workflow-action-trigger',
               },
               {
                 title: 'Trigger',
                 'title.zh-CN': '触发器',
                 'title.ja-JP': 'トリガー',
-                'title.ru-RU': 'Тригер',
                 link: '/handbook/workflow-action-trigger/trigger',
               },
               {
                 title: 'Action',
                 'title.zh-CN': '操作',
                 'title.ja-JP': 'アクション',
-                'title.ru-RU': 'Действие',
                 link: '/handbook/workflow-action-trigger/action',
               },
               {
                 title: 'Example',
                 'title.zh-CN': '示例',
                 'title.ja-JP': '例',
-                'title.ru-RU': 'Пример',
                 link: '/handbook/workflow-action-trigger/example',
               },
               {
                 title: 'HTTP API',
                 'title.zh-CN': 'HTTP API',
                 'title.ja-JP': 'HTTP API',
-                'title.ru-RU': 'HTTP API',
                 link: '/handbook/workflow-action-trigger/http-api',
               },
             ],
@@ -3204,7 +2851,6 @@ export default [
             'title.fr-FR': 'Aggregate',
             'title.zh-CN': '聚合查询',
             'title.ja-JP': '集約クエリ',
-            'title.ru-RU': 'Агрегация данных',
             subTitle: '@nocobase/plugin-workflow-aggregate',
             link: '/handbook/workflow-aggregate',
           },
@@ -3213,108 +2859,101 @@ export default [
             'title.fr-FR': 'Approval',
             'title.zh-CN': '审批',
             'title.ja-JP': '承認',
-            'title.ru-RU': 'Утверждение',
             subTitle: '@nocobase/plugin-workflow-approval',
             children: [
               {
-                title: 'Workflow Approval',
-                'title.zh-CN': '工作流审批',
-                'title.ja-JP': 'ワークフロー承認',
-                'title.ru-RU': 'Процесс утверждения',
+                title: 'Overview',
+                'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
                 link: '/handbook/workflow-approval',
               },
               {
                 title: 'Trigger',
                 'title.zh-CN': '触发器',
                 'title.ja-JP': 'トリガー',
-                'title.ru-RU': 'Триггер',
                 link: '/handbook/workflow-approval/trigger',
               },
               {
                 title: 'Node',
                 'title.zh-CN': '节点',
                 'title.ja-JP': 'ノード',
-                'title.ru-RU': 'Узел',
                 link: '/handbook/workflow-approval/node',
               },
               {
                 title: 'Action',
                 'title.zh-CN': '操作',
                 'title.ja-JP': 'アクション',
-                'title.ru-RU': 'Действие',
                 link: '/handbook/workflow-approval/action',
               },
               {
                 title: 'Block',
                 'title.zh-CN': '区块',
                 'title.ja-JP': 'ブロック',
-                'title.ru-RU': 'Блок',
                 link: '/handbook/workflow-approval/block',
               },
               {
                 title: 'Workflow tasks',
                 'title.zh-CN': '流程待办',
                 'title.ja-JP': '流程待办',
-                'title.ru-RU': 'Задачи Workflow',
                 link: '/handbook/workflow-approval/tasks',
               },
               {
                 title: 'Advanced',
                 'title.zh-CN': '高级',
                 'title.ja-JP': '高度',
-                'title.ru-RU': 'Расширенные настройки',
                 link: '/handbook/workflow-approval/advanced',
               },
               {
                 title: 'HTTP API',
                 'title.zh-CN': 'HTTP API',
                 'title.ja-JP': 'HTTP API',
-                'title.ru-RU': 'HTTP API',
                 link: '/handbook/workflow-approval/http-api',
               },
             ],
+          },
+          {
+            title: 'CC',
+            'title.fr-FR': 'CC',
+            'title.zh-CN': '抄送',
+            'title.ja-JP': 'CC',
+            subTitle: '@nocobase/plugin-workflow-cc',
+            link: '/handbook/workflow-cc',
           },
           {
             title: 'Custom Action Trigger',
             'title.fr-FR': "Déclencheur d'action personnalisé",
             'title.zh-CN': '自定义操作事件',
             'title.ja-JP': 'カスタムアクショントリガー',
-            'title.ru-RU': 'Тригер действие пользователя',
             subTitle: '@nocobase/plugin-workflow-custom-action-trigger',
             children: [
               {
-                title: 'Custom Action Trigger',
-                'title.zh-CN': '自定义操作触发器',
-                'title.ja-JP': 'カスタムアクショントリガー',
-                'title.ru-RU': 'Тригер действие пользователя',
+                title: 'Overview',
+                'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
                 link: '/handbook/workflow-custom-action-trigger',
               },
               {
                 title: 'Trigger',
                 'title.zh-CN': '触发器',
                 'title.ja-JP': 'トリガー',
-                'title.ru-RU': 'Триггер',
                 link: '/handbook/workflow-custom-action-trigger/trigger',
               },
               {
                 title: 'Action',
                 'title.zh-CN': '操作',
                 'title.ja-JP': 'アクション',
-                'title.ru-RU': 'Действие',
                 link: '/handbook/workflow-custom-action-trigger/action',
               },
               {
                 title: 'Example',
                 'title.zh-CN': '示例',
                 'title.ja-JP': '例',
-                'title.ru-RU': 'Пример',
                 link: '/handbook/workflow-custom-action-trigger/example',
               },
               {
                 title: 'HTTP API',
                 'title.zh-CN': 'HTTP API',
                 'title.ja-JP': 'HTTP API',
-                'title.ru-RU': 'HTTP API',
                 link: '/handbook/workflow-custom-action-trigger/http-api',
               },
             ],
@@ -3324,7 +2963,6 @@ export default [
             'title.fr-FR': 'Calcul de date',
             'title.zh-CN': '日期计算',
             'title.ja-JP': '日付計算',
-            'title.ru-RU': 'Расчет даты',
             subTitle: '@nocobase/plugin-workflow-date-calculation',
             link: '/handbook/workflow-date-calculation',
           },
@@ -3333,7 +2971,6 @@ export default [
             'title.fr-FR': 'Retard',
             'title.zh-CN': '延时',
             'title.ja-JP': '遅延',
-            'title.ru-RU': 'Задержка',
             subTitle: '@nocobase/plugin-workflow-delay',
             link: '/handbook/workflow-delay',
           },
@@ -3342,28 +2979,24 @@ export default [
             'title.fr-FR': 'Calcul dynamique',
             'title.zh-CN': '动态表达式',
             'title.ja-JP': '動的計算',
-            'title.ru-RU': 'Динамический расчет',
             subTitle: '@nocobase/plugin-workflow-dynamic-calculation',
             children: [
               {
-                title: 'Dynamic Calculation',
-                'title.zh-CN': '动态计算',
-                'title.ja-JP': '動的計算',
-                'title.ru-RU': 'Динамический расчет',
+                title: 'Overview',
+                'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
                 link: '/handbook/workflow-dynamic-calculation',
               },
               {
                 title: 'Collection',
-                'title.zh-CN': '集合',
-                'title.ja-JP': 'コレクション',
-                'title.ru-RU': 'Коллекция',
+                'title.zh-CN': '数据表',
+                'title.ja-JP': '式のコレクション',
                 link: '/handbook/workflow-dynamic-calculation/collection',
               },
               {
                 title: 'Node',
                 'title.zh-CN': '节点',
                 'title.ja-JP': 'ノード',
-                'title.ru-RU': 'Узел',
                 link: '/handbook/workflow-dynamic-calculation/node',
               },
             ],
@@ -3373,7 +3006,6 @@ export default [
             'title.fr-FR': 'JavaScript',
             'title.zh-CN': 'JavaScript 脚本',
             'title.ja-JP': 'JavaScript スクリプト',
-            'title.ru-RU': 'JavaScript-скрипты',
             subTitle: '@nocobase/plugin-workflow-javascript',
             link: '/handbook/workflow-javascript',
           },
@@ -3382,7 +3014,6 @@ export default [
             'title.zh-CN': 'JSON 计算',
             'title.ja-JP': 'JSON 計算',
             'title.fr-FR': 'Requête JSON',
-            'title.ru-RU': 'JSON Расчет',
             subTitle: '@nocobase/plugin-workflow-json-query',
             link: '/handbook/workflow-json-query',
           },
@@ -3390,7 +3021,6 @@ export default [
             title: 'JSON Variable Mapping',
             'title.zh-CN': 'JSON 变量映射',
             'title.ja-JP': 'JSON 変数映射',
-            'title.ru-RU': 'Сопоставление переменных JSON',
             subTitle: '@nocobase/plugin-workflow-json-variable-mapping',
             link: '/handbook/workflow-json-variable-mapping',
           },
@@ -3399,7 +3029,6 @@ export default [
             'title.fr-FR': 'Boucle',
             'title.zh-CN': '循环',
             'title.ja-JP': 'ループ',
-            'title.ru-RU': 'Цикл',
             subTitle: '@nocobase/plugin-workflow-loop',
             link: '/handbook/workflow-loop',
           },
@@ -3408,35 +3037,30 @@ export default [
             'title.fr-FR': 'Processus manuel',
             'title.zh-CN': '人工处理',
             'title.ja-JP': '手動処理',
-            'title.ru-RU': 'Действие вручную',
             subTitle: '@nocobase/plugin-workflow-manual',
             children: [
               {
-                title: 'Manual Process',
-                'title.zh-CN': '人工处理',
-                'title.ja-JP': '手動処理',
-                'title.ru-RU': 'Действие вручную',
+                title: 'Overview',
+                'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
                 link: '/handbook/workflow-manual',
               },
               {
                 title: 'Node',
                 'title.zh-CN': '节点',
                 'title.ja-JP': 'ノード',
-                'title.ru-RU': 'Узел',
                 link: '/handbook/workflow-manual/node',
               },
               {
                 title: 'Block',
                 'title.zh-CN': '区块',
                 'title.ja-JP': 'ブロック',
-                'title.ru-RU': 'Блок',
                 link: '/handbook/workflow-manual/block',
               },
               {
                 title: 'Example',
                 'title.zh-CN': '示例',
                 'title.ja-JP': '例',
-                'title.ru-RU': 'Пример',
                 link: '/handbook/workflow-manual/example',
               },
             ],
@@ -3446,7 +3070,6 @@ export default [
             'title.fr-FR': 'Parallèle',
             'title.zh-CN': '并行分支',
             'title.ja-JP': '並行分岐',
-            'title.ru-RU': 'Параллельные ветки',
             subTitle: '@nocobase/plugin-workflow-parallel',
             link: '/handbook/workflow-parallel',
           },
@@ -3455,59 +3078,51 @@ export default [
             'title.fr-FR': 'Requête HTTP',
             'title.zh-CN': 'HTTP 请求',
             'title.ja-JP': 'HTTPリクエスト',
-            'title.ru-RU': 'HTTP Запросы',
             subTitle: '@nocobase/plugin-workflow-request',
             link: '/handbook/workflow-request',
           },
           {
-            title: 'Pre-Action Trigger',
+            title: 'Pre-Action Arigger',
             'title.fr-FR': 'Déclencheur avant Action',
             'title.zh-CN': '操作前事件',
             'title.ja-JP': 'アクション前トリガー',
-            'title.ru-RU': 'Тригер перед действием',
             subTitle: '@nocobase/plugin-workflow-request-interceptor',
             link: '/handbook/workflow-request-interceptor',
             children: [
               {
-                title: 'Pre-Action Trigger',
-                'title.zh-CN': '操作前触发器',
-                'title.ja-JP': 'アクション前トリガー',
-                'title.ru-RU': 'Тригер перед действием',
+                title: 'Overview',
+                'title.zh-CN': '概述',
+                'title.ja-JP': '概要',
                 link: '/handbook/workflow-request-interceptor',
               },
               {
                 title: 'Trigger',
                 'title.zh-CN': '触发器',
                 'title.ja-JP': 'トリガー',
-                'title.ru-RU': 'Триггер',
                 link: '/handbook/workflow-request-interceptor/trigger',
               },
               {
                 title: 'Action',
                 'title.zh-CN': '操作',
                 'title.ja-JP': 'アクション',
-                'title.ru-RU': 'Действие',
                 link: '/handbook/workflow-request-interceptor/action',
               },
               {
                 title: 'Advanced',
                 'title.zh-CN': '高级',
                 'title.ja-JP': '高度',
-                'title.ru-RU': 'Продвинутые',
                 link: '/handbook/workflow-request-interceptor/advanced',
               },
               {
                 title: 'Example',
                 'title.zh-CN': '示例',
                 'title.ja-JP': '例',
-                'title.ru-RU': 'Пример',
                 link: '/handbook/workflow-request-interceptor/example',
               },
               {
                 title: 'HTTP API',
                 'title.zh-CN': 'HTTP API',
                 'title.ja-JP': 'HTTP API',
-                'title.ru-RU': 'HTTP API',
                 link: '/handbook/workflow-request-interceptor/http-api',
               },
             ],
@@ -3517,7 +3132,6 @@ export default [
             'title.fr-FR': 'Message de réponse',
             'title.zh-CN': '响应消息',
             'title.ja-JP': 'レスポンスメッセージ',
-            'title.ru-RU': 'Сообщение ответа',
             subTitle: '@nocobase/plugin-workflow-response-message',
             link: '/handbook/workflow-response-message',
           },
@@ -3526,7 +3140,6 @@ export default [
             'title.fr-FR': 'Action SQL',
             'title.zh-CN': 'SQL 操作',
             'title.ja-JP': 'SQLアクション',
-            'title.ru-RU': 'SQL Действие',
             subTitle: '@nocobase/plugin-workflow-sql',
             link: '/handbook/workflow-sql',
           },
@@ -3534,16 +3147,14 @@ export default [
             title: 'Sub-flow',
             'title.zh-CN': '子流程',
             'title.ja-JP': '子流程',
-            'title.ru-RU': 'Подпроцесс',
             subTitle: '@nocobase/plugin-workflow-subflow',
             link: '/handbook/workflow-subflow',
           },
           {
-            title: 'Custom variable',
-            'title.fr-FR': 'Variable personnalisée',
-            'title.zh-CN': '自定义变量',
-            'title.ja-JP': 'カスタム変数',
-            'title.ru-RU': 'Персональные переменные',
+            title: 'Variable',
+            'title.fr-FR': 'Variable',
+            'title.zh-CN': '变量',
+            'title.ja-JP': '変数',
             subTitle: '@nocobase/plugin-workflow-variable',
             link: '/handbook/workflow-variable',
           },
@@ -3552,7 +3163,6 @@ export default [
             'title.fr-FR': 'Déclencheur Webhook',
             'title.zh-CN': 'Webhook 触发器',
             'title.ja-JP': 'Webhook トリガー',
-            'title.ru-RU': 'Webhook Триггер',
             subTitle: '@nocobase/plugin-workflow-webhook',
             link: '/handbook/workflow-webhook',
           },
@@ -3565,7 +3175,6 @@ export default [
     'title.fr-FR': 'Gestion du système',
     'title.zh-CN': '系统管理',
     'title.ja-JP': 'システム管理',
-    'title.ru-RU': 'Управление системой',
     type: 'group',
     children: [
       {
@@ -3573,7 +3182,6 @@ export default [
         'title.fr-FR': 'Gestionnaire de plugins',
         'title.zh-CN': '插件管理',
         'title.ja-JP': 'プラグイン管理',
-        'title.ru-RU': 'Менеджер плагинов',
         link: '/handbook/plugin-manager',
       },
       {
@@ -3581,7 +3189,6 @@ export default [
         'title.fr-FR': 'Paramètrage système',
         'title.zh-CN': '系统设置',
         'title.ja-JP': 'システム設定',
-        'title.ru-RU': 'Системные настройки',
         // subTitle: '@nocobase/plugin-system-settings',
         link: '/handbook/system-settings',
       },
@@ -3590,7 +3197,6 @@ export default [
         'title.fr-FR': 'Langues',
         'title.zh-CN': '语言设置',
         'title.ja-JP': '言語設定',
-        'title.ru-RU': 'Настройки языка',
         // subTitle: '@nocobase/plugin-system-settings',
         link: '/handbook/system-settings/language-settings',
       },
@@ -3599,7 +3205,6 @@ export default [
         'title.fr-FR': 'Editeur de thèmes',
         'title.zh-CN': '主题编辑器',
         'title.ja-JP': 'テーマエディタ',
-        'title.ru-RU': 'Редактор тем',
         // subTitle: '@nocobase/plugin-theme-editor',
         link: '/handbook/theme-editor',
       },
@@ -3608,7 +3213,6 @@ export default [
         'title.fr-FR': 'Localisation',
         'title.zh-CN': '本地化管理',
         'title.ja-JP': 'ローカリゼーション管理',
-        'title.ru-RU': 'Управление локализацией',
         // subTitle: '@nocobase/plugin-localization-management',
         link: '/handbook/localization-management',
       },
@@ -3617,7 +3221,6 @@ export default [
         'title.zh-CN': '变量和密钥',
         'title.ja-JP': '変数と秘密',
         'title.fr-FR': 'Variables and secrets',
-        'title.ru-RU': 'Переменные и секреты',
         // subTitle: '@nocobase/plugin-backups',
         link: '/handbook/environment-variables',
       },
@@ -3626,7 +3229,6 @@ export default [
         'title.fr-FR': 'Gestionnaire de sauvegardes',
         'title.zh-CN': '备份管理器',
         'title.ja-JP': 'バックアップマネージャー',
-        'title.ru-RU': 'Менеджер резервных копий',
         // subTitle: '@nocobase/plugin-backups',
         link: '/handbook/backups',
       },
@@ -3634,7 +3236,6 @@ export default [
         title: 'Migration manager',
         'title.zh-CN': '迁移管理',
         'title.ja-JP': '迁移管理',
-        'title.ru-RU': 'Менеджер миграций',
         // subTitle: '@nocobase/plugin-backups',
         link: '/handbook/migration-manager',
       },
@@ -3642,8 +3243,6 @@ export default [
         title: 'Release management',
         'title.zh-CN': '发布管理',
         'title.ja-JP': '发布管理',
-        'title.fr-FR': 'Gestionnaire de versions',
-        'title.ru-RU': 'Управление выпусками',
         // subTitle: '@nocobase/plugin-backups',
         link: '/handbook/release-management',
       },
@@ -3652,7 +3251,6 @@ export default [
   {
     title: 'AI integration',
     'title.zh-CN': 'AI 集成',
-    'title.ru-RU': 'ИИ интеграция',
     type: 'group',
     children: [
       // {
@@ -3663,35 +3261,29 @@ export default [
       {
         title: 'LLM service management',
         'title.zh-CN': 'LLM 服务管理',
-        'title.ru-RU': 'Управление LLM сервисами',
         link: '/handbook/ai/service',
       },
       {
         title: 'Workflow',
         'title.zh-CN': '工作流',
-        'title.ru-RU': 'Workflow',
         children: [
           {
             title: 'LLM node',
             'title.zh-CN': 'LLM 节点',
-            'title.ru-RU': 'LMM узел',
             children: [
               {
                 title: 'Text chat',
                 'title.zh-CN': '文本对话',
-                'title.ru-RU': 'Текстовый чат',
                 link: '/handbook/ai/workflow/nodes/llm/chat',
               },
               {
                 title: 'Multimodal Chat',
                 'title.zh-CN': '多模态对话',
-                'title.ru-RU': 'Мультимодальный чат',
                 link: '/handbook/ai-ee/workflow/nodes/llm/multimodal-chat',
               },
               {
                 title: 'Structured output',
                 'title.zh-CN': '结构化输出',
-                'title.ru-RU': 'Структурированный ответ',
                 link: '/handbook/ai-ee/workflow/nodes/llm/structured-output',
               },
             ],
@@ -3704,49 +3296,42 @@ export default [
     title: 'Security',
     'title.zh-CN': '安全性',
     'title.ja-JP': 'あんぜんせい',
-    'title.ru-RU': 'Безопасность',
     type: 'group',
     children: [
       {
         title: 'Security guide',
         'title.zh-CN': '安全指南',
         'title.ja-JP': 'あんぜんガイドライン',
-        'title.ru-RU': 'Руководство по безопасности',
         link: '/handbook/security',
       },
       {
         title: 'Token policy',
         'title.zh-CN': 'Token 策略',
         'title.ja-JP': 'トークンポリシー',
-        'title.ru-RU': 'Политика токенов',
         link: '/handbook/token-policy',
       },
       {
         title: 'Password policy',
         'title.zh-CN': '密码策略',
         'title.ja-JP': 'パスワードポリシー',
-        'title.ru-RU': 'Политика паролей',
         link: '/handbook/password-policy',
       },
       {
         title: 'User lockout',
         'title.zh-CN': '用户锁定',
         'title.ja-JP': 'ユーザーロック',
-        'title.ru-RU': 'Блокирование пользователей',
         link: '/handbook/password-policy/user-lockout',
       },
       {
         title: 'IP restriction',
         'title.zh-CN': 'IP 限制',
         'title.ja-JP': 'IP restriction',
-        'title.ru-RU': 'IP фильтрация',
         link: '/handbook/IP-restriction',
       },
       {
         title: 'Audit logs',
         'title.zh-CN': '审计日志',
         'title.ja-JP': '审计日志',
-        'title.ru-RU': 'Аудит логов',
         link: '/handbook/audit-logger',
       },
       {
@@ -3754,7 +3339,6 @@ export default [
         'title.fr-FR': 'Two-factor authentication (2FA)',
         'title.zh-CN': '双因素身份认证 (2FA)',
         'title.ja-JP': 'Two-factor authentication (2FA)',
-        'title.ru-RU': 'Двухфакторная аутентификация (2FA)',
         link: '/handbook/two-factor-authentication',
       },
     ],
@@ -3764,7 +3348,6 @@ export default [
     'title.fr-FR': 'Autres',
     'title.zh-CN': '其他',
     'title.ja-JP': 'その他',
-    'title.ru-RU': 'Разное',
     type: 'group',
     children: [
       {
@@ -3772,7 +3355,6 @@ export default [
         'title.fr-FR': 'Doc API',
         'title.zh-CN': 'API 文档',
         'title.ja-JP': 'APIドキュメント',
-        'title.ru-RU': 'Документация API',
         // subTitle: '@nocobase/plugin-api-doc',
         link: '/handbook/api-doc',
         // children: ['/plugins/api-doc'],
@@ -3782,7 +3364,6 @@ export default [
         'title.fr-FR': 'Intégration',
         'title.zh-CN': '嵌入',
         'title.ja-JP': '埋め込み',
-        'title.ru-RU': 'Встраивание',
         link: '/handbook/embed',
       },
       {
@@ -3790,7 +3371,6 @@ export default [
         'title.fr-FR': 'Personnaliser la marque',
         'title.zh-CN': '自定义品牌',
         'title.ja-JP': 'カスタムブランド',
-        'title.ru-RU': 'Персонализация бренда',
         link: '/handbook/custom-brand',
       },
       {
@@ -3798,15 +3378,13 @@ export default [
         'title.fr-FR': 'Formulaire public',
         'title.zh-CN': '公开表单',
         'title.ja-JP': '公开表单',
-        'title.ru-RU': 'Публичные формы',
         link: '/handbook/public-forms',
       },
       {
-        title: 'Multi-keyword filter',
+        title: 'Multi-keyword Filter',
         'title.fr-FR': 'Filtre à mots-clés multiples',
         'title.zh-CN': '多关键词筛选',
         'title.ja-JP': 'マルチキーワードフィルター',
-        'title.ru-RU': 'Множественный фильтр по ключевым словам',
         link: '/handbook/multi-keyword-filter',
       },
     ],

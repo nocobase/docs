@@ -36,8 +36,8 @@ NocoBase 支持三种安装方式：
 
 开发中的版本，包含最新的功能代码，可能尚未完成或存在较多不稳定因素，主要用于内部开发和快速迭代。 适合对产品功能前沿发展感兴趣的技术用户，但可能存在较多问题或不完整功能，不建议在生产环境中使用。
 
-| 版本     | 源码分支  | Docker 镜像版本            | create-nocobase-app 版本     | 对应具体版本号                               |
-| -------- | --------- | -------------------------- | ---------------------------- | -------------------------------------------- |
-| `Latest` | `main`    | `nocobase/nocobase:latest` | `create-nocobase-app@latest` | `1.3.51`<br />`1.3.52`<br />...              |
-| `Beta`   | `next`    | `nocobase/nocobase:beta`   | `create-nocobase-app@beta`   | `1.4.0-beta.1`<br/>`1.4.0-beta.2`<br />...   |
-| `Alpha`  | `develop` | `nocobase/nocobase:alpha`  | `create-nocobase-app@alpha`  | `1.5.0-alpha.1`<br/>`1.5.0-alpha.2`<br />... |
+| 版本     | 源码分支  | Docker 镜像版本（推荐）            | create-nocobase-app 版本     | 对应具体版本号                               |
+| -------- | --------- | ---------------------------------- | ---------------------------- | -------------------------------------------- |
+| `Latest` | `main`    | `nocobase/nocobase:latest-full`   | `create-nocobase-app@latest` | `1.3.51`<br />`1.3.52`<br />...              |
+| `Beta`   | `next`    | `nocobase/nocobase:beta-full`     | `create-nocobase-app@beta`   | `1.4.0-beta.1`<br/>`1.4.0-beta.2`<br />...   |
+| `Alpha`  | `develop` | `nocobase/nocobase:alpha-full`    | `create-nocobase-app@alpha`  | `1.5.0-alpha.1`<br/>`1.5.0-alpha.2`<br />... |

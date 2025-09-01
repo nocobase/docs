@@ -1,5 +1,7 @@
 # JSON Variable Mapping
 
+<PluginInfo name="workflow-json-variable-mapping" link="/handbook/workflow-json-variable-mapping" commercial="true"></PluginInfo>
+
 > v1.6.0
 
 This node is used to map complex JSON structures from upstream node results into variables for use in subsequent nodes. For example, after mapping the results from SQL operations or HTTP request nodes, you can access their properties in later nodes.

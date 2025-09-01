@@ -1,4 +1,4 @@
-# カスタム変数
+# 変数
 
 <PluginInfo name="workflow-variable" link="/handbook/workflow-variable" commercial="true"></PluginInfo>
 

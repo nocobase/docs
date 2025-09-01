@@ -6,35 +6,35 @@ When you need to interact with another web system, the HTTP Request node is your
 
 If you're already familiar with tools like Postman, mastering the HTTP Request node will be straightforward. However, unlike traditional tools, this node leverages context variables from the current workflow, making it a powerful addition to your business process integration.
 
-### Installation
+## Installation
 
 This is a built-in plugin, so there's no need for installation.
 
-### User Guide
+## User Guide
 
-#### Creating a Node
+### Creating a Node
 
 In the workflow configuration interface, click the plus (“+”) button within your process to add an "HTTP Request" node:
 
 ![HTTP Request_Add](https://static-docs.nocobase.com/46f2a6fc3f6869c80f8fbd362a54e644.png)
 
-#### Node Configuration
+### Node Configuration
 
 ![HTTP Request Node_Configuration](https://static-docs.nocobase.com/2fcb29af66b892fa704add52e2974a52.png)
 
-**Request Method**
+#### Request Method
 
 Choose from the available HTTP request methods: `GET`, `POST`, `PUT`, `PATCH`, and `DELETE`.
 
-**Request URL**
+#### Request URL
 
 Specify the URL of the HTTP service, including the protocol (`http://` or `https://`). For security, `https://` is recommended.
 
-**Request Data Format**
+#### Request Data Format
 
-This defines the `Content-Type` in the request header, with options for `application/json` and `application/x-www-form-urlencoded`.
+This defines the `Content-Type` in the request header, see the options in the [Request Body](#request-body) section.
 
-**Request Header Configuration**
+#### Request Header Configuration
 
 Set key-value pairs for the request headers, with values that can dynamically reference variables from the workflow context.
 
@@ -42,16 +42,36 @@ Set key-value pairs for the request headers, with values that can dynamically re
 The `Content-Type` header is predetermined by the request data format setting. Manual input here will not override this configuration.
 :::
 
-**Request Parameters**
+#### Request Parameters
 
 Define key-value pairs for the query string. Values can dynamically utilize variables from the workflow context.
 
-**Request Body**
+#### Request Body
 
-Currently, the request body supports only standard JSON format. Use the variable button in the upper-right corner of the text editor to insert context variables.
+Depends on the `Content-Type` option, different formats are supported.
+
+##### `application/json`
+
+Standard JSON format text is supported. Use the variable button in the upper-right corner of the text editor to insert context variables.
 
 :::info{title=Note}
-Ensure that variables within JSON are used as strings, for example: `"a": "{{$context.data.a}}"`.
+Ensure that variables within JSON are used as strings, for example: `{ "a": "{{$context.data.a}}" }`.
+:::
+
+##### `application/x-www-form-urlencoded`
+
+This format supports standard key-value pairs. The variable button in the text editor can also be used to insert context variables.
+
+##### `application/xml`
+
+Supports standard XML format text. Similar to JSON, you can use the variable button to insert context variables.
+
+##### `multipart/form-data` <Badge>v1.8.0+</Badge>
+
+Supports key-value pairs of form data. When selecting a data type as a file object, you can upload files. Files can only be selected from existing file objects in the context, such as results from file collection queries or related data from associated file collection.
+
+:::info{title=Note}
+When selecting file data, ensure that the variable corresponds to a single file object, not a list of files (in many-to-one relationships, the relationship field's value will be an array).
 :::
 
 **Timeout Settings**

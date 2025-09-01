@@ -220,14 +220,6 @@ DB_TABLE_PREFIX=nocobase_
 DB_LOGGING=on
 ```
 
-### NOCOBASE_PKG_USERNAME
-
-サービスプラットフォームのユーザー名、自動的にプラグインをダウンロードおよび更新するために使用されます。
-
-### NOCOBASE_PKG_PASSWORD
-
-サービスプラットフォームのパスワード、自動的にプラグインをダウンロードおよび更新するために使用されます。
-
 ### LOGGER_TRANSPORT
 
 ログ出力方法。複数の場合は `,` で区切ります。開発環境のデフォルト値は `console`、本番環境のデフォルト値は `console,dailyRotateFile` です。選択肢：

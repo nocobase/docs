@@ -40,9 +40,7 @@ yarn create nocobase-app my-nocobase-app -d postgres \
    -e DB_DATABASE=nocobase \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
-   -e TZ=Asia/Shanghai \
-   -e NOCOBASE_PKG_USERNAME= \
-   -e NOCOBASE_PKG_PASSWORD=
+   -e TZ=Asia/Shanghai
 ```
 
 </div>
@@ -56,9 +54,7 @@ yarn create nocobase-app my-nocobase-app -d mysql \
    -e DB_DATABASE=nocobase \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
-   -e TZ=Asia/Shanghai \
-   -e NOCOBASE_PKG_USERNAME= \
-   -e NOCOBASE_PKG_PASSWORD=
+   -e TZ=Asia/Shanghai
 ```
 
 </div>
@@ -72,9 +68,7 @@ yarn create nocobase-app my-nocobase-app -d mariadb \
    -e DB_DATABASE=nocobase \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
-   -e TZ=Asia/Shanghai \
-   -e NOCOBASE_PKG_USERNAME= \
-   -e NOCOBASE_PKG_PASSWORD=
+   -e TZ=Asia/Shanghai
 ```
 
 </div>
@@ -94,9 +88,7 @@ npx create-nocobase-app@beta my-nocobase-app -d postgres \
    -e DB_DATABASE=nocobase \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
-   -e TZ=Asia/Shanghai \
-   -e NOCOBASE_PKG_USERNAME= \
-   -e NOCOBASE_PKG_PASSWORD=
+   -e TZ=Asia/Shanghai
 ```
 
 </div>
@@ -110,9 +102,7 @@ npx create-nocobase-app@beta my-nocobase-app -d mysql \
    -e DB_DATABASE=nocobase \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
-   -e TZ=Asia/Shanghai \
-   -e NOCOBASE_PKG_USERNAME= \
-   -e NOCOBASE_PKG_PASSWORD=
+   -e TZ=Asia/Shanghai
 ```
 
 </div>
@@ -126,9 +116,7 @@ npx create-nocobase-app@beta my-nocobase-app -d mariadb \
    -e DB_DATABASE=nocobase \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
-   -e TZ=Asia/Shanghai \
-   -e NOCOBASE_PKG_USERNAME= \
-   -e NOCOBASE_PKG_PASSWORD=
+   -e TZ=Asia/Shanghai
 ```
 
 </div>
@@ -148,9 +136,7 @@ npx create-nocobase-app@alpha my-nocobase-app -d postgres \
    -e DB_DATABASE=nocobase \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
-   -e TZ=Asia/Shanghai \
-   -e NOCOBASE_PKG_USERNAME= \
-   -e NOCOBASE_PKG_PASSWORD=
+   -e TZ=Asia/Shanghai
 ```
 
 </div>
@@ -164,9 +150,7 @@ npx create-nocobase-app@alpha my-nocobase-app -d mysql \
    -e DB_DATABASE=nocobase \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
-   -e TZ=Asia/Shanghai \
-   -e NOCOBASE_PKG_USERNAME= \
-   -e NOCOBASE_PKG_PASSWORD=
+   -e TZ=Asia/Shanghai
 ```
 
 </div>
@@ -180,9 +164,7 @@ npx create-nocobase-app@alpha my-nocobase-app -d mariadb \
    -e DB_DATABASE=nocobase \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
-   -e TZ=Asia/Shanghai \
-   -e NOCOBASE_PKG_USERNAME= \
-   -e NOCOBASE_PKG_PASSWORD=
+   -e TZ=Asia/Shanghai
 ```
 
 </div>
@@ -190,7 +172,6 @@ npx create-nocobase-app@alpha my-nocobase-app -d mariadb \
 
 :::warning
 
-- **Version 1.4 and above**: By setting the environment variables [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) and [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password), you can automatically download commercial plugins during application installation or upgrade;
 - `TZ` is used to set the application's time zone, with the default being the system's time zone;
 - `APP_KEY` is the application's secret key, used for generating user tokens and so on (if APP_KEY is changed, the old tokens will also become invalid). It can be any random string. Please change it to your own secret key and ensure it is not disclosed to the public.
 - `DB_*` is related to the database. If it is not the default database service in the example, please modify it according to the actual situation.

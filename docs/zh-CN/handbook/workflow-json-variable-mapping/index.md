@@ -1,5 +1,7 @@
 # JSON 变量映射
 
+<PluginInfo name="workflow-json-variable-mapping" link="/handbook/workflow-json-variable-mapping" commercial="true"></PluginInfo>
+
 > v1.6.0
 
 用于将上游节点结果中复杂的 JSON 结构映射为变量，以供后续节点使用。例如 SQL 操作和 HTTP 请求节点的结果，在映射后即可在后续节点中使用其中的属性值。

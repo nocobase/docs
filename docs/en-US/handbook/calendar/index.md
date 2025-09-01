@@ -63,6 +63,15 @@ This option can be used to configure the background color of calendar events. He
 
 ![20240914192017_rec_](https://static-docs.nocobase.com/20240914192017_rec_.gif)
 
+### Week Start Day
+
+> Supported in version v1.7.7 and above
+
+The calendar block supports setting the start day of the week, allowing you to choose **Sunday** or **Monday** as the first day of the week.  
+The default start day is **Monday**, making it easier for users to adjust the calendar display according to regional habits for a better user experience.
+
+![20250707165958](https://static-docs.nocobase.com/20250707165958.png)
+
 ## Configure Actions
 
 ![20240419203424](https://static-docs.nocobase.com/20240419203424.png)

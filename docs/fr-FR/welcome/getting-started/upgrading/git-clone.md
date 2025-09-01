@@ -4,7 +4,6 @@
 
 :::warning
 - Make sure to backup the database before upgrading!!!
-- **Version 1.4 and above**: By setting the environment variables [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) and [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password), you can automatically download commercial plugins during application installation or upgrade.
 :::
 
 ## 1. switch to the NocoBase project directory
@@ -70,7 +69,6 @@ After upgrading NocoBase, independent plugins installed through the interface mi
 
 :::warning
 - Assurez-vous de sauvegarder la base de données avant de procéder à la mise à niveau !!!
-- **Version 1.4 et supérieure** : En définissant les variables d'environnement [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) et [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password), vous pouvez télécharger automatiquement les plugins commerciaux lors de l'installation ou de la mise à niveau de l'application.
 :::
 
 ## 1. Passer au répertoire du projet NocoBase

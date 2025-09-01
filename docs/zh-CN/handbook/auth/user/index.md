@@ -62,7 +62,7 @@ NocoBase 目前支持的用户认证类型有：
 
 ![](https://static-docs.nocobase.com/202411262135801.png)
 
-### 忘记密码<Badge>v1.7.0+</Badge>
+### 忘记密码<Badge>v1.8.0+</Badge>
 
 忘记密码功能允许用户在忘记密码时，通过邮箱验证的方式重新设置密码。
 

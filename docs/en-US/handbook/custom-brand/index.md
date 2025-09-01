@@ -28,8 +28,8 @@ HTML is used for the configuration to allow users more flexibility in customizin
 
 ![20240409114740](https://static-docs.nocobase.com/20240409114740.png)
 
-### Favicon（v1.2.23-alpha）
+### Favicon<Badge>v1.2.23-alpha+</Badge>
 
 In v1.2.23-alpha, we added the ability to set a favicon as shown below:
 
-![350438864-08053d02-5429-407f-a3f7-fed439993623](https://static-docs.nocobase.com/350438864-08053d02-5429-407f-a3f7-fed439993623.gif)
+![20250601143958_rec_](https://static-docs.nocobase.com/20250601143958_rec_.gif)

@@ -203,14 +203,6 @@ Commutateur de journal de base de données, la valeur par défaut est `off`, les
 DB_LOGGING=on
 ```
 
-### NOCOBASE_PKG_USERNAME
-
-Nom d'utilisateur de la plateforme de services, utilisé pour télécharger et mettre à jour automatiquement les plugins.
-
-### NOCOBASE_PKG_PASSWORD
-
-Mot de passe de la plateforme de service, utilisé pour télécharger et mettre à jour automatiquement les plugins.
-
 ### LOGGER_TRANSPORT
 
 Mode de sortie du journal, séparez plusieurs entrées par `,`. La valeur par défaut pour l'environnement de développement est `console` et la valeur par défaut pour l'environnement de production est `console,dailyRotateFile`.

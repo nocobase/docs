@@ -31,7 +31,7 @@ networks:
 
 services:
   app:
-    image: nocobase/nocobase:latest
+    image: nocobase/nocobase:latest-full
     restart: always
     networks:
       - nocobase
@@ -56,10 +56,6 @@ services:
       - DB_PASSWORD=nocobase
       # Timezone
       - TZ=Asia/Shanghai
-      # Service platform username and password,
-      # used for automatically downloading and updating plugins.
-      - NOCOBASE_PKG_USERNAME=
-      - NOCOBASE_PKG_PASSWORD=
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
@@ -94,7 +90,7 @@ networks:
 
 services:
   app:
-    image: nocobase/nocobase:latest
+    image: nocobase/nocobase:latest-full
     restart: always
     networks:
       - nocobase
@@ -121,10 +117,6 @@ services:
       - DB_UNDERSCORED=true
       # Timezone
       - TZ=Asia/Shanghai
-      # Service platform username and password,
-      # used for automatically downloading and updating plugins.
-      - NOCOBASE_PKG_USERNAME=
-      - NOCOBASE_PKG_PASSWORD=
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
@@ -159,7 +151,7 @@ networks:
 
 services:
   app:
-    image: nocobase/nocobase:latest
+    image: nocobase/nocobase:latest-full
     restart: always
     networks:
       - nocobase
@@ -186,10 +178,6 @@ services:
       - DB_UNDERSCORED=true
       # Timezone
       - TZ=Asia/Shanghai
-      # Service platform username and password,
-      # used for automatically downloading and updating plugins.
-      - NOCOBASE_PKG_USERNAME=
-      - NOCOBASE_PKG_PASSWORD=
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
@@ -221,9 +209,6 @@ Choose the appropriate NocoBase version, refer to [versions](./index.md#which-ve
 - `alpha`: A development version containing the latest features, which may be incomplete or unstable.
 - `1.3.51`: Specify the version number. To check the latest version, see the [list of released versions](https://hub.docker.com/r/nocobase/nocobase/tags).
 
-:::warning
-**Version 1.4 and above**: By setting the environment variables [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) and [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password), you can automatically download commercial plugins during application installation or upgrade.
-:::
 
 Example:
 
@@ -231,13 +216,13 @@ Example:
 #...
 services:
   app:
-    # Domestic users suggest using Ali Cloud image
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:latest
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:beta
-    image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:alpha
-    Image: registry.cn-shanghai.aliyuncs.com/nocobase/nocobase:1.3.51
+    # Docker Hub image (recommended full versions)
+    image: nocobase/nocobase:latest-full
+    image: nocobase/nocobase:beta-full
+    image: nocobase/nocobase:alpha-full
+    image: nocobase/nocobase:1.3.51-full
 
-    # Docker Hub image (Domestic users cannot download) 
+    # Slim versions (without certain clients and LibreOffice)
     image: nocobase/nocobase:latest
     image: nocobase/nocobase:beta
     image: nocobase/nocobase:alpha

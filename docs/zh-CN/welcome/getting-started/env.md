@@ -218,14 +218,6 @@ DB_TABLE_PREFIX=nocobase_
 DB_LOGGING=on
 ```
 
-### NOCOBASE_PKG_USERNAME
-
-Service 平台用户名，用于自动下载和更新插件
-
-### NOCOBASE_PKG_PASSWORD
-
-Service 平台密码，用于自动下载和更新插件
-
 ### LOGGER_TRANSPORT
 
 日志输出方式，多个用 `,` 分隔。开发环境默认值 `console`, 生产环境默认值 `console,dailyRotateFile`.

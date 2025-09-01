@@ -97,6 +97,21 @@ The related data to be used must be configured in the data block
 
 For more introductions to variables, check out the [Edit UI / Variables](/handbook/ui/variables) section.
 
+## Localization
+> Supported in version 1.7.6 and later.
+
+Markdown content now supports localization. You can use the `{{t 'xxx'}}` syntax to insert multilingual text (make sure the **Localization** plugin is enabled), and configure the corresponding translations in the Localization Management panel.
+
+![20250707154720](https://static-docs.nocobase.com/20250707154720.png)
+
+Translations can be added and managed in the Localization panel. After configuring, don't forget to publish the changes.
+
+![20250707154933](https://static-docs.nocobase.com/20250707154933.png)
+
+![20250707155049](https://static-docs.nocobase.com/20250707155049.png)
+
+![20250707155236](https://static-docs.nocobase.com/20250707155236.gif)
+
 ## QR Codes
 
 Markdown also supports the configuration of QR codes, which can be used in combination with variables.

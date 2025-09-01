@@ -62,7 +62,7 @@ Page d'inscription
 
 ![](https://static-docs.nocobase.com/202411262135801.png)
 
-### Mot de passe oublié<Badge>v1.7.0+</Badge>
+### Mot de passe oublié<Badge>v1.8.0+</Badge>
 
 La fonctionnalité de mot de passe oublié permet aux utilisateurs de réinitialiser leur mot de passe via une vérification par e-mail lorsqu'ils l'ont oublié.
 

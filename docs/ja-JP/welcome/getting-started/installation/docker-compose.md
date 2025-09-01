@@ -31,7 +31,7 @@ networks:
 
 services:
   app:
-    image: nocobase/nocobase:latest
+    image: nocobase/nocobase:latest-full
     restart: always
     networks:
       - nocobase
@@ -56,9 +56,6 @@ services:
       - DB_PASSWORD=nocobase
       # タイムゾーン
       - TZ=Asia/Tokyo
-      # 商用プラグインのためのサービスプラットフォームのユーザー名とパスワード
-      - NOCOBASE_PKG_USERNAME=
-      - NOCOBASE_PKG_PASSWORD=
 
     volumes:
       - ./storage:/app/nocobase/storage
@@ -94,7 +91,7 @@ networks:
 
 services:
   app:
-    image: nocobase/nocobase:latest
+    image: nocobase/nocobase:latest-full
     restart: always
     networks:
       - nocobase
@@ -121,9 +118,6 @@ services:
       - DB_UNDERSCORED=true
       # タイムゾーン
       - TZ=Asia/Tokyo
-      # 商用プラグインのためのサービスプラットフォームのユーザー名とパスワード
-      - NOCOBASE_PKG_USERNAME=
-      - NOCOBASE_PKG_PASSWORD=
 
     volumes:
       - ./storage:/app/nocobase/storage
@@ -159,7 +153,7 @@ networks:
 
 services:
   app:
-    image: nocobase/nocobase:latest
+    image: nocobase/nocobase:latest-full
     restart: always
     networks:
       - nocobase
@@ -186,9 +180,6 @@ services:
       - DB_UNDERSCORED=true
       # タイムゾーン
       - TZ=Asia/Tokyo
-      # 商用プラグインのためのサービスプラットフォームのユーザー名とパスワード
-      - NOCOBASE_PKG_USERNAME=
-      - NOCOBASE_PKG_PASSWORD=
 
     volumes:
       - ./storage:/app/nocobase/storage
@@ -221,9 +212,6 @@ services:
 - `alpha`: 開発中のバージョンで、最新の機能コードが含まれており、未完成または不安定な場合があります。主に内部開発や迅速なイテレーションに使用されます。
 - `1.3.51`: バージョン番号を指定します。最新バージョンの確認は [リリースバージョン一覧](https://hub.docker.com/r/nocobase/nocobase/tags) を参照してください。
 
-:::warning
-**v1.4 以降のバージョン**では、環境変数 [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) と [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password) を設定することで、アプリケーションのインストールまたはアップグレード時に商用プラグインを自動的にダウンロードできます。
-:::
 
 例:
 
@@ -231,7 +219,13 @@ services:
 # ...
 services:
   app:
-    # Docker Hub
+    # Docker Hub (推奨 full バージョン)
+    image: nocobase/nocobase:latest-full
+    image: nocobase/nocobase:beta-full
+    image: nocobase/nocobase:alpha-full
+    image: nocobase/nocobase:1.3.51-full
+
+    # スリムバージョン（特定のクライアントとLibreOfficeを含まない）
     image: nocobase/nocobase:latest
     image: nocobase/nocobase:beta
     image: nocobase/nocobase:alpha

@@ -4,7 +4,7 @@
 
 :::warning
 - Make sure to backup the database before upgrading!!!
-- **Version 1.4 and above**: By setting the environment variables [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) and [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password), you can automatically download commercial plugins during application installation or upgrade.
+- For commercial plugins, please validate your license key in the system and restart after validation. See [NocoBase Commercial License Activation Guide](https://www.nocobase.com/en/blog/nocobase-commercial-license-activation-guide) for details.
 :::
 
 ## 1. Navigate to the directory containing `docker-compose.yml`

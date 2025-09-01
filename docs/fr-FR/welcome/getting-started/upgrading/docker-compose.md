@@ -4,7 +4,7 @@
 
 :::warning
 - Assurez-vous de sauvegarder la base de données avant de procéder à la mise à niveau !!!
-- **Version 1.4 et supérieure** : En définissant les variables d'environnement [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) et [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password), vous pouvez télécharger automatiquement les plugins commerciaux lors de l'installation ou de la mise à niveau de l'application.
+- Pour les plugins commerciaux, veuillez valider votre clé de licence dans le système et redémarrer après validation. Voir [NocoBase Commercial License Activation Guide](https://www.nocobase.com/en/blog/nocobase-commercial-license-activation-guide) pour plus de détails.
 :::
 
 ## 1. Naviguer vers le répertoire contenant `docker-compose.yml`

@@ -36,8 +36,8 @@ This version includes new features that are about to be released and it has been
 
 A development version containing the latest features, which may be incomplete or unstable. Suitable for technical users interested in cutting-edge features. Not recommended for production use.
 
-| Version  | Source code branch | Docker images version      | create-nocobase-app version  | Specific version                             |
-| -------- | ------------------ | -------------------------- | ---------------------------- | -------------------------------------------- |
-| `Latest` | `main`             | `nocobase/nocobase:latest` | `create-nocobase-app@latest` | `1.3.51`<br />`1.3.52`<br />...              |
-| `Beta`   | `next`             | `nocobase/nocobase:beta`   | `create-nocobase-app@beta`   | `1.4.0-beta.1`<br/>`1.4.0-beta.2`<br />...   |
-| `Alpha`  | `develop`          | `nocobase/nocobase:alpha`  | `create-nocobase-app@alpha`  | `1.5.0-alpha.1`<br/>`1.5.0-alpha.2`<br />... |
+| Version  | Source code branch | Docker images version (recommended)      | create-nocobase-app version  | Specific version                             |
+| -------- | ------------------ | ----------------------------------------- | ---------------------------- | -------------------------------------------- |
+| `Latest` | `main`             | `nocobase/nocobase:latest-full`          | `create-nocobase-app@latest` | `1.3.51`<br />`1.3.52`<br />...              |
+| `Beta`   | `next`             | `nocobase/nocobase:beta-full`            | `create-nocobase-app@beta`   | `1.4.0-beta.1`<br/>`1.4.0-beta.2`<br />...   |
+| `Alpha`  | `develop`          | `nocobase/nocobase:alpha-full`           | `create-nocobase-app@alpha`  | `1.5.0-alpha.1`<br/>`1.5.0-alpha.2`<br />... |
