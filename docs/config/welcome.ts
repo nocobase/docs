@@ -34,6 +34,9 @@ export default [
           '/welcome/getting-started/installation/create-nocobase-app',
           '/welcome/getting-started/installation/git-clone',
           // '/welcome/getting-started/installation/install-plugin',
+          ...(process.env.DOC_LANG === 'ru-RU'
+            ? ['/welcome/getting-started/installation/timeweb']
+            : []),
         ],
       },
       {

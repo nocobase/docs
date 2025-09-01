@@ -14,6 +14,8 @@ yarn dev:en
 yarn dev:fr
 # または、日本語のドキュメントを実行する
 yarn dev:ja
+# или запустите русскоязычный раздел
+yarn dev:ru
 ```
 
 Note: `yarn dev` and `yarn dev:en` cannot be run at the same time
