@@ -6,7 +6,7 @@
 
 NocoBase 提供了数据源管理插件，用于管理数据源及其数据表。数据源管理插件只是提供所有数据源的管理界面，并不提供接入数据源的能力，它需要和各种数据源插件搭配使用。目前支持接入的数据源包括：
 
-- [Main Database](/handbook/data-source-main)：NocoBase 主数据库，支持 MySQL、PostgreSQL、SQLite 等关系型数据库。
+- [Main Database](/handbook/data-source-main)：NocoBase 主数据库，支持 MySQL、PostgreSQL、MariaDB 等关系型数据库。
 - [External MySQL](/handbook/data-source-external-mysql)：使用外部的 MySQL 数据库作为数据源。
 - [External MariaDB](/handbook/data-source-external-mariadb)：使用外部的 MariaDB 数据库作为数据源。
 - [External PostgreSQL](/handbook/data-source-external-postgres)：使用外部的 PostgreSQL 数据库作为数据源。

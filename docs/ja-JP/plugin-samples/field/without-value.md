@@ -19,7 +19,7 @@
 [最初のプラグインを作成する](/development/your-fisrt-plugin)のドキュメントに従い、プロジェクトがない場合は新しく作成します。すでにプロジェクトがある場合やソースコードをクローンした場合は、この手順をスキップしてください。
 
 ```bash
-yarn create nocobase-app my-nocobase-app -d sqlite
+yarn create nocobase-app my-nocobase-app -d postgres
 cd my-nocobase-app
 yarn install
 yarn nocobase install

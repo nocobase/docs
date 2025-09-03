@@ -46,7 +46,6 @@ cd my-nocobase
 ```bash
 $ yarn config set disable-self-update-check true
 $ yarn config set registry https://registry.npmmirror.com/
-$ yarn config set sqlite3_binary_host_mirror https://npmmirror.com/mirrors/sqlite3/
 ```
 
 📢 由于网络环境、系统配置等因素影响，接下来这一步骤可能需要十几分钟时间。

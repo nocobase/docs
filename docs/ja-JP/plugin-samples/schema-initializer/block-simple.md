@@ -25,7 +25,7 @@ NocoBaseには、インターフェースにブロックを追加するための
 私たちは[最初のプラグインを書く](/development/your-fisrt-plugin)のドキュメントに従い、プロジェクトがなければ新たに作成します。すでにプロジェクトがある場合やソースコードをクローンした場合はこのステップをスキップしてください。
 
 ```bash
-yarn create nocobase-app my-nocobase-app -d sqlite
+yarn create nocobase-app my-nocobase-app -d postgres
 cd my-nocobase-app
 yarn install
 yarn nocobase install

@@ -17,8 +17,12 @@ const { Database } = require('@nocobase/database');
 
 // SQLite データベース設定パラメータ
 const database = new Database({
-  dialect: 'sqlite',
-  storage: 'path/to/database.sqlite'
+  dialect: 'mysql',
+  host: 'localhost',
+  port: 3306,
+  database: 'nocobase',
+  username: 'root',
+  password: 'password'
 })
 
 // MySQL \ PostgreSQL データベース設定パラメータ
@@ -193,7 +197,7 @@ db.addMigrations({
 
 | パラメータ名    | タイプ       | デフォルト値 | 説明                                             |
 | --------- | ---------- | ------ | ------------------------------------------------ |
-| `dialect` | `string[]` | -      | データベースタイプ、オプションは `mysql`/`postgres`/`sqlite` |
+| `dialect` | `string[]` | -      | データベースタイプ、オプションは `mysql`/`postgres`/`mariadb` |
 
 ### `getTablePrefix()`
 

@@ -25,7 +25,7 @@ You can view the complete sample code in [plugin-samples](https://github.com/noc
 Following the instructions in the [Writing Your First Plugin](/development/your-first-plugin) document, you can create a project if one does not already exist. If you have an existing project or cloned the source code, skip this step.
 
 ```bash
-yarn create nocobase-app my-nocobase-app -d sqlite
+yarn create nocobase-app my-nocobase-app -d postgres
 cd my-nocobase-app
 yarn install
 yarn nocobase install

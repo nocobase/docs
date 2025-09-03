@@ -17,8 +17,12 @@ const { Database } = require('@nocobase/database');
 
 // SQLite 数据库配置参数
 const database = new Database({
-  dialect: 'sqlite',
-  storage: 'path/to/database.sqlite'
+  dialect: 'mysql',
+  host: 'localhost',
+  port: 3306,
+  database: 'nocobase',
+  username: 'root',
+  password: 'password'
 })
 
 // MySQL \ PostgreSQL 数据库配置参数
@@ -193,7 +197,7 @@ db.addMigrations({
 
 | 参数名    | 类型       | 默认值 | 描述                                             |
 | --------- | ---------- | ------ | ------------------------------------------------ |
-| `dialect` | `string[]` | -      | 数据库类型，可选值为 `mysql`/`postgres`/`sqlite` |
+| `dialect` | `string[]` | -      | 数据库类型，可选值为 `mysql`/`postgres`/`mariadb` |
 
 ### `getTablePrefix()`
 

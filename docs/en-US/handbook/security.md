@@ -6,9 +6,13 @@ NocoBase focuses on the security of data and applications from functional design
 
 User authentication is used to identify user identities, prevent users from entering the system without authorization, and ensure that user identities are not abused.
 
+### Token Key
+
+By default, NocoBase uses JWT (JSON Web Token) for authentication of server-side APIs. Users can set the Token key through the system environment variable `APP_KEY`. Please properly manage the application's Token key to prevent external leakage. Note that if `APP_KEY` is modified, old Tokens will also become invalid.
+
 ### Token Policy
 
-By default, NocoBase uses JWT (JSON Web Token) for authentication of server-side APIs and supports the setting of the following Token policies:
+NocoBase supports the setting of the following Token policies:
 
 | Configuration Item | Description |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -27,6 +31,16 @@ Usually, we recommend administrators:
 By default, user Tokens are stored in the browser's LocalStorage. After closing the browser page and opening it again, if the Token is still valid, the user does not need to log in again.
 
 If you want users to log in again every time they enter the page, you can set the environment variable `API_CLIENT_STORAGE_TYPE=sessionStorage` to save the user Token to the browser's SessionStorage, so as to achieve the purpose of users logging in again every time they open the page.
+
+### Root User
+
+When NocoBase is initially installed, the application will initialize a root user. It is recommended that users modify the root user's information by setting system environment variables to avoid malicious exploitation.
+
+- `INIT_ROOT_USERNAME` - root username
+- `INIT_ROOT_EMAIL` - root user email
+- `INIT_ROOT_PASSWORD` - root user password, please set a strong password.
+
+During subsequent use of the system, it is recommended that users set up and use other administrator accounts, and avoid directly using the root user to operate the application.
 
 ### Password Policy
 
@@ -76,6 +90,17 @@ Usually, we recommend:
 Manage users who are locked out for exceeding the invalid password login limit. You can actively unlock them or actively add abnormal users to the lockout list. After a user is locked, they will be prohibited from accessing the system through any authentication method, including API keys.
 
 ![](https://static-docs.nocobase.com/202501031618399.png)
+
+### API Keys
+
+NocoBase supports calling system APIs through API keys. Users can add API keys in the API Keys plugin configuration.
+
+- Please bind the correct role to the API key and ensure that the permissions associated with the role are properly configured.
+- Prevent API keys from being leaked during use.
+- Generally, we recommend that users set a validity period for API keys and avoid using the "Never expire" option.
+- If an API key is found to be abnormally used and may be at risk of leakage, users can delete the corresponding API key to invalidate it.
+
+![](https://static-docs.nocobase.com/46141872fc0ad9a96fa5b14e97fcba12.png)
 
 ### Single Sign-On (SSO)
 
