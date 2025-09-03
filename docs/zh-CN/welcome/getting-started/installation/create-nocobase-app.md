@@ -29,7 +29,6 @@ $ yarn -v
 ```bash
 $ yarn config set disable-self-update-check true
 $ yarn config set registry https://registry.npmmirror.com/
-$ yarn config set sqlite3_binary_host_mirror https://npmmirror.com/mirrors/sqlite3/
 ```
 
 ## 1. 创建 NocoBase 项目

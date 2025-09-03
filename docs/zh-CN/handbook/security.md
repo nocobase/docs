@@ -124,7 +124,7 @@ NocoBase 支持对用户访问 IP 设置黑名单或白名单。
 在初次安装 NocoBase 的时候，应用会初始化一个 root 用户。建议用户通过设置系统环境变量修改 root 用户的相关信息，避免被恶意利用。
 
 - `INIT_ROOT_USERNAME` - root 用户名
-- `INIT_ROOT_PASSWORD` - root 用户邮箱
+- `INIT_ROOT_EMAIL` - root 用户邮箱
 - `INIT_ROOT_PASSWORD` - root 用户密码，请设置一个高强度的密码。
 
 在后续使用系统的过程中，建议用户设置并使用其他管理员账号，尽量避免直接使用 root 用户操作应用。

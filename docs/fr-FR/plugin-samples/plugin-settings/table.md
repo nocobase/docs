@@ -15,7 +15,7 @@ The complete example code for this document can be found in [plugin-samples](htt
 Following the instructions in [Writing Your First Plugin](/development/your-first-plugin), if you don't have a project yet, you can create one first. If you already have a project or have cloned the source code, you can skip this step.
 
 ```bash
-yarn create nocobase-app my-nocobase-app -d sqlite
+yarn create nocobase-app my-nocobase-app -d postgres
 cd my-nocobase-app
 yarn install
 yarn nocobase install

@@ -85,7 +85,7 @@
   'mysql2',
   'pg',
   'pg-hstore',
-  'sqlite3',
+  
   'supertest',
   'axios',
   '@emotion/css',

@@ -10,7 +10,7 @@ NocoBase 的数据源可以是常见的各类数据库、API（SDK）平台和�
 
 NocoBase 提供了[数据源管理插件](/handbook/data-source-manager)，用于管理各数据源及其数据表。数据源管理插件只是提供所有数据源的管理界面，并不提供接入数据源的能力，它需要和各种数据源插件搭配使用。目前支持的数据源包括：
 
-- [Main Database](/handbook/data-source-main)：NocoBase 主数据库，支持 MySQL、PostgreSQL、SQLite 等关系型数据库。
+- [Main Database](/handbook/data-source-main)：NocoBase 主数据库，支持 MySQL、PostgreSQL、MariaDB 等关系型数据库。
 - [External MySQL](/handbook/data-source-external-mysql)：使用外部的 MySQL 数据库作为数据源。
 - [External MariaDB](/handbook/data-source-external-mariadb)：使用外部的 MariaDB 数据库作为数据源。
 - [External PostgreSQL](/handbook/data-source-external-postgres)：使用外部的 PostgreSQL 数据库作为数据源。
@@ -36,7 +36,7 @@ NocoBase 提供了[数据源管理插件](/handbook/data-source-manager)，用�
 | [树表](/handbook/collection-tree) | 树结构表，目前只支持邻接表设计 |
 | [日历表](/handbook/calendar/calendar-collection) | 用于创建日历相关的事件表 |
 | [文件表](/handbook/file-manager/file-collection) | 用于文件存储的管理 |
-| [评论表](/handbook/comments/comment-collection) | 用于存储对数据的评论或反馈 |
+| [评论表](/handbook/collection-comments/comment-collection) | 用于存储对数据的评论或反馈 |
 | [表达式表](/handbook/workflow-dynamic-calculation/expression) | 用于工作流的动态表达式场景 |
 | [SQL 表](/handbook/collection-sql) | 并不是实际的数据库表，而是快速的将 SQL 查询，结构化的展示出来 |
 | [视图表](/handbook/collection-view) | 连接已有的数据库视图 |

@@ -52,7 +52,7 @@ services:
       # Changing APP_KEY will invalidate existing tokens.
       # Use any random string and keep it confidential.
       - APP_KEY=your-secret-key
-      # Database dialect; supports postgres, mysql, mariadb, sqlite
+      # Database dialect; supports postgres, mysql, mariadb
       - DB_DIALECT=mariadb
       # Database host; can be replaced with an existing database server's IP
       - DB_HOST=mariadb

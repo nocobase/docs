@@ -126,26 +126,14 @@ PLUGIN_PACKAGE_PREFIX=@nocobase/plugin-,@nocobase/preset-,@my-nocobase-app/plugi
 
 ### DB_DIALECT
 
-データベースの種類です。デフォルト値は `sqlite` で、選択肢は以下の通りです：
+データベースの種類です。選択肢は以下の通りです：
 
-- `sqlite`
 - `mariadb`
 - `mysql`
 - `postgres`
 
 ```bash
 DB_DIALECT=mysql
-```
-
-### DB_STORAGE
-
-データベースファイルのパス（SQLiteデータベースを使用する場合に設定します）。
-
-```bash
-# 相対パス
-DB_STORAGE=storage/db/nocobase.db
-# 絶対パス
-DB_STORAGE=/your/path/nocobase.db
 ```
 
 ### DB_HOST

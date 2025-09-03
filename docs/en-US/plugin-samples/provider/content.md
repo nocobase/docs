@@ -15,7 +15,7 @@ You can view the complete example code in the [plugin-samples](https://github.co
 Follow the instructions in the [Writing Your First Plugin](/development/your-fisrt-plugin) guide. If you don't already have a project, you can create one. If you already have a project or have cloned the source code, you can skip this step.
 
 ```bash
-yarn create nocobase-app my-nocobase-app -d sqlite
+yarn create nocobase-app my-nocobase-app -d postgres
 cd my-nocobase-app
 yarn install
 yarn nocobase install

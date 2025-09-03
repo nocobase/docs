@@ -11,7 +11,7 @@
 [最初のプラグインを書く](/development/your-first-plugin) のドキュメントに従い、プロジェクトがない場合は新たに作成し、すでにプロジェクトがある場合やコードをクローンした場合はこのステップをスキップします。
 
 ```bash
-yarn create nocobase-app my-nocobase-app -d sqlite
+yarn create nocobase-app my-nocobase-app -d postgres
 cd my-nocobase-app
 yarn install
 yarn nocobase install

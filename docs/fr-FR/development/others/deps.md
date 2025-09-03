@@ -85,7 +85,7 @@ When installing the following dependencies for the plugin, ensure that their **v
   'mysql2',
   'pg',
   'pg-hstore',
-  'sqlite3',
+  
   'supertest',
   'axios',
   '@emotion/css',

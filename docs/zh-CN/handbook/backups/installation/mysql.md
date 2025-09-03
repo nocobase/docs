@@ -50,7 +50,7 @@ services:
       # 如果 APP_KEY 修改了，旧的 token 也会随之失效
       # 可以是任意随机字符串，并确保不对外泄露
       - APP_KEY=your-secret-key
-      # 数据库类型，支持 postgres, mysql, mariadb, sqlite
+      # 数据库类型，支持 postgres, mysql, mariadb
       - DB_DIALECT=postgres
       # 数据库主机，可以替换为已有的数据库服务器 IP
       - DB_HOST=postgres

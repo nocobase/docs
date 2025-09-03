@@ -124,26 +124,14 @@ PLUGIN_PACKAGE_PREFIX=@nocobase/plugin-,@nocobase-preset-,@my-nocobase-app/plugi
 
 ### DB_DIALECT
 
-数据库类型，默认值 `sqlite`，可选项包括：
+数据库类型，可选项包括：
 
-- `sqlite`
 - `mariadb`
 - `mysql`
 - `postgres`
 
 ```bash
 DB_DIALECT=mysql
-```
-
-### DB_STORAGE
-
-数据库文件路径（使用 SQLite 数据库时配置）
-
-```bash
-# 相对路径
-DB_STORAGE=storage/db/nocobase.db
-# 绝对路径
-DB_STORAGE=/your/path/nocobase.db
 ```
 
 ### DB_HOST

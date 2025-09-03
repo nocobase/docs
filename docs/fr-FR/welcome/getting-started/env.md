@@ -118,25 +118,14 @@ La correspondance entre le nom du plugin et le nom du package est :
 
 ### DB_DIALECT
 
-Type de base de données, la valeur par défaut est `sqlite`, les options incluent
+Type de base de données, les options incluent
 
-- `sqlite`
 - `mysql`
 - `postgres`
+- `mariadb`
 
 ```bash
 DB_DIALECT=mysql
-```
-
-### DB_STORAGE
-
-Chemin du fichier de base de données (obligatoire lors de l'utilisation d'une base de données SQLite)
-
-```bash
-### Chemin relatif
-DB_STORAGE=storage/db/nocobase.db
-# Chemin absolu
-DB_STORAGE=/your/path/nocobase.db
 ```
 
 ### DB_HOST

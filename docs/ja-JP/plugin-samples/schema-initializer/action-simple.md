@@ -25,7 +25,7 @@ NocoBase には、インターフェースに操作ボタンを追加するた�
 [最初のプラグインを書く](/development/your-first-plugin) のドキュメントに従い、プロジェクトがない場合は新しく作成し、すでにある場合やクローンしたソースコードがある場合はこのステップをスキップしてください。
 
 ```bash
-yarn create nocobase-app my-nocobase-app -d sqlite
+yarn create nocobase-app my-nocobase-app -d postgres
 cd my-nocobase-app
 yarn install
 yarn nocobase install

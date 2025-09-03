@@ -15,10 +15,14 @@ In `Database` constructor, database connection can be configured by passing the 
 ```javascript
 const { Database } = require('@nocobase/database');
 
-// SQLite database configuration parameters
+// MySQL database configuration parameters
 const database = new Database({
-  dialect: 'sqlite',
-  storage: 'path/to/database.sqlite'
+  dialect: 'mysql',
+  host: 'localhost',
+  port: 3306,
+  database: 'nocobase',
+  username: 'root',
+  password: 'password'
 })
 
 // MySQL \ PostgreSQL database configuration parameters
@@ -193,7 +197,7 @@ Check whether the current database type is the specified type.
 
 | Name      | Type       | Default | Description                                                 |
 | --------- | ---------- | ------- | ----------------------------------------------------------- |
-| `dialect` | `string[]` | -       | Database type, options are `mysql`, `postgres` and `sqlite` |
+| `dialect` | `string[]` | -       | Database type, options are `mysql`, `postgres` and `mariadb` |
 
 ### `getTablePrefix()`
 
