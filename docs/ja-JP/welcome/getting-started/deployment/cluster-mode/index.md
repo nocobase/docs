@@ -130,7 +130,9 @@ LOCK_ADAPTER_REDIS_URL=
 #### 消息队列
 
 ```ini
-# Redis 消息队列适配器，默认不填为 redis://localhost:6379/0
+# Enable Redis as the message queue adapter, default is in-memory adapter if not set
+QUEUE_ADAPTER=redis
+# Redis message queue adapter connection address; default is redis://localhost:6379/0 if not set
 QUEUE_ADAPTER_REDIS_URL=
 ```
 

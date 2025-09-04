@@ -129,7 +129,9 @@ LOCK_ADAPTER_REDIS_URL=
 #### Message Queue
 
 ```ini
-# Redis message queue adapter; default is redis://localhost:6379/0 if not set
+# Enable Redis as the message queue adapter, default is in-memory adapter if not set
+QUEUE_ADAPTER=redis
+# Redis message queue adapter connection address; default is redis://localhost:6379/0 if not set
 QUEUE_ADAPTER_REDIS_URL=
 ```
 

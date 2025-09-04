@@ -130,7 +130,9 @@ LOCK_ADAPTER_REDIS_URL=
 #### 消息队列
 
 ```ini
-# Redis 消息队列适配器，默认不填为 redis://localhost:6379/0
+# 启用 Redis 作为消息队列适配器，默认不填为内存适配器
+QUEUE_ADAPTER=redis
+# Redis 消息队列适配器连接地址，默认不填为 redis://localhost:6379/0
 QUEUE_ADAPTER_REDIS_URL=
 ```
 
