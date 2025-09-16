@@ -37,7 +37,21 @@ if (lang==='zh-CN'){
 
 export default defineConfig({
   hash: true,
-  alias: {},
+  alias: {
+    'cytoscape/dist/cytoscape.umd.js': require.resolve('cytoscape/dist/cytoscape.umd.js'),
+  },
+  chainWebpack(config) {
+    // 处理 cytoscape 导入问题
+    config.module
+      .rule('mjs')
+      .test(/\.mjs$/)
+      .include
+      .add(/node_modules/)
+      .end()
+      .type('javascript/auto');
+    
+    return config;
+  },
   exportStatic: {
     ignorePreRenderError: true,
   },

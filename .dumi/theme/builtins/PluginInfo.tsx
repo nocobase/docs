@@ -48,7 +48,8 @@ const PluginInfo: React.FC<PluginInfoProps> = (props) => {
   const { name, link, plugins, commercial, licenseBundled, deprecated } = props;
   const { themeConfig } = useSiteData();
   const lang = themeConfig.lang || 'en-US';
-  const t = messages[lang];
+  // Fallback to en-US if language is not available
+  const t = messages[lang] || messages['en-US'];
 
   const edition = licenseBundled && licenseBundled === 'enterprise' 
     ? t.enterpriseEdition 
@@ -62,11 +63,13 @@ const PluginInfo: React.FC<PluginInfoProps> = (props) => {
     const paths = {
       'zh-CN': '/cn/commercial',
       'ja-JP': '/jp/commercial',
-      'en-US': '/en/commercial'
+      'en-US': '/en/commercial',
+      'ru-RU': '/en/commercial',  // Fallback to English for Russian
+      'fr-FR': '/en/commercial'   // Fallback to English for French
     };
     
     return (
-      <a target="_blank" rel="noreferrer" href={`${t.commercialBaseUrl}${paths[lang]}`}>
+      <a target="_blank" rel="noreferrer" href={`${t.commercialBaseUrl}${paths[lang] || paths['en-US']}`}>
         {text}
       </a>
     );
@@ -76,11 +79,13 @@ const PluginInfo: React.FC<PluginInfoProps> = (props) => {
     const paths = {
       'zh-CN': '/cn/plugins',
       'ja-JP': '/jp/plugins',
-      'en-US': '/en/plugins'
+      'en-US': '/en/plugins',
+      'ru-RU': '/en/plugins',  // Fallback to English for Russian
+      'fr-FR': '/en/plugins'   // Fallback to English for French
     };
     
     return (
-      <a target="_blank" rel="noreferrer" href={`${t.commercialBaseUrl}${paths[lang]}`}>
+      <a target="_blank" rel="noreferrer" href={`${t.commercialBaseUrl}${paths[lang] || paths['en-US']}`}>
         {t.commercialLicense}
       </a>
     );
