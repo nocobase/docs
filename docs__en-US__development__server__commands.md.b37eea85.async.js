@@ -1,0 +1,17 @@
+"use strict";(self.webpackChunknocobase_docs=self.webpackChunknocobase_docs||[]).push([[31938],{657287:function(d,o,_){_.r(o);var s=_(572269),c=_(793359),m=_(861788),a=_(719977),h=_(20190),t=_(24268),v=_(496057),x=_(585939),E=_(28484),p=_(635206),I=_(375553),P=_(156266),M=_(572333),D=_(841118),O=_(39297),f=_(868526),j=_(605019),i=_(614651),l=_(280936),r=_(667294),n=_(409061),e=_(785893);function u(){return(0,e.jsx)(i.dY,{children:(0,e.jsx)(r.Suspense,{fallback:(0,e.jsx)(l.Z,{}),children:(0,e.jsxs)(e.Fragment,{children:[(0,e.jsxs)("div",{className:"markdown",children:[(0,e.jsxs)("h1",{id:"commands",children:[(0,e.jsx)("a",{"aria-hidden":"true",tabIndex:"-1",href:"#commands",children:(0,e.jsx)("span",{className:"icon icon-link"})}),"Commands"]}),(0,e.jsxs)("p",{children:[n.texts[0].value,(0,e.jsx)("code",{children:n.texts[1].value}),n.texts[2].value]}),(0,e.jsx)(t.Z,{lang:"ts",children:n.texts[3].value})]}),(0,e.jsx)(a.Z,{type:"warning",children:(0,e.jsx)("p",{children:n.texts[4].value})}),(0,e.jsxs)("div",{className:"markdown",children:[(0,e.jsx)("p",{children:n.texts[5].value}),(0,e.jsxs)("ul",{children:[(0,e.jsxs)("li",{children:[(0,e.jsx)("code",{children:n.texts[6].value}),n.texts[7].value,(0,e.jsx)("code",{children:n.texts[8].value}),n.texts[9].value]}),(0,e.jsxs)("li",{children:[(0,e.jsx)("code",{children:n.texts[10].value}),n.texts[11].value]}),(0,e.jsxs)("li",{children:[(0,e.jsx)("code",{children:n.texts[12].value}),n.texts[13].value,(0,e.jsx)("code",{children:n.texts[14].value}),n.texts[15].value]})]}),(0,e.jsx)("p",{children:n.texts[16].value}),(0,e.jsx)(t.Z,{lang:"ts",children:n.texts[17].value})]})]})})})}o.default=u},409061:function(d,o,_){_.r(o),_.d(o,{texts:function(){return s}});const s=[{value:"In a plugin, custom commands must be located in the ",paraId:0,tocIndex:0},{value:"src/server/commands/*.ts",paraId:0,tocIndex:0},{value:" directory of the plugin. The content should look like this:",paraId:0,tocIndex:0},{value:`import { Application } from '@nocobase/server';
+
+export default function(app: Application) {
+  app
+    .command('echo')
+    .option('-v, --version')
+    .action(async ([options]) => {
+      console.log('Hello World!');
+      if (options.version) {
+        console.log('Current version:', await app.version.get());
+      }
+    });
+}
+`,paraId:1,tocIndex:0},{value:"Custom commands in the plugin are only effective after the plugin is installed and activated.",paraId:2},{value:"Special Configurations for Commands:",paraId:3},{value:"ipc()",paraId:4},{value:" When the app is running, the command-line sends instructions through ipc to operate on the running app instance. Without the ",paraId:4},{value:"ipc()",paraId:4},{value:" configuration, a new application instance will be created to execute the command (this will not interfere with the running app instance).",paraId:4},{value:"auth()",paraId:4},{value:" Performs database verification. If the database configuration is incorrect, the command will not be executed.",paraId:4},{value:"preload()",paraId:4},{value:" Determines whether to pre-load the application configuration, i.e., execute ",paraId:4},{value:"app.load()",paraId:4},{value:".",paraId:4},{value:"These configurations can be adjusted according to the actual use of the command, as shown in the examples below:",paraId:5},{value:`app.command('a').ipc().action()
+app.command('a').auth().action()
+app.command('a').preload().action()
+`,paraId:6}]}}]);

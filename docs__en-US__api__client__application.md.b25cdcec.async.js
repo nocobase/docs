@@ -1,0 +1,21 @@
+"use strict";(self.webpackChunknocobase_docs=self.webpackChunknocobase_docs||[]).push([[13573],{797723:function(t,d,n){n.r(d);var s=n(572269),c=n(793359),u=n(861788),x=n(719977),h=n(20190),o=n(24268),m=n(496057),v=n(585939),I=n(28484),E=n(635206),P=n(375553),p=n(156266),j=n(572333),M=n(841118),D=n(39297),O=n(868526),C=n(605019),i=n(614651),r=n(280936),a=n(667294),_=n(438409),e=n(785893);function l(){return(0,e.jsx)(i.dY,{children:(0,e.jsx)(a.Suspense,{fallback:(0,e.jsx)(r.Z,{}),children:(0,e.jsx)(e.Fragment,{children:(0,e.jsxs)("div",{className:"markdown",children:[(0,e.jsxs)("h1",{id:"application",children:[(0,e.jsx)("a",{"aria-hidden":"true",tabIndex:"-1",href:"#application",children:(0,e.jsx)("span",{className:"icon icon-link"})}),"Application"]}),(0,e.jsxs)("h2",{id:"constructor",children:[(0,e.jsx)("a",{"aria-hidden":"true",tabIndex:"-1",href:"#constructor",children:(0,e.jsx)("span",{className:"icon icon-link"})}),"Constructor"]}),(0,e.jsxs)("h3",{id:"constructor-1",children:[(0,e.jsx)("a",{"aria-hidden":"true",tabIndex:"-1",href:"#constructor-1",children:(0,e.jsx)("span",{className:"icon icon-link"})}),(0,e.jsx)("code",{children:_.texts[0].value})]}),(0,e.jsx)("p",{children:_.texts[1].value}),(0,e.jsx)("p",{children:(0,e.jsx)("strong",{children:_.texts[2].value})}),(0,e.jsx)("ul",{children:(0,e.jsx)("li",{children:(0,e.jsx)("code",{children:_.texts[3].value})})}),(0,e.jsx)("p",{children:(0,e.jsx)("strong",{children:_.texts[4].value})}),(0,e.jsx)(o.Z,{lang:"ts",children:_.texts[5].value}),(0,e.jsxs)("h2",{id:"methods",children:[(0,e.jsx)("a",{"aria-hidden":"true",tabIndex:"-1",href:"#methods",children:(0,e.jsx)("span",{className:"icon icon-link"})}),"Methods"]}),(0,e.jsxs)("h3",{id:"use",children:[(0,e.jsx)("a",{"aria-hidden":"true",tabIndex:"-1",href:"#use",children:(0,e.jsx)("span",{className:"icon icon-link"})}),"use()"]}),(0,e.jsx)("p",{children:_.texts[6].value}),(0,e.jsxs)("ul",{children:[(0,e.jsx)("li",{children:_.texts[7].value}),(0,e.jsx)("li",{children:_.texts[8].value}),(0,e.jsx)("li",{children:_.texts[9].value}),(0,e.jsx)("li",{children:_.texts[10].value}),(0,e.jsx)("li",{children:_.texts[11].value}),(0,e.jsx)("li",{children:_.texts[12].value}),(0,e.jsx)("li",{children:_.texts[13].value}),(0,e.jsx)("li",{children:_.texts[14].value}),(0,e.jsx)("li",{children:_.texts[15].value}),(0,e.jsx)("li",{children:_.texts[16].value}),(0,e.jsx)("li",{children:_.texts[17].value})]}),(0,e.jsxs)("h3",{id:"render",children:[(0,e.jsx)("a",{"aria-hidden":"true",tabIndex:"-1",href:"#render",children:(0,e.jsx)("span",{className:"icon icon-link"})}),"render()"]}),(0,e.jsx)("p",{children:_.texts[18].value}),(0,e.jsx)(o.Z,{lang:"ts",children:_.texts[19].value})]})})})})}d.default=l},438409:function(t,d,n){n.r(d),n.d(d,{texts:function(){return s}});const s=[{value:"constructor()",paraId:0},{value:"Create an application instance.",paraId:1,tocIndex:2},{value:"Signature",paraId:2,tocIndex:2},{value:"constructor(options: ApplicationOptions)",paraId:3,tocIndex:2},{value:"Example",paraId:4,tocIndex:2},{value:`const app = new Application({
+  apiClient: {
+    baseURL: process.env.API_BASE_URL,
+  },
+  dynamicImport: (name: string) => {
+    return import(\`../plugins/\${name}\`);
+  },
+});
+`,paraId:5,tocIndex:2},{value:"Add Providers, build-in Providers are:",paraId:6,tocIndex:4},{value:"APIClientProvider",paraId:7,tocIndex:4},{value:"I18nextProvider",paraId:7,tocIndex:4},{value:"AntdConfigProvider",paraId:7,tocIndex:4},{value:"SystemSettingsProvider",paraId:7,tocIndex:4},{value:"PluginManagerProvider",paraId:7,tocIndex:4},{value:"SchemaComponentProvider",paraId:7,tocIndex:4},{value:"SchemaInitializerProvider",paraId:7,tocIndex:4},{value:"BlockSchemaComponentProvider",paraId:7,tocIndex:4},{value:"AntdSchemaComponentProvider",paraId:7,tocIndex:4},{value:"ACLProvider",paraId:7,tocIndex:4},{value:"RemoteDocumentTitleProvider",paraId:7,tocIndex:4},{value:"Component to render the App.",paraId:8,tocIndex:5},{value:`import { Application } from '@nocobase/client';
+
+export const app = new Application({
+  apiClient: {
+    baseURL: process.env.API_BASE_URL,
+  },
+  dynamicImport: (name: string) => {
+    return import(\`../plugins/\${name}\`);
+  },
+});
+
+export default app.render();
+`,paraId:9,tocIndex:5}]}}]);

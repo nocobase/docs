@@ -1,0 +1,197 @@
+"use strict";(self.webpackChunknocobase_docs=self.webpackChunknocobase_docs||[]).push([[87005],{424649:function(l,o,a){a.r(o);var t=a(572269),m=a(793359),p=a(861788),d=a(719977),h=a(20190),s=a(24268),v=a(496057),x=a(585939),b=a(28484),g=a(635206),D=a(375553),I=a(156266),E=a(572333),f=a(841118),P=a(39297),j=a(868526),i=a(605019),r=a(614651),c=a(280936),_=a(667294),n=a(695125),e=a(785893);function u(){return(0,e.jsx)(r.dY,{children:(0,e.jsx)(_.Suspense,{fallback:(0,e.jsx)(c.Z,{}),children:(0,e.jsxs)(e.Fragment,{children:[(0,e.jsxs)("div",{className:"markdown",children:[(0,e.jsxs)("h1",{id:"docker--recommended",children:[(0,e.jsx)("a",{"aria-hidden":"true",tabIndex:"-1",href:"#docker--recommended",children:(0,e.jsx)("span",{className:"icon icon-link"})}),"Docker (\u{1F44D} Recommended)"]}),(0,e.jsxs)("h2",{id:"0-prerequisites",children:[(0,e.jsx)("a",{"aria-hidden":"true",tabIndex:"-1",href:"#0-prerequisites",children:(0,e.jsx)("span",{className:"icon icon-link"})}),"0. Prerequisites"]}),(0,e.jsxs)("p",{children:[n.texts[0].value,(0,e.jsx)("a",{href:"https://docs.docker.com/get-docker/",children:n.texts[1].value})]}),(0,e.jsxs)("h2",{id:"1-create-a-docker-composeyml-file",children:[(0,e.jsx)("a",{"aria-hidden":"true",tabIndex:"-1",href:"#1-create-a-docker-composeyml-file",children:(0,e.jsx)("span",{className:"icon icon-link"})}),"1. Create a ",(0,e.jsx)("code",{children:n.texts[2].value})," file"]}),(0,e.jsx)(s.Z,{lang:"bash",children:n.texts[3].value}),(0,e.jsxs)("h2",{id:"2-configure-docker-composeyml",children:[(0,e.jsx)("a",{"aria-hidden":"true",tabIndex:"-1",href:"#2-configure-docker-composeyml",children:(0,e.jsx)("span",{className:"icon icon-link"})}),"2. Configure ",(0,e.jsx)("code",{children:n.texts[4].value})]}),(0,e.jsxs)("p",{children:[n.texts[5].value,(0,e.jsx)("code",{children:n.texts[6].value}),n.texts[7].value]})]}),(0,e.jsxs)(i.Z,{children:[(0,e.jsx)("div",{label:"PostgreSQL",name:"postgres",children:(0,e.jsx)(s.Z,{lang:"yml",children:n.texts[8].value})}),(0,e.jsx)("div",{label:"MySQL",name:"mysql",children:(0,e.jsx)(s.Z,{lang:"yml",children:n.texts[9].value})}),(0,e.jsx)("div",{label:"MariaDB",name:"mariadb",children:(0,e.jsx)(s.Z,{lang:"yml",children:n.texts[10].value})})]}),(0,e.jsxs)("div",{className:"markdown",children:[(0,e.jsxs)("p",{children:[n.texts[11].value,(0,e.jsx)(r.rU,{to:"/welcome/getting-started/installation#which-version-to-install",children:n.texts[12].value})]}),(0,e.jsxs)("ul",{children:[(0,e.jsxs)("li",{children:[(0,e.jsx)("code",{children:n.texts[13].value}),n.texts[14].value,(0,e.jsx)("code",{children:n.texts[15].value}),n.texts[16].value]}),(0,e.jsxs)("li",{children:[(0,e.jsx)("code",{children:n.texts[17].value}),n.texts[18].value,(0,e.jsx)("code",{children:n.texts[19].value}),n.texts[20].value]}),(0,e.jsxs)("li",{children:[(0,e.jsx)("code",{children:n.texts[21].value}),n.texts[22].value,(0,e.jsx)("code",{children:n.texts[23].value}),n.texts[24].value]}),(0,e.jsxs)("li",{children:[(0,e.jsx)("code",{children:n.texts[25].value}),n.texts[26].value,(0,e.jsx)("code",{children:n.texts[27].value}),n.texts[28].value,(0,e.jsx)("a",{href:"https://hub.docker.com/r/nocobase/nocobase/tags",children:n.texts[29].value}),n.texts[30].value]})]})]}),(0,e.jsx)(d.Z,{type:"warning",children:(0,e.jsxs)("ul",{children:[(0,e.jsx)("li",{children:n.texts[31].value}),(0,e.jsxs)("li",{children:[n.texts[32].value,(0,e.jsx)("a",{href:"https://github.com/nocobase/nocobase/blob/main/docker/nocobase/Dockerfile",children:n.texts[33].value}),n.texts[34].value,(0,e.jsx)("a",{href:"https://github.com/nocobase/nocobase/blob/main/docker/nocobase/Dockerfile-full",children:n.texts[35].value})]})]})}),(0,e.jsxs)("div",{className:"markdown",children:[(0,e.jsx)("p",{children:n.texts[36].value}),(0,e.jsx)(s.Z,{lang:"yml",children:n.texts[37].value}),(0,e.jsxs)("h2",{id:"3-install-and-start-nocobase",children:[(0,e.jsx)("a",{"aria-hidden":"true",tabIndex:"-1",href:"#3-install-and-start-nocobase",children:(0,e.jsx)("span",{className:"icon icon-link"})}),"3. Install and start NocoBase"]}),(0,e.jsx)("p",{children:n.texts[38].value}),(0,e.jsx)(s.Z,{lang:"bash",children:n.texts[39].value}),(0,e.jsxs)("h2",{id:"4-log-in-to-nocobase",children:[(0,e.jsx)("a",{"aria-hidden":"true",tabIndex:"-1",href:"#4-log-in-to-nocobase",children:(0,e.jsx)("span",{className:"icon icon-link"})}),"4. Log in to NocoBase"]}),(0,e.jsxs)("p",{children:[n.texts[40].value,(0,e.jsx)("a",{href:"http://localhost:13000",children:n.texts[41].value}),n.texts[42].value,(0,e.jsx)("code",{children:n.texts[43].value}),n.texts[44].value,(0,e.jsx)("code",{children:n.texts[45].value}),n.texts[46].value]})]})]})})})}o.default=u},695125:function(l,o,a){a.r(o),a.d(o,{texts:function(){return t}});const t=[{value:"\u26A1\u26A1 Please make sure you have installed ",paraId:0,tocIndex:1},{value:"Docker",paraId:0,tocIndex:1},{value:"docker-compose.yml",paraId:1},{value:`# Create a folder named my-project (or any other name) to store the system files generated by NocoBase
+mkdir my-project && cd my-project
+
+# Create an empty docker-compose.yml file
+vi docker-compose.yml
+`,paraId:2,tocIndex:2},{value:"docker-compose.yml",paraId:1},{value:"The configuration parameters vary slightly depending on the database. Choose the appropriate database configuration and copy it into the ",paraId:3,tocIndex:3},{value:"docker-compose.yml",paraId:3,tocIndex:3},{value:".",paraId:3,tocIndex:3},{value:`version: '3'
+
+networks:
+  nocobase:
+    driver: bridge
+
+services:
+  app:
+    image: nocobase/nocobase:latest-full
+    restart: always
+    networks:
+      - nocobase
+    depends_on:
+      - postgres
+    environment:
+      # The application's secret key, used to generate user tokens, etc.
+      # If APP_KEY is changed, old tokens will also become invalid.
+      # It can be any random string, and make sure it is not exposed.
+      - APP_KEY=your-secret-key
+      # Database type, supports postgres, mysql, mariadb
+      - DB_DIALECT=postgres
+      # Database host, can be replaced with the IP of an existing database server
+      - DB_HOST=postgres
+      # Database port
+      - DB_PORT=5432
+      # Database name
+      - DB_DATABASE=nocobase
+      # Database user
+      - DB_USER=nocobase
+      # Database password
+      - DB_PASSWORD=nocobase
+      # Timezone
+      - TZ=UTC
+    volumes:
+      - ./storage:/app/nocobase/storage
+    ports:
+      - '13000:80'
+    # init: true
+
+  # If using an existing database server, postgres service can be omitted
+  postgres:
+    image: postgres:16
+    restart: always
+    command: postgres -c wal_level=logical
+    environment:
+      POSTGRES_USER: nocobase
+      POSTGRES_DB: nocobase
+      POSTGRES_PASSWORD: nocobase
+    volumes:
+      - ./storage/db/postgres:/var/lib/postgresql/data
+    networks:
+      - nocobase
+`,paraId:4},{value:`version: '3'
+
+networks:
+  nocobase:
+    driver: bridge
+
+services:
+  app:
+    image: nocobase/nocobase:latest-full
+    restart: always
+    networks:
+      - nocobase
+    depends_on:
+      - mysql
+    environment:
+      # The application's secret key, used to generate user tokens, etc.
+      # If APP_KEY is changed, old tokens will also become invalid.
+      # It can be any random string, and make sure it is not exposed.
+      - APP_KEY=your-secret-key
+      # Database type, supports postgres, mysql, mariadb
+      - DB_DIALECT=mysql
+      # Database host, can be replaced with the IP of an existing database server
+      - DB_HOST=mysql
+      # Database port
+      - DB_PORT=3306
+      # Database name
+      - DB_DATABASE=nocobase
+      # Database user
+      - DB_USER=root
+      # Database password
+      - DB_PASSWORD=nocobase
+      # Whether to convert table and field names to snake case
+      - DB_UNDERSCORED=true
+      # Timezone
+      - TZ=UTC
+    volumes:
+      - ./storage:/app/nocobase/storage
+    ports:
+      - '13000:80'
+    # init: true
+
+  # If using an existing database server, mysql service can be omitted
+  mysql:
+    image: mysql:8
+    environment:
+      MYSQL_DATABASE: nocobase
+      MYSQL_USER: nocobase
+      MYSQL_PASSWORD: nocobase
+      MYSQL_ROOT_PASSWORD: nocobase
+    restart: always
+    volumes:
+      - ./storage/db/mysql:/var/lib/mysql
+    networks:
+      - nocobase
+`,paraId:5},{value:`version: '3'
+
+networks:
+  nocobase:
+    driver: bridge
+
+services:
+  app:
+    image: nocobase/nocobase:latest-full
+    restart: always
+    networks:
+      - nocobase
+    depends_on:
+      - mariadb
+    environment:
+      # The application's secret key, used to generate user tokens, etc.
+      # If APP_KEY is changed, old tokens will also become invalid.
+      # It can be any random string, and make sure it is not exposed.
+      - APP_KEY=your-secret-key
+      # Database type, supports postgres, mysql, mariadb
+      - DB_DIALECT=mariadb
+      # Database host, can be replaced with the IP of an existing database server
+      - DB_HOST=mariadb
+      # Database port
+      - DB_PORT=3306
+      # Database name
+      - DB_DATABASE=nocobase
+      # Database user
+      - DB_USER=root
+      # Database password
+      - DB_PASSWORD=nocobase
+      # Whether to convert table and field names to snake case
+      - DB_UNDERSCORED=true
+      # Timezone
+      - TZ=UTC
+    volumes:
+      - ./storage:/app/nocobase/storage
+    ports:
+      - '13000:80'
+    # init: true
+
+  # If using an existing database server, mariadb service can be omitted
+  mariadb:
+    image: mariadb:11
+    environment:
+      MYSQL_DATABASE: nocobase
+      MYSQL_USER: nocobase
+      MYSQL_PASSWORD: nocobase
+      MYSQL_ROOT_PASSWORD: nocobase
+    restart: always
+    volumes:
+      - ./storage/db/mariadb:/var/lib/mysql
+    networks:
+      - nocobase
+`,paraId:6},{value:"Choose the appropriate NocoBase version, refer to ",paraId:7},{value:"versions",paraId:8},{value:"latest",paraId:9},{value:" ",paraId:9},{value:"latest-full",paraId:9},{value:": Stable and well-tested version and only bug fixed will be made. This version is recommended.",paraId:9},{value:"beta",paraId:9},{value:" ",paraId:9},{value:"beta-full",paraId:9},{value:": This version includes new features that are about to be released and it has been preliminarily tested, but still have known or unknown issues.",paraId:9},{value:"alpha",paraId:9},{value:" ",paraId:9},{value:"alpha-full",paraId:9},{value:": A development version containing the latest features, which may be incomplete or unstable.",paraId:9},{value:"1.7.14",paraId:9},{value:" ",paraId:9},{value:"1.7.14-full",paraId:9},{value:": Specify the version number. To check the latest version, see the ",paraId:9},{value:"list of released versions",paraId:9},{value:".",paraId:9},{value:"The full image includes the PostgreSQL 16/17 client, MySQL 8.0 client, and Oracle 19.25 client required for backup manager and migration manager plugins, as well as LibreOffice required for template printing (PDF).",paraId:10},{value:"If you need to build your own image, you can refer to the official ",paraId:10},{value:"Dockerfile (slim version)",paraId:10},{value:" and ",paraId:10},{value:"Dockerfile-full (full version)",paraId:10},{value:"Example:",paraId:11},{value:`#...
+services:
+  app:
+    # Docker Hub image (recommended full versions)
+    image: nocobase/nocobase:latest-full
+    image: nocobase/nocobase:beta-full
+    image: nocobase/nocobase:alpha-full
+    image: nocobase/nocobase:1.7.14-full
+    # Slim versions (without certain clients and LibreOffice)
+    image: nocobase/nocobase:latest
+    image: nocobase/nocobase:beta
+    image: nocobase/nocobase:alpha
+    image: nocobase/nocobase:1.7.14
+# ...
+`,paraId:12},{value:"It may take a few minutes",paraId:13,tocIndex:4},{value:`# pull service images
+$ docker-compose pull
+# run in the background
+$ docker-compose up -d
+# view app process
+$ docker-compose logs app
+
+app-postgres-app-1  | nginx started
+app-postgres-app-1  | yarn run v1.22.15
+app-postgres-app-1  | $ cross-env DOTENV_CONFIG_PATH=.env node -r dotenv/config packages/app/server/lib/index.js install -s
+app-postgres-app-1  | Done in 2.72s.
+app-postgres-app-1  | yarn run v1.22.15
+app-postgres-app-1  | $ pm2-runtime start --node-args="-r dotenv/config" packages/app/server/lib/index.js -- start
+app-postgres-app-1  | 2022-04-28T15:45:38: PM2 log: Launching in no daemon mode
+app-postgres-app-1  | 2022-04-28T15:45:38: PM2 log: App [index:0] starting in -fork mode-
+app-postgres-app-1  | 2022-04-28T15:45:38: PM2 log: App [index:0] online
+app-postgres-app-1  | \u{1F680} NocoBase server running at: http://localhost:13000/
+`,paraId:14,tocIndex:4},{value:"Open ",paraId:15,tocIndex:5},{value:"http://localhost:13000",paraId:15,tocIndex:5},{value:" in a web browser. The initial account and password are ",paraId:15,tocIndex:5},{value:"admin@nocobase.com",paraId:15,tocIndex:5},{value:" and ",paraId:15,tocIndex:5},{value:"admin123",paraId:15,tocIndex:5},{value:".",paraId:15,tocIndex:5}]}}]);

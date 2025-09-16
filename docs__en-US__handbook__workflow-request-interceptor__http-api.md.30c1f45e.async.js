@@ -1,0 +1,27 @@
+"use strict";(self.webpackChunknocobase_docs=self.webpackChunknocobase_docs||[]).push([[63776],{509379:function(d,o,t){t.r(o);var a=t(572269),c=t(793359),h=t(861788),_=t(719977),m=t(20190),n=t(24268),x=t(496057),v=t(585939),I=t(28484),p=t(635206),E=t(375553),f=t(156266),g=t(572333),P=t(841118),w=t(39297),M=t(868526),O=t(605019),r=t(614651),l=t(280936),i=t(667294),s=t(74402),e=t(785893);function u(){return(0,e.jsx)(r.dY,{children:(0,e.jsx)(i.Suspense,{fallback:(0,e.jsx)(l.Z,{}),children:(0,e.jsxs)(e.Fragment,{children:[(0,e.jsxs)("div",{className:"markdown",children:[(0,e.jsxs)("h1",{id:"http-api",children:[(0,e.jsx)("a",{"aria-hidden":"true",tabIndex:"-1",href:"#http-api",children:(0,e.jsx)("span",{className:"icon icon-link"})}),"HTTP API"]}),(0,e.jsx)("p",{children:s.texts[0].value}),(0,e.jsxs)("p",{children:[s.texts[1].value,(0,e.jsx)("code",{children:s.texts[2].value}),s.texts[3].value]}),(0,e.jsx)(n.Z,{lang:"bash",children:s.texts[4].value}),(0,e.jsxs)("p",{children:[s.texts[5].value,(0,e.jsx)("code",{children:s.texts[6].value}),s.texts[7].value]}),(0,e.jsx)("p",{children:(0,e.jsx)("img",{src:"https://static-docs.nocobase.com/20240426135108.png",alt:"How to view workflow key"})}),(0,e.jsxs)("p",{children:[s.texts[8].value,(0,e.jsx)("code",{children:s.texts[9].value}),s.texts[10].value]}),(0,e.jsxs)("p",{children:[s.texts[11].value,(0,e.jsx)("code",{children:s.texts[12].value}),s.texts[13].value,(0,e.jsx)("code",{children:s.texts[14].value}),s.texts[15].value]}),(0,e.jsx)("p",{children:s.texts[16].value}),(0,e.jsx)(n.Z,{lang:"json",children:s.texts[17].value}),(0,e.jsx)("p",{children:s.texts[18].value}),(0,e.jsx)(n.Z,{lang:"json",children:s.texts[19].value})]}),(0,e.jsx)(_.Z,{type:"info",title:"Note",children:(0,e.jsx)("p",{children:s.texts[20].value})}),(0,e.jsxs)("div",{className:"markdown",children:[(0,e.jsxs)("p",{children:[s.texts[21].value,(0,e.jsx)("code",{children:s.texts[22].value}),s.texts[23].value]}),(0,e.jsx)(n.Z,{lang:"bash",children:s.texts[24].value})]}),(0,e.jsx)(_.Z,{type:"info",title:"Note",children:(0,e.jsx)("p",{children:s.texts[25].value})})]})})})}o.default=u},74402:function(d,o,t){t.r(o),t.d(o,{texts:function(){return a}});const a=[{value:"The pre-operation event is integrated during the request processing phase, enabling it to be triggered via an HTTP API call.",paraId:0,tocIndex:0},{value:"For workflows that are locally bound to an action button, you can trigger them with the following command (using a button for the ",paraId:1,tocIndex:0},{value:"posts",paraId:1,tocIndex:0},{value:" table as an example):",paraId:1,tocIndex:0},{value:`curl -X POST -H 'Authorization: Bearer <your token>' -H 'X-Role: <roleName>' -d \\
+  '{
+    "title": "Hello, world!",
+    "content": "This is a test post."
+  }'
+  "http://localhost:3000/api/posts:create?triggerWorkflows=workflowKey"
+`,paraId:2,tocIndex:0},{value:"The URL parameter ",paraId:3,tocIndex:0},{value:"triggerWorkflows",paraId:3,tocIndex:0},{value:" specifies the key of the workflow, with multiple workflows separated by commas. You can find this key by hovering your mouse over the workflow name at the top of the workflow canvas:",paraId:3,tocIndex:0},{value:"After executing the above command, the corresponding pre-operation event for the ",paraId:4,tocIndex:0},{value:"posts",paraId:4,tocIndex:0},{value:" table will be triggered. Once the associated workflow is processed synchronously, the data will be created and returned as usual.",paraId:4,tocIndex:0},{value:'If the configured workflow reaches an "End process," the request will be intercepted, and no data will be created, following the same logic as an interface operation. If the End Node status is set to failure, the response status code will be ',paraId:5,tocIndex:0},{value:"400",paraId:5,tocIndex:0},{value:"; if successful, it will be ",paraId:5,tocIndex:0},{value:"200",paraId:5,tocIndex:0},{value:".",paraId:5,tocIndex:0},{value:'If a "Response Message" node is configured before the End Node, the generated message will be included in the response. The error message structure is as follows:',paraId:6,tocIndex:0},{value:`{
+  "errors": [
+    {
+      "message": "message from 'Response Message' node"
+    }
+  ]
+}
+`,paraId:7,tocIndex:0},{value:'When the "End Node" is configured as successful, the message structure is as follows:',paraId:8,tocIndex:0},{value:`{
+  "messages": [
+    {
+      "message": "message from 'Response Message' node"
+    }
+  ]
+}
+`,paraId:9,tocIndex:0},{value:'Since multiple "Response Message" nodes can be added within the workflow, the returned message data structure is presented as an array.',paraId:10},{value:"If the pre-operation event is configured globally, there\u2019s no need to specify the corresponding workflow using the URL parameter ",paraId:11},{value:"triggerWorkflows",paraId:11},{value:" when calling the HTTP API. Simply calling the corresponding data table operation will automatically trigger it.",paraId:11},{value:`curl -X POST -H 'Authorization: Bearer <your token>' -H 'X-Role: <roleName>' -d \\
+  '{
+    "title": "Hello, world!",
+    "content": "This is a test post."
+  }'
+  "http://localhost:3000/api/posts:create"
+`,paraId:12},{value:"When triggering post-operation events via an HTTP API call, ensure the workflow is enabled and that the data table configuration matches the expected setup. Otherwise, the call may fail or result in errors.",paraId:13}]}}]);
