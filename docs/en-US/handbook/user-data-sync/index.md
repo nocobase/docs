@@ -15,7 +15,7 @@ This is a built-in plugin and does not require separate installation.
 ![](https://static-docs.nocobase.com/202412041043465.png)
 
 :::info
-If no plugins providing user data synchronization sources are installed, user data can be synchronized using the HTTP API. Refer to [Data Source - HTTP API](./sources/api).
+If no plugins providing user data synchronization sources are installed, user data can be synchronized using the HTTP API. Refer to [Data Source - HTTP API](./sources/api.md).
 :::
 
 ## Adding a Data Source

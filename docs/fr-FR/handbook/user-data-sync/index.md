@@ -15,7 +15,7 @@ Il s'agit d'un plugin intégré qui ne nécessite pas d'installation séparée.
 ![](https://static-docs.nocobase.com/202412041043465.png)
 
 :::info
-Si aucun plugin fournissant des sources de synchronisation des données utilisateur n'est installé, les données utilisateur peuvent être synchronisées via l'API HTTP. Consultez la documentation de [Source de Données - API HTTP](./sources/api).
+Si aucun plugin fournissant des sources de synchronisation des données utilisateur n'est installé, les données utilisateur peuvent être synchronisées via l'API HTTP. Consultez la documentation de [Source de Données - API HTTP](./sources/api.md).
 :::
 
 ## Ajouter une Source de Données
