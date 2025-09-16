@@ -1,6 +1,6 @@
 # 遥測 - Prometheus
 
-<PluginInfo name="telemetry-prometheus" commercial="true"></PluginInfo>
+<PluginInfo name="telemetry-prometheus" licenseBundled="enterprise"></PluginInfo>
 
 ## 紹介
 

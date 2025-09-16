@@ -21,11 +21,6 @@
 修改 .env 文件添加或修改以下相关环境变量配置
 
 ```bash
-# 用于获取商业插件
-NOCOBASE_PKG_URL=https://pkg.nocobase.com/
-NOCOBASE_PKG_USERNAME=your-username   # service platform username
-NOCOBASE_PKG_PASSWORD=your-password   # service platform password
-
 # 根据实际情况调整 DB 相关参数
 DB_DIALECT=kingbase
 DB_HOST=localhost
@@ -52,10 +47,6 @@ networks:
     depends_on:
       - postgres
     environment:
-      # 用于获取商业插件
-      - NOCOBASE_PKG_URL=https://pkg.nocobase.com/
-      - NOCOBASE_PKG_USERNAME=your-username   # service platform username
-      - NOCOBASE_PKG_PASSWORD=your-password   # service platform password
       # 应用的密钥，用于生成用户 token 等
       # 如果 APP_KEY 修改了，旧的 token 也会随之失效
       # 可以是任意随机字符串，并确保不对外泄露
@@ -109,15 +100,6 @@ yarn create nocobase-app my-nocobase-app -d kingbase \
 ```
 
 ### 作为外部数据库使用
-
-修改 .env 文件，添加获取商业插件相关的环境变量
-
-```bash
-# 用于获取商业插件
-NOCOBASE_PKG_URL=https://pkg.nocobase.com/
-NOCOBASE_PKG_USERNAME=your-username   # service platform username
-NOCOBASE_PKG_PASSWORD=your-password   # service platform password
-```
 
 执行安装或升级命令
 

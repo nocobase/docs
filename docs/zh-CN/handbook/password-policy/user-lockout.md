@@ -1,6 +1,6 @@
 # 用户锁定
 
-<PluginInfo licenseBundled="true" name="password-policy"></PluginInfo>
+<PluginInfo licenseBundled="professional" name="password-policy"></PluginInfo>
 
 ## 介绍
 

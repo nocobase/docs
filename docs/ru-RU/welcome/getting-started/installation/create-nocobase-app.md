@@ -42,8 +42,6 @@ yarn create nocobase-app my-nocobase-app -d postgres \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
    -e TZ=UTC \
-   -e NOCOBASE_PKG_USERNAME= \
-   -e NOCOBASE_PKG_PASSWORD=
 ```
 
 </div>
@@ -58,8 +56,6 @@ yarn create nocobase-app my-nocobase-app -d mysql \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
    -e TZ=UTC \
-   -e NOCOBASE_PKG_USERNAME= \
-   -e NOCOBASE_PKG_PASSWORD=
 ```
 
 </div>
@@ -74,8 +70,6 @@ yarn create nocobase-app my-nocobase-app -d mariadb \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
    -e TZ=UTC \
-   -e NOCOBASE_PKG_USERNAME= \
-   -e NOCOBASE_PKG_PASSWORD=
 ```
 
 </div>
@@ -96,8 +90,6 @@ npx create-nocobase-app@beta my-nocobase-app -d postgres \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
    -e TZ=UTC \
-   -e NOCOBASE_PKG_USERNAME= \
-   -e NOCOBASE_PKG_PASSWORD=
 ```
 
 </div>
@@ -112,8 +104,6 @@ npx create-nocobase-app@beta my-nocobase-app -d mysql \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
    -e TZ=UTC \
-   -e NOCOBASE_PKG_USERNAME= \
-   -e NOCOBASE_PKG_PASSWORD=
 ```
 
 </div>
@@ -128,8 +118,6 @@ npx create-nocobase-app@beta my-nocobase-app -d mariadb \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
    -e TZ=UTC \
-   -e NOCOBASE_PKG_USERNAME= \
-   -e NOCOBASE_PKG_PASSWORD=
 ```
 
 </div>
@@ -150,8 +138,6 @@ npx create-nocobase-app@alpha my-nocobase-app -d postgres \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
    -e TZ=UTC \
-   -e NOCOBASE_PKG_USERNAME= \
-   -e NOCOBASE_PKG_PASSWORD=
 ```
 
 </div>
@@ -166,8 +152,6 @@ npx create-nocobase-app@alpha my-nocobase-app -d mysql \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
    -e TZ=UTC \
-   -e NOCOBASE_PKG_USERNAME= \
-   -e NOCOBASE_PKG_PASSWORD=
 ```
 
 </div>
@@ -182,20 +166,16 @@ npx create-nocobase-app@alpha my-nocobase-app -d mariadb \
    -e DB_USER=nocobase \
    -e DB_PASSWORD=nocobase \
    -e TZ=UTC \
-   -e NOCOBASE_PKG_USERNAME= \
-   -e NOCOBASE_PKG_PASSWORD=
 ```
 
 </div>
 </Tabs>
 
 :::warning
-
-- **Версия 1.4 и выше**: можно указать переменные [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) и [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password), чтобы автоматически загружать коммерческие плагины во время установки или обновления.;
-- `TZ` часовой пояс приложения (по умолчанию — системный).;
+- `TZ` часовой пояс приложения (по умолчанию — системный).
 - `APP_KEY` секретный ключ приложения для генерации токенов. Обязательно задайте свой собственный ключ и не публикуйте его.
 - `DB_*` параметры подключения к базе данных. При использовании внешнего сервера измените значения на собственные.
-  :::
+:::
 
 ## 2. Переход в директорию проекта
 

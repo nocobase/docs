@@ -7,7 +7,7 @@ interface PluginInfoProps {
   link?: string;
   plugins?: string;
   commercial?: boolean;
-  licenseBundled?: 'enterprise' | 'commercial' | boolean;
+  licenseBundled?: 'enterprise' | 'professional' | 'standard' | 'commercial' | boolean;
   /** @deprecated This parameter is deprecated and will be removed in future versions. */
   deprecated?: boolean;
 }
@@ -52,6 +52,10 @@ const PluginInfo: React.FC<PluginInfoProps> = (props) => {
 
   const edition = licenseBundled && licenseBundled === 'enterprise' 
     ? t.enterpriseEdition 
+    : licenseBundled === 'professional'
+    ? t.professionalEdition
+    : licenseBundled === 'standard'
+    ? t.standardEdition
     : t.commercialEdition;
 
   const commercialLink = (text: string) => {

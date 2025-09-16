@@ -1,6 +1,6 @@
 # 备份管理
 
-<PluginInfo licenseBundled="true" name="backups"></PluginInfo>
+<PluginInfo licenseBundled="professional" name="backups"></PluginInfo>
 
 ## 介绍
 

@@ -1,6 +1,6 @@
 # 验证：TOTP 认证器
 
-<PluginInfo name="verification-totp-authenticator" commercial="true"></PluginInfo>
+<PluginInfo name="verification-totp-authenticator" licenseBundled="enterprise"></PluginInfo>
 
 ## 介绍
 

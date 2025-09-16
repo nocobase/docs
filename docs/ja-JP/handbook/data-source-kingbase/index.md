@@ -21,11 +21,6 @@
 `.env` ファイルを編集し、以下の関連する環境変数を追加または変更します。
 
 ```bash
-# 商用プラグイン取得用
-NOCOBASE_PKG_URL=https://pkg.nocobase.com/
-NOCOBASE_PKG_USERNAME=your-username   # サービスプラットフォームのユーザー名
-NOCOBASE_PKG_PASSWORD=your-password   # サービスプラットフォームのパスワード
-
 # 実際の環境に合わせてDB関連パラメータを調整
 DB_DIALECT=kingbase
 DB_HOST=localhost
@@ -52,10 +47,6 @@ networks:
     depends_on:
       - postgres
     environment:
-      # 商用プラグイン取得用
-      - NOCOBASE_PKG_URL=https://pkg.nocobase.com/
-      - NOCOBASE_PKG_USERNAME=your-username   # サービスプラットフォームのユーザー名
-      - NOCOBASE_PKG_PASSWORD=your-password   # サービスプラットフォームのパスワード
       # アプリケーションキー（ユーザーのトークン生成等に使用）
       # APP_KEYを変更すると、旧トークンは無効になります。
       - APP_KEY=your-secret-key
@@ -108,15 +99,6 @@ yarn create nocobase-app my-nocobase-app -d kingbase \
 ```
 
 ### 外部データベースとして使用する場合
-
-`.env` ファイルを編集し、商用プラグイン取得用の環境変数を追加します。
-
-```bash
-# 商用プラグイン取得用
-NOCOBASE_PKG_URL=https://pkg.nocobase.com/
-NOCOBASE_PKG_USERNAME=your-username   # サービスプラットフォームのユーザー名
-NOCOBASE_PKG_PASSWORD=your-password   # サービスプラットフォームのパスワード
-```
 
 インストールまたはアップグレードコマンドを実行します。
 

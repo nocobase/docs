@@ -64,9 +64,6 @@ services:
       - DB_PASSWORD=nocobase
       # 时区
       - TZ=Asia/Shanghai
-      # 商业插件，使用 service platform 的账号信息
-      - NOCOBASE_PKG_USERNAME=
-      - NOCOBASE_PKG_PASSWORD=
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
@@ -133,9 +130,6 @@ services:
       - DB_PASSWORD=nocobase
       # 时区
       - TZ=Asia/Shanghai
-      # 商业插件，使用 service platform 的账号信息
-      - NOCOBASE_PKG_USERNAME=
-      - NOCOBASE_PKG_PASSWORD=
 
     volumes:
       - ./storage:/app/nocobase/storage
@@ -190,9 +184,6 @@ services:
       - DB_PASSWORD=nocobase
       # 时区
       - TZ=Asia/Shanghai
-      # 商业插件，使用 service platform 的账号信息
-      - NOCOBASE_PKG_USERNAME=
-      - NOCOBASE_PKG_PASSWORD=
 
     volumes:
       - ./storage:/app/nocobase/storage

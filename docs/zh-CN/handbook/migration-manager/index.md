@@ -1,6 +1,6 @@
 # 迁移管理
 
-<PluginInfo licenseBundled="true" name="migration-manager"></PluginInfo>
+<PluginInfo licenseBundled="professional" name="migration-manager"></PluginInfo>
 
 ## 介绍
 

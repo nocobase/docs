@@ -1,6 +1,6 @@
 # Телеметрия - Prometheus
 
-<PluginInfo name="telemetry-prometheus"></PluginInfo>
+<PluginInfo name="telemetry-prometheus" licenseBundled="enterprise"></PluginInfo>
 
 ## Введение
 

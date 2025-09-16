@@ -1,6 +1,6 @@
 # 审计日志
 
-<PluginInfo licenseBundled="true" name="audit-logger"></PluginInfo>
+<PluginInfo licenseBundled="enterprise" name="audit-logger"></PluginInfo>
 
 ## 介绍
 

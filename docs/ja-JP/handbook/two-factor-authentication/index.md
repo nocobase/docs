@@ -1,6 +1,6 @@
 # Two-Factor Authentication (2FA)
 
-<PluginInfo name="two-factor-authentication" licenseBundled="true"></PluginInfo>
+<PluginInfo name="two-factor-authentication" licenseBundled="enterprise"></PluginInfo>
 
 ## Introduction
 

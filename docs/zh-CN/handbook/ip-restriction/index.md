@@ -1,6 +1,6 @@
 # IP 限制
 
-<PluginInfo licenseBundled="true" name="ip-restriction"></PluginInfo>
+<PluginInfo licenseBundled="enterprise" name="ip-restriction"></PluginInfo>
 
 ## 介绍
 

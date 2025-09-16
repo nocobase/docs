@@ -1,6 +1,6 @@
 # カスタムブランド
 
-<PluginInfo commercial="true" name="custom-brand"></PluginInfo>
+<PluginInfo licenseBundled="standard" name="custom-brand"></PluginInfo>
 
 ## 紹介
 

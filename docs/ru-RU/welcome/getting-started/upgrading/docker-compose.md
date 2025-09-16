@@ -4,7 +4,6 @@
 
 :::warning
 - Обязательно сделайте **резервную копию базы данных перед обновлением**!
-- **Для версий 1.4 и выше**: при указании переменных [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) и [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password) плагины будут автоматически загружаться при установке или обновлении приложения.
 :::
 
 ## 1. Перейдите в директорию, где находится `docker-compose.yml`

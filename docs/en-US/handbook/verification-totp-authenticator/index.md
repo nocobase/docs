@@ -1,6 +1,6 @@
 # Verification: TOTP Authenticator
 
-<PluginInfo name="verification-totp-authenticator" commercial="true"></PluginInfo>
+<PluginInfo name="verification-totp-authenticator" licenseBundled="enterprise"></PluginInfo>
 
 ## Introduction
 

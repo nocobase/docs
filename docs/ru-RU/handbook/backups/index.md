@@ -1,6 +1,6 @@
 # Менеджер резервного копирования
 
-<PluginInfo licenseBundled="true" name="backups"></PluginInfo>
+<PluginInfo licenseBundled="professional" name="backups"></PluginInfo>
 
 ## Введение
 

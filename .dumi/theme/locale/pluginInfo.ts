@@ -9,6 +9,8 @@ export default {
     licenseDetails: '请查看{license}了解详情',
     commercialLicense: '商业授权',
     deprecatedMessage: '⚠️ 该功能已废弃，我们不建议在新项目中使用此功能。',
+    standardEdition: '标准版',
+    professionalEdition: '专业版',
     enterpriseEdition: '企业版',
     commercialBaseUrl: 'https://www.nocobase.com'
   },
@@ -22,6 +24,8 @@ export default {
     licenseDetails: '詳細については、{license}をご覧ください。',
     commercialLicense: '商用ライセンス',
     deprecatedMessage: '⚠️ この機能は非推奨となりました。新しいプロジェクトでの使用はお勧めしません。',
+    standardEdition: 'スタンダード版',
+    professionalEdition: 'プロフェッショナル版',
     enterpriseEdition: '企業版',
     commercialBaseUrl: 'https://www.nocobase.com'
   },
@@ -35,6 +39,8 @@ export default {
     licenseDetails: 'Для получения более подробной информации, пожалуйста, ознакомьтесь с {license}.',
     commercialLicense: 'Коммерческая лицензия',
     deprecatedMessage: '⚠️ Эта функция устарела и не рекомендуется для использования в новых проектах.',
+    standardEdition: 'стандартная версия',
+    professionalEdition: 'профессиональная версия',
     enterpriseEdition: 'корпоративная версия',
     commercialBaseUrl: 'https://www.nocobase.com'
   },
@@ -48,6 +54,8 @@ export default {
     licenseDetails: 'For details, please check the {license}.',
     commercialLicense: 'Commercial License',
     deprecatedMessage: '⚠️ This feature is deprecated and not recommended for use in new projects.',
+    standardEdition: 'standard edition',
+    professionalEdition: 'professional edition',
     enterpriseEdition: 'enterprise edition',
     commercialBaseUrl: 'https://www.nocobase.com'
   }
