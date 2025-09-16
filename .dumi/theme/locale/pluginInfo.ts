@@ -44,6 +44,19 @@ export default {
     enterpriseEdition: 'корпоративная версия',
     commercialBaseUrl: 'https://www.nocobase.com'
   },
+  'fr-FR': {
+    info: 'INFO',
+    deprecatedInfo: 'OBSOLÈTE',
+    bundledPluginMessage: 'Cette fonctionnalité est fournie par le plugin commercial {plugins}, inclus dans {edition}, sans achat supplémentaire requis.',
+    commercialEdition: 'édition commerciale',
+    pluginMessage: 'Cette fonctionnalité est fournie par le plugin {commercial} {plugins}.{license}',
+    commercial: 'commercial',
+    licenseDetails: 'Pour plus de détails, veuillez consulter la {license}.',
+    commercialLicense: 'Licence commerciale',
+    deprecatedMessage: '⚠️ Cette fonctionnalité est obsolète et n\'est pas recommandée pour les nouveaux projets.',
+    enterpriseEdition: 'édition entreprise',
+    commercialBaseUrl: 'https://www.nocobase.com'
+  },
   'en-US': {
     info: 'INFO',
     deprecatedInfo: 'DEPRECATED',
