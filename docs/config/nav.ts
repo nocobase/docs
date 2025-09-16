@@ -4,6 +4,7 @@ export default [
     'title.fr-FR': 'Bienvenue',
     'title.zh-CN': '欢迎',
     'title.ja-JP': 'ようこそ',
+    'title.ru-RU': 'Добро пожаловать',
     link: '/welcome/introduction',
   },
   {
@@ -11,6 +12,7 @@ export default [
     'title.fr-FR': 'Manuel',
     'title.zh-CN': '使用手册',
     'title.ja-JP': 'ハンドブック',
+    'title.ru-RU': 'Руководство',
     link: '/handbook',
   },
   {
@@ -18,6 +20,7 @@ export default [
     'title.fr-FR': 'Développement de plugin',
     'title.zh-CN': '插件开发',
     'title.ja-JP': 'プラグイン開発',
+    'title.ru-RU': 'Разработка плагинов',
     link: '/development',
   },
   {
@@ -25,6 +28,7 @@ export default [
     'title.fr-FR': 'Exemples de plugin',
     'title.zh-CN': '插件示例',
     'title.ja-JP': 'プラグインサンプル',
+    'title.ru-RU': 'Пример плагина',
     link: '/plugin-samples'
   },
   {
@@ -32,6 +36,7 @@ export default [
     'title.fr-FR': 'Référence API',
     'title.zh-CN': 'API 参考',
     'title.ja-JP': 'API リファレンス',
+    'title.ru-RU': 'Документация API',
     link: '/api',
   },
   {
@@ -39,9 +44,11 @@ export default [
     'title.fr-FR': 'Accueil Nocobase',
     'title.zh-CN': 'NocoBase 首页',
     'title.ja-JP': 'NocoBase ホーム',
+    'title.ru-RU': 'NocoBase Россия',
     link: 'https://www.nocobase.com',
     'link.fr-FR': 'https://www.nocobase.com/fr/',
     'link.zh-CN': 'https://www.nocobase.com/cn/',
     'link.ja-JP': 'https://www.nocobase.com/ja/',
+    'link.ru-RU': 'https://www.nocobase.com/ru/',
   },
 ]

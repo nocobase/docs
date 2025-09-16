@@ -25,6 +25,19 @@ export default {
     enterpriseEdition: '企業版',
     commercialBaseUrl: 'https://www.nocobase.com'
   },
+  'ru-RU': {
+    info: 'Информация',
+    deprecatedInfo: 'УСТАРЕЛО',
+    bundledPluginMessage: 'Эта функция предоставляется коммерческим плагином {plugins}, входящим в состав {edition}, и не требует дополнительной покупки.',
+    commercialEdition: 'коммерческое издание',
+    pluginMessage: 'Эта функция предоставляется {commercial}плагином {plugins}.{license}',
+    commercial: 'Коммерческим',
+    licenseDetails: 'Для получения более подробной информации, пожалуйста, ознакомьтесь с {license}.',
+    commercialLicense: 'Коммерческая лицензия',
+    deprecatedMessage: '⚠️ Эта функция устарела и не рекомендуется для использования в новых проектах.',
+    enterpriseEdition: 'корпоративная версия',
+    commercialBaseUrl: 'https://www.nocobase.com'
+  },
   'en-US': {
     info: 'INFO',
     deprecatedInfo: 'DEPRECATED',

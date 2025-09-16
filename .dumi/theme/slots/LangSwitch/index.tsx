@@ -26,6 +26,7 @@ const LangSwitch: React.FC = () => {
     { code: 'en', label: 'English', hostname: 'docs.nocobase.com' },
     { code: 'cn', label: '简体中文', hostname: 'docs-cn.nocobase.com' },
     { code: 'ja', label: '日本語', hostname: 'docs-jp.nocobase.com' },
+    { code: 'ru', label: 'Русский', hostname: 'docs-ru.nocobase.com' },
   ];
 
   const currentLang = languages.find(lang => lang.hostname === hostname);

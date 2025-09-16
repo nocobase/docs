@@ -125,6 +125,15 @@ LOCK_ADAPTER_DEFAULT=redis
 LOCK_ADAPTER_REDIS_URL=
 ```
 
+#### Message Queue
+
+```ini
+# Enable Redis as the message queue adapter, default is in-memory adapter if not set
+QUEUE_ADAPTER=redis
+# Redis message queue adapter connection address; default is redis://localhost:6379/0 if not set
+QUEUE_ADAPTER_REDIS_URL=
+```
+
 :::info{title=Tip}
 Generally, the related adapters can all use the same Redis instance, but it’s best to distinguish by using different databases to avoid potential key conflict issues.
 
@@ -132,6 +141,7 @@ Generally, the related adapters can all use the same Redis instance, but it’s 
 CACHE_REDIS_URL=redis://localhost:6379/0
 PUBSUB_ADAPTER_REDIS_URL=redis://localhost:6379/1
 LOCK_ADAPTER_REDIS_URL=redis://localhost:6379/2
+QUEUE_ADAPTER_REDIS_URL=redis://localhost:6379/3
 ```
 :::
 
