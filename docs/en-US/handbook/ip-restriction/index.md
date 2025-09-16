@@ -1,6 +1,6 @@
 # IP Restrictions
 
-<PluginInfo licenseBundled="true" name="ip-restriction"></PluginInfo>
+<PluginInfo licenseBundled="enterprise" name="ip-restriction"></PluginInfo>
 
 ## Introduction
 

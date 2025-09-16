@@ -57,17 +57,13 @@ DB_PORT=5432
 DB_DATABASE=postgres
 DB_USER=nocobase
 DB_PASSWORD=nocobase
-NOCOBASE_PKG_USERNAME=your-username
-NOCOBASE_PKG_PASSWORD=your-password
 ```
 
 :::warning
-
-- **Версия 1.4 и выше**: можно указать переменные [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) и [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password), чтобы автоматически загружать коммерческие плагины во время установки или обновления.;
-- `TZ` часовой пояс приложения (по умолчанию — системный).;
+- `TZ` часовой пояс приложения (по умолчанию — системный).
 - `APP_KEY` секретный ключ приложения для генерации токенов. Обязательно задайте свой собственный ключ и не публикуйте его.
 - `DB_*` параметры подключения к базе данных. При использовании внешнего сервера измените значения на собственные.
-  :::
+:::
 
 ## 5. Установка NocoBase
 

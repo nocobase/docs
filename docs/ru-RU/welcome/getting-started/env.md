@@ -205,13 +205,6 @@ Database log switch, default is `off`, options include
 DB_LOGGING=on
 ```
 
-### NOCOBASE_PKG_USERNAME
-
-Service platform username, used for automatically downloading and updating plugins.
-
-### NOCOBASE_PKG_PASSWORD
-
-Service platform password, used for automatically downloading and updating plugins.
 
 ### LOGGER_TRANSPORT
 

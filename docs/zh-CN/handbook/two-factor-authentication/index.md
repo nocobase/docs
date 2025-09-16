@@ -1,6 +1,6 @@
 # 双因素身份认证 (2FA)
 
-<PluginInfo name="two-factor-authentication" licenseBundled="true"></PluginInfo>
+<PluginInfo name="two-factor-authentication" licenseBundled="enterprise"></PluginInfo>
 
 ## 介绍
 

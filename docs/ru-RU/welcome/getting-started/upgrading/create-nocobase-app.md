@@ -4,8 +4,7 @@
 
 :::warning
 - Обязательно сделайте **резервную копию базы данных перед обновлением**!
-- **Для версий 1.4 и выше**: при указании переменных [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) и [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password) коммерческие плагины будут автоматически загружены при установке или обновлении.
-  :::
+:::
 
 ## 1. Обновление приложения
 

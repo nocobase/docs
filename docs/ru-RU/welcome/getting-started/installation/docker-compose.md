@@ -46,8 +46,6 @@ services:
       - DB_USER=nocobase                 # Имя пользователя
       - DB_PASSWORD=nocobase             # Пароль пользователя
       - TZ=UTC                           # Часовой пояс
-      - NOCOBASE_PKG_USERNAME=           # Учетные данные для скачивания коммерческих плагинов
-      - NOCOBASE_PKG_PASSWORD=
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
@@ -109,10 +107,6 @@ services:
       - DB_UNDERSCORED=true
       # Timezone
       - TZ=UTC
-      # Service platform username and password,
-      # used for automatically downloading and updating plugins.
-      - NOCOBASE_PKG_USERNAME=
-      - NOCOBASE_PKG_PASSWORD=
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
@@ -174,10 +168,6 @@ services:
       - DB_UNDERSCORED=true
       # Timezone
       - TZ=UTC
-      # Service platform username and password,
-      # used for automatically downloading and updating plugins.
-      - NOCOBASE_PKG_USERNAME=
-      - NOCOBASE_PKG_PASSWORD=
     volumes:
       - ./storage:/app/nocobase/storage
     ports:
@@ -209,9 +199,6 @@ services:
 - `alpha`: Разработка, нестабильная версия.
 - `1.3.51`: Указание конкретной версии. [list of released versions](https://hub.docker.com/r/nocobase/nocobase/tags).
 
-:::warning
-**Для версии 1.4 и выше**: укажите переменные окружения [`NOCOBASE_PKG_USERNAME`](/welcome/getting-started/env#nocobase_pkg_username) и [`NOCOBASE_PKG_PASSWORD`](/welcome/getting-started/env#nocobase_pkg_password), чтобы автоматически загружать коммерческие плагины во время установки или обновления.
-:::
 
 Пример:
 

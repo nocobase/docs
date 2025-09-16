@@ -1,6 +1,6 @@
 ### **Блокировка пользователей**
 
-<PluginInfo licenseBundled="true" name="password-policy"></PluginInfo>
+<PluginInfo licenseBundled="professional" name="password-policy"></PluginInfo>
 
 #### **Введение**
 

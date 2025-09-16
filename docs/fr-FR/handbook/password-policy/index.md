@@ -1,6 +1,6 @@
 # Password Policy
 
-<PluginInfo licenseBundled="true" name="password-policy"></PluginInfo>
+<PluginInfo licenseBundled="professional" name="password-policy"></PluginInfo>
 
 ## Introduction
 

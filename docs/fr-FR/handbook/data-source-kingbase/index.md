@@ -21,11 +21,6 @@ Référez-vous à la section [Vue d'ensemble de l'installation](/welcome/getting
 Modifiez le fichier `.env` pour ajouter ou modifier les configurations de variables d'environnement suivantes :
 
 ```bash
-# Pour accéder aux plugins commerciaux
-NOCOBASE_PKG_URL=https://pkg.nocobase.com/
-NOCOBASE_PKG_USERNAME=your-username   # Nom d'utilisateur de la plateforme de service
-NOCOBASE_PKG_PASSWORD=your-password   # Mot de passe de la plateforme de service
-
 # Ajustez les paramètres DB si nécessaire
 DB_DIALECT=kingbase
 DB_HOST=localhost
@@ -52,10 +47,6 @@ networks:
     depends_on:
       - postgres
     environment:
-      # Pour accéder aux plugins commerciaux
-      - NOCOBASE_PKG_URL=https://pkg.nocobase.com/
-      - NOCOBASE_PKG_USERNAME=your-username   # Nom d'utilisateur de la plateforme de service
-      - NOCOBASE_PKG_PASSWORD=your-password   # Mot de passe de la plateforme de service
       # Clé d'application pour générer des tokens utilisateurs, etc.
       # Modifier APP_KEY invalide les anciens tokens
       # Utilisez une chaîne aléatoire et gardez-la confidentielle
@@ -109,15 +100,6 @@ yarn create nocobase-app my-nocobase-app -d kingbase \
 ```
 
 ### Utilisation en tant que base de données externe
-
-Modifiez le fichier `.env` pour ajouter les variables d'environnement nécessaires pour accéder aux plugins commerciaux :
-
-```bash
-# Pour accéder aux plugins commerciaux
-NOCOBASE_PKG_URL=https://pkg.nocobase.com/
-NOCOBASE_PKG_USERNAME=your-username   # Nom d'utilisateur de la plateforme de service
-NOCOBASE_PKG_PASSWORD=your-password   # Mot de passe de la plateforme de service
-```
 
 Exécutez la commande d'installation ou de mise à jour
 

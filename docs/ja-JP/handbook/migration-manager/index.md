@@ -1,6 +1,6 @@
 # Migration Manager
 
-<PluginInfo licenseBundled="true" name="migration-manager"></PluginInfo>
+<PluginInfo licenseBundled="professional" name="migration-manager"></PluginInfo>
 
 ## Introduction
 
