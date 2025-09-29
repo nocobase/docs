@@ -32,6 +32,10 @@ jobs:
       env:
         DOC_LANG: ja-JP
       run: yarn build
+    - name: Build ru-RU
+      env:
+        DOC_LANG: ru-RU
+      run: yarn build
     - name: Set tags
       id: set-tags
       run: |
