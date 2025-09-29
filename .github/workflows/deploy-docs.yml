@@ -44,6 +44,10 @@ jobs:
       env:
         DOC_LANG: ru-RU
       run: yarn build
+    - name: Build fr-FR
+      env:
+        DOC_LANG: fr-FR
+      run: yarn build
     - name: Set tags
       id: set-tags
       run: |
