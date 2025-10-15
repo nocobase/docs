@@ -1,6 +1,6 @@
 # 多应用
 
-<PluginInfo name="multi-app"></PluginInfo>
+<PluginInfo name="multi-app" commercial="true"></PluginInfo>
 
 ## 介绍
 
