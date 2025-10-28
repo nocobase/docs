@@ -1,6 +1,6 @@
 # モバイル端末
 
-<PluginInfo name="mobile"></PluginInfo>
+<PluginInfo name="mobile" deprecated=true></PluginInfo>
 
 ## 概要
 

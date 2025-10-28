@@ -1,6 +1,6 @@
 # 移动端
 
-<PluginInfo name="mobile"></PluginInfo>
+<PluginInfo name="mobile" deprecated=true></PluginInfo>
 
 ## 介绍
 

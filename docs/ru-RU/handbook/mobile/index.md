@@ -1,6 +1,6 @@
 # Мобильный плагин
 
-<PluginInfo name="mobile"></PluginInfo>
+<PluginInfo name="mobile" deprecated=true></PluginInfo>
 
 ## Введение
 
