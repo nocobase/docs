@@ -6,10 +6,6 @@
 
 This plugin facilitates the configuration of mobile pages, leveraging a core framework built on Ant Design Mobile. It offers a variety of extension points and supports the integration of specific desktop blocks.
 
-:::warning
-The older `plugin-mobile-client` has been deprecated. Starting from version v1.3, it is recommended to transition to `plugin-mobile`. These two plugins are incompatible, so the new version will necessitate a complete reconfiguration of mobile settings.
-:::
-
 ## Installation
 
 This plugin comes pre-installed but requires activation to function.
