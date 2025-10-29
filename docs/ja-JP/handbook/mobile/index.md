@@ -1,14 +1,10 @@
 # モバイル端末
 
-<PluginInfo name="mobile"></PluginInfo>
+<PluginInfo name="mobile" deprecated=true></PluginInfo>
 
 ## 概要
 
 モバイル端末のページ設定を提供します。コアフレームワークは Ant Design Mobile に基づいており、さまざまな拡張ポイントを提供し、一部のデスクトップ用ブロックを互換性を持って追加できます。
-
-:::warning
-古い `plugin-mobile-client` は廃止されました。v1.3 以降のバージョンでは `plugin-mobile` を使用してください。両方のプラグインは互換性がありませんので、新しいバージョンではモバイル端末の再設定が必要です。
-:::
 
 ## インストール
 

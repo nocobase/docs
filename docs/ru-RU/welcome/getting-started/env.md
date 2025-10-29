@@ -205,6 +205,29 @@ Database log switch, default is `off`, options include
 DB_LOGGING=on
 ```
 
+### DB_POOL_MAX
+
+Maximum number of connection in pool. Default is `5`.
+
+### DB_POOL_MIN
+
+Minimum number of connection in pool. Default is `0`.
+
+### DB_POOL_IDLE
+
+The maximum time, in milliseconds, that a connection can be idle before being released. Default is `10000` (10 seconds).
+
+### DB_POOL_ACQUIRE
+
+The maximum time, in milliseconds, that pool will try to get connection before throwing error. Default is `60000` (60 seconds).
+
+### DB_POOL_EVICT
+
+The time interval, in milliseconds, after which sequelize-pool will remove idle connections. Default is `1000` (1 second).
+
+### DB_POOL_MAX_USES
+
+The number of times a connection can be used before discarding it for a replacement. Default is `0` (unlimited).
 
 ### LOGGER_TRANSPORT
 

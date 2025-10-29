@@ -206,6 +206,30 @@ DB_TABLE_PREFIX=nocobase_
 DB_LOGGING=on
 ```
 
+### DB_POOL_MAX
+
+数据库连接池最大连接数，默认值 `5`。
+
+### DB_POOL_MIN
+
+数据库连接池最小连接数，默认值 `0`。
+
+### DB_POOL_IDLE
+
+数据库连接池空闲时间，默认值 `10000`（10 秒）。
+
+### DB_POOL_ACQUIRE
+
+数据库连接池获取连接最大等待时间，默认值 `60000`（60 秒）。
+
+### DB_POOL_EVICT
+
+数据库连接池连接最大存活时间，默认值 `1000`（1 秒）。
+
+### DB_POOL_MAX_USES
+
+连接在被丢弃并替换之前可被使用的次数，默认值 `0`（不限制）。
+
 ### LOGGER_TRANSPORT
 
 日志输出方式，多个用 `,` 分隔。开发环境默认值 `console`, 生产环境默认值 `console,dailyRotateFile`.

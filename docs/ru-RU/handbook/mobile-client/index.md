@@ -1,6 +1,6 @@
 # Мобильный
 
-<PluginInfo name="mobile-client"></PluginInfo>
+<PluginInfo name="mobile-client" deprecated=true></PluginInfo>
 
 ## Введение
 
