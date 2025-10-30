@@ -1,10 +1,10 @@
-# https://static-docs.nocobase.com
+# Users
 
-<PluginInfo name="https://static-docs.nocobase.com"></PluginInfo>
+<PluginInfo name="users"></PluginInfo>
 
 ## Introduction
 
-The https://static-docs.nocobase.com plugin provides a basic user model and a user management interface.
+The users plugin provides a basic user model and a user management interface.
 
 ## Installation
 
@@ -18,7 +18,7 @@ This plugin provides a user management interface in the configuration center. Af
 
 ![](https://static-docs.nocobase.com/44bf40f56b45d4dd96c424fb08082cf6.png)
 
-In addition, you can also add various different blocks of the https://static-docs.nocobase.com collection to manage https://static-docs.nocobase.com, such as table blocks:
+In addition, you can also add various different blocks of the users collection to manage users, such as table blocks:
 
 ![](https://static-docs.nocobase.com/76b5a4652f869541a9e8f18a4568a7c9.png)
 
