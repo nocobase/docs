@@ -12,7 +12,7 @@
   |- package.json   # 插件包信息
   |- server.d.ts
   |- server.js
-  |- build.config.ts # 或者 `build.config.js` ，用于修改打包配置，实现自定义逻辑
+  |- build.config.ts # 或者 `build.config.js`，用于修改打包配置，实现自定义逻辑
 ```
 
 `/src/server` 的教程参考 [服务端](./server) 章节，`/src/client` 的教程参考 [客户端](./client) 章节。
