@@ -2,5 +2,32 @@
   "cSpell.words": [
     "Noco"
   ],
-  "npm.packageManager": "yarn"
+  "npm.packageManager": "yarn",
+  "github.copilot.chat.commitMessageGeneration.instructions": [
+
+    {
+      "text": "Always generate commit messages in English."
+    },
+    {
+      "text": "Follow Angular commit message convention: <type>(<scope>): <subject>"
+    },
+    {
+      "text": "Use types: feat, fix, docs, style, refactor, test, chore, perf, ci, build, revert"
+    },
+    {
+      "text": "If the changed file is a documentation file, the commit message should start with 'docs'"
+    },
+    {
+      "text": "Keep subject line under 50 characters and use imperative mood"
+    },
+    // {
+    //   "text": "Add body for complex changes explaining what and why, not how"
+    // },
+    {
+      "text": "Include breaking changes with 'BREAKING CHANGE:' footer if applicable"
+    },
+    {
+      "text": "Reference issues with 'Closes #123' or 'Fixes #123' in footer"
+    }
+  ]
 }
