@@ -9,6 +9,7 @@ on:
       - '.github/workflows/deploy-docs.yml'
       - 'package.json'
       - '.dumi/theme/**'
+      - '.dumirc.ts'
   pull_request:
     branches:
       - '**'
@@ -17,6 +18,7 @@ on:
       - '.github/workflows/deploy-docs.yml'
       - 'package.json'
       - '.dumi/theme/**'
+      - '.dumirc.ts'
 
 jobs:
   build:
