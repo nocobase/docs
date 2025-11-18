@@ -1,6 +1,6 @@
 # JSON 变量映射
 
-<PluginInfo name="workflow-json-variable-mapping" link="/handbook/workflow-json-variable-mapping" commercial="true"></PluginInfo>
+<PluginInfo name="workflow-json-variable-mapping" link="/handbook/workflow-json-variable-mapping"></PluginInfo>
 
 > v1.6.0
 

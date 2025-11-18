@@ -1,6 +1,6 @@
 # JSON 计算
 
-<PluginInfo name="workflow-json-query" link="/handbook/workflow-json-query" commercial="true"></PluginInfo>
+<PluginInfo name="workflow-json-query" link="/handbook/workflow-json-query"></PluginInfo>
 
 基于不同的 JSON 计算引擎，对上游节点产生的复杂 JSON 数据进行计算或结构变换，以便后续节点使用。例如 SQL 操作和 HTTP 请求节点的结果，可以通过该节点将其变换为需要的值和变量格式，以便后续节点使用。
 
