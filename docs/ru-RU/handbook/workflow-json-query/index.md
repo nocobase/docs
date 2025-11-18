@@ -1,6 +1,6 @@
 # JSON-вычисления
 
-<PluginInfo name="workflow-json-query" link="/handbook/workflow-json-query" commercial="true"></PluginInfo>
+<PluginInfo name="workflow-json-query" link="/handbook/workflow-json-query"></PluginInfo>
 
 Этот плагин предназначен для преобразования и вычисления сложных JSON-данных, генерируемых различными узлами, что позволяет последующим узлам эффективно использовать эти данные. Например, SQL-операции и узлы HTTP-запросов часто возвращают результаты в формате JSON. Узел JSON-вычислений позволяет преобразовать эти данные в конкретные значения и форматы переменных, необходимые для последующих этапов workflow.
 
