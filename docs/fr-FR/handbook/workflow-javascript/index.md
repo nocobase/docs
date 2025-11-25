@@ -52,7 +52,29 @@ Les modules disponibles dans le flux de travail peuvent être utilisés dans le 
 WORKFLOW_SCRIPT_MODULES=crypto,timers,lodash,dayjs
 ```
 
-> **Remarque** : Les modules non déclarés dans `WORKFLOW_SCRIPT_MODULES` ne peuvent pas être utilisés. Cela permet aux administrateurs de contrôler les modules accessibles, réduisant ainsi le risque de permissions excessives.
+:::info{title="Note"}
+Les modules non déclarés dans `WORKFLOW_SCRIPT_MODULES` ne peuvent pas être utilisés. Cela permet aux administrateurs de contrôler les modules accessibles, réduisant ainsi le risque de permissions excessives.
+:::
+
+When in a non-source-deployed environment, if a module is not installed in `node_modules`, you can manually install the required package into the `storage` directory. For example, to use the `exceljs` package, you can perform the following steps:
+
+```shell
+cd storage
+npm i --no-save --no-package-lock --prefix . exceljs
+```
+
+Then add the package's relative (or absolute) path based on the application's CWD (current working directory) to the environment variable `WORKFLOW_SCRIPT_MODULES`:
+
+```ini
+WORKFLOW_SCRIPT_MODULES=./storage/node_modules/exceljs
+```
+
+You can then use the `exceljs` package in your script:
+
+```js
+const ExcelJS = require('exceljs');
+// ...
+```
 
 ### Variables globales
 

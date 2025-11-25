@@ -62,6 +62,26 @@ WORKFLOW_SCRIPT_MODULES=crypto,timers,lodash,dayjs
 Modules not declared in `WORKFLOW_SCRIPT_MODULES`, including native Node.js modules or installed `node_modules`, **cannot** be used in scripts. This strategy allows administrators to control the modules accessible to users, reducing the risk of excessive script permissions.
 :::
 
+When in a non-source-deployed environment, if a module is not installed in `node_modules`, you can manually install the required package into the `storage` directory. For example, to use the `exceljs` package, you can perform the following steps:
+
+```shell
+cd storage
+npm i --no-save --no-package-lock --prefix . exceljs
+```
+
+Then add the package's relative (or absolute) path based on the application's CWD (current working directory) to the environment variable `WORKFLOW_SCRIPT_MODULES`:
+
+```ini
+WORKFLOW_SCRIPT_MODULES=./storage/node_modules/exceljs
+```
+
+You can then use the `exceljs` package in your script:
+
+```js
+const ExcelJS = require('exceljs');
+// ...
+```
+
 ### Global Variables
 
 Global variables such as `global`, `process`, `__dirname`, and `__filename` are **not supported**.
