@@ -2,9 +2,10 @@
 
 ## 安装方式
 
-NocoBase 支持三种安装方式：
+NocoBase 支持四种安装方式：
 
 - [Docker 安装（推荐）](./docker-compose.md)
+- [1Panel 面板安装](./1panel.md)
 - [create-nocobase-app 安装](./create-nocobase-app.md)
 - [Git 源码安装](./git-clone.md)
 
@@ -13,6 +14,12 @@ NocoBase 支持三种安装方式：
 ### Docker 安装（推荐）
 
 适合无代码场景，不需要写代码。升级时，下载最新镜像并重启即可。
+
+### 1Panel 面板安装
+
+通过 1Panel Linux 面板一键部署，无需命令行操作。
+
+支持可视化管理、在线升级、备份与恢复，适合希望快速上手和持续运维的用户。
 
 ### create-nocobase-app 安装
 
