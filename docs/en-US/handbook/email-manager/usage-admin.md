@@ -289,7 +289,7 @@ After completing the setup and testing, proceed with app publishing by verifying
 
 4. Fill in the information and submit
 
-You can choose any name, refer to the options shown in the image for account types, and leave the Redirect URI blank for now
+You can choose any name, refer to the options shown in the image for account types, and set the Redirect URI type to Web with the URI https://{your-deployment-domain}/admin/settings/mail/oauth2
 
 ![](https://static-docs.nocobase.com/mail-1733818627555.png)
 

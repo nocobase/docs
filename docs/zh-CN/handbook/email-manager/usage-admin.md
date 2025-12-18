@@ -289,7 +289,7 @@
 
 4. 填写信息并提交
 
-名称可以随意，account types参照下图中选择，Redirect URI可以先不填
+名称可以随意，account types参照下图中选择，Redirect URI 类型选择 Web，URI为 https://{你的部署域名}/admin/settings/mail/oauth2
 
 ![](https://static-docs.nocobase.com/mail-1733818627555.png)
 

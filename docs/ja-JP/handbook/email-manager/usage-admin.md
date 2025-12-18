@@ -287,7 +287,7 @@
 
 4. 情報を記入し、送信します。
 
-名前は自由に設定できます。account typesは下図を参照して選択し、Redirect URIは未記入のままで大丈夫です。
+名前は自由に設定できます。account typesは下図を参照して選択し。Redirect URIのタイプをWebに設定します。URIは https://{あなたのデプロイドメイン}/admin/settings/mail/oauth2 とします。
 
 ![](https://static-docs.nocobase.com/mail-1733818627555.png)
 
