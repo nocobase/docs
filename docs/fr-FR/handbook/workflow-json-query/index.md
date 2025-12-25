@@ -1,6 +1,6 @@
 # Requête JSON
 
-<PluginInfo name="workflow-json-query" link="/handbook/workflow-json-query" commercial="true"></PluginInfo>
+<PluginInfo name="workflow-json-query" link="/handbook/workflow-json-query"></PluginInfo>
 
 Ce plugin permet d'analyser des données JSON complexes générées par divers nœuds, permettant ainsi aux nœuds suivants d'utiliser efficacement ces données. Par exemple, les nœuds d'opérations SQL ou de requêtes HTTP renvoient souvent des résultats au format JSON. Le nœud de requête JSON permet de transformer ces données en valeurs spécifiques et en formats de variables nécessaires aux étapes ultérieures du flux de travail.
 

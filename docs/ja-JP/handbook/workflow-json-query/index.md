@@ -1,6 +1,6 @@
 # JSONクエリ
 
-<PluginInfo name="workflow-json-query" link="/handbook/workflow-json-query" commercial="true"></PluginInfo>
+<PluginInfo name="workflow-json-query" link="/handbook/workflow-json-query"></PluginInfo>
 
 複数のノードが生成した複雑なJSONデータを解析し、後続のノードで使用できるようにします。たとえば、SQL操作やHTTPリクエストノードの結果はJSON形式のデータである可能性があり、このノードを使用して必要な値や変数形式に解析し、後続のノードで利用できるようにします。
 

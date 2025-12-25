@@ -62,6 +62,26 @@ WORKFLOW_SCRIPT_MODULES=crypto,timers,lodash,dayjs
 `WORKFLOW_SCRIPT_MODULES` に宣言されていないモジュールは、Node.js ネイティブモジュールやインストール済みモジュールであってもスクリプトで使用することはできません。このポリシーは、運用レベルでユーザーが使用可能なモジュールリストを制御し、スクリプト権限が過剰になるのを防ぐためのものです。
 :::
 
+When in a non-source-deployed environment, if a module is not installed in `node_modules`, you can manually install the required package into the `storage` directory. For example, to use the `exceljs` package, you can perform the following steps:
+
+```shell
+cd storage
+npm i --no-save --no-package-lock --prefix . exceljs
+```
+
+Then add the package's relative (or absolute) path based on the application's CWD (current working directory) to the environment variable `WORKFLOW_SCRIPT_MODULES`:
+
+```ini
+WORKFLOW_SCRIPT_MODULES=./storage/node_modules/exceljs
+```
+
+You can then use the `exceljs` package in your script:
+
+```js
+const ExcelJS = require('exceljs');
+// ...
+```
+
 ### グローバル変数
 
 `global`、`process`、`__dirname`、`__filename` などのグローバル変数は**サポートされていません**。
