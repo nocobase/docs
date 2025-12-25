@@ -38,6 +38,10 @@ Example: Connect the order table block with the order details block to achieve f
       <source src="https://static-docs.nocobase.com/20240415221426.mp4" type="video/mp4">
 </video>
 
+:::info{title=Tip}
+In NocoBase version 1.5.0-beta and above, connections can be made using more fields. For details, please refer to: [Connecting Data Blocks](/handbook/ui/blocks/block-settings/connect-block).
+:::
+
 For more information, refer to [Connecting Data Blocks](/handbook/ui/blocks/block-settings/connect-block).
 
 - [Edit Block Title](/handbook/ui/blocks/block-settings/block-title)
