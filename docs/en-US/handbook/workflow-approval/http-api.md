@@ -65,7 +65,7 @@ curl -X POST -H 'Authorization: Bearer <your token>' -H 'X-Role: <roleName>' -d 
 * `data`: The fields of the data table record created when initiating the approval, required.
 * `status`: The status of the record created when initiating the approval, required. Possible values include:
   * `0`: Draft, indicating that it is saved but not submitted for approval.
-  * `1`: Submit for approval, indicating that the initiator submits the approval request and enters the approval process.
+  * `2`: Submit for approval, indicating that the initiator submits the approval request and enters the approval process.
 
 ### Save and Submit
 
