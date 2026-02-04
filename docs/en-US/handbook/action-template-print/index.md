@@ -621,44 +621,6 @@ Model S
 
 ---
 
-#### 9. Syntax Description: Intelligent Filtering
-
-- Using intelligent condition blocks, you can hide an entire row based on complex conditions. For example:
-  ```
-  {d.array[i].property:ifIN('keyword'):drop(row)}
-  ```
-
-#### 10. Example: Intelligent Filtering
-
-##### Data
-```json
-[
-  { "name": "Falcon 9" },
-  { "name": "Model S" },
-  { "name": "Model 3" },
-  { "name": "Falcon Heavy" }
-]
-```
-
-##### Template
-```
-People
-{d[i].name}
-{d[i].name:ifIN('Falcon'):drop(row)}
-{d[i+1].name}
-```
-
-##### Result
-```
-People
-Model S
-Model 3
-```
-
-*(Note: Rows containing "Falcon" in the template are removed by the intelligent filtering condition.)*
-
----
-
 ### Deduplication
 
 #### 1. Syntax Description
@@ -761,27 +723,9 @@ The output will have the specified prefix added in front of the text.
 ### Dynamic Parameters
 
 #### 1. Syntax Explanation
-Formatters also support dynamic parameters. These parameters start with a dot (`.`) and are not enclosed in quotes.  
-There are two methods to specify dynamic parameters:
-- **Absolute JSON Path:** Begins with `d.` or `c.` (referring to root data or supplemental data).
-- **Relative JSON Path:** Begins with a single dot (`.`), indicating that the property is looked up from the current parent object.
+NocoBase passes data to formatters if parameters start with a dot ```.``` and is not surrounded by quotes.
 
-For example:
-```
-{d.subObject.qtyB:add(d.subObject.qtyC)}
-```
-It can also be written as a relative path:
-```
-{d.subObject.qtyB:add(.qtyC)}
-```
-If you need to access data from a higher level (parent or above), you can use multiple dots:
-```
-{d.subObject.qtyB:add(..qtyA):add(.qtyC)}
-```
-
-#### 2. Example
-
-Data:
+#### 2. Data:
 ```json
 {
   "id": 10,
@@ -797,24 +741,27 @@ Data:
 }
 ```
 
-Usage in Template:
+#### 3. Template => Result
+do mathematical operations:
 ```
-{d.subObject.qtyB:add(d.subObject.qtyC)}      // Result: 8 (5 + 3)
-{d.subObject.qtyB:add(.qtyC)}                   // Result: 8
-{d.subObject.qtyB:add(..qtyA):add(.qtyC)}        // Result: 28 (5 + 20 + 3)
-{d.subArray[0].qtyE:add(..subObject.qtyC)}       // Result: 6 (3 + 3)
+{d.subObject.qtyB:add(.qtyC)} => 8 (5+3)
 ```
-
-#### 3. Result
-
-The examples yield 8, 8, 28, and 6 respectively.
-
-> **Note:** Using custom iterators or array filters as dynamic parameters is not allowed, for example:
-> ```
-> {d.subObject.qtyB:add(..subArray[i].qtyE)}
-> {d.subObject.qtyB:add(d.subArray[i].qtyE)}
-> ```
-
+read parent attributes if you use two dots, grandparents if you use three dots, etc...
+```
+{d.subObject.qtyB:add(.qtyC):add(..qtyA)} => 28 (5+3+20)
+```
+read parent objects and their children attributes (no limit in depth)
+```
+{d.subArray[i].qtyE:add(..subObject.qtyC) => 6 (3+3)
+```
+It returns an error if the attribute does not exist
+```
+{d.subArray[i].qtyE:add(..badAttr) => [[C_ERROR]] badAttr not defined
+```
+You cannot access arrays
+```
+{d.subObject.qtyB:add(..subArray[0].qtyE)} => [[C_ERROR]] subArray[0] not defined
+```
 ---
 
 ### Text Formatting
@@ -1799,7 +1746,7 @@ Conditional statements allow you to dynamically control the display or hiding of
 - **Inline conditions**: Directly output text (or replace it with other text).
 - **Conditional blocks**: Display or hide a section of the document, suitable for multiple Template tags, paragraphs, tables, etc.
 
-All conditions begin with a logical evaluation formatter (e.g., ifEQ, ifGT, etc.), followed by action formatters (such as show, elseShow, drop, keep, etc.).
+All conditions begin with a logical evaluation formatter (e.g., ifEQ, ifGT, etc.), followed by action formatters (such as show, elseShow, etc.).
 
 ---
 

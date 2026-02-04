@@ -620,43 +620,6 @@ Model S
 
 ---
 
-#### 9. 语法说明：智能筛选
-
-- 通过智能条件块可根据复杂条件隐藏整行，示例格式：
-  ```
-  {d.array[i].属性:ifIN('关键字'):drop(row)}
-  ```
-
-#### 10. 示例：智能筛选
-
-##### 数据
-```json
-[
-  { "name": "Falcon 9" },
-  { "name": "Model S" },
-  { "name": "Model 3" },
-  { "name": "Falcon Heavy" }
-]
-```
-
-##### 模板
-```
-People
-{d[i].name}
-{d[i].name:ifIN('Falcon'):drop(row)}
-{d[i+1].name}
-```
-
-##### 结果
-```
-People
-Model S
-Model 3
-```
-（注：模板中含 “Falcon” 的行被智能筛选条件删除。）
-
----
-
 ### 去重处理
 
 #### 1. 语法说明
@@ -750,26 +713,9 @@ My name is John. I was born on January 31, 2000.
 ### 动态参数
 
 #### 1. 语法说明
-格式化器支持动态参数，参数以点号（.）开头且不加引号。  
-可使用两种方式：
-- **绝对 JSON 路径**：以 `d.` 或 `c.` 开头（根数据或补充数据）。
-- **相对 JSON 路径**：以单个点（.）开头，表示从当前父级对象中查找属性。
+如果参数以点号```.``` 开头且未用引号括起来，NocoBase 会将数据传递给格式化程序
 
-例如：
-```
-{d.subObject.qtyB:add(d.subObject.qtyC)}
-```
-也可写为相对路径：
-```
-{d.subObject.qtyB:add(.qtyC)}
-```
-若需访问上一级或更高层数据，可使用多个点：
-```
-{d.subObject.qtyB:add(..qtyA):add(.qtyC)}
-```
-
-#### 2. 示例
-数据：
+#### 2. 数据:
 ```json
 {
   "id": 10,
@@ -784,23 +730,28 @@ My name is John. I was born on January 31, 2000.
   }]
 }
 ```
-模板中使用：
+
+#### 3. 模板 => 结果
+进行数学运算:
 ```
-{d.subObject.qtyB:add(d.subObject.qtyC)}      // 结果：8 (5 + 3)
-{d.subObject.qtyB:add(.qtyC)}                   // 结果：8
-{d.subObject.qtyB:add(..qtyA):add(.qtyC)}        // 结果：28 (5 + 20 + 3)
-{d.subArray[0].qtyE:add(..subObject.qtyC)}       // 结果：6 (3 + 3)
+{d.subObject.qtyB:add(.qtyC)} => 8 (5+3)
 ```
-
-#### 3. 结果
-各示例分别得到 8、8、28、6。
-
-> **注意：** 使用自定义迭代器或数组过滤器作为动态参数是不允许的，如：
-> ```
-> {d.subObject.qtyB:add(..subArray[i].qtyE)}
-> {d.subObject.qtyB:add(d.subArray[i].qtyE)}
-> ```
-
+如果使用两个点，则读取父级属性；如果使用三个点，则读取祖级属性，依此类推...
+```
+{d.subObject.qtyB:add(.qtyC):add(..qtyA)} => 28 (5+3+20)
+```
+读取父对象及其子对象的属性（深度不限）。
+```
+{d.subArray[i].qtyE:add(..subObject.qtyC) => 6 (3+3)
+```
+如果属性不存在，则返回错误。
+```
+{d.subArray[i].qtyE:add(..badAttr) => [[C_ERROR]] 
+```
+无法访问数组
+```
+{d.subObject.qtyB:add(..subArray[0].qtyE)} => [[C_ERROR]] subArray[0] not defined
+```
 ---
 
 ### 文本格式化
@@ -1782,7 +1733,7 @@ undefined:arrayMap()                  // 输出 undefined
 - **条件块**：对文档中一段区域进行显示或隐藏，适用于多个 标签、段落、表格等。
 - **智能条件**：通过一条标签直接移除或保留目标元素（如行、段落、图片等），语法更简洁。
 
-所有条件均以一个逻辑判断格式器开始（例如 ifEQ、ifGT 等），后续跟随执行动作的格式器（如 show、elseShow、drop、keep 等）。
+所有条件均以一个逻辑判断格式器开始（例如 ifEQ、ifGT 等），后续跟随执行动作的格式器（如 show、elseShow等）。
 
 ---
 
@@ -1808,7 +1759,6 @@ undefined:arrayMap()                  // 输出 undefined
 - **动作格式器**
   - **:show(text) / :elseShow(text)**：用于内联条件，直接输出指定文本
   - **:hideBegin / :hideEnd** 与 **:showBegin / :showEnd**：用于条件块，隐藏或显示文档块
-  - **:drop(element) / :keep(element)**：用于智能条件，移除或保留指定文档元素
 
 接下来分别介绍各个用法的详细语法、示例与结果。
 
