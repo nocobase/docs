@@ -1249,7 +1249,7 @@ The output is the remainder from the modulus operation.
 
 ---
 
-#### 8. :abs
+#### 8. :abs(Not supported)
 
 ##### Syntax Explanation
 Returns the absolute value of the number.
