@@ -17,34 +17,58 @@ const LangIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   </svg>
 );
 
+// 语言与路径前缀映射：英文 /v1/，其他语言 /v1/{lang}/
+const LANG_PATH_PREFIX: Record<string, string> = {
+  'en-US': '/v1/',
+  'zh-CN': '/v1/zh-CN/',
+  'ja-JP': '/v1/ja-JP/',
+  'ru-RU': '/v1/ru-RU/',
+  'fr-FR': '/v1/fr-FR/',
+};
+
+const LANGUAGES = [
+  { code: 'en-US', label: 'English' },
+  { code: 'zh-CN', label: '简体中文' },
+  { code: 'ja-JP', label: '日本語' },
+  { code: 'ru-RU', label: 'Русский' },
+  { code: 'fr-FR', label: 'Français' },
+];
+
+/** 从当前 pathname 解析出当前语言和文档路径（不含语言前缀） */
+function parsePath(pathname: string): { lang: string; docPath: string } {
+  for (const [lang, prefix] of Object.entries(LANG_PATH_PREFIX)) {
+    if (lang === 'en-US') continue;
+    if (pathname.startsWith(prefix)) {
+      return { lang, docPath: pathname.slice(prefix.length).replace(/^\/+/, '') || '' };
+    }
+  }
+  // 匹配 /v1 或 /v1/ 开头的视为英文
+  if (pathname === '/v1' || pathname === '/v1/') {
+    return { lang: 'en-US', docPath: '' };
+  }
+  if (pathname.startsWith('/v1/')) {
+    return { lang: 'en-US', docPath: pathname.slice(4) || '' };
+  }
+  return { lang: 'en-US', docPath: pathname.replace(/^\/+/, '') };
+}
+
 const LangSwitch: React.FC = () => {
   if (typeof window === 'undefined') return null;
 
-  const { hostname, href } = window.location;
-
-  const languages = [
-    { code: 'en', label: 'English', hostname: 'docs.nocobase.com' },
-    { code: 'cn', label: '简体中文', hostname: 'docs-cn.nocobase.com' },
-    { code: 'ja', label: '日本語', hostname: 'docs-jp.nocobase.com' },
-    { code: 'ru', label: 'Русский', hostname: 'docs-ru.nocobase.com' },
-  ];
-
-  const currentLang = languages.find(lang => lang.hostname === hostname);
+  const { pathname, search, hash } = window.location;
+  const { lang: currentLang } = parsePath(pathname);
 
   const handleMenuClick = ({ key }: { key: string }) => {
-    const selectedLang = languages.find(lang => lang.code === key);
-    if (selectedLang && selectedLang.hostname !== hostname) {
-      const url = new URL(href);
-      url.hostname = selectedLang.hostname;
-      url.port = ''; // 移除端口号
-      window.location.href = url.toString();
-    }
+    const targetPrefix = LANG_PATH_PREFIX[key] || LANG_PATH_PREFIX['en-US'];
+    const { docPath } = parsePath(pathname);
+    const newPath = targetPrefix + docPath + search + hash;
+    window.location.href = newPath;
   };
 
   const menu = (
     <Menu onClick={handleMenuClick}>
-      {languages.map(lang => (
-        <Menu.Item key={lang.code} disabled={lang.hostname === hostname}>
+      {LANGUAGES.map((lang) => (
+        <Menu.Item key={lang.code}>
           {lang.label}
         </Menu.Item>
       ))}

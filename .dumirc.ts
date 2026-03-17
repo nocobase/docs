@@ -25,17 +25,36 @@ if (lang !== 'en-US') {
 
 let site_url=""
 if (lang==='zh-CN'){
-  site_url = "https://docs-cn.nocobase.com"
-}else if (lang==='ja-JP'){
-  site_url = "https://docs-jp.nocobase.com"
-}else if (lang==='ru-RU'){
-  site_url = "https://docs-ru.nocobase.com"
-}else {
-  site_url = "https://docs.nocobase.com"
+  site_url = "https://docs.nocobase.com/v1/zh-CN/"
+} else if (lang==='ja-JP'){
+  site_url = "https://docs.nocobase.com/v1/ja-JP/"
+} else if (lang==='ru-RU'){
+  site_url = "https://docs.nocobase.com/v1/ru-RU/"
+} else if (lang==='fr-FR'){
+  site_url = "https://docs.nocobase.com/v1/fr-FR/"
+} else {
+  site_url = "https://docs.nocobase.com/v1/"
 }
 
+let basePath = `/v1/`;
+
+if (lang === 'zh-CN') {
+  basePath = `/v1/zh-CN/`;
+} else if (lang === 'ja-JP') {
+  basePath = `/v1/ja-JP/`;
+} else if (lang === 'ru-RU') {
+  basePath = `/v1/ru-RU/`;
+} else if (lang === 'fr-FR') {
+  basePath = `/v1/fr-FR/`;
+} else {
+  basePath = `/v1/`;
+}
+
+let outputPath = basePath;
 
 export default defineConfig({
+  base: basePath,
+  publicPath: basePath,
   hash: true,
   alias: {
     'cytoscape/dist/cytoscape.umd.js': require.resolve('cytoscape/dist/cytoscape.umd.js'),
@@ -56,7 +75,7 @@ export default defineConfig({
     ignorePreRenderError: true,
   },
   cacheDirectoryPath: `node_modules/.docs-${lang}-cache`,
-  outputPath: `./dist/${lang}`,
+  outputPath: `./dist/${outputPath}`,
   resolve: {
     docDirs: [`./docs/${lang}`],
   },

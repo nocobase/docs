@@ -11,6 +11,7 @@
     "dev:ru": "cross-env DOC_LANG=ru-RU dumi dev",
     "build": "dumi build",
     "build:en": "cross-env DOC_LANG=en-US dumi build",
+    "build:cn": "cross-env DOC_LANG=zh-CN dumi build",
     "build:fr": "cross-env DOC_LANG=fr-FR dumi build",
     "build:ja": "cross-env DOC_LANG=ja-JP dumi build",
     "build:ru": "cross-env DOC_LANG=ru-RU dumi build",
