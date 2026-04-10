@@ -1,27 +1,51 @@
 # DataSourceManager
 
-`DataSourceManager` is a management class for multiple `dataSource` instances.
+`DataSourceManager` is a management class for multiple `DataSource` instances. It handles registration, initialization, and middleware of data sources.
 
 ## API
 
 ### add()
-Adds a `dataSource` instance.
+
+Adds a `DataSource` instance to the manager and loads it.
 
 #### Signature
 
 - `add(dataSource: DataSource, options: any = {}): Promise<void>`
 
+#### Parameters
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `dataSource` | `DataSource` | The data source instance to add |
+| `options` | `any` | Optional loading options passed to the data source |
+
+#### Example
+
+```typescript
+const ds = new MyDataSource({ name: 'my-db' });
+await app.dataSourceManager.add(ds);
+```
+
 ### use()
 
-Adds a global middleware to the `dataSource` instance.
+Adds a global middleware to all `DataSource` instances.
+
+#### Example
+
+```typescript
+app.dataSourceManager.use(async (ctx, next) => {
+  console.log('DataSource middleware');
+  await next();
+});
+```
 
 ### middleware()
 
-Retrieves the middleware of the current `dataSourceManager` instance, which can be used to respond to HTTP requests.
+Returns the middleware of the current `DataSourceManager` instance, which can be mounted to the server to handle HTTP requests.
 
 ### afterAddDataSource()
 
-A hook function that is triggered after a new `dataSource` is added.
+A hook that is triggered after a new `DataSource` is added.
 
 #### Signature
 
@@ -31,26 +55,70 @@ A hook function that is triggered after a new `dataSource` is added.
 type DataSourceHook = (dataSource: DataSource) => void;
 ```
 
+#### Example
+
+```typescript
+app.dataSourceManager.afterAddDataSource((dataSource) => {
+  console.log(`DataSource added: ${dataSource.name}`);
+});
+```
+
 ### registerDataSourceType()
 
-Registers the data source type and its class.
+Registers a data source type and its corresponding class so it can be created dynamically later.
 
 #### Signature
 
 - `registerDataSourceType(type: string, dataSourceClass: typeof DataSource)`
 
+#### Parameters
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `type` | `string` | A unique string identifier for the data source type |
+| `dataSourceClass` | `typeof DataSource` | The class that implements the data source |
+
+#### Example
+
+```typescript
+app.dataSourceManager.registerDataSourceType('mysql', MySQLDataSource);
+```
+
 ### getDataSourceType()
 
-Retrieves the data source class.
+Retrieves a registered data source class by type.
 
 #### Signature
 
 - `getDataSourceType(type: string): typeof DataSource`
 
+#### Example
+
+```typescript
+const MySQLDataSource = app.dataSourceManager.getDataSourceType('mysql');
+```
+
 ### buildDataSourceByType()
 
-Creates a data source instance based on the registered data source type and instance parameters.
+Creates a new data source instance based on a registered type and options.
 
 #### Signature
 
 - `buildDataSourceByType(type: string, options: any): DataSource`
+
+#### Parameters
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `type` | `string` | The registered data source type |
+| `options` | `any` | Options passed to the data source constructor |
+
+#### Example
+
+```typescript
+const ds = app.dataSourceManager.buildDataSourceByType('mysql', {
+  name: 'my-mysql',
+  host: 'localhost',
+  port: 3306,
+});
+```
