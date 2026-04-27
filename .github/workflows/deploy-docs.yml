@@ -50,7 +50,35 @@ jobs:
         env:
           DOC_LANG: fr-FR
         run: yarn build
-      - name: Upload docs to OSS and update CDN
+      - name: Install ossutil
+        if: ${{ github.ref_name == 'main' }}
+        run: |
+          curl -o /tmp/ossutil.zip https://gosspublic.alicdn.com/ossutil/v2/2.2.2/ossutil-2.2.2-linux-amd64.zip
+          unzip -o /tmp/ossutil.zip -d /tmp/ossutil
+          sudo mv /tmp/ossutil/ossutil-2.2.2-linux-amd64/ossutil /usr/local/bin/ossutil
+          sudo chmod 755 /usr/local/bin/ossutil
+      - name: Upload docs to OSS via ossutil
+        if: ${{ github.ref_name == 'main' }}
+        env:
+          OSS_ACCESS_KEY_ID: ${{ secrets.DOCS_ALI_OSS_ACCESS_KEY_ID }}
+          OSS_ACCESS_KEY_SECRET: ${{ secrets.DOCS_ALI_OSS_ACCESS_KEY_SECRET }}
+        run: |
+          TIMESTAMP=$(date +%Y%m%d%H%M%S)
+          echo "DOCS_TIMESTAMP=$TIMESTAMP" >> $GITHUB_ENV
+          REGION=${{ secrets.DOCS_ALI_OSS_REGION }}
+          BUCKET=${{ secrets.DOCS_ALI_OSS_BUCKET }}
+
+          # Upload en-US to timestamp root (default language)
+          ossutil cp -r ./dist/en-US/ oss://$BUCKET/$TIMESTAMP/ -f --region $REGION
+
+          # Upload other language directories
+          for lang_dir in ./dist/*/; do
+            lang=$(basename "$lang_dir")
+            if [ "$lang" != "en-US" ]; then
+              ossutil cp -r "$lang_dir" "oss://$BUCKET/$TIMESTAMP/$lang/" -f --region $REGION
+            fi
+          done
+      - name: Update CDN and cleanup
         if: ${{ github.ref_name == 'main' }}
         env:
           DOCS_ALI_OSS_ACCESS_KEY_ID: ${{ secrets.DOCS_ALI_OSS_ACCESS_KEY_ID }}
@@ -58,7 +86,7 @@ jobs:
           DOCS_ALI_OSS_BUCKET: ${{ secrets.DOCS_ALI_OSS_BUCKET }}
           DOCS_ALI_OSS_REGION: ${{ secrets.DOCS_ALI_OSS_REGION }}
           DOCS_ALI_CDN_DOMAIN: ${{ secrets.DOCS_ALI_CDN_DOMAIN }}
-        run: node scripts/upload-docs.js --dir ./dist
+        run: node scripts/upload-docs.js --skip-upload --timestamp ${{ env.DOCS_TIMESTAMP }}
       - name: Set tags
         if: ${{ github.ref_name != 'main' }}
         id: set-tags

@@ -47,8 +47,33 @@ function normalizeDomain(domain) {
   return domain.replace(/^https?:\/\//, '').replace(/\/+$/, '');
 }
 
+const UPLOAD_CONCURRENCY = 20;
+
 /**
- * Recursively upload a directory to OSS
+ * Collect all files recursively from a directory
+ * @returns {Array<{filePath: string, ossKey: string}>}
+ */
+function collectFiles(localDir, ossPrefix = '') {
+  const result = [];
+  if (!fs.existsSync(localDir)) return result;
+
+  const entries = fs.readdirSync(localDir);
+  for (const entry of entries) {
+    const filePath = path.resolve(localDir, entry);
+    const fileStats = fs.statSync(filePath);
+    const key = ossPrefix ? `${ossPrefix}/${entry}` : entry;
+
+    if (fileStats.isDirectory()) {
+      result.push(...collectFiles(filePath, key));
+    } else {
+      result.push({ filePath, ossKey: key });
+    }
+  }
+  return result;
+}
+
+/**
+ * Upload a directory to OSS with concurrent uploads
  */
 async function uploadDirectoryToOSS(client, localDir, ossPrefix = '') {
   if (!fs.existsSync(localDir)) {
@@ -61,26 +86,26 @@ async function uploadDirectoryToOSS(client, localDir, ossPrefix = '') {
     throw new Error(`${localDir} is not a directory`);
   }
 
-  const files = fs.readdirSync(localDir);
+  const files = collectFiles(localDir, ossPrefix);
   let uploadedCount = 0;
 
-  for (const file of files) {
-    const filePath = path.resolve(localDir, file);
-    const fileStats = fs.statSync(filePath);
-
-    if (fileStats.isDirectory()) {
-      const subOssPrefix = ossPrefix ? `${ossPrefix}/${file}` : file;
-      const subCount = await uploadDirectoryToOSS(client, filePath, subOssPrefix);
-      uploadedCount += subCount;
-    } else {
-      const ossKey = ossPrefix ? `${ossPrefix}/${file}` : file;
-      try {
-        await client.put(ossKey, filePath);
-        uploadedCount++;
-      } catch (error) {
-        console.error(`[error] Failed to upload ${ossKey}: ${error.message}`);
-        throw error;
-      }
+  // Upload in batches with concurrency
+  for (let i = 0; i < files.length; i += UPLOAD_CONCURRENCY) {
+    const batch = files.slice(i, i + UPLOAD_CONCURRENCY);
+    const results = await Promise.all(
+      batch.map(async ({ filePath, ossKey }) => {
+        try {
+          await client.put(ossKey, filePath);
+          return true;
+        } catch (error) {
+          console.error(`[error] Failed to upload ${ossKey}: ${error.message}`);
+          throw error;
+        }
+      }),
+    );
+    uploadedCount += results.length;
+    if (files.length > UPLOAD_CONCURRENCY) {
+      console.log(`[info] Uploaded ${uploadedCount}/${files.length} files...`);
     }
   }
 
@@ -254,6 +279,8 @@ function parseArgs() {
     } else if (args[i] === '--timestamp' && args[i + 1]) {
       options.timestamp = args[i + 1];
       i++;
+    } else if (args[i] === '--skip-upload') {
+      options.skipUpload = true;
     }
   }
   return options;
@@ -269,22 +296,23 @@ async function main() {
     process.exit(1);
   }
 
-  // 2. Validate --dir
-  if (!options.dir) {
+  // 2. Validate --dir (not required when --skip-upload)
+  if (!options.skipUpload && !options.dir) {
     console.error('[error] Missing required option: --dir <dir>');
     console.error('Usage: node scripts/upload-docs.js --dir ./dist');
+    console.error('       node scripts/upload-docs.js --skip-upload --timestamp <ts>');
     process.exit(1);
   }
 
-  const dir = path.resolve(process.cwd(), options.dir);
-  if (!fs.existsSync(dir)) {
-    console.error(`[error] Directory does not exist: ${dir}`);
+  // 3. Validate --timestamp is required when --skip-upload
+  if (options.skipUpload && !options.timestamp) {
+    console.error('[error] --timestamp is required when using --skip-upload');
     process.exit(1);
   }
 
   const domain = normalizeDomain(process.env.DOCS_ALI_CDN_DOMAIN);
 
-  // 3. Create OSS client
+  // 4. Create OSS client
   const Client = require('ali-oss');
   const ossClient = new Client({
     accessKeyId: process.env.DOCS_ALI_OSS_ACCESS_KEY_ID,
@@ -293,35 +321,45 @@ async function main() {
     region: process.env.DOCS_ALI_OSS_REGION,
   });
 
-  // 4. Generate or use provided timestamp
+  // 5. Generate or use provided timestamp
   const timestamp = options.timestamp || generateTimestamp();
 
-  // 5. Upload to OSS
-  console.log(`[info] Uploading docs from ${dir} to OSS under ${timestamp}/...`);
-  try {
-    let uploadedCount = 0;
-
-    // Upload en-US to the root of the timestamp directory (default language)
-    const enUSDir = path.resolve(dir, 'en-US');
-    if (fs.existsSync(enUSDir)) {
-      console.log('[info] Uploading en-US as root (default language)...');
-      uploadedCount += await uploadDirectoryToOSS(ossClient, enUSDir, timestamp);
+  // 6. Upload to OSS (skip if --skip-upload)
+  if (!options.skipUpload) {
+    const dir = path.resolve(process.cwd(), options.dir);
+    if (!fs.existsSync(dir)) {
+      console.error(`[error] Directory does not exist: ${dir}`);
+      process.exit(1);
     }
 
-    // Upload other language directories (skip en-US since it's already at root)
-    const langDirs = fs.readdirSync(dir);
-    for (const lang of langDirs) {
-      if (lang === 'en-US') continue;
-      const langDir = path.resolve(dir, lang);
-      if (fs.statSync(langDir).isDirectory()) {
-        uploadedCount += await uploadDirectoryToOSS(ossClient, langDir, `${timestamp}/${lang}`);
+    console.log(`[info] Uploading docs from ${dir} to OSS under ${timestamp}/...`);
+    try {
+      let uploadedCount = 0;
+
+      // Upload en-US to the root of the timestamp directory (default language)
+      const enUSDir = path.resolve(dir, 'en-US');
+      if (fs.existsSync(enUSDir)) {
+        console.log('[info] Uploading en-US as root (default language)...');
+        uploadedCount += await uploadDirectoryToOSS(ossClient, enUSDir, timestamp);
       }
-    }
 
-    console.log(`[info] Successfully uploaded ${uploadedCount} files to OSS under ${timestamp}/`);
-  } catch (error) {
-    console.error(`[error] Upload failed: ${error.message}`);
-    process.exit(1);
+      // Upload other language directories (skip en-US since it's already at root)
+      const langDirs = fs.readdirSync(dir);
+      for (const lang of langDirs) {
+        if (lang === 'en-US') continue;
+        const langDir = path.resolve(dir, lang);
+        if (fs.statSync(langDir).isDirectory()) {
+          uploadedCount += await uploadDirectoryToOSS(ossClient, langDir, `${timestamp}/${lang}`);
+        }
+      }
+
+      console.log(`[info] Successfully uploaded ${uploadedCount} files to OSS under ${timestamp}/`);
+    } catch (error) {
+      console.error(`[error] Upload failed: ${error.message}`);
+      process.exit(1);
+    }
+  } else {
+    console.log(`[info] Skipping upload (--skip-upload), using timestamp: ${timestamp}`);
   }
 
   // 6. Update CDN origin rewrite rule
