@@ -63,9 +63,9 @@ jobs:
           OSS_ACCESS_KEY_ID: ${{ secrets.DOCS_ALI_OSS_ACCESS_KEY_ID }}
           OSS_ACCESS_KEY_SECRET: ${{ secrets.DOCS_ALI_OSS_ACCESS_KEY_SECRET }}
         run: |
-          TIMESTAMP=$(date +%Y%m%d%H%M%S)
+          TIMESTAMP=$(TZ=Asia/Shanghai date +%Y%m%d%H%M%S)
           echo "DOCS_TIMESTAMP=$TIMESTAMP" >> $GITHUB_ENV
-          REGION=${{ secrets.DOCS_ALI_OSS_REGION }}
+          REGION=${{ secrets.DOCS_ALI_CDN_REGION }}
           BUCKET=${{ secrets.DOCS_ALI_OSS_BUCKET }}
 
           # Upload en-US to timestamp root (default language)
