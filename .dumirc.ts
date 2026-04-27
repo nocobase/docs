@@ -35,7 +35,11 @@ if (lang==='zh-CN'){
 }
 
 
+const base = lang === 'en-US' ? '/' : `/${lang}/`;
+
 export default defineConfig({
+  base,
+  publicPath: base,
   hash: true,
   alias: {
     'cytoscape/dist/cytoscape.umd.js': require.resolve('cytoscape/dist/cytoscape.umd.js'),
