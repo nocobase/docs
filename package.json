@@ -29,8 +29,10 @@
     ]
   },
   "devDependencies": {
+    "@alicloud/cdn20180510": "^4.2.2",
     "@commitlint/cli": "^18.2.0",
     "@commitlint/config-conventional": "^18.1.0",
+    "ali-oss": "^6.1.0",
     "cross-env": "^7.0.3",
     "dumi": "^2.2.14",
     "husky": "^8.0.3",

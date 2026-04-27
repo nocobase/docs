@@ -23,20 +23,33 @@ const LangSwitch: React.FC = () => {
   const { hostname, href } = window.location;
 
   const languages = [
-    { code: 'en', label: 'English', hostname: 'docs.nocobase.com' },
-    { code: 'cn', label: '简体中文', hostname: 'docs-cn.nocobase.com' },
-    { code: 'ja', label: '日本語', hostname: 'docs-jp.nocobase.com' },
-    { code: 'ru', label: 'Русский', hostname: 'docs-ru.nocobase.com' },
+    { code: 'en', label: 'English', pathPrefix: '/' },
+    { code: 'cn', label: '简体中文', pathPrefix: '/zh-CN' },
+    { code: 'ja', label: '日本語', pathPrefix: '/ja-JP' },
+    { code: 'ru', label: 'Русский', pathPrefix: '/ru-RU' },
+    { code: 'fr', label: 'Français', pathPrefix: '/fr-FR' },
   ];
 
-  const currentLang = languages.find(lang => lang.hostname === hostname);
+  const { pathname } = window.location;
+  // Match non-default languages first, English is the fallback
+  const nonDefaultLangs = languages.filter(lang => lang.pathPrefix !== '/');
+  const currentLang = nonDefaultLangs.find(lang => pathname.startsWith(lang.pathPrefix)) || languages.find(lang => lang.code === 'en') || languages[0];
 
   const handleMenuClick = ({ key }: { key: string }) => {
     const selectedLang = languages.find(lang => lang.code === key);
-    if (selectedLang && selectedLang.hostname !== hostname) {
+    if (selectedLang && selectedLang.code !== currentLang.code) {
       const url = new URL(href);
-      url.hostname = selectedLang.hostname;
-      url.port = ''; // 移除端口号
+      // Strip current language prefix from pathname
+      let cleanPath = pathname;
+      if (currentLang.pathPrefix !== '/') {
+        cleanPath = pathname.slice(currentLang.pathPrefix.length) || '/';
+      }
+      // For English (default), use path as-is; for others, add prefix
+      if (selectedLang.pathPrefix === '/') {
+        url.pathname = cleanPath;
+      } else {
+        url.pathname = selectedLang.pathPrefix + cleanPath;
+      }
       window.location.href = url.toString();
     }
   };
@@ -44,7 +57,7 @@ const LangSwitch: React.FC = () => {
   const menu = (
     <Menu onClick={handleMenuClick}>
       {languages.map(lang => (
-        <Menu.Item key={lang.code} disabled={lang.hostname === hostname}>
+        <Menu.Item key={lang.code} disabled={lang.code === currentLang.code}>
           {lang.label}
         </Menu.Item>
       ))}

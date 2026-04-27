@@ -79,8 +79,8 @@ export default defineConfig({
     footer: '© 2020-2024 NocoBase. All rights reserved.',
     alert:
       lang === 'zh-CN'
-        ? '<a target="_blank" style="color: inherit;" href="https://v2.docs.nocobase.com/cn/">V2 文档已发布，点此查看。</a>'
-        : '<a target="_blank" style="color: inherit;" href="https://v2.docs.nocobase.com/">V2 documentation is now live — click here to view.</a>',
+        ? '<a target="_blank" style="color: inherit;" href="https://docs.nocobase.com/cn/">V2 文档已发布，点此查看。</a>'
+        : '<a target="_blank" style="color: inherit;" href="https://docs.nocobase.com/">V2 documentation is now live — click here to view.</a>',
     localesEnhance: [
       { id: 'zh-CN', switchPrefix: '中', hostname: 'docs-cn.nocobase.com' },
       { id: 'en-US', switchPrefix: 'en', hostname: 'docs.nocobase.com' },
