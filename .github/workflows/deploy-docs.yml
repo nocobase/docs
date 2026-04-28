@@ -63,19 +63,19 @@ jobs:
           OSS_ACCESS_KEY_ID: ${{ secrets.DOCS_ALI_OSS_ACCESS_KEY_ID }}
           OSS_ACCESS_KEY_SECRET: ${{ secrets.DOCS_ALI_OSS_ACCESS_KEY_SECRET }}
         run: |
-          TIMESTAMP=$(TZ=Asia/Shanghai date +%Y%m%d%H%M%S)
+          TIMESTAMP=20260427182053
           echo "DOCS_TIMESTAMP=$TIMESTAMP" >> $GITHUB_ENV
           REGION=${{ secrets.DOCS_ALI_CDN_REGION }}
           BUCKET=${{ secrets.DOCS_ALI_OSS_BUCKET }}
 
           # Upload en-US to timestamp root (default language)
-          ossutil cp -r ./dist/en-US/ oss://$BUCKET/$TIMESTAMP/ -f -j 64 --region $REGION
+          ossutil cp -r ./dist/en-US/ oss://$BUCKET/$TIMESTAMP/ -f -j 64 --update --region $REGION
 
           # Upload other language directories
           for lang_dir in ./dist/*/; do
             lang=$(basename "$lang_dir")
             if [ "$lang" != "en-US" ]; then
-              ossutil cp -r "$lang_dir" "oss://$BUCKET/$TIMESTAMP/$lang/" -f -j 64 --region $REGION
+              ossutil cp -r "$lang_dir" "oss://$BUCKET/$TIMESTAMP/$lang/" -f -j 64 --update --region $REGION
             fi
           done
       - name: Update CDN and cleanup
