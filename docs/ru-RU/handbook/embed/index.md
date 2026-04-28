@@ -19,10 +19,10 @@
 
 ![](https://static-docs.nocobase.com/f11bd6d5e88d38731d7cd3cb149022c8.png)
 
-2. Вы получите уникальную ссылку вида: `https://xxx.com/embed/qs087rz4o2b`
+2. Вы получите уникальную ссылку вида: `https://example.com/embed/qs087rz4o2b`
 
 ![](https://static-docs.nocobase.com/9d847805a00fd07372a474665ec0e968.png)
 
 Для встраивания в сторонние ресурсы с аутентификацией пользователей:
-- Добавьте параметр `token` к ссылке: `https://xxx.com/embed/qs087rz4o2b?token=xxx`
+- Добавьте параметр `token` к ссылке: `https://example.com/embed/qs087rz4o2b?token=xxx`
 - Подробнее об аутентификации: [Руководство по аутентификации](/handbook/auth)

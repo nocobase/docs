@@ -18,9 +18,9 @@
 
 ![](https://static-docs.nocobase.com/f11bd6d5e88d38731d7cd3cb149022c8.png)
 
-クリック後に取得したリンクは、単独で開くことができます。例えば、`https://xxx.com/embed/qs087rz4o2b` のようになります。
+クリック後に取得したリンクは、単独で開くことができます。例えば、`https://example.com/embed/qs087rz4o2b` のようになります。
 
 ![](https://static-docs.nocobase.com/9d847805a00fd07372a474665ec0e968.png)
 
-他のウェブサイトやアプリケーションにNocoBaseのページを埋め込むには、ユーザーの認証が必要です。`token` をリンクに追加することで実現できます。例えば、`https://xxx.com/embed/qs087rz4o2b?token=xxx` のように、ユーザー認証の詳細については [ユーザー認証](/handbook/auth) を参照してください。
+他のウェブサイトやアプリケーションにNocoBaseのページを埋め込むには、ユーザーの認証が必要です。`token` をリンクに追加することで実現できます。例えば、`https://example.com/embed/qs087rz4o2b?token=xxx` のように、ユーザー認証の詳細については [ユーザー認証](/handbook/auth) を参照してください。
 
