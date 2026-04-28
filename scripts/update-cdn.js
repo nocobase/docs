@@ -57,7 +57,14 @@ async function updateCdnOriginRewrite(cdnClient, domain, timestampDir) {
     const describeResponse = await cdnClient.describeCdnDomainConfigs(describeRequest);
     const configs = describeResponse.body?.domainConfigs?.domainConfig;
     if (configs && configs.length > 0) {
-      existingConfigId = configs[0].configId;
+      for (const config of configs) {
+        const args = config.functionArgs?.functionArg || [];
+        const sourceArg = args.find((a) => a.argName === 'source_url');
+        if (sourceArg && sourceArg.argValue === '/(.*) ') {
+          existingConfigId = config.configId;
+          break;
+        }
+      }
     }
   } catch (error) {
     console.log(`[warn] Could not fetch existing CDN config (may be first deployment): ${error.message}`);
@@ -86,8 +93,8 @@ async function updateCdnOriginRewrite(cdnClient, domain, timestampDir) {
 
 async function waitForRewriteRule(cdnClient, domain, timestampDir) {
   const Cdn20180510 = require('@alicloud/cdn20180510');
-  const maxAttempts = 24; // 24 * 5s = 120s max
-  const interval = 5000;
+  const maxAttempts = 180; // 180 * 10s = 30min max
+  const interval = 10000;
 
   for (let i = 1; i <= maxAttempts; i++) {
     try {
@@ -99,7 +106,12 @@ async function waitForRewriteRule(cdnClient, domain, timestampDir) {
       const configs = response.body?.domainConfigs?.domainConfig;
 
       if (configs && configs.length > 0) {
-        const config = configs[0];
+        const config = configs.find((c) => {
+          const cArgs = c.functionArgs?.functionArg || [];
+          const src = cArgs.find((a) => a.argName === 'source_url');
+          return src && src.argValue === '/(.*) ';
+        });
+        if (!config) continue;
         const status = config.status;
         const args = config.functionArgs?.functionArg || [];
         const targetArg = args.find((a) => a.argName === 'target_url');
@@ -118,7 +130,7 @@ async function waitForRewriteRule(cdnClient, domain, timestampDir) {
     await new Promise((resolve) => setTimeout(resolve, interval));
   }
 
-  console.log('[warn] Rewrite rule verification timed out after 120s, proceeding with cache refresh anyway');
+  console.log('[warn] Rewrite rule verification timed out after 30min, proceeding with cache refresh anyway');
 }
 
 async function refreshCdnCache(cdnClient, domain) {
