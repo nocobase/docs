@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 
 /**
- * Upload v1 docs to Alibaba Cloud OSS and update CDN origin rewrite rule.
+ * Update CDN origin rewrite rule, refresh cache, and cleanup old versions.
+ * File upload is handled by ossutil in CI.
  *
  * Usage:
- *   node scripts/upload-docs.js --dir ./dist
+ *   node scripts/update-cdn.js --timestamp 20260427182053
  *
  * Required environment variables:
  *   DOCS_ALI_OSS_ACCESS_KEY_ID
@@ -13,9 +14,6 @@
  *   DOCS_ALI_OSS_REGION
  *   DOCS_ALI_CDN_DOMAIN
  */
-
-const fs = require('fs');
-const path = require('path');
 
 const REQUIRED_ENV_VARS = [
   'DOCS_ALI_OSS_ACCESS_KEY_ID',
@@ -26,90 +24,12 @@ const REQUIRED_ENV_VARS = [
 ];
 
 const TIMESTAMP_DIR_PATTERN = /^\d{14}\/$/;
-const KEEP_VERSIONS = 3;
+const KEEP_VERSIONS = 1;
 const OSS_LIST_MAX_KEYS = 1000;
 const OSS_DELETE_BATCH_SIZE = 1000;
 
-function generateTimestamp() {
-  const now = new Date();
-  const pad = (n) => String(n).padStart(2, '0');
-  return [
-    now.getFullYear(),
-    pad(now.getMonth() + 1),
-    pad(now.getDate()),
-    pad(now.getHours()),
-    pad(now.getMinutes()),
-    pad(now.getSeconds()),
-  ].join('');
-}
-
 function normalizeDomain(domain) {
   return domain.replace(/^https?:\/\//, '').replace(/\/+$/, '');
-}
-
-const UPLOAD_CONCURRENCY = 20;
-
-/**
- * Collect all files recursively from a directory
- * @returns {Array<{filePath: string, ossKey: string}>}
- */
-function collectFiles(localDir, ossPrefix = '') {
-  const result = [];
-  if (!fs.existsSync(localDir)) return result;
-
-  const entries = fs.readdirSync(localDir);
-  for (const entry of entries) {
-    const filePath = path.resolve(localDir, entry);
-    const fileStats = fs.statSync(filePath);
-    const key = ossPrefix ? `${ossPrefix}/${entry}` : entry;
-
-    if (fileStats.isDirectory()) {
-      result.push(...collectFiles(filePath, key));
-    } else {
-      result.push({ filePath, ossKey: key });
-    }
-  }
-  return result;
-}
-
-/**
- * Upload a directory to OSS with concurrent uploads
- */
-async function uploadDirectoryToOSS(client, localDir, ossPrefix = '') {
-  if (!fs.existsSync(localDir)) {
-    console.log(`[warn] Directory does not exist: ${localDir}`);
-    return 0;
-  }
-
-  const stats = fs.statSync(localDir);
-  if (!stats.isDirectory()) {
-    throw new Error(`${localDir} is not a directory`);
-  }
-
-  const files = collectFiles(localDir, ossPrefix);
-  let uploadedCount = 0;
-
-  // Upload in batches with concurrency
-  for (let i = 0; i < files.length; i += UPLOAD_CONCURRENCY) {
-    const batch = files.slice(i, i + UPLOAD_CONCURRENCY);
-    const results = await Promise.all(
-      batch.map(async ({ filePath, ossKey }) => {
-        try {
-          await client.put(ossKey, filePath);
-          return true;
-        } catch (error) {
-          console.error(`[error] Failed to upload ${ossKey}: ${error.message}`);
-          throw error;
-        }
-      }),
-    );
-    uploadedCount += results.length;
-    if (files.length > UPLOAD_CONCURRENCY) {
-      console.log(`[info] Uploaded ${uploadedCount}/${files.length} files...`);
-    }
-  }
-
-  return uploadedCount;
 }
 
 function createCdnClient() {
@@ -164,12 +84,6 @@ async function updateCdnOriginRewrite(cdnClient, domain, timestampDir) {
   await cdnClient.batchSetCdnDomainConfig(setRequest);
 }
 
-/**
- * Poll CDN API until the rewrite rule status becomes "success"
- * @param {import('@alicloud/cdn20180510').default} cdnClient
- * @param {string} domain
- * @param {string} timestampDir
- */
 async function waitForRewriteRule(cdnClient, domain, timestampDir) {
   const Cdn20180510 = require('@alicloud/cdn20180510');
   const maxAttempts = 24; // 24 * 5s = 120s max
@@ -273,14 +187,9 @@ function parseArgs() {
   const args = process.argv.slice(2);
   const options = {};
   for (let i = 0; i < args.length; i++) {
-    if (args[i] === '--dir' && args[i + 1]) {
-      options.dir = args[i + 1];
-      i++;
-    } else if (args[i] === '--timestamp' && args[i + 1]) {
+    if (args[i] === '--timestamp' && args[i + 1]) {
       options.timestamp = args[i + 1];
       i++;
-    } else if (args[i] === '--skip-upload') {
-      options.skipUpload = true;
     }
   }
   return options;
@@ -296,23 +205,17 @@ async function main() {
     process.exit(1);
   }
 
-  // 2. Validate --dir (not required when --skip-upload)
-  if (!options.skipUpload && !options.dir) {
-    console.error('[error] Missing required option: --dir <dir>');
-    console.error('Usage: node scripts/upload-docs.js --dir ./dist');
-    console.error('       node scripts/upload-docs.js --skip-upload --timestamp <ts>');
+  // 2. Validate --timestamp
+  if (!options.timestamp) {
+    console.error('[error] Missing required option: --timestamp <ts>');
+    console.error('Usage: node scripts/update-cdn.js --timestamp 20260427182053');
     process.exit(1);
   }
 
-  // 3. Validate --timestamp is required when --skip-upload
-  if (options.skipUpload && !options.timestamp) {
-    console.error('[error] --timestamp is required when using --skip-upload');
-    process.exit(1);
-  }
-
+  const timestamp = options.timestamp;
   const domain = normalizeDomain(process.env.DOCS_ALI_CDN_DOMAIN);
 
-  // 4. Create OSS client
+  // 3. Create OSS client (for cleanup)
   const Client = require('ali-oss');
   const ossClient = new Client({
     accessKeyId: process.env.DOCS_ALI_OSS_ACCESS_KEY_ID,
@@ -321,55 +224,14 @@ async function main() {
     region: process.env.DOCS_ALI_OSS_REGION,
   });
 
-  // 5. Generate or use provided timestamp
-  const timestamp = options.timestamp || generateTimestamp();
-
-  // 6. Upload to OSS (skip if --skip-upload)
-  if (!options.skipUpload) {
-    const dir = path.resolve(process.cwd(), options.dir);
-    if (!fs.existsSync(dir)) {
-      console.error(`[error] Directory does not exist: ${dir}`);
-      process.exit(1);
-    }
-
-    console.log(`[info] Uploading docs from ${dir} to OSS under ${timestamp}/...`);
-    try {
-      let uploadedCount = 0;
-
-      // Upload en-US to the root of the timestamp directory (default language)
-      const enUSDir = path.resolve(dir, 'en-US');
-      if (fs.existsSync(enUSDir)) {
-        console.log('[info] Uploading en-US as root (default language)...');
-        uploadedCount += await uploadDirectoryToOSS(ossClient, enUSDir, timestamp);
-      }
-
-      // Upload other language directories (skip en-US since it's already at root)
-      const langDirs = fs.readdirSync(dir);
-      for (const lang of langDirs) {
-        if (lang === 'en-US') continue;
-        const langDir = path.resolve(dir, lang);
-        if (fs.statSync(langDir).isDirectory()) {
-          uploadedCount += await uploadDirectoryToOSS(ossClient, langDir, `${timestamp}/${lang}`);
-        }
-      }
-
-      console.log(`[info] Successfully uploaded ${uploadedCount} files to OSS under ${timestamp}/`);
-    } catch (error) {
-      console.error(`[error] Upload failed: ${error.message}`);
-      process.exit(1);
-    }
-  } else {
-    console.log(`[info] Skipping upload (--skip-upload), using timestamp: ${timestamp}`);
-  }
-
-  // 6. Update CDN origin rewrite rule
+  // 4. Update CDN origin rewrite rule
   console.log(`[info] Updating CDN origin rewrite rule for ${domain}...`);
   try {
     const cdnClient = createCdnClient();
     await updateCdnOriginRewrite(cdnClient, domain, timestamp);
     console.log(`[info] CDN origin rewrite updated to /${timestamp}/`);
 
-    // 7. Poll until rewrite rule takes effect, then refresh CDN cache
+    // 5. Poll until rewrite rule takes effect, then refresh CDN cache
     console.log('[info] Waiting for rewrite rule to propagate...');
     await waitForRewriteRule(cdnClient, domain, timestamp);
     console.log('[info] Refreshing CDN cache...');
@@ -380,7 +242,7 @@ async function main() {
     process.exit(1);
   }
 
-  // 8. Cleanup old versions (non-fatal)
+  // 6. Cleanup old versions (non-fatal)
   console.log(`[info] Cleaning up old versions (keeping latest ${KEEP_VERSIONS})...`);
   try {
     await cleanupOldVersions(ossClient, KEEP_VERSIONS);
