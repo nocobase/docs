@@ -31,6 +31,7 @@ export default [
         children: [
           '/welcome/getting-started/installation',
           '/welcome/getting-started/installation/docker-compose',
+          '/welcome/getting-started/installation/1panel',
           '/welcome/getting-started/installation/create-nocobase-app',
           '/welcome/getting-started/installation/git-clone',
           // '/welcome/getting-started/installation/install-plugin',
@@ -48,6 +49,7 @@ export default [
         children: [
           '/welcome/getting-started/upgrading',
           '/welcome/getting-started/upgrading/docker-compose',
+          '/welcome/getting-started/upgrading/1panel',
           '/welcome/getting-started/upgrading/create-nocobase-app',
           '/welcome/getting-started/upgrading/git-clone',
         ],
