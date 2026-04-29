@@ -129,7 +129,7 @@ The `createDocumentActionSchema` component takes a `blockComponent` parameter an
 - `x-component: 'Action'`: [Action Component](https://client.docs.nocobase.com/components/action) used to create a button.
 - `title: 'Document'`: Button title.
 - `x-doc-url`: A custom schema property representing the documentation URL.
-- `x-use-component-props: 'useDocumentActionProps'`: Dynamic properties, more details can be found in [the documentation](/development/client/ui-schema/what-is-ui-schema#x-component-props-和-x-use-component-props).
+- `x-use-component-props: 'useDocumentActionProps'`: Dynamic properties, more details can be found in [the documentation](/development/client/ui-schema/what-is-ui-schema#x-component-props-and-x-use-component-props).
 
 `useDocumentActionProps()`:
 - [useFieldSchema()](https://client.docs.nocobase.com/core/ui-schema/designable#usefieldschema): Retrieves the schema of the current node.
@@ -263,7 +263,7 @@ You can add multiple languages via [http://localhost:13000/admin/settings/system
 
 ### Packaging and Uploading to the Production Environment
 
-Following the [Build and Package Plugin](/development/your-fisrt-plugin#构建并打包插件) guide, we can package the plugin and upload it to the production environment.
+Following the [Build and Package Plugin](/development/your-fisrt-plugin#build-and-package-the-plugin) guide, we can package the plugin and upload it to the production environment.
 
 If the source code was cloned, a full build is needed first to construct the plugin dependencies.
 
