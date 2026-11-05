@@ -260,3 +260,12 @@ app-postgres-app-1  | 🚀 NocoBase server running at: http://localhost:13000/
 ## 4. Log in to NocoBase
 
 Open [http://localhost:13000](http://localhost:13000) in a web browser. The initial account and password are `admin@nocobase.com` and `admin123`.
+
+## 5. Deploy with Easypanel
+
+[Easypanel](https://easypanel.io) is a self-hosted Docker deployment platform, and NocoBase has a one-click deployment template there:
+
+[![Deploy on Easypanel][easypanel-btn]][easypanel-deploy]
+
+[easypanel-btn]: https://easypanel.io/img/deploy-on-easypanel-40.svg
+[easypanel-deploy]: https://easypanel.io/templates/nocobase
